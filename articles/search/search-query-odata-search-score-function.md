@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c31304228d9629b0df7f7511ecca2616b4891ee7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0a84d0310573a1210e21157102a445fff9244782
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206952"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88923972"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>`search.score`Funkce OData v Azure kognitivní hledání
 
 Když odešlete dotaz do Azure Kognitivní hledání bez [parametru **$OrderBy** ](search-query-odata-orderby.md), výsledky, které se vrátí, se seřadí v sestupném pořadí podle relevance. I když použijete **$OrderBy**, bude ve výchozím nastavení k přerušení vazeb použito skóre relevance. Někdy je ale vhodné použít skóre relevance jako počáteční kritéria řazení a některá další kritéria jako modul pro dělení na více koncových bodů. `search.score`Tato funkce vám to umožňuje.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Syntaxe pro `search.score` v **$OrderBy** je `search.score()` . Funkce `search.score` nepřijímá žádné parametry. Dá se použít se `asc` `desc` specifikátorem pořadí řazení nebo, stejně jako jakékoli jiné klauzule v parametru **$OrderBy** . Může se objevit kdekoli v seznamu kritérií řazení.
 
@@ -46,4 +46,4 @@ Seřadit hotely v sestupném pořadí podle `search.score` a a `rating` potom ve
 
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledat dokumenty &#40;rozhraní API Azure Kognitivní hledání EST&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledat dokumenty &#40;rozhraní API Azure Kognitivní hledání EST&#41;](/rest/api/searchservice/Search-Documents)

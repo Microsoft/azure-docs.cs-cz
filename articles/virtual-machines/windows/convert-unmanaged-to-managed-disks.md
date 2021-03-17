@@ -2,21 +2,21 @@
 title: Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky
 description: Jak převést virtuální počítač s Windows z nespravovaných disků na Managed disks pomocí prostředí PowerShell v modelu nasazení Správce prostředků
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3f586c8907ded618b4cc4aaaadf3c87471cda0b5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508606"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550718"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky
 
-Pokud máte existující virtuální počítače s Windows, které používají nespravované disky, můžete virtuální počítače převést tak, aby používaly spravované disky prostřednictvím služby [Azure Managed disks](managed-disks-overview.md) . Tento proces převede disk s operačním systémem i všechny připojené datové disky.
+Pokud máte existující virtuální počítače s Windows, které používají nespravované disky, můžete virtuální počítače převést tak, aby používaly spravované disky prostřednictvím služby [Azure Managed disks](../managed-disks-overview.md) . Tento proces převede disk s operačním systémem i všechny připojené datové disky.
 
  
 
@@ -25,7 +25,7 @@ Pokud máte existující virtuální počítače s Windows, které používají 
 
 * Přečtěte si [plán migrace na Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](faq-for-disks.md#migrate-to-managed-disks).
+* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -95,7 +95,7 @@ Před převodem se ujistěte, že jsou všechna rozšíření virtuálních poč
 
 Nespravované disky můžete také převést na spravované disky pomocí Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
 3. V okně pro virtuální počítač vyberte z nabídky **disky** .
 4. V horní části okna **disky** vyberte **migrovat na Managed disks**.

@@ -2,13 +2,14 @@
 title: Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: eeae4503111897d7a2fa64bc2a69c13381515157
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563071"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562191"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -38,6 +39,38 @@ ms.locfileid: "87563071"
 
 * Další informace najdete v tématu [řešení potíží s monitorování stavu](./monitor-performance-live-website-now.md#troubleshoot).
 
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
+
+
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException: nepovedlo se načíst soubor nebo sestavení Microsoft. AspNet TelemetryCorrelation.
+
+Další informace o této chybě najdete v článku [problém GitHubu 1610] ( https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) .
+
+Při upgradu ze sad SDK starších než (2,4) je nutné zajistit, aby byly v a provedeny následující změny `web.config` `ApplicationInsights.config` :
+
+1. Dva moduly HTTP namísto jednoho. V `web.config` byste měli mít dva moduly HTTP. Pořadí je důležité v některých scénářích:
+
+    ``` xml
+    <system.webServer>
+      <modules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="integratedMode,managedHandler" />
+          <add name="ApplicationInsightsHttpModule" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+      </modules>
+    </system.webServer>
+    ```
+
+2. `ApplicationInsights.config`Kromě byste `RequestTrackingTelemetryModule` měli mít následující modul telemetrie:
+
+    ``` xml
+    <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web"/>
+    </TelemetryModules>
+    ```
+
+***Nepovedlo se upgradovat správně, může to vést k neočekávaným výjimkám nebo telemetrie neshromažďujících.***
+
+
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>V aplikaci Visual Studio není možnost Přidat Application Insights.
 *Když kliknu pravým tlačítkem na existující projekt v Průzkumník řešení, nevidím žádné možnosti Application Insights.*
 
@@ -66,7 +99,7 @@ Vypadá to, že při instalaci Application Insights nebo možná protokolovacíh
 
 V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost **Application Insights > konfigurovat Application Insights**. Zobrazí se dialogové okno, které vás vyzve, abyste se přihlásili do Azure a vytvořili prostředek Application Insights, nebo znovu použít už existující.
 
-## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a>Na mém serveru sestavení chybí tento počet balíčků NuGet:
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> Na mém serveru sestavení chybí tento počet balíčků NuGet:
 *Při ladění na svém vývojovém počítači se všechno vytvoří, ale na serveru sestavení se zobrazí chyba NuGet.*
 
 Přečtěte si prosím [balíček NuGet obnovení](https://docs.nuget.org/Consume/Package-Restore) a [Automatické obnovení balíčků](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
@@ -120,7 +153,7 @@ Opravit
   Zobrazí se některé souhrnné grafy. Kliknutím na ně můžete zobrazit další podrobnosti.
 * V aplikaci Visual Studio při ladění aplikace klikněte na tlačítko Application Insights.
 
-## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a>Žádná data serveru (nebo žádná data vůbec)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> Žádná data serveru (nebo žádná data vůbec)
 *Spustil (a) jsem aplikaci Application Insights v Microsoft Azure, ale v grafu se zobrazila informace o tom, jak shromažďovat... nebo není nakonfigurováno.* Nebo, *jenom zobrazení stránky a uživatelská data, ale žádná data serveru.*
 
 * Spusťte aplikaci v režimu ladění v aplikaci Visual Studio (F5). Použijte aplikaci, aby se vygenerovala nějaká telemetrie. Zkontrolujte, zda jsou události zaznamenané v okně výstup sady Visual Studio.  
@@ -155,7 +188,7 @@ Viz [telemetrie závislostí](./asp-net-dependencies.md) a [telemetrie výjimek]
 * Ověřte, že jste ve skutečnosti zkopírovali všechny společnosti Microsoft. ApplicationInsights knihovny DLL do serveru společně s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * V bráně firewall možná budete muset [otevřít některé porty TCP](./ip-addresses.md).
 * Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) v Web.config
-* Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
+* Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
 * Dosáhli jste měsíční kvóty datových bodů? Pokud chcete zjistit, otevřete nastavení/kvótu a ceny. Pokud ano, můžete upgradovat svůj plán nebo platit za další kapacitu. Podívejte se na téma [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
@@ -185,13 +218,13 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, se musí shodovat s aktuálně nainstalovanou verzí nástroje.`Microsoft.ApplicationInsighs`
+1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, se musí shodovat s aktuálně nainstalovanou verzí nástroje. `Microsoft.ApplicationInsighs`
 
 2. Upravte soubor applicationinsights.config tak, aby zahrnoval následující:
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>
@@ -227,7 +260,7 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 4. Po dokončení tyto změny vraťte.
 
 
-## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>Shromažďování protokolů pomocí PerfView
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> Shromažďování protokolů pomocí PerfView
 [PerfView](https://github.com/Microsoft/perfview) je bezplatný nástroj pro diagnostiku a analýzu výkonu, který vám pomůže izolovat procesor, paměť a další problémy tím, že shromažďuje a vizualizuje diagnostické informace z mnoha zdrojů.
 
 Protokol Application Insights SDK s protokolem EventSource s protokolem, který může zachytit protokol PerfView.
@@ -245,11 +278,11 @@ Tyto parametry můžete upravit podle potřeby:
 
 Další informace
 - [Zaznamenávání trasování výkonu pomocí PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
-- [Application Insights zdroje událostí](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights zdroje událostí](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Shromažďování protokolů pomocí dotnet – trasování
 
-Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore

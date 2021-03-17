@@ -3,14 +3,14 @@ title: Vytvoření kontejneru Windows serveru v clusteru s AKS pomocí PowerShel
 description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v kontejneru Windows serveru ve službě Azure Kubernetes Service (AKS) pomocí PowerShellu.
 services: container-service
 ms.topic: article
-ms.date: 05/26/2020
+ms.date: 03/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bf446c858e40014a4085721d646f819e08542064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b877ecbdca06ff73d152e1b491e993798a99f98a
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497881"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233510"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí PowerShellu
 
@@ -22,9 +22,13 @@ V tomto článku se předpokládá základní znalost konceptů Kubernetes. Dal�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell][install-azure-powershell].
+Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell][install-azure-powershell]. Musíte taky nainstalovat modul PowerShell AZ. aks: 
+
+```azurepowershell-interactive
+Install-Module Az.Aks
+```
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -79,8 +83,9 @@ Pokud chcete spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Wi
 > Chcete-li zajistit spolehlivou činnost clusteru, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů.
 
 ```azurepowershell-interactive
-$Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+$Username = Read-Host -Prompt 'Please create a username for the administrator credentials on your Windows Server containers: '
+$Password = Read-Host -Prompt 'Please create a password for the administrator credentials on your Windows Server containers: ' -AsSecureString
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName $Username -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -93,7 +98,7 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru. Mů
 Ve výchozím nastavení se cluster AKS vytvoří s fondem uzlů, který může spouštět kontejnery Linux. Pomocí `New-AzAksNodePool` rutiny přidejte fond uzlů, který může spouštět kontejnery Windows serveru společně s fondem uzlů pro Linux.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin
 ```
 
 Výše uvedený příkaz vytvoří nový fond uzlů s názvem **npwin** a přidá ho do **myAKSCluster**. Při vytváření fondu uzlů pro spouštění kontejnerů Windows serveru je výchozí hodnota pro **VmSize** **Standard_D2s_v3**. Pokud se rozhodnete nastavit parametr **VmSize** , podívejte se na seznam [omezených velikostí virtuálních počítačů][restricted-vm-sizes]. Minimální doporučená velikost je **Standard_D2s_v3**. Předchozí příkaz používá také výchozí podsíť ve výchozí virtuální síti vytvořené při spuštění `New-AzAks` .

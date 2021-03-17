@@ -3,13 +3,12 @@ title: Model prostředků aplikace Azure Service Fabric
 description: Tento článek poskytuje přehled správy aplikace Service Fabric Azure pomocí Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258734"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790719"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric model prostředku aplikace
 
@@ -55,7 +54,7 @@ Po vytvoření účtu úložiště vytvoříte kontejner objektů blob, kde mů�
 Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného přístupu na **Private**. Přístup můžete udělit několika způsoby:
 
 * Pomocí [Azure Active Directory](../storage/common/storage-auth-aad-app.md)autorizujte přístup k objektům blob a frontám.
-* Pomocí [RBAC v Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)udělte přístup k datům objektů blob Azure a frontám.
+* Pomocí [Azure RBAC v Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)udělte přístup k datům objektů blob Azure a frontám.
 * Delegovat přístup pomocí [sdíleného přístupového podpisu](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 Příklad na následujícím snímku obrazovky používá anonymní přístup pro čtení pro objekty blob.
@@ -76,7 +75,7 @@ V tomto kurzu používáme [hlasovací ukázkovou aplikaci](https://github.com/A
    ![Aplikace zip][ZipApplication]  
 1. Přejmenujte soubor pro změnu rozšíření z. zip na *. sfpkg*.
 
-1. V Azure Portal v kontejneru **aplikace** pro váš účet úložiště vyberte **Odeslat**a pak nahrajte **hlasovací. sfpkg**. 
+1. V Azure Portal v kontejneru **aplikace** pro váš účet úložiště vyberte **Odeslat** a pak nahrajte **hlasovací. sfpkg**. 
 
    ![Nahrát balíček aplikace][UploadAppPkg]
 
@@ -90,6 +89,7 @@ Ukázková aplikace obsahuje [šablony Azure Resource Manager](https://github.co
 > *UserApp.Parameters.js* souboru musí být aktualizovaný s názvem vašeho clusteru.
 >
 >
+
 
 | Parametr              | Popis                                 | Příklad                                                      | Komentáře                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -138,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Upgrade aplikace Service Fabric pomocí Správce prostředků
 
+
+> [!IMPORTANT]
+> Všechny služby nasazené přes definici JSON pro ARM se musí odebrat z oddílu DefaultServices odpovídajícího souboru ApplicationManifest.xml.
+
+
 Můžete upgradovat aplikaci, která je už nasazená do clusteru Service Fabric, z některého z těchto důvodů:
 
 * Do aplikace se přidá nová služba. Při přidání služby do aplikace musí být do *service-manifest.xml* a *application-manifest.xml* souborů přidána definice služby. Aby odrážela novou verzi aplikace, musíte také změnit verzi typu aplikace z 1.0.0 na 1.0.1 v [UserApp.Parameters.js](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
@@ -166,13 +171,13 @@ Můžete upgradovat aplikaci, která je už nasazená do clusteru Service Fabric
 
 Postup odstranění aplikace nasazené pomocí modelu prostředku aplikace v Správce prostředků:
 
-1. K získání ID prostředku pro aplikaci použijte rutinu [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) :
+1. K získání ID prostředku pro aplikaci použijte rutinu [Get-AzResource](/powershell/module/az.resources/get-azresource) :
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. K odstranění prostředků aplikace použijte rutinu [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) :
+1. K odstranění prostředků aplikace použijte rutinu [Remove-AzResource](/powershell/module/az.resources/remove-azresource) :
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

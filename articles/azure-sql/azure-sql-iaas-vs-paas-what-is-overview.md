@@ -1,24 +1,23 @@
 ---
 title: Co je Azure SQL?
-titleSuffix: " "
 description: 'Seznamte se s různými možnostmi v rámci řady služeb Azure SQL: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálním počítači Azure.'
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=4
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 keywords: SQL Server Cloud, SQL Server v cloudu, databázi PaaS, cloudové SQL Server, DBaaS, IaaS
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280847"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550874"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Azure SQL je rodina spravovaných, zabezpečených a inteligentních produktů, 
 Azure SQL je založený na známém SQL Server Engine, takže můžete snadno migrovat aplikace a dál používat nástroje, jazyky a prostředky, které znáte. Vaše dovednosti a zkušenosti se přenášejí do cloudu, takže můžete dělat ještě víc s tím, co už máte. 
 
 Přečtěte si, jak každý produkt zapadá do datové platformy Microsoft Azure SQL, aby odpovídal správné možnosti pro vaše podnikové požadavky. Bez ohledu na to, jestli upřednostňujete úspory nákladů nebo minimální správu, vám tento článek může pomáhat při rozhodování, jakým způsobem se většina obchodních požadavků zajímá.
+
+
+Pokud s Azure SQL začínáte, podívejte se na video *co je Azure SQL* z naší podrobné [série videí Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>Přehled
@@ -49,7 +53,7 @@ Věnujte více času inovacím a méně častým opravám, aktualizacím a zálo
 
 Azure průběžně monitoruje vaše data pro hrozby. V případě Azure SQL můžete:
 
-- Opravte potenciální hrozby v reálném čase díky inteligentním [funkcím pro detekci hrozeb](https://docs.microsoft.com/azure/security/fundamentals/threat-detection#advanced-threat-detection-features-other-azure-services) a proaktivním výstrahám posouzení ohrožení zabezpečení. 
+- Opravte potenciální hrozby v reálném čase díky inteligentním [funkcím pro detekci hrozeb](../security/fundamentals/threat-detection.md#threat-protection-features-other-azure-services) a proaktivním výstrahám posouzení ohrožení zabezpečení. 
 - Využijte špičkovou ochranu s více vrstvami s [integrovanými ovládacími prvky zabezpečení](https://azure.microsoft.com/overview/security/) , jako je T-SQL, ověřování, sítě a Správa klíčů. 
 - Využijte nejkomplexnější pokrytí [dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud/compliance/) u libovolné cloudové databázové služby. 
 
@@ -82,13 +86,13 @@ Pomocí SQL Server můžete používat integrované funkce, které vyžadují ro
 
 
 Azure SQL Database nabízí následující možnosti nasazení:
-  - Jako [*jediná databáze*](database/single-database-overview.md) s vlastní sadou prostředků spravovaných prostřednictvím [logického SQL serveru](database/logical-servers.md). Jedna databáze je podobná databázi s [omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) v SQL Server. Tato možnost je optimalizovaná pro vývoj moderních aplikací pro nové aplikace, které se zanesou do cloudu. K dispozici jsou možnosti s možností [škálování a bez](database/service-tier-hyperscale.md) [serveru](database/serverless-tier-overview.md) .
+  - Jako [*jediná databáze*](database/single-database-overview.md) s vlastní sadou prostředků spravovaných prostřednictvím [logického SQL serveru](database/logical-servers.md). Jedna databáze je podobná databázi s [omezením](/sql/relational-databases/databases/contained-databases) v SQL Server. Tato možnost je optimalizovaná pro vývoj moderních aplikací pro nové aplikace, které se zanesou do cloudu. K dispozici jsou možnosti s možností [škálování a bez](database/service-tier-hyperscale.md) [serveru](database/serverless-tier-overview.md) .
   - [*Elastický fond*](database/elastic-pool-overview.md), což je kolekce databází se sdílenou sadou prostředků spravovaných prostřednictvím [logického SQL serveru](database/logical-servers.md). Jednotlivé databáze lze přesunout do elastického fondu nebo z něj. Tato možnost je optimalizovaná pro vývoj moderních aplikací pro nové aplikace v cloudu pomocí modelu aplikace SaaS pro více tenantů. Elastické fondy poskytují cenově výhodné řešení pro správu výkonu více databází, které mají vzorce použití proměnných.
 
 ### <a name="azure-sql-managed-instance"></a>Spravovaná instance Azure SQL
 
 [Azure SQL Managed instance](managed-instance/sql-managed-instance-paas-overview.md) spadá do oborové kategorie *PaaS (Platform as-a-Service)*, která je nejlepší pro většinu migrací do cloudu. Spravovaná instance SQL je kolekce systémových a uživatelských databází se sdílenou sadou prostředků, která je připravená k přebírání a posunutí.  
-- Nejvhodnější pro nové aplikace nebo stávající místní aplikace, které chtějí využívat nejnovější stabilní funkce SQL Server a které jsou migrovány do cloudu s minimálními změnami. Instance spravované instance SQL je podobná instanci [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview) , který nabízí sdílené prostředky pro databáze a další funkce v rozsahu instance. 
+- Nejvhodnější pro nové aplikace nebo stávající místní aplikace, které chtějí využívat nejnovější stabilní funkce SQL Server a které jsou migrovány do cloudu s minimálními změnami. Instance spravované instance SQL je podobná instanci [databázového stroje Microsoft SQL Server](/sql/database-engine/sql-server-database-engine-overview) , který nabízí sdílené prostředky pro databáze a další funkce v rozsahu instance. 
 - Spravovaná instance SQL podporuje migraci databáze z místního prostředí s minimálními nároky na změnu databáze. Tato možnost poskytuje všechny PaaS výhody Azure SQL Database, ale přidává funkce, které byly dříve dostupné jenom v SQL Server virtuálních počítačích. To zahrnuje nativní virtuální síť a téměř 100% kompatibilitu s místními SQL Server. Instance spravované instance SQL poskytují úplný přístup SQL Server a kompatibilitu funkcí pro migraci serverů SQL do Azure.
 
 ### <a name="sql-server-on-azure-vm"></a>SQL Server na virtuálním počítači Azure
@@ -110,12 +114,12 @@ Obecně může SQL Database a SQL Managed instance významně zvýšit počet da
 | Azure SQL Database | Spravovaná instance Azure SQL | SQL Server na virtuálním počítači Azure |
 | :--- | :--- | :--- |
 |Podporuje většinu místních funkcí na úrovni databáze. K dispozici jsou nejčastěji používané SQL Server funkce.<br/>je zaručeno 99,995% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Možnost přiřazení nezbytných prostředků (CPU/úložiště) k jednotlivým databázím.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Podporuje téměř všechny místní funkce na úrovni instance a databáze. Vysoká kompatibilita s SQL Server.<br/>je zaručeno 99,99% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci Azure Virtual Network.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Máte plnou kontrolu nad SQL Server modulem. Podporuje všechny místní funkce.<br/>Až 99,99% dostupnost.<br/>Úplná parita se stejnou verzí místních SQL Server.<br/>Opravená, dobře známá verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci Azure Virtual Network.<br/>Máte možnost nasazovat aplikace nebo služby na hostitele, kde je umístěn SQL Server.|
-|Migrace z SQL Server může být náročná.<br/>Některé funkce SQL Server nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.<br/>Podpora privátních IP adres pomocí [privátního propojení Azure](database/private-endpoint-overview.md).|Stále je k dispozici nějaký minimální počet funkcí SQL Server, které nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.|Musíte spravovat zálohy a opravy.<br>Musíte implementovat vlastní řešení s vysokou dostupností.<br/>Při změně prostředků (CPU/úložiště) dochází k výpadku.|
+|Migrace z SQL Server může být náročná.<br/>Některé funkce SQL Server nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.<br/>Podpora privátních IP adres pomocí [privátního propojení Azure](database/private-endpoint-overview.md).|Stále je k dispozici nějaký minimální počet funkcí SQL Server, které nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.|Musíte spravovat zálohy a opravy.<br>Je nutné implementovat vlastní řešení High-Availability.<br/>Při změně prostředků (CPU/úložiště) dochází k výpadku.|
 | Databáze o až 100 TB. | Až 8 TB. | Instance SQL Server s až 256 TB úložiště. Instance může podporovat tolik databází, kolik je potřeba. |
-| Místní aplikace má přístup k datům v Azure SQL Database. | [Implementace nativní virtuální sítě](managed-instance/vnet-existing-add-subnet.md) a připojení k místnímu prostředí pomocí Azure Express Route nebo VPN Gateway. | S virtuálními počítači SQL můžete mít aplikace, které běží částečně v cloudu, a částečně místně. Můžete si například rozšířit místní síť a služby Active Directory Domain do cloudu přes [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Další informace o hybridních cloudových řešeních najdete v tématu [rozšíření místních datových řešení do cloudu](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
+| Místní aplikace má přístup k datům v Azure SQL Database. | [Implementace nativní virtuální sítě](managed-instance/vnet-existing-add-subnet.md) a připojení k místnímu prostředí pomocí Azure Express Route nebo VPN Gateway. | S virtuálními počítači SQL můžete mít aplikace, které běží částečně v cloudu, a částečně místně. Můžete si například rozšířit místní síť a služby Active Directory Domain do cloudu přes [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Další informace o hybridních cloudových řešeních najdete v tématu [rozšíření místních datových řešení do cloudu](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 
 Bez ohledu na to, jestli jste spuštění Strapped pro hotovost nebo tým v zřízené společnosti, který pracuje s přísnými rozpočtovými omezeními, je při rozhodování, jak hostovat vaše databáze, často omezené finanční ovladače. V této části se dozvíte o základech fakturace a licencování v Azure přidružených k rodině služeb Azure SQL.  Zjistíte také, jak vypočítat celkové náklady na aplikaci.
 
@@ -128,9 +132,9 @@ V současné době se obě **SQL Database** a **SQL Managed instance** prodávaj
 
 Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/). Úrovně služeb a výpočetní velikosti můžete dynamicky upravovat tak, aby odpovídaly různým požadavkům na propustnost vaší aplikace.
 
-V případě **SQL Database** a **SQL spravované instance**se databázový software automaticky nakonfiguruje, opraví a upgraduje pomocí Azure, což snižuje náklady na správu. Kromě toho vám její [integrované funkce zálohování](database/automated-backups-overview.md) pomohou dosáhnout výrazných úspor nákladů, zejména v případě, že máte velký počet databází.
+V případě **SQL Database** a **SQL spravované instance** se databázový software automaticky nakonfiguruje, opraví a upgraduje pomocí Azure, což snižuje náklady na správu. Kromě toho vám její [integrované funkce zálohování](database/automated-backups-overview.md) pomohou dosáhnout výrazných úspor nákladů, zejména v případě, že máte velký počet databází.
 
-Pomocí **SQL na virtuálních počítačích Azure**můžete použít kteroukoli z SQL serverch imagí poskytovaných platformou (včetně licence) nebo přenést licenci SQL Server. K dispozici jsou všechny podporované verze SQL Server (2008 R2, 2012, 2014, 2016, 2017, 2019) a edice (Developer, Express, web, Standard, Enterprise). Kromě toho jsou k dispozici verze imagí modelu používání vlastní licence (BYOL). Pokud budete používat image poskytované v rámci Azure, budou provozní náklady záviset na velikosti virtuálního počítače a na edici systému SQL Server, kterou zvolíte. Bez ohledu na velikost virtuálního počítače nebo edici SQL Server zaplatíte poplatky za licence na SQL Server a server s Windows nebo Linux, a to i náklady na Azure Storage pro disky virtuálních počítačů. Možnost fakturace po minutách vám umožňuje používat SQL Server tak dlouho, jak budete potřebovat, bez nutnosti dokupovat další licence na SQL Server. Pokud přenesete do Azure vlastní licenci SQL Server, budou se vám účtovat jenom náklady na server a úložiště. Další informace o používání vlastní licence (BYOL) najdete v tématu [Mobilita licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/). Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/).
+Pomocí **SQL na virtuálních počítačích Azure** můžete použít kteroukoli z SQL serverch imagí poskytovaných platformou (včetně licence) nebo přenést licenci SQL Server. K dispozici jsou všechny podporované verze SQL Server (2008 R2, 2012, 2014, 2016, 2017, 2019) a edice (Developer, Express, web, Standard, Enterprise). Kromě toho jsou k dispozici verze imagí modelu používání vlastní licence (BYOL). Pokud budete používat image poskytované v rámci Azure, budou provozní náklady záviset na velikosti virtuálního počítače a na edici systému SQL Server, kterou zvolíte. Bez ohledu na velikost virtuálního počítače nebo edici SQL Server zaplatíte poplatky za licence na SQL Server a server s Windows nebo Linux, a to i náklady na Azure Storage pro disky virtuálních počítačů. Možnost fakturace po minutách vám umožňuje používat SQL Server tak dlouho, jak budete potřebovat, bez nutnosti dokupovat další licence na SQL Server. Pokud přenesete do Azure vlastní licenci SQL Server, budou se vám účtovat jenom náklady na server a úložiště. Další informace o používání vlastní licence (BYOL) najdete v tématu [Mobilita licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/). Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 #### <a name="calculating-the-total-application-cost"></a>Výpočet celkových nákladů na aplikaci
 
@@ -146,16 +150,16 @@ Další informace o cenách najdete v následujících zdrojích informací a ma
 
 Pro mnoho firem je rozhodnutí o přechodu na využívání cloudové služby nejen otázkou nízkých nákladů, ale také snížení složitosti správy. Díky IaaS a PaaS spravuje Azure základní infrastrukturu a automaticky replikuje všechna data, aby poskytovala zotavení po havárii, nakonfiguruje a upgraduje databázový software, spravuje vyrovnávání zatížení a provádí transparentní převzetí služeb při selhání v případě selhání serveru v rámci datového centra.
 
-- Pomocí **SQL Database** a **spravované instance SQL**můžete dál spravovat svou databázi, ale nebudete už muset spravovat databázový stroj, operační systém ani hardware. Příklady položek, které můžete dál spravovat: databáze a přihlašovací údaje, ladění indexů nebo dotazů a auditování a zabezpečení. Kromě toho konfigurace vysoké dostupnosti v jiném datovém centru vyžaduje minimální konfiguraci a správu.
-- S **SQL na virtuálním počítači Azure**máte plnou kontrolu nad operačním systémem a konfigurací instance SQL Server. Pomocí virtuálního počítače se můžete rozhodnout, kdy aktualizovat nebo upgradovat operační systém a software databáze a kdy se má nainstalovat další software, jako je například anti-virus. K dispozici jsou některé automatizované funkce ke značnému zjednodušení použití dílčích oprav, zálohování a zajištění vysoké dostupnosti. Kromě toho můžete nastavovat velikost virtuálního počítače, počet disků a jejich konfigurace úložiště. Azure umožňuje měnit velikost virtuálního počítače podle potřeby. Informace najdete v tématu věnovaném [velikostem virtuálních počítačů a cloudových služeb pro Azure](../virtual-machines/windows/sizes.md).
+- Pomocí **SQL Database** a **spravované instance SQL** můžete dál spravovat svou databázi, ale nebudete už muset spravovat databázový stroj, operační systém ani hardware. Příklady položek, které můžete dál spravovat: databáze a přihlašovací údaje, ladění indexů nebo dotazů a auditování a zabezpečení. Kromě toho konfigurace vysoké dostupnosti v jiném datovém centru vyžaduje minimální konfiguraci a správu.
+- S **SQL na virtuálním počítači Azure** máte plnou kontrolu nad operačním systémem a konfigurací instance SQL Server. Pomocí virtuálního počítače se můžete rozhodnout, kdy aktualizovat nebo upgradovat operační systém a software databáze a kdy se má nainstalovat další software, jako je například anti-virus. K dispozici jsou některé automatizované funkce ke značnému zjednodušení použití dílčích oprav, zálohování a zajištění vysoké dostupnosti. Kromě toho můžete nastavovat velikost virtuálního počítače, počet disků a jejich konfigurace úložiště. Azure umožňuje měnit velikost virtuálního počítače podle potřeby. Informace najdete v tématu věnovaném [velikostem virtuálních počítačů a cloudových služeb pro Azure](../virtual-machines/sizes.md).
 
 ## <a name="service-level-agreement-sla"></a>Smlouva o úrovni služeb (SLA)
 
 V případě mnoha IT oddělení jsou povinnosti smlouvy o úrovni služeb (SLA) nejvyšší prioritou. V této části se podíváme na to, jaká smlouva SLA se vztahuje na každou z možností hostování databáze.
 
-Pro **Azure SQL Database** i pro **Azure SQL Managed instance**poskytuje Microsoft smlouvu SLA s dostupností 99,99%. Nejnovější informace najdete v tématu [Smlouva o úrovni služeb](https://azure.microsoft.com/support/legal/sla/sql-database/).
+Pro **Azure SQL Database** i pro **Azure SQL Managed instance** poskytuje Microsoft smlouvu SLA s dostupností 99,99%. Nejnovější informace najdete v tématu [Smlouva o úrovni služeb](https://azure.microsoft.com/support/legal/sla/sql-database/).
 
-**V případě SQL na virtuálním počítači Azure**poskytuje Microsoft smlouvu SLA s dostupností 99,95%, která pokrývá jenom virtuální počítač. Tato smlouva SLA nepokrývá procesy (například SQL Server) běžící na virtuálním počítači a vyžaduje, abyste v rámci skupiny dostupnosti hostovali minimálně dvě instance virtuálních počítačů. Nejnovější informace najdete v tématu věnovaném smlouvám [SLA k virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/). V případě vysoké dostupnosti databáze (HA) v rámci virtuálních počítačů byste měli nakonfigurovat jednu z podporovaných možností vysoké dostupnosti v SQL Server, jako jsou například [skupiny dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Používání podporované možnosti vysoké dostupnosti neposkytuje další SLA, ale umožňuje dosáhnout více než 99.99% dostupnosti databáze.
+**V případě SQL na virtuálním počítači Azure** poskytuje Microsoft smlouvu SLA s dostupností 99,95%, která pokrývá jenom virtuální počítač. Tato smlouva SLA nepokrývá procesy (například SQL Server) běžící na virtuálním počítači a vyžaduje, abyste v rámci skupiny dostupnosti hostovali minimálně dvě instance virtuálních počítačů. Nejnovější informace najdete v tématu věnovaném smlouvám [SLA k virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/). V případě vysoké dostupnosti databáze (HA) v rámci virtuálních počítačů byste měli nakonfigurovat jednu z podporovaných možností vysoké dostupnosti v SQL Server, jako jsou například [skupiny dostupnosti Always On](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Používání podporované možnosti vysoké dostupnosti neposkytuje další SLA, ale umožňuje dosáhnout více než 99.99% dostupnosti databáze.
 
 ## <a name="time-to-move-to-azure"></a><a name="market"></a>Čas přechodu do Azure
 

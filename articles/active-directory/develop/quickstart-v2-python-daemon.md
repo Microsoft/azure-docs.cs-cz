@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity Platform Python daemon | Azure
-description: Zjistěte, jak může proces Pythonu získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform pomocí vlastní identity aplikace.
+title: 'Rychlý Start: volání Microsoft Graph z démona Pythonu | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak může proces Pythonu získat přístupový token a volat rozhraní API chráněné platformou Microsoft Identity platformou, a to pomocí vlastní identity aplikace.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,21 +12,21 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 734fad7d3f4fb7a2a816d9ad10fb6b15e2faf9e2
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683738"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820397"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
-V tomto rychlém startu napište aplikaci v Pythonu, která získá token přístupu pomocí identity aplikace, a potom zavolá rozhraní Microsoft Graph API, ve kterém se zobrazí [seznam uživatelů](/graph/api/user-list) v adresáři. Tento scénář je vhodný pro situace, kdy je potřeba bez identity uživatele spustit bezobslužnou úlohu nebo službu systému Windows s identitou aplikace.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak může aplikace Python získat přístupový token pomocí identity aplikace pro volání rozhraní API Microsoft Graph a zobrazení [seznamu uživatelů](/graph/api/user-list) v adresáři. Ukázka kódu ukazuje, jak lze spustit bezobslužnou úlohu nebo službu systému Windows pomocí identity aplikace namísto identity uživatele. 
 
 > [!div renderon="docs"]
-> ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-python-daemon/python-console-daemon.svg)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
@@ -41,7 +42,7 @@ K provedení této ukázky budete potřebovat:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs) .
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -51,35 +52,35 @@ K provedení této ukázky budete potřebovat:
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte registrační informace vaší aplikace.
-> 1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Daemon-console` Vyberte možnost **Registrovat** a vytvořte aplikaci.
-> 1. Po registraci vyberte nabídku **certifikáty & tajných klíčů** .
-> 1. V části **tajné klíče klienta**vyberte **+ nový tajný klíč klienta**. Zadejte název a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete ho potřebovat pro použití ve vašem kódu.
-> 1. Nyní vyberte nabídku **oprávnění rozhraní API** , vyberte **+ Přidat oprávnění** tlačítko a vyberte možnost **Microsoft Graph**.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `Daemon-console` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. Vyberte **Zaregistrovat**.
+> 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
+> 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**, zadejte název a pak vyberte **Přidat**. Poznamenejte si tajnou hodnotu v bezpečném umístění pro použití v pozdějším kroku.
+> 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. Vyberte **Microsoft Graph**.
 > 1. Vyberte **oprávnění aplikace**.
-> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše**a pak vyberte **Přidat oprávnění** .
+> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
+> ### <a name="download-and-configure-the-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné vytvořit tajný klíč klienta a přidat **uživatele Graph API. číst. všechna** oprávnění aplikace.
+> Aby ukázka kódu v tomto rychlém startu fungovala, vytvořte tajný klíč klienta a přidejte Graph API **uživatel. číst. všechna** oprávnění aplikace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-netcore-daemon/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-2-download-your-python-project"></a>Krok 2: stažení projektu Python
+#### <a name="step-2-download-the-python-project"></a>Krok 2: stažení projektu Pythonu
 
 > [!div renderon="docs"]
 > [Stáhnout projekt démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -88,7 +89,7 @@ K provedení této ukázky budete potřebovat:
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-python-project"></a>Krok 3: konfigurace projektu Pythonu
+> #### <a name="step-3-configure-the-python-project"></a>Krok 3: konfigurace projektu Pythonu
 >
 > 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 > 1. Přejděte do dílčí složky **1-Call-MsGraph-WithSecret**.
@@ -118,16 +119,16 @@ Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 40
 ##### <a name="global-tenant-administrator"></a>Globální správce klienta
 
 > [!div renderon="docs"]
-> Pokud jste globální správce klienta, v registraci aplikace na webu Azure Portal klikněte na stránku **oprávnění rozhraní API** (Preview) a vyberte **udělit souhlas správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
+> Pokud jste globální správce klienta, v Azure Portal klikněte na stránku **oprávnění rozhraní API** v **Registrace aplikací** a vyberte **udělit souhlas správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Pokud jste globální správce, přejít na stránku **oprávnění rozhraní API** , vyberte **udělit souhlas správce pro Enter_the_Tenant_Name_Here**
+> Pokud jste globální správce, klikněte na stránce **oprávnění rozhraní API** a vyberte **udělit souhlas správce pro Enter_the_Tenant_Name_Here**.
 > > [!div id="apipermissionspage"]
 > > [Přejít na stránku oprávnění API]()
 
 ##### <a name="standard-user"></a>Standardní uživatel
 
-Pokud jste standardní uživatel vašeho tenanta, musíte požádat globálního správce o udělení souhlasu správce vaší aplikace. Pokud to chcete provést, poskytněte správci následující adresu URL:
+Pokud jste standardní uživatel vašeho tenanta, požádejte globálního správce, aby pro vaši aplikaci udělil souhlas správce. Pokud to chcete provést, poskytněte správci následující adresu URL:
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -159,7 +160,7 @@ python confidential_client_secret_sample.py parameters.json
 Měli byste vidět, že výstup na konzole je nějaký fragment JSON, který představuje seznam uživatelů v adresáři služby Azure AD.
 
 > [!IMPORTANT]
-> Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se místo toho použít certifikát namísto tajného klíče klienta před tím, než aplikaci vyberou jako produkční aplikaci. Další informace o tom, jak použít certifikát, najdete v [těchto pokynech](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md) ve stejném úložišti GitHub pro tuto ukázku, ale ve druhé složce **2-Call-MsGraph-WithCertificate**
+> Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se místo toho použít certifikát namísto tajného klíče klienta před tím, než aplikaci vyberou jako produkční aplikaci. Další informace o tom, jak použít certifikát, najdete v [těchto pokynech](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md) ve stejném úložišti GitHub pro tuto ukázku, ale ve druhé složce **2-Call-MsGraph-WithCertificate**.
 
 ## <a name="more-information"></a>Další informace
 
@@ -189,13 +190,13 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Kde: |Popis |
+> | Kde: |Description |
 > |---------|---------|
 > | `config["secret"]` | Vytvoří se tajný klíč klienta pro aplikaci na webu Azure Portal. |
 > | `config["client_id"]` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 > | `config["authority"]`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, Obvykle `https://login.microsoftonline.com/{tenant}` pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta.|
 
-Další informace najdete v [referenční dokumentaci pro `ConfidentialClientApplication` ](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)
+Další informace najdete v [referenční dokumentaci pro `ConfidentialClientApplication` ](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication).
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
@@ -210,32 +211,17 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
-> | `config["scope"]` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
+> | `config["scope"]` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v objektu aplikace v Azure Portal (pro Microsoft Graph `{Application ID URI}` odkazuje na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní api** v **Registrace aplikací** na webu Azure Portal.|
 
-Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client)
+Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client).
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o aplikacích démona najdete na cílové stránce scénáře.
+Další informace o aplikacích démona najdete na cílové stránce scénář.
 
 > [!div class="nextstepaction"]
 > [Aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)
-
-Kurz pro aplikace démona najdete v těchto tématech:
-
-> [!div class="nextstepaction"]
-> [Kurz pro konzolu Pythonu pro démony](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-Další informace o oprávněních a souhlasu:
-
-> [!div class="nextstepaction"]
-> [Oprávnění a souhlas](v2-permissions-and-consent.md)
-
-Další informace o toku ověřování pro tento scénář najdete v tématu tok přihlašovacích údajů klienta OAuth 2,0:
-
-> [!div class="nextstepaction"]
-> [Tok OAuth přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md)

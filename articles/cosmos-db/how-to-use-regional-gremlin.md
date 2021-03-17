@@ -1,21 +1,24 @@
 ---
 title: Místní koncové body pro databázi Azure Cosmos DB Graph
 description: Zjistěte, jak se připojit k nejbližšímu koncovému bodu databáze grafu pro vaši aplikaci.
-author: luisbosquez
-ms.author: lbosq
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263591"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361783"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionální koncové body pro účet Azure Cosmos DB Graph
-Databáze Azure Cosmos DB Graph je [globálně distribuovaná](distribute-data-globally.md) , takže aplikace můžou používat víc koncových bodů pro čtení. Aplikace, které potřebují oprávnění k zápisu ve více umístěních, by měly umožňovat použití [více hlavních](how-to-multi-master.md) možností.
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
+Databáze Azure Cosmos DB Graph je [globálně distribuovaná](distribute-data-globally.md) , takže aplikace můžou používat víc koncových bodů pro čtení. Aplikace, které potřebují oprávnění k zápisu ve více umístěních, by měly povolit možnost [zápisu ve více oblastech](how-to-multi-master.md) .
 
 Důvody pro výběr více než jedné oblasti:
 1. **Horizontální škálovatelnost čtení** – jelikož zatížení aplikace se zvyšuje, může být obezřetné směrovat provoz čtení do různých oblastí Azure.

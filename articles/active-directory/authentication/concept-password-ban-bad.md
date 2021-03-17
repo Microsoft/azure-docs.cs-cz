@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235294"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652016"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminujte chybná hesla pomocí Azure Active Directory ochrany heslem.
 
@@ -24,7 +24,7 @@ Spousta pokynů k zabezpečení doporučuje, abyste nepoužívali stejné heslo 
 
 Díky ochraně hesel Azure AD se výchozí globální seznamy zakázaných hesel automaticky aplikují na všechny uživatele v tenantovi Azure AD. Pro podporu vlastních obchodních potřeb a zabezpečení můžete definovat položky v seznamu vlastního zakázaného hesla. Když uživatelé mění nebo resetují hesla, jsou tyto seznamy zakázaných hesel zaškrtnuté, aby vynutily používání silných hesel.
 
-Měli byste používat další funkce, jako je [Azure Multi-Factor Authentication](concept-mfa-howitworks.md). nespoléhá se jenom na silná hesla vynucená ochranou hesel Azure AD. Další informace o použití několika vrstev zabezpečení pro přihlašovací události najdete v tématu o tom, co je [to $Word PA](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
+Měli byste používat další funkce, jako je [Azure AD Multi-Factor Authentication](concept-mfa-howitworks.md). nespoléhá se jenom na silná hesla vynucená ochranou hesel Azure AD. Další informace o použití několika vrstev zabezpečení pro přihlašovací události najdete v tématu o tom, co je [to $Word PA](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
 > [!IMPORTANT]
 > Tento koncepční článek vysvětluje správce, jak funguje ochrana heslem Azure AD. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr) .
@@ -174,7 +174,7 @@ Uvažujte následující příklad:
 Dalším krokem je identifikace všech instancí zakázaných hesel v normalizovaném novém heslu uživatele. Body jsou přiřazeny na základě následujících kritérií:
 
 1. Každé zakázané heslo, které se nachází v uživatelském hesle, je přiděleno na jeden bod.
-1. Každý zbývající jedinečný znak je dán jedním bodem.
+1. Každý zbývající znak, který není součástí zakázaného hesla, je dán jedním bodem.
 1. Heslo musí mít aspoň pět (5) bodů, které se mají přijmout.
 
 V dalších dvou ukázkových scénářích používá contoso používání ochrany heslem Azure AD a má ve svém vlastním seznamu zakázaných hesel "contoso". Pojďme také předpokládat, že je "prázdná" v globálním seznamu.
@@ -202,7 +202,7 @@ Pojďme se podívat na trochu odlišný příklad, který ukazuje, jak může da
 > [!IMPORTANT]
 > Algoritmus zakázaného hesla spolu s globálním seznamem zakázaných hesel může a v Azure kdykoli měnit, a to na základě průběžné analýzy zabezpečení a výzkumu.
 >
-> Pro místní službu agenta řadiče domény v hybridních scénářích se aktualizované algoritmy projeví až po opětovné instalaci softwaru agenta DC.
+> Pro místní službu agenta řadiče domény v hybridních scénářích se aktualizované algoritmy projeví až po upgradu softwaru agenta DC.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 

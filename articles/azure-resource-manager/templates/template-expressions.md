@@ -1,18 +1,18 @@
 ---
 title: Syntaxe a výrazy šablon
-description: Popisuje deklarativní syntaxi JSON pro šablony Azure Resource Manager.
+description: Popisuje deklarativní syntaxi JSON pro šablony Azure Resource Manager (šablony ARM).
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203824"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797039"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxe a výrazy v šablonách Azure Resource Manager
+# <a name="syntax-and-expressions-in-arm-templates"></a>Syntaxe a výrazy v šablonách ARM
 
-Základní syntaxí šablony je JSON. Můžete však použít výrazy k rozšiřování hodnot JSON dostupných v rámci šablony.  Výrazy začínají a končí závorkami `[` a `]` v uvedeném pořadí. Hodnota výrazu se vyhodnocuje po nasazení šablony. Výraz může vrátit řetězec, celé číslo, logickou hodnotu, pole nebo objekt.
+Základní syntaxe šablony Azure Resource Manager (šablona ARM) je JavaScript Object Notation (JSON). Můžete však použít výrazy k rozšiřování hodnot JSON dostupných v rámci šablony.  Výrazy začínají a končí závorkami `[` a `]` v uvedeném pořadí. Hodnota výrazu se vyhodnocuje po nasazení šablony. Výraz může vrátit řetězec, celé číslo, logickou hodnotu, pole nebo objekt.
 
 Výraz šablony nemůže být delší než 24 576 znaků.
 
@@ -31,7 +31,7 @@ Azure Resource Manager poskytuje [funkce](template-functions.md) , které může
 
 Syntaxe v rámci výrazu `resourceGroup()` volá jednu z funkcí, které správce prostředků poskytují pro použití v rámci šablony. V tomto případě je to funkce [Resource](template-functions-resource.md#resourcegroup) . Stejně jako v jazyce JavaScript jsou volání funkcí formátována jako `functionName(arg1,arg2,arg3)` . Syntaxe `.location` načte jednu vlastnost z objektu vráceného touto funkcí.
 
-Funkce šablon a jejich parametry rozlišují velká a malá písmena. Například Správce prostředků vyřeší **proměnné (' var1 ')** a **proměnné (' var1 ')** jako stejné. Je-li tato funkce vyhodnocena, pokud funkce Express nemění velká a malá písmena (například toUpper nebo toLower), funkce zachovává případ. Některé typy prostředků můžou mít požadavky na případy, které jsou oddělené od způsobu, jakým se funkce vyhodnocují.
+Funkce šablon a jejich parametry rozlišují velká a malá písmena. Například Správce prostředků přeložit `variables('var1')` a `VARIABLES('VAR1')` jako stejný. Je-li vyhodnocena, pokud funkce výslovně nemění velká a malá písmena (například `toUpper` nebo `toLower` ), funkce zachová případ. Některé typy prostředků můžou mít požadavky na případy, které jsou oddělené od způsobu, jakým se funkce vyhodnocují.
 
 Chcete-li předat řetězcovou hodnotu jako parametr funkci, použijte jednoduché uvozovky.
 
@@ -41,7 +41,7 @@ Chcete-li předat řetězcovou hodnotu jako parametr funkci, použijte jednoduch
 
 Většina funkcí funguje stejně, ať už je nasazená do skupiny prostředků, předplatného, skupiny pro správu nebo tenanta. Následující funkce mají omezení na základě rozsahu:
 
-* [resourceGroup](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
+* [](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
 * [ResourceID](template-functions-resource.md#resourceid) -lze použít v jakémkoli oboru, ale platné parametry se mění v závislosti na rozsahu.
 * [předplatné](template-functions-resource.md#subscription) – dá se použít jenom v nasazeních do skupiny prostředků nebo předplatného.
 
@@ -123,7 +123,7 @@ Stejné formátování platí při předávání hodnot ze souboru parametrů. Z
 
 ## <a name="null-values"></a>Hodnoty Null
 
-Chcete-li nastavit vlastnost na hodnotu null, můžete použít **hodnotu null** nebo **[JSON (' null ')]**. [Funkce JSON](template-functions-object.md#json) vrátí prázdný objekt, když zadáte `null` jako parametr. V obou případech šablony Správce prostředků považují za, jako by vlastnost nebyla přítomna.
+Pokud chcete nastavit vlastnost na hodnotu null, můžete použít `null` nebo `[json('null')]`. [Funkce JSON](template-functions-object.md#json) vrátí prázdný objekt, když zadáte `null` jako parametr. V obou případech šablony Správce prostředků považují za, jako by vlastnost nebyla přítomna.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Chcete-li nastavit vlastnost na hodnotu null, můžete použít **hodnotu null**
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](template-functions.md).
-* Další informace o souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+* Úplný seznam funkcí šablon najdete v tématu [funkce šablon ARM](template-functions.md).
+* Další informace o souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

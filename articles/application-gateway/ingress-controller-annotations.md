@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335824"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397446"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Poznámky pro řadič Application Gateway pro příchozí přenos dat 
 
@@ -29,9 +29,9 @@ Aby byl prostředek příchozího přenosu dat AGIC, **musí být** v něm Pozn�
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
 | [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining](#connection-draining) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32`Second | `30` | |
+| [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32` Second | `30` | |
 | [appgw.ingress.kubernetes.io/cookie-based-affinity](#cookie-based-affinity) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32`Second | `30` | |
+| [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32` Second | `30` | |
 | [appgw.ingress.kubernetes.io/use-private-ip](#use-private-ip) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/backend-protocol](#backend-protocol) | `string` | `http` | `http`, `https` |
 
@@ -72,7 +72,7 @@ V předchozím příkladu jsme definovali prostředek příchozího přenosu `go
 
 ## <a name="tls-redirect"></a>Přesměrování TLS
 
-Application Gateway je [možné nakonfigurovat](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) tak, aby automaticky přesměrovala adresy URL http na jejich protějšky https. Pokud je tato poznámka přítomná a protokol TLS je správně nakonfigurovaný, Kubernetes příchozí řadič vytvoří [pravidlo směrování s konfigurací přesměrování](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) a použije změny v Application Gateway. Vytvořené přesměrování bude HTTP `301 Moved Permanently` .
+Application Gateway je [možné nakonfigurovat](./redirect-overview.md) tak, aby automaticky přesměrovala adresy URL http na jejich protějšky https. Pokud je tato poznámka přítomná a protokol TLS je správně nakonfigurovaný, Kubernetes příchozí řadič vytvoří [pravidlo směrování s konfigurací přesměrování](./redirect-http-to-https-portal.md#add-a-routing-rule-with-a-redirection-configuration) a použije změny v Application Gateway. Vytvořené přesměrování bude HTTP `301 Moved Permanently` .
 
 ### <a name="usage"></a>Využití
 
@@ -237,7 +237,7 @@ spec:
 
 ## <a name="backend-protocol"></a>Back-end protokol
 
-Tato poznámka nám umožňuje zadat protokol, který Application Gateway použít při komunikaci s lusky. Podporované protokoly: `http` ,`https`
+Tato poznámka nám umožňuje zadat protokol, který Application Gateway použít při komunikaci s lusky. Podporované protokoly: `http` , `https`
 
 > [!NOTE]
 > * I když jsou certifikáty podepsané svým držitelem podporovány v Application Gateway, v současné době AGIC podporuje pouze v případě, že `https` lusky používají certifikát podepsaný známou certifikační autoritou.

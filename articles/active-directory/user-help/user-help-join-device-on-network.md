@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745723"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536966"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
 Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.
@@ -27,9 +27,9 @@ Když připojujete zařízení s Windows 10 k síti vaší organizace, dojde k n
 
 - Windows zaregistruje vaše zařízení do sítě vaší organizace a umožní vám přístup k prostředkům pomocí osobního účtu. Po registraci zařízení Windows do sítě připojí vaše zařízení, takže můžete k přihlášení a přístup k prostředkům s omezeným přístupem použít uživatelské jméno a heslo vaší organizace.
 
-- V závislosti na volbách vaší organizace se může zobrazit výzva k nastavení dvoustupňového ověřování prostřednictvím [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostních údajů](user-help-security-info-overview.md).
+- V závislosti na volbách vaší organizace se může zobrazit výzva k nastavení dvoustupňového ověřování prostřednictvím [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostních údajů](./security-info-setup-signin.md).
 
-- Volitelně můžete v závislosti na volbách vaší organizace automaticky zaregistrované v rámci správy mobilních zařízení, například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Volitelně můžete v závislosti na volbách vaší organizace automaticky zaregistrované v rámci správy mobilních zařízení, například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](/intune-user-help/enroll-your-device-in-intune-all).
 
 - Provedete to pomocí automatického přihlašování pomocí účtu organizace.
 
@@ -48,13 +48,13 @@ Pokud je vaše zařízení zcela nové a ještě není nastavené, můžete k p�
 
 4. Na svém mobilním zařízení schvalte své zařízení, aby mohl přistupovat k vašemu účtu. 
 
-    ![Obrazovka s mobilním oznámením](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Snímek obrazovky s oznámením o zadání hesla](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Dokončete proces OOBE, včetně nastavení nastavení ochrany osobních údajů a nastavení Windows Hello (v případě potřeby).
 
     Vaše zařízení je teď připojené k síti vaší organizace.
 
-## <a name="to-make-sure-youre-joined"></a>Abyste se ujistili, že jste připojeni
+## <a name="to-make-sure-youre-joined-new-device"></a>Abyste se ujistili, že jste připojeni (nové zařízení)
 Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
 1. Otevřete **Nastavení**a pak vyberte **účty**.
@@ -63,7 +63,7 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
 2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
 
-    ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Snímek obrazovky, který zobrazuje okno přístup do práce nebo do školy se zvoleným účtem "připojené k (vaší organizaci)" Azure AD ".](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Připojení již nakonfigurovaného zařízení s Windows 10
@@ -91,7 +91,7 @@ Pokud máte zařízení v době a a už je nastavené, můžete pomocí těchto 
 
     ![Obrazovka s mobilním oznámením](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. Na obrazovce Ujistěte se, **že se jedná o vaši organizaci** , zkontrolujte informace a ujistěte se, že jsou správné, a pak vyberte **připojit**.
+7. Na obrazovce Ujistěte se,  **že se jedná o vaši organizaci** , zkontrolujte informace a ujistěte se, že jsou správné, a pak vyberte **připojit**.
 
     ![Ujistěte se, že se jedná o ověřovací obrazovku vaší organizace.](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
@@ -115,4 +115,4 @@ Po připojení zařízení k síti vaší organizace byste měli mít přístup 
 
 - Pokud vaše organizace chce zaregistrovat svoje osobní zařízení, například váš telefon, přečtěte si téma [registrace osobního zařízení v síti vaší organizace](user-help-register-device-on-network.md).
 
-- Pokud je vaše organizace spravovaná pomocí Microsoft Intune a máte dotazy týkající se registrace, přihlášení nebo jakéhokoli problému souvisejícího s Intune, přečtěte si [obsah uživatelské pomoci Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Pokud je vaše organizace spravovaná pomocí Microsoft Intune a máte dotazy týkající se registrace, přihlášení nebo jakéhokoli problému souvisejícího s Intune, přečtěte si [obsah uživatelské pomoci Intune](/intune-user-help/use-managed-devices-to-get-work-done).

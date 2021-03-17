@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714948"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -35,7 +35,7 @@ Doporučená topologie pro typ primárního uzlu vyžaduje prostředky uvedené 
 >[!NOTE]
 > Vlastnost skupiny s jedním umístěním sady škálování virtuálního počítače musí být nastavená na hodnotu true, protože Service Fabric nepodporuje jednu sadu škálování virtuálního počítače, která zahrnuje zóny.
 
- ![Architektura zón dostupnosti služby Azure Service Fabric][sf-architecture]
+ ![Diagram znázorňující architekturu zóny dostupnosti služby Azure Service Fabric.][sf-architecture]
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 ### <a name="public-ip-and-load-balancer-resource"></a>Prostředek veřejné IP adresy a Load Balancer
@@ -150,7 +150,7 @@ Pokud chcete povolit zónu, v sadě škálování virtuálního počítače mus�
 
 * První hodnotou je vlastnost **zóny** , která určuje, do které zóny dostupnosti bude sada škálování virtuálního počítače nasazena.
 * Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true.
-* Třetí hodnotou je vlastnost "faultDomainOverride" v rozšíření sady škálování virtuálního počítače v Service Fabric. Hodnota této vlastnosti by měla zahrnovat oblast a zónu, do které bude tato sada škálování virtuálního počítače umístěna. Příklad: "faultDomainOverride": "eastus/az1" všechny prostředky sady škálování virtuálního počítače musí být umístěné ve stejné oblasti, protože clustery Azure Service Fabric nepodporují mezioblasti.
+* Třetí hodnotou je vlastnost "faultDomainOverride" v rozšíření sady škálování virtuálního počítače v Service Fabric. Hodnota této vlastnosti by měla zahrnovat pouze zónu, ve které bude tato sada škálování virtuálního počítače umístěna. Příklad: "faultDomainOverride": "az1" všechny prostředky sady škálování virtuálního počítače musí být umístěné ve stejné oblasti, protože clustery Azure Service Fabric nepodporují mezioblasti.
 
 ```json
 {
@@ -183,7 +183,7 @@ Pokud chcete povolit zónu, v sadě škálování virtuálního počítače mus�
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }
@@ -332,4 +332,97 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ```
 
+## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>Tisk Povolit více zón dostupnosti v jedné sadě škálování virtuálních počítačů
+
+Dřív zmíněné řešení používá jedno nodeType na AZ. Následující řešení umožní uživatelům nasazovat 3 AZ do stejného uzlu nodeType.
+
+[Zde](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure)je uvedena úplná vzorová šablona.
+
+![Architektura zón dostupnosti služby Azure Service Fabric][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Konfigurace zón v sadě škálování virtuálního počítače
+Pokud chcete povolit zóny v sadě škálování virtuálního počítače, musíte do prostředku sady škálování virtuálního počítače zahrnout následující tři hodnoty.
+
+* První hodnotou je vlastnost **Zones** , která určuje zóny dostupnosti přítomná v sadě škálování virtuálního počítače.
+* Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true. **Sada škálování rozložené přes 3 AZ může škálovat virtuální počítače až 300 i s "singlePlacementGroup = true".**
+* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny. Tato hodnota by měla být true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Cluster s nevyváženou distribucí virtuálních počítačů mezi zónami je méně pravděpodobný, aby se zóna scenatio dolů. Přečtěte si o [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* Přepsání FaultDomain a UpgradeDomain není nutné konfigurovat.
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": true
+    }
+}
+```
+
+>[!NOTE]
+> * **Clustery SF by měly mít aspoň jeden primární typ nodeType. DurabilityLevel primárních nodeType by měly být stříbrné nebo vyšší.**
+> * Skupina AZ pokrývá virtuální počítač Scale by měla být nakonfigurovaná s minimálně 3 zónami dostupnosti bez ohledu na durabilityLevel.
+> * AZ pokrývání sady škálování virtuálních počítačů s trvanlivostí stříbra (nebo vyšší) by měl mít minimálně 15 virtuálních počítačů.
+> * AZ pokrývání škály virtuálních počítačů s bronzovou trvanlivostí by měl mít minimálně 6 virtuálních počítačů.
+
+### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Povolení podpory pro více zón v Service Fabric nodeType
+Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
+
+* První hodnota je **multipleAvailabilityZones** , která by měla být pro NodeType nastavena na hodnotu true.
+* Druhá hodnota je **sfZonalUpgradeMode** a je volitelná. Tuto vlastnost nelze upravit, pokud je v clusteru již přítomen typ NodeType s více AZ 's.
+      Vlastnost řídí logické seskupení virtuálních počítačů v upgradovacích doménách.
+          Pokud je hodnota nastavena na Parallel (paralelní): virtuální počítače pod uzlem NodeType budou seskupeny na UDs, ignorují informace o zóně v 5 UDs.
+          Pokud je hodnota vynechána nebo nastavena na "hierarchické": virtuální počítače budou seskupeny tak, aby odrážely rozdělení v rámci až 15 UDs. Každá ze 3 zón bude mít 5 UDs.
+          Tato vlastnost definuje pouze chování upgradu pro ServiceFabric aplikace a upgrady kódu. Základní upgrady sady škálování virtuálního počítače budou pořád paralelně ve všech AZ 's.
+      Tato vlastnost nebude mít žádný vliv na distribuci UD pro typy uzlů, u kterých není povoleno více zón.
+* Třetí hodnota je **vmssZonalUpgradeMode = Parallel**. Jedná se o *povinnou* vlastnost, která se má nakonfigurovat v clusteru, pokud je přidaný typ NodeType s více AZs. Tato vlastnost definuje režim upgradu pro aktualizace sady škálování virtuálních počítačů, ke kterým dojde paralelně ve všech AZ 's in.
+      Tato vlastnost se teď dá nastavit jenom paralelně.
+* ApiVersion prostředku clusteru Service Fabric by měl být "2020-12-01-Preview" nebo vyšší.
+* Verze kódu clusteru by měla být "7.2.445" nebo vyšší.
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "reliabilityLevel": "Platinum",
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+> * Veřejné IP adresy a Load Balancer prostředky by měly používat standardní SKU, jak je popsáno výše v článku.
+> * vlastnost "multipleAvailabilityZones" v nodeType lze definovat pouze v době vytváření nodeType a nelze ji změnit později. Proto se pomocí této vlastnosti nedají konfigurovat existující nodeType.
+> * Pokud je hodnota "sfZonalUpgradeMode" vynechána nebo nastavena na "hierarchické", nasazení clusteru a aplikací bude pomalejší, protože v clusteru jsou k dispozici další domény upgradu. Je důležité správně upravit časový limit zásad upgradu, aby zahrnoval dobu trvání upgradu pro 15 domén upgradu.
+> * Nastavte cluster **reliabilityLevel = Platinum** , aby se zajistilo, že cluster bude zachován v rámci scénáře s jednou zónou.
+
+>[!NOTE]
+> Pro osvědčené postupy doporučujeme sfZonalUpgradeMode nastavit na hierarchické nebo vynechat. Nasazení bude následovat po rozbalení virtuálních počítačů, které mají vliv na menší množství replik a/nebo instancí, čímž budou bezpečnější.
+> SfZonalUpgradeMode sadu použijte k paralelnímu nastavení, pokud je rychlost nasazení nastavena jako priorita, nebo pokud je v typu uzlu spuštěno pouze bezstavové úlohy s více než jednou funkcí AZ. Výsledkem bude, že UD probíhají paralelně ve všech AZ 's.
+
+### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrace na typ uzlu s více Zóny dostupnosti
+Pro všechny scénáře migrace je nutné přidat nový uzel nodeType, který bude mít podporu více zón dostupnosti. Existující uzel nodeType nejde migrovat na podporu více zón.
+V [tomto](./service-fabric-scale-up-primary-node-type.md) článku se dozvíte o podrobných krocích při přidávání nového NodeType a také o přidání dalších prostředků potřebných pro nový typ NodeType, jako jsou prostředky IP a disrovnávání zatížení sítě. Stejný článek také popisuje, jak teď vyřadit existující uzel nodeType po přidání uzlu nodeType s více zónami dostupnosti do clusteru.
+
+* Migrace z protokolu nodeType, který používá základní prostředky a a IP: Tento postup je již [zde](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) popsán pro řešení s jedním typem uzlu na AZ. 
+    V případě nového typu uzlu jediným rozdílem je, že je k dispozici pouze 1 sada škálování virtuálního počítače a 1 uzel NodeType pro všechny AZ 's 1 a New na AZ.
+* Migrace z uzlu nodeType, který používá standardní skladové položky SKU a prostředků IP s NSG: postupujte stejným způsobem jako v případě, že není nutné přidávat nové prostředky s jednotkou, IP a NSG a že se stejné prostředky dají znovu použít v novém uzlu nodeType.
+
+
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
+[sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75477665"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Chyba RequestDisallowedByPolicy se zásadami prostředků Azure
@@ -29,7 +29,7 @@ Během nasazení se může zobrazit chyba **RequestDisallowedByPolicy** , která
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Chcete-li načíst podrobnosti o zásadách, které zablokovaly nasazení, použijte jednu z následujících metod:
 
@@ -53,7 +53,7 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Řešení
 
-Pro zabezpečení nebo dodržování předpisů můžou správci předplatného přiřazovat zásady, které omezují způsob nasazení prostředků. Vaše předplatné může mít například zásadu, která zabraňuje vytváření veřejných IP adres, skupin zabezpečení sítě, uživatelem definovaných tras nebo směrovacích tabulek. Chybová zpráva v části **příznaky** zobrazuje název zásady.
+Pro zabezpečení nebo dodržování předpisů můžou správci předplatného přiřazovat zásady, které omezují způsob nasazení prostředků. Vaše předplatné může například mít zásadu, která zabraňuje vytváření veřejných IP adres, skupin zabezpečení sítě, User-Defined tras nebo směrovacích tabulek. Chybová zpráva v části **příznaky** zobrazuje název zásady.
 Pokud chcete tento problém vyřešit, Projděte si zásady prostředků a určete, jak nasadit prostředky, které tyto zásady dodržují.
 
 Další informace najdete v následujících článcích:

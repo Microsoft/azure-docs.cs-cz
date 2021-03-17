@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093064"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558759"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
 
@@ -54,7 +54,7 @@ Tento scénář nastavíte pomocí následujícího postupu.
 
 1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage` . Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](./durable-functions-orchestrations.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
 
-1. V částihost.jsaplikace Function App [na durableTask souboru](durable-functions-bindings.md#hostjson-settings)zadejte `azureStorageConnectionStringName` název nastavení aplikace, které jste vytvořili v kroku 3.
+1. V částihost.jsaplikace Function App [ na durableTask souboru](durable-functions-bindings.md#hostjson-settings)zadejte `connectionStringName` (odolné 2. x) nebo `azureStorageConnectionStringName` (odolné 1. x) jako název nastavení aplikace, které jste vytvořili v kroku 3.
 
 Následující diagram znázorňuje popsanou konfiguraci slotů pro nasazení a účtů úložiště. V tomto potenciálním scénáři přednasazení je verze 2 aplikace Function App spuštěná v produkčním slotu, zatímco verze 1 zůstává v přípravném slotu.
 
@@ -71,7 +71,10 @@ Následující fragmenty JSON jsou příklady nastavení připojovacího řetěz
   "version": 2.0,
   "extensions": {
     "durableTask": {
-      "azureStorageConnectionStringName": "DurableManagementStorage"
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
+      }
     }
   }
 }
@@ -108,7 +111,7 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Dále nakonfigurujte pracovní bránu tak, aby čekala na neběhu žádné orchestrace. Další informace najdete v tématu [Správa nasazení vydaných verzí pomocí bran](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) .
+Dále nakonfigurujte pracovní bránu tak, aby čekala na neběhu žádné orchestrace. Další informace najdete v tématu [Správa nasazení vydaných verzí pomocí bran](/azure/devops/pipelines/release/approvals/gates) .
 
 ![Brána nasazení](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 

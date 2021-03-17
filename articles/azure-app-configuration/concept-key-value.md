@@ -1,17 +1,17 @@
 ---
 title: Porozumění konfiguračnímu klíči Azure App – úložiště hodnot
 description: Pochopení úložiště klíč-hodnota v konfiguraci aplikace Azure, které ukládá konfigurační data jako klíčové hodnoty. Klíčové hodnoty jsou reprezentace nastavení aplikace.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/04/2020
+ms.openlocfilehash: ad9e96433a7ee72476ae2251c684d17ec7a6d1ce
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586388"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930241"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 

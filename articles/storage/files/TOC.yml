@@ -27,6 +27,8 @@
       items:
         - name: Plánování nasazení služby Soubory Azure
           href: storage-files-planning.md
+        - name: Dostupné protokoly pro sdílené složky
+          href: storage-files-compare-protocols.md
         - name: Autorizace a ověřování na základě identit
           href: storage-files-active-directory-overview.md
         - name: Aspekty sítí pro přímý přístup
@@ -37,30 +39,48 @@
           href: storage-snapshots-files.md
         - name: Vývoj
           items:
-            - name: Správa souběžnosti
-              href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: Ověřování pomocí sdíleného klíče
               href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
             - name: Sdílené přístupové podpisy (SAS)
               href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Monitorování a odstraňování potíží
           items:
-            - name: 'Monitorování, diagnostika a řešení potíží'
-              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Metriky na platformě Azure Monitor
-              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Migrace na novou metriku
+            - name: Přechod z klasických metrik
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Metriky analýz úložiště (klasické)
-              href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Monitorování (klasické prostředí)
+              items:
+                - name: Storage Analytics
+                  href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Metriky
+                  href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Protokoly
+                  href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: 'Monitorování, diagnostika a řešení potíží'
+                  href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Synchronizace souborů Azure
       items:
         - name: Plánování nasazení Synchronizace souborů Azure
           href: storage-sync-files-planning.md
         - name: Aspekty sítí pro hybridní přístup
           href: storage-sync-files-networking-overview.md
-        - name: Informace o vrstvení cloudu
-          href: storage-sync-cloud-tiering.md
+        - name: Vrstvení cloudu
+          items:
+            - name: Přehled vrstvení cloudu
+              href: storage-sync-cloud-tiering-overview.md
+            - name: Přehled zásad vrstvení cloudu
+              href: storage-sync-cloud-tiering-policy.md
+            - name: Výběr zásad clouding
+              href: storage-sync-choose-cloud-tiering-policies.md
+            - name: Monitorování vrstvení cloudu
+              href: storage-sync-monitor-cloud-tiering.md
+    - name: Výkon a škálování
+      items:
+        - name: Výkon funkce SMB Multichannel
+          href: storage-files-smb-multichannel-performance.md
+        - name: Škálovatelnost a cíle výkonnosti
+          href: storage-files-scale-targets.md
+    - name: Principy fakturace
+      href: understanding-billing.md
     - name: Prevence náhodného odstranění dat
       href: storage-files-prevent-file-share-deletion.md
     - name: Zálohování sdílených složek
@@ -68,38 +88,32 @@
     - name: Šifrování neaktivních uložených dat
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Šifrování neaktivních uložených dat s využitím klíčů spravovaných zákazníkem
-      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Škálovatelnost a cíle výkonnosti
-      href: storage-files-scale-targets.md
+      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nabídky pro dodržování předpisů
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nejčastější dotazy
       href: storage-files-faq.md
 - name: Návody
   items:
-    - name: Vytvořit
-      items:
-        - name: Vytvoření sdílené složky
-          href: storage-how-to-create-file-share.md
-        - name: Povolení velkých sdílených složek
-          href: storage-files-how-to-create-large-file-share.md
-        - name: Vytvoření sdílené složky úrovně Premium
-          href: storage-how-to-create-premium-fileshare.md
     - name: Nasazení
       items:
-        - name: Nasazení služby Soubory Azure
-          href: storage-files-deployment-guide.md
+        - name: Vytvoření sdílené složky SMB
+          href: storage-how-to-create-file-share.md
         - name: Nasazení Synchronizace souborů Azure
           href: storage-sync-files-deployment-guide.md
+        - name: Vytvoření sdílené složky NFS
+          href: storage-files-how-to-create-nfs-shares.md
         - name: FCI SQL Serveru se sdílenými složkami úrovně Premium
-          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+          href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Připojení
       items:
-        - name: Použití služby Soubory Azure s Windows
+        - name: Připojení sdílené složky SMB k Windows
           href: storage-how-to-use-files-windows.md
-        - name: Použití služby Soubory Azure s Linuxem
+        - name: Připojení sdílené složky SMB k Linuxu
           href: storage-how-to-use-files-linux.md
-        - name: Použití služby Soubory Azure s macOS
+        - name: Připojení sdílené složky NFS k Linuxu
+          href: storage-files-how-to-mount-nfs-shares.md
+        - name: Připojení sdílené složky SMB k macOS
           href: storage-how-to-use-files-mac.md
     - name: Síť
       items:
@@ -149,6 +163,10 @@
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Zahájení převzetí služeb při selhání účtu
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 'Přesunutí prostředků do jiných skupin prostředků, předplatných a klientů AAD'
+          href: storage-sync-resource-move.md
+        - name: Správa vrstvených souborů
+          href: storage-sync-how-to-manage-tiered-files.md
     - name: Ochrana dat
       items:
         - name: Povolení obnovitelného odstranění
@@ -199,6 +217,8 @@
               href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Monitorování
       items:
+        - name: Monitorování služby Azure Files
+          href: storage-files-monitoring.md
         - name: Sledování služby Synchronizace souborů Azure
           href: storage-sync-files-monitoring.md
     - name: Migrace
@@ -213,12 +233,20 @@
               href: storage-files-migration-linux-hybrid.md
             - name: Migrace z místního serveru NAS na hybridní souborový server s využitím služby Azure File Sync
               href: storage-files-migration-nas-hybrid.md
+            - name: Migrace z místního serveru NAS do hybridního souborového serveru pomocí DataBox
+              href: storage-files-migration-nas-hybrid-databox.md
         - name: Ze StorSimple
           items:
             - name: Průvodce migrací StorSimple 8100 a 8600
               href: storage-files-migration-storsimple-8000.md
             - name: Průvodce migrací StorSimple 1200
               href: storage-files-migration-storsimple-1200.md
+    - name: Vylepšení výkonu
+      items:
+        - name: Povolení funkce SMB Multichannel
+          href: storage-files-enable-smb-multichannel.md
+        - name: Povolení velkých sdílených složek
+          href: storage-files-how-to-create-large-file-share.md
     - name: Vývoj
       items:
         - name: Konfigurace připojovacích řetězců
@@ -237,18 +265,16 @@
           items:
             - name: Kontrola modelu šifrovacího klíče pro účet
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Konfigurace šifrovacích klíčů spravovaných zákazníkem
+            - name: Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
               items:
-                - name: Portál
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Povolení šifrování infrastruktury pro účet úložiště
+                - name: Uložení klíčů spravovaných zákazníkem v trezoru klíčů
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Uložení klíčů spravovaných zákazníkem ve službě Managed HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Povolení šifrování infrastruktury pro účet
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Rozšířená ochrana před internetovými útoky
-          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Konfigurace Azure Defenderu pro ochranu před hrozbami
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Konfigurace bran firewall a virtuálních sítí
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Vyžádání bezpečného přenosu
@@ -269,15 +295,17 @@
           href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Řešení potíží
       items:
-        - name: Řešení problémů se Soubory Azure ve Windows
+        - name: Řešení potíží s Azure Files ve Windows (SMB)
           href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: Řešení problémů se Soubory Azure v Linuxu
+        - name: Řešení potíží s Azure Files v Linuxu (SMB)
           href: storage-troubleshoot-linux-file-connection-problems.md
-        - name: Řešení problémů s výkonem Azure Files
+        - name: Řešení potíží s výkonem sdílených složek Azure
           href: storage-troubleshooting-files-performance.md
+        - name: Řešení potíží s Azure Files v Linuxu (NFS)
+          href: storage-troubleshooting-files-nfs.md
         - name: Řešení problémů se Synchronizací souborů Azure
           href: storage-sync-files-troubleshoot.md
-        - name: Řešení potíží s odstraňováním služby Azure Files
+        - name: Řešení potíží s odstraňováním sdílených složek Azure
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
         - name: Řešení potíží se zálohováním sdílených složek
           href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -285,6 +313,8 @@
   items:
     - name: Referenční informace k Azure Files
       href: ../files/reference.md
+    - name: Referenční informace k monitorování Azure Files
+      href: storage-files-monitoring-reference.md
     - name: Šablona Resource Manageru
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions
@@ -296,12 +326,12 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Poznámky k verzi Synchronizace souborů Azure
       href: storage-files-release-notes.md
-    - name: Fórum Azure Storage
-      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
-    - name: Azure Storage na webu Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Ceny služby Azure Storage
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure Files na webu Microsoft Q&A
+      href: /answers/topics/azure-files.html
+    - name: Azure Files na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
+    - name: Ceny služby Azure Files
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Cenová kalkulačka Azure
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videa

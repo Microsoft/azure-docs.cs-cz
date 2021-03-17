@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117427"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>Řešení potíží: Auditovat data při ověřené změně domény 
@@ -39,7 +39,7 @@ Zkontrolujte protokoly auditu Azure AD a podívejte se na více aktualizací už
 
 #### <a name="what-does-userprincipalname-consistency-mean"></a>Co znamená konzistence UserPrincipalName? 
 
-V případě pouze cloudových uživatelů konzistence znamená, že hodnota **userPrincipalName** je nastavena na ověřenou příponu domény. Při zpracování nekonzistentního formátu **userPrincipalName** se **ProxyCalc** převede na výchozí příponu onmicrosoft.com, například:username@Contoso.onmicrosoft.com 
+V případě pouze cloudových uživatelů konzistence znamená, že hodnota **userPrincipalName** je nastavena na ověřenou příponu domény. Při zpracování nekonzistentního formátu **userPrincipalName** se **ProxyCalc** převede na výchozí příponu onmicrosoft.com, například: username@Contoso.onmicrosoft.com 
 
 U synchronizovaných uživatelů konzistence znamená, že atribut **userPrincipalName** je nastaven na ověřenou příponu domény a odpovídá místní hodnotě **userPrincipalName** (ShadowUserPrincipalName). Když je zpracována nekonzistentní hodnota **userPrincipalName** , **ProxyCalc** se vrátí ke stejné hodnotě jako **ShadowUserPrincipalName** nebo v případě, že byla přípona domény z klienta odebrána, převede ji na výchozí příponu *. onmicrosoft.com. 
 
@@ -47,7 +47,7 @@ U synchronizovaných uživatelů konzistence znamená, že atribut **userPrincip
 
 #### <a name="what-does-proxy-address-consistency-mean"></a>Co znamená konzistence adres proxy? 
 
-V případě pouze cloudových uživatelů konzistence znamená, že se adresy proxy shodují s příponou ověřené domény. Když se zpracuje nekonzistentní proxy adresa, **ProxyCalc** se převede na výchozí příponu *. onmicrosoft.com domény, třeba:SMTP:username@Contoso.onmicrosoft.com 
+V případě pouze cloudových uživatelů konzistence znamená, že se adresy proxy shodují s příponou ověřené domény. Když se zpracuje nekonzistentní proxy adresa, **ProxyCalc** se převede na výchozí příponu *. onmicrosoft.com domény, třeba: SMTP:username@Contoso.onmicrosoft.com 
 
 U synchronizovaných uživatelů konzistence znamená, že se adresy proxy shodují s hodnotami místních adres proxy (y) (tj. ShadowProxyAddresses). Očekává se, že **proxyAddresses** budou synchronizované s **ShadowProxyAddresses**. Pokud má synchronizovaný uživatel přiřazenou licenci k Exchangi, musí proxy adresy odpovídat hodnotám místních proxy adres a musí taky odpovídat ověřené příponě domény. V tomto scénáři **ProxyCalc** upraví nekonzistentní proxy adresu s neověřenou příponou domény a odebere se z objektu ve službě Azure AD. Pokud se tato neověřená doména ověří později, **ProxyCalc** se přepočítá a přidá adresu proxy serveru z **ShadowProxyAddresses** zpátky do objektu ve službě Azure AD.  
 

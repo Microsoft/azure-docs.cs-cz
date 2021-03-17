@@ -2,16 +2,17 @@
 title: Profil ASP.NET Core služby Azure Linux Web Apps pomocí Application Insights Profiler | Microsoft Docs
 description: Koncepční přehled a podrobný návod, jak používat Application Insights Profiler.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078083"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561048"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
@@ -23,7 +24,7 @@ Po dokončení tohoto návodu může vaše aplikace shromažďovat trasování p
 
 ![Trasování profileru](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Linux a Mac:
 
 * Nainstalujte [.NET Core SDK 2.1.2 nebo novější](https://dotnet.microsoft.com/download/archives).
@@ -106,7 +107,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
 
     ![Nastavení úložiště Git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.microsoft.com/azure/app-service).
+Další možnosti nasazení najdete v [dokumentaci App Service](../../app-service/index.yml).
 
 ## <a name="deploy-your-project"></a>Nasazení projektu
 
@@ -122,7 +123,7 @@ Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.mic
 2. Nasaďte projekt vložením změn do Azure:
 
     ```console
-    git push azure master
+    git push azure main
     ```
 
     Měl by se zobrazit výstup podobný následujícímu příkladu:
@@ -133,7 +134,7 @@ Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.mic
     Compressing objects: 100% (8/8), done.
     Writing objects: 100% (9/9), 1.78 KiB | 911.00 KiB/s, done.
     Total 9 (delta 3), reused 0 (delta 0)
-    remote: Updating branch 'master'.
+    remote: Updating branch 'main'.
     remote: Updating submodules.
     remote: Preparing deployment for commit id 'd7369a99d7'.
     remote: Generating deployment script.
@@ -168,7 +169,6 @@ Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.mic
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud používáte vlastní kontejnery, které jsou hostovány Azure App Service, postupujte podle pokynů v části [povolení Service profiler pro kontejnerové ASP.NET Core aplikace](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) , aby bylo možné povolit Application Insights Profiler.
+Pokud používáte vlastní kontejnery, které jsou hostovány Azure App Service, postupujte podle pokynů v části [ povolení Service profiler pro kontejnerové ASP.NET Core aplikace](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) , aby bylo možné povolit Application Insights Profiler.
 
 Nahlaste všechny problémy nebo návrhy do úložiště GitHub Application Insights: [ApplicationInsights-Profiler-AspNetCore: problémy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
-

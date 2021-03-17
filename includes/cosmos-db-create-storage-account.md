@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
-ms.openlocfilehash: a52ba3821b51bf6474ebc258575027bc3afcea73
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3a227ac60ed1b3f96cf8bf59c05e5af0955d06a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236409"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026025"
 ---
 Nejjednodušší způsob, jak vytvořit účet úložiště Azure, je použít [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Vytvoření účtu úložiště](../articles/storage/common/storage-account-create.md).
 
-Účet úložiště Azure můžete vytvořit také pomocí [Azure PowerShellu](../articles/storage/common/storage-powershell-guide-full.md) nebo [Azure CLI](../articles/storage/common/storage-azure-cli.md).
+Účet úložiště Azure můžete vytvořit také pomocí [Azure PowerShellu](/powershell/module/az.storage/) nebo [Azure CLI](../articles/storage/blobs/storage-quickstart-blobs-cli.md).
 
 Pokud nechcete v tomto okamžiku vytvořit účet úložiště, můžete také použít emulátor Azure Storage ke spuštění a otestování kódu v místním prostředí. Další informace najdete v tématu [použití emulátoru Azure Storage pro vývoj a testování](../articles/storage/common/storage-use-emulator.md).

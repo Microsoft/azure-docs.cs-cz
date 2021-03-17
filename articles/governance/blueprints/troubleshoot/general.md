@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy při vytváření, přiřazování a odebírání podrobných plánů, jako jsou porušení zásad a funkce parametrů podrobného plánu.
-ms.date: 06/29/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557509"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918840"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
@@ -18,13 +18,13 @@ Při vytváření, přiřazování nebo odebírání podrobných plánů můžet
 
 Mnohé chyby budou výsledkem přiřazení podrobného plánu k oboru. Pokud přiřazení neproběhne úspěšně, podrobný plán poskytuje podrobnosti o neúspěšném nasazení. Tyto informace označují problém tak, aby se mohl opravit a další nasazení bude úspěšné.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na stránce vlevo vyberte **přiřazené plány** a pomocí vyhledávacího pole vyfiltrujte přiřazení podrobného plánu, abyste našli neúspěšné přiřazení. Můžete také seřadit tabulku přiřazení podle sloupce **stav zřizování** a zobrazit tak všechna neúspěšná přiřazení seskupená dohromady.
 
-1. Klikněte levým tlačítkem na podrobný plán s _neúspěšným_ stavem nebo klikněte pravým tlačítkem a vyberte **Zobrazit podrobnosti o přiřazení**.
+1. Vyberte podrobný plán s _neúspěšným_ stavem nebo klikněte pravým tlačítkem a vyberte **Zobrazit podrobnosti o přiřazení**.
 
-1. Červená zpráva s upozorněním, že přiřazení se nezdařilo, je v horní části stránky přiřazení podrobného plánu. Kliknutím kamkoli na informační proužek získáte další podrobnosti.
+1. Červená zpráva s upozorněním, že přiřazení se nezdařilo, je v horní části stránky přiřazení podrobného plánu. Další podrobnosti získáte, když vyberete libovolné místo na informačním panelu.
 
 Je běžné, že chyba je způsobena artefaktem a nikoli úplným plánem. Pokud artefakt vytvoří Key Vault a Azure Policy znemožňuje vytváření Key Vault, celé přiřazení selže.
 
@@ -59,7 +59,7 @@ Předání parametru podrobného plánu, který používá funkci, jako `[resour
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal `[[resourceGroup().tags.myTag]` . Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal `[[resourceGroup().tags.myTag]` . Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Služba modrotisky potom umístí funkci na artefakt, což umožňuje, aby byl dynamický podle očekávání. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Odstranit chyby
 
@@ -75,7 +75,7 @@ Přiřazení podrobného plánu se může při odstranění zablokovat v netermi
 
 #### <a name="resolution"></a>Řešení
 
-Přiřazení podrobného plánu v neterminálovém stavu se po uplynutí _6 hodin_ automaticky označí jako **neúspěšná** . Jakmile časový limit upraví stav přiřazení podrobného plánu, můžete odstranění zkusit znovu.
+Přiřazení podrobného plánu v neterminálu jsou automaticky označena jako **neúspěšná** po _šesti hodinách_ . Jakmile časový limit upraví stav přiřazení podrobného plánu, můžete odstranění zkusit znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -16,17 +16,15 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 3b941b81feb54ae6eed0333a9dcb4863cc885686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 8ab22e7960e233d6ae934fb52989aa73a494b33a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688112"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791506"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí PowerShellu
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, která filtrují síťový provoz podle IP adresy, portu a protokolu. Pravidla zabezpečení se vztahují na prostředky nasazené v podsíti. V tomto článku získáte informace o těchto tématech:
 
@@ -35,7 +33,7 @@ Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat po
 * Nasazení virtuálních počítačů do podsítě
 * Testování filtrů provozu
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -302,6 +300,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružíte ji k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](security-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
+V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružíte ji k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](./network-security-groups-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
 
 Provoz mezi podsítěmi směruje ve výchozím nastavení Azure. Místo toho se můžete rozhodnout směrovat provoz mezi podsítěmi například prostřednictvím virtuálního počítače, který slouží jako brána firewall. Další informace o postupu najdete v tématu [Vytvoření směrovací tabulky](tutorial-create-route-table-powershell.md).

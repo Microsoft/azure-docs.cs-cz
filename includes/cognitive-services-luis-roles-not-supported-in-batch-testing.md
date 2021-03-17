@@ -2,22 +2,22 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
-manager: cjgronlund
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 03/29/2019
-ms.author: diberry
-ms.openlocfilehash: edfbd8a803404b32be0624fd14165d25061d14b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 12/29/2020
+ms.author: aahi
+ms.openlocfilehash: 4bfa48bf39cf3dc90955bfdd00b165e01b373192
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175317"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820444"
 ---
-## <a name="roles-in-batch-testing"></a>Role v dávkovém testování
+### <a name="roles-in-batch-testing"></a>Role v dávkovém testování
 
 > [!CAUTION]
 > Role entit se v dávkovém testování nepodporují.

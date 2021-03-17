@@ -1,17 +1,17 @@
 ---
 title: Vysoká dostupnost – Azure Database for MariaDB
 description: Tento článek poskytuje informace o vysoké dostupnosti v Azure Database for MariaDB
-author: kummanish
-ms.author: manishku
-ms.service: mariadb
+author: mksuni
+ms.author: sumuth
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: bea32b3b60c9013ea223513c95629092b9ab231b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203333"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664329"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Vysoká dostupnost v Azure Database for MariaDB
 Služba Azure Database for MariaDB poskytuje zaručenou vysokou úroveň dostupnosti s finančně zálohovanou smlouvou o úrovni služeb (SLA) [99,99%](https://azure.microsoft.com/support/legal/sla/MariaDB) doba provozu. Azure Database for MariaDB poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for MariaDB se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.
@@ -24,7 +24,7 @@ Azure Database for MariaDB je vhodný pro provoz důležitých databází, kter�
 | ------------ | ----------- |
 | <b>Server databáze MariaDB | Azure Database for MariaDB poskytuje zabezpečení, izolaci, zabezpečování prostředků a možnost rychlého restartování pro databázové servery. Tyto možnosti usnadňují operace, jako je škálování a operace obnovení databázového serveru, po výpadku, který se má stát v sekundách. <br/> Změny dat na databázovém serveru se většinou vyskytují v kontextu transakce databáze. Všechny změny v databázi se zaznamenávají synchronně ve formě protokolů zápisu předem (ib_log) v Azure Storage, který je připojený k databázovému serveru. Během procesu [kontrolního bodu](https://mariadb.com/kb/innodb-redo-log/#checkpoints) databáze jsou datové stránky z paměti databázového serveru také vyprázdněny do úložiště. |
 | <b>Vzdálené úložiště | Všechny MariaDB fyzické datové soubory a soubory protokolu jsou uloženy na Azure Storage, který je navržen tak, aby ukládal tři kopie dat v rámci oblasti, aby se zajistila redundance dat, dostupnost a spolehlivost. Vrstva úložiště je také nezávislá na databázovém serveru. Dá se odpojit od serveru databáze, který selhal, a během několika sekund se znovu připojí k novému databázovému serveru. Také Azure Storage nepřetržitě monitorovat všechny chyby úložiště. Pokud je zjištěno poškození bloku, je automaticky vyřešen vytvořením instance nové kopie úložiště. |
-| <b>Brány | Brána funguje jako proxy databáze a směruje všechna připojení klientů k databázovému serveru. |
+| <b>brána | Brána funguje jako proxy databáze a směruje všechna připojení klientů k databázovému serveru. |
 
 ## <a name="planned-downtime-mitigation"></a>Omezení zmírňování plánovaných výpadků
 Azure Database for MariaDB je navržena tak, aby poskytovala vysokou dostupnost během plánovaných výpadků. 
@@ -60,8 +60,8 @@ Tady je několik scénářů selhání, které vyžadují akci uživatele při o
 
 | **Scénář** | **Plán obnovení** |
 | ---------- | ---------- |
-| <b>Selhání oblasti | Selhání oblasti je vzácná událost. Pokud však potřebujete ochranu při selhání oblasti, můžete nakonfigurovat jednu nebo více replik pro čtení v jiných oblastech pro zotavení po havárii (DR). (Podrobnosti najdete v [tomto článku](howto-read-replicas-portal.md) o vytváření a správě replik pro čtení). V případě selhání na úrovni oblasti můžete ručně povýšit repliku pro čtení nakonfigurovanou v jiné oblasti na provozní server databáze. |
-| <b>Chyby logických/uživatelských uživatelů | Obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, zahrnuje provádění obnovení k určitému [bodu v čase](concepts-backup.md) (PITR) tím, že se obnoví a obnoví data, až do doby, kdy došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tabulky prostřednictvím [mysqldump](howto-migrate-dump-restore.md)a pak pomocí [obnovení](howto-migrate-dump-restore.md#restore-your-mariadb-database) obnovit tyto tabulky do vaší databáze. |
+| <b> Selhání oblasti | Selhání oblasti je vzácná událost. Pokud však potřebujete ochranu při selhání oblasti, můžete nakonfigurovat jednu nebo více replik pro čtení v jiných oblastech pro zotavení po havárii (DR). (Podrobnosti najdete v [tomto článku](howto-read-replicas-portal.md) o vytváření a správě replik pro čtení). V případě selhání na úrovni oblasti můžete ručně povýšit repliku pro čtení nakonfigurovanou v jiné oblasti na provozní server databáze. |
+| <b> Chyby logických/uživatelských uživatelů | Obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, zahrnuje provádění obnovení k určitému [bodu v čase](concepts-backup.md) (PITR) tím, že se obnoví a obnoví data, až do doby, kdy došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tabulky prostřednictvím [mysqldump](howto-migrate-dump-restore.md)a pak pomocí [obnovení](howto-migrate-dump-restore.md#restore-your-mariadb-database) obnovit tyto tabulky do vaší databáze. |
 
 
 

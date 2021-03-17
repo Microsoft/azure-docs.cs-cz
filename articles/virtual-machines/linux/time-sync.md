@@ -1,23 +1,24 @@
 ---
 title: Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 description: Čas synchronizace pro virtuální počítače se systémem Linux.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 18c8570a8066985cab5263c4779787062dc32d75
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705636"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552639"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 
@@ -114,7 +115,7 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 
 ### <a name="check-for-ptp-clock-source"></a>Kontrolovat zdroj hodin PTP
 
-V novějších verzích systému Linux je zdroj hodin protokolu PTP (Precision Time Protocol) dostupný jako součást poskytovatele VMICTimeSync. Ve starších verzích Red Hat Enterprise Linux nebo CentOS 7. x můžete stáhnout a použít k instalaci aktualizovaného ovladače [služby Linux Integration Services](https://github.com/LIS/lis-next) . Když je k dispozici zdroj hodin PTP, bude zařízení se systémem Linux ve tvaru/dev/PTP*x*. 
+V novějších verzích systému Linux je zdroj hodin protokolu PTP (Precision Time Protocol) dostupný jako součást poskytovatele VMICTimeSync. Ve starších verzích Red Hat Enterprise Linux nebo CentOS 7. x můžete stáhnout a použít k instalaci aktualizovaného ovladače [služby Linux Integration Services](https://github.com/LIS/lis-next) . Když je k dispozici zdroj hodin PTP, bude zařízení se systémem Linux ve tvaru/dev/PTP *x*. 
 
 Podívejte se, které zdroje s hodinami PTP jsou k dispozici.
 
@@ -138,7 +139,7 @@ V Ubuntu 19,10 a novějších verzích Red Hat Enterprise Linux a CentOS 8. x je
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-Další informace o Ubuntu a NTP najdete v tématu [synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html).
+Další informace o Ubuntu a NTP najdete v tématu [synchronizace času](https://ubuntu.com/server/docs/network-ntp).
 
 Další informace o Red Hat a NTP najdete v tématu [Konfigurace NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP). 
 

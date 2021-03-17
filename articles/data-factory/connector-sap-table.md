@@ -1,24 +1,21 @@
 ---
 title: Kopírování dat z tabulky SAP
 description: Naučte se, jak kopírovat data z tabulky SAP do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 03/12/2021
+ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529717"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232388"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z tabulky SAP. Další informace najdete v tématu [Přehled aktivit kopírování](copy-activity-overview.md).
@@ -26,7 +23,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!TIP]
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat v programu, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobným úvodem na jednotlivé konektory SAP, comparsion a doprovodné materiály.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor tabulka SAP se podporuje pro následující činnosti:
 
@@ -49,6 +46,13 @@ Konkrétně tato konektorová tabulka SAP podporuje:
 - Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 - Načítání dat prostřednictvím výchozího nebo vlastního RFC.
 
+Verze 7,01 nebo novější odkazuje na verzi SAP NetWeaver namísto verze SAP ECC. Například SAP ECC 6,0 EHP 7 obecně má NetWeaver verzi >= 7,4. V případě, že si nejste jisti vaším prostředím, tady je postup, jak ověřit verzi ze systému SAP:
+
+1. Pomocí grafického uživatelského rozhraní SAP se připojte k systému SAP. 
+2. Přejít na   ->  **stav** systému. 
+3. Zkontrolujte vydání SAP_BASIS, ujistěte se, že je větší nebo rovno 701.  
+      ![Kontrolovat SAP_BASIS](./media/connector-sap-table/sap-basis.png)
+
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento konektor tabulky SAP, musíte:
@@ -62,7 +66,7 @@ Pokud chcete použít tento konektor tabulky SAP, musíte:
 - Uživatel SAP, který se používá ve službě Data Factory konektor tabulek SAP, musí mít následující oprávnění:
 
   - Autorizace pro použití cíle vzdáleného volání funkcí (RFC).
-  - Oprávnění k aktivitě Execute objektu autorizace S_SDSAUTH.
+  - Oprávnění k aktivitě Execute objektu autorizace S_SDSAUTH. Můžete se podívat na téma SAP Note 40089 na většině autorizačních objektů. Základní konektor NCo vyžaduje určité dokumenty RFC, například RFC_FUNCTION_SEARCH. 
 
 ## <a name="get-started"></a>Začínáme
 
@@ -84,7 +88,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open h
 | `systemId` | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | No |
 | `logonGroup` | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
 | `clientId` | ID klienta v systému SAP.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes |
-| `language` | Jazyk, který používá systém SAP.<br/>Výchozí hodnota je `EN` .| No |
+| `language` | Jazyk, který používá systém SAP.<br/>Výchozí hodnota je `EN`.| No |
 | `userName` | Jméno uživatele, který má přístup k serveru SAP. | Yes |
 | `password` | Heslo pro uživatele. Označte toto pole `SecureString` typem pro bezpečné uložení v Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | `sncMode` | Indikátor aktivace SNC pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Použijte, pokud chcete použít SNC pro připojení k serveru SAP.<br/>Povolené hodnoty jsou `0` (vypnuto, výchozí) nebo `1` (zapnuto). | No |
@@ -94,7 +98,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open h
 | `sncQop` | Úroveň ochrany SNC kvality, kterou chcete použít.<br/>Platí `sncMode` , pokud je zapnutý. <br/>Povolené hodnoty jsou `1` (ověřování), `2` (integrita), ( `3` Ochrana osobních údajů), `8` (výchozí), `9` (maximum). | No |
 | `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Vyžaduje se místní prostředí Integration runtime, jak bylo zmíněno dříve v [požadavcích](#prerequisites). |Yes |
 
-**Příklad 1: připojení k aplikačnímu serveru SAP**
+### <a name="example-1-connect-to-an-sap-application-server"></a>Příklad 1: připojení k aplikačnímu serveru SAP
 
 ```json
 {
@@ -221,7 +225,7 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 | `rfcTableFields`                 | Pole (sloupce), která se mají kopírovat z tabulky SAP Například, `column0, column1`. | No       |
 | `rfcTableOptions`                | Možnosti pro filtrování řádků v tabulce SAP Například, `COLUMN0 EQ 'SOMEVALUE'`. Další informace najdete v tabulce operátor dotazů SAP dále v tomto článku. | No       |
 | `customRfcReadTableFunctionModule` | Vlastní modul funkcí RFC, který lze použít ke čtení dat z tabulky SAP.<br>Pomocí vlastního modulu funkce RFC můžete definovat, jak se data načítají z vašeho systému SAP a vrátit se do Data Factory. Vlastní modul funkcí musí mít implementované rozhraní (import, export, tabulky), které `/SAPDS/RFC_READ_TABLE2` je podobné, což je výchozí rozhraní používané Data Factory.<br>Data Factory | No       |
-| `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt`(normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345` )</li><li>`PartitionOnCalendarYear`(4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth`(6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate`(8 číslic ve formátu "RRRRMMDD")</li></ul> | No       |
+| `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt` (normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345` )</li><li>`PartitionOnCalendarYear` (4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth` (6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate` (8 číslic ve formátu "RRRRMMDD")</li><li>`PartitionOntime` (6 číslic ve formátu "HHMMSS", například `235959` )</li></ul> | No       |
 | `partitionColumnName`              | Název sloupce, který se používá k vytvoření oddílů dat                | No       |
 | `partitionUpperBound`              | Maximální hodnota sloupce určeného v `partitionColumnName` , která bude použita pro pokračování v dělení. | No       |
 | `partitionLowerBound`              | Minimální hodnota sloupce zadaného v `partitionColumnName` , který bude použit pro pokračování v dělení. (Poznámka: `partitionLowerBound` při volbě oddílu nemůže být "0" `PartitionOnInt` ) | No       |
@@ -235,18 +239,22 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 <br/>
 >Chcete-li načíst datové oddíly paralelně a urychlit kopírování, je paralelní úroveň řízena [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` čtyři, Data Factory souběžně vygeneruje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z tabulky SAP. Důrazně doporučujeme, abyste si `maxPartitionsNumber` vynásobení hodnoty `parallelCopies` Vlastnosti. Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
+
+>[!TIP]
+> Ve `BASXML` výchozím nastavení je povolený pro tento konektor tabulky SAP na straně Azure Data Factory.
+
 V nástroji `rfcTableOptions` můžete použít následující běžné operátory dotazů SAP k filtrování řádků:
 
-| Operátor | Description |
+| Operátor | Popis |
 | :------- | :------- |
-| `EQ` | Je rovno |
+| `EQ` | Rovno |
 | `NE` | Není rovno |
 | `LT` | Menší než |
 | `LE` | Menší než nebo rovno |
 | `GT` | Větší než |
 | `GE` | Větší než nebo rovno |
-| `IN` | Jako v`TABCLASS IN ('TRANSP', 'INTTAB')` |
-| `LIKE` | Jako v`LIKE 'Emma%'` |
+| `IN` | Jako v `TABCLASS IN ('TRANSP', 'INTTAB')` |
+| `LIKE` | Jako v `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Příklad
 
@@ -287,20 +295,74 @@ V nástroji `rfcTableOptions` můžete použít následující běžné operáto
 ]
 ```
 
+## <a name="join-sap-tables"></a>Připojit tabulky SAP
+
+Konektor SAP TABLE Connector podporuje pouze jednu jednu tabulku s výchozím modulem Function. Chcete-li získat připojená data více tabulek, můžete využít vlastnost [customRfcReadTableFunctionModule](#copy-activity-properties) v konektoru SAP TABLE Connector následujícím postupem:
+
+- [Napište vlastní modul funkcí](#create-custom-function-module), který může přijímat dotazy jako možnosti a použít vlastní logiku pro načtení dat.
+- Pro vlastní modul Function zadejte název vlastního modulu Function.
+- Pro možnosti tabulky RFC zadejte příkaz JOIN, který se má použít jako možnosti, jako je například `<TABLE1>` vnitřní spojení `<TABLE2>` v COLUMN0.
+
+Níže je příklad:
+
+![Spojení s tabulkou SAP](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>Můžete také zvážit, že jsou připojená data agregovaná v zobrazení, které podporuje konektor tabulky SAP.
+>Můžete se také pokusit extrahovat související tabulky, abyste se mohli připojit k Azure (např. Azure Storage, Azure SQL Database), pak pomocí toku dat můžete pokračovat s dalšími připojeními nebo filtry.
+
+## <a name="create-custom-function-module"></a>Vytvořit vlastní modul funkcí
+
+Pro tabulku SAP aktuálně podporujeme vlastnost [customRfcReadTableFunctionModule](#copy-activity-properties) ve zdroji kopie, která umožňuje využívat vlastní logiku a zpracovat data.
+
+Tady je stručný přehled některých požadavků, které vám pomohou začít s "vlastním modulem Function":
+
+- Definice:
+
+    ![Definice](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- Exportujte data do jedné z následujících tabulek:
+
+    ![Exportovat tabulku 1](./media/connector-sap-table/export-table-1.png) 
+
+    ![Exportovat tabulku 2](./media/connector-sap-table/export-table-2.png)
+ 
+Níže najdete ilustraci, jak funguje konektor Table SAP s modulem Custom Function:
+
+1. Sestavujte připojení k serveru SAP prostřednictvím SAP NCO.
+
+1. Vyvolejte "Custom Function Module" s parametry nastavenými níže:
+
+    - QUERY_TABLE: název tabulky, který jste nastavili v datové sadě tabulky SAP pro rozhraní ADF. 
+    - Oddělovač: oddělovač, který jste nastavili ve zdroji tabulky nástroje ADF pro SAP; 
+    - ROWCOUNT/Option/pole: RowCount/agregovaná možnost/pole, která jste nastavili ve zdroji tabulky ADF.
+
+1. Získejte výsledek a analyzujte data níže uvedenými způsoby:
+
+    1. Chcete-li získat schémata, analyzujte hodnotu v tabulce Fields.
+
+        ![Analyzovat hodnoty v polích](./media/connector-sap-table/parse-values.png)
+
+    1. Získejte hodnoty výstupní tabulky, abyste viděli, která tabulka tyto hodnoty obsahuje.
+
+        ![Načíst hodnoty ve výstupní tabulce](./media/connector-sap-table/get-values.png)
+
+    1. Získejte hodnoty v OUT_TABLE, analyzujte data a pak je zapište do jímky.
+
 ## <a name="data-type-mappings-for-an-sap-table"></a>Mapování datových typů pro tabulku SAP
 
 Když kopírujete data z tabulky SAP, v datových typech tabulky SAP se použijí následující mapování na Azure Data Factory dočasné datové typy. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
 
 | Typ SAP ABAP | Data Factory pomocný datový typ |
 |:--- |:--- |
-| `C`Řetezce | `String` |
-| `I`Čísla | `Int32` |
-| `F`Plovák | `Double` |
-| `D`Datum | `String` |
-| `T`Interval | `String` |
-| `P`(Komprimovaná BCD, měna, desetinné číslo, množství) | `Decimal` |
-| `N`Číselné | `String` |
-| `X`(Binární a nezpracované) | `String` |
+| `C` Řetezce | `String` |
+| `I` Čísla | `Int32` |
+| `F` Plovák | `Double` |
+| `D` Datum | `String` |
+| `T` Interval | `String` |
+| `P` (Komprimovaná BCD, měna, desetinné číslo, množství) | `Decimal` |
+| `N` Číselné | `String` |
+| `X` (Binární a nezpracované) | `String` |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

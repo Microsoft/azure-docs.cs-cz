@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b7ae2543cfa9226064a2890b95dcc96be85fe56d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2e766bcdee2afa3ff4ed75476c619326c4c0e0c2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497218"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591647"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Správa webového provozu s Azure CLI
 
@@ -45,16 +45,16 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť. |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Vytvoří ve virtuální síti podsíť. |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Vytvoří veřejnou IP adresu aplikační brány. |
-| [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Vytvoří aplikační bránu. |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů. |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | Získá veřejnou IP adresu aplikační brány. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az network vnet create](/cli/azure/network/vnet) | Vytvoří virtuální síť. |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Vytvoří ve virtuální síti podsíť. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Vytvoří veřejnou IP adresu aplikační brány. |
+| [az network application-gateway create](/cli/azure/network/application-gateway) | Vytvoří aplikační bránu. |
+| [az vmss create](/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů. |
+| [az network public-ip show](/cli/azure/network/public-ip) | Získá veřejnou IP adresu aplikační brány. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure/overview).
 
 Další ukázkové skripty CLI pro aplikační brány najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../cli-samples.md).

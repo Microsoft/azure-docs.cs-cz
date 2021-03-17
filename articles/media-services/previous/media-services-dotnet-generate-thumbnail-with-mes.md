@@ -3,7 +3,7 @@ title: Postup generování miniatur pomocí kodéru Media Encoder Standard a .NE
 description: Toto téma ukazuje, jak použít rozhraní .NET ke kódování assetu a generovat miniatury ve stejnou dobu pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: b8dab73a-1d91-4b6d-9741-a92ad39fc3f7
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0159a706bd5f5229a12ab52bc92d240f01a2ed11
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836441"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014039"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Pomocí Media Encoder Standard můžete vygenerovat jednu nebo více miniatur ze vstupního videa ve formátech [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)nebo [bmp](https://en.wikipedia.org/wiki/BMP_file_format) . Můžete odeslat úkoly, které vytváří pouze obrázky, nebo můžete zkombinovat vytváření miniatur pomocí kódování. Tento článek poskytuje několik ukázkových předvoleb XML a miniatur formátu JSON pro tyto scénáře. Na konci článku je k dispozici [vzorový kód](#code_sample) , který ukazuje, jak použít sadu Media Services .NET SDK k provedení úlohy kódování.
 
@@ -349,7 +352,7 @@ Informace o schématu najdete v [tomto](./media-services-mes-schema.md) článku
 ### <a name="xml-preset"></a><a id="xml"></a>Přednastavení XML
 Informace o schématu najdete v [tomto](./media-services-mes-schema.md) článku.
 
-```csharp
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -407,7 +410,7 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 
 * Vytvořte úlohu kódování.
 * Získejte odkaz na kodér Media Encoder Standard.
-* Načtěte přednastavený [soubor XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , který obsahuje přednastavení kódování, i informace potřebné k vygenerování miniatur. Tento soubor [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
+* Načtěte přednastavený [soubor XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , který obsahuje přednastavení kódování, i informace potřebné k vygenerování miniatur. Tento soubor  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
 
     ```csharp
     // Load the XML (or JSON) from the local file.

@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 617608f382d3331e59ae92c9eb272347c736b768
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298595"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91829166"
 ---
 Funkce umožňují používat klíče k tomu, aby během vývoje měly přístup k koncovým bodům funkce HTTP. Pokud není úroveň přístupu HTTP u funkce aktivované protokolem HTTP nastavená na `anonymous` , požadavky musí v žádosti zahrnovat přístupový klíč rozhraní API. 
 
-Zatímco klíče poskytují výchozí mechanismus zabezpečení, možná budete chtít zvážit další možnosti zabezpečení koncového bodu HTTP v produkčním prostředí. Obvykle není dobrým zvykem distribuovat sdílený tajný klíč ve veřejných aplikacích. Pokud je vaše funkce volána z veřejného klienta, je vhodné zvážit implementaci jiného mechanismu Secrity. Další informace najdete v tématu [zabezpečení koncového bodu http v produkčním prostředí](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
+Zatímco klíče poskytují výchozí mechanismus zabezpečení, možná budete chtít zvážit další možnosti zabezpečení koncového bodu HTTP v produkčním prostředí. Obvykle není dobrým zvykem distribuovat sdílený tajný klíč ve veřejných aplikacích. Pokud je vaše funkce volána z veřejného klienta, je vhodné zvážit implementaci jiného mechanismu zabezpečení. Další informace najdete v tématu [zabezpečení koncového bodu http v produkčním prostředí](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
 
 Při obnovování hodnot klíčů funkce je nutné ručně znovu distribuovat aktualizované hodnoty klíčů všem klientům, kteří volají vaši funkci.  
 

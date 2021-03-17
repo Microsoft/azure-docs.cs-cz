@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b124f828c4a6a019c45243528ed2d957e3f781f3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191422"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109115"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Pokyny pro vysokou dostupnost a zotavení po havárii pro Data Lake Storage Gen1
 
@@ -21,8 +21,8 @@ Data Lake Storage Gen1 poskytuje místně redundantní úložiště (LRS). Proto
 
 Je důležité, abyste si napravili plán zotavení po havárii. Přečtěte si informace v tomto článku a další materiály, které vám pomůžou vytvořit vlastní plán.
 
-* [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Technické pokyny k odolnosti Azure](../resiliency/resiliency-technical-guidance.md)
+* [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Technické pokyny k odolnosti Azure](/azure/architecture/framework/resiliency/overview)
 
 ### <a name="best-practice-recommendations"></a>Doporučení pro osvědčené postupy
 
@@ -37,8 +37,6 @@ I když Data Lake Storage Gen1 zajišťuje odolnost dat prostřednictvím automa
 Abyste zabránili nechtěnému odstranění, doporučujeme, abyste nejdřív nastavili správné zásady přístupu pro svůj účet Data Lake Storage Gen1. To zahrnuje použití [zámků prostředků Azure](../azure-resource-manager/management/lock-resources.md) k uzamčení důležitých prostředků a použití řízení přístupu na úrovni účtu a souboru pomocí dostupných [funkcí zabezpečení Data Lake Storage Gen1](data-lake-store-security-overview.md). Doporučujeme také pravidelně vytvářet kopie důležitých dat pomocí [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) nebo [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) v jiném Data Lake Storage Gen1m účtu, složce nebo předplatném Azure. Kopie pak můžete využít k obnovení poškozených nebo odstraněných dat. Azure Data Factory je užitečná služba pro opakované vytváření a nasazování kanálů k přesunu dat.
 
 Můžete také povolit [protokolování diagnostiky](data-lake-store-diagnostic-logs.md) pro účet Data Lake Storage Gen1, abyste mohli shromažďovat záznamy pro audit přístupu k datům. Záznamy auditu poskytují informace o tom, kdo mohl soubor odstranit nebo aktualizovat.
-
-Odstraněnou položku můžete zkusit obnovit pomocí modulu [AZ. DataLakeStore](https://docs.microsoft.com/powershell/module/az.datalakestore/) Azure PowerShell module pro data Lake Storage Gen 1. Konkrétně se podívejte na příkaz [Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem) . Než se pokusíte tento příkaz použít, nezapomeňte si projít oddíl [Description](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description) .
 
 ## <a name="next-steps"></a>Další kroky
 

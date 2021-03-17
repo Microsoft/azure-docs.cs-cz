@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 854fe3ab8ad20e13f864b9fb5419628664985dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b3aa963c4da7802a9db714f25e7b544b3a132d4b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022663"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948642"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí Azure CLI
 
@@ -27,7 +27,7 @@ ms.locfileid: "87022663"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> Rozhraní API pro zobrazení skupiny zabezpečení již není udržováno a bude brzy zastaralé. Použijte prosím [funkci platná pravidla zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) , která poskytuje stejné funkce.
+> Rozhraní API pro zobrazení skupiny zabezpečení již není udržováno a bude brzy zastaralé. Použijte prosím [funkci platná pravidla zabezpečení](./network-watcher-security-group-view-overview.md) , která poskytuje stejné funkce.
 
 
 Zobrazení skupiny zabezpečení vrací nakonfigurovaná a efektivní pravidla zabezpečení sítě, která se používají pro virtuální počítač. Tato funkce je užitečná pro audit a diagnostiku skupin zabezpečení sítě a pravidel nakonfigurovaných na virtuálním počítači, aby se zajistilo správné povolení nebo odepření provozu. V tomto článku vám ukážeme, jak načíst nakonfigurovaná a platná pravidla zabezpečení pro virtuální počítač pomocí Azure CLI.
@@ -66,7 +66,7 @@ az network watcher show-security-group-view --resource-group resourceGroupName -
 
 ## <a name="viewing-the-results"></a>Zobrazení výsledků
 
-Následující příklad je zkrácená odezva vrácených výsledků. Ve výsledcích se zobrazí všechna platná a použitá pravidla zabezpečení na virtuálním počítači rozdělená do skupin **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**a **EffectiveSecurityRules**.
+Následující příklad je zkrácená odezva vrácených výsledků. Ve výsledcích se zobrazí všechna platná a použitá pravidla zabezpečení na virtuálním počítači rozdělená do skupin **NetworkInterfaceSecurityRules**, **DefaultSecurityRules** a **EffectiveSecurityRules**.
 
 ```json
 {

@@ -1,18 +1,18 @@
 ---
 title: Skupiny IP adres v zásadách Azure Firewall
-description: Skupiny IP adres umožňují seskupovat a spravovat IP adresy pro pravidla Azure Firewall.
+description: Skupiny IP adres umožňují seskupovat a spravovat IP adresy pro pravidla zásad Azure Firewall.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 5192ecb31c71364bdf1301b13da0b0742625d44f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 54faa0bc7d414eb15a866b8e1e6d09e15b22b071
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460129"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500848"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>Skupiny IP adres v zásadách Azure Firewall
 
@@ -72,13 +72,13 @@ Můžete mít maximálně 100 skupin IP adres na bránu firewall s maximálním 
 
 K vytváření a správě skupin IP adres se dají použít následující rutiny Azure PowerShell:
 
-- [New-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](https://docs.microsoft.com/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [New-AzFirewallPolicyNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynetworkrule?view=azps-3.4.0)
-- [New-AzFirewallPolicyApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyapplicationrule?view=azps-3.4.0)
-- [New-AzFirewallPolicyNatRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup)
+- [New-AzFirewallPolicyNetworkRule](/powershell/module/az.network/new-azfirewallpolicynetworkrule)
+- [New-AzFirewallPolicyApplicationRule](/powershell/module/az.network/new-azfirewallpolicyapplicationrule)
+- [New-AzFirewallPolicyNatRule](/powershell/module/az.network/new-azfirewallpolicynatrule)
 
 ## <a name="next-steps"></a>Další kroky
 

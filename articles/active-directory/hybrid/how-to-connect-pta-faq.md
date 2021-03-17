@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75f797c40a276323cea9983c5340d2d854160c83
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358289"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368473"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -29,19 +29,15 @@ Tento článek se zabývá nejčastějšími dotazy týkajícími se předávac�
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Kterou z metod pro přihlášení ke službě Azure AD, předávacímu ověřování, synchronizaci hodnot hash hesel a Active Directory Federation Services (AD FS) (AD FS) mám zvolit?
 
-Přečtěte si [tuto příručku](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) , kde najdete porovnání různých metod přihlášení do služby Azure AD a jak zvolit správnou metodu přihlašování pro vaši organizaci.
+Přečtěte si [tuto příručku](./choose-ad-authn.md) , kde najdete porovnání různých metod přihlášení do služby Azure AD a jak zvolit správnou metodu přihlašování pro vaši organizaci.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Používá předávací ověřování bezplatnou funkci?
 
 Předávací ověřování je bezplatná funkce. Nepotřebujete žádné placené edice Azure AD, abyste ho mohli používat.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Je k dispozici předávací ověřování v [cloudu Microsoft Azure (Německo)](https://www.microsoft.de/cloud-deutschland) a [Microsoft Azure Government cloudu](https://azure.microsoft.com/features/gov/)?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../conditional-access/overview.md) s předávacím ověřováním?
 
-Ne. Předávací ověřování je dostupné jenom v celosvětové instanci Azure AD.
-
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../active-directory-conditional-access-azure-portal.md) s předávacím ověřováním?
-
-Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
+Ano. Všechny funkce podmíněného přístupu, včetně Multi-Factor Authentication Azure AD, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
 Ano, přihlaste se pomocí nestandardní hodnoty (UPN), jako je například alternativní e-mail, se podporuje jak předávací ověřování (PTA), tak i synchronizace hodnot hash hesel (KOSMETICE). Další informace o [alternativním přihlašovacím ID](../authentication/howto-authentication-use-email-signin.md)
@@ -113,7 +109,7 @@ Komunikace mezi každým předávacím agentem ověřování a službou Azure AD
 
 Pokud je spuštěn předávací agent ověřování, zůstane aktivní a nepřetržitě zpracovává požadavky na přihlášení uživatele. Chcete-li odinstalovat ověřovacího agenta, klepněte na **Ovládací panely – > programy – > programy a funkce** a odinstalujte **ověřovacího agenta Microsoft Azure AD Connect** a Microsoft Azure AD programy pro aktualizace **agenta Connect** .
 
-Pokud zaškrtnete okno předávací ověřování v [centru pro správu Azure Active Directory](https://aad.portal.azure.com) po dokončení předchozího kroku, zobrazí se agent ověřování zobrazený jako **neaktivní**. Toto je _očekávané_. Ověřovací agent se po několika dnech automaticky vynechá ze seznamu.
+Pokud zaškrtnete okno předávací ověřování v [centru pro správu Azure Active Directory](https://aad.portal.azure.com) po dokončení předchozího kroku, zobrazí se agent ověřování zobrazený jako **neaktivní**. Toto je _očekávané_. Agent ověřování se automaticky vynechává ze seznamu po 10 dnech.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Už používám AD FS k přihlášení do služby Azure AD. Návody přepnout na předávací ověřování?
 
@@ -142,13 +138,9 @@ U většiny zákazníků jsou celkem dva nebo tři ověřovací agenti dostačuj
 >[!NOTE]
 >Omezení počtu 40 ověřovacích agentů na každého tenanta je systému.
 
-## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Je možné nainstalovat prvního předávacího agenta na jiný server, než je ten, který spouští Azure AD Connect?
-
-Ne, tento scénář není _podporován._
-
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Proč potřebuji k povolení předávacího ověřování zadat jenom cloudový účet globálního správce?
 
-Doporučuje se povolit nebo zakázat předávací ověřování pomocí účtu globálního správce jenom pro Cloud. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Tím se zajistí, že se nezamknete z vašeho tenanta.
+Doporučuje se povolit nebo zakázat předávací ověřování pomocí účtu globálního správce jenom pro Cloud. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Tím se zajistí, že se nezamknete z vašeho tenanta.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Jak můžu zakázat předávací ověřování?
 
@@ -184,4 +176,3 @@ Klienti vytvoření po 15. června 2015 mají výchozí chování při synchroni
 - [Hloubkové podrobně zabezpečení](how-to-connect-pta-security-deep-dive.md): Získejte podrobné technické informace o funkci předávacího ověřování.
 - [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Přečtěte si další informace o této doplňkové funkci.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte Fórum Azure Active Directory k započetí nových požadavků na funkce.
-

@@ -3,28 +3,28 @@ title: Rychlý Start Node.js klientské knihovny pro moderní čtečku
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkce rozhraní API pro moderní čtečku.
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 05/20/2020
-ms.author: pasta
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 91adff9a8330defb6c2b9f1e915c46886649fed3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/14/2020
+ms.author: nitinme
+ms.custom: devx-track-js
+ms.openlocfilehash: ffef03457f9d3faf385bd0a924474dfa6efc4121
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602461"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619203"
 ---
-[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
-V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí klientské knihovny pro moderní čtenáře. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs).
-
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí klientské knihovny pro moderní čtenáře. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs).
 
 ## <a name="prerequisites"></a>Požadavky
 
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * [Node.js](https://nodejs.org/) a [příze](https://yarnpkg.com)
 * Rozhraní IDE, jako je například [Visual Studio Code](https://code.visualstudio.com/)
@@ -246,14 +246,15 @@ npm start
 
 Otevřete prohlížeč a přejděte na _http://localhost:3000_ . Měli byste vidět následující:
 
-![Ukázková aplikace](../../media/quickstart-nodejs/1-buildapp.png)
+![Ukázková aplikace – Node.js](../../media/quickstart-nodejs/1-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
 Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, která se spustí s obsahem na stránce.
 
-![Asistivní čtečka](../../media/quickstart-nodejs/2-viewimmersivereader.png)
+![Moderní čtečka – Node.js](../../media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md)
+> [!div class="nextstepaction"]
+> [Vytvoření prostředku a konfigurace AAD](../../how-to-create-immersive-reader.md)

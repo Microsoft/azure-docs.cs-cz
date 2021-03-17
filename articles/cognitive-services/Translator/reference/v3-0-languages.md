@@ -3,19 +3,19 @@ title: Metoda Translator languages
 titleSuffix: Azure Cognitive Services
 description: Metoda languages Získá sadu jazyků aktuálně podporovaných jinými operacemi překladatele.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: 8471983d24cfed39e6521e19366f6023e519adaf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588594"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895471"
 ---
 # <a name="translator-30-languages"></a>Překladatel 3,0: jazyky
 
@@ -67,11 +67,11 @@ K získání prostředků jazyka není vyžadováno ověřování.
 
 Klient používá `scope` parametr dotazu k definování skupin jazyků, které vás zajímají.
 
-* `scope=translation`poskytuje jazyky podporované k překladu textu z jednoho jazyka do jiného jazyka.
+* `scope=translation` poskytuje jazyky podporované k překladu textu z jednoho jazyka do jiného jazyka.
 
-* `scope=transliteration`poskytuje funkce pro převod textu v jednom jazyce z jednoho skriptu na jiný skript.
+* `scope=transliteration` poskytuje funkce pro převod textu v jednom jazyce z jednoho skriptu na jiný skript.
 
-* `scope=dictionary`poskytuje páry jazyků, pro které `Dictionary` operace vracejí data.
+* `scope=dictionary` poskytuje páry jazyků, pro které `Dictionary` operace vracejí data.
 
 Klient může načíst několik skupin současně zadáním seznamu názvů oddělených čárkami. Například `scope=translation,transliteration,dictionary` by vracely podporované jazyky pro všechny skupiny.
 
@@ -93,7 +93,7 @@ Klient může načíst několik skupin současně zadáním seznamu názvů odd�
 
 Hodnota pro každou vlastnost je následující.
 
-* `translation`majetek
+* `translation` majetek
 
   Hodnota `translation` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který je možné převést text na nebo přeložit. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk:
 
@@ -119,7 +119,7 @@ Hodnota pro každou vlastnost je následující.
   }
   ```
 
-* `transliteration`majetek
+* `transliteration` majetek
 
   Hodnota `transliteration` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který je možné převést text z jednoho skriptu na jiný skript. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk a jeho podporované skripty:
 
@@ -184,7 +184,7 @@ Hodnota pro každou vlastnost je následující.
   }
   ```
 
-* `dictionary`majetek
+* `dictionary` majetek
 
   Hodnota `dictionary` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který jsou k dispozici alternativní překlady a back-překlady. Hodnota je objekt JSON, který popisuje zdrojový jazyk a cílové jazyky s dostupnými překlady:
 
@@ -275,7 +275,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Příklady
 

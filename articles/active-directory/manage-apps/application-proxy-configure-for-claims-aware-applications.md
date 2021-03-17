@@ -4,7 +4,7 @@ description: Jak publikovat místní ASP.NET aplikace, které přijímají dekla
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,24 +15,24 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b90c2d47e70a4f7595ac535d5f8ba9506087eb72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386975"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258520"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s aplikacemi pracujícími s deklaracemi v proxy aplikací
-[Aplikace pracující s deklaracemi](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 
+[Aplikace pracující s deklaracemi](/previous-versions/windows/desktop/legacy/bb736227(v=vs.85)) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že služba STS, na kterou pracují deklarace, je k dispozici mimo místní síť. Službu STS můžete zpřístupnit tím, že ji vystavíte prostřednictvím proxy serveru nebo pokud povolíte vnější připojení. 
 
 ## <a name="publish-your-application"></a>Publikování aplikace
 
 1. Publikujte aplikaci podle pokynů popsaných v tématu [publikování aplikací pomocí proxy aplikací](application-proxy-add-on-premises-application.md).
 2. Na portálu přejděte na stránku aplikace a vyberte **jednotné přihlašování**.
-3. Pokud jste jako **metodu předběžného ověření**zvolili **Azure Active Directory** , vyberte jako **metodu interního ověřování**možnost **jednotné přihlašování Azure AD** . Pokud jste jako **metodu předběžného ověření**zvolili možnost **Passthrough** , nemusíte nic měnit.
+3. Pokud jste jako **metodu předběžného ověření** zvolili **Azure Active Directory** , vyberte jako **metodu interního ověřování** možnost **jednotné přihlašování Azure AD** . Pokud jste jako **metodu předběžného ověření** zvolili možnost **Passthrough** , nemusíte nic měnit.
 
 ## <a name="configure-adfs"></a>Konfigurace služby ADFS
 
@@ -49,12 +49,10 @@ Pokud jsou všechny interní adresy URL pro vaše aplikace plně kvalifikované 
 
    ![Vztahy důvěryhodnosti předávající strany klikněte pravým tlačítkem myši na název aplikace – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Na kartě **koncové body** v části **Typ koncového bodu**vyberte **WS-Federation**.
-4. V části **důvěryhodná adresa URL**zadejte adresu URL, kterou jste zadali v proxy aplikaci v oblasti **externí adresa URL** , a klikněte na **OK**.  
+3. Na kartě **koncové body** v části **Typ koncového bodu** vyberte **WS-Federation**.
+4. V části **důvěryhodná adresa URL** zadejte adresu URL, kterou jste zadali v proxy aplikaci v oblasti **externí adresa URL** , a klikněte na **OK**.  
 
    ![Přidání koncového bodu – nastavit důvěryhodnou hodnotu adresy URL – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Další kroky
 * [Povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md)
-
-

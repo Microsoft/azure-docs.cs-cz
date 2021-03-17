@@ -1,6 +1,7 @@
 ---
-title: Přidání přihlašování OIDC do webové aplikace Node.js – Microsoft Identity Platform | Azure
-description: Naučte se implementovat ověřování ve webové aplikaci Node.js pomocí OpenID Connect.
+title: 'Rychlý Start: přidání přihlášení uživatele do webové aplikace Node.js | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak implementovat ověřování ve webové aplikaci Node.js pomocí nástroje OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -10,59 +11,47 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
+ms.openlocfilehash: f7f14b91dc69eeba4ac06f6608f6151634dc38d3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552675"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103494"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
-V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node.js s využitím Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak nastavit ověřování OpenID Connect ve webové aplikaci sestavené pomocí Node.js pomocí Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení této ukázky budete potřebovat:
-
-* Nainstalovat Node.js zhttp://nodejs.org/
-
-* Buď [účet Microsoft](https://www.outlook.com) , nebo [Microsoft 365 vývojářský program](/office/developer-program/office-365-developer-program)
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Registrace aplikace
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD:
-    - V nabídce v pravém horním rohu stránky vyberte svůj profil a pak **Přepněte do adresáře**.
-    - Změňte svou relaci na tenanta Azure AD, ve kterém chcete vytvořit aplikaci.
 
-1. Pro registraci aplikace přejděte na [Azure Active Directory > registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `MyWebApp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a v osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
 
-1. Vyberte **Nová registrace.**
-
-1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
-    - V části **název** zadejte smysluplný název, který se zobrazí uživatelům aplikace. Příklad: MyWebApp
-    - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a v osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
-
-    Pokud existuje více identifikátorů URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
+    Pokud je k dispozici více identifikátorů URI přesměrování, přidejte je na kartě **ověřování** později po úspěšném vytvoření aplikace.
 
 1. Pokud chcete vytvořit aplikaci, vyberte **zaregistrovat** .
-
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Tuto hodnotu budete potřebovat ke konfiguraci aplikace později v tomto projektu.
+1. V části **Spravovat** vyberte **ověřování**.
+1. Vyberte **Přidat**  >  **Web** platformy. 
+1. V části **identifikátory URI pro přesměrování** zadejte `http://localhost:3000/auth/openid/return` .
+1. Zadejte **adresu URL pro odhlášení front-Channel** `https://localhost:3000` .
+1. V části **implicitní udělení a hybridní toky** vyberte možnost **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](./v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
+1. Vyberte **Konfigurovat**.
+1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.
+1. Zadejte popis klíče (např. tajný klíč aplikace).
+1. Vyberte dobu trvání klíče buď **v 1 roce, 2 roky,** nebo **nikdy nevyprší**.
+1. Vyberte **Přidat**. Hodnota klíče se zobrazí. Zkopírujte hodnotu klíče a uložte ji v bezpečném umístění pro pozdější použití.
 
-1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-    - V části **identifikátory URI pro přesměrování** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování:`http://localhost:3000/auth/openid/return`
-    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `https://localhost:3000` .
-    - V části **Upřesnit nastavení > implicitního udělení oprávnění** ověřte **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) povolen k přihlášení uživatele.
-
-1. Vyberte **Uložit**.
-
-1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte možnost **nový tajný klíč klienta**.
-    - Zadejte popis klíče (např. tajný klíč aplikace).
-    - Vyberte dobu trvání klíče buď **v 1 roce, 2 roky,** nebo **nikdy nevyprší**.
-    - Po kliknutí na tlačítko **Přidat** se zobrazí hodnota klíč. Zkopírujte hodnotu klíče a uložte ji do bezpečného umístění.
-
-    Tento klíč budete potřebovat později ke konfiguraci aplikace. Tato hodnota klíče se znovu nezobrazí ani není dostupná žádným jiným způsobem, takže ji nahrajte hned, jak je vidět z Azure Portal.
 
 ## <a name="download-the-sample-application-and-modules"></a>Stažení ukázkové aplikace a modulů
 
@@ -72,7 +61,7 @@ Z prostředí nebo příkazového řádku:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
-– nebo –
+nebo
 
 `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -110,7 +99,7 @@ Spusťte aplikaci pomocí následujícího příkazu z příkazového řádku.
 $ node app.js
 ```
 
-**Je pro vás výstup serveru obtížné?:** `bunyan`K přihlášení v této ukázce používáme. Konzola nebude velmi smyslná, pokud nenainstalujete Bunyan a spustíte server, jak je uvedeno výše, ale přesměrujte ho prostřednictvím binárního souboru Bunyan:
+**Je pro vás výstup serveru obtížné?:** `bunyan` K přihlášení v této ukázce používáme. Konzola nebude velmi smyslná, pokud nenainstalujete Bunyan a spustíte server, jak je uvedeno výše, ale přesměrujte ho prostřednictvím binárního souboru Bunyan:
 
 ```
 $ npm install -g bunyan

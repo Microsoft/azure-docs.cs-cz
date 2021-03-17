@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714776"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165141"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Prostředí pomocníka návrhů pro Windows 10
 
@@ -70,7 +70,7 @@ I když se stavy mění rychle, je vhodné zvážit poskytování uživatelskéh
 Když má aplikace pomocníka fokus, záměr zákazníka je snadno interagovat s aplikací, takže všechna prostředí hlasové aktivace by měla být zpracována hlavním zobrazením aplikace. Toto zobrazení může změnit velikost zákazníka. Aby bylo možné vysvětlit interakce prostředí pomocníka, zbytek tohoto dokumentu používá konkrétní příklad asistenta finančních služeb s názvem contoso. V tomto a dalším diagramu se zobrazí zpráva o tom, co zákazník zobrazuje na stránce kreslené bubliny řeči na levé straně s odezvami pomocníka ve kreslené bublině na pravé straně.
 
 **Zobrazení v aplikaci. Počáteční stav při zahájení aktivace hlasu:** 
- ![ snímek hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/initial_state.png)
+ ![ snímek obrazovky s otevřenou aplikací společnosti Contoso pro finanční asistenty, která je otevřená na výchozím plátně. Kreslené bubliny pro řeč na pravé straně říká "contoso".](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
 **Zobrazení v aplikaci. Po úspěšném pokusu o aktivaci hlasu se spustí naslouchací proces:** ![ snímek hlasového pomocníka ve Windows, když hlasová asistent naslouchá.](media/voice-assistants/windows_voice_assistant/listening.png)
 
@@ -108,9 +108,9 @@ Pomocník musí v této části implementovat pokyny k odhlášení, aby se zák
 - Pokud je aplikace &quot; používána &quot; , může pokračovat výše v zámku. &quot;používá se pro &quot; jakýkoliv vstup nebo výstup. Například při streamování hudby nebo videa může aplikace pokračovat výše v zámku. &quot;Sledování &quot; a další kroky při více zapnutích jsou povoleny, aby aplikace zůstala nad zámkem.
 - **Podrobnosti o implementaci chybějící aplikace** najdete [v části výše Průvodce implementací zámku](windows-voice-assistants-implementation-guide.md#closing-the-application).
 
-![Snímek obrazovky hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
+![Snímek obrazovky s výše uvedeným zobrazením zámku aplikace pro finanční asistenta společnosti Contoso](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
-![Snímek obrazovky hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
+![Snímek obrazovky plochy, na které se zobrazuje zamykací obrazovka Windows](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>Požadavky na zabezpečení ochrany osobních údajů &amp; nad zámkem
 
@@ -118,9 +118,9 @@ Mnoho počítačů je přenosné, ale ne vždy v rámci dosahu zákazníků. Moh
 
 Proto by asistenti měli postupovat podle pokynů v této části, aby se zajistila bezpečnost. Interakce nad zámkem nastane, pokud uživatel Windows není ověřený. To znamená, že obecně platí, že **vstup pro pomocníka by měl být také považován za Neověřeno**.
 
-- Asistenti by měli **implementovat seznam povolených dovedností k identifikaci dovedností, které jsou potvrzené zabezpečeně a bezpečné** pro přístup nad rámec zámku.
+- Asistenti by měli **implementovat seznam povolených dovedností k identifikaci dovedností, které jsou potvrzené zabezpečeně a bezpečné** pro přístup přes zámek.
 - Technologie ID mluvčího mohou hrát roli v důsledku zmírnění některých rizik, ale ID mluvčího není vhodná náhrada za ověřování systému Windows.
-- Seznam povolených dovedností by měl zvážit tři třídy akcí a dovedností:
+- Seznam povolených dovedností by měl vzít v úvahu tři třídy akcí a dovedností:
 
 | **Action – třída** | **Popis** | **Příklady (není úplný seznam)** |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Proto by asistenti měli postupovat podle pokynů v této části, aby se zajist
 
 V případě společnosti Contoso jsou obecné informace o veřejných informacích o zásobách bezpečné bez ověření. Informace specifické pro konkrétní zákazníky, jako je třeba počet vlastněných akcií, jsou nejspíš bezpečné s ID mluvčího. Nákup nebo prodej zásob by však nikdy neměl být povolen bez ověřování systému Windows.
 
-Za účelem dalšího zabezpečení prostředí **budou moci být funkce weblinks nebo jiné spuštění aplikace do aplikace blokovány systémem Windows, dokud se zákazník přihlásí.** Microsoft si vyhrazuje právo odebrat aplikaci z povolených pomocných pomocníků, pokud není včas vyřešeno závažné problémy se zabezpečením.
+Za účelem dalšího zabezpečení prostředí **budou moci být funkce weblinks nebo jiné spuštění aplikace do aplikace blokovány systémem Windows, dokud se zákazník přihlásí.** Microsoft si vyhrazuje právo odebrat aplikaci ze seznamu povolených asistentů, pokud není včas vyřešeno závažné problémy se zabezpečením.
 
 ## <a name="design-guidance-for-voice-activation-preview"></a>Pokyny k návrhu pro ukázku aktivace hlasu
 

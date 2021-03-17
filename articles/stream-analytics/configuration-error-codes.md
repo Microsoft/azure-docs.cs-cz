@@ -1,17 +1,17 @@
 ---
 title: Kódy chyb konfigurace – Azure Stream Analytics
 description: Řešení potíží s Azure Stream Analyticsmi kódy chyb konfigurace.
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: de8eefd099f3691ae5e5eb5234ae8f76015dd68f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6137ceeb0d86b1531adab910175ddbc4722ef858
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041111"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019512"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Kódy chyb konfigurace Azure Stream Analytics
 
@@ -94,7 +94,7 @@ Protokoly aktivit a protokoly prostředků můžete použít k ladění neoček�
 ## <a name="sqldwoutputinvalidserviceedition"></a>SQLDWOutputInvalidServiceEdition
 
 * **Příčina**: SQL Database se nepodporuje.
-* **Doporučení**: použijte synapse fond SQL.
+* **Doporučení**: použijte vyhrazený fond SQL.
 
 ## <a name="next-steps"></a>Další kroky
 

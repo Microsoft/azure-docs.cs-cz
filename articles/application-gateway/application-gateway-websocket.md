@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74130326"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362691"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Přehled podpory protokolu WebSocket v Application Gateway
 
@@ -28,7 +28,7 @@ Používá se v aplikacích, které využívají rychlou komunikaci v reálném 
 
 K navázání připojení pomocí protokolu WebSocket se vymění konkrétní Metoda handshake založená na protokolu HTTP mezi klientem a serverem. V případě úspěchu je protokol aplikační vrstvy upgradován z HTTP na WebSockets pomocí dříve vytvořeného připojení TCP. V takovém případě je HTTP zcela mimo obrázek. data je možné odesílat nebo přijímat pomocí protokolu WebSocket oběma koncovými body, až do ukončení připojení protokolu WebSocket. 
 
-![protokolu WebSocket](./media/application-gateway-websocket/websocket.png)
+![Diagram porovnává klienta s webovým serverem, který se připojuje dvakrát, aby získal dvě odpovědi s interakcí protokolu WebSocket, kde se klient připojí k serveru jednou, aby získal více odpovědí.](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
 

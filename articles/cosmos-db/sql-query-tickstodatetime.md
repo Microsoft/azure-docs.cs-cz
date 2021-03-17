@@ -3,18 +3,20 @@ title: TicksToDateTime v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o TicksToDateTime funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 89a8dba97725049b86fc6b38c09e0dd125bb48d1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608735"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340787"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Převede zadanou hodnotu osové hodnoty na DateTime.
   
@@ -72,4 +74,4 @@ SELECT TicksToDateTime(15943368134575530) AS DateTime
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

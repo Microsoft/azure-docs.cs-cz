@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245286"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630271"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML dovednosti v kanálu pro rozšíření Azure Kognitivní hledání
 
 > [!IMPORTANT] 
 > Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
-**AML** dovednosti umožňuje rozšířit obohacení AI pomocí vlastního modelu [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML). Jakmile je model AML [vyškolený a nasazený](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow), **AML** dovednost ho integruje do obohacení AI.
+**AML** dovednosti umožňuje rozšířit obohacení AI pomocí vlastního modelu [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML). Jakmile je model AML [vyškolený a nasazený](../machine-learning/concept-azure-machine-learning-architecture.md#workspace), **AML** dovednost ho integruje do obohacení AI.
 
 Podobně jako v případě integrovaných dovedností mají **AML** dovednosti vstupy a výstupy. Vstupy jsou odesílány do nasazené služby AML jako objekt JSON, který vypíše datovou část JSON jako odpověď spolu s kódem stavu úspěch. Očekává se, že odpověď bude mít výstupy určené vaší **AML** dovedností. Jakákoli jiná odpověď se považuje za chybu a neprovádí se žádné obohacení.
 
@@ -29,11 +29,11 @@ Podobně jako v případě integrovaných dovedností mají **AML** dovednosti v
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Pracovní prostor AML](https://docs.microsoft.com/azure/machine-learning/concept-workspace)
-* [Azure Kubernetes Service AML Target COMPUTE](https://docs.microsoft.com/azure/machine-learning/concept-compute-target) v tomto pracovním prostoru s [nasazeným modelem](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
-  * [Cíl výpočtů by měl mít povolený protokol SSL](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Kognitivní hledání povoluje přístup jenom k koncovým bodům **https** .
+* [Pracovní prostor AML](../machine-learning/concept-workspace.md)
+* [Azure Kubernetes Service AML Target COMPUTE](../machine-learning/concept-compute-target.md) v tomto pracovním prostoru s [nasazeným modelem](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
+  * [Cíl výpočtů by měl mít povolený protokol SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service). Azure Kognitivní hledání povoluje přístup jenom k koncovým bodům **https** .
   * Certifikáty podepsané svým držitelem se nedají použít.
 
 ## <a name="odatatype"></a>@odata.type  
@@ -43,10 +43,10 @@ Microsoft. dovednosti. Custom. AmlSkill
 
 U parametrů se rozlišují malá a velká písmena. Parametry, které se rozhodnete použít, závisí na tom [, jaké ověřování vaše služba AML vyžaduje](#WhatSkillParametersToUse) .
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |--------------------|-------------|
-| `uri` | (Vyžaduje se pro [ověřování a ověření klíče](#WhatSkillParametersToUse)) [Identifikátor URI pro vyhodnocování služby AML](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) , na kterou se pošle datová část _JSON_ Je povoleno pouze schéma identifikátoru URI **protokolu HTTPS** . |
-| `key` | (Vyžadováno pro [ověření klíče](#WhatSkillParametersToUse)) [Klíč pro službu AML](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys) |
+| `uri` | (Vyžaduje se pro [ověřování a ověření klíče](#WhatSkillParametersToUse)) [Identifikátor URI pro vyhodnocování služby AML](../machine-learning/how-to-consume-web-service.md) , na kterou se pošle datová část _JSON_ Je povoleno pouze schéma identifikátoru URI **protokolu HTTPS** . |
+| `key` | (Vyžadováno pro [ověření klíče](#WhatSkillParametersToUse)) [Klíč pro službu AML](../machine-learning/how-to-consume-web-service.md#authentication-with-keys) |
 | `resourceId` | (Vyžaduje se pro [ověřování tokenu](#WhatSkillParametersToUse)). ID prostředku Azure Resource Manager služby AML Měl by být ve formátu Subscriptions/{GUID}/resourceGroups/{Resource-Group-Name}/Microsoft. MachineLearningServices/Workspaces/{Workspace-Name}/Services/{service_name}. |
 | `region` | (Volitelné pro [ověřování tokenu](#WhatSkillParametersToUse)). [Oblast](https://azure.microsoft.com/global-infrastructure/regions/) , ve které je nasazená služba AML |
 | `timeout` | Volitelné Když se tato parametr zadá, označuje časový limit pro klienta http, který provádí volání rozhraní API. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Například `PT60S` po dobu 60 sekund. Pokud není nastavená, vybere se výchozí hodnota 30 sekund. Časový limit lze nastavit na maximálně 230 sekund a minimálně 1 sekundu. |
@@ -58,9 +58,9 @@ U parametrů se rozlišují malá a velká písmena. Parametry, které se rozhod
 
 Které parametry dovedností AML jsou povinné, závisí na tom, jaké ověřování služba AML používá, pokud existuje. Služby AML Services poskytují tři možnosti ověřování:
 
-* [Ověřování založené na klíčích](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication-for-web-service-deployment). Pro ověření žádostí o vyhodnocování z dovedností AML je k dispozici statický klíč.
+* [Ověřování založené na klíčích](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication). Pro ověření žádostí o vyhodnocování z dovedností AML je k dispozici statický klíč.
   * Použití parametrů _URI_ a _Key_
-* [Ověřování založené na tokenech](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication). Služba AML je [nasazena pomocí ověřování založeného na tokenech](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service#authentication-with-tokens). [Spravované identitě](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) služby Azure kognitivní hledání je udělená [role čtecího](https://docs.microsoft.com/azure/machine-learning/how-to-assign-roles) modulu v pracovním prostoru služby AML. AML dovednost potom používá spravovanou identitu služby Azure Kognitivní hledání k ověření ve službě AML, bez nutnosti vyžadování statických klíčů.
+* [Ověřování založené na tokenech](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). Služba AML je [nasazena pomocí ověřování založeného na tokenech](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). [Spravované identitě](../active-directory/managed-identities-azure-resources/overview.md) služby Azure kognitivní hledání je udělená [role čtecího](../machine-learning/how-to-assign-roles.md) modulu v pracovním prostoru služby AML. AML dovednost potom používá spravovanou identitu služby Azure Kognitivní hledání k ověření ve službě AML, bez nutnosti vyžadování statických klíčů.
   * Použijte parametr _ResourceID_ .
   * Pokud je služba Azure Kognitivní hledání v jiném regionu než pracovní prostor AML, použijte parametr _region_ a nastavte oblast, ve které byla služba AML nasazená.
 * Bez ověřování. K používání služby AML není nutné žádné ověřování.
@@ -171,4 +171,4 @@ V případech, kdy není služba AML k dispozici, nebo vrátí chybu protokolu H
 ## <a name="see-also"></a>Viz také
 
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Řešení potíží se službou AML](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment)
++ [Řešení potíží se službou AML](../machine-learning/how-to-troubleshoot-deployment.md)

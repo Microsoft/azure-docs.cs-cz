@@ -1,17 +1,22 @@
 ---
-title: Event Hubs Azure – výjimky
+title: Azure Event Hubs – výjimky (starší verze)
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Event Hubs a navrhovaných akcí.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: a93daa88c468a22838a6f9012f0c4622447f5555
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512363"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390891"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>Výjimky zasílání zpráv Event Hubs – .NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>Výjimky zasílání zpráv Event Hubs – .NET (starší verze)
 V této části jsou uvedeny výjimky rozhraní .NET generované rozhraním API .NET Framework. 
+
+> [!IMPORTANT]
+> Některé z výjimek uvedených v článku se vztahují jenom na starší knihovny Event Hubs .NET. Například: Microsoft. ServiceBus. * Exceptions.
+> 
+> Informace o EventHubsException vyvolaném novou knihovnou .NET najdete v tématu [EventHubsException-.NET](exceptions-dotnet.md) .
 
 ## <a name="exception-categories"></a>Kategorie výjimek
 
@@ -19,10 +24,10 @@ Rozhraní API Event Hubs .NET generují výjimky, které mohou být v následuj�
 
  - Chyba kódování uživatele: 
  
-   - [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)
-   - [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)
-   - [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)
-   - [System. Runtime. Serialization. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)
+   - [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)
+   - [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1&preserve-view=true)
+   - [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true)
+   - [System. Runtime. Serialization. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1&preserve-view=true)
    
    Obecná akce: Zkuste opravit kód, než budete pokračovat.
  
@@ -30,7 +35,7 @@ Rozhraní API Event Hubs .NET generují výjimky, které mohou být v následuj�
  
    - [Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
    - [Microsoft. Azure. EventHubs. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
-   - [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)
+   - [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1&preserve-view=true)
    
    Obecná akce: Zkontrolujte konfiguraci a v případě potřeby proveďte změny.
    
@@ -45,7 +50,7 @@ Rozhraní API Event Hubs .NET generují výjimky, které mohou být v následuj�
  
  - Další výjimky: 
  
-   - [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)
+   - [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1&preserve-view=true)
    - [System. TimeoutException](#timeoutexception)
    - [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
    - [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
@@ -57,11 +62,11 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 
 | Typ výjimky | Popis/příčiny/příklady | Navrhovaná akce | Poznámka k automatickému/okamžitému opakování |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) |Server neodpověděl na požadovanou operaci v zadaném čase, který je řízen [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). Je možné, že server dokončil požadovanou operaci. Tato výjimka může nastat v důsledku zpoždění sítě nebo jiné infrastruktury. |Ověřte konzistenci stavu systému a v případě potřeby akci opakujte.<br /> Viz [TimeoutException](#timeoutexception). | V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
-| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |Požadovaná operace uživatele není povolena v rámci serveru nebo služby. Podrobnosti najdete ve zprávě výjimky. Například [kompletní](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) vygeneruje tuto výjimku, pokud byla zpráva přijata v režimu [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) . | Podívejte se na kód a dokumentaci. Ujistěte se, že požadovaná operace je platná. | Zkuste to znovu. |
-| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) | Došlo k pokusu o vyvolání operace u objektu, který již byl uzavřen, přerušen nebo vyřazen. Ve výjimečných případech je ambientní transakce již uvolněna. | Zkontrolujte kód a ujistěte se, že nevyvolává operace u uvolněného objektu. | Zkuste to znovu. |
-| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) | Objekt [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nemohl získat token, token je neplatný nebo token neobsahuje deklarace identity vyžadované k provedení operace. | Ujistěte se, že Poskytovatel tokenů je vytvořený se správnými hodnotami. Ověřte konfiguraci Access Control Service. | V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
-| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) | Jeden nebo více argumentů dodaných metodě je neplatných. Identifikátor URI zadaný pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obsahuje segmenty cesty. Schéma identifikátoru URI zadané pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Vytvoření](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) je neplatné. Hodnota vlastnosti je větší než 32 KB. | Zkontrolujte kód volajícího a ujistěte se, že jsou argumenty správné. | Nemůžete to zkusit znovu. |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) |Server neodpověděl na požadovanou operaci v zadaném čase, který je řízen [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). Je možné, že server dokončil požadovanou operaci. Tato výjimka může nastat v důsledku zpoždění sítě nebo jiné infrastruktury. |Ověřte konzistenci stavu systému a v případě potřeby akci opakujte.<br /> Viz [TimeoutException](#timeoutexception). | V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1&preserve-view=true) |Požadovaná operace uživatele není povolena v rámci serveru nebo služby. Podrobnosti najdete ve zprávě výjimky. Například [kompletní](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) vygeneruje tuto výjimku, pokud byla zpráva přijata v režimu [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) . | Podívejte se na kód a dokumentaci. Ujistěte se, že požadovaná operace je platná. | Zkuste to znovu. |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true) | Došlo k pokusu o vyvolání operace u objektu, který již byl uzavřen, přerušen nebo vyřazen. Ve výjimečných případech je ambientní transakce již uvolněna. | Zkontrolujte kód a ujistěte se, že nevyvolává operace u uvolněného objektu. | Zkuste to znovu. |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1&preserve-view=true) | Objekt [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nemohl získat token, token je neplatný nebo token neobsahuje deklarace identity vyžadované k provedení operace. | Ujistěte se, že Poskytovatel tokenů je vytvořený se správnými hodnotami. Ověřte konfiguraci Access Control Service. | V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) | Jeden nebo více argumentů dodaných metodě je neplatných. Identifikátor URI zadaný pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obsahuje segmenty cesty. Schéma identifikátoru URI zadané pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Vytvoření](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) je neplatné. Hodnota vlastnosti je větší než 32 KB. | Zkontrolujte kód volajícího a ujistěte se, že jsou argumenty správné. | Nemůžete to zkusit znovu. |
 | [Microsoft. ServiceBus. Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft. Azure. EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | Entita přidružená k operaci neexistuje nebo byla odstraněna. | Ujistěte se, že entita existuje. | Nemůžete to zkusit znovu. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Klient nemůže navázat připojení k centru událostí. |Ujistěte se, že je zadaný název hostitele správný a že je hostitel dosažitelný. | Zkuste to znovu, pokud dojde k problémům s přerušovaným připojením. |
 | [Microsoft. ServiceBus. Messaging výjimka serverbusyexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft. Azure. EventHubs výjimka serverbusyexception](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Služba v tuto chvíli nemůže zpracovat požadavek. | Klient může na určitou dobu počkat a pak operaci zopakovat. <br /> Viz [výjimka serverbusyexception](#serverbusyexception). | Klient může po určitém intervalu opakovat pokus. Pokud výsledkem opakování dojde k jiné výjimce, ověřte chování této výjimky znovu. |
@@ -80,9 +85,12 @@ K této výjimce může dojít, pokud je maximální počet přijímačů (5) ji
 Event Hubs má limit 20 skupin uživatelů na centrum událostí. Když se pokusíte vytvořit další, dostanete [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception). 
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) označuje, že operace iniciovaná uživatelem trvá déle, než je časový limit operace. 
+[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) označuje, že operace iniciovaná uživatelem trvá déle, než je časový limit operace. 
 
 Pro Event Hubs je časový limit zadán buď jako součást připojovacího řetězce, nebo prostřednictvím [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder). Chybová zpráva se může lišit, ale vždy obsahuje hodnotu časového limitu zadanou pro aktuální operaci. 
+
+Očekává se, že dojde k vypršení časového limitu během operací údržby, jako jsou například aktualizace služby Event Hubs (nebo) aktualizace operačního systému na prostředky, které službu spouštějí. Během aktualizace operačního systému se entity pohybují a uzly se aktualizují nebo restartují, což může způsobit vypršení časových limitů. Podrobnosti o smlouvě o úrovni služeb (SLA) pro službu Azure Event Hubs najdete v tématu [SLA pro Event Hubs](https://azure.microsoft.com/support/legal/sla/event-hubs/). 
+
 
 ### <a name="common-causes"></a>Běžné příčiny
 Existují dva běžné příčiny této chyby: nesprávná konfigurace nebo přechodný Chyba služby.
@@ -103,16 +111,28 @@ K této chybě může dojít z jednoho ze dvou důvodů:
 
 - Obor názvů Event Hubs nemá dostatečný počet jednotek propustnosti (můžete zaškrtnout obrazovku **metriky** v okně Event Hubs oboru názvů v [Azure Portal](https://portal.azure.com) pro potvrzení). Portál zobrazuje agregované informace (1 minuty), ale měříme propustnost v reálném čase, takže se jedná o pouze odhad.
 
-    **Řešení**: zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. Tuto operaci můžete provést na portálu v okně **škála** obrazovky Event Hubs oboru názvů. Nebo můžete použít [Automatické rozplochelné](event-hubs-auto-inflate.md).
+    **Řešení**: zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. 
 
-### <a name="error-code-50001"></a>Kód chyby 50001
+    Jednotky propustnosti můžete nakonfigurovat na stránce **škálování** nebo na stránce s **přehledem** na stránce **oboru názvů vaší Event Hubs** v Azure Portal. Nebo můžete použít [Automatické](event-hubs-auto-inflate.md)rozstupné, které se automaticky škálují zvýšením počtu jednotek propustnosti, aby se splnily požadavky na používání.
+
+    Jednotky propustnosti (počet propustnosti) platí pro všechna centra událostí v oboru názvů Event Hubs. Znamená to, že si koupíte počet propustnosti na úrovni oboru názvů a sdílíte se mezi centry událostí v rámci tohoto oboru názvů. Každé z nich opravňuje obor názvů k následujícím funkcím:
+
+    - Až 1 MB událostí příchozího přenosu dat (události odeslané do centra událostí) za sekundu, ale ne víc než 1000 událostí příchozího přenosu dat, operací správy nebo řídicích volání rozhraní API za sekundu.
+    - Až 2 MB událostí odchozího přenosu dat (události spotřebované z centra událostí) za sekundu, ale ne víc než 4096 odchozích událostí.
+    - Až 84 GB úložiště událostí (je dostatečné pro výchozí dobu uchovávání po dobu 24 hodin).
+    
+    Na stránce **Přehled** v části **Zobrazit metriky** přepněte na kartu **propustnost** . Vyberte graf pro otevření v větším okně s 1 minutou na ose x. Podívejte se na vrcholové hodnoty a rozdělte je o 60, abyste získali Příchozí bajty za sekundu nebo odchozí bajty za sekundu. Použijte podobný přístup k výpočtu počtu požadavků za sekundu v časech špičky na kartě **požadavky** . 
+
+    Pokud vidíte hodnoty vyšší než počet počet propustnosti * omezení (1 MB za sekundu pro příchozí nebo 1000 žádosti o přijetí za sekundu, 2 MB za sekundu pro odchozí přenosy), zvyšte počet počet propustnosti pomocí stránky **škálování** (na levé straně) na stránce Event Hubs oboru názvů tak, aby se ručně zvýšila velikost nebo používala funkce [Automatické neploché](event-hubs-auto-inflate.md) Event Hubs. Všimněte si, že automatické rozplochelné může zvyšovat až 20 počet PROPUSTNOSTI. Pokud ho chcete zvýšit na přesně 40 počet propustnosti, odešlete [žádost o podporu](../azure-portal/supportability/how-to-create-azure-support-request.md).
+
+### <a name="error-code-50008"></a>Kód chyby 50008
 
 Tato chyba by se měla vyskytovat zřídka. K tomu dojde, pokud je v kontejneru, který spouští kód pro váš obor názvů, nedostatek procesoru – ne více než několik sekund, než začne Nástroj pro vyrovnávání zatížení Event Hubs začínat.
 
-**Řešení**: omezení volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
+**Řešení**: Omezte volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu na skupinu uživatelů na GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 

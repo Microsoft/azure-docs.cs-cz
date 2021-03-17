@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5b2ec220bbf14a79247ed2c78a0e84f4717fae3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77593707"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684232"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalace linkeru ve službě Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
+Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným KUBERNETES RBAC) a navázali jste `kubectl` připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
 
 Všechna Linkerová Luska musí být naplánována na spuštění v uzlech se systémem Linux – Tato instalace je výchozím nastavením v níže popsané metodě instalace a nevyžaduje žádnou další konfiguraci.
 

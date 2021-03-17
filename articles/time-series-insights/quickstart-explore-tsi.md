@@ -9,15 +9,15 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/01/2021
+ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698106"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Gen2
+# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Rychlý start: Průzkum ukázkového prostředí Azure Time Series Insights Gen2
 
 Tento rychlý Start vám pomůže začít s prostředím Azure Time Series Insights Gen2. V bezplatné ukázce provedete klíčové funkce, které byly přidány do Azure Time Series Insights Gen2.
 
@@ -38,12 +38,27 @@ Azure Time Series Insights Průzkumník Gen2 ukazuje historická data a analýzu
 
 ## <a name="work-with-historical-data"></a>Práce s historickými daty
 
-1. Ve **společnosti Contoso 1**se podívejte na vítr turbín **W7**.  
+1. Vyberte **Contoso WindFarm Hierarchy**.
+
+   [![WindFarm hierarchie contoso](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. Ve **společnosti Contoso 1** se podívejte na vítr turbín **W7**.
+
+   [![W7 ve společnosti Contoso – rostlina 1](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. Změňte rozsah zobrazení na **1/1/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)**.
+
+      [![Zobrazení rozsahu](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![Nastavení zobrazení rozsahu](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. Upravte zobrazení rozsahu pomocí přiblížení **(+)** a ven **(-)** a přesunutím panelu snímků.
+
+      [![Upravit zobrazení rozsahu](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. Pokud chcete vybrat senzor, vyberte **Contoso závod 1**  >  **W7**  >  **generátor System**  >  **GeneratorSpeed**. Pak zkontrolujte zobrazené hodnoty.
 
-      [![W7 ve společnosti Contoso – rostlina 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![Rychlost generátoru](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Azure Time Series Insights Gen2 se zobrazí senzor výstrah, který byl aktivován během požáru.
 
@@ -100,9 +115,9 @@ Když použijete Azure Time Series Insights Gen2 a telemetrie senzorů, zjistili
 
       [![Prodloužení časového intervalu na 60 dní](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty. 
+1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty.
 
-    1. Vyberte **systém generátoru**a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2**a **GridVoltagePhase3**.
+    1. Vyberte **systém generátoru** a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2** a **GridVoltagePhase3**.
     1. Přetáhněte značku k poslednímu datovému bodu v viditelné oblasti.
 
        [![Odstranit značku](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
@@ -115,21 +130,14 @@ Když použijete Azure Time Series Insights Gen2 a telemetrie senzorů, zjistili
 
       [![Změnit zobrazení tak, aby zahrnovalo vše](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Teď, když jste dokončili rychlý Start, vyčistěte prostředky, které jste vytvořili:
-
-1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte vaši skupinu prostředků Azure Time Series Insights Gen2.
-1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
-
 ## <a name="next-steps"></a>Další kroky
 
 Jste připraveni vytvořit vlastní prostředí Azure Time Series Insights Gen2. Začněte takto:
 
 > [!div class="nextstepaction"]
-> [Plánování prostředí Azure Time Series Insights Gen2](time-series-insights-update-plan.md)
+> [Plánování prostředí Azure Time Series Insights Gen2](./how-to-plan-your-environment.md)
 
 Naučte se používat ukázku a její funkce:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Průzkumník Gen2](time-series-insights-update-explorer.md)
+> [Azure Time Series Insights Průzkumník Gen2](./concepts-ux-panels.md)

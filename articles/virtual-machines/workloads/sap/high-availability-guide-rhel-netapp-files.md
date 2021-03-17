@@ -1,6 +1,6 @@
 ---
 title: Virtuální počítače Azure s vysokou dostupností pro SAP NW v RHEL s využitím Azure NetApp Files | Microsoft Docs
-description: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
+description: Navažte vysokou dostupnost pro SAP NW na virtuálních počítačích Azure (VM) RHEL s Azure NetApp Files.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -8,18 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e652d1374db12d797dc4505f07350e6e110d6408
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653422"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674430"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 
@@ -76,14 +76,14 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 * [SAP NetWeaver v clusteru Pacemaker](https://access.redhat.com/articles/3150081)
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Konfigurace ASCS/OLAJÍCÍCH pro SAP NetWeaver se samostatnými prostředky v RHEL 7,5](https://access.redhat.com/articles/3569681)
   * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH se samostatným serverem fronty 2 (ENSA2) v Pacemaker v RHEL ](https://access.redhat.com/articles/3974941)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Přehled
@@ -195,13 +195,13 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
       1. Vyberte virtuální počítače v clusteru (A) SCS a jejich IP adresy.
       1. Klikněte na tlačítko Přidat.
    1. Vytvoření sond stavu
-      1. Port 620**00** pro ASCS
+      1. Port 620 **00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
-         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Vybrat TCP as Protocol, port 620 **00**, zachovat interval 5 a špatný práh 2
          1. Klikněte na OK.
-      1. Port 621**01** pro ASCS olajících
-            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
+      1. Port 621 **01** pro ASCS olajících
+            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621 **01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
       1. Pravidla vyrovnávání zatížení pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
@@ -229,15 +229,15 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
       1. Vyberte virtuální počítače v clusteru (A) SCS.
       1. Klikněte na OK.
    1. Vytvoření sond stavu
-      1. Port 620**00** pro ASCS
+      1. Port 620 **00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
-         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Vybrat TCP as Protocol, port 620 **00**, zachovat interval 5 a špatný práh 2
          1. Klikněte na OK.
-      1. Port 621**01** pro ASCS olajících
-            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
+      1. Port 621 **01** pro ASCS olajících
+            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621 **01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
-      1. 32**00** TCP pro ASCS
+      1. 32 **00** TCP pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
          1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **kg. QAS. ASCS. 3200**)
          1. Vyberte front-end IP adresu pro ASCS, fond back-endu a test stavu, který jste vytvořili dříve (například **front-end. QAS. ASCS**)
@@ -246,15 +246,18 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
          1. Klikněte na OK.
       1. Další porty pro ASCS
-         * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
+         * Opakujte výše uvedené kroky v části "d" pro porty **36 00**,**39 00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
-         * Opakujte výše uvedené kroky v části "d" pro porty 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS olajících
+         * Opakujte výše uvedené kroky v části "d" pro porty 32 **01**, 33 **01**, 5 **01** 13, 5 **01** 14, 5 **01** 16 a TCP pro ASCS olajících
+
+      > [!IMPORTANT]
+      > Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
 
       > [!Note]
       > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
       > [!IMPORTANT]
-      > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
+      > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ## <a name="disable-id-mapping-if-using-nfsv41"></a>Zakázat mapování ID (Pokud používáte NFSv 4.1)
 
@@ -504,7 +507,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ASCS**00**, zkuste nastavit vlastníka a skupinu složky ASCS**00** a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ASCS **00**, zkuste nastavit vlastníka a skupinu složky ASCS **00** a zkuste to znovu.
 
    ```
    sudo chown qasadm /usr/sap/QAS/ASCS00
@@ -571,7 +574,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ERS**01**, zkuste nastavit vlastníka a skupinu složky olajících**01** a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ERS **01**, zkuste nastavit vlastníka a skupinu složky olajících **01** a zkuste to znovu.
 
    ```
    sudo chown qaadm /usr/sap/QAS/ERS01
@@ -611,11 +614,11 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[A]** konfigurace Keep Alive
 
-   Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS a změnit nastavení systému Linux. Další informace najdete v tématu [SAP Note 1410736][1410736] .
+   Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS, pokud používáte ENSA1, a změnit nastavení systému Linux `keepalive` na všech serverech SAP pro ENSA1/ENSA2. Další informace najdete v tématu [SAP Note 1410736][1410736] .
 
    ```
    # Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    ```
 
 1. **[A]** aktualizace souboru/usr/SAP/sapservices
@@ -662,7 +665,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
     ```
 
    SAP představilo podporu pro front-Server 2, včetně replikace, od SAP NW 7,52. Počínaje platformou ABAP 1809 se ve výchozím nastavení nainstaluje služba fronty serveru 2. Podporu služby zařazení serveru 2 pro frontu najdete v tématu SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
-   Pokud používáte architekturu serveru fronty 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), nainstalujte agenta prostředků Resource-Agents-SAP-4.1.1 -12. el7. x86_64 nebo novější a definujte prostředky následujícím způsobem:
+   Pokud používáte architekturu Server 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), nainstalujte agenta prostředků – agenti-SAP-4.1.1-12.el7.x86_64 nebo novější a definujte prostředky následujícím způsobem:
 
     ```
     sudo pcs property set maintenance-mode=true
@@ -738,6 +741,8 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    # Probe Port of ERS
    sudo firewall-cmd --zone=public --add-port=62101/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=62101/tcp
+   sudo firewall-cmd --zone=public --add-port=3201/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3201/tcp
    sudo firewall-cmd --zone=public --add-port=3301/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=3301/tcp
    sudo firewall-cmd --zone=public --add-port=50113/tcp --permanent
@@ -1086,7 +1091,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
    Spuštěním následujících příkazů jako kořenového adresáře Identifikujte proces serveru a potom ho ukončete.
 
    ```
-   [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
+   [root@anftstsapcl1 ~]# pgrep -f ms.sapQAS | xargs kill -9
    ```
 
    Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart` . Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
@@ -1133,7 +1138,10 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
    Spusťte následující příkazy jako kořen v uzlu, ve kterém je spuštěná instance ASCS, aby se mohl ukončit server fronty.
 
    ```
-   [root@anftstsapcl2 ~]# pgrep en.sapQAS | xargs kill -9
+   #If using ENSA1
+   [root@anftstsapcl2 ~]# pgrep -f en.sapQAS | xargs kill -9
+   #If using ENSA2
+   [root@anftstsapcl2 ~]# pgrep -f enq.sapQAS | xargs kill -9
    ```
 
    Instance ASCS by měla okamžitě převzít služby na jiný uzel. Instance OLAJÍCÍCH by také měla převzít služby při selhání po spuštění instance ASCS. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
@@ -1180,7 +1188,10 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
    Spusťte následující příkaz jako kořenový adresář v uzlu, ve kterém je spuštěná instance OLAJÍCÍCH, čímž se ukončí proces serveru replikace ve frontě.
 
    ```
-   [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
+   #If using ENSA1
+   [root@anftstsapcl2 ~]# pgrep -f er.sapQAS | xargs kill -9
+   #If using ENSA2
+   [root@anftstsapcl2 ~]# pgrep -f enqr.sapQAS | xargs kill -9
    ```
 
    Pokud příkaz spouštíte pouze jednou, `sapstart` proces se restartuje. Pokud je spuštěno dostatečně často, `sapstart` proces nebude restartován a prostředek bude zastaven. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.

@@ -4,7 +4,7 @@ description: Jak zakázat podnikovou aplikaci, aby se k ní uživatelé nemuseli
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6fc9a4716f1427257b3bbf18e5fa653567e141
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763376"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259232"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Zakázání přihlášení uživatelů pro podnikovou aplikaci v Azure Active Directory
 
@@ -31,15 +31,15 @@ Podniková aplikace se dá snadno zakázat, takže se k ní uživatelé nemůžo
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
 1. Vyberte **všechny služby**, do textového pole zadejte **Azure Active Directory** a pak vyberte **ENTER**.
-1. V podokně **Azure Active Directory**  -   ***adresář*** \ (to znamená podokno Azure AD pro adresář, který spravujete) vyberte **podnikové aplikace**.
+1. V podokně **Azure Active Directory**  -   **_adresář_*_ (to znamená podokno Azure AD pro adresář, který spravujete) vyberte _* Enterprise Applications**.
 1. V podokně **podnikové aplikace – všechny aplikace** se zobrazí seznam aplikací, které můžete spravovat. Vyberte aplikaci.
-1. V podokně ***AppName*** (to znamená podokno s názvem vybrané aplikace v názvu) vyberte **vlastnosti**.
-1. V podokně ***appname***  -  **vlastností** AppName vyberte možnost **ne** , pokud **chcete povolit uživatelům přihlášení?**.
+1. V podokně **_AppName_*_ (to znamená podokno s názvem vybrané aplikace v názvu) vyberte _* vlastnosti**.
+1. V podokně **vlastnosti _AppName_*_-_*** vyberte možnost **ne** , pokud **chcete povolit uživatelům přihlášení?**.
 1. Vyberte příkaz **Uložit** .
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Použití Azure AD PowerShellu k zakázání aplikace, které nejsou v seznamu
 
-Pokud znáte AppId aplikace, která se nezobrazuje v seznamu podnikových aplikací (třeba když jste odstranili aplikaci nebo instanční objekt ještě nevytvořili kvůli předběžnému autorizaci aplikace Microsoft), můžete instanční objekt pro aplikaci vytvořit ručně a pak ho deaktivovat pomocí [rutiny prostředí PowerShell AzureAD](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0).
+Pokud znáte AppId aplikace, která se nezobrazuje v seznamu podnikových aplikací (třeba když jste odstranili aplikaci nebo instanční objekt ještě nevytvořili kvůli předběžnému autorizaci aplikace Microsoft), můžete instanční objekt pro aplikaci vytvořit ručně a pak ho deaktivovat pomocí [rutiny prostředí PowerShell AzureAD](/powershell/module/azuread/New-AzureADServicePrincipal).
 
 ```PowerShell
 # The AppId of the app to be disabled
@@ -60,5 +60,5 @@ if ($servicePrincipal) {
 
 * [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](assign-user-or-group-access-portal.md)
-* [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](remove-user-or-group-access-portal.md)
-* [Změna názvu nebo loga podnikové aplikace](change-name-or-logo-portal.md)
+* [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](./assign-user-or-group-access-portal.md)
+* [Změna názvu nebo loga podnikové aplikace](./add-application-portal-configure.md)

@@ -5,12 +5,10 @@
       items:
         - name: Co je služba Azure Dev Spaces?
           href: about.md
-    - name: Kurzy
-      items:
-        - name: Začínáme se sadou Visual Studio
-          href: get-started-netcore-visualstudio.md
     - name: Koncepty
       items:
+        - name: Migrace na přemostění na Kubernetes
+          href: migrate-to-bridge-to-kubernetes.md
         - name: Jak funguje služba Dev Spaces
           items:
             - name: Přehled
@@ -49,8 +47,6 @@
           href: how-to/setup-cicd.md
         - name: Použití akcí GitHubu s Azure Dev Spaces (Preview)
           href: how-to/github-actions.md
-        - name: Použití modulu plug-in Azure Dev Spaces pro Jenkinse
-          href: /azure/developer/jenkins/azure-dev-spaces-and-aks
         - name: Provozní kontinuita a zotavení po havárii pro Azure Dev Spaces
           href: how-to/dev-spaces-business-continuity.md
         - name: Interakce s kontejnery Windows

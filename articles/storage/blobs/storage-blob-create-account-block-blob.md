@@ -5,25 +5,22 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/10/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c23c034af40d7db2379f9d02357131a00482bd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9350f9aeff90b75a4e1362f6fa2fa1b0d07f20cf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495739"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997082"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
 
 Typ účtu BlockBlobStorage umožňuje vytvářet objekty blob bloku s charakteristikami výkonu Premium. Tento typ účtu úložiště je optimalizovaný pro úlohy s vysokými sazbami transakcí nebo, které vyžadují velmi rychlý přístup krát. Tento článek ukazuje, jak vytvořit účet BlockBlobStorage pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-> [!NOTE]
-> Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview a je dostupná v USA – východ, USA – východ 2, USA – střed, USA (střed) – jih, USA – západ 2, Velká Británie – jih, Kanadě Central a Austrálii východní oblasti. Pokud chcete zkontrolovat omezení, přečtěte si téma [funkce služby Blob Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) a [známé problémy](data-lake-storage-known-issues.md). Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adlspremiumonboard).
-
-Další informace o účtech BlockBlobStorage najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Další informace o účtech BlockBlobStorage najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,7 +61,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -93,11 +90,11 @@ Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte násle
 
 1. V Azure Portal vyberte **všechny služby** > kategorii **úložiště** > **účty úložiště**.
 
-2. V části **účty úložiště**vyberte **Přidat**.
+2. V části **účty úložiště** vyberte **Přidat**.
 
 3. V poli **předplatné** vyberte předplatné, ve kterém chcete účet úložiště vytvořit.
 
-4. V poli **Skupina prostředků** vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**a zadejte název nové skupiny prostředků.
+4. V poli **Skupina prostředků** vyberte existující skupinu prostředků nebo vyberte **vytvořit novou** a zadejte název nové skupiny prostředků.
 
 5. Do pole **název účtu úložiště** zadejte název účtu. Pamatujte na následující pokyny:
 
@@ -119,12 +116,7 @@ Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte násle
 
 8. Vyberte kartu **Upřesnit** .
 
-9. Pokud chcete optimalizovat účet úložiště pro analýzu dat, nastavte **hierarchický obor názvů** na **Enabled**. V opačném případě ponechte tuto možnost nastavenou na výchozí hodnotu.
-
-   Další informace najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
-
-   > [!NOTE]
-   > Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview a je dostupná v USA – východ, USA – východ 2, USA – střed, USA (střed) – jih, USA – západ 2, Velká Británie – jih, Kanadě Central a Austrálii východní oblasti. Pokud chcete zkontrolovat omezení, přečtěte si téma [funkce služby Blob Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) a [známé problémy](data-lake-storage-known-issues.md). Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adlspremiumonboard).
+9. Pokud chcete optimalizovat účet úložiště pro analýzu dat, nastavte **hierarchický obor názvů** na **Enabled**. V opačném případě ponechte tuto možnost nastavenou na výchozí hodnotu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
 
 8. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení účtu úložiště.
 
@@ -165,10 +157,7 @@ Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte násle
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
-   Pokud chcete optimalizovat účet úložiště pro analýzu dat, přidejte `-EnableHierarchicalNamespace $True` ho do příkazu. Další informace najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
-
-   > [!NOTE]
-   > Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview a je dostupná v USA – východ, USA – východ 2, USA – střed, USA (střed) – jih, USA – západ 2, Velká Británie – jih, Kanadě Central a Austrálii východní oblasti. Pokud chcete zkontrolovat omezení, přečtěte si téma [funkce služby Blob Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) a [známé problémy](data-lake-storage-known-issues.md). Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adlspremiumonboard).
+   Pokud chcete optimalizovat účet úložiště pro analýzu dat, přidejte `-EnableHierarchicalNamespace $True` ho do příkazu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -199,15 +188,12 @@ Pokud chcete vytvořit účet bloku BLOB pomocí rozhraní příkazového řádk
     --sku "Premium_LRS"
    ```
 
-   Pokud chcete optimalizovat účet úložiště pro analýzu dat, přidejte `--hierarchical-namespace true` ho do příkazu. Další informace najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
+   Pokud chcete optimalizovat účet úložiště pro analýzu dat, přidejte `--hierarchical-namespace true` ho do příkazu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
 
-   > [!NOTE]
-   > Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview a je dostupná v USA – východ, USA – východ 2, USA – střed, USA (střed) – jih, USA – západ 2, Velká Británie – jih, Kanadě Central a Austrálii východní oblasti. Pokud chcete zkontrolovat omezení, přečtěte si téma [funkce služby Blob Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) a [známé problémy](data-lake-storage-known-issues.md). Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adlspremiumonboard).
-   
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+- Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
-- Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+- Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md).

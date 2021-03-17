@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739364"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
@@ -27,7 +27,7 @@ Transformace vyhledávání se podobá levému vnějšímu spojení. Všechny ř
 
 ## <a name="configuration"></a>Konfigurace
 
-![Transformace vyhledávání](media/data-flow/lookup1.png "Vyhledávání")
+![Snímek obrazovky zobrazuje kartu nastavení vyhledávání s popisky popsanými v následujícím textu.](media/data-flow/lookup1.png "Vyhledávání")
 
 **Primární datový proud:** Příchozí datový proud dat. Tento datový proud je ekvivalentní levé straně spojení.
 
@@ -38,8 +38,6 @@ Transformace vyhledávání se podobá levému vnějšímu spojení. Všechny ř
 **Shoda na:** Není vybráno pouze, pokud není vybrána možnost rozlišovat více řádků. Vyberte, jestli se má shoda na žádném řádku, první shodě nebo poslední shodě. Každý řádek se doporučuje, protože se spustí nejrychlejší. Pokud vyberete první řádek nebo poslední řádek, budete muset zadat podmínky řazení.
 
 **Podmínky vyhledávání:** Vyberte sloupce, na kterých se má shoda. Pokud je splněna podmínka rovnosti, řádky budou považovány za shodné. Najeďte myší a vyberte vypočítaný sloupec a extrahujte hodnotu pomocí [jazyka výrazu toku dat](data-flow-expression-functions.md).
-
-Transformace vyhledávání podporuje pouze shody rovnosti. Pokud chcete výraz vyhledávání přizpůsobit tak, aby zahrnoval jiné operátory, jako je větší než, doporučuje se použít [v transformaci JOIN vzájemné spojení](data-flow-join.md#custom-cross-join). V případě vzájemného spojení se vyhnete případným chybám kartézském produktu při spuštění.
 
 Výstupní data obsahují všechny sloupce z obou datových proudů. Chcete-li odstranit duplicitní nebo nechtěné sloupce, po transformaci vyhledávání přidejte [transformaci Select](data-flow-select.md) . Sloupce je také možné v transformaci jímky vyřadit nebo přejmenovat.
 
@@ -69,6 +67,10 @@ V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo o
 
 Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pokud vaše spojení neběží v případě chyb časového limitu.
 
+## <a name="cached-lookup"></a>Vyhledávání v mezipaměti
+
+Pokud provádíte více menších hledání na stejném zdroji, jímka v mezipaměti a vyhledávání jsou pravděpodobně vhodnější, než transformace vyhledávání. Běžné příklady, kdy může být jímka mezipaměti lepší, vyhledávají maximální hodnotu v úložišti dat a odpovídají kódy chyb v databázi chybových zpráv. Další informace najdete v informacích o [jímky mezipaměti](data-flow-sink.md#cache-sink) a [vyhledáváních uložených v mezipaměti](concepts-data-flow-expression-builder.md#cached-lookup).
+
 ## <a name="data-flow-script"></a>Skript toku dat
 
 ### <a name="syntax"></a>Syntax
@@ -85,7 +87,7 @@ Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pok
 ```
 ### <a name="example"></a>Příklad
 
-![Transformace vyhledávání](media/data-flow/lookup-dsl-example.png "Vyhledávání")
+![Snímek obrazovky zobrazující kartu nastavení vyhledávání pro následující kód.](media/data-flow/lookup-dsl-example.png "Vyhledávání")
 
 Skript toku dat pro výše uvedenou konfiguraci vyhledávání je ve fragmentu kódu níže.
 

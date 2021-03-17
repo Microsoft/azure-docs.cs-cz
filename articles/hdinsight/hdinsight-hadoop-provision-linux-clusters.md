@@ -1,19 +1,16 @@
 ---
 title: Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
 description: Nastavte clustery Hadoop, Kafka, Spark, HBA, R Server nebo neplní clustery pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure Classic, Azure PowerShell, REST nebo sady SDK.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741833"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
 
@@ -72,7 +69,7 @@ Umístění clusteru nemusíte explicitně určovat: cluster je ve stejném umí
 Azure HDInsight v současné době poskytuje následující typy clusterů, z nichž každá obsahuje sadu součástí, které poskytují určité funkce.
 
 > [!IMPORTANT]  
-> Clustery HDInsight jsou k dispozici v různých typech, každou pro jednu úlohu nebo technologii. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je například zaplavení a HBA v jednom clusteru. Pokud vaše řešení vyžaduje technologie, které jsou rozdělené mezi více typů clusterů HDInsight, může [virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network) propojit požadované typy clusterů.
+> Clustery HDInsight jsou k dispozici v různých typech, každou pro jednu úlohu nebo technologii. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je například zaplavení a HBA v jednom clusteru. Pokud vaše řešení vyžaduje technologie, které jsou rozdělené mezi více typů clusterů HDInsight, může [virtuální síť Azure](../virtual-network/index.yml) propojit požadované typy clusterů.
 
 | Typ clusteru | Funkce |
 | --- | --- |
@@ -82,7 +79,7 @@ Azure HDInsight v současné době poskytuje následující typy clusterů, z ni
 | [Kafka](kafka/apache-kafka-introduction.md) | Platforma pro distribuované streamování, která se dá použít k sestavení datových kanálů a aplikací streamování v reálném čase |
 | [Služby ML](r-server/r-server-overview.md) |Různé statistiky s velkými objemy dat, prediktivní modelování a možnosti strojového učení |
 | [Spark](spark/apache-spark-overview.md) |Zpracování v paměti, interaktivní dotazy, zpracování streamu mikrodávkování |
-| [Bouře](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
+| [Storm](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
 
 #### <a name="version"></a>Verze
 
@@ -97,13 +94,13 @@ Clustery HDInsight umožňují během vytváření clusteru konfigurovat dva už
 
 Uživatelské jméno protokolu HTTP má následující omezení:
 
-* Povolené speciální znaky: `_` a`@`
+* Povolené speciální znaky: `_` a `@`
 * Nepovolené znaky: #;. ", \/ : '! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximální délka: 20
 
 Uživatelské jméno SSH má následující omezení:
 
-* Povolené speciální znaky: `_` a`@`
+* Povolené speciální znaky: `_` a `@`
 * Nepovolené znaky: #;. ", \/ : '! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximální délka: 64
 * Rezervované názvy: Hadoop, uživatelé, Oozie, podregistr, mapred, Ambari-QA, Zookeeper, tez, HDFS, Sqoop, příze, hcat, AMS, HBA, test1, Administrator, admin, User, uživatel1, test, uživatel2,, user3, admin1, 1, 123, a, ACTUser, ADM, admin2, ASPNET, Backup, Console, David, Host, Jan, Owner, test2, test3, user4, user5, Spark Support_388945a0
@@ -134,9 +131,12 @@ Během konfigurace pro výchozí koncový bod úložiště zadáte kontejner obj
 > [!IMPORTANT]
 > Povolení přenosu zabezpečeného úložiště po vytvoření clusteru může způsobit chyby v účtu úložiště a nedoporučuje se ho použít. Je lepší vytvořit nový cluster pomocí účtu úložiště s povoleným zabezpečeným přenosem.
 
+> [!Note]  
+> Azure HDInsight automaticky nepřenáší, nepřesouvá ani nekopíruje vaše data uložená v Azure Storage z jedné oblasti do druhé.
+
 ### <a name="metastore-settings"></a>Nastavení metastore
 
-Můžete vytvořit volitelný podregistr nebo Apache Oozie metaúložiště. Ne všechny typy clusterů ale podporují metaúložiště a Azure SQL Data Warehouse nejsou kompatibilní s metaúložiště.
+Můžete vytvořit volitelný podregistr nebo Apache Oozie metaúložiště. Ne všechny typy clusterů ale podporují metaúložiště a služba Azure synapse Analytics není kompatibilní s metaúložiště.
 
 Další informace najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](./hdinsight-use-external-metadata-stores.md).
 
@@ -173,7 +173,7 @@ Pro typy clusterů Hadoop, Spark, HBA, Kafka a interaktivní dotaz můžete povo
 
 Balíček Enterprise Security umožňuje integrovat HDInsight se službou Active Directory a Apache Ranger. Pomocí balíčku podnikového zabezpečení lze vytvořit více uživatelů.
 
-Další informace o vytvoření clusteru HDInsight připojeného k doméně najdete v tématu [vytvoření prostředí sandboxu HDInsight připojeného k doméně](./domain-joined/apache-domain-joined-configure.md).
+Další informace o vytvoření clusteru HDInsight připojeného k doméně najdete v tématu [vytvoření prostředí sandboxu HDInsight připojeného k doméně](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 
 ### <a name="tls"></a>TLS
 
@@ -181,7 +181,7 @@ Další informace najdete v tématu [zabezpečení transportní vrstvy](./transp
 
 ### <a name="virtual-network"></a>Virtuální síť
 
-Pokud vaše řešení vyžaduje technologie, které jsou rozdělené mezi více typů clusterů HDInsight, může [virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network) propojit požadované typy clusterů. Tato konfigurace umožňuje clusterům a veškerý kód, který do nich nasazujete, k přímé komunikaci.
+Pokud vaše řešení vyžaduje technologie, které jsou rozdělené mezi více typů clusterů HDInsight, může [virtuální síť Azure](../virtual-network/index.yml) propojit požadované typy clusterů. Tato konfigurace umožňuje clusterům a veškerý kód, který do nich nasazujete, k přímé komunikaci.
 
 Další informace o používání služby Azure Virtual Network s HDInsight najdete v tématu [plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
@@ -213,10 +213,10 @@ Každý typ clusteru má svůj vlastní počet uzlů, terminologii pro uzly a v�
 | --- | --- | --- |
 | Hadoop |Hlavní uzel (2), pracovní uzel (1 +) |![Uzly clusteru HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Hlavní server (2), server oblasti (1 +), hlavní/ZooKeeper uzel (3) |![Instalace typu clusteru HDInsight HBA](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Bouře |Nimbus uzel (2), server pro řízení (1 +), ZooKeeper uzel (3) |![Nastavení typu clusteru HDInsight v HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Storm |Nimbus uzel (2), server pro řízení (1 +), ZooKeeper uzel (3) |![Nastavení typu clusteru HDInsight v HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Hlavní uzel (2), pracovní uzel (1 +), uzel ZooKeeper (3) (volné pro velikost virtuálního počítače a1 ZooKeeper) |![Nastavení typu clusteru HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
-Další informace najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) v tématu Co jsou komponenty Hadoop a verze v HDInsight?.
+Další informace najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](hdinsight-supported-node-configuration.md) v tématu Co jsou komponenty Hadoop a verze v HDInsight?.
 
 Náklady na clustery HDInsight se určují podle počtu uzlů a velikosti virtuálních počítačů pro uzly.
 
@@ -232,7 +232,7 @@ Různé typy clusterů mají různé typy uzlů, počty uzlů a velikosti uzlů:
 Pokud jste právě zkoušeli HDInsight, doporučujeme použít jeden pracovní uzel. Další informace o cenách služby HDInsight najdete v tématu [ceny služby HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 > [!NOTE]  
-> Omezení velikosti clusteru se liší v rámci předplatných Azure. Pokud chcete tento limit zvýšit, kontaktujte [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
+> Omezení velikosti clusteru se liší v rámci předplatných Azure. Pokud chcete tento limit zvýšit, kontaktujte [podporu fakturace Azure](../azure-portal/supportability/how-to-create-azure-support-request.md) .
 
 Když použijete Azure Portal ke konfiguraci clusteru, velikost uzlu je k dispozici na kartě **Konfigurace + ceny** . Na portálu můžete také zobrazit náklady spojené s různými velikostmi uzlů.
 
@@ -240,15 +240,15 @@ Když použijete Azure Portal ke konfiguraci clusteru, velikost uzlu je k dispoz
 
 Při nasazení clusterů vyberte výpočetní prostředky na základě řešení, které plánujete nasadit. Pro clustery HDInsight se používají následující virtuální počítače:
 
-* Virtuální počítače řady a a D1-4: [velikosti virtuálních počítačů se systémem Linux pro obecné účely](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* Virtuální počítač řady D11-14: [paměťově optimalizované velikosti virtuálních počítačů Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* Virtuální počítače řady a a D1-4: [velikosti virtuálních počítačů se systémem Linux pro obecné účely](../virtual-machines/sizes-general.md)
+* Virtuální počítač řady D11-14: [paměťově optimalizované velikosti virtuálních počítačů Linux](../virtual-machines/sizes-memory.md)
 
 Pokud chcete zjistit, jakou hodnotu byste měli použít k určení velikosti virtuálního počítače při vytváření clusteru pomocí různých sad SDK nebo při použití Azure PowerShell, přečtěte si téma [velikosti virtuálních počítačů, které se mají použít pro clustery HDInsight](../cloud-services/cloud-services-sizes-specs.md#size-tables). Z tohoto odkazovaného článku použijte hodnotu ve sloupci **Velikost** v tabulkách.
 
 > [!IMPORTANT]  
 > Pokud v clusteru potřebujete víc než 32 pracovních uzlů, musíte vybrat velikost hlavního uzlu s aspoň 8 jádry a 14 GB paměti RAM.
 
-Další informace najdete v tématu [velikosti pro virtuální počítače](../virtual-machines/windows/sizes.md). Informace o cenách různých velikostí najdete v tématu ceny služby [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).
+Další informace najdete v tématu [velikosti pro virtuální počítače](../virtual-machines/sizes.md). Informace o cenách různých velikostí najdete v tématu ceny služby [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).
 
 ### <a name="add-application"></a>Přidání aplikace
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015098"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894758"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -30,7 +30,7 @@ Následující tabulka popisuje vlastnosti, které musíte nakonfigurovat pro We
 | Vlastnost | Popis |
 |:--- |:--- |
 | Název |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
-| Adresa URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
+| URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
 | Datum vypršení platnosti | Datum vypršení platnosti Webhooku, po kterém ho už nebude možné používat. Po vytvoření Webhooku můžete upravit datum vypršení platnosti, dokud nevypršela platnost Webhooku. |
 | Povoleno | Nastavení určující, zda je Webhook ve výchozím nastavení povolený, když je vytvořený. Pokud tuto vlastnost nastavíte na zakázáno, nebude moct Webhook používat žádný klient. Tuto vlastnost můžete nastavit při vytváření Webhooku nebo jakékoli jiné doby po jejím vytvoření. |
 
@@ -66,7 +66,7 @@ Například pokud spouštíte následující sadu Runbook z Azure Portal a chcet
 Pro další příklad Runbooku nadefinujeme následující vlastnosti pro `WebhookData` :
 
 * **Webhook**: MyWebhook
-* **Částmi**:`*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
+* **Částmi**: `*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
 
 Nyní předáte následující objekt JSON v uživatelském rozhraní pro `WebhookData` parametr. V tomto příkladu se znaky návratu a zalomení řádku shodují s formátem, který je předaný z Webhooku.
 
@@ -89,7 +89,7 @@ Vezměte v úvahu následující strategie:
 
 * Nechat sadu Runbook při přijetí požadavku Webhooku provést nějaké ověření externí podmínky. Představte si třeba sadu Runbook, která je volána GitHubem, kdykoli je nové potvrzení do úložiště GitHub. Runbook se může připojit k GitHubu a ověřit, že před pokračováním došlo k novému potvrzení.
 
-* Azure Automation podporuje značky služby virtuální sítě Azure, konkrétně [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md) a Trigger webhooků z vaší virtuální sítě. Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement** v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
+* Azure Automation podporuje značky služby virtuální sítě Azure, konkrétně [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md) a Trigger webhooků z vaší virtuální sítě. Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement**  v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
 
 ## <a name="create-a-webhook"></a>Vytvoření Webhooku
 
@@ -142,16 +142,16 @@ Po vytvoření Webhooku má období platnosti dobu 10 let, po jehož uplynutí v
 Můžete zvětšit Webhook, který nedosáhl svého času vypršení platnosti. Postup při rozšiřování Webhooku:
 
 1. Přejděte na sadu Runbook, která obsahuje Webhook. 
-2. V části **prostředky**vyberte **Webhooky** . 
+2. V části **prostředky** vyberte **Webhooky** . 
 3. Klikněte na Webhook, který chcete zvětšit. 
 4. Na stránce Webhook vyberte nové datum a čas vypršení platnosti a klikněte na **Uložit**.
 
 ## <a name="sample-runbook"></a>Ukázkový Runbook
 
-Následující ukázkový Runbook akceptuje data Webhooku a spustí virtuální počítače zadané v textu žádosti. Pokud chcete tento Runbook otestovat, v účtu Automation v části **Runbooky**klikněte na **vytvořit Runbook**. Pokud si nejste jisti, jak vytvořit sadu Runbook, přečtěte si téma [Vytvoření Runbooku](automation-quickstart-create-runbook.md).
+Následující ukázkový Runbook akceptuje data Webhooku a spustí virtuální počítače zadané v textu žádosti. Pokud chcete tento Runbook otestovat, v účtu Automation v části **Runbooky** klikněte na **vytvořit Runbook**. Pokud si nejste jisti, jak vytvořit sadu Runbook, přečtěte si téma [Vytvoření Runbooku](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
 
 ```powershell
 param

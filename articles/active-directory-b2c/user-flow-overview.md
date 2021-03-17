@@ -12,12 +12,12 @@ ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87481593"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840185"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů v Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Aby vám pomohlo nastavit nejběžnější úlohy identit pro vaše aplikace, Az
 
 - Typy účtů používané pro přihlašování, jako jsou účty sociálních sítí, jako je například Facebook nebo místní účet
 - Atributy, které se mají shromáždit od příjemce, jako je křestní jméno, PSČ a velikost bot
-- Azure Multi-Factor Authentication
+- Multi-Factor Authentication Azure AD
 - Přizpůsobení uživatelského rozhraní
 - Informace, které aplikace obdrží jako deklarace identity v tokenu
 

@@ -2,17 +2,20 @@
 title: Bezpečné nasazení šablony s tokenem SAS
 description: K nasazení prostředků do Azure můžete použít šablonu Azure Resource Manager chráněnou tokenem SAS. Zobrazuje Azure PowerShell a Azure CLI.
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80156391"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88855661"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Nasazení privátní šablony ARM pomocí tokenu SAS
 
-Když se vaše šablona Azure Resource Manager (ARM) nachází v účtu úložiště, můžete omezit přístup k šabloně, abyste ji neveřejně vyhnuli. Přístup k zabezpečené šabloně získáte tak, že pro šablonu vytvoříte token sdíleného přístupového podpisu (SAS) a tento token během nasazování zadáte. Tento článek vysvětluje, jak pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure nasadit šablonu s tokenem SAS.
+Když je šablona Azure Resource Manager (šablona ARM) umístěná v účtu úložiště, můžete omezit přístup k šabloně, abyste ji předešli veřejně vystavení. Přístup k zabezpečené šabloně získáte tak, že pro šablonu vytvoříte token sdíleného přístupového podpisu (SAS) a tento token během nasazování zadáte. Tento článek vysvětluje, jak pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure nasadit šablonu s tokenem SAS.
+
+> [!IMPORTANT]
+> Místo zabezpečení šablony pomocí tokenu SAS zvažte použití [specifikací šablony](template-specs.md). Pomocí specifikací šablon můžete sdílet šablony s ostatními uživateli ve vaší organizaci a spravovat přístup k šablonám prostřednictvím Azure RBAC.
 
 ## <a name="create-storage-account-with-secured-container"></a>Vytvořit účet úložiště s zabezpečeným kontejnerem
 
@@ -110,6 +113,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Následující příklad funguje s prostředím bash v Cloud Shell. Jiná prostředí můžou vyžadovat jinou syntaxi, aby se vytvořil čas vypršení platnosti tokenu SAS.
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

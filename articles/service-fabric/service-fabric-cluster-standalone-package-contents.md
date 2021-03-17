@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261021"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah samostatného balíčku Service Fabric pro Windows Server
@@ -29,7 +29,7 @@ Ve [staženém](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric s
 | Readme.txt |Odkaz na poznámky k verzi a základní pokyny k instalaci. Je podmnožinou pokynů v tomto dokumentu. |
 | ThirdPartyNotice. RTF |Oznámení o softwaru třetích stran, který je v balíčku. |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe, která se spouští na vyžádání pro shromáždění a nahrání protokolů trasování do Microsoftu pro účely podpory. |
-| Tools\ServiceFabricUpdateService.zip |Nástroj, který slouží k povolení automatického upgradu kódu pro clustery, které nemají přístup k Internetu. Další podrobnosti najdete [tady](service-fabric-cluster-upgrade-windows-server.md) .|
+| Tools\ServiceFabricUpdateService.zip |Nástroj, který slouží k povolení automatického upgradu kódu pro clustery, které nemají přístup k Internetu. Další podrobnosti najdete [tady](service-fabric-cluster-upgrade-windows-server.md).|
 
 **Šablony** 
 

@@ -1,22 +1,22 @@
 ---
 title: Vytvořit šablonu – Visual Studio Code
-description: Při práci na šablonách Resource Manageru můžete použít Visual Studio Code a rozšíření Nástroje Azure Resource Manageru.
+description: Použijte Visual Studio Code a rozšíření Azure Resource Manager nástrojů pro práci na šablonách Azure Resource Manager (šablony ARM).
 author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3e41d4f6f8b8aeb2be376ae1385189fe02e9b897
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034973"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504653"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rychlý Start: vytvoření šablon Azure Resource Manager pomocí Visual Studio Code
+# <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code
 
-Nástroje Azure Resource Manager pro Visual Studio Code poskytují podporu jazyků, fragmenty prostředků a automatického dokončování prostředků. Tyto nástroje vám pomůžou vytvořit a ověřit šablony Azure Resource Manager. V tomto rychlém startu použijete rozšíření k vytvoření šablony Azure Resource Manager od začátku. V takovém případě se můžete setkat s funkcemi rozšíření, jako jsou fragmenty šablon ARM, ověřování, dokončování a podpora souborů parametrů.
+Nástroje Azure Resource Manager pro Visual Studio Code poskytují podporu jazyků, fragmenty prostředků a automatického dokončování prostředků. Tyto nástroje vám pomůžou vytvořit a ověřit šablony Azure Resource Manager (šablony ARM). V tomto rychlém startu použijete rozšíření k vytvoření šablony ARM od začátku. V takovém případě se můžete setkat s funkcemi rozšíření, jako jsou fragmenty šablon ARM, ověřování, dokončování a podpora souborů parametrů.
 
-K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [rozšířením nástroje Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Potřebujete také rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest) nebo [modul Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) nainstalovaný a ověřený.
+K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [rozšířením nástroje Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Potřebujete také rozhraní příkazového [řádku Azure CLI](/cli/azure/) nebo [modul Azure PowerShell](/powershell/azure/new-azureps-module-az) nainstalovaný a ověřený.
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -54,7 +54,7 @@ Klávesa **TAB** se dá použít k tabulátoru prostřednictvím konfigurovateln
 
 ## <a name="completion-and-validation"></a>Dokončení a ověření
 
-Jednou z nejúčinnějších schopností rozšíření je jeho integrace se schématy Azure. Schémata Azure poskytují rozšíření s možnostmi dokončování ověřování a prostředků. Pojďme Upravit účet úložiště, aby se zobrazilo ověření a dokončení v akci. 
+Jednou z nejúčinnějších schopností rozšíření je jeho integrace se schématy Azure. Schémata Azure poskytují rozšíření s možnostmi dokončování ověřování a prostředků. Pojďme Upravit účet úložiště, aby se zobrazilo ověření a dokončení v akci.
 
 Nejdřív aktualizujte druh účtu úložiště na neplatnou hodnotu, třeba `megaStorage` . Všimněte si, že tato akce vytvoří upozornění, což znamená, že není `megaStorage` platná hodnota.
 
@@ -80,7 +80,7 @@ Názvy účtů Azure Storage mají minimální délku 3 znaky a musí být v roz
 
 ![Obrázek, který znázorňuje minLength a maxLength přidaný do parametru šablony ARM](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-Nyní můžete v prostředku úložiště aktualizovat vlastnost název tak, aby používala parametr. Uděláte to tak, že odeberete aktuální název. Zadejte dvojité uvozovky a levou hranatou závorku `[` , která vytvoří seznam funkcí šablon ARM. V seznamu vyberte *parametry* . 
+Nyní můžete v prostředku úložiště aktualizovat vlastnost název tak, aby používala parametr. Uděláte to tak, že odeberete aktuální název. Zadejte dvojité uvozovky a levou hranatou závorku `[` , která vytvoří seznam funkcí šablon ARM. V seznamu vyberte *parametry* .
 
 ![Obrázek znázorňující automatické dokončování při použití parametrů v prostředcích šablon ARM](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 

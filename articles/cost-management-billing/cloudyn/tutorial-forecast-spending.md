@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 455f611b57cf11e29d35e617df4fd9c09aff2906
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 70a5a4bf6981aa115c923559112d3533eebf3086
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79463777"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132172"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Kurz: Odhad budoucí útraty
 
@@ -69,4 +70,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, ve kterém se naučíte spravovat náklady s využitím přidělování nákladů a sestav započítávání pohledávek.
 
 > [!div class="nextstepaction"]
-> [Správa nákladů s přidělováním nákladů a sestavami započítávání pohledávek](../../cost-management/tutorial-manage-costs.md)
+> [Správa nákladů s přidělováním nákladů a sestavami započítávání pohledávek](./tutorial-manage-costs.md)

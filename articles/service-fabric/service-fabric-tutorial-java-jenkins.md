@@ -1,17 +1,15 @@
 ---
 title: Konfigurace Jenkinse pro aplikaci Java v Service Fabric v Azure
 description: V tomto kurzu zjistíte, jak pomocí Jenkinse nastavit průběžnou integraci pro nasazení aplikace Service Fabric v Javě.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320710"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531968"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
 
@@ -109,7 +107,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
     Můžete také zadat další podrobnosti, které se použijí k nasazení aplikace. Příklad podrobností o aplikaci najdete na následujícím snímku obrazovky:
 
-    ![Akce sestavení v Jenkinsu pro Service Fabric](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![Dialogové okno akce po sestavení s dalšími možnostmi Service Fabric nasazení projektu](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > Zde uvedený cluster může být stejný jako cluster, který hostuje aplikaci Jenkins typu kontejner, pokud k nasazení image kontejneru Jenkins používáte Service Fabric.
@@ -178,7 +176,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
     ![Probíhající upgrade](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-1. Při přístupu k **http:// \<Host-IP> : 8080** je teď v provozu hlasovací aplikace s plnou funkčností.
+1. Při přístupu k **http:// \<Host-IP> : 8080**  je teď v provozu hlasovací aplikace s plnou funkčností.
 
     ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

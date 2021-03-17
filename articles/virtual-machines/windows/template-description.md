@@ -2,17 +2,17 @@
 title: Virtuální počítače v šabloně Azure Resource Manager | Microsoft Azure
 description: Přečtěte si další informace o tom, jak je prostředek virtuálního počítače definovaný v Azure Resource Manager šabloně.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827448"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555988"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Resource Manageru
 
@@ -282,7 +282,7 @@ Při definování prostředku virtuálního počítače se používá několik p
 
 ## <a name="disks-and-images"></a>Disky a image
    
-V Azure můžou soubory VHD představovat [disky nebo Image](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud je operační systém v souboru VHD specializovaný jako na konkrétní virtuální počítač, nazývá se to disk. Pokud je operační systém v souboru VHD zobecněný, aby se mohl vytvořit mnoho virtuálních počítačů, označuje se jako obrázek.   
+V Azure můžou soubory VHD představovat [disky nebo Image](../managed-disks-overview.md). Pokud je operační systém v souboru VHD specializovaný jako na konkrétní virtuální počítač, nazývá se to disk. Pokud je operační systém v souboru VHD zobecněný, aby se mohl vytvořit mnoho virtuálních počítačů, označuje se jako obrázek.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Vytvoření nových virtuálních počítačů a nových disků z image platformy
 
@@ -453,5 +453,5 @@ Nejedná se o problém, jak použít stejnou šablonu k vytvoření prostředků
 
 - Vytvoření vlastní šablony pomocí [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md).
 - Nasaďte šablonu, kterou jste vytvořili, pomocí [šablony Správce prostředků vytvořit virtuální počítač s Windows](ps-template.md).
-- Informace o tom, jak spravovat virtuální počítače, které jste vytvořili, najdete v tématu [Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Informace o tom, jak spravovat virtuální počítače, které jste vytvořili, najdete v tématu [Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md).
 - Syntaxi a vlastnosti typů prostředků v šablonách JSON naleznete v tématu [Azure Resource Manager Reference k šabloně](/azure/templates/).

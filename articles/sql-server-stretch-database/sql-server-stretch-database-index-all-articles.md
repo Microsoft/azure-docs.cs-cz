@@ -13,38 +13,38 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: f4dcec5e58cb10850e22d3006b0ecd41f6d013fd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 15b4a90a4e082cbe8fc0f2da1a87b6860cfb66a4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202282"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024207"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Všechna témata pro službu Azure SQL Server Stretch Database
-Toto téma obsahuje seznam všech témat, která se vztahují přímo na službu **SQL Server Stretch Database** služby Azure. Na této webové stránce můžete vyhledat klíčová slova pomocí **kombinace kláves CTRL + F**a vyhledat témata aktuálního zájmu.
+Toto téma obsahuje seznam všech témat, která se vztahují přímo na službu **SQL Server Stretch Database** služby Azure. Na této webové stránce můžete vyhledat klíčová slova pomocí **kombinace kláves CTRL + F** a vyhledat témata aktuálního zájmu.
 
 ## <a name="get-started"></a>Začínáme
 | Nadpis | Popis |
 |:--- |:--- |
-|[Identifikace databází a tabulek pro Stretch Database spuštěním služby Stretch Database Advisor](sql-server-stretch-database-identify-databases.md) |Naučte se identifikovat databáze a tabulky, které jsou kandidáty na Stretch Database. |
-|[Omezení pro Stretch Database](sql-server-stretch-database-limitations.md) |Přečtěte si o omezeních pro Stretch Database. |
-|[Přehled funkce Stretch Database](sql-server-stretch-database-overview.md) |Zjistěte, jak funkce Stretch Database migruje vaše studená data transparentně a bezpečně do cloudu Microsoft Azure. |
-|[Začínáme spuštěním průvodce povolením funkce Stretch pro databázi](sql-server-stretch-database-wizard.md) |Naučte se nakonfigurovat databázi pro funkci Stretch Database spuštěním průvodce povolením funkce Stretch pro databázi. |
+|[Identifikace databází a tabulek pro Stretch Database spuštěním služby Stretch Database Advisor](/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor) |Naučte se identifikovat databáze a tabulky, které jsou kandidáty na Stretch Database. |
+|[Omezení pro Stretch Database](/sql/sql-server/stretch-database/limitations-for-stretch-database) |Přečtěte si o omezeních pro Stretch Database. |
+|[Přehled funkce Stretch Database](/sql/sql-server/stretch-database/stretch-database) |Zjistěte, jak funkce Stretch Database migruje vaše studená data transparentně a bezpečně do cloudu Microsoft Azure. |
+|[Začínáme spuštěním průvodce povolením funkce Stretch pro databázi](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard) |Naučte se nakonfigurovat databázi pro funkci Stretch Database spuštěním průvodce povolením funkce Stretch pro databázi. |
 
-## <a name="enable"></a>Povolení
+## <a name="enable"></a>Povolit
 | Nadpis | Popis |
 |:--- |:--- |
-|[Povolení funkce Stretch Database pro databázi](sql-server-stretch-database-enable-database.md) |Přečtěte si, jak nakonfigurovat databázi pro Stretch Database. |
-|[Povolení funkce Stretch Database pro tabulku](sql-server-stretch-database-enable-table.md) |Naučte se konfigurovat tabulku pro Stretch Database. |
-|[Vybrat řádky k migraci pomocí funkce filtru (Stretch Database)](sql-server-stretch-database-predicate-function.md) |Naučte se, jak vybrat řádky, které se mají migrovat, pomocí funkce filtru. |
+|[Povolení funkce Stretch Database pro databázi](/sql/sql-server/stretch-database/enable-stretch-database-for-a-database) |Přečtěte si, jak nakonfigurovat databázi pro Stretch Database. |
+|[Povolení funkce Stretch Database pro tabulku](/sql/sql-server/stretch-database/enable-stretch-database-for-a-table) |Naučte se konfigurovat tabulku pro Stretch Database. |
+|[Vybrat řádky k migraci pomocí funkce filtru (Stretch Database)](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database) |Naučte se, jak vybrat řádky, které se mají migrovat, pomocí funkce filtru. |
 
 ## <a name="manage"></a>Spravovat
 | Nadpis | Popis |
 |:--- |:--- |
-|[Zakázat Stretch Database a vrátit Vzdálená data](sql-server-stretch-database-disable.md) |Naučte se, jak zakázat Stretch Database pro tabulku a volitelně vrátit Vzdálená data. |
-|[Správa a řešení potíží s funkcí Stretch Database](sql-server-stretch-database-manage.md) |Naučte se spravovat Stretch Database a řešit potíže. |
-|[Monitorování a řešení potíží s migrací dat (Stretch Database)](sql-server-stretch-database-monitor.md) |Naučte se monitorovat stav migrace dat. |
-|[Pozastavení a obnovení migrace dat (Stretch Database)](sql-server-stretch-database-pause.md) |Přečtěte si, jak pozastavit nebo obnovit migraci dat do Azure. |
+|[Zakázat Stretch Database a vrátit Vzdálená data](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data) |Naučte se, jak zakázat Stretch Database pro tabulku a volitelně vrátit Vzdálená data. |
+|[Správa a řešení potíží s funkcí Stretch Database](/sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database) |Naučte se spravovat Stretch Database a řešit potíže. |
+|[Monitorování a řešení potíží s migrací dat (Stretch Database)](/sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database) |Naučte se monitorovat stav migrace dat. |
+|[Pozastavení a obnovení migrace dat (Stretch Database)](/sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database) |Přečtěte si, jak pozastavit nebo obnovit migraci dat do Azure. |
 
 ## <a name="security"></a>Zabezpečení
 | Nadpis | Popis |
@@ -55,6 +55,5 @@ Toto téma obsahuje seznam všech témat, která se vztahují přímo na službu
 ## <a name="backup-and-recovery"></a>Backup a obnovení
 | Nadpis | Popis |
 |:--- |:--- |
-|[Zálohování databází s povolenou funkcí Stretch](sql-server-stretch-database-backup.md) |Naučte se zálohovat databáze s \- povoleným roztahováním. |
-|[Obnovení databází s povolenou funkcí Stretch](sql-server-stretch-database-restore.md) |Přečtěte si, jak obnovit \- databáze s povoleným stretm. |
-
+|[Zálohování databází s povolenou funkcí Stretch](/sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database) |Naučte se zálohovat databáze s \- povoleným roztahováním. |
+|[Obnovení databází s povolenou funkcí Stretch](/sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database) |Přečtěte si, jak obnovit \- databáze s povoleným stretm. |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: b3b2032d8cefe881e59fe339786877c4f03c9305
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 96abe2209d4298f23c47c62fec970430f69cbaf6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553780"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Pipedrivu
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat Pipedrivu s Azure Active Directory (Az
 * Řízení ve službě Azure AD, která má přístup k Pipedrivu.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Pipedrivu svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,25 +38,23 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Pipedrivu podporuje jednotné přihlašování (SSO) **a IDP** .
-* Po nakonfigurování jednotného přihlašování Pipedrivu můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-
-## <a name="adding-pipedrive-from-the-gallery"></a>Přidání Pipedrivu z Galerie
+## <a name="add-pipedrive-from-the-gallery"></a>Přidání Pipedrivu z Galerie
 
 Pokud chcete nakonfigurovat integraci Pipedrivu do služby Azure AD, musíte přidat Pipedrivu z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **pipedrivu** .
 1. Na panelu výsledků vyberte **pipedrivu** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Pipedrivu
+## <a name="configure-and-test-azure-ad-sso-for-pipedrive"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Pipedrivu
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Pipedrivu pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Pipedrivu.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Pipedrivu, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Pipedrivu postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -71,9 +67,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Pipedrivu** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **pipedrivu** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -96,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Pipedrivu několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------ | --------- |
     | e-mail | uživatel. pošta |
 
@@ -112,30 +108,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Pipedrivu.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **pipedrivu**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-pipedrive-sso"></a>Konfigurace jednotného přihlašování Pipedrivu
@@ -144,15 +134,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Profil uživatele** a vyberte **Nastavení**.
 
-    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/configure1.png)
+    ![Snímek obrazovky, který zobrazuje "nastavení" vybrané z nabídky "Profil uživatele".](./media/pipedrive-tutorial/configure-1.png)
 
 1. Přejděte dolů ke službě Security Center a vyberte **jednotné přihlašování**.
 
-    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/configure2.png)
+    ![Snímek obrazovky, který zobrazuje jednotné přihlašování vybrané v Security Center.](./media/pipedrive-tutorial/configure-2.png)
 
 1. V části **Konfigurace SAML pro pipedrivu** proveďte následující kroky:
 
-    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/configure3.png)
+    ![Snímek obrazovky zobrazující oddíl S konfigurací M L pro Pipedrivu se zvýrazněnými textovými poli](./media/pipedrive-tutorial/configure-3.png)
 
     a. Do textového pole **vystavitele** vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
@@ -168,15 +158,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte dolů na společnost a vyberte **Spravovat uživatele**.
 
-    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/user1.png)
+    ![Snímek obrazovky, který zobrazuje "spravovat uživatele" vybraný v nabídce "společnost".](./media/pipedrive-tutorial/user-1.png)
 
 1. Klikněte na **Přidat uživatele**.
     
-    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/user2.png)
+    ![Snímek obrazovky zobrazující stránku Spravovat uživatele s tlačítkem Přidat uživatele na pravé straně](./media/pipedrive-tutorial/user-2.png)
 
 1. V části **Správa uživatelů** proveďte následující kroky:
 
-    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/user3.png)
+    ![Konfigurace pipedrivu](./media/pipedrive-tutorial/user-3.png)
 
     a. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako je `B.Simon@contoso.com` .
 
@@ -188,18 +178,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Pipedrivu, měli byste se automaticky přihlásit k Pipedrivu, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-## <a name="additional-resources"></a>Další zdroje
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Pipedrivu, kde můžete spustit tok přihlášení.  
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* Přejít na adresu URL pro přihlášení k Pipedrivu přímo a zahájit tok přihlášení.
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Vyzkoušejte si Pipedrivu s Azure AD](https://aad.portal.azure.com/)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k pipedrivu, pro které jste nastavili jednotné přihlašování. 
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Pipedrivu v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k Pipedrivu, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování Pipedrivu můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

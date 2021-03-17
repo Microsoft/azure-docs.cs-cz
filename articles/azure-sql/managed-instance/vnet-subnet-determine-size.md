@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 562766ada8fb9a2620fa83875dc98d02ab752d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012442"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Určení požadované velikosti podsítě & rozsahu pro spravovanou instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Počet spravovaných instancí, které mohou být nasazeny v podsíti virtuáln�
 
 Při vytváření spravované instance Azure přiděluje počet virtuálních počítačů v závislosti na vrstvě, kterou jste vybrali během zřizování. Vzhledem k tomu, že tyto virtuální počítače jsou přidruženy k vaší podsíti, vyžadují IP adresy. Pro zajištění vysoké dostupnosti během pravidelných operací a údržby služeb může Azure přidělovat další virtuální počítače. V důsledku toho je počet požadovaných IP adres v podsíti větší než počet spravovaných instancí v této podsíti.
 
-V rámci návrhu vyžaduje spravovaná instance minimálně 32 IP adres v podsíti. V důsledku toho můžete při definování rozsahů IP adres podsítě použít minimální masku podsítě/27. Doporučuje se pečlivé plánování velikosti podsítě pro nasazení spravovaných instancí. Vstupy, které by se měly vzít v úvahu během plánování:
+Spravovaná instance v podsíti záměrně vyžaduje minimálně 32 IP adres. Proto při definování rozsahů IP adres podsítě můžete jako minimální masku podsítě použít /27. Doporučujeme pečlivě naplánovat velikost podsítě pro vaše nasazení spravované instance. Vstupy, které by se měly vzít v úvahu během plánování:
 
 - Počet spravovaných instancí včetně následujících parametrů instance:
   - úroveň služby
@@ -48,18 +48,18 @@ Velikost podsítě proveďte v souladu s budoucím nasazením a škálováním i
 - Každá spravovaná instance používá počet adres, které závisí na cenové úrovni a generaci hardwaru.
 
 > [!IMPORTANT]
-> Rozsah adres podsítě není možné změnit, pokud existuje libovolný prostředek v podsíti. Je také možné přesunout spravované instance z jedné podsítě do jiné. Kdykoli je to možné, zvažte použití větších podsítí místo menších, aby v budoucnu nedocházelo k problémům.
+> Pokud v podsíti existují nějaké prostředky, není možné změnit rozsah adres podsítě. Také není možné přesouvat spravované instance mezi podsítěmi. Kdykoli je to možné, zvažte použití větších podsítí místo menších, aby v budoucnu nedocházelo k problémům.
 
 GP = obecné účely; BC = kritické pro podnikání; VC = virtuální cluster
 
-| **Hardware – obecné** | **Cenová úroveň** | **Využití Azure** | **Využití VC** | **Použití instance** | **Čtení*** |
+| **Hardware – obecné** | **Cenová úroveň** | **Využití Azure** | **Využití VC** | **Použití instance** | **Celkem** _ |
 | --- | --- | --- | --- | --- | --- |
 | COMPUTE GEN4 – | GP | 5 | 1 | 5 | 11 |
 | COMPUTE GEN4 – | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \*Sloupec celkem zobrazuje počet adres, které se provedou při nasazení jedné instance v podsíti. Každá další instance v podsíti přidá počet adres představovaných sloupcem použití instance. Adresy reprezentované sloupcem využití Azure se sdílejí napříč několika virtuálními clustery a adresy reprezentované sloupcem využití VC se sdílejí mezi instancemi, které jsou umístěné v daném virtuálním clusteru.
+  \_ Sloupec celkem zobrazuje počet adres, které se provedou při nasazení jedné instance v podsíti. Každá další instance v podsíti přidá počet adres představovaných sloupcem použití instance. Adresy reprezentované sloupcem využití Azure se sdílejí napříč několika virtuálními clustery a adresy reprezentované sloupcem využití VC se sdílejí mezi instancemi, které jsou umístěné v daném virtuálním clusteru.
 
 Operace aktualizace obvykle vyžaduje změnu velikosti virtuálního clusteru. V některých případech bude operace aktualizace vyžadovat vytvoření virtuálního clusteru (další podrobnosti najdete v [článku o operacích správy](sql-managed-instance-paas-overview.md#management-operations)). V případě vytvoření virtuálního clusteru se počet požadovaných dalších adres rovná počtu adres, které jsou reprezentované sloupcem využití VC, sečtený s adresami vyžadovanými pro instance uložené ve virtuálním clusteru (sloupec použití instance).
 
@@ -74,12 +74,12 @@ Jak je uvedeno výše, v některých případech bude operace aktualizace vyžad
 
 Během škálování instancí operací se dočasně vyžaduje další kapacita IP, která závisí na cenové úrovni a na generaci hardwaru.
 
-| **Hardware – obecné** | **Cenová úroveň** | **Scénář** | **Další adresy*** |
+| **Hardware – obecné** | **Cenová úroveň** | **Scénář** | **Další adresy** _ |
 | --- | --- | --- | --- |
 | COMPUTE GEN4 – | GP nebo BC | Škálování virtuální jádra | 5 |
 | COMPUTE GEN4 – | GP nebo BC | Škálování úložiště | 5 |
 | COMPUTE GEN4 – | GP nebo BC | Přepínání z GP na BC nebo BC na GP | 5 |
-| COMPUTE GEN4 – | GP | Přepínání na Gen5 * | 9 |
+| COMPUTE GEN4 – | GP | Přepínání na Gen5_ | 9 |
 | COMPUTE GEN4 – | BC | Přepínání na Gen5 * | 11 |
 | Gen5 | GP | Škálování virtuální jádra | 3 |
 | Gen5 | GP | Škálování úložiště | 0 |
@@ -88,7 +88,7 @@ Během škálování instancí operací se dočasně vyžaduje další kapacita 
 | Gen5 | BC | Škálování úložiště | 5 |
 | Gen5 | BC | Přechod na GP | 3 |
 
-  \*COMPUTE GEN4 – hardware se rozchází a už není k dispozici pro nová nasazení. Aktualizujte generaci hardwaru z COMPUTE GEN4 – na Gen5, abyste mohli využívat výhody, které jsou specifické pro Gen5 generaci hardwaru.
+  \* COMPUTE GEN4 – hardware se rozchází a už není k dispozici pro nová nasazení. Aktualizujte generaci hardwaru z COMPUTE GEN4 – na Gen5, abyste mohli využívat výhody, které jsou specifické pro Gen5 generaci hardwaru.
 
 ## <a name="next-steps"></a>Další kroky
 

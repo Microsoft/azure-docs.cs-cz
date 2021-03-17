@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dee9a845df305b06153d99c2bafe6d74524a139
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75563356"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449199"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentace metrik a načítání v Service Fabric
 Služba Service Fabric clusteru Správce prostředků výchozí strategii pro správu metrik zatížení v clusteru slouží k distribuci zátěže. Zajištění toho, aby se uzly rovnoměrně využily, nemusíte používat horké a studené body, které vedou k kolizí i k nevyužitým prostředkům. Distribuce úloh v clusteru je také nejbezpečnější z důvodu nedodržení selhání, protože zajišťuje, že selhání netrvá vysoké procento dané úlohy. 
@@ -89,7 +89,7 @@ prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv 
 
 
 ## <a name="next-steps"></a>Další kroky
-- Správce prostředků clusteru obsahuje možnosti člověka pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) .
+- Správce prostředků clusteru má mnoho možností pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) .
 - Metriky představují způsob, jakým Správce prostředků clusteru Service Fabric spravuje spotřebu a kapacitu v clusteru. Další informace o metrikách a jejich konfiguraci najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

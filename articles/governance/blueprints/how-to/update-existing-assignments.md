@@ -1,14 +1,14 @@
 ---
 title: Aktualizace existujícího přiřazení z portálu
 description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení podrobného plánu z portálu v Azure Modrotiskys.
-ms.date: 04/15/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: c383ebedaf83b3a52062c91f98b816c3baf6618e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969460"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919389"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -20,24 +20,23 @@ Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje 
 
 ## <a name="updating-assignments"></a>Aktualizace přiřazení
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na levé straně vyberte **přiřazené plány** .
 
-1. V seznamu modrotisky klikněte levým na přiřazení podrobného plánu. Pak klikněte na tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **Aktualizovat přiřazení**.
+1. V seznamu modrotisky vyberte přiřazení podrobného plánu. Pak použijte tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **Aktualizovat přiřazení**.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Aktualizuje existující přiřazení podrobného plánu." border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
 
-1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení.
-   Můžete změnit **verzi definice**podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Až provedete změny, klikněte na **přiřadit** .
+1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení. Můžete změnit **verzi definice** podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Po dokončení změn vyberte **přiřadit** .
 
 1. Na stránce aktualizované Podrobnosti přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamykání** k přiřazení.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Aktualizace existujícího přiřazení podrobného plánu – změna režimu zámku" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu ukazující změnu režimu zámku" border="false":::
 
 1. Prozkoumejte podrobnosti o dalších **operacích přiřazení** pomocí rozevíracího seznamu. Tabulka s aktualizacemi **spravovaných prostředků** podle vybrané operace přiřazení
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Operace přiřazení přiřazení podrobného plánu" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu znázorňující operace přiřazení a jejich stav" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Pravidla aktualizace přiřazení
 

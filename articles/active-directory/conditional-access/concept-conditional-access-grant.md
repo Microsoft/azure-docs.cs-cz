@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274676"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938387"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -34,7 +34,7 @@ Blok je výkonný ovládací prvek, který by měl být wielded s odpovídajíc�
 
 Správci se můžou rozhodnout vyhovět jednomu nebo více ovládacím prvkům při udělení přístupu. Tyto ovládací prvky zahrnují následující možnosti: 
 
-- [Vyžadovat Multi-Factor Authentication (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
+- [Vyžadovat Multi-Factor Authentication (Azure AD Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
 - [Vyžadovat, aby zařízení bylo označené jako vyhovující (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Vyžadovat zařízení připojené k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)
 - [Vyžadovat klientskou aplikaci schválenou](app-based-conditional-access.md)
@@ -50,7 +50,7 @@ Ve výchozím nastavení podmíněný přístup vyžaduje všechny vybrané ovl�
 
 ### <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi-Factor Authentication Azure. Další informace o nasazení služby Azure Multi-Factor Authentication najdete v článku [plánování cloudového nasazení azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
+Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi-Factor Authentication služby Azure AD. Další informace o nasazení služby Azure AD Multi-Factor Authentication najdete v článku [Plánování nasazení cloudových Multi-Factor Authentication Azure AD](../authentication/howto-mfa-getstarted.md).
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označené jako vyhovující
 
@@ -70,12 +70,12 @@ Při použití [toku OAuth pro kód zařízení](../develop/v2-oauth2-device-cod
 
 Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské aplikace podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
 
-Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduje, aby zařízení bylo zaregistrované v Azure Active Directory, které vyžaduje použití aplikace zprostředkovatele. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud při pokusu uživatele o ověření není v zařízení nainstalovaná aplikace zprostředkovatele, uživatel se přesměruje do obchodu s aplikacemi a nainstaluje aplikaci zprostředkovatele.
+Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduje, aby zařízení bylo zaregistrované v Azure Active Directory, které vyžaduje použití aplikace zprostředkovatele. Aplikace zprostředkovatele může být Microsoft Authenticator pro iOS nebo buď Microsoft Authenticator nebo portál společnosti Microsoft pro zařízení s Androidem. Pokud při pokusu uživatele o ověření není v zařízení nainstalovaná aplikace zprostředkovatele, uživatel se přesměruje do příslušného obchodu s aplikacemi, aby se nainstalovala požadovaná aplikace zprostředkovatele.
 
 Toto nastavení platí pro následující aplikace pro iOS a Android:
 
 - Microsoft Azure Information Protection
-- Rezervace Microsoftu
+- Microsoft Bookings
 - Microsoft Cortana
 - Microsoft Dynamics 365
 - Microsoft Edge
@@ -102,14 +102,16 @@ Toto nastavení platí pro následující aplikace pro iOS a Android:
 - Microsoft Word
 - Yammer Microsoftu
 - Microsoft tabule
+- Správce Microsoft 365
 
 **Poznámky**
 
 - Schválené klientské aplikace podporují funkci správy mobilních aplikací Intune.
 - Požadavek na **vyžadování schválené aplikace klienta** :
    - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
-   - K registraci zařízení se vyžaduje aplikace zprostředkovatele. V systému iOS je aplikace zprostředkovatele Microsoft Authenticator a v Androidu je Portál společnosti Intune aplikace.
+   - K registraci zařízení se vyžaduje aplikace zprostředkovatele. Aplikace zprostředkovatele může být Microsoft Authenticator pro iOS nebo buď Microsoft Authenticator nebo portál společnosti Microsoft pro zařízení s Androidem.
 - Podmíněný přístup nemůže vzít v úvahu schválenou klientskou aplikaci Microsoft Edge v režimu InPrivate.
+- Pomocí služby Azure Proxy aplikací služby AD povolíte, aby se mobilní aplikace Power BI připojovala k místním Server sestav Power BI není podporovaná pro zásady podmíněného přístupu, které vyžadují aplikaci Microsoft Power BI jako schválenou klientskou aplikaci.
 
 Informace najdete v článku [How to: vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím s podmíněným přístupem](app-based-conditional-access.md) pro příklady konfigurace.
 
@@ -119,7 +121,9 @@ V rámci zásad podmíněného přístupu můžete vyžadovat, aby v klientské 
 
 Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduje, aby zařízení bylo zaregistrované v Azure Active Directory, které vyžaduje použití aplikace zprostředkovatele. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud při pokusu uživatele o ověření není v zařízení nainstalovaná aplikace zprostředkovatele, uživatel se přesměruje do obchodu s aplikacemi a nainstaluje aplikaci zprostředkovatele.
 
-Toto nastavení platí pro následující klientské aplikace:
+Aby se aplikace **Intune SDK** s implementací **zásad zabezpečení** implementovala a splňovaly některé další požadavky na podporu tohoto nastavení, musí být aplikace. Vývojáři implementující aplikace pomocí sady Intune SDK můžou najít další informace v dokumentaci k sadě SDK týkající se těchto požadavků.
+
+Následující klientské aplikace byly potvrzeny pro podporu tohoto nastavení:
 
 - Microsoft Cortana
 - Microsoft Edge
@@ -137,7 +141,7 @@ Toto nastavení platí pro následující klientské aplikace:
 - Devět e-mailů & kalendář
 
 > [!NOTE]
-> Microsoft Kaizala, Microsoft Skype pro firmy a Microsoft Visio nepodporují udělení **zásad ochrany aplikací** . Pokud požadujete, aby tyto aplikace fungovaly, použijte výhradně udělení oprávnění **vyžadovat schválené aplikace** . Použití klauzule OR mezi dvěma granty nebude pro tyto tři aplikace fungovat.
+> Microsoft teams, Microsoft Kaizala, Microsoft Skype pro firmy a Microsoft Visio nepodporují udělení **zásad ochrany aplikací** . Pokud požadujete, aby tyto aplikace fungovaly, použijte výhradně udělení oprávnění **vyžadovat schválené aplikace** . Použití klauzule OR mezi dvěma granty nebude pro tyto tři aplikace fungovat.
 
 **Poznámky**
 

@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 67f1f2fe3f6ac1061f1edcd22532bffaf0a1e815
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423027"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366866"
 ---
 # <a name="options"></a>Možnosti #
 
@@ -51,7 +51,7 @@ Pokud má funkce automatického přehrávání hodnotu true, začne se video př
 > [!NOTE]
 > Tato možnost není podporována mobilními zařízeními, jako jsou Windows Phone, Apple iOS a Android. Mobilní zařízení zablokují funkci automatického přehrávání, která zabraňuje využívání měsíčních plánů dat pro zákazníky (často nákladné). Pro spuštění videa v tomto případě je nutná možnost dotykového nebo kliknutí uživatele.
 
-`<video autoplay ...>`ani`{ "autoplay": true }`
+`<video autoplay ...>`ani `{ "autoplay": true }`
 
 ### <a name="poster"></a>Rozměry ###
 Atribut plakát nastaví obrázek, který se zobrazí před zahájením přehrávání videa. Často se jedná o rámec videa nebo vlastní obrazovky s nadpisem. Jakmile uživatel klikne na tlačítko Přehrát, obrázek zmizí.
@@ -93,16 +93,16 @@ Nastavením této možnosti na true video element bude trvat celou šířku nad�
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`možnost Přepisuje explicitní `width` a `height` nastavení. Tato možnost je k dispozici pouze ve verzi Azure Media Player `2.0.0` a novější.
+`fluid` možnost Přepisuje explicitní `width` a `height` nastavení. Tato možnost je k dispozici pouze ve verzi Azure Media Player `2.0.0` a novější.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`možnost řídí playbackSpeed řízení a sadu nastavení rychlosti přehrávání, které jsou pro uživatele k dispozici. `playbackSpeed`vezme objekt. Aby bylo možné povolit ovládací prvek rychlost přehrávání na ovládacím panelu, `enabled` musí být vlastnost objektu nastavena na hodnotu true. Příklad povolení rychlosti přehrávání v kódu:
+`playbackSpeed` možnost řídí playbackSpeed řízení a sadu nastavení rychlosti přehrávání, které jsou pro uživatele k dispozici. `playbackSpeed` vezme objekt. Aby bylo možné povolit ovládací prvek rychlost přehrávání na ovládacím panelu, `enabled` musí být vlastnost objektu nastavena na hodnotu true. Příklad povolení rychlosti přehrávání v kódu:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Další vlastnosti `playbackSpeed` nastavení jsou dány objektem [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) .
+Další vlastnosti `playbackSpeed` nastavení jsou dány objektem [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/playbackspeedoptions) .
 
 Příklad nastavení možností rychlosti přehrávání v JavaScriptu:
 

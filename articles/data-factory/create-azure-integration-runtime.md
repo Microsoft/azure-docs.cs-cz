@@ -1,23 +1,19 @@
 ---
 title: Vytvoření prostředí Azure Integration runtime v Azure Data Factory
 description: Naučte se vytvářet prostředí Azure Integration runtime v Azure Data Factory, které se používá ke kopírování dat a odesílání transformačních aktivit.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659711"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373058"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Azure Integration Runtime
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Vytvoření a konfigurace prostředí Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Integration Runtime (IR) je výpočetní infrastruktura, kterou používá Azure Data Factory k tomu, aby poskytovala možnosti integrace dat napříč různými síťovými prostředími. Další informace o technologii IR naleznete v tématu [Integration runtime](concepts-integration-runtime.md).
@@ -43,18 +39,18 @@ Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -N
 ```  
 Pro Azure IR musí být typ nastavený na **spravované**. Nemusíte zadávat podrobné informace o výpočetním prostředí, protože je plně spravovaná elastická v cloudu. Určete výpočetní údaje, jako je velikost uzlu a počet uzlů, když chcete vytvořit Azure-SSIS IR. Další informace najdete v tématu [Vytvoření a konfigurace Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
 
-Existující Azure IR můžete nakonfigurovat tak, aby změnila umístění pomocí rutiny Set-AzDataFactoryV2IntegrationRuntime prostředí PowerShell. Další informace o umístění Azure IR najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md).
+Existující Azure IR můžete nakonfigurovat tak, aby změnila umístění pomocí rutiny Set-AzDataFactoryV2IntegrationRuntime PowerShellu. Další informace o umístění Azure IR najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md).
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Vytvoření Azure IR prostřednictvím uživatelského rozhraní Azure Data Factory
 Pomocí následujících kroků můžete vytvořit Azure IR pomocí uživatelského rozhraní Azure Data Factory.
 
-1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) z levého podokna.
+1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](./author-management-hub.md) z levého podokna.
 
    ![Tlačítko Správa domovské stránky](media/doc-common-process/get-started-page-manage-button.png)
 
 1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový**.
 
-   ![Vytvoření prostředí Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
+   ![Snímek obrazovky, který zvýrazní prostředí Integration runtime v levém podokně a tlačítko + Nový.](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat**. 
 
@@ -92,4 +88,3 @@ V následujících článcích najdete informace o tom, jak vytvořit další ty
 
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)
 - [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md)
- 

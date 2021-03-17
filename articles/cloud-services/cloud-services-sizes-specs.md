@@ -1,21 +1,25 @@
 ---
-title: Velikosti virtuálních počítačů pro Azure Cloud Services | Microsoft Docs
+title: Velikosti virtuálních počítačů pro Azure Cloud Services (Classic) | Microsoft Docs
 description: Zobrazuje seznam různých velikostí virtuálních počítačů (a ID) pro webové a pracovní role Azure Cloud Service.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a31c9c4747ccc72f0552ebe2f8daf85ef5fba8a3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086245"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015297"
 ---
-# <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
+# <a name="sizes-for-cloud-services-classic"></a>Velikosti pro Cloud Services (klasické)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Poskytuje taky požadavky na nasazení, které vám pomají vědět, kdy plánujete tyto prostředky používat. Každá velikost má ID, které jste umístili do [souboru definice služby](cloud-services-model-and-package.md#csdef). Ceny za jednotlivé velikosti jsou k dispozici na stránce [Cloud Services ceny](https://azure.microsoft.com/pricing/details/cloud-services/) .
 
 > [!NOTE]
@@ -36,7 +40,7 @@ Velikost virtuálního počítače má vliv na cenu. Velikost také určuje kapa
 
 Následující aspekty mohou pomoci při rozhodování o velikosti:
 
-* Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní výkon*. Hardware pro hostování těchto velikostí je navržený a optimalizovaný pro úlohy náročné na výpočty a síťový provoz, včetně clusterovaného vysokovýkonného výpočetního prostředí (HPC), například pro modelování a simulace. Řady A8-A11-series používají Intel Xeon E5-2670 @ 2,6 GHz a H-series používá Intel Xeon E5-2667 v3 @ 3,2 GHz. Podrobné informace a informace o použití těchto velikostí najdete v tématu s [vysokým výkonem výpočetních virtuálních počítačů](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní výkon*. Hardware pro hostování těchto velikostí je navržený a optimalizovaný pro úlohy náročné na výpočty a síťový provoz, včetně clusterovaného vysokovýkonného výpočetního prostředí (HPC), například pro modelování a simulace. Řady A8-A11-series používají Intel Xeon E5-2670 @ 2,6 GHz a H-series používá Intel Xeon E5-2667 v3 @ 3,2 GHz. Podrobné informace a informace o použití těchto velikostí najdete v tématu s [vysokým výkonem výpočetních virtuálních počítačů](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Řady Dv3-Series, Dv2-Series, řady D-Series, řady D-Series jsou ideální pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
 * Někteří z fyzických hostitelů v datových centrech Azure nemusí podporovat větší velikosti virtuálních počítačů, například A5–A11. V důsledku toho se může zobrazit chybová zpráva **s konfigurací virtuálního počítače {Name} se** nepovedlo nebo **se nepovedlo vytvořit virtuální počítač {Name}** při změně velikosti existujícího virtuálního počítače na novou velikost. vytváření nového virtuálního počítače ve virtuální síti vytvořené před 16. dubna 2013; nebo přidání nového virtuálního počítače do existující cloudové služby. Alternativní řešení pro každý scénář nasazení najdete v tématu [Chyba: "Nepodařilo se nakonfigurovat virtuální počítač"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) na fóru podpory.
 * Vaše předplatné může také omezovat počet jader, které můžete v určitých rodinách velikostí nasadit. S požadavkem na zvýšení této kvóty se obraťte na podporu Azure.
@@ -59,11 +63,11 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU), aby bylo možné poro
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
 | [Trojrozměrné](#d-series) |160 |
-| [D V2](#dv2-series) |160 – 190 * |
+| [D V2](#dv2-series) |210 - 250* |
 | [D V3](#dv3-series) |160 – 190 * |
 | [E V3](#ev3-series) |160 – 190 * |
 | [Věcn](#g-series) |180 - 240* |
-| [H](#h-series) |290 - 300* |
+| [Y](#h-series) |290 - 300* |
 
 Hodnoty ACU s hvězdičkou označují použití technologie Intel® Turbo, která může zvýšit frekvenci procesoru podle aktuální potřeby. Množství nárůst se může lišit v závislosti na velikosti virtuálního počítače, úlohy a dalších úlohách spuštěných na stejném hostiteli.
 
@@ -79,7 +83,7 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / malá |
-| Malá           | 1         | 1,75         | 225                  | 1 / střední |
+| Malá           | 1         | 1.75         | 225                  | 1 / střední |
 | Střední          | 2         | 3,5          | 490                  | 1 / střední |
 | Velká           | 4         | 7            | 1000                 | 2 / vysoká |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / vysoká |
@@ -88,7 +92,7 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 | Jednou              | 8         | 56           | 2040                 | 4 / vysoká |
 
 ## <a name="a-series---compute-intensive-instances"></a>A-series – Instance náročné na výpočetní výkon
-Informace a informace o použití těchto velikostí najdete v tématu [vysoké výkon výpočetních virtuálních počítačů](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Informace a informace o použití těchto velikostí najdete v tématu [vysoké výkon výpočetních virtuálních počítačů](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -136,7 +140,7 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 | Standard_D12_v2 | 4         | 28           | 200                  | 4 / vysoká |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8 / vysoká |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8 / velmi vysoká |
-| Standard_D15_v2 | 20        | 140          | 1 000                | 8 / velmi vysoká |
+| Standard_D15_v2 | 20        | 140          | 1 000                | 8 / velmi vysoká |
 
 ## <a name="dv3-series"></a>Dv3-series
 
@@ -217,7 +221,4 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [Limitech, kvótách a omezeních předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
-* Přečtěte si další informace [o vysoce výkonných výpočetních virtuálních](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) počítačích pro úlohy HPC.
-
-
-
+* Přečtěte si další informace [o vysoce výkonných výpočetních virtuálních](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) počítačích pro úlohy HPC.

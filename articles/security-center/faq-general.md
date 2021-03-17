@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783210"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095540"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -29,7 +29,7 @@ Security Center používá agenta Log Analytics ke shromažďování a ukládán
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Návody získat Azure Security Center?
-Azure Security Center je povolená u vašeho předplatného Microsoft Azure a ke kterému se dostanete z [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Pokud k němu chcete získat přístup, [Přihlaste se k portálu](https://portal.azure.com), vyberte **Procházet**a přejděte na **Security Center**.
+Azure Security Center je povolená u vašeho předplatného Microsoft Azure a ke kterému se dostanete z [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Pokud k němu chcete získat přístup, [Přihlaste se k portálu](https://portal.azure.com), vyberte **Procházet** a přejděte na **Security Center**.
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Které prostředky Azure monitoruje Azure Security Center?
@@ -46,10 +46,10 @@ Na stránce **přehled Security Center** se zobrazuje celkové stav zabezpečen�
 
 
 
-## <a name="what-is-a-security-policy"></a>Co je zásada zabezpečení?
-Zásady zabezpečení definují sadu ovládacích prvků, které jsou doporučeny pro prostředky v rámci zadaného předplatného. V Azure Security Center definujete zásady pro vaše předplatná Azure podle požadavků na zabezpečení vaší společnosti a typu aplikací nebo citlivosti dat v jednotlivých předplatných.
+## <a name="what-is-a-security-initiative"></a>Co je iniciativa zabezpečení?
+Iniciativa zabezpečení definuje sadu ovládacích prvků (zásad), které se doporučují pro prostředky v rámci zadaného předplatného. V Azure Security Center přiřadíte iniciativy pro vaše předplatná Azure podle požadavků na zabezpečení vaší společnosti a typu aplikací nebo citlivosti dat v jednotlivých předplatných.
 
-Zásady zabezpečení, které jsou povolené v Azure Security Center, doporučení zabezpečení a monitorování. Další informace o zásadách zabezpečení najdete v tématu [monitorování stavu zabezpečení v Azure Security Center](security-center-monitoring.md).
+Zásady zabezpečení, které jsou povolené v Azure Security Center, doporučení zabezpečení a monitorování. Další informace najdete v informacích o [zásadách zabezpečení, iniciativách a doporučeních](security-policy-concept.md).
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Kdo může upravit zásady zabezpečení?
@@ -59,16 +59,15 @@ Informace o tom, jak nakonfigurovat zásady zabezpečení, najdete [v tématu Na
 
 
 ## <a name="what-is-a-security-recommendation"></a>Co je to doporučení zabezpečení?
-Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když se identifikují potenciální slabá místa zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebného ovládacího prvku. Můžete například:
+Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když se identifikují potenciální slabá místa zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebného ovládacího prvku. Příklady:
 
 * Zřizování ochrany proti malwaru, které vám pomůžou identifikovat a odebrat škodlivý software
-* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md) a pravidla pro řízení provozu do virtuálních počítačů
+* [Skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a pravidla pro řízení provozu do virtuálních počítačů
 * Zřizování firewallu webových aplikací, které vám pomůžou chránit před útoky zaměřenými na vaše webové aplikace
 * Nasazení chybějících aktualizací systému
 * Adresování konfigurací operačního systému, které neodpovídají doporučeným standardním hodnotám
 
 Tady se zobrazí jenom doporučení, která jsou povolená v zásadách zabezpečení.
-
 
 
 ## <a name="what-triggers-a-security-alert"></a>Co aktivuje výstrahu zabezpečení?
@@ -78,10 +77,6 @@ Azure Security Center automaticky shromažďuje, analyzuje a uchovává data pro
 * Byl zjištěn rozšířený malware pomocí zasílání zpráv o chybách systému Windows.
 * Útoky hrubou silou na virtuální počítače
 * Výstrahy zabezpečení z integrovaných řešení zabezpečení partnerů, jako jsou například anti-malware nebo brány firewall webových aplikací
-
-
-## <a name="why-did-secure-score-values-change"></a>Proč se hodnoty zabezpečeného skóre změnily? <a name="secure-score-faq"></a>
-Od února 2019 Security Center upraveno skóre několika doporučení, aby lépe vyhovoval jejich závažnosti. Výsledkem této úpravy můžou být změny v celkových hodnotách bezpečného skóre.  Další informace o zabezpečeném skóre najdete [v tématu Rozšířené zabezpečení skóre v Azure Security Center](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaký je rozdíl mezi zjištěnými hrozbami a výstrahou z centra zabezpečení Microsoft Security Center oproti Azure Security Center?

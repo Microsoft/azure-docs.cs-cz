@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e9a96573bbc72e0afff61cc0f151f95b081e30
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74168688"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031575"
 ---
 # <a name="azure-firewall-service-tags"></a>Značky služby Azure Firewall
 
@@ -22,7 +22,7 @@ Značky služby Azure Firewall lze použít v poli cíl síťových pravidel. M�
 
 ## <a name="supported-service-tags"></a>Podporované značky služby
 
-Seznam značek služeb, které jsou k dispozici pro použití v síťových pravidlech brány firewall Azure, najdete v tématu [skupiny zabezpečení](../virtual-network/security-overview.md#service-tags) .
+Seznam značek služeb, které jsou k dispozici pro použití v sítích brány firewall Azure, najdete v tématu [značky služby virtuální sítě](../virtual-network/service-tags-overview.md#available-service-tags) .
 
 ## <a name="next-steps"></a>Další kroky
 

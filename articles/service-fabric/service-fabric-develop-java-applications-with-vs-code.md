@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327357"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric Java pomocí Visual Studio Code
@@ -37,7 +37,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 ## <a name="open-the-application-in-vs-code"></a>Otevřete aplikaci v VS Code
 
-Otevřete VS Code.  Klikněte na ikonu Průzkumníka na **řádku aktivity** a klikněte na **Otevřít složku**, nebo na **soubor – > otevřít složku**. Přejděte do adresáře *./Service-Fabric-Java-Quickstart/voting* ve složce, kam jste naklonováni úložiště, a pak klikněte na **OK**. Pracovní prostor by měl obsahovat stejné soubory zobrazené na snímku obrazovky níže.
+Otevřete VS Code.  Klikněte na ikonu Průzkumníka na **řádku aktivity** a klikněte na **Otevřít složku**, nebo na  **soubor – > otevřít složku**. Přejděte do adresáře *./Service-Fabric-Java-Quickstart/voting* ve složce, kam jste naklonováni úložiště, a pak klikněte na **OK**. Pracovní prostor by měl obsahovat stejné soubory zobrazené na snímku obrazovky níže.
 
 ![Hlasovací aplikace v jazyce Java v pracovním prostoru](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
@@ -93,7 +93,7 @@ Přidejte komentář na řádek 6 (použijte ' # ') a přidejte do dolní část
 
    ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Soubor uložte.
+3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Uložte soubor.
 
    ![Konfigurace ladění pro launch.jsv](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 

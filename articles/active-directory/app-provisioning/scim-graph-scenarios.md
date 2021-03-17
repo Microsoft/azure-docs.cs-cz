@@ -3,7 +3,7 @@ title: Použití SCIM, Microsoft Graph a Azure AD ke zřízení uživatelů a ob
 description: Použití SCIM a Microsoft Graph dohromady ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235498"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255623"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
 
@@ -62,7 +62,7 @@ POST /Users
     "roles": []
 }
 ```
-    
+
 ## <a name="scenario-2-automatically-remove-users-from-my-app"></a>Scénář 2: Automatické odebrání uživatelů z mé aplikace
 Zákazníci, kteří používají moji aplikaci, jsou zaměřené na zabezpečení a mají požadavky na zásady správného řízení pro odebrání účtů, pokud je už zaměstnanci nepotřebují. Jak můžu automatizovat zrušení zřizování z mé aplikace?
 

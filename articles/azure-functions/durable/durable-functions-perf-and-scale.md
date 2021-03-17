@@ -1,16 +1,16 @@
 ---
 title: Výkon a škálování v Durable Functions – Azure
-description: Úvod do rozšíření Durable Functions pro Azure Functions
+description: Přečtěte si o jedinečných vlastnostech škálování rozšíření Durable Functions pro Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033577"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572795"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -20,13 +20,13 @@ Pro pochopení chování škálování je třeba pochopit některé podrobnosti 
 
 ## <a name="history-table"></a>Tabulka historie
 
-Tabulka **Historie** je Azure Storage tabulka, která obsahuje události historie pro všechny instance orchestrace v rámci centra úloh. Název této tabulky je ve formátu *TaskHubName*historie. Po spuštění instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je odvozen z ID instance orchestrace. ID instance je ve většině případů náhodné, což zajišťuje optimální distribuci vnitřních oddílů v Azure Storage.
+Tabulka **Historie** je Azure Storage tabulka, která obsahuje události historie pro všechny instance orchestrace v rámci centra úloh. Název této tabulky je ve formátu *TaskHubName* historie. Po spuštění instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je odvozen z ID instance orchestrace. ID instance je ve většině případů náhodné, což zajišťuje optimální distribuci vnitřních oddílů v Azure Storage.
 
 Je-li nutné spustit instanci orchestrace, jsou do paměti načteny příslušné řádky tabulky historie. Tyto *události historie* se pak přehrají do kódu funkce Orchestrator a vrátí se zpátky do předchozího kontrolního stavu. Použití historie spouštění k opětovnému sestavení tohoto způsobu je ovlivněno [vzorem zdroje události](/azure/architecture/patterns/event-sourcing).
 
 ## <a name="instances-table"></a>Tabulka instancí
 
-Tabulka **Instances** je další Azure Storage tabulka, která obsahuje stavy všech orchestrací a instancí entit v rámci centra úloh. Při vytváření instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je ID instance orchestrace nebo klíč entity a klíč řádku je pevná konstanta. Existuje jeden řádek na orchestraci nebo instanci entity.
+Tabulka **Instances** je další Azure Storage tabulka, která obsahuje stavy všech orchestrací a instancí entit v rámci centra úloh. Při vytváření instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je ID instance orchestrace nebo klíč entity a klíč řádku je prázdný řetězec. Existuje jeden řádek na orchestraci nebo instanci entity.
 
 Tato tabulka slouží k uspokojení požadavků na dotazování instance z `GetStatusAsync` rozhraní API (.NET) a `getStatus` (JavaScript) a také pro [dotaz na stavový protokol HTTP API](durable-functions-http-api.md#get-instance-status). Je trvale konzistentní s obsahem výše zmíněné tabulky **Historie** . Použití samostatné Azure Storage tabulky k efektivnímu uspokojení operací dotazů na instance tímto způsobem je ovlivněno [vzorem CQRS (Command and Query Responsibility segregation) (CQRS)](/azure/architecture/patterns/cqrs).
 
@@ -51,7 +51,7 @@ Rozšíření odolné úlohy implementuje náhodný exponenciální algoritmus p
 Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictvím `maxQueuePollingInterval` vlastnosti v [host.jsv souboru](../functions-host-json.md#durabletask). Nastavení této vlastnosti na vyšší hodnotu může mít za následek vyšší latence při zpracování zpráv. Vyšší latence by se měly očekávat jenom po období nečinnosti. Nastavení této vlastnosti na nižší hodnotu může mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.
 
 > [!NOTE]
-> Při spuštění v rámci plánů Azure Functions a Premium se [kontroler Azure Functions Scale](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
+> Při spuštění v rámci plánů Azure Functions a Premium se [kontroler Azure Functions Scale](../event-driven-scaling.md) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
 
 ### <a name="orchestration-start-delays"></a>Zpoždění zahájení orchestrace
 Instance orchestrace se spouští vložením `ExecutionStarted` zprávy do jedné z front ovládacích prvků centra úloh. Za určitých podmínek můžete sledovat prodlevy s více sekundami mezi tím, kdy je naplánováno spuštění Orchestrace a kdy je ve skutečnosti spuštěna. Během tohoto časového intervalu zůstane instance orchestrace ve `Pending` stavu. Existují dva možné příčiny tohoto zpoždění:
@@ -103,7 +103,7 @@ Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtu
   "extensions": {
     "durableTask": {
       "storageProvider": {
-          "partitionCount": 3
+        "partitionCount": 3
       }
     }
   }
@@ -138,7 +138,7 @@ Obecně řečeno, funkce nástroje Orchestrator mají být odlehčené a neměly
 
 ## <a name="auto-scale"></a>Automatické škálování
 
-Stejně jako u všech Azure Functions běžících v plánech spotřeby a elastické Premium Durable Functions podporuje automatické škálování prostřednictvím [řadiče Azure Functions škálování](../functions-scale.md#runtime-scaling). Kontroler škálování monitoruje latenci všech front tím, že pravidelně vydává příkazy pro _prohlížení_ . V závislosti na latencích prohlížených zpráv se kontroler škálování rozhodne, jestli se mají přidat nebo odebrat virtuální počítače.
+Stejně jako u všech Azure Functions běžících v plánech spotřeby a elastické Premium Durable Functions podporuje automatické škálování prostřednictvím [řadiče Azure Functions škálování](../event-driven-scaling.md#runtime-scaling). Kontroler škálování monitoruje latenci všech front tím, že pravidelně vydává příkazy pro _prohlížení_ . V závislosti na latencích prohlížených zpráv se kontroler škálování rozhodne, jestli se mají přidat nebo odebrat virtuální počítače.
 
 Pokud kontroler škálování zjistí, že latence zpráv řízení fronty je příliš vysoká, přidá instance virtuálních počítačů, dokud se latence zprávy nesníží na přijatelnou úroveň, nebo dosáhne počtu oddílů fronty řízení. Podobně, kontroler škálování průběžně přidá instance virtuálních počítačů, pokud jsou vysoké latence fronty pracovních položek, bez ohledu na počet oddílů.
 
@@ -225,6 +225,10 @@ Příklad: Pokud `durableTask/extendedSessionIdleTimeoutInSeconds` je nastavené
 
 Konkrétní účinky rozšířených relací na nástroje Orchestrator a funkce entit jsou popsány v následujících částech.
 
+> [!NOTE]
+> Rozšířené relace jsou aktuálně podporované jenom v jazycích .NET, jako je C# nebo F #. Nastavení `extendedSessionsEnabled` na `true` pro jiné platformy může vést k problémům za běhu, jako je například tiché selhání při provádění aktivit a funkcí aktivovaných pro orchestraci.
+
+
 ### <a name="orchestrator-function-replay"></a>Funkce Orchestrator – přehrání
 
 Jak bylo zmíněno dříve, funkce Orchestrator se přehrávají pomocí obsahu tabulky **Historie** . Ve výchozím nastavení se kód funkce nástroje Orchestrator přehraje pokaždé, když se dávka zpráv z fronty ovládacího prvku odřadí. I když používáte vzorek ventilátoru pro ventilátor a čekáte na dokončení všech úloh (například pomocí `Task.WhenAll` technologie v rozhraní .NET nebo `context.df.Task.all` v JavaScriptu), dojde k přehrání, ke kterému dochází, když se v průběhu času zpracovávají dávky odpovědí na úlohy. Pokud jsou povoleny rozšířené relace, instance funkcí nástroje Orchestrator jsou uchovávány v paměti déle a nové zprávy lze zpracovat bez nutnosti opětovného přehrání celé historie.
@@ -260,7 +264,7 @@ Když plánujete použít Durable Functions pro produkční aplikaci, je důlež
 
 Následující tabulka uvádí očekávaná *maximální* čísla propustnosti pro dříve popsané scénáře. "Instance" odkazuje na jednu instanci funkce Orchestrator běžící na jednom malém virtuálním počítači ([a1](../../virtual-machines/sizes-previous-gen.md)) v Azure App Service. Ve všech případech se předpokládá, že jsou povolené [Rozšířené relace](#orchestrator-function-replay) . Skutečné výsledky se můžou lišit v závislosti na využití procesoru nebo vstupně-výstupní práci prováděné kódem funkce.
 
-| Scénář | Maximální propustnost |
+| Scenario | Maximální propustnost |
 |-|-|
 | Provádění sekvenční aktivity | 5 aktivit za sekundu, na instanci |
 | Paralelní provádění aktivit (ventilátor-out) | 100 aktivit za sekundu, na instanci |

@@ -3,17 +3,19 @@ title: Výpočetní databáze bez serveru s Azure Cosmos DB a Azure Functions
 description: Přečtěte si, jak Azure Cosmos DB a Azure Functions můžete použít společně k vytváření aplikací založených na událostech řízených serverem bez serveru.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263256"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334052"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní databáze bez serveru s využitím Azure Cosmos DB a Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Computing bez serveru je vše, co se zaměřuje na jednotlivé kousky logiky, které jsou opakované a bezstavové. Tyto části nevyžadují správu infrastruktury a spotřebovávají prostředky jenom pro sekundy nebo milisekundy, které se spouštějí pro. V jádru přesunu bez serveru jsou funkce, které jsou k dispozici v ekosystému Azure, [Azure Functions](https://azure.microsoft.com/services/functions). Další informace o dalších prostředích pro spouštění bez serveru v Azure najdete v tématu bez [serveru na stránce Azure](https://azure.microsoft.com/solutions/serverless/) . 
 
@@ -23,7 +25,7 @@ Díky nativní integraci mezi [Azure Cosmos DB](https://azure.microsoft.com/serv
 
 Azure Cosmos DB a Azure Functions vám umožní integrovat databáze a aplikace bez serveru následujícími způsoby:
 
-* Vytvoří **aktivační událost Azure Functions**řízenou událostmi pro Cosmos DB. Tato aktivační událost spoléhá na změny v datových proudech [kanálu změn](change-feed.md) a monitoruje je. Při provedení jakékoli změny v kontejneru se datový proud kanálu změn pošle triggeru, který vyvolá funkci Azure.
+* Vytvoří **aktivační událost Azure Functions** řízenou událostmi pro Cosmos DB. Tato aktivační událost spoléhá na změny v datových proudech [kanálu změn](change-feed.md) a monitoruje je. Při provedení jakékoli změny v kontejneru se datový proud kanálu změn pošle triggeru, který vyvolá funkci Azure.
 * Případně můžete vytvořit vazbu funkce Azure s kontejnerem Azure Cosmos pomocí **vstupní vazby**. Vstupní vazby čtou data z kontejneru, když se funkce spustí.
 * Navázání funkce na kontejner Azure Cosmos pomocí **výstupní vazby**. Výstupní vazby zapisují data do kontejneru při dokončení funkce.
 
@@ -75,13 +77,13 @@ V případě finančních implementací můžete funkci vyvolat, když zůstatek
 
 Následující obrázky znázorňují kód v Azure Portal pro tento scénář.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="SouborIndex.js pro aktivační událost časovače pro finanční scénář":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text=" SouborIndex.js pro aktivační událost časovače pro finanční scénář":::
 
 :::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Spuštění souboru. csx pro aktivační událost časovače pro finanční scénář":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Případ herního případu použití – aktivační událost Azure Functions a výstupní vazba pro Cosmos DB 
 
-Při vytvoření nového uživatele můžete v herních prostředích vyhledat další uživatele, kteří je můžou znát pomocí [Azure Cosmos DB rozhraní Gremlin API](graph-introduction.md). Pak můžete výsledky zapsat do [Azure Cosmos DB nebo databáze SQL]() pro snadné načtení.
+Při vytvoření nového uživatele můžete v herních prostředích vyhledat další uživatele, kteří je můžou znát pomocí [Azure Cosmos DB rozhraní Gremlin API](graph-introduction.md). Pak můžete výsledky zapsat do Azure Cosmos DB nebo databáze SQL pro snadné načtení.
 
 **Implementace:** Použití triggeru Azure Functions a výstupní vazby pro Cosmos DB
 
@@ -122,7 +124,7 @@ Azure Functions poskytuje možnost vytvářet škálovatelné pracovní jednotky
 
 Azure Cosmos DB je doporučená databáze pro architekturu bez serveru z následujících důvodů:
 
-* **Okamžitý přístup ke všem datům**: máte podrobný přístup ke všem uloženým hodnotám, protože Azure Cosmos DB [automaticky indexuje](index-policy.md) všechna data ve výchozím nastavení a zpřístupňuje tyto indexy okamžitě. To znamená, že budete moct průběžně dotazovat, aktualizovat a přidávat nové položky do databáze a mít okamžitý přístup prostřednictvím Azure Functions.
+* **Okamžitý přístup ke všem datům** : máte podrobný přístup ke všem uloženým hodnotám, protože Azure Cosmos DB [automaticky indexuje](index-policy.md) všechna data ve výchozím nastavení a zpřístupňuje tyto indexy okamžitě. To znamená, že budete moct průběžně dotazovat, aktualizovat a přidávat nové položky do databáze a mít okamžitý přístup prostřednictvím Azure Functions.
 
 * Bez **schématu**. Azure Cosmos DB je bez schématu, takže je jednoznačně možné zpracovat jakýkoliv výstup z funkce Azure Functions. Tento "popisovač" cokoli usnadňuje vytvoření nejrůznějších funkcí, které mají všechny výstupy Azure Cosmos DB.
 

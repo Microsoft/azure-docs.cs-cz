@@ -1,29 +1,26 @@
 ---
 title: Šifrování v infrastruktuře – Azure Database for PostgreSQL
 description: Přečtěte si informace o použití šifrování v infrastruktuře pro přidání druhé vrstvy šifrování pomocí klíčů spravovaných službou.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 83635b732318a4ada76d1d71c1ce419cae8b35e9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067490"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630137"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou Azure Database for PostgreSQL
-
-> [!NOTE]
-> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte prosím AskAzureDBforPostgreSQL@service.microsoft.com .
 
 Azure Database for PostgreSQL používá pro data šifrování úložiště dat [v klidovém](concepts-security.md#at-rest) formátu pomocí spravovaných klíčů společnosti Microsoft. Data včetně záloh se šifrují na disku a toto šifrování je vždycky zapnuté a nedá se zakázat. Šifrování používá šifrovací modul ověřený standardem FIPS 140-2 a šifrovací šifru AES 256 pro šifrování úložiště Azure.
 
 Šifrování s dvojitou přesností přidá druhou vrstvu šifrování pomocí klíčů spravovaných službou. Používá algoritmus FIPS 140-2 ověřený kryptografický modul, ale s jiným šifrovacím algoritmem. Tím je zajištěna další úroveň ochrany vašich dat v klidovém umístění. Klíč používaný v šifrování s dvojitou infrastrukturou je také spravovaný službou Azure Database for PostgreSQL. Šifrování s dvojitou přesností není ve výchozím nastavení povolené, protože další vrstva šifrování může mít vliv na výkon.
 
 > [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL podporuje cenové úrovně "Pro obecné účely" a "paměťově optimalizovaná".
+> Tato funkce je podporovaná jenom pro cenové úrovně "Pro obecné účely" a "paměťově optimalizované" v Azure Database for PostgreSQL.
 
 Šifrování vrstvy infrastruktury má výhodu, že se implementuje v rámci vrstvy nejbližší zařízení úložiště nebo síťovým vodičům. Azure Database for PostgreSQL implementuje dvě vrstvy šifrování pomocí klíčů spravovaných službou. I když je ve vrstvě služeb stále technicky, je velmi blízko hardwaru, který ukládá neaktivní neaktivní data. Volitelně můžete povolit šifrování dat v klidovém formátu pomocí [spravovaného klíče zákazníka](concepts-data-encryption-postgresql.md) pro zřízený server PostgreSQL.  
 

@@ -1,27 +1,27 @@
 ---
-title: vytvořit účet úložiště
+title: Vytvoření účtu úložiště
 titleSuffix: Azure Storage
-description: Naučte se vytvořit účet úložiště pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure. Účet úložiště Azure poskytuje jedinečný obor názvů v Microsoft Azure pro ukládání a přístup k datům.
+description: Naučte se vytvořit účet úložiště pro ukládání objektů blob, souborů, front a tabulek. Účet úložiště Azure poskytuje jedinečný obor názvů v Microsoft Azure pro čtení a zápis dat.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d05c95c22d75e4287283318095c4d053763f349e
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501351"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702372"
 ---
-# <a name="create-an-azure-storage-account"></a>Vytvoření účtu Azure Storage
+# <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště Azure obsahuje všechny vaše Azure Storage datové objekty: objekty blob, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro data Azure Storage, která jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS. Data v účtu úložiště Azure jsou trvalá a vysoce dostupná, zabezpečená a rozsáhlá.
 
-V tomto článku se dozvíte, jak vytvořit účet úložiště pomocí [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)nebo [šablony pro Azure Resource Manager](../../azure-resource-manager/management/overview.md).  
+V tomto článku se dozvíte, jak vytvořit účet úložiště pomocí [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](/powershell/azure/), [Azure CLI](/cli/azure)nebo [šablony pro Azure Resource Manager](../../azure-resource-manager/management/overview.md).  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Tlačítko spustí interaktivní prostředí, které můžete použít ke spušt
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Tento článek s návody vyžaduje, abyste spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
+Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Příklady v tomto článku vyžadují Azure CLI verze 2.0.4 nebo novější. Pokud `az --version` chcete najít nainstalovanou verzi, spusťte příkaz. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 # <a name="template"></a>[Šablona](#tab/template)
 
@@ -76,7 +76,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -102,13 +102,11 @@ az login
 
 ---
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-
-Nyní jste připraveni vytvořit účet úložiště.
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. V tomto článku se dozvíte, jak vytvořit novou skupinu prostředků.
 
-Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. Zde popsané kroky vytvoří účet úložiště pro obecné účely v2, ale postup vytvoření libovolného typu účtu úložiště je podobný.
+Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. Zde popsané kroky vytvoří účet úložiště pro obecné účely v2, ale postup vytvoření libovolného typu účtu úložiště je podobný. Další informace o typech účtů úložiště a dalším nastavení účtu úložiště najdete v článku s [přehledem účtu Azure Storage](storage-account-overview.md).
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -154,7 +152,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
 |Geograficky zónově redundantní úložiště (GZRS)    |Standard_GZRS         |
-|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
+|Geograficky zónově redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> Pokud plánujete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), zahrňte `--enable-hierarchical-namespace true` do tohoto seznamu parametrů. 
+> Pokud plánujete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), zahrňte `--enable-hierarchical-namespace true` do tohoto seznamu parametrů.
 
 Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možností replikace, nahraďte požadovanou hodnotu v následující tabulce pro parametr **SKU** .
 
@@ -197,7 +195,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
 |Geograficky zónově redundantní úložiště (GZRS)    |Standard_GZRS         |
-|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
+|Geograficky zónově redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Šablona](#tab/template)
 
@@ -217,7 +215,7 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]
@@ -225,13 +223,11 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 Informace o tom, jak upravit tuto šablonu nebo vytvořit nové, najdete v těchto tématech:
 
-- [Azure Resource Manager dokumentaci](/azure/azure-resource-manager/).
+- [Azure Resource Manager dokumentaci](../../azure-resource-manager/index.yml).
 - [Odkaz na šablonu účtu úložiště](/azure/templates/microsoft.storage/allversions)
 - [Další ukázky šablon účtu úložiště](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ---
-
-Další informace o dostupných možnostech replikace najdete v tématu věnovaném [možnostem replikace služby Storage](storage-redundancy.md).
 
 ## <a name="delete-a-storage-account"></a>Odstranění účtu úložiště
 
@@ -283,30 +279,11 @@ Alternativně můžete odstranit skupinu prostředků, která odstraní účet �
 > [!WARNING]
 > Odstraněný účet úložiště není možné obnovit ani není možné načíst žádný obsah, který byl součástí účtu před jeho odstraněním. Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. To platí také pro všechny prostředky v rámci účtu – po odstranění jsou objekt blob, tabulka, fronta nebo soubor odstraněny trvale.
 >
-> Pokud se pokusíte odstranit účet úložiště, který je přidružený virtuálnímu počítači Azure, můžete obdržet chybu, že se účet úložiště stále používá. Pomoc při řešení této chyby najdete v tématu [řešení chyb při odstraňování účtů úložiště](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+> Pokud se pokusíte odstranit účet úložiště, který je přidružený virtuálnímu počítači Azure, můžete obdržet chybu, že se účet úložiště stále používá. Pomoc při řešení této chyby najdete v tématu [řešení chyb při odstraňování účtů úložiště](../../virtual-machines/troubleshooting/index.yml).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku s postupem jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Pokud se chcete dozvědět, jak nahrávat a stahovat objekty blob do a z účtu úložiště, pokračujte jedním z rychlých startů pro úložiště objektů BLOB.
-
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [Práce s objekty blob pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [Práce s objekty blob pomocí PowerShellu](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [Práce s objekty BLOB pomocí rozhraní příkazového řádku Azure](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[Šablona](#tab/template)
-
-> [!div class="nextstepaction"]
-> [Práce s objekty blob pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [Přehled účtu úložiště](storage-account-overview.md)
+- [Upgrade na účet úložiště pro obecné účely verze 2](storage-account-upgrade.md)
+- [Přesunutí účtu Azure Storage do jiné oblasti](storage-account-move.md)
+- [Obnovení odstraněného účtu úložiště](storage-account-recover.md)

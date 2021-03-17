@@ -8,18 +8,18 @@ manager: timlt
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4772fdae06f23430d829fa411068b7af7a85b3dd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293951"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668703"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -47,7 +47,7 @@ V této příručce se dozvíte, jak nastavit konektor Azure pro SAP LaMa, vytvo
 > [!NOTE]
 > Konektor je k dispozici pouze v edici SAP LaMa Enterprise.
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje informací
 
 Následující poznámky SAP souvisejí s tématem SAP LaMa v Azure:
 
@@ -129,7 +129,7 @@ Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloud
 * Popisek: vyberte název instance konektoru.
 * Uživatelské jméno: ID nebo ID aplikace instančního objektu, který je přiřazený identitě uživatele virtuálního počítače. Další informace najdete v tématu [použití identity přiřazené systémem nebo uživatelem].
 * Heslo: klíč nebo heslo instančního objektu služby. Toto pole můžete nechat prázdné, pokud použijete identitu přiřazenou systémem nebo uživatelem.
-* Adresa URL: zachovat výchozí`https://management.azure.com/`
+* Adresa URL: zachovat výchozí `https://management.azure.com/`
 * Interval monitorování (sekundy): mělo by být aspoň 300.
 * Použití spravované identity: SAP LaMa může k ověřování pomocí rozhraní API Azure použít identitu přiřazenou systémem nebo uživatelem. V této příručce najdete v části [použití spravované identity k získání přístupu k rozhraní Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) .
 * ID předplatného: ID předplatného Azure
@@ -138,7 +138,7 @@ Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloud
 * Port proxy serveru: port TCP serveru proxy
 * Změnit typ úložiště na Uložit náklady: Toto nastavení povolte, pokud má adaptér Azure změnit typ úložiště Managed Disks tak, aby ušetřil náklady, když se disky nepoužívají. U datových disků, na které se odkazuje v konfiguraci instance SAP, adaptér při přípravě instance změní typ disku na standardní úložiště během přípravy instance a zpátky na původní typ úložiště. Pokud zastavíte virtuální počítač v SAP LaMa, adaptér změní typ úložiště všech připojených disků včetně disku s operačním systémem na úložiště Standard. Pokud spustíte virtuální počítač v SAP LaMa, adaptér změní typ úložiště zpátky na původní typ úložiště.
 
-Kliknutím na test konfigurace Ověřte zadání. Měli byste vidět
+Kliknutím na test konfigurace Ověřte zadání. Měli byste vidět toto:
 
 Připojení bylo úspěšné: připojení k Microsoft cloudu bylo úspěšné. bylo nalezeno 7 skupin prostředků (je požadováno pouze 10 skupin).
 
@@ -181,7 +181,7 @@ Vytvořte nový virtuální počítač s jedním z podporovaných operačních s
 
 Databáze Oracle potřebuje disky pro/Oracle,/Home/oraod1 a/Home/Oracle.
 
-![Oracle Database v systému Linux](media/lama/sap-lama-db-ora-lnx.png)
+![Diagram, který zobrazuje databázi Oracle v systému Linux a potřebné disky.](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Ruční nasazení pro Microsoft SQL Server
 
@@ -260,23 +260,23 @@ V níže uvedených příkladech předpokládáme, že nainstalujete SAP HANA se
 
 Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte připojit IP adresu virtuálního hostitele ASCS. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
-![Linux][Logo_Linux] Linux
+![Logo Linux.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Logo Windows][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-Spusťte SWPM a pro *název hostitele instance ASCS*použijte *ah1-ASCS* .
+Spusťte SWPM a pro *název hostitele instance ASCS* použijte *ah1-ASCS* .
 
-![Linux ][Logo_Linux] Linux  
+![Logo Linux.][Logo_Linux] Linux  
 Do profilu agenta hostitele SAP, který se nachází na adrese/usr/SAP/hostctrl/exe/host_profile, přidejte následující parametr profilu. Další informace najdete v tématu SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -319,7 +319,7 @@ V rámci účtu NetApp rozsah kapacity určuje velikost a typ disků pro každý
 
 ![Fond kapacit SAP LaMa NetApp se vytvořil. ](media/lama/sap-lama-capacitypool-list.png)
 
-Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\> *, */usr/SAP/ \<SID\> *a */Home/ \<sid\> ADM*. Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
+Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\>*, */usr/SAP/ \<SID\>* a */Home/ \<sid\> ADM*. Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
 
 > [!NOTE]
 > Během fáze BETA verze musí být názvy svazků v rámci předplatného jedinečné.
@@ -387,14 +387,14 @@ Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačn
 
 Před spuštěním Správce SAP software Provisioning (SWPM) musíte připojit IP adresu virtuálního hostitele aplikačního serveru. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
-![Linux][Logo_Linux] Linux
+![Logo Linux.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Logo Windows][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -417,7 +417,7 @@ Pokud ho nastavíte ručně, budete také muset vytvořit nové položky userSto
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru*použijte *ah1-di-0* .
+Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru* použijte *ah1-di-0* .
 
 #### <a name="post-installation-steps-for-sap-hana"></a>Kroky po instalaci pro SAP HANA
 
@@ -436,7 +436,7 @@ Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte př
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-Spusťte SWPM a pro *název hostitele instance ASCS*použijte *AS1-ASCS* .
+Spusťte SWPM a pro *název hostitele instance ASCS* použijte *AS1-ASCS* .
 
 #### <a name="install-sql-server"></a>Instalace SQL Serveru
 
@@ -460,7 +460,7 @@ Před spuštěním Správce SAP software Provisioning (SWPM) musíte připojit I
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru*použijte *AS1-di-0* .
+Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru* použijte *AS1-di-0* .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

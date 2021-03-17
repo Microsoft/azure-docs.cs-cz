@@ -4,20 +4,20 @@ description: Poskytuje přehled Azure FarmBeats
 author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.author: v-ummehabiba
+ms.openlocfilehash: f173dfb055f3d9c75ee63570cd413276ffb6ba37
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439563"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182821"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled služby Azure FarmBeats (Preview)
 
 Azure FarmBeats je nabídka pro firmy, která je dostupná v Azure Marketplace. Umožňuje agregaci zemědělských datových sad mezi poskytovateli. Azure FarmBeats umožňuje vytvářet modely umělé Intelligence (AI) nebo strojové učení (ML) založené na prostředcích s pojistnou datovou sadu. S využitím Azure FarmBeats se podniky v oblasti zemědělství můžou soustředit na základní hodnoty – přidává se místo nerozlišené těžkého zvedání datových techniků.
 
 > [!NOTE]
-> Služba Azure FarmBeats je aktuálně ve verzi Public Preview. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure FarmBeats se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [fórum podpory Azure FarmBeats](https://aka.ms/farmbeatssupport) .
+> Služba Azure FarmBeats je aktuálně ve verzi Public Preview. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure FarmBeats se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [fórum podpory Azure FarmBeats](/answers/topics/azure-farmbeats.html) .
 
 ![Beats farmy projektu](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -43,7 +43,7 @@ DataHub je navržená jako rozšiřitelná platforma rozhraní API. Spolupracuje
 
 Akcelerátor Azure FarmBeats je Ukázková webová aplikace, která je postavená nad DataHub. Odkaz akcelerátoru – spustí vaše uživatelské rozhraní a vývoj modelu. Akcelerátor Azure FarmBeats používá rozhraní API Azure FarmBeats. Vizualizuje ingestovaná data senzorů jako grafy a výstupy modelu jako mapy. Můžete například použít akcelerátor k rychlému vytvoření farmy a získat mapu pro vegetativní rozvržení nebo mapu umístění senzorů pro tuto farmu snadno.
 
-## <a name="role-based-access-control-rbac"></a>Řízení přístupu podle role (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
 
 Správce může definovat pravidla přístupu pro Azure FarmBeats pomocí jedné z předdefinovaných rolí. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět. Existují dva druhy rolí v Azure FarmBeats – pro uživatele a partnery.
 
@@ -55,18 +55,18 @@ Správce může definovat pravidla přístupu pro Azure FarmBeats pomocí jedné
 
 Správce může do Azure FarmBeats přidat několik partnerů jako zprostředkovatel dat. Následující přehled dostupných partnerských rolí v FarmBeats a jejich oprávněních:
 
-| Typ partnera    |   Akce  | Rozsah |
+| Typ partnera    |   Akce  | Obor |
 | ---- | -------- | -------- |
 | Partner snímače  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat | DeviceModel, zařízení, SensorModel, senzor <br/> <br/> ExtendedType |
 | Partner pro satelitní servery  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | Scéna, SceneFile <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 | Partner s počasí * <br/> <br/>  (* Již brzy) |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Azure FarmBeats se nabízí bez dalších poplatků a platíte jenom za prostředky Azure, které používáte. Pomocí níže uvedených prostředků můžete získat další informace o této nabídce:
 
 - Seznamte se s nejnovějšími zprávami služby Azure FarmBeats, které najdete na [blogu o Azure FarmBeats](https://aka.ms/farmbeatsblog).
-- Vyhledejte pomoc publikováním otázky na našem [fóru podpory Azure FarmBeats](https://aka.ms/farmbeatssupport).
+- Vyhledejte pomoc publikováním otázky na našem [fóru podpory Azure FarmBeats](/answers/topics/azure-farmbeats.html).
 - Sdělte nám svůj názor prostřednictvím publikování nebo hlasování o funkcích na našem [fóru pro názory na Azure FarmBeats](https://aka.ms/farmbeatsfeedback).
 
 ## <a name="next-steps"></a>Další kroky

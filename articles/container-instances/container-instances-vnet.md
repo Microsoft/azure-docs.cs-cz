@@ -3,14 +3,13 @@ title: Nasazení skupiny kontejnerů do služby Azure Virtual Network
 description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existující virtuální sítě Azure pomocí rozhraní příkazového řádku Azure.
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407145"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028875"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -21,7 +20,7 @@ V tomto článku se dozvíte, jak pomocí příkazu [AZ Container Create][az-con
 Informace o scénářích a omezeních sítě najdete v tématu [scénáře a prostředky virtuální sítě pro Azure Container Instances](container-instances-virtual-network-concepts.md).
 
 > [!IMPORTANT]
-> Nasazení skupiny kontejnerů do virtuální sítě je všeobecně dostupné pro kontejnery Linux ve většině oblastí, kde je Azure Container Instances k dispozici. Podrobnosti najdete v tématu věnovaném [oblastem a dostupnosti prostředků](container-instances-virtual-network-concepts.md#where-to-deploy). 
+> Nasazení skupiny kontejnerů do virtuální sítě je všeobecně dostupné pro kontejnery Linux ve většině oblastí, kde je Azure Container Instances k dispozici. Podrobnosti najdete v tématu věnovaném [oblastem a dostupnosti prostředků][container-regions]. 
 
 Příklady v tomto článku jsou formátované pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, upravte odpovídajícím způsobem řádky pro pokračování řádku.
 
@@ -41,7 +40,7 @@ Po nasazení první skupiny kontejnerů pomocí této metody můžete nasadit do
 
 ### <a name="example"></a>Příklad
 
-Následující příkaz [AZ Container Create][az-container-create] určí nastavení pro novou virtuální síť a podsíť. Zadejte název skupiny prostředků, která byla vytvořena v oblasti, kde jsou [k dispozici](container-instances-region-availability.md#availability---virtual-network-deployment)skupiny kontejnerů nasazení ve virtuální síti. Tento příkaz nasadí veřejný kontejner Microsoft [ACI-HelloWorld][aci-helloworld] , který spouští malý Node.js webový server obsluhující statickou webovou stránku. V další části nasadíte druhou skupinu kontejnerů do stejné podsítě a otestujete komunikaci mezi dvěma instancemi kontejneru.
+Následující příkaz [AZ Container Create][az-container-create] určí nastavení pro novou virtuální síť a podsíť. Zadejte název skupiny prostředků, která byla vytvořena v oblasti, kde jsou [k dispozici](container-instances-region-availability.md)skupiny kontejnerů nasazení ve virtuální síti. Tento příkaz nasadí veřejný kontejner Microsoft [ACI-HelloWorld][aci-helloworld] , který spouští malý Node.js webový server obsluhující statickou webovou stránku. V další části nasadíte druhou skupinu kontejnerů do stejné podsítě a otestujete komunikaci mezi dvěma instancemi kontejneru.
 
 ```azurecli
 az container create \
@@ -84,7 +83,7 @@ Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Příklad:
 10.0.0.4
 ```
 
-Nyní nastavte `CONTAINER_GROUP_IP` na IP adresu, kterou jste načetli pomocí `az container show` příkazu, a spusťte následující `az container create` příkaz. Tento druhý kontejner *commchecker*spustí bitovou kopii systému Alpine Linux a provede se s `wget` první IP adresou privátní podsítě pro skupinu kontejnerů.
+Nyní nastavte `CONTAINER_GROUP_IP` na IP adresu, kterou jste načetli pomocí `az container show` příkazu, a spusťte následující `az container create` příkaz. Tento druhý kontejner *commchecker* spustí bitovou kopii systému Alpine Linux a provede se s `wget` první IP adresou privátní podsítě pro skupinu kontejnerů.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -239,3 +238,4 @@ Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny k
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

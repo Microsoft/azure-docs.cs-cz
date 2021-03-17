@@ -1,9 +1,9 @@
 ---
 title: Správa koncových bodů streamování pomocí sady .NET SDK | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí Azure Portal.
+description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí sady .NET SDK.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,16 +13,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5c84e7c753e6d1eb1d357320857e4c159cc13cfc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038728"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013750"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí sady .NET SDK  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí sady .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 >[!NOTE]
 >Nezapomeňte si projít článek s [přehledem](media-services-streaming-endpoints-overview.md) . Přečtěte si také [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).

@@ -1,6 +1,6 @@
 ---
-title: Ukládání výsledků dotazů do úložiště
-description: V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL na vyžádání (Preview).
+title: Uložení výsledků dotazu z neserverového fondu SQL
+description: V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí neserverového fondu SQL.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 610391cefe88f6d066f4af12f6fb88f55b1fe56b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206543"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165361"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Uložení výsledků dotazu do úložiště pomocí SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Ukládání výsledků dotazu do úložiště pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL na vyžádání (Preview).
+V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí neserverového fondu SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -74,6 +74,9 @@ FROM
 
 ```
 
+> [!NOTE]
+> Tento skript je nutné upravit a změnit cílové umístění, aby jej bylo možné znovu spustit. Externí tabulky nelze vytvořit v umístění, kde již existují nějaká data.
+
 ## <a name="use-the-external-table"></a>Použití externí tabulky
 
 Můžete použít externí tabulku vytvořenou prostřednictvím CETAS jako normální externí tabulku.
@@ -93,6 +96,14 @@ WHERE
 ORDER BY
     [population] DESC;
 ```
+
+## <a name="remarks"></a>Poznámky
+
+Po uložení výsledků nelze data v externí tabulce upravovat. Tento skript se nedá opakovat, protože CETAS nepřepíše podkladová data vytvořená v předchozím spuštění. Hlasujte pro následující položky zpětné vazby, pokud jsou některé z nich potřeba ve vašich scénářích nebo navrhnout nové na webu pro názory na Azure:
+- [Povolit vkládání nových dat do externí tabulky](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
+- [Povolit odstranění dat z externí tabulky](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
+- [Zadat oddíly v CETAS](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
+- [Zadejte velikosti souborů a počty](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
 ## <a name="next-steps"></a>Další kroky
 

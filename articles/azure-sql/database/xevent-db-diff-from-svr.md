@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+ms.topic: reference
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 7f0f50de3f74f0e8040118035e28b3e905ed5616
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046954"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501205"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Rozšířené události v Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Další informace o rozšířených událostech jsou k dispozici na adrese:
 - [Rychlé zprovoznění: rozšířené události v SQL Server](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 - [Rozšířené události](/sql/relational-databases/extended-events/extended-events)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto tématu se předpokládá, že už máte znalosti:
 
@@ -66,47 +66,47 @@ Související témata poskytují dva ukázky kódu:
 - Při spuštění příkazu [vytvořit relaci události](/sql/t-sql/statements/create-event-session-transact-sql) na SQL Server použijete klauzuli **on serveru** . Ale na Azure SQL Database místo toho použijete klauzuli **on Database** .
 - Klauzule **on Database** se vztahuje také na příkazy jazyka Transact-SQL v [relaci události ALTER](/sql/t-sql/statements/alter-event-session-transact-sql) a [drop](/sql/t-sql/statements/drop-event-session-transact-sql) .
 
-- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** v **relaci vytvoření události** nebo příkazy pro **změnu relace události** .
+- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** v **relaci vytvoření události**  nebo příkazy pro **změnu relace události** .
   - Hodnota **= on** podporuje automatické restartování po opětovné konfiguraci logické databáze z důvodu převzetí služeb při selhání.
 
 ## <a name="new-catalog-views"></a>Nové zobrazení katalogu
 
-Funkce Rozšířené události je podporována v několika [zobrazeních katalogu](https://msdn.microsoft.com/library/ms174365.aspx). Zobrazení katalogu informují o *metadatech a definicích* relací událostí vytvořených uživatelem v aktuální databázi. Zobrazení nevrací informace o instancích aktivních relací událostí.
+Funkce Rozšířené události je podporována v několika [zobrazeních katalogu](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql). Zobrazení katalogu informují o *metadatech a definicích* relací událostí vytvořených uživatelem v aktuální databázi. Zobrazení nevrací informace o instancích aktivních relací událostí.
 
-| Název<br/>zobrazení katalogu | Description |
+| Název<br/>zobrazení katalogu | Popis |
 |:--- |:--- |
-| **sys. database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
-| **sys. database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
-| **sys. database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
-| **sys. database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
-| **sys. database_event_sessions** |Vrátí řádek pro každou relaci události v databázi. |
+| **sys.database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
+| **sys.database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
+| **sys.database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
+| **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
+| **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi. |
 
-V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. \_ Server* místo *. Database \_ *. Vzor názvu je jako **Sys. server_event_%**.
+V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. \_ Server* místo *. Database \_*. Vzor názvu je jako **Sys.server_event_%**.
 
-## <a name="new-dynamic-management-views-dmvs"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
-Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
+Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
 
-| Název DMV | Description |
+| Název DMV | Popis |
 |:--- |:--- |
-| **sys. dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
-| **sys. dm_xe_database_session_events** |Vrátí informace o událostech relace. |
-| **sys. dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
-| **sys. dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
-| **sys. dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
+| **sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
+| **sys.dm_xe_database_session_events** |Vrátí informace o událostech relace. |
+| **sys.dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
+| **sys.dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
+| **sys.dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
 
-V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez * \_ databázové* části názvu, například:
+V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez *\_ databázové* části názvu, například:
 
-- **Sys. dm_xe_sessions**místo názvu<br/>**Sys. dm_xe_database_sessions**.
+- místo názvu **Sys.dm_xe_sessions**.<br/>**Sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro obojí
 
 Pro rozšířené události jsou k dispozici další zobrazení dynamické správy, které jsou společné pro Azure SQL Database, Azure SQL Managed instance a Microsoft SQL Server:
 
-- **sys. dm_xe_map_values**
-- **sys. dm_xe_object_columns**
-- **sys. dm_xe_objects**
-- **sys. dm_xe_packages**
+- **sys.dm_xe_map_values**
+- **sys.dm_xe_object_columns**
+- **sys.dm_xe_objects**
+- **sys.dm_xe_packages**
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -140,11 +140,11 @@ SELECT
 
 Tady jsou cíle, které můžou zachytit výsledky z relací událostí na Azure SQL Database:
 
-- [Ring – cíl vyrovnávací paměti](https://msdn.microsoft.com/library/ff878182.aspx) – krátce uchovává data událostí v paměti.
-- [Cílová hodnota čítače událostí](https://msdn.microsoft.com/library/ff878025.aspx) – spočítá všechny události, ke kterým dojde během relace rozšířených událostí.
-- [Cíl souboru události](https://msdn.microsoft.com/library/ff878115.aspx) – zapisuje kompletní vyrovnávací paměti do kontejneru Azure Storage.
+- [Ring – cíl vyrovnávací paměti](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) – krátce uchovává data událostí v paměti.
+- [Cílová hodnota čítače událostí](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) – spočítá všechny události, ke kterým dojde během relace rozšířených událostí.
+- [Cíl souboru události](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) – zapisuje kompletní vyrovnávací paměti do kontejneru Azure Storage.
 
-Rozhraní API [pro trasování událostí pro Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) není k dispozici pro rozšířené události v Azure SQL Database.
+Rozhraní API [pro trasování událostí pro Windows (ETW)](/dotnet/framework/wcf/samples/etw-tracing) není k dispozici pro rozšířené události v Azure SQL Database.
 
 ## <a name="restrictions"></a>Omezení
 
@@ -183,11 +183,11 @@ Cílem **souboru událostí** může být latence sítě nebo selhání při trv
 ## <a name="related-links"></a>Související odkazy
 
 - [Použití Azure PowerShell s Azure Storage](/powershell/module/az.storage/).
-- [Rutiny Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)
+- [Rutiny Azure Storage](/powershell/module/Azure.Storage)
 - [Použití Azure Powershell s Azure Storage](/powershell/module/az.storage/)
 - [Jak používat úložiště objektů BLOB z .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [Vytvoření relace události (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
+- [Vytvoření relace události (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
 - [Blogové příspěvky Jonathana Kehayias o rozšířených událostech v Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - Webová stránka *aktualizace služby* Azure, která je zúžená podle parametru Azure SQL Database:
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
@@ -195,6 +195,6 @@ Cílem **souboru událostí** může být latence sítě nebo selhání při trv
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

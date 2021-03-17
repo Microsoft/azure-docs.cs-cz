@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78300994"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347712"
 ---
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
-Pokud chcete vytvořit vlastní vazby zabezpečení nebo povolit klientské certifikáty pro aplikaci App Service, musí být [plán App Service](https://azure.microsoft.com/pricing/details/app-service/) na úrovni **Basic**, **Standard**, **Premium**nebo **Isolated** . V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
+Pokud chcete vytvořit vlastní vazby TLS/SSL nebo povolit klientské certifikáty pro aplikaci App Service, musí být [plán App Service](https://azure.microsoft.com/pricing/details/app-service/) na úrovni **Basic**, **Standard**, **Premium** nebo **Isolated** . V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Otevřete [Azure Portal](https://portal.azure.com).
+Otevřete web [Azure Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Přechod do webové aplikace
 
@@ -31,7 +31,7 @@ Vyhledejte a vyberte **App Services**.
 
 Na stránce **App Services** vyberte název vaší webové aplikace.
 
-![Přechod do aplikace Azure na portálu](./media/app-service-ssl-prepare-app/select-app.png)
+![Snímek obrazovky App Services stránky v Azure Portal zobrazující seznam všech spuštěných webových aplikací s první aplikací v seznamu, který je zvýrazněný.](./media/app-service-ssl-prepare-app/select-app.png)
 
 Vyložili jste na stránce pro správu vaší webové aplikace.  
 

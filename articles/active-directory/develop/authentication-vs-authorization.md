@@ -1,7 +1,7 @@
 ---
-title: Ověřování vs – autorizace | Azure
+title: Ověřování oproti autorizaci | Azure
 titleSuffix: Microsoft identity platform
-description: Seznamte se se základy ověřování a autorizace v platformě Microsoft Identity Platform (v 2.0).
+description: Seznamte se se základy ověřování a autorizace na platformě Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,47 +13,50 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5244a8e572abb56c00d87d0bdd7e8d1291af9b9e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252109"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581903"
 ---
-# <a name="authentication-vs-authorization"></a>Ověřování vs – autorizace
+# <a name="authentication-vs-authorization"></a>Ověřování vs. autorizace
 
-Tento článek definuje ověřování a autorizaci a stručně popisuje, jak můžete pomocí platformy Microsoft Identity ověřovat a autorizovat uživatele ve webových aplikacích, webových rozhraních API nebo aplikacích, které volají chráněná webová rozhraní API. Pokud se vám zobrazí termín, který neznáte, vyzkoušejte si náš [Glosář](developer-glossary.md) nebo naše [videa Microsoftu pro identitu platforem](identity-videos.md) , která se týkají základních konceptů.
+Tento článek definuje ověřování a autorizaci. Také stručně popisuje, jak můžete pomocí platformy Microsoft Identity ověřovat a autorizovat uživatele ve webových aplikacích, webových rozhraních API nebo aplikacích, které volají chráněná webová rozhraní API. Pokud se vám zobrazí termín, který neznáte, vyzkoušejte si náš [Glosář](developer-glossary.md) nebo naše [videa k platformě Microsoft Identity](identity-videos.md), která se týkají základních konceptů.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-**Ověřování** je proces prokazující, na koho jste se rozhodli. V angličtině se pro ověřování někdy používá zkrácené slovo AuthN. Platforma Microsoft Identity Platform implementuje protokol [OpenID Connect](https://openid.net/connect/) pro zpracování ověřování.
+*Ověřování* je proces, který prokáže, že jste sami. Někdy se zkracuje na *Authn*. Platforma Microsoft Identity Platform používá ke zpracování ověřování protokol [OpenID Connect](https://openid.net/connect/) .
 
 ## <a name="authorization"></a>Autorizace
 
-**Autorizace** je způsob, jakým se uděluje oprávnění ověřené strany k tomu, aby něco projednalo. Určuje, jaká data máte povolený přístup, a co s nimi můžete dělat. V angličtině se pro autorizaci někdy používá zkrácené slovo AuthZ. Platforma Microsoft Identity Platform implementuje protokol [OAuth 2,0](https://oauth.net/2/) pro zpracování autorizace.
+*Autorizace* je způsob, jakým se uděluje oprávnění ověřené strany k tomu, aby něco projednalo. Určuje, jaká data máte povolený přístup, a co s nimi můžete dělat. Autorizace se někdy zkracuje na *Authz*. Platforma Microsoft identity používá protokol [OAuth 2,0](https://oauth.net/2/) ke zpracování autorizace.
 
-## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>Ověřování a autorizace pomocí platformy Microsoft Identity Platform
+## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>Ověřování a autorizace pomocí platformy Microsoft identity
 
-Místo vytváření aplikací, které každý z nich zachovávají vlastní uživatelské jméno a heslo, což má za následek vysokou administrativní zátěž, když potřebujete přidat nebo odebrat uživatele napříč více aplikacemi, můžou aplikace delegovat tuto odpovědnost na centralizovaného zprostředkovatele identity.
+Vytváření aplikací, které mají při přidávání a odebírání uživatelů napříč více aplikacemi, má za následek vysokou administrativní režii a informace o heslech. Místo toho můžou vaše aplikace delegovat tuto odpovědnost na centralizovaného zprostředkovatele identity.
 
-Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby uživatel byl v určitém umístění, použití služby [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (někdy označované jako dvojúrovňové ověřování nebo 2FA) a taky umožnit uživateli, aby se přihlásili jednou a pak se automaticky přihlásil ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako **jednotné přihlašování (SSO)**.
+Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako například:
 
-Microsoft Identity Platform usnadňuje autorizaci a ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům sestavovat aplikace, které přihlásí všechny identity Microsoftu, získat tokeny pro volání [Microsoft Graph](https://developer.microsoft.com/graph/), jiná rozhraní API Microsoftu nebo rozhraní API, která vývojáři sestavili.
+- Zásady podmíněného přístupu, které vyžadují, aby uživatel byl v určitém umístění.
+- Použití [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md), který se někdy nazývá dvojúrovňové ověřování nebo 2FA.
+- Povolením, aby se uživatel přihlásil jednou a pak se automaticky přihlásil ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se nazývá *jednotné přihlašování (SSO)*.
 
-Následuje krátké porovnání různých protokolů používaných platformami Microsoft Identity Platform:
+Platforma Microsoftu identity usnadňuje autorizaci a ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu. Podporuje standardní protokoly a open source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlásí všechny identity Microsoftu, získávají tokeny pro volání [Microsoft Graph](https://developer.microsoft.com/graph/), přístup k rozhraním Microsoft API nebo přístup k jiným rozhraním API, která vývojáři vytvořili.
 
-* **OAuth vs OpenID Connect**: pro ověřování se používá protokol OAuth a OpenID Connect (OIDC). OpenID Connect je postavená na OAuth 2,0, takže terminologie a tok jsou mezi nimi podobné. Můžete dokonce ověřit uživatele (pomocí OpenID Connect) a získat autorizaci pro přístup k chráněnému prostředku, který uživatel vlastní (pomocí OAuth 2,0) v jednom požadavku. Další informace najdete v tématu [protokoly OAuth 2,0 a OpenID Connect](active-directory-v2-protocols.md) a [protokol OpenID Connect](v2-protocols-oidc.md).
-* **OAuth vs SAML**: protokol OAuth se používá pro autorizaci a pro ověřování se používá SAML. Další informace o tom, jak se tyto dva protokoly dají použít společně k ověření uživatele (pomocí SAML), najdete v tématu [Microsoft Identity Platform a OAuth 2,0 Flow – tok kontrolního výrazu SAML](v2-saml-bearer-assertion.md) . získáte tak autorizaci pro přístup k chráněnému prostředku (pomocí OAuth 2,0).
-* **OpenID Connect vs**: k ověření uživatele se používají OpenID Connect i SAML a používají se k povolení jednotného přihlašování. Ověřování SAML se běžně používá u zprostředkovatelů identity, jako je Active Directory Federation Services (AD FS) (ADFS) federované do Azure AD, a je proto často používané v podnikových aplikacích. OpenID Connect se běžně používá pro aplikace, které jsou čistě v cloudu, jako jsou například mobilní aplikace, weby a webová rozhraní API.
+Toto video vysvětluje platformu Microsoft identity a základy moderního ověřování: 
+
+> [!VIDEO https://www.youtube.com/embed/tkQJSHFsduY]
+
+Tady je porovnání protokolů, které používá platforma Microsoft Identity Platform:
+
+* **OAuth proti OpenID připojení**: platforma pro ověřování používá OAuth pro autorizaci a OpenID Connect (OIDC). OpenID Connect je postavená na OAuth 2,0, takže terminologie a tok jsou mezi nimi podobné. Můžete dokonce ověřit uživatele (prostřednictvím OpenID Connect) a získat autorizaci pro přístup k chráněnému prostředku, který vlastní uživatel (prostřednictvím OAuth 2,0) v jednom požadavku. Další informace najdete v tématu [protokoly OAuth 2,0 a OpenID Connect](active-directory-v2-protocols.md) a [protokol OpenID Connect](v2-protocols-oidc.md).
+* **OAuth proti SAML**: platforma používá OAuth 2,0 k autorizaci a SAML pro ověřování. Další informace o tom, jak tyto protokoly používat při ověřování uživatele a jak získat autorizaci pro přístup k chráněnému prostředku, najdete v tématu [tok kontrolního výrazu SAML pro Microsoft Identity Platform a OAuth 2,0](./scenario-token-exchange-saml-oauth.md).
+* **OpenID Connect versus SAML**: platforma používá OpenID Connect i SAML k ověření uživatele a povoluje jednotné přihlašování. Ověřování SAML se běžně používá u zprostředkovatelů identity, jako je Active Directory Federation Services (AD FS) (AD FS) federované do Azure AD, takže se často používá v podnikových aplikacích. OpenID Connect se běžně používá pro aplikace, které jsou čistě v cloudu, jako jsou například mobilní aplikace, weby a webová rozhraní API.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další témata týkající se ověřování a základů autorizace:
+Další témata, která se týkají základy ověřování a autorizace:
 
-* V tématu [tokeny zabezpečení](security-tokens.md) se dozvíte, jak se v autorizaci a ověřování používají přístupové tokeny, aktualizují tokeny a tokeny ID.
-* V článku [aplikační model](application-model.md) se dozvíte o procesu registrace aplikace, aby se mohla integrovat s platformou Microsoft identity.
-* V tématu [Flow pro přihlášení k aplikaci](app-sign-in-flow.md) se dozvíte o procesu přihlašování webových, desktopových a mobilních aplikací na platformě Microsoft identity.
-
-* Další informace o protokolech, které Microsoft Identity Platform implementuje, najdete v tématu [protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform](active-directory-v2-protocols.md).
-* Další informace o tom, jak platforma Microsoft identity podporuje jednotné přihlašování, najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md) .
-* Další informace o různých způsobech, jak můžete v aplikaci implementovat jednotné přihlašování, najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md) .
+* Další informace o tom, jak se v autorizaci a ověřování používají přístupové tokeny, aktualizovat tokeny a tokeny ID, najdete v tématu [tokeny zabezpečení](security-tokens.md).
+* Další informace o procesu registrace aplikace, aby ji bylo možné integrovat s platformou Microsoft identity, najdete v tématu [aplikační model](application-model.md).

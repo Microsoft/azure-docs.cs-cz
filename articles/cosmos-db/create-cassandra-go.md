@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 595ec1aaa4aedc3916d1b4d46986dcabae887aaf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535755"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076397"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rychlý Start: Vytvoření aplikace v cestách pomocí `gocql` klienta pro správu dat Azure Cosmos DB rozhraní API Cassandra
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -85,7 +86,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-Do funkce se předává hostitel Azure Cosmos DB Cassandra, [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) který získá strukturu, která je pak nakonfigurovaná tak, aby používala uživatelské jméno, heslo, port a odpovídající verzi TLS ([požadavek zabezpečení šifrování HTTPS/SSL/TLS](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)).
+Do funkce se předává hostitel Azure Cosmos DB Cassandra, [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) který získá strukturu, která je pak nakonfigurovaná tak, aby používala uživatelské jméno, heslo, port a odpovídající verzi TLS ([požadavek zabezpečení šifrování HTTPS/SSL/TLS](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)).
 
 `GetSession`Funkce je pak volána z `main` funkce ( `main.go` ).
 
@@ -128,7 +129,7 @@ func DropKeySpaceIfExists(keyspace string, session *gocql.Session) {
 }
 ```
 
-`CreateKeySpace`funkce se používá k vytvoření `keyspace` ( `user_profile` )
+`CreateKeySpace` funkce se používá k vytvoření `keyspace` ( `user_profile` )
 
 ```go
 const createKeyspace = "CREATE KEYSPACE %s WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 1 }"
@@ -158,7 +159,7 @@ func CreateUserTable(keyspace, table string, session *gocql.Session) {
 
 Po vytvoření prostoru klíčů a tabulky vyvolá operace CRUD (součást `operations\crud.go` ). 
 
-`InsertUser`slouží k vytvoření `User` . Nastaví informace o uživateli (ID, název a město) jako argumenty dotazu pomocí[`Bind`](https://godoc.org/github.com/gocql/gocql#Query.Bind)
+`InsertUser` slouží k vytvoření `User` . Nastaví informace o uživateli (ID, název a město) jako argumenty dotazu pomocí [`Bind`](https://godoc.org/github.com/gocql/gocql#Query.Bind)
 
 ```go
 const createQuery = "INSERT INTO %s.%s (user_id, user_name , user_bcity) VALUES (?,?,?)"
@@ -172,7 +173,7 @@ func InsertUser(keyspace, table string, session *gocql.Session, user model.User)
 }
 ```
 
-`FindUser`slouží k vyhledání uživatele ( `model\user.go` ) pomocí konkrétního ID uživatele a při [`Scan`](https://godoc.org/github.com/gocql/gocql#Iter.Scan) vázání atributů uživatele (vrácený Cassandra) k jednotlivým proměnným ( `userid` , `name` , `city` ) – je jedním ze způsobů, jak můžete použít výsledek získaný jako výsledek vyhledávacího dotazu.
+`FindUser` slouží k vyhledání uživatele ( `model\user.go` ) pomocí konkrétního ID uživatele a při [`Scan`](https://godoc.org/github.com/gocql/gocql#Iter.Scan) vázání atributů uživatele (vrácený Cassandra) k jednotlivým proměnným ( `userid` , `name` , `city` ) – je jedním ze způsobů, jak můžete použít výsledek získaný jako výsledek vyhledávacího dotazu.
 
 ```go
 const selectQuery = "SELECT * FROM %s.%s where user_id = ?"
@@ -193,7 +194,7 @@ func FindUser(keyspace, table string, id int, session *gocql.Session) model.User
 }
 ```
 
-`FindAllUsers`slouží k načtení všech uživatelů. [`SliceMap`](https://godoc.org/github.com/gocql/gocql#Iter.SliceMap)slouží jako zkrácený způsob, jak získat všechny informace o uživateli ve formě řezu `map` s. Každou z nich si můžete představit `map` jako páry klíč-hodnota, kde název sloupce (například `user_id` ) je klíč spolu s příslušnou hodnotou.
+`FindAllUsers` slouží k načtení všech uživatelů. [`SliceMap`](https://godoc.org/github.com/gocql/gocql#Iter.SliceMap) slouží jako zkrácený způsob, jak získat všechny informace o uživateli ve formě řezu `map` s. Každou z nich si můžete představit `map` jako páry klíč-hodnota, kde název sloupce (například `user_id` ) je klíč spolu s příslušnou hodnotou.
 
 ```go
 const findAllUsersQuery = "SELECT * FROM %s.%s"
@@ -225,7 +226,7 @@ func mapToUser(m map[string]interface{}) model.User {
 
 Jak už jsme uvedli, aplikace přijímá připojení a přihlašovací údaje ve formě proměnných prostředí. 
 
-1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec** . 
 
     :::image type="content" source="./media/create-cassandra-go/copy-username-connection-string-azure-portal.png" alt-text="Zobrazení a zkopírování podrobností na stránce připojovací řetězec v Azure Portal":::
 
@@ -238,7 +239,7 @@ set COSMOSDB_CASSANDRA_USER=<value for "USERNAME">
 set COSMOSDB_CASSANDRA_PASSWORD=<value for "PRIMARY PASSWORD">
 ```
 
-V okně terminálu přejděte do správné složky. Příklad:
+V okně terminálu přejděte do správné složky. Například:
 
 ```shell
 cd "C:\git-samples\azure-cosmosdb-cassandra-go-getting-started"
@@ -252,9 +253,9 @@ go run main.go
 
 3. V okně terminálu se zobrazí oznámení o různých operacích, včetně prostoru klíčů a nastavení tabulky, vytvoření uživatele atd.
 
-4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
+4. Na portálu Azure Portal otevřete **Data Explorer** , abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Zobrazení dat v Průzkumník dat-Azure Cosmos DB":::
+    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Zobrazení a zkopírování podrobností na stránce připojovací řetězec v Azure Portal":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

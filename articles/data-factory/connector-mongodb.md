@@ -1,23 +1,18 @@
 ---
 title: Kopírovat data z MongoDB
 description: Naučte se, jak kopírovat data z Mongo DB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 08/12/2019
-ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/08/2021
+ms.openlocfilehash: eae2d2adfe2cfdd7e47f2ace9ede9253003aa5bf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558165"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368774"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 
@@ -28,15 +23,18 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!IMPORTANT]
 >Vydávání ADF Tato nová verze konektoru MongoDB, která poskytuje lepší podporu nativních MongoDB. Pokud používáte předchozí konektor MongoDB ve vašem řešení, které je podporované tak, jak je kvůli zpětné kompatibilitě, přečtěte si článek [MongoDB Connector (starší verze)](connector-mongodb-legacy.md) .
 
+
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
 Data z databáze MongoDB můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Konkrétně tento konektor MongoDB podporuje **verze až 3,4**.
+Konkrétně tento konektor MongoDB podporuje **verze až 4,2**.
+
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -44,14 +42,15 @@ Konkrétně tento konektor MongoDB podporuje **verze až 3,4**.
 
 Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor MongoDB.
 
+
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
 Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ |Vlastnost Type musí být nastavená na: **MongoDbV2** . |Yes |
-| připojovací řetězec |Zadejte připojovací řetězec MongoDB, např. `mongodb://[username:password@]host[:port][/[database][?options]]` . Další podrobnosti najdete [v MongoDB manuálně na připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Můžete také vložit heslo do Azure Key Vault a získat  `password`   konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . |Yes |
+| připojovací řetězec |Zadejte připojovací řetězec MongoDB, např. `mongodb://[username:password@]host[:port][/[database][?options]]` . Další podrobnosti najdete [v MongoDB manuálně na připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Připojovací řetězec můžete také vložit do Azure Key Vault. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . |Yes |
 | database | Název databáze, ke které chcete získat přístup. | Yes |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
@@ -78,7 +77,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Pro datovou sadu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Yes |
 | collectionName |Název kolekce v databázi MongoDB |Yes |
@@ -102,6 +101,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 }
 ```
 
+
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných MongoDB zdrojem.
@@ -110,15 +110,15 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** . | Yes |
-| filtrování | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ( {} ). | No |
+| filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ( {} ). | No |
 | cursorMethods. Project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v porovnání dokumentů, vynechejte tento parametr. | No |
 | cursorMethods. Sort | Určuje pořadí, ve kterém dotaz vrátí vyhovující dokumenty. Podívejte se na [kurzor. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | No |
 | cursorMethods. limit | Určuje maximální počet dokumentů vrácených serverem. Viz [Cursor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | No |
 | cursorMethods. Skip | Určuje počet dokumentů, které se mají přeskočit a kde MongoDB začne vracet výsledky. Podívejte se na [kurzor. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | No |
-| batchSize | Určuje počet dokumentů, které se mají vrátit v každé dávce odpovědi z instance MongoDB. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikaci. Cosmos DB omezí, že každá dávka nemůže překročit velikost 40MB, což je součet batchSize počtu dokumentů, takže tuto hodnotu snížíte, pokud je velikost dokumentu velká. | No<br/>(výchozí hodnota je **100**) |
+| batchSize | Určuje počet dokumentů, které se mají vrátit v každé dávce odpovědi z instance MongoDB. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikaci. Cosmos DB omezuje každou dávku velikost, která nesmí být větší než 40 MB, což je součet velikosti batchSize počtu dokumentů, takže tuto hodnotu sníží, pokud je velikost dokumentu velká. | No<br/>(výchozí hodnota je **100**) |
 
 >[!TIP]
 >Podpora ADF spotřebovává BSON dokument ve **striktním režimu**. Zajistěte, aby byl dotaz filtru v režimu Strict, nikoli v režimu Shell. Další popis najdete na adrese [MongoDB ručně](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
@@ -161,13 +161,16 @@ V části **zdroj** aktivity kopírování jsou podporovány následující vlas
 ]
 ```
 
+
 ## <a name="export-json-documents-as-is"></a>Exportovat dokumenty JSON tak, jak jsou
 
 Pomocí tohoto konektoru MongoDB můžete exportovat dokumenty JSON tak, jak jsou z kolekce MongoDB, do různých úložišť založených na souborech nebo Azure Cosmos DB. Chcete-li dosáhnout takového schématu – nezávislá kopírování, přeskočte oddíl Structure (označuje se také jako *schéma*) v datové sadě a mapování schématu v aktivitě kopírování.
 
+
 ## <a name="schema-mapping"></a>Mapování schématu
 
 Chcete-li kopírovat data z MongoDB do tabulkové jímky, přečtěte si téma [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
+
 
 ## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

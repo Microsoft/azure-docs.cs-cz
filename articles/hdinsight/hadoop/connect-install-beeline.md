@@ -1,19 +1,16 @@
 ---
 title: Připojení nebo instalace Apache Beeline – Azure HDInsight
 description: Naučte se připojit k klientovi Apache Beeline a spouštět dotazy na podregistry pomocí Hadoop v HDInsight. Beeline je nástroj pro práci s HiveServer2 nad JDBC.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: contperf-fy21q1
 ms.date: 05/27/2020
-ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076772"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944456"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Připojte se k Apache Beeline ve službě HDInsight nebo ji nainstalujte místně.
 
@@ -104,7 +101,7 @@ Při přímém připojení z hlavního uzlu clusteru nebo z prostředku ve stejn
 
 ## <a name="install-beeline-client"></a>Nainstalovat klienta Beeline
 
-I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalovat místně.  Kroky instalace pro místní počítač jsou založené na [subsystému Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalovat místně.  Kroky instalace pro místní počítač jsou založené na [subsystému Windows pro Linux](/windows/wsl/install-win10).
 
 1. Aktualizujte seznamy balíčků. Do prostředí bash zadejte následující příkaz:
 
@@ -128,7 +125,7 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        Pak stiskněte klávesy **CTRL + X**, pak **Y**a potom zadejte.
+        Pak stiskněte klávesy **CTRL + X**, pak **Y** a potom zadejte.
 
 1. Stáhněte si archivy Hadoop a Beeline, zadejte následující příkazy:
 
@@ -144,9 +141,9 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by měla být `/mnt/c/Users/user/` , kde `user` je vaše uživatelské jméno.
+1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by měla být `/mnt/c/Users/user/` , kde `user` je vaše uživatelské jméno.
 
-    1. Otevřete soubor:`nano ~/.bashrc`
+    1. Otevřete soubor: `nano ~/.bashrc`
 
     1. Níže uvedené příkazy upravte podle příslušné cesty a pak je zadejte na konci souboru bashrc:
 
@@ -156,7 +153,7 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. Pak stiskněte klávesy **CTRL + X**, pak **Y**a potom zadejte.
+    1. Pak stiskněte klávesy **CTRL + X**, pak **Y** a potom zadejte.
 
 1. Zavřete a znovu otevřete relaci bash.
 

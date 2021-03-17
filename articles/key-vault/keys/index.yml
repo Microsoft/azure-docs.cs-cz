@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 320895ac02293f46f1e6c03718b50800cc405be8
-  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
-  ms.translationtype: HT
+  ms.openlocfilehash: 867d0872237f26a5a8b65585bb02b8a26b938d88
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/17/2020
-  ms.locfileid: "88262887"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102499097"
 landingContent:
 - title: Klíče
   linkLists:
@@ -36,8 +36,16 @@ landingContent:
       url: quick-create-powershell.md
     - text: Portál
       url: quick-create-portal.md
+    - text: .NET
+      url: quick-create-net.md
     - text: Python
       url: quick-create-python.md
+    - text: Node.js
+      url: quick-create-node.md
+    - text: Java
+      url: quick-create-java.md
+    - text: Šablona
+      url: quick-create-template.md
 - title: Kurzy
   linkLists:
   - linkListType: tutorial
@@ -49,13 +57,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Klientská knihovna v .NET
-      url: /dotnet/api/azure.security.keyvault.keys?view=azure-dotnet
+      url: /dotnet/api/azure.security.keyvault.keys
     - text: Klientská knihovna v Pythonu
-      url: /python/api/overview/azure/keyvault-keys-readme?view=azure-python
+      url: /python/api/overview/azure/keyvault-keys-readme
     - text: Klientská knihovna v Javě
       url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html
     - text: Klientská knihovna v Node.js
-      url: /javascript/api/@azure/keyvault-keys/?view=azure-node-latest
+      url: /javascript/api/@azure/keyvault-keys/
 - title: Další informace o službě Key Vault
   linkLists:
   - linkListType: overview
@@ -64,10 +72,10 @@ landingContent:
       url: ../general/overview.md
     - text: Základní koncepty
       url: ../general/basic-concepts.md
+    - text: Přehled zabezpečení
+      url: ../general/security-overview.md
     - text: Přehled obnovitelného odstranění
       url: ../general/soft-delete-overview.md
-    - text: Přehled zabezpečení
-      url: ../general/overview-security.md
 - title: Microsoft Learn
   linkLists:
   - linkListType: learn

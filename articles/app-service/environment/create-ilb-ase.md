@@ -4,15 +4,15 @@ description: Naučte se vytvářet App Service prostředí s interním nástroje
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c176a1169bf8acb41eeb59f916ba30df677184a3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080588"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009547"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Vytvoření a použití interní Load Balancer App Service Environment 
 
@@ -50,7 +50,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 1. V Azure Portal vyberte **vytvořit prostředek**  >  **Web**  >  **App Service Environment**.
 
-2. Vyberte předplatné.
+2. Vyberte své předplatné.
 
 3. Vyberte nebo vytvořte skupinu prostředků.
 
@@ -100,25 +100,36 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení podporuje slu�
 
 ## <a name="dns-configuration"></a>Konfigurace DNS 
 
-Pokud používáte externí virtuální IP adresu, službu DNS spravuje Azure. Všechny aplikace vytvořené ve vaší službě ASE se automaticky přidají do Azure DNS, což je veřejná služba DNS. Ve službě ASE s interním nástrojem pro vyrovnávání zatížení musíte spravovat vlastní službu DNS. Přípona domény používaná s interního nástroje pomocným mechanismem řízení závisí na názvu pomocného mechanismu služby. Přípona domény je * &lt; pomocného názvu &gt; . appserviceenvironment.NET*. IP adresa pro váš interního nástroje je na portálu v části **IP adresy**. 
+Když použijete externí pomocného Správce služby, aplikace vytvořené ve vašem pomocném mechanismu se zaregistrují s Azure DNS. V externím pomocném mechanismu pro vaše aplikace neexistují žádné další kroky, které by měly být veřejně dostupné. Pomocí pomocného mechanismu interního nástroje musíte spravovat vlastní DNS. Můžete to udělat na svém vlastním serveru DNS nebo Azure DNS privátních zónách.
 
-Konfigurace DNS:
+Postup konfigurace DNS na vlastním serveru DNS pomocí pomocného mechanismu pro interního nástroje:
 
-- Vytvořte zónu pro * &lt; název pomocného mechanismu &gt; . appserviceenvironment.NET*
-- Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
-- Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
-- vytvoření zóny v * &lt; názvu pomocného mechanismu &gt; . appserviceenvironment.NET* s názvem SCM
-- Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu interního nástroje.
+1. Vytvořte zónu pro &lt; název pomocného mechanismu &gt; . appserviceenvironment.NET
+2. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+3. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+4. vytvoření zóny v &lt; názvu pomocného mechanismu &gt; . appserviceenvironment.NET s názvem SCM
+5. Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu interního nástroje.
+
+Postup při konfiguraci DNS v privátních zónách Azure DNS:
+
+1. vytvořit privátní zónu Azure DNS s názvem &lt; pomocného jména &gt; . appserviceenvironment.NET
+2. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+3. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+4. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
+
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem contoso.net, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese &lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET.
+
+Zóna s názvem. &lt; asename &gt; . appserviceenvironment.NET je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít. contoso.com pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
 ## <a name="publish-with-an-ilb-ase"></a>Publikování pomocí služby ASE s interním nástrojem pro vyrovnávání zatížení
 
-Pro každou vytvořenou aplikaci existují dva koncové body. V pomocném mechanismu interního nástroje budete mít * &lt; název aplikace &gt; . &lt; Doména &gt; a název aplikace interního nástroje POmocného mechanismu* * &lt; &gt; . SCM. &lt; Doména &gt; interního nástroje POmocného mechanismu*. 
+Pro každou vytvořenou aplikaci existují dva koncové body. V pomocném mechanismu interního nástroje budete mít *&lt; název aplikace &gt; . &lt; Doména &gt; a název aplikace interního nástroje POmocného mechanismu* *&lt; &gt; . SCM. &lt; Doména &gt; interního nástroje POmocného mechanismu*. 
 
 Pomocí názvu webu SCM se dostanete do konzoly Kudu na portálu Azure s názvem **Rozšířený portál**. Konzola Kudu umožňuje zobrazit proměnné prostředí, prozkoumávat disk, používat konzolu a další možnosti. Další informace najdete v tématu [Konzola Kudu pro službu Azure App Service][Kudu]. 
 
 Internetové systémy kontinuální integrace, například GitHub a Azure DevOps, budou nadále fungovat se službou ASE s interním nástrojem pro vyrovnávání zatížení, pokud je agent sestavení přístupný z internetu a nachází se ve stejné síti jako služba ASE s interním nástrojem pro vyrovnávání zatížení. Takže pokud se používá Azure DevOps a agent sestavení je vytvořený ve stejné virtuální síti jako služba ASE s interním nástrojem pro vyrovnávání zatížení (může být i v jiné podsíti), bude moct přijmout změny kódu z gitu Azure DevOps a nasadit ho do služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud si nechcete vytvořit vlastního agenta sestavení, budete muset použít systém kontinuální integrace (CI), který používá model vyžádání, například Dropbox.
 
-Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Tato doména se zobrazí v profilu publikování aplikace a v okně portálu aplikace (**Přehled**  >  **Essentials** a také **vlastnosti**). Pokud máte interního nástroje pomocného programu pro příponu domény s * &lt; názvem &gt; . appserviceenvironment.NET*a aplikace s názvem *MyTest*, použijte *MyTest. &lt; Název pomocného mechanismu &gt; . appserviceenvironment.NET* pro FTP a *MyTest.SCM.contoso.NET* pro nasazení webu.
+Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Tato doména se zobrazí v profilu publikování aplikace a v okně portálu aplikace (**Přehled**  >  **Essentials** a také **vlastnosti**). Pokud máte interního nástroje pomocného programu pro příponu domény s *&lt; názvem &gt; . appserviceenvironment.NET* a aplikace s názvem *MyTest*, použijte *MyTest. &lt; Název pomocného mechanismu &gt; . appserviceenvironment.NET* pro FTP a *MyTest.SCM.contoso.NET* pro nasazení webu.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Konfigurace pomocného programu interního nástroje pomocí zařízení WAF ##
 
@@ -147,17 +158,17 @@ INTERNÍHO nástroje služby ASE, které jste provedli dříve, než může 2019
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
 [linuxapp]: ../overview.md#app-service-on-linux

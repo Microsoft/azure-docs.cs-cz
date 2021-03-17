@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: elastic-pools
 ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d87c5d162b96209c0ce3d3276dc518f42373590f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225814"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780808"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -51,7 +51,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální velikost úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| Maximální In-Memory OLTP úložiště na fond (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Maximální počet databáze na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -70,7 +70,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální velikost úložiště na fond (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2 048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
+| Maximální In-Memory OLTP úložiště na fond (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Maximální počet databáze na fond <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -91,7 +91,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální velikost úložiště na fond (GB) | 2560 | 3072 | 3584 | 4 096 | 4 096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | N/A | N/A | N/A | N/A | N/A |
+| Maximální In-Memory OLTP úložiště na fond (GB) | N/A | N/A | N/A | N/A | N/A |
 | Maximální počet databáze na fond <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -112,7 +112,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) <sup>1</sup> | 250 | 500 | 750 | 1024 | 1536 |
 | Maximální velikost úložiště na fond (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
-| Maximální úložiště OLTP v paměti na fond (GB) | 1 | 2 | 4 | 10 | 12 |
+| Maximální In-Memory OLTP úložiště na fond (GB) | 1 | 2 | 4 | 10 | 12 |
 | Maximální počet databáze na fond <sup>2</sup> | 50 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup> | 200 | 400 | 800 | 1600 | 2400 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -133,7 +133,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) <sup>1</sup> | 2 048 | 2560 | 3072 | 3548 | 4 096 |
 | Maximální velikost úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096|
-| Maximální úložiště OLTP v paměti na fond (GB) | 16 | 20 | 24 | 28 | 32 |
+| Maximální In-Memory OLTP úložiště na fond (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maximální počet databáze na fond <sup>2</sup> | 100 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -154,7 +154,7 @@ Pro stejný počet DTU můžou prostředky poskytované elastickému fondu přek
 Pokud se využívají všechny DTU elastického fondu, pak každá databáze ve fondu obdrží stejné množství prostředků ke zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Pokud je minimální počet DTU na databázi nastaven na nenulovou hodnotu, pro každou databázi bude garantováno spravedlivé sdílení prostředků elastického fondu je společně s libovolným množstvím prostředků.
 
 > [!NOTE]
-> `tempdb`Omezení najdete v tématu [omezení tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
+> `tempdb`Omezení najdete v tématu [omezení tempdb](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ### <a name="database-properties-for-pooled-databases"></a>Vlastnosti databáze pro sdružené databáze
 
@@ -164,7 +164,7 @@ Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 |:--- |:--- |
 | Maximální počet eDTU na databázi |Maximální počet eDTU, které může využívat libovolná databáze ve fondu za předpokladu, že jsou dostupné v závislosti na využití ostatními databázemi ve fondu. Maximální počet eDTU na databázi není garancí prostředků pro databázi. Toto nastavení je globální a platí pro všechny databáze ve fondu. Nastavte maximální počet eDTU na databázi dostatečně vysoký, aby databáze zvládly využití ve špičkách. Očekává se určitý stupeň předimenzování, protože fond obecně předpokládá studené a horké vzory používání, při nichž nenastávají špičky u všech databází ve stejnou chvíli. Předpokládejme například, že využití ve špičce na databázi je 20 eDTU a špička v jednu chvíli nastává pouze u 20 % ze 100 databází ve fondu. Pokud je maximální počet eDTU na databázi nastaven na 20 eDTU, je rozumné fond 5krát předimenzovat a nastavit počet eDTU na fond na 400. |
 | Minimální počet eDTU na databázi |Minimální počet eDTU garantovaných pro každou databázi ve fondu. Toto nastavení je globální a platí pro všechny databáze ve fondu. Minimální počet eDTU na databázi může být nastaven na 0, což je i výchozí hodnota. Tato vlastnost je nastavena na libovolnou hodnotu mezi 0 a průměrným využitím eDTU na databázi. Násobek počtu databází ve fondu a minimálním počtem eDTU na databázi nemůže překročit počet eDTU na fond. Pokud je například ve fondu 20 databází a minimální počet eDTU na databázi je nastaven na 10 eDTU, pak musí být počet eDTU na fond alespoň 200 eDTU. |
-| Maximální velikost úložiště na databázi |Maximální velikost databáze nastavená uživatelem pro databázi ve fondu. Databáze ve fondu ale sdílejí přidělené úložiště fondu. I v případě, že celkové maximum úložiště *na databázi* je větší než celkový dostupný *prostor úložiště fondu*, nebude mít celkové místo v podstatě využitý limit fondu k dispozici.  Maximální velikost databáze odkazuje na maximální velikost datových souborů a nezahrnuje místo, které využívají soubory protokolu. |
+| Maximální velikost úložiště na databázi |Maximální velikost databáze nastavená uživatelem pro databázi ve fondu. Databáze ve fondu ale sdílejí přidělené úložiště fondu. I v případě, že celkové maximum úložiště *na databázi* je větší než celkový dostupný *prostor úložiště fondu* , nebude mít celkové místo v podstatě využitý limit fondu k dispozici.  Maximální velikost databáze odkazuje na maximální velikost datových souborů a nezahrnuje místo, které využívají soubory protokolu. |
 |||
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,24 +1,25 @@
 ---
-title: 'PowerShell: použití skupin umístění blízkosti'
+title: Vytvoření skupiny umístění blízkosti pomocí Azure PowerShell
 description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pomocí Azure PowerShell.
 services: virtual-machines
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26921b3d102032cb36f47c3be7a79c2b596a1d0c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083442"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503670"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí Azure PowerShell
 
 
-Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](../co-location.md#proximity-placement-groups).
 
 Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 

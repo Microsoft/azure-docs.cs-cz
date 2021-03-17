@@ -1,23 +1,18 @@
 ---
 title: Transformace dat pomocí aktivity podregistru – Azure
-description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory v1 ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d14ddb172546e062b62a5a8dd98b49a0a6e1c6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383020"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +21,8 @@ ms.locfileid: "74703359"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
@@ -137,38 +132,39 @@ Chcete-li spustit tento skript podregistru v kanálu Data Factory, je nutné pro
    > 
 5. Vytvořte kanál s aktivitou HDInsightHive. Aktivita zpracovává nebo transformuje data.
 
-    ```JSON   
-    {   
-        "name": "HiveActivitySamplePipeline",
-        "properties": {
-        "activities": [
-            {
-                "name": "HiveActivitySample",
-                "type": "HDInsightHive",
-                "inputs": [
-                {
-                    "name": "HiveSampleIn"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "HiveSampleOut"
-                }
-                ],
-                "linkedServiceName": "HDInsightLinkedService",
-                "typeproperties": {
-                    "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                    "scriptLinkedService": "StorageLinkedService"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
-            }
-            ]
+  ```json
+  {
+    "name": "HiveActivitySamplePipeline",
+       "properties": {
+    "activities": [
+      {
+        "name": "HiveActivitySample",
+        "type": "HDInsightHive",
+        "inputs": [
+        {
+          "name": "HiveSampleIn"
         }
+        ],
+             "outputs": [
+               {
+                "name": "HiveSampleOut"
+               }
+             ],
+             "linkedServiceName": "HDInsightLinkedService",
+             "typeproperties": {
+                 "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+                 "scriptLinkedService": "StorageLinkedService"
+             },
+              "scheduler": {
+          "frequency": "Hour",
+                   "interval": 1
+             }
+           }
+      ]
     }
-    ```
+  }
+  ```
+
 6. Nasaďte kanál. Podrobnosti najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . 
 7. Monitorujte kanál pomocí zobrazení pro monitorování a správu objektu pro vytváření dat. Podrobnosti najdete v článku [monitorování a Správa kanálů Data Factory](data-factory-monitor-manage-pipelines.md) . 
 
@@ -179,7 +175,7 @@ Pokud chcete použít parametrizovaný skript podregistru, udělejte toto:
 
 * Definujte parametry v **definuje**.
 
-    ```JSON  
+  ```JSON  
     {
         "name": "HiveActivitySamplePipeline",
           "properties": {

@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: Rychlé starty
   items:
-    - name: Zobrazení přístupu pro uživatele
+    - name: Kontrola přístupu pro uživatele
       href: check-access.md
     - name: Šablona ARM
       displayName: Resource Manager
@@ -26,13 +26,12 @@
       href: tutorial-custom-role-powershell.md
     - name: Vytvoření vlastní role – rozhraní příkazového řádku
       href: tutorial-custom-role-cli.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
+    - name: Definice rolí
+      href: role-definitions.md
+    - name: Obor
+      href: scope-overview.md
     - name: Osvědčené postupy
       href: best-practices.md
     - name: Podmíněný přístup pro správu Azure
@@ -45,11 +44,7 @@
 - name: Návody
   items:
     - name: Zobrazení seznamu definic rolí
-      items:
-        - name: Přehled
-          href: role-definitions.md
-        - name: Zobrazení seznamu definic rolí
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: Zobrazení seznamu přiřazení rolí
       items:
         - name: Portál
@@ -60,12 +55,20 @@
           href: role-assignments-list-cli.md
         - name: REST API
           href: role-assignments-list-rest.md
-    - name: Přidání nebo odebrání přiřazení rolí
+    - name: Přiřazení rolí
       items:
+        - name: Postup přiřazení role
+          href: role-assignments-steps.md
         - name: Portál
-          href: role-assignments-portal.md
-        - name: Portál – uživatelé typu host
-          href: role-assignments-external-users.md
+          items:
+            - name: Přiřazení rolí
+              href: role-assignments-portal.md
+            - name: Správce předplatného
+              href: role-assignments-portal-subscription-admin.md
+            - name: Spravovaná identita
+              href: role-assignments-portal-managed-identity.md
+            - name: Externí uživatelé typu host
+              href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
@@ -75,6 +78,8 @@
         - name: Šablona ARM
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: Odebrání přiřazení rolí
+      href: role-assignments-remove.md
     - name: Zobrazení seznamu zamítnutých přiřazení
       items:
         - name: Přehled
@@ -85,7 +90,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Vytvoření nebo aktualizace vlastních rolí
+    - name: Vytvoření vlastních rolí
       items:
         - name: Přehled
           href: custom-roles.md
@@ -106,7 +111,7 @@
       href: elevate-access-global-admin.md
     - name: Klasičtí správci
       href: classic-administrators.md
-    - name: Převod předplatného do jiného adresáře (Preview)
+    - name: Převod předplatného do jiného adresáře
       href: transfer-subscription.md
     - name: Řešení potíží
       href: troubleshooting.md
@@ -117,11 +122,11 @@
     - name: Operace poskytovatele prostředků
       href: resource-provider-operations.md
     - name: Omezení Azure RBAC
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI
-      href: /cli/azure/role?view=azure-cli-latest
+      href: /cli/azure/role
     - name: REST API
       href: /rest/api/authorization/
     - name: Šablony ARM
@@ -131,6 +136,9 @@
           href: /azure/templates/microsoft.authorization/roleassignments
         - name: Definice rolí
           href: /azure/templates/microsoft.authorization/roledefinitions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

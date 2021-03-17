@@ -1,5 +1,5 @@
 ---
-title: Kvóty a omezení služby Speech Services
+title: Kvóty a omezení služeb Speech
 titleSuffix: Azure Cognitive Services
 description: Rychlá reference, podrobný popis a osvědčené postupy pro kvóty a omezení služby Speech pro rozpoznávání řeči v Azure
 services: cognitive-services
@@ -8,35 +8,54 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690132"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564418"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služby Speech Services
+# <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
 Tento článek obsahuje stručný přehled a **podrobný popis** kvót a omezení pro rozpoznávání řeči v Azure pro všechny [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Obsahuje taky některé osvědčené postupy, které brání omezení požadavků. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Rychlé reference k kvótám a omezením
 Přejít k [kvótám a omezením pro převod textu na řeč](#text-to-speech-quotas-and-limits-per-speech-resource)
-### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Kvóty a omezení řeči na text na zdrojovém řeči
-V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny cenové úrovně nastavitelované.
+### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Kvóty a omezení pro Převod řeči na text pro prostředek služby Speech
+V tabulkách **níže jsou parametry bez "měnitelného** " řádku pro všechny cenové úrovně nastavitelované.
+
+#### <a name="online-transcription"></a>Online přepis
+Pro použití s [funkcí Speech SDK](speech-sdk.md) a/nebo [Speech-to text REST API pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio).
 
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
-| **Limit souběžných požadavků online přepisu (základní a vlastní modely)** |  |  |
-| Výchozí hodnota | 1 | 20 |
+| **Limit souběžných požadavků – základní model** | 1 | 100 (výchozí hodnota) |
 | Měnitelný | Ne<sup>2</sup> | Ano<sup>2</sup> |
-| **Limit počtu žádostí REST API (koncové body[API Management](../../api-management/api-management-key-concepts.md) )** | 100 požadavků za 10 sekund | 100 požadavků za 10 sekund |
-| **Maximální velikost souboru datové sady pro import dat** | 2 GB | 2 GB |
-| **Maximální velikost vstupního objektu BLOB pro Batch přepisu** | – | 2,5 GB |
-| **Maximální velikost kontejneru objektů BLOB pro dávkový přepis** | – | 5 GB |
-| **Maximální počet objektů blob na kontejner pro dávku přepisu** | – | 10000 |
-| **Maximální počet souběžně spuštěných úloh pro Batch přepisu** | – | 2000  |
+| **Limit souběžných požadavků – vlastní model** | 1 | 20 (výchozí hodnota) |
+| Měnitelný | Ne<sup>2</sup> | Ano<sup>2</sup> |
+
+#### <a name="batch-transcription"></a>Přepis Batch
+| Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
+|--|--|--|
+| Omezení REST API | Batch přepis není pro F0 k dispozici. | 300 požadavků za minutu |
+| Maximální velikost zvukového vstupního souboru | – | 1 GB |
+| Maximální velikost vstupního objektu BLOB (může obsahovat více než jeden soubor, například v archivu zip, nezapomeňte si uvědomit výše uvedený limit velikosti souboru) | – | 2,5 GB |
+| Maximální velikost kontejneru objektů BLOB | – | 5 GB |
+| Maximální počet objektů blob na kontejner | – | 10000 |
+| Maximální počet souborů na žádost o přepis (při použití více adres URL obsahu jako vstupu) | – | 1000  |
+| Maximální počet souběžně spuštěných úloh | – | 2000  |
+
+#### <a name="model-customization"></a>Přizpůsobení modelu
+| Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
+|--|--|--|
+| Omezení REST API | 300 požadavků za minutu | 300 požadavků za minutu |
+| Maximální počet datových sad pro řeč | 2 | 500 |
+| Maximální velikost zvukové datové sady pro import dat | 2 GB | 2 GB |
+| Maximální velikost souboru datové sady pro import dat | 200 MB | 1,5 GB |
+| Maximální velikost souboru datové sady výslovnosti pro import dat | 1 kB | 1 MB |
+| Maximální velikost textu při použití `text` parametru v žádosti o [Vytvoření](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/) rozhraní API modelu | 200 KB | 500 kB |
 
 <sup>1</sup> **bezplatná (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>
 <sup>2</sup> . [Další](#detailed-description-quota-adjustment-and-best-practices)informace najdete v tématu vysvětlení, [osvědčené postupy](#general-best-practices-to-mitigate-throttling-during-autoscaling)a [pokyny k úpravám](#speech-to-text-increasing-online-transcription-concurrent-request-limit).<br/> 
@@ -56,7 +75,7 @@ V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny ce
 | **Kvóty specifické pro protokol WebSocket** |  |  |
 |Maximální délka zvuku vytvořená pro zapnutí | 10 min | 10 min |
 |Maximální velikost zprávy SSML na hodnotu Turn |64 kB |64 kB |
-| **Omezení REST APIch požadavků** | 20 požadavků za minutu | 25 požadavků za 5 sekund |
+| **Omezení REST API** | 20 požadavků za minutu | 300 požadavků za minutu |
 
 
 <sup>3</sup> **zdarma (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>
@@ -85,23 +104,23 @@ Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** n
 
 Souběžná omezení požadavků pro **základní** a **vlastní** modely je potřeba upravit **samostatně**.
 
-Existující parametr limitu souběžných požadavků není **viditelný prostřednictvím** Azure Portal, nástrojů příkazového řádku nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
+Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 
 >[!NOTE]
->[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
+>[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované. Kontejnery řeči ale mají svá vlastní omezení kapacity, která by se měla vzít v úvahu. Přečtěte si otázku *"může vám pomáhat s plánováním kapacity a odhadem nákladů na kontejnery Prem řeči na text?"* z [kontejnerů řeči se Nejčastější dotazy](./speech-container-howto.md).
 
 #### <a name="have-the-required-information-ready"></a>Připravte požadované informace:
 - Pro **základní model**:
   - ID prostředku pro rozpoznávání řeči
-  - Region
+  - Oblast
 - Pro **vlastní model**: 
-  - Region
+  - Oblast
   - ID vlastního koncového bodu
 
 - **Jak získat informace (základní model)**:  
   - Přejít na [Azure Portal](https://portal.azure.com/)
   - Vyberte prostředek řeči, pro který chcete zvýšit limit počtu požadavků na souběžnost.
-  - Vybrat *vlastnosti* (skupina*pro správu prostředků* ) 
+  - Vybrat *vlastnosti* (skupina *pro správu prostředků* ) 
   - Zkopírujte a uložte hodnoty následujících polí:
     - **ID prostředku**
     - **Umístění** (vaše koncová oblast)
@@ -151,7 +170,7 @@ Ve výchozím nastavení je počet souběžných požadavků pro vlastní hlasov
 
 Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** náklady. Služba Speech Services používá "platíte jenom za to, co používáte". Limit definuje, jak vysoké může být služba škálovatelná, než začne omezovat vaše požadavky.
 
-Existující parametr limitu souběžných požadavků není **viditelný prostřednictvím** Azure Portal, nástrojů příkazového řádku nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
+Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 
 >[!NOTE]
 >[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
@@ -189,4 +208,3 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
   - Informace o prostředcích Azure, které jste [shromáždili před](#prepare-the-required-information) 
   - Dokončete zadávání požadovaných informací a klikněte na tlačítko *vytvořit* v nabídce *Revize + vytvořit* kartu.
   - Poznamenejte si číslo žádosti o podporu v oznámeních Azure Portal. Brzy budete kontaktováni za účelem dalšího zpracování.
-

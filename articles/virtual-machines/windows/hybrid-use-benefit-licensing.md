@@ -1,18 +1,20 @@
 ---
 title: Zvýhodněné hybridní využití Azure pro Windows Server
-description: Přečtěte si, jak maximalizovat výhody programu Software Assurance pro Windows, aby se do Azure přinášejí místní licence.
+description: Přečtěte si, jak maximalizovat výhody programu Software Assurance v systému Windows, aby se do Azure přinášejí místní licence.
 author: xujing-ms
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: azure-hybrid-benefit
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074263"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668064"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Zvýhodněné hybridní využití Azure pro Windows Server
 Zákazníci se Software Assurance, Zvýhodněné hybridní využití Azure pro Windows Server, vám umožní využívat místní licence k Windows serveru a spouštět virtuální počítače s Windows v Azure s nižšími náklady. K nasazení nových virtuálních počítačů s operačním systémem Windows můžete použít Zvýhodněné hybridní využití Azure pro Windows Server. Tento článek se dokončí postupem, jak nasadit nové virtuální počítače s Zvýhodněné hybridní využití Azure pro Windows Server a jak aktualizovat existující běžící virtuální počítače. Další informace o Zvýhodněné hybridní využití Azure pro licencování Windows serveru a úspory nákladů najdete na [stránce zvýhodněné hybridní využití Azure licencování Windows serveru](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -42,10 +44,9 @@ K dispozici je několik způsobů použití virtuálních počítačů s Windows
 Všechny image založené na operačním systému Windows Server jsou podporované pro Zvýhodněné hybridní využití Azure pro Windows Server. Můžete použít image podpory platformy Azure nebo nahrát vlastní image Windows serveru. 
 
 ### <a name="portal"></a>Portál
-Pokud chcete vytvořit virtuální počítač s Zvýhodněné hybridní využití Azure pro Windows Server, použijte přepínač v části "Uložit peníze".
+Pokud chcete vytvořit virtuální počítač s Zvýhodněné hybridní využití Azure pro Windows Server, posuňte se do dolní části karty **základy** během procesu vytváření a v části **licencování** zaškrtněte políčko pro použití existující licence na Windows Server. 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `

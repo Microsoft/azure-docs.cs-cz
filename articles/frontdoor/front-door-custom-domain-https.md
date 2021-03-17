@@ -3,21 +3,21 @@ title: Kurz – konfigurace HTTPS pro vlastní doménu pro služby Azure front-d
 description: V tomto kurzu se dozvíte, jak povolit a zakázat protokol HTTPS v konfiguraci front-dveří Azure pro vlastní doménu.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
-ms.author: sharadag
-ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.date: 10/21/2020
+ms.author: duau
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808758"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740779"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
@@ -110,9 +110,9 @@ Udělte pro přístup k certifikátům ve vašem účtu Azure Key Vault oprávn�
 
 2. V části **Výběr objektu zabezpečení** vyhledejte **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** a vyberte **Microsoft.Azure.Frontdoor**. Klikněte na **Vybrat**.
 
-3. V části **oprávnění tajného**kódu vyberte **získat** , pokud chcete, aby přední dvířka získala certifikát.
+3. V části **oprávnění tajného** kódu vyberte **získat** , pokud chcete, aby přední dvířka získala certifikát.
 
-4. V části **oprávnění certifikátu**vyberte **získat** a umožněte tak, aby přední dvířka získala certifikát.
+4. V části **oprávnění certifikátu** vyberte **získat** a umožněte tak, aby přední dvířka získala certifikát.
 
 5. Vyberte **OK**. 
 
@@ -133,7 +133,7 @@ Udělte pro přístup k certifikátům ve vašem účtu Azure Key Vault oprávn�
     Přední dvířka Azure obsahují následující informace: 
     - Účty trezoru klíčů pro ID vašeho předplatného 
     - Certifikáty (tajné kódy) v rámci vybraného trezoru klíčů 
-    - Dostupné verze certifikátu 
+    - Dostupné verze certifikátu
  
 5. Při použití vlastního certifikátu se ověření domény nevyžaduje. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation).
 
@@ -154,7 +154,7 @@ Záznam CNAME by měl mít následující formát, kde *Název* je název vaší
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
+Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](../cdn/cdn-map-content-to-custom-domain.md).
 
 Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením jeho platnosti se obnoví jeho platnost. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
 
@@ -219,9 +219,29 @@ Pokud před odesláním žádosti dojde k chybě, zobrazí se následující chy
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
+1. *Kdo je poskytovatel certifikátu a jaký typ certifikátu se používá?*
 
-## <a name="clean-up-resources---disable-https"></a>Vyčištění prostředků – zákaz HTTPS
+    Pro vlastní doménu se používá jediný (vyhrazený) certifikát vydaný společností DigiCert. 
+
+2. *Používáte protokol TLS/SSL založený na IP nebo SNI?*
+
+    Přední dveře Azure používají SNI TLS/SSL.
+
+3. *Co když neobdržím e-mail pro ověření domény od DigiCert?*
+
+    Pokud pro svou vlastní doménu máte záznam CNAME, který odkazuje přímo na název hostitele vašeho koncového bodu (a nepoužíváte název subdomény afdverify), žádný e-mail pro ověření domény neobdržíte. Ověření proběhne automaticky. Jinak, pokud záznam CNAME nemáte a neobdrželi jste e-mail během 24 hodin, kontaktujte podporu Microsoftu.
+
+4. *Je používání certifikátu SAN méně bezpečné než vyhrazený certifikát?*
+    
+    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vydané certifikáty TLS/SSL používají pro rozšířené zabezpečení serveru SHA-256.
+
+5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
+
+    Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 V předchozích krocích jste pro vlastní doménu povolili protokol HTTPS. Pokud už na vlastní doméně nechcete používat HTTPS, můžete HTTPS zakázat provedením následujících kroků:
 
@@ -247,30 +267,15 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 | 2. Zrušení zřízení certifikátu | Odstraňování certifikátu |
 | 3. Hotovo | Certifikát odstraněn |
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-
-1. *Kdo je poskytovatel certifikátu a jaký typ certifikátu se používá?*
-
-    Pro vlastní doménu se používá jediný (vyhrazený) certifikát vydaný společností DigiCert. 
-
-2. *Používáte protokol TLS/SSL založený na IP nebo SNI?*
-
-    Přední dveře Azure používají SNI TLS/SSL.
-
-3. *Co když neobdržím e-mail pro ověření domény od DigiCert?*
-
-    Pokud pro svou vlastní doménu máte záznam CNAME, který odkazuje přímo na název hostitele vašeho koncového bodu (a nepoužíváte název subdomény afdverify), žádný e-mail pro ověření domény neobdržíte. Ověření proběhne automaticky. Jinak, pokud záznam CNAME nemáte a neobdrželi jste e-mail během 24 hodin, kontaktujte podporu Microsoftu.
-
-4. *Je používání certifikátu SAN méně bezpečné než vyhrazený certifikát?*
-    
-    Certifikát SAN využívá stejné standardy šifrování a zabezpečení jako vyhrazený certifikát. Všechny vydané certifikáty TLS/SSL používají pro rozšířené zabezpečení serveru SHA-256.
-
-5. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
-
-    Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
-
-
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
-- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).
+V tomto kurzu jste se naučili:
+
+* Nahrajte certifikát do Key Vault.
+* Ověří doménu.
+* Povolte HTTPS pro vaši vlastní doménu.
+
+Pokud se chcete dozvědět, jak nastavit zásady geografického filtrování pro vaše přední dveře, přejděte k dalšímu kurzu.
+
+> [!div class="nextstepaction"]
+> [Nastavení zásad geografického filtrování](front-door-geo-filtering.md)

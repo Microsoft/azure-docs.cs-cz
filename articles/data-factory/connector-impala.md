@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Impala pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Impala do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu služby Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b70db03e03ce914ea1d81d94cd2803a36eccfc88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 810ee757b70550c9dbeea708266b3fec48669571
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418214"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378566"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopírování dat z Impala pomocí Azure Data Factory
 
@@ -49,20 +44,20 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Impala jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **Impala**. | Ano |
-| host | IP adresa nebo název hostitele serveru Impala (tj. 192.168.222.160).  | Ano |
-| port | Port TCP, který server Impala používá k naslouchání klientským připojením. Výchozí hodnota je 21050.  | Ne |
-| authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou **anonymní**, **SASLUsername**a **UsernameAndPassword**. | Ano |
-| uživatelské jméno | Uživatelské jméno, které se používá pro přístup k serveru Impala. Výchozí hodnota je anonymní, pokud používáte SASLUsername.  | Ne |
-| heslo | Heslo, které odpovídá uživatelskému jménu při použití UsernameAndPassword. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je **false** (nepravda).  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority, které se používají k ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze v případě, že používáte protokol TLS při Integration Runtime v místním prostředí. Výchozí hodnota je soubor cacerts. pem nainstalovaný v prostředí Integration runtime.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je **false** (nepravda).  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se má při připojení přes TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je **false** (nepravda).  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je **false** (nepravda).  | Ne |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavená na **Impala**. | Yes |
+| Hostitel | IP adresa nebo název hostitele serveru Impala (tj. 192.168.222.160).  | Yes |
+| port | Port TCP, který server Impala používá k naslouchání klientským připojením. Výchozí hodnota je 21050.  | No |
+| authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou **anonymní**, **SASLUsername** a **UsernameAndPassword**. | Yes |
+| username | Uživatelské jméno, které se používá pro přístup k serveru Impala. Výchozí hodnota je anonymní, pokud používáte SASLUsername.  | No |
+| heslo | Heslo, které odpovídá uživatelskému jménu při použití UsernameAndPassword. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je **false** (nepravda).  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority, které se používají k ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze v případě, že používáte protokol TLS při Integration Runtime v místním prostředí. Výchozí hodnota je soubor cacerts. pem nainstalovaný v prostředí Integration runtime.  | No |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je **false** (nepravda).  | No |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojení přes TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je **false** (nepravda).  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je **false** (nepravda).  | No |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 **Příklad:**
 
@@ -95,10 +90,10 @@ Pro propojenou službu Impala jsou podporovány následující vlastnosti.
 
 Chcete-li kopírovat data z Impala, nastavte vlastnost Type datové sady na **ImpalaObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **ImpalaObject** . | Ano |
-| XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ImpalaObject** . | Yes |
+| schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
@@ -127,9 +122,9 @@ Chcete-li kopírovat data z Impala, nastavte vlastnost Type datové sady na **Im
 
 Chcete-li kopírovat data z Impala, nastavte typ zdroje v aktivitě kopírování na **ImpalaSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **ImpalaSource**. | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **ImpalaSource**. | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**

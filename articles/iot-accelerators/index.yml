@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace k akcelerátorům řešení Azure IoT
-summary: Akcelerátory řešení Azure IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT, jako je vzdálené monitorování.
+summary: Akcelerátory řešení Azure IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT, jako je propojená továrna.
 metadata:
   title: Dokumentace k akcelerátorům řešení Azure IoT
-  description: Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT. Tyto scénáře zahrnují vzdálené monitorování, propojenou továrnu, prediktivní údržbu a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
+  description: Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT. Scénáře zahrnují simulaci propojené továrny a zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
   services: iot-accelerators
   ms.service: iot-accelerators
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 09/16/2019
-  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
-  ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+  ms.openlocfilehash: 8f1b539e7201ffc31956ef48b4a155674385b97f
+  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/11/2020
-  ms.locfileid: "84687034"
+  ms.lasthandoff: 12/08/2020
+  ms.locfileid: "96854542"
 landingContent:
 - title: Informace o akcelerátorech řešení Azure IoT
   linkLists:
@@ -26,22 +26,6 @@ landingContent:
       url: about-iot-accelerators.md
     - text: Web AzureIoTSolutions.com
       url: iot-accelerators-permissions.md
-- title: Začínáme se vzdáleným monitorováním
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Přehled akcelerátorů řešení pro vzdálené monitorování
-      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
-  - linkListType: quickstart
-    links:
-    - text: Vyzkoušení cloudového řešení pro vzdálené monitorování
-      url: quickstart-remote-monitoring-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: Monitorování zařízení
-      url: iot-accelerators-remote-monitoring-monitor.md
-    - text: Zjišťování problémů se zařízeními
-      url: iot-accelerators-remote-monitoring-automate.md
 - title: Začínáme s průmyslovým IoT
   linkLists:
   - linkListType: overview
@@ -66,23 +50,9 @@ landingContent:
     links:
     - text: Přehled akcelerátorů řešení simulace zařízení
       url: iot-accelerators-device-simulation-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Vyzkoušení řešení simulace zařízení
-      url: quickstart-device-simulation-deploy.md
   - linkListType: tutorial
     links:
     - text: Vytvoření a spuštění simulace zařízení IoT
       url: iot-accelerators-device-simulation-create-simulation.md
     - text: Vytvoření vlastního simulovaného zařízení
       url: iot-accelerators-device-simulation-create-custom-device.md
-- title: Začínáme s prediktivní údržbou
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Přehled akcelerátoru řešení prediktivní údržby
-      url: iot-accelerators-predictive-walkthrough.md
-  - linkListType: quickstart
-    links:
-    - text: Vyzkoušení řešení prediktivní údržby
-      url: quickstart-predictive-maintenance-deploy.md

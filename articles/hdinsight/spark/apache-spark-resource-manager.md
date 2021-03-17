@@ -1,19 +1,16 @@
 ---
 title: Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
 description: Naučte se spravovat prostředky pro clustery Spark v Azure HDInsight, aby se zajistil vyšší výkon.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 01/12/2021
+ms.openlocfilehash: ff7cfe8ad09201df20db89e14f8c175e678e5107
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085187"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929802"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
 
@@ -29,7 +26,7 @@ Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které 
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 
-2. Z **řídicích panelů clusteru**vyberte možnost **příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
+2. Z **řídicích panelů clusteru** vyberte možnost **příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
     ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
@@ -56,9 +53,9 @@ Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všech
 
     ![Restartovat služby](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter poznámkovém bloku
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter Notebook
 
-Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete `%%configure` provést změny konfigurace pomocí Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
+Pro aplikace běžící v Jupyter Notebook můžete `%%configure` k provedení změn konfigurace použít Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
 
 Následující fragment kódu ukazuje, jak změnit konfiguraci aplikace běžící v Jupyter.
 
@@ -84,6 +81,9 @@ Následující příkaz je příkladem, jak změnit parametry konfigurace pro ap
 ```bash
 curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 ```
+
+> [!Note]
+> Zkopírujte soubor JAR do svého účtu úložiště clusteru. Nekopírujte soubor JAR přímo do hlavního uzlu.
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Změna těchto parametrů na serveru Spark Thrift
 
@@ -126,7 +126,7 @@ Z důvodu dynamického přidělování Spark jsou jediné prostředky, které js
 
 ## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter.
 
-Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby**a pak vyberte **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
+Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby** a pak vyberte **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
 
 ![Restartujte Jupyter.](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartujte Jupyter.")
 
@@ -164,6 +164,6 @@ Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku člá
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

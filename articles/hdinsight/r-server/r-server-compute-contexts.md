@@ -1,19 +1,16 @@
 ---
 title: Možnosti výpočetního kontextu pro služby ML ve službě HDInsight – Azure
 description: Seznamte se s různými možnostmi výpočetního kontextu, které jsou dostupné pro uživatele se službami ML ve službě HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087601"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943962"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
 
@@ -23,7 +20,7 @@ Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a 
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Služby ML ve službě Azure HDInsight
 
-[Služba ml Services v Azure HDInsight](r-server-overview.md) poskytuje nejnovější funkce pro analýzy založené na jazyce R. Může použít data uložená v kontejneru Apache Hadoop HDFS v účtu služby [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage, v Data Lake Store nebo v místním systému souborů Linux. Vzhledem k tomu, že služba ML Services je postavená na Open Source R, aplikace založené na jazyce R můžou použít kterýkoli z balíčků verze 8000 + open-source. Můžou také používat rutiny v [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), což je balíček pro analýzy velkých objemů dat od Microsoftu, který je součástí ml služeb.  
+[Služba ml Services v Azure HDInsight](r-server-overview.md) poskytuje nejnovější funkce pro analýzy založené na jazyce R. Může použít data uložená v kontejneru Apache Hadoop HDFS v účtu služby [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage, v Data Lake Store nebo v místním systému souborů Linux. Vzhledem k tomu, že služba ML Services je postavená na Open Source R, aplikace založené na jazyce R můžou použít kterýkoli z balíčků verze 8000 + open-source. Můžou také používat rutiny v [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler), což je balíček pro analýzy velkých objemů dat od Microsoftu, který je součástí ml služeb.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Kontexty výpočtů pro hraniční uzel
 
@@ -57,14 +54,14 @@ Který ze tří možností, které si zvolíte, nabízí paralelní provádění
 
 V následujících částech jsou uvedené některé obecné pravidla pro výběr výpočetního kontextu.
 
-### <a name="local"></a>Local
+### <a name="local"></a>Místní
 
 - Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar*.
 - Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar*.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Pokud je objem dat k analýze velký, importujte ho do datového rámce Spark pomocí **RxHiveData** nebo **RXPARQUETDATA**nebo na XDF v HDFS (Pokud se nejedná o problém) a analyzujte ho pomocí výpočetního kontextu Spark.
+- Pokud je objem dat k analýze velký, importujte ho do datového rámce Spark pomocí **RxHiveData** nebo **RXPARQUETDATA** nebo na XDF v HDFS (Pokud se nejedná o problém) a analyzujte ho pomocí výpočetního kontextu Spark.
 
 ### <a name="apache-hadoop-map-reduce"></a>Zmenšení Apache Hadoop mapy
 
@@ -77,7 +74,7 @@ Další informace a příklady RevoScaleR výpočetních kontextů najdete v té
 > ?rxSetComputeContext
 ```
 
-Další informace najdete v tématu [Přehled distribuovaných výpočtů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning Server](https://docs.microsoft.com/machine-learning-server/).
+Další informace najdete v tématu [Přehled distribuovaných výpočtů](/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning Server](/machine-learning-server/).
 
 ## <a name="next-steps"></a>Další kroky
 

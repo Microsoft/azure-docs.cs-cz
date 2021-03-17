@@ -2,16 +2,15 @@
 title: Řešení potíží s Azure Automation Runbook
 description: Tento článek popisuje, jak řešit problémy s Azure Automation Runbooky a řešit problémy.
 services: automation
-ms.date: 07/28/2020
-ms.topic: conceptual
-ms.service: automation
+ms.date: 02/11/2021
+ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723805"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -42,7 +41,7 @@ Když při spuštění sady Runbook v Azure Automation dojde k chybám, můžete
     * [Obnovte certifikát](../manage-runas-account.md#cert-renewal) , pokud vypršela platnost účtu Spustit jako.
     * [Obnovte Webhook](../automation-webhooks.md#renew-a-webhook) , pokud se pokoušíte použít Webhook, jehož platnost vypršela, aby se Runbook spustil.
     * [Zkontrolujte stav úlohy](../automation-runbook-execution.md#job-statuses) a určete aktuální stavy Runbooku a některé možné příčiny problému.
-    * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#monitor-message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
+    * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#working-with-message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
     * [Zpracujte všechny výjimky](../automation-runbook-execution.md#exceptions) , které jsou vyvolány vaší úlohou.
 
 1. Tento krok proveďte, pokud úloha sady Runbook nebo prostředí na Hybrid Runbook Worker nereaguje.
@@ -122,7 +121,7 @@ Chcete-li zjistit, co je chybné, postupujte podle následujících kroků:
    }
    ```
 
-## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Scénář: Spusťte přihlášení – AzureRMAccount a přihlaste se.
+## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Scénář: spuštění Login-AzureRMAccount pro přihlášení
 
 ### <a name="issue"></a>Problém
 
@@ -134,7 +133,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít, pokud nepoužíváte účet Spustit jako nebo vypršela platnost účtu Spustit jako. Další informace najdete v tématu [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
+K této chybě může dojít, pokud nepoužíváte účet Spustit jako nebo vypršela platnost účtu Spustit jako. Další informace najdete v tématu [Přehled účtů spustit jako Azure Automation](../automation-security-overview.md#run-as-accounts).
 
 Tato chyba má dvě primární příčiny:
 
@@ -161,7 +160,7 @@ Pokud se pokoušíte o přístup k prostředkům v jiném předplatném, postupu
 
 1. Zkopírujte název předplatného.
 
-1. Nyní můžete použít následující kód Runbooku k otestování oprávnění z účtu Automation k druhému předplatnému. Nahraďte `"\<CertificateThumbprint\>"` hodnotou zkopírovanou v kroku 1. Nahraďte `"\<SubscriptionName\>"` hodnotou zkopírovanou v kroku 4.
+1. Nyní můžete použít následující kód Runbooku k otestování oprávnění z účtu Automation k druhému předplatnému. Nahraďte `<CertificateThumbprint>` hodnotou zkopírovanou v kroku 1. Nahraďte `"<SubscriptionName>"` hodnotou zkopírovanou v kroku 4.
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -201,7 +200,7 @@ K této chybě může dojít, pokud:
 Pomocí těchto kroků zjistíte, jestli jste se ověřili do Azure a máte přístup k předplatnému, které se pokoušíte vybrat:
 
 1. Abyste se ujistili, že váš skript funguje samostatně, otestujte ho mimo Azure Automation.
-1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) `Select-*` .
+1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) `Select-*` .
 1. Přidejte `Disable-AzContextAutosave –Scope Process` na začátek Runbooku. Tato rutina zajišťuje, že se jakékoli přihlašovací údaje použijí pouze pro spuštění aktuální sady Runbook.
 1. Pokud se chybová zpráva zobrazuje stále, upravte kód přidáním `AzContext` parametru pro `Connect-AzAccount` a poté spusťte kód.
 
@@ -224,37 +223,46 @@ Při spouštění Runbooků se sada Runbook nedokáže spravovat prostředky Azu
 
 ### <a name="cause"></a>Příčina
 
-Sada Runbook při spuštění nepoužívá správný kontext.
+Sada Runbook při spuštění nepoužívá správný kontext. Důvodem může být to, že se Runbook nesnaží získat přístup k nesprávnému předplatnému.
+
+Můžou se zobrazit chyby, jako je tato:
+
+```error
+Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automation-runas-account-guid>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope '/subscriptions/<subcriptionIdOfSubscriptionWichDoesntContainTheVM>/resourceGroups/REsourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName '.
+   ErrorCode: AuthorizationFailed
+   StatusCode: 403
+   ReasonPhrase: Forbidden Operation
+   ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
+```
 
 ### <a name="resolution"></a>Řešení
 
-Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad Runbook. Chcete-li zajistit, aby byl kontext předplatného předán do sad Runbook, je nutné, aby sada Runbook klienta předávala kontext `Start-AzureRmAutomationRunbook` rutině v `AzureRmContext` parametru. Použijte `Disable-AzureRmContextAutosave` rutinu s `Scope` parametrem nastaveným na `Process` , abyste zajistili, že zadané přihlašovací údaje se použijí jenom pro aktuální Runbook. Další informace najdete v tématu [předplatná](../automation-runbook-execution.md#subscriptions).
+Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad Runbook. Chcete-li se vyhnout nechtěnému pokusu o přístup k nesprávnému předplatnému, postupujte podle pokynů níže.
 
-```azurepowershell-interactive
-# Ensures that any credentials apply only to the execution of this runbook
-Disable-AzContextAutosave –Scope Process
+* Abyste se vyhnuli odkazování na špatné předplatné, zakažte v automatizaci v sadě Runbook ukládání kontextu pomocí následujícího kódu na začátku každé sady Runbook.
 
-# Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+   ```azurepowershell-interactive
+   Disable-AzContextAutosave –Scope Process
+   ```
 
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+* Rutiny Azure PowerShell podporují `-DefaultProfile` parametr. Přidali jsme všechny rutiny AZ a AzureRm, které podporují spouštění více skriptů PowerShellu ve stejném procesu a umožňují určit kontext a které předplatné použít pro jednotlivé rutiny. Pomocí sad Runbook byste při vytváření sady Runbook měli objekt kontextu Uložit (tj. když se účet přihlásí) a pokaždé, když se změní, a při zadání rutiny AZ odkazovat na kontext.
 
-$AzContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   > [!NOTE]
+   > Objekt kontextu byste měli předat i v případě, že pracujete s kontextem přímo pomocí rutin, jako je [set-AzContext](/powershell/module/az.accounts/Set-AzContext) nebo [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription).
 
-$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-
-Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
-    -ResourceGroupName 'LabRG' `
-    -AzContext $AzureContext `
-    –Parameters $params –wait
-```
-
+   ```azurepowershell-interactive
+   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
+   $context = Add-AzAccount `
+             -ServicePrincipal `
+             -TenantId $servicePrincipalConnection.TenantId `
+             -ApplicationId $servicePrincipalConnection.ApplicationId `
+             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
+             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+   $context = Set-AzContext -SubscriptionName $subscription `
+       -DefaultProfile $context
+   Get-AzVm -DefaultProfile $context
+   ```
+  
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Scénář: ověřování do Azure selhává, protože je povolené vícefaktorové ověřování.
 
 ### <a name="issue"></a>Problém
@@ -291,7 +299,7 @@ Tato chyba může být způsobena používáním zastaralých modulů Azure.
 
 Tuto chybu můžete vyřešit tak, že aktualizujete moduly Azure na nejnovější verzi:
 
-1. V účtu Automation vyberte **moduly**a pak vyberte **aktualizovat moduly Azure**.
+1. V účtu Automation vyberte **moduly** a pak vyberte **aktualizovat moduly Azure**.
 1. Tato aktualizace trvá přibližně 15 minut. Po dokončení spusťte znovu sadu Runbook, která selhala.
 
 Další informace o aktualizaci modulů najdete v tématu [aktualizace modulů Azure v Azure Automation](../automation-update-azure-modules.md).
@@ -398,7 +406,7 @@ Pokud datový proud obsahuje objekty, `Start-AzAutomationRunbook` nezpracovává
 
 ### <a name="resolution"></a>Řešení
 
-Implementujte logiku cyklického dotazování a pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) načtěte výstup. Ukázka této logiky je definována zde:
+Implementujte logiku cyklického dotazování a pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) načtěte výstup. Ukázka této logiky je definována zde:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +484,14 @@ Při spuštění rutiny se zobrazí následující chybová zpráva `Get-AzAutom
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#monitor-verbose-stream).
+K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream).
 
 ### <a name="resolution"></a>Řešení
 
 Chcete-li vyřešit tuto chybu, proveďte jednu z následujících akcí:
 
 * Upravte sadu Runbook a snižte počet datových proudů úloh, které vygeneruje.
-* Snižte počet datových proudů, které se mají načíst při spuštění rutiny. K tomu můžete nastavit hodnotu `Stream` parametru pro rutinu [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) , aby se načetly jenom výstupní datové proudy. 
+* Snižte počet datových proudů, které se mají načíst při spuštění rutiny. K tomu můžete nastavit hodnotu `Stream` parametru pro rutinu [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) , aby se načetly jenom výstupní datové proudy. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Scénář: úloha Runbooku se nezdařila, protože byla překročena přidělená kvóta
 
@@ -505,7 +513,7 @@ Pokud chcete použít více než 500 minut zpracování za měsíc, změňte př
 
 1. Přihlaste se ke svému předplatnému Azure.
 1. Vyberte účet Automation, který chcete upgradovat.
-1. Vyberte **Nastavení**a pak vyberte **ceny**.
+1. Vyberte **Nastavení** a pak vyberte **ceny**.
 1. Vyberte **Povolit** na stránce dole a upgradujte svůj účet na úroveň Basic.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Scénář: výstupní datový proud Runbooku větší než 1 MB
@@ -576,7 +584,7 @@ Tato chyba může znamenat, že Runbooky, které běží v izolovaném prostoru 
 
 Tuto chybu můžete vyřešit dvěma způsoby:
 
-* Místo použití funkce [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)použijte příkaz [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) a spusťte sadu Runbook.
+* Místo použití funkce [Start-Job](/powershell/module/microsoft.powershell.core/start-job)použijte příkaz [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) a spusťte sadu Runbook.
 * Zkuste spustit Runbook na Hybrid Runbook Worker.
 
 Další informace o tomto chování a dalších chování sady Runbook Azure Automation naleznete v tématu [spuštění sady Runbook v Azure Automation](../automation-runbook-execution.md).
@@ -605,8 +613,8 @@ Dalším řešením je optimalizovat sadu Runbook vytvořením [podřízených r
 
 Rutiny PowerShellu, které umožňují podřízený scénář sady Runbook:
 
-* [Start – AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Tato rutina vám umožní spustit runbook a předat do něj parametry.
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Pokud existují operace, které je třeba provést po dokončení podřízeného Runbooku, tato rutina vám umožní zjistit stav úlohy pro každou podřízenou položku.
+* [Start – AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook). Tato rutina vám umožní spustit runbook a předat do něj parametry.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob). Pokud existují operace, které je třeba provést po dokončení podřízeného Runbooku, tato rutina vám umožní zjistit stav úlohy pro každou podřízenou položku.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Scénář: Chyba v datových proudech úlohy týkající se metody get_SerializationSettings
 
@@ -642,7 +650,7 @@ Když se váš Runbook nebo aplikace pokusí spustit v izolovaném prostoru Azur
 
 ### <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke všem nezpracovaným serverům COM. Například aplikace nebo sada Runbook v izolovaném prostoru nemůže volat do rozhraní WMI (Windows Management Instrumentation) (WMI) nebo do služby Instalační služba systému Windows (msiserver.exe). 
+K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke všem nezpracovaným serverům COM. Například aplikace nebo sada Runbook v izolovaném prostoru nemůže volat do rozhraní WMI (Windows Management Instrumentation) (WMI) nebo do služby Instalační služba systému Windows (msiserver.exe).
 
 ### <a name="resolution"></a>Řešení
 
@@ -677,7 +685,7 @@ Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků A
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
-* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
+* [Spuštění sady Runbook v Azure Automation](../automation-runbook-execution.md)
 * [Spuštění Runbooku v Azure Automation](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,26 +6,28 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59fa68d12f1d8be598810399fc5623c2af983979
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430029"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462248"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Použití popisků dotazů v synapse SQL
+
 V tomto článku jsou uvedené základní tipy pro používání popisků dotazů v synapse SQL.
 
 > [!NOTE]
-> SQL na vyžádání (Preview) nepodporuje dotazy na označování.
+> Fond SQL bez serveru nepodporuje dotazy na označování.
 
 ## <a name="what-are-query-labels"></a>Co jsou popisky dotazů
-Fond SQL podporuje koncept nazvaný popisky dotazů. Než se pustíte do jakékoli hloubky, Podívejme se na příklad:
+
+Vyhrazený fond SQL podporuje koncept nazvaný popisky dotazů. Než se pustíte do jakékoli hloubky, Podívejme se na příklad:
 
 ```sql
 SELECT *
@@ -34,7 +36,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Poslední řádek Taguje řetězec "jmenovka dotazu" do dotazu. Tato značka je zvláště užitečná, protože popisek je schopný dotazovat se prostřednictvím zobrazení dynamické správy. Dotazování na popisky poskytuje mechanismus pro vyhledání problematických dotazů a pomůže vám identifikovat průběh prostřednictvím ELT spuštění.
+Poslední řádek Taguje řetězec "jmenovka dotazu" do dotazu. Tato značka je užitečná, protože popisek je schopný dotazovat se prostřednictvím zobrazení dynamické správy. Dotazování na popisky poskytuje mechanismus pro vyhledání problematických dotazů a pomůže vám identifikovat průběh prostřednictvím ELT spuštění.
 
 Dobrá konvence pojmenování je nejužitečnější. Například spuštění popisku pomocí projektu, procedury, příkazu nebo komentáře jednoznačně identifikuje dotaz ze všech kódů ve správě zdrojového kódu.
 

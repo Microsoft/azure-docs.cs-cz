@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586711"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573149"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Co je nového v Azure Load Balancer?
 
@@ -29,11 +29,12 @@ Nejnovější Azure Load Balancer aktualizace a přihlásit se k odběru informa
 
 | Typ |Název |Popis  |Datum přidání  |
 | ------ |---------|---------|---------|
-| Funkce | Podpora správy fondů back-endu založených na protokolu IP (verze Preview) | Azure Load Balancer podporuje přidávání a odebírání prostředků z back-endového fondu prostřednictvím adres IPv4 nebo IPv6. To umožňuje snadnou správu kontejnerů, virtuálních počítačů a sady škálování virtuálních počítačů přidružených k Load Balancer. Umožní taky, aby se IP adresy rezervovaly jako součást fondu back-endu před vytvořením přidružených prostředků. Další informace najdete [tady](backend-pool-management.md).|Červenec 2020 |
-| Funkce| Azure Load Balancer přehledy pomocí Azure Monitor | Jako součást Azure Monitor pro sítě mají zákazníci nyní topologické mapy pro všechny své Load Balancer konfigurace a řídicí panely stavu pro své standardní nástroje pro vyrovnávání zatížení, které jsou předem nakonfigurované s metrikami v Azure Portal. [Začněte a získejte další informace](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Červen 2020 |
+| Příznak | Podpora přesunů mezi skupinami prostředků | Přesun Standard Load Balancer a standardní podpora veřejných IP adres pro [skupinu prostředků](https://azure.microsoft.com/updates/standard-resource-group-move/). | Říjen 2020 |
+| Příznak | Podpora správy fondů back-endu založených na protokolu IP (verze Preview) | Azure Load Balancer podporuje přidávání a odebírání prostředků z back-endového fondu prostřednictvím adres IPv4 nebo IPv6. To umožňuje snadnou správu kontejnerů, virtuálních počítačů a sady škálování virtuálních počítačů přidružených k Load Balancer. Umožní taky, aby se IP adresy rezervovaly jako součást fondu back-endu před vytvořením přidružených prostředků. Další informace najdete [tady](backend-pool-management.md).|Červenec 2020 |
+| Příznak| Azure Load Balancer přehledy pomocí Azure Monitor | Jako součást Azure Monitor pro sítě mají zákazníci nyní topologické mapy pro všechny své Load Balancer konfigurace a řídicí panely stavu pro své standardní nástroje pro vyrovnávání zatížení, které jsou předem nakonfigurované s metrikami v Azure Portal. [Začněte a získejte další informace](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Červen 2020 |
 | Ověřování | Přidání ověření pro porty HA | Bylo přidáno ověření, které zajistí, že pravidla portů HA a pravidla portů bez vysoké dostupnosti jsou konfigurovatelná pouze v případě, že je povolena plovoucí IP adresa. Dříve tato konfigurace procházela, ale nefunguje tak, jak je zamýšlená. Nebyla provedena žádná změna funkčnosti. Další informace najdete [tady](load-balancer-ha-ports-overview.md#limitations) .| Červen 2020 |
-| Funkce| Podpora protokolu IPv6 pro Azure Load Balancer (všeobecně dostupná) | Pro vaše front-end služby Vyrovnávání zatížení Azure můžete mít IPv6 adresy. Další informace o tom, jak [vytvořit aplikaci s duálním zásobníkem](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |Duben 2020|
-| Funkce| Resetování TCP při nečinnosti časového limitu (všeobecně dostupné)| Použijte resety TCP k vytvoření předvídatelného chování aplikace. [Další informace](load-balancer-tcp-reset.md)| Únor 2020 |
+| Příznak| Podpora protokolu IPv6 pro Azure Load Balancer (všeobecně dostupná) | Pro vaše front-end služby Vyrovnávání zatížení Azure můžete mít IPv6 adresy. Další informace o tom, jak [vytvořit aplikaci s duálním zásobníkem](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |Duben 2020|
+| Příznak| Resetování TCP při nečinnosti časového limitu (všeobecně dostupné)| Použijte resety TCP k vytvoření předvídatelného chování aplikace. [Další informace](load-balancer-tcp-reset.md)| Únor 2020 |
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -41,7 +42,7 @@ Produktová skupina aktivně pracuje na řešeních pro následující známé p
 
 |Problém |Popis  |Omezení rizik  |
 | ---------- |---------|---------|
-| Export Log Analytics | Log Analytics nemůže exportovat metriky pro standardní nástroje pro vyrovnávání zatížení ani protokoly stavu sondy stavu pro základní Load Balancer  | [Využijte Azure monitor pro multidimenzionální metriky pro vaši Standard Load Balancer](load-balancer-standard-diagnostics.md). I když není možné použít Log Analytics ke sledování, Azure Monitor poskytuje vizualizaci pro bohatou sadu multidimenzionálních metrik. Řídicí panel předem konfigurovaných metrik můžete využít v podokně přehledy Load Balancer. Pokud používáte základní Load Balancer [upgradujte na standard](upgrade-basic-standard.md) pro monitorování metrik na úrovni produkčního prostředí.
+| Load Balancer protokoly událostí výstrah a stavu sondy stavu | Protokolování nefunguje pro Load Balancer události výstrah pro základní a Standard Load Balancer nebo protokoly stavu sondy stavu pro základní Load Balancer  | [Využijte Azure monitor pro multidimenzionální metriky pro vaši Standard Load Balancer](load-balancer-standard-diagnostics.md). Azure Monitor poskytuje vizualizaci pro bohatou sadu multidimenzionálních metrik, která se dá také exportovat jako protokoly. Řídicí panel předem konfigurovaných metrik můžete využít v podokně přehledy Load Balancer. Pokud používáte základní Load Balancer [upgradujte na standard](upgrade-basic-standard.md) pro monitorování metrik na úrovni produkčního prostředí.
 
   
 

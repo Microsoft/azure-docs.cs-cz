@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fda0384dacaf1183458e90688b1f6b63cc63a35
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501334"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89069655"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
 

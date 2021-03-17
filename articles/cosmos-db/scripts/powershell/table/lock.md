@@ -7,18 +7,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 4d5bb50d4fa34176da63c1305462903e9b62f010
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a35d2501eac631d34c7bf4d20ef775436a9d11c9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506500"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679142"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>Vytvoření zámku prostředků pro Azure Cosmos rozhraní API pro tabulky Table pomocí Azure PowerShell
+[!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-PowerShell-install](../../../../../includes/sample-PowerShell-install-no-ssh.md)]
+Tato ukázka vyžaduje Azure PowerShell az 5.4.0 nebo novější. Spusťte `Get-Module -ListAvailable Az` , chcete-li zjistit, které verze jsou nainstalovány.
+Pokud potřebujete instalaci, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+
+Spusťte [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a přihlaste se k Azure.
 
 > [!IMPORTANT]
 > Zámky prostředků nefungují pro změny provedené uživateli, kteří se připojují pomocí Cosmos DB SDK, všech nástrojů, které se připojují prostřednictvím klíčů účtu nebo webu Azure Portal, pokud není účet Cosmos DB nejdříve uzamčen s `disableKeyBasedMetadataWriteAccess` povolenou vlastností. Další informace o tom, jak tuto vlastnost Povolit, najdete v tématu [prevence změn ze sad SDK](../../../role-based-access-control.md#prevent-sdk-changes).
@@ -42,13 +46,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Prostředek Azure**| |
-| [New-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/new-azresourcelock) | Vytvoří zámek prostředku. |
-| [Get-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/get-azresourcelock) | Získá zámek prostředku nebo vypíše zámky prostředků. |
-| [Remove-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/remove-azresourcelock) | Odebere zámek prostředku. |
+| [New-AzResourceLock](/PowerShell/module/az.resources/new-azresourcelock) | Vytvoří zámek prostředku. |
+| [Get-AzResourceLock](/PowerShell/module/az.resources/get-azresourcelock) | Získá zámek prostředku nebo vypíše zámky prostředků. |
+| [Remove-AzResourceLock](/PowerShell/module/az.resources/remove-azresourcelock) | Odebere zámek prostředku. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](https://docs.microsoft.com/PowerShell/).
-
-Další ukázkové skripty PowerShellu pro službu Azure Cosmos DB najdete ve [skriptech PowerShellu pro službu Azure Cosmos DB](../../../PowerShell-samples.md).
+Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/PowerShell/).

@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-csharp
+ms.openlocfilehash: 201fcf80e26aaaed78e1f6a78eb0dab5a345ba50
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873897"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350598"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a C #
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace v jazyce C# odešle požadavek na hledání do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -29,14 +34,14 @@ Tento ukázkový program v tomto rychlém startu používá pouze třídy .NET C
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * Windows: [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](https://www.mono-project.com/)  
-* Klíč předplatného
+* Linux/macOS: [Visual Studio Code](https://code.visualstudio.com/) a [.NET Core](https://dotnet.microsoft.com/download)
+* [Bezplatné předplatné Azure](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Vytvoření projektu a deklarace závislostí
 
-V sadě Visual Studio nebo Mono vytvořte nový projekt. Použijte následující kód k importu požadovaných oborů názvů a typů:
+Vytvořte projekt konzoly v aplikaci Visual Studio nebo VS Code. Použijte následující kód k importu požadovaných oborů názvů a typů:
 
 ```csharp
 using System;

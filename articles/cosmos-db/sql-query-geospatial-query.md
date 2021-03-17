@@ -3,17 +3,19 @@ title: Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
 description: Dotazování prostorových dat pomocí Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9a0351b6f1de47f3687995c65060a23bdb2874
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764974"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336108"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje, jak zadávat dotazy na geoprostorové údaje v Azure Cosmos DB pomocí jazyka SQL a LINQ. V současné době jsou ukládání a přístup k geoprostorovému datům podporované jenom pomocí Azure Cosmos DBch jenom účtů rozhraní SQL API. Azure Cosmos DB podporuje následující integrované funkce pro geoprostorové dotazování (OGC) Open Geospatial Consortium (). Další informace o kompletní sadě integrovaných funkcí v jazyce SQL naleznete v tématu [Query System Functions in Azure Cosmos DB](sql-query-system-functions.md).
 
@@ -49,7 +51,7 @@ Prostorové funkce lze použít k provádění dotazů na Proximity pro prostoro
 
 Pokud zahrnete prostorové indexování do zásad indexování, pak se v indexu budou efektivně obsluhovat dotazy na Distance. Další informace o prostorovém indexování najdete v tématu [geoprostorové indexování](sql-query-geospatial-index.md). Pokud pro zadané cesty nemáte prostorový index, dotaz provede kontrolu kontejneru.
 
-`ST_WITHIN`dá se použít ke kontrole, jestli v mnohoúhelníku leží bod. Běžně se používají mnohoúhelníky, které představují hranice, jako jsou PSČ, hranice státu nebo přirozené formy. Pokud zahrnete prostorové indexování do zásad indexování, pak budou dotazy v rámci v rámci indexu obsluhovány efektivně.
+`ST_WITHIN` dá se použít ke kontrole, jestli v mnohoúhelníku leží bod. Běžně se používají mnohoúhelníky, které představují hranice, jako jsou PSČ, hranice státu nebo přirozené formy. Pokud zahrnete prostorové indexování do zásad indexování, pak budou dotazy v rámci v rámci indexu obsluhovány efektivně.
 
 Argumenty mnohoúhelníku v `ST_WITHIN` můžou obsahovat jenom jeden prstenec, to znamená, že mnohoúhelníky nesmí obsahovat v nich otvory.
 
@@ -99,7 +101,7 @@ Azure Cosmos DB také podporuje provádění inverzních dotazů, to znamená, �
     }]
 ```
 
-`ST_ISVALID`a `ST_ISVALIDDETAILED` lze ji použít ke kontrole, zda je prostorový objekt platný. Například následující dotaz kontroluje platnost bodu s hodnotou zeměpisné šířky v rozsahu (-132,8). `ST_ISVALID`Vrátí pouze logickou hodnotu a `ST_ISVALIDDETAILED` vrátí logickou hodnotu a řetězec obsahující důvod, proč se považuje za neplatnou.
+`ST_ISVALID` a `ST_ISVALIDDETAILED` lze ji použít ke kontrole, zda je prostorový objekt platný. Například následující dotaz kontroluje platnost bodu s hodnotou zeměpisné šířky v rozsahu (-132,8). `ST_ISVALID` Vrátí pouze logickou hodnotu a `ST_ISVALIDDETAILED` vrátí logickou hodnotu a řetězec obsahující důvod, proč se považuje za neplatnou.
 
 **Dotaz**
 

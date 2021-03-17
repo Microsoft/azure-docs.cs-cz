@@ -3,15 +3,15 @@ title: Správa skupin prostředků – Azure CLI
 description: Pomocí Azure CLI můžete spravovat skupiny prostředků prostřednictvím Azure Resource Manager. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e28b66844eaa0b73c2654175dea2e31d3cd75f5d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827108"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172092"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Správa skupin prostředků Azure Resource Manager pomocí Azure CLI
 
@@ -32,14 +32,10 @@ Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístěn
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-Následující skript rozhraní příkazového řádku vytvoří skupinu prostředků a pak zobrazí skupinu prostředků.
+Následující příkaz rozhraní příkazového řádku vytvoří skupinu prostředků.
 
 ```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-echo "Enter the location (i.e. centralus):" &&
-read location &&
-az group create --name $resourceGroupName --location $location
+az group create --name demoResourceGroup --location westus
 ```
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
@@ -88,14 +84,14 @@ Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Dalš
 
 ## <a name="lock-resource-groups"></a>Uzamčení skupin prostředků
 
-Uzamykání brání jiným uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků, jako je například předplatné Azure, skupina prostředků nebo prostředek. 
+Uzamykání brání jiným uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků, jako je například předplatné Azure, skupina prostředků nebo prostředek.
 
 Následující skript zamkne skupinu prostředků, takže skupinu prostředků nejde odstranit.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 Následující skript získá všechny zámky pro skupinu prostředků:
@@ -103,7 +99,7 @@ Následující skript získá všechny zámky pro skupinu prostředků:
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 Následující skript odstraní zámek:
@@ -129,23 +125,98 @@ Po úspěšném nastavení skupiny prostředků možná budete chtít zobrazit �
 - Automatizujte budoucí nasazení řešení, protože šablona obsahuje veškerou kompletní infrastrukturu.
 - Podívejte se na JavaScript Object Notation (JSON), která představuje vaše řešení, a Naučte se syntaxí šablony.
 
+Pokud chcete exportovat všechny prostředky ve skupině prostředků, použijte příkaz [AZ Group export](/cli/azure/group#az_group_export) a zadejte název skupiny prostředků.
+
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-Skript zobrazí šablonu v konzole nástroje.  Zkopírujte kód JSON a uložte ho jako soubor.
+Skript zobrazí šablonu v konzole nástroje. Zkopírujte kód JSON a uložte ho jako soubor.
 
-Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
+Místo exportování všech prostředků ve skupině prostředků můžete vybrat, které prostředky se mají exportovat.
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
+Pokud chcete exportovat jeden prostředek, předejte toto ID prostředku.
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+Chcete-li exportovat více než jeden prostředek, předejte ID prostředků oddělených mezerami. Chcete-li exportovat všechny prostředky, nezadávejte tento argument ani zadání "*".
+
+```azurecli-interactive
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+Při exportování šablony můžete určit, zda jsou parametry použity v šabloně. Ve výchozím nastavení jsou k dispozici parametry pro názvy prostředků, ale nemají výchozí hodnotu. Tuto hodnotu parametru musíte předat během nasazování.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+V prostředku je parametr použit pro název.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+Použijete-li `--include-parameter-default-value` parametr při exportování šablony, parametr šablony obsahuje výchozí hodnotu, která je nastavena na aktuální hodnotu. Můžete buď použít tuto výchozí hodnotu, nebo přepsat výchozí hodnotu tak, že předáte jinou hodnotu.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+Použijete-li `--skip-resource-name-params` parametr při exportování šablony, parametry pro názvy prostředků nejsou zahrnuty do šablony. Místo toho je název prostředku nastaven přímo na prostředek na jeho aktuální hodnotu. Během nasazování nemůžete přizpůsobit název.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
+
+Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](../../data-factory/copy-clone-data-factory.md).
+
+Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 Další informace najdete v tématu [Export jednoho a více prostředků do šablony v Azure Portal](../templates/export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 

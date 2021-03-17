@@ -8,25 +8,25 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 757dfc34e3be12d09b8f965a2bb0295adb712c11
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653541"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504231"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA vysoké dostupnosti pro virtuální počítače Azure
 
 K nasazení důležitých databází, jako je SAP HANA na virtuálních počítačích Azure, můžete použít spoustu možností Azure. Tento článek poskytuje pokyny, jak dosáhnout dostupnosti pro SAP HANA instance hostované ve virtuálních počítačích Azure. Článek popisuje několik scénářů, které můžete implementovat pomocí infrastruktury Azure ke zvýšení dostupnosti SAP HANA v Azure. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste obeznámeni se základními principy infrastruktury jako služby (IaaS) v Azure, včetně těchto: 
 
@@ -52,7 +52,7 @@ Je také vhodné se seznámit s těmito články o SAP HANA:
 - [Automatické restartování služby SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [Konfigurace replikace systému SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Než se seznámíte s nasazením virtuálních počítačů v Azure, před definováním architektury dostupnosti v Azure doporučujeme, abyste si přečetli téma [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../windows/manage-availability.md).
+Než se seznámíte s nasazením virtuálních počítačů v Azure, před definováním architektury dostupnosti v Azure doporučujeme, abyste si přečetli téma [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../availability.md).
 
 ## <a name="service-level-agreements-for-azure-components"></a>Smlouvy o úrovni služeb pro součásti Azure
 
@@ -85,4 +85,3 @@ Změřte svůj požadavek na dostupnost proti SLA, kterou můžou součásti Azu
 
 
 
-  

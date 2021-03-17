@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230770"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88924295"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Znalostní báze ve službě Azure Kognitivní hledání
 
@@ -21,7 +21,7 @@ Znalostní báze je funkce služby Azure Kognitivní hledání, která uchováv�
 
 Pokud jste v minulosti používali rozpoznávání vnímání, již víte, že *dovednosti* přesouvá dokument v rámci posloupnosti rozšíření. Výsledkem může být index vyhledávání nebo projekce ve znalostní bázi. Dva výstupy, vyhledávací index a znalostní obchod jsou produkty stejného kanálu. odvozeno ze stejných vstupů, ale vede výstup, který je strukturovaný, uložený a používá se velmi různými způsoby.
 
-Znalostní báze Knowledge Store je fyzicky [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), buď úložiště tabulek Azure, Azure Blob Storage, nebo obojí. Libovolný nástroj nebo proces, který se může připojit k Azure Storage může využívat obsah znalostní báze Knowledge Store.
+Znalostní báze Knowledge Store je fyzicky [Azure Storage](../storage/common/storage-account-overview.md), buď úložiště tabulek Azure, Azure Blob Storage, nebo obojí. Libovolný nástroj nebo proces, který se může připojit k Azure Storage může využívat obsah znalostní báze Knowledge Store.
 
 
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
@@ -39,7 +39,7 @@ Ve výčtu jsou výhody znalostní báze Knowledge Store následující:
 
 + Využívání obohacených dokumentů v [nástrojích pro analýzu a vytváření sestav](#tools-and-apps) kromě hledání. Power BI s Power Query je přesvědčivá volba, ale jakýkoli nástroj nebo aplikace, které se můžou připojit k Azure Storage, můžou vyžádat z úložiště, které vytvoříte.
 
-+ Upřesnění kanálu indexování AI při ladění kroků a definicí dovednosti. Znalostní báze Knowledge Store vám ukáže produkt definice dovednosti v kanálu indexování AI. Pomocí těchto výsledků můžete navrhnout lepší dovednosti, protože vidíte přesně to, co vypadá rozšíření. V Azure Storage můžete použít [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) k zobrazení obsahu úložiště Knowledge Store.
++ Upřesnění kanálu indexování AI při ladění kroků a definicí dovednosti. Znalostní báze Knowledge Store vám ukáže produkt definice dovednosti v kanálu indexování AI. Pomocí těchto výsledků můžete navrhnout lepší dovednosti, protože vidíte přesně to, co vypadá rozšíření. V Azure Storage můžete použít [Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) k zobrazení obsahu úložiště Knowledge Store.
 
 + Natvarujte data do nových formulářů. Změna tvaru je kodifikována v dovednosti, ale v tomto bodě je to, že dovednosti může tuto funkci nyní poskytnout. [Shaper dovednosti](cognitive-search-skill-shaper.md) v Azure kognitivní hledání se rozšířily tak, aby odpovídaly této úloze. Změna tvaru umožňuje definovat projekci, která se zarovnává s zamýšleným použitím dat při zachování vztahů.
 
@@ -84,7 +84,7 @@ Je ale možné vytvořit několik sad `table` - `object` - `file` projekce a mů
 
 ## <a name="requirements"></a>Požadavky 
 
-[Azure Storage](https://docs.microsoft.com/azure/storage/) se vyžaduje. Poskytuje fyzické úložiště. Můžete použít úložiště objektů blob, tabulkové úložiště nebo obojí. Úložiště objektů BLOB se používá pro nedotčené rozšířené dokumenty, většinou když výstup probíhá na navazující procesy. Table Storage je pro řezy obohacených dokumentů, které se běžně používají k analýze a vytváření sestav.
+[Azure Storage](../storage/index.yml) se vyžaduje. Poskytuje fyzické úložiště. Můžete použít úložiště objektů blob, tabulkové úložiště nebo obojí. Úložiště objektů BLOB se používá pro nedotčené rozšířené dokumenty, většinou když výstup probíhá na navazující procesy. Table Storage je pro řezy obohacených dokumentů, které se běžně používají k analýze a vytváření sestav.
 
 [Dovednosti](cognitive-search-working-with-skillsets.md) je povinný. Obsahuje definici a `knowledgeStore` určuje strukturu a složení obohaceného dokumentu. Nemůžete vytvořit úložiště znalostí pomocí prázdného dovednosti. Musíte mít aspoň jednu dovednost v dovednosti.
 
@@ -130,16 +130,16 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 + [Power BI](knowledge-store-connect-power-bi.md) pro vytváření sestav a analýzy. 
 
-+ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) pro další manipulaci.
++ [Azure Data Factory](../data-factory/index.yml) pro další manipulaci.
 
 <a name="kstore-rest-api"></a>
 
 ## <a name="api-reference"></a>referenční dokumentace k rozhraní API
 
-REST API verze `2020-06-30` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
+REST API verze `2020-06-30` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu  [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 
-+ [Create dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Update dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
++ [Create dovednosti (rozhraní API-Version = 2020-06-30)](/rest/api/searchservice/create-skillset)
++ [Update dovednosti (rozhraní API-Version = 2020-06-30)](/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>Další kroky

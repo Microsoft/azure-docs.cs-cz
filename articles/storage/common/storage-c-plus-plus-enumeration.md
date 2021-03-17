@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514446"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784094"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Výpis prostředků Azure Storage v C++
 
@@ -59,8 +59,8 @@ Proto je nepraktické zobrazit seznam všech objektů v jediné odpovědi. Míst
 
 Odpověď pro segmentované operace výpisu zahrnuje:
 
-* *_segment*, která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
-* *continuation_token*, která je předána dalšímu volání, aby se zobrazila další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
+* *_segment* , která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
+* *continuation_token* , která je předána dalšímu volání, aby se zobrazila další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
 
 Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v našich [ukázkách](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp):
 
@@ -198,7 +198,7 @@ Další informace o Azure Storage a klientské knihovně pro C++ najdete v násl
 
 * [Použití Blob Storage z C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Použití Table Storage z C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Používání úložiště Queue z C++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Používání úložiště Queue z C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [Dokumentace klientské knihovny Azure Storage pro C++ API.](https://azure.github.io/azure-storage-cpp/)
-* [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog týmu Azure Storage](/archive/blogs/windowsazurestorage/)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

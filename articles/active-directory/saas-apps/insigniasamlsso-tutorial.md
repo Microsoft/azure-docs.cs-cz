@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 9d3463e04f06e02f8d27e633a10c22069ad9b57f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1cd781358a8dea740a7e89203c61b7112acb9efd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550414"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Kurz: Integrace Azure Active Directory s Insignia SAML SSO
 
@@ -27,7 +27,7 @@ Integrace Insignia SSO s protokolem SAML s Azure AD poskytuje následující vý
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Insignia SSO (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Insignia SAML, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Insignia SAML SSO](#configure-insignia-saml-sso-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Insignia SAML jednotného přihlašování](#configure-insignia-saml-sso-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si uživatele Insignia pro jednotné přihlašování SAML](#create-insignia-saml-sso-test-user)** , abyste měli protějšek Britta Simon v Insignia SAML SSO, který je propojený s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Insignia SAML pro jednotné přihlašování](http://www.insigniasoftware.com/insignia/Techsupport.aspx) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-insignia-saml-sso-single-sign-on"></a>Konfigurace jednotného přihlašování Insignia SAML jednotného přihlašování
+### <a name="configure-insignia-saml-sso-single-sign-on"></a>Konfigurace Insignia SAML SSO Single Sign-On
 
 Pokud chcete nakonfigurovat jednotné přihlašování na **Insignia SAML** na straně jednotného přihlašování, musíte stáhnout stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal až [Insignia týmu podpory SAML pro jednotné](http://www.insigniasoftware.com/insignia/Techsupport.aspx)přihlašování. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -155,7 +155,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -163,7 +163,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Insignia SSO SSO**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Insignia jednotné přihlašování SAML**.
 
@@ -185,18 +185,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-insignia-saml-sso-test-user"></a>Vytvořit uživatele testu jednotného přihlašování SAML Insignia
 
-V této části vytvoříte uživatele s názvem Britta Simon v Insignia SSO jednotného přihlašování SAML. Pokud chcete přidat uživatele na Insignia SAML Insignia, můžete pracovat s [týmem podpory jednotného](http://www.insigniasoftware.com/insignia/Techsupport.aspx) přihlašování SAML. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Insignia SSO jednotného přihlašování SAML. Pokud chcete přidat uživatele na Insignia SAML Insignia, můžete pracovat s [týmem podpory jednotného](http://www.insigniasoftware.com/insignia/Techsupport.aspx) přihlašování SAML. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Insignia SAML SSO na přístupovém panelu, měli byste se automaticky přihlásit k Insignia SSO SAML, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Insignia SAML SSO na přístupovém panelu, měli byste se automaticky přihlásit k Insignia SSO SAML, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

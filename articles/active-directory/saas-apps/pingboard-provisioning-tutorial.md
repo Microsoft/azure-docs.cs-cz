@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 29e28e20bd9b471604a450ddb36ef867f0608e06
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553758"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357891"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ ms.locfileid: "88553758"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenant Azure AD
 * Účet tenanta Pingboard [pro](https://pingboard.com/pricing)
@@ -65,7 +65,7 @@ Tato část vás provede připojením služby Azure AD k rozhraní API pro zřiz
 
 1. V části **přihlašovací údaje správce** použijte následující postup:
 
-    a. Do **adresy URL tenanta**zadejte `https://your_domain.pingboard.com/scim/v2` a nahraďte "your_domain" skutečnou doménou.
+    a. Do **adresy URL tenanta** zadejte `https://your_domain.pingboard.com/scim/v2` a nahraďte "your_domain" skutečnou doménou.
 
     b. Přihlaste se k [Pingboard](https://pingboard.com/) pomocí účtu správce.
 
@@ -73,7 +73,7 @@ Tato část vás provede připojením služby Azure AD k rozhraní API pro zřiz
 
     d. Otevřete kartu **Konfigurace** a vyberte **Povolit zřizování uživatelů z Azure**.
 
-    e. Zkopírujte token v **nosných tokenech OAuth**a zadejte ho do **tajného tokenu**.
+    e. Zkopírujte token v **nosných tokenech OAuth** a zadejte ho do **tajného tokenu**.
 
 1. V Azure Portal vyberte **Test připojení** pro otestování služby Azure AD se může připojit k vaší aplikaci Pingboard. Pokud se připojení nepovede, otestujte, jestli má váš účet Pingboard oprávnění správce, a zkuste krok **test Connection** znovu.
 
@@ -93,7 +93,7 @@ Počáteční synchronizace trvá déle než následující synchronizace, ke kt
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

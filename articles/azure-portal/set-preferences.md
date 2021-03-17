@@ -1,22 +1,17 @@
 ---
-title: Správa nastavení a předvoleb Azure Portal | Microsoft Docs
+title: Správa nastavení a předvoleb na webu Azure Portal
 description: Výchozí nastavení Azure Portal můžete změnit tak, aby splňovalo vaše vlastní předvolby. Nastavení zahrnují časový limit neaktivních relací, výchozí zobrazení, režim nabídky, kontrast, motiv, oznámení a jazyky a místní formáty.
-services: azure-portal
 keywords: nastavení, časový limit, jazyk, oblast
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205627"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588808"
 ---
-# <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb Azure Portal
+# <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb na webu Azure Portal
 
 Výchozí nastavení Azure Portal můžete změnit tak, aby splňovalo vaše vlastní předvolby. Většina nastavení je k dispozici v nabídce **Nastavení** v záhlaví globální stránky.
 
@@ -50,7 +45,7 @@ Když se přihlásíte k Azure Portal, můžete změnit stránku, která se otev
 
 Výchozí režim pro nabídku portálu určuje, kolik místa se v nabídce portálu zabírá na stránce.
 
-![Snímek obrazovky zobrazující Azure Portal nastavení se zvýrazněnými motivy](./media/set-preferences/menu-mode.png)
+![Snímek obrazovky, který ukazuje, jak nastavit výchozí režim pro nabídku portálu.](./media/set-preferences/menu-mode.png)
 
 - Když je nabídka portálu v režimu **plovoucí** , je skrytá, dokud ji nepotřebujete. Výběrem ikony nabídky otevřete nebo zavřete nabídku.
 
@@ -76,7 +71,7 @@ Pokud chcete číst všechna oznámení přijatá během vaší aktuální relac
 
 ![Snímek obrazovky zobrazující Azure Portal globální záhlaví s zvýrazněnými oznámeními](./media/set-preferences/read-notifications.png)
 
-Pokud chcete číst oznámení z předchozích relací, vyhledejte události v protokolu aktivit. Další informace najdete v tématu [zobrazení protokolu aktivit](../azure-monitor/platform/activity-log.md#view-the-activity-log). 
+Pokud chcete číst oznámení z předchozích relací, vyhledejte události v protokolu aktivit. Další informace najdete v tématu [zobrazení protokolu aktivit](../azure-monitor/essentials/activity-log.md#view-the-activity-log). 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>Změna nastavení časového limitu nečinnosti
 
@@ -84,19 +79,19 @@ Nastavení časového limitu nečinnosti pomáhá chránit prostředky před neo
 
 ### <a name="change-your-individual-timeout-setting-user"></a>Změna nastavení individuálního časového limitu (uživatel)
 
-Vyberte rozevírací nabídku s možností **Odhlásit**se, pokud je neaktivní. Vyberte dobu, po jejímž uplynutí bude relace Azure Portal odhlášena, pokud nepracujete v nečinnosti.
+Vyberte rozevírací nabídku s možností **Odhlásit** se, pokud je neaktivní. Vyberte dobu, po jejímž uplynutí bude relace Azure Portal odhlášena, pokud nepracujete v nečinnosti.
 
 ![Snímek obrazovky s zvýrazněným nastavením neaktivního časového limitu](./media/set-preferences/inactive-signout-user.png)
 
 Změna se automaticky uloží. Pokud nepracujete, vaše relace Azure Portal se odhlásí po uplynutí doby, kterou jste nastavili.
 
-Pokud správce povolil zásady časových limitů nečinnosti, můžete nastavit vlastní, pokud je to méně, než nastavení na úrovni adresáře. Vyberte **přepsat zásady časového limitu nečinnosti adresáře**a pak nastavte časový interval.
+Pokud správce povolil zásady časových limitů nečinnosti, můžete nastavit vlastní, pokud je to méně, než nastavení na úrovni adresáře. Vyberte **přepsat zásady časového limitu nečinnosti adresáře** a pak nastavte časový interval.
 
 ![Snímek obrazovky s nastavením portálu s přepsáním nastavení zásad časového limitu nečinnosti adresáře, který se zvýrazní](./media/set-preferences/inactive-signout-override.png)
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Změna nastavení časového limitu adresáře (správce)
 
-Správci v [roli globálního správce](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) můžou vymáhat maximální dobu nečinnosti před odhlášením relace. Nastavení časového limitu nečinnosti se vztahuje na úrovni adresáře. Nastavení se projeví pro nové relace. Nebude okamžitě platit pro všechny uživatele, kteří jsou už přihlášení. Další informace o adresářích najdete v tématu [přehled Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Správci v [roli globálního správce](../active-directory/roles/permissions-reference.md#global-administrator) můžou vymáhat maximální dobu nečinnosti před odhlášením relace. Nastavení časového limitu nečinnosti se vztahuje na úrovni adresáře. Nastavení se projeví pro nové relace. Nebude okamžitě platit pro všechny uživatele, kteří jsou už přihlášení. Další informace o adresářích najdete v tématu [přehled Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 Pokud jste globální správce a chcete vyhodnotit nastavení časového limitu nečinnosti pro všechny uživatele Azure Portal, postupujte podle následujících kroků:
 

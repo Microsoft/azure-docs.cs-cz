@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005227"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099910"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -82,7 +82,7 @@ Doporučený způsob, jak zřídit virtuální počítače, je použití šablon
 
 Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány a zda chcete zkontrolovat chybové zprávy.
 
-1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech**programy programy  >  **Programs**  >  **a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
+1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech** programy programy  >    >  **a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
 2. Otevřete **Průzkumníka souborů** a přejděte na **C:\Windows\Temp\ScriptLog.log**. Pokud soubor chybí, znamená to, že v zadaném kontextu zabezpečení nebylo možné spustit prostředí PowerShell DSC, které nainstalovalo tyto dvě součásti.
 3. Pokud je soubor **C:\Windows\Temp\ScriptLog.log** k dispozici, otevřete jej a vyhledejte chybové zprávy.
 
@@ -140,7 +140,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 2. Spuštěním rutiny **New-AzWvdRegistrationInfo** Vygenerujte nový token.
 3. Potvrďte, že parametr *-ExpriationTime* je nastavený na 3 dny.
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Chyba: Agent virtuálních počítačů s Windows neoznamuje prezenční signál při spuštění Get-AzWvdSessionHost.
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Chyba: Agent virtuálních počítačů systému Windows neoznamuje prezenční signál při spuštění Get-AzWvdSessionHost
 
 **Příčina 1:** Služba RDAgentBootLoader byla zastavena.
 
@@ -193,7 +193,7 @@ Pokud je nainstalovaná a povolená souběžná sada protokolů, výstup z **qwi
 > [!div class="mx-imgBorder"]
 > ![Nainstalovaná nebo povolená Souběžná instalace s qwinsta, která je ve výstupu uvedená jako RDP-SxS.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty se shodují. Pokud klíče registru chybí nebo se neshodují s hodnotami, postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md) , jak přeinstalovat souběžný zásobník.
+Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty se shodují. Pokud klíče registru chybí nebo se neshodují hodnoty, ujistěte se, že používáte [podporovaný operační systém](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os). Pokud používáte, postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md) , jak přeinstalovat souběžný zásobník.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -348,6 +348,7 @@ Další informace o těchto zásadách najdete v tématu [Povolení přihlášen
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení potíží při vytváření fondu hostitelů v prostředí virtuálních ploch Windows najdete v tématu [Vytvoření fondu prostředí a hostitele](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Informace o řešení potíží souvisejících s agentem virtuálního počítače s Windows nebo s připojením relace najdete v tématu [řešení běžných potíží s agentem virtuálních počítačů s Windows](troubleshoot-agent.md).
 - Informace o řešení potíží s klientskými připojeními k virtuální ploše Windows najdete v tématu [připojení ke službě Virtual Desktop systému Windows](troubleshoot-service-connection.md).
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e3ea9222b0f231250bde43fb86c07847ca4835e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60199185"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832331"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>Použití editoru Azure Cloud Shell
 
@@ -52,5 +52,6 @@ Chcete-li spustit paletu příkazů, použijte `F1` klíč při nastavení fokus
 Podpora zvýraznění jazyka v editoru Cloud Shell je podporovaná prostřednictvím funkcí pro odesílání dat v [editoru Monako](https://github.com/Microsoft/monaco-editor)použití definic syntaxe Monarch. Informace o tom, jak vytvořit příspěvky, najdete v [příručce pro přispěvatele](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md)pro spolupráci.
 
 ## <a name="next-steps"></a>Další kroky
-[Vyzkoušejte si rychlý Start pro bash v Cloud Shell](quickstart.md) 
- [Zobrazit úplný seznam integrovaných nástrojů Cloud Shell](features.md)
+
+- [Vyzkoušejte si rychlý Start pro bash v Cloud Shell](quickstart.md)
+- [Zobrazit úplný seznam integrovaných nástrojů Cloud Shell](features.md)

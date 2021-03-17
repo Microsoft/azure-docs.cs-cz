@@ -13,19 +13,14 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a67e0d851ab544f737097eff9a884752cff9f5fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80550263"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491536"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
-
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Firstline pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. To bude problematické, když začnou sdílet hesla nebo čísla PIN pro přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
 
@@ -36,13 +31,13 @@ Režim sdíleného zařízení taky poskytuje zpětnou správu v rámci identity
 Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a správci cloudových zařízení spolupracují:
 
 - Vývojáři napsané aplikace s jedním účtem (aplikace s více účty se v režimu sdíleného zařízení nepodporují), přidají `"shared_device_mode_supported": true` do konfigurace aplikace a napíší kód, který bude zpracovávat věci, jako je třeba přihlášení ke sdílenému zařízení.
-- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory**  >  **role a správci**  >  **správce cloudového zařízení**.
+- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory**  >  **role a správci**  >  **správce cloudového zařízení**.
 
  Tento článek se zaměřuje především na to, co by si vývojáři měli představit.
 
 ## <a name="single-vs-multiple-account-applications"></a>Jednotlivé aplikace s více účty vs.
 
-Aplikace napsané pomocí sady Microsoft MSAL Library SDK () můžou spravovat jeden nebo víc účtů. Podrobnosti najdete v tématu [režim jednoho účtu nebo režim vícenásobného účtu](single-multi-account.md). Funkce Microsoft Identity Platform, které jsou dostupné pro vaši aplikaci, se liší v závislosti na tom, jestli je aplikace spuštěná v režimu jednoho účtu nebo v režimu vícenásobného účtu.
+Aplikace napsané pomocí sady Microsoft MSAL Library SDK () můžou spravovat jeden nebo víc účtů. Podrobnosti najdete v tématu [režim jednoho účtu nebo režim vícenásobného účtu](single-multi-account.md). Funkce platformy Microsoft identity, které jsou dostupné pro vaši aplikaci, se liší v závislosti na tom, jestli je aplikace spuštěná v režimu jednoho účtu nebo v režimu vícenásobného účtu.
 
 **Aplikace v režimu sdíleného zařízení fungují pouze v režimu s jedním účtem**.
 

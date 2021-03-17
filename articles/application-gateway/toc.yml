@@ -4,8 +4,6 @@
   items:
     - name: Informace o službách Application Gateway
       href: overview.md
-    - name: Co je nového?
-      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -54,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: Komponenty Application Gateway
           href: application-gateway-components.md
-        - name: Přehled konfigurace
-          href: configuration-overview.md
+        - name: Konfigurace
+          items:
+            - name: Přehled
+              href: configuration-overview.md
+            - name: Infrastruktura
+              href: configuration-infrastructure.md
+            - name: Front-endová IP adresa
+              href: configuration-front-end-ip.md
+            - name: Naslouchací procesy
+              href: configuration-listeners.md
+            - name: Vyžádání pravidel směrování
+              href: configuration-request-routing-rules.md
+            - name: Nastavení HTTP
+              href: configuration-http-settings.md
     - name: Podpora vysokého provozu
       href: high-traffic-support.md
     - name: SKU pro Automatické škálování v2
@@ -70,6 +80,10 @@
           href: redirect-overview.md
         - name: Přepsání hlaviček HTTP a adres URL
           href: rewrite-http-headers-url.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: SSL
       items:
         - name: Ukončení protokolu SSL a kompletní SSL
@@ -92,8 +106,10 @@
       href: application-gateway-web-app-overview.md
     - name: Podpora protokolu WebSocket
       href: application-gateway-websocket.md
+    - name: Vysvětlení cen
+      href: understanding-pricing.md
     - name: Nejčastější dotazy
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: Návody
   items:
     - name: Hostování jedné lokality
@@ -142,6 +158,8 @@
           href: ingress-controller-install-existing.md
         - name: Příchozí přenos dat pro AKS přes Helm (greenfield)
           href: ingress-controller-install-new.md
+        - name: Migrace z nasazení Helm do doplňku AKS
+          href: ingress-controller-migration.md
         - name: Zákaz a znovupovolení doplňkového kontroleru pro příchozí přenos dat pro AKS
           href: ingress-controller-disable-addon.md
         - name: Povolení spřažení souborů cookie
@@ -271,7 +289,7 @@
       href: ../azure-resource-manager/management/overview.md
     - name: Šablona Resource Manageru
       displayName: ARM
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
+      href: /azure/templates/microsoft.network/applicationgateways
 - name: Zdroje a prostředky
   items:
     - name: Tvorba šablon

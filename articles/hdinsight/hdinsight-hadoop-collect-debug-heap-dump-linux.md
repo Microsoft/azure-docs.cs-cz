@@ -1,19 +1,16 @@
 ---
 title: Povolit výpisy haldy pro Apache Hadoop služby ve službě HDInsight – Azure
 description: Povolte výpisy haldy pro Apache Hadoop služby z clusterů HDInsight se systémem Linux pro účely ladění a analýzy.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962199"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945921"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux
 
@@ -37,7 +34,7 @@ Můžete také povolit výpisy paměti haldy pro mapu a snížit procesy spušt�
 
 Výpisy haldy jsou povolené předáním možností (někdy označované jako výslovný nebo parametry) do JVM při spuštění služby. U většiny [Apache Hadoop](https://hadoop.apache.org/) Services můžete upravit skript prostředí používaný ke spuštění služby a předat tyto možnosti.
 
-V každém skriptu je k dispozici export pro ** \* \_ výslovný**, který obsahuje možnosti předané do JVM. Například ve skriptu **Hadoop-env.sh** má řádek, který začíná, `export HADOOP_NAMENODE_OPTS=` obsahuje možnosti pro službu NameNode.
+V každém skriptu je k dispozici export pro **\* \_ výslovný**, který obsahuje možnosti předané do JVM. Například ve skriptu **Hadoop-env.sh** má řádek, který začíná, `export HADOOP_NAMENODE_OPTS=` obsahuje možnosti pro službu NameNode.
 
 Mapování a snížení procesů se mírně liší, protože tyto operace jsou podřízeným procesem služby MapReduce. Každá mapa nebo omezení procesu běží v podřízeném kontejneru a existují dvě položky, které obsahují JVM možnosti. Jak je obsaženo v **mapred-site.xml**:
 
@@ -66,9 +63,9 @@ Výchozím umístěním pro soubor s výpisem paměti je aktuální pracovní ad
 
 Například použití způsobí, `-XX:HeapDumpPath=/tmp` že se výpisy paměti ukládají do adresáře adresáře/TMP.
 
-### <a name="scripts"></a>Scripts
+### <a name="scripts"></a>Skripty
 
-Skript můžete také aktivovat, když dojde k **OutOfMemoryError** . Například spuštění oznámení, abyste věděli, že došlo k chybě. Pro aktivaci skriptu na __OutOfMemoryError__použijte následující možnost:
+Skript můžete také aktivovat, když dojde k **OutOfMemoryError** . Například spuštění oznámení, abyste věděli, že došlo k chybě. Pro aktivaci skriptu na __OutOfMemoryError__ použijte následující možnost:
 
 `-XX:OnOutOfMemoryError=/path/to/script`
 
@@ -91,7 +88,7 @@ Chcete-li upravit konfiguraci služby, použijte následující postup:
 
     ![Seznam filtrovaných konfigurací Apache Ambari](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Vyhledejte položku ** \* \_ výslovný** pro službu, pro kterou chcete povolit výpisy paměti haldy, a přidejte možnosti, které chcete povolit. Na následujícím obrázku jsem přidaný `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do položky **HADOOP \_ NAMENODE \_ výslovný** :
+4. Vyhledejte položku **\* \_ výslovný** pro službu, pro kterou chcete povolit výpisy paměti haldy, a přidejte možnosti, které chcete povolit. Na následujícím obrázku jsem přidaný `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do položky **HADOOP \_ NAMENODE \_ výslovný** :
 
     ![Apache Ambari Hadoop-namenode-výslovný](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
@@ -115,4 +112,4 @@ Chcete-li upravit konfiguraci služby, použijte následující postup:
    > [!NOTE]  
    > Položky tlačítka pro **restartování** se mohou lišit pro jiné služby.
 
-8. Po restartování služeb můžete **režim údržby**vypnout pomocí tlačítka **Akce služby** . Tento Ambari obnoví monitorování výstrah pro službu.
+8. Po restartování služeb můžete **režim údržby** vypnout pomocí tlačítka **Akce služby** . Tento Ambari obnoví monitorování výstrah pro službu.

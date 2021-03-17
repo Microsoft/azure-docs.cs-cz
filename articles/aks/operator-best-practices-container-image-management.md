@@ -4,12 +4,12 @@ description: Naučte se osvědčené postupy pro správu a zabezpečení kontejn
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 018dc1802d4f0b4b498d3993b8753990598a16ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d2f5465356a94b9ad7014e75aa6fe1515411a81
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251140"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564913"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro správu a zabezpečení imagí kontejneru ve službě Azure Kubernetes (AKS)
 
@@ -52,7 +52,7 @@ Tento článek se zaměřuje na zabezpečení kontejnerů. Chcete-li implementov
 * [Automatizace sestavení imagí na základě aktualizace základního obrázku pomocí úloh Azure Container Registry][acr-base-image-update]
 
 <!-- EXTERNAL LINKS -->
-[azure-pipelines]: /azure/devops/pipelines/?view=vsts
+[azure-pipelines]: /azure/devops/pipelines/
 [twistlock]: https://www.twistlock.com/
 [aqua]: https://www.aquasec.com/
 
@@ -61,4 +61,4 @@ Tento článek se zaměřuje na zabezpečení kontejnerů. Chcete-li implementov
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
 [security-center-containers]: ../security-center/container-security.md
-[security-center-acr]: ../security-center/azure-container-registry-integration.md
+[security-center-acr]: ../security-center/defender-for-container-registries-introduction.md

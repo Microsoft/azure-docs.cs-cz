@@ -1,5 +1,5 @@
 ---
-title: Registrace zařízení TPM do služby Azure Device Provisioning pomocí Java
+title: Rychlý Start – registrace zařízení TPM do služby Azure Device Provisioning pomocí Java
 description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby Java V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 44ed6d849a29b598784ee9341bf4c61ad491e0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0a1f4ed46ab9e467a19cfa722a2d345284fdc94a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325844"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463059"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby Java
 
@@ -22,12 +22,12 @@ ms.locfileid: "87325844"
 
 V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro simulované zařízení TPM v Azure IoT Hub Device Provisioning Service pomocí sady SDK služby Java s použitím ukázkové aplikace Java.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončení [nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](./quick-setup-auto-provision.md).
 - Dokončování [šifrovacích klíčů pro čtení ze zařízení TPM](quick-create-simulated-device.md#simulatetpm).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java se Development Kit 8](https://aka.ms/azure-jdks). V tomto rychlém startu se nainstaluje [sada SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/) níže. Funguje na systémech Windows i Linux. V tomto rychlém startu se používá Windows.
+- [Java se Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support). V tomto rychlém startu se nainstaluje [sada SDK služby Java](https://azure.github.io/azure-iot-sdk-java/master/service/) níže. Funguje na systémech Windows i Linux. V tomto rychlém startu se používá Windows.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -35,7 +35,7 @@ V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro s
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí 
 
-1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](https://aka.ms/azure-jdks). 
+1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support). 
 
 2. Nastavte proměnné prostředí pro vaši instalaci Javy. Proměnná `PATH` by měla obsahovat úplnou cestu k adresáři *jdk1.8.x\bin*. Pokud se jedná o první instalaci Javy na vašem počítači, vytvořte novou proměnnou prostředí `JAVA_HOME` a přidejte do ní odkaz na úplnou cestu k adresáři *jdk1.8.x*. Na počítači s Windows se tento adresář nachází ve složce *C:\\Program Files\\Java\\* a proměnné prostředí můžete vytvořit nebo upravit tak, že v **Ovládacích panelech** na počítači s Windows vyhledáte možnost **Upravit proměnné prostředí systému**. 
 
@@ -62,7 +62,7 @@ V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro s
 
 Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování vašeho zařízení TPM. 
 
-1. Otevřete příkazový řádek. Naklonujte ukázku kódu registrace úložiště GitHubu pomocí [sady SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/):
+1. Otevřete příkazový řádek. Naklonujte ukázku kódu registrace úložiště GitHubu pomocí [sady SDK služby Java](https://azure.github.io/azure-iot-sdk-java/master/service/):
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -130,7 +130,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
     mvn install -DskipTests
     ```
 
-   Tento příkaz stáhne balíček Maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) do počítače. Tento balíček obsahuje binární soubory pro [sadu SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/), které musí sestavit ukázkový kód. 
+   Tento příkaz stáhne balíček Maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) do počítače. Tento balíček obsahuje binární soubory pro [sadu SDK služby Java](https://azure.github.io/azure-iot-sdk-java/master/service/), které musí sestavit ukázkový kód. 
 
 3. Spusťte ukázku pomocí těchto příkazů v příkazovém okně:
 
@@ -141,7 +141,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
 
 4. Sledujte v okně výstupu úspěšnou registraci. 
 
-5. Přejděte k vaší službě zřizování na webu Azure Portal. Vyberte možnost **spravovat registrace**a vyberte kartu **jednotlivé registrace** . Všimněte si, že je teď uvedený *ID registrace* simulovaného zařízení TPM. 
+5. Přejděte k vaší službě zřizování na webu Azure Portal. Vyberte možnost **spravovat registrace** a vyberte kartu **jednotlivé registrace** . Všimněte si, že je teď uvedený *ID registrace* simulovaného zařízení TPM. 
 
     ![Ověření úspěšné registrace TPM na portálu](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -150,7 +150,7 @@ Pokud plánujete prozkoumat ukázku služby Java, neprovádějte čištění pro
 
 1. Zavřete na svém počítači okno výstupu ukázky v Javě.
 1. Zavřete okno simulátoru TPM, pokud jste ho otevřeli pro simulaci zařízení TPM.
-1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
+1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace** a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste do své služby Device Provisioning zaregistrovali simulované zařízení TPM. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 

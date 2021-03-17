@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentace službě Azure Blob Storage
-summary: Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+title: Dokumentace k Azure Blob Storage
+summary: Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
 metadata:
-  title: Dokumentace službě Azure Blob Storage
-  description: Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+  title: Dokumentace k Azure Blob Storage
+  description: Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
   services: storage
   ms.service: storage
   ms.subservice: blobs
@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 9db4921b6f0b8382b69dbac658536b5151bdd653
-  ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-  ms.translationtype: HT
+  ms.openlocfilehash: 02df0a3fc7dedb5ced734efcd3cdd0eb48232c37
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82117246"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101701684"
 landingContent:
 - title: Informace o službě Blob Storage
   linkLists:
@@ -64,7 +64,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Analýza dat s využitím Databricks
-      url: data-lake-storage-quickstart-create-databricks-account.md
+      url: ./data-lake-storage-use-databricks-spark.md
   - linkListType: concept
     links:
     - text: Zpracování velkých objemů dat
@@ -76,7 +76,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Extrakce, transformace a načítání dat s využitím Azure Databricks
-      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Extrakce, transformace a načítání dat s využitím Apache Hivu ve službě Azure HDInsight
       url: data-lake-storage-tutorial-extract-transform-load-hive.md
     - text: Vložení dat do tabulek Databricks s využitím Event Gridu
@@ -86,18 +86,18 @@ landingContent:
     - text: Využití s clustery Azure HDInsight
       url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Použití s Power BI
-      url: data-lake-storage-use-power-bi.md
+      url: /power-query/connectors/datalakestorage
 - title: Vývoj aplikací
   linkLists:
   - linkListType: quickstart
     links:
     - text: Azure Blob Storage pro .NET
       url: storage-quickstart-blobs-dotnet.md
-    - text: Azure Blob Storage pro Javu
+    - text: Azure Blob Storage pro jazyk Java
       url: storage-quickstart-blobs-java.md
     - text: Azure Blob Storage pro Python
       url: storage-quickstart-blobs-python.md
-    - text: Azure Blob Storage pro JavaScript s využitím Node.js
+    - text: Blob Storage Azure pro JavaScript pomocí Node.js
       url: storage-quickstart-blobs-nodejs.md
     - text: Azure Blob Storage pro JavaScript v prohlížeči
       url: quickstart-blobs-javascript-browser.md
@@ -126,8 +126,8 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Přístup k datům objektů blob pomocí účtu Azure AD
-      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - text: Správa přístupových práv pomocí RBAC
+      url: authorize-data-operations-portal.md
+    - text: Správa přístupových práv pomocí Azure RBAC
       url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Použití spravované identity k autorizaci přístupu k úložišti objektů blob
       url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

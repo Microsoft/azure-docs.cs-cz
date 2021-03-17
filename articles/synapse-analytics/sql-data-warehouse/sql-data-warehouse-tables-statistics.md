@@ -1,6 +1,6 @@
 ---
-title: Vytváření a aktualizace statistik v tabulkách pomocí Azure synapse SQL
-description: Doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů v tabulkách v synapse fondu SQL
+title: Vytváření a aktualizace statistik v tabulkách
+description: Doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů v tabulkách ve vyhrazeném fondu SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,43 +10,43 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3ade41c51cbb8065734e8957cfc8b9f0c22b2df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495631"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673362"
 ---
-# <a name="table-statistics-in-synapse-sql-pool"></a>Statistiky tabulek v synapse fondu SQL
+# <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Statistiky tabulek pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
-V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů v tabulkách ve fondu SQL.
+V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů v tabulkách ve vyhrazeném fondu SQL.
 
 ## <a name="why-use-statistics"></a>Proč používat statistiku
 
-Čím více fondů SQL ví o vašich datech, tím rychleji se může na ni spouštět dotazy. Po načtení dat do fondu SQL je shromažďování statistických údajů o vašich datech jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů.
+Čím více vyhrazeného fondu SQL ví o vašich datech, tím rychleji se dá na něj spouštět dotazy. Po načtení dat do vyhrazeného fondu SQL je shromažďování statistických údajů o vašich datech jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů.
 
-Optimalizátor dotazů na fond SQL je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji.
+Optimalizátor dotazů na vyhrazený fond SQL je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji.
 
 Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, ve kterém se vybere jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
 
 ## <a name="automatic-creation-of-statistic"></a>Automatické vytváření statistik
 
-Pokud je možnost databáze AUTO_CREATE_STATISTICS zapnutá, fond SQL analyzuje příchozí dotazy uživatelů pro chybějící statistiky.
+Pokud je možnost databáze AUTO_CREATE_STATISTICS zapnutá, vyhrazený fond SQL analyzuje příchozí dotazy uživatelů pro chybějící statistiky.
 
 Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo podmínky spojení ke zvýšení odhadů mohutnosti pro plán dotazu.
 
 > [!NOTE]
 > Automatické vytváření statistik je teď ve výchozím nastavení zapnuté.
 
-Spuštěním následujícího příkazu můžete ověřit, jestli je váš fond SQL AUTO_CREATE_STATISTICS:
+Pomocí následujícího příkazu můžete ověřit, jestli se váš vyhrazený fond SQL AUTO_CREATE_STATISTICS nakonfigurovat:
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-Pokud váš fond SQL nemá AUTO_CREATE_STATISTICS nakonfigurovaný, doporučujeme tuto vlastnost Povolit spuštěním následujícího příkazu:
+Pokud váš vyhrazený fond SQL není AUTO_CREATE_STATISTICS nakonfigurovaný, doporučujeme tuto vlastnost Povolit spuštěním následujícího příkazu:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -70,9 +70,9 @@ Automatické vytváření statistik je prováděno synchronně, takže pokud ve 
 Abyste se vyhnuli měřitelnému snížení výkonu, měli byste před profilací systému zajistit, aby byly nejprve vytvořeny statistiky spuštěním úlohy srovnávacích testů.
 
 > [!NOTE]
-> Vytváření statistik bude zaznamenáno v [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pod jiným uživatelským kontextem.
+> Vytváření statistik bude přihlášeno [Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pod jiným uživatelským kontextem.
 
-Při vytváření automatických statistik budou mít podobu: _WA_Sys_ id sloupce<8 číslic v šestnáctkovém>_<desítkové tabulce s číslem ID v šestnáctkové>. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním příkazu [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) :
+Při vytváření automatických statistik budou mít podobu: _WA_Sys_ id sloupce<8 číslic v šestnáctkovém>_<desítkové tabulce s číslem ID v šestnáctkové>. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním příkazu [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) :
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -82,11 +82,11 @@ Table_name je název tabulky obsahující statistiku, která se má zobrazit. Ta
 
 ## <a name="update-statistics"></a>Aktualizovat statistiku
 
-Jedním z osvědčených postupů je aktualizovat statistiku pro sloupce data každý den, protože se přidávají nová data. Pokaždé, když se do fondu SQL načtou nové řádky, přidají se nová data načítání nebo data transakcí. Tyto doplňky změní distribuci dat a zavedou statistiku.
+Jedním z osvědčených postupů je aktualizovat statistiku pro sloupce data každý den, protože se přidávají nová data. Pokaždé, když se do vyhrazeného fondu SQL načtou nové řádky, přidají se nová data načítání nebo data transakcí. Tyto doplňky změní distribuci dat a zavedou statistiku.
 
 Statistiky ve sloupci země nebo oblasti v tabulce zákazníků nemusí být nikdy potřeba aktualizovat, protože distribuce hodnot se obecně nemění. Za předpokladu, že je rozdělení mezi zákazníky konstantní, přidání nových řádků do varianty tabulky nemění distribuci dat.
 
-Pokud však váš fond SQL obsahuje pouze jednu zemi nebo oblast a data z nové země nebo oblasti budou uložena v datech z více zemí nebo oblastí, pak je třeba aktualizovat statistiku ve sloupci země/oblast.
+Pokud ale vyhrazený fond SQL obsahuje jenom jednu zemi nebo oblast a data z nové země nebo oblasti, která jsou uložená v různých zemích nebo oblastech, budete muset aktualizovat statistiku ve sloupci země/oblast.
 
 V následující části jsou doporučení aktualizující statistiky:
 
@@ -182,13 +182,13 @@ WHERE
     st.[user_created] = 1;
 ```
 
-**Sloupce data** ve fondu SQL například obvykle vyžadují časté aktualizace statistiky. Pokaždé, když se do fondu SQL načtou nové řádky, přidají se nová data načítání nebo data transakcí. Tyto doplňky změní distribuci dat a zavedou statistiku.
+**Sloupce data** ve vyhrazeném fondu SQL například obvykle potřebují časté aktualizace statistiky. Pokaždé, když se do vyhrazeného fondu SQL načtou nové řádky, přidají se nová data načítání nebo data transakcí. Tyto doplňky změní distribuci dat a zavedou statistiku.
 
 V opačném případě nemusí být Statistika u sloupce žen v tabulce zákazníků nikdy potřeba aktualizovat. Za předpokladu, že je rozdělení mezi zákazníky konstantní, přidání nových řádků do varianty tabulky nemění distribuci dat.
 
-Pokud váš fond SQL obsahuje jenom jedno pohlaví a nový požadavek má za následek více pohlaví, budete muset aktualizovat statistiku pro sloupec pohlaví.
+Pokud váš vyhrazený fond SQL obsahuje jenom jedno pohlaví a výsledkem nového požadavku je více pohlaví, budete muset aktualizovat statistiku pro sloupec pohlaví.
 
-Další informace najdete v tématu Obecné pokyny pro [statistiku](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Další informace najdete v tématu Obecné pokyny pro [statistiku](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="implementing-statistics-management"></a>Implementace správy statistik
 
@@ -204,7 +204,7 @@ Následující principy GUID jsou k dispozici pro aktualizaci statistik:
 - Zvažte možnost aktualizace statických distribučních sloupců méně často.
 - Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
 
-Další informace najdete v tématu [odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Další informace najdete v tématu [odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="examples-create-statistics"></a>Příklady: vytváření statistik
 
@@ -214,13 +214,13 @@ Tyto příklady ukazují, jak používat různé možnosti vytváření statisti
 
 Chcete-li vytvořit statistiku pro sloupec, zadejte název objektu statistiky a název sloupce.
 
-Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení je při vytváření statistik v rámci fondu SQL Samples **20%** tabulky.
+Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení je při vytváření statistik vytvořena ukázka **20 procent** tabulky.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-Příklad:
+Například:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -236,7 +236,7 @@ Chcete-li vzorkovat celou tabulku, použijte tuto syntaxi:
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-Příklad:
+Například:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -273,7 +273,7 @@ Můžete také kombinovat možnosti dohromady. Následující příklad vytvoř�
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Úplný odkaz naleznete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Úplný odkaz naleznete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="create-multi-column-statistics"></a>Vytváření statistik více sloupců
 
@@ -282,13 +282,13 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v * \_ kategorii produktu*. Statistiky mezi sloupci se počítají podle * \_ kategorií produktů* a * \_ sub_category produktů*:
+V tomto příkladu je histogram v *\_ kategorii produktu*. Statistiky mezi sloupci se počítají podle *\_ kategorií produktů* a *\_ sub_category produktů*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi * \_ kategorií produktů* a * \_ \_ podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi *\_ kategorií produktů* a *\_ \_ podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
 
@@ -312,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Vytvoření statistiky pro všechny sloupce v databázi pomocí uložené procedury
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>Pomocí uložené procedury můžete vytvořit statistiku pro všechny sloupce ve fondu SQL.
 
-Fond SQL neobsahuje systémovou uloženou proceduru, která odpovídá sp_create_stats v SQL Server. Tato uložená procedura vytvoří objekt statistiky s jedním sloupcem v každém sloupci databáze, který ještě nemá statistiku.
+Vyhrazený fond SQL neobsahuje systémovou uloženou proceduru, která odpovídá sp_create_stats v SQL Server. Tato uložená procedura vytvoří objekt statistiky s jedním sloupcem v každém sloupci ve fondu SQL, který ještě nemá statistiku.
 
-Následující příklad vám pomůže začít s návrhem databáze. Nebojte se, abyste ji přizpůsobili vašim potřebám.
+Následující příklad vám pomůže začít s návrhem fondu SQL. Nebojte se, abyste ji přizpůsobili vašim potřebám.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -437,7 +437,7 @@ K aktualizaci konkrétního objektu statistiky použijte následující syntax:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Příklad:
+Například:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -453,7 +453,7 @@ Jednoduchá metoda aktualizace všech objektů statistiky v tabulce je:
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Příklad:
+Například:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -462,11 +462,11 @@ UPDATE STATISTICS dbo.table1;
 Příkaz Aktualizovat STATISTIKu je snadno použitelný. Stačí si pamatovat, že aktualizuje *všechny* statistiky v tabulce, a proto může probíhat více práce, než je nutné. Pokud výkon není problémem, je to nejjednodušší a nejucelenější způsob, jak zaručit, že statistiky jsou aktuální.
 
 > [!NOTE]
-> Při aktualizaci všech statistik v tabulce provede modul SQL kontrolu vzorkování tabulky pro každý objekt statistiky. Pokud je tabulka velká a má mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky podle potřeby.
+> Při aktualizaci všech statistik v tabulce provede vyhrazený fond SQL kontrolu na vzorové tabulce pro každý objekt statistiky. Pokud je tabulka velká a má mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky podle potřeby.
 
 Implementaci `UPDATE STATISTICS` procedury najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md). Metoda implementace je mírně odlišná od předchozího `CREATE STATISTICS` postupu, ale výsledek je stejný.
 
-Úplnou syntaxi naleznete v tématu [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Úplnou syntaxi naleznete v tématu [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="statistics-metadata"></a>Statistika – metadata
 
@@ -476,24 +476,24 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu | Popis |
+| Zobrazení katalogu | Description |
 |:--- |:--- |
-| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý sloupec. |
-| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý objekt v databázi. |
-| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každé schéma v databázi. |
-| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý objekt statistiky. |
-| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý sloupec v objektu statistiky. Vrátí odkazy zpět na sys. Columns. |
-| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
-| [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý datový typ. |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý sloupec. |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý objekt v databázi. |
+| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každé schéma v databázi. |
+| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý objekt statistiky. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý sloupec v objektu statistiky. Vrátí odkazy zpět na sys. Columns. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý datový typ. |
 
 ### <a name="system-functions-for-statistics"></a>Systémové funkce pro statistiku
 
 Tyto systémové funkce jsou užitečné pro práci s statistikami:
 
-| Systémová funkce | Popis |
+| Systémová funkce | Description |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum poslední aktualizace objektu statistiky |
-| [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Souhrnná úroveň a podrobné informace o distribuci hodnot, které přirozuměl objektům statistiky. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Datum poslední aktualizace objektu statistiky |
+| [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Souhrnná úroveň a podrobné informace o distribuci hodnot, které přirozuměl objektům statistiky. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinovat statistické sloupce a funkce do jednoho zobrazení
 
@@ -546,7 +546,7 @@ Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu st
 Metadata hlavičky informací o statistice. Histogram zobrazí distribuci hodnot v prvním klíčovém sloupci objektu statistiky. Vektor hustoty měří korelaci mezi sloupci.
 
 > [!NOTE]
-> Fond SQL počítá odhady mohutnosti s libovolnými daty v objektu statistiky.
+> Vyhrazený fond SQL vypočítává odhady mohutnosti s libovolnými daty v objektu statistiky.
 
 ### <a name="show-header-density-and-histogram"></a>Zobrazit záhlaví, hustotu a histogram
 
@@ -556,7 +556,7 @@ Tento jednoduchý příklad ukazuje všechny tři části objektu statistiky:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Příklad:
+Například:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -570,7 +570,7 @@ Pokud vás zajímá jenom zobrazení konkrétních částí, použijte `WITH` kl
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-Příklad:
+Například:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
@@ -578,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>Rozdíly DBCC SHOW_STATISTICS ()
 
-Příkaz DBCC SHOW_STATISTICS () je v porovnání s SQL Server striktně implementován ve fondu SQL:
+Příkaz DBCC SHOW_STATISTICS () je v porovnání s SQL Server striktně implementován ve vyhrazeném fondu SQL:
 
 - Nedokumentované funkce se nepodporují.
 - Nelze použít Stats_stream.

@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 54c6245ea5290e2cab0efcd52f2208ba874c0848
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720439"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop
 
@@ -25,13 +25,13 @@ Ovladač Windows Azure Storage Blob nebo [ovladač WASB](https://hadoop.apache.o
 
 ## <a name="the-azure-blob-file-system-driver"></a>Ovladač systému souborů BLOB v Azure
 
-[Rozhraní Azure Data Lake Storage REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) je navrženo tak, aby podporovalo sémantiku systému souborů přes Azure Blob Storage. Vzhledem k tom, že systém Hadoop je navržený tak, aby podporoval stejnou sémantiku, neexistuje žádný požadavek na komplexní mapování v ovladači. Proto je ovladač systému souborů objektů BLOB v Azure (nebo ABFS) pouhým překrytím klienta pro REST API.
+[Rozhraní Azure Data Lake Storage REST](/rest/api/storageservices/data-lake-storage-gen2) je navrženo tak, aby podporovalo sémantiku systému souborů přes Azure Blob Storage. Vzhledem k tom, že systém Hadoop je navržený tak, aby podporoval stejnou sémantiku, neexistuje žádný požadavek na komplexní mapování v ovladači. Proto je ovladač systému souborů objektů BLOB v Azure (nebo ABFS) pouhým překrytím klienta pro REST API.
 
 Existují však některé funkce, které musí ovladač stále provádět:
 
 ### <a name="uri-scheme-to-reference-data"></a>Schéma identifikátoru URI pro referenční data
 
-Ovladač ABFS je v souladu s dalšími implementacemi systému souborů v rámci systému Hadoop a definuje vlastní schéma identifikátoru URI, aby bylo možné prostředky (adresáře a soubory) rozlišit. Schéma identifikátoru URI je popsáno v [části použití Azure Data Lake Storage Gen2 identifikátor URI](./data-lake-storage-introduction-abfs-uri.md). Struktura identifikátoru URI je:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Ovladač ABFS je v souladu s dalšími implementacemi systému souborů v rámci systému Hadoop a definuje vlastní schéma identifikátoru URI, aby bylo možné prostředky (adresáře a soubory) rozlišit. Schéma identifikátoru URI je popsáno v [části použití Azure Data Lake Storage Gen2 identifikátor URI](./data-lake-storage-introduction-abfs-uri.md). Struktura identifikátoru URI je: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 Pomocí výše uvedeného formátu identifikátoru URI se k odkazování na tyto prostředky dají použít standardní nástroje a architektury Hadoop:
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Ovladač ABFS interně překládá prostředky zadané v identifikátoru URI do souborů a adresářů a provádí volání REST API Azure Data Lake Storage s těmito odkazy.
 
-### <a name="authentication"></a>Ověřování uživatelů
+### <a name="authentication"></a>Authentication
 
 Ovladač ABFS podporuje dvě formy ověřování, aby mohla aplikace Hadoop bezpečně přistupovat k prostředkům, které jsou obsaženy v účtu s podporou Data Lake Storage Gen2. Úplné podrobnosti o dostupných schématech ověřování jsou k dispozici v [Azure Storage příručce zabezpečení](security-recommendations.md). Jsou to tyto:
 
@@ -65,5 +65,5 @@ Ovladač ABFS je plně popsán v [oficiální dokumentaci k Hadoop](https://hado
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření clusteru Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
+- [Vytvoření clusteru Azure Databricks](./data-lake-storage-use-databricks-spark.md)
 - [Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md)

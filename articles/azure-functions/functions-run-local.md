@@ -1,16 +1,16 @@
 ---
 title: Práce s Azure Functions Core Tools
-description: Přečtěte si, jak pomocí příkazového řádku nebo terminálu v místním počítači Code a testovat službu Azure Functions, abyste je mohli spustit na Azure Functions.
+description: Naučte se, jak Code a test Azure Functions z příkazového řádku nebo terminálu na místním počítači, než je spustíte v Azure Functions.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505712"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521437"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -37,11 +37,11 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 + **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
 
-Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
+V daném počítači můžete nainstalovat jenom jednu verzi základních nástrojů. Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
+Azure Functions Core Tools v současné době závisí na rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps) k ověřování pomocí účtu Azure. To znamená, že musíte nainstalovat jeden z těchto nástrojů, abyste mohli [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java používá Maven Archetype k vytvoření projektu místní funkce spolu s první funkcí aktivovanou protokolem HTTP. Pro vytvoření projektu Java použijte následující příkaz: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Příklad použití Maven Archetype naleznete v tématu [rychlý Start k příkazovému řádku](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).  
+> Java používá Maven Archetype k vytvoření projektu místní funkce spolu s první funkcí aktivovanou protokolem HTTP. Pro vytvoření projektu Java použijte následující příkaz: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Příklad použití Maven Archetype naleznete v tématu [rychlý Start k příkazovému řádku](./create-first-function-cli-java.md).  
 
 Když zadáte název projektu, vytvoří se a inicializuje nová složka s tímto názvem. V opačném případě se aktuální složka inicializuje.  
 Pokud ve verzi 3. x/2. x spustíte příkaz, musíte zvolit modul runtime pro váš projekt. 
@@ -179,7 +179,7 @@ python
 powershell
 </pre>
 
-Pomocí kláves se šipkami nahoru/dolů vyberte jazyk a potom stiskněte klávesu ENTER. Pokud plánujete vývoj funkcí JavaScriptu nebo TypeScript, zvolte **uzel**a pak vyberte jazyk. TypeScript má [několik dalších požadavků](functions-reference-node.md#typescript). 
+Pomocí kláves se šipkami nahoru/dolů vyberte jazyk a potom stiskněte klávesu ENTER. Pokud plánujete vývoj funkcí JavaScriptu nebo TypeScript, zvolte **uzel** a pak vyberte jazyk. TypeScript má [několik dalších požadavků](functions-reference-node.md#typescript). 
 
 Výstup vypadá jako v následujícím příkladu pro projekt JavaScriptu:
 
@@ -250,31 +250,32 @@ I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možn�
 - V [Azure Portal]vyhledejte a vyberte **účty úložiště**. 
   ![Vyberte účty úložiště z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Vyberte svůj účet úložiště, vyberte **přístupové klíče** v **Nastavení**a pak zkopírujte jednu z hodnot **připojovacího řetězce** .
+  Vyberte svůj účet úložiště, vyberte **přístupové klíče** v **Nastavení** a pak zkopírujte jednu z hodnot **připojovacího řetězce** .
   ![Kopírovat připojovací řetězec z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku**rozbalte své předplatné, rozbalte **účty úložiště**, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
+- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku** rozbalte své předplatné, rozbalte **účty úložiště**, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
 
   ![Kopírovat připojovací řetězec z Průzkumník služby Storage](./media/functions-run-local/storage-explorer.png)
 
-+ Použijte základní nástroje ke stažení připojovacího řetězce z Azure pomocí jednoho z následujících příkazů:
++ Použijte základní nástroje z kořenového adresáře projektu ke stažení připojovacího řetězce z Azure pomocí jednoho z následujících příkazů:
 
   + Stáhnout všechna nastavení z existující aplikace Function App:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + Získání připojovacího řetězce pro konkrétní účet úložiště:
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Pokud jste se ještě přihlásili k Azure, budete vyzváni k tomu.
+    Pokud jste se ještě přihlásili k Azure, budete vyzváni k tomu. Tyto příkazy přepíšou všechna existující nastavení v local.settings.jssouboru. 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Vytvoření funkce
 
-Chcete-li vytvořit funkci, spusťte následující příkaz:
+Pokud chcete vytvořit funkci, spusťte následující příkaz:
 
 ```
 func new
@@ -356,7 +357,7 @@ func start
 ```
 func start
 ```
-Tento příkaz musí být [spuštěn ve virtuálním prostředí](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
+Tento příkaz musí být [spuštěn ve virtuálním prostředí](./create-first-function-cli-python.md).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -504,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů projektu funkce přímo do aplikace Function App prostřednictvím nástroje [zip Deploy](functions-deployment-technologies.md#zip-deploy) a [nasazení vlastního kontejneru Docker](functions-deployment-technologies.md#docker-container). Musíte mít už [vytvořenou aplikaci Function App v předplatném Azure](functions-cli-samples.md#create), do které budete kód nasazovat. Projekty, které vyžadují kompilaci, by měly být sestaveny tak, aby mohly být nasazeny binární soubory.
 
 >[!IMPORTANT]
->Aby bylo možné publikovat do Azure ze základních nástrojů, je nutné mít místně nainstalované rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) .  
+>Aby bylo možné publikovat do Azure ze základních nástrojů, musíte mít místně nainstalované rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps) .  
 
 Složka projektu může obsahovat soubory a adresáře specifické pro konkrétní jazyk, které by neměly být publikovány. Vyloučené položky jsou uvedeny v souboru. funcignore v kořenové složce projektu.     
 
@@ -519,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java používá Maven k publikování místního projektu do Azure. K publikování do Azure použijte následující příkaz: `mvn azure-functions:deploy` . Prostředky Azure se vytvářejí při počátečním nasazení.
 
-Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz používá [vzdálené sestavení](functions-deployment-technologies.md#remote-build) a nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, použijte `--nozip` možnost.
+Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI nebo Azure PowerShell, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz používá [vzdálené sestavení](functions-deployment-technologies.md#remote-build) a nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, použijte `--nozip` možnost.
 
 >[!IMPORTANT]
 > Když vytvoříte aplikaci funkcí v Azure Portal, používá ve výchozím nastavení verzi 3. x modulu runtime funkce. Pokud chcete, aby aplikace Function App používala verzi 1. x modulu runtime, postupujte podle pokynů v části [Spustit ve verzi 1. x](functions-versions.md#creating-1x-apps).
@@ -542,7 +543,7 @@ Následující možnosti publikování jsou podporovány pouze pro verzi 2. x a 
 | **`--nozip`** | Zapne výchozí `Run-From-Package` režim. |
 | **`--build-native-deps`** | Při publikování aplikací funkcí Pythonu přeskočí vygenerování složky. kolaes. |
 | **`--build`**, **`-b`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. Akceptuje: `remote` a `local` . |
-| **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Například: `python3-dev libevent-dev`. |
+| **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Příklad: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorovat ověření před publikováním v některých scénářích. |
 | **`--csx`** | Publikujte projekt skriptu C# (. csx). |
 | **`--no-build`** | Projekt není sestaven během publikování. Pro Python se `pip install` neprovede. |
@@ -573,15 +574,11 @@ Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace
 
 ### <a name="application-insights-integration"></a>Integrace Application Insights
 
-Při vytváření aplikace Function App v Azure by měla být povolená integrace Application Insights. Pokud z nějakého důvodu vaše aplikace Function není připojená k instanci Application Insights, můžete tuto integraci snadno provést v Azure Portal. 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Při vytváření aplikace Function App v Azure by měla být povolená integrace Application Insights. Pokud z nějakého důvodu vaše aplikace Function není připojená k instanci Application Insights, můžete tuto integraci snadno provést v Azure Portal. Další informace najdete v tématu [Povolení integrace Application Insights](configure-monitoring.md#enable-application-insights-integration).
 
 ### <a name="enable-streaming-logs"></a>Povolit streamování protokolů
 
 Proud souborů protokolu generovaných funkcemi můžete zobrazit v relaci příkazového řádku na místním počítači. 
-
-#### <a name="native-streaming-logs"></a>Nativní protokoly streamování
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 

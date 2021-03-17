@@ -1,17 +1,16 @@
 ---
 title: Rozšíří skripty U-SQL pomocí R v Azure Data Lake Analytics
 description: Naučte se spouštět kód R ve skriptech U-SQL pomocí Azure Data Lake Analytics. Vložení kódu jazyka R nebo odkazů ze souborů
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127396"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217996"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozšíří se skripty U-SQL s kódem R v Azure Data Lake Analytics
 
@@ -92,7 +91,7 @@ DECLARE @PartitionCount int = 10;
 
 * Řetězcové a číselné sloupce z jazyka U-SQL jsou převáděny tak, jak jsou mezi R dataframe a U-SQL [podporované typy: `double` , `string` , `bool` , `integer` , `byte` ].
 * `Factor`Datový typ není podporován v U-SQL.
-* `byte[]`musí být serializován jako kódovaný v kódování Base64 `string` .
+* `byte[]` musí být serializován jako kódovaný v kódování Base64 `string` .
 * Řetězce u-SQL je možné převést na faktory v kódu R. po vytvoření vstupního datového rámce U-SQL vytvořte vstupní datový rámec R nebo nastavením parametru pro snížení `stringsAsFactors: true` .
 
 ### <a name="schemas"></a>Schémata
@@ -212,4 +211,4 @@ OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)
+* [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](./data-lake-analytics-u-sql-get-started.md)

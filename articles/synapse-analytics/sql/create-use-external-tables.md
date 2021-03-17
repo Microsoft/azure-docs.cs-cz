@@ -1,6 +1,6 @@
 ---
-title: Vytváření a používání externích tabulek na vyžádání SQL (Preview)
-description: V této části se dozvíte, jak vytvořit a používat externí tabulky v SQL na vyžádání (Preview). Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům v SQL na vyžádání a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL na vyžádání.
+title: Vytváření a používání externích tabulek ve fondu SQL bez serveru
+description: V této části se dozvíte, jak vytvářet a používat externí tabulky ve fondu SQL bez serveru.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,21 +8,21 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206508"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462297"
 ---
-# <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytvoření a použití externích tabulek v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Vytváření a používání externích tabulek pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V této části se dozvíte, jak vytvořit a používat [externí tabulky](develop-tables-external-tables.md) v SQL na vyžádání (Preview). Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům v SQL na vyžádání a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL na vyžádání. Externí tabulky mají přístup ke dvěma typům úložiště:
+V této části se dozvíte, jak vytvářet a používat [externí tabulky](develop-tables-external-tables.md) ve fondu SQL bez serveru. Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům ve fondu SQL bez serveru a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL fondem bez serveru. Externí tabulky mají přístup ke dvěma typům úložiště:
 - Veřejné úložiště, kde uživatelé přistupují k souborům veřejného úložiště.
 - Chráněné úložiště, kde uživatelé přistupují k souborům úložiště pomocí pověření SAS, identity Azure AD nebo spravované identity pracovního prostoru synapse.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je vytvoření databáze, ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří následující objekty, které jsou použity v této ukázce:
 - PŘIHLAŠOVACÍ údaje v oboru databáze `sqlondemand` , které umožňují přístup k `https://sqlondemandstorage.blob.core.windows.net` účtu úložiště Azure Protected SAS.
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak uložit výsledky dotazu do úložiště, najdete v tématu úložiště [výsledků dotazu úložiště](../sql/create-external-table-as-select.md).
+Informace o tom, jak uložit výsledky dotazu do úložiště, najdete v článku [uložení výsledků dotazu](../sql/create-external-table-as-select.md) do úložiště.

@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu pomocí Azure CLI'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí Azure CLI.
-ms.date: 06/02/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920236"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Rychlý Start: definování a přiřazení Azure Blueprint pomocí Azure CLI
 
@@ -16,16 +16,17 @@ Naučíte se vytvářet a přiřazovat podrobné plány a umožňují definici b
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+- Pokud jste Azure modrotisky nepoužívali dřív, zaregistrujte poskytovatele prostředků prostřednictvím Azure CLI pomocí `az provider register --namespace Microsoft.Blueprint` .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-blueprint-extension"></a>Přidat rozšíření podrobného plánu
 
 Aby bylo možné povolit Azure CLI ke správě definic a přiřazení podrobného plánu, je nutné rozšíření přidat.
-Toto rozšíření funguje bez ohledu na to rozhraní příkazového řádku Azure je možné, včetně [bash ve Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (samostatné a uvnitř portálu), [image Dockeru rozhraní příkazového řádku Azure](https://hub.docker.com/r/microsoft/azure-cli/), nebo lokálně nainstalované.
+Toto rozšíření funguje bez ohledu na to rozhraní příkazového řádku Azure je možné, včetně [bash ve Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (samostatné a uvnitř portálu), [image Dockeru rozhraní příkazového řádku Azure](https://hub.docker.com/_/microsoft-azure-cli), nebo lokálně nainstalované.
 
-1. Ověřte, že je nainstalované nejnovější rozhraní příkazového řádku Azure (aspoň **2.0.76**). Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Ověřte, že je nainstalované nejnovější rozhraní příkazového řádku Azure (aspoň **2.0.76**). Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows).
 
 1. V prostředí Azure CLI podle vašeho výběru ho importujete pomocí následujícího příkazu:
 
@@ -116,9 +117,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
      > [!NOTE]
      > Při importu definic podrobných plánů použijte název souboru _blueprint.js_ .
-     > Tento název souboru se používá při volání metody [AZ detail import](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import).
+     > Tento název souboru se používá při volání metody [AZ detail import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import).
 
-     Ve výchozím nastavení je ve výchozím předplatném vytvořen objekt podrobného plánu. Chcete-li určit skupinu pro správu, použijte skupinu **pro správu**parametrů. K zadání předplatného použijte parametr **Subscription**.
+     Ve výchozím nastavení je ve výchozím předplatném vytvořen objekt podrobného plánu. Chcete-li určit skupinu pro správu, použijte skupinu **pro správu** parametrů. K zadání předplatného použijte parametr **Subscription**.
 
 1. Přidejte do definice skupinu prostředků pro artefakty úložiště.
 
@@ -166,6 +167,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > Při použití `az blueprint` v Macu nahraďte hodnotou `\` `/` parametru, která zahrnuje cestu. V tomto případě se hodnota pro **parametry** přestanou `artifacts/policyTags.json` .
+
 1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
    - Soubor JSON – artifacts\policyStorageTags.jsna
@@ -192,6 +196,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > Při použití `az blueprint` v Macu nahraďte hodnotou `\` `/` parametru, která zahrnuje cestu. V tomto případě se hodnota pro **parametry** přestanou `artifacts/policyStorageTags.json` .
 
 1. Přidejte pod skupinu prostředků šablonu. Parametr **šablony** pro šablonu ARM obsahuje normální komponenty JSON šablony. Šablona také znovu používá parametry podrobného plánu **storageAccountType**, **tagName** a **tagValue**, které se šabloně předávají. Parametry podrobného plánu jsou k dispozici pro šablonu pomocí **parametrů** parametrů a uvnitř šablony JSON, kterou používá pár klíč-hodnota k vložení hodnoty. Název parametru podrobného plánu a šablony může být stejný.
 
@@ -275,6 +282,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > Při použití `az blueprint` v Macu nahraďte hodnotou `\` `/` parametru, která zahrnuje cestu. V tomto případě se hodnota pro **šablonu** přestanou `artifacts/templateStorage.json` a **parametry** se budou nacházet `artifacts/templateStorageParams.json` .
 
 1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu se používá předdefinovaná role _Owner_ s identifikátorem GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` .
 

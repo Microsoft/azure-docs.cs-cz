@@ -6,23 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059984"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670694"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
 V tomto článku najdete pokyny k použití serveru historie rozšířených Apache Spark k ladění a diagnostice dokončených a spuštěných aplikací Spark.
 
-Rozšíření obsahuje kartu data, kartu grafu a kartu Diagnostika. pomocí karty **data** ověřte vstupní a výstupní data úlohy Spark. Na kartě **graf** se zobrazuje tok dat a přehrávání grafu úloh. Na kartě **Diagnostika** se zobrazuje **zešikmení dat**, **zkosení času**a **Analýza využití prováděcího modulu**.
+Rozšíření obsahuje kartu data, kartu grafu a kartu Diagnostika. Na kartě **data** můžete kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** se zobrazuje tok dat a přehrávání grafu úloh. Na kartě **Diagnostika** se zobrazuje  **zešikmení dat**, **zkosení času** a **Analýza využití prováděcího modulu**.
 
-## <a name="access-the-apache-spark-history-server"></a>Přístup k serveru historie Apache Spark
+## <a name="access-the-apache-spark-history-server"></a>Přístup k serveru historie Apache Sparku
 
 Server historie Apache Spark je webové uživatelské rozhraní pro dokončené a běžící aplikace Spark. Z analýzy Azure synapse můžete otevřít webové rozhraní serveru historie Apache Spark.
 
@@ -30,15 +30,15 @@ Server historie Apache Spark je webové uživatelské rozhraní pro dokončené 
 
 1. Otevřete [Azure synapse Analytics](https://web.azuresynapse.net/).
 
-2. Klikněte na **monitorování**a pak vyberte **Apache Spark aplikace**.
+2. Vyberte **monitorování** a pak vyberte **Apache Spark aplikace**.
 
-    ![Klikněte na monitorování a pak vyberte aplikace Spark.](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![Vyberte monitorování a pak vyberte aplikace Spark.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Vyberte aplikaci a otevřete **dotaz protokolu** kliknutím na něj.
+3. Vyberte aplikaci a pak otevřete **dotaz protokolu** tak, že ho vyberete.
 
     ![Otevřete okno dotazu protokolu.](./media/apache-spark-history-server/open-application-window.png)
 
-4. Vyberte možnost **Server historie Spark**a pak se zobrazí webové uživatelské rozhraní serveru historie Spark.
+4. Vyberte možnost **Server historie Spark** a pak se zobrazí webové uživatelské rozhraní serveru historie Spark.
 
     ![Otevřete Server historie Spark.](./media/apache-spark-history-server/open-spark-history-server.png)
 
@@ -46,17 +46,17 @@ Server historie Apache Spark je webové uživatelské rozhraní pro dokončené 
 
 1. Z vašeho poznámkového bloku Azure synapse Studio vyberte z výstupní buňky spuštění úlohy možnost **Server historie Spark** nebo z panelu stav na konci dokumentu poznámkového bloku. Vyberte **Podrobnosti o relaci**.
 
-   ![Spustit server historie Sparku](./media/apache-spark-history-server/launch-history-server2.png "Spustit server historie Sparku")
+   ![Spustit historii Spark serveru 1](./media/apache-spark-history-server/launch-history-server2.png "Spustit server historie Sparku")
 
 2. Z panelu snímku vyberte možnost **Server historie Spark** .
 
-   ![Spustit server historie Sparku](./media/apache-spark-history-server/launch-history-server.png "Spustit server historie Sparku")
+   ![Spustit historii Spark serveru 2](./media/apache-spark-history-server/launch-history-server.png "Spustit server historie Sparku")
 
 ## <a name="explore-the-data-tab-in-spark-history-server"></a>Prozkoumat kartu data na serveru historie Spark
 
 Vyberte ID úlohy pro úlohu, kterou chcete zobrazit. Pak v nabídce Nástroje vyberte **data** , aby se zobrazila data. V této části se dozvíte, jak provádět různé úkoly na kartě data.
 
-* Zkontrolujte **vstupy**a **výstupy**a **operace s tabulkami** , a to tak, že karty vyberete samostatně.
+* Zkontrolujte **vstupy** a **výstupy** a **operace s tabulkami** , a to tak, že karty vyberete samostatně.
 
     ![Data pro karty aplikace Spark](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
@@ -76,7 +76,7 @@ Vyberte ID úlohy pro úlohu, kterou chcete zobrazit. Pak v nabídce Nástroje v
 
     ![Data pro tabulku aplikace Spark](./media/apache-spark-history-server/apache-spark-data-table.png)
 
-* Výběrem **částečného stahování**Stáhněte jeden soubor. Vybraný soubor je stažen do místní. Pokud soubor už neexistuje, zobrazí se nová karta s chybovou zprávou.
+* Výběrem **částečného stahování** Stáhněte jeden soubor. Vybraný soubor je stažen do místní. Pokud soubor už neexistuje, zobrazí se nová karta s chybovou zprávou.
 
     ![Data pro řádek pro stažení aplikace Spark](./media/apache-spark-history-server/sparkui-data-download-row.png)
 
@@ -120,7 +120,7 @@ Uzel grafu zobrazuje barvy zobrazené v legendě heatmapu.
 
 Pokud chcete úlohu přehrát, vyberte **přehrávání**. Kdykoli můžete zastavit výběr **zastavit** . Barvy úlohy při přehrávání zobrazují různé stavy:
 
-|Color|Význam|
+|Barva|Význam|
 |-|-|
 |Green|Úspěch: úloha se úspěšně dokončila.|
 |Oranžový|Opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
@@ -190,9 +190,9 @@ Sdělte nám svůj názor s problémy tím, že si vyberete poslat **svůj názo
 
 ## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>Prozkoumat kartu Diagnostika v serveru historie Apache Spark
 
-Chcete-li získat přístup na kartu diagnostika, vyberte ID úlohy. Pak v nabídce Nástroje vyberte **diagnóza** a získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času**a **analýzy využití prováděcího modulu**.
+Chcete-li získat přístup na kartu diagnostika, vyberte ID úlohy. Pak v nabídce Nástroje vyberte **diagnóza** a získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času** a **analýzy využití prováděcího modulu**.
 
-Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data**, **Zkosit**a **analyzovat využití prováděcích** modulů.
+Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data**, **Zkosit** a **analyzovat využití prováděcích** modulů.
 
 ![SparkUI karta pro zkosení dat diagnostiky](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -200,7 +200,7 @@ Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data**,
 
 Když vyberete kartu **zkosení dat** , zobrazí se na základě zadaných parametrů odpovídající šikmé úkoly.
 
-* **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zkosení dat. Výchozí pravidlo je: čtení dat úkolu je více než třikrát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro zkreslené úkoly, můžete zvolit parametry, oddíly **zkosených fází** a **zkosení znaků** se odpovídajícím způsobem aktualizují.
+* **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zkosení dat. Výchozí pravidlo je: čtení dat úkolu je více než třikrát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro zkreslené úkoly, můžete zvolit parametry. Oddíly **nakloněné fáze** a **zkosení znaků** se odpovídajícím způsobem aktualizují.
 
 * **Zkosený stupeň** – druhý oddíl zobrazuje fáze, které mají úlohy, které splňují kritéria uvedená výše. Pokud je ve fázi více než jeden zkosený úkol, tabulka zkosených fází zobrazí pouze nejvýraznější úlohu (například největší data pro zkosení dat).
 
@@ -216,7 +216,7 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 
 * **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zešikmení času. Výchozí kritéria pro detekci časového zkosení jsou: doba provádění úlohy je větší než tři časy doby spuštění a doba provádění úlohy je větší než 30 sekund. Parametry můžete změnit podle svých potřeb. Graf **zkosených fází** a **zkosení** zobrazuje odpovídající informace o fázích a úlohách stejně jako karta pro **zkosení dat** výše.
 
-* Vyberte možnost **časové zkosení**a následně filtrovaný výsledek se zobrazí v části **zkosený fáze** podle parametrů nastavených v oddílu **určení parametrů**. Vyberte jednu položku v části **šikmá fáze** . odpovídající graf je koncept v section3 a podrobnosti úlohy se zobrazí v pravém dolním panelu.
+* Vyberte možnost **časové zkosení** a následně filtrovaný výsledek se zobrazí v části **zkosený fáze** podle parametrů nastavených v oddílu **určení parametrů**. Vyberte jednu položku v části **šikmá fáze** . odpovídající graf je koncept v section3 a podrobnosti úlohy se zobrazí v pravém dolním panelu.
 
     ![oddíl asymetrie doby diagnostiky sparkui](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -224,7 +224,7 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 
 Graf využití vykonavatele vizualizuje stav přidělení a spuštění prováděcího modulu úlohy Spark.  
 
-1. Vyberte možnost **Analýza využití prováděcího modulu**, pak čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích**modulů, **spuštěných**prováděcích modulů, **nečinných prováděcích**modulů a **maximálního počtu instancí prováděcí** V souvislosti s přidělenými prováděcími moduly se každý "vykonavatel" přidaný "nebo" vykonavatel "odebírá" nebo snižuje přidělené prováděcí moduly. Pro lepší porovnání můžete zaškrtnout "Časová osa události" na kartě úlohy.
+1. Vyberte možnost **Analýza využití prováděcího modulu**, pak čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích** modulů, **spuštěných** prováděcích modulů, **nečinných prováděcích** modulů a **maximálního počtu instancí prováděcí** V případě přidělených prováděcích modulů se každý "vykonavatel" přidaný "nebo" vykonavatel "odebírá" nebo snižuje přidělené prováděcí moduly. Pro lepší porovnání můžete zaškrtnout "Časová osa události" na kartě úlohy.
 
    ![karta prováděcích modulů diagnostiky sparkui](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -234,10 +234,10 @@ Graf využití vykonavatele vizualizuje stav přidělení a spuštění provád�
 
 ## <a name="known-issues"></a>Známé problémy
 
-Vstupní a výstupní data využívající odolné distribuované datové sady (RDD) se nezobrazuje na kartě data.
+Vstupní a výstupní data s využitím odolných datových sad (RDD) se na kartě data nezobrazují.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark)
 

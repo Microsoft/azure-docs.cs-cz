@@ -1,19 +1,17 @@
 ---
 title: 'Architektura: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 519dc53f6373ae1a9c8853d3fa90d137e9fa934b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077894"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435405"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
 
@@ -32,20 +30,20 @@ Clustery Azure HDInsight jsou navržené pro konkrétní typ výpočetního vyu�
 |IoT/streamování|Kafka, vyplavení, Spark|
 |Zpracování transakcí NoSQL|HBase|
 |Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interaktivní dotaz|
-|Vědecké zpracování dat|Služby ML, Spark|
+|Datové vědy|Služby ML, Spark|
 
 V následující tabulce jsou uvedeny různé metody, které lze použít k vytvoření clusteru HDInsight.
 
-|Nástroj|Založené na prohlížeči|Příkazový řádek|Rozhraní REST API|Sada SDK|
+|Nástroj|Založené na prohlížeči|Příkazový řádek|REST API|Sada SDK|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
-|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|×|×|×|×|
 |[Rozhraní příkazového řádku Azure (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||×|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||×|||
-|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||×|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||×|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||×|
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||×|×||
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight)||||×|
+|[Python SDK](/python/api/overview/azure/hdinsight)||||×|
+|[Java SDK](/java/api/overview/azure/hdinsight)||||×|
 |[Šablony Azure Resource Manageru](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||×|||
 
 Další informace najdete v článku [typy clusterů ve službě HDInsight](../hadoop/apache-hadoop-introduction.md).
@@ -107,7 +105,7 @@ Mezi osvědčené postupy metastore Hive HDInsight patří následující:
 
 ## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 
-- Zvažte použití clusteru LLAP pro interaktivní dotazy podregistru s vyšší dobou odezvy [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)   je nová funkce v podregistru 2,0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP vydává dotazy na podregistr mnohem rychleji, až do [26x rychleji než v registru 1. x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Zvažte použití clusteru LLAP pro interaktivní dotazy podregistru s vyšší dobou odezvy [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) je nová funkce v podregistru 2,0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP vydává dotazy na podregistr mnohem rychleji, až do [26x rychleji než v registru 1. x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Zvažte použití úloh Spark místo úloh podregistru.
 - Zvažte nahrazení dotazů založených na Impala pomocí dotazů LLAP.
 - Zvažte nahrazení úloh MapReduce pomocí úloh Spark.

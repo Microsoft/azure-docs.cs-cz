@@ -12,18 +12,19 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
-ms.openlocfilehash: 17224e859dce99a20cd51c2fe9024759c5239c03
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 63fab50f991a15a38d18dead53d268abca79c811
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037231"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231859"
 ---
 # <a name="peer-two-virtual-networks"></a>Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 
 Tento skript vytvoří a spojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
 
-V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,6 +55,6 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro sítě najdete v [dokumentaci se základními informacemi k sítím Azure](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

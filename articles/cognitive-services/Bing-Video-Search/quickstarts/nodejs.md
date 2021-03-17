@@ -10,21 +10,26 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: e2e423bd149c0d213872d00b10800dec5a8e96e9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408097"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353863"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Node.js
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání videí. Tato jednoduchá aplikace JavaScriptu pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď JSON. I když je tato aplikace napsaná v JavaScriptu a používá Node.js, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. 
 
 Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) s dalším ošetřením chyb a poznámkami ke kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/).
 
@@ -213,6 +218,6 @@ let request_params = {
 > [!div class="nextstepaction"]
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

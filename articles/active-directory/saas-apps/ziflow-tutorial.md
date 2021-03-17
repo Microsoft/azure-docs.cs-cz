@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a9e2298b6707304df96a2e954015459534abfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546058"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Kurz: Azure Active Directory integrace s Ziflow
 
@@ -27,10 +27,10 @@ Integrace Ziflow s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Ziflow (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Ziflow potřebujete následující položky:
 
@@ -61,19 +61,19 @@ Pokud chcete nakonfigurovat integraci Ziflow do služby Azure AD, musíte přida
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Ziflow**, vyberte **Ziflow** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Ziflow** , vyberte **Ziflow** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Ziflow v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Ziflow na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Ziflow na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Ziflow.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Ziflow, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Ziflow](#configure-ziflow-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Ziflow](#configure-ziflow-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření Ziflow Test User](#create-ziflow-test-user)** – pro Britta Simon v Ziflow, který je propojený s reprezentací uživatele Azure AD.
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ziflow, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Ziflow** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Ziflow** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ziflow, 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ziflow, 
     > [!NOTE]
     > Předchozí hodnoty nejsou reálné. V identifikátoru aktualizujete jedinečnou hodnotu ID a adresu URL pro přihlášení s skutečnou hodnotou, která je vysvětlena dále v tomto kurzu.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -122,15 +122,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ziflow, 
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-ziflow-single-sign-on"></a>Konfigurace jednotného přihlašování Ziflow
+### <a name="configure-ziflow-single-sign-on"></a>Nakonfigurovat Ziflow jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k Ziflow jako správce zabezpečení.
 
-2. V pravém horním rohu klikněte na miniatura a pak klikněte na **Spravovat účet**.
+2. V pravém horním rohu klikněte na miniatura a pak klikněte na **Spravovat účet** .
 
     ![Správa konfigurace Ziflow](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-3. V levém horním rohu klikněte na **jednotné přihlašování**.
+3. V levém horním rohu klikněte na **jednotné přihlašování** .
 
     ![Přihlašovací znak konfigurace Ziflow](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
@@ -138,13 +138,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ziflow, 
 
     ![Konfigurace Ziflow – Single](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
-    a. Jako **SAML 2.0**vyberte **typ** .
+    a. Jako **SAML 2.0** vyberte **typ** .
 
-    b. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **přihlašovací adresa URL** , kterou jste zkopírovali z Azure Portal.
 
-    c. Nahrajte do **podpisového certifikátu x509**certifikát s kódováním base-64, který jste stáhli z Azure Portal.
+    c. Nahrajte do **podpisového certifikátu x509** certifikát s kódováním base-64, který jste stáhli z Azure Portal.
 
-    d. Do textového pole **Adresa URL** pro odhlášení vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
+    d. Do textového pole **Adresa URL** pro odhlášení vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
     e. V části **nastavení konfigurace pro poskytovatele identifikátorů** zkopírujte zvýrazněnou hodnotu jedinečného ID a přidejte ji s identifikátorem a přihlašovací adresou URL v **základní konfiguraci SAML** na Azure Portal.
 
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ziflow, 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -164,27 +164,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Ziflow.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Ziflow**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **Ziflow** .
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Ziflow**.
+2. V seznamu aplikace vyberte **Ziflow** .
 
     ![Odkaz Ziflow v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -210,13 +210,13 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
     ![Ziflow osoby konfigurace](./media/ziflow-tutorial/tutorial_ziflow_people.png)
 
-3. Klikněte na **Přidat** a pak klikněte na **Přidat uživatele**.
+3. Klikněte na **Přidat** a pak klikněte na **Přidat uživatele** .
 
-    ![Přidání uživatele do konfigurace Ziflow](./media/ziflow-tutorial/tutorial_ziflow_add.png)
+    ![Snímek obrazovky se zobrazí vybraná možnost Přidat uživatele.](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
 4. V místní nabídce **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidání uživatele do konfigurace Ziflow](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
     a. Do textového pole **e-mailu** zadejte e-maily uživatele jako brittasimon@contoso.com .
 
@@ -226,7 +226,7 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
     d. Vyberte svoji Ziflow roli.
 
-    e. Klikněte na **Přidat 1 uživatele**.
+    e. Klikněte na **Přidat 1 uživatele** .
 
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz k potvrzení jeho účtu předtím, než se aktivuje.
@@ -235,13 +235,12 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Ziflow, měli byste se automaticky přihlásit k Ziflow, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Ziflow, měli byste se automaticky přihlásit k Ziflow, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

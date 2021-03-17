@@ -1,6 +1,6 @@
 ---
-title: Zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Microsoft Docs
-description: Po nastavení všech prostředků pomocí části 1 tohoto kurzu přidejte možnost směrovat zprávy do Azure Stream Analytics a zobrazit výsledky v PowerBI.
+title: Kurz – zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Microsoft Docs
+description: Kurz – po nastavení všech prostředků v části 1 tohoto kurzu přidejte možnost směrovat zprávy do Azure Stream Analytics a zobrazit výsledky v Power BI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: f441a1cf97c069c4755b436bbb8cb9268b469eb3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73890393"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199743"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
 
@@ -48,7 +48,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    **Umístění:** Použijte vaše umístění. Tento kurz používá **USA – západ**.
 
-   **Log Analytics:** Tento přepínač by měl být vypnutý.
+   **Povolit Log Analytics**: Tento přepínač by měl být vypnutý.
 
    ![Obrazovka vytvoření aplikace logiky](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -82,7 +82,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    ![Možnosti Office 365](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Přihlaste se ke svému účtu Office 365 a nastavte připojení. Pokud vyprší časový limit, zkuste to znovu. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
+8. Přihlaste se ke svému pracovnímu nebo školnímu účtu a nastavte připojení. Pokud vyprší časový limit, zkuste to znovu. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
 
    Pokud chcete zobrazit obsah zprávy, kterou můžete zahrnout, vyberte **Přidat dynamický obsah** . Vyberte **Obsah** – příchozí zpráva bude zahrnuta do e-mailu.
 
@@ -96,7 +96,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="create-the-stream-analytics-job"></a>Vytvoření úlohy služby Stream Analytics
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **Internet věcí** > **Stream Analytics úlohu**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohu**.
 
 2. Zadejte o úloze následující informace.
 
@@ -116,7 +116,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **topologie úlohy**vyberte **vstupy**.
+1. V části **topologie úlohy** vyberte **vstupy**.
 
 2. V podokně **vstupy** vyberte **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
@@ -142,9 +142,9 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **topologie úlohy**vyberte **výstupy**.
+1. V části **topologie úlohy** vyberte **výstupy**.
 
-2. V podokně **výstupy** vyberte **Přidat**a pak vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
+2. V podokně **výstupy** vyberte **Přidat** a pak vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
 
    **Alias pro výstup:** Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
 
@@ -152,9 +152,11 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    **Název tabulky:** Název tabulky, kterou chcete v Power BI použít. Tento kurz používá **contosotable**.
 
+  **Režim ověřování**: vyberte režim, který se má použít.
+
    Pro zbývající pole můžete použít výchozí hodnoty.
 
-3. Vyberte **autorizovat**a přihlaste se ke svému účtu Power BI. (Může to trvat více než jeden pokus).
+3. Vyberte **autorizovat** a přihlaste se ke svému účtu Power BI. (Může to trvat více než jeden pokus).
 
    ![Nastavte výstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
@@ -162,7 +164,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **Topologie úlohy** vyberte **Dotaz**.
+1. V části **topologie úlohy** vyberte možnost **dotaz**.
 
 2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy. Tento kurz používá **contosoinputs**.
 
@@ -176,7 +178,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V Stream Analytics úlohy vyberte **Spustit** > **nyní** > **.** Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V Stream Analytics úlohy vyberte **Spustit**  >  **nyní**  >  . Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 K vytvoření sestavy Power BI potřebujete data, takže Power BI je potřeba po vytvoření zařízení a spuštění aplikace simulace zařízení nastavit.
 
@@ -218,7 +220,7 @@ Pokud je všechno správně nastavené, v tomto okamžiku byste měli získat n�
 
 2. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
-    Vyberte účet úložiště, vyberte **kontejnery**a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
+    Vyberte účet úložiště, vyberte **kontejnery** a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
 
    ![Soubory výsledků v úložišti](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -238,7 +240,7 @@ Teď, když je aplikace pořád spuštěná, nastavte vizualizaci Power BI, abys
 
    Měli byste vidět datovou sadu určenou při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **contosodataset**. (Zobrazení datové sady může na začátku 5 až 10 minut trvat.)
 
-4. V části **Akce**vyberte první ikonu pro vytvoření sestavy.
+4. V části **Akce** vyberte první ikonu pro vytvoření sestavy.
 
    ![Power BI pracovní prostor s zvýrazněnými akcemi a ikonou sestavy](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
@@ -280,7 +282,7 @@ Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přej
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup`byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az-group-delete). `$resourceGroup` byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +290,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Vyčištění prostředků pomocí PowerShellu
 
-Pokud chcete odebrat skupinu prostředků, použijte příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) . `$resourceGroup`byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
+Pokud chcete odebrat skupinu prostředků, použijte příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . `$resourceGroup` byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

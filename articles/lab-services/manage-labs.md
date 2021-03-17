@@ -4,11 +4,11 @@ description: Naučte se zobrazit všechny laboratoře v účtu testovacího pros
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993614"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Správa testovacích prostředí v účtu testovacího prostředí
 V tomto článku se dozvíte, jak může vlastník nebo správce účtu testovacího prostředí Zobrazit všechny laboratoře v účtu testovacího prostředí a odstranit testovací prostředí v účtu testovacího prostředí. 

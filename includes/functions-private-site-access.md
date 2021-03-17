@@ -4,19 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c9679f3d66d58c7a6c847b54c84438c979ecd39
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648818"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936854"
 ---
-Přístup k soukromému webu znamená, že vaše aplikace bude přístupná jenom z privátní sítě, jako je třeba virtuální síť Azure.
+Služba [Azure Private Endpoint](../articles/private-link/private-endpoint-overview.md) je síťové rozhraní, které umožňuje soukromé a bezpečné připojení ke službě, která používá technologii Azure Private Link.  Privátní koncový bod používá privátní IP adresu vaší virtuální sítě a tím vlastně přináší službu do vaší virtuální sítě.
 
-* Přístup k privátní lokalitě je k dispozici v plánech [Premium](../articles/azure-functions/functions-premium-plan.md), [Spotřeba](../articles/azure-functions/functions-scale.md#consumption-plan)a [App Service](../articles/azure-functions/functions-scale.md#app-service-plan) , když jsou nakonfigurované koncové body služby.
-    * Koncové body služby je možné konfigurovat pro jednotlivé aplikace v části **funkce platformy**  >  **sítě**  >  **Konfigurace omezení přístupu**  >  **Přidat pravidlo**. Virtuální sítě se teď dají vybrat jako typ pravidla.
-    * Další informace najdete v tématu [koncové body služby virtuální sítě](../articles/virtual-network/virtual-network-service-endpoints-overview.md).
-    * Mějte na paměti, že u koncových bodů služby má vaše funkce stále plný odchozí přístup k Internetu, a to i s nakonfigurovanou integrací virtuální sítě.
-* Přístup k privátní lokalitě je také k dispozici v rámci App Service Environment, který je nakonfigurován s interním nástrojem pro vyrovnávání zatížení (interního nástroje). Další informace najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../articles/app-service/environment/create-ilb-ase.md).
+Pro své funkce hostované v plánech [Premium](../articles/azure-functions/functions-premium-plan.md) a [App Service](../articles/azure-functions/dedicated-plan.md) můžete použít soukromý koncový bod.
 
-Informace o tom, jak nastavit přístup k privátní lokalitě, najdete v tématu věnovaném [vytvoření Azure Functions přístupu k privátní lokalitě](../articles/azure-functions/functions-create-private-site-access.md).
+Když vytváříte příchozí připojení privátního koncového bodu pro funkce, budete k překladu privátní adresy potřebovat záznam DNS.  Ve výchozím nastavení se při vytváření privátního koncového bodu pomocí Azure Portal vytvoří privátní záznam DNS.
+
+Další informace najdete v tématu [použití privátních koncových bodů pro Web Apps](../articles/app-service/networking/private-endpoint.md).

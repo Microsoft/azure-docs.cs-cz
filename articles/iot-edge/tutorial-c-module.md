@@ -2,23 +2,25 @@
 title: Kurz vývoj modulu C pro Linux-Azure IoT Edge | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem jazyka C a jak ho nasadit na zařízení se systémem Linux se spuštěným IoT Edge
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: acedf0c5437ce0b4f1106cac4d1878c7a49e8a36
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064838"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463319"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení se systémem Linux
+# <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Kurz: vývoj modulu C IoT Edge s využitím kontejnerů Linux
 
-Pomocí Visual Studio Code můžete vyvíjet kód v jazyce C a nasazovat ho do zařízení se systémem Linux se spuštěným Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Pomocí Visual Studio Code můžete vyvinout kód v jazyce C a nasadit ho do zařízení se systémem Azure IoT Edge.
 
 Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. V tomto kurzu se naučíte:
 
@@ -33,24 +35,22 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Obor řešení
+## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v jazyce **C** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. Pokud vyvíjíte moduly pro zařízení s Windows, použijte místo toho [vývoj modulu C IoT Edge pro zařízení s Windows](tutorial-c-module-windows.md) .
+Tento kurz ukazuje, jak vytvořit modul v jazyce **C** pomocí **Visual Studio Code** a jak ho nasadit do IoT Edgeho zařízení. Pokud vyvíjíte moduly pomocí kontejnerů Windows, použijte místo toho [vývoj modulu C IoT Edge pomocí kontejnerů Windows](tutorial-c-module-windows.md) .
 
-Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů jazyka C do systému Linux:
+Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů C pomocí kontejnerů Linux:
 
 | C | Visual Studio Code | Visual Studio |
 | - | ------------------ | ------------- |
 | **Linux AMD64** | ![Použití VS Code pro moduly jazyka C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![Použití VS Code pro moduly jazyka C v systému Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v ARM32 pro Linux](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Požadavky
-
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
-* Registr kontejneru, například [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
+* Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
 
@@ -98,7 +98,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge** nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 
@@ -296,7 +296,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
 
 V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do CModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Kliknutím na **Zobrazit**  >  **terminál**otevřete vs Code terminálu.
+1. Kliknutím na **Zobrazit**  >  **terminál** otevřete vs Code terminálu.
 
 2. Přihlaste se k Docker zadáním následujícího příkazu v terminálu. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
 
@@ -344,7 +344,7 @@ V manifestu nasazení jsme použili vláken Module CModule, které nastaví prah
 
 1. V Visual Studio Code rozbalte podrobnosti pod zařízením IoT Edge a podívejte se na běžící moduly.
 
-2. Klikněte pravým tlačítkem na **CModule** a vyberte **Upravit modul s dvojitou**čárkou.
+2. Klikněte pravým tlačítkem na **CModule** a vyberte **Upravit modul s dvojitou** čárkou.
 
 3. V požadovaných vlastnostech vyhledejte **TemperatureThreshold** . Změňte jeho hodnotu na novou teplotu 5 stupňů na 10 stupňů vyšší než při nejnovější hlášené teplotě.
 
@@ -364,7 +364,7 @@ V opačném případě můžete odstranit místní konfigurace a prostředky Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). Příklady modulů IoT Edge, včetně simulovaného modulu teploty, najdete v tématu ukázky [IoT Edge modulů](https://github.com/Azure/iotedge/tree/master/edge-modules) a [ukázky sady IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples).
+V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge.
 
 V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
 

@@ -1,24 +1,24 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úroveň úderu DoD. 5
-description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovně dopadu DoD. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 06/30/2020
+description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovně dopadu DoD. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 01f786684e5f8d73f57eb9f4741593c01fe1c8d4
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921312"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034777"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Mapování ovládacího prvku pro vzorek dopadu na 5. plán na úrovni účinku
 
-Následující článek podrobně popisuje, jak má oddělení Azure modrotisky v rámci podrobného plánu o dopadu ochrany 5 (DoD IL5) na základě kontrolního plánu úrovně účinku DoD. 5. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
+Následující článek podrobně popisuje, jak má oddělení Azure modrotisky v rámci podrobného plánu o dopadu ochrany 5 (DoD IL5) na základě kontrolního plánu úrovně účinku DoD. 5. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
+Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
 
-Následující mapování jsou ovládací prvky **úrovně dopadu dod. 5** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ** \[ ukázkovou iniciativu \] úrovně dopadu dod. 5** .
+Následující mapování jsou ovládací prvky **úrovně dopadu dod. 5** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[ ukázkovou iniciativu \] úrovně dopadu dod. 5** .
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit.
-> Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>Správa účtů AC-2
 
@@ -30,9 +30,9 @@ Tento podrobný plán vám pomůže zkontrolovat účty, které nemusí být v r
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
 
-## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Schémata založená na rolích
+## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Role-Based schémata
 
-Azure implementuje [řízení přístupu na základě role Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) , které vám pomůžou se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL a Service Fabric. Ověřování pomocí Azure Active Directory umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. Tento podrobný plán navíc přiřadí definici Azure Policy pro audit používání vlastních pravidel RBAC. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám.
+Azure implementuje [řízení přístupu na základě role Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) , které vám pomůžou se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL a Service Fabric. Ověřování pomocí Azure Active Directory umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. Tento podrobný plán navíc přiřadí definici Azure Policy pro audit používání vlastních pravidel služby Azure RBAC. Princip implementace vlastních pravidel služby Azure RBAC vám může pomáhat ověřit potřebnou a správnou implementaci, protože vlastní pravidla služby Azure RBAC jsou náchylná k chybám.
 
 - Pro SQL servery by se měl zřídit správce Azure Active Directory.
 - Auditovat využití vlastních pravidel RBAC
@@ -145,7 +145,7 @@ Tyto definice zásad také auditují konfiguraci diagnostických protokolů a po
 - V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 
-## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>Generování auditu AU-12 (01) | Záznam auditu v reálném čase a podle časového rozsahu
+## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>Generování auditu AU-12 (01) | Záznam pro audit System-Wide/Time-Correlated
 
 Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaznamenávány přiřazením [Azure Policy](../../../policy/overview.md) definicí, které auditují nastavení protokolů v prostředcích Azure.
 Tato předdefinovaná zásada vyžaduje, abyste určili pole typů prostředků, abyste zkontrolovali, jestli jsou nastavení diagnostiky povolená, nebo ne.
@@ -164,7 +164,7 @@ Adaptivní řízení aplikací v Azure Security Center je inteligentní, automat
 
 - V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.
 
-## <a name="cm-11-user-installed-software"></a>Software nainstalovaný uživatelem CM-11
+## <a name="cm-11-user-installed-software"></a>CM-11 User-Installed software
 
 Adaptivní řízení aplikací v Azure Security Center je inteligentní, automatizované a automatizované řešení seznamu povolených aplikací, které může blokovat nebo bránit spuštění určitého softwaru na virtuálních počítačích. Řízení aplikací vám může pomáhat vymáhat a monitorovat dodržování zásad omezení softwaru. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže monitorovat virtuální počítače, ve kterých se doporučuje seznam povolených aplikací, ale ještě není nakonfigurovaný.
 
@@ -190,7 +190,7 @@ Tento podrobný plán přiřadí Azure Policy definice, které v elektronické p
 Tento podrobný plán vám pomůže omezit a řídit privilegovaný přístup tím, že přiřadíte definice [Azure Policy](../../../policy/overview.md) k auditování účtů s oprávněním vlastníka nebo zápisu, u kterých není povolené Multi-Factor Authentication. Multi-Factor Authentication pomáhá udržet zabezpečení účtů i v případě, že dojde k ohrožení bezpečnosti některých informací o ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 
 ## <a name="ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>IA-2 (2) identifikace a ověřování (uživatelé organizace) | Přístup k síti bez privilegovaných účtů
 
@@ -209,7 +209,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 - Nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
 - Nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 
-## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Správa ověřovatele | Ověřování založené na heslech
+## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Správa ověřovatele | Ověřování Password-Based
 
 Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Povědomí o problémech s virtuálními počítači, které jsou v rozporu s zásadami složitosti hesla, vám pomůžou provést nápravné akce, které zajistí, aby hesla všech uživatelských účtů virtuálních počítačů byla v pořádku se zásadami hesel vaší organizace.
 
@@ -238,7 +238,8 @@ Tento podrobný plán poskytuje definice zásad, které auditují záznamy s ana
 
 ## <a name="ra-5-vulnerability-scanning"></a>Kontrola ohrožení zabezpečení RA-5
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center.
+Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
 
 - V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
@@ -255,8 +256,7 @@ Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomoc
 
 ## <a name="sc-7-boundary-protection"></a>Ochrana hranice SC-7
 
-Tento podrobný plán vám pomůže spravovat a řídit hranici systému tím, že přiřadí definici [Azure Policy](../../../policy/overview.md) , která monitoruje doporučení pro posílení zabezpečení skupiny zabezpečení sítě v Azure Security Center. Azure Security Center analyzuje modely provozu virtuálních počítačů s internetem a poskytuje doporučení pro pravidlo skupiny zabezpečení sítě, aby se snížila potenciální plocha pro útok.
-Kromě toho tento podrobný plán také přiřazuje definice zásad, které sledují nechráněné koncové body, aplikace a účty úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem, můžou dovolit neúmyslný přístup k informacím obsaženým v informačním systému.
+Tento podrobný plán vám pomůže spravovat a řídit hranici systému tím, že přiřadí definici [Azure Policy](../../../policy/overview.md) , která monitoruje doporučení pro posílení zabezpečení skupiny zabezpečení sítě v Azure Security Center. Azure Security Center analyzuje modely provozu virtuálních počítačů s internetem a poskytuje doporučení pro pravidlo skupiny zabezpečení sítě, aby se snížila potenciální plocha pro útok. Kromě toho tento podrobný plán také přiřazuje definice zásad, které sledují nechráněné koncové body, aplikace a účty úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem, můžou dovolit neúmyslný přístup k informacím obsaženým v informačním systému.
 
 - Přístup přes internetový koncový bod by měl být omezený.
 - Účty úložiště by měly omezovat síťový přístup
@@ -307,11 +307,8 @@ Tento podrobný plán vám pomůže spravovat chyby v systému tím, že přiřa
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>-02 (06) Chyba při nápravě | Odebrání předchozích verzí softwaru nebo firmwaru
 
-Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit, aby aplikace používaly nejnovější verzi .NET Framework, HTTP, Java, PHP, Pythonu a TLS. V tomto podrobném plánu se taky přiřadí definice zásady, která zajistí, že se služby Kubernetes upgradují na jeho nezranitelnou verzi.
+Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit, aby aplikace používaly nejnovější verzi HTTP, Java, PHP, Pythonu a TLS. V tomto podrobném plánu se taky přiřadí definice zásady, která zajistí, že se služby Kubernetes upgradují na jeho nezranitelnou verzi.
 
-- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást Function App
-- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást webové aplikace.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění aplikace API.
 - Ujistěte se, že hodnota HTTP Version je nejnovější, pokud se používá ke spuštění aplikace Function App.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění webové aplikace.
@@ -319,7 +316,6 @@ Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást webové aplikace.
 - Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást webové aplikace.
 - Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace API.
 - Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace Function App.

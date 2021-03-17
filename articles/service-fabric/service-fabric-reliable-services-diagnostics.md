@@ -1,19 +1,17 @@
 ---
 title: Azure Service Fabric stavová Diagnostika Reliable Services
 description: Diagnostické funkce pro stavové Reliable Services v Azure Service Fabric
-author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.author: dekapur
-ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253112"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789326"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
-Stavová Reliable Services StatefulServiceBase třídy Azure Service Fabric emituje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) , které se dají použít k ladění služby, poskytování přehledů o fungování modulu runtime a k řešení potíží.
+Stavová Reliable Services StatefulServiceBase třídy Azure Service Fabric emituje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) , které se dají použít k ladění služby, poskytování přehledů o fungování modulu runtime a k řešení potíží.
 
 ## <a name="eventsource-events"></a>Události EventSource
 Název EventSource pro stavovou Reliable Services třídy StatefulServiceBase je "Microsoft-ServiceFabric-Services". Události z tohoto zdroje událostí se zobrazí v okně [diagnostické události](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) při [ladění služby v aplikaci Visual Studio](service-fabric-debugging-your-application.md).
@@ -60,7 +58,7 @@ Pro kategorii `Service Fabric Transactional Replicator` jsou názvy instancí č
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) specifikátoru formátu "D".
+*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) specifikátoru formátu "D".
 
 *ServiceFabricReplicaId* je ID přidružené k dané replice spolehlivé služby. ID repliky je zahrnuté v názvu instance čítače výkonu, aby se zajistila jeho jedinečnost a nedocházelo ke konfliktu s dalšími instancemi čítače výkonu generovanými stejným oddílem. Další podrobnosti o replikách a jejich roli ve spolehlivých službách najdete [tady](service-fabric-concepts-replica-lifecycle.md).
 
@@ -75,7 +73,7 @@ Pro kategorii `Service Fabric TStore` jsou názvy instancí čítače v následu
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) specifikátoru formátu "D".
+*ServiceFabricPartitionId* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována pomocí [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) specifikátoru formátu "D".
 
 *ServiceFabricReplicaId* je ID přidružené k dané replice spolehlivé služby. ID repliky je zahrnuté v názvu instance čítače výkonu, aby se zajistila jeho jedinečnost a nedocházelo ke konfliktu s dalšími instancemi čítače výkonu generovanými stejným oddílem. Další podrobnosti o replikách a jejich roli ve spolehlivých službách najdete [tady](service-fabric-concepts-replica-lifecycle.md).
 
@@ -89,7 +87,7 @@ Následující název instance čítače je typický pro čítač v `Service Fab
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-V předchozím příkladu `00d0126d-3e36-4d68-98da-cc4f7195d85e` je řetězcové vyjádření ID oddílu Service Fabric, `131652217797162571` je ID repliky, `142652217797162571` je ID zprostředkovatele stavu a `1337` je rozdíl instance čítače výkonu. `urn:MyReliableDictionary/dataStore`je název zprostředkovatele stavu, který ukládá data pro kolekci s názvem `urn:MyReliableDictionary` .
+V předchozím příkladu `00d0126d-3e36-4d68-98da-cc4f7195d85e` je řetězcové vyjádření ID oddílu Service Fabric, `131652217797162571` je ID repliky, `142652217797162571` je ID zprostředkovatele stavu a `1337` je rozdíl instance čítače výkonu. `urn:MyReliableDictionary/dataStore` je název zprostředkovatele stavu, který ukládá data pro kolekci s názvem `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>Čítače výkonu transakčního replikátoru
 

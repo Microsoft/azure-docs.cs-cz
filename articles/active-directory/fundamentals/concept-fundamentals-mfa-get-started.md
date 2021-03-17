@@ -1,26 +1,26 @@
 ---
-title: Multi-Factor Authentication Azure pro vaši organizaci – Azure Active Directory
-description: Seznamte se s dostupnými funkcemi Azure Multi-Factor Authentication ve vaší organizaci na základě vašeho licenčního modelu.
+title: Multi-Factor Authentication Azure AD pro vaši organizaci – Azure Active Directory
+description: Přečtěte si o dostupných funkcích služby Azure AD Multi-Factor Authentication ve vaší organizaci na základě vašeho licenčního modelu.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: daveba
+author: daveba
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85e7f02f8cbda6218396bf4a9a4654a113b7817c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554649"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836738"
 ---
-# <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Přehled služby Azure Multi-Factor Authentication pro vaši organizaci
+# <a name="overview-of-azure-ad-multi-factor-authentication-for-your-organization"></a>Přehled Multi-Factor Authentication Azure AD pro vaši organizaci
 
-Existuje několik způsobů, jak povolit Azure Multi-Factor Authentication pro uživatele služby Azure Active Directory (AD) na základě licencí, které vaše organizace vlastní. 
+Existuje několik způsobů, jak povolit Multi-Factor Authentication služby Azure AD pro uživatele služby Azure Active Directory (AD) na základě licencí, které vaše organizace vlastní. 
 
 ![V případě potřeby prozkoumat signály a vynutilit MFA](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
 
@@ -34,10 +34,10 @@ Zákazníci, kteří využívají Bezplatné výhody Azure AD, můžou použít 
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business, E3 nebo E5
 
-Pro zákazníky se sadou Office 365 jsou k dispozici dvě možnosti:
+Pro zákazníky, kteří používají Microsoft 365, jsou k dispozici dvě možnosti:
 
-* Pro všechny přihlašovací události je Azure Multi-Factor Authentication buď povolený, nebo zakázaný pro všechny uživatele. Pro podmnožinu uživatelů není možné povolit ověřování pomocí služby Multi-Factor Authentication nebo jenom v některých případech. Správa je prostřednictvím portálu Office 365. 
-* Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu zabezpečení prostředků Office 365 pomocí služby Multi-Factor Authentication.
+* Pro všechny přihlašovací události je Azure AD Multi-Factor Authentication buď povolený, nebo zakázaný pro všechny uživatele. Pro podmnožinu uživatelů není možné povolit ověřování pomocí služby Multi-Factor Authentication nebo jenom v některých případech. Správa je prostřednictvím portálu Office 365. 
+* Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu zabezpečení Microsoft 365ch prostředků pomocí služby Multi-Factor Authentication.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 
@@ -56,12 +56,12 @@ Poskytuje nejsilnější umístění zabezpečení a vylepšené uživatelské p
 | Metoda | Výchozí nastavení zabezpečení | Všechny ostatní metody |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | X | X |
-| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | × |
-| Textová zpráva na telefon |   | × |
-| Zavolat na telefon |   | × |
+| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | X |
+| Textová zpráva na telefon |   | X |
+| Zavolat na telefon |   | X |
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak začít, najdete v kurzu [zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](../authentication/tutorial-enable-azure-mfa.md).
+Informace o tom, jak začít, najdete v kurzu [zabezpečení událostí přihlašování uživatelů pomocí Multi-Factor Authentication služby Azure AD](../authentication/tutorial-enable-azure-mfa.md).
 
-Další informace o licencování najdete v tématu [funkce a licence pro Azure Multi-Factor Authentication](../authentication/concept-mfa-licensing.md).
+Další informace o licencování najdete v tématu [funkce a licence pro Azure AD Multi-Factor Authentication](../authentication/concept-mfa-licensing.md).

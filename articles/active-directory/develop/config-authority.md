@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085204"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169439"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
 
@@ -26,10 +26,10 @@ V tomto článku se dozvíte, jak nakonfigurovat aplikaci knihovny Microsoft Aut
 
 ## <a name="default-authority-configuration"></a>Výchozí konfigurace autority
 
-`MSALPublicClientApplication`má nakonfigurovanou adresu URL s výchozí autoritou `https://login.microsoftonline.com/common` , která je vhodná pro většinu Azure Active Directorych scénářů (AAD). Pokud neimplementujete pokročilé scénáře, jako jsou národní cloudy nebo pracujete s B2C, nebudete je muset měnit.
+`MSALPublicClientApplication` má nakonfigurovanou adresu URL s výchozí autoritou `https://login.microsoftonline.com/common` , která je vhodná pro většinu Azure Active Directorych scénářů (AAD). Pokud neimplementujete pokročilé scénáře, jako jsou národní cloudy nebo pracujete s B2C, nebudete je muset měnit.
 
 > [!NOTE]
-> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). Služba ADFS je podporovaná prostřednictvím federace.
+> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). Služba ADFS je podporovaná prostřednictvím federace.
 
 ## <a name="change-the-default-authority"></a>Změna výchozího úřadu
 
@@ -240,11 +240,11 @@ Níže jsou uvedené podtřídy `MSALAuthority` , které můžete vytvořit v z�
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`představuje autoritu AAD. Adresa URL autority by měla být v následujícím formátu, kde `<port>` je volitelná:`https://<host>:<port>/<tenant>`
+`MSALAADAuthority` představuje autoritu AAD. Adresa URL autority by měla být v následujícím formátu, kde `<port>` je volitelná: `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`představuje autoritu B2C. Adresa URL autority B2C by měla být ve výchozím nastavení v následujícím formátu, kde `<port>` je volitelná: `https://<host>:<port>/tfp/<tenant>/<policy>` . MSAL však podporuje i další libovolné formáty B2C autority.
+`MSALB2CAuthority` představuje autoritu B2C. Adresa URL autority B2C by měla být ve výchozím nastavení v následujícím formátu, kde `<port>` je volitelná: `https://<host>:<port>/tfp/<tenant>/<policy>` . MSAL však podporuje i další libovolné formáty B2C autority.
 
 ## <a name="next-steps"></a>Další kroky
 

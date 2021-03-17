@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514543"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509502"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -50,7 +50,7 @@ MABS provádí zálohování pomocí VSS následujícím způsobem. Kroky v tomt
 
 4. Jakmile se počáteční základní kopie virtuálního počítače synchronizuje se serverem MABS, budou všechny změny provedené v prostředcích virtuálního počítače zachyceny v novém bodu obnovení. Bod obnovení představuje konzistentní stav virtuálního stroje v určitou dobu. K zachycení bodu obnovení musí dojít alespoň jednou denně. Při vytvoření nového bodu obnovení používá MABS replikaci na úrovni bloku ve spojení s zapisovačem VSS technologie Hyper-V k určení, které bloky se na serveru s technologií Hyper-V po vytvoření posledního bodu obnovení změnily. Tyto datové bloky jsou pak přeneseny na server MABS a jsou aplikovány na repliku chráněných dat.
 
-5. Server MABS používá službu VSS na svazcích, které hostují data pro obnovení, aby bylo k dispozici více stínových kopií. Každá z těchto stínových kopií poskytuje samostatné obnovení. Body obnovení služby VSS jsou uloženy na serveru MABS. Dočasná kopie vytvořená na serveru s technologií Hyper-V je uložena pouze po dobu trvání synchronizace MABS.
+5. Server MABS používá službu VSS na svazcích, které hostují data pro obnovení, aby bylo k dispozici více stínových kopií. Každá z těchto stínových kopií poskytuje samostatné obnovení. Body obnovení služby VSS jsou uloženy na serveru MABS. Dočasná kopie vytvořená na serveru se spuštěnou technologií Hyper-V je uložena pouze po dobu trvání synchronizace MABS.
 
 >[!NOTE]
 >
@@ -66,7 +66,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 |Požadavky virtuálních počítačů Hyper-V|-Verze integračních komponent, které běží na virtuálním počítači, by měla být stejná jako verze hostitele Hyper-V. <br />– Pro každou zálohu virtuálního počítače budete potřebovat volné místo na svazku, který je hostitelem souborů virtuálního pevného disku, abyste zajistili technologii Hyper-V dost místa pro rozdílové porovnávání disků (AVHD) během zálohování. Prostor musí být minimálně roven času vypočítanému jako **Počáteční velikost disku\*Klidové vytížení\*Zálohování**. Pokud spouštíte více záloh v clusteru, budete potřebovat dostatečnou kapacitu úložiště (použijte tento výpočet) pro AVHD na všech virtuálních počítačích.<br />– Chcete-li zálohovat virtuální počítače nacházející se na hostitelských serverech technologie Hyper-V se systémem Windows Server 2012 R2, musí mít virtuální počítač zadaný řadič SCSI, a to i v případě, že není připojen k žádnému. (V online zálohování Windows Serveru 2012 R2 Hostitel Hyper-V připojí nový virtuální pevný disk ve virtuálním počítači a později ho odpojí. To může podporovat jenom řadič SCSI, a proto se vyžaduje pro online zálohování virtuálního počítače.  Bez tohoto nastavení se při pokusu o zálohování virtuálního počítače vydá událost s ID 10103.)|
 |Požadované součásti systému Linux|– Virtuální počítače se systémem Linux můžete zálohovat pomocí MABS. Podporovány jsou pouze snímky konzistentních souborů.|
 |Zálohování virtuálních počítačů s úložištěm CSV|– K úložišti CSV nainstalujte na server Hyper-V zprostředkovatele hardwaru služby Stínová kopie svazku (VSS). Kontaktujte dodavatele sítě SAN pro poskytovatele hardwaru VSS.<br />– Pokud se jeden uzel v clusteru CSV neočekávaně ukončí, MABS provede kontrolu konzistence u virtuálních počítačů, které v tomto uzlu běžely.<br />– Pokud potřebujete restartovat server Hyper-V, který má na clusteru CSV povolený nástroj BitLocker Drive Encryption, je potřeba, abyste spustili kontrolu konzistence virtuálních počítačů Hyper-V.|
-|Zálohování virtuálních počítačů s úložištěm SMB|– Zapnutím automatického připojení na serveru, který používá technologii Hyper-V, povolte ochranu virtuálních počítačů.<br />   – Zakažte funkci TCP Chimney Offload.<br />– Zajistěte, aby všechny účty machine$ s technologií Hyper-V měly úplná oprávnění v konkrétních vzdálených sdílených složkách souborů SMB.<br />– Ujistěte se, že cesta k souboru pro všechny součásti virtuálního počítače během obnovení do alternativního umístění je kratší než 260 znaků. Pokud ne, obnovení může být úspěšné, ale technologie Hyper-V nebude moci připojit virtuální počítač.<br />– Následující scénáře nejsou podporovány:<br />     Nasazení, ve kterých jsou některé součásti virtuálního počítače na místních svazcích a některé součásti na vzdálených svazcích; adresa IPv4 nebo IPv6 pro souborový server umístění úložiště a obnovení virtuálního počítače do počítače, který používá vzdálené sdílené složky protokolu SMB.<br />– Službu agenta VSS souborového serveru budete muset povolit na každém serveru SMB – přidat ho v části **Přidat role a funkce**  >  **Vybrat role serveru**souborové služby a služba úložiště Souborová služba souborového  >  **File and Storage Services**  >  **File Services**  >  **File Service**  >  **serveru služba agenta VSS**.|
+|Zálohování virtuálních počítačů s úložištěm SMB|– Zapnutím automatického připojení na serveru, na kterém běží technologie Hyper-V, povolíte ochranu virtuálního počítače.<br />   – Zakažte funkci TCP Chimney Offload.<br />– Zajistěte, aby všechny účty machine$ s technologií Hyper-V měly úplná oprávnění v konkrétních vzdálených sdílených složkách souborů SMB.<br />– Ujistěte se, že cesta k souboru pro všechny součásti virtuálního počítače během obnovení do alternativního umístění je kratší než 260 znaků. Pokud ne, obnovení může být úspěšné, ale technologie Hyper-V nebude moci připojit virtuální počítač.<br />– Následující scénáře nejsou podporovány:<br />     Nasazení, ve kterých jsou některé součásti virtuálního počítače na místních svazcích a některé součásti na vzdálených svazcích; adresa IPv4 nebo IPv6 pro souborový server umístění úložiště a obnovení virtuálního počítače do počítače, který používá vzdálené sdílené složky protokolu SMB.<br />– Službu agenta VSS souborového serveru budete muset povolit na každém serveru SMB – přidat ho v části **Přidat role a funkce**  >  **Vybrat role serveru** souborové služby a služba úložiště Souborová služba souborového  >    >    >    >  **serveru služba agenta VSS**.|
 
 ## <a name="back-up-virtual-machines"></a>Zálohování virtuálních počítačů
 
@@ -78,13 +78,13 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 
 2. Nastavte agenta ochrany MABS Protection na serverech Hyper-V nebo na uzlech clusteru Hyper-V. Pokud provádíte zálohování na úrovni hosta, nainstalujete agenta na virtuální počítače, které chcete zálohovat na úrovni hosta.
 
-3. V konzole pro správu MABS klikněte na **ochrana**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** .
+3. V konzole pro správu MABS vyberte **ochrana**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** .
 
 4. Na stránce **Vybrat členy skupiny** vyberte virtuální počítače, které chcete chránit, a to z hostitelských serverů Hyper-V, na kterých jsou umístěny. Všechny virtuální počítače se stejnými zásadami ochrany doporučujeme dát do jedné skupiny ochrany. Pokud chcete šetřit místem, zapněte kolokaci. Kolokace umožňuje najít data z různých skupin ochrany na stejném disku nebo pásce, aby více zdrojů dat mělo jen jednu repliku a jeden svazek bodu obnovení.
 
 5. Na stránce **Vyberte způsob ochrany dat** zadejte název skupiny ochrany. Pokud chcete zálohovat data na Azure pomocí služby Zálohování Azure, vyberte **Chci krátkodobou ochranu pomocí disku** a potom **Chci online ochranu** .
 
-6. V oblasti **určení krátkodobých cílů**  >  **Rozsah uchování**určete, jak dlouho chcete uchovat data na disku. V části **četnost synchronizací**určete, jak často se má spouštět přírůstkové zálohování dat. Nebo můžete místo intervalu přírůstkového zálohování vybrat možnost **Těsně před bodem obnovení**. Pokud je toto nastavení povoleno, MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
+6. V oblasti **Zadejte Short-Term cíle**  >  **uchování** určete, jak dlouho chcete uchovat data na disku. V části **četnost synchronizací** určete, jak často se má spouštět přírůstkové zálohování dat. Nebo můžete místo intervalu přírůstkového zálohování vybrat možnost **Těsně před bodem obnovení**. Pokud je toto nastavení povoleno, MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
 
     > [!NOTE]
     >
@@ -94,7 +94,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 
    **Celková velikost dat** je velikost dat, která chcete zálohovat, a **místo na disku, které se má zřídit v MABS** , je místo, které MABS pro skupinu ochrany doporučuje. MABS vybere ideální záložní svazek na základě nastavení. Možnosti záložního svazku ale můžete upravit v části **Podrobnosti přidělení disku**. V rozevírací nabídce vyberte požadované úložiště pro úlohy. Úpravy, které provedete, změní hodnoty v polích **Celková velikost úložiště** a **Volný úložný prostor** v podokně **Dostupný úložný prostor na disku**. Za nezřízené místo je množství MABS úložiště, které vám nabídne přidání do svazku, aby bylo možné v budoucnu pokračovat v zálohování.
 
-8. Na stránce **Vyberte způsob vytvoření repliky** určete, jak se bude provádět počáteční replikace dat ve skupině ochrany. Pokud zvolíte **automatickou replikaci přes síť**, doporučujeme vám vybrat dobu mimo špičku. Pro velké objemy dat nebo méně, než jsou optimální síťové podmínky, zvažte možnost **ručního**výběru, který vyžaduje replikaci dat offline pomocí vyměnitelného média.
+8. Na stránce **Vyberte způsob vytvoření repliky** určete, jak se bude provádět počáteční replikace dat ve skupině ochrany. Pokud zvolíte **automatickou replikaci přes síť**, doporučujeme vám vybrat dobu mimo špičku. Pro velké objemy dat nebo méně, než jsou optimální síťové podmínky, zvažte možnost **ručního** výběru, který vyžaduje replikaci dat offline pomocí vyměnitelného média.
 
 9. Na stránce **Možnosti kontroly konzistence** vyberte, jak chcete automatizovat kontroly konzistence. Spuštění kontroly můžete povolit jenom pro případ, že začnou být nekonzistentní data repliky, nebo podle plánu. Pokud automatickou kontrolu konzistence nechcete konfigurovat, můžete kdykoliv spustit ruční kontrolu tak, že pravým tlačítkem kliknete na skupinu ochrany a vyberete **Provést kontrolu konzistence**.
 
@@ -110,7 +110,7 @@ Pokud je MABS spuštěný v systému Windows Server 2012 R2 nebo novějším, m�
 
 **Umožňuje to zálohování hostitele** – jako server replik můžete použít hostované datové centrum, aniž byste potřebovali sekundární datové centrum. V takovém případě bude SLA hostitele vyžadovat konzistentní zálohování virtuálních počítačů replik.
 
-Virtuální počítač repliky je do převzetí služeb při selhání vypnutý, takže služba Stínová kopie svazku (VSS) nemůže zaručit, že takový počítač zazálohuje konzistentně vzhledem k aplikacím. Proto je zálohování virtuálního počítače repliky konzistentní jenom vzhledem k selháním. Pokud ani konzistence vzhledem k selháním nemůže být zaručena, zálohování se nepovede. To se může stát v několika situacích:
+Virtuální počítač repliky je do převzetí služeb při selhání vypnutý, takže služba Stínová kopie svazku (VSS) nemůže zaručit, že takový počítač zazálohuje konzistentně vzhledem k aplikacím. Zálohování virtuálního počítače repliky bude proto jenom v souladu s chybami. Pokud ani konzistence vzhledem k selháním nemůže být zaručena, zálohování se nepovede. To se může stát v několika situacích:
 
 - Virtuální počítač repliky není v pořádku a je v kritickém stavu.
 
@@ -128,28 +128,31 @@ Když chcete obnovit zálohovaný virtuální počítač, pomocí Průvodce obno
 
 1. V konzole pro správu MABS zadejte název virtuálního počítače, nebo rozbalte seznam chráněných položek a vyberte virtuální počítač, který chcete obnovit.
 
-2. V kalendáři v podokně **Body obnovení pro** klikněte na libovolné datum. Zobrazíte tak dostupné body obnovení. Pak v podokně **Cesta** vyberte bod obnovení, který chcete použít v Průvodci obnovením.
+2. V podokně **body obnovení pro** v kalendáři vyberte libovolné datum, aby se zobrazily dostupné body obnovení. Pak v podokně **Cesta** vyberte bod obnovení, který chcete použít v Průvodci obnovením.
 
-3. V nabídce **Akce** klikněte na **Obnovit**. Tím se otevře Průvodce obnovením.
+3. V nabídce **Akce** vyberte **obnovit** a otevřete tak Průvodce obnovením.
 
-    Vybraný virtuální počítač a bod obnovení se zobrazí v obrazovce **Revidovat výběr obnovení**. Klikněte na **Next** (Další).
+    Vybraný virtuální počítač a bod obnovení se zobrazí v obrazovce **Revidovat výběr obnovení**. Vyberte **Další**.
 
-4. Na obrazovce **Vybrat typ obnovení** vyberte, kde chcete obnovit data, a pak klikněte na **Další**.
+4. Na obrazovce **Vybrat typ obnovení** vyberte, kam chcete data obnovit, a pak vyberte **Další**.
 
-    - **Obnovit na původní instanci**: Při obnovení na původní instanci se odstraní původní virtuální pevný disk (VHD). MABS obnoví virtuální pevný disk a další konfigurační soubory do původního umístění pomocí zapisovače VSS technologie Hyper-V. Na konci procesu obnovení jsou virtuální počítače stále vysoce dostupné.
+    - **Obnovit na původní instanci**: při obnovení na původní instanci se odstraní původní virtuální pevný disk a všechny přidružené kontrolní body. MABS obnoví virtuální pevný disk a další konfigurační soubory do původního umístění pomocí zapisovače VSS technologie Hyper-V. Na konci procesu obnovení jsou virtuální počítače stále vysoce dostupné.
         Pro obnovení musí být dostupná skupina prostředků. Pokud není dostupná, proveďte obnovení do alternativního umístění a pak změňte virtuální počítač na vysoce dostupný.
 
-    - **Obnovit jako virtuální počítač na libovolného hostitele**: MABS podporuje obnovení do alternativního umístění (ALR), které poskytuje bezproblémové obnovení chráněného virtuálního počítače s technologií Hyper-v na jiného hostitele Hyper-v, nezávisle na architektuře procesoru. Virtuální počítače s technologií Hyper-V, které jsou obnovovány do uzlu clusteru, nebudou vysoce dostupné. Pokud zvolíte tuto možnost, Průvodce obnovením vám nabídne další obrazovku, kde identifikujete cíl a cílovou cestu.
+    - **Obnovit jako virtuální počítač na libovolného hostitele**: MABS podporuje obnovení do alternativního umístění (ALR), které poskytuje bezproblémové obnovení chráněného virtuálního počítače s technologií Hyper-v na jiného hostitele Hyper-v, nezávisle na architektuře procesoru. Virtuální počítače Hyper-V, které jsou obnoveny do uzlu clusteru, nebudou vysoce dostupné. Pokud zvolíte tuto možnost, Průvodce obnovením vám nabídne další obrazovku, kde identifikujete cíl a cílovou cestu.
+    
+        >[!NOTE]
+        >Pokud vyberete původního hostitele, bude chování stejné jako **obnovení do původní instance**. Původní virtuální pevný disk a všechny přidružené kontrolní body se odstraní.
 
     - **Kopírovat do síťové složky**: MABS podporuje obnovení na úrovni položek (ilr), které umožňuje provádět obnovení na úrovni položek souborů, složek, svazků a virtuálních pevných disků (VHD) ze záloh virtuálních počítačů Hyper-V na úrovni hostitele do sdílené síťové složky nebo svazku na chráněném serveru MABS. K provedení obnovení na úrovni položek není nutné instalovat agenta MABS Protection v rámci hosta. Pokud zvolíte tuto možnost, Průvodce obnovením vám nabídne další obrazovku, kde identifikujete cíl a cílovou cestu.
 
-5. V části **Zadat možnosti obnovení** nakonfigurujte možnosti obnovení a klikněte na **Další**:
+5. V části **zadat možnosti obnovení** nakonfigurujte možnosti obnovení a vyberte **Další**:
 
-    - Pokud provádíte obnovení virtuálního počítače prostřednictvím sítě s malou šířkou písma, kliknutím na možnost **Upravit** povolíte volbu **Omezení využití šířky pásma sítě**. Až zapnete omezení využití šířky pásma, můžete zadat šířku písma sítě, kterou chcete mít k dispozici, a čas, kdy chcete, aby byla dostupná.
-    - Pokud jste nakonfigurovali síť, vyberte **Použít obnovení založené na síti SAN za využití snímků hardwaru**.
+    - Pokud obnovujete virtuální počítač přes malou šířku pásma, vyberte **Upravit** a povolte **omezení využití šířky pásma sítě**. Až zapnete omezení využití šířky pásma, můžete zadat šířku písma sítě, kterou chcete mít k dispozici, a čas, kdy chcete, aby byla dostupná.
+    - Pokud jste nakonfigurovali síť, vyberte možnost **Povolit obnovení na základě San pomocí snímků hardwaru** .
     - Pokud chcete po dokončení procesu obnovení dostat e-mailové upozornění, vyberte **Odeslat e-mail po dokončení obnovení** a pak zadejte e-mailovou adresu.
 
-6. Na obrazovce Souhrn zkontrolujte, jestli jsou všechny podrobnosti správné. Pokud podrobnosti nejsou správné nebo chcete provést změnu, klikněte na tlačítko **Zpět**. Pokud jste s nastavením spokojení, kliknutím na tlačítko **Obnovit** spustíte proces obnovení.
+6. Na obrazovce Souhrn zkontrolujte, jestli jsou všechny podrobnosti správné. Pokud nejsou podrobnosti správné nebo chcete provést změnu, vyberte **zpět**. Pokud jste s nastavením spokojeni, vyberte **obnovit** a spusťte proces obnovení.
 
 7. Obrazovka **Stav obnovení Status** poskytuje informace o úloze obnovení.
 

@@ -3,20 +3,20 @@ title: 'Kurz: sestavení aplikace v baňce pro překlad, syntetizování a anal�
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte webovou aplikaci založenou na baňce pro překlad textu, analýze mínění a syntetizování přeloženého textu na řeč.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 05/26/2020
-ms.author: swmachan
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 6a81e52b833a59f51f6961a0bd41d52b040050b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 03/04/2021
+ms.author: lajanuar
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876882"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172075"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -53,7 +53,7 @@ Pojďme si projít klíče softwaru a předplatného, které pro tento kurz bude
 * [Nástroje Git](https://git-scm.com/downloads)
 * Rozhraní IDE nebo textový editor, například [Visual Studio Code](https://code.visualstudio.com/) nebo [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) nebo [Firefox](https://www.mozilla.org/firefox)
-* Klíč předplatného **překladatele** (Všimněte si, že nemusíte vybírat oblast.)
+* Klíč předplatného **překladatele** (můžete pravděpodobně použít **globální** umístění.)
 * Klíč předplatného **Analýza textu** v oblasti **západní USA** .
 * Klíč předplatného **služby Speech Services** v oblasti **západní USA**
 
@@ -64,7 +64,7 @@ Jak už jsme uvedli, budete pro tento kurz potřebovat tři klíče předplatné
 * Analýza textu
 * Hlasové služby
 
-Pro podrobné pokyny k vytváření prostředků použijte [v Azure Portal vytvořit účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) .
+Pro podrobné pokyny k vytváření prostředků použijte [v Azure Portal vytvořit účet Cognitive Services](../cognitive-services-apis-create-account.md) .
 
 > [!IMPORTANT]
 > Pro tento kurz prosím vytvořte svoje prostředky v oblasti Západní USA. Pokud používáte jinou oblast, budete muset v každém ze svých souborů Pythonu upravit základní adresu URL.
@@ -86,7 +86,7 @@ Před vytvořením webové aplikace v baňce budete muset vytvořit pracovní ad
    cd flask-cog-services
    ```
 
-### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Vytvoření a aktivace virtuálního prostředí pomocí`virtualenv`
+### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Vytvoření a aktivace virtuálního prostředí pomocí `virtualenv`
 
 Pojďme vytvořit virtuální prostředí pro naši aplikaci v baňce pomocí `virtualenv` . Pomocí virtuálního prostředí zajistíte, aby bylo k dispozici čisté prostředí, ze kterého můžete pracovat.
 
@@ -139,7 +139,7 @@ Dál musíme nainstalovat baňce. Baňka zpracovává směrování pro naši web
    ```
    pip install Flask
    ```
-   Pojďme se ujistit, že se nainstalovala baňka. Spuštěním příkazu
+   Pojďme se ujistit, že se nainstalovala baňka. Spusťte tento příkaz:
    ```
    flask --version
    ```
@@ -263,7 +263,7 @@ První věc, kterou potřebujete udělat, je napsat funkci pro volání překlad
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-   
+   location = 'YOUR_TRANSLATOR_RESOURCE_LOCATION'
    # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
@@ -277,7 +277,7 @@ První věc, kterou potřebujete udělat, je napsat funkci pro volání překlad
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
-           'Ocp-Apim-Subscription-Region': 'location',
+           'Ocp-Apim-Subscription-Region': location,
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -291,7 +291,7 @@ První věc, kterou potřebujete udělat, je napsat funkci pro volání překlad
    ```
 3. Přidejte klíč předplatného překladatele a uložte ho.
 
-### <a name="add-a-route-to-apppy"></a>Přidat trasu k`app.py`
+### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
 V dalším kroku budete muset vytvořit trasu v aplikaci v baňce, která volá `translate.py` . Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko přeložit ve vaší aplikaci.
 
@@ -411,7 +411,7 @@ Pojďme aktualizovat `index.html` .
 
 Dalším krokem je psaní JavaScriptu. Toto je most mezi cestou HTML a baňkou.
 
-### <a name="create-mainjs"></a>Vytvořeny`main.js`  
+### <a name="create-mainjs"></a>Vytvořeny `main.js`  
 
 `main.js`Soubor je most mezi cestou HTML a baňkou. Vaše aplikace bude používat kombinaci jQuery, AJAX a XMLHttpRequest pro vykreslování obsahu a provádění `POST` požadavků na vaše trasy v baňce.
 
@@ -475,7 +475,7 @@ Stisknutím **kombinace kláves Ctrl + c** aplikaci ukončete a potom přejděte
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-[Rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) lze použít k provedení analýzy mínění, extrakci klíčových frází z textu nebo rozpoznání zdrojového jazyka. V této aplikaci použijeme analýzu mínění k určení, jestli je poskytnutý text kladný, neutrální nebo záporný. Rozhraní API vrací číselné skóre v rozsahu 0 až 1. Skóre blížící se 1 značí pozitivní mínění a skóre blížící se 0 značí negativní mínění.
+[Rozhraní API pro analýzu textu](../text-analytics/overview.md) lze použít k provedení analýzy mínění, extrakci klíčových frází z textu nebo rozpoznání zdrojového jazyka. V této aplikaci použijeme analýzu mínění k určení, jestli je poskytnutý text kladný, neutrální nebo záporný. Rozhraní API vrací číselné skóre v rozsahu 0 až 1. Skóre blížící se 1 značí pozitivní mínění a skóre blížící se 0 značí negativní mínění.
 
 V této části se chystáte několik věcí:
 
@@ -495,17 +495,16 @@ Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkc
 
    # Don't forget to replace with your Cog Services subscription key!
    subscription_key = 'YOUR_TEXT_ANALYTICS_SUBSCRIPTION_KEY'
-
+   endpoint = "YOUR_TEXT_ANALYTICS_ENDPOINT" 
    # Our Flask route will supply four arguments: input_text, input_language,
    # output_text, output_language.
    # When the run sentiment analysis button is pressed in our Flask app,
    # the Ajax request will grab these values from our web app, and use them
    # in the request. See main.js for Ajax calls.
 
-   def get_sentiment(input_text, input_language, output_text, output_language):
-       base_url = 'https://westus.api.cognitive.microsoft.com/text/analytics'
-       path = '/v2.0/sentiment'
-       constructed_url = base_url + path
+   def get_sentiment(input_text, input_language):
+       path = '/text/analytics/v3.0/sentiment'
+       constructed_url = endpoint + path
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
@@ -521,11 +520,6 @@ Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkc
                    'id': '1',
                    'text': input_text
                },
-               {
-                   'language': output_language,
-                   'id': '2',
-                   'text': output_text
-               }
            ]
        }
        response = requests.post(constructed_url, headers=headers, json=body)
@@ -533,7 +527,7 @@ Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkc
    ```
 3. Přidejte svůj klíč předplatného Analýza textu a uložte ho.
 
-### <a name="add-a-route-to-apppy"></a>Přidat trasu k`app.py`
+### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
 Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py` . Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko pro analýzu spuštění mínění ve vaší aplikaci. Podobně jako u trasy k překladu Tato trasa přijímá `POST` požadavky, protože funkce očekává argumenty.
 
@@ -551,9 +545,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py` . Tato 
        data = request.get_json()
        input_text = data['inputText']
        input_lang = data['inputLanguage']
-       output_text = data['outputText']
-       output_lang =  data['outputLanguage']
-       response = sentiment.get_sentiment(input_text, input_lang, output_text, output_lang)
+       response = sentiment.get_sentiment(input_text, input_lang)
        return jsonify(response)
    ```
 
@@ -576,9 +568,8 @@ Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší ap
    ```html
    <button type="submit" class="btn btn-primary mb-2" id="sentiment-analysis">Run sentiment analysis</button></br>
    <div id="sentiment" style="display: none">
-      <p>Sentiment scores are provided on a 1 point scale. The closer the sentiment score is to 1, indicates positive sentiment. The closer it is to 0, indicates negative sentiment.</p>
-      <strong>Sentiment score for input:</strong> <span id="input-sentiment"></span><br />
-      <strong>Sentiment score for translation:</strong> <span id="translation-sentiment"></span>
+      <p>Sentiment can be labeled as "positive", "negative", "neutral", or "mixed". </p>
+      <strong>Sentiment label for input:</strong> <span id="input-sentiment"></span><br />
    </div>
    ```
 
@@ -592,7 +583,7 @@ Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
 
 2. Kopírovat tento kód do `static/scripts/main.js` :
    ```javascript
-   //Run sentinment analysis on input and translation.
+   //Run sentiment analysis on input and translation.
    $("#sentiment-analysis").on("click", function(e) {
      e.preventDefault();
      var inputText = document.getElementById("text-to-translate").value;
@@ -600,7 +591,7 @@ Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
      var outputText = document.getElementById("translation-result").value;
      var outputLanguage = document.getElementById("select-language").value;
 
-     var sentimentRequest = { "inputText": inputText, "inputLanguage": inputLanguage, "outputText": outputText,  "outputLanguage": outputLanguage };
+     var sentimentRequest = { "inputText": inputText, "inputLanguage": inputLanguage};
 
      if (inputText !== "") {
        $.ajax({
@@ -615,10 +606,7 @@ Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
            for (var i = 0; i < data.documents.length; i++) {
              if (typeof data.documents[i] !== "undefined"){
                if (data.documents[i].id === "1") {
-                 document.getElementById("input-sentiment").textContent = data.documents[i].score;
-               }
-               if (data.documents[i].id === "2") {
-                 document.getElementById("translation-sentiment").textContent = data.documents[i].score;
+                 document.getElementById("input-sentiment").textContent = data.documents[i].sentiment;
                }
              }
            }
@@ -627,12 +615,9 @@ Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
                if (data.errors[i].id === "1") {
                  document.getElementById("input-sentiment").textContent = data.errors[i].message;
                }
-               if (data.errors[i].id === "2") {
-                 document.getElementById("translation-sentiment").textContent = data.errors[i].message;
-               }
              }
            }
-           if (document.getElementById("input-sentiment").textContent !== '' && document.getElementById("translation-sentiment").textContent !== ""){
+           if (document.getElementById("input-sentiment").textContent !== ''){
              document.getElementById("sentiment").style.display = "block";
            }
          }
@@ -659,7 +644,7 @@ Stisknutím **kombinace kláves Ctrl + c** aplikaci ukončete a potom přejděte
 
 ## <a name="convert-text-to-speech"></a>Převod textu na řeč
 
-[Rozhraní API pro převod textu na mluvené slovo](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) umožňuje, aby aplikace převedla text na syntetizované rozpoznávání řeči od přirozeného člověka. Služba podporuje standardní, neuronové a vlastní hlasy. Naše ukázková aplikace používá několik dostupných hlasů. úplný seznam najdete v části [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
+[Rozhraní API pro převod textu na mluvené slovo](../speech-service/text-to-speech.md) umožňuje, aby aplikace převedla text na syntetizované rozpoznávání řeči od přirozeného člověka. Služba podporuje standardní, neuronové a vlastní hlasy. Naše ukázková aplikace používá několik dostupných hlasů. úplný seznam najdete v části [podporované jazyky](../speech-service/language-support.md#text-to-speech).
 
 V této části se chystáte několik věcí:
 
@@ -670,7 +655,7 @@ V této části se chystáte několik věcí:
 
 ### <a name="call-the-text-to-speech-api"></a>Volání rozhraní API pro převod textu na mluvené slovo
 
-Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argumenty: `input_text` a `voice_font` . Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko převést text na řeč. `input_text`je výstup překladu vrácený voláním k překladu textu, `voice_font` je hodnota z selektor hlasového písma v HTML.
+Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argumenty: `input_text` a `voice_font` . Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko převést text na řeč. `input_text` je výstup překladu vrácený voláním k překladu textu, `voice_font` je hodnota z selektor hlasového písma v HTML.
 
 1. Pojďme vytvořit soubor s názvem `synthesize.py` v kořenovém adresáři vašeho pracovního adresáře.
 
@@ -727,7 +712,7 @@ Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argume
    ```
 3. Přidejte klíč předplatného služby Speech Services a uložte ho.
 
-### <a name="add-a-route-to-apppy"></a>Přidat trasu k`app.py`
+### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
 Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py` . Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko převést text na řeč v aplikaci. Podobně jako trasy pro překlad a analýzu mínění Tato trasa přijímá `POST` požadavky, protože funkce očekává dva argumenty: text, který se má syntetizovat, a písmo hlasu pro přehrávání.
 
@@ -954,7 +939,7 @@ Přejděte na zadanou adresu serveru. Do vstupní oblasti zadejte text, vyberte 
 > [!TIP]
 > Pokud se změny, které jste provedli, nezobrazují, nebo aplikace nefunguje tak, jak byste ji očekávali, zkuste vymazat mezipaměť nebo otevřít soukromé/anonymním okno.
 
-To je to, že máte funkční aplikaci, která provádí překlady, analyzuje mínění a syntetizuje řeč. Stisknutím **kombinace kláves Ctrl + c** aplikaci ukončete. Nezapomeňte se podívat na ostatní [Cognitive Services Azure](https://docs.microsoft.com/azure/cognitive-services/).
+To je to, že máte funkční aplikaci, která provádí překlady, analyzuje mínění a syntetizuje řeč. Stisknutím **kombinace kláves Ctrl + c** aplikaci ukončete. Nezapomeňte se podívat na ostatní [Cognitive Services Azure](../index.yml).
 
 ## <a name="get-the-source-code"></a>Získání zdrojového kódu
 
@@ -962,6 +947,6 @@ Zdrojový kód tohoto projektu je k dispozici na [GitHubu](https://github.com/Mi
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Reference překladatele](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Reference překladatele](./reference/v3-0-reference.md)
 * [Referenční informace k rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Referenční informace k rozhraní API pro převod textu na řeč](../speech-service/rest-text-to-speech.md)

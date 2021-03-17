@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: Nasazení instance kontejneru – rozhraní příkazového řádku Dockeru
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: Kurzy
   items:
     - name: Vytvoření a nasazení image kontejneru
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: Nasazení skupiny kontejnerů – Resource Manager
           href: container-instances-multi-container-group.md
+        - name: Nasazení skupiny kontejnerů – Docker Compose
+          href: tutorial-docker-compose.md
     - name: Integrace se službami Azure
       items:
         - name: Aktivace pomocí Azure Functions
@@ -41,7 +43,7 @@
 - name: ukázky
   items:
     - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+      href: /samples/browse/?products=azure&terms=container%2binstance
     - name: Šablony Resource Manageru
       href: container-instances-samples-rm.md
 - name: Koncepty
@@ -70,7 +72,7 @@
           href: container-instances-vnet.md
         - name: Nasazení ze služby Azure Container Registry
           href: container-instances-using-azure-container-registry.md
-        - name: Nasazení s využitím GitHub Actions (Preview)
+        - name: Nasazení s využitím GitHub Actions
           href: container-instances-github-action.md
         - name: Šifrování dat nasazení
           href: container-instances-encrypt-data.md
@@ -154,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: Konektor
       href: /connectors/aci
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

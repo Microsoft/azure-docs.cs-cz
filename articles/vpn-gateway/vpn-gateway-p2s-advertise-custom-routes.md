@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987582"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89392387"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerovat vlastní trasy pro klienty VPN P2S
 
@@ -24,7 +24,7 @@ Je možné, že budete chtít inzerovat vlastní trasy všem klientům VPN typu 
 
 K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet` . Následující příklad ukazuje, jak inzerovat protokol IP pro [tabulky účtu úložiště contoso](https://contoso.table.core.windows.net).
 
-1. Proveďte test *contoso.Table.Core.Windows.NET* a poznamenejte si IP adresu. Příklad:
+1. Proveďte test *contoso.Table.Core.Windows.NET* a poznamenejte si IP adresu. Například:
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,7 +38,7 @@ K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet` . 
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. Chcete-li přidat více vlastních tras, použijte k oddělení adres čárku a mezery. Příklad:
+3. Chcete-li přidat více vlastních tras, použijte k oddělení adres čárku a mezery. Například:
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy

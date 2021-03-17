@@ -1,17 +1,17 @@
 ---
 title: Provozní kontinuita – Azure Database for MySQL
 description: Přečtěte si o kontinuitě podnikových služeb (obnovení v časovém bodě, výpadku datového centra, geografické obnovení) při používání služby Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15fde6e7558c685537d36f45bcc7e3ff341544ff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241960"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542489"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Informace o kontinuitě podnikových aplikací v Azure Database for MySQL
 
@@ -19,11 +19,11 @@ Tento článek popisuje možnosti, které Azure Database for MySQL poskytuje pro
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Funkce, které můžete použít k zajištění kontinuity podnikových aplikací
 
-Azure Database for MySQL poskytuje funkce pro provozní kontinuitu, které zahrnují automatizované zálohování a schopnost uživatelů zahájit geografické obnovení. Každý má různé charakteristiky pro odhadovanou dobu obnovení (ERT) a potenciální ztrátu dat. Jakmile tyto možnosti pochopíte, můžete si je vybrat mezi nimi a použít je společně pro různé scénáře. Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
+Azure Database for MySQL poskytuje funkce pro provozní kontinuitu, které zahrnují automatizované zálohování a schopnost uživatelů zahájit geografické obnovení. Každý má různé charakteristiky pro odhadovanou dobu obnovení (ERT) a potenciální ztrátu dat. Odhadovaná doba obnovení (ERT) je předpokládaná doba, po kterou bude databáze plně funkční po žádosti o obnovení nebo převzetí služeb při selhání. Jakmile tyto možnosti pochopíte, můžete si je vybrat mezi nimi a použít je společně pro různé scénáře. Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované pro paměť** |
+| **Funkce** | **Basic** | **Obecné použití** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
@@ -52,7 +52,7 @@ Druhou možností je použít funkci geografického obnovení Azure Database for
 
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie pro replikaci binárního protokolu MySQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 ### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>Kam se Azure Database for MySQL ukládají zákaznická data?
 Ve výchozím nastavení Azure Database for MySQL nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená. Zákazníci si ale můžou volitelně zvolit možnost povolit [geograficky redundantní zálohy](concepts-backup.md#backup-redundancy-options) nebo vytvořit [repliku pro čtení v různých oblastech](concepts-read-replicas.md#cross-region-replication) pro ukládání dat v jiné oblasti.
 

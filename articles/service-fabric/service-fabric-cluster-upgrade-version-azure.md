@@ -3,12 +3,12 @@ title: Upgrade verze Azure Service Fabric v clusteru
 description: Upgradujte Service Fabric kód nebo konfiguraci, která spouští Cluster Service Fabric, včetně nastavení režimu aktualizace clusteru, upgradu certifikátů, přidávání portů aplikací, provádění oprav operačního systému a tak dále. Co můžete očekávat při provádění upgradů?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261062"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90564283"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade verze Service Fabric v clusteru
 
@@ -28,7 +28,7 @@ Provedete to tak, že nastavíte konfiguraci clusteru "upgradeMode" na portálu 
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Nastavte režim upgradu v Azure Portal
 Při vytváření clusteru můžete cluster nastavit na automatické nebo ruční.
 
-![Create_Manualmode][Create_Manualmode]
+![Snímek obrazovky se zobrazí v podokně vytvořit Service Fabric cluster s vybranou možností 2 konfigurace clusteru a otevře se podokno konfigurace clusteru.][Create_Manualmode]
 
 Cluster můžete nastavit na automatické nebo ruční, pokud používáte živý cluster, a to pomocí prostředí pro správu. 
 
@@ -39,12 +39,12 @@ Pokud nejsou splněny zásady stavu clusteru, upgrade se vrátí zpět. Posuňte
 
 Po odstranění problémů, které vedly k vrácení zpět, je nutné znovu zahájit upgrade, a to pomocí stejných kroků jako v tomto postupu.
 
-![Manage_Automaticmode][Manage_Automaticmode]
+![Snímek obrazovky se zobrazí okno Service Fabric clustery s otevřeným podoknem upgradu prostředků infrastruktury a zvýrazněnými možnostmi upgradu, včetně automatických a ručních.][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Nastavení režimu upgradu pomocí šablony Správce prostředků
 Přidejte konfiguraci "upgradeMode" do definice prostředku Microsoft. ServiceFabric/Clusters a nastavte "clusterCodeVersion" na jednu z podporovaných verzí prostředků infrastruktury, jak je znázorněno níže, a pak šablonu nasaďte. Platné hodnoty "upgradeMode" jsou "ruční" nebo "automatické".
 
-![ARMUpgradeMode][ARMUpgradeMode]
+![Snímek obrazovky zobrazuje šablonu, která je v nešifrovaném textu odsazená tak, aby odrážela strukturu a clusterCodeVersion a upgradeMode jsou zvýrazněné.][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Upgrade na novou verzi v clusteru, který je nastaven na ruční režim pomocí šablony Správce prostředků.
 Pokud je cluster v ručním režimu, pokud chcete upgradovat na novou verzi, změňte "clusterCodeVersion" na podporovanou verzi a nasaďte ji. Nasazení šablony se aktivuje při automatickém vypnutí upgradu prostředků infrastruktury. Zásady stavu clusteru (kombinace stavu uzlu a stavu všech aplikací spuštěných v clusteru) jsou v průběhu upgradu dodrženy.

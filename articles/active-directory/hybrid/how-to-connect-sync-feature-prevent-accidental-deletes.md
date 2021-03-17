@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55270889c8c284335d5aa7b545718da419ba8d84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357354"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90084605"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizace Azure AD Connect: Prevence náhodného odstranění
 Toto téma popisuje funkci prevence náhodného odstranění (prevence nechtěného odstranění) v Azure AD Connect.
@@ -65,7 +65,7 @@ Pokud jsou všechna odstranění požadovaná, proveďte následující akce:
 
 1. Pokud chcete načíst aktuální prahovou hodnotu odstranění, spusťte rutinu PowerShellu `Get-ADSyncExportDeletionThreshold` . Zadejte účet globálního správce služby Azure AD a heslo. Výchozí hodnota je 500.
 2. Pokud chcete tuto ochranu dočasně zakázat a nechat tyto operace odstranit, spusťte rutinu PowerShellu: `Disable-ADSyncExportDeletionThreshold` . Zadejte účet globálního správce služby Azure AD a heslo.
-   ![Přihlašovací údaje](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
+   ![Snímek obrazovky se zobrazí dialogové okno pro zadání uživatelského jména a hesla globálního správce služby Azure AD.](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Když je konektor Azure Active Directory stále vybraný, vyberte akci **Spustit** a vyberte **exportovat**.
 4. Pokud chcete ochranu znovu povolit, spusťte rutinu PowerShellu: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500` . Nahraďte 500 hodnotou, kterou jste si všimli při načítání aktuální prahové hodnoty pro odstranění. Zadejte účet globálního správce služby Azure AD a heslo.
 

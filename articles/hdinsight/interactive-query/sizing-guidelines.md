@@ -1,18 +1,15 @@
 ---
 title: Průvodce nastavením velikosti clusteru interaktivních dotazů ve službě Azure HDInsight
 description: Průvodce plánováním interaktivních dotazů ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7baa9340a1f0a99b94bfcbe535c73d0b502e2a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664932"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933058"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Průvodce nastavením velikosti clusteru interaktivních dotazů ve službě Azure HDInsight
 
@@ -30,7 +27,7 @@ Tento dokument popisuje velikost clusteru HDInsight Interactive Query (LLAP) pro
 
 Doporučené hodnoty konfigurace jsou založené na pracovním uzlu typ D14 v2.
 
-| Klíč | Hodnota | Description |
+| Klíč | Hodnota | Popis |
 |---|---|---|
 | příz. NodeManager. Resource. paměť-MB | 102400 (MB) | Celková velikost paměti, která je zadána v MB pro všechny kontejnery PŘÍZe na uzlu. |
 | příze. Scheduler. maximum – přidělení-MB | 102400 (MB) | Maximální přidělení pro každou žádost kontejneru v RM v MB. Požadavky na paměť vyšší než tato hodnota se projeví. |
@@ -75,13 +72,13 @@ Výchozí cluster HDInsight má čtyři procesy démony LLAP spuštěné na čty
 
 ### <a name="tezamresourcememorymb-hivetezcontainersize"></a>TEZ. am. Resource. Memory. MB, podregistr. TEZ. Container. Size
 
-`tez.am.resource.memory.mb`definuje velikost hlavní databáze aplikace TEZ.  
+`tez.am.resource.memory.mb` definuje velikost hlavní databáze aplikace TEZ.  
 Doporučená hodnota je **4096 MB**.
 
-`hive.tez.container.size`definuje množství paměti zadané pro kontejner TEZ. Tato hodnota musí být nastavena mezi minimální velikostí kontejneru PŘÍZe ( `yarn.scheduler.minimum-allocation-mb` ) a maximální velikostí kontejneru příze ( `yarn.scheduler.maximum-allocation-mb` ).  
+`hive.tez.container.size` definuje množství paměti zadané pro kontejner TEZ. Tato hodnota musí být nastavena mezi minimální velikostí kontejneru PŘÍZe ( `yarn.scheduler.minimum-allocation-mb` ) a maximální velikostí kontejneru příze ( `yarn.scheduler.maximum-allocation-mb` ).  
 Doporučuje se nastavit na **4096 MB**.  
 
-Obecným pravidlem je zachování menšího množství paměti na procesor, který zvažuje jeden procesor na kontejner. `Rreserve`paměť pro počet tez AMs na uzlu před přidělením paměti pro démona LLAP. Například pokud používáte dvě tez AMs (4 GB každé) na uzel, dejte 82 GB z 90 GB pro LLAP démona, který zachovává 8 GB pro dvě tez AMs.
+Obecným pravidlem je zachování menšího množství paměti na procesor, který zvažuje jeden procesor na kontejner. `Rreserve` paměť pro počet tez AMs na uzlu před přidělením paměti pro démona LLAP. Například pokud používáte dvě tez AMs (4 GB každé) na uzel, dejte 82 GB z 90 GB pro LLAP démona, který zachovává 8 GB pro dvě tez AMs.
 
 ### <a name="yarnschedulercapacityrootllapcapacity"></a>příze. Scheduler. Capacity. root. llap. Capacity
 

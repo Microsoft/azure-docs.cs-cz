@@ -2,23 +2,21 @@
 title: Ladění úlohy Spark pomocí sady IntelliJ Azure Toolkit (Preview) – HDInsight
 description: Doprovodné materiály k ladění aplikací pomocí nástrojů HDInsight v Azure Toolkit for IntelliJ
 keywords: dálková ladění IntelliJ, vzdálené ladění IntelliJ, SSH, IntelliJ, HDInsight, ladění IntelliJ, ladění
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abbb26e7582d8ddabb73f3a178cf6d87e24db21
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857430"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942543"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)
 
-Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) ke spouštění aplikací pro **ladění chyb Spark** .
+Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) ke spouštění aplikací pro **ladění chyb Spark** .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +24,7 @@ Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v
   
 * IntelliJ nápad. Tento článek používá [INTELLIJ nápad Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
   
-* Azure Toolkit for IntelliJ. Viz [instalace Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation).
+* Azure Toolkit for IntelliJ. Viz [instalace Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation).
 
 * Připojte se ke clusteru HDInsight. Viz [připojení ke clusteru HDInsight](apache-spark-intellij-tool-plugin.md).
 
@@ -72,7 +70,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
    ![Přidat novou konfiguraci IntelliJ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Přepněte na **vzdálené spuštění na kartě cluster** . Zadejte informace pro **název**, **cluster Spark**a **název hlavní třídy**. Naše nástroje podporují ladění pomocí **prováděcích**modulů. Výchozí hodnota **numExectors**je 5 a Vy byste lépe nestavili hodnotu vyšší než 3. Chcete-li zkrátit dobu běhu, můžete do **Konfigurace úlohy** přidat **Spark. příze. maxAppAttempts** a nastavit hodnotu na 1. Kliknutím na tlačítko **OK** konfiguraci uložíte.
+3. Přepněte na **vzdálené spuštění na kartě cluster** . Zadejte informace pro **název**, **cluster Spark** a **název hlavní třídy**. Naše nástroje podporují ladění pomocí **prováděcích** modulů. Výchozí hodnota **numExectors** je 5 a Vy byste lépe nestavili hodnotu vyšší než 3. Chcete-li zkrátit dobu běhu, můžete do **Konfigurace úlohy** přidat **Spark. příze. maxAppAttempts** a nastavit hodnotu na 1. Kliknutím na tlačítko **OK** konfiguraci uložíte.
 
    ![IntelliJ spustit konfiguraci ladění – nové](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -90,7 +88,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
 Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout profil neúspěšné úlohy do místního počítače.
 
-1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z odpovídajícího umístění: **\hdp\spark2-Events \\ . Spark – selhání \\ \<application ID> ** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
+1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z odpovídajícího umístění: **\hdp\spark2-Events \\ . Spark – selhání \\ \<application ID>** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
 
    ![Průzkumník služby Azure Storage Chyba stahování](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -128,22 +126,22 @@ Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout pro
 * [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku ve službě HDInsight s nástroji BI.](apache-spark-use-bi-tools.md)
 * [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](./apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 
-* [Vytvoření samostatné aplikace pomocí Scala](../hdinsight-apache-spark-create-standalone-application.md)
+* [Vytvoření samostatné aplikace pomocí Scala](./apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 
 * [Použití Azure Toolkit for IntelliJ k vytvoření Apache Spark aplikací pro cluster HDInsight](apache-spark-intellij-tool-plugin.md)
 * [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím sítě VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Používání nástrojů HDInsight pro IntelliJ s izolovaným prostorem Hortonworks](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Použití nástrojů HDInsight v Azure Toolkit for Eclipse k vytváření Apache Sparkch aplikací](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Používání nástrojů HDInsight pro IntelliJ s izolovaným prostorem Hortonworks](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* [Použití nástrojů HDInsight v Azure Toolkit for Eclipse k vytváření Apache Sparkch aplikací](./apache-spark-eclipse-tool-plugin.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

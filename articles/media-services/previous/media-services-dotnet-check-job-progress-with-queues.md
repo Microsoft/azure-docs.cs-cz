@@ -3,7 +3,7 @@ title: Použití Azure Queue Storage k monitorování Media Servicesch oznámen�
 description: Naučte se používat Azure Queue Storage k monitorování oznámení úloh Media Services. Ukázka kódu je zapsána v jazyce C# a používá sadu SDK Media Services pro .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f535d0b5-f86c-465f-81c6-177f4f490987
@@ -12,19 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dc6ab94b3685e55125032b0afa52076eae72ba5b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060318"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016215"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Queue Storage k monitorování Media Servicesch oznámení úloh pomocí .NET 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Queue Storage k monitorování Media Servicesch oznámení úloh pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Když spouštíte úlohy kódování, často potřebujete způsob, jak sledovat průběh úloh. Můžete nakonfigurovat Media Services pro doručování oznámení do služby [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete monitorovat pomocí získání oznámení z úložiště front. 
 
@@ -64,7 +67,7 @@ Příklad kódu v této části provede následující:
 > [!NOTE]
 > Doporučeným způsobem, jak monitorovat stav úlohy, je naslouchat zprávám oznámení, jak je znázorněno v následujícím příkladu:
 >
-> Případně můžete zjistit stav úlohy pomocí vlastnosti **IJob. State** .  Předtím, než se stav v **IJob** nastaví na **dokončeno**, může dorazit zpráva oznámení o dokončení úlohy. Vlastnost **IJob. State** odráží přesný stav s mírným zpožděním.
+> Případně můžete zjistit stav úlohy pomocí vlastnosti **IJob. State** .  Předtím, než se stav v **IJob** nastaví na **dokončeno**, může dorazit zpráva oznámení o dokončení úlohy. Vlastnost **IJob. State**  odráží přesný stav s mírným zpožděním.
 >
 >
 

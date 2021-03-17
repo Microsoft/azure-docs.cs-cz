@@ -1,5 +1,5 @@
 - name: VMware Solution by CloudSimple
-  href: /azure/vmware-cloudsimple
+  href: ./index.md
   items:
     - name: Přehled
       items:
@@ -7,7 +7,7 @@
           href: cloudsimple-vmware-solutions-overview.md
         - name: Klíčové koncepty pro správu
           href: key-concepts.md
-    - name: Rychlý start
+    - name: Rychlé zprovoznění
       expanded: true
       items:
         - name: Plánování sítě
@@ -28,7 +28,7 @@
           href: cloudsimple-node.md
         - name: Privátní cloud
           href: cloudsimple-private-cloud.md
-        - name: Virtual Machines
+        - name: Virtuální počítače
           href: cloudsimple-virtual-machines.md
         - name: Sítě VLAN a podsítě
           href: cloudsimple-vlans-subnets.md
@@ -52,6 +52,8 @@
           href: node-quota.md
         - name: Údržba a aktualizace
           href: cloudsimple-maintenance-updates.md
+        - name: Zakázané akce
+          href: forbidden-actions.md
         - name: Nejčastější dotazy
           href: cloudsimple-faq.md
     - name: Kurzy
@@ -150,8 +152,6 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
               href: migrate-workloads.md
-            - name: Migrace s využitím Azure Data Boxu
-              href: migration-using-azure-data-box.md
             - name: Zajištění vysoké dostupnosti aplikace ve VMware v Azure
               href: ensuring-high-availability.md
             - name: Volba metody vyrovnávání zatížení
@@ -178,3 +178,7 @@
               href: on-premises-connection.md
             - name: Připojení virtuální sítě Azure s využitím ExpressRoute
               href: azure-expressroute-connection.md
+    - name: "Poznámky k\_verzi"
+      items:
+        - name: CloudSimple – aktualizace ze září 2020
+          href: update-plan-sept-2020.md

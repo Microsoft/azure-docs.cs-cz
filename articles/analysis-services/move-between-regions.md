@@ -4,16 +4,16 @@ description: Popisuje, jak přesunout prostředek Azure Analysis Services do jin
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497924"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
 
@@ -71,9 +71,9 @@ Pokud jsou nakonfigurovaná nastavení úložiště, pomocí kroků v části [z
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
-2. Vyberte **všechny prostředky**a potom vyberte Server Analysis Services.
+2. Vyberte **všechny prostředky** a potom vyberte Server Analysis Services.
 
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 
@@ -88,7 +88,7 @@ Export šablony pomocí webu Azure Portal:
 
 Export šablony pomocí prostředí PowerShell:
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -123,13 +123,13 @@ Získání sdíleného přístupového podpisu pomocí portálu:
 
 1. Na portálu vyberte účet úložiště, který se použije k zálohování databáze serveru.
 
-2. Vyberte **Průzkumník služby Storage**a potom rozbalte **kontejnery objektů BLOB**. 
+2. Vyberte **Průzkumník služby Storage** a potom rozbalte **kontejnery objektů BLOB**. 
 
 3. Klikněte pravým tlačítkem na kontejner úložiště a pak vyberte **získat sdílený přístupový podpis**.
 
     :::image type="content" source="media/move-between-regions/get-sas.png" alt-text="Získání sdíleného přístupového podpisu":::
 
-4. V případě **sdíleného přístupového podpisu**vyberte **vytvořit**. Ve výchozím nastavení vyprší platnost SAS za 24 hodin.
+4. V případě **sdíleného přístupového podpisu** vyberte **vytvořit**. Ve výchozím nastavení vyprší platnost SAS za 24 hodin.
 
 5. Zkopírujte a uložte **identifikátor URI**. 
 
@@ -177,7 +177,7 @@ Textový editor slouží k úpravě template.jssouboru, který jste exportovali,
 
 #### <a name="regions"></a>Oblasti
 
-Pokud chcete získat oblasti Azure, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Pokud chcete získat oblasti pomocí PowerShellu, spusťte příkaz [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) .
+Pokud chcete získat oblasti Azure, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Pokud chcete získat oblasti pomocí PowerShellu, spusťte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) .
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -191,7 +191,7 @@ K nasazení nového prostředku serveru v jiné oblasti použijete **template.js
 
 1. Na portálu vyberte **vytvořit prostředek**.
 
-2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
+2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
 
 3. Vyberte **template Deployment**.
 
@@ -199,7 +199,7 @@ K nasazení nového prostředku serveru v jiné oblasti použijete **template.js
 
 5. **V editoru vyberte vytvořit vlastní šablonu**.
 
-6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** soubor, který jste exportovali a upravili.
+6. Vyberte **načíst soubor** a potom podle pokynů načtěte **template.js** soubor, který jste exportovali a upravili.
 
 7. Ověřte, že editor šablon zobrazuje správné vlastnosti nového cílového serveru.
 
@@ -209,7 +209,7 @@ K nasazení nového prostředku serveru v jiné oblasti použijete **template.js
 
     - **Předplatné:** Vyberte předplatné Azure.
     
-    - **Skupina prostředků**: vyberte **vytvořit novou**a zadejte název skupiny prostředků. Můžete vybrat existující skupinu prostředků, která už neobsahuje Analysis Services Server se stejným názvem.
+    - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte název skupiny prostředků. Můžete vybrat existující skupinu prostředků, která už neobsahuje Analysis Services Server se stejným názvem.
     
     - **Umístění**: Vyberte stejnou oblast, kterou jste zadali v šabloně.
 
@@ -270,7 +270,7 @@ Volitelné: po obnovení databáze modelu zpracujte model a tabulky, které aktu
 
 1. Na portálu přejdete na nový cílový server.
 
-2. Na stránce Přehled v části **modely na serveru Analysis Services**ověřte, zda se zobrazí obnovené modely.
+2. Na stránce Přehled v části **modely na serveru Analysis Services** ověřte, zda se zobrazí obnovené modely.
 
 3. K připojení k modelu na novém serveru použijte klientskou aplikaci, jako je Power BI nebo Excel. Ověřte, zda se zobrazí objekty modelu, jako jsou tabulky, míry, hierarchie. 
 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> Po dokončení přesunu oblasti se doporučuje, aby nový cílový server používal kontejner úložiště ve stejné oblasti pro zálohování místo kontejneru úložiště v oblasti zdrojového serveru. 
+> Po dokončení přesunu oblasti se doporučuje, aby nový cílový server používal kontejner úložiště ve stejné oblasti pro zálohování místo kontejneru úložiště v oblasti zdrojového serveru.

@@ -2,19 +2,20 @@
 title: 'Kurz: zabezpečení webového serveru Windows pomocí certifikátů TLS/SSL v Azure'
 description: V tomto kurzu se naučíte používat Azure PowerShell k zabezpečení virtuálního počítače s Windows, na kterém běží webový server IIS s certifikáty TLS/SSL uloženými v Azure Key Vault.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: security
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3b65d04b383fdc0a409e23ab6b6649604be502c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1009d24c1fb8712e88075097460ad179629f478
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525581"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557399"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: zabezpečení webového serveru na virtuálním počítači s Windows v Azure s certifikáty TLS/SSL uloženými v Key Vault
 
@@ -80,7 +81,7 @@ Add-AzKeyVaultCertificate `
 
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-Pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -156,7 +157,7 @@ Získejte veřejnou IP adresu vašeho virtuálního počítače pomocí [Get-AzP
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `https://<myPublicIP>`. Pokud chcete upozornění zabezpečení přijmout, pokud jste použili certifikát podepsaný svým držitelem, vyberte **Podrobnosti** a pak **se na webovou stránku dostanete**takto:
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `https://<myPublicIP>`. Pokud chcete upozornění zabezpečení přijmout, pokud jste použili certifikát podepsaný svým držitelem, vyberte **Podrobnosti** a pak **se na webovou stránku dostanete** takto:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -177,4 +178,4 @@ V tomto kurzu jste zabezpečeni webový server služby IIS pomocí certifikátu 
 Na tomto odkazu najdete předem připravené ukázky skriptů pro virtuální počítače.
 
 > [!div class="nextstepaction"]
-> [Ukázky skriptů pro virtuální počítače s Windows](./powershell-samples.md)
+> [Ukázky skriptů pro virtuální počítače s Windows](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)

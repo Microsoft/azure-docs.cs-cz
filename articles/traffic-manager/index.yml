@@ -8,15 +8,15 @@ metadata:
   ms.service: traffic-manager
   ms.topic: landing-page
   ms.collection: collection
-  author: rohinkoul
-  ms.author: rohink
+  author: duongau
+  ms.author: duau
   ms.date: 08/19/2019
-  ms.openlocfilehash: 2159cd10327d5a2d58ed012d7e2572e9f8ec387b
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-  ms.translationtype: HT
+  ms.openlocfilehash: 43035d33019496e96af6fbd28add543fb80fe16d
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130752"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102506663"
 landingContent:
 - title: Informace o Traffic Manageru
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Vylepšení dostupnosti služeb a lokálnosti dat
-      url: https://docs.microsoft.com/learn/modules/distribute-load-with-traffic-manager/
+      url: /learn/modules/distribute-load-with-traffic-manager/
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
@@ -85,6 +85,6 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.trafficmanager/?view=azps-2.5.0
+      url: /powershell/module/az.trafficmanager/
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/network/traffic-manager?view=azure-cli-latest
+      url: https://docs.microsoft.com/cli/azure/network/traffic-manager

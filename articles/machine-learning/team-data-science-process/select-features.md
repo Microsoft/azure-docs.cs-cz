@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 940d4c465acb5e8478d2b204ab5b9b18c79254f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76716685"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321324"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Výběr funkcí ve vědeckém zpracování týmových dat (TDSP)
 Tento článek vysvětluje účely výběru funkcí a poskytuje příklady jeho role v procesu rozšíření dat Machine Learning. Tyto příklady se vykreslí z Azure Machine Learning Studio.
 
 Inženýrské a výběr funkcí je jednou z vědeckých procesů týmových dat (TDSP), které jsou uvedené v článku [co je vědecký proces týmových dat?](overview.md). Technologie a výběr funkcí jsou části kroku **vývoj funkcí** TDSP.
 
-* **inženýrské funkce**: Tento proces se pokusí vytvořit další relevantní funkce z existujících nezpracovaných funkcí v datech a zvýšit prediktivní sílu na školicí algoritmus.
-* **Výběr funkcí**: Tento proces vybere podmnožinu klíčových prvků pro původní data v pokusu snížit dimenzionální problém při výuce.
+* **inženýrské funkce** : Tento proces se pokusí vytvořit další relevantní funkce z existujících nezpracovaných funkcí v datech a zvýšit prediktivní sílu na školicí algoritmus.
+* **Výběr funkcí** : Tento proces vybere podmnožinu klíčových prvků pro původní data v pokusu snížit dimenzionální problém při výuce.
 
 Obvykle se pro generování dalších funkcí používá **inženýr funkcí** a pak se provede krok **výběru funkcí** , který eliminuje nepodstatné, redundantní nebo vysoce korelační funkce.
 
@@ -44,7 +44,7 @@ V Azure Machine Learning Studio jsou k dispozici moduly pro výběr funkcí. Jak
 
 Vezměte v úvahu například použití modulu [výběru funkcí založených na filtrech][filter-based-feature-selection] . Pro usnadnění práce pokračujte v příkladu dolování textu. Předpokládejme, že chcete sestavit regresní model poté, co je vytvořena sada funkcí 256 pomocí modulu [hashování funkcí][feature-hashing] a že proměnná odpovědi je "Sloupec1", která obsahuje knihu hodnocení v rozsahu od 1 do 5. Nastavením "metoda bodování funkce" na "Pearsonova Correlation", "cílový sloupec", který bude "Sloupec1", a "počet požadovaných funkcí" na 50. Pak [Výběr funkce založený na filtrech][filter-based-feature-selection] vytvoří datovou sadu obsahující 50 funkcí společně s atributem target "Sloupec1". Následující obrázek ukazuje tok tohoto experimentu a vstupní parametry:
 
-![Vlastnosti modulu výběru funkcí založených na filtrech](./media/select-features/feature-Selection1.png)
+![Filter-Based vlastností modulu výběru funkcí](./media/select-features/feature-Selection1.png)
 
 Následující obrázek ukazuje výsledné datové sady:
 
@@ -64,7 +64,6 @@ Vytváření funkcí a výběr funkcí jsou dvě běžně navržené a vybrané 
 Nemusíte vždycky nutně provádět strojírenství funkcí nebo výběr funkcí. Bez ohledu na to, jestli je to potřeba, závisí na shromažďovaných datech, zvoleném algoritmu a cíli experimentu.
 
 <!-- Module References -->
-[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
-[filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
-[fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
-
+[feature-hashing]: /azure/machine-learning/studio-module-reference/feature-hashing
+[filter-based-feature-selection]: /previous-versions/azure/dn905854(v=azure.100)
+[fisher-linear-discriminant-analysis]: /azure/machine-learning/studio-module-reference/fisher-linear-discriminant-analysis

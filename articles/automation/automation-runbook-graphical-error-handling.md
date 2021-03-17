@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8af64f2189625bcff5271855d6c0102551d1a535
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 24c7aaf08b4d22706bee8f37025b12a656ceaff5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895896"
 ---
 # <a name="handle-errors-in-graphical-runbooks"></a>Zpracování chyb v grafických runboocích
 
@@ -47,7 +47,7 @@ Doporučeným postupem je vytvoření vyhrazené sady Runbook pro zpracování c
 1. Pošle oznámení o tomto problému.
 2. Spustí další sadu Runbook, která místo toho automaticky zřídí nový virtuální počítač.
 
-Jedním z řešení je, aby v Runbooku bylo chybné propojení odkazující na aktivitu, která zpracovává krok 1. Sada Runbook může například připojit `Write-Warning` rutinu k aktivitě pro krok 2, například rutinu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) .
+Jedním z řešení je, aby v Runbooku bylo chybné propojení odkazující na aktivitu, která zpracovává krok 1. Sada Runbook může například připojit `Write-Warning` rutinu k aktivitě pro krok 2, například rutinu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) .
 
 Toto chování můžete také zobecnit pro použití v mnoha sadách Runbook tím, že tyto dvě aktivity vložíte do samostatného Runbooku pro zpracování chyb. Předtím, než původní sada Runbook zavolá tuto sadu Runbook pro zpracování chyb, může vytvořit vlastní zprávu z jejich dat a pak ji předat jako parametr do sady Runbook pro zpracování chyb.
 
@@ -59,7 +59,7 @@ Po povolení nastavení konfigurace budou mít vaše sada Runbook vytvořenou ak
 
 V následujícím příkladu sada Runbook načte proměnnou obsahující název virtuálního počítače. Pak se pokusí spustit virtuální počítač s další aktivitou.<br><br> ![Příklad zpracování chyb v Runbooku Automation](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-`Get-AutomationVariable`Aktivita a rutina [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) jsou nakonfigurovány na převod výjimek na chyby. Pokud dojde k potížím s získáním proměnné nebo spuštěním virtuálního počítače, kód generuje chyby.<br><br> ![Nastavení aktivity pro zpracování chyb v Runbooku Automation ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+`Get-AutomationVariable`Aktivita a rutina [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) jsou nakonfigurovány na převod výjimek na chyby. Pokud dojde k potížím s získáním proměnné nebo spuštěním virtuálního počítače, kód generuje chyby.<br><br> ![Nastavení aktivity pro zpracování chyb v Runbooku Automation ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
 Chyby odkazují z těchto aktivit na aktivitu jediného `error management` kódu. Tato aktivita je nakonfigurována pomocí jednoduchého výrazu prostředí PowerShell, který používá `throw` klíčové slovo k zastavení zpracování, a `$Error.Exception.Message` k získání zprávy s popisem aktuální výjimky.<br><br> ![Příklad kódu pro zpracování chyb v Runbooku Automation](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

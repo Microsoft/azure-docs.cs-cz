@@ -1,17 +1,14 @@
 ---
 title: Přehled clusterů Azure a samostatných Service Fabric
 description: Clustery Service Fabric můžete vytvořit na libovolném virtuálním počítači nebo na počítačích se systémem Windows Server nebo Linux. To znamená, že můžete nasazovat a spouštět aplikace Service Fabric v jakémkoli prostředí, kde máte sadu počítačů se systémem Windows Server nebo Linux, které jsou propojeny místně, Microsoft Azure nebo s jakýmkoli poskytovatelem cloudu.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
-ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751157"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576124"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porovnání clusterů Azure a samostatných Service Fabric v systému Windows Server a Linux
 
@@ -28,7 +25,7 @@ V Azure zajišťujeme integraci s dalšími funkcemi a službami Azure, což usn
 * **Service Fabric clusteru jako prostředek Azure** Cluster Service Fabric je prostředek Azure, takže ho můžete modelovat stejným způsobem jako ostatní prostředky v Azure.
 * **Integrace s infrastrukturou Azure** Service Fabric koordinuje základní infrastrukturu Azure pro operační systémy, sítě a další upgrady, aby se zlepšila dostupnost a spolehlivost vašich aplikací.  
 * **Diagnostika:** V Azure zajišťujeme integraci s nástroji Azure Diagnostics a protokoly Azure Monitor.
-* **Automatické škálování:** Pro clustery v Azure poskytujeme integrovanou funkci automatického škálování z důvodu sady škálování virtuálních počítačů. V místním i jiném cloudovém prostředí je nutné vytvořit vlastní funkci automatického škálování nebo ruční škálování pomocí rozhraní API, které Service Fabric zveřejňuje pro škálování clusterů.
+* Automatické **škálování:** Pro clustery v Azure poskytujeme integrované funkce automatického škálování prostřednictvím sady škálování virtuálních počítačů. V místním i jiném cloudovém prostředí je nutné vytvořit vlastní funkci automatického škálování nebo škálovat ručně pomocí rozhraní API, které Service Fabric zveřejňuje pro škálování clusterů.
 
 ## <a name="benefits-of-standalone-clusters"></a>Výhody samostatných clusterů
 

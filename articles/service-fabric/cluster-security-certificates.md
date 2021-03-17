@@ -3,13 +3,12 @@ title: Ověřování pomocí certifikátu X. 509 v clusteru Service Fabric
 description: Přečtěte si o ověřování pomocí certifikátů v Service Fabric clusterech a o tom, jak detekovat, zmírnit a opravovat problémy související s certifikátem.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.custom: sfrev
-ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259018"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729687"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Ověřování pomocí certifikátu X. 509 v clusterech Service Fabric
 
@@ -171,7 +170,10 @@ Certifikáty typu uzlu lze také deklarovat pomocí běžného názvu subjektu, 
   </NodeTypes>
 ```
 
-Pro oba typy deklarací načtou uzel Service Fabric konfiguraci při spuštění, vyhledá a načte zadané certifikáty a seřadí je v sestupném pořadí podle jejich atributu NotAfter; certifikáty s vypršenou platností jsou ignorovány a první prvek seznamu je vybrán jako pověření klienta pro jakékoli Service Fabric v rámci tohoto uzlu. (V důsledku toho Service Fabric upřednostní certifikát, který brzy vyprší.)
+Pro oba typy deklarací načtou uzel Service Fabric konfiguraci při spuštění, vyhledá a načte zadané certifikáty a seřadí je v sestupném pořadí podle jejich atributu NotBefore; certifikáty s vypršenou platností jsou ignorovány a první prvek seznamu je vybrán jako pověření klienta pro jakékoli Service Fabric v rámci tohoto uzlu. (V důsledku toho Service Fabric upřednostní naposledy vydaný certifikát.)
+
+> [!NOTE]
+> Před verzí 7.2.445 (7,2 CU4) Service Fabric vybrat certifikát s nejstarším vypršením platnosti (certifikát s vlastností "NotAfter").
 
 Všimněte si, že pro deklarace prezentace s běžným názvem se certifikát považuje za shodu, pokud se běžný název daného subjektu rovná poli X509FindValue (nebo X509FindValueSecondary) deklarace jako přesné porovnání řetězců s rozlišováním velkých a malých písmen. To je na rozdíl od ověřovacích pravidel, která podporují porovnávání se zástupnými znaky, stejně jako porovnávání řetězců bez rozlišení velkých a malých písmen.  
 

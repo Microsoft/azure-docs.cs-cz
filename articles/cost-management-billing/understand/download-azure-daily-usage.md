@@ -6,14 +6,15 @@ author: bandersmsft
 ms.author: banders
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.date: 08/20/2020
+ms.openlocfilehash: 141da3dfab9996110952ec266733271582e66ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460503"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439204"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Zobrazení a stažení informací o využití a poplatcích za Azure
 
@@ -27,12 +28,12 @@ Možnosti stažení informací o využití a poplatcích se liší v závislosti
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.  
-    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.
 1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
 1. V tabulce faktur najděte řádek s fakturačním obdobím odpovídajícím informacím o využití, které chcete stáhnout.
 1. Klikněte na **ikonu stahování** nebo tři tečky (`...`) na pravé straně.  
-  ![Screenshot ukazující umístění pro stahování využití a poplatků](./media/download-azure-daily-usage/download-usage-others.png)  
+  ![Snímek obrazovky se stránkou Faktury v části Cost Management + Billing a možností Stáhnout](./media/download-azure-daily-usage/download-usage-others.png)  
 1. Napravo se otevře podokno stahování. V části **Podrobnosti o využití** vyberte **Stáhnout**.  
 
 ## <a name="download-usage-for-ea-customers"></a>Stažení informací o využití pro zákazníky se smlouvou Enterprise
@@ -44,7 +45,7 @@ Pokud si chcete zobrazit a stáhnout data o využití jako zákazník se smlouvo
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. Vyberte **Využití a poplatky**.
 1. U měsíce, který chcete zobrazit, vyberte **Stáhnout**.  
-    ![Screenshot ukazující umístění pro stahování využití a poplatků](./media/download-azure-daily-usage/download-usage-ea.png)
+    ![Snímek obrazovky se stránkou Faktury v části Cost Management + Billing pro zákazníky se smlouvou Enterprise](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>Stažení informací o využití u nevyřízených poplatků
 

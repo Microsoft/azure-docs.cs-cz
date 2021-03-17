@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a903eb6000cdd5212ad358cae4952e27a4719070
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552114"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SuccessFactors
 
@@ -26,7 +26,6 @@ V tomto kurzu se dozvíte, jak integrovat SuccessFactors s Azure Active Director
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SuccessFactors svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,13 +39,12 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * SuccessFactors podporuje jednotné přihlašování iniciované v **SP** .
-* Po nakonfigurování SuccessFactors můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>Přidání SuccessFactors z Galerie
 
 Pokud chcete nakonfigurovat integraci SuccessFactors do služby Azure AD, musíte přidat SuccessFactors z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -58,12 +56,12 @@ Pokud chcete nakonfigurovat integraci SuccessFactors do služby Azure AD, musít
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SuccessFactors pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SuccessFactors.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SuccessFactors, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí SuccessFactors postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[Nakonfigurujte SUCCESSFACTORS SSO](#configure-successfactors-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte SUCCESSFACTORS SSO](#configure-successfactors-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
     1. **[Vytvořte SuccessFactors Test User](#create-successfactors-test-user)** -to, abyste měli protějšek B. Simon v SuccessFactors, která je propojená s reprezentací uživatele v Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -71,22 +69,22 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SuccessFactors** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **SuccessFactors** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
     - `https://<companyname>.successfactors.com/<companyname>`
     - `https://<companyname>.sapsf.com/<companyname>`
     - `https://<companyname>.successfactors.eu/<companyname>`
     - `https://<companyname>.sapsf.eu`
 
-    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
     - `https://www.successfactors.com/<companyname>`
     - `https://www.successfactors.com`
@@ -98,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     - `https://www.successfactors.cn`
     - `https://www.successfactors.cn/<companyname>`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
     - `https://<companyname>.successfactors.com/<companyname>`
     - `https://<companyname>.successfactors.com`
@@ -114,7 +112,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta SuccessFactors](https://www.sap.com/support.html) .
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -126,30 +124,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
     1. Do pole **Název** zadejte `B.Simon`.  
-    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k SuccessFactors.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **SuccessFactors**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-successfactors-sso"></a>Konfigurace jednotného přihlašování SuccessFactors
@@ -160,14 +152,14 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Přiložte do **tokenu Reset** libovolnou hodnotu a kliknutím na **Uložit token** povolte jednotné přihlašování SAML.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace][11]
+    ![Snímek obrazovky se zobrazí karta zabezpečení aplikace s funkcemi jednotného přihlašování, které se nazývají, kde můžete zadat token.][11]
 
     > [!NOTE]
     > Tato hodnota se používá jako přepínač Zapnuto/vypnuto. Pokud se nějaká hodnota uloží, je jednotné přihlašování SAML ZAPNUTé. Pokud je uložena prázdná hodnota, je jednotné přihlašování SAML vypnuto.
 
 4. Nativně na snímek obrazovky a proveďte následující akce:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace][12]
+    ![Snímek obrazovky ukazuje podokno pro s podporou SAML, kde můžete zadat hodnoty, které jsou popsány.][12]
   
     a. Vyberte přepínač **jednotného přihlašování SAML v2** .
   
@@ -181,7 +173,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Vyberte možnost **ne** jako **podpis žádosti o přihlášení (SF vygenerované/SP/RP)**.
 
-    například Jako **profil SAML**vyberte **browser nebo post profil** .
+    například Jako **profil SAML** vyberte **browser nebo post profil** .
 
     h. Vyberte **ne** , jako **vynutilo platné období certifikátu**.
 
@@ -192,9 +184,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Přejděte na SAML v2 a pak proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace][13]
+    ![Snímek obrazovky se zobrazí v podokně pro odhlášení inicializované SAML v2 S P, kde můžete zadat hodnoty, které jsou popsány.][13]
 
-    a. V případě **podpory globálního odhlašování iniciované SP**vyberte **Ano** .
+    a. V případě **podpory globálního odhlašování iniciované SP** vyberte **Ano** .
 
     b. Do textového pole Adresa URL služby **Websigning** **Service (LogoutRequest Destination)** vložte hodnotu URL pro odhlášení, kterou jste zkopírovali, do formuláře Azure Portal.
 
@@ -204,11 +196,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. Vyberte **Ano** jako **Povolit přihlášení iniciované SP (AuthnRequest)**.
 
-    f. Do textového pole **Odeslat žádost jako název vystavitele v rámci společnosti** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    f. Do textového pole **Odeslat žádost jako Company-Wide vystavitele** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
 6. Tyto kroky proveďte, pokud chcete, aby přihlašovací jména uživatele necitlivá velká a malá písmena.
 
-    ![Konfigurace jednotného přihlašování][29]
+    ![Konfigurace jednoho Sign-On][29]
 
     a. Přejděte na **nastavení společnosti**(v dolní části).
 
@@ -227,23 +219,18 @@ Pokud chcete získat uživatele vytvořené v SuccessFactors, musíte se obráti
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici SuccessFactors, měli byste se automaticky přihlásit k SuccessFactors, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k SuccessFactors, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje
+* Přejít na adresu URL pro přihlášení k SuccessFactors přímo a zahájit tok přihlášení.
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SuccessFactors v části Moje aplikace, přesměruje se na přihlašovací adresu SuccessFactors. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>Další kroky
 
-- [Vyzkoušejte si SuccessFactors s Azure AD](https://aad.portal.azure.com)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit SuccessFactors pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování SuccessFactors můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

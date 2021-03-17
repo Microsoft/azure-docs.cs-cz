@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113867"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935530"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Postup při odkazování na poznámky v Azure Kognitivní hledání dovednosti
 
@@ -25,7 +25,7 @@ Příklady v tomto článku jsou založené na poli *obsahu* generovaném automa
 
 Než začnete s syntaxí zkontrolovat, Podívejme se na několik důležitých konceptů, abychom lépe porozuměli ukázkám uvedeným dále v tomto článku.
 
-| Pojem | Description |
+| Období | Description |
 |------|-------------|
 | Obohacený dokument | Obohacený dokument je interní struktura vytvořená a používaná kanálem, aby obsahovala všechny poznámky týkající se dokumentu. Obohacený dokument si můžete představit jako strom poznámek. Obecně platí, že Poznámka vytvořená z předchozí poznámky se zobrazí jako podřízená.<p/>Obohacené dokumenty existují pouze po dobu trvání provádění dovednosti. Po namapování obsahu na index vyhledávání už obohacený dokument není potřeba. I když nepracujete s obohacenými dokumenty přímo, je vhodné mít při vytváření dovednosti k dispozici duševní modely dokumentů. |
 | Kontext obohacení | Kontext, ve kterém probíhá obohacení, s ohledem na to, který prvek je obohacen. Ve výchozím nastavení je kontext rozšíření obohacen na `"/document"` úrovni a je vymezen na jednotlivé dokumenty. Když se dovednost spustí, výstupy této dovednosti se stanou [vlastnostmi definovaného kontextu](#example-2).|
@@ -95,7 +95,7 @@ Když jsou poznámky pole nebo kolekce řetězců, můžete chtít cílit na kon
 
 Někdy je nutné seskupit všechny poznámky určitého typu, aby je bylo možné předat konkrétní dovednosti. Vezměte v úvahu hypotetickou vlastní dovednost, která určuje nejběžnější příjmení ze všech posledních názvů extrahovaných v příkladu 2. Chcete-li zadat pouze poslední názvy vlastní dovednosti, zadejte kontext jako a jako `"/document"` vstup `"/document/people/*/lastname"` .
 
-Všimněte si, že mohutnost `"/document/people/*/lastname"` je větší než v dokumentu. V případě, že je pro tento dokument k dispozici pouze jeden uzel dokumentu, může dojít k 10 uzlům LastName. V takovém případě systém automaticky vytvoří pole `"/document/people/*/lastname"` obsahující všechny prvky v dokumentu.
+Všimněte si, že mohutnost `"/document/people/*/lastname"` je větší než v dokumentu. V případě, že je pro tento dokument k dispozici pouze jeden uzel dokumentu, může dojít k 10 uzlům LastName. V takovém případě systém automaticky vytvoří pole  `"/document/people/*/lastname"` obsahující všechny prvky v dokumentu.
 
 ```json
   {
@@ -123,5 +123,5 @@ Všimněte si, že mohutnost `"/document/people/*/lastname"` je větší než v 
 ## <a name="see-also"></a>Viz také
 + [Jak integrovat vlastní dovednosti do kanálu pro obohacení](cognitive-search-custom-skill-interface.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)
 + [Mapování obohacených polí na index](cognitive-search-output-field-mapping.md)

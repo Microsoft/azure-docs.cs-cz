@@ -4,15 +4,15 @@ description: Naučte se používat Salesforce ke konfiguraci zájemců pro Micro
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117111"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489314"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy zájemců pro Salesforce
 
@@ -48,11 +48,11 @@ Tento článek popisuje, jak nastavit systém Salesforce pro zpracování potenc
    Zbývající kroky jsou pro obě prostředí Salesforce stejné.
 
 1. Na stránce **Nastavení webu na základě potenciálního zákazníka** vyberte tlačítko **vytvořit formulář na webu pro** pořízení.
-1. Při **instalaci z webu na potenciálního zákazníka**vyberte **vytvořit webový formulář pro**vyřízení.
+1. Při **instalaci z webu na potenciálního zákazníka** vyberte **vytvořit webový formulář pro** vyřízení.
 
     ![Nastavení webu Salesforce Web-to-zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-1. V části **vytvořit webový formulář pro vyřízení**se ujistěte, že `Include reCAPTCHA in HTML` je nastavení vymazáno a vyberte **Generovat**.
+1. V části **vytvořit webový formulář pro vyřízení** se ujistěte, že `Include reCAPTCHA in HTML` je nastavení vymazáno a vyberte **Generovat**.
 
     ![Podokno formuláře pro vytváření webů a zájemců Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
@@ -78,7 +78,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
     ![Místní okno s podrobnostmi o připojení ověření e-mailového pole kontaktu](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
 
-1. V části **kontaktní e-mail**zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
+1. V části **kontaktní e-mail** zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
 
 1. Vyberte **OK**.
 

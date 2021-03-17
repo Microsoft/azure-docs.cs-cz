@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220300"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351925"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Bingu pro vyhledávání videí usnadňuje integraci funkcí vyhledávání zpráv Bingu ve vašich aplikacích. I když rozhraní API primárně najde a vrátí relevantní videa z webu, nabízí několik funkcí pro inteligentní a cílené načítání videí na webu.
 
@@ -39,13 +44,13 @@ Všechny požadavky se musí provádět ze serveru.
 
 Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Pokud chcete získat videa z konkrétní domény, použijte operátor dotazu [site:](https://msdn.microsoft.com/library/ff795613.aspx).
+Pokud chcete získat videa z konkrétní domény, použijte operátor dotazu [site:](/previous-versions/bing/search/ff795613(v=msdn.10)).
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Odpověď obsahuje objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) se seznamem videí, které Bing vyhodnotil jako relevantní pro daný dotaz. Každý objekt [Video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) v seznamu obsahuje mimo další atributy i adresu URL videa, dobu jeho trvání, rozměry a formát kódování. Objekt videa obsahuje také adresu URL miniatury videa a její rozměry.
+Odpověď obsahuje objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) se seznamem videí, které Bing vyhodnotil jako relevantní pro daný dotaz. Každý objekt [Video](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) v seznamu obsahuje mimo další atributy i adresu URL videa, dobu jeho trvání, rozměry a formát kódování. Objekt videa obsahuje také adresu URL miniatury videa a její rozměry.
 
 ```json
 {
@@ -98,9 +103,9 @@ Odpověď obsahuje objekt [Videos](https://docs.microsoft.com/rest/api/cognitive
 
 ## <a name="video-thumbnails"></a>Miniatury videa
 
-Můžete zobrazit všechny nebo podmnožinu miniatur videa vrácených rozhraní API Bingu pro vyhledávání videí. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. v rámci [požadavků na použití a zobrazení](../UseAndDisplayRequirements.md)rozhraní API Bingu je nutné zobrazit videa v uvedeném pořadí v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
+Můžete zobrazit všechny nebo podmnožinu miniatur videa vrácených rozhraní API Bingu pro vyhledávání videí. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. v rámci [požadavků na použití a zobrazení](../../bing-web-search/use-display-requirements.md)rozhraní API Bingu je nutné zobrazit videa v uvedeném pořadí v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
-Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) spustit přehrávání miniatury videa. Ujistěte se, že je při zobrazení přiřazená filmová miniatura.
+Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) spustit přehrávání miniatury videa. Ujistěte se, že je při zobrazení přiřazená filmová miniatura.
 
 <!-- Removing until the images can be sanitized.
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -108,27 +113,27 @@ Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](
 
 Při kliknutí na miniaturu jsou k dispozici tři možnosti zobrazení videa:
 
-- Použitím adresy [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) zobrazíte video na webu hostitele (například YouTube)
-- Použitím adresy [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) zobrazíte video v prohlížeči videa Bingu
-- Použitím adresy [embdedHtml](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) můžete vložit video do vlastního prostředí 
+- Použitím adresy [hostPageUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) zobrazíte video na webu hostitele (například YouTube)
+- Použitím adresy [webSearchUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) zobrazíte video v prohlížeči videa Bingu
+- Použitím adresy [embdedHtml](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) můžete vložit video do vlastního prostředí 
 
 Ujistěte se, že při přehrávání k videu přiřadíte atributy creator a publisher.
 
-Podrobné informace o použití [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) k získání přehledu o videu naleznete v tématu [Přehledy z videí](../video-insights.md).
+Podrobné informace o použití [videoId](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) k získání přehledu o videu naleznete v tématu [Přehledy z videí](../video-insights.md).
 
 ## <a name="filtering-videos"></a>Filtrování videí
 
 Ve výchozím nastavení vrací rozhraní API Bingu pro vyhledávání videí všechna videa, která jsou pro dotaz relevantní. Pokud chcete zobrazit pouze videa zdarma nebo videa kratší než pět minut, můžete použít následující parametry dotazu filtru:
 
-- [videa o cenovém](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;filtru podle ceny (například videa, která jsou zdarma nebo které je třeba zaplatit)
-- [rozlišení](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;videí pro filtrování podle rozlišení (například videí s rozlišením 720p nebo vyšším)
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;filtrovat videa podle délky videa (například videa, která jsou delší než pět minut)
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;videa o filtrech aktuálnosti podle stáří (například videa zjištěná bingem za minulý týden)
+- [ceny](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash; Filtrovat videa podle ceny (například videa, která jsou zdarma nebo které je třeba zaplatit)
+- [řešení](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash; Filtrovat videa podle rozlišení (například videí s rozlišením 720p nebo vyšším)
+- [videoLength](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash; Filtrovat videa podle délky videa (například videa, která jsou delší než pět minut)
+- [aktuálnost](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash; Filtrovat videa podle věku (například videa zjištěná bingem za minulý týden)
 
-Pokud chcete získat videa z konkrétní domény, použijte v řetězci dotazu operátor [site:](https://msdn.microsoft.com/library/ff795613.aspx).
+Pokud chcete získat videa z konkrétní domény, použijte v řetězci dotazu operátor [site:](/previous-versions/bing/search/ff795613(v=msdn.10)).
 
 > [!NOTE]
-> Pokud použijete operátor `site:`, v závislosti na dotazu existuje jistá pravděpodobnost, že odpověď bude obsahovat obsah pro dospělé, a to bez ohledu na nastavení [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch). Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
+> Pokud použijete operátor `site:`, v závislosti na dotazu existuje jistá pravděpodobnost, že odpověď bude obsahovat obsah pro dospělé, a to bez ohledu na nastavení [safeSearch](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch). Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
 
 Následující příklad ukazuje, jak získat bezplatná videa z webu ContosoSailing.com, která mají rozlišení obrazovky 720p nebo vyšší a Bing je našel během posledního měsíce.
 
@@ -144,7 +149,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozšíření dotazu
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud byl původní dotaz *čištění okapů*, rozšířené dotazy můžou být: **nástroje na** čištění okapů, čištění okapů **ze země**, **Stroj na** čištění okapů a **snadné** čištění okapů.
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud byl původní dotaz *čištění okapů*, rozšířené dotazy můžou být: **nástroje na** čištění okapů, čištění okapů **ze země**, **Stroj na** čištění okapů a **snadné** čištění okapů.
 
 Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů*.
 
@@ -171,11 +176,11 @@ Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění oka
 }
 ```
 
-Pole `queryExpansions` obsahuje seznam objektů [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj). Pole `text` obsahuje rozšířený dotaz a pole `displayText` obsahuje termín rozšíření. Pomocí polí text a miniatura můžete uživateli zobrazit rozšířené řetězce dotazů pro případ, že ve skutečnosti hledá právě rozšířený řetězec dotazu. Pomocí adresy URL `webSearchUrl` nebo `searchLink` můžete umožnit kliknutí na miniaturu a text. Pomocí hodnoty `webSearchUrl` můžete uživatele přesměrovat na výsledky hledání Bingu. Případně můžete použít hodnotu `searchLink`, pokud máte vlastní stránku výsledků.
+Pole `queryExpansions` obsahuje seznam objektů [Query](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj). Pole `text` obsahuje rozšířený dotaz a pole `displayText` obsahuje termín rozšíření. Pomocí polí text a miniatura můžete uživateli zobrazit rozšířené řetězce dotazů pro případ, že ve skutečnosti hledá právě rozšířený řetězec dotazu. Pomocí adresy URL `webSearchUrl` nebo `searchLink` můžete umožnit kliknutí na miniaturu a text. Pomocí hodnoty `webSearchUrl` můžete uživatele přesměrovat na výsledky hledání Bingu. Případně můžete použít hodnotu `searchLink`, pokud máte vlastní stránku výsledků.
 
 ## <a name="pivoting-the-query"></a>Rozdělení dotazu na pivoty
 
-Pokud Bing dokáže segmentovat původní vyhledávací dotaz, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `pivotSuggestions`. Pokud byl původní dotaz například *čištění okapů*, může ho Bing segmentovat na *čištění* a *okapů*.
+Pokud Bing dokáže segmentovat původní vyhledávací dotaz, bude objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `pivotSuggestions`. Pokud byl původní dotaz například *čištění okapů*, může ho Bing segmentovat na *čištění* a *okapů*.
 
 Následující příklad ukazuje návrhy pivotů pro dotaz *čištění okapů*.
 
@@ -222,7 +227,7 @@ Následující příklad ukazuje návrhy pivotů pro dotaz *čištění okapů*.
 }
 ```
 
-Pro každý pivot obsahuje odpověď seznam objektů [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj), které obsahují navrhované dotazy. Pole `text` obsahuje navrhovaný dotaz a pole `displayText` obsahuje termín, který nahradí pivot v původním dotazu. Například čištění oken.
+Pro každý pivot obsahuje odpověď seznam objektů [Query](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj), které obsahují navrhované dotazy. Pole `text` obsahuje navrhovaný dotaz a pole `displayText` obsahuje termín, který nahradí pivot v původním dotazu. Například čištění oken.
 
 Pomocí polí `text` a `thumbnail` můžete uživateli zobrazit rozšířené řetězce dotazů pro případ, že ve skutečnosti hledá právě rozšířený řetězec dotazu. Pomocí adresy URL `webSearchUrl` nebo `searchLink` můžete umožnit kliknutí na miniaturu a text. Pomocí hodnoty `webSearchUrl` můžete uživatele přesměrovat na výsledky hledání Bingu. Případně můžete použít hodnotu `searchLink`, pokud máte vlastní stránku výsledků.
 

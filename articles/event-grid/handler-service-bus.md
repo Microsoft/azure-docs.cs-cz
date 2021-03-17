@@ -2,13 +2,13 @@
 title: Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
 description: Popisuje, jak můžete použít Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105689"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399855"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Service Bus** je jednou z nich. 
@@ -32,7 +32,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
 ```
 
-## <a name="service-bus-topics"></a>Service Bus témata
+## <a name="service-bus-topics"></a>Témata služby Service Bus
 
 Události v Event Grid můžete směrovat přímo do Service Busch témat pro zpracování událostí systému Azure pomocí Service Bus témata nebo pro scénáře zasílání zpráv pomocí příkazů řízení &.
 
@@ -40,7 +40,7 @@ V Azure Portal při vytváření odběru událostí vyberte **Service Bus téma*
 
 ### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Přidání obslužné rutiny tématu Service Bus pomocí rozhraní příkazového řádku
 
-V případě Azure CLI následující příklad přihlašuje a připojí téma Event gridu k frontě Service Bus:
+V případě Azure CLI následující příklad přihlašuje a připojí téma Event gridu k Service Bus tématu:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -50,21 +50,11 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-## <a name="message-properties"></a>Vlastnosti zprávy
-Použijete-li **Service Bus téma nebo frontu** jako obslužnou rutinu události z Event Grid, nastavte následující záhlaví zpráv: 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| Název vlastnosti | Description |
-| ------------- | ----------- | 
-| AEG-Subscription-Name | Název odběru události |
-| AEG – počet doručení | <p>Počet pokusů o provedení události.</p> <p>Příklad: "1"</p> |
-| AEG-typ události | <p>Typ události</p><p> Příklad: Microsoft. Storage. blobCreated</p> | 
-| AEG – metadata – verze | <p>Verze události v metadatech</p> <p>Příklad: "1".</p><p> Pro **Event Grid schéma událostí**Tato vlastnost představuje verzi metadat a pro **schéma cloudové události**představuje **verzi specifikace**. </p>|
-| AEG-data-verze | <p>Verze dat události</p><p>Příklad: "1".</p><p>Pro **Event Grid schéma událostí**Tato vlastnost představuje verzi dat a pro **schéma cloudových událostí**se nepoužije.</p> |
+Při odesílání události do fronty Service Bus nebo tématu jako zprostředkované zprávy je ve službě zprostředkované zprávy `messageid` interní ID systému.
 
-## <a name="message-headers"></a>Záhlaví zpráv
-Při odesílání události do fronty Service Bus nebo tématu jako zprostředkované zprávy `messageid` je ID zprostředkované zprávy **ID události**.
-
-ID události bude zachováno v průběhu Redistribuce události, takže se můžete vyhnout duplicitním dodávkám zapnutím **duplicity v** entitě Service Bus. Doporučujeme povolit dobu trvání duplicity u Service Bus entity tak, aby byla buď hodnota TTL (Time to Live) pro událost nebo maximální doba opakování, podle toho, co je delší.
+Interní ID systému pro zprávu bude udržováno v průběhu předoručení události, takže se můžete vyhnout duplicitním dodávkám zapnutím **duplicity v** entitě Service Bus. Doporučujeme povolit dobu trvání duplicity u Service Bus entity tak, aby byla buď hodnota TTL (Time to Live) pro událost nebo maximální doba opakování, podle toho, co je delší.
 
 ## <a name="rest-examples-for-put"></a>Příklady REST (pro PUT)
 

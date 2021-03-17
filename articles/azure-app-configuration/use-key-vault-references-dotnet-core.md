@@ -3,8 +3,7 @@ title: Kurz použití konfigurace aplikace Azure Key Vault odkazy v aplikaci ASP
 description: V tomto kurzu se naučíte používat Key Vault odkazy na konfiguraci aplikací Azure z aplikace ASP.NET Core.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 37bc7fbcd366455668d5316e45ffbf79127a49f3
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213254"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981218"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Kurz: použití odkazů Key Vault v aplikaci ASP.NET Core
 
@@ -41,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z ASP.NET Core webové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -51,25 +50,25 @@ Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.micro
 
 1. V levém horním rohu Azure Portal vyberte možnost **vytvořit prostředek** :
 
-    ![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/search-services.png)
+    ![Snímek obrazovky ukazuje možnost vytvořit prostředek v Azure Portal.](./media/quickstarts/search-services.png)
 1. Do vyhledávacího pole zadejte **Key Vault**.
 1. V seznamu výsledků vyberte na levé straně **trezory klíčů** .
-1. V **trezorech klíčů**vyberte **Přidat**.
-1. Na pravé straně v části **Vytvoření trezoru klíčů**zadejte následující informace:
+1. V **trezorech klíčů** vyberte **Přidat**.
+1. Na pravé straně v části **Vytvoření trezoru klíčů** zadejte následující informace:
     - Vyberte **předplatné** a zvolte předplatné.
-    - V případě **skupiny prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
-    - V **názvu trezoru klíčů**je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
+    - V případě **skupiny prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V **názvu trezoru klíčů** je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
     - V rozevíracím seznamu **oblast** vyberte umístění.
 1. Ostatní možnosti **Vytvoření trezoru klíčů** ponechte výchozí hodnoty.
 1. Vyberte **Vytvořit**.
 
 V tomto okamžiku je váš účet Azure jediným autorizovaným oprávněním pro přístup k tomuto novému trezoru.
 
-![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/vault-properties.png)
+![Snímek obrazovky se zobrazí v trezoru klíčů.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva**a v ní uložíte hodnotu Hello z Key Vault.
+Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva** a v ní uložíte hodnotu Hello z Key Vault.
 
 1. Na stránkách vlastností Key Vault vyberte **tajné klíče**.
 1. Vyberte **Generovat/importovat**.
@@ -82,19 +81,19 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
-1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů** a pak zadejte následující hodnoty:
     - **Klíč**: vyberte **TestApp: Settings: KeyVaultMessage**.
     - **Popisek**: Nechte tuto hodnotu prázdnou.
-    - **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozí části.
+    - **Předplatné**, **Skupina prostředků** a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozí části.
     - **Tajný kód**: vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
 
 ## <a name="connect-to-key-vault"></a>Připojení k Key Vault
 
-1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) :
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
@@ -122,7 +121,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Přidejte proměnné prostředí pro uložení hodnot *ClientID*, *clientSecret*a *tenantId*.
+1. Přidejte proměnné prostředí pro uložení hodnot *ClientID*, *clientSecret* a *tenantId*.
 
     #### <a name="windows-command-prompt"></a>[Příkazový řádek systému Windows](#tab/cmd)
 
@@ -163,7 +162,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     dotnet add package Azure.Identity
     ```
 
-1. Otevřete *program.cs*a přidejte odkazy na následující požadované balíčky:
+1. Otevřete *program.cs* a přidejte odkazy na následující požadované balíčky:
 
     ```csharp
     using Azure.Identity;
@@ -216,7 +215,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 1. Po inicializaci připojení k konfiguraci aplikace nastavíte připojení k Key Vault voláním `ConfigureKeyVault` metody. Po inicializaci můžete přistupovat k hodnotám Key Vault odkazů stejným způsobem jako při přístupu k hodnotám běžných konfiguračních klíčů aplikací.
 
-    Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v **Views**  >  **domovské** složce zobrazení. Jeho obsah nahraďte následujícím kódem.
+    Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v   >  **domovské** složce zobrazení. Jeho obsah nahraďte následujícím kódem.
 
     ```html
     @using Microsoft.Extensions.Configuration

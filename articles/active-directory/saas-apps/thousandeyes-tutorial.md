@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546453"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514584"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ThousandEyes
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat ThousandEyes s Azure Active Directory 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k ThousandEyes svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * ThousandEyes podporuje jednotné přihlašování (SSO) **a IDP** .
-* ThousandEyes podporuje [ **automatizované** zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+* ThousandEyes podporuje [ **automatizované** zřizování uživatelů](./thousandeyes-provisioning-tutorial.md)
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
@@ -103,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -129,11 +129,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V nabídce v horní části klikněte na **Nastavení**.
 
-    ![Nastavení](./media/thousandeyes-tutorial/ic790066.png "Nastavení")
+    ![Snímek obrazovky se zobrazí web ThousandEyes s vybraným nastavením.](./media/thousandeyes-tutorial/ic790066.png "Nastavení")
 
 3. Kliknout na **účet**
 
-    ![Účet](./media/thousandeyes-tutorial/ic790067.png "Účet")
+    ![Snímek obrazovky zobrazuje účet vybraný v nabídce nastavení.](./media/thousandeyes-tutorial/ic790067.png "Účet")
 
 4. Klikněte na kartu **ověřování & zabezpečení** .
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. V části **nastavení jednotného přihlašování** proveďte následující kroky:
 
-    ![Nastavit jednotné přihlašování](./media/thousandeyes-tutorial/ic790069.png "Nastavit jednotné přihlašování")
+    ![Nastavit jednotné přihlašování](./media/thousandeyes-tutorial/ic790069.png "Nastavit jeden Sign-On")
 
     a. Vyberte **Povolit jednotné přihlašování**.
 
@@ -165,11 +165,11 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v ThousandEy
 
 2. Klikněte na **Nastavení**.
 
-    ![Nastavení](./media/thousandeyes-tutorial/IC790066.png "Nastavení")
+    ![Snímek obrazovky se zobrazí web ThousandEyes s vybraným nastavením.](./media/thousandeyes-tutorial/ic790066.png "Nastavení")
 
 3. Klikněte na **účet**.
 
-    ![Účet](./media/thousandeyes-tutorial/IC790067.png "Účet")
+    ![Snímek obrazovky zobrazuje účet vybraný v nabídce nastavení.](./media/thousandeyes-tutorial/ic790067.png "Účet")
 
 4. Klikněte na kartu **účty & uživatelé** .
 
@@ -196,16 +196,16 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v ThousandEy
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ThousandEyes, měli byste se automaticky přihlásit k ThousandEyes, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ThousandEyes, měli byste se automaticky přihlásit k ThousandEyes, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si ThousandEyes s Azure AD](https://aad.portal.azure.com/)
 
-- [Konfigurace zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+- [Konfigurace zřizování uživatelů](./thousandeyes-provisioning-tutorial.md)

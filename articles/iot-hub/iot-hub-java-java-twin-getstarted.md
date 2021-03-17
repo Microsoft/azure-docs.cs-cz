@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327595"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217852"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme se zdvojením zařízení (Java)
 
@@ -31,7 +31,7 @@ V tomto kurzu vytvoříte dvě konzolové aplikace Java:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java se Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -380,7 +380,7 @@ Nyní jste připraveni spustit konzolové aplikace.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Aplikace služby Java IoT Hub pro aktualizaci hodnot značek a spuštění dotazů na zařízení](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Snímek obrazovky, který zobrazuje výstup příkazu pro spuštění aplikace služby dotazů na přidání značek](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     Můžete zobrazit značky **zařízení** a **oblasti** přidané do vlákna zařízení. První dotaz vrátí vaše zařízení, ale druhá ne.
 
@@ -390,7 +390,7 @@ Nyní jste připraveni spustit konzolové aplikace.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Klient zařízení přidá vlastnost hlášené * * connectivityType * *.](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Klient zařízení přidá vlastnost nahlášený typ připojení.](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. Na příkazovém řádku ve složce **Add-tags-Query** spusťte následující příkaz pro spuštění aplikace služby pro dotaz rutiny **Add-tags-Tags** :
 

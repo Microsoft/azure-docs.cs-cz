@@ -1,6 +1,6 @@
 ---
-title: Modul C# IoT Edge pro Azure Stack Edge | Microsoft Docs
-description: Naučte se vyvíjet modul C# IoT Edge, který se dá nasadit na Azure Stack Edge.
+title: Modul C# IoT Edge pro Azure Stack Edge pro | Microsoft Docs
+description: Naučte se vyvíjet modul C# IoT Edge, který se dá nasadit na Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,48 +8,49 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339888"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951141"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Vývoj modulu C# IoT Edge pro přesunutí souborů na Azure Stack Edge
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Vývoj modulu C# IoT Edge pro přesun souborů pomocí Azure Stack Edge pro
 
-Tento článek popisuje, jak vytvořit modul IoT Edge pro nasazení pomocí Azure Stack hraničního zařízení. Azure Stack Edge je řešení úložiště, které umožňuje zpracovávat data a odesílat je přes síť do Azure.
+Tento článek popisuje, jak vytvořit modul IoT Edge pro nasazení s vaším zařízením Azure Stack Edge pro. Azure Stack Edge pro je řešení úložiště, které umožňuje zpracovávat data a odesílat je přes síť do Azure.
 
-K transformaci dat při jejich přesunu do Azure můžete použít Azure IoT Edge moduly s okrajem Azure Stack. Modul použitý v tomto článku implementuje logiku ke zkopírování souboru z místního sdílení do sdílené složky v cloudu na Azure Stack hraničním zařízení.
+K transformaci dat při jejich přesunu do Azure můžete použít Azure IoT Edge moduly s Azure Stack Edge pro. Modul použitý v tomto článku implementuje logiku ke kopírování souboru z místní sdílené složky do sdílené složky v cloudu na zařízení Azure Stack Edge pro.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
 > * Vytvořte registr kontejnerů pro ukládání a správu modulů (Image Docker).
-> * Vytvořte modul IoT Edge pro nasazení na zařízení Azure Stack Edge. 
+> * Vytvořte modul IoT Edge pro nasazení na zařízení Azure Stack Edge pro. 
 
 
 ## <a name="about-the-iot-edge-module"></a>O modulu IoT Edge
 
-Vaše zařízení Azure Stack Edge může nasazovat a spouštět IoT Edge moduly. Hraniční moduly jsou v podstatě kontejnery Docker, které provádějí konkrétní úlohu, například ingestování zprávy ze zařízení, transformace zprávy nebo odeslání zprávy na IoT Hub. V tomto článku vytvoříte modul, který kopíruje soubory z místní sdílené složky do sdílené složky v cloudu na Azure Stack hraničním zařízení.
+Vaše zařízení Azure Stack Edge pro může nasazovat a spouštět IoT Edge moduly. Hraniční moduly jsou v podstatě kontejnery Docker, které provádějí konkrétní úlohu, například ingestování zprávy ze zařízení, transformace zprávy nebo odeslání zprávy na IoT Hub. V tomto článku vytvoříte modul, který kopíruje soubory z místní sdílené složky do sdílené složky cloudu na zařízení Azure Stack Edge pro.
 
-1. Soubory se zapisují do místní sdílené složky na zařízení Azure Stack Edge.
+1. Soubory jsou zapsány do místní sdílené složky na vašem zařízení Azure Stack Edge pro.
 2. Generátor událostí souboru vytvoří událost souboru pro každý soubor zapsaný do místní sdílené složky. Události souboru jsou také generovány při změně souboru. Události souboru se pak odesílají do centra IoT Edge (v IoT Edge Runtime).
 3. Vlastní modul IoT Edge zpracovává událost souboru pro vytvoření objektu události souboru, který obsahuje také relativní cestu k souboru. Modul vygeneruje absolutní cestu pomocí relativní cesty k souboru a zkopíruje soubor z místní sdílené složky do sdílené složky cloudu. Modul pak odstraní soubor z místní sdílené složky.
 
-![Jak Azure IoT Edge modul funguje na Azure Stack Edge](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
+![Jak Azure IoT Edge modul funguje na Azure Stack Edge pro](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
 
 Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
-- Azure Stack hraniční zařízení, na kterém běží.
+- Zařízení Azure Stack Edge pro, na kterém běží.
 
     - Zařízení má také přidružený prostředek IoT Hub.
     - U zařízení je nakonfigurované role pro výpočetní výkon.
-    Další informace najdete na webu [Konfigurace výpočtů](azure-stack-edge-deploy-configure-compute.md#configure-compute) pro Azure Stack Edge.
+    Další informace najdete v pro [nastavení služby COMPUTE](azure-stack-edge-deploy-configure-compute.md#configure-compute) pro Azure Stack Edge pro.
 
 - Následující zdroje pro vývoj:
 
@@ -59,7 +60,7 @@ Než začnete, ujistěte se, že máte následující:
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Možná budete muset vytvořit účet ke stažení a instalaci softwaru.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. K dispozici jsou dvě oblíbené služby Docker Registry v cloudu Azure Container Registry a Docker Hub. Tento článek používá Container Registry.
 
@@ -258,7 +259,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
  
 3. Po zadání přihlašovacích údajů můžete do služby Azure Container Registry odeslat image modulu. V Průzkumníku VS Code klikněte pravým tlačítkem na **module.jsna** soubor a vyberte **sestavení a nabízené IoT Edge řešení**.
 
-    ![Sestavování a nabízených IoT Edge řešení](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Sestavení a nabízená IoT Edge řešení 2](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Když Visual Studio Code poznáte, že se má vaše řešení sestavit, spustí se dva příkazy v integrovaném terminálu: sestavení Docker a Docker push. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vaší knihovny CSharpModule.dll a odešlou ji do registru kontejneru, který jste zadali při inicializaci řešení.
 
@@ -277,4 +278,4 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nasadit a spustit tento modul na Azure Stack Edge, přečtěte si postup v tématu [Přidání modulu](azure-stack-edge-deploy-configure-compute.md#add-a-module).
+Pokud chcete nasadit a spustit tento modul na Azure Stack Edge pro, přečtěte si postup v tématu [Přidání modulu](azure-stack-edge-deploy-configure-compute.md#add-a-module).

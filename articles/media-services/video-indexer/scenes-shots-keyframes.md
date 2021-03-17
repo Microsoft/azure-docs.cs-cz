@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691335"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041900"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
 
@@ -46,9 +46,9 @@ K extrakci klíčových snímků s vysokým rozlišením pro vaše video musíte
 
 #### <a name="with-the-video-indexer-website"></a>S webem Video Indexer
 
-K extrakci klíčových snímků pomocí Video Indexer webu Nahrajte video a zaindexujte ho. Po dokončení úlohy indexování klikněte na tlačítko **Stáhnout** a vyberte **artefakty (ZIP)**. Tato akce stáhne složku artefaktů do vašeho počítače. 
+K extrakci klíčových snímků pomocí Video Indexer webu Nahrajte video a zaindexujte ho. Po dokončení úlohy indexování klikněte na tlačítko **Stáhnout** a vyberte **artefakty (ZIP)** . Tato akce stáhne složku artefaktů do vašeho počítače. 
 
-![Klíčové snímky](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![Snímek obrazovky, který zobrazuje rozevírací seznam stáhnout s vybranými artefakty](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
 Rozbalte a otevřete složku. Ve složce *_KeyframeThumbnail* se nacházejí všechny klíčové snímky, které byly extrahovány z vašeho videa. 
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009218"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746816"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure ověřenou �
 
 Tento proces používá Active Directory Domain Services (služba AD DS), což je adresářová služba Prem. Pokud hledáte informace o tom, jak vytvořit kontejner profilu FSLogix pomocí Azure služba AD DS, přečtěte si téma [vytvoření kontejneru profilu FSLogix se soubory Azure](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že je váš řadič domény synchronizovaný do Azure a je možné ho přeložit ze služby Azure Virtual Network (VNET), ke které jsou hostitelé relace připojení.
 
@@ -33,18 +33,18 @@ Nastavení účtu úložiště:
 
 2. Na panelu hledání vyhledejte **účet úložiště** .
 
-3. Vyberte **+ Přidat**.
+3. Vyberte **+Přidat** .
 
-4. Do stránky **vytvořit účet úložiště** zadejte následující informace:
+4. Do stránky  **vytvořit účet úložiště** zadejte následující informace:
 
     - Vytvoříte novou skupinu prostředků.
     - Zadejte jedinečný název účtu úložiště.
-    - Pro **umístění**doporučujeme vybrat stejné umístění jako fond hostitelů virtuálních počítačů s Windows.
-    - **Výkon** – vyberte **Standard**. (V závislosti na požadavcích na IOPS. Další informace najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).)
-    - Jako **typ účtu**vyberte **StorageV2** nebo **úložiště** (k dispozici, jenom pokud je úroveň výkonu Premium).
-    - V případě **replikace**vyberte **místně redundantní úložiště (LRS)**.
+    - Pro **umístění** doporučujeme vybrat stejné umístění jako fond hostitelů virtuálních počítačů s Windows.
+    - **Výkon** – vyberte **Standard** . (V závislosti na požadavcích na IOPS. Další informace najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).)
+    - Jako **typ účtu** vyberte **StorageV2** nebo **úložiště** (k dispozici, jenom pokud je úroveň výkonu Premium).
+    - V případě **replikace** vyberte **místně redundantní úložiště (LRS)** .
 
-5. Až budete hotovi, vyberte **zkontrolovat + vytvořit**a pak vybrat **vytvořit**.
+5. Až budete hotovi, vyberte **zkontrolovat + vytvořit** a pak vybrat **vytvořit** .
 
 Pokud potřebujete podrobnější pokyny ke konfiguraci, přečtěte si téma věnované [místní dostupnosti](../storage/files/storage-files-identity-auth-active-directory-enable.md#regional-availability).
 
@@ -54,13 +54,13 @@ V dalším kroku budete muset vytvořit sdílenou složku Azure.
 
 Vytvoření sdílené složky:
 
-1. Vyberte **Přejít k prostředku**.
+1. Vyberte **Přejít k prostředku** .
 
-2. Na stránce Přehled vyberte **sdílení souborů**.
+2. Na stránce Přehled vyberte **Sdílené složky** .
 
-3. Vyberte **+ sdílené složky**, vytvořte novou sdílenou složku s názvem **Profiles**a pak zadejte vhodnou kvótu nebo nechte pole prázdné pro možnost žádná kvóta.
+3. Vyberte **+ sdílené složky** , vytvořte novou sdílenou složku s názvem **Profiles** a pak zadejte vhodnou kvótu nebo nechte pole prázdné pro možnost žádná kvóta.
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Vytvořit** .
 
 ## <a name="enable-active-directory-authentication"></a>Povolit ověřování služby Active Directory
 
@@ -68,9 +68,9 @@ V dalším kroku budete muset povolit ověřování služby Active Directory (AD
 
 1. Protokol RDP (Remote Desktop Protocol) do virtuálního počítače připojeného k doméně.
 
-2. Podle pokynů v části [Povolení ověřování azure služba AD DS pro sdílené složky Azure](../storage/files/storage-files-identity-ad-ds-enable.md) nainstalujte modul AzFilesHybrid a povolte ověřování.
+2. Podle pokynů v části [Povolení ověřování služba AD DS pro sdílené složky Azure](../storage/files/storage-files-identity-ad-ds-enable.md) nainstalujte modul AzFilesHybrid a povolte ověřování.
 
-3.  Otevřete Azure Portal, otevřete svůj účet úložiště, vyberte **Konfigurace**a potvrďte, že **Služba Active Directory (AD)** je nastavená na **povoleno**.
+3.  Otevřete Azure Portal, otevřete svůj účet úložiště, vyberte **Konfigurace** a potvrďte, že **Služba Active Directory (AD)** je nastavená na **povoleno** .
 
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky konfigurační stránky s povoleným Azure Active Directory (AD).](media/active-directory-enabled.png)
@@ -86,27 +86,27 @@ Pokud chcete nakonfigurovat oprávnění na úrovni sdílené složky, přiřaď
 >[!NOTE]
 >Účty nebo skupiny, kterým přiřazujete oprávnění, musí být vytvořené v dané doméně a synchronizované s Azure AD. Účty vytvořené v Azure AD nebudou fungovat.
 
-Přiřazení oprávnění řízení přístupu na základě role (RBAC):
+Přiřazení oprávnění řízení přístupu na základě role Azure (Azure RBAC):
 
 1. Otevřete web Azure Portal.
 
 2. Otevřete účet úložiště, který jste vytvořili v části [Nastavení účtu úložiště](#set-up-a-storage-account).
 
-3. Vyberte **sdílené složky**a potom vyberte název sdílené složky, kterou plánujete použít.
+3. Vyberte **sdílené složky** a potom vyberte název sdílené složky, kterou plánujete použít.
 
-4. Vyberte **Access Control (IAM)**.
+4. Vyberte **Access Control (IAM)** .
 
-5. Vyberte **Přidat přiřazení role**.
+5. Vyberte **Přidat přiřazení role** .
 
 6. Na kartě **Přidat přiřazení role** vyberte **úložiště souborová data SMB sdílet oprávnění Přispěvatel** pro účet správce.
 
      Pokud chcete uživatelům přiřadit oprávnění k jejich profilům FSLogix, postupujte podle stejných pokynů. Když se ale dostanete ke kroku 5, vyberte místo toho možnost **soubor úložiště SMB sdílení** .
 
-7. Vyberte **Uložit**.
+7. Vyberte **Uložit** .
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Přiřazení oprávnění uživatelů ke sdílené složce Azure
 
-Jakmile uživatelům přiřadíte oprávnění RBAC, jako další krok budete muset nakonfigurovat oprávnění NTFS.
+Po přiřazení oprávnění Azure RBAC vašim uživatelům budete muset nakonfigurovat oprávnění NTFS.
 
 Abyste mohli začít, musíte si od Azure Portal víc věcí:
 
@@ -121,13 +121,13 @@ Tady je postup, jak získat cestu UNC:
 
 2. Otevřete účet úložiště, který jste vytvořili v části [Nastavení účtu úložiště](#set-up-a-storage-account).
 
-3. Vyberte **Nastavení**a pak vyberte **vlastnosti**.
+3. Vyberte **Nastavení** a pak vyberte **vlastnosti** .
 
 4. Zkopírujte identifikátor URI **koncového bodu služby primární souborové služby** do textového editoru dle vašeho výběru.
 
 5. Po zkopírování identifikátoru URI proveďte následující kroky a změňte je na cestu UNC:
 
-    - Odebrat `https://` a nahradit za`\\`
+    - Odebrat `https://` a nahradit za `\\`
     - Místo lomítka nahraďte zpětným `/` lomítkem `\` .
     - Přidejte název sdílené složky, kterou jste vytvořili v části [Vytvoření sdílené složky Azure](#create-an-azure-file-share) , na konec názvu UNC.
 
@@ -141,7 +141,7 @@ Získání klíče účtu úložiště:
 
 2. Otevřete účet úložiště, který jste vytvořili v části [Nastavení účtu úložiště](#set-up-a-storage-account).
 
-3. Na kartě **účet úložiště** vyberte **přístupové klíče**.
+3. Na kartě **účet úložiště** vyberte **přístupové klíče** .
 
 4. Zkopírujte **klíč1** nebo **key2** do souboru na místním počítači.
 
@@ -151,15 +151,15 @@ Konfigurace oprávnění systému souborů NTFS:
 
 1. Otevřete příkazový řádek na virtuálním počítači připojeném k doméně.
 
-2. Spuštěním následující rutiny připojte sdílenou složku Azure a přiřaďte jí písmeno jednotky: .
+2. Spusťte následující příkaz pro připojení sdílené složky Azure a přiřazení písmene jednotky:
 
-     ```powershell
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     ```cmd
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
-3. Spuštěním následující rutiny zkontrolujte přístupová oprávnění ke sdílené složce Azure:
+3. Spuštěním následujícího příkazu zkontrolujte přístupová oprávnění ke sdílené složce Azure:
 
-    ```powershell
+    ```cmd
     icacls <mounted-drive-letter>:
     ```
 
@@ -167,9 +167,9 @@ Konfigurace oprávnění systému souborů NTFS:
 
     Pro *uživatele NT AUTHORITY\Authenticated Users* a *BUILTIN\Users* mají ve výchozím nastavení určitá oprávnění. Tato výchozí oprávnění umožňují těmto uživatelům číst kontejnery profilů jiných uživatelů. Oprávnění popsaná v tématu [Konfigurace oprávnění pro úložiště pro použití s kontejnery profilů a kontejnery Office](/fslogix/fslogix-storage-config-ht) ale neumožňují uživatelům číst kontejnery profilů pro všechny ostatní.
 
-4. Spuštěním následujících rutin umožníte uživatelům virtuálních počítačů s Windows vytvářet vlastní kontejnery profilů a zablokovat přístup ke svému kontejneru profilů z jiných uživatelů.
+4. Spusťte následující příkazy, aby uživatelé virtuálních počítačů s Windows mohli vytvořit vlastní kontejner profilu a zároveň blokovat přístup k jejich kontejnerům profilů z jiných uživatelů.
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -179,9 +179,9 @@ Konfigurace oprávnění systému souborů NTFS:
      - Nahraďte <připojeného písmene> písmenem jednotky, kterou jste použili k namapování jednotky.
      - Nahraďte <uživatelem-e-mailem> pomocí hlavního názvu uživatele (UPN) uživatele nebo skupiny Active Directory, který obsahuje uživatele, kteří budou vyžadovat přístup ke sdílené složce.
 
-     Například:
+     Příklad:
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -200,13 +200,13 @@ Konfigurace FSLogix na virtuálním počítači hostitele relace:
 
 5. Postupujte podle pokynů v tématu [Konfigurace nastavení registru kontejneru profilů](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings).
 
-    - Přejděte na **počítač**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**.
+    - Přejděte na **počítač**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix** .
 
     - Vytvořte klíč **profilů** .
 
     - Vytvořit **povoleno, DWORD** s hodnotou 1.
 
-    - Vytvořte **VHDLocations MULTI_SZ**.
+    - Vytvořte **VHDLocations MULTI_SZ** .
 
     - Nastavte hodnotu **VHDLocations** na cestu UNC, kterou jste vygenerovali, a [Získejte cestu UNC](#get-the-unc-path).
 

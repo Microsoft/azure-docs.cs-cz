@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření centra událostí pomocí prostředí PowerSh
 description: Tento rychlý start popisuje, jak pomocí Azure PowerShellu vytvořit centrum událostí a pak odesílat a přijímat události pomocí sady .NET Standard SDK.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cc82058fb55fba4b5a88ca09ad6e16bac6c82852
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074904"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88933949"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rychlý start: Vytvoření centra událostí pomocí Azure PowerShellu
 
@@ -63,10 +63,10 @@ Blahopřejeme! Pomocí Azure PowerShellu jste vytvořili obor názvů služby Ev
 
 V tomto článku jste vytvořili obor názvů služby Event Hubs a použili jste ukázkové aplikace k odesílání a přijímání událostí z centra událostí. Podrobné pokyny k odesílání událostí do (nebo) přijímání událostí z centra událostí najdete v tématu kurzy pro **odesílání a příjem** : 
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Přejít](event-hubs-go-get-started-send.md)
 - [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)

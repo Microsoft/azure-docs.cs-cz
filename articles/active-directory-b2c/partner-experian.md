@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683874"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928694"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Experian s využitím Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ V této ukázce se používá integrovaná Digitální identita Experian a rizik
 - Druhé jméno
 - příjmení
 - Adresa
-- City
+- City (Město)
 - Stát/kraj
 - PSČ
 - Země/oblast
@@ -42,7 +42,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -77,14 +77,14 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ### <a name="part-1---deploy-the-api"></a>Část 1 – nasazení rozhraní API
 
-Nasaďte poskytnutý kód rozhraní API do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](/visualstudio/deployment/quickstart-deploy-to-azure).
 
 >[!NOTE]
 >Abyste mohli Azure AD nakonfigurovat pomocí požadovaných nastavení, budete potřebovat adresu URL nasazené služby.
 
 ### <a name="part-2---deploy-the-client-certificate"></a>Část 2 – nasazení klientského certifikátu
 
-Volání rozhraní API Experian je chráněno klientským certifikátem. Tento klientský certifikát poskytne Experian. Podle pokynů uvedených v tomto [dokumentu](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)se musí certifikát nahrát do služby Azure App Service. Vzorová zásada používá tyto klíče kroků v procesu:
+Volání rozhraní API Experian je chráněno klientským certifikátem. Tento klientský certifikát poskytne Experian. Podle pokynů uvedených v tomto [dokumentu](../app-service/environment/certificates.md#private-client-certificate)se musí certifikát nahrát do služby Azure App Service. Vzorová zásada používá tyto klíče kroků v procesu:
 
 - Odeslání certifikátu
 
@@ -92,7 +92,7 @@ Volání rozhraní API Experian je chráněno klientským certifikátem. Tento k
 
 ### <a name="part-3---configure-the-api"></a>Část 3 – konfigurace rozhraní API
 
-Nastavení aplikace je možné [nakonfigurovat ve službě App Service v Azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). S touto metodou se dají nastavení bezpečně nakonfigurovat bez jejich kontroly do úložiště. Pro rozhraní REST API musíte zadat následující nastavení:
+Nastavení aplikace je možné [nakonfigurovat ve službě App Service v Azure](../app-service/configure-common.md#configure-app-settings). S touto metodou se dají nastavení bezpečně nakonfigurovat bez jejich kontroly do úložiště. Pro rozhraní REST API musíte zadat následující nastavení:
 
 | Nastavení aplikace | Zdroj | Poznámky |
 | :-------- | :------------| :-----------|
@@ -110,14 +110,14 @@ Nastavení aplikace je možné [nakonfigurovat ve službě App Service v Azure](
 
 ### <a name="part-4---create-api-policy-keys"></a>Část 4 – vytvoření klíčů zásad rozhraní API
 
-Přečtěte si tento [dokument](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) a vytvořte dva klíče zásad – jeden pro uživatelské jméno rozhraní API a druhý pro heslo rozhraní API, které jste definovali pro základní ověřování HTTP.
+Přečtěte si tento [dokument](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) a vytvořte dva klíče zásad – jeden pro uživatelské jméno rozhraní API a druhý pro heslo rozhraní API, které jste definovali pro základní ověřování HTTP.
 
 >[!NOTE]
 >Budete potřebovat klíče pro konfiguraci zásad později.
 
 ### <a name="part-5---replace-the-configuration-values"></a>Část 5 – nahrazení hodnot konfigurace
 
-V poskytnutých vlastních zásadách vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
+V poskytnutých [vlastních zásadách](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
 
 |                      Zástupný symbol                       |                                   Nahradit hodnotou                                 |                   Příklad                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
@@ -133,7 +133,7 @@ V poskytnutých vlastních zásadách vyhledejte následující zástupné symbo
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Část 6 – konfigurace zásad Azure AD B2C
 
-Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v tomto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) .
+Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v tomto [dokumentu](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) .
 
 >[!NOTE]
 >Tato ukázková zásada vychází z [Úvodní sady místních účtů](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
@@ -161,12 +161,12 @@ Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v to
 
 6. Projděte si tok přihlášení.  
 
-7. Po zadání **pokračování**se zobrazí Crosscore skládanky.
+7. Po zadání **pokračování** se zobrazí Crosscore skládanky.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

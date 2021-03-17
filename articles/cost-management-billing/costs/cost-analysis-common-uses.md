@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 1c1d883d3bc71d23b460e960c903401e1acdd0e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 72b371fd1184c9c9e69593c5ad7e57310abf1de2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290826"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600030"
 ---
 # <a name="common-cost-analysis-uses"></a>Běžné způsoby analýzy nákladů
 
@@ -197,7 +198,7 @@ Náklady se zobrazují jenom pro aktivní registraci. Pokud jste převedli regis
 
 
 1. Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Přehled**.
-1. Klikněte na **Rozpis** pro aktuální měsíc a podívejte se na čerpání peněžního závazku.  
+1. Klikněte na **Rozpis** pro aktuální měsíc a podívejte se na čerpání Azure Prepaymentu (dřív označovaný jako peněžní závazek).  
     [![Přehled nákladů na EA – souhrn rozpisu](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Klikněte na kartu **Využití a náklady** a podívejte se na rozpis předchozího měsíce ve zvoleném časovém rozsahu.  
     [![Karta Využití a náklady](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)

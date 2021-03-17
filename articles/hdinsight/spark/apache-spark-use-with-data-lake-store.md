@@ -2,18 +2,15 @@
 title: Analýza Azure Data Lake Storage Gen1 pomocí HDInsight Apache Spark
 description: Spuštění úloh Apache Spark pro analýzu dat uložených v Azure Data Lake Storage Gen1
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ad8239b3403d37a9e4c79de481fb9cb26306e243
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946323"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
@@ -23,7 +20,7 @@ V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s
 
 * Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v tématu [rychlý Start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v tématu [rychlý Start: nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="prepare-the-data"></a>Příprava dat
 
@@ -73,7 +70,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 
 3. Vytvořte nový poznámkový blok. Klikněte na tlačítko **Nový** a pak klikněte na tlačítko **PySpark**.
 
-    ![Vytvoření nového poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+    ![Vytvořit nový Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Vytvořit nový Jupyter Notebook")
 
 4. Vzhledem k tomu, že jste poznámkový blok vytvořili pomocí jádra PySpark, není nutné explicitně tvořit kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importem typů nezbytných pro tento scénář. Chcete-li tak učinit, vložte následující fragment kódu do buňky a stiskněte klávesu **SHIFT + ENTER**.
 
@@ -83,7 +80,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 
     Při každém spuštění úlohy v Jupyter se název okna webového prohlížeče zobrazí jako **(Zaneprázdněn)** společně s názvem poznámkového bloku. Zobrazí se také plný kroužek vedle textu **PySpark** v pravém horním rohu. Po dokončení úlohy se změní na prázdný kruh.
 
-     ![Stav úlohy poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Stav úlohy poznámkového bloku Jupyter")
+     ![Stav úlohy Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Stav úlohy Jupyter Notebook")
 
 5. Načtěte ukázková data do dočasné tabulky pomocí souboru **HVAC.csv** , který jste zkopírovali do účtu Data Lake Storage Gen1. K datům v účtu Data Lake Storage můžete přistupovat pomocí následujícího vzoru adresy URL.
 

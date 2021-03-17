@@ -4,113 +4,187 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 982c3c6011936c184c55dd92a76d4aec023baaf6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7c4b368c6b02304a6d73e7929ff2d7a93f0921ee
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399715"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444662"
 ---
+Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start v C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet) na GitHubu.
+
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle následujících pokynů:
+Pokud chcete pouze název balíčku začít, spusťte příkaz `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET Framework<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Jednot<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">PODPORUJÍ<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+Pokyny k instalaci specifické pro platformu najdete na následujících odkazech:
+
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET Framework </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Jednot </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">PODPORUJÍ </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin </a>
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet). Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token. Vytvořte pomocí [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) klíče a oblasti. Podívejte se na stránku [najít klíče a oblast](../../../overview.md#find-keys-and-region) a vyhledejte pár klíč-oblast.
 
-> [!NOTE]
-> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
+```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
-Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet):
+class Program 
+{
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+    }
+}
+```
 
-* S předplatným: předejte klíč a přidruženou oblast.
+Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) :
+
 * S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
-
-```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
-
-## <a name="initialize-a-recognizer"></a>Inicializovat Nástroj pro rozpoznávání
-
-Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)je dalším krokem inicializace [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet). Když inicializujete [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet), budete ho muset předat `speechConfig`. To poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
-
-Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu vašeho zařízení, [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) mělo by to vypadat takto:
-
-```csharp
-using var recognizer = new SpeechRecognizer(speechConfig);
-```
-
-Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) a zadat `audioConfig` parametr při inicializaci. [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet)
-
-> [!TIP]
-> Přečtěte si, [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
-
-Nejprve přidejte následující `using` příkaz.
-
-```csharp
-using Microsoft.CognitiveServices.Speech.Audio;
-```
-
-Dále budete moci odkazovat na `AudioConfig` objekt následujícím způsobem:
-
-```csharp
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-```
-
-Pokud chcete místo používání mikrofonu zadat zvukový soubor, budete ho muset ještě zadat `audioConfig`. [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet)Pokud však vytvoříte místo `FromDefaultMicrophoneInput`volání, zavoláte `FromWavFileOutput` a předáte `filename` parametr.
-
-
-```csharp
-using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
-using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-```
-
-## <a name="recognize-speech"></a>Rozpoznávání řeči
-
-[Třída pro rozpoznávání](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) pro sadu Speech SDK pro jazyk C# zpřístupňuje několik metod, které lze použít pro rozpoznávání řeči.
-
-* Rozpoznávání bez přípony (Async) – provádí rozpoznávání v neblokujícím (asynchronním) režimu. Tím se rozpozná jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
-* Průběžné rozpoznávání (asynchronní) – asynchronně iniciuje operaci průběžného rozpoznávání. Uživatel zaregistruje události do událostí a zpracuje různé stavy aplikace. Chcete-li zastavit asynchronní průběžné [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)rozpoznávání, zavolejte.
-
 > [!NOTE]
-> Přečtěte si další informace o tom, jak [zvolit režim rozpoznávání řeči](../../../how-to-choose-recognition-mode.md).
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
-### <a name="single-shot-recognition"></a>Rozpoznávání s jedním záběrem
+## <a name="recognize-from-microphone"></a>Rozpoznávání z mikrofonu
 
-Tady je příklad asynchronního samostatného rozpoznávání pomocí [`RecognizeOnceAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet):
+Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `FromDefaultMicrophoneInput()` . Pak inicializujte [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer) a, předejte své `audioConfig` a `speechConfig` .
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync();
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+class Program 
+{
+    async static Task FromMic(SpeechConfig speechConfig)
+    {
+        using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+        using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        Console.WriteLine("Speak into your microphone.");
+        var result = await recognizer.RecognizeOnceAsync();
+        Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+    }
+
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        await FromMic(speechConfig);
+    }
+}
 ```
 
-Pro zpracování výsledku budete muset napsat nějaký kód. Tato ukázka vyhodnocuje [`result.Reason`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?view=azure-dotnet):
+Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v `AudioConfig` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
 
-* Vytiskne výsledek rozpoznávání:`ResultReason.RecognizedSpeech`
-* Pokud se neshodují žádné rozpoznávání, informujte uživatele:`ResultReason.NoMatch`
-* Pokud dojde k chybě, vytiskněte chybovou zprávu:`ResultReason.Canceled`
+## <a name="recognize-from-file"></a>Rozpoznat ze souboru
+
+Pokud chcete rozpoznávat řeč ze zvukového souboru místo mikrofonu, je stále potřeba vytvořit `AudioConfig` . Pokud však vytvoříte [`AudioConfig`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig) místo volání, `FromDefaultMicrophoneInput()` zavoláte `FromWavFileInput()` a předáte cestu k souboru.
+
+```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+class Program 
+{
+    async static Task FromFile(SpeechConfig speechConfig)
+    {
+        using var audioConfig = AudioConfig.FromWavFileInput("PathToFile.wav");
+        using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        var result = await recognizer.RecognizeOnceAsync();
+        Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+    }
+
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        await FromFile(speechConfig);
+    }
+}
+```
+
+## <a name="recognize-from-in-memory-stream"></a>Rozpoznávání z datového proudu v paměti
+
+V mnoha případech použití je pravděpodobnější, že zvuková data přicházejí z úložiště objektů BLOB nebo jinak jsou v paměti jako `byte[]` nebo podobná struktura nezpracovaných dat. Následující příklad používá [`PushAudioInputStream`](/dotnet/api/microsoft.cognitiveservices.speech.audio.pushaudioinputstream) k rozpoznávání řeči, což je v podstatě abstraktní datový proud paměti. Vzorový kód provede následující:
+
+* Zapisuje nezpracovaná zvuková data (PCM) do `PushAudioInputStream` `Write()` funkce pomocí funkce, která přijímá `byte[]` .
+* Přečte `.wav` soubor pomocí nástroje `FileReader` pro demonstrační účely, ale pokud již máte zvuková data v `byte[]` , můžete přeskočit přímo k zápisu obsahu do vstupního datového proudu.
+* Výchozí formát je 16 bitů, 16khz mono PCM. Chcete-li upravit formát, můžete předat [`AudioStreamFormat`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audiostreamformat) objekt pro `CreatePushStream()` použití statické funkce `AudioStreamFormat.GetWaveFormatPCM(sampleRate, (byte)bitRate, (byte)channels)` .
+
+```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+class Program 
+{
+    async static Task FromStream(SpeechConfig speechConfig)
+    {
+        var reader = new BinaryReader(File.OpenRead("PathToFile.wav"));
+        using var audioInputStream = AudioInputStream.CreatePushStream();
+        using var audioConfig = AudioConfig.FromStreamInput(audioInputStream);
+        using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        byte[] readBytes;
+        do
+        {
+            readBytes = reader.ReadBytes(1024);
+            audioInputStream.Write(readBytes, readBytes.Length);
+        } while (readBytes.Length > 0);
+
+        var result = await recognizer.RecognizeOnceAsync();
+        Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+    }
+
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        await FromStream(speechConfig);
+    }
+}
+```
+
+Použití datového proudu push jako vstupu předpokládá, že zvuková data jsou nezpracované PCM, například přeskočení hlaviček.
+Rozhraní API bude v některých případech fungovat i v případě, že hlavička nebyla vynechána, ale pro dosažení nejlepších výsledků zvažte implementaci logiky, aby bylo možné číst hlavičky, takže `byte[]` začíná na *začátku zvukového data*.
+
+## <a name="error-handling"></a>Zpracování chyb
+
+Předchozí příklady jednoduše získají rozpoznaný text z `result.text` , ale pro zpracování chyb a dalších odpovědí, budete muset napsat kód pro zpracování výsledku. Následující kód vyhodnocuje [`result.Reason`](/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason) vlastnost a:
+
+* Vytiskne výsledek rozpoznávání: `ResultReason.RecognizedSpeech`
+* Pokud se neshodují žádné rozpoznávání, informujte uživatele: `ResultReason.NoMatch`
+* Pokud dojde k chybě, vytiskněte chybovou zprávu: `ResultReason.Canceled`
 
 ```csharp
 switch (result.Reason)
 {
     case ResultReason.RecognizedSpeech:
         Console.WriteLine($"RECOGNIZED: Text={result.Text}");
-        Console.WriteLine($"    Intent not recognized.");
         break;
     case ResultReason.NoMatch:
         Console.WriteLine($"NOMATCH: Speech could not be recognized.");
@@ -129,28 +203,31 @@ switch (result.Reason)
 }
 ```
 
-### <a name="continuous-recognition"></a>Průběžné rozpoznávání
+## <a name="continuous-recognition"></a>Průběžné rozpoznávání
 
-Průběžné rozpoznávání je trochu větší než rozpoznávání s jedním prostřelou. Pro získání výsledků rozpoznávání se vyžaduje přihlášení `Recognizing`k `Recognized`odběru událostí `Canceled` , a. Chcete-li zastavit rozpoznávání, je [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)nutné zavolat. Tady je příklad toho, jak se provádí nepřetržité rozpoznávání na vstupním souboru zvuku.
+V předchozích příkladech se používá rozpoznávání pomocí jediného snímku, které rozpoznává jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
 
-Pojďme začít definováním vstupu a inicializací [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet):
+Naopak se průběžné rozpoznávání používá, pokud chcete **určit** , kdy se má zastavit rozpoznávání. Pro získání výsledků rozpoznávání se vyžaduje přihlášení k odběru `Recognizing` `Recognized` událostí, a `Canceled` . Chcete-li zastavit rozpoznávání, je nutné zavolat [`StopContinuousRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) . Tady je příklad toho, jak se provádí nepřetržité rozpoznávání na vstupním souboru zvuku.
+
+Začněte definováním vstupu a inicializací [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer) :
 
 ```csharp
 using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
 using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
-Nyní vytvoříme proměnnou, která bude spravovat stav rozpoznávání řeči. `TaskCompletionSource<int>` Pokud chcete začít, deklarujeme za předchozí deklaracemi.
+
+Pak vytvořte a `TaskCompletionSource<int>` spravujte stav rozpoznávání řeči.
 
 ```csharp
 var stopRecognition = new TaskCompletionSource<int>();
 ```
 
-Přihlásíme se k odběru událostí odeslaných [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet)z.
+Potom se přihlaste k odběru událostí odeslaných z [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer) .
 
-* [`Recognizing`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-dotnet): Signál pro události obsahující mezilehlé výsledky rozpoznávání.
-* [`Recognized`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-dotnet): Signál pro události obsahující konečné výsledky rozpoznávání (indikující úspěšný pokus o uznání).
-* [`SessionStopped`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-dotnet): Signál pro události indikující konec relace rozpoznávání (operace).
-* [`Canceled`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-dotnet): Signál pro události obsahující zrušené výsledky rozpoznávání (indikující pokus o deaktivaci, který byl zrušen jako výsledek nebo přímý požadavek na zrušení nebo případně i přenos nebo selhání protokolu).
+* [`Recognizing`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing): Signál pro události obsahující mezilehlé výsledky rozpoznávání.
+* [`Recognized`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized): Signál pro události obsahující konečné výsledky rozpoznávání (indikující úspěšný pokus o uznání).
+* [`SessionStopped`](/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped): Signál pro události indikující konec relace rozpoznávání (operace).
+* [`Canceled`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled): Signál pro události obsahující zrušené výsledky rozpoznávání (indikující pokus o deaktivaci, který byl zrušen jako výsledek nebo přímý požadavek na zrušení nebo případně i přenos nebo selhání protokolu).
 
 ```csharp
 recognizer.Recognizing += (s, e) =>
@@ -191,24 +268,23 @@ recognizer.SessionStopped += (s, e) =>
 };
 ```
 
-S nastavením všeho můžeme zavolat [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet).
+Když se všechno nastaví, zavolejte `StartContinuousRecognitionAsync` na zahájit rozpoznávání.
 
 ```csharp
-// Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
 await recognizer.StartContinuousRecognitionAsync();
 
 // Waits for completion. Use Task.WaitAny to keep the task rooted.
 Task.WaitAny(new[] { stopRecognition.Task });
 
-// Stops recognition.
-await recognizer.StopContinuousRecognitionAsync();
+// make the following call at some point to stop recognition.
+// await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ### <a name="dictation-mode"></a>Režim diktování
 
 Při použití průběžného rozpoznávání můžete povolit zpracování diktování pomocí odpovídající funkce "Povolit diktování". V tomto režimu bude instance konfigurace řeči interpretovat popisy slov ve strukturách vět, jako je například interpunkční znaménko. Například utterance "provedete to živě ve městě otazník", který se interpretuje jako text "žijete ve městě?".
 
-Chcete-li povolit režim diktování, [`EnableDictation`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet) použijte metodu na [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Chcete-li povolit režim diktování, použijte [`EnableDictation`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation) metodu na [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) .
 
 ```csharp
 speechConfig.EnableDictation();
@@ -216,24 +292,28 @@ speechConfig.EnableDictation();
 
 ## <a name="change-source-language"></a>Změnit jazyk zdroje
 
-Běžným úkolem pro rozpoznávání řeči je zadání vstupu (nebo zdrojového) jazyka. Pojďme se podívat, jak byste změnili vstupní jazyk na italštinu. V kódu Najděte [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)a pak přidejte tento řádek přímo pod ním.
+Běžným úkolem pro rozpoznávání řeči je zadání vstupu (nebo zdrojového) jazyka. Pojďme se podívat, jak byste změnili vstupní jazyk na italštinu. V kódu Najděte [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) a pak přidejte tento řádek přímo pod ním.
 
 ```csharp
 speechConfig.SpeechRecognitionLanguage = "it-IT";
 ```
 
-[`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet) Vlastnost očekává řetězec formátu národního prostředí jazyka. Můžete zadat libovolnou hodnotu ve sloupci **locale (národní prostředí** ) v seznamu podporovaných [národních prostředí a jazyků](../../../language-support.md).
+[`SpeechRecognitionLanguage`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage)Vlastnost očekává řetězec formátu národního prostředí jazyka. Můžete zadat libovolnou hodnotu ve sloupci **locale (národní prostředí** ) v seznamu podporovaných [národních prostředí a jazyků](../../../language-support.md).
 
 ## <a name="improve-recognition-accuracy"></a>Zlepšení přesnosti rozpoznávání
 
-Existuje několik způsobů, jak vylepšit přesnost rozpoznávání pomocí sady Speech SDK. Pojďme se podívat na seznamy frází. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění. Do seznamu frází lze přidat jednotlivá slova nebo kompletní fráze. Při rozpoznávání se používá záznam v seznamu frází, pokud je do zvukového umístění uvedena přesná shoda celé fráze. Pokud se nenalezne přesná shoda se slovem, rozpoznávání vám nepomáhá.
+Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění. Zadáním seznamu frází Vylepšete přesnost rozpoznávání řeči.
+
+Příklad: Pokud máte příkaz "přesunout do" a možné místo cíle "", které je možné přehlasovat, můžete přidat položku "přesunout do" dál ". Přidáním fráze se zvýší pravděpodobnost, že při rozpoznání zvuku bude místo možnosti přesunout směrem nahoru rozpoznána možnost přesunout na vyšší.
+
+Do seznamu frází lze přidat jednotlivá slova nebo kompletní fráze. Při rozpoznávání se položka v seznamu frází používá ke zvýšení rozpoznávání slov a frází v seznamu i v případě, že se položky objeví uprostřed utterance. 
 
 > [!IMPORTANT]
-> Funkce seznamu frází je k dispozici pouze v angličtině.
+> Funkce seznamu frází je dostupná v těchto jazycích: en-US, de-DE, EN-AU, en-CA, en-GB, ES-ES, ES-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, pt-BR, zh-CN
 
-Chcete-li použít seznam frází, nejprve [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet) vytvořte objekt a pak přidejte konkrétní slova a fráze [`AddPhrase`](https://docs.microsoft.com//dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-dotnet)pomocí.
+Chcete-li použít seznam frází, nejprve vytvořte [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar) objekt a pak přidejte konkrétní slova a fráze pomocí [`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase) .
 
-Všechny změny se [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet) projeví při příštím rozpoznávání nebo po opětovném připojení ke službě Speech.
+Všechny změny se projeví [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar) při příštím rozpoznávání nebo po opětovném připojení ke službě Speech.
 
 ```csharp
 var phraseList = PhraseListGrammar.FromRecognizer(recognizer);
@@ -250,5 +330,5 @@ phraseList.Clear();
 
 Seznamy frází jsou pouze jedním z možností, jak zlepšit přesnost rozpoznávání. Můžete také: 
 
-* [Zlepšení přesnosti s využitím služby Custom Speech](../../../how-to-custom-speech.md)
+* [Zlepšení přesnosti s využitím služby Custom Speech](../../../custom-speech-overview.md)
 * [Zlepšení přesnosti s využitím modelů tenantů](../../../tutorial-tenant-model.md)

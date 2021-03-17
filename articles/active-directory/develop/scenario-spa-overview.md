@@ -1,5 +1,6 @@
 ---
-title: Scénář jednostránkové aplikace JavaScriptu – Microsoft Identity Platform | Azure
+title: Scénář vícestránkové aplikace v JavaScriptu
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet jednostránkové aplikace (Přehled scénářů) pomocí platformy Microsoft Identity Platform.
 services: active-directory
 author: navyasric
@@ -10,36 +11,37 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 47b8c8c074a5e0ce3ed73a2a9a4b06aa307cdff3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885170"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756428"
 ---
 # <a name="scenario-single-page-application"></a>Scénář: jednostránkové aplikace
 
 Naučte se všechno, co potřebujete k vytvoření jednostránkové aplikace (SPA).
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>Začínáme
 
-Svou první aplikaci můžete vytvořit pomocí rychlého startu pro JavaScript SPA:
+Pokud jste to ještě neudělali, vytvořte svou první aplikaci tím, že dokončíte rychlý Start pro JavaScript SPA:
 
-> [!div class="nextstepaction"]
-> [Rychlý Start: jednostránkové aplikace](./quickstart-v2-javascript.md)
+[Rychlý Start: jednostránkové aplikace](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Přehled
 
-Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlové, Vue.js a React.js. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. 
+Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru.
 
-Platforma Microsoft Identity Platform umožňuje používat jednostránkové aplikace k přihlašování uživatelů a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API pomocí [implicitního toku OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Implicitní tok umožňuje aplikaci získat tokeny ID, které reprezentují ověřeného uživatele a také přístup k tokenům potřebným pro volání chráněných rozhraní API.
+Platforma Microsoft Identity Platform nabízí **dvě** možnosti, jak přihlašovat jednostránkové aplikace uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API:
 
-![Jednostránkové aplikace](./media/scenarios/spa-app.svg)
+- [Tok autorizačního kódu OAuth 2,0 (s PKCE)](./v2-oauth2-auth-code-flow.md). Tok autorizačního kódu umožňuje aplikaci výměnu autorizačního kódu pro tokeny **ID** , které reprezentují ověřeného uživatele a **přístupové** tokeny potřebné pro volání chráněných rozhraní API. Kromě toho vrací **aktualizační** tokeny, které poskytují dlouhodobý přístup k prostředkům jménem uživatelů bez nutnosti interakce s těmito uživateli. Toto je **doporučený** postup.
+
+![Jednostránkové aplikace – ověřování](./media/scenarios/spa-app-auth.svg)
+
+- [Implicitní tok OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Tok implicitního udělení umožňuje aplikaci získat **ID** a **přístupové** tokeny. Na rozdíl od toku autorizačního kódu nevrátí tok implicitního udělení **obnovovací token**.
+
+![Jednostránkové aplikace – implicitní](./media/scenarios/spa-app.svg)
 
 Tento tok ověřování nezahrnuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagují – nativní. Vyžadují další možnosti pro interakci s nativními platformami.
 
@@ -47,11 +49,14 @@ Tento tok ověřování nezahrnuje scénáře aplikací, které používají roz
 
 Chcete-li povolit tento scénář pro vaši aplikaci, budete potřebovat:
 
-* Registrace aplikace s Azure Active Directory (Azure AD). Tato registrace zahrnuje povolení implicitního toku a nastavení identifikátoru URI přesměrování, ke kterému se tokeny vrátí.
-* Konfigurace aplikace s registrovanými vlastnostmi aplikace, jako je například ID aplikace
-* Použití knihovny Microsoft Authentication Library (MSAL) k tomu, aby tok ověřování se přihlásil a získal tokeny.
+* Registrace aplikace s Azure Active Directory (Azure AD). Registrační postup se liší mezi implicitním tokem udělení a tokem autorizačního kódu.
+* Konfigurace aplikace s registrovanými vlastnostmi aplikace, jako je ID aplikace
+* Použití knihovny ověřování Microsoft pro JavaScript (MSAL.js) k tomu, aby tok ověřování se přihlásil a získal tokeny.
+
+## <a name="recommended-reading"></a>Doporučené čtení
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-spa-app-registration.md)
+Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](scenario-spa-app-registration.md).

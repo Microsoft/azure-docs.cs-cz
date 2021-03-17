@@ -4,15 +4,15 @@ description: V tomto rychlém startu vytvoříte testovací prostředí v Azure 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653949"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91461185"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Rychlý Start: nastavení testovacího prostředí pomocí šablony Azure DevTest Labs ARM
-V tomto rychlém startu vytvoříte testovací prostředí s virtuálním počítačem Windows Server 2019 Datacenter pomocí šablony Azure Resource Manager (ARM). 
+V tomto rychlém startu vytvoříte testovací prostředí pomocí virtuálního počítače s Windows serverem 2019 Datacenter pomocí šablony Azure Resource Manager (šablona ARM). 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -65,16 +65,16 @@ Chcete-li spustit nasazení automaticky, klikněte na následující tlačítko.
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 1. Výběrem **oznámení** v horní části zobrazíte stav nasazení a kliknete na odkaz **probíhá nasazení** .
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Oznámení o nasazení":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Nasadit stránku šablony":::
 2. Na stránce **nasazení – přehled** počkejte, až se nasazení dokončí. Dokončení této operace (zejména vytváření virtuálního počítače) trvá nějakou dobu. Pak vyberte svou položku **Přejít na skupinu prostředků** nebo **název skupiny prostředků** , jak je znázorněno na následujícím obrázku: 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Přejít do skupiny prostředků":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Nasadit stránku šablony":::
 3. Na stránce **Skupina prostředků** se zobrazí seznam prostředků ve skupině prostředků. Ověřte, že se v prostředcích zobrazuje testovací prostředí typu: `DevTest Lab` . Závislé prostředky, jako je třeba virtuální síť a virtuální počítač, se zobrazí také ve skupině prostředků. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Domovská stránka skupiny prostředků":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Nasadit stránku šablony":::
 4. Vyberte testovací prostředí ze seznamu prostředků, abyste viděli domovskou stránku vašeho testovacího prostředí. Ověřte, že je v seznamu **moje virtuální počítače** ZOBRAZENÝ virtuální počítač datacenter Windows serveru 2019. Na následujícím obrázku je minimalizován oddíl **základy** . 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Domovská stránka pro testovací prostředí":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Nasadit stránku šablony":::
 
     > [!IMPORTANT] 
     > Tuto stránku nechte otevřenou a postupujte podle pokynů v další části, abyste vyčistili prostředky, abyste předešli nákladům na spuštění testovacího prostředí a virtuálního počítače v Azure. Pokud si chcete projít další kurz, abyste otestovali přístup k virtuálnímu počítači v testovacím prostředí, vyčistěte po absolvování tohoto kurzu prostředky. 
@@ -83,14 +83,14 @@ Chcete-li spustit nasazení automaticky, klikněte na následující tlačítko.
 
 1. Nejprve odstraňte testovací prostředí, abyste mohli odstranit skupinu prostředků. Nebudete moct odstranit skupinu prostředků s testovacím prostředím. Testovací prostředí odstraníte tak, že na panelu nástrojů vyberete **Odstranit** . 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Tlačítko Odstranit testovací prostředí":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Nasadit stránku šablony":::
  2. Na stránce potvrzení zadejte **název testovacího prostředí**a vyberte **Odstranit**. 
  3. Počkejte, než se testovací prostředí odstraní. Výběrem ikony **zvonku** zobrazíte oznámení od operace odstranění. Tento proces trvá nějakou dobu. Potvrďte odstranění testovacího prostředí a pak vyberte **skupinu prostředků** v nabídce s popisem cesty. 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Potvrďte odstranění virtuálního počítače v oznámeních":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Nasadit stránku šablony":::
  1. Na stránce **Skupina prostředků** vyberte z panelu nástrojů **Odstranit skupinu prostředků** . Na stránce potvrzení zadejte **název skupiny prostředků**a vyberte **Odstranit**. Zkontrolujte oznámení a potvrďte, že se skupina prostředků odstranila.
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Tlačítko Odstranit skupinu prostředků":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Nasadit stránku šablony":::
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste vytvořili testovací prostředí s virtuálním počítačem. Další informace o tom, jak se dostat do testovacího prostředí, najdete v dalším kurzu:

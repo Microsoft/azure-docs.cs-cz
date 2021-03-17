@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure Portal-Azure Database for MariaDB'
 description: V tomto článku se dozvíte, jak přibližně během pěti minut pomocí webu Azure Portal rychle vytvořit ukázkový server Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d7ec7a2c70ae860a54b3771927a79449953e8569
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185243"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662105"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí Azure Portal
 
@@ -51,7 +51,7 @@ Vytvoření serveru Azure Database for MariaDB:
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
-    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **pro obecné účely cenové úrovně**  >  **General Purpose**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **pro obecné účely cenové úrovně**  >  . U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
   
    > [!NOTE]
    > Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/) .
@@ -70,7 +70,7 @@ Služba Azure Database for MariaDB vytváří bránu firewall na úrovni serveru
 
 Vytvoření pravidla brány firewall na úrovni serveru:
 
-1. Po dokončení nasazení přejděte ke svému serveru. V případě potřeby ho můžete vyhledat. V nabídce vlevo vyberte například **Všechny prostředky**. Pak zadejte název serveru. Například nově vytvořený server vyhledáte zadáním**mydemoserver**. Vyberte název serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru. Na této stránce můžete měnit další nastavení.
+1. Po dokončení nasazení přejděte ke svému serveru. V případě potřeby ho můžete vyhledat. V nabídce vlevo vyberte například **Všechny prostředky**. Pak zadejte název serveru. Například nově vytvořený server vyhledáte zadáním **mydemoserver**. Vyberte název serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru. Na této stránce můžete měnit další nastavení.
 
 2. Na stránce přehledu serveru vyberte **Zabezpečení připojení**.
 
@@ -122,7 +122,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
 
     Parametr mysql |Navrhovaná hodnota|Popis
     ---|---|---
-    --host | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (** \* . MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
+    --host | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\* . MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
     --user | *přihlašovací jméno správce serveru* |Přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName \@ servername*.
     -p | *Vaše heslo*<br>(počkejte na zobrazení výzvy) |Po zobrazení výzvy zadejte heslo, které jste použili při vytváření serveru. Při zadávání hesla se na příkazovém řádku Bash zadávané znaky nezobrazí. Po zadání hesla stiskněte Enter.
 
@@ -153,7 +153,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
     >
     > Pokud chcete chybu vyřešit, zajistěte,aby konfigurace serveru odpovídala postupu popsanému v části [Konfigurace pravidla brány firewall na úrovni serveru](#configure-firewall-rule).
 
-4. Pokud chcete ověřit připojení, na příkazovém řádku `mysql>` zadejte**status** a zkontrolujte stav serveru.
+4. Pokud chcete ověřit připojení, na příkazovém řádku `mysql>` zadejte **status** a zkontrolujte stav serveru.
 
     ```sql
     status
@@ -196,8 +196,8 @@ Připojení k serveru pomocí aplikace MySQL Workbench:
     |Nastavení |Navrhovaná hodnota|Popis pole|
     |---|---|---|
      Název připojení | **Ukázkové připojení** | Popisek pro toto připojení. |
-    Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
-    Název hostitele | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (** \* . MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku.|
+    Způsob připojení | **Standardní (TCP/IP)** | Standard (TCP/IP) je dostačující. |
+    Název hostitele | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\* . MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku.|
      Port | 3306 | Port, který se má použít při připojování k serveru Azure Database for MariaDB. |
     Uživatelské jméno |  *přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Naše ukázkové uživatelské jméno je **myadmin \@ mydemoserver**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku. Formát je *UserName \@ servername*.
     Heslo | *Vaše heslo* | Výběrem možnosti **Uložit v trezoru** heslo uložte. |
@@ -228,7 +228,7 @@ Odstranění pouze nově vytvořeného serveru:
 
    ![Azure Database for MariaDB – Odstranění serveru](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
-3. Potvrďte název serveru, který chcete odstranit. Zobrazte databáze na tomto serveru, které odstranění ovlivní. Potvrďte odstranění zadáním názvu vašeho serveru (v našem příkladě je to**mydemoserver**). Vyberte **Odstranit**.
+3. Potvrďte název serveru, který chcete odstranit. Zobrazte databáze na tomto serveru, které odstranění ovlivní. Potvrďte odstranění zadáním názvu vašeho serveru (v našem příkladě je to **mydemoserver**). Vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

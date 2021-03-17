@@ -14,18 +14,18 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3e307df95fe4cb18986ed8e68a7f3381c5fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742891"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91529690"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Rozhraní API pro Microsoft Graph pro Privileged Identity Management (Preview)
 
-Privileged Identity Management úlohy můžete provádět pomocí [rozhraní api Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/overview) pro Azure Active Directory. Tento článek popisuje důležité koncepty pro používání rozhraní Microsoft Graph API pro Privileged Identity Management.
+Privileged Identity Management úlohy můžete provádět pomocí [rozhraní api Microsoft Graph](/graph/overview) pro Azure Active Directory. Tento článek popisuje důležité koncepty pro používání rozhraní Microsoft Graph API pro Privileged Identity Management.
 
-Podrobnosti o rozhraních API Microsoft Graph najdete v referenčních informacích k [rozhraní api Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
+Podrobnosti o rozhraních API Microsoft Graph najdete v referenčních informacích k [rozhraní api Azure AD Privileged Identity Management](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta).
 
 > [!IMPORTANT]
 > Rozhraní API pod verzí/beta v Microsoft Graph jsou ve verzi Preview a mohou se měnit. Použití těchto rozhraní API v produkčních aplikacích není podporováno.
@@ -51,9 +51,9 @@ Pokud k otestování volání používáte Průzkumníka grafů, můžete zadat 
 
 1. Klikněte na **Upravit oprávnění**.
 
-    ![Průzkumník grafů – Změna oprávnění](./media/pim-apis/graph-explorer.png)
+    ![Snímek obrazovky zobrazující stránku Průzkumník grafů s vybranou akcí upravit oprávnění](./media/pim-apis/graph-explorer.png)
 
-1. Zaškrtněte políčka vedle oprávnění, která chcete zahrnout. `PrivilegedAccess.ReadWrite.AzureAD`není zatím k dispozici v Graph Exploreru.
+1. Zaškrtněte políčka vedle oprávnění, která chcete zahrnout. `PrivilegedAccess.ReadWrite.AzureAD` není zatím k dispozici v Graph Exploreru.
 
     ![Průzkumník grafů – Změna oprávnění](./media/pim-apis/graph-explorer-modify-permissions.png)
 
@@ -61,4 +61,4 @@ Pokud k otestování volání používáte Průzkumníka grafů, můžete zadat 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Reference k rozhraní API Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)
+- [Reference k rozhraní API Azure AD Privileged Identity Management](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta)

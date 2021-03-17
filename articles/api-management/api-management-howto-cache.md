@@ -11,18 +11,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250477"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638729"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Přidání ukládání do mezipaměti ke zlepšení výkonu služby Azure API Management
 
-Operace ve službě API Management můžete nakonfigurovat tak, aby odpovědi ukládaly do mezipaměti. Ukládání odpovědí do mezipaměti může v případě dat, která se často nemění, výrazně zlepšit latenci rozhraní API, využití šířky pásma a načítání webových služeb.
+Pro rozhraní API a operace v API Management lze nakonfigurovat ukládání odpovědí do mezipaměti. Ukládání odpovědí do mezipaměti může významně snížit latenci pro volající rozhraní API a zatížení back-endu pro poskytovatele rozhraní API.
+
+> [!IMPORTANT]
+> Integrovaná mezipaměť je nestálá a sdílí se všemi jednotkami ve stejné oblasti ve stejné API Management službě.
 
 Podrobnější informace o ukládání do mezipaměti najdete v popisu [zásad ukládání do mezipaměti API Management](api-management-caching-policies.md) a [vlastního ukládání do mezipaměti Azure API Management](api-management-sample-cache-by-key.md).
 

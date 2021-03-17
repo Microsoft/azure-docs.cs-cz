@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
-ms.author: metan
-ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.author: metang
+ms.openlocfilehash: 80da6776412e0df7b5b9ae5759ac770c04673992
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309301"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631066"
 ---
 # <a name="language-support-for-immersive-reader"></a>Podpora jazyků pro moderní čtečku
 
@@ -30,7 +30,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Arabština (Saúdská Arábie) | ar-SA |
 | Bulharština | BG |
 | Bulharština (Bulharsko) | bg-BG |
-| Katalánština | ca-ES |
+| Katalánština | určen |
+| Katalánština (Katalánština) | ca-ES |
 | Čínština | ZH |
 | Čínština (Čína) | zh-CN |
 | Čínština (Hongkong – zvláštní administrativní oblast) | zh – HK |
@@ -40,7 +41,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
-| Čínština (tradiční) | zh-Hant-CN |
+| Čínština (tradiční) | zh – Hant |
+| Tradiční čínština (Čína) | zh-Hant-CN |
 | Tradiční čínština (Hongkong – zvláštní administrativní oblast) | zh-Hant-HK |
 | Tradiční čínština (Macao – zvláštní administrativní oblast) | zh-Hant-MO |
 | Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
@@ -52,7 +54,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | dánština (Dánsko) | da-DK |
 | Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -60,7 +62,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
 | Francouzština | FR |
@@ -78,7 +80,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Hindština | Ahoj |
 | hindština (Indie) | hi-IN |
 | Maďarština | hu |
-| maďarština (Maďarsko) | hu-HU |
+| Maďarština (Maďarsko) | hu-HU |
 | Indonéština | id |
 | Indonéština (Indonésie) | id-ID |
 | Italština | její |
@@ -90,7 +92,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Malajština | Arial |
 | malajština (Malajsie) | ms-MY |
 | Norština – Bokmal| NB |
-| Norština, Bokmål (Norsko) | nb-NO |
+| norština bokmal (Norsko) | nb-NO |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
@@ -103,8 +105,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
 | Slovinština | SSL |
-| slovinština (Slovinsko) | SL-SL |
-| Španělština | Ano |
+| slovinština (Slovinsko) | sl-SI |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
@@ -126,13 +128,15 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Jazyk | Značka |
 |----------|-----|
 | Afrikánština | AF |
+| Arabština | snížen |
 | Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
 | Bengálština | bn |
 | Bosenština | BS |
 | Bulharština | BG |
 | Bulharština (Bulharsko) | bg-BG |
-| Katalánština | ca-ES |
+| Katalánština | určen |
+| Katalánština (Katalánština) | ca-ES |
 | Čínština | ZH |
 | Čínština (Čína) | zh-CN |
 | Čínština (Hongkong – zvláštní administrativní oblast) | zh – HK |
@@ -142,7 +146,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
-| Čínština (tradiční) | zh-Hant-CN |
+| Čínština (tradiční) | zh – Hant |
+| Tradiční čínština (Čína) | zh-Hant-CN |
 | Tradiční čínština (Hongkong – zvláštní administrativní oblast) | zh-Hant-HK |
 | Tradiční čínština (Macao – zvláštní administrativní oblast) | zh-Hant-MO |
 | Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
@@ -152,9 +157,10 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | čeština (Česká republika) | cs-CZ |
 | Dánština | & |
 | dánština (Dánsko) | da-DK |
+| Dáríština (Afghánistán) | PR |
 | Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -162,7 +168,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Estonština | et |
 | Fijian | FJ |
 | Filipino | náhl |
@@ -176,6 +182,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
+| Gudžarátština | Gu |
 | Řečtina | El |
 | Řečtina (Řecko) | el-GR |
 | Haitská (kreolština) | HT |
@@ -185,7 +192,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | hindština (Indie) | hi-IN |
 | Hmong Macek | mww |
 | Maďarština | hu |
-| maďarština (Maďarsko) | hu-HU |
+| Maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Indonéština | id |
 | Indonéština (Indonésie) | id-ID |
@@ -195,9 +202,11 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Japonština | dža |
 | japonština (Japonsko) | ja-JP |
 | Kannadština | KN |
-| Svahilština | software |
+| Svahilština | sw |
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
+| Kurdština (střed) | klíče |
+| Kurdština (Severní) | kmr |
 | Lotyština | Lotyšsko |
 | Litevština | lt |
 | Malgašština | mg/Nm3 |
@@ -206,8 +215,11 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Malajalámština | ml |
 | Maltština | stroj |
 | Maorština | mi |
+| Maráthština | Vážený |
 | Norština – Bokmal| NB |
-| Norština, Bokmål (Norsko) | nb-NO |
+| norština bokmal (Norsko) | nb-NO |
+| Krí | nebo |
+| Paštština (Afghánistán) | PS |
 | Perština | položek |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
@@ -227,8 +239,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
 | Slovinština | SSL |
-| slovinština (Slovinsko) | SL-SL |
-| Španělština | Ano |
+| slovinština (Slovinsko) | sl-SI |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
@@ -253,16 +265,18 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Yue čínština | yue |
 
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 | Jazyk | Značka |
 |----------|-----|
+| Arabština | snížen |
 | Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
 | Baskičtina | Balijšitna |
 | Bulharština | BG |
 | Bulharština (Bulharsko) | bg-BG |
-| Katalánština | ca-ES |
+| Katalánština | určen |
+| Katalánština (Katalánština) | ca-ES |
 | Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
@@ -278,7 +292,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | dánština (Dánsko) | da-DK |
 | Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -286,7 +300,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Estonština | et |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
@@ -306,7 +320,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Hindština | Ahoj |
 | hindština (Indie) | hi-IN |
 | Maďarština | hu |
-| maďarština (Maďarsko) | hu-HU |
+| Maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Indonéština | id |
 | Indonéština (Indonésie) | id-ID |
@@ -322,7 +336,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Malajština | Arial |
 | malajština (Malajsie) | ms-MY |
 | Norština – Bokmal| NB |
-| Norština, Bokmål (Norsko) | nb-NO |
+| norština bokmal (Norsko) | nb-NO |
 | Norština (Nynorsk) | nn |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
@@ -338,8 +352,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
 | Slovinština | SSL |
-| slovinština (Slovinsko) | SL-SL |
-| Španělština | Ano |
+| slovinština (Slovinsko) | sl-SI |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
@@ -365,7 +379,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Baskičtina | Balijšitna |
 | Bulharština | BG |
 | Bulharština (Bulharsko) | bg-BG |
-| Katalánština | ca-ES |
+| Katalánština | určen |
+| Katalánština (Katalánština) | ca-ES |
 | Chorvatština | hod |
 | chorvatština (Chorvatsko) | hr-HR |
 | Čeština | cs |
@@ -374,7 +389,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | dánština (Dánsko) | da-DK |
 | Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -382,7 +397,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Estonština | et |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
@@ -398,7 +413,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Řečtina | El |
 | Řečtina (Řecko) | el-GR |
 | Maďarština | hu |
-| maďarština (Maďarsko) | hu-HU |
+| Maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Italština | její |
 | italština (Itálie) | it-IT |
@@ -406,7 +421,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Lotyština | Lotyšsko |
 | Litevština | lt |
 | Norština – Bokmal| NB |
-| Norština, Bokmål (Norsko) | nb-NO |
+| norština bokmal (Norsko) | nb-NO |
 | Norština (Nynorsk) | nn |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
@@ -423,8 +438,8 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
 | Slovinština | SSL |
-| slovinština (Slovinsko) | SL-SL |
-| Španělština | Ano |
+| slovinština (Slovinsko) | sl-SI |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
@@ -443,7 +458,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | dánština (Dánsko) | da-DK |
 | Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -451,7 +466,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
 | Francouzština | FR |
@@ -469,14 +484,14 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
 | Norština – Bokmal| NB |
-| Norština, Bokmål (Norsko) | nb-NO |
+| norština bokmal (Norsko) | nb-NO |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
 | Ruština | ru |
 | ruština (Rusko) | ru-RU |
-| Španělština | Ano |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
@@ -493,7 +508,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | dánština (Dánsko) | da-DK |
 | Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -501,7 +516,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
 | Francouzština | FR |
@@ -519,7 +534,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
 | Norština – Bokmal| NB |
-| Norština, Bokmål (Norsko) | nb-NO |
+| norština bokmal (Norsko) | nb-NO |
 | Norština (Nynorsk) | nn |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
@@ -527,7 +542,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Portugalština (Brazílie) | pt-BR |
 | Ruština | ru |
 | ruština (Rusko) | ru-RU |
-| Španělština | Ano |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
@@ -538,7 +553,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 
 | Jazyk | Značka |
 |----------|-----|
-| Angličtina | en |
+| angličtina | en |
 | Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
 | Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
@@ -546,7 +561,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Francouzština | FR |
 | Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
@@ -557,7 +572,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Němčina (Švýcarsko)| de-CH |
 | Italština | její |
 | italština (Itálie) | it-IT |
-| Španělština | Ano |
+| španělština | es |
 | Španělština (Latinská Amerika) | ES-419 |
 | Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |

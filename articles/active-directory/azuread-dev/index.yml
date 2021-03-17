@@ -1,6 +1,10 @@
 ### YamlMime:Landing
 title: Azure Active Directory pro vývojáře
-summary: Azure Active Directory (Azure AD) je cloudová služba identit umožňující vývojářům sestavovat aplikace, které bezpečně přihlásí uživatele s pracovním nebo školním účtem Microsoft. Azure AD podporuje vývojáře vytvářející jak obchodní aplikace s jedním tenantem, tak i vývojáře, kteří se zajímají o vyvíjení aplikací s více tenanty. Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Pro nové aplikace doporučujeme používat Microsoft Identity Platform (v 2.0) a MSAL k získání tokenů a přístupu k zabezpečeným webovým rozhraním API.
+summary: >
+  Azure Active Directory (Azure AD) je cloudová služba identit umožňující vývojářům sestavovat aplikace, které přihlásí uživatele s pracovním nebo školním účtem Microsoft. Azure AD podporuje vytváření obchodních aplikací s jedním tenantem i víceklientských obchodních aplikací.
+
+
+  DŮLEŽITÉ: Tento obsah je pro starší koncový bod Azure AD v 1.0. Pro nové projekty použijte platformu Microsoft Identity.
 metadata:
   ms.topic: landing-page
   ms.date: 01/27/2020
@@ -9,12 +13,13 @@ metadata:
   ms.service: active-directory
   ms.subservice: azuread-dev
   ms.workload: identity
-  ms.openlocfilehash: 113a28ca5b4152ca8beedc7bdc3f1027c5acdf17
-  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+  ROBOTS: NOINDEX
+  ms.openlocfilehash: 9089b944402c31135b32b3304ecf7cf69d86ad93
+  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88116066"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92055116"
 landingContent:
 - title: Azure Active Directory pro vývojáře
   linkLists:
@@ -22,33 +27,19 @@ landingContent:
     links:
     - text: Azure Active Directory pro vývojáře (v1.0)
       url: v1-overview.md
-    - text: Rozvoj platformy Microsoft Identity Platform
-      url: ./about-microsoft-identity-platform.md
-    - text: Microsoft Identity Platform (v2.0)
-      url: ../develop/v2-overview.md
-  - linkListType: concept
-    links:
-    - text: Proč aktualizovat na Microsoft Identity Platform (v2.0)?
-      url: azure-ad-endpoint-comparison.md
-    - text: Typy aplikací a scénáře
-      url: app-types.md
-- title: Protokoly pro ověřování
+- title: Porovnání platforem
   linkLists:
   - linkListType: overview
     links:
-    - text: Základy ověřování
-      url: v1-authentication-scenarios.md
-  - linkListType: concept
-    links:
-    - text: Tok kódu při autorizaci OAuth 2.0
-      url: v1-protocols-oauth-code.md
-    - text: Tok kódu OpenID Connect
-      url: v1-protocols-openid-connect-code.md
-    - text: Tok udělení přihlašovacích údajů klienta OAuth 2.0
-      url: v1-oauth2-client-creds-grant-flow.md
-- title: Ukázky
+    - text: Rozvoj platformy Microsoft Identity Platform
+      url: about-microsoft-identity-platform.md
+    - text: Proč aktualizovat na v2.0?
+      url: azure-ad-endpoint-comparison.md
+- title: Microsoft Identity Platform
   linkLists:
-  - linkListType: download
+  - linkListType: overview
     links:
-    - text: Ukázkové aplikace
-      url: sample-v1-code.md
+    - text: Co je Microsoft Identity Platform?
+      url: ../develop/v2-overview.md
+    - text: Migrace aplikací z ADAL na MSAL
+      url: ../develop/msal-migration.md

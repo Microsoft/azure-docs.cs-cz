@@ -1,18 +1,16 @@
 ---
 title: Vytváření clusterů na serverech Windows Server a Linux
-description: Clustery Service Fabric běží na Windows serveru a Linux, což znamená, že budete moct nasazovat a hostovat Service Fabric aplikace kdekoli, kde můžete používat Windows Server nebo Linux.
+description: Service Fabric clustery běží na systémech Windows Server a Linux. Můžete nasazovat a hostovat aplikace Service Fabric kdekoli, kde můžete používat Windows Server nebo Linux.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422806"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882207"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -48,9 +46,9 @@ Sady škálování můžete použít k nasazení a správě kolekce virtuálníc
 Další informace najdete v [Service Fabric typech uzlů a virtuálních počítačů Scale Sets](service-fabric-cluster-nodetypes.md).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md), který je přidružený k [veřejné IP adrese](../virtual-network/public-ip-addresses.md) a popisku DNS.  Když zřizujete cluster s názvem * &lt; &gt; název_clusteru*, název DNS, * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
+Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md), který je přidružený k [veřejné IP adrese](../virtual-network/public-ip-addresses.md) a popisku DNS.  Když zřizujete cluster s názvem *&lt; &gt; název_clusteru*, název DNS, *&lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
 
-Virtuální počítače v clusteru mají jenom [privátní IP adresy](../virtual-network/private-ip-addresses.md).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu: * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název * &lt; klastru DNS &gt; . &lt; Location &gt; . cloudapp.Azure.com*, jiné typy uzlů mají název clusteru DNS * &lt; &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
+Virtuální počítače v clusteru mají jenom [privátní IP adresy](../virtual-network/private-ip-addresses.md).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu: *&lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název *&lt; klastru DNS &gt; . &lt; Location &gt; . cloudapp.Azure.com*, jiné typy uzlů mají název clusteru DNS *&lt; &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Účty úložiště
 Každý typ uzlu clusteru je podporovaný účtem služby [Azure Storage](../storage/common/storage-introduction.md) a spravovanými disky.
@@ -70,17 +68,17 @@ Kromě klientských certifikátů je možné Azure Active Directory taky nakonfi
 
 Další informace najdete v článku [zabezpečení mezi klienty a uzly](service-fabric-cluster-security.md#client-to-node-security) .
 
-### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
-Access Control na základě rolí (RBAC) umožňuje přiřadit podrobné řízení přístupu k prostředkům Azure.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla RBAC jsou zděděna v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly RBAC, aby mohli vlastní určení uživatelé a skupiny upravovat cluster.  Další informace najdete v tématu [Přehled Azure RBAC](../role-based-access-control/overview.md).
+### <a name="role-based-access-control"></a>Řízení přístupu na základě role
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje v prostředcích Azure přiřadit jemně odstupňované ovládací prvky přístupu.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla Azure RBAC jsou zděděná v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly Azure RBAC, aby mohli určení clusterů upravovat určené uživatele a skupiny.  Další informace najdete v tématu [Přehled Azure RBAC](../role-based-access-control/overview.md).
 
 Service Fabric také podporuje řízení přístupu pro omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.  
 
-Další informace najdete v [Service Fabric Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Další informace najdete v [Service Fabric řízení přístupu na základě role](service-fabric-cluster-security.md#service-fabric-role-based-access-control).
 
-### <a name="network-security-groups"></a>skupiny zabezpečení sítě, 
+### <a name="network-security-groups"></a>Skupiny zabezpečení sítě 
 Skupiny zabezpečení sítě (skupin zabezpečení sítě) řízení příchozího a odchozího provozu podsítě, virtuálního počítače nebo konkrétního síťového adaptéru.  Ve výchozím nastavení platí, že pokud je více virtuálních počítačů umístěno ve stejné virtuální síti, mohou vzájemně komunikovat prostřednictvím libovolného portu.  Pokud chcete omezit komunikaci mezi počítači, můžete definovat skupin zabezpečení sítě k segmentaci sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte v clusteru více typů uzlů, můžete použít skupin zabezpečení sítě na podsítě, abyste zabránili vzájemné komunikaci počítačů, které patří různým typům uzlů.  
 
-Další informace najdete v článku o [skupinách zabezpečení](../virtual-network/security-overview.md) .
+Další informace najdete v článku o [skupinách zabezpečení](../virtual-network/network-security-groups-overview.md) .
 
 ## <a name="scaling"></a>Škálování
 
@@ -88,7 +86,7 @@ Aplikace vyžaduje změnu v průběhu času. Možná budete muset zvýšit prost
 
 Další informace najdete v článku [škálování clusterů Azure](service-fabric-cluster-scaling.md).
 
-## <a name="upgrading"></a>Inovován
+## <a name="upgrading"></a>Upgrade
 Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně ho spravuje Microsoft. Společnost Microsoft zodpovídá za opravy základního operačního systému a provádění Service Fabricch upgradů modulu runtime v clusteru. Cluster můžete nastavit tak, aby přijímal automatické upgrady za běhu, když společnost Microsoft vydává novou verzi, nebo vybrat podporovanou verzi modulu runtime, kterou požadujete. Kromě upgradů za běhu můžete také aktualizovat konfiguraci clusteru, jako jsou certifikáty nebo porty aplikací.
 
 Další informace najdete v článku [upgrade clusterů](service-fabric-cluster-upgrade.md).
@@ -96,16 +94,17 @@ Další informace najdete v článku [upgrade clusterů](service-fabric-cluster-
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 Můžete vytvářet clustery na virtuálních počítačích, na kterých běží tyto operační systémy:
 
-| Operační systém | Nejstarší podporovaná verze Service Fabric |
-| --- | --- |
-| Windows Server 2012 R2 | Všechny verze |
-| Windows Server 2016 | Všechny verze |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
-| Linux Ubuntu 18,04 | 7.1 |
+| Operační systém | Nejstarší podporovaná verze Service Fabric | Poslední podporovaná verze Service Fabric |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | – |
+| Windows Server 2016 | Všechny verze | – |
+| 20H2 Windows serveru | 7.2.445.9590 | – |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | Všechny verze | – | 
+| Linux Ubuntu 16,04 | 6.0 | – |
+| Linux Ubuntu 18,04 | 7.1 | – |
 
 Další informace najdete v tématu [podporované verze clusteru v Azure](./service-fabric-versions.md#supported-operating-systems) .
 

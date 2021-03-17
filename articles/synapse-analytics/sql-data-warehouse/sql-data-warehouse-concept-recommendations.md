@@ -1,5 +1,5 @@
 ---
-title: Doporučení SQL synapse
+title: Vyhrazený fond SQL Azure Advisor doporučení
 description: Přečtěte si o doporučeních SQL synapse a způsobu jejich generování.
 services: synapse-analytics
 author: kevinvngo
@@ -11,18 +11,18 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482849"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685272"
 ---
-# <a name="synapse-sql-recommendations"></a>Doporučení SQL synapse
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor doporučení pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
-Tento článek popisuje doporučení SQL synapse, která jsou poskytována prostřednictvím Azure Advisor.  
+Tento článek popisuje doporučení vyhrazeného fondu SQL, která jsou k dispozici v Azure Advisor.  
 
-Synapse SQL poskytuje doporučení k zajištění konzistentního optimalizace úloh datového skladu pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , aby vám poskytovala osvědčené postupy přímo v rámci [Azure Portal](https://aka.ms/Azureadvisor). Synapse SQL shromažďuje doporučení telemetrie a ploch pro vaše aktivní zatížení na denní tempo. Podporované scénáře doporučení jsou popsány níže spolu s postupem použití doporučených akcí.
+Vyhrazený fond SQL poskytuje doporučení k zajištění konzistentního optimalizace úloh datového skladu pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , aby vám poskytovala osvědčené postupy přímo v rámci [Azure Portal](https://aka.ms/Azureadvisor). Vyhrazený fond SQL shromažďuje doporučení telemetrie a ploch pro vaše aktivní úlohy na denní tempo. Podporované scénáře doporučení jsou popsány níže spolu s postupem použití doporučených akcí.
 
 Můžete [si vyzkoušet doporučení](https://aka.ms/Azureadvisor) ještě dnes! 
 
@@ -38,7 +38,7 @@ Díky podoptimálním statistikám může mít vážně dopad na výkon dotazů,
 
 - [Vytváření a aktualizace statistiky tabulky](sql-data-warehouse-tables-statistics.md)
 
-Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující [skript T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor průběžně spouští stejný skript T-SQL, aby vygeneroval tato doporučení.
+Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující  [skript T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor průběžně spouští stejný skript T-SQL, aby vygeneroval tato doporučení.
 
 ## <a name="replicate-tables"></a>Replikovat tabulky
 
@@ -65,12 +65,12 @@ V současné době se u clusterovaných indexů columnstore zobrazí jenom čty�
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>Adaptivní (Gen2) využití mezipaměti
-Pokud máte velkou pracovní sadu, můžete zaznamenat procento přístupů do mezipaměti a vysoké využití mezipaměti. V tomto scénáři byste měli škálovat až ke zvýšení kapacity mezipaměti a opětovnému spuštění úloh. Další informace najdete v následující [dokumentaci](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+Pokud máte velkou pracovní sadu, můžete zaznamenat procento přístupů do mezipaměti a vysoké využití mezipaměti. V tomto scénáři byste měli škálovat až ke zvýšení kapacity mezipaměti a opětovnému spuštění úloh. Další informace najdete v následující [dokumentaci](./sql-data-warehouse-how-to-monitor-cache.md). 
 
 ## <a name="tempdb-contention"></a>Obsah databáze tempdb
 
-Výkon dotazů se může snížit, když dojde k vysokému obsahu databáze tempdb.  K obsahu tempdb může dojít prostřednictvím uživatelsky definovaných dočasných tabulek nebo v případě velkého množství přesunu dat. V tomto scénáři můžete škálovat pro další přidělení databáze tempdb a [konfiguraci tříd prostředků a správy úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) , aby bylo možné získat větší množství paměti pro vaše dotazy. 
+Výkon dotazů se může snížit, když dojde k vysokému obsahu databáze tempdb.  K obsahu tempdb může dojít prostřednictvím uživatelsky definovaných dočasných tabulek nebo v případě velkého množství přesunu dat. V tomto scénáři můžete škálovat pro další přidělení databáze tempdb a [konfiguraci tříd prostředků a správy úloh](./sql-data-warehouse-workload-management.md) , aby bylo možné získat větší množství paměti pro vaše dotazy. 
 
 ## <a name="data-loading-misconfiguration"></a>Nepřesná konfigurace načítání dat
 
-Vždycky byste měli načíst data z účtu úložiště ve stejné oblasti jako váš fond SQL, abyste minimalizovali latenci. Použijte [příkaz Copy pro příjem dat s vysokou propustností](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) a rozdělte připravené soubory do svého účtu úložiště, aby se maximalizovala propustnost. Pokud nemůžete použít příkaz COPY, můžete pro lepší propustnost použít rozhraní SqlBulkCopy API nebo BCP s vysokou velikostí dávky. Další doprovodné materiály k načítání dat najdete v následující [dokumentaci](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data). 
+Vždycky byste měli načíst data z účtu úložiště ve stejné oblasti jako vyhrazený fond SQL, abyste minimalizovali latenci. Použijte [příkaz Copy pro příjem dat s vysokou propustností](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) a rozdělte připravené soubory do svého účtu úložiště, aby se maximalizovala propustnost. Pokud nemůžete použít příkaz COPY, můžete pro lepší propustnost použít rozhraní SqlBulkCopy API nebo BCP s vysokou velikostí dávky. Další doprovodné materiály k načítání dat najdete v následující [dokumentaci](./guidance-for-loading-data.md).

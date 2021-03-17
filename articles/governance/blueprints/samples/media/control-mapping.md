@@ -1,23 +1,23 @@
 ---
 title: Ukázkové ovládací prvky pro Media details
-description: Mapování ovládacího prvku ukázek pro Media details Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 08/13/2020
+description: Mapování ovládacího prvku ukázek pro Media details Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208458"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035032"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázka pro Media details
 
 Následující článek podrobně popisuje, jak se vzorová ukázka Azure modrotisky Media Details mapuje na ovládací prvky multimédií. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[ verzi Preview \] : audit Media Controls** (předdefinovaná iniciativa zásad).
+Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve **\[ verzi Preview \] : audit Media Controls** (předdefinovaná iniciativa zásad).
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
 
 ## <a name="access-control"></a>Řízení přístupu
 
@@ -47,7 +47,7 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – oddělení cel se musí vyhovět odpovídajícím přiřazením role.
 
-- [Preview \] : Access Control na základě rolí (RBAC) by se měla používat pro služby Kubernetes Services
+- [Preview \] : Role-Based Access Control (RBAC) by se mělo používat pro služby Kubernetes Services.
 
 ### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – zajistěte, aby systémy nepřipojovaly důvěryhodnou síť a nedůvěryhodné sítě ve stejnou dobu.
 
@@ -63,7 +63,7 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54 – Ujistěte se, že je povoleno vícefaktorové ověřování (MFA) pro všechny uživatele konzoly cloudu.
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Multi-Factor Authentication (MFA) by mělo být povolené pro všechny účty předplatného s oprávněním k zápisu, aby se zabránilo narušení účtů nebo prostředků.
 
 ## <a name="auditing--logging"></a>Auditování & protokolování

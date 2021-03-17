@@ -1,19 +1,16 @@
 ---
 title: Co jsou Apache HBA ve službě Azure HDInsight?
 description: Úvod do Apache HBase v HDInsight, databáze typu NoSQL postavené na Hadoop. Další informace o případech použití a porovnání HBase s dalšími clustery Hadoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: afbf9aff09999a34a84d55634a868250fbb6d1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 98872cc1315d946c63825318d2b98460031e128a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188956"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942913"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Co je Apache HBA ve službě Azure HDInsight
 
@@ -43,7 +40,7 @@ Kanonický případ použití, pro který se vytvořilo BigTable (a podle rozš�
 |Ukládání hodnot klíče|HBA lze použít jako úložiště hodnot klíčů a je vhodné pro správu systémů zpráv. Facebook používá pro svůj systém zasílání zpráv HBA a je ideální pro ukládání a správu internetové komunikace. WebTable využívá HBase k hledání a správě tabulek, které jsou extrahovány z webových stránek.|
 |Data snímače|HBase je užitečné pro zaznamenání dat shromážděných přírůstkově z různých zdrojů. Tato data zahrnují sociální analýzy a časové řady. A udržování interaktivních řídicích panelů v aktuálním stavu díky trendům a čítačům a správě systémů protokolů auditu. Mezi příklady patří terminál Bloomberg účastník a databáze Open Time Series (OpenTSDB). OpenTSDB ukládá a poskytuje přístup ke metrikám shromážděným o stavu serverových systémů.|
 |Dotaz v reálném čase|[Apache Phoenix](https://phoenix.apache.org/) je DOTAZOVACÍ modul SQL pro Apache HBA. Je k němu přistupované jako ovladač JDBC a umožňuje dotazování a správu v tabulkách HBA pomocí SQL.|
-|HBase jako platforma|Aplikace lze nad HBase spouštět v případě použití jako datového úložiště. Mezi příklady patří Phoenix, OpenTSDB `Kiji`, a Titan. Aplikace lze také integrovat s HBase. Mezi příklady patří: [Apache Hive](https://hive.apache.org/), Apache prasete, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark `Ganglia`, a Apache.|
+|HBase jako platforma|Aplikace lze nad HBase spouštět v případě použití jako datového úložiště. Mezi příklady patří Phoenix, OpenTSDB, `Kiji` a Titan. Aplikace lze také integrovat s HBase. Mezi příklady patří: [Apache Hive](https://hive.apache.org/), Apache prasete, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia` a Apache.|
 
 ## <a name="next-steps"></a>Další kroky
 

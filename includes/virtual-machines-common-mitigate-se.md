@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73935889"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509224"
 ---
 **Poslední aktualizace dokumentu**: 12. listopadu 2019 10:00 AM PST.
 
@@ -21,9 +21,9 @@ Zveřejnění [nové třídy chyb zabezpečení procesoru](https://portal.msrc.m
 
 Společnost Microsoft nasadila zmírnění hrozeb napříč všemi našimi Cloud Services. Je chráněná infrastruktura, která spouští Azure a izoluje úlohy zákazníka od sebe navzájem. To znamená, že potenciální útočník používající stejnou infrastrukturu nemůže vaše aplikace napadnout pomocí těchto ohrožení zabezpečení.
 
-Azure používá [zachovávání údržby paměti](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) , kdykoli je to možné, k minimalizaci dopadu na zákazníky a eliminaci nutnosti restartování. Azure bude tyto metody používat při provádění aktualizací v hostiteli a ochraně našich zákazníků.
+Azure používá [zachovávání údržby paměti](../articles/virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#maintenance-that-doesnt-require-a-reboot) , kdykoli je to možné, k minimalizaci dopadu na zákazníky a eliminaci nutnosti restartování. Azure bude tyto metody používat při provádění aktualizací v hostiteli a ochraně našich zákazníků.
 
-Další informace o integraci zabezpečení do všech aspektů Azure najdete na webu [dokumentace k zabezpečení Azure](https://docs.microsoft.com/azure/security/) . 
+Další informace o integraci zabezpečení do všech aspektů Azure najdete na webu [dokumentace k zabezpečení Azure](../articles/security/index.yml) . 
 
 > [!NOTE] 
 > Od prvního publikování tohoto dokumentu jsme zavřeli několik variant této třídy ohrožení zabezpečení. Společnost Microsoft bude i nadále silně investovat do ochrany našich zákazníků a poskytování pokynů. Tato stránka bude aktualizována, protože budeme dál vydávat další opravy. 
@@ -43,7 +43,7 @@ Přestože aktualizace operačního systému není nutná k izolaci vašich apli
 
 | Nabídka | Doporučená akce  |
 |----------|---------------------|
-| Azure Cloud Services  | Povolte [Automatické aktualizace](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) nebo se ujistěte, že používáte nejnovější hostovaný operační systém. |
+| Azure Cloud Services  | Povolte [Automatické aktualizace](../articles/cloud-services/cloud-services-how-to-configure-portal.md) nebo se ujistěte, že používáte nejnovější hostovaný operační systém. |
 | Linux Virtual Machines Azure | Nainstalujte aktualizace od svého poskytovatele operačního systému. Další informace najdete v části [Linux](#linux) dále v tomto dokumentu. |
 | Windows Virtual Machines Azure  | Nainstalujte nejnovější kumulativní zabezpečení.
 | Další služby Azure PaaS | Pro zákazníky, kteří tyto služby nepoužívají, není nutná žádná akce. Azure automaticky udržuje verze operačních systémů v aktuálním stavu. |
@@ -72,7 +72,7 @@ Pokud používáte nedůvěryhodný kód, můžete ve svém VIRTUÁLNÍm počít
 Aby bylo možné tyto další funkce zabezpečení povolit, musí být cílový operační systém aktuální. I když jsou ve výchozím nastavení povolené spousty zmírňování kanálu na straně spuštění, musí být všechny další popsané funkce povolené ručně a můžou způsobit dopad na výkon. 
 
 
-**Krok 1: zakázání prostředí Hyper-Threading na virtuálním** počítači – zákazníci, kteří spouštějí nedůvěryhodný kód na virtuálním počítači s vlákny s technologií Hyper-thread, budou muset zakázat technologii Hyper-Threading nebo přejít na velikost virtuálního počítače bez technologie Hyper-thread. Odkaz na [Tento dokument](https://docs.microsoft.com/azure/virtual-machines/windows/acu) pro seznam velikostí virtuálních počítačů s vlákny typu Hyper (kde poměr VCPU až Core je 2:1). Pokud chcete zjistit, jestli má virtuální počítač povolený technologii Hyper-Threading, přečtěte si níže uvedený skript pomocí příkazového řádku Windows v rámci virtuálního počítače.
+**Krok 1: zakázání prostředí Hyper-Threading na virtuálním** počítači – zákazníci, kteří spouštějí nedůvěryhodný kód na virtuálním počítači s vlákny s technologií Hyper-thread, budou muset zakázat technologii Hyper-Threading nebo přejít na velikost virtuálního počítače bez technologie Hyper-thread. Odkaz na [Tento dokument](../articles/virtual-machines/acu.md) pro seznam velikostí virtuálních počítačů s vlákny typu Hyper (kde poměr VCPU až Core je 2:1). Pokud chcete zjistit, jestli má virtuální počítač povolený technologii Hyper-Threading, přečtěte si níže uvedený skript pomocí příkazového řádku Windows v rámci virtuálního počítače.
 
 Zadejte, `wmic` Chcete-li zadat interaktivní rozhraní. Potom zadejte níže pro zobrazení množství fyzických a logických procesorů na virtuálním počítači.
 
@@ -108,10 +108,10 @@ Pokud se zobrazí výstup `MDS mitigation is enabled: False` , [Požádejte pros
 **Krok 3**: Pokud chcete povolit podporu pro vytváření stínových adres (KVAS) a BTI (větvení Target) pro operační systém, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pro povolení ochrany pomocí `Session Manager` klíčů registru. Vyžaduje se restartování.
 
 
-**Krok 4**: u nasazení, která používají [vnořené virtualizaci](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (jenom D3 a E3): tyto pokyny platí v rámci virtuálního počítače, který používáte jako hostitele Hyper-V.
+**Krok 4**: u nasazení, která používají [vnořené virtualizaci](../articles/virtual-machines/windows/nested-virtualization.md) (jenom D3 a E3): tyto pokyny platí v rámci virtuálního počítače, který používáte jako hostitele Hyper-V.
 
 1.  Pokud chcete povolit ochranu pomocí klíčů registru, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) `MinVmVersionForCpuBasedMitigations` .
-2.  Nastavte typ plánovače hypervisoru na `Core` podle pokynů uvedených [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
+2.  Nastavte typ plánovače hypervisoru na `Core` podle pokynů uvedených [tady](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
 
 
 ### <a name="linux"></a>Linux
@@ -119,7 +119,7 @@ Pokud se zobrazí výstup `MDS mitigation is enabled: False` , [Požádejte pros
 <a name="linux"></a>Povolení sady dalších funkcí zabezpečení v rámci vyžaduje, aby byl cílový operační systém plně aktuální. Ve výchozím nastavení budou povolena některá zmírnění rizik. Následující část popisuje funkce, které jsou ve výchozím nastavení vypnuté nebo závislé na hardwarové podpoře (vyžádal povolení mikrokódu). Povolení těchto funkcí může způsobit dopad na výkon. Další pokyny najdete v dokumentaci od poskytovatele operačního systému.
 
 
-**Krok 1: zakázání prostředí Hyper-Threading na virtuálním** počítači – zákazníci, kteří spouštějí nedůvěryhodný kód na virtuálním počítači s vlákny s technologií Hyper-thread, budou muset zakázat technologii Hyper-Threading nebo přejít na virtuální počítač bez technologie Hyper-thread.  Odkaz na [Tento dokument](https://docs.microsoft.com/azure/virtual-machines/linux/acu) pro seznam velikostí virtuálních počítačů s vlákny typu Hyper (kde poměr VCPU až Core je 2:1). Pokud chcete zjistit, jestli používáte virtuální počítač s vlákny s technologií Hyper- `lscpu` v, spusťte příkaz na virtuálním počítači se systémem Linux. 
+**Krok 1: zakázání prostředí Hyper-Threading na virtuálním** počítači – zákazníci, kteří spouštějí nedůvěryhodný kód na virtuálním počítači s vlákny s technologií Hyper-thread, budou muset zakázat technologii Hyper-Threading nebo přejít na virtuální počítač bez technologie Hyper-thread.  Odkaz na [Tento dokument](../articles/virtual-machines/acu.md) pro seznam velikostí virtuálních počítačů s vlákny typu Hyper (kde poměr VCPU až Core je 2:1). Pokud chcete zjistit, jestli používáte virtuální počítač s vlákny s technologií Hyper- `lscpu` v, spusťte příkaz na virtuálním počítači se systémem Linux. 
 
 Pokud je `Thread(s) per core = 2` , je povolený Hyper-Threading. 
 
@@ -179,11 +179,3 @@ Tento článek poskytuje pokyny k následujícím postupům spekulativních úto
 
 Asynchronní přerušení transakce v rozšířeních transakční synchronizace (Intel® TSX):  
 - [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) – asynchronní přerušení transakce TSX (TAA)
-
-
-
-
-
-
-
-

@@ -6,24 +6,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513056"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313684"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Postup konfigurace směrování virtuálního centra
 
 Virtuální rozbočovač může obsahovat několik bran, například bránu VPN typu Site-to-site, bránu ExpressRoute, bránu Point-to-site a Azure Firewall. Možnosti směrování ve virtuálním centru poskytuje směrovač, který spravuje všechny směrování, včetně směrování mezi bránami pomocí Border Gateway Protocol (BGP). Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN.
 
 Další informace najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
-
-> [!NOTE]
-> Některé z těchto možností se pořád můžou vymezit. Očekává se, že to dokončí 17. srpna.
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Vytvoření směrovací tabulky
 
@@ -34,7 +30,7 @@ Další informace najdete v tématu [o směrování virtuálního rozbočovače]
 3. Výběrem **+ vytvořit směrovací tabulku** otevřete stránku **vytvořit tabulku směrování** .
 4. Na kartě **základy** stránky vytvořit směrovací tabulku vyplňte následující pole.
 
-   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Karta základy":::
+   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Stránka směrování":::
 
    * **Název**
    * **Trasy**
@@ -45,20 +41,20 @@ Další informace najdete v tématu [o směrování virtuálního rozbočovače]
 
      Pokud vyberete připojení k virtuální síti, zobrazí se **Konfigurace statických tras**. Toto je volitelné nastavení konfigurace. Další informace najdete v tématu [Konfigurace statických tras](about-virtual-hub-routing.md#static).
 
-      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Další směrování":::
+      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Stránka směrování":::
 
 5. Vyberte kartu **Štítky** pro konfiguraci názvů popisků. Popisky poskytují mechanismus pro logickou skupinu směrovacích tabulek.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Konfigurace názvů popisků":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Stránka směrování":::
 
 6. Vyberte kartu **přidružení** a přidružte k tabulce směrování připojení.
 Zobrazí se **větve**, **virtuální sítě**a **aktuální nastavení** připojení.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Připojení přidružení ke směrovací tabulce":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Stránka směrování":::
 
 7. Vyberte kartu **šíření** a rozšiřte trasy z připojení do směrovací tabulky.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Rozšířit trasy":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Stránka směrování":::
 
 8. Vyberte **vytvořit** a vytvořte tabulku směrování.
 
@@ -74,7 +70,7 @@ V Azure Portal vyhledejte směrovací tabulku svého virtuálního rozbočovače
 
 V Azure Portal vyhledejte směrovací tabulku svého virtuálního rozbočovače. Klikněte na **"..."** a vyberte **efektivní trasy** pro zobrazení tras, které získala vybraná směrovací tabulka. Šířené trasy z připojení do směrovací tabulky se automaticky naplní v **platných trasách** směrovací tabulky. Další informace najdete v tématu [o platných trasách](effective-routes-virtual-hub.md).
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Zobrazit efektivní trasy" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Stránka směrování" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
 
 ## <a name="to-set-up-routing-configuration-for-a-virtual-network-connection"></a><a name="routing-configuration"></a>Nastavení konfigurace směrování pro připojení k virtuální síti
 
@@ -86,7 +82,7 @@ V Azure Portal vyhledejte směrovací tabulku svého virtuálního rozbočovače
 1. U **statických tras**nakonfigurujte statické trasy pro síťové virtuální zařízení (Pokud je k dispozici). Virtuální síť WAN podporuje jednu IP adresu dalšího směrování pro statickou trasu v připojení k virtuální síti. Pokud máte například samostatné virtuální zařízení pro toky příchozího a odchozího přenosu dat, doporučujeme, aby virtuální zařízení byla oddělená virtuální sítě a připojili virtuální sítě k virtuálnímu rozbočovači.
 
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Nastavení konfigurace směrování" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Stránka směrování" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75752273"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375938"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -23,7 +23,7 @@ Zrušte kontrolu **"ověřit identitu serveru ověřením certifikátu"** nebo *
 
 Nedoporučuje se ověřování identity serveru obecně, ale s ověřováním certifikátů Azure se stejný certifikát používá pro ověřování serveru v protokolu IKEv2 (VPN Tunneling Protocol) a protokolu EAP. Vzhledem k tomu, že je certifikát serveru a plně kvalifikovaný název domény už ověřený protokolem tunelového připojení VPN, je redundantní ho znovu ověřit v protokolu EAP.
 
-![Point-to-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certifikát serveru")
+![ověřování Point-to-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certifikát serveru")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Můžu použít vlastní interní kořenovou certifikační autoritu PKI ke generování certifikátů pro připojení Point-to-site?
 

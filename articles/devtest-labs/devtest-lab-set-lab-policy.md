@@ -3,12 +3,12 @@ title: Správa zásad testovacího prostředí v Azure DevTest Labs | Microsoft 
 description: Naučte se definovat zásady testovacího prostředí, jako jsou velikosti virtuálních počítačů, maximální počet virtuálních počítačů na uživatele a automatizace vypnutí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290424"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530348"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí v Azure DevTest Labs
 
@@ -105,7 +105,7 @@ Zásada autostart umožňuje určit, kdy se mají spustit virtuální počítač
 
 1. V podokně **Konfigurace a zásady** testovacího prostředí vyberte možnost **autostart**.
    
-    ![Automatické spuštění](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![Snímek obrazovky zobrazuje možnosti automatického spuštění pro virtuální počítač.](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. Výběrem **zapnuto** tuto zásadu povolíte a **Off** zakážete.
 

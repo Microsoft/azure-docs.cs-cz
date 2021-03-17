@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2019
+ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 5d6e0e72335b1f792ca6201d5c810c7660ea06f6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cf5772e9cf08eaa7f34acd59a9c96da6f20cd03d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281748"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131407"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
@@ -34,11 +35,11 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na portálu](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. Na stránce s fakturačními rozsahy vyberte fakturační účet, pro který chcete sledovat zůstatek kreditů. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.
 
-    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![Snímek obrazovky s rozsahy fakturace](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -46,7 +47,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 3. Na levé straně vyberte **Způsoby platby** a potom vyberte **Kredity Azure**.
 
-   ![Snímek obrazovky se zůstatkem kreditů pro fakturační profil](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Snímek obrazovky s odhadovaným a aktuálním zůstatkem](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. Stránka s kredity Azure má následující oddíly:
 
@@ -101,7 +102,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 ### <a name="rest-api"></a>[REST API](#tab/rest)
 
-K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](https://docs.microsoft.com/rest/api/consumption/) nebo [fakturaci Azure](https://docs.microsoft.com/rest/api/billing/).
+K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](/rest/api/consumption/) nebo [fakturaci Azure](/rest/api/billing/).
 
 V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
 

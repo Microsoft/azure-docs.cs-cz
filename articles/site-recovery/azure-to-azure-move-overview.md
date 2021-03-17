@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130618"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90007362"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -26,9 +26,21 @@ Virtuální počítače se můžou přesunout z následujících důvodů:
 - Již jste nasadili v jedné oblasti a byla přidána podpora nové oblasti, která je blíže koncovým uživatelům vaší aplikace nebo služby. V tomto scénáři byste chtěli přesunout své virtuální počítače tak, aby se snížila latence, protože se jedná o novou oblast. Stejný přístup použijte v případě, že chcete konsolidovat odběry nebo pokud existují pravidla zásad správného řízení nebo organizace, která vyžadují přesunutí.
 - Váš virtuální počítač byl nasazený jako virtuální počítač s jednou instancí nebo jako součást skupiny dostupnosti. Pokud chcete zvýšit SLA dostupnosti, můžete virtuální počítače přesunout do zóny dostupnosti.
 
-## <a name="steps-to-move-azure-vms"></a>Postup přesunutí virtuálních počítačů Azure
+## <a name="move-vms-with-resource-mover"></a>Přesunutí virtuálních počítačů pomocí Resource stěhovací
 
-Přesun virtuálních počítačů zahrnuje následující kroky:
+Virtuální počítače teď můžete přesunout do jiné oblasti pomocí [Azure Resource stěhovací](../resource-mover/tutorial-move-region-virtual-machines.md). Resource stěhovací je ve verzi Public Preview a poskytuje:
+- Jediné centrum pro přesouvání prostředků napříč oblastmi.
+- Zkrácená doba přesunutí a složitost. Všechno, co potřebujete, je na jednom místě.
+- Jednoduché a konzistentní prostředí pro přesun různých typů prostředků Azure.
+- Snadný způsob, jak identifikovat závislosti mezi prostředky, které chcete přesunout. To vám pomůže přesunout související prostředky dohromady, takže vše funguje podle očekávání v cílové oblasti, a to po přesunutí.
+- Automatické vyčištění prostředků ve zdrojové oblasti, pokud je chcete po přesunutí odstranit.
+- Testování. Můžete si vyzkoušet přesunutí a pak ho zahodit, pokud nechcete provést úplné přesunutí.
+
+
+
+## <a name="move-vms-with-site-recovery"></a>Přesunutí virtuálních počítačů pomocí Site Recovery
+
+Přesun virtuálních počítačů pomocí Site Recovery zahrnuje následující kroky:
 
 1. Ověřte požadavky.
 2. Připravte zdrojové virtuální počítače.
@@ -49,7 +61,7 @@ Tato část popisuje nejběžnější architektury nasazení pro vícevrstvou ap
 
 * **Virtuální počítače s jednou instancí nasazené napříč různými úrovněmi**: každý virtuální počítač ve vrstvě je nakonfigurovaný jako virtuální počítač s jednou instancí a je připojený pomocí nástrojů pro vyrovnávání zatížení k ostatním vrstvám. Tato konfigurace je nejjednodušší k přijetí.
 
-     ![Nasazení virtuálních počítačů s jednou instancí napříč úrovněmi](media/move-vm-overview/regular-deployment.png)
+     ![Výběr pro přesun nasazení virtuálních počítačů s jednou instancí mezi úrovněmi](media/move-vm-overview/regular-deployment.png)
 
 * **Virtuální počítače v každé vrstvě nasazené napříč**skupinami dostupnosti: každý virtuální počítač v úrovni je nakonfigurovaný v sadě dostupnosti. [Skupiny dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) zajišťují, že virtuální počítače, které nasazujete v Azure, jsou distribuované napříč několika izolovanými hardwarovými uzly v clusteru. Tím se zajistí, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to jenom podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
 
@@ -64,16 +76,8 @@ Tato část popisuje nejběžnější architektury nasazení pro vícevrstvou ap
 V závislosti na tom, jaké [architektury](#typical-architectures-for-a-multi-tier-deployment) jsou zmíněné dříve, bude nasazení vypadat podobně, jako když provedete přesun do cílové oblasti.
 
 * **Virtuální počítače s jednou instancí nasazené napříč různými úrovněmi**
-
-     ![Nasazení virtuálních počítačů s jednou instancí napříč úrovněmi](media/move-vm-overview/single-zone.png)
-
 * **Virtuální počítače v každé vrstvě nasazené napříč skupinami dostupnosti**
-
-     ![Skupiny dostupnosti pro různé oblasti](media/move-vm-overview/crossregionaset.png)
-
 * **Virtuální počítače v každé vrstvě nasazené napříč Zóny dostupnosti**
-
-     ![Nasazení virtuálních počítačů v rámci Zóny dostupnosti](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>Přesunutí virtuálních počítačů za účelem zvýšení dostupnosti
 
@@ -91,5 +95,5 @@ V závislosti na tom, jaké [architektury](#typical-architectures-for-a-multi-ti
 > 
 > * [Přesun virtuálních počítačů Azure do jiné oblasti](azure-to-azure-tutorial-migrate.md)
 > 
-> * [Přesun virtuálních počítačů Azure do zón dostupnosti](move-azure-vms-avset-azone.md)
+> * [Přesun virtuálních počítačů Azure do Zóny dostupnosti](move-azure-vms-avset-azone.md)
 

@@ -1,21 +1,24 @@
 ---
 title: Konfigurace TLS pro cloudovou službu | Microsoft Docs
 description: Naučte se, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát TLS/SSL pro zabezpečení aplikace. V těchto příkladech se používá Azure Portal.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/26/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024842"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742637"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurace TLS pro aplikaci v Azure
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Protokol TLS (Transport Layer Security), dříve označovaný jako šifrování SSL (Secure Socket Layer), představuje nejčastěji používanou metodu zabezpečení dat posílaných přes Internet. Tento společný úkol popisuje, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát TLS/SSL pro zabezpečení aplikace.
 
@@ -34,10 +37,10 @@ Certifikát musí splňovat následující požadavky pro certifikáty TLS/SSL v
 
 * Certifikát musí obsahovat veřejný klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru. pfx (Personal Information Exchange).
-* Název subjektu certifikátu se musí shodovat s doménou používanou pro přístup ke cloudové službě. Certifikát TLS/SSL nemůžete od certifikační autority (CA) pro doménu cloudapp.net získat. Při přístupu ke službě musíte získat vlastní název domény. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro přístup k vaší aplikaci. Pokud je třeba název vlastní domény **contoso.com** , měli byste požádat o certifikát od vaší certifikační autority pro ***. contoso.com** nebo **na \. webové contoso.com**.
+* Název subjektu certifikátu se musí shodovat s doménou používanou pro přístup ke cloudové službě. Certifikát TLS/SSL nemůžete od certifikační autority (CA) pro doménu cloudapp.net získat. Při přístupu ke službě musíte získat vlastní název domény. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro přístup k vaší aplikaci. Pokud je třeba název vlastní domény **contoso.com** , měli byste požádat o certifikát od vaší certifikační autority pro **_. contoso.com_* nebo **na \. webové contoso.com**.
 * Certifikát musí používat minimálně 2048 bitů šifrování.
 
-Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem se neověřuje prostřednictvím certifikační autority a může jako adresu URL webu používat cloudapp.net doménu. Následující úloha například používá certifikát podepsaný svým držitelem, ve kterém je **sslexample.cloudapp.NET**běžný název (CN), který je používán v certifikátu.
+Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem se neověřuje prostřednictvím certifikační autority a může jako adresu URL webu používat cloudapp.net doménu. Následující úloha například používá certifikát podepsaný svým držitelem, ve kterém je **sslexample.cloudapp.NET** běžný název (CN), který je používán v certifikátu.
 
 Dále musíte do definice služby a konfiguračních souborů služby zahrnout informace o certifikátu.
 
@@ -76,7 +79,7 @@ Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a m
 
    Oprávnění ( `permissionLevel` atribut) lze nastavit na jednu z následujících hodnot:
 
-   | Hodnota oprávnění | Description |
+   | Hodnota oprávnění | Popis |
    | --- | --- |
    | limitedOrElevated |**(Výchozí)** K privátnímu klíči mají přístup všechny procesy rolí. |
    | úrovně |K privátnímu klíči mají přístup pouze procesy se zvýšenými oprávněními. |
@@ -147,7 +150,7 @@ Připojit k Azure Portal a...
 
     ![Klikněte na položku nabídky Odeslat.](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. Zadejte **soubor**, **heslo**a potom klikněte na tlačítko **nahrát** v dolní části oblasti pro zadávání dat.
+4. Zadejte **soubor**, **heslo** a potom klikněte na tlačítko **nahrát** v dolní části oblasti pro zadávání dat.
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: připojení k instanci role pomocí protokolu HTTPS
 Teď, když je nasazení v Azure v provozu, můžete se k němu připojit pomocí protokolu HTTPS.
@@ -156,7 +159,7 @@ Teď, když je nasazení v Azure v provozu, můžete se k němu připojit pomoc�
 
    ![Klikněte na adresu URL webu.](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. Ve webovém prohlížeči upravte odkaz tak, aby místo **http**používal protokol **https** , a pak navštivte stránku.
+2. Ve webovém prohlížeči upravte odkaz tak, aby místo **http** používal protokol **https** , a pak navštivte stránku.
 
    > [!NOTE]
    > Pokud používáte certifikát podepsaný svým držitelem, můžete při přechodu na koncový bod HTTPS, který je přidružený k certifikátu podepsanému svým držitelem, zobrazit v prohlížeči chybu certifikátu. Tento problém se eliminuje pomocí certifikátu podepsaného důvěryhodnou certifikační autoritou. do té doby můžete chybu ignorovat. (Další možností je přidání certifikátu podepsaného svým držitelem do úložiště certifikátů důvěryhodné certifikační autority uživatele.)
@@ -166,7 +169,7 @@ Teď, když je nasazení v Azure v provozu, můžete se k němu připojit pomoc�
    ![Náhled webu](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Pokud chcete protokol TLS použít pro pracovní nasazení místo nasazení v produkčním prostředí, musíte nejdřív určit adresu URL používanou pro pracovní nasazení. Po nasazení cloudové služby se adresa URL přípravného prostředí určuje pomocí identifikátoru GUID **ID nasazení** v tomto formátu:`https://deployment-id.cloudapp.net/`  
+   > Pokud chcete protokol TLS použít pro pracovní nasazení místo nasazení v produkčním prostředí, musíte nejdřív určit adresu URL používanou pro pracovní nasazení. Po nasazení cloudové služby se adresa URL přípravného prostředí určuje pomocí identifikátoru GUID **ID nasazení** v tomto formátu: `https://deployment-id.cloudapp.net/`  
    >
    > Vytvořte certifikát s běžným názvem (CN), který se rovná adrese URL založené na identifikátoru GUID (například **328187776e774ceda8fc57609d404462.cloudapp.NET**). Pomocí portálu přidejte certifikát do připravené cloudové služby. Pak přidejte informace o certifikátu do souborů CSDEF a CSCFG, znovu zabalením aplikace a aktualizujte připravené nasazení na použití nového balíčku.
    >

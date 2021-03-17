@@ -3,19 +3,20 @@ title: Prostředky, role a řízení přístupu v Azure Application Insights | M
 description: Vlastníci, přispěvatelé a čtenáři přehledů vaší organizace.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926497"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589601"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu v Application Insights
 
 Pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)můžete řídit, kdo má ke svým datům přístup pro čtení a aktualizace dat v Azure [Application Insights][start].
 
 > [!IMPORTANT]
-> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Další informace](#access).
+> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Přečtěte si další informace](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -37,7 +38,7 @@ Nejprve některé definice:
 * [**Předplatné**](https://portal.azure.com) – Pokud chcete používat Application Insights nebo jiné prostředky Azure, přihlásíte se k předplatnému Azure. Každá skupina prostředků patří k jednomu předplatnému Azure, kde si zvolíte svůj cenový balíček, a pokud se jedná o předplatné organizace, vyberte členy a jejich přístupová oprávnění.
 * [**Účet Microsoft**][account] – uživatelské jméno a heslo, které používáte k přihlášení k předplatným Microsoft Azure, Xbox Live, Outlook.com a dalším službám Microsoftu.
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Řízení přístupu ve skupině prostředků
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Řízení přístupu ve skupině prostředků
 
 Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, existují také samostatné skryté prostředky pro výstrahy a webové testy. Jsou připojené ke stejné [skupině prostředků](#resource-group) jako prostředek Application Insights. Do této služby můžete také umístit další služby Azure, jako jsou weby nebo úložiště.
 
@@ -75,7 +76,7 @@ Tam, kde je to vhodné, odkazujeme na přidruženou oficiální referenční dok
 | [Čtenář](../../role-based-access-control/built-in-roles.md#reader) |Může zobrazovat, ale ne měnit. |
 | [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Udělí uživateli oprávnění použít Application Insights Snapshot Debugger funkce. Všimněte si, že tato role je zahrnutá ani v rolích vlastníka ani Přispěvatel. |
 | Přispěvatel Release Management nasazení služby Azure | Role Přispěvatel pro služby nasazování prostřednictvím Azure Service Deploy. |
-| [Nástroj pro vyprázdnění dat](../../role-based-access-control/built-in-roles.md#data-purger) | Speciální role pro vyprazdňování osobních údajů Další informace najdete v našich [pokynech k osobním datům](../platform/personal-data-mgmt.md) .   |
+| [Nástroj pro vyprázdnění dat](../../role-based-access-control/built-in-roles.md#data-purger) | Speciální role pro vyprazdňování osobních údajů Další informace najdete v našich [pokynech k osobním datům](../logs/personal-data-mgmt.md) .   |
 | Správce ExpressRoute | Může vytvořit odstranění a spravovat expresní trasy.|
 | [Přispěvatel Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure.  |
 | [Čtenář Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
@@ -89,7 +90,7 @@ Tam, kde je to vhodné, odkazujeme na přidruženou oficiální referenční dok
 
 Úpravy obsahují vytváření, odstraňování a aktualizace:
 
-* Zdroje a prostředky
+* Zdroje informací
 * Webové testy
 * Výstrahy
 * Průběžný export
@@ -101,7 +102,7 @@ Pokud požadovaný uživatel v adresáři není, můžete pozvat kohokoli s úč
 
 ## <a name="related-content"></a>Související obsah
 
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>Dotaz PowerShellu k určení členství v rolích
 

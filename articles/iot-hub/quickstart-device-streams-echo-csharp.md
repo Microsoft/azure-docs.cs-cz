@@ -1,20 +1,20 @@
 ---
-title: Komunikace s aplikací zařízení v jazyce C# s datovými proudy zařízení v Azure IoT Hub
+title: Rychlý Start – komunikace s aplikací zařízení v jazyce C# s datovými proudy zařízení v Azure IoT Hub
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace v C#, které komunikují přes Stream zařízení vytvořený prostřednictvím IoT Hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 64af62cb6c2c56ca8c7e67e2f1467d4a7e8335a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3eb65db27e5b96f4b12973154bc860a2ab3df020
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78675523"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624604"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v jazyce C# prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -24,9 +24,7 @@ Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Pre
 
 [IoT Hub datové proudy zařízení](./iot-hub-device-streams-overview.md) umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Tento rychlý Start zahrnuje dvě aplikace v jazyce C#, které využívají datové proudy zařízení k posílání a vracení dat (ECHO).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,28 +35,26 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
   * Jihovýchodní Asie
 
 * Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou napsány v jazyce C#. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
-  * Stáhněte si [.NET Core SDK pro více platforem od .NET](https://www.microsoft.com/net/download/all).
-  * Ověřte aktuální verzi C# na vývojovém počítači pomocí následujícího příkazu:
 
-   ```
-   dotnet --version
-   ```
+    Stáhněte si [.NET Core SDK pro více platforem od .NET](https://www.microsoft.com/net/download/all).
 
-* Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IOT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
+    Ověřte aktuální verzi C# na vývojovém počítači pomocí následujícího příkazu:
 
-    ```azurecli-interactive
-    az extension add --name azure-iot
+    ```
+    dotnet --version
     ```
 
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 * [Stáhněte si ukázky Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a Extrahujte archiv zip. Budete ho potřebovat na straně zařízení i na straně služby.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell k registraci simulovaného zařízení.
 
@@ -78,7 +74,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:

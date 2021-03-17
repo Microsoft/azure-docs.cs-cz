@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) s smlouvou SLA pro provozuschopnost
 description: Přečtěte si o volitelné nabídce SLA pro dobu provozu pro Server API služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.custom: references_regions
-ms.openlocfilehash: cc23e32db71439067421a9be8b18a1827515bd9c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 01/08/2021
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563275"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176327"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -25,14 +25,8 @@ Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-
-* Azure Government se momentálně nepodporuje.
-* Azure Čína 21Vianet se momentálně nepodporuje.
-
-## <a name="limitations"></a>Omezení
-
-* Soukromé clustery se aktuálně nepodporují.
+* Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech a Azure Government oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+* Smlouva SLA o provozuschopnosti je dostupná pro [privátní clustery AKS][private-clusters] ve všech veřejných oblastech, kde se podporuje AKS.
 
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
@@ -40,7 +34,7 @@ Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé c
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Nainstalujte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.8.0 nebo novější.
+* Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.8.0 nebo novější.
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Vytvoření nového clusteru s smlouvou SLA pro dobu provozu
 
@@ -96,7 +90,7 @@ Vytvoření nového clusteru a nevyužívání smlouvy SLA pro dobu provozu:
 az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 ```
 
-Pomocí [`az aks update`][az-aks-nodepool-update] příkazu aktualizujte stávající cluster:
+Pomocí [`az aks update`][az-aks-update] příkazu aktualizujte stávající cluster:
 
 ```azurecli-interactive
 # Update an existing cluster to use Uptime SLA
@@ -137,9 +131,10 @@ Nakonfigurujte cluster tak, aby [omezil přenos odchozího provozu](limit-egress
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
 [availability-zones]: ./availability-zones.md
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-create]: /cli/azure/aks?#az-aks-create
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-update]: /cli/azure/aks#az_aks_update
 [az-group-delete]: /cli/azure/group#az-group-delete
+[private-clusters]: private-clusters.md

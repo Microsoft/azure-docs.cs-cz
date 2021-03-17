@@ -6,20 +6,25 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260157"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626083"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric sítě do jiné oblasti Azure
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její prostředky do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z řady důvodů. Například v reakci na výpadky můžete získat funkce nebo služby, které jsou k dispozici pouze v konkrétních oblastech, pro splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
 
  [Service Fabricová síť](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) nepodporuje možnost přímého přesouvání prostředků napříč oblastmi Azure. Prostředky je ale možné nepřímo přesunout tím, že do nové cílové oblasti nasadíte kopii aktuální Azure Resource Manager šablony a potom přesměrujete příchozí přenos dat a závislosti na nově vytvořenou aplikaci Service Fabric sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Řadič příchozího přenosu dat (například [Application Gateway](../application-gateway/index.yml)), který slouží jako prostředník pro směrování provozu mezi klienty a aplikací Service Fabric sítě
 * Dostupnost Service Fabric sítě (Preview) v cílové oblasti Azure ( `westus` , `eastus` nebo `westeurope` )
@@ -44,7 +49,7 @@ Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její p
 
 1. Po dokončení nasazení otestujte koncové body aplikace a ověřte funkčnost vaší aplikace.
 
-2. Stav aplikace můžete také ověřit tak, že zkontrolujete stav aplikace ([AZ mřížka App show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) a zkontrolujete protokoly aplikací a ([AZ oky Code-Package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) pomocí rozhraní příkazového [řádku Azure Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
+2. Stav aplikace můžete také ověřit tak, že zkontrolujete stav aplikace ([AZ mřížka App show](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) a zkontrolujete protokoly aplikací a ([AZ oky Code-Package-log](/cli/azure/ext/mesh/mesh/code-package-log)) pomocí rozhraní příkazového [řádku Azure Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
 
 ## <a name="commit"></a>Potvrzení
 
@@ -56,7 +61,7 @@ Pokud chcete dokončit přesun aplikace Service Fabric sítě, [odstraňte zdroj
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přesunutí prostředků Azure do různých oblastí](../azure-resource-manager/management/move-region.md)
+* [Přesun prostředků Azure napříč oblastmi](../azure-resource-manager/management/move-region.md)
 * [Podpora přesunu prostředků Azure napříč oblastmi](../azure-resource-manager/management/region-move-support.md)
 * [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [Podpora operace přesunutí pro prostředky](../azure-resource-manager/management/move-support-resources.md

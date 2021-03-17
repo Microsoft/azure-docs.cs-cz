@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8a15de717ea960b411d95061b560b64abb94d98f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: afdcd458dbda282a23b7b8f7f1cd8459bc8ec5c5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474556"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131271"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -130,4 +131,4 @@ V tomto kurzu jste se naučili:
 V následujícím kurzu se dozvíte, jak na základě historických dat předpovědět budoucí útratu.
 
 > [!div class="nextstepaction"]
-> [Odhad budoucí útraty](../../cost-management/tutorial-forecast-spending.md)
+> [Odhad budoucí útraty](./tutorial-forecast-spending.md)

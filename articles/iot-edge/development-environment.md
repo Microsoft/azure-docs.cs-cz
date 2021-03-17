@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511089"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487696"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Příprava vývojového a testovacího prostředí pro IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge přesouvá stávající obchodní logiku do zařízení, která pracují na hraničních zařízeních. Chcete-li připravit aplikace a úlohy tak, aby běžely jako [IoT Edge moduly](iot-edge-modules.md), je nutné je vytvořit jako kontejnery. Tento článek poskytuje pokyny k tomu, jak nakonfigurovat vývojové prostředí, abyste mohli úspěšně vytvořit IoT Edge řešení. Po nastavení vývojového prostředí můžete zjistit, jak [vyvíjet vlastní moduly IoT Edge](module-development.md).
 
@@ -58,7 +60,7 @@ Kromě rozšíření IoT Edge může být užitečné nainstalovat další rozš
 | Azure Functions | [Sada .NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
 | C# | [Sada .NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
-| Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [Nastavit proměnnou prostředí JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
+| Java | <ul><li>[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [Nastavit proměnnou prostředí JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generátor modulu Azure IoT Edge Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
@@ -82,10 +84,10 @@ Pro produkční nasazení se podporuje jenom modul runtime IoT Edge, ale násled
 
 | Nástroj | Označuje se také jako | Podporované platformy | Nejvhodnější pro |
 | ---- | ------------- | ------------------- | --------- |
-| Nástroj pro vývoj IoT EdgeHub  | iotedgehubdev | Windows, Linux, MacOS | Simulace zařízení pro moduly ladění. |
-| IoT Edge kontejner pro vývoj | Microsoft/iotedgedev | Windows, Linux, MacOS | Vývoj bez instalace závislostí. |
-| IoT Edge modul runtime v kontejneru | iotedgec | Windows, Linux, MacOS, ARM | Testování v zařízení, které nemusí podporovat modul runtime. |
-| IoT Edge kontejner zařízení | toolboc/Azure – IoT-Edge-Device-Container | Windows, Linux, MacOS, ARM | Testování scénáře s velkým množstvím IoT Edge zařízení ve velkém měřítku. |
+| Nástroj pro vývoj IoT EdgeHub  | iotedgehubdev | Windows, Linux, macOS | Simulace zařízení pro moduly ladění. |
+| IoT Edge kontejner pro vývoj | iotedgedev | Windows, Linux, macOS | Vývoj bez instalace závislostí. |
+| IoT Edge modul runtime v kontejneru | iotedgec | Windows, Linux, macOS, ARM | Testování v zařízení, které nemusí podporovat modul runtime. |
+| IoT Edge kontejner zařízení | toolboc/Azure – IoT-Edge-Device-Container | Windows, Linux, macOS, ARM | Testování scénáře s velkým množstvím IoT Edge zařízení ve velkém měřítku. |
 
 ### <a name="iot-edgehub-dev-tool"></a>Nástroj pro vývoj IoT EdgeHub
 
@@ -99,11 +101,11 @@ Další informace a pokyny k instalaci najdete v tématu [Azure IoT EdgeHub dev 
 
 Kontejner pro vývoj Azure IoT Edge je kontejner Docker, který obsahuje všechny závislosti, které potřebujete pro vývoj IoT Edge. Tento kontejner usnadňuje začátek s libovolným jazykem, ve kterém chcete vyvíjet, včetně jazyků C#, Python, Node.js a Java. Vše, co je potřeba nainstalovat, je kontejnerový modul, jako je Docker nebo Moby, který načte kontejner do vývojového počítače.
 
-Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](https://hub.docker.com/r/microsoft/iotedgedev/).
+Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container).
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge modul runtime v kontejneru
 
-Modul runtime IoT Edge v kontejneru poskytuje úplný modul runtime, který jako proměnnou prostředí převezme řetězec připojení zařízení. Tento kontejner umožňuje testovat IoT Edge moduly a scénáře v systému, který nemusí nativně podporovat modul runtime, jako je MacOS. Všechny moduly, které nasadíte, se spustí mimo kontejner modulu runtime. Pokud chcete, aby modul runtime a všechny nasazené moduly existovaly ve stejném kontejneru, zvažte místo toho IoT Edge kontejner zařízení.
+Modul runtime IoT Edge v kontejneru poskytuje úplný modul runtime, který jako proměnnou prostředí převezme řetězec připojení zařízení. Tento kontejner umožňuje testovat IoT Edge moduly a scénáře v systému, který nemusí nativně podporovat modul runtime, jako je macOS. Všechny moduly, které nasadíte, se spustí mimo kontejner modulu runtime. Pokud chcete, aby modul runtime a všechny nasazené moduly existovaly ve stejném kontejneru, zvažte místo toho IoT Edge kontejner zařízení.
 
 Další informace najdete v tématu [spuštění Azure IoT Edge v kontejneru](https://github.com/Azure/iotedgedev/tree/master/docker/runtime).
 
@@ -119,7 +121,7 @@ Až budete připraveni vyvíjet řešení v rozsáhlých produkčních scénář
 
 Další informace, doprovodné materiály a příklady najdete na následujících stránkách:
 
-* [Průběžná integrace a průběžné nasazování pro Azure IoT Edge](how-to-ci-cd.md)
-* [Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Projects](how-to-devops-project.md)
+* [Průběžná integrace a průběžné nasazování pro Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
+* [Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Starter](how-to-devops-starter.md)
 * [Modul plug-in Azure IoT Edge Jenkinse](https://plugins.jenkins.io/azure-iot-edge)
 * [Úložiště GitHub IoT Edge DevOps](https://github.com/toolboc/IoTEdge-DevOps)

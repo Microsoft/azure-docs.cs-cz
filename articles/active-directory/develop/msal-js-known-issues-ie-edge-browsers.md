@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83772076"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy s Internet Explorerem a prohlížeči Microsoft Edge (MSAL.js)
@@ -28,7 +28,7 @@ V IE a Microsoft Edge jsme měli několik sestav o problémech s ověřováním 
 ### <a name="cause"></a>Příčina
 Příčina většiny těchto problémů je následující. Úložiště relací a místní úložiště jsou rozdělené podle zón zabezpečení v prohlížeči Microsoft Edge. V této konkrétní verzi Microsoft Edge se při přesměrování aplikace mezi zónami vymažou úložiště relací a místní úložiště. Konkrétně je úložiště relací v normální navigaci v prohlížeči vymazáno a relace i místní úložiště jsou vymazány v režimu InPrivate prohlížeče. MSAL.js ukládá určitý stav do úložiště relace a spoléhá na kontrolu tohoto stavu během toků ověřování. Při vymazání úložiště relace dojde ke ztrátě tohoto stavu, takže dojde k přerušení prostředí.
 
-### <a name="issues"></a>Issues (Problémy)
+### <a name="issues"></a>Problémy
 
 - **Nekonečná smyčka přesměrování a opakované načítání stránek během ověřování**. Když se uživatelé přihlásí k aplikaci v Microsoft Edge, budou přesměrováni zpátky z přihlašovací stránky AAD a zablokují se v nekonečné smyčce přesměrování, což má za následek opakované opětovné načtení stránky. Obvykle se doprovází `invalid_state` Chyba v úložišti relace.
 
@@ -51,7 +51,7 @@ Použijte alternativní řešení níže.
 #### <a name="other-workarounds"></a>Další alternativní řešení
 Před přijetím těchto alternativních řešení se ujistěte, že se k vašemu problému dochází jenom v konkrétní verzi prohlížeče Microsoft Edge a funguje v ostatních prohlížečích.  
 1. Jako první krok při obdržení těchto problémů zajistěte, aby se doména aplikace a všechny ostatní lokality, které jsou zapojeny do přesměrování toku ověřování, přidaly jako důvěryhodné lokality v nastavení zabezpečení prohlížeče, aby patřily do stejné bezpečnostní zóny.
-Postup je následující:
+To můžete provést pomocí těchto kroků:
     - Otevřete **Internet Explorer** a klikněte na **Nastavení** (ikona ozubeného kolečka) v pravém horním rohu.
     - Vybrat **Možnosti Internetu**
     - Vyberte kartu **zabezpečení** .

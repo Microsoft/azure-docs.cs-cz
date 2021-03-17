@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: ověření připojení – Průvodce odstraňováním potíží'
 description: Tato stránka poskytuje pokyny pro řešení potíží a ověření koncového připojení okruhu ExpressRoute.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 10/31/2019
-ms.author: rambala
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204222"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92204635"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
@@ -36,24 +36,24 @@ Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíž
 
 ## <a name="overview"></a>Přehled
 Následující diagram znázorňuje logické připojení sítě zákazníka k síti Microsoftu pomocí ExpressRoute.
-[![1]][1]
+[![první]][1]
 
 V předchozím diagramu čísla označují klíčové síťové body. Na tyto síťové body se v tomto článku odkazuje v době podle jejich přidruženého čísla. V závislosti na modelu připojení ExpressRoute – ve společném umístění v cloudu Exchange, připojení k síti Ethernet typu Point-to-Point nebo Any-to-Any (IPVPN) – síťové body 3 a 4 můžou být přepínače (zařízení vrstvy 2) nebo směrovače (zařízení vrstvy 3). V modelu přímého připojení neexistují žádné síťové body 3 a 4; místo toho se službu zápis certifikátů (2) přímo připojí k směrovači msee prostřednictvím tmavého vlákna. Klíčové body sítě jsou znázorněny takto:
 
 1.  Výpočetní zařízení zákazníka (například server nebo počítač)
 2.  Zápis certifikátů: hraniční směrovače zákazníka 
-3.  PEs (s přístupem CE): hraniční směrovače poskytovatele/přepínače, které jsou na hraničních směrovačích zákazníka. Označuje se jako PE-zápis certifikátů v tomto dokumentu.
-4.  PEs (MSEE s přístupem): hraniční směrovače a přepínače poskytovatele, které jsou na směrovači msee. V tomto dokumentu se říká směrovači msee PE.
+3.  PEs (s přístupem CE): hraniční směrovače poskytovatele/přepínače, které jsou na hraničních směrovačích zákazníka. V tomto dokumentu se říká PE-CEs.
+4.  PEs (MSEE s přístupem): hraniční směrovače a přepínače poskytovatele, které jsou na směrovači msee. V tomto dokumentu se říká PE-MSEEs.
 5.  Směrovači msee: směrovače ExpressRoute Microsoft Enterprise Edge (MSEE)
 6.  Brána Virtual Network (VNet)
 7.  Výpočetní zařízení ve virtuální síti Azure
 
 Pokud se používá společné umístění cloudového systému Exchange, sítě Ethernet Point-to-Point nebo přímé připojení, vystavování partnerského vztahu protokolu BGP (2) pomocí směrovači msee (5). 
 
-Pokud se používá model připojení any-to-Any (IPVPN), PE-směrovači msee (4) vytvoří partnerský vztah protokolu BGP s směrovači msee (5). PE – směrovači msee šíří trasy obdržené od Microsoftu zpátky k síti zákazníka prostřednictvím sítě poskytovatele služeb IPVPN.
+Pokud se používá model připojení any-to-Any (IPVPN), PE-MSEEs (4) vytvořit partnerský vztah protokolu BGP s směrovači msee (5). PE-MSEEs rozšířit trasy obdržené od Microsoftu zpátky k síti zákazníka prostřednictvím sítě poskytovatele služeb IPVPN.
 
 > [!NOTE]
->Pro zajištění vysoké dostupnosti společnost Microsoft vytvoří plně redundantní paralelní připojení mezi páry směrovači msee (5) a PE-směrovači msee (4). Mezi zákaznickou sítí a párm zápisů na straně typu PE se taky doporučuje plně redundantní cesta k paralelní síti. Další informace o vysoké dostupnosti najdete v článku [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA] .
+>Pro zajištění vysoké dostupnosti společnost Microsoft vytvoří plně redundantní paralelní připojení mezi směrovači msee (5) a PE-MSEEs (4) páry. Mezi zákaznickou sítí a PE-CEs dvojici se taky doporučuje plně redundantní cesta k paralelní síti. Další informace o vysoké dostupnosti najdete v článku [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA] .
 >
 >
 
@@ -165,7 +165,7 @@ V Azure Portal můžete v okně okruhu ExpressRoute zkontrolovat stav partnersk�
 Jak je uvedeno v předchozím příkladu, jak je uvedeno u soukromého partnerského vztahu Azure, zatímco veřejné partnerské vztahy Azure a partnerské vztahy Microsoftu se zřízené nejsou. Úspěšně zřízený kontext partnerského vztahu by měl také obsahovat primární a sekundární podsítě typu Point-to-Point. Podsítě/30 se používají pro IP adresu rozhraní směrovači msee a zápis certifikátů/PE-směrovači msee. U partnerských vztahů, které jsou zřízeny, se v seznamu zobrazí také datum poslední změny konfigurace. 
 
 > [!NOTE]
-> Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureASN*a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
+> Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId* , *AzureASN* a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureASN*a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
+> Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId* , *AzureASN* a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
 >
 >
 
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> Pokud je stav partnerského vztahu eBGP mezi MSEE a a MSEE/PE-MSEE aktivní nebo nečinný, ověřte, jestli se přiřazené primární a sekundární podsítě partnerského vztahu shodují s konfigurací u propojeného CE/PE-. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureAsn*a *PeerAsn* a zda jsou tyto hodnoty mapovány na ty, které se používají v propojeném prostředí PE-MSEE/CE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný v páru MSEE a CE/PE-MSEE. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
+> Pokud je stav partnerského vztahu eBGP mezi MSEE a a MSEE/PE-MSEE aktivní nebo nečinný, ověřte, jestli se přiřazené primární a sekundární podsítě partnerského vztahu shodují s konfigurací u propojeného CE/PE-. Také ověřte, zda jsou v směrovači msee použity správné *VlanId* , *AzureAsn* a *PeerAsn* a zda jsou tyto hodnoty mapovány na ty, které se používají v propojeném prostředí PE-MSEE/CE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný v páru MSEE a CE/PE-MSEE. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
 >
 
 
@@ -319,7 +319,7 @@ StatusCode: 400
 ## <a name="next-steps"></a>Další kroky
 Další informace nebo nápovědu najdete na následujících odkazech:
 
-- [Podpora společnosti Microsoft][Support]
+- [podpora Microsoftu][Support]
 - [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit]
 - [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering]
 
@@ -332,13 +332,8 @@ Další informace nebo nápovědu najdete na následujících odkazech:
 
 <!--Link References-->
 [Support]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
-[CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
-[ARP]: https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
-[DR-Pvt]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
-
-
-
-
-
+[CreateCircuit]: ./expressroute-howto-circuit-portal-resource-manager.md
+[CreatePeering]: ./expressroute-howto-routing-portal-resource-manager.md
+[ARP]: ./expressroute-troubleshooting-arp-resource-manager.md
+[HA]: ./designing-for-high-availability-with-expressroute.md
+[DR-Pvt]: ./designing-for-disaster-recovery-with-expressroute-privatepeering.md

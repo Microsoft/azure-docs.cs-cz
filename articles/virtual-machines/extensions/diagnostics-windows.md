@@ -1,24 +1,19 @@
 ---
 title: Použití Azure PowerShell k povolení diagnostiky na virtuálním počítači s Windows
-services: virtual-machines-windows
-documentationcenter: ''
 description: Naučte se používat PowerShell k povolení Azure Diagnostics ve virtuálním počítači s Windows.
-author: mimckitt
-manager: gwallace
-editor: ''
-ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
+author: amjads1
+ms.author: amjads
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.date: 12/15/2015
-ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e242a45e2c0f8247a1c23bf4d43a6e8b0a033d9b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837019"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560077"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows
 
@@ -97,8 +92,8 @@ Konfigurace se musí aktualizovat, aby obsahovala následující:
 
 * Atribut *ResourceID* elementu **Metrics** se musí aktualizovat s ID prostředku pro virtuální počítač.
   
-  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/RESOURCEGROUPS/{název*virtuálního**počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{.
-  * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup**a název virtuálního počítače je **MyWindowsVM**, pak bude hodnota *ResourceID* :
+  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/RESOURCEGROUPS/{název *virtuálního**počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{.
+  * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup** a název virtuálního počítače je **MyWindowsVM**, pak bude hodnota *ResourceID* :
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
@@ -212,4 +207,4 @@ Konfigurace se musí aktualizovat, aby obsahovala následující:
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o používání funkce Azure Diagnostics a dalších technik k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Schéma konfigurací diagnostiky](../../azure-monitor/platform/diagnostics-extension-versions.md) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
+* [Schéma konfigurací diagnostiky](../../azure-monitor/agents/diagnostics-extension-versions.md) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.

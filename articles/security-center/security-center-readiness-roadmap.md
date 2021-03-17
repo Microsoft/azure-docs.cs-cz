@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100317"
 ---
-# <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti služby Azure Security Center
+# <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti na Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
 
 ## <a name="understanding-security-center"></a>Vysvětlení služby Security Center
@@ -29,12 +29,12 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou 
 V začátcích používání služby Security Center vám pomůžou následující zdroje.
 
 Články
-* [Úvod do Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Úvodní příručka ke službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Úvod do Azure Security Center](security-center-introduction.md)
+- [Úvodní příručka ke službě Azure Security Center](security-center-get-started.md)
 
 Videa
-* [Rychlé úvodní video](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [Přehled možností prevence, detekce a reakce ve službě Security Center](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [Rychlé úvodní video](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [Přehled možností prevence, detekce a reakce ve službě Security Center](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>Plánování a provoz
 
@@ -42,20 +42,16 @@ Pokud chcete využívat všech výhod služby Security Center, je důležité po
 
 Následující zdroje vám pomůžou při plánování i provozu.
 
-Článek
-* [Průvodce plánováním a provozem služby Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Připojení počítačů ke službě Security Center
-Security Center automaticky rozpozná veškerá předplatná a pracovní prostory Azure, které ještě nepřešly na úroveň Security Center Standard. To zahrnuje předplatná Azure využívající úroveň Security Center Free volné a pracovní prostory, které nemají povolené řešení zabezpečení.
+Security Center automaticky detekuje všechna předplatná Azure nebo pracovní prostory, které nechrání Azure Defender. To zahrnuje předplatná Azure využívající Security Center volno a pracovní prostory, které nemají povolené řešení zabezpečení.
 
 Následující zdroje vám pomůžou při procesu onboardingu.
 
-Článek
-* [Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-Video
-* [Hybridní Azure Security Center – přehled](https://youtu.be/NMa4L_M597k)
+- [Připojování počítačů mimo Azure](quickstart-onboard-machines.md)
+- [Hybridní Azure Security Center – přehled](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>Řešení problémů zabezpečení pomocí služby Security Center
 Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby se zjistily skutečné hrozby a snížil počet falešných poplachů.
@@ -63,14 +59,12 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 Následující zdroje vám pomůžou při správě výstrah zabezpečení a ochraně vašich prostředků.
 
 Články    
-* [Sledování stavu zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana sítě pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Ochrana služby a dat Azure SQL pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Ochrana sítě pomocí Azure Security Center](./security-center-network-recommendations.md)
+- [Ochrana služby a dat Azure SQL pomocí Azure Security Center](./security-center-remediate-recommendations.md)
 
 
 Video    
-* [Řešení problémů zabezpečení pomocí Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [Řešení problémů zabezpečení pomocí Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center a reakce na incidenty
 Aby se snížily náklady a škody, je důležité mít na úmyslu plán reakce na incidenty, než dojde k útoku. Azure Security Center můžete využít v různých fázích reakce na incidenty.
@@ -82,8 +76,8 @@ Videa
 * [Rychlá reakce na hrozby s použitím bezpečnostních a vyšetřovacích nástrojů nové generace](https://youtu.be/e8iFCz5RM4g)
 
 Články    
-* [Využití Azure Security Center při reakci na incidenty](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [Automatizace reakce díky automatizaci pracovního postupu](workflow-automation.md)
+* [Využití Azure Security Center při reakci na incidenty](./tutorial-security-incident.md)
+* [Reakce na Security Center triggery pomocí automatizace](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Pokročilá obrana cloudu
 
@@ -96,8 +90,8 @@ Videa
 * [Azure Security Center – Adaptivní řízení aplikací](https://youtu.be/wWWekI1Y9ck)
 
 Články    
-* [Správa přístupu k virtuálnímu počítači pomocí za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
-* [Adaptivní řízení aplikací v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Správa přístupu k virtuálnímu počítači pomocí za běhu](./security-center-just-in-time.md)
+* [Adaptivní řízení aplikací v Azure Security Center](./security-center-adaptive-application.md)
 
 ## <a name="hands-on-activities"></a>Praktické aktivity
 
@@ -105,20 +99,18 @@ Videa
 * [Playbook doporučených postupů pro Firewall webových aplikací (WAF) ve službě Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Playbook Azure Security Center: Výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Další zdroje
-* [Stránky dokumentace služby Security Center](https://docs.microsoft.com/azure/security-center/)
-* [Stránky dokumentace rozhraní Security Center REST API](https://msdn.microsoft.com/library/mt704034.aspx)
-* [Nejčastější dotazy ke službě Azure Security Center (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)
+## <a name="additional-resources"></a>Další zdroje informací
+* [Stránky dokumentace služby Security Center](./index.yml)
+* [Stránky dokumentace rozhraní Security Center REST API](/previous-versions/azure/reference/mt704034(v=azure.100))
+* [Nejčastější dotazy ke službě Azure Security Center (FAQ)](./faq-general.md)
 * [Ceník služby Security Center](https://azure.microsoft.com/pricing/details/security-center/)
-* [Osvědčené postupy zabezpečení identity](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [Osvědčené postupy zabezpečení sítě](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
-* [Doporučení k PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [Osvědčené postupy zabezpečení identity](../security/fundamentals/identity-management-best-practices.md)
+* [Osvědčené postupy zabezpečení sítě](../security/fundamentals/network-best-practices.md)
+* [Doporučení k PaaS](../security/fundamentals/paas-deployments.md)
 * [Dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Zákazníci Log Analytics teď můžou použít Azure Security Center k ochraně svých hybridních cloudových úloh.](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Zákazníci Log Analytics teď můžou použít Azure Security Center k ochraně svých hybridních cloudových úloh.](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
 
 ## <a name="community-resources"></a>Komunitní zdroje
 
 * [UserVoice ke službě Security Center](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Microsoft Q&Stránka s otázkou pro Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [Otázka&stránky pro Security Center](/answers/topics/azure-security-center.html)

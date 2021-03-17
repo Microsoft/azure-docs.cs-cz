@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038325"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831922"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (Intel NUC)
 
@@ -35,15 +35,15 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Než začnete, měli byste [v kurzu Azure IoT Central vytvořit předchozí aplikaci Live video Analytics](./tutorial-video-analytics-create-app.md) .
+* Než začnete, měli byste provést předchozí [aplikaci Live video Analytics v azure IoT Central (Yolo V3)](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [vytvořit video Analytics v kurzu Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md).
 * Zařízení, jako je Intel NUC, na kterém běží Linux, který může spouštět kontejnery Docker a má dostatečné výpočetní výkon pro spuštění analýzy videí.
-* V zařízení je nainstalovaný a spuštěný [modul runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md) .
+* V zařízení je nainstalovaný a spuštěný [modul runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md) .
 * Je možné se připojit k zařízení IoT Edge z počítače s Windows, budete potřebovat [klienta ssh](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) pro výstup nebo ekvivalentní nástroj.
 * Budete také potřebovat předplatné Azure. Pokud předplatné Azure nemáte, můžete si ho na [stránce pro registraci k Azure](https://aka.ms/createazuresubscription)vytvořit zdarma.
 
 ## <a name="configure-the-iot-edge-device"></a>Konfigurace zařízení IoT Edge
 
-Pokud ve svém počítači Intel NUC nemáte nainstalovaný modul runtime IoT Edge, přečtěte si téma [Instalace modulu runtime Azure IoT Edge v pokynech pro systémy Linux založené na Debian](../../iot-edge/how-to-install-iot-edge-linux.md) .
+Pokud ve svém počítači Intel NUC nemáte nainstalovaný modul runtime IoT Edge, přečtěte si téma [Instalace modulu runtime Azure IoT Edge v pokynech pro systémy Linux založené na Debian](../../iot-edge/how-to-install-iot-edge.md) .
 
 Aktualizace modulu runtime IoT Edge:
 
@@ -117,9 +117,9 @@ Nakonfigurujte IoT Edge k registraci a připojení k aplikaci IoT Central:
 
 1. Nahraďte `{scope_id}` **rozsahem ID** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
 
-1. Nahraďte `{registration_id}` *lva-Gateway-001*a zařízením, které jste vytvořili v předchozím kurzu.
+1. Nahraďte `{registration_id}` *bránou-001* a zařízením, které jste vytvořili v předchozím kurzu.
 
-1. Nahraďte `{symmetric_key}` **primárním klíčem** pro zařízení **lva-Gateway-001** , na které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
+1. Nahraďte `{symmetric_key}` **primárním klíčem** pro zařízení **Gateway – 001** , na které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
 
 1. Spusťte následující příkaz, který restartuje IoT Edge démon:
 
@@ -140,7 +140,7 @@ Nakonfigurujte IoT Edge k registraci a připojení k aplikaci IoT Central:
 
 Pokud se moduly IoT Edge nespustí správně, přečtěte si téma [řešení potíží se zařízením IoT Edge](../../iot-edge/troubleshoot.md).
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>Shromažďovat datový proud RSTP z fotoaparátu
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>Shromažďovat datový proud RTSP z kamery
 
 Identifikujte adresy URL datového proudu RTSP pro kamery připojené k vašemu IoT Edge zařízení, například:
 
@@ -148,6 +148,14 @@ Identifikujte adresy URL datového proudu RTSP pro kamery připojené k vašemu 
 
 > [!TIP]
 > Zkuste zobrazit datový proud kamery na IoT Edgeovém počítači pomocí přehrávače médií, jako je například VLC.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
+1. V místním počítači zastavte kontejner Docker pro **amp Viewer** .
 
 ## <a name="next-steps"></a>Další kroky
 

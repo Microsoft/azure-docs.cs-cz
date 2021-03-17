@@ -1,26 +1,24 @@
 ---
-title: Get – metrika v Azure Monitor Application Insights
+title: Get-Metric v Azure Monitor Application Insights
 description: Zjistěte, jak efektivně používat volání getmetric () k zachycení místně předem agregovaných metrik pro aplikace .NET a .NET Core pomocí Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517140"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719776"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
-Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()` a `GetMetric()` . Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()`neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
+Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()` a `GetMetric()` . Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()` neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus getmetric
 
-`TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním kanálem sady SDK inicializátorů telemetrie a procesorů. Na rozdíl od `TrackMetric()` , `GetMetric()` zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
+`TrackMetric()` odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()` je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním kanálem sady SDK inicializátorů telemetrie a procesorů. Na rozdíl od `TrackMetric()` , `GetMetric()` zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
 
 V Application Insights vlastní metriky shromažďované přes `TrackMetric()` a `GetMetric()` nepodléhají [vzorkování](./sampling.md). Vzorkování důležitých metrik může vést k situacím, kdy upozornění, která jste mohli vygenerovat kolem těchto metrik, by mohla být nespolehlivá. Když si vaše vlastní metriky nikdy nevzorkování, můžete si obecně být jistí, že když dojde k porušení prahových hodnot upozornění, aktivuje se výstraha.  Ale vzhledem k tomu, že vlastní metriky nejsou vzorkované, existují potenciální obavy.
 
@@ -35,7 +33,7 @@ Omezování je obzvláště důležité v takovém případě, jako je vzorková
 V souhrnu `GetMetric()` je doporučený přístup, protože se používá před agregací, shromažďuje hodnoty ze všech volání stop () a odesílá souhrn nebo agregaci jednou za minutu. To může významně snížit náklady a režii na výkon tím, že posílá méně datových bodů a stále shromažďuje všechny relevantní informace.
 
 > [!NOTE]
-> Pouze sady SDK .NET a .NET Core mají metodu getmetric (). Pokud používáte Java, můžete použít [metriky mikroměřiče](./micrometer-java.md) nebo `TrackMetric()` . V případě Pythonu můžete k posílání vlastních metrik používat [OpenCensus. stat](./opencensus-python.md#metrics) . Pro JavaScript a Node.js, které byste pořád používali `TrackMetric()` , ale mějte na paměti upozornění, která byla popsaných v předchozí části.
+> Pouze sady SDK .NET a .NET Core mají metodu getmetric (). Pokud používáte Java, můžete použít [metriky mikroměřiče](./micrometer-java.md) nebo `TrackMetric()` . Pro JavaScript a Node.js, které byste pořád používali `TrackMetric()` , ale mějte na paměti upozornění, která byla popsaných v předchozí části. V případě Pythonu můžete pomocí [OpenCensus. stat](./opencensus-python.md#metrics) odesílat vlastní metriky, ale implementace metrik se liší.
 
 ## <a name="getting-started-with-getmetric"></a>Začínáme se službou getmetric
 
@@ -71,7 +69,7 @@ namespace WorkerService3
             // Here "computersSold", a custom metric name, is being tracked with a value of 42 every second.
             while (!stoppingToken.IsCancellationRequested)
             {
-                _telemetryClient.GetMetric("computersSold").TrackValue(42);
+                _telemetryClient.GetMetric("ComputersSold").TrackValue(42);
 
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
@@ -91,7 +89,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 "ai.internal.sdkVersion":"m-agg2c:2.12.0-21496",
 "ai.internal.nodeName":"Test-Computer-Name"},
 "data":{"baseType":"MetricData",
-"baseData":{"ver":2,"metrics":[{"name":"computersSold",
+"baseData":{"ver":2,"metrics":[{"name":"ComputersSold",
 "kind":"Aggregation",
 "value":1722,
 "count":41,
@@ -104,6 +102,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 Tato jediná položka telemetrie představuje agregaci 41 různých měření metriky. Vzhledem k tomu, že jsme přeposlali stejnou hodnotu znovu a znovu, máme *směrodatnou odchylku (stDev)* 0 se stejnými hodnotami *maxima (max)* a *minimum (min)* . Vlastnost *Value* představuje součet všech hodnot, které byly agregovány.
 
+> [!NOTE]
+> Getmetric nepodporuje sledování poslední hodnoty (tj. měřidla) nebo sledování histogramů/distribucí.
+
 Pokud prověříme náš Application Insights prostředek v prostředí log (Analytics), bude tato samostatná položka telemetrie vypadat takto:
 
 ![Zobrazení dotazu Log Analytics](./media/get-metric/log-analytics.png)
@@ -111,7 +112,7 @@ Pokud prověříme náš Application Insights prostředek v prostředí log (Ana
 > [!NOTE]
 > I když nezpracovaná položka telemetrie neobsahovala explicitní vlastnost Sum nebo pole, vytvoříme pro vás jednu. V tomto případě `value` `valueSum` představuje vlastnost i stejnou věc.
 
-K vlastní telemetrii metriky můžete také přistupovat v části [_metriky_](../platform/metrics-charts.md) na portálu. Jak v závislosti na protokolu, tak i ve [vlastní metrikě](pre-aggregated-metrics-log-metrics.md). (Na snímku obrazovky níže je příklad založený na protokolu.) ![Zobrazení Průzkumníka metrik](./media/get-metric/metrics-explorer.png)
+K vlastní telemetrii metriky můžete také přistupovat v části [_metriky_](../essentials/metrics-charts.md) na portálu. Jak v závislosti na protokolu, tak i ve [vlastní metrikě](pre-aggregated-metrics-log-metrics.md). (Na snímku obrazovky níže je příklad založený na protokolu.) ![Zobrazení Průzkumníka metrik](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Ukládání referenčních informací metriky do mezipaměti pro použití s vysokou propustností
 
@@ -285,9 +286,9 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()` .
-* `valuesPerDimensionLimit`podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
-* `restrictToUInt32Values`Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
+* `seriesCountLimit` je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu nebudou volání `TrackValue()` sledována.
+* `valuesPerDimensionLimit` podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
+* `restrictToUInt32Values` Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
 
 Tady je příklad, jak odeslat zprávu s upozorněním na překročení limitu zakončení:
 
@@ -304,6 +305,6 @@ SeverityLevel.Error);
 
 * [Přečtěte si další informace ](./worker-service.md)o monitorování aplikací služby Worker.
 * Pro další podrobnosti o [protokolech založených na protokolu a předem agregovaných metrikách](./pre-aggregated-metrics-log-metrics.md).
-* [Průzkumník metrik](../platform/metrics-getting-started.md)
+* [Průzkumník metrik](../essentials/metrics-getting-started.md)
 * Postup povolení Application Insights pro [ASP.NET Core aplikace](asp-net-core.md)
 * Postup povolení Application Insights pro [aplikace ASP.NET](asp-net.md)

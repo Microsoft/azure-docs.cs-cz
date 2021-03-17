@@ -1,20 +1,20 @@
 ---
-title: Rychlé zprovoznění zařízení Azure IoT Hub streamy v C# pro SSH a RDP
+title: Rychlý Start – Azure IoT Hub Device Streams C# pro SSH a RDP
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace v C#, které umožňují scénáře SSH a RDP přes datový proud zařízení IoT Hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12e26818f86fc4abdc1873d031182fd994c04687
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80586593"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624367"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud zařízení IoT Hub pomocí aplikace proxy v jazyce C# (Preview)
 
@@ -25,6 +25,33 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 [IoT Hub datové proudy zařízení](iot-hub-device-streams-overview.md) umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Tato příručka pro rychlý Start zahrnuje dvě aplikace v jazyce C#, které umožňují odeslání provozu aplikace na straně klienta (například Secure Shell [SSH] a protokol RDP (Remote Desktop Protocol) [RDP], aby se odesílaly přes datový proud zařízení, který je vytvořený prostřednictvím služby IoT Hub. Přehled nastavení najdete v tématu [Ukázka místní proxy aplikace pro SSH nebo RDP](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 Tento článek nejdřív popisuje nastavení pro SSH (pomocí portu 22) a pak popisuje, jak změnit port instalace pro protokol RDP. Vzhledem k tomu, že proudy zařízení jsou aplikace a protokol nezávislá, je možné stejný vzorek upravit tak, aby vyhovoval jiným typům provozu aplikací. Tato změna obvykle zahrnuje pouze změnu komunikačního portu na ten, který používá zamýšlená aplikace.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
+
+  * USA – střed
+  * Střed USA EUAP
+  * Southeast Asia
+  * Severní Evropa
+
+* Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou napsány v jazyce C#. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
+
+    .NET Core SDK můžete stáhnout [pro více platforem od rozhraní .NET](https://www.microsoft.com/net/download/all).
+
+    Ověřte aktuální verzi C# na vývojovém počítači pomocí následujícího příkazu:
+
+    ```
+    dotnet --version
+    ```
+
+* [Stáhněte si ukázky pro Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)a Extrahujte archiv zip.
+
+* Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -43,49 +70,13 @@ Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace prox
 > [!NOTE]
 > Provoz SSH, který se odesílá přes datový proud zařízení, se prochází tunelovým propojením přes koncový bod streamování IoT Hub, nikoli přímo mezi službou a zařízením. Další informace najdete v tématu [výhody použití datových proudů zařízení ve službě IoT Hub](iot-hub-device-streams-overview.md#benefits).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-## <a name="prerequisites"></a>Požadavky
-
-* Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
-
-  * USA – střed
-  * Střed USA EUAP
-  * Jihovýchodní Asie
-  * Severní Evropa
-
-* Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou napsány v jazyce C#. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
-
-  .NET Core SDK můžete stáhnout [pro více platforem od rozhraní .NET](https://www.microsoft.com/net/download/all).
-
-* Ověřte aktuální verzi C# na vývojovém počítači pomocí následujícího příkazu:
-
-    ```
-    dotnet --version
-    ```
-
-* Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IOT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
-* [Stáhněte si ukázky pro Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)a Extrahujte archiv zip.
-
-* Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu použijete Azure Cloud Shell k registraci simulovaného zařízení.
 
@@ -105,7 +96,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
@@ -136,7 +127,7 @@ V místním okně terminálu přejděte do `device-streams-proxy/device` adresá
 | Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
 | `DeviceConnectionString` | Připojovací řetězec zařízení pro zařízení, které jste vytvořili dříve. |
-| `targetServiceHostName` | IP adresa, kde naslouchá Server SSH. Tato adresa by `localhost` byla stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
+| `targetServiceHostName` | IP adresa, kde naslouchá Server SSH. Tato adresa by byla `localhost` stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
 | `targetServicePort` | Port, který používá váš aplikační protokol (pro SSH, ve výchozím nastavení je to port 22).  |
 
 Zkompilujte a spusťte kód pomocí následujících příkazů:
@@ -214,7 +205,7 @@ V místním okně terminálu přejděte do `device-streams-proxy/device` adresá
 | Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
 | `DeviceConnectionString` | Připojovací řetězec zařízení pro zařízení, které jste vytvořili dříve. |
-| `targetServiceHostName` | Název hostitele nebo IP adresa, kde je spuštěn server RDP. Tato adresa by `localhost` byla stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
+| `targetServiceHostName` | Název hostitele nebo IP adresa, kde je spuštěn server RDP. Tato adresa by byla `localhost` stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
 | `targetServicePort` | Port, který používá váš aplikační protokol (pro protokol RDP, ve výchozím nastavení je to port 3389).  |
 
 Zkompilujte a spusťte kód pomocí následujících příkazů:

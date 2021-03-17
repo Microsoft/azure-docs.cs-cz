@@ -1,107 +1,223 @@
 ---
-author: areddish
+author: PatrickFarley
 ms.custom: devx-track-java
-ms.author: areddish
+ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: a822ab52024a801f4443a9dd864b4b96ec52d000
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/13/2020
+ms.openlocfilehash: 594f240eb80f38ce00e97ad4f96ac47ca4199840
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511283"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445308"
 ---
-V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vision s nástrojem Java k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat výchozí adresu URL koncového bodu předpovědi projektu a použít koncový bod pro programové testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Javě.
+Začněte používat Custom Vision klientské knihovny pro Java k sestavení modelu detekce objektu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
+
+Pomocí klientské knihovny Custom Vision pro jazyk Java:
+
+* Vytvoření nového projektu Custom Vision
+* Přidat do projektu značky
+* Nahrávání a označování obrázků
+* Výuka projektu
+* Publikovat aktuální iteraci
+* Testování koncového bodu předpovědi
+
+[Referenční dokumentace](/java/api/overview/azure/cognitiveservices/client/customvision) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(předpověď)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| Artefakty (Maven) [(školení](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) ) [(předpovědi)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar)–  | 
+ [ukázky](/samples/browse/?products=azure&terms=custom%20vision)
+
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Libovolné prostředí Java IDE
-- Nainstalovaná sada [JDK 7 nebo 8](https://aka.ms/azure-jdks)
-- [Maven](https://maven.apache.org/) nainstalované
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Custom Vision budete potřebovat klíč a koncový bod z prostředků, které vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Získat Custom Vision klientskou knihovnu a ukázkový kód
+## <a name="setting-up"></a>Nastavení
 
-K napsání aplikace v Javě, která využívá službu Custom Vision, budete potřebovat balíčky maven pro službu Custom Vision. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
+### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
 
-Knihovnu klienta Custom Vision můžete najít v centrálním úložišti Maven:
-- [Sada SDK pro trénování](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-- [Sada SDK pro předpověď](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
-Naklonujte nebo si stáhněte projekt [Ukázky pro Cognitive Services v sadě Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). Přejděte do složky **Vision/CustomVision/**.
-
-Tento projekt Javy vytvoří nový projekt detekce objektů pomocí služby Custom Vision s názvem __Sample Java OD Project__, který bude přístupný na [webu služby Custom Vision](https://customvision.ai/). Potom nahraje obrázky k trénování a testování klasifikátoru. V tomto projektu Klasifikátor je určen k určení, zda je objekt **rozvětvení** nebo **nůžky**.
-
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
-
-Program je nakonfigurován tak, aby odkazoval na data klíče jako proměnné prostředí. Přejděte do složky **Vision/CustomVision** a zadejte následující příkazy PowerShellu pro nastavení proměnných prostředí. 
-
-> [!NOTE]
-> Pokud používáte jiný operační systém než Windows, přečtěte si téma [konfigurace proměnných prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) pro pokyny.
-
-```powershell
-$env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
-$env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
+```console
+mkdir myapp && cd myapp
 ```
 
-## <a name="understand-the-code"></a>Vysvětlení kódu
+Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts*, který se používá za běhu k vytvoření a konfiguraci vaší aplikace.
 
-Ve svém prostředí Java IDE načtěte projekt `Vision/CustomVision` a otevřete soubor _CustomVisionSamples.java_. Vyhledejte metodu **runSample** a odkomentujte **ImageClassification_Sample** metoda volání &mdash; této metody provádí scénář klasifikace obrázku, který není popsaný v této příručce. Metoda **ObjectDetection_Sample** implementuje primární funkce tohoto rychlého startu. Přejděte k její definici a prozkoumejte kód. 
+```console
+gradle init --type basic
+```
 
-### <a name="create-a-new-custom-vision-service-project"></a>Vytvoření nového projektu Custom Vision Service
+Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin**.
 
-Přejděte k bloku kódu, který vytvoří klienta trénování a projekt detekce objektů. Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvision.ai/), který jste navštívili dříve. Pokud vytvoříte projekt (vysvětlení najdete v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ), podívejte se na přetížení metod [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) a určete další možnosti.
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create_od)]
+Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do následující konfigurace sestavení. Tato konfigurace definuje projekt jako aplikaci Java, jejíž vstupní bod je třídou **CustomVisionQuickstart**. Importuje knihovny Custom Vision.
 
-### <a name="add-tags-to-your-project"></a>Přidání značek do projektu
+```kotlin
+plugins {
+    java
+    application
+}
+application { 
+    mainClassName = "CustomVisionQuickstart"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile(group = "com.azure", name = "azure-cognitiveservices-customvision-training", version = "1.1.0-preview.2")
+    compile(group = "com.azure", name = "azure-cognitiveservices-customvision-prediction", version = "1.1.0-preview.2")
+}
+```
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags_od)]
+### <a name="create-a-java-file"></a>Vytvoření souboru Java
 
-### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
-Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic. Přejděte k definici mapy `regionMap`. Tento kód přidruží jednotlivé ukázkové obrázky k odpovídající označené oblasti.
+V pracovním adresáři spusťte následující příkaz, který vytvoří zdrojovou složku projektu:
+
+```console
+mkdir -p src/main/java
+```
+
+Přejděte do nové složky a vytvořte soubor s názvem *CustomVisionQuickstart. Java*. Otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí a přidejte následující `import` příkazy:
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_imports)]
+
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java), který obsahuje příklady kódu v tomto rychlém startu.
+
+
+V třídě **CustomVisionQuickstart** aplikace vytvořte proměnné pro klíče prostředku a koncový bod.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_creds)]
+
+
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud Custom Vision prostředky, které jste vytvořili v části **předpoklady** , se úspěšně nasadily, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče a koncový bod můžete najít na stránce **klíčů a koncových bodů** prostředků v části **Správa prostředků**. Společně s koncovým bodem školicích prostředků budete muset získat jak školicí, tak i předpověď.
+>
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../../../cognitive-services-security.md) Cognitive Services.
+
+V metodě **Main** aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Později je budete definovat.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_maincalls_od)]
+
+## <a name="object-model"></a>Objektový model
+
+Následující třídy a rozhraní zpracovávají některé hlavní funkce Custom Vision klientské knihovny Java.
+
+|Název|Popis|
+|---|---|
+|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
+|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Tato třída zpracovává dotazování vašich modelů pro detekci objektů předpovědi.|
+|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction)| Tato třída definuje jednu předpověď objektu na jednom obrázku. Obsahuje vlastnosti pro ID objektu a název, umístění ohraničovacího rámečku objektu a hodnocení spolehlivosti.|
+
+## <a name="code-examples"></a>Příklady kódu
+
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Custom Vision klientské knihovny pro Java:
+
+* [Ověření klienta](#authenticate-the-client)
+* [Vytvoření nového projektu Custom Vision](#create-a-new-custom-vision-project)
+* [Přidat do projektu značky](#add-tags-to-the-project)
+* [Nahrávání a označování obrázků](#upload-and-tag-images)
+* [Výuka projektu](#train-the-project)
+* [Publikovat aktuální iteraci](#publish-the-current-iteration)
+* [Testování koncového bodu předpovědi](#test-the-prediction-endpoint)
+
+## <a name="authenticate-the-client"></a>Ověření klienta
+
+V **Hlavní** metodě vytvořte instanci školení a předpovědí klientů pomocí svého koncového bodu a klíčů.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_auth)]
+
+## <a name="create-a-new-custom-vision-project"></a>Vytvoření nového projektu Custom Vision
+
+Tato metoda Next vytvoří projekt detekce objektu. Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvision.ai/), který jste navštívili dříve. Pokud vytvoříte projekt (vysvětlení najdete v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ), podívejte se na přetížení metod [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) a určete další možnosti.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create_od)]
+
+## <a name="add-tags-to-your-project"></a>Přidání značek do projektu
+
+Tato metoda definuje značky, na kterých budete model zaškolit.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags_od)]
+
+## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
+
+Nejdřív Stáhněte ukázkové image pro tento projekt. Uložte obsah [složky Sample images](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ObjectDetection/Images) do místního zařízení.
+
+> [!NOTE]
+> Potřebujete k dokončení školení širší sadu imagí? Studnicí, projekt garáže společnosti Microsoft, umožňuje shromažďovat a kupovat sady imagí pro účely školení. Po shromáždění imagí si je můžete stáhnout a pak je importovat do projektu Custom Vision obvyklým způsobem. Další informace najdete na [stránce studnicí](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) .
+
+Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic. Následující kód spojí každý z ukázkových imagí se svou označenou oblastí.
 
 > [!NOTE]
 > Pokud nemáte k označení souřadnic oblastí k dispozici nástroj pro kliknutí a přetažení, můžete použít webové uživatelské rozhraní na adrese [Customvision.AI](https://www.customvision.ai/). V tomto příkladu jsou souřadnice již poskytovány.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_od_mapping)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_od_mapping)]
 
-Potom přeskočte k bloku kódu, který přidá obrázky do projektu. Obrázky se načtou ze složky **src/main/resources** projektu a s odpovídajícími značkami a souřadnicemi oblastí se nahrají do služby.
+Další blok kódu přidá obrázky do projektu. Je nutné změnit argumenty `GetImage` volání tak, aby odkazovaly na umístění **rozvětvené** složky **nůžky a nůžek** , které jste stáhli.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload_od)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload_od)]
 
-Předchozí fragment kódu dělá použití dvou pomocných funkcí, které načítají obrázky jako proudy prostředků a odesílají je do služby (do jedné dávky můžete nahrát až 64 imagí).
+Předchozí fragment kódu dělá použití dvou pomocných funkcí, které načítají obrázky jako proudy prostředků a odesílají je do služby (do jedné dávky můžete nahrát až 64 imagí). Definujte tyto metody. 
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
+## <a name="train-the-project"></a>Výuka projektu
 
-Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tato metoda vytvoří první výukovou iteraci v projektu. Dotazuje se na službu až do dokončení školení.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train_od)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train_od)]
 
-### <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
 
-Koncový bod předpovědi, který zde představuje objekt `predictor`, je odkaz, pomocí kterého můžete odeslat obrázek do aktuálního modelu a získat předpověď klasifikace. V této ukázce se `predictor` definuje někde jinde s využitím proměnné prostředí s klíčem předpovědi.
+## <a name="publish-the-current-iteration"></a>Publikovat aktuální iteraci
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_prediction_od)]
+Tato metoda zpřístupňuje aktuální iteraci modelu, který je k dispozici pro dotazování. Název modelu můžete použít jako referenci k odeslání požadavků předpovědi. Musíte zadat vlastní hodnotu pro `predictionResourceId` . ID prostředku předpovědi najdete na kartě **Přehled** prostředku v Azure Portal, která je uvedená jako **ID předplatného**.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_publishOD)]
+
+## <a name="test-the-prediction-endpoint"></a>Testování koncového bodu předpovědi
+
+Tato metoda načte testovací bitovou kopii, provede dotaz na koncový bod modelu a výstupí data předpovědi do konzoly.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_predict_od)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Pro zkompilování a spuštění řešení pomocí Maven přejděte do adresáře projektu (**Vision/CustomVision**) na příkazovém řádku a spusťte příkaz run:
+Aplikaci můžete vytvořit pomocí:
 
-```bash
-mvn compile exec:java
+```console
+gradle build
 ```
 
-Ve výstupu konzoly zobrazte výsledky protokolování a předpovědi. Pak můžete ověřit správné označení testovacího obrázku a správnost oblasti detekce.
+Spusťte aplikaci pomocí `gradle run` příkazu:
+
+```console
+gradle run
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
+
+* [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující průvodce školením se zabývá klasifikací imagí, ale jeho princip se podobá detekci objektů.
+Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java) .

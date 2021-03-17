@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113813"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89020180"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
@@ -27,11 +28,11 @@ V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhr
 
 + Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) nebo novější, včetně úlohy vývoj pro Azure.
 
-## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
+## <a name="create-an-azure-function"></a>Vytvoření funkce Azure Function
 
 I když tento příklad používá funkci Azure k hostování webového rozhraní API, nevyžaduje se.  Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **Nový**  >  **projekt** .
 
@@ -481,5 +482,5 @@ Gratulujeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postu
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

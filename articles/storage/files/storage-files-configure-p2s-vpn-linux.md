@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515306"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629270"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure
 Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené složky Azure přes protokol SMB mimo Azure bez nutnosti otevírat port 445. Připojení VPN typu Point-to-site je připojení VPN mezi Azure a jednotlivými klienty. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složkám Azure ze své místní sítě, můžete místo připojení typu Point-to-site pro každého klienta použít připojení VPN typu Site-to-Site (S2S). Další informace najdete v tématu [Konfigurace sítě Site-to-Site VPN pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
@@ -21,8 +21,8 @@ Důrazně doporučujeme, abyste si přečetli [Přehled sítě Azure Files](stor
 
 Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Linux pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Azure File Sync provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="prerequisites"></a>Požadavky
-- Nejnovější verze rozhraní příkazového řádku Azure CLI. Další informace o tom, jak nainstalovat rozhraní příkazového řádku Azure, najdete v tématu [instalace rozhraní příkazového řádku Azure PowerShell](https://docs.microsoft.com/cli/azure/install-azure-cli) a výběr operačního systému. Pokud upřednostňujete použití modulu Azure PowerShell v systému Linux, může se stát, že následující pokyny jsou k dispozici pro rozhraní příkazového řádku Azure CLI.
+## <a name="prerequisites"></a>Předpoklady
+- Nejnovější verze rozhraní příkazového řádku Azure CLI. Další informace o tom, jak nainstalovat rozhraní příkazového řádku Azure, najdete v tématu [instalace rozhraní příkazového řádku Azure PowerShell](/cli/azure/install-azure-cli) a výběr operačního systému. Pokud upřednostňujete použití modulu Azure PowerShell v systému Linux, může se stát, že následující pokyny jsou k dispozici pro rozhraní příkazového řádku Azure CLI.
 
 - Sdílená složka Azure, kterou byste chtěli místně připojit. Sdílené složky Azure se nasazují v rámci účtů úložiště, což jsou konstrukce správy, které představují sdílený fond úložiště, ve kterém můžete nasazovat víc sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Další informace o tom, jak nasadit sdílené složky Azure a účty úložiště, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 
@@ -210,7 +210,7 @@ smbPath="//$storageAccountPrivateIP/$fileShareName"
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Přehled sítě Azure Files](storage-files-networking-overview.md)
 - [Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure](storage-files-configure-p2s-vpn-windows.md)
 - [Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md)

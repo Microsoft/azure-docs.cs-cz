@@ -3,20 +3,22 @@ title: Další informace o kodérech doporučených Azure Media Services | Micro
 description: Tento článek obsahuje seznam místních kodérů doporučených pro Azure Media Services.
 services: media-services
 keywords: kódování; kodéry; média
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/20/2019
+ms.date: 03/10/2021
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98d78a105bf06a2e49dee0b8c2be710b220a0023
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535090"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009432"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Když živé streamování s Azure Media Services, můžete určit, jak chcete, aby kanál dostal vstupní datový proud. Pokud se rozhodnete použít místní kodér s kanálem pro kódování v reálném čase, váš kodér by měl jako výstup nabízet vysoce kvalitní datový proud s jednou přenosovou rychlostí. Pokud se rozhodnete použít místní kodér s průchozím kanálem, měl by váš kodér nabízet datový proud s více přenosovými rychlostmi jako výstup se všemi požadovanými výstupními kvalitou. Další informace najdete v tématu [živé streamování s místními kodéry](media-services-live-streaming-with-onprem-encoders.md).
 

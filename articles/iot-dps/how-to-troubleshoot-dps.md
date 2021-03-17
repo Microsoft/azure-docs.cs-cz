@@ -6,24 +6,24 @@ manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75646468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709882"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Řešení potíží s Azure IoT Hub Device Provisioning Service
 
-Problémy s připojením pro zařízení IoT můžou být obtížné řešit, protože existuje mnoho možných bodů selhání, například selhání ověření identity, selhání registrace atd. Tento článek poskytuje pokyny k detekci a řešení potíží s připojením zařízení prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+Problémy s připojením pro zařízení IoT můžou být obtížné řešit, protože existuje mnoho možných bodů selhání, například selhání ověření identity, selhání registrace atd. Tento článek poskytuje pokyny k detekci a řešení potíží s připojením zařízení prostřednictvím [Azure monitor](../azure-monitor/overview.md).
 
 ## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Použití Azure Monitor k zobrazení metrik a nastavení výstrah
 
 Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub Device Provisioning Service metriky. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Přejděte na IoT Hub Device Provisioning Service.
 
@@ -32,7 +32,7 @@ Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub De
 4. Vyberte požadovanou metriku. 
    <br />V současné době existují tři metriky pro DPS:
 
-    | Název metriky | Description |
+    | Název metriky | Popis |
     |-------|------------|
     | Pokusy o ověření identity | Počet zařízení, která se pokusila ověřit pomocí služby Device Provisioning Service|
     | Pokusy o registraci | Počet zařízení, která se pokusila o registraci IoT Hub po úspěšném ověření|
@@ -42,13 +42,13 @@ Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub De
 
 6. Pokud chcete nastavit výstrahu metriky, vyberte **Nová pravidla upozornění** v pravém horním rohu okna metrika, podobně můžete přejít na okno **výstrah** a vybrat **Nová pravidla upozornění**.
 
-7. Vyberte **Přidat podmínku**a pak podle následujících pokynů vyberte požadovanou metriku a prahovou hodnotu.
+7. Vyberte **Přidat podmínku** a pak podle následujících pokynů vyberte požadovanou metriku a prahovou hodnotu.
 
-Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azure?](../azure-monitor/platform/alerts-overview.md)
+Další informace najdete v tématu [výstrahy v Azure monitor](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Zobrazení a řešení chyb pomocí analytického protokolu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -58,7 +58,7 @@ Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azu
 
 5. Povolte shromažďování požadovaných protokolů.
 
-    | Název protokolu | Description |
+    | Název protokolu | Popis |
     |-------|------------|
     | DeviceOperations | Protokoly související s událostmi připojení zařízení |
     | ServiceOperations | Protokoly událostí související s používáním sady SDK služby (např. vytvoření nebo aktualizace skupin registrací)|
@@ -75,11 +75,11 @@ Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azu
 ## <a name="common-error-codes"></a>Běžné kódy chyb
 Pomocí této tabulky můžete pochopit a řešit běžné chyby.
 
-| Kód chyby| Description | Stavový kód HTTP |
+| Kód chyby| Popis | Stavový kód HTTP |
 |-------|------------|------------|
 | 400 | Tělo požadavku není platné. nelze jej například analyzovat nebo objekt nelze ověřit.| 400 Špatný formát |
-| 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 Neautorizováno|
+| 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 – Neautorizováno|
 | 404 | Instance služby Device Provisioning nebo prostředek (například registrace) neexistuje. |404 Nenalezeno |
 | 412 | Značka ETag v žádosti se neshoduje s ETagm existujícího prostředku, jak na RFC7232. | Předběžná podmínka 412 se nezdařila |
-| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
-| 500 | Došlo k vnitřní chybě. | 500 – Interní chyba serveru|
+| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
+| 500 | Došlo k vnitřní chybě. | 500 – Vnitřní chyba serveru|

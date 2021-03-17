@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: 561f6ee161d2a697b8c143ee49209515f679c77b
-  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
-  ms.translationtype: HT
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88236518"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738063"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portál: Vytvoření nové aplikace LUIS'
       url: get-started-portal-build-app.md
     - text: S využitím C# SDK
-      url: quickstart-sdk.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: S využitím sady Face Python SDK
-      url: quickstart-sdk.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Vytvoření nové aplikace LUIS
@@ -70,7 +70,7 @@ landingContent:
     - text: Přidání záměru s ukázkovými výroky
       url: luis-how-to-add-intents.md
     - text: Přidání entit
-      url: luis-how-to-add-example-utterances.md
+      url: ./luis-how-to-add-entities.md
     - text: Přidání funkce seznamu frází
       url: luis-how-to-add-features.md
 - title: Správa verzí, trénování, testování a publikování
@@ -78,17 +78,17 @@ landingContent:
   - linkListType: concept
     links:
     - text: Správa verzí
-      url: luis-concept-version.md
+      url: ./luis-concept-app-iteration.md
     - text: Interaktivní testování
       url: luis-concept-test.md
     - text: Dávkové testování
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 'Portál: Nasazení aplikace do koncového bodu předpovědi'
       url: get-started-portal-deploy-app.md
     - text: S využitím sady SDK
-      url: quickstart-sdk.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Správa verzí aplikace
@@ -106,19 +106,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím sady SDK
-      url: quickstart-sdk.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: S C# s využitím REST
-      url: luis-get-started-cs-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Go s využitím REST
-      url: luis-get-started-go-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Javou s využitím REST
-      url: luis-get-started-java-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Node.js s využitím REST
-      url: luis-get-started-node-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: S Pythonem s využitím REST
-      url: luis-get-started-python-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
@@ -137,9 +137,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - text: Řešení potíží
       url: troubleshooting.md
-    - text: Dotazy na Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/LUIS
-    - text: Ovlivnění služeb s využitím UserVoice
-      url: https://cognitive.uservoice.com/forums/551524-luis

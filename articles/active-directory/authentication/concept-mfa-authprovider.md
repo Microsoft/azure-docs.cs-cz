@@ -6,24 +6,24 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c8454d2ca83d4f406149e7eb73feb19ce59554f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81309901"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744121"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele služby Azure Multi-Factor Authentication
 
 > [!IMPORTANT]
 > Od 1. září 2018 se už možná nebudou vytvářet Noví zprostředkovatelé ověřování. Stávající zprostředkovatelé ověřování se můžou dál používat a aktualizovat, ale migrace už není možná. Multi-Factor Authentication bude i nadále k dispozici jako funkce v Azure AD Premium licencích.
 
-Dvoustupňové ověřování je k dispozici ve výchozím nastavení pro globální správce, kteří mají uživatele služeb Azure Active Directory a Office 365. Pokud ale budete chtít využívat výhod [pokročilých funkcí](howto-mfa-mfasettings.md) měli byste si zakoupit plnou verzi Azure Multi-Factor Authentication (MFA).
+Dvoustupňové ověřování je ve výchozím nastavení k dispozici pro globální správce, kteří mají Azure Active Directory a Microsoft 365 uživatele. Pokud ale budete chtít využívat výhod [pokročilých funkcí](howto-mfa-mfasettings.md) měli byste si zakoupit plnou verzi Azure Multi-Factor Authentication (MFA).
 
 Poskytovatel Azure Multi-Factor auth se používá k využití funkcí poskytovaných službou Azure Multi-Factor Authentication pro uživatele, kteří nemají **licence**.
 
@@ -48,11 +48,11 @@ Pokud poskytovatel MFA není propojený s tenantem Azure AD nebo pokud propojuje
 > [!CAUTION]
 > Při odstraňování zprostředkovatele ověřování se nejedná o žádné potvrzení. Výběr možnosti **Odstranit** je trvalý proces.
 
-Zprostředkovatele ověřování najdete v **Azure portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **Zprostředkovatelé**zabezpečení MFA Azure Portal. Kliknutím na uvedené zprostředkovatele zobrazíte podrobnosti a konfigurace přidružené k tomuto poskytovateli.
+Zprostředkovatele ověřování najdete v **Azure portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **Zprostředkovatelé** zabezpečení MFA Azure Portal. Kliknutím na uvedené zprostředkovatele zobrazíte podrobnosti a konfigurace přidružené k tomuto poskytovateli.
 
 Než odeberete poskytovatele ověřování, poznamenejte si všechna vlastní nastavení nakonfigurovaná ve vašem poskytovateli. Rozhodněte, jaká nastavení je potřeba migrovat do obecného nastavení MFA od svého poskytovatele a dokončete migraci těchto nastavení. 
 
-Servery Azure MFA propojené s poskytovateli bude nutné znovu aktivovat pomocí přihlašovacích údajů vygenerovaných v části **Azure Portal**  >  **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **serveru**MFA. Před opětovnou aktivací se musí `\Program Files\Multi-Factor Authentication Server\Data\` v adresáři na serverech Azure MFA ve vašem prostředí odstranit následující soubory:
+Servery Azure MFA propojené s poskytovateli bude nutné znovu aktivovat pomocí přihlašovacích údajů vygenerovaných v části **Azure Portal**  >  **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **serveru** MFA. Před opětovnou aktivací se musí `\Program Files\Multi-Factor Authentication Server\Data\` v adresáři na serverech Azure MFA ve vašem prostředí odstranit následující soubory:
 
 - caCert
 - cert

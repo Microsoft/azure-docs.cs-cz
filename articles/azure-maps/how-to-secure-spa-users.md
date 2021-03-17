@@ -5,17 +5,17 @@ description: Jak nakonfigurovat jedinou stránku aplikace, která podporuje jedn
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 72fe4d897c9c202e0c4cd5861525093760036d26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285658"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895609"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Zabezpečení jednostránkové aplikace pomocí přihlášení uživatele
 
@@ -27,19 +27,19 @@ Následující příručka se vztahuje na aplikaci, která je hostována na serv
 
 Vytvořte webovou aplikaci ve službě Azure AD, aby se uživatelé mohli přihlásit. Webová aplikace deleguje přístup uživatelů k Azure Maps rozhraní REST API.
 
-1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace**.  
+1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace** .  
 
     > [!div class="mx-imgBorder"]
     > ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
 
-2. Zadejte **název**, vyberte **typ účtu podpory**, zadejte identifikátor URI pro přesměrování, který bude představovat adresu URL, kterou služba Azure AD vydá token, a je adresa URL, kde je ovládací prvek mapy hostovaný. Podrobný příklad najdete v tématu [Azure Maps ukázek Azure AD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Pak vyberte **Register** (Registrovat).  
+2. Zadejte **název** , vyberte **typ účtu podpory** , zadejte identifikátor URI pro přesměrování, který bude představovat adresu URL, kterou služba Azure AD vydá token, a je adresa URL, kde je ovládací prvek mapy hostovaný. Podrobný příklad najdete v tématu [Azure Maps ukázek Azure AD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Pak vyberte **Register** (Registrovat).  
 
-3. Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak v části **Registrace aplikací**vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. V části **rozhraní API moje organizace používá**, vyhledejte a vyberte **Azure Maps**.
+3. Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak v části **Registrace aplikací** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění** . V části **rozhraní API moje organizace používá** , vyhledejte a vyberte **Azure Maps** .
 
     > [!div class="mx-imgBorder"]
     > ![Přidat oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Zaškrtněte políčko vedle pole přístup k **Azure Maps**a pak vyberte **Přidat oprávnění**.
+4. Zaškrtněte políčko vedle pole přístup k **Azure Maps** a pak vyberte **Přidat oprávnění** .
 
     > [!div class="mx-imgBorder"]
     > ![Výběr oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/select-app-permissions.png)
@@ -67,7 +67,7 @@ Vytvořte webovou aplikaci ve službě Azure AD, aby se uživatelé mohli přihl
         </script>   
     ```
 
-7. Nakonfigurujte řízení přístupu na základě role Azure pro uživatele nebo skupiny. Pokud [chcete povolit RBAC](#grant-role-based-access-for-users-to-azure-maps), přečtěte si následující části.
+7. Nakonfigurujte řízení přístupu na základě role v Azure (Azure RBAC) pro uživatele nebo skupiny. Pokud [chcete povolit Azure RBAC](#grant-role-based-access-for-users-to-azure-maps), přečtěte si následující části.
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 
@@ -75,7 +75,7 @@ Vytvořte webovou aplikaci ve službě Azure AD, aby se uživatelé mohli přihl
 
 Další porozumění scénáři jedné stránky aplikace:
 > [!div class="nextstepaction"]
-> [Jednostránková aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [Jednostránková aplikace](../active-directory/develop/scenario-spa-overview.md)
 
 Najděte metriky využití API pro váš účet Azure Maps:
 > [!div class="nextstepaction"]

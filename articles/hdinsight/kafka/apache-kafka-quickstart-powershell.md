@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: vytvoření Apache Kafka s využitím Azure PowerShell-HDInsight'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí Azure PowerShellu. Dozvíte se také o tématech, předplatitelích a konzumentech platformy Kafka.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f993ffa8d0d141d04ad399c5d1d4f0fc28cc82ac
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651365"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505133"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí prostředí PowerShell
 
@@ -27,13 +24,13 @@ Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
+* Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -250,7 +247,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
         
         V oblastech se třemi doménami selhání faktor replikace 3 umožní rozložení replik mezi domény selhání. V oblastech se dvěma doménami selhání faktor replikace 4 rozloží repliky rovnoměrně mezi domény selhání.
         
-        Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+        Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/availability.md).
 
         Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 

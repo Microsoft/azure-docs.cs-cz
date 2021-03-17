@@ -4,10 +4,10 @@ description: Popisuje, jak se používají manifesty k popisu Service Fabric apl
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248216"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric manifestů aplikací a služeb
@@ -63,7 +63,7 @@ Atributy **verze** jsou nestrukturované řetězce a nejsou analyzovány systém
 
 Spustitelný soubor určený **parametrem EntryPoint** je obvykle dlouhodobě běžící hostitel služby. **SetupEntryPoint** je privilegovaný vstupní bod, který se spouští se stejnými přihlašovacími údaji jako Service Fabric (obvykle účet *LocalSystem* ) před jakýmkoli jiným vstupním bodem.  Přítomnost samostatného vstupního bodu instalace zabrání nutnosti spustit hostitele služby s vysokými oprávněními pro delší časová období. Spustitelný soubor určený **parametrem EntryPoint** je spuštěn po úspěšném ukončení **SetupEntryPoint** . Pokud se proces někdy ukončí nebo dojde k chybě, výsledný proces se monitoruje a restartuje (začíná znovu s **SetupEntryPoint**).  
 
-Typické scénáře použití **SetupEntryPoint** jsou při spuštění spustitelného souboru před spuštěním služby nebo provedením operace se zvýšenými oprávněními. Příklad:
+Typické scénáře použití **SetupEntryPoint** jsou při spuštění spustitelného souboru před spuštěním služby nebo provedením operace se zvýšenými oprávněními. Například:
 
 * Nastavení a inicializace proměnných prostředí, které vyžaduje spustitelný soubor služby. To není omezeno pouze na spustitelné soubory napsané prostřednictvím Service Fabric programovacích modelů. npm.exe například potřebuje některé proměnné prostředí nakonfigurované pro nasazení node.js aplikace.
 * Nastavení řízení přístupu instalací certifikátů zabezpečení.

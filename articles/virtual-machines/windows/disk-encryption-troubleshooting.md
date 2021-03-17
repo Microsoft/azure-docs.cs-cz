@@ -2,18 +2,19 @@
 title: Průvodce odstraňováním potíží s Azure Disk Encryption
 description: Tento článek popisuje tipy pro řešení potíží pro Microsoft Azure šifrování disku pro virtuální počítače s Windows.
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3b83899ad21cf125105881a7ffb526f5c607c6d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 057aba3e49d32694563f412101be499342f2aad0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322206"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550599"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure Disk Encryption
 
@@ -29,12 +30,12 @@ Než začnete s některým z následujících kroků, zajistěte, aby virtuáln�
 
 Pokud je připojení omezeno pomocí brány firewall, požadavku serveru proxy nebo skupiny zabezpečení sítě (NSG), může dojít k přerušení možnosti rozšíření k provedení potřebných úkolů. Příčinou tohoto narušení může být stavové zprávy, například "stav rozšíření není na virtuálním počítači k dispozici". V očekávaných scénářích se šifrování nepodařilo dokončit. Následující části obsahují některé běžné problémy firewallu, které můžete prozkoumat.
 
-### <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 Všechna použitá nastavení skupiny zabezpečení sítě musí stále umožňovat, aby koncový bod splňoval popsané [požadavky](disk-encryption-overview.md#networking-requirements) na konfiguraci sítě pro šifrování disků.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault za bránou firewall
 
-Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-windows-aad.md#), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
+Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-windows-aad.md#), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování jsou uchovávány v oddílech 56 a 59 [Microsoft 365 adres URL a v dokumentaci rozsahů IP adres](/microsoft-365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 Virtuální počítač musí být schopný získat přístup ke koncovému bodu [služby metadat instance Azure](../windows/instance-metadata-service.md) , který používá známou Nesměrovatelné IP adresy ( `169.254.169.254` ), ke kterým se dá přistupovat jenom z virtuálního počítače.  Konfigurace proxy serveru, které mění místní přenos HTTP na tuto adresu (například přidání řádku s přesměrováním X), nejsou podporovány.
@@ -78,7 +79,7 @@ DISKPART> list vol
 
 Portál může zobrazit disk jako zašifrovaný, i když byl v rámci virtuálního počítače nešifrovaný.  K tomu může dojít, když se k přímému rozšifrování disku z virtuálního počítače používají příkazy nízké úrovně, místo abyste používali příkazy pro správu Azure Disk Encryption vyšší úrovně.  Příkazy vyšší úrovně nešifrují jenom disk v rámci virtuálního počítače, ale mimo virtuální počítač aktualizují důležitá nastavení šifrování na úrovni platformy a nastavení rozšíření přidružená k virtuálnímu počítači.  Pokud tyto možnosti nejsou zachovány, platforma nebude moci nahlásit stav šifrování ani zřídit virtuální počítač správně.
 
-Pokud chcete Azure Disk Encryption zakázat pomocí prostředí PowerShell, použijte [příkaz disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný rutinou [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění Remove-AzVMDiskEncryptionExtension před zakázáním šifrování selže.
+Pokud chcete Azure Disk Encryption zakázat pomocí prostředí PowerShell, použijte [příkaz disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný rutinou [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění Remove-AzVMDiskEncryptionExtension před vypnutím šifrování selže.
 
 Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového řádku, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption). 
 
@@ -90,5 +91,5 @@ Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového ř�
 
 V tomto dokumentu jste se dozvěděli o některých běžných problémech v Azure Disk Encryption a o tom, jak tyto problémy řešit. Další informace o této službě a jejích funkcích najdete v následujících článcích:
 
-- [Použít šifrování disku v Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Použít šifrování disku v Azure Security Center](../../security-center/asset-inventory.md)
 - [Šifrování neaktivních uložených dat v Azure](../../security/fundamentals/encryption-atrest.md)

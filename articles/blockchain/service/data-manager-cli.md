@@ -4,12 +4,12 @@ description: Vytvoření a Správa blockchain Data Manager pro službu Azure blo
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722632"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
@@ -23,7 +23,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Přidání aplikace blockchain
 * Spustit instanci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlaste se pomocí `az login` .
 * Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Služba Azure blockchain Service úrovně *Standard* se doporučuje při použití blockchain data Manager.
@@ -63,7 +63,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | Název skupiny prostředků, kde se má vytvořit instance Data Manager blockchain |
 | name | Název instance Data Manager blockchain |
-| typ prostředku | Typ prostředku pro instanci blockchain Data Manager je **Microsoft. blockchain/sledovací**procesy. |
+| typ prostředku | Typ prostředku pro instanci blockchain Data Manager je **Microsoft. blockchain/sledovací** procesy. |
 | je-full-Object | Určuje, že vlastnosti obsahují možnosti pro prostředek sledovacího procesu. |
 | properties | Řetězec ve formátu JSON, který obsahuje vlastnosti prostředku sledovacího procesu. Může být předán jako řetězec nebo jako soubor.  |
 
@@ -73,9 +73,9 @@ Příklad konfigurace JSON pro vytvoření instance blockchain Manageru v oblast
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-    }
+    "location": "eastus",
+    "properties": {
+    }
 }
 ```
 
@@ -137,11 +137,11 @@ Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *vý
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "inputType": "Ethereum",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
+    "location": "eastus",
+    "properties": {
+        "inputType": "Ethereum",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
         }
     }
 }
@@ -209,11 +209,11 @@ Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *v
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "outputType": "EventGrid",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
+    "location": "eastus",
+    "properties": {
+        "outputType": "EventGrid",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
         }
     }
 }
@@ -286,9 +286,9 @@ Příklad konfigurace JSON pro vytvoření prostředku aplikace v oblasti *vých
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "artifactType": "EthereumSmartContract",
+    "location": "eastus",
+    "properties": {
+        "artifactType": "EthereumSmartContract",
         "content": {
             "abiFileUrl": "<ABI URL>",
             "bytecodeFileUrl": "<Bytecode URL>",
@@ -400,7 +400,7 @@ az resource delete \
 |-----------|-------------|
 | resource-group | Název skupiny prostředků sledovacího procesu, který se má odstranit |
 | name | Název sledovacího procesu, který se má odstranit |
-| typ prostředku | Typ prostředku pro sledovací proces blockchain Data Manager je **Microsoft. blockchain/sledovací**procesy. |
+| typ prostředku | Typ prostředku pro sledovací proces blockchain Data Manager je **Microsoft. blockchain/sledovací** procesy. |
 
 ### <a name="delete-instance-example"></a>Příklad odstranění instance
 

@@ -1,25 +1,19 @@
 ---
 title: Rozšíření virtuálního počítače služby Azure Network Watcher Agent pro Linux
 description: Nasaďte agenta Network Watcher na virtuálním počítači se systémem Linux pomocí rozšíření virtuálního počítače.
-services: virtual-machines-linux
-documentationcenter: ''
-author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 02/14/2017
-ms.author: mimckitt
-ms.openlocfilehash: 37a2724e28269d5f8b10d6ae7073aacc8272255b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc252e560df782625d795b30c6688a34f5c2bd79
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494764"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563587"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače o agenta Network Watcher pro Linux
 
@@ -29,7 +23,7 @@ ms.locfileid: "86494764"
 
 Tento článek podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher agenta pro Linux. Instalace agenta neruší nebo vyžaduje restart virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud je virtuální počítač nasazený službou Azure, Projděte si dokumentaci ke službě, kde zjistíte, jestli umožňuje nainstalovat rozšíření na virtuálním počítači.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -75,7 +69,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. Azure. NetworkWatcher |

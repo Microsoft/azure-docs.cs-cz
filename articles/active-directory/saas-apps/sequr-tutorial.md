@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d1993f89f8b1da4789541006c15380d2145d3d81
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543104"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Kurz: Azure Active Directory integrace s Sequr
 
@@ -27,10 +27,10 @@ Integrace Sequr s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Sequr (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Sequr potřebujete následující položky:
 
@@ -61,19 +61,19 @@ Pokud chcete nakonfigurovat integraci Sequr do služby Azure AD, musíte přidat
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Sequr**, vyberte **Sequr** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Sequr** , vyberte **Sequr** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Sequr v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Sequr na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Sequr na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Sequr.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Sequr, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Sequr](#configure-sequr-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Sequr](#configure-sequr-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření Sequr Test User](#create-sequr-test-user)** – pro Britta Simon v Sequr, který je propojený s reprezentací uživatele Azure AD.
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Sequr, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Sequr** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Sequr** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Sequr, p
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Sequr, p
 
     b. Do textového pole **stav přenosu** se zobrazí tato hodnota, která je vysvětleno dále v tomto kurzu.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -125,35 +125,35 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Sequr, p
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-sequr-single-sign-on"></a>Konfigurace jednotného přihlašování Sequr
+### <a name="configure-sequr-single-sign-on"></a>Nakonfigurovat Sequr jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Sequr společnosti jako správce.
 
 1. V levém navigačním panelu klikněte na **integrace** .
 
-    ![Konfigurace Sequr](./media/sequr-tutorial/configure1.png)
+    ![Snímek obrazovky znázorňuje integraci vybranou z navigačního panelu.](./media/sequr-tutorial/configure1.png)
 
-1. Přejděte dolů k části **jednotné přihlašování** a klikněte na **Spravovat**.
+1. Přejděte dolů k části **jednotné přihlašování** a klikněte na **Spravovat** .
 
-    ![Konfigurace Sequr](./media/sequr-tutorial/configure2.png)
+    ![Snímek obrazovky s vybraným tlačítkem spravovat zobrazí oddíl jednotného přihlašování.](./media/sequr-tutorial/configure2.png)
 
 1. V části **Spravovat jednotné přihlašování** proveďte následující kroky:
 
-    ![Konfigurace Sequr](./media/sequr-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí oddíl spravovat jednu Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/sequr-tutorial/configure3.png)
 
-    a. V poli **Adresa URL jednotného přihlašování zprostředkovatele identity** vložte hodnotu URL pro **přihlášení** , kterou jste zkopírovali z Azure Portal.
+    a. Do textového pole **URL s jedním Sign-On URL poskytovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
     b. Přetáhněte soubor **certifikátu** , který jste stáhli z Azure Portal, nebo ručně zadejte obsah certifikátu.
 
     c. Po uložení konfigurace se vygeneruje hodnota stav přenosu. Zkopírujte hodnotu **stavu přenosu** a vložte ji do textového pole **stav přenosu** **základního konfiguračního oddílu SAML** v Azure Portal.
 
-    d. Klikněte na **Uložit**.
+    d. Klikněte na **Uložit** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -165,27 +165,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Sequr.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Sequr**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **Sequr** .
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Sequr**.
+2. V seznamu aplikace vyberte **Sequr** .
 
     ![Odkaz Sequr v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -201,19 +201,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-sequr-test-user"></a>Vytvořit testovacího uživatele Sequr
 
-V této části vytvoříte uživatele s názvem Britta Simon v Sequr. Pokud chcete přidat uživatele na platformě Sequr, pracujte s [týmem podpory klienta Sequr](mailto:support@sequr.io)   . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Sequr. Pokud chcete přidat uživatele na platformě Sequr, pracujte s [týmem podpory klienta Sequr](mailto:support@sequr.io) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Sequr, měli byste se automaticky přihlásit k Sequr, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Sequr, měli byste se automaticky přihlásit k Sequr, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

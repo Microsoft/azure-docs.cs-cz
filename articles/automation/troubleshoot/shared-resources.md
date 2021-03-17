@@ -2,18 +2,15 @@
 title: Řešení potíží s Azure Automation sdílenými prostředky
 description: Tento článek popisuje, jak řešit problémy s Azure Automation sdílenými prostředky a řešit potíže.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.subservice: ''
+ms.date: 01/27/2021
+ms.topic: troubleshooting
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187162"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053615"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
 
@@ -33,7 +30,7 @@ Vzhledem k tomu, že import modulů PowerShellu je složitý proces s více krok
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Pak můžete modul znovu importovat.
+Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) . Pak můžete modul znovu importovat.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do A
 * Struktura neodpovídá struktuře, která je potřebná pro automatizaci.
 * Modul závisí na jiném modulu, který nebyl nasazen do vašeho účtu Automation.
 * V modulu chybí závislosti ve složce.
-* Rutina [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
+* Rutina [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
 
 #### <a name="resolution"></a>Řešení
 
@@ -97,7 +94,7 @@ Není běžné, že ve stejném účtu Automation jsou vyžadovány všechny mod
 > [!NOTE]
 > Vyhněte se importování celého `Az.Automation` `AzureRM.Automation` modulu nebo, který importuje všechny obsažené moduly.
 
-Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` do skriptu **Update-AzureModules.ps1** parametr a zadejte nižší hodnotu než výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
+Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` do skriptu **Update-AzureModules.ps1** parametr a zadejte nižší hodnotu než výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount` je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
 
  ```powershell
          $Body = @"
@@ -134,7 +131,7 @@ Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu 
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná [oprávnění](../manage-runas-account.md#permissions) k různým prostředkům používaným účtem spustit jako. 
+Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná [oprávnění](../automation-security-overview.md#permissions) k různým prostředkům používaným účtem spustit jako.
 
 Pokud k problému dochází z důvodu zámku, ověřte, že je možné zámek odebrat. Pak přejděte k prostředku, který je v Azure Portal uzamčený, klikněte pravým tlačítkem na zámek a vyberte **Odstranit**.
 
@@ -150,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem spustit jako](../manage-runas-account.md).
+Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem spustit jako](../automation-security-overview.md).
 
 #### <a name="resolution"></a>Řešení
 
@@ -169,4 +166,3 @@ Pokud tento článek problém nevyřeší, zkuste další podporu vyzkoušet v j
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Jedná se o oficiální Microsoft Azure účet pro připojení komunity Azure ke správným zdrojům: odpovědi, podpora a odborníky.
 * Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.
-

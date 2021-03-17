@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: cbad025a0d0c4d679ea9cdc7557c81b5145798fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023665"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Nasazení služby Azure Firewall s několika veřejnými IP adresami pomocí Azure PowerShellu
 
 Tato funkce umožňuje následující scénáře:
 
-- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Pokud máte například dvě veřejné IP adresy, můžete přeložit TCP port 3389 (RDP) na obě IP adresy.
-- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud máte v síti filtrování pro příjem dat, je potřeba, abyste povolili všechny veřejné IP adresy přidružené k bráně firewall. Pro zjednodušení této konfigurace zvažte použití [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md) .
+- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Například pokud máte dvě veřejné IP adresy, můžete pro obě IP adresy překládat port TCP 3389 (RDP).
+- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud ve své síti využíváte následné filtrování, musíte povolit všechny veřejné IP adresy přidružené k vaší bráně firewall. Pro zjednodušení této konfigurace zvažte použití [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md) .
  
 Azure Firewall s více veřejnými IP adresami jsou k dispozici prostřednictvím Azure Portal, Azure PowerShell, Azure CLI, REST a šablon. Azure Firewall můžete nasadit s až 250 veřejnými IP adresami.
 

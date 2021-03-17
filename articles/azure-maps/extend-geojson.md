@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 87a5dec2582796c6703bfb37b76e26e53a1192c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037452"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895779"
 ---
 # <a name="extended-geojson-geometries"></a>Rozšířená geometriía pro injson
 
@@ -29,7 +29,7 @@ Azure Maps poskytuje seznam výkonných rozhraní API pro vyhledávání uvnitř
 * Vyberte
 * Mnohoúhelník
 
-Některá Azure Maps rozhraní API akceptují geometrií, která nejsou součástí [specifikace pro injson][1]. Například [vyhledávání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) API přijímá kružnice a mnohoúhelníky.
+Některá Azure Maps rozhraní API akceptují geometrií, která nejsou součástí [specifikace pro injson][1]. Například [vyhledávání uvnitř geometrie](/rest/api/maps/search/postsearchinsidegeometry) API přijímá kružnice a mnohoúhelníky.
 
 Tento článek poskytuje podrobné vysvětlení způsobu, jakým Azure Maps rozšiřuje [specifikace][1] pro geometrií, aby představoval konkrétní.
 

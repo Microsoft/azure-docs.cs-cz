@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 7d58cd26b6e4ca77da98f8c2f82dbdb481ccbb50
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585748"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285207"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Přesun trezoru klíčů Azure napříč oblastmi
 
@@ -24,7 +24,7 @@ Azure Key Vault nepodporuje operaci přesunutí prostředku, která povoluje př
 
 Pokud chcete přesunout Trezor klíčů do jiné oblasti, vytvořte v této jiné oblasti Trezor klíčů a pak ručně zkopírujte každý jednotlivý tajný klíč ze stávajícího trezoru klíčů do nového trezoru klíčů. Můžete to provést pomocí některé z následujících dvou možností.
 
-## <a name="design-considerations"></a>Aspekty návrhu
+## <a name="design-considerations"></a>Na co dát pozor při navrhování
 
 Než začnete, pamatujte na následující koncepty:
 
@@ -35,7 +35,7 @@ Než začnete, pamatujte na následující koncepty:
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Možnost 1: použití příkazů zálohování a obnovení trezoru klíčů
 
-Každý jednotlivý tajný klíč, klíč a certifikát můžete zálohovat v trezoru pomocí příkazu Backup. Vaše tajné kódy se stáhnou jako zašifrovaný objekt BLOB. Pak můžete objekt BLOB obnovit do nového trezoru klíčů. Seznam příkazů naleznete v tématu [Azure Key Vault Commands](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
+Každý jednotlivý tajný klíč, klíč a certifikát můžete zálohovat v trezoru pomocí příkazu Backup. Vaše tajné kódy se stáhnou jako zašifrovaný objekt BLOB. Pak můžete objekt BLOB obnovit do nového trezoru klíčů. Seznam příkazů naleznete v tématu [Azure Key Vault Commands](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
 
 Použití příkazů Backup a Restore má dvě omezení:
 

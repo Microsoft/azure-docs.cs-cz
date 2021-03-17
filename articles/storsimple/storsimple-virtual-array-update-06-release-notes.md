@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
-ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60870702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000908"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,6
 
@@ -29,7 +29,7 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením StorSimple virtuálního pole pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 0,6 odpovídá **10.0.10293.0**verze softwaru.
+Aktualizace 0,6 odpovídá **10.0.10293.0** verze softwaru.
 
 > [!IMPORTANT]
 > - Aktualizace jsou rušivé a restartují vaše zařízení. Pokud probíhá vstupně-výstupní operace, dojde k výpadku zařízení. Podrobné pokyny, jak použít aktualizaci, najdete v článku [instalace aktualizace 0,6](storsimple-virtual-array-install-update-06.md).
@@ -92,5 +92,4 @@ Hledáte starší poznámku k verzi? Přejít na:
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4](storsimple-virtual-array-update-04-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3](storsimple-ova-update-03-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](storsimple-ova-update-01-release-notes.md)
-* [Poznámky k verzi pro StorSimple Virtual Array General Availability](storsimple-ova-pp-release-notes.md)
-
+* [Poznámky k verzi pro StorSimple Virtual Array General Availability]()

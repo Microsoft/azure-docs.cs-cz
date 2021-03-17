@@ -1,6 +1,6 @@
 ---
-title: Vytvoření úlohy streamování T-SQL ve službě Azure SQL Edge (Preview)
-description: Přečtěte si informace o vytváření úloh Stream Analytics ve službě Azure SQL Edge (Preview).
+title: Vytvoření úlohy streamování T-SQL ve službě Azure SQL Edge
+description: Přečtěte si o vytváření úloh Stream Analytics v Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,31 +9,28 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321713"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656338"
 ---
-# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Azure Stream Analytics v Azure SQL Edge (Preview) 
+# <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Vytvoření úlohy streamování dat ve službě Azure SQL Edge 
 
-Tento článek vysvětluje, jak vytvořit úlohu streamování T-SQL ve službě Azure SQL Edge (Preview). Vytvoříte vstupní a výstupní objekty externího datového proudu a potom v rámci vytváření úlohy streamování definujete dotaz na úlohu streamování.
-
-> [!NOTE]
-> Pokud chcete povolit funkci streamování T-SQL ve službě Azure SQL Edge, povolte jako možnost spuštění TF 11515 nebo použijte příkaz [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) . Další informace o tom, jak povolit příznaky trasování pomocí souboru MSSQL. conf, najdete v tématu [Konfigurace použití souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file).
+Tento článek vysvětluje, jak vytvořit úlohu streamování T-SQL ve službě Azure SQL Edge. Vytvoříte vstupní a výstupní objekty externího datového proudu a potom v rámci vytváření úlohy streamování definujete dotaz na úlohu streamování.
 
 ## <a name="configure-the-external-stream-input-and-output-objects"></a>Konfigurace vstupních a výstupních objektů externího datového proudu
 
 Streamování T-SQL využívá funkci externích zdrojů dat SQL Server k definování zdrojů dat přidružených k vstupům externích datových proudů a výstupům úlohy streamování. Pomocí následujících příkazů T-SQL vytvořte vstupní nebo výstupní objekt externího datového proudu:
 
-- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](/sql/t-sql/statements/create-external-data-source-transact-sql)
 
 - [VYTVOŘIT externí datový proud (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Pokud se navíc jako výstupní datový proud používá Azure SQL Edge, SQL Server nebo Azure SQL Database, budete potřebovat [vytvořit databázi s rozsahem pověření (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Tento příkaz T-SQL definuje přihlašovací údaje pro přístup k databázi.
+Pokud se navíc jako výstupní datový proud používá Azure SQL Edge, SQL Server nebo Azure SQL Database, budete potřebovat [vytvořit databázi s rozsahem pověření (Transact-SQL)](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Tento příkaz T-SQL definuje přihlašovací údaje pro přístup k databázi.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Podporované vstupní a výstupní datové proudy zdrojů dat
 
@@ -41,9 +38,9 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 
 | Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
-| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| Databáze SQL | N | A | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
-| Kafka | A | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
+| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
+| Databáze SQL | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Příklad: vytvoření objektu vstupu/výstupu externího datového proudu pro Azure IoT Edge hub
 
@@ -120,7 +117,7 @@ Následující příklad vytvoří objekt externího datového proudu pro místn
     go
     ```
 
-4. Vytvořte objekt externího streamu. Následující příklad vytvoří objekt externího datového proudu odkazující na tabulku *dbo. TemperatureMeasurements*v *MySQLDatabase*databáze.
+4. Vytvořte objekt externího streamu. Následující příklad vytvoří objekt externího datového proudu odkazující na tabulku *dbo. TemperatureMeasurements* v *MySQLDatabase* databáze.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -157,7 +154,7 @@ Následující příklad vytvoří objekt externího datového proudu pro místn
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
     )
    ```
-    
+
 3. Vytvořte objekt externího streamu. Následující příklad vytvoří objekt externího streamu, který odkazuje na Kafka téma `*TemperatureMeasurement*` .
 
     ```sql
@@ -166,7 +163,7 @@ Následující příklad vytvoří objekt externího datového proudu pro místn
     (  
         DATA_SOURCE = KafkaInput, 
         FILE_FORMAT = JsonGzipped,
-        LOCATION = 'TemperatureMeasurement',     
+        LOCATION = 'TemperatureMeasurement',
         INPUT_OPTIONS = 'PARTITIONS: 10' 
     ); 
     ```
@@ -176,7 +173,7 @@ Následující příklad vytvoří objekt externího datového proudu pro místn
 Pomocí `sys.sp_create_streaming_job` systémové uložené procedury definujte dotazy streamování a vytvořte úlohu streamování. `sp_create_streaming_job`Uložená procedura používá následující parametry:
 
 - `job_name`: Název úlohy streamování. Názvy úloh streamování jsou v rámci instance jedinečné.
-- `statement`: [Stream Analytics dotazování](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)příkazů dotazu streamování založeného na jazyce.
+- `statement`: [Stream Analytics dotazování](/stream-analytics-query/stream-analytics-query-language-reference)příkazů dotazu streamování založeného na jazyce.
 
 Následující příklad vytvoří jednoduchou úlohu streamování s jedním dotazem pro streamování. Tento dotaz přečte vstupy z centra IoT Edge a zapisuje do `dbo.TemperatureMeasurements` databáze.
 
@@ -236,7 +233,8 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 (
        (
        name nvarchar(256),
-       status nvarchar(256)
+       status nvarchar(256),
+       error nvarchar(256)
        )
 )
 ```
@@ -255,5 +253,5 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zobrazení metadat přidružených k úlohám streamování ve službě Azure SQL Edge (Preview)](streaming-catalog-views.md) 
+- [Zobrazení metadat přidružených k úlohám streamování ve službě Azure SQL Edge](streaming-catalog-views.md) 
 - [Vytvoření externího datového proudu](create-external-stream-transact-sql.md)

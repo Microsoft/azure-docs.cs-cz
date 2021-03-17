@@ -4,12 +4,16 @@
   items:
     - name: Co je šablona ARM?
       href: overview.md
+    - name: Bicep – přehled
+      href: bicep-overview.md
 - name: Rychlé starty
   items:
     - name: Vytváření šablon – portál
       href: quickstart-create-templates-use-the-portal.md
     - name: Vytváření šablon – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Vytvoření bicep-VS Code
+      href: quickstart-create-bicep-use-visual-studio-code.md
     - name: Vytvoření a nasazení specifikace šablony
       href: quickstart-create-template-specs.md
     - name: Služby Azure
@@ -19,11 +23,11 @@
             - name: Cognitive Search
               href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Cognitive Services
-              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../cognitive-services/create-account-resource-manager-template.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: Virtuální počítač pro datové vědy
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
-              href: ../../machine-learning/tutorial-resource-manager-workspace.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Analýzy
           items:
             - name: Analysis Services
@@ -48,7 +52,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: Vyhrazený fond SQL (dříve SQL DW)
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blockchain
           items:
@@ -80,14 +84,20 @@
               href: ../../service-fabric/quickstart-cluster-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Databáze
           items:
+            - name: Cache for Redis
+              href: ../../azure-cache-for-redis/cache-redis-cache-arm-provision.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databáze Cosmos
               href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database for MariaDB
               href: ../../mariadb/quickstart-create-mariadb-server-database-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database for MySQL
               href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for MySQL – flexibilní server
+              href: ../../mysql/flexible-server/quickstart-create-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database for PostgreSQL
               href: ../../postgresql/quickstart-create-postgresql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for PostgreSQL – flexibilní server
+              href: ../../postgresql/flexible-server/quickstart-create-server-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database Migration Service
               href: ../../dms/create-dms-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databáze SQL
@@ -98,12 +108,16 @@
               href: ../../azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: DevOps
           items:
+            - name: App Configuration
+              href: ../../azure-app-configuration/quickstart-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: DevTest Labs
               href: ../../devtest-labs/create-lab-windows-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Kanály
               href: /azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Integrace
           items:
+            - name: API pro FHIR
+              href: ../../healthcare-apis/fhir/fhir-paas-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Event Grid
               href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Logic Apps
@@ -114,6 +128,10 @@
           items:
             - name: IoT Edge
               href: ../../iot-edge/how-to-install-iot-edge-ubuntuvm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: IoT Hub
+              href: ../../iot-hub/horizontal-arm-route-messages.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Služba IoT Hub Device Provisioning
+              href: ../../iot-dps/quick-setup-auto-provision-rm.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Správa a zásady správného řízení
           items:
             - name: Advisor
@@ -127,14 +145,16 @@
             - name: Managed Applications
               href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Monitorování
-              href: ../../azure-monitor/learn/quick-collect-activity-log-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../azure-monitor/essentials/quick-collect-activity-log-arm.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: Zásada
               href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Portál
               href: ../../azure-portal/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Resource Graph
               href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Řízení přístupu na základě role (RBAC)
+            - name: Řízení přístupu na základě role – vlastní role
+              href: ../../role-based-access-control/custom-roles-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Řízení přístupu na základě role – přiřazení role
               href: ../../role-based-access-control/quickstart-role-assignments-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Service Health
               href: ../../service-health/alerts-activity-log-service-notifications-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -146,6 +166,12 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Content Delivery Network
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DDoS Protection
+              href: ../../ddos-protection/manage-ddos-protection-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Brána firewall – zóny dostupnosti
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Brána firewall – skupiny IP adres
@@ -154,29 +180,51 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall Manager
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: Front Door
+              href: ../../frontdoor/quickstart-create-front-door-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Load Balancer – interní
+              href: ../../load-balancer/quickstart-load-balancer-standard-internal-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Load Balancer – veřejný
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Koncový bod Private Linku
+            - name: NAT Gateway
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Privátní koncový bod
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Služba Private Link
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web Application Firewall (Brána firewall webových aplikací)
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Zabezpečení
           items:
-            - name: Key Vault
+            - name: Attestation
+              href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Key Vault – klíč
+              href: ../../key-vault/keys/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Key Vault – tajný kód
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Storage
+            - name: Security Center
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Úložiště
           items:
+            - name: Data Share
+              href: ../../data-share/share-your-data-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Účet úložiště
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: App Service
+              href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: SignalR Service
+              href: ../../azure-signalr/signalr-quickstart-azure-signalr-service-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Kurzy
   items:
-    - name: Šablony pro začátečníky
+    - name: Šablony JSON pro začátečníky
       items:
         - name: 1. Vytvoření první šablony
           href: template-tutorial-create-first-template.md
@@ -198,6 +246,28 @@
           href: template-tutorial-add-tags.md
         - name: 10. Použití souboru parametrů
           href: template-tutorial-use-parameter-file.md
+    - name: Začátečník bicep
+      items:
+        - name: 1. Vytvoření první šablony
+          href: bicep-tutorial-create-first-bicep.md
+        - name: 2. Přidání parametrů
+          href: bicep-tutorial-add-parameters.md
+        - name: 3. Přidání funkcí šablon
+          href: bicep-tutorial-add-functions.md
+        - name: 4. Přidání proměnných
+          href: bicep-tutorial-add-variables.md
+        - name: 5. Přidání výstupů
+          href: bicep-tutorial-add-outputs.md
+        - name: 6 – použití exportované šablony
+          href: bicep-tutorial-export-template.md
+        - name: 7. použití šablony pro rychlé zprovoznění
+          href: bicep-tutorial-quickstart-template.md
+        - name: 8. Přidání značek
+          href: bicep-tutorial-add-tags.md
+        - name: 9 – použít soubor parametrů
+          href: bicep-tutorial-use-parameter-file.md
+        - name: 10 – přidat moduly
+          href: bicep-tutorial-add-modules.md
     - name: Nasazení
       items:
         - name: 1. Nasazení místní šablony
@@ -248,14 +318,24 @@
         - name: Použití kontroly stavu v Deployment Manageru
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: Studijní program Microsoft Learn o šablonách
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: Koncepty
   items:
     - name: Osvědčené postupy pro šablony
       href: template-best-practices.md
+    - name: Bicep
+      items:
+        - name: Nainstalovat bicep
+          href: bicep-install.md
+        - name: Převod mezi JSON a bicep
+          href: bicep-decompile.md
+        - name: Porovnat JSON a bicep
+          href: compare-template-syntax.md
+    - name: Typy dat
+      href: data-types.md
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md
-    - name: Specifikace šablon
-      href: template-specs.md
     - name: Šablony pro konzistenci cloudu
       href: templates-cloud-consistency.md
     - name: Režimy nasazení
@@ -289,6 +369,8 @@
           href: template-user-defined-functions.md
         - name: Zdroje a prostředky
           items:
+            - name: Deklarace prostředku
+              href: resource-declaration.md
             - name: Typ a název podřízeného prostředku
               href: child-resource-name-type.md
             - name: Podmíněné nasazení
@@ -323,36 +405,42 @@
             - name: Výstupy
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Zjištění vlastností šablon
-      items:
-        - name: Export šablony
-          href: export-template-portal.md
-        - name: Zjišťování prostředků
-          href: view-resources.md
-    - name: Ověřování šablon
-      items:
-        - name: Nasazení What-If
-          href: template-deploy-what-if.md
-        - name: Testovací sada nástrojů
-          href: test-toolkit.md
-        - name: Testovací případy
-          href: test-cases.md
     - name: Nasazení šablon
       items:
-        - name: Nasazení – portál
-          displayName: deployment
-          href: deploy-portal.md
-        - name: Nasazení – rozhraní příkazového řádku
-          displayName: deployment
-          href: deploy-cli.md
-        - name: Nasazení – PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: Nasazení – REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: Nasazení z GitHubu
-          href: deploy-to-azure-button.md
+        - name: Operace nasazení
+          items:
+            - name: Nasazení – portál
+              displayName: deployment
+              href: deploy-portal.md
+            - name: Nasazení – rozhraní příkazového řádku
+              displayName: deployment
+              href: deploy-cli.md
+            - name: Nasazení – PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: Nasazení – REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: Nasazení – GitHub
+              href: deploy-to-azure-button.md
+            - name: Nasazení – Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: Obory
+          items:
+            - name: Skupina prostředků
+              href: deploy-to-resource-group.md
+            - name: Předplatné
+              href: deploy-to-subscription.md
+            - name: Skupina pro správu
+              href: deploy-to-management-group.md
+            - name: Tenant
+              href: deploy-to-tenant.md
+            - name: Prostředky rozšíření
+              href: scope-extension-resources.md
+            - name: Funkce napříč obory
+              href: scope-functions.md
+        - name: Nasazení What-If
+          href: template-deploy-what-if.md
         - name: Opětovné nasazení při chybě
           displayName: rollback
           href: rollback-on-error.md
@@ -360,16 +448,6 @@
           href: secure-template-with-sas-token.md
         - name: Zobrazení historie nasazení
           href: deployment-history.md
-    - name: Nasazení s vymezeným oborem
-      items:
-        - name: Předplatné
-          href: deploy-to-subscription.md
-        - name: Skupina pro správu
-          href: deploy-to-management-group.md
-        - name: Tenant
-          href: deploy-to-tenant.md
-        - name: Nasazení napříč obory
-          href: cross-scope-deployment.md
     - name: Zadání parametrů
       items:
         - name: Vytvoření souboru parametrů
@@ -377,12 +455,30 @@
         - name: Předávání citlivých hodnot
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Testování šablon
+      items:
+        - name: Testovací sada nástrojů
+          href: test-toolkit.md
+        - name: Testovací případy
+          href: test-cases.md
+    - name: Specifikace šablon
+      items:
+        - name: Vytvoření a nasazení specifikace šablony
+          href: template-specs.md
+        - name: Převést galerii šablon portálu
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
-        - name: Projekt VS s kanály
+        - name: Šablony ARM s kanály
           href: add-template-to-azure-pipelines.md
         - name: Nasazení – GitHub Actions
           href: deploy-github-actions.md
+    - name: Zjištění vlastností šablon
+      items:
+        - name: Export šablony
+          href: export-template-portal.md
+        - name: Zjišťování prostředků
+          href: view-resources.md
     - name: Použití nástrojů pro vytváření
       items:
         - name: Visual Studio
@@ -401,6 +497,8 @@
           href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: error-invalid-template.md
+        - name: JobSizeExceeded
+          href: error-job-size-exceeded.md
         - name: Potíže s linuxovým nasazením
           href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md
         - name: NoRegisteredProviderFound
@@ -431,6 +529,8 @@
       items:
         - name: Všechny funkce
           href: template-functions.md
+        - name: Libovolná funkce (bicep)
+          href: template-functions-any.md
         - name: Funkce pro práci s poli
           href: template-functions-array.md
         - name: Funkce porovnání
@@ -460,9 +560,11 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
-      href: /python/api/overview/azure/resources?view=azure-python
+      href: /python/api/overview/azure/resources
 - name: Zdroje a prostředky
   items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Šablony rychlého zprovoznění pro Azure
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Plány Azure do budoucna

@@ -1,7 +1,7 @@
 ---
 title: Konfigurace požadovaného stavu pro Azure – přehled
 description: Naučte se používat obslužnou rutinu rozšíření Microsoft Azure pro konfiguraci požadovaného stavu prostředí PowerShell (DSC). Tento článek obsahuje požadavky, architekturu a rutiny.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: mgoedtel
 manager: evansma
@@ -9,19 +9,21 @@ editor: ''
 tags: azure-resource-manager
 keywords: DSC
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9b609fd81c9f1013d2308dccd8ed22fb82aac149
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: dcdc325633aff5ab828cb1c82f4bb2d8becee967
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503340"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560034"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
 
@@ -108,7 +110,7 @@ Rutina **Remove-AzVMDscExtension** odebere obslužnou rutinu rozšíření z kon
 Důležité informace o rutinách rozšíření DSC Správce prostředků:
 
 - Rutiny Azure Resource Manager jsou synchronní.
-- Parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version*a *Location* jsou všechny povinné.
+- Parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version* a *Location* jsou všechny povinné.
 - *ArchiveResourceGroupName* je nepovinný parametr. Tento parametr můžete zadat, pokud váš účet úložiště patří do jiné skupiny prostředků, než v jaké je virtuální počítač vytvořený.
 - Pokud je k dispozici, použijte přepínač **AutoUpdate** k automatické aktualizaci obslužné rutiny rozšíření na nejnovější verzi. Tento parametr může při vydání nové verze WMF způsobit restart virtuálního počítače.
 
@@ -178,7 +180,7 @@ Nastavení DSC na portálu:
 
 1. Přejít na virtuální počítač.
 2. V části **Nastavení** vyberte **Rozšíření**.
-3. Na nově vytvořené stránce vyberte **+ Přidat**a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
+3. Na nově vytvořené stránce vyberte **+ Přidat** a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
 4. V dolní části stránky s informacemi o rozšíření klikněte na **vytvořit** .
 
 Portál shromažďuje následující vstup:
@@ -201,7 +203,7 @@ Portál shromažďuje následující vstup:
 
 ## <a name="logs"></a>Protokoly
 
-Protokoly pro rozšíření jsou uložené v následujícím umístění:`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+Protokoly pro rozšíření jsou uložené v následujícím umístění: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>Další kroky
 

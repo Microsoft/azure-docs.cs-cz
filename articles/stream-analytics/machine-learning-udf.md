@@ -1,19 +1,18 @@
 ---
 title: Integrace Azure Stream Analytics s Azure Machine Learning
 description: Tento článek popisuje, jak integrovat Azure Stream Analytics úlohu s modelem Azure Machine Learning.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 12/21/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543431"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020515"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
@@ -23,33 +22,49 @@ Modely strojového učení můžete implementovat jako uživatelsky definovanou 
 
 Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy proveďte následující kroky:
 
-1. K [nasazení modelu jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)použijte Azure Machine Learning.
+1. K [nasazení modelu jako webové služby](../machine-learning/how-to-deploy-and-where.md)použijte Azure Machine Learning.
 
 2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby. Tuto [ukázkovou definici Swagger](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) můžete použít jako referenci, abyste měli jistotu, že je správně nastavená.
 
 3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 
-4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal. Modely vytvořené pomocí [Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/concept-designer) se v Stream Analytics ještě nepodporují.
+4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal. Modely vytvořené pomocí [Azure Machine Learning designeru](../machine-learning/concept-designer.md) se v Stream Analytics ještě nepodporují.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu Machine Learning do úlohy
 
-Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přímo z Azure Portal.
+Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přímo z Azure Portal nebo Visual Studio Code.
 
-1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy**vyberte **funkce** . Pak vyberte **Azure ml Service** z rozevírací nabídky **+ Přidat** .
+### <a name="azure-portal"></a>portál Azure
 
-   ![Přidat Azure ML UDF](./media/machine-learning-udf/add-azureml-udf.png)
+1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy** vyberte **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **Azure Machine Learning Service** .
+
+   ![Přidat Azure Machine Learning systému souborů UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. Do formuláře **funkce služby Azure Machine Learning** zadejte následující hodnoty vlastností:
 
-   ![Konfigurace Azure ML UDF](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Konfigurace Azure Machine Learning systému souborů UDF](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-Následující tabulka popisuje každou vlastnost funkcí služby Azure ML v Stream Analytics.
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. Otevřete projekt Stream Analytics v Visual Studio Code a klikněte pravým tlačítkem na složku **Functions** . Pak zvolte **Přidat funkci**. V rozevíracím seznamu vyberte **Machine Learning UDF** .
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="Přidat UDF do VS Code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Přidat Azure Machine Learning UDF v VS Code":::
+
+2. Zadejte název funkce a vyplňte nastavení v konfiguračním souboru pomocí **možnosti vybrat z předplatných** v CodeLens.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Vyberte Azure Machine Learning UDF v VS Code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Konfigurace Azure Machine Learning systému souborů UDF v VS Code":::
+
+V následující tabulce jsou popsány jednotlivé vlastnosti služby Azure Machine Learning Service Functions v Stream Analytics.
 
 |Vlastnost|Popis|
 |--------|-----------|
 |Alias funkce|Zadejte název pro vyvolání funkce v dotazu.|
 |Předplatné|Vaše předplatné Azure..|
-|Pracovní prostor Azure ML|Azure Machine Learning pracovní prostor, který jste použili k nasazení modelu jako webové služby.|
+|Pracovní prostor služby Azure Machine Learning|Azure Machine Learning pracovní prostor, který jste použili k nasazení modelu jako webové služby.|
 |Nasazení|Webová služba hostující váš model.|
 |Signatura funkce|Signatura webové služby odvozená ze specifikace schématu rozhraní API. Pokud se Váš podpis nepovede načíst, ověřte, že jste ve svém skriptu pro hodnocení zadali vzorový vstup a výstup pro automatické generování schématu.|
 |Počet paralelních požadavků na oddíl|Toto je pokročilá konfigurace pro optimalizaci propustnosti ve velkém měřítku. Toto číslo představuje souběžné požadavky odeslané z každého oddílu vaší úlohy do webové služby. Úlohy s šesti jednotkami streamování (SU) a nižší mají jeden oddíl. Úlohy s 12 službami SUs mají dva oddíly, 18 SUs mají tři oddíly a tak dále.<br><br> Pokud má vaše úloha například dva oddíly a nastavíte tento parametr na čtyři, bude z vaší úlohy pro vaši webovou službu osm souběžných požadavků. V současnosti ve verzi Public Preview je tato hodnota standardně 20 a nelze ji aktualizovat.|
@@ -67,7 +82,7 @@ INTO output
 FROM input
 ```
 
-Stream Analytics podporuje pouze předávání jednoho parametru pro funkce Azure Machine Learning. Možná budete muset připravit vaše data, než je předáte do strojového učení UDF.
+Stream Analytics podporuje pouze předávání jednoho parametru pro funkce Azure Machine Learning. Možná budete muset připravit vaše data, než je předáte do strojového učení UDF. Je nutné zajistit, aby vstup do ML UDF nebyl null, protože vstupy s hodnotou null způsobí selhání úlohy.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Předání více vstupních parametrů do systému souborů UDF
 
@@ -88,11 +103,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 Po přidání JavaScriptu pro systém souborů UDF do úlohy můžete Azure Machine Learning UDF vyvolat pomocí následujícího dotazu:
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 Následující kód JSON je příkladem požadavku:
@@ -121,7 +143,7 @@ FROM input
 
 SELECT udf.score(Dataframe)
 INTO output
-FROM input
+FROM Dataframe
 ```
 
 Následující kód JSON je příkladem požadavku z předchozího dotazu:
@@ -168,4 +190,3 @@ Aby se zabránilo takové latenci, ujistěte se, že se cluster služby Azure Ku
 
 * [Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
 * [Škálování Stream Analytics úlohy pomocí funkce Azure Machine Learning Studio (Classic)](stream-analytics-scale-with-machine-learning-functions.md)
-

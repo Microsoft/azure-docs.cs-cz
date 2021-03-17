@@ -4,21 +4,19 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 author: brbell
 ms.service: virtual-machines
 ms.topic: conceptual
+ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191148"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565457"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Velikosti virtuálních počítačů Azure bez místního dočasného disku 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se velikostí virtuálních počítačů Azure, které nemají místní dočasný disk (tj. žádný místní dočasný disk). Další informace o těchto velikostech virtuálních počítačů najdete v tématu [specifikace pro dv4 a Dsv4-Series (pro obecné účely úlohy)](dv4-dsv4-series.md) nebo [specifikace pro Ev4 a Esv4-Series (paměťově optimalizované úlohy)](ev4-esv4-series.md).
-
-> [!IMPORTANT]
-> Velikosti virtuálních počítačů dv4, Dsv4, Ev4 a Esv4-Series jsou teď v Public Preview. Pokud se chcete zaregistrovat do Public Preview, vyplňte tento [formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
 
 ## <a name="what-does-no-local-temp-disk-mean"></a>Co neznamená žádný místní dočasný disk? 
 Tradičně jsme měli velikost virtuálních počítačů (např. Standard_D2s_v3, Standard_E48_v3), které zahrnují malý místní disk (tj. a D: Drive). Teď s těmito novými velikostmi virtuálních počítačů už neexistuje tento malý místní disk. Můžete však stále připojit HDD úrovně Standard, SSD úrovně Premium nebo SSD úrovně Ultra.
@@ -38,13 +36,27 @@ Pokud vaše úloha vyžaduje místní dočasný disk, máme také k dispozici no
 | Esv3 | Edsv4 |    Esv4 | 
 
 ## <a name="can-i-resize-a-vm-size-that-has-a-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Můžu změnit velikost virtuálního počítače, která má místní dočasný disk na velikost virtuálního počítače bez místního dočasného disku?  
-Ne. Pro změnu velikosti jsou povolené jenom tyto kombinace: 
+No. Pro změnu velikosti jsou povolené jenom tyto kombinace: 
 
 1. Virtuální počítač (s místním dočasným diskem) – > virtuální počítač (s místním dočasným diskem); ani 
 2. Virtuální počítač (bez místního dočasného disku) – > virtuální počítač (bez místního dočasného disku). 
 
+Pokud vás zajímá, podívejte se prosím na další otázku.
+
 > [!NOTE]
 > Pokud bitová kopie závisí na disku prostředků nebo na místním dočasném disku existuje stránkovací soubor nebo swapfile, image bez disků nebudou fungovat – místo toho použijte alternativu "s diskem". 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Návody migrujete z virtuálního počítače s využitím místního dočasného disku na velikost virtuálního počítače bez místního dočasného disku?  
+Můžete provést migraci pomocí následujících kroků: 
+
+1. Připojte se k virtuálnímu počítači, který má místní dočasný disk (například jednotku D: jednotka) jako místní správce.
+2. Postupujte podle pokynů v části "dočasné přesunutí pagefile.sys do jednotky C" v části [použití jednotky D: jako datové jednotky na virtuálním počítači s Windows](./windows/change-drive-letter.md) k přesunutí stránkovacího souboru z místního dočasného disku (D: Drive) na jednotku C:.
+
+   > [!NOTE]
+   > Postupujte podle pokynů v části "dočasné přesunutí pagefile.sys do jednotky C" v části použití jednotky D: jako datové jednotky na virtuálním počítači s Windows k přesunutí stránkovacího souboru z místního dočasného disku (D: jednotka) do jednotky C:. **Odchýlení od kroků uvedených v tomto postupu povede k chybové zprávě – "nepovedlo se změnit velikost virtuálního počítače, protože změna z disku prostředků na velikost virtuálního počítače, který není disk prostředku, a naopak není povolená.**
+
+3. Pořídit snímek virtuálního počítače podle kroků uvedených v části [vytvoření snímku pomocí portálu nebo rozhraní příkazového řádku Azure CLI](./linux/snapshot-copy-managed-disk.md). 
+4. Pomocí snímku vytvořte nový virtuální počítač bez disků (například dv4, Dsv4, Ev4, Esv4 Series) podle postupu popsaného v části [Vytvoření virtuálního počítače ze snímku pomocí](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)rozhraní příkazového řádku. 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Podporují tyto velikosti virtuálních počítačů operační systémy Linux i Windows (OS)?
 Ano.

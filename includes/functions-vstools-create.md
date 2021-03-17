@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 164620bdcee7ac546468354f999dcb3ad96ecf4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84730983"
 ---
 Šablona projektu Azure Functions v aplikaci Visual Studio vytvoří projekt, který můžete publikovat do aplikace Function App v Azure. Pomocí aplikace Function App můžete seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
@@ -30,7 +30,7 @@ ms.locfileid: "84730983"
     | **Modul runtime Functions** | **Azure Functions V3 <br /> (.NET Core)** | Tato hodnota vytvoří projekt funkce, který používá modul runtime verze 3. x Azure Functions, který podporuje .NET Core 3. x. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v tématu [Přehled verzí modulu runtime Azure Functions](../articles/azure-functions/functions-versions.md).   |
     | **Šablona funkce** | **Trigger HTTP** | Tato hodnota vytvoří funkci spuštěnou požadavkem HTTP. |
     | **Účet úložiště (AzureWebJobsStorage)**  | **Emulátor úložiště** | Vzhledem k tomu, že funkce Azure vyžaduje účet úložiště, je jeden přiřazený nebo vytvořený při publikování projektu do Azure. Aktivační událost protokolu HTTP nepoužívá připojovací řetězec Azure Storage účtu; všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu Azure Storage.  |
-    | **Úroveň autorizace** | **Anonymní** | Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizaci najdete v tématu [autorizační klíče](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) a [vazby HTTP a Webhooku](../articles/azure-functions/functions-bindings-http-webhook.md). |
+    | **Úroveň autorizace** | **Anonymous** | Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizaci najdete v tématu [autorizační klíče](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) a [vazby HTTP a Webhooku](../articles/azure-functions/functions-bindings-http-webhook.md). |
     
     
     ![Nastavení projektu Azure Functions](./media/functions-vs-tools-create/functions-project-settings.png)

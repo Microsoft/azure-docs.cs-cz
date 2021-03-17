@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 59eb2e320a828b644af6f740cf9f8381370a0dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527277"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608812"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TimeOffManager
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat TimeOffManager s Azure Active Director
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TimeOffManager svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace TimeOffManager několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | --- | --- |
     | FirstName |User. křestní jméno |
     | Polím |User. příjmení |
@@ -114,25 +114,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k TimeOffManager.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **TimeOffManager**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -144,13 +144,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V jiném okně webového prohlížeče se přihlaste k webu TimeOffManager společnosti jako správce.
 
-2. Přejít na ** \> Možnosti účtu účtu \> nastavení jednotného přihlašování**
+2. Přejít na **\> Možnosti účtu účtu \> nastavení s jedním Sign-On**.
    
-    ![Nastavení jednotného přihlašování](./media/timeoffmanager-tutorial/ic795917.png "Nastavení jednotného přihlašování")
+    ![Snímek obrazovky zobrazuje nastavení jednoho Sign-On vybrané z možností účtu.](./media/timeoffmanager-tutorial/ic795917.png "Nastavení jednoho Sign-On")
 
-3. V části **nastavení jednotného přihlašování** proveďte následující kroky:
+3. V části **nastavení s jedním Sign-On** proveďte následující kroky:
    
-    ![Nastavení jednotného přihlašování](./media/timeoffmanager-tutorial/ic795918.png "Nastavení jednotného přihlašování")
+    ![Snímek obrazovky se zobrazí část nastavení s jedním Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/timeoffmanager-tutorial/ic795918.png "Nastavení jednoho Sign-On")
    
     a. V programu Poznámkový blok otevřete svůj certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte celý certifikát do textového pole **certifikátu X. 509** .
    
@@ -158,9 +158,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
    
     c. Do textového pole **Adresa URL koncového bodu IDP** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
    
-    d. Jako **Vynutilí SAML**vyberte **ne**.
+    d. Jako **Vynutilí SAML** vyberte **ne**.
    
-    e. Jako **automaticky vytvořit uživatele**vyberte **Ano**.
+    e. Jako **automaticky vytvořit uživatele** vyberte **Ano**.
    
     f. Do textového pole **Adresa URL pro odhlášení** vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
    
@@ -168,7 +168,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Na stránce **nastavení jednotného přihlašování** Zkopírujte hodnotu **adresy URL služby pro příjemce kontrolního výrazu** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal. 
 
-      ![Nastavení jednotného přihlašování](./media/timeoffmanager-tutorial/ic795915.png "Nastavení jednotného přihlašování")
+    ![Snímek obrazovky se zobrazí jako odkaz na službu příjemce kontrolního výrazu R L.](./media/timeoffmanager-tutorial/ic795915.png "Nastavení jednoho Sign-On")
 
 ### <a name="create-timeoffmanager-test-user"></a>Vytvořit testovacího uživatele TimeOffManager
 
@@ -181,15 +181,14 @@ V této části se v TimeOffManager vytvoří uživatel s názvem Britta Simon. 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici TimeOffManager, měli byste se automaticky přihlásit k TimeOffManager, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici TimeOffManager, měli byste se automaticky přihlásit k TimeOffManager, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si TimeOffManager s Azure AD](https://aad.portal.azure.com/)
-

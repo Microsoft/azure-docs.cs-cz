@@ -5,66 +5,40 @@ description: Pomocí REST API nebo sady .NET SDK Sledujte stav, průběh a výsl
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 01/28/2021
+ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529739"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063236"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky služby Azure Kognitivní hledání indexer
 
-Azure Kognitivní hledání poskytuje informace o stavu a monitorování o aktuálním a historickém spuštění každého indexeru.
+Můžete monitorovat zpracování indexerem v Azure Portal nebo programově prostřednictvím volání REST nebo sady Azure SDK. Kromě stavu o samotném indexeru můžete kontrolovat počáteční a koncové časy a podrobné chyby a upozornění z konkrétního běhu.
 
-Monitorování indexeru je užitečné v případě, že chcete:
+## <a name="monitor-using-azure-portal"></a>Monitorování pomocí Azure Portal
 
-* Sledovat průběh indexeru během probíhajícího běhu.
-* Zkontrolujte výsledky probíhajícího nebo předchozího indexerového spuštění.
-* Identifikujte chyby indexerů nejvyšší úrovně a chyby nebo varování týkající se indexovaných jednotlivých dokumentů.
-
-## <a name="get-status-and-history"></a>Získat stav a historii
-
-Informace o monitorování indexeru můžete získat různými způsoby, včetně těchto:
-
-* V [Azure Portal](#portal)
-* Použití [REST API](#restapi)
-* Používání [sady .NET SDK](#dotnetsdk)
-
-K dispozici jsou dostupné informace o monitorování indexeru, včetně všech těchto formátů dat, které se liší v závislosti na použité metodě přístupu:
-
-* Stavové informace o samotném indexeru
-* Informace o posledním spuštění indexeru, včetně jeho stavu, času zahájení a ukončení a podrobných chyb a upozornění.
-* Zobrazí se seznam historických indexerů a jejich stavů, výsledků, chyb a upozornění.
-
-Indexery, které zpracovávají velké objemy dat, může trvat dlouhou dobu. Například indexery, které zpracovávají miliony zdrojových dokumentů, můžou běžet po dobu 24 hodin a pak téměř okamžitě začít. Stav indexerů s vysokým objemem **může na portálu vždycky vyslovit** . I když je indexer spuštěný, jsou k dispozici podrobnosti o probíhajícím průběhu a předchozích spuštěních.
-
-<a name="portal"></a>
-
-## <a name="monitor-using-the-portal"></a>Monitorování pomocí portálu
-
-Aktuální stav všech indexerů můžete zobrazit v seznamu **indexerů** na stránce s přehledem služby Search.
+Aktuální stav všech indexerů můžete zobrazit na stránce Přehled vyhledávací služby. Stránky portálu se aktualizují každých několik minut, takže se vám nezobrazuje důkaz o novém spuštění indexeru hned.
 
    ![Seznam indexerů](media/search-monitor-indexers/indexers-list.png "Seznam indexerů")
 
-Při provádění indexeru se **v**seznamu zobrazí stav a hodnota **úspěšné dokumentace** zobrazuje počet zpracovaných dokumentů. Může trvat několik minut, než portál aktualizuje hodnoty stavu indexeru a počty dokumentů.
+| Status | Popis |
+|--------|-------------|
+| **Probíhá** | Indikuje aktivní spuštění. Portál bude hlásit částečné informace. S průběhem indexování můžete sledovat, že hodnota **úspěšného** povýšení dokumentů byla zvětšena v reakci. Indexery, které zpracovávají velké objemy dat, může trvat dlouhou dobu. Například indexery, které zpracovávají miliony zdrojových dokumentů, můžou běžet po dobu 24 hodin a pak téměř okamžitě začít. Stav indexerů s vysokým objemem **může na portálu vždycky vyslovit** . I když je indexer spuštěný, jsou k dispozici podrobnosti o probíhajícím průběhu a předchozích spuštěních. |
+| **Success** | Indikuje, že spuštění proběhlo úspěšně. Spuštění indexeru může být úspěšné i v případě, že v jednotlivých dokumentech dojde k chybám, pokud je počet chyb menší, než je nastavení **maximálního počtu nezdařených položek** indexeru. |
+| **Neúspěšný** | Počet chyb překročil maximální počet **položek, které selhaly** , a indexování bylo zastaveno. |
+| **Reset** | Stav interního sledování změn indexeru se resetoval. Indexer se spustí v plném rozsahu, aktualizuje všechny dokumenty a ne pouze ty s novějšími časovými razítky. |
 
-Indexer, jehož poslední spuštění bylo úspěšné, ukazuje **úspěch**. Spuštění indexeru může být úspěšné i v případě, že v jednotlivých dokumentech dojde k chybám, pokud je počet chyb menší, než je nastavení **maximálního počtu nezdařených položek** indexeru.
-
-Pokud poslední spuštění skončilo s chybou, zobrazí se stav **nezdařilo se**. Stav **resetování** znamená, že došlo k resetování stavu sledování změn indexeru.
-
-Kliknutím na indexer v seznamu zobrazíte další podrobnosti o aktuálním a nedávném běhu indexeru.
+Kliknutím na indexer v seznamu můžete zobrazit další podrobnosti o aktuálním a nedávném běhu indexeru.
 
    ![Souhrn indexeru a historie spouštění](media/search-monitor-indexers/indexer-summary.png "Souhrn indexeru a historie spouštění")
 
 **Souhrnný graf indexeru** zobrazuje graf počtu dokumentů zpracovávaných v posledních spuštěních.
 
-V seznamu **Podrobnosti spuštění** se zobrazí až 50 posledních výsledků spuštění.
-
-Kliknutím na výsledek spuštění v seznamu zobrazíte konkrétní informace o daném spuštění. Sem patří počáteční a koncové časy a všechny chyby a varování, ke kterým došlo.
+V seznamu **Podrobnosti spuštění** se zobrazí až 50 posledních výsledků spuštění. Kliknutím na výsledek spuštění v seznamu zobrazíte konkrétní informace o daném spuštění. Sem patří počáteční a koncové časy a všechny chyby a varování, ke kterým došlo.
 
    ![Podrobnosti spuštění indexeru](media/search-monitor-indexers/indexer-execution.png "Podrobnosti spuštění indexeru")
 
@@ -72,15 +46,13 @@ Pokud během běhu došlo k určitým dokumentům, budou uvedeny v poli chyby a 
 
    ![Podrobnosti indexeru s chybami](media/search-monitor-indexers/indexer-execution-error.png "Podrobnosti indexeru s chybami")
 
-Upozornění jsou společná u některých typů indexerů a neznamenají vždy problém. Například indexery, které používají službu rozpoznávání, mohou hlásit upozornění, když obrázky nebo soubory PDF neobsahují žádný text ke zpracování.
+Upozornění jsou společná u některých typů indexerů a neznamenají vždy problém. Například indexery, které používají službu rozpoznávání, mohou hlásit upozornění, když obrázky nebo soubory PDF neobsahují žádný text ke zpracování. 
 
 Další informace o zkoumání chyb a upozornění indexeru najdete v tématu [řešení běžných potíží indexerů v Azure kognitivní hledání](search-indexer-troubleshooting.md).
 
-<a name="restapi"></a>
+## <a name="monitor-using-get-indexer-status-rest-api"></a>Monitorování pomocí get status indexeru (REST API)
 
-## <a name="monitor-using-rest-apis"></a>Monitorování pomocí rozhraní REST API
-
-Můžete načíst stav a historii provádění indexeru pomocí [příkazu Get indexer status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+Můžete načíst stav a historii provádění indexeru pomocí [příkazu Get indexer status](/rest/api/searchservice/get-indexer-status):
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -121,26 +93,23 @@ Historie spouštění obsahuje až 50 nejaktuálnějších běhů, které jsou s
 
 Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je pro indexer samotný. Stav indexeru **spuštěno** znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale ne v současnosti je spuštěn.
 
-Každé spuštění indexeru má také svůj vlastní stav, který označuje, jestli je toto konkrétní spuštění probíhající (**spuštěné**), nebo jestli se už dokončilo se stavem **úspěch**, **transientFailure**nebo **persistentFailure** . 
+Každé spuštění indexeru má také svůj vlastní stav, který označuje, jestli je toto konkrétní spuštění probíhající (**spuštěné**), nebo jestli se už dokončilo se stavem **úspěch**, **transientFailure** nebo **persistentFailure** . 
 
 Když je indexer obnovený tak, aby aktualizoval stav sledování změn, přidá se samostatná položka historie spouštění se stavem **resetování** .
 
-Další podrobnosti o stavových kódech a datech monitorování indexeru najdete v tématu [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Další podrobnosti o stavových kódech a datech monitorování indexeru najdete v tématu [získání stavu indexeru](/rest/api/searchservice/get-indexer-status).
 
-<a name="dotnetsdk"></a>
+## <a name="monitor-using-net"></a>Monitorování pomocí .NET
 
-## <a name="monitor-using-the-net-sdk"></a>Monitorování pomocí sady .NET SDK
-
-Můžete definovat plán pro indexer pomocí sady Azure Kognitivní hledání .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
-
-Následující příklad jazyka C# zapisuje informace o stavu indexeru a výsledku jeho posledního (nebo probíhajícího) běhu do konzoly.
+Pomocí sady Azure Kognitivní hledání .NET SDK následující příklad C# zapisuje informace o stavu indexeru a výsledku jeho posledního (nebo probíhajícího) běhu do konzoly.
 
 ```csharp
-static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
+static void CheckIndexerStatus(SearchIndexerClient indexerClient, SearchIndexer indexer)
 {
     try
     {
-        IndexerExecutionInfo execInfo = searchService.Indexers.GetStatus(indexer.Name);
+        string indexerName = "hotels-sql-idxr";
+        SearchIndexerStatus execInfo = indexerClient.GetIndexerStatus(indexerName);
 
         Console.WriteLine("Indexer has run {0} times.", execInfo.ExecutionHistory.Count);
         Console.WriteLine("Indexer Status: " + execInfo.Status.ToString());
@@ -148,15 +117,15 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
         IndexerExecutionResult result = execInfo.LastResult;
 
         Console.WriteLine("Latest run");
-        Console.WriteLine("  Run Status: {0}", result.Status.ToString());
-        Console.WriteLine("  Total Documents: {0}, Failed: {1}", result.ItemCount, result.FailedItemCount);
+        Console.WriteLine("Run Status: {0}", result.Status.ToString());
+        Console.WriteLine("Total Documents: {0}, Failed: {1}", result.ItemCount, result.FailedItemCount);
 
         TimeSpan elapsed = result.EndTime.Value - result.StartTime.Value;
-        Console.WriteLine("  StartTime: {0:T}, EndTime: {1:T}, Elapsed: {2:t}", result.StartTime.Value, result.EndTime.Value, elapsed);
+        Console.WriteLine("StartTime: {0:T}, EndTime: {1:T}, Elapsed: {2:t}", result.StartTime.Value, result.EndTime.Value, elapsed);
 
         string errorMsg = (result.ErrorMessage == null) ? "none" : result.ErrorMessage;
-        Console.WriteLine("  ErrorMessage: {0}", errorMsg);
-        Console.WriteLine("  Document Errors: {0}, Warnings: {1}\n", result.Errors.Count, result.Warnings.Count);
+        Console.WriteLine("ErrorMessage: {0}", errorMsg);
+        Console.WriteLine(" Document Errors: {0}, Warnings: {1}\n", result.Errors.Count, result.Warnings.Count);
     }
     catch (Exception e)
     {
@@ -173,7 +142,7 @@ Indexer Status: Running
 Latest run
   Run Status: Success
   Total Documents: 7, Failed: 0
-  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  StartTime: 11:29:31 PM, EndTime: 11:29:31 PM, Elapsed: 00:00:00.2560000
   ErrorMessage: none
   Document Errors: 0, Warnings: 0
 ```
@@ -184,8 +153,11 @@ Každé spuštění indexeru má také svůj vlastní stav pro to, zda konkrétn
 
 Když je indexer obnovený tak, aby aktualizoval stav sledování změn, přidá se samostatná položka historie se stavem **resetování** .
 
-Další podrobnosti o stavových kódech a informacích o monitorování indexerů najdete v tématu [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) v REST API.
+## <a name="next-steps"></a>Další kroky
 
-Podrobnosti o chybách a upozorněních specifických pro dokument lze získat vytvořením výčtu seznamů `IndexerExecutionResult.Errors` a `IndexerExecutionResult.Warnings` .
+Další podrobnosti o stavových kódech a informacích o monitorování indexeru najdete v následujících referenčních informacích k rozhraní API:
 
-Další informace o třídách .NET SDK používaných pro monitorování indexerů naleznete v tématu [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) a [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).
+* [GetIndexerStatus (REST API)](/rest/api/searchservice/get-indexer-status)
+* [IndexerStatus](/dotnet/api/azure.search.documents.indexes.models.indexerstatus)
+* [IndexerExecutionStatus](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionstatus)
+* [IndexerExecutionResult](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionresult)

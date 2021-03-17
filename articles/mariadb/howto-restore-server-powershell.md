@@ -1,36 +1,36 @@
 ---
 title: Zálohování a obnovení-Azure PowerShell-Azure Database for MariaDB
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MariaDB pomocí Azure PowerShell.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 211285a0ae8aaa9b82bca914f3add7fbaa700146
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833245"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664847"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
 Azure Database for MariaDB servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 
-- [Modul AZ PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalovaný místně nebo [Azure Cloud Shell](https://shell.azure.com/) v prohlížeči
+- [Modul AZ PowerShell](/powershell/azure/install-az-ps) nainstalovaný místně nebo [Azure Cloud Shell](https://shell.azure.com/) v prohlížeči
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > I když je modul PowerShell AZ. MariaDb ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
 > Jakmile je modul PowerShellu AZ. MariaDb všeobecně dostupný, bude součástí budoucna k tomu, aby vydaná vydání modulu PowerShellu a nativně dostupná v rámci Azure Cloud Shell.
 
-Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -75,10 +75,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Sada parametrů **PointInTimeRestore** `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
+| Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
 
@@ -106,7 +106,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Tento příklad vytvoří nový server s názvem **mydemoserver-geograficky obnovený** v oblasti východní USA, která patří k **myresourcegroup**. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy **mydemoserver**, a to i v **myresourcegroup**skupiny prostředků.
+Tento příklad vytvoří nový server s názvem **mydemoserver-geograficky obnovený** v oblasti východní USA, která patří k **myresourcegroup**. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy **mydemoserver**, a to i v **myresourcegroup** skupiny prostředků.
 
 Pokud chcete vytvořit nový server v jiné skupině prostředků z existujícího serveru, zadejte nový název skupiny prostředků pomocí parametru **ResourceGroupName** , jak je znázorněno v následujícím příkladu:
 
@@ -115,12 +115,12 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName newresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
+Sada  parametrů pro dopředné obnovení `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
-|Název | mydemoserver – geograficky obnovené | Název nového serveru. |
+|Name | mydemoserver – geograficky obnovené | Název nového serveru. |
 |Umístění | eastus | Umístění nového serveru. |
 |UseGeoRestore | `<SwitchParameter>` | K obnovení použijte geografický režim. |
 

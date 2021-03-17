@@ -8,27 +8,29 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 01/25/2021
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.openlocfilehash: 5b38c731db141052e6700472020cd60b6a4d13a5
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85130751"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797802"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý Start: jak se zaregistrovat a nahrát své první video
 
 V tomto rychlém startu se dozvíte, jak se přihlásit k webu Video Indexer a jak nahrát první video.
 
-Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Azure Media Services. 
+Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem služby Azure Media Services](connect-to-azure.md). Platíte za minuty, další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/). 
 
 ## <a name="sign-up-for-video-indexer"></a>Registrace k Video Indexeru
 
 Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video Indexer](https://www.videoindexer.ai/) a zaregistrujte se.
 
+Po zahájení používání Video Indexer se všechna uložená data a nahraná data zašifrují v klidovém formátu pomocí spravovaného klíče Microsoftu.
+
 > [!NOTE]
-> Po zahájení používání Video Indexer se všechna uložená data a nahraná data zašifrují v klidovém formátu pomocí spravovaného klíče Microsoftu.
+> Projděte si [naplánované video indexer authenticatication změny webu](release-notes.md#planned-video-indexer-website-authenticatication-changes).
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Nahrání videa na server pomocí webu Video Indexer
 
@@ -39,24 +41,32 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 ### <a name="upload-a-video"></a>Nahrání videa
 
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
-2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
+1. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
 
     > [!NOTE]
     > Název videa nesmí být delší než 80 znaků.
 
-    ![Odeslat](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Nahrát":::
+1. Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat. Uvidíte průběh. 
 
-    Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Průběh nahrávání":::
+1. Po dokončení analýzy Video Indexer obdržíte e-mail s odkazem na vaše video a stručný popis toho, co bylo ve videu nalezeno. Například: lidé, mluvená a psaná slova, témata a pojmenované entity.
+1. Video můžete později najít v seznamu Knihovna a provádět různé operace. Například: Hledat, opakovat index, upravit.
 
-    ![Nahráno](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Nahrání nahrávání":::
 
-    Když Video Indexer dokončí analýzu, zobrazí se oznámení s odkazem na vaše video a krátkým popisem, co se ve videu našlo. Například: lidé, témata, OCR.
+## <a name="supported-browsers"></a>Podporované prohlížeče
+
+Další informace najdete v tématu [podporované prohlížeče](video-indexer-overview.md#supported-browsers).
 
 ## <a name="see-also"></a>Viz také
 
 Další podrobnosti najdete v tématu [videa pro nahrávání a indexování](upload-index-videos.md) .
 
-Po nahrání a indexování videa můžete začít používat web [video indexer](video-indexer-view-edit.md) nebo [portál pro vývojáře video indexer](video-indexer-use-apis.md) , abyste viděli přehledy videa. 
+Po nahrání a indexování videa můžete začít používat [web video indexer](video-indexer-view-edit.md) nebo [portál pro vývojáře video indexer](video-indexer-use-apis.md) , abyste viděli přehledy videa. 
 
 [Začínáme používat rozhraní API](video-indexer-use-apis.md)
 

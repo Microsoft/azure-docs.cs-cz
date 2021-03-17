@@ -2,13 +2,13 @@
 title: Doporučené konfigurace pro klienty Apache Kafka – Azure Event Hubs
 description: Tento článek poskytuje doporučené konfigurace Apache Kafka pro klienty, kteří pracují s Azure Event Hubs pro Apache Kafka.
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/03/2021
+ms.openlocfilehash: be009aae41b2cb26ab02fdbe14bc4e18311ad235
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096644"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042347"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Doporučené konfigurace pro klienty Apache Kafka
 Tady jsou doporučené konfigurace pro používání Azure Event Hubs z Apache Kafka klientských aplikací. 
@@ -33,7 +33,6 @@ Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 `metadata.max.idle.ms` | 180000 | > 5000 | Určuje, jak dlouho bude producent uchovávat metadata v mezipaměti pro téma, které je nečinné. Pokud uplynulý čas od posledního vytvořeného tématu přesáhne dobu nečinnosti, bude metadata tohoto tématu zapomenuto a další přístup k němu vynutí požadavek na načtení metadat.
 `linger.ms` | > 0 | | V případě scénářů s vysokou propustností by měla být hodnota možnosti permanentní rovna nejvyšší přípustné hodnotě, aby bylo možné využít dávkování.
 `delivery.timeout.ms` | | | Nastavte podle vzorce ( `request.timeout.ms`  +  `linger.ms` ) * `retries` .
-`enable.idempotence` | false (nepravda) | | Idempotence se v tuto chvíli nepodporuje.
 `compression.type` | `none` | | Komprese aktuálně není podporovaná...
 
 ### <a name="consumer-configurations-only"></a>Jenom konfigurace příjemců
@@ -60,9 +59,8 @@ Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 ---|---:|-----:|---
 `retries` | > 0 | | Výchozí hodnota je 2. Tuto hodnotu Doporučujeme zachovat. 
-`request.timeout.ms` | 30000... 60000 | > 20000| EH interně nastaví jako výchozí minimální hodnotu 20 000 ms.  `librdkafka`Výchozí hodnota je 5000, což může být problematické. *I když jsou požadavky s nižšími hodnotami časového limitu přijaty, chování klienta není zaručeno.*
-`partitioner` | `consistent_random` | Viz dokumentace k librdkafka | `consistent_random`je výchozí a nejlepší.  Prázdné a null klíče jsou ve většině případů zpracovávány v ideálním případě.
-`enable.idempotence` | false (nepravda) | | Idempotence se v tuto chvíli nepodporuje.
+`request.timeout.ms` | 30000... 60000 | > 20000| EH interně nastaví jako výchozí minimální hodnotu 20 000 ms.  `librdkafka` Výchozí hodnota je 5000, což může být problematické. *I když jsou požadavky s nižšími hodnotami časového limitu přijaty, chování klienta není zaručeno.*
+`partitioner` | `consistent_random` | Viz dokumentace k librdkafka | `consistent_random` je výchozí a nejlepší.  Prázdné a null klíče jsou ve většině případů zpracovávány v ideálním případě.
 `compression.codec` | `none` || Komprese aktuálně není podporována.
 
 ### <a name="consumer-configurations-only"></a>Jenom konfigurace příjemců
@@ -79,7 +77,7 @@ Podívejte se na následující tabulku běžných scénářů chyb souvisejíc�
 
 Příznaky | Problém | Řešení
 ----|---|-----
-Posun neúspěšných potvrzení kvůli novému vyrovnávání | Váš příjemce čeká mezi voláními na dotazování () příliš dlouho a služba vychází ze skupiny příjemců. | Máte několik možností: <ul><li>prodloužit časový limit relace</li><li>snížit velikost dávky zprávy a zrychlit zpracování</li><li>Vylepšete paralelní zpracování, aby nedošlo k blokování příjemce. dotazování ()</li></ul> Použití některé kombinace tří je nejspíš wisest.
+Posun neúspěšných potvrzení kvůli novému vyrovnávání | Váš příjemce čeká mezi voláními na dotazování () příliš dlouho a služba vychází ze skupiny příjemců. | Máte několik možností: <ul><li>Zvýšit časový limit zpracování dotazů ( `max.poll.interval.ms` )</li><li>Snížit velikost dávky zprávy a zrychlit zpracování</li><li>Vylepšete paralelní zpracování, aby nedošlo k blokování příjemce. dotazování ()</li></ul> Použití některé kombinace tří je nejspíš wisest.
 Výjimky sítě při vysoké propustnosti | Používáte pro klienta Java + výchozí hodnotu max. Request. Size?  Vaše požadavky můžou být moc velké. | Viz Konfigurace jazyka Java výše.
 
 ## <a name="next-steps"></a>Další kroky

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921669"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095489"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -79,7 +79,7 @@ Na přihlašovací stránce nebo na přihlašovací stránce Azure AD B2C prezen
 
 ![Příklad mobilního přihlášení pomocí účtu sociální sítě (Facebook)](media/technical-overview/external-idp.png)
 
-Pokud chcete zjistit, jak přidat zprostředkovatele identity v Azure AD B2C, přečtěte si téma [kurz: Přidání poskytovatelů identit do aplikací v Azure Active Directory B2C](tutorial-add-identity-providers.md).
+Pokud chcete zjistit, jak přidat zprostředkovatele identity v Azure AD B2C, přečtěte si téma [Přidání zprostředkovatelů identity k vašim aplikacím v Azure Active Directory B2C](add-identity-provider.md).
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Prostředí identity: uživatelské toky nebo vlastní zásady
 
@@ -101,7 +101,7 @@ Můžete nakonfigurovat nastavení toku uživatele tak, aby bylo možné řídit
 
 * Typy účtů používané pro přihlášení, jako jsou například účty na Facebooku nebo místní účty, které používají e-mailovou adresu a heslo pro přihlášení
 * Atributy, které mají být shromažďovány od příjemce, jako je například křestní jméno, PSČ nebo země/oblast, kde sídlí
-* Azure Multi-Factor Authentication (MFA)
+* Multi-Factor Authentication Azure AD (MFA)
 * Přizpůsobení uživatelského rozhraní
 * Sada deklarací identity v tokenu, který vaše aplikace obdrží poté, co uživatel dokončí tok uživatele
 * Správa relací
@@ -134,7 +134,7 @@ Přečtěte si další informace o vlastních zásadách ve [vlastních zásadá
 
 ## <a name="protocols-and-tokens"></a>Protokoly a tokeny
 
-- Pro aplikace Azure AD B2C podporuje protokoly [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)a [SAML](connect-with-saml-service-providers.md) pro cesty uživatelů. Vaše aplikace spouští cestu uživatele tím, že vydává žádosti o ověření Azure AD B2C. Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID, přístupový token](tokens-overview.md)nebo token SAML. Tento token zabezpečení definuje identitu uživatele v rámci aplikace.
+- Pro aplikace Azure AD B2C podporuje protokoly [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)a [SAML](saml-service-provider.md) pro cesty uživatelů. Vaše aplikace spouští cestu uživatele tím, že vydává žádosti o ověření Azure AD B2C. Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID, přístupový token](tokens-overview.md)nebo token SAML. Tento token zabezpečení definuje identitu uživatele v rámci aplikace.
 
 - Pro externí identity Azure AD B2C podporuje federaci s libovolnými zprostředkovateli identity OAuth 1,0, OAuth 2,0, OpenID Connect a SAML.
 
@@ -162,7 +162,7 @@ V Azure AD B2C můžete pracovat s identitou vašich uživatelů, aby se stránk
 
 ![Snímky obrazovky s přizpůsobenou přihlašovací stránkou značky](media/technical-overview/seamless-ux.png)
 
-Informace o přizpůsobení uživatelského rozhraní najdete v tématu věnovaném [přizpůsobení uživatelského rozhraní v Azure Active Directory B2C](customize-ui-overview.md).
+Informace o přizpůsobení uživatelského rozhraní najdete v tématu věnovaném [přizpůsobení uživatelského rozhraní v Azure Active Directory B2C](customize-ui-with-html.md).
 
 ## <a name="localization"></a>Lokalizace
 
@@ -170,7 +170,7 @@ Přizpůsobení jazyka v Azure AD B2C umožňuje přizpůsobení různých jazyk
 
 ![Tři přihlašovací stránky pro přihlášení zobrazující text uživatelského rozhraní v různých jazycích](media/technical-overview/localization.png)
 
-Podívejte se, jak lokalizace funguje v [přizpůsobení jazyka v Azure Active Directory B2C](user-flow-language-customization.md).
+Podívejte se, jak lokalizace funguje v [přizpůsobení jazyka v Azure Active Directory B2C](language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Přidání vlastní obchodní logiky
 
@@ -215,13 +215,13 @@ Role můžete přiřadit k řízení toho, kdo může provádět určité akce s
 * Vytvoření a Správa zásad pro pravidla důvěryhodnosti v architektuře prostředí identity (vlastní zásady)
 * Správa tajných kódů federace a šifrování v architektuře prostředí identity (vlastní zásady)
 
-Další informace o rolích služby Azure AD, včetně podpory rolí Azure AD B2C správy, najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Další informace o rolích služby Azure AD, včetně podpory rolí Azure AD B2C správy, najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
 
 Azure AD B2C Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost vašich uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a poskytuje silné ověřování tím, že nabízí řadu snadno použitelných metod ověřování. Uživatelé můžou nebo nemusí být v rámci VÍCEFAKTOROVÉHO ověřování vyučeni na základě rozhodnutí týkajících se konfigurace, která můžete nastavit jako správce.
 
-Podívejte se, jak povolit VÍCEFAKTOROVÉ ověřování v tocích uživatelů v tématu [Povolení vícefaktorového ověřování v Azure Active Directory B2C](custom-policy-multi-factor-authentication.md).
+Podívejte se, jak povolit VÍCEFAKTOROVÉ ověřování v tocích uživatelů v tématu [Povolení vícefaktorového ověřování v Azure Active Directory B2C](multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Uzamčení inteligentního účtu
 
@@ -235,7 +235,7 @@ Další informace o správě nastavení ochrany heslem najdete v tématu [Správ
 
 Při registraci nebo resetování hesla musí vaši uživatelé zadávat heslo, které splňuje pravidla složitosti. Ve výchozím nastavení Azure AD B2C vynutila zásady silného hesla. Azure AD B2C taky nabízí možnosti konfigurace pro určení požadavků na složitost hesel, která vaši zákazníci používají.
 
-Požadavky na složitost hesla můžete nakonfigurovat jak v [toku uživatelů](user-flow-password-complexity.md) , tak i ve [vlastních zásadách](custom-policy-password-complexity.md).
+Požadavky na složitost hesla můžete nakonfigurovat jak v [toku uživatelů](password-complexity.md) , tak i ve [vlastních zásadách](password-complexity.md).
 
 ## <a name="auditing-and-logs"></a>Auditování a protokoly
 

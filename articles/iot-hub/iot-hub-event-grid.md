@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327646"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152139"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
 Azure IoT Hub se může integrovat s Azure Event Gridem, abyste mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Nakonfigurujte obchodní aplikace na naslouchání událostem IoT Hubu, abyste mohli reagovat na kritické události a současně zajistili spolehlivost, škálovatelnost a zabezpečení.Například sestavíte aplikaci, která aktualizuje databázi, vytvoří pracovní lístek a doručí e-mailové oznámení pokaždé, když se do vašeho centra IoT (neboli IoT Hubu) zaregistruje nové zařízení IoT.
 
-[Azure Event Grid](../event-grid/overview.md) je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid má integrovanou podporu pro služby Azure, jako je [Azure Functions](../azure-functions/functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md), a může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
+[Azure Event Grid](../event-grid/overview.md) je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid má integrovanou podporu pro služby Azure, jako je [Azure Functions](../azure-functions/functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md), a může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
 
 ![Architektura Azure Event Grid](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -73,6 +73,8 @@ Následující příklad ukazuje schéma události připojené k zařízení:
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>Schéma telemetrie zařízení
 
@@ -164,6 +166,10 @@ Následující příklad ukazuje schéma události vytvoření zařízení:
 }]
 ```
 
+
+> [!WARNING]
+> *Vlákna* , která jsou přidružená k události vytvoření zařízení, je výchozí konfigurace a *neměla* by se spoléhat na skutečné `authenticationType` a jiné vlastnosti zařízení v nově vytvořeném zařízení. V případě `authenticationType` a dalších vlastností zařízení v nově vytvořeném zařízení použijte rozhraní API Správce registrace poskytované v sadách Azure IoT SDK.
+
 Podrobný popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma událostí pro IoT Hub](../event-grid/event-schema-iot-hub.md).
 
 ## <a name="filter-events"></a>Události filtru
@@ -178,17 +184,17 @@ Předmět událostí IoT používá formát:
 devices/{deviceId}
 ```
 
-Event Grid také umožňuje filtrování atributů každé události, včetně obsahu dat. To vám umožní vybrat, které události budou doručeny do obsahu na základě zprávy telemetrie. Příklady zobrazení najdete v tématu [Rozšířené filtrování](../event-grid/event-filtering.md#advanced-filtering) . Pro filtrování těla zprávy telemetrie musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)zpráv. U obou těchto vlastností se nerozlišují malá a velká písmena.
+Event Grid také umožňuje filtrování atributů každé události, včetně obsahu dat. To vám umožní vybrat, které události budou doručeny do obsahu na základě zprávy telemetrie. Příklady zobrazení najdete v tématu [Rozšířené filtrování](../event-grid/event-filtering.md#advanced-filtering) . Pro filtrování těla zprávy telemetrie musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](./iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou těchto vlastností se nerozlišují malá a velká písmena.
 
 Pro události netelemetrie, jako jsou DeviceConnected, DeviceDisconnected, DeviceCreated a DeviceDeleted, je možné při vytváření předplatného použít filtrování Event Grid. Pro události telemetrie se kromě filtrování v Event Grid můžou uživatelé také filtrovat na základě vlákna zařízení, vlastností a textu zprávy pomocí dotazu směrování zpráv. 
 
 Když se přihlásíte k odběru událostí telemetrie prostřednictvím Event Grid, IoT Hub vytvoří výchozí trasu zpráv pro odesílání zpráv typu zařízení ze zdroje dat do Event Grid. Další informace o směrování zpráv najdete v tématu [IoT Hub směrování zpráv](iot-hub-devguide-messages-d2c.md). Tato trasa se zobrazí na portálu v části IoT Hub > směrování zpráv. Vytvoří se jenom jedna trasa pro Event Grid bez ohledu na počet takových předplatných vytvořených pro události telemetrie. Takže pokud potřebujete několik předplatných s různými filtry, můžete použít operátor OR v těchto dotazech na stejné trase. Vytvoření a odstranění trasy je řízeno prostřednictvím předplatného událostí telemetrie prostřednictvím Event Grid. Nemůžete vytvořit ani odstranit trasu pro Event Grid pomocí směrování zpráv IoT Hub.
 
-Chcete-li filtrovat zprávy před odesláním dat telemetrie, můžete aktualizovat [dotaz směrování](iot-hub-devguide-routing-query-syntax.md). Všimněte si, že dotaz směrování lze použít na tělo zprávy pouze v případě, že tělo je JSON. Ve [vlastnostech systému](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)zpráv musíte také nastavit ContentType na **Application/JSON** a contentEncoding na **UTF-8** .
+Chcete-li filtrovat zprávy před odesláním dat telemetrie, můžete aktualizovat [dotaz směrování](iot-hub-devguide-routing-query-syntax.md). Všimněte si, že dotaz směrování lze použít na tělo zprávy pouze v případě, že tělo je JSON. Ve [vlastnostech systému](./iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv musíte také nastavit ContentType na **Application/JSON** a contentEncoding na **UTF-8** .
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Omezení událostí připojení a odpojení zařízení
 
-Aby bylo možné přijímat události stavu připojení zařízení, musí zařízení dělat v rámci IoT Hub buď operaci "d 2C Send telemetrie" nebo "C2D Receive Message". Upozorňujeme však, že pokud zařízení používá protokol AMQP pro připojení ke službě IoT Hub, doporučujeme, aby provedou operaci C2D Receive Message, jinak se oznámení o stavu připojení můžou zpozdit o několik minut. Pokud zařízení používá protokol MQTT, IoT Hub zůstane otevřený odkaz C2D. Pro AMQP můžete otevřít odkaz C2D voláním metody [Receive ASYNC API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), pro IoT Hub C# SDK nebo [klienta zařízení pro AMQP](iot-hub-amqp-support.md#device-client).
+Aby bylo možné přijímat události stavu připojení zařízení, musí zařízení dělat v rámci IoT Hub buď operaci "d 2C Send telemetrie" nebo "C2D Receive Message". Upozorňujeme však, že pokud zařízení používá protokol AMQP pro připojení ke službě IoT Hub, doporučujeme, aby provedou operaci C2D Receive Message, jinak se oznámení o stavu připojení můžou zpozdit o několik minut. Pokud zařízení používá protokol MQTT, IoT Hub zůstane otevřený odkaz C2D. V případě AMQP můžete otevřít odkaz C2D voláním metody Receive Async API for IoT Hub C# SDK nebo [klienta zařízení pro AMQP](iot-hub-amqp-support.md#device-client).
 
 Odkaz D2C je otevřený, Pokud posíláte telemetrii. 
 
@@ -214,4 +220,4 @@ Aplikace, které zpracovávají události IoT Hubu, by měly fungovat v souladu 
 
 * [Porovnání rozdílů mezi událostmi a zprávami IoT Hub směrování](iot-hub-event-grid-routing-comparison.md)
 
-* [Naučte se používat události telemetrie IoT k implementaci prostorové analýzy IoT pomocí Azure Maps](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [Naučte se používat události telemetrie IoT k implementaci prostorové analýzy IoT pomocí Azure Maps](../azure-maps/tutorial-iot-hub-maps.md)

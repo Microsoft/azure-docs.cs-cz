@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bfbd93cc3d4e67c8a96a1413221fdd7190c4f0b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077471"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572634"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -121,13 +121,13 @@ Další podrobnosti o ladění najdete [v tématu ladění aplikací node.js v s
 
 Mnohé aplikace by chtěli v rámci své běžné operace vytvořit odchozí připojení. Například když je požadavek v, vaše aplikace Node by chtěla kontaktovat REST API jinde a získat nějaké informace pro zpracování žádosti. Při provádění volání http nebo https byste chtěli použít agenta Keep Alive. Při provádění těchto odchozích volání můžete použít modul agentkeepalive jako svého agenta Keep Alive.
 
-Modul agentkeepalive zajišťuje, že se na VIRTUÁLNÍm počítači Azure WebApp znovu používají sokety. Vytvořením nového soketu u každé odchozí žádosti přidáte do své aplikace režii. Když vaše aplikace znovu používá soket pro odchozí požadavky, zajistí, že vaše aplikace nebude přesáhnout maxSockets, které jsou přiděleny na virtuální počítač. Doporučením na Azure App Service je nastavení hodnoty maxSockets agentKeepAlive na celkem (4 instance node.exe \* 40 maxSockets/instance) 160 soketů na virtuální počítač.
+Modul agentkeepalive zajišťuje, že se na VIRTUÁLNÍm počítači Azure WebApp znovu používají sokety. Vytvořením nového soketu u každé odchozí žádosti přidáte do své aplikace režii. Když vaše aplikace znovu používá soket pro odchozí požadavky, zajistí, že vaše aplikace nebude přesáhnout maxSockets, které jsou přiděleny na virtuální počítač. Doporučením na Azure App Service je nastavení hodnoty maxSockets agentKeepAlive na celkem (4 instance node.exe \* 32 maxSockets/instance) 128 soketů na virtuální počítač.
 
 Příklad konfigurace [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) :
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000
@@ -140,10 +140,10 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Moje aplikace Node spotřebovává příliš mnoho CPU.
 
-Můžete obdržet doporučení od Azure App Service na portálu o vysoké spotřebě procesoru. Můžete také nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Při kontrole využití CPU na [řídicím panelu webu Azure Portal](../azure-monitor/app/web-monitor-performance.md)si prohlédněte maximální hodnoty pro procesor, abyste nemuseli vysílat nejvyšší hodnoty.
+Můžete obdržet doporučení od Azure App Service na portálu o vysoké spotřebě procesoru. Můžete také nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití CPU na [řídicím panelu Azure Portal](../azure-monitor/essentials/metrics-charts.md), podívejte se na maximum hodnot CPU, abyste nemuseli přijít na nejvyšší hodnoty.
 Pokud se domníváte, že vaše aplikace spotřebovává příliš mnoho CPU a nemůžete vysvětlit, proč, můžete profilovat aplikaci uzlu, abyste zjistili, jestli je.
 
-#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilování aplikace Node na Azure App Service pomocí V8-profileru
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilování aplikace Node na Azure App Service s využitím V8-Profiler
 
 Řekněme například, že máte aplikaci Hello World, kterou chcete profilovat následujícím způsobem:
 
@@ -166,7 +166,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Přejít na web konzoly ladění`https://yoursite.scm.azurewebsites.net/DebugConsole`
+Přejít na web konzoly ladění `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Přejdete do adresáře site/Wwwroot. Zobrazí se příkazový řádek, jak je znázorněno v následujícím příkladu:
 
@@ -205,7 +205,7 @@ Předchozí profil kódu WriteConsoleLog funkci a potom zapíše výstup profilu
 
 ![Snímek obrazovky, který zobrazuje soubor Profile. cpuprofile.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-Stáhněte si tento soubor a otevřete ho pomocí nástrojů Chrome F12. Stiskněte klávesu F12 na Chrome a pak zvolte kartu **profily** . klikněte na tlačítko **načíst** . Vyberte soubor Profile. cpuprofile, který jste stáhli. Klikněte na profil, který jste právě načetli.
+Stáhněte si tento soubor a otevřete ho pomocí nástrojů Chrome F12. Stiskněte klávesu F12 na Chrome a pak zvolte kartu **profily** . Klikněte na tlačítko **načíst** . Vyberte soubor Profile. cpuprofile, který jste stáhli. Klikněte na profil, který jste právě načetli.
 
 ![Snímek obrazovky zobrazující soubor Profile. cpuprofile, který jste načetli.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
@@ -213,7 +213,7 @@ Pomocí funkce WriteConsoleLog můžete zjistit, že 95% času bylo spotřebová
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Aplikace můj uzel spotřebovává příliš mnoho paměti.
 
-Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí se na portálu oznámení o vysoké spotřebě paměti Azure App Service na portálu. Můžete nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití paměti na [řídicím panelu webu Azure Portal](../azure-monitor/app/web-monitor-performance.md), zkontrolujte maximální hodnoty paměti, abyste nemuseli přijít na nejvyšší hodnoty.
+Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí se na portálu oznámení o vysoké spotřebě paměti Azure App Service na portálu. Můžete nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití paměti na [řídicím panelu Azure Portal](../azure-monitor/essentials/metrics-charts.md), zkontrolujte maximální hodnoty paměti, abyste nemuseli přijít na nejvyšší hodnoty.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Detekce nevracení a rozdíl haldy pro node.js
 
@@ -245,9 +245,8 @@ Vaše aplikace vyvolává nezachycené výjimky – kontrolní `d:\\home\\LogFil
 Běžnou příčinou dlouhých časů spuštění aplikace je vysoký počet souborů v \_ modulech uzlů. Aplikace se pokusí načíst většinu těchto souborů při spuštění. Ve výchozím nastavení, protože soubory jsou uloženy ve sdílené síťové složce v Azure App Service, načítání mnoha souborů může trvat déle.
 Některá řešení pro zajištění rychlejšího tohoto procesu:
 
-1. Ujistěte se, že máte strukturu ploché závislosti a žádné duplicitní závislosti pomocí npm3 k instalaci modulů.
-2. Pokuste se o opožděné načtení \_ modulů uzlů a nenačte všechny moduly při spuštění aplikace. Do modulů opožděného načtení by volání vyžadovat (' Module ') mělo být provedeno, pokud skutečně potřebujete modul v rámci funkce před prvním spuštěním kódu modulu.
-3. Azure App Service nabízí funkci s názvem místní mezipaměť. Tato funkce zkopíruje obsah ze sdílené síťové složky na místní disk ve VIRTUÁLNÍm počítači. Vzhledem k tomu, že jsou soubory místní, je doba načítání \_ modulů uzlů mnohem rychlejší.
+1. Pokuste se o opožděné načtení \_ modulů uzlů a nenačte všechny moduly při spuštění aplikace. Do modulů opožděného načtení by volání vyžadovat (' Module ') mělo být provedeno, pokud skutečně potřebujete modul v rámci funkce před prvním spuštěním kódu modulu.
+2. Azure App Service nabízí funkci s názvem místní mezipaměť. Tato funkce zkopíruje obsah ze sdílené síťové složky na místní disk ve VIRTUÁLNÍm počítači. Vzhledem k tomu, že jsou soubory místní, je doba načítání \_ modulů uzlů mnohem rychlejší.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Stav IISNODE http a dílčí stav
 
@@ -267,15 +266,15 @@ Povolte FREB pro vaši aplikaci, aby se zobrazil kód chyby Win32 (je třeba pov
 | 503 |1002 |Ověřte kód chyby Win32 ze skutečného důvodu – požadavek nebylo možné odeslat do node.exe. |
 | 503 |1003 |Pojmenovaný kanál je moc zaneprázdněný – ověřte, jestli node.exe spotřebovává nadměrný procesor. |
 
-NODE.exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES` . V Azure App Service je tato hodnota nastavená na 5000. To znamená, že node.exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Nemělo by se zobrazovat 503,1003 Azure App Service v důsledku vysoké hodnoty pro`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES` . V Azure App Service je tato hodnota nastavená na 5000. To znamená, že node.exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Nemělo by se zobrazovat 503,1003 Azure App Service v důsledku vysoké hodnoty pro `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Další zdroje informací
 
 Pomocí těchto odkazů se dozvíte více o node.js aplikacích v Azure App Service.
 
 * [Začínáme s webovými aplikacemi Node.js ve službě Azure App Service](quickstart-nodejs.md)
-* [Postup ladění webové aplikace Node.js ve službě Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Postup ladění webové aplikace Node.js ve službě Azure App Service](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Používání modulů Node.js s aplikacemi Azure](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Středisko pro vývojáře Node.js](../nodejs-use-node-modules-azure-apps.md)
 * [Seznámení se supertajnou konzolou pro ladění modulu Kudu](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

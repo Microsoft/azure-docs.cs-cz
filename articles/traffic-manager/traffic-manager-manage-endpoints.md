@@ -3,20 +3,20 @@ title: Správa koncových bodů v Azure Traffic Manageru | Dokumentace Microsoft
 description: Tento článek vám pomůže při přidávání, odebírání, povolování a zakazování koncových bodů v Azure Traffic Manageru.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: rohink
-ms.openlocfilehash: 9f779910460ec19f0efb02fb1a65f39bb100050c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711608"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184250"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Přidávání, zakazování, povolování nebo odstraňování koncových bodů
 
@@ -45,7 +45,7 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 7.  Po přidání se oba koncové body zobrazí v okně **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
 > [!NOTE]
-> Po přidání nebo odebrání koncového bodu z profilu metodou směrování provozu *Převzetí služeb při selhání* nemusí být seznam priorit přebírání služeb seřazen tak, jak si představujete. Pořadí tohoto seznamu priorit můžete upravit na stránce Konfigurace. Další informace najdete v části [Konfigurování směrování provozu s převzetím služeb při selhání](traffic-manager-configure-failover-routing-method.md).
+> Po přidání nebo odebrání koncového bodu z profilu metodou směrování provozu *Převzetí služeb při selhání* nemusí být seznam priorit přebírání služeb seřazen tak, jak si představujete. Pořadí tohoto seznamu priorit můžete upravit na stránce Konfigurace. Další informace najdete v části [Konfigurování směrování provozu s převzetím služeb při selhání](./traffic-manager-configure-priority-routing-method.md).
 
 ## <a name="to-disable-an-endpoint"></a>Zakázání koncového bodu
 
@@ -77,8 +77,7 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa profilů Traffic Manager](traffic-manager-manage-profiles.md)
-* [Konfigurace metod směrování](traffic-manager-configure-routing-method.md)
+* [Konfigurace metod směrování](./traffic-manager-configure-priority-routing-method.md)
 * [Řešení potíží při sníženém výkonu Traffic Manageru](traffic-manager-troubleshooting-degraded.md)
 * [Důležité informace o výkonu nástroje Traffic Manager](traffic-manager-performance-considerations.md)
-* [Operace v Traffic Manageru (referenční informace k rozhraní API REST)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
-
+* [Operace v Traffic Manageru (referenční informace k rozhraní API REST)](/previous-versions/azure/reference/hh758255(v=azure.100))

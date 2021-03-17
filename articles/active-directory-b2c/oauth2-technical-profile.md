@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cda04ad57f1984064692cb1df4accc5a99de0910
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f79360269c19f6770fa12120ec34497b29015e7e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204026"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050681"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth2 v Azure Active Directory B2C vlastní zásady
 
@@ -24,7 +24,7 @@ ms.locfileid: "85204026"
 
 Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele identity protokolu OAuth2. OAuth2 je primární protokol pro autorizaci a delegované ověřování. Další informace najdete v [dokumentu RFC 6749 autorizačního rozhraní OAuth 2,0](https://tools.ietf.org/html/rfc6749). S technickým profilem OAuth2 můžete federovat s poskytovatelem identity založeném na OAuth2, jako je Facebook. Federování se zprostředkovatelem identity umožňuje uživatelům přihlašovat se pomocí jejich stávajících sociálních nebo podnikových identit.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `OAuth2` . Například protokol pro technický profil **Facebooku-OAuth** je `OAuth2` :
 
@@ -84,11 +84,13 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | authorization_endpoint | Yes | Adresa URL koncového bodu autorizace na základě RFC 6749. |
 | AccessTokenEndpoint | Yes | Adresa URL koncového bodu tokenu na základě RFC 6749. |
 | ClaimsEndpoint | Yes | Adresa URL koncového bodu pro informace o uživateli podle RFC 6749. |
+| end_session_endpoint | Yes | Adresa URL koncového bodu relace na základě RFC 6749. |
 | AccessTokenResponseFormat | No | Formát volání koncového bodu přístupového tokenu. Například Facebook vyžaduje metodu HTTP GET, ale odpověď přístupového tokenu je ve formátu JSON. |
 | AdditionalRequestQueryParameters | No | Další parametry dotazu žádosti Například může být vhodné odeslat poskytovateli identity další parametry. Můžete zahrnout více parametrů pomocí oddělovače čárky. |
-| ClaimsEndpointAccessTokenName | No | Název parametru řetězce dotazu přístupového tokenu. Někteří poskytovatelé deklarací koncových bodů identity podporují požadavek GET HTTP. V takovém případě se nosný token posílá pomocí parametru řetězce dotazu místo hlavičky Authorization. |
+| ClaimsEndpointAccessTokenName | No | Název parametru řetězce dotazu přístupového tokenu. Někteří poskytovatelé deklarací koncových bodů identity podporují požadavek GET HTTP. V takovém případě se nosný token posílá pomocí parametru řetězce dotazu místo hlavičky Authorization. Výchozí hodnota: `access_token` . |
 | ClaimsEndpointFormatName | No | Název parametru řetězce formátu dotazu. Můžete například nastavit název jako `format` v tomto koncovém bodu deklarací LinkedIn `https://api.linkedin.com/v1/people/~?format=json` . |
 | ClaimsEndpointFormat | No | Hodnota parametru řetězce formátu dotazu. Můžete například nastavit hodnotu jako `json` v tomto koncovém bodě deklarací LinkedIn `https://api.linkedin.com/v1/people/~?format=json` . |
+| BearerTokenTransmissionMethod | No | Určuje způsob odeslání tokenu. Výchozí metodou je řetězec dotazu. Chcete-li odeslat token jako hlavičku požadavku, nastavte na `AuthorizationHeader` . |
 | ProviderName | No | Název zprostředkovatele identity |
 | response_mode | No | Metoda, kterou zprostředkovatel identity používá k odeslání výsledku zpět do Azure AD B2C. Možné hodnoty: `query` , `form_post` (výchozí) nebo `fragment` . |
 | scope | No | Rozsah požadavku, který je definován podle specifikace poskytovatele identity OAuth2. Například `openid` , `profile` a `email` . |
@@ -96,8 +98,11 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | ResponseErrorCodeParamName | No | Název parametru, který obsahuje chybovou zprávu vrácenou přes HTTP 200 (ok). |
 | ExtraParamsInAccessTokenEndpointResponse | No | Obsahuje další parametry, které mohou být vráceny v odpovědi od **AccessTokenEndpoint** některými zprostředkovateli identity. Například odpověď z **AccessTokenEndpoint** obsahuje další parametr `openid` , například, což je povinný parametr kromě access_token v řetězci dotazu **ClaimsEndpoint** žádosti. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
 | ExtraParamsInClaimsEndpointRequest | No | Obsahuje další parametry, které mohou být vráceny v žádosti **ClaimsEndpoint** některými zprostředkovateli identity. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
-| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
-| ResolveJsonPathsInJsonTokens  | No | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#outputclaims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| ResolveJsonPathsInJsonTokens  | No | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#output-claims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
+|token_endpoint_auth_method| No| Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+|SingleLogoutEnabled| No| Určuje, jestli se během přihlašování technického profilu pokusí odhlásit od zprostředkovatelů federovaných identit. Další informace najdete v tématu věnovaném [odhlášení Azure AD B2C relace](session-behavior.md#sign-out). Možné hodnoty: `true` (výchozí), nebo `false` .|
+| UsePolicyInRedirectUri | No | Určuje, jestli se při vytváření identifikátoru URI přesměrování má použít zásada. Při konfiguraci aplikace ve zprostředkovateli identity je nutné zadat identifikátor URI přesměrování. Identifikátor URI přesměrování odkazuje na Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` . Pokud zadáte `true` , budete muset pro každou zásadu, kterou používáte, přidat identifikátor URI přesměrování. Příklad: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -109,23 +114,8 @@ Element **CryptographicKeys** obsahuje následující atribut:
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
-Když nakonfigurujete adresu URL pro přesměrování poskytovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp` . Ujistěte se, že jste **klienta** nahradili názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být malými písmeny.
-
-Pokud používáte doménu **b2clogin.com** místo **Login.microsoftonline.com** , nezapomeňte místo Login.microsoftonline.com použít b2clogin.com.
+Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele identity, zadejte `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp` . Ujistěte `{tenant-name}` se, že jste nahradili názvem vašeho tenanta (například contosob2c). Identifikátor URI pro přesměrování musí být malými písmeny.
 
 Příklady:
 
-- [Přidání Google + jako poskytovatele identity OAuth2 pomocí vlastních zásad](identity-provider-google-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Přidání Google + jako poskytovatele identity OAuth2 pomocí vlastních zásad](identity-provider-google.md)

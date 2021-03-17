@@ -3,23 +3,25 @@ title: Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
 description: Naučte se vytvářet prostorové objekty pomocí Azure Cosmos DB a rozhraní SQL API.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/25/2021
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: b20c72ae3ed8a8fffa02fc3a2c86f9f73ba2663b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420086"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692126"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Tento článek představuje úvod do geoprostorové funkce v Azure Cosmos DB. V současné době jsou ukládání a přístup k geoprostorovému datům podporované jenom pomocí Azure Cosmos DBch jenom účtů rozhraní SQL API. Po přečtení naší dokumentace k geoprostorovému indexování budete moci zodpovědět následující otázky:
+Tento článek představuje úvod do geoprostorové funkce v Azure Cosmos DB. Po přečtení naší dokumentace k geoprostorovému indexování budete moci zodpovědět následující otázky:
 
 * Návody ukládat prostorová data do Azure Cosmos DB?
-* Jak se dají dotazovat geoprostorové údaje v Azure Cosmos DB v SQL a LINQ?
+* Jak se dají dotazovat prostorová data v Azure Cosmos DB v SQL a LINQ?
 * Návody povolit nebo zakázat indexování prostorových dat v Azure Cosmos DB?
 
 ## <a name="spatial-data-use-cases"></a>Případy použití prostorových dat
@@ -119,9 +121,9 @@ Azure Cosmos DB interpretuje souřadnice, jak je znázorněno na referenčním s
     "type":"Polygon",
     "coordinates":[ [
         [ 31.8, -5 ],
-        [ 31.8, -4.7 ],
-        [ 32, -4.7 ],
         [ 32, -5 ],
+        [ 32, -4.7 ],
+        [ 31.8, -4.7 ],
         [ 31.8, -5 ]
     ] ]
 }
@@ -164,7 +166,7 @@ Více **mnohoúhelníků** je pole nula nebo více mnohoúhelníků. U více **m
 
 Vzhledem k tomu, že tvar země je nepravidelný, jsou souřadnice geograficky geoprostorového data zastoupeny v mnoha referenčních systémech (počítačový systém), každý s vlastními snímky odkazů a jednotkami měření. Například "národní mřížka Británie" je referenční systém pro Spojené království, ale ne mimo něj.
 
-Nejoblíbenější počítačový systém používaný v současnosti dnes je World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Zařízení GPS a mnoho služeb mapování, včetně rozhraní API Map Google a Bing Maps, používají WGS-84. Azure Cosmos DB podporuje indexování geograficky geoprostorového data a jejich dotazování jenom pomocí POČÍTAČového systému WGS-84.
+Nejoblíbenější počítačový systém používaný v současnosti dnes je World Geodetic System  [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Zařízení GPS a mnoho služeb mapování, včetně rozhraní API Map Google a Bing Maps, používají WGS-84. Azure Cosmos DB podporuje indexování geograficky geoprostorového data a jejich dotazování jenom pomocí POČÍTAČového systému WGS-84.
 
 ## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty
 Když vytváříte dokumenty, které obsahují hodnoty typu injson, jsou automaticky indexovány pomocí prostorového indexu v souladu se zásadami indexování kontejneru. Pokud pracujete se sadou Azure Cosmos DB SDK v dynamicky typovaném jazyce, jako je Python nebo Node.js, je nutné vytvořit platný typ injson.
@@ -210,7 +212,7 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Pokud nemáte informace o zeměpisné šířce a délce, ale máte fyzické adresy nebo název umístění, jako je město nebo země nebo oblast, můžete vyhledat skutečné souřadnice pomocí služby geografické kódování, jako je například služba Bing Maps služby REST. Další informace o geografickém kódování mapy Bing [najdete tady](https://msdn.microsoft.com/library/ff701713.aspx).
+Pokud nemáte informace o zeměpisné šířce a délce, ale máte fyzické adresy nebo název umístění, jako je město nebo země nebo oblast, můžete vyhledat skutečné souřadnice pomocí služby geografické kódování, jako je například služba Bing Maps služby REST. Další informace o geografickém kódování mapy Bing [najdete tady](/bingmaps/rest-services/).
 
 ## <a name="next-steps"></a>Další kroky
 

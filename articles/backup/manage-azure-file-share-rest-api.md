@@ -3,12 +3,12 @@ title: Správa zálohování sdílených složek Azure pomocí rozhraní REST AP
 description: Naučte se, jak pomocí REST API spravovat a monitorovat sdílené složky Azure, které jsou zálohované pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073243"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88892843"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Správa zálohování sdílených složek Azure pomocí REST API
 
@@ -46,7 +46,7 @@ Například konečná odpověď [REST API operace zálohování aktivační udá
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-{JobName} je výše uvedená "jobId". Odpověď je vždy "200 OK" s polem **stav** udávajícím stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", část **extendedInfo** odhalí další podrobnosti o úloze.
+{JobName} je výše uvedená "jobId". Odpověď je vždy "200 OK" s polem **stav** udávajícím stav úlohy. Až bude dokončená nebo CompletedWithWarnings, oddíl **extendedInfo** odhalí další podrobnosti o úloze.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Odpověď
 
-Název  | Typ  |  Popis
+Název  | Typ  |  Description
 --- | --- | ----
 200 OK |  JobResource  | OK
 
@@ -166,7 +166,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 'Content-Length': '0'
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s příkazem GET:
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation pomocí příkazu GET:
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01

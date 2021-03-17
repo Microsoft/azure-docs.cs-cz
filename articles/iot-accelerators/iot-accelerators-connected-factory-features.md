@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820113"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425006"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>K čemu je připojená akcelerátor řešení IoT Factory?
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Propojená továrna je implementací referenční architektury Azure v průmyslu Azure, která je zabalená jako řešení open source. Můžete ho použít jako výchozí bod pro komerční produkt. Předem vytvořenou verzi řešení propojené továrny můžete nasadit do svého předplatného Azure z [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
 
@@ -55,7 +58,7 @@ Propojená továrna zahrnuje tyto funkce:
 
 ## <a name="end-to-end-security"></a>Komplexní zabezpečení
 
-- Nakonfigurujte oprávnění zabezpečení pro uživatele pomocí Access Control na základě rolí (RBAC).
+- Konfigurace oprávnění zabezpečení pro uživatele pomocí řízení přístupu na základě role (RBAC).
 - Komplexní šifrování se implementuje pomocí ověřování OPC UA (pomocí certifikátů X. 509) a také tokenů zabezpečení.
 
 ## <a name="customizability"></a>Přizpůsobitelnost

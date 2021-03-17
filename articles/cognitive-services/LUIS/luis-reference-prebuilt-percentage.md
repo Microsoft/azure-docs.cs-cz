@@ -3,23 +3,21 @@ title: Procento předem sestavené entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje procentuální údaje předem připravené entity v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 31ea1c36139abcb1e102161ad76a203073ba4dfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb64a32e2bdd3976fba3ce63433b13eb4891afc7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270502"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541692"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>Procentuální předem sestavená entita pro aplikaci pro LUIS
-Procentuální čísla se můžou vyskytovat jako zlomky `3 1/2`, nebo jako procenta `2%`. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující procento. Procentuální hodnota entity je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md).
+Procentuální čísla se můžou vyskytovat jako zlomky, `3 1/2` nebo jako procenta `2%` . Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující procento. Procentuální hodnota entity je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md).
 
 ## <a name="types-of-percentage"></a>Typy procent
 Procento je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) v GitHubu.
@@ -32,7 +30,7 @@ Pro dotaz se vrátí následující objekty entity:
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

@@ -3,18 +3,18 @@ title: Vyžádání přístupu za běhu
 description: Popisuje způsob, jakým vydavatelé Azure Managed Applications vyžadují přístup k spravované aplikaci za běhu.
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651381"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377359"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Povolení a vyžádat přístup za běhu pro Azure Managed Applications
 
-Příjemci spravované aplikace můžou být zdráhají, aby vám udělily trvalý přístup ke spravované skupině prostředků. Jako vydavatel aplikace manažera můžete chtít, aby spotřebitelé přesně znali, když potřebujete přístup ke spravovaným prostředkům. Aby spotřebitelé měli větší kontrolu nad udělením přístupu ke spravovaným prostředkům, Azure Managed Applications poskytují funkci s názvem přístup za běhu (JIT), která je aktuálně ve verzi Preview.
+Příjemci spravované aplikace můžou být zdráhají, aby vám udělily trvalý přístup ke spravované skupině prostředků. Jako vydavatel spravované aplikace můžete chtít, aby spotřebitelé přesně znali, když potřebujete přístup ke spravovaným prostředkům. Aby měli spotřebitelé větší kontrolu nad udělením přístupu ke spravovaným prostředkům, Azure Managed Applications poskytuje funkci s názvem přístup JIT (just-in-time). Tato funkce je aktuálně ve verzi Preview.
 
 Přístup JIT vám umožní požádat o zvýšený přístup k prostředkům spravované aplikace pro účely řešení potíží nebo údržby. Vždy máte přístup k prostředkům jen pro čtení, ale v určitém časovém období můžete mít větší přístup.
 
@@ -34,9 +34,7 @@ Tento článek se zaměřuje na akce, které vydavatelé akcí využívají k po
 
 ## <a name="add-jit-access-step-to-ui"></a>Přidat krok přístupu JIT do uživatelského rozhraní
 
-Váš CreateUiDefinition.jsv souboru je přesně stejný jako soubor uživatelského rozhraní, který vytvoříte pro trvalý přístup, s výjimkou toho, že musíte zahrnout krok, který umožňuje uživatelům povolit přístup JIT. Další informace o publikování první nabídky spravovaných aplikací v Azure Marketplace najdete v tématu [Azure Managed Applications na webu Marketplace](publish-marketplace-app.md).
-
-Pro podporu schopnosti JIT pro vaši nabídku přidejte do CreateUiDefinition.jsdo souboru následující obsah:
+V CreateUiDefinition.jsna souboru uveďte krok, který umožňuje uživatelům povolit přístup JIT. Pro podporu schopnosti JIT pro vaši nabídku přidejte následující obsah do CreateUiDefinition.jsv souboru.
 
 V "krocích":
 
@@ -58,7 +56,7 @@ V "krocích":
     ]
 }
 ```
- 
+
 V části "výstupy":
 
 ```json
@@ -70,25 +68,27 @@ V části "výstupy":
 
 ## <a name="enable-jit-access"></a>Povolit přístup JIT
 
-Při definování vaší nabídky na webu Marketplace se ujistěte, že jste povolili přístup JIT.
+Při vytváření vaší nabídky v partnerském centru se ujistěte, že jste povolili přístup JIT.
 
-1. Přihlaste se k [portálu cloud Publishing partner](https://cloudpartner.azure.com).
+1. Přihlaste se na komerční portál pro Marketplace v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 
-1. Zadejte hodnoty pro publikování spravované aplikace na webu Marketplace. Vyberte **Ano** , pokud chcete **Povolit přístup JIT?**
+1. Pokyny k vytvoření nové spravované aplikace najdete v postupu v části [Vytvoření nabídky aplikací Azure](../../marketplace/create-new-azure-apps-offer.md).
 
-   ![Povolit přístup za běhu](./media/request-just-in-time-access/marketplace-enable.png)
+1. Na stránce **Technická konfigurace** zaškrtněte políčko **Povolit přístup za běhu (just-in-time)** .
 
-Přidali jste do svého uživatelského rozhraní krok konfigurace JIT a v nabídce Marketplace jste povolili přístup JIT. Když si uživatelé nasadí spravovanou aplikaci, můžou [zapnout přístup JIT ke své instanci](approve-just-in-time-access.md#enable-during-deployment).
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="Povolit přístup za běhu":::
 
-## <a name="request-access"></a>Vyžádání přístupu
+Přidali jste do svého uživatelského rozhraní krok konfigurace JIT a povolili jste přístup JIT v rámci nabídky komerčního tržiště. Když si uživatelé nasadí spravovanou aplikaci, můžou [zapnout přístup JIT ke své instanci](approve-just-in-time-access.md#enable-during-deployment).
 
-Pokud potřebujete přístup ke spravovaným prostředkům uživatele, pošlete žádost o konkrétní roli, dobu a dobu trvání. Příjemce pak musí žádost schválit.
+## <a name="request-access"></a>Vyžádání přístup
+
+Pokud potřebujete přístup ke spravovaným prostředkům uživatele, pošlete žádost o konkrétní roli, čas a dobu trvání. Příjemce pak musí žádost schválit.
 
 Odeslání požadavku na přístup JIT:
 
 1. Pro spravovanou aplikaci vyberte **přístup JIT** , ke kterému potřebujete získat přístup.
 
-1. Vyberte **oprávněné role**a u požadované role vyberte ve sloupci Akce možnost **aktivovat** .
+1. Vyberte **oprávněné role** a u požadované role vyberte ve sloupci Akce možnost **aktivovat** .
 
    ![Aktivovat žádost o přístup](./media/request-just-in-time-access/send-request.png)
 
@@ -98,7 +98,7 @@ Odeslání požadavku na přístup JIT:
 
 1. Podívejte se na oznámení, abyste viděli, že se nová žádost o JIT úspěšně poslala příjemci.
 
-   ![Oznámení](./media/request-just-in-time-access/in-progress.png)
+   ![Notification (Oznámení)](./media/request-just-in-time-access/in-progress.png)
 
    Nyní musíte počkat, až uživatel [žádost schválí](approve-just-in-time-access.md#approve-requests).
 

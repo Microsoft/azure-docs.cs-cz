@@ -1,9 +1,9 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Storage pomocí přístupového klíče – Linux – Azure AD
-description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage.
+title: Kurz `:` použití spravované identity pro přístup k Azure Storage pomocí přístupového klíče – Linux – Azure AD
+description: Kurz, který vás provede procesem použití spravované identity přiřazené systémem Linux VM pro přístup k Azure Storage prostřednictvím přístupového klíče.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/04/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e99a199fcc5f43f3710fe2e2fcfe55b7e624987b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273823"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317459"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Udělit virtuálnímu počítači přístup k přístupovým klíčům účtu úložiště v Resource Manageru. 
 > * Získat přístupový token pomocí identity virtuálního počítače a použít ho k načtení přístupových klíčů k úložišti z Resource Manageru.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -78,7 +78,7 @@ V tomto kroku udělíte spravované identitě přiřazené systémem na virtuál
 
 Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač.
 
-K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
+K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/install-win10). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému linuxovému virtuálnímu počítači a potom nahoře na stránce **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači. 
 2. Použijte klienta SSH a připojte se ke svému virtuálnímu počítači.  
@@ -127,10 +127,10 @@ Vytvořte ukázkový soubor objektů blob, který nahrajete do kontejneru úlož
 echo "This is a test file." > test.txt
 ```
 
-Potom použijte k ověření příkaz `az storage` rozhraní CLI a přístupový klíč k úložišti a nahrajte soubor do kontejneru objektů blob. K tomuto kroku potřebujete na svém virtuálním počítači [nainstalovanou nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), pokud ji ještě nemáte.
+Potom použijte k ověření příkaz `az storage` rozhraní CLI a přístupový klíč k úložišti a nahrajte soubor do kontejneru objektů blob. K tomuto kroku potřebujete na svém virtuálním počítači [nainstalovanou nejnovější verzi Azure CLI](/cli/azure/install-azure-cli), pokud ji ještě nemáte.
  
 
-```azurecli-interactive
+```azurecli
 az storage blob upload -c <CONTAINER NAME> -n test.txt -f test.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
@@ -148,7 +148,7 @@ Ke stažení souboru také můžete použít Azure CLI a k ověření přístupo
 
 Požadavek: 
 
-```azurecli-interactive
+```azurecli
 az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
@@ -199,4 +199,4 @@ Odpověď:
 V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage pomocí přístupového klíče.  Další informace o přístupových klíčích Azure Storage:
 
 > [!div class="nextstepaction"]
->[Správa přístupových klíčů k úložišti](/azure/storage/common/storage-create-storage-account)
+>[Správa přístupových klíčů k úložišti](../../storage/common/storage-account-create.md)

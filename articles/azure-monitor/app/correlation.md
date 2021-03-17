@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: devx-track-python
-ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843620"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100963"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -48,21 +48,21 @@ Ve výsledcích si všimněte, že všechny položky telemetrie sdílejí kořen
 
 | itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| pageView   | Skladová stránka                |              | STYz               | STYz         |
+| pageView   | Skladová stránka                | STYz         |                    | STYz         |
 | závislosti | ZÍSKAT/Home/Stock           | qJSXU        | STYz               | STYz         |
 | Request    | ZÍSKAT domácí/burzovní            | KqKwlrSt9PA = | qJSXU              | STYz         |
 | závislosti | ZÍSKAT/API/Stock/Value      | bBrf2L7mm2g = | KqKwlrSt9PA =       | STYz         |
 
 Při volání `GET /api/stock/value` externí služby potřebujete znát identitu tohoto serveru, abyste mohli `dependency.target` odpovídajícím způsobem nastavit pole. Pokud externí služba nepodporuje monitorování, `target` je nastavena na název hostitele služby (například `stock-prices-api.com` ). Pokud však služba identifikuje sebe sama vrácením předdefinované hlavičky HTTP, `target` obsahuje identitu služby, která umožňuje Application Insights sestavit distribuované trasování pomocí dotazování telemetrie z této služby.
 
-## <a name="correlation-headers"></a>Hlavičky korelace
+## <a name="correlation-headers-using-w3c-tracecontext"></a>Korelační hlavičky pomocí formátu W3C TraceContext
 
 Application Insights se převádí na [kontext trasování W3C](https://w3c.github.io/trace-context/), který definuje:
 
 - `traceparent`: Provede globálně jedinečné ID operace a jedinečný identifikátor volání.
 - `tracestate`: Přenese kontext trasování specifický pro systém.
 
-Nejnovější verze Application Insights SDK podporuje protokol kontextu trasování, ale může být nutné se k němu přihlásit. (Bude zachována zpětná kompatibilita s předchozím protokolem korelace, který podporuje sada SDK Application Insights.)
+Nejnovější verze sady Application Insights SDK podporuje protokol Trace-Context, ale možná se k ní budete muset přihlásit. (Bude zachována zpětná kompatibilita s předchozím protokolem korelace, který podporuje sada SDK Application Insights.)
 
 [Korelační protokol HTTP, označovaný také jako Request-ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), se už nepoužívá. Tento protokol definuje dvě hlavičky:
 
@@ -71,62 +71,19 @@ Nejnovější verze Application Insights SDK podporuje protokol kontextu trasov�
 
 Application Insights také definuje [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) pro protokol HTTP korelace. Používá `Request-Context` páry název-hodnota ke šíření kolekce vlastností používaných přímým volajícím nebo volaným. Sada Application Insights SDK používá tuto hlavičku k nastavení `dependency.target` polí a `request.source` .
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Povolení podpory distribuovaného trasování W3C pro klasické aplikace ASP.NET
- 
-  > [!NOTE]
-  >  Od `Microsoft.ApplicationInsights.Web` a `Microsoft.ApplicationInsights.DependencyCollector` není nutná žádná konfigurace.
+Mapování datových modelů v [kontextu W3C Trace-Context](https://w3c.github.io/trace-context/) a Application Insights následujícím způsobem:
 
-Trasování W3C – podpora kontextu je implementována zpětně kompatibilním způsobem. Očekává se korelace pro práci s aplikacemi, které jsou instrumentované s předchozími verzemi sady SDK (bez podpory W3C).
+| Application Insights                   | W3C TraceContext                                      |
+|------------------------------------    |-------------------------------------------------|
+| `Id` z `Request` a `Dependency`     | [ID nadřazeného prvku](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [ID trasování](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | [nadřazený identifikátor](https://w3c.github.io/trace-context/#parent-id) nadřazeného nadřazeného rozsahu tohoto rozsahu Pokud se jedná o kořenový rozsah, musí být toto pole prázdné.     |
 
-Pokud chcete dál používat starší `Request-Id` protokol, můžete zakázat trasování kontextu pomocí této konfigurace:
+Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
 
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Povolení podpory distribuovaného trasování W3C pro aplikace .NET
 
-Pokud používáte starší verzi sady SDK, doporučujeme, abyste ji aktualizovali nebo použili následující konfiguraci pro povolení trasování kontextu.
-Tato funkce je k dispozici `Microsoft.ApplicationInsights.Web` v `Microsoft.ApplicationInsights.DependencyCollector` balíčcích a počínaje verzí 2.8.0-Beta1.
-Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, udělejte tyto změny `ApplicationInsights.config` :
-
-- V části `RequestTrackingTelemetryModule` přidejte `EnableW3CHeadersExtraction` prvek a nastavte jeho hodnotu na `true` .
-- V části `DependencyTrackingTelemetryModule` přidejte `EnableW3CHeadersInjection` prvek a nastavte jeho hodnotu na `true` .
-- Přidejte `W3COperationCorrelationTelemetryInitializer` `TelemetryInitializers` . Bude vypadat podobně jako v tomto příkladu:
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace ASP.NET Core
-
- > [!NOTE]
-  > Počínaje `Microsoft.ApplicationInsights.AspNetCore` verzí 2.8.0 není nutná žádná konfigurace.
- 
-Trasování W3C – podpora kontextu je implementována zpětně kompatibilním způsobem. Očekává se korelace pro práci s aplikacemi, které jsou instrumentované s předchozími verzemi sady SDK (bez podpory W3C).
-
-Pokud chcete dál používat starší `Request-Id` protokol, můžete zakázat trasování kontextu pomocí této konfigurace:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-Pokud používáte starší verzi sady SDK, doporučujeme, abyste ji aktualizovali nebo použili následující konfiguraci pro povolení trasování kontextu.
-
-Tato funkce je ve `Microsoft.ApplicationInsights.AspNetCore` verzi 2.5.0-Beta1 a ve `Microsoft.ApplicationInsights.DependencyCollector` verzi 2.8.0-Beta1.
-Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, nastavte `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` na `true` :
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+Distribuované trasování založené na formátu W3C je ve výchozím nastavení povolené v všech nejnovějších .NET Framework/. NET Core SDK a v případě zpětné kompatibility se starším protokolem Request-Id.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace Java
 
@@ -145,7 +102,7 @@ public void ConfigureServices(IServiceCollection services)
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - V případě aplikací pro spouštění pružiny přidejte tyto vlastnosti:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -175,58 +132,31 @@ public void ConfigureServices(IServiceCollection services)
 
 Tato funkce je v systému `Microsoft.ApplicationInsights.JavaScript` . Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, použijte `distributedTracingMode` config. AI_AND_W3C je k dispozici kvůli zpětné kompatibilitě se staršími službami, které instrumentují Application Insights.
 
-- **nastavení NPM (ignorovat při použití nastavení fragmentu)**
+- **[nastavení založené na npm](./javascript.md#npm-based-setup)**
 
-  ```javascript
-  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
-
-  const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+Přidejte následující konfiguraci:
+  ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...other configuration options... */
-  } });
-  appInsights.loadAppInsights();
   ```
-  
-- **Nastavení fragmentu (ignorovat při použití instalačního programu npm)**
 
+- **[Nastavení na základě fragmentů kódu](./javascript.md#snippet-based-setup)**
+
+Přidejte následující konfiguraci:
   ```
-  <script type="text/javascript">
-  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-  (
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...other configuration options... */
-    }
-  );
-  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-  </script>
   ```
-
-## <a name="opentracing-and-application-insights"></a>OpenTracing a Application Insights
-
-Datové modely [OpenTracing a specifikace datového modelu](https://opentracing.io/) pro Application Insights mapují následujícím způsobem:
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span`řetězce`span.kind = server`                    |
-| `Dependency`                           | `Span`řetězce`span.kind = client`                    |
-| `Id`z `Request` a`Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference`typu `ChildOf` (nadřazený rozsah)     |
-
-Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
-
-Definice konceptů OpenTracing najdete v tématu [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) OpenTracing a [sémantické konvence](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+> [!IMPORTANT] 
+> Pokud chcete zobrazit všechny konfigurace potřebné k povolení korelace, přečtěte si [dokumentaci k korelaci JavaScriptu](./javascript.md#enable-correlation).
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Korelace telemetrie v OpenCensus Pythonu
 
-OpenCensus Python sleduje `OpenTracing` specifikace datového modelu popsané výše. Podporuje také [kontext trasování W3C](https://w3c.github.io/trace-context/) bez nutnosti jakékoli konfigurace.
+OpenCensus Python podporuje [kontext trasování W3C](https://w3c.github.io/trace-context/) bez nutnosti další konfigurace.
+
+Jako referenci se dá datový model OpenCensus najít [tady](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace).
 
 ### <a name="incoming-request-correlation"></a>Korelace příchozích požadavků
 
-OpenCensus Python koreluje hlavičky W3C Trace-Context z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro tyto oblíbené webové aplikace: baňky, Django a jehlany. Stačí pouze naplnit hlavičky kontextu trasování W3C pomocí [správného formátu](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) a odeslat je do žádosti. Tady je ukázková aplikace, která demonstruje toto:
+OpenCensus Python koreluje hlavičky W3C Trace-Context z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro tyto oblíbené webové aplikace: baňky, Django a jehlany. Stačí, když naplníte hlavičky Trace-Context W3C [správným formátem](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) a odešlete je do žádosti. Tady je ukázková aplikace, která demonstruje toto:
 
 ```python
 from flask import Flask
@@ -304,26 +234,59 @@ Všimněte si, že je k `spanId` dispozici pro zprávu protokolu v rámci rozsah
 
 Data protokolu můžete exportovat pomocí `AzureLogHandler` . Další informace najdete v [tomto článku](./opencensus-python.md#logs).
 
+Pro správnou korelaci můžeme také předat informace o trasování z jedné součásti do jiné. Představte si například scénář, ve kterém jsou dvě komponenty `module1` a `module2` . Module1 volá funkce v Module2 a získá protokoly z `module1` a `module2` v jediném trasování můžeme použít následující postup:
+
+```python
+# module1.py
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+from module2 import function_1
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+   logger.warning('In the span')
+   function_1(tracer)
+logger.warning('After the span')
+
+
+# module2.py
+
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+def function_1(parent_tracer=None):
+    if parent_tracer is not None:
+        tracer = Tracer(
+                    span_context=parent_tracer.span_context,
+                    sampler=AlwaysOnSampler(),
+                )
+    else:
+        tracer = Tracer(sampler=AlwaysOnSampler())
+
+    with tracer.span("function_1"):
+        logger.info("In function_1")
+```
+
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET
 
-V průběhu času .NET definovalo několik způsobů, jak sladit protokoly telemetrie a diagnostiky:
+.NET runtime podporuje distribuované s podporou [aktivity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) a [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)
 
-- `System.Diagnostics.CorrelationManager`umožňuje sledování [LogicalOperationStack a ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1).
-- `System.Diagnostics.Tracing.EventSource`a trasování událostí pro Windows (ETW) definuje metodu [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
-- `ILogger`používá [rozsahy protokolů](/aspnet/core/fundamentals/logging#log-scopes).
-- Windows Communication Foundation (WCF) a kabel HTTP nahoru "aktuální" šíření kontextu.
-
-Tyto metody ale nepovolily automatickou podporu distribuovaného trasování. `DiagnosticSource`podporuje automatickou korelaci mezi počítači. Knihovny .NET podporují `DiagnosticSource` a umožňují automatické šíření mezipočítačového kontextu korelace prostřednictvím přenosu, jako je například http.
-
-[Příručka pro uživatele aktivity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) v `DiagnosticSource` tématu vysvětluje základy sledování aktivit.
-
-ASP.NET Core 2,0 podporuje extrakci hlaviček protokolu HTTP a spuštění nových aktivit.
-
-`System.Net.Http.HttpClient`Počínaje verzí 4.1.0 podporuje automatické vkládání korelačních hlaviček protokolu HTTP a sledování volání HTTP jako aktivit.
-
-Pro klasický ASP.NET je k dispozici nový modul HTTP, [Microsoft. ASPNET. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/). Tento modul implementuje korelaci telemetrie pomocí `DiagnosticSource` . Spustí aktivitu na základě hlaviček příchozích požadavků. Také koreluje telemetrii z různých fází zpracování požadavků, a to i v případě, že je každá fáze zpracování služby Internetová informační služba (IIS) spuštěna v jiném spravovaném vlákně.
-
-Sada Application Insights SDK, počínaje verzí 2.4.0-Beta1, používá `DiagnosticSource` a `Activity` ke shromáždění telemetrie a jejím přidružení k aktuální aktivitě.
+Sada Application Insights .NET SDK používá `DiagnosticSource` a `Activity` ke shromažďování a korelaci telemetrie.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Korelace telemetrie v jazyce Java
@@ -344,10 +307,8 @@ Možná budete chtít přizpůsobit způsob, jakým se názvy komponent zobrazuj
 
     ```json
     {
-      "instrumentationSettings": {
-        "preview": {
-          "roleName": "my cloud role name"
-        }
+      "role": {
+        "name": "my cloud role name"
       }
     }
     ```

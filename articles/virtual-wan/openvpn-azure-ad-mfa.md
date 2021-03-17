@@ -1,20 +1,20 @@
 ---
 title: Povolení MFA pro uživatele sítě VPN pomocí ověřování Azure AD
-description: Povolení služby Multi-Factor Authentication pro uživatele sítě VPN
+description: Naučte se, jak povolit Azure AD Multi-Factor Authentication (MFA) pro uživatele VPN pomocí ověřování Azure AD.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 01/16/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 7adcdcf00f22020daf66192e777b1aca151349e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8d90653372b78aad78fad66e4cde21bd2ab81ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082116"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "95995606"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users-by-using-azure-ad-authentication"></a>Povolení služby Azure Multi-Factor Authentication (MFA) pro uživatele sítě VPN pomocí ověřování Azure AD
+# <a name="enable-azure-ad-multi-factor-authentication-mfa-for-vpn-users-by-using-azure-ad-authentication"></a>Povolení služby Azure AD Multi-Factor Authentication (MFA) pro uživatele sítě VPN pomocí ověřování Azure AD
 
 [!INCLUDE [overview](../../includes/vpn-gateway-vwan-openvpn-enable-mfa-overview.md)]
 

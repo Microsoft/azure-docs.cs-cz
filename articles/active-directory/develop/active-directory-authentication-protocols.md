@@ -12,12 +12,13 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 803f52666fb09a836eae3294410584ebbd71a1b6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884677"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755897"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Protokoly ověřování platformy Microsoft identity
 
@@ -26,12 +27,12 @@ Platforma Microsoft Identity Platform podporuje několik nejčastěji používan
 ## <a name="authentication-protocols-articles-and-reference"></a>Články a referenční informace k ověřovacím protokolům
 
 * [Důležité informace o výměně klíčů při výměně na platformě Microsoft Identity](active-directory-signing-key-rollover.md) – Přečtěte si informace o změně podpisového klíče platformy Microsoft Identity Platform tempo, změnách, které můžete provést při automatickém aktualizování klíče, a diskuzi o tom, jak aktualizovat nejběžnější scénáře aplikací.
-* [Podporované typy tokenů a deklarací](id-tokens.md) – Přečtěte si o deklaracích v tokenech, které Microsoft Identity Platform řeší.
+* [Podporované typy tokenů a deklarací](id-tokens.md) – Přečtěte si o deklaracích identity v tokenech, které Microsoft Identity Platform řeší.
 * [Oauth 2,0 na platformě Microsoft Identity](v2-oauth2-auth-code-flow.md) – Přečtěte si o implementaci OAuth 2,0 na platformě Microsoft identity.
 * [OpenID Connect 1,0](v2-protocols-oidc.md) – Naučte se používat ověřovací protokol OAuth 2,0 pro ověřování.
 * [Volání služeb s přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md) – Zjistěte, jak pomocí přihlašovacích údajů klienta OAuth 2,0 udělit tok pro volání služeb.
 * Obsluha [volání služby s](v2-oauth2-on-behalf-of-flow.md) využitím toku – Naučte se, jak používat službu OAuth 2,0 za běhu za účelem obsluhy volání služeb.
-* [Odkaz na protokol SAML](active-directory-saml-protocol-reference.md) – informace o jednotném přihlašování a jednom z profilů SAML platformy Microsoft Identity Platform
+* [Referenční informace o protokolu SAML](active-directory-saml-protocol-reference.md) – Přečtěte si o jednom Sign-On a jednom z profilů SAML pro jednotné přihlašování na platformě Microsoft Identity Platform.
 
 ## <a name="see-also"></a>Viz také
 

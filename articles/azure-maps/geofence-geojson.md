@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037401"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897190"
 ---
 # <a name="geofencing-geojson-data"></a>Geografická data geografických zón
 
@@ -24,25 +24,25 @@ Data pro geografickou nebo množinu geografických plotů jsou reprezentována `
 * Typ objektu pro typ objektivu JSON může být `Feature` objekt nebo `FeatureCollection` objekt.
 * Typ objektu geometrie může být `Point` ,,, `MultiPoint` , `LineString` `MultiLineString` `Polygon` , `MultiPolygon` a `GeometryCollection` .
 * Všechny vlastnosti funkce by měly obsahovat a `geometryId` , který se používá k identifikaci geografického ohraničení.
-* Funkce se systémem `Point` , `MultiPoint` , `LineString` , `MultiLineString` musí obsahovat `radius` Vlastnosti. `radius`hodnota se měří v metrech, `radius` hodnota rozsahu od 1 do 10000.
+* Funkce se systémem `Point` , `MultiPoint` , `LineString` , `MultiLineString` musí obsahovat `radius` Vlastnosti. `radius` hodnota se měří v metrech, `radius` hodnota rozsahu od 1 do 10000.
 * Funkce s `polygon` `multipolygon` typem a geometrie nemá vlastnost poloměr.
-* `validityTime`je volitelná vlastnost, která umožňuje uživateli nastavit dobu platnosti a dobu platnosti pro data geografické hodnoty. Pokud není zadán, data budou nikdy vypršet a jsou vždy platná.
+* `validityTime` je volitelná vlastnost, která umožňuje uživateli nastavit dobu platnosti a dobu platnosti pro data geografické hodnoty. Pokud není zadán, data budou nikdy vypršet a jsou vždy platná.
 * `expiredTime`Je datum a čas vypršení platnosti dat geografických zón. Pokud `userTime` je hodnota v žádosti pozdější než tato hodnota, považují se odpovídající data o geografickou část považována za data s vypršenou platností a nedotazují se na ně. Na základě toho se geometryId z těchto geografických dat do `expiredGeofenceGeometryId` pole v rámci reakce na geografické ploty.
 * `validityPeriod`Je seznam časových období platnosti geografické zóny. Pokud hodnota `userTime` v žádosti spadá mimo období platnosti, považují se odpovídající data o geografickou oblast za neplatnou a nebudou se dotazovat. GeometryId těchto geografických dat je součástí `invalidPeriodGeofenceGeometryId` pole v rámci reakce na geografické ploty. V následující tabulce jsou uvedeny vlastnosti elementu validityPeriod.
 
-| Název | Typ | Vyžadováno  | Popis |
+| Název | Typ | Povinné  | Popis |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datum a čas  | true | Datum a čas zahájení období platnosti. |
 | endTime   | Datum a čas  | true |  Datum a čas konce období platnosti. |
-| recurrenceType | string | false (nepravda) |   Typ opakování období. Hodnota může být `Daily` , `Weekly` , `Monthly` nebo `Yearly` . Výchozí hodnota je `Daily` .|
-| businessDayOnly | Logická hodnota | false (nepravda) |  Určuje, jestli jsou data platná jenom během pracovních dnů. Výchozí hodnota je `false` .|
+| recurrenceType | řetězec | false (nepravda) |   Typ opakování období. Hodnota může být `Daily` , `Weekly` , `Monthly` nebo `Yearly` . Výchozí hodnota je `Daily`.|
+| businessDayOnly | Logická hodnota | false (nepravda) |  Určuje, jestli jsou data platná jenom během pracovních dnů. Výchozí hodnota je `false`.|
 
 
 * Všechny hodnoty souřadnic jsou reprezentovány jako [Zeměpisná délka, zeměpisná šířka] definovaná v `WGS84` .
 * Pro každou funkci, která obsahuje `MultiPoint` , `MultiLineString` , `MultiPolygon` nebo `GeometryCollection` , jsou vlastnosti aplikovány na všechny prvky. například: všechny body v nástroji `MultiPoint` budou používat stejný poloměr pro vytvoření více geografických paprsků.
-* V bodovém scénáři je možné znázornit geometrii kruhu pomocí `Point` objektu geometrie s vlastnostmi, které jsou vypracované v rámci rozšíření geografického [geometriíového formátu JSON](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
+* V bodovém scénáři je možné znázornit geometrii kruhu pomocí `Point` objektu geometrie s vlastnostmi, které jsou vypracované v rámci rozšíření geografického [geometriíového formátu JSON](./extend-geojson.md).      
 
-Následuje ukázkový text žádosti o geografickou ochranou, která je vyjádřena jako geometrie geografického tónu v `GeoJSON` používání středového bodu a poloměru. Platné období dat o geografickosti začíná od 2018-10-22 9:00 do 17:00, opakuje se každý den s výjimkou víkendu. `expiredTime`označuje, že tato data geografické plotu budou považována za prošlá, pokud `userTime` je v žádosti později než `2019-01-01` .  
+Následuje ukázkový text žádosti o geografickou ochranou, která je vyjádřena jako geometrie geografického tónu v `GeoJSON` používání středového bodu a poloměru. Platné období dat o geografickosti začíná od 2018-10-22 9:00 do 17:00, opakuje se každý den s výjimkou víkendu. `expiredTime` označuje, že tato data geografické plotu budou považována za prošlá, pokud `userTime` je v žádosti později než `2019-01-01` .  
 
 ```json
 {

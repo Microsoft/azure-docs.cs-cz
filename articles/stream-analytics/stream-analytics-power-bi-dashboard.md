@@ -3,24 +3,23 @@ title: Integrace řídicího panelu Power BI s Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí řídicího panelu Power BI v reálném čase vizualizovat data z Azure Stream Analytics úlohy.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 11/16/2020
+ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314216"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012440"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
 
-Azure Stream Analytics vám umožní využít jeden z špičkových business intelligence nástrojů, [Power BI Microsoftu](https://powerbi.com/). V tomto článku se naučíte, jak vytvářet business intelligence nástroje pomocí Power BI jako výstup pro Azure Stream Analytics úlohy. Naučíte se také, jak vytvořit a používat řídicí panel v reálném čase.
+Azure Stream Analytics vám umožní využít jeden z špičkových business intelligence nástrojů, [Power BI Microsoftu](https://powerbi.com/). V tomto článku se naučíte, jak vytvářet business intelligence nástroje pomocí Power BI jako výstup pro Azure Stream Analytics úlohy. Naučíte se také, jak vytvořit a používat řídicí panel v reálném čase, který je průběžně aktualizován úlohou Stream Analytics.
 
 Tento článek pokračuje v kurzu Stream Analytics [rozpoznávání podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) . Vytvoří se v pracovním postupu vytvořeném v tomto kurzu a přidá výstup Power BI, abyste mohli vizualizovat podvodné telefonní hovory zjištěné úlohou Stream Analytics. 
 
-Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA) , které znázorňuje tento scénář.
+Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA)  , které znázorňuje tento scénář.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -37,13 +36,16 @@ V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiš
 
 1. V Azure Portal otevřete úlohu Stream Analytics, kterou jste vytvořili dříve. Pokud jste použili navrhovaný název, úloha se jmenuje `sa_frauddetection_job_demo` .
 
-2. V nabídce vlevo vyberte v části **topologie úlohy**možnost **výstupy** . Pak vyberte **+ Přidat** a v rozevírací nabídce vyberte **Power BI** .
+2. V nabídce vlevo vyberte v části **topologie úlohy** možnost **výstupy** . Pak vyberte **+ Přidat** a v rozevírací nabídce vyberte **Power BI** .
 
-3. Vyberte **+ Přidat**  >  **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
+3. Vyberte **+ Přidat**  >  **Power BI**. Pak vyplňte formulář následujícími podrobnostmi a vyberte **autorizovat** , abyste pro připojení k Power BI používali vlastní identitu uživatele (token je platný po 90 dnech). 
+
+>[!NOTE]
+>Pro produkční úlohy doporučujeme, abyste se připojili k [použití spravované identity k ověření Azure Stream Analytics úlohy Power BI](./powerbi-output-managed-identity.md).
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Alias pro výstup  |  CallStream – PowerBI  |
+   |Alias pro výstup  |  CallStream-PowerBI  |
    |Název datové sady  |   SA – datová sada  |
    |Název tabulky |  podvodné – volání  |
 
@@ -61,11 +63,11 @@ V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiš
 Datová sada je vytvořena s následujícími nastaveními:
 
 * **defaultRetentionPolicy: BasicFIFO** -data jsou FIFO s maximálně 200 000 řádky.
-* **defaultMode: hodnotu pushstreaming** – datová sada podporuje jak streamování, tak tradiční vizuály založené na sestavách (označované také jako push).
+* **defaultMode: Hybrid** – datová sada podporuje jak dlaždice streamování (označované také jako push), tak i tradiční vizuály založené na sestavách. V případě nabízeného obsahu se data průběžně aktualizují z úlohy Stream Analytics v tomto případě bez nutnosti naplánování aktualizace ze strany Power BI.
 
 V současné době nemůžete vytvořit datové sady s jinými příznaky.
 
-Další informace o Power BI datových sadách naleznete v tématu [Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) reference.
+Další informace o Power BI datových sadách naleznete v tématu [Power BI REST API](/rest/api/power-bi/) reference.
 
 
 ## <a name="write-the-query"></a>Zapsat dotaz
@@ -137,7 +139,7 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
     ![Umístění datové sady streamování v Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. V pracovním prostoru klikněte na ** + &nbsp; vytvořit**.
+2. V pracovním prostoru klikněte na **+ &nbsp; vytvořit**.
 
     ![Tlačítko vytvořit v pracovním prostoru Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
@@ -145,15 +147,15 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
     ![Vytvořte řídicí panel a pojmenujte ho v Power BI pracovním prostoru.](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. V horní části okna klikněte na **Přidat dlaždici**, vyberte **vlastní streamovaná data**a pak klikněte na **Další**.
+4. V horní části okna klikněte na **Přidat dlaždici**, vyberte **vlastní streamovaná data** a pak klikněte na **Další**.
 
     ![Dlaždice vlastní datové sady streamování v Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-5. V části **DATSETS**vyberte datovou sadu a klikněte na **Další**.
+5. V části **DATSETS** vyberte datovou sadu a klikněte na **Další**.
 
     ![Datová sada streamování v Power BI](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-6. V části **typ vizualizace**vyberte **karta**a potom v seznamu **pole** vyberte **podvodnávolání**.
+6. V části **typ vizualizace** vyberte **karta** a potom v seznamu **pole** vyberte **podvodnávolání**.
 
     ![Podrobnosti vizualizace pro novou dlaždici](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
@@ -171,7 +173,7 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
 8. Pomocí kroků znovu přidejte dlaždici (počínaje krokem 4). Tentokrát postupujte následovně:
 
-    * Po zobrazení **typu vizualizace**vyberte **Spojnicový graf**. 
+    * Po zobrazení **typu vizualizace** vyberte **Spojnicový graf**. 
     * Přidejte osu a vyberte **windowend**. 
     * Přidejte hodnotu a vyberte **podvodnávolání**.
     * Jako **časové okno pro zobrazení** vyberte posledních 10 minut.
@@ -218,7 +220,7 @@ Tato konfigurace umožňuje změnit původní dotaz na následující:
 ```
 
 ### <a name="renew-authorization"></a>Obnovit autorizaci
-Pokud se heslo od vytvoření nebo posledního ověření úlohy změnilo, budete muset účet Power BI znovu ověřit. Pokud je Azure Multi-Factor Authentication nakonfigurovaný v tenantovi Azure Active Directory (Azure AD), musíte také obnovit Power BI autorizaci každé dva týdny. Pokud obnovení neprovedete, můžete se podívat na příznaky, jako je například nedostatek výstupu úlohy nebo `Authenticate user error` v protokolech operací.
+Pokud se heslo od vytvoření nebo posledního ověření úlohy změnilo, budete muset účet Power BI znovu ověřit. Pokud je v tenantovi Azure Active Directory (Azure AD) nakonfigurovaná služba Azure AD Multi-Factor Authentication, musíte také obnovit Power BI autorizaci každé dva týdny. Pokud obnovení neprovedete, můžete se podívat na příznaky, jako je například nedostatek výstupu úlohy nebo `Authenticate user error` v protokolech operací.
 
 Podobně platí, že pokud se úloha spustí po vypršení platnosti tokenu, dojde k chybě a úloha se nezdařila. Pokud chcete tento problém vyřešit, zastavte úlohu, která běží, a přejít na výstup Power BI. Aby nedošlo ke ztrátě dat, vyberte odkaz **obnovit autorizaci** a potom restartujte úlohu z **posledního pozastaveného času**.
 
@@ -228,5 +230,6 @@ Po obnovení autorizace pomocí Power BI se v oblasti autorizace zobrazí Zelen�
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Výstupy Stream Analytics](stream-analytics-define-outputs.md)
-* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční informace o REST API správy Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Azure Stream Analytics](/rest/api/streamanalytics/)
+* [Použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI](./powerbi-output-managed-identity.md)

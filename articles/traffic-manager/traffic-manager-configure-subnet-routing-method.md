@@ -3,20 +3,20 @@ title: Konfigurace směrování provozu v podsíti – Azure Traffic Manager
 description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro směrování provozu z konkrétních podsítí.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994889"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nakonfigurovat metodu směrování provozu podsít�
 
 Ve scénáři popsaném v tomto článku se používá směrování podsítí v závislosti na IP adrese dotazu uživatele. provoz se směruje buď na interní web, nebo na produkční Web.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
@@ -53,7 +53,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |---|---|
     |Název|myIISVMEastUS|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Nový** a potom zadejte *myResourceGroupTM1*.|
     |Umístění| Vyberte **USA – východ**.|
     |||
@@ -75,7 +75,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Nastavení|Hodnota|
     |---|---|
     |Skupina prostředků | Vyberte **Nová** a zadejte *myResourceGroupTM2*.|
-    |Umístění|Západní Evropa|
+    |Umístění|West Europe|
     |Název virtuálního počítače | myIISVMWEurope|
     |Virtuální síť | Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet2* a jako podsíť zadejte *mySubnet*.|
     |||
@@ -86,7 +86,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
 
-V této části nainstalujete server IIS na dva virtuální počítače – *myIISVMEastUS*   &  *myIISVMWEurope*a pak aktualizujete výchozí stránku webu. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
+V této části nainstalujete server IIS na dva virtuální počítače – *myIISVMEastUS*   &  *myIISVMWEurope* a pak aktualizujete výchozí stránku webu. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
 
 1. V levé nabídce vyberte **Všechny prostředky** a pak v seznamu prostředků klikněte na *myIISVMEastUS* ve skupině prostředků *myResourceGroupTM1*.
 2. Na stránce **Přehled** klikněte na **Připojit** a pak v části **Připojit k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**.
@@ -139,7 +139,7 @@ V této části vytvoříte virtuální počítač (*mVMEastUS* a *myVMWestEurop
     |---|---|
     |Název|myVMEastUS|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Existující** a pak vyberte *myResourceGroupTM1*.|
     |||
 
@@ -199,7 +199,7 @@ Přidejte dva virtuální počítače se spuštěným serverem IIS – *myIISVME
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Nastavení směrování podsítě    |   Přidejte IP adresu testovacího virtuálního počítače *myVMEastUS* . Všechny dotazy uživatelů pocházející z tohoto virtuálního počítače se přesměrují na *myTestWebSiteEndpoint*.    |
 
-4. Opakujte kroky 2 a 3 a přidejte další koncový bod s názvem *myProductionEndpoint* pro veřejnou IP adresu *myIISVMWEurope-IP* , která je přidružená k VIRTUÁLNÍMU počítači serveru služby IIS s názvem *myIISVMWEurope*. V části **nastavení směrování podsítě**přidejte IP adresu testovacího virtuálního počítače – *myVMWestEurope*. Jakékoli uživatelské dotazy z tohoto testovacího virtuálního počítače se budou směrovat do koncového bodu – *myProductionWebsiteEndpoint*.
+4. Opakujte kroky 2 a 3 a přidejte další koncový bod s názvem *myProductionEndpoint* pro veřejnou IP adresu *myIISVMWEurope-IP* , která je přidružená k VIRTUÁLNÍMU počítači serveru služby IIS s názvem *myIISVMWEurope*. V části **nastavení směrování podsítě** přidejte IP adresu testovacího virtuálního počítače – *myVMWestEurope*. Jakékoli uživatelské dotazy z tohoto testovacího virtuálního počítače se budou směrovat do koncového bodu – *myProductionWebsiteEndpoint*.
 5. Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
     ![Přidání koncového bodu služby Traffic Manager](./media/traffic-manager-subnet-routing-method/customize-endpoint-with-subnet-routing-eastus.png)

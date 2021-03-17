@@ -1,7 +1,7 @@
 ---
 title: Ukázková zásada API Management-nastavit dobu trvání mezipaměti odpovědí
 titleSuffix: Azure API Management
-description: Ukázka zásad Azure API Management – ukazuje, jak nastavit dobu trvání mezipaměti odpovědí pomocí hodnoty maxAge v hlavičce Cache-Control odesílané back-endu.
+description: Ukázka zásad Azure API Management – ukazuje, jak nastavit dobu trvání mezipaměti odpovědí pomocí hodnoty maxAge v Cache-Control hlavičce odesílané back-endu.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 088dfbcbfe00357c47de4662ac31b52e83d1d8ab
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75442395"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070975"
 ---
 # <a name="set-response-cache-duration"></a>Nastavení doby uložení odpovědi v mezipaměti
 
-Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak nastavit dobu trvání mezipaměti odpovědí pomocí hodnoty maxAge v hlavičce Cache-Control odesílané back-endu. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak nastavit dobu trvání mezipaměti odpovědí pomocí hodnoty maxAge v Cache-Control hlavičce odesílané back-endu. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-reference.md).
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Vložte kód do **vstupního** bloku.
 
@@ -35,5 +35,4 @@ Vložte kód do **vstupního** bloku.
 Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
-+ [Ukázky zásad](../policy-samples.md)
-
++ [Ukázky zásad](../policy-reference.md)

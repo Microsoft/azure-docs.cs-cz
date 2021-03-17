@@ -1,22 +1,18 @@
 ---
 title: Dokud aktivita v Azure Data Factory
 description: Aktivita dokud aktivita ve smyčce provede sadu aktivit, dokud se podmínka spojená s aktivitou nevyhodnotí jako true nebo dokud nevyprší časový limit.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6431321d788e7311e076d302173ffffb96e07876
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417942"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385366"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,11 +51,11 @@ Aktivita Until funguje stejně jako smyčka Do-Until v programovacích jazycích
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název `Until` aktivity | Řetězec | Ano
-typ | Musí být nastavené **na do**. | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
-timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss`(nebo) `hh:mm:ss` . Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
-Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true` . | Pole aktivit. |  Ano
+name | Název `Until` aktivity | Řetězec | Yes
+typ | Musí být nastavené **na do**. | Řetězec | Yes
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Yes
+timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss` . Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | No
+Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true` . | Pole aktivit. |  Yes
 
 ## <a name="example-1"></a>Příklad 1
 

@@ -2,17 +2,17 @@
 title: O upgradu šířky pásma okruhu | ExpressRoute Azure
 description: V tomto článku se seznámíte s osvědčenými postupy pro upgrade šířky pásma okruhu ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 7831e7944321e074c312853e1534c47970ebdfdb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537033"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89397946"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>O upgradu šířky pásma okruhu ExpressRoute
 

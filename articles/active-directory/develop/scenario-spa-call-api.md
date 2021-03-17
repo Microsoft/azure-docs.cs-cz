@@ -1,5 +1,6 @@
 ---
-title: Sestavení jednostránkové aplikace s voláním webového rozhraní API – Microsoft Identity Platform | Azure
+title: Sestavení jednostránkové aplikace s voláním webového rozhraní API
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvořit jednostránkovou aplikaci, která volá webové rozhraní API.
 services: active-directory
 author: rwike77
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dd4a40233fc1c030581fd1ae2827061435a0ab3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882127"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753550"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Jednostránkové aplikace: volání webového rozhraní API
 
@@ -26,7 +27,7 @@ Doporučujeme, abyste `acquireTokenSilent` před voláním webového rozhraní A
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP můžete volat libovolné webové rozhraní API, například Microsoft Graph API. Příklad:
+Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP můžete volat libovolné webové rozhraní API, například Microsoft Graph API. Například:
 
 ```javascript
     var headers = new Headers();
@@ -52,5 +53,4 @@ Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP může
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Přesunout do produkčního prostředí](scenario-spa-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-spa-production.md)prostředí.

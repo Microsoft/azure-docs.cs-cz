@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135806"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91667193"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
@@ -32,7 +32,7 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -43,7 +43,7 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 
 Odchozí připojení je možné definovat pro každou podsíť pomocí překladu adres (NAT).  Několik podsítí v rámci jedné virtuální sítě může mít různé NAT. Podsíť je nakonfigurovaná tak, že určíte, který prostředek brány NAT se má použít. Všechny odchozí toky UDP a TCP z jakékoli instance virtuálního počítače budou používat překlad adres (NAT). 
 
-Překlad adres (NAT) je kompatibilní s prostředky veřejné IP adresy standardního SKU nebo prostředky předpony veřejných IP adres nebo kombinací obou.  Pomocí předpony veřejných IP adres můžete přímo nebo distribuovat veřejné IP adresy předpony napříč více prostředky brány NAT. Překlad adres (NAT) odstraní veškerý provoz do rozsahu IP adres předpony.  Jakékoli seznam povolených IP adres vašich nasazení je teď snadné.
+Překlad adres (NAT) je kompatibilní s prostředky veřejné IP adresy standardního SKU nebo prostředky předpony veřejných IP adres nebo kombinací obou.  Pomocí předpony veřejných IP adres můžete přímo nebo distribuovat veřejné IP adresy předpony napříč více prostředky brány NAT. Překlad adres (NAT) odstraní veškerý provoz do rozsahu IP adres předpony.  Jakékoli filtrování IP vašich nasazení je teď snadné.
 
 Veškerý odchozí provoz pro podsíť se zpracovává automaticky pomocí překladu adres (NAT) bez jakýchkoli konfigurací zákazníka.  Trasy definované uživatelem nejsou nutné. Překlad adres (NAT) má přednost před jinými odchozími scénáři a nahrazuje výchozí internetový cíl podsítě.
 
@@ -51,11 +51,11 @@ Veškerý odchozí provoz pro podsíť se zpracovává automaticky pomocí přek
 
 NAT používá "překlad síťových adres portu" (PNAT nebo PAT) a doporučuje se pro většinu úloh. Dynamické nebo odchylované úlohy je možné snadno přizpůsobit pomocí odchozího toku na vyžádání. Vyhněte se rozsáhlému plánování, předběžnému přidělení a konečnému nadměrnému zajišťování odchozích prostředků. Prostředky portu SNAT jsou sdílené a dostupné ve všech podsítích pomocí konkrétního prostředku brány NAT a v případě potřeby jsou k dispozici.
 
-Veřejná IP adresa připojená k NAT poskytuje až 64 000 souběžných toků pro UDP a TCP. Můžete začít s jednou IP adresou a škálovat až 16 veřejných IP adres.
+Veřejná IP adresa připojená k překladu adres (NAT) poskytuje až 64 000 souběžných toků pro UDP a TCP. Můžete začít s jednou IP adresou a škálovat až 16 IP adres pomocí veřejných IP adres nebo předpon veřejných IP adres nebo obojího.  Prostředek brány NAT bude používat všechny IP adresy přidružené k prostředku pro odchozí připojení ze všech podsítí nakonfigurovaných se stejným prostředkem brány NAT.
 
 Překlad adres (NAT) umožňuje vytvářet toky z virtuální sítě na Internet. Návratový provoz z Internetu je povolený jenom v reakci na aktivní tok.
 
-Na rozdíl od odchozí SNAT nástroje pro vyrovnávání zatížení nemá překlad adres (NAT) žádná omezení, která privátní IP instance virtuálního počítače může vytvořit odchozí připojení.  Sekundární konfigurace IP adresy můžou vytvářet odchozí připojení k Internetu pomocí překladu adres (NAT).
+Na rozdíl od odchozí SNAT nástroje pro vyrovnávání zatížení nemá překlad adres (NAT) žádná omezení, která privátní IP instance virtuálního počítače může vytvořit odchozí připojení.  Primární a sekundární konfigurace IP adres můžou vytvářet odchozí připojení k Internetu pomocí překladu adres (NAT).
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>Koexistence příchozích a odchozích
 
@@ -123,31 +123,17 @@ Provoz vašeho překladu adres (NAT) můžete monitorovat prostřednictvím mult
 
 V obecné dostupnosti je k dispozici alespoň 99,9% cesta k datům NAT.
 
-
 ## <a name="pricing"></a>Ceny
 
-Brána NAT se účtuje se dvěma samostatnými měřiči:
-
-| Měřič | Sazba |
-| --- | --- |
-| Hodiny prostředků | $0.045 za hodinu |
-| Zpracovaná data | $0.045/GB |
-
-Účty hodin prostředků po dobu, po kterou existuje prostředek brány NAT.
-Účty zpracované daty pro veškerý provoz zpracovaných prostředkem brány NAT
+Podrobnosti o cenách najdete v tématu [Virtual Network ceny](https://azure.microsoft.com/pricing/details/virtual-network).
 
 ## <a name="availability"></a>Dostupnost
 
-Virtual Network překlad adres (NAT) a prostředek brány NAT jsou k dispozici ve všech [oblastech](https://azure.microsoft.com/global-infrastructure/regions/)veřejného cloudu Azure.
-
-## <a name="support"></a>Podpora
-
-Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
+Virtual Network překlad adres (NAT) a prostředek brány NAT jsou k dispozici ve všech oblastech všech [oblastí](https://azure.microsoft.com/global-infrastructure/regions/)cloudu Azure.
 
 ## <a name="suggestions"></a>Návrhy
 
 Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
-
 
 ## <a name="limitations"></a>Omezení
 
@@ -159,4 +145,3 @@ Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se 
 
 * Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
 * [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
-

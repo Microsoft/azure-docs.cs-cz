@@ -1,19 +1,16 @@
 ---
 title: Migrace clusteru HBA do nové verze – Azure HDInsight
 description: Postup Migrace clusterů Apache HBA do novější verze ve službě Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079543"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942977"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
 
@@ -30,19 +27,19 @@ Před upgradem serverů Apache HBA ověřte, zda jsou verze adaptérů HBA na zd
 
 Tady je příklad matice kompatibility verzí. Y značí kompatibilitu a N označuje potenciální nekompatibilitu:
 
-| Typ kompatibility | Hlavní verze| Dílčí verze | Patch |
+| Typ kompatibility | Hlavní verze| Podverze | Patch |
 | --- | --- | --- | --- |
-| Kompatibilita komunikace mezi klientem a serverem | N | Ano | Ano |
-| Server – Kompatibilita serveru | N | Ano | Ano |
-| Kompatibilita formátu souborů | N | Ano | Ano |
-| Kompatibilita rozhraní API klienta | N | Ano | Ano |
-| Binární kompatibilita klienta | N | N | Ano |
+| Client-Server kompatibilita drátů | N | Y | Y |
+| Server-Server kompatibilita | N | Y | Y |
+| Kompatibilita formátu souborů | N | Y | Y |
+| Kompatibilita rozhraní API klienta | N | Y | Y |
+| Binární kompatibilita klienta | N | N | Y |
 | **Omezená Kompatibilita rozhraní API na straně serveru** |  |  |  |
-| Stable | N | Ano | Ano |
-| Vyvíjejí | N | N | Ano |
+| Stable | N | Y | Y |
+| Vyvíjejí | N | N | Y |
 | Nestabilní | N | N | N |
-| Kompatibilita závislostí | N | Ano | Ano |
-| Provozní kompatibilita | N | N | Ano |
+| Kompatibilita závislostí | N | Y | Y |
+| Provozní kompatibilita | N | N | Y |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgradovat se stejnými hlavními verzemi Apache HBA
 
@@ -52,7 +49,7 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
 
 1. [Nastavte nový cílový cluster HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) pomocí stejného účtu úložiště, ale s jiným názvem kontejneru:
 
-    ![Použijte stejný účet úložiště, ale vytvořte jiný kontejner.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   ![Použijte stejný účet úložiště, ale vytvořte jiný kontejner.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
 1. Vyprázdněte svůj zdrojový cluster HBA, což je cluster, který upgradujete. HBA zapisuje příchozí data do úložiště v paměti, které se označuje jako _setSize paměťového úložiště_. Jakmile setSize paměťového úložiště dosáhne určité velikosti, HBA ji vyprázdní na disk pro dlouhodobé uložení v účtu úložiště clusteru. Při odstraňování starého clusteru se memstores recykluje, potenciálně ztratí data. Chcete-li ručně vyprázdnit setSize paměťového úložiště pro každou tabulku na disk, spusťte následující skript. Nejnovější verzi tohoto skriptu je na [GitHubu](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)Azure.
 
@@ -182,19 +179,49 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
 
     ![Zaškrtněte políčko Zapnout režim údržby pro adaptéry HBA a pak potvrďte](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
+1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.
+
+   Zazálohujte WAL do adresáře HDFS tak, že spustíte níže uvedené příkazy z relace SSH na libovolném uzlu Zookeeper nebo uzlech pracovního procesu původního clusteru.
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup**
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   ```
+    
 1. Přihlaste se k Ambari na novém clusteru HDInsight. Změňte `fs.defaultFS` Nastavení HDFS tak, aby odkazovalo na název kontejneru používaného původním clusterem. Toto nastavení je uvedené v části **HDFS > config > advanced > Advanced Core-site**.
 
-    ![V Ambari klikněte na služby > HDFS > konfigurace > Upřesnit.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   ![V Ambari klikněte na služby > HDFS > konfigurace > Upřesnit.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
-    ![V Ambari změňte název kontejneru.](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   ![V Ambari změňte název kontejneru.](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.
 
    Změňte `hbase.rootdir` cestu tak, aby odkazovala na kontejner původního clusteru.
 
-    ![V Ambari změňte název kontejneru pro adaptéry HBA RootDir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   ![V Ambari změňte název kontejneru pro adaptéry HBA RootDir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro HBA clustery s funkcí rozšířené zápisy a jenom v případech, kdy byl původní cluster clusterem HBA s funkcí rozšířené zápisu.
 
-1. Pokud upgradujete HDInsight 3,6 na 4,0, postupujte podle následujících kroků, jinak přejděte ke kroku 10:
+   Vyčistěte data Zookeeper a WAL FS pro tento nový cluster. Na libovolném uzlu Zookeeper nebo uzlech pracovních procesů vydejte následující příkazy:
+
+   ```bash
+   hbase zkcli
+   rmr /hbase-unsecure
+   quit
+
+   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+   ```
+
+1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.
+   
+   Obnovte WAL dir do nového clusteru HDFS z relace SSH na libovolném uzlu Zookeeper nebo pracovních uzlech nového clusteru.
+   
+   ```bash
+   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   ```
+   
+1. Pokud upgradujete HDInsight 3,6 na 4,0, postupujte podle následujících kroků, jinak přejděte ke kroku 13:
+
     1. V Ambari restartujte všechny požadované služby, a to tak, že vyberete **služby**  >  **restartovat všechny požadované**.
     1. Zastavte službu HBA.
     1. Pomocí SSH na uzel Zookeeper a spuštěním příkazu [zkCli](https://github.com/go-zkcli/zkcli) `rmr /hbase-unsecure` odeberte z Zookeeper kořenový znode HBA.

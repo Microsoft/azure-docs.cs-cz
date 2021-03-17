@@ -1,25 +1,27 @@
 ---
 title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvářet a spravovat virtuální sítě Azure pro virtuální počítače s Linuxem.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
+ms.collection: linux
 tags: azure-resource-manager
+ms.subservice: networking
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6356d9b587847ff2b49574b970109ada0d785660
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500023"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564624"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
 
@@ -300,7 +302,4 @@ V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezp
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-Přejděte na další kurs, abyste se dozvěděli o zabezpečení dat na virtuálních počítačích pomocí služby Azure Backup. 
-
-> [!div class="nextstepaction"]
-> [Zálohování virtuálních počítačů se systémem Linux v Azure](./tutorial-backup-vms.md)
+Další informace o ochraně disků virtuálních počítačů najdete v tématu [zálohování a zotavení po havárii pro disky](../backup-and-disaster-recovery-for-azure-iaas-disks.md).

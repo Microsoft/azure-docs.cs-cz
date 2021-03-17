@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157921"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674442"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -41,7 +41,7 @@ Vyplňte všechna pole ve formuláři. Tento formulář je podobný formuláři,
 
 ![Vytvořit formulář IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v zeměpisných oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
+**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v zeměpisných oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království** a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
 
 Po vyplnění všech polí vyberte **vytvořit**.
 
@@ -50,19 +50,19 @@ Po vyplnění všech polí vyberte **vytvořit**.
 Pokud už máte aplikaci Azure IoT Central, můžete ji odstranit nebo ji přesunout do jiného předplatného nebo skupiny prostředků v Azure Portal.
 
 > [!NOTE]
-> V Azure Portal neuvidíte aplikace vytvořené v cenovém plánu zdarma, protože nejsou přidružené k vašemu předplatnému.
+> Aplikace vytvořené pomocí *bezplatného* plánu nevyžadují předplatná Azure, a proto je v Azure Portal nenajdete v seznamu předplatného Azure. Na portálu IoT Central můžete zobrazit a spravovat jenom bezplatné aplikace.
 
 Začněte tím, že vyberete **všechny prostředky** na portálu. Vyberte **Zobrazit skryté typy** a začněte psát název vaší aplikace ve **filtru podle názvu** a vyhledejte ji. Pak vyberte aplikaci IoT Central, kterou chcete spravovat.
 
 Pokud chcete přejít na aplikaci, vyberte **IoT Central adresa URL aplikace**:
 
-![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image3.png)
+![Snímek obrazovky zobrazující stránku "Přehled" s zvýrazněnou adresou URL aplikace IoT Central.](media/howto-manage-iot-central-from-portal/image3.png)
 
 Pokud chcete aplikaci přesunout do jiné skupiny prostředků, vyberte u skupiny prostředků možnost **změnit** . Na stránce **přesunout prostředky** vyberte skupinu prostředků, do které chcete tuto aplikaci přesunout:
 
-![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image4a.png)
+![Snímek obrazovky zobrazující stránku "Přehled" se zvýrazněnou skupinou prostředků (změnit).](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Pokud chcete aplikaci přesunout do jiného předplatného, vyberte u předplatného možnost **změnit** . Na stránce **Přesunutí prostředků** vyberte předplatné, do kterého chcete tuto aplikaci přesunout:
+Pokud chcete aplikaci přesunout do jiného předplatného, vyberte u předplatného možnost  **změnit** . Na stránce **Přesunutí prostředků** vyberte předplatné, do kterého chcete tuto aplikaci přesunout:
 
 ![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image5a.png)
 

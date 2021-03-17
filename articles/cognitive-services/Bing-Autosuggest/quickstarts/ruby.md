@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Ruby'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu a Ruby.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: e9b990f7e79fe0d70a213db5739153fe1e558f3c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: abd0c842985bbfe957f8d6bec344209d52ce6b12
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930195"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338686"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Ruby
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá aplikace v rámci Ruby pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -38,7 +43,7 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
     require 'json'
     ```
 
-2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Použijte globální koncový bod v následujícím kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Použijte globální koncový bod v následujícím kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -154,4 +159,4 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
 ## <a name="see-also"></a>Viz také
 
 - [Co jsou Automatické návrhy Bingu?](../get-suggested-search-terms.md)
-- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

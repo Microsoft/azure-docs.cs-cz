@@ -9,14 +9,14 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071180"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371983"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při přebírání služeb při selhání fyzického počítače nebo virtuálního počítače VMware do Azure
 
 Při převzetí služeb při selhání virtuálního počítače do Azure se může zobrazit jedna z následujících chyb. K řešení potíží použijte popsané kroky pro jednotlivé chybové podmínky.
 
@@ -55,7 +55,7 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
     Pokud je požadováno vysazování, poskytuje následující výsledek:
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -84,8 +84,8 @@ Podrobné pokyny k odstraňování potíží s SSH najdete v [naší dokumentaci
 
 Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
-1. Přejděte na **síť virtuálních počítačů**  >  **Networking**, klikněte na název požadovaného síťového rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![IPConfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. Přejděte na **síť virtuálních počítačů**  >  **Networking**, klikněte na název požadovaného síťového rozhraní.  ![Snímek obrazovky ukazuje stránku sítě pro virtuální počítač se zvoleným názvem síťového rozhraní.](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![Snímek obrazovky se zobrazí stránka Konfigurace I P pro síťové rozhraní s vybraným názvem konfigurace I P.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Pokud chcete povolit veřejnou IP adresu, klikněte na **Povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Klikněte na **konfigurovat požadovaná nastavení**  >  **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Zadejte název veřejné adresy, zvolte výchozí možnosti pro položku **SKU** a **přiřazení**a pak klikněte na **OK**.
@@ -168,7 +168,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 2. Pokud výstup předchozích příkazů ukazuje, že jsou definovaná nastavení http_proxy nebo https_proxy, pomocí jedné z následujících metod odblokujte komunikaci hlavního cíle pomocí konfiguračního serveru:
    
-   - Stáhněte si [Nástroj PsExec](https://aka.ms/PsExec).
+   - Stáhněte si [Nástroj PsExec](/sysinternals/downloads/psexec).
    - Použijte nástroj pro přístup k systémovému kontextu uživatele a určete, jestli je adresa proxy serveru nakonfigurovaná. 
    - Pokud je proxy server nakonfigurován, otevřete aplikaci Internet Explorer v kontextu uživatele systému pomocí nástroje PsExec.
   

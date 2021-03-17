@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: 5468cfc733b037f6287e8536c8c85994f0840161
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231249"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Obnovení databáze spravované instance do jiné geografické oblasti pomocí rozhraní příkazového řádku
@@ -26,7 +26,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Existující dvojici spravovaných instancí najdete v tématu [Vytvoření spravované instance Azure SQL pomocí](sql-database-create-configure-managed-instance-cli.md)rozhraní příkazového řádku Azure.
 
@@ -56,7 +56,7 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Skript | Description |
+| Skript | Popis |
 |---|---|
 | [AZ SQL MIDB](/cli/azure/sql/midb) | Příkazy databáze spravované instance. |
 

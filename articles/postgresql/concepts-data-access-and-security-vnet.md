@@ -1,17 +1,17 @@
 ---
 title: Pravidla virtuální sítě – Azure Database for PostgreSQL – jeden server
 description: Naučte se používat koncové body služby Virtual Network (VNET) pro připojení k Azure Database for PostgreSQLmu jednomu serveru.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 544fabf9a32eaa7ef7457fc26ae9212b9fce9872
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b875936e13edfe0eff12f253836b093796951308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837206"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876322"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Použití koncových bodů a pravidel služby Virtual Network pro Azure Database for PostgreSQL-Single server
 
@@ -19,7 +19,7 @@ ms.locfileid: "87837206"
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat [virtuální síť][vm-virtual-network-overview] (VNET) a [koncový bod služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, které se má odkazovat. Následující obrázek ukazuje, jak koncový bod služby Virtual Network funguje s Azure Database for PostgreSQL:
 
-![Příklad fungování koncového bodu služby virtuální sítě](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="Příklad fungování koncového bodu služby virtuální sítě":::
 
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech veřejného cloudu Azure, kde Azure Database for PostgreSQL nasazené pro Pro obecné účely a paměťově optimalizované servery.
@@ -32,9 +32,9 @@ Můžete také zvážit použití [privátního odkazu](concepts-data-access-and
 
 **Virtuální síť:** Můžete mít virtuální sítě přidružené k vašemu předplatnému Azure.
 
-**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
+**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure v rámci virtuální sítě jsou přiřazené k podsíti. Podsíť může obsahovat několik virtuálních počítačů a/nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
 
-**Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network][vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby se vztahuje také na služby Azure Database for PostgreSQL a MySQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** na koncový bod služby virtuální sítě, nakonfiguruje se provoz koncového bodu služby pro všechny Azure SQL Database, Azure Database for PostgreSQL a Azure Database for MySQL servery v podsíti. 
+**Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network][vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby se vztahuje také na služby Azure Database for PostgreSQL a MySQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** pro koncový bod služby virtuální sítě, nakonfiguruje se přenos koncového bodu služby pro Azure Database Services: SQL Database, Azure synapse Analytics, Azure Database for PostgreSQL a Azure Database for MySQL servery v podsíti. 
 
 **Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro server Azure Database for PostgreSQL je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru Azure Database for PostgreSQL. Aby byl v seznamu ACL pro váš Azure Database for PostgreSQL Server, podsíť musí obsahovat název typu **Microsoft. SQL** .
 
@@ -44,13 +44,13 @@ Pravidlo virtuální sítě přikáže serveru Azure Database for PostgreSQL, ab
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Výhody pravidla virtuální sítě
 
-Dokud neprovedete akci, virtuální počítače v podsítích nebudou moct komunikovat se serverem Azure Database for PostgreSQL. Jedna akce, která stanovuje komunikaci, je vytvoření pravidla virtuální sítě. Odůvodnění výběru přístupu pravidla virtuální sítě vyžaduje diskuzi o porovnání a kontrastu zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
+Dokud neprovedete akci, virtuální počítače ve vašich podsítích nebudou s vaším Azure Database for PostgreSQL serverem komunikovat. Jedna akce, která stanovuje komunikaci, je vytvoření pravidla virtuální sítě. Odůvodnění výběru přístupu pravidla virtuální sítě vyžaduje diskuzi o porovnání a kontrastu zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Povolit přístup ke službám Azure
+### <a name="allow-access-to-azure-services"></a>Povolení přístupu ke službám Azure
 
 Podokno zabezpečení připojení má tlačítko **pro zapnutí/vypnutí** , které je označeno jako **povolený přístup ke službám Azure**. Nastavení **on** umožňuje komunikaci ze všech IP adres Azure a všech podsítí Azure. Tyto IP adresy nebo podsítě Azure možná nevlastníte. Toto **Nastavení** je pravděpodobně více otevřené, než požadujete, aby byla databáze Azure Database for PostgreSQL. Funkce pravidla virtuální sítě nabízí mnohem přesnější kontrolu.
 
-### <a name="b-ip-rules"></a>B. Pravidla protokolu IP
+### <a name="ip-rules"></a>Pravidla protokolu IP
 
 Brána Azure Database for PostgreSQL firewall umožňuje zadat rozsahy IP adres, ze kterých se do databáze Azure Database for PostgreSQL akceptují komunikace. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Ale mnoho uzlů v privátní síti Azure má nakonfigurovanou *dynamickou* IP adresu. Dynamické IP adresy se můžou změnit, třeba když se váš virtuální počítač restartuje. V provozním prostředí by se Folly zadat dynamickou IP adresu v pravidle brány firewall.
 
@@ -82,7 +82,7 @@ V rámci správy koncových bodů služby Virtual Network je oddělení rolí za
 - **Správce sítě:** &nbsp; Zapněte koncový bod.
 - **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru Azure Database for PostgreSQL.
 
-*Alternativa RBAC:*
+*Alternativa k Azure RBAC:*
 
 Role správce sítě a správce databáze mají více možností, než je nutné ke správě pravidel virtuální sítě. Je potřeba jenom podmnožina jejich schopností.
 
@@ -106,7 +106,7 @@ Pro Azure Database for PostgreSQL funkce pravidla virtuální sítě má násled
 
 - Pravidla virtuální sítě se vztahují jenom na Azure Resource Manager virtuální sítě; a ne pro [model nasazení Classic][arm-deployment-model-568f] .
 
-- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for PostgreSQL pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure SQL Data Warehouse.
+- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for PostgreSQL pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure synapse Analytics.
 
 - Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 
@@ -124,7 +124,7 @@ Aby bylo možné Azure Database for PostgreSQL komunikaci z okruhu, musíte vytv
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány firewall virtuální sítě na server bez zapnutí koncových bodů služby virtuální sítě
 
-Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve**vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
+Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve** vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**.  To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
 
 Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI nebo portálu.
 
@@ -147,7 +147,7 @@ Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI n
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]: ../role-based-access-control/overview.md
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 

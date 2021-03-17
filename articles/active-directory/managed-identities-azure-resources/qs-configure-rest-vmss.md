@@ -3,7 +3,7 @@ title: Konfigurace spravovaných identit v sadě škálování virtuálních po�
 description: Podrobné pokyny pro konfiguraci spravovaných identit systému a uživatelem přiřazených pro sadu škálování virtuálního počítače Azure pomocí technologie KUDRLINKOU k provádění REST API volání.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/25/2018
-ms.author: markvi
+ms.date: 01/29/2021
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf514480f0ca247606ffbc50148556eeed007c8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bb14a6a82535ac5a7d36213b082d08aedbb44da5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921499"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090616"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí REST API volání
 
@@ -33,24 +33,24 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 - Povolení a zakázání spravované identity přiřazené systémem v sadě škálování virtuálních počítačů Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem v sadě škálování virtuálních počítačů Azure
 
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
+
 - K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení rolí Azure:
 
-    > [!NOTE]
-    > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+  - [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
 
-    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
-    - Role [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
-    - Role [operátora spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) pro přiřazení a odebrání uživatelsky přiřazené identity z a do sady škálování virtuálního počítače.
-- Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
-- Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo systém pro [distribuci Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` účtu, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
+  - Role [Přispěvatel spravovaných identit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
 
+  - Role [operátora spravované identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) pro přiřazení a odebrání uživatelsky přiřazené identity z a do sady škálování virtuálního počítače.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+  > [!NOTE]
+  > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
@@ -66,7 +66,7 @@ Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spr
    az group create --name myResourceGroup --location westus
    ```
 
-2. Vytvořte [síťové rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro sadu škálování virtuálního počítače:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az-network-nic-create) pro sadu škálování virtuálního počítače:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -78,7 +78,7 @@ Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spr
    az account get-access-token
    ``` 
 
-4. Vytvořte sadu škálování virtuálního počítače pomocí OBLÉ pro volání koncového bodu REST Azure Resource Manager. Následující příklad vytvoří v *myResourceGroup* sadu škálování virtuálního počítače s názvem *myVMSS* , která má spravovanou identitu přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+4. Pomocí Azure Cloud Shell vytvořte sadu škálování virtuálního počítače pomocí metody KUDRLINKOU pro volání koncového bodu Azure Resource Manager REST. Následující příklad vytvoří v *myResourceGroup* sadu škálování virtuálního počítače s názvem *myVMSS* , která má spravovanou identitu přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -325,7 +325,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    az account get-access-token
    ```
 
-2. Vytvořte [síťové rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro sadu škálování virtuálního počítače:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az-network-nic-create) pro sadu škálování virtuálního počítače:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

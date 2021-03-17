@@ -1,26 +1,27 @@
 ---
-title: Filtrování, řazení a stránkování Media Services entit
-titleSuffix: Azure Media Services
+title: Filtrování, řazení a stránkování entit
 description: Přečtěte si o filtrování, řazení a stránkování entit Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: overview
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 19febc833f087afdfecde3274a1044598d082521
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053246"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955305"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je dostupná při výpisu Azure Media Servicesch entit v3.
 
@@ -29,7 +30,7 @@ Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je 
 * Vlastnosti entit, které jsou typu, `Datetime` jsou vždy ve formátu UTC.
 * Prázdný znak v řetězci dotazu by měl být zakódovaný pomocí adresy URL před odesláním žádosti.
 
-## <a name="comparison-operators"></a>Operátory porovnávání
+## <a name="comparison-operators"></a>Relační operátory
 
 K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
@@ -70,7 +71,7 @@ Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Přík
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-K řazení výsledků ve vzestupném nebo sestupném pořadí, přidejte buď `asc` nebo `desc` k názvu pole oddělené mezerou. Například: `$orderby properties/created desc`.
+K řazení výsledků ve vzestupném nebo sestupném pořadí, přidejte buď `asc` nebo `desc` k názvu pole oddělené mezerou. Příklad: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Přeskočit token
 
@@ -156,7 +157,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtrovat|Objednání|
+|Název entity|Název vlastnosti|Filtrovat|Objednávka|
 |---|---|---|---|
 |[Aktiva](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
 ||Properties. alternateId |`eq`||

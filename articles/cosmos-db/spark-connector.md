@@ -3,17 +3,19 @@ title: Připojit Apache Spark k Azure Cosmos DB
 description: Seznamte se s Azure Cosmos DB konektor Spark, který umožňuje připojení Apache Spark k Azure Cosmos DB.
 author: tknandu
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445936"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359553"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Můžete spouštět úlohy [Spark](https://spark.apache.org/) s daty uloženými v Azure Cosmos DB pomocí konektoru Cosmos DB Spark. Cosmos lze použít pro zpracování dávkových a datových proudů a jako vrstvu obsluhy pro přístup s nízkou latencí.
 
@@ -29,12 +31,14 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 > Tento konektor podporuje rozhraní API jádra (SQL) Azure Cosmos DB.
 > Pro Cosmos DB rozhraní MongoDB API použijte [konektor MongoDB Spark](https://docs.mongodb.com/spark-connector/master/).
 > Pro Cosmos DB rozhraní API Cassandra použijte [konektor Cassandra Spark](https://github.com/datastax/spark-cassandra-connector).
->
 
-## <a name="quickstart"></a>Rychlý start
+> [!IMPORTANT]
+> Konektor Azure Cosmos DB Spark se v současné době nepodporuje u účtů bez [serveru](serverless.md) . Bude se adresovat jako nabídka bez serveru bude obecně dostupná.
 
-* Postupujte podle kroků v [části Začínáme se sadou Java SDK](sql-api-async-java-get-started.md) a nastavte účet Cosmos DB a naplňte data.
-* Postupujte podle kroků v [Azure Databricks Začínáme](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
+## <a name="quickstart"></a>Rychlé zprovoznění
+
+* Postupujte podle kroků v [části Začínáme se sadou Java SDK](./create-sql-api-java.md) a nastavte účet Cosmos DB a naplňte data.
+* Postupujte podle kroků v [Azure Databricks Začínáme](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
 * Nyní můžete vytvořit nové poznámkové bloky a importovat knihovnu konektoru Cosmos DB. Podrobnosti o tom, jak nastavit pracovní prostor, najdete v článku o [práci s konektorem Cosmos DB](#bk_working_with_connector) .
 * Následující část obsahuje fragmenty kódu, jak číst a zapisovat pomocí konektoru.
 
@@ -217,16 +221,16 @@ df
 ```
 Další informace o dalších fragmentech a koncových ukázkách najdete v tématu [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
 
-## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a>Práce s konektorem
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a> Práce s konektorem
 
 Konektor můžete vytvořit ze zdroje na GitHubu nebo stáhnout Uber jar z Maven na odkazech níže.
 
 | Spark | Scala | Nejnovější verze |
 |---|---|---|
 | 2.4.0 | 2,11 | [Azure – cosmosdb – spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)
-| 2.3.0 | 2,11 | [Azure-cosmosdb-spark_2.3.0 _ 2.11 _ 1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
-| 2.2.0 | 2,11 | [Azure-cosmosdb-spark_2.2.0 _ 2.11 _ 1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
-| 2.1.0 | 2,11 | [Azure-cosmosdb-spark_2.1.0 _ 2.11 _ 1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
+| 2.3.0 | 2,11 | [Azure-cosmosdb-spark_2.3.0 _2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
+| 2.2.0 | 2,11 | [Azure-cosmosdb-spark_2.2.0 _2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
+| 2.1.0 | 2,11 | [Azure-cosmosdb-spark_2.1.0 _2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
 
 ### <a name="using-databricks-notebooks"></a>Použití poznámkových bloků datacihly
 
@@ -247,7 +251,7 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 
 ### <a name="using-jupyter-notebooks"></a>Použití poznámkových bloků Jupyter
 
-Pokud používáte poznámkové bloky Jupyter v HDInsight, můžete `%%configure` k určení souřadnic Maven spojnice použít buňku Spark-Magic.
+Pokud používáte Jupyter Notebook v rámci služby HDInsight, můžete `%%configure` k určení souřadnic Maven spojnice použít buňku Spark-Magic.
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -273,7 +277,7 @@ mvn clean package
 
 [Úložiště GitHub Cosmos DB Spark](https://github.com/Azure/azure-cosmosdb-spark) má následující ukázkové poznámkové bloky a skripty, které můžete vyzkoušet.
 
-* **Čas provozu v čase pomocí Sparku a Cosmos dB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Připojte Spark pro Cosmos DB pomocí služby HDInsight Jupyter poznámkového bloku, abyste předvedli Spark SQL, GraphFrames a předpověď zpoždění letu pomocí kanálů ml.
+* **Čas provozu v čase pomocí Sparku a Cosmos dB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Připojte Spark pro Cosmos DB pomocí služby HDInsight Jupyter notebook, abyste předvedli Spark SQL, GraphFrames a předpověď zpoždění letu pomocí kanálů ml.
 * **Zdroj Twitteru s Apache Spark a Azure Cosmos DB změnu kanálu**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Použití Apache Spark k dotazování Cosmos DB grafů**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * **[Připojení Azure Databricks k Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** pomocí `azure-cosmosdb-spark` .  Zde je také Azure Databricks verze [poznámkového bloku on-time Performance letu](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).
@@ -281,7 +285,7 @@ mvn clean package
 
 ## <a name="more-information"></a>Další informace
 
-Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki) včetně těchto:
+Na wikiwebu máme další informace, `azure-cosmosdb-spark` [](https://github.com/Azure/azure-cosmosdb-spark/wiki) včetně těchto:
 
 * [Uživatelská příručka ke konektoru Spark Azure Cosmos DB](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
 * [Příklady agregací](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
@@ -299,7 +303,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 
 ### <a name="performance"></a>Výkon
 
-* [Tipy pro zvýšení výkonu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
+* [Tipy ke zvýšení výkonu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
 * [Dotazy na testovací běhy](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
 * [Zápis testovacích běhů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
@@ -309,7 +313,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 * [Změny ukázek informačních kanálů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Ukázky strukturovaného streamu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 * [Monitorování úloh Spark pomocí Application Insights](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

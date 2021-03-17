@@ -1,26 +1,22 @@
 ---
 title: Kopírování dat z SQL Server do úložiště objektů BLOB pomocí PowerShellu
 description: Zjistěte, jak kopírovat data z místního úložiště dat do cloudu Azure s využitím místního prostředí Integration Runtime ve službě Azure Data Factory.
-services: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: 6eec9c197f0bc17a5237a05e198b12cb769da89d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
+ms.date: 02/18/2021
+ms.openlocfilehash: 33c3138013c43062465cce16189e6c19d22ae4d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724927"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kurz: kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
 
@@ -45,12 +41,12 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 ### <a name="azure-roles"></a>Role Azure
 Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, přiřazený k roli *Přispěvatel* nebo *vlastník* nebo musí být *správcem* předplatného Azure.
 
-Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal, v pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázkové pokyny pro přidání uživatele k roli najdete v článku o [správě přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal, v pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md) článku.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 a 2017
 V tomto kurzu použijete databázi SQL Server jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této SQL Server databáze (zdroj) do úložiště objektů BLOB v Azure (jímka). Ve své databázi SQL Serveru pak vytvoříte tabulku **emp** a vložíte do ní několik ukázkových záznamů.
 
-1. Spusťte aplikaci SQL Server Management Studio. Pokud na vašem počítači ještě není nainstalovaná, přejděte na stránku pro [stažení aplikace SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+1. Spusťte aplikaci SQL Server Management Studio. Pokud na vašem počítači ještě není nainstalovaná, přejděte na stránku pro [stažení aplikace SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 1. Pomocí svých přihlašovacích údajů se přihlaste ke své instanci SQL Serveru.
 
@@ -201,7 +197,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     Name              : ADFTutorialIR
     Type              : SelfHosted
     ResourceGroupName : <resourceGroupName>
@@ -218,7 +214,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     State                     : NeedRegistration
     Version                   :
     CreateTime                : 9/10/2019 3:24:09 AM
@@ -299,7 +295,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     f. Zadejte uživatelské jméno.
 
-    g. Zadejte heslo přidružené k tomuto uživatelskému jménu.
+    například Zadejte heslo přidružené k tomuto uživatelskému jménu.
 
     h. Pokud chcete potvrdit, že se prostředí Integration Runtime může připojit k SQL Serveru, klikněte na **Test**.  
     ![Připojení bylo úspěšné.](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
@@ -345,7 +341,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
 
    Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroup name>
     DataFactoryName   : <dataFactory name>
@@ -413,7 +409,7 @@ V tomto kroku propojíte instanci SQL Server s datovou továrnou.
 
     > [!IMPORTANT]
     > - Vyberte odpovídající část na základě ověřování, které používáte pro připojení k vaší instanci SQL Serveru.
-    > - Nahraďte **\<integration runtime name>** názvem vašeho prostředí Integration runtime.
+    > - Nahraďte  **\<integration runtime name>** názvem vašeho prostředí Integration runtime.
     > - Před uložením souboru, nahraďte **\<servername>** , **\<databasename>** , **\<username>** a **\<password>** s hodnotami vaší instance SQL Server.
     > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *MyDomain \\ \\ MyUser*.
 
@@ -469,7 +465,7 @@ V tomto kroku definujete datovou sadu, která představuje data v instanci datab
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     DatasetName       : SqlServerDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -522,7 +518,7 @@ Propojená služba má informace o připojení, které datová továrna použív
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     DatasetName       : AzureBlobDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -602,7 +598,7 @@ V tomto kurzu pomocí aktivity kopírování vytvoříte kanál. Aktivita kopí
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     PipelineName      : SQLServerToBlobPipeline
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -639,7 +635,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 
     Zde je výstup tohoto ukázkového spuštění:
 
-    ```JSON
+    ```console
     ResourceGroupName    : <resourceGroupName>
     DataFactoryName      : <dataFactoryName>
     ActivityRunId        : 24af7cf6-efca-4a95-931d-067c5c921c25
@@ -717,7 +713,7 @@ Kanál v kontejneru objektů blob `adftutorial` automaticky vytvoří výstupní
 
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úložišti objektů blob v Azure. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úložišti objektů blob v Azure. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

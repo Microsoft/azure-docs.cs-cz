@@ -8,32 +8,32 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24dafd63de1a37140c6a56547c4701729df1c8fb
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502728"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566550"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením TLS pomocí Azure CLI
 
-Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro [ukončení protokolu TLS](ssl-overview.md). U back-end serverů můžete použít [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
+Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro [ukončení protokolu TLS](ssl-overview.md). U back-end serverů můžete použít [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+* Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+* Nastavit síť
+* Vytvořit aplikační bránu s certifikátem
+* Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-ssl-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \

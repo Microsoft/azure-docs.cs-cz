@@ -1,17 +1,17 @@
 ---
 title: Optimalizace výkonu – Spark s Azure Data Lake Storage Gen1
 description: Přečtěte si pokyny k ladění výkonu pro Spark v Azure HDInsight a Azure Data Lake Storage Gen1.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.author: twooley
+ms.openlocfilehash: 8a39e14b70827947687b7613b9ff86f18017ddfe
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856919"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722500"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro Spark ve službě HDInsight a Azure Data Lake Storage Gen1
 
@@ -22,8 +22,8 @@ Při ladění výkonu Sparku je potřeba vzít v úvahu počet aplikací, které
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Spuštění clusteru Spark na data Lake Storage Gen1**. Další informace najdete v tématu [použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Pokyny k ladění výkonu na data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) . 
+* **Spuštění clusteru Spark na data Lake Storage Gen1**. Další informace najdete v tématu [použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)
+* **Pokyny k ladění výkonu na data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](./data-lake-store-performance-tuning-guidance.md) . 
 
 ## <a name="parameters"></a>Parametry
 

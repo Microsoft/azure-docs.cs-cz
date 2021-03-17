@@ -2,7 +2,7 @@
 title: Připojte virtuální počítač Ubuntu k Azure AD Domain Services | Microsoft Docs
 description: Naučte se konfigurovat virtuální počítač Ubuntu Linux a připojit se k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
+ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283142"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619483"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s Ubuntu Linux k spravované doméně Azure Active Directory Domain Services
 
@@ -25,7 +25,7 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač Ubuntu Linux ke spravované doméně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -77,7 +77,7 @@ Po dokončení uložte a zavřete soubor *hosts* pomocí `:wq` příkazu editoru
 
 ## <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
-Virtuální počítač potřebuje nějaké další balíčky, aby se připojil k virtuálnímu počítači do spravované domény. Pokud chcete tyto balíčky nainstalovat a nakonfigurovat, aktualizujte a nainstalujte nástroje pro připojení k doméně pomocí`apt-get`
+Virtuální počítač potřebuje nějaké další balíčky, aby se připojil k virtuálnímu počítači do spravované domény. Pokud chcete tyto balíčky nainstalovat a nakonfigurovat, aktualizujte a nainstalujte nástroje pro připojení k doméně pomocí `apt-get`
 
 Během instalace protokolu Kerberos se balíček *krb5-User* vyzve k zadání názvu sféry velkými písmeny. Například pokud je název spravované domény *aaddscontoso.com*, jako sféru zadejte *AADDSCONTOSO.com* . Instalace zapisuje `[realm]` oddíly a `[domain_realm]` v konfiguračním souboru */etc/krb5.conf* . Ujistěte se, že jste zadali celou sféru velkými PÍSMENy:
 

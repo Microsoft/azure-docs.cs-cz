@@ -1,9 +1,9 @@
 ---
 title: Vytváření filtrů pomocí sady Azure Media Services .NET SDK
-description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
+description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services .NET SDK vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
@@ -12,17 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin
-ms.openlocfilehash: cd1272b6c49d247d58486193fcbc488d566ec1b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bd5435f7a2969c486042c9447a0fffbb745229f9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043036"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014107"
 ---
-# <a name="creating-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK 
+# <a name="creating-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)

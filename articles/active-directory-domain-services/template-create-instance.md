@@ -2,20 +2,20 @@
 title: Povolení služby Azure DS Domain Services pomocí šablony | Microsoft Docs
 description: Informace o tom, jak nakonfigurovat a povolit Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 880ccf9a69d5898da98aeabcfd89d05ff94e3b43
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: e18825da64d0d200f55ce72985ac843b93b1e612
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489805"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618786"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Vytvoření spravované domény Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravovan
 
 V tomto článku se dozvíte, jak vytvořit spravovanou doménu pomocí šablony Azure Resource Manager. Podpůrné prostředky se vytvářejí pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 
@@ -71,10 +71,10 @@ Nejdřív Zaregistrujte poskytovatele prostředků Azure AD Domain Services pomo
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Vytvořte instanční objekt služby Azure AD pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] pro Azure služba AD DS, abyste mohli komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *2565bd9d-DA50-47d4-8B85-4c97f669dc36*. Neměňte toto ID aplikace.
+Vytvořte instanční objekt služby Azure AD pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] pro Azure služba AD DS, abyste mohli komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84*. Neměňte toto ID aplikace.
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 Nyní pomocí rutiny [New-AzureADGroup][New-AzureADGroup] vytvořte skupinu Azure AD s názvem *AAD DC Administrators* . Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
@@ -358,6 +358,6 @@ Pokud chcete spravovanou doménu zobrazit v akci, můžete se [připojit k virtu
 [Register-AzResourceProvider]: /powershell/module/Az.Resources/Register-AzResourceProvider
 [New-AzResourceGroup]: /powershell/module/Az.Resources/New-AzResourceGroup
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
-[cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain
 [New-AzResourceGroupDeployment]: /powershell/module/Az.Resources/New-AzResourceGroupDeployment

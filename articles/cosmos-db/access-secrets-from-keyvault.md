@@ -4,19 +4,19 @@ description: Pomocí Azure Key Vault můžete ukládat a přistupovat k Azure Co
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262663"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359315"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 >[!IMPORTANT]
 > Doporučeným řešením pro přístup k Azure Cosmos DB klíčům je použití [spravované identity přiřazené systémem](managed-identity-based-authentication.md). Pokud vaše služba nemůže využít spravované identity, použijte [řešení založené na certifikátech](certificate-based-authentication.md). Pokud řešení spravované identity i certifikátů založené na certifikátech nevyhovují vašim potřebám, použijte prosím níže uvedené řešení trezoru klíčů.
@@ -47,9 +47,9 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 1. Přejděte na Key Vault, který jste vytvořili v předchozím kroku, a otevřete kartu **tajné klíče** .  
 2. Vybrat **+ Generovat/importovat**, 
 
-   * Pro **Možnosti odeslání**vyberte možnost **ručně** .
+   * Pro **Možnosti odeslání** vyberte možnost **ručně** .
    * Zadejte **název** tajného klíče.
-   * Zadejte připojovací řetězec účtu Cosmos DB do pole **hodnota** . A pak vyberte **vytvořit**.
+   * Zadejte připojovací řetězec účtu Cosmos DB do pole **hodnota** . Pak vyberte **Vytvořit**.
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Vytvoření tajného kódu":::
 
@@ -59,7 +59,7 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 
 ## <a name="create-an-azure-web-application"></a>Vytvoření webové aplikace Azure
 
-1. Vytvořte webovou aplikaci Azure nebo si aplikaci můžete stáhnout z [úložiště GitHub](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo). Jedná se o jednoduchou aplikaci MVC.  
+1. Vytvořte webovou aplikaci Azure nebo si aplikaci můžete stáhnout z [úložiště GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo). Jedná se o jednoduchou aplikaci MVC.  
 
 2. Rozbalte staženou aplikaci a otevřete soubor **HomeController.cs** . Aktualizujte tajné ID na následujícím řádku:
 
@@ -94,5 +94,5 @@ Podobně můžete přidat uživatele pro přístup k trezoru klíčů. K Key Vau
 
 ## <a name="next-steps"></a>Další kroky
 
-* Postup konfigurace brány firewall pro Azure Cosmos DB najdete v článku věnovaném [podpoře brány firewall](firewall-support.md) .
-* Informace o konfiguraci koncového bodu služby virtuální sítě najdete v článku [zabezpečený přístup pomocí koncového bodu služby](vnet-service-endpoint.md) virtuální sítě.
+* Postup konfigurace brány firewall pro Azure Cosmos DB najdete v článku věnovaném [podpoře brány firewall](how-to-configure-firewall.md) .
+* Informace o konfiguraci koncového bodu služby virtuální sítě najdete v článku [zabezpečený přístup pomocí koncového bodu služby](how-to-configure-vnet-service-endpoint.md) virtuální sítě.

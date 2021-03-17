@@ -1,19 +1,18 @@
 ---
 title: Řada NVv4
 description: Specifikace pro virtuální počítače řady NVv4-Series.
-services: virtual-machines
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.author: jushiman
-ms.openlocfilehash: 9b841b6422a4314b43a594cb0b22040f884228eb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 01/12/2020
+ms.author: vikancha
+ms.openlocfilehash: 152e25fec4ee7b6181e2da58a9a4b0562a918151
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543890"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609188"
 ---
 # <a name="nvv4-series"></a>Řada NVv4 
 
@@ -21,15 +20,15 @@ Virtuální počítače řady NVv4-Series využívají procesory [AMD Radeon Ins
 
 <br>
 
-ACU: 230-260
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -53,7 +52,7 @@ Ruční instalace ovladačů AMD GPU najdete v tématu [instalace ovladačů AMD
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

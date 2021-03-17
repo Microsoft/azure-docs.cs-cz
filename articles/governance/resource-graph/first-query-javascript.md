@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: váš první dotaz v jazyce JavaScript'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení knihovny grafu prostředků pro JavaScript a spuštění prvního dotazu.
-ms.date: 06/23/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415920"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917517"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí JavaScriptu
 
@@ -17,17 +17,17 @@ Tento rychlý Start vás provede procesem přidávání knihoven do instalace Ja
 
 Na konci tohoto procesu jste přidali knihovny do instalace JavaScriptu a spustíte svůj první dotaz na graf prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 - **Node.js**: je vyžadována [Node.js](https://nodejs.org/) verze 12 nebo vyšší.
 
-## <a name="application-setup"></a>Nastavení aplikace
+## <a name="application-initialization"></a>Inicializace aplikací
 
-Aby bylo možné povolit jazyk JavaScript dotazování na Azure Resource Graph, musí být prostředí nastavené. Tato instalace funguje bez ohledu na to, kde je možné použít JavaScript, včetně [bash ve Windows 10](/windows/wsl/install-win10).
+Pokud chcete povolit JavaScriptu dotazování na Azure Resource Graph, musí být prostředí nakonfigurované. Tato instalace funguje bez ohledu na to, kde je možné použít JavaScript, včetně [bash ve Windows 10](/windows/wsl/install-win10).
 
-1. Vytvořte nový Node.js projekt spuštěním následujícího příkazu.
+1. Spusťte následující příkaz pro inicializaci nového projektu Node.js.
 
    ```bash
    npm init -y

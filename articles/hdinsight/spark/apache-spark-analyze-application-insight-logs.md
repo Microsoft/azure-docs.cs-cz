@@ -1,19 +1,16 @@
 ---
 title: Analýza protokolů Application Insight pomocí Sparku – Azure HDInsight
 description: Naučte se exportovat protokoly Application Insights do úložiště objektů BLOB a pak analyzovat protokoly pomocí Sparku v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078795"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940471"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s využitím Apache Spark ve službě HDInsight
 
@@ -72,7 +69,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 1. Ve webovém prohlížeči přejděte na místo, `https://CLUSTERNAME.azurehdinsight.net/jupyter` kde název_clusteru je název vašeho clusteru.
 
-2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **PySpark**. Otevře se nová karta prohlížeče obsahující Jupyter Notebook založenou na Pythonu.
+2. V pravém horním rohu stránky Jupyter vyberte **Nový** a pak **PySpark**. Otevře se nová karta prohlížeče obsahující Jupyter Notebook založenou na Pythonu.
 
 3. Do prvního pole (označovaného jako **buňka**) na stránce zadejte následující text:
 
@@ -223,7 +220,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 1. Ve webovém prohlížeči přejděte na místo, `https://CLUSTERNAME.azurehdinsight.net/jupyter` kde název_clusteru je název vašeho clusteru.
 
-2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **Scala**. Zobrazí se nová karta prohlížeče obsahující Jupyter Notebook na základě Scala.
+2. V pravém horním rohu stránky Jupyter vyberte **Nový** a pak **Scala**. Zobrazí se nová karta prohlížeče obsahující Jupyter Notebook na základě Scala.
 
 3. Do prvního pole (označovaného jako **buňka**) na stránce zadejte následující text:
 

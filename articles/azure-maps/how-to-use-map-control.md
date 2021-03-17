@@ -4,21 +4,23 @@ description: Zjistěte, jak přidat mapy k webovým a mobilním aplikacím pomoc
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js
+ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035947"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378702"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
 Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
+
+Tato dokumentace používá Azure Maps Web SDK, ale služby Azure Maps lze použít s libovolným mapovým ovládacím prvkem. [Zde](open-source-projects.md#third-part-map-control-plugins) je několik oblíbených open source mapových ovládacích prvků, které Azure Maps tým vytvořil modul plug-in pro.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +28,7 @@ Chcete-li použít Ovládací prvek Mapa na webové stránce, musíte mít jeden
 
 * [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account) a [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 
-* Získejte přihlašovací údaje pro Azure Active Directory (AAD) s [možnostmi ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+* Získejte přihlašovací údaje pro Azure Active Directory (AAD) s [možnostmi ověřování](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
@@ -83,7 +85,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </body>
    ```
 
-5. Nyní inicializujeme mapový ovládací prvek. Aby bylo možné ovládací prvek ověřit, budete muset vlastnit Azure Maps klíč předplatného nebo použít přihlašovací údaje Azure Active Directory (AAD) s [možnostmi ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+5. Nyní inicializujeme mapový ovládací prvek. Aby bylo možné ovládací prvek ověřit, budete muset vlastnit Azure Maps klíč předplatného nebo použít přihlašovací údaje Azure Active Directory (AAD) s [možnostmi ověřování](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
     Pokud používáte klíč předplatného pro ověřování, zkopírujte a vložte následující prvek skriptu do `<head>` prvku a pod první `<script>` prvek. Nahraďte `<Your Azure Maps Key>` klíčem primárního předplatného Azure Maps.
 
@@ -99,8 +101,8 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
                 }
-            }
-        });
+            });
+       }
     </script>
     ```
 
@@ -120,8 +122,8 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
                     aadAppId: '<Your AAD App Id>',
                     aadTenant: '<Your AAD Tenant Id>'
                 }
-            }
-        });
+            });
+        }
     </script>
    ```
 
@@ -252,6 +254,15 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us` . Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/` .
 
+## <a name="javascript-frameworks"></a>Rozhraní JavaScript
+
+Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z následujících open-source projektů:
+
+- [NG-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -úhlová Obálka kolem Azure Maps.
+- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – komponenta Azure Maps Blazor.
+- [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
+
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se vytvořit mapu a pracovat s ní:
@@ -270,7 +281,7 @@ Přidání dalších dat do mapy:
 > [Vytvoření mapy](map-create.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)
 
 Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) s Azure Maps, najdete v těchto tématech:
 

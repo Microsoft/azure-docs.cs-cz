@@ -3,18 +3,20 @@ title: Zapište uložené procedury a triggery pomocí rozhraní API pro dotazy 
 description: Naučte se zapisovat uložené procedury a triggery pomocí rozhraní API pro dotazy jazyka JavaScript v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2182e77ee673ea655762c765e2cfccb3decbe6af
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 449af63ef3409b8c8173edef7a5d77074cca02b9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420171"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335836"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Postup zápisu uložených procedur a triggerů v Azure Cosmos DB pomocí rozhraní API pro dotazy jazyka JavaScript
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB umožňuje provádět optimalizované dotazy pomocí rozhraní Fluent JavaScript bez znalosti jazyka SQL, které lze použít k zápisu uložených procedur nebo triggerů. Další informace o podpoře rozhraní API dotazů JavaScript v Azure Cosmos DB najdete v článku [práce s integrovaným rozhraním API pro integrované dotazy jazyka JavaScript v článku Azure Cosmos DB](javascript-query-api.md) .
 
@@ -23,7 +25,7 @@ Azure Cosmos DB umožňuje provádět optimalizované dotazy pomocí rozhraní F
 Následující ukázka kódu je příkladem použití rozhraní API pro dotazování jazyka JavaScript v kontextu uložené procedury. Uložená procedura vloží položku Azure Cosmos, která je určená vstupním parametrem, a aktualizuje dokument metadat pomocí `__.filter()` metody, parametru minSize, MaxSize a TotalSize v závislosti na vlastnosti Size položky Input.
 
 > [!NOTE]
-> `__`(dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
+> `__` (dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
 
 ```javascript
 /**

@@ -4,12 +4,12 @@ description: Kolekce operátoru clusteru a osvědčené postupy pro vývojáře 
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008776"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686255"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Doporučené postupy pro vytváření a správu aplikací ve službě Azure Kubernetes (AKS) pro operátora clusteru a vývojáře
 
@@ -30,7 +30,7 @@ Jako operátor clusteru můžete spolupracovat s vlastníky aplikací a vývojá
 * [Osvědčené postupy pro pokročilé funkce plánovače](operator-best-practices-advanced-scheduler.md)
     * Zahrnuje použití chuti a tolerování, selektorů uzlů a spřažení a spřažení a proti spřažení.
 * [Osvědčené postupy pro ověřování a autorizaci](operator-best-practices-identity.md)
-    * Zahrnuje integraci s Azure Active Directory, použití řízení přístupu na základě role (RBAC) a identity pod.
+    * Zahrnuje integraci s Azure Active Directory s využitím Kubernetes řízení přístupu na základě role (Kubernetes RBAC), pomocí Azure RBAC a identity pod.
 
 **Zabezpečení**
 

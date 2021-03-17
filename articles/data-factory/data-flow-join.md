@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683364"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042653"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -59,7 +59,7 @@ Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte trans
 
 1. Vyberte datový proud, se kterým se připojujete, v rozevíracím seznamu **správný datový proud** .
 1. Vyberte **typ spojení**
-1. Vyberte, na které klíčové sloupce se má shoda při spojování podmínky připojit. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec**.
+1. Vyberte, na které klíčové sloupce se má shoda při spojování podmínky připojit. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec** .
 
 ![Transformace spojení](media/data-flow/join.png "Spojit")
 
@@ -75,13 +75,13 @@ Na rozdíl od sloučení slučovacích nástrojů v nástrojích, jako je SSIS, 
 
 ![Optimalizace transformace JOIN](media/data-flow/joinoptimize.png "Spojit optimalizaci")
 
-V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná**.
+V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání** . Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná** .
 
 Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pokud vaše spojení neběží v případě chyb časového limitu.
 
-## <a name="self-join"></a>Připojovat se k sobě
+## <a name="self-join"></a>Self-Join
 
-Pokud chcete datový proud sám propojit se sebou samým, vytvořte alias pro existující datový proud s transformací SELECT. Kliknutím na ikonu plus vedle transformace a výběrem možnosti **Nová větev**vytvořte novou větev. Přidejte transformaci SELECT, která bude aliasovat původní datový proud. Přidejte transformaci JOIN a jako **levý datový** proud zvolte původní datový proud a jako **správný datový proud**vyberte transformaci.
+Pokud chcete datový proud sám propojit se sebou samým, vytvořte alias pro existující datový proud s transformací SELECT. Kliknutím na ikonu plus vedle transformace a výběrem možnosti **Nová větev** vytvořte novou větev. Přidejte transformaci SELECT, která bude aliasovat původní datový proud. Přidejte transformaci JOIN a jako **levý datový** proud zvolte původní datový proud a jako **správný datový proud** vyberte transformaci.
 
 ![Připojovat se k sobě](media/data-flow/selfjoin.png "Připojovat se k sobě")
 
@@ -108,7 +108,7 @@ Níže uvedený příklad je transformační transformace s názvem `JoinMatched
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
-![Příklad spojení](media/data-flow/join-script1.png "Příklad spojení")
+![Snímek obrazovky zobrazuje transformaci s vybranou kartou nastavení spojení a typ spojení vnitřní.](media/data-flow/join-script1.png "Příklad spojení")
 
 Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 
@@ -130,7 +130,7 @@ Níže uvedený příklad je transformační transformace s názvem `JoiningColu
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
-![Příklad spojení](media/data-flow/join-script2.png "Příklad spojení")
+![Snímek obrazovky ukazuje transformaci s vybranou kartou nastavení spojení a typem spojení Custom (příčný).](media/data-flow/join-script2.png "Příklad spojení")
 
 Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 

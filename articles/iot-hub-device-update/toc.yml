@@ -1,0 +1,96 @@
+- name: Dokumentace k aktualizaci zařízení pro IoT Hub
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je aktualizace zařízení pro IoT Hub?
+      href: understand-device-update.md
+- name: Kurzy
+  items:
+    - name: Aktualizace obrázku v Maline PI
+      href: device-update-raspberry-pi.md
+    - name: Použití aktualizace zařízení na simulátoru
+      href: device-update-simulator.md
+    - name: 'Aktualizace balíčku na serveru Ubuntu 18,04 x64'
+      href: device-update-ubuntu-agent.md
+- name: Koncepty
+  items:
+    - name: Účet a instance aktualizace zařízení
+      href: device-update-resources.md
+    - name: Aktualizace uživatelských rolí a přístupu zařízení
+      href: device-update-control-access.md
+    - name: Apt manifest aktualizace zařízení
+      href: device-update-apt-manifest.md
+    - name: Dodržování předpisů aktualizace zařízení
+      href: device-update-compliance.md
+    - name: Skupiny aktualizací zařízení
+      href: device-update-groups.md
+    - name: Jak aktualizace zařízení používá technologie Plug and Play
+      href: device-update-plug-and-play.md
+    - name: Požadavky aktualizace zařízení na síť
+      href: device-update-networking.md
+    - name: Agent aktualizace zařízení
+      href: device-update-agent-overview.md
+    - name: Konfigurační soubor aktualizace zařízení
+      href: device-update-configuration-file.md
+    - name: Aktualizovat manifest
+      href: update-manifest.md
+    - name: Jak je aktualizace zařízení zabezpečená
+      href: device-update-security.md
+    - name: Podpora pro odpojená zařízení
+      href: connected-cache-disconnected-device-update.md
+    - name: Konfigurace připojené mezipaměti Microsoftu pro aktualizace zařízení pro IoT Hub
+      href: connected-cache-configure.md
+    - name: Import aktualizace zařízení
+      href: import-concepts.md
+    - name: Schéma související s importem
+      href: import-schema.md
+- name: Návody
+  items:
+    - name: Vytvoření účtu aktualizace zařízení
+      href: create-device-update-account.md
+    - name: Zřizování agenta aktualizace zařízení
+      href: device-update-agent-provisioning.md
+    - name: Importovat aktualizaci
+      href: import-update.md
+    - name: Vytvoření skupiny aktualizace zařízení
+      href: create-update-group.md
+    - name: Nasazení aktualizace zařízení
+      href: deploy-update.md
+    - name: Mezipaměť propojená Microsoftem na jedné úrovni
+      href: connected-cache-single-level.md
+    - name: Vnořená mezipaměť Microsoft propojená na úrovni
+      href: connected-cache-nested-level.md
+    - name: Mezipaměť propojená Microsoftem pro průmyslový IoT (IIOT)
+      href: connected-cache-industrial-iot-nested.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s aktualizacemi zařízení
+          href: troubleshoot-device-update.md
+- name: Reference
+  items:
+    - name: Kódy chyb klienta aktualizace zařízení
+      href: device-update-error-codes.md
+- name: Zdroje a prostředky
+  items:
+    - name: Možnosti pomoci a podpory
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
+    - name: Služby Azure IoT
+      items:
+        - name: IoT Hub
+          href: ./index.yml
+        - name: Služba IoT Hub Device Provisioning
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: Akcelerátory řešení IoT
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Optimalizace doručení
+      href: 'https://github.com/microsoft/do-client'

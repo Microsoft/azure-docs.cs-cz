@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 19b769d1fff431f95c20e607c17747f2ff483d2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200518"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487180"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Kategorie hledání pro rozhraní API pro vyhledávání místních obchodních aplikací Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API pro místní vyhledávání Bingu umožňuje vyhledávat místní obchodní entity v různých kategoriích s prioritou, která má za následek uzavření umístění uživatele. Můžete zahrnout tato hledání do hledání spolu s `localCircularView` `localMapView` [parametry](specify-geographic-search.md)a.
 

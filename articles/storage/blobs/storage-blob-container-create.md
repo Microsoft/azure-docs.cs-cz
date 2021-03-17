@@ -5,19 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 02/04/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: abf4cb33fa953ec9a257397551b3d17752fe67f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dac50d8e35080a083e42891732512e012fae8fbd
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070726"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576443"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Vytvoření nebo odstranění kontejneru v Azure Storage pomocí .NET
 
-Objekty BLOB v Azure Storage jsou uspořádány do kontejnerů. Než budete moct nahrát objekt blob, musíte nejdřív vytvořit kontejner. Tento článek ukazuje, jak vytvořit a odstranit kontejnery pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Objekty BLOB v Azure Storage jsou uspořádány do kontejnerů. Než budete moct nahrát objekt blob, musíte nejdřív vytvořit kontejner. Tento článek ukazuje, jak vytvořit a odstranit kontejnery pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage).
 
 ## <a name="name-a-container"></a>Pojmenování kontejneru
 
@@ -37,10 +38,10 @@ Chcete-li vytvořit kontejner, zavolejte jednu z následujících metod:
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-- [Vytvořit](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
-- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
-- [CreateIfNotExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
-- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+- [CreateBlobContainer](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainer)
+- [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync)
+
+Tyto metody vyvolávají výjimku, pokud kontejner se stejným názvem již existuje.
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -48,11 +49,12 @@ Chcete-li vytvořit kontejner, zavolejte jednu z následujících metod:
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
----
 
 Metody **Create** a **CreateAsync** vyvolávají výjimku, pokud kontejner se stejným názvem již existuje.
 
 Metody **CreateIfNotExists** a **CreateIfNotExistsAsync** vrací logickou hodnotu, která označuje, zda byl kontejner vytvořen. Pokud už kontejner se stejným názvem existuje, vrátí tyto metody **hodnotu false** , aby označoval, že se nový kontejner nevytvořil.
+
+---
 
 Kontejnery se vytvoří hned pod účtem úložiště. Není možné vnořit jeden kontejner pod jiným.
 

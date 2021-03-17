@@ -3,18 +3,21 @@ title: PŘÍMO v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci systému SQL přímo v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be950fed563d8e80339dc80181e7fe5a78092734
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302147"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341568"
 ---
 # <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí pravou část řetězce se zadaným počtem znaků.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -57,4 +60,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

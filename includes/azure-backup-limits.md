@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2fd03c70cffa4efcb30518ebe6c54ca899869e16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf6e0c53337b7d4b08b694040c4f0b151a41103
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751626"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558001"
 ---
-Shrnutí Azure Backup podpory nastavení a omezení najdete v tématu [Azure Backup podpora matic](https://docs.microsoft.com/azure/backup/backup-support-matrix).
+Shrnutí Azure Backup podpory nastavení a omezení najdete v tématu [Azure Backup podpora matic](../articles/backup/backup-support-matrix.md).

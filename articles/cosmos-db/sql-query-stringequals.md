@@ -3,18 +3,20 @@ title: StringEquals v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si, jak funkce StringEquals SQL System v Azure Cosmos DB vrátí logickou hodnotu, která označuje, jestli první řetězcový výraz odpovídá druhému.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 57d124421082e1c38fab4d982687a8e6c970505e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47d899534de535b5cd6a7c3fb2df78cdadbe11f2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83853796"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338029"
 ---
 # <a name="stringequals-azure-cosmos-db"></a>STRINGEQUALS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz odpovídá druhému.  
   
@@ -66,4 +68,4 @@ Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

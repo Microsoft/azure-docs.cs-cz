@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536466"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565407"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 
@@ -98,15 +98,15 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
 3. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci primární oblasti* a zvolte **vytvořit**.   
 
-   ![Název účtu pro integraci primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![Snímek obrazovky, který ukazuje, kde zadat název připojení a vybrat účet pro integraci primární oblasti ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
 4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.   
 
-   ![DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Snímek obrazovky, který zobrazuje nastavení synchronizace hodnoty DateTime ke spuštění.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 5. Vyberte **Nový krok** > **Přidat akci**.
 
-   ![Nový krok, přidání akce](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Snímek obrazovky zobrazující tlačítko pro nový krok a možnost přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 6. Vyhledejte **X12**a vyberte **X12 – přidat nebo aktualizovat řídicí čísla**.   
 
@@ -114,11 +114,11 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
 7. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení**  >  **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**. 
 
-   ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Snímek obrazovky, který ukazuje, kde přidat název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 8. Kliknutím na ikonu v pravém horním rohu přepněte na nezpracované vstupy.
 
-   ![Přepnout na nezpracované vstupy](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![Snímek obrazovky, který zobrazuje ikonu pro výběr přechodu na nezpracované.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
 9. Z dialogového okna pro výběr dynamického obsahu vyberte tělo a uložte aplikaci logiky.
 
@@ -140,7 +140,7 @@ Provozní kontinuita pro EDIFACT dokumenty EDI je založena na řídicích čís
 
 Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nastavení pro příjem duplicitních dat v EDIFACT smlouvě.
 
-![Vyberte duplicitní nastavení kontroly.](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+![Snímek obrazovky, který zobrazuje duplicitní nastavení kontroly nastavení pro příjem EDIFACT smlouvy.](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
 1. Vytvoření [Aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
 
@@ -157,27 +157,27 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
 4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.    
 
-   ![DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Snímek obrazovky zobrazující nastavení hodnoty DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 6. Vyberte **Nový krok** > **Přidat akci**.    
 
-   ![Nový krok, přidání akce](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Snímek obrazovky, který ukazuje, kde vybrat přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 7. Vyhledejte **EDIFACT**a vyberte **EDIFACT – přidat nebo aktualizovat řídicí čísla**.   
 
-   ![Přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Snímek obrazovky, který ukazuje, kde přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení**  >  **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
 
-   ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Vytvořte název účtu pro integraci sekundární oblasti.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 9. Kliknutím na ikonu v pravém horním rohu přepněte na nezpracované vstupy.
 
-   ![Přepnout na nezpracované vstupy](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![Snímek obrazovky, který zvýrazní ikonu, která se má vybrat, když chcete přepnout na nezpracované vstupy.](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
 10. Z dialogového okna pro výběr dynamického obsahu vyberte tělo a uložte aplikaci logiky.   
 
-   ![Pole dynamického obsahu](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
+   ![Snímek obrazovky zobrazující dynamický výběr obsahu, kde můžete vybrat text z.](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
    V závislosti na časovém intervalu se aktivační událost dotazuje tabulky kontrolního čísla přijaté primární oblastí a vyžádá si nové záznamy.
    Akce aktualizuje záznamy na účet pro integraci sekundární oblasti. 
@@ -205,7 +205,7 @@ Provozní kontinuita pro dokumenty, které používají protokol AS2, je založe
    
 3. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci primární oblasti* a zvolte **vytvořit**.
 
-   ![Název účtu pro integraci primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![Snímek obrazovky, který ukazuje, kde zadat název připojení, když je vytvořena hodnota MIKROFONu.](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. Nastavení **hodnoty data a času pro spuštění synchronizace hodnot typu MIC** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.   
 

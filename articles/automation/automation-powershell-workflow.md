@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 483d4c16f1b77bf7328857eb25e1571a741d144e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896914"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Informace o pracovním postupu PowerShellu pro Azure Automation
 
@@ -76,7 +76,7 @@ $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Pokud se pokusíte tento postup spustit v pracovním postupu, zobrazí se chybová zpráva.`Method invocation is not supported in a Windows PowerShell Workflow.`
+Pokud se pokusíte tento postup spustit v pracovním postupu, zobrazí se chybová zpráva. `Method invocation is not supported in a Windows PowerShell Workflow.`
 
 Jednou z možností je zabalit tyto dva řádky kódu do [InlineScript](#use-inlinescript) bloku. V tomto případě `Service` představuje objekt služby v rámci bloku.
 
@@ -261,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Následující stejný kód ukazuje, jak tuto situaci zpracovat ve vašich sadách Runbook pracovního postupu PowerShellu.
 
@@ -290,7 +290,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
 
 Další informace o kontrolních bodech najdete v tématu [Přidání kontrolních bodů do pracovního postupu skriptu](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 

@@ -1,18 +1,15 @@
 ---
 title: Obecné pokyny k podnikovému zabezpečení ve službě Azure HDInsight
 description: Některé osvědčené postupy, které by měly usnadnit Balíček zabezpečení podniku nasazení a správu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933569"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Obecné informace o podnikovém zabezpečení a pokyny v Azure HDInsight
 
@@ -95,7 +92,7 @@ Pro každý cluster použijte novou skupinu prostředků, abyste mohli rozlišov
 
 * Zakažte zásady podmíněného přístupu pomocí zásad na základě IP adres. To vyžaduje, aby byly na virtuální sítě, kde jsou nasazené clustery, povoleny koncové body služby. Pokud používáte externí službu pro MFA (jinou než AAD), zásady založené na IP adresách nebudou fungovat.
 
-* `AllowCloudPasswordValidation`pro federované uživatele se vyžadují zásady. Vzhledem k tomu, že HDInsight používá uživatelské jméno/heslo přímo k získání tokenů z Azure AD, musí být tato zásada povolená pro všechny federované uživatele.
+* `AllowCloudPasswordValidation` pro federované uživatele se vyžadují zásady. Vzhledem k tomu, že HDInsight používá uživatelské jméno/heslo přímo k získání tokenů z Azure AD, musí být tato zásada povolená pro všechny federované uživatele.
 
 * Povolte koncové body služby, pokud požadujete obcházení podmíněného přístupu pomocí důvěryhodných IP adres.
 

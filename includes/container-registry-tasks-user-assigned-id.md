@@ -7,13 +7,13 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
-ms.custom: include file
-ms.openlocfilehash: 012800806aeff81939baa2cee88e78191e4fb6c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: d81b6f5367efa92c9249956faa058441edf98561
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195260"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755993"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 

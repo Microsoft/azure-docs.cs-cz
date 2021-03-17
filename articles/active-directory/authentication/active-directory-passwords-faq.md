@@ -6,23 +6,23 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0874f6aeb74b028e92e10d972757cc5971735e39
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051302"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744308"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Nejčastější dotazy k samoobslužnému resetování hesla
 
 Tady jsou uvedené některé nejčastější dotazy, které se týkají všech věcí, které souvisejí s resetováním hesla samoobslužné služby.
 
-Pokud máte obecné otázky týkající se Azure Active Directory (Azure AD) a samoobslužného resetování hesla (SSPR), na které se tady neodkazuje, můžete požádat o pomoc komunitou na [stránce s dotazem Microsoft Q&na Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html). Mezi členy komunity patří inženýri, správci produktů, odborníky MVP a odborníci na IT.
+Pokud máte obecné otázky týkající se Azure Active Directory (Azure AD) a samoobslužného resetování hesla (SSPR), na které se tady neodkazuje, můžete požádat o pomoc komunitou na [stránce s dotazem Microsoft Q&na Azure Active Directory](/answers/topics/azure-active-directory.html). Mezi členy komunity patří inženýri, správci produktů, odborníky MVP a odborníci na IT.
 
 Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
@@ -36,12 +36,12 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
 * **Otázka: můžou moji uživatelé registrovat vlastní data pro resetování hesla?**
 
-  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla ( https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového panelu ( https://myapps.microsoft.com) . Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil**a pak vybrat možnost **registrovat pro resetování hesla** .
+  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla ( https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového panelu ( https://myapps.microsoft.com) . Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil** a pak vybrat možnost **registrovat pro resetování hesla** .
   >
-  > Pokud povolíte [kombinovanou registraci](concept-registration-mfa-sspr-combined.md), můžou se uživatelé zaregistrovat pro SSPR i pro Azure Multi-Factor Authentication ve stejnou dobu.
+  > Pokud povolíte [kombinovanou registraci](concept-registration-mfa-sspr-combined.md), můžou se uživatelé zaregistrovat jak pro SSPR, tak i pro Azure AD Multi-Factor Authentication.
 * **Otázka: Pokud povolím resetování hesla pro skupinu a potom se rozhodnete ji povolit pro všechny, je nutné znovu zaregistrovat své uživatele?**
 
-  > **Odpověď:** Ne. Uživatelům, kteří nastavili data ověřování, není nutné znovu registrovat.
+  > **A:** Ne. Uživatelům, kteří nastavili data ověřování, není nutné znovu registrovat.
   >
   >
 * **Otázka: můžu definovat data resetování hesla jménem uživatelů?**
@@ -61,7 +61,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: Mám uživatele zaregistrovat, aby mohli použít resetování hesla?**
 
-  > **Odpověď:** Ne. Pokud pro své jménem definujete dostatek ověřovacích informací, uživatelé se nebudou muset registrovat. Resetování hesla funguje, pokud máte správně naformátovaná data uložená v příslušných polích v adresáři.
+  > **A:** Ne. Pokud pro své jménem definujete dostatek ověřovacích informací, uživatelé se nebudou muset registrovat. Resetování hesla funguje, pokud máte správně naformátovaná data uložená v příslušných polích v adresáři.
   >
   >
 * **Otázka: mohu synchronizovat nebo nastavit pole telefon pro ověření, e-mail ověřování nebo alternativní ověřování jménem uživatelů?**
@@ -101,10 +101,10 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   > Pokud v tomto časovém rámci nedostanete oznámení, postupujte takto:
   > * Ověřte složku s nevyžádanou poštou.
   > * Ověřte, že číslo nebo e-mail, který je kontaktován, je ten, který jste očekávali.
-  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo * \@ contoso.com uživatele*. 
+  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo *\@ contoso.com uživatele*. 
 * **Otázka: Jaké jazyky podporuje resetování hesla?**
 
-  > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v systému Office 365.
+  > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v Microsoft 365.
   >
   >
 * **Otázka: jaké části prostředí pro resetování hesla se při nastavování položek značky organizace na kartě Konfigurace v mém adresáři zobrazí logo?**
@@ -159,7 +159,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: může uživatel zaregistrovat stejnou bezpečnostní otázku více než jednou?**
 
-  > **Odpověď:** Ne. Když uživatel zaregistruje konkrétní otázku, nepůjde na tuto otázku zaregistrovat podruhé.
+  > **A:** Ne. Když uživatel zaregistruje konkrétní otázku, nepůjde na tuto otázku zaregistrovat podruhé.
   >
   >
 * **Otázka: je možné nastavit minimální limit bezpečnostních otázek pro registraci a resetování?**
@@ -197,7 +197,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: je možné, že se uživatelé budou na portálu Office informovat, když vyprší jejich místní heslo?**
 
-  > **A:** Ano, tato možnost je možná dnes, pokud používáte Active Directory Federation Services (AD FS) (AD FS). Pokud používáte AD FS, postupujte podle pokynů v tématu [odesílání deklarací zásad hesel pomocí AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) článku. Pokud používáte synchronizaci hodnot hash hesel, není to ještě dnes. Nesynchronizujeme zásady hesel z místních adresářů, takže nám není možné odesílat oznámení o vypršení platnosti cloudovým prostředím. V obou případech je také možné [upozornit uživatele, jejichž hesla brzy vyprší prostřednictvím prostředí PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **A:** Ano, tato možnost je možná dnes, pokud používáte Active Directory Federation Services (AD FS) (AD FS). Pokud používáte AD FS, postupujte podle pokynů v tématu [odesílání deklarací zásad hesel pomocí AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) článku. Pokud používáte synchronizaci hodnot hash hesel, není to ještě dnes. Nesynchronizujeme zásady hesel z místních adresářů, takže nám není možné odesílat oznámení o vypršení platnosti cloudovým prostředím. V obou případech je také možné [upozornit uživatele, jejichž hesla brzy vyprší prostřednictvím prostředí PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 * **Otázka: můžu zablokovat uživatelům změnu hesla?**
@@ -243,7 +243,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
 * **Otázka: Jak funguje zpětný zápis hesla na pozadí?**
 
-  > **A:** Informace o tom, co se stane, když povolíte zpětný zápis hesla a jak data přejdou zpět do místního prostředí, najdete v článku [jak zpětný zápis hesla funguje](howto-sspr-writeback.md) .
+  > **A:** Informace o tom, co se stane, když povolíte zpětný zápis hesla a jak data přejdou zpět do místního prostředí, najdete v článku [jak zpětný zápis hesla funguje](./tutorial-enable-sspr-writeback.md) .
   >
   >
 * **Otázka: jak dlouho trvá zpětný zápis hesla? Existuje zpoždění synchronizace, jako je u synchronizace hodnot hash hesel?**
@@ -263,7 +263,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: Jaké typy účtů jsou pro použití zpětného zápisu hesla k pro?**
 
-  > **A:** Zpětný zápis hesla funguje u uživatelských účtů, které jsou synchronizované z místní služby Active Directory do služby Azure AD, včetně federovaného, synchronizace hodnot hash hesel a předávacích uživatelů Autentication.
+  > **A:** Zpětný zápis hesla funguje u uživatelských účtů, které jsou synchronizované z místní služby Active Directory do služby Azure AD, včetně federovaného, synchronizace hodnot hash hesel a Pass-Through uživatelů ověřování.
   >
   >
 * **Otázka: zpětný zápis hesla vynutil zásady hesel moje doména?**
@@ -273,7 +273,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: Jedná se o zabezpečený zpětný zápis hesla?  Jak můžu zajistit napadení?**
 
-  > **A:** Ano, zpětný zápis hesla je zabezpečený. Další informace o několika vrstvách zabezpečení implementovaných službou hesla pro zpětný zápis najdete v části [zabezpečení zpětného zápisu hesla](concept-sspr-writeback.md#password-writeback-security) v článku [Přehled zpětného zápisu](howto-sspr-writeback.md) hesla.
+  > **A:** Ano, zpětný zápis hesla je zabezpečený. Další informace o několika vrstvách zabezpečení implementovaných službou hesla pro zpětný zápis najdete v části [zabezpečení zpětného zápisu hesla](concept-sspr-writeback.md#password-writeback-security) v článku [Přehled zpětného zápisu](./tutorial-enable-sspr-writeback.md) hesla.
   >
   >
 
@@ -286,7 +286,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 * [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
+* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](./tutorial-enable-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](./troubleshoot-sspr.md)

@@ -1,19 +1,17 @@
 ---
 title: 'Zabezpečení: migrace místních Apache Hadoop do Azure HDInsight'
 description: Seznamte se s osvědčenými postupy zabezpečení a DevOps pro migraci místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078370"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939749"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy zabezpečení a DevOps
 
@@ -78,14 +76,14 @@ Koncová podniková zabezpečení je možné dosáhnout pomocí následujících
     - Zobrazit a ohlásit všechny změny v zásadách řízení přístupu.
 
 **Šifrování**
-    - Transparentní šifrování na straně serveru pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem.
-    - Při přenosu šifrování pomocí šifrování na straně klienta, https a TLS.
+    - Transparentní šifrování Server-Side pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem.
+    - Při přenosu šifrování pomocí Client-Side šifrování, https a TLS.
 
 Další informace najdete v následujících článcích:
 
 - [Přehled služby Azure Virtual Networks](../../virtual-network/virtual-networks-overview.md)
-- [Přehled skupin zabezpečení sítě Azure](../../virtual-network/security-overview.md)
-- [Partnerský vztah Azure Virtual Network](../../virtual-network/virtual-network-peering-overview.md)
+- [Přehled skupin zabezpečení sítě Azure](../../virtual-network/network-security-groups-overview.md)
+- [Partnerský vztah virtuální sítě Azure](../../virtual-network/virtual-network-peering-overview.md)
 - [Průvodce zabezpečením Azure Storage](../../storage/blobs/security-recommendations.md)
 - [Šifrování služby Azure Storage v klidovém provozu](../../storage/common/storage-service-encryption.md)
 
@@ -93,7 +91,7 @@ Další informace najdete v následujících článcích:
 
 Další informace najdete v článku:
 
-[Přehled Azure Monitor](../../azure-monitor/overview.md)
+[Přehled služby Azure Monitor](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>Upgradovat clustery
 
@@ -112,8 +110,6 @@ Další informace naleznete v článku: [upgrade clusteru HDInsight na novou ver
 
 ## <a name="patch-cluster-operating-systems"></a>Oprava operačních systémů clusteru
 
-V rámci spravované služby Hadoop se HDInsight postará o opravu operačního systému virtuálních počítačů používaných clustery HDInsight.
-
 Další informace naleznete v článku: [opravy operačního systému pro HDInsight](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Po migraci
@@ -124,4 +120,4 @@ Další informace naleznete v článku: [opravy operačního systému pro HDInsi
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).
+Přečtěte si další informace o [HDInsight 4,0](./apache-hadoop-introduction.md).

@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660203"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359638"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s SQL Server pomocí šablony ARM
 
@@ -45,14 +46,14 @@ V šabloně je definováno pět prostředků Azure:
 - [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): vytvoří skupinu zabezpečení sítě. 
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces): nakonfiguruje síťové rozhraní. 
 - [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): vytvoří virtuální počítač v Azure. 
-- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): zaregistruje virtuální počítač u poskytovatele prostředků virtuálního počítače SQL. 
+- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): zaregistruje virtuální počítač pomocí rozšíření agenta SQL IaaS. 
 
 Další SQL Server v šablonách virtuálních počítačů Azure najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří virtuální počítač, na kterém je nainstalovaná zamýšlená verze SQL Server, a zaregistrované u poskytovatele prostředků virtuálního počítače SQL. 
+1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří virtuální počítač s nainstalovanou zamýšlenou SQL Server verzí a zaregistrovaný s rozšířením agenta SQL IaaS. 
 
    [![Nasazení do Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -64,7 +65,7 @@ Další SQL Server v šablonách virtuálních počítačů Azure najdete v [gal
     * **Název virtuálního počítače**: zadejte název pro SQL Server virtuální počítač. 
     * **Velikost virtuálního počítače**: v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
     * **Existující Virtual Network název**: zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
-    * **Existující skupina prostředků virtuální**sítě: zadejte skupinu prostředků, ve které byla vaše virtuální síť připravena. 
+    * **Existující skupina prostředků virtuální** sítě: zadejte skupinu prostředků, ve které byla vaše virtuální síť připravena. 
     * **Název existující podsítě**: název připravené podsítě. 
     * **Nabídka Image**: vyberte SQL Server a image Windows serveru, které nejlépe vyhovují vašim obchodním potřebám. 
     * **SKU SQL**: vyberte edici SQL Server SKU, která nejlépe vyhovuje vašim obchodním potřebám. 
@@ -120,7 +121,7 @@ Write-Host "Press [ENTER] to continue..."
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [ Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ Kurz: vytvoření a nasazení první šablony ARM](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Další způsoby nasazení SQL Server virtuálního počítače najdete v těchto tématech: 
 - [Azure Portal](create-sql-vm-portal.md)

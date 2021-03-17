@@ -1,17 +1,17 @@
 ---
 title: Videokurzy mapování toku dat
 description: Seznam výukových kurzů vysvětlujících koncept toku dat pro mapování
-author: djpmsft
-ms.author: daperlov
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 08/11/2020
-ms.openlocfilehash: 809011df3c8cd6dbc1ee2a2129a261102adb43c0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 12/14/2020
+ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067847"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517786"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -21,7 +21,7 @@ Níže je uveden seznam videí s daty o kurzu mapování toku dat vytvořených 
 
 Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce v aktuálním Azure Data Factory uživatelského prostředí přidané nebo jiné funkce.
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 [Začínáme s mapováním toků dat v Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
@@ -83,6 +83,16 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Transformace sloučení](https://youtu.be/VY2tFQJoAXE)
 
+[Transformovat hierarchická data](https://youtu.be/oAEh21NFgWQ)
+
+[Transformace řazení](https://youtu.be/6XvgkbMtws0)
+
+[Vyhledávání v mezipaměti](https://www.youtube.com/watch?v=HqCn42FaRJs)
+
+[Kontext řádku přes transformaci okna](http://youtu.be/jqt1gmX2XUg)
+
+[Analyzovat transformaci](https://www.youtube.com/watch?v=r7O7AJcuqoY)
+
 ## <a name="source-and-sink"></a>Zdroj a jímka
 
 [Čtení a zápis JSON](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
@@ -107,8 +117,6 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Rodokmen dat](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
-[Tipy pro optimalizaci](https://www.youtube.com/watch?v=a2KtwUJngHo)
-
 [Iterovat soubory s parametry](http://youtu.be/uEgz0ptYRDM?hd=1)
 
 [Zkrátit časy zahájení](https://youtu.be/FFCbU4ujCiY?t=528)
@@ -121,7 +129,7 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Optimalizace časů spuštění toku dat](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
-[Prostředí Azure Integration runtime pro toky dat](https://mssqldude.wordpress.com/)
+[Prostředí Azure Integration runtime pro toky dat](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 ## <a name="mapping-data-flow-scenarios"></a>Mapování scénářů toku dat
 
@@ -131,7 +139,7 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Vzor vyčištění adres](https://youtu.be/axEYbuU3lmw)
 
-[Odstranění duplicit](https://www.youtube.com/watch?v=OLenvYwg__I)
+[Odstranění duplicit](https://youtu.be/QOi26ETtPTw)
 
 [Sloučit soubory](http://youtu.be/WbDTBAyYte8)
 
@@ -172,3 +180,7 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Výrazy kvality dat](https://www.youtube.com/watch?v=O8gmv5-lXhs)
 
 [Collect agregační funkce](https://www.youtube.com/watch?v=zneE18EHJSE)
+
+## <a name="metadata"></a>Metadata
+
+[Pravidla ověřování metadat](https://www.youtube.com/watch?v=E_UD3R-VpYE)

@@ -2,18 +2,18 @@
 title: Kurz – vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShell
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu vytvářet a spravovat virtuální počítače s Windows v Azure.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: b89b3e2cf799e1aa182f7005d92e2c91ce4b76ce
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: ae298562b5d3306cf6c20b4c2fb7b378ba99c986
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561615"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu
 
@@ -50,7 +50,7 @@ Skupinu prostředků je třeba zadat při vytváření nebo úpravách virtuáln
 
 Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, konfigurace sítě a přihlašovací údaje pro správu. Tento příklad vytvoří virtuální počítač *myVM* s výchozí verzí Windows Serveru 2016 Datacenter.
 
-Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6):
+Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -234,7 +234,7 @@ Start-AzVM `
 Virtuální počítač Azure může mít jeden z mnoha stavů napájení. 
 
 
-| Stav napájení | Popis
+| Stav napájení | Description
 |----|----|
 | Spouštění | Virtuální počítač se právě spouští. |
 | Spuštěno | Virtuální počítač je spuštěný. |
@@ -262,7 +262,7 @@ Status
 PowerState/running
 ```
 
-Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
+Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
 
 ## <a name="management-tasks"></a>Úlohy správy
 

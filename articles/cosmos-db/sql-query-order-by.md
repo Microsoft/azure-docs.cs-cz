@@ -3,17 +3,19 @@ title: Klauzule ORDER BY v Azure Cosmos DB
 description: Přečtěte si o klauzuli ORDER BY jazyka SQL pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 887dc13eb5e351688718d2a221e69499557b23e5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484323"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338289"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzule ORDER BY v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Volitelná `ORDER BY` klauzule určuje pořadí řazení pro výsledky vrácené dotazem.
 
@@ -45,7 +47,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Určuje, že hodnoty v zadaném sloupci by měly být seřazené ve vzestupném nebo sestupném pořadí. `ASC`Seřadí z nejnižší hodnoty na nejvyšší hodnotu. `DESC`Seřadí z nejvyšší hodnoty na nejnižší hodnotu. `ASC`je výchozí pořadí řazení. Hodnoty null se považují za nejnižší možné hodnoty.  
+   Určuje, že hodnoty v zadaném sloupci by měly být seřazené ve vzestupném nebo sestupném pořadí. `ASC` Seřadí z nejnižší hodnoty na nejvyšší hodnotu. `DESC` Seřadí z nejvyšší hodnoty na nejnižší hodnotu. `ASC` je výchozí pořadí řazení. Hodnoty null se považují za nejnižší možné hodnoty.  
   
 ## <a name="remarks"></a>Poznámky  
   
@@ -79,7 +81,7 @@ Výsledky jsou následující:
     ]
 ```
 
-Následující dotaz načte rodinu `id` s v pořadí podle data vytvoření položky. Položka `creationDate` je číslo představující *epocha čas*nebo uplynulý čas od ledna. 1, 1970 v sekundách.
+Následující dotaz načte rodinu `id` s v pořadí podle data vytvoření položky. Položka `creationDate` je číslo představující *epocha čas* nebo uplynulý čas od ledna. 1, 1970 v sekundách.
 
 ```sql
     SELECT f.id, f.creationDate

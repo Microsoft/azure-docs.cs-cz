@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29a64931ac92eacf8948ae067118b6b25198c85d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051627"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223461"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a odběry
 
@@ -43,7 +43,7 @@ K vytvoření partnerského vztahu virtuálních sítí můžete použít [Azure
 V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z portálu a přeskočit kroky pro přiřazení dalších uživatelských oprávnění k virtuálním sítím.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako Usera. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
-2. Klikněte na **+ Nový**, pak na **sítě**a pak na **virtuální síť**.
+2. Klikněte na **+ Nový**, pak na **sítě** a pak na **virtuální síť**.
 3. V okně **vytvořit virtuální síť** zadejte nebo vyberte hodnoty pro následující nastavení a pak klikněte na **vytvořit**:
     - **Název**: *myVnetA*
     - **Adresní prostor**: *10.0.0.0/16*
@@ -72,7 +72,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
     - **Umístění**: *východní USA*
 
 14. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetB*. Po zobrazení ve výsledcích hledání klikněte na **myVnetB** . Zobrazí se okno pro virtuální síť **myVnetB** .
-15. V zobrazeném okně **myVnetB** klikněte na **vlastnosti** ze svislého seznamu možností na levé straně okna. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu:`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
+15. V zobrazeném okně **myVnetB** klikněte na **vlastnosti** ze svislého seznamu možností na levé straně okna. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Proveďte kroky 5-9 pro myVnetB, a to zadáním **Usera** v kroku 8.
 17. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 18. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Po zobrazení ve výsledcích hledání klikněte na **myVnetA** . Zobrazí se okno pro virtuální síť **myVnet** .
@@ -186,7 +186,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 1. Nainstalujte nejnovější verzi prostředí PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) a [AZ](https://www.powershellgallery.com/packages/Az) Modules. Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Spusťte relaci PowerShellu.
 3. V PowerShellu se přihlaste k předplatnému UserB jako UserB zadáním `Add-AzureAccount` příkazu. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
-4. Pokud chcete vytvořit virtuální síť (Classic) pomocí PowerShellu, musíte vytvořit novou nebo upravit existující soubor konfigurace sítě. Naučte se [exportovat, aktualizovat a importovat síťové konfigurační soubory](virtual-networks-using-network-configuration-file.md). Soubor by měl obsahovat následující element **VirtualNetworkSite** pro virtuální síť, která se používá v tomto kurzu:
+4. Pokud chcete vytvořit virtuální síť (Classic) pomocí PowerShellu, musíte vytvořit novou nebo upravit existující soubor konfigurace sítě. Naučte se [exportovat, aktualizovat a importovat síťové konfigurační soubory](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Soubor by měl obsahovat následující element **VirtualNetworkSite** pro virtuální síť, která se používá v tomto kurzu:
 
     ```xml
     <VirtualNetworkSite name="myVnetB" Location="East US">
@@ -272,11 +272,11 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 ## <a name="delete-resources"></a><a name="delete"></a>Odstranění prostředků
 Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které jste v tomto kurzu vytvořili, takže se vám neúčtují poplatky za využití. Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
 
-### <a name="azure-portal"></a><a name="delete-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
 1. Do vyhledávacího pole portálu zadejte **myResourceGroupA**. Ve výsledcích hledání klikněte na **myResourceGroupA**.
 2. V okně **myResourceGroupA** klikněte na ikonu **Odstranit** .
-3. Odstranění potvrďte tak, že do pole **Zadejte název skupiny prostředků** zadáte **myResourceGroupA**a pak kliknete na **Odstranit**.
+3. Odstranění potvrďte tak, že do pole **Zadejte název skupiny prostředků** zadáte **myResourceGroupA** a pak kliknete na **Odstranit**.
 4. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetB*. Po zobrazení ve výsledcích hledání klikněte na **myVnetB** . Zobrazí se okno pro virtuální síť **myVnetB** .
 5. V okně **myVnetB** klikněte na **Odstranit**.
 6. Kliknutím na **Ano** v poli **odstranit virtuální síť** potvrďte odstranění.
@@ -305,7 +305,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
    Remove-AzResourceGroup -Name myResourceGroupA -Force
    ```
 
-2. Pokud chcete odstranit virtuální síť (Classic) pomocí PowerShellu, musíte upravit existující konfigurační soubor sítě. Naučte se [exportovat, aktualizovat a importovat síťové konfigurační soubory](virtual-networks-using-network-configuration-file.md). Odeberte následující element VirtualNetworkSite pro virtuální síť, která se používá v tomto kurzu:
+2. Pokud chcete odstranit virtuální síť (Classic) pomocí PowerShellu, musíte upravit existující konfigurační soubor sítě. Naučte se [exportovat, aktualizovat a importovat síťové konfigurační soubory](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Odeberte následující element VirtualNetworkSite pro virtuální síť, která se používá v tomto kurzu:
 
    ```xml
    <VirtualNetworkSite name="myVnetB" Location="East US">

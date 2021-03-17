@@ -1,19 +1,16 @@
 ---
 title: Pochopení a řešení chyb WebHCat ve službě HDInsight – Azure
 description: Naučte se o běžných chybách vrácených WebHCat ve službě HDInsight a o tom, jak je vyřešit.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086955"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945462"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Seznámení s chybami přijatými z WebHCatu v HDInsightu a jejich řešení
 
@@ -71,19 +68,13 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 | --- | --- |
 | V rámci procesu WebHCat dochází k internímu uvolňování paměti. |Počkejte, až se uvolňování paměti dokončí, nebo restartujte službu WebHCat. |
 | Vypršel časový limit čekání na odpověď ze služby ResourceManager. K této chybě může dojít v případě, že počet aktivních aplikací překročí nakonfigurované maximum (výchozí 10 000). |Počkejte, než se aktuálně spuštěné úlohy dokončí, nebo zvyšte limit souběžnosti úloh úpravou `yarn.scheduler.capacity.maximum-applications` . Další informace najdete v části [Úprava konfiguračního](#modifying-configuration) oddílu. |
-| Probíhá pokus o načtení všech úloh prostřednictvím volání metody [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) , zatímco `Fields` je nastaveno na`*` |Nenačte podrobnosti o *všech* úlohách. Místo toho použijte `jobid` k načtení podrobností pro úlohy, které jsou pouze větší než určité ID úlohy. Nebo nepoužívejte`Fields` |
+| Probíhá pokus o načtení všech úloh prostřednictvím volání metody [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) , zatímco `Fields` je nastaveno na `*` |Nenačte podrobnosti o *všech* úlohách. Místo toho použijte `jobid` k načtení podrobností pro úlohy, které jsou pouze větší než určité ID úlohy. Nebo nepoužívejte `Fields` |
 | Služba WebHCat je během převzetí služeb při selhání hlavnímu uzlu vypnutá. |Počkejte dvě minuty a zkuste operaci zopakovat. |
 | Prostřednictvím WebHCat bylo odesláno více než 500 nedokončených úloh. |Před odesláním dalších úloh počkejte na dokončení probíhajících úloh. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

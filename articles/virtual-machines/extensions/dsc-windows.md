@@ -1,24 +1,19 @@
 ---
 title: Obslužná rutina rozšíření pro konfiguraci požadovaného stavu Azure
 description: Nahrání a použití konfigurace PowerShellu DSC na virtuálním počítači Azure s použitím rozšíření DSC
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
-ms.date: 03/26/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.collection: windows
+ms.date: 03/26/2018
+ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559983"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
 
@@ -73,7 +68,7 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
         "advancedOptions": {
             "forcePullAndApply": false,
             "downloadMappings": {
-                "specificDependencyKey": "https://myCustomDependencyLocation"
+             "specificDependencyKey": "https://myCustomDependencyLocation"
             }
         } 
     },
@@ -106,7 +101,7 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 
 ### <a name="settings-property-values"></a>Hodnoty vlastností nastavení
 
-| Name | Typ dat | Description
+| Name | Typ dat | Popis
 | ---- | ---- | ---- |
 | Settings. wmfVersion | řetězec | Určuje verzi rozhraní Windows Management Framework, která má být nainstalována na VIRTUÁLNÍm počítači. Když nastavíte tuto vlastnost na nejnovější, nainstaluje se aktualizovaná verze WMF. Pro tuto vlastnost jsou dostupné jenom aktuální hodnoty "4,0", "5,0" a "nejnovější". Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je ' nejnovější '. |
 | settings.configuration. URL | řetězec | Určuje umístění adresy URL, ze kterého se má stáhnout soubor zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings.configurationUrlSasToken na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud jsou definovány settings.configuration. Script a/nebo settings.configuration. Function.
@@ -120,7 +115,7 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 
 ### <a name="protected-settings-property-values"></a>Hodnoty vlastností chráněných nastavení
 
-| Name | Typ dat | Description
+| Name | Typ dat | Popis
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | řetězec | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost bude zašifrována. |
 | protectedSettings.configurationUrlSasToken | řetězec | Určuje token SAS pro přístup k adrese URL definované pomocí Configuration. URL. Tato vlastnost bude zašifrována. |

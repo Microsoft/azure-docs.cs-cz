@@ -1,20 +1,17 @@
 ---
 title: Přehled konektoru Azure Data Factory
 description: Seznamte se s podporovanými konektory v Data Factory.
-services: data-factory
 author: linda33wj
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 03/10/2021
 ms.author: jingwang
-ms.reviewer: craigg
-ms.openlocfilehash: 334d5b5113dba17c5abc2b4f2520bde0d16e4c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cfd3376174ec0f7789389988245f7377b9896a00
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007435"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015912"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Přehled konektoru Azure Data Factory
 
@@ -25,6 +22,17 @@ Azure Data Factory podporuje následující úložiště a formáty dat prostře
 ## <a name="supported-data-stores"></a>Podporované zdroje dat
 
 [!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+
+## <a name="integrate-with-more-data-stores"></a>Integrace s dalšími úložišti dat
+
+Azure Data Factory může dosáhnout širší sady úložišť dat než výše uvedená výše. Pokud potřebujete přesunout data do nebo z úložiště dat, které není v seznamu Azure Data Factory integrovaný konektor, tady jsou některé rozšiřitelné možnosti:
+- Pro databáze a datový sklad, obvykle můžete najít odpovídající ovladač ODBC, pomocí kterého můžete použít [obecný konektor ODBC](connector-odbc.md).
+- Pro SaaS aplikace:
+    - Pokud poskytuje rozhraní API RESTful, můžete použít [obecný konektor REST](connector-rest.md).
+    - Pokud má kanál OData, můžete použít [obecný konektor OData](connector-odata.md).
+    - Pokud poskytuje rozhraní API protokolu SOAP, můžete použít [obecný konektor http](connector-http.md).
+    - Pokud má ovladač ODBC ovladač, můžete použít [obecný konektor ODBC](connector-odbc.md).
+- Pro ostatní uživatele zkontrolujte, jestli můžete načíst data nebo je vystavovat jako jakákoli úložiště s AUTOMATICKÝm zápisem dat, např. Azure Blob/File/FTP/SFTP/a atd. Vlastní mechanismus načítání dat můžete vyvolat prostřednictvím [funkce Azure](control-flow-azure-function-activity.md), [vlastní aktivity](transform-data-using-dotnet-custom-activity.md), [datacihly](transform-data-databricks-notebook.md) / [HDInsight](transform-data-using-hadoop-hive.md), [aktivity webu](control-flow-web-activity.md)atd.
 
 ## <a name="supported-file-formats"></a>Podporované formáty souborů
 

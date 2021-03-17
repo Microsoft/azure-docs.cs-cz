@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477693"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90898830"
 ---
 # <a name="clean-missing-data-module"></a>Modul vyčištění chybějících dat
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete odebrat, nahradit nebo odvodit chybějící hodnoty. 
 
@@ -48,7 +48,7 @@ Tento modul vám umožní definovat operaci čištění. Operaci čištění mů
 
 ### <a name="replace-missing-values"></a>Nahradit chybějící hodnoty  
 
-Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-missing-data.md) na sadu dat, použije se stejná operace čištění pro všechny sloupce, které vyberete. Proto pokud potřebujete vyčistit různé sloupce pomocí různých metod, použijte samostatné instance modulu.
+Pokaždé, když použijete modul  [Vyčištění chybějících dat](./clean-missing-data.md) na sadu dat, použije se stejná operace čištění pro všechny sloupce, které vyberete. Proto pokud potřebujete vyčistit různé sloupce pomocí různých metod, použijte samostatné instance modulu.
 
 1.  Přidejte modul [Vyčištění chybějících dat](./clean-missing-data.md) do kanálu a připojte datovou sadu, která obsahuje chybějící hodnoty.  
   

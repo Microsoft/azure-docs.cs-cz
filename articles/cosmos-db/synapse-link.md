@@ -5,29 +5,27 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1b8c0c5bf533765e589e022233af14855b26d29c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034174"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656937"
 ---
-# <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
-
-> [!IMPORTANT]
-> Odkaz na službu Azure synapse pro Azure Cosmos DB je momentálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+# <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Co je Azure Synapse Link pro Azure Cosmos DB?
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Odkaz na Azure synapse pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy téměř v reálném čase nad provozními daty v Azure Cosmos DB. Propojení Azure synapse vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
-Pomocí [Azure Cosmos DBho analytického úložiště](analytical-store-introduction.md), plně izolovaného úložiště sloupců, neumožňuje propojení Azure synapse žádné analýzy extrakce a transformace (ETL) ve [službě Azure synapse Analytics](../synapse-analytics/overview-what-is.md) proti vaším provozním datům ve velkém měřítku. Obchodní analytici, datové inženýri a odborníci přes data teď můžou pomocí synapse Sparku nebo synapse SQL pracovat téměř v reálném čase business intelligence, analýz a kanálů strojového učení. Můžete to dosáhnout bez dopadu na výkon transakčních úloh na Azure Cosmos DB. 
+Pomocí [Azure Cosmos DBho analytického úložiště](analytical-store-introduction.md), plně izolovaného úložiště sloupců, neumožňuje propojení Azure synapse žádné analýzy extrakce a transformace (ETL) ve [službě Azure synapse Analytics](../synapse-analytics/overview-what-is.md) proti vaším provozním datům ve velkém měřítku. Obchodní analytici, datové inženýri a odborníci přes data teď můžou pomocí synapse Sparku nebo synapse SQL pracovat téměř v reálném čase business intelligence, analýz a kanálů strojového učení. Je toho možné dosáhnout bez dopadu na výkon transakčních úloh v Azure Cosmos DB. 
 
 Na následujícím obrázku vidíte integraci Azure Synapseu s využitím Azure Cosmos DB a Azure synapse Analytics: 
 
 :::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Diagram architektury pro integraci Azure synapse Analytics s Azure Cosmos DB" border="false":::
 
-## <a name="benefits"></a><a id="synapse-link-benefits"></a>Výhodnější
+## <a name="benefits"></a><a id="synapse-link-benefits"></a> Výhodnější
 
 Aby bylo možné analyzovat velké provozní datové sady a zároveň minimalizovat dopad na výkon důležitých transakčních úloh, tradičně jsou provozní data v Azure Cosmos DB extrahována a zpracována pomocí kanálů extrakce, transformace a načítání (ETL). Kanály ETL vyžadují mnoho vrstev přesunu dat, což má za následek mnohem náročnou provozní složitost a dopad na výkon vašich transakčních úloh. Zároveň se tím zvyšuje latence, která analyzuje provozní data od času počátku.
 
@@ -35,12 +33,11 @@ V porovnání s tradičními řešeními založenými na ETL nabízí Azure syna
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>Snížení složitosti bez úloh ETL ke správě
 
-Azure synapse Link umožňuje přímý přístup k Azure Cosmos DB analytickému úložišti pomocí Azure synapse Analytics bez složitého přesunu dat. Jakékoli aktualizace provozních dat jsou viditelné v analytickém úložišti téměř v reálném čase bez úloh ETL nebo změny kanálu. Pomocí analytického úložiště z synapse Analytics můžete spouštět rozsáhlou škálu analýz bez další transformace dat.
+Azure synapse Link umožňuje přímý přístup k Azure Cosmos DB analytickému úložišti pomocí Azure synapse Analytics bez složitého přesunu dat. Jakékoli aktualizace provozních dat jsou viditelné v analytickém úložišti téměř v reálném čase bez úloh ETL nebo změny kanálu. Pomocí analytického úložiště z Azure synapse Analytics můžete spustit rozsáhlou škálu analýz bez další transformace dat.
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Přehledy o provozních datech téměř v reálném čase
 
 Pomocí odkazu Azure synapse teď můžete získat přehled o provozních datech téměř v reálném čase. Systémy založené na ETL mají za následek vyšší latenci při analýze provozních dat, a to kvůli mnoha vrstvám potřebných k extrakci, transformaci a načítání provozních dat. Díky nativní integraci Azure Cosmos DB analytického úložiště s Azure synapse Analytics můžete analyzovat provozní data téměř v reálném čase a umožnit tak nové obchodní scénáře. 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>Žádný dopad na provozní úlohy
 
@@ -57,7 +54,7 @@ S odkazem na Azure synapse můžete získat cenově optimalizované a plně spra
 Azure Cosmos DB analytické úložiště sleduje cenový model založený na spotřebě, který je založený na operacích úložiště dat a analytické operace čtení a zápisu a na provedených dotazech. Nevyžaduje, abyste zřídili žádnou propustnost, stejně jako v současnosti za transakční úlohy. Přístup k datům s vysoce elastickými výpočetními moduly z Azure synapse Analytics přináší celkové náklady na spuštění úložiště a výpočetní výkon.
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Analýza pro místně dostupná, globálně distribuovaná, multi Master Data
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>Analýza pro místně dostupná, globálně distribuovaná, vícenásobná zápisy ve více oblastech
 
 Analytické dotazy můžete efektivně spouštět proti nejbližší místní kopii dat v Azure Cosmos DB. Azure Cosmos DB poskytuje nejmodernější možnosti pro spouštění globálně distribuovaných analytických úloh spolu s transakčními úlohami aktivním aktivním způsobem.
 
@@ -75,13 +72,13 @@ Pokud máte globálně distribuovaný Azure Cosmos DB účet, po povolení analy
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>Integrace se službou Azure synapse Analytics
 
-S odkazem na synapse se teď můžete přímo připojit k vašim Azure Cosmos DBm kontejnerům z Azure synapse Analytics a přistupovat k analytickému úložišti bez oddělených konektorů. Azure synapse Analytics aktuálně podporuje synapse propojení s [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) a [synapse bez SQL serveru](../synapse-analytics/sql/on-demand-workspace-overview.md).
+S odkazem na synapse se teď můžete přímo připojit k vašim Azure Cosmos DBm kontejnerům z Azure synapse Analytics a přistupovat k analytickému úložišti bez oddělených konektorů. Služba Azure synapse Analytics aktuálně podporuje synapse propojení s [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) a [neserverovým fondem SQL](../synapse-analytics/sql/on-demand-workspace-overview.md).
 
 Data z Azure Cosmos DBho analytického úložiště můžete zadávat současně s interoperabilitou různých analytických časů, které Azure synapse Analytics podporuje. K analýze provozních dat nejsou potřeba žádné další transformace dat. Data analytického úložiště můžete dotazovat a analyzovat pomocí:
 
 * Synapse Apache Spark s plnou podporou pro Scala, Python, SparkSQL a C#. Synapse Spark je centrální na datové strojírenství a scénáře pro datové vědy
 
-* SQL Server bez jazyka T-SQL a podpora známých nástrojů BI (například Power BI Premium atd.)
+* Fond SQL bez serveru s jazykem T-SQL a podporou pro známé nástroje BI (například Power BI Premium atd.)
 
 > [!NOTE]
 > Z Azure synapse Analytics máte přístup k analytickým i transakčním úložištím v kontejneru Azure Cosmos DB. Pokud ale chcete spouštět rozsáhlé analýzy nebo kontrolovat vaše provozní data, doporučujeme použít analytické úložiště, abyste se vyhnuli dopadu na transakční úlohy.
@@ -91,7 +88,7 @@ Data z Azure Cosmos DBho analytického úložiště můžete zadávat současně
 
 Tato integrace umožňuje pro různé uživatele následující scénáře HTAP:
 
-* Inženýr BI, který chce modelovat a publikovat sestavu pro přístup k provozním datům v Azure Cosmos DB přímo prostřednictvím SQL synapse.
+* Inženýr BI, který chce modelovat a publikovat Power BI sestavu pro přístup k živým provozním datům v Azure Cosmos DB přímo prostřednictvím synapse SQL.
 
 * Analytik dat, který chce z provozních dat v kontejneru Azure Cosmos DB odvodit přehledy pomocí dotazování pomocí synapse SQL, číst data ve velkém měřítku a kombinovat tato zjištění s ostatními zdroji dat.
 
@@ -101,11 +98,25 @@ Tato integrace umožňuje pro různé uživatele následující scénáře HTAP:
 
 Další informace o podpoře Azure synapse Analytics runtime pro Azure Cosmos DB najdete v tématu [Azure synapse Analytics pro Cosmos DB podporu](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md).
 
+## <a name="security"></a>Zabezpečení
+
+Synapse Link vám umožní spouštět analýzy téměř v reálném čase v rámci důležitých dat v Azure Cosmos DB. Je důležité zajistit, aby byla důležitá obchodní data bezpečně ukládána napříč transakčními i analytickými obchody. Odkaz na službu Azure synapse pro Azure Cosmos DB je navržený tak, aby splňoval tyto požadavky na zabezpečení prostřednictvím následujících funkcí:
+
+* **Izolace sítě pomocí soukromých koncových bodů** – k datům v transakčních a analytických úložištích můžete řídit síťový přístup nezávisle. Izolace sítě se provádí pomocí samostatných spravovaných privátních koncových bodů pro každé úložiště v rámci spravovaných virtuálních sítí v pracovních prostorech Azure synapse. Další informace najdete v článku postup [Konfigurace privátních koncových bodů pro analytické úložiště](analytical-store-private-endpoints.md) .
+
+* **Šifrování dat pomocí klíčů spravovaných zákazníkem** – data můžete bez problémů šifrovat napříč transakčními a analytickými úložišti, a to pomocí automatického a transparentního klíče spravovaného zákazníky. Další informace najdete v článku postup [konfigurace klíčů spravovaných zákazníkem](how-to-setup-cmk.md) .
+
+* **Zabezpečená správa klíčů** – přístup k datům v analytickém úložišti z synapse a synapse serverů SQL bez serveru vyžaduje správu Azure Cosmos DB klíčů v rámci pracovních prostorů synapse Analytics. Místo používání Azure Cosmos DB klíčů účtu, které jsou vložené v úlohách Sparku nebo ve skriptech SQL, poskytuje propojení Azure synapse bezpečnější možnosti.
+
+  * Pokud používáte synapse fondy SQL serverů bez serveru, můžete dotazovat se na Azure Cosmos DB analytické úložiště pomocí předběžného Vytváření přihlašovacích údajů SQL, který ukládá klíče účtu a odkazuje na ně ve `OPENROWSET` funkci. Další informace najdete v článku [dotazování s fondem SQL bez serveru v článku s odkazem na Azure synapse](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
+
+  * Při použití synapse Spark můžete ukládat klíče účtu v propojených objektech služby, které ukazují na databázi Azure Cosmos DB a odkazovat na ně v konfiguraci Sparku za běhu. Další informace najdete v tématu [kopírování dat do vyhrazeného fondu SQL pomocí Apache Spark](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md) článku.
+
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>Kdy použít pro Azure Cosmos DB odkaz na Azure synapse?
 
 Odkaz na synapse se doporučuje v následujících případech:
 
-* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Příklad:
+* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Například:
 
   * Pokud používáte analýzy nebo BI na vašich Azure Cosmos DB provozních datech přímo pomocí samostatných konektorů ještě dnes, nebo
 
@@ -115,16 +126,13 @@ V takových případech odkaz synapse poskytuje pokročilejší analytické pros
 
 Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový sklad, jako je vysoká souběžnost, Správa úloh a trvalost agregací napříč různými zdroji dat. Další informace najdete v tématu [běžné scénáře, které mohou být napájeny pomocí služby Azure synapse Link pro Azure Cosmos DB](synapse-link-use-cases.md).
 
-
 ## <a name="limitations"></a>Omezení
 
-* V rámci verze Public Preview se odkaz Azure synapse podporuje jenom pro rozhraní API Azure Cosmos DB SQL (Core). Podpora rozhraní Azure Cosmos DB API pro MongoDB & rozhraní API Cassandra jsou aktuálně v rámci služby gated Preview. Pokud chcete požádat o přístup k ověřované verzi Preview, pošlete [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com)e-mail.
+* Azure Synapse Link pro Azure Cosmos DB podporuje rozhraní SQL API a rozhraní API služby Azure Cosmos DB pro MongoDB. Pro rozhraní Gremlin API, rozhraní API Cassandra a rozhraní API pro tabulky se nepodporuje.
 
-* V současné době se analytické úložiště dá povolit jenom pro nové kontejnery (v nových i existujících účtech Azure Cosmos DB).
+* Analytické úložiště se dá povolit jenom pro nové kontejnery. Pokud chcete použít analytické úložiště pro existující kontejnery, migrujte data z existujících kontejnerů do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB](cosmosdb-migrationchoices.md). Můžete povolit synapse odkaz na nové a existující účty Azure Cosmos DB.
 
-* V Preview se pro účty databáze s povoleným odkazem synapse nepodporuje zálohování a obnovování kontejnerů. Pokud máte produkční úlohy, které vyžadují funkci zálohování a obnovení, nedoporučujeme na těchto databázových účtech povolit synapse odkaz. 
-
-* Přístup k Azure Cosmos DB analytickému obchodu s synapse bez SQL serveru je v současné době ve verzi gatedd Preview. Pokud chcete požádat o přístup, odešlete e-mailem [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com).
+* U kontejnerů se zapnutým analytickým úložištěm se v současnosti nepodporuje automatické zálohování a obnovování vašich dat v analytickém úložišti. Když je na databázovém účtu povoleno propojení synapse, Azure Cosmos DB bude pokračovat v automatickém ukládání [záloh](./online-backup-and-restore.md) vašich dat do transakčního úložiště (pouze) kontejnerů v naplánovaných intervalech zálohování, jako vždycky. Je důležité si uvědomit, že když se na nový účet obnoví kontejner se zapnutým analytickým úložištěm, kontejner se obnoví jenom v transakčním úložišti a není povolený žádný analytický obchod.
 
 * Přístup k úložišti Azure Cosmos DB Analytics s zřízeným synapse SQL není momentálně k dispozici.
 

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: celested
-ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4abc117ae0e983cf684f0e70a363758f9be196aa
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549462"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359422"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro Automatické zřizování uživatelů
 
@@ -24,7 +24,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v Asana a Azure 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenant Azure AD
 * Tenant Asana s plánem [Enterprise](https://www.asana.com/pricing) nebo lepším povoleným
@@ -64,7 +64,7 @@ Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro
 
     ![Zřizování Asana](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-1. V části **přihlašovací údaje správce** postupujte podle těchto pokynů a vygenerujte token a zadejte ho v  **tajném tokenu**:
+1. V části **přihlašovací údaje správce** postupujte podle těchto pokynů a vygenerujte token a zadejte ho v  **tajném tokenu** :
 
     a. Přihlaste se k [Asana](https://app.asana.com) pomocí účtu správce.
 
@@ -74,7 +74,7 @@ Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro
 
     d. Vyberte **Přidat účet služby**.
 
-    e. Podle potřeby aktualizujte **název** a **informace o** a fotografii profilu. Zkopírujte token v **tokenu**a vyberte ho v části **Uložit změny**.
+    e. Podle potřeby aktualizujte **název** a **informace o** a fotografii profilu. Zkopírujte token v **tokenu** a vyberte ho v části **Uložit změny**.
 
 1. V Azure Portal vyberte **Test připojení** , aby se služba Azure AD mohla připojit k vaší aplikaci Asana. Pokud se připojení nepovede, ujistěte se, že má váš účet Asana oprávnění správce, a zkuste krok **test Connection** znovu.
 
@@ -94,7 +94,7 @@ Nyní se spustí počáteční synchronizace pro všechny uživatele přiřazen�
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175466"
 ---
 Pokud se setkáte s problémy zařízení, můžete vytvořit balíček pro podporu ze systémových protokolů. Podpora Microsoftu používá tento balíček k řešení problémů. Pomocí těchto kroků vytvořte balíček pro podporu:
@@ -31,11 +31,11 @@ Pokud se setkáte s problémy zařízení, můžete vytvořit balíček pro podp
 
     Použijí se následující parametry:
 
-    - `-Path`-Zadejte síť nebo místní cestu ke zkopírování balíčku pro podporu. požadovanou
-    - `-Credential`-Zadejte přihlašovací údaje pro přístup k chráněné cestě.
-    - `-Zip`– Určete, aby se vygeneroval soubor zip.
-    - `-Include`– Určuje, že se mají zahrnout součásti, které se mají zahrnout do balíčku pro podporu. Pokud není zadaný, `Default` předpokládá se.
-    - `-IncludeArchived`– Určuje, že se mají do balíčku pro podporu zahrnout archivované protokoly.
-    - `-IncludePeriodicStats`– Určuje, že se mají do balíčku pro podporu zahrnout protokoly pravidelného oznámení.
+    - `-Path` -Zadejte síť nebo místní cestu ke zkopírování balíčku pro podporu. požadovanou
+    - `-Credential` -Zadejte přihlašovací údaje pro přístup k chráněné cestě.
+    - `-Zip` – Určete, aby se vygeneroval soubor zip.
+    - `-Include` – Určuje, že se mají zahrnout součásti, které se mají zahrnout do balíčku pro podporu. Pokud není zadaný, `Default` předpokládá se.
+    - `-IncludeArchived` – Určuje, že se mají do balíčku pro podporu zahrnout archivované protokoly.
+    - `-IncludePeriodicStats` – Určuje, že se mají do balíčku pro podporu zahrnout protokoly pravidelného oznámení.
 
     

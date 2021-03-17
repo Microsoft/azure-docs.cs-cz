@@ -1,21 +1,19 @@
 ---
 title: Transformace dat v cloudu pomocí PowerShellu
 description: Tento skript PowerShellu transformuje data v cloudu spuštěním programu Spark v clusteru Azure HDInsight Spark.
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1178f91344038fc86f1411fca1beafbe901d05
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74932050"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389820"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skript PowerShellu – transformace dat v cloudu pomocí Azure Data Factory
 
@@ -54,7 +52,7 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
     if __name__ == "__main__":
         main()
     ```
-2. Nahraďte ** &lt; storageAccountName &gt; ** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
+2. Nahraďte **&lt; storageAccountName &gt;** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
 4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
@@ -102,6 +100,6 @@ Tento skript používá následující příkazy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [ukázkách Azure Data Factory PowerShellu](../samples-powershell.md).

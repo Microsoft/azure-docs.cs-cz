@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502694"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566516"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
 
@@ -23,21 +23,20 @@ Jako správce IT, který má na starosti správu webového provozu, chcete záka
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvoření skupiny prostředků pro síťové prostředky, které budete potřebovat
-> * Vytvoření síťových prostředků
-> * Vytvoření aplikační brány pro provoz přicházející z vaší aplikace
-> * Určení fondů serverů a pravidel směrování pro různé typy provozu
-> * Vytvoření škálovacích sad pro jednotlivé fondy, aby se mohly automaticky škálovat
-> * Spuštění testu, abyste mohli ověřit směrování různých typů provozu do správných fondů
+* Vytvoření skupiny prostředků pro síťové prostředky, které budete potřebovat
+* Vytvoření síťových prostředků
+* Vytvoření aplikační brány pro provoz přicházející z vaší aplikace
+* Určení fondů serverů a pravidel směrování pro různé typy provozu
+* Vytvoření škálovacích sad pro jednotlivé fondy, aby se mohly automaticky škálovat
+* Spuštění testu, abyste mohli ověřit směrování různých typů provozu do správných fondů
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-url-route-powershell.md) nebo [Azure Portal](create-url-route-portal.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -51,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu `az network vnet create` vytvořte virtuální síť *myVNet* a podsíť *myAGSubnet*. Potom pomocí příkazu `az network vnet subnet create` přidejte podsíť *myBackendSubnet*, kterou potřebují back-endové servery. Pomocí příkazu `az network public-ip create` vytvořte veřejnou IP adresu *myAGPublicIPAddress*.
+Pomocí příkazu `az network vnet create` vytvořte virtuální síť *myVNet* a podsíť *myAGSubnet*. Potom pomocí příkazu `az network vnet subnet create` přidejte podsíť *myBackendSubnet* , kterou potřebují back-endové servery. Pomocí příkazu `az network public-ip create` vytvořte veřejnou IP adresu *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -130,7 +129,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>Přidání back-endového naslouchacího procesu
 
-Pomocí příkazu `az network application-gateway http-listener create` přidejte back-endový naslouchací proces *backendListener*, který je potřeba ke směrování provozu.
+Pomocí příkazu `az network application-gateway http-listener create` přidejte back-endový naslouchací proces *backendListener* , který je potřeba ke směrování provozu.
 
 
 ```azurecli-interactive
@@ -184,7 +183,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto článku vytvoříte tři sady škálování virtuálních počítačů, které podporují tři back-end fondy, které jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
+V tomto článku vytvoříte tři sady škálování virtuálních počítačů, které podporují tři back-end fondy, které jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1* , *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

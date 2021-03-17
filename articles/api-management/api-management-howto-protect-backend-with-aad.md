@@ -1,32 +1,29 @@
 ---
-title: Ochrana rozhraní API pomocí OAuth 2,0 s AAD a API Management
+title: Ochrana back-endu rozhraní API v API Management pomocí OAuth 2,0 a Azure AD
 titleSuffix: Azure API Management
-description: Přečtěte si, jak chránit back-end webového rozhraní API pomocí Azure Active Directory a API Management.
+description: Naučte se zabezpečit přístup k back-endu webového rozhraní API v Azure API Management s autorizací uživatelů OAuth 2,0 a Azure Active Directory
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243405"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027913"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí OAuth 2.0 s využitím služeb Azure Active Directory a API Management
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Ochrana back-endu webového rozhraní API v Azure API Management pomocí autorizace OAuth 2,0 s Azure AD 
 
-V této příručce se dozvíte, jak nakonfigurovat instanci Azure API Management k ochraně rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory (Azure AD). 
+V této příručce se dozvíte, jak nakonfigurovat instanci [Azure API Management](api-management-key-concepts.md) k ochraně rozhraní API pomocí [protokolu OAuth 2,0 s Azure Active Directory (Azure AD)](../active-directory/develop/active-directory-v2-protocols.md). 
 
 > [!NOTE]
-> Tato funkce je dostupná v API Management úrovně pro **vývojáře**, **Basic**, **Standard**a **Premium** .
+> Tato funkce je dostupná v API Management úrovně pro **vývojáře**, **Basic**, **Standard** a **Premium** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 
@@ -46,7 +43,7 @@ Následuje rychlý přehled kroků:
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Registrace aplikace ve službě Azure AD, která představuje rozhraní API
 
-Chcete-li chránit rozhraní API pomocí služby Azure AD, nejprve Zaregistrujte aplikaci ve službě Azure AD, která představuje rozhraní API. 
+Chcete-li chránit rozhraní API pomocí služby Azure AD, nejprve Zaregistrujte aplikaci ve službě Azure AD, která představuje rozhraní API. Následující kroky používají Azure Portal k registraci aplikace. Podrobnosti o registraci aplikace najdete v tématu [rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API](../active-directory/develop/quickstart-configure-app-expose-web-apis.md).
 
 1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **Registrace aplikací**.
 
@@ -79,7 +76,7 @@ Registrace jiné aplikace ve službě Azure AD, která bude reprezentovat konzol
 
 1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) .
 
-1.  Vyhledejte a vyberte **Registrace aplikací**.
+1. Vyhledejte a vyberte **Registrace aplikací**.
 
 1. Vyberte **Nová registrace**.
 
@@ -96,9 +93,9 @@ Registrace jiné aplikace ve službě Azure AD, která bude reprezentovat konzol
 
 1. Pro tuto aplikaci vytvořte tajný klíč klienta, který se použije v dalším kroku.
 
-   1. V seznamu stránek klientské aplikace vyberte **certifikáty & tajných**kódů a vyberte **nový tajný klíč klienta**.
+   1. V seznamu stránek klientské aplikace vyberte **certifikáty & tajných** kódů a vyberte **nový tajný klíč klienta**.
 
-   1. V části **Přidat tajný klíč klienta**zadejte **Popis**. Zvolte, kdy má klíč vypršet, a vyberte **Přidat**.
+   1. V části **Přidat tajný klíč klienta** zadejte **Popis**. Zvolte, kdy má klíč vypršet, a vyberte **Přidat**.
 
 Po vytvoření tajného klíče si poznamenejte klíčovou hodnotu pro použití v dalším kroku. 
 
@@ -112,11 +109,11 @@ Nyní, když jste zaregistrovali dvě aplikace, které představují rozhraní A
 
 1. Vyberte **Přidat oprávnění**.
 
-1. V části **Vybrat rozhraní API**vyberte **Moje rozhraní API**a pak vyhledejte a vyberte back-end aplikaci.
+1. V části **Vybrat rozhraní API** vyberte **Moje rozhraní API** a pak vyhledejte a vyberte back-end aplikaci.
 
-1. V části **delegovaná oprávnění**vyberte požadovaná oprávnění pro back-end aplikaci a pak vyberte **Přidat oprávnění**.
+1. V části **delegovaná oprávnění** vyberte požadovaná oprávnění pro back-end aplikaci a pak vyberte **Přidat oprávnění**.
 
-1. Volitelně můžete na stránce **oprávnění rozhraní API** vybrat **udělit souhlasu správce pro \<your-tenant-name> ** udělení souhlasu jménem všech uživatelů v tomto adresáři. 
+1. Volitelně můžete na stránce **oprávnění rozhraní API** vybrat **udělit souhlasu správce pro \<your-tenant-name>** udělení souhlasu jménem všech uživatelů v tomto adresáři. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Povolení autorizace uživatele OAuth 2,0 v konzole pro vývojáře
 
@@ -130,16 +127,16 @@ V tomto příkladu je konzole pro vývojáře klientská aplikace. Následujíc�
 
 1. Zadejte **Zobrazovaný název** a **Popis**.
 
-1. V poli **Adresa URL registrační stránky klienta**zadejte hodnotu zástupného symbolu, například `http://localhost` . **Adresa URL stránky pro registraci klienta** odkazuje na stránku, kterou můžou uživatelé použít k vytvoření a konfiguraci vlastních účtů pro poskytovatele OAuth 2,0, kteří to podporují. V tomto příkladu uživatelé nevytvářejí a nekonfigurují vlastní účty, takže místo toho použijete zástupný symbol.
+1. V poli **Adresa URL registrační stránky klienta** zadejte hodnotu zástupného symbolu, například `http://localhost` . **Adresa URL stránky pro registraci klienta** odkazuje na stránku, kterou můžou uživatelé použít k vytvoření a konfiguraci vlastních účtů pro poskytovatele OAuth 2,0, kteří to podporují. V tomto příkladu uživatelé nevytvářejí a nekonfigurují vlastní účty, takže místo toho použijete zástupný symbol.
 
-1. V případě **autorizačních typů udělte**vyberte **autorizační kód**.
+1. V případě **autorizačních typů udělte** vyberte **autorizační kód**.
 
 1. Zadejte **adresu URL koncového bodu autorizace** a **adresu URL koncového bodu tokenu**. Tyto hodnoty načtěte ze stránky **koncových bodů** v TENANTOVI Azure AD. Přejděte na stránku **Registrace aplikací** znovu a vyberte **koncové body**.
 
 
-1. Zkopírujte **koncový bod autorizace OAuth 2,0**a vložte ho do textového pole **Adresa URL koncového bodu autorizace** . V části Metoda žádosti o autorizaci vyberte **post** .
+1. Zkopírujte **koncový bod autorizace OAuth 2,0** a vložte ho do textového pole **Adresa URL koncového bodu autorizace** . V části Metoda žádosti o autorizaci vyberte **post** .
 
-1. Zkopírujte **koncový bod tokenu OAuth 2,0**a vložte ho do textového pole **Adresa URL koncového bodu tokenu** . 
+1. Zkopírujte **koncový bod tokenu OAuth 2,0** a vložte ho do textového pole **Adresa URL koncového bodu tokenu** . 
 
    >[!IMPORTANT]
    > Použijte koncové body **v1** nebo **v2** . V závislosti na zvolené verzi ale bude tento krok jiný. Doporučujeme používat koncové body v2. 
@@ -150,9 +147,9 @@ V tomto příkladu je konzole pro vývojáře klientská aplikace. Následujíc�
 
 1. Dále zadejte pověření klienta. Toto jsou přihlašovací údaje klienta aplikace.
 
-1. Pro **ID klienta**použijte **ID aplikace** klienta aplikace.
+1. Pro **ID klienta** použijte **ID aplikace** klienta aplikace.
 
-1. Pro **tajný klíč klienta**použijte klíč, který jste vytvořili dříve pro klienta aplikace. 
+1. Pro **tajný klíč klienta** použijte klíč, který jste vytvořili dříve pro klienta aplikace. 
 
 1. Hned za tajný klíč klienta je **redirect_url** typu udělení autorizačního kódu. Tuto adresu URL si poznamenejte.
 
@@ -160,7 +157,7 @@ V tomto příkladu je konzole pro vývojáře klientská aplikace. Následujíc�
 
 1. Vraťte se k registraci klienta a aplikace v Azure Active Directory a vyberte **ověřování**.
 
-1. V části **konfigurace platformy** klikněte na **Přidat platformu**a vyberte typ jako **Web**, do pole **identifikátor URI pro přesměrování**vložte **redirect_url** a pak klikněte na tlačítko **Konfigurovat** tlačítko pro uložení.
+1. V části **konfigurace platformy** klikněte na **Přidat platformu** a vyberte typ jako **Web**, do pole **identifikátor URI pro přesměrování** vložte **redirect_url** a pak klikněte na tlačítko **Konfigurovat** tlačítko pro uložení.
 
 Teď, když jste nakonfigurovali autorizační Server OAuth 2,0, může konzola pro vývojáře získat přístupové tokeny ze služby Azure AD. 
 
@@ -168,11 +165,11 @@ Dalším krokem je povolení autorizace uživatele OAuth 2,0 pro vaše rozhraní
 
 1. Přejděte k instanci API Management a přejděte na **rozhraní API**.
 
-1. Vyberte rozhraní API, které chcete chránit. Například `Echo API`.
+1. Vyberte rozhraní API, které chcete chránit. Například, `Echo API`.
 
 1. Přejít na **Nastavení**.
 
-1. V části **zabezpečení**zvolte **OAuth 2,0**a vyberte server OAuth 2,0, který jste nakonfigurovali dříve. 
+1. V části **zabezpečení** zvolte **OAuth 2,0** a vyberte server OAuth 2,0, který jste nakonfigurovali dříve. 
 
 1. Vyberte **Uložit**.
 

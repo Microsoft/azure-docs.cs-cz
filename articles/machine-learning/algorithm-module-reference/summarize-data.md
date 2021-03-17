@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477438"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90898220"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
-Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
+Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Modul shrnutí dat slouží k vytvoření sady standardních statistických měr, které popisují jednotlivé sloupce ve vstupní tabulce.
 
@@ -49,18 +49,18 @@ Sestava z modulu může zahrnovat následující statistiky.
 |Název sloupce|Description|
 |------|------|  
 |**Funkce**|Název sloupce|
-|**Výpočtu**|Počet všech řádků|
+|**Počet**|Počet všech řádků|
 |**Počet jedinečných hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Chybějící počet hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Dlouhé**|Nejnižší hodnota ve sloupci|  
-|**Počet**|Nejvyšší hodnota ve sloupci|
+|**Max**|Nejvyšší hodnota ve sloupci|
 |**Průměrná**|Střední hodnota všech hodnot sloupců|
 |**Střední odchylka**|Střední odchylka hodnot sloupců|
 |**1. kvartil**|Hodnota při první kvartil|
 |**Svisl**|Hodnota sloupce mediánu|
 |**třetí kvartil**|Hodnota při třetí kvartil|
 |**Mode**|Režim hodnot sloupců|
-|**Oblasti**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
+|**Rozsah**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
 |**Odchylka vzorku**|Variance pro sloupec; Viz Poznámka|
 |**Vzorová směrodatná odchylka**|Směrodatná odchylka pro sloupec; Viz Poznámka|
 |**Dezkosení vzorku**|Zešikmení sloupce; Viz Poznámka|

@@ -2,23 +2,24 @@
 title: Application Insights pro aplikace pracovní služby Worker (jiné aplikace než HTTP)
 description: Monitorování aplikací .NET Core/. NET Framework bez protokolu HTTP pomocí Azure Monitor Application Insights.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1ca594626d4384c9dfb62990ee2017d2094fca4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325402"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371851"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights pro aplikace služby Worker (aplikace jiného typu než HTTP)
 
-Application Insights uvolňuje novou sadu SDK nazvanou `Microsoft.ApplicationInsights.WorkerService` , která je nejvhodnější pro úlohy jiné než HTTP, jako je zasílání zpráv, úlohy na pozadí, konzolové aplikace atd. Tyto typy aplikací nemají pojem příchozího požadavku HTTP, jako je tradiční webová aplikace ASP.NET/ASP.NET Core, a proto použití balíčků Application Insights pro [ASP.NET](asp-net.md) nebo aplikace [ASP.NET Core](asp-net-core.md) není podporované.
+[Sada Application Insights SDK for Worker Service](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) je nová sada SDK, která je nejvhodnější pro úlohy jiné než HTTP, jako je zasílání zpráv, úlohy na pozadí, konzolové aplikace atd. Tyto typy aplikací nemají pojem příchozího požadavku HTTP, jako je tradiční webová aplikace ASP.NET/ASP.NET Core, a proto použití balíčků Application Insights pro [ASP.NET](asp-net.md) nebo aplikace [ASP.NET Core](asp-net-core.md) není podporované.
 
 Nová sada SDK nedělá žádné kolekce telemetrie sám o sobě. Místo toho přináší další známé Application Insights automatické shromažďování, jako je [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) atd. Tato sada SDK zpřístupňuje metody rozšíření `IServiceCollection` pro povolení a konfiguraci kolekce telemetrie.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-[Služba Application Insights SDK for Worker](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) se nejlépe hodí pro aplikace bez protokolu HTTP bez ohledu na to, kde a jak se spouštějí. Pokud vaše aplikace běží a má síťové připojení k Azure, je možné shromažďovat telemetrii. Monitorování Application Insights je podporováno všude, kde je podporováno rozhraní .NET Core. Tento balíček se dá použít v nově zavedené [službě .NET Core 3,0 Worker](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [úlohy na pozadí v ASP.NET Core 2.1/2.2](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), konzolové aplikace (.NET Core/.NET Framework) atd.
+[Služba Application Insights SDK for Worker](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) se nejlépe hodí pro aplikace bez protokolu HTTP bez ohledu na to, kde a jak se spouštějí. Pokud vaše aplikace běží a má síťové připojení k Azure, je možné shromažďovat telemetrii. Monitorování Application Insights je podporováno všude, kde je podporováno rozhraní .NET Core. Tento balíček se dá použít v nově zavedené [službě .NET Core 3,0 Worker](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [úlohy na pozadí v ASP.NET Core 2.1/2.2](/aspnet/core/fundamentals/host/hosted-services), konzolové aplikace (.NET Core/.NET Framework) atd.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,10 +44,10 @@ Konkrétní pokyny pro jednotlivé typy aplikací jsou popsány v následující
 
 ## <a name="net-core-30-worker-service-application"></a>Aplikace služby pracovního procesu .NET Core 3,0
 
-Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) sdílí.
+Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) sdílí.
 
 1. Stažení a instalace [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Vytvoření nového projektu služby pracovního procesu buď pomocí šablony nového projektu sady Visual Studio nebo příkazového řádku`dotnet new worker`
+2. Vytvoření nového projektu služby pracovního procesu buď pomocí šablony nového projektu sady Visual Studio nebo příkazového řádku `dotnet new worker`
 3. Nainstalujte do aplikace balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) .
 
 4. Přidejte `services.AddApplicationInsightsTelemetryWorkerService();` do `CreateHostBuilder()` metody ve `Program.cs` třídě, jako v tomto příkladu:
@@ -107,9 +108,9 @@ Konkrétní pokyny pro jednotlivé typy aplikací jsou popsány v následující
 ```json
     {
         "ApplicationInsights":
-            {
+        {
             "InstrumentationKey": "putinstrumentationkeyhere"
-            },
+        },
         "Logging":
         {
             "LogLevel":
@@ -124,7 +125,7 @@ Případně můžete zadat klíč instrumentace v některé z následujících p
 `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `ApplicationInsights:InstrumentationKey`
 
 Příklad: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
-ANI`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
+ANI `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 Obvykle `APPINSIGHTS_INSTRUMENTATIONKEY` Určuje klíč instrumentace pro aplikace nasazené pro Web Apps jako webové úlohy.
 
@@ -133,11 +134,11 @@ Obvykle `APPINSIGHTS_INSTRUMENTATIONKEY` Určuje klíč instrumentace pro aplika
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ASP.NET Core úlohy na pozadí pomocí hostovaných služeb
 
-[Tento](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2) dokument popisuje, jak vytvořit úlohy na pozadí v aplikaci ASP.NET Core 2.1/2.2.
+[Tento](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio) dokument popisuje, jak vytvořit úlohy na pozadí v aplikaci ASP.NET Core 2.1/2.2.
 
-Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) sdílí.
+Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) sdílí.
 
-1. Nainstalujte soubor Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) balíček do aplikace.
+1. Nainstalujte do aplikace balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) .
 2. Přidejte `services.AddApplicationInsightsTelemetryWorkerService();` do `ConfigureServices()` metody, jako v tomto příkladu:
 
 ```csharp
@@ -222,9 +223,9 @@ Následuje kód, `TimedHostedService` kde se nachází logika úlohy na pozadí.
 
 Jak je uvedeno na začátku tohoto článku, můžete nový balíček použít k povolení Telemetrie Application Insights z konzoly i z běžné konzolové aplikace. Tento balíček cílí [`NetStandard2.0`](/dotnet/standard/net-standard) , a proto se dá použít pro konzolové aplikace v .NET Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo vyšší.
 
-Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) sdílí.
+Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) sdílí.
 
-1. Nainstalujte soubor Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) balíček do aplikace.
+1. Nainstalujte do aplikace balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) .
 
 2. Upravte Program.cs podle níže uvedeného příkladu.
 
@@ -292,7 +293,7 @@ Tato Konzolová aplikace také používá stejnou výchozí hodnotu `TelemetryCo
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
 
-Spusťte aplikaci. Ukázkové pracovní procesy ze všech výše uvedených výše provádí volání http každou sekundu do bing.com a generuje také několik protokolů pomocí ILogger. Tyto řádky jsou zabaleny uvnitř `StartOperation` volání `TelemetryClient` , které se používá k vytvoření operace (v tomto příkladu `RequestTelemetry` s názvem "operace"). Application Insights shromáždí tyto protokoly ILogger (ve výchozím nastavení je to upozornění nebo vyšší) a závislosti a bude koreluje `RequestTelemetry` s relací nadřazenosti a podřízenosti. Korelace taky funguje na hranici mezi procesy a sítě. Například pokud bylo volání provedeno na jinou monitorovanou součást, bude koreluje také s tímto nadřazeným prvkem.
+Spusťte aplikaci. Ukázkové pracovní procesy ze všech výše uvedených provedly volání http každou sekundu do bing.com a také vygenerují několik protokolů pomocí `ILogger` . Tyto řádky jsou zabaleny uvnitř `StartOperation` volání `TelemetryClient` , které se používá k vytvoření operace (v tomto příkladu `RequestTelemetry` s názvem "operace"). Application Insights shromáždí tyto protokoly ILogger (ve výchozím nastavení je to upozornění nebo vyšší) a závislosti a bude koreluje `RequestTelemetry` s relací nadřazenosti a podřízenosti. Korelace taky funguje na hranici mezi procesy a sítě. Například pokud bylo volání provedeno na jinou monitorovanou součást, bude koreluje také s tímto nadřazeným prvkem.
 
 Tato vlastní operace `RequestTelemetry` se dá představit jako ekvivalent příchozího webového požadavku v typické webové aplikaci. I když není nutné použít operaci, je nejlepší pro [Application Insights relační datový model](./correlation.md) `RequestTelemetry` , který funguje jako nadřazená operace, a každá telemetrie vygenerovaná v rámci iterace pracovního procesu se považuje za logickou, která patří do stejné operace. Tento přístup také zajišťuje, že všechna vygenerovaná telemetrie (automatická a ruční) bude mít stejnou `operation_id` . Když je vzorkování založené na `operation_id` , algoritmus vzorkování buď udržuje, nebo vyřazuje veškerou telemetrii z jedné iterace.
 
@@ -312,7 +313,7 @@ Kolekce závislostí je ve výchozím nastavení povolená. [Tento](asp-net-depe
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3,0. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
+`EventCounterCollectionModule` je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3,0. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Ruční sledování další telemetrie
 
@@ -332,24 +333,23 @@ Můžete přizpůsobit sadu Application Insights SDK pro službu pracovního pro
 Můžete upravit několik běžných nastavení tak, že předáte `ApplicationInsightsServiceOptions` do `AddApplicationInsightsTelemetryWorkerService` , jako v tomto příkladu:
 
 ```csharp
-    using Microsoft.ApplicationInsights.WorkerService;
+using Microsoft.ApplicationInsights.WorkerService;
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions aiOptions
-                    = new Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions();
-        // Disables adaptive sampling.
-        aiOptions.EnableAdaptiveSampling = false;
+public void ConfigureServices(IServiceCollection services)
+{
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    // Disables adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
 
-        // Disables QuickPulse (Live Metrics stream).
-        aiOptions.EnableQuickPulseMetricStream = false;
-        services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
-    }
+    // Disables QuickPulse (Live Metrics stream).
+    aiOptions.EnableQuickPulseMetricStream = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+}
 ```
 
 Všimněte si, že `ApplicationInsightsServiceOptions` v této sadě SDK je v oboru názvů na `Microsoft.ApplicationInsights.WorkerService` rozdíl od `Microsoft.ApplicationInsights.AspNetCore.Extensions` ASP.NET Core SDK.
 
-Běžně používaná nastavení v`ApplicationInsightsServiceOptions`
+Běžně používaná nastavení v `ApplicationInsightsServiceOptions`
 
 |Nastavení | Popis | Výchozí
 |---------------|-------|-------
@@ -357,12 +357,43 @@ Běžně používaná nastavení v`ApplicationInsightsServiceOptions`
 |EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true
 |EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartBeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
 |AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
+|EnableDiagnosticsTelemetryModule | Povolit/zakázat `DiagnosticsTelemetryModule` . Zakázáním této možnosti dojde k ignorování následujících nastavení; `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | true
 
 Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOptions` najdete v](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) tématu seznam nejaktuálnějších dat.
 
 ### <a name="sampling"></a>Vzorkování
 
-Sada SDK Application Insights pro službu pracovního procesu podporuje jak pevné, tak adaptivní vzorkování. Adaptivní vzorkování je ve výchozím nastavení povolené. Konfigurace vzorkování pro službu pracovního procesu se provádí stejným způsobem jako u [aplikací ASP.NET Core](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
+Sada SDK Application Insights pro službu pracovního procesu podporuje jak pevné, tak adaptivní vzorkování. Adaptivní vzorkování je ve výchozím nastavení povolené. Vzorkování se dá zakázat pomocí `EnableAdaptiveSampling` Možnosti v [ApplicationInsightsServiceOptions](#using-applicationinsightsserviceoptions) .
+
+K nakonfigurování dalších nastavení vzorkování lze použít následující příklad.
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.WorkerService;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    
+    // Disable adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+
+    // Add Adaptive Sampling with custom settings.
+    // the following adds adaptive sampling with 15 items per sec.
+    services.Configure<TelemetryConfiguration>((telemetryConfig) =>
+        {
+            var builder = telemetryConfig.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond: 15);
+            builder.Build();
+        });
+    //...
+}
+```
+
+Další informace najdete v dokumentu [vzorkování](#sampling) .
 
 ### <a name="adding-telemetryinitializers"></a>Přidání TelemetryInitializers
 
@@ -425,7 +456,7 @@ Ve výchozím nastavení jsou povoleny následující moduly automatických kole
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`– (Aktuálně se jedná o problém týkající se tohoto modulu telemetrie. Dočasné řešení najdete v článku věnovaném [problému GitHub 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+* `AppServicesHeartbeatTelemetryModule` – (Aktuálně se jedná o problém týkající se tohoto modulu telemetrie. Dočasné řešení najdete v článku věnovaném [problému GitHub 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
 ).)
 * `AzureInstanceMetadataTelemetryModule`
 
@@ -503,11 +534,11 @@ Připojování k integrovanému vývojovému prostředí (IDE) sady Visual Studi
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
+No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 
-Yes. Podpora funkcí pro tuto sadu SDK je stejná na všech platformách, s následujícími výjimkami:
+Ano. Podpora funkcí pro tuto sadu SDK je stejná na všech platformách, s následujícími výjimkami:
 
 * Čítače výkonu jsou podporovány pouze ve Windows s výjimkou procesoru procesu/paměti, která je znázorněna v živých metrikách.
 * I když `ServerTelemetryChannel` je ve výchozím nastavení povolená, pokud je aplikace spuštěná v systému Linux nebo MacOS, kanál automaticky nevytvoří místní složku úložiště, aby se telemetrie dočasně zachovala v případě, že dojde k problémům se sítí. Z důvodu tohoto omezení dojde ke ztrátě telemetrie, pokud dojde k dočasným problémům se sítí nebo serverem. Pokud chcete tento problém obejít, nakonfigurujte pro tento kanál místní složku:
@@ -530,15 +561,17 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>Ukázkové aplikace
 
-[Konzolová aplikace .NET Core](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Tuto ukázku použijte, pokud používáte konzolovou aplikaci napsanou v rozhraní .NET Core (2,0 nebo vyšší) nebo .NET Framework (4.7.2 nebo vyšší).
+[Konzolová aplikace .NET Core](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Tuto ukázku použijte, pokud používáte konzolovou aplikaci napsanou v rozhraní .NET Core (2,0 nebo vyšší) nebo .NET Framework (4.7.2 nebo vyšší).
 
-[Úlohy na pozadí ASP .NET Core s HostedServices](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Tuto ukázku použijte, pokud pracujete v Asp.Net Core 2.1/2.2 a vytváříte úlohy na pozadí podle oficiálních [pokynů.](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)
+[Úlohy na pozadí ASP .NET Core s HostedServices](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Tuto ukázku použijte, pokud pracujete v Asp.Net Core 2.1/2.2 a vytváříte úlohy na pozadí podle oficiálních [pokynů.](/aspnet/core/fundamentals/host/hosted-services)
 
-[Služba pracovního procesu .NET Core 3,0](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Tuto ukázku použijte, pokud máte aplikaci pracovní služby .NET Core 3,0 na základě oficiálních pokynů [.](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0#worker-service-template)
+[Služba pracovního procesu .NET Core 3,0](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Tuto ukázku použijte, pokud máte aplikaci pracovní služby .NET Core 3,0 na základě oficiálních pokynů [.](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template)
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 
-[Číst a přispívat do kódu](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
+* [Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./release-notes.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -546,4 +579,3 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [Sledovat další závislosti, které nejsou automaticky sledovány](./auto-collect-dependencies.md).
 * [Rozšířit nebo filtrovat automaticky shromážděnou telemetrii](./api-filtering-sampling.md).
 * [Vkládání závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection).
-

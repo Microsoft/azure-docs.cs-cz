@@ -3,12 +3,12 @@ title: Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny trezory v daném oboru pomocí Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612499"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171540"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 
@@ -20,13 +20,15 @@ Pro zjednodušení vytváření nastavení diagnostiky se škálováním (s LA j
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, který přiřazuje zásadu, musí mít oprávnění Owner (Vlastník) k předplatnému, ke kterému je zásada přiřazená.
+* Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, kterému se přiřadí zásada, musí mít přístup **vlastníka** k předplatnému, ke kterému je zásada přiřazená.
 
-* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup čtenářů, přispěvatel nebo Owner k předplatnému, ve kterém zadaný pracovní prostor LA existuje.
+* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup pro **čtenáře**, **přispěvatele**nebo **vlastníka** k předplatnému, ve kterém zadaný pracovní prostor La existuje.
 
 * Obor skupiny pro správu se momentálně nepodporuje.
 
 * Integrovaná zásada není v současnosti k dispozici v národních cloudech.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="assigning-the-built-in-policy-to-a-scope"></a>Přiřazení předdefinovaných zásad k oboru
 
@@ -34,7 +36,7 @@ Chcete-li přiřadit zásadu pro trezory v požadovaném oboru, postupujte podle
 
 1. Přihlaste se k Azure Portal a přejděte na řídicí panel **zásad** .
 2. V nabídce vlevo vyberte **definice** a získejte seznam všech předdefinovaných zásad napříč prostředky Azure.
-3. Vyfiltruje seznam pro **kategorii = monitorování**. Vyhledejte zásadu s názvem **[Preview]: nasazení nastavení diagnostiky pro Recovery Services trezor pro Log Analytics pracovní prostor pro kategorie specifické pro prostředky**.
+3. Vyfiltrujte seznam pro **kategorii = zálohování**. Vyhledejte zásadu s názvem **[Preview]: nasazení nastavení diagnostiky pro Recovery Services trezor pro Log Analytics pracovní prostor pro kategorie specifické pro prostředky**.
 
     ![Podokno definice zásad](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
@@ -78,7 +80,7 @@ Pokud má uživatel navíc trezor, který má povolenou pouze podmnožinu šesti
 >
 > Pokud má Trezor existující nastavení diagnostiky s povolenou **podmnožinou kategorií konkrétního prostředku** , která je nakonfigurovaná tak, aby odesílala data do konkrétního pracovního prostoru La, řekněme: "pracovní prostor x", a pokud je cílový pracovní prostor La v přiřazení zásad **stejný** jako pracovní prostor x, úloha nápravy selže (pro samotný trezor).
 >
->Důvodem je, že pokud se události, které jsou povolené dvěma různými nastaveními diagnostiky u stejného prostředku, **překrývají** v některém formuláři, nemůže mít nastavení stejný pracovní prostor La jako cíl. Tuto chybu budete muset ručně vyřešit tak, že přejdete do příslušného trezoru a nakonfigurujete nastavení diagnostiky s jiným pracovním prostorem LA jako cíl.
+>Důvodem je, že pokud se události, které jsou povolené dvěma různými nastaveními diagnostiky u stejného prostředku, **překrývají** v některém formuláři, nemůžou mít nastavení stejný pracovní prostor La jako cíl. Tuto chybu budete muset ručně vyřešit tak, že přejdete na příslušný trezor a nakonfigurujete nastavení diagnostiky s jiným pracovním prostorem LA jako cíl.
 >
 > Všimněte si, že úloha nápravy **selže,** pokud stávající nastavení diagnostiky bude jako cíl povoleno pouze AzureBackupReport s pracovním prostorem X, protože v tomto případě se nebude překrývat mezi událostmi povolenými existujícím nastavením a událostmi, které jsou povoleny nastavením vytvořeným úlohou nápravy.
 

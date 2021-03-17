@@ -1,25 +1,22 @@
 ---
 title: Odesílání úloh Apache Hadoop v HDInsight
 description: Odesílání úloh Apache Hadoop ve službě Azure HDInsight pomocí sady Microsoft .NET SDK, technologie kudrlinkou nebo PowerShellu
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52a5fcbc68d7efdce5724e39ee7bc25581ceb0ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75435698"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944186"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Odesílání úloh Apache Hadoop v HDInsight
 
 Můžete odesílat Apache Hadoop úlohy ve službě Azure HDInsight pomocí sady Microsoft .NET SDK pro HDInsight, kudrlinkou nebo Azure PowerShell.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 - **sada .NET SDK**:
 
@@ -40,6 +37,6 @@ Můžete odesílat Apache Hadoop úlohy ve službě Azure HDInsight pomocí sady
   - [Použití Apache Sqoop s Apache Hadoop ve službě HDInsight](apache-hadoop-use-sqoop-powershell.md)
   - [Spuštění úloh MapReduce s Apache Hadoop v HDInsight pomocí PowerShellu](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace ke službě Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/)
+- [Dokumentace k Azure HDInsightu](../index.yml)

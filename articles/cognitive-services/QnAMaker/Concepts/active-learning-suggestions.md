@@ -1,14 +1,16 @@
 ---
 title: Aktivní návrhy učení – QnA Maker
-description: Přehledy aktivních kurzů vám umožní vylepšit kvalitu znalostní báze tím, že navrhují alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí.
+description: Přehledy aktivních kurzů vám umožní vylepšit kvalitu znalostní báze tím, že navrhují alternativní otázky na základě počtu uživatelů, na otázky a odpovědi na pár otázek a odpovědí.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/09/2020
+ms.openlocfilehash: e1a8043912c984be46f85bd384a7049da27028b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804207"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353234"
 ---
 # <a name="active-learning-suggestions"></a>Aktivní návrhy výukových kurzů
 
@@ -35,10 +37,18 @@ Po navržení otázek na portálu QnA Maker musíte tyto návrhy projít a přij
 
 ## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 Ve výchozím nastavení je aktivní učení **vypnuté**.
 Použití aktivního učení:
 * Musíte [zapnout aktivní výuku](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) , aby QnA maker shromažďovat alternativní otázky pro znalostní bázi.
 * Chcete-li zobrazit navrhované alternativní otázky, [použijte možnosti zobrazení](../How-To/improve-knowledge-base.md#view-suggested-questions) na stránce Upravit.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+Ve výchozím **nastavení je aktivní učení v QnA maker** spravovaném (ve verzi Preview). Chcete-li zobrazit navrhované alternativní otázky, [použijte možnosti zobrazení](../How-To/improve-knowledge-base.md#view-suggested-questions) na stránce Upravit.
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>Způsob fungování implicitní zpětné vazby QnA Maker
 
@@ -127,7 +137,7 @@ QnA Maker potřebuje explicitní zpětnou vazbu, na kterou odpověděla odpově�
 * Obchodní logika, například určení přijatelného rozsahu skóre.
 * Kombinace zpětné vazby uživatelů a obchodní logiky.
 
-Použijte [rozhraní API pro vlak](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train) k odeslání správné odpovědi na QnA maker, až ho uživatel vybere.
+Použijte [rozhraní API pro vlak](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) k odeslání správné odpovědi na QnA maker, až ho uživatel vybere.
 
 ## <a name="next-step"></a>Další krok
 

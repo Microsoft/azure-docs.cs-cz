@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě Azure Queue Storage
-  href: /azure/storage/queues/
+  href: ./index.yml
 - name: Přehled
   expanded: true
   items:
@@ -45,30 +45,39 @@
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Zabezpečení
       items:
-        - name: Standardní hodnoty zabezpečení
-          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Šifrování neaktivních uložených dat ve službě Azure Storage
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
-            - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
-              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Šifrování s využitím klíčů spravovaných zákazníkem
+              href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Autorizace operací s daty
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
             - name: Ověřování a autorizace s využitím Azure AD
               href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Autorizace s využitím sdíleného klíče
-              href: /rest/api/storageservices/authorize-with-shared-key
+              items:
+                - name: Zobrazení a správa klíčů účtu
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Konfigurace připojovacích řetězců
+                  href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Zabránění v autorizaci pomocí sdíleného klíče
+                  href: ../common/shared-key-authorization-prevent.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Použití rozhraní REST API služby Azure Storage
+                  href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Autorizace s využitím SAS
               href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Autorizace operací správy
           href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Rozšířená ochrana před internetovými útoky
-          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Integrované ovládací prvky zabezpečení
-          href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Použití privátních koncových bodů Azure
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../common/security-controls-policy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Standardní hodnoty zabezpečení
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Data redundancy
       href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Zotavení po havárii a převzetí služeb při selhání
@@ -85,28 +94,22 @@
               href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Kontrolní seznam pro výkon a škálovatelnost
           href: storage-performance-checklist.md
-    - name: Souběžnost
-      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Monitorování a odstraňování potíží
       items:
-        - name: Kurz odstraňování potíží
-          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 'Monitorování, diagnostika a řešení potíží'
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Monitorování na webu Azure Portal
-          href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Metriky a protokolování
+        - name: Monitorování úložiště front
+          href: monitor-queue-storage.md
+        - name: Přechod z klasických metrik
+          href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Monitorování (klasické prostředí)
           items:
-            - name: Metriky na platformě Azure Monitor
-              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Migrace na novou metriku
-              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Analýzy úložiště
+            - name: Storage Analytics
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Metriky analýz úložiště (klasické)
+            - name: Metriky
               href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Protokoly analýzy úložiště
+            - name: Protokoly
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 'Monitorování, diagnostika a řešení potíží'
+              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Postup
   items:
     - name: Vytvoření a správa účtů úložiště
@@ -116,6 +119,8 @@
           href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Upgrade účtu úložiště
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Obnovení odstraněného účtu úložiště
+          href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Zabezpečení dat fronty
       items:
         - name: Autorizace přístupu k datům fronty
@@ -123,12 +128,12 @@
             - name: Možnosti autorizace pro uživatele
               items:
                 - name: Portál
-                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                  href: authorize-data-operations-portal.md
                 - name: PowerShell
-                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                  href: authorize-data-operations-powershell.md
                 - name: Azure CLI
-                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Správa přístupových práv pomocí RBAC
+                  href: authorize-data-operations-cli.md
+            - name: Správa přístupových práv pomocí Azure RBAC
               items:
                 - name: Portál
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -150,21 +155,21 @@
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Použití rozhraní REST API služby Azure Storage
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Zabránění v autorizaci pomocí sdíleného klíče
+                  href: ../common/shared-key-authorization-prevent.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Správa šifrování služby Azure Storage
           items:
             - name: 'Vytvoření účtu, který podporuje klíče spravované zákazníkem'
               href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Konfigurace klíčů spravovaných zákazníkem
+            - name: Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
               items:
-                - name: Portál
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Uložení klíčů spravovaných zákazníkem v trezoru klíčů
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Uložení klíčů spravovaných zákazníkem ve službě Managed HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Kontrola modelu šifrovacího klíče pro účet
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Povolení šifrování infrastruktury pro účet úložiště
+            - name: Povolení šifrování infrastruktury pro účet
               href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Konfigurace šifrování na straně klienta
           items:
@@ -186,6 +191,8 @@
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Konfigurace verze TLS pro klientskou aplikaci
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Konfigurace Azure Defenderu pro ochranu před hrozbami
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Správa redundance dat
       items:
         - name: Změna způsobu replikace dat
@@ -210,14 +217,14 @@
           href: storage-dotnet-how-to-use-queues.md
         - name: Java
           href: storage-java-how-to-use-queue-storage.md
+        - name: Python
+          href: storage-python-how-to-use-queue-storage.md
         - name: Node.js
           href: storage-nodejs-how-to-use-queues.md
         - name: C++
           href: storage-c-plus-plus-how-to-use-queues.md
         - name: PHP
           href: storage-php-how-to-use-queues.md
-        - name: Python
-          href: storage-python-how-to-use-queue-storage.md
         - name: Ruby
           href: storage-ruby-how-to-use-queue-storage.md
     - name: Správa front
@@ -226,6 +233,10 @@
           href: storage-powershell-how-to-use-queues.md
         - name: 'PowerShell pro cloudy China, Government a Germany'
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Monitorování (klasické prostředí)
+          items:
+            - name: Monitorování na webu Azure Portal (klasické prostředí)
+              href: ../common/manage-storage-analytics-logs.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Řešení potíží
       items:
         - name: Problémy s latencí
@@ -234,6 +245,8 @@
   items:
     - name: Referenční informace ke službě Azure Queue Storage
       href: ../queues/reference.md
+    - name: Referenční informace k monitorování služby Azure Queue Storage
+      href: monitor-queue-storage-reference.md
     - name: Šablona Resource Manageru
       displayName: ARM
       href: /azure/templates/microsoft.storage/allversions
@@ -248,17 +261,17 @@
         - name: Začínáme s Průzkumníkem služby Storage
           href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Poznámky k verzi Storage Exploreru
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
         - name: Řešení potíží se Storage Explorerem
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Dostupnost Storage Exploreru
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Fórum Azure Storage
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
-    - name: Azure Storage na webu Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Ceny služby Azure Storage
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Queue Storage na webu Microsoft Q&A
+      href: /answers/topics/azure-queue-storage.html
+    - name: Queue Storage na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-queues'
+    - name: Ceny služby Queue Storage
+      href: 'https://azure.microsoft.com/pricing/details/storage/queues/'
     - name: Cenová kalkulačka Azure
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videa
@@ -266,17 +279,17 @@
     - name: Balíčky NuGet (.NET)
       items:
         - name: Microsoft.Azure.Storage.Common (verze 11.x)
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.storage.common/'
         - name: Azure.Storage.Common (verze 12.x)
           href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
         - name: Microsoft.Azure.Storage.Queue (verze 11.x)
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.storage.queue/'
         - name: Azure.Storage.Queue (verze 12.x)
-          href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
+          href: 'https://www.nuget.org/packages/azure.storage.queues/'
         - name: Azure Configuration Manager
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.configurationmanager/'
         - name: Knihovna poskytovatele prostředků úložiště
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.management.storage/'
     - name: Zdrojový kód
       items:
         - name: .NET
@@ -296,7 +309,7 @@
             - name: Klientská knihovna Azure Storage verze 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Objekty blob, fronty a soubory (verze 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: Klientská knihovna Azure Storage verze 8.x a starší
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

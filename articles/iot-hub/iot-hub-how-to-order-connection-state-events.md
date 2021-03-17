@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488124"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147272"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Uspořádání událostí připojení zařízení z Azure IoT Hubu pomocí služby Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Azure Event Grid vám pomůže sestavovat aplikace založené na událostech a s
 
 Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. K identifikaci většího čísla můžete použít porovnání řetězců. Pokud řetězec převádíte na šestnáctkovou hodnotu, bude číslo 256. Pořadové číslo se přesně zvyšuje a poslední událost bude mít vyšší číslo než jiné události. To je užitečné v případě, že se zařízení často připojuje a odpojuje a chcete zajistit, aby se k aktivaci navazující akce používala jenom poslední událost, protože Azure Event Grid nepodporuje řazení událostí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní účet Azure. Pokud ho nemáte, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -29,7 +29,7 @@ Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. K ide
 
 * Kolekce v databázi. Viz téma [Přidání kolekce](../cosmos-db/create-sql-api-java.md#add-a-container) pro návod. Při vytváření kolekce použijte `/id` pro klíč oddílu.
 
-* IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](iot-hub-csharp-csharp-getstarted.md), kde najdete návod.
+* IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](./quickstart-send-telemetry-dotnet.md), kde najdete návod.
 
 ## <a name="create-a-stored-procedure"></a>Vytvoření uložené procedury
 
@@ -227,13 +227,13 @@ V pracovním postupu aplikace logiky můžou podmínky po předání této konkr
 
 5. Vyberte **Přidat nový parametr**. V rozevíracím seznamu, který se zobrazí, zaškrtněte políčka **klíč oddílu** a **parametry pro uloženou proceduru**a pak klikněte kamkoli jinam na obrazovku. Přidá pole pro hodnotu klíče oddílu a pole pro parametry pro uloženou proceduru.
 
-   ![naplnit akci aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![Snímek obrazovky zobrazuje položku Spustit uloženou proceduru s vybraným možnost Přidat nový parametr.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. Nyní zadejte hodnotu a parametry klíče oddílu, jak je uvedeno níže. Nezapomeňte vložit do závorek a dvojité uvozovky, jak je znázorněno na obrázku. Možná budete muset kliknout na **Přidat dynamický obsah** a získat platné hodnoty, které zde můžete použít.
 
-   ![naplnit akci aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![Snímek obrazovky zobrazuje položku Spustit uloženou proceduru se zadanými parametry.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. V horní části **podokna, kde je uvedeno, v**části **vyberte výstup z předchozích kroků**se ujistěte, že je vybráno **tělo** IT.
+7. V horní části **podokna, kde je uvedeno, v**části **vyberte výstup z předchozích kroků**se ujistěte, že je vybráno  **tělo** IT.
 
    ![naplnění aplikace logiky pro každý](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -335,7 +335,7 @@ Výsledky spuštěné uložené procedury můžete zobrazit v dokumentu Cosmos D
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Místo používání [Azure Portal](https://portal.azure.com)můžete IoT Hub kroky provést pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
+Místo používání [Azure Portal](https://portal.azure.com)můžete IoT Hub kroky provést pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -361,7 +361,7 @@ Pokud nechcete přijít o práci na aplikaci logiky, místo odstranění ji zaka
 
 7. Vyberte **Odstranit**.
 
-Pokud chcete účet Azure Cosmos DB z Azure Portal odebrat, klikněte pravým tlačítkem na název účtu a klikněte na **Odstranit účet**. Přečtěte si podrobné pokyny k [odstranění účtu Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+Pokud chcete účet Azure Cosmos DB z Azure Portal odebrat, klikněte pravým tlačítkem na název účtu a klikněte na **Odstranit účet**. Přečtěte si podrobné pokyny k [odstranění účtu Azure Cosmos DB](../cosmos-db/how-to-manage-database-account.md).
 
 ## <a name="next-steps"></a>Další kroky
 

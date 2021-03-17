@@ -7,53 +7,69 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587558"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554237"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
-Digitální vlákna Azure jsou vybavená **rozhraními API řídicí plochy** a **rozhraním API roviny dat** pro správu vaší instance a jejích prvků. Tento článek poskytuje přehled dostupných rozhraní API a metody, jak s nimi interaktivně pracovat. Rozhraní REST API můžete buď použít přímo spolu s jejich přidruženými Swagger, nebo prostřednictvím sady SDK.
+Digitální vlákna Azure jsou vybavená **rozhraními API řídicí plochy** a **rozhraním API roviny dat** pro správu vaší instance a jejích prvků. 
+* Rozhraní API plochy ovládacího prvku jsou [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) rozhraní API a zahrnují operace správy prostředků, jako je vytváření a odstraňování vaší instance. 
+* Rozhraní API roviny dat jsou rozhraní API digitálních vláken Azure, která se používají pro operace správy dat, jako je Správa modelů, vláken a grafu.
+
+Tento článek poskytuje přehled dostupných rozhraní API a metody, jak s nimi interaktivně pracovat. Rozhraní REST API můžete buď použít přímo spolu s jejich přidruženými Swagger (prostřednictvím nástroje jako je [post](how-to-use-postman.md)), nebo prostřednictvím sady SDK.
 
 ## <a name="overview-control-plane-apis"></a>Přehled: Řídicí rozhraní API roviny
 
-Rozhraní API plochy ovládacího prvku se používají ke správě instance digitálního vlákna Azure jako celku, takže pokrývají operace, jako je vytváření nebo odstraňování celé instance. Tyto koncové body budete také používat k vytváření a odstraňování koncových bodů.
+Rozhraní API plochy ovládacího prvku jsou rozhraní API [ARM](../azure-resource-manager/management/overview.md) , která slouží ke správě vaší instance digitálního vlákna Azure jako celku, takže pokrývá operace, jako je vytváření nebo odstraňování celé instance. Tyto koncové body budete také používat k vytváření a odstraňování koncových bodů.
 
-Nejaktuálnější verze rozhraní API řídicí plochy pro Public Preview je _**2020-03-01-Preview**_.
+Nejaktuálnější verze rozhraní API roviny ovládacího prvku je _**2020-12-01**_.
 
 Chcete-li použít rozhraní API plochy ovládacího prvku:
-* Rozhraní API můžete volat přímo odkazem na nejnovější [složku Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití.
+* Rozhraní API můžete volat přímo odkazem na nejnovější složku Swagger v [úložišti Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable). Tato složka obsahuje také složku příkladů, které ukazují použití.
 * V tuto chvíli můžete přistupovat k sadám SDK pro řídicí rozhraní API v...
-  - [.NET (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([zdroj](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([Referenční dokumentace [automaticky generované]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([Referenční dokumentace [automaticky generované]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview))
-  - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Přejít ke zdroji](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
+  - [**.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([odkaz [automaticky generované]](/dotnet/api/overview/azure/digitaltwins/management)) ([zdroj](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [**Java**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins) ([odkaz [automaticky generovaný]](/java/api/overview/azure/digitaltwins)) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))
+  - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
+  - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [**Přejít**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 Rozhraní API rovin ovládacích prvků můžete také využít k interakci s digitálními podčinnostmi Azure pomocí [Azure Portal](https://portal.azure.com) a [CLI](how-to-use-cli.md).
 
 ## <a name="overview-data-plane-apis"></a>Přehled: rozhraní API roviny dat
 
-Rozhraní API roviny dat se používají ke správě prvků v instanci digitálních vláken Azure. Zahrnují operace, jako je vytváření tras, nahrávání modelů, vytváření relací a správu vláken. Můžou být v podstatě rozdělené do následujících kategorií:
-* **DigitalTwinsModels** – kategorie DigitalTwinsModels obsahuje rozhraní API pro správu [modelů](concepts-models.md) v instanci digitálních vláken Azure. Mezi aktivity správy patří nahrávání, ověřování, načítání a odstraňování modelů, které jsou vytvořené v DTDL.
+Rozhraní API roviny dat představují rozhraní API digitálních vláken Azure, která slouží ke správě prvků v instanci digitálních vláken Azure. Zahrnují operace, jako je vytváření tras, nahrávání modelů, vytváření relací a správu vláken. Můžou být v podstatě rozdělené do následujících kategorií:
+* **DigitalTwinModels** – kategorie DigitalTwinModels obsahuje rozhraní API pro správu [modelů](concepts-models.md) v instanci digitálních vláken Azure. Mezi aktivity správy patří nahrávání, ověřování, načítání a odstraňování modelů, které jsou vytvořené v DTDL.
 * **DigitalTwins** – kategorie DigitalTwins obsahuje rozhraní API, která vývojářům umožňují vytvářet, upravovat a odstraňovat [digitální vlákna](concepts-twins-graph.md) a jejich vztahy v instanci digitálních vláken Azure.
 * **Dotaz** – kategorie dotazu umožňuje vývojářům [Najít sady digitálních vláken ve dvojitých grafech](how-to-query-graph.md) napříč relacemi.
-* **EventRoutes** – kategorie EventRoutes obsahuje rozhraní API pro [směrování dat](concepts-route-events.md)prostřednictvím systému a služeb pro příjem dat.
+* **Směrování událostí** – kategorie trasy událostí obsahuje rozhraní API pro [směrování dat](concepts-route-events.md)prostřednictvím systému a služeb pro příjem dat.
 
-Nejaktuálnější verze rozhraní API roviny dat pro verzi Public Preview je _**2020-05-31-Preview**_. Verze _2020-03-01-Preview_ rozhraní API pro operace roviny dat je nyní zastaralá.
+Nejaktuálnější verze rozhraní API roviny dat je _**2020-10-31**_.
 
 Použití rozhraní API roviny dat:
 * Můžete volat rozhraní API přímo, do...
-   - odkaz na nejnovější [složku Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití. 
-   - zobrazení [Referenční dokumentace rozhraní API](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
-* Můžete použít sadu .NET (C#) SDK. V současné době je to jediná publikovaná sada SDK pro interakci s těmito rozhraními API. Chcete-li použít sadu .NET SDK...
-   - Balíček můžete zobrazit na NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
+   - odkaz na nejnovější složku Swagger v [úložišti Swagger roviny dat](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Tato složka obsahuje také složku příkladů, které ukazují použití. 
+   - zobrazení [Referenční dokumentace rozhraní API](/rest/api/azure-digitaltwins/).
+* Můžete použít **sadu .NET (C#) SDK**. Chcete-li použít sadu .NET SDK...
+   - Balíček můžete zobrazit a přidat ze sady NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
+   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/dotnet/api/overview/azure/digitaltwins/client).
    - zdroj sady SDK, včetně složky ukázek, najdete na webu GitHub: [Klientská knihovna Azure IoT s Nevlákenou pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview).
-   - Podrobné informace a příklady použití můžete zobrazit tak, že v tomto článku budete pokračovat v části [.NET (C#) SDK (rovina dat)](#net-c-sdk-data-plane) .
+   - Podrobné informace a příklady použití můžete zobrazit tak, že v tomto článku budete pokračovat v části [*.NET (C#) SDK (rovina dat)*](#net-c-sdk-data-plane) .
+* Můžete použít **sadu Java SDK**. Použití sady Java SDK...
+   - Balíček můžete zobrazit a nainstalovat z Maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
+   - můžete zobrazit [referenční dokumentaci k sadě SDK](/java/api/overview/azure/digitaltwins/client) .
+   - zdroj sady SDK najdete na webu GitHub: [Klientská knihovna Azure IoT je nevlákenná pro jazyk Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
+* Můžete použít **sadu JavaScript SDK**. Použití sady JavaScript SDK...
+   - balíček si můžete zobrazit a nainstalovat z npm: [Azure Azure Digital nezákladní Klientská knihovna pro JavaScript](https://www.npmjs.com/package/@azure/digital-twins-core).
+   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/javascript/api/@azure/digital-twins-core/).
+   - zdroj sady SDK můžete najít na webu GitHub: [Azure Azure Digital nezákladní Klientská knihovna pro JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
+* Můžete použít **sadu Python SDK**. Chcete-li použít sadu Python SDK...
+   - Balíček můžete zobrazit a nainstalovat z PyPi: [Azure Azure Digital Core Client Library for Python](https://pypi.org/project/azure-digitaltwins-core/).
+   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/python/api/azure-digitaltwins-core/azure.digitaltwins.core).
+   - zdroj sady SDK můžete najít na webu GitHub: [Azure Azure Digital Core Client Library for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Můžete vygenerovat sadu SDK pro jiný jazyk pomocí programu AutoRest. Postupujte podle pokynů v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 Rozhraní API roviny dat můžete také využít k interakci s digitálními podčinnostmi Azure prostřednictvím rozhraní příkazového [řádku](how-to-use-cli.md).
@@ -63,17 +79,11 @@ Rozhraní API roviny dat můžete také využít k interakci s digitálními pod
 Sada Azure Digital revlákens .NET (C#) SDK je součástí sady Azure SDK for .NET. Je to open source a je založený na rozhraních API roviny dat digitálních vláken Azure.
 
 > [!NOTE]
-> Podrobné informace o návrhu sady SDK najdete v tématu Obecné [Principy návrhu pro sadu Azure SDK](https://azure.github.io/azure-sdk/general_introduction.html) a konkrétní pokyny pro [Návrh .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html).
+> Další informace o návrhu sady SDK najdete v tématu Obecné [Principy návrhu pro sadu Azure SDK](https://azure.github.io/azure-sdk/general_introduction.html) a konkrétní [pokyny pro návrh .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Azure. DigitalTwins. Core** . Budete také potřebovat balíček **Azure. identity** (verze 1.1.1).
-
-* V aplikaci Visual Studio můžete přidat balíčky pomocí Správce balíčků NuGet (k dispozici prostřednictvím *nástrojů > správce balíčků nuget > spravovat balíčky NuGet pro řešení*). 
-* Pomocí nástroje pro příkazový řádek .NET můžete spustit:
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity --version 1.1.1
-    ```
+Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Azure. DigitalTwins. Core** . Budete také potřebovat nejnovější verzi balíčku **Azure. identity** . V aplikaci Visual Studio můžete tyto balíčky přidat pomocí Správce balíčků NuGet (k dispozici prostřednictvím *nástrojů > správce balíčků nuget > spravovat balíčky NuGet pro řešení*). Alternativně můžete použít nástroj příkazového řádku .NET s příkazy uvedenými v odkazech na balíček NuGet níže a přidat je do projektu:
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client). 
+* [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
 
 Podrobný návod k používání rozhraní API v praxi najdete v tématu [*kurz: Code a klientská aplikace*](tutorial-code.md). 
 
@@ -83,59 +93,25 @@ Zde je několik ukázek kódu ilustrující použití sady .NET SDK.
 
 Ověřování proti službě:
 
-```csharp
-// Authenticate against the service and create a client
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_basic":::
 
-Nahrajte modely modelů a seznamů:
+[!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
-```csharp
-// Upload a model
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-// Read a list of models back from the service
-AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
-await foreach (ModelData md in modelDataList)
-{
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
-}
-```
+Nahrát model:
 
-Vytváření a dotazování na vlákna:
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
-```csharp
-// Initialize twin metadata
-BasicDigitalTwin twinData = new BasicDigitalTwin();
+Modely seznamu:
 
-twinData.Id = $"firstTwin";
-twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.CustomProperties.Add("data", "Hello World!");
-try {
-    await client.CreateDigitalTwinAsync("firstTwin", JsonSerializer.Serialize(twinData));
-} catch(RequestFailedException rex) {
-    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-}
- 
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
-{
-    // Use JSON deserialization to pretty-print
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
-    // Or use BasicDigitalTwin for convenient property access
-    BasicDigitalTwin btwin = JsonSerializer.Deserialize<BasicDigitalTwin>(twin);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
+
+Vytvořit vlákna:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
+
+Dotazování na vlákna a cyklicky prostřednictvím výsledků:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 Projděte si kurz tohoto ukázkového kódu aplikace a podívejte se na [*kurz: vytvoření klientské aplikace*](tutorial-code.md) pro návod. 
 
@@ -143,138 +119,74 @@ Další ukázky můžete najít také v [úložišti GitHub pro sadu .NET (C#) S
 
 #### <a name="serialization-helpers"></a>Pomocníka serializace
 
-Jak je popsáno výše, základní metody sady SDK vrací vlákna data jako JSON. Sada SDK však obsahuje také pomocné třídy pro serializaci. Tyto pomocné funkce umožňují rychle vytvořit nebo deserializovat vlákna dat pro přístup k základním informacím.
+Pomocné rutiny serializace jsou pomocné funkce dostupné v sadě SDK pro rychlé vytvoření nebo deserializaci dvojitě dostupných dat pro přístup k základním informacím. Vzhledem k tomu, že základní metody sady SDK vracejí ve výchozím nastavení ve výchozím nastavení hodnoty ve formátu JSON, může být užitečné tyto pomocné třídy použít k dalšímu přerušení dat.
 
 Dostupné pomocné třídy jsou:
-* `BasicDigitalTwin`: Představuje základní data digitálního vlákna.
-* `BasicRelationship`: Představuje základní data relace.
-* `UpdateOperationUtility`: Představuje informace o opravě JSON používané v voláních aktualizace.
-* `WriteableProperty`: Představuje metadata vlastnosti.
+* `BasicDigitalTwin`: Genericicky reprezentuje základní data z digitálního vlákna.
+* `BasicDigitalTwinComponent`: Obecně představuje komponentu ve `Contents` vlastnostech `BasicDigitalTwin`
+* `BasicRelationship`: Obecně představuje základní data relace.
+* `DigitalTwinsJsonPropertyName`: Obsahuje řetězcové konstanty pro použití v serializaci JSON a deserializaci pro vlastní digitální typy vláken.
 
 ##### <a name="deserialize-a-digital-twin"></a>Deserializace digitálního vlákna
 
-Vlákna můžete vždy deserializovat pomocí knihovny JSON dle vašeho výběru, například `System.Test.Json` nebo `Newtonsoft.Json` . Pro základní přístup k vytvářené pomocné třídy je tento bit pohodlnější.
-
-```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
-BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-```
+Vlákna můžete vždy deserializovat pomocí knihovny JSON dle vašeho výběru, například `System.Text.Json` nebo `Newtonsoft.Json` . Pro základní přístup k typu vlákna můžou pomocné třídy lépe využít.
 
 `BasicDigitalTwin`Pomocná třída také poskytuje přístup k vlastnostem, které jsou definovány na vlákna, prostřednictvím `Dictionary<string, object>` . K vypsání vlastností vlákna můžete použít:
 
-```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
-BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.CustomProperties.Keys)
-{
-    if (twin.CustomProperties.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+
+> [!NOTE]
+> `BasicDigitalTwin` používá `System.Text.Json` atributy. Aby bylo možné použít `BasicDigitalTwin` s [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true), musíte buď inicializovat klienta s výchozím konstruktorem, nebo pokud chcete možnost serializátoru přizpůsobit, použijte [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true).
 
 ##### <a name="create-a-digital-twin"></a>Vytvoření digitálního vlákna
 
 Pomocí `BasicDigitalTwin` třídy můžete připravit data pro vytvoření zdvojené instance:
 
-```csharp
-BasicDigitalTwin twin = new BasicDigitalTwin();
-twin.Metadata = new DigitalTwinMetadata();
-twin.Metadata.ModelId = "dtmi:example:Room;1";
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("Temperature", 25.0);
-twin.CustomProperties = props;
-
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 Výše uvedený kód je ekvivalentní následujícímu "ručnímu" variantě:
 
-```csharp
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:example:Room;1"}
-};
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", 25.0 }
-};
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 ##### <a name="deserialize-a-relationship"></a>Deserializace vztahu
 
-Data relace můžete vždy deserializovat pomocí knihovny JSON dle vašeho výběru, například `System.Test.Json` nebo `Newtonsoft.Json` . Pro základní přístup k relaci se pomocné třídy vytvoří trochu pohodlnější.
+Data relace můžete vždy deserializovat podle zvoleného typu. Pro základní přístup k relaci použijte typ `BasicRelationship` .
 
-```csharp
-Response<string> res = client.GetRelationship(twin_id, rel_id);
-BasicRelationship rel = JsonSerializer.Deserialize<BasicRelationship>(res.Value);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
 
-`BasicRelationship`Pomocná třída také poskytuje přístup k vlastnostem, které jsou definovány v relaci, prostřednictvím `Dictionary<string, object>` . K vypsání vlastností můžete použít:
+`BasicRelationship`Pomocná třída také poskytuje přístup k vlastnostem, které jsou definovány v relaci, prostřednictvím `IDictionary<string, object>` . K vypsání vlastností můžete použít:
 
-```csharp
-Response<string> res = client.GetRelationship(twin_id, rel_id);
-BasicRelationship rel = JsonSerializer.Deserialize<BasicRelationship>(res.Value);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-foreach (string prop in rel.CustomProperties.Keys)
-{
-    if (twin.CustomProperties.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
 
 ##### <a name="create-a-relationship"></a>Vytvoření relace
 
-Pomocí `BasicDigitalTwin` třídy můžete také připravit data pro vytváření relací na instance s dvojitou platností:
+Pomocí `BasicRelationship` třídy můžete také připravit data pro vytváření relací na instance s dvojitou platností:
 
-```csharp
-BasicRelationship rel = new BasicRelationship();
-rel.TargetId = "myTargetTwin";
-rel.Name = "contains"; // a relationship with this name must be defined in the model
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("active", true);
-rel.CustomProperties = props;
-client.CreateRelationship("mySourceTwin", "rel001", JsonSerializer.Serialize<BasicRelationship>(rel));
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ##### <a name="create-a-patch-for-twin-update"></a>Vytvoření opravy pro dvojitou aktualizaci
 
-Aktualizace volání pro vlákna a relace používají strukturu [opravy JSON](http://jsonpatch.com/) . Chcete-li vytvořit seznamy operací opravy JSON, můžete použít `UpdateOperationsUtility` třídu, jak je znázorněno níže.
+Aktualizace volání pro vlákna a relace používají strukturu [opravy JSON](http://jsonpatch.com/) . Chcete-li vytvořit seznamy operací opravy JSON, můžete použít, `JsonPatchDocument` jak je uvedeno níže.
 
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", 25.0);
-uou.AppendAddOp("/myComponent/Property", "Hello");
-// Un-set a property
-uou.AppendRemoveOp("/Humidity");
-client.UpdateDigitalTwin("myTwin", uou.Serialize());
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
 ## <a name="general-apisdk-usage-notes"></a>Obecné poznámky k používání rozhraní API/sady SDK
 
 > [!NOTE]
-> Mějte prosím na paměti, že ve verzi Preview nepodporuje digitální vlákna Azure **sdílení prostředků mezi zdroji (CORS)**. Výsledkem je, že pokud voláte REST API z aplikace v prohlížeči, rozhraní [API Management (APIM)](../api-management/api-management-key-concepts.md) nebo konektor [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) , může se zobrazit chyba zásad.
-> Chcete-li tuto chybu vyřešit, můžete provést jednu z následujících akcí:
-> * Z zprávy vypruhute hlavičku CORS `Access-Control-Allow-Origin` . Tato hlavička uvádí, zda lze odpověď sdílet. 
-> * Případně můžete vytvořit proxy CORS a zajistit, aby se digitální vlákna Azure REST APIa prostřednictvím něj. 
+> Upozorňujeme, že digitální vlákna Azure v současné době nepodporuje **sdílení prostředků mezi zdroji (CORS)**. Další informace o strategiích dopadů a rozlišení najdete v části věnované [*sdílení prostředků mezi zdroji (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) v tématu *Koncepty: Security for Azure Digital* Solutions.
 
 Následující seznam poskytuje další podrobnosti a obecné pokyny pro používání rozhraní API a sad SDK.
 
-* Chcete-li použít sadu SDK, vytvořte instanci `DigitalTwinsClient` třídy. Konstruktor vyžaduje přihlašovací údaje, které lze získat pomocí různých metod ověřování v `Azure.Identity` balíčku. Další `Azure.Identity` informace najdete v [dokumentaci k jejímu oboru názvů](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet). 
-* `InteractiveBrowserCredential`Při zahájení práce může být užitečné, ale k dispozici je několik dalších možností, včetně přihlašovacích údajů pro [spravovanou identitu](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet), které pravděpodobně použijete k ověření služby [Azure Functions se službou MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) proti digitálním vazbám Azure. Další informace o naleznete `InteractiveBrowserCredential` v [dokumentaci třídy](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet).
+* K přímému volání rozhraní API digitálních vláken Azure můžete použít nástroj pro testování REST HTTP, jako je například post. Další informace o tomto procesu naleznete v tématu [*How to: Make a requests with post*](how-to-use-postman.md).
+* Chcete-li použít sadu SDK, vytvořte instanci `DigitalTwinsClient` třídy. Konstruktor vyžaduje přihlašovací údaje, které lze získat pomocí různých metod ověřování v `Azure.Identity` balíčku. Další `Azure.Identity` informace najdete v [dokumentaci k jejímu oboru názvů](/dotnet/api/azure.identity). 
+* `InteractiveBrowserCredential`Při zahájení práce může být užitečné, ale k dispozici je několik dalších možností, včetně přihlašovacích údajů pro [spravovanou identitu](/dotnet/api/azure.identity.interactivebrowsercredential), které pravděpodobně použijete k ověření služby [Azure Functions se službou MSI](../app-service/overview-managed-identity.md?tabs=dotnet) proti digitálním vazbám Azure. Další informace o naleznete `InteractiveBrowserCredential` v [dokumentaci třídy](/dotnet/api/azure.identity.interactivebrowsercredential).
 * Všechna volání rozhraní API služby jsou vystavena jako členské funkce `DigitalTwinsClient` třídy.
 * Všechny funkce služeb existují v synchronních a asynchronních verzích.
-* Všechny funkce služby vyvolávají výjimku pro libovolný návratový stav 400 nebo vyšší. Ujistěte se, že zabalíte volání do `try` oddílu a zachytíte alespoň `RequestFailedExceptions` . Další informace o tomto typu výjimky najdete [zde](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet).
-* Většina metod služeb vrací `Response<T>` nebo ( `Task<Response<T>>` pro asynchronní volání), kde `T` je třída návratového objektu pro volání služby. [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet)Třída zapouzdřuje vrácení služby a prezentuje návratové hodnoty ve svém `Value` poli.  
-* Metody služby s stránkovanými výsledky vrátí `Pageable<T>` nebo `AsyncPageable<T>` jako výsledky. Další informace o `Pageable<T>` třídě naleznete [zde](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview). Další informace naleznete `AsyncPageable<T>` [zde](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview).
-* Můžete iterovat přes stránkované výsledky pomocí `await foreach` smyčky. Další informace o tomto procesu najdete [tady](https://docs.microsoft.com/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8).
-* Základní sada SDK je `Azure.Core` . Referenční informace o infrastruktuře a typech SDK najdete v [dokumentaci k oboru názvů Azure](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview) .
+* Všechny funkce služby vyvolávají výjimku pro libovolný návratový stav 400 nebo vyšší. Ujistěte se, že zabalíte volání do `try` oddílu a zachytíte alespoň `RequestFailedExceptions` . Další informace o tomto typu výjimky najdete [zde](/dotnet/api/azure.requestfailedexception).
+* Většina metod služeb vrací `Response<T>` nebo ( `Task<Response<T>>` pro asynchronní volání), kde `T` je třída návratového objektu pro volání služby. [`Response`](/dotnet/api/azure.response-1)Třída zapouzdřuje vrácení služby a prezentuje návratové hodnoty ve svém `Value` poli.  
+* Metody služby s stránkovanými výsledky vrátí `Pageable<T>` nebo `AsyncPageable<T>` jako výsledky. Další informace o `Pageable<T>` třídě naleznete [zde](/dotnet/api/azure.pageable-1). Další informace naleznete `AsyncPageable<T>` [zde](/dotnet/api/azure.asyncpageable-1).
+* Můžete iterovat přes stránkované výsledky pomocí `await foreach` smyčky. Další informace o tomto procesu najdete [tady](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8).
+* Základní sada SDK je `Azure.Core` . Referenční informace o infrastruktuře a typech SDK najdete v [dokumentaci k oboru názvů Azure](/dotnet/api/azure) .
 
 Metody služby vracejí objekty silného typu, pokud je to možné. Vzhledem k tomu, že digitální vlákna Azure je založené na modelech, které uživatel nakonfiguroval za běhu (prostřednictvím DTDL modelů odeslaných do služby), mnoho rozhraní API služby převezme a vrátí data ve formátu JSON.
 
@@ -290,8 +202,8 @@ Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazen�
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o použití rozhraní API k nastavení instance a ověřování digitálních vláken Azure:
-* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md)
+Přečtěte si téma jak vytvořit přímé požadavky na rozhraní API pomocí metody post:
+* [*Postupy: Vytváření požadavků s použitím metody post*](how-to-use-postman.md)
 
-Nebo si Projděte kroky k vytvoření klientské aplikace, jako je ta, kterou jste použili v tomto postupu:
+Nebo je vhodné použít sadu .NET SDK vytvořením klientské aplikace pomocí tohoto kurzu:
 * [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

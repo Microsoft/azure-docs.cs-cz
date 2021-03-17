@@ -4,20 +4,20 @@ description: Tento článek popisuje, jak řešit potíže s Azure FarmBeats.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: v-ummehabiba
+ms.openlocfilehash: c45b6196b82682b37e253a33eed3940b68b4d61e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497059"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172980"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Řešení potíží s FarmBeats
 
-Tento článek popisuje řešení běžných problémů s FarmBeats Azure. Pokud chcete získat další pomoc, obraťte se na naše [fórum podpory](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) nebo na nás pošlete e-mail na adrese farmbeatssupport@microsoft.com .
+Tento článek popisuje řešení běžných problémů s FarmBeats Azure. Pokud chcete získat další pomoc, obraťte se na náš [Q&fórum podpory](/answers/topics/azure-farmbeats.html) nebo na nás pošlete e-mail na adrese farmbeatssupport@microsoft.com .
 
 > [!NOTE]
-  > Pokud jste v dubnu v dubnu nainstalovali FarmBeats a vaše úlohy selžou s prázdnou chybovou zprávou, je možné, že instalace nebyla přidělena žádná kvóta služby Batch k určení priorit podpory pro kritické organizace v oblasti zdravotního stavu a zabezpečení. Další informace najdete [tady](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . K úspěšnému spuštění úloh budete muset požádat o virtuální počítače, které mají být přiděleny k účtu Batch.
+  > Pokud jste v dubnu v dubnu nainstalovali FarmBeats a vaše úlohy selžou s prázdnou chybovou zprávou, je možné, že instalace nebyla přidělena žádná kvóta služby Batch k určení priorit podpory pro kritické organizace v oblasti zdravotního stavu a zabezpečení. Další informace najdete [tady](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/). K úspěšnému spuštění úloh budete muset požádat o virtuální počítače, které mají být přiděleny k účtu Batch.
 
 ## <a name="install-issues"></a>Problémy s instalací
 
@@ -105,12 +105,12 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 **Nápravná opatření**
 
 1. V DataHub Swagger navštivte rozhraní API partnera.
-2. Vyberte **Get**  >  **Try**on  >  **Execute**.
+2. Vyberte **Get**  >  **Try** on  >  **Execute**.
 
 > [!NOTE]
 > ID partnera, se kterým se zajímá partnerka snímače.
 
-3. Vraťte se do partnerského rozhraní API a vyberte **získat/ \<ID> **.
+3. Vraťte se do partnerského rozhraní API a vyberte **získat/ \<ID>**.
 4. Zadejte ID partnera z kroku 3 a pak vyberte **provést**.
 
    Odpověď rozhraní API by měla mít Event Hubs připojovací řetězec.
@@ -174,7 +174,7 @@ To **znamená**, že k zařízení jsou přidružená jiná zařízení.
 
 Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste to znovu tak, že aktualizujete stránku. Pokud chyba přetrvává, kontaktujte nás s chybovou zprávou/protokoly.
 
-![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![Snímek obrazovky znázorňující chybu autorizace](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>Problémy akcelerátoru  
 
@@ -217,7 +217,7 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
     4. V části nastavení vyberte zásady přístupu.
     5. Vyberte **Přidat zásady přístupu** .
     6. Použití **správy tajných** kódů pro konfiguraci ze šablony a přidání sami sebe do objektu zabezpečení
-    7. Vyberte **Přidat**a pak na stránce **zásady přístupu** vyberte **Uložit** .
+    7. Vyberte **Přidat** a pak na stránce **zásady přístupu** vyberte **Uložit** .
     8. V části **Nastavení** vyberte **tajná klíčová** .
     9. Vybrat **Sentinel-Password**
     10. Vytvořte novou verzi hodnoty a povolte ji.
@@ -285,24 +285,24 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů App Service v DataHub
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
-3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \* * . Například *datahublogsmvxmq*.  
+3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \** . Například *datahublogsmvxmq*.  
 4. Ve sloupci **název** vyberte účet úložiště pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **datahubblogs \* ** vyberte **otevřít v Průzkumníkovi** , aby se zobrazila **otevřená aplikace Průzkumník služby Azure Storage** .
-6. V levém podokně vyberte **kontejnery objektů BLOB**a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
+5. V **podokně datahubblogs \* *_ vyberte _* otevřít v Průzkumníkovi,** aby se zobrazila **otevřená aplikace Průzkumník služby Azure Storage** .
+6. V levém podokně vyberte **kontejnery objektů BLOB** a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
 7. Vyberte **Stáhnout** a stáhnout protokoly do místní složky na vašem počítači.
 
-    ![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![Snímek obrazovky zobrazující stažené soubory protokolu](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory nebo protokoly App Service pro akcelerátor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
-3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \* * . Například *storagedop4k \* *.
+3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \** . Například *storagedop4k \**.
 4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **úložiště \* ** vyberte **otevřít v průzkumníkovi** a otevřete aplikaci Průzkumník služby Azure Storage.
-6. V levém podokně vyberte **kontejnery objektů BLOB**a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
+5. V **podokně úložiště \* *_ výběrem _* otevřít v Průzkumníkovi** otevřete aplikaci Průzkumník služby Azure Storage.
+6. V levém podokně vyberte **kontejnery objektů BLOB** a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
 7. Vyberte **Stáhnout** a stáhnout protokoly do místní složky na vašem počítači.
 
 ## <a name="high-cpu-usage"></a>Vysoké využití procesoru
@@ -327,23 +327,23 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 > [!NOTE]
 > Pokud chcete zobrazit značky služeb v rámci skupiny prostředků, klikněte na Upravit sloupce a přidejte do zobrazení skupiny prostředků značky.
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 3. Na stránce Přehled objektu pro vytváření dat klikněte na **vytvořit a monitorovat**. V prohlížeči se otevře nová karta. Klikněte na **monitorování** .
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Snímek obrazovky, který zvýrazní možnost nabídky monitor.":::
 
 4. Zobrazí se seznam spuštění kanálu, která jsou součástí provádění úlohy počasí. Klikněte na úlohu, pro kterou chcete shromažďovat protokoly.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Snímek obrazovky, který zvýrazní možnost nabídky spuštění kanálu a vybranou úlohu.":::
 
 5. Na stránce Přehled kanálu se zobrazí seznam spuštění aktivit. Poznamenejte si ID spuštění aktivit, pro které chcete shromažďovat protokoly.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Snímek obrazovky zobrazující seznam spuštění aktivit":::
 
 6. Vraťte se do skupiny prostředků FarmBeats v Azure Portal a klikněte na účet úložiště s názvem **datahublogs-xxxx** .
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Snímek obrazovky, který zvýrazní účet úložiště s názvem datahublogs-XXXX.":::
 
 7. Klikněte na **kontejnery**  ->  **adfjobs**. Do vyhledávacího pole zadejte ID běhu úlohy, které jste si poznamenali v kroku 5 výše.
  

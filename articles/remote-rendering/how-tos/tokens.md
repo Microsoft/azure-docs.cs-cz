@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9721685fc3ccd2c1c80b55e9118d6d347cc97a9c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687070"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830696"
 ---
 # <a name="get-service-access-tokens"></a>Získání přístupových tokenů služeb
 
@@ -24,7 +25,7 @@ Tento článek popisuje, jak tento přístupový token vytvořit.
 
 ## <a name="token-service-rest-api"></a>REST API služby tokenu
 
-Pro vytvoření přístupových tokenů poskytuje *služba tokenů zabezpečení* jednu REST API. Adresa URL služby ARR STS je https: \/ /STS.mixedreality.Azure.com.
+Pro vytvoření přístupových tokenů poskytuje *služba tokenů zabezpečení* jednu REST API. Adresa URL služby STS závisí na doméně účtu vzdáleného vykreslování. Je ve formátu https://sts . [ Doména účtu], např. `https://sts.southcentralus.mixedreality.azure.com`
 
 ### <a name="get-token-request"></a>Žádost o získání tokenu
 
@@ -32,7 +33,7 @@ Pro vytvoření přístupových tokenů poskytuje *služba tokenů zabezpečení
 |-----------|:-----------|
 | /Accounts/**accountId**/token | GET |
 
-| Záhlaví | Hodnota |
+| Hlavička | Hodnota |
 |--------|:------|
 | Autorizace | "Bearer **accountId**:**accountKey**" |
 
@@ -42,9 +43,9 @@ Položku *accountId* a *accountKey* nahraďte odpovídajícími daty.
 
 | Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken: řetězec | Úspěch |
+| 200 | AccessToken: řetězec | Success |
 
-| Záhlaví | Účel |
+| Hlavička | Účel |
 |--------|:------|
 | MS-CV | Tato hodnota se dá použít k trasování volání v rámci služby. |
 
@@ -55,9 +56,10 @@ Následující kód PowerShellu ukazuje, jak odeslat nezbytnou žádost REST do 
 ```PowerShell
 $accountId = "<account_id_from_portal>"
 $accountKey = "<account_key_from_portal>"
+$accountDomain = "<account_domain_from_portal>
 
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 
 Write-Output "Token: $($response.AccessToken)"

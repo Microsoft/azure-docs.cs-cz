@@ -1,5 +1,5 @@
 ---
-title: Strojírenství funkcí v oblasti datových věd – vědecký proces týmového zpracování dat
+title: Vytváření funkcí ve strojovém učení – vědecké zpracování týmových dat
 description: Přečtěte si informace o technikách funkcí a její roli v procesu rozšíření dat Machine Learning.
 services: machine-learning
 author: marktab
@@ -10,17 +10,17 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836817"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610433"
 ---
-# <a name="feature-engineering-in-data-science"></a>Strojírenství funkcí v oblasti datových věd
+# <a name="feature-engineering-in-machine-learning"></a>Strojírenství funkcí ve strojovém učení
 
-V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../studio/what-is-ml-studio.md) experimenty. 
+V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenty. 
 
 * **Inženýrské funkce**: proces vytváření nových funkcí z nezpracovaných dat za účelem zvýšení prediktivního výkonu výukového algoritmu. Inženýrské funkce by měly zachytit Další informace, které nejsou v původní sadě funkcí snadno zjevné.
 * **Výběr funkcí**: proces výběru klíčové sady funkcí k omezení dimenzionálního problému při školení.
@@ -60,7 +60,7 @@ Kromě sady funkcí A, která již existuje v původních nezpracovaných datech
 
 ### <a name="feature-engineering-using-studio-classic"></a>Strojírenství funkcí pomocí studia (Classic)
 
-V experimentu studia (Classic) se tyto čtyři datové sady školení vytvoří prostřednictvím čtyř větví z předem zpracované vstupní datové sady. S výjimkou první větve obsahuje každá z těchto větví modul [spuštění skriptu jazyka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) , ve kterém jsou vytvořeny a připojeny odvozené funkce (funkce, B, C a D) k importované datové sadě.
+V experimentu studia (Classic) se tyto čtyři datové sady školení vytvoří prostřednictvím čtyř větví z předem zpracované vstupní datové sady. S výjimkou první větve obsahuje každá z těchto větví modul [spuštění skriptu jazyka R](/azure/machine-learning/studio-module-reference/execute-r-script) , ve kterém jsou vytvořeny a připojeny odvozené funkce (funkce, B, C a D) k importované datové sadě.
 
 Následující obrázek ukazuje skript R, který se používá k vytvoření sady funkcí B ve druhé levé větvi.
 
@@ -74,15 +74,15 @@ Porovnání výsledků těchto čtyř modelů je shrnuto v následující tabulc
 
 Nejlepší výsledky jsou zobrazeny funkcemi A + B + C. Rychlost chyb se snižuje, když jsou do školicích dat zahrnuty další sady funkcí. Ověřuje domněnku, že funkce nastavená B, C poskytuje další důležité informace pro regresní úlohu. Přidání funkce D ale pravděpodobně neposkytuje žádné další snížení míry chyb.
 
-## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a>Příklad 2: vytvoření funkcí pro dolování textu
+## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a> Příklad 2: vytvoření funkcí pro dolování textu
 
 V úlohách souvisejících s dolováním textu, jako je klasifikace dokumentů a analýza mínění, se běžně používá strojírenství funkcí. Vzhledem k tomu, že jednotlivé části nezpracovaného textu obvykle slouží jako vstupní data, proces technické funkce je nutný k vytvoření funkcí, které zahrnují frekvence slov a frází.
 
 ### <a name="feature-hashing"></a>Hodnoty hash funkcí
 
-K dosažení této úlohy se použije technika označovaná jako [hodnota hash funkcí](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) pro efektivní zapnutí libovolných textových funkcí v indexech. Namísto přidružování každé textové funkce (slova/fráze) k určitému indexu Tato metoda aplikuje funkci hash na funkce a pomocí jejich hodnot hash jako indexy přímo.
+K dosažení této úlohy se použije technika označovaná jako [hodnota hash funkcí](/azure/machine-learning/studio-module-reference/feature-hashing) pro efektivní zapnutí libovolných textových funkcí v indexech. Namísto přidružování každé textové funkce (slova/fráze) k určitému indexu Tato metoda aplikuje funkci hash na funkce a pomocí jejich hodnot hash jako indexy přímo.
 
-V nástroji Studio (Classic) je modul pro [vytřídění hodnoty hash](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) , který snadno vytváří funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: kniha ohodnocená od 1 do 5 a skutečný obsah kontroly. Cílem tohoto modulu je načíst řadu nových funkcí, které znázorňují četnost výskytů odpovídajících slov (/Phrase) v rámci určité recenze knihy. Chcete-li použít tento modul, proveďte následující kroky:
+V nástroji Studio (Classic) je modul pro [vytřídění hodnoty hash](/azure/machine-learning/studio-module-reference/feature-hashing) , který snadno vytváří funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: kniha ohodnocená od 1 do 5 a skutečný obsah kontroly. Cílem tohoto modulu je načíst řadu nových funkcí, které znázorňují četnost výskytů odpovídajících slov (/Phrase) v rámci určité recenze knihy. Chcete-li použít tento modul, proveďte následující kroky:
 
 * Nejprve vyberte sloupec, který obsahuje vstupní text (v tomto příkladu "col2").
 * Potom nastavte "hashing bitsize" na 8, což znamená, že se vytvoří 2 ^ 8 = 256 funkcí. Ve slově nebo ve všech textech bude hodnota hash na 256 indexy. Parametr "hashing bitsize" je v rozsahu od 1 do 31. Pokud je nastavení nastavené na větší číslo, může být v těchto slovnících (/Phrase) hodnota hash na stejný index.

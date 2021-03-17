@@ -5,12 +5,12 @@ description: Naučte se vytvářet a používat interní nástroj pro vyrovnáv�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4c2c0866aa9a721a73e1eb8fa230f0022cf6b8ca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285879"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505626"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service (AKS)
 
@@ -23,15 +23,15 @@ Pokud chcete omezit přístup k vašim aplikacím ve službě Azure Kubernetes S
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-Pokud použijete existující podsíť nebo skupinu prostředků, instanční objekt služby AKS potřebuje oprávnění ke správě síťových prostředků. Informace najdete v tématu [použití sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)][use-kubenet] nebo [Konfigurace sítě Azure CNI ve službě Azure KUBERNETES Service (AKS)][advanced-networking]. Pokud konfigurujete Nástroj pro vyrovnávání zatížení tak, aby používal [IP adresu v jiné podsíti][different-subnet], zajistěte, aby měl objekt služby Cluster AKS k této podsíti přístup pro čtení.
+Identita clusteru clusteru AKS potřebuje oprávnění ke správě síťových prostředků, pokud použijete existující podsíť nebo skupinu prostředků. Informace najdete v tématu [použití sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)][use-kubenet] nebo [Konfigurace sítě Azure CNI ve službě Azure KUBERNETES Service (AKS)][advanced-networking]. Pokud konfigurujete Nástroj pro vyrovnávání zatížení tak, aby používal [IP adresu v jiné podsíti][different-subnet], ujistěte se, že má identita clusteru AKS také oprávnění ke čtení této podsítě.
 
-Místo instančního objektu můžete pro oprávnění použít taky spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md). Další informace o oprávněních najdete v tématu [delegování přístupu AKS k ostatním prostředkům Azure][aks-sp].
+Další informace o oprávněních najdete v tématu [delegování přístupu AKS k ostatním prostředkům Azure][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
 
-Pokud chcete vytvořit interní nástroj pro vyrovnávání zatížení, vytvořte v něm manifest služby s názvem `internal-lb.yaml` s typem služby a službou *Azure-Load Balancer – interní* anotaci, jak je znázorněno v následujícím příkladu: *LoadBalancer*
+Pokud chcete vytvořit interní nástroj pro vyrovnávání zatížení, vytvořte v něm manifest služby s názvem `internal-lb.yaml` s typem služby a službou *Azure-Load Balancer – interní* anotaci, jak je znázorněno v následujícím příkladu: 
 
 ```yaml
 apiVersion: v1
@@ -110,7 +110,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Je možné, že bude nutné instančnímu objektu pro cluster AKS udělit roli *Přispěvatel sítě* do skupiny prostředků, ve které jsou nasazené prostředky virtuální sítě Azure. Zobrazte instanční objekt pomocí [AZ AKS show][az-aks-show], například `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Přiřazení role vytvoříte pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] .
+> Pro cluster AKS možná budete muset udělit identitu clusteru pro skupinu prostředků, ve *které se* nasazují vaše prostředky virtuální sítě Azure. Zobrazte identitu clusteru pomocí [AZ AKS show][az-aks-show], například `az aks show --resource-group myResourceGroup --name myAKSCluster --query "identity"` . Přiřazení role vytvoříte pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] .
 
 ## <a name="specify-a-different-subnet"></a>Zadejte jinou podsíť.
 

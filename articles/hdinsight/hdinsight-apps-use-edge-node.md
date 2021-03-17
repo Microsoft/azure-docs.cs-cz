@@ -1,19 +1,16 @@
 ---
 title: Použití prázdných hraničních uzlů u clusterů Apache Hadoop ve službě Azure HDInsight
 description: Postup přidání prázdného hraničního uzlu do clusteru HDInsight. Slouží jako klient a pak se testují nebo hostují aplikace HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086479"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942677"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight
 
@@ -61,7 +58,7 @@ Po vytvoření hraničního uzlu se můžete připojit k hraničnímu uzlu pomoc
 > [!WARNING]
 > Vlastní komponenty, které jsou nainstalované na hraničním uzlu, přijímají komerčně přiměřenou podporu od Microsoftu. To může vést k řešení problémů, ke kterým dochází. Nebo můžete být odkazováni na prostředky komunity, které vám pomohou další pomoc. Níže jsou uvedeny některé z nejaktivnějších webů, které vám pomůžou získat nápovědu od komunity:
 >
-> * [Microsoft Q&Stránka s otázkou pro HDInsight] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+> * [Microsoft Q&Stránka s otázkou pro HDInsight] (/Answers/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Pokud používáte technologii Apache, může být možné najít pomoc prostřednictvím webů Apache v systému [https://apache.org](https://apache.org) , jako je například web [Apache Hadoop](https://hadoop.apache.org/) .
@@ -86,7 +83,7 @@ V této části použijete šablonu Správce prostředků k přidání hraničn�
     |Umístění|Vyberte umístění existujícího clusteru HDInsight.|
     |Název clusteru|Zadejte název existujícího clusteru HDInsight.|
 
-1. Zaškrtněte možnost **Souhlasím s podmínkami a ujednáními uvedenými nahoře**a potom výběrem **koupit** vytvořte hraniční uzel.
+1. Zaškrtněte možnost **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a potom výběrem  **koupit** vytvořte hraniční uzel.
 
 > [!IMPORTANT]  
 > Ujistěte se, že jste vybrali skupinu prostředků Azure pro existující cluster HDInsight.  V opačném případě se zobrazí chybová zpráva "u vnořeného prostředku nelze provést požadovanou operaci. &lt;Nenašel se nadřazený prostředek> název_clusteru.
@@ -117,7 +114,7 @@ V této části použijete šablonu Správce prostředků k vytvoření clusteru
 
     V šabloně se pevně zakódované některé vlastnosti: typ clusteru, počet pracovních uzlů clusteru, velikost hraničního uzlu a název hraničního uzlu.
 
-1. Zaškrtněte možnost **Souhlasím s podmínkami a ujednáními uvedenými nahoře**a výběrem **koupit** vytvoříte cluster s hraničním uzlem.
+1. Zaškrtněte možnost **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a výběrem  **koupit** vytvoříte cluster s hraničním uzlem.
 
 ## <a name="add-multiple-edge-nodes"></a>Přidat více hraničních uzlů
 
@@ -160,15 +157,15 @@ Hraniční uzel můžete z Azure Portal odstranit.
 2. Otevřete cluster HDInsight s hraničním uzlem.
 3. Vyberte **aplikace**. Zobrazí se seznam hraničních uzlů.  
 4. Klikněte pravým tlačítkem myši na hraniční uzel, který chcete odstranit, a vyberte **Odstranit**.
-5. Výběrem **Ano** potvrďte.
+5. Akci potvrďte výběrem **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili, jak přidat hraniční uzel a jak přistupovat k hraničnímu uzlu. Další informace najdete v následujících článcích:
+V tomto článku jste se naučili, jak přidat hraniční uzel a jak přistupovat k hraničnímu uzlu. Další informace najdete v těchto článcích:
 
 * [Instalace aplikací HDInsight](hdinsight-apps-install-applications.md): Naučte se instalovat aplikace HDInsight do svých clusterů.
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se, jak nasadit nepublikovanou aplikaci HDInsight do HDInsight.
 * [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [MSDN: Instalace aplikace HDInsight](/rest/api/hdinsight/hdinsight-application): Další informace jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight v systému Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Naučte se volat šablony Správce prostředků pro vytváření clusterů HDInsight.

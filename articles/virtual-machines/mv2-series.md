@@ -3,32 +3,32 @@ title: Mv2-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady Mv2-Series.
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: c91e9832e4b415a59c12b71964a0da580e9fda21
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b15fdc3826a72e9cfb039b6b2994179ab9565404
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651127"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562516"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
 Mv2-Series funkce s vysokou propustností a nízkou latencí běžící na procesorech Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) se základní frekvencí 2,5 GHz a maximální frekvencí 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2-Series můžou využívat trvalé disky úrovně Standard i Premium. Instance Mv2-Series jsou paměťové optimalizované velikosti virtuálních počítačů, které poskytují bezkonkurenční výpočetní výkon pro podporu rozsáhlých databází a úloh s vysokým poměrem paměti, který je ideální pro servery relačních databází, velké mezipaměti a analýzu v paměti.
 
-Funkce virtuálního počítače Mv2-Series Intel® technologie Hyper-Threading
+Funkce virtuálního počítače Mv2-Series Hyper-Threading technologie Intel®
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-Akcelerátor zápisu: [podporováno](./how-to-enable-write-accelerator.md)
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 2<br>
+[Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
+<br>
 
 |Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|
@@ -37,7 +37,7 @@ Akcelerátor zápisu: [podporováno](./how-to-enable-write-accelerator.md)
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 
-<sup>1</sup> virtuální počítače řady Mv2-Series jsou pouze 2. generace a podporují podmnožinu podporovaných imagí 2. generace. Úplný seznam podporovaných imagí pro Mv2-Series najdete níže. Pokud používáte Linux, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](./linux/generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek. Pokud používáte Windows, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](./windows/generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek. 
+<sup>1</sup> virtuální počítače řady Mv2-Series jsou pouze 2. generace a podporují podmnožinu podporovaných imagí 2. generace. Úplný seznam podporovaných imagí pro Mv2-Series najdete níže. Pokud používáte Linux, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](./generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek. Pokud používáte Windows, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](./generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek. 
 
 - Windows Server 2019 nebo novější
 - SUSE Linux Enterprise Server 12 SP4 a novější nebo SUSE Linux Enterprise Server 15 SP1 a novější
@@ -53,7 +53,7 @@ Akcelerátor zápisu: [podporováno](./how-to-enable-write-accelerator.md)
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

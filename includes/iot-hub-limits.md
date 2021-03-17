@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82204441"
 ---
 V následující tabulce jsou uvedené limity spojené s různými úrovněmi služeb S1, S2, S3 a F1. Informace o nákladech na každou *jednotku* v každé úrovni najdete v tématu [ceny za Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
@@ -30,7 +30,7 @@ Následující tabulka uvádí omezení, která platí pro IoT Hub prostředky.
 | Maximální počet placených služeb IoT Hub na předplatné Azure |50 |
 | Maximální počet bezplatných služeb IoT Hub na předplatné Azure |1 |
 | Maximální počet znaků v ID zařízení | 128 |
-| Maximální počet identit zařízení<br/> vrácených v jednom volání |1 000 |
+| Maximální počet identit zařízení<br/> vrácených v jednom volání |1 000 |
 | Maximální doba uchování zpráv typu zařízení-cloud ve službě IoT Hub |7 dní |
 | Maximální velikost zprávy typu zařízení-cloud |256 kB |
 | Maximální velikost dávky typu zařízení-cloud |AMQP a HTTP: 256 KB pro celou dávku <br/>MQTT: 256 KB pro každou zprávu |

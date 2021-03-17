@@ -11,16 +11,21 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 670460759a9495de735da35ae9f3d8388e59e0e5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73481734"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350615"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Postup stránky pomocí výsledků z rozhraní API pro vyhledávání Bingu
 
-Když odešlete volání webu Bing web, Custom, image, News nebo Vyhledávání videí rozhraní API, Bing vrátí podmnožinu celkového počtu výsledků, které mohou být pro dotaz relevantní. K získání odhadovaného celkového počtu dostupných výsledků získáte přístup k `totalEstimatedMatches` poli objektu odpovědi. 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Když odešlete volání webu Bing web, Custom, image, News nebo Vyhledávání videí rozhraní API, Bing vrátí podmnožinu celkového počtu výsledků, které mohou být pro dotaz relevantní. K získání odhadovaného celkového počtu dostupných výsledků získáte přístup k poli objektu odpovědi `totalEstimatedMatches` . 
 
 Příklad: 
 
@@ -37,17 +42,17 @@ Příklad:
 
 ## <a name="paging-through-search-results"></a>Stránkování prostřednictvím výsledků hledání
 
-K procházení dostupných výsledků při posílání žádosti použijte `count` parametry `offset` dotazu a.  
+K procházení dostupných výsledků `count` `offset` při posílání žádosti použijte parametry dotazu a.  
 
 > [!NOTE]
 >
-> * Stránkování s rozhraními API videa, obrázků a zpráv Bingu se vztahují jenom na obecná`/video/search`hledání videa ()`/news/search`, News ()`/image/search`a image (). Stránkování přes témata a kategorie v rámci trendů se nepodporuje.  
-> * Toto `TotalEstimatedMatches` pole představuje odhad celkového počtu výsledků hledání pro aktuální dotaz. Při nastavení parametrů `count` a `offset` se tento odhad může změnit.
+> * Stránkování s rozhraními API videa, obrázků a zpráv Bingu se vztahují jenom na obecná `/video/search` hledání videa (), News () `/news/search` a image ( `/image/search` ). Stránkování přes témata a kategorie v rámci trendů se nepodporuje.  
+> * Toto `TotalEstimatedMatches` pole představuje odhad celkového počtu výsledků hledání pro aktuální dotaz. Při nastavení `count` parametrů a se `offset` Tento odhad může změnit.
 
 | Parametr | Popis                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `count`   | Určuje počet výsledků, které se mají vrátit v odpovědi. Všimněte si, že výchozí hodnota `count`a maximální počet výsledků, které se mohou vyžádat, se liší podle rozhraní API. Tyto hodnoty najdete v referenční dokumentaci v části [Další kroky](#next-steps). |
-| `offset`  | Určuje počet výsledků, které se mají přeskočit. Hodnota `offset` je počítána od nuly a měla by být menší`totalEstimatedMatches` - `count`než ().                                           |
+| `count`   | Určuje počet výsledků, které se mají vrátit v odpovědi. Všimněte si, že výchozí hodnota `count` a maximální počet výsledků, které se mohou vyžádat, se liší podle rozhraní API. Tyto hodnoty najdete v referenční dokumentaci v části [Další kroky](#next-steps). |
+| `offset`  | Určuje počet výsledků, které se mají přeskočit. Hodnota je počítána od `offset` nuly a měla by být menší než ( `totalEstimatedMatches`  -  `count` ).                                           |
 
 Pokud například chcete zobrazit 15 výsledků na stránce, měli byste nastavit `count` na hodnotu 15 a `offset` na 0 a získat tak první stránku výsledků. Pro každé následné volání rozhraní API se zvýší `offset` o 15. Následující příklad vyžádá 15 webových stránek počínaje posunem 45.
 
@@ -57,7 +62,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Pokud použijete výchozí `count` hodnotu, stačí zadat parametr `offset` dotazu v volání rozhraní API.  
+Pokud použijete výchozí `count` hodnotu, stačí zadat `offset` parametr dotazu v volání rozhraní API.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  
@@ -65,18 +70,18 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Pokud používáte rozhraní API pro Image Bingu a videa, můžete `nextOffset` hodnotu použít k zamezení duplicit výsledků hledání. Získat hodnotu z objektů `Images` nebo `Videos` odpovědí a použít ji ve svých žádostech s `offset` parametrem.  
+Pokud používáte rozhraní API pro Image Bingu a videa, můžete `nextOffset` hodnotu použít k zamezení duplicit výsledků hledání. Získat hodnotu z `Images` `Videos` objektů nebo odpovědí a použít ji ve svých žádostech s `offset` parametrem.  
 
 > [!NOTE]
-> Rozhraní API Bingu pro vyhledávání na webu vrátí výsledky hledání, které mohou zahrnovat webové stránky, obrázky, videa a novinky. Při procházení výsledků hledání z rozhraní API Bingu pro vyhledávání na webu se jedná o [webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)jenom stránkování, a ne další typy odpovědí, jako jsou obrázky nebo novinky. Výsledky hledání v `WebPage` objektech mohou zahrnovat výsledky, které se zobrazují i v jiných typech odpovědí.
+> Rozhraní API Bingu pro vyhledávání na webu vrátí výsledky hledání, které mohou zahrnovat webové stránky, obrázky, videa a novinky. Při procházení výsledků hledání z rozhraní API Bingu pro vyhledávání na webu se jedná o [webové stránky](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)jenom stránkování, a ne další typy odpovědí, jako jsou obrázky nebo novinky. Výsledky hledání v `WebPage` objektech mohou zahrnovat výsledky, které se zobrazují i v jiných typech odpovědí.
 >
-> Použijete-li `responseFilter` parametr dotazu bez zadání hodnot filtru, nepoužívejte parametry `count` a. `offset` 
+> Použijete-li `responseFilter` parametr dotazu bez zadání hodnot filtru, nepoužívejte `count` `offset` parametry a. 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Jaká jsou rozhraní API pro Vyhledávání na webu Bingu?](bing-api-comparison.md)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Odkaz na rozhraní API pro vlastní vyhledávání Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Odkaz na rozhraní API Bingu pro vyhledávání zpráv v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Odkaz na rozhraní API Bingu pro vyhledávání videí v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Odkaz na rozhraní API Bingu pro vyhledávání obrázků v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání na webu verze 7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Odkaz na rozhraní API pro vlastní vyhledávání Bingu v7](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání zpráv v7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání videí v7](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání obrázků v7](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249274"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446124"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -102,19 +102,21 @@ SQL Database zabezpečení a ochrany osobních údajů velmi vážně. Zabezpeč
 V SQL Database jsou k dispozici dvě metody ověřování:
 
 - [Ověřování Azure Active Directory](authentication-aad-overview.md)
-- [Ověřování pomocí SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [Ověřování SQL](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. Azure AD podporuje [azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) a [pár kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a SQL Data Warehouse nabízet účty uživatelů Multi-Factor Authentication a hosta v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. 
 
-|**Pokud...**|**SQL Database/SQL Data Warehouse**|
+Azure AD podporuje [Multi-Factor Authentication Azure AD](authentication-mfa-ssms-overview.md) a [několik kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. To také umožňuje SQL Database a služba Azure synapse Analytics nabízí Multi-Factor Authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+
+|**Pokud...**|**SQL Database/Azure synapse Analytics**|
 |---|---|
 |Raději nepoužívejte Azure Active Directory (Azure AD) v Azure.|Použít [ověřování SQL](security-overview.md)|
 |Služba AD se používá v místní SQL Server.|[FEDEROVAT AD s Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)a používejte ověřování Azure AD. Díky tomu můžete použít jednotné přihlašování.|
 |Je potřeba vyhovět Multi-Factor Authentication|Vyžadovat Multi-Factor Authentication jako zásadu prostřednictvím [podmíněného přístupu Microsoft](conditional-access-configure.md)a použít [univerzální ověřování Azure AD s podporou Multi-Factor Authentication](authentication-mfa-ssms-overview.md).|
-|Mít účty hostů z účtů Microsoft (live.com, outlook.com) nebo jiné domény (gmail.com).|Využijte [Azure AD Universal Authentication](authentication-mfa-ssms-overview.md) v SQL Database/datovém skladu, který využívá [spolupráci Azure AD B2B](../../active-directory/b2b/what-is-b2b.md).|
+|Mít účty hostů z účtů Microsoft (live.com, outlook.com) nebo jiné domény (gmail.com).|Využijte [Azure AD Universal Authentication](authentication-mfa-ssms-overview.md) v SQL Database/datovém skladu, který využívá [spolupráci Azure AD B2B](../../active-directory/external-identities/what-is-b2b.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů Azure AD ze federované domény|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů z domény, která není federované s Azure|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
-|Musí mít služby střední vrstvy, které se musí připojit k SQL Database nebo SQL Data Warehouse|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
+|Musí mít služby střední vrstvy, které se musí připojit k SQL Database nebo Azure synapse Analytics.|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |||
 
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Omezení Návody nebo řízení přístupu k databázi v síti
@@ -122,7 +124,7 @@ Tradiční ověřování systému Windows není podporováno. Azure Active Direc
 K dispozici je více postupů, které můžete použít k dosažení optimální organizace pro připojení pro vaši aplikaci.
 
 - Pravidla brány firewall
-- Koncové body služby virtuální sítě
+- Koncové body služeb virtuální sítě
 - Vyhrazené IP adresy
 
 #### <a name="firewall"></a>Brána firewall
@@ -167,7 +169,7 @@ Díky [detekci hrozeb](threat-detection-configure.md)získáte možnost reagovat
 Ve výchozím nastavení jsou vaše neaktivní data a soubory protokolů v subsystému úložiště v SQL Database zcela a vždy šifrované prostřednictvím [transparentní šifrování dat [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Vaše zálohy jsou také šifrované. V TDE se na straně aplikace nevyžadují žádné změny, které mají přístup k těmto datům. Šifrování a dešifrování je transparentní; Proto název.
 V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Database poskytuje funkci nazvanou [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE je forma šifrování na straně klienta, která šifruje citlivé sloupce v databázi (takže jsou v šifrovaném textu u správců databáze a neautorizovaných uživatelů). Server obdrží zašifrovaná data, která mají začít. Klíč pro Always Encrypted je také uložen na straně klienta, takže pouze oprávnění klienti mohou dešifrovat citlivé sloupce. Správci serveru a dat nemohou zobrazit citlivá data, protože šifrovací klíče jsou uloženy v klientovi. AE šifruje citlivé sloupce v tabulce na konci, od neautorizovaných klientů po fyzický disk. AE v současné době podporuje porovnání rovnosti, takže specializující může v rámci svých příkazů SQL nadále dotazovat šifrované sloupce. Always Encrypted lze použít s nejrůznějšími možnostmi úložiště klíčů, jako jsou [Azure Key Vault](always-encrypted-azure-key-vault-configure.md), úložiště certifikátů Windows a místní moduly hardwarového zabezpečení.
 
-|**Vlastnosti**|**Funkce Always Encrypted**|**transparentní šifrování dat**|
+|**Vlastnosti**|**Funkce Always Encrypted**|**Transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
 |**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
@@ -271,7 +273,7 @@ Z tohoto grafu můžete také nakonfigurovat výstrahy podle prostředku. Tyto v
 
 #### <a name="dynamic-management-views"></a>Zobrazení dynamické správy
 
-Můžete zadat dotaz na zobrazení dynamické správy [Sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , které vrátí historii statistik spotřeby prostředků za poslední hodinu a zobrazení systémového katalogu [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , které vrátí historii za posledních 14 dní.
+Můžete zadat dotaz na zobrazení dynamické správy [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a vrátit historii statistik spotřeby prostředků z poslední hodiny a zobrazení [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) systémového katalogu, které vrátí historii za posledních 14 dní.
 
 #### <a name="query-performance-insight"></a>Query Performance Insight
 
@@ -291,7 +293,7 @@ Váš přístup k problémům s výkonem se může významně využít při pou�
 
 Při řešení potíží s výkonem je důležité určit, zda je to pouze aplikace nebo databáze, která má vliv na výkon aplikace. Problém s výkonem se často nachází v aplikační vrstvě. Může se jednat o architekturu nebo vzor přístupu k datům. Zvažte například, že máte aplikaci Chat, která je citlivá na latenci sítě. V takovém případě vaše aplikace utrpí, protože by došlo k velkému počtu krátkých požadavků ("konverzace") mezi aplikací a serverem a v zahlcené síti, takže se tyto přenosy rychle přidávají. Pro zlepšení výkonu v tomto případě můžete použít [dávkové dotazy](performance-guidance.md#batch-queries). Použití dávek vám pomůže se obrovským vzhledem k tomu, že teď se vaše požadavky zpracovávají v dávce. Proto vám pomůže vyjímat latenci zpětného odezvy a zvýšit výkon vaší aplikace.
 
-Pokud si navíc všimnete snížení celkového výkonu vaší databáze, můžete monitorovat zobrazení dynamické správy [Sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , abyste porozuměli využití procesoru, vstupně-výstupních operací a paměti. Váš výkon může mít vliv na to, že vaše databáze nedostatek prostředky. Může se stát, že budete muset změnit velikost výpočetní kapacity nebo úroveň služby na základě požadavků na rostoucí a zmenšení zatížení.
+Kromě toho, pokud si všimnete snížení celkového výkonu vaší databáze, můžete monitorovat [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení dynamické správy za účelem pochopení využití procesoru, vstupně-výstupních operací a paměti. Váš výkon může mít vliv na to, že vaše databáze nedostatek prostředky. Může se stát, že budete muset změnit velikost výpočetní kapacity nebo úroveň služby na základě požadavků na rostoucí a zmenšení zatížení.
 
 Komplexní sadu doporučení pro ladění problémů s výkonem najdete v tématu: [vyladění databáze](performance-guidance.md#tune-your-database).
 
@@ -299,11 +301,11 @@ Komplexní sadu doporučení pro ladění problémů s výkonem najdete v témat
 
 SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Na každé úrovni služby získáte zaručený předvídatelný výkon, který je svázán s danou úrovní služeb. V závislosti na vašich úlohách můžete mít shluky aktivity, kde využití prostředků může dosáhnout stropu aktuální velikosti výpočtů, ke které jste v. V takových případech je vhodné nejdřív začít tím, že vyhodnotí, jestli může nějaké ladění pomoct (například přidání nebo změna indexu atd.). Pokud stále dochází k problémům s omezením, zvažte přechod na vyšší úroveň služby nebo výpočetní velikost.
 
-|**Úroveň služby**|**Běžné scénáře použití**|
+|**Úroveň služeb**|**Běžné scénáře použití**|
 |---|---|
-|**Základní**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
+|**Basic**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
 |**Standard**|Aplikace se značnými požadavky na souběžnost, škálování a výkon, které jsou v případě požadavků s nízkým až středním vstupem/výstupem. |
-|**Premium**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
+|**Nárok**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
 |||
 
 Aby se zajistila správná velikost výpočetní kapacity, můžete monitorovat spotřebu prostředků dotazu a databáze jedním z výše uvedených způsobů v tématu "Návody monitorovat výkon a využití prostředků v SQL Database". Pokud zjistíte, že dotazy nebo databáze jsou konzistentně spuštěné na procesoru nebo paměti atd. můžete zvážit horizontální navýšení kapacity až na vyšší výpočetní velikost. Podobně platí, že pokud si všimněte, že i během špičky, nebudete pravděpodobně prostředky používat, a to podobně. Zvažte snížení kapacity z aktuální výpočetní velikosti.

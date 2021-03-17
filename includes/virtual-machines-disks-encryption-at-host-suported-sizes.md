@@ -9,15 +9,15 @@ ms.date: 07/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5a811620de8336abd3e0df6d72db761ce18b2b6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86230961"
 ---
 Všechny nejnovější generace velikostí virtuálních počítačů podporují šifrování na hostiteli:
 
-|Type  |Nepodporuje se  |Podporováno  |
+|Typ  |Nepodporuje se  |Podporováno  |
 |---------|---------|---------|
 |Obecné účely     | Dv3, Dav4, Dv2, Av2        | B, DSv2, Dsv3, DC, DCv2, Dasv4        |
 |Optimalizované z hlediska výpočetních služeb     |         | Fsv2        |

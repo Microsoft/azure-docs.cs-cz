@@ -1,0 +1,337 @@
+- name: Dokumentace ke službě Azure IoT Central
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure IoT Central
+      href: core/overview-iot-central.md
+    - name: Prohlídka uživatelského rozhraní
+      href: core/overview-iot-central-tour.md
+    - name: Nejnovější aktualizace
+      items:
+        - name: Ledna 2021 nové a aktualizované funkce
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
+        - name: Nové a aktualizované funkce z listopadu 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
+        - name: Nové a aktualizované funkce z října 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
+        - name: Nové a aktualizované funkce ze září 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
+        - name: Nové a aktualizované funkce ze srpna 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
+        - name: Nové a aktualizované funkce z července 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
+        - name: Nové a aktualizované funkce z června 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
+        - name: Aktualizace dokumentace a uživatelského rozhraní z června 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+        - name: Aktualizace metrik a úloh z května 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: Aktualizace řídicích panelů z května 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
+        - name: Nové funkce z dubna 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: Aktualizace z dubna 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
+        - name: Březen 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: 1. Vytvoření nové aplikace
+      href: core/quick-deploy-iot-central.md
+    - name: 2. Přidání simulovaného zařízení
+      href: core/quick-create-simulated-device.md
+    - name: 3. Konfigurace pravidel a akcí
+      href: core/quick-configure-rules.md
+    - name: 4. Monitorování zařízení
+      href: core/quick-monitor-devices.md
+- name: Kurzy
+  items:
+    - name: Vývoj a připojení zařízení
+      items:
+        - name: Vytvoření a připojení zařízení
+          href: core/tutorial-connect-device.md
+        - name: Vytvoření šablony zařízení brány
+          href: core/tutorial-define-gateway-device-type.md
+        - name: Připojení zařízení IoT Edge
+          href: core/tutorial-add-edge-as-leaf-device.md
+    - name: Sestavení integrovaných řešení
+      items:
+        - name: Vytvoření skupiny zařízení
+          href: core/tutorial-use-device-groups.md
+        - name: Vytvoření pravidla
+          href: core/tutorial-create-telemetry-rules.md
+        - name: Procházení rozhraní API služby IoT Central
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - name: Řešení specifická pro odvětví
+      items:
+        - name: Retail
+          items:
+            - name: Kontrola analýz v obchodech
+              items:
+                - name: 1. Vytvoření aplikace pro maloobchod
+                  href: retail/tutorial-in-store-analytics-create-app.md
+                - name: 2. Přizpůsobení řídicího panelu operátora
+                  href: retail/tutorial-in-store-analytics-customize-dashboard.md
+                - name: 3. Export dat a vizualizace přehledů
+                  href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
+            - name: Vytvoření aplikace pro inteligentní řízení zásob
+              href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Vytvoření aplikace pro propojenou logistiku
+              href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Vytvoření aplikace pro digitální distribuční centrum
+              href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Vytvoření aplikace centra mikroplnění
+              href: retail/tutorial-micro-fulfillment-center.md
+            - name: Analýza videa – detekce objektů a pohybu
+              items:
+                - name: 0. Nasazení aplikace pro detekci objektů a pohybu
+                  href: retail/tutorial-video-analytics-deploy.md
+                - name: 1. Vytvoření aplikace pro analýzu videa
+                  items:
+                    - name: Detekce objektů a pohybu (YOLO v3)
+                      href: retail/tutorial-video-analytics-create-app-yolo-v3.md
+                    - name: Detekce objektů a pohybu (OpenVINO)
+                      href: retail/tutorial-video-analytics-create-app-openvino.md
+                - name: 2. Konfigurace zařízení IoT Edge
+                  items:
+                    - name: Vytvoření hraničního zařízení pro analýzu videa (virtuální počítač s Linuxem)
+                      href: retail/tutorial-video-analytics-iot-edge-vm.md
+                    - name: Vytvoření hraničního zařízení pro analýzu videa (Intel NUC)
+                      href: retail/tutorial-video-analytics-iot-edge-nuc.md
+                - name: 3. Monitorování a správa aplikace pro analýzu videa
+                  href: retail/tutorial-video-analytics-manage.md
+                - name: 4. Úprava a sestavení modulů brány s analýzou živého videa
+                  href: retail/tutorial-video-analytics-build-module.md
+        - name: Energetický sektor
+          items:
+            - name: Vytvoření aplikace pro inteligentní monitorování měřičů
+              href: energy/tutorial-smart-meter-app.md
+            - name: Vytvoření aplikace pro monitorování solárních panelů
+              href: energy/tutorial-solar-panel-app.md
+        - name: Státní správa
+          items:
+            - name: Vytvoření aplikace pro propojené nakládání s odpady
+              href: government/tutorial-connected-waste-management.md
+            - name: Vytvoření aplikace pro monitorování spotřeby vody
+              href: government/tutorial-water-consumption-monitoring.md
+            - name: Vytvoření aplikace pro monitorování kvality vody
+              href: government/tutorial-water-quality-monitoring.md
+        - name: Zdravotnictví
+          items:
+            - name: Vytvoření aplikace pro průběžné monitorování pacientů
+              href: healthcare/tutorial-continuous-patient-monitoring.md
+            - name: Vytvoření řídicího panelu pro posouzení informací o zdravotním stavu
+              href: healthcare/howto-health-data-triage.md
+- name: Koncepty
+  items:
+    - name: Architektura
+      href: core/concepts-architecture.md
+    - name: Příručka pro vývojáře zařízení
+      href: core/overview-iot-central-developer.md
+    - name: Průvodce tvůrcem řešení
+      href: core/overview-iot-central-solution-builder.md
+    - name: Co jsou šablony aplikací?
+      href: core/concepts-app-templates.md
+    - name: Šablony aplikací specifické pro odvětví
+      items:
+        - name: Retail
+          items:
+            - name: Přehled
+              href: retail/overview-iot-central-retail.md
+            - name: Architektura rezervace in-Store Analytics
+              href: retail/store-analytics-architecture.md
+            - name: Architektura správy inteligentních inventářů
+              href: retail/architecture-smart-inventory-management.md
+            - name: Architektura připojené logistické architektury
+              href: retail/architecture-connected-logistics.md
+            - name: Digitální distribuční centrum
+              href: retail/architecture-digital-distribution-center.md
+            - name: Architektura Micro-splního centra
+              href: retail/architecture-micro-fulfillment-center.md
+            - name: Analýza videa – detekce objektů a pohybu
+              href: retail/architecture-video-analytics.md
+        - name: Energetický sektor
+          items:
+            - name: Přehled
+              href: energy/overview-iot-central-energy.md
+            - name: Architektura aplikací pro inteligentní měření
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: Architektura aplikací pro solární panely
+              href: energy/concept-iot-central-solar-panel-app.md
+        - name: Státní správa
+          items:
+            - name: Přehled
+              href: government/overview-iot-central-government.md
+            - name: Architektura monitorování propojených odpadů
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Architektura monitorování spotřeby vody
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Architektura monitorování kvality vody
+              href: government/concepts-waterqualitymonitoring-architecture.md
+        - name: Zdravotnictví
+          items:
+            - name: Přehled
+              href: healthcare/overview-iot-central-healthcare.md
+            - name: Architektura průběžného monitorování pacientů
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
+    - name: Co jsou šablony zařízení?
+      href: core/concepts-device-templates.md
+    - name: Připojení zařízení
+      href: core/concepts-get-connected.md
+    - name: Datové části zpráv
+      href: core/concepts-telemetry-properties-commands.md
+    - name: Připojení zařízení IoT
+      href: core/concepts-iot-edge.md
+    - name: Osvědčené postupy
+      href: core/concepts-best-practices.md
+- name: Návody
+  items:
+    - name: Vývoj a připojení zařízení
+      items:
+        - name: Nastavení šablony zařízení
+          href: core/howto-set-up-template.md
+        - name: Vytváření verzí šablon zařízení
+          href: core/howto-version-device-template.md
+        - name: Jak používat vlastnosti
+          href: core/howto-use-properties.md
+        - name: Jak používat příkazy
+          href: core/howto-use-commands.md
+        - name: Připojení zařízení s využitím X.509
+          href: core/how-to-connect-devices-x509.md
+        - name: Monitorování připojení zařízení s využitím Azure CLI
+          href: core/howto-monitor-devices-azure-cli.md
+        - name: Připojení zařízení přes IoT Edge transparentní bránu
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
+        - name: Příprava a připojení sady Azure Sphere DevKit
+          href: core/howto-connect-sphere.md
+        - name: Příprava a připojení zařízení RuuviTag
+          href: core/howto-connect-ruuvi.md
+        - name: Příprava a připojení Rigado Cascade 500
+          href: core/howto-connect-rigado-cascade-500.md
+        - name: Připojení dalších cloudů IoT
+          href: core/howto-build-iotc-device-bridge.md
+    - name: Sestavení integrovaných řešení
+      items:
+        - name: Přidání dlaždic na řídicí panel
+          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: Konfigurace pravidel
+          href: core/howto-configure-rules.md
+        - name: Vytváření webhooků pro pravidla
+          href: core/howto-create-webhooks.md
+        - name: Připojení skupin akcí Azure Monitoru k pravidlům
+          href: core/howto-use-action-groups.md
+        - name: Analýza dat zařízení
+          href: core/howto-create-analytics.md
+        - name: Export dat do cílových umístění v cloudu
+          href: core/howto-export-data.md
+        - name: Export dat do cílových umístění v cloudu (starší verze)
+          href: core/howto-export-data-legacy.md
+        - name: Použití pracovních postupů pro integraci s ostatními službami
+          href: core/howto-configure-rules-advanced.md
+        - name: Vytvoření vlastních rolí
+          href: core/howto-create-custom-rules.md
+        - name: Vytváření vlastních analýz s využitím Databricks
+          href: core/howto-create-custom-analytics.md
+        - name: Vizualizace dat v Power BI
+          href: core/howto-connect-powerbi.md
+        - name: Připojení aplikace k polím služby Dynamics 365
+          href: government/how-to-configure-connected-field-services.md
+    - name: správu zařízení
+      items:
+        - name: Přidání a odebrání zařízení
+          href: core/howto-manage-devices.md
+        - name: Spuštění úlohy
+          href: core/howto-run-a-job.md
+        - name: Přesunout zařízení z IoT Hub
+          href: core/how-to-move-device-to-iot.md
+    - name: Správa řešení
+      items:
+        - name: Změna nastavení aplikace
+          href: core/howto-administer.md
+        - name: Správa uživatelů a skupin
+          href: core/howto-manage-users-roles.md
+        - name: Správa vyúčtování
+          href: core/howto-view-bill.md
+        - name: Přizpůsobení uživatelského rozhraní aplikací
+          href: core/howto-customize-ui.md
+        - name: Export vaší aplikace
+          href: core/howto-use-app-templates.md
+        - name: Migrovat aplikaci v2 na V3
+          href: core/howto-migrate.md
+        - name: Monitorování stavu aplikace
+          href: core/howto-monitor-application-health.md
+        - name: Informace o aplikaci
+          href: core/howto-get-app-info.md
+        - name: Konfigurace a využití nahrávání souborů
+          href: core/howto-configure-file-uploads.md
+        - name: Zavedení certifikátů X.509
+          href: core/how-to-roll-x509-certificates.md
+        - name: Správa z webu Azure Portal
+          href: core/howto-manage-iot-central-from-portal.md
+        - name: Správa z Azure CLI
+          href: core/howto-manage-iot-central-from-cli.md
+        - name: Správa z Azure PowerShellu
+          href: core/howto-manage-iot-central-from-powershell.md
+        - name: Programová správa
+          href: core/howto-manage-iot-central-programmatically.md
+        - name: Správa z portálu CSP
+          href: core/howto-create-and-manage-applications-csp.md
+    - name: Přizpůsobení řešení
+      items:
+        - name: Vytvoření osobního řídicího panelu
+          href: core/howto-create-personal-dashboards.md
+        - name: Správa vašich osobních předvoleb
+          href: core/howto-manage-preferences.md
+        - name: Přepnutí živého chatu
+          href: core/howto-show-hide-chat.md
+    - name: Řešení potíží
+      items:
+        - name: Připojení zařízení
+          href: core/troubleshoot-connection.md
+    - name: Nejčastější dotazy
+      href: core/howto-faq.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: Reference k rozhraní API služby IoT Central
+      href: /rest/api/iotcentral/
+- name: Zdroje a prostředky
+  items:
+    - name: Ukázky kódů
+      href: /samples/browse/?expanded=azure&products=azure-iot-central
+    - name: Možnosti pomoci a podpory
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: Služby Azure IoT
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: Služba IoT Hub Device Provisioning
+          href: ../iot-dps/index.yml
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: Akcelerátory řešení IoT
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Sady Azure IoT SDK
+      items:
+        - name: Sady SDK pro služby IoT
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: Sady SDK pro zařízení IoT
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: Rezidence zákaznických dat
+      href: core/iot-central-customer-data-residency.md
+    - name: Požadavky na zákaznická data
+      href: core/iot-central-customer-data-requests.md
+    - name: Podporované prohlížeče
+      href: core/iot-central-supported-browsers.md
+    - name: Azure IoT Central (šablony starší verze)
+      href: /previous-versions/azure/iot-central/core/overview-iot-central

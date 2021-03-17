@@ -1,7 +1,7 @@
 ---
 title: Převod na hodnoty indikátoru
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul převést na hodnoty indikátoru v Azure Machine Learning k převodu sloupců, které obsahují hodnoty kategorií, do řady binárních sloupců ukazatelů.
+description: Použijte modul převést na hodnoty indikátoru v Návrháři Azure Machine Learning k převedení sloupců kategorií na řadu binárních sloupců ukazatelů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477659"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420848"
 ---
 # <a name="convert-to-indicator-values"></a>Převod na hodnoty indikátoru
 Tento článek popisuje modul návrháře Azure Machine Learning.
@@ -49,9 +49,9 @@ Předpokládejme, že máte sloupec s výsledky, které určují, jestli má ser
 | --------- | ------------- |
 | 10301     | Nízká           |
 | 10302     | Střední        |
-| 10303     | Vysoká          |
+| 10303     | Vysoké          |
 
-Když použijete příkaz **převést na hodnoty indikátoru**, Návrhář převede jeden sloupec popisků na více sloupců, které obsahují logické hodnoty:  
+Když použijete příkaz **převést na hodnoty indikátoru** , Návrhář převede jeden sloupec popisků na více sloupců, které obsahují logické hodnoty:  
 
 | ID serveru | Skóre selhání – nízká | Skóre selhání – střední | Skóre selhání – vysoká |
 | --------- | ------------------- | ---------------------- | -------------------- |
@@ -71,8 +71,8 @@ Teď můžete použít tři sloupce indikátoru jako funkce v modelu strojového
 
 Modul vrací dva výstupy:
 
-- **Datová sada výsledků**: datová sada se sloupci převedených hodnot indikátoru. Sloupce, které nejsou vybrány pro čištění, jsou také "předávány".
-- **Transformace hodnot ukazatelů**: transformace dat používaná pro převod na hodnoty indikátoru, které se dají uložit do svého pracovního prostoru a později použít na nová data.
+- **Datová sada výsledků** : datová sada se sloupci převedených hodnot indikátoru. Sloupce, které nejsou vybrány pro čištění, jsou také "předávány".
+- **Transformace hodnot ukazatelů** : transformace dat používaná pro převod na hodnoty indikátoru, které se dají uložit do svého pracovního prostoru a později použít na nová data.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Použití operace uložených hodnot ukazatelů na nová data
 
@@ -98,13 +98,13 @@ Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nej
 
 -   Pouze sloupce označené jako kategorií lze převést na sloupce indikátorů. Pokud se zobrazí následující chyba, je pravděpodobný, že jeden ze sloupců, které jste vybrali, není kategorií:  
 
-     Chyba 0056: sloupec s názvem \<column name> není v povolené kategorii.  
+     Chyba 0056: sloupec s názvem  \<column name> není v povolené kategorii.  
 
      Ve výchozím nastavení je většina řetězcových sloupců zpracovávána jako řetězcové funkce, takže je musíte explicitně označit jako kategorií pomocí [Edit metadata](edit-metadata.md).  
 
 -   Počet sloupců, které můžete převést na sloupce indikátorů, není nijak omezený. Vzhledem k tomu, že každý sloupec hodnot může vracet více sloupců indikátorů, můžete chtít v jednom okamžiku převést a zkontrolovat jen několik sloupců.  
 
--   Pokud sloupec obsahuje chybějící hodnoty, vytvoří se samostatný sloupec indikátoru pro chybějící kategorii s tímto názvem: * \<source column> – chybějící*  
+-   Pokud sloupec obsahuje chybějící hodnoty, vytvoří se samostatný sloupec indikátoru pro chybějící kategorii s tímto názvem: *\<source column> – chybějící*  
 
 -   Pokud sloupec, který převedete na hodnoty indikátoru, obsahuje čísla, musí být označený jako kategorií jako jakýkoliv jiný sloupec funkce. Až to uděláte, budou se čísla považovat za diskrétní hodnoty. Pokud máte například číselný sloupec s hodnotami MPG v rozsahu od 25 do 30, vytvoří se nový sloupec indikátoru pro každou diskrétní hodnotu:  
 

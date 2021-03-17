@@ -1,50 +1,58 @@
 ---
-title: Konfigurace replikace objektů (Preview)
+title: Konfigurace replikace objektů
 titleSuffix: Azure Storage
 description: Naučte se konfigurovat replikaci objektů na asynchronní kopírování objektů blob bloku z kontejneru v jednom účtu úložiště do jiného.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566059"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031697"
 ---
-# <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurace replikace objektů pro objekty blob bloku (Preview)
+# <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
-Replikace objektů (Preview) asynchronně kopíruje objekty blob bloku mezi zdrojovým účtem úložiště a cílovým účtem. Další informace o replikaci objektů najdete v tématu [replikace objektů (Preview)](object-replication-overview.md).
+Replikace objektů asynchronně kopíruje objekty blob bloku mezi zdrojovým účtem úložiště a cílovým účtem. Další informace o replikaci objektů najdete v tématu [replikace objektů](object-replication-overview.md).
 
 Když konfigurujete replikaci objektů, vytvoříte zásadu replikace, která určuje zdrojový a cílový účet úložiště. Zásada replikace obsahuje jedno nebo více pravidel, která určují zdrojový kontejner a cílový kontejner, a označuje, které objekty blob bloku ve zdrojovém kontejneru budou replikovány.
 
 Tento článek popisuje, jak nakonfigurovat replikaci objektů pro svůj účet úložiště pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Ke konfiguraci replikace objektů můžete použít taky jednu z Azure Storage klientských knihoven poskytovatele prostředků.
 
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
 ## <a name="create-a-replication-policy-and-rules"></a>Vytvoření zásad a pravidel pro replikaci
 
 Před konfigurací replikace objektů vytvořte zdrojové a cílové účty úložiště, pokud ještě neexistují. Oba účty musí být účty úložiště pro obecné účely v2. Další informace najdete v tématu [Vytvoření účtu Azure Storage](../common/storage-account-create.md).
 
-Účet úložiště může sloužit jako zdrojový účet pro až dva cílové účty. A cílový účet pravděpodobně nemá více než dva zdrojové účty. Zdrojové a cílové účty se můžou nacházet v různých oblastech. Můžete nakonfigurovat samostatné zásady replikace pro replikaci dat do každého cílového účtu.
+Replikace objektů vyžaduje, aby bylo pro zdrojový i cílový účet povoleno správu verzí objektů BLOB a aby byl pro zdrojový účet povolený informační kanál pro změny objektů BLOB. Další informace o tom, jak se správou verzí objektů blob, najdete v tématu [Správa verzí objektů BLOB](versioning-overview.md). Další informace o službě Change feed najdete v tématu [Změna podpory kanálu v Azure Blob Storage](storage-blob-change-feed.md). Mějte na paměti, že povolení těchto funkcí může mít za následek další náklady.
 
-Než začnete, ujistěte se, že jste se zaregistrovali v následujících náhledech funkcí:
+Účet úložiště může sloužit jako zdrojový účet pro až dva cílové účty. Zdrojové a cílové účty můžou být ve stejné oblasti nebo v různých oblastech. Můžou se také nacházet v různých předplatných a v různých klientech Azure Active Directory (Azure AD). Pro každou dvojici účtů se dá vytvořit jenom jedna zásada replikace.
 
-- [Replikace objektů (Preview)](object-replication-overview.md)
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
-- [Změna podpory kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
+Při konfiguraci replikace objektů se v cílovém účtu vytvoří zásada replikace prostřednictvím poskytovatele prostředků Azure Storage. Po vytvoření zásady replikace jim Azure Storage přiřadí ID zásad. Pak musíte tyto zásady replikace přidružit ke zdrojovému účtu pomocí ID zásad. Aby replikace mohla probíhat, musí být ID zásad ve zdrojovém a cílovém účtu stejné.
+
+Pokud chcete nakonfigurovat zásadu replikace objektu pro účet úložiště, musíte mít přiřazenou roli **přispěvatele** Azure Resource Manager vymezenou na úroveň účtu úložiště nebo vyšší. Další informace najdete v dokumentaci k [předdefinovaným rolím Azure](../../role-based-access-control/built-in-roles.md) v tématu řízení přístupu na základě role Azure (Azure RBAC).
+
+### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>Konfigurace replikace objektů, když máte přístup k oběma účtům úložiště
+
+Pokud máte přístup ke zdrojovému i cílovému účtu úložiště, můžete nakonfigurovat zásady replikace objektů u obou účtů.
+
+Před konfigurací replikace objektů v Azure Portal vytvořte zdrojové a cílové kontejnery v příslušných účtech úložiště, pokud ještě neexistují. Také povolte správu verzí objektů BLOB a změnu kanálu na zdrojovém účtu a povolte správu verzí objektů BLOB v cílovém účtu.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Před konfigurací replikace objektů v Azure Portal vytvořte zdrojové a cílové kontejnery v příslušných účtech úložiště, pokud ještě neexistují. Také povolte správu verzí objektů BLOB a kanál změn ve zdrojovém účtu a povolte správu verzí objektů BLOB v cílovém účtu.
+Po nakonfigurování pro cílový účet Azure Portal automaticky vytvoří zásadu na zdrojovém účtu.
 
 Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následujících kroků:
 
 1. V Azure Portal přejděte do zdrojového účtu úložiště.
-1. V části **BLOB Service**vyberte **replikace objektů**.
+1. V části **BLOB Service** vyberte **replikace objektů**.
 1. Vyberte **nastavit pravidla replikace**.
 1. Vyberte cílové předplatné a účet úložiště.
 1. V části **páry kontejnerů** vyberte zdrojový kontejner ze zdrojového účtu a cílový kontejner z cílového účtu. Na jednu zásadu replikace můžete vytvořit až 10 párů kontejnerů.
@@ -61,39 +69,19 @@ Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následuj
 
 1. Ve výchozím nastavení je obor kopírování nastaven na Kopírovat pouze nové objekty. Chcete-li zkopírovat všechny objekty v kontejneru nebo zkopírovat objekty počínaje vlastním datem a časem, vyberte odkaz **změnit** a nakonfigurujte obor kopírování pro dvojici kontejnerů.
 
-    Následující obrázek ukazuje vlastní obor kopírování.
+    Následující obrázek ukazuje vlastní obor kopírování, který kopíruje objekty ze zadaného data a času.
 
     :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Snímek obrazovky zobrazující vlastní obor kopírování pro replikaci objektů":::
 
 1. Vyberte **Save and Apply (Uložit a použít** ) a vytvořte zásadu replikace a spusťte replikaci dat.
 
+Po nakonfigurování replikace objektů Azure Portal zobrazí zásadu a pravidla replikace, jak je znázorněno na následujícím obrázku.
+
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Snímek obrazovky znázorňující zásady replikace objektů v Azure Portal":::
+
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete vytvořit zásadu replikace pomocí PowerShellu, nejdřív nainstalujte verzi [2.0.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) nebo novější z modulu PowerShellu AZ. Storage. Pomocí těchto kroků nainstalujete modul verze Preview:
-
-1. Odinstalujte všechny předchozí instalace Azure PowerShell ze systému Windows pomocí nastavení **aplikace & funkce** v části **Nastavení**.
-
-1. Ujistěte se, že máte nainstalovanou nejnovější verzi PowerShellGet. Otevřete okno prostředí Windows PowerShell a spuštěním následujícího příkazu nainstalujte nejnovější verzi:
-
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-    Po instalaci PowerShellGet zavřete a znovu otevřete okno PowerShellu.
-
-1. Nainstalujte nejnovější verzi Azure PowerShell:
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. Instalace modulu AZ. Storage Preview:
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 2.0.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
-
-Další informace o instalaci Azure PowerShell najdete v tématu [instalace Azure PowerShell pomocí PowerShellGet](/powershell/azure/install-az-ps).
+Pokud chcete vytvořit zásadu replikace pomocí PowerShellu, nejdřív nainstalujte verzi [2.5.0](https://www.powershellgallery.com/packages/Az.Storage/2.5.0) nebo novější z modulu PowerShellu AZ. Storage. Další informace o instalaci Azure PowerShell najdete v tématu [instalace Azure PowerShell pomocí PowerShellGet](/powershell/azure/install-az-ps).
 
 Následující příklad ukazuje, jak vytvořit zásadu replikace na zdrojovém a cílovém účtu. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -160,32 +148,20 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete vytvořit zásadu replikace pomocí Azure CLI, nainstalujte nejdřív rozšíření Preview pro Azure Storage.:
+Pokud chcete vytvořit zásadu replikace pomocí Azure CLI, nejdřív nainstalujte Azure CLI verze 2.11.1 nebo novější. Další informace najdete v tématu [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
 
-```azurecli
-az extension add -n storage-or-preview
-```
-
-Potom se přihlaste pomocí přihlašovacích údajů Azure:
+V dalším kroku povolte správu verzí objektů blob na zdrojovém a cílovém účtu úložiště a povolte na zdrojovém účtu kanál změn pomocí příkazu [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) . Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
 ```azurecli
 az login
-```
 
-Povolte na zdrojovém a cílovém účtu úložiště správu verzí objektů BLOB a povolte na zdrojovém účtu kanál změn. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
-
-```azurecli
-az storage blob service-properties update \
+az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
-    --enable-versioning
-
-az storage blob service-properties update \
-    --resource-group <resource-group> \
-    --account-name <source-storage-account> \
+    --enable-versioning \
     --enable-change-feed
 
-az storage blob service-properties update \
+az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <dest-storage-account> \
     --enable-versioning
@@ -196,24 +172,24 @@ Vytvořte zdrojové a cílové kontejnery v příslušných účtech úložišt�
 ```azurecli
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container3 \
+    --name source-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container4 \
+    --name source-container-2 \
     --auth-mode login
 
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container3 \
+    --name dest-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container4 \
+    --name dest-container-1 \
     --auth-mode login
 ```
 
-Vytvořte novou zásadu replikace a související pravidla v cílovém účtu.
+Vytvořte novou zásadu replikace a přidružené pravidlo pro cílový účet voláním [AZ Storage Account nebo-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create).
 
 ```azurecli
 az storage account or-policy create \
@@ -221,33 +197,202 @@ az storage account or-policy create \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
-    --source-container source-container3 \
-    --destination-container dest-container3 \
-    --min-creation-time '2020-05-10T00:00:00Z' \
+    --source-container source-container-1 \
+    --destination-container dest-container-1 \
+    --min-creation-time '2020-09-10T00:00:00Z' \
     --prefix-match a
 
+```
+
+Azure Storage nastaví ID zásad při vytvoření nové zásady. Pokud chcete do zásady přidat další pravidla, zavolejte [pravidlo AZ Storage Account nebo-Policy Add](/cli/azure/storage/account/or-policy/rule#az_storage_account_or_policy_rule_add) a poskytněte ID zásad.
+
+```azurecli
 az storage account or-policy rule add \
     --account-name <dest-storage-account> \
-    --destination-container dest-container4 \
-    --policy-id <policy-id> \
     --resource-group <resource-group> \
-    --source-container source-container4 \
+    --source-container source-container-2 \
+    --destination-container dest-container-2 \
+    --policy-id <policy-id> \
     --prefix-match b
 ```
 
-Vytvořte zásadu na zdrojovém účtu pomocí ID zásad.
+V dalším kroku vytvořte zásadu na zdrojovém účtu pomocí ID zásad.
 
 ```azurecli
 az storage account or-policy show \
     --resource-group <resource-group> \
-    --name <dest-storage-account> \
+    --account-name <dest-storage-account> \
     --policy-id <policy-id> |
-    --az storage account or-policy create --resource-group <resource-group> \
-    --name <source-storage-account> \
+    az storage account or-policy create --resource-group <resource-group> \
+    --account-name <source-storage-account> \
     --policy "@-"
 ```
 
 ---
+
+### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>Konfigurace replikace objektů, když máte přístup jenom k cílovému účtu
+
+Pokud nemáte oprávnění ke zdrojovému účtu úložiště, můžete na cílovém účtu nakonfigurovat replikaci objektů a zadat soubor JSON, který obsahuje definici zásady, a vytvořit tak stejné zásady na zdrojovém účtu. Pokud je například zdrojový účet v jiném tenantovi služby Azure AD z cílového účtu, můžete tento přístup použít ke konfiguraci replikace objektů.
+
+Mějte na paměti, že musíte mít přiřazenou roli **přispěvatele** Azure Resource Manager vymezenou na úrovni cílového účtu úložiště nebo vyšší, aby bylo možné zásadu vytvořit. Další informace najdete v dokumentaci k [předdefinovaným rolím Azure](../../role-based-access-control/built-in-roles.md) v tématu řízení přístupu na základě role Azure (Azure RBAC).
+
+Následující tabulka shrnuje, které hodnoty se mají použít pro ID zásad a ID pravidel v souboru JSON v jednotlivých scénářích.
+
+| Při vytváření souboru JSON pro tento účet... | Nastavit ID zásad na tuto hodnotu | Nastavte ID pravidel na tuto hodnotu. |
+|-|-|-|
+| Cílový účet | Hodnota řetězce je *výchozí*. Azure Storage vytvoří hodnotu ID zásad za vás. | Prázdný řetězec. Azure Storage vytvoří hodnoty ID pravidla za vás. |
+| Zdrojový účet | Hodnota ID zásad vracené při stažení zásady definované v cílovém účtu jako soubor JSON. | Hodnoty identifikátorů pravidel vrácených při stažení zásad definovaných v cílovém účtu jako soubor JSON. |
+
+Následující příklad definuje zásadu replikace v cílovém účtu s jedním pravidlem, které odpovídá předponě *b* , a nastavuje minimální dobu vytváření objektů blob, které se mají replikovat. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```json
+{
+  "properties": {
+    "policyId": "default",
+    "sourceAccount": "<source-account>",
+    "destinationAccount": "<dest-account>",
+    "rules": [
+      {
+        "ruleId": "",
+        "sourceContainer": "<source-container>",
+        "destinationContainer": "<destination-container>",
+        "filters": {
+          "prefixMatch": [
+            "b"
+          ],
+          "minCreationTime": "2020-08-028T00:00:00Z"
+        }
+      }
+    ]
+  }
+}
+```
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Při konfiguraci replikace objektů na cílovém účtu se souborem JSON v Azure Portal postupujte takto:
+
+1. Vytvořte místní soubor JSON, který definuje zásadu replikace v cílovém účtu. Nastavte pole **policyId** na *výchozí* hodnotu, aby Azure Storage definovat ID zásad.
+
+    Snadný způsob, jak vytvořit soubor JSON, který definuje zásadu replikace, je nejdříve vytvořit zásadu pro replikaci testů mezi dvěma účty úložiště v Azure Portal. Pak můžete stáhnout pravidla replikace a podle potřeby upravit soubor JSON.
+
+1. Přejděte do nastavení **replikace objektů** pro cílový účet v Azure Portal.
+1. Vyberte **Odeslat pravidla replikace**.
+1. Nahrajte soubor JSON. Azure Portal zobrazí zásady a pravidla, která budou vytvořena, jak je znázorněno na následujícím obrázku.
+
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Snímek obrazovky ukazující, jak nahrát soubor JSON pro definování zásad replikace":::
+
+1. Vyberte **Odeslat** a vytvořte tak zásadu replikace v cílovém účtu.
+
+Pak můžete stáhnout soubor JSON obsahující definici zásady, kterou můžete zadat jinému uživateli ke konfiguraci zdrojového účtu. Pro stažení tohoto souboru JSON postupujte takto:
+
+1. Přejděte do nastavení **replikace objektů** pro cílový účet v Azure Portal.
+1. Vyberte tlačítko **Další** vedle zásady, kterou chcete stáhnout, a pak vyberte **Stáhnout pravidla**, jak je znázorněno na následujícím obrázku.
+
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak stáhnout pravidla replikace do souboru JSON":::
+
+1. Uložte soubor JSON do místního počítače, abyste ho mohli sdílet s jiným uživatelem a nakonfigurovat zásady na zdrojovém účtu.
+
+Stažený soubor JSON obsahuje ID zásad, které Azure Storage vytvořili pro zásady na cílovém účtu. Ke konfiguraci replikace objektů na zdrojovém účtu musíte použít stejné ID zásad.
+
+Pamatujte, že nahrání souboru JSON pro vytvoření zásad replikace pro cílový účet prostřednictvím Azure Portal nevytvoří automaticky stejné zásady ve zdrojovém účtu. Než Azure Storage začne replikovat objekty, musí na zdrojovém účtu vytvořit zásadu jiného uživatele.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Pokud chcete stáhnout soubor JSON, který obsahuje definici zásad replikace pro cílový účet z PowerShellu, zavolejte příkaz [Get-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/get-azstorageobjectreplicationpolicy) , který vrátí zásady. Pak tuto zásadu převeďte na JSON a uložte ji jako místní soubor, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+
+```powershell
+$rgName = "<resource-group>"
+$destAccountName = "<destination-storage-account>"
+
+$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
+    -StorageAccountName $destAccountName
+$destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
+```
+
+Chcete-li použít soubor JSON k definování zásad replikace ve zdrojovém účtu pomocí prostředí PowerShell, načtěte místní soubor a převeďte jej z formátu JSON na objekt. Pak zavolejte příkaz [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) a nakonfigurujte zásady na zdrojovém účtu, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+
+```powershell
+$object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
+Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName `
+    -PolicyId $object.PolicyId `
+    -SourceAccount $object.SourceAccount `
+    -DestinationAccount $object.DestinationAccount `
+    -Rule $object.Rules
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete vytvořit definici zásady replikace pro cílový účet do souboru JSON z Azure CLI, zavolejte příkaz [AZ Storage Account nebo-Policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) a výstup do souboru.
+
+V následujícím příkladu je zapsána definice zásady do souboru JSON s názvem *policy.jsv*. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+
+```azurecli
+az storage account or-policy show \
+    --account-name <dest-account-name> \
+    --policy-id  <policy-id> > policy.json
+```
+
+Pokud chcete použít soubor JSON ke konfiguraci zásad replikace ve zdrojovém účtu pomocí Azure CLI, zavolejte příkaz [AZ Storage Account nebo-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create) a odkazujte na *policy.jsv* souboru. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+
+```azurecli
+az storage account or-policy create \
+    -resource-group <resource-group> \
+    --source-account <source-account-name> \
+    --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>Zkontroluje stav replikace objektu BLOB.
+
+Stav replikace objektu BLOB ve zdrojovém účtu můžete zjistit pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. Vlastnosti replikace objektu nejsou naplněny, dokud replikace buď není dokončena, nebo se nezdařila.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Chcete-li zjistit stav replikace pro objekt BLOB ve zdrojovém účtu v Azure Portal, postupujte podle následujících kroků:
+
+1. Přejděte ke zdrojovému účtu v Azure Portal.
+1. Vyhledejte kontejner, který obsahuje zdrojový objekt BLOB.
+1. Vyberte objekt blob, pro který chcete zobrazit jeho vlastnosti. Pokud je objekt BLOB úspěšně replikovaný, zobrazí se v části **replikace objektů** , u kterého je stav nastavený na *dokončeno*. V seznamu jsou uvedeny i ID zásad replikace a ID pro replikaci objektů pro tento kontejner.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Snímek obrazovky zobrazující stav replikace pro objekt BLOB ve zdrojovém účtu":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Chcete-li zjistit stav replikace objektu BLOB ve zdrojovém účtu pomocí prostředí PowerShell, Získejte hodnotu vlastnosti **ReplicationStatus** replikace objektů, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete zjistit stav replikace objektu BLOB ve zdrojovém účtu pomocí Azure CLI, Získejte hodnotu vlastnosti **stav** replikace objektu, jak je znázorněno v následujícím příkladu:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
+```
+
+---
+
+Pokud stav replikace objektu BLOB ve zdrojovém účtu indikuje chybu, prozkoumejte následující možné příčiny:
+
+- Ujistěte se, že jsou v cílovém účtu nakonfigurované zásady replikace objektů.
+- Ověřte, zda cílový kontejner stále existuje.
+- Pokud byl zdrojový objekt BLOB v rámci operace zápisu zašifrovaný pomocí klíče poskytnutého zákazníkem, replikace objektu se nezdaří. Další informace o klíčích poskytovaných zákazníkem najdete v tématu [poskytnutí šifrovacího klíče pro požadavek na úložiště objektů BLOB](encryption-customer-provided-keys.md).
 
 ## <a name="remove-a-replication-policy"></a>Odebrat zásadu replikace
 
@@ -258,7 +403,7 @@ Pokud chcete odebrat zásadu replikace a její přidružená pravidla, použijte
 Pokud chcete odebrat zásadu replikace v Azure Portal, postupujte takto:
 
 1. V Azure Portal přejděte do zdrojového účtu úložiště.
-1. V části **Nastavení**vyberte **replikace objektů**.
+1. V části **Nastavení** vyberte **replikace objektů**.
 1. Klikněte na tlačítko **Další** vedle názvu zásady.
 1. Vyberte **Odstranit pravidla**.
 
@@ -284,12 +429,12 @@ Pokud chcete odebrat zásadu replikace, odstraňte zásadu ze zdrojového účtu
 
 ```azurecli
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <source-storage-account> \
     --resource-group <resource-group>
 
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <dest-storage-account> \
     --resource-group <resource-group>
 ```
@@ -298,4 +443,6 @@ az storage account or-policy delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled replikace objektů (Preview)](object-replication-overview.md)
+- [Přehled replikace objektů](object-replication-overview.md)
+- [Povolení a správa verzí objektů BLOB](versioning-enable.md)
+- [Zpracování kanálu změn ve službě Azure Blob Storage](storage-blob-change-feed-how-to.md)

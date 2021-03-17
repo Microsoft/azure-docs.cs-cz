@@ -6,15 +6,15 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2020
-ms.author: metan
-ms.openlocfilehash: ea066fab713100309103a040d309bac5b984fb99
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.author: metang
+ms.openlocfilehash: bb90cb3a86acb6a94fa92c33d78ec596659e105f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486911"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608695"
 ---
 # <a name="how-to-configure-translation"></a>Postup konfigurace překladu
 

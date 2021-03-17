@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4860918fc4f995ad267fc35b142d3fcb460ce177
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171954"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002823"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Upgrade na Azure Search .NET SDK verze 1,1
 
-Pokud používáte verzi 1.0.2-Preview nebo starší [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala verzi 1,1.
+Pokud používáte verzi 1.0.2-Preview nebo starší [Azure Search .NET SDK](/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala verzi 1,1.
 
 Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
@@ -53,9 +54,9 @@ Nakonec, pokud jste opravili chyby sestavení, můžete v aplikaci provádět zm
 Následující seznam je seřazen podle pravděpodobnosti, že změna bude mít vliv na kód aplikace.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch a IndexAction změny
-`IndexBatch.Create`byl přejmenován na `IndexBatch.New` a již nemá `params` argument. Můžete použít `IndexBatch.New` pro dávky, které mají kombinaci různých typů akcí (sloučení, odstranění atd.). Kromě toho existují nové statické metody pro vytváření dávek, kde jsou všechny akce stejné: `Delete` , `Merge` , `MergeOrUpload` a `Upload` .
+`IndexBatch.Create` byl přejmenován na `IndexBatch.New` a již nemá `params` argument. Můžete použít `IndexBatch.New` pro dávky, které mají kombinaci různých typů akcí (sloučení, odstranění atd.). Kromě toho existují nové statické metody pro vytváření dávek, kde jsou všechny akce stejné: `Delete` , `Merge` , `MergeOrUpload` a `Upload` .
 
-`IndexAction`už nemá veřejné konstruktory a jeho vlastnosti jsou teď neměnné. Je vhodné použít nové statické metody pro vytváření akcí pro různé účely: `Delete` , `Merge` , a `MergeOrUpload` `Upload` . `IndexAction.Create`bylo odebráno. Pokud jste použili přetížení, které používá pouze dokument, nezapomeňte `Upload` místo toho použít.
+`IndexAction` už nemá veřejné konstruktory a jeho vlastnosti jsou teď neměnné. Je vhodné použít nové statické metody pro vytváření akcí pro různé účely: `Delete` , `Merge` , a `MergeOrUpload` `Upload` . `IndexAction.Create` bylo odebráno. Pokud jste použili přetížení, které používá pouze dokument, nezapomeňte `Upload` místo toho použít.
 
 #### <a name="example"></a>Příklad
 Pokud váš kód vypadá takto:
@@ -169,7 +170,7 @@ Počínaje verzí 1,1 Azure Search .NET SDK uspořádá metody operací různě:
 
 * Volitelné parametry se nyní modelují jako výchozí parametry, nikoli jako další přetížení metody. Tím se snižuje počet přetížení metod, někdy významně.
 * Rozšiřující metody teď skrývají velké množství cizích podrobností HTTP od volajícího. Například starší verze sady SDK vrátily objekt Response se stavovým kódem HTTP, který často nemusíte kontrolovat, protože operace vyvolají metody operací `CloudException` pro libovolný stavový kód, který označuje chybu. Nové metody rozšíření právě vracejí objekty modelu a ušetří vám tak problémy s jejich rozbalením do kódu.
-* Naopak základní rozhraní teď zveřejňují metody, které poskytují větší kontrolu na úrovni HTTP, pokud je potřebujete. Nyní můžete předat vlastní hlavičky protokolu HTTP, které budou zahrnuty do požadavků, a nový `AzureOperationResponse<T>` návratový typ vám poskytne přímý přístup k `HttpRequestMessage` a `HttpResponseMessage` pro danou operaci. `AzureOperationResponse`je definována v `Microsoft.Rest.Azure` oboru názvů a nahrazuje `Hyak.Common.OperationResponse` .
+* Naopak základní rozhraní teď zveřejňují metody, které poskytují větší kontrolu na úrovni HTTP, pokud je potřebujete. Nyní můžete předat vlastní hlavičky protokolu HTTP, které budou zahrnuty do požadavků, a nový `AzureOperationResponse<T>` návratový typ vám poskytne přímý přístup k `HttpRequestMessage` a `HttpResponseMessage` pro danou operaci. `AzureOperationResponse` je definována v `Microsoft.Rest.Azure` oboru názvů a nahrazuje `Hyak.Common.OperationResponse` .
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters změny
 V nejnovější sadě SDK se přidala nová třída s názvem, která usnadňuje `ScoringParameter` zadání parametrů pro vyhodnocování profilů ve vyhledávacím dotazu. Dříve `ScoringProfiles` `SearchParameters` byla vlastnost třídy zapsána jako `IList<string>` ; Nyní je zapsán jako `IList<ScoringParameter>` .
@@ -199,10 +200,10 @@ sp.ScoringParameters =
 ### <a name="model-class-changes"></a>Změny třídy modelu
 Z důvodu změn signatur popsaných ve [změnách metod operace](#OperationMethodChanges)byl mnoho tříd v `Microsoft.Azure.Search.Models` oboru názvů přejmenováno nebo odebráno. Například:
 
-* `IndexDefinitionResponse`byl nahrazen`AzureOperationResponse<Index>`
+* `IndexDefinitionResponse` byl nahrazen `AzureOperationResponse<Index>`
 * Přejmenování `DocumentSearchResponse` na `DocumentSearchResult`
 * Přejmenování `IndexResult` na `IndexingResult`
-* `Documents.Count()`nyní vrátí `long` s počet dokumentů místo`DocumentCountResponse`
+* `Documents.Count()` nyní vrátí `long` s počet dokumentů místo `DocumentCountResponse`
 * Přejmenování `IndexGetStatisticsResponse` na `IndexGetStatisticsResult`
 * Přejmenování `IndexListResponse` na `IndexListResult`
 
@@ -401,4 +402,3 @@ Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 Z tohoto důvodu doporučujeme, abyste jako osvědčený postup používali typy s možnou hodnotou null v třídách modelu.
 
 Další informace o této chybě a opravě najdete v [tomto problému na GitHubu](https://github.com/Azure/azure-sdk-for-net/issues/1063).
-

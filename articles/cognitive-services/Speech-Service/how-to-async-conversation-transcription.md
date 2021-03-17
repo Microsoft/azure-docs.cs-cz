@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-one
-ms.openlocfilehash: 65a6fd7e0e1e64a459a46c0f97a2afdbc03573a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b2dfa8d474f10d6b4ca1c46ac2b575e8d8407ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284202"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934633"
 ---
 # <a name="asynchronous-conversation-transcription"></a>Asynchronní přepis konverzace
 

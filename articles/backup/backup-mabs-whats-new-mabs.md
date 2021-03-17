@@ -3,12 +3,12 @@ title: Novinky v Microsoft Azure Backup Serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648747"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332759"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Novinky ve Microsoft Azure Backup serveru (MABS)
 
@@ -23,7 +23,7 @@ Microsoft Azure Backup Server (MABS) verze 3 UR1 je nejnovější aktualizace a 
 
 MABS v2 představil [moderní úložiště zálohování](backup-mabs-add-storage.md) (MBS), což zlepšuje využití a výkon úložiště. MB používá jako základní systém souborů ReFS a je navržená tak, aby používala hybridní úložiště, jako třeba vrstvené úložiště.
 
-Aby bylo možné dosáhnout škálování a výkonu pomocí aplikace MBS, doporučujeme, abyste v kombinaci s úložištěm HDD DPM používali malé procento (4% celkového úložiště) úložiště Flash (SSD) s MABS V3 UR1 jako vrstvený svazek. MABS V3 UR1 s vrstveném úložištěm přináší 50-70% rychlejší zálohy. Postup pro konfiguraci vrstveného úložiště najdete v článku o aplikaci DPM nakonfigurovaném [pomocí sady MBS s Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
+Aby bylo možné dosáhnout škálování a výkonu pomocí aplikace MBS, doporučujeme, abyste v kombinaci s úložištěm HDD DPM používali malé procento (4% celkového úložiště) úložiště Flash (SSD) s MABS V3 UR1 jako vrstvený svazek. MABS V3 UR1 s vrstveném úložištěm přináší 50-70% rychlejší zálohy. Postup pro konfiguraci vrstveného úložiště najdete v článku o aplikaci DPM nakonfigurovaném [pomocí sady MBS s Tiered Storage](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage) .
 
 ### <a name="support-for-refs-volumes"></a>Podpora pro svazky ReFS
 
@@ -37,7 +37,7 @@ Pomocí MABS V3 UR1 můžete zálohovat svazky a úlohy ReFS nasazené na svazku
 >[!NOTE]
 > Zálohování virtuálních počítačů Hyper-V uložených na svazku s více instancemi je podporované v MABS v3.
 
->VÝZNAMNÁ Zjistili jsme několik problémů se zálohováním svazků ReFS s odstraněnými duplicitními daty. Pracujeme na jejich opravách a aktualizujeme tuto část, jakmile bude k dispozici oprava. Až pak odebereme podporu pro zálohování svazků ReFS s odstraněnými duplicitními daty z MABSv3 UR1.
+>VÝZNAMNÁ Zjistili jsme několik problémů se zálohováním svazků ReFS s odstraněnými duplicitními daty. Pracujeme na jejich opravě a aktualizujeme tuto část, jakmile bude k dispozici oprava. Až pak odebereme podporu pro zálohování svazků ReFS s odstraněnými duplicitními daty z MABSv3 UR1.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Podpora ochrany řešení Azure VMware
 

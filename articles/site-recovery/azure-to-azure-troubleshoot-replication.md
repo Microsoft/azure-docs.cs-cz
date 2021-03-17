@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007354"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure
 
@@ -28,7 +28,7 @@ Následující části popisují příčiny a řešení.
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>Vysoká četnost změn dat na zdrojovém virtuálním počítači
 
-Azure Site Recovery vytvoří událost, pokud je frekvence změny dat na zdrojovém virtuálním počítači vyšší než podporované limity. Pokud se chcete podívat, jestli se jedná o problémy s vysokou četností, přejděte na **replikované položky**  >  události**virtuálního počítače**  >  **– posledních 72 hodin**.
+Azure Site Recovery vytvoří událost, pokud je frekvence změny dat na zdrojovém virtuálním počítači vyšší než podporované limity. Pokud se chcete podívat, jestli se jedná o problémy s vysokou četností, přejděte na **replikované položky**  >  události **virtuálního počítače**  >  **– posledních 72 hodin**.
 Měla by se zobrazit **rychlost změny dat události nad rámec podporovaných omezení**:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Azure Site Recovery stránka, která zobrazuje vysokou rychlost změny dat, která je příliš vysoká.":::
@@ -54,18 +54,18 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 
 ### <a name="solution"></a>Řešení
 
-Azure Site Recovery má omezení rychlosti změny dat v závislosti na typu disku. Pokud chcete zjistit, jestli je tento problém opakovaný nebo dočasný, najděte rychlost změny dat ovlivněného virtuálního počítače. Přejít na zdrojový virtuální počítač, najít metriky v části **monitorování**a přidat metriky, jak je znázorněno na tomto snímku obrazovky:
+Azure Site Recovery má omezení rychlosti změny dat v závislosti na typu disku. Pokud chcete zjistit, jestli je tento problém opakovaný nebo dočasný, najděte rychlost změny dat ovlivněného virtuálního počítače. Přejít na zdrojový virtuální počítač, najít metriky v části **monitorování** a přidat metriky, jak je znázorněno na tomto snímku obrazovky:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Stránka, která zobrazuje proces tří kroků pro hledání frekvence změny dat.":::
 
-1. Vyberte **Přidat metriku**a přidejte **bajty zapsané na disk s operačním systémem/s** a **zapsáním bajtů datového disku/s**.
+1. Vyberte **Přidat metriku** a přidejte **bajty zapsané na disk s operačním systémem/s** a **zapsáním bajtů datového disku/s**.
 1. Sledujte špičku, jak je znázorněno na snímku obrazovky.
 1. Zobrazuje celkový počet operací zápisu prováděných na discích s operačním systémem a všechny datové disky v kombinaci. Tyto metriky vám nemusí poskytnout informace na úrovni jednotlivých disků, ale označují celkový vzor četnosti změn dat.
 
 Špička v rychlosti změny dat může pocházet z příležitostného nárůstu dat. Pokud je frekvence změny dat větší než 10 MB/s (v případě úrovně Premium) nebo 2 MB/s (u standardu) a nastane nižší, replikace se zachytí. Pokud je četnost změn stále větší než podporovaný limit, vezměte v úvahu jednu z těchto možností:
 
 - Vylučte disk, který způsobuje vysokou rychlost změny dat: nejdřív zakažte replikaci. Pak můžete disk vyloučit pomocí [prostředí PowerShell](azure-to-azure-exclude-disks.md).
-- Změna úrovně úložného disku pro zotavení po havárii: Tato možnost je dostupná jenom v případě, že je četnost změn dat na disku menší než 20 MB/s. Například virtuální počítač s diskem P10 má změny dat větší než 8 MB, ale menší než 10 MB/s. Pokud zákazník může během ochrany použít disk P30 pro cílové úložiště, můžete problém vyřešit. Toto řešení je možné jenom u počítačů, které používají prémiové Managed Disks. Postupujte následovně:
+- Změna úrovně úložného disku pro zotavení po havárii: Tato možnost je dostupná jenom v případě, že je četnost změn dat na disku menší než 20 MB/s. Například virtuální počítač s diskem P10 má změny dat větší než 8 MB, ale menší než 10 MB/s. Pokud zákazník může během ochrany použít disk P30 pro cílové úložiště, můžete problém vyřešit. Toto řešení je možné jenom u počítačů, které používají Premium-Managed disky. Postupujte takto:
 
   1. Přejít na **disky** ovlivněného replikovaného počítače a zkopírovat název disku repliky.
   1. Přejít na tuto repliku spravovaného disku.

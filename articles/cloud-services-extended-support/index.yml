@@ -1,0 +1,87 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Cloud Services (Rozšířená podpora)
+summary: Naučte se používat Cloud Services k hostování a spouštění vysoce dostupných škálovatelných cloudových aplikací a rozhraní API. Ukazuje, jak spravovat hostitele virtuálních počítačů a konfigurovat, opravovat a instalovat software.
+metadata:
+  title: Dokumentace k Azure Cloud Services (Rozšířená podpora)
+  description: Popisuje použití Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API.
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: efbdf689b895278445f022d15473591e09a691f9
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98878727"
+landingContent:
+- title: O Cloud Services (Rozšířená podpora)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Cloud Services (Rozšířená podpora)?
+      url: overview.md
+    - text: Předpoklady pro nasazení
+      url: deploy-prerequisite.md
+    - text: Konfigurační soubory a balíčky
+      url: cloud-services-model-and-package.md
+- title: Kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení pomocí PowerShellu
+      url: deploy-powershell.md
+    - text: Nasazení pomocí webu Azure Portal
+      url: deploy-portal.md
+    - text: Nasazení pomocí šablon ARM
+      url: deploy-template.md
+    - text: Nasazení pomocí sady Visual Studio
+      url: deploy-visual-studio.md
+- title: Koncepty
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dostupné velikosti
+      url: available-sizes.md
+    - text: Nejčastější dotazy
+      url: faq.md
+    - text: Příspěvky k vydání hostovaného operačního systému
+      url: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+- title: Návody
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rozšíření
+      url: extensions.md
+    - text: Povolení upozornění
+      url: enable-alerts.md
+    - text: Konfigurace škálování
+      url: configure-scaling.md
+    - text: Certifikáty
+      url: certificates-and-key-vault.md
+- title: ukázky
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Ukázkové šablony
+      url: https://github.com/Azure-Samples/cloud-services-extended-support
+    - text: Vytvoření nasazení cloudové služby
+      url: sample-create-cloud-service.md
+    - text: Načtení informací o nasazení cloudové služby
+      url: sample-get-cloud-service.md
+    - text: Aktualizace nasazení cloudové služby
+      url: sample-update-cloud-service.md
+    - text: Resetování nasazení cloudové služby
+      url: sample-reset-cloud-service.md
+- title: Informace o schématu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Schéma konfigurace
+      url: schema-cscfg-file.md
+    - text: Schéma definice
+      url: schema-csdef-file.md
+    - text: Schéma role konfigurace
+      url: schema-cscfg-role.md

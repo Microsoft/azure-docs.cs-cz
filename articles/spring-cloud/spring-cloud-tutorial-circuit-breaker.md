@@ -6,15 +6,18 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 13b57a8ef57e1d5f2fe066a9fc8b0b74382f066f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089477"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042840"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Použití řídicího panelu pro dělení na okruhy pomocí Azure jarního cloudu
+
+**Tento článek se týká:** ✔️ Java
+
 Jarní [cloudová Netflix turbína](https://github.com/Netflix/Turbine) se běžně používá k agregaci více datových proudů [hystrix](https://github.com/Netflix/Hystrix) metrik, aby bylo možné datové proudy sledovat v jednom zobrazení pomocí řídicího panelu hystrix. V tomto kurzu se dozvíte, jak je používat v Azure jarním cloudu.
 > [!NOTE]
 > Netflix hystrix se běžně používá v mnoha stávajících jarních cloudových aplikacích, ale už není v aktivním vývoji. Pokud vyvíjíte nový projekt, použijte místo toho implementace přerušení cloudového okruhu, jako je [resilience4j](https://github.com/resilience4j/resilience4j). V rámci tohoto kurzu se liší od turbíny, ale nová architektura pro vypínacích okruhů v cloudovém prostředí sjednocuje všechny implementace kanálu dat metrik do mikroměřiče. Pořád pracujeme na podpoře mikroměřiče v Azure jaře cloudu, takže se tento kurz nezabývá.
@@ -38,14 +41,14 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>Zřízení instance Azure jaře cloudu
-Použijte postup a v [Azure CLI zřiďte instanci služby](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli).
+Použijte postup a v [Azure CLI zřiďte instanci služby](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud).
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Nasazení vašich aplikací do jarního cloudu Azure
 Tyto aplikace nepoužívají **konfigurační server**, takže není nutné nastavovat **konfigurační server** pro jarní cloud Azure.  Vytvořte a nasaďte následujícím způsobem:
 ```azurecli
-az spring-cloud app create -n user-service --is-public
+az spring-cloud app create -n user-service --assign-endpoint
 az spring-cloud app create -n recommendation-service
-az spring-cloud app create -n hystrix-turbine --is-public
+az spring-cloud app create -n hystrix-turbine --assign-endpoint
 
 az spring-cloud app deploy -n user-service --jar-path user-service/target/user-service.jar
 az spring-cloud app deploy -n recommendation-service --jar-path recommendation-service/target/recommendation-service.jar
@@ -71,12 +74,13 @@ Do textového pole zkopírujte adresu URL datového proudu turbíny `https://<SE
 > V produkčním prostředí by se řídicí panel hystrix a datový proud metrik neměl zveřejnit na internetu.
 
 ### <a name="using-private-test-endpoints"></a>Používání privátních koncových bodů testu
-Datové proudy metrik hystrix jsou také přístupné z `test-endpoint` . Jako back-end služba jsme nepřiřadili veřejný koncový bod pro `recommendation-service` , ale můžeme zobrazit své metriky pomocí testovacího koncového bodu na adrese`https://primary:<KEY>@<SERVICE-NAME>.test.azuremicroservices.io/recommendation-service/default/actuator/hystrix.stream`
+Datové proudy metrik hystrix jsou také přístupné z `test-endpoint` . Jako back-end služba jsme nepřiřadili veřejný koncový bod pro `recommendation-service` , ale můžeme zobrazit své metriky pomocí testovacího koncového bodu na adrese `https://primary:<KEY>@<SERVICE-NAME>.test.azuremicroservices.io/recommendation-service/default/actuator/hystrix.stream`
 
 ![Datový proud hystrix testovacího koncového bodu](media/spring-cloud-circuit-breaker/hystrix-test-endpoint-stream.png)
 
 Jako webová aplikace by měl řídicí panel hystrix pracovat `test-endpoint` . Pokud nefunguje správně, může dojít k dvěma důvodům: první, při použití `test-endpoint` změny základní adresy URL z `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` , nebo za sekundu používá webová aplikace absolutní cestu pro statický prostředek. Chcete-li ho využít `test-endpoint` , budete možná muset ručně upravit <base> v front-endové soubory.
 
 ## <a name="next-steps"></a>Další kroky
-* [Zřízení instance služby v Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Zřízení instance služby v Azure CLI](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](./spring-cloud-tutorial-prepare-app-deployment.md)
+

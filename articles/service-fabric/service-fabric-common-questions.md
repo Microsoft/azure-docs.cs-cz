@@ -4,12 +4,12 @@ description: Nejčastější dotazy týkající se Service Fabric, včetně mož
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4e03ccf432852a5fc9ee700ba0e39dfe2e64fcc9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292853"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456092"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
 
@@ -22,13 +22,13 @@ Existuje mnoho nejčastějších otázek, které Service Fabric můžou dělat a
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Návody vrátit Service Fabric certifikát clusteru?
 
-Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](./service-fabric-application-upgrade.md?branch=master) aplikuje [parametry upgradu aplikace](./service-fabric-application-upgrade-parameters.md?branch=master)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
+Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](./service-fabric-application-upgrade.md) aplikuje [parametry upgradu aplikace](./service-fabric-application-upgrade-parameters.md)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
  
 Pokud váš cluster stále využívá vlastnost s klasickým kryptografickým otiskem certifikátu v šabloně Správce prostředků, doporučujeme [změnit cluster z kryptografického otisku certifikátu na běžný název](./service-fabric-cluster-change-cert-thumbprint-to-cn.md), abyste využili moderní funkce pro správu tajných kódů.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Můžu vytvořit cluster, který zahrnuje několik oblastí Azure nebo vlastní datová centra?
 
-Yes. 
+Ano. 
 
 Technologie clusteringu na základní Service Fabric se dá použít ke kombinování počítačů běžících kdekoli na světě, pokud mají navzájem připojení k síti. Sestavení a spuštění takového clusteru ale může být složité.
 
@@ -94,10 +94,10 @@ Pokud chcete vytvořit clustery pro testování aplikace před jejím nasazením
 V současné době pracujeme na vylepšeném prostředí, ale zodpovídáte za upgrade. Bitovou kopii operačního systému musíte upgradovat na virtuálních počítačích clusteru na jednom virtuálním počítači v daném okamžiku. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžu šifrovat připojené datové disky v typu uzlu clusteru (sada škálování virtuálního počítače)?
-Yes.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) a [Azure Disk Encryption pro Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
+Ano.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) a [Azure Disk Encryption pro Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Je možné použít virtuální počítače s nízkou prioritou v typu uzlu clusteru (sada škálování virtuálního počítače)?
-Ne. Virtuální počítače s nízkou prioritou se nepodporují. 
+No. Virtuální počítače s nízkou prioritou se nepodporují. 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Jaké jsou adresáře a procesy, které je potřeba vyloučit při spuštění antivirového programu v mém clusteru?
 

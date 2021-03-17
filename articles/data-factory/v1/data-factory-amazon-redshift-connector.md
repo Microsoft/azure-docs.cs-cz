@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z Amazon RedShift pomocí Azure Data Factory
 description: Přečtěte si, jak přesunout data z Amazon RedShift pomocí aktivity kopírování Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710146"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377546"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,7 +54,7 @@ Následující části popisují vlastnosti JSON, které se používají k defin
 
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Amazon RedShift.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | **textový** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Yes |
 | **WebServer** |IP adresa nebo název hostitele serveru Amazon RedShift. |Yes |
@@ -70,11 +65,11 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Sekce **Struktura**, **dostupnost**a **zásady** jsou podobné pro všechny typy datových sad. Mezi typy datových sad patří Azure SQL, Azure Blob Storage a Azure Table Storage.
+Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Sekce **Struktura**, **dostupnost** a **zásady** jsou podobné pro všechny typy datových sad. Mezi typy datových sad patří Azure SQL, Azure Blob Storage a Azure Table Storage.
 
-Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat ve Storu. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu Amazon RedShift, má následující vlastnosti:
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat ve Storu. Oddíl **typeProperties** pro datovou sadu **relačních** typů, která zahrnuje datovou sadu Amazon RedShift, má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | **tableName** |Název tabulky v databázi Amazon RedShift, na kterou odkazuje propojená služba |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
 
@@ -84,7 +79,7 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit,
 
 V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**, jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | **zadávání** | K načtení dat použijte vlastní dotaz. |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 | **redshiftUnloadSettings** | Obsahuje skupinu vlastností při použití příkazu RedShift **Unload** . | No |
@@ -93,7 +88,7 @@ V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**,
 
 Alternativně můžete použít typ **RelationalSource** , který zahrnuje Amazon RedShift, s následující vlastností v oddílu **typeProperties** . Poznámka: Tento typ zdroje nepodporuje příkaz RedShift **Unload** .
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | **zadávání** |K načtení dat použijte vlastní dotaz. | Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
@@ -101,13 +96,13 @@ Alternativně můžete použít typ **RelationalSource** , který zahrnuje Amazo
 
 [**Příkaz Amazon RedShift Unload uvolní**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) výsledky dotazu do jednoho nebo více souborů v Amazon S3. Tento příkaz doporučuje Amazon pro kopírování velkých datových sad z RedShift.
 
-**Příklad: kopírování dat z Amazon RedShift do Azure SQL Data Warehouse**
+**Příklad: kopírování dat z Amazon RedShift do Azure synapse Analytics**
 
-Tento příklad kopíruje data z Amazon RedShift do Azure SQL Data Warehouse. V příkladu se používá příkaz RedShift **Unload** , připravené kopírování dat a Microsoft – základ.
+Tento příklad kopíruje data z Amazon RedShift do Azure synapse Analytics. V příkladu se používá příkaz RedShift **Unload** , připravené kopírování dat a Microsoft – základ.
 
-U tohoto ukázkového případu aktivita kopírování nejprve uvolní data z Amazon RedShift do Amazon S3, jak je nakonfigurované v možnosti **redshiftUnloadSettings** . V dalším kroku se data zkopírují z Amazon S3 do úložiště objektů BLOB v Azure, jak je zadané v možnosti **stagingSettings** . A nakonec základ načte data do SQL Data Warehouse. Všechny dočasné formáty jsou zpracovávány aktivitou kopírování.
+U tohoto ukázkového případu aktivita kopírování nejprve uvolní data z Amazon RedShift do Amazon S3, jak je nakonfigurované v možnosti  **redshiftUnloadSettings** . V dalším kroku se data zkopírují z Amazon S3 do úložiště objektů BLOB v Azure, jak je zadané v možnosti **stagingSettings** . Nakonec základ načte data do služby Azure synapse Analytics. Všechny dočasné formáty jsou zpracovávány aktivitou kopírování.
 
-![Kopírovat pracovní postup z Amazon RedShift do SQL Data Warehouse](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Kopírování pracovního postupu z Amazon RedShift do Azure synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -332,14 +327,14 @@ Následující mapování se používají, když aktivita kopírování převede
 | SMALLINT |Int16 |
 | CELÉ ČÍSLO |Int32 |
 | BIGINT |Int64 |
-| NOTACI |Desetinné číslo |
-| REÁLNÉ |Jeden |
-| DVOJITÁ PŘESNOST |Double |
+| NOTACI |Decimal |
+| REÁLNÉ |Jednoduché |
+| DVOJITÁ PŘESNOST |dvojité |
 | DATOVÉHO |Řetězec |
 | CHAR |Řetězec |
 | VARCHAR |Řetězec |
-| DATE (Datum) |DateTime |
-| ČASOVÉ razítko |DateTime |
+| DATE |DateTime |
+| ČASOVÉ RAZÍTKO |DateTime |
 | TEXT |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky

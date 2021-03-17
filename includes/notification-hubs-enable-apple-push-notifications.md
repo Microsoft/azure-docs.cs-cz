@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5034f2163e8478d7ddb7b9271402b094a809d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81007863"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559601"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
 
@@ -23,18 +23,18 @@ Vygenerujte soubor žádosti o podepsání certifikátu (CSR), který Apple pou�
 
 1. V Macu spusťte nástroj Keychain Access. Dá se otevřít ze složky **nástrojů** nebo **jiné** složky na hlavní straně.
 
-1. Vyberte možnost **přístup do řetězce klíčů**, rozbalte **Pomocníka s certifikátem**a pak vyberte **požádat o certifikát od certifikační autority**.
+1. Vyberte možnost **přístup do řetězce klíčů**, rozbalte **Pomocníka s certifikátem** a pak vyberte **požádat o certifikát od certifikační autority**.
 
     ![Použití nástroje Keychain Access k vyžádání nového certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
    > [!NOTE]
    > Ve výchozím nastavení přístup k řetězci klíčů vybere první položku v seznamu. To může být problém, pokud jste v kategorii **certifikáty** a pokud je **certifikační autorita pro vývojáře od společnosti Apple celosvětová** , nejedná se o první položku v seznamu. Ujistěte se, že máte neklíčovou položku, a před vygenerováním CSR (žádost o podepsání certifikátu) je vybraná možnost klíč **certifikační autority Apple celosvětově Developer Relations** .
 
-1. Vyberte svou **e-mailovou adresu uživatele**, zadejte hodnotu pro **běžný název** , ujistěte se, že jste zadali možnost **uloženo na disk**a pak vyberte **pokračovat**. Ponechte **e-mailovou adresu CA** prázdnou, protože není potřeba.
+1. Vyberte svou **e-mailovou adresu uživatele**, zadejte hodnotu pro **běžný název** , ujistěte se, že jste zadali možnost **uloženo na disk** a pak vyberte **pokračovat**. Ponechte **e-mailovou adresu CA** prázdnou, protože není potřeba.
 
     ![Požadované informace o certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-1. Do pole **Uložit jako**zadejte název souboru CSR, vyberte umístění, **kde**se nachází, a pak vyberte **Uložit**.
+1. Do pole **Uložit jako** zadejte název souboru CSR, vyberte umístění, **kde** se nachází, a pak vyberte **Uložit**.
 
     ![Vyberte název souboru certifikátu.](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
@@ -66,21 +66,21 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, Zaregistrujte 
 
       ![Formulář pro registraci nového ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-push.png)
 
-      Tato akce vygeneruje vaše ID aplikace a žádosti o potvrzení informací. Vyberte **pokračovat**a pak vyberte **zaregistrovat** a potvrďte nové ID aplikace.
+      Tato akce vygeneruje vaše ID aplikace a žádosti o potvrzení informací. Vyberte **pokračovat** a pak vyberte **zaregistrovat** a potvrďte nové ID aplikace.
 
       ![Potvrdit nové ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
 
-      Po výběru položky **zaregistrovat**se na stránce **certifikáty, identifikátory & profily** zobrazí nové ID aplikace jako položka řádku.
+      Po výběru položky **zaregistrovat** se na stránce **certifikáty, identifikátory & profily** zobrazí nové ID aplikace jako položka řádku.
 
-4. Na stránce **certifikáty, identifikátory & profily** v části **identifikátory**Najděte položku řádku ID aplikace, kterou jste právě vytvořili, a výběrem jejího řádku zobrazte obrazovku pro **úpravu konfigurace ID aplikace** .
+4. Na stránce **certifikáty, identifikátory & profily** v části **identifikátory** Najděte položku řádku ID aplikace, kterou jste právě vytvořili, a výběrem jejího řádku zobrazte obrazovku pro **úpravu konfigurace ID aplikace** .
 
 ## <a name="creating-a-certificate-for-notification-hubs"></a>Vytváření certifikátu pro Notification Hubs
 K tomu, aby Centrum oznámení fungovalo s **APNs**, se vyžaduje certifikát. To lze provést jedním ze dvou způsobů:
 
 1. Vytvořte **. p12** , který se dá nahrát přímo do centra oznámení.  
-2. Vytvořte soubor **. P8** , který se dá použít pro [ověřování založené na tokenech](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) (*novější přístup*).
+2. Vytvořte soubor **. P8** , který se dá použít pro [ověřování založené na tokenech](../articles/notification-hubs/notification-hubs-push-notification-http2-token-authentication.md) (*novější přístup*).
 
-Novější přístup má řadu výhod (ve srovnání s používáním certifikátů), jak je popsáno v [ověřování na základě tokenu (http/2) pro služby APN](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification). Nicméně byly k dispozici kroky pro oba přístupy. 
+Novější přístup má řadu výhod (ve srovnání s používáním certifikátů), jak je popsáno v [ověřování na základě tokenu (http/2) pro služby APN](../articles/notification-hubs/notification-hubs-push-notification-http2-token-authentication.md). Nicméně byly k dispozici kroky pro oba přístupy. 
 
 ### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>MOŽNOST 1: vytvoření nabízeného certifikátu. p12, který se dá nahrát přímo do centra oznámení.
 
@@ -95,7 +95,7 @@ Novější přístup má řadu výhod (ve srovnání s používáním certifiká
     Zobrazí se obrazovka **vytvořit nový certifikát** .
 
     > [!NOTE]
-    > Tento kurz používá vývojový certifikát. Stejný postup se používá při registraci produkčního certifikátu. Dejte pozor, abyste při odesílání oznámení používali stejný typ certifikátu.
+    > V tomto kurzu se používá vývojový certifikát, který vaše aplikace používá k vygenerování jedinečného tokenu zařízení. Stejný postup se používá při registraci produkčního certifikátu. Dejte pozor, abyste při odesílání oznámení používali stejný typ certifikátu.
 
 3. Vyberte **zvolit soubor**, přejděte do umístění, kam jste ULOŽILI soubor CSR z prvního úkolu, a potom dvakrát klikněte na název certifikátu a načtěte ho. Potom vyberte **Pokračovat**.
 
@@ -136,16 +136,16 @@ Novější přístup má řadu výhod (ve srovnání s používáním certifiká
 2. Zpět v **certifikátech, identifikátory & profily**, klikněte na **klíče**.
 
    > [!NOTE]
-   > Pokud už máte ke službě **APN**nakonfigurovaný klíč, můžete znovu použít certifikát. P8, který jste stáhli hned po jeho vytvoření. Pokud ano, můžete ignorovat kroky **3** až **5**.
+   > Pokud už máte ke službě **APN** nakonfigurovaný klíč, můžete znovu použít certifikát. P8, který jste stáhli hned po jeho vytvoření. Pokud ano, můžete ignorovat kroky **3** až **5**.
 
 3. Kliknutím na **+** tlačítko (nebo na tlačítko **vytvořit klíč** ) vytvoříte nový klíč.
-4. Zadejte vhodnou hodnotu **názvu klíče** , potom zaškrtněte možnost **Služba APNs (Apple Push Notification Service)** a potom klikněte na tlačítko **pokračovat**a potom na další obrazovku **Zaregistrujte** .
+4. Zadejte vhodnou hodnotu **názvu klíče** , potom zaškrtněte možnost **Služba APNs (Apple Push Notification Service)** a potom klikněte na tlačítko **pokračovat** a potom na další obrazovku **Zaregistrujte** .
 5. Klikněte na **Stáhnout** a pak přesuňte soubor **. P8** (s předponou *AuthKey_*) do zabezpečeného místního adresáře a pak klikněte na **Hotovo**.
 
    > [!NOTE] 
    > Nezapomeňte soubor. P8 udržovat na bezpečném místě (a uložte zálohu). Po stažení se klíč nedá znovu stáhnout, protože se odebere kopie serveru.
   
-6. V části **klíče**klikněte na klíč, který jste právě vytvořili (nebo vyberte existující klíč, pokud jste se místo toho rozhodli použít).
+6. V části **klíče** klikněte na klíč, který jste právě vytvořili (nebo vyberte existující klíč, pokud jste se místo toho rozhodli použít).
 7. Poznamenejte si hodnotu **ID klíče** .
 8. Otevřete svůj certifikát. P8 ve vhodné aplikaci, například [**Visual Studio Code**](https://code.visualstudio.com) pak si poznamenejte hodnotu klíče. Jedná se o hodnotu v rozsahu **-----zahájit-----privátního klíče** a **-----KONCOVým-----privátního klíče** .
 
@@ -192,7 +192,7 @@ Na konci těchto kroků byste měli mít následující informace pro pozdějš�
 
 1. Potom vyberte zařízení, která chcete použít pro testování, a vyberte **pokračovat**.
 
-1. Nakonec zvolte název profilu v **názvu zřizovacího profilu**a vyberte **Generovat**.
+1. Nakonec zvolte název profilu v **názvu zřizovacího profilu** a vyberte **Generovat**.
 
     ![Volba názvu zřizovacího profilu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
@@ -208,10 +208,10 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurace centra oznámení pomocí informací APNs
 
-V části **Notification Services**vyberte **Apple (APNs)** a pak postupujte podle příslušných kroků na základě postupu, který jste zvolili dříve v části [Vytvoření certifikátu pro Notification Hubs](#creating-a-certificate-for-notification-hubs) .  
+V části **Notification Services** vyberte **Apple (APNs)** a pak postupujte podle příslušných kroků na základě postupu, který jste zvolili dříve v části [Vytvoření certifikátu pro Notification Hubs](#creating-a-certificate-for-notification-hubs) .  
 
 > [!NOTE]
-> Pro **režim aplikace** použijte **pouze v případě, že chcete** odesílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci ze Storu.
+> Pokud sestavíte aplikaci pomocí App Storu nebo distribučního profilu ad hoc, použijte režim **produkčního** prostředí pro **aplikaci**. To umožní vašemu zařízení odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu.
 
 ### <a name="option-1-using-a-p12-push-certificate"></a>MOŽNOST 1: použití nabízeného certifikátu. P12
 

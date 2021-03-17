@@ -1,9 +1,9 @@
 - name: Dokumentace k rozpoznávání mluvčího
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: Přehled
   items:
     - name: Další informace o rozpoznávání mluvčího
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: Referenční informace
   items:
     - name: Referenční materiály k rozhraní API

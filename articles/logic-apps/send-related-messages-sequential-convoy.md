@@ -7,10 +7,10 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87048655"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Odeslání souvisejících zpráv v pořadí pomocí sekvenčního convoyu v Azure Logic Apps s Azure Service Bus
@@ -31,7 +31,7 @@ Chcete-li zkontrolovat soubor JSON této šablony, přečtěte si [GitHub: servi
 
 Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu cloudu architektury Azure](/azure/architecture/patterns/sequential-convoy).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -47,7 +47,7 @@ Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu c
 
 Pokud si nejste jistí, jestli má aplikace logiky oprávnění pro přístup k vašemu oboru názvů Service Bus, potvrďte tato oprávnění.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
 
 1. V nabídce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271718"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89393815"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
 
@@ -98,7 +98,7 @@ Vydavatel může také odeslat tabulku s cenami do dočasného umístění úlo�
 
 ## <a name="new-core-sizes-added-on-722019"></a>Nové základní velikosti přidané v 7/2/2019
 
-Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o přidání nových cen pro nové velikosti virtuálních počítačů Azure (na základě počtu jader).  Nové ceny jsou pro základní velikosti 10, 44, 48, 60, 120, 208 a 416.  Pro existující virtuální počítač se automaticky vypočítaly nové ceny pro tyto velikosti jader na základě aktuálních cen.  Vydavatelé mají od 1. srpna 2019 kontrolu nad dalšími cenami a provádět požadované změny.  Po tomto datu se projeví automaticky vypočtené ceny pro tyto nové základní velikosti, pokud už je Vydavatel znovu Nepublikovaná.
+Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o přidání nových cen pro nové velikosti virtuálních počítačů Azure (na základě počtu jader).  Nové ceny jsou pro základní velikosti 10, 44, 48, 60, 120, 208 a 416.  Pro existující virtuální počítač se automaticky vypočítaly nové ceny pro tyto velikosti jader na základě aktuálních cen. Vydavatelé mají od 1. srpna 2019 kontrolu nad dalšími cenami a provádět požadované změny.  Po tomto datu se projeví automaticky vypočtené ceny pro tyto nové základní velikosti, pokud už je Vydavatel znovu Nepublikovaná.
 
 ## <a name="regions"></a>Oblasti
 
@@ -121,7 +121,7 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | CR         | Kostarika           | KONTROLNÍ               |
 | HR         | Chorvatsko              | HRK               |
 | CY         | Kypr               | EUR               |
-| CZ         | Česká republika       | CZK               |
+| CZ         | Czechia       | CZK               |
 | DK         | Dánsko              | DKK               |
 | DO         | Dominikánská republika   | USD               |
 | EC         | Ekvádor              | USD               |
@@ -151,7 +151,6 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | LI         | Lichtenštejnsko        | CHF               |
 | LT         | Litva            | EUR               |
 | LU         | Lucembursko           | EUR               |
-| MK         | Severní Makedonie      | MKD               |
 | MY         | Malajsie             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |
@@ -160,6 +159,7 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | NL         | Nizozemsko          | EUR               |
 | NZ         | Nový Zéland          | NZD               |
 | NG         | Nigérie              | NGN               |
+| MK         | Severní Makedonie      | MKD               |
 | NO         | Norsko               | NOK               |
 | OM         | Omán                 | OMR               |
 | PK         | Pákistán             | PKR               |

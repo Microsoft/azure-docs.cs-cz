@@ -3,16 +3,17 @@ title: Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním
 description: Jak pomocí Cloud-init nakonfigurovat odkládací oddíl na virtuálním počítači Linux během vytváření pomocí Azure CLI
 author: rickstercdn
 manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1f8746e67ba712ac4c2c3e832fcb5ffefb170d59
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9f4adc4e1e980db2af4fcc20b3a4492309c89f3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371936"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559371"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
 V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat odkládací oddíl u různých distribucí systému Linux. Odkládací oddíl byl tradičně nakonfigurovaný agentem pro Linux (WALA) na základě toho, která distribuce je vyžaduje.  Tento dokument vám pomůže sestavovat proces vytváření swapového oddílu na vyžádání během doby zřízení pomocí Cloud-init.  Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .

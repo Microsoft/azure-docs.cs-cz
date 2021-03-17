@@ -2,31 +2,33 @@
 title: Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 description: Přečtěte si, jak Azure Cosmos DB poskytuje šifrování neaktivních dat a jejich implementaci.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119265"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455582"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, i když není odborník na zabezpečení a integruje se se systémy centrálního monitorování zabezpečení.
 
-Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
+Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do  [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
 
 > [!NOTE]
 >
 > * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB je aktuálně dostupná jenom pro rozhraní SQL API.
 > * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-V případě úplného šetření výstrah zabezpečení doporučujeme povolit [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging), které zapisuje operace do samotné databáze, včetně operací CRUD na všech dokumentech, kontejnerech a databázích.
+V případě úplného šetření výstrah zabezpečení doporučujeme povolit [protokolování diagnostiky v Azure Cosmos DB](./monitor-cosmos-db.md), které zapisuje operace do samotné databáze, včetně operací CRUD na všech dokumentech, kontejnerech a databázích.
 
 ## <a name="threat-types"></a>Typy hrozeb
 
@@ -44,7 +46,7 @@ Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovo
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/) .
+1. Spusťte Azure Portal v  [https://portal.azure.com](https://portal.azure.com/) .
 
 2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení**.
 
@@ -59,16 +61,16 @@ Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovo
 
 Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení rozšířené ochrany před internetovými útoky pro určitý účet Azure Cosmos DB.
 
-* [Rozšířená ochrana před internetovými útoky – vytvořit](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [Rozšířená ochrana před internetovými útoky – získání](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [Rozšířená ochrana před internetovými útoky – vytvořit](/rest/api/securitycenter/advancedthreatprotection/create)
+* [Rozšířená ochrana před internetovými útoky – získání](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 
-* [Povolení Rozšířené ochrany před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [Získat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [Zakázat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [Povolení Rozšířené ochrany před internetovými útoky](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Získat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Zakázat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ### <a name="arm-template"></a>[Šablona ARM](#tab/arm-template)
 
@@ -112,9 +114,9 @@ E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými 
 
 ## <a name="cosmos-db-atp-alerts"></a>Výstrahy ATP Cosmos DB
 
- Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) v dokumentaci k Azure Security Center.
+ Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](../security-center/alerts-reference.md#alerts-azurecosmos) v dokumentaci k Azure Security Center.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [protokolování diagnostiky v Azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)

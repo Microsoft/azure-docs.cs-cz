@@ -3,12 +3,12 @@ title: Event Hubs Azure – procesní události Apache Kafka
 description: 'Kurz: v tomto článku se dozvíte, jak zpracovávat události Kafka, které se ingestují prostřednictvím centra událostí pomocí Azure Stream Analytics'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074912"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319382"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
 Tento článek ukazuje, jak streamovat data do Event Hubs a zpracovávat je pomocí Azure Stream Analytics. Provede vás následujícími kroky: 
@@ -25,7 +25,7 @@ Pokud používáte koncový bod Kafka vystavený centrem událostí, nemusíte m
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv Maven.
 * [Git](https://www.git-scm.com/)
 * **Účet Azure Storage**. Pokud ho ještě nemáte, [vytvořte ho](../storage/common/storage-account-create.md) ještě předtím, než budete pokračovat. Úloha Stream Analytics v tomto návodu ukládá výstupní data do úložiště objektů BLOB v Azure. 
@@ -63,7 +63,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
     ```
 
     Tento kód odesílá data události ve formátu **JSON** . Když nakonfigurujete vstup pro Stream Analytics úlohu, jako formát vstupních dat zadáte JSON. 
-7. **Spusťte producenta** a stream do Event Hubs. V počítači s Windows při použití **příkazového řádkuNode.js**přepněte do `azure-event-hubs-for-kafka/quickstart/java/producer` složky před spuštěním těchto příkazů. 
+7. **Spusťte producenta** a stream do Event Hubs. V počítači s Windows při použití ** příkazového řádkuNode.js**přepněte do `azure-event-hubs-for-kafka/quickstart/java/producer` složky před spuštěním těchto příkazů. 
    
     ```shell
     mvn clean package
@@ -136,7 +136,7 @@ Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího dato
 3. Nahraďte `[YourInputAlias]` vstupním aliasem, který jste vytvořili dříve. 
 4. Na panelu nástrojů vyberte **Uložit**. 
 
-    ![Dotaz](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Snímek obrazovky znázorňuje okno dotazu s hodnotami pro vstupní a výstupní proměnné.](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
@@ -171,4 +171,4 @@ Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího dato
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak se streamovat do Event Hubs bez změny klientů protokolu nebo spouštění vlastních clusterů. Další informace o Event Hubs pro Apache Kafka najdete v tématu [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md). 
+V tomto článku jste zjistili, jak se streamovat do Event Hubs bez změny klientů protokolu nebo spouštění vlastních clusterů. Další informace o Event Hubs pro Apache Kafka najdete v tématu [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md).

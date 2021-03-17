@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 87504625c298c4fb858ff90430d707081e87cd5a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896321"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Nastavení průběžného nasazování s využitím Chocolatey
 
@@ -213,5 +213,5 @@ Od tohoto okamžiku se nachází na virtuálních počítačích, které na tét
 - Přehled najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
 - Pokud chcete začít používat tuto funkci, přečtěte si téma Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).

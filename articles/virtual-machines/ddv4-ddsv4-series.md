@@ -6,19 +6,19 @@ ms.author: brbell
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: feabdcef9298c93f0cba93d3eeb9ebb0a32d6ef2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649903"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560340"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Řada Ddv4 a Ddsv4
 
-Ddv4 a Ddsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a poskytují lepší polohu pro většinu úloh pro obecné účely. Nabízí trvalou veškerou rychlost Turbo, 3,4 GHz, [Intel Turbo Production &reg; Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [ &reg; rozšíření Intel Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Podporují taky [ &reg; zvýšení úrovně Intel s hloubkovým učením](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Tyto nové velikosti virtuálních počítačů budou mít 50% větší místní úložiště a také lepší počet vstupně-výstupních operací pro čtení i zápis ve srovnání s [Dv3/Dsv3mi](./dv3-dsv3-series.md) [virtuálními počítači Gen2](./linux/generation-2.md).
+Ddv4 a Ddsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a poskytují lepší polohu pro většinu úloh pro obecné účely. Funguje na všech základních rychlostech Turbo 3,4 GHz, [Intel &reg; Turbo zvyšovat technologii 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Podporují taky [ &reg; zvýšení úrovně Intel s hloubkovým učením](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Tyto nové velikosti virtuálních počítačů budou mít 50% větší místní úložiště a také lepší počet vstupně-výstupních operací pro čtení i zápis ve srovnání s [Dv3/Dsv3mi](./dv3-dsv3-series.md) [virtuálními počítači Gen2](./generation-2.md).
 
 Mezi případy použití řady D-Series patří aplikace na podnikové úrovni, relační databáze, ukládání do mezipaměti v paměti a analýzy.
 
@@ -28,17 +28,17 @@ Velikosti řady Ddv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (C
 
 Nové velikosti virtuálních počítačů Ddv4 zahrnují rychlé, větší místní úložiště SSD (až 2 400 GiB) a jsou navržené pro aplikace, které využívají nízkou latenci, vysokorychlostní místní úložiště, jako jsou třeba aplikace, které vyžadují rychlé čtení a zápisy do dočasného úložiště nebo které vyžadují dočasné úložiště pro ukládání do mezipaměti nebo dočasné soubory. K virtuálním počítačům s Ddv4 můžete připojit standardní úložiště HDD a standardní SSD. Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
 
-ACU: 195-210
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): nepodporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+<br> 
 
-Premium Storage: nepodporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | <sup>**</sup> Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
@@ -47,6 +47,8 @@ Aktualizace pro zachování paměti: podporováno
 | Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308000/1936 | 8|16000 |
 | Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8|24000 |
 | Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615000/3872 | 8|30000 |
+
+<sup>**</sup>Tyto hodnoty IOPs se dají zaručit pomocí [virtuálních počítačů s Gen2](generation-2.md) .
 
 ## <a name="ddsv4-series"></a>Ddsv4-Series
 
@@ -57,17 +59,17 @@ Nové velikosti virtuálních počítačů Ddsv4 zahrnují rychlé, větší mí
  > [!NOTE]
  >Měřiče cen a účtování pro velikosti Ddsv4 jsou stejné jako pro Ddv4-Series.
 
-ACU: 195-210
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+<br> 
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | <sup>**</sup> Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3200/48 | 2|1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2|2000 |
@@ -77,6 +79,8 @@ Aktualizace pro zachování paměti: podporováno
 | Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904 (1200) | 76800/1152 | 8|24000 |
 | Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615000/3872 (1600) | 80000/1200 | 8|30000 |
 
+<sup>**</sup>Tyto hodnoty IOPs se dají zaručit pomocí [virtuálních počítačů s Gen2](generation-2.md) .
+
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes-and-information"></a>Další velikosti a informace
@@ -84,7 +88,7 @@ Aktualizace pro zachování paměti: podporováno
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

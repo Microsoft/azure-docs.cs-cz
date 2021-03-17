@@ -1,19 +1,16 @@
 ---
 title: Apache Storm s komponentami Pythonu – Azure HDInsight
 description: Naučte se vytvářet Apache Storm topologii, která používá komponenty Pythonu ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872578"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928985"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj Apache Storm topologií pomocí Pythonu ve službě HDInsight
 
@@ -30,7 +27,7 @@ Naučte se vytvářet [Apache Storm](https://storm.apache.org/) topologii, kter�
 
 * [Python 2,7 nebo vyšší](https://www.python.org/downloads/).
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 

@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: ee6b6c29c89c39c72144371af8268760da843170
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8f5a8aa2b949ddd07208cac054147596512f783f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374665"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213628"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md)
-> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 >
   > [!NOTE]
@@ -29,7 +29,7 @@ Než začnete:
 Aktualizujte soubor. mod nejnovější verzí sady SDK přidáním tohoto řádku.
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.15.0
 )
 ```
 
@@ -108,7 +108,7 @@ func main() {
    > Přečtěte si [seznam podporovaných oblastí pro hlasové asistenty](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) a zajistěte, aby byly prostředky nasazeny v jedné z těchto oblastí.
 
    > [!NOTE]
-   > Informace o konfiguraci robota najdete v dokumentaci k rozhraní bot pro [kanál Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+   > Informace o konfiguraci robota najdete v dokumentaci k rozhraní bot pro [kanál Direct line Speech](/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="code-explanation"></a>Vysvětlení kódu
 Klíč předplatného řeči a oblast jsou nutné k vytvoření objektu konfigurace řeči. Objekt konfigurace je nutný k vytvoření instance objektu pro rozpoznávání řeči.

@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82181527"
 ---
 ## <a name="test-your-code"></a>Testování kódu
@@ -43,7 +43,7 @@ Po přihlášení byste měli vidět informace o profilu uživatele, které jsou
 
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
-|**Jmen** |<span>user@domain.com</span> |Uživatelské jméno, které se používá k identifikaci uživatele.|
+|**Uživatelské jméno** |<span>user@domain.com</span> |Uživatelské jméno, které se používá k identifikaci uživatele.|
 |**Vypršení platnosti tokenu** |DateTime |Čas vypršení platnosti tokenu MSAL rozšiřuje datum vypršení platnosti tím, že podle potřeby obnoví token.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních

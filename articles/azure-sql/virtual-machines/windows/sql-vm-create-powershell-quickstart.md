@@ -6,18 +6,20 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 350df1aede076120fd14dc46da351835c894c5b4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514607"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356816"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Rychlý Start: vytvoření SQL Server na virtuálním počítači s Windows pomocí Azure PowerShell
 
@@ -31,7 +33,7 @@ Tento rychlý Start prochází postup vytvořením virtuálního počítače s S
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Získání předplatného Azure
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="get-azure-powershell"></a><a id="powershell"></a>Získání Azure PowerShellu
@@ -149,9 +151,9 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="register-with-sql-vm-rp"></a>Registrace s využitím SQL VM RP 
 
-Pokud chcete získat funkce integrace portálu a virtuálního počítače SQL, musíte se zaregistrovat u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
+Pokud chcete získat funkce integrace portálu a SQL VM, musíte se zaregistrovat s [rozšířením agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md).
 
-Pokud chcete získat plnou funkčnost, budete se muset zaregistrovat u poskytovatele prostředků v plném režimu. Tím se ale služba SQL Server restartuje, takže doporučeným přístupem je registrace v nenáročném režimu a následná aktualizace na plnou dobu v časovém intervalu pro správu a údržbu. 
+Pokud chcete získat plnou funkčnost, budete se muset zaregistrovat s rozšířením v plném režimu. Tím se ale služba SQL Server restartuje, takže doporučeným přístupem je registrace v nenáročném režimu a následná aktualizace na plnou dobu v časovém intervalu pro správu a údržbu. 
 
 Nejdřív Zaregistrujte svůj SQL Server virtuální počítač v režimu prostého zápisu: 
 
@@ -170,8 +172,8 @@ Během časového období údržby upgradujte na úplný režim:
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
-New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+# Register with SQL IaaS Agent extension in full mode
+Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 
 
@@ -196,7 +198,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManageme
 
 1. Po přihlášení k relaci vzdálené plochy spusťte v nabídce Start **SQL Server Management Studio 2017** .
 
-1. V dialogovém okně **připojit k serveru** ponechte výchozí nastavení. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Připojit**.
+1. V dialogovém okně **připojit k serveru** ponechte výchozí nastavení. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Connect** (Připojit).
 
 Nyní jste připojeni k SQL Server místně. Pokud se chcete připojit vzdáleně, musíte [nakonfigurovat připojení](ways-to-connect-to-sql.md) z Azure Portal nebo ručně.
 

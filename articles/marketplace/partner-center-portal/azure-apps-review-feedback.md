@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320098"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436381"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Zpracování zpětné vazby revize pro nabídky aplikací Azure
 
@@ -39,11 +39,11 @@ Pomocí následujícího postupu můžete zkontrolovat problémy popsané v žá
     [![Domovská stránka žádosti o získání dat](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kliknutím na tento obrázek rozbalíte.*
 
-1. Volitelné Na pravé straně okna v části **zásady**vyberte zprávu problém (v tomto příkladě: **ověření zásad se nezdařilo**) a prozkoumejte podrobnosti o nízké úrovni problému včetně přidružených souborů protokolu. Chyby se obvykle zobrazují v dolní části souborů protokolu.
+1. Volitelné Na pravé straně okna v části **zásady** vyberte zprávu problém (v tomto příkladě: **ověření zásad se nezdařilo**) a prozkoumejte podrobnosti o nízké úrovni problému včetně přidružených souborů protokolu. Chyby se obvykle zobrazují v dolní části souborů protokolu.
 
 1. V nabídce na levé straně domovské stránky vyberte **soubory** , abyste zobrazili seznam souborů, které obsahují technické prostředky pro tuto nabídku. Kontroloři společnosti Microsoft by měli přidat komentáře popisující zjištěné kritické problémy. V následujícím příkladu byly zjištěny dva problémy.
 
-    [![Domovská stránka žádosti o získání dat](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![Snímek obrazovky, který zvýrazní soubory a dva zjištěné problémy.](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Kliknutím na tento obrázek rozbalíte.*
 
 1. Vyberte každý uzel komentáře v levém stromu a přejděte k komentáři v kontextu okolního kódu. Opravte zdrojový kód v projektu týmu a opravte problém popsaný v komentáři.
@@ -57,4 +57,4 @@ Pomocí následujícího postupu můžete zkontrolovat problémy popsané v žá
 
 ## <a name="next-steps"></a>Další kroky
 
-Po opravě důležitých problémů popsaných v revizi žádosti o přijetí změn je nutné [znovu publikovat nabídku aplikace Azure](./create-new-azure-apps-offer.md#publish).
+Po opravě důležitých problémů popsaných v revizi žádosti o přijetí změn je nutné [znovu publikovat nabídku aplikace Azure](../create-new-azure-apps-offer.md).

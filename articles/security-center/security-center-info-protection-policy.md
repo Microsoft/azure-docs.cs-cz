@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení SQL Information Protection – Azure Security Center
+title: Zásady SQL Information Protection v Azure Security Center
 description: Přečtěte si, jak přizpůsobit zásady ochrany informací v Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -8,84 +8,144 @@ manager: rkarlin
 ms.assetid: 2ebf2bc7-232a-45c4-a06a-b3d32aaf2500
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711081"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099399"
 ---
-# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
+# <a name="sql-information-protection-policy-in-azure-security-center"></a>Zásady SQL Information Protection v Azure Security Center
  
-Můžete definovat a přizpůsobit zásady služby SQL Information Protection pro celý tenant Azure v Azure Security Center.
+[Mechanismus zjišťování dat a klasifikace dat](../azure-sql/database/data-discovery-and-classification-overview.md) v SQL Information Protection poskytují pokročilé možnosti pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích. Je integrována do [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md), [spravované instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)a [Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
 
-Ochrana informací je pokročilá funkce zabezpečení pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat v datových prostředcích Azure. Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, osobní údaje atd.) mohou hrát pivotovou roli v stature organizace Information Protection. Může sloužit jako infrastruktura na:
-- Pomoc se splněním standardů ochrany osobních údajů a požadavků na dodržování legislativních předpisů
-- Scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům
-- Řízení přístupu a posílení zabezpečení úložišť dat obsahujících vysoce citlivá data
- 
-[SQL Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) implementuje toto paradigma pro vaše úložiště dat SQL, které se v současné době podporují pro Azure SQL Database. SQL Information Protection automaticky zjišťuje a klasifikuje potenciálně citlivá data, poskytuje mechanismus označování pro trvalé označení citlivých dat pomocí atributů klasifikace a poskytuje podrobný řídicí panel, který ukazuje stav klasifikace databáze. Kromě toho počítá sadu výsledků dotazu SQL, takže dotazy, které extrahují citlivá data, lze explicitně auditovat a data lze chránit. Další informace o Information Protection SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../azure-sql/database/data-discovery-and-classification-overview.md).
- 
-Klasifikační mechanizmus je založen na dvou primárních konstrukcích, které tvoří klasifikaci klasifikace – **popisky** a **typy informací**.
-- **Labels** – hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci. 
-- **Typy informací** – poskytuje další členitost na typ dat uložených ve sloupci.
- 
-Information Protection obsahuje integrovanou sadu popisků a typů informací, které se používají ve výchozím nastavení. Pokud chcete tyto popisky a typy přizpůsobit, můžete zásady ochrany informací v Security Center přizpůsobit.
- 
-## <a name="customize-the-information-protection-policy"></a>Přizpůsobení zásad Information Protection
-Chcete-li upravit zásady ochrany informací pro vašeho tenanta Azure, musíte mít [oprávnění správce pro kořenovou skupinu pro správu klienta](security-center-management-groups.md). 
- 
-1. V hlavní nabídce Security Center v části **hygiena zabezpečení prostředků** přejděte na **data & úložiště** a klikněte na tlačítko **SQL Information Protection** .
+Klasifikační mechanizmus je založen na následujících dvou prvcích:
 
-   ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/security-policy.png) 
+- **Labels** – hlavní atributy klasifikace, které slouží k definování *úrovně citlivosti dat* uložených ve sloupci. 
+- **Typy informací** – poskytuje další členitost na *typ dat* uložených ve sloupci.
+
+Možnosti zásad ochrany informací v rámci Security Center poskytují předdefinovanou sadu popisků a typů informací, které slouží jako výchozí hodnoty pro modul klasifikace. Zásady můžete přizpůsobit podle potřeb vaší organizace, jak je popsáno níže.
+
+> [!IMPORTANT]
+> K přizpůsobení zásad služby Information Protection pro vašeho tenanta Azure budete potřebovat oprávnění správce pro kořenovou skupinu pro správu tenanta. Další informace najdete v informacích [o udělení a vyžádání viditelnosti v nejrůznějších klientech](tenant-wide-permissions-management.md).
+
+:::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="Stránka zobrazující zásady služby SQL Information Protection":::
  
-2. Na stránce **Information Protection SQL** můžete zobrazit aktuální sadu štítků. Jedná se o hlavní atributy klasifikace, které se používají k kategorizaci úrovně citlivosti vašich dat. Tady můžete nakonfigurovat **popisky ochrany informací** a **typy informací** pro tenanta. 
+
+
+
+## <a name="how-do-i-access-the-sql-information-protection-policy"></a>Návody získat přístup k zásadám SQL Information Protection?
+
+Existují tři způsoby, jak získat přístup k zásadám ochrany informací:
+
+- **(Doporučeno)** Na stránce ceny a nastavení Security Center
+- Z doporučení zabezpečení by se měla klasifikovat citlivá data v databázích SQL.
+- Stránka pro zjišťování dat databáze SQL Azure
+
+Každá z nich je zobrazena na příslušné kartě níže.
+
+
+
+### <a name="from-security-centers-settings"></a>[**Z nastavení Security Center**](#tab/sqlip-tenant)
+
+### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>Přístup k zásadě ze stránky s cenami a nastaveními Security Center <a name="sqlip-tenant"></a>
+
+Na stránce **ceny a nastavení** ze Security Center vyberte **SQL Information Protection**.
+
+> [!NOTE]
+> Tato možnost se zobrazí jenom pro uživatele s oprávněními na úrovni tenanta. [Udělte oprávnění pro všechny klienty sami sobě](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself).
+
+:::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Přístup k zásadám SQL Information Protection ze stránky ceny a nastavení Azure Security Center":::
+
+
+
+### <a name="from-security-centers-recommendation"></a>[**Z doporučení Security Center**](#tab/sqlip-db)
+
+### <a name="access-the-policy-from-the-security-center-recommendation"></a>Přístup k zásadám z Security Center doporučení <a name="sqlip-db"></a>
+
+Použijte doporučení Security Center, "citlivá data ve vašich databázích SQL by měla být klasifikovaná", aby se zobrazila stránka pro zjišťování a klasifikace dat pro vaši databázi. Tady uvidíte také zjištěné sloupce, které obsahují informace, které doporučujeme klasifikovat.
+
+1. Na stránce **doporučení** pro Security Center vyhledejte, že by se **měla klasifikovat citlivá data v databázích SQL**.
+
+    :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="Hledání doporučení, které poskytuje přístup k zásadám SQL Information Protection":::
+
+1. Na stránce s podrobnostmi o doporučení vyberte databázi z **nefunkčních** **karet nebo** z nich.
+
+1. Otevře se stránka **klasifikace & zjišťování dat** . Vyberte **Konfigurovat**.
+
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="Otevřete zásady služby SQL Information Protection z příslušného doporučení v Azure Security Center":::
+
+
+
+### <a name="from-azure-sql"></a>[**Z Azure SQL**](#tab/sqlip-azuresql)
+
+### <a name="access-the-policy-from-azure-sql"></a>Přístup k zásadám z Azure SQL <a name="sqlip-azuresql"></a>
+
+1. Z Azure Portal otevřete Azure SQL.
+
+    :::image type="content" source="./media/security-center-info-protection-policy/open-azure-sql.png" alt-text="Otevření Azure SQL z Azure Portal":::
+
+1. Vyberte libovolnou databázi.
+
+1. Z oblasti **zabezpečení** v nabídce otevřete stránku **klasifikace & zjišťování dat** (1) a vyberte **Konfigurovat** (2).
+
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-azure-sql.png" alt-text="Otevření zásad služby SQL Information Protection z Azure SQL":::
+
+--- 
+
+
+## <a name="customize-your-information-types"></a>Přizpůsobení typů informací
+
+Správa a přizpůsobení typů informací:
+
+1. Vyberte možnost **Spravovat typy informací**.
+
+    :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="Správa typů informací pro zásady služby Information Protection":::
+
+1. Chcete-li přidat nový typ, vyberte možnost **vytvořit typ informací**. Pro typ informací můžete nakonfigurovat řetězec název, popis a vzor hledání. Řetězce vzorů hledání mohou volitelně používat klíčová slova se zástupnými znaky (pomocí znaku '% '), který modul automatizovaného zjišťování používá k identifikaci citlivých dat ve vašich databázích na základě metadat sloupců.
  
-### <a name="customizing-labels"></a>Přizpůsobení popisků
+    :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="Konfigurace nového typu informací pro zásady služby Information Protection":::
+
+1. Můžete také upravit předdefinované typy přidáním dalších řetězců vzorů hledání, zakázáním některých existujících řetězců nebo změnou popisu. 
+
+    > [!TIP]
+    > Předdefinované typy nemůžete odstranit ani změnit jejich názvy. 
+
+1. **Typy informací** jsou uvedené v pořadí podle vzestupného řazení, což znamená, že se typy vyšší v seznamu pokusí porovnat jako první. Chcete-li změnit hodnocení mezi typy informací, přetáhněte typy na pravé místo v tabulce nebo pomocí tlačítek **nahoru** a **dolů** změňte pořadí. 
+
+1. Po dokončení vyberte **OK** .
+
+1. Po dokončení správy typů informací nezapomeňte přidružit relevantní typy k příslušným popiskům kliknutím na možnost **Konfigurovat** pro konkrétní popisek a podle potřeby přidat nebo odstranit typy informací.
+
+1. Chcete-li použít změny, vyberte možnost **Uložit** na stránce hlavní **Štítky** .
  
-1. Můžete upravit nebo odstranit existující popisek nebo přidat nový popisek. Pokud chcete upravit existující popisek, vyberte tento popisek a pak klikněte na **Konfigurovat**, a to buď v horní části, nebo v místní nabídce napravo. Chcete-li přidat nový popisek, klikněte na tlačítko **vytvořit popisek** v horním řádku nabídky nebo v dolní části tabulky popisků.
-2. Na obrazovce pro **označení citlivosti konfigurace** můžete vytvořit nebo změnit název popisku a jeho popis. Můžete také nastavit, zda je popisek aktivní nebo zakázaný přepnutím přepínače **Enabled** zapnuto nebo vypnuto. Nakonec můžete přidat nebo odebrat typy informací přidružené k popisku. Všechna zjištěná data, která odpovídají danému typu informací, budou automaticky zahrnovat popisek související citlivosti v doporučeních klasifikace.
-3. Klikněte na **OK**.
- 
-   ![Konfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
- 
-4. Popisky jsou uvedené v pořadí podle vzestupné citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhněte popisky, abyste je změnili v tabulce, nebo použijte tlačítka **nahoru a** **dolů** pro změnu pořadí. 
- 
-    ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/move-up.png)
- 
-5. Až skončíte, nezapomeňte kliknout na **Uložit** v horní části obrazovky.
- 
- 
-## <a name="adding-and-customizing-information-types"></a>Přidávání a přizpůsobení typů informací
- 
-1. Kliknutím na **Spravovat typy informací**můžete spravovat a upravovat typy informací.
-2. Chcete-li přidat nový **typ informací**, v horní nabídce vyberte možnost **vytvořit typ informací** . Pro **typ informací**můžete nakonfigurovat řetězec název, popis a vzor hledání. Řetězce vzorů hledání mohou volitelně používat klíčová slova se zástupnými znaky (pomocí znaku '% '), který modul automatizovaného zjišťování používá k identifikaci citlivých dat ve vašich databázích na základě metadat sloupců.
- 
-    ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/info-types.png)
- 
-3. Můžete také nakonfigurovat integrované **typy informací** přidáním dalších řetězců vzorů hledání, zakázáním některých existujících řetězců nebo změnou popisu. Předdefinované **typy informací** nemůžete odstranit ani upravit jejich názvy. 
-4. **Typy informací** jsou uvedené v pořadí podle vzestupného řazení, což znamená, že se typy vyšší v seznamu pokusí porovnat jako první. Chcete-li změnit hodnocení mezi typy informací, přetáhněte typy na pravé místo v tabulce nebo pomocí tlačítek **nahoru** a **dolů** změňte pořadí. 
-5. Až skončíte, klikněte na **OK** .
-6. Po dokončení správy typů informací nezapomeňte přidružit relevantní typy k příslušným popiskům kliknutím na možnost **Konfigurovat** pro konkrétní popisek a podle potřeby přidat nebo odstranit typy informací.
-7. V okně Hlavní **Štítky** nezapomeňte kliknout na **Uložit** , aby se všechny změny projevily.
- 
-Po úplném definování a uložení zásad služby Information Protection se tato zásada bude vztahovat na klasifikaci dat ve všech databázích Azure SQL ve vašem tenantovi.
+
+## <a name="exporting-and-importing-a-policy"></a>Export a Import zásady
+
+Můžete si stáhnout soubor JSON s definovanými popisky a typy informací, upravit soubor v libovolném editoru a pak importovat aktualizovaný soubor. 
+
+:::image type="content" source="./media/security-center-info-protection-policy/export-import.png" alt-text="Export a import zásad služby Information Protection":::
+
+> [!NOTE]
+> K importu souboru zásad budete potřebovat oprávnění na úrovni tenanta. 
+
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>Správa SQL Information Protection pomocí Azure PowerShell
 
-- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): načte efektivní zásadu SQL Information Protection tenanta.
-- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): nastaví efektivní zásady pro SQL Information Protection tenanta.
+- [Get-AzSqlInformationProtectionPolicy](/powershell/module/az.security/get-azsqlinformationprotectionpolicy): načte efektivní zásadu SQL Information Protection tenanta.
+- [Set-AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy): nastaví efektivní zásady pro SQL Information Protection tenanta.
  
+
 ## <a name="next-steps"></a>Další kroky
  
-V tomto článku jste se dozvěděli o definování zásad Information Protection SQL v Azure Security Center. Další informace o použití Information Protection SQL ke klasifikaci a ochraně citlivých dat ve vašich databázích SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../azure-sql/database/data-discovery-and-classification-overview.md). 
+V tomto článku jste se dozvěděli o definování zásad služby Information Protection v Azure Security Center. Další informace o použití Information Protection SQL ke klasifikaci a ochraně citlivých dat ve vašich databázích SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../azure-sql/database/data-discovery-and-classification-overview.md).
 
-Další informace o zásadách zabezpečení a zabezpečení dat v Azure Security Center najdete v následujících článcích:
+Další informace o zásadách zabezpečení a zabezpečení dat v Security Center najdete v následujících článcích:
  
 - [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Azure Security Center zabezpečení dat](security-center-data-security.md): Přečtěte si, jak Security Center spravuje a chrání data.

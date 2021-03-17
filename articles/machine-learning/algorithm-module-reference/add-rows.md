@@ -1,7 +1,7 @@
 ---
 title: 'Přidat řádky: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul přidat řádky v Azure Machine Learning k zřetězení dvou datových sad.
+description: Naučte se používat modul přidat řádky v Návrháři Azure Machine Learning k zřetězení dvou datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c2a74ee88e7161ab8dd1701ef4d105df67c0938
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477727"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421936"
 ---
 # <a name="add-rows-module"></a>Modul pro přidání řádků
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží ke zřetězení dvou datových sad. Ve zřetězení jsou řádky druhé datové sady přidány na konec první datové sady.  
   

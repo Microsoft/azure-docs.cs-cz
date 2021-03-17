@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798354"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655097"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Schválení nebo zamítnutí žádostí o přístup v Azure AD – Správa nároků
 
@@ -49,6 +49,22 @@ Pokud nemáte e-mail, můžete podle následujících kroků najít žádosti o 
 
 1. Na kartě **čeká na vyřízení** žádost.
 
+## <a name="view-requestors-answers-to-questions-preview"></a>Zobrazit odpovědi žadatele na otázky (Preview)
+
+1. V části přístup přejděte na kartu **schválení** .
+
+1. Přejděte na žádost, kterou chcete schválit, a klikněte na **Podrobnosti**. Pokud jste připraveni udělat rozhodnutí, můžete kliknout na **schválit** nebo **odmítnout** .
+
+1. Klikněte na **Podrobnosti žádosti**.
+
+    ![Můj portál přístupu – žádost o přístup – klikněte na Podrobnosti žádosti.](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. Informace poskytnuté žadatelem budou v dolní části panelu.
+
+    ![Snímek obrazovky se zobrazenými podrobnostmi o žádosti](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. Na základě informací poskytnutých žadatelem můžete žádost schválit nebo zamítnout. Pokyny najdete v postupu schválení nebo zamítnutí žádosti.
+
 ## <a name="approve-or-deny-request"></a>Schválit nebo zamítnout žádost
 
 Po otevření žádosti o přístup se zobrazí podrobnosti, které vám pomohou učinit rozhodnutí o schválení nebo zamítnutí.
@@ -65,7 +81,7 @@ Po otevření žádosti o přístup se zobrazí podrobnosti, které vám pomohou
 
 1. V případě potřeby zadejte důvod.
 
-    ![Můj portál pro přístup – žádost o přístup](./media/entitlement-management-request-approve/my-access-approve-request.png)
+    ![Snímek obrazovky ukazuje stránku, na kterou přijímáte nebo odepřete žádost.](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Kliknutím na **Odeslat** odešlete rozhodnutí.
 

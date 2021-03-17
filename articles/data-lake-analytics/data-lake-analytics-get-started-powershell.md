@@ -3,15 +3,15 @@ title: Vytvoření Azure Data Lake Analytics dotazů & – PowerShell
 description: Vytvořte pomocí Azure PowerShellu účet služby Azure Data Lake Analytics a odešlete úlohu U-SQL.
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: ccee8cef9cfcfc57ac19284b9c42e5c8371aa746
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 93a05231bc971737a08d74ad04150e5449dfc792
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132547"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220937"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Začínáme s Azure Data Lake Analytics s využitím Azure PowerShellu
 
@@ -25,12 +25,12 @@ Naučíte se, jak pomocí Azure PowerShellu vytvořit účty Azure Data Lake Ana
 
 Před zahájením tohoto kurzu musíte mít následující informace:
 
-* **Účet služby Azure Data Lake Analytics**. Zobrazit téma [Začínáme s Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
+* **Účet služby Azure Data Lake Analytics**. Zobrazit téma [Začínáme s Data Lake Analytics](./data-lake-analytics-get-started-portal.md).
 * **Pracovní stanice s prostředím Azure PowerShell**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-Tento kurz předpokládá, že jste už s používáním Azure Powershellu obeznámení. Konkrétně musíte vědět, jak se k Azure přihlásit. Pokud potřebujete pomoc, přejděte na téma [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Tento kurz předpokládá, že jste už s používáním Azure Powershellu obeznámení. Konkrétně musíte vědět, jak se k Azure přihlásit. Pokud potřebujete pomoc, přejděte na téma [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 
 Přihlášení pomocí názvu předplatného:
 

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027408"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
@@ -19,9 +19,9 @@ ms.locfileid: "87507611"
 
     ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně klikněte na Azure Portal **+** a potom v části **úložiště**klikněte na **řada fyzických zařízení StorSimple**.
+    Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně klikněte na Azure Portal **+** a potom v části **úložiště** klikněte na **řada fyzických zařízení StorSimple**.
 
-    ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![Vytvoření StorSimple Device Manager 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. V okně **Správce zařízení StorSimple** proveďte následující kroky:
 
@@ -29,7 +29,7 @@ ms.locfileid: "87507611"
 
    2. V rozevíracím seznamu **Předplatné** vyberte předplatné. Předplatné je propojeno s vaším fakturačním účtem. Toto pole není dostupné, pokud máte pouze jedno předplatné.
 
-   3. V části **Skupina prostředků** vyberte možnost **Použít existující** nebo **Vytvořit novou** skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   3. V části **Skupina prostředků** vyberte možnost **Použít existující** nebo **Vytvořit novou** skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
    4. Zadejte **Umístění** služby. Obvykle platí, že byste měli zvolit umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. Měli byste zvážit i následující aspekty:
 
@@ -42,8 +42,8 @@ ms.locfileid: "87507611"
 
    7. Kliknutím na **Vytvořit** vytvořte Správce zařízení StorSimple.
 
-       ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![Vytvoření StorSimple Device Manager 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 Vytvoření služby trvá několik minut. Po úspěšném vytvoření služby se zobrazí oznámení a otevře se okno nové služby.
 
-![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![Vytvoření StorSimple Device Manager 4](./media/storsimple-8000-create-new-service/createssdevman5.png)

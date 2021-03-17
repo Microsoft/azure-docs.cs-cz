@@ -1,26 +1,26 @@
 ---
-title: Vytvoření image z virtuálního počítače (Preview)
+title: Vytvoření image z virtuálního počítače
 description: Naučte se používat Azure PowerShell k vytvoření image v galerii sdílených imagí z existujícího virtuálního počítače v Azure.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f7afc671dbb3d4ef8aa30222c4f235c9f7869d02
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225644"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556838"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>Verze Preview: vytvoření image z virtuálního počítače
+# <a name="create-an-image-from-a-vm"></a>Vytvoření image z virtuálního počítače
 
 Pokud máte existující virtuální počítač, který byste chtěli použít k vytvoření několika identických virtuálních počítačů, můžete pomocí tohoto virtuálního počítače vytvořit image v galerii sdílených imagí pomocí Azure PowerShell. Můžete také vytvořit image z virtuálního počítače pomocí rozhraní příkazového [řádku Azure CLI](image-version-vm-cli.md).
 
-Pomocí Azure PowerShell můžete zachytit image z [specializovaných i zobecněných](./windows/shared-image-galleries.md#generalized-and-specialized-images) virtuálních počítačů. 
+Pomocí Azure PowerShell můžete zachytit image z [specializovaných i zobecněných](./shared-image-galleries.md#generalized-and-specialized-images) virtuálních počítačů. 
 
 Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto příkladu:
 - **Definice obrázku** obsahuje informace o imagi a požadavcích na jejich použití. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, specializované nebo zobecněné, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. 
@@ -77,11 +77,11 @@ Definice obrázků vytvoří logické seskupení obrázků. Používají se ke s
 
 Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-disvisioning pro Linux), měli byste vytvořit definici Image pomocí `-OsState generalized` . Pokud jste virtuální počítač nezobecněni, vytvořte definici Image pomocí nástroje `-OsState specialized` .
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./windows/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
 Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). 
 
-V tomto příkladu má definice image název *myImageDefinition*a je pro specializovaný virtuální počítač s Windows. Pokud chcete vytvořit definici imagí pomocí systému Linux, použijte `-OsType Linux` . 
+V tomto příkladu má definice image název *myImageDefinition* a je pro specializovaný virtuální počítač s Windows. Pokud chcete vytvořit definici imagí pomocí systému Linux, použijte `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -105,7 +105,7 @@ Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v r
 
 V tomto příkladu je verze image *1.0.0* a replikuje se do datových center *středozápadní USA* i *střed USA – jih* . Při výběru cílových oblastí pro replikaci nezapomeňte, že je také nutné zahrnout *zdrojovou* oblast jako cíl pro replikaci.
 
-Pokud chcete vytvořit verzi image z virtuálního počítače, použijte `$vm.Id.ToString()` pro `-Source` .
+Pokud chcete vytvořit verzi image z virtuálního počítače, použijte `$vm.Id.ToString()` pro `-SourceImageId` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -119,7 +119,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $gallery.ResourceGroupName `
    -Location $gallery.Location `
    -TargetRegion $targetRegions  `
-   -Source $sourceVm.Id.ToString() `
+   -SourceImageId $sourceVm.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01' `  
    -asJob 
 ```

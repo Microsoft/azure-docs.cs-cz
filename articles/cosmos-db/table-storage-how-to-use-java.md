@@ -1,27 +1,32 @@
 ---
 title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Java
-description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
+description: Ukládat strukturovaná data v cloudu pomocí služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Java.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: e28770bae9f845ae8f5edd3b67bc55175392052a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056665"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093685"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Javy
+
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět operace CRUD s daty. Vyberte buď Azure Table service, nebo rozhraní API pro tabulky Azure Cosmos DB. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Popsané scénáře zahrnují **vytváření**, **výpis** a **odstraňování** tabulek a také **vkládání**, **dotazování**, **úpravy** a **odstraňování** entit v tabulce. Další informace o tabulkách najdete v části [Další kroky](#next-steps).
+V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět operace CRUD s daty. Vyberte buď Azure Table service, nebo rozhraní API pro tabulky Azure Cosmos DB. Ukázky jsou napsané v jazyce Java a používají [sadu Azure Storage SDK V8 for Java][Azure Storage SDK for Java]. Popsané scénáře zahrnují **vytváření**, **výpis** a **odstraňování** tabulek a také **vkládání**, **dotazování**, **úpravy** a **odstraňování** entit v tabulce. Další informace o tabulkách najdete v části [Další kroky](#next-steps).
+
+> [!IMPORTANT]
+> Poslední verze sady Azure Storage SDK podporující Table Storage je [V8][Azure Storage SDK for Java]. Brzy bude dostupná nová verze sady Table Storage SDK pro jazyk Java.
 
 > [!NOTE]
 > Sada SDK je k dispozici pro vývojáře používající službu Azure Storage na zařízeních s Androidem. Další informace najdete v tématu [Sada SDK služby Azure Storage pro Android][Azure Storage SDK for Android].
@@ -31,7 +36,7 @@ V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-**Vytvoření účtu služby Azure Storage**
+**Vytvoření účtu úložiště Azure**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -286,7 +291,7 @@ O dávkových operacích byste měli vědět několik věcí:
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
 
-Chcete-li zadat dotaz na tabulku pro entity v oddílu, můžete použít `TableQuery` . Volá `TableQuery.from` se, aby se vytvořil dotaz na konkrétní tabulce, která vrací zadaný typ výsledku. Následující kód určuje filtr pro entity, kde Smith je klíč oddílu. `TableQuery.generateFilterCondition`je pomocná metoda pro vytváření filtrů pro dotazy. Zavolejte `where` na odkaz vrácený `TableQuery.from` metodou pro použití filtru pro dotaz. Když se dotaz spustí s voláním `execute` na `CloudTable` objekt, vrátí `Iterator` se s `CustomerEntity` zadaným typem výsledku. Pak můžete použít `Iterator` vrácenou smyčku foreach k využití výsledků. Tento kód v konzole zobrazí pole každé entity z výsledků dotazu.
+Chcete-li zadat dotaz na tabulku pro entity v oddílu, můžete použít `TableQuery` . Volá `TableQuery.from` se, aby se vytvořil dotaz na konkrétní tabulce, která vrací zadaný typ výsledku. Následující kód určuje filtr pro entity, kde Smith je klíč oddílu. `TableQuery.generateFilterCondition` je pomocná metoda pro vytváření filtrů pro dotazy. Zavolejte `where` na odkaz vrácený `TableQuery.from` metodou pro použití filtru pro dotaz. Když se dotaz spustí s voláním `execute` na `CloudTable` objekt, vrátí `Iterator` se s `CustomerEntity` zadaným typem výsledku. Pak můžete použít `Iterator` vrácenou smyčku foreach k využití výsledků. Tento kód v konzole zobrazí pole každé entity z výsledků dotazu.
 
 ```java
 try
@@ -627,8 +632,8 @@ catch (Exception e)
 Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Referenční informace ke klientské sadě SDK služby Azure Storage]: https://azure.github.io/azure-storage-java/
-[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage REST API]: /rest/api/storageservices/
 [Azure Storage Team Blog]: https://blogs.msdn.microsoft.com/windowsazurestorage/

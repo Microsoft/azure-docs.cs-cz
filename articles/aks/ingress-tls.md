@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: c86b4e921dce6258ac585375e686bec5fa44b211
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 1faabdda869bbaba8027df121d080b0fb421e9f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508953"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728888"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS ve službě Azure Kubernetes (AKS)
 
@@ -32,7 +32,7 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 
 Tento článek také předpokládá, že máte [vlastní doménu][custom-domain] s [zónou DNS][dns-zone] ve stejné skupině prostředků jako cluster AKS.
 
-Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx příchozího přenosu dat a správce certifikátů. Ujistěte se, že používáte nejnovější verzi Helm a máte přístup k úložištím *stabilní* a *jetstack* Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx příchozího přenosu dat a správce certifikátů. Ujistěte se, že používáte nejnovější verzi Helm a máte přístup k úložištím *Nginx* a *jetstack* Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -52,27 +52,27 @@ Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
-# Add the official stable repo
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # Use Helm to deploy an NGINX ingress controller
-helm install nginx stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 Během instalace se vytvoří veřejná IP adresa Azure pro kontroler příchozího přenosu dat. Tato veřejná IP adresa je statická pro životní cyklus řadiče pro příchozí přenos dat. Pokud adaptér příchozího přenosu odstraníte, bude přiřazení veřejné IP adresy ztraceno. Pokud pak vytvoříte další kontroler příchozího přenosu dat, přiřadí se nová veřejná IP adresa. Pokud chcete zachovat použití veřejné IP adresy, můžete místo toho [vytvořit kontroler příchozího přenosu se statickou veřejnou IP adresou][aks-ingress-static-tls].
 
 K získání veřejné IP adresy použijte `kubectl get service` příkaz. Přiřazení IP adresy ke službě trvá několik minut.
 
-```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```console
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                                             TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-nginx-ingress-controller                         LoadBalancer   10.0.182.160   MY_EXTERNAL_IP  80:30920/TCP,443:30426/TCP   20m
-nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <none>          80/TCP                       20m
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 Zatím se nevytvořila žádná pravidla pro příchozí přenosy. Pokud přejdete na veřejnou IP adresu, zobrazí se výchozí stránka 404 adaptéru NGINX pro příchozí přenosy.
@@ -85,14 +85,14 @@ Přidejte do zóny DNS záznam *A* s externí IP adresou služby Nginx pomocí [
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name '*' \
+    --record-set-name * \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
 > [!NOTE]
 > Volitelně můžete místo vlastní domény nakonfigurovat plně kvalifikovaný název domény pro IP adresu kontroleru příchozího přenosu dat. Všimněte si, že tato ukázka je určena pro prostředí bash.
 > 
-> ```azurecli-interactive
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -126,13 +126,13 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install \
-  cert-manager \
+helm install cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
   --version v0.16.1 \
   --set installCRDs=true \
-  --set nodeSelector."beta\.kubernetes\.io/os"=linux \
-  jetstack/cert-manager
+  --set nodeSelector."kubernetes\.io/os"=linux \
+  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
+  --set cainjector.nodeSelector."kubernetes\.io/os"=linux
 ```
 
 Další informace o konfiguraci Správce certifikátů najdete v [projektu správce certifikátů][cert-manager].
@@ -195,7 +195,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-one
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -233,7 +233,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-two
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -263,7 +263,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 Obě aplikace jsou teď spuštěné v clusteru Kubernetes. Jsou však konfigurovány se službou typu `ClusterIP` a nejsou přístupné z Internetu. Pokud je chcete zpřístupnit veřejnosti, vytvořte Kubernetes prostředek příchozího přenosu dat. Prostředek příchozího přenosu dat konfiguruje pravidla, která směrují provoz do jedné z těchto dvou aplikací.
 
-V následujícím příkladu provoz na adresu *Hello-World – příchozí. MY_CUSTOM_DOMAIN* je směrován do služby *AKS-HelloWorld* . Provoz na adresu *Hello-World – příchozí. Služba MY_CUSTOM_DOMAIN/Hello-World-Two* je směrována do služby *AKS-HelloWorld-dvě* . Provoz do *Hello-World – příchozí. MY_CUSTOM_DOMAIN/static* je směrován do služby s názvem *AKS-HelloWorld* pro statické prostředky.
+V následujícím příkladu provoz na adresu *Hello-World – příchozí. MY_CUSTOM_DOMAIN* se směruje na službu *AKS-HelloWorld-One* . Provoz na adresu *Hello-World – příchozí. Služba MY_CUSTOM_DOMAIN/Hello-World-Two* je směrována do služby *AKS-HelloWorld-dvě* . Provoz do *Hello-World – příchozí. MY_CUSTOM_DOMAIN/static* je směrován do služby s názvem *AKS-HelloWorld-One* pro statické prostředky.
 
 > [!NOTE]
 > Pokud jste nakonfigurovali plně kvalifikovaný název domény pro IP adresu kontroleru příchozího přenosu dat místo vlastní domény, použijte místo *Hello-World-to plně kvalifikovaný název domény. MY_CUSTOM_DOMAIN*. Pokud je například plně kvalifikovaný název domény *demo-AKS-Ingress.eastus.cloudapp.Azure.com*, nahraďte *Hello-World-příchozí. MY_CUSTOM_DOMAIN* s *demo-AKS-Ingress.eastus.cloudapp.Azure.com* v `hello-world-ingress.yaml` .
@@ -338,7 +338,7 @@ V dalším kroku se musí vytvořit prostředek certifikátu. Prostředek certif
 
 Chcete-li ověřit, zda byl certifikát vytvořen úspěšně, použijte `kubectl get certificate --namespace ingress-basic` příkaz a ověřte, zda je hodnota *připravena* nastavena na *hodnotu true*, což může trvat několik minut.
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -371,7 +371,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 Seznam vydaných verzí Helm pomocí `helm list` příkazu. Vyhledejte grafy s názvem *Nginx* a *CERT-Manager*, jak je znázorněno v následujícím příkladu výstupu:
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -381,7 +381,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 Odinstalujte verze pomocí `helm uninstall` příkazu. Následující příklad odinstaluje nasazení NGINX příchozího přenosu dat a správce certifikátů.
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -424,8 +424,8 @@ Můžete také:
 - [Vytvořte kontroler příchozího přenosu dat, který pomocí šifrovaného šifrování automaticky generuje certifikáty TLS se statickou veřejnou IP adresou.][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
+[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
 [helm-cli]: ./kubernetes-helm.md

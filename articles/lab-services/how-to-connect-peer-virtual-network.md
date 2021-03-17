@@ -3,12 +3,12 @@ title: Připojení k síti typu peer v Azure Lab Services | Microsoft Docs
 description: Přečtěte si, jak propojit síť testovacího prostředí s jinou sítí jako s partnerským vztahem. Propojte například svou místní organizaci/vysokou síť s virtuální sítí testovacího prostředí v Azure.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 20e47113d5c2439c9c8ea355288442b5f41d90ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445827"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434239"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Připojte síť testovacího prostředí k partnerské virtuální síti v Azure Lab Services
 
@@ -26,7 +26,7 @@ V některých scénářích může být nutné připojit síť testovacího pros
 Některé místní sítě jsou připojené k Azure Virtual Network buď prostřednictvím [ExpressRoute](../expressroute/expressroute-introduction.md) , nebo [Virtual Network bránou](../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto služby musí být nastaveny mimo Azure Lab Services. Další informace o připojení místní sítě k Azure pomocí ExpressRoute najdete v tématu [ExpressRoute Overview](../expressroute/expressroute-introduction.md). V případě místního připojení pomocí Virtual Network brány musí být brána, zadaná virtuální síť a účet testovacího prostředí všechny ve stejné oblasti.
 
 > [!NOTE]
-> Při vytváření Virtual Network Azure, která bude mít partnerský vztah s účtem testovacího prostředí, je důležité pochopit, jakým způsobem má oblast virtuální sítě vliv na vytvoření učebn Labs.  Další informace najdete v části příručky pro správce na [regions\locations](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations).
+> Při vytváření Virtual Network Azure, která bude mít partnerský vztah s účtem testovacího prostředí, je důležité pochopit, jakým způsobem má oblast virtuální sítě vliv na to, kde se laboratoře vytvářejí.  Další informace najdete v části příručky pro správce na [regions\locations](./administrator-guide.md#regionslocations).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytváření účtu testovacího prostředí
 

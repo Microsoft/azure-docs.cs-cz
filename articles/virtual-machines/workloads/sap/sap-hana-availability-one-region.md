@@ -8,19 +8,19 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 845cecfb6b09591b10de30267b31e6e1a80a7482
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833313"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504316"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Dostupnost SAP HANA v rámci jedné oblasti Azure
 Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má spoustu oblastí a šíří se po celém světě. Seznam oblastí Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure nabízí Microsoft nasazení jednoho virtuálního počítače s instancí HANA. Pro zvýšení dostupnosti můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [skupiny dostupnosti Azure](../../windows/tutorial-availability-sets.md) , která pro dostupnost používá replikaci systému Hana. 
@@ -29,7 +29,7 @@ V současné době Azure nabízí [zóny dostupnosti Azure](../../../availabilit
 
 Oblasti Azure, kde jsou nabízeny Zóny dostupnosti mají více datových center. Datová centra jsou nezávislá na zdroji napájení, chlazení a síti. Důvodem nabídky různých zón v rámci jedné oblasti Azure je nasazení aplikací ve dvou nebo třech Zóny dostupnosti, které jsou nabízeny. Nasazení napříč zónami, problémy v oblasti napájení a sítě, které ovlivňují jenom jednu infrastrukturu zóny dostupnosti Azure, je vaše nasazení aplikací v oblasti Azure pořád funkční. Může dojít k nějaké omezené kapacitě. Například virtuální počítače v jedné zóně se můžou ztratit, ale virtuální počítače v dalších dvou zónách budou pořád v provozu. 
  
-Skupina dostupnosti Azure je logická schopnost seskupení, která pomáhá zajistit selhání prostředků virtuálních počítačů, které umístíte do skupiny dostupnosti, při jejich nasazení v datovém centru Azure. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. V některých dokumentaci k Azure se tato konfigurace označuje jako umístění v různých [doménách aktualizace a selhání](../../windows/manage-availability.md). Tato místa se většinou nacházejí v datovém centru Azure. Za předpokladu, že problémy se zdrojem energie a sítí by ovlivnily vaše datacentrum, bude to mít vliv na veškerou kapacitu v jedné oblasti Azure.
+Skupina dostupnosti Azure je logická schopnost seskupení, která pomáhá zajistit selhání prostředků virtuálních počítačů, které umístíte do skupiny dostupnosti, při jejich nasazení v datovém centru Azure. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. V některých dokumentaci k Azure se tato konfigurace označuje jako umístění v různých [doménách aktualizace a selhání](../../availability.md). Tato místa se většinou nacházejí v datovém centru Azure. Za předpokladu, že problémy se zdrojem energie a sítí by ovlivnily vaše datacentrum, bude to mít vliv na veškerou kapacitu v jedné oblasti Azure.
 
 Umístění datových center, která představuje Zóny dostupnosti Azure, představuje kompromis mezi poskytováním přijatelné latence sítě mezi službami nasazenými v různých zónách a vzdáleností mezi datovými centry. Přirozené haváriích v ideálním případě by neovlivnily napájení, síťové napájení a infrastrukturu pro všechny Zóny dostupnosti v této oblasti. Jelikož však Monumental přirozené haváriích, Zóny dostupnosti nemusí vždy poskytovat požadovanou dostupnost v rámci jedné oblasti. Zamyslete se na hurikán Marie, který se dorazí na ostrov Portoriko od 20. září 2017. Hurikán v podstatě vyvolal téměř 100% nedostupnosti na úrovni 90-míle.
 
@@ -78,7 +78,7 @@ Jedním z základní nastavení je použít zálohování. Konkrétně můžete 
 
 Architektura vypadá takto:
 
-![Diagram dvou virtuálních počítačů pomocí replikace úložiště](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Diagram znázorňující architekturu dvou virtuálních počítačů pomocí replikace úložiště.](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 Toto nastavení není vhodné pro dosažení skvělého cíle bodu obnovení (RPO) a doby obnovení (RTO). RTOí času, zejména by znamenalo, že je potřeba plně obnovit úplnou databázi pomocí zkopírovaných záloh. Tato instalace se ale hodí pro obnovu nezamýšlených odstranění dat v hlavních instancích. Pomocí této instalace se můžete kdykoli vrátit k určitému časovému okamžiku, extrahovat data a importovat Odstraněná data do vaší hlavní instance. Proto může být vhodné použít metodu záložního kopírování v kombinaci s jinou funkcí vysoké dostupnosti. 
 
@@ -127,4 +127,4 @@ Podrobné pokyny k nastavení těchto konfigurací v Azure najdete tady:
 
 Další informace o dostupnosti SAP HANA napříč oblastmi Azure najdete v těchto tématech:
 
-- [SAP HANA dostupnost napříč oblastmi Azure](./sap-hana-availability-across-regions.md) 
+- [SAP HANA dostupnost napříč oblastmi Azure](./sap-hana-availability-across-regions.md)

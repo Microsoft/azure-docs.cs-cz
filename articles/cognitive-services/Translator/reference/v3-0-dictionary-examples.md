@@ -3,19 +3,19 @@ title: Příklady slovníku překladatelů
 titleSuffix: Azure Cognitive Services
 description: Příklady slovníku překladatelů poskytují příklady, které ukazují, jak se ve slovníku používají výrazy v kontextu.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: swmachan
-ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: e7f0e106c1ca154dcd54990395430b3e0f6c536f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592504"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895505"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3,0: příklady slovníku
 
@@ -43,7 +43,7 @@ Hlavičky požadavku zahrnují:
 
 | Hlavičky  | Popis |
 | ------ | ----------- |
-| Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
+| Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
 | Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` . |
 | Délka obsahu   | **Požadovaná hlavička žádosti**<br/>Délka textu žádosti |
 | X – ClientTraceId   | **Volitelné**.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId` . |

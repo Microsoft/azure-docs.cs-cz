@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c5ad4b21b428f38bbd4d9f7d19fa633c5161b5c
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83759111"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594176"
 ---
 # <a name="sky-reflections"></a>Odrazy oblohy
 
@@ -25,10 +26,10 @@ Vzdálené vykreslování Azure využívá pro realistické výpočty světla *f
 
 Následující obrázky znázorňují výsledky osvětlení různých povrchů pouze s texturou nebe:
 
-| Hrubá  | 0                                        | 0,25                                          | 0,5                                          | 0.75                                          | 1                                          |
+| Hrubá  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Jiný než kov  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| Metal      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| Jiný než kov  | ![Dielectric, hrubosti = 0](media/dielectric-0.png)   | ![Dielectric, hrubosti = 0,25](media/dielectric-0.25.png)  | ![Dielectric, hrubosti = 0.5](media/dielectric-0.5.png)  | ![Dielectric, hrubosti = 0,75](media/dielectric-0.75.png)  | ![Dielectric, hrubosti = 1](media/dielectric-1.png)  |
+| Metal      | ![Kov, Hrubost = 0](media/metallic-0.png)  | ![Kov, Hrubost = 0,25](media/metallic-0.25.png)    | ![Kov, Hrubost = 0,5](media/metallic-0.5.png)    | ![Kov, Hrubost = 0,75](media/metallic-0.75.png)    | ![Kov, Hrubost = 1](media/metallic-1.png)    |
 
 Další informace o modelu osvětlení naleznete v kapitole [materiály](../../concepts/materials.md) .
 
@@ -40,57 +41,41 @@ Další informace o modelu osvětlení naleznete v kapitole [materiály](../../c
 Pokud chcete změnit mapu prostředí, stačí, když budete potřebovat [Načíst texturu](../../concepts/textures.md) a změnit relaci `SkyReflectionSettings` :
 
 ```cs
-LoadTextureAsync _skyTextureLoad = null;
-void ChangeEnvironmentMap(AzureSession session)
+async void ChangeEnvironmentMap(RenderingSession session)
 {
-    _skyTextureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap));
-
-    _skyTextureLoad.Completed += (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                try
-                {
-                    session.Actions.SkyReflectionSettings.SkyReflectionTexture = res.Result;
-                }
-                catch (RRException exception)
-                {
-                    System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
-                }
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-        };
+    try
+    {
+        Texture skyTex = await session.Connection.LoadTextureFromSasAsync(new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap));
+        session.Connection.SkyReflectionSettings.SkyReflectionTexture = skyTex;
+    }
+    catch (RRException exception)
+    {
+        System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
+    }
 }
 ```
 
 ```cpp
-void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+void ChangeEnvironmentMap(ApiHandle<RenderingSession> session)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureFromSasOptions params;
     params.TextureType = TextureType::CubeMap;
-    params.TextureUrl = "builtin://VeniceSunset";
-    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-
-    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
-    {
-        if (res->IsRanToCompletion())
+    params.TextureUri = "builtin://VeniceSunset";
+    session->Connection()->LoadTextureFromSasAsync(params, [&](Status status, ApiHandle<Texture> res) {
+        if (status == Status::OK)
         {
-            ApiHandle<SkyReflectionSettings> settings = *session->Actions()->SkyReflectionSettings();
-            settings->SkyReflectionTexture(*res->Result());
+            ApiHandle<SkyReflectionSettings> settings = session->Connection()->GetSkyReflectionSettings();
+            settings->SetSkyReflectionTexture(res);
         }
         else
         {
-            printf("Texture loading failed!");
+            printf("Texture loading failed!\n");
         }
     });
 }
-
 ```
 
-Všimněte si, že je `LoadTextureFromSASAsync` použita varianta, protože je načtena integrovaná textura. V případě načítání z [propojených úložišť objektů BLOB](../../how-tos/create-an-account.md#link-storage-accounts)použijte `LoadTextureAsync` variantu.
+Všimněte si, že je `LoadTextureFromSasAsync` použita varianta, protože je načtena integrovaná textura. V případě načítání z [propojených úložišť objektů BLOB](../../how-tos/create-an-account.md#link-storage-accounts)použijte `LoadTextureAsync` variantu.
 
 ## <a name="sky-texture-types"></a>Typy textury nebe
 
@@ -104,7 +89,7 @@ Pro referenci je zde uveden nezabalený cubemap:
 
 ![Nezabalená cubemap](media/Cubemap-example.png)
 
-Použijte `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` `TextureType.CubeMap` k načtení cubemap textur.
+Použijte `RenderingSession.Connection.LoadTextureAsync` /  `LoadTextureFromSasAsync` `TextureType.CubeMap` k načtení cubemap textur.
 
 ### <a name="sphere-environment-maps"></a>Mapy prostředí sphere
 
@@ -112,7 +97,7 @@ Při použití 2D textury jako mapy prostředí musí být obrázek v [kulové s
 
 ![Obrázek nebe v kulových souřadnicích](media/spheremap-example.png)
 
-Použijte `AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` k načtení map sféry prostředí.
+Použijte `RenderingSession.Connection.LoadTextureAsync` `TextureType.Texture2D` k načtení map sféry prostředí.
 
 ## <a name="built-in-environment-maps"></a>Předdefinované mapy prostředí
 
@@ -120,24 +105,28 @@ Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prost�
 
 |Identifikátor                         | Description                                              | Obrázek                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Přikoupit](media/autoshop.png)
-|builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | Proměnlivé barevné světla v případě středně světlého nastavení interiéru  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Středně jasné světlé prostředí okolí                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Tmavé nastavení vnitřního doběhu s kontrastem v tmavém světle              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Denní okolní místnost – světlá, světlá oblast okna     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Tmavě noční nebe a uzemnění s mnoha okolními kvadranty   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | Světlé světlo a stínový kontrast                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Jasný Nebeský světlo se středním osvětlením            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Středně proměnlivý Sun a barevný stín                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Dusk večer pro lehké přístupu                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Světlé, Lush – zelená a bílá světla, ztlumená země | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Daytime s jasným okolním světlem                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | Stejné jako TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Skybox k osvětlení objektu pomocí technologie autoshop](media/autoshop.png)
+|builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom Skybox, který se používá k osvětlení objektu](media/boiler-room.png)
+|builtin://ColorfulStudio           | Proměnlivé barevné světla v případě středně světlého nastavení interiéru  | ![ColorfulStudio Skybox, který se používá k osvětlení objektu](media/colorful-studio.png)
+|builtin://Hangar                   | Středně jasné světlé prostředí okolí                     | ![SmallHangar Skybox, který se používá k osvětlení objektu](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Tmavé nastavení vnitřního doběhu s kontrastem v tmavém světle              | ![IndustrialPipeAndValve Skybox, který se používá k osvětlení objektu](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Denní okolní místnost – světlá, světlá oblast okna     | ![Lebombo Skybox, který se používá k osvětlení objektu](media/lebombo.png)
+|builtin://SataraNight              | Tmavě noční nebe a uzemnění s mnoha okolními kvadranty   | ![SataraNight Skybox, který se používá k osvětlení objektu](media/satara-night.png)
+|builtin://SunnyVondelpark          | Světlé světlo a stínový kontrast                      | ![SunnyVondelpark Skybox, který se používá k osvětlení objektu](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Jasný Nebeský světlo se středním osvětlením            | ![Syferfontein Skybox, který se používá k osvětlení objektu](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Středně proměnlivý Sun a barevný stín                         | ![TearsOfSteelBridge Skybox, který se používá k osvětlení objektu](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Dusk večer pro lehké přístupu                    | ![VeniceSunset Skybox, který se používá k osvětlení objektu](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Světlé, Lush – zelená a bílá světla, ztlumená země | ![WhippleCreekRegionalPark Skybox, který se používá k osvětlení objektu](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Daytime s jasným okolním světlem                 | ![WinterRiver Skybox, který se používá k osvětlení objektu](media/winter-river.png)
+|builtin://DefaultSky               | Stejné jako TearsOfSteelBridge                               | ![DefaultSky Skybox, který se používá k osvětlení objektu](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Vlastnost C# RenderingConnection. SkyReflectionSettings](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.skyreflectionsettings)
+* [C++ RenderingConnection:: SkyReflectionSettings ()](/cpp/api/remote-rendering/renderingconnection#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Světla](../../overview/features/lights.md)
 * [Materiály](../../concepts/materials.md)
 * [Textury](../../concepts/textures.md)
-* [Nástroj příkazového řádku TexConv](../../resources/tools/tex-conv.md)

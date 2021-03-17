@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612771"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609749"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -24,7 +24,7 @@ MABS je založený na aplikaci System Center DPM a poskytuje podobné funkce s n
 
 - Ke spuštění MABS není nutná žádná licence System Center.
 - Pro MABS i DPM poskytuje Azure dlouhodobé úložiště záloh. Kromě toho aplikace DPM umožňuje zálohovat data pro dlouhodobé ukládání na pásku. MABS tuto funkci neposkytuje.
-- [Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). Sekundární server ochrání databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud primární server selže, může sekundární server pokračovat v ochraně úloh, které jsou chráněné primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
+- [Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM](/system-center/dpm/back-up-the-dpm-server). Sekundární server ochrání databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud primární server selže, může sekundární server pokračovat v ochraně úloh, které jsou chráněné primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
 
 MABS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520). Dá se spustit místně nebo na virtuálním počítači Azure.
 
@@ -50,7 +50,7 @@ Další informace najdete tady:
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-**Scénář** | **Agent** | **Umístění**
+**Scénář** | **Agenta** | **Umístění**
 --- | --- | ---
 **Zálohování místních počítačů a úloh** | DPM/MABS Protection Agent běží na počítačích, které chcete zálohovat.<br/><br/> Agent MARS na serveru DPM nebo MABS.<br/> Minimální verze agenta Microsoft Azure Recovery Services nebo agenta Azure Backup, který je vyžadován pro povolení této funkce, je 2.0.8719.0.  | DPM/MABS musí běžet místně.
 
@@ -60,9 +60,9 @@ DPM/MABS lze nasadit jako shrnuté v následující tabulce.
 
 **Nasazení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač s technologií Hyper-V<br/><br/> Virtuální počítač VMware | Pokud je aplikace DPM/MABS nainstalovaná jako virtuální počítač VMware, zálohuje jenom virtuální počítače VMware a úlohy, které jsou na těchto virtuálních počítačích spuštěné.
+**Nasazené místně** | Fyzický server, ale ne ve fyzickém clusteru.<br/><br/>Virtuální počítač Hyper-V. MABS můžete nasadit jako hostský počítač na samostatném hypervisoru nebo clusteru. Nejde ho nasadit na uzel clusteru nebo samostatného hypervisoru. Azure Backup Server je navržený tak, aby běžel na vyhrazeném serveru s jedním účelem.<br/><br/> Jako virtuální počítač s Windows v prostředí VMware. | Místní servery MABS nemůžou chránit úlohy založené na Azure. <br><br> Další informace najdete v tématu [matice ochrany](backup-mabs-protection-matrix.md).
 **Nasazeno jako Azure Stack virtuální počítač** | Jenom MABS | Aplikaci DPM nelze použít k zálohování Azure Stackch virtuálních počítačů.
-**Nasazeno jako virtuální počítač Azure** | Chrání virtuální počítače a úlohy Azure, které běží na těchto virtuálních počítačích. | DPM/MABS běžící v Azure nemůže zálohovat místní počítače.
+**Nasazeno jako virtuální počítač Azure** | Chrání virtuální počítače a úlohy Azure, které běží na těchto virtuálních počítačích. | DPM/MABS běžící v Azure nemůže zálohovat místní počítače. Může chránit jenom úlohy, které běží na virtuálních počítačích Azure s IaaS.
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>Podporované MABS a operační systémy DPM
 
@@ -88,6 +88,9 @@ Azure Backup můžou zálohovat instance DPM/MABS, na kterých běží některý
 **Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Přesunutí MABS** | Přesun MABS na nový server a zachování úložiště je podporované, pokud používáte MBS.<br/><br/> Server musí mít stejný název jako původní. Název nemůžete změnit, pokud chcete zachovat stejný fond úložiště a použít stejnou databázi MABS k ukládání bodů obnovení dat.<br/><br/> Budete potřebovat zálohu databáze MABS, protože ji budete muset obnovit.
 
+>[!NOTE]
+>Přejmenování serveru DPM/MABS není podporováno.
+
 ## <a name="mabs-support-on-azure-stack"></a>Podpora MABS na Azure Stack
 
 MABS můžete nasadit na virtuálním počítači Azure Stack, abyste mohli spravovat zálohování Azure Stack virtuálních počítačů a úloh z jednoho místa.
@@ -102,7 +105,7 @@ MABS můžete nasadit na virtuálním počítači Azure Stack, abyste mohli spra
 **.NET Framework na MABS** | Virtuální počítač MABS musí mít nainstalovanou .NET Framework 3,3 SP1 nebo novější.
 **Doména MABS** | Virtuální počítač MABS musí být připojený k doméně. Uživatel domény s oprávněními správce musí na virtuálním počítači nainstalovat MABS.
 **Zálohování dat Azure Stack VM** | Můžete zálohovat soubory, složky a aplikace.
-**Podporovaná záloha** | Tyto operační systémy jsou podporované pro virtuální počítače, které chcete zálohovat:<br/><br/> Půlroční kanál Windows serveru (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+**Podporovaná záloha** | Tyto operační systémy jsou podporované pro virtuální počítače, které chcete zálohovat:<br/><br/> Windows Server Semi-Annual Channel (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 **Podpora SQL Server pro virtuální počítače s Azure Stack** | Zálohujte SQL Server 2016 SQL Server 2014 SQL Server 2012 SP1.<br/><br/> Zálohování a obnovení databáze.
 **Podpora služby SharePoint pro virtuální počítače s Azure Stack** | SharePoint 2016, SharePoint 2013, SharePoint 2010.<br/><br/> Zálohujte a obnovte farmu, databázi, front-end a webový server.
 **Požadavky na síť pro zálohované virtuální počítače** | Všechny virtuální počítače v rámci úlohy Azure Stack musí patřit do stejné virtuální sítě a patřit do stejného předplatného.
@@ -111,13 +114,18 @@ MABS můžete nasadit na virtuálním počítači Azure Stack, abyste mohli spra
 
 ### <a name="url-access"></a>Přístup URL
 
-Server DPM nebo MABS potřebuje přístup k těmto adresám URL:
+Server DPM nebo server MABS musí mít přístup k těmto adresám URL a IP adresám:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+* Adresy URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18:
 
 ### <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
 
@@ -125,11 +133,16 @@ Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vzta
 
 S veřejným partnerským vztahem: Zajistěte přístup k následujícím doménám nebo adresám:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* Adresy URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 S partnerským vztahem Microsoftu vyberte následující služby nebo oblasti a příslušné hodnoty komunity:
 
@@ -146,7 +159,7 @@ Další informace najdete v tématu [požadavky na směrování ExpressRoute](..
 
 Aby zálohování fungovalo správně, je potřeba připojení ke službě Azure Backup a předplatné Azure by mělo být aktivní. Následující tabulka ukazuje chování, pokud k těmto dvěma akcím nedochází.
 
-**MABS do Azure** | **Předplatné** | **Zálohování/obnovení**
+**MABS do Azure** | **Předplatné** | **Zálohování a obnovení**
 --- | --- | ---
 Připojeno | Aktivní | Zálohujte na disk DPM/MABS.<br/><br/> Zálohování do Azure.<br/><br/> Obnovte z disku.<br/><br/> Obnovte z Azure.
 Připojeno | Vypršela/bylo zrušeno zřízení | Žádná záloha na disk nebo Azure.<br/><br/> Pokud vypršela platnost předplatného, můžete ho obnovit z disku nebo Azure.<br/><br/> Pokud je odběr vyřazený z provozu, nemůžete ho obnovit z disku nebo Azure. Body obnovení Azure se odstraní.
@@ -158,11 +171,19 @@ Připojeno | Vypršela/bylo zrušeno zřízení | Žádná záloha na disk nebo 
 |Požadavek |Podrobnosti |
 |---------|---------|
 |Doména    | Server DPM/MABS by měl být v systému Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 Domain.        |
-|Důvěryhodnost domény   |  DPM/MABS podporuje ochranu dat napříč doménovými strukturami, pokud mezi různými doménovými strukturami vytvoříte obousměrný vztah důvěryhodnosti na úrovni doménové struktury.   <BR><BR>   DPM/MABS může chránit servery a pracovní stanice napříč doménami v rámci doménové struktury, která má oboustranný vztah důvěryhodnosti s doménou serveru DPM/MABS. Informace o ochraně počítačů v pracovních skupinách nebo nedůvěryhodných doménách najdete v tématu [zálohování a obnovení úloh v pracovních skupinách a nedůvěryhodných doménách.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|Důvěryhodnost domény   |  DPM/MABS podporuje ochranu dat napříč doménovými strukturami, pokud mezi různými doménovými strukturami vytvoříte obousměrný vztah důvěryhodnosti na úrovni doménové struktury.   <BR><BR>   DPM/MABS může chránit servery a pracovní stanice napříč doménami v rámci doménové struktury, která má oboustranný vztah důvěryhodnosti s doménou serveru DPM/MABS. Informace o ochraně počítačů v pracovních skupinách nebo nedůvěryhodných doménách najdete v tématu [zálohování a obnovení úloh v pracovních skupinách a nedůvěryhodných doménách.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains) <br><br> Chcete-li zálohovat clustery serveru Hyper-V, musí být umístěny ve stejné doméně jako server MABS nebo v důvěryhodné nebo podřízené doméně. Servery a clustery v nedůvěryhodné doméně nebo úloze můžete zálohovat pomocí ověřování protokolem NTLM nebo ověření certifikátu pro jeden server, nebo ověřením certifikátu výlučně pro cluster.  |
 
 ## <a name="dpmmabs-storage-support"></a>Podpora úložiště DPM/MABS
 
 Data zálohovaná do DPM/MABS se ukládají na místní diskové úložiště.
+
+USB nebo vyměnitelné jednotky se nepodporují.
+
+Komprese NTFS není podporovaná na svazcích DPM/MABS.
+
+BitLocker se dá povolit až po přidání disku do fondu úložiště. Nepovolujte nástroj BitLocker před jeho přidáním.
+
+Úložiště připojené k síti (NAS) není podporováno pro použití ve fondu úložiště aplikace DPM.
 
 **Storage** | **Podrobnosti**
 --- | ---
@@ -185,10 +206,42 @@ Informace o různých serverech a úlohách, které můžete chránit pomocí Az
 
 ## <a name="supported-backups-to-dpm"></a>Podporované zálohy do DPM
 
-Informace o různých serverech a úlohách, které můžete chránit pomocí Data Protection Manager, najdete v článku [co může aplikace DPM zálohovat?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
+Informace o různých serverech a úlohách, které můžete chránit pomocí Data Protection Manager, najdete v článku [co může aplikace DPM zálohovat?](/system-center/dpm/dpm-protection-matrix).
 
 - Clusterované úlohy zálohované aplikací DPM/MABS by měly být ve stejné doméně jako DPM/MABS nebo v podřízené/důvěryhodné doméně.
 - Ověřování pomocí protokolu NTLM/certifikátu můžete použít k zálohování dat v nedůvěryhodných doménách nebo pracovních skupinách.
+
+## <a name="deduplicated-volumes-support"></a>Podpora svazků s odstraněnými duplicitami
+
+>[!NOTE]
+> Podpora odstranění duplicit pro MABS závisí na podpoře operačního systému.
+
+### <a name="for-ntfs-volumes"></a>Pro svazky NTFS
+
+| Operační systém chráněného serveru  | Operační systém serveru MABS  | Verze MABS  | Podpora odstranění duplicit |
+| ------------------------------------------ | ------------------------------------- | ------------------ | -------------------- |
+| Windows Server 2019                       | Windows Server 2019                  | MABS V3            | Y                    |
+| Windows Server 2016                       | Windows Server 2019                  | MABS V3            | Požadované                   |
+| Windows Server 2012 R2                    | Windows Server 2019                  | MABS V3            | N                    |
+| Windows Server 2012                       | Windows Server 2019                  | MABS V3            | N                    |
+| Windows Server 2019                       | Windows Server 2016                  | MABS V3            | A * *                  |
+| Windows Server 2016                       | Windows Server 2016                  | MABS V3            | Y                    |
+| Windows Server 2012 R2                    | Windows Server 2016                  | MABS V3            | Y                    |
+| Windows Server 2012                       | Windows Server 2016                  | MABS V3            | Y                    |
+
+- \* Při ochraně svazku s odstraněnými duplicitami WS 2016 NTFS s MABS V3 spuštěným v WS 2019 může být zotavení ovlivněno. Máme opravu pro obnovování v neodstraněném způsobu. Pokud tuto opravu potřebujete na MABS V3 UR1, můžete se obrátit na podporu MABS.
+- \** Při ochraně svazku s deduplikovaným svazkem WS 2019 NTFS s MABS V3 v WS 2016 nebudou zálohy a obnovení duplicity. To znamená, že zálohy budou spotřebovávat více místa na serveru MABS, než je původní svazek NTFS s odstraněním duplicit.
+
+**Problém**: Pokud upgradujete chráněný serverový operační systém z windows serveru 2016 na windows server 2019, bude to mít vliv na zálohování svazku s odstraněním duplicit NTFS z důvodu změn v logice odstranění duplicitních dat.
+
+**Alternativní řešení**: Pokud potřebujete tuto opravu pro MABS V3 UR1, můžete se obrátit na podporu MABS.
+
+### <a name="for-refs-volumes"></a>Pro svazky ReFS
+
+>[!NOTE]
+> Zjistili jsme několik problémů se zálohováním svazků s odstraněnými duplicitními daty. Pracujeme na jejich opravách a aktualizujeme tuto část, jakmile bude k dispozici oprava. Až pak odebereme podporu pro zálohování svazků ReFS s odstraněnými duplicitními daty z MABS v3.
+>
+> MABS V3 UR1 a novější nadále podporuje ochranu a obnovení běžných svazků ReFS.
 
 ## <a name="next-steps"></a>Další kroky
 

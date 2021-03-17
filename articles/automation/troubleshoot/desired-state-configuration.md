@@ -2,19 +2,15 @@
 title: Řešení potíží s konfigurací Azure Automation stavů
 description: V tomto článku se dozvíte, jak řešit problémy s konfigurací stavu Azure Automation a vyřešit je.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/16/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.topic: troubleshooting
+ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187213"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896524"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Řešení potíží s konfigurací Azure Automation stavů
 
@@ -42,9 +38,9 @@ Modul [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) vám mů�
 
 Modul můžete nainstalovat `xDscDiagnostics` na místní počítač podle pokynů v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-Pokud chcete modul nainstalovat do `xDscDiagnostics` počítače Azure, použijte [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). V Azure Portal můžete použít taky možnost **Spustit příkaz** pomocí postupu v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
+Pokud chcete modul nainstalovat do `xDscDiagnostics` počítače Azure, použijte [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand). V Azure Portal můžete použít taky možnost **Spustit příkaz** pomocí postupu v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
 
-Informace o použití **xDscDiagnostics**najdete v tématu věnovaném [použití xDscDiagnostics k analýze protokolů DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Viz také [rutiny xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+Informace o použití **xDscDiagnostics** najdete v tématu věnovaném [použití xDscDiagnostics k analýze protokolů DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Viz také [rutiny xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Ujistěte se, že uzly a pracovní prostor služby Automation mají požadované moduly.
 
@@ -66,13 +62,13 @@ Tato chyba je dočasným problémem, který se plánuje vyřešit.
 
 ### <a name="resolution"></a>Řešení
 
-Ke konfiguraci odstraňte pomocí rutiny [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) .
+Ke konfiguraci odstraňte pomocí rutiny [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration) .
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Scénář: Nepodařilo se zaregistrovat agenta DSC.
 
 ### <a name="issue"></a>Problém
 
-Při [Nastavení rutiny Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) nebo jiné RUTINy DSC se zobrazí chyba:
+Při [Nastavení rutiny Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) nebo jiné RUTINy DSC se zobrazí chyba:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -111,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Příčinou tohoto problému je chybný nebo prošlý certifikát. Viz [opětovné registrace uzlu](../automation-dsc-onboarding.md#re-register-a-node).
 
-Tento problém může být taky způsoben konfigurací proxy serveru, který neumožňuje přístup k ***. Azure-Automation.NET**. Další informace najdete v tématu [Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
+Tento problém může být taky způsoben konfigurací proxy serveru, který neumožňuje přístup k **_. Azure-Automation.NET_*. Další informace najdete v tématu [Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Řešení
 
@@ -120,7 +116,7 @@ Pomocí následujícího postupu můžete znovu zaregistrovat uzel DSC, který s
 #### <a name="step-1-unregister-the-node"></a>Krok 1: zrušení registrace uzlu
 
 1. V Azure Portal přejít na účty služby **Home**  >  **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**.
-1. Vyberte **uzly**a vyberte uzel, který má potíže.
+1. Vyberte **uzly** a vyberte uzel, který má potíže.
 1. Chcete-li zrušit registraci uzlu, vyberte možnost zrušit **registraci** .
 
 #### <a name="step-2-uninstall-the-dsc-extension-from-the-node"></a>Krok 2: Odinstalace rozšíření DSC z uzlu
@@ -155,7 +151,7 @@ If (($certs.Count) -gt 0)
 1. Vyberte **uzly**.
 1. Vyberte **Přidat**.
 1. Vyberte uzel, který selhal.
-1. Vyberte **připojit**a vyberte požadované možnosti.
+1. Vyberte **připojit** a vyberte požadované možnosti.
 
 ## <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>Scénář: uzel je v neúspěšném stavu s chybou "Nenalezeno".
 
@@ -177,7 +173,7 @@ K této chybě obvykle dochází v případě, že je uzel přiřazen k názvu k
 * Konfiguraci uzlu můžete přiřadit uzlu pomocí Azure Portal nebo pomocí rutiny prostředí PowerShell.
 
   * V Azure Portal přejít na účty služby **Home**  >  **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**. Pak vyberte uzel a vyberte **přiřadit konfiguraci uzlu**.
-  * Použijte rutinu [set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) .
+  * Použijte rutinu [set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode) .
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Scénář: při kompilaci konfigurace nevytvořily se žádné konfigurace uzlů (soubory MOF).
 
@@ -259,7 +255,7 @@ K této chybě obvykle dochází v případě, že se k uzlu přiřadí název k
 
 ### <a name="issue"></a>Problém
 
-Při registraci uzlu pomocí [registru Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) nebo [Register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)se zobrazí následující chyba:
+Při registraci uzlu pomocí [registru Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode) nebo [Register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)se zobrazí následující chyba:
 
 ```error
 One or more errors occurred.
@@ -338,7 +334,7 @@ Tuto chybu může způsobit konfigurace DSC, které mohou být zkompilovány dlo
 
 ### <a name="resolution"></a>Řešení
 
-Konfigurace DSC můžete urychlit tak, že explicitně zahrnete `ModuleName` parametr pro všechna volání [Import-DSCResource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) .
+Konfigurace DSC můžete urychlit tak, že explicitně zahrnete `ModuleName` parametr pro všechna volání [Import-DSCResource](/powershell/scripting/dsc/configurations/import-dscresource) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,20 +6,21 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925312"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386488"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
 Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) jsou k dispozici na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) nebo
@@ -35,7 +36,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 > [!TIP]
 > Získejte nejnovější kód jako řešení sady Visual Studio z [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-V prvním kroku vytvoříme nový projekt konzoly. Potřebujete-li nápovědu k nastavení projektu konzoly, přečtěte si téma [Hello World – první program (Průvodce programováním v C#)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
+V prvním kroku vytvoříme nový projekt konzoly. Potřebujete-li nápovědu k nastavení projektu konzoly, přečtěte si téma [Hello World – první program (Průvodce programováním v C#)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
 
 [Balíček sady SDK webového vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) také nainstaluje:
 
@@ -53,6 +54,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
 using System.Linq;
+using System.Threading.Tasks;
 ```
 
 ## <a name="create-project-scaffolding"></a>Vytvoření projektu pro generování uživatelského rozhraní
@@ -78,7 +80,7 @@ V následujících oddílech vytvoříme v této třídě ukázkovou aplikaci.
 Tento kód vytvoří vyhledávací dotaz.
 
 ```csharp
-public static async void WebResults(WebSearchClient client)
+public static async Task WebResults(WebSearchClient client)
 {
     try
     {
@@ -205,11 +207,11 @@ else
 V této aplikaci obsahuje hlavní metoda kód, který vytvoří instanci klienta, ověří `subscriptionKey` a volá `WebResults`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného účtu Azure.
 
 ```csharp
-static void Main(string[] args)
+static async Task Main(string[] args)
 {
     var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-    WebResults(client);
+    await WebResults(client);
 
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
@@ -235,7 +237,7 @@ V této ukázce jsou parametry `count` a `offset` použité k omezení počtu v�
 1. Do projektu konzoly přidejte tento kód:
 
     ```csharp
-    public static async void WebResultsWithCountAndOffset(WebSearchClient client)
+    public static async Task WebResultsWithCountAndOffset(WebSearchClient client)
     {
         try
         {
@@ -272,13 +274,13 @@ V této ukázce jsou parametry `count` a `offset` použité k omezení počtu v�
 2. Přidejte `WebResultsWithCountAndOffset` do `main`:
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -294,7 +296,7 @@ V této ukázce použijeme parametr `response_filter` k filtrování výsledků 
 1. Do projektu konzoly přidejte tento kód:
 
     ```csharp
-    public static async void WebSearchWithResponseFilter(WebSearchClient client)
+    public static async Task WebSearchWithResponseFilter(WebSearchClient client)
     {
         try
         {
@@ -333,15 +335,15 @@ V této ukázce použijeme parametr `response_filter` k filtrování výsledků 
 2. Přidejte `WebResultsWithCountAndOffset` do `main`:
 
     ```csharp
-    static void Main(string[] args)
+    static Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -357,7 +359,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
 1. Do projektu konzoly přidejte tento kód:
 
     ```csharp
-    public static async void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
+    public static async Task WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
     {
         try
         {
@@ -395,17 +397,17 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
 2. Přidejte `WebResultsWithCountAndOffset` do `main`:
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
         // Search with answer count, promote, and safe search
-        WebSearchWithAnswerCountPromoteAndSafeSearch(client);
+        await WebSearchWithAnswerCountPromoteAndSafeSearch(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -421,5 +423,4 @@ Až projekt dokončíte, nezapomeňte z kódu aplikace odebrat klíč předplatn
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ukázky Cognitive Services Node. js SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    
+> [Ukázky sady SDK pro Cognitive Services Node.js](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

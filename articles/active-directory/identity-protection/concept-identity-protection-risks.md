@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507429"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954481"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -26,9 +26,14 @@ Identity Protection poskytuje organizacím přístup k výkonným prostředkům,
 
 ![Přehled zabezpečení znázorňující rizikové uživatele a přihlášení](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> Identity Protection generuje detekci rizik jenom v případě, že se používají správné přihlašovací údaje. Pokud se při přihlášení použijí nesprávné přihlašovací údaje, nepředstavuje riziko zneužití přihlašovacích údajů.
+
 ## <a name="risk-types-and-detection"></a>Typy a detekce rizik
 
 Existují dva typy rizikového **uživatele** a **přihlášení** a dva typy detekce nebo výpočtu v **reálném čase** a v **režimu offline**.
+
+Zjišťování v reálném čase se nemusí zobrazit v hlášení po dobu pěti až deseti minut. Offline detekce se nemusí zobrazit v hlášení po dobu dvou až dvaceti čtyř hodin.
 
 ### <a name="user-risk"></a>Riziko uživatele
 
@@ -56,7 +61,11 @@ Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu of
 | Správce potvrzuje ohrožení zabezpečení uživatele. | Offline | Tato detekce indikuje, že správce v uživatelském rozhraní rizikové uživatele nebo pomocí rozhraní riskyUsers API vybral možnost potvrdit zneužití uživatele. Pokud chcete zjistit, který správce potvrdil ohrožení tohoto uživatele, Zkontrolujte historii rizika uživatele (prostřednictvím uživatelského rozhraní nebo rozhraní API). |
 | Škodlivá IP adresa | Offline | Tato detekce indikuje přihlášení ze škodlivé IP adresy. IP adresa je považována za škodlivou na základě vysoké míry selhání kvůli neplatným přihlašovacím údajům z IP adresy nebo jiných zdrojů reputace IP. |
 | Podezřelá pravidla pro manipulaci s doručenou poštou | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Toto zjišťování profiluje vaše prostředí a aktivuje výstrahy v případě, že jsou v doručené poště uživatele podezřelá pravidla, která odstraňují nebo přesunují zprávy nebo složky. Tato detekce může znamenat, že došlo k ohrožení zabezpečení účtu uživatele, že zprávy jsou záměrně skryté a že se poštovní schránka používá k distribuci spamu nebo malwaru ve vaší organizaci. |
+| Sprej hesla | Offline | Útok na postřik hesla je v případě, kdy je více uživatelských jmen napadeno pomocí běžných hesel v rámci sjednoceného hrubou silou, k získání neoprávněného přístupu. Toto zjišťování rizik se aktivuje, když se provedl útok na spreje hesla. |
 | Neuskutečnitelná cesta | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Toto zjišťování identifikuje dvě uživatelské aktivity (Jedná se o jednu nebo víc relací) pocházející z geograficky vzdálených umístění v časovém období kratším než čas, kdy by uživatel musel použít stejné přihlašovací údaje jako jiný uživatel. |
+| Nová země | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country). Tato detekce posuzuje umístění minulých aktivit k určení nových a málo častých umístění. Modul pro detekci anomálií ukládá informace o předchozích umístěních používaných uživateli v organizaci. |
+| Aktivita z anonymní IP adresy | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses). Tato detekce identifikuje, že uživatelé byli aktivní z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru. |
+| Podezřelé přesměrování doručené pošty | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding). Tato detekce vyhledá podezřelá pravidla pro předávání e-mailů, například pokud uživatel vytvořil pravidlo doručené pošty, které předává kopii všech e-mailů na externí adresu. |
 
 ### <a name="other-risk-detections"></a>Další detekce rizik
 
@@ -68,9 +77,13 @@ Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu of
 
 ### <a name="risk-levels"></a>Úrovně rizika
 
-Identity Protection kategorizuje riziko do tří úrovní: nízká, střední a vysoká. 
+Identity Protection kategorizuje riziko do tří úrovní: nízká, střední a vysoká. Když konfigurujete [vlastní zásady ochrany identit](./concept-identity-protection-policies.md#custom-conditional-access-policy), můžete ji také nakonfigurovat tak, aby se aktivovala **bez úrovně rizika** . Žádné riziko znamená, že neexistuje žádná aktivní indikace ohrožení identity uživatele.
 
 Zatímco společnost Microsoft neposkytuje konkrétní informace o tom, jakým způsobem je riziko vypočítáno, říkáme, že každá úroveň přináší větší jistotu, že se uživateli nebo přihlášení naruší zabezpečení. Například něco jako jedna instance neznámého přihlašovacího oprávnění pro uživatele nemusí být ohroženo jako nevrácená pověření pro jiného uživatele.
+
+### <a name="password-hash-synchronization"></a>Synchronizace hodnot hash hesel
+
+Detekce rizik, jako jsou nevrácené přihlašovací údaje a sprej hesla, vyžadují přítomnost hodnot hash hesla, aby mohlo probíhat detekce. Další informace o synchronizaci hodnot hash hesel najdete v článku [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 ### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
 

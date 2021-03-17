@@ -3,12 +3,12 @@ title: 'Kurz: použití Azure Event Grid k automatizaci změny velikosti nahran�
 description: 'Kurz: Azure Event Grid se můžou aktivovat při nahrávání objektů BLOB v Azure Storage. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105791"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550489"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid
 
@@ -20,18 +20,18 @@ Funkce změny velikosti se do existující aplikace pro nahrávání obrázků p
 
 # <a name="net-v12-sdk"></a>[\.Sada SDK pro .NET V12](#tab/dotnet)
 
-![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Snímek obrazovky, který zobrazuje publikovanou webovou aplikaci v prohlížeči pro \. sadu NET V12 SDK.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
-![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+![Snímek obrazovky, který zobrazuje publikovanou webovou aplikaci v prohlížeči pro \. sadu NET v10 za účelem SDK.](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření účtu služby Azure Storage
+> * Vytvoření účtu Azure Storage
 > * Nasadit kód bez serveru pomocí služby Azure Functions
 > * Vytvořit odběr události služby Blob Storage ve službě Event Grid
 
@@ -43,7 +43,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Nejdřív je potřeba dokončit předchozí kurz o službě Blob Storage: [Odeslání dat obrázků do cloudu v Azure Storage][previous-tutorial].
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Potřebujete [předplatné Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing). Tento kurz nefunguje s **bezplatným** předplatným. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ az provider register --namespace Microsoft.EventGrid
 az provider register --namespace Microsoft.EventGrid
 ```
 
-## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
+## <a name="create-an-azure-storage-account"></a>Vytvoření účtu Azure Storage
 
 Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storage, který jste vytvořili v předchozím kurzu, vytvořte ve skupině prostředků samostatný obecný účet úložiště pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account) . Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 
@@ -107,7 +107,7 @@ Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storag
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
-## <a name="create-a-function-app"></a>Vytvoření Function App  
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí  
 
 K hostování provádění funkcí potřebujete aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp).
 
@@ -163,7 +163,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
 ```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
@@ -217,7 +217,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
 Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App.
 
@@ -245,9 +245,9 @@ Tento projekt používá aktivační události typu `EventGridTrigger`. Použit�
 
 Další informace o této funkci najdete v [souborech function.json a run.csx](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
-# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
-Další informace o této funkci najdete v [souborechfunction.jszapnuto a index.js](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+Další informace o této funkci najdete v [ souborechfunction.jszapnuto a index.js](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
 ---
 
@@ -279,11 +279,11 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Název systémového tématu** | imagestoragesystopic | Zadejte název systémového tématu. Další informace o systémových tématech najdete v tématu [Přehled systémových témat](system-topics.md). |    
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`. |
     | **Typ koncového bodu** | automaticky generovaný | Předem definováno jako **funkce Azure Functions**. |
-    | **Služba** | automaticky generovaný | Název funkce V tomto případě je to **Miniatura**. |
+    | **Koncový bod** | automaticky generovaný | Název funkce V tomto případě je to **Miniatura**. |
 
 1. Přepněte na kartu **filtry** a proveďte následující akce:
     1. Vyberte možnost **Povolit filtrování subjektu** .
-    1. Pro **předmět začíná**na zadejte následující hodnotu: **/blobServices/default/Containers/images/BLOBs/**.
+    1. Pro **předmět začíná** na zadejte následující hodnotu: **/blobServices/default/Containers/images/**.
 
         ![Zadat filtr pro odběr události](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
@@ -301,9 +301,9 @@ Klikněte na oblast **Nahrát fotografie** a vyberte a nahrajte soubor. Do této
 
 Všimněte si, že po ukončení nahraného obrázku se v karuselu **vygenerované miniatury** zobrazí kopie nahraného obrázku. Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbnails* a webový klient ji stáhl.
 
-![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Snímek obrazovky, který zobrazuje publikovanou webovou aplikaci s názvem "ImageResizer" v prohlížeči pro \. sadu NET V12 SDK.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[ SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
 Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Velikost tohoto obrázku byla změněna funkcí, přidána do kontejneru *miniatur* a stažena webovým klientem.
 

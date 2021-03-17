@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1394cf6511a65a0e406e51229953e8666d4d4d8d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501853"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337674"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box k importu dat jako spravovaných disků v Azure
 
@@ -32,13 +32,13 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box](data-box-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Jste připojení k síti s vysokou rychlostí. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není připojení k dispozici, použijte linku s 1 GbE, ale rychlost kopírování ovlivní.
 4. Zkontrolovali jste:
 
     - Podporované [velikosti spravovaných disků v omezeních velikosti objektů Azure](data-box-limits.md#azure-object-size-limits).
-    - [Seznámení se službou Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
+    - [Seznámení se službou Azure Managed disks](../virtual-machines/managed-disks-overview.md). 
 
 5. Kopii zdrojových dat jste zachovali, dokud nepotvrdíte, že Data Box přenesli vaše data do Azure Storage.
 
@@ -76,13 +76,13 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     > [!NOTE]
     > Přihlašovací údaje pro všechny sdílené složky pro spravované disky jsou identické.
 
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Připojení a kopírování, získání přihlašovacích údajů pro sdílení](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na tlačítko **OK**.
+2. V dialogovém okně **sdílená složka pro přístup a kopírovat data** zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na **OK**.
     
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Připojení a kopírování, kopírování přihlašovacích údajů pro sdílení](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Pro přístup ke sdíleným složkám přidruženým k vašemu prostředku (*mydbmdrg1* v následujícím příkladu) z hostitelského počítače otevřete příkazové okno. Na příkazovém řádku zadejte:
+3. Pro přístup ke sdíleným složkám přidruženým k vašemu prostředku ( *mydbmdrg1* v následujícím příkladu) z hostitelského počítače otevřete příkazové okno. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -100,26 +100,26 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     C: \>
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>\<ShareName>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
+5. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>\<ShareName>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     V každé sdílené složce by se teď měly zobrazit následující předem vytvořené složky.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
+    ![Připojení ke sdílené složce prostřednictvím Průzkumníka souborů, složek pro sdílenou složku](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
 ### <a name="connect-to-data-box-via-nfs"></a>Připojení k Data Box přes systém souborů NFS
 
 Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího postupu nakonfigurujte Data Box tak, aby povoloval přístup klientům systému souborů NFS.
 
-1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**.
+1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejdete na stránku **připojit a kopírovat** . V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**.
 
-    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![Konfigurace přístupu klienta NFS](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na tlačítko **OK**.
+2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 
-    ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
+    ![Konfigurace IP adresy klienta systému souborů NFS](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
 2. Ujistěte se, že je na hostitelském počítači s Linuxem nainstalovaná [podporovaná verze](data-box-system-requirements.md) klienta systému souborů NFS. Použijte konkrétní verzi pro vaši distribuci Linuxu.
 
@@ -183,4 +183,3 @@ V dalším kurzu se dozvíte, jak Data Box odeslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-picked-up.md)
-

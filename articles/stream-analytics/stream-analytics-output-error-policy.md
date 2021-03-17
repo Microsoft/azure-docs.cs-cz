@@ -1,29 +1,28 @@
 ---
 title: Zásady chyb výstupu v Azure Stream Analytics
 description: Přečtěte si o zásadách zpracování chyb výstupu dostupných v Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19d762a55127af34e84185b11518aa6584acb5bd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75431613"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012406"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Zásada pro chyby výstupu Azure Stream Analytics
 Tento článek popisuje zásady zpracování chyb výstupních dat, které je možné nakonfigurovat v Azure Stream Analytics.
 
-Zásady zpracování chyb výstupních dat se vztahují jenom na chyby převodu dat, ke kterým dochází, když výstupní událost vytvořená úlohou Stream Analytics nevyhovuje schématu cílové jímky. Tuto zásadu můžete nakonfigurovat tak, že vyberete možnost **Opakovat** nebo **vyřadit**. V Azure Portal, zatímco v Stream Analytics úlohy, v části **Konfigurovat**vyberte **zásady chyb** , aby se provedl výběr.
+Zásady zpracování chyb výstupních dat se vztahují jenom na chyby převodu dat, ke kterým dochází, když výstupní událost vytvořená úlohou Stream Analytics nevyhovuje schématu cílové jímky. Tuto zásadu můžete nakonfigurovat tak, že vyberete možnost **Opakovat** nebo **vyřadit**. V Azure Portal, zatímco v Stream Analytics úlohy, v části **Konfigurovat** vyberte **zásady chyb** , aby se provedl výběr.
 
 ![Umístění zásad chyb výstupu Azure Stream Analytics](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
 
-## <a name="retry"></a>Zkusit znovu
+## <a name="retry"></a>Retry
 Pokud dojde k chybě, Azure Stream Analytics pokusy o zápis události po neomezenou dobu, dokud zápis nebude úspěšný. Pro opakované pokusy není k dispozici žádný časový limit. Nakonec se všechny následné události zablokují ze zpracování událostí, která se opakuje. Tato možnost je výchozí zásadou zpracování chyb výstupu.
 
 ## <a name="drop"></a>Umístíte
@@ -34,4 +33,4 @@ Všechny přechodné chyby (například chyby sítě) se zopakují bez ohledu na
 
 
 ## <a name="next-steps"></a>Další kroky
-[Průvodce odstraňováním potíží pro Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
+[Průvodce odstraňováním potíží pro Azure Stream Analytics](./stream-analytics-troubleshoot-query.md)

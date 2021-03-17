@@ -1,6 +1,6 @@
 ---
-title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
-description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
+title: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
+description: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí šablony Azure Resource Manager
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084394"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621424"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Kurz: použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub
 
@@ -30,7 +30,7 @@ ms.locfileid: "74084394"
 
 Druhá část tohoto kurzu vám umožní stáhnout a spustit aplikaci Visual Studio pro posílání zpráv do IoT Hub. V tomto souboru se nachází složka, která obsahuje Azure Resource Manager šablona a soubor parametrů, a také skripty Azure CLI a PowerShell.
 
-Pokračujte a Stáhněte si [ukázky pro Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) hned teď. Rozbalte hlavní soubor. zip. Šablona Správce prostředků a soubor parametrů jsou v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **template_iothub. JSON** a **template_iothub_parameters. JSON**.
+Pokračujte a Stáhněte si [ukázky pro Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) hned teď. Rozbalte soubor master.zip. Šablona Správce prostředků a soubor parametrů jsou v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **template_iothub.jszapnuté** a **template_iothub_parameters.js**.
 
 ## <a name="create-your-resources"></a>Vytvoření prostředků
 
@@ -58,7 +58,7 @@ Většina těchto parametrů má výchozí hodnoty. Ty, které končí **_in** j
 
 **sku_name**: Toto pole je měřítko pro IoT Hub. Tato hodnota musí být S1 nebo vyšší. Bezplatná úroveň pro tento kurz nefunguje, protože nepovoluje více koncových bodů.
 
-**sku_units**: Toto pole se používá **sku_name**a je počet IoT Hub jednotek, které se dají použít.
+**sku_units**: Toto pole se používá **sku_name** a je počet IoT Hub jednotek, které se dají použít.
 
 **d2c_partitions**: Toto pole je počet oddílů používaných pro datový proud událostí.
 
@@ -195,7 +195,7 @@ Další část je oddíl konfigurace směrování zpráv pro službu IoT Hub. Pr
 
 Pro vytvoření připojovacího řetězce pro frontu potřebujete queueAuthorizationRulesResourcedId, který se načte jako vložený. Pokud chcete vytvořit připojovací řetězec pro účet úložiště, načtěte primární klíč úložiště a pak ho použijte ve formátu připojovacího řetězce.
 
-Konfigurace koncového bodu taky nastavuje formát objektu BLOB na `AVRO` nebo. `JSON`
+Konfigurace koncového bodu taky nastavuje formát objektu BLOB na `AVRO` nebo `JSON` .
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -231,7 +231,7 @@ Konfigurace koncového bodu taky nastavuje formát objektu BLOB na `AVRO` nebo. 
 
 Tato další část je určena pro směrování zpráv do koncových bodů. U každého koncového bodu je nastavená jedna sada, takže je k dispozici pro frontu Service Bus a jednu pro kontejner účtu úložiště.
 
-Pamatujte, že podmínka dotazu pro zprávy směrované do úložiště je `level="storage"`a podmínka dotazu pro zprávy směrované do fronty Service Bus je. `level="critical"`
+Pamatujte, že podmínka dotazu pro zprávy směrované do úložiště je `level="storage"` a podmínka dotazu pro zprávy směrované do fronty Service Bus je `level="critical"` .
 
 ```json
 "routes": [
@@ -358,13 +358,13 @@ Pokud chcete nasadit šablonu do Azure, nahrajte šablonu a soubor parametrů, a
 
 Chcete-li nahrát soubory, vyberte ikonu **nahrát/stáhnout soubory** v řádku nabídek a pak zvolte Odeslat.
 
-![Cloud Shell řádku nabídek s zvýrazněnou možností nahrát/stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![Snímek obrazovky, který zvýrazní ikonu pro nahrávání nebo stahování souborů.](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
 Pomocí Průzkumníka souborů, které se zobrazí, Najděte soubory na místním disku a vyberte je a pak zvolte **otevřít**.
 
 Po nahrání souborů se v dialogovém okně výsledků zobrazí něco jako na následujícím obrázku.
 
-![Cloud Shell řádku nabídek s zvýrazněnou možností nahrát/stáhnout soubory](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Cloud Shell řádku nabídek s zvýrazněnými výsledky nahrávání nebo stahování](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 Soubory se nahrají do sdílené složky používané instancí Cloud Shell. 
 

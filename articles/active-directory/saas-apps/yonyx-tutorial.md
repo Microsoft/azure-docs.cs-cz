@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 097c17e9c948fbf1adb42edf901170f24a305369
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1cbf0b03928f8cf8823fe2491c48d0470cf24606
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546215"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Kurz: Azure Active Directory integrace s interaktivními vodítky Yonyx
 
@@ -27,10 +27,10 @@ Integrace Yonyx interaktivních průvodců se službou Azure AD poskytuje násle
 * Můžete uživatelům povolit, aby se automaticky přihlásili k Yonyx interaktivním průvodcům (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí interaktivních průvodců Yonyx potřebujete následující položky:
 
@@ -75,7 +75,7 @@ Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propo
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí interaktivních průvodců Yonyx, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování Yonyx interaktivních průvodců](#configure-yonyx-interactive-guides-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurovat jednotné přihlašování pro Yonyx interaktivní příručky](#configure-yonyx-interactive-guides-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření Yonyx interaktivních průvodců – testovací uživatel](#create-yonyx-interactive-guides-test-user)** – může mít protějšek Britta Simon v Yonyx interaktivních průvodcích, které jsou propojené s reprezentací uživatele v Azure AD.
@@ -95,7 +95,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí interakt
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí interakt
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro Yonyx interaktivní příručky pro klienta](mailto:support@yonyx.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -124,7 +124,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí interakt
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-yonyx-interactive-guides-single-sign-on"></a>Konfigurace jednotného přihlašování Yonyx interaktivních průvodců
+### <a name="configure-yonyx-interactive-guides-single-sign-on"></a>Konfigurace Yonyx interaktivních průvodců jedním Sign-On
 
 Chcete-li nakonfigurovat jednotné přihlašování na straně **Yonyx Interactive** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory interaktivních průvodců Yonyx](mailto:support@yonyx.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -150,7 +150,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -158,7 +158,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **interaktivní příručky Yonyx**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Yonyx interaktivní příručky**.
 
@@ -189,13 +189,12 @@ V této části se v interaktivních průvodcích Yonyx vytvoří uživatel s n�
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici interaktivních vodítek Yonyx na přístupovém panelu byste měli být automaticky přihlášení k Yonyx interaktivním průvodcům, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici interaktivních vodítek Yonyx na přístupovém panelu byste měli být automaticky přihlášení k Yonyx interaktivním průvodcům, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 01/27/2021
 ms.author: apimpm
-ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243711"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492599"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování ve službě API Management
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
 
-##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a>Zásady ověřování
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> Zásady ověřování
 
 -   Ověřování pomocí služby [back-end](api-management-authentication-policies.md#Basic) s využitím základního ověřování pomocí back-endu
 
@@ -31,7 +31,7 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 -   [Ověřování pomocí spravované identity](api-management-authentication-policies.md#ManagedIdentity) – ověřování pomocí [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) pro službu API Management.
 
-##  <a name="authenticate-with-basic"></a><a name="Basic"></a>Ověřování s využitím úrovně Basic
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a> Ověřování s využitím úrovně Basic
  Použijte `authentication-basic` zásadu k ověřování pomocí back-end služby pomocí základního ověřování. Tato zásada efektivně nastaví hlavičku autorizace protokolu HTTP na hodnotu odpovídající přihlašovacím údajům uvedeným v zásadách.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
@@ -48,16 +48,16 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Vyžadováno|
+|Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|ověřování – základní|Kořenový element.|Ano|
+|ověřování – základní|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Vyžadováno|Výchozí|
+|Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|username|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|Nelze použít|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|Nelze použít|
+|username|Určuje uživatelské jméno základního přihlašovacího údaje.|Yes|–|
+|heslo|Určuje heslo základního přihlašovacího údaje.|Yes|–|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -66,8 +66,11 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 -   **Obory zásad:** všechny rozsahy
 
-##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a>Ověřování pomocí klientského certifikátu
- Pomocí této `authentication-certificate` zásady můžete ověřit pomocí back-end služby pomocí klientského certifikátu. Certifikát je potřeba nainstalovat nejdřív [do API Management](https://go.microsoft.com/fwlink/?LinkID=511599) a je identifikovaný jeho kryptografickým otiskem.
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Ověřování pomocí klientského certifikátu
+ Pomocí této `authentication-certificate` zásady můžete ověřit pomocí back-end služby pomocí klientského certifikátu. Certifikát se musí nejdřív [nainstalovat do API Management](./api-management-howto-mutual-certificates.md) a identifikuje ho jeho kryptografický otisk nebo ID certifikátu (název prostředku). 
+
+> [!CAUTION]
+> Pokud certifikát odkazuje na certifikát uložený v Azure Key Vault, identifikujte ho pomocí ID certifikátu. Když se certifikát trezoru klíčů otočí, dojde ke změně jeho kryptografického otisku v API Management a tato zásada nerozpozná nový certifikát, pokud je identifikovaný kryptografickým otiskem.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -77,18 +80,17 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="examples"></a>Příklady
 
-V tomto příkladu je klientský certifikát identifikovaný pomocí jeho kryptografického otisku:
-
-```xml
-<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
-```
-
-V tomto příkladu je klientský certifikát identifikovaný názvem prostředku:
+V tomto příkladu je klientský certifikát identifikovaný ID certifikátu:
 
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ``` 
 
+V tomto příkladu je klientský certifikát identifikovaný pomocí jeho kryptografického otisku:
+
+```xml
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
+```
 V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačtený z integrovaného úložiště certifikátů:
 
 ```xml
@@ -97,18 +99,18 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
 
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Vyžadováno|  
+|Název|Popis|Povinné|  
 |----------|-----------------|--------------|  
-|ověřování – certifikát|Kořenový element.|Ano|  
+|ověřování – certifikát|Kořenový element.|Yes|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Vyžadováno|Výchozí|  
+|Název|Popis|Povinné|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Nelze použít|
-|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Nelze použít|
-|text|Certifikát klienta jako bajtové pole.|Ne|Nelze použít|
-|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|Nelze použít|
+|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|–|
+|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|–|
+|text|Certifikát klienta jako bajtové pole.|No|–|
+|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|–|
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.  
@@ -117,7 +119,7 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
   
 -   **Obory zásad:** všechny rozsahy  
 
-##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Ověřování pomocí spravované identity  
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> Ověřování pomocí spravované identity  
  Pomocí této `authentication-managed-identity` zásady můžete ověřit službu back-end pomocí spravované identity. Tato zásada v podstatě používá spravovanou identitu k získání přístupového tokenu z Azure Active Directory pro přístup k zadanému prostředku. Po úspěšném získání tokenu zásada nastaví hodnotu tokenu v `Authorization` záhlaví pomocí `Bearer` schématu.
 
 K vyžádání tokenu se dá použít jak identita přiřazená systémem, tak i kterákoli z více uživatelsky přiřazených identit. Pokud není `client-id` zadána identita přiřazená systémem, předpokládá se. Pokud je k `client-id` této identitě přiřazena proměnná, je vyžadována pro tuto identitu uživatele z Azure Active Directory
@@ -174,18 +176,18 @@ K vyžádání tokenu se dá použít jak identita přiřazená systémem, tak i
 
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Vyžadováno|  
+|Název|Popis|Povinné|  
 |----------|-----------------|--------------|  
-|ověřování – spravovaná identita |Kořenový element.|Ano|  
+|ověřování – spravovaná identita |Kořenový element.|Yes|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Vyžadováno|Výchozí|  
+|Název|Popis|Povinné|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|Nelze použít|
-|ID klienta|Řetězec. ID aplikace identity přiřazené uživatelem v Azure Active Directory.|Ne|Identita přiřazená systémem|
-|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |Ne|Nelze použít|  
-|ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|Ne|false (nepravda)|  
+|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Yes|–|
+|ID klienta|Řetězec. ID aplikace identity přiřazené uživatelem v Azure Active Directory.|No|Identita přiřazená systémem|
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|–|  
+|ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|No|false (nepravda)|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.  
@@ -200,4 +202,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Transformační rozhraní API](transform-api.md)
 + [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
-+ [Ukázky zásad](policy-samples.md)
++ [Ukázky zásad](./policy-reference.md)

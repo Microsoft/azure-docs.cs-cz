@@ -3,7 +3,7 @@ title: Konfigurace kodéru Haivision KB pro odeslání živého datového proudu
 description: V tomto tématu se dozvíte, jak nakonfigurovat kodér Haivision KB Live pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase.
 services: media-services
 documentationcenter: ''
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: vsood
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 20c75672bc7198fb028278dc5432cc6a77e3766e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641687"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016861"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Haivision KB Live k odeslání živého datového proudu s jednou přenosovou rychlostí  
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Haivision KB Live k odeslání živého datového proudu s jednou přenosovou rychlostí
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Haivision](media-services-configure-kb-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)

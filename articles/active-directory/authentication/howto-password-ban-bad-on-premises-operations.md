@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419763"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741775"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Povolení ochrany heslem v místní Azure Active Directory
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak povolit ochranu heslem Azure AD pro místní p
 
 ## <a name="enable-on-premises-password-protection"></a>Povolit místní ochranu heslem
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory**  >  **Security**  >  **metody ověřování**zabezpečení  >  **ochrana heslem**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory**  >  **Security**  >  **metody ověřování** zabezpečení  >  **ochrana heslem**.
 1. Nastavte možnost **Povolit ochranu heslem ve službě Windows Server Active Directory** na *hodnotu Ano*.
 
     Pokud je toto nastavení nastaveno na *ne*, všechny nasazené agenty řadiče domény Azure AD se přejdou do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak jsou. Neprovádí se žádné aktivity ověření a události auditu se nevygenerují.

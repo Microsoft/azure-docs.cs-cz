@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fa92002cfef070218902aa7919900dde9fe5a9b5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080605"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505405"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
@@ -35,7 +35,7 @@ V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Po
 1. Na webu [Azure Portal](https://portal.azure.com/)klikněte na **vytvořit prostředek > web a mobilní zařízení > webovou aplikaci**. 
    
     ![Snímek obrazovky, který ukazuje, kde vytvořit webovou aplikaci v Azure Portal.][1]
-2. Vyberte předplatné.  
+2. Vyberte své předplatné.  
    
     Pokud máte více předplatných, abyste si mohli ve svém App Service Environment vytvořit aplikaci, musíte použít stejné předplatné, které jste použili při vytváření prostředí. 
 3. Vyberte nebo vytvořte skupinu prostředků.
@@ -54,10 +54,10 @@ V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Po
    
     Pokud vaše pomocné služby používá externí VIP, adresa URL aplikace v pomocném mechanismu je: [*název_webu*]. [*název App Service Environment*]. p.azurewebsites.NET místo [*název_webu*]. azurewebsites.NET
    
-    Pokud vaše pomocné služby používá interní virtuální IP adresu, adresa URL aplikace v tomto pomocném programu je: [*název_webu*]. [*subdoména zadaná během vytváření POmocného mechanismu*řízení]   
+    Pokud vaše pomocné služby používá interní virtuální IP adresu, adresa URL aplikace v tomto pomocném programu je: [*název_webu*]. [*subdoména zadaná během vytváření POmocného mechanismu* řízení]   
     Po výběru stránky ASP během vytváření pomocného mechanismu se zobrazí aktualizace subdomény pod **názvem** .
 
-## <a name="create-an-app-service-plan"></a><a name="createplan"></a>Vytvoření plánu App Service
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> Vytvoření plánu App Service
 Při vytváření plánu App Service v App Service Environment se volby pracovních procesů liší, protože v pomocném mechanismu pro řízení neexistují žádné sdílené pracovní procesy.  Pracovní procesy, které se mají použít, jsou ty, které správce přidělil správci.  To znamená, že pokud chcete vytvořit nový plán, musíte mít více pracovníků přidělených vašemu fondu pracovních procesů pomocného programu, než celkový počet instancí ve všech vašich plánech, které už jsou v daném fondu pracovních procesů.  Pokud ve fondu pracovních procesů pomocného mechanismu přihlašování nemáte dostatečná pracovní procesy k vytvoření vašeho plánu, budete je muset přičíst pomocí Správce pomocného programu.
 
 Dalším rozdílem v App Servicech plánech hostovaných App Service Environment je nedostatek cenového výběru.  Když máte App Service Environment platíte za výpočetní prostředky používané systémem a nepřidali jste poplatky za plány v tomto prostředí.  Normálně při vytváření plánu App Service vyberete Cenový tarif, který určuje vaši fakturaci.  App Service Environment je v podstatě soukromým umístěním, kde můžete vytvářet obsah.  Platíte za prostředí a nebudete hostovat svůj obsah.
@@ -105,4 +105,4 @@ Po vytvoření webové aplikace a plánu App Service je vhodné ji škálovat.  
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: /powershell/azure/

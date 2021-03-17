@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271258"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574383"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
 
@@ -41,15 +41,15 @@ V tomto kurzu se naučíte:
 
 Seznamte se s těmito články:
 
-- [Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](../../azure-monitor/essentials/tutorial-resource-logs.md)
 
-- [Jak integrovat protokoly aktivit pomocí Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit pomocí Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Správa účtu pro nouzový přístup v Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Správa účtu pro nouzový přístup v Azure AD](../roles/security-emergency-access.md)
 
-- [Stručná referenční příručka ke KQL](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [Stručná referenční příručka ke KQL](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure Monitor sešity](../../azure-monitor/visualize/workbooks-overview.md)
 
 
 
@@ -72,13 +72,13 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
 3. Na stránce pracovní prostory Log Analytics klikněte na **Přidat**.
 
-    ![Přidat](./media/tutorial-log-analytics-wizard/add.png)
+    ![Snímek obrazovky se zobrazí na stránce pracovní prostory Log Analytics tlačítko Přidat.](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  Na stránce **vytvořit Log Analytics pracovní prostor** proveďte následující kroky:
 
     ![Vytvoření pracovního prostoru Log Analytics](./media/tutorial-log-analytics-wizard/create-log-analytics-workspace.png)
 
-    1. Vyberte předplatné.
+    1. Vyberte své předplatné.
 
     2. Vyberte skupinu prostředků.
  
@@ -88,7 +88,7 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
 5. Klikněte na **Zkontrolovat a vytvořit**.
 
-    ![Podokno Zkontrolovat a vytvořit](./media/tutorial-log-analytics-wizard/review-create.png)
+    ![Zkontrolovat a vytvořit](./media/tutorial-log-analytics-wizard/review-create.png)
 
 6. Klikněte na **vytvořit** a počkejte na úspěšné nasazení. Je možné, že budete muset aktualizovat stránku, aby se zobrazil nový pracovní prostor.
 
@@ -96,11 +96,11 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
 7. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Snímek obrazovky ukazuje Azure Active Directory ve službě Azure Search.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. V části **monitorování** klikněte na **nastavení diagnostiky**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![Snímek obrazovky zobrazuje nastavení diagnostiky vybraná z monitorování.](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. Na stránce **nastavení diagnostiky** klikněte na **Přidat nastavení diagnostiky**.
 
@@ -110,9 +110,9 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
     ![Vybrat nastavení diagnostiky](./media/tutorial-log-analytics-wizard/select-diagnostics-settings.png)
 
-    1. V části **Podrobnosti kategorie**vyberte **AuditLogs** a **SigninLogs**.
+    1. V části **Podrobnosti kategorie** vyberte **AuditLogs** a **SigninLogs**.
 
-    2. V části **Podrobnosti o cíli**vyberte **Odeslat do Log Analytics**a pak vyberte svůj nový pracovní prostor Log Analytics. 
+    2. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics** a pak vyberte svůj nový pracovní prostor Log Analytics. 
    
     3. Klikněte na **Uložit**. 
 
@@ -128,7 +128,7 @@ Tento postup ukazuje, jak spustit dotazy pomocí **dotazovacího jazyka Kusto (K
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Snímek obrazovky ukazuje Azure Active Directory ve službě Azure Search.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na **protokoly**.
 
@@ -172,7 +172,7 @@ Překlopit výsledky na název operace
 
 Sloučení společně auditu a přihlášení pomocí vnitřního spojení:
 
-`AuditLogs |where OperationName contains "Add User" |extend UserPrincipalName = tostring(TargetResources[0].userPrincipalName) | |project TimeGenerated , UserPrincipalName |join kind = inner (SigninLogs) on UserPrincipalName |summarize arg_min(TimeGenerated, *) by UserPrincipalName |extend SigninDate = TimeGenerated` 
+`AuditLogs |where OperationName contains "Add User" |extend UserPrincipalName = tostring(TargetResources[0].userPrincipalName) | |project TimeGenerated, UserPrincipalName |join kind = inner (SigninLogs) on UserPrincipalName |summarize arg_min(TimeGenerated, *) by UserPrincipalName |extend SigninDate = TimeGenerated` 
 
 
 Zobrazit počet přihlášení podle typu klientské aplikace:
@@ -210,7 +210,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Snímek obrazovky ukazuje Azure Active Directory ve službě Azure Search.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na **protokoly**.
 
@@ -226,7 +226,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
 8. Na stránce **vytvořit pravidlo výstrahy** ověřte, zda je obor správný.
 
-9. V části **Podmínka**klikněte na: **vždy, když je průměrné hledání vlastního protokolu větší než <logic undefined> počet** .
+9. V části **Podmínka** klikněte na: **vždy, když je průměrné hledání vlastního protokolu větší než <logic undefined> počet** .
 
     ![Výchozí podmínka](./media/tutorial-log-analytics-wizard/default-condition.png)
 
@@ -234,11 +234,11 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     ![Logika výstrahy](./media/tutorial-log-analytics-wizard/alert-logic.png)
 
-    1. V **závislosti na**vyberte **počet výsledků**.
+    1. V **závislosti na** vyberte **počet výsledků**.
 
-    2. Jako **operátor**vyberte **větší než**.
+    2. Jako **operátor** vyberte **větší než**.
 
-    3. Jako **prahová hodnota**vyberte **0**. 
+    3. Jako **prahová hodnota** vyberte **0**. 
 
 11. Na stránce **Konfigurovat logiku signálu** v části **vyhodnocováno** podle proveďte následující kroky:
 
@@ -250,7 +250,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     3. Klikněte na **Hotovo**. 
 
-12. V části **Skupina akcí**klikněte na **Vybrat skupinu akcí**. 
+12. V části **Skupina akcí** klikněte na **Vybrat skupinu akcí**. 
 
     ![Skupina akcí](./media/tutorial-log-analytics-wizard/action-group.png)
 
@@ -260,7 +260,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
 14. Na stránce **vytvořit skupinu akcí** proveďte následující kroky:
 
-    ![Podrobnosti instance](./media/tutorial-log-analytics-wizard/instance-details.png)
+    ![Podrobnosti o instancích](./media/tutorial-log-analytics-wizard/instance-details.png)
 
     1. Do textového pole **název skupiny akcí** zadejte **moje skupina akcí**.
 
@@ -268,10 +268,10 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     3. Klikněte na **Zkontrolovat a vytvořit**. 
 
-    4. Klikněte na možnost **Vytvořit**.
+    4. Klikněte na **Vytvořit**.
 
 
-15. V části **přizpůsobit akci**proveďte následující kroky:
+15. V části **přizpůsobit akci** proveďte následující kroky:
 
     ![Přizpůsobení akcí](./media/tutorial-log-analytics-wizard/customize-actions.png)
 
@@ -279,7 +279,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     2. Do textového pole **řádek předmětu** zadejte: `Breakglass account has been used`
 
-16. V části **Podrobnosti pravidla výstrahy**proveďte následující kroky:
+16. V části **Podrobnosti pravidla výstrahy** proveďte následující kroky:
 
     ![Podrobnosti pravidla výstrahy](./media/tutorial-log-analytics-wizard/alert-rule-details.png)
 
@@ -301,11 +301,11 @@ Tento postup ukazuje, jak vytvořit nový sešit pomocí šablony pro rychlý St
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Snímek obrazovky ukazuje Azure Active Directory ve službě Azure Search.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na možnost **sešity**.
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Snímek obrazovky ukazuje monitorování v nabídce Azure Portal s vybranými sešity.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. V části **rychlý Start** klikněte na **prázdné**.
 
@@ -324,7 +324,7 @@ Tento postup ukazuje, jak vytvořit nový sešit pomocí šablony pro rychlý St
 
     ![Text v sešitě](./media/tutorial-log-analytics-wizard/workbook-text.png)
 
-8. V novém sešitu klikněte na tlačítko **Přidat**a potom klikněte na tlačítko **Přidat dotaz**.
+8. V novém sešitu klikněte na tlačítko **Přidat** a potom klikněte na tlačítko **Přidat dotaz**.
 
     ![Přidat dotaz](./media/tutorial-log-analytics-wizard/add-query.png)
 
@@ -332,9 +332,9 @@ Tento postup ukazuje, jak vytvořit nový sešit pomocí šablony pro rychlý St
 
 10. Klikněte na **Spustit dotaz**.
 
-    ![Spuštění dotazu](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![Snímek obrazovky se zobrazí tlačítko spustit dotaz.](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
-11. Na panelu nástrojů v části **vizualizace**klikněte na **výsečový graf**.
+11. Na panelu nástrojů v části **vizualizace** klikněte na **výsečový graf**.
 
     ![Výsečový graf](./media/tutorial-log-analytics-wizard/pie-chart.png)
 
@@ -353,21 +353,21 @@ Tento postup ukazuje, jak přidat dotaz do existující šablony sešitu. Tento 
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Snímek obrazovky ukazuje Azure Active Directory ve službě Azure Search.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na možnost **sešity**.
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Snímek obrazovky s vybranými sešity zobrazuje v nabídce monitorování.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. V části **podmíněný přístup** klikněte na **přehledy podmíněného přístupu a vytváření sestav**.
 
-    ![Šablona podmíněného přístupu](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![Snímek obrazovky se zobrazí jako možnosti podmíněného přístupu a vytváření sestav.](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
 5. Na panelu nástrojů klikněte na tlačítko **Upravit**.
 
-    ![Šablona podmíněného přístupu](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![Snímek obrazovky zobrazující tlačítko Upravit.](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
-6. Na panelu nástrojů klikněte na tři tečky a pak **Přidat**a **Přidat dotaz**.
+6. Na panelu nástrojů klikněte na tři tečky a pak **Přidat** a **Přidat dotaz**.
 
     ![Přidat dotaz na sešit](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
@@ -375,11 +375,11 @@ Tento postup ukazuje, jak přidat dotaz do existující šablony sešitu. Tento 
 
 8. Klikněte na **Spustit dotaz**.
 
-    ![Spuštění dotazu](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![Snímek obrazovky zobrazující tlačítko spustit dotaz pro spuštění tohoto dotazu.](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
-9. Klikněte na **časový rozsah**a pak vyberte **nastavit v dotazu**.
+9. Klikněte na **časový rozsah** a pak vyberte **nastavit v dotazu**.
 
-10. Klikněte na **vizualizace**a pak vyberte **pruhový graf**. 
+10. Klikněte na **vizualizace** a pak vyberte **pruhový graf**. 
 
 11. Klikněte na **Upřesnit nastavení**, jako název grafu, zadejte `Conditional Access status over the last 20 days` a potom klikněte na **hotové úpravy**. 
 

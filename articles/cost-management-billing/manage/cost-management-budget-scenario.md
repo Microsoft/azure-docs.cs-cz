@@ -5,21 +5,22 @@ author: bandersmsft
 ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: af243f715a2f0c966bfa1b08ee465549d7a2d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
-ms.translationtype: HT
+ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136010"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593392"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
-Řízení nákladů je důležitou součástí maximalizace využití investic do cloudu. Existuje několik scénářů, kdy jsou viditelnost nákladů, vytváření jejich sestav a orchestrace na základě nákladů zcela nezbytné pro průběžné obchodní operace. [Rozhraní API Azure Cost Management](https://docs.microsoft.com/rest/api/consumption/) poskytují skupinu rozhraní API pro podporu těchto scénářů. Rozhraní API poskytují podrobnosti o využití a umožňují vám tak zobrazit podrobné náklady na úrovni instance.
+Řízení nákladů je důležitou součástí maximalizace využití investic do cloudu. Existuje několik scénářů, kdy jsou viditelnost nákladů, vytváření jejich sestav a orchestrace na základě nákladů zcela nezbytné pro průběžné obchodní operace. [Rozhraní API Azure Cost Management](/rest/api/consumption/) poskytují skupinu rozhraní API pro podporu těchto scénářů. Rozhraní API poskytují podrobnosti o využití a umožňují vám tak zobrazit podrobné náklady na úrovni instance.
 
-Jako součást kontroly nákladů se běžně používají rozpočty. V Azure je možné nastavit rozpočtový rozsah. Zobrazení rozpočtu můžete například zúžit podle předplatného, skupin prostředků nebo kolekce prostředků. Kromě toho, že rozhraní API pro rozpočty můžete využít k zasílání e-mailových upozornění na dosažení rozpočtového prahu, můžete také pomocí [skupin akcí služby Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) aktivovat orchestrovanou sadu akcí jako výsledek události rozpočtu.
+Jako součást kontroly nákladů se běžně používají rozpočty. V Azure je možné nastavit rozpočtový rozsah. Zobrazení rozpočtu můžete například zúžit podle předplatného, skupin prostředků nebo kolekce prostředků. Kromě toho, že rozhraní API pro rozpočty můžete využít k zasílání e-mailových upozornění na dosažení rozpočtového prahu, můžete také pomocí [skupin akcí služby Azure Monitor](../../azure-monitor/alerts/action-groups.md) aktivovat orchestrovanou sadu akcí jako výsledek události rozpočtu.
 
 Obvyklý scénář rozpočtu by mohl nastat, když zákazník, který používá nekritickou úlohu, chce spravovat rozpočet a také získat přehled předvídatelných nákladů při zobrazení měsíční faktury. Tento scénář vyžaduje určitou orchestraci prostředků, které jsou součástí prostředí Azure, na základě nákladů. V tomto scénáři je pro předplatné nastaven měsíční rozpočet 1 000 USD. Jsou také nastaveny prahové hodnoty upozornění pro aktivaci několika orchestrací. Tento scénář začíná s 80% rozpočtovým prahem, který zastaví všechny virtuální počítače ve skupině prostředků **Volitelné**. Při dosažení 100% rozpočtového prahu se zastaví všechny instance virtuálních počítačů.
 
@@ -34,7 +35,7 @@ Akce, které jsou součástí tohoto kurzu, vám umožní:
 
 ## <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) je služba, která umožňuje skriptovat většinu úloh správy prostředků a tyto úlohy pak spouštět jako naplánované nebo na vyžádání. V rámci tohoto scénáře vytvoříte [runbook Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-types), který se použije k zastavení virtuálních počítačů. K vytvoření tohoto scénáře použijete grafický runbook [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Zastavit virtuální počítače Azure V2) z [galerie](https://docs.microsoft.com/azure/automation/automation-runbook-gallery). Po importu tohoto runbooku do účtu Azure a jeho publikování budete moct při dosažení rozpočtového prahu zastavit virtuální počítače.
+[Azure Automation](../../automation/automation-intro.md) je služba, která umožňuje skriptovat většinu úloh správy prostředků a tyto úlohy pak spouštět jako naplánované nebo na vyžádání. V rámci tohoto scénáře vytvoříte [runbook Azure Automation](../../automation/automation-runbook-types.md), který se použije k zastavení virtuálních počítačů. K vytvoření tohoto scénáře použijete grafický runbook [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Zastavit virtuální počítače Azure V2) z [galerie](../../automation/automation-runbook-gallery.md). Po importu tohoto runbooku do účtu Azure a jeho publikování budete moct při dosažení rozpočtového prahu zastavit virtuální počítače.
 
 ### <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
@@ -48,7 +49,7 @@ Akce, které jsou součástí tohoto kurzu, vám umožní:
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>Import runbooku Stop Azure V2 VMs
 
-Pomocí [runbooku Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-types) naimportujte grafický runbook [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) z galerie.
+Pomocí [runbooku Azure Automation](../../automation/automation-runbook-types.md) naimportujte grafický runbook [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů svého účtu Azure.
 1. Otevřete účet Automation tak, že vyberete **Všechny služby** > **Účty služby Automation**. Potom vyberte svůj účet služby Automation.
@@ -59,7 +60,7 @@ Pomocí [runbooku Azure Automation](https://docs.microsoft.com/azure/automation/
 1. Jakmile runbook dokončí proces importu, vyberte **Upravit** a zobrazte editor grafického runbooku a možnost publikování.  
     ![Azure – Úprava grafického runbooku](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. Výběrem možnosti **Publikovat** runbook publikujte a po zobrazení výzvy vyberte **Ano**. Když runbook publikujete, přepíšete publikovanou verzi verzí v režimu konceptu. V tomto případě ještě publikovanou verzi nemáte, protože jste runbook teprve vytvořili.
-    Další informace o publikování runbooku najdete v článku, který se věnuje [vytvoření grafického runbooku](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical).
+    Další informace o publikování runbooku najdete v článku, který se věnuje [vytvoření grafického runbooku](../../automation/learn/automation-tutorial-runbook-graphical.md).
 
 ## <a name="create-webhooks-for-the-runbook"></a>Vytváření webhooků pro runbook
 
@@ -90,7 +91,7 @@ S nastavením služby Azure Automation jste teď hotovi. Webhooky si můžete ot
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>Vytvoření aplikace logiky Azure pro orchestraci
 
-Logic Apps pomáhá vytvářet, plánovat a automatizovat procesy jako pracovní postupy, takže můžete integrovat aplikace, data, systémy a služby napříč podniky a organizacemi. V tomto scénáři [aplikace logiky](https://docs.microsoft.com/azure/logic-apps/), kterou vytvoříte, provede o něco více, než jen zavolá vytvořený webhook automatizace.
+Logic Apps pomáhá vytvářet, plánovat a automatizovat procesy jako pracovní postupy, takže můžete integrovat aplikace, data, systémy a služby napříč podniky a organizacemi. V tomto scénáři [aplikace logiky](../../logic-apps/index.yml), kterou vytvoříte, provede o něco více, než jen zavolá vytvořený webhook automatizace.
 
 Rozpočty je možné nastavit tak, aby při dosažení zadané prahové hodnoty aktivovaly upozornění. Můžete zadat více prahových hodnot, při jejichž dosažení se pošle upozornění, a aplikace logiky vám poskytne možnost provádění různých akcí na základě dosažené prahové hodnoty. V tomto příkladu nastavíte scénář, ve kterém dostanete několik upozornění. První upozornění se pošle při dosažení 80 % rozpočtu a druhé při dosažení 100 % rozpočtu. Potom se použije aplikace logiky, která vypne všechny virtuální počítače ve skupině prostředků. Nejprve se dosáhne první prahové hodnoty **Volitelné** při 80 %, potom se dosáhne druhé prahové hodnoty, kdy se všechny virtuální počítače v předplatném vypnou.
 
@@ -121,11 +122,11 @@ Jakmile Azure nasadí vaši aplikaci logiky, otevře se **Návrhář pro Logic A
 Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Akce jsou všechny kroky, které se stanou po aktivaci triggeru.
 
 1. V části **Šablony** v oblasti **Návrhář pro Logic Apps** zvolte **Prázdná aplikace logiky**.
-1. Přidejte [trigger](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) zadáním řetězce „požadavek http“ do vyhledávacího pole **Návrháře pro Logic Apps** a vyhledejte a vyberte trigger s názvem **Požadavek – Při přijetí požadavku HTTP**.  
+1. Přidejte [trigger](../../logic-apps/logic-apps-overview.md#logic-app-concepts) zadáním řetězce „požadavek http“ do vyhledávacího pole **Návrháře pro Logic Apps** a vyhledejte a vyberte trigger s názvem **Požadavek – Při přijetí požadavku HTTP**.  
     ![Azure – Aplikace logiky – Trigger HTTP](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. Vyberte **Nový krok** > **Přidat akci**.  
     ![Azure – Nový krok – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. Do vyhledávacího pole **Návrháře pro Logic Apps** zadejte řetězec „parsovat JSON“ a vyhledejte a vyberte [akci](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Operace s daty – Parsovat JSON**.  
+1. Do vyhledávacího pole **Návrháře pro Logic Apps** zadejte řetězec „parsovat JSON“ a vyhledejte a vyberte [akci](../../logic-apps/logic-apps-overview.md#logic-app-concepts) **Operace s daty – Parsovat JSON**.  
     ![Azure – Aplikace logiky – Přidání akce parsování JSON](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. Jako název **obsahu** pro parsování datové části JSON zadejte řetězec „datová část“, nebo použijte značku Text z nabídky dynamického obsahu.
 1. V poli **Parsovat JSON** vyberte možnost **K vygenerování schématu použijte ukázkovou datovou část**.  
@@ -151,7 +152,7 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla 80
 1. Výběrem **OK** výraz nastavte.
 1. V rozevíracím seznamu v části **Podmínka** vyberte **je větší než nebo rovno**.
 1. Do pole **Zvolit hodnotu** podmínky zadejte `.8`.  
-    ![Azure – Aplikace logiky – Výraz Float s hodnotou](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Snímek obrazovky s dialogovým oknem Podmínka a vybranými hodnotami](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. V poli Podmínka vyberte **Přidat** > **Přidat řádek** a přidejte další část podmínky.
 1. V poli **Podmínka** vyberte textové pole obsahující text `Choose a value`.
 1. V horní části seznamu vyberte **Výraz** a do editoru výrazů zadejte následující výraz: `float()`.
@@ -159,7 +160,7 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla 80
 1. Výběrem **OK** výraz nastavte.
 1. V rozevíracím seznamu v části **Podmínka** vyberte **je menší než**.
 1. Do pole **Zvolit hodnotu** podmínky zadejte `1`.  
-    ![Azure – Aplikace logiky – Výraz Float s hodnotou](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Snímek obrazovky s dialogovým oknem Podmínka a dvěma podmínkami](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. V poli **Pokud je true** vyberte **Přidat akci**. Přidáte akci HTTP POST, která vypne volitelné virtuální počítače.  
     ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. Zadejte **HTTP** a vyhledejte akci HTTP. Vyberte akci **HTTP – HTTP**.  
@@ -182,7 +183,7 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla 80
 Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla nebo překročila 100 % hodnoty rozpočtu. Pokud bylo dosaženo prahové částky, pošle HTTP POST pomocí webhooku s názvem **Dokončené**. Tato akce vypne všechny zbývající virtuální počítače.
 
 1. Vyberte **Nový krok** > **Přidat podmínku**.  
-    ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Snímek obrazovky s dialogovým oknem Pokud je true a vybranou možností Přidat akci](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. V poli **Podmínka** vyberte textové pole obsahující text `Choose a value`, aby se zobrazil seznam dostupných hodnot.
 1. V horní části seznamu vyberte **Výraz** a do editoru výrazů zadejte následující výraz: `float()`.
 1. Vyberte **Dynamický obsah**, umístěte kurzor do závorek () a ze seznamu vyberte **NotificationThresholdAmount**, aby se naplnil výraz dokončení.
@@ -193,11 +194,11 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla ne
 1. Do pole **Zvolit hodnotu** podmínky zadejte `1`.  
     ![Azure – Aplikace logiky – Nastavení hodnoty podmínky](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. V poli **Pokud je true** vyberte **Přidat akci**. Přidáte akci HTTP POST, která vypne všechny zbývající virtuální počítače.  
-    ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Snímek obrazovky s dialogovým oknem Pokud je true, kde můžete přidat akci HTTP POST](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. Zadejte **HTTP** a vyhledejte akci HTTP. Vyberte akci **HTTP – HTTP**.
 1. Jako hodnotu v poli **Metoda** vyberte **Post**.
 1. Jako hodnotu **URI** zadejte adresu URL webhooku s názvem **Dokončené**, který jste vytvořili dříve v tomto kurzu.  
-    ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Snímek obrazovky s dialogovým oknem HTTP, kde můžete zadat hodnotu adresy URL](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. V poli **Pokud je true** vyberte **Přidat akci**. Přidáte e-mailovou akci, která pošle příjemci e-mail s upozorněním na vypnutí zbývajících virtuálních počítačů.
 1. Vyhledejte řetězec „poslat e-mail“ a vyberte akci *poslání e-mailu* na základě služby, kterou používáte.
 1. Přidejte text **Komu**, **Předmět** a **Text zprávy** e-mailu, který příjemce upozorní na vypnutí volitelných virtuálních počítačů. Pro naplnění polí předmětu a textu zprávy použijte dynamický obsah **BudgetName** a **NotificationThresholdAmount**.  
@@ -310,7 +311,7 @@ Dále nakonfigurujete prostředí **Postman** a vytvoříte rozpočet zavolání
     ```
 1. Kliknutím na **Send** (Odeslat) požadavek odešlete.
 
-Nyní máte všechny součásti, které potřebujete pro volání [rozhraní API pro rozpočty](https://docs.microsoft.com/rest/api/consumption/budgets). Referenční informace k rozhraní API pro rozpočty obsahují další podrobnosti o konkrétních požadavcích, mezi které patří:
+Nyní máte všechny součásti, které potřebujete pro volání [rozhraní API pro rozpočty](/rest/api/consumption/budgets). Referenční informace k rozhraní API pro rozpočty obsahují další podrobnosti o konkrétních požadavcích, mezi které patří:
 
 - **budgetName** – podporuje se více rozpočtů.  Názvy rozpočtů musí být jedinečné.
 - **category** – musí se jednat o **náklady** nebo **využití**. Rozhraní API podporuje rozpočty nákladů a využití.

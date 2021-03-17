@@ -3,15 +3,22 @@ title: Filtrování telemetrie Azure Application Insights ve webové aplikaci Ja
 description: Zmenšení provozu telemetrie filtrováním událostí, které nepotřebujete monitorovat.
 ms.topic: conceptual
 ms.date: 3/14/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.author: jgol
+ms.openlocfilehash: 35a95ac32fc4390e08d3c7fee2b9f9ff52202e4b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372174"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573815"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
+
+> [!IMPORTANT]
+> Přístup popsaný v tomto dokumentu se už nedoporučuje.
+>
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
 
 Filtry poskytují způsob, jak vybrat telemetrii, kterou vaše [Webová aplikace v jazyce Java odesílá Application Insights](java-get-started.md). K dispozici jsou některé předem připravené filtry, které můžete použít, a můžete také napsat vlastní filtry.
 
@@ -78,10 +85,7 @@ V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto
 
 ```
 
-
-
-
-[Zkontrolujte kompletní sadu integrovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Zkontrolujte kompletní sadu integrovaných procesorů](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
 
 ## <a name="built-in-filters"></a>Předdefinované filtry
 
@@ -94,7 +98,7 @@ V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto
            </Processor>
 ```
 
-* `NotNeeded`-Čárkami oddělený seznam názvů vlastních metrik.
+* `NotNeeded` -Čárkami oddělený seznam názvů vlastních metrik.
 
 
 ### <a name="page-view-telemetry-filter"></a>Filtr telemetrie zobrazení stránky
@@ -108,9 +112,9 @@ V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je tato nastavení nastavena, nejsou hlášeny stránky, které jsou načteny rychleji než tento čas.
-* `NotNeededNames`-Čárkami oddělený seznam názvů stránek.
-* `NotNeededUrls`-Čárkami oddělený seznam fragmentů adresy URL. `"home"`Filtruje například všechny stránky, které mají v adrese URL "Home".
+* `DurationThresholdInMS` -Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je tato nastavení nastavena, nejsou hlášeny stránky, které jsou načteny rychleji než tento čas.
+* `NotNeededNames` -Čárkami oddělený seznam názvů stránek.
+* `NotNeededUrls` -Čárkami oddělený seznam fragmentů adresy URL. `"home"`Filtruje například všechny stránky, které mají v adrese URL "Home".
 
 
 ### <a name="request-telemetry-filter"></a>Vyžádat filtr telemetrie
@@ -149,7 +153,7 @@ Odfiltrovat telemetrii pro konkrétní syntetické zdroje:
            </Processor>
 ```
 
-* `NotNeeded`-Čárkami oddělený seznam syntetických názvů zdrojů.
+* `NotNeeded` -Čárkami oddělený seznam syntetických názvů zdrojů.
 
 ### <a name="telemetry-event-filter"></a>Filtr událostí telemetrie
 
@@ -164,7 +168,7 @@ Filtruje vlastní události (protokolované pomocí [TrackEvent ()](./api-custom
 ```
 
 
-* `NotNeededNames`-Čárkami oddělený seznam názvů událostí.
+* `NotNeededNames` -Čárkami oddělený seznam názvů událostí.
 
 
 ### <a name="trace-telemetry-filter"></a>Trasovat filtr telemetrie
@@ -178,7 +182,7 @@ Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](./api-cu
            </Processor>
 ```
 
-* `FromSeverityLevel`platné hodnoty jsou:
+* `FromSeverityLevel` platné hodnoty jsou:
   *  Odfiltrovat všechna trasování
   *  TRACE – bez filtrování. je rovno úrovni trasování
   *  INFO – filtrování úrovně trasování
@@ -201,32 +205,31 @@ V kódu vytvořte třídu, která implementuje `TelemetryProcessor` :
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required to support the filter.*/
-       private final String successful;
+        /* Any parameters that are required to support the filter.*/
+        private final String successful;
 
-       /* Initializers for the parameters, named "setParameterName" */
-       public void setNotNeeded(String successful)
-       {
-          this.successful = successful;
-       }
-
-       /* This method is called for each item of telemetry to be sent.
-          Return false to discard it.
-          Return true to allow other processors to inspect it. */
-       @Override
-       public boolean process(Telemetry telemetry) {
-        if (telemetry == null) { return true; }
-        if (telemetry instanceof RequestTelemetry)
+        /* Initializers for the parameters, named "setParameterName" */
+        public void setNotNeeded(String successful)
         {
-            RequestTelemetry requestTelemetry = (RequestTelemetry)telemetry;
-            return request.getSuccess() == successful;
+            this.successful = successful;
         }
-        return true;
-       }
+
+        /* This method is called for each item of telemetry to be sent.
+           Return false to discard it.
+           Return true to allow other processors to inspect it. */
+        @Override
+        public boolean process(Telemetry telemetry) {
+            if (telemetry == null) { return true; }
+            if (telemetry instanceof RequestTelemetry)
+            {
+                RequestTelemetry requestTelemetry = (RequestTelemetry)    telemetry;
+                return request.getSuccess() == successful;
+            }
+            return true;
+        }
     }
 
 ```
-
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. vyvolejte filtr v konfiguračním souboru.
 

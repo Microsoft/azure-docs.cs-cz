@@ -1,22 +1,18 @@
 ---
 title: Použití šablon Správce prostředků v Data Factory
 description: Naučte se vytvářet a používat šablony Azure Resource Manager k vytváření entit Data Factory.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c17ef939b8d27035e5b28f4a651b9be2db8f2279
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194465"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382935"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Vytváření Azure Data Factory entit pomocí šablon
 > [!NOTE]
@@ -228,7 +224,7 @@ Podrobnosti o vlastnostech JSON pro definování konkrétního kanálu a aktivit
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Šablona Data Factory Parametrizace
-Osvědčené postupy pro Parametrizace najdete v tématu [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../azure-resource-manager/resource-manager-template-best-practices.md). Obecně platí, že použití parametrů by mělo být minimalizováno, zejména pokud lze použít proměnné. Zadejte pouze parametry v následujících scénářích:
+Osvědčené postupy pro Parametrizace najdete v tématu [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-best-practices.md). Obecně platí, že použití parametrů by mělo být minimalizováno, zejména pokud lze použít proměnné. Zadejte pouze parametry v následujících scénářích:
 
 * Nastavení se liší podle prostředí (příklad: vývoj, testování a produkce).
 * Tajné kódy (například hesla)

@@ -4,12 +4,12 @@ description: Když dojde ke službě Azure, dostanete oznámení prostřednictv�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 84c888195ab7e2f3288691948706d31160393d25
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918919"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594955"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Rychlý Start: vytvoření výstrah protokolu aktivit u oznámení služby pomocí šablony ARM
 
@@ -17,7 +17,7 @@ V tomto článku se dozvíte, jak nastavit výstrahy protokolu aktivit pro ozná
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Oznámení o stavu služby se ukládají do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). Vzhledem k tomu, že je možné velké množství informací uložených v protokolu aktivit, je k dispozici samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby.
+Oznámení o stavu služby se ukládají do [protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md). Vzhledem k tomu, že je možné velké množství informací uložených v protokolu aktivit, je k dispozici samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby.
 
 Když Azure pošle oznámení o stavu služby do vašeho předplatného Azure, můžete obdržet upozornění. Můžete nakonfigurovat výstrahu na základě:
 
@@ -34,11 +34,11 @@ Můžete také nakonfigurovat, komu má být upozornění odesláno:
 - Vyberte existující skupinu akcí.
 - Vytvořte novou skupinu akcí (kterou lze použít k budoucím výstrahám).
 
-Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
+Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/alerts/action-groups.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Pokud chcete spustit příkazy z místního počítače, nainstalujte rozhraní příkazového řádku Azure CLI nebo moduly Azure PowerShell. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli) a [instalace Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="review-the-template"></a>Kontrola šablony
@@ -51,19 +51,19 @@ Následující šablona vytvoří skupinu akcí s cílem e-mailu a povolí všec
   "contentVersion": "1.0.0.0",
   "parameters": {
     "actionGroups_name": {
-      "defaultValue": "SubHealth",
-      "type": "String"
+      "type": "String",
+      "defaultValue": "SubHealth"
     },
     "activityLogAlerts_name": {
-      "defaultValue": "ServiceHealthActivityLogAlert",
-      "type": "String"
+      "type": "String",
+      "defaultValue": "ServiceHealthActivityLogAlert"
     },
-    "emailAddress":{
-      "type":"string"
+    "emailAddress": {
+      "type": "string"
     }
   },
   "variables": {
-    "alertScope":"[concat('/','subscriptions','/',subscription().subscriptionId)]"
+    "alertScope": "[concat('/','subscriptions','/',subscription().subscriptionId)]"
   },
   "resources": [
     {
@@ -72,8 +72,9 @@ Následující šablona vytvoří skupinu akcí s cílem e-mailu a povolí všec
       "apiVersion": "2019-06-01",
       "name": "[parameters('actionGroups_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "dependsOn": [],
+      "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroups_name')]",
         "enabled": true,
@@ -85,8 +86,7 @@ Následující šablona vytvoří skupinu akcí s cílem e-mailu a povolí všec
         ],
         "smsReceivers": [],
         "webhookReceivers": []
-      },
-      "dependsOn": []
+      }
     },
     {
       "comments": "Service Health Activity Log Alert",
@@ -94,8 +94,11 @@ Následující šablona vytvoří skupinu akcí s cílem e-mailu a povolí všec
       "apiVersion": "2017-04-01",
       "name": "[parameters('activityLogAlerts_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "dependsOn": [
+        "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_name'))]"
+      ],
+      "tags": {},
       "properties": {
         "scopes": [
           "[variables('alertScope')]"
@@ -122,10 +125,7 @@ Následující šablona vytvoří skupinu akcí s cílem e-mailu a povolí všec
         },
         "enabled": true,
         "description": ""
-      },
-      "dependsOn": [
-        "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_name'))]"
-      ]
+      }
     }
   ]
 }
@@ -199,7 +199,7 @@ Remove-AzResourceGroup -Name my-resource-group
 - Přečtěte si, jak [nastavit mobilní nabízená oznámení pro Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
 - Přečtěte si o [oznámeních o stavu služby](service-notifications.md).
-- Seznamte se s [omezením rychlosti oznámení](../azure-monitor/platform/alerts-rate-limiting.md).
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Získejte [Přehled výstrah protokolu aktivit](../azure-monitor/platform/alerts-overview.md)a Naučte se přijímat výstrahy.
-- Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).
+- Seznamte se s [omezením rychlosti oznámení](../azure-monitor/alerts/alerts-rate-limiting.md).
+- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/alerts/activity-log-alerts-webhook.md).
+- Získejte [Přehled výstrah protokolu aktivit](../azure-monitor/alerts/alerts-overview.md)a Naučte se přijímat výstrahy.
+- Přečtěte si další informace o [skupinách akcí](../azure-monitor/alerts/action-groups.md).

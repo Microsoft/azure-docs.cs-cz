@@ -1,19 +1,16 @@
 ---
 title: Spouštění úloh Apache Sqoop pomocí .NET a HDInsight – Azure
 description: Naučte se používat sadu HDInsight .NET SDK ke spouštění služby Sqoop pro import a export mezi Apache Hadoopm a Azure SQL Database.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: 5faa3d7bf048eee622ddd5a46082bb2432d84871
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076245"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928344"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop ve službě HDInsight
 
@@ -141,7 +138,7 @@ HDInsight se systémem Linux nabízí tato omezení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace najdete v následujících tématech:
 
 * [Použití Apache Oozie se službou HDInsight](../hdinsight-use-oozie-linux-mac.md): použijte akci Sqoop v pracovním postupu Oozie.
 * [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight nebo Azure Blob Storage.

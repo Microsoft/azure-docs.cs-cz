@@ -4,10 +4,10 @@ description: Referenční informace pro datovou část JSON pro žádosti Webhoo
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74455972"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Reference k Azure Container Registry Webhooku
@@ -36,7 +36,7 @@ Webhook aktivovaný při vložení image kontejneru do úložiště
 
 ### <a name="push-event-payload"></a>Datová část události push
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -46,7 +46,7 @@ Webhook aktivovaný při vložení image kontejneru do úložiště
 
 ### <a name="target"></a><a name="target"></a>cílové
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`size`|Int32|Počet bajtů obsahu. Stejné jako pole length.|
@@ -57,7 +57,7 @@ Webhook aktivovaný při vložení image kontejneru do úložiště
 
 ### <a name="request"></a><a name="request"></a>Request
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`id`|Řetězec|ID žádosti, která iniciovala událost.|
 |`host`|Řetězec|Externě přístupný název hostitele instance registru, jak je určen hlavičkou hostitele HTTP na příchozích požadavcích.|
@@ -100,7 +100,7 @@ Webhook aktivovaný při vložení grafu Helm do úložiště
 
 ### <a name="chart-push-event-payload"></a>Datová část události nabízeného grafu
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -109,7 +109,7 @@ Webhook aktivovaný při vložení grafu Helm do úložiště
 
 ### <a name="target"></a><a name="helm_target"></a>cílové
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`size`|Int32|Počet bajtů obsahu.|
@@ -150,7 +150,7 @@ Webhook aktivovaný při odstranění úložiště imagí nebo manifestu Neaktiv
 
 ### <a name="delete-event-payload"></a>Odstranit datovou část události
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
@@ -158,17 +158,17 @@ Webhook aktivovaný při odstranění úložiště imagí nebo manifestu Neaktiv
 |[cílové](#delete_target)|Komplexní typ|Cíl události, která aktivovala událost Webhooku.|
 |[Request](#delete_request)|Komplexní typ|Požadavek, který vygeneroval událost Webhooku.|
 
-### <a name="target"></a><a name="delete_target"></a>cílové
+### <a name="target"></a><a name="delete_target"></a> cílové
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`digest`|Řetězec|Výtah obsahu definovaný specifikací registru v2 HTTP API.|
 |`repository`|Řetězec|Název úložiště|
 
-### <a name="request"></a><a name="delete_request"></a>Request
+### <a name="request"></a><a name="delete_request"></a> Request
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`id`|Řetězec|ID žádosti, která iniciovala událost.|
 |`host`|Řetězec|Externě přístupný název hostitele instance registru, jak je určen hlavičkou hostitele HTTP na příchozích požadavcích.|
@@ -212,16 +212,16 @@ Webhook aktivovaný při odstranění grafu Helm nebo úložiště
 
 ### <a name="chart-delete-event-payload"></a>Datová část události odstranění grafu
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události Webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost Webhooku.|
 |`action`|Řetězec|Akce, která aktivovala událost Webhooku.|
 |[cílové](#chart_delete_target)|Komplexní typ|Cíl události, která aktivovala událost Webhooku.|
 
-### <a name="target"></a><a name="chart_delete_target"></a>cílové
+### <a name="target"></a><a name="chart_delete_target"></a> cílové
 
-|Prvek|Typ|Description|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu|
 |`size`|Int32|Počet bajtů obsahu.|

@@ -1,7 +1,7 @@
 ---
-title: Transformuje data v Návrháři (Preview).
+title: Transformace dat v Návrháři
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak transformovat data v Návrháři Azure Machine Learning (Preview) a vytvořit si vlastní datové sady.
+description: Naučte se importovat a transformovat data v Návrháři Azure Machine Learning, abyste mohli vytvářet vlastní datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457817"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661048"
 ---
-# <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformuje data v Návrháři Azure Machine Learning (Preview).
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="transform-data-in-azure-machine-learning-designer"></a>Transformace dat v Návrháři Azure Machine Learning
+
 
 V tomto článku se naučíte, jak transformovat a ukládat datové sady v Návrháři Azure Machine Learning, abyste mohli připravit vlastní data pro strojové učení.
 
-K přípravě dvou datových sad použijete ukázkovou datovou sadu [binárních hodnot řazení pro dospělé](sample-designer-datasets.md) : jednu datovou sadu, která obsahuje informace o sestavách dospělého jenom z USA, a další datovou sadu, která obsahuje sčítání informací od jiných než USA.
+K přípravě dvou datových sad použijete ukázkovou datovou sadu [binárních hodnot řazení pro dospělé](./samples-designer.md) : jednu datovou sadu, která obsahuje informace o sestavách dospělého jenom z USA, a další datovou sadu, která obsahuje sčítání informací od jiných než USA.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -52,11 +52,7 @@ Pomocí následujících kroků importujte ukázkovou datovou sadu.
 
 1. Přetáhněte na plátno datovou sadu **binární klasifikace pro příjem z** odkládacích souborů.
 
-1. Vyberte modul navýšení datové sady **příjmů pro dospělé** .
-
-1. V podokně podrobností, které se zobrazí napravo od plátna, vyberte **výstupy**.
-
-1. Vybrat ikonu vizualizace ![ikona vizualizace](media/how-to-designer-transform-data/visualize-icon.png).
+1. Klikněte pravým tlačítkem na modul **pro příjem dat příjmů z dospělého** a vyberte **vizualizovat**  >  **výstup datové sady** .
 
 1. Pomocí okna náhledu dat můžete prozkoumat datovou sadu. Poznamenejte si zvláštní podobu hodnot sloupců "nativní země".
 
@@ -80,7 +76,7 @@ V této části použijete [modul rozdělit data](algorithm-module-reference/spl
 
 Váš kanál by měl vypadat takto:
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="Snímek obrazovky ukazující, jak nakonfigurovat kanál a modul rozdělit data":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat kanál a modul rozdělit data":::
 
 
 ## <a name="save-the-datasets"></a>Uložení datových sad
@@ -97,7 +93,7 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     ![Snímek obrazovky ukazující, jak propojit moduly exportu dat](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. Vyberte modul **exportovat data** , který je připojen k portu nejvíce *vlevo*modulu **rozdělit data** .
+1. Vyberte modul **exportovat data** , který je připojen k portu nejvíce *vlevo* modulu **rozdělit data** .
 
     Pořadí výstupních portů pro modul **rozdělit data** První výstupní port obsahuje řádky, ve kterých je regulární výraz pravdivý. V takovém případě první port obsahuje řádky pro příjem na bázi USA a druhý port obsahuje řádky pro příjem nezaložených na USA.
 
@@ -107,16 +103,16 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     **Úložiště dat**: Vyberte existující úložiště dat, nebo vyberte nové úložiště dat, abyste ho mohli teď vytvořit.
 
-    **Cesta**:`/data/us-income`
+    **Cesta**: `/data/us-income`
 
     **Formát souboru**: CSV
 
     > [!NOTE]
-    > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-access-data.md#studio).
+    > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-connect-data-ui.md#create-datastores).
 
     Pokud úložiště dat nemáte, můžete si ho vytvořit teď. V tomto článku se například uloží datové sady do výchozího účtu služby Blob Storage přidruženého k pracovnímu prostoru. Datové sady se uloží do `azureml` kontejneru v nové složce s názvem `data` .
 
-1.  Vyberte modul **exportovat data** připojený k *pravému*portu modulu **rozdělit data** .
+1.  Vyberte modul **exportovat data** připojený k *pravému* portu modulu **rozdělit data** .
 
 1. V podokně podrobností modulu napravo od plátna nastavte následující možnosti:
     
@@ -124,7 +120,7 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     **Úložiště dat**: vyberte stejné úložiště dat jako výše.
 
-    **Cesta**:`/data/non-us-income`
+    **Cesta**: `/data/non-us-income`
 
     **Formát souboru**: CSV
 

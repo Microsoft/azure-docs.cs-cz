@@ -1,26 +1,27 @@
 ---
 title: Kódování videa a zvuku pomocí Media Services
-titleSuffix: Azure Media Services
 description: Tento článek vysvětluje, jak kódovat video a zvuk pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a486057a265b02ce30059940c8c98837ec43f8e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053337"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617637"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Termín kódování v Media Services se vztahuje na proces převodu souborů obsahujících digitální video nebo zvuk z jednoho standardního formátu na jiný, s účelem (a) zmenšování velikosti souborů a/nebo (b), která vytváří formát kompatibilní s širokou škálou zařízení a aplikací. Tento proces je také označován jako komprese videa nebo překódování. Další diskuzi o konceptech najdete v tématu [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [co je kódování a překódování](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) .
 
@@ -94,20 +95,25 @@ Media Services podporuje následující předdefinované předvolby kódování:
 
 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) se používá k nastavení integrované předvolby pro kódování vstupního videa pomocí kodéru Standard.
 
-V současné době jsou podporovány následující předvolby:
+V současné době jsou podporovány následující předdefinované předvolby:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: vytvoří jeden soubor MP4 obsahující pouze stereofonní zvuk kódovaný v 192 KB/s.
-- **EncoderNamedPreset. AdaptiveStreaming** (doporučeno): Další informace najdete v tématu [Automatické generování žebříku přenosové rychlosti](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset. ContentAwareEncoding**: zpřístupňuje přednastavení pro kódování zohledňující obsah. Vzhledem k jakémukoli vstupnímu obsahu se služba pokusí automaticky určit optimální počet vrstev a odpovídající rychlost a nastavení rozlišení pro doručování pomocí adaptivního streamování. Základní algoritmy se budou dál vyvíjet v průběhu času. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu [kódování s ohledem na obsah](content-aware-encoding.md).
-
+- **EncoderNamedPreset. AdaptiveStreaming** (doporučeno): Tato podpora umožňuje kódování H. 264 s adaptivní přenosovou rychlostí. Další informace najdete v tématu [Automatické generování žebříku přenosové rychlosti](autogen-bitrate-ladder.md).
+- **EncoderNamerPreset. H265AdaptiveStreaming** : podobná předvolbě AdaptiveStreaming, ale používá kodek HEVC (H. 265). Vytvoří sadu souborů MP4 zarovnaných pomocí skupinu GOP s videem H. 265 a stereofonním zvukem AAC. Automaticky generuje žebřík s přenosovou rychlostí na základě rozlišení vstupu, přenosové rychlosti a snímkové frekvence. Automaticky vygenerované předvolby nikdy nepřekročí vstupní rozlišení. Například pokud je vstup ve formátu 720p, výstup bude ve formátu 720p nejlepší.
+- **EncoderNamedPreset. ContentAwareEncoding**: zpřístupňuje přednastavení pro kódování s ohledem na obsah H. 264. Vzhledem k jakémukoli vstupnímu obsahu se služba pokusí automaticky určit optimální počet vrstev a odpovídající rychlost a nastavení rozlišení pro doručování pomocí adaptivního streamování. Základní algoritmy se budou dál vyvíjet v průběhu času. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu [kódování s ohledem na obsah](content-aware-encoding.md).
+- **EncoderNamedPreset. H265ContentAwareEncoding**: zpřístupňuje přednastavení pro kódování s podporou obsahu HEVC (H. 265). Vytvoří sadu rychlostmi zarovnaných k skupinu GOP pomocí kódování s podporou obsahu. Vzhledem k jakémukoli vstupnímu obsahu služba provádí počáteční odlehčenou analýzu vstupního obsahu a výsledky používá k určení optimálního počtu vrstev, vhodné rychlosti a nastavení rozlišení pro doručování pomocí adaptivního streamování. Tato předvolba je zvláště platná pro videa s nízkou a střední složitostí, kde výstupní soubory budou s nižšími rychlostmi přenosů, ale i kvalita, která uživatelům nabízí dobré prostředí. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem.
   > [!NOTE]
-  > Ujistěte se, že používáte **ContentAwareEncoding** , který není ContentAwareEncodingExperimental.
+  > Ujistěte se, že používáte **ContentAwareEncoding** , který není ContentAwareEncodingExperimental, který je teď zastaralý.
+
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: vytvoří sadu osmi souborů MP4 zarovnaných na skupinu GOP, od 6000 do 400 KB/s a stereofonního zvuku AAC. Řešení začíná v 1080p a přejde do 360p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: vytvoří sadu šesti souborů MP4 zarovnaných na skupinu GOP, od 3400 do 400 KB/s a stereofonního zvuku AAC. Řešení začíná ve formátu 720p a přejde do 360p.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: vytvoří sadu pěti souborů MP4 zarovnaných na skupinu GOP, od 1600 do 400 KB/s a stereofonního zvuku AAC. Řešení začíná na 480p a přejde do 360p.
 - **EncoderNamedPreset. H264SingleBitrate1080p**: vytvoří soubor MP4, kde video je zakódováno pomocí kodeku H. 264 v 6750 kbps a výšce obrázku 1080 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
 - **EncoderNamedPreset. H264SingleBitrate720p**: vytvoří soubor MP4, kde video je zakódováno pomocí kodeku H. 264 v 4500 kbps a výšce obrázku 720 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
 - **EncoderNamedPreset. H264SingleBitrateSD**: vytvoří soubor MP4, kde video je zakódováno pomocí kodeku H. 264 v 2200 kbps a výšce obrázku 480 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
+- **EncoderNamedPreset. H265SingleBitrate720P**: vytvoří soubor MP4, kde je video zakódováno pomocí kodeku HEVC (H. 265) v 1800 kbps a výšce obrázku 720 pixelů a stereo zvuk je kódovaný pomocí kodeku AAC-LC v 128 kb/s.
+- **EncoderNamedPreset. H265SingleBitrate1080p**: vytvoří soubor MP4, kde je video zakódováno pomocí kodeku HEVC (H. 265) v 3500 kbps a výšce obrázku 1080 pixelů a stereo zvuk je kódovaný pomocí kodeku AAC-LC v 128 kb/s.
+- **EncoderNamedPreset. H265SingleBitrate4K**: vytvoří soubor MP4, kde je video zakódováno pomocí kodeku HEVC (H. 265) v 9500 kbps a výšce obrázku 2160 pixelů a stereo zvuk je kódovaný pomocí kodeku AAC-LC v 128 kb/s.
 
 Pokud chcete zobrazit seznam nejaktuálnějších nastavení, přečtěte si téma [integrované předvolby, které se použijí pro kódování videí](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
@@ -134,13 +140,15 @@ Media Services plně podporuje přizpůsobení všech hodnot v předvolbách, ab
 - [Přizpůsobení přednastavení pomocí rozhraní příkazového řádku](custom-preset-cli-howto.md)
 - [Přizpůsobení předvoleb pomocí REST](custom-preset-rest-howto.md)
 
+
 ## <a name="preset-schema"></a>Předdefinované schéma
 
-V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (nebo v jiné referenční dokumentaci sady Media Services V3 SDK).
+V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) (nebo v jiné referenční dokumentaci sady Media Services V3 SDK).
 
 ## <a name="scaling-encoding-in-v3"></a>Škálování kódování ve verzi 3
 
 Škálování zpracování médií najdete v tématu [škálování pomocí](media-reserved-units-cli-how-to.md)rozhraní příkazového řádku.
+Pro účty vytvořené v rámci verze **2020-05-01** rozhraní API nebo prostřednictvím Azure Portal se už nevyžadují škálování a rezervované jednotky médií. Škálování bude automaticky zpracováno službou interně.
 
 ## <a name="billing"></a>Fakturace
 

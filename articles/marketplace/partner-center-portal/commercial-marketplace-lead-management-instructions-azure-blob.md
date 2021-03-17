@@ -4,15 +4,15 @@ description: Naučte se používat Azure Blob ke konfiguraci zájemců pro Micro
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/01/2020
-ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121907"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491099"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Použití úložiště objektů BLOB v Azure ke správě zájemců z komerčního tržiště
 
@@ -33,7 +33,7 @@ ms.locfileid: "86121907"
 3. V Azure Portal vytvořte pomocí následujícího postupu účet úložiště.  
     1. V levém panelu nabídek vyberte **+ vytvořit prostředek** .  **Nové** podokno (okno) se zobrazí vpravo.
     2. V podokně **Nový** vyberte **úložiště** .  Na pravé straně se zobrazí **vybraný** seznam.
-    3. Vyberte **účet úložiště** pro zahájení vytváření účtu.  Postupujte podle pokynů v článku [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    3. Vyberte **účet úložiště** pro zahájení vytváření účtu.  Postupujte podle pokynů v článku [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md?tabs=azure-portal).
 
     ![Postup vytvoření účtu úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
@@ -45,21 +45,21 @@ ms.locfileid: "86121907"
 
 5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu *připojovacího řetězce* pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště* , kterou budete muset zadat na portálu pro publikování a získat zájemce pro vaši nabídku na webu Marketplace.
 
-     Příkladem připojení Sting je:
+     Příkladem připojovacího řetězce je:
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Klíč úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![Snímek obrazovky zobrazující stránku přístupové klíče se zvýrazněným textovým polem "připojovací řetězec".](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
 6. Na stránce účet úložiště vyberte **objekty blob**.
 
-   ![Klíč úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![Snímek obrazovky se stránkou účtu úložiště Azure s vybranými objekty blob](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. Po výběru na stránce objektů BLOB vyberte tlačítko **+ kontejner** .
 
-8. Zadejte **název** nového kontejneru. Název kontejneru musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a spojovníky (-). Další informace o názvech kontejnerů a objektů BLOB najdete v tématu [pojmenování a odkazování kontejnerů, objektů BLOB a metadat](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+8. Zadejte **název** nového kontejneru. Název kontejneru musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a spojovníky (-). Další informace o názvech kontejnerů a objektů BLOB najdete v tématu [pojmenování a odkazování kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
     Tuto hodnotu uložte, protože je to hodnota *názvu kontejneru* , kterou musíte poskytnout na portálu pro publikování a získat tak zájemce pro vaši nabídku na webu Marketplace.
 
@@ -84,12 +84,10 @@ Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši n
 
 4. Zadejte **název kontejneru** a **připojovací řetězec účtu úložiště** , který jste získali z následujících pokynů.
 
-    * Příklad názvu kontejneru:`marketplaceleadcontainer`
+    * Příklad názvu kontejneru: `marketplaceleadcontainer`
     * Příklad připojovacího řetězce účtu úložiště: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ Podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Vyberte **Uložit**.
 
     > [!NOTE]
     > Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.
-
-

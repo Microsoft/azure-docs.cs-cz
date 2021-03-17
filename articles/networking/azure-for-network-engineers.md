@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516187"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234201"
 ---
 # <a name="azure-for-network-engineers"></a>Azure pro odborníky na sítě
 Jako standardní síťový inženýr jste se zabývali fyzickými prostředky, jako jsou směrovače, přepínače, kabely, brány firewall k vytváření infrastruktury. V logické vrstvě, kterou jste nakonfigurovali virtuální síť LAN (VLAN), protokol STP (Spanning Tree Protocol), směrovací protokoly (RIP, OSPF, BGP). Síť jste spravovali pomocí nástrojů pro správu a CLI. Sítě v cloudu jsou odlišné, pokud jsou koncové body sítě logické a používání směrovacích protokolů je minimální. Budete pracovat s rozhraním API Azure Resource Manager, Azure CLI a PowerShellu pro konfiguraci a správu prostředků v Azure. Cestu k síti zahájíte v cloudu tím, že budete rozumět základním klientům sítě Azure. 
@@ -35,7 +35,7 @@ Když přiřadíte IP adresu hostiteli, ve skutečnosti přiřadíte IP adresu s
 - Veřejné IP adresy – slouží ke komunikaci příchozího a odchozího (bez překladu adres (NAT)) s internetem a dalšími prostředky Azure, které nejsou připojené k virtuální síti. Přiřazení veřejné IP adresy síťovému rozhraní je volitelné. Veřejné IP adresy patří do adresního prostoru IP adres Microsoftu.
 - Privátní IP adresy – slouží ke komunikaci v rámci virtuální sítě, místní sítě a Internetu (s překladem adres (NAT)). Adresní prostor IP adres, který definujete ve virtuální síti, se považuje za soukromý, i když nakonfigurujete adresní prostor veřejných IP adres. Společnost Microsoft tento prostor neinzeruje k Internetu. Virtuálnímu počítači je nutné přiřadit alespoň jeden privátní IP adresu.
 
-Stejně jako u fyzických hostitelů nebo zařízení existují dva způsoby, jak přidělit IP adresy prostředku – dynamické nebo statické. V Azure je výchozí metoda přidělení dynamická, kde se IP adresa přidělí při vytváření virtuálního počítače nebo spuštění zastaveného virtuálního počítače. Když tento virtuální počítač zastavíte nebo odstraníte, IP adresa se uvolní. Pokud chcete zajistit, aby IP adresa virtuálního počítače zůstala stejná, můžete explicitně nastavit statickou metodu přidělování. V tomto případě se IP adresa přiřadí okamžitě. Uvolní se, jenom když virtuální počítač odstraníte nebo změníte jeho metodu přidělování na dynamickou. 
+Stejně jako u fyzických hostitelů nebo zařízení existují dva způsoby, jak přidělit IP adresy prostředku – dynamické nebo statické. V Azure je výchozí metoda přidělení dynamická, kde se IP adresa přidělí při vytváření virtuálního počítače nebo spuštění zastaveného virtuálního počítače. Když tento virtuální počítač zastavíte nebo odstraníte, IP adresa se uvolní. Pokud chcete zajistit, aby IP adresa virtuálního počítače zůstala stejná, můžete explicitně nastavit statickou metodu přidělování. V takovém případě se IP adresa přiřadí okamžitě. Uvolní se, jenom když virtuální počítač odstraníte nebo změníte jeho metodu přidělování na dynamickou. 
 
 Privátní IP adresy se přiřazují z podsítí, které jste definovali v rámci virtuální sítě. Pro virtuální počítač vyberte podsíť pro přidělování IP adres. Pokud virtuální počítač obsahuje více síťových adaptérů, můžete pro každou síťovou kartu vybrat jinou podsíť.
 
@@ -67,7 +67,7 @@ Když ve směrovací tabulce máte konkurenční záznamy, Azure vybere další 
 
 ## <a name="security"></a>Zabezpečení
 
-Pomocí skupin zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků ve virtuální síti. Třtina také používá síťová virtuální zařízení (síťové virtuální zařízení), jako jsou Azure Firewall nebo brány firewall od jiných dodavatelů. Můžete řídit, jak Azure směruje provoz z podsítí. Můžete také omezit, kdo ve vaší organizaci může pracovat s prostředky ve virtuálních sítích.
+Pomocí skupin zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků ve virtuální síti. Můžete také použít síťová virtuální zařízení (síťové virtuální zařízení), například Azure Firewall nebo brány firewall od jiných dodavatelů. Můžete řídit, jak Azure směruje provoz z podsítí. Můžete také omezit, kdo ve vaší organizaci může pracovat s prostředky ve virtuálních sítích.
 
 Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo zamítají síťový provoz pro podsítě, síťová rozhraní nebo oboje. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým síťovým rozhraním připojeným k podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny virtuální počítače v této podsíti. Provoz směřující do konkrétního síťového rozhraní se navíc dá omezit tím, že se přímo k tomuto síťovému rozhraní přidruží skupina NSG.
 
@@ -88,7 +88,6 @@ Přečtěte si o [Směrování virtuální sítě][vnet-routing].
 Seznamte se se [skupinami zabezpečení sítě][network-security].
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

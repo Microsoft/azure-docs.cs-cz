@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-javascript 
-ms.openlocfilehash: 8c2df57f56ad30c6cf6a2ac84a32baa79ea91955
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
+ms.openlocfilehash: 44530577972839aacb803d1722fa97716088fa0d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384748"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91325432"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Node.js k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ V tomto rychlém startu použijete Node.js pro připojení k databázi a dotazov
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -72,9 +72,9 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejít na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
@@ -149,7 +149,7 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Otevřete složku,
           console.log("%s\t%s", column.metadata.colName, column.value);
         });
       });
-      
+
       connection.execSql(request);
     }
     ```

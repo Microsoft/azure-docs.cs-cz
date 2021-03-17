@@ -1,47 +1,47 @@
 ---
-title: Kombinovaná registrace pro SSPR a Azure Multi-Factor Authentication – Azure Active Directory
-description: Přečtěte si o kombinovaném prostředí registrace pro Azure Active Directory, aby se uživatelé mohli zaregistrovat pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla.
+title: Kombinovaná registrace pro SSPR a Azure AD Multi-Factor Authentication-Azure Active Directory
+description: Přečtěte si o kombinovaném prostředí registrace pro Azure Active Directory, aby se uživatelé mohli zaregistrovat pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 01/27/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512971"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938470"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
-Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
+Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure AD Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
 
 > [!NOTE]
-> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci.
+> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci. 
 
 Tento článek popisuje, jaká kombinovaná registrace zabezpečení je. Informace o tom, jak začít používat kombinovanou registraci zabezpečení, najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
 > [Povolit kombinovanou registraci zabezpečení](howto-registration-mfa-sspr-combined.md)
 
-![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Můj účet zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
-Než začnete s novým prostředím, přečtěte si dokumentaci k tomuto správci a dokumentaci zaměřenou na uživatele, abyste se ujistili, že jsou funkce a účinky této funkce důležité. Založte školení na [dokumentaci pro uživatele](../user-help/user-help-security-info-overview.md) a připravte uživatele na nové prostředí a pomůžou zajistit úspěšné zavedení.
+Než začnete s novým prostředím, přečtěte si dokumentaci k tomuto správci a dokumentaci zaměřenou na uživatele, abyste se ujistili, že jsou funkce a účinky této funkce důležité. Založte školení na [dokumentaci pro uživatele](../user-help/security-info-setup-signin.md) a připravte uživatele na nové prostředí a pomůžou zajistit úspěšné zavedení.
 
-Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure USA, Azure Německo nebo Azure Čína 21Vianet.
+Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure Německo nebo Azure Čína 21Vianet. Je k dispozici pro vládu Azure USA.
 
 > [!IMPORTANT]
-> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou povoleni v obou prostředích, uvidí jenom nové prostředí s profilem. Nový *můj profil* se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
+> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou povoleni v obou prostředích, uvidí jenom možnosti můj účet. *Můj účet* se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé uvidí svůj účet tím, že se budou moct podívat na [https://myaccount.microsoft.com](https://myaccount.microsoft.com) .
 >
 > Při pokusu o přístup k možnosti informace o zabezpečení se může zobrazit chybová zpráva, například "litujeme, ale nemůžeme vás přihlásit". Ověřte, že nemáte žádné konfigurační objekty nebo objekt zásad skupiny, který blokuje soubory cookie třetích stran ve webovém prohlížeči.
 
-Stránky s *profilem* jsou lokalizovány na základě nastavení jazyka počítače, který přistupuje k stránce. Microsoft ukládá nejaktuálnější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou dál vykreslovat v posledním použitém jazyce. Pokud mezipaměť vymažete, stránky se znovu vykreslují.
+Stránky *můj účet* jsou lokalizovány na základě nastavení jazyka počítače, který přistupuje k stránce. Microsoft ukládá nejaktuálnější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou dál vykreslovat v posledním použitém jazyce. Pokud mezipaměť vymažete, stránky se znovu vykreslují.
 
 Pokud chcete vynutit určitý jazyk, můžete přidat `?lng=<language>` na konec adresy URL, kde `<language>` je kód jazyka, který chcete vykreslit.
 
@@ -51,18 +51,18 @@ Pokud chcete vynutit určitý jazyk, můžete přidat `?lng=<language>` na konec
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-| Metoda | Zaregistrovat | Změnit | Odstranit |
+| Metoda | Registrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
-| Hardwarový token | Ne | Ne | Ano |
-| Rozložení | Ano | Ano | Ano |
-| Alternativní telefon | Ano | Ano | Ano |
-| Telefon do kanceláře | Ne | Ne | Ne |
-| E-mail | Ano | Ano | Ano |
-| Bezpečnostní otázky | Ano | Ne | Ano |
-| Hesla aplikací | Ano | Ne | Ano |
-| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
+| Microsoft Authenticator | Ano (maximálně 5) | No | Yes |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Yes |
+| Hardwarový token | No | No | Yes |
+| Rozložení | Yes | Yes | Yes |
+| Alternativní telefon | Yes | Yes | Yes |
+| Telefon do kanceláře | Yes | Yes | Yes |
+| E-mail | Yes | Yes | Yes |
+| Bezpečnostní otázky | Yes | No | Yes |
+| Hesla aplikací | Yes | No | Yes |
+| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Yes | Yes | Yes |
 
 > [!NOTE]
 > Hesla aplikací jsou k dispozici pouze pro uživatele, kteří byli vynutili Multi-Factor Authentication. Hesla aplikací nejsou k dispozici uživatelům, kteří jsou povoleni pro Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu.
@@ -116,7 +116,7 @@ Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnost
 
 ### <a name="manage-mode"></a>Režim správy
 
-Uživatelé mají přístup ke správě režimu tak, že v něm [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
+Uživatelé mají přístup ke správě režimu tak, že [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) v něm nebo vyberou **bezpečnostní údaje** z mého účtu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
 
 ## <a name="key-usage-scenarios"></a>Scénáře použití klíčů
 
@@ -126,24 +126,24 @@ Správce vynutil registraci.
 
 Uživatel nenainstaloval všechny požadované bezpečnostní údaje a přejde na Azure Portal. Po zadání uživatelského jména a hesla se uživateli zobrazí výzva k nastavení bezpečnostních údajů. Uživatel pak podle kroků uvedených v průvodci nastaví požadované bezpečnostní údaje. Pokud to nastavení povoluje, může uživatel zvolit možnost nastavit jiné metody než ty, které jsou ve výchozím nastavení zobrazené. Po dokončení průvodce si uživatelé Prohlédněte metody, které nastavili, a jejich výchozí metodu pro Multi-Factor Authentication. K dokončení procesu instalace uživatel potvrdí informace a pokračuje Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Nastavení bezpečnostních údajů z mého profilu
+### <a name="set-up-security-info-from-my-account"></a>Nastavit bezpečnostní údaje z mého účtu
 
 Správce vynutil registraci.
 
-Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane do [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která byla nastavena na stránce informace o zabezpečení.
+Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane do [https://myaccount.microsoft.com](https://myaccount.microsoft.com) . Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která byla nastavena na stránce informace o zabezpečení.
 
-### <a name="delete-security-info-from-my-profile"></a>Odstranit informace o zabezpečení z mého profilu
+### <a name="delete-security-info-from-my-account"></a>Odstranit informace o zabezpečení z mého účtu
 
 Uživatel, který dříve nainstaloval alespoň jednu metodu, přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Uživatel se rozhodne odstranit jednu z dříve registrovaných metod. Po dokončení již uživatel na stránce informace o zabezpečení nevidí tuto metodu.
 
-### <a name="change-the-default-method-from-my-profile"></a>Změna výchozí metody z mého profilu
+### <a name="change-the-default-method-from-my-account"></a>Změna výchozí metody z mého účtu
 
 Uživatel, který dříve nainstaloval alespoň jednu metodu, kterou lze použít pro Multi-Factor Authentication přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Uživatel změní aktuální výchozí metodu na jinou výchozí metodu. Po dokončení uživatel uvidí novou výchozí metodu na stránce bezpečnostní údaje.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít, přečtěte si kurzy, jak [Povolit Samoobslužné resetování hesla](tutorial-enable-sspr.md) a [Povolit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+Informace o tom, jak začít, najdete v kurzech [Povolení samoobslužného resetování hesla](tutorial-enable-sspr.md) a [Povolení Multi-Factor Authentication služby Azure AD](tutorial-enable-azure-mfa.md).
 
 Naučte se, jak [Povolit kombinovanou registraci ve vašem tenantovi](howto-registration-mfa-sspr-combined.md) nebo [přinutit uživatele, aby znovu zaregistrovali metody ověřování](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
-Můžete si také projít [dostupné metody pro Azure Multi-Factor Authentication a SSPR](concept-authentication-methods.md).
+Můžete si také prohlédnout [dostupné metody pro Azure AD Multi-Factor Authentication a SSPR](concept-authentication-methods.md).

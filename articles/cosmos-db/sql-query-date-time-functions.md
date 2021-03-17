@@ -3,18 +3,20 @@ title: Funkce data a času ve Azure Cosmos DB dotazovacího jazyka
 description: Přečtěte si o funkcích systému SQL data a času v Azure Cosmos DB k provádění operací DateTime a timestamp.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cfa81b6ec5f10218a70de6b9b55e502d87898194
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605197"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549168"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Funkce data a času (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Funkce data a času umožňují provádět operace DateTime a timestamp v Azure Cosmos DB.
 
@@ -42,6 +44,6 @@ Následující funkce umožňují snadno manipulovat s hodnotami DateTime, times
 ## <a name="next-steps"></a>Další kroky
 
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Uživatelsky definované funkce](sql-query-udfs.md)
-- [Agregace](sql-query-aggregates.md)
+- [Agregace](sql-query-aggregate-functions.md)

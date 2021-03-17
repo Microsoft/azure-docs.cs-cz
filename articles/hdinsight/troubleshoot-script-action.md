@@ -1,19 +1,16 @@
 ---
 title: Řešení potíží se skripty v Azure HDInsight
 description: Obecné kroky při řešení potíží pro akce skriptů v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079254"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944690"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Řešení potíží se skripty v Azure HDInsight
 
@@ -31,7 +28,7 @@ Pomocí webového uživatelského rozhraní Apache Ambari můžete zobrazit info
 
     ![Panel webového uživatelského rozhraní Ambari s vybranou operací Operations](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Vyhledá položky, které mají ve sloupci **Operations** ** \_ customscriptaction běžet** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
+1. Vyhledá položky, které mají ve sloupci **Operations** **\_ customscriptaction běžet** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
 
     ![Operace s akcemi skriptu Apache Ambari](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -45,13 +42,13 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
     ![Protokoly akcí skriptů](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu**, **pracovní uzel**a **Zookeeper uzel**. Podívejte se na následující příklady:
+    V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu**, **pracovní uzel** a **Zookeeper uzel**. Podívejte se na následující příklady:
 
-    * **Hlavnímu uzlu**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Hlavnímu uzlu**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Pracovní uzel**:`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Pracovní uzel**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Uzel Zookeeper**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Uzel Zookeeper**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **výstup- \* . txt** a **Errors. \* txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
 
@@ -59,7 +56,7 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* Je možné opakovaně vytvořit cluster akcí skriptu se stejným názvem. V takovém případě můžete rozlišovat příslušné protokoly na základě názvu složky **data** . Například struktura složek pro cluster **mycluster**vytvořená v různých datech vypadá podobně jako v následujících záznamech protokolu:
+* Je možné opakovaně vytvořit cluster akcí skriptu se stejným názvem. V takovém případě můžete rozlišovat příslušné protokoly na základě názvu složky **data** . Například struktura složek pro cluster **mycluster** vytvořená v různých datech vypadá podobně jako v následujících záznamech protokolu:
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -110,10 +107,4 @@ Existují dvě výjimky:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -1,16 +1,16 @@
 ---
-title: Klienti, role a uživatelé ve scénářích Azure Lighthouse
+title: Klienti, uživatelé a role ve scénářích Azure Lighthouse
 description: Seznamte se s koncepty Azure Active Directory klientů, uživatelů a rolí a také jak se dají použít ve scénářích Azure Lighthouse.
-ms.date: 07/03/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163301"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233912"
 ---
-# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Klienti, role a uživatelé ve scénářích Azure Lighthouse
+# <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Klienti, uživatelé a role ve scénářích Azure Lighthouse
 
 Před zprovozněním zákazníků pro [Azure Lighthouse](../overview.md)je důležité pochopit, jak klienti a role Azure Active Directory (Azure AD) fungují a jak se dají použít ve scénářích Azure Lighthouse.
 
@@ -18,20 +18,10 @@ Před zprovozněním zákazníků pro [Azure Lighthouse](../overview.md)je důle
 
 Aby bylo možné dosáhnout této logické projekce, *musí být předplatné* (nebo jedna nebo víc skupin prostředků v rámci předplatného) v tenantovi zákazníka připojené do Azure Lighthouse. Tento proces připojování se dá provést buď [prostřednictvím šablon Azure Resource Manager](../how-to/onboard-customer.md) , nebo [publikováním veřejné nebo soukromé nabídky k Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
-Podle toho, jakou metodu připojování zvolíte, budete muset definovat *autorizaci*. Každá autorizace určuje uživatelský účet ve správě tenanta, který bude mít přístup k delegovaným prostředkům, a předdefinovanou roli, která nastaví oprávnění, která budou mít tito uživatelé pro tyto prostředky.
-
-## <a name="role-support-for-azure-lighthouse"></a>Podpora rolí pro Azure Lighthouse
-
-Při definování autorizace musí mít každý uživatelský účet přiřazenou jednu z [předdefinovaných rolí řízení přístupu na základě role (RBAC)](../../role-based-access-control/built-in-roles.md). Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
-
-Všechny [předdefinované role](../../role-based-access-control/built-in-roles.md) jsou v současné době podporované pomocí Azure Lighthouse, s následujícími výjimkami:
-
-- Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) není podporována.
-- Jakékoli předdefinované role s oprávněním [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) nejsou podporovány.
-- Integrovaná role [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) je podporovaná, ale jenom kvůli omezenému účelu [přiřazování rolí ke spravované identitě v tenantovi zákazníka](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Žádná další oprávnění, která tato role obvykle neudělí, se použijí. Pokud definujete uživatele s touto rolí, musíte zadat také předdefinované role, které tento uživatel může přiřadit ke spravovaným identitám.
+Podle toho, jakou metodu připojování zvolíte, budete muset definovat *autorizaci*. Každé autorizaci Určuje **principalId** , který bude mít přístup k delegovaným prostředkům, a předdefinovanou roli, která nastaví oprávnění, která budou mít tito uživatelé pro tyto prostředky. Tento **principalId** definuje uživatele, skupinu nebo instanční objekt služby Azure AD ve správě tenanta.
 
 > [!NOTE]
-> Po přidání nové příslušné předdefinované role do Azure ji můžete přiřadit při [připojování zákazníka pomocí Azure Resource Manager šablon](../how-to/onboard-customer.md). Aby byla nově přidaná role k dispozici v partnerském centru při [publikování nabídky spravované služby](../how-to/publish-managed-services-offers.md), může dojít ke zpoždění.
+> Pokud explicitně neurčíte, odkazy na uživatele v dokumentaci ke službě Azure Lighthouse se můžou vztahovat na uživatele, skupiny nebo instanční objekty služby Azure AD v rámci autorizace.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Osvědčené postupy pro definování uživatelů a rolí
 
@@ -43,7 +33,20 @@ Při vytváření autorizací doporučujeme následující osvědčené postupy:
 - Ujistěte se, že všichni uživatelé, kteří potřebují [Zobrazit stránku Moji zákazníci v Azure Portal](../how-to/view-manage-customers.md) , mají roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
 
 > [!IMPORTANT]
-> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** **zabezpečení** , a ne **Sada Office 365**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** nastavený na **zabezpečení**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+## <a name="role-support-for-azure-lighthouse"></a>Podpora rolí pro Azure Lighthouse
+
+Při definování autorizace musí být každému uživatelskému účtu přiřazená jedna z [předdefinovaných rolí Azure](../../role-based-access-control/built-in-roles.md). Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
+
+Všechny [předdefinované role](../../role-based-access-control/built-in-roles.md) jsou v současné době podporované pomocí Azure Lighthouse, s následujícími výjimkami:
+
+- Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) není podporována.
+- Jakékoli předdefinované role s oprávněním [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) nejsou podporovány.
+- Integrovaná role [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) je podporovaná, ale jenom kvůli omezenému účelu [přiřazování rolí ke spravované identitě v tenantovi zákazníka](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Žádná další oprávnění, která tato role obvykle neudělí, se použijí. Pokud definujete uživatele s touto rolí, musíte zadat také předdefinované role, které tento uživatel může přiřadit ke spravovaným identitám.
+
+> [!NOTE]
+> Po přidání nové příslušné předdefinované role do Azure ji můžete přiřadit při [připojování zákazníka pomocí Azure Resource Manager šablon](../how-to/onboard-customer.md). Aby byla nově přidaná role k dispozici v partnerském centru při [publikování nabídky spravované služby](../how-to/publish-managed-services-offers.md), může dojít ke zpoždění.
 
 ## <a name="next-steps"></a>Další kroky
 

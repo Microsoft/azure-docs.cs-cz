@@ -2,24 +2,25 @@
 title: Rychlý Start – vytvoření virtuálního počítače se systémem Linux v Azure Portal
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit virtuální počítač se systémem Linux.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c1ccd2df3a1fd6b2f1f1cb5b2d3250e8bbfcc327
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499972"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549732"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní založené na prohlížeči pro vytváření prostředků Azure. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače se systémem Linux se systémem Ubuntu 18,04 LTS. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -28,25 +29,25 @@ Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. Do vyhledávacího pole zadejte **virtuální počítače** .
-1. V části **služby**vyberte **virtuální počítače**.
+1. V části **služby** vyberte **virtuální počítače**.
 1. Na stránce **virtuální počítače** vyberte **Přidat**. Otevře se stránka **vytvořit virtuální počítač** .
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myResourceGroup* . *. 
 
     ![Snímek obrazovky s oddílem Project Details s informacemi o tom, kde jste vybrali předplatné Azure a skupinu prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
-1. V části **Podrobnosti o instanci**zadejte *MyVM* pro **název virtuálního počítače**, vyberte *východní USA* pro vaši **oblast**a jako **Obrázek**vyberte *Ubuntu 18,04 LTS* . Zbytek ponechte ve výchozím nastavení.
+1. V části **Podrobnosti o instanci** zadejte *MyVM* pro **název virtuálního počítače**, vyberte *východní USA* pro vaši **oblast** a jako **Obrázek** vyberte *Ubuntu 18,04 LTS* . Zbytek ponechte ve výchozím nastavení.
 
     ![Snímek obrazovky s oddílem podrobností instance, kde můžete zadat název virtuálního počítače a vybrat jeho oblast, obrázek a velikost](./media/quick-create-portal/instance-details.png)
 
-1. V části **účet správce**vyberte **veřejný klíč SSH**.
+1. V části **účet správce** vyberte **veřejný klíč SSH**.
 
 1. V **uživatelské jméno** zadejte *azureuser*.
 
-1. U **zdroje veřejného klíče SSH**ponechte výchozí hodnotu **Generovat novou dvojici klíčů**a potom jako **název páru klíčů**zadejte *myKey* .
+1. U **zdroje veřejného klíče SSH** ponechte výchozí hodnotu **Generovat novou dvojici klíčů** a potom jako **název páru klíčů** zadejte *myKey* .
 
     ![Snímek obrazovky s oddílem účtu správce, kde můžete vybrat typ ověřování a zadat přihlašovací údaje správce](./media/quick-create-portal/administrator-account.png)
 
-1. V části **příchozí pravidla portů**  >  **veřejné příchozí porty**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** a **http (80)** . 
+1. V části **příchozí pravidla portů**  >  **veřejné příchozí porty** zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** a **http (80)** . 
 
     ![Snímek obrazovky s částí pravidla portů pro příchozí spojení, kde můžete vybrat, na kterých portech jsou příchozí připojení povolena](./media/quick-create-portal/inbound-port-rules.png)
 

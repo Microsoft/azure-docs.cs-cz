@@ -4,10 +4,10 @@ description: Podrobné informace o tom, jak efektivně spravovat velikost regist
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403336"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Odstranění imagí kontejneru v Azure Container Registry pomocí rozhraní příkazového řádku Azure
@@ -58,7 +58,7 @@ Are you sure you want to continue? (y/n):
 
 [Výtah manifestu](container-registry-concepts.md#manifest-digest) může být přidružen k jednomu, žádnému nebo více značkám. Při odstranění algoritmem Digest jsou všechny značky, na které se odkazuje manifest, odstraněny, stejně jako data vrstev pro všechny vrstvy, které jsou pro Image jedinečné. Data sdílené vrstvy se neodstraňují.
 
-Chcete-li odstranit seznam Digest, nejprve vypište výtahy manifestu pro úložiště obsahující obrázky, které chcete odstranit. Příklad:
+Chcete-li odstranit seznam Digest, nejprve vypište výtahy manifestu pro úložiště obsahující obrázky, které chcete odstranit. Například:
 
 ```azurecli
 az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -154,7 +154,7 @@ fi
 
 Jak je uvedeno v oddílu [výtahu manifestu](container-registry-concepts.md#manifest-digest) , vložení upravené Image pomocí existující značky **odznačí** dříve nabízený obrázek, výsledkem je osamocený obrázek (neboli "dangling"). Manifest dříve vloženého obrázku – a jeho data vrstev – zůstanou v registru. Vezměte v úvahu následující posloupnost událostí:
 
-1. Push image *ACR-HelloWorld* s označením **nejnovější**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Push image *ACR-HelloWorld* s označením **nejnovější**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Podívejte se na manifesty pro úložiště *ACR-HelloWorld*:
 
    ```azurecli
@@ -175,7 +175,7 @@ Jak je uvedeno v oddílu [výtahu manifestu](container-registry-concepts.md#mani
    ```
 
 1. Upravit *ACR-HelloWorld* souboru Dockerfile
-1. Push image *ACR-HelloWorld* s označením **nejnovější**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Push image *ACR-HelloWorld* s označením **nejnovější**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Podívejte se na manifesty pro úložiště *ACR-HelloWorld*:
 
    ```azurecli

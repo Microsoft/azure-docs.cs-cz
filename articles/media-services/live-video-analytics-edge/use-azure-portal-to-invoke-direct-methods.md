@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ddd6a94015829a0b5dd4053f4d3a2fd6d2650d32
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830746"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492650"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Použití Azure Portal k vyvolání přímých metod
 
@@ -26,7 +26,7 @@ IoT Hub poskytuje možnost vyvolat [přímé metody](../../iot-hub/iot-hub-devgu
 
 V tomto článku se dozvíte, jak volat přímé volání metod na živé analýzy videí pro IoT Edge modul přes Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Máte živé video analýzy na IoT Edge modulu běžícím na hraničním zařízení, a to pomocí metod popsaných v tématu [rychlý Start: Live video Analytics na IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) nebo pomocí [portálu.](./deploy-iot-edge-device.md)
 
@@ -54,7 +54,7 @@ Použijte `GraphTopologyList` volání metody k načtení seznamu všech topolog
 1. Zkopírujte a vložte JSON níže v poli **datové části** .
     ```json
     {
-    "@apiVersion":
+    "@apiVersion": "2.0"
     }
     ```
 1. V horní části stránky vyberte tlačítko **vyvolat metodu** .<br><br>
@@ -62,7 +62,7 @@ Použijte `GraphTopologyList` volání metody k načtení seznamu všech topolog
 1. V oblasti **výsledků** by se měla zobrazit zpráva o stavu 200.<br><br>
     ![časový limit připojení](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
 
-## <a name="responses"></a>Odezvy
+## <a name="responses"></a>Odpovědi
 
 | Podmínka             | Stavový kód | Podrobný kód chyby |
 |-----------------------|-------------|---------------------|

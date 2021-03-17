@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 66853b580ba1b619bf4cc995e05bd3cfaff07cfb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090293"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565865"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testování kódu pro datové vědy v Azure pomocí vědeckého procesu týmového zpracování dat a Azure DevOps Services
 Tento článek obsahuje předběžné pokyny pro testování kódu v pracovním postupu pro datové vědy. Toto testování dává pracovníkům dat systematický a efektivní způsob kontroly kvality a očekávaného výsledku jejich kódu. Používáme projekt vědeckého zpracování týmových dat (TDSP) [, který používá datovou sadu pro příjem dat z Ski dospělé](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve, a ukazuje, jak se dá provést testování kódu. 
@@ -102,7 +102,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
 1. Tyto testy mohou být automaticky zjišťovány, pokud jako název třídy vložíte **codetest. testovací případ** . Otevřete Průzkumník testů v pravém podokně a vyberte možnost **Spustit vše**. Všechny testy se spustí postupně a upozorní vás, pokud je test úspěšný, nebo ne.
 
-    ![Spuštění testů](./media/code-test/run_tests.PNG)
+    ![Spouštění testů](./media/code-test/run_tests.PNG)
 
 1. Vraťte kód do úložiště projektu pomocí příkazů Git. Vaše nejnovější práce se projeví krátce v Azure DevOps.
 
@@ -112,7 +112,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
 1. Nastavení automatického sestavení a testování v Azure DevOps:
 
-    a. V úložišti projektu vyberte **sestavení a vydání**a potom vyberte **+ Nový** pro vytvoření nového procesu sestavení.
+    a. V úložišti projektu vyberte **sestavení a vydání** a potom vyberte **+ Nový** pro vytvoření nového procesu sestavení.
 
     ![Výběry pro spuštění nového procesu sestavení](./media/code-test/create_new_build.PNG)
 
@@ -124,7 +124,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
     ![Seznam šablon a tlačítko "prázdný proces"](./media/code-test/start_empty_process_template.PNG)
 
-    d. Pojmenujte sestavení a vyberte agenta. Můžete zvolit výchozí, pokud chcete použít DSVM k dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Pojmenujte sestavení a vyberte agenta. Můžete zvolit výchozí, pokud chcete použít DSVM k dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](/azure/devops/pipelines/agents/agents).
     
     ![Sestavení a výběr agentů](./media/code-test/select_agent.PNG)
 
@@ -134,7 +134,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
     f. V podrobnostech PowerShellu zadejte požadované informace, například název a verzi PowerShellu. Jako typ vyberte **vložený skript** . 
     
-    Do pole v části **vložený skript**můžete zadat **Python test1.py**. Ujistěte se, že je správně nastavená proměnná prostředí pro Python. Pokud potřebujete jinou verzi nebo jádro Pythonu, můžete explicitně zadat cestu, jak je znázorněno na obrázku: 
+    Do pole v části **vložený skript** můžete zadat **Python test1.py**. Ujistěte se, že je správně nastavená proměnná prostředí pro Python. Pokud potřebujete jinou verzi nebo jádro Pythonu, můžete explicitně zadat cestu, jak je znázorněno na obrázku: 
     
     ![Podrobnosti PowerShellu](./media/code-test/powershell_scripts.PNG)
 
@@ -155,7 +155,7 @@ Pokud jsou výstrahy správně nastavené, budete po dokončení sestavení upoz
 * Sledujte předchozí osnovu a příklady ve scénáři prediktivní příjem výnosů ve vašich vlastních projektech pro datové vědy.
 
 ## <a name="references"></a>Reference
-* [Vědecké zpracování týmových dat](https://aka.ms/tdsp)
+* [Vědecké zpracování týmových dat](./index.yml)
 * [Testovací nástroje sady Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Prostředky testování Azure DevOps](https://www.visualstudio.com/team-services/)
 * [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

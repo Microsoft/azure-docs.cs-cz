@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fa8f6f0382312951905476ad6fee06e180c6f35
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543138"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s segmentem
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat segment s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k segmentaci pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Segment podporuje **SP a IDP** iniciované jednotné přihlašování.
 * Segment podporuje zřizování uživatelů **jenom v čase** .
 
-* Jakmile nakonfigurujete segment, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Jakmile nakonfigurujete segment, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-segment-from-the-gallery"></a>Přidání segmentu z Galerie
 
@@ -104,25 +104,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k segmentu.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **segment**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -136,21 +136,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu nastavení** , přejděte dolů k možnosti **ověřování** a klikněte na **připojení**.
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment1.PNG)
+    ![Snímek obrazovky zobrazující vybranou ikonu nastavení a možnost připojení v nabídce ověřování.](./media/segment-tutorial/segment1.PNG)
 
 1. Klikněte na **Přidat nové připojení**.
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment2.PNG)
+    ![Snímek obrazovky s vybraným tlačítkem přidat nové připojení, které zobrazuje oddíl připojení](./media/segment-tutorial/segment2.PNG)
 
 1. Vyberte **SAML 2,0** jako připojení, které chcete konfigurovat, a klikněte na tlačítko **Vybrat připojení** .
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment3.PNG)
+    ![Snímek obrazovky, který zobrazuje oddíl "Zvolte připojení" s "S A M L 2,0" a vybraným tlačítkem vybrat připojení.](./media/segment-tutorial/segment3.PNG)
 
 1. Na následující stránce proveďte následující kroky:
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment4.PNG)
+    ![Snímek obrazovky se zvýrazněnou stránkou "Konfigurovat zprostředkovatele identity" se zvýrazněnými textovými poli "Single Sign-On U R L" a "cílová U R L", kde je vybrané tlačítko Další.](./media/segment-tutorial/segment4.PNG)
 
-    a. Zkopírujte hodnotu **adresy URL jednotného přihlašování** a vložte ji do pole **Adresa URL odpovědi** v DIALOGOVÉM okně **základní konfigurace SAML** v Azure Portal.
+    a. Zkopírujte hodnotu **adresy URL jednoho Sign-On** a vložte ji do pole **Adresa URL odpovědi** v DIALOGOVÉM okně **základní konfigurace SAML** v Azure Portal.
 
     b. Zkopírujte hodnotu * * * * cílové adresy URL * * * * a vložte ji do pole **Adresa URL identifikátoru** v dialogovém okně **základní konfigurace SAML** v Azure Portal.
 
@@ -172,19 +172,18 @@ V této části se v segmentu vytvoří uživatel s názvem B. Simon. Segment po
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici segment na přístupovém panelu, měli byste se automaticky přihlásit k segmentu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici segment na přístupovém panelu, měli byste se automaticky přihlásit k segmentu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si segment pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit segment pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Jak chránit segment pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

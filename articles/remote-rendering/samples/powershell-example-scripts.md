@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506507"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518207"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -21,15 +22,21 @@ Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API
 
 [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje ukázkové skripty ve složce *Scripts* pro interakci s rozhraními API REST služby. Tento článek popisuje jejich použití.
 
+> [!TIP]
+> Pro interakci se službou je k dispozici také [nástroj založený na uživatelském rozhraní s názvem ARRT](azure-remote-rendering-asset-tool.md) , což je pohodlnější alternativa k používání skriptů. ![ARRT](./media/azure-remote-rendering-asset-tool.png "Snímek obrazovky ARRT")
+
+> [!CAUTION]
+> Příliš časté volání funkcí REST API způsobí, že server bude omezovat a vracet chybu nakonec. ID kódu chyby HTTP v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
+
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
+Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](/powershell/azure/).
 
 1. Nainstalujte Azure PowerShell:
     1. Otevřete okno PowerShellu s právy správce.
     1. Spouštěl `Install-Module -Name Az -AllowClobber`
 
-1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) :
+1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) :
     1. Otevřete okno PowerShellu s právy správce.
     1. Spouštěl `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -40,9 +47,9 @@ Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azur
     1. Spusťte: `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
     > [!NOTE]
-    > V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
-1. Stáhněte složku *skripty* z [úložiště GitHubu pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
+1. Stáhněte složku *skripty* z [úložiště GitHub pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Konfigurační soubor
 
@@ -112,7 +119,7 @@ Normální použití s plně vyplněným arrconfig.js:
 .\RenderingSession.ps1
 ```
 
-Skript zavolá [REST API správy relace](../how-tos/session-rest-api.md) , aby VYVOLAL virtuální počítač pro vykreslování se zadaným nastavením. Po úspěšném načtení bude *identifikátor SessionID*načten. Pak bude dotazovat vlastnosti relace až do chvíle, kdy je relace připravena nebo dojde k chybě.
+Skript zavolá [REST API správy relace](../how-tos/session-rest-api.md) , aby VYVOLAL virtuální počítač pro vykreslování se zadaným nastavením. Po úspěšném načtení bude *identifikátor SessionID* načten. Pak bude dotazovat vlastnosti relace až do chvíle, kdy je relace připravena nebo dojde k chybě.
 
 Použití **alternativního konfiguračního** souboru:
 
@@ -272,5 +279,5 @@ Použijte `-Poll` k čekání na převod, nebo došlo k chybě.
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
-- [Rychlý Start: převod modelu pro vykreslování](../quickstarts/convert-model.md)
+- [Rychlý start: Převod modelu pro vykreslování](../quickstarts/convert-model.md)
 - [Převod modelu](../how-tos/conversion/model-conversion.md)

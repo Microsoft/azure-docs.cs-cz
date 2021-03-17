@@ -1,32 +1,34 @@
 ---
-title: Konfigurace metody post pro Azure Media Services V3 REST API volání
+title: Nakonfigurovat metodu post pro Azure Media Services V3 REST API
 description: V tomto článku se dozvíte, jak nakonfigurovat metodu post, aby ji bylo možné použít k volání rozhraní REST API pro Azure Media Services (AMS).
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/05/2019
-ms.author: juliako
-ms.openlocfilehash: e35a5fe2243c3a9880359900c63f74c6dc90e586
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654357"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953967"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurace metody post pro Media Services V3 REST API volání
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto článku se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo možné použít k volání rozhraní REST api pro Azure Media Services (AMS). V tomto článku se dozvíte, jak importovat soubory prostředí a kolekcí do nástroje **post**. Kolekce obsahuje seskupené definice požadavků HTTP, které volají Azure Media Services (AMS) REST API. Soubor prostředí obsahuje proměnné, které kolekce používá.
 
 Než začnete s vývojem, přečtěte si téma [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 - Získání informací potřebných pro [přístup k rozhraním API](./access-api-howto.md)
@@ -97,7 +99,7 @@ Než začnete pracovat s prostředky AMS v3, potřebujete získat a nastavit tok
 * Pokud se vaše aplikace nezdařila s protokolem HTTP 504: časový limit brány, ujistěte se, že proměnná umístění nebyla explicitně nastavena na jinou hodnotu než očekávané umístění účtu Media Services. 
 * Pokud se zobrazí chyba "účet nebyl nalezen", zkontrolujte také, zda je vlastnost umístění v těle zprávy JSON nastavena na umístění, ve kterém je účet Media Services. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Vytváření filtrů pomocí Media Services – REST](filters-dynamic-manifest-rest-howto.md)
 - [Rozhraní REST API založené na Azure Resource Manageru](https://github.com/Azure-Samples/media-services-v3-arm-templates)

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277583"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891325"
 ---
 # <a name="read-and-write-spatial-data"></a>Čtení a zápis prostorových dat
 
@@ -29,7 +29,7 @@ Následující tabulka uvádí formáty prostorových souborů, které jsou podp
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | Prostorový CSV       | ✓  |  ✓  |
-| Dobře známý text   | ✓  |  ✓  |
+| Well-Known text   | ✓  |  ✓  |
 
 Tyto další části obsahují přehled všech různých nástrojů pro čtení a zápis prostorových dat pomocí modulu prostorového v/v.
 
@@ -123,26 +123,26 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Přečíst a zapsat dobře známý text (Well)
+## <a name="read-and-write-well-known-text-wkt"></a>Čtení a zápis Well-Known textu (Well)
 
 [Dobře známý text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (Well) je standard pro Open GEOSPATIAL CONSORTIUM (OGC), který představuje prostorové geometrií jako text. Mnohé geoprostorové systémy podporují Well, jako je Azure SQL a Azure PostgreSQL, pomocí modulu plug-in PostGIS. Podobně jako u většiny standardů OGC se souřadnice naformátují jako zeměpisná šířka, aby se zarovnaly konvenci x y. Příkladem je, že bod v délce-110 a zeměpisná šířka 45 lze zapsat jako `POINT(-110 45)` použití formátu Well.
 
 Známý text lze číst pomocí `atlas.io.ogc.WKT.read` funkce a napsaný pomocí `atlas.io.ogc.WKT.write` funkce.
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Příklady pro čtení a zápis dobře známého textu (Well)
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Příklady čtení a psaní textu Well-Known (Well)
 
 Následující kód ukazuje, jak přečíst známý textový řetězec `POINT(-122.34009 47.60995)` a vykreslit jej na mapě pomocí bublinové vrstvy.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dobře známý text pro čtení' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>dobře známý text</a> pomocí pera Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přečíst text Well-Known' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si, jak pero <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known Text</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Následující kód ukazuje čtení a zápis dobře známého textu zpátky a zpátky.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Přečíst a zapsat dobře známý text' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>text</a> , který je ve správném Azure Maps textu, a <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>() na.
+<iframe height='700' scrolling='no' title='Čtení a zápis Well-Known textu' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Text Well-Known pro čtení a zápis</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>Čtení a zápis GML
@@ -150,42 +150,41 @@ Následující kód ukazuje čtení a zápis dobře známého textu zpátky a zp
 GML je specifikace prostorového souboru XML, která se často používá jako rozšíření jiných specifikací XML. Data o injson se dají zapsat jako XML pomocí značek GML pomocí `atlas.io.core.GmlWriter.write` funkce. XML obsahující GML lze číst pomocí `atlas.io.core.GmlReader.read` funkce. Funkce Read má dvě možnosti:
 
 - `isAxisOrderLonLat`Možnost – pořadí osy souřadnic "Zeměpisná šířka, délka" nebo "Zeměpisná šířka" se může v datových sadách lišit a není vždy správně definovaná. Ve výchozím nastavení čtecí modul GML čte data souřadnic jako zeměpisná šířka, zeměpisná délka, ale při nastavení této možnosti na hodnotu true se tato možnost načtou jako Zeměpisná délka, zeměpisná šířka.
-- `propertyTypes`Možnost – tato možnost je vyhledávací tabulka hodnot klíče, kde klíč je název vlastnosti v datové sadě. Hodnota je typ objektu, na který se má přetypování hodnota při analýze. Podporované hodnoty typu jsou: `string` , `number` , a `boolean` `date` . Pokud vlastnost není ve vyhledávací tabulce nebo není definován typ, bude vlastnost analyzována jako řetězec.
+- `propertyTypes`Možnost – tato možnost je vyhledávací tabulka hodnot klíče, kde klíč je název vlastnosti v datové sadě. Hodnota je typ objektu, na který se má přetypování hodnota při analýze. Podporované hodnoty typu jsou: `string` , `number` , a `boolean`  `date` . Pokud vlastnost není ve vyhledávací tabulce nebo není definován typ, bude vlastnost analyzována jako řetězec.
 
 `atlas.io.read`Funkce bude ve výchozím nastavení `atlas.io.core.GmlReader.read` fungovat, když zjistí, že vstupní data jsou XML, ale data nejsou jedním z formátů prostorového formátu XML.
 
-## <a name="next-steps"></a>Další kroky
+`GmlReader`Provede analýzu souřadnic, které mají jednu z následujících identifikátory SRID:
+
+- EPSG: 4326 (upřednostňovaný)
+- EPSG: 4269, EPSG: 4283, EPSG: 4258, EPSG: 4308, EPSG: 4230, EPSG: 4272, EPSG: 4271, EPSG: 4267, EPSG: 4608, EPSG: 4674, případně s malým okrajem chyby.
+- EPSG: 3857, EPSG: 102100, EPSG: 3785, EPSG: 900913, EPSG: 102113, EPSG: 41001, EPSG: 54004
+
+## <a name="more-resources"></a>Další zdroje informací
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
-> [!div class="nextstepaction"]
-> [statické funkce atlas.io](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io)
+[statické funkce atlas.io](/javascript/api/azure-maps-spatial-io/atlas.io)
 
-> [!div class="nextstepaction"]
-> [SpatialDataSet](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
+[SpatialDataSet](/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
 
-> [!div class="nextstepaction"]
-> [SpatialDataSetStats](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
+[SpatialDataSetStats](/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
 
-> [!div class="nextstepaction"]
-> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader?view=azure-maps-typescript-latest)
+[GmlReader](/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader)
 
-> [!div class="nextstepaction"]
-> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter?view=azure-maps-typescript-latest)
+[GmlWriter](/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter)
 
-> [!div class="nextstepaction"]
-> [Atlas. IO. ogc. well – funkce](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
+[Atlas. IO. ogc. well – funkce](/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
+
+[Připojení ke službě WFS](spatial-io-connect-wfs-service.md)
+
+[Využití základních operací](spatial-io-core-operations.md)
+
+[Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)
+
+
+## <a name="next-steps"></a>Další kroky
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
-> [!div class="nextstepaction"]
-> [Přidání vrstvy mapy OGC](spatial-io-add-ogc-map-layer.md)
-
-> [!div class="nextstepaction"]
-> [Připojení ke službě WFS](spatial-io-connect-wfs-service.md)
-
-> [!div class="nextstepaction"]
-> [Využití základních operací](spatial-io-core-operations.md)
-
-> [!div class="nextstepaction"]
-> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)
+[Přidání vrstvy mapy OGC](spatial-io-add-ogc-map-layer.md)

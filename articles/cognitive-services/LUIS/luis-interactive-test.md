@@ -1,14 +1,16 @@
 ---
 title: Testovací aplikace na portálu LUIS
 description: Pomocí Language Understanding (LUIS) můžete průběžně pracovat na vaší aplikaci a zdokonalit tak její porozumění jazyku.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677728"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790914"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 
@@ -38,7 +40,7 @@ Utterance testu by neměl být přesně stejný jako jakýkoli příklad projevy
     > [!div class="mx-imgBorder"]
     > ![Výuka stránky testovací aplikace &](./media/luis-how-to-interactive-test/test.png)
 
-1. Do textového pole zadejte utterance a vyberte Enter. V **testu**můžete zadat tolik projevy testů, ale pouze jeden utterance v jednom okamžiku.
+1. Do textového pole zadejte utterance a vyberte Enter. V **testu** můžete zadat tolik projevy testů, ale pouze jeden utterance v jednom okamžiku.
 
 1. Do seznamu projevy pod textovým polem se přidají utterance, jeho nejvyšší záměr a skóre.
 
@@ -117,7 +119,7 @@ Pokud máte několik koncových bodů LUIS, použijte odkaz **Další nastavení
 
 
 ## <a name="batch-testing"></a>Dávkové testování
-Podívejte se na [Koncepty](luis-concept-batch-test.md) testování dávek a Naučte [se](luis-how-to-batch-test.md) testovat dávku projevy.
+Podívejte se na [Koncepty](./luis-how-to-batch-test.md) testování dávek a Naučte [se](luis-how-to-batch-test.md) testovat dávku projevy.
 
 ## <a name="next-steps"></a>Další kroky
 

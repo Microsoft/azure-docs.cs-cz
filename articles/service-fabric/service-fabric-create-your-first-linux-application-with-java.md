@@ -4,12 +4,12 @@ description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service F
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368927"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655947"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
   npm install -g generator-azuresfjava
   ```
 
-## <a name="basic-concepts"></a>Základní koncepty
+## <a name="basic-concepts"></a>Základní pojmy
 K tomu, abyste mohli začít s Reliable Actors, vám stačí pochopit pár základních konceptů:
 
 * **Služba objektu actor**. Služby Reliable Actors jsou zabalené ve službách Reliable Services, které je možné nasadit v infrastruktuře Service Fabric. Instance objektu actor se aktivují v pojmenované instanci služby.
 * **Registrace objektu actor**. Stejně jako Reliable Services musí být i služba Reliable Actors zaregistrovaná v modulu runtime Service Fabric. Kromě toho musí být typ actor zaregistrovaný v modulu runtime Actor.
 * **Rozhraní objektu actor**. Rozhraní objektu actor se používá k definování veřejného rozhraní objektu actor silného typu. V terminologii modelu Reliable Actors rozhraní objektu actor definuje typ zpráv, kterým objekt actor rozumí a může je zpracovat. Rozhraní objektu actor používají ostatní objekty actor a klientské aplikace k (asynchronnímu) odesílání zpráv do objektu actor. Reliable Actors můžou implementovat více rozhraní.
 * **Třída ActorProxy**. Třídu ActorProxy používají klientské aplikace k vyvolání metod zveřejněných přes rozhraní objektu actor. Třída ActorProxy zajišťuje dvě důležité funkce:
-  
+
   * Překlad názvů: Dokáže vyhledat objekt actor v clusteru (najít uzel clusteru, který je jeho hostitelem).
   * Zpracování selhání: Dokáže opakovat vyvolání metod a znovu přeložit umístění objektu actor například po selhání, které vyžaduje přemístění objektu actor do jiného uzlu v clusteru.
 
@@ -160,9 +160,9 @@ Služba objektu actor musí být zaregistrovaná s typem služby v modulu runtim
 public class HelloWorldActorHost {
 
 private static final Logger logger = Logger.getLogger(HelloWorldActorHost.class.getName());
-    
+
 public static void main(String[] args) throws Exception {
-        
+
         try {
 
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
@@ -221,7 +221,7 @@ Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
 
    V případě systému MAC OS X je nutné zkopírovat složku HelloWorldTestClient do umístění v rámci kontejneru spuštěním následujících dalších příkazů.    
-    
+
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
      docker exec -it [first-four-digits-of-container-ID] /bin/bash

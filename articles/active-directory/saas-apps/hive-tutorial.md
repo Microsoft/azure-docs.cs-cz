@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62214110fb93bf364396d1d553cb5deb3b74adc7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544073"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443591"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s podregistrem
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat podregistr pomocí Azure Active Direct
 * Umožněte uživatelům, aby se automaticky přihlásili k podregistru s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Podregistr podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
 * Podregistr podporuje zřizování uživatelů **jenom v čase** .
-* Po nakonfigurování podregistru můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování podregistru můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-hive-from-the-gallery"></a>Přidání podregistru z Galerie
 
@@ -121,7 +121,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -147,11 +147,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Profil uživatele** a pak klikněte na **pracovní prostor**.
 
-    ![Konfigurace podregistru](./media/hive-tutorial/configure1.png)
+    ![Snímek obrazovky s vybraným pracovním prostorem v nabídce zobrazuje web s podregistry.](./media/hive-tutorial/configure1.png)
 
 1. Klikněte na **ověření** a proveďte následující kroky:
 
-    ![Konfigurace podregistru](./media/hive-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování, kde jsou popsané úkoly.](./media/hive-tutorial/configure2.png)
 
     a. Zkopírujte **ID pracovního prostoru** a přidejte ho k **adrese URL jednotného** a  **adrese URL odpovědi** v **části základní konfigurace SAML** v Azure Portal.
 
@@ -169,16 +169,16 @@ V této části se v podregistru vytvoří uživatel s názvem B. Simon. Podregi
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici podregistr na přístupovém panelu, měli byste se automaticky přihlásit k podregistru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici podregistr na přístupovém panelu, měli byste se automaticky přihlásit k podregistru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si podregistr pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

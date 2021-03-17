@@ -1,21 +1,20 @@
 ---
 title: Vyvolat chaos v clusterech Service Fabric
 description: Správa chaos v clusteru pomocí injektáže chyb a rozhraní API služby Analysis Services pro clustery
-author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: motanv
-ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246176"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720500"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>NaChaos řízených v clusterech Service Fabric
 Rozsáhlé distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric umožňuje vývojářům psát spolehlivé distribuované služby nad nespolehlivou infrastrukturou. Aby mohli vývojáři psát robustní distribuované služby nad nespolehlivou infrastrukturou, musí být schopni testovat stabilitu svých služeb, zatímco základní nespolehlivá infrastruktura prochází složitými přechody stavu v důsledku chyb.
 
-[Vkládání chyb a služba Analysis Service clusteru](./service-fabric-testability-overview.md) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
+[Vkládání chyb a služba Analysis Service clusteru](./service-fabric-testability-overview.md) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](/powershell/module/servicefabric/start-servicefabricpartitionrestart), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
 
 Chaos simuluje pravidelné, prokládané chyby (jak v rámci celého clusteru jsou bezproblémové i nedarované) po delší dobu. Plynulá chyba se skládá ze sady Service Fabric volání rozhraní API, například restartování repliky je bezproblémové selhání, protože se jedná o blízko následovaný otevřeným na replice. Odebrání repliky, přesunutí primární repliky a přesunutí sekundární repliky jsou další plynulé chyby, na které chaos přichází. Nedarované chyby se ukončí proces, jako je restartování uzlu a restartování balíčku kódu. 
 

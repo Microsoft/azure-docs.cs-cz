@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029293"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684589"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -284,7 +284,7 @@ Po aktualizaci modelu sady škálování se nová konfigurace použije pro všec
 Sady škálování mají "zásady upgradu", které určují, jak jsou virtuální počítače aktualizované pomocí nejnovějšího modelu sady škálování. Existují tři režimy pro zásady upgradu:
 
 - **Automaticky** – v tomto režimu neposkytuje sada škálování žádné záruky týkající se pořadí vypínání virtuálních počítačů. Sada škálování může současně zabrat všechny virtuální počítače. 
-- **Rolling** V tomto režimu se sada škálování zaznamená aktualizace v dávkách s volitelnou dobou pozastavení mezi dávkami.
+-  V tomto režimu se sada škálování zaznamená aktualizace v dávkách s volitelnou dobou pozastavení mezi dávkami.
 - **Ruční** – v tomto režimu se při aktualizaci modelu sady škálování nic nestane se stávajícími virtuálními počítači.
  
 Pokud chcete aktualizovat stávající virtuální počítače, musíte provést ruční upgrade každého existujícího virtuálního počítače. Tento ruční upgrade můžete provést pomocí:
@@ -350,12 +350,12 @@ Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuál
 
 - **singlePlacementGroup** – Pokud má singlePlacementGroup hodnotu true, může být změněno na false. Pokud je však singlePlacementGroup false, **nemusí** být upraveno na hodnotu true.
 - **podsíť** – podsíť sady škálování může být upravena tak dlouho, dokud je původní podsíť a Nová podsíť ve stejné virtuální síti.
+- **imageReferenceSku** -SKU odkazu image se dá aktualizovat pro schválené verze [Linux distribuce](../virtual-machines/linux/endorsed-distros.md), image Windows serveru/klienta a image bez [informací o plánu](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties). 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují změnu navracení
 Některé vlastnosti lze změnit pouze na určité hodnoty, pokud jsou virtuální počítače v sadě škálování navráceny. Mezi tyto vlastnosti patří:
 
-- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
-
+- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>Aktualizace specifické pro virtuální počítače
 Některé úpravy se můžou použít na konkrétní virtuální počítače místo vlastností globální sady škálování. V současné době je jedinou aktualizací specifickou pro konkrétní virtuální počítač připojení nebo odpojení datových disků k virtuálním počítačům v sadě škálování nebo k jejich odpojení. Tato funkce je ve verzi Preview. Další informace najdete v dokumentaci k [verzi Preview](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
@@ -364,7 +364,7 @@ Některé úpravy se můžou použít na konkrétní virtuální počítače mí
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="application-updates"></a>Aktualizace aplikace
-Pokud se aplikace nasadí do sady škálování prostřednictvím rozšíření, aktualizace konfigurace rozšíření způsobí, že se aplikace aktualizuje v souladu se zásadami upgradu. Například pokud máte novou verzi skriptu, která se má spustit ve vlastním rozšíření skriptu, můžete vlastnost *identifikátorů URI* aktualizovat tak, aby odkazovala na nový skript. V některých případech můžete chtít vynutit aktualizaci i v případě, že konfigurace rozšíření zůstane beze změny (například jste aktualizovali skript bez změny identifikátoru URI skriptu). V těchto případech můžete upravit *forceUpdateTag* pro vynucení aktualizace. Platforma Azure tuto vlastnost neinterpretuje. Změníte-li hodnotu, nebude to mít žádný vliv na to, jak se rozšíření spouští. Změna jednoduše vynutí opětovné spuštění rozšíření. Další informace o *forceUpdateTag*najdete v [dokumentaci k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, že *forceUpdateTag* lze použít se všemi příponami, nikoli pouze s rozšířením vlastních skriptů.
+Pokud se aplikace nasadí do sady škálování prostřednictvím rozšíření, aktualizace konfigurace rozšíření způsobí, že se aplikace aktualizuje v souladu se zásadami upgradu. Například pokud máte novou verzi skriptu, která se má spustit ve vlastním rozšíření skriptu, můžete vlastnost *identifikátorů URI* aktualizovat tak, aby odkazovala na nový skript. V některých případech můžete chtít vynutit aktualizaci i v případě, že konfigurace rozšíření zůstane beze změny (například jste aktualizovali skript bez změny identifikátoru URI skriptu). V těchto případech můžete upravit *forceUpdateTag* pro vynucení aktualizace. Platforma Azure tuto vlastnost neinterpretuje. Změníte-li hodnotu, nebude to mít žádný vliv na to, jak se rozšíření spouští. Změna jednoduše vynutí opětovné spuštění rozšíření. Další informace o *forceUpdateTag* najdete v [dokumentaci k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, že *forceUpdateTag* lze použít se všemi příponami, nikoli pouze s rozšířením vlastních skriptů.
 
 Je taky běžné, že se aplikace nasazují pomocí vlastní image. Tento scénář je popsaný v následující části.
 

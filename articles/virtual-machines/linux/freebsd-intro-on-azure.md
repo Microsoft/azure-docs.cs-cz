@@ -2,17 +2,18 @@
 title: Úvod do Linuxu na Azure
 description: Informace o používání virtuálních počítačů s FreeBSD v Azure
 author: thomas1206
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 2959904029643e5345590bd49f81b231c49771d4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0451047cd0fa31d27553a33b0c9318e03ffa222e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286304"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558946"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Úvod do Linuxu na Azure
 Tento článek poskytuje přehled o spuštění virtuálního počítače s FreeBSD v Azure.
@@ -22,9 +23,9 @@ FreeBSD for Microsoft Azure je pokročilý počítačový operační systém, kt
 
 Microsoft Corporation zpřístupňuje image FreeBSD v Azure s předem nakonfigurovaným [agentem hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) . V současné době jsou k dispozici následující verze FreeBSD jako image od Microsoftu:
 
-- [FreeBSD 10,4 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11,2 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
-- [FreeBSD 12,0 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
+- FreeBSD 10,4 na Azure Marketplace
+- FreeBSD 11,2 na Azure Marketplace
+- FreeBSD 12,0 na Azure Marketplace
 
 Agent zodpovídá za komunikaci mezi virtuálním počítačem FreeBSD a prostředky infrastruktury Azure pro operace, jako je například zřízení virtuálního počítače při prvním použití (uživatelské jméno, heslo nebo klíč SSH, název hostitele atd.) a povolení funkcí pro selektivní rozšíření virtuálních počítačů.
 
@@ -33,22 +34,22 @@ Stejně jako v budoucích verzích FreeBSD je strategie aktuální a v krátké 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Vytvoření virtuálního počítače s FreeBSD prostřednictvím rozhraní příkazového řádku Azure v FreeBSD
 Nejdřív je potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/get-started-with-azure-cli) , i když na počítači FreeBSD tento příkaz
 
-```bash 
+```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Pokud na vašem počítači FreeBSD není nainstalovaný bash, spusťte před instalací následující příkaz. 
+Pokud na vašem počítači FreeBSD není nainstalovaný bash, spusťte před instalací následující příkaz. 
 
 ```bash
 sudo pkg install bash
 ```
 
-Pokud Python není nainstalovaný na vašem počítači s FreeBSD, spusťte před instalací následující příkazy. 
+Pokud Python není nainstalovaný na vašem počítači s FreeBSD, spusťte před instalací následující příkazy. 
 
 ```bash
 sudo pkg install python35
-cd /usr/local/bin 
-sudo rm /usr/local/bin/python 
+cd /usr/local/bin 
+sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
@@ -57,7 +58,7 @@ Během instalace se zobrazí výzva `Modify profile to update your $PATH and ena
 Nyní se můžete přihlásit k Azure a vytvořit virtuální počítač s FreeBSD. Níže je příklad vytvoření virtuálního počítače s FreeBSD 11,0. Můžete také přidat parametr `--public-ip-address-dns-name` s globálně jedinečným názvem DNS pro nově vytvořenou veřejnou IP adresu. 
 
 ```azurecli
-az login 
+az login 
 az group create --name myResourceGroup --location eastus
 az vm create --name myFreeBSD11 \
     --resource-group myResourceGroup \
@@ -119,4 +120,4 @@ Můžete volitelně získat kořenové prostředí pomocí `sudo -s` .
 [Agent hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.2 má [známý problém](https://github.com/Azure/WALinuxAgent/pull/517) , který způsobuje selhání zřizování pro virtuální počítač FreeBSD v Azure. Oprava byla zachycena [agentem hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.3 a novějších verzí. 
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud chcete vytvořit virtuální počítač s FreeBSD, otevřete [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) .
+* Pokud chcete vytvořit virtuální počítač s FreeBSD, otevřete [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_2?tab=Overview) .

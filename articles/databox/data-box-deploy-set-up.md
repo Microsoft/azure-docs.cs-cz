@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924152"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335464"
 ---
 ::: zone target="docs"
 
@@ -119,7 +119,7 @@ Pomocí následujícího postupu nastavte své zařízení s využitím místní
 2. Připojte se k portu MGMT vašeho zařízení a přejděte na jeho místní webové uživatelské rozhraní na adrese https\://192.168.100.10. Po zapnutí zařízení to může trvat až 5 minut.
 3. Klikněte na **Podrobnosti** a pak na **Pokračovat na web**.
 
-   ![Připojení k místnímu webovému uživatelskému rozhraní](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![Připojení k místnímu webovému uživatelskému rozhraní](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. Zobrazí se **přihlašovací** stránka místního webového uživatelského rozhraní. Ujistěte se, že je sériové číslo zařízení stejné v uživatelském rozhraní portálu i v místním webovém uživatelském rozhraní. V tuto chvíli je zařízení uzamčené.
 5. Přihlaste se k webu [Azure Portal](https://portal.azure.com).

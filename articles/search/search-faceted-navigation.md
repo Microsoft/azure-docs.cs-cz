@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171937"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002788"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
 
@@ -50,7 +51,7 @@ Výchozím bodem je stránka aplikace, která poskytuje omezující navigaci, ob
 1. Dotaz odeslaný do Azure Kognitivní hledání Určuje omezující navigační strukturu prostřednictvím jednoho nebo více parametrů dotazu omezující vlastnosti. Dotaz může například zahrnovat `facet=Rating` `:values` `:sort` možnost nebo k dalšímu upřesnění prezentace.
 2. Prezentační vrstva vykreslí stránku hledání, která poskytuje omezující navigaci, pomocí omezujících vlastností zadaných v žádosti.
 3. Vzhledem k omezující navigační struktuře, která obsahuje hodnocení, klikněte na 4 a určete, že se mají zobrazit jenom produkty se hodnocením 4 nebo vyšším. 
-4. V reakci aplikace pošle dotaz, který obsahuje`$filter=Rating ge 4` 
+4. V reakci aplikace pošle dotaz, který obsahuje `$filter=Rating ge 4` 
 5. Prezentační vrstva aktualizuje stránku a zobrazí omezenou sadu výsledků, která obsahuje pouze ty položky, které odpovídají novým kritériím (v tomto případě produkty ohodnocené 4 a v tomto případě).
 
 Omezující vlastnost je parametr dotazu, ale Nepleťe se s vstupem dotazu. Nikdy se nepoužívá jako kritéria výběru v dotazu. Místo toho si popřemýšlejte parametry dotazu omezující vlastnosti jako vstupy do navigační struktury, která se vrátí v odpovědi. Pro každý parametr dotazu omezující podmínky, který zadáte, vám Azure Kognitivní hledání vyhodnotí, kolik dokumentů je v částečných výsledcích pro každou hodnotu omezující vlastnosti.
@@ -63,7 +64,7 @@ V kódu aplikace je vzorem použití parametrů dotazu na omezující vlastnost 
 
 ### <a name="query-basics"></a>Základy dotazů
 
-V Azure Kognitivní hledání je požadavek zadaný prostřednictvím jednoho nebo více parametrů dotazu (popis každého z nich najdete v [dokumentu pro hledání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) ). Žádný z parametrů dotazu není povinný, ale aby byl dotaz platný, musíte mít aspoň jednu.
+V Azure Kognitivní hledání je požadavek zadaný prostřednictvím jednoho nebo více parametrů dotazu (popis každého z nich najdete v [dokumentu pro hledání](/rest/api/searchservice/Search-Documents) ). Žádný z parametrů dotazu není povinný, ale aby byl dotaz platný, musíte mít aspoň jednu.
 
 Přesnost, která se považuje za schopnost vyfiltrovat nepodstatné přístupy, se dosahuje prostřednictvím jednoho nebo obou těchto výrazů:
 
@@ -230,7 +231,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem odděleným čárkami, který obsahuje `count:<integer>` , `sort:<>` , `interval:<integer>` a `values:<list>` . Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [Prohledání dokumentů (Azure kognitivní hledání API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem odděleným čárkami, který obsahuje `count:<integer>` , `sort:<>` , `interval:<integer>` a `values:<list>` . Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [Prohledání dokumentů (Azure kognitivní hledání API)](/rest/api/searchservice/Search-Documents) .
 
 Společně s omezujícími vlastnostmi by požadavek, který aplikace formuluje, měl také vytvořit filtry pro zúžení sady kandidátských dokumentů na základě výběru hodnoty omezující vlastnosti. V případě úložiště kol napodobná navigace nabízí otázky *, jako jsou jaké barvy, výrobci a typy kol k dispozici?*. Dotazy na odpovědi *, jako je například přesná kola, jsou v tomto cenovém rozsahu červené, horská kola?* Když kliknete na tlačítko Red (červená) a označíte, že by se měly zobrazit jenom červené produkty, zahrnuje další dotaz, který aplikace posílá `$filter=Color eq 'Red'` .
 
@@ -299,7 +300,7 @@ Obecně platí, že pokud zjistíte, že výsledky omezující vlastnosti jsou k
 
 Pro každé naomezující pole v navigační větvi je výchozí limit 10 hodnot. Toto výchozí nastavení dává smysl pro navigační struktury, protože udržuje seznam hodnot pro spravovatelnou velikost. Výchozí hodnotu můžete přepsat přiřazením hodnoty k počtu.
 
-* `&facet=city,count:5`Určuje, že jako výsledek omezující vlastnosti se vrátí jenom prvních pět měst nalezených v horních seřazených výsledcích. Vezměte v úvahu vzorový dotaz s hledaným termínem "letiště" a 32 shody. Pokud dotaz určíte `&facet=city,count:5` , do výsledků omezujících vlastností se zahrnou jenom prvních pět jedinečných měst s největším dokumentem ve výsledcích hledání.
+* `&facet=city,count:5` Určuje, že jako výsledek omezující vlastnosti se vrátí jenom prvních pět měst nalezených v horních seřazených výsledcích. Vezměte v úvahu vzorový dotaz s hledaným termínem "letiště" a 32 shody. Pokud dotaz určíte `&facet=city,count:5` , do výsledků omezujících vlastností se zahrnou jenom prvních pět jedinečných měst s největším dokumentem ve výsledcích hledání.
 
 Všimněte si rozdílu mezi výsledky omezujících vlastností a výsledky hledání. Výsledky hledání jsou všechny dokumenty, které odpovídají dotazu. Výsledky omezující vlastnosti jsou odpovídajícími hodnotami každé hodnoty omezující vlastnosti. V příkladu výsledky hledání zahrnují názvy měst, které nejsou v seznamu klasifikace omezujících vlastností (5 v našem příkladu). Výsledky, které jsou vyfiltrované prostřednictvím navýšení v rámci navýšení navigace, se budou zobrazovat při vymazání omezujících vlastností, nebo kromě měst. 
 
@@ -319,7 +320,7 @@ Když přidáte filtr do omezujícího dotazu, je vhodné zachovat příkaz omez
 
 **Ujistěte se, že získáte přesné počty omezujících vlastností.**
 
-Za určitých okolností možná zjistíte, že počty omezujících vlastností se neshodují s sadami výsledků (viz navýšení s možností zobrazení [v Azure kognitivní hledání (Microsoft Q&A Stránka s otázkou)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
+Za určitých okolností možná zjistíte, že počty omezujících vlastností se neshodují s sadami výsledků (viz navýšení s možností zobrazení [v Azure kognitivní hledání (Microsoft Q&A Stránka s otázkou)](/answers/topics/azure-cognitive-search.html)).
 
 Počty omezujících podmínek můžou být kvůli architektuře horizontálního dělení nepřesné. Každý index hledání má několik horizontálních oddílů a každá horizontálních oddílů oznamuje hlavní N omezující vlastnosti podle počtu dokumentů, který se pak sloučí do jednoho výsledku. Pokud některé horizontálních oddílů obsahují mnoho hodnot, zatímco jiné mají méně, může se stát, že některé hodnoty omezující vlastnosti ve výsledcích chybí nebo jsou ve výsledku zjištěny.
 
@@ -333,12 +334,12 @@ Popisky jsou obvykle definovány ve formátu HTML nebo formuláře ( `index.csht
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtrovat podle rozsahu
-Omezující vlastnosti přes rozsahy hodnot jsou běžným požadavkem na aplikaci vyhledávání. Rozsahy jsou podporovány pro číselná data a hodnoty data a času. V [dokumentech pro hledání (Azure kognitivní hledání API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)si můžete přečíst další informace o každém přístupu.
+Omezující vlastnosti přes rozsahy hodnot jsou běžným požadavkem na aplikaci vyhledávání. Rozsahy jsou podporovány pro číselná data a hodnoty data a času. V [dokumentech pro hledání (Azure kognitivní hledání API)](/rest/api/searchservice/Search-Documents)si můžete přečíst další informace o každém přístupu.
 
 Azure Kognitivní hledání zjednodušuje vytváření rozsahu zadáním dvou přístupů k výpočtu rozsahu. V obou případech vytvoří Azure Kognitivní hledání příslušné rozsahy, které odpovídají zadaným vstupům. Pokud například zadáte hodnoty rozsahu 10 | 20 | 30, automaticky se vytvoří rozsahy 0-10, 10-20, 20-30. Aplikace může volitelně odebrat všechny intervaly, které jsou prázdné. 
 
 **Přístup 1: použití parametru intervalu**  
-Chcete-li nastavit cenové charakteristiky v $10 přírůstcích, zadejte:`&facet=price,interval:10`
+Chcete-li nastavit cenové charakteristiky v $10 přírůstcích, zadejte: `&facet=price,interval:10`
 
 **Přístup 2: použití seznamu hodnot**  
 Pro číselná data můžete použít seznam hodnot.  Vezměte v úvahu rozsah omezujících vlastností pro `listPrice` pole vykreslený takto:
@@ -381,7 +382,7 @@ Při práci s výsledky hledání Sledujte adresu URL pro změny v vytváření 
 
 1. Pokud chcete používat funkce mapování ukázkové aplikace, Získejte klíč mapy Bing z centra pro vývojáře pro [mapy Bing](https://www.bingmapsportal.com/). Vložte ho přes existující klíč na `index.cshtml` stránku. `BingApiKey`Nastavení v `Web.config` souboru se nepoužívá. 
 
-2. Aplikaci spusťte. Pořídit volitelnou prohlídku nebo zrušit dialog.
+2. Spusťte aplikaci. Pořídit volitelnou prohlídku nebo zrušit dialog.
    
 3. Zadejte hledaný termín, například "analytika", a klikněte na ikonu hledání. Dotaz se rychle spustí.
    
@@ -404,4 +405,3 @@ Další informace o principech návrhu pro návrhovou navigaci vám doporučujem
 
 * [Vzory návrhu: omezující navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [Obavy z front-endu při implementaci hledání podle vlastností – část 1](https://articles.uie.com/faceted_search2/)
-

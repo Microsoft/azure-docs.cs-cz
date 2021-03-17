@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace Unity pro iOS'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS s Unity pomocí prostorových ukotvení.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1fbd7138c393809b279d780004ff476cea4735fe
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b278ac6c824b1583e90cfc9152264f61357dd228
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810322"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95971526"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro iOS pomocí prostorových kotev Azure
 
@@ -30,11 +30,11 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- MacOS počítač s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>, nejnovější verzí <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> nainstalované.
+- MacOS počítač s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>, která má nainstalovanou nejnovější verzi <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> .
 - Git se nainstaloval přes HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Pak spusťte příkaz `brew install git` a `brew install git-lfs` .
 - Vývojářem podporujícím zařízení s iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
 
@@ -56,7 +56,11 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-Podle pokynů v aplikaci založte a odvoláte kotvu.
+V aplikaci vyberte **BasicDemo** pomocí šipek a pak stiskněte tlačítko **Přejít.** tlačítko pro spuštění ukázky. Použijte pokyny k umístění a odvolání kotvy.
+
+![Snímek obrazovky 1 ](./media/get-started-unity-ios/screenshot-1.jpg)
+ ![ snímek obrazovky 2 snímek ](./media/get-started-unity-ios/screenshot-2.jpg)
+ ![ obrazovky 3](./media/get-started-unity-ios/screenshot-3.jpg)
 
 Po dokončení zastavte aplikaci stisknutím tlačítka **zastavit** v Xcode.
 
@@ -65,16 +69,6 @@ Po dokončení zastavte aplikaci stisknutím tlačítka **zastavit** v Xcode.
 ### <a name="rendering-issues"></a>Problémy vykreslování
 
 Pokud při spuštění aplikace nevidíte kameru jako pozadí (například místo toho, aby se zobrazily prázdné, modré nebo jiné textury), pravděpodobně budete muset znovu naimportovat prostředky v Unity. Zastavte aplikaci. V horní nabídce v Unity vyberte **prostředky – > znovu importovat vše**. Pak znovu spusťte aplikaci.
-
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>Problémy s CocoaPods na macOS Catalina (10,15)
-
-Pokud jste nedávno aktualizovali na macOS Catalina (10,15) a původně jste CocoaPods nainstalovali, CocoaPods může být v nefunkčním stavu a nemusí správně konfigurovat soubory lusků a `.xcworkspace` projektů. Chcete-li tento problém vyřešit, budete muset přeinstalovat CocoaPods spuštěním následujících příkazů:
-
-```shell
-brew update
-brew install cocoapods --build-from-source
-brew link --overwrite cocoapods
-```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

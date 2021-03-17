@@ -1,7 +1,7 @@
 ---
 title: 'Kurz regrese: automatizované ML'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte generovat model strojového učení pomocí automatizovaného strojového učení. Azure Machine Learning může při automatizovaném způsobu provádět předběžné zpracování dat, výběr algoritmu a výběr parametrů.
+description: Vytvořte automatizovaný experiment strojového učení, který pro vás vygeneruje regresní model na základě školicích dat a nastavení konfigurace, která zadáte.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 04e50f5a990624aa01c845c82658639b8450f57d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120843"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503857"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Použití automatizovaného strojového učení k předvídání taxislužby tarifů
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Využití automatizovaného strojového učení k predikci ceny jízdy taxíkem
+
 
 V tomto kurzu pomocí automatizovaného strojového učení v Azure Machine Learning vytvoříte regresní model, který předpovídá ceny NYC taxislužby jízdné. Tento proces přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu.
 
@@ -39,7 +39,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok *kurzy/Regression-automl-NYC-taxi-data/Regression-Automated-ml. ipynb* pomocí stejného serveru poznámkového bloku.
 
-Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Spusťte `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` , abyste získali požadované balíčky.
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Chcete-li získat požadované balíčky, 
+* [Nainstalujte úplného `automl` klienta](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment).
+* Spusťte `pip install azureml-opendatasets azureml-widgets` , abyste získali požadované balíčky.
 
 ## <a name="download-and-prepare-data"></a>Stažení a Příprava dat
 
@@ -76,12 +78,12 @@ green_taxi_df.head(10)
 |1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Žádné|Žádné|-73,96|40,81|-73,96|...|2|4,50|1.00|0,50|0.3|0,00|0,00|pak|6,30|1.00
 |1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Žádné|Žádné|-73,92|40,76|-73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|pak|4,80|1.00
 |348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Žádné|Žádné|-73,81|40,70|-73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|pak|13,80|1.00
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Žádné|Žádné|-73,92|40,76|-73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|pak|5.00|1.00
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Žádné|Žádné|-73,92|40,76|-73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|pak|5,00|1.00
 |811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Žádné|Žádné|-73,96|40,72|-73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|pak|7,80|1.00
 |737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Žádné|Žádné|-73,88|40,76|-73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|pak|6,80|1.00
 |113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Žádné|Žádné|-73,96|40,72|-73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|pak|13,80|1.00
 |150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Žádné|Žádné|-73,94|40,71|-73,95|...|1|7,00|0,00|0,50|0.3|1.75|0,00|pak|9,55|1.00
-|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Žádné|Žádné|-73,94|40,71|-73,94|...|2|5.00|0,50|0,50|0.3|0,00|0,00|pak|6,30|1.00
+|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Žádné|Žádné|-73,94|40,71|-73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|pak|6,30|1.00
 
 Po načtení počátečních dat definujte funkci pro vytvoření různých funkcí založených na čase z pole Datum vyzvednutí. Tím se vytvoří nová pole pro číslo měsíce, den v měsíci, den v týdnu a hodina dne a v modelu bude umožněno, aby model platil jako sezónnost založený na čase. Použijte `apply()` funkci na datovém snímku pro iterativní použití `build_time_features()` funkce na každý řádek taxislužby dat.
 
@@ -105,12 +107,12 @@ green_taxi_df.head(10)
 |1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Žádné|Žádné|-73,96|40,81|-73,96|...|2|4,50|1.00|0,50|0.3|0,00|0,00|pak|6,30|1.00|1|20|1|16
 |1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Žádné|Žádné|-73,92|40,76|-73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|pak|4,80|1.00|1|1|3|5
 |348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Žádné|Žádné|-73,81|40,70|-73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|pak|13,80|1.00|1|17|5|2
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Žádné|Žádné|-73,92|40,76|-73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|pak|5.00|1.00|1|1|3|5
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Žádné|Žádné|-73,92|40,76|-73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|pak|5,00|1.00|1|1|3|5
 |811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Žádné|Žádné|-73,96|40,72|-73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|pak|7,80|1.00|1|4|6|19
 |737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Žádné|Žádné|-73,88|40,76|-73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|pak|6,80|1.00|1|3|5|12
 |113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Žádné|Žádné|-73,96|40,72|-73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|pak|13,80|1.00|1|9|4|23
 |150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Žádné|Žádné|-73,94|40,71|-73,95|...|1|7,00|0,00|0,50|0.3|1.75|0,00|pak|9,55|1.00|1|11|6|17
-|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Žádné|Žádné|-73,94|40,71|-73,94|...|2|5.00|0,50|0,50|0.3|0,00|0,00|pak|6,30|1.00|1|22|3|23
+|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Žádné|Žádné|-73,94|40,71|-73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|pak|6,30|1.00|1|22|3|23
 
 Odeberte některé sloupce, které nebudete potřebovat pro školení, nebo pro vytváření dalších funkcí.
 
@@ -137,12 +139,12 @@ green_taxi_df.describe()
 |----|----|---|---|----|---|---|---|---|---|---|---
 |count|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00
 |mean|1,78|1,37|2,87|-73,83|40,69|-73,84|40,70|14,75|6,50|15,13|3,27|13,52
-|STD|0,41|1,04|2.93|2,76|1,52|2,61|1,44|12,08|3,45|8,45|1,95|6,83
+|std|0,41|1,04|2.93|2,76|1,52|2,61|1,44|12,08|3,45|8,45|1,95|6,83
 |min|1.00|0,00|0,00|-74,66|0,00|-74,66|0,00|-300,00|1.00|1.00|0,00|0,00
-|25 %|2.00|1.00|1.06|-73,96|40,70|-73,97|40,70|7,80|3,75|8,00|2.00|9,00
-|50 %|2.00|1.00|1,90|-73,94|40,75|-73,94|40,75|11,30|6,50|15,00|3,00|15,00
-|75 %|2.00|1.00|3,60|-73,92|40,80|-73,91|40,79|17,80|9,25|22,00|5.00|19,00
-|max|2.00|9,00|97,57|0,00|41,93|0,00|41,94|450,00|12,00|30,00|6,00|23,00
+|25%|2,00|1.00|1.06|-73,96|40,70|-73,97|40,70|7,80|3,75|8,00|2,00|9,00
+|50%|2,00|1.00|1,90|-73,94|40,75|-73,94|40,75|11,30|6,50|15,00|3,00|15,00
+|75%|2,00|1.00|3,60|-73,92|40,80|-73,91|40,79|17,80|9,25|22,00|5,00|19,00
+|max|2,00|9,00|97,57|0,00|41,93|0,00|41,94|450,00|12,00|30,00|6,00|23,00
 
 
 V souhrnných statistikách vidíte, že existuje několik polí, která mají mimo jiné pole nebo hodnoty, které budou snižovat přesnost modelu. Nejdříve vyfiltrujte pole lat/Long tak, aby byla v mezích oblasti Manhattan. Tím se vyfiltruje déle taxislužby cest nebo cest, které jsou ve vztahu k ostatním funkcím.
@@ -173,7 +175,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Vytvoří také cloudový prostředek pro monitorování a sledování spuštění modelu. `Workspace.from_config()`přečte soubor **config.jsv** a načte podrobnosti ověřování do objektu s názvem `ws` . `ws` se používá ve zbývající části kódu v tomto kurzu.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. [Pracovní prostor](/python/api/azureml-core/azureml.core.workspace.workspace) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Vytvoří také cloudový prostředek pro monitorování a sledování spuštění modelu. `Workspace.from_config()` přečte soubor **config.jsv** a načte podrobnosti ověřování do objektu s názvem `ws` . `ws` se používá ve zbývající části kódu v tomto kurzu.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -206,13 +208,13 @@ K automatickému učení modelu proveďte následující kroky:
 
 Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úplný seznam [Nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito výchozími nastaveními bude trvat přibližně 5-20 min, ale pokud budete chtít kratší dobu běhu, snižte `experiment_timeout_hours` parametr.
 
-|Vlastnost| Hodnota v tomto kurzu |Popis|
+|Vlastnost| Hodnota v tomto kurzu |Description|
 |----|----|---|
-|**iteration_timeout_minutes**|2|Časový limit pro každou iteraci v minutách Snižte tuto hodnotu pro snížení celkové doby běhu.|
+|**iteration_timeout_minutes**|10|Časový limit pro každou iteraci v minutách Zvyšte tuto hodnotu u větších datových sad, které pro každou iteraci vyžadují více času.|
 |**experiment_timeout_hours**|0.3|Maximální doba v hodinách, po kterou můžou všechny iterace v kombinaci trvat, než se experiment ukončí.|
 |**enable_early_stopping**|Ano|Příznak, který povolí předčasné ukončení, pokud se skóre v krátkém období nezlepšuje.|
 |**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Model nejlépe přizpůsoben se vybere na základě této metriky.|
-|**featurization**| auto | Pomocí **auto**může experiment předzpracovat vstupní data (zpracování chybějících dat, převod textu na číslo atd.).|
+|**featurization**| auto | Pomocí **auto** může experiment předzpracovat vstupní data (zpracování chybějících dat, převod textu na číslo atd.).|
 |**podrobností**| logging.INFO | Řídí úroveň protokolování.|
 |**n_cross_validations**|5|Počet rozdělení křížového ověření, které se mají provést, pokud nejsou zadaná ověřovací data.|
 
@@ -220,7 +222,7 @@ Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úpln
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
@@ -253,7 +255,7 @@ Po zahájení experimentu se výstup v rámci spuštění experimentu zobrazí j
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, "taxi-experiment")
+experiment = Experiment(ws, "Tutorial-NYCTaxi")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -300,7 +302,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>Kontrola výsledků
 
-Prozkoumejte výsledky automatického školení pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Pomůcka vám umožní zobrazit graf a tabulku všech jednotlivých iterací spuštění spolu s metrikami přesnosti školení a metadaty. Kromě toho můžete filtrovat různé metriky přesnosti, než je vaše primární metrika, pomocí rozevíracího selektoru.
+Prozkoumejte výsledky automatického školení pomocí [widgetu Jupyter](/python/api/azureml-widgets/azureml.widgets). Pomůcka vám umožní zobrazit graf a tabulku všech jednotlivých iterací spuštění spolu s metrikami přesnosti školení a metadaty. Kromě toho můžete filtrovat různé metriky přesnosti, než je vaše primární metrika, pomocí rozevíracího selektoru.
 
 ```python
 from azureml.widgets import RunDetails
@@ -322,7 +324,7 @@ print(fitted_model)
 
 ### <a name="test-the-best-model-accuracy"></a>Testování nejlepší přesnosti modelu
 
-Použijte nejlepší model pro spuštění předpovědi na testovacích datech sady pro předpověď taxislužby tarifů. Funkce `predict` využívá nejlepší model a předpovídá hodnoty y, **nákladů na cestu**ze `x_test` sady dat. Vytiskněte prvních 10 předpokládaných hodnot nákladů z `y_predict` .
+Použijte nejlepší model pro spuštění předpovědi na testovacích datech sady pro předpověď taxislužby tarifů. Funkce `predict` využívá nejlepší model a předpovídá hodnoty y, **nákladů na cestu** ze `x_test` sady dat. Vytiskněte prvních 10 předpokládaných hodnot nákladů z `y_predict` .
 
 ```python
 y_test = x_test.pop("totalAmount")

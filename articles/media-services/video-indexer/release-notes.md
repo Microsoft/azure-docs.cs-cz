@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837305"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203721"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,89 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="march-2021"></a>Březen 2021
+
+Analýza zvuku je teď k dispozici v dalším novém balíčku zvukových funkcí v jiném cenovém bodě. Nová předvolba **základní analýzy zvuku** nabízí možnost nedostatku pouze k extrakci popisků a titulků výstupů řeči, překladu a formátování. V předplatném se **základní zvuk** vytvoří ve vyúčtování dva samostatné měřiče, včetně řádku pro přepis a samostatného řádku pro formátování titulků a titulků. Další informace o cenách najdete na stránce s [cenami Media Services](https://azure.microsoft.com/pricing/details/media-services/) .
+
+Nově přidaný svazek je k dispozici při indexování nebo opětovném indexování souboru tak, že vyberete **možnost Rozšířená volba**  ->  **základní zvukové** Předvolby (v rozevíracím seznamu **video a zvuk** ).
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="multiple-account-owners"></a>Více vlastníků účtu 
+
+Do Video Indexer se přidala role vlastníka účtu. Můžete přidávat, měnit a odebírat uživatele. změňte jejich roli. Podrobnosti o tom, jak sdílet účet, najdete v tématu [pozvání uživatelů](invite-users.md).
+
+### <a name="audio-event-detection-public-preview"></a>Detekce zvukové události (Public Preview)
+
+> [!NOTE]
+> Tato funkce je k dispozici pouze v účtech zkušební verze. 
+
+Video Indexer nyní detekuje následující zvukové efekty v segmentech nehlasu obsahu: gunshot, skleněná Shatter, alarm, Siren, výbuch, pes kůra, výkřiku, Laughter, reelné reakce (, clapping a booing) a ticho. 
+
+Nově přidaný zvuk, který ovlivňuje funkci, je k dispozici při indexování souboru výběrem **Možnosti Upřesnit možnost** Upřesnit  ->  **zvuk** (v části video a indexování zvuků). Standardní indexování bude zahrnovat jenom **tiché** a přeplněné **reakce**. 
+
+Typ události **clapping** , který byl zahrnut v předchozím modelu zvukových efektů, je teď extrahovaný jako součást typu události **přeplněných reakcí** .
+
+Pokud se rozhodnete zobrazit **přehledy** o videu na webu [video indexer](https://www.videoindexer.ai/) , projeví se na stránce zvukové efekty.
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Detekce zvukové události":::
+
+### <a name="named-entities-enhancement"></a>Vylepšení pojmenovaných entit  
+
+Extrahovaný seznam lidí a umístění se obecně rozšířil a aktualizoval. 
+
+Model teď navíc zahrnuje lidi a umístění v kontextu, které nejsou ve videu slavných jako Sam nebo Home. 
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="video-indexer-is-deployed-on-us-government-cloud"></a>Video Indexer je nasazený v cloudu pro státní správu USA. 
+
+V cloudu pro státní správu USA teď můžete vytvořit Video Indexer placeného účtu v oblastech) – Virginia a Arizona. V uvedené oblasti není dostupná Video Indexer nabídka bezplatné zkušební verze. Další informace najdete v dokumentaci k Video Indexer. 
+
+### <a name="video-indexer-deployed-in-the-india-central-region"></a>Video Indexer nasazené v oblasti Indie – střed 
+
+Nyní můžete vytvořit placený účet Video Indexer v oblasti Indie – střed. 
+
+### <a name="new-dark-mode-for-the-video-indexer-website-experience"></a>Nový tmavý režim pro prostředí Video Indexer webu
+
+Prostředí Video Indexer webů je teď dostupné v tmavém režimu. Chcete-li povolit režim tmavosti, otevřete panel nastavení a přepněte na možnost **tmavý režim** . 
+
+:::image type="content" source="./media/release-notes/dark-mode.png" alt-text="Nastavení tmavého režimu":::
+
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>Video Indexer nasazena v Švýcarsko – západ a Švýcarsko – sever
+
+V oblastech Švýcarsko – západ a Švýcarsko – sever teď můžete vytvořit placený účet Video Indexer.
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="animated-character-identification-improvements"></a>Vylepšení animovaných identifikací znaků  
+
+Video Indexer podporuje detekci, seskupení a rozpoznávání znaků v animovaném obsahu prostřednictvím integrace s Cognitive Services vlastní vize. Do detekce a rozpoznávání znaků jsme přidali hlavní vylepšení tohoto algoritmu AI. v důsledku toho se výrazně vylepšuje přesnost a zjištěné znaky.
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>Authenticatication změny na webu plánovaného Video Indexer
+
+Od 1. března 2021 se už nebudete moct zaregistrovat a přihlásit se k [portálu](video-indexer-use-apis.md) pro vývojáře [video indexer webu](https://www.videoindexer.ai/) pomocí Facebooku nebo LinkedInu.
+
+Budete se moct zaregistrovat a přihlásit pomocí některého z těchto poskytovatelů: Azure AD, Microsoft a Google.
+
+> [!NOTE]
+> Účty Video Indexer připojené k LinkedInu a Facebooku nebudou dostupné po 1. březnu 2021. 
+> 
+> Měli byste [pozvat](invite-users.md) e-maily Azure AD, Microsoft nebo Google na účet video indexer, abyste k němu měli přístup i nadále. Můžete přidat další vlastníka podporovaných zprostředkovatelů, jak je popsáno v [pozvánce](invite-users.md). <br/>
+> Případně můžete vytvořit placený účet a migrovat data.
+
+## <a name="august-2020"></a>Srpen 2020
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>Mobilní návrh pro Video Indexer Web
+
+Prostředí Video Indexer webu teď podporuje mobilní zařízení. Uživatelské prostředí reaguje na přizpůsobení velikosti mobilní obrazovky (kromě uživatelská rozhraní přizpůsobení). 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>Vylepšení usnadnění a opravy chyb 
+
+Jako součást WCAG (pokyny pro přístupnost webového obsahu) je Video Indexer webů v rámci standardů Microsoftu pro usnadnění práce zarovnána se stupněm C. Bylo vyřešeno několik chyb a vylepšení souvisejících s navigací klávesnice, programovým přístupem a čtečkou obrazovky. 
 
 ## <a name="july-2020"></a>Červenec 2020
 
@@ -113,7 +196,7 @@ V nadcházejících týdnech ji změníme a vrátíme adresu URL [video indexer 
     * Nahrazení adresy URL adresou URL odkazující na rozhraní API widgetů Video Indexer (například [pomůcka Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Pomocí webu Video Indexer Vygenerujte novou vloženou adresu URL:
          
-         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na tlačítko pro ** &lt; / &gt; vložení** – > zkopírujte adresu URL do vaší aplikace:
+         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na tlačítko pro **&lt; / &gt; vložení** – > zkopírujte adresu URL do vaší aplikace:
    
     Regionální adresy URL nejsou podporované a v nadcházejících týdnech se zablokují.
 
@@ -129,7 +212,7 @@ Akce Odstranit účet nyní odstraní účet do 90 dnů, nikoli do 48 hodin.
  
 ### <a name="new-video-indexer-github-repository"></a>Nové úložiště GitHub Video Indexer
 
-K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky Začínáme a ukázky kódu:https://github.com/Azure-Samples/media-services-video-indexer
+K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky Začínáme a ukázky kódu: https://github.com/Azure-Samples/media-services-video-indexer
  
 ### <a name="swagger-update"></a>Aktualizace Swagger
 

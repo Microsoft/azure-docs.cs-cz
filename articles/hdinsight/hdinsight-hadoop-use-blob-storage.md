@@ -1,27 +1,27 @@
 ---
 title: Dotazy na data z úložiště Azure kompatibilního se systémem HDFS – Azure HDInsight
 description: Naučte se, jak zadávat dotazy na data z Azure Storage a Azure Data Lake Storage ukládat výsledky analýzy.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086972"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945423"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
-Data můžete ukládat v [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)nebo [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md). Nebo kombinaci těchto možností. Tyto možnosti úložiště umožňují bezpečně odstraňovat clustery HDInsight, které se používají pro výpočty, aniž by došlo ke ztrátě uživatelských dat.
+Data můžete ukládat v [Azure Blob Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)nebo [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md). Nebo kombinaci těchto možností. Tyto možnosti úložiště umožňují bezpečně odstraňovat clustery HDInsight, které se používají pro výpočty, aniž by došlo ke ztrátě uživatelských dat.
 
-Apache Hadoop podporuje pojem výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů BLOB v Azure Storage. Nebo se službou HDInsight 3,6 můžete vybrat buď Azure Storage, nebo Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 jako výchozí systém souborů s několika výjimkami. Informace o podpoře použití Data Lake Storage Gen 1 jako výchozího i propojeného úložiště najdete v tématu [dostupnost pro cluster HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
+Apache Hadoop podporuje pojem výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů BLOB v Azure Storage. Nebo se službou HDInsight 3,6 můžete jako výchozí systém souborů s několika výjimkami vybrat buď službu Azure Blob Storage, nebo Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2. Informace o podpoře použití Data Lake Storage Gen1 jako výchozího i propojeného úložiště najdete v tématu [dostupnost pro cluster HDInsight](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters).
 
-V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDInsight. Informace o tom, jak Data Lake Storage Gen 1 pracuje s clustery HDInsight, najdete v tématu [použití Azure Data Lake Storage s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-store.md). Další informace o vytvoření clusteru HDInsight najdete v tématu věnovaném [vytváření Apache Hadoop clusterů ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDInsight. 
+* Informace o tom, jak Data Lake Storage Gen1 pracuje s clustery HDInsight, najdete v tématu [použití Azure Data Lake Storage Gen1 s clustery Azure HDInsight](./hdinsight-hadoop-use-data-lake-storage-gen1.md).
+* informace o tom, jak Data Lake Storage Gen2 pracuje s clustery HDInsight, najdete v tématu [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](./hdinsight-hadoop-use-data-lake-storage-gen2.md).
+* Další informace o vytvoření clusteru HDInsight najdete v tématu věnovaném [vytváření Apache Hadoop clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!IMPORTANT]  
 > Druh účtu úložiště **BlobStorage** se dá použít jenom jako sekundární úložiště pro clustery HDInsight.
@@ -29,8 +29,8 @@ V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDIns
 | Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu |Nepodporované úrovně výkonu| Podporované úrovně přístupu |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
-| Úložiště (obecné účely v1)   | Objekt blob     | Standard                    |Premium| Není k dispozici                    |
-| BlobStorage                    | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
+| Úložiště (obecné účely v1)   | Objekt blob     | Standard                    |Premium| –                    |
+| Blob Storage                    | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
 
 Pro ukládání obchodních dat nedoporučujeme používat výchozí kontejner objektů BLOB. Ideální postup je výchozí kontejner objektů blob po každém použití odstranit a snížit tak náklady na úložiště. Výchozí kontejner obsahuje protokoly aplikací a systému. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
 
@@ -146,9 +146,9 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 
 Pokud chcete získat cestu pomocí REST API Ambari, přečtěte si téma [získání výchozího úložiště](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
 
-## <a name="blob-containers"></a>Kontejnery objektů BLOB
+## <a name="blob-containers"></a>Kontejnery objektů blob
 
-K použití objektů blob je třeba nejprve vytvořit [Účet služby Azure Storage](../storage/common/storage-create-storage-account.md). V rámci tohoto kroku zadáte oblast Azure, ve které se účet úložiště vytvoří. Účet úložiště a clusteru musí být uloženy ve stejné oblasti. Databáze metastore Hive SQL Server a databáze Apache Oozie SQL Server metastore se musí nacházet ve stejné oblasti.
+K použití objektů blob je třeba nejprve vytvořit [Účet služby Azure Storage](../storage/common/storage-account-create.md). V rámci tohoto kroku zadáte oblast Azure, ve které se účet úložiště vytvoří. Účet úložiště a clusteru musí být uloženy ve stejné oblasti. Databáze metastore Hive SQL Server a databáze Apache Oozie SQL Server metastore se musí nacházet ve stejné oblasti.
 
 Bez ohledu na svoje umístění patří každý objekt blob, který vytvoříte, do kontejneru v účtu úložiště Azure. Tento kontejner může být existující objekt BLOB vytvořený mimo HDInsight. Může se jednat o kontejner, který se vytvoří pro cluster HDInsight.
 
@@ -167,11 +167,11 @@ Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, kt
 
 V tomto článku jste zjistili, jak používat HDFS kompatibilní úložiště Azure se službou HDInsight. Toto úložiště umožňuje vytvářet přizpůsobitelná a dlouhodobá řešení pro získávání archivovaných dat a používat HDInsight k odemčení informací uvnitř uložených strukturovaných a nestrukturovaných dat.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
-* [Začínáme se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Začínáme s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Nahrání dat do služby HDInsight](hdinsight-upload-data.md)
-* [Použití sdílených přístupových podpisů služby Azure Storage k omezení přístupu k datům pomocí HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [Rychlý Start: Vytvoření clusteru Apache Hadoop](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Kurz: vytváření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Nahrání dat do služby HDInsight](hdinsight-upload-data.md)
 * [Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Použití sdílených přístupových podpisů služby Azure Storage k omezení přístupu k datům pomocí HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)

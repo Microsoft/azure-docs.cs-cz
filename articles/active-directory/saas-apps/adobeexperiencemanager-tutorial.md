@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0340b9d8971446113862465c67143674bd5668
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543019"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Kurz: Azure Active Directory integrace se správcem prostředí Adobe Experience Manager
 
-V tomto kurzu se dozvíte, jak integrovat správce platformy Adobe Experience pomocí Azure Active Directory (Azure AD).
-Integrace programu Adobe Experience Manager se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat správce platformy Adobe Experience pomocí Azure Active Directory (Azure AD). Když integrujete aplikaci Adobe Experience Manager s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k programu Adobe Experience Manager.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k programu Adobe Experience Manager (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k programu Adobe Experience Manager.
+* Umožněte uživatelům, aby se do programu Adobe Experience Manager automaticky přihlásili pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí programu Adobe Experience Manager budete potřebovat následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné programu Adobe Experience Manager s povoleným jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné nástroje Adobe Experience Manager jednotného přihlašování (SSO) s povoleným jednotným přihlašováním.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -49,59 +45,38 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Chcete-li nakonfigurovat integraci programu Adobe Experience Manager do služby Azure AD, je nutné přidat správce aplikace Adobe Experience Manager z Galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat správce aplikace Adobe Experience z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **program Adobe Experience Manager** .
+1. Na panelu výsledků vyberte **správce prostředí Adobe Experience** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-adobe-experience-manager"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro správce aplikace Adobe Experience Manager
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí programu Adobe Experience Manager pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem ve Správci Adobe Experience Manager.
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí programu Adobe Experience Manager, proveďte následující kroky:
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+2. **[Nakonfigurujte jednotné přihlašování pro Adobe Experience Manager](#configure-adobe-experience-manager-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
+    1. **[Vytvořte testovacího uživatele v programu Adobe Experience Manager](#create-adobe-experience-manager-test-user)** – abyste měli protějšek Britta Simon ve Správci Adobe Experience Manageru, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-4. Do vyhledávacího pole zadejte **Adobe Experience Manager**, na panelu výsledků vyberte **Adobe Experience Manager** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-     ![Správce prostředí Adobe Experience v seznamu výsledků](common/search-new-app.png)
+1. V Azure Portal na stránce integrace aplikace **správce prostředí Adobe Experience** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí [název aplikace] na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v [název aplikace].
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí [název aplikace], musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro Adobe Experience Manager](#configure-adobe-experience-manager-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte testovacího uživatele v programu Adobe Experience Manager](#create-adobe-experience-manager-test-user)** – abyste měli protějšek Britta Simon ve Správci Adobe Experience Manageru, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název aplikace], proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **správce prostředí Adobe Experience** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
-
-    ![Přihlašovací údaje domény a adresy URL jednotného přihlašování pro Adobe Experience Manager](common/idp-intiated.png)
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
     a. Do textového pole **identifikátor** zadejte jedinečnou hodnotu, kterou definujete i na serveru AEM.
 
@@ -112,11 +87,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Přihlašovací údaje domény a adresy URL jednotného přihlašování pro Adobe Experience Manager](common/metadata-upload-additional-signon.png)
-
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL serveru aplikace Adobe Experience Manager.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -124,59 +97,77 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Odhlašovací adresa URL
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-adobe-experience-manager-single-sign-on"></a>Konfigurace jednotného přihlašování v programu Adobe Experience Manager
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k programu Adobe Experience Manager.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **správce prostředí Adobe Experience**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-adobe-experience-manager-sso"></a>Konfigurace jednotného přihlašování k programu Adobe Experience Manager
 
 1. V jiném okně prohlížeče otevřete portál pro správu **nástroje Adobe Experience Manager** .
 
 2. Vyberte **Nastavení**  >  **zabezpečení**  >  **Uživatelé**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![Snímek obrazovky, který zobrazuje dlaždici uživatelé ve správci programu Adobe Experience Manager.](./media/adobe-experience-manager-tutorial/user-1.png)
 
 3. Vyberte **správce** nebo jakýkoli jiný příslušný uživatel.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Snímek obrazovky, který zvýrazní uživatele Adminisrator.](./media/adobe-experience-manager-tutorial/tutorial-admin-6.png)
 
 4. Vyberte **Nastavení účtu**  >  **Spravovat TrustStore**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Snímek obrazovky, který ukazuje správu TrustStore v části nastavení účtu.](./media/adobe-experience-manager-tutorial/manage-trust.png)
 
-5. V části **Přidat certifikát ze souboru CER**klikněte na **Vybrat soubor certifikátu**. Vyhledejte a vyberte soubor certifikátu, který jste už stáhli z Azure Portal.
+5. V části **Přidat certifikát ze souboru CER** klikněte na **Vybrat soubor certifikátu**. Vyhledejte a vyberte soubor certifikátu, který jste už stáhli z Azure Portal.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Vybrat soubor certifikátu](./media/adobe-experience-manager-tutorial/user-2.png)
 
 6. Certifikát se přidá do TrustStore. Poznamenejte si alias certifikátu.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Snímek obrazovky, který ukazuje, že se certifikát přidal do TrustStore.](./media/adobe-experience-manager-tutorial/tutorial-admin-7.png)
 
 7. Na stránce **Uživatelé** vyberte **ověřování-služba**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Sreenshot, který zvýrazní ověřování – služba na obrazovce.](./media/adobe-experience-manager-tutorial/tutorial-admin-8.png)
 
 8. Vyberte **Nastavení účtu**  >  **vytvořit/spravovat úložiště klíčů**. Vytvořte úložiště klíčů zadáním hesla.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Snímek obrazovky, který zvýrazní správu úložiště klíčů.](./media/adobe-experience-manager-tutorial/tutorial-admin-9.png)
 
 9. Vraťte se zpátky na obrazovku správce. Pak vyberte **Nastavení**  >  **Operations**  >  **Web Console**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Snímek obrazovky, který zvýrazní webovou konzolu v rámci operací v části nastavení.](./media/adobe-experience-manager-tutorial/tutorial-admin-1.png)
 
     Otevře se stránka konfigurace.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin2.png)
+    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobe-experience-manager-tutorial/tutorial-admin-2.png)
 
 10. Najděte **obslužnou rutinu ověřování SAML 2,0 pro Adobe Granite**. Pak vyberte ikonu **Přidat** .
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Snímek obrazovky, který zvýrazňuje obslužnou rutinu ověřování SAML 2,0 pro Adobe Granite.](./media/adobe-experience-manager-tutorial/tutorial-admin-3.png)
 
 11. Na této stránce proveďte následující akce.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
+    ![Tlačítko pro konfiguraci jednoho Sign-On Uložit](./media/adobe-experience-manager-tutorial/tutorial-admin-4.png)
 
     a. Do pole **cesta** zadejte **/** .
 
@@ -198,73 +189,29 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     j. Vyberte **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k programu Adobe Experience Manager.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **správce aplikace Adobe Experience**.
-
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
-
-2. V seznamu aplikace vyberte možnost **správce prostředí Adobe Experience**.
-
-    ![Odkaz na správce na stránce Adobe Experience Manager v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
 ### <a name="create-adobe-experience-manager-test-user"></a>Vytvořit testovacího uživatele pro aplikaci Adobe Experience Manager
 
 V této části vytvoříte uživatele s názvem Britta Simon ve správci aplikace Adobe Experience Manager. Pokud jste vybrali možnost automaticky **vytvořit uživatele CRX** , budou uživatelé po úspěšném ověření automaticky vytvořeni.
 
-Pokud chcete ručně vytvořit uživatele, spolupracujte s [týmem podpory správce aplikace Adobe Experience](https://helpx.adobe.com/support/experience-manager.html)   a přidejte uživatele na platformě programu Adobe Experience Manager.
+Pokud chcete ručně vytvořit uživatele, spolupracujte s [týmem podpory správce aplikace Adobe Experience](https://helpx.adobe.com/support/experience-manager.html) a přidejte uživatele na platformě programu Adobe Experience Manager.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Po kliknutí na dlaždici Správce prostředí Adobe Experience na přístupovém panelu byste se měli automaticky přihlášeni k programu Adobe Experience Manager, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další materiály
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení správce Adobe Experience, kde můžete spustit tok přihlášení.  
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Přejít na adresu URL pro přihlášení k Adobe Experience Manageru přímo a zahájit tok přihlášení.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k programu Adobe Experience Manager, pro který jste nastavili jednotné přihlašování. 
+
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Správce prostředí Adobe Experience v části Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro zahájení toku přihlášení a v případě, že se nakonfiguruje v režimu IDP, měli byste se automaticky přihlásit k programu Adobe Experience Manager, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
+
+
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování programu Adobe Experience Manager můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

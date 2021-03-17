@@ -3,23 +3,23 @@ title: Zabránit překladu obsahu – Translator
 titleSuffix: Azure Cognitive Services
 description: Zabraňte překladu obsahu pomocí překladatele. Překladatel umožňuje označit obsah tak, aby nebyl přeložen.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.author: lajanuar
+ms.openlocfilehash: e89ff3f4c1f54d9e137d3dd51e325b908c826b03
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996172"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897472"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Jak zabránit překladu obsahu pomocí překladatele
 
-Překladatel umožňuje označit obsah tak, aby nebyl přeložen. Například můžete chtít označit kód, název značky nebo slovo nebo frázi, které nedává smysl, pokud je lokalizováno.
+Překladatel umožňuje označit obsah tak, aby nebyl přeložen. Můžete chtít například označit programovací kód, název značky nebo slova nebo fráze, jejichž překlad nedává smysl.
 
 ## <a name="methods-for-preventing-translation"></a>Metody prevence překladu
 
@@ -37,13 +37,27 @@ Překladatel umožňuje označit obsah tak, aby nebyl přeložen. Například m�
    <div>This will be translated. </div>
    ```
 
-2. Pomocí [dynamického slovníku](dynamic-dictionary.md) nařídíte konkrétní překlad.
+2. Označte svůj obsah pomocí `translate="no"` . To funguje jenom v případě, že je vstupní textType nastavený jako HTML.
 
-3. Nepředávejte řetězec překladateli pro překlad.
+   Příklad:
 
-4. Vlastní Překladatel: pomocí [slovníku ve vlastním překladateli](custom-translator/what-is-dictionary.md) můžete naepsat převod fráze s pravděpodobností 100%.
+   ```html
+   <span translate="no">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
+   ```html
+   <div translate="no">This will not be translated.</div>
+   <div>This will be translated. </div>
+   ```
+   
+3. Pomocí [dynamického slovníku](dynamic-dictionary.md) nařídíte konkrétní překlad.
+
+4. Nepředávejte řetězec překladateli pro překlad.
+
+5. Vlastní Překladatel: pomocí [slovníku ve vlastním překladateli](custom-translator/what-is-dictionary.md) můžete naepsat převod fráze s pravděpodobností 100%.
 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Zamezení překladu ve volání překladatele](reference/v3-0-translate.md)
+> [Použití operace překladu k překladu textu](reference/v3-0-translate.md)

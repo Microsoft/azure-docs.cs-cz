@@ -3,7 +3,7 @@ title: Aktualizace zařízení StorSimple | Microsoft Docs
 description: Vysvětluje, jak pomocí funkce aktualizace StorSimple instalovat běžné aktualizace a opravy hotfix v režimu údržby.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: twooley
-ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170082"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956836"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualizace zařízení řady StorSimple 8000
 > [!NOTE]
-> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](storsimple-8000-move-azure-portal-faq.md).
+> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](./index.yml).
 
 ## <a name="overview"></a>Přehled
 Funkce StorSimple Updates umožňují snadno udržovat vaše zařízení StorSimple v aktuálním stavu. V závislosti na typu aktualizace můžete aktualizace zařízení provádět pomocí portálu Azure Classic nebo pomocí rozhraní Windows PowerShell. Tento kurz popisuje typy aktualizací a jejich instalaci.
@@ -84,22 +84,22 @@ Pokud potřebujete použít aktualizace režimu údržby, obdržíte upozorněn�
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console"></a>Krok 1: připojení ke konzole sériového portu<a name="step1"></a>
+### <a name="step-1-connect-to-the-serial-console"></a>Krok 1: připojení ke konzole sériového portu <a name="step1"></a>
 Nejprve k přístupu ke konzole sériového rozhraní použijte aplikaci, jako je například výstup. Následující postup vysvětluje, jak pomocí výstupu připojit ke konzole sériového připojení.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode"></a>Krok 2: Zadejte režim údržby<a name="step2"></a>
+### <a name="step-2-enter-maintenance-mode"></a>Krok 2: Zadejte režim údržby <a name="step2"></a>
 Po připojení ke konzole nástroje Zjistěte, zda jsou k dispozici aktualizace pro instalaci, a zadejte režim údržby pro jejich instalaci.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates"></a>Krok 3: instalace aktualizací<a name="step3"></a>
+### <a name="step-3-install-your-updates"></a>Krok 3: instalace aktualizací <a name="step3"></a>
 Dále nainstalujte své aktualizace.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode"></a>Krok 4: ukončení režimu údržby<a name="step4"></a>
+### <a name="step-4-exit-maintenance-mode"></a>Krok 4: ukončení režimu údržby <a name="step4"></a>
 Nakonec ukončete režim údržby.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
@@ -120,6 +120,5 @@ Následující postupy vysvětlují, jak použít Windows PowerShell pro StorSim
 Pokud se zařízení obnoví do továrního nastavení, všechny aktualizace se ztratí. Po registraci a konfiguraci zařízení pro resetování továrního nastavení budete muset aktualizace nainstalovat ručně prostřednictvím portálu Azure Classic nebo Windows PowerShell pro StorSimple. Další informace o obnovení továrního nastavení najdete v tématu [resetování zařízení do výchozího továrního nastavení](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [použití Windows PowerShell pro StorSimple ke správě zařízení StorSimple](storsimple-windows-powershell-administration.md).
-* Přečtěte si další informace o [používání služby StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
-
+* Přečtěte si další informace o [použití Windows PowerShell pro StorSimple ke správě zařízení StorSimple](./storsimple-8000-windows-powershell-administration.md).
+* Přečtěte si další informace o [používání služby StorSimple Manager ke správě zařízení StorSimple](./storsimple-8000-manager-service-administration.md).

@@ -11,13 +11,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 10/28/2019
-  ms.openlocfilehash: 62a0bc67624c27ccd8185edb8be1a8cb3f16a9b1
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
-  ms.translationtype: HT
+  ms.date: 02/03/2021
+  ms.openlocfilehash: 87584400894b97f0ef0522d8f7c421100a673cba
+  ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115228"
+  ms.lasthandoff: 02/04/2021
+  ms.locfileid: "99550298"
 landingContent:
 - title: Informace o zabezpečení Azure
   linkLists:
@@ -46,12 +46,12 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Security Center
-      url: ../../security-center/security-center-intro.md
+      url: ../../security-center/security-center-introduction.md
   - linkListType: concept
     links:
     - text: Správa a monitorování
       url: management-monitoring-overview.md
-    - text: Pokročilá detekce hrozeb
+    - text: Ochrana před hrozbami
       url: threat-detection.md
 - title: Osvědčené postupy pro zabezpečení vašich cloudových řešení
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
     - text: Šifrování v klidovém stavu
       url: encryption-atrest.md
     - text: Ochrana dat
-      url: database-security-overview.md
+      url: ../../azure-sql/database/security-overview.md
     - text: Zabezpečení sítě
       url: network-overview.md
     - text: Zabezpečení virtuálních počítačů
@@ -86,16 +86,16 @@ landingContent:
   - linkListType: learn
     links:
     - text: Zabezpečení cloudových aplikací
-      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+      url: /learn/paths/secure-your-cloud-apps/
 - title: Vybudování dovedností v oblasti zabezpečení
   linkLists:
   - linkListType: learn
     links:
     - text: Implementace zabezpečení sítě
-      url: https://docs.microsoft.com/learn/paths/implement-network-security
+      url: /learn/paths/implement-network-security
     - text: Správa identit a přístupu
-      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+      url: /learn/paths/manage-identity-and-access
     - text: Implementace zabezpečení správy prostředků
-      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+      url: /learn/paths/implement-resource-mgmt-security
     - text: Implementace zabezpečení hostitelů pro virtuální počítače
       url: https://docs.microsoft.com/learn/paths/implement-host-security

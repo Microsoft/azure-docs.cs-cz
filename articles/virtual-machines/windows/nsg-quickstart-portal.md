@@ -1,18 +1,19 @@
 ---
 title: Otevření portů k virtuálnímu počítači pomocí Azure Portal
-description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač s Windows pomocí Azure Portal
+description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač pomocí Azure Portal
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28b3ee98d44e1567d9e25cf9237015396975ab01
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170023"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550446"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Postup otevření portů na virtuálním počítači s Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -78,4 +79,4 @@ V tomto článku jste vytvořili skupinu zabezpečení sítě, vytvořili příc
 
 Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
 - [Přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- [Skupiny zabezpečení](../../virtual-network/security-overview.md)
+- [Skupiny zabezpečení](../../virtual-network/network-security-groups-overview.md)

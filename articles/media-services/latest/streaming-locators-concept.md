@@ -1,22 +1,23 @@
 ---
-title: Lokátory streamování v Azure Media Services | Microsoft Docs
+title: Lokátory streamování v Azure Media Services
 description: Tento článek obsahuje vysvětlení toho, co jsou Lokátory streamování a jak se používají Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: juliako
-ms.openlocfilehash: ed58919c47da13a8a0707a344a389126c6feb6c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f7357644639e1bdba07b9ad44533582fc66b600
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091959"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456067"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -24,7 +25,7 @@ Pokud chcete, aby videa ve výstupním prostředku byla k dispozici klientům pr
 
 Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Při vytváření **lokátoru streamování**musíte zadat název **assetu** a název **zásady streamování** . Další informace najdete v následujících tématech:
+Při vytváření **lokátoru streamování** musíte zadat název **assetu** a název **zásady streamování** . Další informace najdete v následujících tématech:
 
 * [Aktiva](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
@@ -93,8 +94,8 @@ Chcete-li získat Lokátory streamování na základě přidruženého názvu As
 |Jazyk|Rozhraní API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
-|Rozhraní příkazového řádku|[AZ AMS Asset list-streaming-Lokátory](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Rozhraní příkazového řádku|[AZ AMS Asset list-streaming-Lokátory](/cli/azure/ams/asset#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 

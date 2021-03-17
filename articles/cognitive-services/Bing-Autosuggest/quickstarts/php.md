@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu a PHP.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d5a678da127117f6e7af77fed5ad2ef146908cce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930178"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352843"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá aplikace PHP pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -33,7 +38,7 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
 2. Přidejte níže uvedený kód.
 3. Nahraďte `subscriptionKey` hodnotu přístupovým klíčem, který je platný pro vaše předplatné.
 4. Použijte globální koncový bod v kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
-5. Spusťte program.
+5. Spustíte program.
 
 ```php
 <?php
@@ -42,8 +47,8 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $subscriptionKey = 'enter key here';
@@ -156,4 +161,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ## <a name="see-also"></a>Viz také
 
 - [Co jsou Automatické návrhy Bingu?](../get-suggested-search-terms.md)
-- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

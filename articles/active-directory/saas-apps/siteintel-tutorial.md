@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525067"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509960"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SiteIntel
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat SiteIntel s Azure Active Directory (Az
 * Umožněte uživatelům, aby se automaticky přihlásili k SiteIntel pomocí svých účtů Azure AD.
 * Spravujte své účty na jednom centrálním místě, Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * SiteIntel podporuje jednotné přihlašování iniciované v SP a IdP.
-* Po nakonfigurování SiteIntel můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování SiteIntel můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-siteintel-from-the-gallery"></a>Přidání SiteIntel z Galerie
 
@@ -140,19 +140,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně SiteIntel, po�
 
 ### <a name="create-a-siteintel-test-user"></a>Vytvořit testovacího uživatele v SiteIntel
 
-V této části vytvoříte uživatele s názvem *Britta Simon* v SiteIntel. Pokud chcete přidat uživatele na platformě SiteIntel, pracujte s [týmem podpory SiteIntel](mailto:support@intalytics.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem *Britta Simon* v SiteIntel. Pokud chcete přidat uživatele na platformě SiteIntel, pracujte s [týmem podpory SiteIntel](mailto:support@intalytics.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici **SiteIntel** , měli byste se automaticky přihlásit k SiteIntel, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici **SiteIntel** , měli byste se automaticky přihlásit k SiteIntel, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 - [Vyzkoušejte si SiteIntel s Azure AD](https://aad.portal.azure.com/)
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Jak chránit SiteIntel pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Jak chránit SiteIntel pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

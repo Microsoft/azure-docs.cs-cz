@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261719"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>Správa Azure Mapsového vizuálu v rámci vaší organizace
@@ -22,7 +22,7 @@ Power BI poskytuje vývojářům a správcům tenantů možnost spravovat použi
 
 ### <a name="designer-options"></a>Možnosti návrháře
 
-V Power BI Desktop mohou návrháři zakázat vizuál Azure Maps na kartě zabezpečení. Vyberte možnosti **souboru** &gt; **a nastavení** a pak vyberte **Možnosti** &gt; **funkce ve verzi Preview**. Pokud je zakázané, Azure Maps se ve výchozím nastavení nenačte.  
+V Power BI Desktop mohou návrháři zakázat vizuál Azure Maps na kartě zabezpečení. Vyberte **File** &gt; **Možnosti souboru a nastavení** a pak vyberte **Možnosti** &gt; **funkce ve verzi Preview**. Pokud je zakázané, Azure Maps se ve výchozím nastavení nenačte.  
   
 ![Panel možností Power BI, který zobrazuje možnosti funkcí ve verzi Preview pro Azure Maps vizuál](media/power-bi-visual/preview-options-panel.png)
 

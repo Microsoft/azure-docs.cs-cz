@@ -2,20 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 05/06/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 01d102de24185eba789e041d8534d6fdce8c260b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6d1ca85c59f03ae0d008342f71597f4d3ca5d97a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374651"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91545557"
 ---
 V části **Spravovat** (v pravém horním rohu) na stránce **prostředky Azure** (nabídka vlevo) zkopírujte adresu URL **ukázkového dotazu** a vložte ji do nové karty prohlížeče.
 

@@ -1,22 +1,24 @@
 ---
-title: Kurz – zřízení instance cloudového cloudu Azure pomocí terraformu
+title: Zřízení instance Azure Spring Cloudu s využitím Terraformu
 description: Zřízení instance cloudového cloudu Azure pomocí Terraformu
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079188"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533787"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Kurz: zřízení instance služby jarního cloudu Azure pomocí Terraformu
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Zřízení instance služby jarního cloudu Azure pomocí Terraformu
 
-V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postupy vás provedou vytvořením následujících prostředků:
+**Tento článek se týká:** ✔️ Java ✔️ C #
+
+Tento příklad vytvoří instanci cloudu Azure jaře pomocí Terraformu. Postupy vás provedou vytvořením následujících prostředků:
 
 > [!div class="checklist"]
 > * Skupina prostředků
@@ -29,15 +31,15 @@ V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postu
 > * Dotazy, případy použití a užitečné vzory: [část terraformu na portálu komunity HashiCorp](https://discuss.hashicorp.com/c/terraform-core)
 > * Otázky související se zprostředkovatelem: [oddíl Terraformu Providers na portálu komunity HashiCorp](https://discuss.hashicorp.com/c/terraform-providers)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 ## <a name="create-configuration-file"></a>Vytvoření konfiguračního souboru
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell).
+1. Otevřete [Azure Cloud Shell](../app-service/quickstart-java.md#use-azure-cloud-shell).
 
 1. Spusťte Editor Cloud Shell:
 
@@ -70,7 +72,7 @@ V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postu
     }
     ```
 
-1. Uložte soubor (** &lt; CTRL>S**) a ukončete editor (** &lt; CTRL>Q**).
+1. Uložte soubor (**&lt; CTRL>S**) a ukončete editor (**&lt; CTRL>Q**).
 
 ## <a name="apply-the-configuration"></a>Použít konfiguraci
 
@@ -94,7 +96,7 @@ V této části použijete několik příkazů Terraformu ke spuštění konfigu
     terraform apply plan.out
     ```
 
-1. Pokud chcete ověřit výsledky v rámci Azure Portal, přejděte do nové skupiny prostředků. Nová **instance Azure Cosmos DB** se zobrazí v nové skupině prostředků.
+1. Pokud chcete ověřit výsledky v rámci Azure Portal, přejděte do nové skupiny prostředků. Nová instance **Azure jaře cloudu** se zobrazí v nové skupině prostředků.
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>Aktualizace konfigurace pro konfigurační protokoly a metriky
 
@@ -141,7 +143,7 @@ V této části se dozvíte, jak aktualizovat konfiguraci a povolit protokol a m
     }
     ```
 
-1. Uložte soubor (** &lt; CTRL>S**) a ukončete editor (** &lt; CTRL>Q**).
+1. Uložte soubor (**&lt; CTRL>S**) a ukončete editor (**&lt; CTRL>Q**).
 
 1. Jak je uvedeno v předchozí části, spusťte následující příkaz, který provede změny:
 
@@ -159,7 +161,7 @@ V této části se dozvíte, jak aktualizovat konfiguraci a povolit protokol a m
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku.
 
-Pokud chcete odebrat prostředky Azure vytvořené v tomto kurzu, spusťte příkaz [terraformu Destroy](https://www.terraform.io/docs/commands/destroy.html) :
+Pokud chcete odebrat prostředky Azure vytvořené v tomto cvičení, spusťte příkaz [terraformu Destroy](https://www.terraform.io/docs/commands/destroy.html) :
 
 ```bash
 terraform destroy -auto-approve
@@ -168,4 +170,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nainstalujte a nakonfigurujte terraformu pro zřizování prostředků Azure](https://docs.microsoft.com/azure/developer/terraform/getting-started-cloud-shell).
+> [Nainstalujte a nakonfigurujte terraformu pro zřizování prostředků Azure](/azure/developer/terraform/getting-started-cloud-shell).

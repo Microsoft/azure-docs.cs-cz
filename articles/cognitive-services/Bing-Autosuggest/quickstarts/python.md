@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Pythonu'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu a Pythonu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 2106b36d1b769f0bb207d77eb2395623c14a4a17
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8fce8fb25634383c478aa843d00b9de273a62d8f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848056"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352078"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Pythonu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá aplikace v Pythonu pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) .
 
@@ -36,7 +41,7 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
     import http.client, urllib.parse, json
     ```
 
-2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Použijte globální koncový bod v následujícím kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Použijte globální koncový bod v následujícím kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```python
     subscriptionKey = 'enter key here'
@@ -152,4 +157,4 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
 ## <a name="see-also"></a>Viz také
 
 - [Co jsou Automatické návrhy Bingu?](../get-suggested-search-terms.md)
-- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

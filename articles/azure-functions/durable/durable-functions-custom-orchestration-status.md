@@ -4,18 +4,18 @@ description: Naučte se konfigurovat a používat vlastní stav orchestrace pro 
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: azfuncdf
-ms.openlocfilehash: bb5c6ee15a5a445b4b762bd9eaf8919e1396f8ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a95e7c74fac7043d0adb5f31d2bdcdd73b9577a
+ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081827"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97766324"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v Durable Functions (Azure Functions)
 
 Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav je k dispozici prostřednictvím [rozhraní API GetStatus API](durable-functions-http-api.md#get-instance-status) nebo [ `GetStatusAsync` rozhraní API](durable-functions-instance-management.md#query-instances) na klientovi Orchestration.
 
-## <a name="sample-use-cases"></a>Příklady případů použití
+## <a name="sample-use-cases"></a>Ukázkové případy použití
 
 > [!NOTE]
 > Následující ukázky ukazují, jak používat vlastní funkci stavu v jazycích C#, JavaScript a Python. Příklady jazyka C# jsou napsány pro Durable Functions 2. x a nejsou kompatibilní s Durable Functions 1. x. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
@@ -53,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`E1_HelloSequence`funkce Orchestrator:
+`E1_HelloSequence` funkce Orchestrator:
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello`funkce aktivity:
+`E1_SayHello` funkce aktivity:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -82,7 +82,7 @@ module.exports = async function(context, name) {
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence`Funkce Orchestrator
+### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence` Funkce Orchestrator
 ```python
 import azure.functions as func
 import azure.durable_functions as df
@@ -102,7 +102,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-### <a name="e1_sayhello-activity-function"></a>`E1_SayHello`Activity – funkce
+### <a name="e1_sayhello-activity-function"></a>`E1_SayHello` Activity – funkce
 ```python
 def main(name: str) -> str:
     return f"Hello {name}!"
@@ -125,7 +125,7 @@ public static async Task<HttpResponseMessage> Run(
 {
     // Function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
-    string instanceId = await starter.StartNewAsync(functionName, eventData);
+    string instanceId = await starter.StartNewAsync(functionName, (string)eventData);
 
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 
@@ -249,7 +249,7 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`Orchestrator
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` Orchestrator
 
 ```javascript
 const df = require("durable-functions");
@@ -284,7 +284,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`Orchestrator
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` Orchestrator
 
 ```python
 import azure.functions as func

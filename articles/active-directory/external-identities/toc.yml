@@ -2,11 +2,16 @@
   href: index.yml
   items:
     - name: Přehled
+      expanded: true
       items:
         - name: Porovnání řešení pro externí identity
           href: compare-with-b2c.md
         - name: Co je přístup uživatele typu host B2B?
           href: what-is-b2b.md
+        - name: Co je Azure AD B2C?
+          href: ../../active-directory-b2c/overview.md
+        - name: Novinky v dokumentaci
+          href: whats-new-docs.md
     - name: Rychlé starty
       items:
         - name: Přidání uživatelů typu host na portálu
@@ -15,28 +20,28 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Kurzy
       items:
-        - name: Hromadné pozvání prostřednictvím PowerShellu
+        - name: Hromadné pozvání uživatelů typu host pomocí PowerShellu
           href: bulk-invite-powershell.md
-        - name: Hromadné pozvání prostřednictvím portálu
+        - name: Hromadné pozvání uživatelů typu host pomocí portálu
           href: tutorial-bulk-invite.md
-        - name: Vynucení vícefaktorového ověřování
+        - name: Vynucení vícefaktorového ověřování pro uživatele typu host
           href: b2b-tutorial-require-mfa.md
-    - name: ukázky
+    - name: Ukázky
       items:
-        - name: Ukázky pro samoobslužnou registraci
+        - name: Ukázky pro samoobslužnou registraci uživatelů typu host
           href: code-samples-self-service-sign-up.md
         - name: Ukázky kódu a Azure PowerShellu
           href: code-samples.md
     - name: Koncepty
       expanded: false
       items:
+        - name: Externí identity – ceny
+          href: external-identities-pricing.md
         - name: Osvědčené postupy B2B
           href: b2b-fundamentals.md
-        - name: Licencování B2B
-          href: licensing-guidance.md
         - name: Externí sdílení Office 365 a B2B
           href: o365-external-user.md
-        - name: Uplatnění pozvánky
+        - name: Uplatnění a přihlášení pozvánky
           href: redemption-experience.md
         - name: E-mail s pozváním
           href: invitation-email-elements.md
@@ -52,9 +57,9 @@
           href: hybrid-organizations.md
         - name: Zprostředkovatelé identit pro externí identity
           href: identity-providers.md
-        - name: Toky uživatelů se samoobslužnou registrací (Preview)
+        - name: Uživatelské toky samoobslužné registrace
           href: self-service-sign-up-overview.md
-        - name: Samoobslužné přihlašovací konektory rozhraní API (Preview)
+        - name: Samoobslužné konektory API pro registraci
           href: api-connectors-overview.md
         - name: Správa nároků Azure AD
           href: self-service-portal.md
@@ -63,24 +68,28 @@
     - name: Návody
       expanded: true
       items:
-        - name: Konfigurace externího sdílení
-          href: delegate-invitations.md
-        - name: Pozvání uživatelů B2B
+        - name: Nastavení spolupráce B2B
           items:
-            - name: Správci přidávají uživatele B2B
+            - name: Konfigurace nastavení externí spolupráce
+              href: delegate-invitations.md
+            - name: Povolení nebo blokování domén
+              href: allow-deny-list.md
+        - name: Pozvání uživatelů typu host
+          items:
+            - name: Přidání a pozvání uživatelů typu Host (pro správce)
               href: add-users-administrator.md
-            - name: Informační pracovníci přidávají uživatele B2B
+            - name: Pozvání uživatelů typu Host do aplikace (pro vlastníky aplikace)
               href: add-users-information-worker.md
             - name: Pozvání interních uživatelů k B2B
               href: invite-internal-users.md
-            - name: Povolení nebo blokování pozvánek
-              href: allow-deny-list.md
             - name: Přidání uživatelů B2B bez pozvánky
               href: add-user-without-invite.md
-            - name: Rozhraní API pro pozvánky a přizpůsobení
+            - name: Přizpůsobení pozvánek pomocí rozhraní API
               href: customize-invitation-api.md
-        - name: Federace s využitím zprostředkovatelů identity
+        - name: Zprostředkovatelé identit
           items:
+            - name: Účet Microsoft (Preview)
+              href: microsoft-account.md
             - name: Federace Googlu
               href: google-federation.md
             - name: Federace Facebooku
@@ -89,9 +98,9 @@
               href: direct-federation.md
             - name: Příklad přímé federace s využitím AD FS
               href: direct-federation-adfs.md
-        - name: Ověřování jednorázovým heslem
+        - name: Povolit JEDNORÁZOVá hesla
           href: one-time-passcode.md
-        - name: Samoobslužná registrace (Preview)
+        - name: Přidat samoobslužnou registraci pro uživatele typu Host
           items:
             - name: Přidání toku uživatelů se samoobslužnou registrací
               href: self-service-sign-up-user-flow.md
@@ -103,7 +112,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: Přidání vlastního systému schvalování
               href: self-service-sign-up-add-approvals.md
-        - name: Správa účtů hostů
+        - name: Správa uživatelských účtů hostů
           items:
             - name: Přidání uživatele B2B do role
               href: add-guest-to-role.md
@@ -111,9 +120,11 @@
               href: use-dynamic-groups.md
             - name: Principy uživatelů B2B
               href: user-properties.md
+            - name: Resetovat stav uplatnění
+              href: reset-redemption-status.md
             - name: B2B pro integrované aplikace Azure AD
               href: configure-saas-apps.md
-        - name: Správa přístupu v hybridní organizaci
+        - name: Správa přístupu hosta v hybridní organizaci
           items:
             - name: Udělení přístupu místním uživatelům ke cloudovým aplikacím
               href: hybrid-on-premises-to-cloud.md
@@ -134,13 +145,13 @@
         - name: Nejčastější dotazy
           href: faq.md
         - name: Získání podpory
-          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md
         - name: Fórum Azure pro názory
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Plány Azure do budoucna
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+          href: /answers/topics/azure-active-directory.html
         - name: Ceny
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: Cenová kalkulačka

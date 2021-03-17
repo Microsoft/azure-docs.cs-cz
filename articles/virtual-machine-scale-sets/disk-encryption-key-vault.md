@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: acd2ae54d81fb508d5f8c02262cf8c2f0f071fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080603"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501004"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption
 
@@ -36,7 +36,7 @@ Kroky v tomto článku se dají dokončit pomocí [Azure CLI](/cli/azure/), [Azu
 
 ### <a name="connect-to-your-azure-account"></a>Připojení k účtu Azure
 
-Než začnete používat rozhraní příkazového řádku Azure CLI nebo Azure PowerShell, musíte se nejdřív připojit k předplatnému Azure. Provedete to tak, že [se přihlásíte pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [přihlásíte se pomocí Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)nebo po zobrazení výzvy zadáte přihlašovací údaje do Azure Portal.
+Než začnete používat rozhraní příkazového řádku Azure CLI nebo Azure PowerShell, musíte se nejdřív připojit k předplatnému Azure. Provedete to tak, že [se přihlásíte pomocí Azure CLI](/cli/azure/authenticate-azure-cli), [přihlásíte se pomocí Azure PowerShell](/powershell/azure/authenticate-azureps)nebo po zobrazení výzvy zadáte přihlašovací údaje do Azure Portal.
 
 ```azurecli-interactive
 az login

@@ -1,21 +1,22 @@
 ---
-title: Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption
-description: Tento článek popisuje kroky pro vytvoření a konfiguraci trezoru klíčů pro použití s Azure Disk Encryption
+title: Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption na virtuálním počítači s Windows
+description: Tento článek popisuje kroky pro vytvoření a konfiguraci trezoru klíčů pro použití s Azure Disk Encryption na virtuálním počítači s Windows.
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0779cad02f266d49be055ea485e87c9c8075b7b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: af48bd74bbc38b1cd9b4d3b0f127e7bdf5d3e037
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284519"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555444"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption na virtuálním počítači s Windows
 
 Azure Disk Encryption používá Azure Key Vault k řízení a správě šifrovacích klíčů a tajných klíčů disku.  Další informace o trezorech klíčů najdete v tématu [Začínáme s Azure Key Vault](../../key-vault/general/overview.md) a [zabezpečení trezoru klíčů](../../key-vault/general/secure-your-key-vault.md). 
 
@@ -49,7 +50,7 @@ I když je portál přístupný prostřednictvím prohlížeče, Azure CLI a Azu
 
 ### <a name="connect-to-your-azure-account"></a>Připojení k účtu Azure
 
-Než začnete používat rozhraní příkazového řádku Azure CLI nebo Azure PowerShell, musíte se nejdřív připojit k předplatnému Azure. Provedete to tak, že [se přihlásíte pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [přihlásíte se pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps?view=azps-2.5.0)nebo po zobrazení výzvy dodáte přihlašovací údaje do Azure Portal.
+Než začnete používat rozhraní příkazového řádku Azure CLI nebo Azure PowerShell, musíte se nejdřív připojit k předplatnému Azure. Provedete to tak, že [se přihlásíte pomocí Azure CLI](/cli/azure/authenticate-azure-cli), [přihlásíte se pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps)nebo po zobrazení výzvy dodáte přihlašovací údaje do Azure Portal.
 
 ```azurecli-interactive
 az login

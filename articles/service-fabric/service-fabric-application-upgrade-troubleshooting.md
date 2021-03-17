@@ -4,11 +4,11 @@ description: Tento článek se zabývá některými běžnými problémy při up
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009343"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Řešení potíží s upgrady aplikací
 
@@ -148,7 +148,7 @@ Upgrade byl pozastaven při selhání zadáním **FailureAction** ručně při z
 
 ### <a name="recover-from-a-suspended-upgrade"></a>Obnovit z pozastaveného upgradu
 
-S vrácením zpět **FailureAction**není potřeba žádné obnovení, protože se upgrade automaticky vrátí po selhání. Ruční **FailureAction**má několik možností obnovení:
+S vrácením zpět **FailureAction** není potřeba žádné obnovení, protože se upgrade automaticky vrátí po selhání. Ruční **FailureAction** má několik možností obnovení:
 
 1.  Aktivace vrácení zpět
 2. Projděte si zbývající část upgradu ručně.

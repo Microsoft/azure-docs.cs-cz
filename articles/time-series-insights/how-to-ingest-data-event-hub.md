@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: ee94a36ea27a15067cbcbab22b10629bc4b37634
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097572"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461129"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Azure Time Series Insights
 
@@ -25,9 +25,9 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 > [!NOTE]
 > Postup, který je popsaný v tomto článku, platí jak pro prostředí Azure Time Series Insights Gen 1 a Azure Time Series Insights Gen 2.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Vytvořte Azure Time Series Insights prostředí, jak je popsáno v tématu [vytvoření Azure Time Series Insights prostředí](./time-series-insights-update-create-environment.md).
+- Vytvořte Azure Time Series Insights prostředí, jak je popsáno v tématu [vytvoření Azure Time Series Insights prostředí](./tutorial-set-up-environment.md).
 - Vytvořte centrum událostí. Přečtěte si téma [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md).
 - Centrum událostí musí mít odeslané aktivní události zpráv. Naučte se [odesílat události do Azure Event Hubs pomocí .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Vytvořte vyhrazenou skupinu uživatelů v centru událostí, ze které může prostředí Azure Time Series Insights spotřebovat. Každý Azure Time Series Insights zdroj události musí mít svou vlastní vyhrazenou skupinu uživatelů, která není sdílená s žádným jiným příjemcem. Pokud více čtenářů spotřebovává události ze stejné skupiny příjemců, můžou se všechny čtenáři projevit při selhání. V každém centru událostí je limit 20 skupin uživatelů. Podrobnosti najdete v tématu [Průvodce programováním pro Event Hubs](../event-hubs/event-hubs-programming-guide.md).
@@ -42,7 +42,7 @@ Přidání nové skupiny příjemců do centra událostí:
 
     [![Otevřete obor názvů centra událostí.](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. V instanci centra událostí vyberte **entity > skupiny uživatelů**. Pak vyberte **+ Skupina uživatelů** a přidejte novou skupinu příjemců. 
+1. V instanci centra událostí vyberte **entity > skupiny uživatelů**. Pak vyberte **+ Skupina uživatelů** a přidejte novou skupinu příjemců.
 
    [![Centrum událostí – přidat skupinu příjemců](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
 
@@ -54,25 +54,25 @@ Přidání nové skupiny příjemců do centra událostí:
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyhledejte existující Azure Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky**a pak vyberte prostředí Azure Time Series Insights.
+1. Vyhledejte existující Azure Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky** a pak vyberte prostředí Azure Time Series Insights.
 
-1. Vyberte **zdroje událostí**a pak vyberte **Přidat**.
+1. Vyberte **zdroje událostí** a pak vyberte **Přidat**.
 
    [![V části zdroje událostí vyberte tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
 1. Zadejte hodnotu pro **název zdroje události** , která je jedinečná pro toto Azure Time Series Insights prostředí, například `Contoso-TSI-Gen 1-Event-Hub-ES` .
 
-1. V případě **zdroje**vyberte **centrum událostí**.
+1. V případě **zdroje** vyberte **centrum událostí**.
 
 1. Vyberte odpovídající hodnoty pro **možnost importovat**:
 
-   * Pokud máte existující centrum událostí v jednom z vašich předplatných, vyberte **použít centrum událostí z dostupných předplatných**. Tato možnost představuje nejjednodušší přístup.
+   - Pokud máte existující centrum událostí v jednom z vašich předplatných, vyberte **použít centrum událostí z dostupných předplatných**. Tato možnost představuje nejjednodušší přístup.
 
      [![Vyberte možnost importu zdroje událostí.](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
-    *  V následující tabulce jsou popsány požadované vlastnosti pro možnost **použít centrum událostí z dostupných předplatných** :
+   - V následující tabulce jsou popsány požadované vlastnosti pro možnost **použít centrum událostí z dostupných předplatných** :
 
        [![Podrobnosti o předplatném a centru událostí](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
@@ -84,10 +84,10 @@ Přidání nové skupiny příjemců do centra událostí:
        | Hodnota zásad centra událostí | Vyberte požadované zásady sdíleného přístupu. Zásadu sdíleného přístupu můžete vytvořit na kartě **Konfigurace** centra událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **ke čtení** . |
        | Klíč zásad centra událostí | Hodnota předem vyplněná z vybrané hodnoty zásad centra událostí |
 
-    * Pokud je centrum událostí externí pro vaše předplatná nebo pokud chcete vybrat rozšířené možnosti, vyberte **zadat nastavení centra událostí ručně**.
+   - Pokud je centrum událostí externí pro vaše předplatná nebo pokud chcete vybrat rozšířené možnosti, vyberte **zadat nastavení centra událostí ručně**.
 
        V následující tabulce jsou popsány požadované vlastnosti pro možnost **zadat nastavení centra událostí ručně** :
- 
+
        | Vlastnost | Popis |
        | --- | --- |
        | ID předplatného | Předplatné, ke kterému patří požadovaná instance centra událostí a obor názvů. |
@@ -97,7 +97,7 @@ Přidání nové skupiny příjemců do centra událostí:
        | Hodnota zásad centra událostí | Vyberte požadované zásady sdíleného přístupu. Zásadu sdíleného přístupu můžete vytvořit na kartě **Konfigurace** centra událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **ke čtení** . |
        | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů Service Bus. Sem zadejte primární nebo sekundární klíč. |
 
-    * Obě možnosti sdílejí následující možnosti konfigurace:
+   - Obě možnosti sdílejí následující možnosti konfigurace:
 
        | Vlastnost | Popis |
        | --- | --- |
@@ -113,8 +113,8 @@ Přidání nové skupiny příjemců do centra událostí:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Definováním zásad přístupu k datům](time-series-insights-data-access.md) Zabezpečte data.
+- [Definováním zásad přístupu k datům](./concepts-access-policies.md) Zabezpečte data.
 
-* [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
+- [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
 
-* Přístup k prostředí v [průzkumníkovi Azure Time Series Insights](https://insights.timeseries.azure.com).
+- Přístup k prostředí v [průzkumníkovi Azure Time Series Insights](https://insights.timeseries.azure.com).

@@ -1,30 +1,16 @@
 ---
-title: Šifrování videa pomocí AES-128
-titleSuffix: Azure Media Services
-description: Naučte se šifrovat video pomocí AES 128-bit Encryption a jak používat službu doručování klíčů v Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 45bb8637d37c9c3789a962c9f5ac42227d547637
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022816"
+title: Zašifrujte video pomocí AES-128: Azure Media Services popis: Naučte se šifrovat video pomocí šifrování AES 128-bit a jak používat službu pro doručování klíčů v Azure Media Services.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: tutorial MS. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Kurz: šifrování videa pomocí AES-128 a používání služby pro doručování klíčů
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 > [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
+> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
 Media Services můžete použít k doručování HTTP Live Streaming (HLS), MPEG-POMLČKy a Smooth Streaming šifrovaných pomocí AES pomocí 128 bitových šifrovacích klíčů. Media Services taky poskytuje službu pro doručování klíčů, která poskytuje šifrovací klíče autorizovaným uživatelům. Pokud chcete, aby Media Services dynamicky zašifroval vaše video, přiřadíte šifrovací klíč k lokátoru streamování a také nakonfigurujete zásady klíče obsahu. Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování vašeho obsahu pomocí AES-128. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
 
@@ -51,7 +37,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující:
 

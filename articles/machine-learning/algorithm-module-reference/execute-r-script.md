@@ -1,26 +1,26 @@
 ---
 title: 'Spustit skript R: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul r skriptu Execute v Azure Machine Learning ke spuštění kódu R.
+description: Naučte se používat modul Script Execute R v Návrháři Azure Machine Learning ke spuštění vlastního kódu R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 12/17/2020
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337836"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119001"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
-Tento článek popisuje, jak použít modul skriptu Run R ke spuštění kódu R v kanálu návrháře Azure Machine Learning (Preview).
+Tento článek popisuje, jak použít modul skriptu Run R ke spuštění kódu R v kanálu návrháře Azure Machine Learning.
 
-Pomocí jazyka R můžete provádět úkoly, které stávající moduly aktuálně nepodporují, například: 
+Pomocí jazyka R můžete provádět úkoly, které nejsou podporovány existujícími moduly, například: 
 - Vytváření vlastních transformací dat
 - Použití vlastních metrik k vyhodnocení předpovědi
 - Modely sestavení pomocí algoritmů, které nejsou implementované jako samostatné moduly v Návrháři
@@ -49,7 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 K instalaci dalších balíčků R použijte `install.packages()` metodu. Balíčky se nainstalují pro každý modul spuštění skriptu jazyka R. Nesdílí se mezi jinými moduly spouštění skriptu jazyka R.
 
 > [!NOTE]
+> Nedoporučuje **se** instalovat balíček R ze sady prostředků skriptu. Doporučuje se instalovat balíčky přímo v editoru skriptů.
 > Při instalaci balíčků zadejte úložiště CRAN, například `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
+
+> [!WARNING]
+> Modul excute R Script nepodporuje instalaci balíčků, které vyžadují nativní kompilaci, jako je například `qdap` balíček vyžadující jazyk Java a `drc` balíček, který vyžaduje jazyk C++. Důvodem je to, že tento modul je spuštěn v předinstalovaném prostředí s oprávněním bez oprávnění správce.
+> Neinstalujte balíčky, které jsou předem připravené pro Windows, protože moduly návrháře běží na Ubuntu. Chcete-li ověřit, zda je balíček předem vytvořen v systému Windows, můžete přejít na [Cran](https://cran.r-project.org/) a vyhledat balíček, stáhnout jeden binární soubor podle vašeho operačního systému a vyhledat sestavení v souboru **Description** **:** Part. Následuje příklad: :::image type="content" source="media/module/r-package-description.png" alt-text="Popis balíčku R" lightbox="media/module/r-package-page.png":::
 
 V této ukázce se dozvíte, jak nainstalovat:
 ```R
@@ -78,25 +83,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > Před instalací balíčku ověřte, jestli už existuje, takže nebudete instalaci opakovat. Opakování instalací může způsobit vypršení požadavků webové služby.     
 
+## <a name="access-to-registered-dataset"></a>Přístup k registrované datové sadě
+
+Můžete se podívat na následující vzorový kód pro přístup k [registrovaným datovým sadám](../how-to-create-register-datasets.md) v pracovním prostoru:
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>Nahrání souborů
 Modul spuštění skriptu jazyka R podporuje nahrávání souborů pomocí Azure Machine Learning R SDK.
 
 Následující příklad ukazuje, jak nahrát soubor obrázku do skriptu spustit R:
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,25 +126,9 @@ Po dokončení spuštění kanálu můžete zobrazit náhled obrázku v pravém 
 > [!div class="mx-imgBorder"]
 > ![Náhled nahraného obrázku](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>Přístup k registrované datové sadě
-
-Můžete se podívat na následující vzorový kód pro [přístup k registrovaným datovým sadám](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) v pracovním prostoru:
-
-```R
-        azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
-Modul spuštění skriptu jazyka R obsahuje vzorový kód, který můžete použít jako výchozí bod. Pokud chcete nakonfigurovat modul skriptu Run R, poskytněte sadu vstupů a kódů, které se mají spustit.
+Modul spuštění skriptu jazyka R obsahuje vzorový kód jako výchozí bod.
 
 ![Diagram vstupů pro modul R](media/module/execute-r-script.png)
 
@@ -194,9 +185,12 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
     > [!NOTE]
     > Existující kód R může vyžadovat drobné změny ke spuštění v kanálu návrháře. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců použitých v návrháři.
 
-    Pokud je váš skript větší než 16 KB, použijte port **sady skriptu** , aby se předešlo chybám, jako *je příkazový řádek, který překračuje limit 16597 znaků*. 
+1. Pokud je váš skript větší než 16 KB, použijte port **sady skriptu** , aby se předešlo chybám, jako *je příkazový řádek, který překračuje limit 16597 znaků*. 
     
-    Vytvořte balíček skriptu a dalších vlastních prostředků do souboru zip a odešlete soubor ZIP jako **datovou sadu** do studia. Pak můžete modul DataSet přetáhnout ze seznamu *Moje datové sady* v levém podokně modulu na stránce vytváření návrháře. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
+    1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
+    1. Nahrajte soubor ZIP jako **datovou sadu souboru** do studia. 
+    1. Přetáhněte modul DataSet ze seznamu *datových sad* v levém podokně modulu na stránce vytváření návrháře. 
+    1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
     
     Následuje ukázkový kód pro využití skriptu ve skriptovém svazku:
 
@@ -213,13 +207,13 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
     }
     ```
 
-1.  V případě **náhodného osazení**zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
+1.  V případě **náhodného osazení** zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
 
 1. Odešlete kanál.  
 
 ## <a name="results"></a>Výsledky
 
-Spouštění modulů skriptu jazyka R může vracet více výstupů, ale musí být zadány jako datové snímky R. Datové snímky jsou automaticky převedeny na datové sady v návrháři, aby byly kompatibilní s jinými moduly.
+Spouštění modulů skriptu jazyka R může vracet více výstupů, ale musí být zadány jako datové snímky R. Návrhář automaticky převede datové snímky na datové sady kvůli kompatibilitě s jinými moduly.
 
 Do protokolu modulu se vrátí standardní zprávy a chyby z R.
 
@@ -234,9 +228,9 @@ Existuje mnoho způsobů, jak svůj kanál rozšíříte pomocí vlastních skri
 
 Modul spuštění skriptu jazyka R podporuje jako vstupy libovolné soubory skriptu R. Pokud je chcete použít, musíte je do svého pracovního prostoru nahrát jako součást souboru. zip.
 
-1. Pokud chcete nahrát soubor. zip, který obsahuje kód R, do svého pracovního prostoru, otevřete stránku Asset **Sets** . Vyberte **vytvořit datovou sadu**a pak vyberte možnost **z místního souboru** a typ datové sady **souborů** .  
+1. Pokud chcete nahrát soubor. zip, který obsahuje kód R, do svého pracovního prostoru, otevřete stránku Asset **Sets** . Vyberte **vytvořit datovou sadu** a pak vyberte možnost **z místního souboru** a typ datové sady **souborů** .  
 
-1. Ověřte, zda je soubor zip k dispozici v seznamu **Moje datové sady** v kategorii datové **sady** ve stromu vlevo.
+1. Ověřte, že se soubor zip objevuje ve **složce** DataSets v kategorii **datové sady** ve stromu vlevo.
 
 1.  Připojte datovou sadu ke vstupnímu portu **sady skriptu** .
 
@@ -357,7 +351,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 
 | Balíček      | Verze    | 
 |--------------|------------| 
-| askpass      | 1.1        | 
+| askpass      | 1,1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
 | base         | 3.5.1      | 
@@ -407,7 +401,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
-| highr        | 0.8        | 
+| highr        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
@@ -427,7 +421,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | Matice       | 1,2 – 17     | 
 | methods      | 3.5.1      | 
 | mgcv         | 1.8 – 28     | 
-| mime         | 0.7        | 
+| mime         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
 | modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
@@ -464,7 +458,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | rmarkdown    | 1.13       | 
 | ROCR         | 1.0-7      | 
 | rpart        | 4.1 – 15     | 
-| rstudioapi   | 0.1        | 
+| rstudioapi   | 0,1        | 
 | rvest        | 0.3.4      | 
 | scales       | 1.0.0      | 
 | selectr      | 0.4-1      | 
@@ -493,7 +487,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | viridisLite  | 0.3.0      | 
 | whisker      | 0.3-2      | 
 | withr        | 2.1.2      | 
-| xfun         | 0.8        | 
+| xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
 | xts          | 0,11 – 2     | 
 | yaml         | 2.2.0      | 
@@ -502,4 +496,4 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

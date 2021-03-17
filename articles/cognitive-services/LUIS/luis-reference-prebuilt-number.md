@@ -3,20 +3,18 @@ title: Počet předem sestavených entit – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje počet předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13594886b83d4474ee2531185db5868a5198ca64
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273466"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541950"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Počet předem sestavené entity pro aplikaci LUIS
 Existuje mnoho způsobů, jak se číselné hodnoty používají k kvantifikaci, vyjádření a popisu částí informací. Tento článek se zabývá pouze některými možnými příklady. LUIS interpretuje variace v uživatelském projevy a vrátí konzistentní číselné hodnoty. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující číslo.
@@ -48,7 +46,7 @@ Pro dotaz se vrátí následující objekty entity:
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -59,7 +57,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

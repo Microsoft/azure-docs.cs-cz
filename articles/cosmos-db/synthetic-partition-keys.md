@@ -2,18 +2,20 @@
 title: Vytvoření klíče syntetického oddílu v Azure Cosmos DB
 description: Naučte se používat syntetické klíče oddílů v kontejnerech Azure Cosmos k distribuci dat a zatížení rovnoměrně napříč klíči oddílů.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75441220"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340647"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvoření syntetického klíče oddílu
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Osvědčeným postupem je klíč oddílu s velkým množstvím různých hodnot, jako jsou stovky nebo tisíce. Cílem je distribuovat vaše data a zatížení napříč položkami přidruženými k těmto hodnotám klíče oddílu. Pokud taková vlastnost ve vašich datech neexistuje, můžete vytvořit *syntetický klíč oddílu*. Tento dokument popisuje několik základních postupů pro generování syntetického klíče oddílu pro váš Cosmos kontejner.
 
@@ -58,7 +60,7 @@ V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů odd
 
 Další informace o konceptu dělení na oddíly najdete v následujících článcích:
 
-* Přečtěte si další informace o [logických oddílech](partition-data.md).
+* Přečtěte si další informace o [logických oddílech](partitioning-overview.md).
 * Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
 * Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 * Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).

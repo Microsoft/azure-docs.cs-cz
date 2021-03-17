@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5efca8ab51c789a619e48b1ae96a53494ae411ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962056"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Řízení příchozího provozu na App Service Environment
 ## <a name="overview"></a>Přehled
@@ -31,8 +31,8 @@ Před uzamčením příchozího síťového provozu pomocí skupiny zabezpečen�
 
 Následující seznam obsahuje porty používané App Service Environment. Všechny porty jsou **TCP**, pokud není výslovně uvedeno jinak:
 
-* 454: **požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu TLS.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
-* 455: **požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu TLS.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
+* 454:  **požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu TLS.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
+* 455:  **požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu TLS.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
 * 80: výchozí port pro příchozí přenos HTTP do aplikací spuštěných v App Service plánuje v App Service Environment.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
 * 443: výchozí port pro příchozí přenos TLS do aplikací, které běží v App Service plánuje v App Service Environment.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
 * 21: řídicí kanál pro FTP.  Pokud se server FTP nepoužívá, můžete tento port bezpečně zablokovat.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu řízení.
@@ -86,7 +86,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityR
 Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 ```
 
-(**Poznámka:** rozsah portů datového kanálu se může během období Preview změnit.)
+(**Poznámka:**  rozsah portů datového kanálu se může během období Preview změnit.)
 
 Pokud se používá vzdálené ladění pomocí sady Visual Studio, následující pravidla demonstrují, jak udělit přístup.  Pro každou podporovanou verzi sady Visual Studio existuje samostatné pravidlo, protože každá verze používá jiný port pro vzdálené ladění.  Stejně jako při přístupu k FTP nemusí vzdálené ladění provozu bez problémů přesměrovat prostřednictvím tradičního WAF nebo proxy zařízení.  *SourceAddressPrefix* je možné nastavit na rozsah IP adres počítačů vývojářů se sadou Visual Studio.
 
@@ -130,12 +130,11 @@ Další informace najdete v tématu [zabezpečené připojení k back-endu prost
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [SecurelyConnecttoBackend]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md
 [NewPortal]:  https://portal.azure.com  
 
 <!-- IMAGES -->
-

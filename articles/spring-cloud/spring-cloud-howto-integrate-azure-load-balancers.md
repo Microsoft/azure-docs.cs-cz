@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a7ed148c4bc8d58b2dcbc344656137a403c62eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037538"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090824"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Integrace Azure Spring Cloudu se řešeními pro vyrovnávání zatížení Azure
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Azure jaře Cloud podporuje mikroslužby v Azure.  Zvýšení firmy může vyžadovat více datových center se správou více instancí Azure Pramenitého cloudu.
 
@@ -26,10 +28,10 @@ Azure už poskytuje různá řešení pro vyrovnávání zatížení. Existují 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Azure jaře Cloud: [jak vytvořit cloudovou službu Azure na jaře](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)
-* Azure Traffic Manager: [Postup vytvoření Traffic Manageru](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure App Gateway: [jak vytvořit Aplikační bránu](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Přední dvířka Azure: [jak vytvořit frontu](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure jaře Cloud: [jak vytvořit cloudovou službu Azure na jaře](./spring-cloud-quickstart.md)
+* Azure Traffic Manager: [Postup vytvoření Traffic Manageru](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure App Gateway: [jak vytvořit Aplikační bránu](../application-gateway/quick-create-portal.md)
+* Přední dvířka Azure: [jak vytvořit frontu](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>Integrace jarního cloudu Azure s využitím Azure Traffic Manager
 
@@ -90,6 +92,6 @@ Integrace se službou Azure jarní Cloud Service a konfigurací back-end fondu
     ![Přední dveře 2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>Další kroky
-* [Postup vytvoření Traffic Manageru](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [Postup vytvoření aplikační brány](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [Vytvoření front-dveří](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [Postup vytvoření Traffic Manageru](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [Postup vytvoření aplikační brány](../application-gateway/quick-create-portal.md)
+* [Vytvoření front-dveří](../frontdoor/quickstart-create-front-door.md)

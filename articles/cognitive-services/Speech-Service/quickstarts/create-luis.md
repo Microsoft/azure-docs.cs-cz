@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: f547b353091cc81816f0974fced8d4dc836d22b2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391600"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023816"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Rychlý Start: získání klíče koncového bodu LUIS
 
@@ -37,7 +37,7 @@ LUIS používá tři typy klíčů:
 |Starter|Umožňuje testovat aplikace LUIS jenom pomocí textu.|
 |Koncový bod |Autorizuje přístup ke konkrétní aplikaci LUIS.|
 
-Pro tento kurz potřebujete typ klíče koncového bodu. V tomto kurzu se používá ukázková aplikace LUIS pro automatizaci, kterou můžete vytvořit pomocí programu pro rychlý Start pro [domovskou automatizaci pomocí předdefinovaných aplikací](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
+Pro tento kurz potřebujete typ klíče koncového bodu. V tomto kurzu se používá ukázková aplikace LUIS pro automatizaci, kterou můžete vytvořit pomocí programu pro rychlý Start pro [domovskou automatizaci pomocí předdefinovaných aplikací](../../luis/luis-get-started-create-app.md) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
 
 Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, abyste mohli otestovat aplikaci pomocí textových dotazů. Tento klíč nepovoluje integraci služby Speech Service a nebude v tomto kurzu fungovat. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho do aplikace LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného.
 
@@ -50,9 +50,9 @@ Na stránce **klíče a nastavení koncového bodu** :
 1. Přejděte dolů k části **prostředky a klíče** a vyberte **přiřadit prostředek**.
 1. V dialogovém okně **přiřadit klíč k aplikaci** proveďte následující změny:
 
-   * V části **tenant**klikněte na **Microsoft**.
-   * V části **název předplatného**vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
-   * V části **klíč**vyberte prostředek Luis, který chcete s aplikací používat.
+   * V části **tenant** klikněte na **Microsoft**.
+   * V části **název předplatného** vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
+   * V části **klíč** vyberte prostředek Luis, který chcete s aplikací používat.
 
    Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky.
 

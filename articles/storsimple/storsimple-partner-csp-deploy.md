@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021856"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
 
@@ -29,7 +29,7 @@ StorSimple Virtual Array může být nasazeno partnery poskytovatele Cloud Solut
 
 Tento článek popisuje, jak může partner CSP přidat zákazníka nebo nové předplatné stávajícímu zákazníkovi a pak vytvořit službu pro nasazení StorSimple virtuálního pole v CSP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
@@ -64,7 +64,7 @@ Pokud přidáte zákazníka, vytvoří se předplatné automaticky. Chcete-li p�
 
     ![Hledat zákazníka](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. V levém podokně vyberte možnost **Správa služeb**. V pravém podokně klikněte v části **Spravovat služby**na **portál pro správu Microsoft Azure** a přihlaste se jako správce Azure pro zákazníka.
+7. V levém podokně vyberte možnost **Správa služeb**. V pravém podokně klikněte v části **Spravovat služby** na **portál pro správu Microsoft Azure** a přihlaste se jako správce Azure pro zákazníka.
 
     ![Přihlášení k webu Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
@@ -93,7 +93,7 @@ V některých případech je možné, že máte existujícího zákazníka a pot
 
     ![Hledat zákazníka](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. V levém podokně vyberte možnost **Správa služeb**. V pravém podokně klikněte v části **Spravovat služby**na **portál pro správu Microsoft Azure** a přihlaste se jako správce Azure pro zákazníka.
+7. V levém podokně vyberte možnost **Správa služeb**. V pravém podokně klikněte v části **Spravovat služby** na **portál pro správu Microsoft Azure** a přihlaste se jako správce Azure pro zákazníka.
 
     ![Přihlášení k webu Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 

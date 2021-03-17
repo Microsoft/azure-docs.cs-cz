@@ -8,16 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.openlocfilehash: d50e1acd104916d68f7fbb84ff568cf4efc0b46b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6d50a8e2c9d0263616b25e25958be6a6f0fb7fe1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289753"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88929261"
 ---
 V tomto rychlém startu můžete začít vyhledávat zprávy pomocí Vvyhledávání videí Bingu klientské knihovny pro C#. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) s dalšími poznámkami a funkcemi.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
 * Rozhraní Json.NET, které je k dispozici [jako balíček NuGet](https://www.nuget.org/packages/Newtonsoft.Json/).
@@ -59,7 +60,7 @@ Instalace [balíčku [NuGet vyhledávání videí SDK]](https://www.nuget.org/pa
     var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
     ```
 
-2. Pokud byly vráceny nějaké výsledky, získejte první z nich `videoResults.Value[0]`. Potom vytiskněte ID, název a adresu URL videa.
+2. Pokud byly vráceny nějaké výsledky, získejte první z nich `videoResults.Value[0]` . Potom vytiskněte ID, název a adresu URL videa.
 
     ```csharp
     if (videoResults.Value.Count > 0)

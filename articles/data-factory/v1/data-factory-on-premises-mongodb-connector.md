@@ -1,20 +1,17 @@
 ---
 title: Přesunout data z MongoDB
 description: Přečtěte si informace o tom, jak přesouvat data z databáze MongoDB pomocí Azure Data Factory.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281337"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387508"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 
@@ -46,7 +43,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z m�
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -61,13 +58,13 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu **OnPremisesMongoDB** .
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesMongoDb** . |Yes |
 | server |IP adresa nebo název hostitele serveru MongoDB |Yes |
 | port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Volitelná výchozí hodnota: 27017 |
 | authenticationType |Basic nebo Anonymous. |Yes |
-| uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
+| username |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |Volitelné (Pokud se používá základní ověřování). výchozí: používá účet správce a databázi určenou pomocí vlastnosti databaseName. |
 | Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Yes |
@@ -79,7 +76,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro sadu dat typu **MongoDbCollection** má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | collectionName |Název kolekce v databázi MongoDB |Yes |
 
@@ -295,7 +292,7 @@ Při přesunu dat na MongoDB se z typů MongoDB na typy .NET používají násle
 | Binární |Byte [] |
 | Logická hodnota |Logická hodnota |
 | Datum |DateTime |
-| NumberDouble |Double |
+| NumberDouble |dvojité |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectId |Řetězec |
@@ -321,14 +318,14 @@ Virtuální tabulky odkazují na data v reálné tabulce a umožňují tak ovlad
 ### <a name="example"></a>Příklad
 Například "priklad Table" níže je tabulka MongoDB, která má jeden sloupec s polem objektů v každé buňce – faktury a jeden sloupec s polem skalárních typů – hodnocení.
 
-| _id | Název zákazníka | Faktury | Úroveň služby | Ratings |
+| _id | Název zákazníka | Faktury | Úroveň služeb | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", Item: "informační zpráva", Cena: "456", sleva: "0,2"}, {invoice_id: "124", položka: "sušárna", Cena: "1235", sleva: "0,2"}] |Silver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135"; Item: "nákupem ledničky"; Price: "12543"; Discount: "0,0"}] |Gold |[1, 2] |
 
 Ovladač by vygeneroval několik virtuálních tabulek, které reprezentují tuto jedinou tabulku. První virtuální tabulka je základní tabulka s názvem "priklad Table", která je uvedená níže. Základní tabulka obsahuje všechna data původní tabulky, ale data z těchto polí byla vynechána a jsou rozbalena ve virtuálních tabulkách.
 
-| _id | Název zákazníka | Úroveň služby |
+| _id | Název zákazníka | Úroveň služeb |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |

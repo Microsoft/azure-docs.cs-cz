@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209494"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565815"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-V tomto článku se dozvíte o metodách migrace instance verze SQL Server 2005 nebo novější do [spravované instance Azure SQL](sql-managed-instance-paas-overview.md). Informace o migraci na izolovanou databázi nebo elastický fond najdete v tématu [migrace na SQL Database](../database/migrate-to-database-from-sql-server.md). Informace o migraci z jiných platforem najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/).
+V tomto článku se dozvíte o metodách migrace instance verze SQL Server 2005 nebo novější do [spravované instance Azure SQL](sql-managed-instance-paas-overview.md). Informace o migraci na izolovanou databázi nebo elastický fond najdete v tématu [Přehled migrace: SQL Server SQL Database](../migration-guides/database/sql-server-to-sql-database-overview.md). Informace o migraci z dalších platforem a pokynů k nástrojům a možnostem najdete v tématu [migrace do Azure SQL](../migration-guides/index.yml).
 
 > [!NOTE]
 > Pokud chcete rychle začít a vyzkoušet spravovanou instanci Azure SQL, můžete místo této stránky přejít na [příručku pro rychlý](quickstart-content-reference-guide.md) Start.
@@ -45,7 +45,7 @@ V případě vysoké úrovně proces migrace databáze vypadá takto:
 
 Nejdřív Zjistěte, jestli je spravovaná instance SQL kompatibilní s požadavky na databázi vaší aplikace. Spravovaná instance SQL je navržená tak, aby poskytovala snadnou migraci pomocí přezvednutí a posunutí pro většinu stávajících aplikací, které používají SQL Server. Někdy ale můžete vyžadovat funkce nebo možnosti, které ještě nejsou podporované, a náklady na implementaci alternativního řešení jsou moc vysoké.
 
-Použijte [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze na Azure SQL Database. Pokud dojde k nějakým chybám blokujícím blokování, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálním počítači Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Tady je několik příkladů:
+Použijte [Data Migration Assistant](/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze na Azure SQL Database. Pokud dojde k nějakým chybám blokujícím blokování, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálním počítači Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Tady je několik příkladů:
 
 - Pokud požadujete přímý přístup k operačnímu systému nebo systému souborů, například pro instalaci jiných agentů nebo vlastních agentů na stejný virtuální počítač s SQL Server.
 - Pokud máte striktní závislost na funkcích, které stále nejsou podporované, jako jsou FileStream/soubor, základ a transakce mezi instancemi.
@@ -60,6 +60,26 @@ Pokud jste vyřešili všechny identifikované blokující bloky migrace a pokra
 
 Spravovaná instance SQL garantuje 99,99% dostupnost i v kritických scénářích, takže režijní náklady způsobené těmito funkcemi se nedají zakázat. Další informace najdete v části [hlavní příčiny, které můžou způsobit jiný výkon SQL Server a Azure SQL Managed instance](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/).
 
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (paměťově optimalizované tabulky)
+
+SQL Server poskytuje In-Memory OLTP schopnost, která umožňuje využití paměťově optimalizovaných tabulek, paměťově optimalizovaných typů tabulek a nativně kompilovaných modulů SQL ke spouštění úloh, které mají požadavky na zpracování s vysokou propustností a nízkou latencí. 
+
+> [!IMPORTANT]
+> In-Memory OLTP se podporuje jenom v Pro důležité obchodní informace úrovni ve spravované instanci Azure SQL (a není podporovaná na úrovni Pro obecné účely).
+
+Pokud máte v místních SQL Serverch paměťově optimalizované tabulky nebo paměťově optimalizované typy tabulek a chcete migrovat na spravovanou instanci Azure SQL, měli byste buď:
+
+- Vyberte úroveň Pro důležité obchodní informace pro vaši cílovou spravovanou instanci SQL Azure, která podporuje In-Memory OLTP, nebo
+- Pokud chcete migrovat na Pro obecné účely úroveň ve spravované instanci Azure SQL, odeberte paměťově optimalizované tabulky, paměťově optimalizované typy tabulek a nativně zkompilované moduly SQL, které komunikují s paměťově optimalizovanými objekty před migrací databází. K identifikaci všech objektů, které je třeba před migrací do Pro obecné účely úrovně, použít následující dotaz T-SQL:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
+
 ### <a name="create-a-performance-baseline"></a>Vytvoření standardních hodnot výkonu
 
 Pokud potřebujete porovnat výkon svého zatížení na spravované instanci s původní úlohou běžící na SQL Server, budete muset vytvořit směrný plán výkonu, který se použije k porovnání.
@@ -69,8 +89,8 @@ Základní hodnota výkonu je sada parametrů, jako je průměrné nebo maximál
 Některé parametry, které byste potřebovali pro měření SQL Server instance, jsou:
 
 - [Monitorujte využití CPU na instanci SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) a zaznamenejte průměrné a špičkové využití procesoru.
-- [Monitorujte využití paměti ve vaší instanci SQL Server](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) a určete množství paměti využívané různými součástmi, jako je fond vyrovnávací paměti, mezipaměť plánu, fond úložiště sloupce, [OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), atd. Kromě toho byste měli najít průměrnou a maximální hodnotu čítače výkonu životnosti stránky očekávané paměti.
-- Monitorujte využití v/v disku u zdrojové SQL Server instance pomocí zobrazení [Sys. dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) a [čítačů výkonu](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
+- [Monitorujte využití paměti ve vaší instanci SQL Server](/sql/relational-databases/performance-monitor/monitor-memory-usage) a určete množství paměti využívané různými součástmi, jako je fond vyrovnávací paměti, mezipaměť plánu, fond úložiště sloupce, [OLTP v paměti](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), atd. Kromě toho byste měli najít průměrnou a maximální hodnotu čítače výkonu životnosti stránky očekávané paměti.
+- Monitorujte využití v/v disku u zdrojové SQL Server instance pomocí zobrazení [Sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) nebo [čítačů výkonu](/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Monitorujte výkon úloh a dotazů nebo svou instanci SQL Server tím, že prozkoumáte zobrazení dynamické správy nebo úložiště dotazů, pokud migrujete z SQL Server 2016 + verze. Identifikujte Průměrné trvání a využití procesoru nejdůležitějších dotazů v úloze a porovnejte je s dotazy, které jsou spuštěny ve spravované instanci.
 
 > [!Note]
@@ -116,7 +136,7 @@ Spravovaná instance SQL podporuje následující možnosti migrace databáze (a
 
 [Azure Database Migration Service](../../dms/dms-overview.md) je plně spravovaná služba navržená tak, aby umožňovala bezproblémové migrace z více databázových zdrojů do datových platforem Azure s minimálními výpadky. Tato služba zjednodušuje úlohy potřebné k přesunu stávajících databází třetích stran a SQL Server do Azure. Mezi možnosti nasazení ve verzi Public Preview patří databáze v Azure SQL Database a databáze SQL Server na virtuálním počítači Azure. Database Migration Service je doporučená metoda migrace pro vaše podnikové úlohy.
 
-Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) v SQL Server místně, Database Migration Service ještě nepodporuje migraci katalogu SSIS (SSISDB), který ukládá balíčky SSIS, ale můžete zřídit Azure-SSIS Integration Runtime (IR) v Azure Data Factory, což vytvoří nový SSISDB ve spravované instanci, abyste mohli balíčky znovu nasadit do tohoto prostředí. Viz téma [Create Azure-SSIS IR in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) v SQL Server místně, Database Migration Service ještě nepodporuje migraci katalogu SSIS (SSISDB), který ukládá balíčky SSIS, ale můžete zřídit Azure-SSIS Integration Runtime (IR) v Azure Data Factory, což vytvoří nový SSISDB ve spravované instanci, abyste mohli balíčky znovu nasadit do tohoto prostředí. Viz téma [Create Azure-SSIS IR in Azure Data Factory](../../data-factory/create-azure-ssis-integration-runtime.md).
 
 Další informace o tomto scénáři a postupu konfigurace pro Database Migration Service najdete v tématu [migrace místní databáze do spravované instance pomocí Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -126,15 +146,15 @@ OBNOVENÍ nativních záloh (souborů. bak) pořízených z SQL Server instance,
 
 Následující diagram poskytuje podrobný přehled procesu:
 
-![migrace – tok](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![Diagram zobrazuje SQL Server se šipkou, která je označena jako zálohování nebo nahrání, do přetékání adres URL do Azure Storage a druhá šipka s označením obnovení z adresy URL z Azure Storage do spravované instance SQL.](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 V následující tabulce najdete další informace týkající se metod, které můžete použít v závislosti na zdrojové SQL Server verzi, kterou používáte:
 
 |Krok|Stroj a verze SQL|Metoda Backup/Restore|
 |---|---|---|
 |Vložit zálohu do Azure Storage|Před 2012 SP1 CU2|Nahrání souboru. bak přímo do Azure Storage|
-||2012 SP1 CU2-2016|Přímá záloha pomocí syntaxe [přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) zastaralá|
-||2016 a vyšší|Přímé zálohování pomocí [s přihlašovacími údaji SAS](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
+||2012 SP1 CU2-2016|Přímá záloha pomocí syntaxe [přihlašovacích údajů](/sql/t-sql/statements/restore-statements-transact-sql) zastaralá|
+||2016 a vyšší|Přímé zálohování pomocí [s přihlašovacími údaji SAS](/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
 |Obnovení z Azure Storage do spravované instance|[OBNOVIT z adresy URL s PŘIHLAŠOVACÍmi údaji SAS](restore-sample-database-quickstart.md)|
 
 > [!IMPORTANT]
@@ -164,7 +184,7 @@ V rámci předpokladu se ujistěte, že jste dokončili následující aktivity:
 - Pomocí nastavení ze zdrojové instance SQL Server zarovnejte nastavení ze zdrojové instance, a prozkoumáním různých instancí, databází, nastavení databáze tempdb a konfigurací. Před spuštěním prvního porovnání výkonu se ujistěte, že jste nezměnili nastavení, jako jsou úrovně kompatibility nebo šifrování, nebo přijměte riziko, že některé nové funkce, které jste povolili, mohou ovlivnit některé dotazy. Chcete-li snížit rizika migrace, změňte úroveň kompatibility databáze pouze po sledování výkonu.
 - Implementujte [pokyny k osvědčeným postupům úložiště pro pro obecné účely](https://techcommunity.microsoft.com), jako je třeba předběžně přidělit velikost souborů, abyste získali lepší výkon.
 - Přečtěte si o [klíčových rozdílech v prostředích, které by mohly způsobit rozdíly v výkonu mezi spravovanou instancí a SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/), a Identifikujte rizika, která mohou ovlivnit výkon.
-- Ujistěte se, že jste zachovali povolené úložiště dotazů a automatické ladění na spravované instanci. Tyto funkce umožňují měřit výkon úloh a automaticky opravovat potenciální problémy s výkonem. Naučte se používat úložiště dotazů jako optimální nástroj pro získání informací o výkonu úloh před a po změně úrovně kompatibility databáze, jak je vysvětleno v [části zachování stability výkonu během upgradu na novější verzi SQL Server](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
+- Ujistěte se, že jste zachovali povolené úložiště dotazů a automatické ladění na spravované instanci. Tyto funkce umožňují měřit výkon úloh a automaticky opravovat potenciální problémy s výkonem. Naučte se používat úložiště dotazů jako optimální nástroj pro získání informací o výkonu úloh před a po změně úrovně kompatibility databáze, jak je vysvětleno v [části zachování stability výkonu během upgradu na novější verzi SQL Server](/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 Po přípravě prostředí, které je co nejvíc porovnatelné s vaším místním prostředím, můžete začít spouštět úlohy a měřit výkon. Proces měření by měl zahrnovat stejné parametry, které jste naměřeni [při vytváření směrného plánu pro úlohy na zdrojové SQL Server instanci](#create-a-performance-baseline).
 V důsledku toho byste měli porovnat parametry výkonu se směrným plánem a určit kritické rozdíly.
 
@@ -194,16 +214,16 @@ SQL Managed instance poskytuje mnoho pokročilých nástrojů pro monitorování
 
 Jakmile budete na plně spravované platformě a ověříte, že výkon úloh odpovídá vašemu SQL Server výkonu úloh, využijte výhody, které jsou k dispozici automaticky jako součást služby.
 
-I v případě, že během migrace neprovedete změny ve spravované instanci, je velmi pravděpodobné, že byste zapnuli některé nové funkce, zatímco pracujete s vaší instancí, abyste mohli využít nejnovější vylepšení databázového stroje. Některé změny se aktivují až po [změně úrovně kompatibility databáze](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database).
+I v případě, že během migrace neprovedete změny ve spravované instanci, je velmi pravděpodobné, že byste zapnuli některé nové funkce, zatímco pracujete s vaší instancí, abyste mohli využít nejnovější vylepšení databázového stroje. Některé změny se aktivují až po [změně úrovně kompatibility databáze](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database).
 
 Například nemusíte vytvářet zálohy na spravované instanci – služba provádí zálohování automaticky. Už si nemusíte dělat starosti s plánováním, správou a správou záloh. SQL Managed instance poskytuje možnost obnovení do libovolného bodu v čase v rámci této doby uchování pomocí funkce [Obnovení bodu v čase (PITR)](../database/recovery-using-backups.md#point-in-time-restore). Kromě toho se nemusíte starat o nastavení vysoké dostupnosti, protože je integrovaná [Vysoká dostupnost](../database/high-availability-sla.md) .
 
-Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../database/security-overview.md), [auditování](auditing-configure.md), [detekce hrozeb](../database/advanced-data-security.md), [zabezpečení na úrovni řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking).
+Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../database/security-overview.md), [auditování](auditing-configure.md), [detekce hrozeb](../database/azure-defender-for-sql.md), [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](/sql/relational-databases/security/dynamic-data-masking).
 
-Kromě pokročilých funkcí správy a zabezpečení poskytuje spravovaná instance sadu pokročilých nástrojů, které vám pomůžou [monitorovat a ladit vaše úlohy](../database/monitor-tune-overview.md). [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) vám umožní monitorovat velkou sadu spravovaných instancí a centralizovat monitorování velkého počtu instancí a databází. [Automatické ladění](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) ve spravovaných instancích nepřetržitě monitoruje výkon statistik spuštění plánu SQL a automaticky opravuje zjištěné problémy s výkonem.
+Kromě pokročilých funkcí správy a zabezpečení poskytuje spravovaná instance sadu pokročilých nástrojů, které vám pomůžou [monitorovat a ladit vaše úlohy](../database/monitor-tune-overview.md). [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) vám umožní monitorovat velkou sadu spravovaných instancí a centralizovat monitorování velkého počtu instancí a databází. [Automatické ladění](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) ve spravovaných instancích nepřetržitě monitoruje výkon statistik spuštění plánu SQL a automaticky opravuje zjištěné problémy s výkonem.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o spravované instanci Azure SQL najdete v tématu [co je Azure SQL Managed instance?](sql-managed-instance-paas-overview.md).
 - Kurz, který obsahuje obnovení ze zálohy, najdete v tématu [Vytvoření spravované instance](instance-create-quickstart.md).
-- Kurz znázorňující migraci pomocí Database Migration Service najdete v tématu [migrace místní databáze do spravované instance Azure SQL pomocí Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).  
+- Kurz znázorňující migraci pomocí Database Migration Service najdete v tématu [migrace místní databáze do spravované instance Azure SQL pomocí Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).

@@ -16,29 +16,29 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542225"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413186"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace služby Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma obsahuje seznam atributů synchronizovaných pomocí Azure AD Connect synchronizace.  
 Atributy jsou seskupené podle související aplikace Azure AD.
 
 ## <a name="attributes-to-synchronize"></a>Atributy, které se mají synchronizovat
-Běžným dotazem je *seznam minimálních atributů, které se mají synchronizovat*. Výchozím a doporučeným přístupem je zachování výchozích atributů, aby bylo možné v cloudu vytvořit celý globální adresář (globální seznam adres) a získat všechny funkce pro úlohy Office 365. V některých případech existují některé atributy, které vaše organizace nechce synchronizovat do cloudu, protože tyto atributy obsahují data citlivých nebo PII (osobní údaje), jako v tomto příkladu:  
+Běžným dotazem je *seznam minimálních atributů, které se mají synchronizovat*. Výchozím a doporučeným přístupem je zachování výchozích atributů, aby bylo možné v cloudu vytvořit úplný seznam celých adres (globální seznam adres) a získat všechny funkce Microsoft 365 úloh. V některých případech existují některé atributy, které vaše organizace nechce synchronizovat s cloudem, protože tyto atributy obsahují citlivé osobní údaje, jako v tomto příkladu:  
 ![Chybné atributy](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-V takovém případě začněte seznamem atributů v tomto tématu a Identifikujte tyto atributy, které by mohly obsahovat citlivé nebo PII data a nelze je synchronizovat. Pak tyto atributy během instalace odznačte pomocí [filtrování aplikací a atributů Azure AD](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering).
+V takovém případě začněte seznamem atributů v tomto tématu a Identifikujte atributy, které by obsahovaly osobní údaje a nelze je synchronizovat. Pak tyto atributy během instalace odznačte pomocí [filtrování aplikací a atributů Azure AD](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering).
 
 > [!WARNING]
 > Při debírání atributů byste měli být opatrní a jenom zrušit výběr těchto atributů, které nemůžete synchronizovat. Zrušit výběr jiných atributů může mít negativní dopad na funkce.
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 ProPlus
+## <a name="microsoft-365-apps-for-enterprise"></a>Aplikace Microsoft 365 pro podniky
 | Název atributu | Uživatel | Komentář |
 | --- |:---:| --- |
 | accountEnabled |X |Definuje, jestli je účet povolený. |
@@ -373,9 +373,9 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 Tato skupina je sadou atributů používaných jako minimální atributy, které jsou potřeba pro obecné úlohy nebo aplikace. Dá se použít pro úlohy, které nejsou uvedené v jiné části nebo pro aplikaci od jiného výrobce než Microsoftu. Používá se explicitně pro následující:
 
 * Yammer (jenom uživatel se spotřebovává)
-* [Hybridní scénáře spolupráce mezi organizacemi B2B (Business-to-Business) nabízené prostředky, jako je SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [Hybridní scénáře spolupráce mezi organizacemi B2B (Business-to-Business) nabízené prostředky, jako je SharePoint](/sharepoint/create-b2b-extranet)
 
-Tato skupina je sadou atributů, které se dají použít, pokud se adresář služby Azure AD nepoužívá k podpoře Office 365, Dynamics nebo Intune. Má malou sadu základních atributů. Mějte na paměti, že jednotné přihlašování nebo zřizování pro některé aplikace třetích stran vyžaduje konfiguraci synchronizace atributů kromě atributů popsaných tady. Požadavky na aplikace jsou popsány v [kurzu aplikace SaaS](../saas-apps/tutorial-list.md) pro jednotlivé aplikace.
+Tato skupina je sadou atributů, které se dají použít, když se adresář služby Azure AD nepoužívá k podpoře Microsoft 365, Dynamics nebo Intune. Má malou sadu základních atributů. Mějte na paměti, že jednotné přihlašování nebo zřizování pro některé aplikace třetích stran vyžaduje konfiguraci synchronizace atributů kromě atributů popsaných tady. Požadavky na aplikace jsou popsány v [kurzu aplikace SaaS](../saas-apps/tutorial-list.md) pro jednotlivé aplikace.
 
 | Název atributu | Uživatel | Kontakt | Skupina | Komentář |
 | --- |:---:|:---:|:---:| --- |
@@ -397,7 +397,7 @@ Tato skupina je sadou atributů, které se dají použít, pokud se adresář sl
 | userPrincipalName (Hlavní název uživatele) |X | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
-Počítač připojený k doméně Windows 10 (zařízení) synchronizuje některé atributy do Azure AD. Další informace o těchto scénářích najdete v tématu [připojení zařízení připojených k doméně ke službě Azure AD pro prostředí Windows 10](../active-directory-azureadjoin-devices-group-policy.md). Tyto atributy se vždycky synchronizují a Windows 10 se nezobrazí jako aplikace, kterou můžete zrušit. Počítač připojený k doméně Windows 10 je identifikovaný, protože má atribut userCertificate vyplněný.
+Počítač připojený k doméně Windows 10 (zařízení) synchronizuje některé atributy do Azure AD. Další informace o těchto scénářích najdete v tématu [připojení zařízení připojených k doméně ke službě Azure AD pro prostředí Windows 10](../devices/hybrid-azuread-join-plan.md). Tyto atributy se vždycky synchronizují a Windows 10 se nezobrazí jako aplikace, kterou můžete zrušit. Počítač připojený k doméně Windows 10 je identifikovaný, protože má atribut userCertificate vyplněný.
 
 | Název atributu | Zařízení | Komentář |
 | --- |:---:| --- |

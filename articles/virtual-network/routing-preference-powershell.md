@@ -11,42 +11,32 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: e856e3fc253800b71176dad3db40e7a13a7e6140
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fac791247dbb785e087ac21f3fd5532064c6c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707867"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667897"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-powershell"></a>Konfigurace předvolby směrování pro veřejnou IP adresu pomocí Azure PowerShell
 
-V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování prostřednictvím sítě poskytovatele internetových služeb (možnost**Internet** ) pro veřejnou IP adresu pomocí Azure PowerShell. Po vytvoření veřejné IP adresy ji můžete přidružit k následujícím prostředkům Azure pro příchozí a odchozí provoz do Internetu:
+V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování prostřednictvím sítě poskytovatele internetových služeb (možnost **Internet** ) pro veřejnou IP adresu pomocí Azure PowerShell. Po vytvoření veřejné IP adresy ji můžete přidružit k následujícím prostředkům Azure pro příchozí a odchozí provoz do Internetu:
 
 * Virtuální počítač
 * Škálovací sada virtuálních počítačů
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Brána Azure Firewall
+* Azure Firewall
 
 Ve výchozím nastavení je předvolby směrování pro veřejnou IP adresu nastavená na globální síť Microsoft pro všechny služby Azure a může být přidružená k jakékoli službě Azure.
-
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 6.9.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
-
-## <a name="register-the-feature-for-your-subscription"></a>Registrace funkce pro vaše předplatné
-Funkce předvolby směrování je aktuálně ve verzi Preview. Zaregistrujte funkci pro vaše předplatné následujícím způsobem:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

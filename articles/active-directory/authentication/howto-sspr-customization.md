@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8690b1a4b8527a397fcf4c04892e167b5332358d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3766db0d5070f15216ac612353e2c25737ad092a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035396"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741622"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Přizpůsobení uživatelského prostředí pro Azure Active Directory Samoobslužné resetování hesla
 
@@ -50,7 +50,7 @@ Výchozí kontaktní e-mail se pošle příjemcům v tomto pořadí:
 
 Ve všech případech se oznamuje maximálně 100 příjemců.
 
-Další informace o různých rolích správce a jejich přiřazení najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace o různých rolích správce a jejich přiřazení najdete v tématu [přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md).
 
 ### <a name="disable-contact-your-administrator-emails"></a>Zakázání e-mailů s názvem "kontaktujte správce"
 
@@ -67,15 +67,15 @@ Obrázek, který zvolíte, se zobrazí v následujících situacích:
 
 * Poté, co uživatel zadá své uživatelské jméno
 * Pokud uživatel přistupuje k přizpůsobené adrese URL:
-   * Předáním `whr` parametru na stránku pro resetování hesla, například`https://login.microsoftonline.com/?whr=contoso.com`
-   * Předáním `username` parametru na stránku pro resetování hesla, například`https://login.microsoftonline.com/?username=admin@contoso.com`
+   * Předáním `whr` parametru na stránku pro resetování hesla, například `https://login.microsoftonline.com/?whr=contoso.com`
+   * Předáním `username` parametru na stránku pro resetování hesla, například `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 ### <a name="directory-name"></a>Název adresáře
 
 Pokud chcete, aby vypadaly lépe uživatelsky přívětivé, můžete změnit název organizace na portálu a v automatizované komunikaci. Chcete-li změnit atribut názvu adresáře v Azure Portal, přejděte do části **Azure Active Directory**  >  **Properties (vlastnosti**). Tato srozumitelná možnost názvu organizace je nejčastěji viditelná v automatizovaných e-mailech, jako v následujících příkladech:
 
-* Popisný název v e-mailu, například*Microsoft jménem ukázky společnosti Contoso*
-* Řádek předmětu v e-mailu, například*kód pro ověření e-mailu s ukázkovým účtem contoso*
+* Popisný název v e-mailu, například *Microsoft jménem ukázky společnosti Contoso*
+* Řádek předmětu v e-mailu, například *kód pro ověření e-mailu s ukázkovým účtem contoso*
 
 ## <a name="customize-the-ad-fs-sign-in-page"></a>Přizpůsobení přihlašovací stránky AD FS
 
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 Informace o používání SSPR ve vašem prostředí najdete v tématu [Možnosti vytváření sestav pro správu hesel služby Azure AD](howto-sspr-reporting.md).
 
-Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](active-directory-passwords-troubleshoot.md) .
+Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](./troubleshoot-sspr.md) .

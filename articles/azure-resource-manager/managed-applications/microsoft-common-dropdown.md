@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474338"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168337"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown – element uživatelského rozhraní
 
@@ -26,19 +26,19 @@ Je-li pro výběr povolena pouze jedna položka, zobrazí se ovládací prvek ja
 
 Pokud jsou popisy zahrnuty, zobrazí se ovládací prvek jako:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown – jeden výběr s popisy":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
 
 Pokud je povolen vícenásobný výběr, ovládací prvek přidá možnost **Vybrat vše** a zaškrtávací políčka pro výběr více než jedné položky:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown vícenásobný výběr":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
 
 Popisy lze zahrnout s povoleným vícenásobným výběrem.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown vícenásobný výběr s popisy":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
 
 Pokud je povoleno filtrování, obsahuje ovládací prvek textové pole pro přidání hodnoty filtrování.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown vícenásobný výběr s popisy":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
 
 ## <a name="schema"></a>Schéma
 
@@ -88,7 +88,7 @@ Pokud je povoleno filtrování, obsahuje ovládací prvek textové pole pro při
 - `filter`Vlastnost umožňuje uživatelům vyhledávat v dlouhém seznamu možností.
 - Popisek pro `constraints.allowedValues` je zobrazený text pro položku a její hodnota je výstupní hodnota prvku, když je vybraná.
 - Je-li tento parametr zadán, výchozí hodnota musí být popisek přítomný v `constraints.allowedValues` . Pokud není zadán, je vybrána první položka v `constraints.allowedValues` . Výchozí hodnota je **null**.
-- `constraints.allowedValues`musí mít alespoň jednu položku.
+- `constraints.allowedValues` musí mít alespoň jednu položku.
 - Chcete-li emulovat hodnotu, která není požadována, přidejte položku s popiskem a hodnotou `""` (prázdný řetězec) do `constraints.allowedValues` .
 - `defaultDescription`Vlastnost se používá pro položky, které nemají popis.
 - `placeholder`Vlastnost je text v nápovědě, který zmizí, když uživatel začne upravovat. Pokud `placeholder` jsou a `defaultValue` definovány obě, má `defaultValue` přednost a je zobrazena.

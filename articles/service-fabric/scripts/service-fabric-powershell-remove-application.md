@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8b4b07288ce2c3570da5482a446b9418c7319011
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 686afa791df88382e3e5e1b2d233317c36bf1dd6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086196"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791302"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Odebrání aplikace z Service Fabricho clusteru pomocí prostředí PowerShell
 
@@ -37,11 +37,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Odebere instanci běžící Service Fabric aplikace z clusteru.  |
-| [Zrušit registraci – ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Zruší registraci typu a verze Service Fabric aplikace z clusteru. |
+| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication) | Odebere instanci běžící Service Fabric aplikace z clusteru.  |
+| [Zrušit registraci – ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | Zruší registraci typu a verze Service Fabric aplikace z clusteru. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Service Fabric PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/service-fabric/overview?view=azureservicefabricps).
+Další informace o modulu Service Fabric PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/service-fabric/overview).
 
 Další ukázky PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).

@@ -1,24 +1,18 @@
 ---
 title: Připojení k Azure Security Center pomocí PowerShellu
-description: Tento dokument vás provede procesem připojování Azure Security Center pomocí rutin PowerShellu.
-services: security-center
-documentationcenter: na
+description: Tento dokument vás provede procesem povolení Azure Security Center s rutinami prostředí PowerShell.
 author: memildin
 manager: rkarlin
-ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/02/2018
+ms.topic: quickstart
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25639509cfb689e025ea4388f302378648af8ba6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080744"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439489"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace připojování Azure Security Center pomocí prostředí PowerShell
 
@@ -29,9 +23,9 @@ Připojování Azure Security Center pomocí prostředí PowerShell umožňuje p
 
 Tento článek poskytuje vzorový skript PowerShellu, který se dá upravit a použít ve vašem prostředí k uvedení Security Center v rámci předplatných. 
 
-V tomto příkladu povolíme Security Center v předplatném s ID: d07c0080-170c-4c24-861d-9c817742786c a použijete Doporučené nastavení, které poskytuje vysokou úroveň ochrany, implementací standardní úrovně Security Center, která poskytuje rozšířenou ochranu před internetovými útoky a možnosti detekce:
+V tomto příkladu povolíme Security Center v předplatném s ID: d07c0080-170c-4c24-861d-9c817742786c a použijete Doporučené nastavení, které poskytuje vysokou úroveň ochrany, povolením Azure Defenderu, který poskytuje rozšířenou ochranu před internetovými útoky a možnosti detekce:
 
-1. Nastavte [úroveň ochrany Security Center úrovně Standard](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Povolte [Azure Defender](azure-defender.md). 
  
 2. Nastavte pracovní prostor Log Analytics, do kterého bude agent Log Analytics odesílat data, která shromažďuje na virtuálních počítačích přidružených k předplatnému – v tomto příkladu je to stávající uživatelem definovaný pracovní prostor (myWorkspace).
 
@@ -41,7 +35,7 @@ V tomto příkladu povolíme Security Center v předplatném s ID: d07c0080-170c
 
 6. Přiřaďte [výchozí zásady zabezpečení](tutorial-security-policy.md)Security Center.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tyto kroky je potřeba provést před spuštěním rutin Security Center:
 
@@ -61,7 +55,7 @@ Tyto kroky je potřeba provést před spuštěním rutin Security Center:
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. Volitelné: Nastavte úroveň pokrytí (cenová úroveň) předplatných (Pokud není definována, cenová úroveň je nastavená na volná):
+1. Volitelné: Nastavte úroveň pokrytí (v/v programu Azure Defender) předplatných. Pokud není definován, Defender je vypnutý:
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
@@ -89,7 +83,7 @@ Tyto kroky je potřeba provést před spuštěním rutin Security Center:
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
 
 Úspěšně jste připojili Azure Security Center k PowerShellu.
 
@@ -101,7 +95,7 @@ Tyto rutiny PowerShellu teď můžete používat se skripty pro automatizaci k p
 ## <a name="see-also"></a>Viz také
 Další informace o tom, jak můžete pomocí PowerShellu automatizovat připojování k Security Center, najdete v následujícím článku:
 
-* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security)
+* [AZ. Security](/powershell/module/az.security)
 
 Další informace o Security Center najdete v následujícím článku:
 

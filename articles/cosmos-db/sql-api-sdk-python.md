@@ -9,38 +9,39 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585980"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505048"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Sada Python SDK služby Azure Cosmos DB pro rozhraní SQL API: Poznámky k verzi a zdroje informací
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/azure-cosmos/)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Začínáme**|[Začínáme se sadou Python SDK](create-sql-api-python.md)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -113,7 +114,7 @@ ms.locfileid: "88585980"
 
 * 4.0.0 B2 je druhá iterace v naší snaze vytvořit klientskou knihovnu, která bude vyhovovat osvědčeným postupům jazyka Python.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 * Připojení klienta bylo upraveno za účelem využívání kanálu HTTP definovaného v `azure.core.pipeline` .
 
@@ -126,7 +127,7 @@ ms.locfileid: "88585980"
 
 * Byl aktualizován konstruktor `CosmosClient` :
 
-  * `auth`Parametr byl přejmenován na `credential` a bude nyní přebírat typ ověřování přímo. To znamená, že hodnota hlavního klíče, slovník tokenů prostředků nebo seznam oprávnění, se dají předat. Starý formát slovníku je však stále podporován.
+  * `auth`Parametr byl přejmenován na `credential` a bude nyní přebírat typ ověřování přímo. To znamená, že hodnota primárního klíče, slovník tokenů prostředků nebo seznam oprávnění, se dají předat. Starý formát slovníku je však stále podporován.
 
   * `connection_policy`Parametr byl vytvořen jako parametr pouze klíčová slova a i když je stále podporován, každý z jednotlivých atributů zásady lze nyní předat jako explicitní argumenty klíčového slova:
 
@@ -294,7 +295,7 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 ### <a name="142"></a>1.4.2
 
 * Implementujte Upsert. Přidaly se nové metody UpsertXXX, které podporují funkci Upsert.
-* Implementujte směrování na základě ID. Žádné změny veřejného rozhraní API, všechny změny jsou interní.
+* Implementujte ID-Based směrování. Žádné změny veřejného rozhraní API, všechny změny jsou interní.
 
 ### <a name="130"></a>1.3.0
 
@@ -316,37 +317,37 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
+Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 > [!WARNING]
-> Po 31. srpna 2022 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x nebo 2. x sady Azure Cosmos DB Python SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x a 2. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
+> Po 31. srpna 2022 už Azure Cosmos DB neprovádí opravy chyb ani neposkytuje podporu pro verze 1. x a 2. x sady Azure Cosmos DB Python SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x a 2. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [4.0.0](#400) |20. května 2020 |--- |
 | [3.0.2](#302) |15. listopadu 2018 |--- |
 | [3.0.1](#301) |Říjen 04, 2018 |--- |
-| [2.3.3](#233) |Září 08, 2018 |30. srpna 2020 |
-| [2.3.2](#232) |8. května 2018 |30. srpna 2020 |
-| [kládají](#231) |21. prosince 2017 |30. srpna 2020 |
-| [2.3.0](#230) |10. listopadu 2017 |30. srpna 2020 |
-| [2.2.1](#221) |Září 29, 2017 |30. srpna 2020 |
-| [2.2.0](#220) |10. května 2017 |30. srpna 2020 |
-| [2.1.0](#210) |Květen 01, 2017 |30. srpna 2020 |
-| [2.0.1](#201) |30. října 2016 |30. srpna 2020 |
-| [2.0.0](#200) |29. září 2016 |30. srpna 2020 |
-| [1.9.0](#190) |7. července 2016 |30. srpna 2020 |
-| [1.8.0](#180) |14. června 2016 |30. srpna 2020 |
-| [1.7.0](#170) |26. dubna 2016 |30. srpna 2020 |
-| [1.6.1](#161) |08 8. dubna 2016 |30. srpna 2020 |
-| [1.6.0](#160) |29. března 2016 |30. srpna 2020 |
-| [1.5.0](#150) |Leden 03, 2016 |30. srpna 2020 |
-| [1.4.2](#142) |06 6. října 2015 |30. srpna 2020 |
-| 1.4.1 |06 6. října 2015 |30. srpna 2020 |
-| [1.2.0](#120) |6. srpna 2015 |30. srpna 2020 |
-| [1.1.0](#110) |9. července 2015 |30. srpna 2020 |
-| [1.0.1](#101) |25. května 2015 |30. srpna 2020 |
-| 1.0.0 |7. dubna 2015 |30. srpna 2020 |
+| [2.3.3](#233) |Září 08, 2018 |31. srpna 2022 |
+| [2.3.2](#232) |8\. května 2018 |31. srpna 2022 |
+| [2.3.1](#231) |21. prosince 2017 |31. srpna 2022 |
+| [2.3.0](#230) |10. listopadu 2017 |31. srpna 2022 |
+| [2.2.1](#221) |Září 29, 2017 |31. srpna 2022 |
+| [2.2.0](#220) |10. května 2017 |31. srpna 2022 |
+| [2.1.0](#210) |Květen 01, 2017 |31. srpna 2022 |
+| [2.0.1](#201) |30. října 2016 |31. srpna 2022 |
+| [2.0.0](#200) |29. září 2016 |31. srpna 2022 |
+| [1.9.0](#190) |7. července 2016 |31. srpna 2022 |
+| [1.8.0](#180) |14. června 2016 |31. srpna 2022 |
+| [1.7.0](#170) |26. dubna 2016 |31. srpna 2022 |
+| [1.6.1](#161) |08 8. dubna 2016 |31. srpna 2022 |
+| [1.6.0](#160) |29. března 2016 |31. srpna 2022 |
+| [1.5.0](#150) |Leden 03, 2016 |31. srpna 2022 |
+| [1.4.2](#142) |06 6. října 2015 |31. srpna 2022 |
+| 1.4.1 |06 6. října 2015 |31. srpna 2022 |
+| [1.2.0](#120) |6. srpna 2015 |31. srpna 2022 |
+| [1.1.0](#110) |9. července 2015 |31. srpna 2022 |
+| [1.0.1](#101) |25. května 2015 |31. srpna 2022 |
+| 1.0.0 |7. dubna 2015 |31. srpna 2022 |
 | 0.9.4 – zapůjčení |14. ledna 2015 |29. února 2016 |
 | 0.9.3 – zapůjčení |9. prosince 2014 |29. února 2016 |
 | 0.9.2 – zapůjčení |25. listopadu 2014 |29. února 2016 |
@@ -359,4 +360,4 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

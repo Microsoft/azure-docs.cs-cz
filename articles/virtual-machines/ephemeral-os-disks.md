@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837104"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485754"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -26,7 +26,7 @@ Klíčové funkce dočasných disků:
 - Nižší latence, podobně jako dočasný disk. 
 - Dočasné disky s operačním systémem jsou bezplatné, neúčtují se žádné náklady na úložiště pro disk s operačním systémem.
 - Jsou k dispozici ve všech oblastech Azure. 
-- [Galerie sdílených imagí](./linux/shared-image-galleries.md)podporuje dočasný disk s operačním systémem. 
+- [Galerie sdílených imagí](./shared-image-galleries.md)podporuje dočasný disk s operačním systémem. 
  
 
  
@@ -34,7 +34,7 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 
 |                             | Trvalý disk s operačním systémem                          | Dočasný disk s operačním systémem                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **Omezení velikosti pro disk s operačním systémem**      | 2 TB                                                                                        | Velikost mezipaměti pro velikost virtuálního počítače nebo 2TiB, podle toho, která hodnota je menší. **Velikost mezipaměti v GIB najdete v**tématu [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)a [GS](sizes-previous-gen.md#gs-series) .              |
+| **Omezení velikosti pro disk s operačním systémem**      | 2 TiB                                                                                        | Velikost mezipaměti pro velikost virtuálního počítače nebo 2TiB, podle toho, která hodnota je menší. **Velikost mezipaměti v GIB najdete v** tématu [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)a [GS](sizes-previous-gen.md#gs-series) .              |
 | **Podporované velikosti virtuálních počítačů**          | Vše                                                                                          | Velikosti virtuálních počítačů, které podporují službu Premium Storage, jako je DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
 | **Podpora typů disků**           | Spravovaný a nespravovaný disk s operačním systémem                                                                | Jenom spravovaný disk s operačním systémem                                                               |
 | **Podpora oblastí**              | Všechny oblasti                                                                                  | Všechny oblasti                              |
@@ -42,7 +42,8 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 | **Stav zastavení a zrušení přidělení**      | Virtuální počítače a instance sady škálování se dají zastavit – zrušit přidělení a restartovat ze stavu Zastaveno (přidělení). | Virtuální počítače a instance sady škálování nelze zastavit – zrušit přidělení                                  |
 | **Specializovaná podpora disků s operačním systémem** | Ano                                                                                          | Ne                                                                                 |
 | **Změna velikosti disku s operačním systémem**              | Podporováno během vytváření virtuálních počítačů a po zastavení virtuálního počítače – zrušení přidělení                                | Podporováno pouze během vytváření virtuálních počítačů                                                  |
-| **Změna velikosti nového virtuálního počítače**   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.                                      |
+| **Změna velikosti nového virtuálního počítače**   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.       
+| **Umístění stránkovacího souboru**   | Pro Windows je stránkovací soubor uložený na disku prostředků.                                              | Pro Windows je stránkovací soubor uložený na disku s operačním systémem.   |
 
 ## <a name="size-requirements"></a>Požadavky na velikost
 
@@ -51,7 +52,7 @@ Můžete nasadit image virtuálních počítačů a instancí až do velikosti m
 Dočasné disky také vyžadují, aby velikost virtuálního počítače podporovala službu Premium Storage. Velikosti obvykle mají v názvu (ale ne vždy) `s` název, jako je například DSv2 a EsV3. Další informace najdete v tématu [velikosti virtuálních počítačů Azure](sizes.md) pro podrobnosti o tom, které velikosti podporují Premium Storage.
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Preview – dočasné disky s operačním systémem se teď dají ukládat na dočasné disky.
-Dočasné disky s operačním systémem se teď dají ukládat na disk s dočasným/prostředkem virtuálního počítače navíc do mezipaměti virtuálních počítačů. Nyní můžete použít dočasné disky s operačním systémem s virtuálním počítačem, který nemá mezipaměť, nebo má nedostatečnou mezipaměť, ale má disk s dočasným/prostředkem k uložení dočasného disku s operačním systémem, jako je například Dav3, Dav4, Eav4 a Eav3. Pokud má virtuální počítač dostatek mezipaměti a dočasné místo, budete teď moct zadat, kam chcete uložit dočasný disk s operačním systémem pomocí nové vlastnosti s názvem [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement). Tato funkce je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Začněte tím, že [vyžádáte přístup](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
+Dočasné disky s operačním systémem se teď dají ukládat na disk s dočasným/prostředkem virtuálního počítače navíc do mezipaměti virtuálních počítačů. Nyní můžete použít dočasné disky s operačním systémem s virtuálním počítačem, který nemá mezipaměť, nebo má nedostatečnou mezipaměť, ale má disk s dočasným/prostředkem k uložení dočasného disku s operačním systémem, jako je například Dav3, Dav4, Eav4 a Eav3. Pokud má virtuální počítač dostatek mezipaměti a dočasné místo, budete teď moct zadat, kam chcete uložit dočasný disk s operačním systémem pomocí nové vlastnosti s názvem [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement). Když se tato funkce zřídí, nakonfigurujeme, aby byl stránkovací soubor umístěný na disku s operačním systémem. Tato funkce je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Začněte tím, že [vyžádáte přístup](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -85,7 +86,7 @@ az vm create \
 
 Pro sady škálování použijte stejný `--ephemeral-os-disk true` parametr pro [AZ-VMSS-Create](/cli/azure/vmss#az-vmss-create) a nastavte `--os-disk-caching` parametr na `ReadOnly` .
 
-## <a name="portal"></a>Portál   
+## <a name="portal"></a>Portál
 
 V Azure Portal můžete při nasazení virtuálního počítače použít dočasné disky otevřením části **Upřesnit** na kartě **disky** . Pro možnost **použít dočasný disk s operačním systémem** vyberte **Ano**.
 
@@ -119,7 +120,7 @@ Proces vytvoření sady škálování, která používá dočasný disk s opera�
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 
@@ -243,6 +244,11 @@ Odpověď: dočasné disky nepodporují:
 - Azure Backup
 - Azure Site Recovery  
 - Prohození disku s operačním systémem 
+
+> [!NOTE]
+> 
+> Dočasný disk nebude přístupný prostřednictvím portálu. Při přístupu k dočasnému disku, který se očekává, se zobrazí chyba "prostředek nebyl nalezen" nebo "404".
+> 
  
 ## <a name="next-steps"></a>Další kroky
 Virtuální počítač s dočasným diskem s operačním systémem můžete vytvořit pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/vm#az-vm-create).

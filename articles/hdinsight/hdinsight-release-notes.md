@@ -1,19 +1,16 @@
 ---
 title: Poznámky k verzi pro Azure HDInsight
 description: Nejnovější poznámky k verzi pro Azure HDInsight. Získejte tipy pro vývoj a podrobnosti pro Hadoop, Spark, R Server, podregistr a další.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2020
-ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 02/08/2021
+ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036585"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699347"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -23,52 +20,52 @@ Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných*
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
-## <a name="release-date-08092020"></a>Datum vydání: 08/09/2020
+Pokud se chcete přihlásit k odběru poznámky k verzi, Sledujte verze v [tomto úložišti GitHub](https://github.com/hdinsight/release-notes/releases).
 
-Tato verze se vztahuje jenom na HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+## <a name="release-date-02052021"></a>Datum vydání: 02/05/2021
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
 
 ## <a name="new-features"></a>Nové funkce
-### <a name="support-for-sparkcruise"></a>Podpora pro SparkCruise
-SparkCruise je systém automatického využití výpočtů pro Spark. Vybere běžné dílčí výrazy, které se vyhodnotit na základě úlohy minulého dotazu. SparkCruise materializuje tyto dílčí výrazy jako součást zpracování dotazů a opakované použití výpočtu se automaticky aplikují na pozadí. Můžete využívat výhod SparkCruise bez jakýchkoli úprav kódu Sparku.
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>Podpora zobrazení podregistru pro HDInsight 4,0
-Zobrazení podregistru Apache Ambari je navržené tak, aby vám usnadnilo vytváření, optimalizaci a spouštění dotazů na podregistr z webového prohlížeče. Zobrazení podregistru se nativně podporuje pro clustery HDInsight 4,0 od této verze. Neplatí pro existující clustery. K získání integrovaného zobrazení podregistru budete potřebovat vyřadit a znovu vytvořit cluster.
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>Podpora zobrazení tez pro HDInsight 4,0
-Zobrazení Apache Tez slouží ke sledování a ladění provádění úlohy tez podregistru. Zobrazení tez se nativně podporuje pro HDInsight 4,0 od této verze. Neplatí pro existující clustery. Pokud chcete získat integrované zobrazení tez, musíte cluster vyřadit a znovu vytvořit.
+### <a name="dav4-series-support"></a>Podpora řady Dav4-Series
+HDInsight přidal v této verzi podporu řady Dav4-Series. Další informace o [Dav4-Series najdete tady](/azure/virtual-machines/dav4-dasv4-series).
+
+### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
+Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Kafka REST proxy je od této verze všeobecně k dispozici. Další informace o [proxy Kafka REST najdete tady](/azure/hdinsight/kafka/rest-proxy).
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Služba se postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
 
 ## <a name="deprecation"></a>Vyřazení
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Ukončení podpory Sparku 2.1 a 2.2 v clusteru HDInsight 3.6 Spark
-Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark pomocí Sparku 2,1 a 2,2 ve službě HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2,3 ve službě HDInsight 3,6 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Ukončení podpory Sparku 2.3 v clusteru HDInsight 4.0 Spark
-Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark se Sparkem 2,3 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2.4 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Ukončení podpory Kafka 1.1 v clusteru HDInsight 4.0 Kafka
-Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Kafka s Kafka 1,1 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Kafka 2.1 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
+Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
 
 ## <a name="behavior-changes"></a>Změny chování
-### <a name="ambari-stack-version-change"></a>Změna verze zásobníku Ambari
-Z této verze se verze Ambari změnila ze 2. x. x. x na 4,1. K získání verze Ambari z uživatelského rozhraní Ambari se dá získat >.
+### <a name="default-cluster-vm-size-changes-to-ev3-series"></a>Výchozí Změna velikosti virtuálního počítače clusteru na Ev3-Series 
+Výchozí velikosti virtuálních počítačů clusteru budou změněny z řady D-Series na Ev3-Series. Tato změna se vztahuje na hlavní uzly a pracovní uzly. Aby se této změně neovlivnila Vaše testované pracovní postupy, zadejte velikosti virtuálních počítačů, které chcete použít v šabloně ARM.
+
+### <a name="network-interface-resource-not-visible-for-clusters-running-on-azure-virtual-machine-scale-sets"></a>Prostředek síťového rozhraní není viditelný pro clustery běžící na Azure Virtual Machine Scale Sets.
+HDInsight se postupně migruje na Azure Virtual Machine Scale Sets. Pro clustery, které používají službu Azure Virtual Machine Scale Sets, už nejsou síťová rozhraní pro virtuální počítače viditelná pro zákazníky.
+
+
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Průlomová změna pro .NET pro Apache Spark 1.0.0
+S nejnovější verzí zavádí HDInsight první oficiální verzi v 1.0.0 knihovny [.NET for Apache Spark](https://github.com/dotnet/spark) . Poskytuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x společně s hostitelem [dalších funkcí](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). U této hlavní verze dojde k zásadním změnám. Další informace o krocích potřebných k aktualizaci kódu a kanálů najdete [v příručce k migraci rozhraní .NET pro Apache Spark](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [v příručce k rozhraní .NET pro Apache Spark v 1.0 v Azure HDInsight](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
-Žádné nadcházející nepotřebné změny, ke kterým byste měli věnovat pozornost.
+V nadcházejících verzích dojde k následujícím změnám.
+
+### <a name="default-cluster-version-will-be-changed-to-40"></a>Výchozí verze clusteru se změní na 4,0.
+Od února 2021 se výchozí verze clusteru HDInsight změní z 3,6 na 4,0. Další informace o dostupných verzích najdete v tématu [dostupné verze](./hdinsight-component-versioning.md). Přečtěte si další informace o tom, co je v [HDInsight 4,0](./hdinsight-version-release.md)novinkou.
+
+### <a name="os-version-upgrade"></a>Upgrade verze operačního systému
+HDInsight upgraduje verzi operačního systému z Ubuntu 16,04 na 18,04. Upgrade se dokončí do dubna 2021.
+
+### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>Podpora HDInsight 3,6 na konci 30 2021. června
+Podpora HDInsight 3,6 bude ukončena. Počínaje formulářem červeně 30 2021 nemohou zákazníci vytvářet nové clustery HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
 
 ## <a name="bug-fixes"></a>Opravy chyb
 HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
 
-Pod JIRAs jsou pro podregistr back-Transported:
-* [PODREGISTR-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [PODREGISTR-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [PODREGISTR-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [PODREGISTR-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [PODREGISTR-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [PODREGISTR-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-Pod JIRAs jsou pro adaptéry HBA back-Transported:
-* [HBA – 21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBA – 24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBA – 24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>Změna verze součásti
-Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.

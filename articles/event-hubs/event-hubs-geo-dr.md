@@ -2,19 +2,28 @@
 title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/10/2021
+ms.openlocfilehash: eb6ef1a7536b819d1bc973740a0da6fdf3d756d5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320542"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042364"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
-Když se nepoužívá celá oblast Azure nebo datová centra (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ), je důležité, aby zpracování dat pokračovalo v provozu v jiné oblasti nebo datacentru. V takovém případě *geografické zotavení po havárii* a *geografická replikace* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
 
-> [!NOTE]
-> Funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/).  
+Odolnost proti katastrofální důsledkym výpadků prostředků zpracování dat je požadavkem pro mnoho podniků a v některých případech i v případě potřeby i podle odvětví. 
+
+Azure Event Hubs už šíří riziko závažných chyb jednotlivých počítačů nebo dokonce kompletních stojanů napříč clustery, které v rámci datového centra přesahují více domén selhání, a implementuje transparentní mechanismy detekce selhání a převzetí služeb při selhání, takže služba bude dále fungovat v rámci zajištěných úrovní služeb a obvykle bez znatelného přerušení v případě takových selhání. Pokud byl vytvořen obor názvů Event Hubs s povolenou možností pro [zóny dostupnosti](../availability-zones/az-overview.md), je riziko výpadku dále rozdělené mezi tři fyzicky oddělená zařízení a služba má dostatek rezerv pro kapacitu, aby se okamžitě vypořádat s kompletní a závažnou ztrátou celého zařízení. 
+
+Model clusteru pro všechny aktivní služby Azure Event Hubs s podporou zóny dostupnosti poskytuje odolnost proti čárkám, které nestačí k selhání hardwaru, i i k závažným ztrátám celých zařízení Datacenter. Pořád se může stát, že v případě vysokého fyzického zničení dojde k závažné situaci, že i tyto míry nemůžou dostatečně bránit. 
+
+Event Hubs funkce geografického zotavení po havárii je navržená tak, aby se usnadnilo zotavení po havárii této velikosti, aby nedošlo k selhání oblasti Azure pro zajištění dobrého a nemusíte měnit konfigurace aplikace. Opuštění oblasti Azure obvykle zahrnuje několik služeb a tato funkce primárně směřuje k tomu, že pomáhá zachovat integritu konfigurace složených aplikací.  
+
+Funkce obnovení Geo-Disaster zajišťuje, aby byla celá konfigurace oboru názvů (Event Hubs, skupiny uživatelů a nastavení) průběžně replikována z primárního oboru názvů do sekundárního oboru názvů, pokud je spárována, a umožňuje kdykoli spustit pouze jednou převzetí služeb při selhání z primární na sekundární. Přesunutí převzetí služeb při selhání znovu nasměruje zvolený název aliasu oboru názvů na sekundární obor názvů a potom přeruší párování. Převzetí služeb při selhání je skoro okamžité po zahájení. 
+
+> [!IMPORTANT]
+> Tato funkce umožňuje okamžitou kontinuitu operací se stejnou konfigurací, ale **nereplikuje data události**. Pokud havárie nezpůsobí ztrátu všech zón, data události, která se zachovají v primárním centru událostí po převzetí služeb při selhání, bude možné obnovit a v případě, že dojde k obnovení přístupu, může dojít k získání historických událostí. Pokud chcete replikovat data událostí a provozovat odpovídající obory názvů v aktivních/aktivních konfiguracích a vypořádat se s výpadky a katastrofami, nevybírejte tuto sadu funkcí geografického zotavení po havárii, ale postupujte podle [pokynů pro replikaci](event-hubs-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Výpadky a havárie
 
@@ -34,21 +43,19 @@ V tomto článku se používají následující výrazy:
 
 -  *Alias*: název pro konfiguraci zotavení po havárii, kterou jste nastavili. Alias poskytuje jediný stabilní řetězec plně kvalifikovaného názvu domény (FQDN). Aplikace používají tento připojovací řetězec aliasu pro připojení k oboru názvů. 
 
--  *Primární nebo sekundární obor názvů*: obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (může se jednat o existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma je synchronizována, takže obě můžou bezproblémově přijímat zprávy bez nutnosti změny kódu aplikace nebo připojovacího řetězce. Chcete-li zajistit, že pouze aktivní obor názvů přijímá zprávy, je nutné použít alias. 
-
+-  *Primární nebo sekundární obor názvů*: obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (může se jednat o existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma je synchronizována, takže obě můžou bezproblémově přijímat zprávy bez nutnosti změny kódu aplikace nebo připojovacího řetězce. Chcete-li zajistit, že pouze aktivní obor názvů přijímá zprávy, je nutné použít alias.
 -  *Metadata*: entity, jako jsou centra událostí a skupiny uživatelů; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Automaticky se replikují jenom entity a jejich nastavení. Zprávy a události nejsou replikovány. 
-
 -  *Převzetí služeb při selhání*: proces aktivace sekundárního oboru názvů.
 
 ## <a name="supported-namespace-pairs"></a>Podporované páry oboru názvů
 Podporovány jsou následující kombinace primárních a sekundárních oborů názvů:  
 
-| Primární obor názvů | Sekundární obor názvů | Podporuje se | 
+| Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Vyhrazená | Yes | 
-| Vyhrazená | Vyhrazená | Yes | 
-| Vyhrazená | Standard | No | 
+| Standard | Standard | Ano | 
+| Standard | Vyhrazená | Ano | 
+| Vyhrazená | Vyhrazená | Ano | 
+| Vyhrazená | Standard | Ne | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -61,11 +68,36 @@ Následující část obsahuje přehled procesu převzetí služeb při selhán�
 
 ### <a name="setup"></a>Nastavení
 
-Nejprve vytvoříte nebo použijete existující primární obor názvů a nový sekundární obor názvů a potom oba dvojici. Toto párování vám poskytne alias, který můžete použít k připojení. Protože používáte alias, nemusíte měnit připojovací řetězce. Do párování převzetí služeb při selhání se dají přidat jenom nové obory názvů. Nakonec byste měli přidat nějaké monitorování, abyste zjistili, jestli je převzetí služeb při selhání nezbytné. Ve většině případů je služba jednou ze velkých ekosystémů, takže automatické převzetí služeb při selhání je možné provést jenom v rámci synchronizace se zbývajícím subsystémem nebo infrastrukturou.
+Nejprve vytvoříte nebo použijete existující primární obor názvů a nový sekundární obor názvů a potom oba dvojici. Toto párování vám poskytne alias, který můžete použít k připojení. Protože používáte alias, nemusíte měnit připojovací řetězce. Do párování převzetí služeb při selhání se dají přidat jenom nové obory názvů. 
+
+1. Vytvořte primární obor názvů.
+1. Vytvořte sekundární obor názvů v jiné oblasti. Tento krok je volitelný. Sekundární obor názvů můžete vytvořit při vytváření párování v dalším kroku. 
+1. V Azure Portal přejděte k primárnímu oboru názvů.
+1. V nabídce vlevo vyberte **geografické obnovení** a na panelu nástrojů vyberte **Zahájit párování** . 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Iniciace párování z primárního oboru názvů":::    
+1. Na stránce **Zahájit párování** proveďte tyto kroky:
+    1. Vyberte existující sekundární obor názvů nebo ho vytvořte v jiné oblasti. V tomto příkladu je vybrán existující obor názvů.  
+    1. Jako **alias** zadejte alias pro párování geografického Dr. 
+    1. Potom vyberte **Vytvořit**. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Vybrat sekundární obor názvů":::        
+1. Měla by se zobrazit stránka **alias geografického Dr** . Můžete také přejít na tuto stránku z primárního oboru názvů tak, že v nabídce vlevo vyberete **geografické obnovení** .
+
+    :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Stránka alias geografického DR":::    
+1. Na stránce **alias geografického dru** vyberte v levé nabídce **zásady sdíleného přístupu** pro přístup k primárnímu připojovacímu řetězci pro daný alias. Místo přímého použití připojovacího řetězce k primárnímu nebo sekundárnímu oboru názvů použijte tento připojovací řetězec. 
+1. Na této stránce **přehledu** můžete provádět následující akce: 
+    1. Přerušit párování mezi primárními a sekundárními obory názvů. Na panelu nástrojů vyberte **přerušení párování** . 
+    1. Ruční převzetí služeb při selhání sekundárnímu oboru názvů. Na panelu nástrojů vyberte **převzetí služeb při selhání** . 
+    
+        > [!WARNING]
+        > Při selhání dojde k aktivaci sekundárního oboru názvů a odebrání primárního oboru názvů z párování obnovení Geo-Disaster. Vytvořte jiný obor názvů, abyste měli novou dvojici geografického zotavení po havárii. 
+
+Nakonec byste měli přidat nějaké monitorování, abyste zjistili, jestli je převzetí služeb při selhání nezbytné. Ve většině případů je služba jednou ze velkých ekosystémů, takže automatické převzetí služeb při selhání je možné provést jenom v rámci synchronizace se zbývajícím subsystémem nebo infrastrukturou.
 
 ### <a name="example"></a>Příklad
 
-V jednom z těchto scénářů zvažte řešení prodejního bodu (POS), které vysílá buď zprávy, nebo události. Event Hubs tyto události předá do některého řešení mapování nebo přeformátování, které pak předává namapovaná data do jiného systému pro další zpracování. V tomto okamžiku můžou být všechny tyto systémy hostované ve stejné oblasti Azure. Rozhodnutí o tom, kdy a jakou část služby převezme služby při selhání, závisí na toku dat ve vaší infrastruktuře. 
+V jednom z těchto scénářů zvažte řešení prodejního bodu (POS), které vysílá buď zprávy, nebo události. Event Hubs tyto události předá do některého řešení mapování nebo přeformátování, které pak předává namapovaná data do jiného systému pro další zpracování. V tomto okamžiku můžou být všechny tyto systémy hostované ve stejné oblasti Azure. Rozhodnutí o tom, kdy a jakou část převezme služby při selhání, závisí na toku dat ve vaší infrastruktuře. 
 
 Převzetí služeb při selhání můžete automatizovat buď s monitorovacími systémy, nebo s vlastními řešeními monitorování. Tato automatizace ale má dodatečné plánování a práci, což není v rozsahu tohoto článku.
 
@@ -94,19 +126,19 @@ Pokud jste udělali chybu; například jste spároval nesprávné oblasti při p
 - Postup potřebný ke spuštění ukázkového kódu. 
 - Odeslat a přijmout z aktuálního primárního oboru názvů 
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
-Vezměte v úvahu následující skutečnosti:
+Vezměte na vědomí následující skutečnosti:
 
 1. V rámci návrhu Event Hubs geograficky zotavení po havárii nereplikují data, a proto nemůžete znovu použít starou hodnotu posunu primárního centra událostí v sekundárním centru událostí. K restartování přijímače událostí doporučujeme použít jednu z následujících metod:
 
-- *EventPosition. FromStart ()* – Pokud chcete číst všechna data v sekundárním centru událostí.
-- *EventPosition. FromEnd ()* – Pokud chcete číst všechna nová data z doby připojení k sekundárnímu centru událostí.
-- *EventPosition. FromEnqueuedTime (DateTime)* – Pokud chcete číst všechna data přijatá v sekundárním centru událostí počínaje od daného data a času.
+   - *EventPosition. FromStart ()* – Pokud chcete číst všechna data v sekundárním centru událostí.
+   - *EventPosition. FromEnd ()* – Pokud chcete číst všechna nová data z doby připojení k sekundárnímu centru událostí.
+   - *EventPosition. FromEnqueuedTime (DateTime)* – Pokud chcete číst všechna data přijatá v sekundárním centru událostí počínaje od daného data a času.
 
 2. Při plánování převzetí služeb při selhání byste měli také zvážit časový faktor. Pokud například ztratíte připojení po dobu delší než 15 až 20 minut, můžete se rozhodnout zahájit převzetí služeb při selhání. 
  
-3. Skutečnost, že se žádná data nereplikují, znamená, že aktuálně aktivní relace nejsou replikované. Kromě toho nemusí fungovat duplicita duplicit a naplánované zprávy. Budou fungovat nové relace, naplánované zprávy a nové duplicity. 
+3. Skutečnost, že nejsou replikována žádná data znamená, že aktuální aktivní relace nebudou replikovány. Kromě toho nemusí fungovat duplicita duplicit a naplánované zprávy. Budou fungovat nové relace, naplánované zprávy a nové duplicity. 
 
 4. Převzetí služeb při selhání přes složitou distribuovanou infrastrukturu by mělo být alespoň jednou [vyzkoušeno](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) . 
 
@@ -121,10 +153,12 @@ SKU Event Hubs standard podporuje [zóny dostupnosti](../availability-zones/az-o
 
 Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure Portal. Event Hubs nepodporuje migraci stávajících oborů názvů. Po povolení v oboru názvů nemůžete zakázat redundanci zóny.
 
+Když použijete zóny dostupnosti, metadata i data (události) se replikují napříč datovými centry v zóně dostupnosti. 
+
 ![3][]
 
-## <a name="private-endpoints"></a>Soukromé koncové body
-V této části najdete další požadavky při použití geografického zotavení po havárii s obory názvů, které používají privátní koncové body. Další informace o používání privátních koncových bodů s Event Hubs obecně najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md).
+## <a name="private-endpoints"></a>Privátní koncové body
+V této části najdete další informace o použití geografického zotavení po havárii s obory názvů, které používají privátní koncové body. Další informace o používání privátních koncových bodů s Event Hubs obecně najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md).
 
 ### <a name="new-pairings"></a>Nové párování
 Pokud se pokusíte vytvořit párování mezi primárním oborem názvů s privátním koncovým bodem a sekundárním oborem názvů bez privátního koncového bodu, párování selže. Párování bude úspěšné pouze v případě, že oba primární i sekundární obory názvů mají privátní koncové body. Doporučujeme použít stejné konfigurace na primárních a sekundárních oborech názvů a na virtuálních sítích, ve kterých jsou vytvořeny privátní koncové body.  
@@ -167,10 +201,10 @@ Výhodou tohoto přístupu je, že k převzetí služeb při selhání může do
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 * [Ukázkové aplikace, které používají službu Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

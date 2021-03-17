@@ -3,22 +3,24 @@ title: Vytvoření a šifrování virtuálního počítače s Windows s využit�
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell vytvořit a zašifrovat virtuální počítač s Windows.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 6f564a9a4f13136bbe7e28a3600ca71892c82439
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4aed2ce182e535ebb60eae0007353c9c7bddef78
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82081587"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555257"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows v Azure pomocí PowerShellu
 
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell vytvořit virtuální počítač s Windows, vytvořit Key Vault pro ukládání šifrovacích klíčů a zašifrovat virtuální počítač. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
@@ -56,7 +58,7 @@ New-AzKeyvault -name MyKV -ResourceGroupName myResourceGroup -Location EastUS -E
 
 Zašifrujte virtuální počítač pomocí [set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
 
-Příkaz set-AzVmDiskEncryptionExtension vyžaduje některé hodnoty z vašeho objektu Key Vault. Tyto hodnoty můžete získat předáním jedinečného názvu trezoru klíčů pro [Get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault).
+Set-AzVmDiskEncryptionExtension vyžaduje některé hodnoty z vašeho objektu Key Vault. Tyto hodnoty můžete získat předáním jedinečného názvu trezoru klíčů pro [Get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault).
 
 ```powershell
 $KeyVault = Get-AzKeyVault -VaultName MyKV -ResourceGroupName MyResourceGroup

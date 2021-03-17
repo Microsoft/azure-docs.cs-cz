@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Wandera | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Wandera.
+title: 'Kurz: Azure Active Directory integrace s Wandera PAPRSK admin | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Wanderaem správce PAPRSKů.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,70 +9,71 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4af2fa415c22abe5cd8ac98d510feb44abab0e97
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523962"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181386"
 ---
-# <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>Kurz: integrace Wandera s Azure Active Directory
+# <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Kurz: integrace správce Wandera RADARu pomocí Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Wandera s Azure Active Directory (Azure AD). Když integrujete Wandera s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat správce Wandera RADAR pomocí Azure Active Directory (Azure AD). Když integrujete Wandera PAPRSKový správce s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k Wandera.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili k Wandera svým účtům Azure AD.
+* Řízení ve službě Azure AD, která má přístup ke Správci Wandera PAPRSKů.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Wandera PAPRSKového správce s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Wandera odběr s povoleným jednotným přihlašováním (SSO).
+* Předplatné Wandera pro jednotné přihlašování (SSO) s podporou jednotného přihlašování (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Wandera podporuje jednotné přihlašování **IDP** .
+* Správce Wandera PAPRSKů podporuje **IDP** iniciované jednotné přihlašování.
+* Po konfiguraci správce Wandera pro PAPRSKy můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-wandera-from-the-gallery"></a>Přidání Wandera z Galerie
+## <a name="adding-wandera-radar-admin-from-the-gallery"></a>Přidání správce PAPRSKů Wandera z Galerie
 
-Pokud chcete nakonfigurovat integraci Wandera do služby Azure AD, musíte přidat Wandera z Galerie do svého seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci správce Wandera pro RADAR do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Wandera z galerie.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Wandera** .
-1. Na panelu výsledků vyberte **Wandera** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Wandera paprskový správce** .
+1. Vyberte **WANDERA paprskový správce** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Wandera pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wandera.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Wandera pro správce PAPRSKů pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wandera pro správu PAPRSKů.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wandera, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wandera pro správce PAPRSKů, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte WANDERA SSO](#configure-wandera-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-5. **[Vytvořte Wandera Test User](#create-wandera-test-user)** -to, abyste měli protějšek B. Simon v Wandera, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+   * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+   * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte jednotné přihlašování Wandera pro správu](#configure-wandera-radar-admin-sso)** a konfiguraci nastavení jednoho Sign-On na straně aplikace.
+   * **[Vytvořit testovacího uživatele Wandera s paprskovým správcem](#create-wandera-radar-admin-test-user)** – musí mít protějšek B. Simon ve Správci Wandera paprsků, který je propojený s reprezentací uživatele Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wandera** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikací pro **správu paprsků Wandera** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -81,39 +82,69 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Wandera](https://www.wandera.com/about-wandera/contact/#supportsection) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory Wandera pro správce s paprsky](https://www.wandera.com/about-wandera/contact/#supportsection) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **podpisový certifikát SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **podpisový certifikát SAML** a upravte nastavení.
 
     ![Možnost podepisování](common/signing-option.png)
 
     1. Vyberte **možnost podepisování** jako **podepsat odpověď SAML a kontrolní výraz**.
 
-    1. Jako **SHA-256**vyberte **podpisový algoritmus** .
+    1. Jako **SHA-256** vyberte **podpisový algoritmus** .
 
-1. V části **Nastavení Wandera** zkopírujte na základě vašeho požadavku příslušné adresy URL.
+1. V části **Nastavení WANDERA paprskového správce** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-wandera-sso"></a>Konfigurace jednotného přihlašování Wandera
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-1. Pokud chcete automatizovat konfiguraci v rámci Wandera, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Wandera pro správce PAPRSKů.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **WANDERA paprskový správce**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-wandera-radar-admin-sso"></a>Nakonfigurovat jednotné přihlašování Wandera pro správce PAPRSKů
+
+1. Pokud chcete automatizovat konfiguraci v rámci správce Wandera pro PAPRSKy, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
     ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. Po přidání rozšíření do prohlížeče klikněte na **Wandera nastavení** a nasměrujte vás na aplikaci Wandera. Odtud zadejte přihlašovací údaje správce, které se přihlásí k Wandera. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-4.
+2. Po přidání rozšíření do prohlížeče klikněte na **Nastavení WANDERA paprskový správce** vás přesměruje do aplikace Wandera pro správu paprsků. Odtud zadejte přihlašovací údaje správce, abyste se mohli přihlásit k Wandera PAPRSKového správce. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-4.
 
     ![Konfigurace instalace](common/setup-sso.png)
 
-3. Pokud chcete nastavit Wandera ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Wandera společnosti jako správce a proveďte následující kroky:
+3. Pokud chcete nastavit Wandera PAPRSKového správce ručně, otevřete nové okno webového prohlížeče a přihlaste se ke svému webu Wandera pro správce PAPRSKů jako správce a proveďte následující kroky:
 
 4. V pravém horním rohu stránky klikněte na **Nastavení**  >  **Správa**  >  **jednotného přihlašování** a potom zaškrtněte možnost **Povolit SAML 2,0** k provedení následujících kroků.
 
-    ![Konfigurace Wandera](./media/wandera-tutorial/config01.png)
+    ![Konfigurace Správce Wandera PAPRSKů](./media/wandera-tutorial/config01.png)
 
     a. Klikněte **nebo ručně zadejte požadovaná pole**.
 
@@ -123,51 +154,20 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     d. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-wandera-radar-admin-test-user"></a>Vytvořit testovacího uživatele pro správce Wandera PAPRSKů
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte uživatele s názvem B. Simon ve Správci Wandera pro PAPRSKy. Pokud chcete přidat uživatele do platformy pro správu Wandera s paprsky, pracujte s [týmem podpory pro správce](https://www.wandera.com/about-wandera/contact/#supportsection) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
-1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Wandera.
-
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **Wandera**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
-### <a name="create-wandera-test-user"></a>Vytvořit testovacího uživatele Wandera
-
-V této části vytvoříte uživatele s názvem B. Simon v Wandera. Pokud chcete přidat uživatele na platformě Wandera, pracujte s [týmem podpory Wandera](https://www.wandera.com/about-wandera/contact/#supportsection) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
-
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Wandera, měli byste se automaticky přihlásit k Wandera, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Správce Wandera PAPRSKů na přístupovém panelu byste se měli automaticky přihlášeni ke Správci Wandera PAPRSKů, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

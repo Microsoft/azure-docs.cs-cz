@@ -1,17 +1,16 @@
 ---
 title: Monitorování Center Surface pomocí Azure Monitor | Microsoft Docs
 description: Pomocí Surface Hub řešení můžete sledovat stav rozbočovačů Surface a pochopit, jak se používají.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d81af064b18ca8113599b460f2b9524c7288439
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711072"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorujte rozbočovače Surface Azure Monitor, abyste mohli sledovat jejich stav.
 
@@ -26,7 +25,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace. 
 
 * Úroveň [předplatného Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) , která bude podporovat počet zařízení, která chcete monitorovat. Ceny Log Analytics se liší v závislosti na tom, kolik zařízení je zaregistrované a kolik dat zpracovává. Tento postup je potřeba vzít v úvahu při plánování nasazení Surface Hub.
 
-V dalším kroku přidáte existující Log Analytics pracovní prostor nebo vytvoříte nový. Podrobné pokyny pro použití obou metod najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../learn/quick-create-workspace.md). Po nakonfigurování Log Analytics pracovního prostoru existují dva způsoby, jak zaregistrovat Surface Hub zařízení:
+V dalším kroku přidáte existující Log Analytics pracovní prostor nebo vytvoříte nový. Podrobné pokyny pro použití obou metod najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../logs/quick-create-workspace.md). Po nakonfigurování Log Analytics pracovního prostoru existují dva způsoby, jak zaregistrovat Surface Hub zařízení:
 
 * Automaticky prostřednictvím Intune
 * Ručně prostřednictvím **Nastavení** na zařízení Surface Hub.
@@ -57,10 +56,10 @@ Pokud ke správě svého prostředí nepoužíváte Intune, můžete zařízení
 
 1. Z Surface Hub otevřete **Nastavení**.
 2. Po zobrazení výzvy zadejte přihlašovací údaje Správce zařízení.
-3. Klikněte na **Toto zařízení**a v části **monitorování**klikněte na **Konfigurovat Log Analytics nastavení**.
+3. Klikněte na **Toto zařízení** a v části **monitorování** klikněte na **Konfigurovat Log Analytics nastavení**.
 4. Vyberte **Povolit monitorování**.
 5. V dialogovém okně nastavení Log Analytics zadejte **ID pracovního prostoru** Log Analytics a zadejte **klíč pracovního prostoru**.  
-   ![možnost](./media/surface-hubs/settings.png)
+   ![Snímek obrazovky zobrazuje nastavení sady Microsoft Operations Manager Suite s vybraným možnostmi Povolit monitorování a textová pole pro ID pracovního prostoru a klíč pracovního prostoru.](./media/surface-hubs/settings.png)
 6. Kliknutím na tlačítko **OK** dokončete konfiguraci.
 
 Zobrazí se potvrzení o tom, jestli se konfigurace na zařízení úspěšně nastavila. Pokud k tomu došlo, zobrazí se zpráva oznamující, že se agent úspěšně připojil k Azure Monitor. Zařízení pak začne odesílat data do Azure Monitor, kde je můžete zobrazit a pracovat s nimi.
@@ -74,8 +73,8 @@ Když kliknete na dlaždici Surface Hub, zobrazí se stav vašeho zařízení.
 
    ![Řídicí panel Surface Hub](./media/surface-hubs/surface-hub-dashboard.png)
 
-Můžete vytvářet [výstrahy](../platform/alerts-overview.md) na základě existujících nebo vlastních prohledávání protokolu. Pomocí dat Azure Monitor shromažďuje z vašich Surface Hub, můžete vyhledat problémy a upozornit na podmínky, které pro svoje zařízení definujete.
+Můžete vytvářet [výstrahy](../alerts/alerts-overview.md) na základě existujících nebo vlastních prohledávání protokolu. Pomocí dat Azure Monitor shromažďuje z vašich Surface Hub, můžete vyhledat problémy a upozornit na podmínky, které pro svoje zařízení definujete.
 
 ## <a name="next-steps"></a>Další kroky
-* Použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) k zobrazení podrobných dat Surface Hub.
-* Můžete vytvářet [výstrahy](../platform/alerts-overview.md) , které vás upozorní, když dojde k problémům s rozbočovači Surface Hub.
+* Použijte [dotazy protokolu v Azure monitor](../logs/log-query-overview.md) k zobrazení podrobných dat Surface Hub.
+* Můžete vytvářet [výstrahy](../alerts/alerts-overview.md) , které vás upozorní, když dojde k problémům s rozbočovači Surface Hub.

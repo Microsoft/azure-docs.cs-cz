@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2987cd1ff8c678f7079e13e8b9bc657817c066f1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737491"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531368"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Správa připojení privátního koncového bodu
 Privátní propojení Azure pracuje na modelu toku volání schválení, kde příjemce služby privátního propojení může požádat o připojení k poskytovateli služeb za účelem využívání služby. Poskytovatel služeb se pak může rozhodnout, jestli chcete, aby se příjemce mohl připojit nebo ne. Privátní propojení Azure umožňuje poskytovatelům služeb spravovat připojení privátního koncového bodu na svých prostředcích. Tento článek poskytuje informace o tom, jak spravovat připojení privátního koncového bodu.
@@ -20,15 +20,15 @@ Privátní propojení Azure pracuje na modelu toku volání schválení, kde př
 ![Správa privátních koncových bodů](media/manage-private-endpoint/manage-private-endpoint.png)
 
 Existují dvě metody schvalování připojení, ze kterých může příjemce služby privátního propojení vybírat:
-- **Automaticky**: Pokud má příjemce služby oprávnění RBAC u prostředku poskytovatele služeb, může vybrat metodu automatického schvalování. V takovém případě, když požadavek dosáhne prostředku poskytovatele služeb, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno. 
-- **Ruční**: v opačném případě, pokud nemá příjemce služby oprávnění RBAC u prostředku poskytovatele služeb, může příjemce zvolit metodu ručního schválení. V takovém případě se žádost o připojení zobrazí v části prostředky služby jako **nevyřízená**. Aby bylo možné navázat spojení, musí poskytovatel služeb požadavek ručně schválit. V manuálních případech může příjemce služby také určit zprávu s žádostí o poskytnutí kontextu poskytovateli služeb. Poskytovatel služeb nabízí následující možnosti, ze kterých si můžete vybrat pro všechna připojení privátních koncových bodů: **schválení**, **zamítnutí**, **Odebrání**.
+- **Automaticky**: Pokud má uživatel služby oprávnění Azure RBAC u prostředku poskytovatele služeb, může příjemce zvolit metodu automatického schvalování. V takovém případě, když požadavek dosáhne prostředku poskytovatele služeb, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno. 
+- **Ruční**: v opačném případě, pokud nemá uživatel služby oprávnění Azure RBAC u prostředku poskytovatele služeb, může příjemce zvolit metodu ručního schválení. V takovém případě se žádost o připojení zobrazí v části prostředky služby jako **nevyřízená**. Aby bylo možné navázat spojení, musí poskytovatel služeb požadavek ručně schválit. V manuálních případech může příjemce služby také určit zprávu s žádostí o poskytnutí kontextu poskytovateli služeb. Poskytovatel služeb nabízí následující možnosti, ze kterých si můžete vybrat pro všechna připojení privátních koncových bodů: **schválení**, **zamítnutí**, **Odebrání**.
 
 V níže uvedené tabulce jsou uvedeny různé akce poskytovatele služeb a výsledné stavy připojení pro soukromé koncové body.  Poskytovatel služeb může také později změnit stav připojení privátního koncového bodu bez zásahu uživatele. Akce aktualizuje stav koncového bodu na straně spotřebitele. 
 
 
 |Akce poskytovatele služeb   |Stav privátního koncového bodu příjemce služby   |Description   |
 |---------|---------|---------|
-|Žádná    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
+|Žádná    |    Čekající     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
 |Schválení    |  Schválené       |  Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití.     |
 |Odmítnout     | Zamítnuto        | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.        |
 |Odebrat    |  Propojení       | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění.        |
@@ -38,7 +38,7 @@ V níže uvedené tabulce jsou uvedeny různé akce poskytovatele služeb a výs
 Portál je upřednostňovanou metodou správy připojení privátních koncových bodů v prostředcích Azure PaaS. V současné době neposkytujeme podporu PowerShellu/CLI pro správu připojení k prostředkům Azure PaaS.
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 2. Přejděte do centra privátních odkazů.
-3. V části **prostředky**vyberte typ prostředku, pro který chcete spravovat připojení privátního koncového bodu.
+3. V části **prostředky** vyberte typ prostředku, pro který chcete spravovat připojení privátního koncového bodu.
 4. Pro každý typ prostředku můžete zobrazit počet připojení privátního koncového bodu, která jsou k němu přidružená. Prostředky můžete podle potřeby filtrovat.
 5. Vyberte připojení privátního koncového bodu.  V seznamu připojení vyberte připojení, které chcete spravovat. 
 6. Stav připojení můžete změnit výběrem z možností v horní části.

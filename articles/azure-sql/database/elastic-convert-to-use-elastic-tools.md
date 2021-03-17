@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 42a2d571c04d08b5ec868bbd06cd521bfcda24bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050202"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787138"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,7 +72,7 @@ V případě modelu s jedním nájemcem vytvořte **mapování seznamu mapován�
 
 ![Mapování seznamu][1]
 
-Model víceklientské aplikace přiřadí několik tenantů jednotlivým databázím (a můžete distribuovat skupiny klientů do více databází). Tento model použijte, pokud očekáváte, že každý tenant bude mít malé datové potřeby. V tomto modelu přiřaďte k databázi rozsah klientů pomocí **mapování rozsahu**.
+Model víceklientské aplikace přiřadí několik tenantů jednotlivým databázím (a můžete distribuovat skupiny klientů do více databází). Tento model použijte, pokud očekáváte, že každý tenant bude mít malé datové potřeby. V tomto modelu přiřaďte k databázi rozsah klientů pomocí **mapování rozsahu** .
 
 ![Mapování rozsahu][2]
 
@@ -138,7 +138,7 @@ Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Krok 4 – možnost 3: mapování dat pro více tenantů v jednotlivých databázích
 
-Pro každého tenanta spusťte rutinu Add-ListMapping (možnost 1).
+Pro každého tenanta spusťte Add-ListMapping (možnost 1).
 
 ## <a name="checking-the-mappings"></a>Kontrola mapování
 
@@ -156,19 +156,19 @@ Po dokončení instalace můžete začít používat klientskou knihovnu Elastic
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte skripty PowerShellu z [skriptů nástroje Azure SQL Database-elastic Database](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Získejte skripty PowerShellu z [skriptů Azure SQL Database-Elastic Database Tools](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 Nástroje jsou také na GitHubu: [Azure nebo elastické databáze-Tools](https://github.com/Azure/elastic-db-tools).
 
 Pomocí nástroje pro dělení k přesunu dat do nebo z modelu více tenantů na jeden model tenanta. Viz [Nástroj rozdělit sloučení](elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](saas-tenancy-app-design-patterns.md).
 
 ## <a name="questions-and-feature-requests"></a>Dotazy a žádosti o funkce
 
-V případě otázek použijte [stránku s otázkou Microsoft Q&SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) a pro žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
+V případě otázek použijte [stránku s otázkou Microsoft Q&SQL Database](/answers/topics/azure-sql-database.html) a pro žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

@@ -1,17 +1,17 @@
 ---
 title: Geografická a geoprostorové agregace pomocí Azure Stream Analytics
 description: Tento článek popisuje, jak používat Azure Stream Analytics pro geografickou a geoprostorové agregace.
-author: mamccrea
-ms.author: mamccrea
 ms.service: stream-analytics
+author: enkrumah
+ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2576e147f0cda86bc4d7143ccc5b5985182f271e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045259"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436341"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Scénáře použití geografického a geoprostorového agregace pomocí Azure Stream Analytics
 
@@ -70,7 +70,7 @@ Zařízení "C" se nachází uvnitř sestavování ID 2, které není povoleno p
 
 ### <a name="site-with-multiple-allowed-devices"></a>Lokalita s několika povolenými zařízeními
 
-Pokud lokalita umožňuje více zařízení, můžete definovat pole ID zařízení `AllowedDeviceID` a uživatelsky definovanou funkci lze v `WHERE` klauzuli použít k ověření, zda ID zařízení datového proudu odpovídá jakémukoli ID zařízení v tomto seznamu. Další informace najdete v kurzu [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) pro cloudové úlohy a v kurzu pro [C# UDF](stream-analytics-edge-csharp-udf.md) pro úlohy Edge.
+Pokud lokalita povoluje více zařízení, může být definováno pole ID zařízení `AllowedDeviceID` a v klauzuli User-Defined lze použít funkci `WHERE` k ověření, zda ID zařízení datového proudu odpovídá jakémukoli ID zařízení v tomto seznamu. Další informace najdete v kurzu [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) pro cloudové úlohy a v kurzu pro [C# UDF](stream-analytics-edge-csharp-udf.md) pro úlohy Edge.
 
 ## <a name="geospatial-aggregation"></a>Geoprostorové agregace
 
@@ -125,4 +125,4 @@ Následující obrázek ukazuje výstup dotazu na Power BI řídicí panel.
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Stream Analytics geoprostorové funkce](stream-analytics-geospatial-functions.md)
-* [Geoprostorové funkce (Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/geospatial-functions)
+* [Geoprostorové funkce (Azure Stream Analytics)](/stream-analytics-query/geospatial-functions)

@@ -6,18 +6,18 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0ff226a156721382a289af0f2a8a0f898a57bab9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833381"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667972"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
@@ -27,7 +27,7 @@ V tomto článku se seznámíte s [příručkou pro zálohování SAP HANA v Azu
 
 Různé typy virtuálních počítačů v Azure umožňují, aby byl připojený jiný počet virtuálních pevných disků. Přesné podrobnosti jsou popsány v části [velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md). Pro testy uvedené v této dokumentaci jsme použili GS5 virtuální počítač Azure, který umožňuje 64 připojených datových disků. V případě větších SAP HANA systémů už může být u souborů dat a protokolů, které jsou v kombinaci s softwarovým obložením pro optimální propustnost v/v, zavedený velký počet disků. Další podrobnosti o navrhovaných konfiguracích disků pro nasazení SAP HANA na virtuálních počítačích Azure najdete v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Tato doporučení zahrnují taky doporučení na místo na disku pro místní zálohování.
 
-Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni souboru, je zálohování na základě souborů prostřednictvím SAP HANA studia nebo prostřednictvím příkazů SAP HANA SQL. Další informace najdete v článku [SAP HANA SQL a Přehled systémových zobrazení](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
+Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni souboru, je zálohování na základě souborů prostřednictvím SAP HANA studia nebo prostřednictvím příkazů SAP HANA SQL. Další informace najdete v článku [SAP HANA SQL a Přehled systémových zobrazení](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html).
 
 ![Na tomto obrázku je znázorněno dialogové okno položky nabídky zálohování v SAP HANA studiu](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 
@@ -43,7 +43,7 @@ Jedna z nich by mohla umístit vyhrazené virtuální pevné disky pro SAP HANA 
 
 ## <a name="azure-blobxfer-utility-details"></a>Podrobnosti o nástroji Azure blobxfer
 
-K ukládání adresářů a souborů v Azure Storage může jeden použít CLI nebo PowerShell nebo vyvíjet nástroj pomocí jedné ze [sad SDK Azure](https://azure.microsoft.com/downloads/). Pro kopírování dat do služby Azure Storage je k dispozici také nástroj AzCopy připravený k použití. (viz [přenos dat pomocí nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md)).
+K ukládání adresářů a souborů v Azure Storage může jeden použít CLI nebo PowerShell nebo vyvíjet nástroj pomocí jedné ze [sad SDK Azure](https://azure.microsoft.com/downloads/). Pro kopírování dat do služby Azure Storage je k dispozici také nástroj AzCopy připravený k použití. (Další informace najdete v tématu [přenos dat pomocí nástroje AzCopy Command-Line](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Proto se blobxfer použil k kopírování souborů zálohy SAP HANA. Je to open source, který používá mnoho zákazníků v produkčních prostředích a je dostupný na [GitHubu](https://github.com/Azure/blobxfer). Tento nástroj umožňuje jedné kopírování dat přímo do úložiště objektů blob Azure nebo sdílené složky Azure. Nabízí také řadu užitečných funkcí, jako je MD5 hash nebo automatické paralelismuy při kopírování adresáře s více soubory.
 

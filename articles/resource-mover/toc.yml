@@ -1,0 +1,52 @@
+- name: Dokumentace ke službě Azure Resource Mover
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Azure Resource Mover
+      href: overview.md
+    - name: Výběr nástroje pro přesun prostředků
+      href: select-move-tool.md
+    - name: Časté dotazy
+      href: common-questions.md
+- name: Kurzy
+  items:
+    - name: Přesun virtuálních počítačů Azure do jiné oblasti
+      href: tutorial-move-region-virtual-machines.md
+    - name: Přesunutí šifrovaných virtuálních počítačů Azure do jiné oblasti
+      href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: Přesunutí prostředků mezi oblastmi pomocí PowerShellu
+      href: tutorial-move-region-powershell.md
+    - name: Přesun prostředků SQL do jiné oblasti
+      href: tutorial-move-region-sql.md
+- name: Koncepty
+  items:
+    - name: Přehled přesouvání
+      href: about-move-process.md
+    - name: Podpora – přesun virtuálních počítačů Azure napříč oblastmi
+      href: support-matrix-move-region-azure-vm.md
+    - name: Podpora – Azure SQL napříč oblastmi
+      href: support-matrix-move-region-sql.md
+- name: Návody
+  items:
+    - name: Přesun mezi oblastmi
+      items:
+        - name: Přesun virtuálních počítačů Azure do zón dostupnosti
+          href: move-region-availability-zone.md
+        - name: Přesun napříč oblastmi (ze skupiny prostředků)
+          href: move-region-within-resource-group.md
+    - name: Správa přesunů do jiné oblasti
+      items:
+        - name: Úprava nastavení cíle
+          href: modify-target-settings.md
+        - name: Odebrání prostředků z kolekce pro přesun
+          href: remove-move-resources.md
+        - name: Správa prostředků vytvořených během přesunu
+          href: manage-resources-created-move-process.md
+- name: Zdroje a prostředky
+  items:
+    - name: Migrace v architektuře přechodu na cloud
+      href: /azure/cloud-adoption-framework/migrate/
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

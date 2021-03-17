@@ -6,24 +6,24 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501649"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730502"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Přesunutí prostředků v konfiguraci řízení údržby do jiné oblasti
 
 Podle tohoto článku můžete přesunout prostředky spojené s konfigurací řízení údržby do jiné oblasti Azure. Je možné, že budete chtít přesunout konfiguraci z několika důvodů. Například pro využití nové oblasti, k nasazení funkcí nebo služeb dostupných v konkrétní oblasti, k splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na plánování kapacity.
 
-Řízení údržby s přizpůsobenými konfiguracemi údržby umožňuje řídit, jak se aktualizace platforem aplikují na virtuální počítače s [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) a [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) , a na vyhrazené hostitele Azure. Pro přesun řízení údržby mezi oblastmi je k dispozici několik scénářů:
+[Řízení údržby](maintenance-control.md)s přizpůsobenými konfiguracemi údržby umožňuje řídit, jak se aktualizace platformy aplikují na virtuální počítače a na vyhrazené hostitele Azure. Pro přesun řízení údržby mezi oblastmi je k dispozici několik scénářů:
 
 - Postup přesunutí prostředků spojených s konfigurací údržby, ale ne samotné konfigurace, najdete v tomto článku.
 - Pokud chcete přesunout konfiguraci řízení údržby, ale ne prostředky přidružené ke konfiguraci, postupujte podle [těchto pokynů](move-region-maintenance-configuration.md).
 - Pokud chcete přesunout jak konfiguraci údržby, tak i prostředky, které jsou k němu přidružené, postupujte nejdříve podle [těchto pokynů](move-region-maintenance-configuration.md). Pak postupujte podle pokynů v tomto článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete přesouvat prostředky spojené s konfigurací řízení údržby:
 
@@ -49,7 +49,7 @@ Než začnete přesouvat prostředky spojené s konfigurací řízení údržby:
     $adh | Vyhrazený název hostitele | "myHost"
     $adhParentName | Název nadřazeného prostředku | HostGroup
     
-2. Načtení konfigurací údržby pomocí příkazu PowerShellu [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) :
+2. Načtení konfigurací údržby pomocí příkazu PowerShellu [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment) :
 
     - U vyhrazených hostitelů Azure spusťte:
         ```
@@ -61,7 +61,7 @@ Než začnete přesouvat prostředky spojené s konfigurací řízení údržby:
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. Chcete-li načíst konfigurace údržby pomocí příkazu CLI [AZ Maintenance Assignment](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) :
+3. Chcete-li načíst konfigurace údržby pomocí příkazu CLI [AZ Maintenance Assignment](/cli/azure/ext/maintenance/maintenance/assignment) :
 
     - Pro vyhrazené hostitele Azure:
 

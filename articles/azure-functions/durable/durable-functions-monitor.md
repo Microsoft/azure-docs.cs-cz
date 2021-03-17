@@ -4,18 +4,30 @@ description: Přečtěte si, jak implementovat monitorování stavu pomocí roz�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef32ecfb6f69b71d29578d3b8314f568fd9386a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562118"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431070"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
 
 Model monitorování odkazuje na flexibilní *opakovaný* proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá [Durable Functions](durable-functions-overview.md) k implementaci monitorování.
 
-[!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
+## <a name="prerequisites"></a>Požadavky
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+* [Dokončení článku rychlý Start](durable-functions-create-first-csharp.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [Dokončení článku rychlý Start](quickstart-js-vscode.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/javascript)
+
+---
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
@@ -83,8 +95,7 @@ Tato funkce Orchestrator provádí následující akce:
 5. Vytvoří trvalý časovač pro pokračování orchestrace při dalším intervalu dotazování. Ukázka používá pevně zakódované hodnoty pro zkrácení.
 6. Pokračuje v běhu, dokud aktuální čas UTC neprojde časem vypršení platnosti monitoru, nebo se pošle výstraha SMS.
 
-Více instancí nástroje Orchestrator lze spustit současně voláním funkce Orchestrator vícekrát. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat.
-
+Více instancí nástroje Orchestrator lze spustit současně voláním funkce Orchestrator vícekrát. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat. Nakonec mějte na paměti, že funkce Orchestrator není při čekání na *časovač spuštěná* , takže se za ni nebudete účtovat.
 ### <a name="e3_getisclear-activity-function"></a>Funkce aktivity E3_GetIsClear
 
 Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi, které používají `activityTrigger` vazbu triggeru. Funkce **E3_GetIsClear** získává aktuální povětrnostní podmínky pomocí rozhraní API pro počasí, které určuje, zda je nebe jasný.
@@ -169,7 +180,7 @@ Aktivitu orchestrace si můžete prohlédnout v protokolech funkce na portálu A
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Orchestrace se [ukončí](durable-functions-instance-management.md) po dosažení časového limitu nebo se zjistí vymazání Skies. Můžete také použít `TerminateAsync` (.NET) nebo `terminate` (JavaScript) uvnitř jiné funkce nebo vyvolat Webhook **terminatePostUri** http, na který se odkazuje v odpovědi 202, nahrazuje `{text}` se důvodem ukončení:
+Orchestrace se dokončí po dosažení časového limitu nebo se zjistí vymazání Skies. Rozhraní API můžete použít také `terminate` uvnitř jiné funkce nebo vyvolat Webhook **terminatePostUri** http, na který odkazuje odpověď 202 výše. Chcete-li použít Webhook, nahraďte `{text}` důvod pro předčasné ukončení. Adresa URL POST protokolu HTTP bude vypadat přibližně takto:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

@@ -3,20 +3,20 @@ title: Známé problémy zřizování aplikací v Azure AD
 description: Přečtěte si o známých problémech při práci s automatizovaným zřizováním aplikací v Azure AD.
 author: kenwith
 ms.author: kenwith
-manager: celestedg
+manager: daveba
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271001"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256639"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -28,7 +28,7 @@ Známé problémy, které je třeba znát při práci s zřizováním aplikací.
 
 **Po úspěšném testu připojení se nepovedlo Uložit.**
 
-Pokud můžete připojení úspěšně otestovat, ale nemůžete ho uložit, překročili jste maximální povolený limit úložiště pro přihlašovací údaje. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce](application-provisioning-config-problem-storage-limit.md).
+Pokud můžete připojení úspěšně otestovat, ale nemůžete ho uložit, překročili jste maximální povolený limit úložiště pro přihlašovací údaje. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce](./user-provisioning.md).
 
 **Nejde Uložit.**
 
@@ -57,6 +57,10 @@ Služba Azure AD momentálně nemůže zřídit atributy s hodnotou null. Pokud 
 
 Výrazy mapování atributu můžou mít maximálně 10 000 znaků. 
 
+**Nepodporované filtry oborů**
+
+Rozšíření adresáře, appRoleAssignments, userType a accountExpires nejsou podporována jako filtry oborů.
+
 
 ## <a name="service-issues"></a>Potíže se službou 
 
@@ -64,13 +68,24 @@ Výrazy mapování atributu můžou mít maximálně 10 000 znaků.
 
 - Hesla zřizování se nepodporují. 
 - Zřizování vnořených skupin se nepodporuje. 
-- Zřizování pro klienty B2C se nepodporuje kvůli velikosti klientů. 
+- Zřizování pro klienty B2C se nepodporuje kvůli velikosti klientů.
+- Ne všechny zřizovací aplikace jsou k dispozici ve všech cloudech. Například Atlassian ještě není k dispozici v cloudu pro státní správu. Pracujeme na tom, aby vývojáři aplikací připojili své aplikace ke všem cloudům.
 
-**Interval zřizování je opravený** . [Čas](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
+**Automatické zřizování není v naší aplikaci založené na OIDC k dispozici.**
+
+Pokud vytvoříte registraci aplikace, nebude mít odpovídající instanční objekt v podnikových aplikacích povolený automatický zřizování uživatelů. Musíte buď požádat o přidání aplikace do galerie, pokud je určená pro použití ve více organizacích, nebo vytvořit druhou aplikaci mimo galerii pro zřizování. 
+
+**Interval zřizování je opravený.**
+
+[Čas](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
 
 **Změny, které se nepohybují z cílové aplikace do Azure AD**
 
 Služba zřizování aplikací neví o změnách provedených v externích aplikacích. Takže se neprovádí žádná akce, která by se vrátila zpět. Služba zřizování aplikací se spoléhá na změny provedené ve službě Azure AD. 
+
+**Přepnutí ze synchronizace All na přiřazenou synchronizaci nefunguje**
+
+Po změně rozsahu z ' synchronizovat vše ' na ' přiřazeno ', nezapomeňte také provést restart, aby se zajistilo, že se změna projeví. Restartování můžete provést z uživatelského rozhraní.
 
 **Cyklus zřizování pokračuje až do dokončení.**
 
@@ -80,6 +95,9 @@ Při nastavování zřizování `enabled = off` nebo zastavení na zastaveno bud
 
 Když je skupina v oboru a člen je mimo rozsah, skupina se zřídí. Uživatel mimo rozsah se zřídí. Pokud se člen vrátí do oboru, služba tuto změnu okamžitě nerozpozná. Tento problém se bude řešit restartováním zřizování. Doporučujeme službu pravidelně restartovat, aby se zajistilo správné zřízení všech uživatelů.  
 
+**Správce není zřízený.**
+
+Pokud je uživatel a jeho manažer v oboru pro zřizování, služba zřídí uživatele a pak aktualizuje správce. Pokud je však jeden uživatel v oboru a správce je mimo rozsah, zřídíme uživatele bez odkazu správce. Když se správce dokončí do rozsahu, odkaz na správce se neaktualizuje, dokud nerestartujete zřizování a nespustíte znovu vyhodnocení všech uživatelů. 
 
 ## <a name="next-steps"></a>Další kroky
 - [Jak funguje zřizování](how-provisioning-works.md)

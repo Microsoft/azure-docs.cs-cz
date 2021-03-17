@@ -1,19 +1,16 @@
 ---
 title: Vytváření clusterů Apache Hadoop pomocí webového prohlížeče, Azure HDInsight
 description: Naučte se vytvářet Apache Hadoop, Apache HBA, Apache Storm nebo Apache Spark clustery v HDInsight. Použijte webový prohlížeč a Azure Portal.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874023"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945820"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal
 
@@ -25,7 +22,7 @@ Azure Portal je webový nástroj pro správu služeb a prostředků hostovaných
 
 Azure Portal zpřístupňuje většinu vlastností clusteru. Pomocí šablon Azure Resource Manager můžete skrýt mnoho podrobností. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
@@ -50,7 +47,7 @@ Na kartě **základy** zadejte následující informace:
 |Předplatné|V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster.|
 |Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
 |Název clusteru|Zadejte globálně jedinečný název.|
-|Oblast|V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.|
+|Region (Oblast)|V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.|
 |Typ clusteru|Kliknutím na **Vybrat typ clusteru** otevřete seznam. V seznamu vyberte požadovaný typ clusteru. Clustery HDInsight přicházejí v různých typech. Odpovídají zátěži nebo technologii, pro kterou je cluster laděn. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů.|
 |Verze|V rozevíracím seznamu vyberte **verzi**. Pokud si nejste jisti, co si můžete vybrat, použijte výchozí verzi. Další informace najdete v článku [Verze clusterů HDInsight](hdinsight-component-versioning.md).|
 |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí nastavení je **admin**.|
@@ -64,19 +61,19 @@ Vyberte **Další: >>úložiště** pro přechod na další kartu.
 ## <a name="storage"></a>Storage
 
 > [!WARNING] 
-> Od 15. června 2020 nebudou moct zákazníci vytvořit nový instanční objekt pomocí služby HDInsight. Viz téma [Vytvoření instančního objektu a certifikátů](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pomocí Azure Active Directory.
+> Od 15. června 2020 nebudou moct zákazníci vytvořit nový instanční objekt pomocí služby HDInsight. Viz téma [Vytvoření instančního objektu a certifikátů](../active-directory/develop/howto-create-service-principal-portal.md) pomocí Azure Active Directory.
 
 ![Vytvoření úložiště clusteru HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Vytvoření nového clusteru v Azure Portal – úložiště")
 
 ### <a name="primary-storage"></a>Primární úložiště
 
-Z rozevíracího seznamu pro **typ primárního úložiště**vyberte výchozí typ úložiště. Pozdější pole, která se mají dokončit, se budou lišit v závislosti na vašem výběru. Pro **Azure Storage**:
+Z rozevíracího seznamu pro **typ primárního úložiště** vyberte výchozí typ úložiště. Pozdější pole, která se mají dokončit, se budou lišit v závislosti na vašem výběru. Pro **Azure Storage**:
 
-1. Pro **metodu výběru**vyberte buď **možnost vybrat ze seznamu**, nebo **použijte přístupový klíč**.
-    * V **seznamu vybrat ze**vyberte svůj **primární účet úložiště** z rozevíracího seznamu nebo vyberte **vytvořit novou**.
-    * V případě **použití přístupového klíče**zadejte **název svého účtu úložiště**. Pak zadejte **přístupový klíč**.
+1. Pro **metodu výběru** vyberte buď **možnost vybrat ze seznamu**, nebo **použijte přístupový klíč**.
+    * V **seznamu vybrat ze** vyberte svůj **primární účet úložiště** z rozevíracího seznamu nebo vyberte **vytvořit novou**.
+    * V případě **použití přístupového klíče** zadejte **název svého účtu úložiště**. Pak zadejte **přístupový klíč**.
 
-1. Pro **kontejner**přijměte výchozí hodnotu nebo zadejte novou.
+1. Pro **kontejner** přijměte výchozí hodnotu nebo zadejte novou.
 
 ### <a name="additional-azure-storage"></a>Další Azure Storage
 

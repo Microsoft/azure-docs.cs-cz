@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f01ef1a4cf5bc5b805da3dd4d825ef17f81ce53e
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170188"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421086"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: ochrana a udělení přístupu k Node.js webovému rozhraní API z jednostránkové aplikace s Azure AD B2C
 
@@ -34,7 +34,7 @@ V [prvním kurzu](tutorial-single-page-app.md) této série jste stáhli ukázku
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky a požadavky v [kurzu: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C](tutorial-single-page-app.md)
 * [Visual Studio Code](https://code.visualstudio.com/) nebo jiný Editor kódu
@@ -56,11 +56,11 @@ Poznamenejte si hodnotu **Scopes** `demo.read` rozsah, který se má použít v 
 
 Chcete-li volat chráněné webové rozhraní API z jiné aplikace, je třeba udělit oprávnění aplikace webovému rozhraní API.
 
-V kurzu požadavků jste vytvořili webovou aplikaci s názvem *WebApp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části, *webapi1*.
+V kurzu požadavků jste vytvořili jednostránkovou aplikaci s názvem *spaapp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části, *spaapp1*.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Vaše webová aplikace s jednou stránkou má teď udělená oprávnění k chráněnému webovému rozhraní API pro zadané obory. Uživatel se ověřuje pomocí Azure AD B2C pro použití jednostránkové aplikace. Jednostránkové aplikace používá tok udělení autorizace pro přístup k chráněnému webovému rozhraní API s přístupovým tokenem vráceným Azure AD B2C.
+Vaše webová aplikace s jednou stránkou má teď udělená oprávnění k chráněnému webovému rozhraní API pro zadané obory. Uživatel se ověřuje pomocí Azure AD B2C pro použití jednostránkové aplikace. Jednostránkové aplikace získá přístupový token z Azure AD B2C pro přístup k chráněnému webovému rozhraní API.
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
@@ -74,14 +74,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete *config.js* soubor v editoru kódu.
+1. Otevřete *config.js* v souboru v editoru kódu.
 1. Upravte hodnoty proměnných tak, aby odrážely ty, které jste vytvořili dříve. Aktualizujte také `policyName` tok uživatele, který jste vytvořili jako součást požadavků. Například *B2C_1_signupsignin1*.
-
-    ```javascript
-    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
-    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
-    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
-    const policyName = "B2C_1_signupsignin1";
+    
+    ```json
+    "credentials": {
+        "tenantName": "<your-tenant-name>",
+        "clientID": "<your-webapi-application-ID>"
+    },
+    "policies": {
+        "policyName": "B2C_1_signupsignin1"
+    },
+    "resource": {
+        "scope": ["demo.read"] 
+    },
     ```
 
 #### <a name="enable-cors"></a>Povolení CORS
@@ -155,7 +161,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Například:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. Spusťte následující příkazy:

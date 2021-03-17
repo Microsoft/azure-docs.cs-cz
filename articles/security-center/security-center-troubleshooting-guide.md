@@ -1,25 +1,24 @@
 ---
 title: Průvodce odstraňováním potíží se službou Azure Security Center | Dokumentace Microsoftu
 description: Tato příručka je určena pro profesionály v oblasti IT, analytikům zabezpečení a cloudovým správcům, kteří potřebují řešit problémy související s Azure Security Center.
-services: security-center
-author: v-miegge
-manager: dcscontentpm
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9822dfe50fa50fdd70f4e09e188188cad0f9b8f0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836001"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438212"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
 Tento průvodce je určený odborníkům na informační technologie (IT), analytikům zabezpečení informací a správcům cloudů, jejichž společnosti používají službu Azure Security Center a potřebují odstraňovat potíže týkající se služby Security Center.
 
-Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují Security Center funkce po přechodu na agenta Log Analytics.
+Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v článku o [migraci platformy pro Azure Security Center](./security-center-enable-data-collection.md). Informace v tomto článku představují Security Center funkce po přechodu na agenta Log Analytics.
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -29,7 +28,7 @@ Typy výstrah:
 
 * Analýza chování virtuálního počítače (VMBA)
 * Analýza sítě
-* Analýza SQL Database a SQL Data Warehouse
+* Analýzy SQL Database a Azure synapse Analytics
 * Kontextové informace
 
 V závislosti na typech výstrahy mohou uživatelé shromáždit nezbytné informace k prošetření výstrahy pomocí následujících zdrojů:
@@ -42,7 +41,7 @@ Zákazníci můžou sdílet zpětnou vazbu ohledně popisu a relevance výstrahy
 
 ## <a name="audit-log"></a>Protokol auditu
 
-U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](../azure-monitor/platform/platform-logs-overview.md) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
+U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](../azure-monitor/essentials/platform-logs-overview.md) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
 
 * Které operace proběhly
 * Kdo operaci zahájil
@@ -77,38 +76,38 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 > [!NOTE]
 > Pokud se chcete vyhnout chování uvedenému v druhém scénáři, stáhněte si nejnovější verzi agenta.
 
-## <a name="monitoring-agent-health-issues"></a>Problémy s monitorováním stavu agentů<a name="mon-agent"></a>
+## <a name="monitoring-agent-health-issues"></a>Problémy s monitorováním stavu agentů <a name="mon-agent"></a>
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
-| Stav monitorování | Description | Postup řešení |
+| Stav monitorování | Popis | Postup řešení |
 |---|---|---|
 | Čeká se na instalaci agenta | Instalace agenta Log Analytics stále běží.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
 | Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent Log Analytics může být nainstalovaný jenom na virtuálním počítači, na kterém běží. | Restartujte virtuální počítač. |
 | Agent virtuálního počítače Azure chybí nebo není platný | Agent Log Analytics ještě není nainstalovaný.  Aby služba Security Center mohla nainstalovat rozšíření, potřebuje platného agenta virtuálního počítače Azure. | Nainstalujte, přeinstalujte nebo upgradujte na virtuálním počítači agenta virtuálního počítače Azure. |
 | Stav virtuálního počítače není připravený k instalaci  | Agent Log Analytics ještě není nainstalovaný, protože virtuální počítač není připravený k instalaci. Virtuální počítač není připraven pro instalaci z důvodu problému s agentem nebo zřizováním virtuálního počítače. | Zkontrolujte stav virtuálního počítače. Vraťte se na portálu na obrazovku **Virtual Machines** a výběrem virtuálního počítače zobrazte jeho stav. |
-|Instalace selhala – obecná chyba | Agent Log Analytics byl nainstalován, ale selhal z důvodu chyby. | [Ručně rozšíření nainstalujte](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
-| Instalace selhala – místní agent je už nainstalovaný | Nepovedlo se nainstalovat agenta Log Analytics. Security Center identifikovali místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo konfiguraci více domovských stránek, kde se virtuální počítač hlásí do dvou samostatných pracovních prostorů, instalace agenta Log Analytics se zastavila. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
+|Instalace selhala – obecná chyba | Agent Log Analytics byl nainstalován, ale selhal z důvodu chyby. | [Ručně rozšíření nainstalujte](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
+| Instalace selhala – místní agent je už nainstalovaný | Nepovedlo se nainstalovat agenta Log Analytics. Security Center identifikovali místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo konfiguraci více domovských stránek, kde se virtuální počítač hlásí do dvou samostatných pracovních prostorů, instalace agenta Log Analytics se zastavila. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
 | Agent se nemůže připojit k pracovnímu prostoru | Agent Log Analytics se nainstaloval, ale selhal kvůli připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Viz požadavky agenta monitorování na síť. |
 | Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Security Center zjistila, že agent Log Analytics nainstalovaný na virtuálním počítači je připojený k pracovnímu prostoru, ke kterému nemá přístup. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
-| Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Nebo agent hlásí data, ale chybí ID prostředku Azure, takže není možné, aby se data shodovala s virtuálním počítačem Azure. Řešení potíží s Linuxem najdete v tématu [Průvodce odstraňováním potíží pro Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
+| Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Nebo agent hlásí data, ale chybí ID prostředku Azure, takže není možné, aby se data shodovala s virtuálním počítačem Azure. Řešení potíží s Linuxem najdete v tématu [Průvodce odstraňováním potíží pro Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support). |
 | Agent nenainstalován | Shromažďování dat je vypnuté. | Zapněte shromažďování dat v zásadách zabezpečení nebo ručně nainstalujte agenta Log Analytics. |
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Řešení potíží se síťovými požadavky na agenta monitorování <a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Řešení potíží s požadavky na síť agenta monitorování <a name="mon-network-req"></a>
 
 Agenti, kteří se připojují ke službě Security Center a registrují se v ní, musí mít přístup k síťovým prostředkům, včetně čísel portů a doménových adres URL.
 
-* U proxy serverů musíte zajistit konfiguraci příslušných prostředků proxy serveru v nastavení agenta. Přečtěte si tento článek, ve kterém se dozvíte další informace o [tom, jak změnit nastavení proxy](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents).
+* U proxy serverů musíte zajistit konfiguraci příslušných prostředků proxy serveru v nastavení agenta. Přečtěte si tento článek, ve kterém se dozvíte další informace o [tom, jak změnit nastavení proxy](../azure-monitor/agents/agent-windows.md).
 * Pokud používáte k omezení přístupu k internetu bránu firewall, je nutné ji nakonfigurovat tak, aby povolovala přístup k Log Analytics. V nastavení agenta nemusíte nic konfigurovat.
 
 V následující tabulce najdete přehled prostředků potřebných pro komunikaci.
 
 | Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Ano |
+| *.oms.opinsights.azure.com | 443 | Ano |
+| *.blob.core.windows.net | 443 | Ano |
+| *.azure-automation.net | 443 | Ano |
 
 Pokud narazíte na problémy s registrací agenta, přečtěte si článek [Řešení potíží s registrací v Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
@@ -124,7 +123,7 @@ Agent hosta je nadřazený proces pro všechno, co dělá rozšíření [Microso
 * Některé seznamy řízení přístupu (ACL) mohou bránit v přístupu k disku.
 * Nedostatek místa na disku může blokovat agent hosta a ten nebude fungovat správně.
 
-Ve výchozím nastavení je uživatelské rozhraní rozšíření Microsoft Antimalware zablokované. Další informace o tom, jak ho v případě potřeby povolit, najdete v tématu věnovaném [povolení uživatelského rozhraní rozšíření Microsoft Antimalware ve virtuálních počítačích s Azure Resource Managerem po nasazení](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/).
+Ve výchozím nastavení je uživatelské rozhraní rozšíření Microsoft Antimalware zablokované. Další informace o tom, jak ho v případě potřeby povolit, najdete v tématu věnovaném [povolení uživatelského rozhraní rozšíření Microsoft Antimalware ve virtuálních počítačích s Azure Resource Managerem po nasazení](/archive/blogs/azuresecurity/enabling-microsoft-antimalware-user-interface-post-deployment).
 
 ## <a name="troubleshooting-problems-loading-the-dashboard"></a>Odstraňování potíží s načtením řídicího panelu
 
@@ -132,7 +131,7 @@ Pokud dochází k problémům s načtením řídicího panelu služby Security C
 
 ## <a name="contacting-microsoft-support"></a>Kontaktování oddělení podpory společnosti Microsoft
 
-Některé problémy je možné identifikovat pomocí pokynů uvedených v tomto článku, další informace najdete také na stránce s otázkou Security Center Public [&Microsoft Q](https://docs.microsoft.com/answers/topics/azure-security-center.html). Pokud však potřebujete další řešení potíží, můžete otevřít novou žádost o podporu pomocí **Azure Portal** , jak je znázorněno níže:
+Některé problémy je možné identifikovat pomocí pokynů uvedených v tomto článku, další informace najdete také na Security Center veřejném [&na stránce Microsoft Q](/answers/topics/azure-security-center.html). Pokud však potřebujete další řešení potíží, můžete otevřít novou žádost o podporu pomocí **Azure Portal** , jak je znázorněno níže:
 
 ![Podpora společnosti Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -141,14 +140,13 @@ Některé problémy je možné identifikovat pomocí pokynů uvedených v tomto 
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center konfigurovat zásady zabezpečení. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Principy výstrah zabezpečení ve službě Azure Security Center](security-center-alerts-type.md)
+* [Principy výstrah zabezpečení ve službě Azure Security Center](./security-center-alerts-overview.md)
 * [Kurz: Reakce na incidenty zabezpečení](tutorial-security-incident.md)
 * [Ověřování výstrah ve službě Azure Security Center](security-center-alert-validation.md)
 * [E-mailová oznámení ve službě Azure Security Center](security-center-provide-security-contact-details.md)
 * [Řešení bezpečnostních incidentů v Azure Security Center](security-center-incident.md)
-* [Možnosti detekce Azure Security Center](security-center-detection-capabilities.md)
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Možnosti detekce v Azure Security Center](./security-center-alerts-overview.md)
+* [Sledování partnerských řešení pomocí Azure Security Center](./security-center-partner-integration.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](faq-general.md) – Přečtěte si nejčastější dotazy o použití této služby
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů
+* [Blog o zabezpečení Azure](/archive/blogs/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

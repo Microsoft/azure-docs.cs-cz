@@ -10,12 +10,12 @@ metadata:
   author: cjgronlund
   ms.author: cgronlun
   ms.date: 11/04/2019
-  ms.openlocfilehash: 0453213dd1433989869899d1e886bd87d02340b6
-  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-  ms.translationtype: HT
+  ms.openlocfilehash: 087926f732179ac09b79122ad490d4e3117498a6
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/08/2020
-  ms.locfileid: "82930331"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102505711"
 landingContent:
 - title: Informace o platformě Open Datasets
   linkLists:
@@ -30,12 +30,12 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Sestavení regresního modelu s využitím automatizovaného strojového učení
-      url: /azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+      url: ../machine-learning/tutorial-auto-train-models.md?context=%2fazure%2fopen-datasets%2fcontext%2fopen-datasets-context
     - text: Rozšíření modelu klasifikace obrázků ve službě Azure Machine Learning
-      url: /azure/machine-learning/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
+      url: ../machine-learning/tutorial-train-models-with-aml.md?context=%2fazure%2fopen-datasets%2fcontext%2fopen-datasets-context
 - title: Prozkoumat referenční obsah
   linkLists:
   - linkListType: reference
     links:
     - text: Rozhraní API pro Python
-      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py
+      url: /python/api/azureml-opendatasets/

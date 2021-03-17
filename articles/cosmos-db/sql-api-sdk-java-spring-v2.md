@@ -1,6 +1,6 @@
 ---
 title: Jarní data Azure Cosmos DB v2 pro poznámky k verzi a prostředky SQL API
-description: Přečtěte si všechno o jarních datech Azure Cosmos DB v2 pro SQL API včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Async Java SDK.
+description: Přečtěte si o jarních datech Azure Cosmos DB v2 pro rozhraní SQL API, včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Async Java SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,213 +9,206 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 47d9a8ff884e29dc5692c97d5e7867a856d01063
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 1f78d7185415b66445c78f3b4cdb54ed0d63cb0a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590645"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216611"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v2 pro Core (SQL) API: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
-Pružinová data Azure Cosmos DB v2 pro Core (SQL) umožňují vývojářům využít Azure Cosmos DB v aplikacích pružiny. Jarní data Azure Cosmos DB zpřístupňuje rozhraní jarních dat pro práci s databázemi a kolekcemi, práci s dokumenty a vydávání dotazů. Synchronní i asynchronní (opětovně aktivní) rozhraní API se podporují ve stejném artefaktu Maven. 
+ Jarní data Azure Cosmos DB verze 2 pro jádro (SQL) umožňuje vývojářům používat Azure Cosmos DB v aplikacích pružiny. Jarní data Azure Cosmos DB zpřístupňuje rozhraní jarních dat pro práci s databázemi a kolekcemi, práci s dokumenty a vydávání dotazů. Synchronní i asynchronní (opětovně aktivní) rozhraní API se podporují ve stejném artefaktu Maven. 
 
-[Jarní architektura](https://spring.io/projects/spring-framework) je model programování a konfigurace, který zjednodušuje vývoj aplikací Java. Aby se na webu organizace mohla zacitovat, pružina zjednodušuje "domovníing" aplikací pomocí injektáže závislostí. Mnoho vývojářů, jako je pružina, protože sestavování a testování aplikací se bude mnohem jednodušší. [Pružinové spouštění](https://spring.io/projects/spring-boot) rozšiřuje tuto představu o tom, jak se tato instalace prokládá s ohledem na vývoj webových aplikací a mikroslužeb. [Pružinová data](https://spring.io/projects/spring-data) jsou programovací model pro přístup k úložišti dat, jako je například Azure Cosmos DB z kontextu aplikace pružinové nebo jarního spuštění. 
+[Jarní architektura](https://spring.io/projects/spring-framework) je model programování a konfigurace, který zjednodušuje vývoj aplikací Java. Pružina zjednodušuje "domovníing" aplikací pomocí injektáže závislostí. Mnoho vývojářů, jako je pružina, protože usnadňuje sestavování a testování aplikací. [Pružinové spouštění](https://spring.io/projects/spring-boot) rozšiřuje toto zpracování instalace s využitím očí pro vývoj webových aplikací a mikroslužeb. [Pružinová data](https://spring.io/projects/spring-data) jsou programovací model pro přístup k datovým úložišti, jako je Azure Cosmos DB z kontextu aplikace pružinové nebo jarního spuštění. 
 
 Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services/spring-cloud/) můžete použít jarní data Azure Cosmos DB.
 
 > [!IMPORTANT]  
-> Tyto poznámky k verzi jsou k disAzure Cosmos DB pro 2 – jarní data. [Zde](sql-api-sdk-java-spring-v3.md)najdete poznámky k verzi v3. 
+> Tyto poznámky k verzi jsou k disAzure Cosmos DB ve verzi 2 jarních dat. [Poznámky k verzi pro verzi 3 najdete tady](sql-api-sdk-java-spring-v3.md). 
 >
-> Jarní data Azure Cosmos DB podporují jenom rozhraní SQL API.
+> Jarní data Azure Cosmos DB podporují pouze rozhraní SQL API.
 >
-> Následující příručky podporují jarní data u jiných Azure Cosmos DB rozhraní API:
-> * [Jarní data pro Apache Cassandra s Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Jarní MongoDBy dat pomocí Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Jarní Gremliny dat pomocí Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> Informace o jarních datech v jiných Azure Cosmos DB rozhraních API najdete v následujících článcích:
+> * [Jarní data pro Apache Cassandra s Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Jarní MongoDBy dat pomocí Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Jarní Gremliny dat pomocí Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Chcete se rychle dostat do budoucna?
-> 1. Nainstalujte [Minimální podporovaný běhový modul Java, JDK 8,](/java/azure/jdk/?view=azure-java-stable) abyste mohli používat sadu SDK.
-> 2. Vytvoření aplikace Azure Cosmos DBovou datovou pružinou pomocí Starter – [je to snadné](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)!
-> 3. Pracujte prostřednictvím [Azure Cosmos DB příručka pro vývojáře](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) , která vás provede základními požadavky Azure Cosmos DB.
+> 1. Nainstalujte [Minimální podporovaný běhový modul Java, JDK 8](/java/azure/jdk/), abyste mohli použít sadu SDK.
+> 2. Pomocí [počátečního startu](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)Vytvořte Azure Cosmos DBovou datovou aplikaci. Je to snadné!
+> 3. Projděte si [příručku pro vývojáře Azure Cosmos DB na jaře](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), která vás provede základními požadavky Azure Cosmos DB.
 >
 > Pomocí [jarních Initializr](https://start.spring.io/)můžete rychle aktivovat aplikace na jaře Boot Starter.
 >
 
-## <a name="helpful-content"></a>Užitečný obsah
+## <a name="resources"></a>Zdroje informací
 
-| Obsah | Odkaz |
+| Prostředek | Odkaz |
 |---|---|
 | **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/spring-data-cosmosdb) |
 |**Dokumentace k rozhraní API** | [Data pružiny Azure Cosmos DB Referenční dokumentace]() |
 |**Přispívání do sady SDK** | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/microsoft/spring-data-cosmosdb) | 
-|**Jaře Boot Starter**| [Azure Cosmos DB klientskou knihovnu Starter Boot Boot Library pro Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**Jaře Boot Starter**| [Azure Cosmos DB klientskou knihovnu Starter Boot Boot Library pro Java](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Ukázka aplikace pružiny TODO pomocí Azure Cosmos DB**| [Komplexní prostředí Java v systému App Service Linux (část 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
-|**Příručka pro vývojáře** | [Příručka pro vývojáře na jaře data Azure Cosmos DB Developers](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Příručka k používání Starter** | [Používání úvodní sady Spring Boot s využitím rozhraní SQL API služby Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Úložiště GitHub pro Starter Cosmos DB ve jarním startu Azure](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
-|**Ukázka pomocí App Services** | [Jak používat Spring a Cosmos DB s App Service v Linuxu](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Ukázka aplikace TODO](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
+|**Příručka pro vývojáře** | [Příručka pro vývojáře Spring Data Azure Cosmos DB](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
+|**Pomocí Starter** | [Jak používat jaře Boot Starter s Azure Cosmos DB SQL API](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Úložiště GitHub pro Azure Cosmos DB jaře Boot Starter](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
+|**Ukázka pomocí Azure App Service** | [Jak používat Spring a Cosmos DB s App Service v Linuxu](/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Ukázka aplikace TODO](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>Historie verzí
 
-### <a name="230-2020-05-21"></a>2.3.0 (2020-05-21)
+### <a name="230-may-21-2020"></a>2.3.0 (květen 21. května 2020)
 #### <a name="new-features"></a>Nové funkce
-* Aktualizovat verzi na jaře pro spuštění na 2.3.0 
+* Aktualizuje verzi na jaře pro spuštění na 2.3.0.
+
+
+### <a name="225-may-19-2020"></a>2.2.5 (Květen 19. května 2020)
+#### <a name="new-features"></a>Nové funkce
+* Aktualizuje Azure Cosmos DB verze na 3.7.3.
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Obsahuje opravy nevracení paměti a upgrady verze z Azure Cosmos DB SDK 3.7.3.
+
+### <a name="224-april-6-2020"></a>2.2.4 (6. dubna 2020)
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Opravuje `allowTelemetry` příznak, ze kterého se má brát v úvahu `CosmosDbConfig` .
+* Opravuje `TTL` vlastnost v kontejneru.
+
+### <a name="223-february-25-2020"></a>2.2.3 (25. února 2020)
+#### <a name="new-features"></a>Nové funkce
+* Přidá nové `findAll` pomocí klíčového rozhraní API pro oddíl.
+* Aktualizuje Azure Cosmos DB verze na 3.7.0.
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Opravuje `collectionName`  ->  `containerName` .
+* Opravy `entityClass` a `domainClass`  ->  `domainType` .
+* Opravuje "návratovou kolekci entit uloženou úložištěm namísto vstupní entity."
+
+### <a name="2110-february-25-2020"></a>2.1.10 (25. února 2020)
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Náprava – oprava pro "vrácenou kolekci entit uloženou úložištěm namísto vstupní entity"
+
+### <a name="222-january-15-2020"></a>2.2.2 (15. ledna 2020)
+#### <a name="new-features"></a>Nové funkce
+* Aktualizuje Azure Cosmos DB verze na 3.6.0.
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
 
-### <a name="225-2020-05-19"></a>2.2.5 (2020-05-19)
+### <a name="221-december-31-2019"></a>2.2.1 (31. prosince 2019)
 #### <a name="new-features"></a>Nové funkce
-* Aktualizace verze Azure Cosmos DB na verzi v 3.7.3
+* Aktualizuje Azure Cosmos DB verze sady SDK na 3.5.0.
+* Přidá pole Anotace pro povolení nebo zakázání automatického vytváření kolekcí.
+* Vylepšuje zpracování výjimek. Zveřejňuje `CosmosClientException` `CosmosDBAccessException` .
+* Zpřístupňuje `requestCharge` a `activityId` prostřednictvím `ResponseDiagnostics` .
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Obsahuje opravy nevracení paměti a upgrady verzí v Cosmos SDK v 3.7.3. 
+* 3.5.0 opravy aktualizací sady SDK "výjimka, když Cosmos DB hlavička odpovědi HTTP je větší než 8192 bajtů, ConsistencyPolicy. defaultConsistencyLevel () se nezdařila v ohraničené neaktuálnosti a předponě konzistence.
+* Opravuje `findById` chování metody. Tato metoda dříve vrátila prázdnou, pokud nebyla nalezena entita namísto vyvolání výjimky.
+* Opravuje chybu, ve které bylo řazení nebylo použito při použití na další stránce `CosmosPageRequest` .
 
-### <a name="224-2020-04-06"></a>2.2.4 (2020-04-06)
+### <a name="219-december-26-2019"></a>2.1.9 (26. prosince 2019)
 #### <a name="new-features"></a>Nové funkce
+* Přidá pole Anotace pro povolení nebo zakázání automatického vytváření kolekcí.
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Pevný příznak allowTelemetry, který se má vzít v úvahu z CosmosDbConfig
-* Pevná vlastnost TTL na kontejneru
+*  Opravuje `findById` chování metody. Tato metoda dříve vrátila prázdnou, pokud nebyla nalezena entita namísto vyvolání výjimky.
 
-### <a name="223-2020-02-25"></a>2.2.3 (2020-02-25)
+### <a name="220-october-21-2019"></a>2.2.0 (21. října 2019)
 #### <a name="new-features"></a>Nové funkce
-* Přidání nového findAll pomocí rozhraní API pro klíč oddílu
-* Verze Azure-Cosmos se aktualizovala na 3.7.0.
+* Dokončete podporu reaktivního úložiště Cosmos.
+* Azure Cosmos DB řetězec diagnostiky žádosti a podporu metrik dotazů.
+* Aktualizace verze Azure Cosmos DB SDK na 3.3.1.
+* Upgrade verze architektury pružiny na 5.2.0. RELEASE.
+* Napřed upgrade verze na jaře data na 2.2.0. RELEASE.
+* Přidá `findByIdAndPartitionKey` `deleteByIdAndPartitionKey` rozhraní API a.
+* Odebere závislost z Azure-DocumentDB.
+* Přejmenuje DocumentDB na Azure Cosmos DB.
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Pevný CollectionName-> ContainerName
-* Pevné entityClass & doménová třída-> domainType
-* Opravená "návratová kolekce entit uložená podle úložiště namísto vstupní entity"
+* Oprava "řazení vyvolá výjimku, pokud je hodnota pageSize menší než celkový počet položek v úložišti."
 
-### <a name="2110-2020-02-25"></a>2.1.10 (2020-02-25)
+### <a name="218-october-18-2019"></a>2.1.8 (18. října 2019)
 #### <a name="new-features"></a>Nové funkce
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Oprava nevyřešené pro "návratovou kolekci entit uloženou úložištěm namísto vstupní entity"
+* Zastaralá rozhraní API DocumentDB.
+* Přidá `findByIdAndPartitionKey` `deleteByIdAndPartitionKey` rozhraní API a.
+* Přidá optimistické zamykání na základě `_etag` .
+* Povolí SpEL výraz pro název kolekce dokumentů.
+* Přidá `ObjectMapper` vylepšení.
 
-### <a name="222-2020-01-15"></a>2.2.2 (2020-01-15)
+### <a name="217-october-18-2019"></a>2.1.7 (18. října 2019)
 #### <a name="new-features"></a>Nové funkce
-* Aktualizace verze Azure-Cosmos na verzi v 3.6.0
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Přidá závislost Azure Cosmos DB SDK verze 3.
+* Přidá reaktivní úložiště Cosmos.
+* Implementace aktualizací `DocumentDbTemplate` pro se používá Azure Cosmos DB SDK verze 3.
+* Přidá další změny konfigurace pro reaktivní podporu úložiště Cosmos.
 
-### <a name="221-2019-12-31"></a>2.2.1 (2019-12-31)
-#### <a name="new-features"></a>Nové funkce
-* Aktualizace verze Cosmos DB SDK na 3.5.0
-* Přidání pole poznámky pro povolení nebo zakázání kolekce auto Create
-* Lepší zpracování výjimek, vystavené CosmosClientException prostřednictvím CosmosDBAccessException
-* Vystavené requestCharge a activityId prostřednictvím ResponseDiagnostics
+### <a name="212-march-19-2019"></a>2.1.2 (19. března 2019)
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* 3.5.0 opravy aktualizací sady SDK "výjimka, když Cosmos DB hlavička odpovědi HTTP je větší než 8192 bajtů", "ConsistencyPolicy. defaultConsistencyLevel () se nezdařila v ohraničené neaktuálnosti a předponě konzistence"
-* Opravené chování rozhraní API findById, vrácení prázdné hodnoty v nenalezené situaci namísto vyvolání výjimky
-* Opravili jsme chybu, při které se při použití CosmosPageRequest nepoužilo řazení na další stránce.
-
-### <a name="219-2019-12-26"></a>2.1.9 (2019-12-26)
-#### <a name="new-features"></a>Nové funkce
-* Přidání pole poznámky pro povolení nebo zakázání kolekce auto Create
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Opravené chování rozhraní API findById, vrácení prázdné hodnoty v nenalezené situaci namísto vyvolání výjimky
-
-### <a name="220-2019-10-21"></a>2.2.0 (2019-10-21)
-#### <a name="new-features"></a>Nové funkce
-* Dokončit reaktivní podporu úložiště Cosmos
-* Podpora metriky a řetězce diagnostiky žádostí Cosmos DB
-* Aktualizace verze Cosmos DB SDK na 3.3.1
-* Upgrade verze architektury pružiny na 5.2.0. RELEASE
-* Verze navýšení dat na jaře se upgraduje na 2.2.0. RELEASE.
-* Přidání findByIdAndPartitionKey, rozhraní deleteByIdAndPartitionKey API
-* Odebrání závislosti z Azure – doumentdb
-* Přepálená DocumentDb na Cosmos
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Pevné "řazení vyvolá výjimku, pokud je hodnota pageSize menší než celkový počet položek v úložišti"
-
-### <a name="218-2019-10-18"></a>2.1.8 (2019-10-18)
-#### <a name="new-features"></a>Nové funkce
-* Zastaralá rozhraní API databáze dokumentů
-* Přidání findByIdAndPartitionKey, deleteByIdAndPartitionKey rozhraní API.
-* Přidání optimistického blokování na základě _etag
-* Povolený výraz SPeL pro název kolekce dokumentů
-* ObjectMapper vylepšení.
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-
-### <a name="217-2019-10-18"></a>2.1.7 (2019-10-18)
-#### <a name="new-features"></a>Nové funkce
-* Přidání závislosti sady Cosmos SDK V3
-* Přidání reaktivního úložiště Cosmos
-* Byla aktualizována implementace DocumentDbTemplate pro použití sady Cosmos SDK v3.
-* Další změny konfigurace pro reaktivní úložiště Cosmos support.
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-
-### <a name="212-2019-03-19"></a>2.1.2 (2019-03-19)
-#### <a name="new-features"></a>Nové funkce
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Odebrat závislost applicationInsights pro
-    * Potenciální riziko znečišťujících závislostí
-    * Nekompatibilita Java 11
+* Odebere `applicationInsights` závislost pro:
+    * Potenciální riziko znečišťujících závislostí.
+    * Nekompatibilita Java 11.
     * Vyloučení potenciálního dopadu na výkon procesoru nebo paměti.
 
-### <a name="207-2019-03-20"></a>2.0.7 (2019-03-20)
-#### <a name="new-features"></a>Nové funkce
+### <a name="207-march-20-2019"></a>2.0.7 (20. března 2019)
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Backport odebere závislost applicationInsights pro
-    * Potenciální riziko znečišťujících závislostí
-    * Nekompatibilita Java 11
+* Backport odebere `applicationInsights` závislost pro:
+    * Potenciální riziko znečišťujících závislostí.
+    * Nekompatibilita Java 11.
     * Vyloučení potenciálního dopadu na výkon procesoru nebo paměti.
 
-### <a name="211-2019-03-07"></a>2.1.1 (2019-03-07)
+### <a name="211-march-7-2019"></a>2.1.1 (7. března 2019)
 #### <a name="new-features"></a>Nové funkce
-* Aktualizace hlavní verze na verzi 2.1.1
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Aktualizuje hlavní verzi na verzi 2.1.1.
 
-### <a name="206-2019-03-07"></a>2.0.6 (2019-03-07)
+### <a name="206-march-7-2019"></a>2.0.6 (7. března 2019)
 #### <a name="new-features"></a>Nové funkce
-* Ignorovat všechny výjimky z telemetrie
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Ignorovat všechny výjimky z telemetrie.
 
-### <a name="210-2018-12-17"></a>2.1.0 (2018-12-17)
+### <a name="210-december-17-2018"></a>2.1.0 (17. prosince 2018)
 #### <a name="new-features"></a>Nové funkce
-* Aktualizace verze na 2.1.0 k vyřešení problému
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Aktualizuje verzi na 2.1.0 k vyřešení problému.
 
-### <a name="205-2018-09-13"></a>2.0.5 (2018-09-13)
+### <a name="205-september-13-2018"></a>2.0.5 (13. září 2018)
 #### <a name="new-features"></a>Nové funkce
-* Existuje klíčové slovo Add, startsWith
-* Aktualizovat soubor Readme
+* Přidá klíčová slova `exists` a `startsWith` .
+* Aktualizuje soubor Readme.
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Oprava "nemůžu zavolat přímý odkaz přímo pro entitu"
-* Oprava "findAll selže, pokud není vytvořena kolekce"
+* Opravy "nelze volat přímý odkaz href přímo pro entitu".
+* Oprava "Pokud není vytvořena kolekce," findAll selže. "
 
-### <a name="204-pre-release-2018-08-23"></a>2.0.4 (Předběžná verze) (2018-08-23)
+### <a name="204-prerelease-august-23-2018"></a>2.0.4 (Předběžná verze) (23. srpna 2018)
 #### <a name="new-features"></a>Nové funkce
-* Přejmenování balíčku z DocumentDB na cosmosdb,
-* Přidání nové funkce klíčového slova metody dotazu, 16 klíčových slov z podporovaného rozhraní SQL API.
-* Přidejte novou funkci dotazu se stránkováním a řazením.
-* Zjednodušte konfiguraci jaře-data-cosmosdb.
-* Přidejte deletecollection a rozhraní deleteAll API.
+* Přejmenuje balíček z DocumentDB na cosmosdb.
+* Přidá novou funkci klíčového slova metody dotazu. 16 klíčových slov z rozhraní SQL API se teď podporuje.
+* Přidá novou funkci dotazu se stránkováním a řazením.
+* Zjednodušuje konfiguraci jaře-data-cosmosdb.
+* Přidá `deleteCollection` `deleteAll` rozhraní API a.
 
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Oprava chyb a vylepšení závad.
+* Oprava chyby a zmírnění závad.
 
 ## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
+Přečtěte si další informace o [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Další informace o architektuře pružiny najdete na [domovské stránce projektu](https://spring.io/projects/spring-framework).
+Přečtěte si další informace o [architektuře pružiny](https://spring.io/projects/spring-framework).
 
-Další informace o pružinovém spuštění najdete na [domovské stránce projektu](https://spring.io/projects/spring-boot).
+Přečtěte si další informace o [pružinovém spuštění](https://spring.io/projects/spring-boot).
 
-Další informace o jarních datech najdete na [domovské stránce projektu](https://spring.io/projects/spring-data).
+Přečtěte si další informace o [jarních datech](https://spring.io/projects/spring-data).

@@ -1,46 +1,48 @@
 ---
 title: Připojení a dotazování SQL synapse pomocí sady Visual Studio a SSDT
-description: Pomocí sady Visual Studio se můžete dotazovat na fond SQL pomocí Azure synapse Analytics.
+description: Pomocí sady Visual Studio se můžete dotazovat na vyhrazený fond SQL pomocí Azure synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089239"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451601"
 ---
-# <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k synapse SQL pomocí sady Visual Studio a SSDT
+# <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k Synapse SQL pomocí sady Visual Studio a SSDT
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](get-started-visual-studio.md)
-> * [Sqlcmd](get-started-connect-sqlcmd.md) 
+> * [sqlcmd](get-started-connect-sqlcmd.md) 
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
-Pomocí sady Visual Studio se můžete dotazovat na fond SQL pomocí Azure synapse Analytics. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
+Pomocí sady Visual Studio se můžete dotazovat na vyhrazený fond SQL pomocí Azure synapse Analytics. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
 
 > [!NOTE]
-> SSDT nepodporuje SQL na vyžádání (Preview).
+> SSDT není podporován fondem SQL bez serveru.
 
 ## <a name="prerequisites"></a>Předpoklady
+
 Chcete-li použít tento kurz, musíte mít následující komponenty:
 
-* Existující fond SQL. Pokud ho nemáte, přečtěte si téma [Vytvoření fondu SQL](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) pro dokončení této součásti.
+* Existující vyhrazený fond SQL. Pokud ho nemáte, přečtěte si téma [vytvoření vyhrazeného fondu SQL](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) pro dokončení této součásti.
 * SSDT pro Visual Studio. Pokud máte aplikaci Visual Studio, pravděpodobně tuto součást již máte. Pokyny k instalaci a možnosti najdete v tématu věnovaném [instalaci sady Visual Studio a rozšíření SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* Plně kvalifikovaný název serveru SQL. Název tohoto serveru najdete v tématu [připojení k fondu SQL](connect-overview.md).
+* Plně kvalifikovaný název serveru SQL. Název tohoto serveru najdete v tématu [připojení k vyhrazenému fondu SQL](connect-overview.md).
 
-## <a name="1-connect-to-sql-pool"></a>1. připojení k fondu SQL
+## <a name="1-connect-to-a-dedicated-sql-pool"></a>1. připojení k vyhrazenému fondu SQL
 1. Otevřete Visual Studio 2019.
-2. Kliknutím na **Zobrazit**  >  **Průzkumník objektů systému SQL Server**otevřete Průzkumník objektů systému SQL Server.
+2. Kliknutím na **Zobrazit**  >  **Průzkumník objektů systému SQL Server** otevřete Průzkumník objektů systému SQL Server.
    
     ![Průzkumník objektů systému SQL Server](./media/get-started-visual-studio/open-ssdt.png)
 3. Klikněte na ikonu **Přidat SQL Server**.
@@ -79,5 +81,5 @@ Teď, když jste navázali připojení k vaší databázi, napíšete dotaz.
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](get-started-power-bi-professional.md).
-Pokud chcete nakonfigurovat prostředí pro ověřování Azure Active Directory, přečtěte si téma [ověření ve fondu SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Pokud chcete nakonfigurovat prostředí pro ověřování Azure Active Directory, přečtěte si téma [ověření ve vyhrazeném fondu SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
  

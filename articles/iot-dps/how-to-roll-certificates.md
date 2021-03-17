@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974883"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951124"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Postup nasazení certifikátů zařízení X. 509
 
@@ -20,14 +20,14 @@ Během životního cyklu řešení IoT budete muset certifikáty navýšit. Dvě
 
 Průběžné certifikáty jsou osvědčenými postupy zabezpečení, které vám pomůžou zabezpečit systém v případě porušení. V rámci této [metodiky předpokládáme](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), že společnost Microsoft vyžaduje, aby byly v zavedeny reaktivní procesy zabezpečení spolu s preventivními opatřeními. Zavedení certifikátů zařízení by mělo být součástí těchto procesů zabezpečení. Četnost změn certifikátů bude záviset na potřebách zabezpečení vašeho řešení. Zákazníci s řešeními, které zahrnují velmi citlivá data, můžou každý den nastavovat certifikát, zatímco ostatní si své certifikáty každých pár let.
 
-Certifikáty se značným zařízením budou zahrnovat aktualizaci certifikátu uloženého v zařízení a ve službě IoT Hub. Následně se může zařízení znovu zřídit pomocí služby IoT Hub s využitím normálního [automatického zřizování](concepts-auto-provisioning.md) se službou Device Provisioning.
+Certifikáty se značným zařízením budou zahrnovat aktualizaci certifikátu uloženého v zařízení a ve službě IoT Hub. Následně se může zařízení znovu zřídit se službou IoT Hub s využitím normálního [zřizování](about-iot-dps.md#provisioning-process) se službou Device Provisioning (DPS).
 
 
 ## <a name="obtain-new-certificates"></a>Získat nové certifikáty
 
 K dispozici je celá řada způsobů, jak získat nové certifikáty pro vaše zařízení IoT. Mezi ně patří získání certifikátů z továrny zařízení, generování vlastních certifikátů a Správa vytvoření certifikátu třetí stranou. 
 
-Certifikáty jsou vzájemně podepsané, aby tvořily řetěz důvěryhodnosti od kořenového certifikátu certifikační autority až po [listový certifikát](concepts-security.md#end-entity-leaf-certificate). Podpisový certifikát je certifikát použitý k podepsání listového certifikátu na konci řetězce důvěry. Podpisový certifikát může být kořenový certifikát CA nebo zprostředkující certifikát v řetězu důvěryhodnosti. Další informace najdete v tématu [certifikáty X. 509](concepts-security.md#x509-certificates).
+Certifikáty jsou vzájemně podepsané, aby tvořily řetěz důvěryhodnosti od kořenového certifikátu certifikační autority až po [listový certifikát](concepts-x509-attestation.md#end-entity-leaf-certificate). Podpisový certifikát je certifikát použitý k podepsání listového certifikátu na konci řetězce důvěry. Podpisový certifikát může být kořenový certifikát CA nebo zprostředkující certifikát v řetězu důvěryhodnosti. Další informace najdete v tématu [certifikáty X. 509](concepts-x509-attestation.md#x509-certificates).
  
 Podpisový certifikát můžete získat dvěma různými způsoby. Prvním způsobem, který se doporučuje pro produkční systémy, je koupit podpisový certifikát od kořenové certifikační autority (CA). Tímto způsobem jsou zabezpečení zřetězené až k důvěryhodnému zdroji. 
 
@@ -36,7 +36,7 @@ Druhým způsobem je vytvořit vlastní certifikáty X. 509 pomocí nástroje, j
 
 ## <a name="roll-the-certificate-on-the-device"></a>Vyveďte certifikát na zařízení.
 
-Certifikáty na zařízení by se měly vždycky ukládat na bezpečné místo, jako je [modul hardwarového zabezpečení (HSM)](concepts-device.md#hardware-security-module). Způsob, jakým povedete certifikáty zařízení, bude záviset na tom, jak byly vytvořeny a nainstalovány v zařízeních na prvním místě. 
+Certifikáty na zařízení by se měly vždycky ukládat na bezpečné místo, jako je [modul hardwarového zabezpečení (HSM)](concepts-service.md#hardware-security-module). Způsob, jakým povedete certifikáty zařízení, bude záviset na tom, jak byly vytvořeny a nainstalovány v zařízeních na prvním místě. 
 
 Pokud máte certifikáty od třetí strany, musíte si vymezit, jak si vyžádají jejich certifikáty. Tento proces může být součástí vašeho ujednání a může se jednat o samostatnou službu, kterou nabízí. 
 
@@ -51,7 +51,7 @@ Když se zařízení zpočátku zřídí prostřednictvím automatického zřizo
 
 Jakmile se nový listový certifikát převede do zařízení, už se nemůže připojit ke službě IoT Hub, protože se k připojení používá nový certifikát. Centrum IoT rozpoznává zařízení jenom se starým certifikátem. Výsledkem pokusu o připojení zařízení bude chyba neautorizovaného připojení. Pokud chcete tuto chybu vyřešit, musíte aktualizovat položku registrace pro zařízení na účet pro nový listový certifikát zařízení. Služba zřizování pak může podle potřeby aktualizovat informace registru IoT Hub zařízení, když se zařízení znovu zřídí. 
 
-Jednou z možných výjimek k této chybě připojení by byl scénář, ve kterém jste ve službě zřizování vytvořili [skupinu pro registraci](concepts-service.md#enrollment-group) zařízení. V takovém případě, pokud se v řetězu certifikátů zařízení neúčtují kořenové nebo zprostředkující certifikáty, bude zařízení rozpoznané, pokud je nový certifikát součástí řetězce důvěryhodnosti definovaného ve skupině pro registraci. Pokud se tento scénář vyskytne jako reakce na porušení zabezpečení, měli byste aspoň zakázané konkrétní certifikáty zařízení ve skupině, které se považují za porušení. Další informace najdete v tématu [zakázaná zařízení specifická v rámci skupiny pro zápis](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Jednou z možných výjimek k této chybě připojení by byl scénář, ve kterém jste ve službě zřizování vytvořili [skupinu pro registraci](concepts-service.md#enrollment-group) zařízení. V takovém případě, pokud se v řetězu certifikátů zařízení neúčtují kořenové nebo zprostředkující certifikáty, bude zařízení rozpoznané, pokud je nový certifikát součástí řetězce důvěryhodnosti definovaného ve skupině pro registraci. Pokud k tomuto scénáři dojde v reakci na porušení zabezpečení, měli byste aspoň zakázat konkrétní certifikáty zařízení ve skupině, které jsou považovány za porušení. Další informace najdete v tématu [zákaz konkrétních zařízení ve skupině pro registraci](./how-to-revoke-device-access-portal.md#disallow-specific-devices-in-an-enrollment-group).
 
 Aktualizace položek registrace pro zahrnuté certifikáty se provádí na stránce **spravovat registrace** . Pro přístup k této stránce použijte následující postup:
 
@@ -69,13 +69,13 @@ Způsob, jakým se aktualizuje záznam registrace, bude záviset na tom, jestli 
 
 Pokud v reakci na porušení zabezpečení provádíte průběžné certifikáty, měli byste použít následující postup, který okamžitě odstraní aktuální certifikát:
 
-1. Klikněte na **jednotlivé registrace**a v seznamu klikněte na položku ID registrace. 
+1. Klikněte na **jednotlivé registrace** a v seznamu klikněte na položku ID registrace. 
 
 2. Klikněte na tlačítko **Odstranit aktuální certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Po dokončení klikněte na **Uložit** .
 
     Tyto kroky by se měly dokončit u primárního a sekundárního certifikátu, pokud dojde k ohrožení obou z nich.
 
-    ![Spravovat jednotlivé registrace](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Spravovat jednotlivé registrace s porušením zabezpečení](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. Po odebrání napadeného certifikátu ze služby zřizování se certifikát může i nadále používat k tomu, aby se zařízení připojilo ke službě IoT Hub, pokud zde existuje registrace zařízení pro něj. Tyto dva způsoby můžete vyřešit: 
 
@@ -92,11 +92,11 @@ Pokud vytváříte certifikáty pro zpracování vypršení platnosti certifiká
 Později, když se sekundární certifikát taky blíží vypršení platnosti a je potřeba ho navrátit, můžete ho použít k primární konfiguraci. Otáčení mezi primárním a sekundárním certifikátem tímto způsobem zkracuje výpadky zařízení, která se snaží zřídit.
 
 
-1. Klikněte na **jednotlivé registrace**a v seznamu klikněte na položku ID registrace. 
+1. Klikněte na **jednotlivé registrace** a v seznamu klikněte na položku ID registrace. 
 
 2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na **Uložit**.
 
-    ![Spravovat jednotlivé registrace pomocí sekundárního certifikátu](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![Spravovat jednotlivé registrace pomocí konce platnosti sekundárního certifikátu](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. Později po vypršení platnosti primárního certifikátu se vraťte a odstraňte tento primární certifikát kliknutím na tlačítko **Odstranit aktuální certifikát** .
 
@@ -116,9 +116,9 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 4. Klikněte na kartu **spravovat registrace** pro instanci služby Device Provisioning a pak klikněte na seznam **skupiny** registrací. V seznamu klikněte na název skupiny zápisu.
 
-5. Klikněte na **certifikát certifikační autority**a vyberte nový certifikát kořenové certifikační autority. Pak klikněte na **Uložit**. 
+5. Klikněte na **certifikát certifikační autority** a vyberte nový certifikát kořenové certifikační autority. Potom klikněte na **Uložit**. 
 
-    ![Vyberte certifikát nové kořenové certifikační autority.](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![Vyberte certifikát nové kořenové certifikační autority pro ohrožený certifikát.](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. Po odebrání napadeného certifikátu ze služby zřizování se certifikát může i nadále používat k tomu, aby se zařízení připojilo ke službě IoT Hub, pokud tam existují registrace zařízení, pro které existuje. Tyto dva způsoby můžete vyřešit: 
 
@@ -132,13 +132,13 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 #### <a name="update-compromised-intermediate-certificates"></a>Aktualizace zabezpečení zprostředkujících certifikátů
 
-1. Klikněte na **skupiny**registrací a potom v seznamu klikněte na název skupiny. 
+1. Klikněte na **skupiny** registrací a potom v seznamu klikněte na název skupiny. 
 
-2. Klikněte na **zprostředkující certifikát**a **odstraňte aktuální certifikát**. Klikněte na ikonu složky a přejděte k novému zprostředkujícímu certifikátu, který se má nahrát pro skupinu pro registraci. Až budete hotovi, klikněte na **Uložit** . Tyto kroky je třeba provést pro primární i sekundární certifikát, pokud dojde k ohrožení bezpečnosti obou.
+2. Klikněte na **zprostředkující certifikát** a **odstraňte aktuální certifikát**. Klikněte na ikonu složky a přejděte k novému zprostředkujícímu certifikátu, který se má nahrát pro skupinu pro registraci. Až budete hotovi, klikněte na **Uložit** . Tyto kroky je třeba provést pro primární i sekundární certifikát, pokud dojde k ohrožení bezpečnosti obou.
 
-    Tento nový zprostředkující certifikát by měl být podepsaný ověřenou kořenovým certifikátem certifikační autority, který už je přidaný do služby zřizování. Další informace najdete v tématu [certifikáty X. 509](concepts-security.md#x509-certificates).
+    Tento nový zprostředkující certifikát by měl být podepsaný ověřenou kořenovým certifikátem certifikační autority, který už je přidaný do služby zřizování. Další informace najdete v tématu [certifikáty X. 509](concepts-x509-attestation.md#x509-certificates).
 
-    ![Spravovat jednotlivé registrace](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![Správa jednotlivých registrací pro napadený zprostředkující](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. Po odebrání napadeného certifikátu ze služby zřizování se certifikát může i nadále používat k tomu, aby se zařízení připojilo ke službě IoT Hub, pokud tam existují registrace zařízení, pro které existuje. Tyto dva způsoby můžete vyřešit: 
@@ -162,9 +162,9 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 
 2. Klikněte na kartu **spravovat registrace** pro instanci služby Device Provisioning a pak klikněte na seznam **skupiny** registrací. V seznamu klikněte na název skupiny zápisu.
 
-3. Klikněte na **certifikát certifikační autority**a vyberte svůj nový kořenový certifikát certifikační autority pod konfigurací **sekundárního certifikátu** . Pak klikněte na **Uložit**. 
+3. Klikněte na **certifikát certifikační autority** a vyberte svůj nový kořenový certifikát certifikační autority pod konfigurací **sekundárního certifikátu** . Potom klikněte na **Uložit**. 
 
-    ![Vyberte certifikát nové kořenové certifikační autority.](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Vyberte certifikát nové kořenové certifikační autority pro vypršení platnosti.](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. Později po vypršení platnosti primárního certifikátu klikněte na kartu **certifikáty** pro instanci služby Device Provisioning. Klikněte na certifikát s vypršenou platností v seznamu a potom klikněte na tlačítko **Odstranit** . Potvrďte odstranění zadáním názvu certifikátu a klikněte na **OK**.
 
@@ -175,13 +175,13 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 #### <a name="update-expiring-intermediate-certificates"></a>Aktualizace s vypršenou platností zprostředkujících certifikátů
 
 
-1. Klikněte na **skupiny**registrací a v seznamu klikněte na název skupiny. 
+1. Klikněte na **skupiny** registrací a v seznamu klikněte na název skupiny. 
 
 2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na **Uložit**.
 
-    Tento nový zprostředkující certifikát by měl být podepsaný ověřenou kořenovým certifikátem certifikační autority, který už je přidaný do služby zřizování. Další informace najdete v tématu [certifikáty X. 509](concepts-security.md#x509-certificates).
+    Tento nový zprostředkující certifikát by měl být podepsaný ověřenou kořenovým certifikátem certifikační autority, který už je přidaný do služby zřizování. Další informace najdete v tématu [certifikáty X. 509](concepts-x509-attestation.md#x509-certificates).
 
-   ![Spravovat jednotlivé registrace pomocí sekundárního certifikátu](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![Správa skupin registrací pomocí vypršení platnosti sekundárního certifikátu](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. Později po vypršení platnosti primárního certifikátu se vraťte a odstraňte tento primární certifikát kliknutím na tlačítko **Odstranit aktuální certifikát** .
 
@@ -197,9 +197,9 @@ Další možností je, aby byly staré i nové certifikáty platné pro krátké
 Jakmile se opětovné zřízení dokončí, zařízení se budou moct připojit k IoT Hub pomocí jejich nových certifikátů.
 
 
-## <a name="blacklist-certificates"></a>Zakázané certifikáty
+## <a name="disallow-certificates"></a>Zakázat certifikáty
 
-V reakci na porušení zabezpečení budete možná muset vystavit certifikát zařízení. Pokud chcete povolit certifikát zařízení, zakažte položku registrace pro cílové zařízení nebo certifikát. Další informace najdete v článku o zakázaných zařízeních v článku [Správa zrušení registrace](how-to-revoke-device-access-portal.md) .
+V reakci na porušení zabezpečení budete možná muset zakázat certifikát zařízení. Pokud chcete zakázat certifikát zařízení, zakažte položku registrace pro cílové zařízení nebo certifikát. Další informace najdete v článku nepovolení zařízení v článku [Správa zrušení registrace](how-to-revoke-device-access-portal.md) .
 
 Jakmile je certifikát zahrnutý jako součást zakázané položky registrace, všechny pokusy o registraci ve službě IoT Hub pomocí těchto certifikátů selžou, i když budou povolené jako součást jiné položky registrace.
  
@@ -208,16 +208,6 @@ Jakmile je certifikát zahrnutý jako součást zakázané položky registrace, 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o certifikátech X. 509 ve službě Device Provisioning najdete v tématu [zabezpečení](concepts-security.md) . 
+- Další informace o certifikátech X. 509 ve službě Device Provisioning najdete v tématu [ověřování certifikátů x. 509.](concepts-x509-attestation.md) 
 - Další informace o tom, jak ověřit vlastnictví certifikátů CA X. 509 pomocí Azure IoT Hub Device Provisioning Service, najdete v tématu [ověření certifikátů](how-to-verify-certificates.md) .
 - Další informace o tom, jak pomocí portálu vytvořit skupinu registrací, najdete v tématu [Správa registrace zařízení pomocí Azure Portal](how-to-manage-enrollments.md).
-
-
-
-
-
-
-
-
-
-

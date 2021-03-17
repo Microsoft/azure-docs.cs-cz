@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831926"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133986"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Řešení potíží se službou Azure Bastion
 
@@ -22,11 +22,7 @@ V tomto článku se dozvíte, jak řešit potíže s Azure bastionu.
 
 **Otázka:** Při pokusu o vytvoření NSG v podsíti Azure bastionu se zobrazí následující chyba: *Skupina zabezpečení sítě nemá <NSG name> potřebná pravidla pro podsíť Azure bastionu AzureBastionSubnet*.
 
-**A:** Pokud vytvoříte a použijete NSG na *AzureBastionSubnet*, ujistěte se, že jste do svého NSG přidali následující pravidla. Pokud tato pravidla nepřidáte, vytvoření nebo aktualizace NSG se nezdaří.
-
-1. Řízení připojení roviny – příchozí na 443 z GatewayManager
-2. Protokolování diagnostiky a další – odchozí na 443 až AzureCloud (regionální značky v rámci této značky služby se zatím nepodporují.)
-3. Cílový virtuální počítač – odchozí pro 3389 a 22 až VirtualNetwork
+**A:** Pokud vytvoříte a použijete NSG na *AzureBastionSubnet*, ujistěte se, že jste přidali požadovaná pravidla do NSG. Seznam požadovaných pravidel najdete v tématu [práce s NSG přístupem a Azure bastionu](./bastion-nsg.md). Pokud tato pravidla nepřidáte, vytvoření nebo aktualizace NSG se nezdaří.
 
 Příklad pravidel NSG je k dispozici pro referenci v šabloně pro [rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 Další informace najdete v tématu [doprovodné materiály k NSG pro Azure bastionu](bastion-nsg.md).
@@ -81,7 +77,7 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Černá obrazovka v Azure Portal
 
-**Otázka:** Po pokusu o připojení pomocí Azure bastionu se zobrazí černá obrazovka v Azure Portal.
+**Otázka:** Při pokusu o připojení pomocí Azure bastionu nemůžu Connnect na cílový virtuální počítač a na Azure Portal se zobrazí černá obrazovka.
 
 **A:** K tomu dojde v případě, že mezi webovým prohlížečem a službou Azure bastionu dojde k problémům se síťovým připojením (Internet Firewall klienta může blokovat provoz WebSockets nebo podobný) nebo mezi Azure bastionu a cílovým virtuálním počítačem. Většina případů zahrnuje NSG, která se používá buď na AzureBastionSubnet, nebo na cílové podsíti virtuálního počítače, která blokuje provoz RDP/SSH ve vaší virtuální síti. Povolte provoz WebSockets na klientské bráně Internet firewall a podívejte se na skupin zabezpečení sítě v cílové podsíti virtuálních počítačů.
 

@@ -14,20 +14,20 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76f7b61b6fb065409a2fe4b2ed8f599f321cd1db
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 0c9e2580d2a88fbbab755f0c3df2f923bdc45548
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542268"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688344"
 ---
-# <a name="bring-a-privileged-access-groups-preview-into-privileged-identity-management"></a>Převedení privilegovaných přístupových skupin (Preview) do Privileged Identity Management
+# <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Převedení privilegovaných přístupových skupin (Preview) do Privileged Identity Management
 
 V Azure Active Directory (Azure AD) můžete přiřazovat předdefinované role Azure AD do skupin cloudu a zjednodušit tak správu přiřazení rolí. K ochraně rolí Azure AD a zabezpečení přístupu teď můžete pomocí Privileged Identity Management (PIM) spravovat přístup za běhu pro členy nebo vlastníky těchto skupin. Pokud chcete spravovat roli Azure AD – přiřadit skupinu jako privilegovaný přístupovou skupinu v Privileged Identity Management, je nutné ji přenést pod správu PIM.
 
 ## <a name="identify-groups-to-manage"></a>Určení skupin pro správu
 
-Ve službě Azure AD můžete vytvořit skupinu s přiřazením rolí, jak je popsáno v tématu [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md). Musíte být vlastníkem skupiny, aby ji bylo možné spravovat pomocí Privileged Identity Management.
+Ve službě Azure AD můžete vytvořit skupinu s přiřazením rolí, jak je popsáno v tématu [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../roles/groups-create-eligible.md). Musíte být vlastníkem skupiny, aby ji bylo možné spravovat pomocí Privileged Identity Management.
 
 1. [Přihlaste se k Azure AD](https://aad.portal.azure.com) s oprávněními role správce privilegovaných rolí.
 1. Vyberte **skupiny** a pak vyberte skupinu role, kterou chcete spravovat v PIM. Seznam můžete vyhledat a filtrovat.
@@ -44,6 +44,12 @@ Ve službě Azure AD můžete vytvořit skupinu s přiřazením rolí, jak je po
 
 > [!NOTE]
 > Po správě privilegovaného přístupového ovládacího skupin ho nejde spravovat. Tím se zabrání jinému správci prostředků v odebrání nastavení Privileged Identity Management.
+>
+
+> [!IMPORTANT]
+> Pokud se skupina privilegovaných přístup odstraní z Azure Active Directory, může trvat až 24 hodin, než se skupina odebere z okna Privileged Access groups (Preview). 
+>
+
 
 ## <a name="next-steps"></a>Další kroky
 

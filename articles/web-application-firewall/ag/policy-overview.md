@@ -5,23 +5,18 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 02/01/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143831"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518732"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Přehled zásad firewallu webových aplikací Azure (WAF)
 
 Zásady firewallu webových aplikací obsahují všechna nastavení a konfigurace WAF. Patří sem vyloučení, vlastní pravidla, spravovaná pravidla atd. Tyto zásady jsou pak přidruženy k aplikační bráně (globálním), naslouchacímu procesu (na pracovišti) nebo pravidlu založenému na cestě (pro identifikátor URI), aby se mohly projevit.
-
-> [!NOTE]
-> Zásady firewallu webových aplikací (WAF) Azure pro jednotlivé identifikátory URI jsou v Public Preview.
-> 
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, mohou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Počet zásad, které můžete vytvořit, není nijak omezený. Když vytváříte zásadu, musí být přidružená k aplikační bráně, aby se projevila. Dá se přidružit k libovolné kombinaci aplikačních bran, posluchačů a pravidel založených na cestách.
 
@@ -33,33 +28,33 @@ Pokud chcete použít jednu zásadu pro všechny lokality, můžete k ní přidr
 
 ## <a name="per-site-waf-policy"></a>Zásady WAF podle webu
 
-Pomocí zásad pro WAF pro jednotlivé lokality můžete chránit několik lokalit s různými požadavky na zabezpečení za jednou WAF pomocí zásad pro jednotlivé lokality. Pokud máte například pět webů za vaší WAF, můžete mít pět samostatných zásad WAF (jeden pro každý naslouchací proces) pro přizpůsobení vyloučení, vlastních pravidel, spravovaných sad pravidel a všech dalších nastavení WAF pro jednotlivé lokality.
+S využitím zásad WAF pro jednotlivé weby můžete zajistit ochranu několika webů s různými požadavky na zabezpečení za jediným WAF. Například pokud je za vaším WAF pět webů, můžete mít pět samostatných zásad WAF (pro každý naslouchací proces jednu) a přizpůsobit vyloučení, vlastní pravidla, spravované sady pravidel a všechna ostatní nastavení WAF pro jednotlivé weby.
 
-Řekněme, že se na aplikační bráně nastavila globální zásada. Pak použijete pro naslouchací proces v této aplikační bráně jinou zásadu. Zásady naslouchacího procesu se teď projeví jenom u tohoto naslouchacího procesu. Globální zásady služby Application Gateway se stále vztahují na všechny ostatní naslouchací procesy a pravidla na základě cest, ke kterým nejsou přiřazená konkrétní zásada.
+Řekněme, že pro vaši službu Application Gateway platí globální zásady. Pak pro naslouchací proces v této službě Application Gateway použijete jiné zásady. Zásady tohoto naslouchacího procesu teď platí pouze pro tento naslouchací proces. Pro všechny ostatní naslouchací procesy a pravidla založená na cestě, ke kterým nejsou přiřazené konkrétní zásady, stále platí globální zásady služby Application Gateway.
 
 ## <a name="per-uri-policy"></a>Zásady pro identifikátor URI
 
 Pro ještě více přizpůsobení na úrovni identifikátoru URI můžete přidružit zásadu WAF k pravidlu na základě cesty. Pokud některé stránky v rámci jedné lokality vyžadují různé zásady, můžete v zásadách WAF provádět změny, které mají vliv jenom na daný identifikátor URI. To se může vztahovat na platební nebo přihlašovací stránku nebo na jakékoli jiné identifikátory URI, které potřebují ještě konkrétnější zásady WAF, než ostatní weby za vaší WAF.
 
-Podobně jako u zásad WAF pro jednotlivé lokality potlačuje konkrétnější zásady méně konkrétní. To znamená, že zásady vázané na identifikátor URI na mapě cest URL přepíšou všechny zásady pro lokalitu a globální WAF nad ní.
+Stejně jako u zásad WAF pro jednotlivé lokality potlačí více specifických zásad méně konkrétních. To znamená, že zásady vázané na identifikátor URI na mapě cest URL přepíšou všechny zásady pro lokalitu a globální WAF nad ní.
 
-## <a name="example"></a>Příklad
+### <a name="example"></a>Příklad
 
 Řekněme, že máte tři lokality: contoso.com, fabrikam.com a adatum.com vše za stejnou aplikační bránou. Chcete WAF použít na všechny tři lokality, ale potřebujete přičíst zabezpečení pomocí adatum.com, protože to znamená, že zákazníci navštěvují, procházejí a kupují produkty.
 
 V případě potřeby můžete použít globální zásady na WAF, s některými základními nastaveními, vyloučeními nebo vlastními pravidly, pokud je to potřeba k zastavení některých falešně pozitivních dat. V takovém případě není nutné mít spuštěná globální pravidla pro vkládání SQL, protože fabrikam.com a contoso.com jsou statické stránky bez back-endu SQL. Tato pravidla pak můžete zakázat v globálních zásadách.
 
-Tato globální zásada je vhodná pro contoso.com a fabrikam.com, ale musíte být opatrní s adatum.com, kde se zpracovávají informace o přihlášení a platby. U naslouchacího procesu adatum můžete použít zásadu pro jednotlivé weby a ponechat pravidla SQL spuštěná. Taky předpokládáme, že soubor cookie blokuje nějaký provoz, takže můžete vytvořit vyloučení pro tento soubor cookie, abyste zastavili falešně pozitivní výsledky. 
+Tato globální zásada je vhodná pro contoso.com a fabrikam.com, ale musíte být opatrní s adatum.com, kde jsou zpracovávány přihlašovací údaje a platby. U naslouchacího procesu adatum můžete použít zásadu pro jednotlivé weby a ponechat pravidla SQL spuštěná. Taky předpokládáme, že soubor cookie blokuje nějaký provoz, takže můžete vytvořit vyloučení pro tento soubor cookie, abyste zastavili falešně pozitivní výsledky. 
 
 Adatum.com/payments identifikátor URI je tam, kde je potřeba být opatrní. Proto u tohoto identifikátoru URI použijte jinou zásadu a nechte všechna pravidla povolená a také odeberte všechna vyloučení.
 
-V tomto příkladu máte globální zásadu, která se vztahuje na dvě lokality. Máte zásady pro jednotlivé lokality, které platí pro jednu lokalitu, a pak zásady pro jednotlivé identifikátory URI, které platí pro jedno konkrétní pravidlo založené na cestě. V tomto příkladu najdete odkaz (vložení odkazu sem), jak vytvořit zásady pro jednotlivé lokality a identifikátory URI pro odpovídající prostředí PowerShell.
+V tomto příkladu máte globální zásadu, která se vztahuje na dvě lokality. Máte zásady pro jednotlivé lokality, které platí pro jednu lokalitu, a pak zásady pro jednotlivé identifikátory URI, které platí pro jedno konkrétní pravidlo založené na cestě. V tomto příkladu najdete informace v tématu [Konfigurace zásad WAF pro jednotlivé lokality pomocí Azure PowerShell](per-site-policies.md) pro odpovídající prostředí PowerShell.
 
 ## <a name="existing-waf-configurations"></a>Existující konfigurace WAF
 
-Všechna nová nastavení WAF firewallu webových aplikací (vlastní pravidla, konfigurace sady spravovaných pravidel, vyloučení atd.) existují v zásadách WAF. Pokud máte existující WAF, tato nastavení můžou pořád existovat v konfiguraci WAF. Další informace o přechodu na nové zásady WAF najdete v části [migrace WAF config do zásady WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy). 
+Všechna nová nastavení WAF firewallu webových aplikací (vlastní pravidla, konfigurace sady spravovaných pravidel, vyloučení atd.) existují v zásadách WAF. Pokud máte existující WAF, tato nastavení můžou pořád existovat v konfiguraci WAF. Další informace o přechodu na nové zásady WAF najdete v části [migrace WAF config do zásady WAF](./migrate-policy.md). 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí Azure PowerShell vytvořit zásady pro jednotlivé lokality a identifikátory URI.
+- [Pomocí Azure PowerShell vytvořit zásady pro jednotlivé lokality a identifikátory URI](per-site-policies.md).

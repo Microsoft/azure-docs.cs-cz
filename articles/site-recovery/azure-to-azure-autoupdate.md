@@ -2,18 +2,18 @@
 title: Automatická aktualizace služby mobility v Azure Site Recovery
 description: Přehled automatické aktualizace služby mobility při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
-ms.author: rajanaki
-ms.openlocfilehash: 43b74db0059c003d64558f5b61f1c5cc2bf52759
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: sideeksh
+ms.openlocfilehash: 42d3c74229ab7eeec0ac716073a9e631775fd002
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038048"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187336"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby mobility v Azure do Azure – replikace
 
@@ -57,7 +57,7 @@ Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuá
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Přepínání nastavení aktualizace rozšíření v rámci trezoru
 
 1. V trezoru Recovery Services klikněte na **Správa**  >  **Site Recovery infrastruktura**.
-1. V **For Azure Virtual Machines**části  >  **Nastavení aktualizace rozšíření**Azure Virtual Machines  >  **umožňuje Site Recovery spravovat**, vyberte **zapnuto**.
+1. V **For Azure Virtual Machines** části  >  **Nastavení aktualizace rozšíření** Azure Virtual Machines  >  **umožňuje Site Recovery spravovat**, vyberte **zapnuto**.
 
    Pokud chcete rozšíření spravovat ručně, vyberte **vypnuto**.
 
@@ -69,7 +69,7 @@ Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuá
 > Když vyberete možnost **povoluje Site Recovery správě**, nastavení se použije na všechny virtuální počítače v trezoru.
 
 > [!NOTE]
-> Obě možnosti vás upozorní na účet Automation, který se používá ke správě aktualizací. Pokud tuto funkci používáte v trezoru poprvé, vytvoří se ve výchozím nastavení nový účet Automation. Alternativně můžete upravit nastavení a zvolit existující účet Automation. Všechny následné akce, které trvalo replikace ve stejném trezoru, budou používat dřív vytvořený účet Automation. V současné době rozevírací nabídka bude zobrazovat jenom účty Automation, které jsou ve stejné skupině prostředků jako trezor.
+> Obě možnosti vás upozorní na účet Automation, který se používá ke správě aktualizací. Pokud tuto funkci používáte v trezoru poprvé, vytvoří se ve výchozím nastavení nový účet Automation. Alternativně můžete upravit nastavení a zvolit existující účet Automation. Po definování budou všechny následné akce pro povolení replikace ve stejném trezoru používat vybraný účet Automation. V současné době rozevírací nabídka bude zobrazovat jenom účty Automation, které jsou ve stejné skupině prostředků jako trezor.
 
 > [!IMPORTANT]
 > Následující skript musí běžet v kontextu účtu Automation.

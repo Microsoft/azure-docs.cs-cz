@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c83e46932e8d2a28d8503fe3fb6514988c364d97
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266521"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125265"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: seřazení Azure Data Box Disk
 
@@ -41,7 +41,7 @@ Před nasazením nástroje dokončete následující požadavky na konfiguraci p
 Než začnete, ujistěte se, že:
 
 * Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
-  * Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+  * Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
   * Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
 
 ## <a name="order-data-box-disk"></a>Objednání služby Data Box Disk
@@ -49,7 +49,7 @@ Než začnete, ujistěte se, že:
 Přihlásit se k:
 
 * Azure Portal na této adrese URL: https://portal.azure.com pro objednání data box disk.
-* Nebo Azure Government portál na této adrese URL: https://portal.azure.us . Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+* Nebo Azure Government portál na této adrese URL: https://portal.azure.us . Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](../azure-government/documentation-government-get-started-connect-with-portal.md).
 
 Pro objednání Data Box Disk proveďte následující kroky.
 
@@ -72,7 +72,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
   
 4. Vyberte **Data Box Disk**. Maximální kapacita řešení u jedné objednávky 5 disků je 35 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
-     ![Možnost výběru služby Data Box Disk](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![Vyberte možnost Data Box Disk 2.](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. V části **Objednávka** zadejte **Podrobnosti objednávky**. Zadejte nebo vyberte následující informace.
 
@@ -83,7 +83,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
     |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. |
     |Odhadovaná velikost dat v TB| Zadejte odhad v TB. <br>Podle objemu dat vám Microsoft pošle odpovídající počet 8TB disků SSD (s využitelnou kapacitou 7 TB). <br>Maximální využitelná kapacita 5 disků je 35 TB. |
     |Klíč pro disky| Pokud zaškrtnete možnost **Použít namísto klíče vygenerovaného službou Azure vlastní klíč**, zadejte klíč pro disky. <br> Zadejte alfanumerický klíč od 12 do 32 znaků, který má alespoň jeden numerický a jeden speciální znak. Povolené speciální znaky jsou `@?_+`. <br> Tuto možnost můžete volitelně přeskočit a k odemknutí disků použít klíč vygenerovaný službou Azure.|
-    |Cíl úložiště     | Zvolte účet úložiště, spravované disky nebo obojí. <br> Na základě zadané oblasti Azure vyberte účet úložiště z filtrovaného seznamu existujícího účtu úložiště. Data Box Disk lze propojit pouze s 1 účtem úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. <br>Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
+    |Cíl úložiště     | Zvolte účet úložiště, spravované disky nebo obojí. <br> Na základě zadané oblasti Azure vyberte účet úložiště z filtrovaného seznamu existujícího účtu úložiště. Data Box Disk lze propojit pouze s 1 účtem úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. <br>Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).|
 
     Pokud jako cíl úložiště používáte účet úložiště, podívejte se na následující snímek obrazovky:
 
@@ -99,7 +99,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahrává virtuální pevné disky do přípravného účtu úložiště a pak je převede na spravované disky a přesune se do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-6. Klikněte na **Další**.
+6. Klikněte na **Next** (Další).
 
     ![Zadání podrobností objednávky](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 

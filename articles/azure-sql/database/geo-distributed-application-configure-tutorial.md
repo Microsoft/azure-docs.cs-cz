@@ -4,19 +4,19 @@ description: Naučte se konfigurovat databázi v Azure SQL Database a klientské
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 90bfe3f6e8d5ed19380ab2b48aa38e598c3f109a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 89d285a56553f5c521d1edbc92786debd4a92e32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501606"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659286"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Kurz: implementace geografické distribuované databáze (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 K dokončení tohoto kurzu se ujistěte, že máte nainstalované následující položky:
 
@@ -227,10 +227,10 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
             for(int i = 1; i < 1000; i++) {
                 //  loop will run for about 1 hour
                 System.out.print(i + ": insert on primary " +
-                   (insertData((highWaterMark + i))?"successful":"failed"));
+                   (insertData((highWaterMark + i)) ? "successful" : "failed"));
                 TimeUnit.SECONDS.sleep(1);
                 System.out.print(", read from secondary " +
-                   (selectData((highWaterMark + i))?"successful":"failed") + "\n");
+                   (selectData((highWaterMark + i)) ? "successful" : "failed") + "\n");
                 TimeUnit.SECONDS.sleep(3);
             }
          } catch(Exception e) {
@@ -333,7 +333,7 @@ Testování převzetí služeb při selhání:
 1. Spustit ruční převzetí služeb při selhání pro skupinu převzetí služeb při selhání:
 
    ```powershell
-   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
+   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 

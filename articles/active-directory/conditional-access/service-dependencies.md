@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419729"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91258604"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Jaké jsou závislosti služby v Azure Active Directory podmíněný přístup? 
 
@@ -25,7 +25,7 @@ Pomocí zásad podmíněného přístupu můžete zadat požadavky na přístup 
 Když přímo přistupujete k webu nebo službě, je možné, že dopad souvisejících zásad se obvykle snadno vyhodnocuje. Například pokud máte zásadu, která vyžaduje službu Multi-Factor Authentication (MFA) pro SharePoint Online, vynutí se pro každé přihlášení k webovému portálu služby SharePoint MFA. Není však vždy přímo předáván k vyhodnocení dopadu zásady, protože existují cloudové aplikace se závislostmi na jiné cloudové aplikace. Týmy Microsoft můžou například poskytnout přístup k prostředkům v SharePointu Online. Takže při přístupu k Microsoft Teams v našem scénáři se vztahují i na zásady ověřování serveru SharePoint. 
 
 > [!TIP]
-> Použití aplikace [office 365 (Preview)](concept-conditional-access-cloud-apps.md#office-365-preview) bude cílit na všechny aplikace Office, aby se předešlo problémům se závislostmi služeb v sadě Office.
+> Použití aplikace [office 365](concept-conditional-access-cloud-apps.md#office-365) bude cílit na všechny aplikace Office, aby se předešlo problémům se závislostmi služeb v sadě Office.
 
 ## <a name="policy-enforcement"></a>Vynucování zásad 
 
@@ -40,7 +40,7 @@ Následující diagram znázorňuje závislosti služby MS Teams. Plné šipky o
 
 V souladu s osvědčenými postupy byste měli v případě potřeby nastavit běžné zásady napříč souvisejícími aplikacemi a službami. Konzistentní stav zabezpečení poskytuje nejlepší uživatelské prostředí. Například nastavení společné zásady napříč Exchangem Online, SharePointem Online, Microsoft teams a Skype pro firmy výrazně zkracuje neočekávané výzvy, které mohou vzniknout z různých zásad, které se vztahují na služby pro příjem dat. 
 
-Skvělým způsobem, jak toho dosáhnout pomocí aplikací v sadě Office Stack, je použít [sadu Office 365 (Preview)](concept-conditional-access-cloud-apps.md#office-365-preview) místo cílení na jednotlivé aplikace.
+Skvělým způsobem, jak toho dosáhnout pomocí aplikací v sadě Office Stack, je použít [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365) místo cílení na jednotlivé aplikace.
 
 Následující tabulka uvádí další závislosti služby, ve kterých musí klientské aplikace splňovat požadavky.  
 

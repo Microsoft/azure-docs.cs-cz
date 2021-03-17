@@ -4,16 +4,16 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281986"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493760"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -31,17 +31,18 @@ Zkopíruje zdrojová data do cílového umístění. Podporovány jsou následuj
   - Soubory Azure (SAS) – > soubory Azure (SAS)
   - Soubory Azure (SAS) – > Azure Blob (ověřování SAS nebo OAuth)
   - Amazon Web Services (AWS) S3 (přístupový klíč) – > Azure Block BLOB (ověřování SAS nebo OAuth)
+  - Google Cloud Storage (klíč účtu služby) – > Azure Block BLOB (ověřování SAS nebo OAuth) [Preview]
 
 Další informace najdete v části Příklady tohoto článku.
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Upřesnit
+## <a name="advanced"></a>Pokročilý
 
 AzCopy automaticky detekuje typ obsahu souborů při jejich nahrávání z místního disku. AzCopy detekuje typ obsahu na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -90,7 +91,7 @@ Nahrajte celý adresář pomocí tokenu SAS:
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
 
-– nebo –
+nebo
 
 ```azcopy
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive --put-md5
@@ -107,6 +108,14 @@ Nahrávání souborů a adresářů pomocí tokenu SAS a zástupných znaků (*)
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+Nahrajte soubory a adresáře do Azure Storage účtu a nastavte v objektu BLOB značky kódované řetězce dotazu. 
+
+- K nastavení značek {Key = "bla bla", Val = "foo"} a {Key = "bla bla 2", Val = "bar"} použijte následující syntaxi: `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- Klíče a hodnoty jsou zakódované v adrese URL a páry klíč-hodnota jsou oddělené znakem ampersand (' & ').
+
+- Při nastavování značek u objektů BLOB existují další oprávnění (ne pro značky) v SAS, aniž by služba poskytovala chybu autorizace zpátky.
 
 Stažení jednoho souboru pomocí ověřování OAuth. Pokud jste ještě přihlášeni k AzCopy, spusťte `azcopy login` příkaz před spuštěním následujícího příkazu.
 
@@ -214,9 +223,49 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+Přenos souborů a adresářů do Azure Storage účtu a nastavení daných značek kódovaných v řetězci dotazu v objektu BLOB. 
+
+- K nastavení značek {Key = "bla bla", Val = "foo"} a {Key = "bla bla 2", Val = "bar"} použijte následující syntaxi: `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- Klíče a hodnoty jsou zakódované v adrese URL a páry klíč-hodnota jsou oddělené znakem ampersand (' & ').
+    
+- Při nastavování značek u objektů BLOB existují další oprávnění (ne pro značky) v SAS, aniž by služba poskytovala chybu autorizace zpátky.
+
+Zkopírujte jeden objekt, který se Blob Storage z Google Cloud Storage, pomocí klíče účtu služby a tokenu SAS. Nejdřív nastavte proměnnou prostředí GOOGLE_APPLICATION_CREDENTIALS pro zdroj Google Cloud Storage.
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+Zkopírujte celý adresář pro Blob Storage z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS. Nejdřív nastavte proměnnou prostředí GOOGLE_APPLICATION_CREDENTIALS pro zdroj Google Cloud Storage.
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+Zkopírování celého kontejneru do Blob Storage z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS. Nejdřív nastavte proměnnou prostředí GOOGLE_APPLICATION_CREDENTIALS pro zdroj Google Cloud Storage.
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Zkopírujte všechny množiny do Blob Storage z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS. Nejprve nastavte proměnné prostředí GOOGLE_APPLICATION_CREDENTIALS a GOOGLE_CLOUD_PROJECT =<Project-ID> pro zdroj GC
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Zkopírujte podmnožinu sad pomocí zástupného znaku (*) v názvu kontejneru z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS pro cíl. Nejdřív nastavte proměnné prostředí GOOGLE_APPLICATION_CREDENTIALS a GOOGLE_CLOUD_PROJECT =<Project-ID> pro zdroj Google Cloud Storage.
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
 ## <a name="options"></a>Možnosti
 
 **--záloha** Aktivuje systém Windows "SeBackupPrivilege for loades" nebo SeRestorePrivilege for downloads, aby bylo možné AzCopy zobrazit a číst všechny soubory bez ohledu na jejich oprávnění systému souborů a obnovit všechna oprávnění. Vyžaduje, aby účet používající AzCopy již má tato oprávnění (například má oprávnění správce nebo je členem `Backup Operators` skupiny). Tento příznak aktivuje oprávnění, která už účet má.
+
+**--BLOB-Tags** Tagy řetězcové sady objektů BLOB pro kategorizaci dat v účtu úložiště.
 
 **--typ BLOB-** String definuje typ objektu BLOB v cíli. Používá se k nahrávání objektů BLOB a při kopírování mezi účty (výchozí `Detect` ). Platné hodnoty zahrnují `Detect` , `BlockBlob` , `PageBlob` a `AppendBlob` . Při kopírování mezi účty hodnota způsobí, že `Detect` AzCopy použije typ zdrojového objektu BLOB k určení typu cílového objektu BLOB. Při nahrávání souboru určí, `Detect` jestli se jedná o soubor VHD nebo VHDX na základě přípony souboru. Pokud je soubor etherem VHD nebo VHDX, AzCopy soubor považuje za objekt blob stránky. (výchozí "Detect")
 
@@ -254,15 +303,19 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--řetězec z-na** volitelně Určuje kombinaci zdrojového cíle. Například: `LocalBlob` , `BlobLocal` , `LocalBlobFS` .
 
-**--** nápovědu pro kopírování.
+**--**  nápovědu pro kopírování.
 
 **--include-After** String zahrnuje pouze soubory změněné za dané datum a čas nebo po něm. Hodnota by měla být ve formátu ISO8601. Pokud není zadané žádné časové pásmo, předpokládá se, že hodnota je v místním časovém pásmu počítače, na kterém běží AzCopy. například `2020-08-19T15:04:00Z` pro čas UTC nebo `2020-08-19` pro půlnoc (00:00) v místním časovém pásmu. Jako u AzCopy 10,5 se tento příznak vztahuje pouze na soubory, nikoli na složky, takže vlastnosti složky nebudou zkopírovány při použití tohoto příznaku v `--preserve-smb-info` nebo `--preserve-smb-permissions` .
+
+ **--include-před** řetězec obsahuje pouze soubory změněné před nebo podle daného data a času. Hodnota by měla být ve formátu ISO8601. Pokud není zadané žádné časové pásmo, předpokládá se, že hodnota je v místním časovém pásmu počítače, na kterém běží AzCopy. Například `2020-08-19T15:04:00Z` pro čas UTC nebo `2020-08-19` pro půlnoc (00:00) v místním časovém pásmu. Od AzCopy 10,7 se tento příznak vztahuje pouze na soubory, nikoli na složky, takže vlastnosti složky nebudou zkopírovány při použití tohoto příznaku v `--preserve-smb-info` nebo `--preserve-smb-permissions` .
 
 **--include-** Attribute String (pouze Windows) obsahuje soubory, jejichž atributy se shodují se seznamem atributů. Příklad: A; Pracují Í
 
 **--include-Path** řetězec zahrnuje pouze tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: `myFolder;myFolder/subDirName/file.pdf` ).
 
 **--include – řetězec vzoru** zahrne při kopírování jenom tyto soubory. Tato možnost podporuje zástupné znaky (*). Oddělte soubory pomocí `;` .
+
+**--list-of-** Versions určuje soubor, ve kterém je každé ID verze uvedené na samostatném řádku. Ujistěte se, že zdroj musí ukazovat na jeden objekt BLOB a že všechna ID verzí zadaná v souboru, který tento příznak používá, musí patřit pouze do zdrojového objektu BLOB. AzCopy stáhne zadané verze do zadané cílové složky. Další informace najdete v tématu [stažení předchozích verzí objektu BLOB](./storage-use-azcopy-v10.md#transfer-data).
 
 **--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí `INFO` ). 
 
@@ -290,7 +343,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--S2S-Handle-neplatný-řetězec metadat** určuje, jak se zpracovávají neplatné klíče metadat. Dostupné možnosti: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (výchozí `ExcludeIfInvalid` ). (výchozí "ExcludeIfInvalid")
 
-**--S2S-Preserve-úroveň přístupu**   Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy nastavení úrovně přístupu není podporované, použijte s2sPreserveAccessTier = false, aby se vynechá kopírování úrovně přístupu. (výchozí hodnota true).  (výchozí hodnota true)
+**--S2S-Preserve-úroveň přístupu**   Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md) . V případech, kdy nastavení úrovně přístupu není podporované, použijte s2sPreserveAccessTier = false, aby se vynechá kopírování úrovně přístupu. (výchozí `true` ).  (výchozí hodnota true)
 
 **--S2S-Preserve-Properties**   Zachovat úplné vlastnosti během kopírování Service to Service. V případě nesamostatného zdroje souborů AWS S3 a Azure File nevrátí operace list úplné vlastnosti objektů a souborů. Aby bylo možné zachovat úplné vlastnosti, AzCopy potřebuje odeslat jednu další žádost na jeden objekt nebo soubor. (výchozí hodnota true)
 
@@ -302,6 +355,6 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--Trusted – řetězec Microsoft-přípony** Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí formát je `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

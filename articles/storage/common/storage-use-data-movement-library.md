@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888037"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023410"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat s využitím knihovny pro přesun dat
 
@@ -44,12 +45,12 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která bě�
 3. Otevřete tento adresář v Visual Studio Code. Tento krok můžete rychle provést pomocí příkazového řádku zadáním `code .` v systému Windows.
 4. Nainstalujte [rozšíření C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) z webu Visual Studio Code Marketplace. Restartujte Visual Studio Code.
 5. V tomto okamžiku byste měli vidět dvě výzvy. Jedna je určena k přidání "požadovaných assetů pro sestavení a ladění". Klikněte na tlačítko Ano. Další výzvou pro obnovení nevyřešených závislostí. Klikněte na tlačítko obnovit.
-6. Upravte `launch.json` v části `.vscode` na použít externí terminál jako konzolu. Toto nastavení by se mělo číst jako`"console": "externalTerminal"`
+6. Upravte `launch.json` v části `.vscode` na použít externí terminál jako konzolu. Toto nastavení by se mělo číst jako `"console": "externalTerminal"`
 7. Visual Studio Code umožňuje ladit aplikace .NET Core. Stiskněte `F5` ke spuštění aplikace a ověřte, že instalace funguje. Měl by se zobrazit "Hello World!" vytištěno do konzoly.
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>Přidání knihovny pro přesun dat do projektu
 
-1. Přidejte nejnovější verzi knihovny pro přesun dat do `dependencies` části `<project-name>.csproj` souboru. V době psaní by tato verze byla`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. Přidejte nejnovější verzi knihovny pro přesun dat do `dependencies` části `<project-name>.csproj` souboru. V době psaní by tato verze byla `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. Zobrazí se výzva k obnovení projektu. Klikněte na tlačítko obnovit. Svůj projekt můžete také obnovit z příkazového řádku zadáním příkazu `dotnet restore` v kořenu adresáře projektu.
 
 Upravit `<project-name>.csproj` :

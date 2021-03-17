@@ -1,6 +1,6 @@
 ---
 title: Základní sestavy z Verizon | Microsoft Docs
-description: 'Vzorce používání pro CDN můžete zobrazit pomocí následujících sestav: šířka pásma, přenesená data, počet přístupů, stavy mezipaměti, poměr přístupů do mezipaměti, přenesených dat IPV4/IPV6.'
+description: Naučte se, jak získat přístup k základním sestavám Verizon prostřednictvím portálu pro správu profilů Verizon a jak je zobrazit.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888440"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90985533"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
 
@@ -77,7 +77,7 @@ Tato sestava popisuje distribuci stavových kódů požadavků pro váš obsah. 
 Tato sestava popisuje distribuci přístupů do mezipaměti a neúspěšných přístupů do mezipaměti pro požadavky klientů. Vzhledem k tomu, že nejrychlejší výsledky výkonu z hlediska přístupů do mezipaměti, můžete optimalizovat rychlost doručování dat díky minimalizaci přístupů do mezipaměti a přístupů do mezipaměti s vypršenou platností. 
 
 Pokud chcete snížit počet neúspěšných přístupů do mezipaměti, nakonfigurujte zdrojový server tak, aby minimalizoval používání následujících možností: 
- * `no-cache`hlavičky odpovědi
+ * `no-cache` hlavičky odpovědi
  * Dotaz – ukládání řetězců do mezipaměti, pokud není potřeba striktně  
  * Kódy odpovědí, které nejsou v mezipaměti
 
@@ -100,7 +100,7 @@ Pokud chcete snížit počet přístupů do mezipaměti s vypršenou platností,
 * TCP_MISS: Tento stav indikuje, že v bodu POP, který je nejbližší klientovi, nebyla nalezena verze požadovaného prostředku uložená v mezipaměti. Asset se požaduje buď ze zdrojového serveru, nebo ze zdrojového stíněného serveru. Pokud zdrojový server nebo zdrojový chráněný server vrátí Asset, bude obsluhován klientovi a uložen do mezipaměti v klientském i hraničním serveru. V opačném případě se vrátí stavový kód, který není 200 (například 403 zakázán nebo 404 nebyl nalezen).
 * TCP_EXPIRED_HIT: Tento stav se oznamuje, když se žádost, která cílí na prostředek s hodnotou TTL, zpracovala přímo z tohoto bodu na klienta. Například po vypršení platnosti maximálního stáří prostředku. 
   
-   Požadavek na vypršení platnosti obvykle vede k replatným žádostem na zdrojový server. Aby se stav TCP_EXPIRED_HIT probíhat, musí zdrojový server indikovat, že neexistuje novější verze assetu. Tato situace obvykle vede k aktualizaci hlaviček pro řízení mezipaměti a vypršení platnosti prostředku.
+   Požadavek na vypršení platnosti obvykle vede k replatným žádostem na zdrojový server. Aby se stav TCP_EXPIRED_HIT probíhat, musí zdrojový server indikovat, že neexistuje novější verze assetu. Tato situace obvykle vede k aktualizaci hlaviček Cache-Control a vypršení platnosti assetu.
 * TCP_EXPIRED_MISS: Tento stav je hlášen, když je do klienta obsluhována novější verze prostředku v mezipaměti s vypršenou platností. K tomuto stavu dochází, pokud vypršela platnost hodnoty TTL pro prostředek v mezipaměti (například max. stáří) a zdrojový server vrátí novější verzi tohoto prostředku. Tato nová verze assetu se obsluhuje z klienta namísto verze v mezipaměti. Navíc je uložen do mezipaměti na hraničním serveru a klientovi.
 * CONFIG_NOCACHE: Tento stav indikuje konfiguraci specifickou pro konkrétního zákazníka, po které se bod POP Edge zabránil v ukládání prostředku do mezipaměti.
 * ŽÁDNÉ – tento stav označuje, že nebyla provedena kontrolu aktuálnosti obsahu mezipaměti.

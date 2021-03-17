@@ -7,12 +7,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336607"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89075252"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytváření Service Busch prostředků pomocí šablon Azure Resource Manager
 
@@ -29,7 +30,7 @@ Azure Resource Manager šablony vám pomůžou definovat prostředky k nasazení
 
 Tyto šablony Service Bus Azure Resource Manager jsou k dispozici ke stažení a nasazení. Kliknutím na následující odkazy zobrazíte podrobnosti o každém z nich s odkazy na šablony na GitHubu:
 
-* [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
+* [Vytvoření oboru názvů Service Busu](service-bus-resource-manager-namespace.md)
 * [Vytvoření oboru názvů Service Bus s využitím fronty](service-bus-resource-manager-namespace-queue.md)
 * [Vytvoření oboru názvů Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
 * [Vytvoření oboru názvů Service Bus s použitím fronty a autorizačního pravidla](service-bus-resource-manager-namespace-auth-rule.md)
@@ -174,7 +175,7 @@ Set-AzContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Nastavení skupiny prostředků
 
-Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
+Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Například:
 
 ```powershell
 New-AzResourceGroup -Name MyDemoRG -Location "West US"

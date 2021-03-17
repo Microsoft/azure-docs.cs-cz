@@ -3,34 +3,33 @@ title: M-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady M-Series.
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 91c29864367380a303a006d4aac823a22a966a2b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654782"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563088"
 ---
 # <a name="m-series"></a>Řada M
 
 Řada M-Series nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TiB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Velikosti řady M-Series se podporují na &reg; &reg; procesorech Intel Xeon E7-8890 V3 @ 2.50 GHz a Intel &reg; Xeon &reg; Platinum 8280M (Cascade Lake).
 
-Funkce virtuálního počítače řady M-Series s &reg; technologií Intel Hyper-Threading.
+Funkce virtuálního počítače řady M-Series &reg; Hyper-Threading technologie Intel.
 
-ACU: 160–180
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-Akcelerátor zápisu:  [podporováno](./how-to-enable-write-accelerator.md)
+[ACU](acu.md): 160-180<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|
@@ -49,7 +48,7 @@ Akcelerátor zápisu:  [podporováno](./how-to-enable-write-accelerator.md)
 | Standard_M128 <sup>1</sup>     | 128 | 2 048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> více než 64 vCPU vyžaduje jeden z těchto podporovaných hostovaných operačních systémech: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 a Red Hat Enterprise Linux, CentOS 7,3 nebo Oracle Linux 7,3 s lis 4.2.1.
+<sup>1</sup> více než 64 vCPU vyžaduje jednu z těchto podporovaných hostovaných verzí: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 a Red Hat Enterprise Linux, CentOS 7,3 nebo Oracle Linux 7,3 s lis 4.2.1.
 
 <sup>2</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
@@ -60,7 +59,7 @@ Akcelerátor zápisu:  [podporováno](./how-to-enable-write-accelerator.md)
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

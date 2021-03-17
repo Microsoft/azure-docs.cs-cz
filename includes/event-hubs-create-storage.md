@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75692528"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro agenta Event Processor Host
@@ -22,7 +22,7 @@ Event Processor Host je inteligentní agent, který zjednodušuje přijímání 
 
     ![Vytvoření položky nabídky prostředků, portál Microsoft Azure](./media/event-hubs-create-storage/create-resource.png)
 
-2. Vyberte **úložiště**  >  **účet**úložiště.
+2. Vyberte **Úložiště** > **Účet úložiště**.
    
     ![Vyberte účet úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/select-storage-account.png)
 

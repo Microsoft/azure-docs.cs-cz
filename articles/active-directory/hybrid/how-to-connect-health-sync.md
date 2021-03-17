@@ -3,7 +3,7 @@ title: Používání služby Azure AD Connect Health se synchronizací | Dokumen
 description: Toto je stránka o službě Azure AD Connect Health, která popisuje sledování synchronizace Azure AD Connect.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
@@ -16,17 +16,17 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359139"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016979"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health.  Informace o sledování služby AD FS pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
 
-![Azure AD Connect Health pro synchronizaci](./media/how-to-connect-health-sync/syncsnapshot.png)
+![Snímek obrazovky Azure AD Connect Health stránky pro synchronizaci](./media/how-to-connect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Upozornění služby Azure AD Connect Health pro synchronizaci
 Část pojednávající o výstrahách služby Azure AD Connect Health pro synchronizaci uvádí seznam aktivních upozornění. Každé upozornění obsahuje důležité informace, postup řešení a odkazy na související dokumentaci. Výběrem aktivního nebo vyřešeného upozornění zobrazíte nové okno s doplňujícími informacemi, kroky, které můžete k vyřešení upozornění použít, a odkazy na další dokumentaci. Můžete si zobrazit i historické údaje o dříve vyřešených upozorněních.
@@ -40,11 +40,11 @@ Pokud služba Azure AD Connect nepoužívá výchozí konfiguraci (například k
 
 Služba tak bude při vyhodnocování upozornění omezená. Zobrazí se banner, který v rámci služby upozorňuje na tento stav na webu Azure Portal.
 
-![Azure AD Connect Health pro synchronizaci](./media/how-to-connect-health-sync/banner.png)
+![Snímek obrazovky s hlavičkou výstrahy, která říká vyhodnocení výstrahy, je omezený. Aktualizujte nastavení tak, aby se povolily všechny výstrahy.](./media/how-to-connect-health-sync/banner.png)
 
 Můžete to změnit kliknutím na „Nastavení“ a povolením, aby agent služby Azure AD Connect Health mohl odesílat všechny protokoly chyb.
 
-![Azure AD Connect Health pro synchronizaci](./media/how-to-connect-health-sync/banner2.png)
+![Snímek obrazovky s možností nastavení s názvem a oddílem nastavení s možností Uložit a s možností ON s názvem.](./media/how-to-connect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>Analýza synchronizace
 Správce často zajímá, jak dlouho trvá synchronizace změn do služby Azure AD, a množství změn, které probíhají. Tato funkce poskytuje snadný způsob vizualizace těchto informací pomocí uvedených grafů:   
@@ -55,14 +55,14 @@ Správce často zajímá, jak dlouho trvá synchronizace změn do služby Azure 
 ### <a name="sync-latency"></a>Latence synchronizace
 Tato funkce poskytuje grafické zobrazení trendu latence operací synchronizace (import, export atd.) pro jednotlivé konektory.  Díky tomu se nejen rychle a snadno seznámíte s latencí operací (latence je větší, pokud máte velké sady změn), ale budete moct i zjišťovat anomálie v latenci, které můžou vyžadovat další šetření.
 
-![Latence synchronizace](./media/how-to-connect-health-sync/synclatency02.png)
+![Snímek obrazovky s latencí profilu spuštění z minulých 3 dní grafu](./media/how-to-connect-health-sync/synclatency02.png)
 
 Ve výchozím nastavení se zobrazuje jenom latence operace „exportu“ na konektoru Azure AD.  Pokud chcete zobrazit další operace na konektoru nebo zobrazit operace z jiných konektorů, klikněte pravým tlačítkem na graf, vyberte Upravit graf, nebo klikněte na tlačítko Upravit graf latence a zvolte konkrétní operaci a konektor.
 
 ### <a name="sync-object-changes"></a>Změny objektů synchronizace
 Tato funkce nabízí grafické zobrazení trendu v počtu změn, které se vyhodnocují a exportují do služby Azure AD.  V současné době je snaha o shromáždění těchto informací z protokolů synchronizace obtížná.  Graf poskytuje nejen jednodušší způsob sledování počtu změn ve vašem prostředí, ale i vizuální zobrazení chyb, ke kterým dochází.
 
-![Latence synchronizace](./media/how-to-connect-health-sync/syncobjectchanges02.png)
+![Snímek obrazovky s grafem exportovat statistiku do Azure AD z posledních 3 dní](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report"></a>Sestava chyb synchronizace na úrovni objektu
 Tato funkce poskytuje sestavu chyb synchronizace, ke kterým může dojít při synchronizaci dat identity mezi službou Windows Server AD a Azure AD pomocí služby Azure AD Connect.
@@ -81,14 +81,14 @@ Tato funkce poskytuje sestavu chyb synchronizace, ke kterým může dojít při 
 ### <a name="categorization-of-errors"></a>Kategorizace chyb
 Sestava zařazuje stávající chyby synchronizace do následujících kategorií:
 
-| Kategorie | Description |
+| Kategorie | Popis |
 | --- | --- |
 | Duplicitní atribut |Chyby vzniklé při pokusu služby Azure AD Connect o vytvoření nebo aktualizaci objektů s duplicitními hodnotami atributů ve službě Azure AD, které musí být v tenantovi jedinečné, například proxyAddresses, UserPrincipalName |
 | Neshoda dat |Chyby synchronizace vzniklé v důsledku neúspěšného měkkého párování objektů |
 | Chyba ověřování dat |Chyby vzniklé v důsledku neplatných dat, jako jsou nepodporované znaky v klíčových atributech (např. UserPrincipalName), chyby formátování, které se před zápisem do Azure AD nepodaří ověřit |
 | Změna federované domény | Chyby, když účty používají jinou federovanou doménu. |
 | Rozsáhlý atribut |Chyby vzniklé v důsledku toho, že některé atributy překračují povolenou velikost, délku nebo počet |
-| Jiné |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
+| Další |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
 
 ![Souhrnná sestava chyb synchronizace](./media/how-to-connect-health-sync/errorreport01.png)
 ![Kategorie sestavy chyb synchronizace](./media/how-to-connect-health-sync/SyncErrorByTypes.PNG)
@@ -116,7 +116,7 @@ Určité scénáře chyb synchronizace kvůli duplicitním atributům, které za
 ## <a name="related-links"></a>Související odkazy
 * [Řešení chyb při synchronizaci](tshoot-connect-sync-errors.md)
 * [Odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)

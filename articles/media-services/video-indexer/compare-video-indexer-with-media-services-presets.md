@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047334"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnat Azure Media Services V3 předvolby a Video Indexer 
@@ -29,12 +29,12 @@ V současné době dochází k překrytí mezi funkcemi nabízenými [rozhraním
 
 ## <a name="compare"></a>Porovnání
 
-|Funkce|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
+|Příznak|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
 |---|---|---|
 |Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/analyzing-video-audio-files-concept.md)|
 |Možnosti|Úplný seznam podporovaných funkcí najdete v článku: <br/> [Přehled](video-indexer-overview.md)|Vrátí jenom video přehledy.|
 |Fakturace|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Dodržování předpisů|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "video indexer", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "Media Services", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|
+|Dodržování předpisů|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "video indexer", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "Media Services", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|
 |Bezplatná zkušební verze|East US|Není k dispozici|
 |Dostupnost v oblastech|Zobrazit [dostupnost Cognitive Services podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)|Viz [dostupnost Media Services v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 

@@ -1,51 +1,64 @@
 ---
-title: Grafy toku dat
-description: Jak pracovat s grafy toku dat Data Factory
+title: Správa grafu toku dat mapování
+description: Jak efektivně spravovat a upravovat Graf toku dat mapování
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605362"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590456"
 ---
-# <a name="mapping-data-flow-graphs"></a>Mapování grafů toku dat
+# <a name="managing-the-mapping-data-flow-graph"></a>Správa grafu toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Návrhová plocha mapování toků dat je "stavební" plocha, kde můžete vytvářet toky dat shora dolů, zleva doprava. Pro každou transformaci se symbolem plus (+) je připojena sada nástrojů. Soustřeďte se na obchodní logiku místo propojení uzlů pomocí okrajů v DAG prostředí s bezplatným formulářem.
+Mapování toků dat se vytváří pomocí návrhové plochy, která je v grafu toku dat. V grafu je logika transformace sestavena zleva doprava a další datové proudy jsou přidány shora dolů. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
-Níže jsou uvedené předdefinované mechanismy pro správu grafu toku dat.
+![Plátno](media/data-flow/canvas-2.png)
 
-## <a name="move-nodes"></a>Přesun uzlů
+Díky následujícím mechanismům můžete efektivně Procházet a spravovat Graf toku dat, protože vaše toky dat jsou složitější. 
 
-![Možnosti agregované transformace](media/data-flow/agghead.png "záhlaví Agregátoru")
+## <a name="moving-transformations"></a>Přesun transformací
 
-Bez možnosti přetahování přetahováním je možné změnit příchozí datový proud tak, aby "přesunul" transformační uzel. Místo toho převedete transformované transformace změnou "příchozího datového proudu".
+V části mapování toků dat se sada propojených transformačních logiky označuje jako **datový proud**. V poli **příchozí datový** proud se určí, který datový proud zaznamená aktuální transformaci. Každá transformace má jeden nebo dva příchozí datové proudy v závislosti na její funkci a představuje výstupní datový proud. Výstupní schéma příchozích datových proudů určuje, která metadata sloupce mohou být odkazována aktuální transformací.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Datové proudy dat v toku dat
+![Přesunout uzel](media/data-flow/move-nodes.png "přesunout uzel")
 
-V Azure Data Factory tok dat prezentují toky dat. V podokně nastavení transformace se zobrazí pole příchozí Stream. Tím se dozvíte, který příchozí datový proud dodává tuto transformaci. Fyzické umístění svého transformačního uzlu můžete změnit v grafu kliknutím na název příchozího datového proudu a výběrem jiného datového proudu. Aktuální transformace spolu se všemi následnými transformacemi v tomto datovém proudu se pak přesune na nové místo.
-
-Pokud přesouváte transformaci s jednou nebo více transformacemi po ní, bude nové umístění v toku dat připojeno prostřednictvím nové větve.
-
-Pokud po zvoleném uzlu nemáte žádné následné transformace, pak se pouze tato transformace přesune do nového umístění.
+Na rozdíl od plátna kanálu se transformace toku dat neupravují pomocí modelu přetažení. Chcete-li změnit příchozí datový proud nebo přesunout transformaci, vyberte jinou hodnotu z rozevíracího seznamu **příchozí datový proud** . Když to uděláte, všechny transformace s dalšími možnostmi se přesunou společně s upravenou transformací. Graf se automaticky aktualizuje a zobrazí se nový logický tok. Pokud příchozí datový proud změníte na transformaci, která už má transformaci po podmnožině dat, vytvoří se nová větev nebo paralelní datový proud. Přečtěte si další informace o [nových větvích v mapování toku dat](data-flow-new-branch.md).
 
 ## <a name="hide-graph-and-show-graph"></a>Skrýt graf a zobrazit graf
 
-Na pravé straně dolního podokna konfigurace je tlačítko, kde při práci na konfiguracích transformace můžete rozbalit dolní podokno na celou obrazovku. To vám umožní procházet konfigurace grafu pomocí tlačítek předchozí a další. Chcete-li přejít zpět do zobrazení grafu, klikněte na tlačítko dolů a vraťte se k rozdělené obrazovce.
+Při úpravách transformace můžete panel konfigurace rozbalit, aby se zabralo celé plátno, a graf se skryje. Klikněte na dvojitou šipku vzhůru umístěnou na pravé straně plátna.
 
-## <a name="search-graph"></a>Vyhledat graf
+![Skrýt graf](media/data-flow/hide-graph.png "Skrýt graf")
 
-Graf můžete vyhledat pomocí tlačítka Hledat na návrhové ploše.
+Když je graf skrytý, můžete se pohybovat mezi transformacemi v rámci datového proudu kliknutím na tlačítko **Další** nebo **předchozí**. Kliknutím na dvojitou šipku směřující dolů zobrazíte graf.
 
-![Vyhledávání](media/data-flow/search001.png "Vyhledat graf")
+![Zobrazit graf](media/data-flow/show-graph.png "Zobrazit graf")
+
+## <a name="searching-for-transformations"></a>Hledání transformací
+
+Pokud chcete rychle najít transformaci v grafu, klikněte na ikonu **hledání** nad nastavením přiblížení.
+
+![Snímek obrazovky zobrazující tlačítko hledání](media/data-flow/search-1.png "Vyhledat graf")
+
+Můžete vyhledat transformaci podle názvu nebo popisu transformace.
+
+![Snímek obrazovky se zobrazí v textovém poli hledání.](media/data-flow/search-2.png "Vyhledat graf")
+
+## <a name="hide-reference-nodes"></a>Skrýt uzly odkazů
+
+Pokud má váš datový tok jakékoli transformace, vyhledávání, zobrazení nebo sjednocení, tok dat zobrazuje referenční uzly pro všechny příchozí streamy. Pokud chcete minimalizovat velikost svislého místa, můžete své referenční uzly minimalizovat. Provedete to tak, že kliknete pravým tlačítkem na plátno a vyberete **Skrýt referenční uzly**.
+
+![Skrýt uzly odkazů](media/data-flow/hide-reference-nodes.png "Skrýt uzly odkazů")
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení návrhu toku dat zapněte tlačítko ladění a otestujte ho v režimu ladění buď přímo v [Návrháři toku dat](concepts-data-flow-debug-mode.md) , nebo v [ladění kanálu](control-flow-execute-data-flow-activity.md).
+Po dokončení logiky toku dat zapněte [režim ladění](concepts-data-flow-debug-mode.md) a otestujte ho v náhledu dat.

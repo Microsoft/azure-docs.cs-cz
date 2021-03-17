@@ -1,6 +1,7 @@
 ---
-title: Volání webového rozhraní API z aplikace démona – Microsoft Identity Platform | Azure
-description: Naučte se vytvářet aplikace démona, která volá webová rozhraní API.
+title: Volání webového rozhraní API z aplikace démona | Azure
+titleSuffix: Microsoft identity platform
+description: Naučte se, jak vytvořit aplikaci démona, která volá webové rozhraní API.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7319aacabd2c479c578fbb71ae0bc9fbb2dee9f2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bd0d53049c68843a6fd2cb6128c473d7c4f8d639
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119126"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582787"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace
 
@@ -63,23 +64,20 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Volání několika rozhraní API
 
-Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Pro aplikace démona není k dispozici žádný přírůstkový souhlas. (Žádná interakce s uživatelem.) Správce tenanta musí pro aplikaci a všechna oprávnění rozhraní API poskytnout předem souhlas. Chcete-li volat několik rozhraní API, je nutné získat token pro každý prostředek při každém volání `AcquireTokenForClient` . MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
+Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Pro aplikace démona není k dispozici žádný přírůstkový souhlas. (Žádná interakce s uživatelem.) Správce tenanta musí pro aplikaci a všechna oprávnění rozhraní API poskytnout předem souhlas. Pokud chcete volat několik rozhraní API, Získejte token pro každý prostředek pokaždé, když se zavolá `AcquireTokenForClient` . MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
 
 ## <a name="next-steps"></a>Další kroky
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md?tabs=dotnet)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](./scenario-daemon-production.md?tabs=dotnet)prostředí.
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md?tabs=python)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](./scenario-daemon-production.md?tabs=python)prostředí.
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md?tabs=java)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](./scenario-daemon-production.md?tabs=java)prostředí.
 
 ---

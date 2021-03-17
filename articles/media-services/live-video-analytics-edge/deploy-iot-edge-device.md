@@ -2,28 +2,32 @@
 title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/09/2020
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718926"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Podpora pro zařízení ARM64 je k dispozici v Live video Analytics na IoT Edge sestaveních `1.0.4` a novějších.
+> Podpora spouštění Azure IoT Edge runtime na zařízeních ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-* Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
+## <a name="prerequisites"></a>Požadavky
+
+* Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) .
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
 * [Vytvoření a nastavení IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
-* [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge.md)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
 
-    * Použijte jednu z těchto oblastí: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
+    * Použijte jednu z těchto oblastí: Východní USA 2, Východní USA, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
     * Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Konfigurace prostředků Azure pro používání živé analýzy videí
@@ -36,9 +40,9 @@ Přečtěte si téma [Vytvoření vlastní role Azure Resource Manager](create-c
 
 Pokud máte v úmyslu používat Live video Analytics k nepřetržitému nahrávání videa do cloudu a následně před jejich přehráním používat [rozhraní API pro dotazování](playback-recordings-how-to.md#query-api) , doporučujeme, abyste službu Media Service aktualizovali tak, aby používala [koncový bod streamování Premium](../latest/streaming-endpoint-concept.md#types).  
 
-Toto je volitelný krok. K tomu můžete použít tento příkaz Azure CLI:
+Tento krok je volitelný. K tomu můžete použít tento příkaz Azure CLI:
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1
 ```
 
@@ -47,7 +51,7 @@ Pomocí tohoto příkazu můžete spustit koncový bod streamování.
 > [!IMPORTANT]
 > Vaše předplatné se začne účtovat v tomto okamžiku.
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
@@ -57,8 +61,8 @@ Podle kroků v tomto článku získáte přihlašovací údaje pro přístup k r
 Pokud chcete spustit video Analytics v modulu IoT Edge, vytvořte místní uživatelský účet s co nejmenším možným oprávněním. Například spusťte na počítači se systémem Linux následující příkazy:
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>Udělení oprávnění pro úložiště zařízení
@@ -68,20 +72,19 @@ Teď, když jste vytvořili místní uživatelský účet,
 * K uložení konfiguračních dat aplikace budete potřebovat místní složku. Vytvořte složku a udělte jí oprávnění k zápisu účtu LocalUser do této složky pomocí následujících příkazů:
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * Budete také potřebovat složku pro [záznam videí do místního souboru](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources). Pomocí následujících příkazů vytvořte místní složku pro stejné:
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Nasadit modul Edge pro video Analytics v provozu
 
-<!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 Live video Analytics na IoT Edge zveřejňuje moduly s dvojitou vlastností, které jsou zdokumentovány ve [schématu konfigurace s dvojitou](module-twin-configuration-schema.md)platností. 
 
 ### <a name="deploy-using-the-azure-portal"></a>Nasazení pomocí webu Azure Portal
@@ -96,7 +99,7 @@ Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazen�
 
 #### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení. Obsahuje tři kroky uspořádané do karet: **moduly**, **trasy**a **Revize + vytvořit**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení. Obsahuje tři kroky uspořádané do karet: **moduly**, **trasy** a **Revize + vytvořit**.
 
 #### <a name="add-modules"></a>Přidat moduly
 
@@ -105,12 +108,12 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     Příklady:
     
     * **Název modulu IoT Edge**: lvaEdge
-    * **Identifikátor URI image**: MCR.Microsoft.com/Media/Live-video-Analytics:1.0    
+    * **Identifikátor URI image**: MCR.Microsoft.com/Media/Live-video-Analytics:2.0    
     
-    ![Přidat](./media/deploy-iot-edge-device/add.png)
+    ![Snímek obrazovky se zobrazí na kartě nastavení modulu.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
-    > Nevybírejte možnost **Přidat** , dokud neurčíte hodnoty v **nastavení modulu**, **možnosti vytvoření kontejneru**a **Dvojitá nastavení modulu** , jak je popsáno v tomto postupu.
+    > Nevybírejte možnost **Přidat** , dokud neurčíte hodnoty v **nastavení modulu**, **možnosti vytvoření kontejneru** a **Dvojitá nastavení modulu** , jak je popsáno v tomto postupu.
     
     > [!WARNING]
     > Azure IoT Edge rozlišuje velká a malá písmena, když provádíte volání modulů. Poznamenejte si přesný řetězec, který použijete jako název modulu.
@@ -217,7 +220,7 @@ Po vytvoření nasazení se vrátíte na stránku IoT Edge služby IoT Hub.
 Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 Stavový kód: 200 – OK znamená, že [modul runtime IoT Edge](../../iot-edge/iot-edge-runtime.md) je v pořádku a pracuje správně.
 
-![Status](./media/deploy-iot-edge-device/status.png)
+![Snímek obrazovky zobrazuje stavovou hodnotu pro modul runtime IoT Edge.](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Vyvolání přímé metody
 
@@ -225,7 +228,7 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
 
 1. Kliknutím na modul Edge, který jste vytvořili, přejdete na stránku konfigurace.  
 
-    ![Moduly](./media/deploy-iot-edge-device/modules.png)
+    ![Snímek obrazovky ukazuje stránku konfigurace modulu Edge.](./media/deploy-iot-edge-device/modules.png)
 1. Klikněte na možnost nabídky přímé metody.
 
     > [!NOTE] 
@@ -237,7 +240,7 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
     
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 1. V horní části stránky klikněte na možnost vyvolat metodu.
@@ -252,4 +255,4 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
 Vyzkoušejte [rychlý Start: Začínáme – Live video Analytics na IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> V příkazu se spustí další, `device-id` místo výchozí použijte `lva-sample-device` .
+> Pokud budete pokračovat s výše uvedeným rychlým startem, při vyvolání přímých metod pomocí Visual Studio Code použijete místo výchozího nastavení zařízení, které bylo přidáno do IoT Hub prostřednictvím tohoto článku `lva-sample-device` .

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192518"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996147"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 Tento článek vám pomůže při řešení potíží s [kompresí souborů CDN](cdn-improve-performance.md).
@@ -30,7 +30,7 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 Komprese pro koncový bod je povolená, ale soubory se vrací nekomprimované.
 
 > [!TIP]
-> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je hlavička s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2**nebo **Deflate**, obsah se komprimuje.
+> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je hlavička s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2** nebo **Deflate**, obsah se komprimuje.
 > 
 > ![Hlavička Content-Encoding](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -54,7 +54,7 @@ Existuje několik možných příčin, mezi které patří:
 Nejdřív byste měli provést rychlou správnosti kontrolu na žádosti.  Pomocí [vývojářských nástrojů](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) v prohlížeči můžete zobrazit požadavky, které se provedou.
 
 * Ověřte, že se požadavek posílá na adresu URL vašeho koncového bodu, `<endpointname>.azureedge.net` a ne na váš původ.
-* Ověřte, že požadavek obsahuje hlavičku **Accept-Encoding** a že hodnota pro tuto hlavičku obsahuje **gzip**, **Deflate**nebo **bzip2**.
+* Ověřte, že požadavek obsahuje hlavičku **Accept-Encoding** a že hodnota pro tuto hlavičku obsahuje **gzip**, **Deflate** nebo **bzip2**.
 
 > [!NOTE]
 > **Azure CDN ze profilů Akamai** podporují pouze kódování **gzip** .
@@ -65,7 +65,7 @@ Nejdřív byste měli provést rychlou správnosti kontrolu na žádosti.  Pomoc
 
 ### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ověřit nastavení komprese (standardní profily CDN)
 > [!NOTE]
-> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**nebo **Azure CDN Standard od profilu Akamai** . 
+> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon** nebo **Azure CDN Standard od profilu Akamai** . 
 > 
 > 
 
@@ -111,8 +111,8 @@ Pomocí vývojářských nástrojů v prohlížeči zkontrolujte hlavičky odpov
 
 Aby měl soubor nárok na kompresi, musí splňovat následující požadavky na velikost:
 
-* Větší než 128 bajtů.
-* Menší než 1 MB.
+* Větší než 128 bajtů (Content-Length: 128)
+* Menší než 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Ověřte požadavek na zdrojovém serveru **přes hlavičku Via** .
 Hlavička **Via** protokolu HTTP indikuje webovému serveru, že požadavek předává proxy server.  Webové servery Microsoft IIS ve výchozím nastavení nekomprimuje odpovědi, pokud požadavek obsahuje hlavičku **Via** .  Chcete-li toto chování přepsat, postupujte následovně:

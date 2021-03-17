@@ -1,19 +1,16 @@
 ---
 title: Uživatelsky definovaná funkce Java (UDF) s Apache Hivem Azure HDInsight
 description: Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce Java, která funguje s Apache Hive. V tomto příkladu UDF převede tabulku textových řetězců na malá.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
-ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bf9c2ea544c6b510a0507b6b020f0eae0b101dc7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323787"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946568"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použití Java UDF s Apache Hive v HDInsight
 
@@ -22,7 +19,7 @@ Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce 
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 * [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
@@ -273,4 +270,4 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 
 Další způsoby práce s podregistrem najdete v tématu [použití Apache Hive se službou HDInsight](hdinsight-use-hive.md).
 
-Další informace o uživatelsky definovaných funkcích pro podregistr najdete v části [operátory Apache Hive a uživatelsky definované funkce](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) na wikiwebu webwiki na adrese Apache.org.
+Další informace o funkcích User-Defined podregistru najdete v části [operátory Apache Hive a User-Defined funkce](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) na wikiwebu na wikiwebu na adrese Apache.org.

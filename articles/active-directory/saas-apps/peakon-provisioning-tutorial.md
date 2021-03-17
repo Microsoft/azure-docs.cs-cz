@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c04bbd5459690262b484582e807569b965a0439b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543665"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349884"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Kurz: Konfigurace Peakon pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v Peakon a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Peakon.
 
 > [!NOTE]
->  Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+>  Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je momentálně ve verzi Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 ## <a name="prerequisites"></a>Požadavky
@@ -56,11 +56,11 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 2.  Vyberte **integrace**.
     
-    ![Peakon – zřízení zaměstnanců](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![Snímek obrazovky možností konfigurace s možností integrace s názvem.](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
 3.  Povolte **zřizování zaměstnanců**.
 
-    ![Peakon – zřízení zaměstnanců](media/Peakon-provisioning-tutorial/peakon05.png)
+    ![Snímek obrazovky s oddílem zřizování zaměstnanců pomocí možnosti Povolit s názvem.](media/Peakon-provisioning-tutorial/peakon05.png)
 
 4.  Zkopírujte hodnoty pro **adresu URL SCIM 2,0** a **token nosiče OAuth**. Tyto hodnoty se zadají do pole **Adresa URL klienta** a **tajný token** na kartě zřizování vaší aplikace Peakon ve Azure Portal.
 
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat Peakon pro Automatické zřizování uživatelů pom
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -95,21 +95,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Peakon ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Peakon**.
 
     ![Odkaz Peakon v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL SCIM 2,0** a hodnoty **nosných tokenů OAuth** načtené dříve v **adrese URL tenanta** a **tajného tokenu** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Peakon. Pokud se připojení nepovede, ujistěte se, že má váš účet Peakon oprávnění správce, a zkuste to znovu.
 
@@ -117,7 +117,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 8. Klikněte na **Uložit**.
 
@@ -133,9 +133,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
     
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, klikněte na **Uložit**.
+15. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Peakon.
 
@@ -145,10 +145,10 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * Všechny vlastní atributy uživatelů v Peakon musí být rozšířeny z vlastního uživatelského rozšíření SCIM z Peakon `urn:ietf:params:scim:schemas:extension:peakon:2.0:User` .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

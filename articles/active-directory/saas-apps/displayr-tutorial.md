@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536253"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622487"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: integrace inplay s Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat inplay s Azure Active Directory (Azure
 * Umožněte uživatelům, aby se automaticky přihlásili k nástroji pro inplayi pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,7 +69,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce **inplay** Application Integration najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -78,35 +78,37 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<YOURDOMAIN>.displayr.com`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`<YOURDOMAIN>.displayr.com`
+    
+    c. Do textového pole **Adresa URL odpovědi** zadejte `https://app.displayr.com/Login/ProcessSamlResponse` .
+    
+    d. Klikněte na **Uložit**.
 
     >[!NOTE]
     >Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot se obraťte na [tým podpory pro klienty](mailto:support@displayr.com) . Můžete se také podívat na vzory uvedené v části základní konfigurace SAML v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. Aplikace aktéra očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+   ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" se zvýrazněnou ikonou "Upravit".](common/edit-attribute.png)
 
 1. Kromě výše očekává aplikace inplay v odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
-    a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
+   a. Klikněte na **přidat deklaraci skupiny**.
 
-    ![image](./media/displayr-tutorial/config04.png)
+      ![Snímek obrazovky, který zobrazuje okno deklarace identity (Preview) s vybraným nastavením.](./media/displayr-tutorial/config05.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+   b. V seznamu přepínačů vyberte **všechny skupiny** .
 
-    b. V seznamu přepínačů vyberte **všechny skupiny** .
+   c. Vyberte **zdrojový atribut** **ID skupiny**.
 
-    c. Vyberte **zdrojový atribut** **ID skupiny**.
+   d. Ověřte **přizpůsobení názvu deklarace identity skupiny**.
 
-    d. Ověřte **přizpůsobení názvu deklarace identity skupiny**.
+   e. Ověřte **, že se skupiny emitují jako deklarace identity role**.
 
-    e. Ověřte **, že se skupiny emitují jako deklarace identity role**.
-
-    f. Klikněte na **Uložit**.
+   f. Klikněte na **Uložit**.
 
 1. V části **Nastavení inplay** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
@@ -126,11 +128,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Klikněte na **Nastavení** a potom přejděte na **účet**.
 
-    ![Konfigurace](./media/displayr-tutorial/config01.png)
+    ![Snímek obrazovky zobrazující, že je vybraná ikona nastavení a účet.](./media/displayr-tutorial/config01.png)
 
 5. V horní nabídce přepněte na **Nastavení** a posuňte se dolů na stránku, kde kliknete na **Konfigurovat jednotné přihlašování (SAML)**.
 
-    ![Konfigurace](./media/displayr-tutorial/config02.png)
+    ![Snímek obrazovky zobrazující vybranou kartu nastavení a vybranou akci konfigurovat jednotné přihlašování (S A M L).](./media/displayr-tutorial/config02.png)
 
 6. Na stránce **jednotného přihlašování (SAML)** proveďte následující kroky:
 
@@ -154,25 +156,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu ke službě DisplayName.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte položku **aktér**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -190,11 +192,11 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, mus�
 
 2. Klikněte na **Nastavení** a potom přejděte na **účet**.
 
-    ![Konfigurace pro inplay](./media/displayr-tutorial/config01.png)
+    ![Snímek obrazovky zobrazující ikonu nastavení (ozubeného kola) s vybraným účtem](./media/displayr-tutorial/config01.png)
 
 3. V horní nabídce přepněte na **Nastavení** a posuňte se dolů na stránku, dokud **uživatel** neklikne na **Nový uživatel**.
 
-    ![Konfigurace pro inplay](./media/displayr-tutorial/config07.png)
+    ![Snímek obrazovky, který zobrazuje kartu nastavení s zvýrazněnými uživateli a vybraným tlačítkem nový uživatel.](./media/displayr-tutorial/config07.png)
 
 4. Na stránce **Nový uživatel** proveďte následující kroky:
 
@@ -210,12 +212,12 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, mus�
 
 ### <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu kliknete na dlaždici vylektoru, měli byste být automaticky přihlášeni k inlektoru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici vylektoru, měli byste být automaticky přihlášeni k inlektoru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

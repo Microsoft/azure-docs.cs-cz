@@ -1,19 +1,19 @@
 ---
 title: Postup připojení úložiště objektů BLOB v Azure jako systému souborů na platformě Linux | Microsoft Docs
 description: Naučte se připojit kontejner úložiště objektů BLOB v Azure pomocí blobfuse, ovladače virtuálního systému souborů na platformě Linux.
-author: rishabpoh
+author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.date: 2/1/2019
-ms.author: ripohane
-ms.reviewer: dineshm
-ms.openlocfilehash: 8dc7c16b83816d2b408cef7ade06767bfe2a4582
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: tamram
+ms.reviewer: twooley
+ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826544"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737536"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse
 
@@ -23,31 +23,31 @@ ms.locfileid: "87826544"
 V této příručce se dozvíte, jak používat blobfuse a jak připojit kontejner úložiště objektů blob na Linux a přistupovat k datům. Pokud chcete získat další informace o blobfuse, přečtěte si podrobnosti v [úložišti blobfuse](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> Blobfuse nezaručuje dodržování předpisů POSIX 100%, protože jednoduše překládá požadavky do [objektů BLOB REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api). Například operace přejmenování jsou atomické v POSIX, ale ne v blobfuse.
+> Blobfuse nezaručuje dodržování předpisů POSIX 100%, protože jednoduše překládá požadavky do [objektů BLOB REST API](/rest/api/storageservices/blob-service-rest-api). Například operace přejmenování jsou atomické v POSIX, ale ne v blobfuse.
 > Úplný seznam rozdílů mezi nativním systémem souborů a blobfuse najdete [v úložišti zdrojového kódu blobfuse](https://github.com/azure/azure-storage-fuse).
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Instalace blobfuse v systému Linux
-Blobfuse binární soubory jsou k dispozici v [úložištích softwaru společnosti Microsoft pro Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro distribuce Ubuntu a RHEL. Pokud chcete na tyto distribuce nainstalovat blobfuse, nakonfigurujte v seznamu jedno z úložišť. Binární soubory ze zdrojového kódu můžete sestavit i v následujících [krocích Azure Storage instalace](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) , pokud pro vaši distribuci nejsou k dispozici žádné binární soubory.
+Blobfuse binární soubory jsou k dispozici v [úložištích softwaru Microsoftu pro Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro Ubuntu, Debian, SUSE, CentoOS, Oracle Linux a RHEL distribuce. Pokud chcete na tyto distribuce nainstalovat blobfuse, nakonfigurujte v seznamu jedno z úložišť. Binární soubory ze zdrojového kódu můžete sestavit i v následujících [krocích Azure Storage instalace](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) , pokud pro vaši distribuci nejsou k dispozici žádné binární soubory.
 
-Blobfuse podporuje instalaci na Ubuntu 14,04, 16,04 a 18,04. Spusťte tento příkaz, abyste se ujistili, že máte nasazenou jednu z těchto verzí:
+Blobfuse podporuje instalaci ve verzích Ubuntu: 16,04, 18,04 a 20,04, RHELversions: 7,5, 7,8, 8,0, 8,1, 8,2, CentOS verze: 7,0, 8,0, Debian verze: 9,0, 10,0, SUSE verze: 15, OracleLinux 8,1. Spusťte tento příkaz, abyste se ujistili, že máte nasazenou jednu z těchto verzí:
 ```
 lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>Konfigurace úložiště balíčků Microsoftu
-Nakonfigurujte [úložiště balíčků pro Linux pro produkty Microsoftu](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
+Nakonfigurujte [úložiště balíčků pro Linux pro produkty Microsoftu](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
-Například na distribuci Enterprise Linux 6:
+Například na distribuci Enterprise Linux 8:
 ```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 Podobně změňte adresu URL tak, aby `.../rhel/7/...` odkazovala na distribuci Enterprise Linux 7.
 
-Další příklad pro distribuci Ubuntu 14,04:
+Další příklad pro distribuci Ubuntu 20,04:
 ```bash
-wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
@@ -76,6 +76,7 @@ Blobfuse poskytuje nativní výkon tím, že v systému souborů vyžaduje doča
 ### <a name="optional-use-a-ramdisk-for-the-temporary-path"></a>Volitelné Pro dočasnou cestu použít disk RAM
 Následující příklad vytvoří disk RAM o velikosti 16 GB a adresář pro blobfuse. Vyberte velikost podle svých potřeb. Tento disk RAM umožňuje blobfuse otevírání souborů o velikosti až 16 GB. 
 ```bash
+sudo mkdir /mnt/ramdisk
 sudo mount -t tmpfs -o size=16g tmpfs /mnt/ramdisk
 sudo mkdir /mnt/ramdisk/blobfusetmp
 sudo chown <youruser> /mnt/ramdisk/blobfusetmp
@@ -143,5 +144,4 @@ echo "hello world" > test/blob.txt
 ## <a name="next-steps"></a>Další kroky
 
 * [Domovská stránka Blobfuse](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [Nahlásit problémy blobfuse](https://github.com/Azure/azure-storage-fuse/issues) 
-
+* [Nahlásit problémy blobfuse](https://github.com/Azure/azure-storage-fuse/issues)

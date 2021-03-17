@@ -4,12 +4,12 @@ description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: a5b62b05c36afac078ccc7aeb7ed0e7259072fc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513791"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734534"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -102,8 +102,8 @@ Recovery Services trezor je prostředek Správce prostředků, takže ho musíte
 
 3. Zadejte typ redundance, který se použije pro úložiště trezoru.
 
-    * Můžete použít [místně redundantní úložiště](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště](../storage/common/storage-redundancy.md).
-    * Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz[set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní**.
+    * Můžete použít [místně redundantní](../storage/common/storage-redundancy.md#locally-redundant-storage)úložiště, [geograficky redundantní úložiště](../storage/common/storage-redundancy.md#geo-redundant-storage) nebo [redundantní úložiště zóny](../storage/common/storage-redundancy.md#zone-redundant-storage) .
+    * Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -170,7 +170,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V tomto příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00"
+> Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V tomto příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00".
 
 V následujícím příkladu jsou uloženy zásady plánu a zásady uchovávání informací v proměnných. Pak tyto proměnné používá jako parametry pro nové zásady (**NewSQLPolicy**). **NewSQLPolicy** přijímá každodenní "úplnou" zálohu, uchovává ji po dobu 180 dnů a při každém 2 hodinách provede zálohování protokolu.
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>Registrace virtuálního počítače SQL
 
-Pro zálohování virtuálních počítačů Azure a sdílené složky Azure se služba Backup může připojit k těmto Azure Resource Manager prostředkům a načíst příslušné podrobnosti. Vzhledem k tomu, že SQL je aplikace na virtuálním počítači Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností. Abyste to mohli udělat, musíte *zaregistrovat* virtuální počítač Azure, který obsahuje aplikaci SQL, s trezorem služby Recovery Services. Jakmile zaregistrujete virtuální počítač SQL pomocí trezoru, můžete SQL databáze chránit jenom k tomuto trezoru. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PS.
+Pro zálohování virtuálních počítačů Azure a sdílené složky Azure se služba Backup může připojit k těmto Azure Resource Manager prostředkům a načíst příslušné podrobnosti. Vzhledem k tomu, že SQL je aplikace na virtuálním počítači Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností. Abyste to mohli udělat, musíte *zaregistrovat* virtuální počítač Azure, který obsahuje aplikaci SQL, s úložištěm Recovery Services. Jakmile zaregistrujete virtuální počítač SQL pomocí trezoru, můžete SQL databáze chránit jenom k tomuto trezoru. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) prostředí PowerShell.
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -203,11 +203,11 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 Příkaz vrátí kontejner záloh tohoto prostředku a stav bude zaregistrováno.
 
 > [!NOTE]
-> Pokud parametr Force není zadaný, zobrazí se uživateli výzva k potvrzení pomocí textu. Chcete zakázat ochranu tohoto kontejneru. Tento text prosím ignorujte a potvrďte ho tak, že zaznamenáte "Y". Jedná se o známý problém a pracujeme na odebrání textu a požadavku parametru Force.
+> Pokud parametr Force není zadaný, budete vyzváni k potvrzení pomocí textu. Chcete zakázat ochranu tohoto kontejneru. Tento text prosím ignorujte a potvrďte ho tak, že zaznamenáte "Y". Jedná se o známý problém a pracujeme na odebrání textu a požadavku parametru Force.
 
 ### <a name="fetching-sql-dbs"></a>Načítá se SQL databáze.
 
-Po dokončení registrace bude služba zálohování moct zobrazit seznam všech dostupných součástí SQL v rámci virtuálního počítače. Pokud chcete zobrazit všechny součásti SQL, které se ještě zálohují do tohoto trezoru, použijte rutinu [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PS.
+Po dokončení registrace bude služba zálohování moct zobrazit seznam všech dostupných součástí SQL v rámci virtuálního počítače. Pokud chcete zobrazit všechny součásti SQL, které se ještě zálohují do tohoto trezoru, použijte rutinu PowerShellu [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) .
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
@@ -237,7 +237,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>Načítají se nové databáze SQL.
 
-Jakmile je počítač zaregistrován, Služba Backup načte podrobnosti o databáze, které jsou k dispozici. Pokud uživatel přidá instance SQL databáze/SQL do registrovaného počítače později, musí ručně aktivovat službu zálohování, aby provedla nové "dotazování", aby bylo možné znovu získat všechny nechráněné databáze (včetně nově přidaných). K provedení nového dotazu použijte rutinu [Initialize-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PS na virtuálním počítači SQL. Příkaz čeká na dokončení operace. Později pomocí rutiny [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PS Získejte seznam nejnovějších nechráněných komponent SQL.
+Jakmile je počítač zaregistrován, Služba Backup načte podrobnosti o databáze, které jsou k dispozici. Pokud se instance SQL databáze nebo SQL přidaly do registrovaného počítače později, budete muset ručně aktivovat zálohovací službu, aby provedla nové "dotazování", aby se znovu získala **všechna** nechráněná databáze (včetně nově přidaných). K provedení nového dotazu použijte rutinu prostředí PowerShell [Initialize-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) na virtuálním počítači SQL. Příkaz čeká na dokončení operace. Později pomocí rutiny PowerShellu [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) Získejte seznam nejnovějších nechráněných komponent SQL.
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -250,7 +250,7 @@ Pokud některý z nich nechce ručně zjišťovat nové databáze, můžou se ro
 
 ## <a name="enable-autoprotection"></a>Povolit AutoProtection
 
-Uživatel může nakonfigurovat zálohování tak, aby se všechny databáze přidané v budoucnu automaticky chránily pomocí určitých zásad. Pokud chcete povolit AutoProtection, použijte rutinu [Enable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection) PS.
+Zálohování můžete nakonfigurovat tak, aby se všechny databáze přidané v budoucnu automaticky chránily pomocí určitých zásad. Pokud chcete povolit AutoProtection, použijte rutinu [Enable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection) prostředí PowerShell.
 
 Vzhledem k tomu, že pokyn slouží k zálohování všech budoucích databáze, operace se provádí na úrovni SQLInstance.
 
@@ -268,9 +268,9 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 * Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 * Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-Před obnovením SQL [here](restore-sql-database-azure-vm.md#prerequisites) databáze se podívejte na zmíněné požadavky.
+Před obnovením SQL [](restore-sql-database-azure-vm.md#restore-prerequisites) databáze se podívejte na zmíněné požadavky.
 
-Nejdřív načtěte relevantní zálohovanou databázi SQL pomocí rutiny [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PS.
+Nejdřív načtěte relevantní zálohovanou databázi SQL pomocí rutiny [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) prostředí PowerShell.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -278,7 +278,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 
 ### <a name="fetch-the-relevant-restore-time"></a>Načíst relevantní čas obnovení
 
-Jak je uvedeno výše, uživatel může obnovit zálohovanou databázi SQL do úplné/rozdílové kopie **nebo** do časového bodu v čase.
+Jak je uvedeno výše, můžete obnovit zálohovanou databázi SQL do úplné/rozdílové kopie **nebo** do časového bodu v čase.
 
 #### <a name="fetch-distinct-recovery-points"></a>Načíst samostatné body obnovení
 
@@ -307,10 +307,10 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>Načíst bod obnovení v čase v čase
 
-Pokud chce uživatel obnovit databázi k určitému časovému okamžiku, použijte rutinu [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PS. Rutina vrátí seznam kalendářních dat, který představuje počáteční a koncové časy nepřerušeného a průběžného řetězce protokolu pro danou položku zálohy SQL. Požadovaný časový okamžik by měl být v tomto rozsahu.
+Pokud chcete obnovit databázi k určitému časovému okamžiku, použijte rutinu [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) prostředí PowerShell. Rutina vrátí seznam kalendářních dat, který představuje počáteční a koncové časy nepřerušeného a průběžného řetězce protokolu pro danou položku zálohy SQL. Požadovaný časový okamžik by měl být v tomto rozsahu.
 
 ```powershell
-Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -VaultId $targetVault.ID
 ```
 
 Výstup bude vypadat podobně jako v následujícím příkladu.
@@ -321,10 +321,10 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-Výše uvedený výstup znamená, že uživatel může obnovit nějaký časový okamžik mezi zobrazeným časem zahájení a časem ukončení. Časy jsou v čase UTC. Vytvořte libovolný časový okamžik v čase PS, který je v rozsahu zobrazeném výše.
+Výše uvedený výstup znamená, že se můžete vrátit k jakémukoli bodu v čase mezi zobrazeným časem zahájení a časem ukončení. Časy jsou v čase UTC. Vytvořte všechny body v čase v prostředí PowerShell, které jsou v rozsahu uvedeném výše.
 
 > [!NOTE]
-> Když je pro obnovení zvolený časový okamžik v protokolu, uživatel nemusí určit výchozí bod, tj. úplné zálohování, ze kterého se databáze obnovila. Služba Azure Backup se postará o celý plán obnovení, tj., která úplná záloha má zvolit, jaké zálohy protokolů se mají použít atd.
+> Když je vybraný bod protokolu pro obnovení, nemusíte zadávat výchozí bod, tedy úplnou zálohu, ze které se databáze obnovuje. Služba Azure Backup se postará o celý plán obnovení, tedy o tom, která úplná záloha má vybrat, jaké zálohy protokolů se mají použít, a tak dále.
 
 ### <a name="determine-recovery-configuration"></a>Určení konfigurace obnovení
 
@@ -335,7 +335,7 @@ V případě obnovení databáze SQL se podporují následující scénáře obn
 * Obnovení databáze SQL Database jako nové databáze v jiné instanci SQL v jiném virtuálním počítači SQL – AlternateWorkloadRestore
 * Obnova databáze SQL DB jako soubory. bak – RestoreAsFiles
 
-Po načtení relevantního bodu obnovení (DISTINCT nebo log-in-time) pomocí rutiny [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PS načtěte objekt konfigurace obnovení podle požadovaného plánu obnovení.
+Po načtení relevantního bodu obnovení (DISTINCT nebo log-in-time) pomocí rutiny [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) prostředí PowerShell načtěte objekt konfigurace obnovení podle požadovaného plánu obnovení.
 
 #### <a name="original-workload-restore"></a>Obnovení původního zatížení
 
@@ -358,7 +358,7 @@ $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -Po
 > [!IMPORTANT]
 > Zálohovaná databáze SQL Database se dá obnovit jako nová databáze jenom pro jiný SQLInstance, a to v zaregistrovaném virtuálním počítači Azure do tohoto trezoru.
 
-Jak je uvedeno výše, pokud cílový SQLInstance leží v jiném virtuálním počítači Azure, ujistěte se, že je [zaregistrovaný do tohoto trezoru](#registering-the-sql-vm) a že se příslušné SQLInstance jeví jako chráněná položka.
+Jak je uvedeno výše, pokud cílové SQLInstance leží v jiném virtuálním počítači Azure, ujistěte se, že je [zaregistrované v tomto trezoru](#registering-the-sql-vm) a že se příslušné SQLInstance jeví jako chráněná položka.
 
 ```powershell
 $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $targetVault.ID
@@ -380,7 +380,7 @@ $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConf
 
 ##### <a name="restore-as-files"></a>Obnovit jako soubory
 
-Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možnost **Obnovit jako soubory** . Zálohovanou databázi SQL je možné obnovit do libovolného cílového virtuálního počítače, který je zaregistrován v tomto trezoru.
+Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možnost **Obnovit jako soubory** . Zálohovaná databáze SQL se dá obnovit na libovolný cílový virtuální počítač, který se zaregistruje do tohoto trezoru.
 
 ```powershell
 $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName "VM name" -VaultId $vaultID
@@ -406,7 +406,7 @@ Pokud chcete poskytnout konkrétní úplnou hodnotu, kterou byste měli použít
 $FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
 ```
 
-Konečný objekt konfigurace bodu obnovení získaný z rutiny [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PS obsahuje všechny relevantní informace pro obnovení a je jak vidíte níže.
+Konečný objekt konfigurace bodu obnovení získaný pomocí rutiny [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) prostředí PowerShell obsahuje všechny relevantní informace pro obnovení a je znázorněno níže.
 
 ```output
 TargetServer         : <SQL server name>
@@ -435,7 +435,7 @@ Data        azurebackup1      F:\Data\azurebackup1.mdf    F:\Data\azurebackup1_1
 Log         azurebackup1_log  F:\Log\azurebackup1_log.ldf F:\Log\azurebackup1_log_1553001753.ldf
 ```
 
-Nastavte odpovídající vlastnosti PS jako řetězcové hodnoty, jak je znázorněno níže.
+Nastavte odpovídající vlastnosti PowerShellu jako řetězcové hodnoty, jak je znázorněno níže.
 
 ```powershell
 $AnotherInstanceWithFullConfig.OverwriteWLIfpresent = "Yes"
@@ -461,7 +461,7 @@ PointInTime          : 1/1/0001 12:00:00 AM
 
 ### <a name="restore-with-relevant-configuration"></a>Obnovit s příslušnou konfigurací
 
-Po získání a ověření relevantního konfiguračního objektu obnovení spusťte proces obnovení pomocí rutiny [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) PS.
+Po získání a ověření relevantního konfiguračního objektu obnovení spusťte proces obnovení pomocí rutiny [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) prostředí PowerShell.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
@@ -479,7 +479,7 @@ MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM
 
 ### <a name="on-demand-backup"></a>Zálohování na vyžádání
 
-Po povolení zálohování databáze může uživatel také aktivovat zálohování na vyžádání pro databázi pomocí rutiny [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) PS. Následující příklad spustí úplnou zálohu v databázi SQL s povolenou kompresí a úplná záloha by měla být zachována po dobu 60 dnů.
+Po povolení zálohování databáze můžete také aktivovat zálohování na vyžádání pro databázi pomocí rutiny prostředí PowerShell [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) . Následující příklad spustí úplnou zálohu v databázi SQL s povolenou kompresí a úplná záloha by měla být zachována po dobu 60 dnů.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -499,7 +499,7 @@ Pokud se výstup ztratí nebo pokud chcete získat příslušné ID úlohy, [Zí
 
 ### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
 
-Uživatel může změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) s položkou Backup jako parametr.
+Zásady zálohované položky můžete změnit z *Policy1* na *Policy2*. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) s položkou Backup jako parametr.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -522,6 +522,7 @@ Pokud chcete upravit existující zásady, použijte příkaz [set-AzRecoverySer
 ```powershell
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
+
 Po uplynutí určité doby Projděte úlohy zálohování a sledujte případné chyby. V takovém případě je potřeba problémy vyřešit. Pak znovu spusťte příkaz Upravit zásadu s parametrem **FixForInconsistentItems** a zkuste znovu upravit zásady u všech zálohovaných položek, pro které se operace dřív nezdařila.
 
 ```powershell
@@ -544,7 +545,7 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 
 #### <a name="retain-data"></a>Zachování dat
 
-Pokud si uživatel přeje zastavit ochranu, může použít rutinu [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS. Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
+Pokud chcete zastavit ochranu, můžete použít rutinu PowerShellu [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) . Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -561,7 +562,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="disable-auto-protection"></a>Zakázat automatickou ochranu
 
-Pokud byla na SQLInstance nakonfigurována AutoProtection, uživatel ji může zakázat pomocí rutiny [Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) PS.
+Pokud byla na SQLInstance nakonfigurovaná AutoProtection, můžete ji zakázat pomocí rutiny [Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) prostředí PowerShell.
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -570,7 +571,7 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 
 #### <a name="unregister-sql-vm"></a>Zrušení registrace virtuálního počítače SQL
 
-Pokud [už nejsou chráněné žádné databáze SQL serveru a neexistují žádná zálohovaná data](#delete-backup-data), může uživatel z tohoto trezoru zrušit registraci virtuálního počítače SQL. Jenom pak uživatel může chránit databáze do jiného trezoru. Pomocí rutiny [Unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) PS odregistrujte virtuální počítač SQL.
+Pokud už databáze SQL Server není [chráněný a žádná data zálohy neexistují](#delete-backup-data), můžete zrušit registraci virtuálního počítače SQL z tohoto trezoru. Databáze můžete chránit jenom v jiném trezoru. Pomocí rutiny [Unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) prostředí PowerShell zrušte registraci virtuálního počítače SQL.
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -579,27 +580,27 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 ### <a name="track-azure-backup-jobs"></a>Sledování úloh Azure Backup
 
-Je důležité si uvědomit, že Azure Backup jenom sleduje úlohy aktivované uživatelem v zálohování SQL. Plánované zálohy (včetně záloh protokolu) nejsou na portálu nebo PowerShellu viditelné. Pokud ale některé naplánované úlohy selžou, vygeneruje se [Výstraha zálohování](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) , která se zobrazí na portálu. Ke sledování všech naplánovaných úloh a dalších relevantních informací [použijte Azure monitor](backup-azure-monitoring-use-azuremonitor.md) .
+Je důležité si uvědomit, že Azure Backup jenom sleduje úlohy aktivované uživatelem v zálohování SQL. Plánované zálohy (včetně záloh protokolu) nejsou na portálu nebo v PowerShellu viditelné. Pokud ale některé naplánované úlohy selžou, vygeneruje se [Výstraha zálohování](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) , která se zobrazí na portálu. Ke sledování všech naplánovaných úloh a dalších relevantních informací [použijte Azure monitor](backup-azure-monitoring-use-azuremonitor.md) .
 
-Uživatelé mohou sledovat operace aktivované na vyžádání/uživatelem pomocí ID úlohy, která je vrácena ve [výstupu](#on-demand-backup) asynchronních úloh, jako je například zálohování. Pomocí rutiny [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PS můžete sledovat úlohu a její podrobnosti.
+Uživatelé mohou sledovat operace aktivované na vyžádání/uživatelem s ID úlohy, která je vrácena ve [výstupu](#on-demand-backup) asynchronních úloh, jako je například zálohování. Pomocí rutiny [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) prostředí PowerShell můžete sledovat úlohu a její podrobnosti.
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ```
 
-Pokud chcete získat seznam úloh na vyžádání a jejich stavů z Azure Backup služby, použijte rutinu [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) PS. Následující příklad vrátí všechny probíhající úlohy SQL.
+Pokud chcete získat seznam úloh na vyžádání a jejich stavů z Azure Backup služby, použijte rutinu PowerShellu [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) . Následující příklad vrátí všechny probíhající úlohy SQL.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
 ```
 
-Chcete-li zrušit probíhající úlohu, použijte rutinu [stop-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) PS.
+Chcete-li zrušit probíhající úlohu, použijte rutinu prostředí PowerShell [stop-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) .
 
 ## <a name="managing-sql-always-on-availability-groups"></a>Správa skupin dostupnosti Always On SQL serveru
 
 V případě skupin dostupnosti Always On SQL nezapomeňte [zaregistrovat všechny uzly](#registering-the-sql-vm) skupiny dostupnosti (AG). Po dokončení registrace u všech uzlů je objekt skupiny dostupnosti SQL logicky vytvořený v rámci chráněných položek. Databáze v rámci SQL AG budou uvedené jako "SQLDatabase". Uzly se zobrazí jako samostatné instance a výchozí databáze SQL, které jsou pod nimi, budou uvedeny také jako databáze SQL.
 
-Předpokládejme například, že SQL AG má dva uzly: SQL-Server-0 a SQL-Server-1 a 1 SQL AG DB. Jakmile jsou oba tyto uzly registrovány, zobrazí uživatel [seznam chráněných položek](#fetching-sql-dbs)pomocí následujících součástí
+Předpokládejme například, že SQL AG má dva uzly: *SQL-Server-0* a *SQL-Server-1* a 1 SQL AG DB. Pokud jsou oba tyto uzly registrovány, zobrazí se při [výpisu chráněných položek](#fetching-sql-dbs)následující komponenty.
 
 * Typ položky, která je chráněna objektem SQL AG jako SQLAvailabilityGroup
 * Typ položky, která je chráněná databází SQL AG DB jako SQLDatabase
@@ -610,4 +611,4 @@ Předpokládejme například, že SQL AG má dva uzly: SQL-Server-0 a SQL-Server
 
 SQL-Server-0, SQL Server-1 bude při [výpisu zálohovacích kontejnerů](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer)v seznamu obsahovat také "AzureVMAppContainer".
 
-Stačí načíst příslušnou databázi, abyste [mohli povolit zálohování](#configuring-backup) a [rutiny](#restore-sql-dbs) [pro zálohování na vyžádání](#on-demand-backup) a obnovení pro PS byly identické.
+Stačí načíst příslušnou databázi, abyste [mohli povolit zálohování](#configuring-backup) a [rutiny PowerShellu](#restore-sql-dbs) [pro zálohování a obnovení na vyžádání](#on-demand-backup) jsou identické.

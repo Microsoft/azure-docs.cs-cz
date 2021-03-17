@@ -1,23 +1,25 @@
 ---
 title: Vytvoří novou verzi image z existující verze Image pomocí Azure image Builder (Preview).
-description: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder.
+description: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder ve Windows.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.openlocfilehash: bdae608d573bc411242b4bf66ea033a7df421cfc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
+ms.openlocfilehash: 0a53e8de8dd832e793ae12034c96ce9fe634ed7a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005697"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694100"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Preview: vytvoření nové verze image virtuálního počítače z existující verze Image pomocí Azure image Builder ve Windows
 
-V tomto článku se dozvíte, jak v [galerii sdílených imagí](shared-image-galleries.md)získat existující verzi image, aktualizovat ji a publikovat jako novou verzi image do galerie.
+V tomto článku se dozvíte, jak v [galerii sdílených imagí](../shared-image-galleries.md)získat existující verzi image, aktualizovat ji a publikovat jako novou verzi image do galerie.
 
-K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIGfromWinSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIGfromWinSIG.js](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.
@@ -43,6 +45,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.Network | grep registrationState
 ```
 
 Pokud nevyžadují registraci, spusťte tento příkaz:
@@ -52,6 +55,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 
@@ -107,13 +111,13 @@ Pokud už máte vlastní galerii sdílených imagí a nepoužili jste předchoz�
 
 
 ## <a name="modify-helloimage-example"></a>Příklad úpravy helloImage
-Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru. JSON tady: [helloImageTemplateforSIGfromSIG.jsna](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) společně s [odkazem na šablonu pro tvůrce imagí](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru. JSON tady: [helloImageTemplateforSIGfromSIG.jsna](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) společně s [odkazem na šablonu pro tvůrce imagí](../linux/image-builder-json.md). 
 
 
 Stáhněte si příklad. JSON a nakonfigurujte ho pomocí proměnných. 
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIGfromWinSIG.json
@@ -171,10 +175,10 @@ dir c:\
 ```
 
 Nyní byste měli vidět dva adresáře:
-- `buildActions`který byl vytvořen v první verzi bitové kopie.
-- `buildActions2`který byl vytvořen jako součást aktualizace první verze image, aby se vytvořila druhá verze image.
+- `buildActions` který byl vytvořen v první verzi bitové kopie.
+- `buildActions2` který byl vytvořen jako součást aktualizace první verze image, aby se vytvořila druhá verze image.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md).

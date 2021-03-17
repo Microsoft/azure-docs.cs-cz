@@ -3,30 +3,26 @@ title: Spolupráce s ostatními – LUIS
 titleSuffix: Azure Cognitive Services
 description: Vlastník aplikace může přidat přispěvatele do prostředku pro vytváření obsahu. Tito přispěvatelé můžou upravit model, výuku a publikování aplikace.
 services: cognitive-services
-author: diberry
+author: aahill
+ms.author: aahi
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.author: diberry
-ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 01/21/2021
+ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055626"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095191"
 ---
 # <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
 
-Vlastník aplikace může přidat přispěvatele do aplikací. Tito spolupracovníci můžou upravit model, výuku a publikování aplikace.
-
-[!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
+Vlastník aplikace může přidat přispěvatele do aplikací. Tito přispěvatelé můžou upravit model, výuku a publikování aplikace. Po dokončení [migrace](luis-migration-authoring.md) účtu se _přispěvatelé_ spravují v Azure Portal pro prostředek pro vytváření obsahu pomocí stránky **řízení přístupu (IAM)** . Přidejte uživatele pomocí e-mailové adresy spolupracovníka a role _přispěvatele_ .
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>Přidat přispěvatele do prostředku pro vytváření obsahu Azure
-
-Následující postup platí pro všechny uživatele, kteří se **migrovali** na používání prostředku pro vytváření obsahu Azure.
 
 Migrovali jste, pokud je vaše prostředí pro vytváření LUIS vázané na prostředek vytváření na stránce **> Správa prostředků Azure** na portálu Luis.
 
@@ -41,34 +37,23 @@ Migrovali jste, pokud je vaše prostředí pro vytváření LUIS vázané na pro
 
     Po nalezení e-mailu uživatele vyberte účet a vyberte **Uložit**.
 
-    Pokud máte potíže s přiřazením této role, Projděte si téma [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) a [řešení potíží s řízením přístupu v Azure](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
+    Pokud máte s přiřazením této role problémy, přečtěte si téma [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) a [řešení potíží s řízením přístupu v Azure](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
 
-## <a name="add-collaborator-to-luis-app"></a>Přidání spolupracovníka do aplikace LUIS
+## <a name="view-the-app-as-a-contributor"></a>Zobrazení aplikace jako přispěvatele
 
-Následující postup platí pro všechny uživatele, kteří se **nemigrovali** , aby používali prostředek pro vytváření obsahu Azure.
+Až budete přidáni jako Přispěvatel, [Přihlaste se k portálu Luis](sign-in-luis-portal.md).
 
-Nemigrovali jste, pokud vaše prostředí pro vytváření LUIS není vázané na zdroj obsahu na stránce **Správa prostředků Azure >** na portálu Luis.
-
-Aplikace má jednoho autora, vlastníka, ale může mít mnoho spolupracujících spolupracovníků. Pokud chcete spolupracovníkům dovolit upravit aplikaci LUIS, musíte přidat e-maily, které používají pro přístup k portálu LUIS, do seznamu spolupracovníci. Po přidání se aplikace zobrazí na portálu LUIS.
-
-1. V pravé horní nabídce vyberte **Spravovat** a v levé nabídce vyberte **spolupracovníci** .
-
-1. Na panelu nástrojů vyberte **Přidat spolupracovníka** .
-
-1. Zadejte e-mailovou adresu, kterou spolupracovníka používá pro přihlášení k portálu LUIS.
-
-    ![Přidat e-mailovou adresu spolupracovníka](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
-
+[!INCLUDE [switch azure directories](includes/switch-azure-directories.md)]
 
 ### <a name="users-with-multiple-emails"></a>Uživatelé s více e-maily
 
-Pokud do aplikace LUIS přidáte přispěvatele nebo spolupracovníky, zadáváte přesnou e-mailovou adresu. I když Azure Active Directory (Azure AD) umožňuje, aby jeden uživatel měl zaměnitelné více e-mailových účtů, LUIS vyžaduje, aby se uživatel přihlásil pomocí e-mailové adresy zadané při přidávání Přispěvatel/spolupracovníka.
+Pokud přidáte přispěvatele do aplikace LUIS, zadáváte přesnou e-mailovou adresu. I když Azure Active Directory (Azure AD) umožňuje, aby jeden uživatel měl zaměnitelné více e-mailových účtů, LUIS vyžaduje, aby se uživatel přihlásil pomocí e-mailové adresy zadané při přidávání přispěvatele.
 
 <a name="owner-and-collaborators"></a>
 
 ### <a name="azure-active-directory-resources"></a>Prostředky Azure Active Directory
 
-Pokud ve vaší organizaci používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které LUIS vyžaduje, jsou minimální.
+Pokud ve vaší organizaci používáte [Azure Active Directory](../../active-directory/index.yml) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které LUIS vyžaduje, jsou minimální.
 
 V případě, že se pokusíte zaregistrovat účet, který má souhlas správce nebo nevyžaduje souhlas správce, jako je třeba souhlas správce, se zobrazí podrobný popis.
 
@@ -83,13 +68,11 @@ LUIS používá tok souhlasu Standard Azure Active Directory (Azure AD).
 Správce tenanta by měl spolupracovat přímo s uživatelem, který potřebuje udělený přístup k používání LUIS ve službě Azure AD.
 
 * Nejprve se uživatel přihlásí k LUIS a zobrazí se automaticky otevírané okno, které vyžaduje schválení správcem. Před pokračováním uživatel kontaktuje správce tenanta.
-* Za druhé se správce tenanta přihlásí do LUIS a zobrazí se místní okno s tokem souhlasu. Toto je dialogové okno, které správce potřebuje k udělení oprávnění uživateli. Jakmile správce přijme oprávnění, může pokračovat v LUIS. Pokud se správce tenanta nebude přihlašovat k LUIS, může správce získat přístup k [souhlasu](https://account.activedirectory.windowsazure.com/r#/applications) pro Luis, které vidíte na následujícím snímku obrazovky. Všimněte si, že seznam je filtrovaný na položky, které obsahují název `LUIS` .
-
-![Oprávnění Azure Active Directory na webu aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
+* Za druhé se správce tenanta přihlásí do LUIS a zobrazí se místní okno s tokem souhlasu. Toto je dialogové okno, které správce potřebuje k udělení oprávnění uživateli. Jakmile správce přijme oprávnění, může pokračovat v LUIS. Pokud se správce tenanta nebude přihlašovat k LUIS, může správce získat přístup k [souhlasu](https://account.activedirectory.windowsazure.com/r#/applications) Luis. Na této stránce můžete filtrovat seznam na položky, které obsahují název `LUIS` .
 
 Pokud chce správce tenanta používat LUIS jenom někteří uživatelé, existuje několik možných řešení:
 * Udělení souhlasu správce (souhlasu se všemi uživateli Azure AD), ale pak nastavte na Ano, aby se přiřazení uživatelů vyžadovalo v části vlastnosti podnikové aplikace, a nakonec přiřaďte nebo přidejte do aplikace jenom ty, které jsou k tomu potřeba. V této metodě správce stále poskytuje aplikaci souhlas správce, ale je možné řídit uživatele, kteří k nim mají přístup.
-* Druhým řešením je použití [rozhraní API pro správu identit a přístupu služby Azure AD v Microsoft Graph](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) k poskytnutí souhlasu každému konkrétnímu uživateli.
+* Druhým řešením je použití [rozhraní API pro správu identit a přístupu služby Azure AD v Microsoft Graph](/graph/azuread-identity-access-management-concept-overview) k poskytnutí souhlasu každému konkrétnímu uživateli.
 
 Další informace o uživatelích a souhlasu Azure Active Directory:
 * [Omezení aplikace](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) na sadu uživatelů

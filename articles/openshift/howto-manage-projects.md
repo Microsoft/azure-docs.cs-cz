@@ -7,15 +7,21 @@ author: mjudeikis
 ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
-ms.service: container-service
-ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: azure-redhat-openshift
+ms.openlocfilehash: bf2cf5a0d41af15821035c615fe071c8580e125f
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139109"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633100"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 V kontejnerové platformě OpenShift se projekty používají k seskupení a izolaci souvisejících objektů. Jako správce můžete vývojářům udělit přístup ke konkrétním projektům, umožnit jim vytvářet vlastní projekty a udělovat jim práva správce pro jednotlivé projekty.
 
@@ -45,7 +51,7 @@ Přístup k rozhraní API se uděluje vývojářům s vazbou role clusteru samoo
    oc edit template project-request -n openshift
    ```
 
-3. Odeberte výchozí šablonu projektu z procesu aktualizace služby Azure Red Hat OpenShift (ARO) přidáním následující poznámky:`openshift.io/reconcile-protect: "true"`
+3. Odeberte výchozí šablonu projektu z procesu aktualizace služby Azure Red Hat OpenShift (ARO) přidáním následující poznámky: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -112,7 +118,7 @@ Zakázání aktualizací pro všechny `Templates` a `ImageStreams` v `openshift`
    oc edit namespace openshift
    ```
 
-3. Odeberte `openshift` obor názvů z procesu aktualizace ARO a přidejte následující poznámku:`openshift.io/reconcile-protect: "true"`
+3. Odeberte `openshift` obor názvů z procesu aktualizace ARO a přidejte následující poznámku: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...

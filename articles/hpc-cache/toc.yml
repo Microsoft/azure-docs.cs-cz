@@ -8,6 +8,12 @@
   items:
     - name: Plánování agregovaného oboru názvů
       href: hpc-cache-namespace.md
+    - name: Vysvětlení modelů využití mezipaměti
+      href: cache-usage-models.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Požadavky
@@ -18,6 +24,8 @@
       items:
         - name: Přidání cílů úložiště
           href: hpc-cache-add-storage.md
+        - name: Přidání cest k oborům názvů
+          href: add-namespace-paths.md
         - name: Přesun data do cílů úložiště (v případě potřeby)
           items:
             - name: Předběžné načtení nového úložiště objektů blob
@@ -36,12 +44,20 @@
       href: hpc-cache-mount.md
     - name: Správa mezipaměti
       href: hpc-cache-manage.md
-    - name: Konfigurace volitelných nastavení
-      href: configuration.md
+    - name: Použití volitelných nastavení
+      items:
+        - name: Konfigurace volitelných nastavení
+          href: configuration.md
+        - name: Přizpůsobení zásad přístupu
+          href: access-policies.md
+        - name: Nastavení adresářových služeb
+          href: directory-services.md
 - name: Referenční informace
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
+    - name: Azure PowerShell
+      href: /powershell/module/Az.HPCCache
 - name: Zdroje a prostředky
   items:
     - name: Otevření lístku podpory

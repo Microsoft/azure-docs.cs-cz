@@ -4,12 +4,12 @@ description: Naučte se vytvořit připojení SSH s uzly clusteru Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015608"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034451"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí SSH k uzlům clusteru Azure Kubernetes Service (AKS) kvůli údržbě nebo řešení potíží
 
@@ -25,7 +25,7 @@ Ve výchozím nastavení se klíče SSH získávají nebo generují a pak se do 
 
 Tento článek také předpokládá, že máte klíč SSH. Můžete vytvořit klíč SSH pomocí [MacOS nebo Linux][ssh-nix] nebo [Windows][ssh-windows]. Použijete-li pro vytvoření páru klíčů gen, uložte dvojici klíčů ve formátu OpenSSH, nikoli jako výchozí formát privátního klíče pro výstup pro výstup (soubor. ppk).
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurace clusterů AKS založených na škálování virtuálních počítačů pro přístup přes SSH
 
@@ -35,7 +35,7 @@ Pomocí příkazu [AZ AKS show][az-aks-show] Získejte název skupiny prostředk
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query '[0].name' -o tsv)
 ```
 
 Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu sady škálování a přiřadí ho do *SCALE_SET_NAME*.
@@ -168,7 +168,7 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
 1. Vraťte se do svého kontejneru do relace Terminálové služby, aktualizujte oprávnění u zkopírovaného `id_rsa` privátního klíče SSH tak, aby byl uživatel jen pro čtení:
 
     ```console
-    chmod 0600 id_rsa
+    chmod 0400 id_rsa
     ```
 
 1. Vytvořte připojení SSH k AKS uzlu. Výchozí uživatelské jméno pro uzly AKS je znovu *azureuser*. Přijměte výzvu, aby bylo možné pokračovat v připojení, protože klíč SSH je nejprve důvěryhodný. Pak budete mít k dispozici příkaz bash pro váš uzel AKS:
@@ -211,7 +211,7 @@ Pokud potřebujete další data pro řešení potíží, můžete [Zobrazit prot
 [az-vm-user-update]: /cli/azure/vm/user#az-vm-user-update
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
-[view-master-logs]: view-master-logs.md
+[view-master-logs]: ./view-control-plane-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

@@ -1,19 +1,20 @@
 ---
-title: Změna skupiny dostupnosti virtuálních počítačů
+title: Změna skupiny dostupnosti virtuálních počítačů pomocí Azure PowerShell
 description: Naučte se, jak změnit skupinu dostupnosti pro virtuální počítač pomocí Azure PowerShell.
 ms.service: virtual-machines
 author: cynthn
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: f774056a8faf40e3796b06718e90cd7da988241c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.reviewer: mimckitt
+ms.openlocfilehash: 99985d0bb2294c538efa712e477cc6f8a2eb4938
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284621"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498468"
 ---
-# <a name="change-the-availability-set-for-a-vm"></a>Změna skupiny dostupnosti pro virtuální počítač
+# <a name="change-the-availability-set-for-a-vm-using-azure-powershell"></a>Změna skupiny dostupnosti pro virtuální počítač pomocí Azure PowerShell    
 Následující postup popisuje, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač se dá přidat do skupiny dostupnosti jenom při jeho vytvoření. Chcete-li změnit skupinu dostupnosti, je nutné odstranit a znovu vytvořit virtuální počítač. 
 
 Tento článek se týká virtuálních počítačů se systémy Linux a Windows.
@@ -80,21 +81,21 @@ Následující skript poskytuje příklad shromažďování požadovaných infor
        -CreateOption Attach
     }
     
-# Add NIC(s) and keep the same NIC as primary
+# Add NIC(s) and keep the same NIC as primary; keep the Private IP too, if it exists. 
     foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
     if ($nic.Primary -eq "True")
-        {
+    {
             Add-AzVMNetworkInterface `
-            -VM $newVM `
-            -Id $nic.Id -Primary
-            }
-        else
-            {
-              Add-AzVMNetworkInterface `
-              -VM $newVM `
-              -Id $nic.Id 
+               -VM $newVM `
+               -Id $nic.Id -Primary
+               }
+           else
+               {
+                 Add-AzVMNetworkInterface `
+                -VM $newVM `
+                 -Id $nic.Id 
                 }
-    }
+      }
 
 # Recreate the VM
     New-AzVM `
@@ -106,4 +107,4 @@ Následující skript poskytuje příklad shromažďování požadovaných infor
 
 ## <a name="next-steps"></a>Další kroky
 
-Přidáním dalšího [datového disku](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)přidejte do virtuálního počítače další úložiště.
+Přidáním dalšího [datového disku](attach-managed-disk-portal.md)přidejte do virtuálního počítače další úložiště.

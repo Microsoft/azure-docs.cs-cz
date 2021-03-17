@@ -2,17 +2,17 @@
 title: Přechod na OpenVPN nebo IKEv2 z SSTP | VPN Gateway Azure
 description: Tento článek vám pomůže porozumět způsobům, jak překonat 128 souběžného počtu připojení SSTP.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2fa265e580bc0e752498284ed50e398b59423fd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064669"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657137"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Přechod na Protokol OpenVPN nebo IKEv2 z SSTP
 
@@ -47,7 +47,7 @@ Přidání IKEv2 do existující brány VPN SSTP nebude mít vliv na stávajíc�
 
 Pokud chcete přidat IKEv2 do existující brány, stačí přejít na kartu Konfigurace Point-to-site na portálu Virtual Network Gateway na portálu a v rozevíracím seznamu vybrat **IKEv2 a SSTP (SSL)** .
 
-![Point-to-site](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![Snímek obrazovky zobrazující stránku konfigurace Point-to-site s otevřeným rozevíracím seznamem Typ tunelového propojení a vybraný protokol IKEv2 a SSTP (SSL).](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>Možnost 2 – odebrání SSTP a povolení OpenVPN v bráně
@@ -58,9 +58,9 @@ Pokud si přejete, můžete povolit OpenVPN spolu s IKEv2. OpenVPN je založen n
 
 ![Point-to-site](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-Po dokončení konfigurace brány se stávající klienti nebudou moct připojit, dokud neprovedete [nasazení a konfiguraci klientů OpenVPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients).
+Po dokončení konfigurace brány se stávající klienti nebudou moct připojit, dokud neprovedete [nasazení a konfiguraci klientů OpenVPN](./vpn-gateway-howto-openvpn-clients.md).
 
-Pokud používáte Windows 10, můžete použít také [klienta Azure VPN pro Windows](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) .
+Pokud používáte Windows 10, můžete použít také [klienta Azure VPN pro Windows](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client) .
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -96,41 +96,41 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 
 **IKEv2**
 
-|**Šifr** | **Integrita** | **PRF** | **Skupina DH** |
-|---        | ---            | ---        | ---     |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_24 |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_14 |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_ECP384 |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_ECP256 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_24 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_14 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_ECP384 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA384        | SHA384    | GROUP_24 |
-|AES256     |   SHA384        | SHA384    | GROUP_14 |
-|AES256     |   SHA384        | SHA384    | GROUP_ECP384 |
-|AES256     |   SHA384        | SHA384    | GROUP_ECP256 |
-|AES256     |   SHA256        | SHA256    | GROUP_24 |
-|AES256     |   SHA256        | SHA256    | GROUP_14 |
-|AES256     |   SHA256        | SHA256    | GROUP_ECP384 |
-|AES256     |   SHA256        | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA256        | SHA256    | GROUP_2 |
+| **Šifr** | **Integrita** | **PRF** | **Skupina DH** |
+|--|--|--|--|
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP256 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA384 | SHA384 | GROUP_24 |
+| AES256 | SHA384 | SHA384 | GROUP_14 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP384 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_2 |
 
-**Podporují**
+**IPsec**
 
-|**Šifr** | **Integrita** | **Skupina PFS** |
-|---        | ---            | ---        |
-|GCM_AES256    | GCM_AES256 | GROUP_NONE |
-|GCM_AES256    | GCM_AES256 | GROUP_24 |
-|GCM_AES256    | GCM_AES256 | GROUP_14 |
-|GCM_AES256    | GCM_AES256 | GROUP_ECP384 |
-|GCM_AES256    | GCM_AES256 | GROUP_ECP256 |
-| AES256    | SHA256 | GROUP_NONE |
-| AES256    | SHA256 | GROUP_24 |
-| AES256    | SHA256 | GROUP_14 |
-| AES256    | SHA256 | GROUP_ECP384 |
-| AES256    | SHA256 | GROUP_ECP256 |
-| AES256    | SHA1 | GROUP_NONE |
+| **Šifr** | **Integrita** | **Skupina PFS** |
+|--|--|--|
+| GCM_AES256 | GCM_AES256 | GROUP_NONE |
+| GCM_AES256 | GCM_AES256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256 | SHA256 | GROUP_NONE |
+| AES256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA1 | GROUP_NONE |
 
 ### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Jaké zásady TLS jsou nakonfigurované na bránách VPN pro P2S?
 **PROTOKOLY**

@@ -3,12 +3,12 @@ title: Instalace Azure Backup Serveru v Azure Stacku
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263057"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987001"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -107,12 +107,12 @@ Vždy připojte Azure Backup Server k doméně. Pokud potřebujete přesunout Az
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
 
-Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. V tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md)najdete další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage)a [redundantního](../storage/common/storage-redundancy.md#zone-redundant-storage) úložiště pro zóny.
 
 Chcete-li upravit nastavení replikace úložiště:
 
 1. Vyberte svůj trezor a otevřete tak řídicí panel trezoru a nabídku nastavení. Pokud se nabídka **Nastavení** neotevře, vyberte **všechna nastavení** na řídicím panelu trezoru.
-2. V nabídce **Nastavení** vyberte zálohovat zálohování **Backup Infrastructure**  >  **Konfigurace zálohování** a otevřete nabídku **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
+2. V nabídce **Nastavení** vyberte zálohovat zálohování   >  **Konfigurace zálohování** a otevřete nabídku **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
 
     ![Seznam trezorů záloh](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -129,7 +129,7 @@ Existují dva způsoby, jak stáhnout instalační službu Azure Backup Server. 
 
     ![Zadejte Recovery Services v dialogovém okně všechny služby.](./media/backup-mabs-install-azure-stack/all-services.png)
 
-    Zobrazí se seznam trezorů Recovery Services v předplatném.
+    Zobrazí se seznam trezorů služby Recovery Services v předplatném.
 
 4. V seznamu trezorů Recovery Services vyberte svůj trezor a otevřete jeho řídicí panel.
 
@@ -193,7 +193,7 @@ Po stažení všech souborů na virtuální počítač s Azure Stack přejdete d
 
    ![Průvodce extrahuje soubory.](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Po dokončení procesu extrakce vyberte **Dokončit**. Ve výchozím nastavení je vybrána možnost **spustit setup.exe** . Po výběru **dokončit**Setup.exe nainstaluje Microsoft Azure Backup Server do zadaného umístění.
+6. Po dokončení procesu extrakce vyberte **Dokončit**. Ve výchozím nastavení je vybrána možnost **spustit setup.exe** . Po výběru **dokončit** Setup.exe nainstaluje Microsoft Azure Backup Server do zadaného umístění.
 
    ![Instalační program extrahuje soubory Microsoft Azure Backupho serveru.](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
@@ -228,7 +228,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 4. Microsoft Azure Backup Server vyžaduje SQL Server. Instalační balíček Azure Backup Server obsahuje balíčky s odpovídajícími binárními soubory SQL Server. Pokud chcete použít vlastní instalaci SQL, můžete. Doporučená volba ale umožňuje, aby instalační program přidal novou instanci SQL Server. Pokud chcete mít jistotu, že volba funguje ve vašem prostředí, vyberte **zkontrolovat a nainstalovat**.
 
    > [!NOTE]
-   > Azure Backup Server nebudou fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní.
+   > Azure Backup Server nebude fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní.
    >
 
     ![Nastavení Azure Backup Server-SQL](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
@@ -239,11 +239,11 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
     Pokud dojde k selhání s doporučením pro restartování počítače, restartujte počítač. Po restartování počítače restartujte instalační program a až se dostanete na obrazovku **nastavení SQL** , vyberte **znovu kontrolu**.
 
-5. V **nastavení instalace**zadejte umístění instalace souborů Microsoft Azure Backup serveru a vyberte **Další**.
+5. V **nastavení instalace** zadejte umístění instalace souborů Microsoft Azure Backup serveru a vyberte **Další**.
 
     ![Zadejte umístění pro instalaci souborů.](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage).
 
 6. Na obrazovce **nastavení zabezpečení** zadejte silné heslo pro omezené místní uživatelské účty a vyberte **Další**.
 
@@ -255,7 +255,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
    > Doporučujeme, abyste web Windows Update přesměrování na Microsoft Update, což nabízí zabezpečení a důležité aktualizace pro Windows a další produkty, jako je Microsoft Azure Backup Server.
    >
 
-    ![Microsoft Update přihlašovací obrazovka](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Obrazovka Microsoft Update Opt-In](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. Zkontrolujte *Souhrn nastavení* a vyberte **nainstalovat**.
 
@@ -335,22 +335,28 @@ Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pom
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
 
-Pokud brána firewall nebo proxy server brání v přístupu k Azure, přidejte následující adresy domény do seznamu povolených profilů brány firewall nebo proxy serveru:
+Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo následující adresy URL a IP adresy:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* Adresy URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
-Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azure určí operace, které je možné provést. Po **připojení**serveru použijte tabulku v [Možnosti připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) , abyste viděli dostupné operace.
+
+Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azure určí operace, které je možné provést. Po **připojení** serveru použijte tabulku v [Možnosti připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) , abyste viděli dostupné operace.
 
 ### <a name="handling-subscription-states"></a>Zpracování stavů předplatného
 
 Je možné změnit předplatné Azure ze stavu, ve kterém *vypršela platnost* , nebo *Zrušit* stav na *aktivní* . I když stav předplatného není *aktivní*:
 
-- Při *zrušení zřízení*předplatného ztratí funkčnost. Obnovení předplatného na *aktivní*revives funkce zálohování a obnovení. Pokud se zálohovaná data na místním disku uchovávají s dostatečně velkým obdobím uchovávání, můžou se data ze zálohy načíst. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušení zřízení* .
-- I když platnost předplatného *vypršela*, ztratí funkčnost. Po *vypršení platnosti*předplatného se nespustí naplánované zálohy.
+- Při *zrušení zřízení* předplatného ztratí funkčnost. Obnovení předplatného na *aktivní* revives funkce zálohování a obnovení. Pokud se zálohovaná data na místním disku uchovávají s dostatečně velkým obdobím uchovávání, můžou se data ze zálohy načíst. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušení zřízení* .
+- I když platnost předplatného *vypršela*, ztratí funkčnost. Po *vypršení platnosti* předplatného se nespustí naplánované zálohy.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

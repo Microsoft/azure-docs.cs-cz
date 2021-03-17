@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553389"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424747"
 ---
 # <a name="scenario-isolating-vnets"></a>Scénář: izolace virtuální sítě
 
@@ -26,10 +26,10 @@ V tomto scénáři zůstane úloha v rámci určité virtuální sítě izolovan
 
 | Z |   Záměr |  *Virtuální sítě* | *Větve* |
 | -------------- | -------- | ---------- | ---|
-| Virtuální sítě     | &#8594;|           |     X    |
-| Větve   | &#8594;|    X     |     X    |
+| Virtuální sítě     | &#8594;| Direct |   Direct    |
+| Větve   | &#8594;|  Direct  |   Direct    |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků) učí předpona cíle (na straně toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů.
+Každá z buněk v předchozí tabulce popisuje, jestli připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků) komunikuje s předponou cíle (stranu "do" toku, záhlaví sloupce kurzívou). V tomto scénáři nejsou k dispozici žádné brány firewall ani síťová virtuální zařízení, takže komunikace směřuje přímo přes virtuální síť WAN (takže slovo "Direct" v tabulce).
 
 Tato matice připojení poskytuje dva různé vzory řádků, které se převádějí do dvou směrovacích tabulek. Virtuální síť WAN už má výchozí směrovací tabulku, takže budeme potřebovat jinou směrovací tabulku. V tomto příkladu budeme pojmenovat směrovací tabulku **RT_VNET**.
 

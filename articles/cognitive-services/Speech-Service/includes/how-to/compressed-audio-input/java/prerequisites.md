@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422279"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417698"
 ---
 Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány a propojeny se sadou Speech SDK. Místo toho budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` je povinné. Ujistěte se, že jsou v `libgstreamer_android.so`nástroji propojené vaše moduly plug-in GStreamer.
+`libgstreamer_android.so` je povinné. Ujistěte se, že jsou v nástroji propojené všechny GStreamer moduly plug-in (ze souboru Android.mk) `libgstreamer_android.so` . Pokud používáte nejnovější sadu Speech SDK (1.16.0 a vyšší) s GStreamer verze 1.18.3, musí `libc++_shared.so` být také přítomna v Androidu NDK.
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-Příklad `Android.mk` a `Application.mk` soubor jsou uvedeny níže. Pomocí těchto kroků vytvořte `gstreamer` sdílený objekt:.`libgstreamer_android.so`
+Příklad `Android.mk` a `Application.mk` soubor jsou uvedeny níže. Pomocí těchto kroků vytvořte `gstreamer` sdílený objekt: `libgstreamer_android.so` .
 
 ```makefile
 # Android.mk
@@ -31,7 +31,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := dummy
 LOCAL_SHARED_LIBRARIES := gstreamer_android
-LOCAL_LDLIBS := -llog
 include $(BUILD_SHARED_LIBRARY)
 
 ifndef GSTREAMER_ROOT_ANDROID
@@ -62,10 +61,12 @@ endif
 
 GSTREAMER_NDK_BUILD_PATH  := $(GSTREAMER_ROOT)/share/gst-android/ndk-build/
 include $(GSTREAMER_NDK_BUILD_PATH)/plugins.mk
-GSTREAMER_PLUGINS         :=  coreelements app audioconvert mpg123 \
-    audioresample audioparsers ogg \
-    opusparse opus wavparse alaw mulaw flac
-GSTREAMER_EXTRA_LIBS      := -liconv
+GSTREAMER_PLUGINS         :=  $(GSTREAMER_PLUGINS_CORE) \ 
+                              $(GSTREAMER_PLUGINS_CODECS) \ 
+                              $(GSTREAMER_PLUGINS_PLAYBACK) \
+                              $(GSTREAMER_PLUGINS_CODECS_GPL) \
+                              $(GSTREAMER_PLUGINS_CODECS_RESTRICTED)
+GSTREAMER_EXTRA_LIBS      := -liconv -lgstbase-1.0 -lGLESv2 -lEGL
 include $(GSTREAMER_NDK_BUILD_PATH)/gstreamer-1.0.mk
 ```
 
@@ -76,7 +77,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Pomocí následujícího příkazu `libgstreamer_android.so` můžete sestavit v Ubuntu 16,04 nebo 18,04. Následující příkazové řádky byly testovány pouze pro [GStreamer Android verze 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) s [Androidem NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+`libgstreamer_android.so`Pomocí následujícího příkazu můžete sestavit v Ubuntu 16,04 nebo 18,04. Následující příkazové řádky byly testovány pouze pro [GStreamer Android verze 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) s [Androidem NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +109,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Po sestavení sdíleného objektu (`libgstreamer_android.so`) musí vývojář aplikace umístit sdílený objekt do aplikace pro Android, aby ho bylo možné načíst pomocí sady Speech SDK.
+Po sestavení sdíleného objektu ( `libgstreamer_android.so` ) musí vývojář aplikace umístit sdílený objekt do aplikace pro Android, aby ho bylo možné načíst pomocí sady Speech SDK.

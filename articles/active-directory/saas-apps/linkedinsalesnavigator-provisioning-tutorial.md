@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 458b527194c1123e266bd6abedf25de18e0cee09
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549700"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359353"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu LinkedIn Sales Navigator pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v nástroji Link
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenanta Azure Active Directory.
 * Tenant pro LinkedIn Sales Navigator 
@@ -51,7 +51,7 @@ Než nakonfigurujete a povolíte službu zřizování, budete se muset rozhodnou
 V této části se seznámíte s tím, že propojíte rozhraní API pro zřizování SCIM uživatelských účtů pro Azure AD a nakonfigurujete službu zřizování tak, aby vytvořila, aktualizovala a zakázala přiřazené uživatelské účty v oblasti LinkedIn Sales Navigator na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro LinkedIn Sales Navigator, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe.
+> Můžete se také rozhodnout, že pro LinkedIn Sales Navigatoru je povolena jediná Sign-On založená na SAML, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na LinkedIn Sales Navigator v Azure AD:
 
@@ -62,7 +62,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 1. Přihlaste se do centra účtů.
 
-2. Vyberte ** &gt; Nastavení správce správy** .
+2. Vyberte **&gt; Nastavení správce správy** .
 
 3. Klikněte na **rozšířené integrace** na levém bočním panelu. Jste přesměrováni na centrum účtů.
 
@@ -71,12 +71,12 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
     > [!NOTE]
     > Pokud není povoleno automatické přiřazování licencí, znamená to, že budou synchronizována pouze uživatelská data.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![Snímek obrazovky ukazuje globální nastavení centra účtů LinkedIn.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > Pokud je povoleno přiřazení autolicense, je nutné poznamenat instanci aplikace a typ licence. Licence se přiřazují k prvnímu, prvnímu a zajišťují, aby se všechny licence vycházely.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Snímek obrazovky se zobrazí stránka Instalace S C I M.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. Klikněte na **vygenerovat token**. V poli **přístupový token** byste měli vidět zobrazení přístupového tokenu.
 
@@ -88,9 +88,9 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 9. Vyberte instanci aplikace LinkedIn Sales Navigator a pak vyberte kartu **zřizování** .
 
-10. Nastavte **režim zřizování** na **automaticky**.
+10. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![Snímek obrazovky se stránkou zřizování pro stránku LinkedIn úrovně.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. Do následujících polí zadejte v části **přihlašovací údaje správce** :
 
@@ -104,9 +104,9 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 13. Klikněte na **Uložit**.
 
-14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD do služby LinkedIn Sales Navigator. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin v nástroji LinkedIn Sales Navigator pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD do služby LinkedIn Sales Navigator. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin v nástroji LinkedIn Sales Navigator pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Snímek obrazovky ukazuje mapování, včetně mapování atributů.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. Pokud chcete povolit službu zřizování Azure AD pro LinkedIn Sales Navigator, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 

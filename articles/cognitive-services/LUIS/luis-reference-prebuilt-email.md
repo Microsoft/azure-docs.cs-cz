@@ -3,23 +3,21 @@ title: Referenční informace k e-mailu předdefinovaných entit LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje předem vytvořené informace o entitě e-mailu v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 806357670bead54658f0b501ca20473293275d58
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91533362"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita emailu pro aplikaci LUIS
-Extrakce e-mailů zahrnuje celou e-mailovou adresu z utterance. Vzhledem k tomu, že je tato entita už vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující e-mail. E-mailová entita `en-us` je podporována pouze v jazykové verzi.
+Extrakce e-mailů zahrnuje celou e-mailovou adresu z utterance. Vzhledem k tomu, že je tato entita už vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující e-mail. E-mailová entita je podporována `en-us` pouze v jazykové verzi.
 
 ## <a name="resolution-for-prebuilt-email"></a>Řešení předem vytvořeného e-mailu
 
@@ -29,7 +27,7 @@ Pro dotaz se vrátí následující objekty entity:
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -40,7 +38,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

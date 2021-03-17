@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: c7033886d55e381445d99035115654332491441c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547845"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895051"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu ScaleX Enterprise
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat řešení ScaleX Enterprise s Azure Ac
 * Umožněte uživatelům, aby se automaticky přihlásili k programu ScaleX Enterprise pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -47,15 +47,15 @@ Pokud chcete nakonfigurovat integraci ScaleX Enterprise do Azure AD, musíte do 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **scaleX Enterprise** .
 1. Na panelu výsledků vyberte **scaleX Enterprise** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-scalex-enterprise"></a>Konfigurace a testování jednotného přihlašování Azure AD pro společnosti ScaleX Enterprise
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí formátu ScaleX Enterprise pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v organizaci ScaleX Enterprise.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí formátu ScaleX Enterprise pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v organizaci ScaleX Enterprise.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ScaleX Enterprise, dokončete následující stavební bloky:
 
@@ -70,8 +70,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **scaleX Enterprise** Application Integration, najděte část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **scaleX Enterprise** Application Integration, najděte část **Správa** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory scaleX Enterprise Client](https://info.rescale.com/contact_sales) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Podniková aplikace ScaleX očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **EmailAddress** je mapován pomocí **User. mail**. Aplikace ScaleX Enterprise Application očekává, že **EmailAddress** mají být mapovány pomocí **User. userPrincipalName**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+1. Podniková aplikace ScaleX očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **EmailAddress** je mapován pomocí **User. mail** . Aplikace ScaleX Enterprise Application očekává, že **EmailAddress** mají být mapovány pomocí **User. userPrincipalName** , takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
@@ -105,25 +105,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k systému ScaleX Enterprise.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **scaleX Enterprise**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **scaleX Enterprise** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -133,7 +133,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-scalex-enterprise-sso"></a>Konfigurace ScaleX Enterprise SSO
 
-1. Pokud chcete automatizovat konfiguraci v rámci systému ScaleX Enterprise, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+1. Pokud chcete automatizovat konfiguraci v rámci systému ScaleX Enterprise, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření** .
 
     ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
@@ -143,16 +143,16 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Chcete-li nastavit aplikaci ScaleX Enterprise ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu společnosti ScaleX Enterprise Company jako správce a proveďte následující kroky:
 
-1. Klikněte na nabídku v pravém horním rohu a vyberte **Správa společnosti Contoso**.
+1. Klikněte na nabídku v pravém horním rohu a vyberte **Správa společnosti Contoso** .
 
     > [!NOTE]
     > Contoso je pouze příklad. Mělo by se jednat o skutečný název vaší společnosti.
 
-    ![Konfigurace jednotného přihlašování](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![Snímek obrazovky, který zobrazuje ukázkový název společnosti vybraný v nabídce vpravo nahoře.](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
-1. V horní nabídce vyberte **integrace** a vyberte **jednotné přihlašování**.
+1. V horní nabídce vyberte **integrace** a vyberte **jednotné přihlašování** .
 
-    ![Konfigurace jednotného přihlašování](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![Snímek obrazovky s vybraným integrací a jediným přihlašováním z rozevírací nabídky](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
 1. Vyplňte formulář následujícím způsobem:
 
@@ -160,9 +160,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     a. Vyberte **vytvořit libovolného uživatele, který se může ověřit pomocí jednotného přihlašování** .
 
-    b. **Zprostředkovatel služeb SAML**: vložte hodnotu ***urn: Oasis: names: TC: SAML: 2.0: NameId-Format: persistent***
+    b. **Poskytovatel služeb SAML** : vložte hodnotu * *_urn: Oasis: names: TC: SAML: 2.0: NameId-Format: persistent_* _
 
-    c. **Název pole e-mailu zprostředkovatele identity v odpovědi ACS**: vložte hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. _ * Název pole e-mailu zprostředkovatele identity v odpovědi ACS * *: vložte hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **ID entity EntityDescriptor zprostředkovatele identity:** Vložte hodnotu **identifikátoru Azure AD** zkopírovanou z Azure Portal.
 
@@ -182,14 +182,14 @@ Aby se uživatelé Azure AD mohli přihlašovat do společnosti ScaleX Enterpris
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ScaleX Enterprise, měli byste být automaticky přihlášeni k organizaci ScaleX, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ScaleX Enterprise, měli byste být automaticky přihlášeni k organizaci ScaleX, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si ScaleX Enterprise s Azure AD](https://aad.portal.azure.com/)

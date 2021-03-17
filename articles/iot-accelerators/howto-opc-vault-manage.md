@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71203651"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91281911"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Správa služby OPC trezor certifikátů
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Tento článek vysvětluje úlohy správy pro službu správy certifikátů trezoru OPC v Azure. Obsahuje informace o tom, jak obnovit certifikáty certifikační autority vystavitele, jak obnovit seznam odvolaných certifikátů (CRL) a jak udělit a odvolat přístup uživatelů.
 
@@ -63,7 +66,7 @@ Role uživatelů pro mikroslužbu trezoru OPC můžete spravovat v podnikové ap
 
 Ve výchozím nastavení se ověřený uživatel v tenantovi může ke službě přihlásit jako čtenář. Role s vyššími oprávněními vyžadují ruční správu v Azure Portal nebo pomocí PowerShellu.
 
-### <a name="add-user"></a>Přidání uživatele
+### <a name="add-user"></a>Přidat uživatele
 
 1. Otevřete web Azure Portal.
 2. Přejít na **Azure Active Directory**  >  **podnikové aplikace**

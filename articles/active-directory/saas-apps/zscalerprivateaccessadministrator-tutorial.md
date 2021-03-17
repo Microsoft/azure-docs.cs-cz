@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 5507c25510a84dcfeafc1b2db6c2a774153a59c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 803f5c25429b33e6d1af130196d38e125b410eb4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545722"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Kurz: Azure Active Directory integrace se správcem privátního přístupu Zscaler
 
@@ -27,10 +27,10 @@ Integrace správce privátního přístupu Zscaler s Azure AD poskytuje následu
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Zscaler správce privátního přístupu (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD pomocí Správce privátního přístupu Zscaler potřebujete následující položky:
 
@@ -64,19 +64,19 @@ Pokud chcete nakonfigurovat integraci správce privátního přístupu Zscaler d
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zscaler správce privátního přístupu**, vyberte **Zscaler správce privátního přístupu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Zscaler správce privátního přístupu** , vyberte **Zscaler správce privátního přístupu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Zscaler správce privátního přístupu v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Správce privátního přístupu Zscaler na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Správce privátního přístupu Zscaler na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zscaler správce privátního přístupu.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Správce privátního přístupu Zscaler, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování pro správce privátního přístupu Zscaler](#configure-zscaler-private-access-administrator-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Zscaler správcem privátního přístupu](#configure-zscaler-private-access-administrator-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte testovacího uživatele Zscaler správce privátního přístupu](#create-zscaler-private-access-administrator-test-user)** , který má protějšek Britta Simon v Zscaler správce privátního přístupu, který se odkazuje na reprezentaci uživatele v Azure AD.
@@ -88,7 +88,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Správce privátního přístupu Zscaler, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **správce privátního přístupu Zscaler** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **správce privátního přístupu Zscaler** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -96,32 +96,32 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Správce
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Přihlašovací údaje pro doménu a adresy URL jednotného přihlašování Zscaler správce privátního přístupu](common/idp-relay.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat hodnoty, které jsou popsány.](common/idp-relay.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.private.zscaler.com/auth/metadata`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.private.zscaler.com/auth/sso`
 
-    c. Klikněte na **nastavit další adresy URL**.
+    c. Klikněte na **nastavit další adresy URL** .
 
     d. Do textového pole **stav přenosu** zadejte adresu URL: `idpadminsso`
 
 5.  Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok:
 
-    ![Přihlašovací údaje pro doménu a adresy URL jednotného přihlašování Zscaler správce privátního přístupu](common/both-signonurl.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/both-signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.private.zscaler.com/auth/sso`   
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta podpory Zscaler pro správce privátního přístupu](https://help.zscaler.com/zpa-submit-ticket) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -135,15 +135,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Správce
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>Konfigurace jednotného přihlašování pro správce privátního přístupu Zscaler
+### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>Konfigurace Zscaler správce privátního přístupu (Single Sign-On)
 
 1. V jiném okně webového prohlížeče se přihlaste k Zscaler správce privátního přístupu jako správce.
 
-2. V horní části klikněte na **Správa** a přejděte do části **ověřování** klikněte na **Konfigurace IDP**.
+2. V horní části klikněte na **Správa** a přejděte do části **ověřování** klikněte na **Konfigurace IDP** .
 
     ![Správce Zscaler pro privátní přístup](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. V pravém horním rohu klikněte na **Přidat konfiguraci IDP**. 
+3. V pravém horním rohu klikněte na **Přidat konfiguraci IDP** . 
 
     ![Zscaler správce privátního přístupu addidp](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
 
@@ -157,17 +157,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Správce
 
     ![Zscaler správce privátního přístupu idpconfig](./media/zscalerprivateaccessadministrator-tutorial/idpconfig.png)
 
-    c. Vyberte možnost **jednotné přihlašování** jako **správce**.
+    c. Vyberte možnost **jednotné přihlašování** jako **správce** .
 
     d. Vyberte pole doména z **domén** .
     
-    e. Klikněte na **Uložit**.
+    e. Klikněte na **Uložit** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -179,27 +179,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Zscaler správci privátního přístupu.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **správce privátního přístupu Zscaler**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **správce privátního přístupu Zscaler** .
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Zscaler správce privátního přístupu**.
+2. V seznamu aplikace vyberte **Zscaler správce privátního přístupu** .
 
     ![Odkaz na správce privátního přístupu Zscaler v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -221,7 +221,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Zscaler správcem privátního p
 
 1. Přihlaste se ke svému webu Správce privátního přístupu Zscaler jako správce.
 
-2. V horní části klikněte na **Správa** a přejděte do části **ověřování** klikněte na **Konfigurace IDP**.
+2. V horní části klikněte na **Správa** a přejděte do části **ověřování** klikněte na **Konfigurace IDP** .
 
     ![Správce Zscaler pro privátní přístup](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
@@ -229,7 +229,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Zscaler správcem privátního p
 
     ![Správce správce privátního přístupu Zscaler](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
 
-4. V pravém horním rohu klikněte na **přidat správce**:
+4. V pravém horním rohu klikněte na **přidat správce** :
 
     ![Správce privátního přístupu Zscaler přidat správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
 
@@ -243,7 +243,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Zscaler správcem privátního p
 
     c. Do textového pole **Potvrdit heslo** zadejte heslo.
 
-    d. Vyberte **role** jako **správce privátního přístupu Zscaler**.
+    d. Vyberte **role** jako **správce privátního přístupu Zscaler** .
 
     e. Do textového pole **e-mail** zadejte e-maily uživatele, jako je BrittaSimon@contoso.com .
 
@@ -251,19 +251,18 @@ Aby se uživatelé Azure AD mohli přihlásit k Zscaler správcem privátního p
 
     například V poli **časové pásmo** vyberte časové pásmo.
 
-    h. Klikněte na **Uložit**.
+    h. Klikněte na **Uložit** .
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Správce privátního přístupu Zscaler na přístupovém panelu byste měli být automaticky přihlášení ke Správci privátního přístupu Zscaler, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Správce privátního přístupu Zscaler na přístupovém panelu byste měli být automaticky přihlášení ke Správci privátního přístupu Zscaler, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

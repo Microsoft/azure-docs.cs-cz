@@ -1,19 +1,19 @@
 ---
 title: Instalace prostorových kotev Azure pro aplikaci HoloLens v C++/WinRT
 description: Konfigurace projektu aplikace/WinRT v jazyce C++ pro použití prostorových kotev Azure
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 710f023a64f66e486bb2db9c08807af3431d0016
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 69134ef87d90fe69de2d9e4e9222e90f65edc785
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812293"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507011"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>Konfigurace prostorových ukotvení Azure v projektu/WinRT v C++
 
@@ -25,7 +25,7 @@ ms.locfileid: "87812293"
 
 Prostorové kotvy Azure pro HoloLens a C++/WinRT se distribuují pomocí balíčku NuGet [Microsoft. Azure. SpatialAnchors. WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) .
 
-Podle [zde](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio) uvedených pokynů použijte Správce balíčků NuGet sady Visual Studio k instalaci balíčku NuGet [Microsoft. Azure. SpatialAnchors. WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) do svého projektu.
+Podle [zde](/nuget/consume-packages/install-use-packages-visual-studio) uvedených pokynů použijte Správce balíčků NuGet sady Visual Studio k instalaci balíčku NuGet [Microsoft. Azure. SpatialAnchors. WinRT](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) do svého projektu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,51 +1,36 @@
 ---
-title: O úložištích & imagí
-description: Seznámení se základními koncepty Azure Container Registry, úložišť a imagí kontejnerů.
+title: O registrech, úložištích, obrázcích a artefaktech
+description: Seznámení se základními koncepty Azure Container Registry, úložišť, imagí kontejnerů a dalších artefaktů.
 ms.topic: article
-ms.date: 06/16/2020
-ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/29/2021
+ms.openlocfilehash: 991be79b10b6061f2034eb19e4e139af65aef3cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578116"
 ---
-# <a name="about-registries-repositories-and-images"></a>O registrech, úložištích a obrázcích
+# <a name="about-registries-repositories-and-artifacts"></a>O registrech, úložištích a artefaktech
 
 Tento článek představuje klíčové koncepty registrů kontejnerů, úložišť a imagí kontejnerů a souvisejících artefaktů. 
 
+:::image type="content" source="media/container-registry-concepts/registry-elements.png" alt-text="Registr, úložiště a artefakty":::
+
 ## <a name="registry"></a>Registr
 
-*Registr* kontejnerů je služba, která ukládá a distribuuje image kontejneru. Docker Hub je veřejný registr kontejnerů, který podporuje open source komunitu a slouží jako obecný katalog imagí. Azure Container Registry poskytuje uživatelům přímou kontrolu nad svými obrázky s integrovaným ověřováním, [geografickou replikací](container-registry-geo-replication.md) podporující globální distribuci a spolehlivost pro nasazení v rámci sítě, [konfiguraci virtuálních sítí a brány firewall](container-registry-vnet.md), [uzamykání značek](container-registry-image-lock.md)a mnoho dalších vylepšených funkcí. 
+*Registr* kontejnerů je služba, která ukládá a distribuuje image kontejneru a související artefakty. Docker Hub je příkladem veřejného registru kontejneru, který slouží jako obecný katalog imagí kontejnerů Docker. Azure Container Registry poskytuje uživatelům přímou kontrolu nad svým obsahem kontejneru s integrovaným ověřováním, [geografickou replikací](container-registry-geo-replication.md) podporující globální distribuci a spolehlivost pro nasazení na konci sítě, [konfiguraci virtuálních sítí s privátním odkazem](container-registry-private-link.md), [uzamykání značek](container-registry-image-lock.md)a mnoho dalších vylepšených funkcí. 
 
-Kromě imagí kontejneru Docker Azure Container Registry podporuje související [artefakty obsahu](container-registry-image-formats.md) včetně formátů obrázků OCI (Open container Initiative).
+Kromě imagí kontejneru kompatibilního s Docker, Azure Container Registry podporuje řadu [artefaktů obsahu](container-registry-image-formats.md) , včetně grafů Helm a formátů obrázků OCI (Open container Initiative).
 
-## <a name="content-addressable-elements-of-an-artifact"></a>Obsah s adresovatelnými prvky artefaktu
+## <a name="repository"></a>Repository
 
-Adresa artefaktu ve službě Azure Container Registry obsahuje následující prvky. 
-
-`[loginUrl]/[repository:][tag]`
-
-* **loginUrl** – plně kvalifikovaný název hostitele registru. Hostitel registru ve službě Azure Container Registry má formát *myregistry*. azurecr.IO (všechna malá písmena). Je nutné zadat loginUrl při použití Docker nebo jiných klientských nástrojů pro vyžádání nebo nabízení artefaktů do služby Azure Container Registry. 
-* **úložiště** – název logického seskupení jednoho nebo více souvisejících imagí nebo artefaktů, například obrázky pro aplikaci nebo základní operační systém. Může zahrnovat cestu k *oboru názvů* . 
-* identifikátor **označení** konkrétní verze obrázku nebo artefaktu uloženého v úložišti.
-
-Například úplný název obrázku ve službě Azure Container Registry může vypadat takto:
-
-*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
-
-Podrobnosti o těchto prvcích najdete v následujících oddílech.
-
-## <a name="repository-name"></a>Název úložiště
-
-*Úložiště* je kolekce imagí kontejneru nebo jiných artefaktů se stejným názvem, ale s různými značkami. Například následující tři obrázky jsou v úložišti "ACR-HelloWorld":
-
+*Úložiště* je kolekce imagí kontejneru nebo jiných artefaktů v registru, které mají stejný název, ale různé značky. Například následující tři obrázky jsou v `acr-helloworld` úložišti:
 
 - *ACR-HelloWorld: nejnovější*
 - *ACR-HelloWorld: V1*
 - *ACR-HelloWorld: v2*
 
-Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují identifikovat související úložiště a vlastnictví artefaktů ve vaší organizaci pomocí názvů s oddělenými lomítky. Registr ale spravuje všechna úložiště nezávisle, nikoli jako hierarchii. Příklady:
+Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují identifikovat související úložiště a vlastnictví artefaktů ve vaší organizaci pomocí názvů s oddělenými lomítky. Registr ale spravuje všechna úložiště nezávisle, nikoli jako hierarchii. Příklad:
 
 - *Marketing/campaign10-18/web: v2*
 - *Marketing/campaign10 – 18/API: V3*
@@ -57,7 +42,7 @@ Názvy úložišť můžou obsahovat jenom malé alfanumerické znaky, tečky, p
 
 Úplná pravidla pojmenování úložiště najdete v tématu věnovaném [specifikaci distribuce pro iniciativu](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)v rámci služby Open container.
 
-## <a name="image"></a>Image
+## <a name="artifact"></a>Artefakt
 
 Obrázek kontejneru nebo jiný artefakt v rámci registru je přidružen k jedné nebo více značkám, má jednu nebo více vrstev a je identifikován manifestem. Porozumět, jak tyto komponenty vzájemně souvisí, vám můžou efektivně spravovat registr.
 
@@ -73,15 +58,40 @@ Pravidla pro pojmenovávání značek najdete v [dokumentaci k Docker](https://d
 
 ### <a name="layer"></a>Vrstva
 
-Image kontejneru se skládají z jedné nebo více *vrstev*, z nichž každá odpovídá čáře v souboru Dockerfile, která definuje obrázek. Image v registru sdílejí společné vrstvy a zvyšují efektivitu úložiště. Například několik imagí v různých úložištích může sdílet stejnou základní vrstvu systému Alpine Linux, ale v registru je uložena pouze jedna kopie této vrstvy.
+Image kontejneru a artefakty se skládají z jedné nebo více *vrstev*. Různé typy artefaktů definují různé vrstvy odlišně. Například v imagi kontejneru Docker každá vrstva odpovídá čáře v souboru Dockerfile, která definuje obrázek:
 
-Sdílení vrstev také optimalizuje distribuci vrstev na uzly s více obrázky, které sdílejí společné vrstvy. Například pokud obrázek již na uzlu obsahuje jako základ vrstvu Alpine Linux, následné načtení jiného obrázku odkazujícího na stejnou vrstvu nepřenáší vrstvu do uzlu. Místo toho odkazuje na již existující vrstvu na uzlu.
+:::image type="content" source="media/container-registry-concepts/container-image-layers.png" alt-text="Vrstvy image kontejneru":::
+
+Artefakty v registru sdílejí společné vrstvy a zvyšují efektivitu úložiště. Například několik imagí v různých úložištích může mít společnou ASP.NET Core základní vrstvu, ale v registru je uložena pouze jedna kopie této vrstvy. Sdílení vrstev také optimalizuje distribuci vrstev na uzly s několika artefakty, které sdílejí společné vrstvy. Pokud již obrázek na uzlu obsahuje ASP.NET Core vrstvu jako základní, následné načtení jiného obrázku odkazujícího na stejnou vrstvu nepřenáší vrstvu do uzlu. Místo toho odkazuje na již existující vrstvu na uzlu.
 
 Pro zajištění bezpečné izolace a ochrany před potenciálním manipulací vrstev nejsou vrstvy sdíleny napříč Registry.
 
 ### <a name="manifest"></a>Manifest
 
-Každá image kontejneru nebo artefakt nabízený do registru kontejneru je přidružena k *manifestu*. Manifest generovaný registrem při posunutí obrázku, jedinečně identifikuje obrázek a určuje jeho vrstvy. Můžete vytvořit seznam manifestů pro úložiště pomocí příkazu Azure CLI [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests]:
+Každá image kontejneru nebo artefakt nabízený do registru kontejneru je přidružena k *manifestu*. Manifest generovaný registrem při posunutí obsahu, jedinečně identifikuje artefakty a určuje vrstvy. Můžete vytvořit seznam manifestů pro úložiště pomocí příkazu Azure CLI [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests]. 
+
+Základní manifest pro `hello-world` bitovou kopii systému Linux vypadá podobně jako v následujícím příkladu:
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+Můžete vytvořit seznam manifestů pro úložiště pomocí příkazu Azure CLI [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
@@ -122,20 +132,56 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="manifest-digest"></a>Výtah manifestu
 
-Manifesty jsou označeny jedinečnou hodnotou hash SHA-256 nebo *algoritmem Digest manifestu*. Každý obrázek nebo artefakt – bez příznaku nebo not--je identifikován jeho hodnotou Digest. Hodnota Digest je jedinečná i v případě, že jsou data vrstev obrázku shodná s jinou imagí. Tento mechanismus umožňuje opakovaně nabízet identicky označené obrázky do registru. Můžete například opakovaně nabízet `myimage:latest` do registru bez chyby, protože každý obrázek je identifikován jedinečným algoritmem Digest.
+Manifesty jsou označeny jedinečnou hodnotou hash SHA-256 nebo *algoritmem Digest manifestu*. Každý obrázek nebo artefakt – bez příznaku nebo not--je identifikován jeho hodnotou Digest. Hodnota algoritmu Digest je jedinečná i v případě, že jsou data vrstvy artefaktů shodná s jiným artefaktem. Tento mechanismus umožňuje opakovaně nabízet identicky označené obrázky do registru. Můžete například opakovaně nabízet `myimage:latest` do registru bez chyby, protože každý obrázek je identifikován jedinečným algoritmem Digest.
 
-Můžete načíst obrázek z registru zadáním jeho výtahu do operace Pull. Některé systémy můžou být nakonfigurované tak, aby vyčetly výtah, protože zaručují, že se verze image načítá, a to i v případě, že se následně do registru vloží identický označený obrázek.
-
-Můžete například načíst obrázek z úložiště ACR-HelloWorld pomocí výtahu manifestu:
-
-`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
+Artefakt můžete načíst z registru zadáním jeho výtahu do operace Pull. Některé systémy můžou být nakonfigurované tak, aby vyčetly výtah, protože zaručují, že se verze image načítá, a to i v případě, že se do registru vloží identický označený obrázek.
 
 > [!IMPORTANT]
-> Pokud opakovaně nahrajete upravené image s identickými značkami, můžete vytvářet osamocené bitové kopie – obrázky, které jsou netagované, ale stále využívají místo v registru. Netagované obrázky se v rozhraní příkazového řádku Azure nebo v Azure Portal nezobrazí, když jsou obrázky podle značky. Nicméně jejich vrstvy stále existují a využívají místo v registru. Odstranění obrázku bez příznaku uvolní místo v registru, když je manifest pouze jeden, nebo poslední z nich odkazuje na konkrétní vrstvu. Informace o uvolnění místa využívaného netagovanými obrázky najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
+> Pokud opakovaně přidáváte upravené artefakty s identickými značkami, můžete vytvořit "osamocené" artefakty, které jsou netagované, ale stále spotřebovávat místo v registru. Netagované obrázky se v rozhraní příkazového řádku Azure nebo v Azure Portal nezobrazí, když jsou obrázky podle značky. Nicméně jejich vrstvy stále existují a využívají místo v registru. Odstranění obrázku bez příznaku uvolní místo v registru, když je manifest pouze jeden, nebo poslední z nich odkazuje na konkrétní vrstvu. Informace o uvolnění místa využívaného netagovanými obrázky najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
+
+## <a name="addressing-an-artifact"></a>Adresování artefaktu
+
+Chcete-li vyřešit artefakt registru pro operace push a pull pomocí Docker nebo jiných klientských nástrojů, zkombinujte plně kvalifikovaný název registru, název úložiště (včetně cesty k oboru názvů, pokud je k dispozici), a značku artefaktu nebo výtah manifestu. Vysvětlení těchto podmínek najdete v předchozích částech.
+
+  **Adresa podle značky**: `[loginServerUrl]/[repository][:tag]`
+    
+  **Adresa podle Digest**: `[loginServerUrl]/[repository@sha256][:digest]`  
+
+Při použití Docker nebo jiných klientských nástrojů k vyžádání nebo nabízení artefaktů do služby Azure Container Registry použijte plně kvalifikovanou adresu URL registru, která se označuje také jako název *přihlašovacího serveru* . V cloudu Azure má plně kvalifikovanou adresu URL služby Azure Container Registry formát `myregistry.azurecr.io` (malými písmeny).
+
+> [!NOTE]
+> * V adrese URL přihlašovacího serveru registru nemůžete zadat číslo portu, jako je například `myregistry.azurecr.io:443` . 
+> * Tato značka `latest` se používá ve výchozím nastavení, pokud nezadáte značku do příkazu.  
+
+   
+### <a name="push-by-tag"></a>Push podle značky
+
+Příklady: 
+
+   `docker push myregistry.azurecr.io/samples/myimage:20210106`
+
+   `docker push myregistry.azurecr.io/marketing/email-sender`
+
+### <a name="pull-by-tag"></a>Vyžádat podle značky
+
+Příklad: 
+
+  `docker pull myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2`
+
+### <a name="pull-by-manifest-digest"></a>Vyžádat výtah z manifestu
+
+
+Příklad:
+
+  `docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
+
+
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [úložišti imagí](container-registry-storage.md) a [podporovaných formátech obsahu](container-registry-image-formats.md) v Azure Container Registry.
+Přečtěte si další informace o [úložišti registru](container-registry-storage.md) a [podporovaných formátech obsahu](container-registry-image-formats.md) v Azure Container Registry.
+
+Naučte se [načítat a vyžádat obrázky](container-registry-get-started-docker-cli.md) z Azure Container Registry.
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

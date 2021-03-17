@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cbedf2212c52d8f1996d3cce0d96d494313ea525
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055290"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608814"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -39,6 +39,7 @@ Následující vzorový *host.js* souboru pro verzi 2. x + obsahuje všechny mo�
         "flushTimeout": "00:00:30"
     },
     "extensions": {
+        "blobs": {},
         "cosmosDb": {},
         "durableTask": {},
         "eventHubs": {},
@@ -117,6 +118,11 @@ Následující vzorový *host.js* souboru pro verzi 2. x + obsahuje všechny mo�
     "managedDependency": {
         "enabled": true
     },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -124,7 +130,8 @@ Následující vzorový *host.js* souboru pro verzi 2. x + obsahuje všechny mo�
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -138,14 +145,14 @@ Následující části tohoto článku vysvětlují jednotlivé vlastnosti nejvy
 
 Toto nastavení je podřízenou položkou [protokolování](#logging).
 
-Řídí možnosti pro Application Insights, včetně [možností vzorkování](./functions-monitoring.md#configure-sampling).
+Řídí možnosti pro Application Insights, včetně [možností vzorkování](./configure-monitoring.md#configure-sampling).
 
 Úplnou strukturu JSON naleznete v předchozím [příkladu host.jssouboru](#sample-hostjson-file).
 
 > [!NOTE]
 > Vzorkování protokolu může způsobit, že se některá spuštění v okně monitorování Application Insights neprojeví. Chcete-li se vyhnout vzorkování protokolu, přidejte `excludedTypes: "Request"` k `samplingSettings` hodnotě.
 
-| Vlastnost | Výchozí | Popis |
+| Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | samplingSettings | Není k dispozici | Viz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Povoluje shromažďování živých metrik. |
@@ -157,23 +164,25 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|Vlastnost | Výchozí | Popis |
+Další informace o těchto nastaveních najdete [v tématu vzorkování v Application Insights](../azure-monitor/app/sampling.md). 
+
+|Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | isEnabled | true | Povolí nebo zakáže vzorkování. | 
 | maxTelemetryItemsPerSecond | 20 | Cílový počet položek telemetrie protokolovaných za sekundu na každém hostiteli serveru. Pokud vaše aplikace běží na mnoha hostitelích, snižte tuto hodnotu tak, aby zůstala v rámci celkové cílové míry provozu. | 
 | evaluationInterval | 01:00:00 | Interval, ve kterém je aktuální frekvence telemetrie znovu vyhodnocena. Hodnocení se provádí jako klouzavý průměr. Pokud je vaše telemetrie příčinou náhlého nárůstu, možná budete chtít tento interval zkrátit. |
-| initialSamplingPercentage| 1.0 | Počáteční procentuální hodnota vzorkování použitá na začátku procesu vzorkování, která dynamicky mění procento. Při ladění nezmenšujte hodnotu. |
+| initialSamplingPercentage| 100,0 | Počáteční procentuální hodnota vzorkování použitá na začátku procesu vzorkování, která dynamicky mění procento. Při ladění nezmenšujte hodnotu. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může znovu vyvolat procento vzorkování a zachytit další data. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může snížit procento vzorkování znovu a zachytit tak méně dat. |
 | minSamplingPercentage | 0.1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
-| maxSamplingPercentage | 0.1 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
+| maxSamplingPercentage | 100,0 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
 | movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
 | excludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | includedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Typ uvedený v seznamu přepsat typy, které jsou `excludedTypes` zde uvedeny. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Instance zadaných typů jsou vzorkované; typy, které nejsou zadány nebo implicitně jsou přenášeny bez vzorkování. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Vlastnost | Výchozí | Popis |
+|Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Povoluje nebo zakazuje rozšířené informace o požadavku HTTP pro aktivační události protokolu HTTP: příchozí hlavičky žádostí o relaci, podpora klíčů pro více instrumentací, metoda HTTP, cesta a odpověď. |
 | enableW3CDistributedTracing | true | Povolí nebo zakáže podporu protokolu W3C Distributed Tracing Protocol (a zapne starší verzi schématu korelace). Pokud `enableHttpTriggerExtendedInfoCollection` má hodnotu true, je ve výchozím nastavení povolená. Pokud `enableHttpTriggerExtendedInfoCollection` je hodnota false, vztahuje se tento příznak pouze na odchozí požadavky, nikoli na příchozí požadavky. |
@@ -183,10 +192,10 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 Další informace o snímcích najdete v tématu [ladění snímků při výjimkách v aplikacích .NET](../azure-monitor/app/snapshot-debugger.md) a řešení potíží s [povolením Application Insights Snapshot Debugger nebo zobrazením snímků](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
-|Vlastnost | Výchozí | Popis |
+|Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Koncový bod, který se používá pro připojení ke službě Application Insights Snapshot Debugger. Pokud je null, použije se výchozí koncový bod. |
-| captureSnapshotMemoryWeight | 0.5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0,5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | Omezení počtu neúspěšných žádostí o snímky, než je procesor telemetrie zakázán.|
 | handleUntrackedExceptions | true | Povolí nebo zakáže sledování výjimek, které nejsou sledovány Application Insights telemetrie. |
 | isEnabled | true | Povolí nebo zakáže shromažďování snímků. | 
@@ -208,9 +217,35 @@ Další informace o snímcích najdete v tématu [ladění snímků při výjimk
 | thresholdForSnapshotting | 1 | Kolikrát Application Insights nutné zobrazit výjimku před tím, než bude požádána o snímky. |
 | uploaderProxy | null | Přepíše proxy server použitou v procesu odeslání snímku. Toto nastavení může být nutné použít, pokud se vaše aplikace připojí k Internetu prostřednictvím proxy server. Snapshot Collector běží v rámci procesu aplikace a bude používat stejné nastavení proxy serveru. Odeslání snímku se ale spustí jako samostatný proces a možná budete muset proxy server nakonfigurovat ručně. Pokud je tato hodnota null, Snapshot Collector se pokusí automaticky zjistit adresu proxy pomocí prověření System .NET. WebRequest. DefaultWebProxy a předáním hodnoty pro odeslání snímku. Pokud tato hodnota není null, nepoužije se možnost autodetection a v nástroji pro odeslání snímku se použije proxy server, kterou tady zadáte. |
 
+## <a name="blobs"></a>struktur
+
+Nastavení konfigurace najdete v [aktivačních událostech a vazbách objektu BLOB úložiště](functions-bindings-storage-blob.md#hostjson-settings).  
+
 ## <a name="cosmosdb"></a>cosmosDb
 
 Nastavení konfigurace najdete v [Cosmos DB triggerech a vazbách](functions-bindings-cosmosdb-v2-output.md#host-json).
+
+## <a name="customhandler"></a>customHandler
+
+Konfigurační nastavení vlastní obslužné rutiny. Další informace naleznete v tématu [Azure Functions vlastní obslužné rutiny](functions-custom-handlers.md#configuration).
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|Vlastnost | Výchozí | Description |
+| --------- | --------- | --------- |
+| defaultExecutablePath | Není k dispozici | Spustitelný soubor, který se spustí jako vlastní proces obslužné rutiny. Je vyžadováno nastavení při použití vlastních obslužných rutin a její hodnota je relativní vzhledem k kořenu aplikace Function App. |
+| workingDirectory | *kořen aplikace Function App* | Pracovní adresář, ve kterém má být spuštěn vlastní proces obslužné rutiny. Je to volitelné nastavení a jeho hodnota je relativní vzhledem k kořenu aplikace Function App. |
+| náhodné | Není k dispozici | Pole argumentů příkazového řádku, které se má předat procesu vlastní obslužné rutiny. |
+| enableForwardingHttpRequest | false (nepravda) | Pokud se nastaví všechny funkce, které se skládají jenom z triggeru HTTP a výstupu HTTP, přepošle původní požadavek HTTP namísto [datové části žádosti](functions-custom-handlers.md#request-payload)vlastní obslužné rutiny. |
 
 ## <a name="durabletask"></a>durableTask
 
@@ -218,7 +253,7 @@ Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durab
 
 ## <a name="eventhub"></a>eventHub
 
-Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs-trigger.md#host-json). 
+Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
 ## <a name="extensions"></a>SND
 
@@ -275,7 +310,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |enabled|true|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
@@ -283,7 +318,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
 |counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
-## <a name="http"></a>HTTP
+## <a name="http"></a>http
 
 Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook-output.md#hostjson-settings).
 
@@ -307,10 +342,10 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never` , `always` , `debugOnly` . |
-|logLevel|Není k dispozici|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|logLevel|Není k dispozici|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [Konfigurace úrovní protokolu](configure-monitoring.md#configure-log-levels). |
 |konzola|Není k dispozici| Nastavení protokolování [konzoly](#console) . |
 |applicationInsights|Není k dispozici| Nastavení [applicationInsights](#applicationinsights) |
 
@@ -330,7 +365,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
 
@@ -348,7 +383,29 @@ Spravovaná závislost je funkce, kterou momentálně podporuje jenom funkce zal
 
 ## <a name="queues"></a>vytvořil
 
-Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue-output.md#host-json).  
+Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
+
+## <a name="retry"></a>retry
+
+Řídí možnosti [zásad opakování](./functions-bindings-error-pages.md#retry-policies-preview) pro všechna spuštění v aplikaci.
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|Vlastnost  |Výchozí | Description |
+|---------|---------|---------| 
+|strategie|null|Povinná hodnota. Používaná strategie opakování. Platné hodnoty jsou `fixedDelay` nebo `exponentialBackoff` .|
+|maxRetryCount|null|Povinná hodnota. Maximální počet opakovaných pokusů povolených pro spuštění funkce. `-1` způsob, jak to provést po neomezenou dobu.|
+|delayInterval|null|Zpoždění používané mezi opakovanými pokusy pomocí `fixedDelay` strategie.|
+|minimumInterval|null|Minimální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.|
+|maximumInterval|null|Maximální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.| 
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -374,7 +431,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Období, pro které jsou přijímány zámky na úrovni funkce. Automatické obnovení zámků.| 
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
@@ -393,6 +450,16 @@ Sada [sdílených adresářů kódu](functions-reference-csharp.md#watched-direc
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+Pole jednoho nebo více názvů souborů, které jsou monitorovány pro změny, které vyžadují restartování vaší aplikace.  To zaručuje, že při změně kódu v těchto souborech jsou aktualizace převzaty funkcemi.
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

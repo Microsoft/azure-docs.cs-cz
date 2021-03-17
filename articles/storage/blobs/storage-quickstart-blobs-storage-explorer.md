@@ -9,18 +9,18 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f8768a1b2542eb0461ef0c50c96e22c80eced57a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2477107105b6dbcab96db8d44ac982554dc0c48d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836458"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543166"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Rychlý Start: použití Průzkumník služby Azure Storage k vytvoření objektu BLOB
 
 V tomto rychlém startu se dozvíte, jak pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) vytvořit kontejner a objekt BLOB. Dále zjistíte, jak stáhnout tento objekt blob do místního počítače a jak zobrazit všechny objekty blob v kontejneru. Zároveň se naučíte vytvořit snímek objektu blob, spravovat zásady přístupu ke kontejneru a vytvořit sdílený přístupový podpis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -38,7 +38,7 @@ Při prvním spuštění se objeví okno **Průzkumník služby Microsoft Azure 
 
 Vyberte **Přidat účet Azure** a klikněte na **Přihlásit se.**.. Podle pokynů na obrazovce se přihlaste k účtu Azure.
 
-![Průzkumník služby Microsoft Azure Storage – okno Připojení](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![Snímek obrazovky, který zobrazuje okno Průzkumník služby Microsoft Azure Storage-Connect.](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
 Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobrazenou kartou **Průzkumník**. Toto zobrazení vám umožní získat přehled o všech účtech úložiště Azure i o místním úložišti nakonfigurovaném pomocí [emulátoru úložiště Azurite](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), účtů [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) prostředí.
 
@@ -70,7 +70,7 @@ Když vyberete **OK**, vybrané soubory se zařadí do fronty a postupně se nah
 
 V **Průzkumníku služby Storage** vyberte kontejner pod účtem úložiště. V hlavním podokně se zobrazí seznam objektů blob ve vybraném kontejneru.
 
-![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Snímek obrazovky, který ukazuje, kde můžete vybrat kontejner v Průzkumník služby Microsoft Azure Storage.](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
 
@@ -78,9 +78,9 @@ Když chcete stáhnout objekty blob pomocí **Průzkumníka služby Azure Storag
 
 ## <a name="manage-snapshots"></a>Správa snímků
 
-Průzkumník služby Azure Storage umožňuje vytváření a správu [snímků](storage-blob-snapshots.md) objektů blob. Snímek objektu blob pořídíte tak, že na něj kliknete pravým tlačítkem a vyberete **Vytvořit snímek**. Chcete-li snímek objektu blob zobrazit, klikněte na něho pravým tlačítkem a vyberte **Spravovat snímky**. Na aktuální kartě se zobrazí seznam snímků pro tento objekt blob.
+Průzkumník služby Azure Storage umožňuje vytváření a správu [snímků](./snapshots-overview.md) objektů blob. Snímek objektu blob pořídíte tak, že na něj kliknete pravým tlačítkem a vyberete **Vytvořit snímek**. Chcete-li snímek objektu blob zobrazit, klikněte na něho pravým tlačítkem a vyberte **Spravovat snímky**. Na aktuální kartě se zobrazí seznam snímků pro tento objekt blob.
 
-![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
+![Snímek obrazovky, který zobrazuje seznam objektů BLOB v Průzkumník služby Microsoft Azure Storage.](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
 ## <a name="manage-access-policies"></a>Správa zásad přístupu
 
@@ -99,4 +99,4 @@ Sdílené přístupové podpisy (SAS) se dají získat pomocí Průzkumníka slu
 V tomto rychlém startu jste se naučili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí **Průzkumníka služby Azure Storage**. Další informace o práci s úložištěm objektů blob najdete v postupech pro úložiště objektů blob.
 
 > [!div class="nextstepaction"]
-> [Operace s úložištěm objektů blob – postupy](storage-how-to-use-blobs-powershell.md)
+> [Operace s úložištěm objektů blob – postupy](./storage-quickstart-blobs-powershell.md)

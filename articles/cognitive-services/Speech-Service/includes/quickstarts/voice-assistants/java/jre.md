@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8ee14b94977b3152e0aab853fa3919a739d0dfdd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671752"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187544"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
-> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
   > [!NOTE]
@@ -115,7 +115,7 @@ Pokud chcete povolit protokolování, aktualizujte soubor _pom.xml_ tak, aby zah
 
 1. V `main` metodě nejprve nakonfigurujte `DialogServiceConfig` a použijte ji k vytvoření `DialogServiceConnector` instance. Tato instance se připojuje k přímému line kanálu pro práci s robotem. `AudioConfig`Instance se také používá k určení zdroje zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s nástrojem `AudioConfig.fromDefaultMicrophoneInput()` .
 
-   - Nahraďte řetězec `YourSubscriptionKey` vaším klíčem předplatného, který můžete získat z [tohoto webu](~/articles/cognitive-services/speech-service/get-started.md).
+   - Nahraďte řetězec `YourSubscriptionKey` vaším klíčem předplatného, který můžete získat z [tohoto webu](../../../../overview.md#try-the-speech-service-for-free).
    - Nahraďte řetězec `YourServiceRegion` [oblastí](~/articles/cognitive-services/speech-service/regions.md) , která je přidružená k vašemu předplatnému.
 
    > [!NOTE]

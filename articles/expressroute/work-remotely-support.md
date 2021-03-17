@@ -2,17 +2,17 @@
 title: Podpora vzdálených uživatelů pomocí Azure ExpressRoute
 description: Tato stránka popisuje, jak můžete využít Azure ExpressRoute k vzdálené práci z důvodu COVID-19 PANDEMIC.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/22/2020
-ms.author: ajitbhu
-ms.openlocfilehash: 18b30380ede0c95c7d039749a4d47f65e5824058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738069"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89567669"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Použití Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak můžete využívat ExpressRoute, Azure, síť Micr
 * [Jak zvýšit šířku pásma stávajícího okruhu ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [ExpressRoute monitorování, metriky a výstrahy](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
 * [Optimalizace tras přes ExpressRoute](expressroute-optimize-routing.md)
-* [Azure ExpressRoute pro O365](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+* [Azure ExpressRoute pro Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
 * [Otázky asymetrického směrování](expressroute-asymmetric-routing.md)
 * [Postup otevření žádosti o podporu v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ba6cc5f8527f8c05fbeb323c65230447e1e2e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738698"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019699"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher Azure CLI
 
@@ -55,7 +55,7 @@ Jakmile budete mít název připojení, můžete spustit tento příkaz a získa
 az network vpn-connection show --resource-group resourceGroupName --ids vpnConnectionIds
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Řešení potíží s prostředky vrátí data o stavu prostředku, ale také uloží protokoly do účtu úložiště, který se má zkontrolovat. V tomto kroku vytvoříme účet úložiště, pokud už existuje existující účet úložiště, který můžete použít.
 
@@ -91,7 +91,7 @@ Po spuštění rutiny Network Watcher zkontroluje prostředek a ověří stav. V
 
 Text akce poskytuje obecné pokyny k vyřešení tohoto problému. Pokud je možné provést akci pro daný problém, je k dispozici odkaz s dalšími pokyny. V případě, že nejsou k dispozici žádné další doprovodné materiály, odpověď poskytne adresu URL pro otevření případu podpory.  Další informace o vlastnostech odpovědi a o tom, co je zahrnuto, najdete v tématu [Network Watcher řešení potíží – přehled](network-watcher-troubleshoot-overview.md)
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Další kroky
 

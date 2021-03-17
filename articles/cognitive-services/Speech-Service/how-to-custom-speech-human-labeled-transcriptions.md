@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700027"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
 Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny odstraněním nebo nesprávným nahrazením slov, budete chtít použít přepisy, které jsou pro vaše zvuková data k popisku. Co jsou Přepisy na základě popisku? To je snadné – jedná se o slovo do Wordu, doslovného přepisu zvukového souboru.
 
-Pro zlepšení rozpoznávání je nutná rozsáhlá ukázka dat přepisu, což nabízíme mezi 10 a 1 000 hodinami přepisu dat. Na této stránce si ukážeme pokyny, které vám pomůžou vytvořit vysoce kvalitní přepisy. Tato příručka je rozdělená podle národního prostředí s oddíly pro AMERICKou angličtinu, Mandarinii, čínskou a Německo.
+Pro zlepšení rozpoznávání je nutná rozsáhlá ukázka dat přepisu. doporučujeme zadat 1 až 20 hodin přepisu dat. Služba řeči bude používat až 20 hodin zvukového školení. Na této stránce si ukážeme pokyny, které vám pomůžou vytvořit vysoce kvalitní přepisy. Tato příručka je rozdělená podle národního prostředí s oddíly pro AMERICKou angličtinu, Mandarinii, čínskou a Německo.
+
+> [!NOTE]
+> Ne všechny základní modely podporují přizpůsobení se zvukovými soubory. Pokud základní model ho nepodporuje, školení použije pouze text přepisů stejným způsobem jako v případě použití souvisejícího textu. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> V případech, kdy změníte základní model používaný pro školení a máte zvuk v datové sadě školení, *vždy* ověřte, zda nový vybraný základní model [podporuje školení se zvukovými daty](language-support.md#speech-to-text). Pokud dřív použitý základní model nepodporoval školení se zvukovými daty a datová sada pro školení obsahuje zvuk, může se výrazně zvýšit doba školení s novým základním modelem a může se stát, **že budete moct** snadno přejít z několika hodin na několik dní. To platí hlavně v **případě, že** vaše předplatné služby Speech není v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+>
+> Pokud se setkáte s problémem popsaným v předchozím odstavci, můžete rychle zkrátit dobu školení tím, že snížíte velikost zvuku v datové sadě nebo zcela odeberete a necháte jenom text. Tato možnost se důrazně doporučuje, pokud vaše předplatné služby Speech **není v** [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
 
 ## <a name="us-english-en-us"></a>USA – angličtina (EN-US)
 
@@ -31,7 +39,7 @@ Tady je pár příkladů:
 
 | Znaky, které se mají zabránit | Substituce | Poznámky |
 | ------------------- | ------------ | ----- |
-| Hello World | Hello World | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
+| Hello World | Hello world | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
 | Den Jan | Den Jan | Apostrof byl nahrazen příslušným znakem ASCII. |
 | to bylo dobré – ne, bylo skvělé! | je dobrá – ne, bylo skvělé! | Em pomlčka byla nahrazena dvěma pomlčkami. |
 
@@ -44,6 +52,8 @@ Normalizace textu je transformace slov do konzistentního formátu, který se po
 - Neabecední znaky nebo smíšené alfanumerické znaky by měly být přepisu jako vyslovované.
 - Zkratky, které jsou vyslovované jako slova, by se neměly upravovat (například "paprsky", "Laser", "RAM" nebo "NATO").
 - Odpište zkratky, které jsou vyslovované jako samostatná písmena s každým písmenem oddělené mezerou.
+- Pokud používáte zvuk, přepisovat čísla jako slova, která se shodují se zvukem (například "101" může být VYSLOVNÉ jako "1 0 1" nebo "101").
+- Vyhněte se opakovaným znakům, slovům nebo skupinám slov více než třikrát, například "Ano Ano Ano". V případě, že služba rozpoznávání řeči může vyřadit řádky s takovými opakováními.
 
 Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
@@ -76,7 +86,7 @@ Tady je několik příkladů normalizace, které se automaticky provedou na pře
 | ELM ulice 104                         | ELM ulice 1 0 4            |
 | Vylaďte 102,7                          | vyladit až 1 0 2 bodů 7    |
 | Pi má přibližně 3,14                       | Pi má přibližně tři body 1 4  |
-| Náklady \$na IT 3,14                        | náklady na IT 3 14           |
+| Náklady na IT \$ 3,14                        | náklady na IT 3 14           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin čínština (zh-CN)
 
@@ -133,7 +143,7 @@ Normalizace textu je transformace slov do konzistentního formátu, který se po
 - Zápis desetinných míst jako "," a nikoli ".".
 - Oddělovače času zápisu jako ":", nikoli "." (například: 12:00 Uhr).
 - Zkratky jako "CA". nejsou nahrazeny. Doporučujeme, abyste použili úplný mluvený formulář.
-- Čtyři hlavní matematické operátory (+,-, \*a/) se odeberou. Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
+- Čtyři hlavní matematické operátory (+,-, \* a/) se odeberou. Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
 - Operátory porovnání jsou odebrány (=, < a >). Doporučujeme, abyste je nahradili "Gleich", "Kleiner ALS" a "grösser ALS".
 - Zapište zlomky, například 3/4, v písemné podobě (například "Drei Viertel" namísto 3/4).
 - Nahraďte symbol "€" jeho napsaným formulářem "euro".
@@ -162,10 +172,14 @@ Tady je několik příkladů normalizace, které se automaticky provedou na pře
 | ¡Eine Frage!     | eine frage               |
 | wir, haben       | wir haben                |
 
+### <a name="text-normalization-for-japanese"></a>Normalizace textu pro japonštinu
+
+V japonštině (ja-JP) existuje maximální délka 90 znaků pro každou větu. Řádky s delšími větami budou zahozeny. Chcete-li přidat delší text, vložte tečku mezi.
+
 ## <a name="next-steps"></a>Další kroky
 
-- [Příprava a testování dat](how-to-custom-speech-test-data.md)
+- [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)
 - [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-- [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
-- [Nasazení modelu](how-to-custom-speech-deploy-model.md)
+- [Trénování modelu](how-to-custom-speech-train-model.md)
+- [Nasazení modelu](./how-to-custom-speech-train-model.md)

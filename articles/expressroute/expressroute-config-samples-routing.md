@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Ukázky konfigurace směrovače'
 description: Použijte toto rozhraní a ukázky konfigurace směrování pro směrovače Cisco IOS – XE a Juniper MX řady jako příklady pro práci s Azure ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
-ms.author: osamaz
-ms.openlocfilehash: fdf50dc6b4c0976a713a1d436ac9af7c1bd9701b
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 3bc850f02884ae0547c2ecf56a46a57a4e66a752
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89397402"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače pro nastavení a správu směrování
 Tato stránka poskytuje při práci se službou Azure ExpressRoute ukázky konfigurace rozhraní a směrování pro směrovače Cisco IOS – XE a Juniper MX řady.

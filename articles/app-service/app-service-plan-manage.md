@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582529"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu App Service v Azure
 
@@ -38,7 +38,7 @@ Můžete vytvořit prázdný plán App Service, nebo můžete vytvořit plán ja
 
    ![Vytvořte plán App Service.][createASP] 
 
-4. Při vytváření plánu můžete vybrat cenovou úroveň nového plánu. V části **SKU a velikost**vyberte **změnit velikost** , aby se změnila cenová úroveň. 
+4. Při vytváření plánu můžete vybrat cenovou úroveň nového plánu. V části **SKU a velikost** vyberte **změnit velikost** , aby se změnila cenová úroveň. 
 
 <a name="move"></a>
 
@@ -58,7 +58,7 @@ Aplikaci můžete přesunout do jiného plánu App Service, pokud se zdrojový a
 
 3. V rozevíracím seznamu **plán App Service** vyberte existující plán, do kterého chcete aplikaci přesunout. Rozevírací seznam zobrazuje jenom plány, které jsou ve stejné skupině prostředků a zeměpisné oblasti jako aktuální plán App Service. Pokud žádný takový plán neexistuje, můžete ve výchozím nastavení vytvořit plán. Nový plán můžete také vytvořit ručně výběrem možnosti **vytvořit nový**.
 
-4. Pokud vytvoříte plán, můžete vybrat cenovou úroveň nového plánu. V části **cenová úroveň**vyberte existující úroveň, kterou chcete změnit. 
+4. Pokud vytvoříte plán, můžete vybrat cenovou úroveň nového plánu. V části **cenová úroveň** vyberte existující úroveň, kterou chcete změnit. 
    
    > [!IMPORTANT]
    > Pokud přesouváte aplikaci z plánu s vyšší vrstvou na plán nižší úrovně, například z **D1** na **F1**, aplikace může přijít o určité možnosti v cílovém plánu. Pokud vaše aplikace například používá certifikáty TLS/SSL, může se zobrazit tato chybová zpráva:
@@ -82,7 +82,7 @@ Oblast, ve které vaše aplikace běží, je oblast plánu App Service. Nemůže
 
 Postup horizontálního navýšení kapacity plánu App Service najdete v tématu věnovaném [horizontálnímu navýšení kapacity aplikace v Azure](manage-scale-up.md).
 
-Pokud chcete škálovat počet instancí aplikace, přečtěte si téma [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Pokud chcete škálovat počet instancí aplikace, přečtěte si téma [Ruční nebo automatické škálování počtu instancí](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="delete"></a>
 

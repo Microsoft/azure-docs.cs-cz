@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604735"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898575"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
@@ -33,11 +33,11 @@ Pokud počítače, které chcete replikovat, používají antivirový software, 
 
 Nabízená instalace je nedílnou součástí úlohy, která se spouští z Azure Portal pro [Povolení replikace](vmware-azure-enable-replication.md#enable-replication). Po výběru sady virtuálních počítačů, které chcete chránit a povolit replikaci, konfigurační server vloží agenta služby mobility na servery, nainstaluje agenta a dokončí registraci agenta s konfiguračním serverem.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že jsou splněné všechny [požadavky](vmware-azure-install-mobility-service.md) na nabízenou instalaci.
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
-- Od [verze 9,36](https://support.microsoft.com/help/4578241/) a vyšší, pro SUSE Linux Enterprise Server 11 SP4 zkontrolujte, že je [k dispozici nejnovější instalační program na konfiguračním serveru a procesovém serveru se škálováním na více](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) instancí.
+- Od verze 9,36 a vyšší, pro SUSE Linux Enterprise Server 11 SP3, RHEL 5, CentOS 5, Debian 7 zajistěte, aby byl [k dispozici nejnovější instalační program na konfiguračním serveru a procesovém serveru se škálováním na více](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server) instancí.
 
 Pracovní postup nabízené instalace je popsaný v následujících částech:
 
@@ -69,7 +69,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ## <a name="install-the-mobility-service-using-ui"></a>Instalace služby mobility pomocí uživatelského rozhraní
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
 - [Vyhledejte instalační program](#locate-installer-files) operačního systému serveru.
@@ -78,16 +78,16 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 > Nepoužívejte metodu instalace uživatelského rozhraní, pokud provádíte replikaci virtuálního počítače infrastruktury Azure jako služby (IaaS) z jedné oblasti Azure do jiné. Použijte instalaci [příkazového řádku](#install-the-mobility-service-using-command-prompt) .
 
 1. Zkopírujte instalační soubor do počítače a spusťte ho.
-1. V **Možnosti instalace**vyberte **nainstalovat službu mobility**.
+1. V **Možnosti instalace** vyberte **nainstalovat službu mobility**.
 1. Zvolte umístění instalace a vyberte **nainstalovat**.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="Stránka možností instalace služby mobility":::
 
 1. Sledujte instalaci v **průběhu instalace**. Po dokončení instalace vyberte **pokračovat ke konfiguraci** pro registraci služby na konfiguračním serveru.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Registrační stránka služby mobility":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Snímek obrazovky, který zobrazuje průběh instalace a tlačítko aktivní pokračovat ke konfiguraci po dokončení instalace.":::
 
-1. V části **Podrobnosti konfiguračního serveru**zadejte IP adresu a heslo, které jste nakonfigurovali.
+1. V části **Podrobnosti konfiguračního serveru** zadejte IP adresu a heslo, které jste nakonfigurovali.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Registrační stránka služby mobility":::
 
@@ -97,7 +97,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Instalace služby mobility pomocí příkazového řádku
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
 - [Vyhledejte instalační program](#locate-installer-files) operačního systému serveru.
@@ -108,7 +108,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
   ```cmd
   cd C:\Temp
-  ren Microsoft-ASR_UA_version_Windows_GA_date_release.exe MobilityServiceInstaller.exe
+  ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   ```
@@ -202,30 +202,62 @@ Na konfiguračním serveru přejdete do složky _%ProgramData%\ASR\home\svsystem
 Instalační soubor | Operační systém (pouze 64 bitů)
 --- | ---
 `Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+[Pro stažení a umístění do této složky ručně](#rhel-5-or-centos-5-server) | Red Hat Enterprise Linux (RHEL) 5 </br> CentOS 5
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
+`Microsoft-ASR_UA_version_RHEL8-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 8 </br> CentOS 8
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> Zahrnuje aktualizace SP2 a SP3.
-[Pro stažení a umístění do této složky ručně](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
+[Pro stažení a umístění do této složky ručně](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
+`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6,4 </br> Oracle Enterprise Linux 6,5
+`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
+`Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Server Ubuntu Linux 16,04 LTS
-`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
+`Microsoft-ASR_UA_version_UBUNTU-18.04-64_GA_date_release.tar.gz` | Server Ubuntu Linux 18,04 LTS
+`Microsoft-ASR_UA_version_UBUNTU-20.04-64_GA_date_release.tar.gz` | Server Ubuntu Linux 20,04 LTS
+[Pro stažení a umístění do této složky ručně](#debian-7-server) | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+`Microsoft-ASR_UA_version_DEBIAN9-64_GA_date_release.tar.gz` | Debian 9
 
-### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>Stáhnout nejnovější instalační program agenta mobility pro SUSE 11 SP3 Server
+## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>Stažení nejnovějšího instalačního programu agenta mobility pro SUSE 11 SP3, RHEL 5, Debian 7 Server
 
-**K aktualizaci nebo ochraně počítačů SUSE Linux Enterprise Server 11 SP3** z [verze 9,36](https://support.microsoft.com/help/4578241/) a vyšší je potřeba:
+### <a name="suse-11-sp3-server"></a>Server SUSE 11 SP3
+
+**K aktualizaci nebo ochraně počítačů SUSE Linux Enterprise Server 11 SP3** z verze 9,36 a vyšší je potřeba:
 
 1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
-2. [Stáhněte](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) instalační program agenta SUSE Linux Enterprise Server 11 SP3.
-3. Přejděte na konfigurační server, zkopírujte instalační program agenta SUSE Linux Enterprise Server 11 SP3 na následující cesty
-    1. INSTALL_DIR \home\svsystems\pushinstallsvc\repository
-    1.  INSTALL_DIR složky \home\svsystems\admin\web\sw
-4. Teď přejděte na související procesové servery se škálováním na více instancí & zkopírujte instalační program v obou cestách uvedených v 3 krocích.
-5. **Například**Pokud cesta instalace je C:\Program Files (x86) \Microsoft Azure Site Recovery, pak výše uvedené adresáře budou
+2. [Stáhněte](site-recovery-whats-new.md) si nejnovější instalační program agenta SUSE Linux Enterprise Server 11 SP3.
+3. Přejděte na konfigurační server, zkopírujte instalační program agenta SUSE Linux Enterprise Server 11 SP3 na cestě INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. Po zkopírování nejnovějšího instalačního programu restartujte službu InMage PushInstall. 
+1. Nyní přejděte na související procesní servery se škálováním na více instancí, opakujte krok 3 a krok 4.
+1. **Například** Pokud cesta instalace je C:\Program Files (x86) \Microsoft Azure Site Recovery, pak výše uvedené adresáře budou
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
-    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\admin\web\sw cesta
+
+### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 nebo CentOS 5 Server
+
+Za **předpokladu, že chcete aktualizovat nebo chránit počítače s RHEL 5** od verze 9,36 a vyšší:
+
+1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
+2. [Stáhněte](site-recovery-whats-new.md) si nejnovější instalační program agenta RHEL 5 nebo CentOS 5. 
+3. Přejděte na konfigurační server, zkopírujte instalační program agenta RHEL 5 nebo CentOS 5 na cestu-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. Po zkopírování nejnovějšího instalačního programu restartujte službu InMage PushInstall. 
+1. Nyní přejděte na související procesní servery se škálováním na více instancí, opakujte krok 3 a krok 4.
+1. **Například** Pokud cesta instalace je C:\Program Files (x86) \Microsoft Azure Site Recovery, pak výše uvedené adresáře budou
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+
+## <a name="debian-7-server"></a>Server Debian 7
+
+Za **předpokladu, že chcete aktualizovat nebo chránit počítače s Debian 7** od verze 9,36 a vyšší:
+
+1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
+2. [Stáhněte](site-recovery-whats-new.md) si nejnovější instalační program agenta Debian 7.
+3. Přejděte na konfigurační server, zkopírujte instalační program agenta Debian 7 v cestě-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. Po zkopírování nejnovějšího instalačního programu restartujte službu InMage PushInstall. 
+1. Nyní přejděte na související procesní servery se škálováním na více instancí, opakujte krok 3 a krok 4.
+1. **Například** Pokud cesta instalace je C:\Program Files (x86) \Microsoft Azure Site Recovery, pak výše uvedené adresáře budou
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>Další kroky
 

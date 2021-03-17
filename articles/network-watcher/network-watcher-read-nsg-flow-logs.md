@@ -9,25 +9,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272531"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593042"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
 Naučte se číst položky protokolů toku NSG pomocí PowerShellu.
 
-Protokoly toku NSG se ukládají v účtu úložiště v objektech [blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Objekty blob bloku se skládají z menších bloků. Každý protokol je samostatný objekt blob bloku, který je vygenerován každou hodinu. Nové protokoly se vygenerují každou hodinu. protokoly se aktualizují novými položkami za pár minut a nejnovějšími daty. V tomto článku se dozvíte, jak číst části protokolů toků.
+Protokoly toku NSG se ukládají v účtu úložiště v objektech [blob bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Objekty blob bloku se skládají z menších bloků. Každý protokol je samostatný objekt blob bloku, který je vygenerován každou hodinu. Nové protokoly se vygenerují každou hodinu. protokoly se aktualizují novými položkami za pár minut a nejnovějšími daty. V tomto článku se dozvíte, jak číst části protokolů toků.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 V následujícím scénáři máte ukázkový protokol toku, který je uložený v účtu úložiště. Naučíte se, jak selektivně číst nejnovější události v protokolech toku NSG. V tomto článku používáte PowerShell, ale koncepty popsané v článku nejsou omezené na programovací jazyk a platí pro všechny jazyky, které rozhraní API pro Azure Storage podporuje.
 
@@ -37,7 +37,7 @@ Než začnete, musíte mít povolené protokolování toku skupin zabezpečení 
 
 ## <a name="retrieve-the-block-list"></a>Načíst seznam blokovaných
 
-Následující PowerShell nastaví proměnné potřebné k dotazování objektu BLOB log NSG a výpisu bloků v objektu blob bloku [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) . Aktualizujte skript tak, aby obsahoval platné hodnoty pro vaše prostředí.
+Následující PowerShell nastaví proměnné potřebné k dotazování objektu BLOB log NSG a výpisu bloků v objektu blob bloku [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) . Aktualizujte skript tak, aby obsahoval platné hodnoty pro vaše prostředí.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -189,6 +189,6 @@ Tento scénář je příkladem čtení záznamů v protokolech toku NSG bez nutn
 
 Podívejte se na téma [použití elastického zásobníku](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [použití Grafana](network-watcher-nsg-grafana.md)a další informace o způsobech zobrazení protokolů toku NSG [pomocí graylogu](network-watcher-analyze-nsg-flow-logs-graylog.md) . Open Source přístup ke službě Azure Functions pro přímé využívání objektů BLOB a vydávání různých příjemců Log Analytics najdete tady: [konektor protokolů toku Azure Network WATCHER NSG](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Pomocí služby [Azure Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) můžete získat přehled o přenosových tocích. Analýza provozu používá [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) k zajištění Queryable toku přenosu.
+Pomocí služby [Azure Analýza provozu](./traffic-analytics.md) můžete získat přehled o přenosových tocích. Analýza provozu používá [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) k zajištění Queryable toku přenosu.
 
 Další informace o objektech blob úložiště najdete v těchto [vazbách: Azure Functions BLOB Storage](../azure-functions/functions-bindings-storage-blob.md) .

@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Storage ověřených partnerských řešení
+summary: Azure Storage ověřená Partnerská řešení umožňují pokročilé scénáře nad Azure Storage.
+metadata:
+  title: Azure Storage ověřená Partnerská řešení
+  description: Azure Storage ověřená Partnerská řešení umožňují pokročilé scénáře nad Azure Storage.
+  services: storage
+  ms.service: storage
+  ms.subservice: partner
+  ms.topic: landing-page
+  ms.collection: collection
+  author: beber-msft
+  ms.author: beber
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 5d2c7d767fd678867175481c0b837c1aa11ecf33
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103562446"
+landingContent:
+- title: Analýzy a partneři pro velké objemy dat
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověření partneři pro analýzy
+      url: .\validated-partners\analytics\partner-overview.md
+- title: Archivace, zálohování a BCDR partneři
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověřený archiv a partneři BCDR
+      url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+  - linkListType: get-started
+    links:
+    - text: Úvodní příručka k CommVault
+      url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - text: Úvodní příručka k Veeam
+      url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+- title: Partneři řešení kontejneru
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověření partneři řešení kontejneru
+      url: .\validated-partners\container-solutions\partner-overview.md
+- title: Správa dat a partneři migrace
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověřeno partnerů pro správu a migraci dat
+      url: .\validated-partners\data-management\partner-overview.md
+- title: Partneři primárního a sekundárního úložiště
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověření partneři pro primární a sekundární úložiště
+      url: .\validated-partners\primary-secondary-storage\partner-overview.md

@@ -1,15 +1,14 @@
 ---
 title: 'Upgrade aplikace: serializace dat'
 description: Osvědčené postupy pro serializaci dat a jejich vliv na postupné upgrady aplikací.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247978"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575631"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Vliv serializace dat na upgrade aplikace
 V rámci [upgradu aplikace](service-fabric-application-upgrade.md)se upgrade aplikuje na podmnožinu uzlů, jednu upgradovací doménu v jednom okamžiku. Během tohoto procesu se některé domény upgradu nacházejí v novější verzi aplikace a některé domény upgradu se nacházejí ve starší verzi aplikace. Při zavedení musí být v nové verzi aplikace možné číst starou verzi vašich dat a stará verze vaší aplikace musí být schopná přečíst si novou verzi vašich dat. Pokud formát dat není předáván dál a zpětně kompatibilní, upgrade může selhat nebo může dojít ke ztrátě nebo poškození dat. Tento článek popisuje, co znamená váš formát dat, a nabízí osvědčené postupy pro zajištění, že vaše data jsou předávána a zpětně kompatibilní.

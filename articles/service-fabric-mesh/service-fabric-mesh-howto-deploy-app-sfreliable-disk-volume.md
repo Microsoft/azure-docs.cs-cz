@@ -5,15 +5,21 @@ author: ashishnegi
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: ac65693f2513338695e07cd8a19acb13333e7281
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497966"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625782"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojení vysoce dostupného Service Fabric spolehlivého svazku založeného na disku v aplikaci Service Fabric sítě 
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Běžnou metodou trvalého stavu s aplikacemi typu kontejner je použití vzdáleného úložiště, jako je Azure File Storage nebo databáze jako Azure Cosmos DB. To má za následek značnou latenci čtení a zápisu v síti do vzdáleného úložiště.
 
 Tento článek ukazuje, jak uložit stav na vysoce dostupný Service Fabric spolehlivý disk připojením svazku do kontejneru Service Fabric aplikace sítě.
@@ -46,6 +52,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
+>[!NOTE]
+> Od 2. listopadu 2020 se [limity četnosti stahování vztahují](https://docs.docker.com/docker-hub/download-rate-limit/) na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a vynutila IP adresa. 
+> 
+> Tato šablona využívá veřejné image z Docker Hub. Počítejte s tím, že je možné omezit rychlost. Další podrobnosti najdete v tématu [ověřování pomocí Docker Hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
+
 Následující příkaz nasadí aplikaci pro Linux pomocí [counter.sfreliablevolume.linux.jsv šabloně](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). K nasazení aplikace pro Windows použijte [counter.sfreliablevolume.windows.jsv šabloně](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Mějte na paměti, že nasazení větších imagí kontejneru může trvat delší dobu.
 
 ```azurecli-interactive
@@ -55,7 +66,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 Stav nasazení můžete zobrazit také pomocí příkazu.
 
 ```azurecli-interactive
-az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
+az deployment group show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
 Všimněte si názvu prostředku brány, který má typ prostředku `Microsoft.ServiceFabricMesh/gateways` . Použije se při získávání veřejné IP adresy aplikace.

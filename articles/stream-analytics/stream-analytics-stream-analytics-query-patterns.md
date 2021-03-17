@@ -4,17 +4,16 @@ description: Tento článek popisuje několik běžných vzorů a návrhů dotaz
 services: stream-analytics
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: devx-track-js
+ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641037"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019988"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
 
@@ -56,7 +55,7 @@ Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné p
 
 **Výstupní AlertOutput**:
 
-| Značka | Čas | Count |
+| Značka | Čas | Počet |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -113,7 +112,7 @@ GROUP BY
 HAVING [Count] >= 3
 ```
 
-Další informace najdete [ **v tématu s klauzulí with** ](/stream-analytics-query/with-azure-stream-analytics).
+Další informace najdete [ **v tématu s klauzulí with**](/stream-analytics-query/with-azure-stream-analytics).
 
 ## <a name="simple-pass-through-query"></a>Jednoduchý předávací dotaz
 
@@ -283,7 +282,7 @@ FROM
 
 První krok v dotazu najde maximální časové razítko v oknech o velikosti 10 minut, což je časové razítko poslední události pro toto okno. Druhý krok spojí výsledky prvního dotazu s původním datovým proudem, aby bylo možné najít událost, která se shoduje s posledními časovými razítky v jednotlivých oknech. 
 
-**DateDiff** je funkce specifická pro datum, která porovnává a vrátí časový rozdíl mezi dvěma poli DateTime. Další informace najdete v tématu [Date Functions](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics).
+**DateDiff** je funkce specifická pro datum, která porovnává a vrátí časový rozdíl mezi dvěma poli DateTime. Další informace najdete v tématu [Date Functions](/stream-analytics-query/date-and-time-functions-azure-stream-analytics).
 
 Další informace o spojování datových proudů najdete v tématu věnovaném [**připojení**](/stream-analytics-query/join-azure-stream-analytics).
 
@@ -415,14 +414,14 @@ Dobu trvání události lze vypočítat vyhledáním poslední události spušt�
 
 **Vstup**:  
 
-| Uživatel | Funkce | Událost | Čas |
+| Uživatel | Příznak | Událost | Čas |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
 
 **Výstup**:  
 
-| Uživatel | Funkce | Doba trvání |
+| Uživatel | Příznak | Doba trvání |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -609,7 +608,7 @@ Příkazy **case** můžou poskytovat různé výpočty pro různá pole na zák
 | Make1 |Určitého |2015-01-01T00:00:01.0000000 Z |
 | Make2 |B |2015-01-01T00:00:02.0000000 Z |
 
-**Řešení**:
+**Řešení:**
 
 ```SQL
 SELECT
@@ -728,7 +727,7 @@ Například hodiny zařízení pro *TollID* 2 jsou pět sekund za *TollID* 1 a h
 
 **Výstup**:
 
-| TollID | Count |
+| TollID | Počet |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -791,7 +790,7 @@ GROUP BY
 
 **Výběr** projektuje data relevantní pro interakci s uživatelem, a to spolu s dobou trvání interakce. Seskupení dat podle uživatele a **SessionWindow** , které se zavřou, pokud žádná interakce neproběhne během 1 minuty, s maximální velikostí okna 60 minut.
 
-Další informace o **SessionWindow**najdete v [okně relace](/stream-analytics-query/session-window-azure-stream-analytics) .
+Další informace o **SessionWindow** najdete v [okně relace](/stream-analytics-query/session-window-azure-stream-analytics) .
 
 ## <a name="language-extensibility-with-user-defined-function-in-javascript-and-c"></a>Jazyková rozšíření s uživatelsky definovanou funkcí v jazycích JavaScript a C #
 
@@ -837,7 +836,7 @@ From
 
 Funkce definovaná uživatelem vypočítá hodnotu *bigint* z HexValue na všech spotřebovaných událostech.
 
-Další informace najdete v tématu [JavaScript](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) a [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf).
+Další informace najdete v tématu [JavaScript](./stream-analytics-javascript-user-defined-functions.md) a [C#](./stream-analytics-edge-csharp-udf.md).
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>Rozšířené porovnávání vzorů s MATCH_RECOGNIZE
 
@@ -930,13 +929,13 @@ Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a zí
 
 Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

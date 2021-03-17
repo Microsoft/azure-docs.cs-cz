@@ -1,23 +1,23 @@
 ---
 title: Cenové úrovně – Azure Database for MariaDB
 description: Seznamte se s různými cenovými úrovněmi pro Azure Database for MariaDB, včetně výpočetních generací, typů úložišť, velikosti úložiště, virtuální jádra, paměti a období uchovávání záloh.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
-ms.date: 8/13/2020
-ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 10/14/2020
+ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225712"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664244"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
 Server Azure Database for MariaDB můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jednu nebo více databází.
 
-| Prostředek | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Prostředek | **Basic** | **Obecné použití** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 5 |Gen 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,9 +29,9 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
-| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
-| Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. K příkladům patří servery, které hostují webové, mobilní a další podnikové aplikace.|
+| Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. K příkladům patří servery, které zpracovávají data v reálném čase, a transakční nebo analytické aplikace vyžadující vysoký výkon.|
 
 Po vytvoření serveru se dá změnit nebo snížit počet virtuální jádra a cenová úroveň (s výjimkou a od úrovně Basic) během několika sekund. Velikost úložiště můžete také nezávisle upravovat a dobu uchovávání záloh nahoru nebo dolů bez výpadků aplikací. Po vytvoření serveru nejde typ úložiště zálohy změnit. Další informace najdete v části [Scale Resources](#scale-resources) .
 
@@ -43,7 +43,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for MariaDB. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru MariaDB. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-| Atributy úložiště   | Základní | Pro obecné účely | Optimalizováno pro paměť |
+| Atributy úložiště   | Basic | Pro obecné účely | Optimalizováno pro paměť |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
@@ -71,7 +71,10 @@ Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově o
 | IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS| 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!IMPORTANT]
-> Služba large Storage je momentálně ve verzi Public Preview v těchto oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2 a Středozápadní USA.
+> Služba large Storage je v současnosti ve verzi Public Preview v těchto oblastech: Východní USA, Východní USA 2, Brazílie – jih, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jih, Západní USA 2, Středozápadní USA, Kanada – východ. a Kanada – střed.
+>
+> Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 vstupně-výstupních operací.
+>
 
 ### <a name="reaching-the-storage-limit"></a>Dosáhlo se limitu úložiště.
 

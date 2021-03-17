@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: df0b17509dfb11fb18a591c70e9060973459a24c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73744290"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>Content Moderator ukázky REST v jazyce C #

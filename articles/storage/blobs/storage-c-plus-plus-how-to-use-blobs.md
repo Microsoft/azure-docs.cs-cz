@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033627"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011094"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště BLOB z C++
 
@@ -51,7 +51,7 @@ Do horní části souboru C++ přidejte následující příkazy include, u kter
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce úložiště Azure
-Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu s použitím názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený v [Azure Portal](https://portal.azure.com) pro hodnoty *account* a *AccountKey* . Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu s použitím názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený v [Azure Portal](https://portal.azure.com) pro hodnoty *account* a *AccountKey* . Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
 
 ```cpp
 // Define the connection-string with your values.
@@ -157,7 +157,7 @@ blob3.upload_text(U("other text"));
 Alternativně můžete použít metodu **upload_from_file** pro nahrání souboru do objektu blob bloku.
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>Postupy: výpis objektů BLOB v kontejneru
-Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít metodu **list_blobs** kontejneru k načtení objektů BLOB a adresářů v ní. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_blob_item**, je nutné volat metodu **list_blob_item. as_blob** pro získání objektu **cloud_blob** nebo metody **list_blob. as_directory** pro získání objektu cloud_blob_directory. Následující kód ukazuje, jak načíst a vystavit výstup identifikátoru URI každé položky v kontejneru **My-Sample-Container** :
+Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít metodu **list_blobs** kontejneru k načtení objektů BLOB a adresářů v ní. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_blob_item**, je nutné volat metodu **list_blob_item. as _blob** pro získání objektu  **cloud_blob** nebo metody **list_blob. as _directory** pro získání objektu cloud_blob_directory. Následující kód ukazuje, jak načíst a vystavit výstup identifikátoru URI každé položky v kontejneru **My-Sample-Container** :
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -184,7 +184,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-Další informace o výpisu operací najdete v tématu [seznam Azure Storage prostředků v jazyce C++](../storage-c-plus-plus-enumeration.md).
+Další informace o výpisu operací najdete v tématu [seznam Azure Storage prostředků v jazyce C++](../common/storage-c-plus-plus-enumeration.md).
 
 ## <a name="how-to-download-blobs"></a>Postupy: stahování objektů BLOB
 Chcete-li stáhnout objekty blob, načtěte nejprve odkaz na objekt BLOB a potom zavolejte metodu **download_to_stream** . Následující příklad používá metodu **download_to_stream** k přenosu obsahu objektu blob do objektu streamu, který pak můžete zachovat do místního souboru.
@@ -257,10 +257,9 @@ blockBlob.delete_blob();
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili základy služby Blob Storage, můžete získat další informace o Azure Storage pomocí těchto odkazů.
 
-- [Používání úložiště Queue z C++](../storage-c-plus-plus-how-to-use-queues.md)
+- [Používání úložiště Queue z C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
 - [Použití Table Storage z C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-- [Seznam prostředků Azure Storage v jazyce C++](../storage-c-plus-plus-enumeration.md)
+- [Seznam prostředků Azure Storage v jazyce C++](../common/storage-c-plus-plus-enumeration.md)
 - [Reference ke klientské knihovně pro úložiště pro C++](https://azure.github.io/azure-storage-cpp)
 - [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-- [Přenos dat pomocí nástroje příkazového řádku AzCopy](../storage-use-azcopy.md)
-
+- [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy-v10.md)

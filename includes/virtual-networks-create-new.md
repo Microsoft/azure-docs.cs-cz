@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1d4d29f8edca87ec1cca0ffced7b3e1bca90717
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78244990"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808494"
 ---
-## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="create-the-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
 
 V této části vytvoříte virtuální síť a podsíť.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek > síť > virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
+1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
 
-2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+2. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
     | **Nastavení**          | **Hodnota**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
     | Skupina prostředků   | Vyberte **vytvořit nové**, zadejte **\<resource-group-name>** a pak vyberte OK nebo vyberte existující na **\<resource-group-name>** základě parametrů. |
-    | **Podrobnosti instance** |                                                                 |
-    | Name             | Napište**\<virtual-network-name>**                                    |
-    | Oblast           | Vybrali**\<region-name>** |
+    | **Podrobnosti o instancích** |                                                                 |
+    | Name             | Napište **\<virtual-network-name>**                                    |
+    | Oblast           | Vybrali **\<region-name>** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -38,16 +38,16 @@ V této části vytvoříte virtuální síť a podsíť.
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
-    | Adresní prostor IPv4 | Napište**\<IPv4-address-space>** |
+    | Adresní prostor protokolu IPv4 | Napište **\<IPv4-address-space>** |
 
-5. V části **název podsítě**vyberte slovo **výchozí**.
+5. V části **název podsítě** vyberte slovo **výchozí**.
 
-6. V **Upravit podsíť**zadejte tyto informace:
+6. V **Upravit podsíť** zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
-    | Název podsítě | Napište**\<subnet-name>** |
-    | Rozsah adres podsítě | Napište**\<subnet-address-range>**
+    | Název podsítě | Napište **\<subnet-name>** |
+    | Rozsah adres podsítě | Napište **\<subnet-address-range>**
 
 7. Vyberte **Uložit**.
 

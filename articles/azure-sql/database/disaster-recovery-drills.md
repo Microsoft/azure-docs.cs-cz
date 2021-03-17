@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f53a08a12c5afda8dbc3f25d9102f52b870ceea4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91321658"
 ---
 # <a name="performing-disaster-recovery-drills"></a>Probíhají podrobné analýzy zotavení po havárii.
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Chcete-li zabránit potenciálním ztrátám dat při provádění postupu zotav
 
 Chcete-li simulovat výpadek, můžete zdrojovou databázi přejmenovat. Tato změna názvu způsobí selhání připojení aplikace.
 
-### <a name="recovery"></a>Obnovení
+### <a name="recovery"></a>Obnovovací
 
 * Proveďte geografickou obnovu databáze na jiný server, jak je popsáno [zde](disaster-recovery-guidance.md).
 * Změňte konfiguraci aplikace tak, aby se připojila k obnovené databázi, a po dokončení obnovení použijte průvodce [konfigurací databáze po obnovení](disaster-recovery-guidance.md) .
@@ -56,7 +56,7 @@ Pro databázi, která je chráněná pomocí skupin převzetí služeb při selh
 
 Pro simulaci výpadku můžete zakázat webovou aplikaci nebo virtuální počítač, který je připojený k databázi. Tato simulace výpadků vede k selhání připojení webových klientů.
 
-### <a name="recovery"></a>Obnovení
+### <a name="recovery"></a>Obnovovací
 
 * Zajistěte, aby konfigurace aplikace v oblasti DR odkazovala na bývalé sekundární, což se stalo plně přístupným novým primárním objektem.
 * Spusťte [plánované převzetí služeb](scripts/setup-geodr-and-failover-database-powershell.md) při selhání ve skupině převzetí služeb při selhání ze sekundárního serveru.

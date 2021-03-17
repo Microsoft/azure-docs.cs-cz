@@ -1,17 +1,17 @@
 ---
 title: Zásady podpory clusteru Azure Red Hat OpenShift 4
-description: Pochopení požadavků zásad podpory pro Red Hat OpenShift 4.
+description: Principy požadavků zásad podpory pro Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: ec27d054055866c72148ad6eb024d4324f063ce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/05/2021
+ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774395"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454274"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Zásady podpory Azure Red Hat OpenShift
 
@@ -23,14 +23,16 @@ Některé konfigurace pro clustery Azure Red Hat OpenShift 4 můžou ovlivnit mo
 ## <a name="cluster-configuration-requirements"></a>Požadavky na konfiguraci clusteru
 
 * Všechny obsluhy clusteru OpenShift musí zůstat ve spravovaném stavu. Seznam operátorů clusteru lze vrátit spuštěním `oc get clusteroperators` .
+* Cluster musí mít minimálně tři pracovní uzly a tři uzly správce. Nemáte žádné příchuti, které brání naplánování komponent OpenShift. Neměňte škálu pracovních procesů clusteru na nulu nebo se pokuste o bezproblémové vypnutí clusteru.
 * Neodstraňujte ani neměňte cluster Prometheus a služby Alertmanager.
 * Neodstraňujte pravidla Alertmanager služby.
-* Neupravujte verzi clusteru OpenShift.
+* Neodstraňujte ani neměňte skupiny zabezpečení sítě.
 * Neodstraňujte ani neměňte protokolování služby Azure Red Hat OpenShift (MDSD lusky).
 * Neodstraňujte ani neupravujte tajný klíč pro vyžádání obsahu clusteru arosvc.azurecr.io.
 * Všechny virtuální počítače s clustery musí mít přímý odchozí přístup k Internetu, přinejmenším k koncovým bodům Azure Resource Manager (ARM) a Service Logging (Ženeva).  Není podporována žádná forma proxy serveru HTTPS.
 * Neměňte konfiguraci DNS pro virtuální síť clusteru. Je nutné použít výchozí překladač Azure DNS.
 * Nepřepisujte žádné objekty MachineConfig clusteru (například konfigurace kubelet) jakýmkoli způsobem.
+* Nenastavte žádné možnosti unsupportedConfigOverrides. Nastavením těchto možností zabráníte upgradu dílčí verze.
 * Služba Azure Red Hat OpenShift přistupuje ke clusteru prostřednictvím služby privátního propojení.  Neodstraňujte ani neměňte přístup k službě.
 * Výpočetní uzly, které nejsou RHCOS, se nepodporují. Například nemůžete použít výpočetní uzel RHEL.
 
@@ -51,7 +53,7 @@ Azure Red Hat OpenShift 4 podporuje instance pracovních uzlů na následující
 |Dsv3|Standard_D16s_v3|16|64|
 |Dsv3|Standard_D32s_v3|32|128|
 
-### <a name="memory-optimized"></a>Optimalizované z hlediska paměti
+### <a name="memory-optimized"></a>Optimalizované pro paměť.
 
 |Řada|Velikost|Virtuální procesory|Paměť: GiB|
 |-|-|-|-|
@@ -60,7 +62,7 @@ Azure Red Hat OpenShift 4 podporuje instance pracovních uzlů na následující
 |Esv3|Standard_E16s_v3|16|128|
 |Esv3|Standard_E32s_v3|32|256|
 
-### <a name="compute-optimized"></a>Optimalizované z hlediska výpočetních služeb
+### <a name="compute-optimized"></a>Optimalizované pro výpočty.
 
 |Řada|Velikost|Virtuální procesory|Paměť: GiB|
 |-|-|-|-|

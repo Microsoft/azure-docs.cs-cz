@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 985fb505aae96f4ebd1ba8aeb61679081f303243
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245768"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
@@ -19,7 +19,7 @@ Získejte a odstraňte secretvalue prostředky sítě.
 
 |Příkaz|Popis|
 | --- | --- |
-| odstranění | Odstraní zadanou hodnotu pojmenovaného tajného prostředku. |
+| delete | Odstraní zadanou hodnotu pojmenovaného tajného prostředku. |
 | list | Vypíše názvy všech hodnot zadaného tajného prostředku. |
 | show | Vypíše zadanou hodnotu tajného prostředku. |
 
@@ -28,16 +28,16 @@ Odstraní zadanou hodnotu pojmenovaného tajného prostředku.
 
 Odstraní prostředek tajné hodnoty identifikovaný názvem. Název prostředku je obvykle verze přidružená k této hodnotě. Pokud je zadaná hodnota používána, odstranění se nezdaří.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --tajný klíč-name-n [povinné] | Název tajného prostředku |
 | --Version-v [povinné] | Název tajné verze |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -50,15 +50,15 @@ Vypíše názvy všech hodnot zadaného tajného prostředku.
 
 Načte informace o všech prostředcích tajných hodnot zadaného tajného prostředku. Tyto informace zahrnují názvy prostředků tajné hodnoty, ale ne skutečné hodnoty.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --tajný klíč-name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -69,9 +69,9 @@ Načte informace o všech prostředcích tajných hodnot zadaného tajného pros
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl ok secretvalue zobrazit
 Vypíše zadanou hodnotu tajného prostředku.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --tajný klíč-name-n [povinné] | Název tajného prostředku |
 | --Version-v [povinné] | Název tajné verze |
@@ -79,7 +79,7 @@ Vypíše zadanou hodnotu tajného prostředku.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

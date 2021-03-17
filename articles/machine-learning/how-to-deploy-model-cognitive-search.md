@@ -1,24 +1,25 @@
 ---
 title: Nasazení modelu pro použití se službou Cognitive Search
 titleSuffix: Azure Machine Learning
-description: V tomto článku se naučíte, jak pomocí Azure Machine Learning nasadit model pro použití s Azure Kognitivní hledání. Kognitivní hledání můžou používat modely nasazené pomocí Azure Machine Learning jako vlastní dovednost k rozšíření možností vyhledávání.
+description: Naučte se používat Azure Machine Learning k nasazení modelu pro použití s Kognitivní hledání. Model se používá jako vlastní dovednost k rozšíření možností vyhledávání.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: larryfr
-author: larryfr
+ms.author: cgronlun
+author: cjgronlund
 ms.reviewer: larryfr
-ms.date: 06/11/2020
-ms.openlocfilehash: 59671a0520d665d594356a2e6aee46116a8de5d3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 03/11/2021
+ms.custom: deploy
+ms.openlocfilehash: 22c8880cbcde1f1a55fa66beee0323e0348e1164
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541766"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149609"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Nasazení modelu pro použití se službou Cognitive Search
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se naučíte, jak pomocí Azure Machine Learning nasadit model pro použití s [Azure kognitivní hledání](../search/search-what-is-azure-search.md).
 
@@ -45,7 +46,7 @@ Když nasazujete model pro použití s Azure Kognitivní hledání, nasazení mu
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).  
 
 * Registrovaný model. Pokud model nemáte, použijte vzorový Poznámkový blok na adrese [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) .
 
@@ -97,7 +98,7 @@ prov_config = AksCompute.provisioning_configuration()
 
 # Enable TLS (sometimes called SSL) communications
 # Leaf domain label generates a name using the formula
-#  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+#  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
 #  where "######" is a random series of characters
 prov_config.enable_ssl(leaf_domain_label = "contoso")
 
@@ -240,7 +241,7 @@ aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
                                                        max_request_wait_time=5000)
 ```
 
-Další informace najdete v referenční dokumentaci k [AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
+Další informace najdete v referenční dokumentaci k [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
 
 ## <a name="define-the-inference-configuration"></a>Definovat odvozenou konfiguraci
 
@@ -251,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-Další informace najdete v referenční dokumentaci k [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py).
+Další informace najdete v referenční dokumentaci k [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig).
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
@@ -276,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-Další informace najdete v referenční dokumentaci k [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+Další informace najdete v referenční dokumentaci k [modelu](/python/api/azureml-core/azureml.core.model.model).
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Vydat vzorový dotaz do vaší služby
 

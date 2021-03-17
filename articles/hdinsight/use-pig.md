@@ -2,19 +2,16 @@
 title: Použití Apache Pigu
 titleSuffix: Azure HDInsight
 description: Naučte se používat prase s Apache Hadoop v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072839"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944609"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Použití systému Apache prasete s Apache Hadoop v HDInsight
 
@@ -42,7 +39,7 @@ Prasečí Latin podporuje také uživatelsky definované funkce (UDF), které v�
 
 Další informace o standardu prasečí latinku najdete v tématu Ruční použití [referenčních](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) informací pro prasečí latinku 1 a [vepřového odkazu na latinku](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
-## <a name="example-data"></a><a id="data"></a>Příklad dat
+## <a name="example-data"></a><a id="data"></a>Ukázková data
 
 HDInsight poskytuje různé příklady datových sad, které jsou uložené v `/example/data` `/HdiSamples` adresářích a. Tyto adresáře jsou ve výchozím úložišti pro váš cluster. Příklad prasete v tomto dokumentu používá soubor *log4j* z `/example/data/sample.log` .
 
@@ -95,15 +92,15 @@ Teď, když jste se naučili, jak používat prase se službou HDInsight, může
 
 * [Nahrání dat do služby HDInsight](hdinsight-upload-data.md)
 * [Použití Apache Hive se službou HDInsight](./hadoop/hdinsight-use-hive.md)
-* [Použití Apache Sqoop se službou HDInsight](hdinsight-use-sqoop.md)
+* [Použití Apache Sqoop se službou HDInsight](./hadoop/hdinsight-use-sqoop.md)
 * [Použijte úlohy MapReduce s HDInsight](./hadoop/hdinsight-use-mapreduce.md)
 
 [apachepig-home]: https://pig.apache.org/
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: https://curl.haxx.se/
-[pigtask]: https://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[pigtask]: /sql/integration-services/control-flow/azure-hdinsight-pig-task?viewFallbackFrom=sql-server-2014
+[connectionmanager]: /sql/integration-services/connection-manager/azure-subscription-connection-manager?viewFallbackFrom=sql-server-2014
+[ssispack]: /sql/integration-services/azure-feature-pack-for-integration-services-ssis?viewFallbackFrom=sql-server-2014
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]:../hdinsight-use-hive.md

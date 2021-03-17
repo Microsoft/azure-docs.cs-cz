@@ -2,20 +2,25 @@
 title: Vytvoření virtuálního počítače se systémem Linux v Azure ze šablony
 description: Použití rozhraní příkazového řádku Azure k vytvoření virtuálního počítače se systémem Linux ze šablony Správce prostředků
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: ef9650690435a3770e59326e757ab1c783fa7b23
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a4e1bf56df52717255d2bae0a38186335d922ff1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372752"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554679"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Postup vytvoření virtuálního počítače se systémem Linux pomocí šablon Azure Resource Manager
 
 Naučte se vytvořit virtuální počítač se systémem Linux pomocí šablony Azure Resource Manager a Azure CLI z Azure Cloud Shell. Informace o vytvoření virtuálního počítače s Windows najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí šablony Správce prostředků](../windows/ps-template.md).
+
+Alternativou je nasazení šablony z Azure Portal. Pokud chcete otevřít šablonu na portálu, vyberte tlačítko **nasadit do Azure** .
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-sshkey%2Fazuredeploy.json)
 
 ## <a name="templates-overview"></a>Přehled šablon
 
@@ -78,4 +83,4 @@ Další informace o vytváření šablon najdete v syntaxi a vlastnostech JSON p
 - [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

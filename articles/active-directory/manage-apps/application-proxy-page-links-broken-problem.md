@@ -3,7 +3,7 @@ title: Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 description: Řešení potíží s nefunkčními odkazy v aplikacích proxy aplikací, které jste integrují s Azure AD
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a8ecb908063a40da32c1397fd4249811f9c2712
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760197"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254610"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 
@@ -37,7 +37,7 @@ Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti
     Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. To se dá udělat tak, že v části Azure Active Directory – &gt; Registrace aplikací &gt; vyberete aplikaci – &gt; branding. V části branding se zobrazí pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku. Pokud pořád používáte starší verze Registrace aplikací zkušeností, na kartě Vlastnosti se zobrazí podrobnosti adresa URL domovské stránky. 
     
     > [!IMPORTANT]
-    > Aby bylo možné provést výše uvedené změny, budete potřebovat práva k úpravám aplikačních objektů ve službě Azure AD. Uživatel musí mít přiřazenou roli [správce aplikace](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) , která uživateli uděluje modificaion práva k aplikacím v Azure AD.
+    > Aby bylo možné provést výše uvedené změny, budete potřebovat práva k úpravám aplikačních objektů ve službě Azure AD. Uživatel musí mít přiřazenou roli [správce aplikace](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) , která uživateli uděluje modificaion práva k aplikacím v Azure AD.
     >
 
 2.  Pokud vaše aplikace používají plně kvalifikované názvy domén (FQDN), publikujte své aplikace pomocí [vlastních domén](application-proxy-configure-custom-domain.md) . Tato funkce umožňuje používat stejnou adresu URL interně i externě.

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359955"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349346"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
 
@@ -58,7 +58,7 @@ Pokud však existující aplikace očekává využívání informací o skupině
 
 - Při použití členství ve skupině pro účely autorizace v aplikaci je vhodnější použít identifikátor ObjectID skupiny. Identifikátor ObjectID skupiny je neměnný a jedinečný v Azure Active Directory a k dispozici pro všechny skupiny.
 - Pokud pro autorizaci používáte místní skupinu sAMAccountName, použijte kvalifikované názvy domény;  Nejedná se o nemožnost konfliktu názvů. parametr sAMAccountName může být v rámci domény služby Active Directory jedinečný, ale pokud je více než jedna doména služby Active Directory synchronizována s Azure Active Directory tenant, existuje možnost, že více než jedna skupina bude mít stejný název.
-- Zvažte použití [aplikačních rolí](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) k zajištění vrstvy nepřímých odkazů mezi členstvím ve skupině a aplikací.   Aplikace pak provede interní rozhodnutí o autorizaci na základě role Clams v tokenu.
+- Zvažte použití [aplikačních rolí](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) k zajištění vrstvy nepřímých odkazů mezi členstvím ve skupině a aplikací.   Aplikace pak provede interní rozhodnutí o autorizaci na základě deklarací identity rolí v tokenu.
 - Pokud je aplikace nakonfigurovaná tak, aby získala atributy skupin synchronizované ze služby Active Directory, a skupina tyto atributy neobsahuje, nebude součástí deklarací identity.
 - Deklarace skupiny v tokenech zahrnují vnořené skupiny s výjimkou případů, kdy se používá možnost k omezení deklarací identity skupin na skupiny přiřazené k aplikaci.  Pokud je uživatel členem skupiny GroupB a GroupB je členem skupiny, pak budou deklarace skupiny pro uživatele obsahovat obě skupiny a GroupB. Pokud mají uživatelé organizace velký počet členství ve skupinách, může počet skupin uvedených v tokenu zvětšit velikost tokenu.  Azure Active Directory omezuje počet skupin, které bude generovat v tokenu do 150 pro kontrolní výrazy SAML a 200 pro token JWT.  Pokud je uživatel členem většího počtu skupin, jsou vynechány skupiny a místo toho budou zahrnuty odkazy na koncový bod grafu pro získání informací o skupině.
 
@@ -74,15 +74,15 @@ Existují dva kroky ke konfiguraci Azure Active Directory k vygenerování názv
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Přidání deklarací skupin do tokenů pro aplikace SAML pomocí konfigurace jednotného přihlašování
 
-Pokud chcete nakonfigurovat deklarace skupin pro aplikaci v galerii nebo mimo galerii SAML, otevřete **podnikové aplikace**, klikněte na aplikaci v seznamu, vyberte **Konfigurace jednotného přihlašování**a pak vyberte **atributy uživatele & deklarace identity**.
+Pokud chcete nakonfigurovat deklarace skupin pro aplikaci v galerii nebo mimo galerii SAML, otevřete **podnikové aplikace**, klikněte na aplikaci v seznamu, vyberte **Konfigurace jednotného přihlašování** a pak vyberte **atributy uživatele & deklarace identity**.
 
 Klikněte na **přidat deklaraci skupiny** .  
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![Snímek obrazovky zobrazující stránku atributy uživatele & deklarace identity s vybranou možnost přidat deklaraci skupiny](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 Pomocí přepínačů vyberte, které skupiny se mají do tokenu zahrnout.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![Snímek obrazovky, který zobrazuje okno deklarace skupiny se zvolenými možnostmi skupiny zabezpečení](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Výběr | Popis |
 |----------|-------------|
@@ -93,15 +93,15 @@ Pomocí přepínačů vyberte, které skupiny se mají do tokenu zahrnout.
 
 Pokud například chcete vygenerovat všechny skupiny zabezpečení, které je uživatel členem, vyberte skupiny zabezpečení.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![Snímek obrazovky, který zobrazuje okno deklarace skupiny se zvolenými možnostmi skupiny zabezpečení a otevře se rozevírací nabídka "zdrojový atribut".](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Pokud chcete vygenerovat skupiny pomocí atributů služby Active Directory synchronizovaných ze služby Active Directory místo identifikátorů objectID služby Azure AD, v rozevíracím seznamu vyberte požadovaný formát. V deklaracích budou zahrnuty pouze skupiny synchronizované ze služby Active Directory.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![Snímek obrazovky zobrazující, že je otevřená rozevírací nabídka "zdrojový atribut"](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 Pokud chcete vygenerovat jenom skupiny přiřazené k aplikaci, vyberte **skupiny přiřazené k aplikaci** .
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![Snímek obrazovky, který zobrazuje okno deklarace skupin s vybranými skupinami "skupiny přiřazené k aplikaci".](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 Do tokenu budou zahrnuty skupiny přiřazené k aplikaci.  Další skupiny, kterých je uživatel členem, budou vynechány.  S touto možností nejsou zahrnuty vnořené skupiny a uživatel musí být přímo členem skupiny přiřazené k aplikaci.
 
@@ -115,11 +115,11 @@ Způsob, jakým se generují deklarace skupin, se dají upravit pomocí nastaven
 
 Přizpůsobit název deklarace skupiny: Pokud je tato možnost vybraná, pro deklarace skupin se dá zadat jiný typ deklarace identity.   Do pole název zadejte typ deklarace identity a v poli obor názvů volitelný obor názvů pro deklaraci identity.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![Snímek obrazovky s oddílem rozšířené možnosti s názvem upravit název vybrané deklarace skupiny a zadat hodnoty název a obor názvů.](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 Některé aplikace vyžadují, aby se informace o členství ve skupině zobrazovaly v deklaraci identity role. Skupiny uživatelů můžete volitelně vygenerovat jako role zaškrtnutím políčka Generovat skupiny a deklarace identity role.
 
-![uživatelské rozhraní deklarací identity](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![Snímek obrazovky s oddílem rozšířené možnosti s možností přizpůsobit název deklarace skupiny a vybrat skupiny pro vygenerování jako deklarace identity pro role](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > Pokud se použije možnost Generovat data skupiny jako role, v deklaraci identity role se zobrazí jenom skupiny.  Všechny role aplikace, ke kterým se uživatel přiřadí, se nezobrazí v deklaraci identity role.
@@ -144,8 +144,9 @@ Platné hodnoty jsou:
 |----------|-------------|
 | **Všem** | Vygeneruje skupiny zabezpečení, distribuční seznamy a role. |
 | **"Zabezpečení"** | Vygeneruje skupiny zabezpečení, kterých je uživatel členem v deklaraci identity skupin. |
-| **"DirectoryRole** | Pokud je uživateli přiřazené role adresáře, vygenerují se jako deklarace identity WIDS (deklarace identity skupin nebude vygenerována). |
-| **"Aplikační aplikace** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
+| **"DirectoryRole"** | Pokud je uživateli přiřazené role adresáře, vygenerují se jako deklarace identity WIDS (deklarace identity skupin nebude vygenerována). |
+| **Proměnná** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
+| **NTato** | Nevrátí se žádné skupiny. (Nejedná se o případ – Sensetive, takže žádná funguje stejně a dá se nastavit přímo v manifestu aplikace.) |
 
    Příklad:
 

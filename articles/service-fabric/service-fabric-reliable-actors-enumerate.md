@@ -1,16 +1,15 @@
 ---
 title: Zobrazení výčtu objektů actor v Azure Service Fabric
 description: Seznamte se s výčtem Reliable Actors a jejich metadaty v aplikaci Azure Service Fabric pomocí příkladů.
-author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: vturecek
-ms.openlocfilehash: 8e462cc5fa82b8692304f58ef6cf0ea0e2db8725
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11742d1a1c0837588e7122ee615f3f7929aae363
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245972"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571346"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Zobrazení výčtu Service Fabric Reliable Actors
 Služba Reliable Actors umožňuje klientovi vytvořit výčet metadat objektů Actor, které služba hostuje. Vzhledem k tomu, že je služba objektu actor rozdělená stavová služba, je výčet proveden na oddíl. Vzhledem k tomu, že každý oddíl může obsahovat mnoho objektů Actor, je výčet vrácen jako sada stránkovaných výsledků. Na stránky se přeskočí, dokud nebudou načteny všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech aktivních objektů actor v jednom oddílu služby objektu actor:

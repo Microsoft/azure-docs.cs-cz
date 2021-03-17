@@ -1,23 +1,18 @@
 ---
 title: Přesun dat do a z tabulky Azure
 description: Přečtěte si, jak přesunout data do a z Azure Table Storage pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702307"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392115"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z tabulky Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -38,7 +33,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky: 
 
@@ -60,7 +55,7 @@ Existují dva typy propojených služeb, které můžete použít k propojení �
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **Azure** má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze Azure Table, na kterou odkazuje propojená služba |Ano. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
 
@@ -81,7 +76,7 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu tabulky Azure Podívejte se na příklady v následující části. |Ne. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
+| azureTableSourceQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu tabulky Azure Podívejte se na příklady v následující části. |No. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
 | azureTableSourceIgnoreTableNotFound |Určuje, zda požití neexistuje výjimka tabulky. |TRUE<br/>FALSE |No |
 
 ### <a name="azuretablesourcequery-examples"></a>Příklady azureTableSourceQuery
@@ -104,7 +99,7 @@ Pokud je sloupec tabulky Azure typu DateTime:
 | azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Řetězcová hodnota. |No |
 | azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu AzureTableDefaultPartitionKeyValue. |Název sloupce |No |
 | azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce jsou používány jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Název sloupce |No |
-| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entit](https://msdn.microsoft.com/library/azure/hh452242.aspx) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>náhrady |No |
+| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](/rest/api/storageservices/Insert-Or-Merge-Entity) a [vložení nebo nahrazení entit](/rest/api/storageservices/Insert-Or-Replace-Entity) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>náhrady |No |
 | writeBatchSize |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |Integer (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |timespan<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí hodnota pro výchozí nastavení klienta úložiště hodnota časového limitu 90 s) |
 
@@ -472,7 +467,7 @@ Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-act
 1. Převod z nativních zdrojových typů na typ .NET
 2. Převést z typu .NET na nativní typ jímky
 
-Když přesunete data do & z tabulky Azure, z typů Azure Table OData do typu .NET se použijí následující [mapování definovaná pomocí azure Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx) a naopak.
+Když přesunete data do & z tabulky Azure, z typů Azure Table OData do typu .NET se použijí následující [mapování definovaná pomocí azure Table Service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a naopak.
 
 | Datový typ OData | Typ .NET | Podrobnosti |
 | --- | --- | --- |

@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure PowerShell-Azure Database for MariaDB'
 description: V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MariaDB Server ve skupině prostředků Azure.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 91472d3f3cb39d34f560715f511f666079b1d1c0
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502252"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664660"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
@@ -21,9 +21,9 @@ V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Dat
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > I když je modul PowerShell AZ. MariaDb ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
@@ -37,7 +37,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMariaDB
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Pokud máte více předplatných Azure, vyberte příslušné předplatné, ve kterém se prostředky mají fakturovat. Pomocí rutiny [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) vyberte konkrétní ID předplatného.
+Pokud máte více předplatných Azure, vyberte příslušné předplatné, ve kterém se prostředky mají fakturovat. Pomocí rutiny [set-AzContext](/powershell/module/az.accounts/set-azcontext) vyberte konkrétní ID předplatného.
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -45,7 +45,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rutiny [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
 
 Následující příklad vytvoří skupinu prostředků s názvem **myresourcegroup** v oblasti **západní USA** .
 
@@ -70,12 +70,12 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 | SslEnforcement             | Povoleno          | Zda má být pro tento server povolen nebo nikoli protokol SSL. Povolené hodnoty: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Kapacita úložiště serveru (jednotkou jsou megabajty). Platný StorageInMb je minimálně 5120 MB a zvyšuje se o 1024 MB. Další informace o limitech velikosti úložiště najdete v tématu [Azure Database for MariaDB cenové úrovně](./concepts-pricing-tiers.md).                                                                               |
 | Verze                    | 5.7              | Hlavní verze MariaDB                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být ** azure_superuser **, ** admin **, ** administrátor **, ** root **, ** host ** nebo ** public**.                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser**, **admin**, **administrátor**, **root**, **host** nebo **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Heslo správce uživatele ve formě zabezpečeného řetězce. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.                                       |
 
-Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
+Hodnota parametru **SKU** dodržuje cenové úrovně **\_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
 
-- `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
+- `-Sku B_Gen5_1` mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 - `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -208,7 +208,7 @@ Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole
     |    **Nastavení**    |            **Navrhovaná hodnota**            |                      **Popis**                       |
     | ----------------- | ----------------------------------------- | ---------------------------------------------------------- |
     | Název připojení   | My Connection                             | Zadejte popisek pro toto připojení.                        |
-    | Způsob připojení | Standard (TCP/IP)                         | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
+    | Způsob připojení | Standardní (TCP/IP)                         | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
     | Název hostitele          | `mydemoserver.mariadb.database.azure.com` | Název serveru, který jste si dříve poznamenali                           |
     | Port              | 3306                                      | Výchozí port pro MariaDB                                 |
     | Uživatelské jméno          | myadmin@mydemoserver                      | Přihlašovací jméno správce serveru, které jste si poznamenali dříve                |

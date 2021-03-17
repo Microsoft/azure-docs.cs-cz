@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171733"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682375"
 ---
 # <a name="event-grid-concepts"></a>Koncepty Event Grid
 
@@ -48,7 +48,7 @@ Informace o tom, jak spravovat předplatná v Event Grid, najdete v [dokumentaci
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Z Event Grid perspektivy je obslužná rutina události místem, kde je událost odeslána. Obslužná rutina provede další akci zpracování události. Event Grid podporuje několik typů obslužných rutin. Jako obslužnou rutinu můžete použít podporovanou službu Azure nebo vlastní webový Hook. V závislosti na typu obslužné rutiny Event Grid podle různých mechanismů Zabezpečte doručení události. Pokud je cílová obslužná rutina události webovým zavěšením protokolu HTTP, událost se zopakuje, jakmile obslužná rutina vrátí stavový kód `200 – OK` . V případě hraničního centra, pokud je událost doručena bez výjimky, je považována za úspěšnou.
+Z Event Grid perspektivy je obslužná rutina události místem, kde je událost odeslána. Obslužná rutina provede další akci zpracování události. Event Grid podporuje několik typů obslužných rutin. Jako obslužnou rutinu můžete použít podporovanou službu Azure nebo vlastní webový Hook. V závislosti na typu obslužné rutiny Event Grid podle různých mechanismů Zabezpečte doručení události. Pokud je cílová obslužná rutina události webovým zavěšením protokolu HTTP, bude událost opakována, dokud obslužná rutina nevrátí stavový kód `200 – OK` . V případě hraničního centra, pokud je událost doručena bez výjimky, je považována za úspěšnou.
 
 ## <a name="security"></a>Zabezpečení
 

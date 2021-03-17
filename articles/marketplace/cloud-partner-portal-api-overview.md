@@ -7,19 +7,19 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292928"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425781"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Reference k rozhraní API portál partnerů cloudu
 
 > [!NOTE]
 > Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Zkontrolujte [změny v rozhraních API cpp](#changes-to-cpp-apis-after-the-migration-to-partner-center) uvedených v tomto dokumentu, abyste zajistili, že váš kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
-Rozhraní REST API pro portál partnerů cloudu umožňují programové načítání a manipulaci s pracovními postupy, nabídkami a profily vydavatelů. Rozhraní API používají řízení přístupu na základě role (RBAC) k prosazování správných oprávnění v době zpracování.
+Rozhraní REST API pro portál partnerů cloudu umožňují programové načítání a manipulaci s pracovními postupy, nabídkami a profily vydavatelů. Rozhraní API používají řízení přístupu na základě role Azure (Azure RBAC) k prosazování správných oprávnění v době zpracování.
 
 Tento odkaz poskytuje technické podrobnosti o portál partnerů cloudu rozhraní REST API. Ukázky datové části v tomto dokumentu jsou jenom pro referenci a můžou se změnit, protože se přidávají nové funkce.
 

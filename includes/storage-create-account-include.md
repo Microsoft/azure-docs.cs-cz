@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1295160beac83351f3f5243054f91558ad6e0191
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 193cd8ff83eeabcf155dba91dd69a6eba72febd6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020967"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996801"
 ---
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
 Nejjednodušší způsob, jak vytvořit první účet úložiště Azure, je pomocí [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Vytvoření účtu úložiště](../articles/storage/common/storage-account-create.md).
 
-Účet úložiště Azure můžete vytvořit také pomocí prostředí [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](../articles/storage/common/storage-azure-cli.md) nebo pomocí [poskytovatele prostředků služby Azure Storage pro .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/).
+Účet úložiště Azure můžete vytvořit také pomocí prostředí [Azure PowerShell](/powershell/module/az.storage/), [rozhraní příkazového řádku Azure](../articles/storage/blobs/storage-quickstart-blobs-cli.md) nebo pomocí [poskytovatele prostředků služby Azure Storage pro .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/).
 
 Pokud nechcete v Azure v tuto chvíli vytvářet účet úložiště, můžete použít taky emulátor úložiště Azurite ke spuštění a testování kódu v místním prostředí. Další informace najdete v tématu [použití emulátoru Azurite pro vývoj místních Azure Storage](../articles/storage/common/storage-use-azurite.md).

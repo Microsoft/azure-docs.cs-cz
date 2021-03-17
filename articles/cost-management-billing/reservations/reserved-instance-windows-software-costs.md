@@ -5,15 +5,16 @@ author: yashesvi
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/28/2021
 ms.author: banders
-ms.openlocfilehash: 3480f60b354de94f604dab1ea1f16d3b0ad59379
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 464e129314a369c14dcc6bc6c16eadf5f8bcf01f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199343"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052985"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Softwarové náklady nezahrnuté ve službě Azure Reserved VM Instances
 
@@ -60,13 +61,13 @@ Slevy na rezervované instance virtuálního počítače a rezervované kapacity
 
 ## <a name="get-rates-for-azure-meters"></a>Získat sazby za měřiče Azure
 
-Náklady na každý z těchto měřičů můžete získat prostřednictvím rozhraní Azure RateCard API. Informace o tom, jak získat sazby za měřiče Azure, najdete v popisu [získání informací o cenách a metadatech pro prostředky používané v rámci předplatného Azure](/previous-versions/azure/reference/mt219004(v=azure.100)).
+Náklady na jednotlivé měřiče můžete získat pomocí rozhraní API maloobchodních cen Azure. Informace o tom, jak získat sazby pro Azure měřiče, najdete v tématu [maloobchodní ceny Azure – přehled](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o rezervacích pro Azure najdete v následujících článcích:
 
 - [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Správa rezervací v Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci](../manage/understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)

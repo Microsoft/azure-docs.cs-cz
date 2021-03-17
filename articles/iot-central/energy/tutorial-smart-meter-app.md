@@ -3,21 +3,19 @@ title: 'Kurz: Vytvoření aplikace pro analýzu inteligentních dat pomocí IoT 
 description: 'Kurz: Naučte se vytvářet aplikace pro monitorování inteligentních měřičů pomocí šablon aplikací Azure IoT Central.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77015996"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833299"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
-
-
 
 Tento kurz vás provede procesem vytvoření aplikace pro monitorování inteligentního měření, která zahrnuje ukázkový model zařízení se simulovanými daty. V tomto kurzu se naučíte:
 
@@ -30,7 +28,7 @@ Tento kurz vás provede procesem vytvoření aplikace pro monitorování intelig
 Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Požadavky
-- Žádná
+- Žádné
 - Doporučuje se předplatné Azure, ale není to nutné.
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Vytvoření aplikace pro inteligentní monitorování měřičů 
@@ -38,14 +36,13 @@ Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://
 Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
 1. Otevřete [Azure IoT Central domovskou stránku](https://apps.azureiotcentral.com) a kliknutím na **sestavit** vytvořte novou aplikaci. 
-
-2. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici aplikace **monitorování inteligentního měření** .
+1. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici aplikace **monitorování inteligentního měření** .
 
     > [!div class="mx-imgBorder"]
     > ![Sestavit aplikaci](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
+1. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
     * **Název aplikace**: vyberte název aplikace IoT Central. 
     * **Adresa URL**: vyberte adresu URL IoT Central, platforma ověří její jedinečnost.
     * **7. den bezplatné zkušební verze**: Pokud už máte předplatné Azure, doporučuje se výchozí nastavení. Pokud nemáte předplatné Azure, začněte s bezplatnou zkušební verzí.
@@ -55,7 +52,6 @@ Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
         ![Formulář nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
         ![Informace o fakturaci formuláře nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
-
 
 ### <a name="verify-the-application-and-simulated-data"></a>Ověření aplikace a simulovaných dat
 
@@ -99,13 +95,14 @@ Pokud chcete zobrazit model zařízení inteligentního měření, klikněte na 
 Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci pomocí následujících kroků:
 
 1. V levém podokně otevřete kartu Správa.
-2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
+1. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
 
     > [!div class="mx-imgBorder"]
     > ![Odstranit aplikaci](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
-
 ## <a name="next-steps"></a>Další kroky
-* Další informace o architektuře aplikací inteligentního měření najdete [v článku konceptu](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app) .
-* Vytváření šablon aplikací pro inteligentní měření zdarma: [aplikace s inteligentním měřením](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/) .
+
+Další informace o architektuře aplikací inteligentního měření najdete tady:
+
+> [!div class="nextstepaction"]
+> [Architektura aplikace inteligentního měření](./concept-iot-central-smart-meter-app.md)

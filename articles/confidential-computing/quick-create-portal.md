@@ -3,17 +3,17 @@ title: Rychlý Start – vytvoření virtuálního počítače s důvěrnými in
 description: Začněte s nasazeními a Naučte se, jak rychle vytvořit virtuální počítač s důvěrným výpočetním prostředím v Azure Portal.
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281068"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566664"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure v Azure Portal
 
@@ -49,20 +49,20 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 1. Na kartě **základy** vyberte své **předplatné** a **skupinu prostředků**.
 
-1. Jako **název virtuálního počítače**zadejte název nového virtuálního počítače.
+1. Jako **název virtuálního počítače** zadejte název nového virtuálního počítače.
 
 1. Zadejte nebo vyberte tyto hodnoty:
 
    * **Oblast**: Vyberte oblast Azure, která je pro vás nejvhodnější.
 
         > [!NOTE]
-        > Důvěrné výpočetní virtuální počítače se spouští jenom na specializovaném hardwaru dostupném v konkrétních oblastech. Nejnovější dostupné oblasti pro virtuální počítače řady DCsv2-Series najdete v tématu [dostupné oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+        > Důvěrné výpočetní virtuální počítače se spouští jenom na specializovaném hardwaru dostupném v konkrétních oblastech. Nejnovější dostupné oblasti pro DCsv2-Series virtuálních počítačů najdete v části [dostupné oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 1. Nakonfigurujte bitovou kopii operačního systému, kterou chcete použít pro virtuální počítač.
 
     * **Zvolte obrázek**: pro tento kurz vyberte Ubuntu 18,04 LTS. Můžete také vybrat možnost Windows Server 2019, Windows Server 2016 nebo Ubuntu 16,04 LTS. Pokud se rozhodnete tak učinit, budete v tomto kurzu přesměrováni podle potřeby.
     
-    * **Přepněte obrázek pro Gen 2**: důvěrné výpočetní virtuální počítače běží jenom na imagí [generace 2](../virtual-machines/linux/generation-2.md) . Ujistěte se, že vybraný obrázek je obrázek 2. generace. Klikněte na kartu **Upřesnit** nad místem, kde konfigurujete virtuální počítač. Posuňte se dolů, dokud nenajdete část s označením "generování virtuálního počítače". Vyberte Obecné 2 a potom se vraťte na kartu **základy** .
+    * **Přepněte obrázek pro Gen 2**: důvěrné výpočetní virtuální počítače běží jenom na imagí [generace 2](../virtual-machines/generation-2.md) . Ujistěte se, že vybraný obrázek je obrázek 2. generace. Klikněte na kartu **Upřesnit** nad místem, kde konfigurujete virtuální počítač. Posuňte se dolů, dokud nenajdete část s označením "generování virtuálního počítače". Vyberte Obecné 2 a potom se vraťte na kartu **základy** .
     
 
         ![Karta Upřesnit](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -72,12 +72,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
     * **Návrat zpět na základní konfiguraci**: Vraťte se na kartu **základy** pomocí navigace v horní části.
 
-1. Zvolte virtuální počítač s důvěrnými výpočetními funkcemi v selektoru velikosti výběrem možnosti **změnit velikost**. V nástroji pro výběr velikosti virtuálního počítače klikněte na **Vymazat všechny filtry**. Zvolte **Přidat filtr**, pro typ filtru vyberte **rodina** a pak vyberte jenom **důvěrné výpočetní**prostředky.
+1. Zvolte virtuální počítač s důvěrnými výpočetními funkcemi v selektoru velikosti výběrem možnosti **změnit velikost**. V nástroji pro výběr velikosti virtuálního počítače klikněte na **Vymazat všechny filtry**. Zvolte **Přidat filtr**, pro typ filtru vyberte **rodina** a pak vyberte jenom **důvěrné výpočetní** prostředky.
 
-    ![Virtuální počítače řady DCsv2-Series](media/quick-create-portal/dcsv2-virtual-machines.png)
+    ![DCsv2-Series virtuálních počítačů](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2**a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Přečtěte si další informace](virtual-machine-solutions.md).
+    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2** a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Další informace](virtual-machine-solutions.md).
 
 1. Zadejte následující informace:
 
@@ -144,9 +144,9 @@ Další informace o připojení k virtuálním počítačům s Linuxem najdete v
 > [!NOTE]
 > Pokud se zobrazí výstraha zabezpečení výstupů na klíč hostitele serveru, který není uložen do mezipaměti v registru, vyberte z následujících možností. Pokud tomuto hostiteli důvěřujete, vyberte **Ano** a přidejte klíč do mezipaměti pro výstup a pokračujte v připojování. Chcete-li provést připojení pouze jednou, aniž byste museli přidat klíč do mezipaměti, vyberte možnost **ne**. Pokud tomuto hostiteli nedůvěřujete, vyberte **Zrušit** , aby se připojení zrušilo.
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Instalace Open enklávy SDK (OE SDK)<a id="Install"></a>
+## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Instalace Open enklávy SDK (OE SDK) <a id="Install"></a>
 
-Postupujte podle podrobných pokynů k instalaci sady [OE SDK](https://github.com/openenclave/openenclave) na virtuálním počítači s DCsv2-Series s Ubuntu 18,04 LTS Gen 2. 
+Postupujte podle podrobných pokynů k instalaci sady [OE SDK](https://github.com/openenclave/openenclave) na DCsv2-Series virtuální počítač s bitovou kopií 18,04 LTS 2. generace. 
 
 Pokud je váš virtuální počítač spuštěný na Ubuntu 16,04 LTS Gen 2, budete muset postupovat podle [pokynů k instalaci pro Ubuntu 16,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md).
 
@@ -168,7 +168,7 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -199,9 +199,7 @@ Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstrani
 
 V tomto rychlém startu jste nasadili důvěrný výpočetní virtuální počítač a nainstalovali jste Open enklávy SDK. Další informace o důvěrných výpočetních virtuálních počítačích v Azure najdete v tématu [řešení na Virtual Machines](virtual-machine-solutions.md). 
 
-Pokud jste nasadili virtuální počítač s Windows, přečtěte si, jak vytvářet aplikace s [ukázkami OE SDK pro Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) na GitHubu. 
-
-Zjistěte, jak můžete vytvářet důvěrné výpočetní aplikace na platformě Linux tím, že budete pokračovat s otevřenými ukázkami sady enklávy SDK Linux na GitHubu. 
+Zjistěte, jak můžete vytvářet důvěrné výpočetní aplikace, a to tak, že budete pokračovat na otevřené ukázky sady enklávy SDK na GitHubu. 
 
 > [!div class="nextstepaction"]
-> [Sestavování otevřených ukázek sady enklávy SDK v systému Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Sestavování otevřených ukázek sady enklávy SDK](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

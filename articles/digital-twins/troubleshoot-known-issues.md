@@ -6,12 +6,13 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661482"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434096"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -19,59 +20,36 @@ Tento článek poskytuje informace o známých problémech souvisejících s dig
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400 chyba klienta: Chybný požadavek" v Cloud Shell
 
-Příkazy v Cloud Shell můžou selhat neúspěšné s chybou 400 klienta chyba: Chybný požadavek na adresu URL: http://localhost:50342/oauth2/token "následovaný úplným trasováním zásobníku.
+**Popis problému:** Příkazy v Cloud Shell spuštěných v *https://shell.azure.com* můžou občas selhat s chybou 400 chyba klienta: Chybná žádost o adresu URL: http://localhost:50342/oauth2/token , následované úplným trasováním zásobníku.
 
-### <a name="troubleshooting-steps"></a>Postup při řešení potíží
+| Týká se to mi? | Příčina | Řešení |
+| --- | --- | --- |
+| V &nbsp; &nbsp; rámci digitálních &nbsp; vláken Azure to ovlivní následující skupiny příkazů:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Toto je výsledek známého problému v Cloud Shell: [*získání tokenu z Cloud Shell přerušovaně se nezdařilo s 400 chybou klienta: Chybný požadavek*](https://github.com/Azure/azure-cli/issues/11749).<br><br>To představuje problém s tokeny ověřování instance Azure Digital prokážed a výchozím spravovaným ověřováním založeným na [identitách](../active-directory/managed-identities-azure-resources/overview.md) Cloud Shell. <br><br>To nemá vliv na příkazy v digitálních událostech Azure `az dt` ze `az dt endpoint` skupin příkazů nebo, protože používají jiný typ ověřovacího tokenu (na základě Azure Resource Manager), který nemá problém s ověřováním spravované identity Cloud Shell. | Jedním ze způsobů, jak tento problém vyřešit, je spustit `az login` příkaz v Cloud Shell a dokončit následné přihlašovací kroky. Tím dojde k přepnutí vaší relace ze spravovaného ověřování identity. tím se vyhnete potížím s kořenovým adresářem. Za tímto účelem byste měli být schopni spustit příkaz znovu.<br><br>Případně můžete otevřít podokno Cloud Shell v Azure Portal a dokončit Cloud Shell práci.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Obrázek ikony Cloud Shell na panelu ikon Azure Portal" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká. |
 
-Tuto možnost můžete vyřešit opakovaným spuštěním `az login` příkazu a dokončením následujících kroků přihlášení.
-
-Potom byste měli být schopni příkaz znovu spustit.
-
-### <a name="possible-causes"></a>Možné příčiny
-
-Toto je výsledek známého problému v Cloud Shell: [*získání tokenu z Cloud Shell přerušovaně se nezdařilo s 400 chybou klienta: Chybný požadavek*](https://github.com/Azure/azure-cli/issues/11749).
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Chybějící přiřazení role po skriptovém nastavení
 
-Někteří uživatelé mohou mít problémy s částí přiřazení role v tématu [*Postupy: nastavení instance a ověřování (skriptované)*](how-to-set-up-instance-scripted.md). Skript neindikuje, že se nejedná o selhání, ale role *vlastníka digitálních vláken Azure (Preview)* není úspěšně přiřazená uživateli, a to bude mít vliv na schopnost vytvářet další prostředky po silnici.
+**Popis problému:** Někteří uživatelé mohou mít problémy s částí přiřazení role v tématu [*Postupy: nastavení instance a ověřování (skriptované)*](how-to-set-up-instance-scripted.md). Skript neindikuje selhání, ale role *vlastníka dat digitálních vláken Azure* není úspěšně přiřazená uživateli. Tento problém bude mít vliv na schopnost vytvořit další prostředky po silnici.
 
-Pokud chcete zjistit, jestli se přiřazení role po spuštění skriptu úspěšně nastavilo, postupujte podle pokynů v části [*Ověření přiřazení role uživatele*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) v článku o nastavení. Pokud se uživatel s touto rolí nezobrazuje, tento problém se vás týká.
+| Týká se to mi? | Příčina | Řešení |
+| --- | --- | --- |
+| Pokud chcete zjistit, jestli se přiřazení role po spuštění skriptu úspěšně nastavilo, postupujte podle pokynů v části [*Ověření přiřazení role uživatele*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) v článku o nastavení. Pokud se uživatel s touto rolí nezobrazuje, tento problém se vás týká. | Pro uživatele, kteří se přihlásili pomocí osobního [účet Microsoft (MSA)](https://account.microsoft.com/account), se ID objektu zabezpečení vašeho uživatele, které identifikuje v těchto příkazech, může lišit od přihlašovacího e-mailu vašeho uživatele. proto je obtížné skriptu zjistit a použít pro správné přiřazení role. | Chcete-li řešení vyřešit, můžete ručně nastavit přiřazení role pomocí [instrukcí CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) nebo [Azure Portal instrukcí](how-to-set-up-instance-portal.md#set-up-user-access-permissions). |
 
-### <a name="troubleshooting-steps"></a>Postup při řešení potíží
+## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Problémy s ověřováním pomocí interaktivního prohlížeče v Azure. identity 1.2.0
 
-Chcete-li řešení vyřešit, můžete ručně nastavit přiřazení role pomocí rozhraní příkazového řádku nebo Azure Portal. 
+**Popis problému:** Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity)** může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) . Tato možnost představuje při pokusu o ověření v okně prohlížeče jako odpověď na chybu "Azure. identity. AuthenticationFailedException". Může se stát, že se okno prohlížeče zcela nespustí nebo se zobrazí ověření uživatele úspěšně, zatímco klientská aplikace se přesto nezdaří s chybou.
 
-Postupujte podle těchto pokynů:
-* [Rozhraní příkazového řádku](how-to-set-up-instance-cli.md#set-up-user-access-permissions)
-* [bran](how-to-set-up-instance-portal.md#set-up-user-access-permissions)
+| Týká se to mi? | Příčina | Řešení |
+| --- | --- | --- |
+| &nbsp;Ovlivněná &nbsp; Metoda &nbsp; se &nbsp; používá &nbsp; v &nbsp; &nbsp; následujících článcích:<br><br>[*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)<br><br>[*Postupy: psaní kódu ověřování aplikace*](how-to-authenticate-client.md)<br><br>[*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md) | Někteří uživatelé mají tento problém s verzí **1.2.0** `Azure.Identity` knihovny. | Pokud chcete řešení vyřešit, aktualizujte své aplikace tak, aby používaly [novější verzi](https://www.nuget.org/packages/Azure.Identity) nástroje `Azure.Identity` . Po aktualizaci verze knihovny by měl prohlížeč načíst a ověřit podle očekávání. |
 
-### <a name="possible-causes"></a>Možné příčiny
+## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Problém s výchozím ověřováním přihlašovacích údajů Azure v Azure. identity 1.3.0
 
-Pro uživatele, kteří se přihlásili pomocí osobního [účet Microsoft (MSA)](https://account.microsoft.com/account), se ID objektu zabezpečení vašeho uživatele, které identifikuje v těchto příkazech, může lišit od přihlašovacího e-mailu uživatele, což ztěžuje tomu, aby skript mohl zjistit a použít pro správné přiřazení role.
+**Popis problému:** Při psaní ověřovacího kódu pomocí **1.3.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity)** mají někteří uživatelé problémy s metodou [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) použitou v mnoha ukázkách v těchto dokumentech digitálních vláken Azure. To představuje chybovou odpověď "Azure. identity. AuthenticationFailedException: ověřování SharedTokenCacheCredential se nezdařilo", když se kód pokusí ověřit.
 
-## <a name="issue-with-interactive-browser-authentication"></a>Problém s interaktivním ověřováním prohlížeče
-
-Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure pomocí nejnovější verze (verze **1.2.0**) **knihovny [Azure. identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) **může docházet k problémům s metodou [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
-
-Ovlivněná metoda se používá v následujících článcích: 
-* [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
-* [*Postupy: psaní kódu ověřování aplikace*](how-to-authenticate-client.md)
-* [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)
-
-Tento problém při pokusu o ověření v okně prohlížeče obsahuje chybovou odpověď "Azure. identity. AuthenticationFailedException". Může se stát, že se okno prohlížeče zcela nespustí nebo se zobrazí ověření uživatele úspěšně, zatímco klientská aplikace se přesto nezdaří s chybou.
-
-### <a name="troubleshooting-steps"></a>Postup při řešení potíží
-
-Chcete-li řešení vyřešit, aplikace explicitně používají Azure. identity verze **1.1.1**. V této verzi knihovny by měl prohlížeč načíst a ověřit podle očekávání.
-
->[!NOTE]
-> Nestačí přidat knihovnu bez zadání jakékoli verze, protože to bude i nadále výchozí pro nejnovější **1.2.0**. Je nutné explicitně zadat verzi **1.1.1** .
-
-### <a name="possible-causes"></a>Možné příčiny
-
-To se vztahuje na otevřený problém s nejnovější verzí knihovny Azure. identity (verze **1.2.0**): [*ověření při použití InteractiveBrowserCredential se nezdařilo*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
-
-Tento problém se zobrazí, pokud použijete **1.2.0** verze v aplikaci digitálního vlákna v Azure, nebo pokud knihovnu přidáte do projektu bez zadání verze (která je také výchozí pro tuto nejnovější verzi).
+| Týká se to mi? | Příčina | Řešení |
+| --- | --- | --- |
+| `DefaultAzureCredential` používá se ve většině příkladů dokumentace pro tuto službu, která zahrnuje ověřování. Pokud píšete ověřovací kód pomocí `DefaultAzureCredential` verze 1.3.0 `Azure.Identity` knihovny a vidíte tuto chybovou zprávu, bude to mít vliv na vás. | To je nejspíš důsledek některých potíží s konfigurací v nástroji `Azure.Identity` . | Jedna strategie, kterou je třeba vyřešit, je vyloučit `SharedTokenCacheCredential` z přihlašovacích údajů, jak je popsáno v tomto [DefaultAzureCredential problému](https://github.com/Azure/azure-sdk/issues/1970) , ve kterém je aktuálně otevřená `Azure.Identity` .<br>Další možností je změnit aplikaci tak, aby používala starší verzi nástroje `Azure.Identity` , jako je například [verze 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3). Tato funkce nemá žádný vliv na funkce digitálních vláken Azure a proto je také přijatým řešením. |
 
 ## <a name="next-steps"></a>Další kroky
 

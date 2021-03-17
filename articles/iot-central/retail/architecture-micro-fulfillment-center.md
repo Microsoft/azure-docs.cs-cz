@@ -4,17 +4,17 @@ description: Naučte se vytvářet aplikace centra pro mikroplnění pomocí na�
 author: avneet723
 ms.author: avneets
 ms.date: 10/13/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 23e1880a3abac6ebda71eaa36276d2bf5815048e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000424"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833775"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Architektura Micro-splního centra
 
@@ -22,11 +22,11 @@ ms.locfileid: "81000424"
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Sada senzorů IoT odesílajících data telemetrie na zařízení brány
-- Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
-- Průběžný export dat do požadované služby Azure za účelem manipulace
-- Data mohou být strukturovaná v požadovaném formátu a odeslána do služby úložiště.
-- Obchodní aplikace se mohou dotazovat na data a generovat přehledy, které maloobchodní operace spotřeby
+1. Sada senzorů IoT odesílajících data telemetrie na zařízení brány
+2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
+3. Průběžný export dat do požadované služby Azure za účelem manipulace
+4. Data mohou být strukturovaná v požadovaném formátu a odeslána do služby úložiště.
+5. Obchodní aplikace se mohou dotazovat na data a generovat přehledy, které maloobchodní operace spotřeby
  
 Pojďme se podívat na klíčové komponenty, které obvykle hrají součást v rámci řešení pro doplňování v centru.
 

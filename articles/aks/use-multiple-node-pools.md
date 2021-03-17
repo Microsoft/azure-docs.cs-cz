@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563173"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218481"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -130,9 +130,11 @@ Zatížení může vyžadovat rozdělení uzlů clusteru do samostatných fondů
 #### <a name="limitations"></a>Omezení
 
 * Všechny podsítě přiřazené k nodepools musí patřit do stejné virtuální sítě.
-* Systémové lusky musí mít přístup ke všem uzlům v clusteru, aby poskytovaly důležité funkce, jako je například překlad DNS prostřednictvím coreDNS.
-* Přiřazení jedinečné podsítě na jeden fond uzlů je ve verzi Preview omezené na Azure CNI.
-* Použití zásad sítě s jedinečnou podsítí na jeden fond uzlů není ve verzi Preview podporováno.
+* Systémové lusky musí mít přístup ke všem uzlům a luskům v clusteru, aby poskytovaly důležité funkce, jako je například rozlišení DNS a tunelování kubectl log/exec/reported proxy.
+* Pokud po vytvoření clusteru rozšíříte virtuální síť, musíte aktualizovat svůj cluster (provádět všechny spravované operace clster, ale operace fondu uzlů se nepočítají) před přidáním podsítě mimo původní CIDR. AKS se v tomto fondu agentů zobrazí chyba, přestože jsme ho původně povolili. Pokud si nejste jisti, jak sjednotit soubor clusteru a lístek podpory. 
+* Zásady sítě Calico se nepodporují. 
+* Zásady sítě Azure se nepodporují.
+* Kube-proxy očekává jeden souvislý CIDR a použije ho pro tři optmizations. Zobrazit tento [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) a--cluster-CIDR [sem zobrazíte](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) podrobnosti. V Azure CNI se vaše podsíť prvního fondu uzlů dostane k Kube-proxy. 
 
 Pokud chcete vytvořit fond uzlů s vyhrazenou podsítí, předejte ID prostředku podsítě jako další parametr při vytváření fondu uzlů.
 
@@ -148,7 +150,7 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
 
 > [!NOTE]
-> Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
+> Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](./troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade).
 
 Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů. Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
@@ -214,7 +216,7 @@ V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v cl
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade řídicí plochy clusteru s více fondy uzlů
 
 > [!NOTE]
-> Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny a počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku.
+> Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6* je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny a počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku.
 
 Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes.
 
@@ -351,11 +353,11 @@ Odstranění uzlů a fondu uzlů trvá několik minut.
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>Určení velikosti virtuálního počítače pro fond uzlů
 
-V předchozích příkladech vytvoření fondu uzlů se pro uzly vytvořené v clusteru použila výchozí velikost virtuálního počítače. Častější scénář je vytvořit fondy uzlů s různými velikostmi a možnostmi virtuálních počítačů. Můžete například vytvořit fond uzlů, který obsahuje uzly s velkými objemy procesoru nebo paměti, nebo fond uzlů, který poskytuje podporu GPU. V dalším kroku použijete k informování plánovače Kubernetes, jak omezit přístup k luskům, které se na těchto uzlech můžou spouštět, [pomocí chuti a tolerování](#schedule-pods-using-taints-and-tolerations) .
+V předchozích příkladech vytvoření fondu uzlů se pro uzly vytvořené v clusteru použila výchozí velikost virtuálního počítače. Častější scénář je vytvořit fondy uzlů s různými velikostmi a možnostmi virtuálních počítačů. Můžete například vytvořit fond uzlů, který obsahuje uzly s velkými objemy procesoru nebo paměti, nebo fond uzlů, který poskytuje podporu GPU. V dalším kroku použijete k informování plánovače Kubernetes, jak omezit přístup k luskům, které se na těchto uzlech můžou spouštět, [pomocí chuti a tolerování](#setting-nodepool-taints) .
 
 V následujícím příkladu vytvořte fond uzlů založený na GPU, který používá velikost virtuálního počítače *Standard_NC6* . Tyto virtuální počítače jsou napájené kartou NVIDIA Tesla K80. Informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače se systémem Linux v Azure][vm-sizes].
 
-Vytvořte fond uzlů pomocí příkazu [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tentokrát zadejte název *gpunodepool*a `--node-vm-size` parametr použijte k určení velikosti *Standard_NC6* :
+Vytvořte fond uzlů pomocí příkazu [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tentokrát zadejte název *gpunodepool* a `--node-vm-size` parametr použijte k určení velikosti *Standard_NC6* :
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -404,89 +406,6 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Úspěšné vytvoření *gpunodepool* trvá několik minut.
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>Naplánování lusků pomocí chuti a tolerovánosti
-
-Nyní máte v clusteru dva fondy uzlů – výchozí fond uzlů byl původně vytvořen a fond uzlů na bázi GPU. K zobrazení uzlů v clusteru použijte příkaz [kubectl Get Nodes][kubectl-get] . Následující příklad výstupu ukazuje uzly:
-
-```console
-kubectl get nodes
-```
-
-```output
-NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
-```
-
-Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je možné spouštět na uzlech.
-
-* Pro uzel, který indikuje, že je možné naplánovat pouze určité lusky, se použije značka **chuti** .
-* **Tolerování** se pak použije na uzel pod, který umožňuje *tolerovat* chuti v uzlu.
-
-Další informace o použití pokročilých Kubernetes naplánovaných funkcí najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations] .
-
-V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu--Node-chutis hodnotu chuti. Z výstupu předchozího příkazu zadejte název uzlu založeného na GPU `kubectl get nodes` . Hodnota chuti se aplikuje jako dvojice *klíč = hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost *neplánovat* :
-
-```console
-az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
-```
-
-Následující základní příklad YAML manifestu používá tolerovat, aby mohl Plánovač Kubernetes spustit NGINX pod uzlem založeným na GPU. Pro přesnější, ale časově náročný příklad spuštění úlohy Tensorflow s datovou sadou MNIST ručně zapsaných najdete informace v tématu [použití GPU pro úlohy náročné na výpočetní výkon v AKS][gpu-cluster].
-
-Vytvořte soubor s názvem `gpu-toleration.yaml` a zkopírujte ho do následujícího příkladu YAML:
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: mypod
-spec:
-  containers:
-  - image: nginx:1.15.9
-    name: mypod
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 1
-        memory: 2G
-  tolerations:
-  - key: "sku"
-    operator: "Equal"
-    value: "gpu"
-    effect: "NoSchedule"
-```
-
-Naplánujte pod pomocí `kubectl apply -f gpu-toleration.yaml` příkazu:
-
-```console
-kubectl apply -f gpu-toleration.yaml
-```
-
-Naplánování seznamu pod a vyžádání image NGINX trvá několik sekund. Chcete-li zobrazit stav pod, použijte příkaz [kubectl popsat pod][kubectl-describe] . Následující zhuštěný příklad výstupu ukazuje, že se používá nedovolená *položka SKU = GPU:-Schedule* . V části s událostmi plánovači přiřadil uzel pod k uzlu založenému na procesoru *AKS-gpunodepool-28993262-vmss000000* :
-
-```console
-kubectl describe pod mypod
-```
-
-```output
-[...]
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-                 sku=gpu:NoSchedule
-Events:
-  Type    Reason     Age    From                                          Message
-  ----    ------     ----   ----                                          -------
-  Normal  Scheduled  4m48s  default-scheduler                             Successfully assigned default/mypod to aks-gpunodepool-28993262-vmss000000
-  Normal  Pulling    4m47s  kubelet, aks-gpunodepool-28993262-vmss000000  pulling image "nginx:1.15.9"
-  Normal  Pulled     4m43s  kubelet, aks-gpunodepool-28993262-vmss000000  Successfully pulled image "nginx:1.15.9"
-  Normal  Created    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Created container
-  Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
-```
-
-V uzlech v *gpunodepool*se dají naplánovat jenom lusky, které mají tuto tolerovánost nastavenou. Jakékoli jiné pod by se naplánovaly ve fondu uzlů *nodepool1* . Pokud vytvoříte další fondy uzlů, můžete použít další příchuti a tolerování k omezení, které z nich je možné naplánovat na tyto prostředky uzlu.
-
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Určení značky, značky nebo značky pro fond uzlů
 
 ### <a name="setting-nodepool-taints"></a>Nastavení nodepool chuti
@@ -532,7 +451,68 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Informace o chuti jsou viditelné v Kubernetes pro zpracování pravidel plánování pro uzly.
+Informace o chuti jsou viditelné v Kubernetes pro zpracování pravidel plánování pro uzly. Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je možné spouštět na uzlech.
+
+* Pro uzel, který indikuje, že je možné naplánovat pouze určité lusky, se použije značka **chuti** .
+* **Tolerování** se pak použije na uzel pod, který umožňuje *tolerovat* chuti v uzlu.
+
+Další informace o použití pokročilých Kubernetes naplánovaných funkcí najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations] .
+
+V předchozím kroku jste při vytváření fondu uzlů použili nepoužitou položku pro *SKU = GPU: a naplánujte* . Následující základní příklad YAML manifestu používá tolerovat k tomu, aby mohl Plánovač Kubernetes spustit NGINX pod na uzlu v tomto fondu uzlů.
+
+Vytvořte soubor s názvem `nginx-toleration.yaml` a zkopírujte ho do následujícího příkladu YAML:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 1
+        memory: 2G
+  tolerations:
+  - key: "sku"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"
+```
+
+Naplánujte pod pomocí `kubectl apply -f nginx-toleration.yaml` příkazu:
+
+```console
+kubectl apply -f nginx-toleration.yaml
+```
+
+Naplánování seznamu pod a vyžádání image NGINX trvá několik sekund. Chcete-li zobrazit stav pod, použijte příkaz [kubectl popsat pod][kubectl-describe] . Následující zhuštěný příklad výstupu ukazuje, že se používá nedovolená *položka SKU = GPU:-Schedule* . V části s událostmi přiřadil Scheduler do uzlu *AKS-taintnp-28993262-vmss000000* :
+
+```console
+kubectl describe pod mypod
+```
+
+```output
+[...]
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+                 sku=gpu:NoSchedule
+Events:
+  Type    Reason     Age    From                Message
+  ----    ------     ----   ----                -------
+  Normal  Scheduled  4m48s  default-scheduler   Successfully assigned default/mypod to aks-taintnp-28993262-vmss000000
+  Normal  Pulling    4m47s  kubelet             pulling image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Pulled     4m43s  kubelet             Successfully pulled image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Created    4m40s  kubelet             Created container
+  Normal  Started    4m40s  kubelet             Started container
+```
+
+V uzlech v *taintnp* se dají naplánovat jenom lusky, které mají tuto tolerovánost nastavenou. Jakékoli jiné pod by se naplánovaly ve fondu uzlů *nodepool1* . Pokud vytvoříte další fondy uzlů, můžete použít další příchuti a tolerování k omezení, které z nich je možné naplánovat na tyto prostředky uzlu.
 
 ### <a name="setting-nodepool-labels"></a>Nastavení popisků nodepool
 
@@ -599,7 +579,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Parametr můžete použít také `--tags` při použití příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] a při vytváření clusteru. Při vytváření clusteru `--tags` použije parametr značku na počáteční fond uzlů vytvořený s clusterem. Všechny názvy značek musí vyhovovat omezením v [použití značek k uspořádání prostředků Azure][tag-limitation]. Aktualizace fondu uzlů s `--tags` parametrem aktualizuje všechny existující hodnoty značek a připojí všechny nové značky. Například pokud váš fond uzlů měl *oddělení = IT* a *CostCenter = 9999* pro značky a Vy jste ho aktualizovali pomocí *Team = dev* a *CostCenter = 111* for Tags, budete nodepool mít *oddělení = IT*, *CostCenter = 111*a *Team = dev* for Tags.
+> Parametr můžete použít také `--tags` při použití příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] a při vytváření clusteru. Při vytváření clusteru `--tags` použije parametr značku na počáteční fond uzlů vytvořený s clusterem. Všechny názvy značek musí vyhovovat omezením v [použití značek k uspořádání prostředků Azure][tag-limitation]. Aktualizace fondu uzlů s `--tags` parametrem aktualizuje všechny existující hodnoty značek a připojí všechny nové značky. Například pokud váš fond uzlů měl *oddělení = IT* a *CostCenter = 9999* pro značky a Vy jste ho aktualizovali pomocí *Team = dev* a *CostCenter = 111* for Tags, budete nodepool mít *oddělení = IT*, *CostCenter = 111* a *Team = dev* for Tags.
 
 Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *tagnodepool* *vytváří* uzly se zadanou *značkou*:
 
@@ -707,10 +687,10 @@ Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat ne
 }
 ```
 
-Tuto šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] , jak je znázorněno v následujícím příkladu. Zobrazí se výzva k zadání názvu a umístění pro existující cluster AKS:
+Tuto šablonu nasaďte pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] , jak je znázorněno v následujícím příkladu. Zobrazí se výzva k zadání názvu a umístění pro existující cluster AKS:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
@@ -798,7 +778,7 @@ az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto článku jste vytvořili cluster AKS, který obsahuje uzly založené na GPU. Pokud chcete snížit zbytečné náklady, můžete odstranit *gpunodepool*nebo celý cluster AKS.
+V tomto článku jste vytvořili cluster AKS, který obsahuje uzly založené na GPU. Pokud chcete snížit zbytečné náklady, můžete odstranit *gpunodepool* nebo celý cluster AKS.
 
 Pokud chcete odstranit fond uzlů na bázi GPU, použijte příkaz [AZ AKS nodepool Delete][az-aks-nodepool-delete] , jak je znázorněno v následujícím příkladu:
 
@@ -840,18 +820,18 @@ Používejte [skupiny umístění pro Proximity][reduce-latency-ppg] , abyste sn
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -864,5 +844,5 @@ Používejte [skupiny umístění pro Proximity][reduce-latency-ppg] , abyste sn
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
 [reduce-latency-ppg]: reduce-latency-ppg.md

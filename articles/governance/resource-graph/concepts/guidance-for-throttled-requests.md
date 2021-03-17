@@ -1,14 +1,15 @@
 ---
 title: Pokyny pro omezované požadavky
 description: Naučte se paralelně seskupovat, rozložit, stránkování a dotazovat, abyste se vyhnuli požadavkům, které Azure Resource Graph omezuje.
-ms.date: 08/03/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541834"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917703"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -27,8 +28,8 @@ Graf prostředků Azure přiděluje číslo kvóty pro každého uživatele na z
 
 V každé odpovědi na dotaz přidává Azure Resource Graph dvě hlavičky omezení:
 
-- `x-ms-user-quota-remaining`(int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
-- `x-ms-user-quota-resets-after`(hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
+- `x-ms-user-quota-remaining` (int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
+- `x-ms-user-quota-resets-after` (hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
 
 Pokud má objekt zabezpečení přístup k více než 5000 předplatným v rámci [oboru dotazu](./query-language.md#query-scope)skupiny pro správu nebo tenanta, je odpověď omezena na prvních 5000 předplatných a `x-ms-tenant-subscription-limit-hit` vrátí se záhlaví `true` jako.
 
@@ -117,7 +118,7 @@ Seskupování dotazů podle předplatného, skupiny prostředků nebo jednotliv�
 
 ## <a name="staggering-queries"></a>Rozložení dotazů
 
-Kvůli způsobu, jakým se vynutilo omezování, doporučujeme dotazy, které se mají rozložit. To znamená, že místo odesílání dotazů 60 se budou tyto dotazy rozložit na čtyři 5 – sekundová okna:
+Kvůli způsobu, jakým se vynutilo omezování, doporučujeme dotazy, které se mají rozložit. To znamená, že místo odesílání dotazů 60 se budou tyto dotazy rozložit na 4 5 – sekundová okna:
 
 - Plán dotazu bez rovnoměrného rozřazení
 
@@ -131,7 +132,7 @@ Kvůli způsobu, jakým se vynutilo omezování, doporučujeme dotazy, které se
   |---------------------|-----|------|-------|-------|
   | Časový interval (sekundy) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Níže je uveden příklad respektování hlaviček omezení při dotazování na graf prostředků Azure:
+Tady je příklad respektování hlaviček omezení při dotazování na graf prostředků Azure:
 
 ```csharp
 while (/* Need to query more? */)
@@ -155,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralelní dotazování
 
-I když se seskupování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno seskupit. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Níže je uveden příklad, jak _omezení rychlosti_ na základě hlaviček omezení v takových scénářích:
+I když se seskupování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno seskupit. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Tady je příklad toho, jak se _omezení rychlosti_ na základě hlaviček omezování v takových scénářích:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -218,7 +219,7 @@ Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v je
 
 - Azure CLI/Azure PowerShell
 
-  Při použití rozhraní příkazového řádku Azure CLI nebo Azure PowerShell jsou dotazy do Azure Resource graphu automaticky zastránkováním, aby se načetly maximálně 5000 položek. Výsledky dotazu vrátí kombinovaný seznam záznamů ze všech stránkovaných volání. V takovém případě může jeden stránkovaný dotaz využívat více než jednu kvótu dotazu v závislosti na počtu položek ve výsledku dotazu. Například v příkladu níže může jedno spuštění dotazu spotřebovat až pět kvót dotazu:
+  Při použití rozhraní příkazového řádku Azure CLI nebo Azure PowerShell jsou dotazy do Azure Resource graphu automaticky zastránkováním, aby se načetly maximálně 5000 položek. Výsledky dotazu vrátí kombinovaný seznam záznamů ze všech stránkovaných volání. V takovém případě může jeden stránkovaný dotaz využívat více než jednu kvótu dotazu v závislosti na počtu položek ve výsledku dotazu. Například v následujících příkladech může jeden běh dotazu spotřebovat až pět kvót dotazu:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
@@ -232,7 +233,7 @@ Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v je
 
 Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na adrese [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
-Zadejte tyto podrobnosti:
+Uveďte následující podrobnosti:
 
 - Vaše specifické požadavky na použití a obchodní ovladače se vyžadují pro vyšší limit omezení.
 - K kolika prostředkům máte přístup? Kolik z je vráceno jedním dotazem?

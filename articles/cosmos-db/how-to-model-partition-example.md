@@ -3,29 +3,33 @@ title: Model a rozdělení dat na Azure Cosmos DB s příkladem reálného svět
 description: Naučte se modelovat a dělit příklad reálného světa pomocí rozhraní Azure Cosmos DB Core API.
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d5809d7475759450a513153abf641f7943163d98
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422211"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185814"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek se sestavuje na několika Azure Cosmos DB konceptech, jako jsou [modelování dat](modeling-data.md), [vytváření oddílů](partitioning-overview.md)a [zajištěná propustnost](request-units.md) , která ukazují, jak se vypořádat s návrhem dat reálného světa.
 
 Pokud obvykle pracujete s relačními databázemi, pravděpodobně jste vytvořili zvyky a intuitionsi, jak navrhnout datový model. Vzhledem k konkrétním omezením, ale i k jedinečným síluem Azure Cosmos DB se většina těchto osvědčených postupů neprojeví dobře a může vás přetáhnout do podoptimálních řešení. Cílem tohoto článku je projít si kompletní proces modelování reálného případu použití na Azure Cosmos DB, z modelování položek až po společné umístění entit a vytváření oddílů kontejnerů.
+
+[Stáhněte si nebo zobrazte zdrojový kód generovaný komunitou](https://github.com/jwidmer/AzureCosmosDbBlogExample) , který ilustruje koncepty z tohoto článku. Tento vzorový kód přispěl Přispěvatel komunity a Azure Cosmos DB tým nepodporuje jeho údržbu.
 
 ## <a name="the-scenario"></a>Scénář
 
 Pro toto cvičení bereme v úvahu doménu blogovací platformy, kde můžou *Uživatelé* vytvářet *příspěvky*. Uživatelé můžou také *jako* příspěvky přidávat *Komentáře* .
 
 > [!TIP]
-> Některá slova byla v *kurzívě*zvýrazněna. Tato slova identifikují druh "věcí" Náš model bude muset manipulovat.
+> Některá slova byla v *kurzívě* zvýrazněna. Tato slova identifikují druh "věcí" Náš model bude muset manipulovat.
 
 Přidání dalších požadavků do naší specifikace:
 
@@ -56,7 +60,7 @@ Tady je seznam požadavků, které bude tato platforma muset vystavit:
 
 V této fázi jsme si nemysleli, jaké informace o tom, co jednotlivé entity (uživatelé, příspěvky atd.) budou obsahovat. Tento krok je obvykle mezi prvními, aby se provedl při navrhování na relačním úložišti, protože je nutné zjistit, jak budou tyto entity překládat z hlediska tabulek, sloupců, cizích klíčů atd. Je mnohem méně obav s databází dokumentů, která neuplatňuje žádné schéma při zápisu.
 
-Hlavním důvodem, proč je důležité identifikovat naše vzory přístupu od začátku, je to, že tento seznam žádostí bude naší sadou testů. Pokaždé, když procházíme přes náš datový model, projdeme jednotlivé požadavky a zkontrolujeme výkon a škálovatelnost.
+Hlavním důvodem, proč je důležité identifikovat naše vzory přístupu od začátku, je to, že tento seznam žádostí bude naší sadou testů. Pokaždé, když procházíme přes náš datový model, projdeme jednotlivé požadavky a zkontrolujeme výkon a škálovatelnost. Vyhodnotí se jednotky žádostí spotřebované v jednotlivých modelech a optimalizuje se. Všechny tyto modely používají výchozí zásady indexování a můžete je přepsat nastavením specifických vlastností, což může dále zlepšit spotřebu RU a latenci.
 
 ## <a name="v1-a-first-version"></a>V1: první verze
 
@@ -323,11 +327,11 @@ function createComment(postId, comment) {
 Tato uložená procedura vezme ID příspěvku a tělo nového komentáře jako parametry a pak:
 
 - Načte příspěvek.
-- zvýší`commentCount`
+- zvýší `commentCount`
 - nahradí příspěvek.
 - Přidá nový komentář.
 
-Vzhledem k tomu, že uložené procedury jsou spouštěny jako atomické transakce, je zaručeno, že hodnota `commentCount` a skutečný počet komentářů zůstane trvale synchronizovaný.
+Protože uložené procedury jsou spouštěny jako atomické transakce, hodnota `commentCount` a skutečný počet komentářů bude vždy zůstat synchronizován.
 
 Zjevně můžeme zavolat podobnou uloženou proceduru, když přidáváme nové, podobně jako k zvýšení `likeCount` .
 
@@ -365,7 +369,7 @@ Tato uložená procedura vezme ID uživatele a nového uživatelského jména u�
 
 - Načte všechny položky, které odpovídají `userId` (které mohou být příspěvky, komentáře nebo podobné položky).
 - pro každou z těchto položek
-  - nahrazuje`userUsername`
+  - nahrazuje `userUsername`
   - nahradí položku.
 
 > [!IMPORTANT]
@@ -411,15 +415,15 @@ V našich celkových vylepšeních výkonu stále existují dvě požadavky, kte
 
 Tato žádost už přináší výhody vylepšení zavedených ve verzi v2, která vyprázdní další dotazy.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Načítání všech příspěvků pro uživatele" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Diagram, který zobrazuje dotaz na výpis příspěvků uživatele v krátké formě." border="false":::
 
 Ale zbývající dotaz se stále nefiltruje na klíč oddílu `posts` kontejneru.
 
 Způsob, jak si představit tuto situaci, je ve skutečnosti jednoduchá:
 
 1. Tento požadavek *musí* vyfiltrovat, `userId` protože chceme načíst všechny příspěvky pro konkrétního uživatele.
-1. Nefunguje dobře, protože se provádí na `posts` kontejneru, který není rozdělený na oddíly`userId`
-1. V takovém případě by byl problém s výkonem vyřešen provedením tohoto požadavku na kontejneru, který *je* rozdělen do oddílů.`userId`
+1. Nefunguje dobře, protože se provádí na `posts` kontejneru, který není rozdělený na oddíly `userId`
+1. V takovém případě by byl problém s výkonem vyřešen provedením tohoto požadavku na kontejneru, který *je* rozdělen do oddílů. `userId`
 1. Tím se zapíná, že tento kontejner již máme `users` .
 
 Proto zavádíme druhou úroveň denormalizace tím, že duplikujete celé příspěvky do `users` kontejneru. Díky tomu máme efektivně kopii našich příspěvků, které jsou rozdělené jenom na oddíly v různých dimenzích. díky tomu je jejich využívání efektivnější `userId` .
@@ -469,7 +473,7 @@ Nyní můžeme směrovat dotaz do `users` kontejneru a filtrovat klíč oddílu 
 
 Budeme se muset vypořádat s podobným případem: i po tom, co povede k odstranění dalších dotazů, které byly nepotřebné denormalizací představené v v2, zbývající dotaz nefiltruje na klíč oddílu kontejneru:
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Načítají se nejnovější příspěvky." border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Diagram znázorňující dotaz, ve kterém jsou uvedeny poslední příspěvky vytvořené v krátké formě." border="false":::
 
 Po stejném přístupu vyžaduje maximalizaci výkonu a škálovatelnosti této žádosti, aby se narazí jenom na jeden oddíl. To je možné, protože potřebujeme vracet jenom omezený počet položek; abychom mohli naplnit domovskou stránku vaší domovské platformy, stačí získat nejnovější příspěvky 100, aniž byste museli stránkovat celou datovou sadu.
 
@@ -586,6 +590,6 @@ Kanál změn, který používáme k distribuci aktualizací do jiných kontejner
 
 Po tomto úvodu do modelování praktických a segmentace dat můžete v následujících článcích zkontrolovat koncepty, které jsme pokryli:
 
-- [Práce s databázemi, kontejnery a položkami](databases-containers-items.md)
+- [Práce s databázemi, kontejnery a položkami](account-databases-containers-items.md)
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 - [Změnit informační kanál v Azure Cosmos DB](change-feed.md)

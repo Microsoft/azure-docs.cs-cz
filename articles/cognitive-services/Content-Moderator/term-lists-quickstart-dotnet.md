@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: a9c64d1a5c4c7ada666b5fe3a8bcc70b39871850
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545620"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900913"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Kontrolovat text proti vlastnímu seznamu termínů v jazyce C #
 
@@ -32,7 +33,7 @@ Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít
 - Úprava informací o seznamu
 - Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
@@ -40,9 +41,9 @@ Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API ne
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
-1. Pojmenujte projekt **TermLists**. Projekt vyberte jako jeden spouštěný projekt řešení.
+1. Pojmenujte projekt **TermLists** . Projekt vyberte jako jeden spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -133,10 +134,10 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>Vytvoření seznamu výrazů
 
-Vytvoříte seznam výrazů s **ContentModeratorClient.ListManagementTermLists.Create**. První parametr pro **Create** (Vytvořit) je řetězec, který obsahuje typ MIME, který by měl být "application/json". Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Druhý parametr je objekt **Body** (Tělo), který obsahuje název a popis nového seznamu výrazů.
+Vytvoříte seznam výrazů s **ContentModeratorClient.ListManagementTermLists.Create** . První parametr pro **Create** (Vytvořit) je řetězec, který obsahuje typ MIME, který by měl být "application/json". Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Druhý parametr je objekt **Body** (Tělo), který obsahuje název a popis nového seznamu výrazů.
 
 > [!NOTE]
-> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
+> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů** .
 
 Přidejte následující definici metody do oboru názvů TermLists, třída Program.
 
@@ -171,7 +172,7 @@ static string CreateTermList (ContentModeratorClient client)
 
 ## <a name="update-term-list-name-and-description"></a>Aktualizace názvu a popisu seznamu výrazů
 
-Informace o seznamu výrazů aktualizujete pomocí **ContentModeratorClient.ListManagementTermLists.Update**. První parametr pro **Update** (Aktualizace) je ID seznamu výrazů. Druhý parametr je typ MIME, který by měl být "application/json". Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Třetí parametr je objekt **Body**, který obsahuje nový název a popis.
+Informace o seznamu výrazů aktualizujete pomocí **ContentModeratorClient.ListManagementTermLists.Update** . První parametr pro **Update** (Aktualizace) je ID seznamu výrazů. Druhý parametr je typ MIME, který by měl být "application/json". Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Třetí parametr je objekt **Body** , který obsahuje nový název a popis.
 
 Přidejte následující definici metody do oboru názvů TermLists, třída Program.
 
@@ -238,7 +239,7 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 
 Po provedení změn v seznamu výrazů obnovte jeho index vyhledávání, aby tyto změny byly zahrnuty při příštím použití seznamu termínů k prohledání textu. Je to podobné, jako když vyhledávací modul na počítači (pokud je povolený) nebo vyhledávací web průběžně aktualizuje svůj index, aby obsahoval nové soubory nebo stránky.
 
-Index vyhledávání seznamu termínů aktualizujete pomocí **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
+Index vyhledávání seznamu termínů aktualizujete pomocí **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod** .
 
 Přidejte následující definici metody do oboru názvů TermLists, třída Program.
 
@@ -258,18 +259,18 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 
 ## <a name="screen-text-using-a-term-list"></a>Prohledávání textu pomocí seznamu výrazů
 
-Text prohledáte s použitím seznamu výrazů pomocí **ContentModeratorClient.TextModeration.ScreenText**, který se dá použít s následujícími parametry.
+Text prohledáte s použitím seznamu výrazů pomocí **ContentModeratorClient.TextModeration.ScreenText** , který se dá použít s následujícími parametry.
 
 - Jazyk výrazů v seznamu termínů.
 - Typ MIME, což může být "text/html", "text/xml", "text/markdown" nebo "text/plain"
 - Text, který se má prohledat
-- Logická hodnota. Nastavte toto pole na **true**, pokud chcete, aby se v textu před jeho prohledáním provedly automatické opravy.
+- Logická hodnota. Nastavte toto pole na **true** , pokud chcete, aby se v textu před jeho prohledáním provedly automatické opravy.
 - Logická hodnota. Nastavte toto pole na **hodnotu true** , chcete-li zjistit osobní údaje v textu.
 - ID seznamu výrazů
 
 Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** vrátí objekt **Screen**, který má vlastnost **Terms**, která obsahuje všechny výrazy, které Content Moderator zjistil při prohledávání. Všimněte si, že pokud Content Moderator nezjistil žádné výrazy během prohledávání, má vlastnost **Terms** hodnotu **null**.
+**ScreenText** vrátí objekt **Screen** , který má vlastnost **Terms** , která obsahuje všechny výrazy, které Content Moderator zjistil při prohledávání. Všimněte si, že pokud Content Moderator nezjistil žádné výrazy během prohledávání, má vlastnost **Terms** hodnotu **null** .
 
 Přidejte následující definici metody do oboru názvů TermLists, třída Program.
 
@@ -295,7 +296,7 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
             Console.WriteLine(String.Format("Found term: \"{0}\" from list ID {1} at index {2}.", term.Term, term.ListId, term.Index));
         }
     }
-    read.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 }
 ```
 
@@ -303,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 Odstranění výrazu nebo seznamu je jednoduché. Použijete sadu SDK k provádění následujících úloh:
 
-- Odstranění výrazu. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- Odstranění všech výrazů v seznamu bez odstranění seznamu. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Odstranění seznamu a veškerého jeho obsahu. (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- Odstranění výrazu. ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
+- Odstranění všech výrazů v seznamu bez odstranění seznamu. ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
+- Odstranění seznamu a veškerého jeho obsahu. ( **ContentModeratorClient.ListManagementTermLists.Delete** )
 
 ### <a name="delete-a-term"></a>Odstranění výrazu
 
@@ -364,7 +365,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>Vytvoření metody Main
 
-Přidejte definici **Main** metody do oboru názvů **TermLists**, **program**třídy. Nakonec zavřete třídu **program** a obor názvů **TermLists** .
+Přidejte definici **Main** metody do oboru názvů **TermLists** , **program** třídy. Nakonec zavřete třídu **program** a obor názvů **TermLists** .
 
 ```csharp
 static void Main(string[] args)

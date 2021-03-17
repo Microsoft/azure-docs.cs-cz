@@ -1,17 +1,17 @@
 ---
 title: Kódy externích chyb – Azure Stream Analytics
 description: Řešení potíží s Azure Stream Analytics problémy s externími kódy chyb.
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f963f4c3538146b7f9929960092a18294659be5d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f55a715b11b126ea340e665e008d7245e578190
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045242"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016384"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics kódů externích chyb
 
@@ -85,11 +85,11 @@ Protokoly aktivit a protokoly prostředků můžete použít k ladění neoček�
 
 ## <a name="sqldwoutputinitializationerror"></a>SQLDWOutputInitializationError
 
-* **Příčina**: při inicializaci výstupu fondu synapse SQL došlo k chybě.
+* **Příčina**: při inicializaci vyhrazeného výstupu fondu SQL došlo k chybě.
 
 ## <a name="sqldwoutputwriteerror"></a>SQLDWOutputWriteError
 
-* **Příčina**: při zápisu výstupu do synapse fondu SQL došlo k chybě.
+* **Příčina**: při zápisu výstupu do vyhrazeného fondu SQL došlo k chybě.
 
 ## <a name="next-steps"></a>Další kroky
 

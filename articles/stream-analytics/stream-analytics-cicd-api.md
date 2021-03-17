@@ -1,18 +1,17 @@
 ---
 title: Použití rozhraní REST API k provedení CI/CD pro Azure Stream Analytics na IoT Edge
 description: Naučte se implementovat kanál průběžné integrace a nasazování pro Azure Stream Analytics pomocí rozhraní REST API.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039071"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016129"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementace CI/CD pro Stream Analytics na IoT Edge pomocí rozhraní API
 
@@ -136,7 +135,7 @@ Příklad textu žádosti ve formátu JSON:
 } 
 ```
  
-Další informace najdete v [dokumentaci k rozhraní API](/rest/api/streamanalytics/stream-analytics-job).  
+Další informace najdete v [dokumentaci k rozhraní API](/rest/api/streamanalytics/).  
  
 ## <a name="publish-edge-package"></a>Publikovat hraniční balíček 
  
@@ -258,5 +257,5 @@ Po konfiguraci manifestu nasazení si přečtěte téma [nasazení Azure IoT Edg
 ## <a name="next-steps"></a>Další kroky 
  
 * [Azure Stream Analytics na hraničních zařízeních IoT](stream-analytics-edge.md)
-* [Kurz k ASA v IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Kurz k ASA v IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio](stream-analytics-tools-for-visual-studio-edge-jobs.md)

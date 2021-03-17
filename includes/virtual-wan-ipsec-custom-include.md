@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2a950037aed2a8ded4d4e55920721285cbfc05c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83f0ce27172879a37de9488499e46de30b8e112c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204555"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147392"
 ---
 Při práci s vlastními zásadami IPsec mějte na paměti následující požadavky:
 
@@ -34,3 +34,4 @@ Při práci s vlastními zásadami IPsec mějte na paměti následující požad
 | Šifrování protokolem IPsec | GCMAES256, GCMAES128, AES256, AES128, None |
 | Integrita protokolu IPsec | GCMAES256, GCMAES128, SHA256 |
 | Skupina PFS | ECP384, ECP256, PFS24, PFS14, None |
+| Životnost SA |čísla min. 300/výchozí 27000 sekund |

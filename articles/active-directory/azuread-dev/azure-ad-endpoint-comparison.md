@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116389"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055286"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft Identity Platform (v2.0)?
 
 Při vývoji nové aplikace je důležité znát rozdíly mezi koncovými body Microsoft Identity Platform (v 2.0) a Azure Active Directory (v 1.0). Tento článek popisuje hlavní rozdíly mezi koncovými body a některými stávajícími omezeními pro platformu Microsoft Identity Platform.
-
-> [!NOTE]
-> Koncový bod platformy Microsoft Identity Platform nepodporuje všechny scénáře a funkce služby Azure AD. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](#limitations).
 
 ## <a name="who-can-sign-in"></a>Kdo se může přihlásit
 
@@ -35,7 +32,7 @@ Při vývoji nové aplikace je důležité znát rozdíly mezi koncovými body M
 * Koncový bod platformy Microsoft Identity umožňuje pracovní a školní účty z Azure AD a osobních účtů Microsoft (MSA), jako je hotmail.com, outlook.com a msn.com, pro přihlášení.
 * Oba koncové body také přijímají přihlášení *[uživatelů typu Host](../external-identities/what-is-b2b.md)* v adresáři Azure AD pro aplikace nakonfigurované jako *[jeden tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* nebo pro *víceklientské* aplikace nakonfigurované tak, aby odkazovaly na koncový bod pro konkrétního klienta ( `https://login.microsoftonline.com/{TenantId_or_Name}` ).
 
-Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](/graph/api/user-list-messages?view=graph-rest-1.0), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
+Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](/graph/api/user-list-messages), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
 
 V případě koncového bodu Microsoft Identity Platform můžete k získání přístupu k podnikovému světůu pro spotřebitele, vzdělávání a Enterprise použít Microsoft Authentication Library (MSAL). Koncový bod Azure AD v 1.0 přijímá přihlášení jenom z pracovních a školních účtů.
 
@@ -61,7 +58,7 @@ Souhlas správce, který se provádí jménem organizace, pořád vyžaduje stat
 
 U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek**nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Microsoft Graph rozhraní API:
 
-* Identifikátor prostředku nebo `AppID URI` :`https://graph.microsoft.com/`
+* Identifikátor prostředku nebo `AppID URI` : `https://graph.microsoft.com/`
 * Rozsahy nebo `oAuth2Permissions` : `Directory.Read` , `Directory.Write` a tak dále.
 
 To platí pro koncový bod Microsoft Identity Platform. Aplikace se může stále chovat jako prostředek, definovat obory a identifikovat pomocí identifikátoru URI. Klientské aplikace si stále můžou vyžádat přístup k těmto oborům. Nicméně způsob, jakým klient požaduje tato oprávnění, se změnil.
@@ -114,7 +111,7 @@ Tyto obory vám umožňují nakódovat aplikaci při minimálním zpřístupněn
 U koncového bodu Microsoft Identity Platform se ve výchozím nastavení v tokenech vystaví menší sada deklarací identity, aby byly datové části malé. Pokud máte aplikace a služby, které mají závislost na konkrétní deklaraci v tokenu v 1.0, který už není ve výchozím nastavení součástí tokenu platformy Microsoft identity, zvažte použití volitelné funkce [deklarace](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) identity, která tuto deklaraci zahrnuje.
 
 > [!IMPORTANT]
-> tokeny v 1.0 a v 2.0 mohou být vydávány koncovými body v 1.0 i v 2.0. id_tokens *vždy* odpovídají koncovému bodu, ze kterého jsou požadovány, a přístupové tokeny *vždy* odpovídají formátu očekávanému webovým rozhraním API, které bude klient volat pomocí tohoto tokenu.  Takže pokud vaše aplikace používá koncový bod v 2.0 k získání tokenu pro volání Microsoft Graph, což očekává v případě přístupových tokenů ve formátu, vaše aplikace dostane token ve formátu v 1.0.  
+> tokeny v 1.0 a v 2.0 mohou být vydávány koncovými body v 1.0 i v 2.0. id_tokens *vždy* odpovídají koncovému bodu, ze kterého jsou požadovány, a přístupové tokeny *vždy* odpovídají formátu očekávanému webovým rozhraním API, které bude klient volat pomocí tohoto tokenu.  Takže pokud vaše aplikace používá koncový bod v 2.0 k získání tokenu pro volání Microsoft Graph, což očekává v případě přístupových tokenů ve formátu, vaše aplikace dostane token ve formátu v 1.0.
 
 ## <a name="limitations"></a>Omezení
 
@@ -153,18 +150,22 @@ V současné době je podpora knihoven u koncového bodu Microsoft Identity Plat
 * Pokud vytváříte desktopovou nebo mobilní aplikaci, můžete použít jednu z knihoven Microsoft Authentication Library (MSAL). Tyto knihovny jsou všeobecně dostupné nebo ve verzi Preview podporované v produkčním prostředí, takže je bezpečné je používat v produkčních aplikacích. Další informace o podmínek verze Preview a dostupných knihovnách najdete v referenčních informacích ke [knihovnám ověřování](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 * Pro platformy, které nejsou pokryté knihovnami Microsoftu, můžete integrovat s koncovým bodem platformy Microsoft identity, a to přímým odesíláním a přijímáním zpráv protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth [jsou explicitně zdokumentovány](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , aby vám usnadnily takovou integraci.
 * Nakonec můžete pomocí Open Source knihoven OpenID Connect a OAuth integrovat s koncovým bodem Microsoft Identity Platform. Koncový bod platformy Microsoft identity by měl být kompatibilní s mnoha Open-Source knihovnami protokolů beze změn. Dostupnost těchto typů knihoven se liší v závislosti na jazyku a platformě. Weby [OpenID Connect](https://openid.net/connect/) a [OAuth 2,0](https://oauth.net/2/) uchovávají seznam oblíbených implementací. Další informace najdete v tématech [Microsoft Identity Platform a Authentication](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)Librarys a seznam Open Source klientských knihoven a ukázek, které byly testovány pomocí koncového bodu Microsoft Identity Platform.
-* Pro referenci `.well-known` je koncový bod pro běžný koncový bod platformy Microsoft Identity Platform `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Nahraďte `common` ID tenanta, abyste získali data specifická pro vašeho tenanta.  
+* Pro referenci `.well-known` je koncový bod pro běžný koncový bod platformy Microsoft Identity Platform `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Nahraďte `common` ID tenanta, abyste získali data specifická pro vašeho tenanta.
 
 ### <a name="protocol-changes"></a>Změny protokolu
 
-Koncový bod Microsoft Identity Platform nepodporuje SAML ani WS-Federation; podporuje jenom OpenID Connect a OAuth 2,0.  Významné změny v protokolech OAuth 2,0 z koncového bodu verze 1.0 jsou tyto: 
+Koncový bod Microsoft Identity Platform nepodporuje SAML ani WS-Federation; podporuje jenom OpenID Connect a OAuth 2,0.  Významné změny v protokolech OAuth 2,0 z koncového bodu verze 1.0 jsou tyto:
 
-* `email`Deklarace identity se vrátí, pokud je nakonfigurovaná volitelná deklarace identity **nebo** v žádosti je zadaný rozsah = e-mail. 
-* `scope`Parametr je nyní podporován místo `resource` parametru.  
-* Mnoho odpovědí bylo upraveno tak, aby byly lépe kompatibilní se specifikací OAuth 2,0, například tak, že se správně vrátí `expires_in` jako int namísto řetězce.  
+* `email`Deklarace identity se vrátí, pokud je nakonfigurovaná volitelná deklarace identity **nebo** v žádosti je zadaný rozsah = e-mail.
+* `scope`Parametr je nyní podporován místo `resource` parametru.
+* Mnoho odpovědí bylo upraveno tak, aby byly lépe kompatibilní se specifikací OAuth 2,0, například tak, že se správně vrátí `expires_in` jako int namísto řetězce.
 
 Pro lepší pochopení rozsahu funkčnosti protokolu podporovaného koncovým bodem platformy Microsoft identity, přečtěte si [odkaz OpenID Connect and OAuth 2,0 Protocol reference](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-#### <a name="saml-restrictions"></a>Omezení SAML
+#### <a name="saml-usage"></a>Použití SAML
 
-Pokud jste v aplikacích pro Windows používali Active Directory Authentication Library (ADAL), možná jste využili výhod integrovaného ověřování Windows, které používá udělení kontrolního výrazu SAML (Security Assertion Markup Language). Díky tomuto udělení se uživatelé federovaných tenantů Azure AD můžou bez zadání přihlašovacích údajů bezodkladně ověřit s místní instancí Active Directory. Udělení kontrolního výrazu SAML není podporované na koncovém bodu Microsoft Identity Platform.
+Pokud jste v aplikacích pro Windows používali Active Directory Authentication Library (ADAL), možná jste využili výhod integrovaného ověřování Windows, které používá udělení kontrolního výrazu SAML (Security Assertion Markup Language). Díky tomuto udělení se uživatelé federovaných tenantů Azure AD můžou bez zadání přihlašovacích údajů bezodkladně ověřit s místní instancí Active Directory. I když [je SAML stále podporovaným protokolem](../develop/active-directory-saml-protocol-reference.md) pro použití s podnikovými uživateli, koncový bod v 2.0 je k dispozici pouze pro aplikace OAuth 2,0.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace najdete v [dokumentaci k platformě Microsoft Identity Platform](../develop/index.yml).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548136"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s Help Scout
 
@@ -27,7 +27,7 @@ Integrace Help Scout s Azure AD poskytuje následující výhody:
 * Můžete uživatelům povolit, aby se automaticky přihlásili k aplikaci Scout (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -83,13 +83,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. **Identifikátor** je identifikátor **URI cílové skupiny (ID entity poskytovatele služeb)** z Help Scout, začíná na `urn:`
 
@@ -100,11 +100,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -141,7 +141,7 @@ Cílem této části je vytvořit testovacího uživatele ve Azure Portal s náz
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -149,7 +149,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **help Scout**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **help Scout**.
 
@@ -183,15 +183,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V horní nabídce klikněte na možnost **Spravovat** a v rozevírací nabídce vyberte možnost **Společnost** .
 
-    ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings1.png)
+    ![Snímek obrazovky s vybranou společností zobrazí nabídku Správa.](./media/helpscout-tutorial/settings1.png)
 
 1. V levém navigačním podokně vyberte **ověřování** .
 
-    ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings2.png)
+    ![Snímek obrazovky zobrazuje vybrané ověřování.](./media/helpscout-tutorial/settings2.png)
 
 1. Tím přejdete do části nastavení SAML a provedete následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings3.png)
+    ![Snímek obrazovky zobrazuje jednu kartu Sign-On, kde zadáte zadané informace.](./media/helpscout-tutorial/settings3.png)
 
     a. Zkopírujte hodnotu **adresy URL pro zpětný příspěvek (URL služby assertion Consumer Service)** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -199,9 +199,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přepněte na **Povolit SAML** v a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings4.png)
+    ![Snímek obrazovky ukazuje jednu kartu Sign-On, kde můžete povolit SAML a přidat další informace.](./media/helpscout-tutorial/settings4.png)
 
-    a. Do textového pole **Adresa URL jednotného přihlašování** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    a. Do textového pole **URL s jedním Sign-On** vložte hodnotu **přihlašovací adresy URL**, kterou jste zkopírovali z Azure Portal.
 
     b. Kliknutím na **nahrát certifikát** nahrajte **certifikát (Base64)** stažený z Azure Portal.
 
@@ -219,14 +219,14 @@ V této části se v nápovědě Scout vytvoří uživatel s názvem B. Simon. H
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Help Scout na přístupovém panelu byste se měli automaticky přihlášeni k nápovědě Scout, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Help Scout na přístupovém panelu byste se měli automaticky přihlášeni k nápovědě Scout, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Help Scout s Azure AD](https://aad.portal.azure.com/)

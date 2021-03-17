@@ -10,43 +10,48 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 73b25ce1093ce697aa0937161d2af49526c231b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310576"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352350"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vlastní vyhledávání Bingu
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Rozhraní API pro vlastní vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem.
 
-I když je to volitelné, požadavek by měl specifikovat parametr dotazu [MKT](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) , který identifikuje na trhu, ze kterého mají výsledky přijít. Seznam volitelných parametrů dotazu najdete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) .
+I když je to volitelné, požadavek by měl specifikovat parametr dotazu [MKT](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) , který identifikuje na trhu, ze kterého mají výsledky přijít. Seznam volitelných parametrů dotazu najdete v tématu [parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) .
 
 Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi nebo oblast, je nutné zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` záhlaví. Podporované jazyky se liší podle země nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce **trhy** .
 
-`Accept-Language`Záhlaví a `setLang` parametr dotazu se vzájemně vylučují – nespecifikují obojí. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language`Záhlaví a `setLang` parametr dotazu se vzájemně vylučují – nespecifikují obojí. Podrobnosti najdete v tématu [Accept-Language](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
 ## <a name="countriesregions"></a>Země nebo oblasti
 
 |Země|Kód|
 |-------|----|
 |Argentina|AR|
-|Australia|AU|
+|Austrálie|AU|
 |Rakousko|AT|
 |Belgie|BE|
 |Brazílie|BR|
-|Canada|CA|
+|Kanada|CA|
 |Chile|CL|
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
 |Hongkong – zvláštní administrativní oblast|HK|
-|India|IN|
+|Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
-|Japan|JP|
+|Japonsko|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
@@ -66,7 +71,7 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
-|Česká republika|USA|
+|USA|USA|
 
 
 ## <a name="markets"></a>Trhy
@@ -74,23 +79,23 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Země|Jazyk|Kód trhu|
 |-------|--------|-----------|
 |Argentina|Španělština|ES-AR|
-|Australia|Angličtina|EN-AU|
+|Austrálie|Angličtina|EN-AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Nizozemština|NL|
 |Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
-|Canada|Angličtina|en-CA|
-|Canada|Francouzština|fr – CA|
+|Kanada|Angličtina|en-CA|
+|Kanada|Francouzština|fr – CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
 |Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|
-|India|Angličtina|en-IN|
+|Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
-|Japan|Japonština|ja-JP|
+|Japonsko|Japonština|ja-JP|
 |Jižní Korea|Korejština|ko-KR|
 |Malajsie|Angličtina|EN – MY|
 |Mexiko|Španělština|ES – MX|
@@ -111,5 +116,5 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Česká republika|Angličtina|cs-CZ|
-|Česká republika|Španělština|ES – US|
+|USA|Angličtina|en-US|
+|USA|Španělština|ES – US|

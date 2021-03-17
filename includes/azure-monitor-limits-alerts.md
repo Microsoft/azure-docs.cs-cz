@@ -5,25 +5,20 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 08/11/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 332841d4ee4791cb8da1620aa292b05bbde74955
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 071f2849a877f4ea1e8a84eff6ccfb8343be3ec7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88162737"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734022"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Výstrahy metriky (klasické) |100 aktivní pravidla výstrah pro každé předplatné. | Podpora volání |
-| Upozornění metrik |5 000 aktivní pravidla upozornění na předplatné v Azure Public, Azure Čína 21Vianet a Azure Government cloudy. Pokud tento limit zasáhnete, prozkoumejte, jestli můžete použít [stejný typ výstrah s více prostředky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor).   | Zavolejte podporu. |
-| Upozornění protokolu aktivit | 100 aktivní pravidla výstrah pro každé předplatné. | Stejné jako výchozí |
+| Upozornění metrik |5 000 aktivní pravidla upozornění na předplatné v Azure Public, Azure Čína 21Vianet a Azure Government cloudy. Pokud tento limit zasáhnete, prozkoumejte, jestli můžete použít [stejný typ výstrah s více prostředky](../articles/azure-monitor/alerts/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor).<br/>5 000 metrika času – řada na pravidlo výstrahy. | Zavolejte podporu. |
+| Upozornění protokolu aktivit | 100 aktivní pravidla výstrah pro každé předplatné (nelze zvýšit). | Stejné jako výchozí |
 | Výstrahy protokolu | 512 aktivní pravidla výstrah pro každé předplatné. 200 aktivní pravidla upozornění na prostředek. | Podpora volání |
-| Skupiny akcí |skupiny akcí 2 000 pro každé předplatné | Podpora volání |
 | Pravidla upozornění a délka popisu pravidel akcí| Výstrahy prohledávání protokolu 4096 znaků<br/>Všechny ostatní znaky 2048 | Stejné jako výchozí |
-| Nastavení automatického škálování |100 na oblast na jedno předplatné. | Stejné jako výchozí |
-| Profily automatického škálování |20 profilů na nastavení automatického škálování. | Stejné jako výchozí |
-
-

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/24/2016
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779616"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360850"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Připojení s vysokou dostupností mezi jednotlivými místy a VNet-to-VNet
 Tento článek obsahuje přehled konfigurací s vysokou dostupností pro vaše propojení mezi jednotlivými místy a propojení VNet-to-VNet se službami Azure VPN Gateway.
@@ -20,7 +20,7 @@ Tento článek obsahuje přehled konfigurací s vysokou dostupností pro vaše p
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Redundance ve službě Azure VPN Gateway
 Každá Azure VPN Gateway se skládá ze dvou instancí v konfiguraci aktivní-pohotovostní. Při jakékoli plánované údržbě nebo neplánovaném přerušení, které vyřadí aktivní instanci, pohotovostní instance automaticky převezme službu (převzetí služeb při selhání) a obnoví spojení S2S VPN nebo VNet-to-VNet. Přepnutí způsobí jen velmi krátké přerušení služeb. Při plánované údržbě by se spojení mělo obnovit během 10 až 15 sekund. U neplánovaných problémů bude obnovení spojení trvat déle, v nejhorším případě minutu až minutu a půl. V případě připojení klienta P2S VPN k bráně budou spojení P2S odpojena a uživatelé se budou muset na klientských počítačích znovu připojit.
 
-![Aktivní–pohotovostní konfigurace](./media/vpn-gateway-highlyavailable/active-standby.png)
+![Diagram znázorňuje místní lokalitu s podsítěmi Private I P a místní V P N připojené k aktivní bráně Azure V P N pro připojení k podsítím hostovaným v Azure s dostupnou pohotovostní bránou.](./media/vpn-gateway-highlyavailable/active-standby.png)
 
 ## <a name="highly-available-cross-premises-connectivity"></a>Připojení s vysokou dostupností mezi jednotlivými místy
 Pro zajištění lepší dostupnosti pro připojení mezi jednotlivými místy existuje několik možnosti:
@@ -49,7 +49,7 @@ V této konfiguraci je Azure VPN Gateway stále v režimu aktivní–pohotovostn
 ### <a name="active-active-azure-vpn-gateway"></a>Azure VPN Gateway v konfiguraci aktivní-aktivní
 Nyní je možné vytvořit Azure VPN Gateway v konfiguraci aktivní–aktivní, kdy obě instance virtuálních počítačů brány udržují VPN tunely S2S se zařízeními VPN místní sítě, jak je znázorněno v následujícím diagramu:
 
-![Aktivní–aktivní](./media/vpn-gateway-highlyavailable/active-active.png)
+![Diagram znázorňuje místní lokalitu s podsítěmi Private I P a místní V P N připojené ke dvě aktivní bráně Azure V P N pro připojení k podsítím hostovaným v Azure.](./media/vpn-gateway-highlyavailable/active-active.png)
 
 V této konfiguraci bude mít každá instance brány Azure jedinečnou veřejnou IP adresu a každá vytvoří VPN tunel IPSec/IKE S2S k vašemu místnímu zařízení VPN určenému pro bránu místní sítě a pro spojení. Všimněte si, že oba tunely VPN jsou ve skutečnosti součástí stejného připojení. I nadále bude třeba konfigurovat vaše zařízení VPN v místní síti tak, aby přijímala nebo navazovala dva VPN tunely S2S s těmito dvěma veřejnými IP adresami Azure VPN Gateway.
 
@@ -71,7 +71,7 @@ Tato topologie vyžaduje dvě brány místní sítě a dvě spojení na pár mí
 ## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>Připojení s vysokou dostupností VNet-to-VNet prostřednictvím služby Azure VPN Gateway
 Stejná konfigurace aktivní–aktivní může platit i pro spojení Azure VNet-to-VNet. Můžete vytvořit brány VPN v konfigurace aktivní–aktivní pro obě virtuální sítě a jejich vzájemným propojením vytvořit stejnou úplnou síť 4 tunelů mezi oběma sítěmi VNet, jak je znázorněno na diagramu dole:
 
-![VNet-to-VNet](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![Diagram znázorňuje dvě oblasti Azure hostující soukromé podsítě I P a dvě brány Azure V P N, přes které se připojují oba virtuální lokality.](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
 Tím se zajistí, že vždy existuje dvojice tunelových spojení mezi oběma virtuálními sítěmi pro případ výpadků nebo plánované údržby a tím ještě lepší dostupnost. Ačkoli stejná topologie pro propojení dvou míst vyžaduje dvě spojení, topologie VNet-to-VNet znázorněná nahoře potřebuje jen jedno spojení na každou bránu. Kromě toho je protokol BGP volitelný, pokud není vyžadováno tranzitní směrování přes spojení VNet-to-VNet.
 

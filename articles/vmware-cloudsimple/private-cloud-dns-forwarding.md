@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware – předávání DNS z privátního cloudu do místního prostředí
 description: Popisuje, jak povolit serveru DNS privátního cloudu CloudSimple, aby bylo možné dopředné vyhledávání místních prostředků.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 02/29/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091245"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899197"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Povolit serverům DNS privátního cloudu CloudSimple přesměrování vyhledávání místních prostředků DNS na servery DNS
 

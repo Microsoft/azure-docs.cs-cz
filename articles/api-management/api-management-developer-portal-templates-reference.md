@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73176787"
 ---
 # <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře
@@ -30,7 +30,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a>Šablony portálu pro vývojáře  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> Šablony portálu pro vývojáře  
   
 -   [Rozhraní API](api-management-api-templates.md)  
     -   [Seznam rozhraní API](api-management-api-templates.md#APIList)  
@@ -52,7 +52,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
     -   [Aplikace](api-management-application-templates.md#Application)  
 -   [Problémy](api-management-issue-templates.md)  
     -   [Seznam problémů](api-management-issue-templates.md#IssueList)  
--   [Profil uživatele](api-management-user-profile-templates.md)  
+-   [Uživatelský profil](api-management-user-profile-templates.md)  
     -   [Profil](api-management-user-profile-templates.md#Profile)  
     -   [Předplatná](api-management-user-profile-templates.md#Subscriptions)  
     -   [Aplikace](api-management-user-profile-templates.md#Applications)  
@@ -66,5 +66,5 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 
 + [Referenční informace k šablonám](api-management-developer-portal-templates-reference.md)  
 + [Referenční informace k datovému modelu](api-management-template-data-model-reference.md)  
-+ [Ovládací prvky stránek](api-management-page-controls.md)  
++ [Ovládací prvky stránky](api-management-page-controls.md)  
 + [Prostředky šablon](api-management-template-resources.md)

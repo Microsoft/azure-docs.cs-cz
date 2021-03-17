@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565651"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453202"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -97,6 +97,22 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v function.jsna.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Následující příklad Java ukazuje funkci triggeru fronty úložiště, která zaznamená aktivační zprávu umístěnou do fronty `myqueuename` .
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vazbu triggeru fronty v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce dotazuje `myqueue-items` frontu a zapisuje protokol pokaždé, když je zpracována položka fronty.
@@ -142,6 +158,42 @@ module.exports = async function (context, message) {
 
 Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v function.jsna.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje, jak číst zprávu fronty předanou funkci prostřednictvím triggeru.
+
+Aktivační událost fronty úložiště je definována v *function.jsv* souboru, kde `type` je nastavena na `queueTrigger` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+Kód v souboru *Run.ps1* deklaruje parametr jako `$QueueItem` , který umožňuje čtení zprávy fronty ve funkci.
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Následující příklad ukazuje, jak číst zprávu fronty předanou funkci prostřednictvím triggeru.
@@ -163,7 +215,7 @@ Aktivační událost fronty úložiště je definována v *function.jsna* míst�
 }
 ```
 
-Kód * _ \_ init_ \_ . py* deklaruje parametr jako `func.QueueMessage` , který umožňuje čtení zprávy fronty ve funkci.
+Kód *_\_ init_ \_ . py* deklaruje parametr jako `func.QueueMessage` , který umožňuje čtení zprávy fronty ve funkci.
 
 ```python
 import logging
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Následující příklad Java ukazuje funkci triggeru fronty úložiště, která zaznamená aktivační zprávu umístěnou do fronty `myqueuename` .
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)pomocí následujíc
 
 Skripty jazyka C# nepodporují atributy.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Atributy nejsou podporovány jazykem JavaScript.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python nepodporuje atributy.
-
 # <a name="java"></a>[Java](#tab/java)
 
 `QueueTrigger`Poznámka vám poskytne přístup ke frontě, která aktivuje funkci. V následujícím příkladu je k dispozici zpráva fronty pro funkci prostřednictvím `message` parametru.
@@ -305,6 +333,18 @@ public class QueueTriggerDemo {
 |`queueName`  | Deklaruje název fronty v účtu úložiště. |
 |`connection` | Odkazuje na připojovací řetězec účtu úložiště. |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
 ---
 
 ## <a name="configuration"></a>Konfigurace
@@ -313,11 +353,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**typ** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**textový** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr**| Není k dispozici | V *function.jspouze v* souboru. Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | Není k dispozici |Název proměnné, která obsahuje datovou část položky fronty v kódu funkce.  |
 |**Proměnné QueueName** | **Proměnné QueueName**| Název fronty, která se má dotazovat. |
-|**vázán** | **Připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .|
+|**vázán** | **Připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu.<br><br>Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Pokud používáte [verzi 5. x nebo vyšší z rozšíření](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)místo připojovacího řetězce, můžete zadat odkaz na oddíl konfigurace, který definuje připojení. Viz [připojení](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -325,16 +365,28 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="c"></a>[C#](#tab/csharp)
 
+### <a name="default"></a>Výchozí
+
 Přístup k datům zprávy pomocí parametru metody, jako je například `string paramName` . Můžete vytvořit propojení s některým z následujících typů:
 
-* Object – modul runtime funkcí deserializace datovou část JSON do instance libovolné třídy definované ve vašem kódu. 
+* Object – modul runtime funkcí deserializace datovou část JSON do instance libovolné třídy definované ve vašem kódu.
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
 Pokud se pokusíte vytvořit navázání `CloudQueueMessage` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
+### <a name="additional-types"></a>Další typy
+
+Aplikace používající [5.0.0 nebo vyšší verze rozšíření úložiště](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) můžou používat taky typy ze [sady Azure SDK pro .NET](/dotnet/api/overview/azure/storage.queues-readme). Tato verze vyřazuje podporu pro starší `CloudQueueMessage` typ, a to ve prospěch následujících typů:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+Příklady použití těchto typů najdete v [úložišti GitHub pro rozšíření](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
+
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
+
+### <a name="default"></a>Výchozí
 
 Přístup k datům zprávy pomocí parametru metody, jako je například `string paramName` . `paramName`Je hodnota zadaná ve `name` vlastnosti *function.jsv*. Můžete vytvořit propojení s některým z následujících typů:
 
@@ -345,17 +397,29 @@ Přístup k datům zprávy pomocí parametru metody, jako je například `string
 
 Pokud se pokusíte vytvořit navázání `CloudQueueMessage` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
+### <a name="additional-types"></a>Další typy
+
+Aplikace používající [5.0.0 nebo vyšší verze rozšíření úložiště](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) můžou používat taky typy ze [sady Azure SDK pro .NET](/dotnet/api/overview/azure/storage.queues-readme). Tato verze vyřazuje podporu pro starší `CloudQueueMessage` typ, a to ve prospěch následujících typů:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+
+Příklady použití těchto typů najdete v [úložišti GitHub pro rozšíření](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
+
+# <a name="java"></a>[Java](#tab/java)
+
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger) anotace poskytuje přístup ke zprávě fronty, která funkci aktivovala.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Datová část položky fronty je k dispozici prostřednictvím `context.bindings.<NAME>` , kde se `<NAME>` shoduje s názvem definovaným v *function.js*. Pokud je datová část JSON, hodnota je deserializována do objektu.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Přístup ke zprávě fronty prostřednictvím řetězcového parametru, který odpovídá názvu určenému `name` parametrem vazby v *function.jsv* souboru.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python).
-
-# <a name="java"></a>[Java](#tab/java)
-
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) anotace poskytuje přístup ke zprávě fronty, která funkci aktivovala.
+Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage).
 
 ---
 
@@ -375,7 +439,7 @@ Aktivační událost fronty poskytuje několik [vlastností metadat](./functions
 
 ## <a name="poison-messages"></a>Poškozené zprávy
 
-Pokud se funkce triggeru fronty nezdařila, Azure Functions se znovu pokusí použít tuto funkci až pětkrát pro danou zprávu fronty, včetně prvního pokusu. Pokud se všechny pět pokusů nezdaří, modul runtime Functions přidá zprávu do fronty s názvem * &lt; originalqueuename>-jed*. Můžete napsat funkci pro zpracování zpráv z fronty poškození tím, že je přihlásíte nebo posíláte oznámení, že je potřeba ruční pozornost.
+Pokud se funkce triggeru fronty nezdařila, Azure Functions se znovu pokusí použít tuto funkci až pětkrát pro danou zprávu fronty, včetně prvního pokusu. Pokud se všechny pět pokusů nezdaří, modul runtime Functions přidá zprávu do fronty s názvem *&lt; originalqueuename>-jed*. Můžete napsat funkci pro zpracování zpráv z fronty poškození tím, že je přihlásíte nebo posíláte oznámení, že je potřeba ruční pozornost.
 
 Pokud chcete zpracovat poškozené zprávy ručně, podívejte se do [dequeueCount](#message-metadata) zprávy ve frontě.
 
@@ -388,7 +452,7 @@ Algoritmus používá následující logiku:
 - Když se najde zpráva, modul runtime počká dvě sekundy a pak zkontroluje další zprávu.
 - Pokud se nenajde žádná zpráva, před opakováním počkejte přibližně čtyři sekundy.
 - Po následném neúspěšném pokusu o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která je ve výchozím nastavení jedna minuta.
-- Maximální čekací dobu lze konfigurovat prostřednictvím `maxPollingInterval` vlastnosti v [host.jsv souboru](functions-host-json.md#queues).
+- Maximální čekací dobu lze konfigurovat prostřednictvím `maxPollingInterval` vlastnosti v [host.jsv souboru](functions-host-json-v1.md#queues).
 
 Pro místní vývoj je maximální interval cyklického dotazování ve výchozím nastavení na dvě sekundy.
 
@@ -404,11 +468,11 @@ Aktivační událost fronty automaticky zabrání funkci ve zpracování zprávy
 
 ## <a name="hostjson-properties"></a>host.jsvlastností
 
-[host.jsv](functions-host-json.md#queues) souboru obsahuje nastavení, která řídí chování fronty při spouštění. Podrobnosti o dostupných nastaveních najdete v části [host.jsv nastavení](functions-bindings-storage-queue-output.md#hostjson-settings) .
+[host.jsv](functions-host-json.md#queues) souboru obsahuje nastavení, která řídí chování fronty při spouštění. Podrobnosti o dostupných nastaveních najdete v části [host.jsv nastavení](functions-bindings-storage-queue.md#hostjson-settings) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zápis zpráv do fronty úložiště (výstupní vazba)](./functions-bindings-storage-blob-output.md)
+- [Zápis zpráv do fronty úložiště (výstupní vazba)](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

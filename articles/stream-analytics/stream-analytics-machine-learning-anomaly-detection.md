@@ -1,18 +1,17 @@
 ---
 title: Detekce anomálií v Azure Stream Analytics
 description: Tento článek popisuje, jak používat Azure Stream Analytics a Azure Machine Learning společně ke zjištění anomálií.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
 ms.service: stream-analytics
+author: jseb225
+ms.author: jeanb
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ec37ea6cbb1c1c6693aab1f6855948d32b85e95b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044375"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441189"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -42,7 +41,7 @@ Mezery v časové řadě můžou být výsledkem modelu, který nepřijímá ud�
 
 ## <a name="spike-and-dip"></a>Špička a DIP
 
-Dočasné anomálie v datovém proudu událostí časové řady se označují jako špičky a DIP. Špičky a DIP lze monitorovat pomocí operátoru založeného na Machine Learning [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Dočasné anomálie v datovém proudu událostí časové řady se označují jako špičky a DIP. Špičky a DIP lze monitorovat pomocí operátoru založeného na Machine Learning [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ).
 
 ![Příklad anomálií špičky a DIP](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,7 +73,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Změnit bod
 
-Trvalé anomálie v datovém proudu událostí v časové řadě jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou například změny úrovně a trendy. V Stream Analytics se tyto anomálie zjišťují pomocí operátoru [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) založeného na Machine Learning.
+Trvalé anomálie v datovém proudu událostí v časové řadě jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou například změny úrovně a trendy. V Stream Analytics se tyto anomálie zjišťují pomocí operátoru [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) založeného na Machine Learning.
 
 Trvalé změny jsou poslední mnohem delší než špičky a DIP a můžou označovat závažné události. Trvalé změny nejsou obvykle viditelné pro holé oči, ale lze je zjistit pomocí operátoru **AnomalyDetection_ChangePoint** .
 
@@ -129,9 +128,9 @@ Při dělení funkce podle deviceId přidejte "PARTITION BY deviceId" do volán�
 ### <a name="observations"></a>Výsledky
 Následující tabulka obsahuje pozorování propustnosti pro jeden uzel (6 SU) pro případ bez oddílů:
 
-| Velikost historie (události) | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu |
+| Velikost historie (události)    | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2 200 |
+| 60 | 55 | 2 200 |
 | 600 | 728 | 1 650 |
 | 6 000 | 10 910 | 1 100 |
 
@@ -159,6 +158,5 @@ Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kr
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

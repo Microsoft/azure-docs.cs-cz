@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73176021"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení
@@ -30,14 +30,14 @@ Pouze zařízení s Windows 10 s konkrétní hodnotou atributu userCertificate n
 
 Tato verze Azure AD Connect bude synchronizovat jenom zařízení s Windows 10, která jsou správně nakonfigurovaná tak, aby byla připojená k hybridní službě Azure AD. Z Azure AD se odeberou objekty zařízení s Windows 10 bez konkrétního userCertificate Azure AD JOIN.
 
-## <a name="down-level-windows-devices"></a>Zařízení s Windows na nižší úrovni
+## <a name="down-level-windows-devices"></a>Down-Level zařízení s Windows
 Azure AD Connect by nikdy neměl synchronizovat [zařízení s Windows nižší úrovně](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices). Všechna zařízení v Azure AD, která se dřív synchronizoval, se teď z Azure AD odstraní. Pokud se Azure AD Connect pokouší odstranit zařízení s [Windows na nižší úrovni](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices), nejedná se o takové zařízení, které vytvořila [Služba Microsoft Workplace JOIN pro počítače se systémem Windows 10 nebo MSI](https://www.microsoft.com/download/details.aspx?id=53554) , a nelze ji spotřebovat žádnou jinou funkcí služby Azure AD.
 
 Někteří zákazníci si možná budou muset znovu navštívit, jak naplánovat, aby se Azure Active Directory vaše zařízení s Windows [naplánovala](../devices/hybrid-azuread-join-plan.md) správně a zajistila tak, že se tato zařízení můžou plně zúčastnit podmíněného přístupu na základě zařízení. 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Jak zjistím, která zařízení se s touto aktualizací odstraňují?
 
-Pokud chcete ověřit, která zařízení se odstraňují, můžete použít tento skript PowerShellu:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+Pokud chcete ověřit, která zařízení se odstraňují, můžete použít tento skript PowerShellu: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
 Tento skript vygeneruje sestavu o certifikátech uložených v objektech počítače služby Active Directory, konkrétně certifikáty vydaných funkcí připojení k hybridní službě Azure AD.
 Kontroluje certifikáty přítomné ve vlastnosti UserCertificate objektu počítače ve službě AD a pro každý přítomný certifikát bez vypršení platnosti ověřuje, jestli se certifikát vystavil pro funkci připojení Hybrid Azure AD (tj. název subjektu odpovídá CN = {ObjectGUID}).

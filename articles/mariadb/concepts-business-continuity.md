@@ -1,17 +1,17 @@
 ---
 title: Provozní kontinuita – Azure Database for MariaDB
 description: Přečtěte si o kontinuitě podnikových služeb (obnovení v časovém bodě, výpadku datového centra, geografické obnovení) při používání služby Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6439a63b74b6f627b62741c145f763dc3d9552d3
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252262"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659848"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informace o kontinuitě podnikových aplikací v Azure Database for MariaDB
 
@@ -23,7 +23,7 @@ Azure Database for MariaDB poskytuje funkce pro provozní kontinuitu, které zah
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované pro paměť** |
+| **Funkce** | **Basic** | **Obecné použití** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
@@ -52,7 +52,7 @@ Druhou možností je použít funkci geografického obnovení Azure Database for
 
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie MariaDB binárního protokolu pro replikaci. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 ### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Kam se Azure Database for MariaDB ukládají zákaznická data?
 Ve výchozím nastavení Azure Database for MariaDB nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená. Zákazníci si ale můžou volitelně zvolit možnost povolit [geograficky redundantní zálohy](concepts-backup.md#backup-redundancy-options) nebo vytvořit [repliku pro čtení v různých oblastech](concepts-read-replicas.md#cross-region-replication) pro ukládání dat v jiné oblasti.
 

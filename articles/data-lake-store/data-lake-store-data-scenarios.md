@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193676"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702493"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat
 
@@ -48,9 +48,9 @@ To představuje data, která je možné vygenerovat různými zdroji, jako jsou 
 
 Níže jsou uvedené nástroje, které můžete použít:
 
-* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) – události ingestované do Event Hubs lze zapsat do Azure Data Lake Storage Gen1 pomocí Azure Data Lake Storage Gen1ho výstupu.
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-define-outputs.md) – události ingestované do Event Hubs lze zapsat do Azure Data Lake Storage Gen1 pomocí Azure Data Lake Storage Gen1ho výstupu.
 * [Azure HDInsight pro Azure](../hdinsight/storm/apache-storm-write-data-lake-store.md) – data můžete zapisovat přímo do data Lake Storage Gen1 z clusteru s více procesory.
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – můžete přijímat události z Event Hubs a pak je zapisovat do data Lake Storage Gen1 pomocí [sady data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md).
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) – můžete přijímat události z Event Hubs a pak je zapisovat do data Lake Storage Gen1 pomocí [sady data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ### <a name="relational-data"></a>Relační data
 Můžete také zdrojová data z relačních databází. V časovém intervalu relační databáze shromažďují velké objemy dat, které poskytují klíčové přehledy, pokud jsou zpracovávány prostřednictvím kanálu pro velké objemy dat. Pomocí následujících nástrojů můžete přesunout taková data do Data Lake Storage Gen1.
@@ -78,7 +78,7 @@ Většina typů clusterů HDInsight (Hadoop, HBA, propamì) podporuje Data Lake 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Data uložená v místních nebo IaaS clusterech Hadoop
 Velké objemy dat může být uloženo v existujících clusterech Hadoop místně na počítačích se systémem HDFS. Clustery Hadoop můžou být v místním nasazení nebo se můžou nacházet v rámci clusteru IaaS v Azure. Můžou nastat požadavky na kopírování takových dat do Azure Data Lake Storage Gen1 pro jednorázový přístup nebo pro opakovaný pokus. Existují různé možnosti, které můžete použít k dosažení tohoto. Níže je uveden seznam alternativ a Spojených kompromisů.
 
-| Přístup | Podrobnosti | Výhody | Důležité informace |
+| Přístup | Podrobnosti | Výhody | Požadavky |
 | --- | --- | --- | --- |
 | Použití Azure Data Factory (ADF) ke kopírování dat přímo z clusterů Hadoop do Azure Data Lake Storage Gen1 |[ADF podporuje HDFS jako zdroj dat.](../data-factory/connector-hdfs.md) |ADF poskytuje okamžitou podporu pro HDFS a první třídu a komplexní správu a monitorování. |Vyžaduje, aby byla Správa datá brána nasazená místně nebo v clusteru IaaS. |
 | Exportujte data ze souborů Hadoop jako soubory. Pak zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí vhodného mechanismu. |Soubory můžete zkopírovat do Azure Data Lake Storage Gen1 pomocí: <ul><li>[Azure PowerShell pro operační systém Windows](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikace pomocí libovolné Data Lake Storage Gen1 sady SDK</li></ul> |Rychlé zahájení práce Může provádět přizpůsobená nahrávání |Proces s více kroky, který zahrnuje několik technologií. Správa a monitorování se budou po určitou dobu projevit jako výzvy s ohledem na vlastní povahu nástrojů. |
@@ -88,7 +88,7 @@ Velké objemy dat může být uloženo v existujících clusterech Hadoop místn
 Pro nahrání datových sad, které jsou v rozsahu několika terabajtů, můžou použití výše popsaných metod někdy být pomalé a nákladné. V takových případech můžete použít následující možnosti.
 
 * **Pomocí Azure ExpressRoute**. Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datacentry Azure a infrastrukturou ve vašich prostorách. To poskytuje spolehlivé možnosti pro přenos velkých objemů dat. Další informace najdete v [dokumentaci ke službě Azure ExpressRoute](../expressroute/expressroute-introduction.md).
-* **"Offline" nahrávání dat**. Pokud z nějakého důvodu není možné používat Azure ExpressRoute, můžete použít [službu import/export v Azure](../storage/common/storage-import-export-service.md) k dodávání pevných disků s daty do datového centra Azure. Vaše data se napřed nahrají do Azure Storage objektů BLOB. Potom můžete pomocí nástroje [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md) kopírovat data z Azure Storage objektů blob do data Lake Storage Gen1.
+* **"Offline" nahrávání dat**. Pokud z nějakého důvodu není možné používat Azure ExpressRoute, můžete použít [službu import/export v Azure](../import-export/storage-import-export-service.md) k dodávání pevných disků s daty do datového centra Azure. Vaše data se napřed nahrají do Azure Storage objektů BLOB. Potom můžete pomocí nástroje [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md) kopírovat data z Azure Storage objektů blob do data Lake Storage Gen1.
 
   > [!NOTE]
   > Při použití služby Import/export by velikost souborů na discích, které odesíláte do datového centra Azure, neměla být větší než 195 GB.
@@ -130,5 +130,5 @@ Pomocí kombinace služeb můžete vytvářet vizuální reprezentace dat ulože
 
 ![Vizualizovat data v Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Vizualizovat data v Data Lake Storage Gen1")
 
-* [K přesunu dat z Data Lake Storage Gen1 na Azure SQL Data Warehouse](../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
-* Potom můžete [integrovat Power BI s Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) a vytvořit tak vizuální reprezentaci dat.
+* [K přesunu dat z Data Lake Storage Gen1 do Azure synapse Analytics](../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
+* Potom můžete [integrovat Power BI s Azure synapse Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) a vytvořit tak vizuální reprezentaci dat.

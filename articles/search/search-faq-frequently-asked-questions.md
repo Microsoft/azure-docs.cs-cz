@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317227"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88923088"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Kognitivní hledáníu (FAQ)
 
@@ -23,7 +23,7 @@ ms.locfileid: "85317227"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Jak se Azure Kognitivní hledání liší od fulltextového vyhledávání v mém systému DBMS?
 
-Azure Kognitivní hledání podporuje více zdrojů dat, [jazykovou analýzu pro spoustu jazyků](https://docs.microsoft.com/rest/api/searchservice/language-support), [vlastní analýzu zajímavých a neobvyklých datových vstupů](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), vyhledávání kontrolních mechanismů pomocí [profilů vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a funkce uživatelského prostředí, jako je typeahead, zvýrazňování přístupů a hodnocená navigace. Zahrnuje taky další funkce, jako jsou synonyma a bohatou syntaxi dotazů, ale tyto funkce obecně nejsou rozdílné.
+Azure Kognitivní hledání podporuje více zdrojů dat, [jazykovou analýzu pro spoustu jazyků](/rest/api/searchservice/language-support), [vlastní analýzu zajímavých a neobvyklých datových vstupů](/rest/api/searchservice/custom-analyzers-in-azure-search), vyhledávání kontrolních mechanismů pomocí [profilů vyhodnocování](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a funkce uživatelského prostředí, jako je typeahead, zvýrazňování přístupů a hodnocená navigace. Zahrnuje taky další funkce, jako jsou synonyma a bohatou syntaxi dotazů, ale tyto funkce obecně nejsou rozdílné.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Můžu pozastavit službu Azure Kognitivní hledání a zastavit vyúčtování?
 
@@ -39,7 +39,7 @@ Nebo můžete chtít zálohovat snímek indexu do souborů, které je možné po
 
 Všechny tyto akce můžete provádět pomocí ukázkového kódu **zálohování index-Restore** v tomto [úložišti ukázkových operací Azure kognitivní hledání .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples). 
 
-[Definici indexu](https://docs.microsoft.com/rest/api/searchservice/get-index) můžete také kdykoli získat pomocí REST API kognitivní hledání Azure.
+[Definici indexu](/rest/api/searchservice/get-index) můžete také kdykoli získat pomocí REST API kognitivní hledání Azure.
 
 V tuto chvíli není v Azure Portal žádná integrovaná funkce extrakce, snímku nebo obnovení indexu. Zvažujeme ale přidání funkce zálohování a obnovení v budoucí verzi. Pokud chcete zobrazit podporu pro tuto funkci, přetypování hlasu na [uživatelský hlas](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
 
@@ -53,7 +53,7 @@ Chcete-li znovu vytvořit index, je nutné znovu indexovat data z externích zdr
 
 Alternativně můžete použít vzorový kód **index-Backup-Restore** v tomto [úložišti Azure kognitivní hledání .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) k zálohování definice indexu a snímku indexu do řady souborů JSON. Později můžete v případě potřeby použít nástroj a soubory k obnovení indexu.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Je možné indexovat z SQL Database repliky (platí pro [Azure SQL Database indexery](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Je možné indexovat z SQL Database repliky (platí pro [Azure SQL Database indexery](./search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md))
 
 Při vytváření indexu od začátku neexistují žádná omezení použití primárních nebo sekundárních replik jako zdroje dat. Aktualizace indexu pomocí přírůstkových aktualizací (na základě změněných záznamů) ale vyžaduje primární repliku. Tento požadavek pochází z SQL Database, který garantuje sledování změn pouze u primárních replik. Pokud se pokusíte použít sekundární repliky pro úlohu aktualizace indexu, není vám zaručeno, abyste získali všechna data.
 
@@ -65,17 +65,17 @@ Ne, tato operace není podporována. Hledání je vždy vymezeno na jeden index.
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Můžu omezit přístup k indexu vyhledávání pomocí identity uživatele?
 
-[Filtry zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) můžete implementovat pomocí `search.in()` filtru. Filtr je dobře vytvořen pomocí [služeb správy identit, jako je například Azure Active Directory (AAD)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) , aby se výsledky hledání vyčistí podle definovaného členství ve skupině uživatelů.
+[Filtry zabezpečení](./search-security-trimming-for-azure-search.md) můžete implementovat pomocí `search.in()` filtru. Filtr je dobře vytvořen pomocí [služeb správy identit, jako je například Azure Active Directory (AAD)](./search-security-trimming-for-azure-search-with-aad.md) , aby se výsledky hledání vyčistí podle definovaného členství ve skupině uživatelů.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Proč neexistují žádné shody s podmínkami, které je třeba mít na platnosti?
 
 Nejběžnější případ není vědomí, že každý typ dotazu podporuje různá chování vyhledávání a úrovně lingvistických analýz. Fulltextové vyhledávání, které je převládající úlohou, zahrnuje fázi analýzy jazyka, která je rozdělena na kořenové formuláře. Tento aspekt analýzy dotazů převezme širší síť nad možnými shodami, protože pojem s tokeny odpovídá většímu počtu variant.
 
-Výrazy se zástupnými znaky, přibližné a regulární výrazy se ale neanalyzují jako běžné podmínky nebo fráze a můžou vést k špatnému odvolání, pokud dotaz neodpovídá analyzovanému formuláři slova v indexu vyhledávání. Další informace o analýze a analýze dotazů najdete v tématu [Architektura dotazů](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+Výrazy se zástupnými znaky, přibližné a regulární výrazy se ale neanalyzují jako běžné podmínky nebo fráze a můžou vést k špatnému odvolání, pokud dotaz neodpovídá analyzovanému formuláři slova v indexu vyhledávání. Další informace o analýze a analýze dotazů najdete v tématu [Architektura dotazů](./search-lucene-query-architecture.md).
 
 ### <a name="my-wildcard-searches-are-slow"></a>Hledání pomocí zástupného znaku je pomalé.
 
-Většina vyhledávacích dotazů se zástupnými znaky, jako je například předpona, přibližná a regulární výraz, se přepíší interně se shodnými podmínkami v indexu vyhledávání. Toto dodatečné zpracování prohledávání indexu vyhledávání přičítá k latenci. Další, podobně široké vyhledávací dotazy, `a*` například které je vhodné přepsat mnoha výrazy, mohou být velmi pomalé. Pro provádění zástupných hledání se zástupnými znaky zvažte definování [vlastního analyzátoru](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
+Většina vyhledávacích dotazů se zástupnými znaky, jako je například předpona, přibližná a regulární výraz, se přepíší interně se shodnými podmínkami v indexu vyhledávání. Toto dodatečné zpracování prohledávání indexu vyhledávání přičítá k latenci. Další, podobně široké vyhledávací dotazy, `a*` například které je vhodné přepsat mnoha výrazy, mohou být velmi pomalé. Pro provádění zástupných hledání se zástupnými znaky zvažte definování [vlastního analyzátoru](/rest/api/searchservice/custom-analyzers-in-azure-search).
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Proč je u každé z přístupů v pořadí hledání konstantní nebo stejné skóre 1,0?
 
@@ -95,7 +95,7 @@ Další informace o [přírůstkovém obohacení](cognitive-search-incremental-i
 
 ### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Jaký je nejlepší přístup k implementaci lokalizovaného vyhledávání?
 
-Většina zákazníků zvolí vyhrazená pole na kolekci, když přichází na podporu různých národních prostředí (jazyků) ve stejném indexu. Pole specifická pro národní prostředí umožňují přiřadit odpovídající analyzátor. Například přiřazení Microsoft francouzsky Analyzer k poli obsahujícímu francouzské řetězce. Také usnadňuje filtrování. Pokud víte, že se dotaz spouští na stránce fr-FR, můžete výsledky hledání omezit na toto pole. Případně můžete vytvořit [profil vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , aby pole poskytovalo více relativních vah. Azure Kognitivní hledání podporuje přes [analyzátory jazyka 50](https://docs.microsoft.com/azure/search/search-language-support) , ze kterých si můžete vybrat.
+Většina zákazníků zvolí vyhrazená pole na kolekci, když přichází na podporu různých národních prostředí (jazyků) ve stejném indexu. Pole specifická pro národní prostředí umožňují přiřadit odpovídající analyzátor. Například přiřazení Microsoft francouzsky Analyzer k poli obsahujícímu francouzské řetězce. Také usnadňuje filtrování. Pokud víte, že se dotaz spouští na stránce fr-FR, můžete výsledky hledání omezit na toto pole. Případně můžete vytvořit [profil vyhodnocování](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , aby pole poskytovalo více relativních vah. Azure Kognitivní hledání podporuje přes [analyzátory jazyka 50](./search-language-support.md) , ze kterých si můžete vybrat.
 
 ## <a name="next-steps"></a>Další kroky
 

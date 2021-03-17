@@ -1,19 +1,16 @@
 ---
 title: Zeppelin poznámkové bloky & Apache Spark clusteru – Azure HDInsight
 description: Podrobné pokyny k použití poznámkových bloků Zeppelin s clustery s Apache Spark v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084524"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928472"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark ve službě Azure HDInsight
 
@@ -26,7 +23,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění poznámkového bloku Apache Zeppelin
 
-1. V **přehledu**clusteru Spark vyberte **Poznámkový blok Zeppelin** z **řídicích panelů clusteru**. Zadejte přihlašovací údaje Správce clusteru.  
+1. V **přehledu** clusteru Spark vyberte **Poznámkový blok Zeppelin** z **řídicích panelů clusteru**. Zadejte přihlašovací údaje Správce clusteru.  
 
    > [!NOTE]  
    > Do poznámkového bloku Zeppelin se můžete dostat i tak, že v prohlížeči otevřete následující adresu URL. Nahraďte **název_clusteru** názvem vašeho clusteru:
@@ -89,7 +86,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
     Příkaz **% SQL** na začátku upozorňuje na Poznámkový blok na použití překladače Scala Livy.
 
-6. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  **Nastavení**, která se zobrazí po výběru **pruhového grafu**, vám umožní vybrat **klíče**a **hodnoty**.  Výstup se zobrazí na následujícím snímku obrazovky.
+6. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  **Nastavení**, která se zobrazí po výběru **pruhového grafu**, vám umožní vybrat **klíče** a **hodnoty**.  Výstup se zobrazí na následujícím snímku obrazovky.
 
     ![Spuštění příkazu Spark SQL pomocí notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spuštění příkazu Spark SQL pomocí notebook1")
 
@@ -115,13 +112,13 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 Poznámkový blok Zeppelin Apache Spark v HDInsight může používat externí balíčky, které se podílejí na komunitě, které nejsou zahrnuté v clusteru. Vyhledejte v [úložišti Maven](https://search.maven.org/) úplný seznam balíčků, které jsou k dispozici. Můžete také získat seznam dostupných balíčků z jiných zdrojů. Například úplný seznam balíčků, které jsou součástí komunity, je k dispozici v [balíčcích Spark](https://spark-packages.org/).
 
-V tomto článku se dozvíte, jak používat balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) s poznámkovým blokem Jupyter.
+V tomto článku se dozvíte, jak pomocí Jupyter Notebook balíčku [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) .
 
 1. Otevřete nastavení překladače. V pravém horním rohu vyberte přihlášené uživatelské jméno a pak vyberte **Interpret**.
 
     ![Spustit překladač](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Výstup podregistru")
 
-2. Přejděte na **livy2**a pak vyberte **Upravit**.
+2. Přejděte na **livy2** a pak vyberte **Upravit**.
 
     ![Změnit Interpret settings1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Změnit Interpret settings1")
 
@@ -135,9 +132,9 @@ V tomto článku se dozvíte, jak používat balíček [Spark-CSV](https://searc
 
     a. Vyhledejte balíček v úložišti Maven. V tomto článku jsme použili [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
 
-    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId**a **verzi**.
+    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId** a **verzi**.
 
-    ![Použití externích balíčků s poznámkovým blokem Jupyter](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Použití externích balíčků s poznámkovým blokem Jupyter")
+    ![Použití externích balíčků s Jupyter Notebook](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Použití externích balíčků s Jupyter Notebook")
 
     c. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 
@@ -159,7 +156,7 @@ Jak bylo uvedeno výše, `%sh` překladač není podporován od HDInsight 4,0 a 
 
 Uživatelé privilegovaných domén mohou použít `Shiro.ini` soubor k řízení přístupu k uživatelskému rozhraní překladače. Pouze tito uživatelé mohou vytvořit nové `%sh` překladače a nastavit oprávnění u každého nového `%sh` překladače. K řízení přístupu pomocí `shiro.ini` souboru použijte následující postup:
 
-1. Definujte novou roli pomocí existujícího názvu skupiny domén. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny Nepoužívejte speciální znaky ani prázdné znaky. Znaky po `=` poskytnutí oprávnění pro tuto roli. `*`znamená, že skupina má úplná oprávnění.
+1. Definujte novou roli pomocí existujícího názvu skupiny domén. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny Nepoužívejte speciální znaky ani prázdné znaky. Znaky po `=` poskytnutí oprávnění pro tuto roli. `*` znamená, že skupina má úplná oprávnění.
 
     ```
     [roles]
@@ -183,7 +180,7 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 
     ![Spustit překladač](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Výstup podregistru")
 
-2. Přejděte na **livy2**a pak vyberte **restartovat**.
+2. Přejděte na **livy2** a pak vyberte **restartovat**.
 
     ![Restartování překladače Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartování překladače Zeppelin")
 
@@ -197,7 +194,7 @@ Pokud chcete službu ověřit z Ambari, přejděte do `https://CLUSTERNAME.azure
 
 Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přepněte uživatele na Zeppelin pomocí příkazu `sudo su zeppelin` . Stavové příkazy:
 
-|Příkaz |Description |
+|Příkaz |Popis |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Stav služby.|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Verze služby|
@@ -227,5 +224,5 @@ Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přep
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

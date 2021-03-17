@@ -1,14 +1,14 @@
 ---
 title: Doporučené postupy zabezpečení
 description: Při používání Azure Lighthouse je důležité vzít v úvahu zabezpečení a řízení přístupu.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163267"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419299"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
@@ -17,18 +17,18 @@ Při používání [Azure Lighthouse](../overview.md)je důležité vzít v úva
 > [!TIP]
 > Tato doporučení se vztahují také na podniky, které [spravují víc tenantů](enterprise.md) pomocí Azure Lighthouse.
 
-## <a name="require-azure-multi-factor-authentication"></a>Vyžadování služby Azure Multi-Factor Authentication
+## <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadování vícefaktorového ověřování Azure AD
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (označované také jako dvoustupňové ověřování) pomáhá zabránit útočníkům v získání přístupu k účtu tím, že vyžaduje více kroků ověřování. Měli byste vyžadovat Multi-Factor Authentication pro všechny uživatele ve vašem spravovaném tenantovi, včetně uživatelů, kteří budou mít přístup k delegovaným zákaznickým prostředkům.
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (označované také jako dvoustupňové ověřování) pomáhají zabránit útočníkům v získání přístupu k účtu tím, že vyžadují více kroků ověřování. Měli byste vyžadovat Multi-Factor Authentication pro všechny uživatele ve vašem spravovaném tenantovi, včetně uživatelů, kteří budou mít přístup k delegovaným zákaznickým prostředkům.
 
-Doporučujeme, abyste zákazníkům požádali o implementaci Azure Multi-Factor Authentication ve svých klientech.
+Doporučujeme, abyste zákazníkům požádali o implementaci Azure AD Multi-Factor Authentication ve svých klientech.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Přiřazení oprávnění skupinám pomocí principu nejnižší úrovně oprávnění
 
 Aby bylo možné správu usnadnit, použijte skupiny Azure Active Directory (Azure AD) pro každou roli potřebnou ke správě prostředků vašich zákazníků. To vám umožní přidávat nebo odebírat jednotlivé uživatele do skupiny podle potřeby a nepřiřazovat jim oprávnění přímo pro každého uživatele.
 
 > [!IMPORTANT]
-> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** **zabezpečení** , a ne **Sada Office 365**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** nastavený na **zabezpečení**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Při vytváření struktury oprávnění nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy, což pomáhá snižovat riziko neúmyslných chyb.
 
@@ -47,5 +47,6 @@ Mějte na paměti, že když zakoupíte [zákazníky prostřednictvím veřejné
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
+- Projděte si [základní informace o zabezpečení](../security-baseline.md) , abyste zjistili, jak se na Azure Lighthouse vztahují doprovodné materiály k Azure Security test.
+- [Nasazení služby Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
 - Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).

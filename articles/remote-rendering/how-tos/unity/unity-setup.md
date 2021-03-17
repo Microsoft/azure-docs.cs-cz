@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 48f01058d8e879a9610e76638215214c059982fa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565465"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594210"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Nastavení Remote Renderingu pro Unity
 
@@ -18,7 +19,7 @@ Pro povolení služby Azure Remote rendering (ARR) v Unity poskytujeme vyhrazen�
 
 ## <a name="startup-and-shutdown"></a>Spuštění a vypnutí
 
-Chcete-li inicializovat vzdálené vykreslování, použijte `RemoteManagerUnity` . Tato třída volá do obecného, `RemoteManager` ale už pro vás implementuje podrobnosti specifické pro Unity. Například Unity používá určitý systém souřadnic. Při volání se `RemoteManagerUnity.Initialize` Nastaví správná konvence. Volání také vyžaduje, abyste zadali kameru Unity, která se má použít k zobrazení vzdáleně vykresleného obsahu.
+Chcete-li inicializovat vzdálené vykreslování, použijte `RemoteManagerUnity` . Tato třída volá do obecného, `RenderingConnection` ale už pro vás implementuje podrobnosti specifické pro Unity. Například Unity používá určitý systém souřadnic. Při volání se `RemoteManagerUnity.Initialize` Nastaví správná konvence. Volání také vyžaduje, abyste zadali kameru Unity, která se má použít k zobrazení vzdáleně vykresleného obsahu.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -29,7 +30,7 @@ RemoteManagerUnity.InitializeManager(clientInit);
 
 Pro vypnutí vzdáleného vykreslování zavolejte `RemoteManagerStatic.ShutdownRemoteRendering()` .
 
-Po `AzureSession` Vytvoření a vybrání jako primární relace vykreslování musí být zaregistrována v `RemoteManagerUnity` :
+Po `RenderingSession` Vytvoření a vybrání jako primární relace vykreslování musí být zaregistrována v `RemoteManagerUnity` :
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -45,17 +46,18 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 
 // create a frontend
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// ... fill out accountInfo ...
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// ... fill out sessionConfig ...
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
 // start a session
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(new RenderingSessionCreationParams(RenderingSessionVmSize.Standard, 0, 30)).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(new RenderingSessionCreationOptions(RenderingSessionVmSize.Standard, 0, 30));
+RenderingSession session = result.Session;
 
 // let RemoteManagerUnity know about the session we want to use
 RemoteManagerUnity.CurrentSession = session;
 
-session.ConnectToRuntime(new ConnectToRuntimeParams());
+await session.ConnectAsync(new RendererInitOptions());
 
 /// When connected, load and modify content
 
@@ -66,11 +68,11 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="session-state-events"></a>Události stavu relace
 
-`RemoteManagerUnity.OnSessionUpdate`vygeneruje události při změně stavu relace. Podrobnosti najdete v dokumentaci kódu.
+`RemoteManagerUnity.OnSessionUpdate` vygeneruje události při změně stavu relace. Podrobnosti najdete v dokumentaci kódu.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`je volitelnou komponentou pro zjednodušení nastavení a správy relace. Obsahuje možnosti automatického zastavení jeho relace při ukončení aplikace nebo ukončení režimu přehrávání v editoru a také automatické prodloužení zapůjčení relace v případě potřeby. Ukládá data do mezipaměti, jako jsou vlastnosti relace (viz její `LastProperties` proměnná), a zpřístupňuje události pro změny stavu relace a chyby relací.
+`ARRServiceUnity` je volitelnou komponentou pro zjednodušení nastavení a správy relace. Obsahuje možnosti automatického zastavení jeho relace při ukončení aplikace nebo ukončení režimu přehrávání v editoru a také automatické prodloužení zapůjčení relace v případě potřeby. Ukládá data do mezipaměti, jako jsou vlastnosti relace (viz její `LastProperties` proměnná), a zpřístupňuje události pro změny stavu relace a chyby relací.
 
 V jednom okamžiku nemůže existovat více než jedna instance `ARRServiceUnity` . Slouží k tomu, aby bylo možné rychleji začít s implementací některých běžných funkcí. U větší aplikace může být vhodnější provádět tyto věci sami, ale.
 

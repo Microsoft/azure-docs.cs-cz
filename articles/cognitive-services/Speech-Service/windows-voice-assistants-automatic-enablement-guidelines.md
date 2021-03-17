@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84981757"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90987389"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Pokyny pro ochranu osobních údajů pro hlasové asistenty ve Windows
 
@@ -31,7 +31,7 @@ Vývojáři, kteří vytvářejí hlasové asistenty ve Windows, musí do svých
 Uživatelé systému Windows mohou zobrazit a řídit dostupnost svých asistentních aplikací v nástroji **`Settings > Privacy > Voice activation`** .
 
  > [!div class="mx-imgBorder"]
- > [![soukromí – seznam aplikací](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Položka nastavení ochrany osobních údajů aktivace Windows Voice pro aplikaci pomocníka")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
+ > [![Snímek obrazovky ukazuje možnosti pro řízení dostupnost Cortany. ](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Položka nastavení ochrany osobních údajů aktivace Windows Voice pro aplikaci pomocníka")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
 Pokud se má v tomto seznamu zobrazit nárok na zařazení, kontaktujte Microsoft winvoiceassistants@microsoft.com a začněte. Ve výchozím nastavení budou uživatelé muset explicitně povolit aktivaci hlasu pro nového pomocníka v **`Settings > Privacy > Voice Activation`** nástroji, který umožňuje propojení s protokolem `ms-settings:privacy-voiceactivation` . Po spuštění a použití rozhraní API se v seznamu zobrazí povolená aplikace `Windows.ApplicationModel.ConversationalAgent` . Nastavení aktivace hlasu bude možné upravovat, jakmile aplikace získá souhlas s mikrofonem od uživatele.
 

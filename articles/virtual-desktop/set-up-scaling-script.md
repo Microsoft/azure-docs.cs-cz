@@ -3,15 +3,15 @@ title: Škálování hostitelů relací Azure Automation – Azure
 description: Automatické škálování hostitelů relací virtuálních počítačů s Windows pomocí Azure Automation.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ac01d71316fe4ccf44aa422d88dc31b1fd0ca4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f60341ea51f1cf4e856b1b4598887da3dc37ebb2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009439"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613115"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -19,19 +19,15 @@ Celkové náklady na nasazení virtuálních klientů s Windows můžete sníži
 
 V tomto článku se dozvíte o nástroji pro škálování vytvořeném pomocí účtu Azure Automation a aplikaci Azure Logic Apps, která automaticky škáluje virtuální počítače hostitele relací ve vašem prostředí virtuálních počítačů s Windows. Pokud se chcete dozvědět, jak používat nástroj pro škálování, přeskočte dopředu s [požadavky](#prerequisites).
 
-## <a name="report-issues"></a>Nahlášení potíží
-
-Sestavy problémů pro nástroj pro škálování se momentálně zpracovávají na GitHubu místo podpora Microsoftu. Pokud narazíte na problém s nástrojem pro škálování, získejte potřebné informace popsané v části [problémy s vytvářením sestav](#reporting-issues) a otevřete problém GitHubu označený pomocí "4a-WVD-re-logicapps" na [stránce GitHubu VP](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).
-
 ## <a name="how-the-scaling-tool-works"></a>Jak nástroj pro škálování funguje
 
 Nástroj pro škálování nabízí možnost automatizace s nízkými náklady pro zákazníky, kteří chtějí optimalizovat náklady na virtuální počítače hostitele relace.
 
 Nástroj pro škálování můžete použít k těmto akcím:
 
-- Naplánujte, aby se virtuální počítače spouštěly a zastavily na základě špičky a špičky v pracovní době.
+- Naplánování spouštění a zastavování virtuálních počítačů na základě špičky a Off-Peak pracovní doby.
 - Horizontální navýšení kapacity virtuálních počítačů na základě počtu relací na jádro procesoru.
-- Škálování virtuálních počítačů v době mimo špičku ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
+- Škálování virtuálních počítačů během Off-Peak hodin ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
 
 Nástroj pro škálování používá kombinaci Azure Automation účtu, Runbooku PowerShellu, Webhooku a aplikace logiky Azure k fungování. Když se nástroj spustí, aplikace logiky Azure zavolá Webhook a spustí Azure Automation sadu Runbook. Sada Runbook potom vytvoří úlohu.
 
@@ -45,7 +41,7 @@ Během doby mimo špičku úloha určuje, kolik virtuálních počítačů hosti
 >[!NOTE]
 >Pokud jste ručně nastavili virtuální počítač hostitele relace na režim vyprázdnění, úloha nebude spravovat virtuální počítač hostitele relace. Pokud je virtuální počítač hostitele relace spuštěný a nastavený na režim vyprázdnění, bude se považovat za nedostupný, což způsobí, že úloha spustí další virtuální počítače pro zpracování zatížení. Než ručně nastavíte režim vyprázdnění, doporučujeme vám označit všechny virtuální počítače Azure. Značku můžete pojmenovat pomocí parametru *MaintenanceTagName* při pozdějším vytvoření plánovače aplikace Azure Logic App. Značky vám pomůžou tyto virtuální počítače odlišit od těch, které spravuje Nástroj pro škálování. Nastavení značky údržby také zabrání nástroji škálování v provádění změn na virtuálním počítači, dokud neodeberete značku.
 
-Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Chcete-li zobrazit tyto zásady skupiny, přejděte na zásady **Konfigurace počítače**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **časových omezení relace**. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
+Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Chcete-li zobrazit tyto zásady skupiny, přejděte na zásady **Konfigurace počítače**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **časových omezení relace**. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
 
 V každém okamžiku úloha také převezme *MaxSessionLimit* fondu hostitelů do účtu, aby zjistil, jestli je aktuální počet relací větší než 90% maximální kapacity. V takovém případě bude úloha spustit další virtuální počítače hostitele relace.
 
@@ -56,6 +52,9 @@ Nástroj má však také následující omezení:
 - Toto řešení se vztahuje jenom na virtuální počítače hostitelů s více relacemi ve fondu.
 - Toto řešení spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako účet Azure Automation a aplikaci Azure Logic.
 - Maximální doba běhu úlohy v Runbooku je 3 hodiny. Pokud spuštění nebo zastavení virtuálních počítačů ve fondu hostitelů trvá déle, úloha se nezdaří. Další podrobnosti najdete v tématu [sdílené prostředky](../automation/automation-runbook-execution.md#fair-share).
+- Aby algoritmus škálování správně fungoval, musí být zapnutý aspoň jeden virtuální počítač nebo hostitel relace.
+- Nástroj pro škálování nepodporuje škálování na základě procesoru nebo paměti.
+- Škálování funguje jenom u stávajících hostitelů ve fondu hostitelů. Nástroj pro škálování nepodporuje škálování nových hostitelů relací.
 
 >[!NOTE]
 >Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který aktuálně mění velikost. Nástroj používá režim vyrovnávání zatížení pro špičku i dobu mimo špičku.
@@ -327,3 +326,7 @@ Pokud jste se rozhodli použít Log Analytics, můžete všechna data protokolu 
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>Nahlášení potíží
+
+Sestavy problémů pro nástroj škálování jsou aktuálně zpracovávány podpora Microsoftu. Při vytváření sestavy problému nezapomeňte postupovat podle pokynů v tématu [hlášení problémů](#reporting-issues). Pokud máte svůj názor na nástroj nebo chcete požádat o nové funkce, otevřete na [stránce GitHubu služby Vzdálená](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)plocha problém GitHub označený "4-WVD-reškálování-Tool".

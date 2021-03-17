@@ -1,17 +1,16 @@
 ---
 title: Posouzení System Center Operations Manager s využitím Azure Monitor
 description: Řešení System Center Operations Manager Health Check můžete použít k vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 35ae1e09fd0a06014a747cef99631a7bfe2dee1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326048"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731404"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s využitím řešení System Center Operations Manager Health Check (Preview)
 
@@ -54,7 +53,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 Řešení System Center Operations Manager Health Check shromažďuje data z následujících zdrojů:
 
-* Registry
+* Registr
 * Windows Management Instrumentation (WMI)
 * Protokol událostí
 * Data souborů
@@ -77,7 +76,7 @@ Než budete pokračovat, musí účet Spustit jako splňovat následující pož
 * Pokud účet nemá oprávnění správce systému SQL, potom spusťte [skript](#sql-script-to-grant-granular-permissions-to-the-run-as-account) pro udělení podrobných oprávnění účtu v každé instanci SQL Server hostující jednu nebo všechny databáze Operations Manager.
 
 1. V konzole Operations Manager vyberte navigační tlačítko **pro správu** .
-2. V části **Konfigurace spustit jako**klikněte na **účty**.
+2. V části **Konfigurace spustit jako** klikněte na **účty**.
 3. V průvodci **vytvořením účtu Spustit jako** na **úvodní** stránce klikněte na **Další**.
 4. Na stránce **Obecné vlastnosti** vyberte možnost **Windows** v seznamu **účet Spustit jako typ:** .
 5. Do textového pole **Zobrazovaný název** zadejte zobrazovaný název a volitelně zadejte popis do pole **Popis** a pak klikněte na **Další**.
@@ -86,9 +85,9 @@ Než budete pokračovat, musí účet Spustit jako splňovat následující pož
 
 Teď, když je vytvořený účet Spustit jako, musí být cílovým serverem pro správu ve skupině pro správu a přidružený k předdefinovanému profilu spustit jako, aby se pracovní postupy spouštěly pomocí přihlašovacích údajů.  
 
-1. V části **Konfigurace spustit jako**klikněte na **účty**v podokně výsledků dvakrát klikněte na účet, který jste vytvořili dříve.
+1. V části **Konfigurace spustit jako** klikněte na **účty** v podokně výsledků dvakrát klikněte na účet, který jste vytvořili dříve.
 2. Na kartě **distribuce** klikněte na **Přidat** pro **vybrané počítače** a přidejte Management Server k distribuci účtu do.  Dvakrát klikněte na **OK** , aby se změny uložily.
-3. V části **Konfigurace spustit jako**klikněte na **profily**.
+3. V části **Konfigurace spustit jako** klikněte na **profily**.
 4. Vyhledejte *profil posouzení SCOM*.
 5. Název profilu by měl být: *Microsoft System Center Operations Manager Health Check profil spustit jako*.
 6. Klikněte pravým tlačítkem a aktualizujte jeho vlastnosti a přidejte nedávno vytvořený účet Spustit jako, který jste vytvořili dříve.
@@ -214,7 +213,7 @@ Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infra
 4. Na stránce **Přehled** klikněte na dlaždici **System Center Operations Manager Health Check** .
 5. Na stránce **System Center Operations Manager Health Check** zkontrolujte souhrnné informace v jednom z oken detailní oblasti a potom klikněte na jednu pro zobrazení doporučení pro tuto oblast výběru.
 6. Na kterékoli stránce oblasti pro zaměření si můžete prohlédnout doporučení s prioritou vytvořená pro vaše prostředí. Kliknutím na doporučení v části **Ovlivněné objekty** zobrazíte podrobnosti o tom, proč se doporučení udělalo.<br><br> ![oblast zaměření](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. V **navrhovaných akcích**můžete provést opravné akce. Po vyřešení této položky budou později vyhodnoceny záznamy o tom, že byly provedeny doporučené akce a že se bude zvyšovat skóre dodržování předpisů. Opravené položky se zobrazí jako **předané objekty**.
+7. V **navrhovaných akcích** můžete provést opravné akce. Po vyřešení této položky budou později vyhodnoceny záznamy o tom, že byly provedeny doporučené akce a že se bude zvyšovat skóre dodržování předpisů. Opravené položky se zobrazí jako **předané objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorování doporučení
 
@@ -229,7 +228,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../log-query/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
+    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../logs/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +253,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../log-query/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
+    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../logs/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -268,7 +267,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 - [Konfigurace pravidla System Center Operations Manager Health Check](#configure-the-health-check-rule)
 
 
-*Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?* Yes. Viz [Konfigurace frekvence spouštění](#configure-the-run-frequency).
+*Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?* Ano. Viz [Konfigurace frekvence spouštění](#configure-the-run-frequency).
 
 *Pokud je po přidání System Center Operations Manager Health Check řešení zjištěn jiný server, bude zkontrolován?* Ano, po zjištění, že je zjišťování zaškrtnuto, je ve výchozím nastavení každých 7 dní.
 
@@ -295,5 +294,5 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 ## <a name="next-steps"></a>Další kroky
 
-- V [protokolech hledání](../log-query/log-query-overview.md) zjistíte, jak analyzovat podrobná System Center Operations Manager Health Checká data a doporučení.
+- V [protokolech hledání](../logs/log-query-overview.md) zjistíte, jak analyzovat podrobná System Center Operations Manager Health Checká data a doporučení.
 

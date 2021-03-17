@@ -1,19 +1,17 @@
 ---
 title: Škálování velikosti clusterů – Azure HDInsight
 description: Škálování Apache Hadoop clusteru elastické tak, aby odpovídalo vašemu zatížení v Azure HDInsight
-author: ashishthaps
 ms.author: ashish
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006446"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932056"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -32,9 +30,9 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 
 |Nástroj | Popis|
 |---|---|
-|[Modul Az PowerShellu](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[Modul AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
+|[Modul Az PowerShellu](/powershell/azure)|[`Set-AzHDInsightClusterSize`](/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[Modul AzureRM PowerShellu](/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[Azure CLI](/cli/azure/) | [`az hdinsight resize`](/cli/azure/hdinsight#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure Classic CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
@@ -43,8 +41,8 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 Pomocí kterékoli z těchto metod můžete škálovat cluster HDInsight během několika minut nahoru nebo dolů.
 
 > [!IMPORTANT]  
-> * Rozhraní příkazového řádku Azure Classic je zastaralé a mělo by se používat jenom s modelem nasazení Classic. Pro všechna ostatní nasazení použijte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
-> * Modul PowerShell AzureRM je zastaralý.  Pokud je to možné, použijte prosím [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) .
+> * Rozhraní příkazového řádku Azure Classic je zastaralé a mělo by se používat jenom s modelem nasazení Classic. Pro všechna ostatní nasazení použijte rozhraní příkazového [řádku Azure](/cli/azure/).
+> * Modul PowerShell AzureRM je zastaralý.  Pokud je to možné, použijte prosím [modul AZ Module](/powershell/azure/new-azureps-module-az) .
 
 ## <a name="impact-of-scaling-operations"></a>Dopad operací škálování
 
@@ -111,9 +109,9 @@ Dopad změny počtu datových uzlů se liší pro každý typ clusteru podporova
 
     Po škálování na `N` pracovní uzly bude HDInsight automaticky nastavit následující konfigurace a restartovat podregistr.
 
-  * Maximální počet souběžných dotazů:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
-  * Počet uzlů používaných LLAP podregistru:`num_llap_nodes  = N`
-  * Počet uzlů pro spuštění démona LLAP podregistru:`num_llap_nodes_for_llap_daemons = N`
+  * Maximální počet souběžných dotazů: `hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Počet uzlů používaných LLAP podregistru: `num_llap_nodes  = N`
+  * Počet uzlů pro spuštění démona LLAP podregistru: `num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Jak bezpečně škálovat cluster
 
@@ -125,7 +123,7 @@ Aby se předešlo tomu, že spuštěné úlohy selžou během operace horizontá
 1. Ručně ukončete úlohy.
 1. Znovu odešle úlohy po uzavření operace škálování.
 
-Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použít **uživatelské rozhraní příz správce prostředků**následujícím postupem:
+Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použít **uživatelské rozhraní příz správce prostředků** následujícím postupem:
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Cluster se otevře na nové stránce portálu.
 2. V hlavním zobrazení přejděte na **řídicí panely clusteru**  >  **Ambari domů**. Zadejte přihlašovací údaje clusteru.

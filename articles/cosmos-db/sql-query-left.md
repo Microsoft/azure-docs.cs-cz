@@ -3,18 +3,21 @@ title: VLEVO v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci systému SQL na levé straně Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 647bee87283f26b0d1ce832b2b2aaac690c05b92
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303745"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333728"
 ---
 # <a name="left-azure-cosmos-db"></a>VLEVO (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí levou část řetězce se zadaným počtem znaků.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -57,4 +60,4 @@ Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -1,26 +1,19 @@
 ---
 title: Přidání diagnostiky & monitorování do virtuálního počítače Azure
 description: K vytvoření nového virtuálního počítače s Windows pomocí rozšíření Azure Diagnostics použijte šablonu Azure Resource Manager.
-services: virtual-machines-windows
-documentationcenter: ''
-author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 05/31/2017
-ms.author: mimckitt
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6d365c7e927c11f52b97fbb0cc01a7aa37ad5afd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837002"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560051"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon
 Rozšíření Azure Diagnostics poskytuje funkce pro monitorování a diagnostiku na virtuálním počítači Azure se systémem Windows. Tyto možnosti můžete na virtuálním počítači povolit zahrnutím rozšíření jako části šablony Azure Resource Manager. Další informace o začlenění všech rozšíření v rámci šablony virtuálního počítače najdete v tématu [vytváření Azure Resource Manager šablon s rozšířeními virtuálních počítačů](../windows/template-description.md#extensions) . Tento článek popisuje, jak můžete přidat rozšíření Azure Diagnostics do šablony virtuálního počítače s Windows.  
@@ -62,7 +55,7 @@ U jednoduchého virtuálního počítače založeného na Správce prostředků 
 ]
 ```
 
-Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony, a nikoli jejím definováním v uzlu prostředky virtuálního počítače. S tímto přístupem musíte explicitně zadat hierarchický vztah mezi příponou a virtuálním počítačem s hodnotami *název* a *typ* . Příklad: 
+Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony, a nikoli jejím definováním v uzlu prostředky virtuálního počítače. S tímto přístupem musíte explicitně zadat hierarchický vztah mezi příponou a virtuálním počítačem s hodnotami *název* a *typ* . Například: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -79,7 +72,7 @@ Hodnota vlastnosti *Name* se dá použít k odkazování na rozšíření ve sku
 
 *TypeHandlerVersion* určuje verzi rozšíření, která se má použít. Nastavení podverze *autoUpgradeMinorVersion* na **hodnotu true** zajistí, že získáte nejnovější podverzi rozšíření, která je k dispozici. Důrazně doporučujeme, abyste vždycky nastavili *autoUpgradeMinorVersion* vždy na **true** , abyste vždy používali nejnovější dostupné diagnostické rozšíření se všemi novými funkcemi a opravami chyb. 
 
-Element *Settings* obsahuje vlastnosti konfigurace pro rozšíření, které lze nastavit a načíst zpět z rozšíření (někdy označovaného jako veřejná konfigurace). Vlastnost *xmlcfg* obsahuje konfiguraci založenou na XML pro diagnostické protokoly, čítače výkonu atd. shromažďované agentem diagnostiky. Další informace o samotném schématu XML najdete v tématu věnovaném [schématu konfigurace diagnostiky](../../azure-monitor/platform/diagnostics-extension-schema-windows.md) . Běžnou praxí je uložit skutečnou konfiguraci XML jako proměnnou v šabloně Azure Resource Manager a potom zřetězit a kódování Base64, aby se nastavila hodnota pro *xmlcfg*. Další informace o tom, jak soubor XML ukládat do proměnných, najdete v části o [proměnných konfigurace diagnostiky](#diagnostics-configuration-variables) . Vlastnost *storageAccount* Určuje název účtu úložiště, do kterého se budou přenášet diagnostická data. 
+Element *Settings* obsahuje vlastnosti konfigurace pro rozšíření, které lze nastavit a načíst zpět z rozšíření (někdy označovaného jako veřejná konfigurace). Vlastnost *xmlcfg* obsahuje konfiguraci založenou na XML pro diagnostické protokoly, čítače výkonu atd. shromažďované agentem diagnostiky. Další informace o samotném schématu XML najdete v tématu věnovaném [schématu konfigurace diagnostiky](../../azure-monitor/agents/diagnostics-extension-schema-windows.md) . Běžnou praxí je uložit skutečnou konfiguraci XML jako proměnnou v šabloně Azure Resource Manager a potom zřetězit a kódování Base64, aby se nastavila hodnota pro *xmlcfg*. Další informace o tom, jak soubor XML ukládat do proměnných, najdete v části o [proměnných konfigurace diagnostiky](#diagnostics-configuration-variables) . Vlastnost *storageAccount* Určuje název účtu úložiště, do kterého se budou přenášet diagnostická data. 
 
 Vlastnosti v *protectedSettings* (někdy označované jako soukromá konfigurace) lze nastavit, ale po nastavení nelze číst znovu. Povaha jen pro zápis *protectedSettings* je užitečná pro ukládání tajných kódů, jako je klíč účtu úložiště, do kterého se zapisují diagnostická data.    
 
@@ -117,7 +110,7 @@ Předchozí fragment kódu JSON pro diagnostiku definuje proměnnou *accountid* 
 
 Vlastnost *xmlcfg* pro rozšíření diagnostiky je definována pomocí více proměnných, které jsou zřetězeny dohromady. Hodnoty těchto proměnných jsou v XML, takže musí být při nastavení proměnných JSON správně uvozeny řídicími znaky.
 
-Následující příklad popisuje konfigurační XML diagnostiky, který shromažďuje standardní čítače výkonu na úrovni systému spolu s některými protokoly událostí systému Windows a protokoly infrastruktury diagnostiky. Byl označený a správně naformátovaný, aby bylo možné konfiguraci přímo vložit do oddílu Variables vaší šablony. V tématu [schéma konfigurace diagnostiky](../../azure-monitor/platform/diagnostics-extension-schema-windows.md) si můžete přečíst příklad kódu XML pro snadnější čtení.
+Následující příklad popisuje konfigurační XML diagnostiky, který shromažďuje standardní čítače výkonu na úrovni systému spolu s některými protokoly událostí systému Windows a protokoly infrastruktury diagnostiky. Byl označený a správně naformátovaný, aby bylo možné konfiguraci přímo vložit do oddílu Variables vaší šablony. V tématu [schéma konfigurace diagnostiky](../../azure-monitor/agents/diagnostics-extension-schema-windows.md) si můžete přečíst příklad kódu XML pro snadnější čtení.
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
@@ -168,7 +161,7 @@ Příklad: *WADMetricsPT1HP10DV2S20151108* obsahuje data metrik agregovaná za h
 Každá tabulka WADMetrics obsahuje následující sloupce:
 
 * **PartitionKey**: klíč oddílu je vytvořen na základě hodnoty *ResourceID* k jedinečné identifikaci prostředku virtuálního počítače. Příklad: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: následuje formát `<Descending time tick>:<Performance Counter Name>` . Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: následuje formát `<Descending time tick>:<Performance Counter Name>` . Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: je název čítače výkonu. To odpovídá *counterSpecifier* definovanému v konfiguraci XML.
 * **Maximum**: maximální hodnota čítače výkonu v rámci agregačního období.
 * **Minimum**: minimální hodnota čítače výkonu v rámci agregačního období.
@@ -178,5 +171,5 @@ Každá tabulka WADMetrics obsahuje následující sloupce:
 
 ## <a name="next-steps"></a>Další kroky
 * Úplnou ukázkovou šablonu virtuálního počítače s Windows s diagnostickým rozšířením najdete v tématu [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension) .   
-* Nasazení šablony Azure Resource Manager pomocí [Azure PowerShell](../windows/ps-template.md) nebo [příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Nasazení šablony Azure Resource Manager pomocí [Azure PowerShell](../windows/ps-template.md) nebo [příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md)
 * Další informace o [vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md)

@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681646"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507513"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
 
-Služba [převodu modelů](model-conversion.md) vyžaduje přístup k úložišti objektů BLOB v Azure, aby mohl načíst vstupní data a uložit výstupní data. Tento článek popisuje, jak provést nejběžnější kroky.
+Služba [konverze modelu](model-conversion.md) vyžaduje přístup k Azure Blob Storage tak, aby mohla načíst vstupní data a uložit výstupní data. Tento článek popisuje, jak provést nejběžnější kroky.
 
 ## <a name="prepare-azure-storage-accounts"></a>Příprava účtů Azure Storage
 
@@ -28,7 +28,7 @@ Služba [převodu modelů](model-conversion.md) vyžaduje přístup k úložišt
 Vytváření účtů úložiště a kontejnerů objektů BLOB se dá udělat jedním z následujících nástrojů:
 
 - [Azure Portal](https://portal.azure.com)
-- [AZ Command line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [AZ Command line](/cli/azure/install-azure-cli)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - Sady SDK (C#, Python...)
 
@@ -46,13 +46,13 @@ Postupujte podle kroků uvedených v části [Vytvoření účtu](../create-an-a
 
 Uložené přístupové podpisy (SAS) slouží k udělení přístupu pro čtení vstupu a přístupu pro zápis do výstupu. Doporučujeme, abyste při každém převodu modelu vygenerovali nové identifikátory URI. Vzhledem k tomu, že identifikátory URI vyprší po určité době, jejich uchování po delší dobu může neočekávaně dojít k narušení vaší aplikace.
 
-Podrobnosti o SAS najdete v [dokumentaci k SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
+Podrobnosti o SAS najdete v [dokumentaci k SAS](../../../storage/common/storage-sas-overview.md).
 
 Identifikátor URI SAS může být vygenerován pomocí jednoho z těchto:
 
 - AZ PowerShell Module
   - Podívejte se na [ukázkové skripty PowerShellu](../../samples/powershell-example-scripts.md)
-- [AZ Command line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [AZ Command line](/cli/azure/install-azure-cli)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - Klikněte pravým tlačítkem na kontejner získat sdílený přístupový podpis (číst, vypsat přístup pro vstupní kontejner, oprávnění k zápisu pro kontejner výstupu).
 - Sady SDK (C#, Python...)
@@ -64,11 +64,11 @@ Příklad použití sdílených přístupových podpisů v převodu assetu se zo
 Chcete-li začít s převodem modelu, je nutné jej nahrát pomocí jedné z následujících možností:
 
 - [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) – pohodlné uživatelské rozhraní pro nahrávání, stahování a správu souborů v Azure Blob Storage
-- [Příkazový řádek Azure](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- [Modul Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Příkazový řádek Azure](../../../storage/blobs/storage-quickstart-blobs-cli.md)
+- [Modul Azure PowerShellu](/powershell/azure/install-az-ps)
   - Podívejte se na [ukázkové skripty PowerShellu](../../samples/powershell-example-scripts.md)
-- [Používání sady SDK pro úložiště (Python, C#...)](https://docs.microsoft.com/azure/storage/)
-- [Použití rozhraní REST API pro Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+- [Používání sady SDK pro úložiště (Python, C#...)](../../../storage/index.yml)
+- [Použití rozhraní REST API pro Azure Storage](/rest/api/storageservices/blob-service-rest-api)
 
 Příklad, jak nahrát data pro převod, najdete v tématu Conversion.ps1 [ukázkových skriptů PowerShellu](../../samples/powershell-example-scripts.md#script-conversionps1).
 

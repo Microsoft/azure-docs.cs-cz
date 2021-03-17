@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Fivetran a datový sklad'
-description: Začínáme s Fivetran a datovým skladem Azure synapse Analytics.
+title: 'Rychlý Start: Fivetran a vyhrazený fond SQL (dřív SQL DW)'
+description: Začínáme s Fivetran a vyhrazeným fondem SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f332c3b0bd53d80d4a8471f53c56ecab611787c1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201646"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456362"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>Rychlý Start: Fivetran s datovým skladem 
+# <a name="quickstart-fivetran-with-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Rychlý Start: Fivetran s vyhrazeným fondem SQL (dříve SQL DW) ve službě Azure synapse Analytics 
 
-V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pro práci s datovým skladem Azure synapse Analytics zřízeném s fondem SQL. Článek předpokládá, že máte existující datový sklad.
+V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pro práci s vyhrazeným fondem SQL (dřív SQL DW). Článek předpokládá, že máte existující vyhrazený fond SQL (dřív SQL DW).
 
 ## <a name="set-up-a-connection"></a>Nastavení připojení
 
-1. Vyhledejte plně kvalifikovaný název serveru a databázi, který používáte pro připojení k datovému skladu.
+1. Vyhledá plně kvalifikovaný název serveru a databázi, které používáte pro připojení k vašemu rezervovanému fondu SQL (dřív SQL DW).
     
-    Pokud potřebujete podporu najít tyto informace, podívejte se [na téma připojení k datovému skladu](../sql/connect-overview.md).
+    Pokud potřebujete pomoci najít tyto informace, podívejte [se na téma připojení k vašemu vyhrazenému fondu SQL (dřív SQL DW)](sql-data-warehouse-connection-strings.md).
 
 2. V Průvodci instalací vyberte, zda chcete připojit databázi přímo nebo pomocí tunelu SSH.
 
@@ -34,13 +34,13 @@ V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pr
 
    Pokud se rozhodnete připojit pomocí tunelu SSH, Fivetran se připojí k samostatnému serveru v síti. Server poskytuje tunel SSH pro vaši databázi. Tuto metodu je nutné použít, pokud je databáze v nepřístupné podsíti ve virtuální síti.
 
-3. Přidejte IP adresu **52.0.2.4** do brány firewall na úrovni serveru, abyste umožnili příchozí připojení k instanci datového skladu z Fivetran.
+3. Přidejte IP adresu **52.0.2.4** do brány firewall na úrovni serveru, abyste umožnili příchozí připojení k vaší vyhrazené instanci SQL fondu (dříve SQL DW) z Fivetran.
 
    Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
 ## <a name="set-up-user-credentials"></a>Nastavení přihlašovacích údajů uživatele
 
-1. Připojte se k datovému skladu pomocí SQL Server Management Studio (SSMS) nebo nástroje, kterému dáváte přednost. Přihlaste se jako uživatel s oprávněními správce serveru. Pak spusťte následující příkazy SQL pro vytvoření uživatele pro Fivetran:
+1. Připojte se k vyhrazenému fondu SQL (dřív SQL DW) pomocí SQL Server Management Studio (SSMS) nebo nástroje, kterému dáváte přednost. Přihlaste se jako uživatel s oprávněními správce serveru. Pak spusťte následující příkazy SQL pro vytvoření uživatele pro Fivetran:
 
     - V hlavní databázi: 
     
@@ -48,7 +48,7 @@ V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pr
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - V databázi datového skladu:
+    - Ve vyhrazené databázi fondu SQL (dříve SQL DW):
 
       ```sql
       CREATE USER fivetran_user_without_login without login;
@@ -56,7 +56,7 @@ V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pr
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Udělte uživateli Fivetran následující oprávnění k vašemu datovému skladu:
+2. Udělte uživateli Fivetran následující oprávnění k vašemu vyhrazenému fondu SQL (dřív SQL DW):
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -77,10 +77,10 @@ V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pr
 
 ## <a name="connect-from-fivetran"></a>Připojení z Fivetran
 
-Pokud se chcete připojit k datovému skladu z účtu Fivetran, zadejte přihlašovací údaje, které používáte pro přístup k datovému skladu: 
+Pokud se chcete připojit k vašemu rezervovanému fondu SQL (dřív SQL DW) z účtu Fivetran, zadejte přihlašovací údaje, které používáte pro přístup k vašemu vyhrazenému fondu SQL (dřív SQL DW): 
 
 * Hostitel (název vašeho serveru).
 * Přístavní.
 * Databáze.
-* Uživatel (uživatelské jméno by mělo být **fivetran \@ _server_name_ ** , kde *server_name* je součástí identifikátoru URI hostitele Azure: ** _ \_ název serveru_. Database.Windows.NET**).
+* Uživatel (uživatelské jméno by mělo být **fivetran \@ _server_name_** , kde *server_name* je součástí identifikátoru URI hostitele Azure: **_\_ název serveru_. Database.Windows.NET**).
 * Heslo.

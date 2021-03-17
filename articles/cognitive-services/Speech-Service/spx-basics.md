@@ -1,25 +1,27 @@
 ---
-title: Základy rozpoznávání řeči pro rozhraní příkazového řádku
+title: Rychlý Start funkce Speech CLI – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat příkazový nástroj pro rozpoznávání řeči pro práci se službou Speech bez kódu a minimálním nastavením.
+description: Začněte s Azure Speech CLI. Můžete pracovat se službami Speech, jako je řeč, převod textu na řeč a překlady řeči bez psaní kódu.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 01/13/2021
 ms.author: trbye
-ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 53138a22c58e89ade4af234630e9429a19738a6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590213"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556464"
 ---
-# <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
+# <a name="get-started-with-the-azure-speech-cli"></a>Začínáme s rozhraním příkazového řádku Azure Speech
 
-V tomto článku se seznámíte se základními vzory používání funkce Speech CLI, což je nástroj příkazového řádku pro použití služby Speech bez psaní kódu. Můžete rychle otestovat hlavní funkce služby Speech, aniž byste museli vytvářet vývojová prostředí nebo psát kód, abyste zjistili, jestli je možné vaše případy použití vhodně splnit. Kromě toho je prostředí příkazového řádku pro rozpoznávání řeči připravené na produkční prostředí a je možné ho použít k automatizaci jednoduchých pracovních postupů ve službě pro rozpoznávání řeči pomocí `.bat` skriptů nebo prostředí.
+V tomto článku se dozvíte, jak používat rozpoznávání řeči, rozhraní příkazového řádku, abyste měli přístup ke službám Speech, jako je řeč, převod textu na řeč a překladu řeči bez psaní kódu. Rozhraní příkazového řádku pro rozpoznávání řeči je připravené pro práci a je možné ho použít k automatizaci jednoduchých pracovních postupů ve službě pro rozpoznávání řeči pomocí `.bat` skriptů nebo prostředí.
+
+V tomto článku se předpokládá, že máte praktické znalosti z příkazového řádku, terminálu nebo PowerShellu.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -27,105 +29,114 @@ V tomto článku se seznámíte se základními vzory používání funkce Speec
 
 V této části najdete několik základních příkazů SPX, které jsou často užitečné pro testování a experimentování při prvním spuštění. Začněte tím, že v nástroji spustíte následující příkaz, a to tak, že zobrazíte pomocníka s integrovaným nástrojem.
 
-```shell
+```console
 spx
 ```
 
-Všimněte si, že **Viz také** témata nápovědy uvedená vpravo od parametrů příkazu. Můžete také Hledat témata podle klíčového slova. Zadejte například následující příkaz, který zobrazí seznam témat nápovědy o příkladech rozhraní příkazového řádku pro rozpoznávání řeči:
+Témata nápovědy můžete hledat podle klíčového slova. Zadejte například následující příkaz, který zobrazí seznam příkladů použití funkce Speech CLI:
 
-```shell
+```console
 spx help find --topics "examples"
 ```
 
-Teď použijte službu Speech k provedení některých funkcí rozpoznávání řeči pomocí výchozího mikrofonu, a to spuštěním následujícího příkazu.
+Zadejte následující příkaz pro zobrazení možností příkazu rozpoznat:
 
-```shell
+```console
+spx help recognize
+```
+
+Další příkazy Help uvedené v pravém sloupci Tyto příkazy můžete zadat, chcete-li získat podrobnou nápovědu o dílčích příkazech.
+
+## <a name="speech-to-text-speech-recognition"></a>Převod řeči na text (rozpoznávání řeči)
+
+Pojďme použít rozpoznávání řeči k převodu řeči na text (rozpoznávání řeči) pomocí výchozího mikrofonu vašeho systému. Po zadání příkazu zahájí SPX naslouchání zvuku na aktuálním aktivním vstupním zařízení a při stisknutí klávesy **ENTER** se zastaví. Zaznamenaný hlas se pak rozpozná a převede na text ve výstupu konzoly.
+
+>[!IMPORTANT]
+> Pokud používáte kontejner Docker, `--microphone` nebude fungovat.
+
+Spusťte tento příkaz:
+
+```console
 spx recognize --microphone
 ```
 
-Po zadání příkazu zahájí SPX naslouchání zvuku na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Zaznamenaný hlas se pak rozpozná a převede na text ve výstupu konzoly. Syntéza textu na řeč je také snadné používat rozhraní příkazového řádku pro rozpoznávání řeči. 
+Pomocí rozhraní příkazového řádku pro rozpoznávání řeči můžete také rozpoznávat řeč ze zvukového souboru.
 
-Spuštěním následujícího příkazu přejdete do zadaného textu jako vstup a výstupem syntetizového rozpoznávání řeči na aktuální aktivní výstupní zařízení.
+```console
+spx recognize --file /path/to/file.wav
+```
 
-```shell
+> [!TIP]
+> Pokud rozpoznávání řeči rozpoznáváte ze zvukového souboru v kontejneru Docker, ujistěte se, že je zvukový soubor umístěný v adresáři, který jste připojili v předchozím kroku.
+
+Nezapomeňte, že pokud se zablokuje nebo chcete získat další informace o možnostech rozpoznávání rozpoznávání řeči, stačí zadat:
+
+```console
+spx help recognize
+```
+
+## <a name="text-to-speech-speech-synthesis"></a>Převod textu na řeč (syntéza řeči)
+
+Spuštěním následujícího příkazu převezmete text jako vstup a výstupem syntetizového rozpoznávání řeči na aktuální aktivní výstupní zařízení (například reproduktory počítače).
+
+```console
 spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 ```
 
-Kromě rozpoznávání řeči a syntézy můžete také překlad řeči provést pomocí rozhraní příkazového řádku pro rozpoznávání řeči. Podobně jako u příkazu pro rozpoznávání řeči výše spusťte následující příkaz, který zachytí zvuk z výchozího mikrofonu a provede převod na text v cílovém jazyce.
+Syntetizované výstupy můžete také uložit do souboru. V tomto příkladu vytvoříme soubor s názvem `my-sample.wav` v adresáři, ve kterém se příkaz spustí.
 
-```shell
-spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
+```console
+spx synthesize --text "Enjoy using the Speech CLI." --audio output my-sample.wav
 ```
 
-V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i**cíl (jazyk **pro překlad)**. Použití `--microphone` argumentu naposlouchá zvuk na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Výstupem je textový překlad do cílového jazyka zapsaný do textového souboru.
+Tyto příklady předpokládají, že testujete v angličtině. Podporujeme ale syntézu řeči v mnoha jazycích. Pomocí tohoto příkazu můžete stáhnout úplný seznam hlasů nebo si můžete navštívit [stránku podpory jazyků](./language-support.md).
+
+```console
+spx synthesize --voices
+```
+
+Tady je postup, jak můžete použít některý z hlasů, které jste zjistili.
+
+```console
+spx synthesize --text "Bienvenue chez moi." --voice fr-CA-Caroline --speakers
+```
+
+Nezapomeňte, že pokud se zablokuje nebo chcete získat další informace o možnostech syntézy pro rozpoznávání řeči, stačí zadat:
+
+```console
+spx help synthesize
+```
+
+## <a name="speech-to-text-translation"></a>Převod řeči na text
+
+Pomocí rozhraní příkazového řádku pro rozpoznávání řeči můžete také převod řeči na text. Spuštěním tohoto příkazu zachytíte zvuk z výchozího mikrofonu a výstupem překladu jako text. Mějte na paměti, že je nutné `source` `target` pomocí příkazu předat jazyk a `translate` .
+
+```console
+spx translate --microphone --source en-US --target ru-RU
+```
+
+Při překladu do více jazyků, s použitím samostatných kódů jazyka `;` .
+
+```console
+spx translate --microphone --source en-US --target ru-RU;fr-FR;es-ES
+```
+
+Pokud chcete uložit výstup svého překladu, použijte `--output` příznak. V tomto příkladu si přečtete také ze souboru.
+
+```console
+spx translate --file /some/file/path/input.wav --source en-US --target ru-RU --output file /some/file/path/russian_translation.txt
+```
 
 > [!NOTE]
 > Seznam všech podporovaných jazyků a jejich odpovídajících kódů národního prostředí najdete v článku věnovaném [jazykům a národním prostředím](language-support.md) .
 
-## <a name="batch-operations"></a>Dávkové operace
+Nezapomeňte, že pokud se zablokuje nebo chcete získat další informace o možnostech překladu rozhraní příkazového řádku, stačí zadat:
 
-Příkazy v předchozí části jsou skvělé pro rychlé zobrazení fungování služby Speech. Pokud však vyhodnotit, jestli se můžou vaše případy použití splnit, budete pravděpodobně muset provádět dávkové operace s vámi již existujícím rozsahem vstupu, abyste viděli, jak služba zpracovává nejrůznější scénáře. V této části se dozvíte, jak:
-
-* Spuštění rozpoznávání řeči služby Batch v adresáři zvukových souborů
-* Iterování prostřednictvím `.tsv` souboru a spuštění syntézy textu na řeč v dávce
-
-## <a name="batch-speech-recognition"></a>Rozpoznávání řeči Batch
-
-Pokud máte adresář se zvukovými soubory, je k dispozici pro rychlé rozpoznávání řeči pomocí funkce Speech CLI. Jednoduše spusťte následující příkaz, přejděte do adresáře pomocí `--files` příkazu. V tomto příkladu se připojíte `\*.wav` k adresáři, abyste porozpoznali všechny `.wav` soubory přítomné v adresáři dir. Kromě toho zadejte `--threads` argument pro spuštění rozpoznávání na 10 paralelních vláknech.
-
-> [!NOTE]
-> `--threads`Argument lze také použít v další části `spx synthesize` příkazů a dostupná vlákna budou záviset na procesoru a jeho aktuálním procentu zatížení.
-
-```shell
-spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\speech_output.tsv --threads 10
-```
-
-Rozpoznaný výstup řeči je zapsán k `speech_output.tsv` použití `--output file` argumentu. Následuje příklad struktury výstupních souborů.
-
-```output
-audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
-sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
-sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
-```
-
-## <a name="batch-text-to-speech-synthesis"></a>Syntéza textu na řeč dávky
-
-Nejjednodušší způsob, jak spustit dávkový převod textu na řeč, je vytvořit nový `.tsv` soubor (s oddělovači) a použít ho `--foreach` v rozhraní PŘÍKAZového řádku pro rozpoznávání řeči. Vezměte v úvahu následující soubor `text_synthesis.tsv` :
-
-```output
-audio.output    text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
-```
-
- Dále spustíte příkaz, který odkazuje na `text_synthesis.tsv` , provede shrnutí jednotlivých `text` polí a zapíše výsledek do odpovídající `audio.output` cesty jako `.wav` soubor. 
-
-```shell
-spx synthesize --foreach in @C:\your\path\to\text_synthesis.tsv
-```
-
-Tento příkaz je ekvivalentem běhu `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav` **pro každý** záznam v `.tsv` souboru. Poznamenejte si pár věcí:
-
-* Záhlaví sloupců `audio.output` a, které `text` odpovídají argumentům příkazového řádku `--audio output` a v `--text` uvedeném pořadí. Argumenty příkazového řádku s více částmi `--audio output` by měly být naformátovány v souboru bez mezer, žádné úvodní pomlčky a tečky oddělující řetězce, např. `audio.output` . Všechny ostatní existující argumenty příkazového řádku lze přidat do souboru jako další sloupce pomocí tohoto modelu.
-* Pokud je tento soubor formátován tímto způsobem, není nutné předávat žádné další argumenty `--foreach` .
-* Jednotlivé hodnoty můžete oddělit `.tsv` pomocí **karty**.
-
-Nicméně pokud máte `.tsv` soubor podobný následujícímu příkladu se záhlavími sloupců, která **neodpovídají** argumentům příkazového řádku:
-
-```output
-wav_path    str_text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
-```
-
-Tyto názvy polí můžete přepsat na správné argumenty pomocí následující syntaxe ve `--foreach` volání. Toto je stejné volání jako výše.
-
-```shell
-spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
+```console
+spx help translate
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dokončete rychlé zprovoznění [rozpoznávání řeči](./quickstarts/speech-to-text-from-microphone.md) nebo [řeči](./quickstarts/text-to-speech.md) pomocí sady SDK.
+* [Možnosti konfigurace CLI služby Speech](./spx-data-store-configuration.md)
+* [Operace dávkového zpracování pomocí funkce CLI](./spx-batch-operations.md)

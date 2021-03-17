@@ -4,12 +4,12 @@ description: Služba Azure Container Instances nabízí nejrychlejší a nejjedn
 ms.topic: overview
 ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 873f7cc51d1b369503a72501ae000000ff06f805
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121659"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573009"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je služba Azure Container Instances?
 
@@ -21,10 +21,7 @@ Azure Container Instances je skvělým řešením pro jakýkoli scénář, kter�
 
 Kontejnery nabízejí oproti virtuálním počítačům významné výhody při spouštění. Služba Azure Container Instances může spouštět kontejnery v Azure během několika sekund a bez nutnosti zřizovat a spravovat virtuální počítače.
 
-Přeneste image kontejnerů pro Linux nebo Windows z dokovacího centra, privátního [registru kontejnerů Azure](../container-registry/index.yml)nebo jiného cloudového registru Docker. Azure Container Instances ukládá do mezipaměti několik běžných imagí základního operačního systému, což pomáhá zrychlit nasazení vašich vlastních imagí aplikace.
-
-> [!NOTE]
-> V současné době nemůžete nasadit image z místního registru do Azure Container Instances.
+Přeneste image kontejnerů pro Linux nebo Windows z dokovacího centra, privátního [registru kontejnerů Azure](../container-registry/index.yml)nebo jiného cloudového registru Docker. Navštivte [Nejčastější dotazy](container-instances-faq.md) , které vám pomůžou zjistit, které Registry podporuje ACI. Azure Container Instances ukládá do mezipaměti několik běžných imagí základního operačního systému, což pomáhá zrychlit nasazení vašich vlastních imagí aplikace.
 
 ## <a name="container-access"></a>Přístup k kontejneru
 
@@ -43,7 +40,7 @@ Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správn
 
 ### <a name="customer-data"></a>Zákaznická data
 
-Služba ACI ukládá minimální zákaznická data potřebná k tomu, aby vaše skupiny kontejnerů běžely podle očekávání. Ukládání zákaznických dat v jedné oblasti je aktuálně dostupné jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografického umístění. Pro všechny ostatní oblasti jsou zákaznická data uložená v [geograficky](https://azure.microsoft.com/global-infrastructure/geographies/). Další informace najdete v kontaktu s podporou Azure.
+Služba ACI ukládá minimální zákaznická data potřebná k tomu, aby vaše skupiny kontejnerů běžely podle očekávání. Ukládání zákaznických dat v jedné oblasti je aktuálně dostupné jenom v oblasti jihovýchodní Asie (Singapur) oblasti Asie a Tichomoří geografická a Brazílie – jih (stát Svatý Paulo) Brazílie geograficky. Pro všechny ostatní oblasti jsou zákaznická data uložená v [geograficky](https://azure.microsoft.com/global-infrastructure/geographies/). Další informace najdete v kontaktu s podporou Azure.
 
 ## <a name="custom-sizes"></a>Vlastní velikosti
 
@@ -68,9 +65,6 @@ Některé funkce jsou aktuálně omezené na kontejnery Linux:
 * [Prostředky GPU](container-instances-gpu.md) (Preview)
 
 Pro nasazení kontejnerů Windows používejte image založené na běžných [bitových kopiích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported).
-
-> [!NOTE]
-> Používání imagí založených na Windows serveru 2019 v Azure Container Instances je ve verzi Preview.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 

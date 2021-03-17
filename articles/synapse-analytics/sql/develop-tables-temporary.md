@@ -6,30 +6,30 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503204"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451780"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Dočasné tabulky v synapse SQL
 
 Tento článek obsahuje základní pokyny k používání dočasných tabulek a zvýrazňuje principy dočasných tabulek úrovně relace v rámci synapse SQL. 
 
-Prostředky ve fondu SQL i na vyžádání SQL (Preview) můžou využívat dočasné tabulky. SQL na vyžádání má omezení popsaná na konci tohoto článku. 
+Prostředky vyhrazený fondem SQL i servery bez serveru můžou využívat dočasné tabulky. Neserverový fond SQL má omezení popsaná na konci tohoto článku. 
 
 ## <a name="temporary-tables"></a>Dočasné tabulky
 
 Dočasné tabulky jsou užitečné při zpracování dat, zejména při transformaci, kde jsou mezilehlé výsledky přechodné. V synapse SQL existují dočasné tabulky na úrovni relace.  Jsou viditelné pouze v relaci, ve které byly vytvořeny. V takovém případě jsou automaticky vyhozeny při odhlášení relace. 
 
-## <a name="temporary-tables-in-sql-pool"></a>Dočasné tabulky ve fondu SQL
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>Dočasné tabulky ve vyhrazeném fondu SQL
 
-V prostředku fondu SQL nabízí dočasné tabulky přínos pro zvýšení výkonu, protože jejich výsledky jsou zapisovány do místního úložiště místo vzdáleného úložiště.
+Ve vyhrazeném prostředku fondu SQL nabízí dočasné tabulky přínos pro zvýšení výkonu, protože jejich výsledky jsou zapisovány do místního úložiště místo vzdáleného úložiště.
 
 ### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
 
@@ -94,12 +94,13 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`je účinný příkaz a má přidanou výhodu pro efektivní používání místa transakčního protokolu. 
+> `CTAS` je účinný příkaz a má přidanou výhodu pro efektivní používání místa transakčního protokolu. 
 > 
 > 
 
 ### <a name="drop-temporary-tables"></a>Odstranit dočasné tabulky
-Při vytvoření nové relace by neexistovaly žádné dočasné tabulky.  Nicméně pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že `CREATE TABLE` budou příkazy úspěšné, použijte jednoduchou kontrolu existence pomocí `DROP` : 
+
+Při vytvoření nové relace by neexistovaly žádné dočasné tabulky.  Nicméně pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že `CREATE TABLE` budou příkazy úspěšné, použijte jednoduchou kontrolu existence pomocí  `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -117,6 +118,7 @@ DROP TABLE #stats_ddl
 ```
 
 ### <a name="modularize-code"></a>Naplánovat modularizaci kód
+
 Dočasné tabulky lze použít kdekoli v uživatelské relaci. Tato funkce se pak dá zneužít, aby vám pomohlo naplánovat modularizaci kód vaší aplikace.  Chcete-li předvést následující uloženou proceduru, vygeneruje DDL pro aktualizaci všech statistik v databázi podle názvu statistiky:
 
 ```sql
@@ -195,7 +197,7 @@ V této fázi je jediná akce, ke které došlo, vytvořit uloženou proceduru, 
 
 Vzhledem k `DROP TABLE` tomu, že po dokončení uložené procedury není na konci uložené procedury, vytvořená tabulka zůstane a lze ji číst mimo uloženou proceduru.  
 
-Na rozdíl od jiných databází SQL Server umožňuje synapse SQL použít dočasnou tabulku mimo postup, který ho vytvořil.  Dočasné tabulky vytvořené prostřednictvím fondu SQL lze použít **kdekoli** v relaci. V důsledku toho budete mít více modulárních a spravovatelných kódů, jak je znázorněno v následující ukázce:
+Na rozdíl od jiných databází SQL Server umožňuje synapse SQL použít dočasnou tabulku mimo postup, který ho vytvořil.  Dočasné tabulky vytvořené prostřednictvím vyhrazeného fondu SQL lze použít **kdekoli** v relaci. V důsledku toho budete mít více modulárních a spravovatelných kódů, jak je znázorněno v následující ukázce:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,15 +220,15 @@ DROP TABLE #stats_ddl;
 
 ### <a name="temporary-table-limitations"></a>Omezení dočasné tabulky
 
-Fond SQL má několik omezení implementace pro dočasné tabulky:
+Vyhrazený fond SQL má omezení implementace pro dočasné tabulky:
 
 - Jsou podporovány pouze dočasné tabulky s rozsahem relace.  Globální dočasné tabulky nejsou podporovány.
 - V dočasných tabulkách nelze vytvořit zobrazení.
 - Dočasné tabulky lze vytvořit pouze pomocí distribuce hash nebo kruhové dotazování.  Distribuce replikované dočasné tabulky není podporována. 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>Dočasné tabulky na vyžádání SQL (Preview)
+## <a name="temporary-tables-in-serverless-sql-pool"></a>Dočasné tabulky ve fondu SQL bez serveru
 
-Dočasné tabulky na vyžádání SQL jsou podporovány, ale jejich použití je omezeno. Nelze je použít v dotazech, které cílí na soubory. 
+Dočasné tabulky ve fondu SQL bez serveru jsou podporované, ale jejich použití je omezené. Nelze je použít v dotazech, které cílí na soubory. 
 
 Například nemůžete připojit dočasnou tabulku s daty ze souborů v úložišti. Počet dočasných tabulek je omezený na 100 a jejich celková velikost je omezená na 100 MB.
 

@@ -1,14 +1,14 @@
 ---
 title: Schéma CloudEvents v 1.0 s Azure Event Grid
-description: Popisuje, jak používat CloudEvents schéma pro události v Azure Event Grid. Služba podporuje události v implementaci JSON cloudových událostí.
+description: V této části najdete popis postupu použití schématu CloudEvents v 1.0 pro události v Azure Event Grid. Služba podporuje události v implementaci JSON cloudových událostí.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1c6085c0397f23d44cf11d43a3e1da71f0e728bb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d17e92c28784ca31f3c9809c93e885b22c6a38d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103071"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324174"
 ---
 # <a name="cloudevents-v10-schema-with-azure-event-grid"></a>Schéma CloudEvents v 1.0 s Azure Event Grid
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320676"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900812"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod zabezpečením ve službě Azure Kubernetes Service (AKS)
 
@@ -29,20 +29,20 @@ Můžete si také přečíst osvědčené postupy pro [zabezpečení clusteru][b
 
 **Doprovodné materiály k osvědčeným postupům** – můžete spustit jako jiný uživatel nebo skupinu a omezit přístup k podkladovým procesům a službám uzlů, definovat pod nastavením kontextu zabezpečení. Přiřaďte minimální počet požadovaných oprávnění.
 
-Aby vaše aplikace běžely správně, měly by být spuštěny v rámci definovaného uživatele nebo skupiny, nikoli jako *kořen*. `securityContext`Pro pod nebo kontejner můžete definovat nastavení, jako je například *RunAsUser* nebo *fsGroup* , aby se mohla předpokládat příslušná oprávnění. Přiřaďte pouze požadovaná oprávnění uživatele nebo skupiny a nepoužívejte kontext zabezpečení jako prostředek k tomu, abyste mohli převzít další oprávnění. Nastavení *runAsUser*, eskalace oprávnění a dalších možností pro Linux jsou k dispozici pouze v uzlech a luskech systému Linux.
+Aby vaše aplikace běžely správně, měly by být spuštěny v rámci definovaného uživatele nebo skupiny, nikoli jako *kořen* . `securityContext`Pro pod nebo kontejner můžete definovat nastavení, jako je například *RunAsUser* nebo *fsGroup* , aby se mohla předpokládat příslušná oprávnění. Přiřaďte pouze požadovaná oprávnění uživatele nebo skupiny a nepoužívejte kontext zabezpečení jako prostředek k tomu, abyste mohli převzít další oprávnění. Nastavení *runAsUser* , eskalace oprávnění a dalších možností pro Linux jsou k dispozici pouze v uzlech a luskech systému Linux.
 
 Když spustíte jako nerootový uživatel, kontejnery se nemůžou přivážet k privilegovaným portům pod 1024. V tomto scénáři je možné použít služby Kubernetes Services k promaskování faktu, že aplikace běží na konkrétním portu.
 
 Kontext zabezpečení pod může také definovat další možnosti nebo oprávnění pro přístup k procesům a službám. Můžete nastavit následující definice běžných kontextů zabezpečení:
 
-* **allowPrivilegeEscalation** definuje, zda může rozhraním pod předpokládat *Kořenová* oprávnění. Navrhněte své aplikace, aby toto nastavení bylo vždycky nastavené na *false*.
+* **allowPrivilegeEscalation** definuje, zda může rozhraním pod předpokládat *Kořenová* oprávnění. Navrhněte své aplikace, aby toto nastavení bylo vždycky nastavené na *false* .
 * **Funkce systému Linux** umožňují podkladové procesy přístupu pod uzlem. Pokaždé, když tyto možnosti přiřadíte, se ujistěte. Přiřaďte nejnižší počet potřebných oprávnění. Další informace najdete v tématu [Možnosti pro Linux][linux-capabilities].
 * **SELinux Labels** je modul zabezpečení jádra pro Linux, který umožňuje definovat zásady přístupu pro služby, procesy a přístup k systému souborů. Znovu přiřaďte nejnižší počet potřebných oprávnění. Další informace najdete v tématu [Možnosti SELinux v Kubernetes][selinux-labels] .
 
 Následující příklad pod YAML manifest nastaví nastavení kontextu zabezpečení k definování:
 
 * Pod se spustí jako ID uživatele *1000* a část id skupiny *2000* .
-* Nejde eskalovat oprávnění k použití.`root`
+* Nejde eskalovat oprávnění k použití. `root`
 * Umožňuje systémům Linux přístup k síťovým rozhraním a hodinám v reálném čase hostitele.
 
 ```yaml
@@ -55,7 +55,7 @@ spec:
     fsGroup: 2000
   containers:
     - name: security-context-demo
-      image: nginx:1.15.5
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         runAsUser: 1000
         allowPrivilegeEscalation: false
@@ -85,7 +85,7 @@ Následující [přidružené open source projekty AKS][aks-associated-projects]
 
 Spravovaná identita pro prostředky Azure umožňuje sám sebe ověřit vůči službám Azure, které je podporují, jako je například Storage nebo SQL. Pod je přiřazena identita Azure, která umožňuje ověření pro Azure Active Directory a příjem digitálního tokenu. Tento digitální token se dá předkládat ostatním službám Azure, které kontrolují, jestli má oprávnění k přístupu ke službě a provádění požadovaných akcí. Tento přístup znamená, že pro připojovací řetězce databáze nejsou vyžadovány tajné klíče. Zjednodušený pracovní postup pro spravovanou identitu pod je zobrazený v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro spravovanou identitu pod Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Zjednodušený pracovní postup pro spravovanou identitu pod Azure":::
 
 Pomocí spravované identity nemusí kód vaší aplikace zahrnovat přihlašovací údaje pro přístup ke službě, jako je například Azure Storage. Každý pod se ověřuje s vlastní identitou, takže můžete auditovat a kontrolovat přístup. Pokud se vaše aplikace připojuje k jiným službám Azure, využijte spravované identity k omezení opakovaného použití přihlašovacích údajů a rizika expozice.
 
@@ -97,7 +97,7 @@ Použití projektu identity pod umožňuje ověřování v rámci podpory služe
 
 Když aplikace potřebuje přihlašovací údaje, komunikují s digitálním trezorem, načtou nejnovější tajný obsah a pak se připojí k požadované službě. Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Azure Key Vault pomocí spravované identity se zobrazuje v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Key Vault pomocí spravované identity pod](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Zjednodušený pracovní postup pro spravovanou identitu pod Azure":::
 
 Pomocí Key Vault ukládáte a pravidelně otáčíte tajné klíče, jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí [zprostředkovatele Azure Key Vault pro ovladač pro úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Ovladač CSI úložiště tajných kódů umožňuje, aby cluster AKS nativně načetl obsah tajných kódů z Key Vault a bezpečně poskytoval pouze žadatelům nacházející se pod ním. Spolupracujte se svým operátorem clusteru, abyste nasadili ovladač do AKS pracovních uzlů pro úložiště tajných klíčů. Pomocí spravované identity pod ní můžete požádat o přístup k Key Vault a načíst obsah v tajnosti potřebný prostřednictvím ovladače v úložišti tajných kódů.
 
@@ -115,7 +115,7 @@ Tento článek se zaměřuje na zabezpečení lusků. Chcete-li implementovat n�
 [aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#selinuxoptions-v1-core
-[aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
+[aks-associated-projects]: https://awesomeopensource.com/projects/aks?categoryPage=11
 
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md

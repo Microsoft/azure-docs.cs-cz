@@ -1,30 +1,24 @@
 ---
 title: Použití Azure Event Grid s událostmi ve schématu CloudEvents
-description: Popisuje, jak používat CloudEvents schéma pro události v Azure Event Grid. Služba podporuje události v implementaci JSON cloudových událostí.
+description: Popisuje, jak používat CloudEvents schéma pro události v Azure Event Grid. Služba podporuje události v implementaci JSON pro CloudEvents.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0064fcc8da2a2aee8b4e413e697d2d8219fd09cc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 11/10/2020
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 484f118791d57c082a9f4383b1af4a22c04849c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419882"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737898"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 Kromě [výchozího schématu událostí](event-schema.md)Azure Event Grid nativně podporuje události v [implementaci JSON pro vazby protokolu CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) a [http](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) je [otevřená specifikace](https://github.com/cloudevents/spec/blob/v1.0/spec.md) popisující data události.
 
-CloudEvents zjednodušuje interoperabilitu tím, že poskytuje společné schéma událostí pro publikování a spotřebovávání cloudových událostí. Toto schéma umožňuje jednotným nástrojům, standardním způsobům směrování &ch událostí a univerzálním způsobům deserializace vnějšího schématu událostí. Pomocí společného schématu můžete snadněji integrovat práci na různých platformách.
+CloudEvents zjednodušuje interoperabilitu tím, že poskytuje společné schéma událostí pro publikování a využívání cloudových událostí. Toto schéma umožňuje jednotným nástrojům, standardním způsobům směrování a zpracování událostí a univerzální způsoby deserializace vnějšího schématu události. Pomocí společného schématu můžete snadněji integrovat práci na různých platformách.
 
 CloudEvents se sestavuje několika [spolupracovníky](https://github.com/cloudevents/spec/blob/master/community/contributors.md), včetně Microsoftu, prostřednictvím [základu cloud computingu Native](https://www.cncf.io/). Je aktuálně k dispozici jako verze 1,0.
 
 Tento článek popisuje, jak používat schéma CloudEvents s Event Grid.
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Nainstalovat funkci Preview
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent schéma
 
@@ -56,34 +50,33 @@ Tady je příklad události Azure Blob Storage ve formátu CloudEvents:
 }
 ```
 
-Podrobný popis dostupných polí, jejich typy a definice v CloudEvents v 1.0 jsou [k dispozici zde](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+Podrobný popis dostupných polí, jejich typy a definice najdete v tématu [CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
-Hodnoty hlaviček pro události doručené ve schématu CloudEvents a schématu Event Grid jsou stejné s výjimkou `content-type` . V případě schématu CloudEvents je hodnota hlavičky `"content-type":"application/cloudevents+json; charset=utf-8"` . Pro Event Grid schéma je hodnota hlavičky `"content-type":"application/json; charset=utf-8"` .
+Hodnoty hlaviček pro události doručené ve schématu CloudEvents a schématu Event Grid jsou stejné s výjimkou `content-type` . Pro schéma CloudEvents je tato hodnota hlavičky `"content-type":"application/cloudevents+json; charset=utf-8"` . Pro Event Grid schéma je hodnota hlavičky `"content-type":"application/json; charset=utf-8"` .
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurace Event Grid pro CloudEvents
 
-Event Grid můžete použít pro vstupní i výstupní události ve schématu CloudEvents. CloudEvents můžete použít pro systémové události, jako jsou události Blob Storage a události IoT Hub a vlastní události. Tyto události může také transformovat na základě spojení a zpátky.
+Event Grid můžete použít pro vstupní i výstupní události ve schématu CloudEvents. Následující tabulka popisuje možné transformace:
 
+ Prostředek Event Grid | Vstupní schéma       | Schéma doručení
+|---------------------|-------------------|---------------------
+| Systémová témata       | Schéma služby Event Grid | Event Grid schématu nebo schématu CloudEvents
+| Témata a domény uživatele | Schéma služby Event Grid | Event Grid schématu nebo schématu CloudEvents
+| Témata a domény uživatele | CloudEvents schéma | CloudEvents schéma
+| Témata a domény uživatele | Vlastní schéma     | Vlastní schéma, Event Grid schéma nebo schéma CloudEvents
+| PartnerTopics       | CloudEvents schéma | CloudEvents schéma
 
-| Vstupní schéma       | Výstupní schéma
-|--------------------|---------------------
-| Formát CloudEvents | Formát CloudEvents
-| Formát Event Grid  | Formát CloudEvents
-| Formát Event Grid  | Formát Event Grid
+Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do Event Gridho tématu a při vytváření odběru událostí.
 
-Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
+Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
 
 ### <a name="input-schema"></a>Vstupní schéma
 
 Vstupní schéma pro vlastní téma nastavíte při vytváření vlastního tématu.
 
-Pokud používáte Azure CLI, použijte:
+Pro rozhraní příkazového řádku Azure použijte:
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -94,11 +87,7 @@ az eventgrid topic create \
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName gridResourceGroup `
   -Location westcentralus `
   -Name <topic_name> `
@@ -109,7 +98,7 @@ New-AzureRmEventGridTopic `
 
 Výstupní schéma nastavíte při vytváření odběru události.
 
-Pokud používáte Azure CLI, použijte:
+Pro rozhraní příkazového řádku Azure použijte:
 
 ```azurecli-interactive
 topicID=$(az eventgrid topic show --name <topic-name> -g gridResourceGroup --query id --output tsv)
@@ -123,9 +112,9 @@ az eventgrid event-subscription create \
 
 Pokud používáte PowerShell, použijte:
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName <event_subscription_name> `
   -Endpoint <endpoint_URL> `
@@ -134,34 +123,34 @@ New-AzureRmEventGridSubscription `
 
  V současné době nemůžete použít Trigger Event Grid pro aplikaci Azure Functions, když se událost doručí ve schématu CloudEvents. Použijte Trigger HTTP. Příklady implementace triggeru HTTP, který přijímá události ve schématu CloudEvents, najdete v tématu [použití CloudEvents s Azure Functions](#azure-functions).
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>Ověření koncového bodu pomocí CloudEvents v 1.0
+## <a name="endpoint-validation-with-cloudevents-v10"></a>Ověření koncového bodu pomocí CloudEvents v 1.0
 
-Pokud už jste obeznámeni s Event Grid, možná jste si všimli, že je Event Grid ověření koncového bodu handshake pro předcházení zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](webhook-event-delivery.md) pomocí metody HTTP. Další informace o této službě si můžete přečíst [tady](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Při použití schématu CloudEvents pro výstup Event Grid použití s ochranou zneužití CloudEvents v 1.0 místo mechanismu události ověřování Event Grid.
+Pokud už jste obeznámeni s Event Grid, můžete znát metodu handshake ověřování koncového bodu, abyste zabránili zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](webhook-event-delivery.md) pomocí metody HTTP. Další informace najdete v tématu [Webhooky HTTP 1,1 pro doručování událostí – verze 1,0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Když pro výstup použijete schéma CloudEvents, Event Grid používá místo mechanismu události ověřování Event Grid ochranu proti zneužívání CloudEvents v 1.0.
 
 <a name="azure-functions"></a>
 
 ## <a name="use-with-azure-functions"></a>Použít s Azure Functions
 
-[Vazba Azure Functions Event Grid](../azure-functions/functions-bindings-event-grid.md) není nativně podporovaná CloudEvents, takže funkce aktivované protokolem HTTP se používají ke čtení zpráv CloudEvents. Při použití triggeru HTTP ke čtení CloudEvents je nutné napsat kód pro to, co aktivační událost Event Grid automaticky:
+[Vazba Azure Functions Event Grid](../azure-functions/functions-bindings-event-grid.md) nedokáže nativně podporovat CloudEvents, takže funkce aktivované protokolem HTTP se používají ke čtení zpráv CloudEvents. Při použití triggeru HTTP ke čtení CloudEvents je nutné napsat kód pro to, co aktivační událost Event Grid automaticky:
 
-* Odešle odpověď ověření k žádosti o [ověření předplatného](../event-grid/webhook-event-delivery.md).
-* Vyvolá funkci jednou pro každý prvek pole události obsaženého v textu požadavku.
+* Odešle odpověď ověření k žádosti o [ověření předplatného](../event-grid/webhook-event-delivery.md) .
+* Vyvolá funkci jednou pro každý prvek pole události obsaženého v textu žádosti.
 
-Informace o adrese URL, která se má použít k místnímu vyvolání funkce nebo při spuštění v Azure, najdete v tématu [Referenční dokumentace k aktivačním vazbám http](../azure-functions/functions-bindings-http-webhook.md) .
+Informace o adrese URL, která se má použít k místnímu vyvolání funkce nebo při spuštění v Azure, najdete v tématu [Referenční dokumentace k aktivačním vazbám http](../azure-functions/functions-bindings-http-webhook.md).
 
-Následující vzorový kód jazyka C# pro Trigger HTTP simuluje chování triggeru Event Grid.  Tento příklad slouží pro události doručené ve schématu CloudEvents.
+Následující vzorový kód jazyka C# pro Trigger HTTP simuluje chování triggeru Event Grid. Tento příklad slouží pro události doručené ve schématu CloudEvents.
 
 ```csharp
 [FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
-    if (req.Method == "OPTIONS")
+    if (req.Method == HttpMethod.Options)
     {
         // If the request is for subscription validation, send back the validation code
         
         var response = req.CreateResponse(HttpStatusCode.OK);
-        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+        response.Headers.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
 
         return response;
     }
@@ -169,7 +158,7 @@ public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLeve
     var requestmessage = await req.Content.ReadAsStringAsync();
     var message = JToken.Parse(requestmessage);
 
-    // The request is not for subscription validation, so it's for an event.
+    // The request isn't for subscription validation, so it's for an event.
     // CloudEvents schema delivers one event at a time.
     log.LogInformation($"Source: {message["source"]}");
     log.LogInformation($"Time: {message["eventTime"]}");
@@ -189,14 +178,18 @@ module.exports = function (context, req) {
         // If the request is for subscription validation, send back the validation code
         
         context.log('Validate request received');
-        context.res = { status: 200 };
-        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
+        context.res = {
+            status: 200,
+            headers: {
+                'Webhook-Allowed-Origin': 'eventgrid.azure.net',
+            },
+         };
     }
     else
     {
         var message = req.body;
         
-        // The request is not for subscription validation, so it's for an event.
+        // The request isn't for subscription validation, so it's for an event.
         // CloudEvents schema delivers one event at a time.
         var event = JSON.parse(message);
         context.log('Source: ' + event.source);
@@ -211,5 +204,5 @@ module.exports = function (context, req) {
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o sledování doručení událostí najdete v tématu [monitorování Event Grid doručování zpráv](monitor-event-delivery.md).
-* Doporučujeme vám testovat, komentovat a [přispívat](https://github.com/cloudevents/spec/blob/master/community/CONTRIBUTING.md) k CloudEvents.
+* Doporučujeme vám testovat, komentovat a [přispívat k CloudEvents](https://github.com/cloudevents/spec/blob/master/community/CONTRIBUTING.md).
 * Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

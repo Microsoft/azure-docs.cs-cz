@@ -3,17 +3,18 @@ title: Přehled virtuálních počítačů s Windows v Azure
 description: Přehled virtuálních počítačů s Windows v Azure.
 author: cynthn
 ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2432cc49d770471979e089a496b9d0351eec26fd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589618"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550327"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -50,18 +51,14 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 | portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
 | REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
-| Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
-
-### <a name="singapore-data-residency"></a>Zasídlí dat Singapuru
-
-V Azure je funkce pro ukládání zákaznických dat v jedné oblasti v současnosti dostupná jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografické oblasti. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky. Další informace najdete v tématu [Centrum zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+| Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account). |
 
 ## <a name="availability"></a>Dostupnost
 Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% dostupností pro samostatné instance virtuálních počítačů za předpokladu, že virtuální počítač nasadíte se službou Premium Storage pro všechny disky.  Aby se na vaše nasazení vztahovala standardní záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, stále je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci skupiny dostupnosti. Skupina dostupnosti zajistí, že vaše virtuální počítače jsou distribuované mezi několik domén selhání v datacentrech Azure a také nasazené na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
 
 ## <a name="vm-size"></a>Velikost virtuálního počítače
-[Velikost](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
+[Velikost](../sizes.md) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
 
 Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) na základě velikosti virtuálního počítače a operačního systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
 
@@ -69,7 +66,7 @@ Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virt
 Vaše předplatné má nastavené výchozí [kvóty](../../azure-resource-manager/management/azure-subscription-service-limits.md), které mohou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast. Limity můžete navýšit tak, že [vyplníte lístek podpory s žádostí o navýšení](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
-Virtuální počítače používají [virtuální pevné disky (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k ukládání jejich operačního systému (OS) a dat. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
+Virtuální počítače používají [virtuální pevné disky (VHD)](../managed-disks-overview.md) k ukládání jejich operačního systému (OS) a dat. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
 
 Azure poskytuje mnoho [imagí na webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). Podporují se jen 64bitové operační systémy. Podrobnosti o podporovaných hostovaných operačních systémech, rolích a funkcích najdete v tématu věnovaném [podpoře serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -78,9 +75,9 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky *offerName* |
+| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky  |
 | Rozhraní REST API |[Vypsat vydavatele imagí](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[AZ VM Image list-Publishers](/cli/azure/vm/image?view=azure-cli-latest) – *umístění umístění*<BR>[AZ VM Image list-nabídky](/cli/azure/vm/image?view=azure-cli-latest) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](/cli/azure/vm?view=azure-cli-latest) - *-Location Location--* *Publisher--* Offer *offername*|
+| Azure CLI |[AZ VM Image list-Publishers](/cli/azure/vm/image) – *umístění umístění*<BR>[AZ VM Image list-nabídky](/cli/azure/vm/image) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](/cli/azure/vm) - *-Location Location--* *Publisher--* Offer *offername*|
 
 Můžete se rozhodnout [nahrát a použít vlastní image](upload-generalized-managed.md). Pokud tak učiníte, název vydavatele, nabídka a skladová jednotka (SKU) se nepoužijí.
 
@@ -103,7 +100,13 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 | [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Yes |Virtuální počítač musí být členem virtuální sítě. |
 | [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
 | [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Yes |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Datové disky](attach-managed-disk-portal.md) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+
+
+## <a name="data-residency"></a>Rezidence dat
+
+Funkce pro ukládání zákaznických dat v rámci Azure je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) oblasti Asie a Tichomoří geografická a Brazílie – jih (stát Svatý Paulo) Brazílie geograficky. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky. Další informace najdete v tématu [Centrum zabezpečení](https://azure.microsoft.com/global-infrastructure/data-residency/).
+
 
 ## <a name="next-steps"></a>Další kroky
 

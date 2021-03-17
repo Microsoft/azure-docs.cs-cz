@@ -1,27 +1,31 @@
 ---
-title: Jak aktualizovat cloudovou službu | Microsoft Docs
+title: Jak aktualizovat cloudovou službu (Classic) | Microsoft Docs
 description: Naučte se aktualizovat cloudové služby v Azure. Zjistěte, jak aktualizace cloudové služby pokračuje, aby se zajistila dostupnost.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360340"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741107"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>Jak aktualizovat cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Aktualizace cloudové služby včetně jejích rolí a hostovaného operačního systému je proces tří kroků. Nejdřív je potřeba nahrát binární soubory a konfigurační soubory pro novou cloudovou službu nebo verzi operačního systému. V dalším kroku Azure rezervuje výpočetní a síťové prostředky pro cloudovou službu na základě požadavků nové verze cloudové služby. Nakonec Azure provede postupný upgrade, který klienta postupně aktualizuje na novou verzi nebo hostovaný operační systém a zároveň zachovává vaši dostupnost. Tento článek popisuje podrobnosti tohoto posledního kroku – postupná inovace.
 
 ## <a name="update-an-azure-service"></a>Aktualizace služby Azure
 Azure uspořádá instance rolí do logických seskupení označovaných jako upgradovací domény (UD). Upgradovací domény (UD) jsou logické sady instancí rolí, které se aktualizují jako skupina.  Azure aktualizuje cloudovou službu po jednom UD, což umožňuje instancím v jiné UDs dál obsluhovat provoz.
 
-Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount naleznete v tématu [schéma definice Azure Cloud Services (soubor. csdef)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
+Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount naleznete v tématu [schéma definice Azure Cloud Services (soubor. csdef)](./schema-csdef-file.md).
 
 Při provádění místní aktualizace jedné nebo více rolí ve službě Azure aktualizuje sady instancí rolí v závislosti na upgradovací doméně, do které patří. Azure aktualizuje všechny instance v dané upgradovací doméně – zastavuje je, aktualizuje je, přenáší je online a pak se přesune na další doménu. Když zastavíte jenom instance spuštěné v aktuální upgradovací doméně, Azure zajistí, že dojde k aktualizaci s nejmenším možným dopadem na běžící službu. Další informace najdete v tématu [jak aktualizace pokračuje](#howanupgradeproceeds) dále v tomto článku.
 
@@ -53,7 +57,7 @@ V následující tabulce jsou uvedeny povolené změny služby během aktualizac
 | Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
 | Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
 | Počet instancí konkrétní role |Ano |Ano |Ano |
-| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Yes |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Ano |
 | Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
 | Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
 | Přidat nové certifikáty |Ano |Ano |Ano |
@@ -99,12 +103,12 @@ Kontroler prostředků infrastruktury počká 30 minut, než se každá instance
 
 Při upgradování služby z jedné instance na více instancí bude služba zavedena v době, kdy se upgrade provede v důsledku upgradu služeb Azure. Smlouva o úrovni služeb garantuje dostupnost služby pouze pro služby, které jsou nasazeny s více než jednou instancí. Následující seznam popisuje, jak jsou data na jednotlivých jednotkách ovlivněná jednotlivými scénáři upgradu služby Azure:
 
-|Scénář|Jednotka C|Jednotka D|Jednotka E|
+|Scenario|Jednotka C|Jednotka D|Jednotka E|
 |--------|-------|-------|-------|
 |Restartování virtuálního počítače|Konzervován|Konzervován|Konzervován|
 |Restart portálu|Konzervován|Konzervován|Zneškodněn|
 |Přeinstalace portálu|Konzervován|Zneškodněn|Zneškodněn|
-|Místní upgrade|Konzervován|Konzervován|Zneškodněn|
+|In-Place upgrade|Konzervován|Konzervován|Zneškodněn|
 |Migrace uzlů|Zneškodněn|Zneškodněn|Zneškodněn|
 
 Všimněte si, že ve výše uvedeném seznamu představuje jednotka E: kořenovou jednotku role a neměl by být pevně zakódovaný. Místo toho použijte proměnnou prostředí **% RoleRoot%** k reprezentaci jednotky.
@@ -182,7 +186,4 @@ Následující diagram znázorňuje, jak je služba, která obsahuje dvě role, 
 ## <a name="next-steps"></a>Další kroky
 [Správa Cloud Services](cloud-services-how-to-manage-portal.md)  
 [Jak monitorovat Cloud Services](cloud-services-how-to-monitor.md)  
-[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)  
-
-
-
+[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

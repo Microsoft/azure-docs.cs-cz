@@ -1,26 +1,26 @@
 ---
-title: Konfigurace hesel aplikací pro Azure Multi-Factor Authentication – Azure Active Directory
-description: Naučte se konfigurovat a používat hesla aplikací pro starší verze aplikací v Azure Multi-Factor Authentication
+title: Konfigurace hesel aplikací pro Azure AD Multi-Factor Authentication – Azure Active Directory
+description: Naučte se konfigurovat a používat hesla aplikací pro starší verze aplikací v Azure AD Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224913"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743101"
 ---
-# <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání služby Azure Multi-Factor Authentication se staršími aplikacemi pomocí hesel aplikací
+# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání Multi-Factor Authentication Azure AD se staršími aplikacemi pomocí hesel aplikací
 
-Některé aplikace, například Office 2010 nebo starší a Apple Mail před iOS 11, nepodporují službu Multi-Factor Authentication. Aplikace nejsou nakonfigurované tak, aby přijímaly sekundární formu ověřování nebo výzvy. Pokud chcete používat tyto aplikace zabezpečeným způsobem s povoleným Azure Multi-Factor Authentication pro uživatelské účty, můžete použít hesla aplikací. Tato hesla aplikace nahradila tradiční heslo, aby mohla aplikace obejít službu Multi-Factor Authentication a správně pracovat.
+Některé starší, neprohlížečové aplikace, jako je Office 2010 nebo starší, a Apple Mail před iOS 11 nerozumí pozastavení nebo přerušení procesu ověřování. Pokud je pro Azure AD povolený Multi-Factor Authentication a pokusí se použít některou z těchto starších aplikací, které nepoužívají prohlížeč, nemůže se úspěšně ověřit. Pokud chcete používat tyto aplikace zabezpečeným způsobem s Multi-Factor Authentication Azure AD povolenými pro uživatelské účty, můžete použít hesla aplikací. Tato hesla aplikace nahradila tradiční heslo, aby mohla aplikace obejít službu Multi-Factor Authentication a správně pracovat.
 
 Moderní ověřování se podporuje u klientů systém Microsoft Office 2013 a později. Klienti Office 2013, včetně Outlooku, podporují moderní protokoly ověřování a dají se povolit pro práci se dvěma kroky ověřování. Po povolení klienta se pro klienta nevyžadují hesla aplikací.
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak povolit a používat hesla aplikací pro star�
 
 ## <a name="overview-and-considerations"></a>Přehled a požadavky
 
-Když je pro Azure Multi-Factor Authentication povolený uživatelský účet, regulární výzvy k přihlášení přeruší požadavek na další ověření. Některé starší aplikace nerozumí tomuto přerušení v procesu přihlašování, takže ověření se nepovede. Pokud chcete zachovat zabezpečení uživatelského účtu a ponechat Azure Multi-Factor Authentication povolené, můžete místo normálního uživatelského jména a hesla použít hesla aplikací. Pokud heslo aplikace použité během přihlašování není k dispozici, zobrazí se žádné další ověřovací výzvy, aby ověření proběhlo úspěšně.
+Když je pro službu Azure Multi-Factor Authentication AD povolený uživatelský účet, bude se pravidelné přihlašovací výzvy k dalšímu ověření přerušit pomocí žádosti. Některé starší aplikace nerozumí tomuto přerušení v procesu přihlašování, takže ověření se nepovede. Aby bylo možné zachovat zabezpečení uživatelského účtu a opustit Multi-Factor Authentication služby Azure AD, můžete místo normálního uživatelského jména a hesla použít hesla aplikací. Pokud heslo aplikace použité během přihlašování není k dispozici, zobrazí se žádné další ověřovací výzvy, aby ověření proběhlo úspěšně.
 
 Hesla aplikací se generují automaticky, neurčuje ho uživatel. Díky tomuto automaticky generovanému heslu by útočník mohl odhadnout, takže je bezpečnější. Uživatelé nemusí sledovat hesla nebo je zadávat pokaždé, když jsou hesla aplikace zadána pouze jednou pro každou aplikaci.
 
@@ -39,7 +39,7 @@ Při použití hesel aplikací platí následující požadavky:
 
 * Pro každého uživatele je povolený limit 40 hesel aplikací.
 * Aplikace, které ukládá hesla do mezipaměti a používají je v místních scénářích, můžou selhat, protože heslo aplikace není známé mimo pracovní nebo školní účet. Příkladem tohoto scénáře jsou e-maily systému Exchange, které jsou místní, ale Archivovaná pošta je v cloudu. V tomto scénáři stejné heslo nefunguje.
-* Po povolení služby Azure Multi-Factor Authentication na účtu uživatele se hesla aplikací dají použít u většiny klientů bez prohlížeče, jako je Outlook a Microsoft Skype pro firmy. Akce správy se ale nedají provádět pomocí hesel aplikací přes neprohlížečové aplikace, jako je Windows PowerShell. Akce se nedají provést, i když má uživatel účet správce.
+* Po povolení služby Azure AD Multi-Factor Authentication na účtu uživatele se hesla aplikací dají použít u většiny klientů bez prohlížeče, jako je Outlook a Microsoft Skype pro firmy. Akce správy se ale nedají provádět pomocí hesel aplikací přes neprohlížečové aplikace, jako je Windows PowerShell. Akce se nedají provést, i když má uživatel účet správce.
     * Chcete-li spustit skripty prostředí PowerShell, vytvořte účet služby se silným heslem a nepovolujte účet pro dvoustupňové ověřování.
 * Pokud se domníváte, že je uživatelský účet napadený, a odvoláte nebo resetujete heslo k účtu, měli byste taky aktualizovat hesla aplikací. Hesla aplikací nejsou automaticky odvolána, když je heslo nebo resetování hesla uživatelského účtu zrušeno. Uživatel by měl odstranit existující hesla aplikací a vytvořit nové.
    * Další informace najdete v tématu [Vytvoření a odstranění hesel aplikací ze stránky další ověření zabezpečení](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
@@ -55,7 +55,7 @@ Doporučuje se vytvořit jedno heslo aplikace na jedno zařízení, nikoli jedno
 
 ## <a name="federated-or-single-sign-on-app-passwords"></a>Hesla federovaného nebo jednotného přihlašování k aplikacím
 
-Azure AD podporuje federaci nebo jednotné přihlašování (SSO) s místními Active Directory Domain Services (služba AD DS). Pokud je vaše organizace federované s Azure AD a používáte Azure Multi-Factor Authentication, platí následující doporučení k heslům aplikací:
+Azure AD podporuje federaci nebo jednotné přihlašování (SSO) s místními Active Directory Domain Services (služba AD DS). Pokud je vaše organizace federované s Azure AD a používáte Multi-Factor Authentication Azure AD, platí následující doporučení k heslům aplikací:
 
 >[!NOTE]
 > Následující body se vztahují jenom na zákazníky federovaného (SSO).
@@ -72,7 +72,7 @@ Předpokládejme například, že máte následující architekturu:
 * Vaše místní instance Active Directory je federované s Azure AD.
 * Používáte Exchange Online.
 * Používáte Skype pro firmy místně.
-* Používáte Azure Multi-Factor Authentication.
+* Používáte Multi-Factor Authentication Azure AD.
 
 V tomto scénáři použijete následující přihlašovací údaje:
 
@@ -83,8 +83,8 @@ V tomto scénáři použijete následující přihlašovací údaje:
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkce hesla aplikací musí být povolená, aby je uživatelé mohli používat. Pokud chcete uživatelům poskytnout možnost vytvářet hesla aplikací, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyhledejte a vyberte **Azure Active Directory**a pak zvolte **Uživatelé**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+2. Vyhledejte a vyberte **Azure Active Directory** a pak zvolte **Uživatelé**.
 3. Na navigačním panelu v horní části okna *uživatele* vyberte **Multi-Factor Authentication** .
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** zaškrtněte políčko **dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
@@ -99,10 +99,10 @@ Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkc
 
 ## <a name="create-an-app-password"></a>Vytvoření hesla aplikace
 
-Když uživatelé dokončí svoji počáteční registraci pro Azure Multi-Factor Authentication, je na konci procesu registrace k dispozici možnost vytvořit hesla aplikací.
+Když uživatelé dokončí svoji počáteční registraci pro Azure AD Multi-Factor Authentication, je na konci procesu registrace k dispozici možnost vytvořit hesla aplikací.
 
-Uživatelé můžou po registraci vytvářet taky hesla aplikací. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Uživatelé můžou po registraci vytvářet taky hesla aplikací. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací ve službě Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak uživatelům dovolit, aby se rychle zaregistrovali pro Azure Multi-Factor Authentication, najdete v článku [Přehled registrace informací o zabezpečení](concept-registration-mfa-sspr-combined.md).
+Další informace o tom, jak uživatelům dovolit, aby se rychle zaregistrovali Multi-Factor Authentication služby Azure AD, najdete v tématu [Přehled informací o registraci kombinovaných zabezpečení](concept-registration-mfa-sspr-combined.md).

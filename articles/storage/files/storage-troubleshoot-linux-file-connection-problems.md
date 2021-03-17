@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904917"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492059"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Řešení potíží se soubory Azure v systému Linux (SMB)
 
 V tomto článku jsou uvedené běžné problémy, které se týkají souborů Azure, když se připojujete z klientů se systémem Linux. Poskytuje taky možné příčiny a řešení těchto problémů. 
 
 Kromě kroků pro řešení potíží v tomto článku můžete použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) a zajistit tak, že klient pro Linux bude mít správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku. Pomáhá nastavit vaše prostředí, aby získalo optimální výkon. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Poradce při potížích obsahuje kroky, které vám pomůžou s problémy s připojením, mapováním a připojením sdílených složek Azure Files.
+
+> [!IMPORTANT]
+> Obsah tohoto článku platí pouze pro sdílené složky SMB. Podrobnosti o sdílených složkách NFS najdete v tématu [řešení potíží s sdílenými složkami souborů Azure NFS](storage-troubleshooting-files-nfs.md).
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nelze se připojit ke sdílené složce Azure nebo ji připojit
 
@@ -46,7 +49,7 @@ Mezi běžné příčiny tohoto problému patří:
 
 ### <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíží s chybami při připojování souborů Azure pro Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Tento nástroj:
+Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíží s chybami při připojování souborů Azure pro Linux](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux). Tento nástroj:
 
 * Pomáhá ověřit spuštěné prostředí klienta.
 * Zjistí nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure.
@@ -58,14 +61,14 @@ Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíž
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Příčina 1: nešifrovaný komunikační kanál
 
-Z bezpečnostních důvodů se připojení ke sdíleným složkám Azure blokují, když komunikační kanál není šifrovaný a když k pokusu o připojení nedošlo ze stejného datacentra, ve kterém se sdílená složka Azure nachází. Nešifrovaná připojení ze stejného datacentra se můžou blokovat také v případě, že je pro účet úložiště povolené nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). Šifrovaný komunikační kanál je k dispozici pouze v případě, že klientský operační systém uživatele podporuje šifrování protokolu SMB.
+Z bezpečnostních důvodů se připojení ke sdíleným složkám Azure blokují, když komunikační kanál není šifrovaný a když k pokusu o připojení nedošlo ze stejného datacentra, ve kterém se sdílená složka Azure nachází. Nešifrovaná připojení ze stejného datacentra se můžou blokovat také v případě, že je pro účet úložiště povolené nastavení [Vyžadovat zabezpečený přenos](../common/storage-require-secure-transfer.md). Šifrovaný komunikační kanál je k dispozici pouze v případě, že klientský operační systém uživatele podporuje šifrování protokolu SMB.
 
 Další informace najdete v části [Požadavky na připojení sdílené složky Azure v Linuxu s využitím balíčku cifs-utils](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
 1. Připojte se z klienta, který podporuje šifrování přes protokol SMB, nebo se připojte z virtuálního počítače ve stejném datovém centru jako účet úložiště Azure, který se používá pro sdílenou složku Azure.
-2. Pokud klient nepodporuje šifrování protokolu SMB, ověřte, že je v účtu úložiště zakázané nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) .
+2. Pokud klient nepodporuje šifrování protokolu SMB, ověřte, že je v účtu úložiště zakázané nastavení [Vyžadovat zabezpečený přenos](../common/storage-require-secure-transfer.md) .
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall. 
 
@@ -73,14 +76,14 @@ Pokud jsou pro účet úložiště nakonfigurovaná pravidla virtuální sítě 
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../common/storage-network-security.md).
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>Při pokusu o otevření souboru se překročila kvóta disku [oprávnění byla odepřena].
 
 V systému Linux se zobrazí chybová zpráva podobná následující:
 
-**\<filename>[oprávnění zamítnuto] Překročena kvóta disku**
+**\<filename> [oprávnění zamítnuto] Překročena kvóta disku**
 
 ### <a name="cause"></a>Příčina
 
@@ -92,22 +95,22 @@ K dispozici je kvóta 2 000 otevřených popisovačů v jednom souboru nebo adre
 
 Snižte počet souběžných otevřených popisovačů uzavřením některých popisovačů a potom operaci opakujte.
 
-Pokud chcete zobrazit otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu PowerShellu [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) .  
+Pokud chcete zobrazit otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu PowerShellu [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) .  
 
-Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell.
+Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell.
 
 > [!Note]  
-> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Pomalé kopírování souborů do a ze souborů Azure v systému Linux
 
 - Pokud nemáte konkrétní minimální požadavky na vstupně-výstupní operace, doporučujeme použít 1 MiB jako velikost vstupně-výstupních operací pro zajištění optimálního výkonu.
 - Použijte pravou metodu kopírování:
-    - Použijte [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
+    - Použijte [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
     - Použití CP nebo DD s paralelním může zlepšit rychlost kopírování. počet vláken závisí na vašem případu použití a na zatížení. Následující příklady používají šest: 
     - CP – příklad (CP použije výchozí velikost bloku systému souborů jako velikost bloku): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
-    - DD příklad (Tento příkaz explicitně nastaví velikost bloku na 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - DD příklad (Tento příkaz explicitně nastaví velikost bloku na 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open Source nástroje třetích stran, jako jsou:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – seřadí soubory a zabalí je do oddílů.
@@ -115,7 +118,7 @@ Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo 
         - [Více](https://github.com/pkolano/mutil) vláken CP a md5sum s více vlákny založené na systému GNU coreutils.
 - Nastavení velikosti souboru předem. místo toho, aby bylo možné zapisovat do zápisu, pomáhá vylepšit rychlost kopírování ve scénářích, kde je známá velikost souboru. Pokud se vyžaduje rozšíření zápisů, můžete nastavit velikost cílového souboru pomocí `truncate - size <size><file>` příkazu. Pak `dd if=<source> of=<target> bs=1M conv=notrunc` příkaz zkopíruje zdrojový soubor bez opakované aktualizace velikosti cílového souboru. Můžete například nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (předpokládá se, že je sdílená složka připojená pod/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - a pak zkopírujte soubory bez rozšíření zápisu paralelně:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - a pak zkopírujte soubory bez rozšíření zápisu paralelně: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Chyba připojení (115): operace nyní probíhá" při připojování souborů Azure pomocí protokolu SMB 3,0
@@ -141,13 +144,13 @@ Kód chyby: 403
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../common/storage-network-security.md).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 2: váš uživatelský účet nemá přístup k účtu úložiště.
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí Access Control na základě rolí (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí řízení přístupu na základě role Azure (RBAC)](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nejde odstranit soubor nebo adresář ve sdílené složce Azure
@@ -159,12 +162,12 @@ K tomuto problému obvykle dochází, pokud má soubor nebo adresář otevřený
 
 Pokud klienti SMB zavřeli všechny otevřené popisovače a problém přetrvává, udělejte toto:
 
-- K zobrazení otevřených popisovačů použijte rutinu prostředí PowerShell [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) .
+- K zobrazení otevřených popisovačů použijte rutinu prostředí PowerShell [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) .
 
-- K zavření otevřených popisovačů použijte rutinu [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell. 
+- K zavření otevřených popisovačů použijte rutinu [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell. 
 
 > [!Note]  
-> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Pomalý výkon sdílené složky Azure připojené k virtuálnímu počítači s Linuxem
@@ -183,17 +186,17 @@ V některých scénářích může možnost **serverino** Mount způsobit, že p
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Pomocí příkazu **sudo Mount | grep CIFS** a kontrolou jeho výstupu můžete taky zkontrolovat, jestli se používají správné možnosti. Následuje příklad výstupu:
+Pomocí příkazu  **sudo Mount | grep CIFS** a kontrolou jeho výstupu můžete taky zkontrolovat, jestli se používají správné možnosti. Následuje příklad výstupu:
 
 ```
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-Pokud možnost **cache = Strict** nebo **serverino** není k dispozici, odpojte a připojte soubory Azure znovu spuštěním příkazu Mount z [dokumentace](../storage-how-to-use-files-linux.md). Pak znovu zkontrolujte, jestli má položka **/etc/fstab** správné možnosti.
+Pokud možnost **cache = Strict** nebo **serverino** není k dispozici, odpojte a připojte soubory Azure znovu spuštěním příkazu Mount z [dokumentace](./storage-how-to-use-files-linux.md). Pak znovu zkontrolujte, jestli má položka **/etc/fstab** správné možnosti.
 
 ### <a name="cause-2-throttling"></a>Příčina 2: omezování
 
-Je možné, že máte omezení a vaše požadavky jsou odesílány do fronty. To můžete ověřit využitím [Azure Storage metriky v Azure monitor](../common/storage-metrics-in-azure-monitor.md).
+Je možné, že máte omezení a vaše požadavky jsou odesílány do fronty. To můžete ověřit využitím [Azure Storage metriky v Azure monitor](../blobs/monitor-blob-storage.md).
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
@@ -291,10 +294,36 @@ Pokud nemůžete upgradovat na nejnovější verze jádra, můžete tento probl�
 ## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>"CIFS VFS: Error-22 on IOCTL pro získání seznamu rozhraní" při připojení sdílené složky Azure pomocí protokolu SMB 3,0
 
 ### <a name="cause"></a>Příčina
-Tato chyba se zaznamená do protokolu, protože soubory Azure v [současné době nepodporují vícekanálový protokol SMB](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
+Tato chyba se zaznamená do protokolu, protože soubory Azure v [současné době nepodporují vícekanálový protokol SMB](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
 
 ### <a name="solution"></a>Řešení
 Tuto chybu lze ignorovat.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Nelze získat přístup ke složkám nebo souborům, jejichž název má mezeru nebo tečku na konci.
+
+Nemůžete získat přístup ke složkám nebo souborům ze sdílené složky Azure během připojení k systému Linux, příkazy jako du a LS nebo aplikace třetích stran se mohou při přístupu ke sdílené složce podařit s chybou "žádný takový soubor nebo adresář", ale můžete do těchto složek nahrávat soubory prostřednictvím portálu.
+
+### <a name="cause"></a>Příčina
+
+Složky nebo soubory byly nahrány ze systému, který kóduje znaky na konci názvu na jiný znak, soubory odeslané z počítače se systémem Macintosh mohou mít místo 0x20 (Space) nebo 0X2E (tečka) znak "0xF028" nebo "0xF029".
+
+### <a name="solution"></a>Řešení
+
+Při připojování sdílené složky v systému Linux použijte možnost mapchars na sdílené složce: 
+
+Namísto:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+použije
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 

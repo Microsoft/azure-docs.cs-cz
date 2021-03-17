@@ -2,28 +2,39 @@
 title: Použití mikroměřiče s Azure Application Insights Java SDK
 description: Podrobný návod k použití mikroměřiče s aplikacemi Application Insights pružinové spouštěcí a nepružinové spouštěcí aplikace.
 ms.topic: conceptual
-author: lgayhardt
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
+ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dba7280f6abd6026fabdde500dc76b73129d557
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322563"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589760"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Použití mikroměřiče s Azure Application Insights Java SDK (nedoporučuje se)
+
+> [!IMPORTANT]
+> Přístup popsaný v tomto dokumentu se už nedoporučuje.
+> 
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Telemetrie mikroměření se automaticky shromáždila pomocí Application Insights agenta Java 3,0 – postupujte podle pokynů pro [Application Insights agenta java 3,0](./java-in-process-agent.md).
+
+> [!NOTE]
+> Sada Application Insights Java SDK nepodporuje místo toho [Application Insights agenta java 3,0](./java-in-process-agent.md) . 
+>
+> V [Application Insights agenta Java 3,0](./java-on-premises.md) , který nevyžaduje instrumentaci, se podporuje webtokem i mikroměřiče. 
+
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
 
 ## <a name="using-spring-boot-15x"></a>Použití pružinového spuštění 1.5 x
 Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti: 
-* [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
+* [Application Insights jaře-Boot-Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 nebo novější
 * 1.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
 * [Prostředek ApplicationInsights](./create-new-resource.md)
 
-Kroky
+Postup
 
 1. Aktualizujte soubor pom.xml vaší aplikace pro spouštění pružin a přidejte do ní následující závislosti:
 
@@ -51,7 +62,7 @@ Kroky
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Sestavení aplikace a spuštění
-2. Výše uvedená zpráva by vám měla začít pracovat s předem agregovanými metrikami automaticky shromážděnými do Azure Monitor. Podrobné informace o tom, jak vyladit Application Insights jaře Boot Starter, najdete v [souboru Readme na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md).
+2. Výše uvedená zpráva by vám měla začít pracovat s předem agregovanými metrikami automaticky shromážděnými do Azure Monitor. Podrobné informace o tom, jak vyladit Application Insights jaře Boot Starter, najdete v [souboru Readme na GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md).
 
 ## <a name="using-spring-2x"></a>Použití pružiny 2. x
 
@@ -83,17 +94,17 @@ Výchozí metriky:
 *    Automaticky konfigurované metriky pro metriky Tomcat, JVM, Logback, metriky Log4J, metriky provozu, metriky procesoru, FileDescriptorMetrics.
 *    Například pokud je Netflix hystrix k dispozici na cestě třídy, získáme také tyto metriky. 
 *    Následující metriky mohou být k dispozici, když přidáváte příslušné fazole. 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3 metriky 
         - Kafka metriky 
 
- 
+
 
 Vypnutí automatické shromažďování metrik: 
- 
+
 - JVM metriky: 
     - Management. Metrics. pojiv. JVM. Enabled = FALSE 
 - Logback metriky: 
@@ -130,7 +141,7 @@ Kroky:
             <artifactId>micrometer-registry-azure-monitor</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-web-auto</artifactId>
@@ -143,17 +154,17 @@ Kroky:
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-    
+
        <!-- The key from the portal: -->
        <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-    
+
        <!-- HTTP request component (not required for bare API) -->
        <TelemetryModules>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
        </TelemetryModules>
-    
+
        <!-- Events correlation (not required for bare API) -->
        <!-- These initializers add context data to each event -->
        <TelemetryInitializers>
@@ -163,7 +174,7 @@ Kroky:
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
        </TelemetryInitializers>
-    
+
     </ApplicationInsights>
     ```
 
@@ -172,17 +183,17 @@ Kroky:
     ```Java
         @WebServlet("/hello")
         public class TimedDemo extends HttpServlet {
-    
+
           private static final long serialVersionUID = -4751096228274971485L;
-    
+
           @Override
           @Timed(value = "hello.world")
           protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-    
+
             response.getWriter().println("Hello World!");
             MeterRegistry registry = (MeterRegistry) getServletContext().getAttribute("AzureMonitorMeterRegistry");
-    
+
         //create new Timer metric
             Timer sampleTimer = registry.timer("timer");
             Stream<Integer> infiniteStream = Stream.iterate(0, i -> i+1);
@@ -201,9 +212,9 @@ Kroky:
           public void destroy() {
             System.out.println("Servlet " + this.getServletName() + " has stopped");
           }
-    
+
         }
-    
+
     ```
 
 4. Ukázková třída konfigurace:
@@ -211,10 +222,10 @@ Kroky:
     ```Java
          @WebListener
          public class MeterRegistryConfiguration implements ServletContextListener {
-     
+
            @Override
            public void contextInitialized(ServletContextEvent servletContextEvent) {
-     
+
          // Create AzureMonitorMeterRegistry
            private final AzureMonitorConfig config = new AzureMonitorConfig() {
              @Override
@@ -224,23 +235,23 @@ Kroky:
             @Override
                public Duration step() {
                  return Duration.ofSeconds(60);}
-     
+
              @Override
              public boolean enabled() {
                  return false;
              }
          };
-     
+
       MeterRegistry azureMeterRegistry = AzureMonitorMeterRegistry.builder(config);
-     
+
              //set the config to be used elsewhere
              servletContextEvent.getServletContext().setAttribute("AzureMonitorMeterRegistry", azureMeterRegistry);
-     
+
            }
-     
+
            @Override
            public void contextDestroyed(ServletContextEvent servletContextEvent) {
-     
+
            }
          }
     ```
@@ -272,5 +283,4 @@ Do konfiguračního souboru přidejte následující kód vazby:
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o mikroměřiči najdete v oficiální [dokumentaci k mikroměřiči](https://micrometer.io/docs).
-* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/?view=azure-java-stable).
-
+* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/).

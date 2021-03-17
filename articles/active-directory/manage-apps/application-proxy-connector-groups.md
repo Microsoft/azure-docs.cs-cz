@@ -3,7 +3,7 @@ title: Publikování aplikací v samostatných sítích prostřednictvím skupin
 description: Popisuje, jak vytvářet a spravovat skupiny konektorů v Azure Proxy aplikací služby AD.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ca42137192fefbc669fca775b0deff2f5226c5c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764719"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253828"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů
 
@@ -40,8 +40,8 @@ Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více 
 
 Pomocí těchto kroků můžete vytvořit tolik skupin konektorů, kolik chcete.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Vyberte **Azure Active Directory**  >  **Enterprise applications**  >  **aplikační proxy aplikace**pro podnikové aplikace.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Vyberte **Azure Active Directory**  >    >  **aplikační proxy aplikace** pro podnikové aplikace.
 1. Vyberte možnost **Nová skupina konektorů**. Zobrazí se okno Nová skupina konektoru.
 
    ![Zobrazuje obrazovku pro výběr nové skupiny konektorů.](./media/application-proxy-connector-groups/new-group.png)

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ed1f06e4747492c43d19a00c1091b2b4d7f7050f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741884"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094963"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Řešení problémů s portálem moje aplikace
 
@@ -31,9 +31,9 @@ Pokud máte problémy s instalací zabezpečeného přihlašovacího rozhraní p
 
     - **Microsoft Edge.** Běží v systému Windows 10 a novějších verzích.
 
-    - **Google Chrome.** Běží v systému Windows 7 nebo novějším a v Mac OS X nebo novějším.
+    - **Google Chrome.** Běží v systému Windows 7 nebo novějším a na macOS X nebo novějším.
 
-    - **Mozilla Firefox 26,0 nebo novější.** Běží v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším.
+    - **Mozilla Firefox 26,0 nebo novější.** Běží v systému Windows XP SP2 nebo novějším a v macOS X 10,6 nebo novějším.
 
     - **Internet Explorer 11.** Běží v systému Windows 7 nebo novějším (omezená podpora).
 
@@ -47,11 +47,16 @@ Pokud máte problémy s instalací zabezpečeného přihlašovacího rozhraní p
 
 Pokud máte potíže s přihlášením k portálu **Moje aplikace** , můžete vyzkoušet následující:
 
+- Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+
 - Ujistěte se, že používáte správnou adresu URL. Měla by to být https://myapps.microsoft.com nebo přizpůsobená stránka pro vaši organizaci, například https://myapps.microsoft.com/contoso.com .
 
 - Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
-- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure Multi-Factor Authentication pro mě?](multi-factor-authentication-end-user.md) nebo [Změna metod a informací o zabezpečení](security-info-add-update-methods-overview.md).
+- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure AD Multi-Factor Authentication pro mě?](./multi-factor-authentication-end-user-first-time.md) nebo [Změna metod a informací o zabezpečení](./security-info-setup-auth-app.md).
 
 - Přidejte adresu URL portálu **Moje aplikace** do **vlastností Internet > nastavení zabezpečení > důvěryhodných lokalit** .
 
@@ -75,7 +80,7 @@ Pokud se vám po spuštění aplikace z portálu **Moje aplikace** zobrazuje zpr
 
 - Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
-- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure Multi-Factor Authentication pro mě?](multi-factor-authentication-end-user.md) nebo [Změna metod a informací o zabezpečení](security-info-add-update-methods-overview.md).
+- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure AD Multi-Factor Authentication pro mě?](./multi-factor-authentication-end-user-first-time.md) nebo [Změna metod a informací o zabezpečení](./security-info-setup-auth-app.md).
 
 - Vymažte mezipaměť prohlížeče a zkuste se znovu přihlásit.
 
@@ -87,7 +92,7 @@ Až se přihlásíte na portál **Moje aplikace** , můžete také aktualizovat 
 
 - [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
+- [Změna informací o profilu](./my-account-portal-settings.md).
 
 - [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md).
 

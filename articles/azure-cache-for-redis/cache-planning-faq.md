@@ -6,18 +6,18 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010820"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537401"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Nejčastější dotazy k plánování služby Azure cache pro Redis
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se plánování mezipaměti Azure pro Redis.
 
-## <a name="common-questions-and-answers"></a>Běžné otázky a odpovědi
+## <a name="common-questions-and-answers"></a>Časté otázky a odpovědi
 Tato část obsahuje následující Nejčastější dotazy:
 
 * [Azure cache pro výkon Redis](#azure-cache-for-redis-performance)
@@ -44,7 +44,7 @@ Z této tabulky můžeme vykreslit následující závěry:
 | --- | --- | --- | --- | --- | --- |
 | **Standardní velikosti mezipaměti** | | |**Megabitů za sekundu (MB/s)/megabajtů za sekundu (MB/s)** |**Počet požadavků za sekundu (RPS) bez SSL** |**SSL požadavků za sekundu (RPS)** |
 | C0 | 250 MB | Shared | 100/12,5  |  15 000 |   7 500 |
-| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
+| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
 | C3 |   6 GB | 4      | 1000/125  | 100 000 |  90,000 |
 | C4 |  13 GB | 2      | 500/62,5  |  60 000 |  55 000 |
@@ -77,14 +77,14 @@ Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure �
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Veřejný  | *. redis.cache.windows.net       |
+| Veřejná  | *. redis.cache.windows.net       |
 | US Gov  | *. redis.cache.usgovcloudapi.net |
 | Německo | *. redis.cache.cloudapi.de       |
 | Čína   | *. redis.cache.chinacloudapi.cn  |
 
 Další informace o tom, co je třeba zvážit při použití mezipaměti Azure pro Redis s jinými cloudy, najdete na následujících odkazech.
 
-- [Databáze Azure Government – mezipaměť Azure pro Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
+- [Databáze Azure Government – mezipaměť Azure pro Redis](../azure-government/compare-azure-government-global-azure.md)
 - [Cloud Azure Čína 21Vianet – Azure cache pro Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 

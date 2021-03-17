@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432661"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370572"
 ---
-# <a name="changelog"></a>Protokol změn #
+# <a name="changelog"></a>Protokol změn
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (oficiální aktualizace září 21 2020)
+
+### <a name="features-236"></a>Funkce 2.3.6
+
+Přidání podpory jenom pro zvuk pro azureHtml5JS Tech (POMLČKa) podpora v reálném čase se změnou jazyka pro podporu v reálném čase
+
+### <a name="bug-fixes-236"></a>Opravy chyb 2.3.6
+
+Při použití příkazu "playsinline" v přehrávání HLS na zařízeních Apple se kliknutím na tlačítko "živé" způsobí, že video restartuje obrázek AMP. v některých případech dojde k chybě, při přehrávání HLS FairPlay [usnadnění], které nejsou definovány pro tlačítka, když se klávesnice používá [usnadnění], je poměr světelnosti menší než 1.3:1 pro indikátor průběhu [přístupnost] fokus klávesnice se někdy nevrátí na tlačítko Kvalita videa [usnadnění]. na videu se nezobrazuje ovládací prvky. obrazovky zabraňující programu Narrator v jejich hledání
+
+### <a name="changes-236"></a>2.3.6 změny
+
+Při volání aplikací vracet smysluplné chyby doručení
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (oficiální aktualizace Červen 1 2020)
 
@@ -184,7 +198,7 @@ ms.locfileid: "87432661"
 
 ### <a name="changes"></a>Změny ###
 
-- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings) .-->
+- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/cea708captionssettings) .-->
 
 ## <a name="220-official-release"></a>2.2.0 (oficiální verze) ##
 
@@ -433,7 +447,7 @@ ms.locfileid: "87432661"
 
 - Mění Aktualizace přehrávače na aktuální požadavky EME pro Chrome
 - Mění Výchozí techOrder se změnily tak, aby vyhovovaly novému technickému html5FairPlayHLS (Další informace najdete v části [chráněný obsah](azure-media-player-protected-content.md) ).
-- Mění [AzureHtml5JS] Zapnuté přehrávání MPEG-spojovníku v Safari
+- Mění [AzureHtml5JS] Povolení přehrávání MPEG-Dash v Safari
 - Mění Vzory Změna vzorků s více technologiemi DRM pro přizpůsobení FairPlay
 
 ## <a name="174-official-hotfix-update"></a>1.7.4 (oficiální aktualizace hotfix) ##

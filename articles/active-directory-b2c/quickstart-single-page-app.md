@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6471d1b5a5ad2b8ba34080ae1220872fa0e2e232
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921754"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421052"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro jednostránkovou aplikaci pomocí služby Azure Active Directory B2C
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý Start: nastavení přihlášení pro jednostránkovou aplikaci pomocí Azure Active Directory B2C
 
 Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, která zajistí ochranu vašich aplikací, obchodních i zákazníků. Azure AD B2C umožňuje aplikacím provádět ověřování účtů na sociálních sítích a podnikových účtů s využitím protokolů s otevřenými standardy. V tomto rychlém startu použijete jednostránkovou aplikaci k přihlášení pomocí zprostředkovatele sociální identity a zavolání webového rozhraní API chráněného službou Azure AD B2C.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Účet sociální sítě z Facebooku, Google nebo Microsoftu
-- Ukázka kódu z GitHubu: [Active-Directory-B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- Ukázka kódu z GitHubu: [MS-identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
 
-    Můžete [stáhnout archiv zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) nebo klonovat úložiště:
+    Můžete [stáhnout archiv zip](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip) nebo klonovat úložiště:
 
     ```console
-    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
     ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
@@ -42,7 +42,6 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 1. Spuštěním následujících příkazů na příkazovém řádku Node.js spusťte server:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
     npm install && npm update
     npm start
     ```

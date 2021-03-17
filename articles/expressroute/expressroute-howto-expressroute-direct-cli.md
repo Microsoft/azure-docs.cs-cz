@@ -1,23 +1,41 @@
 ---
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct: CLI'
-description: Přečtěte si, jak pomocí Azure CLI nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoftu v umístěních partnerských vztahů po celém světě.
+description: Naučte se pomocí Azure CLI nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoft.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
-ms.author: cherylmc
+ms.date: 12/14/2020
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5d1e1d6ab5a8d4444ad4a5a4748859fd12aa3c1e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192270"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099875"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
-Azure ExpressRoute Direct můžete použít k přímému připojení k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
+ExpressRoute Direct vám umožní přímo se připojit k globální síti Microsoftu prostřednictvím umístění partnerských vztahů, které jsou v celém světě strategické distribuce. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Než začnete
+
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, udělejte to prosím pomocí Azure PowerShell:
+1.  Přihlaste se k Azure a vyberte předplatné, které chcete zaregistrovat.
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+Po zaregistrování ověřte, zda je poskytovatel prostředků **Microsoft. Network** zaregistrován ve vašem předplatném. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 
@@ -287,7 +305,8 @@ Další šířky pásma okruhů v ExpressRoute můžete použít jenom pro podpo
 
 **SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
+**SkuFamily** může být MeteredData. V ExpressRoute Direct se nepodporuje neomezený počet.
+
 Vytvořte okruh na prostředku ExpressRoute Direct:
 
   ```azurecli

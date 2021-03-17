@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace pro Xamarin iOS'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS pomocí prostorových ukotvení.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b62ca4b02a1bd28d150f233adf1dfb621995e1c4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810101"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009734"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Xamarin iOS pomocí prostorových kotev Azure
 
@@ -33,7 +33,7 @@ Dozvíte se, jak provést tyto akce:
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 - Mac s macOS vysokým Sierra (10,13) nebo novějším:
   - Nejnovější verze Xcode a sady iOS SDK nainstalované z [App Storu](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
-  - Aktuální verze <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
+  - Aktuální verze <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
   - <a href="https://git-scm.com/download/mac" target="_blank">Git pro MacOS</a>.
   - <a href="https://git-lfs.github.com/">Git LFS</a>.
 
@@ -61,11 +61,11 @@ Vyhledejte `SpatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou �
 
 Zapněte zařízení s iOS, přihlaste se a připojte ho k počítači pomocí kabelu USB.
 
-Nastavte projekt po spuštění na **SampleXamarin. iOS**, změňte **konfiguraci řešení** na **release**a v rozevíracím seznamu pro výběr zařízení vyberte zařízení, do kterého chcete nasadit.
+Nastavte projekt po spuštění na **SampleXamarin. iOS**, změňte **konfiguraci řešení** na **release** a v rozevíracím seznamu pro výběr zařízení vyberte zařízení, do kterého chcete nasadit.
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Pokud **Run**  >  chcete nasadit a spustit aplikaci, vyberte spustit**Spustit bez ladění** .
+Pokud **Run**  >  chcete nasadit a spustit aplikaci, vyberte spustit **Spustit bez ladění** .
 
 V aplikaci vyberte **základní** , aby se spustila ukázka, a postupujte podle pokynů k umístění a odvolání kotvy.
 

@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: moderátor obsahu, moderátor obsahu Azure, moderátor online, software pro filtrování obsahu, služba pro moderování obsahu, Moderování obsahu
+ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834537"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560369"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Content Moderator je služba pro rozpoznávání, která kontroluje text, obrázky a obsah videa pro materiál, který je potenciálně urážlivý, rizikové nebo jinak nežádoucí. Když se tento materiál najde, služba použije příslušné popisky (příznaky) k obsahu. Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele. Další informace o tom, co ukazují různé příznaky obsahu, najdete v části [rozhraní API pro moderování](#moderation-apis) .
+Azure Content Moderator je služba AI, která umožňuje zpracovávat obsah, který je potenciálně urážlivý, rizikové nebo jinak nežádoucí. Obsahuje službu pro moderování obsahu s podporou AI, která prohledává text, obrázky a videa a automaticky používá příznaky obsahu a také nástroj pro kontrolu online prostředí moderátora pro tým lidských kontrolorů.
+
+Do své aplikace můžete chtít sestavit software pro filtrování obsahu, aby bylo možné dodržovat předpisy nebo zachovat zamýšlené prostředí pro vaše uživatele.
 
 ## <a name="where-its-used"></a>Kde se používá
 
-Následuje několik scénářů, ve kterých by vývojář nebo tým vývojářů softwaru mohli službu Content Moderator využít:
+Následuje několik scénářů, ve kterých může vývojář softwaru nebo tým vyžadovat službu pro moderování obsahu:
 
 - Online tržiště, které jsou moderované katalogy produktů a další uživatelem generovaný obsah.
 - Herní společnosti, které středně vytvářené herní artefakty a konverzační místnosti.
@@ -33,7 +37,7 @@ Následuje několik scénářů, ve kterých by vývojář nebo tým vývojář�
 - Podnikové mediální společnosti, které implementují centralizované moderování pro svůj obsah.
 - K-12 poskytovatelé řešení pro vzdělávání odfiltrují obsah, který je nevhodný pro studenty a pedagogy.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Content Moderator nelze použít k detekci neplatných imagí pro zneužití. Kvalifikovaní organizace ale můžou použít [cloudovou službu PhotoDNA](https://www.microsoft.com/photodna "Cloudová služba Microsoft PhotoDNA") na obrazovku pro tento typ obsahu.
 
 ## <a name="what-it-includes"></a>Co zahrnuje
@@ -77,4 +81,4 @@ Stejně jako u všech Cognitive Services by měli vývojáři, kteří používa
 
 ## <a name="next-steps"></a>Další kroky
 
-Začněte používat službu Content Moderator podle pokynů v části [vyzkoušet Content moderator na webu](quick-start.md).
+Pokud chcete začít používat Content Moderator na webovém portálu, postupujte podle [Content moderator vyzkoušet na webu](quick-start.md). Nebo dokončete [knihovnu klienta nebo REST API rychlý Start](client-libraries.md) pro implementaci základních scénářů v kódu.

@@ -62,28 +62,28 @@
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní API pro vlastní automatické návrhy Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference
     - name: Referenční informace k rozhraní API pro vlastní vyhledávání obrázků Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference
     - name: Referenční informace k rozhraní API pro vlastní vyhledávání Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference
     - name: Referenční informace k rozhraní API pro vlastní vyhledávání videí Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference
     - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
     - name: Sady SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-custom-search-readme
         - name: Java – vlastní vyhledávání
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingcustomsearch
         - name: Java – vlastní vyhledávání obrázků
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python'
+          href: /python/api/azure-cognitiveservices-search-customsearch/
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customsearch/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customsearch/
         - name: Go – vlastní vyhledávání
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch'
         - name: Go – vlastní vyhledávání obrázků

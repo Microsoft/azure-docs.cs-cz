@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6cd6d61ba1404ca6b6de63a0151ec414b2df54e7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 902d6643420ff6bdafcf52278f3a1c0df28647ae
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492458"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217526"
 ---
 # <a name="peer-two-virtual-networks-with-an-azure-cli-script-sample"></a>Partnerský vztah dvou virtuálních sítí s ukázkovým skriptem Azure CLI
 
@@ -54,6 +54,6 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro virtuální síť najdete v tématu [Ukázky rozhraní příkazového řádku pro virtuální síť](../cli-samples.md).

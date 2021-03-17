@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936125"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Příklad: Vytvoření vlastní dovednosti pomocí Pythonu
 
@@ -26,15 +26,15 @@ Vlastní dovednosti jsou jednoduché v návrhu (zřetězují dva řetězce), tak
 
 + Projděte si [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) , kde se seznámíte se vstupním a výstupním rozhraním, které by měla vlastní dovednost implementovat.
 
-+ Nastavte své prostředí. Provedli jsme [Tento kurz kompletním](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) nastavením funkce Azure bez serveru pomocí rozšíření Visual Studio Code a Pythonu. Kurz vás provede instalací následujících nástrojů a součástí: 
++ Nastavte své prostředí. Provedli jsme [Tento kurz kompletním](/azure/python/tutorial-vs-code-serverless-python-01) nastavením funkce Azure bez serveru pomocí rozšíření Visual Studio Code a Pythonu. Kurz vás provede instalací následujících nástrojů a součástí: 
 
   + [Python 3,75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Rozšíření Azure Functions pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
-## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
+## <a name="create-an-azure-function"></a>Vytvoření funkce Azure Function
 
 Tento příklad používá funkci Azure k předvedení konceptu hostování webového rozhraní API, ale je možné použít i jiné přístupy. Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
 
@@ -265,10 +265,10 @@ Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovedn
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme vám. Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Gratulujeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

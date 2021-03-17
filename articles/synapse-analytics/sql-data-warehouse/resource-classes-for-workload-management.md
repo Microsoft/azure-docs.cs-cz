@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dc9c39192dc478a4ffeba64983a498191417ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213580"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685323"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh pomocí tříd prostředků v Azure synapse Analytics
 
@@ -67,12 +67,12 @@ Dynamické třídy prostředků jsou implementovány s těmito předem definovan
 
 Přidělení paměti pro jednotlivé třídy prostředků je následující.
 
-| Úroveň služby  | smallrc           | mediumrc               | largerc                | xlargerc               |
+| Úroveň služeb  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
-| DW100c         | 25 %               | 25 %                    | 25 %                    | 70 %                    |
+| DW100c         | 25%               | 25%                    | 25%                    | 70 %                    |
 | DW200c         | 12,5%             | 12,5%                  | 22                    | 70 %                    |
 | DW300c         | 8 %                | 10 %                    | 22                    | 70 %                    |
-| DW400c         | 6,25%             | 10 %                    | 22                    | 70 %                    |
+| DW400c         | 6,25 %             | 10 %                    | 22                    | 70 %                    |
 | DW500c.         | 5 %                | 10 %                    | 22                    | 70 %                    |
 | DW1000c na<br> DW30000c | 3 %       | 10 %                    | 22                    | 70 %                    |
 
@@ -129,11 +129,11 @@ Následující příkazy jsou vyjmuty z tříd prostředků a vždy se spouště
 - VYTVOŘIT nebo vyřadit zobrazení
 - VLOŽIT HODNOTY
 - VYBRAT ze systémových zobrazení a zobrazení dynamické správy
-- ČÁSTECH
+- EXPLAIN
 - NÁSTROJI
 
 <!--
-Removed as these two are not confirmed / supported under SQL DW
+Removed as these two are not confirmed / supported under Azure Synapse Analytics
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Třídy prostředků jsou implementovány přiřazením uživatelů k databázovým rolím. Když uživatel spustí dotaz, dotaz se spustí s třídou prostředků uživatele. Například pokud je uživatel členem role databáze staticrc10, jejich dotazy se spouštějí s malým množstvím paměti. Pokud je uživatel databáze členem rolí databáze xlargerc nebo staticrc80, jejich dotazy se spouštějí s velkým množstvím paměti.
 
-Chcete-li zvýšit třídu prostředků uživatele, použijte [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k přidání uživatele do databázové role velké třídy prostředků.  Níže uvedený kód přidá uživatele do role databáze largerc.  Každý požadavek získá 22% systémové paměti.
+Chcete-li zvýšit třídu prostředků uživatele, použijte [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) k přidání uživatele do databázové role velké třídy prostředků.  Níže uvedený kód přidá uživatele do role databáze largerc.  Každý požadavek získá 22% systémové paměti.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Chcete-li snížit třídu prostředků, použijte [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Pokud ' loaduser ' není člen nebo žádné jiné třídy prostředků, přejde do výchozí třídy prostředků smallrc s přidělením 3% paměti.  
+Chcete-li snížit třídu prostředků, použijte [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Pokud ' loaduser ' není člen nebo žádné jiné třídy prostředků, přejde do výchozí třídy prostředků smallrc s přidělením 3% paměti.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -192,7 +192,7 @@ Doporučujeme vytvořit uživatele, který je vyhrazený pro spuštění konkré
 
 ### <a name="resource-classes-for-load-users"></a>Třídy prostředků pro načtení uživatelů
 
-`CREATE TABLE`používá ve výchozím nastavení clusterované indexy columnstore. Komprimace dat do indexu columnstore je operace náročná na paměť a zatížení paměti může snížit kvalitu indexu. Tlak paměti může vést k nutnosti větší třídy prostředků při načítání dat. Aby bylo zajištěno, že zatížení bude mít dostatek paměti, můžete vytvořit uživatele, který je určen ke spouštění zátěže, a přiřadit tohoto uživatele k vyšší třídě prostředků.
+`CREATE TABLE` používá ve výchozím nastavení clusterované indexy columnstore. Komprimace dat do indexu columnstore je operace náročná na paměť a zatížení paměti může snížit kvalitu indexu. Tlak paměti může vést k nutnosti větší třídy prostředků při načítání dat. Aby bylo zajištěno, že zatížení bude mít dostatek paměti, můžete vytvořit uživatele, který je určen ke spouštění zátěže, a přiřadit tohoto uživatele k vyšší třídě prostředků.
 
 Paměť potřebná ke zpracování zatížení efektivně závisí na povaze načtené tabulky a velikosti dat. Další informace o požadavcích na paměť najdete v tématu [maximalizace kvality skupiny řádků](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
@@ -243,9 +243,9 @@ Tady je účel této uložené procedury:
 Syntaxe:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:Zadejte parametr s hodnotou NULL pro extrakci aktuálního DWU z databáze DW nebo poskytněte jakékoli podporované DWU ve formátu ' DW100c '.
-2. @SCHEMA_NAME:Zadejte název schématu pro tabulku.
-3. @TABLE_NAME:Zadejte název tabulky zájmu.
+1. @DWU: Zadejte parametr s hodnotou NULL pro extrakci aktuálního DWU z databáze DW nebo poskytněte jakékoli podporované DWU ve formátu ' DW100c '.
+2. @SCHEMA_NAME: Zadejte název schématu pro tabulku.
+3. @TABLE_NAME: Zadejte název tabulky zájmu.
 
 Příklady spouštění této uložené procedury:
 
@@ -273,7 +273,7 @@ GO
 -- Creating prc_workload_management_by_DWU.
 -------------------------------------------------------------------------------
 CREATE PROCEDURE dbo.prc_workload_management_by_DWU
-(@DWU VARCHAR(7),
+(@DWU VARCHAR(8),
  @SCHEMA_NAME VARCHAR(128),
  @TABLE_NAME VARCHAR(128)
 )

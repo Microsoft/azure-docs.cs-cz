@@ -1,23 +1,20 @@
 ---
 title: Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 description: Naučte se nahrávat a přistupovat k datům pro úlohy Apache Hadoop v HDInsight. Použijte Azure Classic CLI, Průzkumník služby Azure Storage, Azure PowerShell, příkazový řádek Hadoop nebo Sqoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085867"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931343"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 
-HDInsight poskytuje systém Hadoop Distributed File System (HDFS) po Azure Storage a Azure Data Lake Storage. Toto úložiště zahrnuje Gen1 a Gen2. Azure Storage a Data Lake Storage Gen1 a Gen2 jsou navržené jako HDFS Extensions. Umožňují v prostředí Hadoop pracovat přímo s daty, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou odlišné systémy souborů. Systémy jsou optimalizované pro ukládání dat a výpočtů na těchto datech. Informace o výhodách použití Azure Storage najdete v tématu [použití Azure Storage se službou HDInsight](hdinsight-hadoop-use-blob-storage.md). Přečtěte si také téma [použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-store.md)a [použití Data Lake Storage Gen2 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+HDInsight poskytuje systém Hadoop Distributed File System (HDFS) po Azure Storage a Azure Data Lake Storage. Toto úložiště zahrnuje Gen1 a Gen2. Azure Storage a Data Lake Storage Gen1 a Gen2 jsou navržené jako HDFS Extensions. Umožňují v prostředí Hadoop pracovat přímo s daty, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou odlišné systémy souborů. Systémy jsou optimalizované pro ukládání dat a výpočtů na těchto datech. Informace o výhodách použití Azure Storage najdete v tématu [použití Azure Storage se službou HDInsight](hdinsight-hadoop-use-blob-storage.md). Přečtěte si také téma [použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md)a [použití Data Lake Storage Gen2 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +23,7 @@ Než začnete, vezměte na vědomí následující požadavky:
 * Cluster Azure HDInsight. Pokyny najdete v tématu Začínáme [se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Znalost následujících článků:
     * [Použití Azure Storage se službou HDInsight](hdinsight-hadoop-use-blob-storage.md)
-    * [Použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    * [Použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md)
     * [Použití Data Lake Storage Gen2 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Nahrání dat do Azure Storage
@@ -68,7 +65,7 @@ nebo
 
 `wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
-Seznam dalších příkazů Hadoop, které pracují se soubory, najdete v tématu.[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Seznam dalších příkazů Hadoop, které pracují se soubory, najdete v tématu. [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > V clusterech Apache HBA je výchozí velikost bloku použitá při zápisu dat 256 KB. I když při použití rozhraní API HBA nebo rozhraní REST API funguje bez použití `hadoop` příkazů nebo `hdfs dfs` k zápisu dat větších než ~ 12 GB, dojde k chybě. Další informace najdete v tématu [výjimka úložiště pro zápis do objektu BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
@@ -88,7 +85,7 @@ K dispozici je také několik aplikací, které poskytují grafické rozhraní p
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Připojit Azure Storage jako místní disk
 
-Viz možnost [připojit Azure Storage jako místní disk](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Viz možnost [připojit Azure Storage jako místní disk](/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Nahrávání pomocí služeb
 

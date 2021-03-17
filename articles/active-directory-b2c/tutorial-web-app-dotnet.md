@@ -6,17 +6,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 10/14/2019
+ms.date: 10/02/2020
 ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b23bed8163ffed6a610eda7677099989e966a646
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9c3c63b6116e02e8a742b69e90c11e182d72ab2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163811"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953022"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
@@ -31,7 +31,10 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> V tomto kurzu se používá Ukázková webová aplikace ASP.NET. Další ukázkové aplikace (včetně ASP.NET Core, Node.js, Pythonu a dalších) najdete v tématu [ukázky kódu Azure Active Directory B2C](code-samples.md).
+
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
@@ -42,25 +45,25 @@ V kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovo
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Přidat identifikátor URI přesměrování (adresa URL odpovědi)
 
-Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
-1. V části **Web**vyberte odkaz **Přidat identifikátor URI** , zadejte `https://localhost:44316` a potom vyberte **Uložit**.
+1. V části **Web** vyberte odkaz **Přidat identifikátor URI** , zadejte `https://localhost:44316` a potom vyberte **Uložit**.
 1. Vyberte **Přehled**.
 1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku při konfiguraci webové aplikace.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte aplikaci *WebApp1* .
-1. V části **Adresa URL odpovědi**přidejte `https://localhost:44316` .
+1. V části **Adresa URL odpovědi** přidejte `https://localhost:44316` .
 1. Vyberte **Uložit**.
 1. Na stránce Vlastnosti Poznamenejte ID aplikace pro použití v pozdějším kroku při konfiguraci webové aplikace.
 
@@ -74,7 +77,7 @@ Dále vytvořte tajný klíč klienta pro registrovanou webovou aplikaci. Ukázk
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-V tomto kurzu nakonfigurujete ukázku, kterou si můžete stáhnout z GitHubu. Ukázka používá ASP.NET k poskytnutí jednoduchého seznamu úkolů. Ukázka používá [Microsoft Owin middleware Components](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/). [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) nebo naklonujte ukázku z GitHubu. Ujistěte se, že cesta ke složce, do které extrahujete ukázkový soubor, obsahuje méně než 260 znaků.
+V tomto kurzu nakonfigurujete ukázku, kterou si můžete stáhnout z GitHubu. Ukázka používá ASP.NET k poskytnutí jednoduchého seznamu úkolů. Ukázka používá [Microsoft Owin middleware Components](/aspnet/aspnet/overview/owin-and-katana/). [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) nebo naklonujte ukázku z GitHubu. Ujistěte se, že cesta ke složce, do které extrahujete ukázkový soubor, obsahuje méně než 260 znaků.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git

@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: laujan
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
-ms.author: pafarley
-ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.author: lajanuar
+ms.openlocfilehash: 89b035397ea2050ae7e61f2a19310b6a7fb4192c
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379283"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467195"
 ---
 Prověřte `"confidence"` hodnoty pro každý výsledek klíč/hodnota pod `"pageResults"` uzlem. Měli byste se také podívat na skóre spolehlivosti v `"readResults"` uzlu, který odpovídá operaci čtení textu. Spolehlivost výsledků čtení neovlivňuje spolehlivost výsledků extrakce klíč/hodnota, proto byste měli zaškrtnout obě.
 * Pokud jsou skóre spolehlivosti pro operaci čtení nízká, zkuste zlepšit kvalitu vstupních dokumentů (viz [požadavky na vstup](../overview.md#input-requirements)).

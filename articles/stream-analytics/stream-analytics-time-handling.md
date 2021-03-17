@@ -1,18 +1,17 @@
 ---
 title: Principy zpracování času v Azure Stream Analytics
 description: Naučte se, jak zvolit nejlepší čas spuštění, zpracovávat zpožděné a včasné události a o zpracování metrik v Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0830a8b552283b5b39fa78c505ed177d1959989f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83640035"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019937"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Principy zpracování času v Azure Stream Analytics
 
@@ -46,7 +45,7 @@ Ve výchozím nastavení se používá čas doručení, který se nejlépe použ
 
 Čas aplikace je přiřazen při vygenerování události a je součástí datové části události. Chcete-li zpracovat události podle času aplikace, použijte klauzuli **timestamp by** v dotazu Select. Pokud chybí **časové razítko** , zpracují se události podle času doručení.
 
-V datové části je důležité použít časové razítko, pokud je časová logika zapojená do systému na zpoždění ve zdrojovém systému nebo v síti. Čas přiřazený k události je k dispozici v [systému. ČASOVÉ RAZÍTKo](https://docs.microsoft.com/stream-analytics-query/system-timestamp-stream-analytics).
+V datové části je důležité použít časové razítko, pokud je časová logika zapojená do systému na zpoždění ve zdrojovém systému nebo v síti. Čas přiřazený k události je k dispozici v [systému. ČASOVÉ RAZÍTKo](/stream-analytics-query/system-timestamp-stream-analytics).
 
 ## <a name="how-time-progresses-in-azure-stream-analytics"></a>Jak dlouho probíhá Azure Stream Analytics
 
@@ -130,7 +129,7 @@ Tento koncept slouží k zajištění toho, aby se zpracování opakovalo bez oh
 
 Pomocí [metriky úloh Stream Analytics](stream-analytics-monitoring.md)můžete sledovat počet efektů tolerance doby řazení událostí. Jsou relevantní následující metriky:
 
-|Metric  | Popis  |
+|Metrika  | Popis  |
 |---------|---------|
 | **Události mimo pořadí** | Označuje počet událostí, které byly obdrženy mimo pořadí, které byly buď vyřazeny nebo předány upravené časové razítko. Tato metrika je přímo ovlivněna konfigurací nastavení **události mimo pořadí** na stránce **řazení událostí** na úloze v Azure Portal. |
 | **Zpožděné vstupní události** | Určuje počet událostí přicházejících pozdě ze zdroje. Tato metrika zahrnuje události, které byly vyřazeny nebo bylo upraveno jejich časové razítko. Tato metrika je přímo ovlivněna konfigurací **událostí, které dorazí** na stránce **řazení událostí** na úlohu v Azure Portal. |
@@ -222,5 +221,5 @@ Na tomto obrázku jsou použity následující tolerance:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Stream Analytics – požadavky na pořadí událostí](stream-analytics-out-of-order-and-late-events.md)
+- [Azure Stream Analytics – požadavky na pořadí událostí]()
 - [Stream Analytics metriky úloh](stream-analytics-monitoring.md)

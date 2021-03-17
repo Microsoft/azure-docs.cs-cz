@@ -3,17 +3,17 @@ title: 'Generování a export certifikátů pro Point-to-site: Linux: CLI'
 description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí rozhraní příkazového řádku Linux (klient strongswan).
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 08/14/2019
+ms.date: 09/02/2020
 ms.author: alzam
-ms.openlocfilehash: c55c304ae71cba396266c83bcaaa727351dcd677
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0be5bb042649b0fe425077b5b3feb3cea728218c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064630"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89394002"
 ---
 # <a name="generate-and-export-certificates"></a>Generování a export certifikátů
 

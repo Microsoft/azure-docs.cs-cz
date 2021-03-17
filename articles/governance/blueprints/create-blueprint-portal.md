@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
-ms.date: 03/25/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045208"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918326"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
@@ -16,19 +16,19 @@ Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat bě�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
 Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. V tomto příkladu vytvořte nový podrobný plán s názvem **MyBlueprint** , ve kterém nakonfigurujete přiřazení rolí a zásad pro předplatné. Pak přidejte novou skupinu prostředků a vytvořte Správce prostředků šablonu a přiřazení role pro novou skupinu prostředků.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na stránce vlevo vyberte **definice** podrobného plánu a v horní části stránky vyberte tlačítko **+ vytvořit podrobný plán** .
 
    Nebo na stránce **Začínáme** vyberte **vytvořit** a pokračujte tak, že vytvoříte podrobný plán.
 
-   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Vytvořit podrobný plán ze stránky definice podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Snímek obrazovky s tlačítkem vytvořit podrobné plán na stránce definice podrobného plánu" border="false":::
 
 1. Na kartě v horní části seznamu předdefinovaných modrotisky vyberte **začít s prázdným plánem** .
 
@@ -40,15 +40,15 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 1. Přidejte přiřazení role na úrovni předplatného:
 
-   1. V části **předplatné**vyberte řádek **+ Přidat artefakt** . Otevře se okno **Přidat artefakt** na pravé straně prohlížeče.
+   1. V části **předplatné** vyberte řádek **+ Přidat artefakt** . Otevře se okno **Přidat artefakt** na pravé straně prohlížeče.
 
    1. Vyberte **přiřazení role** pro **Typ artefaktu**.
 
-   1. V části **role**vyberte **Přispěvatel**. Ponechejte pole **Přidat uživatele, aplikaci nebo skupinu** pomocí zaškrtávacího políčka, které označuje dynamický parametr.
+   1. V části **role** vyberte **Přispěvatel**. Ponechejte pole **Přidat uživatele, aplikaci nebo skupinu** pomocí zaškrtávacího políčka, které označuje dynamický parametr.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Přiřazení role pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Snímek obrazovky možností artefaktu přiřazení role pro přidání do definice podrobného plánu" border="false":::
 
    > [!NOTE]
    > Většina artefaktů podporuje parametry. Parametr, kterému je přiřazena hodnota během vytváření podrobného plánu, je _statický parametr_. Pokud je parametr přiřazen během přiřazení podrobného plánu, jedná se o _dynamický parametr_. Další informace najdete v tématu [parametry](./concepts/parameters.md)podrobného plánu.
@@ -59,9 +59,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Vyberte **přiřazení zásad** pro **Typ artefaktu**.
 
-   1. Změňte **typ** na **předdefinovaný**. Do **vyhledávacího**výrazu zadejte **tag**.
+   1. Změňte **typ** na **předdefinovaný**. Do **vyhledávacího** výrazu zadejte **tag**.
 
-   1. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte možnost **připojit značku a její výchozí hodnotu do skupin prostředků**.
+   1. Změňte fokus na **hledání** , které se má provést. Vyberte možnost **připojit značku a její výchozí hodnotu do skupin prostředků**.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
@@ -71,11 +71,11 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 1. Přidat skupinu prostředků na úrovni předplatného:
 
-   1. V části **předplatné**vyberte řádek **+ Přidat artefakt** .
+   1. V části **předplatné** vyberte řádek **+ Přidat artefakt** .
 
    1. Vyberte **skupinu prostředků** pro **Typ artefaktu**.
 
-   1. **Zobrazované názvy artefaktů**, **název skupiny prostředků**a pole **umístění** nechte prázdné, ale ujistěte se, že je zaškrtnuté políčko pro všechny vlastnosti parametrů, aby byly dynamické parametry.
+   1. **Zobrazované názvy artefaktů**, **název skupiny prostředků** a pole **umístění** nechte prázdné, ale ujistěte se, že je zaškrtnuté políčko pro všechny vlastnosti parametrů, aby byly dynamické parametry.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
@@ -83,7 +83,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. V položce **zdroj dat** vyberte řádek **+ Přidat artefakt** .
 
-   1. Vyberte **šablonu Azure Resource Manager** pro **Typ artefaktu**, nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
+   1. Vyberte **šablonu Azure Resource Manager** pro **Typ artefaktu**, nastavte **Zobrazovaný název artefaktu** na **StorageAccount** a nechejte **Popis** prázdný.
 
    1. Na kartě **Šablona** v poli Editor vložte následující šablonu ARM. Po vložení šablony vyberte kartu **parametry** a Všimněte si, že byly zjištěny parametry šablony **storageAccountType** a **Location** . Každý parametr byl automaticky zjištěn a vyplněn, ale nakonfigurován jako dynamický parametr.
 
@@ -143,11 +143,11 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Šablona Správce prostředků pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Snímek obrazovky s možnostmi artefaktu šablony Správce prostředků pro přidání do definice podrobného plánu" border="false":::
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** ** _x_ naplněný parametr _y_ ** . Dynamické parametry se nastavují při každém přiřazení podrobného plánu.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** **naplněný parametr _y_** . Dynamické parametry se nastavují při každém přiřazení podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Dokončena definice podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Snímek obrazovky dokončené definice podrobného plánu s každým typem artefaktu" border="false":::
 
 1. Teď, když jste přidali všechny plánované artefakty, vyberte **Uložit koncept** ve spodní části stránky.
 
@@ -159,7 +159,7 @@ V části [vytvořit podrobný plán](#create-a-blueprint)jste nezadali popis ne
 
 1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste vytvořili dříve, a vyberte **Upravit podrobný plán**.
 
-1. V **popisu**podrobného plánu zadejte nějaké informace o podrobném plánu a artefaktech, které ho tvoří. V takovém případě zadejte něco podobného: **Tento plán nastaví u předplatného zásadu značky a přiřazení role, vytvoří zdroj skupiny a nasadí šablonu prostředků a přiřazení role do této skupiny prostředků.**
+1. V **popisu** podrobného plánu zadejte nějaké informace o podrobném plánu a artefaktech, které ho tvoří. V takovém případě zadejte něco podobného: **Tento plán nastaví u předplatného zásadu značky a přiřazení role, vytvoří zdroj skupiny a nasadí šablonu prostředků a přiřazení role do této skupiny prostředků.**
 
 1. Vyberte **Další: artefakty** ve spodní části stránky nebo na kartě **artefakty** v horní části stránky.
 
@@ -169,17 +169,17 @@ V části [vytvořit podrobný plán](#create-a-blueprint)jste nezadali popis ne
 
    1. Vyberte **přiřazení role** pro **Typ artefaktu**.
 
-   1. V části **role**vyberte **vlastník**a zrušte zaškrtnutí políčka v poli **Přidat uživatele, aplikaci nebo skupinu** .
+   1. V části **role** vyberte **vlastník** a zrušte zaškrtnutí políčka v poli **Přidat uživatele, aplikaci nebo skupinu** .
 
    1. Vyhledejte a vyberte uživatele, aplikaci nebo skupinu, které chcete přidat. Tento artefakt používá statický parametr, který je v každém přiřazení tohoto podrobného plánu nastavený stejně.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Přiřazení druhé role pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Snímek obrazovky s možnostmi artefaktů přiřazení druhé role pro přidání do definice podrobného plánu" border="false":::
 
 1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že nově přidané přiřazení role zobrazuje **naplněný 1 z 1 parametrů**. To znamená, že se jedná o statický parametr.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Druhá definice pro dokončený podrobný plán" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Snímek obrazovky druhé dokončené definice podrobného plánu s artefaktem přiřazení další role" border="false":::
 
 1. Vyberte **Uložit koncept** nyní, že byl aktualizován.
 
@@ -218,7 +218,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
    1. V dolní části stránky vyberte **vytvořit** .
 
-      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Vytvoření odběru pro odběr přiřazení podrobného plánu" border="false":::
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Snímek obrazovky okna Vytvořit předplatné a možnosti pro nové předplatné" border="false":::
 
       > [!IMPORTANT]
       > Nové předplatné se vytvoří ihned po výběru **vytvořit**.
@@ -226,29 +226,29 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
    > [!NOTE]
    > U každého předplatného, které vyberete, se vytvoří přiřazení. Změny v jednom předplatném můžete provádět později bez vynucení změn ve zbývající části vybraných předplatných.
 
-1. Pro **název přiřazení**zadejte jedinečný název pro toto přiřazení.
+1. Pro **název přiřazení** zadejte jedinečný název pro toto přiřazení.
 
-1. V části **umístění**vyberte oblast, ve které se má vytvořit objekt nasazení spravované identity a předplatného. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+1. V části **umístění** vyberte oblast, ve které se má vytvořit objekt nasazení spravované identity a předplatného. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
 1. Ponechte v rozevíracím seznamu **verze definice** podrobného plánu možnost **publikované** verze v položce **v1** . (Výchozí je naposledy publikovaná verze.)
 
 1. Pro **zámek přiřazení**, ponechte výchozí hodnotu na **bez zámku**. Další informace najdete v tématu [uzamykání prostředků v modrotisky](./concepts/resource-locking.md).
 
-   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Uzamykání a spravované identity pro přiřazení" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Snímek obrazovky s přiřazením zámku a spravovanými možnostmi identity pro přiřazení podrobného plánu" border="false":::
 
-1. V části **spravovaná identita**ponechte výchozí hodnotu **přiřazenou systému**.
+1. V části **spravovaná identita** ponechte výchozí hodnotu **přiřazenou systému**.
 
 1. Pro přiřazení role na úrovni předplatného **[skupiny uživatelů nebo název aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikace nebo skupinu.
 
 1. U přiřazení zásady na úrovni předplatného nastavte **název značky** na **CostCenter** a **hodnotu značky** na **ContosoIT**.
 
-1. V rozevíracím seznamu pro **zdroj dat**zadejte **název** **StorageAccount** a **umístění** **východní USA 2** .
+1. V rozevíracím seznamu pro **zdroj dat** zadejte **název** **StorageAccount** a **umístění** **východní USA 2** .
 
    > [!NOTE]
    > Pro každý artefakt, který jste přidali do skupiny prostředků během definice podrobného plánu, je tento artefakt odsazený tak, aby se zarovnal se skupinou prostředků nebo objektem, pomocí kterého ho nasadíte.
    > Artefakty, které buď nepřebírají parametry, nebo nemají žádné parametry, které by bylo možné definovat v přiřazení, jsou uvedeny pouze pro kontextové informace.
 
-1. V **StorageAccount**šablony ARM vyberte pro parametr **storageAccountType** možnost **Standard_GRS** .
+1. V **StorageAccount** šablony ARM vyberte pro parametr **storageAccountType** možnost **Standard_GRS** .
 
 1. Přečtěte si informační pole v dolní části stránky a potom vyberte **přiřadit**.
 
@@ -265,7 +265,7 @@ Po přiřazení podrobného plánu k předplatnému ověřte průběh nasazení:
 
 1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste předtím přiřadili, a vyberte **Zobrazit podrobnosti přiřazení**.
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Zobrazit podrobnosti o přiřazení z přiřazené stránky modrotisky" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Snímek obrazovky kontextové nabídky přiřazení podrobného plánu se zvolenou možností zobrazit podrobnosti přiřazení" border="false":::
 
 1. Na stránce **přiřazení** podrobného plánu ověřte, zda byly všechny artefakty úspěšně nasazeny a zda během nasazení nedošlo k chybám. Pokud došlo k chybám, přečtěte si téma [řešení potíží s](./troubleshoot/general.md) podrobnými kroky pro určení, co se stalo.
 

@@ -3,19 +3,19 @@ title: Jak používat rozhraní API pro detekci anomálií v datech časových �
 titleSuffix: Azure Cognitive Services
 description: Naučte se detekovat anomálie ve vašich datech buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: aahi
-ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: mbullwin
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71840223"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703428"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postupy: použití rozhraní API pro detekci anomálií v datech časových řad  
 
@@ -47,7 +47,7 @@ Odesláním nových datových bodů při jejich generování můžete monitorova
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Úprava hranic detekce dolních a horních anomálií
 
-Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají `expectedValue`pomocí `upperMargin`, a `lowerMargin`. Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo. `lowerMargin` Hranice by se vypočítaly takto:
+Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají pomocí `expectedValue` , `upperMargin` a `lowerMargin` . Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo `lowerMargin` . Hranice by se vypočítaly takto:
 
 |Překračuje  |Výpočet  |
 |---------|---------|
@@ -71,4 +71,4 @@ Následující příklady znázorňují výsledek rozhraní API detektoru anomá
 ## <a name="next-steps"></a>Další kroky
 
 * [Co je rozhraní API Detektoru anomálií?](../overview.md)
-* [Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií](../quickstarts/detect-data-anomalies-csharp.md)
+* [Rychlý Start: zjištění anomálií v datech časových řad pomocí detektoru anomálií](../quickstarts/client-libraries.md)

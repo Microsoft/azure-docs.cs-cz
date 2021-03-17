@@ -1,27 +1,22 @@
 ---
-title: Přírůstkové kopírování dat podle
+title: Přírůstkové kopírování dat ze zdrojového úložiště dat do cílového úložiště dat
 description: Tyto kurzy vám ukážou, jak přírůstkově kopírovat data ze zdrojového úložiště dat do cílového úložiště dat. První zkopíruje data z jedné tabulky.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: f1fb209f44ae7922de87277100fbf55add184766
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 02/18/2021
+ms.openlocfilehash: 7161fb30c8b445681b4cd577d8f8ac9fff5106df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739241"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Přírůstkové načtení dat ze zdrojového úložiště dat do cílového úložiště dat
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V řešení integrace dat je přírůstkové (nebo rozdílové) načítání dat po počátečním úplném načtení dat často používaný scénář. Kurzy v této části vám ukážou různé způsoby načítání dat přírůstkově pomocí Azure Data Factory.
 
@@ -57,7 +52,7 @@ V případě šablon se podívejte na tyto informace:
 - [Kopírování nových souborů na základě LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Načítání nových souborů pouze pomocí dělené složky nebo názvu souboru.
-Můžete kopírovat pouze nové soubory, ve kterých již byl čas rozdělen soubory nebo složky s timeslice informacemi jako součást názvu souboru nebo složky (například/yyyy/MM/DD/File.csv). Je to nejvíce výkonného přístupu pro přírůstkové načítání nových souborů. 
+Můžete kopírovat jenom nové soubory, ve kterých už je čas rozdělený na oddíly soubory nebo složky s timeslice informacemi jako součást názvu souboru nebo složky (například/yyyy/MM/DD/file.csv). Je to nejvíce výkonného přístupu pro přírůstkové načítání nových souborů. 
 
 Podrobné pokyny najdete v následujícím kurzu: <br/>
 - [Přírůstkové kopírování nových souborů na základě času v dělené složce nebo názvu souboru z úložiště objektů BLOB v Azure do Azure Blob Storage](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

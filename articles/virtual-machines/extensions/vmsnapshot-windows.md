@@ -1,20 +1,22 @@
 ---
 title: Rozšíření snímku virtuálního počítače pro Windows pro Azure Backup
 description: Proveďte zálohu virtuálního počítače konzistentní s aplikací z Azure Backup pomocí rozšíření snímku virtuálního počítače.
-services: backup, virtual-machines-windows
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 3b22105486aabe8d79848d7ac621b9543815d106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85366981"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561057"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Rozšíření snímku virtuálního počítače pro Windows pro Azure Backup
 

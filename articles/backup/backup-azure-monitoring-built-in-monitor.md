@@ -4,16 +4,29 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654119"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713367"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
-Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel nebo správce zálohování by měl vidět, co se ve všech řešeních používá, a očekává se, že bude informován v důležitých scénářích. Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
+Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel, který má záložní účet nebo správce, by měl vidět, co se ve všech řešeních provede, a očekává se, že bude v důležitých scénářích upozorněn Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
+## <a name="backup-items-in-recovery-services-vault"></a>Zálohované položky v trezoru Recovery Services
+
+Všechny zálohované položky můžete monitorovat pomocí Recovery Services trezoru. Když přejdete do části **zálohované položky** v trezoru, otevře se zobrazení, které poskytuje počet zálohovaných položek každého typu úlohy přidružené k trezoru. Kliknutím na libovolný řádek otevřete podrobné zobrazení obsahující všechny zálohované položky daného typu úlohy s informacemi o stavu poslední zálohy pro každou položku, nejnovější dostupný bod obnovení a tak dále.
+
+![Zálohované položky trezoru RS](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+
+> [!NOTE]
+> Pro položky zálohované do Azure pomocí DPM se v seznamu zobrazí všechny chráněné zdroje dat (na disku i v online režimu) pomocí serveru DPM. Pokud je ochrana pro zdroj dat zastavena se zachovanými zálohovanými daty, bude zdroj dat stále uveden na portálu. Můžete přejít na Podrobnosti zdroje dat a zjistit, jestli se body obnovení nacházejí na disku, online nebo obojím. Zdroje dat, pro které se online ochrana zastaví, ale data se zachovají, fakturace pro body obnovení online pokračuje, dokud se data zcela neodstraní.
+>
+> Aby se zálohované položky zobrazovaly na portálu Recovery Services trezoru aplikace DPM, musí mít verzi DPM 1807 (5.1.378.0) nebo DPM 2019 (verze 10.19.58.0 nebo vyšší).
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Úlohy zálohování v trezoru Recovery Services
 
@@ -30,12 +43,15 @@ Tady jsou uvedené úlohy z následujících řešení Azure Backup:
 - Zálohování úloh Azure, jako je SQL a SAP HANA
 - Agent Microsoft Azure Recovery Services (MARS)
 
-Úlohy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se nezobrazí.
+Úlohy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se nezobrazují.
 
 > [!NOTE]
 > Úlohy Azure, jako jsou zálohování SQL a SAP HANA v rámci virtuálních počítačů Azure, mají velký počet úloh zálohování. Například zálohování protokolů může běžet každých 15 minut. Pro takové databázové úlohy se ale zobrazí jenom operace aktivované uživatelem. Naplánované operace zálohování se nezobrazují.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Výstrahy zálohování v trezoru Recovery Services
+
+> [!NOTE]
+> Zobrazení výstrah napříč trezory není v současné době v centru zálohování podporováno. Pokud chcete zobrazit výstrahy pro tento trezor, musíte přejít do jednotlivého trezoru.
 
 Výstrahy jsou primárně ve scénářích, kdy se uživatelům pošle oznámení, aby mohli provádět příslušné akce. Část **výstrahy zálohování** zobrazuje výstrahy vygenerované službou Azure Backup. Tyto výstrahy definuje služba a uživatel nemůže vlastní výstrahy vytvořit.
 
@@ -55,7 +71,7 @@ Následující scénáře jsou definovány službou jako scénáře s možností
 - Agent Microsoft Azure Recovery Services (MARS)
 
 > [!NOTE]
-> Výstrahy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se tady nezobrazují.
+> Výstrahy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se tady nezobrazí.
 
 ### <a name="consolidated-alerts"></a>Konsolidované výstrahy
 
@@ -70,7 +86,7 @@ Je-li výstraha při selhání vyvolána, existuje několik výjimek. Jsou to ty
 - Úloha zálohování virtuálního počítače selhala, protože zálohovaný virtuální počítač Azure už neexistuje.
 - [Konsolidované výstrahy](#consolidated-alerts)
 
-Výše uvedené výjimky jsou navržené z porozumění, že výsledek těchto operací (primárně aktivovaný uživatelem) se okamžitě zobrazuje na klientech portálu, PS/CLI. Takže uživatel je okamžitě informován a nepotřebuje oznámení.
+Výše uvedené výjimky jsou navržené z porozumění, že výsledek těchto operací (primárně aktivovaný uživatelem) se okamžitě zobrazuje na klientech portálu/PS/CLI. Takže uživatel je okamžitě informován a nepotřebuje oznámení.
 
 ### <a name="alert-types"></a>Typy výstrah
 
@@ -95,14 +111,26 @@ Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a 
 
 > [!NOTE]
 >
-> - Pokud se provede destruktivní operace, jako je **zastavení ochrany pomocí odstranit data** , vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro trezor služby RECOVERy není nakonfigurované oznámení.
+> - Pokud se provede destruktivní operace, jako je **zastavení ochrany pomocí odstranění dat** , vygeneruje se výstraha a vlastníkům, správcům a spolupracovníkům předplatného se pošle e-mail, i když nejsou oznámení nakonfigurovaná pro Recovery Services trezor.
 > - K nakonfigurování oznámení pro úspěšné úlohy použijte [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="inactivating-alerts"></a>Deaktivace výstrah
 
-Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete vybrat položku seznamu odpovídající výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem pro zrušení **Aktivace** v horní části. Kliknutím na toto tlačítko se změní stav výstrahy na **neaktivní**. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete **deaktivovat**.
+Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete vybrat položku seznamu odpovídající výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem pro zrušení **Aktivace** v horní části. Výběrem tohoto tlačítka se změní stav výstrahy na **neaktivní**. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete **deaktivovat**.
 
 ![Deaktivace výstrah trezoru RS](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Výstrahy Azure Monitor pro Azure Backup (Preview)
+
+Azure Backup taky poskytuje výstrahy prostřednictvím Azure Monitor a umožňuje tak uživatelům konzistentní prostředí pro správu výstrah v různých službách Azure, včetně zálohování. S výstrahami Azure Monitor můžete směrovat výstrahy na libovolný kanál, který podporuje Azure Backup jako je e-mail, ITSM, Webhook, aplikace logiky atd.
+
+V současné době je tato funkce dostupná pro databáze Azure pro server PostgreSQL, objekty blob Azure a Azure Managed Disks. Výstrahy se generují pro následující scénáře a dají se k nim přistupovat tak, že přejdete do trezoru záloh a kliknete na položku nabídky **výstrahy** :
+
+- Odstranit data zálohy
+- Selhání zálohování (Pokud chcete dostávat upozornění na selhání zálohování, musíte zaregistrovat příznak AFEC s názvem **EnableAzureBackupJobFailureAlertsToAzureMonitor** prostřednictvím portálu Preview).
+- Selhání obnovení (Pokud chcete dostávat upozornění na selhání obnovení, je nutné zaregistrovat příznak AFEC s názvem **EnableAzureBackupJobFailureAlertsToAzureMonitor** prostřednictvím portálu Preview).
+
+Další informace o výstrahách Azure Monitor najdete [v tématu Přehled výstrah v Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80298809"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966169"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
 
@@ -29,7 +29,7 @@ Požadavky na systém zahrnují:
 
 Informace o požadavcích na systém StorSimple publikované v tomto článku se vztahují pouze na virtuální pole StorSimple.
 
-* V případě zařízení řady 8000 pokračujte na [požadavky na systém pro zařízení StorSimple 8000 series](storsimple-system-requirements.md).
+* V případě zařízení řady 8000 pokračujte na [požadavky na systém pro zařízení StorSimple 8000 series](./storsimple-8000-system-requirements.md).
 * V případě zařízení řady 7000 pokračujte na [požadavky na systém pro zařízení StorSimple 5000-7000 Series](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements).
 
 ## <a name="software-requirements"></a>Požadavky na software
@@ -84,20 +84,20 @@ Následující požadavky na software jsou pro klienty SMB, kteří přistupují
 
 
 ### <a name="supported-storage-format"></a>Podporovaný formát úložiště
-Podporuje se jenom úložiště objektů blob bloku Azure. Objekty blob stránky nejsou podporovány. Další informace [o objektech blob bloku a objektech blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+Podporuje se jenom úložiště objektů blob bloku Azure. Objekty blob stránky nejsou podporovány. Další informace [o objektech blob bloku a objektech blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly přenosy z iSCSI, SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Požadováno** | **Poznámky** |
+| **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Povinné** | **Poznámky** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |Out |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
-| TCP 443 (HTTPS) |Out |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| TCP 443 (HTTPS) |Out |Síť WAN |Yes |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
 | UDP 53 (DNS) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. <br></br> Upozorňujeme, že pokud nasazujete souborový server, doporučujeme použít místní server DNS. |
 | UDP 123 (NTP) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP.<br></br> Počítejte s tím, že pokud nasazujete souborový server, doporučujeme synchronizovat čas s řadiči domény služby Active Directory. |
-| TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
-| TCP 443 (HTTPS) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
-| TCP 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
+| TCP 80 (HTTP) |V |Síť LAN |Yes |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
+| TCP 443 (HTTPS) |V |Síť LAN |Yes |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
+| TCP 3260 (iSCSI) |V |Síť LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
 
 <sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 

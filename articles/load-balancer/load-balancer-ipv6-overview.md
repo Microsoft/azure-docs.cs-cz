@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981847"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700675"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
 
 
 >[!NOTE] 
->Tento obsah byl nahrazen [protokolem IPv6 pro virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Azure doporučuje nová nasazení IPv6 používat nové funkce protokolu IPv6 pro virtuální sítě Azure.
+>Tento obsah byl nahrazen [protokolem IPv6 pro virtuální síť Azure](../virtual-network/ipv6-overview.md). Azure doporučuje nová nasazení IPv6 používat nové funkce protokolu IPv6 pro virtuální sítě Azure.
 
 >[!NOTE]
->Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](load-balancer-standard-overview.md).
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](./load-balancer-overview.md).
 
 Základní služba Vyrovnávání zatížení na základě Internetu se dá nasadit s adresou IPv6. Kromě připojení protokolem IPv4 Tato funkce umožňuje následující možnosti:
 
@@ -77,11 +77,11 @@ Omezení
 * Virtuální počítače Azure se nemohou připojit přes IPv6 k jiným virtuálním počítačům, jiným službám Azure nebo místním zařízením. Můžou komunikovat jenom s nástrojem pro vyrovnávání zatížení Azure přes IPv6. Mohou ale komunikovat s těmito dalšími prostředky pomocí protokolu IPv4.
 * Ochrana skupiny zabezpečení sítě (NSG) pro protokol IPv4 je podporovaná v nasazeních s duálním zásobníkem (IPv4 + IPv6). Skupin zabezpečení sítě se nevztahuje na koncové body IPv6.
 * Koncový bod IPv6 na virtuálním počítači se nezveřejňuje přímo na internetu. Je za nástrojem pro vyrovnávání zatížení. Přes IPv6 jsou přístupné jenom porty zadané v pravidlech nástroje pro vyrovnávání zatížení.
-* Změna parametru IdleTimeout pro protokol IPv6 se v tuto **chvíli**nepodporuje. Výchozí hodnota je čtyři minuty.
-* Změna parametru loadDistributionMethod pro protokol IPv6 se v tuto **chvíli**nepodporuje.
-* Rezervované IP adresy IPv6 (kde IPAllocationMethod = static) se **aktuálně nepodporují**.
+* Změna parametru IdleTimeout pro protokol IPv6 se v tuto **chvíli** nepodporuje. Výchozí hodnota je čtyři minuty.
+* Změna parametru loadDistributionMethod pro protokol IPv6 se v tuto **chvíli** nepodporuje.
+* Protokol IPv6 pro základní Load Balancer je uzamčený na **dynamickou** SKU.  Protokol IPv6 pro Standard Load Balancer je pevně nastaven na **statickou** SKU.
 * NAT64 (převod IPv6 na IPv4) není podporován.
-* Připojení sekundárního síťového adaptéru, který odkazuje na podsíť IPv6 do fondu back-end, se v tuto **chvíli**nepodporuje.
+* Připojení sekundárního síťového adaptéru, který odkazuje na podsíť IPv6 do fondu back-end, se v tuto **chvíli** nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
 

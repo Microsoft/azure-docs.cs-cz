@@ -1,94 +1,79 @@
 ---
 title: Koncepty – Network vzájemné propojení
-description: Seznamte se s klíčovými aspekty a případy použití sítě a vzájemné propojení v řešení Azure VMware (AVS).
+description: Přečtěte si o klíčových aspektech a případech použití sítě a vzájemné propojení v řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 07/23/2020
-ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 03/11/2021
+ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214095"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491805"
 ---
-# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Koncepty sítí a propojení ve službě Azure VMware Solution (AVS) verze Preview
+# <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Sítě řešení Azure VMware a koncepty vzájemné propojení
 
-Vzájemné propojení sítě mezi privátními a místními cloudy Azure VMware Solution (AVS) a místními prostředími nebo virtuálními sítěmi v Azure vám umožní přístup k privátnímu cloudu a jeho používání. V tomto článku se podíváme na několik klíčových konceptů, které zajišťují základ sítí a vzájemné propojení.
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
-Užitečnou perspektivou pro vzájemné propojení je zvážit dva typy implementace privátního cloudu pro funkci AVS:
+Existují dva způsoby, jak vzájemné propojení v privátním cloudu řešení Azure VMware:
 
-1. [**Basic Azure jenom vzájemné propojení**](#azure-virtual-network-interconnectivity) umožňuje spravovat a používat privátní cloud jenom s jednou virtuální sítí v Azure. Tato implementace je nejlépe vhodná pro vyhodnocení a implementace služby AVS, které nevyžadují přístup z místních prostředí.
+- [**Basic Azure jenom vzájemné propojení**](#azure-virtual-network-interconnectivity) umožňuje spravovat a používat privátní cloud jenom s jednou virtuální sítí v Azure. Tato implementace je nejlépe vhodná pro vyhodnocení a implementace řešení Azure VMware, které nevyžadují přístup z místních prostředí.
 
-1. [**Úplné místní implementace do privátního cloudu vzájemné propojení**](#on-premises-interconnectivity) rozšiřuje základní implementaci jenom pro Azure tak, aby zahrnovala vzájemné propojení mezi místními a soukromými cloudy služby AVS.
+- [**Úplné místní implementace do privátního cloudu vzájemné propojení**](#on-premises-interconnectivity) rozšiřuje základní implementaci jenom pro Azure tak, aby zahrnovala vzájemné propojení mezi místními a privátními cloudy řešení Azure VMware.
  
-Další informace o požadavcích a dvou typech implementací privátního cloudu pro funkci AVS najdete v následujících částech.
+V tomto článku se zaměříme na klíčové koncepty, které vytvářejí sítě a vzájemné propojení, včetně požadavků a omezení. Tento článek poskytuje informace, které potřebujete znát ke konfiguraci sítě pro práci s řešením Azure VMware.
 
-## <a name="avs-private-cloud-use-cases"></a>Případy použití privátního cloudu pro funkci AVS
+## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Případy použití privátního cloudu řešení Azure VMware
 
-Případy použití pro privátní cloudy služby AVS zahrnují:
-- nové úlohy virtuálních počítačů VMware v cloudu
-- Zatížení virtuálních počítačů do cloudu (jenom v místním prostředí až po funkci AVS)
-- Migrace zatížení virtuálního počítače do cloudu (jenom místní až na službu AVS)
-- zotavení po havárii (AVS do AVS nebo místní pro funkci AVS)
-- spotřeba služeb Azure
+Případy použití pro privátní cloudy řešení Azure VMware zahrnují:
+- Nové úlohy virtuálních počítačů VMware v cloudu
+- Zatížení virtuálních počítačů do cloudu (jenom pro řešení VMware z místního prostředí do Azure)
+- Migrace úloh virtuálních počítačů do cloudu (jenom pro řešení VMware z místního prostředí do Azure)
+- Zotavení po havárii (řešení Azure VMware do Azure VMware nebo z místního řešení do Azure VMware)
+- Spotřeba služeb Azure
 
- Všechny případy použití pro službu AVS jsou povolené s připojením z místního prostředí k privátnímu cloudu. 
-
-## <a name="virtual-network-and-expressroute-circuit-requirements"></a>Požadavky na virtuální síť a okruh ExpressRoute
- 
-Když ve svém předplatném vytvoříte připojení z virtuální sítě, okruh ExpressRoute se vytvoří prostřednictvím partnerského vztahu, použije autorizační klíč a ID partnerského vztahu, které požadujete v Azure Portal. Partnerský vztah je privátní a jedno připojení mezi Vaším privátním cloudem a virtuální sítí.
-
-> [!NOTE] 
-> Okruh ExpressRoute není součástí nasazení privátního cloudu. Místní okruh ExpressRoute překračuje rozsah tohoto dokumentu. Pokud vyžadujete místní připojení k privátnímu cloudu, můžete použít některý ze stávajících okruhů ExpressRoute nebo si ho koupit v Azure Portal.
-
-Při nasazení privátního cloudu obdržíte IP adresy pro vCenter a správce NSX-T. Pro přístup k těmto rozhraním pro správu budete muset ve svém předplatném vytvořit další prostředky ve virtuální síti. Můžete najít postupy pro vytváření těchto prostředků a vytváření privátních partnerských vztahů ExpressRoute v kurzech.
-
-Logické sítě privátního cloudu jsou dodávány s předem zřízeným NSX-T. Pro vás předběžně zřídí bránu 0 a bránu 1. Můžete vytvořit segment a připojit ho k existující bráně 1-1 nebo ji připojit k nové bráně, kterou definujete. Logické síťové komponenty NSX-T poskytují konektivitu mezi úlohami v severozápadním a v západním rozsahu a také poskytují připojení k Internetu a službám Azure v oblasti USA – jih. 
-
-## <a name="routing-and-subnet-requirements"></a>Požadavky na směrování a podsíť
-
-Směrování je založené na protokolu BGP (Routing Border Gateway Protocol), které se ve výchozím nastavení automaticky zřídí a povoluje pro každé nasazení privátního cloudu. U privátních cloudů služby AVS se vyžaduje plánování adresních prostorů sítě privátního cloudu s minimální délkou bloků síťových adres CIDR, které jsou v níže uvedené tabulce. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích. V rámci tohoto bloku adres se automaticky zřídí Správa, zřizování a vMotion sítě.
-
-Příklad `/22` bloku síťových adres CIDR:  `10.10.0.0/22`
-
-Podsítě:
-
-| Využití sítě             | Podsíť | Příklad        |
-| ------------------------- | ------ | -------------- |
-| Správa privátního cloudu  | `/24`  | `10.10.0.0/24` |
-| vMotion síť           | `/24`  | `10.10.1.0/24` |
-| Úlohy virtuálních počítačů              | `/24`  | `10.10.2.0/24` |
-| Partnerský vztah ExpressRoute      | `/24`  | `10.10.3.8/30` |
-
+> [!TIP]
+> Všechny případy použití pro službu řešení Azure VMware jsou povolené s připojením z místního prostředí k privátnímu cloudu.
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Vzájemné propojení virtuální sítě Azure
 
-V rámci virtuální sítě do implementace privátního cloudu můžete spravovat svůj privátní cloud služby AVS, využívat úlohy v privátním cloudu a přistupovat ke službám Azure přes připojení ExpressRoute. 
+Virtuální síť Azure můžete propojit s implementací privátního cloudu řešení Azure VMware. Můžete spravovat privátní cloud řešení Azure VMware, využívat úlohy v privátním cloudu a přistupovat k dalším službám Azure.
 
-Následující diagram znázorňuje základní vzájemné propojení sítě, která se vytvořila v době nasazení privátního cloudu. Zobrazuje logické sítě založené na ExpressRoute mezi virtuální sítí v Azure a privátním cloudem. Vzájemné propojení splňuje tři z hlavních případů použití:
-* Příchozí přístup k serveru vCenter a správce NSX-T, který je přístupný z virtuálních počítačů ve vašem předplatném Azure, a ne z vašich místních systémů. 
-* Odchozí přístup z virtuálních počítačů do služeb Azure. 
-* Příchozí přístup a spotřeba úloh využívajících privátní cloud.
+Následující diagram znázorňuje základní vzájemné propojení sítě, která se vytvořila v době nasazení privátního cloudu. Zobrazuje logické sítě mezi virtuální sítí v Azure a privátním cloudem. Toto připojení se naváže přes back-end ExpressRoute, který je součástí služby řešení Azure VMware. Vzájemné propojení splňuje následující primární případy použití:
+
+- Příchozí přístup k serveru vCenter a správce NSX-T, který je přístupný z virtuálních počítačů ve vašem předplatném Azure.
+- Odchozí přístup z virtuálních počítačů v privátním cloudu do služeb Azure.
+- Příchozí přístup k úlohám spuštěným v privátním cloudu.
+
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="Základní připojení virtuální sítě k privátnímu cloudu" border="false":::
 
 ## <a name="on-premises-interconnectivity"></a>Místní vzájemné propojení
 
-V rámci virtuální sítě a do úplného nasazení privátního cloudu máte přístup k privátním cloudům služby AVS z místních prostředí. Tato implementace je rozšířením základní implementace popsané v předchozí části. Podobně jako u základní implementace se vyžaduje okruh ExpressRoute, ale s touto implementací se používá pro připojení z místních prostředí k privátnímu cloudu v Azure. 
+V plně propojeném scénáři máte přístup k řešení Azure VMware z virtuálních sítí Azure a místního prostředí. Tato implementace je rozšířením základní implementace popsané v předchozí části. Pro připojení z místního prostředí k privátnímu cloudu řešení Azure VMware v Azure se vyžaduje okruh ExpressRoute.
 
 V následujícím diagramu vidíte místní vzájemné propojení privátního cloudu, které umožňují následující případy použití:
-* Horká a studená vMotiona přes vCenter
-* Místní přístup ke správě privátního cloudu z místního prostředí
+
+- Horká a studená vMotiona vCenter mezi místním prostředím a řešením Azure VMware.
+- Přístup pro správu privátního cloudu z místního prostředí do Azure VMware.
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Připojení k virtuální síti a místnímu úplnému privátnímu cloudu" border="false":::
 
-V případě úplného vzájemné propojení do privátního cloudu povolte ExpressRoute Global Reach a pak si vyžádejte autorizační klíč a ID privátního partnerského vztahu pro Global Reach v Azure Portal. Autorizační klíč a ID partnerského vztahu se používají k navázání Global Reach mezi okruhem ExpressRoute v rámci vašeho předplatného a okruhem ExpressRoute pro nový privátní cloud. Po propojení dva okruhy ExpressRoute směrují síťový provoz mezi místními prostředími do privátního cloudu.  Postupy pro vyžádání a používání autorizačního klíče a ID partnerského vztahu najdete v [kurzu vytvoření partnerského vztahu ExpressRoute Global REACH v privátním cloudu](tutorial-expressroute-global-reach-private-cloud.md) .
+Pokud chcete plně vzájemné propojení do svého privátního cloudu, musíte povolit ExpressRoute Global Reach a potom si vyžádat autorizační klíč a ID privátního partnerského vztahu pro Global Reach v Azure Portal. Autorizační klíč a ID partnerského vztahu se používají k navázání Global Reach mezi okruhem ExpressRoute ve vašem předplatném a okruhem ExpressRoute pro váš privátní cloud. Po propojení dva okruhy ExpressRoute směrují síťový provoz mezi místními prostředími do privátního cloudu. Další informace o těchto postupech najdete v [kurzu vytvoření partnerského vztahu ExpressRoute Global REACH do privátního cloudu](tutorial-expressroute-global-reach-private-cloud.md).
 
+## <a name="limitations"></a>Omezení
+[!INCLUDE [azure-vmware-solutions-limits](includes/azure-vmware-solutions-limits.md)]
 
 ## <a name="next-steps"></a>Další kroky 
 
-V dalším kroku se dozvíte o [konceptech úložiště privátního cloudu](concepts-storage.md).
+Teď, když jste se seznámili s koncepty sítě řešení Azure VMware a vzájemné propojení, se můžete seznámit s těmito informacemi:
+
+- [Koncepty úložiště řešení Azure VMware](concepts-storage.md).
+- [Koncepty identity řešení Azure VMware](concepts-identity.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
+[concepts-upgrades]: ./concepts-upgrades.md
+[concepts-storage]: ./concepts-storage.md

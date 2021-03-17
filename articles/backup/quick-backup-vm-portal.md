@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656953"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91328767"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
 
@@ -20,11 +20,11 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
 
-Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services.
+Vytvořte jednoduché naplánované každodenní zálohování do trezoru Recovery Services.
 
 1. V nabídce na levé straně vyberte **Virtuální počítače**.
 2. V seznamu zvolte virtuální počítač, který chcete zálohovat. Pokud jste použili ukázkové příkazy z rychlého úvodu k virtuálním počítačům, virtuální počítač má název *myVM* a je ve skupině prostředků *myResourceGroup*.
@@ -39,7 +39,7 @@ Trezor služby Recovery Services je logický kontejner, který uchovává záloh
 
     ![Povolení zálohování virtuálního počítače na webu Azure Portal](./media/quick-backup-vm-portal/enable-backup.png)
 
-    Ve výchozím nastavení je trezor nastavený pro geograficky redundantní úložiště. Tato úroveň redundance úložiště vaše data chrání ještě více tím, že zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů.
+    Ve výchozím nastavení je trezor nastavený pro geograficky redundantní úložiště. Za účelem další ochrany dat tato úroveň redundance úložiště zajišťuje, že se zálohovaná data replikují do sekundární oblasti Azure, která je od primární oblasti od sebe stovky mil.
 
     K definování, kdy se spouští úloha zálohování a jak dlouho se uchovávají body obnovení, vytváříte a používáte zásady. Výchozí zásada ochrany spouští úlohu zálohování každý den a uchovává body obnovení po dobu 30 dnů. Tyto výchozí hodnoty zásady můžete použít k rychlému zajištění ochrany vašeho virtuálního počítače.
 
@@ -83,7 +83,7 @@ Pokud budete pokračovat k kurzu zálohování, který vysvětluje, jak obnovit 
 6. V seznamu zvolte vaši skupinu prostředků. Pokud jste použili ukázkové příkazy z rychlého úvodu k virtuálním počítačům, skupina prostředků má název *myResourceGroup*.
 7. Vyberte **Odstranit skupinu prostředků**. Pro potvrzení zadejte název skupiny prostředků a pak vyberte **Odstranit**.
 
-    ![Odstranění skupiny prostředků z webu Azure Portal](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![Odstranění skupiny prostředků z webu Azure Portal](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>Další kroky
 

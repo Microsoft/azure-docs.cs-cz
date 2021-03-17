@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845557"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369484"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -53,7 +53,7 @@ K migraci počítačů do Azure doporučujeme použít službu [Azure Migrate](.
 > - Před migrací se ujistěte, že máte nainstalovanou nejnovější aktualizaci Service Pack a aktualizace Windows.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, je vhodné si projít Azure Site Recovery architektury pro [migraci VMware a fyzických serverů](vmware-azure-architecture.md) nebo [migraci virtuálních počítačů Hyper-V](hyper-v-azure-architecture.md) . 
 
@@ -61,7 +61,7 @@ Pokud chcete migrovat virtuální počítače Hyper-V s Windows Serverem 2008 ne
 
 Ve zbývající části tohoto kurzu se dozvíte, jak migrovat místní virtuální počítače VMware a fyzické servery s Windows Serverem 2008 nebo 2008 R2.
 > [!TIP]
-> Hledáte způsob, jak bez agenta migrovat virtuální počítače VMware do Azure? [Klikněte sem](https://aka.ms/migrateVMs-signup)
+> Hledáte způsob, jak bez agenta migrovat virtuální počítače VMware do Azure? [Klikněte sem](../migrate/tutorial-migrate-vmware.md)
 
 
 ### <a name="limitations-and-known-issues"></a>Omezení a známé problémy

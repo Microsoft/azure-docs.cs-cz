@@ -5,21 +5,22 @@ author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 21579c7c3acd726ac8958768238631333cf63c39
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695418"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531971"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Kurz: Kontrola faktury za Smlouvu se zákazníkem Microsoftu
 
 Poplatky na faktuře můžete zkontrolovat analýzou jednotlivých transakcí. Na fakturačním účtu za smlouvu se zákazníkem Microsoftu se každý měsíc pro každý fakturační profil generuje jedna faktura. Tato faktura zahrnuje všechny poplatky za předchozí měsíc. Na faktury se můžete podívat na webu Azure Portal a porovnat poplatky se souborem podrobností o využití.
 
-Tento kurz se týká zákazníků Azure, kteří mají Smlouvu se zákazníkem Microsoftu.
+Tento kurz se týká jenom zákazníků Azure, kteří mají Smlouvu se zákazníkem Microsoftu.
 
 V tomto kurzu se naučíte:
 
@@ -46,13 +47,15 @@ Zkontrolujte typ smlouvy, abyste zjistili, jestli máte přístup k fakturační
 
 Na webu Azure Portal do vyhledávacího pole zadejte *správa nákladů a fakturace* a potom vyberte **Správa nákladů a fakturace**.
 
-![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
 Pokud máte přístup jenom k jednomu rozsahu fakturace, vyberte na levé straně **Vlastnosti**. Pokud je typ fakturačního účtu **Smlouva se zákazníkem Microsoftu**, máte přístup k fakturačnímu účtu smlouvy se zákazníkem Microsoftu.
 
 ![Snímek obrazovky zobrazující Smlouvu se zákazníkem Microsoftu na stránce vlastností](./media/review-customer-agreement-bill/billing-mca-property.png)
 
 Pokud máte přístup k více rozsahům fakturace, ověřte typ ve sloupci fakturačního účtu. Pokud je typ fakturačního účtu pro jakýkoli rozsah **Smlouva se zákazníkem Microsoftu**, máte přístup k fakturačnímu účtu smlouvy se zákazníkem Microsoftu.
+
+Na stránce s rozsahy fakturace vyberte **Rozsahy fakturace** a potom vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.
 
 ![Snímek obrazovky zobrazující Smlouvu se zákazníkem Microsoftu na stránce seznamu fakturačních účtů](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -105,7 +108,7 @@ V horní části obrazovky vyberte kartu **Shrnutí**.
 
 Část s poplatky obsahuje poplatky od začátku aktuálního měsíce a za minulý měsíc.
 
-![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![Snímek obrazovky se souhrnem fakturačního profilu](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 Poplatky od začátku měsíce jsou nevyřízené poplatky za aktuální měsíc a naúčtují se při generování faktury za daný měsíc. Pokud ještě není vygenerovaná faktura za minulý měsíc, zobrazují se jako nevyřízené i poplatky za minulý měsíc a objeví se na další faktuře.
 
@@ -137,7 +140,7 @@ V levé části stránky vyberte **Všechna předplatná**.
 
 Stránka předplatných Azure zobrazí poplatky za každé předplatné ve fakturačním profilu za aktuální a minulý měsíc. Poplatky od začátku měsíce jsou nevyřízené poplatky za aktuální měsíc a naúčtují se při generování faktury za daný měsíc. Pokud ještě není vygenerovaná faktura za minulý měsíc, zobrazují se jako nevyřízené i poplatky za minulý měsíc.
 
-![Snímek obrazovky se seznamem předplatných Azure pro daný fakturační profil](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![Snímek obrazovky s předplatnými a poplatky od začátku měsíce a poplatky za poslední měsíc](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Analýza poplatků za využívání Azure
 
@@ -145,7 +148,7 @@ K analýze poplatků na základě využití slouží soubor CSV s informacemi o 
 
 ### <a name="download-your-invoice-and-usage-details"></a>Stažení faktury a podrobností o využití
 
-V závislosti na úrovni vašeho přístupu možná budete muset v části Správa nákladů a fakturace vybrat fakturační účet nebo fakturační profil. V nabídce vlevo v části **Fakturace** vyberte **Faktury**. V tabulce faktur najděte řádek s fakturou, kterou chcete stáhnout. Klikněte na symbol stahování nebo tři tečky (...) na konci řádku. V poli **Stáhnout** si stáhněte soubor s podrobnostmi o využití a fakturu.
+V závislosti na úrovni vašeho přístupu možná budete muset v části Správa nákladů a fakturace vybrat fakturační účet nebo fakturační profil. V nabídce vlevo v části **Fakturace** vyberte **Faktury**. V tabulce faktur najděte řádek s fakturou, kterou chcete stáhnout. Vyberte symbol stahování nebo tři tečky (...) na konci řádku. V poli **Stáhnout** si stáhněte soubor s podrobnostmi o využití a fakturu.
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Zobrazení podrobného využití podle oddílu faktury
 
@@ -171,7 +174,7 @@ Soubor CSV s informacemi o využití a nákladech na Azure můžete filtrovat a 
 
 Následující obrázek ukazuje seznam předplatných na webu Azure Portal.
 
-![Snímek obrazovky se seznamem předplatných Azure pro daný fakturační profil](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![Snímek obrazovky se seznamem předplatných na webu Azure Portal a jedním vybraným předplatným](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 Sloupec **subscriptionName** v souboru CSV s informacemi o využití a poplatcích za Azure vyfiltrujte podle položky **WA_Subscription**, aby se zobrazily podrobné poplatky za využití pro předplatné WA_Subscription.
 

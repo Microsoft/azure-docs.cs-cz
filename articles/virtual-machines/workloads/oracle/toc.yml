@@ -4,8 +4,10 @@
       href: oracle-overview.md
     - name: Řešení na virtuálních počítačích Azure
       href: oracle-vm-solutions.md
-    - name: Co je Oracle WebLogic Server v Azure?
+    - name: Jaká jsou řešení pro spouštění Oracle WebLogic Serveru na virtuálních počítačích Azure?
       href: oracle-weblogic.md
+    - name: Jaká jsou řešení pro spouštění Oracle WebLogic Serveru v Azure Kubernetes Service?
+      href: weblogic-aks.md
     - name: Řešení s využitím OCI
       href: oracle-oci-overview.md
 - name: Rychlé starty
@@ -28,8 +30,12 @@
       href: oracle-reference-architecture.md
     - name: Vytvoření Oracle DB
       href: oracle-design.md
-    - name: Strategie zálohování pro Oracle DB
-      href: oracle-backup-recovery.md
+    - name: Oracle Database strategie zálohování
+      href: oracle-database-backup-strategies.md
+    - name: Oracle Database zálohování pomocí Azure Storage
+      href: oracle-database-backup-azure-storage.md
+    - name: Oracle Database zálohování pomocí Azure Backup
+      href: oracle-database-backup-azure-backup.md
     - name: Možnosti Oraclu pro zotavení po havárii
       href: oracle-disaster-recovery.md
 - name: Návody

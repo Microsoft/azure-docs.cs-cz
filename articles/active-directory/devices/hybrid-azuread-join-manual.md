@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428384"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644115"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -35,11 +35,11 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
-* [Úvod do správy zařízení v Azure Active Directory](../device-management-introduction.md)
+* [Úvod do správy zařízení v Azure Active Directory](./overview.md)
 * [Plánování implementace služby Hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md)
 * [Řízení připojení vašich zařízení k hybridní službě Azure AD](hybrid-azuread-join-control.md)
 
@@ -75,7 +75,7 @@ U zařízení s Windows 10 ve verzi 1703 nebo starší, pokud vaše organizace v
 
 Počínaje systémem Windows 10 1803, a to i v případě, že pokus o připojení k hybridní službě Azure AD prostřednictvím zařízení ve federované doméně prostřednictvím AD FS selže a pokud je Azure AD Connect nakonfigurovaná tak, aby synchronizoval objekty počítače nebo zařízení do Azure AD, zařízení se pokusí dokončit připojení k hybridní službě Azure AD pomocí synchronizovaného počítače nebo zařízení.
 
-Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) .
+Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
 
 ## <a name="verify-configuration-steps"></a>Ověření kroků konfigurace
 
@@ -83,7 +83,7 @@ Hybridní zařízení připojená k Azure AD můžete nakonfigurovat pro různé
 
 V následující tabulce najdete přehled požadovaných kroků pro váš scénář:  
 
-| Kroky | Aktuální Windows a synchronizace hodnoty hash hesel | Aktuální Windows a federace | Windows nižší úrovně |
+| Postup | Aktuální Windows a synchronizace hodnoty hash hesel | Aktuální Windows a federace | Windows nižší úrovně |
 | :--- | :---: | :---: | :---: |
 | Konfigurace spojovacího bodu služby | ![Zaškrtnout][1] | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
 | Nastavení vystavování deklarací identity |     | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
@@ -94,7 +94,7 @@ V následující tabulce najdete přehled požadovaných kroků pro váš scén�
 
 Vaše zařízení během registrace používají objekt spojovací bod služby (SCP) a zjišťují informace o tenantovi Azure AD. V místní instanci služby Active Directory musí být objekt SCP pro zařízení připojená k hybridní službě Azure AD v oddílu konfigurace názvového kontextu v doménové struktuře počítače. Pro každou doménovou strukturu existuje pouze jeden názvový kontext konfigurace. V konfiguraci služby Active Directory s více doménovými strukturami musí spojovací bod služby existovat ve všech doménových strukturách, které obsahují počítače připojené k doméně.
 
-Pomocí rutiny [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) můžete načíst názvový kontext konfigurace vaší doménové struktury.  
+Pomocí rutiny [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) můžete načíst názvový kontext konfigurace vaší doménové struktury.  
 
 Pro doménovou strukturu s názvem domény Active Directory *fabrikam.com* je názvový kontext konfigurace následující:
 
@@ -144,7 +144,7 @@ Rutina `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Používá modul PowerShellu služby Active Directory a nástroje Azure Active Directory Domain Services (Azure služba AD DS). Tyto nástroje spoléhají na službu Active Directory Web Services běžící na řadiči domény. Služba Active Directory Web Services se podporuje v řadičích domény s Windows Serverem 2008 R2 nebo novějším.
 * Se podporuje pouze v modulu MSOnline PowerShell verze 1.1.166.0. Tento modul můžete stáhnout pomocí [tohoto odkazu](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0).
-* Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce**  >  **Remote Server Administration Tools**  >  **Nástroje pro správu rolí**nástroje pro vzdálenou správu serveru.
+* Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce**  >    >  **Nástroje pro správu rolí** nástroje pro vzdálenou správu serveru.
 
 Pro řadiče domény se systémem Windows Server 2008 nebo staršími verzemi použijte následující skript k vytvoření spojovacího bodu služby. V konfiguraci s více doménovými strukturami použijte následující skript k vytvoření spojovacího bodu služby v každé doménové struktuře, kde počítače existují.
 
@@ -167,9 +167,9 @@ Pro řadiče domény se systémem Windows Server 2008 nebo staršími verzemi po
 
 V předchozím skriptu `$verifiedDomain = "contoso.com"` je zástupný symbol. Nahraďte ho jedním z ověřených názvů domén ve službě Azure AD. Abyste mohli doménu použít, musíte ji vlastnit.
 
-Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md).
+Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).
 
-Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0).
+Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain).
 
 ![Seznam domén společnosti](./media/hybrid-azuread-join-manual/01.png)
 
@@ -177,9 +177,9 @@ Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete p
 
 V konfiguraci federované služby Azure AD se zařízení spoléhají na AD FS nebo místní federační službu od partnera Microsoftu k ověření ve službě Azure AD. Zařízení se ověřují za účelem získání přístupového tokenu, pomocí kterého se můžou zaregistrovat ve službě Azure Active Directory Device Registration (Azure DRS).
 
-Aktuální zařízení s Windows se ověřují pomocí integrovaného ověřování systému Windows pro aktivní koncový bod WS-Trust (verze 1,3 nebo 2005) hostované místní službou FS (Federation Service).
+Aktuální zařízení s Windows se ověřují pomocí integrovaného ověřování systému Windows pro aktivní WS-Trust koncový bod (verze 1,3 nebo 2005) hostované místní službou FS (Federation Service).
 
-Pokud používáte AD FS, musíte povolit následující koncové body WS-Trust.
+Pokud používáte AD FS, musíte povolit následující WS-Trust koncové body.
 - `/adfs/services/trust/2005/windowstransport`
 - `/adfs/services/trust/13/windowstransport`
 - `/adfs/services/trust/2005/usernamemixed`
@@ -188,7 +188,7 @@ Pokud používáte AD FS, musíte povolit následující koncové body WS-Trust.
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body**služby můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části   >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 >Pokud nemáte AD FS jako místní federační službu, postupujte podle pokynů od dodavatele a ujistěte se, že podporují koncové body WS-Trust 1,3 nebo 2005 a že jsou publikované prostřednictvím souboru výměny metadat (MEX).
@@ -326,9 +326,9 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
 
 V předchozí deklaraci identity `<verified-domain-name>` je zástupný symbol. Nahraďte ho jedním z ověřených názvů domén ve službě Azure AD. Například použijte `Value = "http://contoso.com/adfs/services/trust/"` .
 
-Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md).  
+Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).  
 
-Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0).
+Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-MsolDomain](/powershell/module/msonline/get-msoldomain).
 
 ![Seznam domén společnosti](./media/hybrid-azuread-join-manual/01.png)
 
@@ -484,7 +484,7 @@ Následující skript vám pomůže s vytvořením pravidel transformace vystavo
 #### <a name="remarks"></a>Poznámky
 
 * Tento skript připojí pravidla k existujícím pravidlům. Nespouštějte skript dvakrát, protože sada pravidel by se přidala dvakrát. Před opětovným spuštěním skriptu se ujistěte, že pro tyto deklarace identity neexistují žádná odpovídající pravidla (za odpovídajících podmínek).
-* Pokud máte více ověřených názvů domén (jak je znázorněno na portálu Azure AD nebo prostřednictvím rutiny **Get-MsolDomain** ), nastavte ve skriptu **$true**hodnotu **$multipleVerifiedDomainNames** . Také se ujistěte, že jste odebrali všechny existující **issuerid** deklarace identity, kterou mohl vytvořit Azure AD Connect nebo prostřednictvím jiných prostředků. Tady je příklad pro toto pravidlo:
+* Pokud máte více ověřených názvů domén (jak je znázorněno na portálu Azure AD nebo prostřednictvím rutiny **Get-MsolDomain** ), nastavte ve skriptu **$true** hodnotu **$multipleVerifiedDomainNames** . Také se ujistěte, že jste odebrali všechny existující **issuerid** deklarace identity, kterou mohl vytvořit Azure AD Connect nebo prostřednictvím jiných prostředků. Tady je příklad pro toto pravidlo:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -526,7 +526,7 @@ V takovém případě musí místní služba FS (Federation Service) ověřit u�
 
 V AD FS musíte přidat pravidlo transformace vystavování, které projde metodou ověřování. Přidání tohoto pravidla:
 
-1. V konzole pro správu AD FS přejít na **AD FS**vztahy  >  **důvěryhodnosti**  >  **předávající strany**.
+1. V konzole pro správu AD FS přejít na **AD FS** vztahy  >  **důvěryhodnosti**  >  **předávající strany**.
 1. Klikněte pravým tlačítkem na objekt důvěryhodnosti přijímající strany služby Microsoft Office 365 Identity Platform a pak vyberte **Upravit pravidla deklarace identity**.
 1. Na kartě **Pravidla transformace vystavování** vyberte **Přidat pravidlo**.
 1. V seznamu šablon **Pravidlo deklarace identity** vyberte **Odesílat deklarace pomocí vlastního pravidla**.
@@ -564,13 +564,13 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 1. V případě, že přejdete na stránku zařízení, použijte [přímý odkaz](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices).
+2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](./device-management-azure-portal.md#manage-devices).
 3. Pokud **zaregistrovaný** sloupec **čeká na vyřízení**, připojení k hybridní službě Azure AD se nedokončilo. Ve federovaném prostředí se to může stát jenom v případě, že se nepovedlo zaregistrovat a AAD Connect je nakonfigurované k synchronizaci zařízení.
 4. Pokud **zaregistrovaný** sloupec obsahuje **Datum a čas**, připojení k hybridní službě Azure AD se dokončilo.
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1).
 
 Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Pokud dochází k problémům s dokončováním hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
-- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](./troubleshoot-device-dsregcmd.md)
 - [Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 

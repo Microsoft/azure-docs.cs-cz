@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a7a7a6681be78c2777130ca540319eb829d8f9d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002343"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578893"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Použití Log Analytics pro diagnostické funkce ve virtuální ploše Windows (Classic)
 
@@ -32,9 +32,9 @@ Doporučujeme použít Log Analytics k analýze diagnostických dat v klientovi 
 
 ## <a name="before-you-get-started"></a>Než začnete
 
-Než budete moci použít Log Analytics s diagnostikou funkce, budete muset [vytvořit pracovní prostor](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
+Než budete moci použít Log Analytics s diagnostikou funkce, budete muset [vytvořit pracovní prostor](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace).
 
-Po vytvoření pracovního prostoru postupujte podle pokynů v tématu [připojení počítačů se systémem Windows k Azure monitor](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) k získání následujících informací:
+Po vytvoření pracovního prostoru postupujte podle pokynů v tématu [připojení počítačů se systémem Windows k Azure monitor](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) k získání následujících informací:
 
 - ID pracovního prostoru
 - Primární klíč vašeho pracovního prostoru

@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245481"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861778"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů
 Existuje několik různých důvodů, proč byste měli mít několik doménových struktur služby Active Directory a existuje několik různých topologií nasazení. Mezi běžné modely patří nasazení prostředků účtů a doménové struktury sync'ed po fúzi & získání. Ale i v případě, že existují čistě modely, jsou běžné i hybridní modely. Výchozí konfigurace v Azure AD Connect synchronizace nepředpokládá žádný konkrétní model, ale v závislosti na tom, jak byla vybrána shoda uživatele v instalační příručce, je možné pozorovat různá chování.
@@ -39,15 +39,15 @@ Důležité body, které je potřeba znát při synchronizaci skupin ze služby 
 
 * Azure AD Connect vyloučí předdefinované skupiny zabezpečení z synchronizace adresářů.
 
-* Azure AD Connect nepodporuje synchronizaci [členství primární skupiny](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) do služby Azure AD.
+* Azure AD Connect nepodporuje synchronizaci [členství primární skupiny](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) do služby Azure AD.
 
-* Azure AD Connect nepodporuje synchronizaci [členství dynamických distribučních skupin](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) do Azure AD.
+* Azure AD Connect nepodporuje synchronizaci [členství dynamických distribučních skupin](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups) do Azure AD.
 
 * Postup synchronizace skupiny služby Active Directory se službou Azure AD jako skupina s povolenými e-maily:
 
     * Pokud je atribut *ProxyAddress* skupiny prázdný, musí mít jeho atribut *mail* hodnotu.
 
-    * Pokud atribut *ProxyAddress* skupiny není prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Tady je pár příkladů:
+    * Pokud atribut *ProxyAddress* skupiny není prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Tady je několik příkladů:
     
       * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnotu *{"X500:/0 = contoso. com/ou = Users/CN = test Group"}* nebude v Azure AD povolena pro poštu. Nemá adresu SMTP.
       
@@ -73,7 +73,6 @@ Předpokladem je, že pokud se najde zakázaný uživatelský účet, nebudeme p
 ## <a name="changing-sourceanchor"></a>Změna sourceAnchor
 Když se objekt vyexportuje do služby Azure AD, nebudete už moct sourceAnchor změnit. Když se objekt vyexportuje, atribut úložiště metaverse **cloudSourceAnchor** se nastaví s hodnotou **sourceAnchor** přijatou službou Azure AD. Pokud dojde ke změně **sourceAnchor** a neodpovídá **cloudSourceAnchor**, pravidlo **pro AAD – připojení uživatele** vyvolá **atribut Error sourceAnchor**, který se změnil. V takovém případě musí být konfigurace nebo data opraveny, aby se stejné sourceAnchor v úložišti Metaverse znovu nacházely ještě předtím, než bude možné objekt znovu synchronizovat.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 * [Azure AD Connect synchronizace: přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
-

@@ -3,16 +3,15 @@ title: Apache Spark operace podporované konektorem skladu podregistru ve služb
 description: Přečtěte si o různých schopnostech konektoru datového skladu v Azure HDInsight.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: ed3dbe4cb5b9d8b50c028a68feeded170130bfb8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 20567a1e38686b5d452a5353bc459e7e1125f499
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085833"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941308"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark operace podporované konektorem skladu podregistru ve službě Azure HDInsight
 

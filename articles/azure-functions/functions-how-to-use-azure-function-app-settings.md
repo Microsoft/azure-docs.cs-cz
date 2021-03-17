@@ -1,16 +1,16 @@
 ---
-title: Konfigurace nastavení aplikace Function App v Azure
-description: Přečtěte si, jak nakonfigurovat nastavení Azure Function App.
+title: Konfigurace nastavení aplikace Function App v Azure Functions
+description: Přečtěte si, jak nakonfigurovat nastavení aplikace Function App v Azure Functions.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: cc996988-fb4f-47, devx-track-azurecli
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122289"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875445"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -19,11 +19,6 @@ V Azure Functions aplikace Function App poskytuje kontext spuštění pro vaše 
 Jednotlivé funkce aplikace Function App se nasazují společně a navzájem se škálují. Všechny funkce ve stejné sdílené složce aplikace Function App mají na každou instanci stejnou velikost jako aplikace Function App. 
 
 Připojovací řetězce, proměnné prostředí a další nastavení aplikace jsou definovány samostatně pro každou aplikaci Function App. Všechna data, která musí být sdílená mezi aplikacemi Function App, by se měla ukládat externě v trvalém úložišti.
-
-Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App. 
-
-> [!TIP]  
-> Řadu možností konfigurace je možné spravovat taky pomocí [Azure CLI]. 
 
 ## <a name="get-started-in-the-azure-portal"></a>Začínáme na webu Azure Portal
 
@@ -35,17 +30,21 @@ Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App.
 
 Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě aplikace Function App, zejména **[nastavení aplikace](#settings)** a **[funkce platformy](#platform-features)**.
 
-## <a name="application-settings"></a><a name="settings"></a>Nastavení aplikace
+## <a name="work-with-application-settings"></a><a name="settings"></a>Práce s nastavením aplikace
 
-Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App. Tato nastavení jsou šifrovaná a je nutné vybrat možnost **Zobrazit hodnoty** a zobrazit hodnoty na portálu. K nastavení aplikace můžete přistupovat také pomocí Azure CLI.
+Nastavení aplikace je možné spravovat z [Azure Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) a pomocí [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) a [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings). Můžete také spravovat nastavení aplikace z [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) a ze sady [Visual Studio](functions-develop-vs.md#function-app-settings). 
 
-### <a name="portal"></a>Portál
+Tato nastavení jsou uložená zašifrovaná. Další informace najdete v tématu [zabezpečení nastavení aplikace](security-concepts.md#application-settings).
 
-Chcete-li přidat nastavení na portálu, vyberte možnost **nové nastavení aplikace** a přidejte novou dvojici klíč-hodnota.
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Nastavení aplikace najdete v tématu Začínáme [v Azure Portal](#get-started-in-the-azure-portal). 
+
+Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App. Chcete-li zobrazit hodnoty na portálu, je nutné vybrat možnost **Zobrazit hodnoty** . Chcete-li přidat nastavení na portálu, vyberte možnost **nové nastavení aplikace** a přidejte novou dvojici klíč-hodnota.
 
 ![Nastavení aplikace Function App v Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Příkaz vrátí existující nastavení aplikace, jako v následujícím příkladu:
 
@@ -63,11 +62,146 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
 
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting)Rutina vrátí existující nastavení aplikace, jako v následujícím příkladu: 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příklad vytvoří nastavení s klíčem s názvem `CUSTOM_FUNCTION_APP_SETTING` a hodnotou `12345` :
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
+
 ### <a name="use-application-settings"></a>Použít nastavení aplikace
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Když vyvíjíte aplikaci funkcí lokálně, musíte zachovat místní kopie těchto hodnot v local.settings.jsv souboru projektu. Další informace najdete v tématu [místní nastavení souboru](functions-run-local.md#local-settings-file).
+
+## <a name="hosting-plan-type"></a>Typ plánu hostování
+
+Když vytvoříte aplikaci Function App, vytvoříte také plán hostování, ve kterém je aplikace spuštěná. Plán může mít jednu nebo víc aplikací Function App. Funkce, škálování a ceny vašich funkcí závisí na typu plánu. Další informace najdete v tématu [možnosti hostování Azure Functions](functions-scale.md).
+
+Typ plánu, který aplikace Function App používá, můžete určit z Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. 
+
+Následující hodnoty udávají typ plánu:
+
+| Typ plánu | Portál | Azure CLI/PowerShell |
+| --- | --- | --- |
+| [Využití](consumption-plan.md) | **Využití** | `Dynamic` |
+| [Premium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [Vyhrazeno (App Service)](dedicated-plan.md) | Některé | Některé |
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Chcete-li určit typ plánu používaného aplikací Function App, přečtěte si téma **App Service plán** na kartě **Přehled** aplikace Function App v [Azure Portal](https://portal.azure.com). Pokud chcete zobrazit cenovou úroveň, vyberte název **plánu App Service** a v levém podokně vyberte **vlastnosti** .
+
+![Zobrazit plán škálování na portálu](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Spuštěním následujícího příkazu rozhraní příkazového řádku Azure získáte typ plánu hostování:
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+V předchozím příkladu nahraďte `<RESOURCE_GROUP>` a `<FUNCTION_APP_NAME>` názvem skupiny prostředků a název aplikace funkcí odpovídající. 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Spusťte následující příkaz Azure PowerShell, který získá typ plánu hostování:
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+V předchozím příkladu nahraďte `<RESOURCE_GROUP>` a `<FUNCTION_APP_NAME>` názvem skupiny prostředků a název aplikace funkcí odpovídající. 
+
+---
+
+## <a name="plan-migration"></a>Plánování migrace
+
+Příkazy rozhraní příkazového řádku Azure můžete použít k migraci aplikace Function App mezi plánem spotřeby a plánem Premium ve Windows. Konkrétní příkazy závisí na směru migrace. Přímá migrace na vyhrazený plán (App Service) není v současné době podporovaná.
+
+Tato migrace není podporována na platformě Linux.
+
+### <a name="consumption-to-premium"></a>Spotřeba do úrovně Premium
+
+Pomocí následujícího postupu můžete migrovat plán spotřeby do plánu Premium ve Windows:
+
+1. Spusťte následující příkaz, který vytvoří nový plán App Service (elastické Premium) ve stejné oblasti a skupině prostředků jako vaše existující aplikace Function App.  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. Spuštěním následujícího příkazu migrujete stávající aplikaci Function App do nového plánu Premium.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. Pokud už nepotřebujete svůj předchozí plán aplikace Function App, po potvrzení, že jste úspěšně migrovali na nový, odstraňte původní plán aplikace Function App. Spuštěním následujícího příkazu zobrazíte seznam všech plánů spotřeby ve vaší skupině prostředků.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    Plán můžete bezpečně odstranit pomocí nulových webů, což je ten, který jste migrovali z.
+
+1. Spuštěním následujícího příkazu odstraňte plán spotřeby, ze kterého jste migrovali.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Premium na spotřebu
+
+Následující postup použijte k migraci plánu Premium na plán spotřeby ve Windows:
+
+1. Spusťte následující příkaz, který vytvoří novou aplikaci Function App (spotřeba) ve stejné oblasti a skupině prostředků jako vaše existující aplikace Function App. Tento příkaz také vytvoří nový plán spotřeby, ve kterém je spuštěná aplikace Function App.
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. Spuštěním následujícího příkazu migrujete stávající aplikaci Function App do nového plánu spotřeby.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. Odstraňte aplikaci funkcí, kterou jste vytvořili v kroku 1, protože potřebujete jenom plán, který jste vytvořili pro spuštění stávající aplikace Function App.
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. Pokud už nepotřebujete předchozí plán aplikace Function App, odstraňte původní plán aplikací Function po potvrzení, že jste úspěšně migrovali na nový. Upozorňujeme, že pokud se plán neodstraní, bude se vám i nadále účtovat plán Premium. Spuštěním následujícího příkazu zobrazíte seznam všech plánů Premium ve vaší skupině prostředků.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. Spuštěním následujícího příkazu odstraňte plán Premium, ze kterého jste migrovali.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>Funkce platformy
 

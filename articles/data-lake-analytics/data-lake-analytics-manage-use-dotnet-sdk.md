@@ -1,18 +1,17 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí sady Azure .NET SDK
 description: Tento článek popisuje, jak pomocí sady Azure .NET SDK psát aplikace, které spravují Data Lake Analytics úlohy, zdroje dat, & uživatelé.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: 12043ead1c7d59cc3955bb927fabb54278c18bd5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127685"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220903"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Správa služby Azure Data Lake Analytics pomocí aplikace .NET
 
@@ -30,7 +29,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 |Balíček|Verze|
 |-------|-------|
-|[Microsoft. REST. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| kládají|
+|[Microsoft. REST. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
 |[Microsoft.Azure.Management.DataLake.Store](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Store)|2.2.0|
 |[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0 – Preview|
@@ -55,7 +54,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Máte k dispozici několik možností pro přihlášení k Azure Data Lake Analytics. Následující fragment kódu ukazuje příklad ověřování pomocí interaktivního ověřování uživatelů pomocí automaticky otevíraného okna.
 

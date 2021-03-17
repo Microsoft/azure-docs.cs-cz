@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e53d8bf8f7cb024b468983f596d3d1bd5c91ee7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b6369013d605ae538ad611a28a90e9c099bb7d80
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007297"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326044"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
@@ -56,7 +56,7 @@ Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 
 Nástroj pro nasazení Office obsahuje setup.exe. Pokud chcete nainstalovat Office, spusťte na příkazovém řádku následující příkaz:
 
-```batch
+```cmd
 Setup.exe /configure configuration.xml
 ```
 
@@ -79,7 +79,7 @@ V následující ukázce XML se nainstaluje měsíční verze podnikového kaná
   <RemoveMSI/>
   <Updates Enabled="FALSE"/>
   <Display Level="None" AcceptEULA="TRUE" />
-  <Logging Level=" Standard" Path="%temp%\WVDOfficeInstall" />
+  <Logging Level="Standard" Path="%temp%\WVDOfficeInstall" />
   <Property Name="FORCEAPPSHUTDOWN" Value="TRUE"/>
   <Property Name="SharedComputerLicensing" Value="1"/>
 </Configuration>
@@ -90,7 +90,7 @@ V následující ukázce XML se nainstaluje měsíční verze podnikového kaná
 
 Po instalaci Office můžete aktualizovat výchozí chování Office. Chcete-li aktualizovat chování, spusťte následující příkazy jednotlivě nebo v dávkovém souboru.
 
-```batch
+```cmd
 rem Mount the default user registry hive
 reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
 rem Must be executed with default registry hive mounted.
@@ -117,41 +117,41 @@ Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
 1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo \\ \\ umístění [UNC] (File://UNC) je v pořádku.
 
-2. Pomocí tohoto odkazu Stáhněte OneDriveSetup.exe do připraveného umístění:<https://aka.ms/OneDriveWVD-Installer>
+2. Pomocí tohoto odkazu Stáhněte OneDriveSetup.exe do připraveného umístění: <https://aka.ms/OneDriveWVD-Installer>
 
 3. Pokud jste nainstalovali Office s OneDrivem vynecháte **\<ExcludeApp ID="OneDrive" /\>** , odinstalujte všechny stávající instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
 
-    ```batch
+    ```cmd
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
 4. Spusťte tento příkaz z příkazového řádku se zvýšenými oprávněními a nastavte hodnotu registru **AllUsersInstall** :
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
 5. Spuštěním tohoto příkazu nainstalujete OneDrive v režimu podle počítače:
 
-    ```batch
+    ```cmd
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. Spuštěním tohoto příkazu nakonfigurujte OneDrive, aby se spouštěl při přihlášení pro všechny uživatele:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. Spuštěním následujícího příkazu povolte **tichou konfiguraci uživatelského účtu** .
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
 8. Přesměrujte a přesuňte známé složky Windows na OneDrive spuštěním následujícího příkazu.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 

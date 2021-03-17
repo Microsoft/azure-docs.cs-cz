@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 6ae4e658985a3974b311171e83e6243dfc4a1ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eb9cd00350c41645d4427e30a6f25a6c163358c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444025"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659892"
 ---
 # <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Nastavení testovacího prostředí pro analýzu velkých objemů dat pomocí nasazení Docker pro datovou platformu HortonWorks
 
@@ -28,11 +28,11 @@ K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a �
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](./specify-marketplace-images.md).
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-|Obrázek Marketplace| Povolte image Windows 10 pro pro použití v rámci vašeho účtu testovacího prostředí.|
+|Image z Marketplace| Povolte image Windows 10 pro pro použití v rámci vašeho účtu testovacího prostředí.|
 
 ### <a name="lab-settings"></a>Nastavení testovacího prostředí
 

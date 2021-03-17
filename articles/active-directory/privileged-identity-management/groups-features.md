@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6709d7589ebf4c82ec25c6b7a79fa31a305839
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 759781fd61cd42d05f2823d390e99d128dd2fcac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506944"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512388"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>Možnosti správy pro privilegovaný přístup skupiny Azure AD (Preview)
 
-V Privileged Identity Management (PIM) teď můžete přiřadit nárok na členství nebo vlastnictví privilegovaných skupin přístupu. Od této verze Preview můžete přiřadit předdefinované role Azure Active Directory (Azure AD) skupinám cloudů a použít PIM ke správě členů skupin a nároků a aktivace vlastníků. Další informace o skupinách přiřazení rolí v Azure AD najdete v tématu [použití skupin cloudu ke správě přiřazení rolí v Azure Active Directory (Preview)](../users-groups-roles/roles-groups-concept.md).
+V Privileged Identity Management (PIM) teď můžete přiřadit nárok na členství nebo vlastnictví privilegovaných skupin přístupu. Od této verze Preview můžete přiřadit předdefinované role Azure Active Directory (Azure AD) skupinám cloudů a použít PIM ke správě členů skupin a nároků a aktivace vlastníků. Další informace o skupinách přiřazení rolí v Azure AD najdete v tématu [použití skupin cloudu ke správě přiřazení rolí v Azure Active Directory (Preview)](../roles/groups-concept.md).
+
+>[!Important]
+> Pokud chcete přiřadit privilegovaný přístup k roli pro přístup pro správu k Exchangi, zabezpečení a centru dodržování předpisů nebo SharePointu, použijte **role a** prostředí portálu Azure AD, které se nepoužívají v prostředí Privileged Access Groups, aby uživatel nebo skupina nezpůsobili aktivaci do skupiny.
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Vyžadovat pro každou skupinu přiřazenou roli jiné zásady
 

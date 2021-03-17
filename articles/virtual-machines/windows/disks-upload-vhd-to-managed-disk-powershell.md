@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c766c78705a1c1e40a9385360d35ac06a3db3a5d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689605"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252233"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte modul Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -44,19 +44,19 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 
 Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). Ukázkový kód vám poskytne za vás, ale k tomu můžete použít: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Tato hodnota se používá při zadání parametru **-UploadSizeInBytes** .
 
-Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Pak zavolejte [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) a vytvořte disk.
+Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) . Pak zavolejte [New-AzDisk](/powershell/module/az.compute/new-azdisk) a vytvořte disk.
 
 Nahraďte `<yourdiskname>` , `<yourresourcegroupname>` a `<yourregion>` poté spusťte následující příkazy:
 
 > [!TIP]
-> Pokud vytváříte disk s operačním systémem, přidejte-HyperVGeneration <yourGeneration> do `New-AzDiskConfig` .
+> Pokud vytváříte disk s operačním systémem, přidejte `-HyperVGeneration '<yourGeneration>'` do `New-AzDiskConfig` .
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
 
 $diskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -OsType 'Windows' -UploadSizeInBytes $vhdSizeBytes -Location '<yourregion>' -CreateOption 'Upload'
 
-New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>' -Disk $diskconfig
+New-AzDisk -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -Disk $diskconfig
 ```
 
 Pokud chcete nahrát disk SSD úrovně Premium nebo standardní SSD, nahraďte **Standard_LRS** buď pomocí **Premium_LRS** nebo **StandardSSD_LRS**. Disky Ultra nejsou ještě podporovány.
@@ -77,7 +77,7 @@ Teď, když máte na svém prázdném spravovaném disku SAS, můžete ho použ�
 
 Pomocí AzCopy v10 za účelem nahrajte místní soubor VHD na spravovaný disk zadáním identifikátoru URI SAS, který jste vygenerovali.
 
-Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný disk](disks-types.md#standard-hdd). Například pokud máte velikost, která je rovna S4, budete mít propustnost až 60 MiB/s. Pokud ale máte velikost, která je rovna S70, budete mít propustnost až 500 MiB/s.
+Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný disk](../disks-types.md#standard-hdd). Například pokud máte velikost, která je rovna S4, budete mít propustnost až 60 MiB/s. Pokud ale máte velikost, která je rovna S70, budete mít propustnost až 500 MiB/s.
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob

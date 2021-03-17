@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001503"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
-Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
+Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](./overview.md). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
 
 > [!NOTE] 
 > [Aplikace pro Linux](overview.md#app-service-on-linux) v App Service spustit ve svých vlastních kontejnerech. Není povolený žádný přístup k hostitelskému operačnímu systému, máte ke kontejneru přístup rootem. Stejně tak pro [aplikace spuštěné v kontejnerech Windows](quickstart-custom-container.md?pivots=container-windows)máte k kontejneru přístup pro správu, ale k hostitelskému operačnímu systému nemáte přístup. 
@@ -65,7 +65,7 @@ Jedním z jedinečných aspektů App Service, které usnadňuje nasazení a údr
 
 V rámci App Service je v každém datovém centru vytvořeno několik sdílených složek UNC. Procentuální podíl obsahu uživatele pro všechny zákazníky v každém datovém centru je přidělen všem sdíleným složkám UNC. Kromě toho všechen obsah souborů pro předplatné jednoho zákazníka je vždycky umístěný ve stejné sdílené složce UNC. 
 
-V důsledku toho, jak služby Azure fungují, se konkrétní virtuální počítač zodpovědný za hostování sdílené složky UNC v průběhu času změní. Je zaručeno, že sdílené složky UNC budou připojeny k různým virtuálním počítačům při jejich zapínání a vystavování během normálního provozu v rámci Azure. Z tohoto důvodu by aplikace nikdy nevedly pevně zakódované předpoklady, že informace o počítači v cestě k souboru ve formátu UNC zůstanou v průběhu času stabilní. Místo toho by měli používat pohodlný D:\home\site *umělé* absolutní cesty **D:\home\site** , který App Service poskytuje. Tato umělá absolutní cesta poskytuje přenosnou, aplikační a uživatelsky nezávislá metodu pro odkazování na vlastní aplikaci. Pomocí **D:\home\site**může jeden přenést sdílené soubory z aplikace do aplikace, aniž by bylo nutné konfigurovat novou absolutní cestu pro každý přenos.
+V důsledku toho, jak služby Azure fungují, se konkrétní virtuální počítač zodpovědný za hostování sdílené složky UNC v průběhu času změní. Je zaručeno, že sdílené složky UNC budou připojeny k různým virtuálním počítačům při jejich zapínání a vystavování během normálního provozu v rámci Azure. Z tohoto důvodu by aplikace nikdy nevedly pevně zakódované předpoklady, že informace o počítači v cestě k souboru ve formátu UNC zůstanou v průběhu času stabilní. Místo toho by měli používat pohodlný D:\home\site *umělé* absolutní cesty **D:\home\site** , který App Service poskytuje. Tato umělá absolutní cesta poskytuje přenosnou, aplikační a uživatelsky nezávislá metodu pro odkazování na vlastní aplikaci. Pomocí **D:\home\site** může jeden přenést sdílené soubory z aplikace do aplikace, aniž by bylo nutné konfigurovat novou absolutní cestu pro každý přenos.
 
 <a id="TypesOfFileAccess"></a>
 
@@ -126,4 +126,3 @@ App Service neposkytuje přístup ke vzdálené ploše pro instance virtuálníc
 ## <a name="more-information"></a>Další informace
 
 [Azure App Service izolovaný prostor (sandbox)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – nejaktuálnější informace o spouštěcím prostředí App Service. Tuto stránku uchovává přímo vývojový tým App Service.
-

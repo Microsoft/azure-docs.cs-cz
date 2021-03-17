@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797096"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426820"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí Azure Active Directory
 
@@ -34,7 +34,7 @@ Chcete-li přidat nového uživatele, postupujte podle následujících kroků:
 
 1. Vyhledejte a vyberte *Azure Active Directory* z libovolné stránky.
 
-1. Vyberte **Uživatelé**a potom vyberte **Nový uživatel**.
+1. Vyberte **Uživatelé** a potom vyberte **Nový uživatel**.
 
     ![Přidání uživatele prostřednictvím uživatelů – všichni uživatelé v Azure AD](media/add-users-azure-active-directory/add-user-in-users-all-users.png)
 
@@ -44,7 +44,7 @@ Chcete-li přidat nového uživatele, postupujte podle následujících kroků:
 
    - **Uživatelské jméno**. Povinná hodnota. Uživatelské jméno nového uživatele. Například, `mary@contoso.com`.
 
-     Část domény uživatelského jména musí používat počáteční výchozí název domény, * \<yourdomainname> . onmicrosoft.com*nebo vlastní název domény, jako je například *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
+     Část domény uživatelského jména musí používat počáteční výchozí název domény, *\<yourdomainname> . onmicrosoft.com* nebo vlastní název domény, jako je například *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
 
    - **Skupiny**. Volitelně můžete přidat uživatele do jedné nebo více existujících skupin. Uživatele můžete také přidat do skupin později. Další informace o přidávání uživatelů do skupin najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](active-directory-groups-create-azure-portal.md).
 
@@ -60,7 +60,7 @@ Uživatel se vytvoří a přidá do vaší organizace Azure AD.
 
 ## <a name="add-a-new-guest-user"></a>Přidat nového uživatele typu Host
 
-Můžete taky pozvat nového uživatele typu Host, aby spolupracovali s vaší organizací, a to tak, že na stránce **Nový uživatel** vybere možnost **pozvat uživatele** . Pokud jsou nastavení externích spolupráci vaší organizace nakonfigurovaná tak, aby bylo možné pozvat hosty, uživatel bude e-mailem poslat pozvánku, kterou musí přijmout, aby bylo možné začít spolupracovat. Další informace o tom, jak pozvat uživatele na spolupráci B2B, najdete v článku [pozvání uživatelů B2B k Azure Active Directory](../b2b/add-users-administrator.md)
+Můžete taky pozvat nového uživatele typu Host, aby spolupracovali s vaší organizací, a to tak, že na stránce **Nový uživatel** vybere možnost **pozvat uživatele** . Pokud jsou nastavení externích spolupráci vaší organizace nakonfigurovaná tak, aby bylo možné pozvat hosty, uživatel bude e-mailem poslat pozvánku, kterou musí přijmout, aby bylo možné začít spolupracovat. Další informace o tom, jak pozvat uživatele na spolupráci B2B, najdete v článku [pozvání uživatelů B2B k Azure Active Directory](../external-identities/add-users-administrator.md)
 
 ## <a name="add-a-consumer-user"></a>Přidat uživatele příjemce
 
@@ -73,6 +73,9 @@ Pokud máte prostředí s Azure Active Directory (Cloud) i se službou Windows S
 ## <a name="delete-a-user"></a>Odstranění uživatele
 
 Existující uživatele můžete odstranit pomocí portálu Azure Active Directory.
+
+>[!Note]
+>Abyste mohli odstraňovat uživatele ve vaší organizaci, musíte mít přiřazenou roli globálního správce nebo Správce uživatelů. Globální správci můžou odstranit všechny uživatele, včetně jiných správců. Správci uživatelů mohou odstranit všechny uživatele, kteří nejsou správci, helpdesk a další Správce uživatelů. Další informace najdete v tématu [oprávnění role správce v Azure AD](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
 
 Pokud chcete uživatele odstranit, postupujte podle těchto kroků:
 
@@ -91,7 +94,7 @@ Uživatel se odstraní a už se nezobrazí na stránce **Uživatelé – všichn
 Po odstranění uživatele budou k dispozici všechny licence spotřebované uživatelem pro ostatní uživatele.
 
 >[!Note]
->K aktualizaci identity, kontaktních informací nebo informací o úlohách pro uživatele, jejichž zdroj oprávnění je Windows Server Active Directory, musíte použít Windows Server Active Directory. Po dokončení aktualizace musíte počkat na dokončení dalšího cyklu synchronizace, než se změny projeví.
+>Chcete-li aktualizovat identitu, kontaktní informace nebo informace o úlohách pro uživatele, jejichž zdrojovou autoritou je služba Windows Server Active Directory, je nutné použít službu Windows Server Active Directory. Po dokončení aktualizace musíte počkat na dokončení dalšího cyklu synchronizace, než se změny projeví.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -103,6 +106,6 @@ Po přidání uživatelů můžete provádět následující základní procesy:
 
 - [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
-- [Práce s dynamickými skupinami a uživateli](../users-groups-roles/groups-create-rule.md)
+- [Práce s dynamickými skupinami a uživateli](../enterprise-users/groups-create-rule.md)
 
-Nebo můžete provádět další úlohy správy uživatelů, jako je například [Přidání uživatelů typu host z jiného adresáře](../b2b/what-is-b2b.md) nebo [Obnovení odstraněného uživatele](active-directory-users-restore.md). Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).
+Nebo můžete provádět další úlohy správy uživatelů, jako je například [Přidání uživatelů typu host z jiného adresáře](../external-identities/what-is-b2b.md) nebo [Obnovení odstraněného uživatele](active-directory-users-restore.md). Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../enterprise-users/index.yml).

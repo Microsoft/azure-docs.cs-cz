@@ -31,8 +31,10 @@
       href: durable-functions-sequence.md
     - name: Scénář fan-in/fan-out
       href: durable-functions-cloud-backup.md
-    - name: Monitory
+    - name: 'Monitory (C#, JavaScript)'
       href: durable-functions-monitor.md
+    - name: Monitory (Python)
+      href: durable-functions-monitor-python.md
     - name: Lidská interakce
       href: durable-functions-phone-verification.md
     - name: Publikování ve službě Event Grid
@@ -79,6 +81,8 @@
       href: durable-functions-perf-and-scale.md
     - name: Vysoká dostupnost
       href: durable-functions-disaster-recovery-geo-distribution.md
+    - name: Trvalost a serializace dat
+      href: durable-functions-serialization-and-persistence.md
 - name: Referenční informace
   items:
     - name: Nastavení Host.json
@@ -88,9 +92,11 @@
     - name: HTTP API
       href: durable-functions-http-api.md
     - name: .NET API
-      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
+      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask
     - name: Node.js API
-      href: /javascript/api/durable-functions/?view=azure-node-latest
+      href: /javascript/api/durable-functions/
+    - name: Rozhraní API pro Python
+      href: /python/api/azure-functions-durable/azure.durable_functions
 - name: Návody
   items:
     - name: Vývoj

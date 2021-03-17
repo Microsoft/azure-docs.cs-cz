@@ -1,24 +1,24 @@
 ---
-title: Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
+title: Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače se systémem Linux v různých scénářích.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 88a0239409d29700d95b8949c1499dd30f50bb5f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: bf5da120072f49421b6f2194626178048b044f6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510721"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564692"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
-
-Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkce DM-crypt systému Linux k poskytnutí úplného šifrování disku disku s operačním systémem a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití funkce EncryptFormatAll.
+Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkce DM-Crypt systému Linux k zajištění úplného šifrování disku s diskem operačního systému a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití funkce EncryptFormatAll.
 
 Azure Disk Encryption je [integrována s Azure Key Vault](disk-encryption-key-vault.md) , která vám pomůžou řídit a spravovat klíče a tajné kódy disku. Přehled služby najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md).
 
@@ -42,11 +42,11 @@ Azure Disk Encryption můžete povolit a spravovat prostřednictvím rozhraní p
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2,0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je navržené k flexibilnímu dotazování dat, podpoře dlouhotrvajících operací jako neblokujících procesů a snadného skriptování. Můžete ji nainstalovat místně pomocí postupu v části [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+[Azure CLI 2,0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je navržené k flexibilnímu dotazování dat, podpoře dlouhotrvajících operací jako neblokujících procesů a snadného skriptování. Můžete ji nainstalovat místně pomocí postupu v části [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
  
 
-Pokud se chcete [přihlásit ke svému účtu Azure pomocí Azure CLI](/cli/azure/authenticate-azure-cli), použijte příkaz [AZ Login](/cli/azure/reference-index?view=azure-cli-latest#az-login) .
+Pokud se chcete [přihlásit ke svému účtu Azure pomocí Azure CLI](/cli/azure/authenticate-azure-cli), použijte příkaz [AZ Login](/cli/azure/reference-index#az_login) .
 
 ```azurecli
 az login
@@ -72,13 +72,13 @@ Další informace najdete v tématu Začínáme [s Azure CLI 2,0](/cli/azure/get
 
 Pokud jste ho již nainstalovali místně, ujistěte se, že používáte nejnovější verzi sady Azure PowerShell SDK ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [Azure PowerShell verze](https://github.com/Azure/azure-powershell/releases).
 
-Pokud se chcete [přihlásit ke svému účtu Azure pomocí Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0), použijte rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) .
+Pokud se chcete [přihlásit ke svému účtu Azure pomocí Azure PowerShell](/powershell/azure/authenticate-azureps), použijte rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 ```powershell
 Connect-AzAccount
 ```
 
-Pokud máte více předplatných a chcete ho zadat, použijte k jejich zobrazení rutinu [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) a potom rutinu [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) :
+Pokud máte více předplatných a chcete ho zadat, použijte k jejich zobrazení rutinu [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) a potom rutinu [set-AzContext](/powershell/module/az.accounts/set-azcontext) :
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
@@ -86,7 +86,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 Spuštěním rutiny [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) ověříte, že jste vybrali správné předplatné.
 
-Pokud chcete potvrdit, že se nainstalují rutiny Azure Disk Encryption, použijte rutinu [Get-Command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) :
+Pokud chcete potvrdit, že se nainstalují rutiny Azure Disk Encryption, použijte rutinu [Get-Command](/powershell/module/microsoft.powershell.core/get-command) :
      
 ```powershell
 Get-command *diskencryption*
@@ -97,16 +97,16 @@ Další informace najdete v tématu [Začínáme s Azure PowerShell](/powershell
 V tomto scénáři můžete šifrování povolit pomocí šablony Správce prostředků, rutin prostředí PowerShell nebo příkazů rozhraní příkazového řádku. Pokud potřebujete informace o schématu pro rozšíření virtuálního počítače, přečtěte si článek [Azure Disk Encryption pro rozšíření pro Linux](../extensions/azure-disk-enc-linux.md) .
 
 >[!IMPORTANT]
- >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu nebo prostřednictvím [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se dá rutina Set-AzVMDiskEncryptionExtension použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nezdaří, dokud se neprovede záloha a tento parametr se zadal. 
+ >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu nebo prostřednictvím [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se rutina Set-AzVMDiskEncryptionExtension dá použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz Set-AzVMDiskEncryptionExtension se nezdařil proti virtuálním počítačům založeným na disku, dokud nebyla provedena záloha a nebyl zadán tento parametr. 
 >
 >Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje. 
 >
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Povolení šifrování na stávajícím nebo běžícím virtuálním počítači se systémem Linux pomocí Azure CLI 
 
-Pomocí nástroje příkazového řádku [Azure CLI](/cli/azure/?view=azure-cli-latest) můžete povolit šifrování disku na zašifrovaném virtuálním pevném disku. Můžete ho používat v prohlížeči pomocí služby [Azure Cloud Shell](../../cloud-shell/overview.md) nebo nainstalovat na místním počítači a používat ho v jakékoli relaci PowerShellu. Pokud chcete povolit šifrování pro existující nebo běžící virtuální počítače se systémem Linux v Azure, použijte následující příkazy rozhraní příkazového řádku:
+Pomocí nástroje příkazového řádku [Azure CLI](/cli/azure/) můžete povolit šifrování disku na zašifrovaném virtuálním pevném disku. Můžete ho používat v prohlížeči pomocí služby [Azure Cloud Shell](../../cloud-shell/overview.md) nebo nainstalovat na místním počítači a používat ho v jakékoli relaci PowerShellu. Pokud chcete povolit šifrování pro existující nebo běžící virtuální počítače se systémem Linux v Azure, použijte následující příkazy rozhraní příkazového řádku:
 
-Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) Povolte šifrování na běžícím virtuálním počítači v Azure.
+Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az_vm_encryption_show) Povolte šifrování na běžícím virtuálním počítači v Azure.
 
 - **Zašifrujte spuštěný virtuální počítač:**
 
@@ -201,7 +201,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | keyVaultName | Název trezoru klíčů, do kterého se má šifrovací klíč nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` .|
 | keyVaultResourceGroup | Název skupiny prostředků, která obsahuje Trezor klíčů. |
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k šifrování šifrovacího klíče. Tento parametr je nepovinný, pokud v rozevíracím seznamu UseExistingKek vyberete **nokek** . Pokud v rozevíracím seznamu UseExistingKek vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_ a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | location | Umístění pro všechny prostředky |
 
@@ -283,7 +283,7 @@ Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte za
     echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
     ```
     
-1. Spuštěním rutiny Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0) s-EncryptFormatAll Zašifrujte tyto disky.
+1. Spuštěním rutiny Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) s-EncryptFormatAll Zašifrujte tyto disky.
 
     ```azurepowershell-interactive
     $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
@@ -311,7 +311,7 @@ Pro přípravu předem šifrovaných imagí, které je možné použít v Azure,
 * [Příprava předem zašifrovaného virtuálního pevného disku se systémem Linux](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-linux-vhd)
 
 >[!IMPORTANT]
- >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu, nebo se dá použít [Azure Backup](../../backup/backup-azure-vms-encryption.md) . Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se dá rutina Set-AzVMDiskEncryptionExtension použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nezdaří, dokud se neprovede záloha a tento parametr se zadal. 
+ >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu, nebo se dá použít [Azure Backup](../../backup/backup-azure-vms-encryption.md) . Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se rutina Set-AzVMDiskEncryptionExtension dá použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz Set-AzVMDiskEncryptionExtension se nezdařil proti virtuálním počítačům založeným na disku, dokud nebyla provedena záloha a nebyl zadán tento parametr. 
 >
 > Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje. 
 
@@ -408,13 +408,14 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
 - Výpis stavu systému jádra (kdump).
 - Oracle ACFS (systém souborů clusteru ASM).
-- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Disky NVMe virtuálních počítačů Lsv2 Series (viz: [Lsv2-Series](../lsv2-series.md)).
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
+- Virtuální počítač, na kterém byl logický svazek (disk s operačním systémem) rozšířen pomocí datového disku.
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
-- Použití ADE na virtuální počítač, který má nebo byl *dřív* , byly disky šifrované pomocí [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
-- Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
+- Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
+- Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).
+- Šifrování virtuálních počítačů v clusterech s podporou převzetí služeb při selhání
 
 ## <a name="next-steps"></a>Další kroky
 

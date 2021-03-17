@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253673"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611976"
 ---
-# <a name="infrastructure-as-code"></a>Infrastruktura v podobě kódu
+# <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
 V produkčním scénáři Vytvořte clustery Azure Service Fabric pomocí šablon Správce prostředků. Šablony Správce prostředků poskytují větší kontrolu nad vlastnostmi prostředku a zajišťují, že máte konzistentní model prostředků.
 
@@ -27,7 +27,7 @@ ResourceGroupName="sfclustergroup"
 Location="westus"
 
 az group create --name $ResourceGroupName --location $Location 
-az group deployment create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
+az deployment group create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
 ```
 
 Vytvoření prostředku pomocí PowerShellu
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfigurace automatického upgradu operačního systému virtuálního počítače Azure 
-Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
+Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](service-fabric-patch-orchestration-application.md) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
 
 ```json
 "upgradePolicy": {
@@ -104,7 +104,7 @@ Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporuču
 ```
 Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, nová image operačního systému se v jednu chvíli odvede na jednu aktualizační doménu, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší.
 
-Zajistěte, aby byl následující klíč registru nastaven na hodnotu false, aby bylo možné, aby počítače se systémem Windows nezahájily nekoordinovatelné aktualizace: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Zajistěte, aby byl následující klíč registru nastaven na hodnotu false, aby bylo možné, aby hostitelské počítače s Windows nezahájily nekoordinované aktualizace: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků pro nastavení klíče registru WindowsUpdate na hodnotu false:
 ```json

@@ -1,18 +1,15 @@
 ---
 title: Přehled HDInsight 4,0 – Azure
 description: Porovnání funkcí a omezení mezi HDInsight 3.6 a HDInsight 4.0 a doporučení k upgradu
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 694acc0005e90d8299d46528f83ba68ea3fcf1c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374844"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931193"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -38,7 +35,12 @@ Podregistr teď podporuje dynamická materializovaná zobrazení nebo předem vy
 
 ### <a name="hive-transactional-tables"></a>Transakční tabulky Hive
 
-HDI 4,0 obsahuje Apache Hive 3. Podregistr 3 vyžaduje, aby byly v případě transakčních tabulek, které jsou ve skladu podregistru živé, shodné, konzistenci, izolaci a odolnost. Tabulky a tabulková data dodržující model ACID jsou používána a spravována produktem Hive. Data v tabulkách Create, načítat, Update a Delete (CRUD) musí být ve formátu optimalizovaného řádkového sloupce (ORC). Tabulky jen pro vložení podporují všechny formáty souborů.
+HDI 4,0 obsahuje Apache Hive 3. Podregistr 3 vyžaduje, aby byly v případě transakčních tabulek, které jsou ve skladu podregistru živé, shodné, konzistenci, izolaci a odolnost. Tabulky a tabulková data dodržující model ACID jsou používána a spravována produktem Hive. Data v tabulkách Create, načítat, Update a Delete (CRUD) musí být ve formátu optimalizovaného řádkového sloupce (ORC). Tabulky jen pro vložení podporují všechny formáty souborů. 
+
+> [!Note]
+> Podpora KYSELého a transakčního prostředí funguje pouze pro spravované tabulky a nikoli pro externí tabulky. Externí tabulky podregistru jsou navržené tak, aby externí strany mohly číst a zapisovat data tabulky, bez podregistru perfoming jakékoli změny podkladových dat. V případě tabulek pro KYSELINu může podregistr změnit podkladová data s komprimacemi a transakcemi.
+
+Mezi výhody v tabulkách KYSELosti patří následující:
 
 * V modelu ACID v2 došlo k navýšení výkonu jak u formátu úložiště, tak u prováděcího modulu.
 
@@ -92,7 +94,7 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 * HDInsight 4,0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
 * HDInsight 4,0 nepodporuje Apache Storm.
 * HDInsight 4,0 nepodporuje typ clusteru ML Services.
-* Zobrazení podregistru už není dostupné v HDInsight 4,0.
+* Zobrazení podregistru je dostupné jenom u clusterů HDInsight 4,0 s číslem verze rovným nebo větším než 4,1. Toto číslo verze je dostupné ve verzích Ambari admin->.
 * Překladač prostředí v Apache Zeppelin se nepodporuje v clusterech Spark a interaktivních dotazech.
 * V clusteru Spark-LLAP není možné *zakázat* LLAP. LLAP můžete jenom vypnout.
 * Azure Data Lake Storage Gen2 v clusteru Spark nemůžou ukládat poznámkové bloky Jupyter.
@@ -102,5 +104,9 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dokumentace ke službě HDInsight](index.yml)
+* [Průvodce migrací pro HBA](./hbase/apache-hbase-migrate-new-version.md)
+* [Průvodce migrací z registru](./interactive-query/apache-hive-migrate-workloads.md)
+* [Průvodce migrací Kafka](./kafka/migrate-versions.md)
+* [Příručka k migraci Spark](./spark/migrate-versions.md)
+* [Dokumentace ke službě Azure HDInsight](index.yml)
 * [Zpráva k vydání verze](hdinsight-release-notes.md)

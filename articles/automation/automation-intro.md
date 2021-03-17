@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualiz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448058"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182814"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -35,7 +35,7 @@ Správa konfigurace v Azure Automation umožňuje přístup ke dvěma funkcím:
 
 ### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
 
-Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace. Podrobnosti o této funkci najdete v tématu [Change Tracking a inventář](change-tracking.md).
+Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace. Podrobnosti o této funkci najdete v tématu [Change Tracking a inventář](change-tracking/overview.md).
 
 ### <a name="azure-automation-state-configuration"></a>Služba Azure Automation State Configuration
 
@@ -43,7 +43,7 @@ Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, kter�
 
 ## <a name="update-management"></a>Správa aktualizací
 
-Azure Automation obsahuje funkci [Update Management](update-management/update-mgmt-overview.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
+Azure Automation obsahuje funkci [Update Management](./update-management/overview.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
 
 ## <a name="shared-capabilities"></a>Sdílené možnosti
 
@@ -64,7 +64,7 @@ Azure Automation se skládá ze sady sdílených prostředků, které usnadňuj�
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Azure Automation podporuje řízení přístupu na základě role (RBAC) k regulaci přístupu k účtu Automation a jeho prostředkům. Další informace o konfiguraci RBAC pro váš účet Automation, Runbooky a úlohy najdete v tématu [řízení přístupu na základě rolí pro Azure Automation](automation-role-based-access-control.md).
+Azure Automation podporuje řízení přístupu na základě role Azure (Azure RBAC) a řídí přístup k účtu Automation a jeho prostředkům. Další informace o konfiguraci služby Azure RBAC na vašem účtu Automation, sadách Runbook a úlohách najdete v tématu [řízení přístupu na základě rolí pro Azure Automation](automation-role-based-access-control.md).
 
 ### <a name="source-control-integration"></a>Integrace správy zdrojového kódu
 
@@ -86,7 +86,7 @@ Azure Automation podporuje správu v celém životním cyklu vaší infrastruktu
 * **Najít změny** – Identifikujte změny, které můžou způsobit neshodnou konfiguraci a vylepšit provozní dodržování předpisů.
 * **Monitorování** – izolujte změny počítačů, které způsobují problémy a napravují je, nebo je předají do systémů pro správu.
 * **Chránit** – počítače v karanténě, pokud jsou vyvolány výstrahy zabezpečení. Nastavte požadavky na hostovi.
-* **Řízení –** nastavení RBAC pro týmy. Obnovte nevyužité prostředky.
+* **Řízení –** nastavení služby Azure RBAC pro týmy. Obnovte nevyužité prostředky.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

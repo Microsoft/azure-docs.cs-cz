@@ -1,18 +1,17 @@
 ---
 title: Vyhodnoťte velký počet fyzických serverů pro migraci do Azure pomocí Azure Migrate | Microsoft Docs
 description: Popisuje, jak vyhodnotit velký počet fyzických serverů pro migraci do Azure pomocí služby Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 01/19/2020
-ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081077"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753684"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Vyhodnocení velkého počtu fyzických serverů pro migraci do Azure
 
@@ -30,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 
 
 > [!NOTE]
-> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik serverů před hodnocením škálování, postupujte podle našich [kurzů](tutorial-prepare-physical.md).
+> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik serverů před hodnocením škálování, postupujte podle našich [kurzů](./tutorial-discover-physical.md).
 
 ## <a name="plan-for-assessment"></a>Plánování posouzení
 
@@ -48,7 +47,7 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 --- | --- 
 **Azure Migrate projekty** | Vyhodnoťte až 35 000 serverů v projektu.
 **Zařízení Azure Migrate** | Zařízení může zjistit až 1000 serverů.<br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/> K jednomu Azure Migrate projektu může být přidružen libovolný počet zařízení. <br/><br/> 
-**Skupiny** | Do jedné skupiny můžete přidat až 35 000 serverů.
+**Skupina** | Do jedné skupiny můžete přidat až 35 000 serverů.
 **Posouzení Azure Migrate** | V jednom posouzení můžete posoudit až 35 000 serverů.
 
 
@@ -64,7 +63,7 @@ Připravte si Azure a fyzické servery pro posouzení serveru.
 2. Nastavte oprávnění pro účet Azure pro interakci s Azure Migrate.
 3. Připravte fyzické servery.
 
-Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-prepare-physical.md) .
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](./tutorial-discover-physical.md) .
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
@@ -73,7 +72,7 @@ V souladu s požadavky na plánování udělejte toto:
 1. Jak vytvořit projekt Azure Migrate.
 2. Přidejte do projektů Nástroj pro vyhodnocení Azure Migrate serveru.
 
-[Další informace](how-to-add-tool-first-time.md)
+[Další informace](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Vytvoření a kontrola posouzení
 

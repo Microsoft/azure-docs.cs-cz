@@ -1,14 +1,16 @@
 ---
 title: Glosář – LUIS
 description: Glosář vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS API.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836407"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786940"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Glosář Language Understanding (LUIS) vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS.
@@ -48,12 +50,13 @@ Prostředek pro vytváření obsahu obsahuje typ Azure `LUIS-Authoring` .
 
 ## <a name="batch-test"></a>Dávkový test
 
-Dávkové testování je schopnost ověřit aktuální modely aplikace v LUIS s konzistentní a známou sadou testů uživatele projevy. Dávkový test je definován v souboru ve [formátu JSON](luis-concept-batch-test.md#batch-file-format).
+Dávkové testování je schopnost ověřit aktuální modely aplikace v LUIS s konzistentní a známou sadou testů uživatele projevy. Dávkový test je definován v souboru ve [formátu JSON](./luis-how-to-batch-test.md#batch-test-file).
+
 
 Viz také:
-* [Koncepty](luis-concept-batch-test.md)
+* [Koncepty](./luis-how-to-batch-test.md)
 * [Postup](luis-how-to-batch-test.md) spuštění dávkového testu
-* [Kurz](luis-tutorial-batch-testing.md) – vytvoření a spuštění dávkového testu
+* [Kurz](./luis-how-to-batch-test.md) – vytvoření a spuštění dávkového testu
 
 ### <a name="f-measure"></a>Měření F
 
@@ -94,7 +97,7 @@ Klasifikátor je model strojového učení, který předpovídá, do jaké kateg
 
 ## <a name="collaborator"></a>Spolupracovník
 
-Spolupracovníci je koncepčně stejné jako [Přispěvatel](#contributor). Spolupracovníka má udělený přístup, když vlastník přidá e-mailovou adresu spolupracovníka do aplikace, která není řízená řízením přístupu na základě role Azure (Azure RBAC). Pokud stále používáte spolupracovníky, měli byste migrovat svůj účet LUIS a pomocí prostředků vytváření LUIS spravovat přispěvatele s RBAC.
+Spolupracovníci je koncepčně stejné jako [Přispěvatel](#contributor). Spolupracovníka má udělený přístup, když vlastník přidá e-mailovou adresu spolupracovníka do aplikace, která není řízená řízením přístupu na základě role Azure (Azure RBAC). Pokud stále používáte spolupracovníky, měli byste migrovat svůj účet LUIS a pomocí prostředků vytváření LUIS spravovat přispěvatele s využitím Azure RBAC.
 
 ## <a name="contributor"></a>Přispěvatel
 
@@ -192,7 +195,7 @@ V LUIS můžete [Označit](label-entity-example-utterance.md) slovo nebo frázi 
 
 Viz definice [aplikace (aplikace)](#application-app).
 
-## <a name="model"></a>Model
+## <a name="model"></a>Modelování
 
 Model A (strojové učení) je funkce, která provádí předpověď na vstupní data. V LUIS odkazujeme na třídění záměrů a extraktory entit obecně jako na "modely" a odkazujeme na kolekci modelů, které jsou výukové, publikované a společně dotazované jako "aplikace".
 
@@ -200,7 +203,7 @@ Model A (strojové učení) je funkce, která provádí předpověď na vstupní
 
 Do entit [seznamu](#list-entity) přidáte hodnoty. Každá z těchto hodnot může mít seznam jednoho nebo více synonym. V odpovědi se vrátí jenom normalizovaná hodnota.
 
-## <a name="overfitting"></a>Přeurčení (overfitting)
+## <a name="overfitting"></a>Přeurčení
 
 K překrytí dojde, když je model v konkrétních příkladech přizpůsobený a není schopný zobecnit správně.
 
@@ -283,9 +286,9 @@ V LUIS [seznam entit](reference-entity-list.md)můžete vytvořit normalizovanou
 
 |Hodnota Nomalized| Synonyma|
 |--|--|
-|Malý| trochu jedna, 8 unce|
+|Malá| trochu jedna, 8 unce|
 |Střední| Regular, 12 unce|
-|Velký| velký, 16 unce|
+|Velká| velký, 16 unce|
 |Xtra velký| největší z nich, 24 unce|
 
 Model Vrátí normalizovanou hodnotu pro entitu, pokud se ve vstupu objeví kterákoli z synonym.
@@ -303,13 +306,13 @@ Podívejte se [na téma Změna časového pásma předem sestavené entity datet
 ## <a name="token"></a>Token
 [Token](luis-language-support.md#tokenization) je nejmenší jednotka textu, kterou může Luis rozeznat. To se mírně liší v různých jazycích.
 
-Pro **angličtinu**je token souvislým rozsahem písmen a číslic (bez mezer nebo interpunkčních znamének). Prostor není token.
+Pro **angličtinu** je token souvislým rozsahem písmen a číslic (bez mezer nebo interpunkčních znamének). Prostor není token.
 
 |Fráze|Počet tokenů|Vysvětlení|
 |--|--|--|
 |`Dog`|1|Jedno slovo bez interpunkce nebo mezer.|
 |`RMT33W`|1|Číslo lokátoru záznamu. Může obsahovat čísla a písmena, ale nemá žádnou interpunkci.|
-|`425-555-5555`|5|Telefonní číslo. Každé interpunkční znaménko je jeden token, takže `425-555-5555` by to představovalo 5 tokenů:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
+|`425-555-5555`|5|Telefonní číslo. Každé interpunkční znaménko je jeden token, takže  `425-555-5555` by to představovalo 5 tokenů:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
 |`https://luis.ai`|7|`https`<br>`:`<br>`/`<br>`/`<br>`luis`<br>`.`<br>`ai`<br>|
 
 ## <a name="train"></a>Trénování
@@ -324,7 +327,7 @@ Pro **angličtinu**je token souvislým rozsahem písmen a číslic (bez mezer ne
 
 Chyby školení se předpovědi na školicích datech, která neodpovídají jejich popiskům.
 
-## <a name="utterance"></a>Promluva
+## <a name="utterance"></a>Výrok
 
 [Utterance](luis-concept-utterance.md) je uživatelský vstup, který je krátkým textovým zástupcem věty v konverzaci. Jedná se o frázi přirozeného jazyka, jako jsou lístky Book 2 do Seattlu Next úterý. Příkladem projevy jsou přidané hodnoty pro výuku modelu a předpověď modelu na nové utterance za běhu.
 

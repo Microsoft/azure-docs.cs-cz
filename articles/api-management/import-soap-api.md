@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905646"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011060"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 
@@ -45,7 +45,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 3. Do **Specifikace WSDL** zadejte adresu URL, kde se nachází rozhraní API SOAP.
 4. Ve výchozím nastavení je vybraný přepínač **Průchod SOAP**. S tímto výběrem bude rozhraní API prezentované jako SOAP. Příjemce musí používat pravidla SOAP. Pokud chcete rozhraní API převést na REST, postupujte podle kroků v tématu o [importování rozhraní API SOAP a jeho převedení na REST](restify-soap-api.md).
 
-    ![Průchod](./media/import-soap-api/pass-through.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit z W S D L, kde můžete zadat specifikaci W S D L.](./media/import-soap-api/pass-through.png)
 5. Stiskněte klávesu Tab.
 
     Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
@@ -58,7 +58,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
     * **Starter**
     * **Unlimited**   
-8. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+8. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
 9. Vyberte **Vytvořit**.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Testování nového rozhraní API na portálu pro správu

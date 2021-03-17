@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
-ms.openlocfilehash: ff449626ce528cfe0218a95330a567303c547e5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d7622217d192a100fd809c32c9e85970cf61fd7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79486020"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510943"
 ---
-1. Pomocí pokynů v [sadě Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) nainstalujte sadu Azure Machine Learning SDK pro Python.
+1. Pomocí pokynů v [sadě Azure Machine Learning SDK](/python/api/overview/azure/ml/install)  nainstalujte sadu Azure Machine Learning SDK pro Python.
 
 1. Vytvořte [pracovní prostor Azure Machine Learning](../articles/machine-learning/how-to-manage-workspace.md).
 
-1. Napište soubor [konfiguračního souboru](../articles/machine-learning/how-to-configure-environment.md#workspace) (**aml_config/config.JSON**).
+1. Napište soubor  [konfiguračního souboru](../articles/machine-learning/how-to-configure-environment.md#workspace) (**aml_config/config.jszapnutý**).
 
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 

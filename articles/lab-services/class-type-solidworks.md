@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290725"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626100"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Nastavení testovacího prostředí pro inženýrské třídy pomocí SOLIDWORKS
 
@@ -24,22 +24,22 @@ V tomto článku si ukážeme, jak nastavit třídu, která používá SOLIDWORK
 
 Licencování sítě SOLIDWORKS vyžaduje, abyste na licenčním serveru nainstalovali a aktivovali SolidNetWork License Manager.  Tento licenční server se obvykle nachází v místní síti nebo v privátní síti v rámci Azure.  Další informace o tom, jak nastavit správce licencí SolidNetWork na vašem serveru, najdete v tématu [instalace a aktivace správce licencí](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) v příručce pro instalaci SOLIDWORKS.  Při nastavování si zapamatujte **číslo portu** a [**sériové číslo**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) , které se použijí, protože budou potřeba v pozdějších krocích.
 
-Po nastavení licenčního serveru budete muset vytvořit partnerský vztah k [virtuální síti (VNET)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) na [účet testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account).  Partnerský vztah k síti je třeba provést před vytvořením testovacího prostředí, aby virtuální počítače testovacího prostředí měly přístup k licenčnímu serveru a jiným způsobem.
+Po nastavení licenčního serveru budete muset vytvořit partnerský vztah k [virtuální síti (VNET)](./how-to-connect-peer-virtual-network.md) na [účet testovacího prostředí](./tutorial-setup-lab-account.md).  Partnerský vztah k síti je třeba provést před vytvořením testovacího prostředí, aby virtuální počítače testovacího prostředí měly přístup k licenčnímu serveru a jiným způsobem.
 
 > [!NOTE]
-> Měli byste ověřit, jestli jsou na branách firewall otevřené příslušné porty, abyste umožnili komunikaci mezi virtuálními počítači testovacího prostředí a licenčním serverem.  Podívejte se například na pokyny k [úpravám portů počítače správce licencí pro bránu Windows Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) , které ukazují, jak přidat pravidla pro příchozí a odchozí spojení do brány firewall licenčního serveru.  Je také možné, že budete muset otevřít porty pro virtuální počítače testovacího prostředí.  Další informace o tom, jak získat veřejnou IP adresu testovacího prostředí, najdete v článku o [nastavení brány firewall pro laboratoře](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) .
+> Měli byste ověřit, jestli jsou na branách firewall otevřené příslušné porty, abyste umožnili komunikaci mezi virtuálními počítači testovacího prostředí a licenčním serverem.  Podívejte se například na pokyny k [úpravám portů počítače správce licencí pro bránu Windows Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) , které ukazují, jak přidat pravidla pro příchozí a odchozí spojení do brány firewall licenčního serveru.  Je také možné, že budete muset otevřít porty pro virtuální počítače testovacího prostředí.  Další informace o tom, jak získat veřejnou IP adresu testovacího prostředí, najdete v článku o [nastavení brány firewall pro laboratoře](./how-to-configure-firewall-settings.md) .
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v kurzu [jak nastavit účet testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v kurzu [jak nastavit účet testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v článku o [tom, jak zadat image z Marketplace dostupné pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v článku o [tom, jak zadat image z Marketplace dostupné pro tvůrce testovacích prostředí](./specify-marketplace-images.md).
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-|Obrázek Marketplace| Povolte image Windows 10 pro pro použití v rámci vašeho účtu testovacího prostředí.|
+|Image z Marketplace| Povolte image Windows 10 pro pro použití v rámci vašeho účtu testovacího prostředí.|
 
 > [!NOTE]
 > Kromě Windows 10 podporuje SOLIDWORKS i další verze Windows.  Podrobnosti najdete v tématu [požadavky na systém SolidWorks](https://www.solidworks.com/sw/support/SystemRequirements.html) .
@@ -57,7 +57,7 @@ Při nastavování testovacího prostředí učebny použijte nastavení v násl
 > Velikost virtuálního počítače **malého GPU (vizualizace)** je nakonfigurovaná tak, aby umožňovala vysoce náročné grafické prostředí.  Další informace o této velikosti virtuálního počítače najdete v článku o [Nastavení testovacího prostředí pomocí GPU](./how-to-setup-lab-gpu.md).
 
 > [!WARNING]
-> **Před** vytvořením testovacího prostředí nezapomeňte [virtuální síť](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) pro účet testovacího prostředí na virtuální síť pro daný licenční server.
+> **Před** vytvořením testovacího prostředí nezapomeňte [virtuální síť](./how-to-connect-peer-virtual-network.md) pro účet testovacího prostředí na virtuální síť pro daný licenční server.
 
 ## <a name="template-virtual-machine-configuration"></a>Konfigurace virtuálního počítače šablony
 
@@ -76,7 +76,7 @@ Kroky v této části ukazují, jak nastavit virtuální počítač šablony sta
     > [!NOTE]
     > V dialogovém okně **Přidat server** se zobrazí výzva k zadání **čísla portu** používaného pro váš licenční server a názvu nebo IP adresy licenčního serveru.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 
 Pojďme pro tuto třídu pokrýt možné náklady. Tento odhad nezahrnuje náklady na provozování licenčního serveru. Použijeme třídu 25 studentů. Naplánovaný čas třídy je 20 hodin. Každý student navíc získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovanou dobu třídy. Velikost virtuálního počítače, kterou jsme zvolili, byla **malá GPU (vizualizace)**, což je 160 jednotek testovacího prostředí.
 

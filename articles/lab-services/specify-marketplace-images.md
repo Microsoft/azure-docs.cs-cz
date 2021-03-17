@@ -3,18 +3,18 @@ title: Určení imagí Marketplace pro testovací prostředí v Azure Lab Servic
 description: V tomto článku se dozvíte, jak zadat image na webu Marketplace, které může aplikace Lab Creator použít k vytvoření cvičení v účtu testovacího prostředí v Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5a353394fec3dadf0f808a25ec66f6e9028820a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445606"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434732"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Určení imagí Marketplace dostupných pro tvůrci testovacího prostředí
 Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
 ## <a name="select-images-available-for-labs"></a>Výběr imagí dostupných pro laboratoře
-V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Seznam můžete filtrovat tak, aby se zobrazily jenom povolené nebo zakázané obrázky **Enabled only**, a to tak, že v / rozevíracím seznamu v horní části vyberete možnost jenom**zakázaná** . 
+V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Seznam můžete filtrovat tak, aby se zobrazily jenom povolené nebo zakázané obrázky **Enabled only**, a to tak, že v / rozevíracím seznamu v horní části vyberete možnost jenom **zakázaná** . 
     
 ![Stránka imagí v Marketplace](./media/tutorial-setup-lab-account/marketplace-images-page.png)
 
@@ -60,4 +60,4 @@ Viz následující články:
 - [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
 - [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
 - [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)
+- [Jako uživatel testovacího prostředí, Access Labs](how-to-use-classroom-lab.md)

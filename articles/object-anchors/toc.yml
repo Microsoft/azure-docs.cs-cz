@@ -1,0 +1,46 @@
+- name: Dokumentace k kotvám objektů
+  href: index.yml
+- name: Přehled
+  items:
+    - name: O ukotveních objektů
+      href: overview.md
+    - name: Osvědčené postupy
+      href: best-practices.md
+- name: Koncepty
+  items:
+    - name: Přehled sady SDK modulu runtime
+      href: concepts/sdk-overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Vytvoření modelu
+      href: quickstarts/get-started-model-conversion.md
+    - name: Vytvoření aplikace Unity
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: HoloLens s MRTK
+          href: quickstarts/get-started-unity-hololens-mrtk.md
+    - name: Vytvoření aplikace pro HoloLens DirectX
+      href: quickstarts/get-started-hololens-directx.md
+- name: ukázky
+  items:
+    - name: Ukázky kotev objektů Azure (GitHub)
+      href: 'https://github.com/Azure/azure-object-anchors'
+- name: Reference
+  items:
+    - name: Sada SDK modulu runtime pro Unity
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+    - name: Sada SDK modulu runtime pro HoloLens C++/WinRT
+      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+- name: Zdroje a prostředky
+  items:
+    - name: "Poznámky k\_verzi"
+      href: 'https://github.com/Azure/azure-object-anchors/releases'
+    - name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+    - name: Časté otázky
+      href: faq.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-object-anchors'

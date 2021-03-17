@@ -1,22 +1,25 @@
 ---
 title: Konfigurace parametrů serveru – Azure CLI – Azure Database for MariaDB
 description: Tento článek popisuje, jak nakonfigurovat parametry služby v Azure Database for MariaDB pomocí nástroje příkazového řádku Azure CLI.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 6/11/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c2c9d87c153563e2c33d15eda668469674f75494
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493801"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662300"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Konfigurace parametrů serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 Pomocí Azure CLI, nástroje příkazového řádku Azure můžete vypsat, zobrazit a aktualizovat parametry konfigurace Azure Database for MariaDB serveru. Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit.
+
+>[!Note]
+> Parametry serveru je možné aktualizovat globálně na úrovni serveru pomocí [Azure CLI](./howto-configure-server-parameters-cli.md), [PowerShellu](./howto-configure-server-parameters-using-powershell.md) nebo webu [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
@@ -36,7 +39,7 @@ Definice všech uvedených parametrů naleznete v části Reference MariaDB na [
 ## <a name="show-server-configuration-parameter-details"></a>Zobrazit podrobnosti parametru konfigurace serveru
 Chcete-li zobrazit podrobnosti o konkrétním parametru konfigurace pro server, spusťte příkaz [AZ MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) .
 
-Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_ ** pro server **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_** pro server **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
@@ -44,7 +47,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ## <a name="modify-a-server-configuration-parameter-value"></a>Změna hodnoty parametru konfigurace serveru
 Můžete také změnit hodnotu určitého parametru konfigurace serveru, který aktualizuje základní konfigurační hodnotu pro modul MariaDB serveru. Chcete-li aktualizovat konfiguraci, použijte příkaz [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) . 
 
-Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_ ** na serveru **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_** na serveru **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -54,7 +57,7 @@ Pokud chcete resetovat hodnotu parametru konfigurace, vynechejte volitelný `--v
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-Tento kód resetuje konfiguraci ** \_ \_ protokolu pomalých dotazů** na výchozí hodnotu **vypnuto**. 
+Tento kód resetuje konfiguraci **\_ \_ protokolu pomalých dotazů** na výchozí hodnotu **vypnuto**. 
 
 ## <a name="setting-parameters-not-listed"></a>Nastavení neuvedených parametrů
 Pokud parametr serveru, který chcete aktualizovat, není uveden v Azure Portal, můžete volitelně nastavit parametr na úrovni připojení pomocí `init_connect` . Tím se nastaví parametry serveru pro každého klienta, který se připojuje k serveru. 

@@ -3,12 +3,12 @@ title: Práce se servery proxy v Azure Functions
 description: Přehled způsobu použití Proxy služby Azure Functions
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385870"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601369"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s Proxy služby Azure Functions
 
@@ -55,11 +55,11 @@ Konfigurace proxy serveru nemusí být statická. Tuto podmínku můžete použ�
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Místní funkce odkazů
 Můžete použít `localhost` pro odkazování na funkci v rámci stejné aplikace Function App přímo bez požadavku na proxy zpětného převodu.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"`provede odkaz na místní funkci aktivovanou protokolem HTTP v trase.`/api/httptriggerC#1`
+`"backendUri": "https://localhost/api/httptriggerC#1"` provede odkaz na místní funkci aktivovanou protokolem HTTP v trase. `/api/httptriggerC#1`
 
  
 >[!Note]  
->Pokud vaše funkce používá úrovně autorizace *Function, admin nebo sys* , bude nutné zadat kód a ClientID, jak je uvedeno na základě původní adresy URL funkce. V takovém případě by odkaz vypadal takto: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` tyto klíče doporučujeme uložit do [nastavení aplikace] a odkazovat na ně v proxy serverech. Tím se vyhnete ukládání tajných kódů ve zdrojovém kódu. 
+>Pokud vaše funkce používá úrovně autorizace *Function, admin nebo sys* , bude nutné zadat kód a ClientID, jak je uvedeno na základě původní adresy URL funkce. V takovém případě by odkaz vypadal takto: `"backendUri": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` tyto klíče doporučujeme uložit do [nastavení aplikace] a odkazovat na ně v proxy serverech. Tím se vyhnete ukládání tajných kódů ve zdrojovém kódu. 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Parametry referenční žádosti
 
@@ -111,7 +111,7 @@ Zcela zakažte trasování přidáním `"debug":false` určitého proxy serveru 
 Proxy servery, které nakonfigurujete, se ukládají do *proxies.jsv* souboru, který se nachází v kořenovém adresáři adresáře Function App. Tento soubor můžete ručně upravit a nasadit jako součást aplikace při použití libovolné [metody nasazení](./functions-continuous-deployment.md) , které funkce podporuje. 
 
 > [!TIP] 
-> Pokud jste nestavili jednu z metod nasazení, můžete také pracovat s *proxies.js* v souboru na portálu. Přejít do aplikace Function App, vybrat **funkce platformy**a pak vybrat **Editor služby App Service**. Díky tomu můžete zobrazit celou strukturu souborů aplikace Function App a pak provést změny.
+> Pokud jste nestavili jednu z metod nasazení, můžete také pracovat s *proxies.js* v souboru na portálu. Přejít do aplikace Function App, vybrat **funkce platformy** a pak vybrat **Editor služby App Service**. Díky tomu můžete zobrazit celou strukturu souborů aplikace Function App a pak provést změny.
 
 *Proxies.js* je definována objektem proxy, který se skládá z pojmenovaných proxy a jejich definic. Případně, pokud je editor podporuje, můžete pro dokončení kódu odkazovat na [schéma JSON](http://json.schemastore.org/proxies) . Příklad souboru může vypadat takto:
 
@@ -135,14 +135,14 @@ Každý proxy server má popisný název, například *Proxy1* v předchozím p�
 * **matchCondition**: Required-objekt definující požadavky, které aktivují spuštění tohoto proxy serveru. Obsahuje dvě vlastnosti, které jsou sdílené pomocí [aktivačních událostí http]:
     * _metody_: pole metod HTTP, na které proxy reaguje. Pokud není zadaný, proxy server odpoví na všechny metody HTTP v trase.
     * _Route_: Required – definuje šablonu směrování, která určuje, na které adresy URL požadavků váš proxy reaguje. Na rozdíl od triggerů HTTP neexistuje žádná výchozí hodnota.
-* **netrvalou**adresu: adresa URL záložního prostředku, na který by se měl požadavek nacházet proxy serverem. Tato hodnota může odkazovat na nastavení aplikace a parametry z původní žádosti klienta. Pokud tato vlastnost není zahrnuta, Azure Functions odpoví pomocí protokolu HTTP 200 OK.
+* **netrvalou** adresu: adresa URL záložního prostředku, na který by se měl požadavek nacházet proxy serverem. Tato hodnota může odkazovat na nastavení aplikace a parametry z původní žádosti klienta. Pokud tato vlastnost není zahrnuta, Azure Functions odpoví pomocí protokolu HTTP 200 OK.
 * **requestOverrides**: objekt, který definuje transformace na back-end požadavek. Viz [Definování objektu requestOverrides].
 * **responseOverrides**: objekt, který definuje transformace na reakci klienta. Viz [Definování objektu responseOverrides].
 
 > [!NOTE] 
 > Vlastnost *Route* v proxy služby Azure Functions nedodržuje vlastnost *routePrefix* Function App konfigurace hostitele. Pokud chcete zahrnout předponu jako `/api` , musí být součástí vlastnosti *Route* .
 
-### <a name="disable-individual-proxies"></a><a name="disableProxies"></a>Zakázat jednotlivé proxy servery
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a> Zakázat jednotlivé proxy servery
 
 Jednotlivé proxy servery můžete zakázat přidáním `"disabled": true` k proxy serveru v `proxies.json` souboru. To způsobí, že všechny žádosti, které splňují matchCondition, vrátí 404.
 ```json
@@ -160,14 +160,14 @@ Jednotlivé proxy servery můžete zakázat přidáním `"disabled": true` k pro
 }
 ```
 
-### <a name="application-settings"></a><a name="applicationSettings"></a>Nastavení aplikace
+### <a name="application-settings"></a><a name="applicationSettings"></a> Nastavení aplikace
 
 Chování proxy serveru se dá řídit několika nastaveními aplikace. Všechny jsou uvedené v [Referenční příručce k nastavení aplikací Functions](./functions-app-settings.md)
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a>Vyhrazené znaky (formátování řetězce)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a> Vyhrazené znaky (formátování řetězce)
 
 Proxy přečtou všechny řetězce ze souboru JSON pomocí znaku \ jako řídicího symbolu. Proxy objekty také interpretují složené závorky. Podívejte se na celou sadu níže uvedených příkladů.
 

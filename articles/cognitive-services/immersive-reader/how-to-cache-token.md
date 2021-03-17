@@ -6,16 +6,16 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/14/2020
-ms.author: metan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.author: metang
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e79ae3914e32038e2823fb37e3eee658c95e0003
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406941"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608763"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Jak uložit ověřovací token do mezipaměti
 

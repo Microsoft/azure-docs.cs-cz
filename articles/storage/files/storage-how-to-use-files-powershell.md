@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8b4bd9ece5f010f1294356ad4673543834e5076a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531808"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626907"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytvoření a správa sdílené složky Azure pomocí Azure PowerShellu 
-Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
+Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB (Server Message Block), protokol NFS (Network File System) (verze Preview) a umožňuje sdílení souborů napříč několika počítači, aplikacemi a instancemi. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -66,13 +66,14 @@ $shareName = "myshare"
 New-AzRmStorageShare `
     -StorageAccount $storageAcct `
     -Name $shareName `
+    -EnabledProtocol SMB `
     -QuotaGiB 1024 | Out-Null
 ```
 
-Názvy sdílených složek můžou obsahovat pouze malá písmena, číslice a spojovníky a nesmí začínat na spojovník. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek můžou obsahovat pouze malá písmena, číslice a spojovníky a nesmí začínat na spojovník. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 ## <a name="use-your-azure-file-share"></a>Použití sdílené složky Azure
-Služba Soubory Azure nabízí dva způsoby práce se soubory a složkami ve sdílené složce Azure: standardní průmyslový [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [souborový protokol REST](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
+Služba Soubory Azure nabízí dva způsoby práce se soubory a složkami ve sdílené složce Azure: standardní průmyslový [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [souborový protokol REST](/rest/api/storageservices/file-service-rest-api). 
 
 Informace o připojení sdílené složky s využitím protokolu SMB najdete v následujících dokumentech v závislosti na vašem operačním systému:
 - [Windows](storage-how-to-use-files-windows.md)
@@ -161,6 +162,7 @@ $otherShareName = "myshare2"
 New-AzRmStorageShare `
     -StorageAccount $storageAcct `
     -Name $otherShareName `
+    -EnabledProtocol SMB `
     -QuotaGiB 1024 | Out-Null
   
 New-AzStorageDirectory `
@@ -186,12 +188,12 @@ Get-AzStorageFile `
     -Path "myDirectory2" 
 ```
 
-I když `Start-AzStorageFileCopy` je rutina praktická pro ad hoc přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat doporučujeme `robocopy` na Windows a `rsync` na MacOS a Linux. `robocopy`a `rsync` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
+I když `Start-AzStorageFileCopy` je rutina praktická pro ad hoc přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat doporučujeme `robocopy` na Windows a `rsync` na MacOS a Linux. `robocopy` a `rsync` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
 
 ## <a name="create-and-manage-share-snapshots"></a>Vytváření a správa snímků sdílených složek
 Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává sdílenou složku Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné technologiím operačního systému, které už možná znáte, jako například:
 
-- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) pro systémy souborů Windows, jako je třeba NTFS a ReFS.
+- [Služba Stínová kopie svazku (VSS)](/windows/desktop/VSS/volume-shadow-copy-service-portal) pro systémy souborů Windows, jako je třeba NTFS a ReFS.
 - Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pro systémy Linux.
 - Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS. 
 
@@ -275,4 +277,4 @@ Alternativně můžete prostředky odebrat jeden po druhém:
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Co je služba Soubory Azure?](storage-files-introduction.md)
+> [Co je Azure Files?](storage-files-introduction.md)

@@ -10,15 +10,20 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
-ms.custom: seodec2018, devx-track-javascript
-ms.openlocfilehash: 2391b63cbc0539b9c2e505e8cf531aeb78eb9bfd
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec2018, devx-track-js
+ms.openlocfilehash: cb9e68efd27deb3bf66d3c286c0cd7a128d8bf59
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406074"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430577"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové aplikace s jednou stránkou
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Bingu pro vyhledávání zpráv umožňuje hledat na webu a získávat výsledky v podobě zpráv relevantních pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API Bingu pro vyhledávání zpráv k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
@@ -41,12 +46,12 @@ Ukázková aplikace předvádí, jak:
 Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API. Pokud je nemáte, budete je muset vytvořit:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 
 ## <a name="app-components"></a>Komponenty aplikace
 Stejně jako každá jednostránková webová aplikace i tato aplikace zahrnuje tři části:

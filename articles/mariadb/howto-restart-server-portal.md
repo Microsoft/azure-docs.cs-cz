@@ -1,17 +1,17 @@
 ---
 title: Restart serveru – Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak můžete restartovat server Azure Database for MariaDB pomocí webu Azure Portal.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 369d19d98946f8309c7f2053f4453e09a7ed902f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a912c1cde092b082e4c0229b1f454e80f32e319e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121057"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664881"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Restartování serveru Azure Database for MariaDB pomocí Azure Portal
 Toto téma popisuje, jak můžete restartovat server Azure Database for MariaDB. Možná budete muset restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server tuto operaci provede.

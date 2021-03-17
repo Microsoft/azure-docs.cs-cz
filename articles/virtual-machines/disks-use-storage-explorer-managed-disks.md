@@ -7,18 +7,18 @@ ms.date: 09/25/2019
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 658defef93a7dffe9a0d707e128ab5d5ef382849
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701424"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88749377"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Použití Průzkumník služby Azure Storage ke správě Azure Managed disks
 
 Průzkumník služby Storage 1.10.0 umožňuje uživatelům nahrávat, stahovat a kopírovat spravované disky a také vytvářet snímky. Z důvodu těchto dalších možností můžete pomocí Průzkumník služby Storage migrovat data z místního prostředí do Azure a migrovat data mezi oblastmi Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku budete potřebovat následující:
 - Předplatné Azure
@@ -132,6 +132,6 @@ Pomocí Průzkumník služby Storage můžete kopírovat spravovaných disk v r�
 ## <a name="next-steps"></a>Další kroky
 
 
-Naučte se, jak [vytvořit virtuální počítač z VHD pomocí Azure Portal](./windows/create-vm-specialized-portal.md).
+Naučte se, jak [vytvořit virtuální počítač z VHD pomocí Azure Portal](windows/create-vm-specialized-portal.md).
 
-Naučte se, jak [připojit spravovaný datový disk k virtuálnímu počítači s Windows pomocí Azure Portal](./windows/attach-managed-disk-portal.md).
+Naučte se, jak [připojit spravovaný datový disk k virtuálnímu počítači s Windows pomocí Azure Portal](windows/attach-managed-disk-portal.md).

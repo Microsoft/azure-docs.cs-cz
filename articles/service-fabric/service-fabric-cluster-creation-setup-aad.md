@@ -3,12 +3,12 @@ title: Nastavit Azure Active Directory pro ověřování klientů
 description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric clustery.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258767"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215965"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
 
@@ -38,7 +38,7 @@ Abychom zjednodušili některé kroky týkající se konfigurace služby Azure A
 
 Pomocí skriptů vytvoříme dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, vytvoříte uživatele pro [role podporované Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1` příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1` příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Například:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -104,7 +104,7 @@ Při pokusu o přihlášení ke službě Azure AD v Service Fabric Explorer vrá
 Aplikace clusteru (Web), která představuje Service Fabric Explorer se pokouší o ověření vůči službě Azure AD a jako součást požadavku, poskytuje návratovou adresu URL pro přesměrování. Adresa URL ale není uvedená v seznamu **adres URL odpovědi** aplikace Azure AD.
 
 #### <a name="solution"></a>Řešení
-Na stránce registrace aplikace Azure AD pro váš cluster Vyberte **ověřování**a v části **identifikátory uri přesměrování** přidejte Service Fabric Explorer URL do seznamu. Uložte změnu.
+Na stránce registrace aplikace Azure AD pro váš cluster Vyberte **ověřování** a v části **identifikátory uri přesměrování** přidejte Service Fabric Explorer URL do seznamu. Uložte změnu.
 
 ![Adresa URL odpovědi webové aplikace][web-application-reply-url]
 
@@ -138,7 +138,7 @@ Po nastavení Azure Active Directory aplikací a nastavení rolí pro uživatele
 
 
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

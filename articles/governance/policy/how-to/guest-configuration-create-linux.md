@@ -3,12 +3,13 @@ title: Postup vytváření zásad konfigurace hosta pro Linux
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Linux.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547716"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525343"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -23,10 +24,11 @@ Při auditování Linuxu konfigurace hosta využívá [Chef InSpec](https://www.
 Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ověření stavu počítače s Azure nebo mimo Azure.
 
 > [!IMPORTANT]
-> Vlastní zásady s konfigurací hosta jsou funkcí verze Preview.
+> Vlastní definice zásad s konfigurací hosta v prostředích Azure Government a Azure Čína jsou funkcí ve verzi Preview.
 >
-> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v rámci všech počítačů se systémem Linux, přiřaďte následující definici zásady:
-> - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v rámci všech počítačů se systémem Linux, přiřaďte následující definici zásady: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> Nepoužívejte tajné klíče ani důvěrné informace v balíčcích vlastního obsahu.
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -51,7 +53,9 @@ Operační systémy, ve kterých se modul dá nainstalovat:
 - Windows
 
 > [!NOTE]
-> Rutina ' test-GuestConfigurationPackage ' vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI. To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
+> Rutina `Test-GuestConfigurationPackage` vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI. To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
+>
+> Spuštění rutiny `Test-GuestConfigurationPackage` se podporuje jenom ve Windows pro 2.1.0 verze modulu Konfigurace hosta.
 
 Modul prostředků konfigurace hosta vyžaduje následující software:
 
@@ -86,6 +90,10 @@ DSC slouží jako obálka pro nespecifikované informace pro standardizaci způs
 
 Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Azure Resource Manager (šablona ARM) musí být stejné.
 
+Rutiny prostředí PowerShell pomáhají při vytváření balíčku.
+Není požadována žádná složka kořenové úrovně ani složka verze.
+Formát balíčku musí být soubor. zip. a při nekomprimaci nemůže překročit celkovou velikost 100 MB.
+
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
 
 Konfigurace hosta v systému Linux používá `ChefInSpecResource` prostředek k poskytnutí modulu s názvem [INSPEC Profile](https://www.inspec.io/docs/reference/profiles/). **Název** je jediná požadovaná vlastnost prostředku. Vytvořte soubor YaML a soubor skriptu Ruby, jak je popsáno níže.
@@ -118,6 +126,9 @@ Uložte tento soubor s názvem `linux-path.rb` do nové složky s názvem v `con
 Nakonec vytvořte konfiguraci, importujte modul prostředků **PSDesiredStateConfiguration** a zkompilujte konfiguraci.
 
 ```powershell
+# import PSDesiredStateConfiguration module
+import-module PSDesiredStateConfiguration
+
 # Define the configuration and import GuestConfiguration
 Configuration AuditFilePathExists
 {
@@ -133,7 +144,6 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
-import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
@@ -148,7 +158,7 @@ Nyní byste měli mít strukturu projektu, jak je uvedeno níže:
     / Config
         AuditFilePathExists.mof
     / linux-path
-        linux-path.yml
+        inspec.yml
         / controls
             linux-path.rb 
 ```
@@ -160,7 +170,7 @@ Podpůrné soubory musí být zabaleny dohromady. Dokončený balíček použív
 - **Název**: název konfiguračního balíčku hosta.
 - **Konfigurace**: úplná cesta k kompilované konfiguraci dokumentu.
 - **Cesta**: cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
-- **ChefProfilePath**: úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
+- **ChefInspecProfilePath**: úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
 
 Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
 
@@ -171,7 +181,7 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo CI/CD. Rutina GuestConfiguration `Test-GuestConfigurationPackage` zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
+Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo průběžné integrace a prostředí průběžného nasazování (CI/CD). Rutina GuestConfiguration `Test-GuestConfigurationPackage` zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
 
 Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve většině případů je třeba spustit rutinu test-rutiny na stejné platformě operačního systému, jakou máte v plánu auditovat.
 
@@ -191,65 +201,25 @@ Test-GuestConfigurationPackage `
 Rutina podporuje také vstup z kanálu PowerShellu. Přesměrování výstupu `New-GuestConfigurationPackage` rutiny do `Test-GuestConfigurationPackage` rutiny.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-Dalším krokem je publikování souboru do úložiště objektů BLOB. Následující skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Příkazy používané ve `publish` funkci vyžadují `Az.Storage` modul.
+Dalším krokem je publikování souboru do Azure Blob Storage. Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
+
+Parametry `Publish-GuestConfigurationPackage` rutiny:
+
+- **Cesta**: umístění balíčku, který se má publikovat
+- **ResourceGroupName**: název skupiny prostředků, ve které se nachází účet úložiště.
+- **StorageAccountName**: název účtu úložiště, do kterého se má balíček publikovat
+- **StorageContainerName**: (výchozí: *guestconfiguration*) název kontejneru úložiště v účtu úložiště
+- **Force (vynutit**): přepsat existující balíček v účtu úložiště se stejným názvem
+
+Následující příklad publikuje balíček do kontejneru úložiště s názvem guestconfiguration.
 
 ```azurepowershell-interactive
-function publish {
-    param(
-    [Parameter(Mandatory=$true)]
-    $resourceGroup,
-    [Parameter(Mandatory=$true)]
-    $storageAccountName,
-    [Parameter(Mandatory=$true)]
-    $storageContainerName,
-    [Parameter(Mandatory=$true)]
-    $filePath,
-    [Parameter(Mandatory=$true)]
-    $blobName
-    )
-
-    # Get Storage Context
-    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-        -Name $storageAccountName | `
-        ForEach-Object { $_.Context }
-
-    # Upload file
-    $Blob = Set-AzStorageBlobContent -Context $Context `
-        -Container $storageContainerName `
-        -File $filePath `
-        -Blob $blobName `
-        -Force
-
-    # Get url with SAS token
-    $StartTime = (Get-Date)
-    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-    $SAS = New-AzStorageBlobSASToken -Context $Context `
-        -Container $storageContainerName `
-        -Blob $blobName `
-        -StartTime $StartTime `
-        -ExpiryTime $ExpiryTime `
-        -Permission rl `
-        -FullUri
-
-    # Output
-    return $SAS
-}
-
-# replace the $storageAccountName value below, it must be globally unique
-$resourceGroup        = 'policyfiles'
-$storageAccountName   = 'youraccountname'
-$storageContainerName = 'artifacts'
-
-$uri = publish `
-  -resourceGroup $resourceGroup `
-  -storageAccountName $storageAccountName `
-  -storageContainerName $storageContainerName `
-  -filePath ./AuditFilePathExists.zip `
-  -blobName 'AuditFilePathExists'
+Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExists.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
 ```
+
 Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvoří definice zásady konfigurace hosta. `New-GuestConfigurationPolicy`Rutina převezme vlastní balíček zásad a vytvoří definici zásady.
 
 Parametry `New-GuestConfigurationPolicy` rutiny:
@@ -280,8 +250,6 @@ New-GuestConfigurationPolicy `
 Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 
 - **auditIfNotExists.jsna**
-- **deployIfNotExists.jsna**
-- **Initiative.jsna**
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
 
@@ -291,7 +259,7 @@ K provedení příkazu Publikovat budete potřebovat přístup k vytváření z�
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
-  -Path '.\policyDefinitions'
+  -Path './policies'
 ```
 
  `Publish-GuestConfigurationPolicy`Rutina akceptuje cestu z kanálu PowerShellu. Tato funkce znamená, že můžete vytvořit soubory zásad a publikovat je v jedné sadě příkazů s použitím kanálu.
@@ -305,25 +273,7 @@ Publish-GuestConfigurationPolicy `
  | Publish-GuestConfigurationPolicy
  ```
 
-V rámci zásad vytvořených v Azure je posledním krokem přiřazení iniciativy. Podívejte se, jak přiřadit iniciativu k [portálu](../assign-policy-portal.md), rozhraní příkazového [řádku Azure](../assign-policy-azurecli.md)a [Azure PowerShell](../assign-policy-powershell.md).
-
-> [!IMPORTANT]
-> Zásady konfigurace hosta se musí **vždy** přiřadit pomocí iniciativy, která kombinuje zásady _AuditIfNotExists_ a _DeployIfNotExists_ . Pokud je přiřazena pouze zásada _AuditIfNotExists_ , požadavky nejsou nasazeny a zásady vždy ukazují, že jsou servery "0" kompatibilní.
-
-Přiřazení definice zásady s _DeployIfNotExists_ účinkem vyžaduje další úroveň přístupu. Chcete-li udělit nejnižší oprávnění, můžete vytvořit vlastní definici role, která rozšiřuje **přispěvatele zásad prostředků**. V následujícím příkladu se vytvoří role s názvem **Přispěvatel zásad prostředků Rewards** s dodatečným oprávněním _Microsoft. Authorization/roleAssignments/Write_.
-
-```azurepowershell-interactive
-$subscriptionid = '00000000-0000-0000-0000-000000000000'
-$role = Get-AzRoleDefinition "Resource Policy Contributor"
-$role.Id = $null
-$role.Name = "Resource Policy Contributor DINE"
-$role.Description = "Can assign Policies that require remediation."
-$role.Actions.Clear()
-$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
-$role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
-New-AzRoleDefinition -Role $role
-```
+V rámci zásad vytvořených v Azure je posledním krokem přiřazení definice. Podívejte se, jak přiřadit definici k [portálu](../assign-policy-portal.md), rozhraní příkazového [řádku Azure](../assign-policy-azurecli.md)a [Azure PowerShell](../assign-policy-powershell.md).
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Použití parametrů ve vlastních zásadách konfigurace hostů
 
@@ -341,35 +291,8 @@ describe file(attr_path) do
 end
 ```
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr přebírá zatřiďovací tabulku, včetně všech podrobností o jednotlivých parametrech, a automaticky vytvoří všechny požadované oddíly souborů, pomocí kterých se vytvoří každá definice Azure Policy.
-
-Následující příklad vytvoří definici zásady pro audit cesty k souboru, kde uživatel zadá cestu v době přiřazení zásady.
-
-```azurepowershell-interactive
-$PolicyParameterInfo = @(
-    @{
-        Name = 'FilePath'                             # Policy parameter name (mandatory)
-        DisplayName = 'File path.'                    # Policy parameter display name (mandatory)
-        Description = "File path to be audited."      # Policy parameter description (optional)
-        ResourceType = "ChefInSpecResource"           # Configuration resource type (mandatory)
-        ResourceId = 'Audit Linux path exists'        # Configuration resource property name (mandatory)
-        ResourcePropertyName = "AttributesYmlContent" # Configuration resource property name (mandatory)
-        DefaultValue = '/tmp'                         # Policy parameter default value (optional)
-    }
-)
-
-# The hashtable also supports a property named 'AllowedValues' with an array of strings to limit input to a list
-
-New-GuestConfigurationPolicy
-    -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
-    -DisplayName 'Audit Linux file path.' `
-    -Description 'Audit that a file path exists on a Linux machine.' `
-    -Path './policies' `
-    -Parameter $PolicyParameterInfo `
-    -Version 1.0.0
-```
-
-V případě zásad pro Linux zahrňte vlastnost **AttributesYmlContent** do konfigurace a podle potřeby hodnoty přepište. Agent konfigurace hosta automaticky vytvoří soubor YAML používaný nespecifikací k ukládání atributů. Viz následující příklad.
+Přidejte vlastnost **AttributesYmlContent** v konfiguraci s libovolným řetězcem jako hodnotu.
+Agent konfigurace hosta automaticky vytvoří soubor YAML používaný nespecifikací k ukládání atributů. Viz následující příklad.
 
 ```powershell
 Configuration AuditFilePathExists
@@ -381,21 +304,62 @@ Configuration AuditFilePathExists
         ChefInSpecResource 'Audit Linux path exists'
         {
             Name = 'linux-path'
-            AttributesYmlContent = "path: /tmp"
+            AttributesYmlContent = "fromParameter"
         }
     }
 }
 ```
 
+Znovu zkompilujte soubor MOF pomocí příkladů uvedených v tomto dokumentu.
+
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr přebírá zatřiďovací tabulku, včetně všech podrobností o jednotlivých parametrech, a automaticky vytvoří všechny požadované oddíly souborů, pomocí kterých se vytvoří každá definice Azure Policy.
+
+Následující příklad vytvoří definici zásady pro audit cesty k souboru, kde uživatel zadá cestu v době přiřazení zásady.
+
+```azurepowershell-interactive
+$PolicyParameterInfo = @(
+    @{
+        Name = 'FilePath'                             # Policy parameter name (mandatory)
+        DisplayName = 'File path.'                    # Policy parameter display name (mandatory)
+        Description = 'File path to be audited.'      # Policy parameter description (optional)
+        ResourceType = 'ChefInSpecResource'           # Configuration resource type (mandatory)
+        ResourceId = 'Audit Linux path exists'        # Configuration resource property name (mandatory)
+        ResourcePropertyName = 'AttributesYmlContent' # Configuration resource property name (mandatory)
+        DefaultValue = '/tmp'                         # Policy parameter default value (optional)
+    }
+)
+
+# The hashtable also supports a property named 'AllowedValues' with an array of strings to limit input to a list
+
+$uri = 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D'
+
+New-GuestConfigurationPolicy -ContentUri $uri `
+    -DisplayName 'Audit Linux file path.' `
+    -Description 'Audit that a file path exists on a Linux machine.' `
+    -Path './policies' `
+    -Parameter $PolicyParameterInfo `
+    -Platform 'Linux' `
+    -Version 1.0.0
+```
+
+
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad
 
-K vydání aktualizace definice zásady existují dvě pole, která vyžadují pozornost.
+Pokud chcete vydat aktualizaci zásady, proveďte změnu pro konfigurační balíček hosta a podrobnosti definice Azure Policy.
 
-- **Verze**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované. Vlastnost aktualizuje verzi přiřazení konfigurace hosta, aby agent rozpoznal aktualizovaný balíček.
+> [!NOTE]
+> `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
+
+Nejprve `New-GuestConfigurationPackage` Zadejte název balíčku, který bude v předchozích verzích jedinečný. Do názvu můžete zahrnout číslo verze, například `PackageName_1.0.0` .
+Číslo v tomto příkladu se používá jenom k tomu, aby balíček byl jedinečný, a neměl by určovat, že by se měl balíček považovat za novější nebo starší než jiné balíčky.
+
+Potom aktualizujte parametry používané pomocí `New-GuestConfigurationPolicy` rutiny podle každé z následujících vysvětlení.
+
+- **Verze**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
+- **contentUri**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
 - **contentHash**: Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtrování zásad konfigurace hostů pomocí značek
 
@@ -445,12 +409,6 @@ Agent GuestConfiguration očekává, že se veřejný klíč certifikátu nachá
 Zásady přístupu Key Vault musí umožňovat poskytovateli výpočetních prostředků přístup k certifikátům během nasazení. Podrobný postup najdete v tématu [nastavení Key Vault pro virtuální počítače v Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Podívejte se na [ukázky značek](../samples/built-in-policies.md#tags) , jak mohou být značky doručovány ve velkém rozsahu pomocí Azure Policy. Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Řešení potíží s přiřazením zásad konfigurace hosta (Preview)
-
-Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů. Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-Help v prostředí PowerShell k zobrazení integrovaných pokynů. Jak nástroj načítá časté aktualizace, což je nejlepší způsob, jak získat nejnovější informace.
 
 ## <a name="next-steps"></a>Další kroky
 

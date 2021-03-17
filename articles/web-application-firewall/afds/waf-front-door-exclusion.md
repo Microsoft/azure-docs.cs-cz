@@ -4,19 +4,19 @@ description: Tento článek obsahuje informace o konfiguraci seznamů vyloučen�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 02/25/2020
+ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a92679bb3114c4a60870424f3ec68a8de7b303da
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77925927"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499913"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Firewall webových aplikací (WAF) se seznamy vyloučení služby front-dveří 
 
-Někdy může firewall webových aplikací (WAF) blokovat požadavek, který chcete pro vaši aplikaci použít. Například služba Active Directory vloží tokeny, které se používají pro ověřování. Tyto tokeny mohou obsahovat speciální znaky, které mohou aktivovat falešně pozitivní hodnoty z pravidel WAF. Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyhodnocení WAF.  Seznam vyloučení se dá nakonfigurovat pomocí [PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)nebo Azure Portal. Následující příklad ukazuje konfiguraci Azure Portal. 
+Někdy může firewall webových aplikací (WAF) blokovat požadavek, který chcete pro vaši aplikaci použít. Například služba Active Directory vloží tokeny, které se používají pro ověřování. Tyto tokeny mohou obsahovat speciální znaky, které mohou aktivovat falešně pozitivní hodnoty z pravidel WAF. Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyhodnocení WAF.  Seznam vyloučení se dá nakonfigurovat pomocí  [PowerShellu](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [rozhraní REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)nebo Azure Portal. Následující příklad ukazuje konfiguraci Azure Portal. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Konfigurace seznamů vyloučení pomocí Azure Portal
 **Správa vyloučení** je přístupná z portálu WAF v části **spravovaná pravidla**
 
@@ -37,14 +37,41 @@ Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnot
 Můžete zadat přesně takovou hlavičku požadavku, tělo, soubor cookie nebo atribut řetězce dotazu.  Případně můžete volitelně zadat částečné shody. Následující operátory jsou podporovaná kritéria shody:
 
 - **Equals**: Tento operátor se používá pro přesnou shodu. Chcete-li například vybrat záhlaví s názvem **bearerToken**, použijte operátor Equals se sadou selektoru jako **bearerToken**.
-- **Začíná**na: Tento operátor odpovídá všem polím, která začínají zadanou hodnotou selektoru.
-- **Končí**na: Tento operátor odpovídá všem polím žádosti, která končí zadanou hodnotou selektoru.
+- **Začíná** na: Tento operátor odpovídá všem polím, která začínají zadanou hodnotou selektoru.
+- **Končí** na: Tento operátor odpovídá všem polím žádosti, která končí zadanou hodnotou selektoru.
 - **Obsahuje**: Tento operátor odpovídá všem polím požadavku, která obsahují zadanou hodnotu selektoru.
 - **Equals**: Tento operátor odpovídá všem polím žádosti. * je hodnota selektoru.
 
 V názvech hlaviček a souborů cookie se nerozlišují malá a velká písmena.
 
-Seznam vyloučení můžete použít pro všechna pravidla v rámci spravované sady pravidel, na pravidla pro konkrétní skupinu pravidel nebo na jedno pravidlo, jak je znázorněno v předchozím příkladu. 
+Pokud hodnota záhlaví, hodnota souboru cookie, hodnota post argumentu nebo hodnota argumentu dotazu vytvoří pro některá pravidla falešně pozitivní hodnoty, můžete tuto část žádosti vyloučit z pravidla:
+
+
+|matchVariableName z protokolů WAF  |Vyloučení pravidla na portálu  |
+|---------|---------|
+|CookieValue: SOME_NAME        |Název souboru cookie žádosti se rovná SOME_NAME|
+|HeaderValue: SOME_NAME        |Název záhlaví žádosti se rovná SOME_NAME|
+|PostParamValue: SOME_NAME     |Text žádosti post argumenty s názvem se rovná SOME_NAME|
+|QueryParamValue: SOME_NAME    |Argumenty řetězce dotazu s názvem se rovná SOME_NAME|
+
+
+V protokolech WAF aktuálně podporujeme jenom vyloučení pravidel pro výše uvedené matchVariableNames. Pro všechny ostatní matchVariableNames musíte buď zakázat pravidla, která poskytují falešně pozitivní výsledky, nebo vytvořit vlastní pravidlo, které tyto požadavky explicitně povoluje. Konkrétně, pokud je matchVariableName název souboru cookie, záhlaví, PostParamName nebo QueryParamName, znamená to, že toto pravidlo aktivuje samotné jméno. Vyloučení pravidla nemá v tuto chvíli žádnou podporu pro tyto matchVariableNames.
+
+
+Pokud vyloučíte argument post požadavku s názvem *foo*, žádné pravidlo by v protokolech WAF obsahovat POSTPARAMVALUE: foo jako matchVariableName. Stále však můžete vidět pravidlo s matchVariableName InitialBodyContents, které odpovídá hodnotě parametru post FOO, protože hodnoty parametrů post jsou součástí InitialBodyContents.
+
+Seznam vyloučení můžete použít pro všechna pravidla v rámci spravované sady pravidel, na pravidla pro konkrétní skupinu pravidel nebo na jedno pravidlo, jak je znázorněno v předchozím příkladu.
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Definování vyloučení na základě protokolů brány firewall webových aplikací
+ [Monitorování a protokolování brány firewall webových aplikací Azure](waf-front-door-monitor.md) zobrazuje odpovídající podrobnosti o blokované žádosti. Pokud hodnota záhlaví, hodnota souboru cookie, hodnota post argumentu nebo hodnota argumentu dotazu vytvoří pro některá pravidla falešně pozitivní hodnotu, můžete tuto část požadavku vyloučit z pravidla. V následující tabulce jsou uvedeny ukázkové hodnoty z protokolů WAF a příslušné podmínky vyloučení.
+
+|matchVariableName z protokolů WAF    |Vyloučení pravidla na portálu|
+|--------|------|
+|CookieValue: SOME_NAME  |Název souboru cookie žádosti se rovná SOME_NAME|
+|HeaderValue: SOME_NAME  |Název záhlaví žádosti se rovná SOME_NAME|
+|PostParamValue: SOME_NAME|  Text žádosti post argumenty s názvem se rovná SOME_NAME|
+|QueryParamValue: SOME_NAME| Argumenty řetězce dotazu s názvem se rovná SOME_NAME|
+
 
 ## <a name="next-steps"></a>Další kroky
 

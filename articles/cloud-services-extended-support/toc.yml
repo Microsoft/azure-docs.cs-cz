@@ -1,0 +1,109 @@
+- name: Dokumentace k Cloud Services (Rozšířená podpora)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: O Cloud Services (Rozšířená podpora)
+      href: overview.md
+    - name: Předpoklady pro nasazení
+      href: deploy-prerequisite.md
+    - name: Konfigurační soubory a balíčky
+      href: cloud-services-model-and-package.md
+- name: Kurzy
+  items:
+    - name: Nasazení cloudové služby – portál
+      href: deploy-portal.md
+    - name: Nasazení cloudové služby – PowerShell
+      href: deploy-powershell.md
+    - name: Nasazení cloudové služby – šablona
+      href: deploy-template.md
+    - name: Nasazení cloudové služby – sada SDK
+      href: deploy-sdk.md
+    - name: Nasazení cloudové služby – Visual Studio
+      href: /visualstudio/azure/cloud-services-extended-support?context=%2fazure%2fcloud-services-extended-support%2fcontext%2fcontext
+  expanded: true
+- name: Koncepty
+  items:
+    - name: Rozšíření
+      href: extensions.md
+    - name: Dostupné velikosti virtuálních počítačů
+      href: available-sizes.md
+    - name: Opravy hostovaného operačního systému
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?context=/azure/cloud-services-extended-support/context/context
+    - name: Vyřazení hostovaného operačního systému
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?context=/azure/cloud-services-extended-support/context/context
+    - name: Příspěvky k vydání hostovaného operačního systému
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?context=/azure/cloud-services-extended-support/context/context
+    - name: Schéma XML
+      items:
+        - name: Schéma csdef XML
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe schéma
+          href: schema-csdef-loadbalancerprobe.md
+        - name: Schéma webrole
+          href: schema-csdef-webrole.md
+        - name: Role pracovního procesu schéma
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules schéma
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg – schéma XML
+          href: schema-cscfg-file.md
+        - name: Schéma role
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration schéma
+          href: schema-cscfg-networkconfiguration.md
+    - name: Nejčastější dotazy
+      href: faq.md
+- name: Postup
+  items:
+    - name: Použít rozšíření vzdálené plochy
+      href: enable-rdp.md
+    - name: Použít rozšíření WAD
+      href: enable-wad.md
+    - name: Povolení upozornění
+      href: enable-alerts.md
+    - name: Konfigurace škálování
+      href: configure-scaling.md
+    - name: Certifikáty
+      href: certificates-and-key-vault.md
+    - name: Vygenerovat šablonu ARM pomocí portálu
+      href: generate-template-portal.md
+- name: ukázky
+  items:
+    - name: Ukázkové šablony
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
+    - name: Vytvořit novou cloudovou službu
+      href: sample-create-cloud-service.md
+    - name: Získat podrobnosti o cloudové službě
+      href: sample-get-cloud-service.md
+    - name: Resetování cloudové služby
+      href: sample-reset-cloud-service.md
+- name: Reference
+  items:
+    - name: Ukázkové soubory nasazení
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
+    - name: AZ. CloudService – modul
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: Rutiny prostředí PowerShell
+      href: /powershell/module/az.cloudservice/#cloudservice
+    - name: Odkaz na šablonu ARM
+      href: /azure/templates/microsoft.compute/cloudservices
+    - name: REST
+      href: /rest/api/compute/cloudservices
+    - name: .NET
+      href: /dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview
+    - name: Sada SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Postup výuky
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-cloud-services.html
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

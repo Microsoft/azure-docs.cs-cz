@@ -1,7 +1,7 @@
 ---
-title: Konfigurace časového limitu nečinnosti nástroje pro vyrovnávání zatížení TCP v Azure
+title: Konfigurace resetování TCP pro vyrovnávání zatížení a časový limit nečinnosti
 titleSuffix: Azure Load Balancer
-description: V tomto článku se dozvíte, jak nakonfigurovat Azure Load Balancer časový limit nečinnosti protokolu TCP.
+description: V tomto článku se dozvíte, jak nakonfigurovat Azure Load Balancer časový limit nečinnosti protokolu TCP a resetování.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,64 +11,106 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2020
+ms.date: 10/26/2020
 ms.author: allensu
-ms.openlocfilehash: 38db681655a839983ebf38e94ec28eb05ed65d1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808578"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747180"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Nakonfigurujte nastavení časového limitu nečinnosti protokolu TCP pro Azure Load Balancer
+# <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Konfigurace resetování TCP a vypršení časového limitu nečinnosti pro Azure Load Balancer
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Load Balancer má následující rozsah časového limitu nečinnosti:
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+* 4 minuty až 100 minut pro odchozí pravidla
+* 4 minuty až 30 minut pro pravidla Load Balancer a příchozí pravidla NAT
+
+Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je doba nečinnosti delší než hodnota časového limitu, není zaručena údržba relace TCP nebo HTTP mezi klientem a službou. 
+
+Následující části popisují, jak změnit nastavení časového limitu nečinnosti a resetování TCP pro prostředky nástroje pro vyrovnávání zatížení.
+
+## <a name="set-tcp-reset-and-idle-timeout"></a>Nastavit resetování TCP a časový limit nečinnosti
+---
+# <a name="portal"></a>[**Portál**](#tab/tcp-reset-idle-portal)
+
+Pokud chcete nastavit časový limit nečinnosti a resetování TCP pro nástroj pro vyrovnávání zatížení, upravte pravidlo s vyrovnáváním zatížení. 
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+
+2. V nabídce na levé straně vyberte **skupiny prostředků** .
+
+3. Vyberte skupinu prostředků pro nástroj pro vyrovnávání zatížení. V tomto příkladu skupina prostředků má název **myResourceGroup** .
+
+4. Vyberte svůj Load Balancer. V tomto příkladu se nástroj pro vyrovnávání zatížení nazývá **myLoadBalancer** .
+
+5. V **Nastavení** vyberte **pravidla vyrovnávání zatížení** .
+
+     :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="Upravit pravidla nástroje pro vyrovnávání zatížení." border="true":::
+
+6. Vyberte pravidlo vyrovnávání zatížení. V tomto příkladu se pravidlo vyrovnávání zatížení nazývá **myLBrule** .
+
+7. V pravidle vyrovnávání zatížení přesuňte posuvník v poli **časový limit nečinnosti (minuty)** na hodnotu časového limitu.  
+
+8. V části **resetovat TCP** vyberte **povoleno** .
+
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Upravit pravidla nástroje pro vyrovnávání zatížení." border="true":::
+
+9. Vyberte **Uložit** .
+
+# <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
+
+Nastavení časového limitu nečinnosti a resetování TCP nastavíte tak, že nastavíte hodnoty v následujících parametrech pravidla vyrovnávání zatížení pomocí [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer):
+
+* **IdleTimeoutInMinutes**
+* **EnableTcpReset**
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="tcp-idle-timeout"></a>Časový limit nečinnosti protokolu TCP
-Azure Load Balancer má nastavení časového limitu nečinnosti po dobu 4 minuty až 30 minut. Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná.
+Nahraďte následující příklady hodnotami z vašich prostředků:
 
-Po zavření připojení může klientská aplikace zobrazit následující chybovou zprávu: "základní připojení bylo zavřeno: připojení, které bylo očekáváno jako aktivní, bylo zavřeno serverem."
+* **myResourceGroup**
+* **myLoadBalancer**
 
-Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v těchto [příkladech rozhraní .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Když je povolená možnost Keep-Alive, pakety se odešlou během období nečinnosti na připojení. Pakety Keep-Alive zajišťují, že hodnota časového limitu nečinnosti není dosažena a připojení je udržováno po dlouhou dobu.
-
-Nastavení funguje jenom pro příchozí připojení. Aby nedošlo ke ztrátě připojení, nakonfigurujte udržování připojení TCP pomocí intervalu kratšího, než je nastavení časového limitu nečinnosti, nebo zvyšte hodnotu časového limitu nečinnosti. Pro podporu těchto scénářů byla přidána podpora konfigurovatelného časového limitu nečinnosti.
-
-Udržování připojení TCP funguje ve scénářích, kdy životnost baterie není omezením. Nedoporučuje se pro mobilní aplikace. Při použití udržování připojení TCP v mobilní aplikaci můžete baterii zařízení rychleji vyprázdnit.
-
-![Časový limit TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
-
-Následující části popisují, jak změnit nastavení časového limitu nečinnosti pro prostředky veřejné IP adresy a nástroje pro vyrovnávání zatížení.
-
->[!NOTE]
-> Časový limit nečinnosti protokolu TCP nemá vliv na pravidla vyrovnávání zatížení na protokolu UDP.
-
-
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Nakonfigurujte časový limit TCP pro veřejnou IP adresu na úrovni instance na 15 minut.
-
-```azurepowershell-interactive
-$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
-$publicIP.IdleTimeoutInMinutes = "15"
-Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```azurepowershell
+$lb = Get-AzLoadBalancer -Name "myLoadBalancer" -ResourceGroup "myResourceGroup"
+$lb.LoadBalancingRules[0].IdleTimeoutInMinutes = '15'
+$lb.LoadBalancingRules[0].EnableTcpReset = 'true'
+Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavené, výchozí časový limit je 4 minuty. Přípustný rozsah časového limitu je 4 až 30 minut.
+# <a name="azure-cli"></a>[**Azure CLI**](#tab/tcp-reset-idle-cli)
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Nastavte časový limit TCP pro pravidlo vyrovnávání zatížení na 15 minut.
+Pokud chcete nastavit časový limit nečinnosti a resetování TCP, použijte následující parametry pro [AZ Network Rule Update](/cli/azure/network/lb/rule?az_network_lb_rule_update):
 
-Chcete-li nastavit časový limit nečinnosti pro nástroj pro vyrovnávání zatížení, je v pravidle vyrovnávání zatížení nastaven atribut ' IdleTimeoutInMinutes '. Příklad:
+* **--nečinný – časový limit**
+* **--Enable-TCP-reset**
 
-```azurepowershell-interactive
-$lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"
-$lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
+Než začnete, ověřte si prostředí:
+
+* Přihlaste se k Azure Portal a ověřte, že je vaše předplatné aktivní spuštěním `az login` .
+* Podívejte se na verzi rozhraní příkazového řádku Azure CLI v terminálu nebo příkazovém okně spuštěním příkazu `az --version` . Nejnovější verzi najdete v [poznámkách k nejnovější verzi](/cli/azure/release-notes-azure-cli?tabs=azure-cli).
+  * Pokud nemáte nejnovější verzi, aktualizujte instalaci pomocí [instalační příručky pro váš operační systém nebo platformu](/cli/azure/install-azure-cli).
+
+Nahraďte následující příklady hodnotami z vašich prostředků:
+
+* **myResourceGroup**
+* **myLoadBalancer**
+* **myLBrule**
+
+
+```azurecli
+az network lb rule update \
+    --resource-group myResourceGroup \
+    --name myLBrule \
+    --lb-name myLoadBalancer \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
 ```
+---
 ## <a name="next-steps"></a>Další kroky
 
-[Interní přehled nástroje pro vyrovnávání zatížení](load-balancer-internal-overview.md)
+Další informace o vypršení časového limitu nečinnosti protokolu TCP a resetování najdete v tématu [Load Balancer obnovení TCP a časový limit](load-balancer-tcp-reset.md)
 
-[Začínáme s konfigurací internetového nástroje pro vyrovnávání zatížení](quickstart-create-standard-load-balancer-powershell.md)
-
-[Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)
+Další informace o konfiguraci distribučního režimu nástroje pro vyrovnávání zatížení najdete v tématu [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md).

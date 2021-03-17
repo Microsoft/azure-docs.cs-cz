@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
 ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824524"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011944"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 

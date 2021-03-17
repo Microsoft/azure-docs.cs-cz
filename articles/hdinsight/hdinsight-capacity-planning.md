@@ -1,19 +1,16 @@
 ---
 title: Plánování kapacity clusteru v Azure HDInsight
 description: Identifikujte klíčové otázky pro plánování kapacity a výkonu clusteru Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45cfa90f2156dba87cbec2b6313bc24e5d030572
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714742"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933225"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 

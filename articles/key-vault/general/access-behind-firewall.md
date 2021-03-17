@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588724"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289172"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
 
@@ -43,7 +43,7 @@ Klientské aplikace trezoru klíčů budou kvůli ověřování potřebovat př�
 | Uživatel nebo instanční objekt používající pracovní nebo školní účet s Azure AD (například user@contoso.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Státní správa USA Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443 |
 | Uživatel nebo instanční objekt používající pracovní nebo školní účet a službu Active Directory Federation Services (AD FS) nebo jiný federovaný koncový bod (například user@contoso.com) |Všechny koncové body pro pracovní nebo školní účet a AD FS nebo jiné federované koncové body |
 
-Existují i další možné komplexní scénáře. Další informace najdete v tématech [Azure Active Directory Authentication Flow](../../active-directory/develop/authentication-scenarios.md) (Tok ověřování Azure Active Directory), [Integrating Applications with Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) (Integrace aplikací s Azure Active Directory) a [Active Directory Authentication Protocols](https://msdn.microsoft.com/library/azure/dn151124.aspx) (Ověřovací protokoly Active Directory).  
+Existují i další možné komplexní scénáře. Další informace najdete v tématech [Azure Active Directory Authentication Flow](../../active-directory/develop/authentication-vs-authorization.md) (Tok ověřování Azure Active Directory), [Integrating Applications with Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) (Integrace aplikací s Azure Active Directory) a [Active Directory Authentication Protocols](/previous-versions/azure/dn151124(v=azure.100)) (Ověřovací protokoly Active Directory).  
 
 ## <a name="key-vault-management"></a>Správa služby Key Vault
 
@@ -56,7 +56,7 @@ Pro správu služby Key Vault (CRUD a nastavení zásad přístupu) je nutné, a
 
 ## <a name="key-vault-operations"></a>Operace služby Key Vault
 
-Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) a kryptografické operace je nutné, aby klient trezoru klíčů měl přístup ke koncovému bodu trezoru klíčů. V závislosti na umístění trezoru klíčů se bude lišit přípona DNS koncového bodu. Koncový bod trezoru klíčů je ve formátu *název_trezoru*.*přípona_dns_konkrétní_oblasti*, jak je popsáno v tabulce níže.  
+Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) a kryptografické operace je nutné, aby klient trezoru klíčů měl přístup ke koncovému bodu trezoru klíčů. V závislosti na umístění trezoru klíčů se bude lišit přípona DNS koncového bodu. Koncový bod trezoru klíčů je ve formátu *název_trezoru*. *přípona_dns_konkrétní_oblasti* , jak je popsáno v tabulce níže.  
 
 | Typ operace | Koncový bod:port |
 | --- | --- |
@@ -74,4 +74,4 @@ Ověřování a identita (Azure Active Directory) je globální služba a může
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte dotazy týkající se Key Vault, přejděte na [stránku s dotazem Microsoft Q&Azure Key Vault](https://docs.microsoft.com/answers/topics/azure-key-vault.html).
+Pokud máte dotazy týkající se Key Vault, přejděte na [stránku s dotazem Microsoft Q&Azure Key Vault](/answers/topics/azure-key-vault.html).

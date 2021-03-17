@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c03ba657ac264b72d035f28956354398421ed2f9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233206"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566596"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro úložiště GitHub pomocí Azure DevOps Starter
 
 Azure DevOps Starter prezentuje zjednodušený proces vytváření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure. Můžete převést existující kód a úložiště Git, nebo můžete vybrat ukázkovou aplikaci.
 
-V tomto programu:
+V této lekci:
 
 > [!div class="checklist"]
 > * Vytvoření kanálu CI/CD pomocí DevOps Starter
@@ -43,25 +43,25 @@ V tomto programu:
 
 Azure DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. Azure DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
     
-1. Vyberte možnost **Přineste si vlastní kód**a pak vyberte **Další**.
+1. Vyberte možnost **Přineste si vlastní kód** a pak vyberte **Další**.
 
 ## <a name="configure-access-to-your-github-repo-and-select-a-framework"></a>Konfigurace přístupu k úložišti GitHub a výběr architektury
 
 1. Vyberte buď **GitHub** , nebo externí úložiště kódu **Git** . Pro tento kurz vyberte **GitHub**. K tomu, abyste mohli Azure získat přístup k úložišti GitHubu, se možná budete muset nejdřív ověřit pomocí GitHubu.
 
-1. Vyberte **úložiště** a **větev**a pak vyberte **Další**.
+1. Vyberte **úložiště** a **větev** a pak vyberte **Další**.
 
 1. Pokud používáte kontejnery Docker, změňte **je aplikace Dockerized** na **Ano**. Pro tento kurz nechejte **žádné** vybrané a pak vyberte **Další**. Další informace o používání kontejnerů Docker naleznete po najetí myší na ikonu **i** .
 
    ![Výběr aplikační architektury v rozevírací nabídce](_img/azure-devops-project-github/appframework.png)
 
-1. V rozevíracích nabídkách vyberte **modul runtime aplikace** a **aplikační rozhraní**a pak vyberte **Další**. Rozhraní Application Framework určuje typ cíle nasazení služby Azure, který je k dispozici.
+1. V rozevíracích nabídkách vyberte **modul runtime aplikace** a **aplikační rozhraní** a pak vyberte **Další**. Rozhraní Application Framework určuje typ cíle nasazení služby Azure, který je k dispozici.
 
 1. Vyberte **službu Azure** pro nasazení aplikace a pak vyberte **Další**.
 
@@ -71,7 +71,7 @@ Azure DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvoři
 
 1. Vytvořte si novou bezplatnou organizaci v **organizaci Azure DevOps** nebo z rozevírací nabídky vyberte existující organizaci.
 
-1. V **předplatném Azure**vyberte své předplatné a buď zadejte název do **webové aplikace** , nebo použijte výchozí nastavení. Vyberte **umístění**a potom vyberte **Hotovo**. Po několika minutách se v Azure Portal zobrazí přehled nasazení DevOps Starter.
+1. V **předplatném Azure** vyberte své předplatné a buď zadejte název do **webové aplikace** , nebo použijte výchozí nastavení. Vyberte **umístění** a potom vyberte **Hotovo**. Po několika minutách se v Azure Portal zobrazí přehled nasazení DevOps Starter.
 
 1. Vyberte **Přejít k prostředku** a zobrazte řídicí panel DevOps Starter. V pravém horním rohu připněte **projekt** na řídicí panel pro rychlý přístup. Azure DevOps Starter automaticky nakonfiguruje aktivační událost sestavení a vydání CI. Váš kód zůstává v úložišti GitHubu nebo v jiném externím úložišti a ukázková aplikace je nastavená v úložišti v **organizaci Azure DevOps**. Azure DevOps Starter spustí Build a nasadí aplikaci do Azure.
 
@@ -83,7 +83,7 @@ Azure DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvoři
 
 Nyní jste připraveni spolupracovat na své aplikaci s týmem. Proces CI/CD automaticky nasadí vaši nejnovější práci na web. Každá změna úložiště GitHub spustí sestavení v Azure DevOps a kanál CD spustí nasazení do Azure.
 
-1. Na řídicím panelu DevOps Starter vyberte **úložiště**. Vaše úložiště GitHub se otevře na nové kartě prohlížeče. proveďte u své aplikace změnu a pak vyberte **Potvrdit změny**.
+1. Na řídicím panelu DevOps Starter vyberte **úložiště**. Vaše úložiště GitHub se otevře na nové kartě prohlížeče. Proveďte změnu aplikace a pak vyberte **Potvrdit změny**.
 
 1. Po chvíli začíná sestavení v Azure Pipelines. Stav sestavení můžete monitorovat na řídicím panelu Start DevOps. Můžete ho také monitorovat ve vaší organizaci Azure DevOps, a to tak, že na řídicím panelu DevOps Starter vyberete kartu **kanály sestavení** .
 
@@ -99,7 +99,7 @@ Azure DevOps Starter automaticky nakonfiguruje kanál CI/CD v Azure Pipelines. P
 
 1. V pravém horním rohu stránky **sestavení** můžete vybrat **Upravit** pro změnu aktuálního sestavení, **zařazení do fronty** pro přidání nového sestavení nebo svislé tlačítko se třemi tečkami (**&#8942;**) k otevření nabídky s dalšími možnostmi. Vyberte **Upravit**.
 
-1. Sestavení provádí různé úkoly, jako je například načítání zdrojů z úložiště, obnovení závislostí a publikování výstupů pro nasazení. Napravo v části **název**změňte název kanálu sestavení na výstižnější. Vyberte **uložit & frontu**a potom vyberte **Uložit**. Zadejte komentář a pak znovu vyberte **Uložit** .
+1. Sestavení provádí různé úkoly, jako je například načítání zdrojů z úložiště, obnovení závislostí a publikování výstupů pro nasazení. Napravo v části **název** změňte název kanálu sestavení na výstižnější. Vyberte **uložit & frontu** a potom vyberte **Uložit**. Zadejte komentář a pak znovu vyberte **Uložit** .
 
    ![Stránka buildů Azure DevOps](_img/azure-devops-project-github/buildpage.png)
 
@@ -118,9 +118,9 @@ Při konfiguraci procesu CI/CD v tomto kurzu jste automaticky vytvořili kanál 
 Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process)
 
 Další informace o monitorování aplikací najdete v těchto tématech:
   
  > [!div class="nextstepaction"]
- > [Co je Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Co je Azure monitor?](../azure-monitor/overview.md)

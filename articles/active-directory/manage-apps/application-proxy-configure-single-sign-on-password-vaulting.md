@@ -4,7 +4,7 @@ description: Zapněte jednotné přihlašování pro vaše publikované místní
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c0cb2830c019635e9020a4b586bdc370450fddb0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165035"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253998"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Trezor hesel pro jednotné přihlašování s proxy aplikací
 

@@ -1,6 +1,6 @@
 ---
-title: Zvýšení výkonu indexu columnstore
-description: Snižte nároky na paměť nebo Zvětšete dostupnou paměť a maximalizujte počet řádků v rámci jednotlivých skupiny řádků.
+title: Zvýšení výkonu indexu columnstore pro vyhrazený fond SQL
+description: Snižte nároky na paměť nebo Zvětšete dostupnou paměť a maximalizujte počet řádků v rámci jednotlivých skupiny řádků ve vyhrazeném fondu SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d668c3e505d6849d3cde52d52698a95c1c5647d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211655"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676158"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace kvality skupiny řádků pro columnstore
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Maximalizace kvality skupiny řádků pro indexy columnstore ve vyhrazeném fondu SQL 
 
 Kvalita skupiny řádků se určuje podle počtu řádků v skupiny řádků. Zvýšení dostupné paměti může maximalizovat počet řádků, které index columnstore komprimuje do každého skupiny řádků.  Tyto metody použijte ke zlepšení míry komprese a výkonu dotazů pro indexy columnstore.
 
@@ -28,7 +28,7 @@ Vzhledem k tomu, že index columnstore prochází tabulku prohledáním segment�
 
 Když má rowgroups velký počet řádků, zlepšuje se komprese dat, což znamená, že ke čtení z disku je potřeba méně dat.
 
-Další informace o rowgroups najdete v tématu [Průvodce indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Další informace o rowgroups najdete v tématu [Průvodce indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>Cílová velikost pro rowgroups
 
@@ -42,11 +42,11 @@ Při hromadném načtení nebo opětovném sestavení indexu columnstore není k
 
 Pokud není dostatek paměti pro komprimaci nejméně 10 000 řádků do každého skupiny řádků, bude vygenerována chyba.
 
-Další informace o hromadném načítání najdete v tématu [hromadné načtení do clusterovaného indexu columnstore](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Další informace o hromadném načítání najdete v tématu [hromadné načtení do clusterovaného indexu columnstore](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorovat kvalitu skupiny řádků
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([Sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) obsahuje definici zobrazení odpovídající databázi SQL), která zpřístupňuje užitečné informace, jako je počet řádků v rowgroups a důvod oříznutí, pokud došlo k oříznutí.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([Sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) obsahuje definici zobrazení odpovídající databázi SQL), která zpřístupňuje užitečné informace, jako je počet řádků v rowgroups a důvod oříznutí, pokud došlo k oříznutí.
 
 Následující zobrazení můžete vytvořit jako praktický způsob dotazování na tento DMV, abyste získali informace o ořezávání skupiny řádků.
 
@@ -99,7 +99,7 @@ Maximální požadovaná paměť pro komprimaci jednoho skupiny řádků je při
 
 Dlouhé řetězce jsou komprimovány pomocí kompresní metody navržené pro komprimaci textu. Tato metoda komprese používá *slovník* k ukládání textových vzorců. Maximální velikost slovníku je 16 MB. Pro každý sloupec s dlouhým řetězcem v skupiny řádků je k dispozici pouze jeden slovník.
 
-Podrobné informace o požadavcích na paměť columnstore najdete v tématu škálování synapse ve službě Video [– škálování fondu SQL: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Podrobné informace o požadavcích na paměť columnstore najdete v tématu [škálování vyhrazeného fondu SQL videa: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Způsoby snížení požadavků na paměť
 
@@ -122,7 +122,7 @@ Další požadavky na paměť pro kompresi řetězce:
 
 ### <a name="avoid-over-partitioning"></a>Vyhnout se přerozdělování
 
-Indexy columnstore vytvoří jeden nebo více rowgroups na oddíl. U fondu SQL ve službě Azure synapse Analytics se počet oddílů rychle roste, protože data jsou distribuována a každá distribuce je rozdělená na oddíly.
+Indexy columnstore vytvoří jeden nebo více rowgroups na oddíl. U vyhrazeného fondu SQL ve službě Azure synapse Analytics počet oddílů rychle roste, protože data jsou distribuována a každá distribuce je rozdělená na oddíly.
 
 Pokud má tabulka příliš mnoho oddílů, nemusí být pro vyplnění rowgroups dostatek řádků. Nedostatek řádků nevytváří tlak paměti během komprese. Ale vede k rowgroups, které nedosahují nejlepšího výkonu dotazů columnstore.
 
@@ -165,4 +165,4 @@ Chcete-li zvýšit udělení paměti pro zátěžový dotaz, můžete buď zvý�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby, jak vylepšit výkon pro fond SQL, najdete v tématu [Přehled výkonu](cheat-sheet.md).
+Další způsoby, jak vylepšit výkon pro vyhrazený fond SQL, najdete v tématu [Přehled výkonu](cheat-sheet.md).

@@ -1,37 +1,43 @@
 ---
-title: Změnit informační kanál ve službě Azure Blob Storage (Preview) | Microsoft Docs
+title: Změnit informační kanál v Azure Blob Storage | Microsoft Docs
 description: Přečtěte si o protokolech Change feed v Azure Blob Storage a o tom, jak je používat.
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 02/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055414"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095565"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Změna podpory kanálu v Azure Blob Storage (Preview)
+# <a name="change-feed-support-in-azure-blob-storage"></a>Změna podpory kanálu v Azure Blob Storage
 
 Účelem kanálu změn je poskytnout transakční protokoly všech změn, ke kterým dojde u objektů BLOB a metadat objektů BLOB ve vašem účtu úložiště. Kanál změny poskytuje **seřazené**, **zaručené**, **odolné**, **neměnné**, protokol jen **pro čtení** těchto změn. Klientské aplikace mohou tyto protokoly kdykoli číst, a to buď ve streamování, nebo v režimu dávky. Kanál změn umožňuje vytvářet efektivní a škálovatelná řešení, která zpracovávají události změny, ke kterým dochází v účtu Blob Storage za nízké náklady.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-Kanál změn se ukládá jako [objekty blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) ve speciálním kontejneru v účtu úložiště za ceny standardního [objektu BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) . Dobu uchování těchto souborů můžete řídit podle vašich požadavků (viz [podmínky](#conditions) aktuální verze). Události změny se připojují ke kanálu změn jako záznamy ve specifikaci formátu [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) : kompaktní, rychlý a binární formát, který poskytuje bohatou datovou strukturu s vloženým schématem. Tento formát se běžně používá v ekosystému Hadoop, Stream Analytics a Azure Data Factory.
+## <a name="how-the-change-feed-works"></a>Jak funguje kanál změn
+
+Kanál změn se ukládá jako [objekty blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) ve speciálním kontejneru v účtu úložiště za ceny standardního [objektu BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) . Dobu uchování těchto souborů můžete řídit podle vašich požadavků (viz [podmínky](#conditions) aktuální verze). Události změny se připojují ke kanálu změn jako záznamy ve specifikaci formátu [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) : kompaktní, rychlý a binární formát, který poskytuje bohatou datovou strukturu s vloženým schématem. Tento formát se běžně používá v ekosystému Hadoop, Stream Analytics a Azure Data Factory.
 
 Tyto protokoly můžete zpracovat asynchronně, přírůstkově nebo v plném rozsahu. Libovolný počet klientských aplikací může nezávisle číst kanál změn, paralelně a vlastním tempem. Analytické aplikace, jako je například [Apache](https://drill.apache.org/docs/querying-avro-files/) analytics nebo [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) , můžou využívat protokoly přímo jako soubory Avro, které vám umožní je zpracovat s vysokou propustností a bez nutnosti psát vlastní aplikaci.
 
+Následující diagram ukazuje, jak jsou záznamy přidány do kanálu změn:
+
+:::image type="content" source="media/storage-blob-change-feed/change-feed-diagram.png" alt-text="Diagram znázorňující, jak kanál změn funguje, aby poskytoval uspořádaný protokol změn objektů BLOB":::
+
 Podpora změny kanálu je vhodná pro scénáře, které zpracovávají data na základě objektů, které se změnily. Například aplikace mohou:
 
-  - Aktualizujte sekundární index, proveďte synchronizaci s mezipamětí, vyhledávacím modulem nebo jakýmkoli jiným scénářem správy obsahu.
+  - Aktualizace sekundárního indexu, provádění synchronizací s mezipamětí, vyhledávání pomocí vyhledávacího webu nebo jakýkoli jiný scénář správy obsahu
   
-  - Extrahujte přehledy obchodních analýz a metriky na základě změn, ke kterým dojde u vašich objektů, a to buď v datových proudech, nebo v režimu dávky.
+  - Extrakce přehledů obchodních analýz a metrik na základě změn objektů, a to buď v datových proudech, nebo v dávkovém režimu
   
-  - Umožňuje ukládat, auditovat a analyzovat změny vašich objektů, a to za jakékoli časové období, kvůli zabezpečení, dodržování předpisů nebo inteligentní správě podnikových dat.
+  - Ukládání, auditování a analýza změn objektů za libovolné časové období, a to za účelem zabezpečení, dodržování předpisů nebo informací při správě podnikových dat
 
   - Sestavujte řešení pro zálohování, zrcadlení nebo replikaci stavu objektů ve vašem účtu pro správu havárií nebo dodržování předpisů.
 
@@ -55,9 +61,6 @@ Při povolování kanálu změn je potřeba mít na paměti několik věcí.
 - Kanál změn zachycuje *všechny* změny pro všechny dostupné události, ke kterým došlo na účtu. Klientské aplikace mohou podle potřeby vyfiltrovat typy událostí. (Podívejte se na [podmínky](#conditions) aktuální verze).
 
 - Kanál změn můžou povolit jenom účty úložiště GPv2 a BLOB Storage. Účty Premium BlockBlobStorage a hierarchické účty s povoleným oborem názvů se momentálně nepodporují. Účty úložiště GPv1 se nepodporují, ale dají se upgradovat na GPv2 bez výpadků, další informace najdete v tématu [upgrade na účet úložiště GPv2](../common/storage-account-upgrade.md) .
-
-> [!IMPORTANT]
-> Kanál změn je ve verzi Public Preview a je dostupný v oblastech **středozápadní USA**, **západní USA 2**, **Francie – střed**, **Francie – jih**, Kanada – **střed**a **Kanada – východ** . Viz část [podmínky](#conditions) tohoto článku. Pokud se chcete zaregistrovat ve verzi Preview, přečtěte si část [registrace předplatného](#register) v tomto článku. Předtím, než budete moci povolit kanál změn v účtech úložiště, je nutné zaregistrovat své předplatné.
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -85,10 +88,10 @@ Povolit kanál změn pomocí prostředí PowerShell:
 
 2. Zavřete a znovu otevřete konzolu PowerShellu.
 
-3. Nainstalujte modul pro zobrazení **AZ. Storage** Preview.
+3. Nainstalujte verzi 2.5.0 nebo novější z modulu **AZ. Storage** .
 
    ```powershell
-   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
+   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
    ```
 
 4. Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` příkazu a podle pokynů na obrazovce proveďte ověření.
@@ -108,7 +111,7 @@ Pomocí šablony Azure Resource Manager můžete povolit kanál změn na svém s
 
 1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
 
-2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
+2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
 
 3. Zvolte **[nasadit vlastní šablonu](https://portal.azure.com/#create/Microsoft.Template)** a pak **v editoru zvolte sestavit vlastní šablonu**.
 
@@ -142,7 +145,7 @@ Pomocí šablony Azure Resource Manager můžete povolit kanál změn na svém s
 Kanál změn vytváří několik metadat a souborů protokolů. Tyto soubory se nacházejí v kontejneru **$blobchangefeed** účtu úložiště. 
 
 > [!NOTE]
-> V aktuální verzi není kontejner **$blobchangefeed** viditelný v Průzkumník služby Azure Storage nebo Azure Portal. V současné době nemůžete při volání rozhraní ListContainers API zobrazit kontejner $blobchangefeed, ale můžete volat rozhraní ListBlobs API přímo na kontejneru a zobrazit tak objekty blob.
+> V aktuální verzi je kontejner $blobchangefeed viditelný pouze v Azure Portal, ale není viditelný v Průzkumník služby Azure Storage. V současné době nemůžete při volání rozhraní ListContainers API zobrazit kontejner $blobchangefeed, ale můžete volat rozhraní ListBlobs API přímo na kontejneru a zobrazit tak objekty blob.
 
 Vaše klientské aplikace mohou používat kanál změn pomocí knihovny Change feed Processor, která je součástí sady SDK pro změnu informačního kanálu. 
 
@@ -209,7 +212,7 @@ Soubor manifestu segmentu ( `meta.json` ) zobrazuje cestu souborů kanálu změn
 
 Soubory kanálu změn obsahují řadu záznamů událostí změn. Každý záznam události změny odpovídá jedné změně v individuálním objektu BLOB. Záznamy jsou serializovány a zapsány do souboru pomocí specifikace formátu [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) . Záznamy lze číst pomocí specifikace formátu souboru Avro. K dispozici je několik knihoven pro zpracování souborů v tomto formátu.
 
-Změny souborů kanálu se ukládají ve `$blobchangefeed/log/` virtuálním adresáři jako [doplňovací objekty blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). První soubor kanálu změny v každé cestě bude mít `00000` název souboru (například `00000.avro` ). Název každého dalšího souboru protokolu přidaného do této cesty se zvýší o 1 (například: `00001.avro` ).
+Změny souborů kanálu se ukládají ve `$blobchangefeed/log/` virtuálním adresáři jako [doplňovací objekty blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). První soubor kanálu změny v každé cestě bude mít `00000` název souboru (například `00000.avro` ). Název každého dalšího souboru protokolu přidaného do této cesty se zvýší o 1 (například: `00001.avro` ).
 
 V záznamech kanálu změn jsou zachyceny následující typy událostí:
 - BlobCreated
@@ -246,7 +249,7 @@ Tady je příklad záznamu události změny ze souboru změnového kanálu přev
 }
 ```
 
-Popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma událostí pro Blob Storage](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). Události BlobPropertiesUpdated a BlobSnapshotCreated jsou aktuálně exkluzivní pro změnu kanálu a ještě nejsou podporované pro události Blob Storage.
+Popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma událostí pro Blob Storage](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). Události BlobPropertiesUpdated a BlobSnapshotCreated jsou aktuálně exkluzivní pro změnu kanálu a ještě nejsou podporované pro události Blob Storage.
 
 > [!NOTE]
 > Soubory kanálu změn pro segment se po vytvoření segmentu nezobrazují okamžitě. Doba zpoždění spadá do normálního intervalu latence při publikování kanálu změny, který je během několika minut od změny.
@@ -265,7 +268,7 @@ Popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma udá
 
 - Změny záznamů událostí, kde `eventType` má hodnota, `Control` jsou interní systémové záznamy a neodrážejí změnu objektů ve vašem účtu. Tyto záznamy můžete bezpečně ignorovat.
 
-- Hodnoty v `storageDiagnonstics` kontejneru objektů a dat jsou určené pouze pro interní použití a nejsou určeny pro použití vaší aplikací. Vaše aplikace by neměly mít na těchto datech smluvní závislost. Tyto vlastnosti můžete bezpečně ignorovat.
+- Hodnoty v `storageDiagnostics` kontejneru objektů a dat jsou určené pouze pro interní použití a nejsou určeny pro použití vaší aplikací. Vaše aplikace by neměly mít na těchto datech smluvní závislost. Tyto vlastnosti můžete bezpečně ignorovat.
 
 - Čas reprezentovaný segmentem je **přibližný** s mezemi po dobu 15 minut. Aby se zajistila spotřeba všech záznamů v určitou dobu, využijte po sobě jdoucí a další hodinový segment.
 
@@ -289,45 +292,20 @@ Popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma udá
 
 ```
 
-<a id="register"></a>
-
-## <a name="register-your-subscription-preview"></a>Registrace předplatného (Preview)
-
-Protože je kanál změn jenom ve verzi Public Preview, budete muset zaregistrovat předplatné, aby se funkce používala.
-
-### <a name="register-by-using-powershell"></a>Registrace pomocí PowerShellu
-
-V konzole PowerShellu spusťte tyto příkazy:
-
-```powershell
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-   
-### <a name="register-by-using-azure-cli"></a>Registrace pomocí Azure CLI
-
-V Azure Cloud Shell spusťte tyto příkazy:
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Changefeed
-az provider register --namespace 'Microsoft.Storage'
-```
-
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>Podmínky a známé problémy (Preview)
+## <a name="conditions-and-known-issues"></a>Podmínky a známé problémy
 
-Tato část popisuje známé problémy a podmínky v současnosti ve verzi Public Preview kanálu změn. 
-- Ve verzi Preview je třeba nejdřív [zaregistrovat předplatné](#register) , abyste mohli povolit kanál změn pro svůj účet úložiště v oblastech Středozápadní USA, západní USA 2, Francie – střed, Francie – jih, Kanada – střed a Kanada – východ. 
-- Kanál změn zachycuje pouze operace vytvoření, aktualizace, odstranění a kopírování. Jsou zachyceny také vlastnosti objektu BLOB a metadata. Vlastnost úroveň přístupu však není aktuálně zachycena. 
+Tato část popisuje známé problémy a podmínky v aktuální verzi kanálu změn. 
+
 - Změny záznamů událostí pro jednu změnu se můžou ve vašem kanálu změn objevit více než jednou.
 - Ještě nemůžete spravovat dobu života souborů protokolu kanálu změn nastavením časových zásad uchovávání na základě času a objekty blob nemůžete odstranit.
 - `url`Vlastnost souboru protokolu je nyní vždy prázdná.
 - `LastConsumable`Vlastnost segments.jsv souboru neobsahuje seznam velmi prvního segmentu, který dokončí kanál změny. K tomuto problému dochází až po finalizaci prvního segmentu. Všechny následné segmenty po první hodiny jsou přesně zachyceny ve `LastConsumable` Vlastnosti.
 - V současné době nemůžete při volání rozhraní ListContainers API zobrazit kontejner **$blobchangefeed** a kontejner se nezobrazuje Azure Portal nebo Průzkumník služby Storage. Obsah můžete zobrazit pomocí volání rozhraní ListBlobs API přímo v kontejneru $blobchangefeed.
-- Účty úložiště, které dříve iniciovaly [převzetí služeb při selhání účtu](../common/storage-disaster-recovery-guidance.md) , můžou mít problémy se souborem protokolu, který se nezobrazuje. Při převzetí služeb při selhání v budoucnu může být soubor protokolu ovlivněn ve verzi Preview.
+- Účty úložiště, které dříve iniciovaly [převzetí služeb při selhání účtu](../common/storage-disaster-recovery-guidance.md) , můžou mít problémy se souborem protokolu, který se nezobrazuje. U každého budoucího převzetí služeb při selhání může být soubor protokolu ovlivněný.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Jaký je rozdíl mezi kanálem změny a protokolováním Analýza úložiště?
 Protokoly analýz mají záznamy o všech operacích čtení, zápisu, seznamu a odstraňování s úspěšnými a neúspěšnými žádostmi napříč všemi operacemi. Protokoly analýz jsou nejlepší úsilí a není zaručeno žádné řazení.

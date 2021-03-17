@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760120"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
@@ -30,7 +30,7 @@ Pomocí této akce můžete přepsat hodnotu TTL (Time to Live) koncového bodu 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování mezipaměti |  Popis              
+Chování mezipaměti |  Description              
 ---------------|----------------
 Vynechat mezipaměť | Pokud je vybrána tato možnost a pravidlo odpovídá, není obsah uložen do mezipaměti.
 Přepis | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. Pro hlavičkovou odpověď Cache-Control s hodnotami "žádná mezipaměť", "Private", "No-Store" nebude tato akce platná.
@@ -48,7 +48,7 @@ Tuto akci použijte k úpravě klíče mezipaměti založeného na řetězcích 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování | Popis
+Chování | Description
 ---------|------------
 Zařadit členy | Pokud je vybrána tato možnost a pravidlo odpovídá, budou řetězce dotazů zadané v parametrech zahrnuty při vygenerování klíče mezipaměti. 
 Ukládat do mezipaměti každou jedinečnou adresu URL | Pokud je vybrána tato možnost a pravidlo odpovídá, každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. 
@@ -85,7 +85,7 @@ Tuto akci použijte k přesměrování klientů na novou adresu URL.
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Popis 
+Pole | Description 
 ------|------------
 Typ | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
 Protokol | Požadavek shody, HTTP, HTTPS.
@@ -102,7 +102,7 @@ Pomocí této akce přepište cestu k žádosti, která je v cestě k původním
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Popis 
+Pole | Description 
 ------|------------
 Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( **/** ) jako hodnotu zdrojového vzoru.
 Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor.

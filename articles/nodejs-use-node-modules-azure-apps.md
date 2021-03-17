@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f61f08f32ebb2b721846d3c3017405af99421104
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077114"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542214"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Používání modulů Node.js s aplikacemi Azure
 Tento dokument poskytuje pokyny k používání Node.jsch modulů s aplikacemi hostovanými v Azure. Poskytuje pokyny, jak zajistit, aby vaše aplikace používala konkrétní verzi modulu a aby používala nativní moduly s Azure.
@@ -28,7 +28,7 @@ Pokud jste již obeznámeni s používáním Node.jsch modulů, **package.jsna**
 
 * Azure App Service rozumí **package.js** a **npm-shrinkwrap.js** souborů a může instalovat moduly založené na položkách v těchto souborech.
 
-* Azure Cloud Services očekává, že se všechny moduly nainstalují do vývojového prostředí, a adresáře ** \_ modulů uzlů** , které se mají zahrnout jako součást balíčku pro nasazení. Je možné povolit podporu pro instalaci modulů pomocí **package.js** nebo **npm-shrinkwrap.js** souborů na Cloud Services. Tato konfigurace ale vyžaduje přizpůsobení výchozích skriptů používaných projekty cloudových služeb. Příklad toho, jak nakonfigurovat toto prostředí, najdete v tématu [úloha po spuštění Azure pro spuštění instalace NPM, aby nedocházelo k nasazení modulů uzlů](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) .
+* Azure Cloud Services očekává, že se všechny moduly nainstalují do vývojového prostředí, a adresáře **\_ modulů uzlů** , které se mají zahrnout jako součást balíčku pro nasazení. Je možné povolit podporu pro instalaci modulů pomocí **package.js** nebo **npm-shrinkwrap.js** souborů na Cloud Services. Tato konfigurace ale vyžaduje přizpůsobení výchozích skriptů používaných projekty cloudových služeb. Příklad toho, jak nakonfigurovat toto prostředí, najdete v tématu [úloha po spuštění Azure pro spuštění instalace NPM, aby nedocházelo k nasazení modulů uzlů](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) .
 
 > [!NOTE]
 > V tomto článku se nezabývá Azure Virtual Machines, protože prostředí pro nasazení na VIRTUÁLNÍm počítači závisí na operačním systému hostovaném virtuálním počítačem.
@@ -38,16 +38,16 @@ Pokud jste již obeznámeni s používáním Node.jsch modulů, **package.jsna**
 ## <a name="nodejs-modules"></a>Moduly Node.js
 Moduly jsou spustitelný balíčky JavaScriptu, které poskytují konkrétní funkce pro vaši aplikaci. Moduly se obvykle instalují pomocí nástroje příkazového řádku **npm** , ale některé moduly (například modul HTTP) jsou k dispozici jako součást balíčku základní Node.js.
 
-Když jsou moduly nainstalované, ukládají se do adresáře ** \_ modulů uzlů** v kořenové složce adresářové struktury vaší aplikace. Každý modul v adresáři ** \_ modulů uzlů** udržuje svůj vlastní adresář, který obsahuje všechny moduly, na kterých závisí, a toto chování se opakuje u každého modulu v závislosti na tom, jak se nachází v řetězu závislostí. Toto prostředí umožňuje, aby každý modul měl nainstalované vlastní požadavky na verzi pro moduly, na kterých závisí, ale může mít za následek velkou rozsáhlou adresářovou strukturu.
+Když jsou moduly nainstalované, ukládají se do adresáře **\_ modulů uzlů** v kořenové složce adresářové struktury vaší aplikace. Každý modul v adresáři **\_ modulů uzlů** udržuje svůj vlastní adresář, který obsahuje všechny moduly, na kterých závisí, a toto chování se opakuje u každého modulu v závislosti na tom, jak se nachází v řetězu závislostí. Toto prostředí umožňuje, aby každý modul měl nainstalované vlastní požadavky na verzi pro moduly, na kterých závisí, ale může mít za následek velkou rozsáhlou adresářovou strukturu.
 
-Nasazení adresáře ** \_ modulů uzlů** v rámci vaší aplikace zvyšuje velikost nasazení v porovnání s použitím **package.js** nebo **npm-shrinkwrap.jsv** souboru. zaručuje však, že verze modulů, které jsou používány v produkčním prostředí, jsou stejné jako moduly používané při vývoji.
+Nasazení adresáře **\_ modulů uzlů** v rámci vaší aplikace zvyšuje velikost nasazení v porovnání s použitím **package.js** nebo **npm-shrinkwrap.jsv** souboru. zaručuje však, že verze modulů, které jsou používány v produkčním prostředí, jsou stejné jako moduly používané při vývoji.
 
 ### <a name="native-modules"></a>Nativní moduly
-I když většina modulů je jednoduše prostým textem souborů JavaScriptu, některé moduly jsou binární obrázky specifické pro platformu. Tyto moduly jsou kompilovány v době instalace, obvykle pomocí Pythonu a Node-gyp. Vzhledem k tomu, že Azure Cloud Services spoléhá na nasazování složky ** \_ modulů uzlů** v rámci aplikace, všechny nativní moduly, které jsou součástí instalovaných modulů, by měly fungovat v cloudové službě, pokud byla nainstalována a kompilována v systému Windows Development.
+I když většina modulů je jednoduše prostým textem souborů JavaScriptu, některé moduly jsou binární obrázky specifické pro platformu. Tyto moduly jsou kompilovány v době instalace, obvykle pomocí Pythonu a Node-gyp. Vzhledem k tomu, že Azure Cloud Services spoléhá na nasazování složky **\_ modulů uzlů** v rámci aplikace, všechny nativní moduly, které jsou součástí instalovaných modulů, by měly fungovat v cloudové službě, pokud byla nainstalována a kompilována v systému Windows Development.
 
 Azure App Service nepodporuje všechny nativní moduly a může selhat při kompilování modulů s konkrétními požadavky. I když některé oblíbené moduly, jako je MongoDB, mají volitelné nativní závislosti a fungují bez nich, dvě alternativní řešení se ukázala úspěšně s téměř všemi dostupnými nativními moduly, které jsou dnes dostupné:
 
-* Spusťte **instalaci npm** na počítači s Windows, na kterém jsou nainstalované všechny požadované součásti nativního modulu. Pak nasaďte složku vytvořených ** \_ modulů uzlů** jako součást aplikace na Azure App Service.
+* Spusťte **instalaci npm** na počítači s Windows, na kterém jsou nainstalované všechny požadované součásti nativního modulu. Pak nasaďte složku vytvořených **\_ modulů uzlů** jako součást aplikace na Azure App Service.
 
   * Před kompilací ověřte, že vaše místní instalace Node.js má odpovídající architekturu a verze je co nejblíže k verzi používané v Azure (aktuální hodnoty je možné zkontrolovat za běhu z vlastností **Process. arch** a **Process. Version**).
 
@@ -64,7 +64,7 @@ Jedním z možných problémů s **package.jsv** souboru je, že určuje pouze v
 > [!NOTE]
 > Při nasazení na Azure App Service, pokud <b>package.jsna</b> soubor odkazuje na nativní modul, může se při publikování aplikace pomocí Gitu zobrazit chybová zpráva podobná následujícímu příkladu:
 >
-> NPM ERR! module-name@0.6.0instalace: node-gyp Configure Build
+> NPM ERR! module-name@0.6.0 instalace: node-gyp Configure Build
 >
 > NPM ERR! příkaz "cmd"/c "Node-gyp Configure Build" se nezdařil. 1
 >
@@ -78,17 +78,17 @@ Když je vaše aplikace připravená na produkční prostředí, můžete uzamkn
 > [!NOTE]
 > Při nasazení na Azure App Service, pokud <b>npm-shrinkwrap.jsna</b> soubor odkazuje na nativní modul, může se při publikování aplikace pomocí Gitu zobrazit chybová zpráva podobná následujícímu příkladu:
 >
-> NPM ERR! module-name@0.6.0instalace: node-gyp Configure Build
+> NPM ERR! module-name@0.6.0 instalace: node-gyp Configure Build
 >
 > NPM ERR! příkaz "cmd"/c "Node-gyp Configure Build" se nezdařil. 1
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste pochopili, jak používat Node.js moduly s Azure, se naučíte, jak [určit Node.js verzi](https://github.com/squillace/nodejs-microservice), [sestavit a nasadit Node.js webovou aplikaci](app-service/quickstart-nodejs.md)a [Jak používat rozhraní příkazového řádku Azure pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Teď, když jste se seznámili s používáním modulů Node.js s Azure, se naučíte, jak [určit Node.js verzi](https://github.com/squillace/nodejs-microservice), [sestavit a nasadit Node.js webovou aplikaci](app-service/quickstart-nodejs.md)a [Jak používat rozhraní Azure Command-Line pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Další informace najdete ve [Středisku pro vývojáře Node.js](/azure/developer/javascript/).
 
-[specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
+[specify the Node.js version]: ./app-service/overview.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md
 [Custom Website Deployment Scripts with Kudu]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo

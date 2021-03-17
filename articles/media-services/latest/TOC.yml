@@ -7,47 +7,93 @@
     - name: Co je nového v Media Services
       displayName: release notes
       href: release-notes.md
+    - name: Media Services – dodržování předpisů
+      href: concept-compliance.md
 - name: Rychlé starty
-  expanded: true
   items:
-    - name: Živá událost s portálem a Wirecastem
-      displayName: 'live, event, portal, wirecast'
-      href: live-events-wirecast-quickstart.md
-    - name: Živá událost s portálem a OBS
-      displayName: 'live, event, portal, obs'
-      href: live-events-obs-quickstart.md
-    - name: 'Použití portálu k nahrávání, kódování a streamování obsahu'
-      href: manage-assets-quickstart.md
-    - name: Použití portálu k šifrování obsahu
-      displayName: 'protect, drm, aes'
-      href: encrypt-content-quickstart.md
+    - name: Nastavení prostředí
+      items:
+        - name: Najít ID tenanta
+          href: how-to-set-azure-tenant.md
+        - name: Vyhledání předplatného Azure
+          href: how-to-set-azure-subscription.md
+        - name: Vytvoření účtu Media Services
+          href: create-account-howto.md
+        - name: Přístup k rozhraní API
+          href: access-api-howto.md
+        - name: Nastavení Azure Cloud Shellu
+          href: ../../cloud-shell/overview.md
+        - name: Připojení ke službě Media Services
+          items:
+            - name: Připojit se s REST a dodatečně
+              href: media-rest-apis-with-postman.md
+            - name: Připojení s využitím Javy
+              href: configure-connect-java-howto.md
+            - name: Připojení s využitím .NET
+              href: configure-connect-dotnet-howto.md
+            - name: Připojení s využitím Node.js
+              href: configure-connect-nodejs-howto.md
+            - name: Připojení s využitím Pythonu
+              href: configure-connect-python-howto.md
+    - name: Vyzkoušení Media Services na webu Azure Portal
+      items:
+        - name: Živá událost s portálem a Wirecastem
+          href: live-events-wirecast-quickstart.md
+        - name: Živá událost s portálem a OBS
+          href: live-events-obs-quickstart.md
+        - name: 'Použití portálu k nahrávání, kódování a streamování obsahu'
+          href: manage-assets-quickstart.md
+        - name: Použití portálu k šifrování obsahu
+          href: encrypt-content-quickstart.md
+    - name: Použití šablony ARM
+      items:
+        - name: Vytvoření účtu s využitím ARM
+          href: quickstart-arm-template-account.md
 - name: Kurzy
   items:
-    - name: Kódování vzdáleného souboru a streamování videa
+    - name: .NET
       items:
-        - name: S využitím REST
-          displayName: 'encoding, job, transform'
-          href: stream-files-tutorial-with-rest.md
-        - name: S využitím rozhraní příkazového řádku
-          href: stream-files-cli-quickstart.md
-        - name: S využitím .NET
+        - name: Kódování a streamování vzdáleného souboru – .NET
           href: stream-files-dotnet-quickstart.md
-        - name: Pomocí Node.js
+        - name: Kódování a streamování načteného souboru – .NET
+          href: stream-files-tutorial-with-api.md
+        - name: Živé streamování s využitím .NET
+          href: stream-live-tutorial-with-api.md
+        - name: Analýza videa s využitím .NET
+          href: analyze-videos-tutorial-with-api.md
+        - name: Dynamické šifrování s využitím AES-128
+          href: protect-with-aes128.md
+        - name: Dynamické šifrování s využitím DRM
+          href: protect-with-drm.md
+        - name: Ochrana obsahu s využitím Azure AD
+          href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
+    - name: REST
+      items:
+        - name: Povolit důvěryhodné úložiště
+          href: tutorial-trusted-storage-rest.md
+        - name: Kódování a streamování vzdáleného souboru – REST
+          href: stream-files-tutorial-with-rest.md
+        - name: Klíče spravované zákazníkem s využitím REST API
+          href: tutorial-byok-postman.md
+    - name: Rozhraní příkazového řádku
+      items:
+        - name: Kódování a streamování vzdáleného souboru – CLI
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: Kódování a streamování vzdáleného souboru – Node.js
           href: stream-files-nodejs-quickstart.md
-    - name: Kódování načteného souboru a streamování videa
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: Živé streamování
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: Analýza videa
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: Dynamické šifrování s využitím AES-128
-      href: protect-with-aes128.md
-    - name: Dynamické šifrování s využitím DRM
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Python
+      items:
+        - name: Základní rychlé zprovoznění kódování Pythonu
+          href: quickstart-basic-encoding-python.md
+    - name: portál Azure
+      items:
+        - name: Kurz pro BYOK nebo klíče spravované zákazníkem
+          href: tutorial-byok-portal.md
+        - name: Ukládání událostí AMS v Azure Log Analytics
+          href: tutorial-events-log-analytics.md
 - name: ukázky
   items:
     - name: Ukázky Media Services v3
@@ -56,6 +102,7 @@
     - name: Ukázky REST pro Media Services v3
       href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
 - name: Koncepty
+  expanded: true
   items:
     - name: Přehled
       href: concepts-overview.md
@@ -67,6 +114,13 @@
         - name: Účet úložiště
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: Spravované identity a mediální služby
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: Důvěryhodné úložiště
+          href: concept-trusted-storage.md
+        - name: Klíče spravované zákazníkem
+          href: concept-use-customer-managed-keys-byok.md
     - name: Prostředky
       items:
         - name: Prostředky
@@ -88,13 +142,15 @@
           href: autogen-bitrate-ladder.md
         - name: Kódování zohledňující obsah
           href: content-aware-encoding.md
+        - name: Rezervované jednotky médií
+          href: concept-media-reserved-units.md
     - name: Analýza obsahu (Video Indexer)
       items:
         - name: Přehled
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Transformace a úlohy
-          href: transforms-jobs-concept.md
+    - name: Transformace a úlohy
+      href: transforms-jobs-concept.md
     - name: Živé streamování
       items:
         - name: Přehled
@@ -156,22 +212,24 @@
           href: streaming-policy-concept.md
         - name: Zásady symetrických klíčů
           href: content-key-policy-concept.md
-        - name: Ochrana obsahu s využitím Azure AD
-          href: azure-ad-content-protection.md
     - name: Monitorování
       items:
-        - name: Události s využitím Event Gridu
-          href: reacting-to-media-services-events.md
-        - name: Schémata Event Gridu
-          href: media-services-event-schemas.md
-        - name: Metriky a diagnostické protokoly
-          href: media-services-metrics-diagnostic-logs.md
-        - name: Schémata diagnostických protokolů
-          href: media-services-diagnostic-logs-schema.md
-    - name: Přehrávač médií Azure
+        - name: Monitorování pomocí služby Azure Monitor
+          items:
+            - name: Media Services monitorování
+              href: monitoring/monitor-media-services.md
+            - name: Referenční informace o Media Services dat monitorování
+              href: monitoring/monitor-media-services-data-reference.md
+        - name: Monitorování pomocí Event Grid
+          items:
+            - name: Události s využitím Event Gridu
+              href: reacting-to-media-services-events.md
+            - name: Schémata Event Gridu
+              href: media-services-event-schemas.md
+    - name: Kompatibilní přehrávače
       items:
-        - name: Přehled Azure Media Playeru
-          href: ../azure-media-player/azure-media-player-overview.md
+        - name: Přehrávače médií pro Media Services
+          href: media-players-overview.md
     - name: Vývoj s využitím rozhraní API v3
       items:
         - name: Přehled
@@ -179,7 +237,7 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Stránkování, filtrování, uspořádání entit'
           href: entities-overview.md
-        - name: RBAC
+        - name: Azure RBAC
           href: rbac-overview.md
         - name: Kódy chyb
           items:
@@ -194,6 +252,9 @@
         - name: Video na vyžádání
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
+    - name: Architektury Media Services
+      displayName: architectures
+      href: architectures-concept.md
     - name: Řešení potíží
       items:
         - name: Nejčastější dotazy
@@ -207,80 +268,91 @@
               href: live-event-error-codes.md
             - name: Kódy chyb úlohy
               href: job-error-codes.md
-    - name: Migrace z v2 v3
-      items:
-        - name: v2 vs. v3
-          displayName: 'migrate, v2 to v3'
-          href: media-services-v2-vs-v3.md
-        - name: Pokyny k migraci
-          href: migrate-from-v2-to-v3.md
-          displayName: naming
-- name: Návody
-  items:
-    - name: Začínáme
-      items:
-        - name: Vyhledání předplatného Azure
-          href: how-to-set-azure-subscription.md
-        - name: Vytvoření účtu Media Services
-          href: create-account-howto.md
-          displayName: 'portal, cli, storage'
-        - name: Přístup k rozhraní API
-          displayName: 'portal, cli'
-          href: access-api-howto.md
-        - name: Vývoj s využitím REST
-          items:
-            - name: Připojení s využitím Postmana
-              href: media-rest-apis-with-postman.md
-        - name: Vývoj s využitím sad SDK
-          items:
-            - name: Připojení s využitím Javy
-              href: configure-connect-java-howto.md
-            - name: Připojení s využitím .NET
-              href: configure-connect-dotnet-howto.md
-            - name: Připojení s využitím Node.js
-              href: configure-connect-nodejs-howto.md
-            - name: Připojení s využitím Pythonu
-              href: configure-connect-python-howto.md
         - name: Resetování přihlašovacích údajů k účtu
           href: cli-reset-account-credentials.md
-    - name: Vytváření a správa prostředků
+    - name: Průvodce migrací
+      displayName: migration
+      items:
+        - name: Úvod do Průvodce migrací
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: Krok 1 – výhody
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: Krok 2 – rozdíly
+          items:
+            - name: API access
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: Mezery funkcí
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: Změny v terminologii a entitě
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: Krok 3 – instalace sady SDK
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: Krok 4 – pokyny k migraci na základě scénáře
+          items:
+            - name: Encoding
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: Živé streamování
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: Balení a doručování
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: Ochrana obsahu
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: Rezervované jednotky médií (MRU)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: Porovnání ukázek
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
+- name: Návody
+  items:
+    - name: Vyhledání tenanta a předplatného
+      items:
+        - name: Najít ID tenanta
+          href: how-to-set-azure-tenant.md
+        - name: Najít ID předplatného
+          href: how-to-set-azure-subscription.md
+    - name: Vytváření prostředků a nahrávání médií
       items:
         - name: Vytvoření prostředku
           href: how-to-create-asset.md
-    - name: Nahrání obsahu
-      items:
-        - name: Z HTTPS
-          displayName: upload
-          href: job-input-from-http-how-to.md
-        - name: Z místního souboru
-          items:
-            - name: S využitím .NET
-              displayName: upload
-              href: job-input-from-local-file-how-to.md
-            - name: S využitím REST
-              displayName: upload
-              href: upload-files-rest-how-to.md
-            - name: S využitím rozhraní příkazového řádku
-              href: cli-upload-file-asset.md
+        - name: Nahrávání médií
+          href: how-to-upload-media.md
     - name: Vytváření transformací a úloh
       items:
         - name: Vytváření transformací
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
+        - name: Vytvoření základní transformace zvuku s využitím REST
+          href: how-to-create-basic-audio-transform.md
+        - name: Vytvořit miniaturní Sprite
+          href: how-to-create-thumbnail-sprites.md
+        - name: Vytvoření transformace copyAllBitrateNonInterleaved s využitím REST
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: Kopírování videí bez kódování s využitím REST
+          href: how-to-create-copy-video-audio-transform.md
         - name: Vytváření úloh
           href: cli-create-jobs.md
+        - name: Vytvoření vstupu úlohy s využitím místního souboru a .NET
+          displayName: upload
+          href: job-input-from-local-file-how-to.md
         - name: Úlohy s několika transformačními výstupy
           href: job-multiple-transform-outputs.md
     - name: Kódování obsahu
       items:
         - name: HTTPS jako vstup úlohy
-          displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
         - name: Místní soubor jako vstup úlohy
-          displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: Kódování s využitím vlastní transformace
-        - name: Škálování rezervovaných jednotek médií
-          href: media-reserved-units-cli-how-to.md
           items:
             - name: S využitím .NET
               displayName: 'encode, encoding, custom, transform'
@@ -299,6 +371,8 @@
               href: custom-preset-rest-howto.md
             - name: Generování miniatur s využitím REST
               href: media-services-generate-thumbnails-rest.md
+            - name: Škálování rezervovaných jednotek médií
+              href: media-reserved-units-cli-how-to.md
         - name: Dílčí klip z videa
           items:
             - name: S využitím .NET
@@ -378,18 +452,18 @@
     - name: REST
       href: /rest/api/media/
     - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
+      href: /cli/azure/ams
     - name: Sady SDK
       items:
         - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-ref'
+          href: /dotnet/api/overview/azure/mediaservices/management
         - name: Java
-          href: 'https://aka.ms/ams-v3-java-ref'
+          href: /java/api/overview/azure/mediaservices/management
         - name: Python
-          href: 'https://aka.ms/ams-v3-python-ref'
+          href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Přejít
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions
@@ -405,7 +479,8 @@
       displayName: 'forums, twitter, feedback'
       href: media-services-community.md
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+      displayName: azure updates
+      href: 'https://azure.microsoft.com/updates/?category=media'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Videa
@@ -415,7 +490,7 @@
     - name: Sady SDK nebo nástroje
       items:
         - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
+          href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
         - name: Java
@@ -434,5 +509,5 @@
       href: limits-quotas-constraints.md
     - name: Oblasti a cloudy Azure
       href: azure-clouds-regions.md
-    - name: Aktualizace dokumentace
-      href: docs-release-notes.md
+    - name: Regionální kódové názvy a koncové body
+      href: azure-regions-code-names.md

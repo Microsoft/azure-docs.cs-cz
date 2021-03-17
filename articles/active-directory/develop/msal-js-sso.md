@@ -14,15 +14,15 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84690774"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Jednotné přihlašování s využitím MSAL.js
 
-Jednotné přihlašování (SSO) umožňuje uživatelům zadat přihlašovací údaje jednou pro přihlášení a navázat relaci, která se dá znovu použít napříč více aplikacemi, aniž by se musela znovu ověřit. Tím se uživatelům poskytne bezproblémové prostředí a zkracuje opakované výzvy k zadání přihlašovacích údajů.
+Single Sign-On (SSO) umožňuje uživatelům zadat své přihlašovací údaje jednou pro přihlášení a navázat relaci, která se dá znovu použít napříč více aplikacemi, aniž by se musela znovu ověřit. Tím se uživatelům poskytne bezproblémové prostředí a zkracuje opakované výzvy k zadání přihlašovacích údajů.
 
 Azure AD poskytuje možnostem jednotného přihlašování pro aplikace nastavením souboru cookie relace při prvním ověření uživatele. Knihovna MSAL.js umožňuje aplikacím využívat tyto možnosti několika způsoby.
 
@@ -87,7 +87,7 @@ Postup pro konfiguraci volitelných deklarací v manifestu aplikace najdete [tad
 
 **Použití pomocného parametru přihlášení**
 
-Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že `login_hint` v parametrech žádosti zadáte a volitelně také `domain_hint` jako `extraQueryParameters` v MSAL.js interaktivní metody ( `loginPopup` , `loginRedirect` a `acquireTokenPopup` `acquireTokenRedirect` ). Příklad:
+Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že `login_hint` v parametrech žádosti zadáte a volitelně také `domain_hint` jako `extraQueryParameters` v MSAL.js interaktivní metody ( `loginPopup` , `loginRedirect` a `acquireTokenPopup` `acquireTokenRedirect` ). Například:
 
 ```javascript
 var request = {

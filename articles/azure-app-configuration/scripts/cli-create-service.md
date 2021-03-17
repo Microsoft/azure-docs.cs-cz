@@ -3,18 +3,18 @@ title: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace apli
 titleSuffix: Azure App Configuration
 description: Vytvořte úložiště konfigurace aplikace Azure pomocí ukázkového skriptu Azure CLI. Viz článek odkazy na příkazy používané ve skriptu.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7b3221c55cef6207ea38ac1375202acd8b8ab4f1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 4554ca64dccaa69e3a6fb63e5c28a6bcbb1a32e4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588297"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930836"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace Azure
 
@@ -22,9 +22,9 @@ Tento ukázkový skript vytvoří novou instanci konfigurace aplikace Azure v no
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="sample-script"></a>Ukázkový skript
 

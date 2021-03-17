@@ -1,16 +1,16 @@
 ---
 title: Nastavení fyzicky založených materiálů pro vykreslování v Maya
 description: Vysvětluje, jak nastavit fyzicky založené vykreslovací materiály v Maya a exportovat je do formátu FBX.
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373233"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91358028"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Kurz: nastavení fyzicky vycházejících materiálů pro vykreslování v Maya
 
@@ -33,7 +33,7 @@ Ukázková scéna v tomto kurzu obsahuje počet objektů mnohoúhelníkového po
 * **Normal (normální**), který přidává podrobnosti na povrch bez nutnosti přidávat další mnohoúhelníky Příkladem podrobností může být prodleva a odsazení na kovové ploše nebo zrnitosti ve dřevě.
 * **Ambientní překrytí**, který se používá k přidání jemných stínování a stínů kontaktu do modelu. Jedná se o mapu ve stupních šedi, která označuje, které oblasti modelu získají plné osvětlení (bílá) nebo úplné stínování (černá). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Autodesk Maya 2017 nebo novější
 
 ## <a name="set-up-materials-in-the-scene"></a>Nastavení materiálů na scéně
@@ -79,7 +79,7 @@ V Maya je proces vytváření instancí jednoduchý.
 1. V dialogovém okně **Duplikovat zvláštní možnosti** vyberte pro **typ geometrie** možnost **instance** . 
 1. Vyberte **duplikovat jinak**.
 
-   ![Vytváření instancí](media/instancing.jpg)
+   ![Snímek obrazovky zobrazuje okno Maya s otevřeným dialogovým oknem duplicitních zvláštních možností a duplicitní speciální volba.](media/instancing.jpg)
 
 Tato akce vytvoří instanci objektu. Můžete ho přesunout, otočit nebo škálovat nezávisle na jeho nadřazeném objektu a dalších instancích tohoto nadřazeného objektu. 
 

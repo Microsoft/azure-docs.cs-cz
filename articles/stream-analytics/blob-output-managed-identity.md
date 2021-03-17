@@ -1,21 +1,21 @@
 ---
 title: Ověřit výstup objektu BLOB pomocí spravované identity Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí spravovaných identit ověřit úlohu Azure Stream Analytics do výstupu služby Azure Blob Storage.
-author: cedarbaum
-ms.author: sacedarb
+author: kim-ale
+ms.author: kimal
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/11/2020
-ms.openlocfilehash: 99b23b65a0ce1693bcd04d5828fe062f2f43ea73
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 12/15/2020
+ms.openlocfilehash: 369348133f7395f5db5b5923bd438cec8e4ad733
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044222"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954374"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy do Azure Blob Storage Output
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>Použití spravované identity (Preview) k ověření Azure Stream Analytics úlohy do Azure Blob Storage
 
-[Spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro výstup do úložiště objektů BLOB v Azure umožňuje Stream Analytics úlohy s přímým přístupem k účtu úložiště namísto použití připojovacího řetězce. Kromě vylepšeného zabezpečení tato funkce také umožňuje zapisovat data do účtu úložiště v Virtual Network (VNET) v rámci Azure.
+[Spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) (Preview) pro výstup do služby Azure Blob storage poskytuje Stream Analytics úlohy přímý přístup k účtu úložiště namísto použití připojovacího řetězce. Kromě vylepšeného zabezpečení tato funkce také umožňuje zapisovat data do účtu úložiště v Virtual Network (VNET) v rámci Azure.
 
 V tomto článku se dozvíte, jak povolit spravovanou identitu pro výstupy objektů BLOB Stream Analytics úlohy prostřednictvím Azure Portal a prostřednictvím Azure Resource Manager nasazení.
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak povolit spravovanou identitu pro výstupy obje
 
 ## <a name="azure-resource-manager-deployment"></a>Nasazení podle modelu Azure Resource Manager
 
-Pomocí Azure Resource Manager můžete plně automatizovat nasazení Stream Analytics úlohy. Šablony Správce prostředků můžete nasadit pomocí Azure PowerShell nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Níže uvedené příklady používají rozhraní příkazového řádku Azure CLI.
+Pomocí Azure Resource Manager můžete plně automatizovat nasazení Stream Analytics úlohy. Šablony Správce prostředků můžete nasadit pomocí Azure PowerShell nebo rozhraní příkazového [řádku Azure](/cli/azure/). Níže uvedené příklady používají rozhraní příkazového řádku Azure CLI.
 
 
 1. Pomocí spravované identity můžete vytvořit prostředek **Microsoft. StreamAnalytics/streamingjobs** , a to tak, že do oddílu prostředků v šabloně správce prostředků zadáte následující vlastnost:
@@ -98,7 +98,7 @@ Pomocí Azure Resource Manager můžete plně automatizovat nasazení Stream Ana
     Výše uvedenou úlohu můžete nasadit do skupiny prostředků **example** pomocí následujícího příkazu Azure CLI:
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
+    az deployment group create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
 2. Po vytvoření úlohy můžete použít Azure Resource Manager k načtení úplné definice úlohy.
@@ -216,13 +216,17 @@ Pokud chcete povolit přístup k celému účtu, spusťte následující příka
 
 ## <a name="enable-vnet-access"></a>Povolit přístup k virtuální síti
 
-Při konfiguraci **bran firewall a virtuálních sítí**v účtu úložiště můžete volitelně v síťovém provozu z jiných důvěryhodných služeb Microsoftu. Když se Stream Analytics ověřuje pomocí spravované identity, poskytne důkaz o tom, že žádost pochází z důvěryhodné služby. Níže jsou uvedené pokyny, jak povolit tuto výjimku přístupu k virtuální síti.
+Při konfiguraci **bran firewall a virtuálních sítí** v účtu úložiště můžete volitelně v síťovém provozu z jiných důvěryhodných služeb Microsoftu. Když se Stream Analytics ověřuje pomocí spravované identity, poskytne důkaz o tom, že žádost pochází z důvěryhodné služby. Níže jsou uvedené pokyny, jak povolit tuto výjimku přístupu k virtuální síti.
 
-1.  V podokně Konfigurace účtu úložiště přejděte do podokna brány firewall a virtuální sítě.
-2.  Zajistěte, aby byla povolená možnost Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště.
-3.  Pokud jste ho povolili, klikněte na **Uložit**.
+1.    V podokně Konfigurace účtu úložiště přejděte do podokna brány firewall a virtuální sítě.
+2.    Zajistěte, aby byla povolená možnost Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště.
+3.    Pokud jste ho povolili, klikněte na **Uložit**.
 
    ![Povolit přístup k virtuální síti](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+
+## <a name="remove-managed-identity"></a>Odebrat spravovanou identitu
+
+Spravovaná identita vytvořená pro Stream Analytics úlohu se odstraní jenom v případě, že se úloha odstraní. Neexistuje způsob, jak odstranit spravovanou identitu, aniž byste úlohu odstranili. Pokud už nechcete používat spravovanou identitu, můžete pro výstup změnit metodu ověřování. Spravovaná identita bude i nadále existovat, dokud se úloha neodstraní, a použije se, pokud se rozhodnete znovu použít spravované ověřování identity.
 
 ## <a name="limitations"></a>Omezení
 Níže jsou uvedena aktuální omezení této funkce:

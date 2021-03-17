@@ -1,26 +1,27 @@
 ---
 title: Kurz – nasazení LAMPy na virtuálním počítači se systémem Linux v Azure
 description: V tomto kurzu zjistíte, jak nainstalovat stack LAMP na virtuální počítač s Linuxem v Azure
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
+ms.collection: linux
 ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: d0d86e1a9c40eb6860508cf136ab9d466cc28ecd
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3813931f47c110abcfb595065c1415ca9ed84c9d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225899"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564709"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LAMP na virtuální počítač s Linuxem v Azure
 

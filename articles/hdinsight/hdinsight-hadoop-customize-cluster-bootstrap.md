@@ -1,19 +1,16 @@
 ---
 title: Přizpůsobení konfigurací clusteru Azure HDInsight pomocí Bootstrap
 description: Přečtěte si, jak pomocí šablon .NET, PowerShell a Správce prostředků přizpůsobit konfiguraci clusteru HDInsight prostřednictvím kódu programu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: eaddae04c198742007947831046139d80828534b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c73cb99d62295312980fe5f1b248d23efa2eb0c5
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006581"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432379"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
@@ -46,16 +43,16 @@ Pomocí těchto programových metod můžete například nakonfigurovat možnost
 
 Informace o instalaci dalších komponent v clusteru HDInsight během vytváření najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akce skriptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 Následující kód PowerShellu přizpůsobí konfiguraci [Apache Hive](https://hive.apache.org/) :
 
 > [!IMPORTANT]  
-> Parametr `Spark2Defaults` může být potřeba použít s [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). Do parametru můžete předat prázdné hodnoty, jak je znázorněno v následujícím příkladu kódu.
+> Parametr `Spark2Defaults` může být potřeba použít s [Add-AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). Do parametru můžete předat prázdné hodnoty, jak je znázorněno v následujícím příkladu kódu.
 
 ```powershell
 # hive-site.xml configuration
@@ -86,7 +83,7 @@ New-AzHDInsightCluster `
 **Ověření změny:**
 
 1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/` místo, kde `CLUSTERNAME` je název vašeho clusteru.
-1. V nabídce vlevo přejděte na konfigurace **podregistru**  >  **Configs**  >  **Upřesnit**.
+1. V nabídce vlevo přejděte na konfigurace **podregistru**  >    >  **Upřesnit**.
 1. Rozbalte položku **pokročilý podregistr – lokalita**.
 1. Vyhledejte **podregistr. metastore. Client. Socket. Timeout** a potvrďte, že hodnota je **90**.
 
@@ -108,7 +105,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>Použití sady .NET SDK
 
-Viz [Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Viz [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight).
 
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
 
@@ -143,7 +140,7 @@ Ukázka fragmentu šablony Správce prostředků pro přepínání konfigurace v
 * [Vytváření clusterů Apache Hadoop ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md) poskytuje pokyny, jak vytvořit cluster HDInsight pomocí dalších vlastních možností.
 * [Vývoj skriptů akcí skriptu pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Instalace a použití Apache Spark v clusterech HDInsight](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Nainstalujte a použijte Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Nainstalujte a použijte Apache Giraph v clusterech HDInsight](./hdinsight-hadoop-hue-linux.md).
 
 ## <a name="appendix-powershell-sample"></a>Příloha: Ukázka PowerShellu
 

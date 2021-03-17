@@ -3,7 +3,7 @@ title: Konfigurace zásad autorizace klíče obsahu pomocí REST – Azure | Mic
 description: Zjistěte, jak nakonfigurovat zásady autorizace pro klíč obsahu pomocí REST API Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7af5f9e2-8ed8-43f2-843b-580ce8759fd4
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 66649eb6109339cd7723ab4a7e3a12c5c322973d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000597"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017286"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu  
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled

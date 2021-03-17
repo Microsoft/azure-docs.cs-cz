@@ -12,17 +12,17 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 75531b9a75c2d28ad665748a9be4e37e2056b451
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163692"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547964"
 ---
-# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro .NET pomocí Azure DevOps Starter
+# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro .NET s využitím Azure DevOps Starteru
 
 Nakonfigurujte průběžnou integraci (CI) a průběžné doručování (CD) pro aplikaci .NET Core nebo ASP.NET s DevOps Starter. DevOps Starter zjednodušuje počáteční konfiguraci kanálu sestavení a vydání v Azure Pipelines.
 
@@ -34,7 +34,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou o
 
 1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový. 
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový. 
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -43,7 +43,9 @@ DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou o
 1. Vyberte ukázkovou aplikaci **.NET**. Ukázky .NET zahrnují výběr open source architektury ASP.NET nebo multiplatformní architektury .NET Core.
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > Výchozí možnost pro nastavení DevOps Starter je v **GitHubu**, ale toto nastavení můžete změnit v průvodci.
 2. Tato ukázka představuje aplikaci ASP.NET Core MVC. Vyberte aplikační rozhraní **.NET Core** a pak vyberte **Další**.    
     
 3. Jako cíl nasazení vyberte **Webová aplikace Windows** a pak vyberte **Další**. Volitelně můžete zvolit další služby Azure pro vaše nasazení. Aplikační rozhraní, které jste si zvolili dříve, určuje typ cíle nasazení služby Azure, který je k dispozici zde.
@@ -72,7 +74,7 @@ DevOps Starter vytvořil úložiště Git v Azure Repos nebo GitHubu. Chcete-li 
 
 3. Vlevo přejděte ke struktuře souborů aplikace na **Application/ASPNET-Core-dotnet-Core/pages/index. cshtml**.
 
-4. Vyberte **Upravit**a pak proveďte změnu nadpisu H2. Zadejte například text Začínáme hned **s Azure DevOps Starter** nebo Udělejte nějakou jinou změnu.
+4. Vyberte **Upravit** a pak proveďte změnu nadpisu H2. Zadejte například text Začínáme hned **s Azure DevOps Starter** nebo Udělejte nějakou jinou změnu.
 
       ![Úpravy kódu](_img/azure-devops-project-aspnet-core/codechange.png)
 
@@ -96,7 +98,7 @@ V předchozím kroku Azure DevOps Starter automaticky nakonfiguroval úplný kan
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**.   
 V podokně **Historie** se zobrazí záznam pro audit vašich nedávných změn pro sestavení.  Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
@@ -105,7 +107,7 @@ V podokně **Historie** se zobrazí záznam pro audit vašich nedávných změn 
 
 1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  
 DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1.  Na levé straně vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje kanál, který definuje proces vydání.  
@@ -133,7 +135,7 @@ Můžete odstranit Azure App Service a další související prostředky, které
 Další informace o úpravě kanálu buildu a verze tak, aby splňovaly požadavky vašeho týmu, najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process)
 
 ## <a name="videos"></a>Videa
 

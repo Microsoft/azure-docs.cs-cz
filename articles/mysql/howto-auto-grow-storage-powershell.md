@@ -1,24 +1,24 @@
 ---
 title: Automatické zvětšování úložiště – Azure PowerShell-Azure Database for MySQL
 description: Tento článek popisuje, jak můžete povolit automatické zvětšování úložiště pomocí prostředí PowerShell v Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e8c9f6f66e484fbd9ebe5c15934936d6e5c59073
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503306"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542027"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>Automatické zvětšení úložiště na serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for MySQL pro růst, aniž by to ovlivnilo zatížení.
 
-Automatické zvětšení úložiště zabrání vašemu serveru [dosáhnout limitu úložiště](/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit) a stane se jen pro čtení. U serverů s 100 GB nebo méně zřízeným úložištěm se velikost zvýší o 5 GB, pokud je volné místo menší než 10%. U serverů s více než 100 GB zřízeného úložiště se velikost zvýší o 5%, pokud je volné místo menší než 10 GB. V části úložiště [Azure Database for MySQL cenové úrovně](/azure/mysql/concepts-pricing-tiers#storage)platí omezení maximální velikosti úložiště.
+Automatické zvětšení úložiště zabrání vašemu serveru [dosáhnout limitu úložiště](./concepts-pricing-tiers.md#reaching-the-storage-limit) a stane se jen pro čtení. U serverů s 100 GB nebo méně zřízeným úložištěm se velikost zvýší o 5 GB, pokud je volné místo menší než 10%. U serverů s více než 100 GB zřízeného úložiště se velikost zvýší o 5%, pokud je volné místo menší než 10 GB. V části úložiště [Azure Database for MySQL cenové úrovně](./concepts-pricing-tiers.md#storage)platí omezení maximální velikosti úložiště.
 
 > [!IMPORTANT]
 > Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.

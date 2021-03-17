@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076133"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613455"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít roz�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se používají následující nástroje:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
@@ -181,19 +181,19 @@ Po úpravě template.jsv souboru, jak je popsáno, znovu publikujte šablonu Spr
 
 > [!TIP]
 > Pokud budete do svého clusteru nasazovat kontejnery, povolte WAD, abyste si vybrali statistiku Docker tak, že ji přidáte do oddílu **WadCfg > DiagnosticMonitorConfiguration** .
->
->```json
->"DockerSources": {
->    "Stats": {
->        "enabled": true,
->        "sampleRate": "PT1M"
->    }
->},
->```
+
+```json
+"DockerSources": {
+    "Stats": {
+        "enabled": true,
+        "sampleRate": "PT1M"
+    }
+},
+```
 
 ### <a name="update-storage-quota"></a>Aktualizovat kvótu úložiště
 
-Vzhledem k tomu, že tabulky naplněné rozšířením roste až do dosažení kvóty, možná budete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a v šabloně se dá nakonfigurovat pod `overallQuotaInMB` polem`DiagnosticMonitorConfiguration`
+Vzhledem k tomu, že tabulky naplněné rozšířením roste až do dosažení kvóty, možná budete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a v šabloně se dá nakonfigurovat pod `overallQuotaInMB` polem `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -284,7 +284,7 @@ Chcete-li aktualizovat diagnostiku pro shromažďování protokolů z nových ka
 
 Aktualizujte `EtwEventSourceProviderConfiguration` část template.jsv souboru, abyste mohli přidat položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace pomocí `New-AzResourceGroupDeployment` příkazu PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource.cs generovaném systémem Visual Studio.
 
-Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z mé vlastnosti EventSource do tabulky s názvem MyDestinationTableName.
+Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z My-Eventsource do tabulky s názvem MyDestinationTableName.
 
 ```json
         {
@@ -346,7 +346,7 @@ V části "WadCfg" šablony Správce prostředků přidejte "jímku", včetně n
 
 V předchozích fragmentech kódu byl použit název "applicationInsights" k popisu jímky. Nejedná se o požadavek a pokud je název jímky obsažený v části "jímky", můžete nastavit název libovolného řetězce.
 
-V současné době se protokoly z clusteru zobrazují jako **trasování** v prohlížeči protokolu Application Insights. Vzhledem k tomu, že většina trasování přicházejících z platformy je úrovně "informativní", můžete také zvážit změnu konfigurace jímky jenom na Odeslat protokoly typu "upozornění" nebo "Chyba". To lze provést přidáním "kanálů" do jímky, jak je znázorněno v [tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+V současné době se protokoly z clusteru zobrazují jako **trasování** v prohlížeči protokolu Application Insights. Vzhledem k tomu, že většina trasování přicházejících z platformy je úrovně "informativní", můžete také zvážit změnu konfigurace jímky jenom na Odeslat protokoly typu "upozornění" nebo "Chyba". To lze provést přidáním "kanálů" do jímky, jak je znázorněno v [tomto článku](../azure-monitor/agents/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
 >Pokud používáte nesprávný Application Insights klíč buď na portálu, nebo v šabloně Správce prostředků, budete muset ručně změnit klíč a aktualizovat cluster nebo ho znovu nasadit.

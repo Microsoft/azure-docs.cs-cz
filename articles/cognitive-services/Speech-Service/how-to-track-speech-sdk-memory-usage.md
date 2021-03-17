@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rhurey
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a6be6ca00b2bc5d7b35fb71437809754f129df96
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c7e74ce8f4d0b7889d2e5bcd117eaa43e2b6991b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054631"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934136"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>Postup sledování využití paměti sady Speech SDK
 

@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60455758"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997694"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Ochrana osobních údajů uživatelů a Azure AD Connect 
 
@@ -43,7 +43,7 @@ Server Azure AD Connect Sync ukládá následující údaje o ochraně osobních
 
 Azure AD Connect zákazníci by při odebírání uživatelských dat měli použít následující pokyny:
 1.  Odstraňte obsah složky, která obsahuje soubory protokolu instalace Azure AD Connect v pravidelných intervalech – nejméně každých 48 hodin.
-2.  Tento produkt může také vytvářet protokoly událostí.  Další informace o protokolech protokolů událostí najdete v [dokumentaci zde](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
+2.  Tento produkt může také vytvářet protokoly událostí.  Další informace o protokolech protokolů událostí najdete v [dokumentaci zde](/windows/win32/wes/windows-event-log).
 
 Data o osobě se automaticky odeberou z databáze Azure AD Connect, když se data této osoby odeberou ze zdrojového systému, ze kterého pochází. Žádná konkrétní akce od správců nemusí být GDPR kompatibilní.  Ale vyžaduje, aby se data Azure AD Connect synchronizovaná se zdrojem dat minimálně v každém dvou dnech.
 
@@ -67,7 +67,7 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>Naplánovat spuštění tohoto skriptu každých 48 hodin
 Pomocí následujících kroků můžete naplánovat spuštění skriptu každých 48 hodin.
 
-1.  Uložte skript do souboru s příponou **&#46;ps1**a pak otevřete ovládací panely a klikněte na **systémy a zabezpečení**.
+1.  Uložte skript do souboru s příponou **&#46;ps1** a pak otevřete ovládací panely a klikněte na **systémy a zabezpečení**.
     ![Systém](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  V záhlaví nástroje pro správu klikněte na **plánování úloh**.

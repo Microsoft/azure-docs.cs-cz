@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7012a696684a4e7bc1d3b52943b11ba413c43037
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082048"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376484"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -33,9 +33,9 @@ Pokud ještě nemáte bránu virtuální sítě a nechcete ji vytvořit, možná
 
 Následující kroky vás provedou nastavením potřebným ke konfiguraci dynamické brány nebo brány založené na trasách pro každou virtuální síť a vytvoření připojení VPN mezi bránami. Tato konfigurace nepodporuje statické brány ani brány založené na zásadách.
 
-### <a name="prerequisites"></a><a name="pre"></a>Předpoklady
+### <a name="prerequisites"></a><a name="pre"></a>Požadavky
 
-* Oba virtuální sítě již byly vytvořeny. Pokud potřebujete vytvořit virtuální síť Resource Manageru, přečtěte si téma [Vytvoření skupiny prostředků a virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma vytvoření virtuální sítě [typu Classic](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
+* Oba virtuální sítě již byly vytvořeny. Pokud potřebujete vytvořit virtuální síť Resource Manageru, přečtěte si téma [Vytvoření skupiny prostředků a virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma vytvoření virtuální sítě [typu Classic](/previous-versions/azure/virtual-network/create-virtual-network-classic).
 * Rozsahy adres pro virtuální sítě se vzájemně nepřekrývají, nebo se překrývají s žádným z rozsahů pro další připojení, ke kterým je možné brány připojit.
 * Nainstalovali jste nejnovější rutiny PowerShellu. Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/) . Nezapomeňte nainstalovat rutinu Service Management (SM) i Správce prostředků (RM). 
 
@@ -90,14 +90,14 @@ Konfigurace adresování IP adres brány = gwipconfig
    ```azurepowershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-3. Otevřete soubor. XML, který jste stáhli, a upravte ho. Příklad konfiguračního souboru sítě najdete v tématu [schéma konfigurace sítě](https://msdn.microsoft.com/library/jj157100.aspx).
+3. Otevřete soubor. XML, který jste stáhli, a upravte ho. Příklad konfiguračního souboru sítě najdete v tématu [schéma konfigurace sítě](/previous-versions/azure/reference/jj157100(v=azure.100)).
 
 ### <a name="2-verify-the-gateway-subnet"></a>2. ověření podsítě brány
 V elementu **VirtualNetworkSites** přidejte podsíť brány do vaší virtuální sítě, pokud ještě nebyla vytvořena. Když pracujete s konfiguračním souborem sítě, podsíť brány musí mít název "GatewaySubnet" nebo Azure ji nemůže rozpoznat a použít jako podsíť brány.
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**Případě**
+**Příklad:**
 
 ```xml
 <VirtualNetworkSites>

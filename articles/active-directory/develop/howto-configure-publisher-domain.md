@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129266"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104174"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Postupy: Konfigurace domény vydavatele aplikace
 
@@ -48,18 +48,12 @@ Pokud se vaše aplikace zaregistrovala před 21. května 2019, zobrazí se výzv
 
 Pokud chcete nastavit doménu vydavatele vaší aplikace, postupujte podle těchto kroků.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-
-1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD:
-   1. V nabídce v pravém horním rohu stránky vyberte svůj profil a pak **Přepněte do adresáře**.
-   1. Změňte svou relaci na tenanta Azure AD, ve kterém chcete vytvořit aplikaci.
-
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Máte-li přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: a vyberte klienta, ve kterém je aplikace zaregistrovaná.
 1. Přejděte na [Azure Active Directory > registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) a vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
 
    Po výběru aplikace se zobrazí stránka **Přehled** aplikace.
-
-1. Na stránce **Přehled** aplikace vyberte část **branding** .
-
+1. V části **Spravovat** vyberte **značku**.
 1. Vyhledejte pole **doména vydavatele** a vyberte jednu z následujících možností:
 
    - Pokud jste ještě nenakonfigurovali doménu, vyberte **nakonfigurovat doménu** .
@@ -97,7 +91,7 @@ Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost
 - Pokud má váš tenant ověřené domény, vyberte jednu z domén v rozevíracím seznamu **Vybrat ověřenou doménu** .
 
 >[!Note]
-> Očekávala se hlavička Content-Type, která by se měla vrátit `application/json` . Může se zobrazit chyba, jak je uvedeno níže, pokud použijete něco jiného jako`application/json; charset=utf-8` 
+> Očekávala se hlavička Content-Type, která by se měla vrátit `application/json` . Může se zobrazit chyba, jak je uvedeno níže, pokud použijete něco jiného jako `application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

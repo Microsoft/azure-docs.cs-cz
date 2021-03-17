@@ -3,13 +3,13 @@ title: Vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci s front-endem v ASP.NET Core a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 03320fe41bcac8b99a3475b52fcf1b41ea5aed89
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: mvc, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 8fe9f1fcb85e58122290f89819aa721c8f0e632a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428359"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035322"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -32,7 +32,7 @@ V této sérii kurzů se naučíte:
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
@@ -149,10 +149,10 @@ Otevřete **Views/Home/Index.cshtml**, což je zobrazení specifické pro kontro
                     <div class="col-xs-8">
                         <button class="btn btn-success text-left btn-block" ng-click="add(vote.key)">
                             <span class="pull-left">
-                                {{vote.key}}
+                                {{vote.Key}}
                             </span>
                             <span class="badge pull-right">
-                                {{vote.value}} Votes
+                                {{vote.Value}} Votes
                             </span>
                         </button>
                     </div>
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 Po vytvoření front-end služby VotingWeb sada Visual Studio náhodně vybere port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem.  [Manifest služby](service-fabric-application-and-service-manifests.md) deklaruje koncové body služby.
 
-V Průzkumník řešení otevřete *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
+V Průzkumník řešení otevřete  *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
 
 ```xml
 <Resources>

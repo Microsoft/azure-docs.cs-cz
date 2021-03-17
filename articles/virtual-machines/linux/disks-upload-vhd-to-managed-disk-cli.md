@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691339"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978981"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure CLI
 
@@ -79,7 +79,7 @@ Teď, když máte na svém prázdném spravovaném disku SAS, můžete ho použ�
 
 Pomocí AzCopy v10 za účelem nahrajte místní soubor VHD na spravovaný disk zadáním identifikátoru URI SAS, který jste vygenerovali.
 
-Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný disk](disks-types.md#standard-hdd). Například pokud máte velikost, která je rovna S4, budete mít propustnost až 60 MiB/s. Pokud ale máte velikost, která je rovna S70, budete mít propustnost až 500 MiB/s.
+Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný disk](../disks-types.md#standard-hdd). Například pokud máte velikost, která je rovna S4, budete mít propustnost až 60 MiB/s. Pokud ale máte velikost, která je rovna S70, budete mít propustnost až 500 MiB/s.
 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
@@ -108,17 +108,17 @@ Nahraďte `<sourceResourceGroupHere>` `<sourceDiskNameHere>` hodnotu,, `<targetD
 > Pokud vytváříte disk s operačním systémem, přidejte do nástroje--Hyper-v-Generation <yourGeneration> `az disk create` .
 
 ```azurecli
-sourceDiskName = <sourceDiskNameHere>
-sourceRG = <sourceResourceGroupHere>
-targetDiskName = <targetDiskNameHere>
-targetRG = <targetResourceGroupHere>
-targetLocale = <yourTargetLocationHere>
+sourceDiskName=<sourceDiskNameHere>
+sourceRG=<sourceResourceGroupHere>
+targetDiskName=<targetDiskNameHere>
+targetRG=<targetResourceGroupHere>
+targetLocation=<yourTargetLocationHere>
 
-sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
+sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
-targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
+targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
@@ -131,4 +131,4 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně nahráli VHD na spravovaný disk, můžete disk připojit jako [datový disk k existujícímu virtuálnímu počítači](add-disk.md) nebo [připojit disk k virtuálnímu počítači jako disk s operačním systémem](upload-vhd.md#create-the-vm)a vytvořit nový virtuální počítač. 
+Teď, když jste úspěšně nahráli VHD na spravovaný disk, můžete disk připojit jako [datový disk k existujícímu virtuálnímu počítači](add-disk.md) nebo [připojit disk k virtuálnímu počítači jako disk s operačním systémem](upload-vhd.md#create-the-vm)a vytvořit nový virtuální počítač.

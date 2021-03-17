@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998239"
 ---
 # <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
 Pokud vaše služby nastanou problémy, vaše schopnost reagovat na incidenty a výpadky závisí na vaší schopnosti rychle detekovat problémy. Pokud nahlásíte problémy a chyby do služby Azure Service Fabric Health Manager z kódu služby, můžete použít standardní nástroje pro monitorování stavu, které Service Fabric poskytuje ke kontrole stavu.
@@ -25,7 +26,7 @@ Existují tři způsoby, jak můžete hlásit stav ze služby:
 
 Tento článek vás provede příkladem, který hlásí stav z kódu služby. Tento příklad také ukazuje, jak lze použít nástroje poskytované Service Fabric ke kontrole stavu. Tento článek je určený jako rychlý Úvod k funkcím monitorování stavu Service Fabric. Podrobnější informace si můžete přečíst v podrobných článcích o stavu, který začíná odkazem na konci tohoto článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Musíte mít nainstalované následující:
 
 * Visual Studio 2015 nebo Visual Studio 2019
@@ -131,7 +132,7 @@ HealthInformation healthInformation = new HealthInformation("ServiceCode", "Stat
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-K hlášení stavu v systémech `Application` , `DeployedApplication` , a `DeployedServicePackage` použijte `CodePackageActivationContext` .
+K hlášení stavu v systémech `Application` , `DeployedApplication` , a `DeployedServicePackage` použijte  `CodePackageActivationContext` .
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);

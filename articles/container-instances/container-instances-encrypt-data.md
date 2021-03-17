@@ -3,14 +3,14 @@ title: Šifrování dat nasazení
 description: Informace o šifrování trvalých dat pro prostředky instance kontejneru a o tom, jak šifrovat data pomocí klíče spravovaného zákazníkem
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259703"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686272"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -24,16 +24,16 @@ Data v ACI se šifrují a dešifrují pomocí 256 šifrování AES. Je povolená
 
 Pro šifrování dat kontejneru můžete spoléhat na klíče spravované Microsoftem, nebo můžete šifrování spravovat pomocí vlastních klíčů. Následující tabulka porovnává tyto možnosti: 
 
-|    |    Klíče spravované společností Microsoft     |     Klíče spravované zákazníkem     |
+|    |    Klíče spravované Microsoftem     |     Klíče spravované zákazníkem     |
 |----|----|----|
 |    **Operace šifrování a dešifrování**    |    Azure    |    Azure    |
 |    **Úložiště klíčů**    |    Úložiště klíčů Microsoftu    |    Azure Key Vault    |
-|    **Zodpovědnost za střídání klíčů**    |    Partnerský vztah Microsoftu    |    Customer (Zákazník)    |
+|    **Zodpovědnost za střídání klíčů**    |    Partnerský vztah Microsoftu    |    Zákazník    |
 |    **Přístup ke klíči**    |    Jenom Microsoft    |    Microsoft, zákazník    |
 
 Zbývající část dokumentu popisuje kroky potřebné k zašifrování dat nasazení ACI s klíčem (klíč spravovaný zákazníkem). 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>Šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -59,7 +59,7 @@ V případě, že nemůžete úspěšně vytvořit instanční objekt:
 
 ### <a name="create-a-key-vault-resource"></a>Vytvoření prostředku Key Vault
 
-Vytvořte Azure Key Vault pomocí [Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), [CLI](../key-vault/secrets/quick-create-cli.md)nebo [PowerShellu](../key-vault/secrets/quick-create-powershell.md). 
+Vytvořte Azure Key Vault pomocí [Azure Portal](../key-vault/general/quick-create-portal.md), [Azure CLI](../key-vault/general/quick-create-cli.md)nebo [Azure PowerShell](../key-vault/general/quick-create-powershell.md).
 
 Pro vlastnosti vašeho trezoru klíčů použijte následující pokyny: 
 * Název: Je potřeba zadat jedinečný název. 
@@ -84,7 +84,7 @@ Vytvořte nové zásady přístupu, které umožní službě ACI přístup k va�
 * Po vygenerování klíče zpátky v okně prostředku trezoru klíčů v části Nastavení klikněte na **zásady přístupu**.
 * Na stránce zásady přístupu pro váš Trezor klíčů klikněte na **Přidat zásady přístupu**.
 * Nastavte *klíčová oprávnění* tak, aby zahrnovala oprávnění kláves **získat** a **Rozbalit** klíč sady klíčů. ![](./media/container-instances-encrypt-data/set-key-permissions.png)
-* V případě *Vyberte objekt zabezpečení*vyberte **Azure Container instance Service** .
+* V případě *Vyberte objekt zabezpečení* vyberte **Azure Container instance Service** .
 * V dolní části klikněte na **Přidat** . 
 
 Zásady přístupu by se teď měly zobrazit v zásadách přístupu trezoru klíčů.

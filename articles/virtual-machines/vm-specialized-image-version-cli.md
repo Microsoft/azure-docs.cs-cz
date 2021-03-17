@@ -3,23 +3,23 @@ title: Vytvoření virtuálního počítače ze specializované verze Image pomo
 description: Vytvořte virtuální počítač pomocí specializované verze image v galerii sdílených imagí pomocí Azure CLI.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 478413132a09334c6b5fe6e4d7c4c31c988cd38d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fe081b0e74acf771e10406c15a3dea4e09956c37
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501044"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560955"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Vytvoření virtuálního počítače s využitím specializované verze Image pomocí Azure CLI
 
-Vytvořte virtuální počítač ze [specializované verze image](./linux/shared-image-galleries.md#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače z generalizované verze image](vm-generalized-image-version-cli.md).
+Vytvořte virtuální počítač ze [specializované verze image](./shared-image-galleries.md#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače z generalizované verze image](vm-generalized-image-version-cli.md).
 
 V tomto příkladu nahraďte názvy prostředků podle potřeby. 
 
@@ -51,7 +51,7 @@ az vm create --resource-group myResourceGroup \
 
 
 ## <a name="next-steps"></a>Další kroky
-[Azure image Builder (Preview)](./linux/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+[Azure image Builder (Preview)](./image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
 
 Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 

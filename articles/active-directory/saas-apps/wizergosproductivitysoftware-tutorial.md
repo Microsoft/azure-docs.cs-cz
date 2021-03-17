@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 2d5bcb52b1feb7ea8202aa354793ebf975ed4f19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b4cddae25bbf7ff113d2ea67700e28eb81c0e7c4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541463"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Azure Active Directory integrace se softwarem pro produktivitu Wizergos
 
@@ -27,10 +27,10 @@ Integrace Wizergos produktivity softwaru se službou Azure AD poskytuje následu
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Wizergos produktivnímu softwaru (jednotné přihlašování) s účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se softwarem Wizergos pro zvýšení produktivity potřebujete následující položky:
 
@@ -61,19 +61,19 @@ Pokud chcete nakonfigurovat integraci Wizergos produktivity softwaru do služby 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Wizergos software pro zvýšení produktivity**, vyberte **Wizergos software pro produktivitu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Wizergos software pro zvýšení produktivity** , vyberte **Wizergos software pro produktivitu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Wizergos produktivní software v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí softwaru Wizergos pro produktivitu na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí softwaru Wizergos pro produktivitu na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wizergos kancelářském softwaru.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wizergos kancelářského softwaru, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Wizergos produktivity softwaru](#configure-wizergos-productivity-software-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurovat jednotné přihlašování pro Wizergos produktivitu softwaru](#configure-wizergos-productivity-software-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si uživatele testovacího softwaru Wizergos pro zvýšení produktivity](#create-wizergos-productivity-software-test-user)** , abyste měli protějšek Britta Simon v softwaru Wizergos software, který je propojený s reprezentací uživatele Azure AD.
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos softwaru pro produktivitu, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarové aplikace Wizergos** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarové aplikace Wizergos** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -103,7 +103,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos
 
     Do textového pole **identifikátor** zadejte adresu URL:  `https://www.wizergos.net`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -117,29 +117,29 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-wizergos-productivity-software-single-sign-on"></a>Konfigurace jednotného přihlašování Wizergos produktivity softwaru
+### <a name="configure-wizergos-productivity-software-single-sign-on"></a>Konfigurace Wizergos produktivního softwaru na jednom Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k tenantovi Wizergos produktivity softwaru jako správce.
 
-2. V nabídce hamburgerovou "vyberte **správce**.
+2. V nabídce hamburgerovou "vyberte **správce** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
+    ![Snímek obrazovky se zobrazí ikona správce vybraná z nabídky.](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
-3. V nabídce na stránce pro správu na levé straně vyberte **ověřování** a klikněte na **Azure AD**.
+3. V nabídce na stránce pro správu na levé straně vyberte **ověřování** a klikněte na **Azure AD** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
+    ![Snímek obrazovky zobrazuje Azure A D vybraný z ověřování.](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 
 4. V části **ověřování** proveďte následující kroky.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
     a. Klikněte na tlačítko **nahrát** a nahrajte stažený certifikát z Azure AD.
     
     b. Do textového pole **Adresa URL vystavitele** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
     
-    c. Do textového pole **Adresa URL jednotného přihlašování** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **URL s jedním Sign-On** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
     
-    d. Do textového pole **Adresa URL jednotného odhlašování** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    d. Do textového pole **URL s jedním Sign-Out** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
     
     e. Klikněte na tlačítko **Uložit** .
 
@@ -147,7 +147,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -159,27 +159,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k softwaru Wizergos produktivity.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte software pro **Wizergos produktivity**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte software pro **Wizergos produktivity** .
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Wizergos software pro zvýšení produktivity**.
+2. V seznamu aplikace vyberte **Wizergos software pro zvýšení produktivity** .
 
     ![Odkaz na software pro produktivitu Wizergos v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -201,13 +201,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v softwaru Wizergo
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici software pro Wizergos produktivitu na přístupovém panelu byste měli být automaticky přihlášeni k softwaru Wizergos pro zvýšení produktivity, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici software pro Wizergos produktivitu na přístupovém panelu byste měli být automaticky přihlášeni k softwaru Wizergos pro zvýšení produktivity, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

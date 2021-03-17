@@ -1,25 +1,25 @@
 ### YamlMime:Landing
 title: Dokumentace ke správě aplikací
-summary: Azure Active Directory poskytuje zabezpečený a hladký přístup ke cloudovým a místním aplikacím. Navíc není potřeba spravovat hesla. Vaši koncoví uživatelé se mohou jednou přihlásit a získat přístup k Microsoftu 365 a tisícům dalších aplikací. Další informace o správě a nasazení aplikací najdete v našich průvodcích, šablonách a rychlých zprovozněních.
+summary: Azure Active Directory je systém pro správu identit a přístupu (IAM, Identity and Access Management). Poskytuje centrální místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby jako místo, kam se ukládají informace o uživatelích, používaly Azure AD.
 metadata:
   title: Dokumentace ke správě aplikací
-  description: Azure Active Directory poskytuje zabezpečený a hladký přístup ke cloudovým a místním aplikacím. Navíc není potřeba spravovat hesla. Vaši koncoví uživatelé se mohou jednou přihlásit a získat přístup k Microsoftu 365 a tisícům dalších aplikací. Další informace o správě a nasazení aplikací najdete v našich průvodcích, šablonách a rychlých zprovozněních.
+  description: Azure AD je systém pro správu identit a přístupu (IAM, Identity and Access Management). Poskytuje centrální místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby jako místo, kam se ukládají informace o uživatelích, používaly Azure AD.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
-  ms.translationtype: HT
+  ms.openlocfilehash: e3f258813fd937fa82ce108150b84e9ce78f77aa
+  ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209116"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99052258"
 landingContent:
-- title: Správa aplikací
+- title: O správě aplikací
   linkLists:
   - linkListType: overview
     links:
@@ -27,75 +27,89 @@ landingContent:
       url: what-is-application-management.md
     - text: Co je jednotné přihlašování?
       url: what-is-single-sign-on.md
+- title: Začínáme
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: Série rychlých startů
+    - text: Zobrazení aplikací
       url: view-applications-portal.md
-- title: Správa cloudových aplikací a jednotného přihlašování
+    - text: Přidání aplikace
+      url: add-application-portal.md
+- title: Přidání a konfigurace aplikací
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: Principy jednotného přihlašování
+    - text: Přidání aplikace
+      url: add-application-portal.md
+    - text: Konfigurace aplikace
+      url: add-application-portal-configure.md
+- title: Správa aplikací
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Osvědčené postupy
+      url: application-management-fundamentals.md
+    - text: Typické scénáře
+      url: common-scenarios.md
+- title: Principy jednotného přihlašování
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Koncepce jednotného přihlašování
       url: what-is-single-sign-on.md
-    - text: Zkušenosti koncových uživatelů
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurace jednotného přihlašování
-      url: configure-saml-single-sign-on.md
-    - text: Přiřazení uživatele nebo skupiny k aplikaci
-      url: assign-user-or-group-access-portal.md
-- title: Zřízení uživatelů a skupin pro aplikaci
+    - text: Možnosti jednotného přihlašování
+      url: sso-options.md
+- title: Souhlas s aplikací
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Co je zřizování aplikací?
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: Kurzy zřizování aplikací SaaS
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: Sestavování aplikace? Použití SCIM pro zřizování (dokumentace ke zřizování aplikací)
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: Přidávání aplikace v galerii? Konfigurace zřizování (dokumentace ke zřizování aplikací)
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: Publikování místních aplikací s využitím proxy aplikací
+    - text: Konfigurace souhlasu uživatele
+      url: configure-user-consent.md
+    - text: Konfigurace souhlasu správce
+      url: configure-admin-consent-workflow.md
+- title: Migrace aplikací
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Co je proxy aplikací?
+    - text: Prostředky migrace
+      url: migration-resources.md
+    - text: Migrace aplikace AD FS do Azure
+      url: migrate-adfs-apps-to-azure.md
+- title: Použití místních aplikací
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Co je proxy aplikace?
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: Plán pro proxy aplikací
+    - text: Nasazení proxy aplikace
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: Přidání místní aplikace
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurace konektorů s využitím proxy serverů
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: Konfigurace vlastní domovské stránky
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: Publikování vzdálené plochy s využitím proxy aplikací
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací a sítí
+- title: Zabezpečené aplikace
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Zabezpečený hybridní přístup pro aplikace starší verze (cloud a místní prostředí)
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: Správa přístupu k aplikacím
+      url: what-is-access-management.md
+    - text: Správa omezení tenantů
+      url: tenant-restrictions.md
+- title: Konfigurace pro Moje aplikace
+  linkLists:
+  - linkListType: learn
     links:
-    - text: Ochrana aplikací s využitím F5 Big-IP APM
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: Ochrana aplikací s využitím Zscaler ZPA
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: Plánování nasazení pro Moje aplikace
+      url: my-apps-deployment-plan.md
+    - text: Vytváření kolekcí
+      url: access-panel-collections.md
+- title: Vývoj nových aplikací
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Pokyny pro vývojáře
+      url: ../develop/v2-howto-app-gallery-listing.md
+    - text: Principy této platformy
+      url: ../develop/v2-overview.md
+- title: Novinky v dokumentaci
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Co je nového v dokumentaci
+      url: whats-new-docs.md

@@ -1,7 +1,7 @@
 ---
 title: 'Kurz k klasifikaci imagí: nasazení modelů'
 titleSuffix: Azure Machine Learning
-description: Tento kurz, druhý z řad dvou částí, ukazuje, jak použít Azure Machine Learning k nasazení modelu klasifikace Image pomocí scikit-učení v poznámkovém bloku Python Jupyter.
+description: V tomto kurzu se dozvíte, jak použít Azure Machine Learning k nasazení modelu klasifikace image s scikit-učení v poznámkovém bloku Python Jupyter.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ee6529f36c302cba1dc7b5a4b53aaf96ce58e4a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025671"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532779"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V [předchozím kurzu](tutorial-train-models-with-aml.md) jste trénovali modely strojového učení a pak jste zaregistrovali model ve vašem pracovním prostoru v cloudu.  Nyní jste připraveni nasadit model jako webovou službu. Webová služba je image, v tomto případě image Docker. Zapouzdřuje logiku bodování a model sám sebe. 
 
@@ -37,7 +37,7 @@ Container Instances je skvělé řešení pro testování a porozumění pracovn
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
+Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok  *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
 
 Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte nainstalované `matplotlib` a `scikit-learn` ve vašem prostředí. 
 
@@ -188,7 +188,7 @@ mnist_file_dataset.download(data_folder, overwrite=True)
 
 ### <a name="load-test-data"></a>Načtení testovacích dat
 
-Načtěte testovací data z adresáře **./data/**, který se vytvořil během kurzu věnovaného trénování.
+Načtěte testovací data z adresáře **./data/** , který se vytvořil během kurzu věnovaného trénování.
 
 
 ```python
@@ -358,6 +358,6 @@ service.delete()
 
 + Přečtěte si o všech [možnostech nasazení Azure Machine Learning](how-to-deploy-and-where.md).
 + Naučte se [vytvářet klienty pro webovou službu](how-to-consume-web-service.md).
-+  [Provádějte asynchronní předpovědi velké množství dat](how-to-use-parallel-run-step.md) .
++  [Provádějte asynchronní předpovědi velké množství dat](./tutorial-pipeline-batch-scoring-classification.md) .
 + Monitorujte Azure Machine Learning modely pomocí [Application Insights](how-to-enable-app-insights.md).
-+ Vyzkoušejte kurz pro [Automatický výběr algoritmu](tutorial-auto-train-models.md) . 
++ Vyzkoušejte kurz pro [Automatický výběr algoritmu](tutorial-auto-train-models.md) .

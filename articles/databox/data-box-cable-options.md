@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925205"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334597"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Možnosti zapojení kabeláže Azure Data Boxu
 
@@ -65,7 +65,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
    - **IP adresu** na 192.168.100.5
    - **Podsíť** na 255.255.255.0
 
-     ![Nastavení se dvěma porty](media/data-box-cable-options/cabling-2-port-setup.png)
+     ![Instalace se dvěma porty](media/data-box-cable-options/cabling-2-port-setup.png)
 
 3. Přejděte do místního webového uživatelského rozhraní zařízení na adrese 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
 4. K datovým portům, které jste nakonfigurovali, přiřaďte statické IP adresy.
@@ -80,8 +80,8 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
    - **IP adresa:** 192.168.100.5
    - **Podsíť:** 255.255.255.0
-
-     ![Nastavení se dvěma porty a přepínačem](media/data-box-cable-options/cabling-with-static-ip.png)
+  
+   ![Nastavení dvou portů s přepínačem](media/data-box-cable-options/cabling-with-static-ip.png)
 
 3. Přejděte do místního webového uživatelského rozhraní zařízení na adrese 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
 4. Zjistěte IP adresy přiřazené serverem DHCP.
@@ -105,7 +105,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
    - **IP adresa:** 192.168.100.5
    - **Podsíť:** 255.255.255.0
 
-     ![Nastavení se dvěma porty a přepínačem](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![Nastavení dvou portů s přepínačem 2](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. Přejděte do místního webového uživatelského rozhraní zařízení na adrese 192.168.100.10. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
 4. K datovým portům, které jste nakonfigurovali, přiřaďte statické IP adresy.
@@ -125,7 +125,8 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
 1. Propojte kabel RJ45 nebo SFP+ přes přepínač (na kterém je přístupný server DHCP) se serverem.
 
-    ![Nastavení se dvěma porty a přepínačem](media/data-box-cable-options/cabling-dhcp-data-only.png)
+    ![Nastavení dvou portů pomocí přepínače 3](media/data-box-cable-options/cabling-dhcp-data-only.png)
+
 2. Pomocí serveru DHCP nebo serveru DNS zjistěte IP adresu.
 3. Na serveru ve stejné síti přejděte pomocí IP adresy přiřazené serverem DHCP do místního webového uživatelského rozhraní zařízení. Přihlaste se k Data Boxu a odemkněte ho pomocí hesla pro odemčení z webu Azure Portal.
 

@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e58cef5ae1fc727235539a91e80e424e6ed3be34
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2ecc2bfe6bdc06ede61e6c4d1e6eccfc9ef6323a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496368"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877998"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Vytvoření sady škálování s použitím specializované verze Image pomocí Azure CLI
 
-Vytvořte sadu škálování ze [specializované verze image](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit sadu škálování pomocí generalizované verze bitové kopie, přečtěte si téma [Vytvoření sady škálování z generalizované image](instance-generalized-image-version-cli.md).
+Vytvořte sadu škálování ze [specializované verze image](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit sadu škálování pomocí generalizované verze bitové kopie, přečtěte si téma [Vytvoření sady škálování z generalizované image](instance-generalized-image-version-cli.md).
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.4.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -49,12 +49,12 @@ az vmss create \
    --resource-group myResourceGroup \
    --name myScaleSet \
    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
-   --Specialized
+   --specialized
 ```
 
 
 ## <a name="next-steps"></a>Další kroky
-[Azure image Builder (Preview)](../virtual-machines/linux/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
+[Azure image Builder (Preview)](../virtual-machines/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
 
 Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 

@@ -8,16 +8,17 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 3a48e598680ee969f3823dee6699c8c981dff392
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9fb77179a00969da7a3dc372dc70c99cfe4220ca
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182472"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090994"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Správa vlastností kontejneru a metadat pomocí .NET
 
-Kontejnery objektů BLOB podporují systémové vlastnosti a uživatelsky definovaná metadata kromě dat, která obsahují. V tomto článku se dozvíte, jak spravovat vlastnosti systému a uživatelsky definovaná metadata pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Kontejnery objektů BLOB podporují systémové vlastnosti a uživatelsky definovaná metadata kromě dat, která obsahují. V tomto článku se dozvíte, jak spravovat vlastnosti systému a uživatelsky definovaná metadata pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage).
 
 ## <a name="about-properties-and-metadata"></a>O vlastnostech a metadatech
 

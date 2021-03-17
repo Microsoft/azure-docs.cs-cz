@@ -1,23 +1,18 @@
 ---
 title: Vyvolat program MapReduce z Azure Data Factory
 description: Naučte se zpracovávat data spuštěním programů MapReduce v clusteru Azure HDInsight z objektu pro vytváření dat Azure.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703154"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371069"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +21,8 @@ ms.locfileid: "74703154"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
@@ -235,14 +230,14 @@ Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mez
 ## <a name="run-spark-programs"></a>Spouštění programů Spark
 Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět programy Spark. Podrobnosti najdete v článku [Vyvolání programů Spark ze služby Azure Data Factory](data-factory-spark.md).  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Viz také
@@ -251,4 +246,3 @@ Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět
 * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
 * [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

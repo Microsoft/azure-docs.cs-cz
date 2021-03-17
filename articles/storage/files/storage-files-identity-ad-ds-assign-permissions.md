@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535089"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91716043"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Druhá část: přiřazení oprávnění na úrovni sdílení k identitě
 
@@ -47,12 +47,12 @@ Pokud chcete přiřadit roli Azure k identitě Azure AD, použijte [Azure Portal
 1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku](storage-how-to-create-file-share.md).
 1. Vyberte **Access Control (IAM)**.
 1. Vyberte **Přidat přiřazení role** .
-1. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Nechte **přiřadit přístup k** výchozímu nastavení: **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy. Vybraná identita Azure AD musí být hybridní identitou a nemůže být Cloudová identita. To znamená, že stejná identita je také zastoupena v služba AD DS.
+1. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Nechte **přiřadit přístup k** výchozímu nastavení: **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy. **Vybraná identita Azure AD musí být hybridní identitou a nemůže být Cloudová identita.** To znamená, že stejná identita je také zastoupena v služba AD DS.
 1. Výběrem **Uložit** dokončete operaci přiřazení role.
 
 ### <a name="powershell"></a>PowerShell
 
-Následující ukázka prostředí PowerShell ukazuje, jak přiřadit k identitě Azure AD roli Azure na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Následující ukázka prostředí PowerShell ukazuje, jak přiřadit k identitě Azure AD roli Azure na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí PowerShellu najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí modulu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Před spuštěním následujícího ukázkového skriptu nahraďte hodnoty zástupných symbolů, včetně závorek.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
   
-Následující příkaz CLI 2,0 přiřadí roli Azure AD identitě na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
+Následující příkaz CLI 2,0 přiřadí roli Azure AD identitě na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí rozhraní příkazového řádku Azure najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
 Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
 

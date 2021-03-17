@@ -1,25 +1,27 @@
 ---
-title: Monitorování událostí Azure Media Services pomocí Event Grid pomocí rozhraní příkazového řádku | Microsoft Docs
-description: Tento článek popisuje, jak se přihlásit k odběru Event Grid, aby bylo možné monitorovat události Azure Media Services.
+title: Monitorování událostí Azure Media Services s využitím Event Grid
+description: Tento článek popisuje, jak se přihlásit k odběru Event Grid, aby bylo možné monitorovat Azure Media Services události pomocí Azure CLI.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 11/09/2018
-ms.author: juliako
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5292318d2e5432ec7c0a2df7306011c3dea5147
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e01083b8618e4751770ed69aa4b1c20f8a072d88
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542123"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092309"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Vytváření a sledování událostí Media Services pomocí Event Grid pomocí Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Event Grid je služba zpracování událostí pro cloud. Tato služba používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí předplatitelům. Media Services události obsahují všechny informace, které potřebujete k reakci na změny ve vašich datech. Můžete identifikovat událost Media Services, protože vlastnost eventType začíná na "Microsoft. Media". Další informace najdete v tématu [Media Services schématech událostí](media-services-event-schemas.md).
 
@@ -27,10 +29,10 @@ V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí pro vá
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- Nainstalujte a použijte rozhraní příkazového řádku místně. Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
+- Musíte mít aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Nainstalujte a použijte rozhraní příkazového řádku místně. Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-    V současné době nejsou v Azure Cloud Shell správné příkazy rozhraní příkazového [řádku Media Services V3](https://aka.ms/ams-v3-cli-ref) . Doporučuje se používat rozhraní příkazového řádku místně.
+    V současné době nejsou v Azure Cloud Shell správné příkazy rozhraní příkazového [řádku Media Services V3](/cli/azure/ams) . Doporučuje se používat rozhraní příkazového řádku místně.
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
 

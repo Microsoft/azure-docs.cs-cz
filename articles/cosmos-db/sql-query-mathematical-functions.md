@@ -3,18 +3,20 @@ title: Matematické funkce v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o matematických funkcích v Azure Cosmos DB k provedení výpočtu na základě vstupních hodnot, které jsou k dispozici jako argumenty, a vrácení číselné hodnoty.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562826"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549181"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematické funkce (Azure Cosmos DB)  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tyto matematické funkce provádějí výpočet na základě vstupních hodnot, které jsou k dispozici jako argumenty, a vracejí číselnou hodnotu.
 
@@ -30,7 +32,7 @@ Výsledek je následující:
     [4]
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Následující podporované integrované matematické funkce provádějí výpočet, který je obvykle založen na vstupních argumentech a vrací číselný výraz:
  
@@ -39,20 +41,20 @@ Následující podporované integrované matematické funkce provádějí výpo�
 * [ASIN](sql-query-asin.md)
 * [ATAN](sql-query-atan.md)
 * [ATN2](sql-query-atn2.md)
-* [MAXIMÁLNÍ](sql-query-ceiling.md)
+* [CEILING](sql-query-ceiling.md)
 * [COS](sql-query-cos.md)
 * [COT](sql-query-cot.md)
-* [URČITÝ](sql-query-degrees.md)
-* [OČEK](sql-query-exp.md)
-* [ŘÍZENÍ](sql-query-floor.md)
-* [PROTOKOLU](sql-query-log.md)
-* [Log10 –](sql-query-log10.md)
-* [ČÍSLA](sql-query-pi.md)
+* [DEGREES](sql-query-degrees.md)
+* [EXP](sql-query-exp.md)
+* [FLOOR](sql-query-floor.md)
+* [LOG](sql-query-log.md)
+* [LOG10](sql-query-log10.md)
+* [PI](sql-query-pi.md)
 * [POWER](sql-query-power.md)
-* [RAD](sql-query-radians.md)
-* [FUNKCÍ](sql-query-rand.md)
-* [ZPOŽDĚNÍ](sql-query-round.md)
-* [OSOBĚ](sql-query-sign.md)
+* [RADIANS](sql-query-radians.md)
+* [RAND](sql-query-rand.md)
+* [ROUND](sql-query-round.md)
+* [SIGN](sql-query-sign.md)
 * [SIN](sql-query-sin.md)
 * [SQRT](sql-query-sqrt.md)
 * [ČTVERCOVÉ](sql-query-square.md)
@@ -65,6 +67,6 @@ Všechny matematické funkce s výjimkou funkce RAND jsou deterministické funkc
 ## <a name="next-steps"></a>Další kroky
 
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Uživatelsky definované funkce](sql-query-udfs.md)
-- [Agregace](sql-query-aggregates.md)
+- [Agregace](sql-query-aggregate-functions.md)

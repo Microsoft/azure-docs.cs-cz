@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224855"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920436"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -37,7 +37,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
 
 **Krok 1** – poskytovatelé certifikační autority (CA)  
 -   Připojování jako správce IT, správce PKI nebo kdokoli, kdo spravuje účty s CAs pro danou společnost (např. Contoso) je předpokladem pro použití Key Vaultch certifikátů.  
-    Následující CA jsou aktuální partneři partnerských služeb s Key Vault:  
+    Následující CA jsou současnými partnerskými poskytovateli s Key Vault. Další informace najdete [tady](./create-certificate.md#partnered-ca-providers).   
     -   DigiCert-Key Vault nabízí OV certifikáty TLS/SSL s DigiCert.  
     -   GlobalSign-Key Vault nabízí OV certifikáty TLS/SSL s GlobalSign.  
 
@@ -50,7 +50,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
     -   Poskytovatel  
     -   Přihlašovací údaje – přihlašovací údaje účtu certifikační autority Každá certifikační autorita má vlastní konkrétní data.  
 
-    Další informace o vytváření účtů s poskytovateli certifikačních autorit najdete v souvisejícím příspěvku na [blogu Key Vault](https://aka.ms/kvcertsblog).  
+    Další informace o vytváření účtů s poskytovateli certifikačních autorit najdete v souvisejícím příspěvku na [blogu Key Vault](/archive/blogs/kv/manage-certificates-via-azure-key-vault).  
 
 **Krok 3,1** – nastavení [kontaktů certifikátů](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) pro oznámení Toto je kontakt pro uživatele Key Vault. Key Vault nevynutila tento krok.  
 
@@ -82,7 +82,7 @@ Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.
       -   Kvůli prodlevě, která se má vytvořit, se dá iniciovat operace zrušení. Zrušení může nebo nemusí být účinné.  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Zásady zabezpečení a přístupu k síti spojené s integrovanou certifikační autoritou
-Služba Key Vault odesílá požadavky do certifikační autority (odchozí provoz). Proto je plně kompatibilní s povolenými trezory klíčů brány firewall. Key Vault nesdílí zásady přístupu k certifikační autoritě. CA musí být nakonfigurovaná tak, aby přijímala požadavky na podpis nezávisle. [Průvodce integrací důvěryhodné certifikační autority](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Služba Key Vault odesílá požadavky do certifikační autority (odchozí provoz). Proto je plně kompatibilní s povolenými trezory klíčů brány firewall. Key Vault nesdílí zásady přístupu k certifikační autoritě. CA musí být nakonfigurovaná tak, aby přijímala požadavky na podpis nezávisle. [Průvodce integrací důvěryhodné certifikační autority](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>Import certifikátu  
  Alternativně – certifikát lze importovat do Key Vault – PFX nebo PEM.  
@@ -113,7 +113,6 @@ INTEGRACE podporuje 2 formáty založené na PEM. Můžete buď sloučit jeden c
 
 -----ZAČÍT CERTIFIKÁT UKONČIT---------------
 
-V současné době nepodporujeme klíče ES ve formátu PEM.
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Vytvoření certifikátu s certifikační autoritou, která není partnerkou Key Vault  
  Tato metoda umožňuje pracovat s jinými certifikačními autoritami než s partnerskými poskytovateli Key Vault, což znamená, že vaše organizace může pracovat s certifikační autoritou podle svého výběru.  

@@ -11,29 +11,29 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085374"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020581"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů na podregistry
-V tomto dokumentu se dozvíte, jak vytvářet funkce pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů na podregistry. Tyto dotazy na podregistr používají vložené uživatelem definované funkce (UDF) v podregistru, které jsou k dispozici.
+V tomto dokumentu se dozvíte, jak vytvářet funkce pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů na podregistry. Tyto dotazy na podregistr používají vložené funkce User-Defined podregistru (UDF), které jsou k dispozici.
 
 Operace potřebné k vytvoření funkcí můžou být náročné na paměť. Výkon dotazů na podregistr v takových případech bude v takovém případě méně důležitý a lze ho zlepšit optimalizací určitých parametrů. Ladění těchto parametrů je popsáno v poslední části.
 
 Příklady dotazů, které jsou prezentované, jsou uvedené v [úložišti GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)taky v rámci scénářů [NYC taxislužby Trip data](https://chriswhong.com/open-data/foil_nyc_taxi/) . Tyto dotazy již mají zadané schéma dat a jsou připraveny k odeslání ke spuštění. V poslední části jsou popsány také parametry, které mohou uživatelé ladit, aby bylo možné zlepšit výkon dotazů na podregistry.
 
-Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](./index.yml).
 
 ## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
-* Byl zřízen přizpůsobený cluster Hadoop se službou HDInsight.  Pokud potřebujete pokyny, přečtěte si téma [přizpůsobení Azure HDInsight Hadoop clusterů pro pokročilou analýzu](customize-hadoop-cluster.md).
+* Byl zřízen přizpůsobený cluster Hadoop se službou HDInsight.  Pokud potřebujete pokyny, přečtěte si téma [přizpůsobení Azure HDInsight Hadoop clusterů pro pokročilou analýzu](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 * Data byla nahrána do tabulek podregistru v clusterech Azure HDInsight Hadoop. Pokud tomu tak není, dodržujte nejprve [tabulka vytvořit a načíst data do tabulek podregistru](move-hive-tables.md) a nahrajte data do tabulek podregistru.
-* Povolen vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si téma [přístup k hlavnímu uzlu clusteru Hadoop](customize-hadoop-cluster.md).
+* Povolen vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si téma [přístup k hlavnímu uzlu clusteru Hadoop](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 
 ## <a name="feature-generation"></a><a name="hive-featureengineering"></a>Generace funkcí
 V této části jsou popsány několik příkladů způsobů, jak lze vygenerovat funkce pomocí dotazů na podregistr. Jakmile vygenerujete další funkce, můžete je buď přidat jako sloupce do existující tabulky, nebo vytvořit novou tabulku s dalšími funkcemi a primárními klíči, které pak můžete propojit s původní tabulkou. Zde jsou uvedeny příklady:
@@ -104,7 +104,7 @@ select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime f
 from <databasename>.<tablename>;
 ```
 
-V tomto dotazu, pokud *\<datetime field>* má vzorec jako *03/26/2015 12:04:39*, by měl být * \<pattern of the datetime field> * `'MM/dd/yyyy HH:mm:ss'` . K otestování můžou uživatelé spustit
+V tomto dotazu, pokud *\<datetime field>* má vzorec jako *03/26/2015 12:04:39*, by měl být *\<pattern of the datetime field>* `'MM/dd/yyyy HH:mm:ss'` . K otestování můžou uživatelé spustit
 
 ```hiveql
 select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Vypočítat vzdálenosti mezi sadami souřadnic GPS
 Dotaz uvedený v této části se dá přímo použít pro data NYC taxislužby na cestách. Účelem tohoto dotazu je Ukázat, jak použít vloženou matematickou funkci v podregistru pro generování funkcí.
 
-Pole, která se používají v tomto dotazu, jsou souřadnicemi GPS pro vyzvednutí a dropoff, s názvem *výstupní \_ Zeměpisná délka*, *vyzvednutí \_ zeměpisné šířky*, *dropoff \_ Zeměpisná délka*a *dropoff \_ Zeměpisná šířka*. Dotazy, které počítají přímou vzdálenost mezi vyzvednutím a dropoff souřadnicemi, jsou:
+Pole, která se používají v tomto dotazu, jsou souřadnicemi GPS pro vyzvednutí a dropoff, s názvem *výstupní \_ Zeměpisná délka*, *vyzvednutí \_ zeměpisné šířky*, *dropoff \_ Zeměpisná délka* a *dropoff \_ Zeměpisná šířka*. Dotazy, které počítají přímou vzdálenost mezi vyzvednutím a dropoff souřadnicemi, jsou:
 
 ```hiveql
 set R=3959;
@@ -144,16 +144,16 @@ and dropoff_latitude between 30 and 90
 limit 10;
 ```
 
-Matematické rovnice, které vypočítávají vzdálenost mezi dvěma souřadnicemi GPS, najdete na webu <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">typu Pohyblivý text</a> , který vytvořil Petr lapisu. V tomto JavaScriptu `toRad()` je funkce jenom *lat_or_lon*PI/180, která převede stupně na radiány. Zde je *lat_or_lon* Zeměpisná šířka a délka. Vzhledem k tomu, že podregistr funkci neposkytuje `atan2` , ale poskytuje funkci `atan` , `atan2` je funkce implementovaná `atan` funkcí ve výše uvedeném dotazu na podregistr pomocí definice poskytované v <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedii</a>.
+Matematické rovnice, které vypočítávají vzdálenost mezi dvěma souřadnicemi GPS, najdete na webu <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">typu Pohyblivý text</a> , který vytvořil Petr lapisu. V tomto JavaScriptu `toRad()` je funkce jenom *lat_or_lon* PI/180, která převede stupně na radiány. Zde je *lat_or_lon* Zeměpisná šířka a délka. Vzhledem k tomu, že podregistr funkci neposkytuje `atan2` , ale poskytuje funkci `atan` , `atan2` je funkce implementovaná `atan` funkcí ve výše uvedeném dotazu na podregistr pomocí definice poskytované v <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedii</a>.
 
 ![Vytvoření pracovního prostoru](./media/create-features-hive/atan2new.png)
 
 Úplný seznam integrovaných UDF podregistru najdete v části **předdefinované funkce** na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">wikiwebu Apache Hive</a>.  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Pokročilá témata: ladění parametrů podregistru za účelem zlepšení rychlosti dotazů
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Pokročilá témata: ladění parametrů podregistru za účelem zlepšení rychlosti dotazů
 Výchozí nastavení parametrů clusteru podregistru nemusí být vhodné pro dotazy na podregistr a data, která jsou zpracovávána dotazy. V této části jsou popsány některé parametry, které mohou uživatelé ladit pro zlepšení výkonu dotazů na podregistry. Uživatelé musí před dotazy na zpracování dat přidat dotazy ladění parametrů.
 
-1. **Místo haldy jazyka Java**: u dotazů, které zahrnují spojování velkých datových sad nebo zpracování dlouhých záznamů, je **nedostatek prostoru haldy** jednou ze běžných chyb. Tato chyba se může vyhnout nastavením parametrů *MapReduce. map. Java. výslovný* a *MapReduce. Task. IO. Sort. MB* na požadované hodnoty. Zde naleznete příklad:
+1. **Místo haldy jazyka Java**: u dotazů, které zahrnují spojování velkých datových sad nebo zpracování dlouhých záznamů, je **nedostatek prostoru haldy** jednou ze běžných chyb. Tato chyba se může vyhnout nastavením parametrů *MapReduce. map. Java. výslovný* a *MapReduce. Task. IO. Sort. MB* na požadované hodnoty. Tady je příklad:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;
@@ -198,4 +198,3 @@ Výchozí nastavení parametrů clusteru podregistru nemusí být vhodné pro do
     set mapred.reduce.tasks=128;
     set mapred.tasktracker.reduce.tasks.maximum=128;
     ```
-

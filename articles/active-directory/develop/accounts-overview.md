@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115981"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755963"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Účty a profily tenantů (Android)
 
@@ -48,7 +48,7 @@ Rozhraní API knihovny Microsoft Authentication Library (MSAL) nahrazuje pojem *
 - Vzhledem k tomu, že účet může být přítomen v jednom nebo více klientech, může mít účet více než jeden profil.
 
 > [!NOTE]
-> MSAL považuje systém účet Microsoft (Live, MSA) za jiného tenanta v rámci platformy Microsoft identity. ID tenanta klienta účet Microsoft:`9188040d-6c67-4c5b-b112-36a304b66dad`
+> MSAL považuje systém účet Microsoft (Live, MSA) za jiného tenanta v rámci platformy Microsoft identity. ID tenanta klienta účet Microsoft: `9188040d-6c67-4c5b-b112-36a304b66dad`
 
 ## <a name="account-overview-diagram"></a>Diagram přehledu účtu
 
@@ -58,12 +58,12 @@ Ve výše uvedeném diagramu:
 
 - Účet `bob@contoso.com` se vytvoří v místní službě Windows Server Active Directory (původ místního systému záznamu).
 - Účet `tom@live.com` se vytvoří v tenantovi účet Microsoft.
-- `bob@contoso.com`má přístup k alespoň jednomu prostředku v následujících Azure Active Directory klientech:
+- `bob@contoso.com` má přístup k alespoň jednomu prostředku v následujících Azure Active Directory klientech:
   - contoso.com (cloudový systém záznamu propojený s místním systémem záznamů)
   - fabrikam.com
   - woodgrovebank.com
   - `bob@contoso.com`V každém z těchto tenantů se nachází profil tenanta.
-- `tom@live.com`má přístup k prostředkům v následujících klientech Microsoftu:
+- `tom@live.com` má přístup k prostředkům v následujících klientech Microsoftu:
   - contoso.com
   - fabrikam.com
   - `tom@live.com`V každém z těchto tenantů se nachází profil tenanta.
@@ -99,7 +99,7 @@ Kromě vyžádání přístupového tokenu MSAL také vždy vyžádá token ID o
 - OpenID
 - profil
 
-Token ID obsahuje seznam deklarací identity. `Claims`jsou páry název-hodnota týkající se účtu a slouží k vytvoření žádosti.
+Token ID obsahuje seznam deklarací identity. `Claims` jsou páry název-hodnota týkající se účtu a slouží k vytvoření žádosti.
 
 Jak už bylo zmíněno dříve, každý tenant, ve kterém existuje účet, může ukládat různé informace o účtu, včetně, ale ne omezení na atributy, jako je například pracovní pozice, umístění kanceláře a tak dále.
 

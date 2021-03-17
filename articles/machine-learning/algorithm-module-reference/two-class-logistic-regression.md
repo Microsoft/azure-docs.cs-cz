@@ -1,7 +1,7 @@
 ---
-title: 'Logistické regrese dvou tříd: reference na modul'
+title: 'Two-Class logistické regrese: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí modulu logistické regrese dvou tříd v Azure Machine Learning vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků.
+description: Naučte se používat modul Two-Class logistické regrese v Azure Machine Learning k vytvoření binárního třídění.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e29a666f4d478e11986f834cff94d9743223f22
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137616"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012642"
 ---
-# <a name="two-class-logistic-regression-module"></a>Modul logistické regrese se dvěma třídami
+# <a name="two-class-logistic-regression-module"></a>Modul Two-Class logistické regrese
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků. 
 
@@ -44,9 +44,9 @@ Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" 
 
     -   **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
   
-3.  V případě **tolerance optimalizace**zadejte mezní hodnotu, která se má použít při optimalizaci modelu. Pokud vylepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, je algoritmus považován za sblížený v řešení a školení se zastaví.  
+3.  V případě **tolerance optimalizace** zadejte mezní hodnotu, která se má použít při optimalizaci modelu. Pokud vylepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, je algoritmus považován za sblížený v řešení a školení se zastaví.  
   
-4.  Pro **váhu regulárních hodnot L1** a **váhu pravidelného použití L2**zadejte hodnotu, která se má použít pro parametry pro pravidelnost L1 a L2. Pro obojí se doporučuje nenulová hodnota.  
+4.  Pro **váhu regulárních hodnot L1** a **váhu pravidelného použití L2** zadejte hodnotu, která se má použít pro parametry pro pravidelnost L1 a L2. Pro obojí se doporučuje nenulová hodnota.  
      *Pravidelná* metoda představuje způsob, jak zabránit přeložení pomocí postihu modelů s hodnotami extrémního součinitele. Pravidelnou práci můžete provést přidáním pokuty, která je spojená s hodnotami koeficientu, na chybu hypotézy. Přesný model s hodnotami extrémních koeficientů by tedy byl potrestánější, ale méně přesný model s více konzervativními hodnotami by byl méně trestný.  
   
      Pravidelná L1 a L2 mají různé účinky a použití.  
@@ -58,17 +58,17 @@ Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" 
      Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, že pokud <code>x = L1</code> a <code>y = L2</code> , pak <code>ax + by = c</code> definuje lineární rozpětí regulárních podmínek.  
   
     > [!NOTE]
-    >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak mají vliv na model, s ukázkami kódu pro logistické regrese a síťové modely: [L1 a L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak mají vliv na model, s ukázkami kódu pro logistické regrese a síťové modely:  [L1 a L2 pro Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)  
     >
     > Pro logistické regresní modely byly navrženy různé lineární kombinace L1 a L2: například [elastické čisté](https://wikipedia.org/wiki/Elastic_net_regularization)účely. Doporučujeme, abyste na tyto kombinace odkazovali a definovali lineární kombinaci, která je v modelu platná.
       
-5.  Pro **velikost paměti pro l-BFGS**určete velikost paměti, která se má použít pro optimalizaci *l-BFGS* .  
+5.  Pro **velikost paměti pro l-BFGS** určete velikost paměti, která se má použít pro optimalizaci *l-BFGS* .  
   
      L-BFGS představuje "omezené paměťové Broyden-Fletcher-Goldfarb-Shanno". Jedná se o optimalizační algoritmus, který je oblíbený pro odhad parametru. Tento parametr určuje počet minulých pozic a přechodů, které se mají uložit pro výpočet dalšího kroku.  
   
      Tento parametr optimalizace omezuje velikost paměti, která se používá k výpočtu dalšího kroku a směru. Když zadáte méně paměti, školení je rychlejší, ale je méně přesné.  
   
-6.  V případě **náhodného čísla**zadejte celočíselnou hodnotu. Definování počáteční hodnoty je důležité, pokud chcete, aby byly výsledky reprodukovatelné přes více spuštění stejného kanálu.  
+6.  V případě **náhodného čísla** zadejte celočíselnou hodnotu. Definování počáteční hodnoty je důležité, pokud chcete, aby byly výsledky reprodukovatelné přes více spuštění stejného kanálu.  
   
   
 8. Přidejte do kanálu datovou sadu s popiskem a vytvořte si model:
@@ -97,4 +97,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

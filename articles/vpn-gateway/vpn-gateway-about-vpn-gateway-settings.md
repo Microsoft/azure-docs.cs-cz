@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036908"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010813"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 
@@ -27,8 +27,6 @@ Hodnoty v tomto článku platí pro brány VPN (brány virtuální sítě, kter�
 * Informace o branách redundantních bránách najdete v tématu [informace o redundantních branách v zóně](about-zone-redundant-vnet-gateways.md).
 
 * Informace o virtuální síti WAN najdete v tématu [o virtuální síti WAN](../virtual-wan/virtual-wan-about.md).
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>Typy bran
 
@@ -55,11 +53,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Konfigurace SKU brány
 
-#### <a name="azure-portal"></a>portál Azure
+**Azure Portal**
 
 Pokud pomocí Azure Portal vytvoříte bránu služby Správce prostředků virtuální sítě, můžete vybrat SKU brány pomocí rozevíracího seznamu. Možnosti, které zobrazíte, odpovídají typu brány a typu VPN, který vyberete.
 
-#### <a name="powershell"></a>PowerShell
+**PowerShell**
 
 Následující příklad prostředí PowerShell Určuje `-GatewaySku` jako VpnGw1. Když pomocí PowerShellu vytvoříte bránu, musíte nejdřív vytvořit konfiguraci IP adresy a potom k tomu použít proměnnou. V tomto příkladu je konfigurační proměnná $gwipconfig.
 
@@ -69,7 +67,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -84,6 +82,12 @@ Pokud máte bránu VPN a chcete použít jinou SKU brány, vaše možnosti mají
 3. **Nemůžete** změnit velikost z položek Basic/Standard/HighPerformance SKU na SKU VpnGw. Místo toho je třeba [Přejít](#change) na nové SKU.
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>Změna velikosti brány
+
+**Azure Portal**
+
+[!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
+
+**PowerShell**
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
@@ -152,9 +156,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>Brány místní sítě
 
- Brána místní sítě se liší od brány virtuální sítě. Při vytváření konfigurace brány VPN brána místní sítě obvykle představuje vaše místní umístění. V modelu nasazení Classic se brána místní sítě označovala jako „místní lokalita“.
+Brána místní sítě se liší od brány virtuální sítě. Při vytváření konfigurace brány VPN se jako brána místní sítě obvykle představuje vaše místní síť a příslušné zařízení VPN. V modelu nasazení Classic se brána místní sítě označovala jako „místní lokalita“.
 
-Bráně místní sítě udělíte název, veřejnou IP adresu místního zařízení VPN a určíte předpony adres, které se nacházejí v místním umístění. Azure nahlíží na předpony cílových adres pro síťový provoz, sleduje konfiguraci, kterou jste zadali pro bránu místní sítě, a odpovídajícím způsobem směruje pakety. Také zadáte brány místní sítě pro konfigurace VNet-to-VNet, které používají připojení brány VPN.
+Bráně místní sítě dáte název, veřejnou IP adresu nebo plně kvalifikovaný název domény (FQDN) místního zařízení VPN a určíte předpony adres, které se nacházejí v místním umístění. Azure nahlíží na předpony cílových adres pro síťový provoz, sleduje konfiguraci, kterou jste zadali pro bránu místní sítě, a odpovídajícím způsobem směruje pakety. Pokud na svém zařízení VPN používáte Border Gateway Protocol (BGP), zadáte IP adresu partnerského uzlu protokolu BGP vašeho zařízení VPN a číslo autonomního systému (ASN) vaší místní sítě. Také zadáte brány místní sítě pro konfigurace VNet-to-VNet, které používají připojení brány VPN.
 
 Následující příklad prostředí PowerShell vytvoří novou bránu místní sítě:
 
@@ -169,10 +173,10 @@ Někdy je potřeba upravit nastavení místní síťové brány. Například kdy
 
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API, rutin PowerShellu nebo Azure CLI pro konfiguraci VPN Gateway najdete na následujících stránkách:
 
-| **Standardním** | **Resource Manager** |
+| **Klasický** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Nepodporováno | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Další kroky

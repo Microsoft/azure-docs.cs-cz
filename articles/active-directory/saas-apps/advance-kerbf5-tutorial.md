@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí F5 | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a F5.
+description: V tomto článku se dozvíte o krocích, které je třeba provést při integraci F5 s Azure Active Directory (Azure AD).
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db8977e484e8d1f2cf4b30427d47ba45969f2147
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542974"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654455"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure Active Directory (AD) s F5
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 * Umožněte uživatelům, aby se automaticky přihlásili k F5 pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,8 +39,9 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* F5 podporuje **SP a IDP** iniciované jednotné přihlašování.
-* Jednotné přihlašování (SSO) F5 se dá nakonfigurovat třemi různými způsoby.
+F5 podporuje **SP a IDP** iniciované jednotné přihlašování.
+
+Jednotné přihlašování (SSO) F5 se dá nakonfigurovat třemi různými způsoby:
 
 - [Konfigurace jednotného přihlašování F5 pro pokročilou aplikaci Kerberos](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
@@ -107,25 +108,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k F5.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **F5**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -143,40 +144,40 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu společnosti F5 (rozšířený protokol Kerberos) jako správce a proveďte následující kroky:
 
-1. Certifikát metadat musíte importovat do F5 (rozšířený protokol Kerberos), který se použije později v procesu instalace. V **seznamu certifikátů protokolu SSL > Správa certifikátů v systému > Správa certifikátů >> **. Klikněte na **Import** pravého rohu.
+1. Certifikát metadat musíte importovat do F5 (rozšířený protokol Kerberos), který se použije později v procesu instalace. V **seznamu certifikátů protokolu SSL > Správa certifikátů v systému > Správa certifikátů >>**. Klikněte na **Import** pravého rohu.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure01.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Import pro import certifikátu metadat.](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. Pokud chcete nastavit IDP SAML, přejděte na **přístup > federace > poskytovatele služeb saml > vytvořit > z metadat**.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure02.png)
+    ![Snímek obrazovky, který zvýrazní, jak vytvořit IDP SAML z metadat](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure03.png)
+    ![Snímek obrazovky, který ukazuje obrazovku vytvořit novou konektor SAML IdP](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure05.png)
+    ![Snímek obrazovky zobrazující obrazovku nastavení služby jednotného přihlašování ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. Určení certifikátu nahraného z úlohy 3
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure06.png)
+    ![Snímek obrazovky, na kterém se zobrazuje obrazovka upravit konektor SAML IdP](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure07.png)
+    ![Snímek obrazovky zobrazující obrazovku nastavení služby Single logout](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. Pokud chcete nastavit službu SAML SP, přejděte k části **přístup > federaci > federaci služby SAML > místní služby SP > vytvořit**.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure08.png)
+    ![Snímek obrazovky zobrazující obrazovku, kde můžete vytvořit místní službu SP](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. Klikněte na **OK**.
 
 1. Vyberte konfiguraci SP a klikněte na **vytvořit vazbu nebo zrušit vazbu konektorů IDP**.
 
-     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure09.png)
+     ![Snímek obrazovky, který zobrazuje poskytovatele služby SAML.](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. Klikněte na **Přidat nový řádek** a vyberte **externí konektor IDP** vytvořený v předchozím kroku.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure10.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Přidat nový řádek](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. Pro konfiguraci protokolu Kerberos SSO **přístup > jednotného přihlašování > Kerberos**
 
@@ -187,54 +188,54 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     • Zdroj sféry uživatele  `session.logon.last.domain`
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure11.png)
+    ![Snímek obrazovky, který zvýrazní přístup > jednotné přihlašování.](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. Pro konfiguraci přístupového profilu přístup **> profilování a zásady > přístup k profilu (zásady pro relace)**.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure12.png)
+    ![Snímek obrazovky, který zvýrazní kartu vlastnosti v nabídce profily/zásady.](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure13.png)
+    ![Snímek obrazovky zobrazující kartu přihlašování/ověřování domén](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure14.png)
+    ![Snímek obrazovky zobrazující kartu zásady přístupu](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure15.png)
+    ![Snímek obrazovky, který zobrazuje kartu vlastnosti v zásadách přístupu.](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure16.png)
+    ![Snímek obrazovky, který zobrazuje vlastnosti pro přiřazení proměnné.](./media/advance-kerbf5-tutorial/configure16.png)
  
     * Session. Logon. Last. usernameUPN expr {[mcget {Session. SAML. Last. identity}]}
 
     * Session. AD. lastactualdomain TEXT demo. Live
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure17.png)
+    ![Snímek obrazovky, který zobrazuje vlastnosti dotazu AD.](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName =% {Session. Logon. Last. usernameUPN})
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure18.png)
+    ![Snímek obrazovky zobrazující kartu pravidla větve a pravidlo pro kontrolu účtu](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure19.png)
+    ![Snímek obrazovky, který zobrazuje textová pole vlastní proměnné a vlastní výraz](./media/advance-kerbf5-tutorial/configure19.png)
 
     * Session. Logon. Last. username expr {"[mcget {Session. AD. Last. attr. sAMAccountName}]"}
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure20.png)
+    ![Snímek obrazovky zobrazující hodnoty v polích název tokenu jednotného přihlašování a heslo tokenu SSO](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {Session. Logon. Last. username}
     * mcget {Session. Logon. Last. Password}
 
 1. Pokud chcete přidat nový uzel, přejít na **místní provoz > uzly > seznam uzlů > +**.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure21.png)
+    ![Snímek obrazovky, který zvýrazní místní provoz > uzlů.](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. Pokud chcete vytvořit nový fond, přejdete na **místní provoz > fondy > seznam fondů > vytvořit**.
 
-     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure22.png)
+     ![Snímek obrazovky, který zvýrazňuje > fondy místních přenosů.](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. Pokud chcete vytvořit nový virtuální server, přečtěte si **místní provoz > virtuální servery > seznam virtuálních serverů > +**.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure23.png)
+    ![Snímek obrazovky, který zvýrazní místní provoz > virtuální servery.](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. Zadejte profil přístupu vytvořený v předchozím kroku.
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![Snímek obrazovky, který ukazuje, kde zadáte profil přístupu, který jste vytvořili.](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>Nastavení delegování protokolu Kerberos 
 
@@ -263,15 +264,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     * Nastavte příslušné delegování pro účet delegování F5.
     * V následujícím příkladu je účet delegování APM nakonfigurovaný pro KCD pro FRP-app1. demo App. Live.
 
-        ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure25.png)
+        ![Snímek obrazovky, který zobrazuje vlastnosti účtu APM Delegatio > kartu delegování](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. Zadejte podrobnosti uvedené [výše v dokumentu](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) odkazu.
 
 1. Příloha-SAML-F5 mapování proměnných BIG-IP uvedená níže:
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure26.png)
+    ![Snímek obrazovky zobrazující kartu Přehled > aktivní relace.](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![Snímek obrazovky, který zobrazuje proměnné a klíče relace.](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. Níže je uveden celý seznam výchozích atributů SAML. Zadaný řetězec je reprezentován pomocí následujícího řetězce.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
@@ -313,21 +314,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-f5-test-user"></a>Vytvořit testovacího uživatele F5
 
-V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
+V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Zkuste F5 pomocí Azure AD](https://aad.portal.azure.com/)
 
@@ -335,3 +336,8 @@ Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automatic
 
 - [Konfigurace jednotného přihlašování F5 pro aplikaci Kerberos](kerbf5-tutorial.md)
 
+- [Služba F5 BIG-IP APM a Integrace Azure AD pro zabezpečený hybridní přístup](../manage-apps/f5-aad-integration.md)
+
+- [Kurz nasazení virtuálního počítače F5 BIG-IP Virtual Edition ve službě Azure IaaS pro zajištění zabezpečeného hybridního přístupu](../manage-apps/f5-bigip-deployment-guide.md)
+
+- [Kurz pro Azure Active Directory integraci s jednotným přihlašováním pomocí F5 BIG-IP pro heslo bez hesla – bez VPN](../manage-apps/f5-aad-password-less-vpn.md)

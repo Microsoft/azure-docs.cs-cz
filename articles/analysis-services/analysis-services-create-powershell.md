@@ -1,19 +1,19 @@
 ---
 title: Rychlý Start – vytvoření Azure Analysis Services pomocí prostředí PowerShell Azure Analysis Services | Microsoft Docs
-description: Zjistěte, jak vytvořit server služby Azure Analysis Services pomocí PowerShellu.
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Analysis Services Server pomocí PowerShellu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.custom: references_regions
-ms.openlocfilehash: 375d72c8de0aa16d2c10da701fb9670a9c87b79f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: references_regions , devx-track-azurepowershell
+ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015455"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89229323"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 
@@ -23,8 +23,8 @@ Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vy
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-- **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory a musíte mít účet v tomto adresáři. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+- **Předplatné Azure**: Pokud chcete vytvořit účet, přejděte na [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) .
+- **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory a musíte mít účet v tomto adresáři. Další informace najdete v článku o [ověřování a uživatelských oprávněních](analysis-services-manage-users.md).
 - **Azure PowerShell.** Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="import-azanalysisservices-module"></a>Import AZ. AnalysisServices Module
@@ -73,6 +73,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 V tomto rychlém startu jste zjistili, jak pomocí PowerShellu vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)      
-> [!div class="nextstepaction"]
-> [Kurz: Přidání ukázkového modelu na server](analysis-services-create-sample-model.md)
+> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)      

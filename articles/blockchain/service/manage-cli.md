@@ -5,10 +5,10 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87170856"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure blockchain pomocí Azure CLI
@@ -25,19 +25,19 @@ Pokud dáváte přednost instalaci a používání rozhraní příkazového řá
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
-1. Přihlásit se.
+1. Přihlaste se.
 
-    Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
+    Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az-login).
 
     ```azurecli
     az login
     ```
 
-    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+    Dokončete proces ověřování podle kroků zobrazených v terminálu.
 
 1. Nainstalujte rozšíření Azure CLI.
 
-    Když pracujete s odkazy na rozšíření pro rozhraní příkazového řádku Azure CLI, musíte nejdřív nainstalovat rozšíření.  Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku.  Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
+    Když pracujete s odkazy na rozšíření rozhraní příkazového řádku Azure (Azure CLI), musíte nejdřív rozšíření nainstalovat.  Rozšíření rozhraní příkazového řádku Azure poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku.  Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [Využití rozšíření v Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
     Nainstalujte [rozšíření pro službu Azure blockchain](/cli/azure/ext/blockchain/blockchain) spuštěním následujícího příkazu:
 
@@ -214,7 +214,7 @@ az role assignment create \
 | **zmocněn** | ID uživatele Azure AD. Například `user@contoso.com`. |
 | **oboru** | Rozsah přiřazení role Může to být buď člen blockchain nebo uzel transakce. |
 
-**Případě**
+**Příklad:**
 
 Udělit přístup k uzlu pro uživatele Azure AD k blockchain **členu**:
 
@@ -225,7 +225,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Případě**
+**Příklad:**
 
 Udělit přístup k uzlu pro uživatele Azure AD na **uzel blockchain transakce**:
 
@@ -250,7 +250,7 @@ az role assignment create \
 | **nabyvatel – ID objektu** | ID skupiny nebo ID aplikace služby Azure AD. |
 | **oboru** | Rozsah přiřazení role Může to být buď člen blockchain nebo uzel transakce. |
 
-**Případě**
+**Příklad:**
 
 Udělení přístupu k uzlu pro **roli aplikace**
 

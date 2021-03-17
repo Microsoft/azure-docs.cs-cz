@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e18a3628a2fbb9eee248851f2295000fd1f82532
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b70694011aa0467d8ca037ac309ffb0811c79c01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027286"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737944"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Začínáme se sadou Visual Studio 2019
 
@@ -40,11 +40,12 @@ V některých případech se může stát, že vydání funkcí pro synapse SQL 
 
 
 - [Správa úloh](sql-data-warehouse-workload-management.md) – skupiny úloh a třídění
-- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (včetně funkcí s hodnotou tabulky)
   - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) .
-- [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-   - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) .
-- Tabulky se [sloupcem identity](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)
+  - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) .
+- Tabulky se [sloupcem identity](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest&preserve-view=true)
+- Některé funkce T-SQL, například:
+   - V klauzuli *Group* ve funkci [STRING_AGGového](/sql/t-sql/functions/string-agg-transact-sql) řetězce.
 
 ## <a name="next-steps"></a>Další kroky
 

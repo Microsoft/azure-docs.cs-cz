@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73e4dbb24b4e7c0c651f7d082c75b0f4a17158b5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042154"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890877"
 ---
 # <a name="configure-runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -27,7 +27,7 @@ Runbooky pracovních postupů PowerShellu a PowerShellu v Azure Automation podpo
 | **Vlastnost** | **Popis** |
 |:--- |:--- |
 | Typ |Povinná hodnota. Pro hodnotu parametru se očekával datový typ. Jakýkoli typ .NET je platný. |
-| Název |Povinná hodnota. Název parametru Tento název musí být v rámci Runbooku jedinečný, musí začínat písmenem a může obsahovat jenom písmena, číslice nebo podtržítka. |
+| Name |Povinná hodnota. Název parametru Tento název musí být v rámci Runbooku jedinečný, musí začínat písmenem a může obsahovat jenom písmena, číslice nebo podtržítka. |
 | Povinné |Nepovinný parametr. Logická hodnota určující, zda parametr vyžaduje hodnotu. Pokud nastavíte hodnotu true, musí se při spuštění Runbooku zadat hodnota. Pokud nastavíte hodnotu false, hodnota je nepovinná. Pokud nezadáte hodnotu `Mandatory` vlastnosti, PowerShell posuzuje vstupní parametr ve výchozím nastavení jako volitelný. |
 | Výchozí hodnota |Nepovinný parametr. Hodnota, která se používá pro parametr, pokud není žádná vstupní hodnota předána při spuštění Runbooku. Sada Runbook může nastavit výchozí hodnotu pro libovolný parametr. |
 
@@ -75,7 +75,7 @@ Pro ilustraci konfigurace vstupních parametrů grafického Runbooku vytvoříme
 Grafický Runbook používá tyto hlavní aktivity sady Runbook:
 
 * Konfigurace účtu Spustit jako pro Azure pro ověřování pomocí Azure 
-* Definice rutiny [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) pro získání vlastností virtuálního počítače
+* Definice rutiny [Get-AzVM](/powershell/module/az.compute/get-azvm) pro získání vlastností virtuálního počítače
 * Použití aktivity [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) k výstupu názvů virtuálních počítačů. 
 
 `Get-AzVM`Aktivita definuje dva vstupy, název virtuálního počítače a název skupiny prostředků. Vzhledem k tomu, že tyto názvy mohou být při spuštění sady Runbook odlišné, je nutné přidat do Runbooku vstupní parametry, abyste tyto vstupy přijímali. Informace najdete v tématu věnovaném [vytváření grafik v Azure Automation](automation-graphical-authoring-intro.md).
@@ -140,7 +140,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>Spuštění publikované sady Runbook pomocí rutin prostředí PowerShell a přiřazení parametrů
 
-* **Rutiny Azure Resource Manager:** Můžete spustit Runbook služby Automation, který se vytvořil ve skupině prostředků, pomocí [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0).
+* **Rutiny Azure Resource Manager:** Můžete spustit Runbook služby Automation, který se vytvořil ve skupině prostředků, pomocí [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook).
 
    ```powershell
      $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
@@ -201,7 +201,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
     }
    ```
 
-   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku `VMName` a `resourceGroupName` a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment kódu jazyka C# pro volání metody, která je definována výše.
+   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku `VMName` a  `resourceGroupName` a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment kódu jazyka C# pro volání metody, která je definována výše.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -216,7 +216,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Spuštění Runbooku pomocí REST API a přiřazení parametrů
 
-Můžete vytvořit a spustit úlohu Runbooku pomocí Azure Automation REST API pomocí `PUT` metody s následujícím identifikátorem URI požadavku:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+Můžete vytvořit a spustit úlohu Runbooku pomocí Azure Automation REST API pomocí `PUT` metody s následujícím identifikátorem URI požadavku: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
 V identifikátoru URI požadavku nahraďte následující parametry:
 
@@ -272,7 +272,7 @@ Při spuštění sady Runbook pomocí Webhooku se odešle předdefinovaný vstup
 
 Může být užitečné ukládat data, která chcete předat Runbooku v souboru JSON. Můžete například vytvořit soubor JSON, který obsahuje všechny parametry, které chcete předat Runbooku. Chcete-li to provést, je nutné převést kód JSON na řetězec a poté převést řetězec na objekt prostředí PowerShell před předáním do sady Runbook.
 
-V této části se používá příklad, ve kterém skript PowerShellu volá rutinu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) , která spustí Runbook PowerShellu a předá obsah souboru JSON do Runbooku. PowerShellový Runbook spustí virtuální počítač Azure načtením parametrů pro virtuální počítač z objektu JSON.
+V této části se používá příklad, ve kterém skript PowerShellu volá rutinu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) , která spustí Runbook PowerShellu a předá obsah souboru JSON do Runbooku. PowerShellový Runbook spustí virtuální počítač Azure načtením parametrů pro virtuální počítač z objektu JSON.
 
 ### <a name="create-the-json-file"></a>Vytvoření souboru JSON
 
@@ -324,10 +324,10 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
     >[!NOTE]
     >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Všimněte si, že tyto aliasy nejsou k dispozici pro grafické Runbooky. Grafická sada Runbook může používat pouze `Connect-AzAccount` sebe sama.
 
-1. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath`Určuje cestu, kam jste uložili soubor JSON.
+1. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath` Určuje cestu, kam jste uložili soubor JSON.
 
    ```powershell
-   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
    ```
 
 1. Převeďte obsah řetězce `$json` na objekt prostředí PowerShell.

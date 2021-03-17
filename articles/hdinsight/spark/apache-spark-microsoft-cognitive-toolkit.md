@@ -1,25 +1,22 @@
 ---
 title: Microsoft Cognitive Toolkit s Apache Spark – Azure HDInsight
 description: Seznamte se s tím, jak se dá získat školicí Microsoft Cognitive Toolkit model hloubkového učení použít pro datovou sadu pomocí rozhraní Spark Python API v clusteru Azure HDInsight Spark.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084490"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929976"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití Microsoft Cognitive Toolkit modelu hloubkového učení s clusterem Azure HDInsight Spark
 
 V tomto článku provedete následující kroky.
 
-1. Spusťte vlastní skript, který nainstaluje [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) do clusteru Azure HDInsight Spark.
+1. Spusťte vlastní skript, který nainstaluje [Microsoft Cognitive Toolkit](/cognitive-toolkit/) do clusteru Azure HDInsight Spark.
 
 2. Nahrajte [Jupyter notebook](https://jupyter.org/) do clusteru [Apache Spark](https://spark.apache.org/) , abyste zjistili, jak použít školicí model Microsoft Cognitive Toolkit hloubkového učení do souborů v účtu Azure Blob Storage pomocí [rozhraní Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) .
 
@@ -31,12 +28,12 @@ V tomto článku provedete následující kroky.
 
 ## <a name="how-does-this-solution-flow"></a>Jak toto řešení pokračuje?
 
-Toto řešení je rozdělené mezi Tento článek a Jupyter Poznámkový blok, který jste nahráli v rámci tohoto článku. V tomto článku provedete následující kroky:
+Toto řešení je rozdělené mezi Tento článek a Jupyter Notebook, které jste nahráli v rámci tohoto článku. V tomto článku provedete následující kroky:
 
 * Spusťte akci skriptu v clusteru HDInsight Spark a nainstalujte Microsoft Cognitive Toolkit a balíčky Pythonu.
-* Nahrajte Poznámkový blok Jupyter, který spouští řešení, do clusteru HDInsight Spark.
+* Nahrajte Jupyter Notebook, který řešení spouští, do clusteru HDInsight Spark.
 
-Do poznámkového bloku Jupyter se zabývá následující zbývající kroky.
+Následující zbývající kroky jsou pokryté v Jupyter Notebook.
 
 * Načtěte vzorové obrázky do pružné nebo RDD distribuované datové sady Spark.
   * Načtěte moduly a definujte přednastavení.
@@ -64,19 +61,19 @@ Pokyny, jak pomocí Azure Portal spustit akci skriptu, najdete v tématu [Přizp
 |Name| Nainstalovat MCT|
 |Identifikátor URI skriptu bash|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Typ (typy) uzlů:|Vedoucí pracovník|
-|Parametry|Žádná|
+|Parametry|Žádné|
 
-## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Nahrání poznámkového bloku Jupyter do clusteru Azure HDInsight Spark
+## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Odeslat Jupyter Notebook do clusteru Azure HDInsight Spark
 
-Pokud chcete použít Microsoft Cognitive Toolkit s clusterem Azure HDInsight Spark, musíte do clusteru Azure HDInsight Spark načíst Poznámkový blok Jupyter **CNTK_model_scoring_on_Spark_walkthrough. ipynb** . Tento Poznámkový blok je k dispozici na GitHubu na adrese [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
+Chcete-li použít Microsoft Cognitive Toolkit s clusterem Azure HDInsight Spark, je nutné načíst Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** do clusteru Azure HDInsight Spark. Tento Poznámkový blok je k dispozici na GitHubu na adrese [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. Stažení a extrahování [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/jupyter` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. V poznámkovém bloku Jupyter vyberte **nahrát** v pravém horním rohu a pak přejděte ke stažení a vyberte soubor `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
+1. Z Jupyter Notebook v pravém horním rohu vyberte **nahrát** a pak přejděte ke stažení a vyberte soubor `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
-    ![Nahrání poznámkového bloku Jupyter do clusteru Azure HDInsight Spark](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Nahrání poznámkového bloku Jupyter do clusteru Azure HDInsight Spark")
+    ![Nahrání Jupyter Notebook do clusteru Azure HDInsight Spark](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Nahrání Jupyter Notebook do clusteru Azure HDInsight Spark")
 
 1. Vyberte **nahrát** znovu.
 
@@ -104,8 +101,8 @@ Pokud chcete použít Microsoft Cognitive Toolkit s clusterem Azure HDInsight Sp
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

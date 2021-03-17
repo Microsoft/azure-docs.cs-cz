@@ -1,18 +1,18 @@
 ---
 title: Šifrování dat – Azure Portal – pro Azure Database for PostgreSQL jeden server
 description: Naučte se, jak nastavit a spravovat šifrování dat pro váš Azure Database for PostgreSQL samostatný server pomocí Azure Portal.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 831c50fe608e3f7de18b4d8917bb2f98a0e78308
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 98c413f85fe556f5fb413716037163931753e1d7
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501997"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240728"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure Portal
 
@@ -42,27 +42,27 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
-1. V Key Vault vyberte **zásady přístupu**  >  **Přidat zásady přístupu**.
+1. V Key Vault vyberte **zásady přístupu**  >  **Přidat zásady přístupu** .
 
-   ![Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
-2. Vyberte **klíčová oprávnění**a vyberte **získat**, **zalamovat**, **rozbalení**a **objekt zabezpečení**, což je název serveru PostgreSQL. Pokud se váš hlavní server nenašel v seznamu existujících objektů zabezpečení, je potřeba ho zaregistrovat. Budete vyzváni k registraci objektu zabezpečení serveru, když se pokusíte nastavit šifrování dat poprvé, a dojde k chybě.  
+2. Vyberte **klíčová oprávnění** a vyberte **získat** , **zalamovat** , **rozbalení** a **objekt zabezpečení** , což je název serveru PostgreSQL. Pokud se váš hlavní server nenašel v seznamu existujících objektů zabezpečení, je potřeba ho zaregistrovat. Budete vyzváni k registraci objektu zabezpečení serveru, když se pokusíte nastavit šifrování dat poprvé, a dojde k chybě.  
 
-   ![Přehled zásad přístupu](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
-3. Vyberte **Uložit**.
+3. Vyberte **Uložit** .
 
 ## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>Nastavení šifrování dat pro Azure Database for PostgreSQL jeden server
 
 1. V Azure Database for PostgreSQL pro nastavení klíče spravovaného zákazníkem vyberte možnost **šifrování dat** .
 
-   ![Snímek obrazovky Azure Database for PostgreSQL se zvýrazněným šifrováním dat](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
 2. Můžete buď vybrat Trezor klíčů a pár klíčů, nebo zadat identifikátor klíče.
 
-   ![Snímek obrazovky Azure Database for PostgreSQL s zvýrazněnými možnostmi šifrování dat](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
-3. Vyberte **Uložit**.
+3. Vyberte **Uložit** .
 
 4. Aby bylo zajištěno, že všechny soubory (včetně dočasných souborů) jsou plně zašifrované, restartujte server.
 
@@ -70,30 +70,30 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
 
 Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravovaného klíče zákazníka uloženého v Key Vault jsou všechny nově vytvořené kopie serveru taky zašifrované. Tuto novou kopii můžete vytvořit buď prostřednictvím operace místního nebo geografického obnovení, nebo prostřednictvím operace repliky (místní/napříč oblastí). Pro zašifrovaný server PostgreSQL můžete například pomocí následujících kroků vytvořit zašifrovaný obnovený server.
 
-1. Na serveru vyberte **Přehled**  >  **obnovení**.
+1. Na serveru vyberte **Přehled**  >  **obnovení** .
 
-   ![Snímek obrazovky Azure Database for PostgreSQL s zvýrazněným přehledem a obnovením](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
-   V případě serveru s povolenou replikací vyberte v části **Nastavení** možnost **replikace**.
+   V případě serveru s povolenou replikací vyberte v části **Nastavení** možnost **replikace** .
 
-   ![Snímek obrazovky Azure Database for PostgreSQL s zvýrazněnou replikací](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
 2. Po dokončení operace obnovení bude nový server vytvořen zašifrovaný pomocí klíče primárního serveru. Funkce a možnosti na serveru jsou ale zakázané a server není dostupný. Tím zabráníte manipulaci s daty, protože identitě nového serveru ještě nebyla udělena oprávnění pro přístup k trezoru klíčů.
 
-   ![Snímek obrazovky Azure Database for PostgreSQL s zvýrazněným stavem nepřístupu](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
-3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte klíč znovu ověřit **šifrování dat**  >  **Revalidate key**.
+3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte klíč znovu ověřit **šifrování dat**  >  **Revalidate key** .
 
    > [!NOTE]
-   > První pokus o nové ověření se nezdaří, protože instanční objekt nového serveru musí mít přístup k trezoru klíčů. Chcete-li vygenerovat instanční objekt, vyberte znovu **Ověřit klíč**, čímž se zobrazí chyba, ale vygeneruje se instanční objekt. Potom si přečtěte tento [postup](#set-the-right-permissions-for-key-operations) výše v tomto článku.
+   > První pokus o nové ověření se nezdaří, protože instanční objekt nového serveru musí mít přístup k trezoru klíčů. Chcete-li vygenerovat instanční objekt, vyberte znovu **Ověřit klíč** , čímž se zobrazí chyba, ale vygeneruje se instanční objekt. Potom si přečtěte tento [postup](#set-the-right-permissions-for-key-operations) výše v tomto článku.
 
-   ![Snímek obrazovky Azure Database for PostgreSQL se zvýrazněným krokem replatným](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
    Bude nutné poskytnout Trezor klíčů k novému serveru.
 
 4. Po registraci instančního objektu znovu ověřte klíč a server obnoví své běžné funkce.
 
-   ![Snímek obrazovky Azure Database for PostgreSQL se zobrazením obnovených funkcí](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu":::
 
 ## <a name="next-steps"></a>Další kroky
 

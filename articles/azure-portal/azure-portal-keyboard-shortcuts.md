@@ -1,26 +1,16 @@
 ---
-title: Klávesové zkratky Azure Portal | Microsoft Docs
+title: Klávesové zkratky Azure Portal
 description: Azure Portal podporuje globální klávesové zkratky, které vám pomůžou při provádění akcí, procházení a přechodu na umístění v Azure Portal.
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: lwelicki
-editor: ''
 ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 12/20/2019
-ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205952"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745906"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
 
@@ -52,6 +42,10 @@ Tento článek obsahuje seznam klávesových zkratek, které fungují všude v A
 |Přejít na **všechny prostředky**|G + A |
 |Přejít na **skupiny prostředků**|G + R |
 |Otevřít levou položku bočního panelu na této pozici |Číslo G +|
+
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Klávesové zkratky pro konkrétní stránky v Azure Portal
+
+- [Průzkumník služby Azure Resource Graph](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>Další kroky
 

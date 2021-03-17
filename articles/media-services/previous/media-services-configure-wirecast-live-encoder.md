@@ -3,7 +3,7 @@ title: Konfigurace kodéru Wirecast streamování pro odesílání živého stre
 description: 'V tomto tématu se dozvíte, jak nakonfigurovat kodér Wirecast Live pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase. '
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,17 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: f5ca4496b9de25d6e95f37076f679eacff28af81
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a736270919f36cb7d4bbd4e686a98ddc57f402fa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954961"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016827"
 ---
-# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Wirecast k odeslání živého streamu s jednou přenosovou rychlostí 
+# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Wirecast k odeslání živého streamu s jednou přenosovou rychlostí
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 >
@@ -48,7 +51,7 @@ V tomto kurzu se dozvíte, jak spravovat Azure Media Services (AMS) pomocí nás
 ## <a name="create-a-channel"></a>Vytvoření kanálu
 1. V nástroji AMSE přejděte na kartu **Live** a klikněte pravým tlačítkem myši v oblasti kanálu. Vyberte **vytvořit kanál...** z nabídky.
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![Snímek obrazovky ukazuje vytvoření kanálu vybraného z nabídky.](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
 2. Zadejte název kanálu, pole Popis je volitelné. V části Nastavení kanálu vyberte **Standard** pro možnost Live Encoding a vstupní protokol nastavte na **RTMP**. Všechna ostatní nastavení můžete ponechat beze změny.
 
@@ -56,7 +59,7 @@ V tomto kurzu se dozvíte, jak spravovat Azure Media Services (AMS) pomocí nás
 
 3. Klikněte na **vytvořit kanál**.
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
+   ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit živý kanál.](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
 > Spuštění kanálu může trvat až 20 minut.
@@ -97,7 +100,7 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
 
     Profil kódování je předem vybraný do **Azure H. 264 720p 16:9 (1280 × 720)**. Chcete-li tato nastavení přizpůsobit, vyberte ikonu ozubeného kolečka napravo od rozevírací nabídky a pak zvolte možnost **Nová předvolba**.
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Zvolit šablonu s vybraným BlobTrigger.](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Nakonfigurujte předvolby kodéru.
 
     Pojmenujte přednastavení a ověřte následující doporučené nastavení:
@@ -115,7 +118,7 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
    * Cílová bitová rychlost: 192 kbit/s
    * Vzorkovací frekvence: 44,100 kHz
 
-     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
+     ![Snímek obrazovky zobrazuje předvolby kodéru pro AzureTest1.](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Stiskněte **Uložit**.
 
     Pole kódování má nyní nově vytvořený profil k dispozici pro výběr.
@@ -127,15 +130,15 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
 
     Když je kanál spuštěný, klikněte pravým tlačítkem myši na název kanálu, přejděte dolů na **Kopírovat vstupní adresu URL do schránky** a pak vyberte **primární vstupní adresu URL**.  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
+    ![Snímek obrazovky ukazuje možnost kopírování vstupu U R L do schránky pro primární vstup U R L.](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
 8. V okně **Nastavení výstupu** Wirecast vložte tyto informace do pole **adresa** výstupní části a přiřaďte název streamu.
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
+    ![Snímek obrazovky ukazuje nastavení výstupu.](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. Vyberte **OK**.
 2. Na hlavní obrazovce **Wirecast** potvrďte, že vstupní zdroje pro video a zvuk jsou připravené a potom stiskněte **Stream** v levém horním rohu.
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![Snímek obrazovky se zobrazí na tlačítku Wirecast Stream.](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > Než kliknete na **Stream**, **musíte** zajistit, aby byl kanál připravený.
@@ -147,7 +150,7 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
 
 Přejděte do nástroje AMSE a klikněte pravým tlačítkem myši na kanál, který chcete testovat. V nabídce najeďte myší **na přehrávání náhledu** a vyberte možnost **s Azure Media Player**.  
 
-![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![Snímek obrazovky ukazuje, že je vybraná možnost Přehrát náhled s možností Azure Media Player.](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 Pokud se datový proud objeví v přehrávači, kodér byl správně nakonfigurován pro připojení k AMS.
 
@@ -156,7 +159,7 @@ Pokud dojde k chybě, kanál se musí resetovat a nastavení kodéru se upraví.
 ## <a name="create-a-program"></a>Vytvoření programu
 1. Po potvrzení přehrávání kanálu vytvořte program. Na kartě **živá** v nástroji AMSE klikněte pravým tlačítkem myši v oblasti programu a vyberte možnost **vytvořit nový program**.  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
+    ![Snímek obrazovky zobrazuje vybranou možnost vytvořit program.](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. Pojmenujte program a v případě potřeby upravte **délku okna archivu** (výchozí nastavení je 4 hodiny). Můžete také zadat umístění úložiště nebo ponechat jako výchozí.  
 3. Zaškrtněte políčko **Spustit program nyní** .
 4. Klikněte na **vytvořit program**.  

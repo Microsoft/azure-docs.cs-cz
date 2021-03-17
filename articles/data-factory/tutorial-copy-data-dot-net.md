@@ -1,26 +1,21 @@
 ---
 title: Kopírování dat z Azure Blob Storage do Azure SQL Database
 description: Tento kurz obsahuje podrobné pokyny pro kopírování dat z Azure Blob Storage do Azure SQL Database.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.date: 11/08/2019
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2a9e19f24c4889a194c85e33317860db1d3a68d2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736555"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu vytvoříte kanál datové továrny, který kopíruje data ze služby Azure Blob Storage do Azure SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -44,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 * *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. Návod v tomto článku používá Visual Studio 2019.
 * *[Sada Azure SDK pro .NET](/dotnet/azure/dotnet-tools)*
-* *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)**, **ověřovací klíč**a **ID adresáře (tenant)**. Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
+* *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)**, **ověřovací klíč** a **ID adresáře (tenant)**. Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -89,7 +84,7 @@ Dále vytvořte tabulku jímky SQL:
 
     3. V záhlaví **zabezpečení** nabídky serveru SQL vyberte možnost **brány firewall a virtuální sítě**.
 
-    4. Na stránce **Brána firewall a virtuální sítě** v části **Povolení přístupu ke službám a prostředkům Azure pro přístup k tomuto serveru**vyberte **zapnuto**.
+    4. Na stránce **Brána firewall a virtuální sítě** v části **Povolení přístupu ke službám a prostředkům Azure pro přístup k tomuto serveru** vyberte **zapnuto**.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -98,7 +93,7 @@ Pomocí sady Visual Studio vytvořte konzolovou aplikaci C# .NET.
 1. Otevřete sadu Visual Studio.
 2. V okně **Start** vyberte **vytvořit nový projekt**.
 3. V okně **vytvořit nový projekt** vyberte v seznamu typů projektů verzi **aplikace konzoly (.NET Framework)** jazyka C#. Pak vyberte **Další**.
-4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *ADFv2Tutorial*. V poli **umístění**vyhledejte a/nebo vytvořte adresář, do kterého chcete projekt uložit. Potom vyberte **Vytvořit**. Nový projekt se zobrazí v integrovaném vývojovém prostředí sady Visual Studio.
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *ADFv2Tutorial*. V poli **umístění** vyhledejte a/nebo vytvořte adresář, do kterého chcete projekt uložit. Potom vyberte **Vytvořit**. Nový projekt se zobrazí v integrovaném vývojovém prostředí sady Visual Studio.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
@@ -117,7 +112,7 @@ Dále nainstalujte požadované balíčky knihovny pomocí Správce balíčků N
 
 Pomocí těchto kroků vytvořte klienta datové továrny.
 
-1. Otevřete *program.cs*a pak přepište existující `using` příkazy pomocí následujícího kódu, abyste mohli přidat odkazy na obory názvů.
+1. Otevřete *program.cs* a pak přepište existující `using` příkazy pomocí následujícího kódu, abyste mohli přidat odkazy na obory názvů.
 
     ```csharp
     using System;
@@ -275,7 +270,7 @@ Přidejte následující kód do `Main` metody, která vytvoří *datovou sadu o
 
 Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob, ze kterého se má kopírovat: `FolderPath` a`FileName`
+- Umístění objektu blob, ze kterého se má kopírovat: `FolderPath` a `FileName`
 - Formát objektu blob, který označuje, jak analyzovat obsah: `TextFormat` a jeho nastavení, například Oddělovač sloupců
 - Datová struktura, včetně názvů sloupců a datových typů, které jsou v tomto příkladu namapovány na tabulku SQL jímky
 
@@ -432,7 +427,7 @@ Nyní vložte kód pro kontrolu stavu běhu kanálu a Získejte podrobné inform
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Sestavte aplikaci tak, že kliknete na **sestavit**sestavení  >  **řešení**. Pak spusťte aplikaci výběrem **ladění**  >  **Spustit ladění**a ověřte spuštění kanálu.
+Sestavte aplikaci tak, že kliknete na **sestavit** sestavení  >  **řešení**. Pak spusťte aplikaci výběrem **ladění**  >  **Spustit ladění** a ověřte spuštění kanálu.
 
 Konzola vytiskne průběh vytváření datové továrny, propojené služby, datové sady, kanál a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud se nezobrazí podrobnosti o spuštění aktivity kopírování s velikostí přečtených a zapsaných dat. Pak můžete pomocí nástrojů, jako je SQL Server Management Studio (SSMS) nebo Visual Studio, připojit se k cíli Azure SQL Database a ověřit, zda cílová tabulka obsahuje zkopírovaná data.
 
@@ -566,7 +561,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

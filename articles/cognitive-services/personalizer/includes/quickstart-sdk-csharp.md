@@ -6,37 +6,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file
-ms.date: 07/30/2020
-ms.openlocfilehash: fdae79912e6fe3bf2f7d55b7405cb7883e484c47
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/25/2020
+ms.openlocfilehash: f98c34a53de60adc7866c1b57918232b966a0783
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602385"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445327"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
+[Referenční dokumentace](/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Jakmile budete mít předplatné Azure, vytvořte prostředek přizpůsobeného přizpůsobeného <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title=" "  target="_blank"> prostředku </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k rozhraní API pro přizpůsobení budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="using-this-quickstart"></a>V tomto rychlém startu
+## <a name="setting-up"></a>Nastavení
 
-V tomto rychlém startu se používá několik kroků:
+[!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-* V Azure Portal vytvořte prostředek pro přizpůsobení.
-* V Azure Portal u prostředku přizpůsobeného nástroji změňte na stránce **Konfigurace** četnost aktualizace modelu na velmi krátký interval.
-* V editoru kódu vytvořte soubor kódu a upravte soubor s kódem.
-* V příkazovém řádku nebo terminálu nainstalujte sadu SDK z příkazového řádku.
-* V příkazovém řádku nebo terminálu spusťte soubor kódu.
-
-[!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
-
-[!INCLUDE [!Change model frequency](change-model-frequency.md)]
-
-## <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
+### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
 Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE).
 
@@ -62,7 +55,7 @@ Build succeeded.
 ...
 ```
 
-## <a name="install-the-sdk"></a>Instalace sady SDK
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
 V adresáři aplikace nainstalujte klientskou knihovnu pro přizpůsobování pro .NET pomocí následujícího příkazu:
 
@@ -70,15 +63,26 @@ V adresáři aplikace nainstalujte klientskou knihovnu pro přizpůsobování pr
 dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.0-preview
 ```
 
-Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
+> [!TIP]
+> Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
+
+V adresáři projektu otevřete `Program.cs` soubor v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující direktivy using:
+
+```csharp
+using Microsoft.Azure.CognitiveServices.Personalizer;
+using Microsoft.Azure.CognitiveServices.Personalizer.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+```
 
 ## <a name="object-model"></a>Objektový model
 
-Klient pro přizpůsobování je objekt [PersonalizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclient?view=azure-dotnet) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
+Klient pro přizpůsobování je objekt [PersonalizerClient](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclient) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
 
-Pokud chcete požádat o jednu nejlepší položku obsahu, vytvořte [RankRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest?view=azure-dotnet-preview)a pak ji předejte [klientovi. Rank](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank?view=azure-dotnet-preview) – metoda Metoda Rank vrátí RankResponse.
+Pokud chcete požádat o jednu nejlepší položku obsahu, vytvořte [RankRequest](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest)a pak ji předejte [klientovi. Rank](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank) – metoda Metoda Rank vrátí RankResponse.
 
-Chcete-li odeslat skóre odměňování, vytvořte [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)a pak ho předejte [klientovi. Metoda odměňování](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) .
+Chcete-li odeslat skóre odměňování, vytvořte [RewardRequest](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest)a pak ho předejte [klientovi. Metoda odměňování](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward) .
 
 Stanovení skóre odměňování je v tomto rychlém startu triviální. V produkčním systému se určení toho, co ovlivňuje [skóre záměna](../concept-rewards.md) a kolik může být složitý proces, se může stát, že se v průběhu času rozhodnete změnit. Toto rozhodnutí o návrhu by mělo být jedním z primárních rozhodnutí v architektuře pro přizpůsobování.
 
@@ -86,45 +90,124 @@ Stanovení skóre odměňování je v tomto rychlém startu triviální. V produ
 
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro přizpůsobování pro .NET:
 
-* [Vytvoření klienta přizpůsobeného pro přizpůsobování](#create-a-personalizer-client)
+* [Vytvoření klienta přizpůsobeného pro přizpůsobování](#authenticate-the-client)
 * [Rozhraní API pro řazení](#request-the-best-action)
 * [API pro odměnu](#send-a-reward)
 
-## <a name="add-the-dependencies"></a>Přidat závislosti
 
-V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
+## <a name="authenticate-the-client"></a>Ověření klienta
 
-[!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=Dependencies)]
+V této části provedete dvě věci:
+* Zadejte svůj klíč a koncový bod.
+* Vytvoření klienta přizpůsobeného pro přizpůsobování
 
-## <a name="add-personalizer-resource-information"></a>Přidat informace o prostředku pro přizpůsobení
+Začněte přidáním následujících řádků do vaší třídy programu. Nezapomeňte přidat klíč a koncový bod z prostředku vlastního nastavení.
 
-Ve třídě **program** upravte klíč a proměnné koncového bodu směrem k hornímu okraji souboru kódu pro klíč a koncový bod prostředku Azure. 
+[!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
-[!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=classVariables)]
+```csharp
+private static readonly string ApiKey = "REPLACE-WITH-YOUR-PERSONALIZER-KEY";
+private static readonly string ServiceEndpoint = "https://REPLACE-WITH-YOUR-PERSONALIZER-RESOURCE-NAME.cognitiveservices.azure.com";
+```
 
-## <a name="create-a-personalizer-client"></a>Vytvoření klienta přizpůsobeného pro přizpůsobování
+Dále do programu přidejte metodu pro vytvoření nového klienta pro přizpůsobování.
 
-Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey je `PERSONALIZER_RESOURCE_KEY` .
+```csharp
+static PersonalizerClient InitializePersonalizerClient(string url)
+{
+    PersonalizerClient client = new PersonalizerClient(
+        new ApiKeyServiceClientCredentials(ApiKey)) { Endpoint = url };
 
-[!code-csharp[Create the Personalizer client](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=authorization)]
+    return client;
+}
+```
 
 ## <a name="get-food-items-as-rankable-actions"></a>Získání položek stravy jako operací s pořadím
 
 Akce reprezentují volby obsahu, ze kterých chcete přizpůsobovat výběr nejlepší položky obsahu. Do třídy program přidejte následující metody, které reprezentují sadu akcí a jejich funkcí. 
 
-[!code-csharp[Food items as actions](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createAction)]
+```csharp
+static IList<RankableAction> GetActions()
+{
+    IList<RankableAction> actions = new List<RankableAction>
+    {
+        new RankableAction
+        {
+            Id = "pasta",
+            Features =
+            new List<object>() { new { taste = "salty", spiceLevel = "medium" }, new { nutritionLevel = 5, cuisine = "italian" } }
+        },
+
+        new RankableAction
+        {
+            Id = "ice cream",
+            Features =
+            new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionalLevel = 2 } }
+        },
+
+        new RankableAction
+        {
+            Id = "juice",
+            Features =
+            new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionLevel = 5 }, new { drink = true } }
+        },
+
+        new RankableAction
+        {
+            Id = "salad",
+            Features =
+            new List<object>() { new { taste = "salty", spiceLevel = "low" }, new { nutritionLevel = 8 } }
+        }
+    };
+
+    return actions;
+}
+```
 
 ## <a name="get-user-preferences-for-context"></a>Získat předvolby uživatele pro kontext
 
 Přidejte následující metody do třídy program pro získání vstupu uživatele z příkazového řádku pro denní a aktuální preference v potravinách. Budou použity jako kontextové funkce.
 
-[!code-csharp[Present time out day preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTimeOfDay)]
+```csharp
+static string GetUsersTimeOfDay()
+{
+    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
 
-[!code-csharp[Present food taste preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTastePreference)]
+    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
+    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
+        timeIndex = 1;
+    }
+
+    return timeOfDayFeatures[timeIndex - 1];
+}
+```
+
+```csharp
+static string GetUsersTastePreference()
+{
+    string[] tasteFeatures = new string[] { "salty", "sweet" };
+
+    Console.WriteLine("\nWhat type of food would you prefer (enter number)? 1. salty 2. sweet");
+    if (!int.TryParse(GetKey(), out int tasteIndex) || tasteIndex < 1 || tasteIndex > tasteFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + tasteFeatures[0] + ".");
+        tasteIndex = 1;
+    }
+
+    return tasteFeatures[tasteIndex - 1];
+}
+```
 
 Obě metody používají `GetKey` metodu ke čtení výběru uživatele z příkazového řádku.
 
-[!code-csharp[Read user's choice from the command line](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=readCommandLine)]
+```csharp
+private static string GetKey()
+{
+    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
+}
+```
 
 ## <a name="create-the-learning-loop"></a>Vytvoření výukové smyčky
 
@@ -132,7 +215,69 @@ Výuková smyčka pro přizpůsobování je cyklem volání [pořadí](#request-
 
 Následující smyčka kódu projde cyklem, který uživatele požádá o jejich Předvolby na příkazovém řádku, aby si vybrali nejlepší akci, a to tak, že si vybere výběr zákazníka, který si zvolí ze seznamu, a pak pošle skóre odměňování, jak dobře ve výběru služby.
 
-[!code-csharp[Learning loop](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=mainLoop)]
+```csharp
+static void Main(string[] args)
+{
+    int iteration = 1;
+    bool runLoop = true;
+
+    IList<RankableAction> actions = GetActions();
+
+    PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
+
+    do
+    {
+        Console.WriteLine("\nIteration: " + iteration++);
+
+        string timeOfDayFeature = GetUsersTimeOfDay();
+        string tasteFeature = GetUsersTastePreference();
+
+        IList<object> currentContext = new List<object>() {
+            new { time = timeOfDayFeature },
+            new { taste = tasteFeature }
+        };
+
+        IList<string> excludeActions = new List<string> { "juice" };
+
+        string eventId = Guid.NewGuid().ToString();
+
+        var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+        RankResponse response = client.Rank(request);
+
+        Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
+
+        float reward = 0.0f;
+        string answer = GetKey();
+
+        if (answer == "Y")
+        {
+            reward = 1;
+            Console.WriteLine("\nGreat! Enjoy your food.");
+        }
+        else if (answer == "N")
+        {
+            reward = 0;
+            Console.WriteLine("\nYou didn't like the recommended food choice.");
+        }
+        else
+        {
+            Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
+        }
+
+        Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+        foreach (var rankedResponse in response.Ranking)
+        {
+            Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
+        }
+
+        client.Reward(response.EventId, new RewardRequest(reward));
+
+        Console.WriteLine("\nPress q to break, any other key to continue:");
+        runLoop = !(GetKey() == "Q");
+
+    } while (runLoop);
+}
+```
 
 Přidejte následující metody, které [získají volby obsahu](#get-food-items-as-rankable-actions)před spuštěním souboru kódu:
 
@@ -147,7 +292,22 @@ Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživ
 
 Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](../concept-feature-evaluation.md) [akcí a funkcí](../concepts-features.md) netriviální.
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=rank)]
+```csharp
+string timeOfDayFeature = GetUsersTimeOfDay();
+string tasteFeature = GetUsersTastePreference();
+
+IList<object> currentContext = new List<object>() {
+    new { time = timeOfDayFeature },
+    new { taste = tasteFeature }
+};
+
+IList<string> excludeActions = new List<string> { "juice" };
+
+string eventId = Guid.NewGuid().ToString();
+
+var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+RankResponse response = client.Rank(request);
+```
 
 ## <a name="send-a-reward"></a>Poslat odměnu
 
@@ -155,7 +315,34 @@ Chcete-li získat skóre odměňování v žádosti o odměnu, program získá v
 
 V tomto rychlém startu se přiřadí jednoduché číslo jako skóre odměňování, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má být odesláno volání [odměna](../concept-rewards.md) , v závislosti na konkrétních potřebách netriviální povahy.
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=reward)]
+```csharp
+float reward = 0.0f;
+string answer = GetKey();
+
+if (answer == "Y")
+{
+    reward = 1;
+    Console.WriteLine("\nGreat! Enjoy your food.");
+}
+else if (answer == "N")
+{
+    reward = 0;
+    Console.WriteLine("\nYou didn't like the recommended food choice.");
+}
+else
+{
+    Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
+}
+
+Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+foreach (var rankedResponse in response.Ranking)
+{
+    Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
+}
+
+// Send the reward for the action based on user response.
+client.Reward(response.EventId, new RewardRequest(reward));
+```
 
 ## <a name="run-the-program"></a>Spuštění programu
 

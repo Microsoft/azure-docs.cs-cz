@@ -1,19 +1,20 @@
 ---
 title: 'Rychlý Start: vytvoření služby Azure WAF V2 v šabloně Application Gateway-Azure Resource Manager'
 titleSuffix: Azure Application Gateway
-description: Naučte se používat šablonu Azure Resource Manager (šablonu ARM) k vytvoření brány firewall webových aplikací V2 v Azure Application Gateway.
+description: Naučte se používat šablonu pro rychlý Start Azure Resource Manager (šablonu ARM) k vytvoření služby Firewall webových aplikací V2 v Azure Application Gateway.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: subject-armqs
+ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705159"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091317"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Rychlý Start: vytvoření služby Azure WAF v2 na Application Gateway pomocí šablony ARM
 

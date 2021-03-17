@@ -1,19 +1,18 @@
 ---
 title: Testování úlohy Azure Stream Analytics s ukázkovými daty
 description: Tento článek popisuje, jak použít Azure Portal k otestování Azure Stream Analytics úlohy, ukázkového vstupu a nahrání ukázkových dat.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04d86b0ef8202c1c544524dd2a7331d521245f12
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043951"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020039"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
 
@@ -79,11 +78,11 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 4. Pokud chcete dotaz otestovat pomocí místního souboru, vyberte **Odeslat vzorový vstup** na kartě **Náhled vstupu** . 
 
-   ![Azure Stream Analytics odeslat ukázkový soubor](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![Snímek obrazovky ukazuje možnost nahrání vzorku vstupu.](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
 5. Nahrajte místní soubor a otestujte dotaz. Soubory lze nahrávat pouze pomocí formátu JSON, CSV nebo AVRO. Vyberte **OK**.
 
-   ![Azure Stream Analytics odeslat ukázkový soubor](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![Snímek obrazovky se zobrazí v dialogovém okně nahrát ukázková data, kde můžete vybrat soubor.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
 6. Po nahrání souboru můžete také zobrazit obsah souboru ve formuláři jako tabulku nebo v nezpracovaném formátu. Vyberete-li možnost **obnovit**, budou se ukázková data vracet do příchozích vstupních dat popsaných v předchozí části. Můžete nahrát jakýkoli jiný soubor a Testovat dotaz kdykoli.
 
@@ -97,10 +96,39 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 10. Po ověření výsledků zobrazených v prohlížeči můžete úlohu **Spustit** .
 
-## <a name="next-steps"></a>Další kroky
-* [Sestavte řešení IoT pomocí Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Tento kurz vás provede vytvořením uceleného řešení s generátorem dat, který simuluje provoz v rámci bezplatného zasedacího stánku.
+## <a name="limitations"></a>Omezení
 
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+1.  Časové zásady se v testování portálu nepodporují:
+
+    * Mimo pořadí: budou objednány všechny příchozí události.
+    * Pozdní doručení: nebude k dispozici pozdní událost přijetí, protože Stream Analytics může použít pouze existující data pro testování.
+   
+2.  Jazyk C# UDF není podporován.
+
+3.  Všechny testy se spustí s úlohou, která má jednu jednotku streamování.
+
+4.  Velikost časového limitu je jedna minuta. Takže jakýkoli dotaz s velikostí okna větší než 1 minuta nemůže získat žádná data.
+
+5.  Strojové učení se nepodporuje.
+
+6. Rozhraní API pro ukázková data se omezuje po pěti žádostech v intervalu 15 minut. Po skončení období od 15 minut můžete provádět další požadavky na ukázková data. Toto omezení se použije na úrovni předplatného.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+1.  Pokud se zobrazí tato chyba "při načítání výsledků došlo k potížím se síťovým připojením. Zkontrolujte prosím nastavení sítě a brány firewall. ", postupujte podle následujících kroků:
+
+  * Pokud chcete ověřit připojení ke službě, otevřete [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) v prohlížeči. Pokud tento odkaz nemůžete otevřít, aktualizujte nastavení brány firewall.
+  
+2. Pokud se zobrazí tato chyba "velikost požadavku je příliš velká. Zmenšete velikost vstupních dat a zkuste to znovu. ", postupujte podle následujících kroků:
+
+  * Zmenšení velikosti vstupu – otestujte dotaz pomocí ukázkového souboru menší velikosti nebo s menším časovým rozsahem.
+  * Zmenšit velikost dotazu – chcete-li otestovat výběr dotazu, vyberte část dotazu a potom klikněte na možnost **testovat vybraný dotaz**.
+
+
+## <a name="next-steps"></a>Další kroky
+* [Sestavte řešení IoT pomocí Stream Analytics](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): Tento kurz vás provede vytvořením uceleného řešení s generátorem dat, který simuluje provoz v rámci bezplatného zasedacího stánku.
+
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
 
 * [Příklady dotazů pro běžné vzorce použití Stream Analytics](stream-analytics-stream-analytics-query-patterns.md)
 

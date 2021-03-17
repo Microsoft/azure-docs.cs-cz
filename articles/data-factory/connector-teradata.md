@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 description: Konektor Teradata služby Data Factory umožňuje kopírovat data z Teradata Vantage do úložišť dat, která aplikace Data Factory podporuje jako jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926888"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381762"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 
@@ -41,7 +36,7 @@ Data z Teradata Vantage můžete kopírovat do libovolného podporovaného úlo�
 Konkrétně tento konektor Teradata podporuje:
 
 - Teradata **verze 14,10, 15,0, 15,10, 16,0, 16,10 a 16,20**.
-- Kopírování dat pomocí **základního** ověřování nebo ověřování **systému Windows** .
+- Kopírování dat pomocí ověřování **Basic**, **Windows** a **LDAP** .
 - Paralelní kopírování ze zdroje Teradata. Podrobnosti najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) .
 
 ## <a name="prerequisites"></a>Požadavky
@@ -62,19 +57,21 @@ Propojená služba Teradata podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavena na **Teradata**. | Ano |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
-| username | Zadejte uživatelské jméno pro připojení ke službě Teradata. Platí při použití ověřování systému Windows. | Ne |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také zvolit odkaz na [tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br>Platí při použití ověřování systému Windows nebo odkazování na heslo v Key Vault pro základní ověřování. | Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavena na **Teradata**. | Yes |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
+| username | Zadejte uživatelské jméno pro připojení ke službě Teradata. Platí při použití ověřování systému Windows. | No |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také zvolit odkaz na [tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br>Platí při použití ověřování systému Windows nebo odkazování na heslo v Key Vault pro základní ověřování. | No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 Další vlastnosti připojení můžete nastavit v připojovacím řetězci pro váš případ:
 
 | Vlastnost | Popis | Výchozí hodnota |
 |:--- |:--- |:--- |
-| UseDataEncryption | Určuje, jestli se má zašifrovat veškerá komunikace s databází Teradata. Povolené hodnoty jsou 0 nebo 1.<br><br/>- **0 (zakázáno, výchozí)**: šifruje jenom informace o ověřování.<br/>- **1 (povoleno)**: šifruje všechna data předávaná mezi ovladačem a databází. | Ne |
-| CharacterSet | Znaková sada, která se má použít pro relaci. Například `CharacterSet=UTF16` .<br><br/>Tato hodnota může být uživatelsky definovaná znaková sada nebo jedna z následujících předem definovaných znakových sad: <br/>– ASCII<br/>– UTF8<br/>– UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, kompatibilní s DOS, KANJISJIS_0S)<br/>-EUC (kompatibilní s Unixem, KANJIEC_0U)<br/>– Sálový sálový IBM (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Výchozí hodnota je `ASCII` . |
-| MaxRespSize |Maximální velikost vyrovnávací paměti odpovědí pro požadavky SQL, v kilobajtech (aktualizací KB). Například `MaxRespSize=‭10485760‬` .<br/><br/>V případě databáze Teradata verze 16,00 nebo novější je maximální hodnota 7361536. Pro připojení, která používají starší verze, je maximální hodnota 1048576. | Výchozí hodnota je `65536` . |
+| TdmstPortNumber | Číslo portu používaného pro přístup k databázi Teradata.<br>Tuto hodnotu neměňte, pokud k tomu nejste vyzváni technickou podporou. | 1025 |
+| UseDataEncryption | Určuje, jestli se má zašifrovat veškerá komunikace s databází Teradata. Povolené hodnoty jsou 0 nebo 1.<br><br/>- **0 (zakázáno, výchozí)**: šifruje jenom informace o ověřování.<br/>- **1 (povoleno)**: šifruje všechna data předávaná mezi ovladačem a databází. | `0` |
+| CharacterSet | Znaková sada, která se má použít pro relaci. Například `CharacterSet=UTF16` .<br><br/>Tato hodnota může být uživatelsky definovaná znaková sada nebo jedna z následujících předem definovaných znakových sad: <br/>– ASCII<br/>– UTF8<br/>– UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, kompatibilní s DOS, KANJISJIS_0S)<br/>-EUC (kompatibilní s Unixem, KANJIEC_0U)<br/>– Sálový sálový IBM (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | `ASCII` |
+| MaxRespSize |Maximální velikost vyrovnávací paměti odpovědí pro požadavky SQL, v kilobajtech (aktualizací KB). Například `MaxRespSize=‭10485760‬` .<br/><br/>V případě databáze Teradata verze 16,00 nebo novější je maximální hodnota 7361536. Pro připojení, která používají starší verze, je maximální hodnota 1048576. | `65536` |
+| Mechanizmus | Chcete-li k ověření připojení použít protokol LDAP, zadejte `MechanismName=LDAP` . | – |
 
 **Příklad použití základního ověřování**
 
@@ -105,6 +102,24 @@ Další vlastnosti připojení můžete nastavit v připojovacím řetězci pro 
             "connectionString": "DBCName=<server>",
             "username": "<username>",
             "password": "<password>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad ověřování pomocí protokolu LDAP**
+
+```json
+{
+    "name": "TeradataLinkedService",
+    "properties": {
+        "type": "Teradata",
+        "typeProperties": {
+            "connectionString": "DBCName=<server>;MechanismName=LDAP;Uid=<username>;Pwd=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -150,9 +165,9 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavena na hodnotu `TeradataTable` . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavena na hodnotu `TeradataTable` . | Yes |
 | database | Název instance Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
-| table | Název tabulky v instanci Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tabulka | Název tabulky v instanci Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad:**
 
@@ -173,7 +188,7 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 
 > [!NOTE]
 >
-> `RelationalTable`typ DataSet je stále podporován. Doporučujeme však použít novou datovou sadu.
+> `RelationalTable` typ DataSet je stále podporován. Doporučujeme však použít novou datovou sadu.
 
 **Předchozí datová část:**
 
@@ -204,17 +219,17 @@ Chcete-li kopírovat data z Teradata, v části **zdroj** aktivity kopírování
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `TeradataSource` . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `TeradataSource` . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne (Pokud je zadaná tabulka v datové sadě) |
-| partitionOptions | Určuje možnosti dělení dat používané při načítání dat z Teradata. <br>Povolené hodnoty jsou: **none** (default), **hash** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z Teradata se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
-| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None` . | Ne |
-| partitionColumnName | Zadejte název zdrojového sloupce, který bude použit oddíl rozsahu nebo oddíl hash pro paralelní kopírování. Pokud není zadaný, primární index tabulky se automaticky detekuje a použije se jako sloupec partition. <br>Použijte, pokud je možnost oddílu `Hash` nebo `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, vidlice `?AdfHashPartitionCondition` nebo `?AdfRangePartitionColumnName` klauzule WHERE. Viz příklad v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
-| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je možnost oddílu `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionUpbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
-| partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionLowbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
+| partitionOptions | Určuje možnosti dělení dat používané při načítání dat z Teradata. <br>Povolené hodnoty jsou: **none** (default), **hash** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z Teradata se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | No |
+| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None` . | No |
+| partitionColumnName | Zadejte název zdrojového sloupce, který bude použit oddíl rozsahu nebo oddíl hash pro paralelní kopírování. Pokud není zadaný, primární index tabulky se automaticky detekuje a použije se jako sloupec partition. <br>Použijte, pokud je možnost oddílu `Hash` nebo `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, vidlice `?AdfHashPartitionCondition` nebo  `?AdfRangePartitionColumnName` klauzule WHERE. Viz příklad v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | No |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je možnost oddílu `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionUpbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | No |
+| partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionLowbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | No |
 
 > [!NOTE]
 >
-> `RelationalSource`typ kopie zdroje je stále podporován, ale nepodporuje nové integrované paralelní zatížení z Teradata (možnosti oddílu). Doporučujeme však použít novou datovou sadu.
+> `RelationalSource` typ kopie zdroje je stále podporován, ale nepodporuje nové integrované paralelní zatížení z Teradata (možnosti oddílu). Doporučujeme však použít novou datovou sadu.
 
 **Příklad: kopírování dat pomocí základního dotazu bez oddílu**
 
@@ -258,7 +273,7 @@ Pokud povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj 
 
 Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat, zejména při načítání velkého množství dat z Teradata. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (zadejte pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
-| Scénář                                                     | Navrhovaná nastavení                                           |
+| Scenario                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Úplné načtení z velké tabulky                                   | **Parametr partition**: hash. <br><br/>Během provádění Data Factory automaticky detekuje primární indexový sloupec, aplikuje na něj hodnotu hash a kopíruje data podle oddílů. |
 | Načtení velkého množství dat pomocí vlastního dotazu.                 | **Parametr partition**: hash.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>` .<br>**Sloupec oddílu**: Určete sloupec použitý pro použití oddílu hash. Pokud není zadán, Data Factory automaticky detekuje sloupec PK tabulky, kterou jste zadali v datové sadě Teradata.<br><br>Během provádění se Data Factory nahradí `?AdfHashPartitionCondition` logikou oddílu hash a pošle se do Teradata. |
@@ -299,13 +314,13 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | Datový typ Teradata | Data Factory pomocný datový typ |
 |:--- |:--- |
 | BigInt |Int64 |
-| Blob |Byte [] |
+| Objekt blob |Byte [] |
 | Byte |Byte [] |
 | ByteInt |Int16 |
 | Char |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Datum |DateTime |
-| Desetinné číslo |Desetinné číslo |
+| Date (Datum) |DateTime |
+| Decimal |Decimal |
 | dvojité |dvojité |
 | Objekty |Nepodporováno Použije explicitní přetypování ve zdrojovém dotazu. |
 | Integer |Int32 |

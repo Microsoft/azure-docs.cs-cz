@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: návrh serveru – Azure CLI – Azure Database for MySQL'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MySQL pomocí Azure CLI z příkazového řádku.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6f79460f00ce52fd54d0cda34467d3df35185ba0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496793"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437078"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI
 
@@ -28,13 +28,11 @@ Azure Database for MySQL je relační databázová služba v cloudu Microsoftu z
 > * Aktualizace dat
 > * Obnovení dat
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ke spuštění bloků kódu v tomto kurzu můžete použít Azure Cloud Shell v prohlížeči nebo si [nainstalujte Azure CLI]( /cli/azure/install-azure-cli) ve vašem počítači.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém tento prostředek existuje nebo ve kterém se fakturuje. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az-account-set) určité ID předplatného.
 ```azurecli-interactive
@@ -42,7 +40,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina.
 
 Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
 
@@ -59,7 +57,7 @@ Následující příklad vytvoří server Azure Database for MySQL, jehož umís
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_2`mapuje se na Basic, Gen 5 a 2 virtuální jádra.
++ `--sku-name B_Gen5_2` mapuje se na Basic, Gen 5 a 2 virtuální jádra.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -185,9 +183,9 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 Příkaz `az mysql server restore` potřebuje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
 | name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -196,12 +194,25 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Pokud tyto prostředky nepotřebujete pro další rychlý start nebo kurz, můžete je pomocí následujícího příkazu odstranit: 
+
+```azurecli-interactive
+az group delete --name myresourcegroup
+```
+
+Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete).
+
+```azurecli-interactive
+az mysql server delete --resource-group myresourcegroup --name mydemoserver
+```
+
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MySQL
 > * Konfigurace brány firewall serveru
-> * Vytvoření databáze pomocí [Nástroje pro příkazový řádek MySQL](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Vytvoření databáze pomocí nástroje pro příkazový řádek mysql
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat

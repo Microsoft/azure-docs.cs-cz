@@ -4,22 +4,22 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
-ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a03f71adc99063fee4374b1436b08adf5bab783d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80159403"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511033"
 ---
-Položky v dokumentu jsou `inferenceconfig.json` mapovány na parametry pro třídu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) . Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+Položky v dokumentu jsou `inferenceconfig.json` mapovány na parametry pro třídu [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) . Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
-| Entita JSON | Parametr metody | Popis |
+| Entita JSON | Parametr metody | Description |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | Cesta k místnímu souboru, který obsahuje kód, který se má pro obrázek spustit. |
 | `sourceDirectory` | `source_directory` | Nepovinný parametr. Cesta ke složkám, které obsahují všechny soubory pro vytvoření bitové kopie, což usnadňuje přístup k jakýmkoli souborům v této složce nebo podsložce. Můžete nahrát celou složku z místního počítače jako závislosti pro webovou službu. Poznámka: vaše entry_script, conda_file a extra_docker_file_steps cesty jsou relativní cesty k source_directory cestě. |
-| `environment` | `environment` | Nepovinný parametr.  Azure Machine Learning [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py).|
+| `environment` | `environment` | Nepovinný parametr.  Azure Machine Learning [prostředí](/python/api/azureml-core/azureml.core.environment.environment).|
 
-Do konfiguračního souboru odvození můžete zahrnout úplné specifikace Azure Machine Learningho [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) . Pokud toto prostředí v pracovním prostoru neexistuje, Azure Machine Learning ho vytvoří. V opačném případě Azure Machine Learning v případě potřeby aktualizuje prostředí. Následující JSON je příklad:
+Do konfiguračního souboru odvození můžete zahrnout úplné specifikace Azure Machine Learningho [prostředí](/python/api/azureml-core/azureml.core.environment.environment) . Pokud toto prostředí v pracovním prostoru neexistuje, Azure Machine Learning ho vytvoří. V opačném případě Azure Machine Learning v případě potřeby aktualizuje prostředí. Následující JSON je příklad:
 
 ```json
 {
@@ -49,7 +49,7 @@ Do konfiguračního souboru odvození můžete zahrnout úplné specifikace Azur
                         "pip": [
                             "azureml-defaults",
                             "azureml-telemetry",
-                            "scikit-learn",
+                            "scikit-learn==0.22.1",
                             "inference-schema[numpy-support]"
                         ]
                     }
@@ -65,7 +65,7 @@ Do konfiguračního souboru odvození můžete zahrnout úplné specifikace Azur
 }
 ```
 
-V oddělených parametrech rozhraní příkazového řádku můžete také použít existující [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) Azure Machine Learning a odebrat klíč "prostředí" z konfiguračního souboru odvození. Pro název prostředí použijte-e a--EV pro verzi prostředí. Pokud nezadáte--EV, použije se nejnovější verze. Tady je příklad konfiguračního souboru odvození:
+V oddělených parametrech rozhraní příkazového řádku můžete také použít existující [prostředí](/python/api/azureml-core/azureml.core.environment.environment) Azure Machine Learning a odebrat klíč "prostředí" z konfiguračního souboru odvození. Pro název prostředí použijte-e a--EV pro verzi prostředí. Pokud nezadáte--EV, použije se nejnovější verze. Tady je příklad konfiguračního souboru odvození:
 
 ```json
 {
@@ -76,7 +76,7 @@ V oddělených parametrech rozhraní příkazového řádku můžete také použ
 
 Následující příkaz ukazuje, jak nasadit model pomocí předchozího konfiguračního souboru pro odvození (s názvem myInferenceConfig.json). 
 
-Používá také nejnovější verzi stávajícího Azure Machine Learning [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (s názvem AzureML-Minimal).
+Používá také nejnovější verzi stávajícího Azure Machine Learning [prostředí](/python/api/azureml-core/azureml.core.environment.environment) (s názvem AzureML-Minimal).
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json

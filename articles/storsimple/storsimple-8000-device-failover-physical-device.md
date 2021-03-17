@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017130"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Převzetí služeb při selhání u fyzického zařízení řady StorSimple 8000
 
@@ -56,7 +56,7 @@ Provedením následujících kroků obnovíte své zařízení na cílové fyzic
    
    1. Klikněte na **zdroj**. Zobrazí se kontejnery svazků se svazky přidruženými ke snímkům v cloudu. Pro převzetí služeb při selhání mají nárok jenom zobrazené kontejnery. V seznamu kontejnerů svazků vyberte kontejnery svazků, u kterých chcete převzít služby při selhání. **Zobrazují se jenom kontejnery svazků s přidruženými snímky cloudu a offline svazky.**
 
-       ![Výběr zdroje](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
+       ![Zvolit zdroj](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
    2. Klikněte na **cíl**. V případě kontejnerů svazků vybraných v předchozím kroku vyberte cílové zařízení v rozevíracím seznamu dostupných zařízení. V seznamu se zobrazí pouze zařízení s dostatečnou kapacitou pro kontejnery zdrojových svazků.
 
         ![Výběr cíle](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
@@ -75,7 +75,7 @@ Provedením následujících kroků obnovíte své zařízení na cílové fyzic
    
    1. Vyberte zařízení, které se použilo jako cílové zařízení pro proces převzetí služeb při selhání.
 
-       ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Vyberte zařízení 2.](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. Otevřete okno **kontejnery svazků** . Měly by být uvedené všechny kontejnery svazků společně se svazky ze starého zařízení.
 

@@ -1,14 +1,16 @@
 ---
 title: Testování pro DevOps pro aplikace LUIS
 description: Postup testování aplikace Language Understanding (LUIS) v prostředí DevOps
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 2556d2e904aff720bc02e4c7d58bf5a72af4d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538067"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788447"
 ---
 # <a name="testing-for-luis-devops"></a>Testování pro LUIS DevOps
 
@@ -16,17 +18,17 @@ Technici softwaru, kteří vyvíjí aplikaci Language Understanding (LUIS), moho
 
 V případě metodologie vývoje agilního softwaru hraje testování v budování kvalitního softwaru integrální roli. Každá významná změna aplikace LUIS by měla být doprovázena testy navrženými k otestování nových funkcí, které vývojář sestaví do aplikace. Tyto testy jsou zkontrolovány do vašeho úložiště zdrojového kódu společně se `.lu` zdrojem vaší aplikace Luis. Implementace změny je dokončena, když aplikace splňuje testy.
 
-Testy jsou důležitou součástí [pracovních postupů CI/CD](luis-concept-devops-automation.md). V případě, že se změny aplikace LUIS navrhují v žádosti o přijetí změn (PR) nebo po sloučení změn do vaší hlavní větve, by měly pracovní postupy CI spustit testy, aby ověřili, že aktualizace nezpůsobily žádné regrese.
+Testy jsou důležitou součástí [pracovních postupů CI/CD](luis-concept-devops-automation.md). Když se změny aplikace v LUIS navrhují v žádosti o přijetí změn (PR) nebo po sloučení změn do hlavní větve, pracovní postupy CI by měly spustit testy, aby ověřili, že aktualizace nezpůsobily žádné regrese.
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>Jak provádět testování částí a dávkové testování
 
 Existují dva různé druhy testování aplikace LUIS, které je třeba provést v pracovních postupech kontinuální integrace:
 
 - **Testování částí** – relativně jednoduché testy, které ověřují klíčové funkce vaší aplikace v Luis. Test jednotek projde při vrácení očekávaného záměru a očekávaných entit pro daný test utterance. Všechny testy jednotek musí být úspěšné, aby se testovací běh úspěšně dokončil.  
-Tento druh testování je podobný [interaktivnímu testování](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test) , které můžete provádět na [portálu Luis](https://www.luis.ai/).
+Tento druh testování je podobný [interaktivnímu testování](./luis-concept-test.md) , které můžete provádět na [portálu Luis](https://www.luis.ai/).
 
 - **Dávkové testy** – dávkové testování je ucelený test na vašem aktuálním škole modelu pro měření výkonu. Na rozdíl od jednotkových testů není dávkové testování úspěšné | testování. Očekává se, že při testování dávky není každý test vracet očekávaný záměr a očekávané entity. Místo toho vám Batch test pomůže zobrazit přesnost jednotlivých záměrů a entit ve vaší aplikaci a pomůže vám v průběhu času porovnat při vylepšování.  
-Tento druh testování je stejný jako [dávkové testování](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) , které můžete provádět interaktivně na portálu Luis.
+Tento druh testování je stejný jako [dávkové testování](./luis-how-to-batch-test.md) , které můžete provádět interaktivně na portálu Luis.
 
 Můžete využít testování částí od začátku projektu. Dávkové testování je ve skutečnosti jenom tehdy, když jste vytvořili schéma aplikace LUIS a pracujete na vylepšení jeho přesnosti.
 
@@ -40,7 +42,7 @@ Při psaní sady testů pro každý test, který je třeba definovat:
 * Očekávaný záměr
 * Očekávané entity.
 
-Pomocí [syntaxe dávkového souboru](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) Luis definujte skupinu testů v souboru ve formátu JSON. Příklad:
+Pomocí [syntaxe dávkového souboru](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) Luis definujte skupinu testů v souboru ve formátu JSON. Například:
 
 ```JSON
 [
@@ -74,7 +76,7 @@ V každém testu jednotek pro daný test utterance můžete:
 
 * Test, zda je vrácen správný záměr
 * Otestujte, jestli jsou vraceny klíčové entity – ty, které jsou pro vaše řešení klíčové –.
-* Otestujte, že [skóre předpovědi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score) pro záměr a entity překročí prahovou hodnotu, kterou definujete. Například se můžete rozhodnout, že budete předpokládat, že pokud skóre předpovědi záměru a pro klíčové entity překročí 0,75, bude to mít za to, že test prošel.
+* Otestujte, že [skóre předpovědi](./luis-concept-prediction-score.md) pro záměr a entity překročí prahovou hodnotu, kterou definujete. Například se můžete rozhodnout, že budete předpokládat, že pokud skóre předpovědi záměru a pro klíčové entity překročí 0,75, bude to mít za to, že test prošel.
 
 V testování částí je vhodné otestovat, zda klíčové entity byly vráceny v reakci předpovědi, ale ignorovat všechny falešně pozitivní výsledky. *Falešně pozitivní* jsou entity, které se nacházejí v odpovědi předpovědi, ale které nejsou definovány v očekávané výsledky testu. Díky ignorování falešně pozitivních hodnot znamená, že je méně náročné na vytváření testů jednotek a stále vám umožní soustředit se na testování, že data, která jsou klíč pro vaše řešení, se vracejí v reakci na předpovědi.
 
@@ -83,15 +85,15 @@ V testování částí je vhodné otestovat, zda klíčové entity byly vráceny
 
 #### <a name="designing-batch-tests"></a>Navrhování dávkových testů
 
-Sady dávkových testů by měly obsahovat velký počet testových případů, které jsou navrženy k testování napříč všemi záměry a všemi entitami v aplikaci LUIS. Informace o definování sady dávkových testů najdete [v tématu testování dávky na portálu Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) .
+Sady dávkových testů by měly obsahovat velký počet testových případů, které jsou navrženy k testování napříč všemi záměry a všemi entitami v aplikaci LUIS. Informace o definování sady dávkových testů najdete [v tématu testování dávky na portálu Luis](./luis-how-to-batch-test.md) .
 
 ### <a name="running-tests"></a>Spouštění testů
 
 Portál LUIS nabízí funkce, které vám pomůžou s interaktivním testováním:
 
-* [**Interaktivní testování**](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test) vám umožňuje odeslat ukázkovou utterance a získat odpověď na LUISé záměry a entity. Úspěšnost testu ověříte vizuální kontrolou.
+* [**Interaktivní testování**](./luis-concept-test.md) vám umožňuje odeslat ukázkovou utterance a získat odpověď na LUISé záměry a entity. Úspěšnost testu ověříte vizuální kontrolou.
 
-* [**Dávkové testování**](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) používá jako vstup soubor dávkového testu k ověření, jestli vaše aktivní vyškolená verze měří přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktivní verzi a zobrazovat výsledky pomocí grafu.
+* [**Dávkové testování**](./luis-how-to-batch-test.md) používá jako vstup soubor dávkového testu k ověření, jestli vaše aktivní vyškolená verze měří přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktivní verzi a zobrazovat výsledky pomocí grafu.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Spouštění testů v procesu automatizovaného sestavení
 
@@ -107,7 +109,7 @@ Možnosti testování, které jsou k dispozici na portálu LUIS, nevyžadují pu
 
 > [!TIP]
 > * Pokud implementujete vlastní testovací řešení a napíšete kód pro odeslání projevy testu do koncového bodu, pamatujte, že pokud používáte klíč pro vytváření LUIS, je povolená četnost transakcí omezená na 5TPS. Buď omezte rychlost odesílání, nebo místo toho použijte klíč předpovědi.
-> * Při odesílání testovacích dotazů na koncový bod nezapomeňte použít `log=false` v řetězci dotazu žádosti o předpověď. Tím zajistíte, že se testovací projevy neprotokoluje LUIS a skončí v seznamu kontroly projevy koncového bodu, který prezentuje funkce LUIS [Active Learning](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) , a v důsledku toho se nechtěně přidají do školicích projevy vaší aplikace.
+> * Při odesílání testovacích dotazů na koncový bod nezapomeňte použít `log=false` v řetězci dotazu žádosti o předpověď. Tím zajistíte, že se testovací projevy neprotokoluje LUIS a skončí v seznamu kontroly projevy koncového bodu, který prezentuje funkce LUIS [Active Learning](./luis-concept-review-endpoint-utterances.md) , a v důsledku toho se nechtěně přidají do školicích projevy vaší aplikace.
 
 #### <a name="running-unit-tests-at-the-command-line-and-in-cicd-workflows"></a>Spouštění testů jednotek na příkazovém řádku a v pracovních postupech CI/CD
 
@@ -121,13 +123,13 @@ Můžete použít [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) balíč
 Můžete také použít NLU. DevOps balíček pro spouštění dávkových testů na příkazovém řádku.
 
 * Použijte NLU. DevOps [test Command](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) pro odeslání testů z testovacího souboru do koncového bodu a zachycení skutečných výsledků předpovědi v souboru stejným způsobem jako u testů jednotek.
-* Použijte NLU. [Příkaz DevOps Compare](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) v [režimu testu výkonu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) pro měření výkonu aplikace můžete také porovnat výkon aplikace s srovnávacím testem výkonnosti, například výsledky z nejnovějšího potvrzení na hlavní nebo aktuální vydání. V režimu testu výkonu `compare` příkaz vygeneruje výstup testu nunit a [výsledky dávkových testů](https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#batch-test) ve formátu JSON.
+* Použijte NLU. DevOps [Compare – příkaz](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) v [režimu testu výkonnosti](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) pro měření výkonu aplikace můžete také porovnat výkon aplikace s srovnávacím testem výkonnosti, například výsledky z posledního potvrzení na hlavní nebo aktuální vydání. V režimu testu výkonu `compare` příkaz vygeneruje výstup testu nunit a [výsledky dávkových testů](./luis-glossary.md#batch-test) ve formátu JSON.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS nedeterministické školení a vliv na testování
 
 Když LUIS prochází model, jako je záměr, potřebuje jak kladná data, tak s označením školení projevy, které jste zadali pro výuku aplikace pro model a záporná data-data, která *nejsou* platnými příklady využití tohoto modelu. Během školení LUIS sestaví záporná data jednoho modelu ze všech kladných dat, která jste zadali pro ostatní modely, ale v některých případech může způsobit nerovnováhu mezi daty. Aby se zabránilo této nedodržení, LUIS vyvzorkuje podmnožinu negativních dat nedeterministickým způsobem pro optimalizaci pro lepší školicí sadu, lepší výkon modelu a rychlejší školicí čas.
 
-Výsledkem tohoto nedeterministického školení je, že můžete získat mírně [odlišnou předpověď mezi různými školicími cvičeními](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score), obvykle u záměrů a/nebo entit, kde [skóre předpovědi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score) není vysoké.
+Výsledkem tohoto nedeterministického školení je, že můžete získat mírně [odlišnou předpověď mezi různými školicími cvičeními](./luis-concept-prediction-score.md), obvykle u záměrů a/nebo entit, kde [skóre předpovědi](./luis-concept-prediction-score.md) není vysoké.
 
 Pokud chcete zakázat nedeterministické školení pro tyto verze aplikací LUIS, které vytváříte pro účely testování, použijte [rozhraní API pro nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` nastavením nastaveným na `true` .
 

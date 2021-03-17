@@ -3,12 +3,12 @@ title: Spuštění aplikace z balíčku ZIP
 description: Nasaďte balíček ZIP vaší aplikace s nedělitelnost. Zlepšení předvídatelnosti a spolehlivosti chování vaší aplikace během procesu nasazování ZIP.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920718"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008125"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Spuštění aplikace v Azure App Service přímo z balíčku ZIP
 
@@ -37,17 +37,17 @@ Naproti tomu, když spouštíte přímo z balíčku, soubory v balíčku nejsou 
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_RUN_FROM_PACKAGE="1"
 ```
 
-`WEBSITE_RUN_FROM_PACKAGE="1"`umožňuje spustit aplikaci z místního balíčku aplikace. Můžete také [Spustit ze vzdáleného balíčku](#run-from-external-url-instead).
+`WEBSITE_RUN_FROM_PACKAGE="1"` umožňuje spustit aplikaci z místního balíčku aplikace. Můžete také [Spustit ze vzdáleného balíčku](#run-from-external-url-instead).
 
 ## <a name="run-the-package"></a>Spustit balíček
 
-Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí příkazu Azure CLI [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) . Příklad:
+Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí příkazu Azure CLI [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) . Příklad:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
 ```
 
-Vzhledem k tomu `WEBSITE_RUN_FROM_PACKAGE` , že nastavení aplikace je nastavené, tento příkaz neextrahuje obsah balíčku do adresáře *D:\home\site\wwwroot* vaší aplikace. Místo toho odešle soubor ZIP jako *D:\home\data\SitePackages*a vytvoří *packagename.txt* ve stejném adresáři, který obsahuje název balíčku zip, který se má načíst za běhu. Pokud váš balíček ZIP nahrajete jiným způsobem (například [FTP](deploy-ftp.md)), budete muset vytvořit adresář *D:\home\data\SitePackages* a soubor *packagename.txt* ručně.
+Vzhledem k tomu `WEBSITE_RUN_FROM_PACKAGE` , že nastavení aplikace je nastavené, tento příkaz neextrahuje obsah balíčku do adresáře *D:\home\site\wwwroot* vaší aplikace. Místo toho odešle soubor ZIP jako *D:\home\data\SitePackages* a vytvoří *packagename.txt* ve stejném adresáři, který obsahuje název balíčku zip, který se má načíst za běhu. Pokud váš balíček ZIP nahrajete jiným způsobem (například [FTP](deploy-ftp.md)), budete muset vytvořit adresář *D:\home\data\SitePackages* a soubor *packagename.txt* ručně.
 
 Příkaz také restartuje aplikaci. Protože `WEBSITE_RUN_FROM_PACKAGE` je nastavena, App Service připojí nahraný balíček jako adresář *wwwroot* jen pro čtení a spustí aplikaci přímo z tohoto připojeného adresáře.
 

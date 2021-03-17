@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: e1fdeb5e78d4e3583b995c169a3781de3b129c72
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5554ec4521a126a2c2e823b707fe42d9983b5d8e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542968"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671611"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Kurz: Azure Active Directory integrace s platformou cSaas pro Adoddle
 
@@ -27,7 +27,7 @@ Integrace platformy cSaas pro Adoddle s Azure AD poskytuje následující výhod
 * Uživatelům můžete povolit, aby se automaticky přihlásili k platformě Adoddle cSaas (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat integraci platformy Adoddle cSaas do služby Azure A
 
 4. Do vyhledávacího pole zadejte **Adoddle CSaas Platform**, vyberte **Adoddle cSaas Platform** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Adoddle cSaas Platform v seznamu výsledků](common/search-new-app.png)
+    ![Adoddle cSaas Platform v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -75,7 +75,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD s platformou Adoddle cSaas, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování pro platformu Adoddle cSaas](#configure-adoddle-csaas-platform-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování pro platformu Adoddle cSaas](#configure-adoddle-csaas-platform-single-sign-on)** a nakonfigurujte nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořit testovacího uživatele platformy cSaas pro Adoddle](#create-adoddle-csaas-platform-test-user)** , který má protějšek Britta Simon v Adoddle cSaas platforma, která je propojená s reprezentací uživatele v Azure AD.
@@ -95,7 +95,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou Ado
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -103,7 +103,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou Ado
 
     ![Informace o jednotném přihlašování pro doménu platformy Adoddle cSaas a adresy URL](common/preintegrated.png)
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -117,7 +117,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou Ado
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-adoddle-csaas-platform-single-sign-on"></a>Konfigurace jednotného přihlašování platformy Adoddle cSaas Platform
+### <a name="configure-adoddle-csaas-platform-single-sign-on"></a>Konfigurovat Adoddle platformu cSaas Single Sign-On
 
 Chcete-li nakonfigurovat jednotné přihlašování na straně **platformy Adoddle cSaas** , je třeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory platformy Adoddle cSaas](mailto:support@asite.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -125,7 +125,7 @@ Chcete-li nakonfigurovat jednotné přihlašování na straně **platformy Adodd
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -138,21 +138,21 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k platformě Adoddle cSaas.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Adoddle cSaas Platform**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Adoddle cSaas Platform**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **Adoddle CSaas Platform**.
 
@@ -180,13 +180,12 @@ V této části se na platformě Adoddle cSaas vytvoří uživatel s názvem Bri
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici platforma Adoddle cSaas, měli byste se automaticky přihlásit k platformě Adoddle cSaas, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici platforma Adoddle cSaas, měli byste se automaticky přihlásit k platformě Adoddle cSaas, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

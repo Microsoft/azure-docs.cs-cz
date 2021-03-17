@@ -15,15 +15,15 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018575"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Řízení chování při ukládání Azure CDN do mezipaměti pomocí řetězců dotazů – úroveň Standard
 > [!div class="op_single_selector"]
-> * [Úroveň Standard](cdn-query-string.md)
+> * [Standardní úroveň](cdn-query-string.md)
 > * [Úroveň Premium](cdn-query-string-premium.md)
 > 
 
@@ -31,7 +31,7 @@ ms.locfileid: "84887215"
 Pomocí služby Azure Content Delivery Network (CDN) můžete řídit ukládání souborů do mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. V rámci webové žádosti s řetězcem dotazu je řetězec dotazu ta část požadavku, která se vyskytuje po otazníku (?). Řetězec dotazu může obsahovat jednu nebo více párů klíč-hodnota, ve kterých je název pole a jeho hodnota oddělená symbolem rovná se (=). Jednotlivé páry klíč-hodnota jsou oddělené znakem ampersand (&). Například http: \/ /www.contoso.com/content.mov?field1=value1&pole2 = hodnota2. Pokud je v řetězci dotazu požadavku více než jedna dvojice klíč-hodnota, nezáleží na jejich pořadí. 
 
 > [!IMPORTANT]
-> Produkty Azure CDN Standard a Premium poskytují stejné funkce pro ukládání řetězců dotazů do mezipaměti, ale uživatelské rozhraní se liší. Tento článek popisuje rozhraní pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Akamai** a **Azure CDN Standard od Verizon**. Pro ukládání řetězců dotazů do mezipaměti s **Azure CDN Premium z Verizon**najdete informace v tématu [řízení Azure CDN ukládání do mezipaměti pomocí řetězců dotazů – úroveň Premium](cdn-query-string-premium.md).
+> Produkty Azure CDN Standard a Premium poskytují stejné funkce pro ukládání řetězců dotazů do mezipaměti, ale uživatelské rozhraní se liší. Tento článek popisuje rozhraní pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Akamai** a **Azure CDN Standard od Verizon**. Pro ukládání řetězců dotazů do mezipaměti s **Azure CDN Premium z Verizon** najdete informace v tématu [řízení Azure CDN ukládání do mezipaměti pomocí řetězců dotazů – úroveň Premium](cdn-query-string-premium.md).
 
 K dispozici jsou tři režimy řetězce dotazu:
 

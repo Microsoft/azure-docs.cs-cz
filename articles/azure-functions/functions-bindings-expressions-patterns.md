@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212607"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920286"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions vzorů výrazů vazeb
 
@@ -41,7 +41,7 @@ Když je funkce spuštěná místně, hodnoty nastavení aplikace přicházejí 
 > [!NOTE]
 > `connection`Vlastnost Triggers a Bindings je zvláštní případ a automaticky řeší hodnoty jako nastavení aplikace bez znaménka procenta. 
 
-V následujícím příkladu je Trigger služby Azure Queue Storage, který pomocí nastavení aplikace `%input-queue-name%` definuje frontu, která se má aktivovat.
+V následujícím příkladu je Trigger služby Azure Queue Storage, který pomocí nastavení aplikace `%input_queue_name%` definuje frontu, která se má aktivovat.
 
 ```json
 {
@@ -50,7 +50,7 @@ V následujícím příkladu je Trigger služby Azure Queue Storage, který pomo
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -62,7 +62,7 @@ Stejný přístup můžete použít v knihovnách tříd:
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -164,6 +164,7 @@ Například aktivační událost Azure Queue Storage podporuje následující vl
 Tyto hodnoty metadat jsou dostupné v *function.js* vlastností souboru. Předpokládejme například, že používáte Trigger fronty a zpráva Queue obsahuje název objektu blob, který chcete číst. V *function.jsv* souboru můžete ve `queueTrigger` vlastnosti objektu BLOB použít vlastnost metadata `path` , jak je znázorněno v následujícím příkladu:
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ Tyto hodnoty metadat jsou dostupné v *function.js* vlastností souboru. Předpo
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 Podrobnosti o vlastnostech metadat pro jednotlivé triggery jsou popsány v odpovídajícím referenčním článku. Příklad najdete v tématu [metadata triggeru ve frontě](functions-bindings-storage-queue-trigger.md#message-metadata). Dokumentace je také k dispozici na kartě **integrace** na portálu v části **dokumentace** pod oblastí konfigurace vazby.  

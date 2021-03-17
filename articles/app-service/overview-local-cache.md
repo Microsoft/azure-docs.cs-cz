@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080707"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852248"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
@@ -36,7 +36,7 @@ Funkce místní mezipaměti Azure App Service poskytuje zobrazení webové role 
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Způsob změny chování App Service v místní mezipaměti
 * _D:\home_ odkazuje na místní mezipaměť, která se vytvoří v instanci virtuálního počítače při spuštění aplikace. _D:\Local_ i nadále odkazuje na dočasné úložiště specifické pro virtuální počítače.
-* Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_v uvedeném pořadí. Soubory se při spuštění aplikace zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 1 GB, ale dá se zvýšit na 2 GB. Počítejte s tím, že se při zvýšení velikosti mezipaměti trvá načtení mezipaměti déle. Pokud jste zvýšili limit místní mezipaměti na 2 GB a zkopírované soubory překračují maximální velikost 2 GB, App Service bezobslužně ignoruje místní mezipaměť a přečte se ze vzdálené sdílené složky. Pokud není definováno žádné omezení nebo je limit nastaven na hodnotu nižší než 2 GB a zkopírované soubory překračují limit, může nasazení nebo swap selhat s chybou.
+* Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_ v uvedeném pořadí. Soubory se při spuštění aplikace zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 1 GB, ale dá se zvýšit na 2 GB. Počítejte s tím, že se při zvýšení velikosti mezipaměti trvá načtení mezipaměti déle. Pokud jste zvýšili limit místní mezipaměti na 2 GB a zkopírované soubory překračují maximální velikost 2 GB, App Service bezobslužně ignoruje místní mezipaměť a přečte se ze vzdálené sdílené složky. Pokud není definováno žádné omezení nebo je limit nastaven na hodnotu nižší než 2 GB a zkopírované soubory překračují limit, může nasazení nebo swap selhat s chybou.
 * Místní mezipaměť je určena pro čtení i zápis. Jakákoli změna se ale zruší, když aplikace přesune virtuální počítače nebo se restartuje. Pro aplikace, které ukládají klíčová data v úložišti obsahu, nepoužívejte místní mezipaměť.
 * _D:\home\LogFiles_ a _D:\home\Data_ obsahují soubory protokolu a data aplikací. Dvě podsložky se ukládají místně na instanci virtuálního počítače a zkopírují se do sdíleného úložiště obsahu pravidelně. Aplikace mohou uchovávat soubory protokolu a data jejich zápisem do těchto složek. Kopírování do sdíleného úložiště obsahu je ale nejlepší, takže je možné soubory protokolů a data ztratit z důvodu náhlého selhání instance virtuálního počítače.
 * [Streamování protokolů](troubleshoot-diagnostic-logs.md#stream-logs) je ovlivněno nejlepší kopií. V protokolech streamování můžete sledovat zpoždění v délce jedné minuty.
@@ -45,7 +45,11 @@ Funkce místní mezipaměti Azure App Service poskytuje zobrazení webové role 
 * Nasazení aplikací prostřednictvím jakékoli podporované metody se publikují přímo do trvalého sdíleného úložiště obsahu. Chcete-li aktualizovat složky _D:\home\site_ a _D:\home\siteextensions_ v místní mezipaměti, je nutné aplikaci restartovat. Chcete-li zajistit bezproblémové životní cyklus, přečtěte si informace dále v tomto článku.
 * Výchozí zobrazení obsahu webového serveru SCM bude mít nadále k disverzi úložiště sdíleného obsahu.
 
-## <a name="enable-local-cache-in-app-service"></a>Povolit místní mezipaměť v App Service
+## <a name="enable-local-cache-in-app-service"></a>Povolit místní mezipaměť v App Service 
+
+> [!NOTE]
+> Místní mezipaměť není podporována v úrovni **F1** nebo **D1** . 
+
 Místní mezipaměť se konfiguruje pomocí kombinace nastavení rezervovaných aplikací. Tato nastavení aplikace můžete nakonfigurovat pomocí následujících metod:
 
 * [Azure Portal](#Configure-Local-Cache-Portal)
@@ -54,7 +58,7 @@ Místní mezipaměť se konfiguruje pomocí kombinace nastavení rezervovaných 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Konfigurace místní mezipaměti pomocí Azure Portal
 <a name="Configure-Local-Cache-Portal"></a>
 
-Pomocí tohoto nastavení aplikace povolíte místní mezipaměť na základě jednotlivých webových aplikací:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+Pomocí tohoto nastavení aplikace povolíte místní mezipaměť na základě jednotlivých webových aplikací: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
 ![Nastavení aplikace Azure Portal: místní mezipaměť](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
@@ -116,3 +120,6 @@ Místní mezipaměť zabraňuje restartování aplikace související s úloži�
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Vylučuje místní mezipaměť kopírování všech adresářů na rychlejší místní disk?
 V rámci kroku, který kopíruje obsah úložiště, se vyloučí všechny složky s názvem úložiště. To pomáhá scénářům, kde obsah webu může obsahovat úložiště správy zdrojového kódu, které nemusí být potřeba během každodenního provozu aplikace. 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>Jak vyprázdnit protokoly místní mezipaměti po operaci správy lokality?
+Pokud chcete vyprázdnit protokoly místních mezipamětí, zastavte a restartujte aplikaci. Tato akce vymaže starou mezipaměť. 

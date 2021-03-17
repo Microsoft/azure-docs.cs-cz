@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: informace o šifrování'
 description: Přečtěte si o šifrování ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.author: cherylmc
-ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.author: duau
+ms.openlocfilehash: 693d2304324bdfcac298b3e20ddd0d882a16533c
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838752"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899866"
 ---
 # <a name="expressroute-encryption"></a>Šifrování ExpressRoute
  
@@ -31,16 +31,14 @@ Ne. Pokud je MACsec nakonfigurovaný a dojde k neshodě klíčů, ztratíte při
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Povolí MACsec na ExpressRoute přímé snížení výkonu sítě?
 K šifrování a dešifrování MACsec dochází v hardwaru na směrovačích, které používáme. Na naší straně není dopad na výkon. Měli byste si však u zařízení, která používáte, kontrolovat u dodavatele sítě a zjistit, zda má MACsec nějaké snížení výkonu.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>Které šifrovací sady jsou podporované pro šifrování?
-Podporuje se jenom verze AES128 a AES256 pro [číslování rozšířených paketů](https://1.ieee802.org/security/802-1aebw/) . Kromě toho prosím na svém zařízení zakážete [identifikátor zabezpečeného kanálu (SCI)](https://en.wikipedia.org/wiki/IEEE_802.1AE) . 
+Podporujeme jenom verzi AES-128 a AES-256 pro [Rozšířené číslování paketů](https://1.ieee802.org/security/802-1aebw/) . V konfiguraci MACsec na zařízení je taky potřeba zakázat [identifikátor sci (Secure Channel Identifier)](https://wikipedia.org/wiki/IEEE_802.1AE) . 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Komplexní šifrování pomocí protokolu IPsec – Nejčastější dotazy
 IPsec je [Standard IETF](https://tools.ietf.org/html/rfc6071). Šifruje data na úrovni Internet Protocol (IP) nebo síťové vrstvy 3. Protokol IPsec můžete použít k šifrování komplexního připojení mezi vaší místní sítí a virtuální sítí (VNET) v Azure. Další informace najdete v dalších nejčastějších dotazech.
 ### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>Je možné povolit protokol IPsec kromě MACsec na ExpressRoute přímých portech?
 Ano. MACsec zabezpečuje fyzické připojení mezi vámi a společností Microsoft. IPsec zabezpečuje komplexní připojení mezi vámi a vašimi virtuálními sítěmi v Azure. Můžete je povolit nezávisle. 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Můžu použít Azure VPN Gateway k nastavení tunelu IPsec mezi místní sítí a virtuální sítí Azure?
-Ano. Tento tunel IPsec můžete nastavit přes partnerské vztahy Microsoftu vašeho okruhu ExpressRoute. Postupujte podle našeho [Průvodce konfigurací](site-to-site-vpn-over-microsoft-peering.md).
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Můžu použít Azure VPN Gateway k nastavení tunelu IPsec přes privátní partnerský vztah Azure?
-Pokud přijmete Azure Virtual WAN, můžete postupovat podle [těchto kroků](../virtual-wan/vpn-over-expressroute.md) k zašifrování kompletního připojení. Pokud máte běžnou virtuální síť Azure, můžete do své virtuální sítě nasadit bránu VPN třetí strany a vytvořit tunelovou propojení IPsec mezi IT a místní bránou VPN.
+Ano. Pokud přijmete Azure Virtual WAN, můžete postupovat podle [těchto kroků](../virtual-wan/vpn-over-expressroute.md) k zašifrování kompletního připojení. Pokud máte běžnou virtuální síť Azure, můžete postupovat podle [těchto kroků](../vpn-gateway/site-to-site-vpn-private-peering.md) a vytvořit tunel IPSec mezi službou Azure VPN Gateway a místní bránou VPN.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Jaká je propustnost, po povolení protokolu IPsec na ExpressRoute připojení?
 Pokud se používá Azure VPN Gateway, podívejte se na toto [číslo výkonu](../vpn-gateway/vpn-gateway-about-vpngateways.md). Pokud se používá brána sítě VPN jiného výrobce, obraťte se na dodavatele s číslem výkonu.
 

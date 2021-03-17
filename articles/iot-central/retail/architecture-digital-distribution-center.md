@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 10/20/2019
-ms.openlocfilehash: b73d065b43aff5f9793e642a102ff8bb2a7be036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5f1a9a51c4aa68c11f1843424186a727be94621
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000445"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834302"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura šablony aplikace IoT Central digital Distribution Center
 
@@ -26,7 +26,7 @@ Partneři a zákazníci můžou použít šablonu aplikace & následující poky
 1. Sada senzorů IoT odesílajících data telemetrie na zařízení brány
 2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
 3. Data jsou směrována do požadované služby Azure pro manipulaci
-4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště. 
+4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště.
 5. Zpracovaná data se ukládají do horkého úložiště pro akce téměř v reálném čase nebo z chladírenského úložiště pro další vylepšení Insights založená na ML nebo analýze dávek. 
 6. Logic Apps můžete použít k napájení různých podnikových pracovních postupů v podnikových aplikacích koncových uživatelů.
 

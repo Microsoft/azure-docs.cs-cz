@@ -1,18 +1,17 @@
 ---
 title: Migrace virtuálních počítačů VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace serveru Azure Migrate
 description: Naučte se migrovat virtuální počítače VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace Azure Migrate serveru.
-author: bsiva
-ms.service: azure-migrate
-ms.manager: carmonm
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.author: raynew
-ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8a174c3b2bfb390eb7d691ae1bdcb0e28dde9032
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260019"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751083"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
 
@@ -22,12 +21,12 @@ Prostředí portálu pro migraci Azure Migrate serveru umožňuje [migrovat virt
 
 Příklady v tomto článku se používají [Azure PowerShell](/powershell/azure/new-azureps-module-az) k provedení úloh potřebných k vytvoření a nasazení Správce prostředků šablony.
 
-[Přečtěte si další informace](../virtual-machines/windows/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
+[Přečtěte si další informace](../virtual-machines/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - [Přečtěte si kurz](tutorial-migrate-vmware.md) migrace virtuálních počítačů VMware do Azure s replikací bez agentů, abyste pochopili požadavky na nástroj.
-- [Postupujte podle těchto pokynů](how-to-add-tool-first-time.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .
+- [Postupujte podle těchto pokynů](./create-manage-projects.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .
 - [Podle těchto pokynů](how-to-set-up-appliance-vmware.md) nastavte zařízení Azure Migrate pro VMware v místním prostředí a dokončete zjišťování.
 
 ## <a name="prepare-for-replication"></a>Příprava na replikaci

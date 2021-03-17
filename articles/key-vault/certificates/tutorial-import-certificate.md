@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7b15c1c4952f6e0a606b1ed46f1588c536b4ae2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503119"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204078"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -48,7 +48,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
     - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor**. 
     - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
 6. Po zadání výše uvedených informací vyberte **Vytvořit**.
@@ -86,7 +86,7 @@ Když přidáte certifikát pomocí metody **importování** , služba Azure Key
 
 Jakmile se zobrazí zpráva o úspěšném importu certifikátu, můžete na něj kliknout v seznamu a zobrazit jeho vlastnosti. 
 
-![Vlastnosti certifikátu](../media/certificates/tutorial-import-cert/current-version-hidden.png)
+![Snímek obrazovky, který ukazuje, kde zobrazit vlastnosti certifikátu.](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Import certifikátu pomocí Azure CLI
 
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-Přečtěte si další informace o [parametrech](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
+Přečtěte si další informace o [parametrech](/cli/azure/keyvault/certificate#az-keyvault-certificate-import).
 
-Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) .
+Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](/cli/azure/keyvault/certificate#az-keyvault-certificate-show) .
 
 
 ```azurecli
@@ -135,7 +135,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-Přečtěte si další informace o [parametrech](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+Přečtěte si další informace o [parametrech](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -152,6 +152,6 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 
 V tomto kurzu jste vytvořili Key Vault a importovali do něj certifikát. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)
+- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](./create-certificate-scenarios.md)
 - Podívejte se na příklady [importu certifikátů pomocí rozhraní REST API](/rest/api/keyvault/importcertificate/importcertificate) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

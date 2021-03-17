@@ -3,7 +3,7 @@ title: Začínáme s doručováním videa na vyžádání pomocí webu Azure Por
 description: Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6c98fcfa-39e6-43a5-83a5-d4954788f8a4
@@ -12,23 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fc908f909cdb64e968db78b2c98b8f0edf1c61dd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060231"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009687"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující položky:
 
 * Účet Azure: Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
@@ -51,7 +53,7 @@ Jedním z nejběžnějších scénářů při práci se službou Azure Media Ser
 
 Spuštění koncového bodu streamování:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Nastavení**  >  **koncových bodů streamování**. 
 3. Vyberte výchozí koncový bod streamování. Zobrazí se okno **výchozí koncový bod streamování – podrobnosti** .
 4. Vyberte ikonu **Spustit**.
@@ -125,7 +127,7 @@ Adresa URL sdíleného přístupového podpisu má následující formát:
 > 
 > 
 
-K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [REST API](/rest/api/media/operations/locator#update_a_locator) nebo [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
+K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [REST API](/rest/api/media/operations/locator#update_a_locator) nebo [.NET API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator). 
 
 > [!NOTE]
 > Při aktualizaci data vypršení platnosti lokátoru sdíleného přístupového podpisu se změní adresa URL.

@@ -1,23 +1,23 @@
 ---
 title: Azure Portal – omezení přístupu pro import/export ke spravovaným diskům pomocí privátních odkazů
-description: Povolte privátní odkazy pro vaše spravované disky pomocí Azure Portal, aktuálně ve verzi Preview. Umožňuje bezpečně exportovat a importovat disky v rámci vaší virtuální sítě.
+description: Pomocí Azure Portal povolte privátní odkazy na spravované disky. Umožňuje bezpečně exportovat a importovat disky v rámci vaší virtuální sítě.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b80100216003e91fde54b5e555bafb755c942810
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135840"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682915"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal – omezení přístupu pro import/export u spravovaných disků s privátními odkazy
+# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Použití Azure Portal k omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
-Podpora privátních odkazů pro spravované disky je momentálně ve verzi Preview a umožňuje omezit export a import spravovaných disků tak, aby se zobrazily jenom v rámci vaší virtuální sítě Azure. Můžete vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky pro export dat do jiné oblasti pro místní rozšiřování, zotavení po havárii a pro čtení dat pro forenzní analýzu. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejnému Internetu.
+Podpora privátních odkazů u spravovaných disků umožňuje omezit export a import spravovaných disků tak, aby se staly jenom v rámci vaší virtuální sítě Azure. Můžete vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky pro export dat do jiné oblasti pro místní rozšiřování, zotavení po havárii a pro čtení dat pro forenzní analýzu. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejnému Internetu.
 
 Vytvořením privátního koncového bodu můžete vytvořit prostředek pro přístup k disku a propojit ho s virtuální sítí ve stejném předplatném. Abyste mohli exportovat a importovat data prostřednictvím privátních odkazů, musíte k přístupu k disku přidružit disk nebo snímek. Také je nutné nastavit vlastnost NetworkAccessPolicy disku nebo snímku na `AllowPrivate` . 
 
@@ -27,15 +27,6 @@ Vlastnost NetworkAccessPolicy můžete nastavit tak, aby `DenyAll` nedocházelo 
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>Regionální dostupnost
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>Požadavky
-
-Pokud chcete používat privátní koncové body pro export a import spravovaných disků, musíte mít ve svém předplatném povolenou funkci. Pokud chcete mdprivatelinks@microsoft funkci povolit pro vaše předplatná, odešlete e-mail na adresu. com s ID předplatného.
-
-Budete si muset poznamenat virtuální síť virtuálního počítače, ke kterému jsou připojené vaše disky. Virtuální síť je nutná při konfiguraci privátního koncového bodu.
 
 ## <a name="create-a-disk-access-resource"></a>Vytvoření prostředku pro přístup k disku
 
@@ -73,7 +64,7 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. Jako **typ prostředku** vyberte **Microsoft. COMPUTE/diskAccesses** .
 1. Vyberte **prostředek pro přístup k disku** , který jste vytvořili dříve.
 1. Ponechte **cílový dílčí prostředek** jako **disky** .
-1. Vyberte **Další: >konfigurace **.
+1. Vyberte **Další: >konfigurace**.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Snímek pracovního postupu pro vytvoření privátního koncového bodu, druhé okno Se všemi zvýrazněnými hodnotami (typ prostředku, prostředek, cílový dílčí prostředek)":::
 
@@ -100,5 +91,5 @@ Právě jste dokončili konfiguraci privátních odkazů, které můžete použ�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nejčastější dotazy týkající se privátních odkazů](linux/faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Export/kopírování spravovaných snímků jako VHD do účtu úložiště v jiné oblasti pomocí PowerShellu](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Nejčastější dotazy týkající se privátních odkazů](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Export/kopírování spravovaných snímků jako VHD do účtu úložiště v jiné oblasti pomocí PowerShellu](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

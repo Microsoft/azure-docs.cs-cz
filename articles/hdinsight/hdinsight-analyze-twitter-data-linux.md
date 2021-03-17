@@ -1,19 +1,16 @@
 ---
 title: Analýza dat Twitteru pomocí Apache Hive – Azure HDInsight
 description: Naučte se, jak pomocí Apache Hive a Apache Hadoop v HDInsight transformovat nezpracovaná data TWitteru do tabulky s možností prohledávání.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 74a18be37608b2ac0c8a64655fa833753111706a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086717"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942770"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hive a Apache Hadoop v HDInsight
 
@@ -37,7 +34,7 @@ Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumen
    | Pole | Hodnota |
    |--- |--- |
    | Název |MyHDInsightApp |
-   | Description |MyHDInsightApp |
+   | Popis |MyHDInsightApp |
    | Web |`https://www.myhdinsightapp.com` |
 
 4. Vyberte **Ano,** souhlasím a pak vyberte **vytvořit aplikaci Twitter**.
@@ -50,7 +47,7 @@ Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumen
 
 8. V pravém horním rohu stránky vyberte **test OAuth** .
 
-9. Zapište **klíč příjemce**, **tajný klíč příjemce**, **přístupový token**a **tajný klíč přístupového tokenu**.
+9. Zapište **klíč příjemce**, **tajný klíč příjemce**, **přístupový token** a **tajný klíč přístupového tokenu**.
 
 ### <a name="download-tweets"></a>Stáhnout tweety
 
@@ -143,7 +140,7 @@ Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do sou
     > [!TIP]  
     > Upravte témata filtr na posledním řádku, abyste mohli sledovat oblíbená klíčová slova. Používání klíčových slov oblíbená v době spuštění skriptu umožňuje rychlejší zachytávání dat.
 
-1. Použijte **kombinaci kláves CTRL + X**a potom kliknutím na **Y** soubor uložte.
+1. Použijte **kombinaci kláves CTRL + X** a potom kliknutím na **Y** soubor uložte.
 
 1. Pomocí následujícího příkazu spusťte soubor a stáhněte tweety:
 
@@ -283,7 +280,7 @@ Tyto příkazy ukládají data do umístění, ke kterému mají přístup všec
    WHERE (length(json_response) > 500);
    ```
 
-1. Stiskněte klávesy **CTRL + X**a potom stisknutím klávesy **Y** soubor uložte.
+1. Stiskněte klávesy **CTRL + X** a potom stisknutím klávesy **Y** soubor uložte.
 
 1. Pomocí následujícího příkazu spusťte HiveQL obsaženou v souboru:
 
@@ -313,4 +310,4 @@ Tyto příkazy ukládají data do umístění, ke kterému mají přístup všec
 Zjistili jste, jak transformovat nestrukturované datové sady JSON do strukturované [Apache Hive](https://hive.apache.org/) tabulky. Další informace o podregistru v HDInsight najdete v následujících dokumentech:
 
 * [Začínáme se službou HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Analýza dat zpoždění letů pomocí HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Analýza dat zpoždění letů pomocí HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

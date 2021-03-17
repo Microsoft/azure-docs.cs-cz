@@ -6,19 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83743a6985bef8ce6c03e01ed8d10aa740852106
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617080"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668814"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
 
@@ -93,13 +93,13 @@ Podrobné kroky pro řešení potíží najdete v tématu [řešení potíží s
 Přečtěte si informace v tématu [SAP note #2081065 – řešení potíží s SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2081065) a postup řešení potíží se sítí v této poznámce SAP.
 
 1. Analyzuje se doba odezvy mezi serverem a klientem.
-  A. Spusťte [_ \_ síťové \_ klienty_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
+  A. Spusťte [_\_ síťové \_ klienty_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
   
 2. Analýza komunikace mezi uzly.
-  A. Spusťte [_ \_ síťové \_ služby_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
+  A. Spusťte [_\_ síťové \_ služby_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
 
 3. Spusťte příkaz Linux Command **ifconfig** (výstup ukazuje, zda dochází ke ztrátám paketů).
-4. Spusťte příkaz **tcpdump**pro Linux.
+4. Spusťte příkaz **tcpdump** pro Linux.
 
 Pomocí nástroje open source [IPERF](https://iperf.fr/) Tool (nebo podobné) můžete také měřit skutečný výkon sítě aplikace.
 

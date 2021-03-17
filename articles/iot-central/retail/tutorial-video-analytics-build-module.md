@@ -1,5 +1,5 @@
 ---
-title: Kurz – změna IoT Edgech živých videí pro video Analytics
+title: Kurz – změna Azure IoT Edgech živých videí pro video Analytics
 description: V tomto kurzu se dozvíte, jak upravit a sestavit moduly pro bránu video Analytics, které používá šablona aplikace zjišťování objektů a pohybu pro video Analytics.
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721459"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Kurz: úpravy a sestavení modulů pro bránu pro video Analytics v reálném čase
 
@@ -25,11 +25,13 @@ V předchozích kurzech se používají předem připravené image modulů.
 
 K dokončení kroků v tomto kurzu budete potřebovat:
 
-* [Node.js](https://nodejs.org/en/download/) v10 za účelem nebo novější
-* [Visual Studio Code](https://code.visualstudio.com/Download) s nainstalovaným rozšířením [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
-* Modul [Docker](https://www.docker.com/products/docker-desktop)
-* [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) hostovat vaše verze modulů.
-* Účet [Azure Media Services](https://docs.microsoft.com/azure/media-services/) . Pokud jste dokončili předchozí kurzy, můžete znovu použít ten, který jste vytvořili dříve.
+
+> [!div class="checklist"]
+> * [Node.js](https://nodejs.org/en/download/) v10 za účelem nebo novější
+> * [Visual Studio Code](https://code.visualstudio.com/Download) s nainstalovaným rozšířením [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
+> * Modul [Docker](https://www.docker.com/products/docker-desktop)
+> * [Azure Container Registry](../../container-registry/index.yml) hostovat vaše verze modulů.
+> * Účet [Azure Media Services](../../media-services/index.yml) . Pokud jste dokončili předchozí kurzy, můžete znovu použít ten, který jste vytvořili dříve.
 
 ## <a name="clone-the-repository"></a>Klonování úložiště
 
@@ -50,7 +52,7 @@ Otevřete místní složku úložiště *Live-video-Analytics* s vs Code.
 1. Úpravou `LvaEdgeGatewayModule` části modul přidejte název své image a název účtu AMS do `env:amsAccountName:value` .
 1. Upravte `lvaYolov3` část modul a přidejte název své image.
 1. Upravte `lvaEdge` část modul a přidejte název své image.
-1. Další informace o tom, jak dokončit konfiguraci, najdete v tématu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-create-app.md) .
+1. Další informace o tom, jak dokončit konfiguraci, najdete v tématu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-create-app-yolo-v3.md) .
 
 ## <a name="build-the-code"></a>Sestavení kódu
 
@@ -73,6 +75,13 @@ Otevřete místní složku úložiště *Live-video-Analytics* s vs Code.
 1. Pomocí terminálu VS Code spusťte příkaz pro **opravu verze npm** . Tento skript sestavení nasadí image do vašeho registru kontejneru. Výstup v okně VS Code terminálu ukazuje, jestli je sestavení úspěšné.
 
 1. Verze bitové kopie **LvaEdgeGatewayModule** se zvýší při každém dokončení sestavení. Tuto verzi je nutné použít v souboru manifestu nasazení.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
 
 ## <a name="next-steps"></a>Další kroky
 

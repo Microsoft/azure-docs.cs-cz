@@ -1,23 +1,30 @@
 ---
 title: SSL/TLS-Azure Database for PostgreSQL – jeden server
 description: Pokyny a informace o tom, jak nakonfigurovat připojení TLS pro Azure Database for PostgreSQL pro jeden server.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142707"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000942"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení TLS v Azure Database for PostgreSQL – jeden server
 
 Azure Database for PostgreSQL upřednostňuje připojení klientských aplikací ke službě PostgreSQL pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Vynucování připojení TLS mezi vaším databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky typu "prostředník-in-the-middle" tím, že šifruje datový proud mezi serverem a vaší aplikací.
 
 Ve výchozím nastavení je databázová služba PostgreSQL nakonfigurovaná tak, aby vyžadovala připojení TLS. Pokud klientská aplikace nepodporuje připojení TLS, můžete zakázat vyžadování TLS.
+
+>[!NOTE]
+> Na základě zpětné vazby od zákazníků jsme rozšířili vyřazení kořenových certifikátů pro naši stávající kořenovou certifikační autoritu Baltimore do 15. února 2021 (02/15/2021).
+
+> [!IMPORTANT] 
+> Platnost kořenového certifikátu SSL je nastavená na vypršení platnosti od 15. února 2021 (02/15/2021). Aktualizujte prosím svoji aplikaci, aby používala [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Další informace najdete v tématu [plánované aktualizace certifikátů](concepts-certificate-rotation.md) .
+
 
 ## <a name="enforcing-tls-connections"></a>Vynucování připojení TLS
 
@@ -33,7 +40,7 @@ Volitelně můžete zakázat vynucování připojení TLS. Microsoft Azure dopor
 
 Přejděte na server Azure Database for PostgreSQL a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolíte nebo zakážete nastavení **Vynutilí připojení SSL** . Pak klikněte na **Uložit**.
 
-![Zabezpečení připojení – zakázat vymáhání TLS/SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+:::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="Zabezpečení připojení – zakázat vymáhání TLS/SSL":::
 
 Nastavení můžete potvrdit zobrazením stránky **Přehled** , kde se zobrazí indikátor **stavu vystavení SSL** .
 
@@ -92,6 +99,17 @@ Například nastavení minimální verze nastavení TLS na TLS 1,0 znamená, že
 > Jakmile vynucujete minimální verzi protokolu TLS, nemůžete později zakázat vynucení minimální verze.
 
 Informace o tom, jak nastavit nastavení TLS pro váš Azure Database for PostgreSQL samostatný server, najdete v článku [jak nakonfigurovat nastavení TLS](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>Podpora šifry pomocí Azure Database for PostgreSQL jednoho serveru
+
+V rámci komunikace SSL/TLS se šifrovací sady ověřují a podporují jenom šifrovací obleky, které můžou komunikovat s Serer databáze. Ověřování šifrovací sady se řídí ve [vrstvě brány](concepts-connectivity-architecture.md#connectivity-architecture) a ne explicitně na samotném uzlu. Pokud šifrovací sady neodpovídají jedné z níže uvedených sad, připojení příchozích klientů se odmítnou.
+
+### <a name="cipher-suite-supported"></a>Podporovaná šifrovací sada
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Další kroky
 

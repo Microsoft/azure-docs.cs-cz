@@ -1,30 +1,33 @@
 ---
 title: Chraňte svůj obsah pomocí dynamického šifrování Media Services V3
-titleSuffix: Azure Media Services
 description: Přečtěte si o ochraně obsahu s dynamickým šifrováním, protokoly streamování a typy šifrování v Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 7402172473056f191c2c50fa8aa8bd99d4e948eb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023258"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095923"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 
-Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. Pokud je obsah zašifrovaný pomocí nezašifrovaného klíče AES a pošle se přes HTTPS, není nejasný, dokud nedosáhne klienta. 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. Pokud je obsah zašifrovaný pomocí nezašifrovaného klíče AES a pošle se přes HTTPS, není nejasný, dokud nedosáhne klienta.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 V Media Services V3 je klíč obsahu přidružený k lokátoru streamování (viz [Tento příklad](protect-with-aes128.md)). Pokud používáte službu doručování klíčů Media Services, můžete nechat Azure Media Services vygenerovat klíč obsahu. Klíč obsahu by se měl vygenerovat sami, pokud používáte vlastní službu pro doručování klíčů, nebo pokud potřebujete, aby byl scénář s vysokou dostupností, kdy potřebujete stejný klíč obsahu ve dvou datových centrech.
 
@@ -134,7 +137,7 @@ HLS/CMAF + FairPlay (včetně HEVC/H. 265) se podporuje na následujících zař
 
 * iOS 11 nebo novější.
 * iPhone 8 nebo novější.
-* MacOS vysoký Sierra s PROCESORem Intel 7 pro generace.
+* macOS vysoký Sierra s PROCESORem Intel 7 pro generace.
 
 ### <a name="mpeg-dash"></a>MPEG-POMLČKA
 
@@ -154,6 +157,10 @@ Protokol Smooth Streaming podporuje následující formáty kontejneru a schéma
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PIFF 1,1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> Podpora PIFF 1,1 je poskytována jako zpětně kompatibilní řešení pro inteligentní TV (Samsung, LG), které implementovalo úvodní verzi programu Common Encryption. Doporučuje se používat jenom formát PIFF, pokud je to potřeba pro podporu inteligentních televizorů legacey Samsung nebo LG dodaných mezi 2009-2015, které podporují verzi PIFF 1,1 šifrování PlayReady. 
 
 ### <a name="browsers"></a>Browsers
 
@@ -242,14 +249,14 @@ Příklad:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`má hodnotu požadovaného klíče. Můžete použít, `AlternativeMediaId` Pokud chcete mapovat požadavek na entitu na straně. `AlternativeMediaId`Můžete například použít k usnadnění vyhledávání oprávnění.
+`ContentKeyId` má hodnotu požadovaného klíče. Můžete použít, `AlternativeMediaId` Pokud chcete mapovat požadavek na entitu na straně. `AlternativeMediaId`Můžete například použít k usnadnění vyhledávání oprávnění.
 
 Příklady REST, které používají vlastní licence nebo adresy URL pro získání klíčů, najdete v tématu [zásady streamování – vytvořit](/rest/api/media/streamingpolicies/create).
 
 > [!NOTE]
 > Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud se zobrazí `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` Chyba, ujistěte se, že zadáváte vhodné zásady streamování.
 

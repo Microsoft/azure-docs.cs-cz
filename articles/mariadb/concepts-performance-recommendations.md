@@ -1,17 +1,17 @@
 ---
 title: Doporučení pro výkon – Azure Database for MariaDB
 description: Tento článek popisuje funkci doporučení výkonu v Azure Database for MariaDB
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5949c6ba1ed176a609d3ceed4150ac06855440e9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484710"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664312"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Doporučení k výkonu ve službě Azure Database for MariaDB
 
@@ -33,7 +33,7 @@ Otevřete **doporučení pro výkon** z části **inteligentní výkon** na pane
 
 Vyberte možnost **analyzovat** a zvolte databázi, která bude začínat analýzou. V závislosti na vašich úlohách může trvat několik minut, než se dokončí analýza. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provede důkladné přezkoumání vaší databáze. Doporučujeme, abyste provedli analýzu v době mimo špičku.
 
-V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena nějaká a související ID dotazu, které vygenerovalo toto doporučení. S ID dotazu můžete použít zobrazení [MySQL. query_store](concepts-query-store.md#mysqlquery_store) a získat další informace o dotazu.
+V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena nějaká a související ID dotazu, které vygenerovalo toto doporučení. Pomocí ID dotazu můžete získat další informace o dotazu pomocí zobrazení [MySQL.query_store](concepts-query-store.md#mysqlquery_store) .
 
 :::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Nová stránka s doporučeními pro výkon":::
 

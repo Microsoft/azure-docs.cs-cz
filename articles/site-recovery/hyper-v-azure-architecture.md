@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c5025b83619b505728bfdf5c4e1ccc81d3bb225e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495722"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654757"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Hyper-V do Azure
 
@@ -68,7 +68,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 | **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
 | Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
@@ -121,7 +121,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
     - Používá algoritmus bloků s pevným blokem, ve kterém jsou zdrojové a cílové soubory rozdělené do pevných bloků dat.
     - Vygenerují se kontrolní součty pro jednotlivé bloky dat. Tyto jsou porovnány s cílem určit, které bloky ze zdroje je nutné použít na cíl.
 2. Po dokončení resynchronizace by měla pokračovat normální rozdílová replikace.
-3. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Například pokud dojde k výpadku. Provedete to tak, že v Azure Portal > znovu **synchronizujete**virtuální počítač.
+3. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Například pokud dojde k výpadku. Provedete to tak, že v Azure Portal > znovu **synchronizujete** virtuální počítač.
 
     ![Snímek obrazovky znázorňující možnost opětovné synchronizace](./media/hyper-v-azure-architecture/image4-site.png)
 

@@ -3,17 +3,17 @@ title: Dokumentace ke službě Azure Database for MariaDB
 summary: Azure Database for MariaDB je relační databázová služba založená na opensourcovém serverovém stroji MariaDB.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for MariaDB s využitím opensourcových nástrojů a platformy podle vašeho výběru. Naučte se používat Azure Database for MariaDB prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
 metadata:
   description: Azure Database for MariaDB je relační databázová služba v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje MariaDB.
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: bd4bb93a43bd493069ed03f6197595fe782d605a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: a94e88dc1f7dca73f20cfee3b8cbea8cfad011af
+  ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70735375"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97516571"
 landingContent:
 - title: Informace o službě Azure Database for MariaDB
   linkLists:
@@ -23,7 +23,7 @@ landingContent:
       url: overview.md
   - linkListType: whats-new
     links:
-    - text: Podívejte se na náš blog.
+    - text: Přechod na náš blog
       url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/bg-p/ADforMariaDB
 - title: Vytvoření serveru
   linkLists:
@@ -110,12 +110,12 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Skripty Azure CLI pro běžné úlohy
-      url: /azure/mariadb/sample-scripts-azure-cli/
+      url: ./sample-scripts-azure-cli.md
   - linkListType: reference
     links:
     - text: Referenční informace pro vývojáře v Azure CLI
-      url: /rest/api/mariadb/
+      url: /cli/azure/mariadb/
     - text: Referenční informace pro vývojáře v REST API
-      url: /cli/azure/mariadb
+      url: /rest/api/mariadb/
     - text: Šablony Azure Resource Manageru
       url: /azure/templates/microsoft.dbformariadb/allversions

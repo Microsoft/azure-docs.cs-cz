@@ -3,7 +3,7 @@ title: Dokumentace k hybridní identitě
 summary: Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita.
 metadata:
   author: billmath
-  description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD.
+  description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. Umožňuje zajistit pro vaše uživatele společnou identitu pro Microsoft 365, Azure a aplikace SaaS integrované s využitím Azure AD.
   manager: daveba
   ms.author: billmath
   ms.collection: na
@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: b2596145f500d3bc3c08c754abdb3703501dc4d9
-  ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+  ms.openlocfilehash: b23c57561a866318a6dbf38dc2d669f0e9d13d32
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/25/2020
-  ms.locfileid: "85356555"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "89661110"
 landingContent:
 - title: Informace o hybridních identitách
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Určení metody ověřování, která je pro vás nejvhodnější
-      url: /azure/security/fundamentals/choose-ad-authn
+      url: ./choose-ad-authn.md
 - title: Začínáme s hybridní identitou
   linkLists:
   - linkListType: how-to-guide

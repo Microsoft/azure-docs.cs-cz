@@ -1,17 +1,16 @@
 ---
 title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložiště | Microsoft Docs
 description: Tento článek popisuje Azure Monitor funkce úložiště, která správcům úložiště poskytuje rychlý přehled o problémech s výkonem a využitím jejich Azure Storagech účtů.
-ms.subservice: ''
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708063"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -31,14 +30,11 @@ Kombinace it přináší:
 
 * **Přizpůsobitelné** , kde můžete měnit metriky, které chcete zobrazit, upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům, a uložit jako vlastní sešit. Grafy v sešitě lze připnout na řídicí panel Azure.  
 
-Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. ve výchozím nastavení se shromažďují metriky úložiště z vašich účtů úložiště. Pokud neznáte metriky dostupné na Azure Storage, podívejte se na popis a definici v části Azure Storage metriky tím, že zkontrolujete [metriky služby Azure Storage](../../storage/common/monitor-storage.md).
+Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. ve výchozím nastavení se shromažďují metriky úložiště z vašich účtů úložiště. Pokud neznáte metriky dostupné na Azure Storage, podívejte se na popis a definici v části Azure Storage metriky tím, že zkontrolujete [metriky služby Azure Storage](../../storage/blobs/monitor-blob-storage.md).
 
 >[!NOTE]
 >Pro přístup k této funkci se neplatí žádné poplatky a účtují se vám jenom Azure Monitor základní funkce, které nakonfigurujete nebo povolíte, jak je popsáno na stránce [Azure monitor s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/monitor/) .
 
->[!NOTE]
->Azure Monitor pro úložiště nepodporuje účty pro [obecné účely v1](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts).
->
 
 ## <a name="view-from-azure-monitor"></a>Zobrazit z Azure Monitor
 
@@ -54,20 +50,20 @@ Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech pře
 
 ### <a name="overview-workbook"></a>Sešit s přehledem
 
-V sešitě s **přehledem** pro vybrané předplatné tabulka zobrazuje interaktivní metriky úložiště a stav dostupnosti služby pro až 10 účtů úložiště seskupených v rámci předplatného. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
+V sešitě s **přehledem** pro vybrané předplatné tabulka zobrazuje interaktivní metriky úložiště a stav dostupnosti služby pro až 5 účtů úložiště seskupených v rámci předplatného. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
 
 * V seznamu **předplatných** jsou uvedena pouze předplatná, která mají účty úložiště.  
 
-* **Účty úložiště** – ve výchozím nastavení jsou předem vybrané 10 účtů úložiště. Pokud v voliči oboru vyberete všechny nebo víc účtů úložiště, vrátí se až 200 účtů úložiště. Pokud jste například v rámci tří předplatných vybrali celkem 573 účtů úložiště, zobrazí se pouze 200 účty. 
+* **Účty úložiště** – ve výchozím nastavení se předem vyberou 5 účtů úložiště. Pokud v voliči oboru vyberete všechny nebo víc účtů úložiště, vrátí se až 200 účtů úložiště. Pokud jste například v rámci tří předplatných vybrali celkem 573 účtů úložiště, zobrazí se pouze 200 účty. 
 
 * **Časový rozsah** – ve výchozím nastavení zobrazí poslední 4 hodiny informací na základě odpovídajících výběrů.
 
 Dlaždice počítadla v rozevíracích seznamech shrnuje celkový počet účtů úložiště v předplatném a odráží, kolik z nich bylo vybráno. Pro sloupce v sešitu jsou podmíněné barevné kódování nebo Heat mapy, které vykazují metriky transakcí nebo chyby. Hluboká barva má nejvyšší hodnotu a světlejší barva je založena na nejnižších hodnotách. Pro sloupce založené na chybách je hodnota červená a pro sloupce založené na metrikách je hodnota modrá.
 
-Vyberte hodnotu v poli **dostupnost**sloupců, **latence e2e**, **latence serveru**a typ a **chyby transakce** , které vás přesměrují na sestavu přizpůsobenou konkrétnímu typu metriky úložiště, který odpovídá sloupci vybranému pro tento účet úložiště. Další informace o sešitech pro jednotlivé kategorie najdete v části [podrobné sešity úložiště](#detailed-storage-workbooks) níže. 
+Vyberte hodnotu v poli **dostupnost** sloupců, **latence e2e**, **latence serveru** a typ a **chyby transakce** , které vás přesměrují na sestavu přizpůsobenou konkrétnímu typu metriky úložiště, který odpovídá sloupci vybranému pro tento účet úložiště. Další informace o sešitech pro jednotlivé kategorie najdete v části [podrobné sešity úložiště](#detailed-storage-workbooks) níže. 
 
 >[!NOTE]
->Podrobnosti o tom, které chyby lze v sestavě zobrazit, naleznete v tématu [schéma typu odpovědi](../../storage/common/monitor-storage-reference.md#metrics-dimensions) a hledání typů odpovědí, jako je například **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. V závislosti na vybraných účtech úložiště platí, že pokud je nahlášeno více než tři typy chyb, jsou všechny ostatní chyby zastoupeny v kategorii **jiné**.
+>Podrobnosti o tom, které chyby lze v sestavě zobrazit, naleznete v tématu [schéma typu odpovědi](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) a hledání typů odpovědí, jako je například **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. V závislosti na vybraných účtech úložiště platí, že pokud je nahlášeno více než tři typy chyb, jsou všechny ostatní chyby zastoupeny v kategorii **jiné**.
 
 Výchozí prahová hodnota **dostupnosti** je:
 
@@ -88,13 +84,13 @@ Když vyberete nějakou hodnotu v jednom ze sloupců v sešitu, přejdete k podr
 
 ## <a name="view-from-a-storage-account"></a>Zobrazení z účtu úložiště
 
-Přístup k Azure Monitor pro virtuální počítače přímo z účtu úložiště:
+Přístup k virtuálnímu počítači můžete získat přímo z účtu úložiště:
 
 1. V Azure Portal vyberte účty úložiště.
 
 2. V seznamu vyberte účet úložiště. V části monitorování vyberte přehledy.
 
-    ![Stránka s přehledem vybraného účtu úložiště](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![Snímek obrazovky zobrazující stránku s přehledem pro účet úložiště.](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 V sešitě s **přehledem** pro účet úložiště se zobrazuje několik metrik výkonu úložiště, které vám pomůžou rychle vyhodnotit:
 
@@ -104,13 +100,13 @@ V sešitě s **přehledem** pro účet úložiště se zobrazuje několik metrik
 
 * Metriky a stavové dlaždice zvýrazňují dostupnost služby, celkový počet transakcí do služby úložiště, latenci E2E a latenci serveru.
 
-Po výběru některého z tlačítek pro **chyby**, **výkon**, **dostupnost**a **kapacita** se otevře příslušný sešit. 
+Po výběru některého z tlačítek pro **chyby**, **výkon**, **dostupnost** a **kapacita** se otevře příslušný sešit. 
 
 ![Stránka s přehledem vybraného účtu úložiště](./media/storage-insights-overview/storage-account-capacity-01.png)
 
 ## <a name="detailed-storage-workbooks"></a>Podrobné sešity úložiště
 
-Bez ohledu na to, jestli jste vybrali hodnotu v poli **dostupnost**sloupců, **latenci e2e**, **latenci serveru**a **typ nebo chybu transakce** , nebo pokud pro chyby, **výkon**, **dostupnost**a **kapacitu** **ze sešitu s** **přehledem** z konkrétního účtu úložiště vyberete jedno z tlačítek, každý z nich dodá sadu interaktivních informací souvisejících s úložištěm **, které**jsou přizpůsobené této kategorii.  
+Bez ohledu na to, jestli jste vybrali hodnotu v poli **dostupnost** sloupců, **latenci e2e**, **latenci serveru** a **typ nebo chybu transakce** , nebo pokud pro chyby, **výkon**, **dostupnost** a **kapacitu** **ze sešitu s** **přehledem** z konkrétního účtu úložiště vyberete jedno z tlačítek, každý z nich dodá sadu interaktivních informací souvisejících s úložištěm **, které** jsou přizpůsobené této kategorii.  
 
 * **Dostupnost** otevře sešit **dostupnosti** . Zobrazuje aktuální stav služby Azure Storage, což je tabulka s dostupným stavem jednotlivých objektů zařazených do kategorií podle datové služby definované v účtu úložiště s trendovou linií reprezentující vybraný časový rozsah a graf trend dostupnosti pro každou datovou službu v účtu.  
 
@@ -174,7 +170,7 @@ V našem příkladu budeme pracovat se sešitem kapacity pro více předplatnýc
 * Odebrání metriky
 * Změnit vykreslování barev
 
-Stejné změny můžete provádět u všech předdefinovaných sešitů **selhání**, **výkonu**, **dostupnosti**a **kapacity** .
+Stejné změny můžete provádět u všech předdefinovaných sešitů **selhání**, **výkonu**, **dostupnosti** a **kapacity** .
 
 1. Na portálu vyberte **monitor** a pak v levém podokně vyberte **účty úložiště** .
 
@@ -198,7 +194,7 @@ Teď změníme barevný motiv pro metriky kapacity v sestavě tak, aby místo mo
 
 1. Vyberte **Nastavení sloupce** v mřížce metriky.
 
-2. V podokně **Upravit nastavení sloupců** vyberte v části **sloupce** část **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ `|` Microsoft. Storage/Storageaccounts/blobservices-Capacity-BlobCapacity $ `|` Microsoft. Storage/storageaccounts/služby úložiště-Capacity- `|` `|` disks $ Microsoft. Storage/storageaccounts/** queueservices-Capacity-QueueCapacity $. V **paletě barev**v rozevíracím seznamu vyberte **zelený**.
+2. V podokně **Upravit nastavení sloupců** vyberte v části **sloupce** část **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ `|` Microsoft. Storage/Storageaccounts/blobservices-Capacity-BlobCapacity $ `|` Microsoft. Storage/storageaccounts/služby úložiště-Capacity- `|` `|` disks $ Microsoft. Storage/storageaccounts/** queueservices-Capacity-QueueCapacity $. V **paletě barev** v rozevíracím seznamu vyberte **zelený**.
 
 3. Kliknutím na **Uložit a zavřít** potvrďte změnu.
 
@@ -269,9 +265,8 @@ Každý sešit je uložený v účtu úložiště, ve kterém jste ho uložili. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
+* Nakonfigurujte [Upozornění metrik](../alerts/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
-* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).
+* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../visualize/workbooks-overview.md).
 
 * Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
-

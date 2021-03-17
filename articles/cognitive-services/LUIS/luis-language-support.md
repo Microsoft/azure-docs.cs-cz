@@ -3,20 +3,18 @@ title: Jazyková podpora – LUIS
 titleSuffix: Azure Cognitive Services
 description: Služba LUIS obsahuje celou řadu funkcí. Ne všechny funkce jsou dostupné ve stejných jazycích. Ujistěte se, že funkce, o které máte zájem, jsou podporované v jazykové verzi, na kterou cílíte. Aplikace LUIS je specifická pro jazykovou verzi a po jejím nastavení ji nejde změnit.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588018"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845457"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -30,14 +28,14 @@ Pokud potřebujete klientskou aplikaci LUIS s více jazyky, jako je chatovací r
 
 LUIS rozumí projevy v následujících jazycích:
 
-| Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčov|
+| Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](../text-analytics/language-support.md)<br>(Mínění a<br>Klíčov|
 |--|--|:--:|:--:|:--:|:--:|
-| Angličtina (Spojené státy) |`en-US` | ✔ | ✔  |✔|✔|
 | Arabština (Preview – moderní standardní arabština) |`ar-AR`|-|-|-|-|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Nizozemština |`nl-NL` |✔|-|-|✔|
-| francouzština (Francie) |`fr-FR` |✔| ✔ |✔ |✔|
+| Angličtina (Spojené státy) |`en-US` | ✔ | ✔  |✔|✔|
 | Francouzština (Kanada) |`fr-CA` |-|-|-|✔|
+| francouzština (Francie) |`fr-FR` |✔| ✔ |✔ |✔|
 | Němčina |`de-DE` |✔| ✔ |✔ |✔|
 | Gudžarátština | `gu-IN`|-|-|-|-|
 | Hindština | `hi-IN`|-|✔|-|-|
@@ -46,8 +44,8 @@ LUIS rozumí projevy v následujících jazycích:
 | Korejština |`ko-KR` |✔|-|-|Jenom klíčová fráze|
 | Maráthština | `mr-IN`|-|-|-|-|
 | Portugalština (Brazílie) |`pt-BR` |✔| ✔ |✔ |Ne všechny dílčí kultury|
-| Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|-|✔|✔|
+| Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Tamilština | `ta-IN`|-|-|-|-|
 | Telugština | `te-IN`|-|-|-|-|
 | Turečtina | `tr-TR` |✔|✔|-|Jenom mínění|
@@ -71,7 +69,7 @@ Podpora jazyků se liší u [předem sestavených entit](luis-reference-prebuilt
 Jazyky režimů diktování řeči najdete v tématu [podporované jazyky](../speech-service/speech-to-text.md) Speech.
 
 ### <a name="bing-spell-check-supported-languages"></a>Kontrola pravopisu Bingu podporované jazyky
-Seznam podporovaných jazyků a stavu naleznete v tématu Kontrola pravopisu Bingu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) .
+Seznam podporovaných jazyků a stavu naleznete v tématu Kontrola pravopisu Bingu [podporované jazyky](../bing-spell-check/language-support.md) .
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Vzácná nebo cizí slova v aplikaci
 V `en-us` jazykové verzi se Luis učí, jak rozlišovat anglická slova, včetně slangem. V `zh-cn` jazykové verzi se Luis učí, aby lišily většinu čínských znaků. Pokud v nástroji použijete zřídka používané slovo `en-us` nebo znak `zh-cn` a vidíte, že Luis se zdá, že toto slovo nebo znak není možné odlišit, můžete toto slovo nebo znak přidat do [funkce seznamu frází](luis-how-to-add-features.md). Například slova mimo jazykovou verzi aplikace – to znamená, že cizí slova--by měla být přidána do funkce seznamu frází.
@@ -90,7 +88,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |Čínština||✔||
 |Nizozemština|✔||✔|
 |Angličtina (en-us)|✔ |||
-|Francouzština (fr-FR)|✔|||
+|francouzština (fr-FR),|✔|||
 |Francouzština (fr-CA)|✔|||
 |Němčina|✔||✔|
 |Gudžarátština|✔|||
@@ -100,7 +98,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |Korejština||✔||
 |Maráthština|✔|||
 |Portugalština (Brazílie)|✔|||
-|Španělština (ES-ES)|✔|||
+|španělština (es-ES),|✔|||
 |Španělština (ES-MX)|✔|||
 |Tamilština|✔|||
 |Telugština|✔|||

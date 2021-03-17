@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z Cassandra pomocí Data Factory
 description: Přečtěte si, jak přesunout data z místní databáze Cassandra pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005fd85a152ee2765facda0d961bd9119d1598e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991497"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387406"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -48,7 +43,7 @@ Při instalaci brány se automaticky nainstaluje ovladač Microsoft Cassandra OD
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -63,13 +58,13 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Cassandra.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesCassandra** . |Yes |
-| host |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/><br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Yes |
+| Hostitel |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/><br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Yes |
 | port |Port TCP, který server Cassandra používá k naslouchání klientským připojením. |Ne, výchozí hodnota: 9042 |
 | authenticationType |Basic nebo Anonymous |Yes |
-| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
+| username |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | heslo |Zadejte heslo pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | gatewayName |Název brány, který se používá pro připojení k místní databázi Cassandra. |Yes |
 | encryptedCredential |Přihlašovací údaje zašifrované bránou |No |
@@ -82,7 +77,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro sadu dat typu **CassandraTable** má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | prostor klíčů |Název prostoru klíčů nebo schématu v databázi Cassandra. |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
 | tableName |Název tabulky v databázi Cassandra |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
@@ -97,7 +92,7 @@ Pokud je zdroj typu **CassandraSource**, jsou v oddílu typeProperties k dispozi
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz CQL Viz [odkaz na CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití dotazu SQL zadejte **název prostoru klíčů. název tabulky** , který bude představovat tabulku, kterou chcete dotazovat. |Ne (Pokud je definováno pole tableName a prostor pro datovou sadu). |
-| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠE, LOCAL_QUORUM, EACH_QUORUM LOCAL_ONE. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Ne. Výchozí hodnota je jedna. |
+| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠE, LOCAL_QUORUM, EACH_QUORUM LOCAL_ONE. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |No. Výchozí hodnota je jedna. |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Příklad JSON: kopírování dat z Cassandra do Azure Blob
 Tento příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z místní databáze Cassandra do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
@@ -265,17 +260,17 @@ Seznam vlastností podporovaných rozhraním RelationalSource naleznete v témat
 | BIGINT |Int64 |
 | PŘÍZNAKY |Byte [] |
 | DATOVÉHO |Logická hodnota |
-| NOTACI |Desetinné číslo |
-| KLEPAT |Double |
-| Plovák |Jeden |
+| NOTACI |Decimal |
+| KLEPAT |dvojité |
+| Plovák |Jednoduché |
 | INET |Řetězec |
 | INT |Int32 |
 | TEXT |Řetězec |
-| ČASOVÉ razítko |DateTime |
+| ČASOVÉ RAZÍTKO |DateTime |
 | TIMEUUID |Identifikátor GUID |
 | IDENTIFIKÁTOR |Identifikátor GUID |
 | VARCHAR |Řetězec |
-| VARINT |Desetinné číslo |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Pro typy kolekcí (mapování, nastavení, seznam atd.) se podívejte na téma [práce s typy kolekce Cassandra pomocí virtuální tabulky](#work-with-collections-using-virtual-table) .

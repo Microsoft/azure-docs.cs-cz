@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135447"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368022"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -20,7 +20,7 @@ Tento článek slouží k plánování kapacity a škálování při replikaci m
 
 ## <a name="how-do-i-start-capacity-planning"></a>Návody začít plánovat kapacitu?
 
-Pokud se chcete dozvědět víc o Azure Site Recovery požadavcích na infrastrukturu, shromážděte informace o prostředí replikace spuštěním [Plánovač nasazení služby Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) pro replikaci VMware. Další informace najdete v tématu [o Plánovač nasazení Site Recovery pro VMware do Azure](site-recovery-deployment-planner.md). 
+Pokud se chcete dozvědět víc o Azure Site Recovery požadavcích na infrastrukturu, shromážděte informace o prostředí replikace spuštěním [Plánovač nasazení služby Azure Site Recovery](./site-recovery-deployment-planner.md) pro replikaci VMware. Další informace najdete v tématu [o Plánovač nasazení Site Recovery pro VMware do Azure](site-recovery-deployment-planner.md). 
 
 Site Recovery Plánovač nasazení poskytuje sestavu s úplnými informacemi o kompatibilních a nekompatibilních virtuálních počítačích, discích na virtuálním počítači a četnosti změn dat na disk. Nástroj také shrnuje požadavky na šířku pásma sítě tak, aby splňovaly cílovou RPO a infrastrukturu Azure, která je potřebná pro úspěšnou replikaci a testovací převzetí služeb při selhání.
 
@@ -79,8 +79,8 @@ Po použití [Site Recovery Plánovač nasazení](site-recovery-deployment-plann
 
 * **Omezení šířky pásma**: provoz VMware, který se replikuje do Azure, prochází přes konkrétní procesový Server. Šířku pásma můžete omezit na počítačích, které jsou spuštěny jako procesové servery.
 * **Vliv na šířku pásma**: šířku pásma, která se používá pro replikaci, můžete ovlivnit pomocí několika klíčů registru:
-  * Hodnota registru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\UploadThreadsPerVM** určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci.
-  * Hodnota registru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** určuje počet vláken, která se mají při navrácení služeb po obnovení použít pro přenos dat.
+  * Hodnota registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci.
+  * Hodnota registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** určuje počet vláken, která se použijí pro přenos dat během navrácení služeb po obnovení.
 
 ### <a name="throttle-bandwidth"></a>Omezení šířky pásma
 
@@ -104,7 +104,7 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>Změna šířky pásma sítě pro virtuální počítač
 
-1. V registru virtuálního počítače navštivte **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
+1. V registru virtuálního počítače přejít na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
    * Pokud chcete změnit provoz šířky pásma na replikačním disku, upravte hodnotu **UploadThreadsPerVM**. Pokud klíč neexistuje, vytvořte ho.
    * Pokud chcete změnit šířku pásma pro překlopení provozu z Azure, upravte hodnotu **DownloadThreadsPerVM**.
 2. Výchozí hodnota pro každý klíč je **4**. V síti s „nadměrným zřízením“ je třeba tyto klíče registru změnit z výchozích hodnot. Maximální hodnota, kterou můžete použít, je **32**. Monitorováním provozu hodnotu optimalizujte.

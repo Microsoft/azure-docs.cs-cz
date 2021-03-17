@@ -1,25 +1,19 @@
 ---
 title: Spuštění rozšíření vlastních skriptů na virtuálních počítačích se systémem Linux v Azure
 description: Automatizace úloh konfigurace virtuálních počítačů se systémem Linux pomocí rozšíření vlastních skriptů v2
-services: virtual-machines-linux
-documentationcenter: ''
-author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.author: amjads
+author: amjads1
+ms.collection: linux
 ms.date: 04/25/2018
-ms.author: mimckitt
-ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 094e5f4b1bf1611f2d418d3a7b8db15ec5d58878
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085720"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563570"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s linuxovými virtuálními počítači
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -45,7 +39,7 @@ Rozšíření vlastních skriptů pro Linux se spustí v operačním systému ro
 K přístupu k úložišti objektů BLOB v Azure můžete použít rozšíření pro použití přihlašovacích údajů služby Azure Blob Storage. Případně umístění skriptu může být libovolná tam, kde může virtuální počítač směrovat na tento koncový bod, jako je GitHub, interní souborový server atd.
 
 ### <a name="internet-connectivity"></a>Připojení k Internetu
-Pokud potřebujete stáhnout skript externě, jako je GitHub nebo Azure Storage, pak je potřeba otevřít další porty skupiny zabezpečení sítě brány firewall/sítě. Pokud je například skript umístěný v Azure Storage, můžete přístup pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/security-overview.md#service-tags)zpřístupnit.
+Pokud potřebujete stáhnout skript externě, jako je GitHub nebo Azure Storage, pak je potřeba otevřít další porty skupiny zabezpečení sítě brány firewall/sítě. Pokud je například skript umístěný v Azure Storage, můžete přístup pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/network-security-groups-overview.md#service-tags)zpřístupnit.
 
 Pokud je váš skript na místním serveru, můžete přesto potřebovat další porty skupiny zabezpečení brány firewall/sítě.
 
@@ -55,9 +49,10 @@ Pokud je váš skript na místním serveru, můžete přesto potřebovat další
 * Zajistěte, aby skripty při spuštění nevyžadovaly vstup uživatele.
 * Pro spuštění skriptu je povolených 90 minut, což bude mít za následek neúspěšné zřízení rozšíření.
 * Neumísťujte do skriptu restartování, což způsobí problémy s dalšími nainstalovanými rozšířeními a po restartování po restartování nebude rozšíření pokračovat. 
+* Nedoporučujeme spouštět skript, který způsobí zastavení nebo aktualizaci agenta virtuálního počítače. To může mít příponu ve stavu přechodu a vést k vypršení časového limitu.
 * Pokud máte skript, který způsobí restartování, nainstalujte aplikace a spusťte skripty atd. Restartování byste měli naplánovat pomocí úlohy cron nebo pomocí nástrojů, jako je DSC nebo Puppet rozšíření.
-* Rozšíření spustí pouze jeden skript, pokud chcete spustit skript při každém spuštění, můžete použít [bitovou kopii Cloud-init](../linux/using-cloud-init.md) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. Případně můžete použít skript k vytvoření jednotky systémové služby.
-* Pro virtuální počítač můžete použít jenom jednu verzi rozšíření. Aby bylo možné spustit druhý vlastní skript, je nutné odebrat rozšíření vlastních skriptů a znovu ho znovu použít s aktualizovaným skriptem. 
+* Rozšíření spustí pouze jeden skript, pokud chcete spustit skript při každém spuštění, můžete použít [bitovou kopii Cloud-init](../linux/using-cloud-init.md)  a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. Případně můžete použít skript k vytvoření jednotky systémové služby.
+* Pro virtuální počítač můžete použít jenom jednu verzi rozšíření. Aby bylo možné spustit druhý vlastní skript, můžete aktualizovat existující rozšíření novou konfigurací. Alternativně můžete odebrat rozšíření vlastních skriptů a znovu ho znovu použít s aktualizovaným skriptem.
 * Pokud chcete naplánovat, kdy se skript spustí, měli byste použít rozšíření k vytvoření úlohy cron. 
 * Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častěji aktualizovat stav spuštěného skriptu, budete muset vytvořit vlastní řešení.
 * Rozšíření vlastních skriptů nepodporují nativně proxy servery, ale můžete použít nástroj pro přenos souborů, který podporuje proxy servery ve vašem skriptu, jako je například *kudrlinkou*. 
@@ -111,14 +106,14 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat | 
+| Name | Hodnota/příklad | Typ dat | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | vydavatel | Microsoft. Compute. Extensions | řetězec |
 | typ | CustomScript | řetězec |
 | typeHandlerVersion | 2.1 | int |
 | Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (např.) | Python MyPythonScript.py\<my-param1> | řetězec |
+| commandToExecute (např.) | Python MyPythonScript.py \<my-param1> | řetězec |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | řetězec |
 | skipDos2Unix (např.) | false (nepravda) | boolean |
 | časové razítko (např.) | 123456789 | 32-bitové celé číslo |
@@ -127,9 +122,9 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | managedIdentity (např.) | {} nebo {"clientId": "31b403aa-C364-4240-a7ff-d85fb6cd7232"} nebo {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | objekt JSON |
 
 ### <a name="property-value-details"></a>Podrobnosti hodnoty vlastnosti
-* `apiVersion`: Nejaktuálnější apiVersion se dá najít pomocí [Průzkumník prostředků](https://resources.azure.com/) nebo ze služby Azure CLI pomocí následujícího příkazu.`az provider list -o json`
+* `apiVersion`: Nejaktuálnější apiVersion se dá najít pomocí [Průzkumník prostředků](https://resources.azure.com/) nebo ze služby Azure CLI pomocí následujícího příkazu. `az provider list -o json`
 * `skipDos2Unix`: (volitelné, logická hodnota) přeskočit dos2unix konverze adres URL souborů založených na skriptech nebo skriptu.
-* `timestamp`(volitelné, 32 celé číslo) Toto pole použijte pouze k aktivaci opakovaného spuštění skriptu změnou hodnoty tohoto pole.  Je přijatelné libovolné celočíselné hodnoty; musí se lišit jenom od předchozí hodnoty.
+* `timestamp` (volitelné, 32 celé číslo) Toto pole použijte pouze k aktivaci opakovaného spuštění skriptu změnou hodnoty tohoto pole.  Je přijatelné libovolné celočíselné hodnoty; musí se lišit jenom od předchozí hodnoty.
 * `commandToExecute`: (**vyžaduje** se, pokud skript není nastaven, řetězec) skript vstupního bodu, který se má spustit. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné klíče jako hesla.
 * `script`: (**požadováno** , pokud commandToExecute není nastaven, String) skript kódovaný jako Base64 (a volitelně gzip'ed), který spustil/bin/sh.
 * `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory, které mají být staženy.
@@ -379,7 +374,7 @@ az vm extension set \
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Když se rozšíření vlastních skriptů spustí, skript se vytvoří nebo stáhne do adresáře, který je podobný následujícímu příkladu. Výstup příkazu je také uložen do tohoto adresáře v `stdout` souborech a `stderr` .
 
 ```bash

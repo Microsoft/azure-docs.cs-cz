@@ -1,12 +1,12 @@
-- name: Azure Synapse (SQL DW)
-  href: index.yml
-- name: Přepnutí na Azure Synapse (pracovní prostory ve verzi Preview)
+- name: Vyhrazený fond SQL (dříve SQL DW)
+  href: sql-data-warehouse-overview-what-is.md
+- name: Přepněte do Azure synapse >
   href: ../overview-what-is.md
 - name: Přehled
   items:
-    - name: Co je Azure Synapse Analytics?
+    - name: Co je vyhrazený fond SQL?
       href: sql-data-warehouse-overview-what-is.md
-    - name: Architektura služby Azure Synapse Analytics
+    - name: Architektura vyhrazených fondů SQL
       href: massively-parallel-processing-mpp-architecture.md
     - name: Jednotky datového skladu
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
@@ -29,6 +29,8 @@
   items:
     - name: Vytvoření a připojení
       items:
+        - name: Azure CLI
+          href: create-data-warehouse-azure-cli.md
         - name: Portál
           href: create-data-warehouse-portal.md
         - name: PowerShell
@@ -72,6 +74,12 @@
           href: pause-and-resume-compute-powershell.md
 - name: Koncepty
   items:
+    - name: Prostředí pracovních prostorů Synapse
+      items:
+        - name: Přehled
+          href: workspace-connected-experience.md
+        - name: Podporované oblasti
+          href: workspace-connected-regions.md
     - name: Zabezpečení
       items:
         - name: Přehled
@@ -79,37 +87,37 @@
         - name: Pokročilé zabezpečení dat
           items:
             - name: Přehled
-              href: /azure/sql-database/sql-database-advanced-data-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/azure-defender-for-sql.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Zjišťování a klasifikace dat
-              href: /azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/data-discovery-and-classification-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Posouzení ohrožení zabezpečení
-              href: /azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/sql-vulnerability-assessment.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Rozšířená ochrana před internetovými útoky
-              href: /azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/threat-detection-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Auditování
-          href: /azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/auditing-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Zabezpečení sítě
           items:
             - name: Pravidla brány firewall
-              href: /azure/sql-database/sql-database-firewall-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/firewall-configure.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Privátní propojení
-              href: /azure/sql-database/sql-database-private-endpoint-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/private-endpoint-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Koncové body služby pro virtuální síť
-              href: /azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Authentication
           items:
             - name: Přehled
               href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
-              href: /azure/sql-database/sql-database-aad-authentication?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/authentication-aad-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Přihlášení a uživatelé
-              href: /azure/sql-database/sql-database-manage-logins?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/logins-create-manage.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Vícefaktorové ověřování
-              href: /azure/sql-database/sql-database-ssms-mfa-authentication?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/authentication-mfa-ssms-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Řízení přístupu
           items:
             - name: Přehled
-              href: /azure/sql-database/sql-database-manage-logins?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/logins-create-manage.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Zabezpečení na úrovni sloupců
               href: column-level-security.md
             - name: Zabezpečení na úrovni řádku
@@ -117,12 +125,12 @@
         - name: Ochrana dat
           items:
             - name: Dynamické maskování dat
-              href: /azure/sql-database/sql-database-dynamic-data-masking-get-started?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/dynamic-data-masking-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Přehled transparentního šifrování dat (TDE)
-              href: /azure/sql-database/transparent-data-encryption-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/transparent-data-encryption-tde-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
-              href: /azure/sql-database/transparent-data-encryption-byok-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
-    - name: Načítání dat
+              href: ../../azure-sql/database/transparent-data-encryption-byok-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
+    - name: Přijímání a příprava dat
       items:
         - name: Přehled
           href: design-elt-data-loading.md
@@ -222,8 +230,6 @@
               href: sql-data-warehouse-develop-user-defined-schemas.md
             - name: Přiřazení proměnné
               href: sql-data-warehouse-develop-variable-assignment.md
-            - name: Zobrazení
-              href: sql-data-warehouse-develop-views.md
     - name: Dotazování
       items:
         - name: Dynamické SQL
@@ -272,26 +278,30 @@
           href: sql-data-warehouse-overview-integrate.md
 - name: Návody
   items:
+    - name: Prostředí pracovních prostorů Synapse
+      items:
+        - name: Vytvoření pracovního prostoru Synapse
+          href: workspace-connected-create.md
     - name: Zabezpečení
       items:
         - name: Konfigurace ověřování Azure AD
-          href: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/authentication-aad-configure.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Podmíněný přístup
-          href: /azure/sql-database/sql-database-conditional-access?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/conditional-access-configure.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Pravidla virtuální sítě s využitím PowerShellu
-          href: /azure/sql-database/sql-database-vnet-service-endpoint-rule-powershell?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/scripts/vnet-service-endpoint-rule-powershell-create.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: Povolení šifrování – portál
           href: sql-data-warehouse-encryption-tde.md
         - name: Povolení šifrování – T-SQL
           href: sql-data-warehouse-encryption-tde-tsql.md
-    - name: Načtení dat
+    - name: Načtení a příprava dat
       items:
         - name: Z Azure Data Lake Storage (ADLS)
           href: sql-data-warehouse-load-from-azure-data-lake-store.md
         - name: S využitím Azure Databricks (ADB)
-          href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: S využitím Data Factory (ADF)
-          href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../data-factory/load-azure-sql-data-warehouse.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: S využitím SQL Server Integration Services (SSIS)
           href: /sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: ukázky
@@ -356,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: Obnovení z geografické zálohy
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: Zakázat geografické zálohy
+          href: disable-geo-backup.md
     - name: Integrace
       items:
         - name: Použití strojového učení
@@ -384,9 +396,9 @@
       items:
         - name: Úplný přehled
           href: /sql/t-sql/language-reference?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-        - name: Elementy jazyka TSQL v Azure Synapse Analytics
+        - name: Elementy jazyka T-SQL
           href: sql-data-warehouse-reference-tsql-language-elements.md
-        - name: Příkazy TSQL v Azure Synapse Analytics
+        - name: Příkazy jazyka T-SQL
           href: sql-data-warehouse-reference-tsql-statements.md
     - name: Systémová zobrazení
       href: sql-data-warehouse-reference-tsql-system-views.md
@@ -394,12 +406,15 @@
       href: sql-data-warehouse-reference-powershell-cmdlets.md
     - name: Rozhraní REST API
       href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html'
+      href: /answers/topics/azure-synapse-analytics.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
     - name: Cenová kalkulačka
@@ -424,5 +439,7 @@
           href: sql-data-warehouse-partner-data-management.md
         - name: Strojové učení a AI
           href: sql-data-warehouse-partner-machine-learning-ai.md
-        - name: Partneři pro Public Preview
-          href: sql-data-warehouse-partner-launch.md
+        - name: Systémová integrace
+          href: sql-data-warehouse-partner-system-integration.md
+        - name: Problémy s kompatibilitou u aplikací třetích stran
+          href: sql-data-warehouse-partner-compatibility-issues.md

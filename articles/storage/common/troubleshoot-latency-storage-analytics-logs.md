@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075952"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221104"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešení potíží s latencí s využitím protokolů Analýzy úložiště
 
@@ -27,7 +27,7 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
 ## <a name="recommended-steps"></a>Doporučené kroky
 
-1. Stáhněte si [protokoly analýza úložiště](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Stáhněte si [protokoly analýza úložiště](./manage-storage-analytics-logs.md#download-storage-logging-log-data).
 
 2. Pomocí následujícího skriptu PowerShellu převeďte protokoly nezpracovaných formátů do tabulkového formátu:
 
@@ -87,11 +87,11 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
    Koncová latence se počítá pomocí následující rovnice:
 
-   * Koncová latence = Server – latence + latence klienta
+   * Koncová latence = Server-Latency + latence klienta
 
    Vypočítat latenci klienta pomocí položky protokolu:
 
-   * Latence klienta = koncová latence – Server – latence
+   * Latence klienta = koncová latence – Server-Latency
 
         Příklad: 8453 – 391 = 8062ms
 
@@ -99,10 +99,10 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
    | Typ objektu BLOB |Stavem žádosti =<br>Success|Stavem žádosti =<br>VEDE NetworkError|Doporučení|
    |---|---|---|---|
-   |GetBlob|Ano|No|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
-   |GetBlob|No|Ano|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Ano|No|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
-   |PutBlob|No|Ano|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Yes|No|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
+   |GetBlob|No|Yes|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Yes|No|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
+   |PutBlob|No|Yes|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Výsledky stavu
 
@@ -111,10 +111,10 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
 
 * Koncová latence
-* Server – latence
-* Klient – latence
+* Server-Latency
+* Client-Latency
 
-Pokud v **operaci getblob** s **stavem žádosti = Success**dojde k **překročení maximální doby** v **latenci klienta**, znamená to, že Azure Storage stráví velkou dobu zápisu dat do klienta. Tato prodleva indikuje problém na straně klienta.
+Pokud v **operaci getblob** s **stavem žádosti = Success** dojde k **překročení maximální doby** v **latenci klienta**, znamená to, že Azure Storage stráví velkou dobu zápisu dat do klienta. Toto zpoždění indikuje Client-Side problém.
 
 **Základě**
 
@@ -126,8 +126,8 @@ Pokud v **operaci getblob** s **stavem žádosti = Success**dojde k **překroče
 Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
 
 * Koncová latence
-* Server – latence
-* Klient – latence
+* Server-Latency
+* Client-Latency
 
 Pokud je v **operaci getblob** s **stavem žádosti = (SAS) NetworkError** **Maximální doba** strávená v **latenci klienta**, Nejběžnějším problémem je to, že se klient odpojí před vypršením časového limitu ve službě úložiště.
 
@@ -141,10 +141,10 @@ Pokud je v **operaci getblob** s **stavem žádosti = (SAS) NetworkError** **Max
 Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
 
 * Koncová latence
-* Server – latence
-* Klient – latence
+* Server-Latency
+* Client-Latency
 
-Pokud je v **operaci Put** s **stavem žádosti = Success**vyčerpána **Maximální doba** v **latenci klienta**, znamená to, že klient trvá déle, než pošle data do Azure Storage. Tato prodleva indikuje problém na straně klienta.
+Pokud je v **operaci Put** s **stavem žádosti = Success** vyčerpána **Maximální doba** v **latenci klienta**, znamená to, že klient trvá déle, než pošle data do Azure Storage. Toto zpoždění indikuje Client-Side problém.
 
 **Základě**
 
@@ -156,8 +156,8 @@ Pokud je v **operaci Put** s **stavem žádosti = Success**vyčerpána **Maximá
 Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený postup:
 
 * Koncová latence
-* Server – latence
-* Klient – latence
+* Server-Latency
+* Client-Latency
 
 Pokud je v **operaci PutBlob** s **NetworkErrorem stavem žádosti = (SAS)**, je-li **Maximální doba** strávena při **latenci klienta**, Nejběžnějším problémem je, že se klient odpojí, než vyprší časový limit ve službě úložiště.
 
@@ -165,4 +165,3 @@ Pokud je v **operaci PutBlob** s **NetworkErrorem stavem žádosti = (SAS)**, je
 
 * Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště.
 * K prozkoumání problémů s připojením k síti od klienta použijte Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping.
-

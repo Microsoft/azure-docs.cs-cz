@@ -1,25 +1,27 @@
 ---
-title: Kódování vzdáleného souboru a datového proudu pomocí Azure Media Services V3
+title: Kódování vzdáleného souboru a datového proudu pomocí Media Services
 description: Použijte postup v tomto kurzu ke kódování souboru na základě adresy URL a streamování vašeho obsahu pomocí Azure Media Services s využitím REST.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2020
-ms.author: juliako
-ms.openlocfilehash: f12771e55ced3b8783b6c7497b83e6b041c66b75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/12/2020
+ms.author: inhenkel
+ms.openlocfilehash: 21f7203af267f53d37e26390ea73c896ea9db76e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074476"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953984"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services umožňuje kódování mediálních souborů ve formátech, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
 
@@ -40,7 +42,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
 
@@ -115,7 +117,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
     Odešle se následující operace **POST**.
 
     ```
-    https://login.microsoftonline.com/:tenantId/oauth2/token
+    https://login.microsoftonline.com/:aadTenantDomain/oauth2/token
     ```
 
 4. Vrátí se odpověď s tokenem, která nastaví proměnnou prostředí „AccessToken“ na hodnotu tokenu. Kód, který nastavuje proměnnou „AccessToken“, zobrazíte na kartě **Tests** (Testy). 
@@ -168,10 +170,17 @@ Výstupní [Asset](/rest/api/media/assets) ukládá výsledek vaší úlohy kód
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
+
+> [!NOTE]
+> Nezapomeňte nahradit účet úložiště a názvy kontejnerů buď pomocí těch ze souboru prostředí, nebo zadejte vlastní.
+>
+> Po dokončení kroků popsaných ve zbývající části tohoto článku se ujistěte, že v textu žádosti zadáte platné parametry.
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
@@ -353,8 +362,9 @@ V této části vytvoříme adresu URL pro streamování HLS. Adresy URL se skl�
     K získání názvu hostitele můžete použít následující operaci GET:
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    a ujistěte se, že jste nastavili `resourceGroupName` `accountName` parametry a tak, aby odpovídaly souboru prostředí. 
     
 3. Cesta, kterou jste získali v předchozí části (Seznam cest).  
 
@@ -380,7 +390,7 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně platí, že byste měli vyčistit všechno kromě objektů, které plánujete znovu použít (obvykle budete znovu používat **transformace**a budete uchovávat **Lokátory streamování**atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
+Obecně platí, že byste měli vyčistit všechno kromě objektů, které plánujete znovu použít (obvykle budete znovu používat **transformace** a budete uchovávat **Lokátory streamování** atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
 
 Provedete to tak, že u prostředku, který chcete odstranit, vyberete operaci „Odstranit…“.
 

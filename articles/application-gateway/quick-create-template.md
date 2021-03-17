@@ -1,20 +1,20 @@
 ---
 title: 'Rychlý Start: směrování webového provozu pomocí šablony Správce prostředků'
 titleSuffix: Azure Application Gateway
-description: Naučte se používat šablonu Správce prostředků k vytvoření Application Gateway Azure, která směruje webový provoz do virtuálních počítačů v back-endu fondu.
+description: V tomto rychlém startu se naučíte, jak pomocí šablony Správce prostředků vytvořit službu Azure Application Gateway, která směruje webový provoz do virtuálních počítačů v back-endu fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 01/20/2021
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: mvc, subject-armqs
+ms.openlocfilehash: 05e7cd8d7018759a3c8670a610b4c98ac0a86a7a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705941"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660051"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Rychlý Start: směrování webového provozu pomocí šablony Azure Application Gateway – ARM
 

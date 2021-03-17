@@ -1,5 +1,5 @@
 ---
-title: Zřizování simulovaného zařízení X. 509 pro Azure IoT Hub pomocí jazyka Java
+title: Rychlé zprovoznění – zřizování simulovaného zařízení X. 509 do Azure IoT Hub pomocí jazyka Java
 description: Rychlý Start Azure – vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady Java SDK pro zařízení pro IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2ed458ee0267a65bb7551940fc522509dc310311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326745"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966611"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Java pro IoT Hub Device Provisioning Service
 
@@ -24,16 +24,16 @@ V tomto rychlém startu vytvoříte simulované zařízení X. 509 na počítač
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přečtěte si [Koncepty automatického zřizování](concepts-auto-provisioning.md).
+- Seznamte se s koncepty [zřizování](about-iot-dps.md#provisioning-process) .
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java se Development Kit 8](https://aka.ms/azure-jdks).
+- [Java se Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 - [Maven](https://maven.apache.org/install.html).
 - [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
-1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](https://aka.ms/azure-jdks).
+1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 2. Stáhněte a nainstalujte [Maven](https://maven.apache.org/install.html).
 
@@ -94,7 +94,7 @@ Tento článek ukazuje jednotlivé registrace.
 
 7. Na panelu **Přidat registraci** zadejte následující informace:
    - Jako *Mechanismus* ověření identity vyberte **X.509**.
-   - V části *soubor. pem nebo. cer primárního certifikátu*zvolte *Vybrat soubor* a vyberte soubor certifikátu **X509individual. pem** vytvořený v předchozích krocích.  
+   - V části *soubor. pem nebo. cer primárního certifikátu* zvolte *Vybrat soubor* a vyberte soubor certifikátu **X509individual. pem** vytvořený v předchozích krocích.  
    - Volitelně můžete zadat následující informace:
      - Vyberte centrum IoT propojené s vaší zřizovací službou.
      - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
@@ -170,7 +170,7 @@ Tento článek ukazuje jednotlivé registrace.
 Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-2. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
+2. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
 3. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete okno **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
 
 

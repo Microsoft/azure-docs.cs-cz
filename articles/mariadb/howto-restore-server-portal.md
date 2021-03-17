@@ -1,17 +1,17 @@
 ---
 title: Zálohování a obnovení-Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak obnovit server v Azure Database for MariaDB pomocí Azure Portal.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115906"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664813"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí Azure Portal
 
@@ -41,7 +41,7 @@ Dobu uchovávání záloh můžete na serveru změnit pomocí následujících k
 
 2. Vyberte server Azure Database for MariaDB. Tato akce otevře stránku s **přehledem** .
 
-3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
+3. V nabídce v části **Nastavení** vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 35 dní.
 ![Období uchování zálohy se zvýšilo.](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
@@ -87,7 +87,7 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
  
 2. Zadejte předplatné, skupinu prostředků a název nového serveru. 
 
-3. Jako **zdroj dat**vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
+3. Jako **zdroj dat** vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
    
    :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Vyberte zdroj dat.":::
     
@@ -103,13 +103,13 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Vyberte zálohování.":::
 
-6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
+6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu** a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Pokračujte v zálohování.":::
 
 7. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
 
-    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
+    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy** a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Vyplnit formulář"::: 
 

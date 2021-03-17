@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508040"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967971"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Použití služby StorSimple Device Manager ke správě zařízení StorSimple
 
@@ -64,16 +64,16 @@ Chcete-li získat další informace o jednotlivých pracovních postupech, klikn
 | Šablony šířky pásma</br>Přidat šablonu šířky pásma</br>Upravit šablonu šířky pásma</br>Odstranění šablony šířky pásma</br>Použít výchozí šablonu šířky pásma</br>Vytvoří celodenní šablonu šířky pásma, která začne v zadaném čase. |[Správa šablon šířky pásma](storsimple-8000-manage-bandwidth-templates.md) |
 | O záznamech řízení přístupu</br>Vytvoření záznamu řízení přístupu</br>Upravit záznam řízení přístupu</br>Odstranění záznamu řízení přístupu |[Správa záznamů řízení přístupu](storsimple-8000-manage-acrs.md) |
 | Zobrazení podrobností o úloze</br>Zrušení úlohy |[Správa úloh](storsimple-8000-manage-jobs-u2.md) |
-| Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md) |
-| Vytváření grafů monitorování |[Monitorování zařízení StorSimple](storsimple-monitor-device.md) |
+| Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Procházení výstrah |[Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md) |
+| Vytváření grafů monitorování |[Monitorování zařízení StorSimple](./storsimple-8000-monitor-device.md) |
 | Přidat kontejner svazků</br>Úprava kontejneru svazků</br>Odstranění kontejneru svazků |[Správa kontejnerů svazků](storsimple-8000-manage-volume-containers.md) |
 | Přidat svazek</br>Úprava svazku</br>Přepnout svazek do offline režimu</br>Odstranění svazku</br>Monitorování svazku |[Správa svazků](storsimple-8000-manage-volumes-u2.md) |
 | Úprava nastavení zařízení</br>Úprava nastavení času</br>Úprava nastavení DNS.md</br>Konfigurace síťových rozhraní |[Úprava konfigurace zařízení pro zařízení StorSimple](storsimple-8000-modify-device-config.md) |
 | Zobrazit nastavení webového proxy serveru |[Konfigurace webového proxy serveru pro vaše zařízení](storsimple-8000-configure-web-proxy.md) |
 | Úprava hesla správce zařízení</br>Upravit StorSimple Snapshot Manager heslo |[Změna hesel StorSimple](storsimple-8000-change-passwords.md) |
 | Konfigurace vzdálené správy |[Vzdálené připojení k zařízení StorSimple](storsimple-8000-remote-connect.md) |
-| Konfigurace nastavení výstrah |[Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md) |
-| Konfigurace protokolu CHAP pro zařízení StorSimple |[Konfigurace protokolu CHAP pro zařízení StorSimple](storsimple-configure-chap.md) |
+| Konfigurace nastavení upozornění |[Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md) |
+| Konfigurace protokolu CHAP pro zařízení StorSimple |[Konfigurace protokolu CHAP pro zařízení StorSimple](./storsimple-8000-configure-chap.md) |
 | Přidání zásady zálohování</br>Přidat nebo upravit plán</br>Odstranění zásady zálohování</br>Provedení ručního zálohování</br>Vytvoření vlastní zásady zálohování s více svazky a plány |[Správa zásad zálohování](storsimple-8000-manage-backup-policies-u2.md) |
 | Zastavení řadičů zařízení</br>Restartovat řadiče zařízení</br>Vypnutí řadičů zařízení</br>Resetování zařízení do výchozího továrního nastavení</br>(Výše jsou jenom pro místní zařízení) |[Správa kontroleru zařízení StorSimple](storsimple-8000-manage-device-controller.md) |
 | Informace o hardwarových součástech StorSimple</br>Monitorování stavu hardwaru</br>(Výše jsou jenom pro místní zařízení) |[Monitorovat hardwarové součásti](storsimple-8000-monitor-hardware-status.md) |
@@ -88,4 +88,3 @@ Pokud dojde k jakýmkoli problémům s každodenním provozem zařízení StorSi
 * [Použít indikátory LED monitorování StorSimple](storsimple-monitoring-indicators.md)
 
 Pokud nemůžete problémy vyřešit a potřebujete vytvořit žádost o služby, přečtěte si téma [kontakt podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
-

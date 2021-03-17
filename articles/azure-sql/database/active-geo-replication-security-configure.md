@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963644"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674803"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Tento článek popisuje požadavky na ověřování ke konfiguraci a řízení [
 
 ## <a name="disaster-recovery-with-contained-users"></a>Zotavení po havárii s uživateli s omezením
 
-Na rozdíl od tradičních uživatelů, které musí být namapovány na přihlašovací údaje v hlavní databázi, je obsažený uživatel zcela spravován samotným databází. To má dvě výhody. Ve scénáři zotavení po havárii se uživatelé mohou nadále připojovat k nové primární databázi nebo databáze obnovena pomocí geografického obnovení bez jakékoli další konfigurace, protože databáze spravuje uživatele. Z perspektivy přihlášení se z této konfigurace taky mohou využít výhody a možnosti škálovatelnosti a výkonu. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+Na rozdíl od tradičních uživatelů, které musí být namapovány na přihlašovací údaje v hlavní databázi, je obsažený uživatel zcela spravován samotným databází. To má dvě výhody. Ve scénáři zotavení po havárii se uživatelé mohou nadále připojovat k nové primární databázi nebo databáze obnovena pomocí geografického obnovení bez jakékoli další konfigurace, protože databáze spravuje uživatele. Z perspektivy přihlášení se z této konfigurace taky mohou využít výhody a možnosti škálovatelnosti a výkonu. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 
 Hlavním obchodem je, že Správa procesu zotavení po havárii je ve velkém rozsahu náročná. Pokud máte více databází, které používají stejné přihlašovací údaje, zajistěte, aby pověření s použitím obsažených uživatelů v několika databázích nemusely mít na starosti výhody obsažených uživatelů. Zásady rotace hesla například vyžadují, aby se změny v několika databázích udělaly konzistentně, a neměňte heslo pro přihlášení jednou v hlavní databázi. Z tohoto důvodu platí, že pokud máte více databází, které používají stejné uživatelské jméno a heslo, nedoporučuje se použít uživatele s omezením.
 
@@ -34,7 +34,7 @@ Hlavním obchodem je, že Správa procesu zotavení po havárii je ve velkém ro
 Pokud používáte přihlašovací jména a uživatele (místo obsažených uživatelů), musíte provést další kroky, abyste zajistili, že v hlavní databázi existují stejná přihlášení. V následujících částech najdete přehled kroků a další okolnosti.
 
   >[!NOTE]
-  > Ke správě databází je taky možné použít přihlášení pomocí Azure Active Directory (AAD). Další informace najdete v tématu [přihlášení a uživatelé Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+  > Ke správě databází je taky možné použít přihlášení pomocí Azure Active Directory (AAD). Další informace najdete v tématu [přihlášení a uživatelé Azure SQL](./logins-create-manage.md).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Nastavení přístupu uživatele k sekundární nebo obnovené databázi
 
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> Uživatelé **INFORMATION_SCHEMA** a **sys** mají *null* identifikátory SID a identifikátor SID **hosta** je **0x00**. Identifikátor SID **dbo** může začínat na *0x01060000000001648000000000048454*, pokud autor databáze byl správcem serveru, ne členem **DbManager**.
+> Uživatelé **INFORMATION_SCHEMA** a **sys** mají *null* identifikátory SID a identifikátor SID **hosta** je **0x00** . Identifikátor SID **dbo** může začínat na *0x01060000000001648000000000048454* , pokud autor databáze byl správcem serveru, ne členem **DbManager** .
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. vytvoření přihlašovacích údajů na cílovém serveru
 
@@ -106,7 +106,7 @@ SID = <desired login SID>
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o správě přístupu k databázi a přihlášení najdete v tématu [SQL Database Security: Správa přístupu k databázi a zabezpečení přihlášení](logins-create-manage.md).
-* Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+* Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 * Informace o aktivní geografické replikaci najdete v tématu [Aktivní geografická replikace](active-geo-replication-overview.md).
 * Další informace o skupinách automatického převzetí služeb při selhání najdete v tématu [skupiny automatického převzetí služeb při selhání](auto-failover-group-overview.md).
 * Informace o použití geografického obnovení najdete v tématu [geografické obnovení](recovery-using-backups.md#geo-restore) .

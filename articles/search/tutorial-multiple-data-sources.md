@@ -7,21 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 01/23/2021
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262204"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509499"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Kurz: indexování z více zdrojů dat pomocí sady .NET SDK
 
-Azure Kognitivní hledání může importovat, analyzovat a indexovat data z několika zdrojů dat do jednoho indexu vyhledávání konsolidace. To podporuje situace, kdy jsou strukturovaná data agregována s méně strukturovanými nebo i prostými textovými daty z jiných zdrojů, jako jsou text, HTML nebo dokumenty JSON.
+Azure Kognitivní hledání může importovat, analyzovat a indexovat data z více zdrojů dat do jednoho konsolidovaného indexu vyhledávání. 
 
-V tomto kurzu se dozvíte, jak indexovat data hotelu z Azure Cosmos DB zdroje dat a sloučit je s podrobnostmi o hotelu z Azure Blob Storage dokumentů. Výsledkem bude kombinovaný index vyhledávání hotelu obsahující komplexní datové typy.
+V tomto kurzu se pomocí C# aAzure.Search.Docklientské knihovny [ uments](/dotnet/api/overview/azure/search) v sadě Azure SDK pro .NET indexují ukázková data o hotelu z Azure Cosmos DB a sloučí se s podrobnějšími informacemi o hotelových místnostech z Azure Blob Storage Documents. Výsledkem bude kombinovaný index vyhledávání hotelu obsahující dokumenty hotelového typu, kde jsou místnosti jako komplexní datové typy.
 
-V tomto kurzu se používá C# a [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). V tomto kurzu provedete následující úlohy:
+V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
 > * Nahrání ukázkových dat a vytváření zdrojů dat
@@ -30,21 +31,28 @@ V tomto kurzu se používá C# a [.NET SDK](https://docs.microsoft.com/dotnet/ap
 > * Indexovat data hotelu z Azure Cosmos DB
 > * Sloučení dat z hotelových místností z úložiště objektů BLOB
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="overview"></a>Přehled
+
+V tomto kurzu se používá nová knihovna klienta [Azure.Search.Documents](/dotnet/api/overview/azure/search)verze 11. x k vytvoření a spuštění více indexerů. V tomto kurzu nastavíte dva zdroje dat Azure, abyste mohli nakonfigurovat indexer, který načte z obou pro naplnění jediného vyhledávacího indexu. Tyto dvě sady dat musí mít společnou hodnotu pro podporu sloučení. V této ukázce je toto pole ID. Pokud existuje pole společné pro podporu mapování, může indexer sloučit data z různorodých prostředků: strukturovaná data z Azure SQL, nestrukturovaná data z úložiště objektů BLOB nebo jakékoli kombinace [podporovaných zdrojů dat](search-indexer-overview.md#supported-data-sources) v Azure.
+
+Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
+
+* [Multiple Data-Sources/V11 (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v11)
+
+Tento kurz byl aktualizován tak, aby používal balíček Azure.Search.Documents (verze 11). Starší verzi sady .NET SDK najdete v tématu [Ukázka kódu Microsoft. Azure. Search (verze 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v10) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-+ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure Storage](../storage/common/storage-account-create.md)
++ [Visual Studio](https://visualstudio.microsoft.com/)
++ [Balíček NuGet pro Azure Kognitivní hledání (verze 11. x)](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
 > [!Note]
 > Pro tento kurz můžete použít bezplatnou službu. Bezplatná vyhledávací služba omezuje tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Než začnete, ujistěte se, že máte ve své službě místo pro přijímání nových prostředků.
-
-## <a name="download-files"></a>Stažení souborů
-
-Zdrojový kód pro tento kurz najdete v úložišti GitHub [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) ve složce s [více datovými zdroji](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources) .
 
 ## <a name="1---create-services"></a>1. vytvoření služeb
 
@@ -60,80 +68,80 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Vyberte **Průzkumník dat** a pak vyberte **Nová databáze**.
 
-   ![Vytvoření nové databáze](media/tutorial-multiple-data-sources/cosmos-newdb.png "Vytvoření nové databáze")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Zadejte název **hotelu-místnosti-DB**. Přijměte výchozí hodnoty pro zbývající nastavení.
 
-   ![Konfigurace databáze](media/tutorial-multiple-data-sources/cosmos-dbname.png "Konfigurace databáze")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Konfigurace databáze" border="false":::
 
 1. Vytvořte nový kontejner. Použijte existující databázi, kterou jste právě vytvořili. Zadejte **hotely** pro název kontejneru a použijte **/HotelId** pro klíč oddílu.
 
-   ![Přidání kontejneru](media/tutorial-multiple-data-sources/cosmos-add-container.png "Přidání kontejneru")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Přidání kontejneru" border="false":::
 
-1. Vyberte **položky** v části **hotely**a pak klikněte na tlačítko **nahrát položku** na panelu příkazů. Přejděte na a potom vyberte soubor **cosmosdb/HotelsDataSubset_CosmosDb.jsve** složce projektu.
+1. Vyberte **položky** v části **hotely** a pak klikněte na tlačítko **nahrát položku** na panelu příkazů. Přejděte na a potom vyberte soubor **cosmosdb/HotelsDataSubset_CosmosDb.jsve** složce projektu.
 
-   ![Nahrát do kolekce Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-upload.png "Nahrát do kolekce Cosmos DB")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Nahrát do kolekce Azure Cosmos DB" border="false":::
 
 1. Pomocí tlačítka Aktualizovat aktualizujte zobrazení položek v kolekci hotelů. Měli byste vidět sedm nových databázových dokumentů uvedených v seznamu.
 
+1. Zkopírujte připojovací řetězec ze stránky **klíče** do poznámkového bloku. Budete ho potřebovat pro **appsettings.js** v pozdějším kroku. Pokud jste nepoužili navrhovaný název databáze "Hotel-místnosti-DB", zkopírujte také název databáze.
+
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob** a pak klikněte na **+ kontejner**.
 
-1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
+1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
-   ![Vytvoření kontejneru objektů blob](media/tutorial-multiple-data-sources/blob-add-container.png "Vytvoření kontejneru objektů blob")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Vytvoření kontejneru objektů blob" border="false":::
 
 1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** . Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrání souborů")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Nahrání souborů" border="false":::
 
-Až se nahrávání dokončí, soubory by se měly zobrazit v seznamu datového kontejneru.
+1. Zkopírujte název účtu úložiště a připojovací řetězec ze stránky **přístupové klíče** do poznámkového bloku. V pozdějším kroku budete potřebovat obě hodnoty pro **appsettings.js** .
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
-Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na [portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
+Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na [portálu](search-create-service-portal.md). 
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíčového rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Kopírování klíče rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
 
-Abyste mohli komunikovat se službou Azure Kognitivní hledání, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
+K ověření pro vaši vyhledávací službu budete potřebovat adresu URL služby a přístupový klíč.
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
-
-   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="2---set-up-your-environment"></a>2. nastavení prostředí
 
-1. Spusťte sadu Visual Studio 2019 a v nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...**. 
+1. Spusťte Visual Studio a v nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...**. 
 
-1. Na kartě **Procházet** vyhledejte a pak nainstalujte **Microsoft. Azure. Search** (verze 9.0.1 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
+1. Na kartě **Procházet** vyhledejte a pak nainstalujte **Azure.Search.Documents** (verze 11,0 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
 
-    ![Přidání knihoven Azure pomocí NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Přidání knihoven Azure pomocí NuGet" border="false":::
 
-1. Vyhledejte **Microsoft.Extensions.Configuration.Jsna** balíčku NuGet a nainstalujte ho také.
+1. Vyhledejte **Microsoft.Extensions.Configuration** a **Microsoft.Extensions.Configuration.Jsna** balíčcích NuGet a nainstalujte je taky.
 
-1. Otevřete soubor řešení **AzureSearchMultipleDataSources. sln**.
+1. Otevřete soubor řešení **/V11/AzureSearchMultipleDataSources.sln**.
 
 1. V Průzkumník řešení upravte **appsettings.jsv** souboru, aby se přidaly informace o připojení.  
 
     ```json
     {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "BlobStorageAccountName": "Put your Azure Storage account name here",
-      "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
-      "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
+      "SearchServiceUri": "<YourSearchServiceURL>",
+      "SearchServiceAdminApiKey": "<YourSearchServiceAdminApiKey>",
+      "BlobStorageAccountName": "<YourBlobStorageAccountName>",
+      "BlobStorageConnectionString": "<YourBlobStorageConnectionString>",
+      "CosmosDBConnectionString": "<YourCosmosDBConnectionString>",
       "CosmosDBDatabaseName": "hotel-rooms-db"
     }
     ```
 
-První dvě položky používají adresu URL a klíče pro správu služby Azure Kognitivní hledání. Byl zadán koncový bod `https://mydemo.search.windows.net` , například název služby, který má být poskytnut `mydemo` .
+První dvě položky jsou adresa URL a klíče Správce služby vyhledávání. Použijte úplný koncový bod, například: `https://mydemo.search.windows.net` .
 
 Další položky určují názvy účtů a připojovací řetězec pro Azure Blob Storage a zdroje dat Azure Cosmos DB.
 
@@ -147,14 +155,14 @@ Při indexování dat z více zdrojů dat se ujistěte, že každý příchozí 
 
 Často vyžaduje některé předem plánované plánování pro identifikaci smysluplného klíče dokumentu pro váš index a zajistěte, aby existovaly v obou zdrojích dat. V této ukázce `HotelId` se klíč pro každý Hotel v Cosmos DB nachází také v objektech blob JSON pro místnosti v úložišti objektů BLOB.
 
-Indexery Azure Kognitivní hledání můžou použít mapování polí k přejmenování a dokonce formátování datových polí během procesu indexování, aby se zdrojová data mohla směrovat do správného pole indexu. Například v Cosmos DB je volán identifikátor hotelu **`HotelId`** . Ale v souborech objektů BLOB JSON pro hotelové místnosti se identifikátor hotelu jmenuje **`Id`** . Program to pořídí mapováním **`Id`** pole z objektů blob na **`HotelId`** pole klíče v indexu.
+Indexery Azure Kognitivní hledání můžou použít mapování polí k přejmenování a dokonce formátování datových polí během procesu indexování, aby se zdrojová data mohla směrovat do správného pole indexu. Například v Cosmos DB je volán identifikátor hotelu **`HotelId`** . Ale v souborech objektů BLOB JSON pro hotelové místnosti se identifikátor hotelu jmenuje **`Id`** . Program to pořídí mapováním **`Id`** pole z objektů blob na **`HotelId`** pole klíče v indexeru.
 
 > [!NOTE]
 > Ve většině případů automaticky generované klíče dokumentů, například ty, které byly vytvořeny ve výchozím nastavení některými indexery, nedělají pro kombinované indexy vhodné klíče dokumentů. Obecně budete chtít použít smysluplnou, jedinečnou hodnotu klíče, která již existuje v, nebo může být snadno přidána do zdrojů dat.
 
 ## <a name="4---explore-the-code"></a>4. Prozkoumejte kód
 
-Jakmile jsou data a nastavení konfigurace na místě, vzorový program v **AzureSearchMultipleDataSources. sln** by měl být připravený k sestavování a spouštění.
+Jakmile jsou nastavená data a nastavení konfigurace, měl by být vzorový program v **/V11/AzureSearchMultipleDataSources.sln** připravený k sestavování a spouštění.
 
 Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
@@ -171,35 +179,38 @@ Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
 ### <a name="create-an-index"></a>Vytvoření indexu
 
-Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
+Tento ukázkový program používá [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) k definování a vytvoření indexu služby Azure kognitivní hledání. Využívá třídu [FieldBuilder](/dotnet/api/azure.search.documents.indexes.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
 
 Datový model je definován třídou hotelu, která také obsahuje odkazy na třídy Address a Room. FieldBuilder projde k podrobnostem v různých definicích tříd a vygeneruje složitou strukturu dat pro index. Značky metadat slouží k definování atributů každého pole, jako je například, zda je možné prohledávatelné nebo seřaditelné.
 
-Následující fragmenty kódu ze souboru **Hotel.cs** ukazují, jak lze určit jedno pole a odkaz na jinou třídu datového modelu.
+Program odstraní všechny existující indexy stejného názvu před vytvořením nového, pro případ, že chcete spustit tento příklad více než jednou.
+
+Následující fragmenty kódu ze souboru **Hotel.cs** zobrazují jednotlivá pole, za kterými následuje odkaz na jinou třídu datového modelu, místnost [], která je v souboru **Room.cs** definována (není zobrazená).
 
 ```csharp
-. . . 
-[IsSearchable, IsFilterable, IsSortable]
+. . .
+[SimpleField(IsFilterable = true, IsKey = true)]
+public string HotelId { get; set; }
+
+[SearchableField(IsFilterable = true, IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Room[] Rooms { get; set; }
 . . .
 ```
 
-V souboru **program.cs** je index definován s názvem a kolekcí polí generovaných `FieldBuilder.BuildForType<Hotel>()` metodou a pak vytvořen takto:
+V souboru **program.cs** je [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) definován s názvem a kolekcí pole generovanou `FieldBuilder.Build` metodou a pak vytvořen takto:
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address and Room classes are referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -207,137 +218,144 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 Další hlavní program obsahuje logiku pro vytvoření zdroje dat Azure Cosmos DB pro data hotelů.
 
-Nejprve zřetězí název Azure Cosmos DB databáze do připojovacího řetězce. Pak definuje objekt zdroje dat, včetně nastavení specifických pro Azure Cosmos DB zdroje, jako je například vlastnost [useChangeDetection].
+Nejprve zřetězí název Azure Cosmos DB databáze do připojovacího řetězce. Pak definuje objekt [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) .
 
-  ```csharp
-private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchServiceClient searchService)
+```csharp
+private static async Task CreateAndRunCosmosDbIndexerAsync(string indexName, SearchIndexerClient indexerClient)
 {
     // Append the database name to the connection string
-    string cosmosConnectString = 
+    string cosmosConnectString =
         configuration["CosmosDBConnectionString"]
-        + ";Database=" 
+        + ";Database="
         + configuration["CosmosDBDatabaseName"];
 
-    DataSource cosmosDbDataSource = DataSource.CosmosDb(
-        name: configuration["CosmosDBDatabaseName"], 
-        cosmosDbConnectionString: cosmosConnectString,
-        collectionName: "hotels",
-        useChangeDetection: true);
+    SearchIndexerDataSourceConnection cosmosDbDataSource = new SearchIndexerDataSourceConnection(
+        name: configuration["CosmosDBDatabaseName"],
+        type: SearchIndexerDataSourceType.CosmosDb,
+        connectionString: cosmosConnectString,
+        container: new SearchIndexerDataContainer("hotels"));
 
-    // The Azure Cosmos DB data source does not need to be deleted if it already exists,
+    // The Cosmos DB data source does not need to be deleted if it already exists,
     // but the connection string might need to be updated if it has changed.
-    await searchService.DataSources.CreateOrUpdateAsync(cosmosDbDataSource);
-  ```
+    await indexerClient.CreateOrUpdateDataSourceConnectionAsync(cosmosDbDataSource);
+```
 
 Po vytvoření zdroje dat program nastaví Azure Cosmos DB indexer s názvem **Hotel-místnosti-Cosmos-indexer**.
 
-```csharp
-    Indexer cosmosDbIndexer = new Indexer(
-        name: "hotel-rooms-cosmos-indexer",
-        dataSourceName: cosmosDbDataSource.Name,
-        targetIndexName: indexName,
-        schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-    
-    // Indexers keep metadata about how much they have already indexed.
-    // If we already ran this sample, the indexer will remember that it already
-    // indexed the sample data and not run again.
-    // To avoid this, reset the indexer if it exists.
-    bool exists = await searchService.Indexers.ExistsAsync(cosmosDbIndexer.Name);
-    if (exists)
-    {
-        await searchService.Indexers.ResetAsync(cosmosDbIndexer.Name);
-    }
-    await searchService.Indexers.CreateOrUpdateAsync(cosmosDbIndexer);
-```
-Program odstraní všechny existující indexery se stejným názvem před vytvořením nového, pro případ, že chcete spustit tento příklad více než jednou.
+Program aktualizuje všechny existující indexery se stejným názvem, přepíše stávající indexer obsahem výše uvedeného kódu. Zahrnuje také akce resetování a spouštění pro případ, že chcete spustit tento příklad více než jednou.
 
-Tento příklad definuje plán pro indexer, takže se spustí jednou denně. Vlastnost Schedule můžete z tohoto volání odebrat, pokud nechcete, aby indexer znovu automaticky spouštěl v budoucnu.
-
-### <a name="index-azure-cosmos-db-data"></a>Data Azure Cosmos DB indexu
-
-Po vytvoření zdroje dat a indexeru je kód, který spouští indexer, stručný:
+Následující příklad definuje plán pro indexer, aby se spouštěl jednou za den. Vlastnost Schedule můžete z tohoto volání odebrat, pokud nechcete, aby indexer znovu automaticky spouštěl v budoucnu.
 
 ```csharp
-    try
-    {
-        await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
-    }
-    catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-    {
-        Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-    }
+SearchIndexer cosmosDbIndexer = new SearchIndexer(
+    name: "hotel-rooms-cosmos-indexer",
+    dataSourceName: cosmosDbDataSource.Name,
+    targetIndexName: indexName)
+{
+    Schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+};
+
+// Indexers keep metadata about how much they have already indexed.
+// If we already ran the indexer, it "remembers" and does not run again.
+// To avoid this, reset the indexer if it exists.
+try
+{
+    await indexerClient.GetIndexerAsync(cosmosDbIndexer.Name);
+    // Reset the indexer if it exists.
+    await indexerClient.ResetIndexerAsync(cosmosDbIndexer.Name);
+}
+catch (RequestFailedException ex) when (ex.Status == 404)
+{
+    // If the indexer does not exist, 404 will be thrown.
+}
+
+await indexerClient.CreateOrUpdateIndexerAsync(cosmosDbIndexer);
+
+Console.WriteLine("Running Cosmos DB indexer...\n");
+
+try
+{
+    // Run the indexer.
+    await indexerClient.RunIndexerAsync(cosmosDbIndexer.Name);
+}
+catch (RequestFailedException ex) when (ex.Status == 429)
+{
+    Console.WriteLine("Failed to run indexer: {0}", ex.Message);
+}
 ```
 
 Tento příklad obsahuje jednoduchý blok try-catch, který oznamuje všechny chyby, ke kterým může dojít během provádění.
 
-Po spuštění indexeru Azure Cosmos DB bude index vyhledávání obsahovat úplnou sadu ukázkových dokumentů hotelového typu. Pole místností pro každý Hotel však bude prázdné pole, protože zdroj dat Azure Cosmos DB neobsahuje žádné podrobnosti o místnostech. V dalším kroku se program vyžádá z úložiště objektů BLOB pro načtení a sloučení dat místnosti.
+Po spuštění indexeru Azure Cosmos DB bude index vyhledávání obsahovat úplnou sadu ukázkových dokumentů hotelového typu. Pole místností pro každý Hotel však bude prázdné pole, protože Azure Cosmos DB zdroj dat vynechává podrobnosti místnosti. V dalším kroku se program vyžádá z úložiště objektů BLOB pro načtení a sloučení dat místnosti.
 
 ### <a name="create-blob-storage-data-source-and-indexer"></a>Vytvoření zdroje dat služby Blob Storage a indexeru
 
-Chcete-li získat podrobnosti o místnosti, program nejprve nastaví zdroj dat úložiště objektů BLOB tak, aby odkazoval na sadu individuálních souborů objektů BLOB JSON.
+Chcete-li získat podrobnosti místnosti, program nejprve nastaví zdroj dat úložiště objektů BLOB tak, aby odkazoval na sadu individuálních souborů objektů BLOB JSON.
 
 ```csharp
-private static async Task CreateAndRunBlobIndexer(string indexName, SearchServiceClient searchService)
+private static async Task CreateAndRunBlobIndexerAsync(string indexName, SearchIndexerClient indexerClient)
 {
-    DataSource blobDataSource = DataSource.AzureBlobStorage(
+    SearchIndexerDataSourceConnection blobDataSource = new SearchIndexerDataSourceConnection(
         name: configuration["BlobStorageAccountName"],
-        storageConnectionString: configuration["BlobStorageConnectionString"],
-        containerName: "hotel-rooms");
+        type: SearchIndexerDataSourceType.AzureBlob,
+        connectionString: configuration["BlobStorageConnectionString"],
+        container: new SearchIndexerDataContainer("hotel-rooms"));
 
     // The blob data source does not need to be deleted if it already exists,
     // but the connection string might need to be updated if it has changed.
-    await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
+    await indexerClient.CreateOrUpdateDataSourceConnectionAsync(blobDataSource);
 ```
 
-Po vytvoření zdroje dat program nastaví indexer objektů BLOB s názvem **hotelové místnosti – objekt BLOB-indexer**.
-
-```csharp
-    // Add a field mapping to match the Id field in the documents to 
-    // the HotelId key field in the index
-    List<FieldMapping> map = new List<FieldMapping> {
-        new FieldMapping("Id", "HotelId")
-    };
-
-    Indexer blobIndexer = new Indexer(
-        name: "hotel-rooms-blob-indexer",
-        dataSourceName: blobDataSource.Name,
-        targetIndexName: indexName,
-        fieldMappings: map,
-        parameters: new IndexingParameters().ParseJson(),
-        schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-
-    // Reset the indexer if it already exists
-    bool exists = await searchService.Indexers.ExistsAsync(blobIndexer.Name);
-    if (exists)
-    {
-        await searchService.Indexers.ResetAsync(blobIndexer.Name);
-    }
-    await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
-```
+Po vytvoření zdroje dat program nastaví indexer objektů BLOB s názvem **hotelové místnosti – objekt BLOB-indexer**, jak je znázorněno níže.
 
 Objekty blob JSON obsahují klíčové pole s názvem **`Id`** , nikoli **`HotelId`** . Kód používá `FieldMapping` třídu k oznámení indexeru, aby se hodnota pole nasměrovala na **`Id`** **`HotelId`** klíč dokumentu v indexu.
 
-Indexery BLOB Storage můžou používat parametry, které identifikují režim analýzy, který se má použít. Režim analýzy se liší u objektů blob, které reprezentují jediný dokument, nebo více dokumentů v rámci stejného objektu BLOB. V tomto příkladu každý objekt BLOB představuje jeden indexový dokument, takže kód používá `IndexingParameters.ParseJson()` parametr.
-
-Další informace o parametrech analýzy indexeru pro objekty blob JSON najdete v tématu [indexování objektů BLOB JSON](search-howto-index-json-blobs.md). Další informace o zadání těchto parametrů pomocí sady .NET SDK naleznete v tématu Třída [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) .
-
-Program odstraní všechny existující indexery se stejným názvem před vytvořením nového, pro případ, že chcete spustit tento příklad více než jednou.
+Indexery služby Blob Storage můžou použít [IndexingParameters](/dotnet/api/azure.search.documents.indexes.models.indexingparameters) k určení režimu analýzy. V závislosti na tom, zda objekty blob reprezentují jeden dokument nebo více dokumentů v rámci stejného objektu blob, byste měli nastavit různé režimy analýzy. V tomto příkladu každý objekt BLOB představuje jeden dokument JSON, takže kód používá `json` režim analýzy. Další informace o parametrech analýzy indexeru pro objekty blob JSON najdete v tématu [indexování objektů BLOB JSON](search-howto-index-json-blobs.md).
 
 Tento příklad definuje plán pro indexer, takže se spustí jednou denně. Vlastnost Schedule můžete z tohoto volání odebrat, pokud nechcete, aby indexer znovu automaticky spouštěl v budoucnu.
 
-### <a name="index-blob-data"></a>Indexovat data objektů BLOB
-
-Jakmile se vytvoří zdroj dat úložiště objektů BLOB a indexer, kód, který spouští indexer, je jednoduchý:
-
 ```csharp
-    try
+// Map the Id field in the Room documents to the HotelId key field in the index
+List<FieldMapping> map = new List<FieldMapping> {
+    new FieldMapping("Id")
     {
-        await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
+        TargetFieldName =  "HotelId"
     }
-    catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-    {
-        Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-    }
+};
+
+IndexingParameters parameters = new IndexingParameters();
+parameters.Configuration.Add("parsingMode", "json");
+
+SearchIndexer blobIndexer = new SearchIndexer(
+    name: "hotel-rooms-blob-indexer",
+    dataSourceName: blobDataSource.Name,
+    targetIndexName: indexName)
+{
+    Parameters = parameters,
+    Schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+};
+
+blobIndexer.FieldMappings.Add(new FieldMapping("Id") { TargetFieldName = "HotelId" });
+
+// Reset the indexer if it already exists
+try
+{
+    await indexerClient.GetIndexerAsync(blobIndexer.Name);
+    await indexerClient.ResetIndexerAsync(blobIndexer.Name);
+}
+catch (RequestFailedException ex) when (ex.Status == 404) { }
+
+await indexerClient.CreateOrUpdateIndexerAsync(blobIndexer);
+
+try
+{
+    // Run the indexer.
+    await searchService.Indexers.RunAsync(blobIndexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
+    Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
+}
 ```
 
 Vzhledem k tomu, že index již byl vyplněný daty z databáze Azure Cosmos DB, indexer objektů BLOB aktualizuje existující dokumenty v indexu a přidá podrobnosti místnosti.
@@ -351,7 +369,7 @@ Po spuštění programu můžete prozkoumat vyplněný index vyhledávání pomo
 
 V Azure Portal otevřete stránku **Přehled** služby Search a v seznamu **indexy** Najděte rejstřík **Hotel-místnosti – vzor** .
 
-  ![Seznam indexů Kognitivní hledání Azure](media/tutorial-multiple-data-sources/index-list.png "Seznam indexů Kognitivní hledání Azure")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Seznam indexů Kognitivní hledání Azure" border="false":::
 
 V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí rozhraní Průzkumníka služby Search. Zadejte dotaz pro termín, jako je například "luxus". Ve výsledcích by se měl zobrazit alespoň jeden dokument a tento dokument by měl v poli místností zobrazit seznam objektů místností.
 
@@ -359,13 +377,13 @@ V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí
 
 Ve fázích předčasného experimentu vývoje je nejužitečnějším přístupem k iteraci návrhu odstranění objektů z Azure Kognitivní hledání a umožnění kódu jejich opětovného sestavení. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
 
-Vzorový kód pro tento kurz kontroluje existující objekty a odstraní je, abyste mohli znovu spustit kód.
+Ukázkový kód zkontroluje existující objekty a odstraní je nebo aktualizuje, aby bylo možné spustit program znovu.
 
 Portál můžete také použít k odstranění indexů, indexerů a zdrojů dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

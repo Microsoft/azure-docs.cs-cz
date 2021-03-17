@@ -1,20 +1,22 @@
 ---
 title: GetCurrentDateTime v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o GetCurrentDateTime funkcí SQL systému v Azure Cosmos DB.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/18/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606957"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526581"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Vrátí aktuální čas UTC (koordinovaný světový čas) datum a čas jako řetězec ISO 8601.
   
@@ -28,7 +30,7 @@ GetCurrentDateTime ()
   
   Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Popis|
+  |Formát|Description|
   |-|-|
   |RRRR|rok se čtyřmi číslicemi|
   |MM|dvoumístný měsíc (01 = leden atd.)|
@@ -46,7 +48,8 @@ GetCurrentDateTime ()
 
 GetCurrentDateTime () je nedeterministické funkce. Vrácený výsledek je UTC. Přesnost je 7 číslic a přesnost 100 nanosekund.
 
-Tato systémová funkce nebude index využívat.
+> [!NOTE]
+> Tato systémová funkce nebude index využívat. Pokud potřebujete porovnat hodnoty s aktuálním časem, Získejte aktuální čas před provedením dotazu a použijte tuto konstantní řetězcovou hodnotu v `WHERE` klauzuli.
 
 ## <a name="examples"></a>Příklady
   
@@ -68,4 +71,4 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

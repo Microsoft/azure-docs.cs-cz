@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83872507"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362576"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Odkazy na modul Azure CDN z Verizon Premium Rules
 
@@ -41,9 +41,9 @@ Skládá se z těchto:
 - Sada funkcí definujících způsob, jakým bude CDN zpracovávat výše uvedené požadavky.
 Tyto prvky jsou identifikovány na následujícím obrázku.
 
-![Pracovní postup nasazení zásad](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![Snímek obrazovky s popisky zobrazuje podmíněný výraz, shodu a funkce pravidla.](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
-### <a name="policy"></a>Zásada
+### <a name="policy"></a>Zásady
 Zásady, které se skládají ze sady pravidel jen pro čtení, poskytují prostředky pro:
 
 - Umožňuje vytvářet, ukládat a spravovat víc variant vašich pravidel.
@@ -95,7 +95,7 @@ Text, který je interpretován jako zástupná hodnota, přiřadí další význ
 
 Znak | Description
 ----------|------------
-\ | Zpětné lomítko se používá k úniku znaků určených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálním znakem, který by měl být uvozen řídicím znakem.<br/>Například následující syntaxe řídí hvězdičku:`\*`
+\ | Zpětné lomítko se používá k úniku znaků určených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálním znakem, který by měl být uvozen řídicím znakem.<br/>Například následující syntaxe řídí hvězdičku: `\*`
 % | Symbol procenta se používá k označení kódování adresy URL (například `%20` ).
 \* | Hvězdička je zástupný znak, který reprezentuje jeden nebo více znaků.
 Místo | Znak mezery označuje, že podmínka shody může být splněna některou ze zadaných hodnot nebo vzorů.
@@ -107,7 +107,7 @@ Regulární výrazy definují vzor, který je prohledáván v rámci textové ho
 
 Speciální znak | Description
 ------------------|------------
-\ | Zpětné lomítko řídí znak, který následuje, což způsobí, že tento znak bude považován za hodnotu literálu namísto převzetí jeho regulárního výrazu. Například následující syntaxe řídí hvězdičku:`\*`
+\ | Zpětné lomítko řídí znak, který následuje, což způsobí, že tento znak bude považován za hodnotu literálu namísto převzetí jeho regulárního výrazu. Například následující syntaxe řídí hvězdičku: `\*`
 % | Význam symbolu procenta závisí na jeho využití.<br/><br/> `%{HTTPVariable}`: Tato syntaxe identifikuje proměnnou HTTP.<br/>`%{HTTPVariable%Pattern}`: Tato syntaxe používá symbol procenta k identifikaci proměnné HTTP a jako oddělovače.<br />`\%`: Uvozovací znak v procentech umožňuje použití jako literálové hodnoty nebo k označení kódování adresy URL (například `\%20` ).
 \* | Hvězdička umožňuje, aby předchozí znak odpovídal nule nebo vícekrát.
 Místo | Znak mezery je obvykle považován za literální znak.

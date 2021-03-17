@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s různými sadami SDK při dotazování na prostředky Azure pomocí Azure Resource graphu.
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 052c3e1c10f1b0ca94653f086e2df4f3d395070e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0d783b9cb4fa30e3c3e0ff82536b4878c29c7a0d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056937"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916697"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
 

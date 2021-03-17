@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: df96fae818ebe4d79c94c993d6e85a1ac48550be
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555106"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Kurz: Azure Active Directory integrace s FilesAnywhere
 
@@ -27,7 +27,7 @@ Integrace FilesAnywhere s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k FilesAnywhere (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -75,7 +75,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí FilesAnywhere, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování FilesAnywhere](#configure-filesanywhere-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování FilesAnywhere](#configure-filesanywhere-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření FilesAnywhere Test User](#create-filesanywhere-test-user)** – pro Britta Simon v FilesAnywhere, který je propojený s reprezentací uživatele Azure AD.
@@ -95,13 +95,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
-    ![Informace o jednotném přihlašování v doméně FilesAnywhere a adresách URL](common/both-replyurl.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S A M L" se zvýrazněným polem odpovědět U R L a zaškrtnutým tlačítkem Uložit.](common/both-replyurl.png)
 
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -112,11 +112,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<sub domain>.filesanywhere.com/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta FilesAnywhere](mailto:support@FilesAnywhere.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a adresy URL Sign-On. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta FilesAnywhere](mailto:support@FilesAnywhere.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 6. FilesAnywhere aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na ikonu Upravit přidejte atributy.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" s vybraným tlačítkem Upravit.](common/edit-attribute.png)
 
     Když se uživatelé přihlásí pomocí FilesAnywhere, získá hodnotu atributu **ClientID** od [týmu FilesAnywhere](mailto:support@FilesAnywhere.com). Je nutné přidat atribut ID klienta s jedinečnou hodnotou, kterou poskytuje FilesAnywhere.
 
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno deklarace identity uživatele s vybranou možnost Přidat novou deklaraci identity a uložit.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -144,7 +144,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
 
     například Klikněte na **Uložit**.
 
-8. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+8. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -158,7 +158,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-filesanywhere-single-sign-on"></a>Konfigurace jednotného přihlašování FilesAnywhere
+### <a name="configure-filesanywhere-single-sign-on"></a>Nakonfigurovat FilesAnywhere jednu Sign-On
 
 Ke konfiguraci jednotného přihlašování na straně **FilesAnywhere** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory FilesAnywhere](mailto:support@FilesAnywhere.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -185,7 +185,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -193,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **FilesAnywhere**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **FilesAnywhere**.
 
@@ -221,13 +221,12 @@ V této části se v FilesAnywhere vytvoří uživatel s názvem Britta Simon. F
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici FilesAnywhere, měli byste se automaticky přihlásit k FilesAnywhere, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici FilesAnywhere, měli byste se automaticky přihlásit k FilesAnywhere, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

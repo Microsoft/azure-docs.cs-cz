@@ -3,19 +3,19 @@ title: Metoda přepisu překladatelů
 titleSuffix: Azure Cognitive Services
 description: Převod textu v jednom jazyce z jednoho skriptu na jiný skript s metodou překladatelů pro přepis.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592249"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895420"
 ---
 # <a name="translator-30-transliterate"></a>Překladatel 3,0: přepis
 
@@ -61,7 +61,7 @@ Hlavičky požadavku zahrnují:
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
+    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
@@ -159,7 +159,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Příklady
 

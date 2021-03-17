@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o známých problémech a altern
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032557"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91254257"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k verzi pro Microsoft Azure Backup Server
 
@@ -60,8 +60,8 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 4. [Nainstalovat](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
 5. Nakonfigurujte vytváření sestav pomocí parametrů popsaných v [konfiguraci služby SSRS pomocí SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 6. [Nainstalovat](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Obnovit](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL pomocí SSMS a spusťte nástroj DPM-Sync, jak je popsáno [zde](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync).
-8. Aktualizujte vlastnost ' verze databáze ' v tabulce dbo. tbl_DLS_GlobalSetting pomocí následujícího příkazu:
+7. [Obnovit](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL pomocí SSMS a spusťte DPM-Sync Tool, jak je popsáno [zde](/system-center/dpm/back-up-the-dpm-server#using-dpmsync).
+8. Aktualizujte vlastnost ' verze databáze ' v tabulce dbo.tbl_DLS_GlobalSetting pomocí následujícího příkazu:
 
     ```sql
             UPDATE dbo.tbl_DLS_GlobalSetting
@@ -78,7 +78,7 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 **Alternativní řešení**: Pokud chcete nahradit soubory RDL, postupujte podle následujících kroků:
 
 1. Na počítači s MABS otevřete adresu URL webového portálu SQL Reporting Services.
-1. V adrese URL webového portálu se složka DPMReports nachází ve formátu**`DPMReports_<GUID>`**
+1. V adrese URL webového portálu se složka DPMReports nachází ve formátu **`DPMReports_<GUID>`**
 
     >[!NOTE]
     >Tato konvence vytváření názvů vždy obsahuje jenom jednu složku. Pokud se MABS upgraduje z předchozí verze, může to být také jiná starší složka, ale nebudete ji moct otevřít.
@@ -95,7 +95,7 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 
 1. Na stránce Nový vyberte možnost **nahradit** k nahrazení souborů nejnovějšími soubory sestav.
 
-    Nejnovější soubory sestav najdete v cestě.`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    Nejnovější soubory sestav najdete v cestě. `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     Příklad: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 

@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89376974"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -22,10 +22,10 @@ Tento článek obsahuje informace o řešení potíží, které řeší všechny
 - Ověřte, jestli je už žádná sdílená složka v účtu úložiště chráněná jiným úložištěm Recovery Services.
 
   >[!NOTE]
-  >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
+  >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít Recovery Services trezor, ve kterém je váš účet úložiště zaregistrovaný.
 
 - Ujistěte se, že sdílená složka není přítomna v žádném z nepodporovaných účtů úložiště. Podporované účty úložiště můžete najít v tématu [Podpora pro zálohování sdílených složek Azure](azure-file-share-support-matrix.md) .
-- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků nepřesáhla 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště. 
+- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků překročila 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště.
 - Zkontrolujte nastavení brány firewall účtu úložiště, abyste měli jistotu, že je povolená možnost Povolit důvěryhodné služby Microsoftu přístup k účtu úložiště.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo
@@ -51,10 +51,10 @@ Zkuste registraci zopakovat. Pokud se problém opakuje, obraťte se na podporu.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Po zrušení ochrany sdílené složky nejde odstranit Recovery Services trezor.
 
-V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště** infrastruktury zálohování trezoru a kliknutím na **zrušit registraci** odeberte účty úložiště z trezoru Recovery Services.
+V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště**infrastruktury zálohování trezoru. Vyberte zrušit **registraci** pro odebrání účtů úložiště z Recovery Services trezoru.
 
 >[!NOTE]
->Trezor služby Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
+>Trezor Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
 
 ## <a name="common-backup-or-restore-errors"></a>Běžné chyby zálohování nebo obnovení
 
@@ -86,7 +86,7 @@ Kód chyby: AFSMaxSnapshotReached
 Chybová zpráva: dosáhli jste maximálního počtu snímků pro tuto sdílenou složku. po vypršení platnosti starších verzí bude možné provést další akce.
 
 - K této chybě může dojít, když vytvoříte více záloh na vyžádání pro sdílenou složku.
-- Počet 200 snímků na sdílenou složku je omezen na, včetně těch, které jsou pořízeny Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.
+- Pro každou sdílenou složku je povolený limit 200 snímků, včetně souborů pořízených Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.
 
 Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Soubory Azure.
 
@@ -251,7 +251,7 @@ Chybová zpráva: nenašel se snímek sdílené složky Azure odpovídající bo
 - Zajistěte, aby byl snímek sdílené složky odpovídající bodu obnovení, který se snažíte použít pro obnovení, stále existuje.
 
   >[!NOTE]
-  >Pokud odstraníte snímek sdílené složky, který byl vytvořen Azure Backup, odpovídající body obnovení se stanou nepoužitelnými. Pro zajištění zaručeného obnovení Doporučujeme neodstraňovat snímky.
+  >Pokud odstraníte snímek sdílené složky, který byl vytvořen Azure Backup, odpovídající body obnovení se stanou nepoužitelnými. Doporučujeme, abyste neodstranili snímky, abyste zajistili zaručené obnovení.
 
 - Zkuste pro obnovení dat vybrat jiný bod obnovení.
 
@@ -300,7 +300,7 @@ Chybová zpráva: uvedené body obnovení nejsou k dispozici, protože se trvale
 Ověřte, zda je odstraněna zálohovaná sdílená složka. Pokud byl ve stavu undeleteded, ověřte, zda je doba uchování měkkého odstranění vyšší a nebyla obnovena zpět. V obou těchto případech ztratíte všechny snímky trvale a nebudete moct data obnovit.
 
 >[!NOTE]
-> Doporučujeme neodstraňovat zálohovanou sdílenou složku, nebo pokud je v nepodmíněném stavu odstranění, zrušit před uplynutím doby uchování krátkého odstranění, aby nedošlo ke ztrátě všech bodů obnovení.
+> Nedoporučujeme odstranit zálohovanou sdílenou složku, nebo pokud je v tichém odstraněných stavech, neodstraňujte před uplynutím doby uchování krátkého odstranění, abyste se vyhnuli ztrátě všech bodů obnovení.
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState – zálohování se nepovedlo, protože sdílená složka Azure je ve stavu nepodmíněného odstranění.
 

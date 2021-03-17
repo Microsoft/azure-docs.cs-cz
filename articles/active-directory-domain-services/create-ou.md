@@ -2,7 +2,7 @@
 title: Vytvoření organizační jednotky (OU) v Azure AD Domain Services | Microsoft Docs
 description: Naučte se, jak vytvořit a spravovat vlastní organizační jednotku (OU) ve spravované doméně Azure AD Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: fbdfcc23553a27aaa4d7bbd4bff9c4f33cb8fd19
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040278"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620014"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Vytvoření organizační jednotky (OU) ve Azure Active Directory Domain Services spravované doméně
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak vytvořit organizační jednotku ve spravovan�
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -89,8 +89,8 @@ Pokud chcete vytvořit vlastní organizační jednotku, použijte nástroje pro 
 
 Další informace o používání nástrojů pro správu nebo vytváření a používání účtů služeb najdete v následujících článcích:
 
-* [Centrum správy služby Active Directory: Začínáme](https://technet.microsoft.com/library/dd560651.aspx)
-* [Podrobný průvodce účty služby](https://technet.microsoft.com/library/dd548356.aspx)
+* [Centrum správy služby Active Directory: Začínáme](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560651(v=ws.10))
+* [Podrobný průvodce účty služby](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

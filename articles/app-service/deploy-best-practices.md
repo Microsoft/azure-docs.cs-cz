@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b49177eb592906e3bf84d359699b354f8c87c6e
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081047"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185661"
 ---
 # <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
 
@@ -45,9 +45,9 @@ Kdykoli je to možné, použijte [nasazovací sloty](deploy-staging-slots.md) p�
 
 Pokud váš projekt obsahuje určené větve pro testování, kontrolu a přípravu, pak je třeba každou z těchto větví trvale nasadit do přípravného slotu. (To se označuje jako [Návrh Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) To umožňuje zúčastněným stranám snadno posoudit a otestovat nasazenou větev. 
 
-Průběžné nasazování by nikdy nemělo být povolené pro produkční slot. Místo toho by měla být vaše produkční větev (často Master) nasazená do neprodukčního slotu. Až budete připraveni k vydání základní větve, Proměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – místo nasazení do produkčního prostředí zabraňuje výpadkům a umožňuje vrátit zpět změny tím, že se znovu odsadí. 
+Průběžné nasazování by nikdy nemělo být povolené pro produkční slot. Místo toho by měla být vaše produkční větev (často hlavní) nasazená do neprodukčního slotu. Až budete připraveni k vydání základní větve, Proměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – místo nasazení do produkčního prostředí zabraňuje výpadkům a umožňuje vrátit zpět změny tím, že se znovu odsadí. 
 
-![Vizuál využití slotu](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Diagram znázorňující tok mezi vývojem, přípravnou a hlavní větví a sloty, na které jsou nasazeny.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Průběžné nasazování kontejnerů
 
@@ -65,7 +65,7 @@ Níže jsou uvedeny příklady pro běžné rozhraní automatizace.
 
 ### <a name="use-azure-devops"></a>Použití Azure DevOps
 
-App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) pro kontejnery prostřednictvím centra nasazení. Přejděte do aplikace v [Azure Portal](https://portal.azure.com/) a v části **nasazení**vyberte **centrum nasazení** . Podle pokynů vyberte úložiště a větev. Tím se nakonfiguruje kanál sestavení a verze DevOps pro automatické sestavení, označení a nasazení kontejneru při vložení nových potvrzení do vybrané větve.
+App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) pro kontejnery prostřednictvím centra nasazení. Přejděte do aplikace v [Azure Portal](https://portal.azure.com/) a v části **nasazení** vyberte **centrum nasazení** . Podle pokynů vyberte úložiště a větev. Tím se nakonfiguruje kanál sestavení a verze DevOps pro automatické sestavení, označení a nasazení kontejneru při vložení nových potvrzení do vybrané větve.
 
 ### <a name="use-github-actions"></a>Použití akcí GitHubu
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1
@@ -113,7 +113,7 @@ jobs:
 
 Výše uvedené kroky se vztahují na další automatizační nástroje, jako je CircleCI nebo Travis CI. K aktualizaci slotů nasazení pomocí nových značek obrázků v posledním kroku ale musíte použít rozhraní příkazového řádku Azure CLI. Pokud chcete ve svém skriptu Automation použít Azure CLI, vygenerujte instanční objekt pomocí následujícího příkazu.
 
-```shell
+```azurecli
 az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --scopes /subscriptions/{subscription}/resourceGroups/{resource-group} \
    --sdk-auth
@@ -123,13 +123,13 @@ V rámci vašeho skriptu se přihlaste pomocí `az login --service-principal` a 
 
 - [Jak se přihlásit k rozhraní příkazového řádku Azure CLI v kruhu CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
-## <a name="language-specific-considerations"></a>Doporučení pro konkrétní jazyk
+## <a name="language-specific-considerations"></a>Language-Specific hlediska
 
 ### <a name="java"></a>Java
 
-Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací jar a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace War. Pokud používáte Jenkinse, můžete tato rozhraní API používat přímo ve fázi nasazení. Další informace najdete v [tomto článku](../jenkins/execute-cli-jenkins-pipeline.md).
+Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací jar a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace War. Pokud používáte Jenkinse, můžete tato rozhraní API používat přímo ve fázi nasazení. Další informace najdete v [tomto článku](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
-### <a name="node"></a>Node
+### <a name="node"></a>Uzel
 
 Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci Node ( `npm install` ). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení aplikace `SCM_DO_BUILD_DURING_DEPLOYMENT` s hodnotou `false` .
 
@@ -149,7 +149,7 @@ V kombinaci s [sloty nasazení](deploy-staging-slots.md) vždy používejte mís
 
 Pokud váš App Service plán používá více než 90% dostupného procesoru nebo paměti, může mít základní virtuální počítač potíže se zpracováním nasazení. Pokud k tomu dojde, dočasná velikost počtu instancí proveďte v případě nasazení. Po dokončení nasazení můžete počet instancí vrátit do předchozí hodnoty.
 
-Další informace o osvědčených postupech najdete v [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
+Další informace o osvědčených postupech najdete v [App Service Diagnostics](./overview-diagnostics.md) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
 
 - Přejděte do webové aplikace v [Azure Portal](https://portal.azure.com).
 - Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku App Service.

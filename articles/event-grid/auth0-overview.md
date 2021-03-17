@@ -3,12 +3,12 @@ title: Auth0 témata o partnerech s Azure Event Grid
 description: Odešlete události z Auth0 do služeb Azure pomocí Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 411d8f8eb53e4bc3fa8c8dda04bdcf12c74db768
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 340403111c094540ba7e66faf71ebf3cfe24fe7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101285"
 ---
 # <a name="auth0-partner-topics"></a>Témata týkající se partnerů Auth0
 ![Logo Auth0](./media/auth0-overview/auth0-logo.png)
@@ -43,7 +43,7 @@ Kombinování postupů monitorování zabezpečení a reakce na incidenty je dů
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Témata o partnerech – přehled](partner-topics-overview.md)
+- [Témata o partnerech – přehled](partner-events-overview.md)
 - [Jak používat téma Auth0 partner](auth0-how-to.md)
 - [Dokumentace k Auth0](https://auth0.com/docs/azure-tutorial)
 - [Staňte se Event Grid partnerem](partner-onboarding-overview.md)

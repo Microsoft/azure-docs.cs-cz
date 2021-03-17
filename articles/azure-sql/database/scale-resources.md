@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 180fca9ae40bc07be762665a3d16270e905d2e02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984136"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499216"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamické škálování prostředků databáze s minimálními výpadky
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

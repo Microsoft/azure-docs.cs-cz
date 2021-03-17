@@ -3,25 +3,26 @@ title: Spouštění skriptů prostředí v rámci virtuálního počítače se s
 description: Toto téma popisuje, jak spouštět skripty v rámci virtuálního počítače Azure Linux pomocí funkce spustit příkaz.
 services: automation
 ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 7e8ccc832cdf12176cd88cce0157c08d8bf92507
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 73dd15a5eed3e27d9b72bc0357e35901c04ba7a2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372582"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552928"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Spouštění skriptů prostředí ve VIRTUÁLNÍm počítači se systémem Linux pomocí příkazu Spustit
 
-Funkce příkazu Spustit používá agenta virtuálního počítače ke spouštění skriptů prostředí v rámci virtuálního počítače Azure Linux. Tyto skripty můžete použít pro obecnou správu počítačů nebo aplikací. Můžou vám pomůžou rychle diagnostikovat a opravit problémy s přístupem a sítí virtuálních počítačů a získat virtuální počítač zpátky do dobrého stavu.
+Funkce Spustit příkaz využívá agenta virtuálního počítače ke spouštění skriptů prostředí v rámci virtuálního počítače Azure s Linuxem. Tyto skripty můžete použít k obecné správě počítačů nebo aplikací. Můžou vám pomůžou rychle diagnostikovat a opravit problémy s přístupem a sítí virtuálních počítačů a získat virtuální počítač zpátky do dobrého stavu.
 
 ## <a name="benefits"></a>Výhody
 
-K virtuálním počítačům máte přístup několika způsoby. Příkaz Spustit může vzdáleně spouštět skripty na virtuálních počítačích pomocí agenta virtuálního počítače. Příkaz Spustit můžete použít prostřednictvím Azure Portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)nebo [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) pro virtuální počítače se systémem Linux.
+K virtuálním počítačům máte přístup několika způsoby. Příkaz Spustit může vzdáleně spouštět skripty na virtuálních počítačích pomocí agenta virtuálního počítače. Příkaz Spustit můžete použít prostřednictvím Azure Portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)nebo [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) pro virtuální počítače se systémem Linux.
 
 Tato možnost je užitečná ve všech situacích, kdy chcete spustit skript na virtuálním počítači. Je to jeden z možných způsobů řešení potíží a nápravy virtuálního počítače, který nemá otevřený port RDP nebo SSH z důvodu nesprávné konfigurace sítě nebo administrativního uživatele.
 
@@ -39,7 +40,7 @@ Při použití příkazu Run platí následující omezení:
 * K vrácení výsledků skriptu se vyžaduje odchozí připojení z virtuálního počítače.
 
 > [!NOTE]
-> Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/security-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
+> Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/network-security-groups-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
 
 ## <a name="available-commands"></a>Dostupné příkazy
 
@@ -56,7 +57,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-V následujícím příkladu se pomocí příkazu [AZ VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) spustí skript prostředí na virtuálním počítači Azure Linux.
+V následujícím příkladu se pomocí příkazu [AZ VM Run-Command](/cli/azure/vm/run-command#az_vm_run_command_invoke) spustí skript prostředí na virtuálním počítači Azure Linux.
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "apt-get update && apt-get install -y nginx"
@@ -67,7 +68,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>portál Azure
 
-V [Azure Portal](https://portal.azure.com) klikněte na virtuální počítač a v části **operace**vyberte **Spustit příkaz** . Zobrazí se seznam dostupných příkazů ke spuštění na virtuálním počítači.
+V [Azure Portal](https://portal.azure.com) klikněte na virtuální počítač a v části **operace** vyberte **Spustit příkaz** . Zobrazí se seznam dostupných příkazů ke spuštění na virtuálním počítači.
 
 ![Seznam příkazů](./media/run-command/run-command-list.png)
 
@@ -85,10 +86,10 @@ Po výběru příkazu spusťte skript výběrem možnosti **Spustit** . Po dokon
 Následující příklad používá ke spuštění skriptu PowerShellu na virtuálním počítači Azure rutinu [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) . Rutina očekává, že se skript, na který je odkazováno v `-ScriptPath` parametru, nachází v místním prostředí, kde se rutina spouští.
 
 ```powershell-interactive
-Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>Omezení přístupu ke spuštění příkazu
+## <a name="limiting-access-to-run-command"></a>Omezení přístupu k funkci Spustit příkaz
 
 Výpis příkazů pro spuštění nebo zobrazení podrobností příkazu vyžaduje `Microsoft.Compute/locations/runCommands/read` oprávnění. Toto oprávnění mají i předdefinovanou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a vyšší úrovně.
 

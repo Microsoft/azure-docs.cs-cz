@@ -6,16 +6,16 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/25/2020
+ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060303"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325379"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
-[Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-what-is-azure-search) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
+[Azure kognitivní hledání](./search-what-is-azure-search.md) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
 
 Můžete najít Power BI App template **kognitivní hledání Azure: Analýza protokolů a metrik** na [tržišti aplikací pro Power BI](https://appsource.microsoft.com/marketplace/apps).
 
@@ -23,16 +23,16 @@ Můžete najít Power BI App template **kognitivní hledání Azure: Analýza pr
 
 1. Povolit protokolování metrik a prostředků pro vyhledávací službu:
 
-    1. Umožňuje vytvořit nebo identifikovat existující [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , do kterého můžete archivovat protokoly.
+    1. Umožňuje vytvořit nebo identifikovat existující [účet Azure Storage](../storage/common/storage-account-create.md) , do kterého můžete archivovat protokoly.
     1. Přejděte do služby Azure Kognitivní hledání v Azure Portal
     1. V části monitorování v levém sloupci vyberte **nastavení diagnostiky** .
 
-        ![Snímek obrazovky ukazující, jak vybrat nastavení diagnostiky v části Monitorování služby Azure Kognitivní hledání.](media/search-monitor-logs-powerbi/diagnostic-settings.png)
+        :::image type="content" source="media/search-monitor-logs-powerbi/diagnostic-settings.png" alt-text="Snímek obrazovky ukazující, jak vybrat nastavení diagnostiky v části Monitorování služby Azure Kognitivní hledání." border="false":::
 
     1. Vybrat **+ Přidat nastavení diagnostiky**
     1. Zaregistrujte se **do účtu úložiště**, zadejte informace o svém účtu úložiště a pak ověřte **OperationLogs** a **AllMetrics** .
 
-        ![Snímek obrazovky ukazující, jak provést výběry pro metriky a protokolování prostředků na stránce nastavení diagnostiky.](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
+        :::image type="content" source="media/search-monitor-logs-powerbi/add-diagnostic-setting.png" alt-text="Snímek obrazovky ukazující, jak provést výběry pro metriky a protokolování prostředků na stránce nastavení diagnostiky.":::
     1. Vyberte **Uložit**.
 
 1. Po povolení protokolování můžete pomocí vyhledávací služby začít generovat protokoly a metriky. Může to trvat až hodinu, než se kontejnery zobrazí v úložišti objektů BLOB v těchto protokolech. Zobrazí se kontejner **Insights-logs-operationlogs** pro protokoly pro vyhledávání a kontejner Insights- **Metrics-pt1m** pro metriky.
@@ -41,52 +41,52 @@ Můžete najít Power BI App template **kognitivní hledání Azure: Analýza pr
 
 1. Po instalaci aplikace vyberte aplikaci ze seznamu aplikací v Power BI.
 
-    ![Snímek obrazovky s aplikací Azure Kognitivní hledání, kterou chcete vybrat ze seznamu aplikací](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/azure-search-app-tile.png" alt-text="Snímek obrazovky s aplikací Azure Kognitivní hledání, kterou chcete vybrat ze seznamu aplikací":::
 
 1. Vyberte **připojit** a připojte data.
 
-    ![Snímek obrazovky, který ukazuje, jak se připojit k datům v aplikaci Azure Kognitivní hledání.](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/get-started-with-your-new-app.png" alt-text="Snímek obrazovky, který ukazuje, jak se připojit k datům v aplikaci Azure Kognitivní hledání.":::
 
 1. Zadejte název účtu úložiště, který obsahuje vaše protokoly a metriky. Ve výchozím nastavení se aplikace bude považovat za posledních 10 dnů, ale tato hodnota se dá změnit s parametrem **dny** .
 
-    ![Snímek obrazovky ukazující, jak zadat název účtu úložiště a počet dní k dotazování na stránce připojit k Azure Kognitivní hledání.](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/connect-to-storage-account.png" alt-text="Snímek obrazovky ukazující, jak zadat název účtu úložiště a počet dní k dotazování na stránce připojit k Azure Kognitivní hledání.":::
 
 1. Jako metodu ověřování vyberte **klíč** a zadejte svůj klíč účtu úložiště. Jako úroveň ochrany osobních údajů vyberte **soukromá** . Klikněte na Přihlásit se a zahajte proces načítání.
 
-    ![Snímek obrazovky ukazující, jak zadat metodu ověřování, klíč účtu a úroveň ochrany osobních údajů na stránce připojit k Azure Kognitivní hledání.](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png" alt-text="Snímek obrazovky ukazující, jak zadat metodu ověřování, klíč účtu a úroveň ochrany osobních údajů na stránce připojit k Azure Kognitivní hledání.":::
 
 1. Počkejte, až se data aktualizují. To může nějakou dobu trvat v závislosti na tom, kolik dat máte. Můžete zjistit, zda se data stále aktualizují na základě níže uvedeného indikátoru.
 
-    ![Snímek obrazovky ukazující, jak číst informace na stránce pro aktualizaci dat](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-refreshing.png" alt-text="Snímek obrazovky ukazující, jak číst informace na stránce pro aktualizaci dat":::
 
 1. Po dokončení aktualizace dat vyberte **sestavu Azure kognitivní hledání** a zobrazte sestavu.
 
-    ![Snímek obrazovky ukazující, jak vybrat sestavu Azure Kognitivní hledání na stránce aktualizace dat](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-select-report.png" alt-text="Snímek obrazovky ukazující, jak vybrat sestavu Azure Kognitivní hledání na stránce aktualizace dat":::
 
 1. Po otevření sestavy nezapomeňte stránku aktualizovat, aby se otevírala s daty.
 
-    ![Snímek obrazovky Power BI sestavy služby Azure Kognitivní hledání.](media/search-monitor-logs-powerbi/powerbi-search.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Snímek obrazovky Power BI sestavy služby Azure Kognitivní hledání.":::
 
 ## <a name="how-to-change-the-app-parameters"></a>Jak změnit parametry aplikace
 Pokud chcete vizualizovat data z jiného účtu úložiště nebo změnit počet dnů, na které se má dotaz zadat dotaz, změňte parametry **dnů** a **StorageAccount** podle následujících kroků.
 
 1. Přejděte do aplikací Power BI, Najděte aplikaci Azure Kognitivní hledání a kliknutím na tlačítko **Upravit aplikaci** zobrazíte pracovní prostor.
 
-    ![Snímek obrazovky ukazující, jak vybrat tlačítko Upravit aplikaci pro aplikaci Azure Kognitivní hledání](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png" alt-text="Snímek obrazovky ukazující, jak vybrat tlačítko Upravit aplikaci pro aplikaci Azure Kognitivní hledání":::
 
 1. V možnostech datové sady vyberte **Nastavení** .
 
-    ![Snímek obrazovky ukazující, jak vybrat nastavení z možností datové sady vyhledávací služby Azure Congnitive](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-select-settings.png" alt-text="Snímek obrazovky ukazující, jak vybrat nastavení z možností datové sady Azure Kognitivní hledání":::
 
 1. Na kartě datové sady změňte hodnoty parametrů a vyberte **použít**. Pokud dojde k potížím s připojením, aktualizujte přihlašovací údaje ke zdroji dat na stejné stránce.
 
 1. Přejděte zpátky do pracovního prostoru a vyberte **aktualizovat hned** z možností datové sady.
 
-    ![Snímek obrazovky ukazující, jak vybrat aktualizovat z možností datové sady Azure Congnitive Search](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png" alt-text="Snímek obrazovky ukazující, jak vybrat aktualizaci z možností datové sady Azure Kognitivní hledání":::
 
 1. Otevřete sestavu pro zobrazení aktualizovaných dat. Je také možné, že budete muset aktualizovat sestavu, aby se zobrazila nejnovější data.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro řešení potíží:
 
 1. Otevřete sestavu a aktualizujte stránku, abyste měli jistotu, že si prohlížíte nejnovější data. V sestavě je možnost aktualizovat data. Tuto možnost vyberte, pokud chcete získat nejnovější data.
@@ -98,8 +98,8 @@ Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro ře
 1. Zkontrolujte, jestli se datová sada ještě neaktualizovala. Indikátor stavu aktualizace se zobrazí v kroku 8 výše. Pokud se stále aktualizuje, počkejte, až se aktualizace dokončí, aby se tato sestava otevřela a aktualizovala.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/)
+[Další informace o Azure Kognitivní hledání](./index.yml)
 
-[Co je Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Co je Power BI?](/power-bi/fundamentals/power-bi-overview)
 
-[Základní pojmy pro návrháře ve službě Power BI](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Základní pojmy pro návrháře ve službě Power BI](/power-bi/service-basic-concepts)

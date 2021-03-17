@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850708"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368485"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -24,11 +24,11 @@ V této části se můžete co nejdříve nakonfigurovat a spustit aplikaci Func
 
 ### <a name="security-center"></a>Security Center
 
-Security Center se integruje s aplikací Function App na portálu. Poskytuje zdarma rychlé posouzení potenciálních chyb zabezpečení souvisejících s konfigurací. Aplikace Function App spuštěné ve vyhrazeném plánu můžou k dalším nákladům použít také funkce zabezpečení Security Center v reálném čase. Další informace najdete v tématu [ochrana Azure App Service webových aplikací a rozhraní API](../security-center/security-center-app-services.md). 
+Security Center se integruje s aplikací Function App na portálu. Poskytuje zdarma rychlé posouzení potenciálních chyb zabezpečení souvisejících s konfigurací. Aplikace Function App spuštěné ve vyhrazeném plánu můžou k dalším nákladům použít také funkce zabezpečení Security Center v reálném čase. Další informace najdete v tématu [ochrana Azure App Service webových aplikací a rozhraní API](../security-center/defender-for-app-service-introduction.md). 
 
 ### <a name="log-and-monitor"></a>Protokolování a monitorování
 
-Jedním z nich zjišťování útoků je prostřednictvím aktivity monitorování aktivity a analýzy protokolování. Funkce se integrují s Application Insights pro shromažďování dat o protokolech, výkonu a chybách pro aplikaci Function App. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se vaše funkce používají. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+Jedním ze způsobů detekce útoků je využití aktivity monitorování aktivity a analýzy protokolování. Funkce se integrují s Application Insights pro shromažďování dat o protokolech, výkonu a chybách pro aplikaci Function App. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se vaše funkce používají. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 Funkce se také integrují s protokoly Azure Monitor, které vám umožní konsolidovat protokoly aplikací funkcí se systémovými událostmi pro snazší analýzu. Nastavení diagnostiky můžete použít ke konfiguraci exportu protokolů a metrik platforem pro vaše funkce do cíle podle vašeho výběru, jako je například pracovní prostor Log Analytics. Další informace najdete v tématu [monitorování Azure Functions pomocí protokolů Azure monitor](functions-monitor-log-analytics.md). 
 
@@ -58,7 +58,7 @@ Rozsah systémových klíčů závisí na rozšíření, ale obecně platí pro 
 
 Následující tabulka porovnává použití různých druhů přístupových klíčů:
 
-| Akce                                        | Rozsah                    | Platné klíče         |
+| Akce                                        | Obor                    | Platné klíče         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Spustit funkci                            | Konkrétní funkce        | Funkce           |
 | Spustit funkci                            | Libovolná funkce             | Funkce nebo hostitel   |
@@ -80,7 +80,7 @@ Ve výchozím nastavení se klíče ukládají do kontejneru úložiště objekt
 |---------|---------|---------|---------|
 |Jiný účet úložiště     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Ukládá klíče v úložišti objektů BLOB druhého účtu úložiště na základě zadané adresy URL SAS. Klíče se šifrují předtím, než se uloží pomocí tajného klíče jedinečného pro vaši aplikaci Function App. |
 |Systém souborů   | `AzureWebJobsSecretStorageType`   |  `files`       | Klíče se v systému souborů uchovávají, šifrované před úložištěm s použitím tajného klíče jedinečného pro vaši aplikaci Function App. |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | V trezoru musí být zásady přístupu, které odpovídají spravované identitě prostředku hostování. Zásada přístupu by měla identitě udělit následující skrytá oprávnění: `Get` , `Set` , `List` a `Delete` . <br/>Při místním spuštění se používá identita vývojáře a nastavení se musí nacházet vlocal.settings.jsv [souboru](functions-run-local.md#local-settings-file). | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | V trezoru musí být zásady přístupu, které odpovídají spravované identitě prostředku hostování. Zásada přístupu by měla identitě udělit následující skrytá oprávnění: `Get` , `Set` , `List` a `Delete` . <br/>Při místním spuštění se používá identita vývojáře a nastavení se musí nacházet vlocal.settings.jsv [ souboru](functions-run-local.md#local-settings-file). | 
 |Tajné klíče Kubernetes  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (volitelné) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Podporováno pouze při spuštění modulu runtime Functions v Kubernetes. Pokud `AzureWebJobsKubernetesSecretName` není nastaveno, úložiště je považováno za jen pro čtení. V takovém případě musí být hodnoty generovány před nasazením. Azure Functions Core Tools generuje hodnoty automaticky při nasazení do Kubernetes.|
 
 ### <a name="authenticationauthorization"></a>Ověřování/autorizace
@@ -107,6 +107,8 @@ Připojovací řetězce a další přihlašovací údaje uložené v nastavení 
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+Spravované identity lze použít místo tajných kódů pro připojení z některých triggerů a vazeb. Viz [připojení založená na identitách](#identity-based-connections).
+
 Další informace najdete v tématu [Jak používat spravované identity pro App Service a Azure Functions](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json).
 
 #### <a name="restrict-cors-access"></a>Omezení přístupu CORS
@@ -129,11 +131,21 @@ Například každá aplikace Function App vyžaduje přidružený účet úloži
 
 Nastavení aplikace a připojovací řetězce se ukládají v Azure jako šifrované. Dešifrují se jenom předtím, než se vloží do paměti procesu aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčí. Pokud raději spravujete zabezpečené úložiště vašich tajných kódů, nastavení aplikace by mělo být místo odkazů na Azure Key Vault. 
 
+Při vývoji funkcí v místním počítači můžete také ve výchozím nastavení šifrovat nastavení v local.settings.jssouboru. Další informace najdete `IsEncrypted` v tématu vlastnost v [souboru místních nastavení](functions-run-local.md#local-settings-file).  
+
 #### <a name="key-vault-references"></a>Odkazy na Key Vault
 
 I když jsou nastavení aplikace dostačující pro většinu funkcí, možná budete chtít sdílet stejné tajné kódy napříč více službami. V tomto případě redundantní úložiště tajných klíčů vede k více potenciálním ohrožením zabezpečení. Bezpečnější je přístup ke službě centrálního tajného úložiště a místo samotných tajných klíčů používat odkazy na tuto službu.      
 
 [Azure Key Vault](../key-vault/general/overview.md) je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu. Odkaz na Key Vault můžete použít místo připojovacího řetězce nebo klíče v nastavení aplikace. Další informace najdete v tématu [použití Key Vault odkazů pro App Service a Azure Functions](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json).
+
+### <a name="identity-based-connections"></a>Připojení založená na identitách
+
+Místo tajných kódů, které se připojují k některým prostředkům, se dají použít identity. To má výhodu, že není potřeba spravovat tajný kód a poskytuje přesnější řízení přístupu a auditování. 
+
+Při psaní kódu, který vytváří připojení ke [službám Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), se můžete rozhodnout použít identitu místo tajného nebo připojovacího řetězce. Podrobnosti o obou metodách připojení jsou pokryté v dokumentaci pro každou službu.
+
+Některá Azure Functions Trigger a rozšíření vazby můžou být nakonfigurované pomocí připojení založeného na identitě. V současné době zahrnuje rozšíření [Azure Blob](./functions-bindings-storage-blob.md) a [Azure Queue](./functions-bindings-storage-queue.md) Extensions. Informace o tom, jak nakonfigurovat tato rozšíření pro použití identity, najdete [v tématu použití připojení na základě identity v Azure Functions](./functions-reference.md#configure-an-identity-based-connection).
 
 ### <a name="set-usage-quotas"></a>Nastavení kvót využití
 

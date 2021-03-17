@@ -3,7 +3,7 @@ title: Odebrat osobní data – Proxy aplikací služby Azure Active Directory
 description: Odebrat osobní data z konektorů nainstalovaných na zařízeních pro Proxy aplikací služby Azure Active Directory.
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90913ba8f7fbe8158a5cfea01e49a175180677b6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759959"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258944"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrat osobní data pro Proxy aplikací služby Azure Active Directory
 
@@ -35,7 +35,7 @@ Proxy aplikací může zapisovat osobní data do následujících typů protokol
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Odebrání osobních údajů z protokolů událostí systému Windows
 
-Informace o tom, jak nakonfigurovat uchovávání dat v protokolech událostí systému Windows, najdete v tématu [nastavení pro protokoly událostí](https://technet.microsoft.com/library/cc952132.aspx). Další informace o protokolech událostí systému Windows najdete v tématu [použití protokolu událostí systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
+Informace o tom, jak nakonfigurovat uchovávání dat v protokolech událostí systému Windows, najdete v tématu [nastavení pro protokoly událostí](https://technet.microsoft.com/library/cc952132.aspx). Další informace o protokolech událostí systému Windows najdete v tématu [použití protokolu událostí systému Windows](/windows/win32/wes/using-windows-event-log).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ Pomocí následujících částí můžete odebrat osobní data z protokolů ud�
 
 Chcete-li zobrazit nebo exportovat konkrétní data, vyhledejte související položky v každém z protokolů událostí konektoru. Protokoly jsou umístěny na adrese `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` .
 
-Vzhledem k tomu, že protokoly jsou textové soubory, můžete pomocí nástroje [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) vyhledat textové položky týkající se uživatele.  
+Vzhledem k tomu, že protokoly jsou textové soubory, můžete pomocí nástroje [findstr](/windows-server/administration/windows-commands/findstr) vyhledat textové položky týkající se uživatele.  
 
 Pokud chcete najít osobní údaje, vyhledejte soubory protokolu pro uživatele UserID.
 

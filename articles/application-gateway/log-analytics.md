@@ -1,23 +1,23 @@
 ---
 title: Kontrola protokolů WAF pomocí Azure Log Analytics
 titleSuffix: Azure Application Gateway
-description: V tomto článku se dozvíte, jak můžete použít Azure Log Analytics k prohlédnutí Application Gateway protokolů firewallu webových aplikací.
+description: V tomto článku se dozvíte, jak můžete pomocí Azure Log Analytics kontrolovat protokoly firewallu webových aplikací (WAF) Application Gateway.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 88e360c5630c24dd997f72bda3fc4a480264763d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c7acdda3dce3b1338888cdf36f1623597c11fc3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086910"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586080"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Použití Log Analytics pro kontrolu Application Gateway protokolů firewallu webových aplikací (WAF)
 
-Jakmile Application Gateway WAF, můžete povolit protokoly a zkontrolovat, co se děje s jednotlivými požadavky. Protokoly brány firewall poskytují přehled o tom, co WAF vyhodnocuje, odpovídá a blokuje. Pomocí Log Analytics můžete zkoumat data v protokolech brány firewall a získat ještě další přehledy. Další informace o vytváření pracovního prostoru Log Analytics najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Další informace o dotazech protokolu najdete [v tématu Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+Jakmile Application Gateway WAF, můžete povolit protokoly a zkontrolovat, co se děje s jednotlivými požadavky. Protokoly brány firewall poskytují přehled o tom, co WAF vyhodnocuje, odpovídá a blokuje. Pomocí Log Analytics můžete zkoumat data v protokolech brány firewall a získat ještě další přehledy. Další informace o vytváření pracovního prostoru Log Analytics najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md). Další informace o dotazech protokolu najdete [v tématu Přehled dotazů protokolu v Azure monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="import-waf-logs"></a>Importovat protokoly WAF
 
@@ -80,7 +80,7 @@ AzureDiagnostics
 
 Když vytvoříte dotaz, můžete ho přidat na řídicí panel.  V pravém horním rohu pracovního prostoru Log Analytics vyberte **Připnout na řídicí panel** . Pomocí předchozích čtyř dotazů připnuté na vzorový řídicí panel se jedná o data, která vidíte na první pohled:
 
-![Řídicí panel](media/log-analytics/dashboard.png)
+![Snímek obrazovky ukazuje řídicí panel Azure, kde můžete přidat dotaz.](media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 

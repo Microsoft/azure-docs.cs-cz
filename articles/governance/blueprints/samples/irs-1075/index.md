@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu IRS 1075 – přehled
 description: Přehled ukázky podrobného plánu IRS 1075 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly IRS 1075.
-ms.date: 05/13/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 877621f4164b64c31d553d007da31a62892c3e3e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ca934fde9f993429cedbe53149d8d8cbac031d5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655031"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045185"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Přehled ukázky podrobného plánu IRS 1075
 

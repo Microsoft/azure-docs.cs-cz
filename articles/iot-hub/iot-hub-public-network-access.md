@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 03/12/2021
+ms.openlocfilehash: 539e420cb9085fad10ea3972ba0e9e5ffb9d0622
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937520"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419758"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Správa přístupu k veřejné síti ve službě IoT Hub
 
@@ -28,7 +28,17 @@ Pokud chcete omezit přístup jenom na [soukromý koncový bod pro službu IoT H
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Obrázek znázorňující Azure Portal, kde vypnout přístup k veřejné síti" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-Pokud chcete zapnout přístup k veřejné síti, vyberte **povoleno**a pak **Uložit**.
+Pokud chcete zapnout přístup k veřejné síti, vyberte **všechny sítě** a pak **Uložit**.
+
+## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>Přístup k IoT Hub po zakázání přístupu k veřejné síti
+
+Po zakázání přístupu k veřejné síti je IoT Hub k dispozici jenom prostřednictvím privátního [koncového bodu virtuální sítě pomocí privátního odkazu Azure](virtual-network-support.md). Toto omezení zahrnuje přístup prostřednictvím Azure Portal, protože volání rozhraní API služby IoT Hub se provádí přímo pomocí vašeho prohlížeče s vašimi přihlašovacími údaji. 
+
+## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>IoT Hub koncový bod, IP adresu a porty po zakázání přístupu k veřejné síti
+
+IoT Hub je víceklientské platforma jako služba (PaaS), takže různí zákazníci sdílejí stejný fond výpočetních, síťových a hardwarových prostředků úložiště. Názvy hostitelů IoT Hub se mapují na veřejný koncový bod s veřejně směrovatelný IP adresou přes Internet. Různí zákazníci sdílí tento IoT Hub veřejný koncový bod a zařízení IoT v různých sítích a místních sítích mají přístup k nim. 
+
+Zakázání přístupu k veřejné síti se vynutilo u konkrétního prostředku IoT Hub a zajišťuje tak izolaci. Aby se služba udržovala aktivní pro jiné zákaznické prostředky pomocí veřejné cesty, zůstane jejich veřejný koncový bod přeložitelný, IP adresy zjistitelné a porty zůstanou otevřené. Nejedná se o příčinu obav, protože společnost Microsoft integruje více vrstev zabezpečení, aby zajistila úplnou izolaci mezi klienty. Další informace najdete v tématu věnovaném [izolaci ve veřejném cloudu Azure](../security/fundamentals/isolation-choices.md#tenant-level-isolation).
 
 ## <a name="ip-filter"></a>Filtr IP adres 
 

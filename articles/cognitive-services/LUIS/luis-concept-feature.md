@@ -1,14 +1,16 @@
 ---
 title: Funkce strojového učení s LUIS
 description: Přidáním funkcí do jazykového modelu poskytněte nápovědu týkající se rozpoznávání vstupu, který chcete označit nebo klasifikovat.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/22/2020
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075172"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546053"
 ---
 # <a name="machine-learning-features"></a>Funkce strojového učení
 
@@ -20,12 +22,10 @@ Funkci lze popsat jako funkci, jako je například f (x) = y. V příkladu utter
 
 ## <a name="types-of-features"></a>Typy funkcí
 
-LUIS podporuje seznamy frází i modely jako funkce:
+Funkce jsou nezbytnou součástí návrhu schématu. LUIS podporuje seznamy frází i modely jako funkce:
 
-* Funkce seznamu frází 
+* Funkce seznamu frází
 * Model (záměr nebo entita) jako funkce
-
-Funkce by měly být považovány za nezbytnou součást návrhu schématu.
 
 ## <a name="find-features-in-your-example-utterances"></a>Hledání funkcí v příkladech projevy
 
@@ -43,32 +43,6 @@ Určete, zda text, protože rozlišuje vlastnosti, musí:
 * Porovnat přesné slovo nebo frázi: zvažte přidání entity regulárního výrazu nebo entity seznamu jako funkce pro entitu nebo záměr.
 * Porovnává dobře známý koncept, například data, časy nebo jména lidí: jako funkci pro entitu nebo záměr použijte předem vytvořenou entitu.
 * Naučte se nové příklady v průběhu času: jako funkce pro entitu nebo záměr použijte seznam frází některých příkladů konceptu.
-
-## <a name="combine-features"></a>Kombinování funkcí
-
-K popisu vlastností nebo konceptu můžete použít více než jednu funkci. Společné párování je použití funkce seznamu frází a typu entity, který se často používá jako funkce:
-
- * předem vytvořená entita
- * entita regulárního výrazu
- * Seznam entit
-
-### <a name="ticket-booking-entity-example"></a>Příklad entity rezervace lístku
-
-Jako první příklad si představte aplikaci pro rezervaci letu s záměrem rezervace letu a entitou rezervace lístků.
-
-Entita rezervace lístku je entita strojového učení pro cílové umístění letu. Chcete-li získat informace o umístění, použijte dvě funkce, které vám pomůžou:
-
-* Seznam frází relevantních slov, jako je například **rovina**, **let**, **rezervace**nebo **lístek**
-* Předem vytvořená **geographyV2** entita jako funkce pro entitu
-
-### <a name="pizza-entity-example"></a>Příklad entity Pizza
-
-Jako jiný příklad zvažte aplikaci pro řazení Pizza, která má záměr Create-Pizza-Order a entita Pizza.
-
-Entita Pizza je entita strojového učení pro podrobnosti Pizza. Chcete-li získat podrobné informace, použijte dvě funkce, které vám pomůžou:
-
-* Seznam frází relevantních slov, jako je například **sýr**, **crust**, **pepperoni**nebo **ananas**
-* Předem vytvořená **Číselná** entita jako funkce pro entitu
 
 ## <a name="create-a-phrase-list-for-a-concept"></a>Vytvoření seznamu frází pro koncept
 
@@ -176,21 +150,19 @@ Pokračuje se v příkladu adresy pro expedici:
 
 Adresa příjemce (entita počítač se naučila)
 
- * Číslo ulice (subentity) 
- * Ulice (subentity) 
- * Název ulice (subentity) 
- * Město (subentity) 
- * Okres (subentity) 
- * Země/oblast (subentita) 
+ * Číslo ulice (subentity)
+ * Ulice (subentity)
+ * Název ulice (subentity)
+ * Město (subentity)
+ * Okres (subentity)
+ * Země/oblast (subentita)
  * Poštovní směrovací číslo (subentity)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Požadovaná funkce s využitím předem připravených entit
 
-Město, stát a země/oblast jsou všeobecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. To znamená, že pokud se entity, které mají požadované funkce, nenaleznou, celá dodací adresa se nevrátí.
+Předem připravené entity, jako je město, stát a země/oblast, jsou všeobecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. `isRequired`Příznak se však vztahuje pouze k entitě, ke které je přiřazen, a nemá vliv na hierarchii. Pokud se nenalezne předdefinovaná funkce subentity, nebude to mít vliv na detekci a návrat nadřazené entity.
 
-Co když se město, stát nebo země/oblast nacházejí v utterance, ale nacházejí se v umístění nebo jsou slangem, že LUIS neočekává? Pokud chcete poskytnout nějaké následné zpracování, které vám pomůžou tuto entitu vyřešit, protože skóre s nízkou mírou spolehlivosti z LUIS, nepoužívejte tuto funkci podle potřeby.
-
-Dalším příkladem požadované funkce pro doručovací adresu je zadání požadovaného a [předem připraveného](luis-reference-prebuilt-entities.md) čísla. Uživatel tak může zadat "1 Microsoft Way" nebo "One Microsoft". Oba se překládají na číslice "1" pro subentity s číslem ulice.
+Jako příklad požadované funkce zvažte, že chcete zjistit adresy. Můžete uvažovat o tom, že bude nutné určit číslo ulice. Uživatel tak může zadat "1 Microsoft Way" nebo "One Microsoft" a obě se budou překládat na číslice "1" pro dílčí entitu číslo. Další informace najdete v článku [předdefinovaná entita ](luis-reference-prebuilt-entities.md) .
 
 ### <a name="required-feature-using-list-entities"></a>Požadovaná funkce využívající seznam entit
 
@@ -217,6 +189,59 @@ Obecně platí, že pokud chcete použít funkci pro konkrétní model, můžete
 Nejběžnějším použitím globální funkce je přidání dalších slovníků do aplikace. Pokud například vaši zákazníci používají primární jazyk, ale očekává se, že bude moci používat jiný jazyk v rámci stejného utterance, můžete přidat funkci, která obsahuje slova ze sekundárního jazyka.
 
 Vzhledem k tomu, že uživatel očekává použití sekundárního jazyka napříč jakýmkoli záměrem nebo entitou, přidejte do seznamu frázi slova ze sekundárního jazyka. Nakonfigurujte seznam frází jako globální funkci.
+
+## <a name="combine-features-for-added-benefit"></a>Kombinování funkcí pro přidané výhody
+
+K popisu vlastností nebo konceptu můžete použít více než jednu funkci. Společné párování je použití:
+
+* Funkce seznamu frází: pro stejný model můžete použít více seznamů frází jako funkce.
+* Model jako funkce: [předem sestavená entita](luis-reference-prebuilt-entities.md), [entita regulárního výrazu](reference-entity-regular-expression.md), [seznam entit](reference-entity-list.md). 
+
+### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Příklad: funkce entity pro rezervaci lístků pro cestovní aplikaci  
+
+Jako základní příklad si představte aplikaci pro rezervaci letu s _záměrem_ rezervace letu a _entitou_ rezervace lístků. Entita rezervace lístku zachycuje informace pro lístek lístku v letadle v rezervačním systému. 
+
+Entita strojového učení pro lístek má dvě podentity, které zachytí počátek a cíl. Funkce musí být přidány do každé dílčí entity, nikoli jako entita nejvyšší úrovně.
+
+:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking – schéma entit":::
+
+Entita rezervace lístku je entita strojového učení s podentitami, včetně _původu_ a _cíle_. Tyto subentity označují zeměpisné umístění. Pro účely extrakce umístění a rozlišení mezi _zdrojem_ a _cílem_ by měly být v každé podentitě funkce.
+
+|Typ|Podentita původu |Cílová subentita|
+|--|--|--|
+|Model jako funkce|předem vytvořená entita [geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3)|předem vytvořená entita [geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3)|
+|Seznam frází|**Původ slova**: `start at` , `begin from` , `leave`|**Cílová slova**: `to` , `arrive` , `land at` , `go` , `going` , `stay` , `heading`|
+|Seznam frází|Kódy letišť – stejný seznam pro zdroj i cíl|Kódy letišť – stejný seznam pro zdroj i cíl|
+|Seznam frází|Názvy letišť – stejný seznam pro zdroj i cíl|Kódy letišť – stejný seznam pro zdroj i cíl|
+
+Pokud předpokládáte, že uživatelé používají letištní kódy a názvy letišť, než má LUIS, musí mít seznamy frází, které používají oba typy frází. Pomocí textu zadaného v chatovací robot můžou být běžnější i letištní kódy, zatímco názvy letišť můžou být běžnější pomocí mluvené konverzace, jako je chatovací robot s podporou rozpoznávání řeči.
+
+Porovnání podrobností o funkcích se vrátí pouze pro modely, nikoli pro seznamy frází, protože v předpovědi JSON jsou vráceny pouze modely.
+
+#### <a name="ticket-booking-labeling-in-the-intent"></a>Označení rezervace lístku v záměru
+
+Po vytvoření entity strojového učení musíte do záměru přidat příklad projevy a označit nadřazenou entitu a všechny podentity.
+
+Pro příklad rezervace lístku označte příklad projevy v záměru s `TicketBooking` entitou a všemi podentitami v textu.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Příklad popisku projevy":::
+
+### <a name="example-pizza-ordering-app"></a>Příklad: aplikace řazení Pizza
+
+V druhém příkladu si představte aplikaci pro Pizza restauraci, která přijímá objednávky Pizza, včetně podrobností o typu Pizza, který někdo má na objednávku. Pokud je to možné, musí být všechny podrobnosti Pizza extrahovány, pokud je to možné, aby se zpracování objednávky dokončilo.
+
+Entita strojového učení v tomto příkladu je složitější s vnořenými subentitami, seznamy frází, předem sestavenými entitami a vlastními entitami.
+
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Schéma entity objednávky Pizza":::
+
+Tento příklad používá funkce na úrovni subentity a podřízenosti úrovně subentity. Jakou úroveň získá seznam frází nebo model jako funkci, je důležitou součástí návrhu vaší entity.
+
+I když mohou podklíče obsahovat mnoho frázových seznamů jako funkce, které vám pomůžou detekovat entitu, má každá podentita jenom jeden model jako funkci. V této [aplikaci Pizza](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)jsou tyto modely primárně vypsány.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Záměr Pizza objednávek s popisem projevy":::
+
+Správně označený příklad projevy zobrazení způsobem, který ukazuje, jak jsou entity vnořené. 
+
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: ad610339d79eb0fd77403957c252a36e8243eb87
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837257"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367954"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure PowerShellu
 
@@ -27,7 +27,7 @@ ms.locfileid: "87837257"
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -87,6 +87,8 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
+
+Od verze rozhraní API `2019-07-01` můžete nastavit velikost disku s operačním systémem v sadě škálování virtuálního počítače pomocí vlastnosti [StorageProfile. OsDisk. diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) . Po zřízení možná budete muset disk rozbalit nebo znovu rozdělit, aby bylo možné používat celý prostor. Další informace o [rozšiřování disku najdete tady](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
 Vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Po zobrazení výzvy zadejte uživatelské jméno a heslo pro instance virtuálních počítačů. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985.
@@ -276,7 +278,7 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Odpojení disku
-Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. Pokud chcete odpojit disk od sady škálování, použijte [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) a zadejte logickou jednotku disku. Logické jednotky (LUN) se zobrazí ve výstupu z [Get-AzVmss](/powershell/module/az.compute/get-azvmss) v předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *3*:
+Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. Pokud chcete odpojit disk od sady škálování, použijte [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) a zadejte logickou jednotku disku. Logické jednotky (LUN) se zobrazí ve výstupu z [Get-AzVmss](/powershell/module/az.compute/get-azvmss)  v předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *3*:
 
 ```azurepowershell-interactive
 # Get scale set object

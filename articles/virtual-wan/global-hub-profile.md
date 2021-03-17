@@ -1,18 +1,18 @@
 ---
 title: Stažení globálních profilů sítě VPN založených na službě Azure Virtual WAN nebo centrálních rozbočovačů Microsoft Docs
-description: Seznamte se s automatizovaným škálovatelným připojením mezi větevmi, dostupnými oblastmi a partnery služby Virtual WAN.
+description: Přečtěte si, jak Azure Virtual WAN nabízí dva typy připojení pro vzdálené uživatele a jak stáhnout profil.
 services: virtual-wan
 author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 4/20/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: d0fc2f608617ca00fea8b9ed5c4b874c65940263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d5c4ba0f1f55119d1ec38296e67ae3e90c52650
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064794"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313718"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Stáhnout globální profil nebo profil založený na centru pro klienty VPN uživatelů
 

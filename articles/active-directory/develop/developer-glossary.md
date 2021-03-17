@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117239"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755654"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -54,7 +54,7 @@ Další informace naleznete v tématu [Application and Service instanční objek
 
 Aby mohla aplikace integrovat s funkcemi pro správu identit a přístupu do služby Azure AD, musí být zaregistrované v [Tenantovi](#tenant)Azure AD. Při registraci aplikace ve službě Azure AD poskytujete konfiguraci identity pro vaši aplikaci, která umožňuje integraci s Azure AD a používání funkcí, jako například:
 
-* Robustní Správa jednotného přihlašování pomocí Azure AD identity managementu a implementace protokolu [OpenID Connect][OpenIDConnect]
+* Robustní Správa jednoho Sign-On pomocí implementace protokolu Azure AD Identity Management a [OpenID Connect][OpenIDConnect]
 * Zprostředkovaný přístup k [chráněným prostředkům](#resource-server) pomocí [klientských aplikací](#client-application)prostřednictvím [autorizačního serveru](#authorization-server) OAuth 2,0
 * [Rozhraní pro vyjádření souhlasu](#consent) pro správu přístupu klientů k chráněným prostředkům na základě autorizace vlastníka prostředků.
 
@@ -89,7 +89,7 @@ Přihlašovací údaje představující [autorizaci](#authorization) [vlastníka
 
 Jak je definováno [autorizačním rozhraním OAuth2][OAuth2-Role-Def], server zodpovědný za vydávání přístupových tokenů [klientovi](#client-application) po úspěšném ověření [vlastníka prostředku](#resource-owner) a získání jeho autorizace. [Klientská aplikace](#client-application) komunikuje s autorizačním serverem za běhu [prostřednictvím svých](#authorization-endpoint) koncových bodů [tokenu](#token-endpoint) , a to v souladu s OAuth2 definovanými [autorizačními uděleními](#authorization-grant).
 
-V případě integrace aplikací Microsoft Identity Platform implementuje Microsoft Identity Platform roli autorizačního serveru pro aplikace Azure AD a rozhraní API služeb Microsoftu, například [Microsoft Graph rozhraní API][Microsoft-Graph].
+V případě integrace aplikací Microsoft Identity Platform implementuje Microsoft Identity Platform role autorizačního serveru pro aplikace Azure AD a rozhraní API služeb Microsoftu, například [Microsoft Graph rozhraní API][Microsoft-Graph].
 
 ## <a name="claim"></a>tvrdit
 
@@ -117,7 +117,7 @@ Další podrobnosti najdete v referenčních informacích k [tokenům platformy 
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
+Platforma Microsoft identity je vývojem služby identity a platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 
 ## <a name="multi-tenant-application"></a>víceklientské aplikace
 
@@ -154,7 +154,7 @@ Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def],
 
 Jak je definováno v [rámci autorizačního rozhraní OAuth2][OAuth2-Role-Def], server, který je hostitelem chráněných prostředků, umožňuje přijímat a reagovat na požadavky na chráněné prostředky [klientskými aplikacemi](#client-application) , které prezentují [přístupový token](#access-token). Označuje se také jako chráněný server prostředků nebo aplikace prostředků.
 
-Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněným prostředkům prostřednictvím [oborů](#scopes) a [rolí](#roles)pomocí autorizačního rozhraní OAuth 2,0. Mezi příklady patří [rozhraní Microsoft Graph API][Microsoft-Graph] , které poskytuje přístup k datům TENANTA Azure AD, a rozhraní API pro Office 365, která poskytují přístup k datům, jako je například pošta a kalendář.
+Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněným prostředkům prostřednictvím [oborů](#scopes) a [rolí](#roles)pomocí autorizačního rozhraní OAuth 2,0. Mezi příklady patří [rozhraní Microsoft Graph API][Microsoft-Graph] , které poskytuje přístup k datům TENANTA Azure AD a rozhraní api pro Microsoft 365, která poskytují přístup k datům, jako je například pošta a kalendář.
 
 Stejně jako klientská aplikace, konfigurace identity aplikace prostředků se vytváří prostřednictvím [registrace](#application-registration) v TENANTOVI Azure AD, která poskytuje aplikační i instanční objekt. Některá rozhraní API poskytnutá Microsoftem, jako je Microsoft Graph API, mají předem registrované instanční objekty, které jsou k dispozici ve všech klientech během zřizování.
 
@@ -164,7 +164,7 @@ Podobně jako [obory](#scopes)role poskytují [serveru prostředků](#resource-s
 
 Role jsou řetězce definované prostředky (například schvalovatel výdajů, "jen pro čtení", "adresář. četl. vše") spravované v [Azure Portal][AZURE-portal] prostřednictvím [manifestu aplikace](#application-manifest)prostředku a uložené ve [vlastnosti appRoles][Graph-Sp-Resource]prostředku. Azure Portal se také používá k přiřazení uživatelů k rolím "uživatel" a ke konfiguraci [oprávnění klientských aplikací](#permissions) pro přístup k roli "aplikace".
 
-Podrobné informace o aplikačních rolích, které jsou vystavené rozhraním API Microsoft Graph, najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Podrobný příklad implementace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal][AAD-RBAC].
+Podrobné informace o aplikačních rolích, které jsou vystavené rozhraním API Microsoft Graph, najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Podrobný příklad implementace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal][AAD-RBAC].
 
 ## <a name="scopes"></a>obory
 
@@ -172,7 +172,7 @@ Podobně jako [role](#roles)poskytují obory pro [server prostředků](#resource
 
 Obory jsou řetězce definované prostředky (například mail. Read "," Directory. četl. All ") spravované v [Azure Portal][AZURE-portal] prostřednictvím [manifestu aplikace](#application-manifest)prostředku a uložené ve [vlastnosti oauth2Permissions][Graph-Sp-Resource]prostředku. Azure Portal se také používá ke konfiguraci [delegovaných oprávnění](#permissions) klientské aplikace pro přístup k oboru.
 
-Osvědčenými postupy pro vytváření názvů je použití formátu "prostředek. Operation. Constraint". Podrobnou diskuzi o oborech vystavených rozhraním Microsoft Graph API najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Obory vystavené službami Office 365 najdete v [referenčních informacích k rozhraní API pro office 365][O365-Perm-Ref].
+Osvědčenými postupy pro vytváření názvů je použití formátu "prostředek. Operation. Constraint". Podrobnou diskuzi o oborech vystavených rozhraním Microsoft Graph API najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Obory vystavené službou Microsoft 365 Services najdete v tématu [Přehled oprávnění rozhraní API pro Microsoft 365][O365-Perm-Ref].
 
 ## <a name="security-token"></a>token zabezpečení
 
@@ -202,7 +202,7 @@ Instance adresáře služby Azure AD je označována jako tenant služby Azure A
 * ověřování uživatelských účtů a registrovaných aplikací
 * Koncové body REST vyžadované pro podporu různých protokolů, včetně OAuth2 a SAML, včetně [koncového bodu autorizace](#authorization-endpoint), [koncového bodu tokenu](#token-endpoint) a "společného" koncového bodu používaného [více aplikacemi tenantů](#multi-tenant-application).
 
-Tenant Azure AD se vytváří/přidružit k předplatným Azure a Office 365 během registrace a poskytují funkce pro správu přístupu identity & pro předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure do vašeho tenanta Azure Active Directory][AAD-How-Subscriptions-Assoc] . pokyny k přidružení nebo přidání předplatného k TENANTOVI Azure AD.
+Tenant Azure AD se vytváří/přidružit k Azure a předplatným Microsoft 365 během registrace a poskytují funkce pro správu přístupu identit & pro předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure do vašeho tenanta Azure Active Directory][AAD-How-Subscriptions-Assoc] . pokyny k přidružení nebo přidání předplatného k TENANTOVI Azure AD.
 
 ## <a name="token-endpoint"></a>koncový bod tokenu
 
@@ -222,7 +222,7 @@ Typ [klientské aplikace](#client-application) , který spouští veškerý kód
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příručka pro vývojáře Microsoft Identity Platform Developer][AAD-Dev-Guide] je cílová stránka, která se používá pro všechna témata týkající se vývoje platformy Microsoft Identity Platform, včetně přehledu [Integrace aplikací][AAD-How-To-Integrate] a základů [ověřování platformy Microsoft Identity Platform a podporovaných scénářů ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky kódu & kurzy, jak rychle začít pracovat na [GitHubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Příručka pro vývojáře Microsoft Identity Platform Developer][AAD-Dev-Guide] je cílová stránka, která se používá pro všechna témata týkající se vývoje platformy Microsoft Identity Platform, včetně přehledu [Integrace aplikací][AAD-How-To-Integrate] a základních [scénářů ověřování platformy Microsoft Identity Platform a podporovaných scénářů ověřování][AAD-Auth-Scenarios]. Můžete také najít ukázky kódu & kurzy, jak rychle začít pracovat na [GitHubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Následující komentáře vám poskytnou zpětnou vazbu a nápovědu k vylepšení a obnově obsahu obsahu, včetně požadavků na nové definice nebo aktualizace stávajících.
 
@@ -235,7 +235,7 @@ Následující komentáře vám poskytnou zpětnou vazbu a nápovědu k vylepše
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

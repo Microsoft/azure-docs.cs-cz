@@ -1,18 +1,15 @@
 ---
 title: 'Azure HDInsight: ukázky .NET'
 description: Příklady C# .NET na GitHubu pro běžné úlohy s využitím sady HDInsight SDK pro .NET.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 12/06/2019
-ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6182deb657631135742351583d51171739c8ee68
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74951560"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931971"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: ukázky .NET
 
@@ -33,7 +30,7 @@ Můžete si [aktivovat výhody pro předplatitele sady Visual Studio](https://az
 
 ## <a name="prerequisite"></a>Požadavek
 
-[Sada Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+[Sada Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
 
@@ -46,4 +43,4 @@ Tyto ukázky pro .NET můžete získat klonováním úložiště GitHub pro [HDI
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight).

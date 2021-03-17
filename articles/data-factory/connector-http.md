@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat ze zdroje HTTP pomocí Azure Data Factory
 description: Naučte se kopírovat data z cloudového nebo místního zdroje HTTP na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416942"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573196"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -34,7 +29,7 @@ Rozdíl mezi tímto konektorem HTTP, [konektorem REST](connector-rest.md) a [kon
 - **Konektor http** je obecný k načtení dat z libovolného koncového bodu http, třeba ke stažení souboru. Než bude konektor REST k dispozici, můžete k tomu použít konektor HTTP ke kopírování dat z rozhraní RESTful API, které je podporováno, ale méně funkčních porovnání s konektorem REST.
 - **Konektor webové tabulky** extrahuje obsah tabulky z webové stránky HTML.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor HTTP se podporuje pro následující činnosti:
 
@@ -46,7 +41,7 @@ Data ze zdroje HTTP můžete kopírovat do libovolného podporovaného úložiš
 Tento konektor HTTP můžete použít k těmto akcím:
 
 - Načtěte data z koncového bodu HTTP/S pomocí metod HTTP **Get** nebo **post** .
-- Načtěte data pomocí jednoho z následujících ověření: **anonymní**, **základní**, **Digest**, **Windows**nebo **ClientCertificate**.
+- Načtěte data pomocí jednoho z následujících ověření: **anonymní**, **základní**, **Digest**, **Windows** nebo **ClientCertificate**.
 - Zkopírujte odpověď HTTP tak, jak je, nebo ji Analyzujte pomocí [podporovaných formátů souborů a kompresních kodeků](supported-file-formats-and-compression-codecs.md).
 
 > [!TIP]
@@ -66,22 +61,22 @@ Následující části obsahují podrobné informace o vlastnostech, které mů�
 
 Pro propojenou službu HTTP jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavena na hodnotu **HttpServer**. | Ano |
-| url | Základní adresa URL webového serveru. | Ano |
-| enableServerCertificateValidation | Určete, jestli se při připojení ke koncovému bodu HTTP má povolit ověřování certifikátu TLS/SSL serveru. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **false**. | Ne<br /> (výchozí hodnota je **true**) |
-| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech uvedených v této tabulce. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost **Type** musí být nastavena na hodnotu **HttpServer**. | Yes |
+| url | Základní adresa URL webového serveru. | Yes |
+| enableServerCertificateValidation | Určete, jestli se při připojení ke koncovému bodu HTTP má povolit ověřování certifikátu TLS/SSL serveru. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **false**. | No<br /> (výchozí hodnota je **true**) |
+| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows** a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech uvedených v této tabulce. | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Použití ověřování Basic, Digest nebo Windows
 
-Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**, **Digest**nebo **Windows**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
+Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**, **Digest** nebo **Windows**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu HTTP. | Ano |
-| heslo | Heslo pro uživatele (hodnota uživatelského **jména** ). Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu HTTP. | Yes |
+| heslo | Heslo pro uživatele (hodnota uživatelského **jména** ). Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Příklad**
 
@@ -111,16 +106,16 @@ Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**, **Digest**nebo *
 
 Chcete-li použít ověřování ClientCertificate, nastavte vlastnost **AuthenticationType** na **ClientCertificate**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | embeddedCertData | Data certifikátu zakódovaná ve formátu base64. | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
 | certThumbprint | Kryptografický otisk certifikátu, který je nainstalovaný v úložišti certifikátů počítače Integration Runtime v místním prostředí. Platí pouze v případě, že je typ hosta Integration Runtime zadán ve vlastnosti **connectVia** . | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
-| heslo | Heslo, které je přidruženo k certifikátu. Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| heslo | Heslo, které je přidruženo k certifikátu. Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
 
 Pokud pro ověřování používáte **certThumbprint** a certifikát se instaluje do osobního úložiště místního počítače, udělte oprávnění ke čtení Integration Runtimeům v místním prostředí:
 
 1. Otevřete konzolu MMC (Microsoft Management Console). Přidejte modul snap-in **certifikáty** , který cílí na **místní počítač**.
-2. Rozbalte položku **certifikáty**  >  **osobní**a pak vyberte možnost **certifikáty**.
+2. Rozbalte položku **certifikáty**  >  **osobní** a pak vyberte možnost **certifikáty**.
 3. Pravým tlačítkem myši klikněte na certifikát z osobního úložiště a pak vyberte **všechny úlohy**  >  **spravovat soukromé klíče**.
 3. Na kartě **zabezpečení** přidejte uživatelský účet, pod kterým je spuštěná služba Integration runtime Host (DIAHostService) s přístupem pro čtení k certifikátu.
 
@@ -176,10 +171,10 @@ Pokud pro ověřování používáte **certThumbprint** a certifikát se instalu
 
 Následující vlastnosti jsou podporovány pro protokol HTTP v `location` nastavení v datové sadě založené na formátu:
 
-| Vlastnost    | Popis                                                  | Vyžadováno |
+| Vlastnost    | Popis                                                  | Povinné |
 | ----------- | ------------------------------------------------------------ | -------- |
-| typ        | Vlastnost Type v rámci `location` datové sady musí být nastavená na **HttpServerLocation**. | Ano      |
-| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Konektor HTTP kopíruje data z kombinované adresy URL: `[URL specified in linked service][relative URL specified in dataset]` .   | Ne       |
+| typ        | Vlastnost Type v rámci `location` datové sady musí být nastavená na **HttpServerLocation**. | Yes      |
+| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Konektor HTTP kopíruje data z kombinované adresy URL: `[URL specified in linked service][relative URL specified in dataset]` .   | No       |
 
 > [!NOTE]
 > Podporovaná velikost datové části požadavku HTTP je okolo 500 KB. Pokud je velikost datové části, kterou chcete předat webovému koncovému bodu, větší než 500 KB, zvažte dávkování datové části v menších blocích.
@@ -222,14 +217,14 @@ V této části najdete seznam vlastností, které zdroj HTTP podporuje.
 
 Následující vlastnosti jsou podporovány pro protokol HTTP v `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno |
+| Vlastnost                 | Popis                                                  | Povinné |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **HttpReadSettings**. | Ano      |
-| requestMethod            | Metoda HTTP. <br>Povolené hodnoty jsou **Get** (default) a **post**. | Ne       |
-| addtionalHeaders         | Další hlavičky požadavku HTTP                             | Ne       |
-| částmi              | Tělo požadavku HTTP                               | Ne       |
-| httpRequestTimeout           | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
-| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
+| typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **HttpReadSettings**. | Yes      |
+| requestMethod            | Metoda HTTP. <br>Povolené hodnoty jsou **Get** (default) a **post**. | No       |
+| additionalHeaders         | Další hlavičky požadavku HTTP                             | No       |
+| částmi              | Tělo požadavku HTTP                               | No       |
+| httpRequestTimeout           | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | No       |
+| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No       |
 
 **Příklad:**
 
@@ -283,15 +278,15 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **HttpFile**. | Ano |
-| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. | Ne |
-| requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
-| additionalHeaders | Další hlavičky požadavku HTTP | Ne |
-| částmi | Tělo požadavku HTTP | Ne |
-| formát | Pokud chcete načíst data z koncového bodu HTTP, jak je bez jeho analýzy, a pak zkopírovat data do úložiště založeného na souborech, přeskočte oddíl **Formát** v definicích vstupní i výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP během kopírování, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát**nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v tématu [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), formát [textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), formát [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a [Formát Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Ne |
-| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Podporované typy: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**.<br/>Podporované úrovně: **optimální** a **nejrychlejší**. |Ne |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **HttpFile**. | Yes |
+| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. | No |
+| requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** (default) a **post**. | No |
+| additionalHeaders | Další hlavičky požadavku HTTP | No |
+| částmi | Tělo požadavku HTTP | No |
+| formát | Pokud chcete načíst data z koncového bodu HTTP, jak je bez jeho analýzy, a pak zkopírovat data do úložiště založeného na souborech, přeskočte oddíl **Formát** v definicích vstupní i výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP během kopírování, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** a **ParquetFormat**. V části **Formát** nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v tématu [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), formát [textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), formát [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a [Formát Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |No |
+| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Podporované typy: **gzip**, **Deflate**, **bzip2** a **ZipDeflate**.<br/>Podporované úrovně:  **optimální** a **nejrychlejší**. |No |
 
 > [!NOTE]
 > Podporovaná velikost datové části požadavku HTTP je okolo 500 KB. Pokud je velikost datové části, kterou chcete předat webovému koncovému bodu, větší než 500 KB, zvažte dávkování datové části v menších blocích.
@@ -337,10 +332,10 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ### <a name="legacy-copy-activity-source-model"></a>Starší zdrojový model aktivity kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **HttpSource**. | Ano |
-| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **HttpSource**. | Yes |
+| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | No |
 
 **Příklad**
 

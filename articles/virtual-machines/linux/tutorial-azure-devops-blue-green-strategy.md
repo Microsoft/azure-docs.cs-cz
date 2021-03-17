@@ -2,22 +2,22 @@
 title: Kurz – konfigurace Kanárských nasazení pro virtuální počítače Azure Linux
 description: V tomto kurzu se naučíte nastavit kanál průběžného nasazování (CD). Tento kanál aktualizuje skupinu virtuálních počítačů Azure Linux pomocí strategie nasazení Blue-zelená.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080127"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552583"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie nasazení Blue-zelená pro virtuální počítače Azure Linux
 
@@ -25,7 +25,7 @@ ms.locfileid: "87080127"
 
 Azure Pipelines poskytuje plnohodnotnou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů. Kanál nepřetržitého doručování pro virtuální počítač Azure můžete nakonfigurovat z Azure Portal.
 
-V tomto článku se dozvíte, jak nastavit kanál CI/CD, který používá strategii Blue-zelená pro nasazení ve více počítačích. Azure Portal také podporuje jiné strategie, jako je například [válcování](https://aka.ms/AA7jlh8) a [kanárskéie](https://aka.ms/AA7jdrz).
+V tomto článku se dozvíte, jak nastavit kanál CI/CD, který používá strategii Blue-zelená pro nasazení ve více počítačích. Azure Portal také podporuje jiné strategie, jako je například [válcování](./tutorial-devops-azure-pipelines-classic.md) a [kanárskéie](./tutorial-azure-devops-canary-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Konfigurace CI/CD na virtuálních počítačích
 
@@ -50,10 +50,10 @@ Pomocí možnosti průběžné doručování můžete na své virtuální počí
 
 1. Skupina nasazení je logická sada cílových počítačů nasazení, které reprezentují fyzická prostředí. Příklady jsou dev, test, UAT a produkce. Můžete vytvořit novou skupinu pro nasazení nebo vybrat některou z existujících.
 1. Vyberte kanál sestavení, který publikuje balíček, který se má nasadit do virtuálního počítače. Publikovaný balíček by měl mít skript nasazení s názvem deploy.ps1 nebo deploy.sh ve složce deployscripts v kořenové složce balíčku. Kanál spustí tento skript nasazení.
-1. V **strategii nasazení**vyberte **modrou zelenou**.
+1. V **strategii nasazení** vyberte **modrou zelenou**.
 1. Přidejte "modrou" nebo "zelenou" značku do virtuálních počítačů, které mají být součástí nasazení s modrou zelenou verzí. Pokud je virtuální počítač pro roli v pohotovostním režimu, označte ho jako "zelený". V opačném případě jej označte jako "modrý".
 
-   ![Panel nepřetržitého doručování s hodnotou strategie nasazení Blue-zelená vybraná](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
+   ![Na panelu nepřetržitého doručování se Blue-Green zvolila hodnota strategie nasazení.](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
 
 1. Výběrem **OK** nakonfigurujte kanál nepřetržitého doručování pro nasazení na virtuální počítač.
 
@@ -65,7 +65,7 @@ Pomocí možnosti průběžné doručování můžete na své virtuální počí
    1. V této fázi kanál pozastaví a čeká na ruční zásah pro pokračování v běhu. Uživatelé mohou pokračovat v běhu kanálu, jakmile budou ručně zajištěny stabilitu nasazení na virtuální počítače označené jako "zelená".
    1. V této fázi se na virtuálních počítačích zamění značky "Blue" a "zelená". Tím se zajistí, že virtuální počítače se staršími verzemi aplikací jsou teď označené jako "zelená". Během dalšího spuštění kanálu se aplikace nasadí na tyto virtuální počítače.
 
-      ![Podokno skupina nasazení pro úlohu nasadit Blue-zelený úkol](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
+      ![Podokno skupina nasazení pro úlohu nasazení Blue-Green](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
 
 1. Ve výchozím nastavení úloha spustit skript nasazení spustí skript nasazení deploy.ps1 nebo deploy.sh. Skript se nachází ve složce deployscripts v kořenové složce publikovaného balíčku. Zajistěte, aby vybraný kanál sestavení publikoval nasazení v kořenové složce balíčku.
 
@@ -73,8 +73,8 @@ Pomocí možnosti průběžné doručování můžete na své virtuální počí
 
 ## <a name="other-deployment-strategies"></a>Další strategie nasazení
 
-- [Konfigurace strategie postupné implementace](https://aka.ms/AA7jlh8)
-- [Konfigurovat strategii pro Kanárské nasazení](https://aka.ms/AA7jdrz)
+- [Konfigurace strategie postupné implementace](./tutorial-devops-azure-pipelines-classic.md)
+- [Konfigurovat strategii pro Kanárské nasazení](./tutorial-azure-devops-canary-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 
@@ -84,7 +84,7 @@ Můžete snadno začít pracovat s Azure. Pomocí Azure DevOps Projects spusťte
 - Modul runtime
 - Služba Azure
 
-[Přečtěte si další informace](https://azure.microsoft.com/features/devops-projects/).
+[Další informace](https://azure.microsoft.com/features/devops-projects/).
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

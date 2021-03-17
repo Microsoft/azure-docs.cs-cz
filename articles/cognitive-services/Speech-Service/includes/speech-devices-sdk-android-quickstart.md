@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3b473d82eb879955a6cbdce58ba66176f5c6d6f5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226564"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213803"
 ---
-V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) .
+V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription.md) .
 
-Tato příručka vyžaduje účet [Azure Cognitive Services](../get-started.md) s prostředkem služby Speech.
+Tato příručka vyžaduje účet [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) s prostředkem služby Speech.
 
 Zdrojový kód ukázkové aplikace je součástí sady Speech Devices SDK. Je také [k dispozici na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -24,18 +24,18 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
 
 - Pokud chcete zařízení zapnout, postupujte podle pokynů v sadě [Development Kit](../get-speech-devices-sdk.md) .
 
-- Stáhněte si nejnovější verzi [sady Speech Devices SDK](https://aka.ms/sdsdk-download)a extrahujte soubor. zip do pracovního adresáře.
+- Stáhněte si nejnovější verzi [sady Speech Devices SDK](../speech-devices-sdk.md)a extrahujte soubor. zip do pracovního adresáře.
 
   > [!NOTE]
   > V tomto rychlém startu se předpokládá, že se aplikace extrahuje do C:\SDSDK\Android-Sample-Release.
 
-- Získání [klíče předplatného Azure pro službu Speech](../get-started.md)
+- Získání [klíče předplatného Azure pro službu Speech](../overview.md#try-the-speech-service-for-free)
 
 - Pokud plánujete použití přepisu konverzace, musíte použít [kruhový mikrofon](../get-speech-devices-sdk.md) a tato funkce je v tuto chvíli dostupná jenom pro "en-US" a "zh-CN" v oblastech, "centralus" a "eastasia". Pokud chcete použít přepis konverzace, musíte mít v jedné z těchto oblastí klíč řeči.
 
-- Pokud plánujete použít službu Speech k identifikaci záměrů (nebo akcí) od uživatele projevy, budete potřebovat předplatné [služby Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Další informace o LUIS a rozpoznávání záměrů najdete v tématu [rozpoznávání hlasových záměrů pomocí Luis, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+- Pokud plánujete použít službu Speech k identifikaci záměrů (nebo akcí) od uživatele projevy, budete potřebovat předplatné [služby Language Understanding (Luis)](../../luis/luis-how-to-azure-subscription.md) . Další informace o LUIS a rozpoznávání záměrů najdete v tématu [rozpoznávání hlasových záměrů pomocí Luis, C#](../how-to-recognize-intents-from-speech-csharp.md).
 
-  Můžete [vytvořit jednoduchý model Luis](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použít Vzorový model Luis LUIS-example.jsv. Vzorový model LUIS je k dispozici na [webu pro stažení sady Speech Devices SDK](https://aka.ms/sdsdk-luis). Pokud chcete nahrát soubor JSON modelu na [portál Luis](https://www.luis.ai/home), vyberte **importovat novou aplikaci**a pak vyberte soubor JSON.
+  Můžete [vytvořit jednoduchý model Luis](../../luis/index.yml) nebo použít Vzorový model Luis LUIS-example.jsv. Vzorový model LUIS je k dispozici na [webu pro stažení sady Speech Devices SDK](https://aka.ms/sdsdk-luis). Pokud chcete nahrát soubor JSON modelu na [portál Luis](https://www.luis.ai/home), vyberte **importovat novou aplikaci** a pak vyberte soubor JSON.
 
 - Na svůj počítač nainstalujte [Android Studio](https://developer.android.com/studio/) a [Vysor](https://vysor.io/download/) .
 
@@ -52,7 +52,7 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
    > [!NOTE]
-   > Pokud má vaše společnost zásady týkající se připojení zařízení k systému Wi-Fi, musíte získat adresu MAC a kontaktovat oddělení IT, jak ho připojit k Wi-Fi vaší společnosti.
+   > Pokud má vaše společnost zásady týkající se připojení zařízení ke svému Wi-Fi systému, je potřeba získat adresu MAC a kontaktovat oddělení IT, jak ho připojit k Wi-Fi vaší společnosti.
    >
    > Pokud chcete najít adresu MAC pro vývojovou sadu, vyberte ikonu složky souborů na ploše sady dev Kit.
    >
@@ -62,7 +62,7 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
    >
    > ![Adresa MAC Vysor](../media/speech-devices-sdk/qsg-11.png)
    >
-   > Některé společnosti můžou mít časový limit, jak dlouho může být zařízení připojené k systému Wi-Fi. Po určitém počtu dnů možná budete muset v systému Wi-Fi zvětšit registraci sady dev Kit.
+   > Některé společnosti můžou mít časový limit, jak dlouho může být zařízení připojené k Wi-Fimu systému. Po určitém počtu dnů možná budete muset v Wi-Fi systému zvětšit registraci sady dev Kit.
 
 ## <a name="run-the-sample-application"></a>Spuštění ukázkové aplikace
 
@@ -96,7 +96,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
     Aktualizujte **Build. Gradle (Module: App)** tak, že přidáte tento řádek do oddílu závislosti. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.15.0'
     ```
     
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.
@@ -122,7 +122,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
 1. Klíčové slovo Default je "Computer". Můžete také vyzkoušet jedno z dalších poskytnutých klíčových slov, například "počítač" nebo "asistent". Soubory prostředků pro tato alternativní klíčová slova jsou v sadě Speech Devices SDK ve složce klíčová slova. Například C:\SDSDK\Android-Sample-Release\keyword\Computer obsahuje soubory používané pro klíčové slovo "Computer".
 
    > [!TIP]
-   > Můžete také [vytvořit vlastní klíčové slovo](../speech-devices-sdk-create-kws.md).
+   > Můžete také [vytvořit vlastní klíčové slovo](../custom-keyword-basics.md).
 
    Chcete-li použít nové klíčové slovo, aktualizujte následující dva řádky v `MainActivity.java` a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z kws-machine.zip balíčku klíčového slova:
 
@@ -162,7 +162,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
 
    ![Ukázková sada Speech Devices SDK – ukázková aplikace a možnosti](../media/speech-devices-sdk/qsg-8.png)
 
-1. Vyzkoušejte si novou ukázku přepisu konverzace. Spusťte zdlouhavého přepisování pomocí příkazu ' spustit relaci '. Ve výchozím nastavení je každý host. Pokud ale máte signatury hlasu účastníka, můžou se do zařízení umístit do souboru `/video/participants.properties` . Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Vyzkoušejte si novou ukázku přepisu konverzace. Spusťte zdlouhavého přepisování pomocí příkazu ' spustit relaci '. Ve výchozím nastavení je každý host. Pokud ale máte signatury hlasu účastníka, můžou se do zařízení umístit do souboru `/video/participants.properties` . Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription.md).
 
    ![Ukázková aplikace přepisu konverzace](../media/speech-devices-sdk/qsg-15.png)
 

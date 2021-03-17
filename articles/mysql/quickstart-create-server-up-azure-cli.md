@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Database for MySQL pomocí AZ MySQL up'
 description: Průvodce rychlým startem k vytvoření Azure Database for MySQL serveru pomocí příkazu Azure CLI (rozhraní příkazového řádku)
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495334"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542163"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Rychlý Start: vytvoření Azure Database for MySQL pomocí jednoduchého příkazu rozhraní příkazového řádku Azure – AZ MySQL up (Preview)
 
@@ -24,11 +24,11 @@ Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, s
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli) . Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
 
 ```azurecli
 az login
@@ -56,7 +56,7 @@ az mysql up
 
 Server se vytvoří s následujícími výchozími hodnotami (Pokud je nepřepíšete ručně):
 
-**Nastavení** | **Výchozí hodnota** | **Description**
+**Nastavení** | **Výchozí hodnota** | **Popis**
 ---|---|---
 název-serveru | Vygenerované systémem | Jedinečný název, který identifikuje váš server Azure Database for MySQL.
 resource-group | Vygenerované systémem | Nová skupina prostředků Azure.
@@ -75,7 +75,7 @@ admin-password | Vygenerované systémem | Heslo uživatele, který je správcem
 
 Po vytvoření serveru se objeví následující nastavení:
 
-- Vytvoří se pravidlo brány firewall nazvané "devbox". Rozhraní příkazového řádku Azure CLI zjistí IP adresu počítače, na kterém `az mysql up` je spuštěný příkaz, a seznam povolených IP adres.
+- Vytvoří se pravidlo brány firewall nazvané "devbox". Rozhraní příkazového řádku Azure CLI se pokusí zjistit IP adresu počítače, `az mysql up` ze kterého se spouští příkaz, a umožňuje tuto IP adresu.
 - Možnost "povolení přístupu ke službám Azure" je nastavená na ZAPNUTo. Toto nastavení nakonfiguruje bránu firewall serveru tak, aby přijímala připojení ze všech prostředků Azure, včetně prostředků, které se ve vašem předplatném nepoužívá.
 - `wait_timeout`Parametr je nastavený na 8 hodin.
 - Vytvoří se prázdná databáze s názvem "sampledb".

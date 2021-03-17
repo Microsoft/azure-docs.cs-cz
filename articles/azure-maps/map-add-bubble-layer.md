@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 47ee9e67c6885829e3cb0082aea63367da4aa626
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: cae29dcc0d334a2296199da0d8e3bc4562e275d3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006175"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895324"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako bubl
 
 ## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
-Následující kód načte pole bodů do zdroje dat. Datové body se pak připojí k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva vykresluje poloměr každého bublinu s pěti obrazovými body a barvou výplně bílá. A, Barva tahu modrou a šířka tahu šest pixelů. 
+Následující kód načte pole bodů do zdroje dat. Datové body se pak připojí k [bublinové vrstvě](/javascript/api/azure-maps-control/atlas.layer.bubblelayer). Bublinová vrstva vykresluje poloměr každého bublinu s pěti obrazovými body a barvou výplně bílá. A, Barva tahu modrou a šířka tahu šest pixelů. 
 
 ```javascript
 //Add point locations.
@@ -57,7 +57,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer zdroj dat' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps () na CodePen si prohlédněte <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>zdroj dat pera BubbleLayer</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='BubbleLayer zdroj dat' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps () na CodePen si prohlédněte <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>zdroj dat pera BubbleLayer</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Zobrazit popisky s bublinovou vrstvou
@@ -66,7 +66,7 @@ Tento kód ukazuje, jak použít bublinovou vrstvu pro vykreslení bodu na mapě
 
 <br/>
 
-<iframe height='500' scrolling='no' title='MultiLayer zdroj dat' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps () na CodePen si prohlédněte <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>zdroj dat pera MultiLayer</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='MultiLayer zdroj dat' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps () na CodePen si prohlédněte <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>zdroj dat pera MultiLayer</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="customize-a-bubble-layer"></a>Přizpůsobení bublinové vrstvy
@@ -75,7 +75,7 @@ Bublinová vrstva má pouze několik možností stylu. Tady je nástroj pro jeji
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti bublinové vrstvy' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Možnosti vrstvy bublinového</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti bublinové vrstvy' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Možnosti vrstvy bublinového</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky
@@ -83,10 +83,10 @@ Bublinová vrstva má pouze několik možností stylu. Tady je nástroj pro jeji
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
+> [BubbleLayer](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
@@ -100,4 +100,4 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

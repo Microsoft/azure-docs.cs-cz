@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642040"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90055295"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurace aplikace PHP pro Azure App Service
 
@@ -119,7 +119,7 @@ Potvrďte všechny změny a nasaďte svůj kód pomocí Gitu nebo nasaďte zip s
 
 Pokud chcete, aby App Service spouštěla oblíbené nástroje pro automatizaci v době nasazení, jako je například grunt, Bower nebo Gulp, je nutné dodat [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script). App Service spustí tento skript při nasazení v Gitu nebo s povoleným [nasazením zip](deploy-zip.md) s povolenou automatizací sestavení. 
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Příklad:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
 
 ```json
 "dependencies": {
@@ -203,7 +203,7 @@ fi
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
 1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
-1. Spusťte `php composer.phar install`.
+1. Spusťte příkaz `php composer.phar install`.
 1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND` a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
@@ -231,7 +231,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-V App Service můžete [nastavit nastavení aplikace](configure-common.md#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [getenv ()](https://secure.php.net/manual/function.getenv.php) . Chcete-li například získat přístup k nastavení aplikace s názvem `DB_HOST` , použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](configure-common.md#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [getenv ()](https://secure.php.net/manual/function.getenv.php) . Například pro přístup k aplikačnímu nastavení s názvem `DB_HOST` použijete následující kód:
 
 ```php
 getenv("DB_HOST")
@@ -262,7 +262,7 @@ Výchozí obrázek PHP pro App Service používá Apache a neumožňuje přizpů
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteCond %{REQUEST_URI} ^/$
+    RewriteCond %{REQUEST_URI} ^(.*)
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -318,7 +318,7 @@ Jako alternativu k používání `.user.ini` souboru můžete v aplikaci použí
 
 Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [ direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
 
-V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
+V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Například:
 
 ```
 php_value upload_max_filesize 1000M
@@ -408,15 +408,15 @@ Vestavěné instalace PHP obsahují nejběžněji používaná rozšíření. M�
 
 Pokud chcete povolit další rozšíření, postupujte podle těchto kroků:
 
-Přidejte `bin` adresář do kořenového adresáře aplikace a umístěte do `.so` něj soubory rozšíření (například *MongoDB.so*). Ujistěte se, že jsou rozšíření kompatibilní s verzí PHP v Azure a jsou kompatibilní s VC9 a bez NTS (non-Thread-Safe).
+Přidejte `bin` adresář do kořenového adresáře aplikace a umístěte do `.dll` něj soubory rozšíření (například *mongodb.dll*). Ujistěte se, že jsou rozšíření kompatibilní s verzí PHP v Azure a jsou kompatibilní s VC9 a bez NTS (non-Thread-Safe).
 
 Nasaďte změny.
 
 Postupujte podle kroků v části [přizpůsobení direktiv PHP_INI_SYSTEM](#customize-php_ini_system-directives)a přidejte rozšíření do vlastního souboru *. ini* s direktivami [Extension](https://www.php.net/manual/ini.core.php#ini.extension) nebo [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) .
 
 ```
-extension=d:\home\site\wwwroot\bin\mongodb.so
-zend_extension=d:\home\site\wwwroot\bin\xdebug.so
+extension=d:\home\site\wwwroot\bin\mongodb.dll
+zend_extension=d:\home\site\wwwroot\bin\xdebug.dll
 ```
 
 Aby se změny projevily, restartujte aplikaci.
@@ -469,7 +469,7 @@ Pomocí nástroje standardní [error_log ()](https://php.net/manual/function.err
 Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
+- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Například:
     - V závislosti na vaší *composer.js*se můžou v produkčním režimu ( `require` vs.) nainstalovat různé balíčky `require-dev` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
@@ -489,7 +489,7 @@ Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje c
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy k App Service Linux](faq-app-service-linux.md)
+> [Nejčastější dotazy k App Service v Linuxu](faq-app-service-linux.md)
 
 ::: zone-end
 

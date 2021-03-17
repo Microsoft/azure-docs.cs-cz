@@ -3,18 +3,21 @@ title: Délka ve Azure Cosmos DB dotazovacího jazyka
 description: Přečtěte si o délce funkce systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e020555b0c706b5577bd20ac9bd537604d43ba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d95a92cde25e7582c46c695a43559336466c5f2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303711"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333677"
 ---
 # <a name="length-azure-cosmos-db"></a>Délka (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí počet znaků zadaného řetězcového výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

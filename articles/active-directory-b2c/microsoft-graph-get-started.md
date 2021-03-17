@@ -1,5 +1,5 @@
 ---
-title: Správa prostředků pomocí Microsoft Graph
+title: Registrace aplikace Microsoft Graph
 titleSuffix: Azure AD B2C
 description: Příprava na správu Azure AD B2Cch prostředků pomocí Microsoft Graph registraci aplikace, která má udělena požadovaná oprávnění Graph API.
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385922"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675182"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
+# <a name="register-a-microsoft-graph-application"></a>Registrace aplikace Microsoft Graph
 
 [Microsoft Graph][ms-graph] vám umožní spravovat spoustu prostředků v rámci vašeho Azure AD B2Cho tenanta, včetně uživatelských účtů zákazníků a vlastních zásad. Při psaní skriptů nebo aplikací, které volají [rozhraní Microsoft Graph API][ms-graph-api], můžete automatizovat úkoly správy klientů, jako například:
 
@@ -46,13 +46,13 @@ I když služba Azure AD B2C Authentication Service aktuálně nepodporuje tok u
 
 Předtím, než můžou skripty a aplikace pracovat s [rozhraním Microsoft Graph API][ms-graph-api] ke správě prostředků Azure AD B2C, je potřeba vytvořit registraci aplikace ve vašem tenantovi Azure AD B2C, která udělí požadovaná oprávnění rozhraní API.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
+1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
 1. Zadejte **název** aplikace. Například *managementapp1*.
 1. Vyberte **účty jenom v tomto organizačním adresáři**.
-1. V části **oprávnění**zrušte zaškrtnutí políčka *udělit souhlas správce udělit oprávnění OpenID a offline_access* .
+1. V části **oprávnění** zrušte zaškrtnutí políčka *udělit souhlas správce udělit oprávnění OpenID a offline_access* .
 1. Vyberte **Zaregistrovat**.
 1. Poznamenejte si **ID aplikace (klienta)** , které se zobrazí na stránce s přehledem aplikace. Tuto hodnotu použijete v pozdějším kroku.
 
@@ -66,7 +66,7 @@ Potom udělte registrovanou aplikaci oprávnění k manipulaci s prostředky kli
 
 [!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-Nyní máte aplikaci, která má oprávnění k *vytváření*, *čtení*, *aktualizaci*a *odstraňování* uživatelů ve vašem tenantovi Azure AD B2C. Přejděte k další části a přidejte oprávnění k *aktualizaci hesla* .
+Nyní máte aplikaci, která má oprávnění k *vytváření*, *čtení*, *aktualizaci* a *odstraňování* uživatelů ve vašem tenantovi Azure AD B2C. Přejděte k další části a přidejte oprávnění k *aktualizaci hesla* .
 
 ## <a name="enable-user-delete-and-password-update"></a>Povolit odstranění a aktualizaci hesla uživatele
 
@@ -76,21 +76,22 @@ Pokud vaše aplikace nebo skript potřebuje odstranit uživatele nebo aktualizov
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a pomocí filtru **adresář + odběr** přepněte na svého tenanta Azure AD B2C.
 1. Vyhledejte a vyberte **Azure AD B2C**.
-1. V části **Spravovat**vyberte **role a správci**.
+1. V části **Spravovat** vyberte **role a správci**.
 1. Vyberte roli **správce uživatele** .
 1. Vyberte **Přidat přiřazení**.
 1. Do textového pole pro **Výběr** zadejte název aplikace, kterou jste zaregistrovali dříve, například *managementapp1*. Vyberte aplikaci, která se zobrazí ve výsledcích hledání.
-1. Vyberte možnost **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
+1. Vyberte **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste zaregistrovali aplikaci pro správu a udělili jí požadovaná oprávnění, můžou vaše aplikace a služby (například Azure Pipelines) používat své přihlašovací údaje a oprávnění k interakci s rozhraním Microsoft Graph API. 
 
-* [Získání přístupového tokenu z Azure AD](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
-* [Použití přístupového tokenu pro volání Microsoft Graph](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [Získání přístupového tokenu z Azure AD](/graph/auth-v2-service#4-get-an-access-token)
+* [Použití přístupového tokenu pro volání Microsoft Graph](/graph/auth-v2-service#4-get-an-access-token)
 * [Operace B2C podporované nástrojem Microsoft Graph](microsoft-graph-operations.md)
-* [Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md)
+* [Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](microsoft-graph-operations.md)
 * [Získání protokolů auditu pomocí rozhraní API pro vytváření sestav Azure AD](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->
-[ms-graph]: https://docs.microsoft.com/graph/
-[ms-graph-api]: https://docs.microsoft.com/graph/api/overview
+[ms-graph]: /graph/
+[ms-graph-api]: /graph/api/overview

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976536"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397718"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro povolení back-endu s Azure Application Gateway
 
@@ -21,12 +21,11 @@ Aby se to stalo, Application Gateway vyžaduje, aby se back-end instance povolil
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
->
-> - Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)
-> - Export důvěryhodného kořenového certifikátu z back-endu certifikátu (SKU verze 2)
 
-## <a name="prerequisites"></a>Požadavky
+- Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)
+- Export důvěryhodného kořenového certifikátu z back-endu certifikátu (SKU verze 2)
+
+## <a name="prerequisites"></a>Předpoklady
 
 K vygenerování ověřovacích certifikátů nebo důvěryhodných kořenových certifikátů vyžadovaných pro povolení back-end instancí s Application Gateway je nutný existující certifikát back-endu. Certifikát back-endu může být stejný jako certifikát TLS/SSL nebo jiný pro zvýšení zabezpečení. Application Gateway neposkytuje žádný mechanismus pro vytvoření nebo zakoupení certifikátu TLS/SSL. Pro účely testování můžete vytvořit certifikát podepsaný svým držitelem, ale neměli byste ho používat pro produkční úlohy. 
 
@@ -38,7 +37,7 @@ Z certifikátu TLS/SSL exportujte soubor. cer veřejného klíče (ne privátní
 
 1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte certifikát, obvykle v ' Certificates-Current User\Personal\Certificates ' a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud certifikát nemůžete najít v rámci aktuálního User\Personal\Certificates, možná jste omylem otevřeli "certifikáty-místní počítač", nikoli "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v oboru aktuální uživatel pomocí PowerShellu, zadáte v okně konzoly *certmgr* .
 
-   ![Export](./media/certificates-for-backend-authentication/export.png)
+   ![Snímek obrazovky s vybranými certifikáty zobrazí správce certifikátů a kontextová nabídka se všemi úkoly a pak se vybere vybraná možnost exportovat.](./media/certificates-for-backend-authentication/export.png)
 
 2. V průvodci klikněte na **Další**.
 
@@ -54,19 +53,19 @@ Z certifikátu TLS/SSL exportujte soubor. cer veřejného klíče (ne privátní
 
 5. Pro **Export souboru** **přejděte** do umístění, do kterého chcete certifikát exportovat. V části **Název souboru** zadejte název souboru. Pak klikněte na tlačítko **Další**.
 
-   ![Procházet](./media/certificates-for-backend-authentication/browse.png)
+   ![Snímek obrazovky se zobrazí Průvodce exportem certifikátu, kde zadáte soubor, který se má exportovat.](./media/certificates-for-backend-authentication/browse.png)
 
 6. Certifikát vyexportujte kliknutím na **Dokončit**.
 
-   ![Dokončit](./media/certificates-for-backend-authentication/finish.png)
+   ![Snímek obrazovky po dokončení exportu souboru zobrazí Průvodce exportem certifikátu.](./media/certificates-for-backend-authentication/finish.png)
 
 7. Váš certifikát byl úspěšně exportován.
 
-   ![Úspěch](./media/certificates-for-backend-authentication/success.png)
+   ![Snímek obrazovky se zobrazí Průvodce exportem certifikátu se zprávou o úspěchu.](./media/certificates-for-backend-authentication/success.png)
 
    Exportovaný certifikát vypadá nějak takto:
 
-   ![Vádějí](./media/certificates-for-backend-authentication/exported.png)
+   ![Snímek obrazovky zobrazuje symbol certifikátu.](./media/certificates-for-backend-authentication/exported.png)
 
 8. Pokud otevřete exportovaný certifikát pomocí programu Poznámkový blok, zobrazí se podobné jako v tomto příkladu. Oddíl modře obsahuje informace, které se nahrají do služby Application Gateway. Pokud certifikát otevřete v programu Poznámkový blok a nevypadá to jako to, obvykle to znamená, že jste ho neexportovali pomocí kódování Base-64 kódovaného X. 509 (. CER) formátu. Kromě toho, pokud chcete použít jiný textový editor, je třeba pochopit, že některé editory mohou na pozadí způsobit nezamýšlené formátování. To může vytvořit problémy při nahrání textu z tohoto certifikátu do Azure.
 
@@ -106,5 +105,4 @@ Následující kroky vám pomůžou exportovat soubor. cer pro váš certifikát
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní máte certifikát pro ověřování/důvěryhodný kořenový certifikát v kódování Base-64 s kódováním X. 509 (. CER) formátu. Tuto možnost můžete přidat do služby Application Gateway, která umožní back-endové servery pro koncové šifrování TLS. Informace najdete v tématu [Konfigurace koncového protokolu TLS pomocí Application Gateway v prostředí PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-
+Nyní máte certifikát pro ověřování/důvěryhodný kořenový certifikát v kódování Base-64 s kódováním X. 509 (. CER) formátu. Tuto možnost můžete přidat do služby Application Gateway, která umožní back-endové servery pro koncové šifrování TLS. Informace najdete v tématu [Konfigurace koncového protokolu TLS pomocí Application Gateway v prostředí PowerShell](./application-gateway-end-to-end-ssl-powershell.md).

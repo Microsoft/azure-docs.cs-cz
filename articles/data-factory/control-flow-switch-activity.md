@@ -1,20 +1,18 @@
 ---
 title: Přepnout aktivitu v Azure Data Factory
 description: Aktivita Switch umožňuje řídit tok zpracování na základě podmínky.
-services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d58b032fe0371c9b54cf66ab13f525880867fb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418004"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385349"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
 
@@ -69,11 +67,11 @@ Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích j
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity Switch | Řetězec | Ano
-typ | Musí být nastavené na *Switch** | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
-věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Ano
-defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Ano
+name | Název aktivity Switch | Řetězec | Yes
+typ | Musí být nastavené na *Switch** | Řetězec | Yes
+expression | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Yes
+věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Yes
+defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Yes
 
 ## <a name="example"></a>Příklad
 

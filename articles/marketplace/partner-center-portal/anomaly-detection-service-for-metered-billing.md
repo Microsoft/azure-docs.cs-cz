@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320081"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092395"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Služba detekce anomálií pro fakturaci na základě měření
 
@@ -50,32 +50,37 @@ Model funguje tak, že se generují opakované intervaly spolehlivosti. Prognóz
 
 ## <a name="anomaly-detection-notification"></a>Oznámení o detekci anomálií
 
-Každý týden vydáme e-mailová oznámení o detekci anomálií. Zahrnuje všechny anomálie zjištěné v týdnu pro všechny měřiče a zákazníky. Tento e-mail se pošle **technickému** a **technickému** kontaktu, který jste získali při vytváření nabídky.
+V partnerském centru můžete vyhodnocovat, spravovat a potvrdit anomálie. Další informace najdete v tématu [Správa anomálií s měřenými fakturami v partnerském centru](../anomaly-detection.md).
 
-Očekává se, že budete zkoumat, jestli jsou zjištěné anomálie reálné, a pokud ano, požádejte Microsoft, aby nahlásil nesprávné použití (viz část podpora níže).
+Aby se zajistilo, že se vašim zákazníkům neúčtují měřené využití, měli byste prozkoumat, jestli jsou zjištěné anomálie reálné problémy. Pokud ano, můžete potvrdit nesprávné použití v partnerském centru.
 
-Pokud ověříte, že zjištěné anomálie jsou normálním využitím, nemusíte nic dělat. Pokud však anomálie představuje potenciálně vysoké finanční riziko, můžeme vás kontaktovat, abychom potvrdili použití.  
+Doporučujeme, abyste potvrdili, jestli jsou zjištěné anomálie normálním využitím. Tím se vylepšit data anomálií, která vám poskytneme. Pokud anomálie představuje potenciálně vysoké finanční riziko, můžeme vás kontaktovat, abychom potvrdili použití.
 
 ## <a name="when-and-how-to-get-support"></a>Kdy a jak získat podporu
 
-Pokud jste společnosti Microsoft poslali nesprávné používání a tato akce vznikla, nebo bude mít za následek, že je zákazníkem účtováno jako podplatně, nevystaví se zákazníkovi žádné poplatky za použití, nebo za toto použití platíte. Za ztrátu příjmů způsobenou nahlášením nižšího využití ponesete odpovědnost vy.
+Pokud nám jste poslali nesprávné měřené využití, které mohlo nebo bude mít za následek navýšení na zákazníky, nebudeme zákazníkovi účtovat poplatky za použití v rámci hlášeného využití nebo je platíte za toto využití. Za ztrátu příjmů způsobenou nahlášením nižšího využití ponesete odpovědnost vy.
 
-Pokud se vás týká některý z následujících případů, můžete vytvořit lístek podpory s žádostí o refundaci nebo úpravu fakturace pro vaše zákazníky:
+Pokud platí jeden z následujících případů, můžete upravit množství využití v partnerském centru, které bude mít za následek změnu refundace nebo fakturace pro vaše zákazníky:
 
-- Potvrdili se, že jedna z anomálií, které jsme našli, je skutečný problém a nesprávné použití **overcharge** by vedlo k přečerpání zákazníka.
-- Zjistili jste, že nám jste poslali nesprávné použití, a nesprávné použití by vedlo **k** přečerpání zákazníka.
-- Chtěli byste požádat o refundaci za poplatek za využití účtované fakturace zákazníka.
+- Potvrdili se, že jedna z anomálií, které jsme našli, je skutečný problém a nesprávné použití by vedlo k tomu, že se zákazník dobíjí.
+- Zjistili jste, že nám jste poslali nesprávné použití, a nesprávné použití by vedlo k tomu, že se zákazník dobíjí.
 
-Odeslání lístku:
+Chcete-li odeslat lístek podpory týkající se anomálií měřených faktur:
 
-1. Přejít na stránku podpory. V **poli řekněte nám o vašem problému**zadejte "nesprávné použití".
-2. V tématech podpory v rozevíracím seznamu výsledků hledání vyberte jednu z následujících možností:
-    - **Komerční tržiště**  >  **Měřené fakturace**  >  Bylo **Odesláno nesprávné použití pro nabídku aplikací Azure**nebo
-    - **Komerční tržiště**  >  **Měřené fakturace**  >  **Nesprávné použití odeslané pro nabídku SaaS**
-3. V části **Další krok**vyberte tlačítko **revidovat řešení** , které se má směrovat, abyste se přihlásili do partnerského centra pro odeslání lístku podpory.
+1. Přihlaste se do [partnerského centra](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) pomocí svého pracovního účtu.
+1. V nabídce v pravém horním rohu stránky vyberte ikonu **Podpora** . Podokno **pomoc a podpora** se zobrazí na pravé straně stránky.
+1. Pokud chcete získat nápovědu k komerčnímu tržišti, vyberte **komerční tržiště**.
+   ![Znázorňuje podokno podpory.](../media/support/commercial-marketplace-support-pane.png)
+1. V poli **Shrnutí problému** zadejte **komerční web Marketplace > účtované podle objemu**.
+1. V poli **typ problému** vyberte jednu z následujících možností:
+    - **Komerční tržiště > účtované podle objemu > nesprávné použití odesílané pro nabídky aplikací Azure**
+    - **Komerční tržiště > účtované podle objemu > nesprávné použití odeslané pro nabídku SaaS**
+1. V části **Další krok** vyberte **Zkontrolovat řešení**.
+1. Pokud chcete odeslat lístek podpory, přečtěte si Doporučené dokumenty, pokud nějaké máte, nebo vyberte **Podrobnosti o problému** .
 
-Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](support.md).
+Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](../support.md).
 
-## <a name="next-step"></a>Další krok
+## <a name="next-steps"></a>Další kroky
 
 - Seznamte se s [rozhraním API služby pro měření na webu Marketplace](marketplace-metering-service-apis.md).
+- [Správa anomálií s měřením fakturace v partnerském centru](../anomaly-detection.md)

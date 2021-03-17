@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117783"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687392"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -99,11 +99,11 @@ Podle kroků v této části zjistíte, které z vašich aplikací budou ovlivn�
 
 ### <a name="check-which-applications-will-be-impacted"></a>Ověřte, které aplikace budou ovlivněny.
 
-1. Použijte obor názvů z předchozího kroku a pak přejít na`https://<namespace>.accesscontrol.windows.net`
+1. Použijte obor názvů z předchozího kroku a pak přejít na `https://<namespace>.accesscontrol.windows.net`
 
-    Například pokud je jeden z oborů názvů contoso-test, přejít na`https://contoso-test.accesscontrol.windows.net`
+    Například pokud je jeden z oborů názvů contoso-test, přejít na `https://contoso-test.accesscontrol.windows.net`
 
-2. V části **vztahy důvěryhodnosti**vyberte **aplikace předávající strany** , kde se zobrazí seznam aplikací, které budou ovlivněny vyřazením služby ACS.
+2. V části **vztahy důvěryhodnosti** vyberte **aplikace předávající strany** , kde se zobrazí seznam aplikací, které budou ovlivněny vyřazením služby ACS.
 3. Opakujte kroky 1-2 pro všechny další obory názvů ACS.
 
 ## <a name="retirement-schedule"></a>Plán vyřazení
@@ -113,7 +113,7 @@ Od listopadu 2017 jsou všechny součásti Access Control plně podporované a f
 Tady je plán pro zastaralé Access Control komponenty:
 
 - **Listopadu 2017**: prostředí pro správu Azure AD na portálu Azure Classic [je vyřazené](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je Správa oboru názvů pro Access Control k dispozici na nové vyhrazené adrese URL: `https://manage.windowsazure.com?restoreClassic=true` . Pomocí této adresy URl můžete zobrazit existující obory názvů, povolit a zakázat obory názvů a odstranit obory názvů, pokud se rozhodnete.
-- **2. dubna 2018**: portál Azure Classic je zcela vyřazený, což znamená Access Control Správa oboru názvů už není dostupná prostřednictvím žádné adresy URL. V tuto chvíli nemůžete zakázat nebo povolit, odstranit ani vyčíslit Access Control obory názvů. Portál pro správu Access Control ale bude plně funkční a umístěný v `https://\<namespace\>.accesscontrol.windows.net` . Všechny ostatní komponenty Access Control nadále pracují normálně.
+- **2. dubna 2018**: portál Azure Classic je zcela vyřazený, což znamená Access Control Správa oboru názvů už není dostupná prostřednictvím žádné adresy URL. V tuto chvíli nemůžete zakázat nebo povolit, odstranit ani vyčíslit Access Control obory názvů. Portál pro správu Access Control ale bude plně funkční a umístěný v `https://<namespace>.accesscontrol.windows.net` . Všechny ostatní komponenty Access Control nadále pracují normálně.
 - **7. listopadu 2018**: všechny součásti Access Control jsou trvale vypnuté. Patří sem portál pro správu Access Control, služba pro správu, služba tokenů zabezpečení a modul pravidel transformace tokenů. V tomto okamžiku selžou všechny požadavky odeslané na Access Control (umístěné na adrese \<namespace\> . AccessControl.Windows.NET). Před tímto časem byste měli všechny stávající aplikace a služby migrovat do jiných technologií.
 
 > [!NOTE]
@@ -148,7 +148,7 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 Zákazníci SharePoint 2013, 2016 a SharePointu Online používali službu ACS pro účely ověřování v cloudu, místních i hybridních scénářích. Některé funkce SharePointu a případy použití budou ovlivněny vyřazením služby ACS, i když jiné nebudou. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších funkcí SharePointu, které využívají ACS:
 
-| Příznak | Pokyny |
+| Funkce | Pokyny |
 | ------- | -------- |
 | Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](/SharePoint/security-for-sharepoint-server/authentication-overview) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 
@@ -173,7 +173,7 @@ Bohužel není jedna služba, která nabízí všechny tyto ekvivalentní funkce
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
 
-Cesta, která se má vzít v úvahu, integruje vaše aplikace a služby přímo s Azure AD. Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Office 365, Azure a spoustu dalších věcí. Poskytuje podobné možnosti federovaného ověřování Access Control, ale nepodporuje všechny funkce Access Control. 
+Cesta, která se má vzít v úvahu, integruje vaše aplikace a služby přímo s Azure AD. Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Microsoft 365, Azure a spoustu dalších věcí. Poskytuje podobné možnosti federovaného ověřování Access Control, ale nepodporuje všechny funkce Access Control. 
 
 Primárním příkladem je federace se zprostředkovateli sociálních identit, jako je Facebook, Google a Yahoo. Pokud se uživatelé přihlásí pomocí těchto typů přihlašovacích údajů, Azure AD není pro vás řešení. 
 
@@ -181,7 +181,7 @@ Azure AD také nutně nepodporuje tytéž stejné ověřovací protokoly jako Ac
 
 Azure AD ale poskytuje několik potenciálních výhod Access Control zákazníkům. Nativně podporuje pracovní nebo školní účty, které jsou hostovány v cloudu, které jsou běžně používány Access Control zákazníky. 
 
-Tenant Azure AD může být taky federovaný na jednu nebo víc instancí místní služby Active Directory prostřednictvím AD FS. Tímto způsobem může vaše aplikace ověřovat cloudové uživatele a uživatele hostované místně. Podporuje také protokol WS-Federation, který umožňuje, aby bylo možné je relativně snadno integrovat s webovou aplikací pomocí WIF.
+Tenant Azure AD může být taky federovaný na jednu nebo víc instancí místní služby Active Directory prostřednictvím AD FS. Tímto způsobem může vaše aplikace ověřovat cloudové uživatele a uživatele hostované místně. Podporuje také protokol WS-Federation, který umožňuje jejich integraci s webovou aplikací, a to pomocí WIF.
 
 Následující tabulka porovnává funkce Access Control, které jsou relevantní pro webové aplikace, s funkcemi dostupnými ve službě Azure AD. 
 
@@ -201,8 +201,8 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | OAuth 2.0 | Podpora pro koncept 13 | Podpora pro specifikaci RFC 6749, nejvíce moderní specifikace |
 | WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
-| TOKEN | Podporováno ve verzi beta | Podporováno |
-| SAML 1,1 | Podporováno | Náhled |
+| JWT | Podporováno ve verzi beta | Podporováno |
+| SAML 1,1 | Podporováno | Preview |
 | SAML 2.0 | Podporováno | Podporováno |
 | SWT | Podporováno | Nepodporováno |
 | **Vlastní nastavení** | | |
@@ -214,7 +214,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 
 Pokud se rozhodnete, že Azure AD je nejlepší migrační cestou k vašim aplikacím a službám, měli byste si být vědomi dvou způsobů integrace aplikace s Azure AD.
 
-Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF, doporučujeme postupovat podle postupu popsaného v tématu [Konfigurace federovaného jednotného přihlašování pro aplikaci mimo galerii](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md). Tento článek se týká konfigurace Azure AD pro jednotné přihlašování založené na SAML, ale funguje taky pro konfiguraci WS-Federation. Následující přístup vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
+Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF, doporučujeme postupovat podle postupu popsaného v tématu [Konfigurace federovaného jednotného přihlašování pro aplikaci mimo galerii](../manage-apps/configure-saml-single-sign-on.md). Tento článek se týká konfigurace Azure AD pro jednotné přihlašování založené na SAML, ale funguje taky pro konfiguraci WS-Federation. Následující přístup vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
 
 - Získáte plnou flexibilitu přizpůsobení tokenů Azure AD. Deklarace identity, které vydává služba Azure AD, můžete přizpůsobit tak, aby odpovídaly deklaracím, které vydávají Access Control. To zahrnuje zejména ID uživatele nebo deklaraci identity identifikátoru názvu. Pokud chcete pro uživatele po změně technologií nadále dostávat konzistentní identifikátory uživatelů, zajistěte, aby ID uživatelů vydaná službou Azure AD odpovídala vydaným Access Control.
 - Můžete nakonfigurovat podpisový certifikát tokenu, který je specifický pro vaši aplikaci, a s dobou životnosti, kterou ovládáte.
@@ -226,7 +226,7 @@ Alternativním řešením je postupovat v [této ukázce kódu](https://github.c
 
 Pokud si vyberete tento přístup, budete muset pochopit, jak se má [Služba Azure AD vyměnit při podepisování klíčů](../develop/active-directory-signing-key-rollover.md). Tento přístup používá k vydávání tokenů globální podepisovací klíč Azure AD. WIF ve výchozím nastavení automaticky neaktualizuje podpisové klíče. Když Azure AD otočí své globální podpisové klíče, musí být vaše implementace WIF připravená, aby tyto změny přijímala. Další informace najdete v tématu [důležité informace o výměně klíčů v Azure AD](/previous-versions/azure/dn641920(v=azure.100)).
 
-Pokud můžete integrovat se službou Azure AD prostřednictvím protokolů OpenID Connect nebo OAuth, doporučujeme to udělat. Máme rozsáhlou dokumentaci a pokyny, jak integrovat Azure AD do vaší webové aplikace, která je dostupná v naší [příručce pro vývojáře Azure AD](https://aka.ms/aaddev).
+Pokud můžete integrovat se službou Azure AD prostřednictvím protokolů OpenID Connect nebo OAuth, doporučujeme to udělat. Máme rozsáhlou dokumentaci a pokyny, jak integrovat Azure AD do vaší webové aplikace, která je dostupná v naší [příručce pro vývojáře Azure AD](../develop/index.yml).
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrace na Azure Active Directory B2C
 
@@ -252,7 +252,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | OAuth 2.0 | Podpora pro koncept 13 | Podpora pro specifikaci RFC 6749, nejvíce moderní specifikace |
 | WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
-| TOKEN | Podporováno ve verzi beta | Podporováno |
+| JWT | Podporováno ve verzi beta | Podporováno |
 | SAML 1,1 | Podporováno | Nepodporováno |
 | SAML 2.0 | Podporováno | Nepodporováno |
 | SWT | Podporováno | Nepodporováno |
@@ -266,7 +266,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 Pokud se rozhodnete, že Azure AD B2C je nejlepší cestou migrace pro vaše aplikace a služby, začněte s následujícími prostředky:
 
 - [Dokumentace k Azure AD B2C](../../active-directory-b2c/overview.md)
-- [Azure AD B2C vlastní zásady](../../active-directory-b2c/custom-policy-overview.md)
+- [Vlastní zásady Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
 - [Ceny Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na test identity nebo Auth0
@@ -274,7 +274,7 @@ Pokud se rozhodnete, že Azure AD B2C je nejlepší cestou migrace pro vaše apl
 V některých případech se může stát, že Azure AD a Azure AD B2C nestačí nahradit Access Control ve vašich webových aplikacích, aniž byste museli provádět zásadní změny kódu. Mezi běžné příklady můžou patřit:
 
 - Webové aplikace, které používají WIF nebo WS-Federation pro přihlášení pomocí poskytovatelů sociálních identit, jako je Google nebo Facebook.
-- Webové aplikace, které provádějí přímou federaci poskytovateli podnikových identit prostřednictvím protokolu WS-Federation.
+- Webové aplikace, které provádějí přímou federaci zprostředkovateli identity organizace prostřednictvím WS-Federationho protokolu.
 - Webové aplikace, které vyžadují přístupový token vydaný poskytovatelem sociální identity (například Google nebo Facebook) jako deklarace v tokenech vydaných Access Control.
 - Webové aplikace s pravidly transformace složitého tokenu, které Azure AD nebo Azure AD B2C nemůžou reprodukovány.
 - Víceklientské webové aplikace, které využívají službu ACS k centrální správě federace pro celou řadu různých zprostředkovatelů identity
@@ -287,7 +287,7 @@ V těchto případech je vhodné zvážit migraci webové aplikace do jiné slu�
 
 ![Tento obrázek ukazuje logo identity testu.](./media/active-directory-acs-migration/rsz-ping.png)
 
-Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pomocí nástroje.
+Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu pokyny k vyřazení služby ACS pomocí nástroje.
 
 Naším cílem při práci s identitou a nástrojem Auth0 je zajistit, aby měli všichni zákazníci Access Control cestu migrace pro své aplikace a služby, které minimalizují množství práce potřebné k přechodu z Access Control.
 
@@ -316,7 +316,7 @@ Identity služby v Access Control se obvykle používají k implementaci ověřo
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
 
-Naše doporučení pro tento typ toku ověřování je migrace na [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Office 365, Azure a spoustu dalších věcí. 
+Naše doporučení pro tento typ toku ověřování je migrace na [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD je cloudový poskytovatel identity pro pracovní nebo školní účty Microsoftu. Azure AD je poskytovatel identity pro Microsoft 365, Azure a spoustu dalších věcí. 
 
 Službu Azure AD můžete použít také k ověřování typu Server-Server pomocí implementace služby Azure AD pro udělení přihlašovacích údajů klienta OAuth. Následující tabulka porovnává možnosti Access Control v ověřování mezi servery, které jsou k dispozici ve službě Azure AD.
 
@@ -332,7 +332,7 @@ Službu Azure AD můžete použít také k ověřování typu Server-Server pomo
 
 Pokyny k implementaci scénářů serveru na server najdete v následujících zdrojích informací:
 
-- Část Service-to-Service příručky pro [vývojáře Azure AD](https://aka.ms/aaddev)
+- Část Service-to-Service příručky pro [vývojáře Azure AD](../develop/index.yml)
 - [Ukázka kódu démona pomocí jednoduchých přihlašovacích údajů klienta hesla](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Ukázka kódu démona pomocí přihlašovacích údajů klienta Certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
@@ -351,7 +351,7 @@ V těchto případech můžete zvážit migraci webové aplikace do jiné cloudo
 [Auth0](https://auth0.com/acs) je flexibilní cloudová služba identit, která [pro zákazníky Access ControlA vytvořila pokyny k migraci na vysoké úrovni](https://auth0.com/acs)a podporuje téměř všechny funkce služby ACS.
 
 ![Tento obrázek ukazuje, že se na tomto obrázku zobrazuje logo služby test identity ](./media/active-directory-acs-migration/rsz-ping.png)
- [příkazem příkazem](https://www.pingidentity.com) služby ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pomocí nástroje.
+ [příkazem příkazem](https://www.pingidentity.com) služby ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu pokyny k vyřazení služby ACS pomocí nástroje.
 
 Naším cílem při práci s identitou a nástrojem Auth0 je zajistit, aby měli všichni zákazníci Access Control cestu migrace pro své aplikace a služby, které minimalizují množství práce potřebné k přechodu z Access Control.
 

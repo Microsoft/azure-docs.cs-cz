@@ -1,34 +1,33 @@
 ---
 title: Zálohování a obnovení – Azure CLI – Azure Database for MariaDB
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MariaDB pomocí Azure CLI.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5073cd33d9dada666324e92f3418b2548d9af374
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ceda6c99493818042aa281ab545465e91493a80e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502558"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664830"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
 Azure Database for MariaDB servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto průvodce budete potřebovat:
+- Potřebujete [Azure Database for MariaDB Server a databázi](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
-- [Server a databáze Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-> [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+- Tento průvodce návodem vyžaduje verzi 2,0 nebo novější v rozhraní příkazového řádku Azure CLI. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="set-backup-configuration"></a>Nastavení konfigurace zálohování
 
@@ -70,9 +69,9 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 `az mariadb server restore`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
 | name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například `2018-03-13T05:59:00-08:00` . Můžete použít také formát UTC Zulu, například `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -112,7 +111,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 `az mariadb server georestore`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků, do které bude nový server patřit|
 |name | mydemoserver – geograficky obnovené | Název nového serveru. |

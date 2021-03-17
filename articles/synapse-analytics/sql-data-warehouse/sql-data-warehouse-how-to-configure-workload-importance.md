@@ -1,5 +1,5 @@
 ---
-title: Konfigurace důležitosti úloh
+title: Konfigurace důležitosti úloh pro vyhrazený fond SQL
 description: Naučte se nastavit důležitost na úrovni požadavků ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
@@ -11,20 +11,20 @@ ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 83170f4090909e3edcc163312383773d088d8c57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38fb842cf90c110266f53b79a9ab2ef6157025b4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212118"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681281"
 ---
-# <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Konfigurace důležitosti úloh ve službě Azure synapse Analytics
+# <a name="configure-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Konfigurace důležitosti úloh ve vyhrazeném fondu SQL pro Azure synapse Analytics
 
-Nastavení důležitosti v synapse SQL pro Azure synapse umožňuje ovlivnit plánování dotazů. Dotazy s vyšší důležitostí budou naplánovány na spuštění před dotazy s nižší důležitostí. Pro přiřazení důležitosti dotazům je potřeba vytvořit klasifikátor úloh.
+Nastavení důležitosti ve vyhrazeném fondu SQL pro Azure synapse umožňuje ovlivnit plánování dotazů. Dotazy s vyšší důležitostí budou naplánovány na spuštění před dotazy s nižší důležitostí. Pro přiřazení důležitosti dotazům je potřeba vytvořit klasifikátor úloh.
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Vytvoření klasifikátoru úloh s důležitostí
 
-V případě zaneprázdněného systému, který potřebují rychlé spouštění dotazů, často ve scénáři datového skladu máte uživatele.  Uživatel může být vedoucí pracovníky společnosti, kteří potřebují spouštět sestavy, nebo může být uživatel analytikem, který spouští dotaz ad hoc. Chcete-li přiřadit důležitost, je třeba vytvořit klasifikátor úlohy a důležitost je přiřazena k dotazu.  Níže uvedené příklady používají k vytvoření dvou klasifikátorů syntaxi [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . `Membername`může se jednat o jednoho uživatele nebo skupinu.  Chcete-li najít existující uživatele datového skladu, spusťte příkaz:
+V případě zaneprázdněného systému, který potřebují rychlé spouštění dotazů, často ve scénáři datového skladu máte uživatele.  Uživatel může být vedoucí pracovníky společnosti, kteří potřebují spouštět sestavy, nebo může být uživatel analytikem, který spouští dotaz ad hoc. Chcete-li přiřadit důležitost, je třeba vytvořit klasifikátor úlohy a důležitost je přiřazena k dotazu.  Níže uvedené příklady používají k vytvoření dvou klasifikátorů syntaxi  [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . `Membername` může se jednat o jednoho uživatele nebo skupinu.  Chcete-li najít stávající vyhrazené uživatele fondu SQL, spusťte příkaz:
 
 ```sql
 Select name from sys.sysusers

@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0515827ab2d93c76ea91e95c2d53a44273b5633b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213784"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447825"
 ---
-# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure synapse Analytics – videa o fondech SQL
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure synapse Analytics – vyhrazený fond SQL (dříve SQL DW) – videa
 
-Podívejte se na nejnovější videa ke fondu SQL Azure synapse a seznamte se s novými funkcemi a vylepšeními výkonu. 
+Podívejte se na nejnovější vyhrazená videa fondu SQL (dřív SQL DW) a seznamte se s novými funkcemi a vylepšeními výkonu. 
 
-Pokud chcete začít, podívejte se na následující video s přehledem, kde se dozvíte o nových aktualizacích fondu SQL Azure synapse. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
+Začněte tím, že vyberete níže uvedené video s přehledem, kde se dozvíte o nových aktualizacích vyhrazeného fondu SQL. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

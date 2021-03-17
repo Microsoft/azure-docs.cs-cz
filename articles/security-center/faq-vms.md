@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32023fca15de9d3f9258bc05166c3cff4184ea15
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80436014"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499845"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Nejčastější dotazy týkající se virtuálních počítačů
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Jaké typy virtuálních počítačů se podporují?
 
-Monitorování a doporučení jsou k dispozici pro virtuální počítače vytvořené pomocí [modelu nasazení Classic i správce prostředků](../azure-classic-rm.md).
+Monitorování a doporučení jsou k dispozici pro virtuální počítače vytvořené pomocí [modelu nasazení Classic i správce prostředků](../azure-resource-manager/management/deployment-models.md).
 
 Seznam podporovaných platforem najdete [v tématu podporované platformy v Azure Security Center](security-center-os-coverage.md) .
 
@@ -51,9 +51,9 @@ Níže jsou uvedeny doby latence Security Center prověřování chyb zabezpeče
 Security Center obvykle vyhledává nová data každou hodinu a příslušná doporučení aktualizuje. 
 
 > [!NOTE]
-> Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v tématu [migrace platformy Azure Security Center](security-center-platform-migration.md).
+> Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v tématu [migrace platformy Azure Security Center](./security-center-enable-data-collection.md).
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Proč se zobrazí zpráva "agent virtuálního počítače chybí?"
 
-Na virtuálních počítačích musí být nainstalován agent virtuálního počítače, aby bylo možné shromažďování dat povolit. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. Informace o tom, jak nainstalovat agenta virtuálního počítače na jiné virtuální počítače, najdete v blogovém příspěvku [agenta a rozšíření virtuálního počítače](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).
+Na virtuálních počítačích musí být nainstalován agent virtuálního počítače, aby bylo možné shromažďování dat povolit. Agent virtuálního počítače je ve výchozím nastavení nainstalovaný na virtuálních počítačích nasazených z Azure Marketplace. Informace o tom, jak nainstalovat agenta virtuálního počítače na jiné virtuální počítače, najdete v blogovém příspěvku [agenta a rozšíření virtuálního počítače](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

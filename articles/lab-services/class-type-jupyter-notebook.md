@@ -3,14 +3,14 @@ title: Nastavení testovacího prostředí pro učení datových věd pomocí po
 description: Naučte se, jak nastavit testovací prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter.
 author: emaher
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445011"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648017"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
 Tento článek popisuje, jak nastavit virtuální počítač šablony (VM) v testovacích službách pomocí nástrojů, které jsou potřeba pro učení studentů, jak používat [notebooky Jupyter](http://jupyter-notebook.readthedocs.io/)a jak se můžou studenti připojit ke svým notebookům na svých virtuálních počítačích.
@@ -29,7 +29,7 @@ Povolte nastavení popsaná v následující tabulce pro účet testovacího pro
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-| Obrázek Marketplace | V rámci účtu testovacího prostředí povolte jeden z Azure Marketplace imagí na základě potřeb vašeho operačního systému: <br/><ul><li>Data Science Virtual Machine – Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
+| Image z Marketplace | V rámci účtu testovacího prostředí povolte jeden z Azure Marketplace imagí na základě potřeb vašeho operačního systému: <br/><ul><li>Data Science Virtual Machine – Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
 
 > [!NOTE]
 > Tento článek používá image virtuálních počítačů pro datové vědy, které jsou dostupné na webu Azure Marketplace, protože jsou předem nakonfigurované s Jupyter Notebook. Tyto obrázky ale také obsahují mnoho dalších nástrojů pro vývoj a modelování pro datové vědy. Pokud nechcete, aby tyto další nástroje a nemusely mít zjednodušenou instalaci se pouze Jupyter poznámkami, vytvořte vlastní image virtuálního počítače. Příklad [instalace JupyperHub v Azure](http://tljh.jupyter.org/en/latest/install/azure.html). Jakmile je vlastní image vytvořená, můžete ji nahrát do galerie sdílených imagí a použít tak image v Azure Lab Services. Přečtěte si další informace o [použití Galerie sdílených imagí v Azure Lab Services](how-to-attach-detach-shared-image-gallery.md). 
@@ -86,7 +86,7 @@ Pokud jste poskytli studenty s virtuálními počítači se systémem Linux, mů
 Následující části obsahují podrobné informace o těchto způsobech, jak se připojit k poznámkovým blokům Jupyter. 
 
 #### <a name="ssh-to-virtual-machine"></a>SSH k virtuálnímu počítači
-Studenti se můžou přes relaci Terminálové služby připojit přes SSH k virtuálním počítačům Linux. Podrobný postup najdete v tématu [Jak získat přístup k prostředí učebny](how-to-use-classroom-lab.md). Pokud používají klientský počítač se systémem Windows, bude muset povolit klienta SSH stažením [výstupu](https://www.putty.org/) nebo povolením [OpenSSH ve Windows](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) do SSH z příkazového řádku. 
+Studenti se můžou přes relaci Terminálové služby připojit přes SSH k virtuálním počítačům Linux. Podrobný postup najdete v tématu [Jak získat přístup k prostředí učebny](how-to-use-classroom-lab.md). Pokud používají klientský počítač se systémem Windows, bude muset povolit klienta SSH stažením [výstupu](https://www.putty.org/) nebo povolením [OpenSSH ve Windows](/windows-server/administration/openssh/openssh_install_firstuse) do SSH z příkazového řádku. 
 
 1.  Spusťte virtuální počítač.
 2.  Jakmile je virtuální počítač spuštěný, klikněte na **připojit**. tím se zobrazí dialogové okno s řetězcem příkazu SSH, který bude vypadat jako v následující ukázce:
@@ -112,7 +112,7 @@ Po připojení studentů k virtuálním počítačům můžou místně přistupo
 4. Jakmile budete mít tyto informace, otevřete klientskou aplikaci X2Go a vytvořte novou relaci. 
 5.  V podokně **Předvolby relace** zadejte následující hodnoty:
     - **Název relace**: může to být cokoli, co potřebujete, ale doporučujeme použít název testovacího virtuálního počítače.
-     - **Hostitel**:`ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
+     - **Hostitel**: `ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
      - **Přihlášení**: student
      - **Port SSH**: 12345
      - **Typ relace**: desktop Xfce

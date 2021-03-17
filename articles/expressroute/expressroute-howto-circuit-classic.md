@@ -2,17 +2,18 @@
 title: 'Azure ExpressRoute: Úprava okruhu: PowerShell: Classic'
 description: Tento článek vás provede kroky pro kontrolu stavu, aktualizaci nebo odstranění a zrušení zřízení okruhu modelu nasazení ExpressRoute Classic.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/05/2019
-ms.author: cherylmc
-ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736318"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018145"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 
@@ -123,7 +124,7 @@ Váš okruh teď bude mít povolené funkce doplňku ExpressRoute Premium. Jakmi
 >
 >
 
-#### <a name="considerations"></a>Důležité informace
+#### <a name="considerations"></a>Požadavky
 
 * Před přechodem na úroveň Premium na Standard se ujistěte, že je počet virtuálních sítí propojených s okruhem menší než 10. Pokud to neuděláte, žádost o aktualizaci se nezdařila a účtují se poplatky za prémii.
 * Je nutné odpojit všechny virtuální sítě v jiných geopolitických oblastech. Pokud to neuděláte, vaše žádost o aktualizaci se nezdařila a účtují se poplatky za prémii.
@@ -191,11 +192,11 @@ At line:1 char:1
 
 ## <a name="deprovision-and-delete-a-circuit"></a>Zrušení zřízení a odstranění okruhu
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 * Aby tato operace proběhla úspěšně, je nutné odpojit všechny virtuální sítě od okruhu ExpressRoute. Zkontrolujte, zda máte žádné virtuální sítě, které jsou propojeny se okruhem, pokud tato operace není úspěšná.
 * Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizování** nebo **zřízené** , musíte s vaším poskytovatelem služeb spolupracovat a zrušit zřízení okruhu na jejich straně. I nadále vyhradíme prostředky a účtujeme vám, dokud poskytovatel služeb nedokončí zrušení zřízení okruhu a pošle nám upozornění.
-* Pokud poskytovatel služby zrušil zřízení okruhu (stav zřizování poskytovatele služeb je nastavený na **není**zřízený), můžete okruh odstranit. Tím se zastaví účtování okruhu.
+* Pokud poskytovatel služby zrušil zřízení okruhu (stav zřizování poskytovatele služeb je nastavený na **není** zřízený), můžete okruh odstranit. Tím se zastaví účtování okruhu.
 
 #### <a name="delete-a-circuit"></a>Odstranit okruh
 

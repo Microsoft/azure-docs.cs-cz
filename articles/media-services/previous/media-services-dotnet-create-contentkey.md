@@ -1,9 +1,9 @@
 ---
 title: Vytvoření ContentKeys s využitím .NET
-description: Tento článek ukazuje, jak vytvořit klíče obsahu, které poskytují zabezpečený přístup k prostředkům.
+description: Tento článek ukazuje, jak vytvořit klíče obsahu pomocí .NET. Tyto klíče poskytují zabezpečený přístup k prostředkům.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
@@ -12,29 +12,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 05bf928490e94f43b755e1958213899e9e1e98e9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712356"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014165"
 ---
-# <a name="create-contentkeys-with-net"></a>Vytvoření ContentKeys s využitím .NET 
+# <a name="create-contentkeys-with-net"></a>Vytvoření ContentKeys s využitím .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-Media Services umožňuje vytváření a doručování šifrovaných prostředků. **ContentKey** zajišťuje zabezpečený přístup k vašim **assetům**s. 
+Media Services umožňuje vytváření a doručování šifrovaných prostředků. **ContentKey** zajišťuje zabezpečený přístup k vašim **assetům** s. 
 
-Při vytváření nového prostředku (například před [odesláním souborů](media-services-dotnet-upload-files.md)) můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**nebo **EnvelopeEncryptionProtected**. 
+Při vytváření nového prostředku (například před [odesláním souborů](media-services-dotnet-upload-files.md)) můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected** nebo **EnvelopeEncryptionProtected**. 
 
 Při doručování prostředků klientům můžete [nakonfigurovat, aby bylo možné dynamicky šifrovat prostředky](media-services-dotnet-configure-asset-delivery-policy.md) pomocí jednoho z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo **DynamicCommonEncryption**.
 
-Šifrované prostředky musí být přidruženy k **ContentKey**s. Tento článek popisuje, jak vytvořit klíč obsahu.
+Šifrované prostředky musí být přidruženy k **ContentKey** s. Tento článek popisuje, jak vytvořit klíč obsahu.
 
 > [!NOTE]
 > Při vytváření nového prostředku **StorageEncrypted** pomocí sady Media Services .NET SDK se **ContentKey** automaticky vytvoří a propojí s Assetem.

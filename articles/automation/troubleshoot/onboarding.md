@@ -2,15 +2,14 @@
 title: Řešení potíží s nasazením funkcí Azure Automation
 description: Tento článek popisuje, jak řešit problémy, které vznikají při nasazování funkcí Azure Automation.
 services: automation
-ms.date: 06/30/2020
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/11/2021
+ms.topic: troubleshooting
+ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801025"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651115"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Řešení problémů s nasazením funkcí
 
@@ -82,7 +81,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba může být způsobena tím, že cenová úroveň neodpovídá modelu fakturace předplatného. Další informace najdete v tématu [monitorování využití a odhadované náklady v Azure monitor](https://aka.ms/PricingTierWarning).
+Tato chyba může být způsobena tím, že cenová úroveň neodpovídá modelu fakturace předplatného. Další informace najdete v tématu [monitorování využití a odhadované náklady v Azure monitor](../../azure-monitor//usage-estimated-costs.md).
 
 #### <a name="resolution"></a>Řešení
 
@@ -100,7 +99,7 @@ Je možné, že jste dotaz změnili nebo ho systém mohl změnit.
 
 #### <a name="resolution"></a>Řešení
 
-Dotaz na funkci můžete odstranit a pak znovu povolit funkci, která znovu vytvoří dotaz. Dotaz najdete v části **uložená hledání**v pracovním prostoru. Název dotazu je **MicrosoftDefaultComputerGroup**a kategorie dotazu je název přidružené funkce. Pokud je povoleno více funkcí, dotaz **MicrosoftDefaultComputerGroup** se v části **uložená hledání**zobrazuje vícekrát.
+Dotaz na funkci můžete odstranit a pak znovu povolit funkci, která znovu vytvoří dotaz. Dotaz najdete v části **uložená hledání** v pracovním prostoru. Název dotazu je **MicrosoftDefaultComputerGroup** a kategorie dotazu je název přidružené funkce. Pokud je povoleno více funkcí, dotaz **MicrosoftDefaultComputerGroup** se v části **uložená hledání** zobrazuje vícekrát.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Scénář: PolicyViolation
 
@@ -148,7 +147,7 @@ Odeberte prostředky z následujících funkcí z pracovního prostoru, pokud je
 Po odebrání prostředků funkce můžete zrušit propojení pracovního prostoru. Je důležité vyčistit všechny existující artefakty z těchto funkcí z vašeho pracovního prostoru a účtu Automation:
 
 * V případě Update Management z účtu Automation odeberte **nasazení aktualizací (plány)** .
-* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech funkcí v účtu Automation v části **Nastavení**  >  **zámků**. Další informace najdete v tématu [odebrání funkce](../automation-solution-vm-management.md#remove-the-feature).
+* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech funkcí v účtu Automation v části **Nastavení**  >  **zámků**. Další informace najdete v tématu [odebrání funkce](../automation-solution-vm-management-remove.md).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics pro chyby rozšíření Windows
 

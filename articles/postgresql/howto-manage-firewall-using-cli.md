@@ -1,26 +1,26 @@
 ---
 title: Správa pravidel brány firewall – Azure CLI – Azure Database for PostgreSQL – samostatný server
 description: Tento článek popisuje, jak vytvořit a spravovat pravidla brány firewall v Azure Database for PostgreSQL jednom serveru pomocí příkazového řádku Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 17a41030adeb302f2c85b1bd4576caad9e723544
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3a559b8c65ab57b0144b807a3b4cc1faa912d430
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489754"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422735"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Vytvoření a Správa pravidel brány firewall na Azure Database for PostgreSQLm samostatném serveru pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for PostgreSQL z konkrétní IP adresy nebo rozsahu IP adres. Pomocí pohodlných příkazů rozhraní příkazového řádku Azure můžete vytvářet, aktualizovat, odstraňovat, zobrazovat a zobrazovat pravidla brány firewall pro správu serveru. Přehled Azure Database for PostgreSQL pravidel brány firewall najdete v tématu [pravidla brány firewall pro Azure Database for PostgreSQL serveru](concepts-firewall-rules.md).
 
 Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě koncových bodů a pravidel služby Virtual Network pomocí Azure CLI](howto-manage-vnet-using-cli.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Nainstalujte nástroj příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo použijte Azure Cloud Shell v prohlížeči.
 - [Server a databáze Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md).
@@ -40,8 +40,8 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server-
 ## <a name="create-firewall-rule"></a>Vytvoření pravidla brány firewall
 Chcete-li vytvořit nové pravidlo brány firewall na serveru, spusťte příkaz [AZ Postgres server firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) . 
 
-```
-To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
+
+Chcete-li umožnit přístup k IP adrese jednotného přihlašování, zadejte v části a stejnou adresu, `--start-ip-address` `--end-ip-address` jako v tomto příkladu, a nahraďte zde uvedenou IP adresu konkrétní adresou IP.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```

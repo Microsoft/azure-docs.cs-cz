@@ -1,19 +1,16 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Nainstalujte a použijte sadu REST SDK pro Phoenix Query Server ve službě Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5ce459e2820cfd2ea5cacb036f5d6885c9c5afa0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080053"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933366"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Sada SDK REST sady Apache Phoenix dotazů serveru
 
@@ -54,7 +51,7 @@ Každý příklad nejprve provede volání `OpenConnectionRequestAsync` metody a
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest a jeho ConnectionProperties
 
-Pro volání `ConnectionSyncRequestAsync` , předání `ConnectionProperties` objektu.
+Pro volání  `ConnectionSyncRequestAsync` , předání `ConnectionProperties` objektu.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -84,7 +81,7 @@ Tady jsou některé vlastnosti, které vás zajímají:
 
 Tady jsou `TransactionIsolation` hodnoty:
 
-| Hodnota izolace | Description |
+| Hodnota izolace | Popis |
 | -- | -- |
 | 0 | Transakce nejsou podporovány. |
 | 1 | Může dojít k nezměněnému čtení, čtení bez opakování a k fiktivnímu čtení. |
@@ -92,7 +89,7 @@ Tady jsou `TransactionIsolation` hodnoty:
 | 4 | Znemožňují se čtení neopakujících se čtením, ale může dojít k fiktivnímu čtení. |
 | 8 | Nezměněné čtení, čtení bez opakování a čtení s fiktivními záznamy jsou zabráněno. |
 
-## <a name="create-a-new-table"></a>Vytvořit novou tabulku
+## <a name="create-a-new-table"></a>Vytvoření nové tabulky
 
 HBA, stejně jako jakékoli jiné RDBMS, ukládají data v tabulkách. Phoenix používá standardní dotazy SQL k vytváření nových tabulek a při definování primárních typů klíčů a sloupců.
 

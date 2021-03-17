@@ -4,17 +4,17 @@ description: Naučte se, jak pomocí skriptu zakázat obnovitelné odstranění 
 ms.topic: sample
 ms.date: 02/02/2020
 ms.openlocfilehash: 172a7bd19ffd07ca7900a457c447362343e5f185
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84122794"
 ---
 # <a name="disable-soft-delete-for-file-shares-in-a-storage-account"></a>Zakázat obnovitelné odstranění pro sdílené složky v účtu úložiště
 
 Tento dokument vysvětluje postup, jak v účtu úložiště zakázat obnovitelné odstranění sdílených složek.
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Nainstalujte armclient. Informace o tom, jak ho nainstalovat, najdete na [tomto odkazu](https://github.com/projectkudu/ARMClient).
 

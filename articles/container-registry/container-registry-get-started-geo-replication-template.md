@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649597"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827008"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Rychlý Start: vytvoření geograficky replikovaného registru kontejnerů pomocí šablony ARM
 
@@ -48,21 +48,24 @@ Další příklady šablon Azure Container Registry najdete v [galerii šablon r
 
     [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. Vyberte nebo zadejte následující hodnoty.
+ 1. Vyberte nebo zadejte následující hodnoty.
 
     * **Předplatné:** Vyberte předplatné Azure.
     * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název pro skupinu prostředků a pak vyberte **OK**.
-    * **Umístění:**: Vyberte umístění pro skupinu prostředků. Příklad: **střed USA**.
+    * **Oblast**: vyberte umístění pro skupinu prostředků. Příklad: **střed USA**.
     * **Název ACR**: přijměte vygenerovaný název registru nebo zadejte název. Musí být globálně jedinečný.
+    * **Uživatel s rolí správce ACR povolen**: přijměte výchozí hodnotu.
     * **Umístění**: přijměte vygenerované umístění pro domovskou repliku registru nebo zadejte umístění, jako je například **střed USA**. 
+    * **SKU ACR**: přijměte výchozí hodnotu.
     * **Umístění repliky ACR**: zadejte umístění repliky registru s použitím krátkého názvu oblasti. Musí se lišit od umístění v domovském registru. Příklad: **westeurope**.
-    * **Souhlasím s podmínkami a ujednáními uvedenými nahoře**: vyberte.
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Vlastnosti šablony":::
 
- 3. Pokud souhlasíte s podmínkami a ujednáními, vyberte **koupit**. Po úspěšném vytvoření registru se zobrazí oznámení:
+1. Vyberte **zkontrolovat + vytvořit**a pak si prohlédněte podmínky a ujednání. Pokud souhlasíte, vyberte **vytvořit**.
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Oznámení portálu":::
+1. Po úspěšném vytvoření registru se zobrazí oznámení:
+
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Vlastnosti šablony":::
 
  K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -74,15 +77,17 @@ Pomocí Azure Portal nebo nástroje, jako je Azure CLI, si můžete prohlédnout
 
 1. Na stránce **Přehled** si poznamenejte **přihlašovací server** registru. Tento identifikátor URI použijte, když použijete Docker k označení a vložení obrázků do registru. Informace najdete v tématu [vložení první Image pomocí Docker CLI](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Přehled registru":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Vlastnosti šablony":::
 
 1. Na stránce **replikace** potvrďte umístění domovské repliky a repliku přidanou prostřednictvím šablony. V případě potřeby přidejte na tuto stránku další repliky.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Replikace registru":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Vlastnosti šablony":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud je už nepotřebujete, odstraňte skupinu prostředků, registr a repliku registru. Provedete to tak, že přejdete na Azure Portal, vyberete skupinu prostředků, která obsahuje registr, a pak vyberete **Odstranit skupinu prostředků**.
+
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Vlastnosti šablony":::
 
 ## <a name="next-steps"></a>Další kroky
 

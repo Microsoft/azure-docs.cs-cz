@@ -1,32 +1,34 @@
 ---
 title: Azure Lighthouse v podnikových scénářích
 description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167345"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419350"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích
 
-Běžným scénářem pro [Azure Lighthouse](../overview.md) je poskytovatel služeb spravující prostředky v klientech Azure Active Directory (Azure AD) svých zákazníků. Funkce Azure Lighthouse se ale dají použít i ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
+Běžným scénářem pro [Azure Lighthouse](../overview.md) je, že poskytovatel služeb spravuje prostředky v klientech služby Azure Active Directory (Azure AD), které patří zákazníkům. Funkce Azure Lighthouse se dají použít i ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
 
 ## <a name="single-vs-multiple-tenants"></a>Jeden vs. více tenantů
 
-Pro většinu organizací je Správa snazší díky jednomu tenantovi služby Azure AD. Všechny prostředky v rámci jednoho tenanta umožňují centralizaci úloh správy podle určených uživatelů, skupin uživatelů nebo instančních objektů v rámci tohoto tenanta. Pokud je to možné, doporučujeme používat jednoho tenanta pro vaši organizaci. Některé organizace ale můžou mít několik tenantů Azure AD. V některých případech se může jednat o dočasnou situaci, jako když se povedlo pořízení, ale dlouhodobá strategie konsolidace tenanta ještě není definovaná. Jindy může organizace potřebovat průběžně udržovat několik tenantů, protože jde o zcela nezávislé pobočky, geografické nebo zákonné požadavky nebo jiné okolnosti.
+Pro většinu organizací je Správa snazší díky jednomu tenantovi služby Azure AD. Všechny prostředky v rámci jednoho tenanta umožňují centralizaci úloh správy podle určených uživatelů, skupin uživatelů nebo instančních objektů v rámci tohoto tenanta. Pokud je to možné, doporučujeme používat jednoho tenanta pro vaši organizaci.
+
+Některé organizace můžou potřebovat použít několik tenantů Azure AD. Může se jednat o dočasnou situaci, protože se nakoupí a dlouhodobá strategie konsolidace tenanta ještě není definovaná. Jindy může organizace potřebovat průběžně udržovat několik tenantů, protože jde o zcela nezávislé pobočky, geografické nebo zákonné požadavky nebo jiné okolnosti.
 
 V případech, kdy je potřeba víceklientské architektury, může Azure Lighthouse pomáhat centralizovat a zjednodušit operace správy. Pomocí [delegované správy prostředků Azure](azure-delegated-resource-management.md)můžou uživatelé v jednom správě tenanta provádět [funkce pro správu mezi klienty](cross-tenant-management-experience.md) centralizovaným a škálovatelným způsobem.
 
 ## <a name="tenant-management-architecture"></a>Architektura správy tenanta
 
-Pokud chcete používat Azure Lighthouse v podniku, musíte určit, který tenant bude obsahovat uživatele, kteří provádějí operace správy v ostatních klientech. Jinými slovy, budete muset určit, který tenant bude spravovat tenanta pro ostatní klienty.
+Pokud chcete používat Azure Lighthouse v podniku, musíte určit, který tenant bude obsahovat uživatele, kteří provádějí operace správy v ostatních klientech. Jinými slovy, budete muset určit jednoho tenanta jako klienta pro správu pro ostatní klienty.
 
-Řekněme například, že vaše organizace má jednoho tenanta, který budeme volat *jako tenanta a*. Vaše organizace pak získá *tenanta B* a *tenanta C*a máte obchodní důvody, které vyžadují, abyste je zachovali jako samostatné klienty.
+Řekněme například, že vaše organizace má jednoho tenanta, který budeme volat *jako tenanta a*. Vaše organizace pak získá *tenanta B* a *tenanta C* a Vy máte obchodní důvody, které vyžadují, abyste je zachovali jako samostatné klienty. Chtěli byste ale použít stejné definice zásad, postupy pro zálohování a procesy zabezpečení pro všechny z nich s úlohami správy prováděnými stejnou sadou uživatelů.
 
-Vaše organizace chce použít stejné definice zásad, postupy pro zálohování a procesy zabezpečení ve všech klientech. Vzhledem k tomu, že tenant A již obsahuje uživatele zodpovědné za tyto úkoly, můžete připojit odběry v rámci tenanta B a tenanta C a povolit tak stejným uživatelům v Tenantovi a provádět tyto úlohy.
+Vzhledem k tomu, že tenant A již obsahuje uživatele ve vaší organizaci, kteří prováděli tyto úlohy pro tenanta a, můžete připojit odběry v rámci tenanta B a tenanta C, což umožňuje stejným uživatelům v Tenantovi a provádět tyto úlohy ve všech klientech.
 
 ![Diagram znázorňující uživatele v Tenantovi A spravující prostředky v klientech B a Tenantovi C.](../media/enterprise-azure-lighthouse.jpg)
 
@@ -38,7 +40,7 @@ V obou případech nezapomeňte [při definování, kteří uživatelé budou m�
 
 Azure Lighthouse poskytuje jenom logické odkazy mezi správou tenanta a spravovaných tenantů místo fyzického přesouvání dat nebo prostředků. Přístup navíc vždy probíhá pouze v jednom směru, od správy tenanta po spravované klienty.  Uživatelé a skupiny v tenantovi pro správu by měli i nadále používat vícefaktorové ověřování při provádění operací správy u prostředků spravovaného tenanta.
 
-Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi zobrazit protokolované aktivity a zobrazit tak akce provedené uživateli ve správě tenanta.
+Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi zobrazit protokolované aktivity a zobrazit tak akce provedené uživateli ve správě tenanta.
 
 ## <a name="onboarding-considerations"></a>Pokyny k připojování
 

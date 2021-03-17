@@ -2,19 +2,16 @@
 title: Konfigurace podporovaných uzlů Azure HDInsight
 description: Seznamte se s minimálními a doporučenými konfiguracemi pro uzly clusteru HDInsight.
 keywords: velikosti virtuálních počítačů, velikosti clusterů, konfigurace clusteru
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
-ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d41ee2554d30a56bc2e025bbe2c93aee143d75e8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83646620"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931648"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Jaké jsou výchozí a doporučené konfigurace uzlů pro Azure HDInsight?
 
@@ -38,7 +35,7 @@ Specifikace všech minimálních doporučených typů virtuálních počítačů
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |
 | Standard_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 6 000                     |
 | Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64/64x500                       | 8 / 12000          |
-| Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2×500               | 2 / 250                 |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2×500               | 2 / 250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4×500               | 2 / 500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8×500               | 4 / 1 000                     |
 
@@ -64,7 +61,7 @@ Další informace o specifikacích jednotlivých typů virtuálních počítač�
 | Služby ML: výchozí velikost virtuálního počítače |  |  |  |  |  | D4_v2 |  |
 | Služby ML: Minimální doporučená velikost virtuálního počítače |  |  |  |  |  | D4_v2 |  |
 
-\*= Velikosti virtuálních počítačů pro clustery Spark Balíček zabezpečení podniku (ESP)
+\* = Velikosti virtuálních počítačů pro clustery Spark Balíček zabezpečení podniku (ESP)
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brazílie – pouze jih a Japonsko – západ
 

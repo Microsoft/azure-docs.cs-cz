@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171631"
 ---
 # <a name="output-batching"></a>Dávkování výstupu
@@ -75,7 +75,7 @@ Chování dávkování Event Grid se dá přizpůsobit pro každého předplatit
 
 Následující nastavení času nasazení určuje maximální hodnotu povolenou při vytváření odběru události.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Maximální povolená hodnota `PreferredBatchSizeInKilobytes` ovladače Výchozí hodnota `1033` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Maximální povolená hodnota `MaxEventsPerBatch` ovladače Výchozí hodnota `50` .
@@ -84,7 +84,7 @@ Následující nastavení času nasazení určuje maximální hodnotu povolenou 
 
 Následující nastavení času nasazení řídí výchozí hodnotu modulu runtime každého ovladače, pokud není zadána v odběru události. Chcete-li provést iteraci, musí být v odběru událostí nastaven alespoň jeden ovladač, aby bylo možné zapnout dávkování chování.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | Maximální velikost žádosti o doručení `MaxEventsPerBatch` , pokud je určena pouze. Výchozí hodnota `1_058_576` .
 | `broker__defaultMaxEventsPerBatch` | Maximální počet událostí, které mají být přidány do dávky, pokud `MaxBatchSizeInBytes` je určena pouze hodnota. Výchozí hodnota `10` .

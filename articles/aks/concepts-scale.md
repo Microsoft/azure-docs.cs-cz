@@ -4,12 +4,12 @@ description: Přečtěte si o škálování ve službě Azure Kubernetes Service
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b72ed7cefc6a16eb484e1337dbd64e5f069a2201
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499881"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686034"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Při horizontálním škálování uzlů volá rozhraní API Kubernetes příslu
 
 Pokud chcete začít s ručním škálováním v luskech a uzlech, přečtěte si téma [škálování aplikací v AKS][aks-scale]
 
-## <a name="horizontal-pod-autoscaler"></a>Automatické škálování vodorovně pod
+## <a name="horizontal-pod-autoscaler"></a>Horizontální automatické škálování podů
 
 Kubernetes používá k monitorování požadavků na prostředky horizontální horizontální navýšení (HPA) a automaticky škáluje počet replik. Ve výchozím nastavení automatické škálování pod automaticky kontroluje metriky rozhraní API každých 30 sekund pro všechny požadované změny v počtu replik. Když se vyžadují změny, počet replik se odpovídajícím způsobem zvýší nebo sníží. Funkce automatického škálování pod možností horizontálního navýšení funguje s clustery AKS, které nasadily Server metrik pro Kubernetes 1.8 +.
 
@@ -50,7 +50,7 @@ V současné době nemůžete tyto hodnoty cooldown z výchozího nastavení lad
 
 ## <a name="cluster-autoscaler"></a>Automatické škálování clusteru
 
-Pro reakci na změnu požadavků pod Kubernetes má modul automatického škálování clusteru, který přizpůsobí počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru metriky serveru rozhraní API metrik každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS s podporou RBAC, které používají Kubernetes 1,10. x nebo vyšší.
+Pro reakci na změnu požadavků pod Kubernetes má modul automatického škálování clusteru, který přizpůsobí počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru metriky serveru rozhraní API metrik každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS Kubernetes s povolenou RBAC, které spouští Kubernetes 1.10. x nebo vyšší.
 
 ![Automatické škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 

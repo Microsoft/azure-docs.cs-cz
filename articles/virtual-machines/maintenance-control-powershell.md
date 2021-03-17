@@ -3,20 +3,21 @@ title: Řízení údržby pro virtuální počítače Azure pomocí PowerShellu
 description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby a PowerShellu.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2868d559f0d848095fa7fec174e09e1b9376c4ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028647"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552452"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
-Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti Azure PowerShell pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
+Řízení údržby vám umožní určit, kdy se mají použít aktualizace platformy pro hostitelskou infrastrukturu pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti Azure PowerShell pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
  
 ## <a name="enable-the-powershell-module"></a>Povolit modul prostředí PowerShell
 
@@ -37,7 +38,7 @@ Pokud instalujete místně, ujistěte se, že jste otevřeli příkazový řáde
 Může se zobrazit také výzva k potvrzení, že chcete nainstalovat z *nedůvěryhodného úložiště*. Zadejte `Y` nebo vyberte **Ano pro všechny** pro instalaci modulu.
 
 
-## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
+## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
 Vytvořte skupinu prostředků jako kontejner pro vaši konfiguraci. V tomto příkladu se vytvoří skupina prostředků s názvem *myMaintenanceRG* v *eastus*. Pokud již máte skupinu prostředků, kterou chcete použít, můžete tuto část přeskočit a nahradit název skupiny prostředků vlastní ve zbývajících příkladech.
 
@@ -59,13 +60,37 @@ $config = New-AzMaintenanceConfiguration `
 
 Pomocí nástroje `-MaintenanceScope host` je zajištěno, že se konfigurace údržby používá pro řízení aktualizací hostitele.
 
-Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaše předplatné jedinečné.
+Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaši skupinu prostředků jedinečné.
 
 K dostupným konfiguracím údržby se můžete dotázat pomocí příkazu [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration).
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Vytvoření konfigurace údržby pomocí plánovaného okna
+
+Můžete také deklarovat naplánované okno, když Azure použije aktualizace vašich prostředků. Tento příklad vytvoří konfiguraci údržby s názvem myConfig s plánovaným oknem 5 hodin ve čtvrtém pondělí každého měsíce. Po vytvoření naplánovaného okna už aktualizace nemusíte instalovat ručně.
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> **Doba trvání** údržby musí být *2 hodiny* nebo déle. **Opakování** údržby musí být nastavené na nejméně jednou za 35 dní.
+
+**Opakování** údržby může být vyjádřeno jako denní, týdenní nebo měsíční. Tady je několik příkladů:
+ - **denní**– RecurEvery "den" **nebo** "3Days" 
+ - **týdně**-RecurEvery "3Weeks" **nebo** "týden sobotu, neděle" 
+ - **měsíčně**– RecurEvery "Month day23, day24" **nebo** "měsíc poslední neděle" **nebo** "měsíc čtvrtého pondělí"  
+      
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 

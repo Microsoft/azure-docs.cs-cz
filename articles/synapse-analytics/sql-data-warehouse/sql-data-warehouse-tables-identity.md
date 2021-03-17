@@ -1,6 +1,6 @@
 ---
 title: Použití IDENTITY k vytváření náhradních klíčů
-description: Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
+description: Doporučení a příklady použití vlastnosti IDENTITY k vytvoření náhradních klíčů v tabulkách ve vyhrazeném fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,27 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5c620aa60e134379614a905226caa4a66d179fae
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121319"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673531"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>Použití IDENTITY k vytváření náhradních klíčů pomocí vyhrazeného fondu SQL v AzureSynapse Analytics
 
-V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
+V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách ve vyhrazeném fondu SQL.
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
 Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.
 > [!NOTE]
-> Hodnota IDENTITY v synapse SQL není zaručená jako jedinečná, pokud uživatel explicitně vloží duplicitní hodnotu s hodnotou "SET IDENTITY_INSERT ON" nebo se resadí identita. Podrobnosti naleznete v tématu [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+> Ve službě Azure synapse Analytics se hodnota IDENTITY v každé distribuci zvyšuje a v ostatních distribucích se nepřekrývá s hodnotami IDENTITY.  Hodnota IDENTITY v synapse není zaručená jako jedinečná, pokud uživatel explicitně vloží duplicitní hodnotu s hodnotou "SET IDENTITY_INSERT ON" nebo se resadí identita. Podrobnosti naleznete v tématu [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest&preserve-view=true). 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
-Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity napříč všemi distribucemi v synapse fondu SQL bez ovlivnění výkonu zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
+Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity ve všech distribucích ve vyhrazeném fondu SQL, aniž by to ovlivnilo výkon zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
 
 Můžete definovat tabulku, která má vlastnost IDENTITY při prvním vytvoření tabulky pomocí syntaxe, která je podobná následujícímu příkazu:
 
@@ -52,7 +53,7 @@ Tato zbývající část této části popisuje drobné odlišnosti implementace
 
 ### <a name="allocation-of-values"></a>Přidělení hodnot
 
-Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou náhradní hodnoty přiděleny z důvodu distribuované architektury datového skladu. Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity napříč všemi distribucemi v synapse fondu SQL bez ovlivnění výkonu zatížení. 
+Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou náhradní hodnoty přiděleny z důvodu distribuované architektury datového skladu. Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity ve všech distribucích ve vyhrazeném fondu SQL, aniž by to ovlivnilo výkon zatížení. 
 
 Následující příklad je ilustrace:
 
@@ -102,7 +103,7 @@ CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 
-Synapse fond SQL podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxi. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
+Vyhrazený fond SQL podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxi. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
 
 Řada datových modelů, jako je například použití předdefinovaných záporných hodnot pro určité řádky v jejich dimenzích. Příkladem je řádek-1 nebo "Neznámý člen".
 
@@ -125,7 +126,7 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>Načítání dat
+## <a name="loading-data"></a>Načítají se data
 
 Přítomnost vlastnosti IDENTITY má nějaký vliv na váš kód pro načítání dat. Tato část popisuje několik základních vzorů pro načítání dat do tabulek pomocí IDENTITY.
 
@@ -163,13 +164,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem identity.
 >
 
-Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro Synapseový fond SQL](design-elt-data-loading.md) a [načítání osvědčených postupů](guidance-for-loading-data.md).
+Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro vyhrazený fond SQL](design-elt-data-loading.md) a  [načítání osvědčených postupů](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systémová zobrazení
 
-K identifikaci sloupce, který má vlastnost IDENTITY, můžete použít zobrazení katalogu [Sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+K identifikaci sloupce, který má vlastnost IDENTITY, můžete použít zobrazení katalogu [Sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
-V tomto příkladu, který vám pomůže lépe pochopit schéma databáze, tento příklad ukazuje, jak integrovat sys. identity_column s dalšími zobrazeními systémového katalogu:
+V tomto příkladu, který vám pomůže lépe pochopit schéma databáze, tento příklad ukazuje, jak integrovat sys.identity_column s dalšími zobrazeními systémového katalogu:
 
 ```sql
 SELECT  sm.name
@@ -197,14 +198,14 @@ Vlastnost IDENTITY se nedá použít:
 - Pokud je sloupec také distribučním klíčem
 - Když je tabulka externí tabulkou
 
-V synapse fondu SQL se nepodporují následující související funkce:
+Následující související funkce nejsou ve vyhrazeném fondu SQL podporovány:
 
-- [IDENTITA ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENTITA ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="common-tasks"></a>Běžné úkoly
 
@@ -244,5 +245,5 @@ AND     tb.name = 'T1'
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled tabulky](sql-data-warehouse-tables-overview.md)
-- [Identita CREATE TABLE (Transact-SQL) (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Identita CREATE TABLE (Transact-SQL) (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

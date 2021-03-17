@@ -3,23 +3,23 @@ title: Exportujte konfiguraci zřizování a vraťte se do známého funkčního
 description: Naučte se exportovat vaši konfiguraci zřizování a vrátit se do známého stavu pro zotavení po havárii.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: c6af42c78bda66c4b397cbb99b26af7d6a5c7f07
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235813"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256369"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Postupy: Export konfigurace zřizování a návrat do známého funkčního stavu
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 - Exportovat a importovat konfiguraci zřizování z Azure Portal
 - Export a import konfigurace zřizování pomocí rozhraní Microsoft Graph API
@@ -32,7 +32,7 @@ Export konfigurace:
 
 1. V [Azure Portal](https://portal.azure.com/)v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 1. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace** a zvolte aplikaci.
-1. V levém navigačním podokně vyberte **zřizování**. Na stránce konfigurace zřizování klikněte na **mapování atributů**a pak na **Zobrazit pokročilé možnosti**a nakonec **Zkontrolujte schéma**. Tím přejdete do editoru schémat.
+1. V levém navigačním podokně vyberte **zřizování**. Na stránce konfigurace zřizování klikněte na **mapování atributů** a pak na **Zobrazit pokročilé možnosti** a nakonec **Zkontrolujte schéma**. Tím přejdete do editoru schémat.
 1. Kliknutím na stáhnout na panelu příkazů v horní části stránky Stáhněte své schéma.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Zotavení po havárii – vracení zpátky do známého funkčního stavu

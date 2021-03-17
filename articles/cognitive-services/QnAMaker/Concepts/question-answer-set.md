@@ -1,20 +1,22 @@
 ---
-title: Návrh znalostní báze Knowledge Base – QnA Maker
-description: QnA Maker znalostní báze se skládá ze sady párů otázek a odpovědí (QnA) a volitelných metadat přidružených ke každému páru QnA.
+title: Návrh znalostní báze Knowledge Base – koncepty QnA Maker
+description: Naučte se navrhovat QnA Maker znalostní báze.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992993"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000109"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Koncepty dvojice otázek a odpovědí
 
 Znalostní báze se skládá z párů otázek a odpovědí (QnA).  Každý pár má jednu odpověď a pár obsahuje všechny informace spojené s touto _odpovědí_. Odpověď může volně napodobovat řádek databáze nebo instanci datové struktury.
 
-## <a name="question-and-answer-pairs"></a>Páry otázek a odpovědí
+## <a name="question-and-answer-pairs"></a>Dvojice otázek a odpovědí
 
 **Požadovaná** nastavení dvojice otázek a odpovědí (QnA) jsou:
 

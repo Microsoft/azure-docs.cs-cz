@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383762"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935083"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se Azure Active Directory sestav
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: teď používáme `https://graph.windows.net/<tenant-name>/reports/` rozhraní API koncových bodů k vyžádání sestav zabezpečení Azure AD (konkrétní typy detekcí, jako jsou nevrácená pověření nebo přihlášení z anonymních IP adres) do našich systémů vytváření sestav prostřednictvím kódu programu. Co mám přepnout na?**
 
-**A:**  [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/graph-get-started.md)můžete použít   k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), což je standard Microsoftu pro taková rozhraní API jako O365 nebo Azure AD. To znamená, že požadovaná práce může buď rozšířila vaše aktuální Microsoft Graph investice, nebo vám umožní začít přejít na tuto novou standardní platformu.
+**A:** [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/howto-identity-protection-graph-api.md) můžete použít k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), což je standard Microsoftu pro taková rozhraní api jako Microsoft 365 nebo Azure AD. To znamená, že požadovaná práce může buď rozšířila vaše aktuální Microsoft Graph investice, nebo vám umožní začít přejít na tuto novou standardní platformu.
 
 ---
 
@@ -49,7 +49,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: jak brzy bych po získání licence na verzi Premium viděli data o aktivitách?**
 
-**A:** Pokud již máte data o aktivitách jako bezplatnou licenci, pak ji můžete okamžitě zobrazit. Pokud nemáte žádná data, pak se data budou zobrazovat v sestavách za dobu jednoho nebo dvou dnů.
+**A:** Pokud již máte data o aktivitách jako bezplatnou licenci, pak ji můžete okamžitě zobrazit. Pokud nemáte žádná data, bude trvat až 3 dny, než se data zobrazí v sestavách.
 
 ---
 
@@ -81,15 +81,15 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 ---
 
-**Otázka: mohu získat informace o protokolu aktivit Office 365 prostřednictvím Azure Portal?**
+**Otázka: mohu získat informace o Microsoft 365 protokolu aktivit prostřednictvím Azure Portal?**
 
-**A:** I když aktivity Office 365 a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, pokud chcete zobrazit úplné zobrazení protokolů aktivit Office 365, měli byste přejít do [centra pro správu Microsoft 365](https://admin.microsoft.com) a získat informace o protokolu aktivit Office 365.
+**A:** I když Microsoft 365 aktivity a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, pokud chcete úplné zobrazení protokolů aktivit Microsoft 365, měli byste přejít do [centra pro správu Microsoft 365](https://admin.microsoft.com) a získat informace o protokolu aktivit Office 365.
 
 ---
 
-**Otázka: jaká rozhraní API mám použít k získání informací o protokolech aktivit Office 365?**
+**Otázka: jaká rozhraní API mám použít k získání informací o Microsoft 365ch protokolů aktivit?**
 
-**A:** Použijte [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) k přístupu k protokolům aktivit Office 365 prostřednictvím rozhraní API.
+**A:** [Rozhraní API pro správu Microsoft 365](/office/office-365-management-api/office-365-management-apis-overview) slouží k přístupu k protokolům aktivit Microsoft 365 prostřednictvím rozhraní API.
 
 ---
 
@@ -143,8 +143,8 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **A:** Stav podmíněného přístupu může mít následující hodnoty:
 
-* **Nepoužito**: to znamená, že pro uživatele a aplikaci v oboru neexistovaly žádné zásady certifikační autority. 
-* **Úspěch**: to znamená, že existovala zásada certifikační autority s uživatelem a aplikací v oboru a zásady certifikační autority byly úspěšně splněné. 
+* **Nepoužito**: to znamená, že pro uživatele a aplikaci v oboru neexistovaly žádné zásady podmíněného přístupu. 
+* **Úspěch**: to znamená, že existovaly zásady podmíněného přístupu s uživatelem a aplikací v oboru a zásady podmíněného přístupu byly úspěšně splněné. 
 * **Selhání**: přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
     
 **Otázka: Jaké jsou všechny možné hodnoty pro výsledek zásad podmíněného přístupu?**
@@ -158,8 +158,8 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
     
 **Otázka: název zásady v sestavě všech přihlášení se neshoduje s názvem zásady v certifikační autoritě. Proč?**
 
-**A:** Název zásad v sestavě všechna přihlášení je založený na názvu zásady certifikační autority v době přihlášení. To může být nekonzistentní s názvem zásady v certifikační autoritě, pokud jste později aktualizovali název zásady, tedy po přihlášení.
+**A:** Název zásad v sestavě všechna přihlášení je založený na názvu zásad podmíněného přístupu v době přihlášení. To může být nekonzistentní s názvem zásady v certifikační autoritě, pokud jste později aktualizovali název zásady, tedy po přihlášení.
 
 **Otázka: moje přihlášení bylo zablokováno kvůli zásadám podmíněného přístupu, ale v sestavě přihlašovací aktivity se zobrazí zpráva o úspěšném přihlášení. Proč?**
 
-**A:** V současné době se při použití podmíněného přístupu v této sestavě nemusí zobrazovat přesné výsledky scénářů Exchange ActiveSync. Můžou nastat případy, kdy se při přihlašování v sestavě zobrazuje úspěšné přihlášení, ale přihlášení se kvůli zásadám podmíněného přístupu skutečně nezdařilo. 
+**A:** V současné době se při použití podmíněného přístupu v této sestavě nemusí zobrazovat přesné výsledky scénářů Exchange ActiveSync. Můžou nastat případy, kdy se při přihlašování v sestavě zobrazuje úspěšné přihlášení, ale přihlášení se kvůli zásadám podmíněného přístupu skutečně nezdařilo.

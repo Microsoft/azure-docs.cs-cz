@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functi
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612805"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655811"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj služby Azure Functions pomocí sady Visual Studio  
 
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat Visual Studio
 
 Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Functions nástroje. Pokud chcete přidat nástroje Azure Function Tools, zahrňte do instalace sady Visual Studio úlohu **vývoj pro Azure** . Azure Functions nástroje jsou k dispozici v rámci úlohy vývoje Azure počínaje sadou Visual Studio 2017.
 
@@ -42,7 +42,7 @@ Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Podívejte se na verzi nástrojů v aplikaci Visual Studio 2017
 
-1. V nabídce **nástroje** vyberte **rozšíření a aktualizace**. Rozbalte položku **nainstalované**  >  **nástroje**a pak zvolte možnost **Nástroje pro Azure functions a webové úlohy**.
+1. V nabídce **nástroje** vyberte **rozšíření a aktualizace**. Rozbalte položku **nainstalované**  >  **nástroje** a pak zvolte možnost **Nástroje pro Azure functions a webové úlohy**.
 
     ![Ověření verze nástrojů Functions](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -56,11 +56,11 @@ Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2
 
     ![Aktualizace verze nástrojů Functions](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. Po stažení aktualizace nástrojů vyberte **Zavřít**a potom zavřete Visual Studio, aby se aktivovala aktualizace nástrojů pomocí instalačního programu VSIX.
+1. Po stažení aktualizace nástrojů vyberte **Zavřít** a potom zavřete Visual Studio, aby se aktivovala aktualizace nástrojů pomocí instalačního programu VSIX.
 
 1. V instalačním programu VSIX vyberte možnost **změnit** a aktualizujte nástroje. 
 
-1. Po dokončení aktualizace klikněte na tlačítko **Zavřít**a pak restartujte aplikaci Visual Studio.
+1. Po dokončení aktualizace klikněte na tlačítko **Zavřít** a pak restartujte aplikaci Visual Studio.
 
 > [!NOTE]  
 > V aplikaci Visual Studio 2019 nebo novější je rozšíření Azure Functionsch nástrojů aktualizováno v rámci sady Visual Studio.  
@@ -86,6 +86,18 @@ Visual Studio automaticky neodešle nastavení v local.settings.jspři publikov�
 
 Váš kód může také číst hodnoty nastavení aplikace Function App jako proměnné prostředí. Další informace naleznete v tématu [proměnné prostředí](functions-dotnet-class-library.md#environment-variables).
 
+## <a name="configure-your-build-output-settings"></a>Konfigurovat nastavení výstupu sestavení
+
+Při sestavování projektu Azure Functions nástroj sestavení optimalizuje výstup tak, aby byla zachována pouze jedna kopie všech sestavení, která jsou sdílena s modulem runtime Functions. Výsledkem je optimalizované sestavení, které šetří co nejvíce místa. Pokud však přejdete na novější verzi libovolného sestavení projektu, nástroje sestavení nemusí znát, že tato sestavení musí být zachována. Aby se zajistilo, že jsou tato sestavení během procesu optimalizace zachovaná, můžete je zadat pomocí `FunctionsPreservedDependencies` prvků v souboru projektu (. csproj):
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
+
 ## <a name="configure-the-project-for-local-development"></a>Konfigurace projektu pro místní vývoj
 
 Modul runtime Functions používá interní účet Azure Storage. Pro všechny typy triggerů jiné než HTTP a Webhooky nastavte `Values.AzureWebJobsStorage` klíč na platný připojovací řetězec účtu Azure Storage. Aplikace Function App může použít také [emulátor Azure Storage](../storage/common/storage-use-emulator.md) pro `AzureWebJobsStorage` nastavení připojení, které je vyžadováno projektem. Chcete-li použít emulátor, nastavte hodnotu `AzureWebJobsStorage` na `UseDevelopmentStorage=true` . Před nasazením toto nastavení změňte na skutečný připojovací řetězec účtu úložiště.
@@ -94,7 +106,7 @@ Nastavení připojovacího řetězce účtu úložiště:
 
 1. V aplikaci Visual Studio vyberte možnost **Zobrazit**  >  **Průzkumníka cloudu**.
 
-2. V **Průzkumníku cloudu**rozbalte **účty úložiště**a pak vyberte svůj účet úložiště. Na kartě **vlastnosti** Zkopírujte hodnotu **primárního připojovacího řetězce** .
+2. V **Průzkumníku cloudu** rozbalte **účty úložiště** a pak vyberte svůj účet úložiště. Na kartě **vlastnosti** Zkopírujte hodnotu **primárního připojovacího řetězce** .
 
 2. V projektu otevřete local.settings.jsv souboru a nastavte hodnotu `AzureWebJobsStorage` klíče na připojovací řetězec, který jste zkopírovali.
 
@@ -104,7 +116,7 @@ Nastavení připojovacího řetězce účtu úložiště:
 
 Ve funkcích knihovny tříd jazyka C# jsou vazby používané funkcí definovány použitím atributů v kódu. Při vytváření aktivační události funkce ze zadaných šablon se pro vás aplikují atributy triggeru. 
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na uzel projektu a vyberte možnost **Přidat**  >  **novou položku**. 
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na uzel projektu a vyberte možnost **Přidat**  >  **novou položku**. 
 
 2. Vyberte **funkce Azure**, zadejte **název** třídy a pak vyberte **Přidat**.
 
@@ -229,11 +241,9 @@ Nastavení aplikace můžete spravovat také jedním z těchto způsobů:
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 
-Doporučeným způsobem, jak monitorovat provádění vašich funkcí, je integrace aplikace Function App s Azure Application Insights. Když vytvoříte aplikaci funkcí v Azure Portal, tato integrace se ve výchozím nastavení provádí. Při vytváření aplikace Function App během publikování sady Visual Studio ale nebude dokončena integrace v aplikaci Function App v Azure.
+Doporučeným způsobem, jak monitorovat provádění vašich funkcí, je integrace aplikace Function App s Azure Application Insights. Když vytvoříte aplikaci funkcí v Azure Portal, tato integrace se ve výchozím nastavení provádí. Při vytváření aplikace Function App během publikování sady Visual Studio ale nebude dokončena integrace v aplikaci Function App v Azure. Informace o tom, jak připojit Application Insights k aplikaci Function App, najdete v tématu [Povolení integrace Application Insights](configure-monitoring.md#enable-application-insights-integration).
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+Další informace o monitorování pomocí Application Insights najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Další kroky
 

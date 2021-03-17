@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121472"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880097"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -38,7 +38,7 @@ Ne.
 
 Podporovány jsou následující možnosti připojení mezi různými místy:
 
-* Site-to-Site – připojení VPN prostřednictvím protokolu IPsec (IKE v1 a IKE v2). Tento typ připojení vyžaduje zařízení VPN nebo službu RRAS. Další informace naleznete v tématu [Site-to-Site](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+* Site-to-Site – připojení VPN prostřednictvím protokolu IPsec (IKE v1 a IKE v2). Tento typ připojení vyžaduje zařízení VPN nebo službu RRAS. Další informace naleznete v tématu [Site-to-Site](./tutorial-site-to-site-portal.md).
 * Point-to-Site – připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol) nebo IKE v2. Toto připojení nevyžaduje zařízení VPN. Další informace naleznete v tématu [Point-to-Site](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * VNet-to-VNet – tento typ připojení je stejný jako konfigurace Site-to-Site. VNet-to-VNet je připojení k síti VPN prostřednictvím protokolu IPsec (IKE v1 a IKE v2). Nevyžaduje zařízení VPN. Další informace naleznete v tématu [VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 * Multi-Site – varianta konfigurace Site-to-Site, která umožňuje propojit několik místních serverů do virtuální sítě. Další informace najdete v tématu [Multi-Site](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
@@ -70,13 +70,13 @@ Brány založené na směrování implementují sítě VPN založené na směrov
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat moji bránu VPN založenou na zásadách na základě směrování?
 
-Ne.Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
+Ne. Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
 1. Odstraňte všechna připojení přidružená k bráně, která se má odstranit.
 1. Odstraňte bránu:
    - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell – klasický](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Vytvořte novou bránu typu, který chcete, a dokončete nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
+1. [Vytvořte novou bránu typu, který chcete, a dokončete nastavení sítě VPN](./tutorial-site-to-site-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Potřebuji GatewaySubnet?
 

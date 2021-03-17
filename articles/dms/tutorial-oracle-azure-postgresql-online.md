@@ -8,20 +8,24 @@ ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
+ms.subservice: migration-guide
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2be824c89ac1e6b900dc9b67e046e2be2c7f8919
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087760"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562820"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z databází Oracle hostovaných místně nebo na virtuálních počítačích a [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, můžete dokončit migraci s minimálními prostoji do aplikace. V tomto kurzu migrujete ukázkovou databázi **HR** z místní nebo instance virtuálního počítače Oracle 11g na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
+> [!IMPORTANT]
+> Scénář migrace **Oracle to Azure Database for PostgreSQL** (aktuálně ve verzi Preview) už nebude k dispozici po 1.2021. května. Budeme dál poskytovat podporu prostřednictvím alternativních nástrojů (například Ora2pg) a poskytněte nejlepší možnosti migrace pro Oracle pro PostgreSQL migrace. Osvědčené postupy pro migraci najdete v tématu [Průvodce migrací Oracle to Azure Database for PostgreSQL](https://aka.ms/OracletoPGguide). 
+
+Pomocí Azure Database Migration Service můžete migrovat databáze z databází Oracle hostovaných místně nebo na virtuálních počítačích a [Azure Database for PostgreSQL](../postgresql/index.yml) s minimálními výpadky. Jinými slovy, můžete dokončit migraci s minimálními prostoji do aplikace. V tomto kurzu migrujete ukázkovou databázi **HR** z místní nebo instance virtuálního počítače Oracle 11g na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -43,19 +47,19 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z Oracle do Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * Stáhněte a nainstalujte [Oracle 11G verze 2 (Standard Edition, Standard Edition One nebo Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html).
 * Stáhněte si ukázkovou databázi **HR** z [tohoto místa](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002).
 * Stáhněte a [nainstalujte ora2pg buď na Windows, nebo Linux](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf).
-* [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
-* Připojte se k instanci a vytvořte databázi pomocí instrukcí v tomto [dokumentu](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* [Vytvořte instanci v Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md).
+* Připojte se k instanci a vytvořte databázi pomocí instrukcí v tomto [dokumentu](../postgresql/tutorial-design-database-using-azure-portal.md).
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](../virtual-network/index.yml)a zejména v článcích rychlý Start s podrobnými údaji.
 
   > [!NOTE]
-  > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
+  > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](../virtual-network/virtual-network-service-endpoints-overview.md) služby:
   >
   > * Koncový bod cílové databáze (například koncový bod SQL, Cosmos DB koncový bod atd.)
   > * Koncový bod úložiště
@@ -63,11 +67,11 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
   >
   > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) vaší virtuální sítě neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) neblokovala odchozí port 443 z ServiceTag pro ServiceBus, úložiště a AzureMonitor. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall a umožněte Azure Database Migration Service přistupovat ke zdrojovému serveru Oracle, který je ve výchozím nastavení port TCP 1521.
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
-* Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
+* Vytvořte [pravidlo brány firewall](../azure-sql/database/firewall-configure.md) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 * Povolte přístup ke zdrojovým databázím Oracle.
 
   > [!NOTE]
@@ -186,7 +190,7 @@ Můžete spustit ora2pg pro export všech databázových objektů do souborů. S
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Příklad:
+Například:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -206,7 +210,7 @@ Azure Database Migration Service může také vytvořit schéma tabulky PostgreS
 > [!IMPORTANT]
 > Azure Database Migration Service pouze vytváření schématu tabulky; nevytvoří se žádné další databázové objekty, jako jsou uložené procedury, balíčky, indexy atd.
 
-Nezapomeňte také vyřadit cizí klíč v cílové databázi, aby bylo možné spustit úplné načtení. Informace o skriptu, který můžete použít k vyřazení cizího klíče, najdete v části věnované **migraci ukázkového schématu** [v článku.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) Pro spuštění úplného načtení a synchronizace použijte Azure Database Migration Service.
+Nezapomeňte také vyřadit cizí klíč v cílové databázi, aby bylo možné spustit úplné načtení. Informace o skriptu, který můžete použít k vyřazení cizího klíče, najdete v části věnované **migraci ukázkového schématu** [v článku.](./tutorial-postgresql-azure-postgresql-online.md) Pro spuštění úplného načtení a synchronizace použijte Azure Database Migration Service.
 
 ### <a name="when-the-postgresql-table-schema-already-exists"></a>Pokud schéma tabulky PostgreSQL již existuje
 
@@ -214,11 +218,11 @@ Pokud vytvoříte schéma PostgreSQL pomocí nástrojů, jako je ora2pg před sp
 
 1. Když vytvoříte nový projekt pro Azure Database for PostgreSQL migrace pro Oracle, budete vyzváni k výběru cílové databáze a cílového schématu v kroku vybrat schémata. Vyplňte cílovou databázi a cílové schéma.
 
-   ![Zobrazení předplatných na portálu](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![Snímek obrazovky ukazuje mapování na cílové databáze.](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. Na obrazovce **Nastavení migrace** se zobrazí seznam tabulek ve zdroji Oracle. Azure Database Migration Service se pokusí párovat tabulky ve zdrojové a cílové tabulce na základě názvu tabulky. Pokud existuje více vyhovujících cílových tabulek s různou velikostí písmen, můžete vybrat cílovou tabulku, ke které se má mapovat.
 
-    ![Zobrazení předplatných na portálu](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![Snímek obrazovky ukazuje nastavení migrace.](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > Pokud potřebujete mapovat názvy zdrojových tabulek k tabulkám s různými názvy, e-mailem [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) a můžeme poskytnout skript pro automatizaci tohoto procesu.
@@ -239,12 +243,12 @@ Jak začít:
 
     Pokud název schématu ve zdroji Oracle odpovídá hodnotě v Azure Database for PostgreSQL, Azure Database Migration Service *vytvoří schéma tabulky pomocí stejného případu jako v cíli*.
 
-    Příklad:
+    Například:
 
     | Zdrojové schéma Oracle | Cílová databáze PostgreSQL. schéma | DMS vytvořil schéma. Table. Column. |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR. Public | veřejné. země. country_id |
-    | HR | targetHR.trgthr | trgthr. zemích. country_id |
+    | HR | targetHR. Public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
     | HR | targetHR.TARGETHR | "TARGETHR"." ZEMĚ "." COUNTRY_ID " |
     | HR | targetHR.HR | "HR". ZEMĚ "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Nejde namapovat smíšené případy. |
@@ -281,7 +285,7 @@ Jak začít:
 
     Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojovému Oracle a cílové instanci Azure Database for PostgreSQL.
 
-    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](https://aka.ms/DMSVnet).
+    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md).
 
 5. Vyberte cenovou úroveň.
 
@@ -322,7 +326,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="upload-oracle-oci-driver"></a>Nahrát ovladač Oracle OCI
 
-1. Vyberte **Uložit**a pak na obrazovce **instalace ovladače rozhraní OCI** se přihlaste k účtu Oracle a stáhněte **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** ovladače (37 128 586 bajtů) (s kontrolním součtem SHA1:865082268) z [tohoto místa](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
+1. Vyberte **Uložit** a pak na obrazovce **instalace ovladače rozhraní OCI** se přihlaste k účtu Oracle a stáhněte **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** ovladače (37 128 586 bajtů) (s kontrolním součtem SHA1:865082268) z [tohoto místa](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
 2. Stáhněte ovladač do sdílené složky.
 
    Ujistěte se, že je složka sdílená s uživatelským jménem, které jste zadali s minimálním přístupem jen pro čtení. Azure Database Migration Service přistupuje ke sdílené složce a přečte se z ní, aby se do Azure nahrál ovladač OCI vyvoláním uživatelského jména, které zadáte.
@@ -333,7 +337,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
-1. Vyberte **Uložit**a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for PostgreSQL Server, což je předem zřízená instance Azure Database for PostgreSQL, na kterou se schéma **lidských zdrojů** nasadilo.
+1. Vyberte **Uložit** a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for PostgreSQL Server, což je předem zřízená instance Azure Database for PostgreSQL, na kterou se schéma **lidských zdrojů** nasadilo.
 
     ![Obrazovka Podrobnosti cíle](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
@@ -359,7 +363,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
      ![Stav aktivity – spuštěno](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 
-2. V části **název databáze**vyberte konkrétní databázi, abyste získali stav migrace pro operace **úplného načtení dat** a **přírůstkové synchronizace dat** .
+2. V části **název databáze** vyberte konkrétní databázi, abyste získali stav migrace pro operace **úplného načtení dat** a **přírůstkové synchronizace dat** .
 
     Úplné načtení dat zobrazí stav migrace z hlediska počátečního načtení, zatímco přírůstková synchronizace dat zobrazí stav funkce Change Data Capture (CDC).
 
@@ -386,5 +390,5 @@ Po dokončení počátečního úplného načtení se databáze označí jako **
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for PostgreSQL najdete v článku [Známé problémy s online migracemi do služby Azure Database for PostgreSQLa jejich řešení](known-issues-azure-postgresql-online.md).
-* Informace o Azure Database Migration Service najdete v článku [co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informace o Azure Database for PostgreSQL najdete v článku [co je Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Informace o Azure Database Migration Service najdete v článku [co je Azure Database Migration Service?](./dms-overview.md).
+* Informace o Azure Database for PostgreSQL najdete v článku [co je Azure Database for PostgreSQL?](../postgresql/overview.md).

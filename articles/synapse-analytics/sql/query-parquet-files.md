@@ -1,28 +1,28 @@
 ---
-title: Dotazování souborů Parquet pomocí SQL na vyžádání (Preview)
-description: V tomto článku se naučíte, jak zadávat dotazy na soubory Parquet pomocí SQL na vyžádání (Preview).
+title: Dotazy na soubory Parquet s využitím fondu SQL bez serveru
+description: V tomto článku se dozvíte, jak zadávat dotazy na Parquet soubory s využitím fondu SQL bez serveru.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496232"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694688"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí fondu SQL bez serveru v Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (Preview), který načte soubory Parquet.
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL, který bude číst soubory Parquet.
 
 ## <a name="quickstart-example"></a>Příklad rychlého startu
 
-`OPENROWSET`funkce umožňuje číst obsah souboru Parquet zadáním adresy URL souboru.
+`OPENROWSET` funkce umožňuje číst obsah souboru Parquet zadáním adresy URL souboru.
 
 ### <a name="read-parquet-file"></a>Přečíst soubor Parquet
 
@@ -35,7 +35,12 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity Azure, bude potřeba nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity Azure, budete muset nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+> [!IMPORTANT]
+> Ujistěte se, že používáte kolaci databáze UTF-8 (například `Latin1_General_100_BIN2_UTF8` ), protože řetězcové hodnoty v souborech PARQUET jsou kódovány pomocí kódování UTF-8.
+> Neshoda mezi kódováním textu v souboru PARQUET a kolací může způsobit neočekávané chyby při konverzi.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_BIN2_UTF8`
 
 ### <a name="data-source-usage"></a>Využití zdroje dat
 
@@ -57,7 +62,7 @@ Pokud je zdroj dat chráněný pomocí klíče SAS nebo vlastní identity, můž
 
 ### <a name="explicitly-specify-schema"></a>Explicitně zadat schéma
 
-`OPENROWSET`umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
+`OPENROWSET` umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
 
 ```sql
 select top 10 *
@@ -67,6 +72,12 @@ from openrowset(
         format = 'parquet'
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
+
+> [!IMPORTANT]
+> Ujistěte se, že jste explicilty určení některých řazení v kódování UTF-8 (například `Latin1_General_100_BIN2_UTF8` ) pro všechny řetězcové sloupce v `WITH` klauzuli, nebo nastavte určitou kolaci UTF-8 na úrovni databáze.
+> Neshoda mezi kódováním textu v souboru a kolaci sloupce String může způsobit neočekávané chyby při konverzi.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_BIN2_UTF8`
+> Kolaci pro typy slo můžete snadno nastavit pomocí následující definice: `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
 
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů PARQUET.
 
@@ -111,7 +122,7 @@ Při čtení souborů Parquet není nutné používat klauzuli OPENROWSET WITH. 
 Následující ukázka ukazuje možnosti automatického odvození schématu pro soubory Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. V takovém případě dotazovací služba SQL na vyžádání bude používat metadata v souboru Parquet a sváže sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. V takovém případě služba dotazů na SQL fond bez serveru použije metadata v souboru Parquet a sváže sloupce podle názvu.
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +139,7 @@ FROM
 Datová sada uvedená v této ukázce je rozdělená (rozdělená do oddílů) na samostatné podsložky. Pomocí funkce FilePath můžete cílit na konkrétní oddíly. V tomto příkladu se zobrazuje množství tarifů podle roku, měsíce a payment_type v prvních třech měsících od 2017.
 
 > [!NOTE]
-> Dotaz SQL na vyžádání je kompatibilní se schématem dělení na oddíly/Hadoop.
+> Dotaz na fond SQL bez serveru je kompatibilní se schématem dělení na oddíly/Hadoop.
 
 ```sql
 SELECT
@@ -155,43 +166,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>Mapování typů
 
-Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabulka popisuje, jak jsou typy Parquet mapovány na nativní typy SQL.
-
-| Typ Parquet | Logický typ Parquet (anotace) | Datový typ SQL |
-| --- | --- | --- |
-| DATOVÉHO | | bit |
-| BINÁRNÍ/BYTE_ARRAY | | varbinary |
-| KLEPAT | | float |
-| Plovák | | real |
-| UVEDENA | | int |
-| INT64 | | bigint |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |binární |
-| TVARU |UTF |varchar \* (řazení UTF8) |
-| TVARU |ŘETEZCE |varchar \* (řazení UTF8) |
-| TVARU |VYTVÁŘENÍ|varchar \* (řazení UTF8) |
-| TVARU |IDENTIFIKÁTOR |uniqueidentifier |
-| TVARU |NOTACI |decimal |
-| TVARU |JSON |varchar (max) \* (kolace UTF8) |
-| TVARU |BSON |varbinary (max) |
-| FIXED_LEN_BYTE_ARRAY |NOTACI |decimal |
-| BYTE_ARRAY |DOBA |varchar (max), serializováno do standardizovaného formátu |
-| UVEDENA |INT (8, true) |smallint |
-| UVEDENA |INT (16, true) |smallint |
-| UVEDENA |INT (32, true) |int |
-| UVEDENA |INT (8, false) |tinyint |
-| UVEDENA |INT (16, false) |int |
-| UVEDENA |INT (32, false) |bigint |
-| UVEDENA |DATE (Datum) |date |
-| UVEDENA |NOTACI |decimal |
-| UVEDENA |ČAS (LISOVNY)|time |
-| INT64 |INT (64; true) |bigint |
-| INT64 |INT (64, false) |desetinné číslo (20, 0) |
-| INT64 |NOTACI |decimal |
-| INT64 |ČAS (MIKROČASU A NANO) |time |
-|INT64 |ČASOVÉ RAZÍTKO (LISOVNY//NANO) |datetime2 |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |SEZNAMU |varchar (max), serializováno do formátu JSON |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAPY|varchar (max), serializováno do formátu JSON |
+Pro mapování typu Parquet na typ mapování nativního typu SQL [pro Parquet](develop-openrowset.md#type-mapping-for-parquet).
 
 ## <a name="next-steps"></a>Další kroky
 

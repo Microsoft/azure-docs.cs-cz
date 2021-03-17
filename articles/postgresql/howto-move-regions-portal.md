@@ -1,18 +1,18 @@
 ---
 title: Přesunout oblasti Azure – Azure Portal-Azure Database for PostgreSQL – jeden server
 description: Přesuňte server Azure Database for PostgreSQL z jedné oblasti Azure do jiné pomocí repliky pro čtení a Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 00cd291824eabfe8e1b43f35bc3618bfd793077d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489740"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Přesunout Azure Database for Azure Database for PostgreSQL – jeden server do jiné oblasti pomocí Azure Portal
 
@@ -21,9 +21,9 @@ Existují různé scénáře, jak přesunout existující Azure Database for Pos
 K dokončení přesunu do jiné oblasti můžete použít [repliku čtení Azure Database for PostgreSQL mezi jednotlivými oblastmi](concepts-read-replicas.md#cross-region-replication) . K tomu je třeba nejprve vytvořit repliku pro čtení v cílové oblasti. Potom zastavte replikaci na server repliky pro čtení, aby byl samostatný server, který přijímá přenosy čtení i zápisu. 
 
 > [!NOTE]
-> Tento článek se zaměřuje na přesun serveru do jiné oblasti. Pokud chcete přesunout server do jiné skupiny prostředků nebo předplatného, přečtěte si článek o [přesunutí](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . 
+> Tento článek se zaměřuje na přesun serveru do jiné oblasti. Pokud chcete přesunout server do jiné skupiny prostředků nebo předplatného, přečtěte si článek o [přesunutí](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Funkce repliky čtení mezi oblastmi je k dispozici pouze pro Azure Database for PostgreSQL jeden server v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je zdrojový server v jedné z těchto cenových úrovní.
 
@@ -47,11 +47,11 @@ Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pom
 1. V nabídce v části **Nastavení**vyberte **replikace** .
 1. Vyberte **Přidat repliku**.
 1. Zadejte název serveru repliky.
-1. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako u hlavního serveru. Ověřte, zda jste vybrali cílové umístění, do kterého chcete repliku nasadit.
+1. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako na primárním serveru. Ověřte, zda jste vybrali cílové umístění, do kterého chcete repliku nasadit.
 1. Vyberte **OK** a potvrďte tak vytvoření repliky. Při vytváření repliky se data zkopírují ze zdrojového serveru do repliky. Čas vytvoření může trvat několik minut nebo i déle, a to v poměru k velikosti zdrojového serveru.
 
 >[!NOTE]
-> Když vytváříte repliku, nedědí pravidla brány firewall a koncové body služby VNet hlavního serveru. Tato pravidla musí být pro repliku nastavena nezávisle.
+> Když vytváříte repliku, nedědí pravidla firewallu a koncové body služby virtuální sítě primárního serveru. Tato pravidla musí být pro repliku nastavena nezávisle.
 
 ## <a name="move"></a>Přesunout
 
@@ -69,7 +69,7 @@ Pokud chcete zastavit replikaci do repliky z Azure Portal, použijte následují
 
 ## <a name="clean-up-source-server"></a>Vyčištění zdrojového serveru
 
-Je možné, že budete chtít zdrojový Azure Database for PostgreSQL server odstranit. Chcete-li tak učinit, proveďte následující kroky:
+Je možné, že budete chtít zdrojový Azure Database for PostgreSQL server odstranit. Můžete to udělat podle následujících kroků:
 
 1. Po vytvoření repliky vyhledejte a vyberte zdrojový server Azure Database for PostgreSQL.
 1. V okně **Přehled** vyberte **Odstranit**.

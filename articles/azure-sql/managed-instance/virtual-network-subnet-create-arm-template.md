@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
-ms.openlocfilehash: 9ec6b7747ad22df96fd8ab5f9b5b5bc1e27b0993
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543737"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91617702"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Vytvoření virtuální sítě pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,7 +43,7 @@ Spravovaná instance Azure SQL musí být nasazená v rámci [virtuální sítě
 
 Nejjednodušší způsob, jak vytvořit a nakonfigurovat virtuální síť, je použít šablonu nasazení Azure Resource Manager.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyberte tlačítko **nasadit do Azure** :
 

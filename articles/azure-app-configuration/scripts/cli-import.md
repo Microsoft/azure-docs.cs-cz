@@ -3,19 +3,19 @@ title: Ukázkový skript Azure CLI – import do úložiště konfigurace aplika
 titleSuffix: Azure App Configuration
 description: Použití skriptu Azure CLI – import konfigurace do Azure App Configuration
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe4c22042c31d55575320d9c3823783902700f9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f7d68024dd86a1eb2a0311cecf607d41a7067deb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494770"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173564"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Import do úložiště konfigurace aplikace Azure
 
@@ -23,9 +23,9 @@ Tento ukázkový skript importuje nastavení klíč-hodnota do úložiště konf
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Informace o instalaci nebo upgradu najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -33,7 +33,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku A
 #!/bin/bash
 
 # Import key-values from a file
-az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import.json
+az appconfig kv import --name myTestAppConfigStore --source file --format json --path ~/Import.json
 ```
 
 [!INCLUDE [cli-script-cleanup](../../../includes/cli-script-clean-up.md)]

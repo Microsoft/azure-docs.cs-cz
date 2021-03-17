@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/28/2019
-  ms.openlocfilehash: 5a75e2ef81c2ea584e7819d278f63e5ae53b9ce9
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 8619e0948cc08d06d27a09864bbff13ad6ad3791
+  ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70885619"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96780327"
 landingContent:
 - title: Informace o službě VPN Gateway
   linkLists:
@@ -31,24 +31,20 @@ landingContent:
       url: vpn-gateway-bgp-overview.md
     - text: Zónově redundantní brány
       url: about-zone-redundant-vnet-gateways.md
-    - text: Brána sítě VPN – nejčastější dotazy
+    - text: Nejčastější dotazy k branám VPN
       url: vpn-gateway-vpn-faq.md
 - title: Začínáme
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Vytvoření brány VPN
-      url: create-routebased-vpn-gateway-portal.md
-    - text: Vytvoření připojení typu Site-to-Site
-      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - text: Vytvoření připojení typu Point-to-Site
-      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
   - linkListType: tutorial
     links:
     - text: Vytvoření a správa služby VPN Gateway
-      url: vpn-gateway-tutorial-create-gateway-powershell.md
-    - text: Vytvoření a správa připojení typu site-to-site
-      url: vpn-gateway-tutorial-vpnconnection-powershell.md
+      url: tutorial-create-gateway-portal.md
+    - text: Vytvoření připojení VPN typu site-to-site
+      url: tutorial-site-to-site-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření připojení VPN typu point-to-site
+      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
 - title: Zařízení VPN
   linkLists:
   - linkListType: concept
@@ -67,10 +63,10 @@ landingContent:
     links:
     - text: Nastavení konfigurace brány
       url: vpn-gateway-about-vpn-gateway-settings.md
+    - text: Skladové položky brány
+      url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
     - text: Směrování typu point-to-site
       url: vpn-gateway-about-point-to-site-routing.md
-    - text: Skladové jednotky (SKU) brány
-      url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
   - linkListType: how-to-guide
     links:
     - text: Ověření brány VPN
@@ -84,7 +80,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Ovládací prvky zabezpečení
-      url: vpn-gateway-security-controls.md
+      url: ./security-baseline.md
   - linkListType: how-to-guide
     links:
     - text: Monitorování a upozornění
@@ -95,7 +91,7 @@ landingContent:
     links:
     - text: Azure CLI
       url: /cli/azure/network/vnet-gateway
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: /powershell/module/az.network#vpn
     - text: REST
       url: /rest/api/network-gateway

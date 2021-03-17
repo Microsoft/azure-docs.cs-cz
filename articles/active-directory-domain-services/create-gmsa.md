@@ -2,7 +2,7 @@
 title: Skupinové účty spravované služby pro Azure AD Domain Services | Microsoft Docs
 description: Zjistěte, jak vytvořit skupinový účet spravované služby (gMSA) pro použití s Azure Active Directory Domain Services spravovanými doménami.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: justinha
+ms.openlocfilehash: f975d3e0e605b7c24b9fd31dc8fc78f0f37bb6b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281850"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619980"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Vytvoření skupinového účtu spravované služby (gMSA) v Azure Active Directory Domain Services
 

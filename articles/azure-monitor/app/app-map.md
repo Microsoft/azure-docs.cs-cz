@@ -3,13 +3,14 @@ title: Mapa aplikace v Azure Application Insights | Microsoft Docs
 description: Monitorování složitých topologií aplikace s mapou aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: db8c84334bfce52d34b9fadf73bb2b070fa93a70
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421293"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007104"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -33,7 +34,7 @@ Po kliknutí na možnost aktualizovat součásti mapy se mapa aktualizuje o vše
 
 Pokud jsou všechny součásti role v rámci jednoho Application Insights prostředku, tento krok zjišťování se nevyžaduje. Počáteční zatížení této aplikace bude mít všechny své součásti.
 
-![Snímek obrazovky s mapou aplikace](media/app-map/app-map-001.png)
+![Snímek obrazovky ukazuje příklad mapy aplikace.](media/app-map/app-map-001.png)
 
 Jedním z klíčových cílů tohoto prostředí je, aby bylo možné vizualizovat komplexní topologie se stovkami komponent.
 
@@ -164,10 +165,8 @@ V případě [agenta Java 3,0](./java-in-process-agent.md) se název cloudové r
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -223,6 +222,21 @@ appInsights.addTelemetryInitializer((envelope) => {
   envelope.tags["ai.cloud.roleInstance"] = "your role instance";
 });
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Pro Python se dají použít [procesory telemetrie OpenCensus Python](api-filtering-sampling.md#opencensus-python-telemetry-processors) .
+
+```python
+def callback_function(envelope):
+   envelope.tags['ai.cloud.role'] = 'new_role_name'
+   
+# AzureLogHandler
+handler.add_telemetry_processor(callback_function)
+
+# AzureExporter
+exporter.add_telemetry_processor(callback_function)
 ```
 ---
 

@@ -1,27 +1,27 @@
 ---
 title: Cenové úrovně – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje možnosti výpočtů a úložiště v Azure Database for PostgreSQL-jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 77ce6c8112e8c694b4ccb6a657b24649437d2f07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 10/14/2020
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279232"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791134"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně ve službě Azure Database for PostgreSQL – Jeden server
 
 Server Azure Database for PostgreSQL můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru PostgreSQL. Server může mít jednu nebo více databází.
 
-| Prostředek/vrstva | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Prostředek/vrstva | **Basic** | **Obecné použití** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Paměť na vCore | 2 GB | 5 GB | 10 GB |
+| Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
 | Doba uchování zálohy databáze | 7 až 35 dní | 7 až 35 dní | 7 až 35 dní |
 
@@ -29,9 +29,9 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
-| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
-| Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. K příkladům patří servery, které hostují webové, mobilní a další podnikové aplikace.|
+| Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. K příkladům patří servery, které zpracovávají data v reálném čase, a transakční nebo analytické aplikace vyžadující vysoký výkon.|
 
 Po vytvoření serveru se dá v průběhu několika sekund změnit počet virtuální jádra, generování hardwaru a cenová úroveň (s výjimkou a od úrovně Basic). Velikost úložiště můžete také nezávisle upravovat a dobu uchovávání záloh nahoru nebo dolů bez výpadků aplikací. Po vytvoření serveru nejde typ úložiště zálohy změnit. Další informace najdete v části [Scale Resources](#scale-resources) .
 
@@ -43,15 +43,15 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for PostgreSQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru PostgreSQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-| Atributy úložiště | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Atributy úložiště | **Basic** | **Obecné použití** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
+| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!NOTE]
-> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2 a Středozápadní USA.
+> Úložiště až do 16TB a 20 000 IOPS je podporováno v následujících oblastech: Austrálie – východ, Austrálie – jih, Brazílie – jih, Kanada – střed, Kanada – východ, Střed USA, Čína – východ 2, Čína – sever 2, Východní Asie, Východní USA, východní USA 1, východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Švýcarsko – sever , Švýcarsko – západ, US Gov východ, US Gov střed, US Gov indiánský, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Středozápadní USA, Západní USA a Západní USA 2.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a 6000 IOPS.
 >

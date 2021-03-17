@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fa25d07ff034cec50da515341bd9ca604ee28577
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319180"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212701"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Kurz: vytvoření účtu rozhraní API Cassandra v Azure Cosmos DB pomocí aplikace Java k ukládání dat o klíčích a hodnotách
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. K uložení dat o klíčích a hodnotách můžete použít účet rozhraní API Cassandra v Azure Cosmos DB. V tomto kurzu se dozvíte, jak pomocí aplikace v jazyce Java vytvořit účet rozhraní API Cassandra v Azure Cosmos DB, přidat databázi (označuje se také jako místo) a přidat tabulku. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) k vytvoření uživatelské databáze, která obsahuje podrobnosti, jako je ID uživatele, jméno uživatele a město uživatele.  
 
@@ -33,7 +34,7 @@ Tento kurz se zabývá následujícími úkony:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete. 
 
-* Získejte nejnovější verzi sady [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable). 
+* Získejte nejnovější verzi sady [Java Development Kit (JDK)](/java/azure/jdk/). 
 
 * [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv [Maven](https://maven.apache.org/) . 
   - Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`. 
@@ -42,7 +43,7 @@ Tento kurz se zabývá následujícími úkony:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/). 
 
-2. Vyberte **vytvořit**  >  **databáze**prostředků  >  **Azure Cosmos DB**. 
+2. Vyberte **vytvořit**  >  **databáze** prostředků  >  **Azure Cosmos DB**. 
 
 3. V podokně **nový účet** zadejte nastavení pro nový účet Azure Cosmos. 
 
@@ -51,7 +52,7 @@ Tento kurz se zabývá následujícími úkony:
    |ID   |   Zadejte jedinečný název.    | Zadejte jedinečný název, který identifikuje tento účet Azure Cosmos. <br/><br/>Vzhledem k tomu, že se váš kontaktní bod vytvoří připojením řetězce cassandra.cosmosdb.azure.com k ID, které zadáte, použijte jedinečné, ale snadno rozpoznatelné ID.         |
    |Rozhraní API    |  Cassandra   |  Rozhraní API určuje typ účtu, který se má vytvořit. <br/> Vyberte **Cassandra**, protože v tomto článku vytvoříte databázi se sloupcem ve světě, na kterou se dá dotazovat pomocí syntaxe CQL (Cassandra Query Language).  |
    |Předplatné    |  Vaše předplatné        |  Vyberte předplatné Azure, které chcete použít pro tento účet Azure Cosmos.        |
-   |Skupina prostředků   | Zadejte název.    |  Vyberte**Vytvořit novou** a zadejte název nové skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID.    |
+   |Skupina prostředků   | Zadejte název.    |  Vyberte **Vytvořit novou** a zadejte název nové skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID.    |
    |Umístění    |  Vyberte oblast nejbližší vašim uživatelům.    |  Vyberte geografické umístění, ve kterém chcete účet Azure Cosmos hostovat. Použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.    |
 
    :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Vytvoření účtu pomocí portálu":::
@@ -91,21 +92,21 @@ Pomocí následujících kroků sestavíte ukázku od začátku:
  
 2. Najděte složku `cassandra-demo`. Pomocí textového editoru otevřete soubor `pom.xml`, který byl vygenerován. 
 
-   Přidejte závislosti Cassandra a sestavování modulů plug-in vyžadovaných vaším projektem, jak je znázorněno v souboru [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) .  
+   Přidejte závislosti Cassandra a sestavování modulů plug-in vyžadovaných vaším projektem, jak je znázorněno v souboru [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) .  
 
 3. Ve složce `cassandra-demo\src\main` vytvořte novou složku s názvem `resources`.  Ve složce prostředků přidejte soubory config.properties a log4j.properties:
 
-   - V souboru [config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) se ukládá koncový bod připojení a hodnoty klíče rozhraní API Cassandra účtu. 
+   - V souboru [config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) se ukládá koncový bod připojení a hodnoty klíče rozhraní API Cassandra účtu. 
    
-   - Soubor [log4j. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) definuje úroveň protokolování potřebný pro interakci s rozhraní API Cassandra.  
+   - Soubor [log4j. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) definuje úroveň protokolování potřebný pro interakci s rozhraní API Cassandra.  
 
 4. Přejděte do `src/main/java/com/azure/cosmosdb/cassandra/` složky. Ve složce cassandra vytvořte další složku s názvem `utils`. Nová složka ukládá užitkové třídy potřebné pro připojení k účtu rozhraní API Cassandra. 
 
-   Přidejte třídu [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) k vytvoření clusteru a k otvírání a zavírání relací Cassandra. Cluster se připojí k účtu rozhraní API Cassandra v Azure Cosmos DB a vrátí relaci pro přístup. Pomocí třídy [Konfigurace](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) si přečtěte informace o připojovacím řetězci ze souboru config.properties. 
+   Přidejte třídu [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) k vytvoření clusteru a k otvírání a zavírání relací Cassandra. Cluster se připojí k účtu rozhraní API Cassandra v Azure Cosmos DB a vrátí relaci pro přístup. Pomocí třídy [Konfigurace](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) si přečtěte informace o připojovacím řetězci ze souboru config.properties. 
 
 5. Ukázka Java vytvoří databázi s informacemi o uživateli, jako je uživatelské jméno, ID uživatele a město uživatele. Budete muset definovat metody get a set pro přístup k podrobnostem o uživateli v hlavní funkci.
  
-   Ve složce vytvořte třídu [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) `src/main/java/com/azure/cosmosdb/cassandra/` s metodami Get a set. 
+   Ve složce vytvořte třídu [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) `src/main/java/com/azure/cosmosdb/cassandra/` s metodami Get a set. 
 
 ## <a name="add-a-database-and-a-table"></a>Přidání databáze a tabulky  
 

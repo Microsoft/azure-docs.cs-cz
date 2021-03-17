@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042815"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071677"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -34,17 +34,19 @@ V rámci digitálních vláken Azure definujete digitální entity, které repre
 
 Tyto definice modelu si můžete představit jako specializované SLOVNÍEK pro popis vaší firmy. V případě řešení pro správu budovy můžete například definovat modely, jako je "budova", "patra" a "výtah". Pak můžete vytvořit **digitální vlákna** na základě těchto modelů, které reprezentují konkrétní prostředí.
 
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
+
 Modely jsou definovány v jazyce podobném formátu JSON, který se nazývá [Digital DTDL (digitální vlákna)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md), a popisují vlákna z pohledu jejich vlastností stavu, událostí telemetrie, příkazů, komponent a vztahů.
 * Modely definují sémantické **vztahy** mezi vašimi entitami, abyste mohli připojit své vlákna ke znalostnímu grafu, který odráží jejich interakce. Modely si můžete představit jako podstatná jména v popisu svého světa a vztahy jako slovesa.
 * Můžete také specializovat vlákna pomocí dědičnosti modelu. Jeden model může dědit z jiného modelu.
 
-DTDL se používá pro datové modely v jiných službách Azure IoT, včetně služby [PnP (IoT technologie Plug and Play)](../iot-pnp/overview-iot-plug-and-play.md) a [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md). Díky tomu můžete zajistit, aby řešení digitálních vláken Azure bylo propojené a kompatibilní s jinými částmi ekosystému Azure.
+DTDL se používá pro datové modely v jiných službách Azure IoT, včetně služby [PnP (IoT technologie Plug and Play)](../iot-pnp/overview-iot-plug-and-play.md) a [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Díky tomu můžete zajistit, aby řešení digitálních vláken Azure bylo propojené a kompatibilní s jinými částmi ekosystému Azure.
 
-### <a name="live-execution-environment"></a>Prostředí pro spuštění v reálném čase
+### <a name="live-execution-environment"></a>Živé spouštěcí prostředí
 
 Digitální modely v rámci digitálních vláken Azure jsou živé a aktuální reprezentace reálného světa. Pomocí vztahů ve vlastních DTDL modelech spojíte vlákna do **živého grafu** představujícího vaše prostředí.
 
-Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
+Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
 Tady je přehled toho, jak vypadá ukázková vizualizace:
 
@@ -52,7 +54,7 @@ Tady je přehled toho, jak vypadá ukázková vizualizace:
 
 Digitální vlákna Azure poskytuje bohatý **systém událostí** , který umožňuje zajistit, aby graf aktuální se zpracováním dat a obchodní logikou. Můžete propojit externí výpočetní prostředky, jako je [Azure Functions](../azure-functions/functions-overview.md), aby se zpracování těchto dat mohlo řídit flexibilním, přizpůsobeným způsobem.
 
-Přehledy můžete také extrahovat z prostředí pro spouštění v reálném čase pomocí výkonného **rozhraní API pro dotazy**Azure Digital revláken. Rozhraní API vám umožní dotazovat se s bohatou vyhledávacími podmínkami, včetně hodnot vlastností, vztahů, vlastností vztahu, informací o modelu a dalších. Můžete také kombinovat dotazy a shromažďovat širokou škálu přehledů o vašem prostředí a odpovídání na vlastní otázky, které jsou pro vás důležité.
+Přehledy můžete také extrahovat z prostředí pro spouštění v reálném čase pomocí výkonného **rozhraní API pro dotazy** Azure Digital revláken. Rozhraní API vám umožní dotazovat se s bohatou vyhledávacími podmínkami, včetně hodnot vlastností, vztahů, vlastností vztahu, informací o modelu a dalších. Můžete také kombinovat dotazy a shromažďovat širokou škálu přehledů o vašem prostředí a odpovídání na vlastní otázky, které jsou pro vás důležité.
 
 ### <a name="input-from-iot-and-business-systems"></a>Vstup z IoT a obchodních systémů
 
@@ -67,11 +69,11 @@ Můžete také řídit digitální vlákna Azure z jiných zdrojů dat pomocí r
 Data v modelu digitálních vláken Azure je možné směrovat do navazujících služeb Azure za účelem dalších analýz nebo úložiště. Tato akce je k dispozici prostřednictvím **tras událostí**, které používají [centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) k řízení požadovaných toků dat.
 
 Mezi trasy událostí můžete dělat tyto věci:
-* Ukládání dat digitálních vláken Azure v [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
-* Analýza dat digitálních dat Azure pomocí [Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)nebo jiných nástrojů Microsoft Data Analytics
+* Ukládání dat Azure Digital Twins v [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
+* Analýza dat Azure Digital Twins pomocí [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) nebo jiných nástrojů Microsoft pro analýzu dat
 * Integrace větších pracovních postupů s Logic Apps
 * Připojení digitálních vláken Azure k Time Series Insights ke sledování historie časových řad každého vlákna
-* Zarovnání modelu časové řady v Time Series Insights se zdrojem v rámci digitálních vláken Azure
+* Sladění modelu Time Series v Time Series Insights se zdrojem v rámci Azure Digital Twins
 
 To je jiný způsob, jakým se může digitální vlákna Azure připojit k většímu řešení a podporovat vaše vlastní potřeby pro pokračování práce s těmito přehledy.
 
@@ -84,26 +86,18 @@ Kompletní řešení využívající digitální vlákna Azure může obsahovat 
 * Jedna nebo více klientských aplikací, které zanášejí instanci digitálního vlákna Azure pomocí konfigurace modelů, vytváření topologie a extrahování přehledů z vytvářených grafů.
 * Jeden nebo více externích výpočetních prostředků pro zpracování událostí generovaných pomocí digitálních vláken Azure nebo propojených zdrojů dat, jako jsou zařízení. Jeden běžný způsob, jak zajistit výpočetní prostředky, je prostřednictvím [Azure Functions](../azure-functions/functions-overview.md).
 * IoT Hub, který poskytuje možnosti správy zařízení a datových proudů IoT.
-* Služby pro příjem dat, jako je například integrace pracovního postupu (například [Logic Apps](../logic-apps/logic-apps-overview.md), studené úložiště, integrace časových řad nebo analýzy). 
+* Služby pro příjem dat, jako je například integrace pracovního postupu (například [Logic Apps](../logic-apps/logic-apps-overview.md), studené úložiště, integrace časových řad nebo analýza).
 
 Následující diagram znázorňuje, kde se digitální vlákna Azure nachází v kontextu většího řešení Azure IoT.
 
 :::image type="content" source="media/overview/solution-context.png" alt-text="Diagram znázorňující vstupní zdroje, výstupní služby a obousměrnou komunikaci s klientskými aplikacemi i s externími výpočetními prostředky." border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>Omezení služby ve verzi Public Preview
+## <a name="service-limits"></a>Omezení služby
 
-> [!IMPORTANT]
-> Digitální vlákna Azure je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v tématu [*doplňujících podmínek použití pro Microsoft Azure*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
-Seznam omezení digitálních vláken Azure v rámci veřejné verze Preview najdete v tématu [*referenční informace: omezení služby Public Preview*](reference-service-limits.md).
+Seznam omezení digitálních vláken Azure najdete v tématu [*omezení služby digitálních vláken Azure*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste pracovali s předchozí verzí Preview digitálních vláken Azure, přečtěte si, co se změnilo:
-* [*Přehled: rozdíly z předchozí verze*](overview-differences.md)
+* Podrobně se na práci s digitálními podmnožinami Azure v rychlém startu: [*rychlý Start: Prozkoumejte ukázkový scénář*](quickstart-adt-explorer.md).
 
-Nebo si pokračujte a podrobněi se s využitím digitálních vláken Azure pomocí prvního kurzu:
-
-> [!div class="nextstepaction"]
-> [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
+* Nebo začněte číst informace o konceptech digitálních vláken Azure s [*Koncepty: vlastní modely*](concepts-models.md).

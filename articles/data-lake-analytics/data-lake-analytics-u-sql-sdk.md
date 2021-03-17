@@ -1,18 +1,17 @@
 ---
 title: Místní spuštění úloh U-SQL – Azure Data Lake sadu U-SQL SDK
 description: Naučte se spouštět a testovat úlohy U-SQL místně pomocí příkazového řádku a programovacích rozhraní na místní pracovní stanici.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132411"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215531"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
 
@@ -35,7 +34,7 @@ Data Lake SDK U-SQL vyžaduje následující závislosti:
 
     ![Data Lake Tools for Visual Studio Local-run Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Nainstalovat [Data Lake nástroje pro Visual Studio](https://aka.ms/adltoolsvs). Předbalený Visual C++ a soubory Windows SDK můžete najít na adrese`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+  - Nainstalovat [Data Lake nástroje pro Visual Studio](https://aka.ms/adltoolsvs). Předbalený Visual C++ a soubory Windows SDK můžete najít na adrese `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
 
     V tomto případě místní kompilátor U-SQL nemůže závislosti automaticky najít. Je nutné zadat cestu k CppSDK. Soubory můžete buď zkopírovat do jiného umístění, nebo je použít tak, jak jsou.
 
@@ -143,18 +142,18 @@ Níže jsou uvedené nepovinné argumenty pro **běh**:
 
 |Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
-|– CodeBehind|Nepravda|Skript obsahuje kód. cs za|
+|– CodeBehind|Ne|Skript obsahuje kód. cs za|
 |-CppSDK| |Adresář CppSDK|
 |– Dataroot| Proměnná prostředí dataroot|Dataroot pro místní spuštění, výchozí pro proměnnou prostředí ' LOCALRUN_DATAROOT '|
 |– Zpráva| |Vypsat zprávy v konzole nástroje do souboru|
 |– Paralelní|1|Spustit plán se zadaným paralelismu|
 |– Odkazy| |Seznam cest k dodatečným referenčním sestavením nebo datovým souborům kódu, které jsou oddělené znakem '; '|
-|-UdoRedirect|Nepravda|Generovat konfiguraci přesměrování Udo sestavení|
+|-UdoRedirect|Ne|Generovat konfiguraci přesměrování Udo sestavení|
 |-UseDatabase|master|Databáze, která se má použít pro kód za dočasnou registraci sestavení|
-|– Verbose|Nepravda|Zobrazit podrobné výstupy z modulu runtime|
+|– Verbose|Ne|Zobrazit podrobné výstupy z modulu runtime|
 |-WorkDir|Aktuální adresář|Adresář pro použití a výstupy kompilátoru|
 |-RunScopeCEP|0|Režim ScopeCEP, který se má použít|
-|-ScopeCEPTempPath|názvem|Dočasná cesta, která se má použít pro streamovaná data|
+|-ScopeCEPTempPath|temp|Dočasná cesta, která se má použít pro streamovaná data|
 |-OptFlags| |Čárkami oddělený seznam příznaků Optimalizátoru|
 
 Tady je příklad:

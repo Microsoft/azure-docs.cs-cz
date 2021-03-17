@@ -8,6 +8,7 @@
         - name: Co je Azure HDInsight?
           href: ./hdinsight-overview.md
     - name: Kurzy
+      expanded: true
       items:
         - name: Vytváření clusterů HDInsight
           href: ./hdinsight-hadoop-provision-linux-clusters.md
@@ -39,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Koncepty
       items:
-        - name: Komponenty Apache ve službě HDInsight
-          href: ./hdinsight-component-versioning.md
+        - name: Správa verzí
+          items:
+            - name: Úvod k verzím
+              href: ./hdinsight-overview-versioning.md
+            - name: Verze HDInsight
+              href: ./hdinsight-component-versioning.md
+            - name: 'HDInsight verze 4,0'
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight verze 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: Vyřazené verze HDInsight
+              href: ./hdinsight-retired-versions.md
         - name: Balíček zabezpečení podniku
           href: ./enterprise-security-package.md
         - name: Poznámky k verzi Hortonworks
@@ -63,8 +74,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: Osvědčené postupy správy clusterů
           href: ./cluster-management-best-practices.md
-        - name: Dostupnost a spolehlivost
-          href: ./hdinsight-high-availability-linux.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Přehled provozní kontinuity
+              href: hdinsight-business-continuity.md
+            - name: Architektura provozní kontinuity
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: Případová studie vysoké dostupnosti
+              href: ./hdinsight-high-availability-case-study.md
         - name: Principy spravovaných identit
           href: ./hdinsight-managed-identities.md
         - name: Porovnání možností úložiště
@@ -99,12 +116,16 @@
               iconUrl: null
         - name: Použití úložiště clusteru
           items:
-            - name: S využitím Azure Storage
+            - name: Použití služby Azure Storage
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: S využitím služby Azure Data Lake Storage Gen2
+            - name: Použití služby Azure Data Lake Storage Gen2
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: S využitím služby Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Použití služby Data Lake Storage Gen2 na portálu
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: Použití služby Data Lake Storage Gen2 s využitím Azure CLI
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: Použití služby Azure Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: Rozšíření clusterů
           items:
             - name: Instalace aplikací HDInsight
@@ -126,7 +147,7 @@
                 - name: Instalace vlastních aplikací
                   href: hdinsight-apps-install-custom-applications.md
                 - name: Použití REST k instalací aplikací
-                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                  href: /rest/api/hdinsight/hdinsight-application
                 - name: Publikování aplikací HDInsight na Azure Marketplace
                   href: hdinsight-apps-publish-applications.md
         - name: Zabezpečení
@@ -252,11 +273,11 @@
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: SDK pro .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/hdinsight
         - name: SDK pro Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
+          href: /python/api/overview/azure/hdinsight
         - name: SDK pro Javu
-          href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
+          href: /java/api/overview/azure/hdinsight
         - name: SDK pro Go
           href: ./hdinsight-go-sdk-overview.md
         - name: .NET (Apache HBase)
@@ -267,6 +288,8 @@
           href: /rest/api/hdinsightspark/
         - name: Šablona Resource Manageru
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Integrované služby Azure Policy
+          href: ./policy-reference.md
     - name: Zdroje a prostředky
       items:
         - name: Vydání
@@ -290,7 +313,7 @@
         - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
         - name: Získání pomoci na stránce s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
+          href: /answers/topics/azure-hdinsight.html
         - name: Cenová kalkulačka
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Nástroje Windows pro HDInsight
@@ -344,6 +367,8 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: Migrace na Spark 2.3 nebo 2.4
           href: ./spark/migrate-versions.md
+        - name: Aktualizace .NET pro Apache Spark na 1.0
+          href: ./spark/spark-dotnet-version-update.md
     - name: Návody
       items:
         - name: Použití nástrojů
@@ -392,24 +417,28 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: Spravovat
           items:
+            - name: Správa závislostí
+              items:
+                - name: Správa závislostí sparkových aplikací
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: Zabezpečená správa závislostí Jar
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Zabezpečená správa prostředí Pythonu
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: Správa prostředků clusteru
               href: ./spark/apache-spark-resource-manager.md
             - name: Správa aplikací Apache Spark s využitím rozšířeného serveru historie
               href: ./spark/apache-azure-spark-history-server.md
             - name: Povolení ukládání do mezipaměti s využitím IO Cache
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Správa závislostí Jar
-              href: ./spark/manage-jar-dependency.md
             - name: Použití poznámkových bloků s Apache Sparkem
               items:
                 - name: Použití místní aplikace Jupyter Notebook
                   href: ./spark/apache-spark-jupyter-notebook-install-locally.md
-                - name: Jádra aplikace Jupyter Notebook
+                - name: Jádra aplikací Jupyter Notebook
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Použití externích balíčků s Jupyterem s využitím magických příkazů v buňkách
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Použití poznámkových bloků Apache Zeppelin
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: Použití s ostatními službami Azure
@@ -418,13 +447,11 @@
                   href: ./spark/apache-spark-use-with-data-lake-store.md
                 - name: Připojení k Azure SQL Database
                   href: ./spark/apache-spark-connect-to-sql-database.md
-                - name: Implementace architektury lambda pomocí Apache Sparku a Cosmos DB
-                  href: ../cosmos-db/lambda-architecture.md
                 - name: Spuštění úloh Azure ML pomocí AutoML
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Řešení potíží
           items:
-            - name: Nejde vytvořit poznámkový blok Jupyter
+            - name: Nejde vytvořit Jupyter Notebook
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: Výjimka OutOfMemoryError
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
@@ -487,7 +514,7 @@
           items:
             - name: Použití MapReduce s Apache Hadoopem
               items:
-                - name: Přehled MapReduce
+                - name: Použití MapReduce
                   href: ./hadoop/hdinsight-use-mapreduce.md
                 - name: Použití SSH
                   href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
@@ -632,6 +659,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Použití Apache Kafka se službou IoT Hub
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Registr schémat Confluent
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: Vytváření streamovacích kanálů
               items:
                 - name: 'Apache Spark, Apache Kafka a Azure Cosmos DB'
@@ -673,6 +702,10 @@
       items:
         - name: Použití Apache HBase v HDInsightu
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: Koncepty
+      items:
+        - name: Optimalizace podle doporučení poradce
+          href: ./hbase/apache-hbase-advisor.md
     - name: Návody
       items:
         - name: Vývoj
@@ -752,6 +785,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Pokyny pro změnu velikosti
           href: ./interactive-query/sizing-guidelines.md
+        - name: Replikace podregistru
+          href: ./interactive-query/apache-hive-replication.md
     - name: Návody
       items:
         - name: Vývoj
@@ -792,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Spravovat
           items:
+            - name: Kopírování tabulek podregistru mezi účty úložiště
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Migrace výchozích metastore Hive do externích metastore ve službě Azure HDInsight
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Migrace úloh Hive na HDInsight 4.0
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Optimalizace dotazů Apache Hive
@@ -828,6 +867,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Protokoly Apache Hive zabírající veškeré místo na disku na hlavním uzlu
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: Možnosti zabezpečení pro Hive
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: Služby ML
   items:
     - name: Přehled
@@ -937,6 +978,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: Architektura virtuálních sítí HDInsight
           href: ./hdinsight-virtual-network-architecture.md
+        - name: Private Link
+          href: ./hdinsight-private-link.md
         - name: Protokol TLS (Transport Layer Security)
           href: ./transport-layer-security.md
         - name: Plánování virtuálních sítí pro HDInsight
@@ -949,6 +992,8 @@
           href: ./disk-encryption.md
         - name: Synchronizace LDAP v Rangeru a Apache Ambari
           href: ./domain-joined/ldap-sync.md
+        - name: Dvojité šifrování během přenosu
+          href: ./domain-joined/encryption-in-transit.md
     - name: Návody
       items:
         - name: Použití zprostředkovatele ID pro správu přihlašovacích údajů

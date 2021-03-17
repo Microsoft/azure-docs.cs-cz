@@ -1,99 +1,73 @@
 ---
 title: Architektura zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770896"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096186"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
 
-Tento článek popisuje architekturu a procesy zařízení Azure Migrate. Zařízení Azure Migrate je odlehčené zařízení, které je nasazené místně, ke zjištění virtuálních počítačů a fyzických serverů pro migraci do Azure. 
+Tento článek popisuje architekturu a procesy zařízení Azure Migrate. Zařízení Azure Migrate je odlehčené zařízení, které je nasazené místně, ke zjištění virtuálních počítačů a fyzických serverů pro migraci do Azure.
 
 ## <a name="deployment-scenarios"></a>Scénáře nasazení
 
 Zařízení Azure Migrate se používá v následujících scénářích.
 
-**Scénář** | **Nástroj** | **Použití** 
+**Scénář** | **Nástroj** | **Používá se pro** 
 --- | --- | ---
-**Posouzení virtuálního počítače VMware** | Azure Migrate: posouzení serveru | Vyhledejte virtuální počítače VMware.<br/><br/> Objevte aplikace a závislosti počítačů.<br/><br/> Shromažďovat metadata počítačů a metadata o výkonu a odesílat je do Azure.
-**Migrace virtuálních počítačů VMware (bez agentů)** | Azure Migrate: Migrace serveru | Zjistit virtuální počítače VMware<br/><br/>  Replikace virtuálních počítačů VMware s [migrací bez agentů](server-migrate-overview.md)
-**Posouzení virtuálního počítače Hyper-V** | Azure Migrate: posouzení serveru | Objevte virtuální počítače Hyper-V.<br/><br/> Shromažďovat metadata počítačů a metadata o výkonu a odesílat je do Azure.
-**Fyzický počítač** |  Azure Migrate: posouzení serveru |  Objevte fyzické servery.<br/><br/> Shromažďovat metadata počítačů a metadata o výkonu a odesílat je do Azure.
+**Zjišťování a posouzení serverů běžících v prostředí VMware** | Azure Migrate: posouzení serveru | Zjišťování serverů běžících ve vašem prostředí VMware<br/><br/> Proveďte zjišťování nainstalovaných aplikací, analýzu závislostí bez agentů a zjišťování instancí a databází SQL Server.<br/><br/> Shromažďovat metadata o konfiguraci serveru a výkonu pro posouzení.
+**Migrace serverů se systémem v prostředí VMware bez agentů** | Azure Migrate: Migrace serveru | Objevte servery běžící v prostředí VMware.<br/><br/> Replikace serverů bez instalace agentů.
+**Zjišťování a posouzení serverů, které běží v prostředí Hyper-V** | Azure Migrate: posouzení serveru | Objevte servery, které jsou spuštěné ve vašem prostředí Hyper-V.<br/><br/> Shromažďovat metadata o konfiguraci serveru a výkonu pro posouzení.
+**Zjišťování a hodnocení fyzických nebo virtualizovaných serverů v místním prostředí** |  Azure Migrate: posouzení serveru |  Objevte fyzické nebo virtualizované servery místně.<br/><br/> Shromažďovat metadata o konfiguraci serveru a výkonu pro posouzení.
 
-## <a name="appliance-components"></a>Součásti zařízení
+## <a name="deployment-methods"></a>Metody nasazení
 
-Zařízení má řadu součástí.
+Zařízení je možné nasadit pomocí několika metod:
 
-- **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.
-- **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure. 
-- **Agent hodnocení**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.
-- **Agent DRA**: orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi replikovanými počítači a Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.
-- **Brána**: odesílá replikovaná data do Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.
-- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
+- Zařízení se dá nasadit pomocí šablony pro servery, které běží v prostředí VMware nebo Hyper-V ([Šablona vajíček pro VMware](how-to-set-up-appliance-vmware.md) nebo [VHD pro Hyper-v](how-to-set-up-appliance-hyper-v.md)).
+- Pokud nechcete používat šablonu, můžete zařízení nasadit pro prostředí VMware nebo Hyper-V pomocí [skriptu instalačního programu PowerShell](deploy-appliance-script.md).
+- V Azure Government byste zařízení měli nasadit pomocí skriptu instalačního programu PowerShell. [Tady](deploy-appliance-script-government.md)najdete postup nasazení.
+- U fyzických nebo virtualizovaných serverů v místním prostředí nebo v jakémkoli jiném cloudu vždy nasadíte zařízení pomocí skriptu instalačního programu PowerShell. [Tady](how-to-set-up-appliance-physical.md)najdete postup nasazení.
+- Odkazy ke stažení jsou k dispozici v následujících tabulkách.
 
+## <a name="appliance-services"></a>Služby zařízení
 
+Zařízení má následující služby:
 
-## <a name="appliance-deployment"></a>Nasazení zařízení
+- **Správce konfigurace zařízení**: Jedná se o webovou aplikaci, která se dá nakonfigurovat se zdrojovými podrobnostmi pro zahájení zjišťování a posouzení serverů. 
+- **Agent zjišťování**: Agent shromažďuje metadata konfigurace serveru, která lze použít k vytvoření jako místní hodnocení.
+- **Agent hodnocení**: Agent shromažďuje metadata výkonu serveru, která lze použít k vytvoření posouzení na základě výkonu.
+- **Služba automatické aktualizace**: služba udržuje všechny agenty spuštěné v zařízení v aktuálním stavu. Automaticky se spustí každých 24 hodin.
+- **Agent DRA**: orchestruje replikaci serveru a koordinuje komunikaci mezi replikovanými servery a Azure. Používá se jenom při replikaci serverů do Azure pomocí migrace bez agentů.
+- **Brána**: odesílá replikovaná data do Azure. Používá se jenom při replikaci serverů do Azure pomocí migrace bez agentů.
+- **SQL Discovery and Assessment agent**: odesílá metadata konfigurace a výkonu SQL Server instancí a databází do Azure.
 
-- Zařízení Azure Migrate se dá nastavit pomocí šablony pro [Hyper-V](how-to-set-up-appliance-hyper-v.md) nebo [VMware](how-to-set-up-appliance-vmware.md) nebo pomocí instalačního programu skriptu PowerShellu pro [VMware/Hyper-v](deploy-appliance-script.md)a [fyzických serverů](how-to-set-up-appliance-physical.md). 
-- Požadavky na podporu zařízení a požadavky na nasazení jsou shrnuty v [matici podpora zařízení](migrate-appliance.md).
+> [!Note]
+> Poslední 3 služby jsou dostupné jenom v zařízení, které se používá ke zjišťování a hodnocení serverů, které běží ve vašem prostředí VMware.<br/> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
 
-
-## <a name="appliance-registration"></a>Registrace zařízení
-
-Během instalace zařízení zaregistrujete zařízení pomocí Azure Migrate a dojde k akcím shrnutým v tabulce.
-
-**Akce** | **Podrobnosti** | **Oprávnění**
---- | --- | ---
-**Registrovat zprostředkovatele zdrojů** | Tito poskytovatelé prostředků jsou zaregistrovaní v předplatném, které jste si zvolili během instalace zařízení: Microsoft. OffAzure, Microsoft. migruje a Microsoft. webtrezor.<br/><br/> Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. | Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
-**Vytvoření aplikace Azure AD – komunikace** | Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD) pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení a jejich příslušnými službami běžícími na Azure.<br/><br/> Tato aplikace nemá oprávnění k provádění Azure Resource Manager volání nebo přístupu RBAC k jakémukoli prostředku. | K vytvoření aplikace budete potřebovat [Tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps) pro Azure Migrate.
-**Vytváření aplikací Azure AD – Trezor klíčů** | Tato aplikace se vytvoří jenom pro migraci virtuálních počítačů VMware bez agenta do Azure.<br/><br/> Používá se výhradně pro přístup k trezoru klíčů vytvořenému v předplatném uživatele pro migraci bez agentů.<br/><br/> Má přístup RBAC v trezoru klíčů Azure (vytvořeném v tenantovi zákazníka) při zahájení zjišťování ze zařízení. | K vytvoření aplikace budete potřebovat [Tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) pro Azure Migrate.
-
-
-
-## <a name="collected-data"></a>Shromážděná data
-
-Data shromážděná klientem pro všechny scénáře nasazení jsou shrnuta v [matici podpora zařízení](migrate-appliance.md).
 
 ## <a name="discovery-and-collection-process"></a>Proces zjišťování a shromažďování
 
-![Architektura](./media/migrate-appliance-architecture/architecture.png)
+:::image type="content" source="./media/migrate-appliance-architecture/architecture1.png" alt-text="Architektura zařízení":::
 
-Zařízení komunikuje s vCenter servery a hostiteli nebo clustery Hyper-V pomocí následujícího procesu.
+Zařízení komunikuje se zdroji zjišťování pomocí následujícího procesu.
 
-1. **Spustit zjišťování**:
-    - Když zahájíte zjišťování na zařízení Hyper-V, komunikuje s hostiteli Hyper-V na portech WinRM 5985 (HTTP) a 5986 (HTTPS).
-    - Když spustíte zjišťování na zařízení VMware, ve výchozím nastavení komunikuje s vCenter serverem na portu TCP 443. Pokud Server vCenter naslouchá na jiném portu, můžete ho nakonfigurovat ve webové aplikaci zařízení.
-2. **Shromážděte metadata a data o výkonu**:
-    - Zařízení používá relaci model CIM (Common Information Model) (CIM) ke shromažďování dat virtuálních počítačů Hyper-V z hostitele Hyper-V na portech 5985 a 5986.
-    - Zařízení ve výchozím nastavení komunikuje s portem 443, aby mohla shromažďovat data virtuálních počítačů VMware z vCenter Server.
-3. **Odeslat data**: zařízení odesílá shromážděná data pro Azure Migrate posouzení serveru a migraci Azure Migrate serveru přes SSL port 443. Zařízení se může připojit k Azure přes Internet nebo můžete použít ExpressRoute s veřejným partnerským vztahem/Microsoftu.
-    - Pro data o výkonu zařízení shromažďuje data o využití v reálném čase.
-        - Údaje o výkonu se shromažďují každých 20 sekund pro VMware a každých 30 sekund pro Hyper-V pro každou metriku výkonu.
-        - Shromážděná data jsou zahrnuta k vytvoření jednoho datového bodu po dobu 10 minut.
-        - Hodnota maximálního využití se vybere ze všech 20/30 sekundových datových bodů a pošle se do Azure pro výpočet vyhodnocení.
-        - Na základě hodnoty percentilu uvedené ve vlastnostech posouzení (50/90/95./99) se ve vzestupném pořadí seřadí body o deseti minutách a příslušná hodnota percentilu se použije k výpočtu posouzení.
-    - U migrace serveru začne zařízení shromažďovat data virtuálních počítačů a replikuje je do Azure.
-4. **Vyhodnocení a migrace**: teď můžete z metadat shromážděných zařízením vytvořit posouzení pomocí Azure Migrate posouzení serveru. Kromě toho můžete také začít migrovat virtuální počítače VMware pomocí migrace serveru Azure Migrate pro orchestraci replikace virtuálních počítačů bez agentů.
-
-
-
-
-
-## <a name="appliance-upgrades"></a>Upgrady zařízení
-
-Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zařízení, se aktualizují. K tomu dochází automaticky, protože ve výchozím nastavení je na zařízení povolená Automatická aktualizace. Toto výchozí nastavení můžete změnit tak, aby se agenti aktualizovaly ručně.
-
-Automatickou aktualizaci vypnete v registru nastavením klíče HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" na hodnotu 0 (DWORD).
-
- 
+**Proces** | **Zařízení VMware** | **Zařízení Hyper-V** | **Fyzické zařízení**
+---|---|---|---
+**Spustit zjišťování** | Zařízení ve výchozím nastavení komunikuje s vCenter serverem na portu TCP 443. Pokud Server vCenter naslouchá na jiném portu, můžete ho nakonfigurovat ve Správci konfigurace zařízení. | Zařízení komunikuje s hostiteli Hyper-V na portu WinRM 5985 (HTTP). | Zařízení komunikuje se servery Windows prostřednictvím protokolu WinRM 5985 (HTTP) se servery Linux přes port 22 (TCP).
+**Shromažďování metadat konfigurace a výkonu** | Zařízení shromažďuje metadata serverů běžících na vCenter Server pomocí rozhraní API vSphere, a to připojením na portu 443 (výchozí port) nebo na jiném portu, na kterém naslouchá vCenter Server. | Zařízení shromažďuje metadata serverů, které běží na hostitelích Hyper-V, pomocí relace model CIM (Common Information Model) (CIM) s hostiteli na portu 5985.| Zařízení shromažďuje metadata ze serverů Windows pomocí relace model CIM (Common Information Model) (CIM) se servery na portu 5985 a ze serverů se systémem Linux pomocí připojení SSH na portu 22.
+**Odeslat data zjišťování** | Zařízení odesílá shromážděná data do Azure Migrate: vyhodnocení serveru a Azure Migrate: Migrace serveru přes SSL port 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu). | Zařízení odesílá shromážděná data do Azure Migrate: posouzení serveru přes SSL port 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu).| Zařízení odesílá shromážděná data do Azure Migrate: posouzení serveru přes SSL port 443.<br/><br/> Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu).
+**Frekvence shromažďování dat** | Metadata konfigurace se shromažďují a odesílají každých 30 minut. <br/><br/> Metadata o výkonu se shromažďují každých 20 sekund a agreguje se, aby se do Azure odesílal datový bod každých 10 minut. <br/><br/> Data inventáře softwaru se do Azure odesílají každých 12 hodin. <br/><br/> Data závislostí bez agentů se shromažďují každých 5 minut, agregovaná na zařízení a odesílaná do Azure každých 6 hodin. <br/><br/> Konfigurační data SQL Server se aktualizují jednou za 24 hodin a data o výkonu se zaznamenávají každých 30 sekund.| Metadata konfigurace se shromažďují a odesílají každých 30 minut. <br/><br/> Metadata o výkonu se shromažďují každých 30 sekund a agreguje se, aby se do Azure odesílal datový bod každých 10 minut.|  Metadata konfigurace se shromažďují a odesílají každých 30 minut. <br/><br/> Metadata o výkonu se shromažďují každých 5 minut a agreguje se, aby se do Azure odesílal datový bod každých 10 minut.
+**Posouzení a migrace** | Můžete vytvořit posouzení z metadat shromážděných zařízením pomocí Azure Migrate: nástroj Server Assessment Tool.<br/><br/>Kromě toho můžete také začít migrovat servery běžící v prostředí VMware pomocí Azure Migrate: Nástroj pro migraci serveru pro orchestraci replikace serveru bez agenta.| Můžete vytvořit posouzení z metadat shromážděných zařízením pomocí Azure Migrate: nástroj Server Assessment Tool. | Můžete vytvořit posouzení z metadat shromážděných zařízením pomocí Azure Migrate: nástroj Server Assessment Tool.
 
 ## <a name="next-steps"></a>Další kroky
 
 [Projděte si](migrate-appliance.md) matici podpora zařízení.
-

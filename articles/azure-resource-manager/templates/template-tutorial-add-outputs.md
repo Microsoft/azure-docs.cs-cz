@@ -1,21 +1,21 @@
 ---
 title: Kurz – přidání výstupů do šablony
-description: Chcete-li zjednodušit syntaxi, přidejte do šablony Azure Resource Manager výstupy.
+description: Pokud chcete zjednodušit syntaxi, přidejte do šablony Azure Resource Manager (šablonu ARM) výstupy.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c90f1ce4bc3f3f5ed91bee86bb1f6f9093876c7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 7e022822f1306a5351cef43498f00a0ac0f2ef63
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707281"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Kurz: Přidání výstupů do šablony ARM
 
-V tomto kurzu zjistíte, jak vrátit hodnotu ze šablony Azure Resource Manager (ARM). Výstupy použijete, když potřebujete hodnotu z nasazeného prostředku. Dokončení tohoto kurzu trvá **7 minut** .
+V tomto kurzu zjistíte, jak vrátit hodnotu ze šablony Azure Resource Manager (šablona ARM). Výstupy použijete, když potřebujete hodnotu z nasazeného prostředku. Dokončení tohoto kurzu trvá **7 minut** .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,17 +41,17 @@ Následující příklad zvýrazní změnu šablony pro přidání výstupní ho
 
 V některých důležitých položkách si všimněte o výstupní hodnotě, kterou jste přidali.
 
-Typ vrácené hodnoty je nastaven na **Object**, což znamená, že vrátí objekt JSON.
+Typ vrácené hodnoty je nastaven na `object` , což znamená, že vrátí objekt JSON.
 
 Pomocí [referenční](template-functions-resource.md#reference) funkce získá běhový stav účtu úložiště. Chcete-li získat běhový stav prostředku, předáte název nebo ID prostředku. V takovém případě použijete stejnou proměnnou, kterou jste použili k vytvoření názvu účtu úložiště.
 
-Nakonec vrátí vlastnost **primaryEndpoints** z účtu úložiště.
+Nakonec vrátí `primaryEndpoints` vlastnost z účtu úložiště.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
 Jste připraveni šablonu nasadit a podívat se na vrácenou hodnotu.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili `templateFile` proměnnou na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ Ve výstupu příkazu pro nasazení se zobrazí objekt podobný následujícímu
 ```
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="review-your-work"></a>Kontrola práce
 
@@ -100,7 +100,7 @@ Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co
 
 Teď se podívejme na skupinu prostředků a historii nasazení.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. V závislosti na krocích, které jste provedli, byste měli mít ve skupině prostředků aspoň jeden a možná několik účtů úložiště.

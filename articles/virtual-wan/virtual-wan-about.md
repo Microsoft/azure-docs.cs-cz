@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 641ed73f507d35d7af548d0164ef8e80979be217
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604700"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530472"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
@@ -95,7 +95,7 @@ Virtuální síť WAN umožňuje přenosové připojení mezi virtuální sítě
 
 Směrovač může mít čtyři stavy směrování: zřizování, zřizování, neúspěšné nebo žádné. **Stav směrování** je umístěný v Azure Portal tak, že přejdete na stránku virtuálního centra.
 
-* Stav **žádný** označuje, že virtuální rozbočovač nezřídil směrovač. K tomu může dojít, pokud je virtuální síť WAN typu *Basic*nebo pokud byl virtuální rozbočovač nasazen před zpřístupněním služby.
+* Stav **žádný** označuje, že virtuální rozbočovač nezřídil směrovač. K tomu může dojít, pokud je virtuální síť WAN typu *Basic* nebo pokud byl virtuální rozbočovač nasazen před zpřístupněním služby.
 * Stav **selhání** indikuje selhání při vytváření instance. Chcete-li vytvořit instanci nebo resetovat směrovač, můžete najít možnost **resetovat směrovač** tak, že přejdete na stránku Přehled virtuálního centra v Azure Portal.
 
 Každý směrovač virtuálního rozbočovače podporuje agregovanou propustnost až do 50 GB/s. Připojení mezi virtuálními síťovými připojeními předpokládá celkem 2000 úloh virtuálních počítačů v rámci všech virtuální sítě připojených k jednomu virtuálnímu rozbočovači.
@@ -124,15 +124,15 @@ Informace o umístění naleznete v článku [virtuální partneři a umístěn�
 
 Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující trasy ve směrování centra a chcete používat nové funkce, vezměte v úvahu následující skutečnosti:
 
-* **Standardní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete využívat nové funkce směrovací tabulky, počkejte prosím, než se dokončí zavedení v Azure, do dne 17 do týdne. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
+* **Standardní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal). Důrazně doporučujeme udělat krok odstranění pro všechna centra ve virtuální síti WAN.
 
-* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí zavedení v Azure, do týdne od srpna 17. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md). Důrazně doporučujeme udělat krok odstranění pro všechna centra ve virtuální síti WAN.
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>DOTAZ
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="view-the-latest-feature-updates"></a><a name="new"></a>Zobrazit nejnovější aktualizace funkcí
+## <a name="whats-new"></a><a name="new"></a>Co je nového
 
 Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější aktualizace funkcí Virtual WAN na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) .
 

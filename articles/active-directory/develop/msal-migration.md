@@ -1,7 +1,7 @@
 ---
 title: Migrace do knihovny Microsoft Authentication Library (MSAL)
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o rozdílech mezi Microsoft Authentication Library (MSAL) a Azure AD Authentication Library (ADAL) a postupem migrace na MSAL.
+description: Přečtěte si o rozdílech mezi knihovnou Microsoft Authentication Library (MSAL) a službou Azure AD Authentication Library (ADAL) a postupem migrace na MSAL.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 6517cdd7aafa7ae2fe351b349e62a66104469dcd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224352"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653775"
 ---
-# <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Migrace aplikací do knihovny Microsoft Authentication Library (MSAL)
+# <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Migrace aplikací do knihovny Microsoft Authentication Library (MSAL)
 
 Mnoho vývojářů sestavilo a nasadilo aplikace pomocí knihovny Azure Active Directory Authentication Library (ADAL). Pro ověřování a autorizaci entit Azure AD teď doporučujeme použít Microsoft Authentication Library (MSAL).
 
@@ -64,7 +64,7 @@ __Otázka: Proč investovat do MSAL?__
 Odpověď: MSAL obsahuje nové funkce, které nejsou v ADAL, včetně přírůstkového souhlasu, jednotné přihlašování a správy mezipaměti tokenů. I na rozdíl od ADAL bude MSAL nadále získávat opravy zabezpečení i po 30. června 2022. [Další informace](msal-overview.md).
 
 __Otázka: budou společnosti Microsoft aktualizovat vlastní aplikace na MSAL?__  
-Yes. Microsoft se v procesu migrace svých aplikací do MSAL ukončí konečným termínem podpory a zajišťuje tak výhody průběžných vylepšení zabezpečení a funkcí MSAL.
+Ano. Microsoft se v procesu migrace svých aplikací do MSAL ukončí konečným termínem podpory a zajišťuje tak výhody průběžných vylepšení zabezpečení a funkcí MSAL.
 
 __Otázka: budete vydávat nástroj, který mi pomůže přesunout moje aplikace z ADAL do MSAL?__  
 Odpověď: Ne. Rozdíly mezi knihovnami by vyžadovaly vyhradit prostředky pro vývoj a údržbu nástroje, který by jinak strávil vylepšení MSAL. Představme si ale předchozí sadu průvodců migrací, které vám pomůžou udělat požadované změny v aplikaci.
@@ -73,7 +73,7 @@ __Otázka: jak MSAL pracuje s AD FS?__
 Odpověď: MSAL.NET podporuje určité scénáře ověřování proti AD FS 2019. Pokud vaše aplikace potřebuje získat tokeny přímo z dřívější verze AD FS, měli byste zůstat na ADAL. [Další informace](msal-net-adfs-support.md).
 
 __Otázka: Návody získat pomoc při migraci své aplikace?__  
-Odpověď: viz část [pokyny k migraci](#migration-guidance) v tomto článku. Pokud po přečtení příručky pro platformu vaší aplikace máte další otázky, můžete na Stack Overflow odeslat značku `[adal-deprecation]` nebo otevřít problém v úložišti GitHub knihovny. Odkazy na úložiště každé knihovny najdete v části [jazyky a architektury](msal-overview.md#languages-and-frameworks) v článku MSAL Overview.
+Odpověď: viz část [pokyny k migraci](#migration-guidance) v tomto článku. Pokud po přečtení příručky pro platformu vaší aplikace máte další otázky, můžete na [Microsoft Q&](/answers/topics/azure-ad-adal-deprecation.html) odeslat značku `[azure-ad-adal-deprecation]` nebo otevřít problém v úložišti GitHub knihovny. Odkazy na úložiště každé knihovny najdete v části [jazyky a architektury](msal-overview.md#languages-and-frameworks) v článku MSAL Overview.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037095"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329448"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -26,11 +26,11 @@ Tento článek popisuje základní kroky pro rozšíření kapacity úložiště
 > * Vytvoření skupiny synchronizace a koncového bodu cloudu
 > * Vytvoření koncového bodu serveru
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -186,7 +186,7 @@ Pak na virtuálním počítači s Windows serverem 2016 Datacenter nainstalujte 
    > [!NOTE]
    > Pokud máte verzi NuGet, která je starší než 2.8.5.201, budete vyzváni ke stažení a instalaci nejnovější verze NuGetu.
 
-   Ve výchozím nastavení není Galerie prostředí PowerShell nakonfigurovaná jako důvěryhodné úložiště pro PowerShellGet. Při prvním použití PSGallery se zobrazí následující výzva:
+   Ve výchozím nastavení není Galerie prostředí PowerShell pro PowerShellGet nakonfigurovaná jako důvěryhodné úložiště. Při prvním použití PSGallery se zobrazí následující výzva:
 
    ```output
    Untrusted repository
@@ -241,7 +241,7 @@ Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje 
 1. Vyberte možnost **po**  >  **spuštění**  >  **otevřít**.
 1. Pokud jste to ještě neudělali, zavřete okno PowerShellu.
 1. V **Průvodci instalací agenta synchronizace úložiště** přijměte výchozí hodnoty.
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 1. Vyberte **Dokončit**.
 
 Na virtuální počítač s Windows Serverem 2016 Datacenter jste nasadili službu synchronizace Azure a nainstalovali agenta. Teď je potřeba virtuální počítač zaregistrovat ve službě synchronizace úložiště.
@@ -250,7 +250,7 @@ Na virtuální počítač s Windows Serverem 2016 Datacenter jste nasadili služ
 
 Registrace Windows serveru pomocí služby synchronizace úložiště vytvoří vztah důvěryhodnosti mezi serverem (nebo clusterem) a službou synchronizace úložiště. Server lze registrovat pouze do jedné služby synchronizace úložiště. Může se synchronizovat s ostatními servery a sdílenými složkami Azure, které jsou přidružené k této službě synchronizace úložiště.
 
-Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Azure File Sync otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění souboru:`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Azure File Sync otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění souboru: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. Když se na virtuálním počítači otevře uživatelské rozhraní pro registraci serveru, vyberte **OK**.
 1. Začněte tím, že vyberete **přihlášení** .
@@ -314,6 +314,8 @@ Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a Windows Ser
 ![Úspěšně synchronizovaná služba Azure Storage](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit prostředky, které jste vytvořili v tomto kurzu, odeberte nejprve koncové body ze služby synchronizace úložiště. Pak zrušte registraci serveru u služby synchronizace úložiště, odeberte skupiny synchronizace a odstraňte synchronizační službu.
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 

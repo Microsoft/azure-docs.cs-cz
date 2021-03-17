@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 329e09221467c2602355e091876c95f305db3578
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653609"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673736"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -33,6 +33,8 @@ Přeoznačení jednotek používaných v rámci tohoto článku. Dodavatelé ve�
 Microsoft Azure úložiště HDD úrovně Standard, SSD úrovně Standard, Azure Premium Storage a Ultra disk udržuje základní virtuální pevný disk (s operačním systémem) a disky s připojenými daty virtuálních počítačů ve třech kopiích na třech různých uzlech úložiště. Převzetí služeb při selhání jinou replikou a osazení nové repliky v případě selhání uzlu úložiště je transparentní. V důsledku tohoto redundance **není nutné na** více discích Azure použít žádný druh záložní vrstvy úložiště. Tento fakt se nazývá Local redundantní úložiště (LRS). LRS je výchozí pro tyto typy úložiště v Azure. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) poskytuje dostatečnou redundanci, aby bylo možné dosáhnout stejného SLA jako jiné nativní úložiště Azure.
 
 Existuje několik dalších metod redundance, které jsou popsány v článku [Azure Storage replikaci](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , která platí pro některé z různých typů úložiště, které Azure nabízí. 
+
+Pamatujte na to, že různé typy úložiště Azure mají vliv na SLA dostupnosti jediného virtuálního počítače, který je vydaný ve [smlouvě SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines).
 
 ### <a name="azure-managed-disks"></a>Azure Managed disks
 
@@ -130,7 +132,6 @@ Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžad
 - Propustnost vstupně-výstupních operací pro toto úložiště není lineární pro velikost kategorie disku. Pro menší disky, jako je kategorie mezi 65 GiB a 128 GiB kapacita, je propustnost kolem 780KB/GiB. Vzhledem k tomu, že pro extrémní velké disky, jako je 32 767 GiB disk, je propustnost kolem 28KB/GiB
 - VSTUPNĚ-výstupní operace a SLA propustnosti nelze změnit, aniž by došlo ke změně kapacity disku.
 
-Azure má smlouvu SLA pro virtuální počítače s jednou instancí z 99,9%, která je vázaná na využívání služby Azure Premium Storage nebo Azure Ultra disk Storage. Smlouva SLA je dokumentována v části [SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Aby bylo možné dodržovat tuto jednu smlouvu SLA pro jeden virtuální počítač, musí být na základním disku VHD i na **všech** připojených discích buď Azure Premium Storage, nebo Azure Ultra disk Storage.
 
 Matrice schopností pro úlohu SAP vypadá takto:
 
@@ -162,7 +163,7 @@ Azure Premium Storage nesplňuje SAP HANA klíčových ukazatelů výkonu úlož
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Funkce Azure Burst pro Premium Storage
-Pro disky Azure Premium Storage menší nebo rovny 512 GiB v kapacitě se nabízí funkce shlukování. Přesný způsob, jak funguje shlukování disku, je popsaný v článku o rozložení [disku na disk](../../linux/disk-bursting.md). Po přečtení článku rozumíte konceptu časově rozlišených vstupně-výstupních operací a propustnosti v časech, kdy je zatížení v/v pod nominálními IOPS a propustností disků (podrobnosti o nominální propustnosti najdete v tématu [ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/)). Chystáte se rozlišit rozdíl mezi vstupně-výstupními operacemi a propustností mezi aktuálním využitím a jmenovitými hodnotami disku. Počet shluků je omezen na maximálně 30 minut.
+Pro disky Azure Premium Storage menší nebo rovny 512 GiB v kapacitě se nabízí funkce shlukování. Přesný způsob, jak funguje shlukování disku, je popsaný v článku o rozložení [disku na disk](../../disk-bursting.md). Po přečtení článku rozumíte konceptu časově rozlišených vstupně-výstupních operací a propustnosti v časech, kdy je zatížení v/v pod nominálními IOPS a propustností disků (podrobnosti o nominální propustnosti najdete v tématu [ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/)). Chystáte se rozlišit rozdíl mezi vstupně-výstupními operacemi a propustností mezi aktuálním využitím a jmenovitými hodnotami disku. Počet shluků je omezen na maximálně 30 minut.
 
 V ideálních případech, kde je možné naplánovat tuto funkci shlukování, se pravděpodobně jedná o svazky nebo disky, které obsahují datové soubory pro různé systémy DBMS. U vstupně-výstupních úloh, které jsou na těchto svazcích očekávány, se očekává, že budou vypadat jako v případě malých až středních systémů.
 
@@ -352,11 +353,10 @@ Vzhledem k velikosti virtuálních počítačů Azure v životním cyklu systém
 
 
 ## <a name="striping-or-not-striping"></a>Prokládání nebo nepruhování
-Vytvoření Stripe nastaveného na více discích Azure do jednoho většího svazku umožňuje nashromáždit IOPS a propustnost jednotlivých disků na jednom svazku. Používá se jenom pro Azure Storage úrovně Standard a Azure Premium Storage. Azure Ultra disk, na kterém můžete nakonfigurovat propustnost a IOPS nezávisle na kapacitě disku, nevyžaduje použití sad Stripe Sets. Sdílené svazky založené na systému souborů NFS nebo SMB nelze prokládat. Z důvodu nelineárního charakteru propustnosti služby Azure Premium Storage a IOPS můžete zřídit menší kapacitu se stejnými IOPS a propustností než velké samostatné disky Azure Premium Storage. To je metoda, která dosahuje vyšší propustnosti nebo IOPS s nižšími náklady pomocí Azure Premium Storage. Příklad:
+Vytvoření Stripe nastaveného na více discích Azure do jednoho většího svazku umožňuje nashromáždit IOPS a propustnost jednotlivých disků na jednom svazku. Používá se jenom pro Azure Storage úrovně Standard a Azure Premium Storage. Azure Ultra disk, na kterém můžete nakonfigurovat propustnost a IOPS nezávisle na kapacitě disku, nevyžaduje použití sad Stripe Sets. Sdílené svazky založené na systému souborů NFS nebo SMB nelze prokládat. Z důvodu nelineárního charakteru propustnosti služby Azure Premium Storage a IOPS můžete zřídit menší kapacitu se stejnými IOPS a propustností než velké samostatné disky Azure Premium Storage. To je metoda, která dosahuje vyšší propustnosti nebo IOPS s nižšími náklady pomocí Azure Premium Storage. Například rozložení na dva disky úložiště P15 úrovně Premium vám umožní následující propustnost: 
 
-- Proložení dvou disků úložiště P15 úrovně Premium vám umožní propustnost 
 - 250 MiB/s. Tento svazek bude mít 512 GiBou kapacitu. Pokud chcete mít jeden disk, který vám poskytne 250 propustnosti MiB za sekundu, musíte vybrat P40 disk se 2 TiB kapacitou. 
-- Nebo můžete dosáhnout propustnosti 400 MiB/s tím, že provedete čtyři disky úložiště P10 úrovně Premium s celkovou kapacitou 512 GiB prokládáním. Pokud chcete mít jeden disk s minimální propustností 500 MiB za sekundu, museli byste vybrat disk úložiště P60 úrovně Premium s 8 TiB. Vzhledem k tomu, že se náklady nebo Premium Storage blíží k kapacitě lineárně, můžete při používání Stripe vymezit úspory nákladů.
+- 400 MiB/s prokládá čtyři disky úložiště P10 úrovně Premium s celkovou kapacitou 512 GiB na základě Stripe. Pokud chcete mít jeden disk s minimální propustností 500 MiB za sekundu, museli byste vybrat disk úložiště P60 úrovně Premium s 8 TiB. Vzhledem k tomu, že náklady na Premium Storage jsou blízko lineárního využívání kapacity, můžete při používání Stripe vymezit úspory nákladů.
 
 Při prokládaném je potřeba provést některá pravidla:
 
@@ -375,4 +375,3 @@ Přečtěte si články:
 
 - [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md)
 - [Konfigurace úložiště virtuálních počítačů Azure SAP HANA](./hana-vm-operations-storage.md)
- 

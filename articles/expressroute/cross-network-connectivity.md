@@ -2,17 +2,17 @@
 title: Připojení mezi sítěmi Azure
 description: Tato stránka popisuje scénář aplikace pro různé připojení k síti a řešení v závislosti na síťových funkcích Azure.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: rambala
-ms.openlocfilehash: 646482472caf6aded9142f33fb6bd879938998d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 018afa1b2a31ebd44925a3fc79cbdc729b2d4695
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124949"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202493"
 ---
 # <a name="cross-network-connectivity"></a>Možnosti připojení mezi sítěmi
 
@@ -119,12 +119,12 @@ Další otázky k virtuální síti a partnerskému vztahu VNet najdete v témat
 Global Reach se zavádějí do země nebo oblasti podle země nebo oblasti. Pokud chcete zjistit, jestli je Global Reach k dispozici v zemích nebo oblastech, které chcete, přečtěte si téma [ExpressRoute Global REACH][Global Reach].
 
 <!--Link References-->
-[Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[connection]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager
-[Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-global-reach
-[Configure VNet peering]: https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions
-[Configure Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
-[Subscription limits]: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits
-[Connect-ER-VNet]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager
-[ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
+[Virtual network peering]: ../virtual-network/virtual-network-peering-overview.md
+[connection]: ./expressroute-howto-linkvnet-portal-resource-manager.md
+[Global Reach]: ./expressroute-global-reach.md
+[Configure VNet peering]: ../virtual-network/create-peering-different-subscriptions.md
+[Configure Global Reach]: ./expressroute-howto-set-global-reach.md
+[Subscription limits]: ../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits
+[Connect-ER-VNet]: ./expressroute-howto-linkvnet-portal-resource-manager.md
+[ER-FAQ]: ./expressroute-faqs.md
 [VNet-FAQ]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq

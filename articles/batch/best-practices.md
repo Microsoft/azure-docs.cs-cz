@@ -1,18 +1,21 @@
 ---
 title: Osvědčené postupy
-description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-ms.date: 08/12/2020
+description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191803"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561834"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
-Tento článek pojednává o shromažďování osvědčených postupů pro efektivní a efektivní používání služby Azure Batch, a to na základě reálného prostředí ve službě Batch. Přečtěte si tento článek, abyste předešli nástrah návrhu, potenciálním problémům s výkonem a antipatternům při vývoji pro a používání služby Batch.
+Tento článek popisuje shromažďování osvědčených postupů a užitečných tipů pro efektivní používání služby Azure Batch, a to na základě zkušeností v reálném čase s využitím služby Batch. Tyto tipy vám pomohou vylepšit výkon a vyhnout se nástrah návrhu ve vašich Azure Batchch řešeních.
+
+> [!TIP]
+> Pokyny týkající se zabezpečení v Azure Batch najdete v tématech [zabezpečení služby Batch a osvědčené postupy dodržování předpisů](security-best-practices.md).
 
 ## <a name="pools"></a>Fondy
 
@@ -22,6 +25,9 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
 
 - **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
+- **' virtualMachineConfiguration ' nebo ' cloudServiceConfiguration '.**
+    V současné době můžete vytvářet fondy pomocí konfigurace. nové fondy by měly být nakonfigurované pomocí ' virtualMachineConfiguration ' a ne ' cloudServiceConfiguration '. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' cloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+
 - **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy.**
     Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.
 
@@ -29,19 +35,19 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
     V jednotlivých uzlech není zaručeno, že vždy bude k dispozici. I když nejsou běžné, selhání hardwaru, aktualizace operačního systému a hostitel jiných problémů, můžou způsobit, že jednotlivé uzly budou offline. Pokud vaše úloha Batch vyžaduje deterministický a zaručený průběh, měli byste přidělit fondy s více uzly.
 
 - **Nepoužívejte názvy prostředků znovu.**
-    Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
+    Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
 
 - **Kontinuita při údržbě fondu a selhání.**
     Doporučujeme, aby vaše úlohy dynamicky používaly fondy. Pokud vaše úlohy používají stejný fond pro všechno, může se stát, že se vaše úlohy nespustí, pokud dojde k nějakému problému s fondem. To je obzvláště důležité pro časově citlivé úlohy. Pokud chcete tento problém vyřešit, vyberte nebo vytvořte fond dynamicky, když naplánujete každou úlohu, nebo máte možnost přepsat název fondu, abyste mohli obejít špatný fond.
 
-- **Provozní kontinuita při údržbě fondu a selhání** Existuje mnoho možných příčin, které mohou zabránit, aby se fond rozrůst na požadovanou velikost, kterou si přejete, jako je například vnitřní chyba, omezení kapacity atd. Z tohoto důvodu byste měli být připravení změnit cílení úloh v jiném fondu (případně s jinou velikostí virtuálního počítače, který v případě potřeby podporuje dávku přes [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)). Nepoužívejte identifikátor statického fondu s očekáváním, že se nikdy neodstraní a nikdy se nezmění.
+- **Provozní kontinuita při údržbě fondu a selhání** Existuje mnoho možných příčin, které mohou zabránit, aby se fond rozrůst na požadovanou velikost, kterou si přejete, jako je například vnitřní chyba, omezení kapacity atd. Z tohoto důvodu byste měli být připravení změnit cílení úloh v jiném fondu (případně s jinou velikostí virtuálního počítače, který v případě potřeby podporuje dávku přes [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Nepoužívejte identifikátor statického fondu s očekáváním, že se nikdy neodstraní a nikdy se nezmění.
 
 ### <a name="pool-lifetime-and-billing"></a>Doba života fondu a fakturace
 
-Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou (automatické škálování nebo automatického fondu).
+Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou ([Automatické škálování nebo automatického](nodes-and-pools.md#automatic-scaling-policy) [fondu](nodes-and-pools.md#autopools)).
 
 - **Udržujte fondy v čerstvém stavu.**
-    Při každém několika měsících byste měli své fondy změnit na nula, abyste měli jistotu, že získáte nejnovější aktualizace agenta uzlů a opravy chyb. Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
+    Změňte velikost fondů na nulu každých několik měsíců, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
 
 - **Opětovné vytvoření fondu** Na podobném upozornění se nedoporučuje každý den odstranit a znovu vytvořit fondy. Místo toho vytvořte nový fond a aktualizujte stávající úlohy tak, aby odkazovaly na nový fond. Po přesunutí všech úkolů do nového fondu odstraňte starý fond.
 
@@ -63,7 +69,7 @@ Když vytváříte fond Azure Batch s použitím konfigurace virtuálního poč�
 
 ### <a name="third-party-images"></a>Image třetích stran
 
-Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest).
+Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) nebo [Azure CLI](/cli/azure/vm/image/terms).
 
 ### <a name="azure-region-dependency"></a>Závislost oblasti Azure
 
@@ -83,7 +89,7 @@ Proto se ujistěte, že nenavrhnete řešení Batch, které vyžaduje tisíce so
 
 Úloha služby Batch má neomezenou dobu života, dokud se neodstraní ze systému. Jeho stav určuje, zda může přijmout více úloh pro plánování nebo nikoli.
 
-Úloha se automaticky nepřesouvá do dokončeného stavu, pokud se explicitně neukončí. Tato možnost se dá automaticky aktivovat prostřednictvím vlastnosti [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) nebo [proměnné maxwallclocktime](/rest/api/batchservice/job/add#jobconstraints).
+Úloha se automaticky nepřesouvá do dokončeného stavu, pokud se explicitně neukončí. Tato možnost se dá automaticky aktivovat prostřednictvím vlastnosti [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) nebo [proměnné maxwallclocktime](/rest/api/batchservice/job/add#jobconstraints).
 
 Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit.md#resource-quotas). Úlohy a plány úloh v dokončeném stavu se nepočítají k této kvótě.
 
@@ -93,13 +99,13 @@ Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit
 
 ### <a name="save-task-data"></a>Uložit data úkolu
 
-Výpočetní uzly jsou podle jejich povahy dočasný. V dávce je mnoho funkcí, jako je například automatické fondy a automatické škálování, které usnadňují uzlům zmizení. Když uzly opustí fond (z důvodu změny velikosti nebo odstranění fondu), odstraní se také všechny soubory na těchto uzlech. Z tohoto důvodu by úloha měla přesunout výstup mimo uzel, na kterém je spuštěný, a až do trvalého úložiště, než se dokončí. Podobně platí, že pokud úloha selže, měl by přesunout protokoly potřebné k diagnostice selhání do trvalého úložiště.
+Výpočetní uzly jsou podle jejich povahy dočasný. V dávce je mnoho funkcí, jako je například automatické [fondy](nodes-and-pools.md#autopools) a [Automatické škálování](nodes-and-pools.md#automatic-scaling-policy) , které usnadňují, aby uzly zmizely. Když uzly opustí fond (z důvodu změny velikosti nebo fondu), odstraní se také všechny soubory na těchto uzlech. Z tohoto důvodu by úloha měla přesunout výstup mimo uzel, na kterém je spuštěný, a až do trvalého úložiště, než se dokončí. Podobně platí, že pokud úloha selže, měl by přesunout protokoly potřebné k diagnostice selhání do trvalého úložiště.
 
 Batch má integrovanou podporu Azure Storage pro nahrávání dat prostřednictvím [OutputFiles](batch-task-output-files.md)a také pro celou řadu sdílených systémů souborů, nebo můžete nahrát sami sebe ve svých úlohách.
 
 ### <a name="manage-task-lifetime"></a>Správa životnosti úlohy
 
-Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
+Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
 
 Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli sestavovat úlohy, což by mohlo ztížit dotazování a hledání úkolů, které vás zajímají (protože budete muset filtrovat přes dokončené úkoly). Vyčistí také odpovídající data úkolu v uzlu (v případě, že ještě `retentionTime` není dosaženo). To pomáhá zajistit, aby se uzly neplnily daty úlohy a aby nedostatek místa na disku.
 
@@ -109,11 +115,11 @@ Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli ses
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>Nastavit maximální počet úkolů na uzel správně
 
-Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8` ).
+Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `taskSlotsPerNode = 8` ).
 
 ### <a name="design-for-retries-and-re-execution"></a>Návrh pro opakování a opakované spuštění
 
-Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount` .
+Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount` .
 
 I když je to zřídka, může se úloha opakovat interně z důvodu selhání ve výpočetním uzlu, jako je například neschopnost aktualizovat vnitřní stav nebo selhání uzlu v době, kdy je úloha spuštěná. Tato úloha se zopakuje na stejném výpočetním uzlu, pokud je to možné, až do interního limitu před tím, než se vrátíte k úloze a oddělíte úlohu, která má být přeplánována službou Batch, případně na jiném výpočetním uzlu.
 
@@ -141,6 +147,10 @@ Při plánování úlohy na uzlech Batch můžete zvolit, jestli se má spustit 
 
 Stejně jako u jiných úloh by měl být [spouštěcí úkol](jobs-and-tasks.md#start-task) uzlu idempotentní, protože bude znovu spuštěn při každém spuštění uzlu. Úkol idempotentní je jednoduše ten, který při spuštění několikrát vytvoří konzistentní výsledek.
 
+### <a name="isolated-nodes"></a>Izolované uzly
+
+Zvažte použití izolovaných velikostí virtuálních počítačů pro úlohy s požadavky na dodržování předpisů nebo zákonných požadavků. Mezi podporované izolované velikosti v režimu konfigurace virtuálních počítačů patří `Standard_E80ids_v4` , `Standard_M128ms` ,, `Standard_F72s_v2` `Standard_G5` , `Standard_GS5` a `Standard_E64i_v3` . Další informace o velikostech izolovaného virtuálního počítače najdete v tématu věnovaném [izolaci virtuálních počítačů v Azure](../virtual-machines/isolation.md).
+
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Správa dlouhotrvajících služeb prostřednictvím rozhraní služeb operačního systému
 
 Někdy je potřeba spustit jiného agenta společně s agentem dávky v uzlu. Například můžete chtít shromažďovat data z uzlu a nahlásit ho. Doporučujeme, aby tyto agenty byly nasazeny jako služby operačního systému, například služba systému Windows nebo `systemd` Služba Linux.
@@ -159,6 +169,8 @@ Pokud si všimnete problému s chováním uzlu nebo úloh, které jsou spuštěn
 
 Pro účty Batch v režimu předplatného uživatele můžou automatizované upgrady operačního systému přerušit průběh úloh, zejména v případě, že se úlohy dlouho spouští. [Vytváření úloh idempotentní](#build-durable-tasks) může přispět k omezení chyb způsobených těmito přerušeními. Doporučujeme také [naplánovat upgrady bitových kopií operačního systému po dobu, kdy se úlohy neočekávají, aby běžely](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
+`enableAutomaticUpdates`Ve výchozím nastavení jsou fondy Windows nastavené na `true` . Povoluje se automatické aktualizace, ale tuto hodnotu můžete nastavit na `false` , pokud potřebujete zajistit, aby aktualizace operačního systému nedocházelo k neočekávanému chování.
+
 ## <a name="isolation-security"></a>Zabezpečení izolace
 
 Pro účely izolace, pokud váš scénář vyžaduje izolované úlohy od sebe navzájem, udělejte to tak, že je budete mít v samostatných fondech. Fond je hranice izolace zabezpečení ve službě Batch a ve výchozím nastavení nejsou dva fondy viditelné ani vzájemně vzájemně komunikují. Vyhněte se použití samostatných účtů Batch jako izolačního prostředku.
@@ -173,14 +185,13 @@ Po nahrání šablony do nové oblasti bude nutné znovu vytvořit certifikáty,
 
 Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-## <a name="connectivity"></a>Možnosti připojení
+## <a name="connectivity"></a>Připojení
 
-Při zvažování připojení ve vašich řešeních služby Batch si přečtěte následující pokyny.
+Přečtěte si následující pokyny týkající se připojení ve vašich dávkových řešeních.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr)
 
-Při zřizování [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití `BatchNodeManagement` značky služby, portů, protokolů a směru pravidla.
-Místo používání základních IP adres služby Batch se doporučuje použít značku služby. Důvodem je to, že IP adresy se můžou v průběhu času měnit. Přímé použití IP adres služby Batch může způsobit nestabilitu, přerušení nebo výpadky pro fondy služby Batch.
+Při zřizování [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití `BatchNodeManagement` značky služby, portů, protokolů a směru pravidla. Místo používání základních IP adres služby Batch se doporučuje použít značku služby. Důvodem je to, že IP adresy se můžou v průběhu času měnit. Přímé použití IP adres služby Batch může způsobit nestabilitu, přerušení nebo výpadky pro fondy služby Batch.
 
 Pro trasy definované uživatelem (udr) se ujistěte, že máte zavedený proces, který bude pravidelně aktualizovat IP adresy služby Batch v tabulce směrování, protože se tyto adresy mění v průběhu času. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k `BatchNodeManagement` značce služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
 
@@ -192,11 +203,15 @@ Pokud vaše žádosti dostanou odezvy HTTP na úrovni 5xx a v odpovědi se nach�
 
 ### <a name="retry-requests-automatically"></a>Opakovat požadavky automaticky
 
-Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakování, aby automaticky opakovaly vaše požadavky, a to i během normálního provozu, a ne výhradně během časových období údržby služby. Tyto zásady opakování by měly zahrnovat interval minimálně 5 minut. Automatické možnosti opakování jsou k dispozici s různými sadami SDK pro Batch, jako je například [Třída .NET RetryPolicyProvider](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
+Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakování, aby automaticky opakovaly vaše požadavky, a to i během normálního provozu, a ne výhradně během časových období údržby služby. Tyto zásady opakování by měly zahrnovat interval minimálně 5 minut. Automatické možnosti opakování jsou k dispozici s různými sadami SDK pro Batch, jako je například [Třída .NET RetryPolicyProvider](/dotnet/api/microsoft.azure.batch.retrypolicyprovider).
 
 ### <a name="static-public-ip-addresses"></a>Statické veřejné IP adresy
 
 Virtuální počítače ve fondu Batch jsou obvykle přístupné prostřednictvím veřejných IP adres, které se můžou měnit po dobu života fondu. Díky tomu může být obtížné pracovat s databází nebo jinou externí službou, která omezuje přístup k určitým IP adresám. Aby se zajistilo, že se veřejné IP adresy ve vašem fondu neočekávaně nezmění, můžete vytvořit fond pomocí sady statických veřejných IP adres, které ovládáte. Další informace najdete v tématu [Vytvoření fondu Azure Batch se zadanými veřejnými IP adresami](create-pool-public-ip.md).
+
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>Testování připojení s konfigurací Cloud Services
+
+Pro cloudové služby nemůžete použít normální protokol "/ICMP", protože protokol ICMP není povolený prostřednictvím nástroje pro vyrovnávání zatížení Azure. Další informace najdete v tématu věnovaném [připojení a síti pro Azure Cloud Services](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service).
 
 ## <a name="batch-node-underlying-dependencies"></a>Základní závislosti uzlu Batch
 
@@ -206,17 +221,23 @@ Při navrhování řešení Batch Vezměte v úvahu následující závislosti a
 
 Azure Batch vytvoří a spravuje skupinu uživatelů a skupin na virtuálním počítači, které by se neměly měnit. Jsou to tyto:
 
-#### <a name="windows"></a>Windows
+Windows:
 
 - Uživatel s názvem **PoolNonAdmin**
 - Skupina uživatelů s názvem **WATaskCommon**
 
-#### <a name="linux"></a>Linux
+Linux:
 
 - Uživatel s názvem **_azbatch**
 
 ### <a name="file-cleanup"></a>Vyčištění souboru
 
-Batch se aktivně snaží vyčistit pracovní adresář, ve kterém jsou spuštěné úlohy, jakmile doba uchování vyprší. Všechny soubory napsané mimo tento adresář jsou [vaší zodpovědností na vyčištění](#manage-task-lifetime) , aby nedošlo k zaplnění místa na disku. 
+Batch se aktivně snaží vyčistit pracovní adresář, ve kterém jsou spuštěné úlohy, jakmile doba uchování vyprší. Všechny soubory napsané mimo tento adresář jsou [vaší zodpovědností na vyčištění](#manage-task-lifetime) , aby nedošlo k zaplnění místa na disku.
 
 Automatizované vyčištění pro pracovní adresář se zablokuje, pokud spustíte službu ve Windows z pracovního adresáře startTask, protože se tato složka pořád používá. Výsledkem bude snížení výkonu. Chcete-li tento problém vyřešit, změňte adresář této služby na samostatný adresář, který není spravován službou Batch.
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+- Přečtěte si o [výchozích Azure Batch kvótách, omezeních a omezeních a o tom, jak se zvýší kvóta](batch-quota-limit.md).
+- Naučte se [detekovat a vyhnout se chybám při operacích na pozadí fondu a uzlů ](batch-pool-node-error-checking.md).

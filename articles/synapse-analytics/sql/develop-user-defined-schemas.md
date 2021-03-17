@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428703"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451688"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Uživatelsky definovaná schémata v synapse SQL
 
@@ -27,7 +27,7 @@ Tradiční architektura analýzy často používá samostatné databáze k vytvo
 Místo toho synapse SQL spouští celou analýzu úloh v rámci jedné databáze. Spojení mezi databázemi nejsou povolena. Synapse SQL očekává, že všechny tabulky používané datovým skladem budou uloženy v rámci jedné databáze.
 
 > [!NOTE]
-> Fondy SQL nepodporují databázové dotazy žádného druhu. V důsledku toho bude nutné provést změny analýz, které využívají tento model. SQL na vyžádání (Preview) podporuje křížové databázové dotazy.
+> Vyhrazené fondy SQL nepodporují mezidatabázové dotazy jakéhokoli druhu. V důsledku toho bude nutné provést změny analýz, které využívají tento model. Fond SQL bez serveru podporuje databázové dotazy mezi různými databázemi.
 
 ## <a name="user-defined-schema-recommendations"></a>Uživatelsky definovaná doporučení schémat
 

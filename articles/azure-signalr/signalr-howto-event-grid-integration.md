@@ -7,22 +7,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b83c1dd541418c446a89a6f51be668cb41e54e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76710828"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562640"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Odesílání událostí ze služby Azure SignalR Service do služby Event Grid
 
 Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí pomocí modelu Pub-sub. V tomto průvodci pomocí Azure CLI vytvoříte službu signalizace Azure, přihlásíte se k odběru událostí připojení a pak nasadíte ukázkovou webovou aplikaci, abyste přijímali události. Nakonec se můžete připojit a odpojit a zobrazit datovou část události v ukázkové aplikaci.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
+ - Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -80,7 +80,7 @@ Pokud chcete ukázkovou aplikaci nasadit, nastavte `SITE_NAME` na jedinečný n�
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan

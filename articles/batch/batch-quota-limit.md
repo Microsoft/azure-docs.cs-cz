@@ -2,14 +2,14 @@
 title: Kvóty a omezení služeb
 description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a omezeních a o zvýšení kvóty.
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417272"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052376"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -23,15 +23,21 @@ Pokud máte v plánu provozovat produkční úlohy ve službě Batch, možná bu
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Kvóta je úvěrový limit, nikoli záruka na kapacitu. Pokud máte velké nároky na kapacitu, obraťte se prosím na podporu Azure.
+Kvóta je limit, nikoli záruka na kapacitu. Pokud máte velké nároky na kapacitu, obraťte se prosím na podporu Azure.
 
 Všimněte si také, že kvóty nejsou Garantované hodnoty. Kvóty se můžou lišit v závislosti na změnách ze služby Batch nebo na žádost uživatele o změnu hodnoty kvóty.
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>Základní kvóty
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Kvóty jader v režimu služby Batch
+
+Základní kvóty existují pro každou řadu virtuálních počítačů podporovanou službou Batch a zobrazují se na stránce **kvóty** na portálu. Omezení kvót řady virtuálních počítačů je možné aktualizovat pomocí žádosti o podporu, jak je popsáno níže. U vyhrazených uzlů Batch vynutila omezení základní kvóty pro každou řadu virtuálních počítačů a také celkovou kvótu jádra pro celý účet Batch. V případě uzlů s nízkou prioritou vynutila dávka jenom celkovou základní kvótu pro účet Batch bez rozdílů mezi různými řadami virtuálních počítačů.
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kvóty jader v režimu předplatného uživatele
 
-Pokud jste vytvořili [účet Batch](accounts.md) s režimem přidělování fondů nastaveným na **předplatné uživatele**, kvóty se uplatní odlišně. V tomto režimu se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Kvóty Azure Batchch jader se nevztahují na účet vytvořený v tomto režimu. Místo toho se použijí kvóty ve vašem předplatném pro regionální výpočetní jádra a další prostředky.
+Pokud jste vytvořili [účet Batch](accounts.md) s režimem přidělování fondů nastaveným na **předplatné uživatele**, virtuální počítače a další prostředky služby Batch se vytvoří přímo ve vašem předplatném při vytvoření nebo změně velikosti fondu. Kvóty Azure Batch Core se nevztahují a používají se a vynutily kvóty v předplatném pro regionální výpočetní jádra, výpočetní jádra pro jednotlivé řady a další prostředky.
 
 Další informace o těchto kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
@@ -52,7 +58,7 @@ Omezení velikosti fondu nastavuje služba Batch. Na rozdíl od [kvót prostřed
 
 ## <a name="other-limits"></a>Další omezení
 
-Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#resource-quotas)nelze tyto hodnoty změnit.
+Tato dodatečná omezení nastavuje služba Batch. Na rozdíl od [kvót prostředků](#resource-quotas)nelze tyto hodnoty změnit.
 
 | **Prostředek** | **Maximální limit** |
 | --- | --- |
@@ -62,6 +68,7 @@ Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#
 | Balíčky aplikací na fond | 10 |
 | Maximální doba života úlohy | 180 dnů<sup>1</sup> |
 | Počet [připojení](virtual-file-mount.md) na výpočetní uzel | 10 |
+| Certifikáty na fond | 12 |
 
 <sup>1</sup> maximální doba života úkolu, od kdy se přidá do úlohy po jeho dokončení, je 180 dní. Dokončené úlohy trvají po dobu sedmi dnů; data pro úlohy, které nejsou dokončená v rámci maximální doby života, nejsou dostupná.
 
@@ -69,39 +76,39 @@ Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#
 
 Zobrazení kvót účtu Batch v [Azure Portal](https://portal.azure.com):
 
-1. Vyberte **účty Batch**a pak vyberte účet Batch, na který vás zajímáte.
+1. Vyberte **účty Batch** a pak vyberte účet Batch, na který vás zajímáte.
 1. V nabídce účtu Batch vyberte **kvóty** .
 1. Zobrazit kvóty, které jsou aktuálně aplikovány na účet Batch.
 
-    ![Kvóty účtu Batch][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Snímek obrazovky zobrazující kvóty účtu Batch v Azure Portal.":::
 
 ## <a name="increase-a-quota"></a>Zvýšení kvóty
 
 Můžete požádat o zvýšení kvóty pro účet Batch nebo předplatné pomocí [Azure Portal](https://portal.azure.com). Typ zvýšení kvóty závisí na režimu přidělování fondů účtu Batch. Chcete-li požádat o zvýšení kvóty, je nutné zahrnout řadu virtuálních počítačů, pro kterou chcete kvótu zvýšit. Při použití zvýšení kvóty se tato kvóta použije na všechny řady virtuálních počítačů.
 
 1. Na řídicím panelu portálu vyberte dlaždici **Nápověda a podpora** nebo otazník (**?**) v pravém horním rohu portálu.
-1. Vyberte **nové základy žádosti o podporu**  >  **Basics**.
+1. Vyberte **nové základy žádosti o podporu**  >  .
 1. **Základní informace**:
-   
+
     1. **Typ problému**  >  **Omezení služeb a předplatného (kvóty)**
-   
+
     1. Vyberte své předplatné.
-   
+
     1. **Typ kvóty**  >  **Batch**
-      
+
        Vyberte **Další**.
-    
+
 1. Oblast **Details** (Podrobnosti) obsahuje:
-      
-    1. V části **Zadejte podrobnosti**zadejte umístění, typ kvóty a účet Batch.
-    
-       ![Zvýšení kvóty dávky][quota_increase]
+
+    1. V části **Zadejte podrobnosti** zadejte umístění, typ kvóty a účet Batch.
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="Snímek obrazovky s podrobnostmi o kvótě při žádosti o zvýšení kvóty":::
 
        Mezi typy kvót patří:
 
        * **Na účet Batch**  
          Hodnoty specifické pro jeden účet Batch, včetně základních a s nízkou prioritou a počtu úloh a fondů.
-        
+
        * **Na oblast**  
          Hodnoty, které se vztahují na všechny účty Batch v oblasti a zahrnují počet účtů Batch na oblast a předplatné.
 
@@ -112,11 +119,11 @@ Můžete požádat o zvýšení kvóty pro účet Batch nebo předplatné pomoc�
        Vyberte **Další**.
 
 1. V **kontaktní údaje**:
-   
+
     1. Vyberte **upřednostňovanou metodu kontaktu**.
-   
+
     1. Ověřte a zadejte požadované kontaktní údaje.
-   
+
        Vyberte **vytvořit** a odešlete žádost o podporu.
 
 Po odeslání žádosti o podporu vás bude kontaktovat podpora Azure. Žádosti o kvótu se můžou dokončit během několika minut nebo do dvou pracovních dnů.
@@ -125,7 +132,7 @@ Po odeslání žádosti o podporu vás bude kontaktovat podpora Azure. Žádosti
 
 Fondy služby Batch v konfiguraci virtuálního počítače nasazené ve virtuální síti Azure automaticky přidělují další síťové prostředky Azure. Pro každý uzel fondu 50 ve virtuální síti jsou potřeba tyto prostředky:
 
-- Jedna [Skupina zabezpečení sítě](../virtual-network/security-overview.md#network-security-groups)
+- Jedna [Skupina zabezpečení sítě](../virtual-network/network-security-groups-overview.md#network-security-groups)
 - Jedna [Veřejná IP adresa](../virtual-network/public-ip-addresses.md)
 - Jeden [Nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
 

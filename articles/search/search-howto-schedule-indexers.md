@@ -7,33 +7,47 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 4a78c85918725533df8c616e598afbd2ad84bdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038507"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097972"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Postup plánování indexerů v Azure Kognitivní hledání
 
-Indexer se normálně spouští jednou ihned po jeho vytvoření. Můžete ji znovu spustit na vyžádání pomocí portálu, REST API nebo sady .NET SDK. Můžete také nakonfigurovat indexer, aby pravidelně běžel podle plánu.
+Indexer se normálně spouští jednou ihned po jeho vytvoření. Následně ho můžete znovu spustit na vyžádání pomocí Azure Portal, [indexeru (REST)](/rest/api/searchservice/run-indexer)nebo sady Azure SDK. Případně můžete také nakonfigurovat indexer, který se má spustit podle plánu. V některých situacích, kdy je plánování indexeru užitečné, patří:
 
-V některých situacích, kdy je plánování indexeru užitečné:
+* Zdrojová data se v průběhu času mění a chcete, aby indexer vyhledávání automaticky zpracovával rozdíl.
 
-* Zdrojová data se v průběhu času mění a chcete, aby indexery služby Azure Kognitivní hledání automaticky zpracovaly změněná data.
-* Index bude vyplněn z více zdrojů dat a chcete zajistit, aby se indexery spouštěly v různých časech, aby se snížily konflikty.
-* Zdrojová data jsou velmi velká a je třeba rozdělit zpracování indexerem v čase. Další informace o indexování velkých objemů dat najdete v tématu [postup indexování velkých datových sad v Azure kognitivní hledání](search-howto-large-index.md).
+* Zdrojová data jsou velmi velká a je třeba rozdělit zpracování indexerem v čase. Úlohy indexeru jsou v souladu s maximální dobou spuštění 24 hodin pro běžné zdroje dat a 2 hodiny pro indexery pomocí dovednosti. Pokud indexování nelze dokončit v rámci maximálního intervalu, můžete nakonfigurovat plán, který se spouští každé 2 hodiny. Indexery se mohou automaticky vyznačit tam, kde byly položeno, jako důkaz interní horní značky, která označuje, kde bylo indexování naposledy ukončeno. Spuštění indexeru s opakovaným 2 hodinovým plánem umožňuje IT zpracovat velmi velkou datovou sadu (mnoho milionů dokumentů) nad rámec povolený pro jednu úlohu. Další informace o indexování velkých objemů dat najdete v tématu [postup indexování velkých datových sad v Azure kognitivní hledání](search-howto-large-index.md).
 
-Plánovač je integrovaná funkce Azure Kognitivní hledání. Nemůžete použít externí plánovač k řízení vyhledávacích indexerů.
+* Index vyhledávání bude vyplněn z více zdrojů dat a chcete, aby indexery běžely v různou dobu, aby se snížily konflikty.
 
-## <a name="define-schedule-properties"></a>Definovat vlastnosti plánu
+Vizuální plán může vypadat takto: od 1. ledna se spouští každých 50 minut.
 
-Plán indexeru má dvě vlastnosti:
-* **Interval**, který definuje dobu mezi plánovanými provádění indexerů. Nejmenší povolený interval je 5 minut a největší je 24 hodin.
-* **Čas spuštění (UTC)**, který označuje, že se má indexer spustit poprvé.
+```json
+{
+    "dataSourceName" : "myazuresqldatasource",
+    "targetIndexName" : "target index name",
+    "schedule" : { "interval" : "PT50M", "startTime" : "2021-01-01T00:00:00Z" }
+}
+```
 
-Při prvním vytváření indexeru můžete zadat plán nebo aktualizovat vlastnosti indexeru později. Plány indexeru se dají nastavit pomocí [portálu](#portal), [REST API](#restApi)nebo [sady .NET SDK](#dotNetSdk).
+> [!NOTE]
+> Plánovač je integrovaná funkce Azure Kognitivní hledání. Pro externí plánovače není podporována žádná podpora.
+
+## <a name="schedule-property"></a>Vlastnost plánu
+
+Plán je součástí definice indexeru. Pokud je vlastnost **Schedule** vynechána, indexer se spustí pouze jednou ihned po vytvoření. Pokud přidáte vlastnost **plánu** , zadáte dvě části.
+
+| Vlastnost | Popis |
+|----------|-------------|
+|**Interval** | požadovanou Množství času mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut a nejdelší je 1440 minut (24 hodin). Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))` . <br/><br/>Příklady: `PT15M` každých 15 minut každé `PT2H` 2 hodiny.|
+| **Čas spuštění (UTC)** | volitelné Určuje, kdy by mělo začít naplánované provádění. Je-li tento parametr vynechán, bude použit aktuální čas UTC. Tato doba může být v minulosti. v takovém případě je první spuštění naplánováno, jako kdyby indexer běžel nepřetržitě od původního **StartTime**.<br/><br/>Příklady: `2021-01-01T00:00:00Z` od 1. ledna od 1. ledna `2021-01-05T22:28:00Z` po 10:28. odp. 5. ledna.|
+
+## <a name="scheduling-behavior"></a>Plánování chování
 
 V jednom okamžiku může být spuštěno pouze jedno spuštění indexeru. Pokud je indexer již spuštěn, když je naplánováno jeho další spuštění, je spuštění odloženo až do dalšího naplánovaného času.
 
@@ -44,29 +58,11 @@ Pojďme tento příklad využít k tomu, aby to bylo konkrétnější. Předpokl
 * Třetí spuštění je naplánováno na začátek v 10:00 UTC, ale v tuto chvíli je předchozí spuštění stále spuštěno. Toto plánované provedení je pak vynecháno. Další spuštění indexeru nebude zahájeno až do 11:00 UTC.
 
 > [!NOTE]
-> Pokud je indexer nastavený na určitý plán, ale opakovaně selže na stejném dokumentu a znovu se pokaždé, když se spustí, indexer začne běžet v kratším intervalu (až do maximálního počtu alespoň každých 24 hodin), dokud to znovu neudělá.  Pokud se domníváte, že jste se rozhodli, že jste si myslíte, že byl problém, který způsobil, že se indexer zablokoval v určitém bodě, můžete na vyžádání provést indexer a pokud se to úspěšně dokončí, indexer se znovu vrátí do intervalu nastaveného plánu.
+> Pokud indexer nastavíte na určitý plán, ale opakovaně selže na stejném dokumentu, indexer začne běžet v méně častých intervalech (až do maximálního intervalu nejméně jednou za 24 hodin), dokud se znovu nestane. Pokud si myslíte, že jste si jisti, že jste nastavili některý z těchto potíží, můžete indexer spustit ručně a pokud je indexování úspěšné, indexer se vrátí do svého pravidelného plánu.
 
-<a name="portal"></a>
+## <a name="schedule-using-rest"></a>Naplánování pomocí REST
 
-## <a name="schedule-in-the-portal"></a>Plán na portálu
-
-Průvodce importem dat na portálu umožňuje definovat plán pro indexer v okamžiku vytvoření. Výchozí nastavení plánu je **každou hodinu**, což znamená, že indexer se po vytvoření spustí znovu a spustí se znovu každou hodinu.
-
-Nastavení plánu můžete změnit na **jednou** , pokud nechcete, aby indexer znovu běžel automaticky **nebo aby běžel jednou denně.** Nastavte ji na **vlastní** , pokud chcete zadat jiný interval nebo určitý čas spuštění v budoucnosti.
-
-Když nastavíte plán na **vlastní**, zobrazí se pole, která umožňují zadat **interval** a **čas spuštění (UTC)**. Nejkratší časový interval povolený v intervalu 5 minut a nejdelší je 1440 minut (24 hodin).
-
-   ![Nastavení plánu indexeru v Průvodci importem dat](media/search-howto-schedule-indexers/schedule-import-data.png "Nastavení plánu indexeru v Průvodci importem dat")
-
-Po vytvoření indexeru můžete změnit nastavení plánu pomocí panelu úprav indexeru. Pole plánu jsou stejná jako v Průvodci importem dat.
-
-   ![Nastavení plánu v panelu pro úpravy indexeru](media/search-howto-schedule-indexers/schedule-edit.png "Nastavení plánu v panelu pro úpravy indexeru")
-
-<a name="restApi"></a>
-
-## <a name="schedule-using-rest-apis"></a>Plánování pomocí rozhraní REST API
-
-Plán pro indexer můžete definovat pomocí REST API. Uděláte to tak, že při vytváření nebo aktualizaci indexeru zadáte vlastnost **Schedule** . Následující příklad ukazuje požadavek PUT k aktualizaci stávajícího indexeru:
+Při vytváření nebo aktualizaci indexeru zadejte vlastnost **Schedule** .
 
 ```http
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
@@ -76,44 +72,34 @@ Plán pro indexer můžete definovat pomocí REST API. Uděláte to tak, že př
     {
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name",
-        "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
+        "schedule" : { "interval" : "PT10M", "startTime" : "2021-01-01T00:00:00Z" }
     }
 ```
 
-Parametr **interval** je povinný. Tento interval odkazuje na čas mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut. nejdelší je jeden den. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))` . Příklady: `PT15M` každých 15 minut každé `PT2H` 2 hodiny.
+## <a name="schedule-using-net"></a>Plánování pomocí .NET
 
-Nepovinná položka **StartTime** indikuje, kdy by mělo začít naplánované provádění. Je-li tento parametr vynechán, bude použit aktuální čas UTC. Tato doba může být v minulosti. v takovém případě je první spuštění naplánováno, jako kdyby indexer běžel nepřetržitě od původního **StartTime**.
+Následující příklad jazyka C# vytvoří indexer Azure SQL Database s použitím předdefinovaného zdroje dat a indexu a nastaví plán, který se spustí jednou denně, počínaje teď:
 
-Indexer můžete na vyžádání spustit kdykoli pomocí volání metody Run indexer. Další informace o spouštění indexerů a nastavení plánů indexerů najdete v tématech [spuštění indexeru](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [získání indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer)a [aktualizace indexeru](https://docs.microsoft.com/rest/api/searchservice/update-indexer) v odkazu na REST API.
+```csharp
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+    StartTime = DateTimeOffset.Now
+};
 
-<a name="dotNetSdk"></a>
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "Data indexer",
+    Schedule = schedule
+};
 
-## <a name="schedule-using-the-net-sdk"></a>Plánování pomocí .NET SDK
-
-Můžete definovat plán pro indexer pomocí sady Azure Kognitivní hledání .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
-
-Následující příklad jazyka C# vytvoří indexer pomocí předdefinovaného zdroje dat a indexu a nastaví jeho plán, který se spustí jednou denně od 30 minut od této chvíle:
-
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
-    Indexer indexer = new Indexer(
-        name: "azure-sql-indexer",
-        dataSourceName: dataSource.Name,
-        targetIndexName: index.Name,
-        schedule: new IndexingSchedule(
-                        TimeSpan.FromDays(1), 
-                        new DateTimeOffset(DateTime.UtcNow.AddMinutes(30))
-                    )
-        );
-    await searchService.Indexers.CreateOrUpdateAsync(indexer);
-```
-Pokud je parametr **Schedule** vynechán, indexer se spustí pouze jednou ihned po jeho vytvoření.
 
-Parametr **StartTime** lze nastavit na čas v minulosti. V takovém případě je naplánováno první spuštění, jako kdyby indexer běžel nepřetržitě od daného **čas_spuštění**.
+Plán je definován pomocí třídy [IndexingSchedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) při vytváření nebo aktualizaci indexeru pomocí [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). Konstruktor **IndexingSchedule** vyžaduje parametr **intervalu** zadaný pomocí objektu **TimeSpan** . Jak už bylo uvedeno výše, nejmenší povolená hodnota intervalu je 5 minut a největší je 24 hodin. Druhý parametr **StartTime** , zadaný jako objekt **DateTimeOffset** , je volitelný.
 
-Plán je definován pomocí třídy [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) . Konstruktor **IndexingSchedule** vyžaduje parametr **intervalu** zadaný pomocí objektu **TimeSpan** . Minimální povolená hodnota intervalu je 5 minut a největší je 24 hodin. Druhý parametr **StartTime** , zadaný jako objekt **DateTimeOffset** , je volitelný.
+## <a name="next-steps"></a>Další kroky
 
-Sada .NET SDK umožňuje řídit operace indexeru pomocí třídy [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) a její vlastnosti [indexerů](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , která implementuje metody z rozhraní **IIndexersOperations** . 
+U indexerů, které běží podle plánu, můžete sledovat operace načtením stavu ze služby vyhledávání nebo získat podrobné informace povolením diagnostického protokolování.
 
-Indexer můžete na vyžádání spustit kdykoli pomocí jedné z metod [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)nebo [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
-
-Další informace o vytváření, aktualizaci a spouštění indexerů najdete v tématu [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+* [Sledovat stav indexeru hledání](search-howto-monitor-indexers.md)
+* [Shromažďování a analýza dat protokolu](search-monitor-logs.md)

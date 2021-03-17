@@ -2,21 +2,21 @@
 title: Azure Monitor metriky pro Application Gateway
 description: Naučte se používat metriky k monitorování výkonu služby Application Gateway.
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: surmb
+ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424388"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576107"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
-Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](../azure-monitor/overview.md) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/essentials/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Metriky podporované Application Gatewaymi SKU verze 2
 
@@ -162,7 +162,7 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 - **Neúspěšné žádosti**
 
-  Počet požadavků, které Application Gateway obsluhovány s kódy chyb 5xx serveru. To zahrnuje 5xx kódy, které jsou generovány z Application Gateway, a také kódy 5xx, které jsou generovány z back-endu. Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+  Počet požadavků, které selhaly kvůli problémům s připojením. Tento počet zahrnuje požadavky, které selhaly kvůli překročení nastavení HTTP "časový limit požadavku" a požadavků, které selhaly kvůli problémům s připojením mezi aplikační bránou a back-end. Tento počet neobsahuje chyby z důvodu nedostupnosti bezproblémového back-endu. odpovědi na 4xx a 5xx z back-endu se také nepovažují za součást této metriky.
 
 - **Stav odpovědi**
 
@@ -200,7 +200,7 @@ Na následujícím obrázku vidíte příklad se třemi metrikami zobrazenými z
 
 :::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="Zobrazení metriky." lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
-Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
+Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="alert-rules-on-metrics"></a>Pravidla výstrah pro metriky
 
@@ -214,7 +214,7 @@ Následující příklad vás provede vytvořením pravidla upozornění, které
 
 2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a Notify a vyberte **OK**.
 
-   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovno**, **menší**nebo **rovno nebo menší než**.
+   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovno**, **menší** nebo **rovno nebo menší než**.
 
    * V selektoru **období** vyberte období od pěti minut po 6 hodin.
 
@@ -230,9 +230,9 @@ Po vytvoření výstrahy metriky se zobrazí seznam výstrah. Poskytuje přehled
 
 ![Seznam výstrah a pravidel][9]
 
-Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)o výstrahách.
+Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../azure-monitor/alerts/alerts-overview.md)o výstrahách.
 
-Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
+Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/alerts/alerts-webhooks.md).
 
 ## <a name="next-steps"></a>Další kroky
 

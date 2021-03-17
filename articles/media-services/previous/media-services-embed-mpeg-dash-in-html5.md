@@ -1,7 +1,7 @@
 ---
 title: Vložení videa adaptivního streamování s použitím MPEG-SPOJOVNÍKu do aplikace HTML5 s DASH.js | Microsoft Docs
 description: Toto téma ukazuje, jak vložit video s adaptivním streamování MPEG-SPOJOVNÍKem do aplikace HTML5 s DASH.js.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 820c10a2f5bb43ff931027954b7ecf10c5b4c59f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564852"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013563"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 využívající DASH.js  
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 využívající DASH.js
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 ## <a name="overview"></a>Přehled
 MPEG-POMLČKa je standard ISO pro adaptivní streamování obsahu videa, který nabízí významné výhody pro vývojáře, kteří chtějí poskytovat vysoce kvalitní a adaptivní streamování videí. Pomocí MPEG-POMLČKy se Stream videa automaticky upraví na nižší definici, když dojde k zahlcení sítě. Tím se snižuje pravděpodobnost, že prohlížeč zobrazuje "pozastavené" video, zatímco hráč stahuje několik dalších sekund, než se hraje (to znamená, že snižuje pravděpodobnost ukládání do vyrovnávací paměti). I když se zahlcení sítě omezuje, přehrávač videa se zase vrátí do datového proudu s vyšší kvalitou. Tato možnost přizpůsobení požadované šířky pásma také vede k rychlejšímu počátečnímu času pro video. To znamená, že prvních pár sekund je možné přehrát v rychlém stahování a v případě, že je obsah uložen do vyrovnávací paměti.

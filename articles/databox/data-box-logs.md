@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498799"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147927"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy pořadí importu
 
@@ -23,7 +23,7 @@ V následující tabulce je uveden souhrn Data Box nebo Data Box Heavy kroků im
 
 | Data Box fáze objednávky importu       | Nástroj pro sledování a audit                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Vytvoření objednávky               | [Nastavení řízení přístupu v pořadí přes RBAC](#set-up-access-control-on-the-order)                                                    |
+| Vytvoření objednávky               | [Nastavení řízení přístupu v objednávce prostřednictvím Azure RBAC](#set-up-access-control-on-the-order)                                                    |
 | Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> portál Azure </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
 | Nastavení zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)                                              |
 | Kopírování dat do zařízení        | [Zobrazit *error.xml* soubory](#view-error-log-during-data-copy) pro kopírování dat                                                             |
@@ -47,7 +47,7 @@ Chcete-li omezit přístup k objednávce, můžete:
 - Přiřaďte roli na úrovni objednávky. Uživatel má pouze ta oprávnění definovaná rolemi k interakci s tímto konkrétním Data Box objednávka a nic jiného.
 - Přiřaďte roli na úrovni skupiny prostředků, uživatel má přístup ke všem Data Box objednávkám v rámci skupiny prostředků.
 
-Další informace o navrhovaném použití RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../role-based-access-control/best-practices.md).
+Další informace o navrhovaných použitích služby Azure RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="track-the-order"></a>Sledování objednávky
 
@@ -297,7 +297,7 @@ Po vymazání dat z Data Box disků podle pokynů pro NIST SP 800-88 verze 1 je 
 
 ### <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese:`storage-account/azuredatabox-chainofcustodylogs`
+Protokoly auditu obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese: `storage-account/azuredatabox-chainofcustodylogs`
 
 Tady je ukázka protokolu auditu z Data Box:
 

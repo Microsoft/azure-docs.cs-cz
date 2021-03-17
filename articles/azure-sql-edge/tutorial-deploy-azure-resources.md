@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887459"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696359"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Instalace softwaru a nastavení prostředků pro tento kurz
 
@@ -22,15 +22,16 @@ V tomto tříleté kurzu vytvoříte model strojového učení, který bude pře
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-2. Nainstalujte [Python 3.6.8](https://www.python.org/downloads/release/python-368/).
-      * Použití instalačního programu spustitelných souborů systému Windows x86-x64
-      * Přidejte `python.exe` do proměnné prostředí PATH Ke_stažení/). Stažení najdete v části nástroje pro Visual Studio 2019.
-3. [Pro SQL Server nainstalujte ovladač Microsoft ODBC Driver 17](https://www.microsoft.com/download/details.aspx?id=56567).
-4. Nainstalovat [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/)
-5. Otevřete Azure Data Studio a nakonfigurujte Python pro poznámkové bloky.Podrobnosti najdete v tématu [Konfigurace Pythonu pro poznámkové bloky](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Tento krok může trvat několik minut.
-6. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Následující skripty vyžadují, aby příkaz AZ PowerShell měl nejnovější verzi (3.5.0, únor 2020).
-7. Stáhněte si [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) [soubory imagí Docker DACPAC a AMD/ARM](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files) , které budou využívány v tomto kurzu.
+1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+2. Instalace sady Visual Studio 2019 s 
+      * Nástroje Azure IoT Edge
+      * Vývoj pro různé platformy .NET Core
+      * Kontejnerové vývojové nástroje
+3. Nainstalovat [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/)
+4. Otevřete Azure Data Studio a nakonfigurujte Python pro poznámkové bloky. Podrobnosti najdete v tématu [Konfigurace Pythonu pro poznámkové bloky](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Tento krok může trvat několik minut.
+5. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Následující skripty vyžadují, aby příkaz AZ PowerShell měl nejnovější verzi (3.5.0, únor 2020).
+6. Nainstalujte si prostředí pro ladění, spouštění a testování IoT Edge řešení pomocí [nástroje Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/).
+7. Nainstalujte Docker.
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Nasazení prostředků Azure pomocí skriptu PowerShellu
 
@@ -154,26 +155,7 @@ Nasaďte prostředky Azure vyžadované v tomto kurzu Azure SQL Edge. Ty můžet
    }
    ```
 
-10. Vložte image do kontejneru ARM/AMD do registru kontejneru.
-
-    ```powershell
-    $containerRegistryCredentials = Get-AzContainerRegistryCredential -ResourceGroupName $ResourceGroup -Name $containerRegistryName
-    
-    $amddockerimageFile = Read-Host "Please Enter the location to the amd docker tar file:"
-    $armdockerimageFile = Read-Host "Please Enter the location to the arm docker tar file:"
-    $amddockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":amd64"
-    $armdockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":arm64"
-    
-    docker login $containerRegistry.LoginServer --username $containerRegistryCredentials.Username --password $containerRegistryCredentials.Password
-    
-    docker import $amddockerimageFile $amddockertag
-    docker push $amddockertag
-    
-    docker import $armdockerimageFile $armdockertag
-    docker push $armdockertag
-    ```
-
-11. Vytvořte skupinu zabezpečení sítě v rámci skupiny prostředků.
+10. Vytvořte skupinu zabezpečení sítě v rámci skupiny prostředků.
 
     ```powershell
     $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Name $NetworkSecGroup 
@@ -193,7 +175,7 @@ Nasaďte prostředky Azure vyžadované v tomto kurzu Azure SQL Edge. Ty můžet
     }
     ```
 
-12. Vytvořte virtuální počítač Azure, který je povolený pomocí SQL Edge. Tento virtuální počítač bude fungovat jako hraniční zařízení.
+11. Vytvořte virtuální počítač Azure, který je povolený pomocí SQL Edge. Tento virtuální počítač bude fungovat jako hraniční zařízení.
 
     ```powershell
     $AzVM = Get-AzVM -ResourceGroupName $ResourceGroup -Name $EdgeDeviceId
@@ -226,7 +208,7 @@ Nasaďte prostředky Azure vyžadované v tomto kurzu Azure SQL Edge. Ty můžet
     }
     ```
 
-13. V rámci skupiny prostředků vytvořte centrum IoT.
+12. V rámci skupiny prostředků vytvořte centrum IoT.
 
     ```powershell
     $iotHub = Get-AzIotHub -ResourceGroupName $ResourceGroup -Name $IoTHubName
@@ -241,7 +223,7 @@ Nasaďte prostředky Azure vyžadované v tomto kurzu Azure SQL Edge. Ty můžet
     }
     ```
 
-14. Přidejte hraniční zařízení do služby IoT Hub. Tento krok vytvoří pouze digitální identitu zařízení.
+13. Přidejte hraniční zařízení do služby IoT Hub. Tento krok vytvoří pouze digitální identitu zařízení.
 
     ```powershell
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
@@ -257,7 +239,7 @@ Nasaďte prostředky Azure vyžadované v tomto kurzu Azure SQL Edge. Ty můžet
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
     ```
 
-15. Získá primární připojovací řetězec zařízení. To budete potřebovat později pro virtuální počítač. Následující příkaz používá Azure CLI pro nasazení.
+14. Získá primární připojovací řetězec zařízení. To budete potřebovat později pro virtuální počítač. Následující příkaz používá Azure CLI pro nasazení.
 
     ```powershell
     $deviceConnectionString = az iot hub device-identity show-connection-string --device-id $EdgeDeviceId --hub-name $IoTHubName --resource-group $ResourceGroup --subscription $SubscriptionName
@@ -265,18 +247,19 @@ Nasaďte prostředky Azure vyžadované v tomto kurzu Azure SQL Edge. Ty můžet
     $connString
     ```
 
-16. Aktualizujte připojovací řetězec v konfiguračním souboru IoT Edge na hraničním zařízení. V následujících příkazech se pro nasazení používají rozhraní příkazového řádku Azure.
+15. Aktualizujte připojovací řetězec v konfiguračním souboru IoT Edge na hraničním zařízení. V následujících příkazech se pro nasazení používají rozhraní příkazového řádku Azure.
 
     ```powershell
     $script = "/etc/iotedge/configedge.sh '" + $connString + "'"
     az vm run-command invoke -g $ResourceGroup -n $EdgeDeviceId  --command-id RunShellScript --script $script
     ```
 
-17. Vytvořte pracovní prostor Azure Machine Learning v rámci skupiny prostředků.
+16. Vytvořte pracovní prostor Azure Machine Learning v rámci skupiny prostředků.
 
     ```powershell
     az ml workspace create -w $MyWorkSpace -g $ResourceGroup
     ```
+
 
 ## <a name="next-steps"></a>Další kroky
 

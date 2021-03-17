@@ -4,19 +4,17 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 02/25/2020
-ms.openlocfilehash: 76c8d09ef2ef0130ddac856a1f37f8b68d977494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 12/17/2020
+ms.openlocfilehash: 2b40cc3d4cea4476ffde8bee8cec694975eb5083
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186227"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724268"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation nejčastějších dotazech
 
-Toto je seznam nejčastějších dotazů k Azure Automation. Pokud máte další dotazy týkající se jeho schopností, navštivte diskuzní fórum a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+Toto je seznam nejčastějších dotazů k Azure Automation. Pokud máte další dotazy týkající se jeho schopností, navštivte diskuzní fórum a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby bylo možné ho rychle a snadno najít.
 
 ## <a name="update-management"></a>Update Management
 
@@ -34,11 +32,11 @@ Když nasadíte aktualizace na počítač se systémem Linux, můžete vybrat mo
 
 Vzhledem k tomu, že Update Management provádí obohacení aktualizace v cloudu, můžete označit některé aktualizace v Update Management, protože mají dopad na zabezpečení, a to i v případě, že místní počítač tyto informace nemá. Pokud na počítači se systémem Linux použijete důležité aktualizace, může dojít k aktualizacím, které nejsou označeny jako bezpečnostní dopad na daný počítač, a proto nejsou použity. Update Management ale přesto může tento počítač ohlásit jako nevyhovující, protože obsahuje další informace o příslušné aktualizaci.
 
-Nasazení aktualizací podle klasifikace aktualizací nefunguje na verzích RTM CentOS. Chcete-li správně nasadit aktualizace pro CentOS, vyberte všechny klasifikace, aby bylo zajištěno, že budou aktualizace aplikovány. V případě SUSE mohou při výběru pouze **dalších** aktualizací, které jsou součástí klasifikace, dojít k instalaci některých dalších aktualizací zabezpečení, pokud jsou nejprve požadovány aktualizace zabezpečení související s zypperu (Správce balíčků) nebo její závislosti. Toto chování je omezení zypperu. V některých případech může být nutné znovu spustit nasazení aktualizace a pak ověřit nasazení prostřednictvím protokolu aktualizace.
+Nasazení aktualizací podle klasifikace aktualizací nefunguje na verzích RTM CentOS. Chcete-li správně nasadit aktualizace pro CentOS, vyberte všechny klasifikace, aby bylo zajištěno, že budou aktualizace aplikovány. V případě SUSE můžete vybrat jenom **jiné aktualizace** , protože klasifikace může nainstalovat některé další aktualizace zabezpečení, pokud se vztahují k zypperu (Správce balíčků), nebo pokud se její závislosti vyžadují jako první. Toto chování je omezení zypperu. V některých případech může být nutné znovu spustit nasazení aktualizace a pak ověřit nasazení prostřednictvím protokolu aktualizace.
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Můžu v klientech Azure nasazovat aktualizace?
 
-Pokud máte počítače, které vyžadují opravy v jiném tenantovi Azure pro Update Management, musíte k jejich naplánování použít následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) s `ForUpdateConfiguration` parametrem zadaným. Můžete použít rutinu [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předat do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést.
+Pokud máte počítače, které vyžadují opravy v jiném tenantovi Azure pro Update Management, musíte k jejich naplánování použít následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) s `ForUpdateConfiguration` parametrem zadaným. Můžete použít rutinu [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) a předat do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -49,6 +47,34 @@ $sched = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountN
 
 New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+## <a name="process-automation---python-runbooks"></a>Automatizace procesů – Runbooky v Pythonu
+
+### <a name="which-python-3-version-is-supported-in-azure-automation"></a>Která verze Pythonu 3 je v Azure Automation podporovaná?
+
+Pro cloudové úlohy je Python 3,8 podporován. Skripty a balíčky z jakékoli 3. x verze mohou fungovat, pokud je kód kompatibilní napříč různými verzemi.
+
+Pro hybridní úlohy na hybridních pracovních procesech Windows Hybrid Runbook můžete zvolit instalaci libovolné verze 3. x, kterou chcete použít. Pro hybridní úlohy na hybridních pracovních procesech Runbooku pro Linux závisí na verzi Pythonu 3 nainstalované na počítači, aby bylo možné spouštět DSC OMSConfig a Linux Hybrid Worker. Doporučujeme nainstalovat verzi 3,6. různé verze by však měly fungovat i v případě, že se nevyskytnou žádné zásadní změny signatury metody nebo kontraktů mezi verzemi Pythonu 3.
+
+### <a name="can-python-2-and-python-3-runbooks-run-in-same-automation-account"></a>Můžou sady Runbook Python 2 a Python 3 běžet ve stejném účtu Automation?
+
+Ano, neexistuje žádné omezení pro použití runbooků Python 2 a Python 3 ve stejném účtu Automation.  
+
+### <a name="what-is-the-plan-for-migrating-existing-python-2-runbooks-and-packages-to-python-3"></a>Jaký je plán pro migraci stávajících sad Runbook a balíčků Python 2 do Pythonu 3?
+
+Azure Automation nemá v úmyslu migrovat sady Runbook a balíčky Python 2 na Python 3. Tuto migraci budete muset provést sami. Stávající a nové Runbooky a balíčky Python 2 budou fungovat i nadále.
+
+### <a name="what-are-the-packages-supported-by-default-in-python-3-environment"></a>Jaké jsou balíčky podporované ve výchozím nastavení v prostředí Python 3?
+
+Azure Package 4.0.0 se ve výchozím nastavení instaluje v automatizačním prostředí Python 3. Můžete ručně naimportovat vyšší verzi balíčku Azure a přepsat tak výchozí verzi.
+
+### <a name="what-if-i-run-a-python-3-runbook-that-references-a-python-2-package-or-vice-versa"></a>Co když spustím Runbook Python 3, který odkazuje na balíček Python 2 nebo naopak?
+
+Python 2 a Python 3 mají různá prováděcí prostředí. I když je spuštěný Runbook Python 2, lze importovat pouze balíčky Python 2 a podobně jako Python 3.
+
+### <a name="how-do-i-differentiate-between-python-2-and-python-3-runbooks-and-packages"></a>Návody rozlišovat sady Runbook 2 a runbooky a balíčky python 3?
+
+Python 3 je nová definice sady Runbook, která rozlišuje mezi Runbooky Python 2 a Python 3. Podobně se zavádí jiný druh balíčku pro balíčky python 3.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,51 +8,64 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171138"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555579"
 ---
 # <a name="convert-to-image-directory"></a>Převod do adresáře obrázků
 
-Tento článek popisuje, jak pomocí modulu příkazového adresáře převést na obrázek převést datovou sadu na datový typ "adresář obrázků", což je standardizovaný formát dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázku v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje, jak použít modul adresář pro převod do bitové kopie, který umožňuje převést datovou sadu obrázku na datový typ datového *adresáře* , který je standardizovaným formátem dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázků v Návrháři Azure Machine Learning.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Jak použít převod na adresář imagí  
 
-1.  Přidejte do experimentu modul **adresář pro převod do bitové kopie** . Tento modul můžete najít v kategorii "Počítačové zpracování obrazu/Image Transformation data" v seznamu modul. 
+1. Nejprve Připravte datovou sadu obrázku. 
 
-2.  [Zaregistrujte datovou sadu obrázku](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) a připojte ji ke vstupnímu portu modulu. Ujistěte se prosím, že ve vstupní datové sadě je obrázek. 
-    Podporovány jsou následující formáty datové sady:
+    Pro účely učení pod dohledem je nutné zadat popisek datové sady školení. Soubor datové sady imagí by měl být v následující struktuře:
+    
+    ```
+    Your_image_folder_name/Category_1/xxx.png
+    Your_image_folder_name/Category_1/xxy.jpg
+    Your_image_folder_name/Category_1/xxz.jpeg
+    
+    Your_image_folder_name/Category_2/123.png
+    Your_image_folder_name/Category_2/nsdf3.png
+    Your_image_folder_name/Category_2/asd932_.png
+    ```
+    
+    Ve složce datové sady imagí existuje více podsložek. Každá podsložka obsahuje obrázky jedné kategorie. Názvy podsložek se považují za popisky pro úlohy, jako je například klasifikace obrázku. Další informace najdete v tématu [torchvision DataSets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
 
-    - Komprimovaný soubor v těchto rozšířeních:. zip,. tar,. gz,. bz2
-    - Složka obsahující obrázky. **Velmi doporučujeme kompresi takových složek nejprve použít komprimovaný soubor jako datovou sadu**.
+    > [!WARNING]
+    > Aktuálně označené datové sady, které jsou vyexportovány z popisků dat, nejsou v Návrháři podporovány.
+
+    Obrázky s těmito příponami (malými písmeny) jsou podporované: ". jpg", ". jpeg", ". png", ". ppm", ". bmp", ". PGM", ". tif", ". TIFF", ". webp". V jedné složce můžete mít také více typů obrázků. V každé složce kategorií není nutné obsahovat stejný počet imagí.
+
+    Můžete buď použít složku nebo komprimovaný soubor s příponou. zip, ". tar", ". gz" a ". bz2". **Pro lepší výkon se doporučuje komprimovaných souborů.** 
+    
+    ![Ukázková datová sada obrázku](./media/module/image-sample-dataset.png)
+
+    > [!NOTE]
+    > Pro odvození je nutné, aby složka sady imagí obsahovala pouze neklasifikované image.
+
+1. [Zaregistrujte datovou sadu obrázku jako datovou sadu](../how-to-create-register-datasets.md) v pracovním prostoru, protože vstup pro modul adresáře pro převod do bitové kopie musí být **Souborová sada**.
+
+1. Přidejte do plátna datovou sadu registrovaných obrázků. Registrovanou datovou sadu můžete najít v kategorii **DataSets** v seznamu modul v levé části plátna. Aktuálně Návrhář nepodporuje sadu dat vizualizace obrázku.
 
     > [!WARNING]
     > Modul **Import dat** **nelze** použít pro import datové sady imagí, protože výstupní typ modulu **importu dat** je adresář datového rámce, který obsahuje pouze řetězec cesty k souboru.
+
+1. Přidejte do plátna modul **adresáře převést do obrázku** . Tento modul můžete najít v kategorii "Počítačové zpracování obrazu/Image Transformation data" v seznamu modul. Připojte ho k datové sadě obrázků.
     
-
-    > [!NOTE]
-    > Pokud používáte datovou sadu obrázků v dohledovém učení, je popisek povinný.
-    > V případě úlohy klasifikace obrázku může být popisek vygenerován jako obrázek "kategorie" ve výstupu modulu, pokud je tato datová sada obrázku uspořádána ve formátu torchvision ImageFolder. V opačném případě se bez popisku uloží pouze obrázky. Tady je příklad, jak můžete organizovat datovou sadu obrázků a získat popisek, použít kategorii obrázku jako název podsložky. Další informace najdete v tématu [torchvision DataSets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
-    >
-    > ```
-    > root/dog/xxx.png
-    > root/dog/xxy.png
-    > root/dog/xxz.png
-    >
-    > root/cat/123.png
-    > root/cat/nsdf3.png
-    > root/cat/asd932_.png
-    > ```
-
-3.  Odešlete kanál.
+3.  Odešlete kanál. Tento modul se dá spustit buď pro GPU, nebo pro procesor.
 
 ## <a name="results"></a>Výsledky
 
-Výstup do adresářového **adresáře převést na Image** je ve formátu adresáře image a dá se připojit k ostatním modulům souvisejícím s imagemi, ve kterých je formát vstupního portu také adresářem obrázků.
+Výstup modulu **pro výpis adresářů imagí** je ve formátu **adresáře obrázků** a může být připojen k jiným modulům souvisejícím s obrázky, z nichž je formát vstupního portu také adresářem obrázku.
+
+![Převést na výstup adresáře obrázků](./media/module/convert-to-image-directory-output.png)
 
 ## <a name="technical-notes"></a>Technické poznámky 
 
@@ -70,4 +83,4 @@ Výstup do adresářového **adresáře převést na Image** je ve formátu adre
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

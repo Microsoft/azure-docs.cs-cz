@@ -7,26 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 07/17/2019
+ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211172"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685421"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
 
-V tomto kurzu se používá základ k načtení datového skladu WideWorldImportersDW ze služby Azure Blob Storage do datového skladu ve fondu SQL Azure synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) k:
+V tomto kurzu se používá základ k načtení datového skladu WideWorldImportersDW ze služby Azure Blob Storage do datového skladu ve fondu SQL Azure synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) k:
 
 > [!div class="checklist"]
 >
-> * Vytvořte datový sklad pomocí fondu SQL ve Azure Portal
-> * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
-> * Připojení ke fondu SQL pomocí SSMS
 > * Vytvoření vyhrazeného uživatele pro načítání dat
 > * Vytvoření externích tabulek, které jako zdroj dat používají objekt blob Azure
 > * Načtení dat do datového skladu pomocí příkazu T-SQL CTAS
@@ -34,116 +31,16 @@ V tomto kurzu se používá základ k načtení datového skladu WideWorldImport
 > * Vygenerování ročního objemu dat v tabulce dimenzí Date a tabulce faktů Sales
 > * Vytvoření statistik pro nově načtená data
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-
-## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Vytvoření prázdného datového skladu ve fondu SQL
-
-Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Fond SQL se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém SQL serveru](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-
-Pomocí těchto kroků vytvořte prázdný fond SQL.
-
-1. Vyberte **vytvořit prostředek** v Azure Portal.
-
-1. Na stránce **Nový** vyberte **databáze** a v části **Doporučené** na **nové** stránce vyberte **Azure synapse Analytics** .
-
-    ![vytvořit fond SQL](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
-
-1. Vyplňte část **Podrobnosti projektu** s následujícími informacemi:
-
-   | Nastavení | Příklad | Description |
-   | ------- | --------------- | ----------- |
-   | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-
-1. V části **Podrobnosti o fondu SQL**zadejte název vašeho fondu SQL. Dále vyberte existující server z rozevírací nabídky nebo vyberte **vytvořit nový** v části nastavení **serveru** pro vytvoření nového serveru. Do formuláře zadejte následující informace:
-
-    | Nastavení | Navrhovaná hodnota | Popis |
-    | ------- | --------------- | ----------- |
-    |**Název fondu SQL**|SampleDW| Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
-    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-    | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
-
-    ![vytvořit server](./media/load-data-wideworldimportersdw/create-database-server.png)
-
-1. **Vyberte úroveň výkonu**. Posuvník je ve výchozím nastavení nastaven na **DW1000c**. Posunutím posuvníku nahoru a dolů vyberte požadované škálování výkonu.
-
-    ![vytvořit server 2](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-1. Na stránce **Další nastavení** nastavte možnost **použít existující data** na žádná a ponechte **kolaci** ve výchozím nastavení *SQL_Latin1_General_CP1_CI_AS*.
-
-1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení a pak vyberte **vytvořit** a vytvořte datový sklad. Průběh můžete sledovat otevřením stránky **probíhá nasazení v** nabídce **oznámení** .
-
-     ![oznámení](./media/load-data-wideworldimportersdw/notification.png)
-
-## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
-
-Služba Azure synapse Analytics vytvoří bránu firewall na úrovni serveru, která zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo jakékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres.  Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro IP adresu vašeho klienta.
+V tomto kurzu se předpokládá, že jste už vytvořili vyhrazený fond SQL z následujícího [kurzu](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin). 
 
 > [!NOTE]
-> Fond SQL Azure synapse Analytics komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
->
-
-1. Po dokončení nasazení vyhledejte název svého fondu v poli Hledat v navigační nabídce a vyberte prostředek fondu SQL. Vyberte název serveru.
-
-    ![Přejít k prostředku](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
-
-1. Vyberte název serveru.
-    ![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png)
-
-1. Vyberte možnost **Zobrazit nastavení brány firewall**. Otevře se stránka **nastavení brány firewall** pro server.
-
-    ![nastavení serveru](./media/load-data-wideworldimportersdw/server-settings.png)
-
-1. Na stránce **brány firewall a virtuální sítě** vyberte **Přidat IP adresu klienta** a přidejte tak aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
-
-    ![pravidlo brány firewall serveru](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
-
-1. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
-
-Nyní se můžete k serveru připojit pomocí IP adresy klienta. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.  
-
-> [!IMPORTANT]
-> Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. Pokud chcete bránu firewall zakázat pro všechny služby Azure, klikněte na této stránce na **VYPNUTO** pak klikněte na **Uložit**.
-
-## <a name="get-the-fully-qualified-server-name"></a>Získání plně kvalifikovaného názvu serveru
-
-Plně kvalifikovaný název serveru slouží k připojení k serveru. V Azure Portal otevřete prostředek fondu SQL a v části **název serveru**si zobrazte plně kvalifikovaný název.
-
-![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png)
-
-## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
-
-V této části se k navázání připojení k serveru používá [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
-
-1. Otevřete SQL Server Management Studio.
-
-2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
-
-    | Nastavení      | Navrhovaná hodnota | Popis |
-    | ------------ | --------------- | ----------- |
-    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
-    | Název serveru | Plně kvalifikovaný název serveru | Například **sqlpoolservername.Database.Windows.NET** je plně kvalifikovaný název serveru. |
-    | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
-    | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
-
-    ![Připojení k serveru](./media/load-data-wideworldimportersdw/connect-to-server.png)
-
-3. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
-
-4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **SampleDW** a zobrazte objekty v nové databázi.
-
-    ![databázové objekty](./media/load-data-wideworldimportersdw/connected.png)
+> Doporučuje se pro tento kurz použít minimálně DW1000c. 
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
@@ -214,7 +111,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     CREATE MASTER KEY;
     ```
 
-4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) definujte umístění objektu blob v Azure. Toto je umístění externích celosvětových dat dovozců.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
+4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) definujte umístění objektu blob v Azure. Toto je umístění externích celosvětových dat dovozců.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -225,7 +122,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“).  
+5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“).  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -240,7 +137,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-6. Spuštěním následujících příkazů [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vytvořte schéma pro formát vašeho externího souboru. Schéma ext představuje způsob uspořádání externích tabulek, které se chystáte vytvořit. Schéma wwi uspořádá standardní tabulky, které budou obsahovat data.
+6. Spuštěním následujících příkazů [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) vytvořte schéma pro formát vašeho externího souboru. Schéma ext představuje způsob uspořádání externích tabulek, které se chystáte vytvořit. Schéma wwi uspořádá standardní tabulky, které budou obsahovat data.
 
     ```sql
     CREATE SCHEMA ext;
@@ -534,9 +431,9 @@ V této části se používají externí tabulky, které jste definovali pro na�
 > [!NOTE]
 > V tomto kurzu se data načítají přímo do konečné tabulky. V produkčním prostředí budete obvykle používat příkaz CREATE TABLE AS SELECT k načtení dat do pracovní tabulky. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. K připojení dat v pracovní tabulce do provozní tabulky můžete použít příkaz INSERT...SELECT. Další informace najdete v tématu popisujícím [vkládání dat do provozní tabulky](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT vybere z externí tabulky, data se naimportují do relační tabulky v datovém skladu.
+Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT vybere z externí tabulky, data se naimportují do relační tabulky v datovém skladu.
 
-Tento skript nenačítá data do tabulek WWI. dimension_Date a WWI. fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
+Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
 
 1. Spuštěním následujícího skriptu načtěte data do nových tabulek ve svém datovém skladu.
 
@@ -732,7 +629,7 @@ Tento skript nenačítá data do tabulek WWI. dimension_Date a WWI. fact_Sale. T
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Vytvoření tabulek a procedur pro vygenerování tabulek Date a Sales
 
-Tato část vytvoří tabulky WWI. dimension_Date a WWI. fact_Sale. Vytvoří také uložené procedury, které mohou generovat miliony řádků v tabulkách WWI. dimension_Date a WWI. fact_Sale.
+Tato část vytvoří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří také uložené procedury, které mohou generovat miliony řádků v tabulkách wwi.dimension_Date a wwi.fact_Sale.
 
 1. Vytvořte tabulky dimension_Date a fact_Sale.  
 
@@ -876,7 +773,7 @@ Tato část vytvoří tabulky WWI. dimension_Date a WWI. fact_Sale. Vytvoří ta
     END;
     ```
 
-4. Vytvořte tento postup, který naplní tabulky WWI. dimension_Date a WWI. fact_Sale. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
+4. Vytvořte tento postup, který naplní tabulky wwi.dimension_Date a wwi.fact_Sale. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +830,7 @@ Tato část vytvoří tabulky WWI. dimension_Date a WWI. fact_Sale. Vytvoří ta
 
 ## <a name="generate-millions-of-rows"></a>Generování milionů řádků
 
-Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat miliony řádků v tabulce WWI. fact_Sale a odpovídající data v tabulce WWI. dimension_Date.
+Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat miliony řádků v tabulce wwi.fact_Sale a odpovídající data v tabulce wwi.dimension_Date.
 
 1. Spuštěním této procedury přidejte do [wwi].[seed_Sale] další řádky.
 
@@ -941,7 +838,7 @@ Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat milio
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Spusťte tento postup k naplnění WWI. fact_Sale s 100 000 řádky za den pro každý den v roce 2000.
+2. Spuštěním tohoto postupu naplníte wwi.fact_Sale 100 000 řádků za den za každý den v roce 2000.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

@@ -13,27 +13,28 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118616"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174576"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
 
-Platforma Microsoft Identity Platform podporuje [udělení přihlašovacích údajů k heslu (ROPC) OAuth 2,0](https://tools.ietf.org/html/rfc6749#section-4.3), což aplikaci umožňuje přihlašovat uživatele přímo pomocí manipulace s heslem.  Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
+Platforma Microsoft identity podporuje [udělení přihlašovacích údajů pro heslo vlastníka prostředku OAuth 2,0 (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), což aplikaci umožňuje přihlašovat uživatele přímo pomocí manipulace s heslem.  Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
 > [!WARNING]
 > Microsoft doporučuje, abyste tok ROPC _nepoužívali_ . Ve většině scénářů jsou k dispozici a doporučovány bezpečnější alternativy. Tento tok vyžaduje v aplikaci velmi vysoký stupeň důvěry a přináší rizika, která nejsou přítomna v jiných tocích. Tento tok byste měli použít jenom v případě, že se nedají použít jiné bezpečnější toky.
 
 > [!IMPORTANT]
 >
-> * Koncový bod Microsoft Identity Platform podporuje jenom ROPC pro klienty Azure AD, ne pro osobní účty. To znamená, že musíte použít koncový bod ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) nebo koncový bod specifický pro klienta `organizations` .
+> * Platforma Microsoft Identity Platform podporuje jenom ROPC jenom pro klienty Azure AD, ne pro osobní účty. To znamená, že musíte použít koncový bod ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) nebo koncový bod specifický pro klienta `organizations` .
 > * Osobní účty, které jsou pozvány klientovi služby Azure AD, nemůžou používat ROPC.
 > * Účty, které nemají hesla, se nemůžou přihlásit přes ROPC. Pro tento scénář doporučujeme místo toho použít jiný tok pro aplikaci.
 > * Pokud uživatelé potřebují k přihlášení k aplikaci použít [vícefaktorové ověřování (MFA)](../authentication/concept-mfa-howitworks.md) , místo toho se zablokují.
 > * ROPC se ve scénářích [federace hybridních identit](../hybrid/whatis-fed.md) nepodporují (například Azure AD a ADFS používané k ověřování místních účtů). Pokud jsou uživatelé na celé stránce přesměrováni na místní zprostředkovatele identity, Azure AD nemůže testovat uživatelské jméno a heslo proti tomuto zprostředkovateli identity. [Předávací ověřování](../hybrid/how-to-connect-pta.md) je však podporováno v ROPC.
+> * Výjimkou scénáře federace hybridních identit by byl následující: zásady zjišťování domovské sféry s AllowCloudPasswordValidation nastavenou na hodnotu TRUE umožní, aby tok ROPC fungoval pro federované uživatele, když se místní heslo synchronizuje do cloudu. Další informace najdete v tématu [Povolení přímého ověřování ROPC pro federované uživatele pro starší verze aplikací](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
@@ -90,13 +91,13 @@ Následující příklad ukazuje úspěšnou odpověď tokenu:
 }
 ```
 
-| Parametr | Formát | Popis |
+| Parametr | Formát | Description |
 | --------- | ------ | ----------- |
 | `token_type` | Řetězec | Vždy nastavte na `Bearer` . |
 | `scope` | Řetězce oddělené mezerami | Pokud byl vrácen přístupový token, tento parametr vypíše obory, pro které je přístupový token platný. |
 | `expires_in`| int | Počet sekund, po který je zahrnutý přístupový token platný |
 | `access_token`| Neprůhledný řetězec | Vydány pro požadované [obory](v2-permissions-and-consent.md) . |
-| `id_token` | TOKEN | Vydáno, pokud původní `scope` parametr zahrnoval `openid` obor. |
+| `id_token` | JWT | Vydáno, pokud původní `scope` parametr zahrnoval `openid` obor. |
 | `refresh_token` | Neprůhledný řetězec | Vydáno, pokud je `scope` zahrnut původní parametr `offline_access` . |
 
 Pomocí obnovovacího tokenu můžete získat nové přístupové tokeny a aktualizovat tokeny pomocí stejného toku popsaného v [dokumentaci ke službě Flow Code OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
@@ -112,5 +113,4 @@ Pokud uživatel nezadal správné uživatelské jméno nebo heslo nebo pokud kli
 
 ## <a name="learn-more"></a>Další informace
 
-* Vyzkoušejte si ROPC pro sebe pomocí [ukázkové konzolové aplikace](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Pokud chcete zjistit, jestli byste měli použít koncový bod v 2.0, přečtěte si o [omezeních platformy Microsoft Identity](../azuread-dev/azure-ad-endpoint-comparison.md).
+Příklad použití ROPC naleznete v části ukázka kódu [konzolové aplikace .NET Core](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) na GitHubu.

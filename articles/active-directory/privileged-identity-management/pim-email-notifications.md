@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232304"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394726"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailová oznámení v PIM
 
@@ -31,7 +31,7 @@ Privileged Identity Management (PIM) vám umožní zjistit, kdy se v organizaci 
 
 E-maily odeslané z Privileged Identity Management pro role prostředků Azure AD a Azure mají následující e-mailovou adresu odesílatele:
 
-- E-mailová adresa: **Azure- \@ Microsoft.com Reply**
+- E-mailová adresa:  **Azure- \@ Microsoft.com Reply**
 - Zobrazovaný název: Microsoft Azure
 
 Tyto e-maily obsahují předponu **PIM** v řádku předmětu. Tady je příklad:
@@ -50,11 +50,11 @@ Kdo obdrží tyto e-maily pro role Azure AD, závisí na vaší roli, události 
 
 | Uživatel | Aktivace role čeká na schválení. | Žádost o aktivaci role je dokončená. | PIM je povolený. |
 | --- | --- | --- | --- |
-| Správce privilegovaných rolí</br>(Aktivováno/způsobilo) | Ano</br>(pouze pokud nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Ano |
-| Správce zabezpečení</br>(Aktivováno/způsobilo) | Ne | Ano* | Ano |
-| Globální správce</br>(Aktivováno/způsobilo) | Ne | Ano* | Ano |
+| Správce privilegovaných rolí</br>(Aktivováno/způsobilo) | Yes</br>(pouze pokud nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Yes |
+| Správce zabezpečení</br>(Aktivováno/způsobilo) | No | Ano* | Yes |
+| Globální správce</br>(Aktivováno/způsobilo) | No | Ano* | Yes |
 
-\*Pokud je [nastavení **oznámení** ](pim-how-to-change-default-settings.md#notifications) nastaveno na **Povolit**.
+\*Pokud je [nastavení **oznámení**](pim-how-to-change-default-settings.md#notifications) nastaveno na **Povolit**.
 
 Níže vidíte příklad e-mailu, který se pošle, když uživatel aktivuje roli Azure AD pro fiktivní organizaci Contoso.
 
@@ -79,10 +79,13 @@ V části **Přehled hlavních rolí** najdete seznam pěti rolí ve vaší orga
 
 ## <a name="email-timing-for-activation-approvals"></a>Načasování e-mailu pro schválení aktivace
 
-Když uživatelé aktivují svoji roli a nastavení role vyžaduje schválení, obdrží schvalovatelé tři e-maily pro každé schválení:
+Když uživatelé aktivují svoji roli a nastavení role vyžaduje schválení, obdrží schvalovatelé dva e-maily pro každé schválení:
 
 - Žádost o schválení nebo zamítnutí žádosti o aktivaci uživatele (odesílané schvalovacím modulem žádosti)
 - Žádost uživatele je schválená (posílá schvalovacímu modulu žádosti).
+
+Globální správci a správci privilegovaných rolí taky obdrží e-mail pro každé schválení:
+
 - Aktivuje se role uživatele (odesílá se Privileged Identity Management).
 
 Prvních dvou e-mailů odesílaných modulem pro schvalování požadavků je možné zpozdit. V současné době je 90% e-mailů trvat tři až deset minut, ale 1% zákazníků může být mnohem delší než 15 minut.

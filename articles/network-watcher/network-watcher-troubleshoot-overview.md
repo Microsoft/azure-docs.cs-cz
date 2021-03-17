@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207361"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569976"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
 
 Brány Virtual Network poskytují konektivitu mezi místními prostředky a dalšími virtuálními sítěmi v rámci Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Network Watcher poskytuje možnost řešení potíží s bránami a připojeními. Schopnost se dá volat prostřednictvím portálu, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Při volání Network Watcher diagnostikuje stav brány nebo připojení a vrátí příslušné výsledky. Požadavek je dlouhodobá transakce. Výsledky se vrátí po dokončení diagnostiky.
 
-![portál][2]
+![Snímek obrazovky ukazuje diagnostiku Network Watcher V P N.][2]
 
 ## <a name="results"></a>Výsledky
 
@@ -73,7 +73,7 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Ověřování uživatelů | Neshoda předsdíleného klíče | Ano|
+| Authentication | Neshoda předsdíleného klíče | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
@@ -85,7 +85,7 @@ Následující tabulka uvádí, které brány a připojení jsou podporované p�
 | Brána nebo připojení | Podporováno  |
 |---------|---------|
 |**Typy bran**   |         |
-|VPN      | Podporováno        |
+|Síť VPN      | Podporováno        |
 |ExpressRoute | Nepodporuje se |
 |**Typy sítě VPN** | |
 |Založené na trasách | Podporováno|
@@ -105,7 +105,7 @@ Po dokončení řešení potíží s prostředkem se soubory protokolu řešení
 > [!NOTE]
 > V některých případech je do úložiště zapisována pouze podmnožina souborů protokolů.
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -207,6 +207,11 @@ Elapsed Time            330 sec
 |         6    ikeext               ike_sa_management_c3162  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
+
+## <a name="considerations"></a>Požadavky 
+* Pro každé předplatné se dá spustit jenom jedna operace řešení potíží. Pokud chcete spustit jinou operaci odstraňování potíží, počkejte na dokončení předchozí. Aktivace dalších operací v době, kdy předchozí akce nebyla dokončena, způsobí selhání dalších operací. 
+* Chyba CLI: Pokud ke spuštění příkazu používáte Azure CLI, VPN Gateway a účet úložiště musí být ve stejné skupině prostředků. Zákazníci s prostředky v různých skupinách prostředků můžou místo toho použít PowerShell nebo Azure Portal.  
+
 
 ## <a name="next-steps"></a>Další kroky
 

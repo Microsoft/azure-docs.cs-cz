@@ -1,0 +1,70 @@
+- name: Microsoft Azure Attestation
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Microsoft Azure Attestation
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: quickstart-template.md
+    - name: PowerShell
+      href: quickstart-powershell.md
+    - name: Portál
+      href: quickstart-portal.md
+    - name: Rozhraní příkazového řádku
+      href: quickstart-azure-cli.md
+- name: Kurzy
+  items:
+    - name: Vytvoření zásad ověřování identity
+      href: author-sign-policy.md
+    - name: Vytvoření privátního koncového bodu – PowerShell
+      href: private-endpoint-powershell.md
+    - name: Monitorování diagnostiky Azure
+      href: azure-diagnostic-monitoring.md
+    - name: Ukázky kódu ověřování identity SGX
+      href: /samples/browse/?expanded=azure&terms=attestation
+- name: Příklady
+  items:
+    - name: Zásady ověřování identity
+      href: policy-examples.md
+    - name: Certifikát signatáře zásad
+      href: policy-signer-examples.md
+- name: Koncepty
+  items:
+    - name: Základní koncepty
+      href: basic-concepts.md
+    - name: Deklarace zásada ověřování identity
+      items:
+        - name: Gramatika pravidel deklarace identity
+          href: claim-rule-grammar.md
+        - name: Sady deklarací identity
+          href: claim-sets.md
+    - name: Pracovní postup
+      href: workflow.md
+    - name: Zobrazení protokolů auditu
+      href: audit-logs.md
+- name: Reference
+  items:
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: REST
+      href: /rest/api/attestation/
+    - name: Azure PowerShell
+      href: /powershell/module/az.attestation/#attestation
+    - name: Azure CLI
+      href: /cli/azure/ext/attestation/attestation
+    - name: Knihovna Azure DCAP pro Windows
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
+    - name: Knihovna Azure DCAP pro Linux
+      href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: Řešení potíží
+      href: troubleshoot-guide.md
+    - name: Protokol ověření identity TPM a VBS
+      href: virtualization-based-security-protocol.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

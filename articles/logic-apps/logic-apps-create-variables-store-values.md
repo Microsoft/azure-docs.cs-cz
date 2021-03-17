@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753254"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91333898"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a správa hodnot s využitím proměnných v Azure Logic Apps
 
@@ -55,7 +55,7 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
 
    * Pokud chcete v posledním kroku přidat akci, vyberte **Nový krok**.
 
-     ![Přidání akce](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Snímek obrazovky, který zobrazuje akci "nový krok" vybraný na stránce "návrhář aplikace logiky".](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
@@ -72,7 +72,7 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
    | **Hodnota** | No | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
    |||||
 
-   Příklad:
+   Například:
 
    ![Inicializovat proměnnou](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -211,7 +211,7 @@ Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidej
    | **Hodnota** | No | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
    ||||
 
-   Příklad:
+   Například:
 
    ![Příklad hodnoty přírůstku](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
@@ -282,7 +282,7 @@ Proměnné se běžně používají pro počítání počtu spuštění smyčky.
 
    ![Přidat akci, která odesílá výsledky](./media/logic-apps-create-variables-store-values/send-email-results.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
@@ -423,7 +423,7 @@ Tady jsou vlastnosti pro akce **připojit k...** :
 | **Hodnota** | Yes | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
 |||||
 
-Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **připojit k proměnné pole** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad vytvoří proměnnou pole a přidá další hodnotu jako poslední položku v poli. Váš výsledek je aktualizovaná proměnná, která obsahuje toto pole:`[1,2,3,"red"]`
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **připojit k proměnné pole** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad vytvoří proměnnou pole a přidá další hodnotu jako poslední položku v poli. Váš výsledek je aktualizovaná proměnná, která obsahuje toto pole: `[1,2,3,"red"]`
 
 ```json
 "actions": {

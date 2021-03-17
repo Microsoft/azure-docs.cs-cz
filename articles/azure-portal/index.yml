@@ -5,19 +5,15 @@ metadata:
   title: Dokumentace k webu Azure Portal
   description: Naučte se spravovat vaše předplatná a prostředky Azure pomocí webové konzoly webu Azure Portal. Azure Portal je alternativou k používání nástrojů příkazového řádku.
   services: Azure portal
-  ms.service: azure-portal
-  ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: mblythe
-  ms.author: mblythe
-  ms.date: 08/05/2020
-  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
-  ms.translationtype: HT
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 7b7727d1fdf550b3ab3341bd0dc852f343b00791
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88212093"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103563908"
 landingContent:
 - title: Informace o webu Azure Portal
   linkLists:
@@ -25,48 +21,34 @@ landingContent:
     links:
     - text: Co je web Azure Portal?
       url: azure-portal-overview.md
+    - text: Nasazení s využitím centrem rychlého startu Azure
+      url: azure-portal-quickstart-center.md
     - text: Podporované prohlížeče a zařízení
       url: azure-portal-supported-browsers-devices.md
-- title: Přizpůsobení webu Azure Portal
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Nastavení předvoleb pro portál
-      url: set-preferences.md
-    - text: Vytváření a sdílení vlastních řídicích panelů
-      url: azure-portal-dashboards.md
-    - text: Správa oblíbených položek
-      url: azure-portal-add-remove-sort-favorites.md
-- title: Správa přístupu k webu Azure Portal
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Uvedení URL webu Azure Portal na seznamu bezpečných adres
-      url: azure-portal-safelist-urls.md
-    - text: Řízení přístupu na základě role pro řídicí panely
-      url: azure-portal-dashboard-share-access.md
-  - linkListType: learn
-    links:
-    - text: Správa prostředků v Azure
-      url: /learn/paths/manage-resources-in-azure/
-    - text: Zabezpečení prostředků Azure pomocí řízení přístupu na základě rolí (RBAC)
-      url: /learn//modules/secure-azure-resources-with-rbac/
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Nasazení s využitím centrem rychlého startu Azure
-      url: azure-portal-quickstart-center.md
+    - text: Vytvoření virtuálního počítače na portálu
+      url: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - text: Vytvoření řídicího panelu – Azure CLI
+      url: quickstart-portal-dashboard-azure-cli.md
+    - text: Vytvoření řídicího panelu – Azure PowerShell
+      url: quickstart-portal-dashboard-powershell.md
+    - text: Vytvoření řídicího panelu – šablona ARM
+      url: quick-create-template.md
   - linkListType: how-to-guide
     links:
     - text: Série videí s postupy pro Azure Portal
       url: azure-portal-video-series.md
-  - linkListType: learn
+- title: Vytváření a správa žádostí o podporu
+  linkLists:
+  - linkListType: how-to-guide
     links:
-    - text: Základy Azure
-      url: /learn/paths/azure-fundamentals/
-    - text: Koncepty cloudu – principy cloud computingu
-      url: /learn/modules/principles-cloud-computing/
+    - text: Vytvoření žádosti o podporu Azure
+      url: supportability/how-to-create-azure-support-request.md
+    - text: Správa žádosti o podporu Azure
+      url: supportability/how-to-manage-azure-support-request.md
 - title: Využití možností usnadnění
   linkLists:
   - linkListType: reference
@@ -77,11 +59,29 @@ landingContent:
     links:
     - text: Zapnutí vysokého kontrastu
       url: set-preferences.md#choose-a-theme-or-enable-high-contrast
-- title: Vytváření a správa žádostí o podporu
+- title: Správa přístupu k webu Azure Portal
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Uvedení URL webu Azure Portal na seznamu bezpečných adres
+      url: azure-portal-safelist-urls.md
+    - text: Řízení přístupu na základě role pro řídicí panely v Azure
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: Správa prostředků v Azure
+      url: /learn/paths/manage-resources-in-azure/
+    - text: Zabezpečte své prostředky pomocí řízení přístupu na základě role Azure (Azure RBAC).
+      url: /learn/modules/secure-azure-resources-with-rbac
+- title: Přizpůsobení webu Azure Portal
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření žádosti o podporu Azure
-      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - text: Řešení potíží s oblastí nebo předplatným skladové položky
-      url: ../azure-portal/supportability/sku-series-unavailable.md
+    - text: Správa nastavení a předvoleb na webu Azure Portal
+      url: set-preferences.md
+    - text: Zobrazení a filtrování informací o prostředcích
+      url: manage-filter-resource-views.md
+    - text: Vytvoření řídicího panelu Azure Portal uživatelského rozhraní
+      url: azure-portal-dashboards.md
+    - text: Přidání, odebrání a řazení oblíbených položek
+      url: azure-portal-add-remove-sort-favorites.md

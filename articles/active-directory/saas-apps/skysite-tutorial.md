@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9d4413c47e40a611fb1559b32aac1e32a71d1998
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527974"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SKYSITE
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat SKYSITE s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SKYSITE svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -88,15 +88,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. SKYSITE aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky zobrazuje atributy uživatele s vybranou ikonou pro úpravy.](common/edit-attribute.png)
 
 1. Kromě výše očekává aplikace SKYSITE několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
     a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![Snímek obrazovky zobrazuje deklarace identity uživatelů s možností přidání nové deklarace identity.](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Spravovat deklarace identity uživatelů, kde můžete zadat hodnoty, které jsou popsány.](./media/skysite-tutorial/config02.png)
 
     b. V seznamu přepínačů vyberte **všechny skupiny** .
 
@@ -122,7 +122,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -148,11 +148,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V pravém horním rohu stránky klikněte na **Nastavení** a potom přejděte na **Nastavení účtu**.
 
-    ![Konfigurace](./media/skysite-tutorial/config03.png)
+    ![Snímek obrazovky se zobrazí nastavení účtu vybrané z nastavení.](./media/skysite-tutorial/config03.png)
 
 5. Přepněte na kartu **jednotného přihlašování (SSO)** , proveďte následující kroky:
 
-    ![Konfigurace](./media/skysite-tutorial/config04.png)
+    ![Snímek obrazovky se zobrazí na kartě jednotného přihlašování, kde můžete zadat hodnoty, které jsou popsány.](./media/skysite-tutorial/config04.png)
 
     a. Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **Adresa URL přístupu uživatele**, kterou jste zkopírovali z karty **vlastnosti** v Azure Portal.
 
@@ -168,15 +168,14 @@ V této části se v SKYSITE vytvoří uživatel s názvem Britta Simon. SKYSITE
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SKYSITE, měli byste se automaticky přihlásit k SKYSITE, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SKYSITE, měli byste se automaticky přihlásit k SKYSITE, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si SKYSITE s Azure AD](https://aad.portal.azure.com/)
-

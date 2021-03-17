@@ -1,22 +1,47 @@
 ---
 title: 'Azure VPN Gateway: informace o profilech klienta VPN P2S'
-description: To vám pomůže pracovat se souborem profilu klienta.
+description: V tomto článku najdete informace, které potřebujete pro profil klienta VPN.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 05/13/2020
+ms.topic: how-to
+ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4526611fa8b80a7b97ee7317f5e285c50f05b0de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650647"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979062"
 ---
-# <a name="about-p2s-vpn-client-profiles"></a>Informace o profilech klienta VPN P2S
+# <a name="working-with-p2s-vpn-client-profile-files"></a>Práce se soubory profilů klienta VPN v P2S
 
-Stažený soubor profilu obsahuje informace potřebné ke konfiguraci připojení VPN. Tento článek vám pomůže získat a pochopit informace, které jsou nezbytné pro profil klienta VPN.
+Soubory profilu obsahují informace potřebné ke konfiguraci připojení VPN. Tento článek vám pomůže získat a pochopit informace, které jsou nezbytné pro profil klienta VPN.
+
+## <a name="generate-and-download-profile"></a>Vygenerovat a stáhnout profil
+
+Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pomocí Azure Portal. Kterákoli z metod vrátí stejný soubor zip.
+
+### <a name="portal"></a>Portál
+
+1. V Azure Portal přejděte do brány virtuální sítě pro virtuální síť, ke které se chcete připojit.
+1. Na stránce Brána virtuální sítě vyberte **Konfigurace Point-to-site**.
+1. V horní části stránky konfigurace typu Point-to-site vyberte možnost **stáhnout klienta VPN**. Generování konfiguračního balíčku klienta může trvat několik minut.
+1. V prohlížeči se zobrazí zpráva, že je k dispozici soubor zip konfigurace klienta. Má název stejný jako brána. Rozbalte soubor, aby se zobrazily složky.
+
+### <a name="powershell"></a>PowerShell
+
+K vygenerování pomocí PowerShellu můžete použít následující příklad:
+
+1. Při generování konfiguračních souborů klienta VPN je hodnota pro "-AuthenticationMethod" EapTls ". Pomocí následujícího příkazu vygenerujte konfigurační soubory klienta VPN:
+
+   ```azurepowershell-interactive
+   $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+
+   $profile.VPNProfileSASUrl
+   ```
+
+1. Zkopírujte adresu URL do prohlížeče a Stáhněte soubor zip a potom rozbalte soubor, abyste viděli složky.
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 

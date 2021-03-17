@@ -1,32 +1,32 @@
 ---
 title: Podpora řazení
-description: Typy kolace podporované v Azure synapse SQL
+description: Podpora typů řazení pro synapse SQL ve službě Azure synapse Analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496198"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311918"
 ---
-# <a name="database-collation-support-for-synapse-sql"></a>Podpora řazení databáze pro synapse SQL
+# <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>Podpora řazení databáze pro synapse SQL ve službě Azure synapse Analytics 
 
 Kolace poskytují národní prostředí, znakovou stránku, pořadí řazení a pravidla citlivosti znaků pro datové typy založené na znacích. Po výběru budou všechny sloupce a výrazy, které vyžadují informace o kolaci, dědit zvolenou kolaci z nastavení databáze. Výchozí dědičnost lze přepsat explicitním uvedením jiné kolace pro datový typ založený na znacích.
 
-Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nové databáze fondu SQL. Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
+Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nové vyhrazené databáze fondu SQL. Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
 
-Můžete určit výchozí kolaci databáze synapse SQL na vyžádání v době vytváření pomocí příkazu CREATE DATABASE.
+Výchozí kolaci databáze fondu SQL bez serveru můžete zadat při vytváření pomocí příkazu CREATE DATABASE.
 
 ## <a name="change-collation"></a>Změnit kolaci
-Pokud chcete změnit výchozí kolaci pro databázi fondu SQL, jednoduchá aktualizace na pole kolace v prostředí zřizování. Například pokud jste chtěli změnit výchozí kolaci na rozlišení velkých a malých písmen, můžete jednoduše přejmenovat kolaci z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS. 
+Pokud chcete změnit výchozí kolaci pro vyhrazenou databázi fondu SQL, aktualizujte pole kolace v prostředí zřizování. Například pokud jste chtěli změnit výchozí kolaci na rozlišení velkých a malých písmen, přejmenujte kolaci z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS. 
 
-Pokud chcete změnit výchozí kolaci pro databázi SQL na vyžádání, můžete použít příkaz ALTER DATABASE.
+Chcete-li změnit výchozí kolaci pro databázi fondu SQL bez serveru, můžete použít příkaz ALTER DATABASE.
 
 ## <a name="list-of-unsupported-collation-types"></a>Seznam nepodporovaných typů kolace
 *    Japanese_Bushu_Kakusu_140_BIN
@@ -98,7 +98,7 @@ Pokud chcete změnit výchozí kolaci pro databázi SQL na vyžádání, můžet
 *    Japanese_XJIS_140_CS_AS_KS
 *    Japanese_XJIS_140_CS_AS_KS_WS
 
-Kromě toho fond SQL nepodporuje následující typy kolace:
+Vyhrazený fond SQL navíc nepodporuje následující typy kolace:
 
 *    SQL_EBCDIC1141_CP1_CS_AS
 *    SQL_EBCDIC277_2_CP1_CS_AS
@@ -113,9 +113,9 @@ Když předáte "kolaci" jako parametr vlastnosti, funkce DatabasePropertyEx vr�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o osvědčených postupech pro fond SQL a SQL na vyžádání najdete v následujících článcích:
+Další informace o osvědčených postupech pro vyhrazený fond SQL a SQL Server bez serveru najdete v následujících článcích:
 
-- [Osvědčené postupy pro fond SQL](best-practices-sql-pool.md)
-- [Osvědčené postupy pro SQL na vyžádání](best-practices-sql-on-demand.md)
+- [Osvědčené postupy pro vyhrazený fond SQL](best-practices-sql-pool.md)
+- [Osvědčené postupy pro fond SQL bez serveru](best-practices-sql-on-demand.md)
 
 

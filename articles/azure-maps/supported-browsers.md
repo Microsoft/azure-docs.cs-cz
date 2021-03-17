@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002928"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384465"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 
-Sada Azure Maps Web SDK poskytuje pomocnou funkci nazvanou [Atlas. podporuje](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Tato funkce zjistí, zda má webový prohlížeč minimální sadu funkcí WebGL potřebných pro podporu načítání a vykreslování mapového ovládacího prvku. Tady je příklad použití funkce:
+Sada Azure Maps Web SDK poskytuje pomocnou funkci nazvanou [Atlas. podporuje](/javascript/api/azure-maps-control/atlas#issupported-boolean-). Tato funkce zjistí, zda má webový prohlížeč minimální sadu funkcí WebGL potřebných pro podporu načítání a vykreslování mapového ovládacího prvku. Tady je příklad použití funkce:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -36,7 +36,7 @@ Sada Azure Maps Web SDK podporuje následující desktopové prohlížeče:
 - Microsoft Edge (aktuální a předchozí verze)
 - Google Chrome (aktuální a předchozí verze)
 - Mozilla Firefox (aktuální a předchozí verze)
-- Apple Safari (Mac OS X) (aktuální a předchozí verze)
+- Apple Safari (macOS X) (aktuální a předchozí verze)
 
 Viz také [cílení na starší verze prohlížečů](#Target-Legacy-Browsers) dále v tomto článku.
 
@@ -63,7 +63,7 @@ V Node.js jsou podporovány také následující moduly web SDK:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cílové starší verze prohlížečů
 
-Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, nebo které mají jenom omezenou podporu. V takových případech doporučujeme, abyste používali Azure Maps služby společně s open source mapovým ovládacím prvkem, jako je například [leták](https://leafletjs.com/). Tady je příklad:
+Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, nebo které mají jenom omezenou podporu. V takových případech doporučujeme, abyste používali Azure Maps služby společně s open source mapovým ovládacím prvkem, jako je například [leták](https://leafletjs.com/). Tady je příklad, který využívá open source [modul plug-in Azure Maps leták](https://github.com/azure-samples/azure-maps-leaflet).
 
 <br/>
 
@@ -71,13 +71,14 @@ Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, neb
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + leták</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+Další ukázky kódu používající Azure Maps v letáku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?search=leaflet).
+
+[Zde](open-source-projects.md#third-part-map-control-plugins) je několik oblíbených open source mapových ovládacích prvků, které Azure Maps tým vytvořil modul plug-in pro.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Maps Web SDK:
 
-> [!div class="nextstepaction"]
-> [Mapový ovládací prvek](how-to-use-map-control.md)
+[Mapový ovládací prvek](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [Modul služeb](how-to-use-services-module.md)
+[Modul služeb](how-to-use-services-module.md)

@@ -4,12 +4,12 @@ description: Provést hromadnou nápravu pomocí rychlé opravy v Advisoru
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518058"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90968588"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Rychlá oprava nápravy pro poradce
 **Rychlá oprava** umožňuje rychlejší a snazší způsob nápravy doporučení na více prostředků. Poskytuje možnost pro hromadné nápravy prostředků a pomáhá optimalizovat vaše předplatné rychleji díky nápravě ve velkém rozsahu pro vaše prostředky.
@@ -20,13 +20,13 @@ Tato funkce je k dispozici pouze pro určitá doporučení prostřednictvím Azu
 
 1. V seznamu doporučení s popisem **rychlé opravy** klikněte na doporučení.
 
-   ![Rychlá oprava Advisoru](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Snímek obrazovky Azure Advisor, který zobrazuje popisky rychlých oprav v doporučeních.}":::
    
    *Ceny v imagi jsou třeba jenom pro účely.*
 
 2. Na stránce s podrobnostmi o doporučení uvidíte seznam prostředků, pro které máte toto doporučení. Vyberte všechny prostředky, které chcete opravit pro doporučení.
 
-   ![Rychlá oprava Advisoru](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Snímek obrazovky Azure Advisor, který zobrazuje popisky rychlých oprav v doporučeních.}":::
    
    *Ceny v imagi jsou třeba jenom pro účely.*
 
@@ -44,7 +44,7 @@ Tato funkce je k dispozici pouze pro určitá doporučení prostřednictvím Azu
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o doporučeních služby Advisor najdete v těchto tématech:
-* [Úvod do Azure Advisor](advisor-overview.md)
+* [Seznámení s Azure Advisorem](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
 * [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)

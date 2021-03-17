@@ -1,28 +1,28 @@
 ---
-title: Šifrování na straně klienta pomocí Java pro Microsoft Azure Storage | Microsoft Docs
+title: Client-Side šifrování pomocí Java pro Microsoft Azure Storage | Microsoft Docs
 description: Klientská knihovna Azure Storage pro jazyk Java podporuje šifrování a integraci na straně klienta s Azure Key Vault pro zajištění maximálního zabezpečení pro vaše Azure Storage aplikace.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: 230fac982e19c1106aa5757c9bf1c32d192740d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314505"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043724"
 ---
-# <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault pomocí Java pro Microsoft Azure Storage
+# <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Client-Side šifrování a Azure Key Vault pomocí Java pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Přehled
-[Klientská knihovna Azure Storage pro jazyk Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) podporuje šifrování dat v rámci klientských aplikací před odesláním do Azure Storage a dešifrování dat při stahování do klienta. Knihovna také podporuje integraci s [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů účtu úložiště.
+[Klientská knihovna Azure Storage pro jazyk Java](https://search.maven.org/artifact/com.azure/azure-storage-blob-cryptography) podporuje šifrování dat v rámci klientských aplikací před odesláním do Azure Storage a dešifrování dat při stahování do klienta. Knihovna také podporuje integraci s [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů účtu úložiště.
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Šifrování a dešifrování prostřednictvím techniky obálek
 Procesy šifrování a dešifrování se řídí způsobem obálky.  
@@ -48,7 +48,7 @@ Dešifrování prostřednictvím techniky obálek funguje následujícím způso
 Klientská knihovna pro úložiště používá [algoritmus AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , aby se šifroval data uživatelů. Konkrétně režim [řetězení bloků šifry (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) s AES. Každá služba funguje trochu jinak, takže se na ně podíváme každý z nich.
 
 ### <a name="blobs"></a>Objekty blob
-Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. Šifrování je konkrétně podporováno, pokud uživatelé používají metody **Upload*** nebo **openOutputStream** . V případě souborů ke stažení jsou podporovány obě položky pro stahování dokončených i rozsahů.  
+Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. Šifrování je konkrétně podporováno, pokud uživatelé používají metody **Upload** _ nebo _ *openOutputStream**. V případě souborů ke stažení jsou podporovány obě položky pro stahování dokončených i rozsahů.  
 
 Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (IV) o 16 bajtech, společně s náhodným šifrovacím klíčem obsahu (CEK) 32 bajtů a provede šifrování obálky dat objektů BLOB pomocí těchto informací. Zabalené CEK a některá další šifrovací metadata se pak ukládají jako metadata objektů BLOB společně s šifrovaným objektem BLOB ve službě.
 
@@ -154,6 +154,12 @@ Použijte například **CloudBlobClient. getDefaultRequestOptions (). setRequire
 ### <a name="blob-service-encryption"></a>Blob service šifrování
 Vytvořte objekt **BlobEncryptionPolicy** a nastavte ho v možnostech žádosti (na rozhraní API nebo na úrovni klienta pomocí **DefaultRequestOptions**). Všechny ostatní budou zpracovávány v interní knihovně klienta.
 
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
+
 ```java
 // Create the IKey used for encryption.
 RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -172,9 +178,16 @@ blob.upload(stream, size, null, options, null);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Služba front šifrování
 Vytvořte objekt **QueueEncryptionPolicy** a nastavte ho v možnostech žádosti (na rozhraní API nebo na úrovni klienta pomocí **DefaultRequestOptions**). Všechny ostatní budou zpracovávány v interní knihovně klienta.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -192,11 +205,18 @@ queue.addMessage(message, 0, 0, options, null);
 // Retrieve message
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
+---
 
 ### <a name="table-service-encryption"></a>Table service šifrování
 Kromě vytváření zásad šifrování a jejich nastavení v možnostech žádosti musíte buď zadat **EncryptionResolver** v **TableRequestOptions**, nebo nastavit atribut [Encrypt] pro metodu getter a setter entity.
 
 ### <a name="using-the-resolver"></a>Použití překladače
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -228,9 +248,16 @@ retrieveOptions.setEncryptionPolicy(policy);
 TableOperation operation = TableOperation.retrieve(ent.PartitionKey, ent.RowKey, DynamicTableEntity.class);
 TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ```
+---
 
 ### <a name="using-attributes"></a>Použití atributů
 Jak je uvedeno výše, pokud entita implementuje TableEntity, pak vlastnosti getter a setter lze dekorovat pomocí atributu [Encrypt] namísto zadání **EncryptionResolver**.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 private string encryptedProperty1;
@@ -245,6 +272,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
     this.encryptedProperty1 = encryptedProperty1;
 }
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Šifrování a výkon
 

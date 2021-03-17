@@ -7,11 +7,11 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322115"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010414"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Naplánujte a spusťte úkoly pro souvislé data pomocí posuvné aktivační události okna v Azure Logic Apps
 
@@ -38,7 +38,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
 ## <a name="add-sliding-window-trigger"></a>Přidat aktivační událost posuvných oken
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po zobrazení návrháře aplikace logiky zadejte do vyhledávacího pole `sliding window` jako filtr. V seznamu triggery vyberte aktivační událost **posuvných oken** jako první krok v pracovním postupu aplikace logiky.
 
@@ -50,8 +50,8 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Description |
    |----------|----------|-----------|------|-------------|
-   | **Doba** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Yes | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Interval** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden** nebo **měsíc** |
    ||||||
 
    ![Rozšířené možnosti opakování](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)

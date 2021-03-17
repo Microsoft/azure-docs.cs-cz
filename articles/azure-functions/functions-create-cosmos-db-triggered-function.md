@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621773a84db99dbacfaa163f77189974ba102163
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829835"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034811"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -22,12 +22,13 @@ Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve 
 
 Pro absolvování tohoto kurzu potřebujete:
 
-+ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
++ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
@@ -36,7 +37,7 @@ Před vytvořením triggeru potřebujete účet služby Azure Cosmos DB, který 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App
+## <a name="create-a-function-app-in-azure"></a>Vytvoření aplikace funkcí v Azure
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -62,11 +63,11 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | **Název databáze** | Úlohy | Název databáze, která obsahuje kolekci, která se má monitorovat |
     | **Název kolekce** | Položky | Název kolekce, která se má monitorovat |
     | **Název kolekce pro zapůjčení** | leases | Název kolekce, do které se mají ukládat zapůjčení |
-    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Yes | Kontroluje existenci kolekce zapůjčení a automaticky ji vytvoří. |
+    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Ano | Kontroluje existenci kolekce zapůjčení a automaticky ji vytvoří. |
 
     :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Vytvoření funkce aktivované službou Azure Cosmos DB":::
 
-1. Vyberte **vytvořit funkci**. 
+1. Vyberte **Vytvořit funkci**. 
 
     Azure vytvoří funkci triggeru Cosmos DB.
 
@@ -88,11 +89,11 @@ V dalším kroku se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` k
 
 1. Zvolte váš účet služby Azure Cosmos DB a vyberte **Průzkumník dat**. 
 
-1. V části **SQL API**zvolte možnost databáze **úkolů** a vyberte **Nový kontejner**.
+1. V části **SQL API** zvolte možnost databáze **úkolů** a vyberte **Nový kontejner**.
 
     ![Vytvoření kontejneru](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. V části **Přidat kontejner**použijte nastavení uvedená v tabulce pod obrázkem. 
+1. V části **Přidat kontejner** použijte nastavení uvedená v tabulce pod obrázkem. 
 
     ![Definování kontejneru úkoly](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
@@ -100,7 +101,7 @@ V dalším kroku se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` k
     | ---|---|--- |
     | **ID databáze** | Úlohy |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
     | **ID kontejneru** | Položky | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
-    | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý při vytváření výkonného kontejneru. | 
+    | **[Klíč oddílu](../cosmos-db/partitioning-overview.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý při vytváření výkonného kontejneru. | 
     | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |    
 
 1. Kliknutím na tlačítko **OK** vytvořte kontejner položek. Vytvoření kontejneru může trvat krátkou dobu.
@@ -109,7 +110,7 @@ Po tom, co kontejner zadaný ve vazbě funkce existuje, můžete funkci otestova
 
 ## <a name="test-the-function"></a>Testování funkce
 
-1. Rozbalte kontejner nové **položky** v Průzkumník dat, zvolte položku **položky**a vyberte možnost **Nová položka**.
+1. Rozbalte kontejner nové **položky** v Průzkumník dat, zvolte položku **položky** a vyberte možnost **Nová položka**.
 
     :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Vytvoření položky v kontejneru položek":::
 

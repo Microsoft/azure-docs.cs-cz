@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f67cc019e8e7d4da4b0db1c0bbfdb6ee1cd495d7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561865"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131866"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>Možnosti filtrování a seskupení v analýze nákladů
 
@@ -48,10 +49,10 @@ V následující tabulce jsou uvedené některé nejběžnější možnosti sesk
 | **Název služby** nebo **Kategorie měřiče** | Chcete rozdělit náklady podle služby Azure. | Nákupy a využití Marketplace se zobrazí jako **Nepoužitelné** nebo **nepřiřazeno**. |
 | **Úroveň služby** nebo **Podkategorie měřiče** | Chcete rozdělit náklady podle dílčí klasifikace měřičů využití Azure. | Nákupy a využití Marketplace se zobrazí jako **Nepoužitelné** nebo **nepřiřazeno**. |
 | **Předplatné** | Chcete rozdělit náklady podle předplatného Azure a propojeného účtu AWS. | Nákupy a prostředky tenanta se můžou zobrazit jako **Nepoužitelné**. |
-| **Tag** | Chcete rozdělit náklady podle hodnot značky pro určitý klíč značky. | Značky nejsou k dispozici pro nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatných nenasazené do skupiny prostředků nebo klasické prostředky. Některé služby nezahrnují značky do údajů o využití. Přečtěte si také další informace o [podpoře značek pro jednotlivé typy prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
+| **Tag** | Chcete rozdělit náklady podle hodnot značky pro určitý klíč značky. | Značky nejsou k dispozici pro nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatných nenasazené do skupiny prostředků nebo klasické prostředky. Některé služby nezahrnují značky do údajů o využití. Přečtěte si také další informace o [podpoře značek pro jednotlivé typy prostředků](../../azure-resource-manager/management/tag-support.md). |
 
 Další informace o použitých termínech najdete v článku s [vysvětlením termínů používaných v souboru o využití Azure a poplatcích](../understand/understand-usage.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začínáme s analýzou nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)
+- [Začínáme s analýzou nákladů](./quick-acm-cost-analysis.md)

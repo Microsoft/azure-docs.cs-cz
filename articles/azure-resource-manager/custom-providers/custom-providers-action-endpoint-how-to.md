@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650393"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Přidání vlastních akcí do Azure REST API
@@ -114,7 +114,7 @@ Content-Type: application/json; charset=utf-8
 Existují dva hlavní způsoby volání vlastní akce od vlastního poskytovatele prostředků:
 
 - Azure CLI
-- Šablony Azure Resource Manager
+- Šablony Azure Resource Manageru
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -132,9 +132,9 @@ az resource invoke-action --action {actionName} \
 
 Parametr | Povinné | Popis
 ---|---|---
-action | *Ano* | Název akce definované v **ResourceProvider**.
+akce | *Ano* | Název akce definované v **ResourceProvider**.
 identifikační | *Ano* | ID prostředku **ResourceProvider**.
-tělo žádosti | *Ne* | Text žádosti, který se odešle do **koncového bodu**.
+tělo žádosti | *ne* | Text žádosti, který se odešle do **koncového bodu**.
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -188,7 +188,7 @@ Parametr | Povinné | Popis
 ---|---|---
 resourceIdentifier | *Ano* | ID prostředku **ResourceProvider**.
 apiVersion | *Ano* | Verze rozhraní API modulu runtime prostředků Tato možnost by měla být vždy "2018-09-01-Preview".
-functionValues | *Ne* | Text žádosti, který se odešle do **koncového bodu**.
+functionValues | *ne* | Text žádosti, který se odešle do **koncového bodu**.
 
 ## <a name="next-steps"></a>Další kroky
 

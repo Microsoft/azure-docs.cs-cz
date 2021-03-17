@@ -3,14 +3,18 @@ title: 'Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Stu
 description: V tomto rychlém startu se dozvíte, jak pomocí sady Visual Studio vytvořit a publikovat funkci Azure Functions triggeru HTTP.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
+ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701385"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
 
@@ -18,7 +22,7 @@ V tomto článku vytvoříte pomocí sady Visual Studio funkci založenou na kni
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit tento kurz, nejprve nainstalujte [Visual Studio 2019](https://azure.microsoft.com/downloads/). Během instalace se ujistěte, že jste vybrali **vývojovou úlohu Azure** . Pokud chcete vytvořit Azure Functions projekt pomocí sady Visual Studio 2017, je třeba nejprve nainstalovat [nejnovější nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version).
 
@@ -36,7 +40,7 @@ Visual Studio vytvoří projekt a třídu, která obsahuje často používaný k
 
 `FunctionName`Atribut Method nastaví název funkce, která je ve výchozím nastavení generována jako `Function1` . Vzhledem k tomu, že nástroje neumožňují při vytváření projektu přepsat výchozí název funkce, vytvoření lepšího názvu pro třídu funkce, soubor a metadata vydejte za minutu.
 
-1. V **Průzkumníku souborů**klikněte pravým tlačítkem na soubor function1.cs a přejmenujte ho na `HttpExample.cs` .
+1. V **Průzkumníku souborů** klikněte pravým tlačítkem na soubor function1.cs a přejmenujte ho na `HttpExample.cs` .
 
 1. V kódu přejmenujte třídu Function1 na ' HttpExample '.
 
@@ -60,7 +64,7 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
-1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné > **App Services**a vyberte svou novou aplikaci Function App.
+1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné > **App Services** a vyberte svou novou aplikaci Function App.
 
 1. Klikněte pravým tlačítkem na aplikaci Function App a vyberte **otevřít v prohlížeči**. Tím se otevře kořen vaší aplikace Function App ve výchozím webovém prohlížeči a zobrazí se stránka, která indikuje, že je spuštěná vaše aplikace Function App. 
 
@@ -80,7 +84,7 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud plánujete pracovat s dalšími rychlými starty, kurzy nebo se všemi službami, které jste v tomto rychlém startu vytvořili, neprovádějte čištění prostředků.
 
-*Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků*a odstraněním skupiny můžete všechno odstranit ze skupiny. 
+*Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků* a odstraněním skupiny můžete všechno odstranit ze skupiny. 
 
 Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prostředky se vám mohou fakturovat, a to v závislosti na [stavu účtu](https://azure.microsoft.com/account/) a [cenách služeb](https://azure.microsoft.com/pricing/). Pokud prostředky už nepotřebujete, můžete k jejich odstranění použít tento postup:
 

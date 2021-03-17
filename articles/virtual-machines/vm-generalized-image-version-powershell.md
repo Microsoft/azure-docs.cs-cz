@@ -3,18 +3,18 @@ title: Vytvoření virtuálního počítače z generalizované image
 description: Vytvořte virtuální počítač pomocí generalizované image v galerii sdílených imagí.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 68a0db9113c705134084fb5291eb267b7a31fba0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dbe1e31a9b56f2f60edbebd8286bf0bfdeaa327e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525802"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560956"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>Vytvoření virtuálního počítače pomocí generalizované image 
 
@@ -59,6 +59,7 @@ New-AzVM `
    -Location $location `
    -Name $vmName `
    -Image $imageDefinition.Id
+   -Credential $cred
 ```
 
 
@@ -145,7 +146,7 @@ New-AzVM `
 
 
 ## <a name="next-steps"></a>Další kroky
-[Azure image Builder (Preview)](./windows/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./windows/image-builder-gallery-update-image-version.md). 
+[Azure image Builder (Preview)](./image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./windows/image-builder-gallery-update-image-version.md). 
 
 Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 
@@ -154,4 +155,4 @@ Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí.
 - [Vytvoření verze image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Další informace o galeriích sdílených imagí najdete v [přehledu](./windows/shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](./windows/troubleshooting-shared-images.md).
+Další informace o galeriích sdílených imagí najdete v [přehledu](./shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).

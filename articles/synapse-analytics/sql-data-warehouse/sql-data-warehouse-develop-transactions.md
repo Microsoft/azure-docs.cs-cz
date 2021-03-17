@@ -1,5 +1,5 @@
 ---
-title: Použití transakcí v synapse fondu SQL
+title: Použití transakcí ve fondu SQL ve službě Azure synapse Analytics
 description: Tento článek obsahuje tipy pro implementaci transakcí a vývoj řešení v synapse fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8144c588d4b6794cadc0577bf63dabc2cc3e0efd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213376"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677282"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>Použití transakcí v synapse fondu SQL
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Použití transakcí ve fondu SQL ve službě Azure synapse 
 
 Tento článek obsahuje tipy pro implementaci transakcí a vývoj řešení ve fondu SQL.
 
@@ -27,9 +28,9 @@ Jak byste očekávali, fond SQL podporuje transakce jako součást úlohy datov�
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
 
-Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
+Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku zapnutím možnosti databáze READ_COMMITTED_SNAPSHOT pro uživatelský fond SQL, když se připojíte k hlavní databázi.  
 
-Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="transaction-size"></a>Velikost transakce
 
@@ -44,7 +45,7 @@ V následující tabulce byly provedeny dvě předpoklady:
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
+| [DWU](./sql-data-warehouse-overview-what-is.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4 000 000 |240 000 000 |
 | DW200c |1.5 |60 |90 |6 000 000 |360 000 000 |
@@ -55,17 +56,17 @@ V následující tabulce byly provedeny dvě předpoklady:
 | DW1500c |11,25 |60 |675 |45 000 000 |2 700 000 000 |
 | DW2000c |15 |60 |900 |60 000 000 |3 600 000 000 |
 | DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
-| DW3000c |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
-| DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
+| DW3000c |22.5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW5000c |37.5 |60 |2 250 |150 000 000 |9 000 000 000 |
 | DW6000c |45 |60 |2 700 |180 000 000 |10 800 000 000 |
 | DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
 | DW10000c |75 |60 |4 500 |300 000 000 |18 000 000 000 |
-| DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
+| DW15000c |112.5 |60 |6 750 |450 000 000 |27 000 000 000 |
 | DW30000c |225 |60 |13 500 |900 000 000 |54 000 000 000 |
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
+| [DWU](./sql-data-warehouse-overview-what-is.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | OD DW100 |1 |60 |60 |4 000 000 |240 000 000 |
 | DW200 |1.5 |60 |90 |6 000 000 |360 000 000 |
@@ -77,7 +78,7 @@ V následující tabulce byly provedeny dvě předpoklady:
 | DW1200 |9 |60 |540 |36 000 000 |2 160 000 000 |
 | DW1500 |11,25 |60 |675 |45 000 000 |2 700 000 000 |
 | DW2000 |15 |60 |900 |60 000 000 |3 600 000 000 |
-| DW3000 |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW3000 |22.5 |60 |1 350 |90 000 000 |5 400 000 000 |
 | DW6000 |45 |60 |2 700 |180 000 000 |10 800 000 000 |
 
 Limit velikosti transakce je použit na transakci nebo operaci. Není aplikováno napříč všemi souběžnými transakcemi. Proto každá transakce má povoleno zapsat toto množství dat do protokolu.

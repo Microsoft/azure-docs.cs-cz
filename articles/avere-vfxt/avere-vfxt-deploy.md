@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272769"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342412"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -64,7 +64,7 @@ Zadejte následující informace:
 
 * **Uživatelské jméno kontroleru** – nastaví kořenové uživatelské jméno pro virtuální počítač řadiče clusteru.
 
-* **Typ ověřování** – pro připojení k řadiči vyberte buď možnost heslo, nebo ověření veřejného klíče SSH. Doporučuje se metoda veřejného klíče SSH; Pokud potřebujete podporu, přečtěte si, [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) .
+* **Typ ověřování** – pro připojení k řadiči vyberte buď možnost heslo, nebo ověření veřejného klíče SSH. Doporučuje se metoda veřejného klíče SSH; Pokud potřebujete podporu, přečtěte si, [jak vytvořit a používat klíče SSH](../virtual-machines/linux/ssh-from-windows.md) .
 
 * **Heslo** nebo **veřejný klíč SSH** – v závislosti na typu ověřování, který jste zvolili, musíte zadat veřejný klíč RSA nebo heslo do následujících polí. Toto pověření se používá společně s uživatelským jménem, které jste zadali dříve.
 

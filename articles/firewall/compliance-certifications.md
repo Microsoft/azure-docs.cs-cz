@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa61046ee87c1cac3c8a8bb93ed97b577019e016
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602716"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628437"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall certifikace
 
@@ -34,7 +34,7 @@ Následující Azure Firewall certifikace jsou pro globální Azure:
 - CFTC 1,31
 - Ověření identity CSA STAR
 - Certifikace pro CSA STAR
-- Samoobslužné vyhodnocování CSA STAR
+- Self-Assessment CSA STAR
 - Kanadské zákony na ochranu osobních údajů
 - DPP (SPOJENÉ KRÁLOVSTVÍ)
 - IAF EU DOKUMENT AGENTURY ENISA
@@ -48,7 +48,7 @@ Následující Azure Firewall certifikace jsou pro globální Azure:
 - GLBA (USA)
 - Německo C5
 - GxP (FDA 21 CFR, část 11)
-- HIPPA
+- HIPAA
 - HITECH Act (US)
 - HITRUST
 - ISO 20000-1:2011

@@ -1,22 +1,18 @@
 ---
 title: Poznámky k verzi pro Bránu pro správu dat
 description: Zpráva k vydání verze služby Správa dat Gateway tory
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194470"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363912"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
 > [!NOTE]
@@ -26,7 +22,7 @@ Jedním z problémů pro moderní integraci dat je přesun dat do cloudu a z mí
 
 Podrobné informace o Správa dat bráně a způsobu jejich použití najdete v následujících článcích:
 
-*  [Brána Správa dat](data-factory-data-management-gateway.md)
+*  [Brána správy dat](data-factory-data-management-gateway.md)
 *  [Přesun dat mezi místním prostředím a cloudem pomocí Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 
@@ -39,19 +35,19 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 ## <a name="earlier-versions"></a>Starší verze
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Prvky
-- Do seznamu povolených IP adres služby Azure můžete přidat položky DNS (Pokud je potřeba). Odpovídající položku DNS najdete na Azure Portal (Data Factory-> ' Author a deploy '-> ' – > "serviceUrls" (ve formátu JSON)
+- Můžete přidat záznamy DNS a povolit tak službě Service Bus místo povolení všech IP adres Azure z brány firewall (Pokud je potřeba). Odpovídající položku DNS najdete na Azure Portal (Data Factory-> ' Author a deploy '-> ' – > "serviceUrls" (ve formátu JSON)
 - Služba HDFS Connector teď podporuje veřejný certifikát podepsaný svým držitelem, protože umožňuje přeskočit ověřování TLS.
 - Opraveno: problém s bránou v režimu offline během aktualizace (kvůli posunu hodin)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Prvky
--   Do seznamu povolených adres můžete přidat položky DNS Service Bus místo toho, aby se všechny IP adresy Azure v bráně firewall (v případě potřeby) nepřidaly. Další podrobnosti najdete tady.
--   Nyní můžete kopírovat data do nebo z jednoho objektu blob bloku až do 4,75 TB, což je maximální podporovaná velikost objektu blob bloku. (předchozí omezení bylo 195 GB).
--   Opraveno: nedostatek paměti při rozzipováváí několika malých souborů během aktivity kopírování.
--   Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do SQL Server s funkcí idempotence.
--   Opraveno: skript SQL Cleanup nefunguje s SQL Server z Průvodce kopírováním.
--   Opraveno: název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
+-    Můžete přidat položky DNS, které povolí Service Bus místo povolení všech IP adres Azure z brány firewall (Pokud je potřeba). Další podrobnosti najdete tady.
+-    Nyní můžete kopírovat data do nebo z jednoho objektu blob bloku až do 4,75 TB, což je maximální podporovaná velikost objektu blob bloku. (předchozí omezení bylo 195 GB).
+-    Opraveno: nedostatek paměti při rozzipováváí několika malých souborů během aktivity kopírování.
+-    Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do SQL Server s funkcí idempotence.
+-    Opraveno: skript SQL Cleanup nefunguje s SQL Server z Průvodce kopírováním.
+-    Opraveno: název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Prvky
@@ -64,7 +60,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 - Opraveno: nesprávný čtení desítkové hodnoty null od Oracle jako zdroje.
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>Co je nového
+### <a name="whats-new"></a>Novinky
 - Zákazníci můžou poskytnout zpětnou vazbu na možnosti registrace brány.
 - Podpora nového formátu komprese: ZIP (uprostřed)
 
@@ -81,7 +77,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>Co je nového
+### <a name="whats-new"></a>Novinky
 
 - Přihlašovací údaje zdroje dat teď můžete ukládat lokálně. Přihlašovací údaje jsou šifrované. Přihlašovací údaje ke zdroji dat se dají obnovit a obnovit pomocí záložního souboru, který se dá exportovat ze stávající brány, a to všechno místně.
 
@@ -198,7 +194,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 *  Podpora diagnostických nástrojů na Configuration Manager
 *  Podpora sloupců tabulek pro tabelární zdroje dat pro Azure Data Factory
-*  Podpora datového skladu SQL DW pro Azure Data Factory
+*  Podpora Azure synapse Analytics pro Azure Data Factory
 *  Podpora Reclusive v BlobSource a zdroji dat pro Azure Data Factory
 *  Podpora CopyBehavior – MergeFiles, PreserveHierarchy a FlattenHierarchy v BlobSink a jímka souborů s binární kopií pro Azure Data Factory
 *  Podpora průběhu kopírování sestav aktivit pro Azure Data Factory

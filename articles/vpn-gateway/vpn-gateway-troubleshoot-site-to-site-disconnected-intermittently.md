@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 02/10/2021
 ms.author: genli
-ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75862556"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369335"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Řešení potíží: Připojení site-to-site VPN k Azure se přerušovaně odpojuje
 
@@ -42,7 +42,7 @@ Ověřte typ brány virtuální sítě Azure:
 1. Zajistěte, aby byla virtuální síť, podsítě a rozsahy v definici **brány místní sítě** v Microsoft Azure stejné jako konfigurace na místním zařízení VPN.
 2. Ověřte, že se nastavení přidružení zabezpečení shodují.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3: Vyhledání tras definovaných uživatelem nebo skupin zabezpečení sítě v podsíti brány
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3 – vyhledání tras User-Defined nebo skupin zabezpečení sítě v podsíti brány
 
 Trasa definovaná uživatelem v podsíti brány může omezit určitý provoz a povolit další provoz. Tím se zobrazí, že připojení VPN není pro určitý provoz a dobré pro ostatní funkční. 
 
@@ -66,6 +66,5 @@ Funkce **Perfect Forward Secrecy** může způsobit problémy s odpojením. Poku
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace připojení typu Site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Konfigurace připojení typu Site-to-site k virtuální síti](./tutorial-site-to-site-portal.md)
 - [Konfigurace zásad IPsec/IKE pro připojení VPN typu Site-to-site](vpn-gateway-ipsecikepolicy-rm-powershell.md)
-

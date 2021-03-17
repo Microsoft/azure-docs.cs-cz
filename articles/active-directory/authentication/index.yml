@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.subservice: authentication
   ms.topic: landing-page
-  author: iainfoulds
-  ms.author: iainfou
+  author: justinha
+  ms.author: justinha
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: d06cc6f3c2d0d5033777a2f988d12ba7edb7be9c
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 5cec477161aa9a54e3338bdadc1823715e1f9488
+  ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77484090"
+  ms.lasthandoff: 12/06/2020
+  ms.locfileid: "96741437"
 landingContent:
 - title: Informace o ověřování
   linkLists:
@@ -51,21 +51,21 @@ landingContent:
       url: howto-sspr-deployment.md
     - text: Povolení resetování hesla z přihlašovací obrazovky Windows
       url: howto-sspr-windows.md
-- title: Povolení služby Azure Multi-Factor Authentication
+- title: Povolení vícefaktorového ověřování Azure AD
   linkLists:
   - linkListType: concept
     links:
-    - text: Jak funguje Azure Multi-Factor Authentication
+    - text: Jak funguje vícefaktorové ověřování Azure AD
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Povolení služby Azure Multi-Factor Authentication
+    - text: Povolení vícefaktorového ověřování Azure AD
       url: tutorial-enable-azure-mfa.md
-    - text: Zapnutí služby Azure Multi-Factor Authentication na základě rizikové události
+    - text: Zapnutí vícefaktorového ověřování Azure AD na základě rizikové události
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Průvodce nasazením pro Azure Multi-Factor Authentication
+    - text: Průvodce nasazením pro vícefaktorové ověřování Azure AD
       url: howto-mfa-getstarted.md
     - text: Integrace místních aplikací pomocí rozšíření serveru NPS
       url: howto-mfa-nps-extension.md
@@ -80,7 +80,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Konfigurace seznamu zakázaných hesel
-      url: howto-password-ban-bad-configure.md
+      url: ./tutorial-configure-custom-password-protection.md
   - linkListType: how-to-guide
     links:
     - text: Nasazení ochrany hesel Azure AD

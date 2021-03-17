@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: bd8c72593bf88289234ce281710b8be249e0966b
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-  ms.translationtype: HT
+  ms.date: 01/29/2021
+  ms.openlocfilehash: 9f9d2c694196b48aa4905a3783cb16609727b951
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85564503"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100099128"
 highlightedContent:
   items:
   - title: Přehled zásad správného řízení
@@ -28,9 +28,9 @@ highlightedContent:
   - title: Zásady správného řízení v architektuře přechodu na cloud
     itemType: architecture
     url: /azure/architecture/cloud-adoption/governance
-  - title: Zavedení a monitorování standardů infrastruktury pomocí služby Azure Policy
+  - title: Vytvoření strategie zásad správného řízení cloudu v Azure
     itemType: learn
-    url: /learn/modules/intro-to-governance/
+    url: /learn/modules/build-cloud-governance-strategy-azure/
 productDirectory:
   title: Komponenty a služby
   items:
@@ -113,8 +113,12 @@ additionalContent:
         url: /powershell/module/az.resources/#resources
       - text: Sada Azure SDK pro .NET
         url: /dotnet/api/overview/azure/managementgroups
+      - text: Azure SDK for Go
+        url: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
       - text: Azure SDK for JavaScript
         url: /javascript/api/@azure/arm-managementgroups/managementgroups
+      - text: Azure SDK pro Python
+        url: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
       - text: REST
         url: /rest/api/resources/managementgroups
       - text: Šablony Resource Manageru
@@ -124,10 +128,10 @@ additionalContent:
       - text: Azure CLI
         url: /cli/azure/policy
       - text: Azure PowerShell
-        url: /powershell/module/az.resources/#policies
+        url: /powershell/module/az.resources/#policy
         note: (zásady)
       - text: Azure PowerShell
-        url: /powershell/module/az.policyinsights#policy_insights
+        url: /powershell/module/az.policyinsights#policy-insights
         note: (Policy Insights)
       - text: Azure PowerShell
         url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
@@ -141,6 +145,9 @@ additionalContent:
       - text: REST
         url: /rest/api/resources/policydefinitions
         note: (definice)
+      - text: REST
+        url: /rest/api/resources/policyexemptions
+        note: (výjimky)
       - text: REST
         url: /rest/api/resources/policysetdefinitions
         note: (iniciativy)
@@ -185,7 +192,7 @@ additionalContent:
       - text: Azure CLI
         url: /cli/azure/ext/resource-graph/graph
       - text: Azure PowerShell
-        url: /powershell/module/az.resourcegraph/
+        url: /powershell/module/az.resourcegraph/#resourcegraph
       - text: Sada Azure SDK pro .NET
         url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
       - text: Sada Azure SDK pro .NET
@@ -194,7 +201,7 @@ additionalContent:
       - text: Azure SDK for Go
         url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
       - text: Azure SDK pro Javu
-        url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+        url: /java/api/overview/azure/resourcegraph/management
       - text: Azure SDK pro Javu
         url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
         note: (Maven)

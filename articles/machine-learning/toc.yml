@@ -6,30 +6,36 @@
     - name: Co je Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning vs Studio (classic)
-      displayName: 'AML, Studio, designer'
-      href: compare-azure-ml-to-studio-classic.md
+    - name: Co je Azure Machine Learning Studio?
+      displayName: 'AML, studio, designer'
+      href: overview-what-is-machine-learning-studio.md
     - name: Architektura a podmínky
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Kurzy
   expanded: true
   items:
-    - name: Python SDK
+    - name: Začínáme s Pythonem (1. den)
       expanded: true
       items:
-        - name: Vytvoření prvního experimentu ML
-          items:
-            - name: 1. Nastavení pracovního prostoru a vývojového prostředí
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. Trénování prvního modelu
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. Nastavení místního počítače
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Hello world
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. Trénování modelu
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. Přineste si vlastní data
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Poznámkové bloky Jupyter
+      items:
         - name: Klasifikace obrázků (data MNIST)
           items:
-            - name: 1. Učení modelu
+            - name: 1. Nastavení instance počítače
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Učení modelu
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. Nasazení modelu
+            - name: 3. Nasazení modelu
               href: tutorial-deploy-models-with-aml.md
         - name: Regrese s využitím automatizovaného strojového učení (data newyorské taxislužby)
           items:
@@ -64,39 +70,45 @@
         - name: Označení dat obrázku
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: Vytvoření prvního experimentu ML (R)
-          href: tutorial-1st-r-experiment.md
     - name: Rozhraní příkazového řádku
       items:
         - name: Trénování a nasazení s využitím CLI
           href: tutorial-train-deploy-model-cli.md
-        - name: Vytváření pracovních prostorů s využitím šablony ARM
-          displayName: Resource Manager
-          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Nastavení rozšíření Azure Machine Learningu
           href: tutorial-setup-vscode-extension.md
         - name: Trénování a nasazení modelu klasifikace obrázků TensorFlow
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Integrace Microsoft Power BI
+      items:
+        - name: 'Část 1: Trénování a nasazování modelů'
+          items:
+            - name: Použití poznámkových bloků (kód)
+              href: tutorial-power-bi-custom-model.md
+            - name: Použití designera
+              href: tutorial-power-bi-designer-model.md
+            - name: Použití automatizovaného strojového učení
+              href: tutorial-power-bi-automated-model.md
+        - name: 'Část 2: Využití v Power BI'
+          href: /power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context
 - name: ukázky
   items:
     - name: Poznámkové bloky Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Ukázkové úložiště
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Datové sady a ukázky designeru
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
     - name: Kompletní příklady MLOps
       href: 'https://github.com/microsoft/MLOps'
     - name: Otevřené datové sady (veřejné)
-      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
+      href: ../open-datasets/samples.md?context=azure%2fmachine-learning%2fcontext%2fml-context
 - name: Koncepty
   items:
-    - name: Verze Enterprise vs. Basic
-      href: concept-editions.md
     - name: Plánování a správa nákladů
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -106,9 +118,9 @@
           displayName: studio
           href: concept-designer.md
         - name: Tahák s algoritmy
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: Postup při výběru algoritmů
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: Automatizované strojové učení
       items:
         - name: Přehled automatizovaného strojového učení
@@ -136,7 +148,7 @@
         - name: Zpracování dat
           href: concept-optimize-data-processing.md
     - name: Trénování modelu
-      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      displayName: 'run config, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
     - name: Distribuované trénování
       displayName: 'parallellization, deep learning, deep neural network, dnn'
@@ -149,45 +161,21 @@
       href: concept-model-management-and-deployment.md
     - name: Přenositelnost modelů (ONNX)
       href: concept-onnx.md
+    - name: Opensourcové integrace
+      href: concept-open-source.md
     - name: Kanály ML
       href: concept-ml-pipelines.md
-    - name: Zabezpečení a připravenost na úrovni podniku
+    - name: Zabezpečení
       items:
+        - name: Přehled zabezpečení podniku
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-        - name: Podnikové zabezpečení a zásady správného řízení
-          items:
-            - name: Přehled zabezpečení podniku
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
-            - name: Správa uživatelů a skupin
-              href: how-to-assign-roles.md
-            - name: Použití virtuálních sítí
-              displayName: 'vnet, blob'
-              href: how-to-enable-virtual-network.md
-            - name: Použití Private Linku
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
-            - name: Zabezpečení webových služeb s využitím TLS
-              displayName: ssl
-              href: how-to-secure-web-service.md
-            - name: Zvýšení odolnosti
-              displayName: 'high availability, disaster recovery'
-              href: how-to-high-availability-machine-learning.md
-            - name: Použití identity Azure AD v nasazeních AKS
-              href: how-to-use-azure-ad-identity.md
-            - name: Opětovné vygenerování přístupových klíčů k úložišti
-              href: how-to-change-storage-access-key.md
-            - name: Použití Azure Firewallu
-              href: how-to-access-azureml-behind-firewall.md
-            - name: Zabezpečené kódování
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: Nastavení ověřování
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
-        - name: Monitorování Azure Machine Learningu
-          href: monitor-azure-machine-learning.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
+        - name: Šifrování dat
+          href: concept-data-encryption.md
     - name: Zodpovědné strojové učení
       items:
         - name: Přehled zodpovědného strojového učení
@@ -204,9 +192,64 @@
           href: concept-differential-privacy.md
 - name: Návody
   items:
+    - name: Zabezpečení
+      items:
+        - name: Správa identit a přístupu
+          items:
+            - name: Nastavení ověřování
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
+            - name: Správa uživatelů a skupin
+              href: how-to-assign-roles.md
+            - name: Použití spravovaných identit pro řízení přístupu
+              href: how-to-use-managed-identities.md
+            - name: Použití identity Azure AD v nasazeních AKS
+              href: how-to-use-azure-ad-identity.md
+        - name: Zabezpečení sítě
+          items:
+            - name: Přehled virtuálních sítí
+              displayName: 'vnet, blob'
+              href: how-to-network-security-overview.md
+            - name: Zabezpečené prostředky pracovního prostoru
+              displayName: 'vnet, workspace, container instance, container registry'
+              href: how-to-secure-workspace-vnet.md
+            - name: Zabezpečené prostředí pro trénování
+              displayName: vnet
+              href: how-to-secure-training-vnet.md
+            - name: Zabezpečené prostředí pro odvozování
+              displayName: vnet
+              href: how-to-secure-inferencing-vnet.md
+            - name: Použití studia ve virtuální síti
+              displayName: vnet
+              href: how-to-enable-studio-virtual-network.md
+            - name: Použití Private Linku
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
+            - name: Použití vlastní služby DNS
+              href: how-to-custom-dns.md
+            - name: Konfigurace zabezpečených webových služeb
+              displayName: 'ssl, tls'
+              href: how-to-secure-web-service.md
+            - name: Konfigurace brány firewall
+              href: how-to-access-azureml-behind-firewall.md
+        - name: Ochrana dat
+          items:
+            - name: Zvýšení odolnosti
+              displayName: 'high availability, disaster recovery'
+              href: how-to-high-availability-machine-learning.md
+            - name: Opětovné vygenerování přístupových klíčů k úložišti
+              href: how-to-change-storage-access-key.md
+        - name: Monitorování Azure Machine Learningu
+          href: monitor-azure-machine-learning.md
+        - name: Zabezpečené kódování
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
+        - name: Auditování a správa dodržování předpisů
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: Vytváření a správa pracovních prostorů
       items:
-        - name: Použití webu Azure Portal
+        - name: Použití webu Azure Portal nebo sady Python SDK
           href: how-to-manage-workspace.md
         - name: Použití Azure CLI
           href: how-to-manage-workspace-cli.md
@@ -215,13 +258,40 @@
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
+        - name: Odkaz na pracovní prostor Azure synapse Analytics
+          href: how-to-link-synapse-ml-workspaces.md
+    - name: Vytváření a správa výpočetních prostředků
+      items:
+        - name: Instance služby Compute
+          displayName: compute target
+          href: how-to-create-manage-compute-instance.md
+        - name: Výpočtový cluster
+          displayName: 'compute target, low priority, managed identity'
+          href: how-to-create-attach-compute-cluster.md
+        - name: Azure Kubernetes Service
+          displayName: 'AKS, inference'
+          href: how-to-create-attach-kubernetes.md
+        - name: Připojení vlastních
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-attach-compute-targets.md
+        - name: Použití sady Studio
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority, managed identity'
+          href: how-to-create-attach-compute-studio.md
     - name: Nastavení prostředí
       items:
         - name: Nastavení vývojových prostředí
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Spuštění poznámkových bloků Jupyter
-          href: how-to-run-jupyter-notebooks.md
+        - name: Nastavení prostředí studia
+          items:
+            - name: Vytváření a Správa souborů
+              href: how-to-manage-files.md
+              displayName: 'Jupyter, notebooks, clone, samples'
+            - name: Spuštění poznámkových bloků Jupyter
+              href: how-to-run-jupyter-notebooks.md
+            - name: Použití terminálu
+              href: how-to-access-terminal.md
+              displayName: 'git, github, clone, kernel, package'
         - name: Nastavení softwarových prostředí
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
@@ -237,6 +307,9 @@
         - name: Integrace Gitu
           displayName: github gitlab
           href: concept-train-model-git-integration.md
+        - name: Postup při řešení potíží s prostředími
+          displayName: 'troubleshoot, envrionment, debug, image'
+          href: how-to-troubleshoot-environments.md
     - name: Práce s daty
       items:
         - name: Označení dat
@@ -250,11 +323,14 @@
             - name: Vytváření datových sad s popisky
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Získání dat
+        - name: Získat & Příprava dat
           items:
             - name: Příjem dat s využitím Azure Data Factory
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
+            - name: Příprava dat pomocí Azure synapse
+              displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
+              href: how-to-data-prep-synapse-spark-pool.md
             - name: DevOps pro příjem dat
               displayName: 'data, ingestion, devops'
               href: how-to-cicd-data-ingestion.md
@@ -263,12 +339,18 @@
               href: how-to-designer-import-data.md
         - name: Přístup k datům
           items:
-            - name: Připojení ke službě Azure Storage
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+            - name: Připojení k úložišti Azure (Python)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Získání dat z úložiště dat
+            - name: Přístup k datům na základě identity na úložiště
+              displayName: 'blob, access, data lake, datastore, managed identity'
+              href: how-to-identity-based-data-access.md
+            - name: Získání dat z úložiště dat (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: Připojení k datům (uživatelské rozhraní)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: Správa a využívání dat
           items:
             - name: Trénování s datovými sadami
@@ -285,16 +367,12 @@
               href: how-to-differential-privacy.md
     - name: Trénování modelů
       items:
-        - name: Nastavení prostředí trénování
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+        - name: Konfigurace a odeslání trénovacího běhu
+          displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: Použití nástrojů pro odhady pro ML
-          items:
-            - name: Vytváření odhadů při trénování
-              href: how-to-train-ml-models.md
-            - name: Ladění hyperparametrů
-              displayName: parameter
-              href: how-to-tune-hyperparameters.md
+        - name: Ladění hyperparametrů
+          displayName: 'parameter, hyperparameter, hyperdrive'
+          href: how-to-tune-hyperparameters.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -303,6 +381,10 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: Trénování s využitím vlastní image Dockeru
+          href: how-to-train-with-custom-image.md
+        - name: Migrace z estimátorů do ScriptRunConfig
+          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Sledování a monitorování trénování
           items:
             - name: 'Spuštění, monitorování nebo zrušení běhů'
@@ -311,12 +393,9 @@
             - name: Povolení protokolů
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: Zobrazení protokolů
-              displayName: 'troubleshoot, log, files, tracing'
+            - name: Zobrazit protokoly a metriky pro spuštění
+              displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
-            - name: Sledování experimentů s využitím MLflow
-              displayName: 'log, monitor, metrics, Databricks'
-              href: how-to-use-mlflow.md
             - name: Vizualizace spuštění s využitím TensorBoardu
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md
@@ -336,6 +415,17 @@
           href: how-to-use-secrets-in-runs.md
         - name: Zpětnovazební učení
           href: how-to-use-reinforcement-learning.md
+    - name: Práce s využitím MLflow
+      items:
+        - name: Sledování experimentů s využitím MLflow
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-use-mlflow.md
+        - name: Sledování spuštění Azure Databricks s využitím MLflow
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-use-mlflow-azure-databricks.md
+        - name: Nasazení modelů MLflow
+          displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
+          href: how-to-deploy-mlflow-models.md
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       items:
@@ -344,6 +434,9 @@
           href: how-to-configure-auto-train.md
         - name: Použití automatizovaného strojového učení (rozhraní)
           href: how-to-use-automated-ml-for-ml-models.md
+        - name: Použití automatizovaného strojového učení s Databricks
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Použití vzdálených cílových výpočetních prostředí
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
@@ -361,6 +454,10 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: Principy grafů a metrik
           href: how-to-understand-automated-ml.md
+        - name: Použití modelu ONNX v aplikaci .NET
+          href: how-to-use-automl-onnx-model-dotnet.md
+        - name: Řešení potíží se službou Automated ML
+          href: how-to-troubleshoot-auto-ml.md
     - name: Nasazení a obsluha modelů
       items:
         - name: Kde a jak nasadit
@@ -392,11 +489,13 @@
             - name: Použití vlastní image Dockeru
               href: how-to-deploy-custom-docker-image.md
             - name: IoT Edge
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+              href: ../iot-edge/tutorial-deploy-machine-learning.md?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context
             - name: Odvozování FPGA
               href: how-to-deploy-fpga-web-service.md
-        - name: Řešení potíží a ladění
+        - name: Řešení potíží s nasazením
           href: how-to-troubleshoot-deployment.md
+        - name: Řešení potíží s nasazením (místní prostředí)
+          href: how-to-troubleshoot-deployment-local.md
         - name: Využívání webové služby
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
@@ -413,6 +512,8 @@
               href: how-to-enable-data-collection.md
             - name: Monitorování pomocí Application Insights
               href: how-to-enable-app-insights.md
+        - name: Vysoce výkonná obsluha s využitím Tritonu
+          href: how-to-deploy-with-triton.md
         - name: Průběžné nasazování modelů
           displayName: ci cd azure devops models
           href: how-to-deploy-continuously-deploy.md
@@ -422,6 +523,9 @@
         - name: Modely profilů
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: Nasazení modelů designeru
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: (Preview) Bez nasazení kódu
           displayName: no code
           href: how-to-deploy-no-code-deployment.md
@@ -432,11 +536,13 @@
       displayName: pipelines
       items:
         - name: Vytváření kanálů ML (Python)
-          href: how-to-create-your-first-pipeline.md
+          href: how-to-create-machine-learning-pipelines.md
         - name: Přesun dat kroků kanálu ML a mezi nimi (Python)
           href: how-to-move-data-in-out-of-pipelines.md
-        - name: Naplánování kanálu (Python)
-          href: how-to-schedule-pipelines.md
+        - name: Nasazování kanálů ML (Python)
+          href: how-to-deploy-pipelines.md
+        - name: Použití fondů Azure synapse Apache Spark v kanálu ML (Python)
+          href: how-to-use-synapsesparkstep.md
         - name: Aktivace kanálu
           href: how-to-trigger-published-pipeline.md
         - name: Designer (přetahování)
@@ -456,23 +562,19 @@
             - name: Spouštění kódu v Pythonu
               displayName: 'feature extraction, feature engineering'
               href: how-to-designer-python.md
-        - name: Ladění a řešení potíží s kanály
+        - name: Řešení potíží s kanály
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Protokolování dat kanálů do Application Insights
           href: how-to-log-pipelines-application-insights.md
-        - name: Použití kroku paralelního spuštění
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
-        - name: Ladění a řešení potíží s krokem paralelního spuštění
+        - name: Řešení potíží s třídou ParallelRunStep
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: Iterace a vývoj kanálů strojového učení
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: Azure Pipelines pro CI/CD
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
+    - name: GitHub Actions pro CI/CD
+      href: how-to-github-actions-machine-learning.md
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md
@@ -492,7 +594,7 @@
   items:
     - name: Python SDK
       displayName: 'api, core, package, python, class'
-      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+      href: /python/api/overview/azure/ml/intro
     - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
@@ -500,7 +602,7 @@
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azureml/'
+      href: /rest/api/azureml/
     - name: Reference k modulu návrháře
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
@@ -508,6 +610,14 @@
       href: monitor-resource-reference.md
     - name: Reference YAML ke kanálu strojového učení
       href: reference-pipeline-yaml.md
+    - name: Parita suverénního cloudu
+      href: reference-machine-learning-cloud-parity.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: Kurátorovaná prostředí
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"
@@ -517,13 +627,14 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Omezení služby
+      href: resource-limits-quotas-capacity.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Známé problémy
-      displayName: 'bugs, errors, troubleshoot'
-      href: resource-known-issues.md
     - name: Uživatelské fórum
-      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
+      href: /answers/topics/azure-machine-learning.html
+    - name: Microsoft Learn
+      href: /learn/browse/?expanded=azure&products=azure-machine-learning
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Porovnání našich produktů ML
@@ -534,6 +645,3 @@
     - name: Funkce usnadnění pro návrháře
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
-    - name: Kurátorovaná prostředí
-      displayName: 'environments, curated environments'
-      href: resource-curated-environments.md

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
-ms.date: 01/26/2018
+ms.topic: tutorial
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 71f95b08584a46fccb0975cd9285150573ac02d4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535930"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218515"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Kurz: Konfigurace DocuSign pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte v DocuSign a Azure AD použ
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 *   Tenant Azure Active Directory.
 *   Předplatné s povoleným DocuSignm jednotným přihlašováním.
@@ -35,7 +35,7 @@ Azure Active Directory používá koncept nazvaný "přiřazení" k určení už
 
 Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci DocuSign. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace DocuSign podle pokynů uvedených tady:
 
-[Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>Důležité tipy pro přiřazení uživatelů k DocuSign
 
@@ -51,7 +51,7 @@ Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co
 V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v DocuSign na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!Tip]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro DocuSign, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit pro DocuSign jednu Sign-On založenou na SAML, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="to-configure-user-account-provisioning"></a>Konfigurace zřizování uživatelských účtů:
 
@@ -63,9 +63,9 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. Vyberte svou instanci DocuSign a pak vyberte kartu **zřizování** .
 
-1. Nastavte **režim zřizování** na **automaticky**. 
+1. Nastavte **Režim zřizování** na hodnotu **Automaticky**. 
 
-    ![zřizování](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky s kartou zřizování pro DocuSign v Azure Portal. Režim zřizování je nastaven na automatické a je zvýrazněné uživatelské jméno správce, heslo a testovací připojení.](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
    
@@ -84,7 +84,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé Docusign.**
 
-1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Docusign. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Docusign pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Docusign. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Docusign pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro DocuSign, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
@@ -94,7 +94,13 @@ Spustí počáteční synchronizaci všech uživatelů přiřazených k DocuSign
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="troubleshooting-tips"></a>Tipy pro řešení problémů
+* Zřizování role nebo profilu oprávnění pro uživatele v Docusign se dá provést pomocí výrazu v mapování atributů pomocí funkcí [Switch](../app-provisioning/functions-for-customizing-application-data.md#switch) a [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) . Například níže uvedený výraz zřídí ID "8032066", pokud má uživatel přiřazenou roli "DS admin" v Azure AD. Pokud uživatel nemá přiřazenou roli na straně Azure AD, nezřídí žádný profil oprávnění. ID se dá načíst z [portálu](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)Docusign.
+
+Switch (SingleAppRoleAssignment ([appRoleAssignments]); ""; "DS admin"; "8032066")
+
+
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

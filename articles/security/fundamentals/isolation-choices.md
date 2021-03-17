@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533899"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842834"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -38,7 +38,7 @@ Každý adresář služby Azure AD je oddělený od ostatních adresářů služ
 
 ### <a name="azure-tenancy"></a>Architektura Azure
 
-Azure tenant (předplatné Azure) odkazuje na vztah "Customer/fakturace" a jedinečného [tenanta](../../active-directory/develop/quickstart-create-new-tenant.md) v [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Izolace na úrovni tenanta v Microsoft Azure se dosahuje pomocí Azure Active Directory a [ovládacích prvků založených na rolích](../../role-based-access-control/overview.md) , které nabízí. Každé předplatné Azure je přidruženo k jednomu Azure Active Directory (AD) adresáři.
+Azure tenant (předplatné Azure) odkazuje na vztah "Customer/fakturace" a jedinečného [tenanta](../../active-directory/develop/quickstart-create-new-tenant.md) v [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Izolace na úrovni tenanta v Microsoft Azure se dosahuje pomocí Azure Active Directory a [řízení přístupu na základě role v Azure](../../role-based-access-control/overview.md) , které nabízí. Každé předplatné Azure je přidruženo k jednomu Azure Active Directory (AD) adresáři.
 
 Uživatelé, skupiny a aplikace z tohoto adresáře mohou spravovat prostředky v rámci předplatného Azure. Tato přístupová práva můžete přiřadit pomocí Azure Portal, nástrojů příkazového řádku Azure a rozhraní API pro správu Azure. Tenant Azure AD je logicky izolovaný pomocí hranic zabezpečení, takže žádný zákazník nemůže získat přístup k spoluklientům nebo ho ohrozit, ať už škodlivě, nebo omylem. Služba Azure AD běží na holých serverech, které jsou izolované na odděleném segmentu sítě, kde jsou filtrování paketů na úrovni hostitele a brána Windows Firewall blokuje nežádoucí připojení a provoz.
 
@@ -52,9 +52,9 @@ Uživatelé, skupiny a aplikace z tohoto adresáře mohou spravovat prostředky 
 
 - Fyzický přístup k serverům, které tvoří službu Azure AD a má přímý přístup k systémům back-end služby Azure AD, je omezený.
 
-- Uživatelé Azure AD nemají přístup k fyzickým prostředkům nebo umístěním, a proto není možné obejít kontroly logických zásad RBAC uvedené níže.
+- Uživatelé Azure AD nemají přístup k fyzickým prostředkům nebo umístěním, a proto není možné obejít kontrolu logických zásad Azure RBAC, které jsou uvedené níže.
 
-V případě potřeby diagnostiky a údržby je provozní model, který využívá systém zvýšení oprávnění za běhu, vyžadován a používán. Azure AD Privileged Identity Management (PIM) zavádí koncept oprávněného správce. Oprávnění [Správci](../../active-directory/privileged-identity-management/pim-configure.md) by měli být uživatelé, kteří potřebují privilegovaný přístup teď, ale ne každý den. Dokud uživatel nepotřebuje přístup, je tato role neaktivní. Jakmile uživatel bude přístup potřebovat, dokončí proces aktivace a na předem určenou dobu se stane aktivním správcem.
+V případě potřeby diagnostiky a údržby je provozní model, který využívá systém zvýšení oprávnění za běhu, vyžadován a používán. Azure AD Privileged Identity Management (PIM) zavádí koncept oprávněného správce. oprávnění [Správci](../../active-directory/privileged-identity-management/pim-configure.md) by měli být uživatelé, kteří potřebují privilegovaný přístup nyní, ale ne každý den. Dokud uživatel nepotřebuje přístup, je tato role neaktivní. Jakmile uživatel bude přístup potřebovat, dokončí proces aktivace a na předem určenou dobu se stane aktivním správcem.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -64,7 +64,7 @@ Koncept kontejnerů tenantů je hluboko v adresářové službě na všech vrstv
 
 I v případě, že jsou metadata z více Azure Active Directory tenantů uložena na stejném fyzickém disku, neexistuje žádná relace mezi kontejnery, která je definována adresářovou službou, která je následně vyřízena správcem klienta.
 
-### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role v Azure (Azure RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
 
 [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) pomáhá sdílet různé komponenty dostupné v rámci předplatného Azure tím, že poskytuje jemně odstupňovanou správu přístupu pro Azure. Azure RBAC umožňuje oddělení povinností v rámci vaší organizace a udělení přístupu na základě toho, co uživatelé potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v předplatném Azure nebo prostředcích můžete povolení jenom určitých akcí.
 
@@ -76,21 +76,21 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 - **Čtenář** si může zobrazit existující prostředky Azure.
 
-![Řízení přístupu na základě role v Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
+![Řízení přístupu na základě role Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Zbývající role Azure v Azure umožňují správu konkrétních prostředků Azure. Role Přispěvatel virtuálních počítačů například uživateli umožňuje vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 
-[Předdefinované role RBAC](../../role-based-access-control/built-in-roles.md) uvádějí role dostupné v Azure. Určuje operace a rozsah, které jednotlivé předdefinované role udělují uživatelům. Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, přečtěte si téma jak vytvořit [vlastní role v Azure RBAC](../../role-based-access-control/custom-roles.md).
+[Předdefinované role Azure](../../role-based-access-control/built-in-roles.md) uvádějí role dostupné v Azure. Určuje operace a rozsah, které jednotlivé předdefinované role udělují uživatelům. Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, přečtěte si téma jak vytvořit [vlastní role v Azure RBAC](../../role-based-access-control/custom-roles.md).
 
 Mezi další možnosti Azure Active Directory patří:
 
 - Azure AD podporuje jednotné přihlašování (SSO) k aplikacím SaaS bez ohledu na to, kde jsou hostované. Některé aplikace jsou federované pomocí Azure AD, jiné používají jednotné přihlašování pomocí hesla. Federované aplikace mohou také podporovat zřizování uživatelů a vytváření [hesel](https://www.techopedia.com/definition/31415/password-vault).
 
-- Přístup k datům v rámci [Azure Storage](https://azure.microsoft.com/services/storage/) je řízen prostřednictvím ověřování. Každý účet úložiště má primární klíč ([klíč účtu úložiště](../../storage/common/storage-create-storage-account.md)nebo SAK) a sekundární tajný klíč (sdílený přístupový podpis nebo SAS).
+- Přístup k datům v rámci [Azure Storage](https://azure.microsoft.com/services/storage/) je řízen prostřednictvím ověřování. Každý účet úložiště má primární klíč ([klíč účtu úložiště](../../storage/common/storage-account-create.md)nebo SAK) a sekundární tajný klíč (sdílený přístupový podpis nebo SAS).
 
-- Azure AD poskytuje identitu jako službu prostřednictvím federace pomocí [Active Directory Federation Services (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), synchronizace a replikace s místními adresáři.
+- Azure AD poskytuje identitu jako službu prostřednictvím federace pomocí [Active Directory Federation Services (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs), synchronizace a replikace s místními adresáři.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
+- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) je služba Multi-Factor Authentication, která vyžaduje, aby uživatelé ověřili přihlášení pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Dá se použít s Azure AD k zabezpečení místních prostředků pomocí serveru Azure Multi-Factor Authentication a také s vlastními aplikacemi a adresáři pomocí sady SDK.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně služby Active Directory bez nasazení řadičů domény. K těmto virtuálním počítačům se můžete přihlásit pomocí svých podnikových přihlašovacích údajů Active Directory a spravovat virtuální počítače připojené k doméně pomocí Zásady skupiny pro vymáhání standardních hodnot zabezpečení na všech virtuálních počítačích Azure.
 
@@ -119,7 +119,7 @@ Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnuj
 
 ### <a name="dedicated-hosts"></a>Vyhrazení hostitelé
 
-Kromě izolovaných hostitelů popsaných v předchozí části nabízí Azure také vyhrazené hostitele. Vyhrazení hostitelé v Azure je služba, která poskytuje fyzické servery, které můžou hostovat jeden nebo víc virtuálních počítačů a které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé poskytují izolaci hardwaru na úrovni fyzického serveru. Do hostitelů nebudou umístěny žádné další virtuální počítače. Vyhrazení hostitelé se nasazují ve stejných datových centrech a sdílejí stejnou síť a základní infrastrukturu úložiště jako ostatní, neizolované hostitele. Další informace najdete v podrobném přehledu [vyhrazených hostitelů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
+Kromě izolovaných hostitelů popsaných v předchozí části nabízí Azure také vyhrazené hostitele. Vyhrazení hostitelé v Azure je služba, která poskytuje fyzické servery, které můžou hostovat jeden nebo víc virtuálních počítačů a které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé poskytují izolaci hardwaru na úrovni fyzického serveru. Do hostitelů nebudou umístěny žádné další virtuální počítače. Vyhrazení hostitelé se nasazují ve stejných datových centrech a sdílejí stejnou síť a základní infrastrukturu úložiště jako ostatní, neizolované hostitele. Další informace najdete v podrobném přehledu [vyhrazených hostitelů Azure](../../virtual-machines/dedicated-hosts.md).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & izolaci kořenového operačního systému mezi kořenovým virtuálním počítačem & virtuálních počítačů hosta
 
@@ -194,7 +194,7 @@ Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti A
 
 ![Izolace pomocí řízení přístupu k úložišti](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Přístup k datům Azure Storage (včetně tabulek)** se dá řídit pomocí tokenu [SAS (sdíleného přístupového podpisu)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) , který uděluje oborový přístup. SAS se vytvoří pomocí šablony dotazu (URL) podepsané pomocí [sak (klíč účtu úložiště)](https://msdn.microsoft.com/library/azure/ee460785.aspx). Tato [podepsaná adresa URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) může být předána jinému procesu (to znamená delegovaný), který pak může vyplnit podrobnosti dotazu a vytvořit požadavek služby úložiště. SAS umožňuje udělit klientům přístup na základě času bez odhalení tajného klíče účtu úložiště.
+**Přístup k datům Azure Storage (včetně tabulek)** se dá řídit pomocí tokenu [SAS (sdíleného přístupového podpisu)](../../storage/common/storage-sas-overview.md) , který uděluje oborový přístup. SAS se vytvoří pomocí šablony dotazu (URL) podepsané pomocí [sak (klíč účtu úložiště)](/previous-versions/azure/reference/ee460785(v=azure.100)). Tato [podepsaná adresa URL](../../storage/common/storage-sas-overview.md) může být předána jinému procesu (to znamená delegovaný), který pak může vyplnit podrobnosti dotazu a vytvořit požadavek služby úložiště. SAS umožňuje udělit klientům přístup na základě času bez odhalení tajného klíče účtu úložiště.
 
 SAS znamená, že můžeme udělit omezená oprávnění klienta k objektům v našem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžeme udělit bez nutnosti sdílení přístupových klíčů k vašemu účtu.
 
@@ -225,13 +225,13 @@ V případě mnoha organizací je [šifrování dat v klidovém](isolation-choic
 
 - [Šifrování služby Storage](../../storage/blobs/security-recommendations.md) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
 - [Šifrování na straně klienta](../../storage/blobs/security-recommendations.md) také poskytuje funkci šifrování v klidovém umístění.
-- [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
+- [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) pro virtuální počítače pomáhá řešit požadavky organizace na zabezpečení a dodržování předpisů tím, že šifruje disky virtuálních počítačů (včetně spouštěcích a datových disků) pomocí klíčů a zásad, které řídíte v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+[Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) pro virtuální počítače pomáhá řešit požadavky organizace na zabezpečení a dodržování předpisů tím, že šifruje disky virtuálních počítačů (včetně spouštěcích a datových disků) pomocí klíčů a zásad, které řídíte v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Řešení pro šifrování disků pro Windows je založené na [Microsoft nástroj BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx)a řešení pro Linux je založené na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+Řešení pro šifrování disků pro Windows je založené na [Microsoft nástroj BitLocker Drive Encryption](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))a řešení pro Linux je založené na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
 Řešení podporuje následující scénáře pro virtuální počítače s IaaS, když jsou povolené v Microsoft Azure:
 
@@ -243,7 +243,7 @@ V případě mnoha organizací je [šifrování dat v klidovém](isolation-choic
 - Povolení šifrování na virtuálních počítačích s IaaS, na kterých běží klientský operační systém Windows
 - Povolení šifrování u svazků s cestami připojení
 - Povolení šifrování pro virtuální počítače se systémem Linux, které jsou konfigurovány pomocí diskového disku RAID, pomocí [mdadm](https://en.wikipedia.org/wiki/Mdadm)
-- Povolení šifrování pro virtuální počítače se systémem Linux pomocí [LVM (Správce logických svazků)](https://msdn.microsoft.com/library/windows/desktop/bb540532) pro datové disky
+- Povolení šifrování pro virtuální počítače se systémem Linux pomocí [LVM (Správce logických svazků)](/windows/win32/fileio/about-volume-management) pro datové disky
 - Povolení šifrování u virtuálních počítačů s Windows nakonfigurovaných pomocí prostorů úložiště
 - Podporují se všechny veřejné oblasti Azure.
 

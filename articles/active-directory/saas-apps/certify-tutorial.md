@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 8cf84165ef2b308038b6675920179262c0a2fdc9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: de558c73f1ca1721dfa3380e296617661ff4e859
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529895"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>Kurz: Azure Active Directory integrace s certifikovat
 
@@ -27,7 +27,7 @@ Integrace certifikace s Azure AD poskytuje následující výhody:
 * Můžete uživatelům povolit, aby se automaticky přihlásili k certifikaci (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -64,7 +64,7 @@ Pokud chcete nakonfigurovat integraci certifikace do Azure AD, musíte přidat c
 
 4. Do vyhledávacího pole zadejte **certifikovat**, vyberte **certifikovat** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Certifikovat v seznamu výsledků](common/search-new-app.png)
+    ![Certifikovat v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -74,7 +74,7 @@ Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz me
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí certifikace, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace certifikace jednotného přihlašování](#configure-certify-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurujte certifikaci jednotného přihlašování](#configure-certify-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořit certifikovat testovacího uživatele](#create-certify-test-user)** – pokaždé, když má Britta Simon, v certifikovat, který je propojený s reprezentací uživatele v Azure AD.
@@ -94,7 +94,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -104,7 +104,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     Do textového pole **identifikátor** zadejte adresu URL:  `https://www.certify.com`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificateraw.png)
 
@@ -118,7 +118,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-certify-single-sign-on"></a>Konfigurace certifikace jednotného přihlašování
+### <a name="configure-certify-single-sign-on"></a>Konfigurovat certifikaci Single Sign-On
 
 Chcete-li konfigurovat jednotné přihlašování na straně **certifikovat** , je nutné odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal k [certifikaci týmu podpory](mailto:support@certify.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -126,7 +126,7 @@ Chcete-li konfigurovat jednotné přihlašování na straně **certifikovat** , 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -139,21 +139,21 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k certifikaci.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **certifikovat**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **certifikovat**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **certifikovat**.
 
@@ -184,13 +184,12 @@ V této části se v certifikaci vytvoří uživatel s názvem Britta Simon. Cer
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici certifikovat na přístupovém panelu byste měli být automaticky přihlášeni k certifikovat, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici certifikovat na přístupovém panelu byste měli být automaticky přihlášeni k certifikovat, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

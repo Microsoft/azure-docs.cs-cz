@@ -2,17 +2,21 @@
 title: Automatické předávání Azure Service Bus entit zasílání zpráv
 description: Tento článek popisuje, jak zřetězit frontu Azure Service Bus nebo předplatné do jiné fronty nebo tématu.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 28c3e8985f12163e871fa4de5fb6cc92d68110b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/20/2021
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337730"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678984"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Zřetězení Service Bus entit pomocí procesu autopřesměrovávání
 
 Funkce *autopřesměrovávání* Service Bus umožňuje řetězit frontu nebo předplatné do jiné fronty nebo tématu, které je součástí stejného oboru názvů. Pokud je povoleno automatické přeposílání, Service Bus automaticky odebere zprávy, které jsou umístěny v první frontě nebo předplatném (zdroj), a umístí je do druhé fronty nebo tématu (cíle). Je stále možné odeslat zprávu cílové entitě přímo.
+
+> [!NOTE]
+> Základní Service Bus úrovně nepodporuje funkci dodávání. Úroveň Standard a Premium tuto funkci podporuje. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-autoforwarding"></a>Použití autopřesměrovávání
 
@@ -28,11 +32,11 @@ Cílová entita musí existovat v okamžiku, kdy je zdrojová entita vytvořena.
 
 K horizontálnímu navýšení kapacity jednotlivých témat můžete použít automatické přeposílání. Service Bus omezuje [počet předplatných v daném tématu](service-bus-quotas.md) na 2 000. Další předplatná můžete přizpůsobit vytvořením témat druhé úrovně. I v případě, že nejste vázáni omezením Service Bus pro počet předplatných, může přidání druhé úrovně témat zlepšit celkovou propustnost vašeho tématu.
 
-![Scénář automatického předávání][0]
+![Diagram scénáře automatického přeposílání znázorňující zprávu zpracovaná prostřednictvím tématu Orders, které lze rozvětvit na některé tři témata druhé úrovně objednávky.][0]
 
 K oddálení odesílatelů zpráv z přijímačů můžete použít také autopřesměrovávání. Představte si třeba systém ERP, který se skládá ze tří modulů: zpracování objednávek, Správa inventáře a Správa vztahů se zákazníky. Každý z těchto modulů generuje zprávy, které jsou zařazeny do odpovídajícího tématu. Alice a Bob jsou obchodní zástupci, kteří mají zájem o všechny zprávy, které se vztahují ke svým zákazníkům. Chcete-li přijímat tyto zprávy, Alice a Bob vytvoří osobní frontu a předplatné pro každé téma ERP, které automaticky předají všechny zprávy do fronty.
 
-![Scénář automatického předávání][1]
+![Diagram scénáře pro autopřesměrovávání zobrazující tři moduly zpracování, které odesílají zprávy prostřednictvím tří odpovídajících témat do dvou samostatných front.][1]
 
 Pokud Alice přijde na dovolenou, jeho osobní fronta místo tématu ERP vyplní. V tomto scénáři vzhledem k tomu, že prodejní zástupce neobdržel žádné zprávy, není k dispozici žádná z témat pro ERP.
 
@@ -51,6 +55,8 @@ Při zřetězení jednotlivých témat k získání složeného tématu s mnoha 
 Service Bus účtuje jednu operaci pro každou předanou zprávu. Například odeslání zprávy do tématu s 20 odběry, každé z nich nakonfigurované na automatického přeposílání zpráv do jiné fronty nebo tématu se účtuje jako 21 operací, pokud všechna předplatná na první úrovni obdrží kopii zprávy.
 
 Aby bylo možné vytvořit odběr zřetězený s jinou frontou nebo tématem, musí mít tvůrce předplatného oprávnění **Spravovat** ke zdrojové i cílové entitě. Odesílání zpráv do zdrojového tématu vyžaduje pouze oprávnění **Odeslat** ve zdrojovém tématu.
+
+Nevytvářejte řetěz, který překračuje 4 segmenty směrování. Zprávy, které překračují 4 segmenty směrování, jsou nedoručené.
 
 ## <a name="next-steps"></a>Další kroky
 

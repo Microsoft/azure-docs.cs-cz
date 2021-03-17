@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824123"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071638"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC modul se spouští na IoT Edge a poskytuje několik hraničních služeb OPCům a službám registru.
 
@@ -30,7 +33,7 @@ Jádrem modulu je identita správce. Správce spravuje vlákna koncového bodu, 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) . Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. V prostředí PowerShell spusťte následující příkazy:
+Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](/powershell/azure/azurerm/install-azurerm-ps) . Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. V prostředí PowerShell spusťte následující příkazy:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

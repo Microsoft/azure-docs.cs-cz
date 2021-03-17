@@ -1,30 +1,30 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – zabezpečení privátního cloudu
 description: Popisuje, jak zabezpečit řešení Azure VMware pomocí CloudSimple privátního cloudu.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e70745cd6e2f6a2a13581052f65e014bd0d0481
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829869"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899163"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Jak zabezpečit prostředí privátního cloudu
 
 Definujte řízení přístupu na základě role (RBAC) pro službu CloudSimple, portál CloudSimple a privátní cloud z Azure.  Uživatelé, skupiny a role pro přístup k vCenter privátního cloudu se zadává pomocí jednotného přihlašování VMware.  
 
-## <a name="rbac-for-cloudsimple-service"></a>RBAC pro službu CloudSimple
+## <a name="azure-rbac-for-cloudsimple-service"></a>Služba Azure RBAC pro CloudSimple
 
 Vytváření služby CloudSimple vyžaduje roli **vlastníka** nebo **přispěvatele** v předplatném Azure.  Ve výchozím nastavení mohou všichni vlastníci a přispěvatelé vytvořit službu CloudSimple a přistupovat k portálu CloudSimple pro vytváření a správu privátních cloudů.  Pro každou oblast se dá vytvořit jenom jedna služba CloudSimple.  Pokud chcete omezit přístup ke konkrétním správcům, postupujte podle níže uvedeného postupu.
 
 1. Vytvoření služby CloudSimple v nové **skupině prostředků** v Azure Portal
-2. Zadejte RBAC pro skupinu prostředků.
+2. Zadejte pro skupinu prostředků Azure RBAC.
 3. Koupit uzly a použít stejnou skupinu prostředků jako služba CloudSimple
 
 Pouze uživatelé, kteří mají oprávnění **vlastníka** nebo **přispěvatelé** ve skupině prostředků, uvidí službu CloudSimple a spustí portál CloudSimple.
@@ -39,7 +39,7 @@ Další informace najdete v tématu [co je řízení přístupu na základě rol
 
 1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) pro **CloudOwner \@ cloudsimple. místní** uživatel na privátním cloudu.
 2. Přihlaste se k vCenter pomocí **CloudOwner \@ cloudsimple. Local.**
-3. [Přidejte uživatele s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
+3. [Přidat uživatele vCenter Single Sign-On](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Přidejte uživatele do [skupin s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 Další informace o předem definovaných rolích a skupinách najdete v článku o [modelu oprávnění privátního cloudu CloudSimple v článku o VMware vCenter](learn-private-cloud-permissions.md) .

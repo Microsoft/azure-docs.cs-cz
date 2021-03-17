@@ -3,7 +3,7 @@ title: Konfigurace zásad autorizace klíče obsahu pomocí sady Media Services 
 description: Naučte se konfigurovat zásady autorizace pro klíč obsahu pomocí sady Media Services .NET SDK.
 services: media-services
 documentationcenter: ''
-author: mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: e05c7a8388b662731c04ac4098d6eecb1d89fe4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 63cc20a9d7f6878961519aa28ae6478d9145852d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060150"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014209"
 ---
 # <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>Konfigurace zásad autorizace klíče obsahu pomocí sady Media Services .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 

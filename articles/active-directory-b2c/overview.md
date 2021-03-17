@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184056"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953946"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
@@ -79,7 +79,7 @@ WoodGroveé prodejny nabízejí několik možností přihlašování na základ�
 
 * **Jednotliví** zákazníci se můžou zaregistrovat nebo přihlašovat pomocí jednotlivých účtů, jako je například se zprostředkovatelem sociálních identit nebo e-mailovou adresou a heslem.
 * **Podnikoví** zákazníci se můžou zaregistrovat nebo se přihlásit pomocí svých podnikových přihlašovacích údajů.
-* **Partneři** a dodavatelé jsou jednotlivci, kteří poskytují prodejny obchod s produkty k prodeji. Identitu partnera poskytuje [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
+* **Partneři** a dodavatelé jsou jednotlivci, kteří poskytují prodejny obchod s produkty k prodeji. Identitu partnera poskytuje [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md).
 
 ![Jednotlivé přihlašovací stránky (B2C), obchodní (B2C) a partneři (B2B)](./media/overview/woodgrove-overview.png)
 
@@ -95,7 +95,7 @@ Když zákazník vybere **registraci pomocí osobního účtu** a pak se **zareg
 
 ![Vlastní registrační stránka WoodGrove, jejímž hostitelem je Azure AD B2C](./media/overview/sign-up.png)
 
-Po zadání e-mailové adresy a výběru možnosti **Odeslat ověřovací kód**Azure AD B2C jim pošle kód. Po zadání kódu vyberte možnost **ověřit kód**a potom zadejte další informace ve formuláři, musí také souhlasit s podmínkami služby.
+Po zadání e-mailové adresy a výběru možnosti **Odeslat ověřovací kód** Azure AD B2C jim pošle kód. Po zadání kódu vyberte možnost **ověřit kód** a potom zadejte další informace ve formuláři, musí také souhlasit s podmínkami služby.
 
 Kliknutím na tlačítko **vytvořit** dojde Azure AD B2C k přesměrování uživatele zpět na web nákupů v Woodgrove. Při přesměrování Azure AD B2C předá webové aplikaci WoodGrove ověřovací token OpenID Connect. Uživatel je teď přihlášený a připravený k použití, zobrazovaný název zobrazený v pravém horním rohu, který označuje, že jsou přihlášeni.
 
@@ -105,13 +105,13 @@ Kliknutím na tlačítko **vytvořit** dojde Azure AD B2C k přesměrování už
 
 Když zákazník vybere jednu z možností v části **Obchodní zákazníci**, vyvolá web Woodgrove nákupů jinou zásadu Azure AD B2C, než má jednotliví zákazníci.
 
-Tato zásada prezentuje uživateli možnost použít své podnikové přihlašovací údaje pro registraci a přihlášení. V WoodGrove příkladu se uživatelům zobrazí výzva, abyste se přihlásili pomocí účtu Office 365 nebo Azure AD. Tato zásada využívá [víceklientské aplikace Azure AD](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) a koncový bod `/common` Azure AD k federovat Azure AD B2C se všemi zákazníky s Office 365 na světě.
+Tato zásada prezentuje uživateli možnost použít své podnikové přihlašovací údaje pro registraci a přihlášení. V WoodGrove příkladu se uživatelům zobrazí výzva, abyste se přihlásili pomocí pracovního nebo školního účtu. Tato zásada využívá [víceklientské aplikace Azure AD](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) a `/common` koncový bod Azure ad k federovat Azure AD B2C s jakýmkoli Microsoft 365 zákazníkem na světě.
 
 ### <a name="authenticate-partners"></a>Ověřování partnerů
 
 **Přihlášení pomocí odkazu na účet dodavatele** používá funkce spolupráce Azure Active Directory B2B's. Azure AD B2B je rodina funkcí v Azure Active Directory pro správu identit partnerů. Tyto identity můžou být federované z Azure Active Directory pro přístup do aplikací chráněných Azure AD B2C.
 
-Přečtěte si další informace o Azure AD B2B v [tom, co je přístup uživatelů typu Host v Azure Active Directory B2B?](../active-directory/b2b/what-is-b2b.md).
+Přečtěte si další informace o Azure AD B2B v [tom, co je přístup uživatelů typu Host v Azure Active Directory B2B?](../active-directory/external-identities/what-is-b2b.md).
 
 <!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
 ### Sample code

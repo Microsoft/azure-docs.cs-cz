@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201993"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88917869"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logické operátory OData v Azure Kognitivní hledání – `and` , `or` ,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logické operátory OData v Azure Kognitivní hledání – `and` , `or` , `not`
 
 [Výrazy filtru OData](query-odata-filter-orderby-syntax.md) v Azure kognitivní hledání jsou logické výrazy, které se vyhodnotí na `true` nebo `false` . Složitý filtr můžete napsat tak, že napíšete řadu [jednodušších filtrů](search-query-odata-comparison-operators.md) a seřadíte je pomocí logických operátorů z [Boolean algebraický](https://en.wikipedia.org/wiki/Boolean_algebra):
 
@@ -36,9 +36,9 @@ ms.locfileid: "86201993"
 
 Spolu s [operátory kolekce `any` a `all` ](search-query-odata-collection-operators.md)umožňují vytvářet filtry, které mohou vyjádřit velmi složitá kritéria hledání.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá logické operátory.
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá logické operátory.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -58,21 +58,21 @@ K dispozici je také diagram interaktivní syntaxe:
 
 Existují dvě formy logických výrazů: Binary ( `and` / `or` ), kde existují dva dílčí výrazy a unární ( `not` ), kde je pouze jeden. Dílčí výrazy mohou být logické výrazy libovolného druhu:
 
-- Pole nebo proměnné rozsahu typu`Edm.Boolean`
-- Funkce, které vracejí hodnoty typu `Edm.Boolean` , například `geo.intersects` nebo`search.ismatch`
-- [Výrazy porovnání](search-query-odata-comparison-operators.md), jako např.`rating gt 4`
-- [Výrazy kolekce](search-query-odata-collection-operators.md), například`Rooms/any(room: room/Type eq 'Deluxe Room')`
+- Pole nebo proměnné rozsahu typu `Edm.Boolean`
+- Funkce, které vracejí hodnoty typu `Edm.Boolean` , například `geo.intersects` nebo `search.ismatch`
+- [Výrazy porovnání](search-query-odata-comparison-operators.md), jako např. `rating gt 4`
+- [Výrazy kolekce](search-query-odata-collection-operators.md), například `Rooms/any(room: room/Type eq 'Deluxe Room')`
 - Logické literály `true` nebo `false` .
 - Jiné logické výrazy vytvořené pomocí `and` , `or` a `not` .
 
 > [!IMPORTANT]
 > Existují situace, kdy není možné použít všechny druhy dílčího výrazu `and` / `or` , zejména uvnitř výrazů lambda. Podrobnosti najdete [v tématu operátory kolekce OData v Azure kognitivní hledání](search-query-odata-collection-operators.md#limitations) .
 
-### <a name="logical-operators-and-null"></a>Logické operátory a`null`
+### <a name="logical-operators-and-null"></a>Logické operátory a `null`
 
 Většina logických výrazů, jako jsou funkce a porovnávání, nemůže vydávat `null` hodnoty a logické operátory nelze použít na `null` literál přímo (například není `x and null` povoleno). Nicméně logická pole mohou být `null` , takže je třeba vědět, jak se `and` `or` operátory, a `not` chovají v přítomnosti hodnoty null. Toto je shrnuto v následující tabulce, kde `b` je pole typu `Edm.Boolean` :
 
-| Výraz | Výsledek, pokud `b` je`null` |
+| Výraz | Výsledek, pokud `b` je `null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -120,4 +120,4 @@ Porovnává dokumenty pro hotely v Vancouver, Kanada, kde je Deluxe místnost se
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

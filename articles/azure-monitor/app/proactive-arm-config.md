@@ -4,14 +4,14 @@ description: Automatizace správy a konfigurace pravidel inteligentního zjišť
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 06/26/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726117"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager
 
@@ -44,7 +44,7 @@ Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídaj
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídaj
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídaj
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídaj
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }
@@ -152,7 +152,7 @@ Níže je tabulka s názvy pravidel inteligentního zjišťování, které se zo
 
 ### <a name="failure-anomalies-alert-rule"></a>Pravidlo upozornění na anomálie při selhání
 
-Tato šablona Azure Resource Manager ukazuje, jak nakonfigurovat pravidlo výstrahy anomálií při selhání se závažností 2. Tato nová verze pravidla výstrahy anomálií při selhání je součástí nové platformy pro upozorňování Azure a nahrazuje klasickou verzi, která je vyřazena jako součást [procesu odchodu klasických výstrah](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Tato šablona Azure Resource Manager ukazuje, jak nakonfigurovat pravidlo výstrahy anomálií při selhání se závažností 2.
 
 > [!NOTE]
 > Anomálie selhání je globální služba, proto se v globálním umístění vytvoří umístění pravidla.

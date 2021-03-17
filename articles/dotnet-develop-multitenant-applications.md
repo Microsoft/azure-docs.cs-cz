@@ -14,15 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81481839"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524092"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenantové aplikace v Azure
-Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Office 365, Outlook.com a visualstudio.com.
+Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Microsoft 365, Outlook.com a visualstudio.com.
 
 Z perspektivy poskytovatele aplikace se výhody víceklientské architektury týkají zejména provozní a nákladové efektivity. Jedna verze vaší aplikace může splňovat potřeby mnoha klientů nebo zákazníků, což umožňuje konsolidaci úloh správy systému, jako je monitorování, optimalizace výkonu, údržba softwaru a zálohování dat.
 
@@ -42,11 +43,11 @@ Správně implementovaná víceklientské aplikace poskytuje uživatelům násle
 
 V krátké době existuje mnoho důležitých informací, které je třeba vzít v úvahu, aby bylo možné zajistit vysoce škálovatelnou službu, existuje také řada cílů a požadavků, které jsou společné pro mnoho víceklientské aplikací. Některé nemusí být relevantní v konkrétních scénářích a význam jednotlivých cílů a požadavků se v každém scénáři liší. Jako poskytovatel víceklientské aplikace budete mít také cíle a požadavky, jako je třeba splnění cílů a požadavků klienta, ziskovosti, fakturace, více úrovní služeb, zřizování, monitorování údržby a automatizace.
 
-Další informace o dalších doporučeních pro návrh víceklientské aplikace najdete v tématu [hostování aplikace s více klienty v Azure][Hosting a Multi-Tenant Application on Azure]. Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+Další informace o dalších doporučeních pro návrh víceklientské aplikace najdete v tématu [hostování aplikace s více klienty v Azure][Hosting a Multi-Tenant Application on Azure]. Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](./azure-sql/database/saas-tenancy-app-design-patterns.md). 
 
 Azure poskytuje mnoho funkcí, které vám umožní řešit klíčové problémy zjištěné při navrhování víceklientského systému.
 
-**Izolace**
+**Oddělení**
 
 * Segmentovat klienty webu podle hlaviček hostitele s komunikací TLS nebo bez něj
 * Segmentovat klienty webu podle parametrů dotazu
@@ -91,5 +92,5 @@ Azure poskytuje několik způsobů, jak pro aplikaci zřídit nové klienty. Pro
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure]: https://msdn.microsoft.com/library/hh534480.aspx
+[Hosting a Multi-Tenant Application on Azure]: /previous-versions/msp-n-p/hh534480(v=pandp.10)
 [Designing Multitenant Applications on Azure]: https://msdn.microsoft.com/library/windowsazure/hh689716

@@ -3,7 +3,7 @@ title: Živé streamování pomocí místních kodérů, které vytvářejí dat
 description: Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s více přenosovými rychlostmi z místního kodéru.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 316372f091833519f0479d07355d2845c82743b6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559998"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014838"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají živý datový proud s více přenosovými rychlostmi z místních kodérů
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Od 12. května 2018 už živé kanály nebudou podporovat protokol ingestování přenosového streamu RTP/MPEG-2. Migrujte prosím z protokolu RTP/MPEG-2 na RTMP nebo fragmentujte protokoly ingesta MP4 (Smooth Streaming).
@@ -39,7 +41,7 @@ V Azure Media Services *kanál* představuje kanál pro zpracování obsahu živ
 
 Počínaje verzí Media Services 2,10 můžete při vytváření kanálu určit, jak chcete, aby kanál přijímal vstupní datový proud. Můžete také určit, jestli chcete, aby kanál prováděl živé kódování vašeho streamu. Máte dvě možnosti:
 
-* **Předat**po: tuto hodnotu zadejte, pokud plánujete použít místní kodér Live, který má datový proud s více přenosovými rychlostmi (předávací proud) jako výstup. V tomto případě příchozí datový proud projde do výstupu bez kódování. Toto je chování kanálu před vydáním verze 2,10. Tento článek obsahuje podrobné informace o práci s kanály tohoto typu.
+* **Předat** po: tuto hodnotu zadejte, pokud plánujete použít místní kodér Live, který má datový proud s více přenosovými rychlostmi (předávací proud) jako výstup. V tomto případě příchozí datový proud projde do výstupu bez kódování. Toto je chování kanálu před vydáním verze 2,10. Tento článek obsahuje podrobné informace o práci s kanály tohoto typu.
 * **Live Encoding**: tuto hodnotu vyberte, pokud plánujete používat Media Services ke kódování živého datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi. Když necháte živý kanál kódování ve **spuštěném** stavu, účtují se poplatky za účtování. Doporučujeme, abyste okamžitě zastavili spuštěné kanály po dokončení události živého streamování, abyste se vyhnuli dodatečným hodinovým poplatkům. Media Services dodává datový proud zákazníkům, kteří si je vyžádají.
 
 > [!NOTE]
@@ -141,7 +143,7 @@ Můžete definovat IP adresy, které můžou publikovat video na tento kanál. P
 Pokud nejsou zadané žádné IP adresy a není k dispozici žádná definice pravidla, není povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 
 ### <a name="channel-preview"></a>Náhled kanálu
-#### <a name="preview-urls"></a>Adresy URL náhledu
+#### <a name="preview-urls"></a>Náhledové adresy URL
 Kanály poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
 Adresu URL náhledu můžete získat při vytváření kanálu. Pokud chcete získat adresu URL, kanál nemusí být ve stavu **spuštěno** . Až kanál začne přijímat data, můžete zobrazit náhled streamu.
@@ -200,7 +202,7 @@ Následující tabulka ukazuje podporované standardy pro uzavřené titulky a v
 | TTML uvnitř. ismt (textové stopy Smooth Streaming) |Media Services dynamické balení umožňuje klientům streamovat obsah v libovolném z následujících formátů: POMLČKy, HLS nebo Smooth Streaming. Pokud však ingestují fragmenty MP4 (Smooth Streaming) s titulky uvnitř. ismt (Smooth Streaming textové stopy), můžete datový proud doručovat pouze do Smooth Streaming klientů. |
 | SCTE-35 |SCTE-35 je systém digitálního signálu, který se používá k oznámení vkládání inzerce. Přijímač pro příjem dat používají signál k spojení inzerce do datového proudu za přidělený čas. SCTE-35 musí být odesláno jako zhuštěné stopa ve vstupním datovém proudu.<p><p>V současné době je jediným podporovaným formátem vstupního datového proudu, který přenáší signály AD, fragmentem MP4 (Smooth Streaming). Jediným podporovaným formátem výstupu je také Smooth Streaming. |
 
-## <a name="considerations"></a><a id="considerations"></a>Důležité informace
+## <a name="considerations"></a><a id="considerations"></a>Požadavky
 Pokud k odeslání datového proudu s více přenosovými rychlostmi do kanálu používáte místní živý kodér, platí následující omezení:
 
 * Ujistěte se, že máte dostatečné bezplatné připojení k Internetu, aby bylo možné odesílat data do bodů příjmu.

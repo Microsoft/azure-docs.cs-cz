@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022459"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018220"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Ukázkové dotazy s novými poli ve schématu Analýza provozu (aktualizace schématu srpna 2019)
 
-[Schéma Analýza provozu protokolu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) obsahuje následující nová pole: **SrcPublicIPs_s**, **DestPublicIPs_s** **NSGRule_s**. Nová pole poskytují informace o zdrojových a cílových IP adresách a zjednodušují dotazy.
+[Schéma Analýza provozu protokolu](./traffic-analytics-schema.md) obsahuje následující nová pole: **SrcPublicIPs_s**, **DestPublicIPs_s** **NSGRule_s**. Nová pole poskytují informace o zdrojových a cílových IP adresách a zjednodušují dotazy.
 
 V následujících několika měsících budou tato starší pole zastaralá: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
 

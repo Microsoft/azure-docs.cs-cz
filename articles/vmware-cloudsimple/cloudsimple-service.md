@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple-Service
 description: Seznamte se s jeho přehledem o službě CloudSimple. Vytvořením služby umožníte nákup uzlů, rezervace uzlů a vytváření privátních cloudů.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ec77209c0995bf5aec0957c8d4d2269f27d743bc
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8f32197eda4fc7632e883fd21dd6e1caa0dbd24b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142124"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898738"
 ---
 # <a name="cloudsimple-service-overview"></a>Přehled služby CloudSimple
 

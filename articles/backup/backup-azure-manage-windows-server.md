@@ -3,18 +3,18 @@ title: Správa serverů a trezorů služby Azure Recovery Services
 description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654204"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002126"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
 Tento článek vysvětluje, jak pomocí řídicího panelu **Přehled** služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services. Když v seznamu otevřete trezor Recovery Services, otevře se řídicí panel **Přehled** vybraného trezoru. Řídicí panel poskytuje různé podrobnosti o trezoru. K dispozici jsou *dlaždice* , které znázorňují stav kritických a varovných výstrah, probíhajících a neúspěšných úloh zálohování a množství místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Pokud zálohujete virtuální počítače Azure do trezoru, na [dlaždici **stav předběžné kontroly zálohování** se zobrazí všechny kritické nebo varovné položky](#backup-pre-check-status). Následující obrázek je řídicí panel s **přehledem** pro **trezor společnosti Contoso**. Na dlaždici **zálohované položky** se zobrazí devět položek zaregistrovaných do trezoru.
 
-![řídicí panel trezoru služby Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+![Řídicí panel trezoru Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
 Požadavky pro tento článek jsou: předplatné Azure, Recovery Services trezor a že je pro trezor nakonfigurovaná aspoň jedna položka zálohování.
 
@@ -32,11 +32,11 @@ Pokud chcete monitorovat výstrahy nebo zobrazit data správy o trezoru Recovery
 
 3. V dialogovém okně **všechny služby** zadejte **Recovery Services**. Seznam se průběžně filtruje podle zadávaného textu. Pokud se zobrazí možnost **trezory Recovery Services** , vyberte ji a otevřete tak seznam trezorů Recovery Services ve vašem předplatném.
 
-    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
+    ![Vytvoření trezoru Recovery Services – Krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
 4. V seznamu trezorů vyberte trezor a otevřete jeho řídicí panel **Přehled** .
 
-    ![řídicí panel trezoru služby Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
+    ![Řídicí panel trezoru Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
     Řídicí panel přehled používá dlaždice pro poskytování výstrah a dat úloh zálohování.
 

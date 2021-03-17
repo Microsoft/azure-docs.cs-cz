@@ -4,16 +4,18 @@ description: Přehled běžných vzorů návrhu kanálu změn
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443d00e61e593daacca04a4451b90bb78cc7d854
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118946"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334561"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Změna vzorů návrhu informačního kanálu v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Kanál změny Azure Cosmos DB umožňuje efektivní zpracování velkých datových sad s velkým objemem zápisů. Kanál změn také nabízí alternativu k dotazování celé datové sady, aby bylo možné zjistit, co se změnilo. Tento dokument se zaměřuje na běžné vzorce pro změnu kanálu, návrhy kompromisů a omezení pro změnu kanálu.
 
@@ -52,7 +54,7 @@ Kromě čtení z kanálu změn kontejneru Cosmos můžete také spouštět dotaz
 
 ### <a name="high-availability"></a>Vysoká dostupnost
 
-Azure Cosmos DB nabízí až 99,999% dostupnost čtení a zápisu. Na rozdíl od mnoha front zpráv můžete Azure Cosmos DB data snadno globálně distribuovat a nakonfigurovat pomocí [RTO (plánovaná doba obnovení)](consistency-levels-tradeoffs.md#rto) nula.
+Azure Cosmos DB nabízí až 99,999% dostupnost čtení a zápisu. Na rozdíl od mnoha front zpráv můžete Azure Cosmos DB data snadno globálně distribuovat a nakonfigurovat pomocí [RTO (plánovaná doba obnovení)](./consistency-levels.md#rto) nula.
 
 Po zpracování položek v kanálu změn můžete vytvořit materializované zobrazení a zachovat agregované hodnoty zpátky v Azure Cosmos DB. Pokud používáte Azure Cosmos DB k vytvoření hry, můžete například použít kanál Change k implementaci žebříčky v reálném čase na základě skóre z dokončených her.
 
@@ -73,7 +75,7 @@ Pokud potřebujete [denormalizovat data mezi oddíly a kontejnery](how-to-model-
 
 ## <a name="event-sourcing"></a>Původ události
 
-[Vzor zdroje událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) zahrnuje použití úložiště pouze pro připojení k zaznamenání celé řady akcí na těchto datech. Informační kanál změn Azure Cosmos DB je skvělou volbou jako centrální úložiště dat v architekturách pro zdrojové události, kde se veškerá příjem dat modelují jako zápisy (bez aktualizací nebo odstranění). V takovém případě každý zápis do Azure Cosmos DB je "Event" a v kanálu změn budete mít úplný záznam o minulých událostech. Typická použití událostí publikovaných centrálním úložištěm událostí slouží ke správě materializovaná zobrazení nebo k integraci s externími systémy. Vzhledem k tomu, že v kanálu změn není časový limit pro uchovávání dat, můžete přehrát všechny minulé události čtením ze začátku kanálu změn kontejneru Cosmos.
+[Vzor zdroje událostí](/azure/architecture/patterns/event-sourcing) zahrnuje použití úložiště pouze pro připojení k zaznamenání celé řady akcí na těchto datech. Informační kanál změn Azure Cosmos DB je skvělou volbou jako centrální úložiště dat v architekturách pro zdrojové události, kde se veškerá příjem dat modelují jako zápisy (bez aktualizací nebo odstranění). V takovém případě každý zápis do Azure Cosmos DB je "Event" a v kanálu změn budete mít úplný záznam o minulých událostech. Typická použití událostí publikovaných centrálním úložištěm událostí slouží ke správě materializovaná zobrazení nebo k integraci s externími systémy. Vzhledem k tomu, že v kanálu změn není časový limit pro uchovávání dat, můžete přehrát všechny minulé události čtením ze začátku kanálu změn kontejneru Cosmos.
 
 [Ke stejnému kanálu změn kontejneru můžete přihlašovat více uživatelů kanálu změn](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers). Z poskytnuté propustnosti [kontejneru zapůjčení](change-feed-processor.md#components-of-the-change-feed-processor) není k dispozici žádné náklady na využití kanálu změn. Kanál změn je k dispozici v každém kontejneru bez ohledu na to, zda je využíván.
 

@@ -10,21 +10,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422092"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427206"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 V tomto kurzu a v zadané ukázce přehrávače můžete nastavit kompletní podsystém ochrany mediálního obsahu v Azure Media Services (AMS) a Azure Active Directory (AAD) pro streamování mediálního obsahu se všemi podporovanými možnostmi AMS DRM/AES-128, streamování, kodeků a formátů kontejnerů. Vzorek je dostatečně obecný pro zabezpečený přístup k jakýmkoli REST API chráněným protokolem OAuth 2 prostřednictvím autorizačního toku kódu a ověřovacího klíče pro výměnu kódu (PKCE). (Azure Media Services služby doručování licencí je jenom jedna z nich.) Funguje taky pro Microsoft Graph rozhraní API nebo jakýkoli vlastní vyvinutý REST API zabezpečený pomocí toku autorizačního kódu OAuth 2. Toto je doprovodný dokument k [ukázkovému kódu](https://github.com/Azure-Samples/media-services-content-protection-azure-ad).
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 >
@@ -40,7 +42,7 @@ Pokud nemáte předplatné Azure Media Services, vytvořte [bezplatný zkušebn�
 ### <a name="duration"></a>Doba trvání
 Tento kurz by měl trvat přibližně dvě hodiny, než se dokončí, když máte připravenou technologii, kterou si můžete projít.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Použijí se následující nejnovější technologické verze a koncepty. Před zahájením tohoto kurzu se jim doporučujeme seznámit s nimi.
 
@@ -64,7 +66,7 @@ Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámi
 * Instalace Node.js. Stáhněte si Node.js sem [https://nodejs.org](https://nodejs.org) . NPM je součástí instalace.
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * Účet Azure Media Services (AMS).
-* @azure/msal-browserv 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) pro různé klientské platformy
+* @azure/msal-browser v 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) pro různé klientské platformy
 * Nejnovější verze [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)(obsažená v ukázce)
 * Přihlašovací údaje pro FPS od společnosti Apple, pokud chcete zahrnout FairPlay DRM a certifikát aplikace hostovaný s CORS, který je přístupný prostřednictvím JavaScriptu na straně klienta.
 
@@ -75,7 +77,7 @@ Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámi
 
 V návrhu subsystému se zobrazí několik výzev. Má několik přesouvaných částí, existuje omezení klientské aplikace a výměna klíčů Azure AD, ke které dochází každých šest týdnů.
 
-Jednostránkové aplikace (SPA) použitá v tomto kurzu vezme v úvahu problémy s požadavky na ověření a níže uvedené omezení. Používá:
+Aplikace Single-Page (SPA) použitá v tomto kurzu vezme v úvahu problémy s požadavky na ověření a níže uvedené omezení. Používá:
 
 * Koncové body Azure AD v2 jako Azure AD Developer Platform (v1 koncové body) se mění na platformu Microsoft Identity Platform (v2 – koncové body).
 * Tok autorizačního kódu, protože tok implicitního udělení OAuth 2 je zastaralý.
@@ -106,7 +108,7 @@ Další podrobnosti o subsystému najdete v tématu [Návrh systému ochrany obs
 Aplikace přehrávače je jednostránkové aplikace (SPA), vyvinutá v Visual Studio Code pomocí:
 
 * Node.js s využitím jazyka JavaScript pro ES 6
-* @azure/msal-browser2,0 beta
+* @azure/msal-browser 2,0 beta
 * Sada Azure Media Player SDK
 * Tok OAuth 2 s koncovými body služby Azure AD v2 (Microsoft Identity Platform)
 
@@ -127,11 +129,11 @@ Obrazovka pro přihlášení, získání tokenu, obnovení tokenu a zobrazení t
 
 Obrazovka pro analýzu tokenů JWT (access_token nebo id_token):
 
-![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/parsing-jwt-tokens.png)
+![Snímek obrazovky, který ukazuje analýzu tokenů J W T](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
 Obrazovka pro testování chráněného obsahu s různými kombinacemi protokolů DRM/AES vs streaming a formátu kontejneru:
 
-![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/testing-protected-content.png)
+![Snímek obrazovky, který ukazuje testování chráněného obsahu různými kombinacemi D R M nebo E S versus protokoly streamování oproti formátu kontejneru](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -311,7 +313,7 @@ Pokud máte v úmyslu použít jinou platformu IDE/web nebo webový server, jako
 
 Teď, když jste dokončili kurz a máte funkční subsystém, můžete ho zkusit upravit v následujících scénářích zákazníků:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Access Control na základě rolí (RBAC) pro doručování licencí prostřednictvím členství ve skupině Azure AD
+### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Řízení přístupu na základě role Azure (Azure RBAC) pro doručování licencí prostřednictvím členství ve skupině Azure AD
 
 V tomto případě systém umožňuje každému uživateli, který se může přihlásit, získat platnou licenci a přehrát chráněný obsah.
 

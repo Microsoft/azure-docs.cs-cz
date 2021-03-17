@@ -1,16 +1,16 @@
 ---
 title: Nastavení materiálů PBR v nástroji 3ds Max
 description: Vysvětluje, jak nastavit fyzicky založené materiály pro vykreslování v 3ds Max a exportovat je do formátu FBX.
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020275"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Kurz: nastavení fyzicky založených materiálů pro vykreslování v 3ds Max
 
@@ -22,6 +22,10 @@ V tomto kurzu se naučíte:
 > * Přiřaďte materiály s pokročilým osvětlením pro objekty ve scéně.
 > * Zpracování vytváření instancí objektů a materiálů
 > * Exportujte scénu do formátu FBX a vyberte důležité možnosti.
+
+> [!Note]
+> Postup popsaný v tomto kurzu funguje v 3ds Max 2019 a 3ds Max 2020.
+> Změna způsobu, jakým aplikace 3ds Max 2021 exportuje mapy hrbolů znamená, že služba převodu nebude při použití této verze najít normální mapy.
 
 Vytvoření [fyzicky založených materiálů pro vykreslování](../../overview/features/pbr-materials.md) v 3ds Max je jednoduchá úloha. Podobným způsobem je nastavení PBR v dalších aplikacích pro vytváření obsahu, jako je Maya. Tento kurz je průvodcem pro základní nastavení funkce PBR shader a export FBX pro projekty vzdáleného vykreslování Azure.
 
@@ -46,7 +50,7 @@ Chcete-li začít, vytvoříme počet objektů box, z nichž každá představuj
 
 Následující snímek obrazovky ukazuje postup nastavení jednotek systému na měřiče v nástroji 3ds Max. 
 
-1. V hlavní nabídce přejděte na vlastní nastavení **Customize**  >  **jednotek nastavení**  >  **systémové jednotky**. V **systémové jednotce škále**vyberte **měřiče**: ![ snímek obrazovky, který ukazuje, jak nastavit jednotky systému.](media/3dsmax/system-units.jpg)
+1. V hlavní nabídce přejděte na vlastní nastavení **Customize**  >  **jednotek nastavení**  >  **systémové jednotky**. V **systémové jednotce škále** vyberte **měřiče**: ![ snímek obrazovky, který ukazuje, jak nastavit jednotky systému.](media/3dsmax/system-units.jpg)
 
 1. Nyní můžeme začít vytvářet modely. V ukázce scény vytvoříme několik objektů box, z nichž každá představuje jiný typ materiálu. Například kov, pryžový a plast. 
 
@@ -71,7 +75,7 @@ Teď, když máme v naší scéně nějaké objekty, můžeme v tomto případě
 
     V editoru materiálů si můžete vybrat z nejrůznějších typů materiálu v závislosti na vašich potřebách. Ve výchozím nastavení je typ materiálu obvykle nastaven na **Standard** . Tento materiál je základním materiálem, který není vhodný pro instalaci PBR. Musíme proto změnit typ materiálu na PBR. Fyzický materiál je upřednostňovaným materiálem 3DS pro projekty vzdáleného vykreslování Azure.
 
-1. V editoru materiálů vyberte kartu **Standard** . V **prohlížeči materiál/mapa**vyberte **fyzický materiál**. Tato akce převede přiřazený **standardní** materiál na fyzický materiál PBR.
+1. V editoru materiálů vyberte kartu **Standard** . V **prohlížeči materiál/mapa** vyberte **fyzický materiál**. Tato akce převede přiřazený **standardní** materiál na fyzický materiál PBR.
 
    ![Snímek obrazovky, který ukazuje, jak změnit materiál.](media/3dsmax/physical-material.jpg)
 
@@ -124,7 +128,7 @@ Teď k materiálu PBR přiřadíme normální mapu. Tato akce se trochu liší o
 
 1. V části **speciální mapy** vlastností fyzického materiálu (v editoru materiálů) vyberte možnost **bez mapového** slotu vedle **mapy hrbolů**. 
 
-1. V **prohlížeči materiál/mapa**Najděte a vyberte **normální nárazník**. Tato akce přidá pro materiál **normální modifikátor nárazníku** .
+1. V **prohlížeči materiál/mapa** Najděte a vyberte **normální nárazník**. Tato akce přidá pro materiál **normální modifikátor nárazníku** .
 
 1. V **normálním modifikátoru hrbolů** vyberte **bez mapování** vedle **normální**. Najděte a načtěte normální mapu.
 
@@ -157,19 +161,19 @@ Tato akce vytvoří instanci objektu, kterou lze přesunout, otočit nebo škál
 
 Jedna poslední věc, kterou je třeba zvážit před tím, než se přesunete k procesu exportu, je způsob, jakým můžete chtít zabalit svou scénu nebo prostředek ke sdílení. V ideálním případě, Pokud předáte Asset pro klienty nebo členy týmu, budete chtít, aby mohli prostředek otevřít a zobrazit, protože by měl být zobrazený s minimálním množstvím Fuss. Proto je důležité zachovat cesty textury assetu relativně k souboru scény. Pokud cesty textury pro váš prostředek ukazují na místní disk nebo absolutní cestu nebo umístění, nebudou načteny do scény, pokud se otevřou na jiném počítači, a to i v případě, že soubor. Max je ve stejné složce jako textury. Vytváření cest k texturám relativně v 3ds Max tento problém řeší a je poměrně jednoduché.
 
-1. Na hlavním panelu nástrojů **File**  >  **Reference**  >  **přepněte přepínač sledování assetu**odkazů na soubor. 
+1. Na hlavním panelu nástrojů **File**  >  **Reference**  >  **přepněte přepínač sledování assetu** odkazů na soubor. 
 
 1. V okně sledování assetů uvidíte všechny nebo většinu textur, které jste použili pro materiály PBR uvedené ve sloupci **mapy/shadery** .
 
 1. Vedle nich se ve sloupci **Úplná cesta** zobrazí cesta k umístění textur, což je pravděpodobně cesta k umístění v místním počítači.
 
-1. Nakonec se zobrazí sloupec s názvem **stav**. Tento sloupec označuje, zda daná textura byla umístěna a použita pro vaši scénu. Označí texturu jedním z těchto podmínek: **OK**, **Nalezeno**nebo **soubor chybí**. První dva označují, že se soubor našel a načetl. Poslední zjevně znamená, že nástroj pro sledování nedokázal soubor najít.
+1. Nakonec se zobrazí sloupec s názvem **stav**. Tento sloupec označuje, zda daná textura byla umístěna a použita pro vaši scénu. Označí texturu jedním z těchto podmínek: **OK**, **Nalezeno** nebo **soubor chybí**. První dva označují, že se soubor našel a načetl. Poslední zjevně znamená, že nástroj pro sledování nedokázal soubor najít.
  
    ![Snímek obrazovky zobrazující okno Sledování prostředků](media/3dsmax/texture-paths.jpg)
 
 Při prvním otevření okna pro sledování prostředků si můžete všimnout, že ne všechny textury jsou uvedeny. Nejedná se o nic, co se týká. Spuštění prostřednictvím procesu hledání cesty jednou nebo dvakrát obvykle vyhledává všechny textury scény. Proces vyhledávání cest je následující: 
 
-1. V okně sledování assetů podržte stisknutou klávesu **SHIFT** a vyberte horní texturu v seznamu **mapy/shadery** a pokračujte podržením **klávesy SHIFT**a vyberte poslední texturu v seznamu. Tato akce vybere všechny textury v seznamu. Vybrané textury jsou zvýrazněny modře. (Viz předchozí snímek obrazovky.)
+1. V okně sledování assetů podržte stisknutou klávesu **SHIFT** a vyberte horní texturu v seznamu **mapy/shadery** a pokračujte podržením **klávesy SHIFT** a vyberte poslední texturu v seznamu. Tato akce vybere všechny textury v seznamu. Vybrané textury jsou zvýrazněny modře. (Viz předchozí snímek obrazovky.)
 
 1. Klikněte pravým tlačítkem na výběr a vyberte **nastavit cestu**.
 
@@ -192,7 +196,7 @@ Teď, když jsme vytvořili relativní cesty k texturám, můžeme přejít k FB
 >
 >Pokud jste použili modifikátory, jako je Turbosmooth nebo Open SubDiv, je vhodné je před exportem sbalit, protože můžou během exportu způsobit problémy. Před sbalením si nezapomeňte svoji scénu Uložit. 
 
-1. Ve scéně vyberte prostředky, které chcete exportovat. Na hlavním panelu nástrojů přejdete na **File**možnost  >  **Export**  >  **Export**exportu souborů.
+1. Ve scéně vyberte prostředky, které chcete exportovat. Na hlavním panelu nástrojů přejdete na **File** možnost  >  **Export**  >  **Export** exportu souborů.
 
 1. V dialogovém okně **Vybrat soubor pro export** zadejte nebo vyberte název výstupního souboru. V seznamu **Uložit jako typ** vyberte **Autodesk (*. FBX)**. Tato akce otevře okno Export FBX.
 
@@ -232,4 +236,4 @@ Obecně platí, že tento typ materiálu vypadá realističtější, protože je
 Nyní víte, jak nastavit materiály s pokročilým osvětlením pro objekty ve scéně. Naučíte se také, jak exportovat objekty do formátu FBX, který podporuje vzdálené vykreslování Azure. Dalším krokem je převod souboru FBX a jeho vizualizace ve vzdáleném vykreslování Azure.
 
 >[!div class="nextstepaction"]
->[Rychlý Start: převod modelu pro vykreslování](../../quickstarts\convert-model.md)
+>[Rychlý start: Převod modelu pro vykreslování](../../quickstarts\convert-model.md)

@@ -1,25 +1,25 @@
 ---
-title: DevOps kanálu pro přijímání dat
+title: DevOps pro kanál příjmu dat
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak použít postupy DevOps k vytvoření kanálu pro příjem dat, který se používá k přípravě dat pro použití s Azure Machine Learning. Kanál pro přijímání dat používá Azure Data Factory a Azure Databricks. Kanál Azure slouží k vytvoření nepřetržité integrace a procesu doručování pro kanál ingestování.
+description: Naučte se, jak použít postupy DevOps k vytvoření kanálu pro příjem dat pro přípravu dat pomocí Azure Data Factory a Azure Databricks.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e8a8b952d917db3a7eefd2e0371d41287c5be944
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843704"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612469"
 ---
-# <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps kanálu pro přijímání dat
+# <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps pro kanál příjmu dat
 
 Ve většině scénářů je řešení pro příjem dat složením skriptů, vyvolání služeb a kanálu orchestrace všech aktivit. V tomto článku se dozvíte, jak uplatnit postupy DevOps na životní cyklus vývoje běžného kanálu pro příjem dat, který připraví data pro školení modelů ve službě Machine Learning. Kanál je sestavený pomocí následujících služeb Azure:
 
@@ -64,7 +64,7 @@ Kód by měl být například uložený v úložišti Azure DevOps, GitHub nebo 
 Data technici pracují se zdrojovým kódem poznámkového bloku Pythonu místně v integrovaném vývojovém prostředí (například [Visual Studio Code](https://code.visualstudio.com)) nebo přímo v pracovním prostoru datacihly. Po dokončení změn kódu budou tyto zásady sloučeny do úložiště po vytvoření větve.
 
 > [!TIP] 
-> `.py`Místo ve `.ipynb` formátu poznámkového bloku Jupyter doporučujeme kód Uložit do souborů. Vylepšuje čitelnost kódu a umožňuje automatické kontroly kvality kódu v procesu CI.
+> `.py`Místo v Jupyter notebook formátu doporučujeme kód Uložit do souborů `.ipynb` . Vylepšuje čitelnost kódu a umožňuje automatické kontroly kvality kódu v procesu CI.
 
 ### <a name="azure-data-factory-source-code"></a>Zdrojový kód Azure Data Factory
 
@@ -72,13 +72,13 @@ Zdrojový kód Azure Data Factorych kanálů je kolekce souborů JSON vygenerova
 
 Pokud chcete nakonfigurovat pracovní prostor tak, aby používal úložiště správy zdrojového kódu, přečtěte si téma [Autor s Azure Repos Integration Git](../data-factory/source-control.md#author-with-azure-repos-git-integration).   
 
-## <a name="continuous-integration-ci"></a>Průběžná integrace (CI)
+## <a name="continuous-integration-ci"></a>Kontinuální integrace (CI)
 
 Hlavním cílem procesu kontinuální integrace je shromáždění společného týmu práce ze zdrojového kódu a jeho Příprava na nasazení do prostředí pro příjem dat. Stejně jako u správy zdrojového kódu se tento proces liší od poznámkových bloků Pythonu a kanálů Azure Data Factory. 
 
 ### <a name="python-notebook-ci"></a>Položky konfigurace poznámkového bloku Python
 
-Proces CI poznámkových bloků Pythonu získá kód z větve pro spolupráci (například ***Hlavní*** nebo ***vývoj***) a provede následující činnosti:
+Proces CI poznámkových bloků v Pythonu získá kód z větve pro spolupráci (například ***Master** _ nebo _ *_vyvíjí_* *) a provede následující činnosti:
 * Linting kódu
 * Testování jednotek
 * Uložení kódu jako artefaktu
@@ -118,11 +118,11 @@ Pokud je testování linting a jednotek úspěšné, kanál zkopíruje zdrojový
 
 Proces CI pro kanál Azure Data Factory je při příjmu dat kritickým bodem. Neexistuje žádná průběžná integrace. Nasaditelné artefakty pro Azure Data Factory je kolekce šablon Azure Resource Manager. Jediným způsobem, jak tyto šablony vyvolat, je kliknout na tlačítko ***publikovat*** v pracovním prostoru Azure Data Factory.
 
-1. Data technici sloučí zdrojový kód od svých větví funkcí do větve pro spolupráci, například do ***hlavního*** nebo ***vývojového***. 
+1. Technici na data sloučí zdrojový kód od svých větví funkcí do větve pro spolupráci, například ***Master** _ nebo _ *_vývoj_* *. 
 1. Někdo s udělenými oprávněními klikne na tlačítko ***publikovat*** a vygeneruje šablony Azure Resource Manager ze zdrojového kódu ve větvi pro spolupráci. 
 1. Pracovní prostor ověří kanály (považujte je za linting a testování částí), vygeneruje Azure Resource Manager šablon (považuje se za sestavení) a uloží vygenerované šablony do technické větve ***adf_publish*** ve stejném úložišti kódu (můžete si ho představit jako artefakty publikování). Tato větev je automaticky vytvořena Azure Data Factory pracovním prostorem. 
 
-Další informace o tomto procesu najdete v tématu [průběžná integrace a doručování v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment).
+Další informace o tomto procesu najdete v tématu [průběžná integrace a doručování v Azure Data Factory](../data-factory/continuous-integration-deployment.md).
 
 Je důležité zajistit, aby vygenerované šablony Azure Resource Manager nezávislá prostředí. To znamená, že všechny hodnoty, které se mohou v různých prostředích lišit, jsou parametry. Azure Data Factory je dostatečně inteligentní, aby bylo možné vystavit většinu takových hodnot jako parametry. Například v následující šabloně se vlastnosti připojení k pracovnímu prostoru Azure Machine Learning zveřejňují jako parametry:
 
@@ -166,15 +166,15 @@ labels = np.array(data['target'])
 ...
 ```
 
-Tento název se liší od prostředí pro ***vývoj***, řešení ***QA***, ***UAT***a ***výr*** . Ve složitém kanálu s více aktivitami může existovat několik vlastních vlastností. Je vhodné shromáždit všechny tyto hodnoty na jednom místě a definovat je jako ***proměnné***kanálu:
+Tento název se liší pro prostředí |**vývoj** _, _*_QA_*_, _*_UAT_*_ a _*_výr_*_ . Ve složitém kanálu s více aktivitami může existovat několik vlastních vlastností. Dobrým zvykem je shromáždit všechny tyto hodnoty na jednom místě a definovat je jako kanál _ *_proměnné_* *:
 
-![ADF – proměnné](media/how-to-cicd-data-ingestion/adf-variables.png)
+![Snímek obrazovky s názvem PrepareData a M L Execute Pipeline s názvem M L Execute Pipeline v horní části s možností přidat nové proměnné, každý s názvem, typem a výchozí hodnotou.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 Aktivity kanálu mohou odkazovat na proměnné kanálu při jejich současném použití:
 
-![ADF – Poznámkový blok – parametry](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![Snímek obrazovky s názvem PrepareData a M L Execute Pipeline s názvem M L Execute Pipeline v horní části s níže vybranou kartou nastavení.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-***Pracovní prostor*** Azure Data Factory ve výchozím nastavení nevystavuje proměnné kanálu jako parametry Azure Resource Manager šablon. Pracovní prostor používá [výchozí šablonu Parametrizace](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) , která určuje, jaké vlastnosti kanálu by se měly zveřejnit jako parametry šablony Azure Resource Manager. Chcete-li přidat proměnné kanálu do seznamu, aktualizujte `"Microsoft.DataFactory/factories/pipelines"` část [výchozí šablony Parametrizace](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) následujícím fragmentem kódu a uložte výsledný soubor JSON do kořenového adresáře zdrojové složky:
+***Pracovní prostor*** Azure Data Factory ve výchozím nastavení nevystavuje proměnné kanálu jako parametry Azure Resource Manager šablon. Pracovní prostor používá [výchozí šablonu Parametrizace](../data-factory/continuous-integration-deployment.md#default-parameterization-template) , která určuje, jaké vlastnosti kanálu by se měly zveřejnit jako parametry šablony Azure Resource Manager. Chcete-li přidat proměnné kanálu do seznamu, aktualizujte `"Microsoft.DataFactory/factories/pipelines"` část [výchozí šablony Parametrizace](../data-factory/continuous-integration-deployment.md#default-parameterization-template) následujícím fragmentem kódu a uložte výsledný soubor JSON do kořenového adresáře zdrojové složky:
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -212,18 +212,18 @@ Hodnoty v souboru JSON jsou výchozí hodnoty konfigurované v definici kanálu.
 
 Proces průběžného doručování přebírá artefakty a nasadí je do prvního cílového prostředí. Zajišťuje, že řešení funguje spuštěním testů. V případě úspěchu pokračuje k dalšímu prostředí. 
 
-Kanál Azure pro CD se skládá z několika fází, které představují prostředí. Každá fáze obsahuje [nasazení](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) a [úlohy](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) , které provádějí následující kroky:
+Kanál Azure pro CD se skládá z několika fází, které představují prostředí. Každá fáze obsahuje [nasazení](/azure/devops/pipelines/process/deployment-jobs) a [úlohy](/azure/devops/pipelines/process/phases?tabs=yaml) , které provádějí následující kroky:
 
 * Nasazení poznámkového bloku Pythonu pro Azure Databricks pracovní prostor
 * Nasazení kanálu Azure Data Factory 
 * Spuštění kanálu
 * Zkontroluje výsledek příjmu dat.
 
-Fáze zřetězení se dají nakonfigurovat pomocí [schválení](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) a [vratek](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) , které poskytují další kontrolu nad tím, jak se proces nasazení vyvíjí prostřednictvím řetězce prostředí.
+Fáze zřetězení se dají nakonfigurovat pomocí [schválení](/azure/devops/pipelines/process/approvals?tabs=check-pass) a [vratek](/azure/devops/pipelines/release/approvals/gates) , které poskytují další kontrolu nad tím, jak se proces nasazení vyvíjí prostřednictvím řetězce prostředí.
 
 ### <a name="deploy-a-python-notebook"></a>Nasazení poznámkového bloku Pythonu
 
-Následující fragment kódu definuje [nasazení](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) kanálu Azure, které kopíruje Poznámkový blok Python do clusteru datacihly:
+Následující fragment kódu definuje [nasazení](/azure/devops/pipelines/process/deployment-jobs) kanálu Azure, které kopíruje Poznámkový blok Python do clusteru datacihly:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -259,7 +259,7 @@ Následující fragment kódu definuje [nasazení](https://docs.microsoft.com/az
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-Artefakty vytvořené službou CI jsou automaticky zkopírovány do agenta nasazení a jsou k dispozici ve `$(Pipeline.Workspace)` složce. V takovém případě úloha nasazení odkazuje na artefakt, který `di-notebooks` obsahuje Poznámkový blok Python. Toto [nasazení](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) používá [rozšíření datacihly Azure DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) ke zkopírování souborů poznámkových bloků do pracovního prostoru datacihly.
+Artefakty vytvořené službou CI jsou automaticky zkopírovány do agenta nasazení a jsou k dispozici ve `$(Pipeline.Workspace)` složce. V takovém případě úloha nasazení odkazuje na artefakt, který `di-notebooks` obsahuje Poznámkový blok Python. Toto [nasazení](/azure/devops/pipelines/process/deployment-jobs) používá [rozšíření datacihly Azure DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) ke zkopírování souborů poznámkových bloků do pracovního prostoru datacihly.
 
 `Deploy_to_QA`Fáze obsahuje odkaz na `devops-ds-qa-vg` skupinu proměnných definovanou v projektu Azure DevOps. Kroky v této fázi odkazují na proměnné z této skupiny proměnných (například `$(DATABRICKS_URL)` a `$(DATABRICKS_TOKEN)` ). Nápad je, že další fáze (například `Deploy_to_UAT` ) bude pracovat se stejnými názvy proměnných, které jsou definovány ve vlastní skupině proměnných UAT.
 
@@ -341,7 +341,7 @@ Poslední úkol v úloze kontroluje výsledek spuštění poznámkového bloku. 
     * Nasazení na datacihly + nasazení na ADF
     * Test integrace
 
-Obsahuje několik fází ***nasazení*** , které se rovnají počtu cílových prostředí, která máte. Každá fáze ***nasazení*** obsahuje dvě [nasazení](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) , která běží paralelně, a [úlohu](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) , která se po nasazení spustí za účelem testování řešení v prostředí.
+Obsahuje několik fází **nasazení** _, které odpovídají počtu cílových prostředí, které máte. Každá fáze _ *_Deploy_** obsahuje dvě [nasazení](/azure/devops/pipelines/process/deployment-jobs) , která běží paralelně a [úlohu](/azure/devops/pipelines/process/phases?tabs=yaml) , která se po nasazení spustí za účelem testování řešení v prostředí.
 
 Ukázková implementace kanálu je sestavena v následujícím fragmentu ***YAML*** :
 
@@ -480,6 +480,6 @@ stages:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa zdrojového kódu ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control)
-* [Průběžná integrace a doručování v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
+* [Správa zdrojového kódu ve službě Azure Data Factory](../data-factory/source-control.md)
+* [Kontinuální integrace a průběžné doručování ve službě Azure Data Factory](../data-factory/continuous-integration-deployment.md)
 * [DevOps pro Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

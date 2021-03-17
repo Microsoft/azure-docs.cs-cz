@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362155"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426465"
 ---
 # <a name="what-is-custom-commands"></a>Co jsou vlastní příkazy?
 
@@ -28,7 +28,7 @@ Vlastní příkazy jsou nejvhodnější pro dokončování úkolů nebo pro scé
 > [!TIP]
 > Podívejte se na naše ukázky ukázek na naší úvodní stránce na adrese [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) .
 
-Pokud vás zajímá vytváření složitých konverzačních aplikací, doporučujeme vyzkoušet si rozhraní robota pomocí [řešení Virtual Assistant](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Můžete přidat hlas do libovolného robota bot bot pomocí přímého Lineového rozpoznávání.
+Pokud vás zajímá vytváření složitých konverzačních aplikací, doporučujeme vyzkoušet si rozhraní robota pomocí [řešení Virtual Assistant](/azure/bot-service/bot-builder-enterprise-template-overview). Můžete přidat hlas do libovolného robota bot bot pomocí přímého Lineového rozpoznávání.
 
 Dobré kandidáty pro vlastní příkazy mají pevný slovník s dobře definovanými sadami proměnných. Například úlohy pro domovskou automatizaci, jako je řízení termostatu, jsou ideální.
 
@@ -36,7 +36,7 @@ Dobré kandidáty pro vlastní příkazy mají pevný slovník s dobře definova
 
 ## <a name="getting-started-with-custom-commands"></a>Začínáme s vlastními příkazy
 
-Naším cílem s vlastními příkazy je snížit zátěžové zatížení, abyste se seznámili se všemi různými technologiemi a mohli se soustředit na sestavování aplikací hlasových příkazů. První krok pro použití vlastních příkazů k <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">vytvoření prostředku <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Speech </a>. Pomocí sady Speech SDK můžete vytvořit aplikaci Custom Commands v sadě Speech Studio a publikovat ji. poté může aplikace v zařízení s ní komunikovat.
+Naším cílem s vlastními příkazy je snížit zátěžové zatížení, abyste se seznámili se všemi různými technologiemi a mohli se soustředit na sestavování aplikací hlasových příkazů. První krok pro použití vlastních příkazů k <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">vytvoření prostředku Azure Speech </a>. Pomocí sady Speech SDK můžete vytvořit aplikaci Custom Commands v sadě Speech Studio a publikovat ji. poté může aplikace v zařízení s ní komunikovat.
 
 #### <a name="authoring-flow-for-custom-commands"></a>Vytváření toku pro vlastní příkazy
    ![Vytváření toku pro vlastní příkazy](media/voice-assistants/custom-commands-flow.png "Tok vytváření vlastních příkazů")
@@ -52,7 +52,7 @@ Až budete s rychlým startem hotovi, Prozkoumejte naše příručky, kde najdet
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Ukázky najdete v našem úložišti hlasových asistentů na GitHubu.](https://aka.ms/speech/cc-samples)
 * [Pokud si chcete vyzkoušet vlastní příkazy, přejdete do sady Speech Studio.](https://speech.microsoft.com/customcommands)
 * [Získat sadu Speech SDK](speech-sdk.md)

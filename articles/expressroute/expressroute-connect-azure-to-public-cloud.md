@@ -2,17 +2,17 @@
 title: Připojení Azure k veřejným cloudům | Microsoft Docs
 description: Popisuje různé způsoby, jak připojit Azure k ostatním veřejným cloudům.
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
-ms.author: osamaz
-ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: fb4c34345ab902e243f22eae06fd5ea174fd2992
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081096"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202187"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Propojení Azure s veřejnými cloudy
 
@@ -64,8 +64,5 @@ Další otázky k připojení ExpressRoute a virtuální sítě najdete v témat
 Další informace najdete v tématu [Nastavení přímého připojení mezi Azure a Oracle cloudem][ER-OCI] pro připojení mezi Azure a Oracle.
 
 <!--Link References-->
-[ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
-[ER-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
-
-
-
+[ER-FAQ]: ./expressroute-faqs.md
+[ER-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

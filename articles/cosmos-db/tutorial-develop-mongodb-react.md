@@ -9,15 +9,16 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1425b89e42450123c1696ddcee4458e1f69b8a6c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424269"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348564"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace použila pro server uzel a expresní verzi, připojí se k databázi Cosmos s nakonfigurovaným [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí reakce front-end k serverové části aplikace. V tomto kurzu také ukážeme, Cosmos DB jak v Azure Portal a v případě, že nasadíte aplikaci na Internet a jak nasazovat aplikaci na Internet, aby všichni mohli sledovat své oblíbené Heroes. 
 
@@ -35,7 +36,7 @@ Tento vícedílný kurz se zabývá následujícími úlohami:
 
 Chcete vytvořit stejnou aplikaci pomocí Angular? Podívejte se na [sérii videokurzů pro Angular](tutorial-develop-mongodb-nodejs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Node.js](https://www.nodejs.org)
 
 ### <a name="finished-project"></a>Dokončený projekt
@@ -107,5 +108,4 @@ V tomto kurzu jste se naučili:
 Můžete pokračovat k dalšímu kurzu, kde zjistíte, jak importovat data MongoDB do služby Azure Cosmos DB.  
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
- 
+> [Importování dat MongoDB do databáze Azure Cosmos](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

@@ -3,55 +3,441 @@ title: Seznam aktualizací použitých v hostovaném operačním systému Azure 
 description: V tomto článku jsou uvedené aktualizace služby Microsoft Security Response Center, které se nastavily na jiný hostovaný operační systém Azure. Podívejte se, jestli se aktualizace vztahuje na hostovaný operační systém, který používáte.
 services: cloud-services
 documentationcenter: na
-author: yohaddad
+author: gunnarcms
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
-ms.author: yohaddad
-ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 3/12/2021
+ms.author: gunnarc
+ms.openlocfilehash: 81b3d7ca21699b1e9b0dc91eaae8075f189eecd3
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510160"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461942"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
 
-## <a name="august-2020-guest-os"></a>2020. srpna hostovaný operační systém
->[!NOTE]
->V tuto chvíli probíhá navýšení hostovaného operačního systému pro virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V hostovaném operačním systému z srpna jsou zahrnuté následující opravy. Tento seznam se může změnit.
+## <a name="march-2021-guest-os"></a>Hostovaný operační systém od března 2021
 
+>[!NOTE] 
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+>Hostovaný operační systém je v tuto chvíli odebírán na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému. Tento seznam se může změnit. 
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-08 |  [4571687]  |  Kumulativní aktualizace IE | 2,101, 3,88, 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4561600]  |  Aktualizace pro Flash | 3,88, 4,81, 5,46, 6,22 | 9. června 2020 |
-|  Rel. 20-08 |  [4571694]  |  Nejnovější kumulativní aktualizace | 6,22 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4565349]  |  Nejnovější kumulativní aktualizace | 5,46 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4570673]  |  Aktualizace servisního zásobníku | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4571729]  |  Měsíční souhrn | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569767]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569780]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569765]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 3,88 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569779]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 3,88 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4566426]  |  Aktualizace servisního zásobníku | 3,88 | 14. července 2020 |
-|  Rel. 20-08 |  [4571736]  |  Měsíční souhrn | 3,88 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4566425]  |  Aktualizace servisního zásobníku | 4,81 | 14. července 2020 |
-|  Rel. 20-08 |  [4571703]  |  Měsíční souhrn | 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569768]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569778]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,46 | 25. února 2020 |
-|  Rel. 20-08 |  [4565912]  |  Aktualizace servisního zásobníku | 5,46 | 14. července 2020 |
-|  Rel. 20-08 |  [4569746]  |  Shrnutí zabezpečení a kvality .NET Framework 4,8 | 5,46 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569776]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | 6,22 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569750]  |  Kumulativní aktualizace .NET Framework 3,5 a 4,8 | 6,22 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4566424]  |  Aktualizace servisního zásobníku | 6,22 | 11. srpna 2020 |
+|  Rel. 21-03 |  [5000822]  |  Nejnovější kumulativní aktualizace (LCU) | 6,29 | 9. března 2021 |
+|  Rel. 21-03 |  [4580325]  |  Aktualizace pro Flash | 3,95, 4,88, 5,53, 6,29 | 13. října 2020 |
+|  Rel. 21-03 |  [5000800]  |  Kumulativní aktualizace IE | 2,108, 3,95, 4,88 | 9. března 2021 |
+|  Rel. 21-03 |  [5000803]  |  Nejnovější kumulativní aktualizace (LCU) | 5,53 | 9. března 2021 |
+|  Rel. 21-03 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 2,108 | 13. října 2020 |
+|  Rel. 21-03 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | 2,108 | 13. října 2020 |
+|  Rel. 21-03 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 4,88 | 13. října 2020 |
+|  Rel. 21-03 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2  | 4,88 | 13. října 2020 |
+|  Rel. 21-03 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5  | 3,95 | 13. října 2020 |
+|  Rel. 21-03 |  [4578954]  |  . .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality  | 3,95 | 13. října 2020 |
+|  Rel. 21-03 |  [4601060]  |  . .NET Framework 3,5 a kumulativní aktualizace 4.7.2  | 6,29 | 9. února 2021 |
+|  Rel. 21-03 |  [5000841]  |  Měsíční souhrn  | 2,108 | 9. března 2021 |
+|  Rel. 21-03 |  [5000847]  |  Měsíční souhrn  | 3,95 | 9. března 2021 |
+|  Rel. 21-03 |  [5000848]  |  Měsíční souhrn  | 4,88 | 9. března 2021 |
+|  Rel. 21-03 |  [4566426]  |  Aktualizace servisního zásobníku  | 3,95 | 14. července 2020 |
+|  Rel. 21-03 |  [4566425]  |  Aktualizace servisního zásobníku  | 4,88 | 14. července 2020 |
+|  Rel. 21-03 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení  | 4,88 | 19. srpna 2020 |
+|  Rel. 21-03 |  [4592510]  |  Aktualizace servisního zásobníku  | 2,108 | 8. prosince 2020 |
+|  Rel. 21-03 |  [5000859]  |  Aktualizace servisního zásobníku  | 6,29 | 9. března 2021 |
+|  Rel. 21-03 |  [4494175]  |  Vyžádal povolení mikrokódu  | 5,53 | Od 1. září 2020 |
+|  Rel. 21-03 |  [4494174]  |  Vyžádal povolení mikrokódu  | 6,29 | Od 1. září 2020 |
 
+[5000822]: https://support.microsoft.com/kb/5000822
+[4580325]: https://support.microsoft.com/kb/4580325
+[5000800]: https://support.microsoft.com/kb/5000800
+[5000803]: https://support.microsoft.com/kb/5000803
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4601060]: https://support.microsoft.com/kb/4601060
+[5000841]: https://support.microsoft.com/kb/5000841
+[5000847]: https://support.microsoft.com/kb/5000847
+[5000848]: https://support.microsoft.com/kb/5000848
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4592510]: https://support.microsoft.com/kb/4592510
+[5000859]: https://support.microsoft.com/kb/5000859
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
+## <a name="february-2021-guest-os"></a>2021. února hostovaný operační systém
+
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 21-02 |  [4601345]  |  Nejnovější kumulativní aktualizace (LCU) | [6,28] | 9. února 2021 |
+|  Rel. 21-02 |  [4580325]  |  Aktualizace pro Flash | [3,94], [4,87], [5,52], [6,28] | 13. října 2020 |
+|  Rel. 21-02 |  [4586768]  |  Kumulativní aktualizace IE | [2,107], [3,94], [4,87] | 10. listopadu 2020 |
+|  Rel. 21-02 |  [4601318]  |  Nejnovější kumulativní aktualizace (LCU) | [5,52] | 9. února 2021 |
+|  Rel. 21-02 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [2,107] | 12. ledna 2021 |
+|  Rel. 21-02 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,107] | 12. ledna 2021 |
+|  Rel. 21-02 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,87] | 12. ledna 2021 |
+|  Rel. 21-02 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,87] | 12. ledna 2021 |
+|  Rel. 21-02 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,94] | 12. ledna 2021 |
+|  Rel. 21-02 |  [4578954]  |  . .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality | [3,94] | 12. ledna 2021 |
+|  Rel. 21-02 |  [4578966]  |  . .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,28] | 13. října 2020 |
+|  Rel. 21-02 |  [4601347]  |  Měsíční souhrn | [2,107] | 9. února 2021 |
+|  Rel. 21-02 |  [4601348]  |  Měsíční souhrn | [3,94] | 9. února 2021 |
+|  Rel. 21-02 |  [4601384]  |  Měsíční souhrn | [4,87] | 9. února 2021 |
+|  Rel. 21-02 |  [4566426]  |  Aktualizace servisního zásobníku | [3,94] | 14. července 2020 |
+|  Rel. 21-02 |  [4566425]  |  Aktualizace servisního zásobníku | [4,87] | 14. července 2020 |
+|  Rel. 21-02 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení | [4,87] | 19. srpna 2020 |
+|  Rel. 21-02 |  [4601392]  |  Aktualizace servisního zásobníku | [5,52] | 9. února 2021 |
+|  Rel. 21-02 |  [4592510]  |  Aktualizace servisního zásobníku | [2,107] | 8. prosince 2020 |
+|  Rel. 21-02 |  [4601393]  |  Aktualizace servisního zásobníku | [6,28] | 9. února 2021 |
+|  Rel. 21-02 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,52] | Od 1. září 2020 |
+|  Rel. 21-02 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,28] | Od 1. září 2020 |
+
+[4601345]: https://support.microsoft.com/kb/4601345
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4601318]: https://support.microsoft.com/kb/4601318
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4601347]: https://support.microsoft.com/kb/4601347
+[4601348]: https://support.microsoft.com/kb/4601348
+[4601384]: https://support.microsoft.com/kb/4601384
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4601392]: https://support.microsoft.com/en-us/topic/february-9-2021-kb4601318-os-build-14393-4225-c5e3de6c-e3e6-ffb5-6197-48b9ce16446e
+[4592510]: https://support.microsoft.com/kb/4592510
+[4601393]: https://support.microsoft.com/kb/4601393
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2,107]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,94]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,87]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,52]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,28]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="january-2021-guest-os"></a>Leden 2021 hostovaný operační systém
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 21-01 |  [4598230]  |  Nejnovější kumulativní aktualizace (LCU) | [6,27] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4580325]  |  Aktualizace pro Flash | [3,93], [4,86], [5,51], [6,27] | 13. října 2020 |
+|  Rel. 21-01 |  [4586768]  |  Kumulativní aktualizace IE | [2,106], [3,93], [4,86] | 10. listopadu 2020 |
+|  Rel. 21-01 |  [4598243]  |  Nejnovější kumulativní aktualizace (LCU) | [5,51] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [2,106] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,106] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,86] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,86] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,93] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,93] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,27] | 13. října 2020 |
+|  Rel. 21-01 |  [4598279]  |  Měsíční souhrn | [2,106] | 12. ledna 2020 |
+|  Rel. 21-01 |  [4598278]  |  Měsíční souhrn | [3,93] | 12. ledna 2020 |
+|  Rel. 21-01 |  [4598285]  |  Měsíční souhrn | [4,86] | 12. ledna 2020 |
+|  Rel. 21-01 |  [4566426]  |  Aktualizace servisního zásobníku | [3,93] | 14. července 2020 |
+|  Rel. 21-01 |  [4566425]  |  Aktualizace servisního zásobníku | [4,86] | 14. července 2020 |
+|  Rel. 21-01 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení | [4,86] | 19. srpna 2020 |
+|  Rel. 21-01 |  [4576750]  |  Aktualizace servisního zásobníku | [5,51] | 8. září 2020 |
+|  Rel. 21-01 |  [4592510]  |  Aktualizace servisního zásobníku | [2,106] | 8. prosince 2020 |
+|  Rel. 21-01 |  [4598480]  |  Aktualizace servisního zásobníku | [6,27] | 12. ledna 2021 |
+|  Rel. 21-01 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,51] | Od 1. září 2020 |
+|  Rel. 21-01 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,27] | 3. září 2020 |
+
+[4598230]: https://support.microsoft.com/kb/4598230
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4598243]: https://support.microsoft.com/kb/4598243
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4598279]: https://support.microsoft.com/kb/4598279
+[4598278]: https://support.microsoft.com/kb/4598278
+[4598285]: https://support.microsoft.com/kb/4598285
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4598480]: https://support.microsoft.com/kb/4598480
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2,106]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,93]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,86]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,51]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,27]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+## <a name="december-2020-guest-os"></a>Operační systém hosta 2020. prosince
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-12 |  [4592440]  |  Nejnovější kumulativní aktualizace | [6,26] | 8. prosince 2020 |
+|  Rel. 20-12 |  [4580325]  |  Aktualizace pro Flash | [3,92], [4,85], [5,50], [6,26] | 13. října 2020 |
+|  Rel. 20-12 |  [4586768]  |  Kumulativní aktualizace IE | [2,105], [3,92], [4,85] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4593226]  |  Nejnovější kumulativní aktualizace | [5,50] | 8. prosince 2020 |
+|  Rel. 20-12 |  [4052623]  |  Defender | [5,50], [6,26] | DEC 13, 2020 |
+|  Rel. 20-12 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [2,105] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,105] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,85] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,85] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,92] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,92] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,26] | 13. října 2020 |
+|  Rel. 20-12 |  [4592471]  |  Měsíční souhrn | [2,105] | 8. prosince 2020 |
+|  Rel. 20-12 |  [4592468]  |  Měsíční souhrn | [3,92] | 8. prosince 2020 |
+|  Rel. 20-12 |  [4592484]  |  Měsíční souhrn | [4,85] | 8. prosince 2020 |
+|  Rel. 20-12 |  [4566426]  |  Aktualizace servisního zásobníku | [3,92] | 14. července 2020 |
+|  Rel. 20-12 |  [4566425]  |  Aktualizace servisního zásobníku | [4,85] | 14. července 2020 |
+|  Rel. 20-12 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení | [4,85] | 19. srpna 2020 |
+|  Rel. 20-12 |  [4576750]  |  Aktualizace servisního zásobníku | [5,50] | 8. září 2020 |
+|  Rel. 20-12 |  [4592510]  |  Aktualizace servisního zásobníku | [2,105] | 8. prosince 2020 |
+|  Rel. 20-12 |  [4587735]  |  Aktualizace servisního zásobníku | [6,26] | 10. listopadu 2020 |
+|  Rel. 20-12 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,50] | Od 1. září 2020 |
+|  Rel. 20-12 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,26] | 3. září 2020 |
+
+[4592440]: https://support.microsoft.com/kb/4592440
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4593226]: https://support.microsoft.com/kb/4593226
+[4052623]: https://support.microsoft.com/kb/4052623
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4592471]: https://support.microsoft.com/kb/4592471
+[4592468]: https://support.microsoft.com/kb/4592468
+[4592484]: https://support.microsoft.com/kb/4592484
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2,105]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,92]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,85]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,50]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,26]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+## <a name="november-2020-guest-os"></a>Operační systém hosta v listopadu 2020
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-11 OOB |  [4594442]  |  Nejnovější kumulativní aktualizace | [6,25] | 17. listopadu 2020 |
+|  Rel. 20-11 OOB |  [4594441]  |  Nejnovější kumulativní aktualizace | [5,49] | 19. listopadu 2020 |
+|  Rel. 20-11 |  [4580325]  |  Aktualizace pro Flash | [3,91], [4,84], [5,49], [6,25] | 13. října 2020 |
+|  Rel. 20-11 |  [4586768]  |  Kumulativní aktualizace IE | [2,104], [3,91], [4,84] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [2,104] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,104] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,84] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,84] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,91] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,91] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,25] | 13. října 2020 |
+|  Rel. 20-11 |  [4586827]  |  Měsíční souhrn | [2,104] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4586834]  |  Měsíční souhrn | [3,91] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4586845]  |  Měsíční souhrn | [4,84] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4566426]  |  Aktualizace servisního zásobníku | [3,91] | 14. července 2020 |
+|  Rel. 20-11 |  [4566425]  |  Aktualizace servisního zásobníku | [4,84] | 14. července 2020 |
+|  Rel. 20-11 OOB |  [4578013]  |  Samostatná aktualizace zabezpečení | [4,84] | 19. srpna 2020 |
+|  Rel. 20-11 |  [4576750]  |  Aktualizace servisního zásobníku | [5,49] | 8. září 2020 |
+|  Rel. 20-11 |  [4580970]  |  Aktualizace servisního zásobníku | [2,104] | 13. října 2020 |
+|  Rel. 20-11 |  [4587735]  |  Aktualizace servisního zásobníku | [6,25] | 10. listopadu 2020 |
+|  Rel. 20-11 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,49] | Od 1. září 2020 |
+|  Rel. 20-11 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,25] | 3. září 2020 |
+
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4586827]: https://support.microsoft.com/kb/4586827
+[4586834]: https://support.microsoft.com/kb/4586834
+[4586845]: https://support.microsoft.com/kb/4586845
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4580970]: https://support.microsoft.com/kb/4580970
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2,104]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,91]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,84]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,49]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,25]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+
+## <a name="october-2020-guest-os"></a>Října 2020 hostovaný operační systém
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-10 |  [4577010]  |  Kumulativní aktualizace IE | [2,103], [3,90], [4,83] | 8. září 2020 |
+|  Rel. 20-10 |  [4580325]  |  Aktualizace pro Flash | [3,90], [4,83], [5,48], [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4577668]  |  Nejnovější kumulativní aktualizace | [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4580346]  |  Nejnovější kumulativní aktualizace | [5,48] | 13. října 2020 |
+|  Rel. 20-10 |  [4580970]  |  Aktualizace servisního zásobníku | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4580345]  |  Měsíční souhrn | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,103] | 13. října 2020 |
+|  Rel. 20-10 |  [4566426]  |  Aktualizace servisního zásobníku | [3,90] | 14. července 2020 |
+|  Rel. 20-10 |  [4580382]  |  Měsíční souhrn | [3,90] | 13. října 2020 |
+|  Rel. 20-10 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,90] | 13. října 2020 |
+|  Rel. 20-10 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,90] | 13. října 2020 |
+|  Rel. 20-10 |  [4566425]  |  Aktualizace servisního zásobníku | [4,83] | 14. července 2020 |
+|  Rel. 20-10 |  [4580347]  |  Měsíční souhrn | [4,83] | 13. října 2020 |
+|  Rel. 20-10 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,83] | 13. října 2020 |
+|  Rel. 20-10 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,83] | 13. října 2020 |
+|  Rel. 20-10 |  [4578013]  |  Samostatná aktualizace zabezpečení | [4,83] | 19. srpna 2020 |
+|  Rel. 20-10 |  [4576750]  |  Aktualizace servisního zásobníku | [5,48] | 8. září 2020 |
+|  Rel. 20-10 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,48] | Od 1. září 2020 |
+|  Rel. 20-10 |  [4577667]  |  Aktualizace servisního zásobníku | [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,24] | 13. října 2020 |
+|  Rel. 20-10 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,24] | 3. září 2020 |
+
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4580325]: https://support.microsoft.com/kb/4580325
+[4577668]: https://support.microsoft.com/kb/4577668
+[4580346]: https://support.microsoft.com/kb/4580346
+[4580970]: https://support.microsoft.com/kb/4580970
+[4580345]: https://support.microsoft.com/kb/4580345
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4566426]: https://support.microsoft.com/kb/4566426
+[4580382]: https://support.microsoft.com/kb/4580382
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4566425]: https://support.microsoft.com/kb/4566425
+[4580347]: https://support.microsoft.com/kb/4580347
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4494175]: https://support.microsoft.com/kb/4494175
+[4577667]: https://support.microsoft.com/kb/4577667
+[4578966]: https://support.microsoft.com/kb/4578966
+[4494174]: https://support.microsoft.com/kb/4494174
+[2,103]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,90]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,83]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,48]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,24]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+
+## <a name="september-2020-guest-os"></a>Hostovaný operační systém od září 2020
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-09 |  [4577010]  |  Internet Explorer | [2,102], [3,89], [4,82] | 8. září 2020 |
+|  Rel. 20-09 |  [4561600]  |  Aktualizace pro Flash | [3,89], [4,82], [5,47], [6,23] | 8. září 2020 |
+|  Rel. 20-09 |  [4577015]  |  Nejnovější kumulativní aktualizace (LCU) | [5,47] | 8. září 2020 |
+|  Rel. 20-09 |  [4570333]  |  Nejnovější kumulativní aktualizace (LCU) | [6,23] | 8. září 2020 |
+|  Rel. 20-09 |  [4570673]  |  Aktualizace servisního zásobníku | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4577051]  |  Měsíční souhrn | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4569767]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4569780]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4566426]  |  Aktualizace servisního zásobníku | [3,89] | 8. září 2020 |
+|  Rel. 20-09 |  [4577038]  |  Měsíční souhrn | [3,89] | 8. září 2020 |
+|  Rel. 20-09 |  [4569765]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,89] | 8. září 2020 |
+|  Rel. 20-09 |  [4569779]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,89] | 8. září 2020 |
+|  Rel. 20-09 |  [4566425]  |  Aktualizace servisního zásobníku | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4577066]  |  Měsíční souhrn | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4569768]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4569778]  |  .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4578013]  |  Aktualizace zabezpečení | [2,102] | 8. září 2020 |
+|  Rel. 20-09 |  [4576750]  |  Aktualizace servisního zásobníku | [5,47] | 8. září 2020 |
+|  Rel. 20-09 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,47] | 8. září 2020 |
+|  Rel. 20-09 |  [4570332]  |  Aktualizace servisního zásobníku | [6,23] | 8. září 2020 |
+|  Rel. 20-09 |  [4570720]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,23] | 8. září 2020 |
+|  Rel. 20-09 |  [4494174]  |  Vyžádal povolení mikrokódu | [6,23] | 8. září 2020 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4494174]: https://support.microsoft.com/kb/4494174
+[2,102]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,89]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,82]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,47]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,23]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+
+## <a name="august-2020-guest-os"></a>2020. srpna hostovaný operační systém
+
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-08 |  [4571687]  |  Kumulativní aktualizace IE | [2,101], [3,88], [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4561600]  |  Aktualizace pro Flash | [3,88], [4,81], [5,46], [6,22] | 9. června 2020 |
+|  Rel. 20-08 |  [4571694]  |  Nejnovější kumulativní aktualizace | [6,22] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4565349]  |  Nejnovější kumulativní aktualizace | [5,46] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4570673]  |  Aktualizace servisního zásobníku | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4571729]  |  Měsíční souhrn | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569767]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569780]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569765]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,88] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569779]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,88] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566426]  |  Aktualizace servisního zásobníku | [3,88] | 14. července 2020 |
+|  Rel. 20-08 |  [4571736]  |  Měsíční souhrn | [3,88] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566425]  |  Aktualizace servisního zásobníku | [4,81] | 14. července 2020 |
+|  Rel. 20-08 |  [4571703]  |  Měsíční souhrn | [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569768]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569778]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,46] | 25. února 2020 |
+|  Rel. 20-08 |  [4565912]  |  Aktualizace servisního zásobníku | [5,46] | 14. července 2020 |
+|  Rel. 20-08 |  [4569776]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,22] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566424]  |  Aktualizace servisního zásobníku | [6,22] | 11. srpna 2020 |
 
 
 [4571687]: https://support.microsoft.com/kb/4571687
@@ -72,15 +458,18 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4569778]: https://support.microsoft.com/kb/4569778
 [4494175]: https://support.microsoft.com/kb/4494175
 [4565912]: https://support.microsoft.com/kb/4565912
-[4569746]: https://support.microsoft.com/kb/4569746
 [4569776]: https://support.microsoft.com/kb/4569776
-[4569750]: https://support.microsoft.com/kb/4569750
 [4566424]: https://support.microsoft.com/kb/4566424
+[2,101]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,88]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,81]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,46]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,22]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>Z července 2020 hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 |  Rel. 20-07 |  [4565479]  |  Internet Explorer | [2,100], [3,87], [4,80] | 14. července 2020 |
 |  Rel. 20-07 |  [4565511]  |  Nejnovější kumulativní aktualizace (LCU) | [5,45] | 14. července 2020 |
@@ -126,17 +515,17 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4565632]: https://support.microsoft.com/kb/4565632
 [4558997]: https://support.microsoft.com/kb/4558997
 [4494174]: https://support.microsoft.com/kb/4494174
-[2,100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,100]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,87]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,80]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,45]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,21]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="june-2020-guest-os"></a>Operační systém hosta červen 2020
 
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 |  Rel. 20-06  |  [4561603]  |  Internet Explorer  |  [2,99], [3,86], [4,79]  |  9. června 2020  |
 |  Rel. 20-06  |  [4561616]  |  Nejnovější kumulativní aktualizace (LCU)  |  [5,44]  |  9. června 2020  |
@@ -165,34 +554,34 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
-[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,99]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,86]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,79]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,44]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,20]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Květen 2020 hostovaného operačního systému
 
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-05  |  [4556798]  |  Internet Explorer   |  [2,98],  [3,85], [4,78]  |  12. května 2020  |
-|  Rel. 20-05  |  [4556813]  |  Nejnovější kumulativní aktualizace (LCU)   |  [5,43]  |  12. května 2020  |
-|  Rel. 20-05  |  [4551853]  |  Nejnovější kumulativní aktualizace (LCU)   |  [6,19]  |  12. května 2020  |
-|  Rel. 20-05  |  [4552940]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |
-|  Rel. 20-05  |  [4556836]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |
-|  Rel. 20-05  |  [4555449]  |  Aktualizace servisního zásobníku   |  [2,98]  |  12. května 2020  |
-|  Rel. 20-05  |  [4552920]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |
-|  Rel. 20-05  |  [4552979]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
-|  Rel. 20-05  |  [4556840]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
-|  Rel. 20-05  |  [4552947]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
-|  Rel. 20-05  |  [4552982]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
-|  Rel. 20-05  |  [4552946]  |  Měsíční souhrn   |  [4,78]  |  12. května 2020  |
-|  Rel. 20-05  |  [4556846]  |  Měsíční souhrn   |  [4,78]  |  12. května 2020  |
-|  Rel. 20-05  |  [4550994]  |  Aktualizace servisního zásobníku   |  [5,43]  |  Dubna 14 2020  |
-|  Rel. 20-05  |  [4552924]  |  Měsíční souhrn   |  [6,19]  |  12. května 2020  |
-|  Rel. 20-05  |  [4549947]  |  Aktualizace servisního zásobníku   |  [6,19]  |  Dubna 14 2020  |
+|  Rel. 20-05  |  [4556798]  |  Internet Explorer   |  [2,98],  [3,85], [4,78]  |  12. května 2020  |
+|  Rel. 20-05  |  [4556813]  |  Nejnovější kumulativní aktualizace (LCU)   |  [5,43]  |  12. května 2020  |
+|  Rel. 20-05  |  [4551853]  |  Nejnovější kumulativní aktualizace (LCU)   |  [6,19]  |  12. května 2020  |
+|  Rel. 20-05  |  [4552940]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |
+|  Rel. 20-05  |  [4556836]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |
+|  Rel. 20-05  |  [4555449]  |  Aktualizace servisního zásobníku   |  [2,98]  |  12. května 2020  |
+|  Rel. 20-05  |  [4552920]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |
+|  Rel. 20-05  |  [4552979]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
+|  Rel. 20-05  |  [4556840]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
+|  Rel. 20-05  |  [4552947]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
+|  Rel. 20-05  |  [4552982]  |  Měsíční souhrn   |  [3,85]  |  12. května 2020  |
+|  Rel. 20-05  |  [4552946]  |  Měsíční souhrn   |  [4,78]  |  12. května 2020  |
+|  Rel. 20-05  |  [4556846]  |  Měsíční souhrn   |  [4,78]  |  12. května 2020  |
+|  Rel. 20-05  |  [4550994]  |  Aktualizace servisního zásobníku   |  [5,43]  |  Dubna 14 2020  |
+|  Rel. 20-05  |  [4552924]  |  Měsíční souhrn   |  [6,19]  |  12. května 2020  |
+|  Rel. 20-05  |  [4549947]  |  Aktualizace servisního zásobníku   |  [6,19]  |  Dubna 14 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -211,32 +600,32 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
-[2,98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,98]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,85]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,78]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,43]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,19]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="april-2020-guest-os"></a>Hostovaný operační systém od dubna 2020
 
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-04   |  [4550965]  |  Zabezpečení Windows   |  [2,97]  |  Dubna 14 2020  |
-|  Rel. 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  Dubna 14 2020  |
-|  Rel. 20-04   |  [4550971]  |  Zabezpečení Windows   |  [3,84]  |  Dubna 14 2020  |
-|  Rel. 20-04   |  [4550970]  |  Zabezpečení Windows   |  [4,77]  |  Dubna 14 2020  |
-|  Rel. 20-04   |  [4550929]  |  Nejnovější kumulativní aktualizace (LCU)   |  [5,42]  |  Dubna 14 2020  |
-|  Rel. 20-04   |  [4549949]  |  Nejnovější kumulativní aktualizace (LCU)   |  [6,18]  |  Dubna 14 2020  |
-|  Rel. 20-04   |  [4540688]  |  Měsíční souhrn   |  [2,97]  |  10. března 2020  |
-|  Rel. 20-04   |  [4550735]  |  Aktualizace servisního zásobníku   |  [2,97]  |  10. března 2020  |
-|  Rel. 20-04   |  [4540726]  |  Aktualizace servisního zásobníku   |  [3,84]  |  10. března 2020  |
-|  Rel. 20-04   |  [4541510]  |  Měsíční souhrn   |  [3,84]  |  10. března 2020  |
-|  Rel. 20-04   |  [4541509]  |  Měsíční souhrn   |  [4,77]  |  10. března 2020  |
-|  Rel. 20-04   |  [4540725]  |  Aktualizace servisního zásobníku   |  [4,77]  |  10. března 2020  |
-|  Rel. 20-04   |  [4540723]  |  Aktualizace servisního zásobníku   |  [5,42]  |  10. března 2020  |
-|  Rel. 20-04   |  [4539571]  |  Aktualizace servisního zásobníku   |  [6,18]  |  10. března 2020  |
+|  Rel. 20-04   |  [4550965]  |  Zabezpečení Windows   |  [2,97]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550971]  |  Zabezpečení Windows   |  [3,84]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550970]  |  Zabezpečení Windows   |  [4,77]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550929]  |  Nejnovější kumulativní aktualizace (LCU)   |  [5,42]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4549949]  |  Nejnovější kumulativní aktualizace (LCU)   |  [6,18]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4540688]  |  Měsíční souhrn   |  [2,97]  |  10. března 2020  |
+|  Rel. 20-04   |  [4550735]  |  Aktualizace servisního zásobníku   |  [2,97]  |  10. března 2020  |
+|  Rel. 20-04   |  [4540726]  |  Aktualizace servisního zásobníku   |  [3,84]  |  10. března 2020  |
+|  Rel. 20-04   |  [4541510]  |  Měsíční souhrn   |  [3,84]  |  10. března 2020  |
+|  Rel. 20-04   |  [4541509]  |  Měsíční souhrn   |  [4,77]  |  10. března 2020  |
+|  Rel. 20-04   |  [4540725]  |  Aktualizace servisního zásobníku   |  [4,77]  |  10. března 2020  |
+|  Rel. 20-04   |  [4540723]  |  Aktualizace servisního zásobníku   |  [5,42]  |  10. března 2020  |
+|  Rel. 20-04   |  [4539571]  |  Aktualizace servisního zásobníku   |  [6,18]  |  10. března 2020  |
 
 
 [4550965]: https://support.microsoft.com/kb/4550965
@@ -253,16 +642,16 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
-[2,97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,97]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,84]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,77]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,42]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,18]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>Hostovaný operační systém od března 2020
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 |  Rel. 20-03  |  [4541500]  |  Zabezpečení Windows  | [2,96] | 10. března 2020 |
 |  Rel. 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10. března 2020 |
@@ -284,16 +673,16 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4537814]: https://support.microsoft.com/kb/4537814 
 [4537821]: https://support.microsoft.com/kb/4537821 
 
-[6,17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,96]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,17]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,41]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,76]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,83]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,96]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="february-2020-guest-os"></a>2020. února hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 |  Rel. 20-02  |  [4537767]  |  Internet Explorer  |  [2,95], [3,82], [4,75]  |  11. února 2020  |
 |  Rel. 20-02  |  [4537813]  |  Zabezpečení Windows  |  [2,95]  |  11. února 2020  |
@@ -327,36 +716,36 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4532920]: https://support.microsoft.com/kb/4532920
 [4534297]: https://support.microsoft.com/kb/4534297
 
-[6,16]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,40]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,75]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,95]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,16]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,40]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,75]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,82]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,95]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="january-2020-guest-os"></a>Leden 2020 hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-01  |  [4532960]  |  Zabezpečení Windows  | [2,94] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | [2,94] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534314]  |  Zabezpečení Windows  | [2,94] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4532958]  |  Zabezpečení Windows  | [3,81] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4532963]  |  Zabezpečení Windows  | [3,81] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | [3,81] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534288]  |  Zabezpečení Windows  | [3,81] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4532961]  |  Zabezpečení Windows  | [4,74] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4532962]  |  Zabezpečení Windows  | [4,74] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | [4,74] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534309]  |  Zabezpečení Windows  | [4,74] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4494175]  |  Vyžádal povolení mikrokódu V3  | [5,39] | 29. srpna 2019 |
-|  Rel. 20-01  |  [4534271]  |  LCU  | [5,39] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4494174]  |  Vyžádal povolení mikrokódu v4  | [6,15] | 29. srpna 2019 |
-|  Rel. 20-01  |  [4532947]  |  Zabezpečení Windows  | [6,15] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4534273]  |  LCU  | [6,15] | 14. ledna 2020 |
-|  Rel. 20-01  |  [4530734]  |  Měsíční souhrn  | [2,94] | Od 10. prosince 2019 |
-|  Rel. 20-01  |  [4530691]  |  Měsíční souhrn   | [3,81] | Od 10. prosince 2019 |
-|  Rel. 20-01  |  [4530702]  |  Měsíční souhrn  | [4,74] | Od 10. prosince 2019 |
+|  Rel. 20-01  |  [4532960]  |  Zabezpečení Windows  | [2,94] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | [2,94] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534314]  |  Zabezpečení Windows  | [2,94] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532958]  |  Zabezpečení Windows  | [3,81] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532963]  |  Zabezpečení Windows  | [3,81] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | [3,81] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534288]  |  Zabezpečení Windows  | [3,81] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532961]  |  Zabezpečení Windows  | [4,74] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532962]  |  Zabezpečení Windows  | [4,74] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | [4,74] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534309]  |  Zabezpečení Windows  | [4,74] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4494175]  |  Vyžádal povolení mikrokódu V3  | [5,39] | 29. srpna 2019 |
+|  Rel. 20-01  |  [4534271]  |  LCU  | [5,39] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4494174]  |  Vyžádal povolení mikrokódu v4  | [6,15] | 29. srpna 2019 |
+|  Rel. 20-01  |  [4532947]  |  Zabezpečení Windows  | [6,15] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534273]  |  LCU  | [6,15] | 14. ledna 2020 |
+|  Rel. 20-01  |  [4530734]  |  Měsíční souhrn  | [2,94] | Od 10. prosince 2019 |
+|  Rel. 20-01  |  [4530691]  |  Měsíční souhrn   | [3,81] | Od 10. prosince 2019 |
+|  Rel. 20-01  |  [4530702]  |  Měsíční souhrn  | [4,74] | Od 10. prosince 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -377,33 +766,33 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4530734]: https://support.microsoft.com/kb/4530734
 [4530691]: https://support.microsoft.com/kb/4530691
 [4530702]: https://support.microsoft.com/kb/4530702
-[6,15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,15]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,39]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,74]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,81]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,94]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="december-2019-guest-os"></a>Operační systém hosta 2019. prosince
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-12  |  [4530692]  |  Zabezpečení Windows  | [2.93] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530698]  |  Zabezpečení Windows  | [3,80] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530730]  |  Zabezpečení Windows  | [4,73] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530689]  |  Nejnovější kumulativní aktualizace  | [5,38] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530715]  |  Nejnovější kumulativní aktualizace  | [6,14] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4525235]  |  Bez zabezpečení  | [2.93] | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4531786]  |  Aktualizace servisního zásobníku  | [2.93] | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4525246]  |  Bez zabezpečení  | [3,80] | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4523208]  |  Aktualizace servisního zásobníku  | [3,80] | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4525243]  |  Bez zabezpečení  | [4,73] | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4524445]  |  Aktualizace servisního zásobníku  | [4,73] | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4520724]  |  Aktualizace servisního zásobníku  | [5,38] | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4523204]  |  ServicingStackUpdate  | [6,14] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4530692]  |  Zabezpečení Windows  | [2,93] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [2,93] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530698]  |  Zabezpečení Windows  | [3,80] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530730]  |  Zabezpečení Windows  | [4,73] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530689]  |  Nejnovější kumulativní aktualizace  | [5,38] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530715]  |  Nejnovější kumulativní aktualizace  | [6,14] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4525235]  |  Bez zabezpečení  | [2,93] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4531786]  |  Aktualizace servisního zásobníku  | [2,93] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4525246]  |  Bez zabezpečení  | [3,80] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4523208]  |  Aktualizace servisního zásobníku  | [3,80] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4525243]  |  Bez zabezpečení  | [4,73] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4524445]  |  Aktualizace servisního zásobníku  | [4,73] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4520724]  |  Aktualizace servisního zásobníku  | [5,38] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4523204]  |  ServicingStackUpdate  | [6,14] | 12. listopadu 2019 |
 
 [4530692]: https://support.microsoft.com/kb/4530692
 [4530677]: https://support.microsoft.com/kb/4530677
@@ -421,33 +810,33 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4524445]: https://support.microsoft.com/kb/4524445
 [4520724]: https://support.microsoft.com/kb/4520724
 [4523204]: https://support.microsoft.com/kb/4523204
-[6,14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2.93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,14]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,38]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,73]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,80]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,93]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 
 ## <a name="november-2019-guest-os"></a>Operační systém hosta v listopadu 2019
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-11   |  [4525106]  |  Internet Explorer   |  [2,92]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4525233]  |  Zabezpečení Windows   |  [2,92]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4525106]  |  Internet Explorer   |  [3,79]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4525253]  |  Zabezpečení Windows   |  [3,79]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4525106]  |  Internet Explorer   |  [4,72]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4525250]  |  Zabezpečení Windows   |  [4,72]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4525236]  |  Nejnovější kumulativní aktualizace   |  [5,37]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4523205]  |  Nejnovější kumulativní aktualizace   |  [6,13]  |  12. listopadu 2019  |
-|  Rel. 19-11   |  [4519976]  |  Bez zabezpečení   |  [2,92]  |  Říjen 8, 2019  |
-|  Rel. 19-11   |  [4520007]  |  Bez zabezpečení   |  [3,79]  |  Říjen 8, 2019  |
-|  Rel. 19-11   |  [4521857]  |  ServicingStackUpdate   |  [3,79]  |  Říjen 8, 2019  |
-|  Rel. 19-11   |  [4520005]  |  Bez zabezpečení   |  [4,72]  |  Říjen 8, 2019  |
-|  Rel. 19-11   |  [4521864]  |  ServicingStackUpdate   |  [4,72]  |  Říjen 8, 2019  |
-|  Rel. 19-11   |  [4521858]  |  ServicingStackUpdate   |  [5,37]  |  Říjen 8, 2019  |
-|  Rel. 19-11   |  [4521862]  |  ServicingStackUpdate   |  [6,13]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4525106]  |  Internet Explorer   |  [2,92]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4525233]  |  Zabezpečení Windows   |  [2,92]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4525106]  |  Internet Explorer   |  [3,79]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4525253]  |  Zabezpečení Windows   |  [3,79]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4525106]  |  Internet Explorer   |  [4,72]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4525250]  |  Zabezpečení Windows   |  [4,72]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4525236]  |  Nejnovější kumulativní aktualizace   |  [5,37]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4523205]  |  Nejnovější kumulativní aktualizace   |  [6,13]  |  12. listopadu 2019  |
+|  Rel. 19-11   |  [4519976]  |  Bez zabezpečení   |  [2,92]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4520007]  |  Bez zabezpečení   |  [3,79]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4521857]  |  ServicingStackUpdate   |  [3,79]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4520005]  |  Bez zabezpečení   |  [4,72]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4521864]  |  ServicingStackUpdate   |  [4,72]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4521858]  |  ServicingStackUpdate   |  [5,37]  |  Říjen 8, 2019  |
+|  Rel. 19-11   |  [4521862]  |  ServicingStackUpdate   |  [6,13]  |  Říjen 8, 2019  |
 
 [4525106]: https://support.microsoft.com/kb/4525106
 [4525233]: https://support.microsoft.com/kb/4525233
@@ -464,35 +853,35 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4521864]: https://support.microsoft.com/kb/4521864
 [4521858]: https://support.microsoft.com/kb/4521858
 [4521862]: https://support.microsoft.com/kb/4521862
-[6,13]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,37]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,72]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,92]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,13]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,37]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,72]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,79]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,92]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="october-2019-guest-os"></a>Října 2019 hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-10   |  [4520003]  |  Zabezpečení Windows   |  [2,91]  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519985]  |  Zabezpečení Windows   |  [3,78]  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519990]  |  Zabezpečení Windows   |  [4,71]  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519998]  |  Nejnovější kumulativní aktualizace   |  [5,36]  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519338]  |  Nejnovější kumulativní aktualizace   |  [6,12]  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4516065]  |  Bez zabezpečení   |  [2,91]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4516655]  |  CESTOU nadřazené   |  [2,91]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4516055]  |  Bez zabezpečení   |  [3,78]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512939]  |  CESTOU nadřazené   |  [3,78]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514370]  |  .NET Framework 3,5   |  [3,78]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  [3,78]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4516067]  |  Bez zabezpečení   |  [4,71]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512938]  |  CESTOU nadřazené   |  [4,71]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514371]  |  .NET Framework 3,5   |  [4,71]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  [4,71]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512574]  |  CESTOU nadřazené   |  [5,36]  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512577]  |  CESTOU nadřazené   |  [6,12]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4520003]  |  Zabezpečení Windows   |  [2,91]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519985]  |  Zabezpečení Windows   |  [3,78]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519990]  |  Zabezpečení Windows   |  [4,71]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519998]  |  Nejnovější kumulativní aktualizace   |  [5,36]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519338]  |  Nejnovější kumulativní aktualizace   |  [6,12]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4516065]  |  Bez zabezpečení   |  [2,91]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516655]  |  CESTOU nadřazené   |  [2,91]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516055]  |  Bez zabezpečení   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512939]  |  CESTOU nadřazené   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514370]  |  .NET Framework 3,5   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516067]  |  Bez zabezpečení   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512938]  |  CESTOU nadřazené   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514371]  |  .NET Framework 3,5   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512574]  |  CESTOU nadřazené   |  [5,36]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512577]  |  CESTOU nadřazené   |  [6,12]  |  Září 10, 2019  |
 
 [4520003]: https://support.microsoft.com/kb/4520003
 [4519985]: https://support.microsoft.com/kb/4519985
@@ -513,32 +902,32 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6,12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,12]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,36]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,71]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,78]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,91]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>Hostovaný operační systém od září 2019
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-09   |  [4516046]  |  Internet Explorer   |  [2,90], [3,77], [4,70]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4516115]  |  Blikající   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4512578]  |  Nejnovější kumulativní aktualizace   |  [6,11]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4514366]  |  .NET Framework 3,5 a 4.7.2   |  [6,11]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4516044]  |  Nejnovější kumulativní aktualizace   |  [5.35]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4516064]  |  Zabezpečení Windows   |  [4,70]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4516062]  |  Zabezpečení Windows   |  [3,77]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Září 10, 2019  |
-|  Rel. 19-09   |  [4516033]  |  Zabezpečení Windows   |  [2,90]  |  Září 12, 2019  |
-|  Rel. 19-09   |  [4512488]  |  Bez zabezpečení   |  [4,70]  |  VIII 13. srpna 2019  |
-|  Rel. 19-09   |  [4512518]  |  Bez zabezpečení   |  [3,77]  |  VIII 13. srpna 2019  |
-|  Rel. 19-09   |  [4512506]  |  Bez zabezpečení   |  [2,90]  |  VIII 13. srpna 2019  |
+|  Rel. 19-09   |  [4516046]  |  Internet Explorer   |  [2,90], [3,77], [4,70]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4516115]  |  Blikající   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4512578]  |  Nejnovější kumulativní aktualizace   |  [6,11]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4514366]  |  .NET Framework 3,5 a 4.7.2   |  [6,11]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4516044]  |  Nejnovější kumulativní aktualizace   |  [5.35]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4516064]  |  Zabezpečení Windows   |  [4,70]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4516062]  |  Zabezpečení Windows   |  [3,77]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Září 10, 2019  |
+|  Rel. 19-09   |  [4516033]  |  Zabezpečení Windows   |  [2,90]  |  Září 12, 2019  |
+|  Rel. 19-09   |  [4512488]  |  Bez zabezpečení   |  [4,70]  |  VIII 13. srpna 2019  |
+|  Rel. 19-09   |  [4512518]  |  Bez zabezpečení   |  [3,77]  |  VIII 13. srpna 2019  |
+|  Rel. 19-09   |  [4512506]  |  Bez zabezpečení   |  [2,90]  |  VIII 13. srpna 2019  |
 
 [4516046]: https://support.microsoft.com/kb/4516046
 [4516115]: https://support.microsoft.com/kb/4516115
@@ -555,39 +944,39 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6,11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,11]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.35]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,70]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,77]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,90]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>2019. srpna hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-08   |  [4512482]  |  Zabezpečení Windows   |  [3,76]  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  [5,34]  |  18. června 2019  |
-|  Rel. 19-08   |  [4512517]  |  Nejnovější kumulativní aktualizace   |  [5,34]  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4494174]  |  Vyžádal povolení mikrokódu aktualizace   |  [6,1]  |  18. června 2019  |
-|  Rel. 19-08   |  [4511553]  |  Nejnovější kumulativní aktualizace   |  [6,1]  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4512486]  |  Zabezpečení Windows   |  [2,89]  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4512489]  |  Zabezpečení Windows   |  [4,69]  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4511872]  |  Internet Explorer    |  [2,89], [3,76], [4,69]  |  15. srpna 2019  |
-|  Rel. 19-08   |  [4507449]  |  Bez zabezpečení   |  [2,89]  |  9\. července 2019  |
-|  Rel. 19-08   |  [4507000]  |  .NET 4.5.2 bez zabezpečení   |  [3,76]  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507002]  |  .NET 3,5 – netýká se zabezpečení   |  [3,76]  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507462]  |  Bez zabezpečení   |  [3,76]  |  9\. července 2019  |
-|  Rel. 19-08   |  [4506999]  |  .NET 4.5.2 bez zabezpečení    |  [4,69]  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507005]  |  .NET 3,5 – netýká se zabezpečení    |  [4,69]  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507448]  |  Bez zabezpečení   |  [4,69]  |  9\. července 2019  |
-|  Rel. 19-08   |  [4509091]  |  Aktualizace servisního zásobníku   |  [5,34]  |  9\. července 2019  |
-|  Rel. 19-08   |  [4509095]  |  Aktualizace servisního zásobníku   |  [6,1]  |  9\. července 2019  |
-|  Rel. 19-08   |  [4512937]  |  Aktualizace servisního zásobníku   |  [6,1]  |  29. července 2019  |
-|  Rel. 19-08   |  [4507004]  |  Rozhraní .NET 3.5.1 bez zabezpečení    |  [2,89]  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4504418]  |  Aktualizace servisního zásobníku   |  [3,76], [4,69]  |  11. července 2019  |
-|  Rel. 19-08   |  [4507001]  |  .NET 4.5.2 bez zabezpečení   |  [2,89]  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507704]  |  Nastavení letního času v systému Windows pro Brazílie a Maroko   |  [2,89], [3,76], [4,69], [5,34]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4512482]  |  Zabezpečení Windows   |  [3,76]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  [5,34]  |  18. června 2019  |
+|  Rel. 19-08   |  [4512517]  |  Nejnovější kumulativní aktualizace   |  [5,34]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4494174]  |  Vyžádal povolení mikrokódu aktualizace   |  [6.1]  |  18. června 2019  |
+|  Rel. 19-08   |  [4511553]  |  Nejnovější kumulativní aktualizace   |  [6.1]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4512486]  |  Zabezpečení Windows   |  [2,89]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4512489]  |  Zabezpečení Windows   |  [4,69]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4511872]  |  Internet Explorer    |  [2,89], [3,76], [4,69]  |  15. srpna 2019  |
+|  Rel. 19-08   |  [4507449]  |  Bez zabezpečení   |  [2,89]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4507000]  |  .NET 4.5.2 bez zabezpečení   |  [3,76]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507002]  |  .NET 3,5 – netýká se zabezpečení   |  [3,76]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507462]  |  Bez zabezpečení   |  [3,76]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4506999]  |  .NET 4.5.2 bez zabezpečení    |  [4,69]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507005]  |  .NET 3,5 – netýká se zabezpečení    |  [4,69]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507448]  |  Bez zabezpečení   |  [4,69]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4509091]  |  Aktualizace servisního zásobníku   |  [5,34]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4509095]  |  Aktualizace servisního zásobníku   |  [6.1]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4512937]  |  Aktualizace servisního zásobníku   |  [6.1]  |  29. července 2019  |
+|  Rel. 19-08   |  [4507004]  |  Rozhraní .NET 3.5.1 bez zabezpečení    |  [2,89]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4504418]  |  Aktualizace servisního zásobníku   |  [3,76], [4,69]  |  11. července 2019  |
+|  Rel. 19-08   |  [4507001]  |  .NET 4.5.2 bez zabezpečení   |  [2,89]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507704]  |  Nastavení letního času v systému Windows pro Brazílie a Maroko   |  [2,89], [3,76], [4,69], [5,34]  |  VIII 13. srpna 2019  |
 
 [4512482]: https://support.microsoft.com/kb/4512482
 [4494175]: https://support.microsoft.com/kb/4494175
@@ -612,35 +1001,35 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6,1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6.1]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,34]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,69]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,76]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,89]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>Z července 2019 hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506966]  |  Zabezpečení rozhraní .NET 4.5.2   |  2,88  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506976]  |  Zabezpečení rozhraní .NET 3.5.1   |  2,88  |  9\. července 2019  |
-|  Rel. 19-07   |  [4507456]  |  Zabezpečení Windows   |  2,88  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506965]  |  Zabezpečení rozhraní .NET 4.5.2   |  3,75  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506974]  |  Zabezpečení .NET 3,5   |  3,75  |  9\. července 2019  |
-|  Rel. 19-07   |  [4507464]  |  Zabezpečení Windows   |  3,75  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506964]  |  Zabezpečení rozhraní .NET 4.5.2   |  4,68  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506977]  |  Zabezpečení .NET 3,5   |  4,68  |  9\. července 2019  |
-|  Rel. 19-07   |  [4507457]  |  Zabezpečení Windows   |  4,68  |  9\. července 2019  |
-|  Rel. 19-07   |  [4507460]  |  Zabezpečení Windows   |  5.33  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506998]  |  .NET 3,5 & zabezpečení 4.7.2   |  6.9  |  9\. července 2019  |
-|  Rel. 19-07   |  [4507469]  |  Zabezpečení Windows   |  6.9  |  9\. července 2019  |
+|  Rel. 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506966]  |  Zabezpečení rozhraní .NET 4.5.2   |  2,88  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506976]  |  Zabezpečení rozhraní .NET 3.5.1   |  2,88  |  9\. července 2019  |
+|  Rel. 19-07   |  [4507456]  |  Zabezpečení Windows   |  2,88  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506965]  |  Zabezpečení rozhraní .NET 4.5.2   |  3,75  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506974]  |  Zabezpečení .NET 3,5   |  3,75  |  9\. července 2019  |
+|  Rel. 19-07   |  [4507464]  |  Zabezpečení Windows   |  3,75  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506964]  |  Zabezpečení rozhraní .NET 4.5.2   |  4.68  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506977]  |  Zabezpečení .NET 3,5   |  4.68  |  9\. července 2019  |
+|  Rel. 19-07   |  [4507457]  |  Zabezpečení Windows   |  4.68  |  9\. července 2019  |
+|  Rel. 19-07   |  [4507460]  |  Zabezpečení Windows   |  5.33  |  9\. července 2019  |
+|  Rel. 19-07   |  [4506998]  |  .NET 3,5 & zabezpečení 4.7.2   |  6.9  |  9\. července 2019  |
+|  Rel. 19-07   |  [4507469]  |  Zabezpečení Windows   |  6.9  |  9\. července 2019  |
 |  –  |  [4503537]  |  19. června aktualizace servisního zásobníku pro (Server 2016)   |  5.33  |  14. května 2019  |
 |  –  |  [4504369]  |  19. června aktualizace servisního zásobníku pro (Server 2019)   |  6.9  |  14. května 2019  |
 |  –  |  [4503292]  |  19. června netýká se zabezpečení (Server 2008 R2)   |  2,88  |  20. května 2019  |
 |  –  |  [4503285]  |  19. června netýká se zabezpečení (Server 2012)   |  3,75  |  14. května 2019  |
-|  –  |  [4503276]  |  19. června netýká se zabezpečení (Server 2012 R2)   |  4,68  |  14. května 2019  |
+|  –  |  [4503276]  |  19. června netýká se zabezpečení (Server 2012 R2)   |  4.68  |  14. května 2019  |
 
 [4507434]: https://support.microsoft.com/kb/4507434
 [4506621]: https://support.microsoft.com/kb/4506621
@@ -665,17 +1054,17 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="june-2019-guest-os"></a>Operační systém hosta červen 2019
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-06   |  [4503327]  |  Zabezpečení Windows 10   |  6.8  |  11. června 2019  |
-|  Rel. 19-06   |  [4503267]  |  Zabezpečení Windows 10   |  5,32  |  11. června 2019  |
-|  Rel. 19-06   |  [4503290]  |  Zabezpečení Windows   |  4,67  |  11. června 2019  |
-|  Rel. 19-06   |  [4503263]  |  Zabezpečení Windows   |  3,74  |  11. června 2019  |
-|  Rel. 19-06   |  [4503269]  |  Zabezpečení Windows   |  2,87  |  11. června 2019  |
-|  Rel. 19-06   |  [4494174]  |  Vyžádal povolení mikrokódu aktualizace   |  6.8  |  11. června 2019  |
-|  Rel. 19-06   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  5,32  |  3. června 2019  |
-|  Rel. 19-06   |  [4503308]  |  Blikající   |  3,74, 4,67, 5,32, 6,8  |  11. června 2019  |
-|  Rel. 19-06   |  [4503259]  |  Internet Explorer   |  2,87, 3,74, 4,67  |  13. června 2019  |
+|  Rel. 19-06   |  [4503327]  |  Zabezpečení Windows 10   |  6.8  |  11. června 2019  |
+|  Rel. 19-06   |  [4503267]  |  Zabezpečení Windows 10   |  5,32  |  11. června 2019  |
+|  Rel. 19-06   |  [4503290]  |  Zabezpečení Windows   |  4,67  |  11. června 2019  |
+|  Rel. 19-06   |  [4503263]  |  Zabezpečení Windows   |  3,74  |  11. června 2019  |
+|  Rel. 19-06   |  [4503269]  |  Zabezpečení Windows   |  2,87  |  11. června 2019  |
+|  Rel. 19-06   |  [4494174]  |  Vyžádal povolení mikrokódu aktualizace   |  6.8  |  11. června 2019  |
+|  Rel. 19-06   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  5,32  |  3. června 2019  |
+|  Rel. 19-06   |  [4503308]  |  Blikající   |  3,74, 4,67, 5,32, 6,8  |  11. června 2019  |
+|  Rel. 19-06   |  [4503259]  |  Internet Explorer   |  2,87, 3,74, 4,67  |  13. června 2019  |
 |  –  |  [4499164]  |  Může se jednat o 19 bez zabezpečení.  |  2,87  |  14. května 2019  |
 |  –  |  [4495606]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  2,87  |  14. května 2019  |
 |  –  |  [4495596]  |  Může to být 19 .NET 4,5 bez zabezpečení.  |  2,87  |  20. května 2019  |
@@ -685,8 +1074,6 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 |  –  |  [4499151]  |  Může se jednat o 19 bez zabezpečení.  |  4,67  |  14. května 2019  |
 |  –  |  [4495608]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  4,67  |  14. května 2019  |
 |  –  |  [4495592]  |  Možná 19. května .NET 4.5.2 bez zabezpečení  |  4,67  |  14. května 2019  |
-|  –  |  [4495610]  |  Může se jednat o 19. kumulativní .NET 4,8  |  6.8  |  14. května 2019  |
-|  –  |  [4495618]  |  Může se jednat o 19. kumulativní .NET 4,8  |  6.8  |  14. května 2019  |
 |  –  |  [4501226]  |  Aktualizace časového pásma v letním čase pro Maroka a palestinská samospráva  |  2,87, 3,74, 4,67  |  23. května 2019  |
 |  –  |  [4490128]  |  Aktualizace časového pásma pro Svatý Tomáš a Princův ostrov a Qyzylorda  |  2,87, 3,74, 4,67  |  17. dubna 2019  |
 
@@ -708,35 +1095,33 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4499151]: https://support.microsoft.com/kb/KB4499151
 [4495608]: https://support.microsoft.com/kb/KB4495608
 [4495592]: https://support.microsoft.com/kb/KB4495592
-[4495610]: https://support.microsoft.com/kb/KB4495610
-[4495618]: https://support.microsoft.com/kb/KB4495618
 [4501226]: https://support.microsoft.com/kb/KB4501226
 [4490128]: https://support.microsoft.com/kb/KB4490128
 
 ## <a name="may-2019-guest-os"></a>Květen 2019 hostovaného operačního systému
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-05   |  [4498206]  |  Může být kumulativní pro IE   |  2,86, 3,73, 4,66  |  14. května 2019  |
-|  Rel. 19-05   |  [4505050]  |  Může být kumulativní pro IE   |  2,86, 3,73, 4,66  |  18. května 2019  |
-|  Rel. 19-05   |  [4497932]  |  Může blikat aktualizace   |  3,73, 4,66, 5,31  |  14. května 2019  |
-|  Rel. 19-05   |  [4499175]  |  Může kumulativní zabezpečení   |  2,86  |  14. května 2019  |
-|  Rel. 19-05   |  [4495612]  |  Může kumulativní zabezpečení .NET 3,5   |  2,86  |  14. května 2019  |
-|  Rel. 19-05   |  [4495593]  |  Může kumulativní zabezpečení rozhraní .NET 4.5.2   |  2,86  |  14. května 2019  |
-|  Rel. 19-05   |  [4499158]  |  Může kumulativní zabezpečení   |  3.73  |  14. května 2019  |
-|  Rel. 19-05   |  [4495607]  |  Může kumulativní zabezpečení .NET 3,5   |  3.73  |  14. května 2019  |
-|  Rel. 19-05   |  [4495591]  |  Může kumulativní zabezpečení rozhraní .NET 4.5.2   |  3.73  |  14. května 2019  |
-|  Rel. 19-05   |  [4492872]  |  Souhrn IE   |  3.73  |  16. dubna 2019  |
-|  Rel. 19-05   |  [4499165]  |  Kumulativní zabezpečení z března   |  4,66  |  14. května 2019  |
-|  Rel. 19-05   |  [4495615]  |  Může kumulativní zabezpečení .NET 3,5   |  4,66  |  14. května 2019  |
-|  Rel. 19-05   |  [4495589]  |  Může kumulativní zabezpečení rozhraní .NET 4.5.2   |  4,66  |  14. května 2019  |
-|  Rel. 19-05   |  [4498947]  |  Může cestou nadřazené   |  5,31  |  14. května 2019  |
-|  Rel. 19-05   |  [4494175]  |  Aktualizace může vyžádal povolení mikrokódu   |  5,31  |  14. května 2019  |
-|  Rel. 19-05   |  [4505052]  |  Může kumulativní zabezpečení   |  5,31  |  19. května 2019  |
-|  Rel. 19-05   |  [4499728]  |  Může cestou nadřazené   |  6.7  |  19. května 2019  |
-|  Rel. 19-05   |  [4505056]  |  Může kumulativní zabezpečení   |  6.7  |  19. května 2019  |
-|  Rel. 19-05   |  [4494174]  |  Aktualizace může vyžádal povolení mikrokódu   |  6.7  |  14. května 2019  |
-|  Rel. 19-05   |  [4495590]  |  Může kumulativní zabezpečení .NET   |  6.7  |  14. května 2019  |
+|  Rel. 19-05   |  [4498206]  |  Může být kumulativní pro IE   |  2,86, 3,73, 4,66  |  14. května 2019  |
+|  Rel. 19-05   |  [4505050]  |  Může být kumulativní pro IE   |  2,86, 3,73, 4,66  |  18. května 2019  |
+|  Rel. 19-05   |  [4497932]  |  Může blikat aktualizace   |  3,73, 4,66, 5,31  |  14. května 2019  |
+|  Rel. 19-05   |  [4499175]  |  Může kumulativní zabezpečení   |  2,86  |  14. května 2019  |
+|  Rel. 19-05   |  [4495612]  |  Může kumulativní zabezpečení .NET 3,5   |  2,86  |  14. května 2019  |
+|  Rel. 19-05   |  [4495593]  |  Může kumulativní zabezpečení rozhraní .NET 4.5.2   |  2,86  |  14. května 2019  |
+|  Rel. 19-05   |  [4499158]  |  Může kumulativní zabezpečení   |  3.73  |  14. května 2019  |
+|  Rel. 19-05   |  [4495607]  |  Může kumulativní zabezpečení .NET 3,5   |  3.73  |  14. května 2019  |
+|  Rel. 19-05   |  [4495591]  |  Může kumulativní zabezpečení rozhraní .NET 4.5.2   |  3.73  |  14. května 2019  |
+|  Rel. 19-05   |  [4492872]  |  Souhrn IE   |  3.73  |  16. dubna 2019  |
+|  Rel. 19-05   |  [4499165]  |  Kumulativní zabezpečení z března   |  4,66  |  14. května 2019  |
+|  Rel. 19-05   |  [4495615]  |  Může kumulativní zabezpečení .NET 3,5   |  4,66  |  14. května 2019  |
+|  Rel. 19-05   |  [4495589]  |  Může kumulativní zabezpečení rozhraní .NET 4.5.2   |  4,66  |  14. května 2019  |
+|  Rel. 19-05   |  [4498947]  |  Může cestou nadřazené   |  5,31  |  14. května 2019  |
+|  Rel. 19-05   |  [4494175]  |  Aktualizace může vyžádal povolení mikrokódu   |  5,31  |  14. května 2019  |
+|  Rel. 19-05   |  [4505052]  |  Může kumulativní zabezpečení   |  5,31  |  19. května 2019  |
+|  Rel. 19-05   |  [4499728]  |  Může cestou nadřazené   |  6.7  |  19. května 2019  |
+|  Rel. 19-05   |  [4505056]  |  Může kumulativní zabezpečení   |  6.7  |  19. května 2019  |
+|  Rel. 19-05   |  [4494174]  |  Aktualizace může vyžádal povolení mikrokódu   |  6.7  |  14. května 2019  |
+|  Rel. 19-05   |  [4495590]  |  Může kumulativní zabezpečení .NET   |  6.7  |  14. května 2019  |
 
 [4498206]: https://support.microsoft.com/kb/4498206
 [4505050]: https://support.microsoft.com/kb/4505050
@@ -762,7 +1147,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="april-2019-guest-os"></a>Hostovaný operační systém od dubna 2019
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 19-04 | [4493509] | Zabezpečení Windows 10 | 6.6 | 9\. dubna 2019 |
 | Rel. 19-04 | [4493470] | Zabezpečení Windows 10 | 5,30 | 9\. dubna 2019 |
@@ -792,7 +1177,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="march-2019-guest-os"></a>Hostovaný operační systém od března 2019
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 19-03 | [4489873] | Internet Explorer | 2,84, 3,71, 4,64 | 12. března 2019 |
 | Rel. 19-03 | [4489907] | Blikající | 3,71, 4,64, 5,29, 6,5 | 12. března 2019 |
@@ -834,13 +1219,13 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="february-2019-guest-os"></a>2019. února hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 19-02 | [4486474] | Internet Explorer | 2,83, 3,70, 4,63 | 12. února 2019 |
 | Rel. 19-02 | [4487038] | Blikající | 3,70, 4,63, 5,28, 6,4 | 12. února 2019 |
-| Rel. 19-02 | [4486564] | Zabezpečení Windows | 2,83 | 12. února 2019 |
-| Rel. 19-02 | [4483483] | Zabezpečení rozhraní .NET 3.5.1 | 2,83 | 12. února 2019 |
-| Rel. 19-02 | [4483474] | Zabezpečení rozhraní .NET 4.5.2 | 2,83 | 12. února 2019 |
+| Rel. 19-02 | [4486564] | Zabezpečení Windows | 2.83 | 12. února 2019 |
+| Rel. 19-02 | [4483483] | Zabezpečení rozhraní .NET 3.5.1 | 2.83 | 12. února 2019 |
+| Rel. 19-02 | [4483474] | Zabezpečení rozhraní .NET 4.5.2 | 2.83 | 12. února 2019 |
 | Rel. 19-02 | [4486993] | Zabezpečení Windows | 3,70 | 12. února 2019 |
 | Rel. 19-02 | [4483481] | Zabezpečení .NET 3,5 | 3,70 | 12. února 2019 |
 | Rel. 19-02 | [4483473] | Zabezpečení rozhraní .NET 4.5.2 | 3,70 | 12. února 2019 |
@@ -850,9 +1235,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 19-02 | [4487026] | Zabezpečení Windows | 5,28 | 12. února 2019 |
 | Rel. 19-02 | [4487044] | Zabezpečení Windows | 6.4 | 12. února 2019 |
 | Rel. 19-02 | [4483452] | .NET 3,5, zabezpečení 4.7.2 | 6.4 | 12. února 2019 |
-| – | [4480970] | Souhrn nezabezpečení ledna | 2,83 | 8. ledna 2019 |
-| – | [4483483] | Kumulativní rozhraní .NET 3.5.1 bez zabezpečení.  | 2,83 | 8. ledna 2019 |
-| – | [4480059] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení.  | 2,83 | 8. ledna 2019 |
+| – | [4480970] | Souhrn nezabezpečení ledna | 2.83 | 8. ledna 2019 |
+| – | [4483483] | Kumulativní rozhraní .NET 3.5.1 bez zabezpečení.  | 2.83 | 8. ledna 2019 |
+| – | [4480059] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení.  | 2.83 | 8. ledna 2019 |
 | – | [4480975] | Souhrn nezabezpečení ledna | 3,70 | 8. ledna 2019 |
 | – | [4480061] | Kumulativní aktualizace .NET 3,5 od ledna | 3,70 | 8. ledna 2019 |
 | – | [4480058] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení. | 3,70 | 8. ledna 2019 |
@@ -886,7 +1271,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="january-2019-guest-os"></a>Leden 2019 hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 19-01 | [4480116] | Zabezpečení Windows 10 | 6.3 | 8. ledna 2019 |
 | Rel. 19-01 | [4480961] | Zabezpečení Windows 10 | 5,27 | 8. ledna 2019 |
@@ -938,7 +1323,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="december-2018-guest-os"></a>Operační systém hosta 2018. prosince
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-12 | [4471321] | Zabezpečení Windows 10 | 5,26 | 11. prosince 2018 |
 | Rel. 18-12 | [4471328] | Zabezpečení Windows   | 2,81 | 11. prosince 2018 |
@@ -954,8 +1339,8 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-12 | [4470199] | Internet Explorer  | 2,81, 3,68, 4,61 | 11. prosince 2018 |
 | – | [4468323] | Aktualizace časového pásma    | 2,81, 3,68, 4,61 | 13. prosince 2018 |
 | – | [4467107] | Kumulativní nezabezpečení od listopadu   | 2,81 | 13. listopadu 2018 |
-| – | [4467701] | Kumulativní nezabezpečení od listopadu     | 3,68 | 13. listopadu 2018 |
-| – | [4467697] | Kumulativní nezabezpečení od listopadu     | 4,61 | 13. listopadu 2018 |
+| – | [4467701] | Kumulativní nezabezpečení od listopadu | 3,68 | 13. listopadu 2018 |
+| – | [4467697] | Kumulativní nezabezpečení od listopadu | 4,61 | 13. listopadu 2018 |
 
 [4471321]: https://support.microsoft.com/kb/4471321
 [4471328]: https://support.microsoft.com/kb/4471328
@@ -976,7 +1361,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="november-2018-guest-os"></a>Operační systém hosta v listopadu 2018
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-11 | [4466536] | Internet Explorer | 2,80, 3,67, 4,60 | 13. listopadu 2018 |
 | Rel. 18-11 | [4467694] | Blikající | 3,67, 4,60, 5,25 | 13. listopadu 2018 |
@@ -1008,7 +1393,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="october-2018-guest-os"></a>Října 2018 hostovaný operační systém
 
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-10 | [4462917] | Zabezpečení Windows 10 | 5,24 | 9. října 2018 |
 | Rel. 18-10 | [4462915] | Zabezpečení Windows | 2,79 | 9. října 2018 |
@@ -1045,7 +1430,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>Hostovaný operační systém od září 2018
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-09 | [4457131] | Zabezpečení Windows 10 | 5,23 | 11. září 2018 |
 | Rel. 18-09 | [4457145] | Pouze zabezpečení systému Windows | 2,78 | 11. září 2018 |
@@ -1067,7 +1452,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4344147] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 4,58 | 14. srpna 2018 |
 
 ## <a name="august-2018-guest-os"></a>2018. srpna hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-08 | [4343887] | Zabezpečení Windows 10 | 5,22 | 14. srpna 2018 |
 | Rel. 18-08 | [4343899] | Pouze zabezpečení systému Windows | 2,77 | 14. srpna 2018 |
@@ -1090,7 +1475,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4338415] |Souhrnná kumulativní aktualizace .NET 4x od 1. července |3,64 | 10. července 2018 |
 
 ## <a name="july-2018-guest-os"></a>Z července 2018 hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-07 | [4338814] |Zabezpečení Windows 10 |5.21 |10. července 2018 |
 | Rel. 18-07 | [4338823] |Pouze zabezpečení systému Windows |2,76 |10. července 2018 |
@@ -1110,7 +1495,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4284815] |Kumulativní aktualizace od června |4,56 |12. června 2018 |
 
 ## <a name="june-2018-guest-os"></a>Operační systém hosta červen 2018
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-06 | [4284880] |Zabezpečení Windows 10 |5,20 |12. června 2018 |
 | Rel. 18-06 | [4284867] |Pouze zabezpečení systému Windows |2,75 |12. června 2018 |
@@ -1135,7 +1520,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4132216] |Může cestou nadřazené |5,20 |8. května 2018 |
 
 ## <a name="may-2018-guest-os"></a>Květen 2018 hostovaného operačního systému
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-05 | [4103721], [4103727], [4103723] |Zabezpečení Windows 10 |5,19 |8. května 2018 |
 | Rel. 18-05 | [4103712] |Pouze zabezpečení systému Windows |2,74 |8. května 2018 |
@@ -1155,7 +1540,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 
 ## <a name="april-2018-guest-os"></a>Hostovaný operační systém od dubna 2018
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-04 | [4093119] |Zabezpečení Windows 10 |5,18 |10. dubna 2018 |
 | Rel. 18-04 | [4093108] |Pouze zabezpečení systému Windows |2,73 |10. dubna 2018 |
@@ -1169,7 +1554,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4088876] |V březnu není kumulativní zabezpečení |4,53 |13. března 2018 |
 
 ## <a name="march-2018-guest-os"></a>Hostovaný operační systém od března 2018
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-03 | [4088787], [4088776] |Zabezpečení Windows 10 |5,17 |13. března 2018 |
 | Rel. 18-03 | [4088878], [4088880], [4088879] |Pouze zabezpečení systému Windows |2,72, 3,59, 4,52 |13. března 2018 |
@@ -1182,7 +1567,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 
 ## <a name="february-2018-guest-os"></a>2018. února hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-02 | [4074590], [4074588] |Zabezpečení Windows 10 |5,16 |13. února 2018 |
 | Rel. 18-02 | [4074587], [4074589], [4074597] |Pouze zabezpečení systému Windows |2,71, 3,58, 4,51 |13. února 2018 |
@@ -1196,7 +1581,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4054177], [4054170] |Kumulativní aktualizace z ledna .NET |4,51 |4. ledna 2018 |
 
 ## <a name="january-2018-guest-os"></a>Leden 2018 hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-01 | [4056898], [4056897], [4056899] |Pouze zabezpečení systému Windows |2,70, 3,57, 4,50 |3. ledna 2018 |
 | Rel. 18-01 | [4056890], [4056892] |Pouze zabezpečení systému Windows |5,15 |3. ledna 2018 |
@@ -1208,7 +1593,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 
 ## <a name="december-2017-guest-os"></a>Operační systém hosta 2017. prosince
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-12 | [4053579], [4054517] |Aktualizace zabezpečení Windows 10 |4,49, 5,14 |12. prosince 2017 |
 | Rel. 17-12 | [4054521], [4054522], [4054523] |Pouze zabezpečení systému Windows |2,69, 3,56, 4,49 |12. prosince 2017 |
@@ -1220,7 +1605,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4049068] |Aktualizace časového pásma z prosince |2,69, 3,56, 4,49 |12. prosince 2017 |
 
 ## <a name="november-2017-guest-os"></a>Operační systém hosta v listopadu 2017
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-11 | [4048953] |Aktualizace Windows 10 |5,13 |14. listopadu 2017 |
 | Rel. 17-11 | [4048960], [4048962], [4048961] |Pouze zabezpečení systému Windows |2,68, 3,55, 4,48 |14. listopadu 2017 |
@@ -1234,7 +1619,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [3191564] |Aktualizace pro Windows Management Framework 5,1  |4,48 |14. listopadu 2017 |
 
 ## <a name="october-2017-guest-os"></a>Října 2017 hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-10 | [4041691] |Aktualizace Windows 10 |5,12 |10. října 2017 |
 | Rel. 17-10 | [4041678], [4041679], [4041687] |Pouze zabezpečení systému Windows |2,67, 3,54, 4,47 |10. října 2017 |
@@ -1248,19 +1633,19 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4040981] |Kumulativní zabezpečení v září .NET |4,47 |12. září 2017 |
 
 ## <a name="september-2017-guest-os"></a>Hostovaný operační systém od září 2017
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-| Rel. 17-09 | [4038782] |Aktualizace Windows 10 |5.11 |12. září 2017 |
+| Rel. 17-09 | [4038782] |Aktualizace Windows 10 |5,11 |12. září 2017 |
 | Rel. 17-09 | [4038779], [4038786], [4038793] |Pouze zabezpečení systému Windows |2,66, 3,53, 4,46 |12. září 2017 |
 | Rel. 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Aktualizace z září na platformě .NET |2,66, 3,53, 4,46 |12. září 2017 |
 | Rel. 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |12. září 2017 |
-| CVE-2017-8704 | [4038782] |Odepření služby |5.11 |12. září 2017 |
+| CVE-2017-8704 | [4038782] |Odepření služby |5,11 |12. září 2017 |
 | – | [4034664] |Souhrn nesouvisející se zabezpečením. srpna  |2,66 |8. srpna 2017 |
-| – | [4034665] |Souhrn nesouvisející se zabezpečením. srpna |5.11 |8. srpna 2017 |
+| – | [4034665] |Souhrn nesouvisející se zabezpečením. srpna |5,11 |8. srpna 2017 |
 | – | [4034681] |Souhrn nesouvisející se zabezpečením. srpna |4,46 |8. srpna 2017 |
 
 ## <a name="august-2017-guest-os"></a>2017. srpna hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-07 | [4034658] |Aktualizace Windows 10 |5.10 |8. srpna 2017 |
 | Rel. 17-07 | [4034679] |Pouze zabezpečení systému Windows |2,65 |8. srpna 2017 |
@@ -1274,7 +1659,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-07 | [4025336] |Souhrn nesouvisející se zabezpečením červenec |4,45 |11. července 2017 |
 
 ## <a name="july-2017-guest-os"></a>Z července 2017 hostovaný operační systém
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-07 | [4025339] |Aktualizace Windows 10 |5.9 |11. července 2017 |
 | Rel. 17-07 | [4025337] |Pouze zabezpečení systému Windows |2,64 |11. července 2017 |
@@ -1288,7 +1673,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4022726] |Kumulativní aktualizace od června |4,44 |13. června 2017 |
 
 ## <a name="june-2017-guest-os"></a>Operační systém hosta červen 2017
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-06 | [4019472] |Vylepšení kvality operačního systému WS 2016 |5.8 |9. května 2017 |
 | Rel. 17-06 | [4022722] |Pouze zabezpečení systému Windows |2,63 |13. června 2017 |
@@ -1305,7 +1690,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4014511] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
 | – | [4014514] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
 | – | [4019216] |Může být souhrn bez zabezpečení. |3,50 |9. května 2017 |
-| – | [4014503] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
+| – | 4014503 |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
 | – | [4014506] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
 | – | [4014509] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
 | – | [4014513] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
@@ -1316,7 +1701,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4014512] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
 
 ## <a name="may-2017-guest-os"></a>Květen 2017 hostovaného operačního systému
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 17-05 | [4019472] |Vylepšení kvality operačního systému WS 2016 |5.7 | 9. května 2017 |
 | Rel. 17-05 | [4019263] |Pouze zabezpečení systému Windows |2,62 | 9. května 2017 |
@@ -1344,9 +1729,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – | [4013418] |Aktualizace servisního zásobníku |5.7 | 14. března 2017 |
 
 ## <a name="april-2017-guest-os"></a>Hostovaný operační systém od dubna 2017
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-| Rel. 17-04 |  [4015217]  |Vylepšení kvality operačního systému WS 2016 | 5,6 | 11. dubna 2017 |
+| Rel. 17-04 |  [4015217]  |Vylepšení kvality operačního systému WS 2016 | 5.6 | 11. dubna 2017 |
 | Rel. 17-04 |  [4015546]  |Pouze zabezpečení systému Windows |2,61 | 11. dubna 2017 |
 | Rel. 17-04 |  [4015547]  |Pouze zabezpečení systému Windows |4,41 | 11. dubna 2017 |
 | Rel. 17-04 |  [4015548]  |Pouze zabezpečení systému Windows |3,48 | 11. dubna 2017 |
@@ -1354,7 +1739,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-04 |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |Zabezpečení .NET |4,41 | 11. dubna 2017 |
 | Rel. 17-04 |  [4014564]; [4014572]; [4014549] |Zabezpečení .NET |3,48 | 11. dubna 2017 |
 | Rel. 17-04 |  [4014566]; [4014552]; [4014573]; [4014558]  |Zabezpečení .NET |2,61 | 11. dubna 2017 |
-| Rel. 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5,6 | 11. dubna 2017 |
+| Rel. 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5.6 | 11. dubna 2017 |
 | Rel. 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2,61, 3,48, 4,41 | 11. dubna 2017 |
 | Rel. 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4,41 | 11. dubna 2017 |
 | Rel. 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0182; CVE-2017-0186; CVE-2017-0191 |2,61, 3,48, 4,41, 5,6 | 11. dubna 2017 |
@@ -1364,9 +1749,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-04 |  [4012216]  |Měsíční kumulativní kvalita zabezpečení pro Windows 8.1 a Windows Server 2012 R2 z března 2017 |4,41 | 11. dubna 2017 |
 
 ## <a name="march-2017-guest-os"></a>Hostovaný operační systém od března 2017
-| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-| Rel. 17-03 |  [4013429] |Vylepšení a opravy | 5,5 | 14. března 2017 |
+| Rel. 17-03 |  [4013429] |Vylepšení a opravy | 5.5 | 14. března 2017 |
 | Rel. 17-03 |  [4012212] |Aktualizace kvality z března 2017 jenom pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,60 |14. března 2017 |
 | Rel. 17-03 |  [4012213] |2017 aktualizace kvality pouze zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4,40 |14. března 2017 |
 | Rel. 17-03 |  [4012214] |Aktualizace kvality 2017 pouze zabezpečení pro Windows Server 2012|3,47 |14. března 2017 |
@@ -1375,7 +1760,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – |  [3212646] |Měsíční kumulativní kvalita zabezpečení z ledna 2017 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,60 |14. března 2017 |
 | – |  [3205409] |Měsíční kumulativní kvalita zabezpečení z prosince 2016 pro Windows Server 2012 |3,47 |14. března 2017 |
 | – |  [3205401] |Měsíční kumulativní kvalita zabezpečení z prosince 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,40 |14. března 2017 |
-| – |  [3211320] |Aktualizace servisního zásobníku pro Windows 10 verze 1607 a Windows Server 2016:24. ledna 2017 |5,5 |14. března 2017 |
+| – |  [3211320] |Aktualizace servisního zásobníku pro Windows 10 verze 1607 a Windows Server 2016:24. ledna 2017 |5.5 |14. března 2017 |
 
 ## <a name="january-2017-guest-os"></a>Leden 2017 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1391,7 +1776,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16 – 147 |[3204063]   |Aktualizace zabezpečení pro Microsoft Uniscribe|2,58, 3,46, 4,39, 5,4 |DEC 13, 2016 |
 | MS16-149 |[3205655]   |Aktualizace zabezpečení pro Microsoft Windows|2,58, 3,46, 4,39, 5,4 |DEC 13, 2016 |
 | MS16 – 150 |[3205642]   |Aktualizace zabezpečení pro režim zabezpečeného jádra |5.4 |DEC 13, 2016 |
-| MS16-151 |[3205651]   |Aktualizace zabezpečení pro ovladače režimu jádra|2,58, 3,46, 4,39, 5,4 |DEC 13, 2016 |
+| MS16-151 |[3205651]   |Aktualizace zabezpečení pro ovladače Kernel-Mode|2,58, 3,46, 4,39, 5,4 |DEC 13, 2016 |
 | MS16 – 152 |[3199709]   |Aktualizace zabezpečení pro jádro systému Windows |5.4 |DEC 13, 2016 |
 | MS16-153 |[3207328] |Aktualizace zabezpečení pro ovladač Common Log File System|2,58, 3,46, 4,39, 5,4 |DEC 13, 2016 |
 | MS16 – 155 |[3205640]   |Aktualizace zabezpečení pro .NET Framework |5.4 |DEC 13, 2016 |
@@ -1407,7 +1792,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-131 |[3199151]   |Aktualizace zabezpečení pro Microsoft video Control |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
 | MS16 – 132 |[3199120] |Aktualizace zabezpečení pro součást společnosti Microsoft |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
 | MS16 – 134 |[3193706] |Aktualizace zabezpečení pro ovladač Common Log File System |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
-| MS16-135 |[3199135] |Aktualizace zabezpečení pro ovladače režimu jádra |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
+| MS16-135 |[3199135] |Aktualizace zabezpečení pro ovladače Kernel-Mode |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
 | MS16 – 137 |[3199173]   |Aktualizace zabezpečení pro metody ověřování systému Windows |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
 | MS16 – 138 |[3199647] |Aktualizace zabezpečení na virtuální pevný disk společnosti Microsoft |5,3, 4,38, 3,45 |8. listopadu 2016 |
 | MS16-139 |[3199720] |Aktualizace zabezpečení pro jádro systému Windows |2,57 |Listopadu 8,2016 |
@@ -1429,7 +1814,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | --- | --- | --- | --- | --- |
 | MS16 – 118 |[3192887] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4,37, 3,44, 2,56 |11. října 2016 |
 | MS16-120 |[3192884] |Aktualizace zabezpečení pro komponentu Microsoft Graphics |4,37, 3,44, 2,56 |11. října 2016 |
-| MS16 – 123 |[3192892] |Aktualizace zabezpečení pro ovladače režimu jádra |4,37, 3,44, 2,56 |11. října 2016 |
+| MS16 – 123 |[3192892] |Aktualizace zabezpečení pro ovladače Kernel-Mode |4,37, 3,44, 2,56 |11. října 2016 |
 | MS16-124 |[3193227] |Aktualizace zabezpečení pro registr systému Windows |4,37, 3,44, 2,56 |11. října 2016 |
 | MS16 – 126 |[3196067] |Aktualizace zabezpečení pro Microsoft Internet Messaging API |2,56 |11. října 2016 |
 | MS16 – 101 |[3178465] |Aktualizace zabezpečení pro metody ověřování systému Windows |4,37, 3,44, 2,56 |11. října 2016 |
@@ -1437,7 +1822,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | – |[3185278] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 v září 2016 |2,56 |11. října 2016 |
 | – |[3185280] |Kumulativní aktualizace pro Windows Server 2012 ze září 2016 |3,44 |11. října 2016 |
 | – |[3185279] |Kumulativní aktualizace pro Windows 8.1 a Windows Server 2012 R2 v září 2016 |4,37 |11. října 2016 |
-| – |[3194798] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows Server 2016 |5,2 |11. října 2016 |
+| – |[3194798] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows Server 2016 |5.2 |11. října 2016 |
 
 ## <a name="september-2016-guest-os"></a>Hostovaný operační systém od září 2016
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1450,7 +1835,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16 – 114 |[3185879] |Aktualizace zabezpečení pro Windows SMB server |4,36, 3,43, 2,55 |Září 13, 2016 |
 | MS16 – 115 |[3188733] |Aktualizace zabezpečení pro PDF |4,35, 3,43 |Září 13, 2016 |
 | MS16 – 116 |[3188724] |Aktualizace zabezpečení v modulu OLE Automation pro skriptovací modul VBScript |4,36, 3,43, 2,55 |Září 13, 2016 |
-| – |[3174644] |Aktualizovaná podpora výměny klíčů Diffie-Hellman |4,36, 3,43, 2,55 |Září 13, 2016 |
+| – |[3174644] |Aktualizovaná podpora pro Diffie-Hellman výměny klíčů |4,36, 3,43, 2,55 |Září 13, 2016 |
 | – |[3177723] |Aktualizace časového pásma – Egypt zruší letní čas |4,36, 3,43, 2,55 |Září 13, 2016 |
 | – |[3179573] |Kumulativní aktualizace ze srpna 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.55 |Září 13, 2016 |
 | – |[3179575] |Kumulativní aktualizace pro Windows Server 2012 ze srpna 2016 |3,43 |Září 13, 2016 |
@@ -1461,11 +1846,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | --- | --- | --- | --- | --- |
 | MS16 |[3177356] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4,35, 3,42, 2,54 |Srpna 9, 2016 |
 | MS16-097 |[3177393] |Aktualizace zabezpečení pro komponentu Microsoft Graphics |4,35, 3,42, 2,54 |Srpna 9, 2016 |
-| MS16-098 |[3178466] |Aktualizace zabezpečení pro ovladače režimu jádra systému Windows |4,35, 3,42, 2,54 |Srpna 9, 2016 |
+| MS16-098 |[3178466] |Aktualizace zabezpečení pro ovladače Windows Kernel-Mode |4,35, 3,42, 2,54 |Srpna 9, 2016 |
 | MS16-100 |[3179577] |Aktualizace zabezpečení pro zabezpečené spouštění |4,35, 3,42 |Srpna 9, 2016 |
 | MS16 – 101 |[3178465] |Aktualizace zabezpečení pro metody ověřování systému Windows |4,35, 3,42, 2,54 |Srpna 9, 2016 |
 | MS16-102 |[3182248] |Aktualizace zabezpečení pro Microsoft Windows PDF Library |4,35, 3,42 |Srpna 9, 2016 |
-| Znovu vydaná verze MS16-077 |[3165191] |Aktualizace zabezpečení pro automatické zjišťování webového proxy serveru (WPAD) |4,35, 3,42, 2,54 |Srpna 9, 2016 |
+| MS16-077 Re-Release |[3165191] |Aktualizace zabezpečení pro automatické zjišťování webového proxy serveru (WPAD) |4,35, 3,42, 2,54 |Srpna 9, 2016 |
 | – |[3172605] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 z července 2016 |2,54 |Srpna 9, 2016 |
 | – |[3172615] |Kumulativní aktualizace pro Windows Server 2012 z července 2016 |3,42 |Srpna 9, 2016 |
 | – |[3172614] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 z července 2016 |4,35 |Srpna 9, 2016 |
@@ -1553,7 +1938,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-031 |[3140410] |Aktualizace zabezpečení pro Microsoft Windows umožňující řešit zvýšení úrovně oprávnění |2,49 |8. března 2016 |
 | MS16-032 |[3143141] |Aktualizace zabezpečení pro sekundární přihlášení k vyřešení zvýšení oprávnění |4,30, 3,37, 2,49 |8. března 2016 |
 | MS16-033 |[3143142] |Aktualizace zabezpečení pro ovladač třídy velkokapacitního úložiště USB k vyřešení zvýšení oprávnění |4,30, 3,37, 2,49 |8. března 2016 |
-| MS16-034 |[3143145] |Aktualizace zabezpečení pro ovladač režimu jádra k vyřešení zvýšení oprávnění |4,30, 3,37, 2,49 |8. března 2016 |
+| MS16-034 |[3143145] |Aktualizace zabezpečení pro Kernel-Mode ovladače k vyřešení zvýšení oprávnění |4,30, 3,37, 2,49 |8. března 2016 |
 
 ## <a name="february-2016-guest-os"></a>2016. února hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1562,20 +1947,20 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16 – 013 |[3134811] |Aktualizace zabezpečení pro program Windows Journal pro řešení vzdáleného spuštění kódu |4,29, 3,36, 2,48 |9. února 2016 |
 | MS16-014 |[3134228] |Aktualizace zabezpečení systému Microsoft Windows pro řešení vzdáleného spuštění kódu |4,29, 3,36, 2,48 |9. února 2016 |
 | MS16-016 |[3136041] |Aktualizace zabezpečení protokolu WebDAV k vyřešení zvýšení oprávnění |4,29, 3,36, 2,48 |9. února 2016 |
-| MS16-018 |[3136082] |Aktualizace zabezpečení pro ovladač režimu jádra systému Windows k vyřešení zvýšení oprávnění |4,29, 3,36, 2,48 |9. února 2016 |
+| MS16-018 |[3136082] |Aktualizace zabezpečení pro ovladač Windows Kernel-Mode k vyřešení zvýšení oprávnění |4,29, 3,36, 2,48 |9. února 2016 |
 | MS16 – 019 |[3137893] |Aktualizace zabezpečení .NET Framework pro řešení vzdáleného spuštění kódu |4,29, 3,36, 2,48 |9. února 2016 |
 | MS16-021 |[3133043] |Aktualizace zabezpečení pro server NPS RADIUS, který řeší odepření služby |4,29, 3,36, 2,48 |9. února 2016 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[3109853] |Aktualizace pro zlepšení interoperability TLS |4,29, 3,36 |9. února 2016 |
-| Opětovné vydání – MS15-101 |[3089662] |Chyby zabezpečení v .NET Framework můžou umožnit zvýšení oprávnění. |4,29, 3,36, 2,48 |9. února 2016 |
-| Opětovné vydání – MS15 – 118 |[3104507] |Aktualizace zabezpečení .NET Framework k vyřešení zvýšení oprávnění |4,29, 3,36, 2,48 |9. února 2016 |
-| Opětovné vydání – MS15 – 128 |[3104503] |Aktualizace zabezpečení pro komponentu Microsoft Graphics, která řeší vzdálené spuštění kódu |4,29, 3,36, 2,48 |9. února 2016 |
+| Re-Release – MS15 – 101 |[3089662] |Chyby zabezpečení v .NET Framework můžou umožnit zvýšení oprávnění. |4,29, 3,36, 2,48 |9. února 2016 |
+| Re-Release – MS15 – 118 |[3104507] |Aktualizace zabezpečení .NET Framework k vyřešení zvýšení oprávnění |4,29, 3,36, 2,48 |9. února 2016 |
+| Re-Release-MS15-128 |[3104503] |Aktualizace zabezpečení pro komponentu Microsoft Graphics, která řeší vzdálené spuštění kódu |4,29, 3,36, 2,48 |9. února 2016 |
 
 ## <a name="january-2016-guest-os"></a>Leden 2016 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | MS16 – 001 |[3124903] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4,28, 3,35, 2,47 |12. ledna 2016 |
 | MS16 – 003 |[3125540] |Kumulativní aktualizace zabezpečení pro JScript a VBScript |2,47 |12. ledna 2016 |
-| MS16-005 |[3124584] |Aktualizace zabezpečení pro ovladače režimu jádra systému Windows, které mají řešit vzdálené spuštění kódu |4,28, 3,35, 2,47 |12. ledna 2016 |
+| MS16-005 |[3124584] |Aktualizace zabezpečení pro ovladače Windows Kernel-Mode pro řešení vzdáleného spuštění kódu |4,28, 3,35, 2,47 |12. ledna 2016 |
 | MS16 – 007 |[3124901] |Aktualizace zabezpečení pro Microsoft Windows, která řeší vzdálené spuštění kódu |4,28, 3,35, 2,47 |12. ledna 2016 |
 | MS16 – 008 |[3124605] |Aktualizace zabezpečení pro jádro, na které se řeší zvýšení oprávnění |4,28, 3,35, 2,47 |12. ledna 2016 |
 | Revize informačního zpravodaje Microsoftu pro zabezpečení |[2755801] |Aktualizace chyb zabezpečení v aplikaci Adobe Flash Player v Internet Exploreru (balíček KB: TBD) – zástupný symbol pro poradenství |4,28, 3,35 |12. ledna 2016 |
@@ -1652,12 +2037,12 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 069 |[3072631] |Ohrožení zabezpečení v systému Windows by mohla umožňovat vzdálené spuštění kódu |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 071 |[3068457] |Ohrožení zabezpečení v NETLOGON může umožnit falšování identity |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 072 |[3069392] |Ohrožení zabezpečení v ovladači grafiky může umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
-| MS15 – 073 |[3070102] |Ohrožení zabezpečení v ovladači režimu jádra může umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
+| MS15 – 073 |[3070102] |Ohrožení zabezpečení v Kernel-Mode ovladače může umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 074 |[3072630] |Ohrožení zabezpečení ve službě Instalační služba systému Windows může umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 075 |[3072633] |Chyby zabezpečení v technologii OLE umožňují zvýšení úrovně oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 076 |[3067505] |Ohrožení zabezpečení ve volání vzdálené procedury systému Windows by mohlo umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 077 |[3077657] |Ohrožení zabezpečení v ovladači pro písma ATM může umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
-| Není k dispozici |[3057154] |Aktualizace k omezení použití šifrování DES |4,22, 3,29, 2,41 |14. července 2015 |
+| NA |[3057154] |Aktualizace k omezení použití šifrování DES |4,22, 3,29, 2,41 |14. července 2015 |
 
 ## <a name="june-2015-guest-os"></a>Operační systém hosta červen 2015
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1665,7 +2050,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 056 |[3058515] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4,21, 3,28, 2,40 |9. června 2015 |
 | MS15 – 057 |[3033890] |Chyba zabezpečení ve Windows Media Player by mohla umožňovat vzdálené spuštění kódu |4,21, 3,28, 2,40 |9. června 2015 |
 | MS15 – 060 |[3059317] |Ohrožení zabezpečení v rámci běžných řízení společnosti Microsoft by mohla umožňovat vzdálené spuštění kódu |4,21, 3,28, 2,40 |9. června 2015 |
-| MS15 – 061 |[3057839] |Chyby zabezpečení v ovladačích režimu jádra systému Windows můžou umožnit zvýšení oprávnění. |4,21, 3,28, 2,40 |9. června 2015 |
+| MS15 – 061 |[3057839] |Chyby zabezpečení v ovladačích Windows Kernel-Mode můžou umožnit zvýšení oprávnění. |4,21, 3,28, 2,40 |9. června 2015 |
 | MS15 – 062 |[3062577] |Ohrožení zabezpečení v Active Directory Federation Services (AD FS) může umožnit zvýšení oprávnění. |4,21, 3,28, 2,40 |9. června 2015 |
 | MS15 – 063 |[3063858] |Ohrožení zabezpečení v jádru Windows by mohlo umožnit zvýšení oprávnění. |4,21, 3,28, 2,40 |9. června 2015 |
 
@@ -1677,7 +2062,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 045 |[3046002] |Chyba zabezpečení ve Windows Journal by mohla umožňovat vzdálené spuštění kódu |4,20, 3,27, 2,39 |12. května 2015 |
 | MS15 – 048 |[3057134] |Chyby zabezpečení v .NET Framework můžou umožnit zvýšení oprávnění. |4,20, 3,27, 2,39 |12. května 2015 |
 | MS15 – 050 |[3055642] |Chyba zabezpečení ve Správci řízení služeb by mohla umožnit zvýšení oprávnění. |4,20, 3,27, 2,39 |12. května 2015 |
-| MS15 – 051 |[3057191] |Chyby zabezpečení v ovladačích režimu jádra systému Windows můžou umožnit zvýšení oprávnění. |4,20, 3,27, 2,39 |12. května 2015 |
+| MS15 – 051 |[3057191] |Chyby zabezpečení v ovladačích Windows Kernel-Mode můžou umožnit zvýšení oprávnění. |4,20, 3,27, 2,39 |12. května 2015 |
 | MS15 – 052 |[3050514] |Chyba zabezpečení v jádru Windows by mohla dovolit obejít funkci zabezpečení. |4,20, 3,27, 2,39 |12. května 2015 |
 | MS15 – 053 |[3057263] |Chyby zabezpečení v skriptovacím stroji JScript a VBScript můžou umožňovat obejít funkci zabezpečení. |4,20, 3,27, 2,39 |12. května 2015 |
 | MS15 – 054 |[3051768] |Ohrožení zabezpečení ve formátu souboru konzoly Microsoft Management Console může způsobit odepření služby. |4,20, 3,27, 2,39 |12. května 2015 |
@@ -1690,7 +2075,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 040 |[3045711] |Chyba zabezpečení ve službě ADFS by mohla umožnit zpřístupnění informací |4,20, 3,27, 2,39 |Duben 17, 2015 |
 | MS15 – 041 |[3048010] |Ohrožení zabezpečení v .NET Framework může umožnit vyzrazení informací. |4,20, 3,27, 2,39 |Duben 17, 2015 |
 | MS15 – 042 |[3047234] |Ohrožení zabezpečení v systému Windows Hyper-V může způsobit odepření služby. |4,20, 3,27, 2,39 |Duben 17, 2015 |
-| Není k dispozici |[3045755] |Aktualizace pro zlepšení ověřování PKU2U |4,20, 3,27, 2,39 |Duben 17, 2015 |
+| NA |[3045755] |Aktualizace pro zlepšení ověřování PKU2U |4,20, 3,27, 2,39 |Duben 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>Hostovaný operační systém od dubna 2015
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -2054,7 +2439,6 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4014511]: https://support.microsoft.com/kb/4014511
 [4014514]: https://support.microsoft.com/kb/4014514
 [4019216]: https://support.microsoft.com/kb/4019216
-[4014503]: https://support.microsoft.com/kb/4014503
 [4014506]: https://support.microsoft.com/kb/4014506
 [4014509]: https://support.microsoft.com/kb/4014509
 [4014513]: https://support.microsoft.com/kb/4014513
@@ -2085,9 +2469,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4014567]: https://support.microsoft.com/kb/4014567
 [4015550]: https://support.microsoft.com/kb/4015550
 [4013418]: https://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
+[4022345]: /security-updates/SecurityAdvisories/2017/4022345
+[4022344]: /security-updates/SecurityAdvisories/2017/4022344
+[4021279]: /security-updates/SecurityAdvisories/2017/4021279
 
 
 [4015217]: https://support.microsoft.com/kb/4015217
@@ -2126,7 +2510,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [3211320]: https://support.microsoft.com/kb/3211320
 
 
-[3216771]: https://technet.microsoft.com/library/security/MS17-004
+[3216771]: /security-updates/SecurityBulletins/2017/ms17-004
 
 [3204059]: https://support.microsoft.com/kb/3204059
 [3204062]: https://support.microsoft.com/kb/3204062
@@ -2255,7 +2639,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [3133977]: https://support.microsoft.com/kb/3133977
 [3133681]: https://support.microsoft.com/kb/3133681
 [3123245]: https://support.microsoft.com/kb/3123245
-[Zakázat RC4]: https://blogs.msdn.microsoft.com/azuresecurity/2016/04/12/azure-cipher-suite-change-removes-rc4-support/
+[Zakázat RC4]: /archive/blogs/azuresecurity/azure-cipher-suite-change-removes-rc4-support
 
 
 [3148531]: https://support.microsoft.com/kb/3148531
@@ -2360,7 +2744,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [3077657]: https://support.microsoft.com/kb/3077657
 [3057154]: https://support.microsoft.com/kb/3057154
 
-[MS15 – 034]: https://technet.microsoft.com/library/security/MS15-034
+[MS15 – 034]: /security-updates/SecurityBulletins/2015/ms15-034
 
 [3042553]: https://support.microsoft.com/en-us/kb/3042553/
 
@@ -2406,7 +2790,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [3035126]: https://support.microsoft.com/kb/3035126
 
 [3049563]:https://support.microsoft.com/kb/3049563
-[3057110]:https://support.microsoft.com/kb/3057110
+[3057110]:https://mskb.pkisolutions.com/kb/3057110
 [3046002]:https://support.microsoft.com/kb/3046002
 [3057134]:https://support.microsoft.com/kb/3057134
 [3055642]:https://support.microsoft.com/kb/3055642
@@ -2416,7 +2800,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [3051768]:https://support.microsoft.com/kb/3051768
 [3061518]:https://support.microsoft.com/kb/3061518
 
-[3038314]:https://support.microsoft.com/kb/3038314
+[3038314]:https://web.archive.org/web/20180920122209/https:/support.microsoft.com/en-us/help/3038314/ms15-032-cumulative-security-update-for-internet-explorer-april-14-201
 [3042553]:https://support.microsoft.com/kb/3042553
 [3046306]:https://support.microsoft.com/kb/3046306
 [3046269]:https://support.microsoft.com/kb/3046269
@@ -2437,5 +2821,5 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [3063858]:https://support.microsoft.com/kb/3063858
 
 
-[archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
+[archive]: /previous-versions/azure/
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation

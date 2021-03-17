@@ -3,18 +3,21 @@ title: CONCAT v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si, jak funkce CONCAT SQL System v Azure Cosmos DB vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c8a0941376ed74d7f8cb819d78df43eb9f0b7bd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5fbbbdd9d29199f5b9bd173b6ab12d3d615943c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302606"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339185"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

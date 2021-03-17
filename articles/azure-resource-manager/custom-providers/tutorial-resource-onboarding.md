@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75649936"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Kurz: zprovoznění prostředků pomocí vlastních zprostředkovatelů Azure
@@ -209,7 +209,7 @@ První část šablony nasadí infrastrukturu vlastního poskytovatele. Tato inf
 
 Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírovat, Uložit a nasadit předchozí šablonu, nebo postupovat podle potřeby a nasadit infrastrukturu pomocí Azure Portal.
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **šablony** ve **všech službách** nebo pomocí hlavního vyhledávacího pole:
 
@@ -238,10 +238,10 @@ Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírov
    | Název nastavení | Povinné? | Popis |
    | ------------ | -------- | ----------- |
    | Umístění | Ano | Umístění prostředků v šabloně. |
-   | Název aplikace logiky | Ne | Název aplikace logiky |
-   | Název vlastního poskytovatele prostředků | Ne | Název vlastního poskytovatele prostředků |
-   | ID vlastního poskytovatele prostředků | Ne | Stávající vlastní poskytovatel prostředků, který podporuje prostředek přidružení. Pokud sem zadáte hodnotu, aplikace logiky a nasazení vlastního poskytovatele se přeskočí. |
-   | Název přidružení | Ne | Název prostředku přidružení. |
+   | Název aplikace logiky | No | Název aplikace logiky |
+   | Název vlastního poskytovatele prostředků | No | Název vlastního poskytovatele prostředků |
+   | ID vlastního poskytovatele prostředků | No | Stávající vlastní poskytovatel prostředků, který podporuje prostředek přidružení. Pokud sem zadáte hodnotu, aplikace logiky a nasazení vlastního poskytovatele se přeskočí. |
+   | Název přidružení | No | Název prostředku přidružení. |
 
    Ukázkové parametry:
 

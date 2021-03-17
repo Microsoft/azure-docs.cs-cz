@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
-ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938863"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015056"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Vytvoření zón a sad záznamů DNS pomocí sady .NET SDK
 
@@ -42,7 +43,7 @@ Programový přístup k prostředkům Azure se obvykle uděluje prostřednictví
 
 Chcete-li použít sadu Azure DNS .NET SDK, je nutné nainstalovat balíček NuGet **knihovny pro správu Azure DNS** a další požadované balíčky Azure.
 
-1. V **aplikaci Visual Studio**otevřete projekt nebo nový projekt.
+1. V **aplikaci Visual Studio** otevřete projekt nebo nový projekt.
 2. Přejít na **nástroje** **>** **Správce balíčků NuGet** **>** **Spravovat balíčky NuGet pro řešení...**
 3. Klikněte na tlačítko **Procházet**, zaškrtněte políčko **zahrnout předběžné verze** a do vyhledávacího pole zadejte **Microsoft. Azure. Management. DNS** .
 4. Vyberte balíček a kliknutím na **instalovat** ho přidejte do projektu aplikace Visual Studio.
@@ -78,7 +79,7 @@ Aby bylo možné zónu v Azure DNS skutečně vytvořit nebo aktualizovat, bude 
 > [!NOTE]
 > DnsManagementClient podporuje tři režimy provozu: synchronní (' CreateOrUpdate '), asynchronní (' CreateOrUpdateAsync ') nebo asynchronní s přístupem k odpovědi HTTP (' CreateOrUpdateWithHttpMessagesAsync ').  V závislosti na potřebách vaší aplikace můžete zvolit některý z těchto režimů.
 
-Azure DNS podporuje optimistickou souběžnost s názvem [ETAGs](dns-getstarted-create-dnszone.md). V tomto příkladu zadáním "*" v hlavičce "If-None-Match" ukáže Azure DNS vytvořit zónu DNS, pokud neexistuje.  Pokud v dané skupině prostředků již existuje zóna se zadaným názvem, volání se nezdařila.
+Azure DNS podporuje optimistickou souběžnost s názvem [ETAGs](./dns-getstarted-powershell.md). V tomto příkladu zadáním "*" v hlavičce "If-None-Match" ukáže Azure DNS vytvořit zónu DNS, pokud neexistuje.  Pokud v dané skupině prostředků již existuje zóna se zadaným názvem, volání se nezdařila.
 
 ```cs
 // Create zone parameters

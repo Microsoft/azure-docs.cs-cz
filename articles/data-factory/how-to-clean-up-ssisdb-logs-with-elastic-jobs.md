@@ -1,21 +1,18 @@
 ---
 title: Vyčištění protokolů SSISDB pomocí úloh služby Azure Elastic Database
 description: Tento článek popisuje, jak pomocí úlohy elastické databáze Azure vyčistit protokoly SSISDB a aktivovat uloženou proceduru, která pro tento účel existuje.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
-ms.openlocfilehash: c7a4a1a839282618e9723e5fc916770a789fc32b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ecabbf88e14d17ac912065c2ed4aa95316efaf9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187608"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387641"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Vyčištění protokolů SSISDB pomocí úloh služby Azure Elastic Database
 
@@ -159,7 +156,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Vyčištění protokolů pomocí jazyka Transact-SQL
 
-Následující ukázkové skripty Transact-SQL vytvoří novou elastickou úlohu, která aktivuje uloženou proceduru pro vyčištění protokolu SSISDB. Další informace naleznete v tématu [použití jazyka Transact-SQL (T-SQL) k vytváření a správě úloh elastic Database](../sql-database/elastic-jobs-tsql.md).
+Následující ukázkové skripty Transact-SQL vytvoří novou elastickou úlohu, která aktivuje uloženou proceduru pro vyčištění protokolu SSISDB. Další informace naleznete v tématu [použití jazyka Transact-SQL (T-SQL) k vytváření a správě úloh elastic Database](../azure-sql/database/elastic-jobs-tsql-create-manage.md).
 
 1. Vytvořte nebo Identifikujte prázdné S0 nebo vyšší Azure SQL Database bude databáze úloh SSISDBCleanup. Pak vytvořte v [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent)agenta elastické úlohy.
 

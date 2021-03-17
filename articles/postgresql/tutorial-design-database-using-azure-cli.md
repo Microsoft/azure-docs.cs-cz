@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: návrh Azure Database for PostgreSQL-Single server – Azure CLI'
 description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit, nakonfigurovat a dotazovat svůj první Azure Database for PostgreSQL – samostatný server.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: c1ab057c34a89bfa39a298805216af89b2327622
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500772"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331875"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
@@ -27,6 +27,9 @@ V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další 
 > * Obnovení dat
 
 Ke spuštění příkazů v tomto kurzu můžete použít Azure Cloud Shell v prohlížeči nebo si [nainstalujte Azure CLI]( /cli/azure/install-azure-cli) ve vašem počítači.
+
+## <a name="prerequisites"></a>Předpoklady
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +54,7 @@ Následující příklad vytvoří ve skupině prostředků `myresourcegroup` se
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_2`mapuje se na Basic, Gen 5 a 2 virtuální jádra.
++ `--sku-name B_Gen5_2` mapuje se na Basic, Gen 5 a 2 virtuální jádra.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -142,7 +145,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    CREATE DATABASE mypgsqldb;
    ```
 
-3. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **mypgsqldb**:
+3. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **mypgsqldb** :
    ```sql
    \c mypgsqldb
    ```
@@ -199,9 +202,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 Příkaz `az postgres server restore` potřebuje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
 | name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -210,16 +213,21 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu serverů. Stiskněte tlačítko *Odstranit* na stránce *Přehled* pro skupinu serverů. Po zobrazení výzvy na místní stránce potvrďte název skupiny serverů a klikněte na tlačítko poslední *Odstranit* .
+
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure CLI (rozhraní příkazového řádku) a dalších nástrojů provést následující:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
 > * Konfigurace brány firewall serveru
-> * Vytvoření databáze pomocí nástroje [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html)
+> * Vytvoření databáze pomocí nástroje **psql**
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
 
-Pokud teď chcete zjistit, jak podobné úlohy provést pomocí webu Azure Portal, přečtěte si tento kurz: [Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure Portal](tutorial-design-database-using-azure-portal.md).
+> [!div class="nextstepaction"]
+> [Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure Portal](tutorial-design-database-using-azure-portal.md)

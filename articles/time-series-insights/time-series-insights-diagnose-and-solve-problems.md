@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046446"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023271"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Diagnostika a řešení problémů v prostředí Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Tento článek popisuje problémy, se kterými se můžete setkat v prostředí Azure Time Series Insights. Tento článek nabízí možné příčiny a řešení pro řešení.
 
@@ -34,7 +37,7 @@ Pokud se v [Azure Time Series Insights Exploreru](https://insights.timeseries.az
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina: zdrojová data události nejsou ve formátu JSON.
 
-Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./concepts-json-flattening-escaping-rules.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: ve zdrojovém klíči události chybí požadovaná oprávnění.
 
@@ -66,8 +69,8 @@ Například pokud máte ve zdroji událostí 5 000 000 události, když se přip
 
 Pokud máte ve zdroji událostí staré události, můžete k omezování přístupu přistupovat jedním ze dvou způsobů:
 
-- Změňte limity uchování zdroje událostí, aby bylo možné odebrat staré události, které nechcete zobrazit v Azure Time Series Insights.
-- Zřídit větší velikost prostředí (počet jednotek), aby se zvýšila propustnost starých událostí. Pokud v předchozím příkladu narostete stejné prostředí S1 na pět jednotek po dobu jednoho dne, prostředí by mělo zachytit za jeden den. Pokud má vaše výroba události ustálených stavů hodnotu 1 000 000 nebo méně událostí za den, můžete kapacitu události snížit na jednu jednotku po Azure Time Series Insights úlovky.
+* Změňte limity uchování zdroje událostí, aby bylo možné odebrat staré události, které nechcete zobrazit v Azure Time Series Insights.
+* Zřídit větší velikost prostředí (počet jednotek), aby se zvýšila propustnost starých událostí. Pokud v předchozím příkladu narostete stejné prostředí S1 na pět jednotek po dobu jednoho dne, prostředí by mělo zachytit za jeden den. Pokud má vaše výroba události ustálených stavů hodnotu 1 000 000 nebo méně událostí za den, můžete kapacitu události snížit na jednu jednotku po Azure Time Series Insights úlovky.
 
 Limit pro vymáhání omezení vychází z typu SKU a kapacity prostředí. Všechny zdroje událostí v prostředí sdílejí tuto kapacitu. Pokud zdroj událostí pro Centrum IoT nebo centrum událostí přenáší data nad rámec vynuceného limitu, dojde k omezení a prodlevě.
 
@@ -82,7 +85,7 @@ Představte si prostředí, které ingestuje zprávy z centra událostí. Má de
 
 Prostředí SKU S1, které má kapacitu 3, může při každé minutě přijímat jenom 2 100 událostí (1 000 000 událostí za den = 700 událostí za minutu se třemi jednotkami = 2 100 událostí za minutu).
 
-Základní informace o tom, jak funguje shrnutá logika, najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+Základní informace o tom, jak funguje shrnutá logika, najdete v tématu [podporované tvary JSON](./concepts-json-flattening-escaping-rules.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Doporučená řešení pro nadměrné omezení
 
@@ -124,16 +127,16 @@ Pamatujte, že v názvu vlastnosti časového razítka se rozlišují malá a ve
 
 Nejjednodušší způsob, jak zajistit, aby byl název vlastnosti časového razítka zachycen a správně fungoval, je použití Průzkumníka Azure Time Series Insights. V Průzkumníku Azure Time Series Insights pomocí grafu vyberte časový úsek po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a pak vyberte **prozkoumat události**.
 
-První záhlaví sloupce by mělo být název vlastnosti časového razítka. Vedle **časového razítka**slova **($TS)** se zobrazí.
+První záhlaví sloupce by mělo být název vlastnosti časového razítka. Vedle **časového razítka** slova **($TS)** se zobrazí.
 
 Následující hodnoty nebudou zobrazeny:
 
-- *(ABC)*: označuje, že Azure Time Series Insights čte datové hodnoty jako řetězce.
-- *Ikona kalendáře*: označuje, že Azure Time Series Insights čte hodnoty dat jako hodnoty DateTime.
-- *#*: Označuje, že Azure Time Series Insights čte hodnoty dat jako celá čísla.
+* *(ABC)*: označuje, že Azure Time Series Insights čte datové hodnoty jako řetězce.
+* *Ikona kalendáře*: označuje, že Azure Time Series Insights čte hodnoty dat jako hodnoty DateTime.
+* *#*: Označuje, že Azure Time Series Insights čte hodnoty dat jako celá čísla.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [tom, jak zmírnit latenci v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
+* Přečtěte si o [tom, jak zmírnit latenci v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Naučte [se škálovat Azure Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).
+* Naučte [se škálovat Azure Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).

@@ -1,16 +1,15 @@
 ---
 title: Připojení a komunikace se službami v Azure Service Fabric
 description: Naučte se řešit, připojovat a komunikovat se službami v Service Fabric.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
-ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287755"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576294"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikace se službami v Service Fabric
 V Service Fabric se služba spouští někde v clusteru Service Fabric, který se obvykle distribuuje napříč několika virtuálními počítači. Dá se přesunout z jednoho místa na jiný, buď podle vlastníka služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázané na konkrétní počítač nebo adresu.
@@ -29,7 +28,7 @@ V distribuovaném systému se služby můžou v průběhu času přesouvat z jed
 
 Service Fabric poskytuje službu zjišťování a rozlišení nazvanou Naming Service. Naming Service udržuje tabulku, která mapuje pojmenované instance služby na adresy koncových bodů, na kterých naslouchá. Všechny pojmenované instance služby v Service Fabric mají jedinečné názvy reprezentované jako identifikátory URI, například `"fabric:/MyApplication/MyService"` . Název služby se po celou dobu životnosti služby nemění. je to jenom adresa koncového bodu, které se můžou změnit při přesunu služeb. Je obdobou pro weby, které mají konstantní adresy URL, ale kde se může změnit IP adresa. A podobně jako u DNS na webu, který překládá adresy URL webových stránek na IP adresy, Service Fabric má registrátora, který mapuje názvy služeb na adresu koncového bodu.
 
-![koncové body služby][2]
+![Diagram ukazuje, že Service Fabric má Registrátor, který mapuje názvy služeb na jejich adresu koncového bodu.][2]
 
 Řešení a připojování ke službám zahrnuje následující kroky, které jsou spouštěny ve smyčce:
 
@@ -46,14 +45,14 @@ Vzhledem k tomu, že řada služeb, zejména služba s využitím kontejnerů, m
 
 Jak je znázorněno v následujícím diagramu, služba DNS spuštěná v clusteru Service Fabric mapuje názvy DNS na názvy služeb, které jsou pak vyřešeny Naming Service a vrátí adresy koncových bodů, ke kterým se má připojit. Název DNS pro službu je k dispozici v době vytváření. 
 
-![koncové body služby][9]
+![Diagram znázorňující, jak služba DNS při spuštění v clusteru Service Fabric mapuje názvy DNS na názvy služeb, které jsou pak vyřešeny Naming Service, aby vracely adresy koncových bodů, ke kterým se má připojit.][9]
 
 Další informace o tom, jak používat službu DNS, najdete [v článku Služba DNS v Azure Service Fabric](service-fabric-dnsservice.md) .
 
 ### <a name="reverse-proxy-service"></a>Služba reverzního proxy serveru
 Reverzní proxy adresují služby v clusteru, které zpřístupňují koncové body HTTP včetně protokolu HTTPS. Reverzní proxy značně zjednodušuje volání dalších služeb a jejich metod pomocí konkrétního formátu identifikátoru URI a zpracovává řešení, připojení, opakování kroků potřebných pro komunikaci jedné služby s jiným pomocí Naming Service. Jinými slovy, skryje Naming Service od vás při volání jiných služeb tím, že je tak jednoduché jako volání adresy URL.
 
-![koncové body služby][10]
+![Diagram, který ukazuje, jak reverzní proxy adresují služby v clusteru, které zpřístupňují koncové body HTTP, včetně protokolu HTTPS.][10]
 
 Další informace o tom, jak používat reverzní službu proxy, najdete [v článku reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md) .
 
@@ -152,7 +151,7 @@ Chcete-li například přijmout externí provoz na portu **80**, je nutné nakon
     ![Otevření portu v typu uzlu][4]
 3. Po vytvoření clusteru nakonfigurujte Azure Load Balancer ve skupině prostředků clusteru, abyste přesměrovali provoz na portu 80. Při vytváření clusteru prostřednictvím Azure Portal se nastavuje automaticky pro každý port vlastního koncového bodu, který byl nakonfigurován.
 
-    ![Přeposlání provozu v Azure Load Balancer][5]
+    ![Snímek obrazovky, který zvýrazní pole Port back-endu v části pravidla vyrovnávání zatížení.][5]
 4. Azure Load Balancer používá sondu k určení, jestli se má provoz odesílat do konkrétního uzlu. Sonda pravidelně kontroluje koncový bod na jednotlivých uzlech a určuje, zda uzel reaguje. Pokud test neobdrží odpověď po nakonfigurovaném počtu, nástroj pro vyrovnávání zatížení zastaví odesílání provozu do tohoto uzlu. Při vytváření clusteru prostřednictvím Azure Portal se automaticky nastaví sonda pro každý port vlastního koncového bodu, který byl nakonfigurován.
 
     ![Přeposlání provozu v Azure Load Balancer][8]

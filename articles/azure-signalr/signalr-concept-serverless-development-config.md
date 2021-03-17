@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387145"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858701"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service
 
@@ -43,15 +43,17 @@ Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConne
 
 U [modelu založeného na třídách](#class-based-model) v jazyce C# není potřeba vstupní vazba *SignalRConnectionInfo* a může přidat vlastní deklarace, které jsou mnohem jednodušší. Viz [dohadování prostředí v modelu založeném na třídě](#negotiate-experience-in-class-based-model)
 
-Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service-input.md).
+Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Další informace o tom, jak vytvořit ověřený token, najdete v tématu [použití ověřování App Service](#using-app-service-authentication).
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>Zpracování zpráv odeslaných ze služby Signal
 
-Použijte vazbu *triggeru signálu* ke zpracování zpráv odeslaných ze služby signalizace. Můžete se aktivovat, když klienti odesílají zprávy nebo se klienti připojí nebo odpojí.
+Použijte vazbu *triggeru signálu* ke zpracování zpráv odeslaných ze služby signalizace. Můžete se dostat oznámení, když klienti odesílají zprávy nebo se klienti připojí nebo odpojí.
 
-Další informace najdete v [odkazech na *triggery triggeru signálu* .](../azure-functions/functions-bindings-signalr-service-trigger.md)
+Další informace najdete v odkazu na [ *triggery triggeru signálu*](../azure-functions/functions-bindings-signalr-service-trigger.md).
+
+Také je nutné nakonfigurovat koncový bod funkce jako nadřazený, aby služba aktivovala funkci, když bude k dispozici zpráva od klienta. Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v tomto [dokumentu](concept-upstream.md).
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Odesílání zpráv a Správa členství ve skupinách
 
@@ -59,7 +61,7 @@ Pomocí výstupní vazby *signálu* můžete odesílat zprávy klientům připoj
 
 Uživatele lze přidat do jedné nebo více skupin. Výstupní vazbu *signálu* můžete také použít k přidání nebo odebrání uživatelů do nebo ze skupin.
 
-Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service-output.md).
+Další informace najdete v odkazu na [výstupní vazbu *signálu*](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>Rozbočovače signálu
 
@@ -69,7 +71,7 @@ Návěstí má koncept "centra". Každé připojení klienta a každá zpráva o
 
 Model založený na třídě je vyhrazen pro C#. Model založený na třídě může mít konzistentní prostředí pro programování na straně serveru signalizace. Má následující funkce.
 
-* Méně konfigurace funguje: název třídy se používá jako `HubName` , název metody se používá jako `Event` a `Category` automaticky se určuje podle názvu metody.
+* Méně práce s konfigurací: název třídy se používá jako `HubName` , název metody se používá jako `Event` a `Category` automaticky se určuje podle názvu metody.
 * Automatická vazba parametrů: `ParameterNames` není ani atribut `[SignalRParameter]` není potřeba. Parametry jsou automaticky vázány na argumenty metody Azure Function v daném pořadí.
 * Pohodlné prostředí pro výstup a vyjednávání.
 
@@ -109,20 +111,20 @@ Všechny funkce, které chtějí využít model založený na třídách, musí 
 
 ### <a name="define-hub-method"></a>Definovat metodu centra
 
-Všechny metody centra **musí** mít `[SignalRTrigger]` atribut a **musí** používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
+Všechny metody centra **musí** mít argument `InvocationContext` dekorované podle `[SignalRTrigger]` atributů a používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost** parametru.
 
 Ve výchozím nastavení, `category=messages` s výjimkou názvu metody, je jedním z následujících názvů:
 
-* **Připojeno**: zpracovává se jako`category=connections, event=connected`
-* **Odpojeno**: zpracovává se jako`category=connections, event=disconnected`
+* **Připojeno**: zpracovává se jako `category=connections, event=connected`
+* **Odpojeno**: zpracovává se jako `category=connections, event=disconnected`
 
 ### <a name="parameter-binding-experience"></a>Prostředí vazeb parametrů
 
 V modelu založeném na třídě `[SignalRParameter]` není nutné, protože všechny argumenty jsou označeny jako `[SignalRParameter]` výchozí, s výjimkou jedné z následujících situací:
 
 * Argument je upraven atributem vazby.
-* Typ argumentu je `ILogger` nebo`CancellationToken`
-* Argument je upraven podle atributu.`[SignalRIgnore]`
+* Typ argumentu je `ILogger` nebo `CancellationToken`
+* Argument je upraven podle atributu. `[SignalRIgnore]`
 
 ### <a name="negotiate-experience-in-class-based-model"></a>Vyjednávat prostředí v modelu založeném na třídě
 
@@ -196,13 +198,17 @@ Podle konvence sada SDK automaticky připojí `/negotiate` k adrese URL a použi
 
 Další informace o tom, jak používat klientskou sadu SDK pro signalizaci, najdete v dokumentaci k vašemu jazyku:
 
-* [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
-* [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
+* [.NET Standard](/aspnet/core/signalr/dotnet-client)
+* [JavaScript](/aspnet/core/signalr/javascript-client)
+* [Java](/aspnet/core/signalr/java-client)
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Posílání zpráv od klienta ke službě
 
-Přestože sada Signal SDK umožňuje klientským aplikacím vyvolat v centru signalizace back-end logiku, tato funkce se ještě nepodporuje, pokud používáte službu signalizace s Azure Functions. K vyvolání Azure Functions použijte požadavky HTTP.
+Pokud máte pro svůj prostředek signalizace nakonfigurované [nadřazené](concept-upstream.md) služby, můžete odesílat zprávy od klienta k vašemu Azure Functions pomocí libovolného klienta signalizace. Tady je příklad v JavaScriptu:
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Konfigurace Azure Functions
 
@@ -218,8 +224,8 @@ Klient jazyka JavaScript/TypeScript zpřístupňuje vyjednávání připojení p
 
 Při spuštění aplikace Function App na místním počítači můžete přidat `Host` část, do které se *local.settings.js* pro povolení CORS. V `Host` části přidejte dvě vlastnosti:
 
-* `CORS`-Zadejte základní adresu URL, která je zdrojem klientské aplikace.
-* `CORSCredentials`– nastavte ho tak, aby `true` povoloval žádosti "withCredentials".
+* `CORS` -Zadejte základní adresu URL, která je zdrojem klientské aplikace.
+* `CORSCredentials` – nastavte ho tak, aby `true` povoloval žádosti "withCredentials".
 
 Příklad:
 

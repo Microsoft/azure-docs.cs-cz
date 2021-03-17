@@ -18,162 +18,230 @@
           href: common-questions-server-migration.md
 - name: Kurzy
   items:
-    - name: Vyhodnocení a migrace virtuálních počítačů VMware
+    - name: Zjišťování
       items:
-        - name: Příprava virtuálních počítačů VMware na vyhodnocení a migraci
-          href: tutorial-prepare-vmware.md
-        - name: Posouzení virtuálních počítačů VMware pro migraci
-          href: tutorial-assess-vmware.md
+        - name: Zjišťování virtuálních počítačů VMware
+          href: tutorial-discover-vmware.md
+        - name: Zjišťování virtuálních počítačů Hyper-V
+          href: tutorial-discover-hyper-v.md
+        - name: Zjišťování fyzických serverů
+          href: tutorial-discover-physical.md
+        - name: Zjišťování instancí AWS
+          href: tutorial-discover-aws.md
+        - name: Zjišťování instancí GCP
+          href: tutorial-discover-gcp.md
+    - name: Posouzení
+      items:
+        - name: Vyhodnocení virtuálních počítačů VMware
+          items:
+            - name: Posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
+              href: tutorial-assess-vmware-azure-vm.md
+            - name: Vyhodnocení instancí SQL pro migraci do Azure SQL
+              href: tutorial-assess-sql.md
+            - name: Posouzení virtuálních počítačů VMware pro migraci do AVS
+              href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: Posouzení virtuálních počítačů Hyper-V pro migraci do Azure
+          href: tutorial-assess-hyper-v.md
+        - name: Posouzení fyzických serverů pro migraci do Azure
+          href: tutorial-assess-physical.md
+        - name: Posouzení instancí AWS pro migraci do Azure
+          href: tutorial-assess-aws.md
+        - name: Posouzení instancí GCP pro migraci do Azure
+          href: tutorial-assess-gcp.md
+        - name: Vyhodnocení importovaných serverů pro migraci do Azure
+          href: tutorial-discover-import.md
+    - name: Migrace
+      items:
         - name: Migrace virtuálních počítačů VMware
           items:
             - name: Možnosti migrace pro virtuální počítače VMware
               href: server-migrate-overview.md
-            - name: Migrace virtuálních počítačů VMware bez agentů
+            - name: Migrace bez agentů (portál)
               href: tutorial-migrate-vmware.md
-            - name: Migrace virtuálních počítačů VMware založená na agentech
+            - name: Migrace založená na agentech
               href: tutorial-migrate-vmware-agent.md
-    - name: Vyhodnocení a migrace virtuálních počítačů Hyper-V
-      items:
-        - name: Příprava Hyper-V na vyhodnocení a migraci
-          href: tutorial-prepare-hyper-v.md
-        - name: Posouzení virtuálních počítačů Hyper-V pro migraci
-          href: tutorial-assess-hyper-v.md
+            - name: Migrace bez agentů (PowerShell)
+              href: tutorial-migrate-vmware-powershell.md
         - name: Migrace virtuálních počítačů Hyper-V
           href: tutorial-migrate-hyper-v.md
-    - name: Vyhodnocení a migrace fyzických serverů
-      items:
-        - name: Příprava fyzických serverů pro vyhodnocení a migraci
-          href: tutorial-prepare-physical.md
-        - name: Vyhodnocení fyzických serverů
-          href: tutorial-assess-physical.md
         - name: Migrace fyzických serverů
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: Posouzení a migrace serverů
-      items:
-        - name: 'Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure'
+        - name: Migrace instancí AWS
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: Vyhodnocení importovaných serverů pro migraci
+        - name: Migrace instancí GCP
+          href: tutorial-migrate-gcp-virtual-machines.md
+    - name: Kontejnerizace
       items:
-        - name: Vyhodnocení importovaných serverů pro migraci
-          href: tutorial-assess-import.md
+        - name: Kontejnerizace ASP.NET aplikace a migrujte na AKS
+          href: tutorial-containerize-aspnet-kubernetes.md
+        - name: Kontejnerizace webové aplikace Java a migrovat na AKS
+          href: tutorial-containerize-java-kubernetes.md
 - name: Koncepty
   items:
-    - name: Sestavení plánu migrace s využitím Azure Migrate
-      href: concepts-migration-planning.md
-    - name: Matice podpory
+    - name: Obecné
       items:
-        - name: Obecná podpora
+        - name: Podpora služby Azure Migrate
           href: migrate-support-matrix.md
-        - name: Podpora posouzení pro VMware
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+    - name: Zjišťování
+      items:
+        - name: Podpora zjišťování pro VMware
           href: migrate-support-matrix-vmware.md
-        - name: Podpora migrace pro VMware
-          href: migrate-support-matrix-vmware-migration.md
-        - name: Podpora posouzení pro Hyper-V
+        - name: Podpora zjišťování pro Hyper-V
           href: migrate-support-matrix-hyper-v.md
-        - name: Podpora migrace pro Hyper-V
-          href: migrate-support-matrix-hyper-v-migration.md
-        - name: Podpora posouzení pro fyzický server
+        - name: Podpora zjišťování fyzických serverů
           href: migrate-support-matrix-physical.md
-        - name: Podpora migrace pro fyzický server
-          href: migrate-support-matrix-physical-migration.md
         - name: Požadavky zařízení Azure Migrate
           href: migrate-appliance.md
+        - name: Architektura zařízení Azure Migrate
+          href: migrate-appliance-architecture.md
+        - name: Přehled analýz závislostí
+          href: concepts-dependency-visualization.md
+    - name: Posouzení
+      items:
+        - name: Přehled hodnocení (migrace na virtuální počítače Azure)
+          href: concepts-assessment-calculation.md
+        - name: Přehled posouzení (migrace do Azure SQL)
+          href: concepts-azure-sql-assessment-calculation.md
+        - name: Přehled posouzení (migrace na AVS)
+          href: concepts-azure-vmware-solution-assessment-calculation.md
+        - name: Doporučené postupy pro hodnocení
+          href: best-practices-assessment.md
+    - name: Migrate
+      items:
+        - name: Sestavení plánu migrace
+          href: concepts-migration-planning.md
+        - name: Podpora migrace pro VMware
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Podpora migrace pro Hyper-V
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Podpora migrace pro fyzický server
+          href: migrate-support-matrix-physical-migration.md
         - name: Požadavky zařízení replikace
           href: migrate-replication-appliance.md
-    - name: Architektura zařízení Azure Migrate
-      href: migrate-appliance-architecture.md
-    - name: Architektura migrace Hyper-V
-      href: hyper-v-migration-architecture.md
-    - name: Architektura migrace založené na agentech pro VMware
-      href: agent-based-migration-architecture.md
-    - name: Přehled posouzení (migrace na virtuální počítače Azure)
-      href: concepts-assessment-calculation.md
-    - name: Přehled posouzení (migrace na AVS)
-      href: concepts-azure-vmware-solution-assessment-calculation.md
-    - name: Osvědčené postupy pro vyhodnocení
-      href: best-practices-assessment.md
-    - name: Přehled analýz závislostí
-      href: concepts-dependency-visualization.md
+        - name: Architektura migrace Hyper-V
+          href: hyper-v-migration-architecture.md
+        - name: Architektura migrace založené na agentech pro VMware
+          href: agent-based-migration-architecture.md
 - name: Návody
   items:
     - name: Vytváření a správa projektů Azure Migrate
       href: create-manage-projects.md
-    - name: První přidání nástroje
-      href: how-to-add-tool-first-time.md
     - name: Příprava na práci s nástroji ISV / Movere
       href: prepare-isv-movere.md
-    - name: Přidání nástrojů pro vyhodnocení
-      href: how-to-assess.md
-    - name: Nasazení zařízení Azure Migrate
+    - name: Zjišťování
       items:
-        - name: Nasazení zařízení se šablonou (VMware)
-          href: how-to-set-up-appliance-vmware.md
-        - name: Nasazení zařízení se šablonou (Hyper-V)
-          href: how-to-set-up-appliance-hyper-v.md
-        - name: Nasazení zařízení se skriptem (VMware/Hyper-V)
-          href: deploy-appliance-script.md
-        - name: Nasazení zařízení pro fyzické servery
-          href: how-to-set-up-appliance-physical.md
-        - name: Nasazení zařízení ve službě Azure Government
-          href: deploy-appliance-script-government.md
-    - name: Omezení rozsahu zjišťování pro virtuální počítače VMware
-      href: set-discovery-scope.md
-    - name: Zjišťování aplikací/rolí/funkcí
-      href: how-to-discover-applications.md
-    - name: Seskupení počítačů pro vyhodnocení
-      href: how-to-create-a-group.md
-    - name: Analýza závislostí počítačů (na základě agentů)
-      href: how-to-create-group-machine-dependencies.md
-    - name: Analýza závislostí počítačů (bez agentů)
-      href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Vytvoření hodnocení virtuálních počítačů Azure
-      href: how-to-create-assessment.md
-    - name: Vytvoření hodnocení AVS
-      href: how-to-create-azure-vmware-solution-assessment.md
-    - name: Posouzení databáze SQL Serveru
-      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
-    - name: Přizpůsobení posouzení
-      href: how-to-modify-assessment.md
-    - name: Přidání nástrojů pro migraci
-      href: how-to-migrate.md
-    - name: Migrace virtuálních počítačů VMware na virtuální počítače Azure šifrované s využitím SSE a CMK
-      href: how-to-migrate-vmware-vms-with-cmk-disks.md
-    - name: Příprava serverů Windows 2003 na migraci
-      href: prepare-windows-server-2003-migration.md
-    - name: Příprava počítačů na migraci
-      href: prepare-for-migration.md
-    - name: Odstranění projektu Azure Migrate
-      href: how-to-delete-project.md
-    - name: Práce s předchozí verzí
-      href: migrate-v1.md
-    - name: Vyhodnocení a migrace ve velkém měřítku
+        - name: Nasazení zařízení se službou Azure Migrate
+          items:
+            - name: Nasazení zařízení se šablonou (VMware)
+              href: how-to-set-up-appliance-vmware.md
+            - name: Nasazení zařízení se šablonou (Hyper-V)
+              href: how-to-set-up-appliance-hyper-v.md
+            - name: Nasazení zařízení se skriptem (VMware/Hyper-V)
+              href: deploy-appliance-script.md
+            - name: Nasazení zařízení pro fyzické servery
+              href: how-to-set-up-appliance-physical.md
+            - name: Nasazení zařízení ve službě Azure Government
+              href: deploy-appliance-script-government.md
+        - name: Omezení rozsahu zjišťování pro virtuální počítače VMware
+          href: set-discovery-scope.md
+        - name: Postup přidání přihlašovacích údajů serveru
+          href: add-server-credentials.md
+        - name: Zjišťování aplikací/rolí/funkcí
+          href: how-to-discover-applications.md
+        - name: Vyhledat instance SQL v existujícím projektu
+          href: how-to-discover-sql-existing-project.md
+        - name: Analýza závislostí počítačů (na základě agentů)
+          href: how-to-create-group-machine-dependencies.md
+        - name: Analýza závislostí počítačů (bez agentů)
+          href: how-to-create-group-machine-dependencies-agentless.md
+    - name: Posouzení
       items:
-        - name: Přístup k velkému počtu virtuálních počítačů VMware
-          href: scale-vmware-assessment.md
-        - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
-          href: scale-hyper-v-assessment.md
-        - name: Vyhodnocení velkého počtu fyzických serverů
-          href: scale-physical-assessment.md
-        - name: Automatizace migrace velkého počtu virtuálních počítačů
-          href: how-to-migrate-at-scale.md
-        - name: Příklady migrace (série Contoso)
-          href: contoso-migration-overview.md
+        - name: Přidání nástrojů pro vyhodnocení
+          href: how-to-assess.md
+        - name: Seskupení počítačů pro vyhodnocení
+          href: how-to-create-a-group.md
+        - name: Vytvoření hodnocení virtuálních počítačů Azure
+          href: how-to-create-assessment.md
+        - name: Vytvoření posouzení Azure SQL
+          href: how-to-create-azure-sql-assessment.md
+        - name: Vytvoření hodnocení AVS
+          href: how-to-create-azure-vmware-solution-assessment.md
+        - name: Posouzení databáze SQL Serveru
+          href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
+        - name: Přizpůsobení posouzení
+          href: how-to-modify-assessment.md
+        - name: Škálování hodnocení
+          items:
+            - name: Přístup k velkému počtu virtuálních počítačů VMware
+              href: scale-vmware-assessment.md
+            - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
+              href: scale-hyper-v-assessment.md
+            - name: Vyhodnocení velkého počtu fyzických serverů
+              href: scale-physical-assessment.md
+    - name: Migrate
+      items:
+        - name: Přidání nástrojů pro migraci
+          href: how-to-migrate.md
+        - name: Replikace pomocí ExpressRoute
+          href: replicate-using-expressroute.md
+        - name: Příprava počítačů na migraci
+          href: prepare-for-migration.md
+        - name: Příprava serverů Windows 2003 na migraci
+          href: prepare-windows-server-2003-migration.md
+        - name: Migrace virtuálních počítačů VMware
+          items:
+            - name: Migrace virtuálních počítačů VMware na šifrované virtuální počítače Azure
+              href: how-to-migrate-vmware-vms-with-cmk-disks.md
+        - name: Škálování migrace
+          items:
+            - name: Postup migrace virtuálních počítačů VMware ve velkém měřítku pomocí metody replikace bez agentů
+              href: how-to-scale-out-for-migration.md
+            - name: Automatizace migrace velkého počtu virtuálních počítačů
+              href: how-to-migrate-at-scale.md
+            - name: Jak automatizovat migraci VMware
+              href: how-to-automate-migration.md
+    - name: Spravovat
+      items:
+        - name: Odstranění projektu Azure Migrate
+          href: how-to-delete-project.md
+        - name: Práce s předchozí verzí služby Azure Migrate
+          href: migrate-v1.md
+        - name: Správa projektů migrace pomocí Azure Lighthouse
+          href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: Řešení potíží
   items:
-    - name: Řešení problémů s Azure Migrate
-      href: troubleshoot-general.md
-    - name: Řešení problémů s projekty Azure Migrate
-      href: troubleshoot-project.md
-    - name: Řešení potíží se zařízením/zjišťováním Azure Migrate
-      href: troubleshoot-appliance-discovery.md
-    - name: Řešení potíží s vyhodnocením a vizualizací závislostí
-      href: troubleshoot-assessment.md
-    - name: Řešení potíží s replikací při migraci VMware bez agenta
-      href: troubleshoot-changed-block-tracking-replication.md
+    - name: Obecné
+      items:
+        - name: Řešení problémů s Azure Migrate
+          href: troubleshoot-general.md
+        - name: Řešení problémů s projekty Azure Migrate
+          href: troubleshoot-project.md
+    - name: Zjišťování
+      items:
+        - name: Řešení potíží se zařízením/zjišťováním Azure Migrate
+          href: troubleshoot-appliance-discovery.md
+    - name: Posouzení
+      items:
+        - name: Řešení potíží s vyhodnocením a vizualizací závislostí
+          href: troubleshoot-assessment.md
+    - name: Migrate
+      items:
+        - name: Řešení potíží s replikací při migraci VMware bez agenta
+          href: troubleshoot-changed-block-tracking-replication.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.migrate/
 - name: Zdroje a prostředky
   items:
     - name: Migrace v architektuře přechodu na cloud
       href: /azure/cloud-adoption-framework/migrate/
+    - name: Příklady migrace Contoso
+      href: /azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-overview
     - name: REST API
       href: /rest/api/migrate/
     - name: Šablona Resource Manageru

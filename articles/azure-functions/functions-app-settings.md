@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589296"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425698"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -19,11 +19,11 @@ Nastavení aplikace ve Function App obsahují globální možnosti konfigurace, 
 Existují další možnosti globální konfigurace v [host.js](functions-host-json.md) souboru a [local.settings.js](functions-run-local.md#local-settings-file) v souboru.
 
 > [!NOTE]  
-> Nastavení aplikace můžete použít k přepsání host.jsnastavením hodnot bez nutnosti měnit host.jsv samotném souboru. To je užitečné ve scénářích, kdy potřebujete nakonfigurovat nebo upravit konkrétní host.jsv nastavení pro konkrétní prostředí. To vám také umožní změnit host.jsnastavení bez nutnosti opětovného publikování projektu. Další informace najdete v části [host.jsv článku referenční článek](functions-host-json.md#override-hostjson-values).  
+> Nastavení aplikace můžete použít k přepsání host.jsnastavením hodnot bez nutnosti měnit host.jsv samotném souboru. To je užitečné ve scénářích, kdy potřebujete nakonfigurovat nebo upravit konkrétní host.jsv nastavení pro konkrétní prostředí. To vám také umožní změnit host.jsnastavení bez nutnosti opětovného publikování projektu. Další informace najdete v části [host.jsv článku referenční článek](functions-host-json.md#override-hostjson-values). Změny nastavení aplikace Function App vyžadují restart aplikace Function App.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `APPLICATIONINSIGHTS_CONNECTION_STRING` . Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). 
+Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `APPLICATIONINSIGHTS_CONNECTION_STRING` . Pokud Application Insights běží v cloudu svrchovan, použijte `APPLICATIONINSIGHTS_CONNECTION_STRING` . Další informace najdete v tématu [Konfigurace monitorování pro Azure Functions](configure-monitoring.md). 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -31,7 +31,12 @@ Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIG
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-Připojovací řetězec pro Application Insights. Použijte `APPLICATIONINSIGHTS_CONNECTION_STRING` místo toho, aby `APPINSIGHTS_INSTRUMENTATIONKEY` vaše aplikace Function vyžadovala přidaná přizpůsobení podporovaná pomocí připojovacího řetězce. Další informace najdete v tématu [připojovací řetězce](../azure-monitor/app/sdk-connection-string.md). 
+Připojovací řetězec pro Application Insights. Použijte `APPLICATIONINSIGHTS_CONNECTION_STRING` místo `APPINSIGHTS_INSTRUMENTATIONKEY` v následujících případech:
+
++ Když aplikace Function App vyžaduje přidaná přizpůsobení podporovaná pomocí připojovacího řetězce. 
++ Když instance Application Insights běží v cloudu svrchovaného prostředí, které vyžaduje vlastní koncový bod.
+
+Další informace najdete v tématu [připojovací řetězce](../azure-monitor/app/sdk-connection-string.md). 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -75,7 +80,7 @@ Když `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` je nastaveno na `true` ,
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Ve verzi 2. x a novějších verzích modulu runtime Functions konfiguruje chování aplikace na základě běhového prostředí. Tato hodnota je [čtena při inicializaci](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Můžete nastavit `AZURE_FUNCTIONS_ENVIRONMENT` na libovolnou hodnotu, ale podporují se [tři hodnoty](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) : [vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Příprava](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)a [produkce](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Pokud `AZURE_FUNCTIONS_ENVIRONMENT` není nastavené, použije se výchozí nastavení `Development` v místním prostředí a `Production` v Azure. Toto nastavení by se mělo použít místo `ASPNETCORE_ENVIRONMENT` pro nastavení běhového prostředí. 
+Ve verzi 2. x a novějších verzích modulu runtime Functions konfiguruje chování aplikace na základě běhového prostředí. Tato hodnota je čtena během inicializace a lze ji nastavit na libovolnou hodnotu. `Development` `Staging` `Production` Modul runtime respektuje pouze hodnoty, a. Pokud se toto nastavení aplikace při spuštění v Azure nevyskytuje, předpokládá se, že se jedná o prostředí `Production` . Místo toho použijte toto nastavení, `ASPNETCORE_ENVIRONMENT` Pokud potřebujete změnit běhové prostředí v Azure na jinou hodnotu než `Production` . Azure Functions Core Tools nastavena `AZURE_FUNCTIONS_ENVIRONMENT` na hodnotu `Development` při spuštění v místním počítači a nelze ji přepsat v local.settings.jsv souboru. Další informace naleznete v tématu [Třída a metody spouštění založené na prostředí](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods).
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
@@ -130,7 +135,7 @@ Určuje úložiště nebo poskytovatele, které se použijí pro úložiště kl
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Modul runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce s výjimkou funkcí aktivovaných protokolem HTTP. Účet úložiště musí být účet pro obecné účely, který podporuje objekty blob, fronty a tabulky. Viz požadavky na [účet úložiště](functions-infrastructure-as-code.md#storage-account) a [účet úložiště](storage-considerations.md#storage-account-requirements).
+Modul runtime Azure Functions používá tento připojovací řetězec k účtu úložiště pro normální provoz. Některá použití tohoto účtu úložiště zahrnují správu klíčů, správu aktivačních událostí časovače a Event Hubs kontrolní body. Účet úložiště musí být účet pro obecné účely, který podporuje objekty blob, fronty a tabulky. Viz požadavky na [účet úložiště](functions-infrastructure-as-code.md#storage-account) a [účet úložiště](storage-considerations.md#storage-account-requirements).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -154,11 +159,11 @@ Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "ReadOnl
 
 ## <a name="functions_extension_version"></a>\_verze rozšíření Functions \_
 
-Verze modulu runtime Functions, který má být použit v této aplikaci Function App. Vlnovka s hlavní verzí znamená použití nejnovější verze této hlavní verze (například ~ 2). Pokud jsou k dispozici nové verze pro stejnou hlavní verzi, automaticky se nainstalují do aplikace Function App. Pokud chcete aplikaci připnout na konkrétní verzi, použijte úplné číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` PIN vaší aplikace na verzi 1. x modulu runtime.
+Verze modulu runtime Functions, který hostuje vaši aplikaci Function App. Znak tilda ( `~` ) s hlavní verzí znamená použít nejnovější verzi této hlavní verze (například "~ 3"). Pokud jsou k dispozici nové verze pro stejnou hlavní verzi, automaticky se nainstalují do aplikace Function App. Pokud chcete aplikaci připnout na konkrétní verzi, použijte úplné číslo verze (například "3.0.12345"). Výchozí hodnota je "~ 3". Hodnota `~1` PIN vaší aplikace na verzi 1. x modulu runtime. Další informace najdete v tématu [Přehled verzí modulu runtime Azure Functions](functions-versions.md).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|\_verze rozšíření Functions \_|~ 2|
+|\_verze rozšíření Functions \_|~ 3|
 
 ## <a name="functions_v2_compatibility_mode"></a>\_ \_ Režim kompatibility Functions v2 \_
 
@@ -181,6 +186,14 @@ Určuje maximální počet pracovních procesů jazyka s výchozí hodnotou `1` 
 |---|------------|
 |\_počet pracovních \_ procesů \_ funkcí|2|
 
+## <a name="python_threadpool_thread_count"></a>\_ \_ počet vláken fondu vláken v Pythonu \_
+
+Určuje maximální počet vláken, která by pracovník jazyka Python použil k provedení vyvolání funkcí s výchozí hodnotou `1` pro verzi Pythonu `3.8` a níže. V případě verze Pythonu `3.9` a vyšší je hodnota nastavena na `None` . Všimněte si, že toto nastavení nezaručuje počet vláken, která by byla nastavena při spuštění. Nastavení umožňuje Pythonu rozšířit počet vláken na zadanou hodnotu. Nastavení platí pouze pro aplikace Python Functions. Nastavení se navíc vztahuje na vyvolání synchronních funkcí a nikoli pro korutiny.
+
+|Klíč|Ukázková hodnota|Max. hodnota|
+|---|------------|---------|
+|\_ \_ počet vláken fondu vláken v Pythonu \_|2|32|
+
 
 ## <a name="functions_worker_runtime"></a>FUNKCE \_ \_ modulu runtime pracovního procesu
 
@@ -200,15 +213,15 @@ Hodnota tohoto nastavení označuje adresu URL vlastního indexu balíčku pro a
 
 Další informace najdete v tématu [vlastní závislosti](functions-reference-python.md#remote-build-with-extra-index-url) v referenční příručce pro vývojáře v Pythonu.
 
-## <a name="scale_controller_logging_enable"></a>\_ \_ Povolení protokolování škálování \_ řadiče
+## <a name="scale_controller_logging_enabled"></a>\_ \_ zapnuté protokolování řadiče škálování \_
 
 _Toto nastavení je aktuálně ve verzi Preview._  
 
-Toto nastavení řídí protokolování z Azure Functionsho řadiče škálování. Další informace najdete v tématu [škálování protokolů řadiče](functions-monitoring.md#scale-controller-logs-preview).
+Toto nastavení řídí protokolování z Azure Functionsho řadiče škálování. Další informace najdete v tématu [škálování protokolů řadiče](functions-monitoring.md#scale-controller-logs).
 
 |Klíč|Ukázková hodnota|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights: verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights: verbose|
 
 Hodnota pro tento klíč je zadána ve formátu `<DESTINATION>:<VERBOSITY>` , který je definován následujícím způsobem:
 
@@ -216,26 +229,40 @@ Hodnota pro tento klíč je zadána ve formátu `<DESTINATION>:<VERBOSITY>` , kt
 
 ## <a name="website_contentazurefileconnectionstring"></a>\_CONTENTAZUREFILECONNECTIONSTRING webu
 
-Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, ve kterém je uložený kód a konfigurace aplikace Function App Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
+Připojovací řetězec pro účet úložiště, ve kterém je kód a konfigurace aplikace Function App uložený v plánech škálování řízených událostmi, které běží v systému Windows. Další informace najdete v tématu [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#windows).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; Název účtu = [název]; AccountKey = [klíč]|
 
+Používá se jenom při nasazování do plánu Premium nebo na plán spotřeby, který běží na Windows. Nepodporuje se pro plány spotřebování, na kterých běží Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
+
+## <a name="website_contentovervnet"></a>\_CONTENTOVERVNET webu
+
+Jenom pro plány Premium. Hodnota `1` umožňuje škálování aplikace Function App, když máte účet úložiště omezený na virtuální síť. Toto nastavení byste měli povolit při omezení účtu úložiště na virtuální síť. Další informace najdete v tématu [omezení účtu úložiště na virtuální síť](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|WEBSITE_CONTENTOVERVNET|1|
+
 ## <a name="website_contentshare"></a>\_CONTENTSHARE webu
 
-Pro spotřebu & jenom plánů Premium. Cesta k souboru s kódem a konfigurací aplikace Function App Používá se s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace Function App. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
+Cesta k souboru s kódem a konfigurací aplikace funkcí v plánu škálování řízeného událostmi ve Windows. Používá se s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace Function App. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#windows).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Používá se jenom při nasazování do plánu Premium nebo na plán spotřeby, který běží na Windows. Nepodporuje se pro plány spotřebování, na kterých běží Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+
+Při použití Azure Resource Manager k vytvoření aplikace Function App během nasazení nezahrnujte do šablony WEBSITE_CONTENTSHARE. Toto nastavení aplikace se generuje během nasazování. Další informace najdete v tématu [Automatizace nasazení prostředků pro aplikaci Function App](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>maximální navýšení \_ \_ \_ kapacity dynamické aplikace \_ \_ na webu
 
 Maximální počet instancí, na které může aplikace Function App navýšit horizontální navýšení kapacity. Výchozí hodnota není nijak omezena.
 
 > [!IMPORTANT]
-> Toto nastavení je ve verzi Preview.  Byla přidána [vlastnost aplikace pro maximum horizontálního](./functions-scale.md#limit-scale-out) navýšení kapacity a je doporučeným způsobem, jak omezit horizontální navýšení kapacity.
+> Toto nastavení je ve verzi Preview.  Byla přidána [vlastnost aplikace pro maximum horizontálního](./event-driven-scaling.md#limit-scale-out) navýšení kapacity a je doporučeným způsobem, jak omezit horizontální navýšení kapacity.
 
 |Klíč|Ukázková hodnota|
 |---|------------|

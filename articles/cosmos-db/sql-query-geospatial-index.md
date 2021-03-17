@@ -3,30 +3,30 @@ title: Indexování geoprostorových dat pomocí Azure Cosmos DB
 description: Indexace prostorových dat pomocí Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116294"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336210"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indexování geoprostorových dat pomocí Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Navrhli jsme, aby byl databázový stroj Azure Cosmos DB nezávislá jako skutečně schématu a poskytoval jako první podporu třídy pro JSON. Napsání optimalizovaného databázového stroje Azure Cosmos DB nativně rozumí prostorová data reprezentovaná v rámci standardu injson.
 
-V kostce je geometrie promítnuta z souřadnic Geodetic na 2D rovinu a poté postupně rozdělena do buněk pomocí **quadtree**. Tyto buňky jsou namapovány na 1D na základě umístění buňky v **křivce vyplňování Hilbert prostoru**, která zachovává polohu místa. Kromě toho, když jsou data umístění indexována, projde procesem známým jako **teselaci**, to znamená, že všechny buňky, které protínají umístění, jsou identifikovány a uloženy jako klíče v indexu Azure Cosmos DB. V době dotazu jsou argumenty, jako jsou body a mnohoúhelníky, také teselace k extrakci příslušných rozsahů ID buněk a potom se používají k načtení dat z indexu.
+V kostce je geometrie promítnuta z souřadnic Geodetic na 2D rovinu a poté postupně rozdělena do buněk pomocí **quadtree**. Tyto buňky jsou namapovány na 1D na základě umístění buňky v **křivce vyplňování Hilbert prostoru** , která zachovává polohu místa. Kromě toho, když jsou data umístění indexována, projde procesem známým jako **teselaci** , to znamená, že všechny buňky, které protínají umístění, jsou identifikovány a uloženy jako klíče v indexu Azure Cosmos DB. V době dotazu jsou argumenty, jako jsou body a mnohoúhelníky, také teselace k extrakci příslušných rozsahů ID buněk a potom se používají k načtení dat z indexu.
 
-Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro/* (všechny cesty), pak jsou všechna data nalezená v rámci kontejneru indexována pro efektivní prostorové dotazy.
+Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro `/*` (všechny cesty), pak jsou všechna data nalezená v rámci kontejneru indexována pro efektivní prostorové dotazy.
 
 > [!NOTE]
-> Azure Cosmos DB podporuje indexování bodů, LineStrings, mnohoúhelníků a více mnohoúhelníků.
->
->
+> Azure Cosmos DB podporuje indexování bodů, LineStrings, mnohoúhelníků a více mnohoúhelníků. Při indexování některého z těchto typů budeme automaticky indexovat všechny ostatní typy. Jinými slovy, i když indexuje mnohoúhelníky, budeme také indexovat body, LineStrings a více mnohoúhelníků. Indexování nového prostorového typu nemá vliv na poplatek za zápis RU nebo na velikost indexu, pokud nemáte platná data o biojsonu tohoto typu.
 
-## <a name="modifying-geospatial-data-type"></a>Úprava geoprostorového datového typu
+## <a name="modifying-geospatial-configuration"></a>Úprava geoprostorové konfigurace
 
 V kontejneru Určuje **geoprostorové nastavení** , jak budou prostorová data indexována. Zadejte jednu **geoprostorové konfiguraci** na kontejner: Geografie nebo geometrie.
 
@@ -36,11 +36,11 @@ Tady je postup nastavení **geoprostorové konfigurace** v **Průzkumník dat** 
 
 :::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Nastavení geoprostorové konfigurace":::
 
-Můžete také upravit v sadě `geospatialConfig` .NET SDK pro úpravu **geoprostorové konfigurace**:
+Můžete také upravit v sadě `geospatialConfig` .NET SDK pro úpravu **geoprostorové konfigurace** :
 
 Pokud není zadaný, `geospatialConfig` použije se jako výchozí zeměpisný datový typ. Když upravíte `geospatialConfig` , všechna existující geoprostorové data v kontejneru se Přeindexují.
 
-Tady je příklad pro úpravu geoprostorového datového typu na nastavením `geometry` `geospatialConfig` vlastnosti a přidání **boundingBox**:
+Tady je příklad pro úpravu geoprostorového datového typu na nastavením `geometry` `geospatialConfig` vlastnosti a přidání **boundingBox** :
 
 ```csharp
     //Retrieve the container's details
@@ -77,15 +77,15 @@ Následující fragment kódu JSON ukazuje zásadu indexování s povoleným pro
 **JSON zásad indexování kontejneru s geografickým indexováním**
 
 ```json
-    {
-       "automatic":true,
-       "indexingMode":"Consistent",
-        "includedPaths": [
+{
+    "automatic": true,
+    "indexingMode": "Consistent",
+    "includedPaths": [
         {
             "path": "/*"
         }
-        ],
-        "spatialIndexes": [
+    ],
+    "spatialIndexes": [
         {
             "path": "/*",
             "types": [
@@ -96,8 +96,8 @@ Následující fragment kódu JSON ukazuje zásadu indexování s povoleným pro
             ]
         }
     ],
-       "excludedPaths":[]
-    }
+    "excludedPaths": []
+}
 ```
 
 > [!NOTE]
@@ -111,10 +111,10 @@ S datovým typem **geometrie** , podobně jako zeměpisný datový typ, je nutn�
 
 Ohraničovací rámeček se skládá z následujících vlastností:
 
-- **XMin**: minimální souřadnice indexovaných x
-- **yMin**: minimální souřadnice indexovaného y
-- **Xmax**: maximální indexovaná souřadnice x
-- **yMax**: maximální souřadnice indexovaných y
+- **XMin** : minimální souřadnice indexovaných x
+- **yMin** : minimální souřadnice indexovaného y
+- **Xmax** : maximální indexovaná souřadnice x
+- **yMax** : maximální souřadnice indexovaných y
 
 Ohraničovací rámeček je povinný, protože geometrická data zabírají rovinu, která může být nekonečná. Prostorové indexy ale vyžadují omezené místo. Pro **zeměpisný** datový typ je zemina hranice a není nutné nastavovat ohraničovací rámeček.
 
@@ -123,7 +123,7 @@ Vytvořte ohraničující rámeček, který obsahuje všechny (nebo většinu) v
 Tady je příklad zásady indexování, **která indexuje** data s **geospatialConfig** nastavenou na `geometry` :
 
 ```json
- {
+{
     "indexingMode": "consistent",
     "automatic": true,
     "includedPaths": [

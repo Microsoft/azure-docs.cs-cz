@@ -6,21 +6,21 @@ documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2019
+ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79ef279423c524f0d409815e7ae163aa699f5428
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3244cbca3df717d3432670a366147408cf2b2c0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082201"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669118"
 ---
-# <a name="backup-and-restore-on-sap-hana-on-azure"></a>Zálohování a obnovení při SAP HANA v Azure
+# <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>Zálohování a obnovení SAP HANA ve velkých instancích HANA
 
 >[!IMPORTANT]
 >Tento článek není náhradou za dokumentaci pro správu SAP HANA ani pro poznámky ke službě SAP. Očekáváme, že budete mít plnou znalost a odbornosti v SAP HANA správě a operacích, zejména pro zálohování, obnovení, vysokou dostupnost a zotavení po havárii. V tomto článku se zobrazí snímky obrazovky z SAP HANA studia. Obsah, struktura a povaha obrazovek nástrojů pro správu SAP a samotných nástrojů se můžou v SAP HANA vydání verze změnit.
@@ -338,7 +338,7 @@ Druhou možností, jak odstranit konkrétní snímky, je použít skript `azure_
 
 Další informace o skriptu najdete v tématu "odstranění snímku-azure_hana_snapshot_delete" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
-Spusťte skript jako **kořenový**uživatel.
+Spusťte skript jako **kořenový** uživatel.
 
 >[!IMPORTANT]
 >Pokud máte data, která existují jenom na snímku, který chcete odstranit, po odstranění snímku se tato data ztratí trvale.
@@ -347,7 +347,7 @@ Spusťte skript jako **kořenový**uživatel.
 ## <a name="file-level-restore-from-a-storage-snapshot"></a>Obnovení na úrovni souborů z snímku úložiště
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
-U typů snímků **Hana** a **protokolů**můžete přistupovat k snímkům přímo na svazcích v adresáři **. Snapshot** . Pro každý snímek je podadresář. Zkopírujte každý soubor ve stavu, v němž byl v místě snímku, z tohoto podadresáře do skutečné adresářové struktury. 
+U typů snímků **Hana** a **protokolů** můžete přistupovat k snímkům přímo na svazcích v adresáři **. Snapshot** . Pro každý snímek je podadresář. Zkopírujte každý soubor ve stavu, v němž byl v místě snímku, z tohoto podadresáře do skutečné adresářové struktury. 
 
 V aktuální verzi skriptu není k dispozici *žádný* skript pro obnovení pro obnovení snímku jako Samoobslužná služba. Obnovení snímku můžete provést v rámci samoobslužných skriptů pro obnovení po havárii během převzetí služeb při selhání v lokalitě pro obnovení po havárii. Pokud chcete obnovit požadovaný snímek z existujících dostupných snímků, je nutné, abyste se obrátili na provozní tým Microsoftu otevřením žádosti o služby.
 
@@ -399,6 +399,540 @@ Postup obnovení ze zálohy snímku najdete v tématu [Ruční Průvodce obnoven
 
 ### <a name="recover-to-another-point-in-time"></a>Obnovit do jiného bodu v čase
 Chcete-li provést obnovení k určitému bodu v čase, přečtěte si téma "obnovení databáze k následujícímu časovému okamžiku" v tématu [Ruční Průvodce obnovením pro SAP HANA v Azure ze snímku úložiště](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
+
+
+
+
+
+## <a name="snapcenter-integration-in-sap-hana-large-instances"></a>Integrace SnapCenter v SAP HANA velkých instancích
+
+V této části se dozvíte, jak můžou zákazníci používat software NetApp SnapCenter k pořízení snímků, zálohování a SAP HANA obnovení databází hostovaných ve Microsoft Azure HANA velkých instancí (HLI). 
+
+SnapCenter nabízí řešení pro scénáře, včetně zálohování a obnovování, zotavení po havárii (DR) pomocí asynchronní replikace úložiště, replikace systému a klonování systému. V rámci integrace s Velké instance SAP HANA v Azure teď můžou zákazníci používat SnapCenter pro operace zálohování a obnovení.
+
+Další informace naleznete v tématu NetApp TR-4614 a TR-4646 na SnapCenter.
+
+- [SAP HANA zálohování a obnovení pomocí SnapCenter (TR-4614)](https://www.netapp.com/us/media/tr-4614.pdf)
+- [SAP HANA zotavení po havárii pomocí replikace úložiště (TR-4646)](https://www.netapp.com/us/media/tr-4646.pdf)
+- [SAP HANA HSR s SnapCenter (TR-4719)](https://www.netapp.com/us/media/tr-4719.pdf)
+- [Klonování SAP z SnapCenter (TR-4667)](https://www.netapp.com/us/media/tr-4667.pdf)
+
+### <a name="system-requirements-and-prerequisites"></a>Požadavky na systém a požadované součásti
+
+Aby bylo možné spustit SnapCenter v Azure HLI, požadavky na systém zahrnují:
+* SnapCenter Server v Azure Windows 2016 nebo novější se 4-vCPU, 16 GB paměti RAM a minimálně 650 GB správy Premium SSD Storage.
+* Velké instance SAP HANA systém s 1,5 TB – 24 TB paměti RAM. Pro klonování operací a testů doporučujeme použít dva SAP HANA systémů velkých instancí.
+
+Kroky pro integraci SnapCenter v SAP HANA jsou: 
+
+1. Vyvolejte žádost o lístek podpory pro komunikaci veřejného klíče generovaného uživatelem s týmem společnosti Microsoft. To je nutné k nastavení uživatele SnapCenter pro přístup k systému úložiště.
+1. Vytvořte virtuální počítač ve vaší virtuální síti, který má přístup k HLI; Tento virtuální počítač se používá pro SnapCenter. 
+1. Stáhněte a nainstalujte SnapCenter. 
+1. Operace zálohování a obnovení. 
+
+### <a name="create-a-support-ticket-for-user-role-storage-setup"></a>Vytvoření lístku podpory pro instalaci úložiště role uživatele
+
+1. Otevřete Azure Portal a přejděte na stránku **předplatná** . Po na stránce Předplatná vyberte předplatné SAP HANA, které je zobrazené červeně.
+
+   :::image type="content" source="./media/snapcenter/create-support-case-for-user-role-storage-setup.png" alt-text="Vytvoření případu podpory pro instalaci uživatelského úložiště":::
+
+1. Na stránce SAP HANA předplatné vyberte podstránku **skupiny prostředků** .
+
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Skupina prostředků předplatného řešení testovacího prostředí" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+
+1. Vyberte příslušnou skupinu prostředků v oblasti.
+
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Vyberte vhodnou skupinu prostředků v oblasti." lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+
+1. Vyberte položku SKU, která odpovídá SAP HANA ve službě Azure Storage.
+
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Vyberte položku SKU odpovídající SAP HANA" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+
+1. Otevřete novou žádost o **lístek podpory** , která je popsaný červeně.
+
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Otevřít nový požadavek lístku podpory":::
+
+1. Na kartě **základy** zadejte pro lístek následující informace:
+
+   * **Typ problému:** Odbornou
+   * **Předplatné:** Vaše předplatné
+   * **Služba:** SAP HANA velká instance
+   * **Prostředek:** Vaše skupina prostředků
+   * **Shrnutí:** Zadejte uživatelem generovaný veřejný klíč.
+   * **Typ problému:** Konfigurace a nastavení
+   * **Podtyp problému:** Nastavení SnapCenter pro HLI
+
+
+1. V **popisu** lístku podpory zadejte na kartě **Podrobnosti** : 
+   
+   * Nastavení SnapCenter pro HLI
+   * Váš veřejný klíč pro uživatele SnapCenter (SnapCenter. pem) – Podívejte se na příklad vytvoření veřejného klíče.
+
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Nová žádost o podporu – karta Podrobnosti" lightbox="./media/snapcenter/new-support-request-details.png":::
+
+1. Vyberte **zkontrolovat + vytvořit** a zkontrolujte svůj lístek podpory. 
+
+1. Vygenerujte certifikát pro uživatelské jméno SnapCenter na velké instanci HANA nebo na serveru Linux.
+
+   SnapCenter vyžaduje uživatelské jméno a heslo pro přístup k virtuálnímu počítači úložiště (SVM) a k vytváření snímků databáze HANA. Společnost Microsoft používá veřejný klíč, který vám (zákazníkovi) umožní nastavit heslo pro přístup k systému úložiště.
+
+   ```bash
+   openssl req -x509 -nodes -days 1095 -newkey rsa:2048 -keyout snapcenter.key -out snapcenter.pem -subj "/C=US/ST=WA/L=BEL/O=NetApp/CN=snapcenter"
+   Generating a 2048 bit RSA private key
+   ................................................................................................................................................+++++
+   ...............................+++++
+   writing new private key to 'snapcenter.key'
+   -----
+
+   sollabsjct31:~ # ls -l cl25*
+   -rw-r--r-- 1 root root 1704 Jul 22 09:59 snapcenter.key
+   -rw-r--r-- 1 root root 1253 Jul 22 09:59 snapcenter.pem
+
+   ```
+
+1. Připojte soubor snapcenter. pem k lístku podpory a pak vyberte **vytvořit** .
+
+   Po odeslání certifikátu veřejného klíče nastaví Microsoft uživatelské jméno SnapCenter pro vašeho tenanta společně s IP adresou SVM.   
+
+1. Po přijetí SVM IP adresy nastavte heslo pro přístup k SVM, které ovládáte.
+
+   Následuje příklad volání REST (dokumentace) z velké instance HANA nebo virtuálního počítače ve virtuální síti, který má přístup k prostředí velkých instancí HANA a použije se k nastavení hesla.
+
+   ```bash
+   curl --cert snapcenter.pem --key snapcenter.key -X POST -k "https://10.0.40.11/api/security/authentication/password" -d '{"name":"snapcenter","password":"test1234"}'
+   ```
+
+   Zajistěte, aby v systému HANA DB nebyla aktivní žádná proměnná proxy serveru.
+
+   ```bash
+   sollabsjct31:/tmp # unset http_proxy
+   sollabsjct31:/tmp # unset https_proxy
+   ```
+
+### <a name="download-and-install-snapcenter"></a>Stažení a instalace SnapCenter
+Když je teď uživatelské jméno nastavené tak, aby SnapCenter přístup k úložnému systému, použijete uživatelské jméno SnapCenter ke konfiguraci SnapCenter po jeho instalaci. 
+
+Než nainstalujete SnapCenter, přečtěte SAP HANA si téma [zálohování a obnovení s SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf) a definujte strategii zálohování. 
+
+1. Přihlaste se k [NetApp](https://mysupport.netapp.com) a [Stáhněte](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fmysupport.netapp.com%2Fsite%2Fproducts%2Fall%2Fdetails%2Fsnapcenter%2Fdownloads-tab&data=02%7C01%7Cmadhukan%40microsoft.com%7Ca53f5e2f245a4e36933008d816efbb54%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637284566603265503&sdata=TOANWNYoAr1q5z1opu70%2FUDPHjluvovqR9AKplYpcpk%3D&reserved=0) si nejnovější verzi SnapCenter.
+
+1. Nainstalujte SnapCenter na virtuální počítač s Windows Azure.
+
+   Instalační program zkontroluje požadavky virtuálního počítače. 
+
+   >[!IMPORTANT]
+   >Věnujte pozornost velikosti virtuálního počítače, zejména ve větších prostředích.
+
+1. Nakonfigurujte přihlašovací údaje uživatele pro SnapCenter. Ve výchozím nastavení naplní přihlašovací údaje uživatele systému Windows použité pro instalaci aplikace. 
+
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Dialog uživatelských vstupů při instalaci"::: 
+
+1. Když spustíte relaci, uloží se výjimka zabezpečení a spustí se grafické rozhraní (GUI).
+
+1. Přihlaste se k SnapCenter na virtuálním počítači ( https://snapcenter-vm:8146) pomocí přihlašovacích údajů Windows nakonfigurujte prostředí.
+
+
+### <a name="set-up-the-storage-system"></a>Nastavení systému úložiště
+
+1. V SnapCenter vyberte **systém úložiště** a pak vyberte **+ Nová**. 
+
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="SnapCenter připojení úložiště" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+
+   Výchozí hodnota je jedna SVM na tenanta. Pokud má zákazník více tenantů nebo HLIs ve více oblastech, doporučujeme nakonfigurovat všechny SVMs v SnapCenter.
+
+1. V části přidat systém úložiště zadejte informace o systému úložiště, který chcete přidat, uživatelské jméno a heslo SnapCenter a pak vyberte **Odeslat**.
+
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Nové připojení úložiště":::
+
+   >[!NOTE]
+   >Výchozí hodnota je jedna SVM na tenanta.  Pokud existuje více tenantů, pak doporučujeme nakonfigurovat všechny SVMs zde v SnapCenter. 
+
+1. V SnapCenter vyberte **hostitelé** a vyberte **+ Přidat** a nastavte modul plug-in HANA a hostitele databáze Hana.  Nejnovější verze SnapCenter detekuje databázi HANA na hostiteli automaticky.
+
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="V SnapCenter vyberte hostitelé a pak vyberte Přidat." lightbox="media/snapcenter/managed-hosts-new-host.png":::
+
+1. Zadejte informace pro nového hostitele:
+   1. Vyberte operační systém pro typ hostitele.
+   1. Zadejte název hostitele virtuálního počítače SnapCenter.
+   1. Zadejte přihlašovací údaje, které chcete použít.
+   1. Vyberte možnosti **Microsoft Windows** a **SAP HANA** a pak vyberte **Odeslat**.
+
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Informace pro nového hostitele":::
+
+   >[!IMPORTANT]
+   >Než budete moct nainstalovat první uzel, umožňuje SnapCenter instalovat moduly plug-in do databáze bez oprávnění uživatele root.  Informace o tom, jak povolit nekořenového uživatele, najdete v tématu [Přidání nekořenového uživatele a konfigurace oprávnění sudo](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html).
+
+1. Zkontrolujte podrobnosti o hostiteli a vyberte **Odeslat** a nainstalujte modul plug-in na server SnapCenter.
+
+1. Po instalaci modulu plug-in v SnapCenter vyberte **hostitelé** a potom vyberte **+ Přidat** a přidejte uzel Hana.
+
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="Přidat uzel HANA" lightbox="media/snapcenter/add-hana-node.png":::
+
+1. Zadejte informace pro uzel HANA:
+   1. Vyberte operační systém pro typ hostitele.
+   1. Zadejte název hostitele nebo IP adresu HANA DB.
+   1. Tuto možnost vyberte **+** , pokud chcete přidat pověření nakonfigurovaná v operačním systému hostitele Hana DB a pak vyberte **OK**.
+   1. Vyberte **SAP HANA** a pak vyberte **Odeslat**.
+
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="Podrobnosti o SAP HANA uzlu":::
+
+1. Potvrďte otisk prstu a vyberte **Potvrdit a odeslat**.
+
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Potvrzení a odeslání otisku prstu":::
+
+1. V uzlu Hana v části systémová databáze vyberte **zabezpečení**  >  **Uživatelé**  >  **SNAPCENTER** a vytvořte uživatele SNAPCENTER.
+
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="Vytvoření uživatele SnapCenter v HANA (systémová databáze)":::
+
+
+
+### <a name="auto-discovery"></a>Automatické zjišťování
+SnapCenter 4,3 ve výchozím nastavení povoluje funkci automatického zjišťování.  Pro instance HANA s nakonfigurovanou replikací systému HANA (HSR) se nepodporuje automatické zjišťování. Instanci musíte do serveru SnapCenter přidat ručně.
+
+
+### <a name="hana-setup-manual"></a>Instalace HANA (ruční)
+Pokud jste nakonfigurovali HSR, musíte systém nakonfigurovat ručně.  
+
+1. V SnapCenter vyberte **prostředky** a **San Hana** (v horní části) a pak vyberte **+ Přidat SAP HANA Database** (napravo).
+
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="Ruční instalace HANA" lightbox="media/snapcenter/manual-hana-setup.png":::
+
+1. Zadejte podrobnosti prostředků uživatele správce HANA nakonfigurovaného na hostiteli se systémem Linux nebo na hostiteli, kde jsou moduly plug-in nainstalovány. Záloha bude spravována z modulu plug-in v systému Linux.
+
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Zadejte podrobnosti prostředků uživatele správce HANA nakonfigurovaného na hostiteli se systémem Linux.":::
+
+1. Vyberte datový svazek, pro který potřebujete pořídit snímky, vyberte **Uložit** a pak vyberte **Dokončit**.
+
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Vyberte datový svazek, pro který potřebujete pořídit snímky, vyberte Uložit a pak vyberte Dokončit.":::
+
+### <a name="create-a-snapshot-policy"></a>Vytvoření zásady snímku
+
+Předtím, než použijete SnapCenter k zálohování prostředků databáze SAP HANA, je nutné vytvořit zásadu zálohování pro prostředek nebo skupinu prostředků, které chcete zálohovat. Během procesu vytváření zásady snímků budete mít možnost konfigurovat příkazy pre/post a speciální klíče SSL. Informace o tom, jak vytvořit zásady snímků, najdete v tématu [vytváření zásad zálohování pro databáze SAP HANA](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html).
+
+1. V SnapCenter vyberte **prostředky** a potom vyberte databázi.
+
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="V SnapCenter vyberte prostředky a potom vyberte databázi.":::
+
+1. Použijte pracovní postup Průvodce konfigurací ke konfiguraci plánovače snímků.
+
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Použijte pracovní postup Průvodce konfigurací ke konfiguraci plánovače snímků." lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+
+1. Zadejte možnosti pro konfiguraci příkazů pre/post a speciálních klíčů SSL.  V tomto příkladu nepoužíváme žádná speciální nastavení.
+
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Zadejte možnosti pro konfiguraci příkazů před odesláním a speciálních klíčů SSL." lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+
+1. Vyberte **Přidat** a vytvořte zásadu snímku, která se dá použít taky pro jiné databáze Hana. 
+
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Vyberte Přidat a vytvořte zásadu snímku, která se dá použít taky pro jiné databáze HANA.":::
+
+1. Zadejte název zásady a popis.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Zadejte název zásady a popis.":::
+
+
+1. Vyberte typ a četnost zálohování.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Vyberte typ a četnost zálohování.":::
+
+1. Nakonfigurujte **nastavení uchovávání záloh na vyžádání**.  V našem příkladu nastavujeme uchovávání na tři kopie snímků, aby byly zachovány.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Nakonfigurujte nastavení uchovávání záloh na vyžádání.":::
+
+1. Nakonfigurujte **Nastavení hodinového uchovávání**. 
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Nakonfigurujte nastavení hodinového uchovávání.":::
+
+1. Pokud je nakonfigurované nastavení SnapMirror, **po vytvoření místní kopie snímku vyberte aktualizovat SnapMirror**.
+
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Pokud se vyžaduje SnapMirror, vyberte aktualizovat SnapMirror po vytvoření místní kopie snímku.":::
+
+1. Vyberte **Dokončit** a zkontrolujte souhrn nových zásad zálohování. 
+1. V části **Konfigurovat plán** vyberte **Přidat**.
+
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="V části Konfigurovat plán vyberte Přidat.":::
+
+1. Vyberte **počáteční datum**, datum **vypršení platnosti** a četnost.
+
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Vyberte počáteční datum, datum vypršení platnosti a četnost.":::
+
+1. Zadejte podrobnosti e-mailu pro oznámení.
+
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Zadejte podrobnosti e-mailu pro oznámení.":::
+
+1.  Kliknutím na **Dokončit** vytvořte zásadu zálohování.
+
+### <a name="disable-ems-message-to-netapp-autosupport"></a>Zakázat zprávu EMS pro NetApp autosupport
+Ve výchozím nastavení je shromažďování dat EMS povolené a spouští se každých sedm dní od data instalace.  Shromažďování dat můžete zakázat pomocí rutiny prostředí PowerShell `Disable-SmDataCollectionEms` .
+
+1. V PowerShellu navažte relaci s SnapCenter.
+
+   ```powershell
+   Open-SmConnection
+   ```
+
+1. Přihlaste se pomocí svých přihlašovacích údajů.
+1. Zakáže shromažďování zpráv EMS.
+
+   ```powershell
+   Disable-SmCollectionEms
+   ```
+
+### <a name="restore-database-after-crash"></a>Obnovit databázi po chybě
+K obnovení databáze můžete použít SnapCenter.  V této části se podíváme na nejdůležitější kroky, ale další informace najdete v tématu [SAP HANA zálohování a obnovení pomocí SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf).
+
+
+1. Zastavte databázi a odstraňte všechny soubory databáze.
+
+   ```
+   su - h31adm
+   > sapcontrol -nr 00 -function StopSystem
+   StopSystem
+   OK
+   > sapcontrol -nr 00 -function GetProcessList
+   OK
+   name, description, dispstatus, textstatus, starttime, elapsedtime, pid
+   hdbdaemon, HDB Daemon, GRAY, Stopped, , , 35902
+ 
+   ```
+
+1. Odpojte svazek databáze.
+
+   ```bash
+   unmount /hana/data/H31/mnt00001
+   ```
+
+
+1. Obnovte soubory databáze prostřednictvím SnapCenter.  Vyberte databázi a pak vyberte **obnovit**.  
+
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Vyberte databázi a vyberte obnovit." lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+
+1. Vyberte typ obnovení.  V našem příkladu obnovíme kompletní prostředek. 
+
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Vyberte typ obnovení.":::
+
+   >[!NOTE]
+   >Ve výchozím nastavení nemusíte zadávat příkazy pro místní obnovení z snímku na disku. 
+
+   >[!TIP]
+   >Pokud chcete v rámci svazku obnovit konkrétní logickou jednotku, vyberte **úroveň souboru**.
+
+1. Sledujte pracovní postup prostřednictvím Průvodce konfigurací.
+   
+   SnapCenter obnoví data do původního umístění, aby bylo možné spustit proces obnovení v HANA. Navíc vzhledem k tomu, že SnapCenter nemůže změnit katalog záloh (databáze je mimo provoz), zobrazí se upozornění.
+
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Vzhledem k tomu, že SnapCenter nemůže změnit katalog záloh, zobrazí se upozornění. ":::
+
+1. Vzhledem k tomu, že jsou všechny soubory databáze obnoveny, spusťte proces obnovení v HANA. V Hana Studio v části **systémy** klikněte pravým tlačítkem na databázi systému a vyberte **zálohování a obnovení**  >  **Systémová databáze**.
+
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Zahajte proces obnovení v HANA.":::
+
+1. Vyberte typ obnovení.
+
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Vyberte typ obnovení.":::
+
+1. Vyberte umístění katalogu záloh.
+
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Vyberte umístění katalogu záloh.":::
+
+1. Vyberte zálohu pro obnovení databáze SAP HANA.
+
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Vyberte zálohu pro obnovení databáze SAP HANA.":::
+
+   Po obnovení databáze se zobrazí zpráva s **časem obnovení** a **obnovením do razítka umístění protokolu** .
+
+1. V části **systémy** klikněte pravým tlačítkem na databázi systému a vyberte **zálohování a obnovení**  >  **databáze tenanta**.
+1. Dokončete obnovení databáze tenanta podle pracovního postupu Průvodce. 
+
+Další informace o obnovení databáze najdete v tématu [SAP HANA zálohování a obnovení pomocí SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf).
+
+
+### <a name="non-database-backups"></a>Zálohy, které nejsou databázemi
+Můžete obnovit nedatové svazky, například síťovou sdílenou složku (/Hana/Shared) nebo zálohu operačního systému.  Další informace o obnovení svazku, který není datovým svazkem, najdete v tématu [SAP HANA zálohování a obnovení pomocí SnapCenter](https://www.netapp.com/us/media/tr-4614.pdf).
+
+### <a name="sap-hana-system-cloning"></a>Klonování systému SAP HANA
+
+Než budete moct klonovat, musíte mít nainstalovanou stejnou verzi HANA jako zdrojová databáze. Identifikátor SID a ID se mohou lišit. 
+
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Klonování systému SAP HANA" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+
+1. Vytvoření úložiště uživatelů databáze HANA pro databázi H34 z/usr/sap/H34/HDB40.
+
+   ```
+   hdbuserstore set H34KEY sollabsjct34:34013 system manager
+   ```
+ 
+1. Zakažte bránu firewall.
+
+   ```bash
+   systemctl disable SuSEfirewall2
+   systemctl stop  SuSEfirewall2
+   ```
+
+1. Nainstalujte sadu Java SDK.
+
+   ```bash
+   zypper in java-1_8_0-openjdk
+   ```
+
+1. Do SnapCenter přidejte cílového hostitele, na kterém bude klon připojen. Další informace najdete v tématu [přidání hostitelů a instalace balíčků modulů plug-in na vzdálených hostitelích](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html).
+   1. Zadejte informace pro přihlašovací údaje spustit jako, které chcete přidat. 
+   1. Vyberte hostitelský operační systém a zadejte informace o hostiteli.
+   1. V části **moduly plug-in, které chcete nainstalovat** vyberte verzi, zadejte cestu instalace a vyberte **SAP HANA**.
+   1. Vyberte **ověřit** a spusťte kontrolu před instalací.
+
+1. Zastavte HANA a odpojte starý datový svazek.  Klon budete připojovat z SnapCenter.  
+
+   ```bash
+   sapcontrol -nr 40 -function StopSystem
+   umount /hana/data/H34/mnt00001
+
+   ```
+ 1. Vytvořte konfiguraci a soubory skriptu prostředí pro cíl.
+ 
+    ```bash
+    mkdir /NetApp
+    chmod 777 /NetApp
+    cd NetApp
+    chmod 777 sc-system-refresh-H34.cfg
+    chmod 777 sc-system-refresh.sh
+
+    ```
+
+    >[!TIP]
+    >Z SnapCenter můžete kopírovat skripty z [klonování SAP](https://www.netapp.com/us/media/tr-4667.pdf).
+
+1. Upravte konfigurační soubor. 
+
+   ```bash
+   vi sc-system-refresh-H34.cfg
+   ```
+
+   * HANA_ARCHITECTURE = "MDC_single_tenant"
+   * KEY = "H34KEY"
+   * TIME_OUT_START = 18
+   * TIME_OUT_STOP = 18
+   * INSTANCENO = "40"
+   * STORAGE = "10.250.101.33"
+
+1. Upravte soubor skriptu prostředí.
+
+   ```bash
+   vi sc-system-refresh.sh
+   ```  
+
+   * VERBOSE = ne
+   * MY_NAME = " `basename $0` "
+   * BASE_SCRIPT_DIR = " `dirname $0` "
+   * MOUNT_OPTIONS = "RW, příčné = 4, tvrdý, Timeo = 600, rsize = 1048576, wsize = 1048576, intr, noatime, možností NOLOCK"
+
+1. Spusťte klonování z procesu zálohování. Vyberte hostitele, pro který chcete vytvořit klon. 
+
+   >[!NOTE]
+   >Další informace najdete v tématu [klonování ze zálohy](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html).
+
+1. V části **skripty** zadejte následující:
+
+   * **Mount – příkaz:** /NetApp/SC-System-Refresh.sh Mount H34% hana_data_h31_mnt00001_t250_vol_Clone
+   * **Příkaz po klonování:** /NetApp/SC-System-Refresh.sh Recover H34
+
+1. Zakázat (uzamknout) automatické připojení v/etc/fstab, protože datový svazek předinstalované databáze není nezbytný. 
+
+   ```bash
+   vi /etc/fstab
+   ```
+
+### <a name="delete-a-clone"></a>Odstranění klonu
+
+Klon můžete odstranit, pokud již není nutný. Další informace najdete v tématu [odstranění klonů](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html).
+
+Příkazy, které se použijí ke spuštění před odstraněním klonu, jsou:
+* **Odstranění předem naklonování:** /NetApp/SC-System-Refresh.sh vypnout H34
+* **Odpojit:** /NetApp/SC-System-Refresh.sh umount H34
+
+Tyto příkazy umožňují SnapCenter databázi Showdown, odpojí svazek a odstraní položku fstab.  Pak se FlexClone odstraní. 
+
+### <a name="cloning-database-logfile"></a>Klonování databázového souboru protokolu
+
+```   
+20190502025323###sollabsjct34###sc-system-refresh.sh: Adding entry in /etc/fstab.
+20190502025323###sollabsjct34###sc-system-refresh.sh: 10.250.101.31:/Sc21186309-ee57-41a3-8584-8210297f791d /hana/data/H34/mnt00001 nfs rw,vers=4,hard,timeo=600,rsize=1048576,wsize=1048576,intr,noatime,lock 0 0
+20190502025323###sollabsjct34###sc-system-refresh.sh: Mounting data volume.
+20190502025323###sollabsjct34###sc-system-refresh.sh: mount /hana/data/H34/mnt00001
+20190502025323###sollabsjct34###sc-system-refresh.sh: Data volume mounted successfully.
+20190502025323###sollabsjct34###sc-system-refresh.sh: chown -R h34adm:sapsys /hana/data/H34/mnt00001
+20190502025333###sollabsjct34###sc-system-refresh.sh: Recover system database.
+20190502025333###sollabsjct34###sc-system-refresh.sh: /usr/sap/H34/HDB40/exe/Python/bin/python /usr/sap/H34/HDB40/exe/python_support/recoverSys.py --command "RECOVER DATA USING SNAPSHOT CLEAR LOG"
+[140278542735104, 0.005] >> starting recoverSys (at Thu May  2 02:53:33 2019)
+[140278542735104, 0.005] args: ()
+[140278542735104, 0.005] keys: {'command': 'RECOVER DATA USING SNAPSHOT CLEAR LOG'}
+recoverSys started: ============2019-05-02 02:53:33 ============
+testing master: sollabsjct34
+sollabsjct34 is master
+shutdown database, timeout is 120
+stop system
+stop system: sollabsjct34
+stopping system: 2019-05-02 02:53:33
+stopped system: 2019-05-02 02:53:33
+creating file recoverInstance.sql
+restart database
+restart master nameserver: 2019-05-02 02:53:38
+start system: sollabsjct34
+2019-05-02T02:53:59-07:00  P010976      16a77f6c8a2 INFO    RECOVERY state of service: nameserver, sollabsjct34:34001, volume: 1, RecoveryPrepared
+recoverSys finished successfully: 2019-05-02 02:54:00
+[140278542735104, 26.490] 0
+[140278542735104, 26.490] << ending recoverSys, rc = 0 (RC_TEST_OK), after 26.485 secs
+20190502025400###sollabsjct34###sc-system-refresh.sh: Wait until SAP HANA database is started ....
+20190502025400###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025410###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025420###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025430###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025440###sollabsjct34###sc-system-refresh.sh: Status:  YELLOW
+20190502025451###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502025451###sollabsjct34###sc-system-refresh.sh: SAP HANA database is started.
+20190502025451###sollabsjct34###sc-system-refresh.sh: Recover tenant database H34.
+20190502025451###sollabsjct34###sc-system-refresh.sh: /usr/sap/H34/SYS/exe/hdb/hdbsql -U H34KEY RECOVER DATA FOR H34 USING SNAPSHOT CLEAR LOG
+0 rows affected (overall time 69.584135 sec; server time 69.582835 sec)
+20190502025600###sollabsjct34###sc-system-refresh.sh: Checking availability of Indexserver for tenant H34.
+20190502025601###sollabsjct34###sc-system-refresh.sh: Recovery of tenant database H34 succesfully finished.
+20190502025601###sollabsjct34###sc-system-refresh.sh: Status: GREEN
+Deleting the DB Clone – Logfile
+20190502030312###sollabsjct34###sc-system-refresh.sh: Stopping HANA database.
+20190502030312###sollabsjct34###sc-system-refresh.sh: sapcontrol -nr 40 -function StopSystem HDB
+
+02.05.2019 03:03:12
+StopSystem
+OK
+20190502030312###sollabsjct34###sc-system-refresh.sh: Wait until SAP HANA database is stopped ....
+20190502030312###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502030322###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502030332###sollabsjct34###sc-system-refresh.sh: Status:  GREEN
+20190502030342###sollabsjct34###sc-system-refresh.sh: Status:  GRAY
+20190502030342###sollabsjct34###sc-system-refresh.sh: SAP HANA database is stopped.
+20190502030347###sollabsjct34###sc-system-refresh.sh: Unmounting data volume.
+20190502030347###sollabsjct34###sc-system-refresh.sh: Junction path: Sc21186309-ee57-41a3-8584-8210297f791d
+20190502030347###sollabsjct34###sc-system-refresh.sh: umount /hana/data/H34/mnt00001
+20190502030347###sollabsjct34###sc-system-refresh.sh: Deleting /etc/fstab entry.
+20190502030347###sollabsjct34###sc-system-refresh.sh: Data volume unmounted successfully.
+
+```
+
+### <a name="uninstall-snapcenter-plug-ins-package-for-linux"></a>Odinstalace balíčku modulů plug-in SnapCenter pro Linux
+
+Balíček modulů plug-in pro Linux můžete odinstalovat z příkazového řádku. Vzhledem k tomu, že automatické nasazení očekává nový systém, je snadné modul plug-in odinstalovat.  
+
+>[!NOTE]
+>Možná budete muset odinstalovat starší verzi modulu plug-in ručně. 
+
+Odinstalujte moduly plug-in.
+
+```bash
+cd /opt/NetApp/snapcenter/spl/installation/plugins
+./uninstall
+```
+
+Nejnovější modul plug-in HANA teď můžete nainstalovat na nový uzel tak, že vyberete **Odeslat** v SnapCenter. 
+
+
 
 
 ## <a name="next-steps"></a>Další kroky

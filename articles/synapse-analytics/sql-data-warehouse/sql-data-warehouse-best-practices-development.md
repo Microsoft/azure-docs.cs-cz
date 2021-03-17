@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc101e6bb743b9290593937a4d1bac656430b438
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206695"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685306"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Osvědčené postupy vývoje pro synapse fond SQL
 
@@ -55,7 +55,7 @@ Například pokud máte tabulku objednávek, která se distribuuje podle sloupce
 
 Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  Následující články poskytují další podrobnosti o vylepšení výkonu výběrem distribučního sloupce a definování distribuované tabulky v klauzuli WITH příkazu CREATE TABLES.
 
-Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulky](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](sql-data-warehouse-tables-overview.md)a [Create Table jako SELECT](sql-data-warehouse-develop-ctas.md) .
+Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulky](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](sql-data-warehouse-tables-overview.md)a [Create Table jako SELECT](sql-data-warehouse-develop-ctas.md) .
 
 ## <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 
@@ -80,7 +80,7 @@ Dalším způsobem, jak eliminovat odvolávání transakcí, je použít ke spr�
 
 Pro nerozdělené tabulky zvažte použití CTAS k zápisu dat, která chcete uchovat v tabulce, a nepoužívejte DELETE.  Pokud CTAS zabere stejné množství času, je mnohem bezpečnější operace, protože má minimální transakční protokolování a v případě potřeby je můžete kdykoli zrušit.
 
-Viz také [Principy transakcí](sql-data-warehouse-develop-transactions.md), [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md), [dělení tabulky](sql-data-warehouse-tables-partition.md), [Truncate Table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [CREATE TABLE AS Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Viz také [Principy transakcí](sql-data-warehouse-develop-transactions.md), [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md), [dělení tabulky](sql-data-warehouse-tables-partition.md), [Truncate Table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)a [CREATE TABLE AS Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="use-the-smallest-possible-column-size"></a>Použijte co nejmenší velikost sloupce
 
@@ -114,14 +114,14 @@ Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď sniž
 > [!TIP]
 > Při dotazování tabulky columnstore budou příkazy pracovat rychleji, pokud vyberete pouze sloupce, které potřebujete.  
 
-Viz také [indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a znovu [sestavování indexů columnstore](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Viz také [indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)a znovu [sestavování indexů columnstore](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud v tomto článku nenajdete, co hledáte, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  
 
-[Microsoft Q&Stránka s otázkou pro Azure synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
+[Microsoft Q&Stránka s otázkou pro Azure synapse](/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
-Pokud dáváte přednost pokládání otázek na Stack Overflow, máme také [Fórum pro Azure SQL Data Warehouse na Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
+Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure synapse Analytics Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 
 K vytváření žádostí o funkce použijte stránku s [názory na Azure synapse](https://feedback.azure.com/forums/307516-sql-data-warehouse) .  Přidáním vlastních žádostí nebo hlasováním pro ostatní žádosti nám pomůžete určit prioritu funkcí.

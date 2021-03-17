@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: wiassaf, sstein
+ms.date: 1/14/2021
+ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345338"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217222"
 ---
-# <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy slabých míst výkonu dotazů v Azure SQL Database
+# <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy kritických bodů výkonu dotazů ve službě Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Při pokusu o vyřešení kritického bodu výkonu Začněte tím, že určíte, zda k tomuto kritickému problému dochází, když je dotaz ve spuštěném nebo čekajícím stavu. V závislosti na tomto určení se uplatní různá rozlišení. Pomocí následujícího diagramu můžete porozumět faktorům, které mohou způsobit, že došlo k potížím souvisejícím se systémem nebo s čekáním na problém. Problémy a řešení týkající se jednotlivých typů problémů jsou popsány v tomto článku.
@@ -44,21 +44,21 @@ Neoptimální plán generovaný optimalizátorem dotazů SQL může být příč
   - Použijte [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#missing-index).
   - [Database Advisor](database/database-advisor-implement-performance-recommendations.md) pro databáze s jednou a ve fondu.
   - Zobrazení dynamické správy. Tento příklad ukazuje vliv chybějícího indexu, jak detekovat [chybějící indexy](database/performance-guidance.md#identifying-and-adding-missing-indexes) pomocí zobrazení dynamické správy a dopad implementace chybějícího doporučení indexu.
-- Zkuste použít [pomocný parametr dotazu](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), [Aktualizovat statistiku](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql)nebo [znovu sestavit indexy](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes) , abyste získali lepší plán. Povolte [automatickou opravu plánu](../azure-sql/database/automatic-tuning-overview.md) v Azure SQL Database, aby se tyto problémy automaticky zmírnily.
+- Zkuste použít [pomocný parametr dotazu](/sql/t-sql/queries/hints-transact-sql-query), [Aktualizovat statistiku](/sql/t-sql/statements/update-statistics-transact-sql)nebo [znovu sestavit indexy](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes) , abyste získali lepší plán. Povolte [automatickou opravu plánu](../azure-sql/database/automatic-tuning-overview.md) v Azure SQL Database, aby se tyto problémy automaticky zmírnily.
 
   Tento [příklad](database/performance-guidance.md#query-tuning-and-hinting) ukazuje dopad předoptimálního plánu dotazu z důvodu parametrizovaného dotazu, způsobu detekce této podmínky a způsobu, jak použít pomocný parametr dotazu k vyřešení.
 
-- Zkuste změnit úroveň kompatibility databáze a implementovat Inteligentní zpracování dotazů. Optimalizátor dotazů SQL může vygenerovat jiný plán dotazu v závislosti na úrovni kompatibility vaší databáze. Vyšší úrovně kompatibility poskytují další [Možnosti inteligentního zpracování dotazů](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing).
+- Zkuste změnit úroveň kompatibility databáze a implementovat Inteligentní zpracování dotazů. Optimalizátor dotazů SQL může vygenerovat jiný plán dotazu v závislosti na úrovni kompatibility vaší databáze. Vyšší úrovně kompatibility poskytují další [Možnosti inteligentního zpracování dotazů](/sql/relational-databases/performance/intelligent-query-processing).
 
-  - Další informace o zpracování dotazů najdete v tématu [Průvodce architekturou zpracování dotazů](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide).
-  - Postup změny úrovní kompatibility databáze a další informace o rozdílech mezi úrovněmi kompatibility najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
-  - Další informace o odhadu mohutnosti najdete v tématu [odhad mohutnosti](https://docs.microsoft.com/sql/relational-databases/performance/cardinality-estimation-sql-server) .
+  - Další informace o zpracování dotazů najdete v tématu [Průvodce architekturou zpracování dotazů](/sql/relational-databases/query-processing-architecture-guide).
+  - Postup změny úrovní kompatibility databáze a další informace o rozdílech mezi úrovněmi kompatibility najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
+  - Další informace o odhadu mohutnosti najdete v tématu [odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server) .
 
 ## <a name="resolving-queries-with-suboptimal-query-execution-plans"></a>Řešení dotazů s využitím optimálních plánů spouštění dotazů
 
 Následující části popisují, jak řešit dotazy s nejoptimálním plánem spouštění dotazů.
 
-### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a>Dotazy, které mají problémy s parametrem citlivostní plán (PSP)
+### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a> Dotazy, které mají problémy s parametrem citlivostní plán (PSP)
 
 K problému s parametrem s citlivým plánem (PSP) dochází, když Optimalizátor dotazů generuje plán spouštění dotazů, který je optimální pouze pro konkrétní hodnotu parametru (nebo sadu hodnot) a plán uložený v mezipaměti není optimální pro hodnoty parametrů, které se používají při následném spuštění. Plány, které nejsou optimální, můžou následně způsobit problémy s výkonem dotazů a snižovat celkovou propustnost úloh.
 
@@ -66,19 +66,19 @@ Další informace o sledování parametrů a zpracování dotazů naleznete v [p
 
 Několik alternativních řešení může zmírnit problémy PSP. Každé řešení má Spojené kompromisy a nevýhody:
 
-- Použijte [znovu zkompilování](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) nápovědy pro dotaz při každém spuštění dotazu. Toto řešení usnadňuje dobu kompilace a zvýšenou kapacitu procesoru pro lepší kvalitu plánu. `RECOMPILE`Možnost není často dostupná pro úlohy, které vyžadují vysokou propustnost.
-- Použijte pomocný parametr dotazu [Option (optimize for.](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ..) pro přepsání skutečné hodnoty parametru s typickou hodnotou parametru, která vytvoří plán, který je dostatečně dobrý pro většinu možností hodnoty parametru. Tato možnost vyžaduje dobrou představu o optimálních hodnotách parametrů a přidružených vlastnostech plánu.
-- Použijte pomocný parametr dotazu [Option (optimalizovat pro neznámý)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pro přepsání skutečné hodnoty parametru a místo toho použijte průměr vektoru hustoty. To lze provést také zachycením hodnot příchozích parametrů v místních proměnných a následným použitím místních proměnných v predikátech namísto použití samotných parametrů. Pro tuto opravu musí být průměrná hustota *dostatečně dobrá*.
-- Pomocí pomocného parametru dotazu [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) zakažte pouze sledování parametrů.
-- Použijte pomocný parametr dotazu [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) k zabránění rekompilacím v mezipaměti. V tomto alternativním řešení se předpokládá, že v mezipaměti již existuje dobrý společný plán. Můžete také zakázat automatické aktualizace statistiky, aby se snížila pravděpodobnost, že bude dobrý plán vyřazený a bude zkompilován nový špatný plán.
-- Vynutit plán explicitním použitím pomocného parametru dotazu [použít plán](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) tak, že přepíšete dotaz a přidáte pomocný parametr do textu dotazu. Nebo nastavte konkrétní plán pomocí úložiště dotazů nebo povolením [automatického ladění](../azure-sql/database/automatic-tuning-overview.md).
+- Použijte [znovu zkompilování](/sql/t-sql/queries/hints-transact-sql-query) nápovědy pro dotaz při každém spuštění dotazu. Toto řešení usnadňuje dobu kompilace a zvýšenou kapacitu procesoru pro lepší kvalitu plánu. `RECOMPILE`Možnost není často dostupná pro úlohy, které vyžadují vysokou propustnost.
+- Použijte pomocný parametr dotazu [Option (optimize for.](/sql/t-sql/queries/hints-transact-sql-query) ..) pro přepsání skutečné hodnoty parametru s typickou hodnotou parametru, která vytvoří plán, který je dostatečně dobrý pro většinu možností hodnoty parametru. Tato možnost vyžaduje dobrou představu o optimálních hodnotách parametrů a přidružených vlastnostech plánu.
+- Použijte pomocný parametr dotazu [Option (optimalizovat pro neznámý)](/sql/t-sql/queries/hints-transact-sql-query) pro přepsání skutečné hodnoty parametru a místo toho použijte průměr vektoru hustoty. To lze provést také zachycením hodnot příchozích parametrů v místních proměnných a následným použitím místních proměnných v predikátech namísto použití samotných parametrů. Pro tuto opravu musí být průměrná hustota *dostatečně dobrá*.
+- Pomocí pomocného parametru dotazu [DISABLE_PARAMETER_SNIFFING](/sql/t-sql/queries/hints-transact-sql-query) zakažte pouze sledování parametrů.
+- Použijte pomocný parametr dotazu [KEEPFIXEDPLAN](/sql/t-sql/queries/hints-transact-sql-query) k zabránění rekompilacím v mezipaměti. V tomto alternativním řešení se předpokládá, že v mezipaměti již existuje dobrý společný plán. Můžete také zakázat automatické aktualizace statistiky, aby se snížila pravděpodobnost, že bude dobrý plán vyřazený a bude zkompilován nový špatný plán.
+- Vynutit plán explicitním použitím pomocného parametru dotazu [použít plán](/sql/t-sql/queries/hints-transact-sql-query) tak, že přepíšete dotaz a přidáte pomocný parametr do textu dotazu. Nebo nastavte konkrétní plán pomocí úložiště dotazů nebo povolením [automatického ladění](../azure-sql/database/automatic-tuning-overview.md).
 - Nahraďte jeden postup vnořenou sadou procedur, které mohou být použity na základě podmíněné logiky a přidružených hodnot parametrů.
 - Vytváření alternativ dynamického provádění řetězce pro definici statické procedury.
 
 Další informace o řešení problémů s PSP najdete v těchto blogových příspěvcích:
 
-- [Mám v pachu parametr](https://docs.microsoft.com/archive/blogs/queryoptteam/i-smell-a-parameter)
-- [Conor vs. dynamické SQL vs. postupy vs. plánování kvality pro parametrizované dotazy](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
+- [Mám v pachu parametr](/archive/blogs/queryoptteam/i-smell-a-parameter)
+- [Conor vs. dynamické SQL vs. postupy vs. plánování kvality pro parametrizované dotazy](/archive/blogs/conor_cunningham_msft/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries)
 - [Techniky optimalizace dotazů SQL v SQL Server: sledování parametrů](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>Aktivita kompilace způsobila nesprávné Parametrizace
@@ -90,7 +90,7 @@ Tady je příklad částečně parametrizovaného dotazu:
 ```sql
 SELECT *
 FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F';
 ```
 
 V tomto příkladu `t1.c1` přijímá `@p1` , ale nadále přebírá `t2.c2` GUID jako literál. V takovém případě, pokud změníte hodnotu pro `c2` , dotaz je považován za jiný dotaz a dojde k nové kompilaci. Chcete-li snížit kompilace v tomto příkladu, můžete také parametrizovat identifikátor GUID.
@@ -115,7 +115,7 @@ WHERE
   rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
   AND query_parameterization_type_desc IN ('User', 'None')
 GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
+ORDER BY count (distinct p.query_id) DESC;
 ```
 
 ### <a name="factors-that-affect-query-plan-changes"></a>Faktory ovlivňující změny plánu dotazů
@@ -153,8 +153,8 @@ Pomalé dotazování, které nesouvisí s podoptimálními plány dotazů a chyb
 - Zjišťování omezení prostředků pomocí [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits)
 - Zjištění potíží s prostředky pomocí [zobrazení dynamické správy](database/monitoring-with-dmvs.md):
 
-  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí pro databázi spotřebu CPU, vstupně-výstupních operací a paměti. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
-  - [Sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalech po pěti minutách.
+  - [Sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrací pro databázi spotřebu CPU, vstupně-výstupních operací a paměti. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
+  - [Sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalech po pěti minutách.
   - [Mnoho jednotlivých dotazů, které kumulativně využívají vysoký procesor](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
 Pokud problém identifikujete jako nedostatečný prostředek, můžete upgradovat prostředky a zvýšit tak kapacitu vaší databáze, aby se zvýšila nároky na procesor. Další informace najdete v tématu [škálování jednotlivých prostředků databáze ve Azure SQL Database](database/single-database-scale.md) a [škálování prostředků elastického fondu v Azure SQL Database](database/elastic-pool-scale.md). Informace o škálování spravované instance najdete v tématu [omezení prostředků na úrovni služby](managed-instance/resource-limits.md#service-tier-characteristics) .
@@ -187,7 +187,7 @@ Po zrušení neoptimálního plánu a problémů *souvisejících* s výkonem, k
 
 - **Blokování**:
 
-  Jeden dotaz může obsahovat zámek objektů v databázi, zatímco se jiní pokusí o přístup ke stejným objektům. Blokování dotazů můžete identifikovat pomocí [zobrazení dynamické správy](database/monitoring-with-dmvs.md#monitoring-blocked-queries) nebo [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking).
+  Jeden dotaz může obsahovat zámek objektů v databázi, zatímco se jiní pokusí o přístup ke stejným objektům. Blokování dotazů můžete identifikovat pomocí [zobrazení dynamické správy](database/monitoring-with-dmvs.md#monitoring-blocked-queries) nebo [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking). Další informace najdete v tématu [pochopení a řešení problémů s blokováním Azure SQL](database/understand-resolve-blocking.md).
 - **Vstupně-výstupní problémy**
 
   Dotazy můžou čekat na zápis stránek do dat nebo souborů protokolu. V takovém případě se podívejte `INSTANCE_LOG_RATE_GOVERNOR` na `WRITE_LOG` `PAGEIOLATCH_*` statistiku, nebo v DMV. V tématu Použití zobrazení dynamické správy k [identifikaci potíží s výkonem v/](database/monitoring-with-dmvs.md#identify-io-performance-issues)v.
@@ -203,16 +203,16 @@ Po zrušení neoptimálního plánu a problémů *souvisejících* s výkonem, k
 Tyto metody se běžně používají k zobrazení hlavních kategorií typů čekání:
 
 - Použití Intelligent Insights k identifikaci dotazů se snížením výkonu kvůli [nárůstu počtu čekání](database/intelligent-insights-troubleshoot-performance.md#increased-wait-statistic)
-- Pomocí [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) můžete najít statistiku čekání pro každý dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Můžete najít mapování kategorií čekání na typy čekání v [Sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- Pomocí [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) můžete vracet informace o všech čekáních zjištěných vlákny, které byly provedeny během operace dotazu. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami. Dotazy můžou čekat na prostředky, čekání nebo externí čekání.
-- Pomocí [Sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) můžete vracet informace o frontě úloh, které čekají na určitý prostředek.
+- Pomocí [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) můžete najít statistiku čekání pro každý dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Můžete najít mapování kategorií čekání na typy čekání v [Sys.query_store_wait_stats](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
+- Pomocí [Sys.dm_db_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) můžete vracet informace o všech čekáních zjištěných vlákny během operace dotazu. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami. Dotazy můžou čekat na prostředky, čekání nebo externí čekání.
+- Pomocí [Sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) můžete vracet informace o frontě úloh, které čekají na určitý prostředek.
 
 V případě scénářů s vysokým využitím procesoru se v úložišti dotazů a v statistikách čekání nemusí projevit využití CPU, pokud:
 
 - Vysoce náročné dotazy využívající procesor jsou pořád spuštěné.
 - Dotazy s vysokým využitím procesoru byly spuštěny, když došlo k převzetí služeb při selhání.
 
-Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky čekání zobrazují výsledky pouze pro úspěšně dokončené a časované dotazy. Nezobrazují data pro aktuálně zpracovávané příkazy, dokud se nedokončí příkazy. Pomocí zobrazení dynamické správy [Sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) můžete sledovat aktuálně zpracovávané dotazy a přidruženou dobu pracovního procesu.
+Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky čekání zobrazují výsledky pouze pro úspěšně dokončené a časované dotazy. Nezobrazují data pro aktuálně zpracovávané příkazy, dokud se nedokončí příkazy. Pomocí [Sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) zobrazení dynamické správy můžete sledovat aktuálně zpracovávané dotazy a přidruženou dobu pracovního procesu.
 
 > [!TIP]
 > Další nástroje:

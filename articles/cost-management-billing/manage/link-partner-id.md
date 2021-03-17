@@ -4,33 +4,34 @@ description: Sledujte komunikaci se zákazníky Azure tak, že propojíte ID par
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
-ms.translationtype: HT
+ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529905"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370474"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
 Partneři Microsoftu poskytují služby, které zákazníkům pomáhají dosahovat podnikatelských a organizačních cílů pomocí produktů Microsoftu. Když při správě, konfiguraci a podpoře služeb Azure jednají uživatelé z partnerských společností jménem zákazníka, potřebují přístup k prostředí daného zákazníka. Při použití odkazu na správce partnera (Partner Admin Link, PAL) mohou partneři přidružit svoje ID partnerské sítě k přihlašovacím údajům, které se používají k doručování služeb.
 
-PAL umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří posilují úspěchy zákazníků Azure. Microsoft může vaší organizaci zajistit vliv a příjmy související s využitím Azure, a to na základě oprávnění účtu (role Azure) a rozsahu (předplatné, skupina prostředků, prostředek).
+PAL umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří posilují úspěchy zákazníků s Azure. Microsoft může vaší organizaci zajistit vliv a příjmy související s využitím Azure, a to na základě oprávnění účtu (role Azure) a rozsahu (předplatné, skupina prostředků, prostředek).
 
 ## <a name="get-access-from-your-customer"></a>Získání přístupu od zákazníka
 
 Před propojením vašeho ID partnera vám zákazník musí udělit přístup k prostředkům Azure pomocí jedné z následujících možností:
 
-- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role Azure. Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role Azure. Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](../../active-directory/external-identities/what-is-b2b.md).
 
 - **Účet v adresáři**: Zákazník vám může vytvořit uživatelský účet ve svém vlastním adresáři a přiřadit nějakou roli Azure.
 
 - **Instanční objekt**: Zákazník může přidat aplikaci nebo skript z vaší organizace do svého adresáře a přiřadit nějakou roli Azure. Identita aplikace nebo skriptu se označuje jako instanční objekt.
 
-- **Azure Lighthouse:** Zákazník může delegovat předplatné (nebo skupinu prostředků), takže v něm uživatelé mohou pracovat z vašeho tenanta. Další informace najdete v tématu [Správa delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+- **Azure Lighthouse:** Zákazník může delegovat předplatné (nebo skupinu prostředků), takže v něm uživatelé mohou pracovat z vašeho tenanta. Další informace najdete v tématu [Správa delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 ## <a name="link-to-a-partner-id"></a>Propojení s ID partnera
 
@@ -42,7 +43,7 @@ Když máte přístup k prostředkům zákazníka, použijte Azure Portal, Power
 
 2. Přihlaste se k portálu Azure.
 
-3. Zadejte ID partnera Microsoftu. ID partnera je ID programu [Microsoft Partner Network](https://partner.microsoft.com/) pro vaši organizaci.
+3. Zadejte ID partnera Microsoftu. ID partnera je ID programu [Microsoft Partner Network](https://partner.microsoft.com/) pro vaši organizaci. Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
 
    ![Snímek obrazovky se stránkou Propojit s ID partnera](./media/link-partner-id/link-partner-id01.png)
 
@@ -54,13 +55,14 @@ Když máte přístup k prostředkům zákazníka, použijte Azure Portal, Power
 
 1. Nainstalujte modul PowerShellu [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
-2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Vytvořte propojení s novým ID partnera. ID partnera je ID programu [Microsoft Partner Network](https://partner.microsoft.com/) pro vaši organizaci.
+3. Vytvořte propojení s novým ID partnera. ID partnera je ID programu [Microsoft Partner Network](https://partner.microsoft.com/) pro vaši organizaci. Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -87,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -132,14 +134,15 @@ Ano. Propojené ID partnera lze změnit, přidat nebo odebrat.
 
 Propojení mezi ID partnera a účtem se provádí u každého tenanta zákazníka. Propojte toto ID partnera v každém tenantovi zákazníka.
 
+Pokud ale spravujete zákaznické prostředky přes Azure Lighthouse, měli byste vytvořit odkaz v tenantovi poskytovatele služeb, a to pomocí účtu, který má k těmto zákaznickým prostředkům přístup. Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](../../lighthouse/how-to/partner-earned-credit.md).
+
 **Můžou propojení s ID partnera upravit nebo odebrat jiní partneři nebo zákazníci?**
 
 Propojení je přiřazeno na úrovni uživatelského účtu. Propojení s ID partnera můžete upravit nebo odebrat jenom vy. Zákazník ani jiní partneři nemůžou propojení s ID partnera změnit.
 
-
 **Které MPN ID mám použít, pokud jich má moje společnost více?**
 
-Pro propojení s ID partnera by se měly používat účty lokality partnera a přidružená MPN ID.  Přečtěte si další informace o [partnerských účtech](https://docs.microsoft.com/partner-center/account-structure).
+Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
 
 **Kde najdu sestavy ovlivněných výnosů pro propojené ID partnera?**
 
@@ -149,18 +152,17 @@ Sestavy výkonu cloudových produktů jsou pro partnery dostupné v partnerském
 
 Možné důvody nezobrazování zákazníka v sestavách:
 
-1. Propojený uživatelský účet nemá v žádném předplatném nebo prostředku Azure daného zákazníka [přístup na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview).
+1. Propojený uživatelský účet nemá v žádném předplatném nebo prostředku Azure daného zákazníka [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
-2. Předplatné Azure, ve kterém má daný uživatel [přístup na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview), se vůbec nevyužívá.
+2. Předplatné Azure, ve kterém má daný uživatel [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md), se vůbec nevyužívá.
 
 **Funguje propojení ID partnera s Azure Stackem?**
 
 Ano, ID partnera je možné propojit pro Azure Stack.
 
-**Jak můžu propojit ID partnera, pokud v naší společnosti pro přístup k prostředkům zákazníků využíváme [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)?**
+**Jak můžu propojit ID partnera, pokud v naší společnosti pro přístup k prostředkům zákazníků využíváme [Azure Lighthouse](../../lighthouse/overview.md)?**
 
-Při onboardingu zákazníků do správy delegovaných prostředků Azure [publikováním nabídky spravovaných služeb na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers) se automaticky přidruží vaše MPN ID. Pokud k [onboardingu zákazníků využíváte nasazení šablon Azure Resource Manageru](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), musíte přidružit vaše MPN (Microsoft Partner Network) ID nejméně k jednomu uživatelskému účtu, který má přístup ke všem vašim onboardovaným předplatným. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb. Pro zjednodušení doporučujeme vytvořit účet instančního objektu v tenantovi, který je přidružený k vašemu ID MPN, a udělit každému onboardovanému zákazníkovi přístup pro čtení. V tomto příkladu se používá role čtenáře RBAC. Jde o jednu z rolí, které nemají nárok na kredit získaný partnerem. Další informace o rolích najdete v tématu věnovaném [rolím a oprávněním pro kredit získaný partnerem](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2).
-
+Aby bylo možné rozpoznat aktivity Azure Lighthouse, musíte přidružit své ID MPN k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich poznámkových předplatných. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb, nikoli v tenantech jednotlivých zákazníků. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, přidružit ho k vašemu MPN ID a udělit mu přístup ke každému onboardovanému zákazníkovi s [předdefinovanou rolí Azure, u které jde uplatit kredit získaný partnerem](/partner-center/azure-roles-perms-pec). Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Jak mám zákazníkům vysvětlit PAL (Partner Admin Link)?**
 
@@ -172,4 +174,4 @@ Přidružení PAL k existujícím přihlašovacím údajům neposkytuje Microsof
 
 **Má to vliv na zabezpečení prostředí Azure u zákazníka?**
 
-Přidružení PAL jenom přidá MPN ID partnera k již zřízeným přístupovým oprávněním a nemění žádná oprávnění (role Azure) a partnerovi ani Microsoftu neposkytuje další údaje o službách Azure. 
+Přidružení PAL jenom přidá MPN ID partnera k již zřízeným přístupovým oprávněním a nemění žádná oprávnění (role Azure) a partnerovi ani Microsoftu neposkytuje další údaje o službách Azure.

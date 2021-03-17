@@ -1,19 +1,19 @@
 ---
 title: Zobrazit uživatele portálu Azure VMware CloudSimple – řešení Azure VMware podle CloudSimple
 description: V této části najdete popis postupu zobrazení seznamu uživatelů, kteří mají přístup k portálu CloudSimple prostřednictvím Azure Portal
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f9043fbbb77059eb4e4ed42dbef8a42e5790d565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20c42f41b168cafa510f7fac80cfcedcc260f4db
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564002"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899078"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>Zobrazit seznam uživatelů portálu CloudSimple
 

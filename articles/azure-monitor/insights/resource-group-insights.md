@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor přehledy skupiny prostředků | Microsoft Docs
 description: Pochopte stav a výkon distribuovaných aplikací a služeb na úrovni skupiny prostředků pomocí Azure Monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045765"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704323"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
@@ -20,7 +19,7 @@ Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrét
 
 ## <a name="access-insights-for-resource-groups"></a>Přístup k přehledům pro skupiny prostředků
 
-1. Na panelu navigace na levé straně vyberte **skupiny prostředků** .
+1. Na panelu navigace na levé straně vyberte **skupiny prostředků**  .
 2. Vyberte jednu ze skupin prostředků, které chcete prozkoumat. (Pokud máte velký počet skupin prostředků s filtrováním podle předplatného, může být někdy užitečné.)
 3. Pokud chcete získat přístup k přehledům pro skupinu prostředků, klikněte na **přehledy** v nabídce na levé straně libovolné skupiny prostředků.
 
@@ -46,9 +45,9 @@ Stránka přehledy skupiny prostředků nabízí několik dalších nástrojů s
 
    |         |          |
    | ---------------- |:-----|
-   | [**Výstrahy**](../platform/alerts-overview.md)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
-   | [**Metriky**](../platform/data-platform.md) | Vizualizujte a zkoumejte data založená na metrikách.    |
-   | [**Protokoly aktivit**](../platform/platform-logs-overview.md) | Události na úrovni předplatného, ke kterým došlo v Azure  |
+   | [**Výstrahy**](../alerts/alerts-overview.md)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
+   | [**Metriky**](../data-platform.md) | Vizualizujte a zkoumejte data založená na metrikách.    |
+   | [**Protokoly aktivit**](../essentials/platform-logs-overview.md) | Události na úrovni předplatného, ke kterým došlo v Azure  |
    | [**Mapa aplikace**](../app/app-map.md) | Pokud chcete identifikovat problémová místa výkonu nebo výpadky selhání, přejděte k topologii distribuované aplikace. |
 
 ## <a name="failures-and-performance"></a>Selhání a výkon
@@ -105,7 +104,7 @@ V takovém případě, pokud vyberete možnost upravit, uvidíte, že se tato sa
 
  ![Snímek obrazovky s zobrazeními výkonu a metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="enabling-access-to-alerts"></a>Povolení přístupu k výstrahám
 
@@ -113,10 +112,10 @@ Pokud chcete zobrazit výstrahy v Azure Monitor pro skupiny prostředků, musí 
 
 Azure Monitor pro skupiny prostředků spoléhá na to, že systém pro správu výstrah Azure Monitor načítá stav výstrahy. Správa výstrah není ve výchozím nastavení nakonfigurována pro každou skupinu prostředků a předplatné a může ji povolit pouze osoba s rolí vlastníka nebo přispěvatele. Dá se povolit buď pomocí:
 * Otevírají se Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném.
-* Nebo kliknutím na předplatné, kliknutím na **poskytovatelé prostředků**klikněte na **zaregistrovat pro výstrahy. Management**.
+* Nebo kliknutím na předplatné, kliknutím na **poskytovatelé prostředků** klikněte na **zaregistrovat pro výstrahy. Management**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Monitor sešity](../platform/workbooks-overview.md)
+- [Azure Monitor sešity](../visualize/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
-- [Upozornění služby Azure Monitor](../platform/alerts-overview.md)
+- [Upozornění služby Azure Monitor](../alerts/alerts-overview.md)

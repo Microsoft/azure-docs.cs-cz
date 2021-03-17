@@ -2,17 +2,17 @@
 title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654034"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503370"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
-Azure Advisor vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, že se identifikují nečinné a nevyužité prostředky.Cenová doporučení můžete získat na kartě **náklady** na řídicím panelu poradce.
+Azure Advisor vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, že se identifikují nečinné a nevyužité prostředky. Cenová doporučení můžete získat na kartě **náklady** na řídicím panelu poradce.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizace výdajů za virtuální počítače prostřednictvím změny velikosti nebo vypnutí nevyužitých instancí 
 
@@ -20,8 +20,8 @@ I když některé scénáře aplikací můžou mít za následek nízké využit
 
 Doporučené akce jsou vypnuté nebo změny velikosti specifické pro vyhodnocování prostředku.
 
-Model pokročilého vyhodnocení v Advisoru se považuje za vypínání virtuálních počítačů, pokud jsou splněné oba tyto příkazy: 
-- P95th z maximální hodnoty využití procesoru je menší než 3%. 
+Model pokročilého vyhodnocení v Advisoru se považuje za vypínání virtuálních počítačů, pokud jsou splněné všechny tyto příkazy: 
+- P95th maximální hodnoty využití procesoru je menší než 3%. 
 - Využití sítě je méně než 2% po dobu sedmi dnů.
 - Tlak paměti je nižší než mezní hodnoty.
 
@@ -59,8 +59,8 @@ Advisor analyzuje vzorce využití za posledních 30 dní pro následující pro
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB rezervovanou kapacitu
 Advisor analyzuje vzorce používání Azure Cosmos DB za posledních 30 dnů a doporučuje nákup rezervovaných kapacit pro optimalizaci nákladů. Pomocí rezervované kapacity si můžete předběžně koupit Azure Cosmos DB hodinové využití a ušetřit náklady za průběžné platby. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
-### <a name="sql-paas-reserved-capacity"></a>Vyhrazená kapacita SQL PaaS
-Advisor analyzuje fondy elastické databáze SQL PaaS a vzory využití spravované instance SQL za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL Database a Rezervovaná kapacita spravované instance SQL
+Advisor analyzuje SQL Database a vzory využití spravované instance SQL za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory. Podrobnosti najdete v tématu [Azure SQL Database & rezervované kapacity spravované instance SQL](../azure-sql/database/reserved-capacity-overview.md).
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service vyhrazenou kapacitu pro poplatky za razítko
 Advisor v posledních 30 dnech analyzuje vzor použití poplatku za Azure App Service izolované prostředí a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity si můžete předem koupit hodinové využití pro poplatek za izolované prostředí a ušetřit náklady za průběžné platby. Rezervovaná kapacita se vztahuje pouze na poplatky za razítko a nikoli na App Service instance. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Služba Advisor počítá s uložením odhadů pro jednotlivá předplatná za použití ceny za 3 roky na základě vzorců využití za posledních 30 dní.
@@ -71,7 +71,7 @@ Služba Advisor analyzuje úložiště objektů BLOB v Azure a využití úloži
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>Vyhrazená kapacita MariaDB, MySQL a PostgreSQL
 Advisor analyzuje vaše vzory využití pro Azure Database for MariaDB, Azure Database for MySQL a Azure Database for PostgreSQL za posledních 30 dnů. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit MariaDB, MySQL a PostgreSQL hodinové využití a ušetřit přitom své aktuální náklady. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
-### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Rezervovaná kapacita Azure synapse Analytics (dříve SQL Data Warehouse)
+### <a name="azure-synapse-analytics-reserved-capacity"></a>Rezervovaná kapacita Azure synapse Analytics
 Advisor během posledních 30 dnů analyzuje vaše vzory využití Azure synapse Analytics a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit synapse analýzu po hodinách a ušetřit náklady na vyžádání. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstraní nepřidružené veřejné IP adresy, aby se ušetřily peníze.
@@ -101,7 +101,7 @@ Poradce identifikuje prostředky, ve kterých se omezuje zásada mezipaměti tab
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
 
@@ -111,6 +111,7 @@ Poradce identifikuje prostředky, ve kterých se omezuje zásada mezipaměti tab
 
 Další informace o doporučení Advisoru najdete tady:
 * [Úvod do Advisoru](advisor-overview.md)
+* [Skóre Advisoru](azure-advisor-score.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)

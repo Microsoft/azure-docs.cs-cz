@@ -1,22 +1,25 @@
 ---
-title: Schéma Azure Cloud Services def. LoadBalancerProbe | Microsoft Docs
+title: Schéma Azure Cloud Services (Classic) def. LoadBalancerProbe | Microsoft Docs
 description: LoadBalancerProbe definovaný zákazníkem je sonda stavu koncových bodů v instancích rolí. Kombinuje s webovými rolemi nebo rolemi pracovního procesu v definičním souboru služby.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537342"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739782"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice Azure Cloud Services
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice pro Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Test nástroje pro vyrovnávání zatížení je sonda stavu definovaná zákazníkem koncových bodů a koncových bodů UDP v instancích rolí. Nejedná se `LoadBalancerProbe` o samostatný element; v kombinaci s webovou rolí nebo rolí pracovního procesu v definičním souboru služby. `LoadBalancerProbe`Může být použit více než jednou rolí.
 
 Výchozí přípona souboru definice služby je. csdef.
@@ -47,10 +50,10 @@ Pokud používáte vlastní test nástroje pro vyrovnávání zatížení, je nu
 - [Element LoadBalancerProbes](#LoadBalancerProbes)
 - [Element LoadBalancerProbe](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>Element LoadBalancerProbes
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> Element LoadBalancerProbes
 `LoadBalancerProbes`Element popisuje kolekci sond nástroje pro vyrovnávání zatížení. Tento prvek je nadřazeným prvkem [elementu LoadBalancerProbe](#LoadBalancerProbe). 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>Element LoadBalancerProbe
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> Element LoadBalancerProbe
 `LoadBalancerProbe`Prvek definuje sondu stavu pro model. Můžete definovat několik sond nástroje pro vyrovnávání zatížení. 
 
 Následující tabulka popisuje atributy `LoadBalancerProbe` prvku:
@@ -59,7 +62,7 @@ Následující tabulka popisuje atributy `LoadBalancerProbe` prvku:
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Povinná hodnota. Název testu nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
 | `protocol`          | `string` | Povinná hodnota. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Je-li `tcp` parametr zadán, je pro úspěšné dokončení testu vyžadováno přijaté potvrzení. Je-li `http` zadán parametr, je k úspěšnému dokončení testu nutná odpověď 200 OK ze zadaného identifikátoru URI.|
-| `path`              | `string` | Identifikátor URI, který se používá pro vyžádání stavu z virtuálního počítače. `path`je vyžadováno, pokud `protocol` je nastaven na `http` . V opačném případě není povolena.<br /><br /> Není k dispozici žádná výchozí hodnota.|
+| `path`              | `string` | Identifikátor URI, který se používá pro vyžádání stavu z virtuálního počítače. `path` je vyžadováno, pokud `protocol` je nastaven na `http` . V opačném případě není povolena.<br /><br /> Není k dispozici žádná výchozí hodnota.|
 | `port`              | `integer` | Nepovinný parametr. Port pro komunikaci sondy. To je volitelné pro libovolný koncový bod, protože stejný port se pak použije pro test. Pro své zjišťování můžete také nakonfigurovat jiný port. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně.<br /><br /> Výchozí hodnota je nastavená koncovým bodem.|
 | `intervalInSeconds` | `integer` | Nepovinný parametr. Interval (v sekundách), jak často se má testovat koncový bod pro stav. Interval je typicky menší než polovina přiděleného časového limitu (v sekundách), který umožňuje dvě úplné sondy před převzetím instance mimo rotaci.<br /><br /> Výchozí hodnota je 15, minimální hodnota je 5.|
 | `timeoutInSeconds`  | `integer` | Nepovinný parametr. Časový limit (v sekundách), který se použije na test, kdy žádná odpověď nevede k zastavení dalšího provozu v doručení do koncového bodu. Tato hodnota umožňuje, aby koncové body byly rychlejší nebo pomalejší než běžné časy používané v Azure (což jsou výchozí nastavení).<br /><br /> Výchozí hodnota je 31, minimální hodnota je 11.|

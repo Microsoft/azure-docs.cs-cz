@@ -1,19 +1,16 @@
 ---
 title: Apache Hive & Data Lake Tools for Visual Studio – Azure HDInsight
 description: Naučte se používat nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076449"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943159"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hivu pomocí Nástrojů Data Lake pro Visual Studio
 
@@ -40,7 +37,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
 1. Spusťte **Visual Studio** a vyberte **pokračovat bez kódu**.
 
-2. V **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
+2. V **Průzkumník serveru** klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
 
 3. Rozbalte **HDInsight**, klikněte pravým tlačítkem na cluster, ve kterém chcete spustit dotaz, a pak vyberte **zapsat dotaz na podregistr**.
 
@@ -50,7 +47,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
     SELECT * FROM hivesampletable;
     ```
 
-5. Vyberte **Provést**. Režim spuštění je ve výchozím nastavení **interaktivní**.
+5. Vyberte **Execute** (Provést). Režim spuštění je ve výchozím nastavení **interaktivní**.
 
     ![Spustit interaktivní dotaz na podregistr, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
@@ -60,9 +57,9 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
     Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM` , IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
 
-7. Na panelu nástrojů dotazu (oblast pod kartou dotaz a nad textem dotazu) vyberte **Odeslat**nebo vyberte šipku rozevírací vedle možnosti **Odeslat** a zvolte možnost **Upřesnit** v seznamu rozevírací. Pokud vyberete možnost druhé,
+7. Na panelu nástrojů dotazu (oblast pod kartou dotaz a nad textem dotazu) vyberte **Odeslat** nebo vyberte šipku rozevírací vedle možnosti **Odeslat** a zvolte možnost **Upřesnit** v seznamu rozevírací. Pokud vyberete možnost druhé,
 
-8. Pokud jste vybrali možnost Upřesnit odeslání, nakonfigurujte **název úlohy**, **argumenty**, **Další konfigurace**a **stavový adresář** v dialogovém okně **Odeslat skript** . Pak vyberte **Odeslat**.
+8. Pokud jste vybrali možnost Upřesnit odeslání, nakonfigurujte **název úlohy**, **argumenty**, **Další konfigurace** a **stavový adresář** v dialogovém okně **Odeslat skript** . Pak vyberte **Odeslat**.
 
     ![Dialogové okno Odeslat skript, dotaz na podregistr pro HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
 
@@ -120,7 +117,7 @@ Chcete-li spustit dotaz na podregistr vytvořením aplikace podregistru, postupu
 
 Následující příklad závisí na `log4jLogs` tabulce vytvořené v předchozím postupu, [Vytvoření aplikace v podregistru](#create-a-hive-application).
 
-1. Z **Průzkumník serveru**klikněte pravým tlačítkem na svůj cluster a vyberte **zapsat dotaz na podregistr**.
+1. Z **Průzkumník serveru** klikněte pravým tlačítkem na svůj cluster a vyberte **zapsat dotaz na podregistr**.
 
 2. Zadejte následující dotaz na podregistr:
 

@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648985"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670931"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
 Návrh architektury SAP NetWeaver, Business One `Hybris` nebo S/4HANA Systems v Azure otevírá spoustu různých příležitostí pro různé architektury a nástroje, které slouží k získání škálovatelného, efektivního a vysoce dostupného nasazení. I když závisí na operačním systému nebo používaném systému DBMS, existují omezení. Ne všechny podporované scénáře jsou také podporovány stejným způsobem v Azure. Tento dokument vás provede podporovanými konfiguracemi bez vysoké dostupnosti a konfigurací a architekturou s vysokou dostupností a s využitím výhradně virtuálních počítačů Azure. Scénáře podporované [velkými instancemi Hana](./hana-overview-architecture.md)najdete v článku [podporované scénáře pro velké instance Hana](./hana-supported-scenario.md). 
@@ -46,7 +46,7 @@ V takových konfiguracích oddělíte vrstvu aplikace SAP a vrstvu DBMS do různ
 
 Grafická reprezentace vypadá takto:
 
-![Jednoduchá konfigurace na dvě úrovně](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![Diagram, který zobrazuje jednoduchou konfiguraci 3 vrstvy.](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 Tento typ konfigurace se podporuje ve Windows, Red Hat, SUSE a Oracle Linux pro systémy DBMS SQL Server, Oracle, Db2, SAP HANA, maxDB a SAP pomocného programu pro produkční a neprodukční případy. Toto je výchozí konfigurace nasazení pro [velké instance Azure Hana](./hana-overview-architecture.md). Pro zjednodušení nerozlišujeme mezi instancemi systému SAP Central Services a dialogy SAP v aplikační vrstvě SAP. V této jednoduché konfiguraci se třemi úrovněmi by neexistovala žádná ochrana s vysokou dostupností pro centrální služby SAP.
 
@@ -83,7 +83,7 @@ V mnoha případech byly na holé servery nasazené víc instancí dialogů, neb
 
 V případě konfigurace na 3 úrovni, kde se v rámci virtuálních počítačů Azure spouští víc instancí dialogů SAP, může vypadat takto:
 
-![Více instancí systému DBMS v jedné jednotce](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Diagram, který zobrazuje konfiguraci na 3 úrovni, kde se na virtuálních počítačích Azure spouští víc instancí dialogů SAP.](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 Pro zjednodušení nerozlišujeme mezi instancemi systému SAP Central Services a dialogy SAP v aplikační vrstvě SAP. V této jednoduché konfiguraci se třemi úrovněmi by neexistovala žádná ochrana s vysokou dostupností pro centrální služby SAP. U produkčních systémů se nedoporučuje opustit službu SAP Central Services bez ochrany. Konkrétní informace, které se označují jako konfigurace více identifikátorů SID kolem centrálních instancí SAP a vysoké dostupnosti takových konfigurací s více identifikátory SID, najdete v dalších částech tohoto dokumentu.
 
@@ -102,7 +102,7 @@ Pro virtuální počítače Azure se na úrovni DBMS podporují tyto konfigurace
 - SAP HANA konfigurace škálované n + m pomocí [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) na SUSE a Red Hat. Podrobnosti najdete v těchto článcích:
     - [Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server}](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- SQL Server cluster s podporou převzetí služeb při selhání založený na Souborové službě se škálováním na více systémů I když se v produkčních systémech doporučuje použít místo clusteringu SQL Server Always On. Služba SQL Server Always On nabízí lepší dostupnost pomocí samostatného úložiště. Podrobnosti jsou popsány v tomto článku: 
+- SQL Server cluster s podporou převzetí služeb při selhání založený na Souborové službě Windows Scale-Out. I když se v produkčních systémech doporučuje použít místo clusteringu SQL Server Always On. Služba SQL Server Always On nabízí lepší dostupnost pomocí samostatného úložiště. Podrobnosti jsou popsány v tomto článku: 
     - [Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - SQL Server Always On se podporuje s operačním systémem Windows pro SQL Server v Azure. Toto je výchozí doporučení pro produkční SQL Server instance v Azure. Podrobnosti jsou popsány v těchto článcích:
     - [Představujeme SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).
@@ -208,7 +208,7 @@ Konfigurace je popsána ve [vysoké dostupnosti pro SAP NetWeaver na virtuální
 
 Cluster s více identifikátory SID se schématem replikačního serveru pro zařazování do fronty vypadá nějak takto:
 
-![Konfigurace systému DBMS a ASCS HA](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![Diagram, který zobrazuje cluster s více identifikátory SID se serverem replikace ve frontě.](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA scénáře škálování na více instancí

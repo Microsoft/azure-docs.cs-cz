@@ -1,17 +1,16 @@
 ---
 title: Řešení pro správu Office 365 v Azure
 description: Tento článek poskytuje podrobné informace o konfiguraci a použití řešení Office 365 v Azure.  Obsahuje podrobný popis záznamů Office 365 vytvořených v Azure Monitor.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498793"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728632"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -95,8 +94,8 @@ ms.locfileid: "86498793"
 > - [Vyhledá hrozby předem.](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Vytváření vlastních analytických pravidel pro detekci podezřelých hrozeb](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Monitorování dat](../../sentinel/tutorial-monitor-your-data.md)
-> - [Prozkoumat incidenty pomocí služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
-> - [Nastavení automatických odpovědí na hrozby v Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Vyšetřování incidentů s využitím služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
+> - [Nastavení automatizovaných reakcí na hrozby ve službě Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Komunita GitHubu Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: umožňuje službě Azure Sentinel v rámci řešení přidat další konektory?
@@ -104,12 +103,12 @@ ms.locfileid: "86498793"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 31. října Musím odpojení předem?
 > 
-> - Nebudete moct přijímat data z řešení **Office 365** . Řešení už nebude dostupné na webu Marketplace.
+> - Nebudete moct přijímat data z řešení **Office 365** . Řešení se odebere z vašeho pracovního prostoru a na webu Marketplace už nebude dostupné.
 > - Pro zákazníky s Sentinelem v Azure se v řešení **Office 365** pro **SecurityInsights** pro Azure sentinel bude zahrnout řešení Log Analytics pracovního prostoru.
-> - Pokud vaše řešení neodpojení ručně, vaše data se automaticky odpojí od 31. října.
+> - Pokud vaše řešení neodpojení ručně do 31. října, vaše data se odpojí automaticky a tabulka **OfficeActivity** se odebere. I tak budete moct tabulku obnovit, když povolíte konektor Office 365 ve službě Azure Sentinel, jak je vysvětleno níže.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
-> Yes. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
+> Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Když v Azure Sentinel povolíte nový konektor **Office 365** , schéma se obnoví v pracovním prostoru a veškerá shromážděná data budou k dispozici. 
  
 
 Řešení pro správu sady Office 365 umožňuje monitorovat prostředí sady Office 365 v Azure Monitor.
@@ -118,10 +117,10 @@ ms.locfileid: "86498793"
 - Monitorujte aktivity správce a sledujte změny konfigurace nebo operace s vysokými oprávněními.
 - Umožňuje detekovat a prozkoumat nežádoucí chování uživatelů, které je možné přizpůsobit potřebám vaší organizace.
 - Předvedení auditu a dodržování předpisů. Například můžete monitorovat operace přístupu k souborům u důvěrných souborů, které vám pomůžou s procesem auditu a dodržování předpisů.
-- Řešení potíží s operačním systémem pomocí [dotazů protokolu](../log-query/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
+- Řešení potíží s operačním systémem pomocí [dotazů protokolu](../logs/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
 
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Řešení pro správu Office 365 můžete odebrat pomocí procesu v části [Odebrání řešení pro správu](solutions.md#remove-a-monitoring-solution). Tím se nezastaví shromažďování dat ze sady Office 365 do Azure Monitor i když. Pomocí níže uvedeného postupu můžete zrušit odběr Office 365 a zastavit shromažďování dat.
 
@@ -246,7 +245,7 @@ Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** 
 | Sloupec | Popis |
 |:--|:--|
 | Operace | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
-| Výměna | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
+| Výměna | Zobrazuje rozpis aktivit serveru Exchange, například oprávnění Add-Mailbox nebo nastavení poštovní schránky. |
 | SharePoint | Zobrazuje hlavní aktivity, které uživatelé provádějí v dokumentech služby SharePoint. Když přejdete k podrobnostem na této dlaždici, na stránce hledání se zobrazí podrobnosti o těchto aktivitách, jako je cílový dokument a umístění této aktivity. Například pro událost otevření souboru budete moci zobrazit dokument, ke kterému se přistupovalo, jeho přidružený název účtu a IP adresu. |
 | Azure Active Directory | Zahrnuje hlavní aktivity uživatelů, jako je resetování hesla uživatele a pokusů o přihlášení. Když přejdete k podrobnostem, budete moci zobrazit podrobnosti o těchto činnostech, jako je stav výsledku. To je hlavně užitečné, pokud chcete monitorovat podezřelé aktivity v Azure Active Directory. |
 
@@ -310,7 +309,7 @@ Tyto záznamy se vytvoří, když se změní nebo doplňují objekty Azure Activ
 | OfficeWorkload | Azureactivedirectory selhala |
 | RecordType     | Azureactivedirectory selhala |
 | AADTarget | Uživatel, na kterém se provedla akce (identifikovaná vlastností Operation) |
-| Actor (Herec/herečka) | Uživatel nebo instanční objekt, který tuto akci provedl. |
+| Aktér | Uživatel nebo instanční objekt, který tuto akci provedl. |
 | ActorContextId | Identifikátor GUID organizace, do které patří objekt actor |
 | ActorIpAddress | IP adresa objektu actor ve formátu adresy IPV4 nebo IPV6. |
 | InterSystemsId | Identifikátor GUID, který sleduje akce napříč komponentami v rámci služby Office 365. |
@@ -462,7 +461,7 @@ Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePo
 
 Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizací shromážděné tímto řešením.
 
-| Dotazy | Popis |
+| Dotaz | Popis |
 | --- | --- |
 |Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; souhrnu počtu () podle operace |
 |Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; Shrnutí Count () pomocí řazení SiteUrl \| podle Count ASC|
@@ -473,6 +472,6 @@ Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizac
 
 ## <a name="next-steps"></a>Další kroky
 
-* K zobrazení podrobných dat aktualizace použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .
-* [Vytvořte si vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) pro zobrazení oblíbených vyhledávacích dotazů sady Office 365.
-* [Vytvářejte výstrahy](../platform/alerts-overview.md) , které se proaktivně informují o důležitých aktivitách Office 365.  
+* K zobrazení podrobných dat aktualizace použijte [dotazy protokolu v Azure monitor](../logs/log-query-overview.md) .
+* [Vytvořte si vlastní řídicí panely](../visualize/tutorial-logs-dashboards.md) pro zobrazení oblíbených vyhledávacích dotazů sady Office 365.
+* [Vytvářejte výstrahy](../alerts/alerts-overview.md) , které se proaktivně informují o důležitých aktivitách Office 365.  

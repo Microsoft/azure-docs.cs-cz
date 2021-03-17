@@ -3,15 +3,15 @@ title: Konfigurace brány firewall protokolu IP pro Azure Relay obor názvů
 description: Tento článek popisuje, jak používat pravidla brány firewall k povolení připojení z konkrétních IP adres k oborům názvů Azure Relay.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141852"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999507"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurace brány firewall protokolu IP pro obor názvů Azure Relay
-Ve výchozím nastavení jsou obory názvů Relay přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+Ve výchozím nastavení jsou obory názvů Relay přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Tato funkce je užitečná ve scénářích, ve kterých Azure Relay by měly být dostupné jenom z určitých dobře známých lokalit. Pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Pokud například používáte předávání pomocí [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services), můžete vytvořit **pravidlo brány firewall** , které umožní provoz jenom z místních IP adres infrastruktury. 
 
@@ -29,7 +29,7 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů služby Relay** .
 2. V nabídce vlevo vyberte možnost **sítě** . Pokud v části **Povolení přístupu z** vyberete možnost **všechny sítě** , obor názvů Relay akceptuje připojení z libovolné IP adresy. Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
-    ![Firewall – vybraná možnost všechny sítě](./media/ip-firewall/all-networks-selected.png)
+    ![Snímek obrazovky s vybranou možností všechny sítě zobrazí stránku síť.](./media/ip-firewall/all-networks-selected.png)
 1. Pokud chcete omezit přístup k určitým sítím a IP adresám, vyberte možnost **vybrané sítě** . V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
     2. Pro **Rozsah adres**zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
@@ -76,7 +76,7 @@ Následující šablona Správce prostředků umožňuje přidat pravidlo filtru
       }
     },
     "variables": {
-      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]",
+      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]"
     },
     "resources": [
       {
@@ -93,7 +93,7 @@ Následující šablona Správce prostředků umožňuje přidat pravidlo filtru
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.Relay/namespaces/networkruleset",
+        "type": "Microsoft.Relay/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.Relay/namespaces/', parameters('relayNamespaceName'))]"
         ],
@@ -109,6 +109,7 @@ Následující šablona Správce prostředků umožňuje přidat pravidlo filtru
                 "action":"Allow"
             }
           ],
+          "virtualNetworkRules": [],
           "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }

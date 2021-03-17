@@ -3,17 +3,16 @@ title: Úlohy Azure Stream Analytics Edge v aplikaci Visual Studio
 description: Tento článek popisuje, jak vytvářet, ladit a vytvářet Stream Analytics v úlohách IoT Edge pomocí nástrojů Stream Analytics Tools for Visual Studio.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 44b84c03dd9c070fd7ca3764a0dc50e8caa9e1fc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 09151ea0fe3d419401d576149f6655b8cdc09f8e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045157"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019954"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio
 
@@ -46,23 +45,23 @@ Po vytvoření projektu přejděte na **Průzkumník řešení** a zobrazte hier
 
 ## <a name="define-inputs"></a>Definice vstupů
 
-1. V **Průzkumník řešení**rozbalte uzel **vstupy** , ve kterém se zobrazí vstup s názvem **EdgeInput.js**. Dvojitým kliknutím zobrazíte její nastavení.  
+1. V **Průzkumník řešení** rozbalte uzel **vstupy** , ve kterém se zobrazí vstup s názvem **EdgeInput.js**. Dvojitým kliknutím zobrazíte její nastavení.  
 
-2. Nastavte typ zdroje na **datový proud**. Potom nastavte zdroj na **Edge hub**, formát serializace události na **JSON**a kódování na **UTF8**. Volitelně můžete přejmenovat **vstupní alias**. Pojďme ho nechat jako v tomto příkladu. V případě, že přejmenujete vstupní alias, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží.  
+2. Nastavte typ zdroje na **datový proud**. Potom nastavte zdroj na **Edge hub**, formát serializace události na **JSON** a kódování na **UTF8**. Volitelně můžete přejmenovat **vstupní alias**. Pojďme ho nechat jako v tomto příkladu. V případě, že přejmenujete vstupní alias, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží.  
    ![Konfigurace vstupu úlohy Stream Analytics](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
 
 ## <a name="define-outputs"></a>Definování výstupů
 
-1. V **Průzkumník řešení**rozbalte uzel **výstupy** , ve kterém se zobrazí výstup s názvem **EdgeOutput.js**. Dvojitým kliknutím zobrazíte její nastavení.  
+1. V **Průzkumník řešení** rozbalte uzel **výstupy** , ve kterém se zobrazí výstup s názvem **EdgeOutput.js**. Dvojitým kliknutím zobrazíte její nastavení.  
 
-2. Nezapomeňte nastavit jímku pro výběr **hraničního centra**, nastavit formát serializace události na **JSON**, nastavit kódování na **UTF8**a nastavit **pole**formátu. Volitelně můžete **alias pro výstup**přejmenovat, takže ho ponecháme v tomto příkladu. Pokud chcete alias pro výstup přejmenovat, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží. 
+2. Nezapomeňte nastavit jímku pro výběr **hraničního centra**, nastavit formát serializace události na **JSON**, nastavit kódování na **UTF8** a nastavit **pole** formátu. Volitelně můžete **alias pro výstup** přejmenovat, takže ho ponecháme v tomto příkladu. Pokud chcete alias pro výstup přejmenovat, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží. 
    ![Konfigurace výstupu úlohy Stream Analytics](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
-Stream Analytics úlohy nasazené v prostředích Stream Analytics IoT Edge podporují většinu [referenčních informací o dotazovacím jazyku Stream Analytics](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). Pro Stream Analytics hraničních úloh však zatím nejsou podporovány následující operace: 
+Stream Analytics úlohy nasazené v prostředích Stream Analytics IoT Edge podporují většinu [referenčních informací o dotazovacím jazyku Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). Pro Stream Analytics hraničních úloh však zatím nejsou podporovány následující operace: 
 
 
 |**Kategorie**  | **Příkaz**  |
@@ -103,7 +102,7 @@ K otestování dotazu místně byste měli nahrát ukázková data. Ukázková d
 
 2. Pokud chcete odeslat úlohu do Azure, přejděte do editoru dotazů > vyberte **Odeslat do Azure**.  
 
-3. Otevře se místní okno. Vyberte, chcete-li aktualizovat existující úlohu Stream Analytics Edge, nebo vytvořte novou. Když aktualizujete existující úlohu, nahradí se všechna její konfigurace. v tomto scénáři publikujete novou úlohu. Vyberte **vytvořit novou úlohu Azure Stream Analytics** > zadejte název úlohy, jako je **MyASAEdgeJob** > zvolte požadované **předplatné**, **skupinu prostředků**a **umístění** > vyberte **Odeslat**.
+3. Otevře se místní okno. Vyberte, chcete-li aktualizovat existující úlohu Stream Analytics Edge, nebo vytvořte novou. Když aktualizujete existující úlohu, nahradí se všechna její konfigurace. v tomto scénáři publikujete novou úlohu. Vyberte **vytvořit novou úlohu Azure Stream Analytics** > zadejte název úlohy, jako je **MyASAEdgeJob** > zvolte požadované **předplatné**, **skupinu prostředků** a **umístění** > vyberte **Odeslat**.
 
    ![Odeslání úlohy Stream Analytics do Azure ze sady Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
@@ -111,7 +110,7 @@ K otestování dotazu místně byste měli nahrát ukázková data. Ukázková d
 
 ## <a name="manage-the-job"></a>Spravovat úlohu 
 
-Stav úlohy a diagram úlohy můžete zobrazit z Průzkumník serveru. Z **Stream Analytics** v **Průzkumník serveru**rozbalte předplatné a skupinu prostředků, do které jste nasadili úlohu Stream Analytics Edge. Můžete zobrazit MyASAEdgejob se stavem **Vytvořeno**. Rozbalte uzel úlohy a dvojím kliknutím na něj otevřete zobrazení úlohy.
+Stav úlohy a diagram úlohy můžete zobrazit z Průzkumník serveru. Z **Stream Analytics** v **Průzkumník serveru** rozbalte předplatné a skupinu prostředků, do které jste nasadili úlohu Stream Analytics Edge. Můžete zobrazit MyASAEdgejob se stavem **Vytvořeno**. Rozbalte uzel úlohy a dvojím kliknutím na něj otevřete zobrazení úlohy.
 
 ![Možnosti správy úloh Průzkumníka serveru](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
@@ -123,4 +122,4 @@ Okno zobrazení úlohy poskytuje operace, jako je například aktualizace úlohy
 
 * [Další informace o Azure IoT Edge](../iot-edge/about-iot-edge.md)
 * [Kurz k ASA v IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md)
-* [Odeslat zpětnou vazbu týmu pomocí tohoto průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Odeslat zpětnou vazbu týmu pomocí tohoto průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u)

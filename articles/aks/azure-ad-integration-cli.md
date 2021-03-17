@@ -6,18 +6,18 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 055afe24cb72b331e64e1a2b3d786503ef31a105
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612414"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176395"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI (starší verze)
 
-Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se můžete přihlásit ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Operátoři clusteru můžou taky nakonfigurovat Kubernetes řízení přístupu na základě role (RBAC) na základě identity uživatele nebo členství ve skupině adresáře.
+Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se můžete přihlásit ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Operátoři clusteru můžou také nakonfigurovat řízení přístupu na základě role (Kubernetes RBAC) Kubernetes na základě identity uživatele nebo členství ve skupině adresáře.
 
-V tomto článku se dozvíte, jak vytvořit požadované součásti Azure AD a pak nasadit cluster s podporou Azure AD a vytvořit v clusteru AKS základní roli RBAC.
+V tomto článku se dozvíte, jak vytvořit požadované součásti Azure AD a pak nasadit cluster s podporou Azure AD a vytvořit základní roli Kubernetes v clusteru AKS.
 
 Kompletní vzorový skript použitý v tomto článku najdete v tématu [ukázky v Azure CLI – integrace AKS s Azure AD][complete-script].
 
@@ -26,7 +26,7 @@ Kompletní vzorový skript použitý v tomto článku najdete v tématu [ukázky
 
 ## <a name="the-following-limitations-apply"></a>Platí následující omezení:
 
-- Službu Azure AD lze povolit pouze v clusteru s povolenou službou RBAC.
+- Azure AD se dá povolit jenom v clusteru Kubernetes s povolenou RBAC.
 - Integraci služby Azure AD Legacy lze povolit pouze během vytváření clusteru.
 
 ## <a name="before-you-begin"></a>Než začnete
@@ -164,9 +164,9 @@ Nakonec pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] Získ
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 ```
 
-## <a name="create-rbac-binding"></a>Vytvořit vazbu RBAC
+## <a name="create-kubernetes-rbac-binding"></a>Vytvoření vazby RBAC Kubernetes
 
-Předtím, než se dá účet Azure Active Directory použít s clusterem AKS, je potřeba vytvořit vazbu role nebo vazby role clusteru. *Role* definují oprávnění pro udělení a *vazby* je použijí pro požadované uživatele. Tato přiřazení lze použít na daný obor názvů nebo v celém clusteru. Další informace najdete v tématu [použití autorizace RBAC][rbac-authorization].
+Předtím, než se dá účet Azure Active Directory použít s clusterem AKS, je potřeba vytvořit vazbu role nebo vazby role clusteru. *Role* definují oprávnění pro udělení a *vazby* je použijí pro požadované uživatele. Tato přiřazení lze použít na daný obor názvů nebo v celém clusteru. Další informace najdete v tématu [použití autorizace KUBERNETES RBAC][rbac-authorization].
 
 Získejte hlavní název uživatele (UPN) pro uživatele, který je aktuálně přihlášený pomocí příkazu [AZ AD Sign-in-User show][az-ad-signed-in-user-show] . Tento uživatelský účet je v dalším kroku povolen pro integraci služby Azure AD.
 
@@ -175,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> Pokud se uživateli, kterému udělíte vazbu RBAC, nachází ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy *userPrincipalName*. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a místo toho použijte vlastnost *objectID* .
+> Pokud je uživateli, kterému udělíte vazbu Kubernetes RBAC, ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy *userPrincipalName*. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a místo toho použijte vlastnost *objectID* .
 
 Vytvořte manifest YAML s názvem `basic-azure-ad-binding.yaml` a vložte následující obsah. Na posledním řádku nahraďte *userPrincipalName_or_objectId*  hlavním názvem uživatele (UPN) nebo ID objektu z předchozího příkazu:
 
@@ -251,7 +251,7 @@ error: You must be logged in to the server (Unauthorized)
 
 Úplný skript, který obsahuje příkazy uvedené v tomto článku, najdete v tématu věnovaném [skriptu integrace služby Azure AD v úložišti UKÁZEK AKS][complete-script].
 
-Postup použití uživatelů a skupin Azure AD k řízení přístupu k prostředkům clusteru najdete v tématu [řízení přístupu k prostředkům clusteru pomocí řízení přístupu založeného na rolích a identit Azure AD v AKS][azure-ad-rbac].
+Postup použití uživatelů a skupin Azure AD k řízení přístupu k prostředkům clusteru najdete v tématu [řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role Kubernetes a identit Azure AD v AKS][azure-ad-rbac].
 
 Další informace o tom, jak zabezpečit clustery Kubernetes, najdete v tématu [Možnosti přístupu a identit pro AKS)][rbac-authorization].
 
@@ -264,8 +264,8 @@ Osvědčené postupy týkající se identit a řízení prostředků najdete v t
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
@@ -281,7 +281,7 @@ Osvědčené postupy týkající se identit a řízení prostředků najdete v t
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

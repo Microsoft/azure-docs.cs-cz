@@ -2,19 +2,16 @@
 title: Oprava chyby nedostatku paměti u registru ve službě Azure HDInsight
 description: Oprava chyby nedostatku paměti u registru v HDInsight Scénář zákazníka je dotaz napříč mnoha velkými tabulkami.
 keywords: Chyba při nedostatku paměti, OOM, nastavení podregistru
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961893"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945710"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby nedostatku paměti Apache Hive ve službě Azure HDInsight
 
@@ -105,7 +102,7 @@ Naše technické podpory a technické týmy společně nalezly jeden z problém�
 </property>
 ```
 
-Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku paměti v haldě Java. Jak je vysvětleno v blogu v příspěvku [nastavení paměti Hadoop příze ve službě HDInsight](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight), když se tez prováděcí modul používá ke skutečnému využití prostoru haldy, patří do kontejneru TEZ. Podívejte se na následující obrázek popisující paměť kontejneru TEZ.
+Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku paměti v haldě Java. Jak je vysvětleno v blogu v příspěvku [nastavení paměti Hadoop příze ve službě HDInsight](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight), když se tez prováděcí modul používá ke skutečnému využití prostoru haldy, patří do kontejneru TEZ. Podívejte se na následující obrázek popisující paměť kontejneru TEZ.
 
 ![Paměťový diagram kontejneru tez: chyba nedostatek paměti v podregistru](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

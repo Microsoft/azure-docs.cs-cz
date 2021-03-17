@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: b03dd9140ef49d34ba0303742aa4961a9f313cc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c34ec5582b8251d5b64bf24654b50d7c391cee4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323362"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341389"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Java
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání videí. Tato jednoduchá aplikace Java pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď JSON. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. 
 
@@ -251,6 +256,6 @@ V metodě Main vaší aplikace zavolejte `SearchVideos` pomocí hledaného výra
 > [!div class="nextstepaction"]
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

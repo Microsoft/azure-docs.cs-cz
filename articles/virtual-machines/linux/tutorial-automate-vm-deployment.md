@@ -4,22 +4,19 @@ description: V tomto kurzu se naučíte používat Cloud-init a Key Vault k při
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 6dd10039ba5c71d3a787761914b111e7828c47d3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828961"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552605"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 
@@ -39,17 +36,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
-S našimi partnery spolupracujeme na začlenění nástroje cloud-init, aby fungoval v imagích, které pro Azure poskytují. Následující tabulka popisuje aktuální dostupnost cloudu-init pro image platformy Azure:
-
-| Publisher | Nabídka | SKU | Verze | Cloud-init připraven |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18,04 – LTS |nejnovější |ano | 
-|Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
-|Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
-|CoreOS |CoreOS |Stable |nejnovější |ano |
-|OpenLogic 7,6 |CentOS |7-CI |nejnovější |preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+S našimi partnery spolupracujeme na začlenění nástroje cloud-init, aby fungoval v imagích, které pro Azure poskytují. Podrobné informace o podpoře Cloud-init pro každou distribuci najdete v tématu [Podpora Cloud-init pro virtuální počítače v Azure](using-cloud-init.md).
 
 
 ## <a name="create-cloud-init-config-file"></a>Vytvoření konfiguračního souboru cloud-init
@@ -129,7 +116,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Otestování webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadat *http: \/ \/ \<publicIpAddress> * do adresního řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Stejně jako v následujícím příkladu se zobrazí aplikace Node.js:
+Nyní můžete otevřít webový prohlížeč a zadat *http: \/ \/ \<publicIpAddress>* do adresního řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Stejně jako v následujícím příkladu se zobrazí aplikace Node.js:
 
 ![Zobrazení spuštěného webu NGINX](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -147,7 +134,7 @@ Následující postupy vám ukážou:
 - Vytvoření virtuálního počítače a vložení certifikátu
 
 ### <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
-Nejdřív pomocí příkazu [az keyvault create](/cli/azure/keyvault#az-keyvault-create) vytvořte službu Key Vault a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Řetězec *mykeyvault* v následujícím příkladu nahraďte vlastním jedinečným názvem služby Key Vault:
+Nejdřív pomocí příkazu [az keyvault create](/cli/azure/keyvault#az-keyvault-create) vytvořte službu Key Vault a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
 
 ```azurecli-interactive
 keyvault_name=mykeyvault
@@ -260,7 +247,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadat *https: \/ \/ \<publicIpAddress> * na adresním řádku. Stejně jako ve výstupu při předchozím vytváření virtuálního počítače zadejte vlastní veřejnou IP adresu. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a zadat *https: \/ \/ \<publicIpAddress>* na adresním řádku. Stejně jako ve výstupu při předchozím vytváření virtuálního počítače zadejte vlastní veřejnou IP adresu. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

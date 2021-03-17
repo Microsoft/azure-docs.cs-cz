@@ -1,5 +1,5 @@
 ---
-title: Zřizování simulovaného zařízení X. 509 do Azure IoT Hub pomocí Node.js
+title: Rychlé zprovoznění – zřizování simulovaného zařízení X. 509 do Azure IoT Hub pomocí Node.js
 description: Vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro Node.js zařízení pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: fe5279725a3d01001b44074eca8656e88d778cab
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422109"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968158"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Hub Device Provisioning Service
 
@@ -22,9 +22,9 @@ ms.locfileid: "87422109"
 
 V tomto rychlém startu vytvoříte simulované zařízení X. 509 na počítači se systémem Windows. Pomocí ukázkového kódu zařízení Node.js můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Přečtěte si [Koncepty automatického zřizování](concepts-auto-provisioning.md).
+- Seznamte se s koncepty [zřizování](about-iot-dps.md#provisioning-process) .
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Node.js v 4.0 +](https://nodejs.org).
@@ -76,7 +76,7 @@ Tento článek ukazuje jednotlivé registrace.
     npm install
     ```
 
-3. Vytvořte _listový_ certifikát X.509 spuštěním skriptu s použitím vlastního názvu certifikátu (_certificate-name_). Běžný název listového certifikátu se použije jako [ID registrace](https://docs.microsoft.com/azure/iot-dps/concepts-device#registration-id), takže nezapomeňte použít pouze malé alfanumerické znaky a pomlčky.
+3. Vytvořte _listový_ certifikát X.509 spuštěním skriptu s použitím vlastního názvu certifikátu (_certificate-name_). Běžný název listového certifikátu se použije jako [ID registrace](./concepts-service.md#registration-id), takže nezapomeňte použít pouze malé alfanumerické znaky a pomlčky.
 
     ```cmd/sh
     node create_test_cert.js device {certificate-name}
@@ -88,7 +88,7 @@ Tento článek ukazuje jednotlivé registrace.
 
 6. Na panelu **Přidat registraci** zadejte následující informace:
    - Jako *Mechanismus* ověření identity vyberte **X.509**.
-   - V části *soubor. pem nebo. cer primárního certifikátu*zvolte *Vybrat soubor* a vyberte soubor certifikátu **{Certificate-Name} _cert. pem** vytvořený v předchozích krocích.  
+   - V části *soubor. pem nebo. cer primárního certifikátu* zvolte *Vybrat soubor* a vyberte soubor certifikátu **{Certificate-Name} _cert. pem** vytvořený v předchozích krocích.  
    - Volitelně můžete zadat následující informace:
      - Vyberte centrum IoT propojené s vaší zřizovací službou.
      - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
@@ -97,11 +97,11 @@ Tento článek ukazuje jednotlivé registrace.
 
      [![Přidání jednotlivé registrace pro ověření X. 509 na portálu](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-     Po úspěšné registraci se vaše zařízení X. 509 zobrazí jako **{Certificate}** ve sloupci *ID registrace* na kartě *jednotlivé registrace* . tuto hodnotu si poznamenejte později.
+     Po úspěšné registraci se vaše zařízení X. 509 zobrazí jako **{Certificate}** ve sloupci *ID registrace* na kartě *jednotlivé registrace* . Tuto hodnotu si poznamenejte později.
 
 ## <a name="simulate-the-device"></a>Simulace zařízení
 
-Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/azure-iot-sdk-node) poskytuje snadný způsob, jak simulovat zařízení. Další informace najdete v tématu [Koncepty zařízení](https://docs.microsoft.com/azure/iot-dps/concepts-device).
+Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/azure-iot-sdk-node) poskytuje snadný způsob, jak simulovat zařízení. Další informace najdete v tématu [Koncepty zařízení](./concepts-service.md).
 
 1. V Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning a poznamenejte si hodnoty **_globální koncový bod zařízení_** a **_Rozsah ID_** .
 
@@ -145,7 +145,7 @@ Sada [SDK pro zařízení Azure IoT Hub pro Node.js](https://github.com/Azure/az
 Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-2. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
+2. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
 3. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete okno **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
 
 

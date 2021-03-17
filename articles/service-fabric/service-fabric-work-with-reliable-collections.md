@@ -3,12 +3,12 @@ title: Práce s Reliable Collections
 description: Seznamte se s osvědčenými postupy pro práci s spolehlivými kolekcemi v rámci aplikace Service Fabric v Azure.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255791"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787871"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model dostupný vývojářům .NET prostřednictvím spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé slovníkové a spolehlivé třídy front. Při použití těchto tříd je váš stav rozdělený na oddíly (pro škálovatelnost), replikovaný (pro dostupnost) a v rámci oddílu (pro sémantiku KYSELování). Pojďme se podívat na typické použití objektu spolehlivého slovníku a podívat se, co dělá ve skutečnosti.
@@ -35,6 +35,7 @@ catch (TimeoutException)
 {
    // choose how to handle the situation where you couldn't get a lock on the file because it was 
    // already in use. You might delay and retry the operation
+   await Task.Delay(100);
 }
 ```
 
@@ -225,4 +226,4 @@ Další informace o osvědčených postupech pro kontrakty dat týkajících se 
 
 Informace o tom, jak implementovat kontrakty dat odolné vůči verzím, najdete v tématu [zpětná volání serializace odolná](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-Informace o tom, jak poskytnout datovou strukturu, která může spolupracovat napříč více verzemi, najdete v tématu [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1) .
+Informace o tom, jak poskytnout datovou strukturu, která může spolupracovat napříč více verzemi, najdete v tématu [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject) .

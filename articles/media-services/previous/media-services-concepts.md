@@ -3,7 +3,7 @@ title: Pojmy Azure Media Services | Microsoft Docs
 description: Tento článek poskytuje stručný přehled Microsoft Azure Media Services konceptů a odkazy na další články, které vám pomají podrobnosti.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,19 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 1ca1b8b453be433f7db428f3b256677b9945ce40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fbe387b3f86dfd10cbc4e80a02ee2528e43c4b67
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038898"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016878"
 ---
-# <a name="azure-media-services-concepts"></a>Azure Media Services koncepty 
+# <a name="azure-media-services-concepts"></a>Azure Media Services koncepty
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Toto téma poskytuje přehled nejdůležitějších Media Services konceptů.
 
@@ -101,12 +103,11 @@ Media Services poskytuje dynamické balení, které vám umožní doručovat obs
 
 Pokud chcete využít výhod [dynamického balení](media-services-dynamic-packaging-overview.md), musíte soubor Mezzanine (zdrojový soubor) kódovat do sady souborů MP4 s adaptivní přenosovou rychlostí nebo s adaptivní přenosovou rychlostí Smooth Streaming soubory a mít aspoň jeden koncový bod streamování Standard nebo Premium ve stavu spuštěno.
 
-Media Services podporuje následující kodéry na vyžádání, které jsou popsány v tomto článku:
+Media Services podporuje následující kodér na vyžádání, který je popsaný v tomto článku:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Pracovní postup kodéru Media Encoder Premium](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Informace o podporovaných kodérech najdete v tématu [kodéry](media-services-encode-asset.md).
+Informace o tomto podporovaném kodéru naleznete v tématu [Encoder](media-services-encode-asset.md).
 
 ## <a name="live-streaming"></a>Živé streamování
 V Azure Media Services kanál představuje kanál pro zpracování obsahu živého streamování. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
@@ -131,7 +132,7 @@ Každý program (událost) je přidružen k Assetu. Pro publikování programu m
 
 Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 * [Práce s kanály, které jsou povolené k provádění Live Encoding s Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md)
@@ -190,7 +191,7 @@ Progresivní stahování vám umožní začít přehrávat média před stažen�
 >[!NOTE]
 >Pokud chcete, aby byly k dispozici pro progresivní stahování, je nutné dešifrovat šifrované prostředky.
 
-Pokud chcete uživatelům poskytnout adresy URL progresivního stahování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k assetu. Pak musíte připojit název souboru MP4. Příklad:
+Pokud chcete uživatelům poskytnout adresy URL progresivního stahování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k assetu. Pak musíte připojit název souboru MP4. Například:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 

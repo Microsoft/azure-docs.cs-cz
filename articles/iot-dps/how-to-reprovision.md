@@ -3,30 +3,22 @@ title: Opětovné zřízení zařízení v Azure IoT Hub Device Provisioning Ser
 description: Naučte se, jak znovu zřídit zařízení pomocí instance služby Device Provisioning Service (DPS) a proč to může být nutné.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974900"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791892"
 ---
 # <a name="how-to-reprovision-devices"></a>Postup opětovného zřízení zařízení
 
-Během životního cyklu řešení IoT je běžné přesouvat zařízení mezi centra IoT. Důvody pro tento přesun můžou zahrnovat následující scénáře:
+Během životního cyklu řešení IoT je běžné přesouvat zařízení mezi centra IoT. Toto téma je zapsáno, které pomáhá operátorům řešení nakonfigurovat zásady opětovného zřizování.
 
-* **Geografická poloha**: když se zařízení pohybuje mezi místy, zlepšuje se latence sítě tím, že se zařízení migruje do služby IoT Hub blíž do každého umístění.
-
-* **Víceklientská architektura: zařízení**se dá používat v rámci stejného řešení IoT, ale znovu přiřazeno nebo zapůjčení novému zákazníkovi nebo webu zákazníka. Tento nový zákazník se může obsluhovat pomocí jiného centra IoT.
-
-* **Změna řešení**: zařízení se přesunulo do nového nebo aktualizovaného řešení IoT. Tato změna přiřazení může vyžadovat, aby zařízení komunikovalo s novým službou IoT Hub, která je připojená k ostatním back-endové součásti. 
-
-* **Quarantine**: podobná změně řešení. Zařízení, které je v nefunkčním stavu, ohrožení zabezpečení nebo zastaralá, může být přiřazeno ke centru IoT, kde je vše možné aktualizovat a vrátit se do dodržování předpisů. Jakmile zařízení správně funguje, migruje se zpátky do hlavního centra.
-
-Podrobnější přehled o opětovném zřízení najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](concepts-device-reprovision.md).
+Podrobnější přehled scénářů opětovného zřízení najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurace zásad přidělení registrace
@@ -37,9 +29,9 @@ Pomocí následujících kroků můžete nakonfigurovat zásady přidělování 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k instanci služby Device Provisioning.
 
-2. Klikněte na **Správa**registrací a potom klikněte na skupinu registrací nebo na jednotlivou registraci, kterou chcete nakonfigurovat pro opětovné zřízení. 
+2. Klikněte na **Správa** registrací a potom klikněte na skupinu registrací nebo na jednotlivou registraci, kterou chcete nakonfigurovat pro opětovné zřízení. 
 
-3. V části **Vyberte, jak chcete přiřadit zařízení k rozbočovačům**vyberte jednu z následujících zásad přidělování:
+3. V části **Vyberte, jak chcete přiřadit zařízení k rozbočovačům** vyberte jednu z následujících zásad přidělování:
 
     * **Nejnižší latence**: Tato zásada přiřadí zařízení k připojeným IoT Hub, což způsobí nejnižší komunikaci mezi zařízením a IoT Hub. Tato možnost umožňuje zařízení komunikovat s nejbližším službou IoT Hub na základě umístění. 
     
@@ -55,7 +47,7 @@ Pomocí následujících kroků můžete nakonfigurovat zásady přidělování 
 
     Pomocí zásad přidělování **statických konfigurací** vyberte Centrum IoT, ke kterému chcete přiřadit zařízení.
 
-4. Klikněte na **Uložit**nebo přejděte k další části a nastavte zásady opětovného zřizování.
+4. Klikněte na **Uložit** nebo přejděte k další části a nastavte zásady opětovného zřizování.
 
     ![Vyberte zásady přidělení registrace.](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
@@ -65,7 +57,7 @@ Pomocí následujících kroků můžete nakonfigurovat zásady přidělování 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k instanci služby Device Provisioning.
 
-2. Klikněte na **Správa**registrací a potom klikněte na skupinu registrací nebo na jednotlivou registraci, kterou chcete nakonfigurovat pro opětovné zřízení.
+2. Klikněte na **Správa** registrací a potom klikněte na skupinu registrací nebo na jednotlivou registraci, kterou chcete nakonfigurovat pro opětovné zřízení.
 
 3. V části **Vyberte, jak chcete, aby se data zařízení při opětovném zřizování zpracovala do jiného centra IoT**, vyberte jednu z následujících zásad opětovného zřízení:
 
@@ -75,7 +67,7 @@ Pomocí následujících kroků můžete nakonfigurovat zásady přidělování 
 
 4. Kliknutím na **Uložit** povolte opětovné zřízení zařízení na základě vašich změn.
 
-    ![Vyberte zásady přidělení registrace.](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Snímek obrazovky, který zvýrazní změny, které jste udělali, a tlačítko Uložit.](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 

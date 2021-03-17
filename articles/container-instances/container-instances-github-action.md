@@ -2,20 +2,20 @@
 title: Akce nasazení instance kontejneru podle GitHubu
 description: Nakonfigurujte akci GitHubu, která automatizuje kroky k sestavení, vložení a nasazení image kontejneru pro Azure Container Instances
 ms.topic: article
-ms.date: 03/18/2020
-ms.custom: ''
-ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/20/2020
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743996"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762963"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurace akce GitHubu pro vytvoření instance kontejneru
 
-[Akce GitHubu](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
+[Akce GitHubu](https://docs.github.com/en/actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
 
-K automatizaci nasazení kontejneru do Azure Container Instances použijte akci [nasadit do Azure Container Instances](https://github.com/azure/aci-deploy) GitHubu. Akce umožňuje nastavit vlastnosti pro instanci kontejneru podobným způsobem jako v příkazu [AZ Container Create][az-container-create] .
+K automatizaci nasazení jednoho kontejneru do Azure Container Instances použijte akci [nasadit do Azure Container Instances](https://github.com/azure/aci-deploy) GitHubu. Akce umožňuje nastavit vlastnosti pro instanci kontejneru podobným způsobem jako v příkazu [AZ Container Create][az-container-create] .
 
 Tento článek popisuje, jak nastavit pracovní postup v úložišti GitHub, který provádí následující akce:
 
@@ -25,8 +25,8 @@ Tento článek popisuje, jak nastavit pracovní postup v úložišti GitHub, kte
 
 Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 
-* Nakonfigurujte pracovní postup sami v úložišti GitHub pomocí akce nasadit pro Azure Container Instances akci a další akce.  
-* Použijte `az container app up` příkaz v rozšíření [nasazení do Azure](https://github.com/Azure/deploy-to-azure-cli-extension) v rozhraní příkazového řádku Azure CLI. Tento příkaz zjednodušuje vytváření pracovního postupu GitHubu a kroků nasazení.
+* [Konfigurace pracovního postupu GitHubu](#configure-github-workflow) – vytvoření pracovního postupu v úložišti GitHub pomocí akce nasadit pro Azure Container Instances akci a další akce.  
+* [Použijte rozšíření CLI](#use-deploy-to-azure-extension) – použijte `az container app up` příkaz v rozšíření [nasazení do Azure](https://github.com/Azure/deploy-to-azure-cli-extension) v rozhraní příkazového řádku Azure CLI. Tento příkaz zjednodušuje vytváření pracovního postupu GitHubu a kroků nasazení.
 
 > [!IMPORTANT]
 > Akce GitHub pro Azure Container Instances je momentálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
@@ -39,13 +39,13 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 
 ## <a name="set-up-repo"></a>Nastavení úložiště
 
-* V příkladech v tomto článku použijte GitHub pro rozvětvení následujícího úložiště:https://github.com/Azure-Samples/acr-build-helloworld-node
+* V příkladech v tomto článku použijte GitHub pro rozvětvení následujícího úložiště: https://github.com/Azure-Samples/acr-build-helloworld-node
 
   Toto úložiště obsahuje souboru Dockerfile a zdrojové soubory pro vytvoření image kontejneru malé webové aplikace.
 
   ![Snímek obrazovky s tlačítkem forku (zvýrazněným) v GitHubu](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Ujistěte se, že jsou pro vaše úložiště povolené akce. Přejděte do rozvětvené úložiště a vyberte **Settings**  >  **Akce**nastavení. V **oprávnění akce**zajistěte, aby byla vybrána **možnost Povolit místní akce a akci třetích stran pro toto úložiště** .
+* Ujistěte se, že jsou pro vaše úložiště povolené akce. Přejděte do rozvětvené úložiště a vyberte   >  **Akce** nastavení. V **oprávnění akce** zajistěte, aby byla vybrána **možnost Povolit místní akce a akci třetích stran pro toto úložiště** .
 
 ## <a name="configure-github-workflow"></a>Konfigurace pracovního postupu GitHubu
 
@@ -91,7 +91,7 @@ Výstup JSON uložte, protože se používá v pozdějším kroku. Všimněte si
 
 ### <a name="update-service-principal-for-registry-authentication"></a>Aktualizace instančního objektu pro ověřování registru
 
-Aktualizujte přihlašovací údaje instančního objektu tak, aby povolovaly oprávnění push a pull v registru kontejneru. Tento krok umožňuje pracovnímu postupu GitHubu použít instanční objekt k [ověřování pomocí registru kontejnerů](../container-registry/container-registry-auth-service-principal.md). 
+Aktualizujte přihlašovací údaje instančního objektu tak, aby umožňovaly přístup push a pull do vašeho registru kontejneru. Tento krok umožňuje pracovnímu postupu GitHubu používat instanční objekt k [ověřování pomocí registru kontejnerů](../container-registry/container-registry-auth-service-principal.md) a nasdílení a stažení Image Docker. 
 
 Získejte ID prostředku vašeho registru kontejneru. Název registru nahraďte následujícím příkazem [AZ ACR show][az-acr-show] :
 
@@ -118,8 +118,8 @@ az role assignment create \
 
 |Tajný kód  |Hodnota  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | Celý výstup JSON z vytváření instančního objektu |
-|`REGISTRY_LOGIN_SERVER`   | Název přihlašovacího serveru vašeho registru (bez malých písmen). Příklad: *myregistry.Azure.CR.IO*        |
+|`AZURE_CREDENTIALS`     | Celý výstup JSON z kroku pro vytvoření instančního objektu |
+|`REGISTRY_LOGIN_SERVER`   | Název přihlašovacího serveru vašeho registru (bez malých písmen). Příklad: *myregistry.azurecr.IO*        |
 |`REGISTRY_USERNAME`     |  `clientId`Z výstupu JSON z vytváření instančního objektu       |
 |`REGISTRY_PASSWORD`     |  `clientSecret`Z výstupu JSON z vytváření instančního objektu |
 | `RESOURCE_GROUP` | Název skupiny prostředků, kterou jste použili k určení oboru instančního objektu |
@@ -128,7 +128,7 @@ az role assignment create \
 
 1. V uživatelském rozhraní GitHubu vyberte **Akce**  >  **nový pracovní postup**.
 1. Vyberte **nastavit pracovní postup sami**.
-1. V části **Upravit nový soubor**vložte následující obsah YAML k přepsání ukázkového kódu. Přijměte výchozí název souboru `main.yml` nebo zadejte název souboru, který zvolíte.
+1. V části **Upravit nový soubor** vložte následující obsah YAML k přepsání ukázkového kódu. Přijměte výchozí název souboru `main.yml` nebo zadejte název souboru, který zvolíte.
 1. Vyberte možnost **Spustit potvrzení**, volitelně zadejte krátké a rozšířené popisy potvrzení a vyberte **Potvrdit nový soubor**.
 
 ```yml
@@ -141,7 +141,7 @@ jobs:
         steps:
         # checkout the repo
         - name: 'Checkout GitHub Action'
-          uses: actions/checkout@master
+          uses: actions/checkout@main
           
         - name: 'Login via Azure CLI'
           uses: azure/login@v1
@@ -177,9 +177,9 @@ Po potvrzení souboru pracovního postupu se spustí pracovní postup. Pokud chc
 
 ![Zobrazit průběh pracovního postupu](./media/container-instances-github-action/github-action-progress.png)
 
-Informace o zobrazení stavu a výsledků jednotlivých kroků v pracovním postupu najdete v tématu [Správa běhu pracovního postupu](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) .
+Informace o zobrazení stavu a výsledků jednotlivých kroků v pracovním postupu najdete v tématu [zobrazení historie spuštění pracovního postupu](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history) . Pokud pracovní postup nedokončíte, přečtěte si téma [zobrazení protokolů pro diagnostiku selhání](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
 
-Po dokončení pracovního postupu Získejte informace o instanci kontejneru s názvem *ACI-dotazů* spuštěním příkazu [AZ Container show][az-container-show] . Nahraďte název vaší skupiny prostředků: 
+Po úspěšném dokončení pracovního postupu Získejte informace o instanci kontejneru s názvem *ACI-dotazů* spuštěním příkazu [AZ Container show][az-container-show] . Nahraďte název vaší skupiny prostředků: 
 
 ```azurecli
 az container show \
@@ -209,7 +209,7 @@ Pracovní postup vytvořený pomocí Azure CLI je podobný pracovnímu postupu, 
 
 ### <a name="additional-prerequisite"></a>Další požadavky
 
-Kromě [požadavků](#prerequisites) a [Nastavení úložiště](#set-up-repo) pro tento scénář musíte nainstalovat **rozšíření nasazení do Azure** pro rozhraní příkazového řádku Azure CLI.
+Kromě [požadavků](#prerequisites) a [Nastavení úložiště](#set-up-repo) pro tento scénář musíte nainstalovat  **rozšíření nasazení do Azure** pro rozhraní příkazového řádku Azure CLI.
 
 Pro instalaci rozšíření spusťte příkaz [AZ Extension Add][az-extension-add] .
 
@@ -220,12 +220,12 @@ az extension add \
 
 Informace o hledání, instalaci a správě rozšíření najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-### <a name="run-az-container-app-up"></a>Spusťte `az container app up`.
+### <a name="run-az-container-app-up"></a>Spuštěním příkazu `az container app up`
 
 Pokud chcete spustit příkaz [AZ Container App up][az-container-app-up] , zadejte minimálně:
 
 * Název vašeho registru služby Azure Container Registry, například *myregistry*
-* Adresa URL vašeho úložiště GitHubu, například`https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
+* Adresa URL vašeho úložiště GitHubu, například `https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
 
 Vzorový příkaz:
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Průběh příkazu
 
-* Po zobrazení výzvy zadejte svoje přihlašovací údaje k GitHubu nebo poskytněte token (Pat) [GitHubu](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) , který má *úložiště* a *uživatelské* obory k ověření s registrem. Pokud zadáte přihlašovací údaje GitHubu, příkaz vytvoří PAT za vás.
+* Po zobrazení výzvy zadejte svoje přihlašovací údaje k GitHubu nebo poskytněte [token pro GitHubu](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) , který má *úložiště* a *uživatelské* obory k ověření s vaším účtem GitHubu. Pokud zadáte přihlašovací údaje GitHubu, příkaz vytvoří PAT za vás. Postupujte podle dalších výzev a nakonfigurujte pracovní postup.
 
 * Příkaz vytvoří tajné klíče úložiště pro pracovní postup:
 
@@ -258,11 +258,29 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
+Pokud chcete zobrazit stav pracovního postupu a výsledky jednotlivých kroků v uživatelském rozhraní GitHubu, přečtěte si téma [zobrazení historie spuštění pracovního postupu](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history).
+
 ### <a name="validate-workflow"></a>Ověřit pracovní postup
 
-Pracovní postup nasadí instanci kontejneru Azure se základním názvem vašeho úložiště GitHub, v tomto případě *ACR-Build-HelloWorld-Node*. V prohlížeči můžete přejít na zobrazený odkaz pro zobrazení běžící webové aplikace. Pokud vaše aplikace naslouchá na jiném portu než 8080, určete místo toho adresu URL.
+Pracovní postup nasadí instanci kontejneru Azure se základním názvem vašeho úložiště GitHub, v tomto případě *ACR-Build-HelloWorld-Node*. Po úspěšném dokončení pracovního postupu Získejte informace o instanci kontejneru s názvem *ACR-Build-HelloWorld-Node* spuštěním příkazu [AZ Container show][az-container-show] . Nahraďte název vaší skupiny prostředků: 
 
-Pokud chcete zobrazit stav pracovního postupu a výsledky jednotlivých kroků v uživatelském rozhraní GitHubu, přečtěte si téma [Správa běhu pracovního postupu](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run).
+```azurecli
+az container show \
+  --resource-group <resource-group-name> \
+  --name acr-build-helloworld-node \
+  --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
+  --output table
+```
+
+Výstup se podobá tomuto:
+
+```console
+FQDN                                                   ProvisioningState
+---------------------------------                      -------------------
+acr-build-helloworld-node.westus.azurecontainer.io     Succeeded
+```
+
+Po zřízení instance přejděte do plně kvalifikovaného názvu domény kontejneru v prohlížeči, abyste viděli běžící webovou aplikaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

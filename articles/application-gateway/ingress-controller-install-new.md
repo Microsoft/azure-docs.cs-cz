@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807143"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593735"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Jak nainstalovat Application Gateway AGIC (příchozí adaptér) pomocí nového Application Gateway
 
@@ -22,7 +22,7 @@ Níže uvedené pokyny předpokládají, Application Gateway řadič příchozí
 
 Pro všechny operace příkazového řádku doporučujeme použít [Azure Cloud Shell](https://shell.azure.com/) . Spusťte prostředí z shell.azure.com nebo kliknutím na odkaz:
 
-[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+[![Vložené spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 Případně můžete Cloud Shell z Azure Portal spustit pomocí následující ikony:
 
@@ -30,17 +30,17 @@ Případně můžete Cloud Shell z Azure Portal spustit pomocí následující i
 
 Vaše [Azure Cloud Shell](https://shell.azure.com/) už má všechny potřebné nástroje. Pokud se rozhodnete použít jiné prostředí, zkontrolujte, že jsou nainstalované následující nástroje příkazového řádku:
 
-* `az`– Azure CLI: [pokyny k instalaci](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* `kubectl`-Kubernetes nástroj příkazového řádku: [pokyny k instalaci](https://kubernetes.io/docs/tasks/tools/install-kubectl)
-* `helm`– Správce balíčků Kubernetes: [pokyny k instalaci](https://github.com/helm/helm/releases/latest)
-* `jq`-příkazový řádek JSON – procesor: [pokyny k instalaci](https://stedolan.github.io/jq/download/)
+* `az` – Azure CLI: [pokyny k instalaci](/cli/azure/install-azure-cli)
+* `kubectl` -Kubernetes nástroj příkazového řádku: [pokyny k instalaci](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* `helm` – Správce balíčků Kubernetes: [pokyny k instalaci](https://github.com/helm/helm/releases/latest)
+* `jq` -příkazový řádek JSON – procesor: [pokyny k instalaci](https://stedolan.github.io/jq/download/)
 
 
 ## <a name="create-an-identity"></a>Vytvoření identity
 
-Pomocí následujících kroků vytvořte [objekt instančního objektu služby](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)Azure Active Directory (AAD). Poznamenejte si `appId` hodnoty, a, které `password` `objectId` budou použity v následujících krocích.
+Pomocí následujících kroků vytvořte [objekt instančního objektu služby](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)Azure Active Directory (AAD). Poznamenejte si `appId` hodnoty, a, které `password` `objectId` budou použity v následujících krocích.
 
-1. Vytvořit instanční objekt služby AD ([Další informace o RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)):
+1. Vytvoření instančního objektu služby AD ([Další informace o službě Azure RBAC](../role-based-access-control/overview.md)):
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -66,16 +66,16 @@ Pomocí následujících kroků vytvořte [objekt instančního objektu služby]
     }
     EOF
     ```
-    Chcete-li nasadit cluster s podporou **RBAC** , nastavte `aksEnableRBAC` pole na`true`
+    Pokud chcete nasadit cluster s povoleným **KUBERNETES RBAC** , nastavte `aksEnableRBAC` pole na `true`
 
 ## <a name="deploy-components"></a>Nasadit součásti
 Tento krok přidá do svého předplatného tyto komponenty:
 
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- [Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) se dvěma [podsítěmi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Veřejná IP adresa](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [Spravovaná identita](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), kterou bude používat [Identita AAD pod](https://github.com/Azure/aad-pod-identity/blob/master/README.md)
+- [Azure Kubernetes Service](../aks/intro-kubernetes.md)
+- [Application Gateway](./overview.md) v2
+- [Virtual Network](../virtual-network/virtual-networks-overview.md) se dvěma [podsítěmi](../virtual-network/virtual-networks-overview.md)
+- [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
+- [Spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md), kterou bude používat [Identita AAD pod](https://github.com/Azure/aad-pod-identity/blob/master/README.md)
 
 1. Stáhněte šablonu Azure Resource Manager a podle potřeby upravte šablonu.
     ```bash
@@ -92,7 +92,7 @@ Tento krok přidá do svého předplatného tyto komponenty:
     az group create -n $resourceGroupName -l $location
 
     # modify the template as needed
-    az group deployment create \
+    az deployment group create \
             -g $resourceGroupName \
             -n $deploymentName \
             --template-file template.json \
@@ -101,7 +101,7 @@ Tento krok přidá do svého předplatného tyto komponenty:
 
 1. Po dokončení nasazení stáhněte výstup nasazení do souboru s názvem `deployment-outputs.json` .
     ```azurecli
-    az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
+    az deployment group show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
 ## <a name="set-up-application-gateway-ingress-controller"></a>Nastavení ovladače Application Gateway příchozího přenosu dat
@@ -111,7 +111,7 @@ Podle pokynů v předchozí části jsme vytvořili a nakonfigurovali nový clus
 ### <a name="setup-kubernetes-credentials"></a>Nastavení přihlašovacích údajů Kubernetes
 Pro následující kroky potřebujeme příkaz Setup [kubectl](https://kubectl.docs.kubernetes.io/) , který použijeme pro připojení k naší novému clusteru Kubernetes. [Cloud Shell](https://shell.azure.com/) `kubectl` už je nainstalovaný. `az`K získání přihlašovacích údajů pro Kubernetes budeme používat rozhraní příkazového řádku.
 
-Získání přihlašovacích údajů pro nově nasazené AKS ([Další informace](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)):
+Získání přihlašovacích údajů pro nově nasazené AKS ([Další informace](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)):
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -121,34 +121,34 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 ```
 
 ### <a name="install-aad-pod-identity"></a>Nainstalovat identitu AAD pod
-  Azure Active Directory pod identitou poskytuje přístup založený na tokenech k [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+  Azure Active Directory pod identitou poskytuje přístup založený na tokenech k [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md).
 
   [Identita AAD pod](https://github.com/Azure/aad-pod-identity) přidá do clusteru Kubernetes následující součásti:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` , `AzureIdentityBinding`
    * Komponenta [spravovaného řadiče identity (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
    * Komponenta [spravované identity (NMI) uzlů](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
 
 Instalace identity AAD pod do clusteru:
 
-   - *RBAC povolena* Cluster AKS
+   - *KUBERNETES RBAC povolena* Cluster AKS
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - *RBAC zakázána* Cluster AKS
+   - *KUBERNETES RBAC je zakázaná* . Cluster AKS
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
      ```
 
-### <a name="install-helm"></a>Nainstalovat Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) je správce balíčků pro Kubernetes. Použijeme ji k instalaci `application-gateway-kubernetes-ingress` balíčku:
+### <a name="install-helm"></a>Instalace nástroje Helm
+[Helm](../aks/kubernetes-helm.md) je správce balíčků pro Kubernetes. Použijeme ji k instalaci `application-gateway-kubernetes-ingress` balíčku:
 
-1. Nainstalujte [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a spusťte následující příkaz pro přidání `application-gateway-kubernetes-ingress` balíčku Helm:
+1. Nainstalujte [Helm](../aks/kubernetes-helm.md) a spusťte následující příkaz pro přidání `application-gateway-kubernetes-ingress` balíčku Helm:
 
-    - *RBAC povolena* Cluster AKS
+    - *KUBERNETES RBAC povolena* Cluster AKS
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ Instalace identity AAD pod do clusteru:
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - *RBAC zakázána* Cluster AKS
+    - *KUBERNETES RBAC je zakázaná* . Cluster AKS
 
         ```bash
         helm init
@@ -228,7 +228,7 @@ Instalace identity AAD pod do clusteru:
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     
@@ -256,7 +256,7 @@ Instalace identity AAD pod do clusteru:
      - `appgw.name`: Název Application Gateway. Příklad: `applicationgatewayd0f0`
      - `appgw.shared`: Tento logický příznak by měl být nastaven na výchozí hodnotu `false` . Nastavte na, `true` Pokud potřebujete [sdílený Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway).
      - `kubernetes.watchNamespace`: Zadejte obor názvů, který má AGIC sledovat. Může se jednat o jednu řetězcovou hodnotu nebo seznam oborů názvů oddělených čárkami.
-    - `armAuth.type`: může být `aadPodIdentity` nebo`servicePrincipal`
+    - `armAuth.type`: může být `aadPodIdentity` nebo `servicePrincipal`
     - `armAuth.identityResourceID`: ID prostředku spravované identity Azure
     - `armAuth.identityClientId`: ID klienta identity. Další informace o identitě najdete níže.
     - `armAuth.secretJSON`: Je potřeba jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` byl nastavený na `servicePrincipal` ). 
@@ -267,7 +267,7 @@ Instalace identity AAD pod do clusteru:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
-   > `<resource-group>`v příkazu výše je skupina prostředků vašeho Application Gateway. `<identity-name>`je název vytvořené identity. Všechny identity pro dané předplatné můžou být uvedené pomocí:`az identity list`
+   > `<resource-group>` v příkazu výše je skupina prostředků vašeho Application Gateway. `<identity-name>` je název vytvořené identity. Všechny identity pro dané předplatné můžou být uvedené pomocí: `az identity list`
 
 
 1. Nainstalujte balíček Application Gateway příchozího řadiče pro příchozí přenosy:

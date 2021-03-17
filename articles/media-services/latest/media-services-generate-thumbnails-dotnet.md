@@ -1,5 +1,5 @@
 ---
-title: Jak generovat miniatury pomocí Azure Media Services kodéru Standard s .NET
+title: Generování miniatur pomocí Media Encoder Standard .NET
 description: V tomto článku se dozvíte, jak pomocí rozhraní .NET kódovat Asset a generovat miniatury ve stejnou dobu pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
@@ -11,18 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 12/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: f6a432ad30fa3ce24693a00478f2194caaa11ff9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3efb5aa864f0940b7b5aa6a9131da9ce8bd732ee
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068134"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092804"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>Jak generovat miniatury pomocí kodéru Standard s .NET
 
-Pomocí Media Encoder Standard můžete vygenerovat jednu nebo více miniatur ze vstupního videa ve formátech [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)nebo [bmp](https://en.wikipedia.org/wiki/BMP_file_format) .
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Pomocí Media Encoder Standard můžete vygenerovat jednu nebo více miniatur ze vstupního videa ve formátech obrázků [JPEG](https://en.wikipedia.org/wiki/JPEG) nebo [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) .
 
 ## <a name="recommended-reading-and-practice"></a>Doporučené čtení a postupy
 
@@ -93,4 +96,5 @@ private static Transform EnsureTransformExists(IAzureMediaServicesClient client,
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 [Generovat miniatury pomocí REST](media-services-generate-thumbnails-rest.md)

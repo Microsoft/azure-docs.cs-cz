@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bde82a0ad50c2172e70337ad202b91af0a62c530
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080013"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547811"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Integrované schopnosti rozpoznávání textu a zpracování obrázků při indexování (Azure Kognitivní hledání)
 
@@ -34,11 +34,11 @@ Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. O
 | Tuhle | Description |
 |-------|-------------|
 |[Microsoft. dovednosti. text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Vyhledá text z vlastního uživatelsky definovaného seznamu slov a frází.|
-| [Microsoft. dovednosti. text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Tato dovednost používá předvýukový model k detekci důležitých frází na základě pojmu umístění, lingvistických pravidel, blízkost k ostatním podmínkám a způsobu, jakým je neobvyklá doba v rámci zdrojových dat. |
+| [Microsoft. dovednosti. text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md) | Tato dovednost používá předvýukový model k detekci důležitých frází na základě pojmu umístění, lingvistických pravidel, blízkost k ostatním podmínkám a způsobu, jakým je neobvyklá doba v rámci zdrojových dat. |
 | [Microsoft. dovednosti. text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Tato dovednost používá předvlakový model ke zjištění, který jazyk se používá (jedno ID jazyka na dokument). Je-li v rámci stejných segmentů použito více jazyků, je výstupem identifikátor LCID převládajícího používaného jazyka.|
 | [Microsoft. dovednosti. text. MergeSkill](cognitive-search-skill-textmerger.md) | Konsoliduje text z kolekce polí do jednoho pole.  |
 | [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Tato dovednost používá předem provedený model pro vytváření entit pro pevnou sadu kategorií: lidé, umístění, organizace, e-maily, adresy URL, pole DateTime. |
-| [Microsoft. dovednosti. text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Tato dovednost používá předvlakový model k extrakci osobně identifikovatelných informací z daného textu. Tato dovednost také nabízí různé možnosti maskování zjištěných osobních údajů entit v textu.  |
+| [Microsoft. dovednosti. text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Tato dovednost používá předvlakový model k extrakci osobních údajů z daného textu. Tato dovednost také nabízí různé možnosti maskování zjištěných osobních informací v textu.  |
 | [Microsoft. dovednosti. text. SentimentSkill](cognitive-search-skill-sentiment.md)  | Tato dovednost používá předvlakový model ke zjištění kladné nebo záporné míněníy záznamu na základě záznamů. Skóre je mezi 0 a 1. V případě, že mínění nelze detekovat, a pro text, který je považován za neutrální, se vyskytnou neutrální skóre.  |
 | [Microsoft. dovednosti. text. SplitSkill](cognitive-search-skill-textsplit.md) | Rozdělí text na stránky, aby bylo možné přírůstkově rozšířit nebo rozšířit obsah. |
 | [Microsoft. dovednosti. text. TranslationSkill](cognitive-search-skill-text-translation.md) | Tato dovednost používá předvlakový model k překladu vstupního textu do celé řady jazyků pro normalizaci nebo použití lokalizace. |

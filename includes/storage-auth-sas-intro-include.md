@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75371768"
 ---
 Sdílený přístupový podpis (SAS) umožňuje udělit omezený přístup k kontejnerům a objektům blob ve vašem účtu úložiště. Při vytváření SAS zadáte omezení, včetně toho, ke kterým Azure Storage prostředkům má klient povolený přístup, jaká oprávnění jsou v těchto prostředcích a jak dlouho je SAS platný.

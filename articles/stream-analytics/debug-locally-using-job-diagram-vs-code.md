@@ -3,16 +3,15 @@ title: Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v
 description: Tento článek popisuje, jak místně ladit dotazy pomocí diagramu úloh v rozšíření Azure Stream Analytics pro Visual Studio Code.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: c31f3c998df918466e707c95f041592051e8251c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045310"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019495"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v Visual Studio Code
 
@@ -27,11 +26,11 @@ Skript Azure Stream Analytics slouží k transformaci vstupních dat na výstupn
 
 ### <a name="start-local-testing"></a>Spustit místní testování
 
-V tomto [rychlém](quick-create-vs-code.md) startu se dozvíte, jak vytvořit úlohu Stream Analytics pomocí Visual Studio Code nebo [Jak exportovat existující úlohu do místního projektu](visual-studio-code-explore-jobs.md). Pro exportované úlohy se automaticky naplní přihlašovací údaje pro vstupy a výstupy.
+V tomto [rychlém](quick-create-visual-studio-code.md) startu se dozvíte, jak vytvořit úlohu Stream Analytics pomocí Visual Studio Code nebo [Jak exportovat existující úlohu do místního projektu](visual-studio-code-explore-jobs.md). Pro exportované úlohy se automaticky naplní přihlašovací údaje pro vstupy a výstupy.
 
 Pokud chcete otestovat dotaz pomocí místních vstupních dat, postupujte podle těchto [pokynů](visual-studio-code-local-run.md). Pokud chcete provést test pomocí živého vstupu, [nakonfigurujte vstupní](stream-analytics-add-inputs.md) přesun na další krok. 
 
-Otevřete soubor skriptu * \. asaql* a vyberte **spustit místně**. Pak vyberte **použít místní vstup** nebo **použít živý vstup**. Diagram úlohy se zobrazí na pravé straně okna.
+Otevřete soubor skriptu *\. asaql* a vyberte **spustit místně**. Pak vyberte **použít místní vstup** nebo **použít živý vstup**. Diagram úlohy se zobrazí na pravé straně okna.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Zobrazit výstupní a průběžnou sadu výsledků  
 
@@ -59,7 +58,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 3. Pokud chcete zobrazit vstupní metriky, vyberte v rozevíracím seznamu název vstupního zdroje dat. Zdroj vstupu na snímku obrazovky níže se nazývá *uvozovky*. Další informace o vstupních metrikách najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
-   > ![Metriky diagramu úloh](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
+   > ![Vstupní metrika diagramu úloh](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
 
 4. Vyberte krok dotazu z diagramu úlohy nebo v rozevíracím seznamu vyberte název kroku, abyste viděli metriky na úrovni kroku. Zpoždění vodoznaku je jediná dostupná metrika kroku.
 
@@ -104,11 +103,11 @@ Vyberte **Souhrn úlohy** v pravém horním rohu diagramu úlohy, abyste viděli
 
 * Vlastní kód a Azure Machine Learning funkce jazyka C# nejsou podporovány. 
 
-* Pouze možnosti cloudového vstupu mají podporu [časových zásad](stream-analytics-out-of-order-and-late-events.md) , zatímco možnosti místního vstupu ne.
+* Pouze možnosti cloudového vstupu mají podporu [časových zásad](./stream-analytics-time-handling.md) , zatímco možnosti místního vstupu ne.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Visual Studio Code](quick-create-visual-studio-code.md)
 * [Prozkoumejte Azure Stream Analytics s Visual Studio Code](visual-studio-code-explore-jobs.md)
 * [Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code](visual-studio-code-local-run.md)
 * [Testování Azure Stream Analytics úloh místně pomocí živého vstupu pomocí Visual Studio Code](visual-studio-code-local-run-live-input.md)

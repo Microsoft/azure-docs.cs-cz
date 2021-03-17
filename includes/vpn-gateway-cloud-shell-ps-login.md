@@ -5,32 +5,34 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77133607"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061596"
 ---
-Otevřete konzolu PowerShellu se zvýšenými oprávněními.
+Pokud používáte PowerShell místně, otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu Azure. Rutina *Connect-AzAccount* vás vyzve k zadání přihlašovacích údajů. Po ověření se stáhne nastavení vašeho účtu, aby bylo možné Azure PowerShell.
 
-Pokud používáte Azure PowerShell místně, připojte se k účtu Azure. Rutina *Connect-AzAccount* vás vyzve k zadání přihlašovacích údajů. Po ověření se stáhne nastavení vašeho účtu, aby bylo možné Azure PowerShell. Pokud místo toho používáte Azure Cloud Shell, nemusíte spouštět *Connect-AzAccount*. Azure Cloud Shell se automaticky připojí k účtu Azure.
+Pokud používáte Azure Cloud Shell prostředí PowerShell místně, budete si všimnout, že nemusíte spouštět rutinu *Connect-AzAccount*. Po výběru **vyzkoušet** se Azure Cloud Shell ke svému účtu Azure automaticky připojí.
 
-```azurepowershell
-Connect-AzAccount
-```
+1. Pokud používáte PowerShell místně, přihlaste se.
 
-Pokud máte více než jedno předplatné, získejte seznam předplatných Azure.
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 
-```azurepowershell-interactive
-Get-AzSubscription
-```
+1. Pokud máte více než jedno předplatné, získejte seznam předplatných Azure.
 
-Určete předplatné, které chcete použít.
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Name of subscription"
-```
+1. Určete předplatné, které chcete použít.
+
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```

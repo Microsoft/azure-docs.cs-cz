@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543257"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s elementy SD
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat prvky SD pomocí Azure Active Director
 * Umožněte uživatelům, aby se automaticky přihlásili k elementům SD pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -47,15 +47,15 @@ Chcete-li nakonfigurovat integraci prvků SD do služby Azure AD, je nutné při
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **elementy SD** .
 1. Vyberte **prvky SD** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sd-elements"></a>Konfigurace a testování jednotného přihlašování Azure AD pro elementy SD
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD s elementy SD pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v prvcích SD.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s elementy SD pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v prvcích SD.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s elementy SD, dokončete následující stavební bloky:
 
@@ -70,8 +70,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s el
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **prvky SD** najděte část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **prvky SD** najděte část **Správa** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -91,7 +91,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše je aplikace prvků SD očekává, že se v odpovědi SAML vrátí zpět několik atributů, které jsou uvedeny níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | --- | --- |
     | e-mail |uživatel. pošta |
     | FirstName |User. křestní jméno |
@@ -109,25 +109,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k elementům SD.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **prvky SD**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **prvky SD** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -141,21 +141,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V jiném okně prohlížeče se přihlaste ke svému tenantovi elementy SD jako správce.
 
-1. V nabídce v horní části klikněte na **systém**a pak na **jednotné přihlašování**.
+1. V nabídce v horní části klikněte na **systém** a pak na **jednotné přihlašování** .
 
-    ![Konfigurace jednotného přihlašování](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![Snímek obrazovky s vybraným možnostem "System" a "jednotné přihlašování" v rozevíracím seznamu.](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
-1. V dialogovém okně **nastavení jednotného přihlašování** proveďte následující kroky:
+1. V dialogovém okně **Nastavení jednoho Sign-On** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
+    ![Konfigurace jednoho Sign-On](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
-    a. Jako **Typ jednotného přihlašování**vyberte **SAML**.
+    a. Jako **Typ jednotného přihlašování** vyberte **SAML** .
 
-    b. Do textového pole **ID entity zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **ID entity zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
-    c. Do textového pole **Služba jednotného přihlašování zprostředkovatele identity** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **služba poskytovatele identity s jednou Sign-On službou** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. Klikněte na **Uložit**.
+    d. Klikněte na **Uložit** .
 
 ### <a name="create-sd-elements-test-user"></a>Vytvořit testovacího uživatele pro elementy SD
 
@@ -165,13 +165,13 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v prvcích SD. V
 
 1. V okně webového prohlížeče se přihlaste k vašim prvkům SD elementy SD jako správce.
 
-1. V nabídce v horní části klikněte na **Správa uživatelů**a pak na **Uživatelé**.
+1. V nabídce v horní části klikněte na **Správa uživatelů** a pak na **Uživatelé** .
 
-    ![Vytvoření testovacího uživatele pro elementy SD](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![Snímek obrazovky, který zobrazuje uživatele vybrané v rozevíracím seznamu Správa uživatelů](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
-1. Klikněte na tlačítko **Přidat nového uživatele**.
+1. Klikněte na tlačítko **Přidat nového uživatele** .
 
-    ![Vytvoření testovacího uživatele pro elementy SD](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Přidat nového uživatele.](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. V dialogovém okně **Přidat nového uživatele** proveďte následující kroky:
 
@@ -179,26 +179,26 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v prvcích SD. V
 
     a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **b.simon@contoso.com** .
 
-    b. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B.**.
+    b. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B.** .
 
-    c. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
+    c. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon** .
 
-    d. Jako **role**vyberte **uživatel**.
+    d. Jako **role** vyberte **uživatel** .
 
-    e. Klikněte na **vytvořit uživatele**.
+    e. Klikněte na **vytvořit uživatele** .
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici prvky SD na přístupovém panelu byste měli být automaticky přihlášeni k prvkům SD, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici prvky SD na přístupovém panelu byste měli být automaticky přihlášeni k prvkům SD, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte elementy SD pomocí Azure AD](https://aad.portal.azure.com/)

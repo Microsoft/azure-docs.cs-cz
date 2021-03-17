@@ -3,12 +3,12 @@ title: Co může zálohovat Azure Backup Server V3 RTM
 description: Tento článek obsahuje matrici ochrany, kde najdete seznam všech úloh, datových typů a instalací, které Azure Backup zajišťují ochranu pomocí v3 RTM.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661278"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986883"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM – matice ochrany
 
@@ -23,8 +23,8 @@ Následující tabulka uvádí, co se dá chránit pomocí Azure Backup Server V
 |Klientské počítače (64bitové a 32bitové)|Windows 8.1|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
-|Klientské počítače (64bitové a 32bitové)|Windows 7|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
-|Klientské počítače (64bitové a 32bitové)|Windows 7|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
+|Klientské počítače (64bitové a 32bitové)|Windows 7|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
+|Klientské počítače (64bitové a 32bitové)|Windows 7|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Servery (64 bitů)|Windows Server 2019|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /><br />Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)<br /><br />Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Technologie <br />Ne server Nano|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému, deduplikované svazky|
 |Servery (32bitové a 64bitové)|Windows Server 2016|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /><br />Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)<br /><br />Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2<br />Ne server Nano|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému, deduplikované svazky|
 |Servery (32bitové a 64bitové)|Windows Server 2012 R2 – Datacenter a Standard|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor<br /><br />Aby bylo možné chránit svazky s odstraněním duplicit systému Windows Server 2012, Azure Backup Server musí být spuštěná aspoň na Windows Serveru 2012 R2.|
@@ -78,7 +78,7 @@ Následující tabulka uvádí, co se dá chránit pomocí Azure Backup Server V
 |Hyper-V Host – agent MABS Protection na hostitelském serveru Hyper-V, clusteru nebo virtuálním počítači|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Nepodporováno|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení souborů a složky na úrovni položky, svazky, virtuální pevné disky|
 |Virtuální počítače VMware|VMware vCenter/vSphere ESX/ESXi licencovaný verze 5.5/6.0/6.5 |Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMware|V3, V2|Virtuální počítače VMware na svazcích CSV (cluster-Shared Volume), NFS a SAN Storage<br /> Obnovení souborů a složek na úrovni položek je dostupné jenom pro virtuální počítače s Windows, ale VMware vApp se nepodporují.|
 |Virtuální počítače VMware|[VMware vSphere licencované verze 6,7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMware|Technologie|Virtuální počítače VMware na svazcích CSV (cluster-Shared Volume), NFS a SAN Storage<br /> Obnovení souborů a složek na úrovni položek je dostupné jenom pro virtuální počítače s Windows, ale VMware vApp se nepodporují.|
-|Linux|Linux spuštěný jako Hyper-V nebo host VMware|Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMware|V3, V2|Prostředí Hyper-V musí být spuštěné v systému Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: Celý virtuální počítač<br /><br />Obnovení: Celý virtuální počítač <br/><br/> Podporovány jsou pouze snímky konzistentních souborů. <br/><br/> Úplný seznam podporovaných distribucí a verzí systému Linux najdete v článku [Linux v distribucích, které jsou schváleny v Azure](../virtual-machines/linux/endorsed-distros.md).|
+|Linux|Linux spuštěný jako [Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) nebo host [VMware](backup-azure-backup-server-vmware.md)|Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMware|V3, V2|Prostředí Hyper-V musí být spuštěné v systému Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: Celý virtuální počítač<br /><br />Obnovení: Celý virtuální počítač <br/><br/> Podporovány jsou pouze snímky konzistentních souborů. <br/><br/> Úplný seznam podporovaných distribucí a verzí systému Linux najdete v článku [Linux v distribucích, které jsou schváleny v Azure](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
 
@@ -86,13 +86,18 @@ Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vzta
 
 S veřejným partnerským vztahem: Zajistěte přístup k následujícím doménám nebo adresám:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+* Adresy URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
-S partnerským vztahem Microsoftu vyberte prosím následující služby nebo oblasti a příslušné hodnoty komunity:
+S partnerským vztahem Microsoftu vyberte následující služby nebo oblasti a příslušné hodnoty komunity:
 
 * Azure Active Directory (12076:5060)
 * Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)

@@ -1,23 +1,20 @@
 ---
 title: 'Kurz: Vytvoření clusteru s povoleným Apache Kafka proxy REST v HDInsight pomocí Azure CLI'
 description: Naučte se provádět operace Apache Kafka pomocí proxy serveru REST Kafka ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503136"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944023"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Kurz: Vytvoření clusteru s povoleným Apache Kafka proxy REST v HDInsight pomocí Azure CLI
 
-V tomto kurzu se naučíte, jak vytvořit cluster Apache Kafka s [podporou proxy REST](./rest-proxy.md) v Azure HDInsight pomocí rozhraní příkazového řádku (CLI) Azure. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Apache Kafka je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) přes protokol HTTP. Azure CLI je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
+V tomto kurzu se naučíte, jak vytvořit cluster Apache Kafka s [podporou proxy REST](./rest-proxy.md) v Azure HDInsight pomocí rozhraní příkazového řádku (CLI) Azure. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Apache Kafka je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím [REST API](/rest/api/hdinsight-kafka-rest-proxy/) přes protokol HTTP. Azure CLI je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
 Rozhraní Apache Kafka API je přístupné jenom pro prostředky ve stejné virtuální síti. Ke clusteru můžete přistupovat přímo pomocí SSH. Pokud chcete k platformě Apache Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v tématu [připojení k Apache Kafka pomocí virtuální sítě](./apache-kafka-connect-vpn-gateway.md).
 
@@ -27,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Předpoklady pro proxy Kafka REST
 > * Vytvoření clusteru Apache Kafka pomocí Azure CLI
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Skupina zabezpečení Azure AD s vaší registrovanou aplikací jako členem. Tato skupina zabezpečení se použije k určení, které aplikace můžou pracovat s proxy REST. Další informace o vytváření skupin Azure AD najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* Azure CLI Ujistěte se, že máte minimálně verzi 2.0.79. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI Ujistěte se, že máte minimálně verzi 2.0.79. Viz [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Vytvoření clusteru Apache Kafka
 
@@ -56,7 +53,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     |location|MÍSTO pro umístění nahraďte oblastí, ve které se cluster vytvoří. Seznam platných umístění získáte pomocí `az account list-locations` příkazu.|
     |clusterName|Parametr název_clusteru nahraďte globálně jedinečným názvem pro nový cluster.|
     |storageAccount|Nahraďte STORAGEACCOUNTNAME názvem nového účtu úložiště.|
-    |httpPassword|HESLO pro přihlášení ke clusteru a **správce**nahraďte heslem.|
+    |httpPassword|HESLO pro přihlášení ke clusteru a **správce** nahraďte heslem.|
     |sshPassword|Heslo nahraďte heslem pro uživatelské jméno zabezpečeného prostředí **sshuser**.|
     |securityGroupName|Nahraďte SECURITYGROUPNAME názvem skupiny zabezpečení AAD klienta pro proxy Kafka REST. Proměnná bude předána `--kafka-client-group-name` parametru pro `az-hdinsight-create` .|
     |securityGroupID|Nahraďte SECURITYGROUPID ID skupiny zabezpečení AAD klienta pro proxy REST Kafka. Proměnná bude předána `--kafka-client-group-id` parametru pro `az-hdinsight-create` .|
@@ -85,7 +82,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     export componentVersion=kafka=2.1
     ```
 
-1. [Vytvořte skupinu prostředků](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) zadáním následujícího příkazu:
+1. [Vytvořte skupinu prostředků](/cli/azure/group#az-group-create) zadáním následujícího příkazu:
 
     ```azurecli
      az group create \
@@ -93,7 +90,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         --name $resourceGroupName
     ```
 
-1. [Vytvořte účet Azure Storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) zadáním následujícího příkazu:
+1. [Vytvořte účet Azure Storage](/cli/azure/storage/account#az-storage-account-create) zadáním následujícího příkazu:
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -106,7 +103,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         --sku Standard_LRS
     ```
 
-1. [Extrahujte primární klíč](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) z účtu Azure Storage a uložte ho do proměnné zadáním následujícího příkazu:
+1. [Extrahujte primární klíč](/cli/azure/storage/account/keys#az-storage-account-keys-list) z účtu Azure Storage a uložte ho do proměnné zadáním následujícího příkazu:
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -115,7 +112,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         --query [0].value -o tsv)
     ```
 
-1. [Vytvořte kontejner Azure Storage](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) zadáním následujícího příkazu:
+1. [Vytvořte kontejner Azure Storage](/cli/azure/storage/container#az-storage-container-create) zadáním následujícího příkazu:
 
     ```azurecli
     az storage container create \
@@ -124,7 +121,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         --account-name $storageAccount
     ```
 
-1. [Vytvořte cluster HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create). Před zadáním příkazu si všimněte následujících parametrů:
+1. [Vytvořte cluster HDInsight](/cli/azure/hdinsight#az-hdinsight-create). Před zadáním příkazu si všimněte následujících parametrů:
 
     1. Požadované parametry pro clustery Kafka:
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552525"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592388"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Monitorování požadavků na dotazy v Azure Kognitivní hledání
 
@@ -41,8 +41,8 @@ Je běžné, že dotazy se mají spouštět v milisekundách, takže se v metrik
 | Průměr | Průměrný počet sekund během minuty, během kterých došlo k provedení dotazu.|
 | Počet | Počet metrik, které byly vygenerovány do protokolu v rámci intervalu 1 – minut. |
 | Maximum | Nejvyšší počet vyhledávacích dotazů za sekundu zaregistrovaných během minuty. |
-| Minimální | Nejnižší počet vyhledávacích dotazů za sekundu zaregistrovaných během minuty.  |
-| Součet | Součet všech dotazů provedených během minuty.  |
+| Minimum | Nejnižší počet vyhledávacích dotazů za sekundu zaregistrovaných během minuty.  |
+| Sum | Součet všech dotazů provedených během minuty.  |
 
 Například během jedné minuty můžete mít podobný vzor: jedna sekunda vysokého zatížení, která je maximální hodnota pro SearchQueriesPerSecond, následovaná 58 sekundami průměrného zatížení a nakonec jedna sekunda pouze jedním dotazem, což je minimální hodnota.
 
@@ -59,7 +59,7 @@ Výkon dotazů v rámci služby se měří jako latence hledání (jak dlouho tr
 | Průměr | Průměrná doba trvání dotazu v milisekundách | 
 | Počet | Počet metrik, které byly vygenerovány do protokolu v rámci intervalu 1 – minut. |
 | Maximum | Nejdelší běžící dotaz v ukázce. | 
-| Minimální | Nejkratší běžící dotaz v ukázce.  | 
+| Minimum | Nejkratší běžící dotaz v ukázce.  | 
 | Celkem | Celková doba provádění všech dotazů v ukázce prováděná v intervalu (jedna minuta).  |
 
 Vezměte v úvahu následující příklad metrik **latence hledání** : byly navzorkované dotazy 86, jejichž průměrná doba je 23,26 milisekund. Minimum z 0 značí, že některé dotazy byly vyřazeny. Nejdelší běžící dotaz trvalo dokončení 1000 MS. Celková doba spuštění byla 2 sekundy.
@@ -87,7 +87,7 @@ K potvrzení omezených dotazů použijte metriku **omezených vyhledávacích d
 | Průměr | Procento dotazů vyřazených v intervalu. |
 | Počet | Počet metrik, které byly vygenerovány do protokolu v rámci intervalu 1 – minut. |
 | Maximum | Procento dotazů vyřazených v intervalu.|
-| Minimální | Procento dotazů vyřazených v intervalu. |
+| Minimum | Procento dotazů vyřazených v intervalu. |
 | Celkem | Procento dotazů vyřazených v intervalu. |
 
 U **omezených vyhledávacích dotazů procento**, minimum, maximum, průměr a součet musí mít všechny stejnou hodnotu: procento vyhledávacích dotazů, které byly omezeny, z celkového počtu vyhledávacích dotazů během jedné minuty.
@@ -100,7 +100,7 @@ Na následujícím snímku obrazovky je první číslo počet (nebo počet metri
 
 Chcete-li rychle zobrazit aktuální čísla, karta **monitorování** na stránce Přehled služby zobrazuje tři metriky (**latence hledání**, **hledané dotazy za sekundu (na jednotku vyhledávání)**, **procento omezených vyhledávacích dotazů**) za pevné intervaly měřené v hodinách, dnech a týdnech s možností změny typu agregace.
 
-Pro hlubší zkoumání otevřete Průzkumníka metrik z nabídky **monitorování** , abyste mohli vrstvy, přiblížení a vizualizaci dat prozkoumat trendy a anomálií. Další informace o Průzkumníkovi metrik najdete [v tomto kurzu o vytváření grafu metrik](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer).
+Pro hlubší zkoumání otevřete Průzkumníka metrik z nabídky **monitorování** , abyste mohli vrstvy, přiblížení a vizualizaci dat prozkoumat trendy a anomálií. Další informace o Průzkumníkovi metrik najdete [v tomto kurzu o vytváření grafu metrik](../azure-monitor/essentials/tutorial-metrics-explorer.md).
 
 1. V části monitorování vyberte **metriky** a otevřete Průzkumníka metrik s oborem nastaveným na vyhledávací službu.
 
@@ -179,7 +179,7 @@ Při nahrávání omezení konkrétní konfigurace oddílu repliky je také uži
 
 1. Nakonec zadejte podrobnosti výstrahy. Zadejte název a popis výstrahy, přiřaďte hodnotu závažnosti a určete, jestli se má pravidlo vytvořit v povoleném nebo zakázaném stavu.
 
-   ![Podrobnosti výstrahy](./media/search-monitor-usage/alert-details.png "Podrobnosti upozornění")
+   ![Podrobnosti výstrahy](./media/search-monitor-usage/alert-details.png "Podrobnosti výstrahy")
 
 Pokud jste zadali e-mailové oznámení, obdržíte e-mailovou zprávu od "Microsoft Azure" s řádkem předmětu "Azure: aktivované závažnost: 3 `<your rule name>` ".
 

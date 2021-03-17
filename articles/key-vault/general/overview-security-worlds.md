@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428950"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936324"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault světů zabezpečení a geografické hranice
 
@@ -32,7 +32,7 @@ Například záloha pořízená daným předplatným klíče v trezoru klíčů 
 
 ## <a name="regions-and-products"></a>Oblasti a produkty
 
-- [Oblast Azure](https://azure.microsoft.com/regions/)
+- [Oblasti Azure](https://azure.microsoft.com/regions/)
 - [Produkty společnosti Microsoft podle oblastí](https://azure.microsoft.com/regions/services/)
 
 Oblasti se mapují na světů zabezpečení, které se zobrazují jako hlavní nadpisy v tabulkách:
@@ -43,6 +43,3 @@ V článku produkty podle oblasti obsahuje například karta **Severní Amerika*
 >Výjimkou je to, že US DOD a USA – střed mají vlastní světů zabezpečení. 
 
 Podobně jsou na kartě **Evropa** v oblasti Severní Evropa a západní Evropa namapovány na oblast Evropa. Totéž platí také na kartě **Asie a Tichomoří** .
-
-
-

@@ -1,7 +1,7 @@
 ---
 title: Co je distribuované školení?
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o distribuovaném školení a o tom, jak ho Azure Machine Learning podporuje.
+description: Dozvíte se, jaký typ distribuovaného školení Azure Machine Learning podporuje, a integraci Open Source Framework, která je k dispozici pro distribuované školení.
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995024"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498961"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Distribuované školení pomocí Azure Machine Learning
 
@@ -24,9 +24,9 @@ V distribuovaném školení úlohy pro vývoj modelu je rozdělené a sdílené 
 
 ## <a name="deep-learning-and-distributed-training"></a>Obsáhlý Learning a distribuované školení 
 
-Existují dva hlavní typy distribuovaných školení: [datová paralelismus](#data-parallelism) a [model paralelismus](#model-parallelism). Pro distribuované školení v modelech hloubkového učení podporuje [Azure Machine Learning SDK v Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) integraci s oblíbenými architekturami, PyTorch a TensorFlow. Obě architektury využívají datovou paralelismuu pro distribuované školení a můžou využít [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) k optimalizaci rychlostech výpočtů. 
+Existují dva hlavní typy distribuovaných školení: [datová paralelismus](#data-parallelism) a [model paralelismus](#model-parallelism). Pro distribuované školení v modelech hloubkového učení podporuje [Azure Machine Learning SDK v Pythonu](/python/api/overview/azure/ml/intro) integraci s oblíbenými architekturami, PyTorch a TensorFlow. Obě architektury využívají datovou paralelismuu pro distribuované školení a můžou využít [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) k optimalizaci rychlostech výpočtů. 
 
-* [Distribuované školení pomocí PyTorch](how-to-train-pytorch.md#distributed-training)
+* [Distribuované trénování s využitím PyTorchu](how-to-train-pytorch.md#distributed-training)
 
 * [Distribuované školení pomocí TensorFlow](how-to-train-tensorflow.md#distributed-training)
 
@@ -50,7 +50,7 @@ V modelu paralelismus musí pracovní uzly synchronizovat pouze sdílené parame
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se, jak [nastavit školicí prostředí](how-to-set-up-training-targets.md) pomocí sady Python SDK.
-* Technický příklad naleznete v tématu [scénář referenční architektury](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
+* Naučte se [používat výpočetní cíle pro školení modelů](how-to-set-up-training-targets.md) se sadou Python SDK.
+* Technický příklad naleznete v tématu [scénář referenční architektury](/azure/architecture/reference-architectures/ai/training-deep-learning).
 * [Modely vlakových ml pomocí TensorFlow](how-to-train-tensorflow.md).
-* [Modely vlakových ml pomocí PyTorch](how-to-train-pytorch.md). 
+* [Modely vlakových ml pomocí PyTorch](how-to-train-pytorch.md).

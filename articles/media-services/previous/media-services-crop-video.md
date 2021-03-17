@@ -3,7 +3,7 @@ title: Jak oříznout videa pomocí Media Encoder Standard – Azure | Microsoft
 description: Oříznutí je proces výběru obdélníkového okna v rámci videa a kódování pouze pixelů v rámci tohoto okna. Tento článek ukazuje, jak oříznout videa pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/10/2021
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 87348899a70d45fbfbce805bf2169f9f5e4e3f3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6a15e57884f85e2d56b77c3e5eec1267133fe96d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956759"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016725"
 ---
-# <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard  
+# <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 K oříznutí vstupního videa můžete použít Media Encoder Standard (status národního prostředí). Oříznutí je proces výběru obdélníkového okna v rámci videa a kódování pouze pixelů v rámci tohoto okna. Následující diagram vám pomůže tento proces znázornit.
 

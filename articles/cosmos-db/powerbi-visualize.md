@@ -3,17 +3,19 @@ title: Kurz Power BI pro konektor Azure Cosmos DB
 description: Tento Power BI kurz použijte k importu JSON, vytvoření sestav přehledné a vizualizaci dat pomocí konektoru Azure Cosmos DB a Power BI.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027781"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359859"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB s využitím konektoru Power BI
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Power BI](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy. Power BI Desktop je nástroj pro vytváření sestav, který umožňuje načítat data z různých zdrojů dat. Azure Cosmos DB je jedním ze zdrojů dat, které můžete použít s Power BI Desktopem. Pomocí konektoru Azure Cosmos DB pro Power BI můžete propojit Power BI Desktop s účtem služby Azure Cosmos DB.  Po importu dat služby Azure Cosmos DB do Power BI je můžete transformovat, vytvářet z nich sestavy a tyto sestavy publikovat v Power BI.   
 
@@ -25,14 +27,14 @@ Tento článek popisuje kroky potřebné k propojení účtu služby Azure Cosmo
 > [!NOTE]
 > Připojení k Azure Cosmos DB pomocí konektoru Power BI se v současné době podporuje jenom pro Azure Cosmos DB účty rozhraní SQL API a Gremlin API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než budete postupovat podle pokynů v tomto Power BI kurzu, ujistěte se, že máte přístup k následujícím prostředkům:
 
 * [Stáhněte si nejnovější verzi Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
-* Stáhněte si [ukázková data Volcano](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) z GitHubu.
+* Stáhněte si [ukázková data Volcano](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json) z GitHubu.
 
-* [Vytvořte účet databáze Azure Cosmos](https://azure.microsoft.com/documentation/articles/create-account/) a importujte data Volcano pomocí [Nástroje pro migraci dat Azure Cosmos DB](import-data.md). Při importu dat zvažte následující nastavení zdroje a cíle v nástroji pro migraci dat:
+* [Vytvořte účet databáze Azure Cosmos](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) a importujte data Volcano pomocí [Nástroje pro migraci dat Azure Cosmos DB](import-data.md). Při importu dat zvažte následující nastavení zdroje a cíle v nástroji pro migraci dat:
 
    * **Zdrojové parametry** 
 
@@ -74,7 +76,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
 
 1. Spusťte Power BI Desktop.
 
-2. Můžete **získat data**, zobrazit **Poslední zdroje**nebo **otevřít jiné sestavy** přímo z úvodní obrazovky. Kliknutím na X v pravém horním rohu zavřete obrazovku. Zobrazí se zobrazení Power BI Desktop **sestavy** .
+2. Můžete **získat data**, zobrazit **Poslední zdroje** nebo **otevřít jiné sestavy** přímo z úvodní obrazovky. Kliknutím na X v pravém horním rohu zavřete obrazovku. Zobrazí se zobrazení Power BI Desktop **sestavy** .
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop zobrazení sestav – konektor Power BI":::
 
@@ -90,7 +92,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
    
 7. Pokud se k tomuto koncovému bodu připojujete poprvé, zobrazí se výzva k zadání klíče účtu. Pro vlastní účet načtěte klíč z pole **primární klíč** v okně **klíče jen pro čtení** Azure Portal. Zadejte příslušný klíč a pak klikněte na **připojit**.
    
-   Při vytváření sestav doporučujeme použít klíč jen pro čtení. To brání zbytečné expozici hlavního klíče potenciálním bezpečnostním rizikům. Klíč, který je jen pro čtení, je k dispozici v okně **klíče** Azure Portal. 
+   Při vytváření sestav doporučujeme použít klíč jen pro čtení. Tím se zabrání zbytečnému úniku primárního klíče k potenciálním bezpečnostním rizikům. Klíč, který je jen pro čtení, je k dispozici v okně **klíče** Azure Portal. 
     
 8. Po úspěšném připojení účtu se zobrazí podokno **navigátor** . **Navigátor** zobrazuje seznam databází pod účtem.
 
@@ -135,7 +137,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
 
 1. Potom zadejte vlastní vzorec pro nový sloupec.  V našem příkladu budeme zřetězit hodnoty zeměpisné šířky a délky oddělené čárkou, jak je znázorněno v následujícím vzorci: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klikněte na **OK**.
    
-   Další informace o výrazech data Analysis Expressions (DAX), včetně funkcí DAX, najdete [v Power BI Desktop základy jazyka DAX](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
+   Další informace o výrazech data Analysis Expressions (DAX), včetně funkcí DAX, najdete [v Power BI Desktop základy jazyka DAX](/power-bi/desktop-quickstart-learn-dax-basics).
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Kurz Power BI pro Azure Cosmos DB Power BI Connector – Přidání vlastního sloupce":::
 
@@ -158,7 +160,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
 
 Power BI Desktop zobrazení sestav je místo, kde můžete začít vytvářet sestavy pro vizualizaci dat.  Sestavy můžete vytvářet přetažením a přetažením polí na plátno pro **sestavy** .
 
-:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop zobrazení sestav – konektor Power BI":::
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop zobrazení sestavy – přetáhněte požadovaná pole.":::
 
 V zobrazení sestavy byste měli najít tyto informace:
 
@@ -197,7 +199,7 @@ Při publikování sestavy z Power BI Desktop do PowerBI.com vygeneruje **sestav
 
 Řídicí panel můžete vytvořit tak, že v sestavě PowerBI.com kliknete na tlačítko **připnout živou stránku** .
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Snímek obrazovky s novou sestavou a datovou sadou v PowerBI.com":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Snímek obrazovky s popisem způsobu připnutí sestavy do PowerBI.com":::
 
 Pak postupujte podle pokynů v tématu [připnutí dlaždice ze sestavy](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) a vytvořte nový řídicí panel. 
 
@@ -226,4 +228,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>Další kroky
 * Další informace o Power BI najdete v tématu [Začínáme s Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Další informace o Azure Cosmos DB najdete na [úvodní stránce dokumentace k Azure Cosmos DB](https://azure.microsoft.com/documentation/services/cosmos-db/).
-

@@ -4,13 +4,13 @@ description: Naučte se, jak nasadit aplikaci pro Azure App Service se souborem 
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
-ms.custom: seodec18
-ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 150f6b57f1dec0b6d925ef53b4a7001ae9f23607
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077148"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007904"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace pro Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -33,7 +33,7 @@ Nasazení souboru WAR nasadí váš soubor [War](https://wikipedia.org/wiki/WAR_
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto článku [vytvořte aplikaci App Service](/azure/app-service/)nebo použijte aplikaci, kterou jste vytvořili pro jiný kurz.
+K dokončení kroků v tomto článku [vytvořte aplikaci App Service](./index.yml)nebo použijte aplikaci, kterou jste vytvořili pro jiný kurz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,7 @@ Výše uvedený koncový bod nefunguje v současnosti pro Linux App Services. Zv
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Nasazení souboru ZIP pomocí Azure CLI
 
-Nasaďte nahraný soubor ZIP do webové aplikace pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
+Nasaďte nahraný soubor ZIP do webové aplikace pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) .  
 
 Následující příklad nasadí soubor ZIP, který jste nahráli. Pokud používáte místní instalaci rozhraní příkazového řádku Azure CLI, zadejte cestu k místnímu souboru ZIP pro `--src` .
 

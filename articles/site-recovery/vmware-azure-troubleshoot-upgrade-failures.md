@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84434367"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
@@ -48,7 +48,7 @@ Aby byl upgrade úspěšný, nesmí být složka třetí strany přejmenována.
 
 K vyřešení tohoto problému.
 
-1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
 1. Zkontrolujte `Build_Version` hodnotu klíče. Pokud je nastavená na nejnovější verzi, snižte číslo verze. Například pokud je nejnovější verze 9,22. \* a `Build_Version` nastavte klíč na tuto hodnotu a pak ho snižte na 9,21. \* .
 1. Stáhněte si nejnovější Microsoft Azure Site Recovery Unified Setup:
    1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
@@ -73,8 +73,8 @@ Při upgradu zprostředkovatele Microsoft Azure Site Recovery Provider (DRA) se 
 
 Příčinou může být hodnota null pro parametr v klíči registru. Řešení problému –
 
-1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
+1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
 1. Zkontrolujte hodnotu klíče ' InstallDirectory '.Pokud má hodnotu null, přidejte hodnotu aktuální instalační adresář.
-1. Podobně otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 v editoru registru.
+1. Podobně otevřete větev HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 v editoru registru.
 1. Zkontrolujte hodnotu klíče InstallDirectory a přidejte hodnotu aktuální instalační adresář.
 1. Spusťte znovu instalační program sjednocené instalace.

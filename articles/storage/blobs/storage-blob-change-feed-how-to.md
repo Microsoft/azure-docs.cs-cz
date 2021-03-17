@@ -1,36 +1,35 @@
 ---
-title: Zpracování kanálu změn ve službě Azure Blob Storage (Preview) | Microsoft Docs
+title: Postup změny kanálu v Azure Blob Storage | Microsoft Docs
 description: Informace o zpracování protokolů změn kanálu v klientské aplikaci .NET
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691424"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89568247"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Zpracování kanálu změn ve službě Azure Blob Storage (Preview)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Zpracování kanálu změn v Azure Blob Storage
 
 Změna kanálu poskytuje transakční protokoly všech změn, ke kterým dojde, do objektů BLOB a metadat objektů BLOB ve vašem účtu úložiště. V tomto článku se dozvíte, jak číst záznamy kanálu změn pomocí knihovny změn v modulu BLOB Change feed Processor.
 
-Další informace o kanálu změn najdete v tématu [Změna kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md).
-
-> [!NOTE]
-> Kanál změn je ve verzi Public Preview a je dostupný v oblastech **westcentralus** a **westus2** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Změna podpory kanálu v Azure Blob Storage](storage-blob-change-feed.md). Knihovna Change feed Processor se může změnit mezi nyní a až bude tato knihovna všeobecně dostupná.
+Další informace o kanálu změn najdete v tématu [Změna kanálu v Azure Blob Storage](storage-blob-change-feed.md).
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Získání knihovny pro změnu objektu BLOB Processor
 
 1. Otevřete příkazové okno (například prostředí Windows PowerShell).
-2. Z adresáře projektu nainstalujte balíček NuGet **Azure. Storage. BLOBs. Changefeed** .
+2. Z adresáře projektu nainstalujte [balíček NuGet **Azure. Storage. BLOBs. Changefeed** ](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/).
 
 ```console
-dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
 ## <a name="read-records"></a>Čtení záznamů
 
@@ -117,7 +116,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 ## <a name="stream-processing-of-records"></a>Zpracování datových proudů záznamů
 
-Můžete zvolit zpracování záznamů kanálu změn při jejich doručení. Viz [specifikace](storage-blob-change-feed.md#specifications). Pro každou hodinu doporučujeme dotazovat se na změny.
+Můžete zvolit zpracování záznamů kanálu změn, když jsou potvrzeny do kanálu změn. Viz [specifikace](storage-blob-change-feed.md#specifications). Události změny jsou v průměru publikovány do kanálu změn v období od 60 sekund. Při zadávání intervalu cyklického dotazování doporučujeme, abyste si v tomto období vydávali dotaz na nové změny.
 
 V tomto příkladu se pravidelně dotazuje na změny.  Pokud existují záznamy změn, tento kód tyto záznamy zpracovává a ukládá kurzor na změnu kanálu. To znamená, že pokud se proces zastaví a pak znovu spustí, aplikace může použít kurzor pro pokračování ve zpracování záznamů, kde naposledy skončila. Tento příklad uloží kurzor do konfiguračního souboru místní aplikace, ale aplikace ho může uložit v jakémkoli formuláři, který má pro váš scénář největší smysl. 
 
@@ -181,7 +180,7 @@ public void SaveCursor(string cursor)
 
 ## <a name="reading-records-within-a-time-range"></a>Čtení záznamů v časovém rozsahu
 
-Můžete číst záznamy, které spadají do určitého časového rozsahu. Tento příklad projde všechny záznamy v informačním kanálu změny, které spadají do 2 2017. března v březnu a 2:00 dokončí v 3:00.7 2019 října, přidá je do seznamu a potom tento seznam vrátí volajícímu.
+Můžete číst záznamy, které spadají do určitého časového rozsahu. Tento příklad prochází všechny záznamy v informačním kanálu změn, které spadají do 2 2020. března a 2:00 v 3:00.7 2020 srpna, přidá je do seznamu a potom tento seznam vrátí volajícímu.
 
 ### <a name="selecting-segments-for-a-time-range"></a>Výběr segmentů pro časový rozsah
 
@@ -198,8 +197,8 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
     // Create the start and end time.  The change feed client will round start time down to
     // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
     // with minutes and seconds.
-    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
-    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
 
     // You can also provide just a start or end time.
     await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(
@@ -217,4 +216,4 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o protokolech změn kanálu. Viz [Změna kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
+Přečtěte si další informace o protokolech změn kanálu. Viz [Změna kanálu v Azure Blob Storage](storage-blob-change-feed.md)

@@ -1,17 +1,17 @@
 ---
 title: Použití klíčů spravovaných zákazníkem k šifrování konfiguračních dat
 description: Šifrování konfiguračních dat pomocí klíčů spravovaných zákazníkem
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384867"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930496"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Použití klíčů spravovaných zákazníkem k šifrování dat konfigurace aplikace
 Konfigurace aplikace Azure [šifruje citlivé informace v klidovém umístění](../security/fundamentals/encryption-atrest.md). Použití klíčů spravovaných zákazníkem poskytuje rozšířenou ochranu dat tím, že vám umožní spravovat šifrovací klíče.  Při použití spravovaného šifrování klíčů se všechny citlivé informace v konfiguraci aplikace šifrují pomocí Azure Key Vaultho klíče zadaného uživatelem.  Tato možnost umožňuje otočit šifrovací klíč na vyžádání.  Také umožňuje odvolat přístup ke konfiguraci aplikací Azure pro citlivé informace tím, že odvolává přístup instance konfigurace aplikace k tomuto klíči.

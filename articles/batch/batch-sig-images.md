@@ -2,18 +2,18 @@
 title: Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 description: Vlastní fondy imagí představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 03/04/2021
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852408"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124240"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
-Když vytváříte fond Azure Batch s použitím konfigurace virtuálního počítače, zadáte image virtuálního počítače, která poskytuje operační systém pro každý výpočetní uzel ve fondu. Můžete vytvořit fond virtuálních počítačů s podporovaným Azure Marketplace imagí nebo vytvořit vlastní image s [obrázkem Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md).
+Když vytváříte fond Azure Batch s použitím konfigurace virtuálního počítače, zadáte image virtuálního počítače, která poskytuje operační systém pro každý výpočetní uzel ve fondu. Můžete vytvořit fond virtuálních počítačů s podporovaným Azure Marketplace imagí nebo vytvořit vlastní image s [obrázkem Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md).
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Výhody Galerie sdílených imagí
 
@@ -31,7 +31,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Kopírování velkých objemů dat jednou.** Nastavte statickou datovou část spravované sdílené image tak, že ji zkopírujete do datových disků spravované image. To je nutné provést pouze jednou a zpřístupnit data pro každý uzel fondu.
 - **Rozšiřte fondy na větší velikosti.** Pomocí Galerie sdílených imagí můžete vytvořit větší fondy s přizpůsobenými imagemi společně s více replikami sdílených imagí.
 - **Lepší výkon než použití jenom spravované Image jako vlastní image.** U vlastního fondu imagí sdílené Image je čas na dosažení stabilního stavu rychlejší až 25% a latence nečinnosti virtuálního počítače je kratší než 30%.
-- **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
+- **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,9 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Obrázek Galerie sdílených imagí** Chcete-li vytvořit sdílenou bitovou kopii, je nutné mít nebo vytvořit prostředek spravované bitové kopie. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků.
 
 > [!NOTE]
-> Vaše sdílená bitová kopie musí být ve stejném předplatném jako účet Batch. Obrázek může být v různých oblastech, pokud má repliky ve stejné oblasti jako váš účet Batch.
+> Pokud sdílená bitová kopie není ve stejném předplatném jako účet Batch, musíte pro toto předplatné [zaregistrovat poskytovatele prostředků Microsoft.Batch](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) . Obě předplatná musí být ve stejném tenantovi Azure AD.
+>
+> Obrázek může být v jiné oblasti, pokud má repliky ve stejné oblasti jako váš účet Batch.
 
 Pokud k vytvoření vlastního fondu imagí s imagí Galerie sdílených imagí použijete aplikaci Azure AD, musí být této aplikaci udělená [předdefinovaná role Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , která mu umožní přístup ke sdílené imagi. Tento přístup můžete udělit v Azure Portal tak, že přejdete ke sdílené imagi, vyberete **řízení přístupu (IAM)** a přidáte přiřazení role pro aplikaci.
 
@@ -56,7 +58,7 @@ V Azure můžete připravit sdílenou image ze spravované image, která se dá 
 - Zobecněný místní virtuální pevný disk nahraný do cloudu
 
 > [!NOTE]
-> Služba Batch v současné době podporuje pouze generalizované sdílené image. V tuto chvíli nemůžete vytvořit vlastní fond imagí z specializované sdílené image.
+> Batch podporuje pouze generalizované sdílené image; specializovanou sdílenou bitovou kopii nelze použít k vytvoření fondu.
 
 Následující kroky ukazují, jak připravit virtuální počítač, pořídit snímek a vytvořit z snímku obrázek.
 
@@ -67,11 +69,15 @@ Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jak
 > [!NOTE]
 > Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny pro virtuální počítače se systémem [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) .
 
+Při vytváření virtuálních počítačů postupujte podle těchto pokynů:
+
 - Ujistěte se, že je virtuální počítač vytvořený pomocí spravovaného disku. Toto je výchozí nastavení úložiště při vytváření virtuálního počítače.
 - Do virtuálního počítače neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů. Pokud image obsahuje předem nainstalovanou příponu, může Azure narazit na problémy při nasazování fondu služby Batch.
 - Pokud používáte připojené datové disky, musíte je připojit a naformátovat na virtuálním počítači, aby je bylo možné použít.
 - Ujistěte se, že základní bitová kopie operačního systému, kterou zadáte, používá výchozí dočasnou jednotku. Agent uzlu dávky aktuálně očekává výchozí dočasnou jednotku.
-- Jakmile je virtuální počítač spuštěný, připojte se k němu přes RDP (pro Windows) nebo SSH (pro Linux). Nainstalujte potřebný software nebo zkopírujte požadovaná data.  
+- Ujistěte se, že disk s operačním systémem není zašifrovaný.
+- Jakmile je virtuální počítač spuštěný, připojte se k němu přes RDP (pro Windows) nebo SSH (pro Linux). Nainstalujte potřebný software nebo zkopírujte požadovaná data.
+- Pro rychlejší zřizování fondů použijte [nastavení mezipaměti disku](../virtual-machines/premium-storage-performance.md#disk-caching) pro čtení disku s operačním systémem virtuálního počítače.
 
 ### <a name="create-a-vm-snapshot"></a>Vytvoření snímku virtuálního počítače
 
@@ -87,7 +93,7 @@ Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galeri
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Vytvoření fondu ze sdílené Image pomocí Azure CLI
 
-Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte `az batch pool create` příkaz. V poli zadejte ID sdílené bitové kopie `--image` . Zajistěte, aby typ operačního systému a SKU odpovídaly verzím, které určuje.`--node-agent-sku-id`
+Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte `az batch pool create` příkaz. V poli zadejte ID sdílené bitové kopie `--image` . Zajistěte, aby typ operačního systému a SKU odpovídaly verzím, které určuje. `--node-agent-sku-id`
 
 > [!NOTE]
 > Musíte se ověřit pomocí Azure AD. Pokud používáte ověřování Shared-Key-Authentication, zobrazí se chyba ověřování.  
@@ -203,7 +209,7 @@ client.pool.add(new_pool)
 
 Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azure Portal.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Přejít na **účty Batch** a vyberte svůj účet.
 1. Vyberte **fondy** a potom **Přidat** a vytvořte nový fond.
 1. V části **typ obrázku** vyberte **sdílená Galerie imagí**.
@@ -216,11 +222,11 @@ Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azu
 
 Pokud máte v úmyslu vytvořit fond se stovkami nebo tisíci virtuálních počítačů nebo více pomocí sdílené image, postupujte podle následujících pokynů.
 
-- **Čísla repliky Galerie sdílených imagí**  Pro každý fond s až 600 instancemi doporučujeme, abyste zachovali aspoň jednu repliku. Pokud například vytváříte fond s 3000 virtuálními počítači, měli byste zachovat alespoň 5 replik vaší image. Vždycky Doporučujeme zachovat více replik než minimální požadavky pro lepší výkon.
+- **Čísla repliky Galerie sdílených imagí**  Pro každý fond s až 300 instancemi doporučujeme, abyste zachovali aspoň jednu repliku. Pokud například vytváříte fond s 3000 virtuálními počítači, měli byste zachovat aspoň 10 replik bitové kopie. Vždycky Doporučujeme zachovat více replik než minimální požadavky pro lepší výkon.
 
 - **Změnit časový limit.** Pokud fond obsahuje pevný počet uzlů (Pokud se nejedná o automatické škálování), zvětšete `resizeTimeout` vlastnost fondu v závislosti na velikosti fondu. U každého virtuálního počítače 1000 je doporučený časový limit pro změnu velikosti alespoň 15 minut. Například doporučený časový limit pro změnu velikosti pro fond s 2000 virtuálními počítači je nejméně 30 minut.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Podrobný přehled služby Batch najdete v tématu [pracovní postup služby Batch a prostředky](batch-service-workflow-features.md).
-- Přečtěte si o [galerii sdílených imagí](../virtual-machines/windows/shared-image-galleries.md).
+- Přečtěte si o [galerii sdílených imagí](../virtual-machines/shared-image-galleries.md).

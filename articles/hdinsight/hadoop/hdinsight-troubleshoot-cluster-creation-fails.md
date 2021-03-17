@@ -1,19 +1,16 @@
 ---
 title: Řešení chyb při vytváření clusteru s Azure HDInsight
 description: Naučte se řešit problémy s vytvářením clusteru Apache pro Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702857"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -21,7 +18,7 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 - Problémy s oprávněním
 - Omezení zásad prostředků
-- Brány firewall
+- brány firewall,
 - Zámky prostředků
 - Nepodporované verze součástí
 - Omezení názvu účtu úložiště
@@ -29,9 +26,9 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 ## <a name="permissions-issues"></a>Problémy s oprávněními
 
-Pokud používáte Azure Data Lake Storage Gen2 a obdržíte chybu: " `AmbariClusterCreationFailedErrorCode` :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", otevřete Azure Portal, přejděte na svůj účet úložiště a v části Access Control (IAM) Zkontrolujte, že **Přispěvatel dat objektu BLOB úložiště** nebo role **vlastníka dat objektu BLOB úložiště** přiřadili přístup k **spravované identitě** , která je přiřazená k tomuto předplatnému uživateli. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Pokud používáte Azure Data Lake Storage Gen2 a obdržíte chybu: " `AmbariClusterCreationFailedErrorCode` :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", otevřete Azure Portal, přejděte na svůj účet úložiště a v části Access Control (IAM) Zkontrolujte, že **Přispěvatel dat objektu BLOB úložiště** nebo role **vlastníka dat objektu BLOB úložiště** přiřadili přístup k **spravované identitě** , která je přiřazená k tomuto předplatnému uživateli. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu na data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2) .
 
-Pokud používáte Azure Data Lake Storage Gen1, přečtěte si [tady](../hdinsight-hadoop-use-data-lake-store.md)pokyny k instalaci a konfiguraci. Data Lake Storage Gen1 se u clusterů HBA nepodporuje a v HDInsight verze 4,0 se nepodporuje.
+Pokud používáte Azure Data Lake Storage Gen1, přečtěte si téma pokyny k instalaci a konfiguraci [použití Azure Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen1.md). Data Lake Storage Gen1 se u clusterů HBA nepodporuje a v HDInsight verze 4,0 se nepodporuje.
 
 Pokud používáte Azure Storage, ujistěte se, že je název účtu úložiště během vytváření clusteru platný.
 
@@ -45,7 +42,7 @@ Obecně platí, že následující zásady mohou ovlivnit vytváření clusteru:
 * Zásada brání vytvoření účtu úložiště.
 * Zásady zabraňující odstraňování síťových prostředků (IP adres/Load vyrovnávání zatížení).
 
-## <a name="firewalls"></a>Brány firewall
+## <a name="firewalls"></a>brány firewall,
 
 Brány firewall ve vaší virtuální síti nebo účtu úložiště můžou odepřít komunikaci s IP adresami správy HDInsight.
 
@@ -68,7 +65,7 @@ Zajistěte, aby [ve vaší virtuální síti a skupině prostředků nejsou žá
 
 ## <a name="unsupported-component-versions"></a>Nepodporované verze součástí
 
-Ujistěte se, že používáte [podporovanou verzi Azure HDInsight](../hdinsight-component-versioning.md) a všechny [součásti Apache Hadoop](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) ve vašem řešení.  
+Ujistěte se, že ve vašem řešení používáte [podporovanou verzi Azure HDInsight a Apache Hadoop komponenty](../hdinsight-component-versioning.md) .  
 
 ## <a name="storage-account-name-restrictions"></a>Omezení názvu účtu úložiště
 

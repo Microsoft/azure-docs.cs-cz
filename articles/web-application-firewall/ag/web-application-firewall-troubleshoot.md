@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983070"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131832"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Řešení potíží s firewallem webových aplikací (WAF) pro Azure Application Gateway
 
@@ -174,7 +174,7 @@ Pomocí [Fiddler](https://www.telerik.com/fiddler)můžete zkoumat jednotlivé p
 
 V tomto příkladu vidíte, že pole, kde byl zadán řetězec *1 = 1* , se nazývá **Text1**.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="Snímek obrazovky s průběhem webového ladicího programu Telerik Fiddler Na kartě Raw se po názvu Text1 zobrazuje 1 = 1." border="false":::
 
 Toto pole můžete vyloučit. Další informace o seznamech vyloučení najdete v tématu [omezení velikosti požadavků firewallu webových aplikací a seznamů vyloučení](application-gateway-waf-configuration.md#waf-exclusion-lists). Vyhodnocování můžete v tomto případě vyloučit konfigurací následujícího vyloučení:
 
@@ -299,7 +299,7 @@ Druhá je zajímavá (pravidlo 942130). Můžete se podívat v podrobnostech, kt
 
 Fiddler je užitečný nástroj znovu pro vyhledání názvů hlaviček požadavků. Na následujícím snímku obrazovky vidíte záhlaví této žádosti o získání, což zahrnuje *typ obsahu*, *uživatelský agent*atd.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Snímek obrazovky s průběhem webového ladicího programu Telerik Fiddler Nezpracovaná karta obsahuje podrobnosti hlavičky požadavku, jako je připojení, typ obsahu a Agent pro uživatele." border="false":::
 
 Další možností zobrazení hlaviček žádostí a odpovědí je prohledání v vývojářských nástrojích Chrome. Můžete stisknout klávesu F12 nebo kliknout pravým tlačítkem – > **zkontrolovat**  ->  **vývojářské nástroje**a vybrat kartu **síť** . načtěte webovou stránku a klikněte na žádost, kterou chcete zkontrolovat.
 

@@ -1,21 +1,23 @@
 ---
 title: Nejčastější dotazy – řešení Network Performance Monitor v Azure | Microsoft Docs
 description: Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor v Azure. Network Performance Monitor (NPM) vám pomůže monitorovat výkon sítí prakticky v reálném čase a zjišťovat a vyhledávat kritické body výkonu sítě.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326133"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708046"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
 ![Symbol Network Performance Monitor](media/network-performance-monitor-faq/npm-symbol.png)
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) v Azure Network Watcher před 29. února 2024.
 
 Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor (NPM) v Azure.
 
@@ -34,13 +36,13 @@ Níže jsou uvedené požadavky na platformu pro různé možnosti NPM:
 - Funkce monitorování ExpressRoute pro NPM podporuje jenom operační systém Windows Server (2008 SP1 nebo novější).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Můžu počítače se systémem Linux použít jako uzly monitorování v NPM?
-Možnost monitorování sítí pomocí uzlů se systémem Linux je aktuálně ve verzi Preview. Obraťte se na svého správce účtu a získejte další informace. Agenti systému Linux poskytují možnost monitorování pouze pro funkci sledování výkonu NPM a nejsou k dispozici pro monitorování připojení služby a možnosti monitorování ExpressRoute.
+Možnost monitorování sítí pomocí uzlů se systémem Linux je teď všeobecně dostupná. [Sem](../../virtual-machines/extensions/oms-linux.md)získáte přístup k agentovi. 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jaké jsou požadavky na velikost uzlů, které se mají použít k monitorování pomocí NPM?
 Aby bylo možné spustit řešení NPM na virtuálních počítačích uzlů pro monitorování sítí, musí mít uzly alespoň 500 MB paměti a jednu jádro. Nemusíte používat samostatné uzly pro používání NPM. Řešení může běžet na uzlech, na kterých běží jiné úlohy. Řešení má možnost zastavit proces monitorování, pokud používá více než 5% CPU.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Pokud chcete použít NPM, mám uzly připojit jako přímý agent nebo prostřednictvím System Center Operations Manager?
-Monitorování výkonu i možnosti monitorování připojení služby podporují uzly [připojené jako přímí agenti](../platform/agent-windows.md) a [připojení prostřednictvím Operations Manager](../platform/om-agents.md).
+Monitorování výkonu i možnosti monitorování připojení služby podporují uzly [připojené jako přímí agenti](../agents/agent-windows.md) a [připojení prostřednictvím Operations Manager](../agents/om-agents.md).
 
 Pro funkci monitorování ExpressRoute by uzly Azure měly být připojené pouze jako přímí agenti. Uzly Azure, které jsou připojené prostřednictvím Operations Manager, se nepodporují. U místních uzlů se pro monitorování okruhu ExpressRoute podporují uzly připojené jako přímí agenti a prostřednictvím Operations Manager.
 
@@ -68,7 +70,7 @@ Pro každou podsíť, kterou chcete monitorovat, byste měli použít aspoň jed
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, které můžu použít, nebo se zobrazuje chyba... dosáhli jste limitu konfigurace?
 NPM omezuje počet IP adres na jeden pracovní prostor na 5000. Pokud má uzel adresy IPv4 i IPv6, bude se tento uzel počítat jako 2 IP adresy. Proto tento limit 5000 IP adres určí horní limit počtu agentů. Neaktivních agentů můžete odstranit na kartě uzly v NPM >> nakonfigurovat. NPM také udržuje historii všech IP adres, které byly někdy přiřazeny k virtuálnímu počítači, který je hostitelem agenta, a každá z nich se počítá jako samostatná IP adresa přispívající k tomuto hornímu limitu 5000 IP adres. Pokud chcete pro svůj pracovní prostor uvolnit IP adresy, můžete pomocí stránky uzly odstranit IP adresy, které se nepoužívají.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Jak se počítají ztráty a latence
 Zdrojové agenti odesílají žádosti TCP SYN (Pokud je zvolen protokol TCP jako protokol pro monitorování) nebo požadavky na ODEZVu ICMP (Pokud se protokol ICMP vybere jako protokol pro monitorování) do cílové IP adresy v pravidelných intervalech, aby se zajistilo, že se pokryje všechny cesty mezi kombinací IP adresy zdroje a cíle. Procento přijatých paketů a doba odezvy přenosu paketů se měří k výpočtu ztráty a latence každé cesty. Tato data se agreguje v intervalu cyklického dotazování a přes všechny cesty, aby se získaly agregované hodnoty ztráty a latence pro danou kombinaci IP adres pro konkrétní interval dotazování.
@@ -95,7 +97,7 @@ Pokud je směrování červené, znamená to, že je součástí nejméně jedn�
 NPM používá mechanismus pravděpodobnostní pro přiřazení pravděpodobnosti chyby každé síťové cestě, segmentu sítě a směrování sítě v závislosti na počtu nezdravých cest, které jsou součástí. Protože segmenty sítě a směrování se stanou součástí většího počtu špatných cest, zvyšují se pravděpodobnost selhání, která jsou k nim přidružená. Tento algoritmus funguje nejlépe tehdy, když máte spoustu uzlů s NPM agentem, který se navzájem připojuje. tím se zvyšuje počet datových bodů pro výpočet pravděpodobnosti selhání.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Jak můžu vytvářet upozornění v NPM?
-Kvůli problému se aktuálně nedaří vytvořit výstrahy z uživatelského rozhraní NPM. Vytvořte prosím výstrahy ručně.
+V současné době se vytváření výstrah z uživatelského rozhraní NPM nedaří kvůli známému problému. [Vytvořte prosím výstrahy ručně](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Jaké jsou výchozí Log Analytics dotazy na výstrahy
 Dotaz na sledování výkonu
@@ -149,7 +151,7 @@ NetworkMonitoring
 NPM identifikuje jenom IP adresu a název hostitele pro základní síťové směrování (přepínače, směrovače, servery atd.) mezi zdrojovou a cílovou IP adresou. Také identifikuje latenci mezi těmito identifikovanými segmenty směrování. Nemonitoruje jednotlivě tyto segmenty směrování.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Dá se NPM použít k monitorování připojení k síti mezi Azure a AWS?
-Yes. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
+Ano. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Je využití šířky pásma ExpressRoute příchozí nebo odchozí?
 Využití šířky pásma je celkovým počtem příchozích a odchozích šířek pásma. Je vyjádřena v bitech/s.
@@ -238,7 +240,7 @@ K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující
 * Nyní spusťte příkaz z cílového uzlu na IP adresu zdrojového uzlu.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Dojde ke ztrátě z uzlu A na B, ale ne z uzlu B na. Proč?
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Dojde ke ztrátě z uzlu A na B, ale nikoli z uzlu B do A. Proč?
 Jelikož síťové cesty mezi A a B můžou být odlišné od síťových cest mezi B a a, může být zjištěna jiná hodnota pro ztrátu a latenci.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Proč se všechny moje okruhy ExpressRoute a připojení partnerských vztahů neobjevují?
@@ -255,10 +257,10 @@ K tomu může dojít v následujícím případě:
 * Místní a uzly Azure zvolené pro monitorování okruhu ExpressRoute v konfiguraci monitorování, neexistují vzájemně propojeny přes zamýšlený okruh ExpressRoute. Ujistěte se, že jste vybrali správné uzly, které mají vzájemnou konektivitu přes okruh ExpressRoute, který chcete monitorovat.
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Proč nástroj ExpressRoute monitor hlásí, že je můj okruh/partnerský vztah ve stavu není v pořádku, pokud je k dispozici a předávání dat.
-ExpressRoute monitor porovnává hodnoty výkonu sítě (ztráty, latence a využití šířky pásma) hlášené agenty/službou a hodnotami prahové hodnoty nastavené během konfigurace. U okruhu, pokud je nahlášená využití šířky pásma větší než prahová hodnota nastavená v konfiguraci, je okruh označený jako není v pořádku. U partnerských vztahů, pokud je nahlášená ztráta, latence nebo využití šířky pásma větší než prahová hodnota nastavená v konfiguraci, je partnerský vztah označen jako není v pořádku. NPM nevyužívá metriky ani žádnou jinou formu dat do deicde stavu.
+ExpressRoute monitor porovnává hodnoty výkonu sítě (ztráty, latence a využití šířky pásma) hlášené agenty/službou a hodnotami prahové hodnoty nastavené během konfigurace. U okruhu, pokud je nahlášené využití šířky pásma větší než prahová hodnota nastavená v konfiguraci, je okruh označený jako není v pořádku. U partnerských vztahů, pokud je nahlášená ztráta, latence nebo využití šířky pásma větší než prahová hodnota nastavená v konfiguraci, je partnerský vztah označen jako není v pořádku. NPM nevyužívá metriky ani žádnou jinou formu dat k určení stavu.
 
-### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Proč služba využití ExpressRoute Monitor'bandwidth nahlásí hodnotu jinou z metriky v/v.
-V případě monitorování ExpressRoute je šířka pásma utiliation průměrem příchozí a odchozí šířky pásma za posledních 20 minut, které se vyjadřují v bitech za sekundu. V případě metriky Express Route je bitová/výstupní data za minutu datových bodů. Vnitřně použitá datová sada pro obojí je stejná, ale agregace valies mezi NPM a ER metrikami. Pro podrobné a rychlé výstrahy monitorování a rychlých výstrah doporučujeme nastavit výstrahy přímo na metrikách ER.
+### <a name="why-does-expressroute-monitorbandwidth-utilization-report-a-value-different-from-metrics-bits-inout"></a>Proč využití služby ExpressRoute Monitor'bandwidth nahlásí hodnotu odlišnou od bitů a vstupně-výstupní metriky
+V případě monitorování ExpressRoute je využití šířky pásma průměrem příchozí a odchozí šířky pásma za posledních 20 minut, které se vyjadřují v bitech za sekundu. V případě metriky Express Route je bitová/výstupní data za minutu datových bodů. Vnitřně použitá datová sada pro obojí je stejná, ale agregace se liší mezi metrikami NPM a ER. Pro podrobné a rychlé výstrahy monitorování a rychlých výstrah doporučujeme nastavit výstrahy přímo na metrikách ER.
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Při konfiguraci monitorování okruhu ExpressRoute se uzly Azure nezjišťují.
 K tomu může dojít, pokud jsou uzly Azure připojené prostřednictvím Operations Manager. Funkce monitorování ExpressRoute podporuje jenom uzly Azure, které jsou připojené jako přímí agenti.
@@ -300,4 +302,3 @@ NPM zaokrouhlí čísla latence v uživatelském rozhraní a v milisekundách. S
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o Network Performance Monitor odkazem na [řešení Network Performance Monitor v Azure](./network-performance-monitor.md).
-

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a619843f781fa24bfdc2a339e67fdb49b1bff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078850"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746248"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Pomocí kontrol přístupu Azure AD Spravujte uživatele vyloučené ze zásad podmíněného přístupu.
 
@@ -38,7 +38,7 @@ Dalším příkladem může být použití [pojmenovaných umístění](../condi
 
 ![Pojmenovaná umístění v podmíněném přístupu](./media/conditional-access-exclusion/named-locations.png)
 
-Někteří uživatelé bohužel můžou mít i nadále platný důvod pro přihlášení z těchto blokovaných zemí nebo oblastí. Uživatelé můžou být například na cestách pro práci a potřebují přístup k podnikovým prostředkům. V takovém případě zásada podmíněného přístupu zablokuje, že tyto země nebo oblasti můžou používat skupinu zabezpečení cloudu pro vyloučené uživatele ze zásad. Uživatelé, kteří potřebují přístup při cestování, se můžou do skupiny přidat pomocí [samoobslužné správy skupin Azure AD](../users-groups-roles/groups-self-service-management.md).
+Někteří uživatelé bohužel můžou mít i nadále platný důvod pro přihlášení z těchto blokovaných zemí nebo oblastí. Uživatelé můžou být například na cestách pro práci a potřebují přístup k podnikovým prostředkům. V takovém případě zásada podmíněného přístupu zablokuje, že tyto země nebo oblasti můžou používat skupinu zabezpečení cloudu pro vyloučené uživatele ze zásad. Uživatelé, kteří potřebují přístup při cestování, se můžou do skupiny přidat pomocí [samoobslužné správy skupin Azure AD](../enterprise-users/groups-self-service-management.md).
 
 Dalším příkladem může být, že máte zásady podmíněného přístupu [blokující starší verze ověřování pro většinu uživatelů](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Pokud ale máte nějaké uživatele, kteří potřebují používat starší metody ověřování pro přístup k prostředkům prostřednictvím klientů Office 2010 nebo IMAP/SMTP/na bázi POP, můžete tyto uživatele vyloučit ze zásad, které blokují starší metody ověřování.
 
@@ -144,7 +144,7 @@ Podíváme se na dva příklady, kde můžete pomocí kontrol přístupu spravov
     ![Vytvoření podokna kontroly přístupu například 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme v koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v [referenčních informacích k rozhraní API kontroly přístupu Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+>Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme v koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v [referenčních informacích k rozhraní API kontroly přístupu Azure AD](/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Výsledky kontroly přístupu a protokoly auditu
 

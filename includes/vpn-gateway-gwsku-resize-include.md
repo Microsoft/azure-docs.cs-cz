@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4842c55b2b1fd23f4d6b7996ccf02e7141504836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3ae2a876d6a3772d941fec0b8a1ea3f537e60c3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73495780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010799"
 ---
 Pomocí `Resize-AzVirtualNetworkGateway` rutiny prostředí PowerShell můžete upgradovat nebo downgradovat Generation1 nebo GENERATION2 SKU (u všech SKU VpnGw lze změnit velikost kromě základních SKU). Pokud používáte SKU základní brány, [použijte místo toho tyto pokyny](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) ke změně velikosti brány.
 
@@ -23,5 +23,3 @@ Následující příklad prostředí PowerShell zobrazuje SKLADOVOU položku br�
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
 ```
-
-Můžete také změnit velikost brány v Azure Portal tak, že na ni kliknete na **konfigurační** stránku brány virtuální sítě a z rozevíracího seznamu vyberete jinou skladovou položku.

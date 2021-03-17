@@ -1,75 +1,80 @@
 ---
 title: Vyžádání přístupového tokenu – Azure Active Directory B2C | Microsoft Docs
-description: Přečtěte si, jak požádat o přístupový token z Azure Active Directory B2C.
+description: Tady se dozvíte, jak si ve službě Azure Active Directory B2C vyžádat přístupový token.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115538"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654472"
 ---
-# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu v Azure Active Directory B2C
+# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu ve službě Azure Active Directory B2C
 
-*Přístupový token* obsahuje deklarace identity, které můžete použít v Azure Active Directory B2C (Azure AD B2C) k identifikaci udělených oprávnění k vašim rozhraním API. Při volání serveru prostředků musí být v požadavku HTTP přítomen přístupový token. Přístupový token je označený jako **access_token** v odpovědích od Azure AD B2C.
+*Přístupový token* obsahuje deklarace identity, pomocí kterých můžete v Azure Active Directory B2C (Azure AD B2C) identifikovat oprávnění udělená vašim rozhraním API. Při volání serveru prostředků musí požadavek HTTP obsahovat přístupový token. Přístupový token se v odpovědích služby Azure AD B2C označuje textem **access_token**.
 
-V tomto článku se dozvíte, jak požádat o přístupový token pro webovou aplikaci a webové rozhraní API. Další informace o tokenech v Azure AD B2C najdete v tématu [Přehled tokenů v Azure Active Directory B2C](tokens-overview.md).
+V tomto článku se dozvíte, jak požádat o přístupový token pro webovou aplikaci a webové rozhraní API. Další informace o tokenech v Azure AD B2C najdete v [přehledu tokenů v Azure Active Directory B2C](tokens-overview.md).
 
 > [!NOTE]
-> **Služba Azure AD B2C nepodporuje řetězy webového rozhraní API (za běhu).** – Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat jiné webové rozhraní API pro příjem dat, jak je zabezpečené Azure AD B2C. Tento scénář je běžný u klientů, které mají back-end webového rozhraní API, který zase volá jinou službu. Tento scénář zřetězeného webového rozhraní API můžete podporovat pomocí udělení přihlašovacích údajů nosiče OAuth 2,0 JWT, jinak označovaného jako tok za běhu. Tok prováděný jménem se ale v Azure AD B2C v tuto chvíli neimplementuje.
+> **Azure AD B2C nepodporuje řetězce webových rozhraní API (On-Behalf-Of).** - Mnoho architektur obsahuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, přičemž obě rozhraní jsou zabezpečená pomocí Azure AD B2C. Tento scénář je běžný u klientů, které mají back-end s webovým rozhraním API, který volá zase jinou službu. Podporu tohoto scénáře se zřetězenými webovými rozhraními API umožňuje udělení přihlašovacích údajů nosného tokenu OAuth 2.0 JWT, označovaného také jako tok On-Behalf-Of. V Azure AD B2C nicméně není tok On-Behalf-Of v současné době implementovaný.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
-- Pokud jste to ještě neudělali, [přidejte aplikaci webového rozhraní API do tenanta Azure Active Directory B2C](add-web-api-application.md).
+- [Vytvořte uživatelský tok](tutorial-create-user-flows.md), který uživatelům umožní registraci a přihlášení do vaší aplikace.
+- Pokud jste to ještě neudělali, [přidejte do svého tenanta Azure Active Directory B2C aplikaci webového rozhraní API](add-web-api-application.md).
 
 ## <a name="scopes"></a>Obory
 
-Obory poskytují způsob, jak spravovat oprávnění k chráněným prostředkům. Po vyžádání přístupového tokenu musí klientská aplikace zadat požadovaná oprávnění v parametru **Scope** žádosti. Pokud například chcete zadat **hodnotu oboru** `read` pro rozhraní API s **identifikátorem URI ID aplikace** `https://contoso.onmicrosoft.com/api` , bude obor `https://contoso.onmicrosoft.com/api/read` .
+Obory představují způsob, jak spravovat oprávnění k chráněným prostředkům. Při žádosti o přístupový token musí klientská aplikace uvést požadovaná oprávnění v parametru **scope** požadavku. Pokud například chcete u rozhraní API, které má **identifikátor URI aplikace** `https://contoso.onmicrosoft.com/api`, určit **hodnotu oboru** `read`, bude obor `https://contoso.onmicrosoft.com/api/read`.
 
-Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. Chcete-li získat více oprávnění v rámci jedné žádosti, můžete přidat více položek v parametru s jedním **oborem** žádosti oddělené mezerami.
+Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. Pokud chcete ve stejném požadavku získat více oprávnění, můžete do jednoho parametru **scope** požadavku zadat více položek oddělených mezerami.
 
-Následující příklad ukazuje obory Dekódovatelné v adrese URL:
+Následující příklad ukazuje dekódované obory v adrese URL:
 
 ```
 scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 ```
 
-Následující příklad ukazuje obory kódované v adrese URL:
+Následující příklad ukazuje zakódované obory v adrese URL:
 
 ```
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Pokud požadujete více oborů, než je uděleno pro klientskou aplikaci, bude volání úspěšné, pokud je uděleno alespoň jedno oprávnění. Deklarace **spojovacího bodu** služby ve výsledném přístupovém tokenu se naplní pouze oprávněními, která byla úspěšně udělena. Standard OpenID Connect určuje několik speciálních hodnot oboru. Následující rozsahy reprezentují oprávnění pro přístup k profilu uživatele:
+Pokud zadáte požadavek na více oborů, než kolik se pro danou klientskou aplikaci uděluje, bude volání úspěšné, pokud dojde k udělení alespoň jednoho oprávnění. V deklaraci identity **scp** ve výsledném přístupovém tokenu se automaticky uvedou jednom úspěšně udělená oprávnění. 
 
-- **OpenID** – vyžádá token ID.
-- **offline_access** – vyžádá obnovovací token pomocí [toků kódu ověřování](authorization-code-flow.md).
+### <a name="openid-connect-scopes"></a>Obory OpenID Connect
 
-Pokud parametr **response_type** v `/authorize` požadavku obsahuje `token` , musí parametr **Scope** obsahovat alespoň jeden obor prostředků, než je `openid` a `offline_access` který bude udělen. V opačném případě se `/authorize` požadavek nezdařil.
+Standard OpenID Connect určuje několik speciálních hodnot oboru. Následující obory reprezentují oprávnění pro přístup k profilu uživatele:
 
-## <a name="request-a-token"></a>Požádat o token
+- **openid** – Vyžádá token ID.
+- **offline_access** – Vyžádá token obnovení pomocí [toků autorizačního kódu](authorization-code-flow.md).
+- **00000000-0000-0000-0000-000000000000** – použití ID klienta jako oboru znamená, že vaše aplikace potřebuje přístupový token, který můžete použít pro vlastní službu nebo webové rozhraní API reprezentované stejným ID klienta.
 
-K vyžádání přístupového tokenu potřebujete autorizační kód. Níže je příklad požadavku na `/authorize` koncový bod pro autorizační kód. Vlastní domény se nepodporují pro použití s přístupovými tokeny. V adrese URL žádosti použijte svoji tenant-name.onmicrosoft.com doménu.
+Pokud parametr **response_type** požadavku `/authorize` obsahuje `token`, musí parametr **scope** obsahovat nejméně jeden jiný obor prostředku než `openid` a `offline_access`, který se má udělit. V opačném případě nebude požadavek `/authorize` úspěšný.
 
-V následujícím příkladu nahradíte tyto hodnoty:
+## <a name="request-a-token"></a>Vyžádání tokenu
 
-- `<tenant-name>`– Název vašeho tenanta Azure AD B2C.
-- `<policy-name>`– Název vlastní zásady nebo tok uživatele.
-- `<application-ID>`– Identifikátor aplikace webové aplikace, kterou jste zaregistrovali pro podporu toku uživatele.
-- `<redirect-uri>`– **Identifikátor URI přesměrování** , který jste zadali při registraci klientské aplikace.
+K vyžádání přístupového tokenu potřebujete autorizační kód. Následuje příklad požadavku na autorizační kód zaslaného koncovému bodu `/authorize`. U vlastních domén se použití přístupových tokenů nepodporuje. V adrese URL požadavku použijte svoji doménu nazev-tenanta.onmicrosoft.com.
+
+V následujícím příkladu nahraďte tyto hodnoty:
+
+- `<tenant-name>` – název domény tenanta Azure AD B2C.
+- `<policy-name>` – název vlastní zásady nebo toku uživatele.
+- `<application-ID>` – identifikátor webové aplikace, kterou jste zaregistrovali za účelem zpracování toku uživatele.
+- `<redirect-uri>` – **identifikátor URI pro přesměrování**, který jste zadali při registraci klientské aplikace.
 
 ```http
-GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
+GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
@@ -77,16 +82,16 @@ client_id=<application-ID>
 &response_type=code
 ```
 
-Odpověď s autorizačním kódem by měla být podobná tomuto příkladu:
+Odpověď s autorizačním kódem by se měla podobat tomuto příkladu:
 
 ```
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Po úspěšném přijetí autorizačního kódu ho můžete použít k vyžádání přístupového tokenu:
+Po úspěšném přijetí autorizačního kódu můžete kód použít k vyžádání přístupového tokenu:
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -98,7 +103,7 @@ grant_type=authorization_code
 &client_secret=2hMG2-_:y12n10vwH...
 ```
 
-Mělo by se zobrazit něco podobného jako u následující odpovědi:
+Měla by se zobrazit odpověď podobná této:
 
 ```json
 {
@@ -112,7 +117,7 @@ Mělo by se zobrazit něco podobného jako u následující odpovědi:
 }
 ```
 
-Při použití nástroje https://jwt.ms k prohlédnutí vráceného přístupového tokenu by se měla zobrazit podobný příklad jako v následujícím příkladu:
+Když zkusíte vrácený přístupový token zadat do nástroje https://jwt.ms, měl by se zobrazit podobný výstup jako v tomto příkladu:
 
 ```json
 {
@@ -138,4 +143,4 @@ Při použití nástroje https://jwt.ms k prohlédnutí vráceného přístupov�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nakonfigurovat tokeny v Azure AD B2C](configure-tokens.md)
+- Přečtěte si, jak [konfigurovat tokeny v Azure AD B2C](configure-tokens.md).

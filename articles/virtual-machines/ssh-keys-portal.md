@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041744"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88929430"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Generování a ukládání klíčů SSH v Azure Portal
 
@@ -28,7 +28,7 @@ Podrobnější informace o vytváření a používání klíčů SSH s virtuáln
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
 
-1. V horní části stránky zadejte *SSH* pro hledání. V části **Marketplace*vyberte **klíče SSH**.
+1. V horní části stránky zadejte *SSH* pro hledání. V části **Marketplace**vyberte **klíče SSH**.
 
 1. Na stránce **klíč SSH** vyberte **vytvořit**.
 
@@ -48,7 +48,7 @@ Podrobnější informace o vytváření a používání klíčů SSH s virtuáln
 
 1. Zobrazí se automaticky otevírané okno, vyberte **Stáhnout privátní klíč a vytvořit prostředek**. Tím se stáhne klíč SSH jako soubor. pem.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Stažení privátního klíče jako souboru. pem":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
 
 1. Po stažení souboru. pem můžete ho chtít přesunout někam do počítače, kde se snadno odkazuje na klienta SSH.
 
@@ -61,7 +61,7 @@ V místním počítači otevřete příkazový řádek PowerShellu a zadejte:
 ssh -i <path to the .pem file> username@<ipaddress of the VM>
 ```
 
-Zadejte například:`ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
+Zadejte například: `ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
 
 
 ## <a name="upload-an-ssh-key"></a>Nahrajte klíč SSH.
@@ -74,7 +74,7 @@ Můžete také nahrát veřejný klíč SSH pro uložení v Azure. Informace o t
 
 1. Na stránce **klíč SSH** vyberte **vytvořit**.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Nahrajte veřejný klíč SSH, který se uloží v Azure.":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
 
 1. V **skupiny prostředků** vyberte **vytvořit novou** a vytvořte novou skupinu prostředků pro uložení klíčů. Zadejte název vaší skupiny prostředků a vyberte **OK**.
 
@@ -89,6 +89,20 @@ Můžete také nahrát veřejný klíč SSH pro uložení v Azure. Informace o t
 1. Po dokončení ověření vyberte **vytvořit**. 
 
 Po nahrání klíče se můžete rozhodnout použít při vytváření virtuálního počítače.
+
+## <a name="list-keys"></a>Zobrazit seznam klíčů
+
+Klíče SSH vytvořené na portálu se ukládají jako prostředky, takže můžete filtrovat zobrazení prostředků, abyste je viděli.
+
+1. Na portálu vyberte **všechny prostředky**.
+1. V okně Filtry vyberte **typ**, zrušte výběr možnosti **Vybrat vše** , čímž seznam vymažete.
+1. Do filtru zadejte **SSH** a vyberte **klíč SSH**.
+
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
+
+## <a name="get-the-public-key"></a>Získat veřejný klíč
+
+Pokud potřebujete svůj veřejný klíč, můžete ho snadno zkopírovat ze stránky portálu pro tento klíč. Stačí vytvořit seznam klíčů (pomocí procesu v poslední části) a pak vybrat klíč ze seznamu. Otevře se stránka pro váš klíč a kliknutím na ikonu **Kopírovat do schránky** vedle klíče ho můžete zkopírovat.
 
 ## <a name="next-steps"></a>Další kroky
 

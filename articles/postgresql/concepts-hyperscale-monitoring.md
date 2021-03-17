@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 544f871f62481243cda2409db24b0d067df28c32
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690404"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580576"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Monitorování a ladění Azure Database for PostgreSQL – Citus (škálování)
 
@@ -22,17 +22,17 @@ Sledování dat o vašich serverech vám pomůže při řešení potíží a opt
 
 Citus () poskytuje metriky pro každý uzel ve skupině serverů. Metriky poskytují přehled o chování podpůrných prostředků. Každá metrika je vygenerována s jednou minutovou frekvencí a má až 30 dnů od historie.
 
-Kromě zobrazení grafů metriky můžete nakonfigurovat výstrahy. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-hyperscale-alert-on-metric.md).  Mezi další úlohy patří nastavení automatizovaných akcí, spouštění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Kromě zobrazení grafů metriky můžete nakonfigurovat výstrahy. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-hyperscale-alert-on-metric.md).  Mezi další úlohy patří nastavení automatizovaných akcí, spouštění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../azure-monitor/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
 
 Tyto metriky jsou k dispozici pro uzly Citus (s měřítkem):
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
+|Metric|Zobrazovaný název metriky|Jednotka|Description|
 |---|---|---|---|
-|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
+|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
-|IOPS|IOPS|Count|Podívejte se na [definici IOPS](../virtual-machines/premium-storage-performance.md#iops) a propustnost v rámci [škálování](concepts-hyperscale-configuration-options.md) .|
+|IOPS|IOPS|Počet|Podívejte se na propustnost [definice IOPS](../virtual-machines/premium-storage-performance.md#iops) a [propustnosti (Citus)](concepts-hyperscale-configuration-options.md) .|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
 |network_bytes_ingress|Síťové vstupy|Bajty|Síť v rámci aktivních připojení.|
 |network_bytes_egress|Síťové výstupy|Bajty|Síť vyprší napříč aktivními připojeními.|

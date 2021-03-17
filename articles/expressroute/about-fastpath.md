@@ -2,17 +2,17 @@
 title: Informace o službě Azure ExpressRoute FastPath
 description: Přečtěte si o Azure ExpressRoute FastPath pro odesílání síťového provozu obejít bránu.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.author: cherylmc
-ms.openlocfilehash: 265004b1171d1df95b3090676d5836b951c28a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: eefc42fb8e66e66c6388599df65c59ff642a6b59
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282847"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124104"
 ---
 # <a name="about-expressroute-fastpath"></a>Informace o službě ExpressRoute FastPath
 
@@ -33,7 +33,12 @@ Aby bylo možné konfigurovat FastPath, musí být brána virtuální sítě bu�
 * Ultra Performance
 * ErGw3AZ
 
-## <a name="supported-features"></a>Podporované funkce
+> [!IMPORTANT]
+> Pokud plánujete používat FastPath se soukromým partnerským vztahem využívajícím IPv6 přes ExpressRoute, nezapomeňte vybrat ErGw3AZ pro **SKU**. Všimněte si, že je k dispozici pouze pro okruhy pomocí ExpressRoute Direct.
+> 
+>
+
+## <a name="limitations"></a>Omezení
 
 I když FastPath podporuje většinu konfigurací, nepodporuje následující funkce:
 
@@ -41,7 +46,7 @@ I když FastPath podporuje většinu konfigurací, nepodporuje následující fu
 
 * Partnerský vztah virtuálních sítí: Pokud máte jiné virtuální sítě s partnerským vztahem, který je připojený k ExpressRoute, bude síťový provoz z vaší místní sítě do ostatních virtuálních sítí (tj. "paprskový" virtuální sítě ") dál odesílán do brány virtuální sítě. Alternativním řešením je připojit všechny virtuální sítě k okruhu ExpressRoute přímo.
 
-* Základní Load Balancer: Pokud nasadíte základní interní nástroj pro vyrovnávání zatížení ve vaší virtuální síti nebo ve službě Azure PaaS, kterou nasadíte ve vaší virtuální síti, se použije základní interní nástroj pro vyrovnávání zatížení, do brány virtuální sítě se pošle síťový provoz z vaší místní sítě do virtuálních IP adres hostovaných na úrovni Basic Load Balancer. Řešením je upgradovat základní nástroj pro vyrovnávání zatížení na [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
+* Základní Load Balancer: Pokud nasadíte základní interní nástroj pro vyrovnávání zatížení ve vaší virtuální síti nebo ve službě Azure PaaS, kterou nasadíte ve vaší virtuální síti, se použije základní interní nástroj pro vyrovnávání zatížení, do brány virtuální sítě se pošle síťový provoz z vaší místní sítě do virtuálních IP adres hostovaných na úrovni Basic Load Balancer. Řešením je upgradovat základní nástroj pro vyrovnávání zatížení na [standardní nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md).
 
 * Privátní odkaz: Pokud se připojíte k [privátnímu koncovému bodu](../private-link/private-link-overview.md) ve vaší virtuální síti z vaší místní sítě, připojení projde bránou virtuální sítě.
  

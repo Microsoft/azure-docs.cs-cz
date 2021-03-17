@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80529528"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90527203"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Postupy zabezpečení pro výrobce zařízení Azure IoT
 V případě více výrobců zařízení IoT je užitečné zjistit pokyny k běžným postupům. Tento článek shrnuje doporučené postupy zabezpečení, které je potřeba vzít v úvahu při výrobě zařízení pro použití se službou Azure IoT Device Provisioning (DPS).  
@@ -182,9 +182,9 @@ Zařízení může být ve skladu po dobu 6-12 měsíců, než se nasadí.
 #### <a name="step-5-device-is-installed-into-the-location"></a>Krok 5: zařízení se instaluje do umístění.
 Jakmile zařízení dorazí do konečného umístění, provede to prostřednictvím automatizovaného zřizování s DPS.
 
-Další informace najdete v tématech [koncepce autozřizování](concepts-auto-provisioning.md) a [ověření identity čipem TPM](concepts-tpm-attestation.md). 
+Další informace najdete v tématu [zřizování](about-iot-dps.md#provisioning-process) a [ověření identity čipem TPM](concepts-tpm-attestation.md). 
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje a prostředky
 
 Kromě doporučených postupů zabezpečení v tomto článku poskytuje Azure IoT prostředky, které vám pomůžou vybrat zabezpečený hardware a vytvářet zabezpečená nasazení IoT: 
 - [Doporučení zabezpečení](../iot-fundamentals/security-recommendations.md) Azure IoT, která vám pomohou s procesem nasazení. 

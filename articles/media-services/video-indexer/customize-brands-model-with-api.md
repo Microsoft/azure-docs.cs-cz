@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047294"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586053"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značek pomocí rozhraní Video Indexer API
 
-Video Indexer podporuje rozpoznávání značek od mluvené řeči a vizuálního textu během indexování a přeindexování videa a zvukového obsahu. Funkce detekce značky identifikuje zmínky o produktech, službách a společnostech, které navrhla databáze značek Bingu. Pokud je například Microsoft zmíněný ve videu nebo zvukovém obsahu nebo pokud se zobrazuje v obrazovém textu ve videu, Video Indexer ho detekuje jako značku v obsahu. Vlastní model značek umožňuje vyloučit z detekce některé značky a zahrnout značky, které by měly být součástí modelu, který nemusí být v databázi značek Bingu.
+Video Indexer podporuje rozpoznávání značek od mluvené řeči a vizuálního textu během indexování a přeindexování videa a zvukového obsahu. Funkce detekce značky identifikuje zmínky o produktech, službách a společnostech, které navrhla databáze značek Bingu. Pokud je například Microsoft zmíněný ve videu nebo zvukovém obsahu nebo pokud se zobrazuje v obrazovém textu ve videu, Video Indexer ho detekuje jako značku v obsahu. Vlastní model značek umožňuje vyloučit z detekce některé značky a zahrnout značky, které by měly být součástí modelu, který nemusí být v databázi značek Bingu. Další informace najdete v tématu [Přehled](customize-brands-model-overview.md).
 
-Podrobný přehled najdete v tématu [Přehled](customize-brands-model-overview.md).
+> [!NOTE]
+> Pokud bylo video indexováno před přidáním značky, je nutné ho znovu indexovat.
 
 Rozhraní Video Indexer API můžete použít k vytváření, používání a úpravám vlastních značek, které byly zjištěny ve videu, jak je popsáno v tomto tématu. Můžete také použít Video Indexer web, jak je popsáno v tématu [Přizpůsobení modelu značek pomocí webu video indexer](customize-brands-model-with-api.md).
 
@@ -94,7 +95,7 @@ Odpověď poskytuje informace o značce, kterou jste hledali (pomocí ID značky
 ```
 
 > [!NOTE]
-> `enabled`je nastavené tak `true` , že se tato značka nachází v seznamu *Include* pro video indexer rozpoznat a že je `enabled` false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
+> `enabled` je nastavené tak `true` , že se tato značka nachází v seznamu *Include* pro video indexer rozpoznat a že je `enabled` false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
 
 ## <a name="update-a-specific-brand"></a>Aktualizace konkrétní značky
 
@@ -178,7 +179,7 @@ Odpověď ukazuje, jestli jsou značky Bingu povolené, a to podle formátu ní�
 ```
 
 > [!NOTE]
-> `useBuiltIn`nastavení na hodnotu true představuje, že jsou značky Bingu povolené. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané. `state`Hodnota může být ignorována, protože je zastaralá.
+> `useBuiltIn` nastavení na hodnotu true představuje, že jsou značky Bingu povolené. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané. `state`Hodnota může být ignorována, protože je zastaralá.
 
 ## <a name="update-brands-model-settings"></a>Aktualizace nastavení modelu značek
 

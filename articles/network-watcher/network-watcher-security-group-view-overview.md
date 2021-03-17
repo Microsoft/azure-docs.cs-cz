@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e330d2595487366ff7b8979490cb8a897f89520
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022646"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503143"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Úvod do zobrazení efektivních pravidel zabezpečení v Azure Network Watcher
 
@@ -35,20 +35,11 @@ Můžete vybrat pravidla a otevře se nové okno, ve kterém se zobrazí skupina
 ### <a name="next-steps"></a>Další kroky
 
 Funkci *efektivních skupin zabezpečení* můžete použít také prostřednictvím jiných metod uvedených níže:
-* [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
-* [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
+* [REST API](/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
+* [PowerShell](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
+* [Azure CLI](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
 
 Informace o tom, jak auditovat nastavení skupiny zabezpečení sítě, najdete v tématu [audit nastavení skupiny zabezpečení sítě pomocí PowerShellu](network-watcher-nsg-auditing-powershell.md) .
 
 [1]: ./media/network-watcher-security-group-view-overview/securitygroupview.png
 [2]: ./media/network-watcher-security-group-view-overview/figure1.png
-
-
-
-
-
-
-
-
-

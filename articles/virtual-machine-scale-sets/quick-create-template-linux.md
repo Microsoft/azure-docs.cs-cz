@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: mimckitt, subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 52e0e50d3c0c68b57181645c3eb695308fdac65a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648628"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703819"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>Rychlý Start: vytvoření sady škálování virtuálních počítačů se systémem Linux pomocí šablony ARM
 
@@ -77,7 +77,7 @@ Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou a
 
 Šablona používá rozšíření vlastních skriptů k instalaci [lahvičky](https://bottlepy.org/docs/dev/), webové architektury Pythonu a jednoduchého serveru http.
 
-V **identifikátorech URI**  -  *installserver.sh*a *workserver.py*jsou definovány dva skripty. Tyto soubory se stáhnou z GitHubu, potom *commandToExecute* spustí `bash installserver.sh` instalaci a konfiguraci aplikace.
+V **identifikátorech URI**  -  *installserver.sh* a *workserver.py* jsou definovány dva skripty. Tyto soubory se stáhnou z GitHubu, potom *commandToExecute* spustí `bash installserver.sh` instalaci a konfiguraci aplikace.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -92,7 +92,7 @@ V **identifikátorech URI**  -  *installserver.sh*a *workserver.py*jsou definov�
 az group create --name myResourceGroup --location EastUS
 
 # Deploy template into resource group
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```

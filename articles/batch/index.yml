@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/23/2019
-  ms.openlocfilehash: e5240786ecb26ad0a72c6a9b82cd03ca9050113b
-  ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+  ms.date: 10/09/2020
+  ms.openlocfilehash: ca8ef13ac3440d2298b817c12d1126e1526a74c1
+  ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/05/2020
-  ms.locfileid: "85964851"
+  ms.lasthandoff: 01/15/2021
+  ms.locfileid: "98234378"
 landingContent:
 - title: Informace o službě Azure Batch
   linkLists:
@@ -40,8 +40,12 @@ landingContent:
       url: quick-run-python.md
   - linkListType: concept
     links:
-    - text: Přehled pracovních postupů a funkcí pro vývojáře
+    - text: Přehled pracovních postupů a funkcí
       url: batch-service-workflow-features.md
+    - text: Úlohy a úkoly
+      url: jobs-and-tasks.md
+    - text: Uzly a fondy
+      url: nodes-and-pools.md
 - title: Podrobní průvodci
   linkLists:
   - linkListType: tutorial
@@ -50,14 +54,10 @@ landingContent:
       url: tutorial-parallel-dotnet.md
     - text: Paralelní zpracování souborů – Python
       url: tutorial-parallel-python.md
+    - text: Skripty Pythonu s Data Factory
+      url: tutorial-run-python-batch-azure-data-factory.md
     - text: OCR se službami Batch a Functions
       url: tutorial-batch-functions.md
-    - text: Vykreslování scén s využitím Arnoldu
-      url: tutorial-rendering-cli.md
-    - text: Vykreslování scén s využitím Batch Exploreru
-      url: tutorial-rendering-batchexplorer-blender.md
-    - text: Paralelní simulace R
-      url: tutorial-r-doazureparallel.md
 - title: Nastavení a správa prostředků
   linkLists:
   - linkListType: how-to-guide
@@ -65,11 +65,13 @@ landingContent:
     - text: Vytvoření účtu Batch
       url: batch-account-create-portal.md
     - text: Vytváření a správa fondů
-      url: batch-custom-images.md
+      url: batch-sig-images.md
     - text: Souběžné spouštění úloh
       url: batch-parallel-node-tasks.md
     - text: Použití balíčků aplikací
       url: batch-application-packages.md
+    - text: Spouštění kontejnerových aplikací
+      url: batch-docker-container-workloads.md
   - linkListType: concept
     links:
     - text: Podporované velikosti virtuálních počítačů
@@ -83,16 +85,18 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: /cli/azure/batch?view=azure-cli-latest
+      url: /cli/azure/batch
     - text: Azure PowerShell
-      url: /powershell/module/az.batch/?view=azps-2.6.0
+      url: /powershell/module/az.batch/
     - text: .NET
-      url: /dotnet/api/overview/azure/batch?view=azure-dotnet
+      url: /dotnet/api/overview/azure/batch
     - text: Java
-      url: /java/api/overview/azure/batch?view=azure-java-stable
+      url: /java/api/overview/azure/batch
     - text: Node.js
-      url: /javascript/api/overview/azure/batch?view=azure-node-latest
+      url: /javascript/api/overview/azure/batch
     - text: Python
-      url: /python/api/overview/azure/batch?view=azure-python
+      url: /python/api/overview/azure/batch
     - text: REST
       url: /rest/api/batchservice/
+    - text: Životní cyklus rozhraní API služby Batch
+      url: /rest/api/batchservice/batch-api-status

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515232"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005873"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Pro StorSimple Device Manager připojená k virtuálnímu poli StorSimple použít okno Souhrn zařízení
 
@@ -49,7 +49,7 @@ Oblast základy zachycuje některé důležité vlastnosti, jako je například 
 
 * V grafu **využití** můžete zobrazit primární úložiště používané ve vašem virtuálním poli a také cloudové úložiště spotřebované za posledních 7 dní, což je výchozí časové období. Pomocí možnosti **Upravit** v pravém horním rohu grafu vyberte jiné časové měřítko.
 
-* Dlaždice **sdílené složky** nebo **svazky** obsahuje souhrn počtu sdílených složek nebo svazků v zařízení seskupených podle stavu. Kliknutím na dlaždici otevřete okno seznam **sdílených složek** nebo **svazků** a potom kliknutím na jednotlivou sdílenou složku nebo svazek můžete zobrazit nebo změnit její vlastnosti. Další informace najdete v tématu [Správa sdílených složek](storsimple-virtual-array-manage-shares.md) nebo [Správa svazků](storsimple-virtual-array-manage-volumes.md).
+* Dlaždice **sdílené složky** nebo **svazky** obsahuje souhrn počtu sdílených složek nebo svazků v zařízení seskupených podle stavu. Kliknutím na dlaždici otevřete okno seznam **sdílených složek**  nebo **svazků** a potom kliknutím na jednotlivou sdílenou složku nebo svazek můžete zobrazit nebo změnit její vlastnosti. Další informace najdete v tématu [Správa sdílených složek](storsimple-virtual-array-manage-shares.md) nebo [Správa svazků](storsimple-virtual-array-manage-volumes.md).
 
 ## <a name="next-steps"></a>Další kroky
 Naučte se:

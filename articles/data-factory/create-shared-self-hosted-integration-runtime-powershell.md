@@ -1,28 +1,37 @@
 ---
 title: Vytvoření sdíleného prostředí Integration runtime v místním prostředí pomocí PowerShellu
 description: Naučte se, jak vytvořit sdílený modul runtime integrace v místním prostředí v Azure Data Factory, aby k prostředí Integration runtime měl přístup více datových továrn.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 16feeb124859fa6199303d9d590fa0a286033ef9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136027"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389429"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V této příručce se dozvíte, jak vytvořit sdílený modul runtime integrace v místním prostředí v Azure Data Factory. Pak můžete použít sdílený modul runtime integrace v místním prostředí v jiném objektu pro vytváření dat.
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
+
+Můžete znovu použít stávající infrastrukturu Integration runtime v místním prostředí, kterou jste už nastavili v datové továrně. Toto opakované použití umožňuje vytvořit propojený modul runtime integrace v místním prostředí v jiném objektu pro vytváření dat odkazem na existující sdílený modul IR v místním prostředí.
+
+Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následující 12 minutové video:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>Terminologie
+
+- **Shared IR**: původní prostředí IR v místním prostředí, které běží na fyzické infrastruktuře.  
+- **Propojený IR**: IR, který odkazuje na jiný sdílený IR. Propojený IR je logický IR a používá infrastrukturu jiného sdíleného prostředí IR v místním prostředí.
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Vytvoření sdíleného prostředí IR v místním prostředí pomocí Azure Data Factoryho uživatelského rozhraní
 
@@ -57,10 +66,10 @@ Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí 
 
 - **Předplatné Azure**. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). 
 
-- **Azure PowerShell.** Postupujte podle pokynů v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Pomocí PowerShellu spustíte skript pro vytvoření prostředí Integration runtime v místním prostředí, které je možné sdílet s jinými datovými továrnami. 
+- **Azure PowerShell.** Postupujte podle pokynů v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](/powershell/azure/install-az-ps). Pomocí PowerShellu spustíte skript pro vytvoření prostředí Integration runtime v místním prostředí, které je možné sdílet s jinými datovými továrnami. 
 
 > [!NOTE]  
-> Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na  [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -99,7 +108,7 @@ Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí 
     > [!NOTE]  
     > Tento krok je volitelný. Pokud již máte datovou továrnu, přeskočte tento krok. 
 
-    Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění WestEurope: 
+    Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění WestEurope: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -155,7 +164,7 @@ Odpověď obsahuje ověřovací klíč pro tento modul runtime integrace v míst
 #### <a name="create-another-data-factory"></a>Vytvoření jiné datové továrny
 
 > [!NOTE]  
-> Tento krok je volitelný. Pokud již máte datovou továrnu, kterou chcete sdílet, přeskočte tento krok. Aby bylo možné přidávat nebo odebírat přiřazení rolí do jiné datové továrny, musíte mít `Microsoft.Authorization/roleAssignments/write` oprávnění a `Microsoft.Authorization/roleAssignments/delete` , jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) .
+> Tento krok je volitelný. Pokud již máte datovou továrnu, kterou chcete sdílet, přeskočte tento krok. Aby bylo možné přidávat nebo odebírat přiřazení rolí do jiné datové továrny, musíte mít `Microsoft.Authorization/roleAssignments/write` oprávnění a `Microsoft.Authorization/roleAssignments/delete` , jako je například správce nebo [vlastník](../role-based-access-control/built-in-roles.md#owner) [přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) .
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -214,8 +223,39 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
 
+### <a name="monitoring"></a>Monitorování
+
+#### <a name="shared-ir"></a>Sdílený IR
+
+![Výběry pro vyhledání sdíleného prostředí Integration runtime](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![Monitorování sdíleného prostředí Integration runtime](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>Propojený IR
+
+![Výběry pro nalezení propojeného modulu runtime integrace](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![Monitorování propojeného prostředí Integration runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Známá omezení sdílení IR v místním prostředí
+
+* Objekt pro vytváření dat, ve kterém je vytvořen propojený IR, musí mít [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md). Ve výchozím nastavení mají datové továrny vytvořené v rutinách Azure Portal nebo PowerShellu implicitně vytvořenou spravovanou identitu. Když ale datovou továrnu vytvoříte pomocí šablony Azure Resource Manager nebo sady SDK, musíte explicitně nastavit vlastnost **identity** . Toto nastavení zajišťuje, že Správce prostředků vytvoří datovou továrnu, která obsahuje spravovanou identitu.
+
+* Sada Data Factory .NET SDK podporující tuto funkci musí být verze 1.1.0 nebo novější.
+
+* Chcete-li udělit oprávnění, potřebujete roli vlastníka nebo zděděnou roli vlastníka v objektu pro vytváření dat, kde existuje sdílený IR.
+
+* Funkce sdílení funguje pouze pro datové továrny v rámci stejného tenanta služby Azure AD.
+
+* Pro [uživatele typu Host](../active-directory/governance/manage-guest-access-with-access-reviews.md)Azure AD funkce vyhledávání v uživatelském rozhraní, které uvádí všechny datové továrny pomocí klíčového slova hledání, nefunguje. Pokud je uživatel typu Host vlastníkem objektu pro vytváření dat, ale můžete ho sdílet bez funkce hledání. Pro spravovanou identitu datové továrny, která potřebuje sdílet IR, zadejte tuto spravovanou identitu do pole **přiřadit oprávnění** a vyberte **Přidat** v uživatelském rozhraní Data Factory.
+
+  > [!NOTE]
+  > Tato funkce je k dispozici pouze v Data Factory v2.
+
+
 ### <a name="next-steps"></a>Další kroky
 
-- Projděte si [koncept prostředí Integration runtime v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- Projděte si [koncept prostředí Integration runtime v Azure Data Factory](./concepts-integration-runtime.md).
 
-- Naučte se [vytvořit místní prostředí Integration runtime v Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- Naučte se [vytvořit místní prostředí Integration runtime v Azure Portal](./create-self-hosted-integration-runtime.md).

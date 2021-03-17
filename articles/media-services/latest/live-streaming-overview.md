@@ -1,26 +1,28 @@
 ---
-title: Přehled živého streamování s Azure Media Services V3 | Microsoft Docs
+title: Přehled živého streamování
 description: Tento článek obsahuje přehled živého streamování pomocí Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 03/18/2020
-ms.author: juliako
-ms.openlocfilehash: fd592469a4435504f1eecf1f24e50faf23fad17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: b552dcc0e6766316e55e9cdda6e462b2d4abfd2b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022969"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955915"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services vám umožní doručovat živé události zákazníkům v cloudu Azure. K streamování živých událostí pomocí Media Services budete potřebovat následující:  
 
@@ -35,7 +37,7 @@ Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetovýc
 Tento článek poskytuje přehled a pokyny pro živé streamování pomocí Media Services a odkazy na další relevantní články.
  
 > [!NOTE]
-> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dynamické balení a doručování
 
@@ -58,9 +60,9 @@ Dynamické filtrování se používá k řízení počtu běhů, formátů, pře
 
 ### <a name="pass-through"></a>Průchod
 
-![Průchozí](./media/live-streaming/pass-through.svg)
+![Diagram znázorňující, jak se ingestují a zpracovávají informační kanály videa a zvuku z předávací živé události.](./media/live-streaming/pass-through.svg)
 
-Při použití předávací **živé události**se spoléháte na váš místní živý kodér a vygenerujete datový proud s více přenosovými rychlostmi a pošlete ho jako kanál příspěvků do živé události (pomocí RTMP nebo fragmentování vstupního protokolu-MP4). Živá událost pak provede přes příchozí streamy videa do dynamického balíčku (koncového bodu streamování) bez dalšího překódování. Taková předávací živá událost je optimalizovaná pro dlouhotrvající živé události nebo 24x365 lineární živé streamování. 
+Při použití předávací **živé události** se spoléháte na váš místní živý kodér a vygenerujete datový proud s více přenosovými rychlostmi a pošlete ho jako kanál příspěvků do živé události (pomocí RTMP nebo fragmentování vstupního protokolu-MP4). Živá událost pak provede přes příchozí streamy videa do dynamického balíčku (koncového bodu streamování) bez dalšího překódování. Taková předávací živá událost je optimalizovaná pro dlouhotrvající živé události nebo 24x365 lineární živé streamování. 
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
@@ -133,4 +135,4 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 * [Rychlý Start živého streamování](live-events-wirecast-quickstart.md)
 * [Kurz živého streamování](stream-live-tutorial-with-api.md)
-* [Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md)
+* [Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-v-2-v-3-migration-introduction.md)

@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685710"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631218"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
@@ -112,7 +112,7 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-Následující uživatelem zadané informace jsou Mush správné:
+Následující informace, které jsou zadány uživatelem, musí být správné:
 
 - ID tenanta trezoru klíčů
 - Hodnota prostředku nastavená na https %3 A %2 F %2 F trezor. Azure. NET (s kódováním URL)
@@ -128,7 +128,7 @@ Pokud máte přístup jenom k tokenu odpovědi, můžete ho dekódovat (jak vid�
 HTTP 403 znamená, že žádost byla ověřena (zná požadavek identity), ale identita nemá oprávnění pro přístup k požadovanému prostředku. Existují dva příčiny:
 
 - Pro tuto identitu nejsou k dispozici žádné zásady přístupu.
-- V nastavení brány firewall trezoru klíčů není povolená IP adresa prostředku žádajícího prostředku.
+- IP adresa žádajícího prostředku není schválená v nastavení brány firewall trezoru klíčů.
 
 K protokolu HTTP 403 dochází často tehdy, když aplikace zákazníka nepoužívá ID klienta, které mu zákazník považuje. To obvykle znamená, že zásady přístupu nejsou správně nastaveny pro skutečnou volající identitu.
 
@@ -166,5 +166,3 @@ Omezování se řeší pomocí těchto technik:
 - Pokud se počet požadavků nedá snížit ukládáním do mezipaměti a časovým limitem omezení rychlosti nefunguje, zvažte rozdělení klíčů do několika trezorů klíčů. Limit služby pro jedno předplatné je pětinásobné omezením jednotlivých Key Vault. Pokud používáte více než 5 trezorů klíčů, měli byste zvážit použití více předplatných. 
 
 Podrobné pokyny, včetně požadavků na zvýšení limitů, najdete tady: [Key Vault pokyny k omezování](overview-throttling.md) .
-
-

@@ -1,21 +1,20 @@
 ---
-title: Mapování sjednocení toku dat
+title: Transformace sjednocení v toku dat mapování
 description: Azure Data Factory transformace toku dat při mapování nové větve
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 1874e3536a3dda123c7fff9726c02e5d92d88804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e61c53cabc8f784ba9f0a3e78b5de01be134b0cd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204334"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367839"
 ---
-# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory transformace sjednocení toku dat
+# <a name="union-transformation-in-mapping-data-flow"></a>Transformace sjednocení v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 

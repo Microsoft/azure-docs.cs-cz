@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
-ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040230"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>V toku mapování dat vyberte transformaci.
 
@@ -44,13 +44,13 @@ Pevné mapování lze použít k namapování podsloupce hierarchického sloupce
 
 Pokud chcete namapovat mnoho sloupců najednou nebo předat sloupce po směru, použijte mapování na základě pravidel k definování mapování pomocí vzorů sloupců. Odpovídá na základě `name` sloupců, `type` , a `stream` `position` . Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
 
-Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel**.
+Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel** .
 
-![mapování na základě pravidel](media/data-flow/rule2.png "Mapování na základě pravidel")
+![Snímek obrazovky zobrazuje mapování na základě pravidel vybrané z mapování přidat.](media/data-flow/rule2.png "Mapování na základě pravidel")
 
 Každé mapování založené na pravidlech vyžaduje dva vstupy: podmínku, na kterou se má rozlišovat a co má pojmenovat jednotlivé mapované sloupce. Obě hodnoty jsou zadané prostřednictvím [Tvůrce výrazů](concepts-data-flow-expression-builder.md). Do pole levý výraz zadejte podmínku vaší logické shody. V poli pravého výrazu určete, k čemu se odpovídající sloupec namapuje.
 
-![mapování na základě pravidel](media/data-flow/rule-based-mapping.png "Mapování na základě pravidel")
+![Snímek obrazovky ukazuje mapování.](media/data-flow/rule-based-mapping.png "Mapování na základě pravidel")
 
 Použijte `$$` syntaxi pro odkaz na vstupní název spárovaného sloupce. Pomocí výše uvedeného obrázku jako příklad si řekněme, že uživatel chce vyhledat všechny řetězcové sloupce, jejichž názvy jsou kratší než šest znaků. Pokud byl jeden příchozí sloupec pojmenován `test` , výraz `$$ + '_short'` sloupec přejmenuje `test_short` . Pokud je toto jediné mapování, které existuje, všechny sloupce, které nesplňují podmínku, se z výstupních dat ztratí.
 
@@ -60,7 +60,7 @@ Vzory odpovídají současně předaným i definovaným sloupcům. Chcete-li zji
 
 Pokud kliknete na ikonu Dvojitá šipka dolů, můžete zadat podmínku mapování regulárního výrazu. Podmínka mapování regulárního výrazu odpovídá všem názvům sloupců, které odpovídají zadané podmínce regulárního výrazu. Tato možnost se dá použít v kombinaci se standardními mapováními založenými na pravidlech.
 
-![mapování na základě pravidel](media/data-flow/regex-matching.png "Mapování na základě pravidel")
+![Snímek obrazovky ukazuje podmínku mapování regulárního výrazu s úrovní hierarchie a odpovídajícím názvem.](media/data-flow/regex-matching.png "Mapování na základě pravidel")
 
 Výše uvedený příklad se shoduje se vzorem regulárního výrazu `(r)` nebo libovolným názvem sloupce, který obsahuje malý případ r. Podobně jako u mapování na základě pravidel jsou všechny odpovídající sloupce změněny podmínkou na pravé straně pomocí `$$` syntaxe.
 
@@ -70,9 +70,9 @@ Pokud je v názvu sloupce více shod regulárního výrazu, můžete odkazovat n
 
 Pokud vaše definovaná projekce má hierarchii, můžete k mapování podsloupců hierarchií použít mapování na základě pravidel. Zadejte podmínku pro porovnání a složitý sloupec, jehož podsloupce chcete namapovat. Každý odpovídající Podsloupec se nastaví na základě pravidla "název jako", které je uvedeno na pravé straně.
 
-![mapování na základě pravidel](media/data-flow/rule-based-hierarchy.png "Mapování na základě pravidel")
+![Snímek obrazovky ukazuje mapování na základě pravidel, které se používá pro hierarchii.](media/data-flow/rule-based-hierarchy.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a`obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
+Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a` obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
 
 ### <a name="parameterization"></a>Parametrizace
 

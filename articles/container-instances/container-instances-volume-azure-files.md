@@ -3,23 +3,26 @@ title: Připojení svazku souborů Azure ke skupině kontejnerů
 description: Naučte se, jak připojit svazek souborů Azure k trvalému stavu pomocí Azure Container Instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259478"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954970"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky ve službě Azure Container Instances
 
-Ve výchozím nastavení je služba Azure Container Instances bezstavová. Pokud u kontejneru dojde k chybě nebo se kontejner zastaví, veškerý jeho stav se ztratí. Pokud chcete zachovat stav i po skončení doby života kontejneru, je nutné připojit svazek z externího úložiště. Jak je znázorněno v tomto článku, Azure Container Instances můžou připojit sdílenou složku Azure vytvořenou se [soubory Azure](../storage/files/storage-files-introduction.md). Soubory Azure nabízí plně spravované sdílené složky hostované v Azure Storage, které jsou přístupné prostřednictvím standardního protokolu SMB (Server Message Block). Použití sdílené složky Azure s Azure Container Instances poskytuje funkce pro sdílení souborů podobně jako použití sdílené složky Azure s virtuálními počítači Azure.
+Ve výchozím nastavení je služba Azure Container Instances bezstavová. Pokud je kontejner restartován, dojde k chybě nebo se zastaví, veškerý jeho stav bude ztracen. Pokud chcete zachovat stav i po skončení životnosti kontejneru, je nutné připojit svazek z externího úložiště. Jak je znázorněno v tomto článku, Azure Container Instances můžou připojit sdílenou složku Azure vytvořenou se [soubory Azure](../storage/files/storage-files-introduction.md). Soubory Azure nabízí plně spravované sdílené složky hostované v Azure Storage, které jsou přístupné prostřednictvím standardního protokolu SMB (Server Message Block). Použití sdílené složky Azure s Azure Container Instances poskytuje funkce pro sdílení souborů podobně jako použití sdílené složky Azure s virtuálními počítači Azure.
 
 > [!NOTE]
 > Připojení sdílené složky služby soubory Azure je aktuálně omezené na kontejnery Linux. V [přehledu](container-instances-overview.md#linux-and-windows-containers)najdete aktuální rozdíly v platformách.
 >
 > Připojení sdílené složky služby soubory Azure do instance kontejneru je podobné jako připojení k Docker [BIND](https://docs.docker.com/storage/bind-mounts/). Uvědomte si, že pokud připojíte sdílenou složku k adresáři kontejneru, ve kterém existují soubory nebo adresáře, tyto soubory nebo adresáře jsou po připojení skryté a nejsou přístupné při spuštění kontejneru.
 >
+
+> [!IMPORTANT]
+> Pokud nasazujete skupiny kontejnerů do Virtual Network Azure, musíte do svého účtu Azure Storage přidat [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) .
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 

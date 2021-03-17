@@ -1,45 +1,48 @@
 ---
-title: Seznámení s frontami Azure – Azure Storage
-description: Podívejte se na Úvod do front Azure a službu pro ukládání velkého počtu zpráv. Služba front obsahuje formát adresy URL, účet úložiště, frontu a zprávu.
+title: Seznámení se službou Azure Queue Storage-Azure Storage
+description: Podívejte se na Úvod do Azure Queue Storage, službu pro ukládání velkého počtu zpráv. Služba Queue Storage obsahuje formát adresy URL, účet úložiště, frontu a zprávu.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 03/18/2020
+ms.topic: overview
 ms.service: storage
 ms.subservice: queues
-ms.topic: overview
-ms.reviewer: dineshm
-ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c5c97fbb72934dd99ec784ccf8e08eec059c31b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826496"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590575"
 ---
-# <a name="what-are-azure-queues"></a>Co jsou fronty Azure?
+# <a name="what-is-azure-queue-storage"></a>Co je Azure Queue Storage?
 
 Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Přístup ke zprávám odkudkoli na světě prostřednictvím ověřených volání pomocí protokolu HTTP nebo HTTPS. Zpráva fronty může mít velikost až 64 KB. Fronta může obsahovat miliony zpráv až do celkového limitu kapacity účtu úložiště. Fronty se běžně používají k vytváření nevyřízených položek pro asynchronní zpracování.
 
-## <a name="queue-service-concepts"></a>Služba front koncepty
+## <a name="queue-storage-concepts"></a>Queue Storage koncepty
 
-Služba front obsahuje následující součásti:
+Queue Storage obsahuje následující součásti:
 
-![Diagram znázorňující vztah mezi účtem úložiště, frontami a zprávami](./media/storage-queues-introduction/queue1.png)
+![Diagram znázorňující vztah mezi účtem úložiště, frontami a zprávami.](./media/storage-queues-introduction/queue1.png)
 
-* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL:
+- **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL:
 
-    `https://<storage account>.queue.core.windows.net/<queue>`
-  
-    Následující adresa URL odkazuje na frontu v diagramu:  
-  
-    `https://myaccount.queue.core.windows.net/images-to-download`
+  `https://<storage account>.queue.core.windows.net/<queue>`
 
-* **Účet úložiště:** Veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Informace o kapacitě účtu úložiště najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+  Následující adresa URL odkazuje na frontu v diagramu:
 
-* **Fronta:** Fronta obsahuje sadu zpráv. Název fronty **musí** být malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+  `https://myaccount.queue.core.windows.net/images-to-download`
 
-* **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Před verzí 2017-07-29 je maximální povolený čas na živé maximum sedm dní. V případě verze 2017-07-29 nebo novější může být maximální doba do živého kladného čísla nebo-1, což znamená, že platnost zprávy nevyprší. Pokud je tento parametr vynechán, výchozí hodnota TTL (Time to Live) je sedm dní.
+- **Účet úložiště:** Veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Informace o kapacitě účtu úložiště najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+
+- **Fronta:** Fronta obsahuje sadu zpráv. Název fronty **musí** být malými písmeny. Informace o pojmenovávání front najdete v tématu [pojmenování front a metadat](/rest/api/storageservices/naming-queues-and-metadata).
+
+- **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Před verzí 2017-07-29 je maximální povolený čas na živé maximum sedm dní. V případě verze 2017-07-29 nebo novější může být maximální doba do živého kladného čísla nebo-1, což znamená, že platnost zprávy nevyprší. Pokud je tento parametr vynechán, výchozí hodnota TTL (Time to Live) je sedm dní.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření účtu úložiště](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [Začínáme s frontami pomocí .NET](storage-dotnet-how-to-use-queues.md)
+- [Vytvoření účtu úložiště](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Začínáme s Queue Storage pomocí .NET](storage-dotnet-how-to-use-queues.md)
+- [Začínáme s Queue Storage pomocí jazyka Java](storage-java-how-to-use-queue-storage.md)
+- [Začínáme s Queue Storage pomocí Pythonu](storage-python-how-to-use-queue-storage.md)
+- [Začínáme s Queue Storage pomocí Node.js](storage-nodejs-how-to-use-queues.md)

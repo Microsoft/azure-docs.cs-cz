@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 98b9734bb1c31b08e7f4784558efaba3a393d0b0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 882ba60e16f770651a1d9fe3b02b61be2b4c34c8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690941"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531204"
 ---
 Pomocí nástroje Live video Analytics v IoT Edge zjistíte pohyb příchozích datových proudů v reálném videu a odešlete události do IoT Hub. Chcete-li zobrazit tyto události, postupujte podle následujících kroků:
 
@@ -13,3 +13,9 @@ Pomocí nástroje Live video Analytics v IoT Edge zjistíte pohyb příchozích 
 1. Klikněte pravým tlačítkem na **lva-Sample-Device** a vyberte **Spustit sledování předdefinovaného koncového bodu události**.
 
     ![Začít monitorovat vestavěný koncový bod události](../../../media/quickstarts/start-monitoring-iothub-events.png)
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```

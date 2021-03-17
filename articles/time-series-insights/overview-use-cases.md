@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097356"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606959"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Případy použití Azure Time Series Insights Gen2
 
@@ -52,13 +52,13 @@ Zákazníci můžou využít rychlost a rychle diagnostikovat problémy souvisej
 
 Existují tři základní způsoby, jak pracovat s daty uloženými v Azure Time Series Insights Gen2:
 
-* První a nejjednodušší způsob, jak začít, je Azure Time Series Insights Gen2 Explorer. Můžete ji použít k rychlému vizualizaci všech dat IoT na jednom místě. Poskytuje nástroje jako Heat mapu, které vám pomůžou odhalit anomálie ve vašich datech. Nabízí také pohled na perspektivu. Pomocí ní můžete porovnat až čtyři zobrazení z jednoho nebo více Azure Time Series Insights Gen2 prostředí na jednom řídicím panelu. Řídicí panel poskytuje zobrazení dat časových řad napříč všemi vašimi umístěními. Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md). Pokud chcete naplánovat své prostředí, přečtěte si téma [plánování Azure Time Series Insights Gen2](./time-series-insights-update-plan.md).
+* První a nejjednodušší způsob, jak začít, je Azure Time Series Insights Gen2 Explorer. Můžete ji použít k rychlému vizualizaci všech dat IoT na jednom místě. Poskytuje nástroje jako Heat mapu, které vám pomůžou odhalit anomálie ve vašich datech. Nabízí také pohled na perspektivu. Pomocí ní můžete porovnat až čtyři zobrazení z jednoho nebo více Azure Time Series Insights Gen2 prostředí na jednom řídicím panelu. Řídicí panel poskytuje zobrazení dat časových řad napříč všemi vašimi umístěními. Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md). Pokud chcete naplánovat své prostředí, přečtěte si téma [plánování Azure Time Series Insights Gen2](./how-to-plan-your-environment.md).
 
 * Druhým způsobem, jak začít, je použít sadu JavaScript SDK k rychlému vkládání výkonných grafů a grafů do vaší webové aplikace. Pouze pár řádků kódu vám umožní vytvářet výkonné dotazy. Použijte je k naplnění spojnicových grafů, výsečových grafů, pruhových grafů, heatch map, datových mřížek a dalších. Všechny tyto prvky existují předem v dialogovém okně pomocí sady SDK. Sada SDK také abstrakce Azure Time Series Insights rozhraní API pro dotazy Gen2. Můžete je použít k vytváření predikátů podobných SQL k dotazování na data, která chcete zobrazit na řídicím panelu. V případě hybridních řešení prezentační vrstvy nabízí Azure Time Series Insights Gen2 parametrizované adresy URL. Poskytují bezproblémové spojovací body s Azure Time Series Insights Gen2 Explorer pro hluboké komentáře na data.
 
   * Přečtěte si o [klientské knihovně js](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) a [ukázkové dokumentaci klienta](https://github.com/Microsoft/tsiclient) , kde se dozvíte další informace o sadě JavaScript SDK.
 
-  * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Azure Time Series Insights Gen2 Explorer](time-series-insights-update-explorer.md).
+  * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md).
 
 * Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Azure Time Series Insights Gen2. Azure Time Series Insights Gen2 obsahuje dočasné operátory, jako například `from` , `to` , `first` a `last` . Obsahuje agregace a transformace, jako například `average` ,, `sum` , `min` `max` , `time-weighted average` , `time-weighted sum` atd. Umožňuje také filtrování, aritmetické a logické operátory, skalární funkce atd. Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění vizualizací Homegrown pro zjištění anomálií.
 
@@ -66,7 +66,7 @@ Existují tři základní způsoby, jak pracovat s daty uloženými v Azure Time
 
 Pomocí Azure Time Series Insights Gen2 můžete monitorovat stav, využití a výkon zařízení ve velkém měřítku a měřit provozní efektivitu. Azure Time Series Insights Gen2 pomáhá spravovat různorodé a nepředvídatelné úlohy IoT bez omezení ingestování nebo výkonu dotazů.
 
-[![Přehled](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Snímek obrazovky zobrazuje I/o zařízení/data aplikací, zpracování datových proudů, provozní efektivitu, Intelligence/Insights a pokročilé analýzy v Azure Time Series Insights Gen2.](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streamování a průběžné zpracování dat přicházejících z provozních procesů může úspěšně transformovat libovolnou firmu, pokud je v kombinaci s pravou technologií nebo řešením. Tato řešení jsou často kombinací více systémů. Umožňují prozkoumání a analýzu dat, která se průběžně mění, zejména ve sféře IoT, a sdílejí společný vzor.
 
@@ -100,6 +100,6 @@ Azure Time Series Insights Gen2 mosty mezi daty IoT a pokročilými analýzami v
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
-* Přečtěte si [Azure Time Series Insights osvědčené postupy](./time-series-insights-update-plan.md) pro naplánování prostředí.
+* Přečtěte si další informace o [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md).
+* Přečtěte si [Azure Time Series Insights osvědčené postupy](./how-to-plan-your-environment.md) pro naplánování prostředí.
 * Přečtěte si [ukázkovou dokumentaci klienta](https://github.com/Microsoft/tsiclient) .

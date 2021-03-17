@@ -7,16 +7,19 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ea57a623546df99408d488da4522411f55ab0dd9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245396"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094364"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Kurz: vytvoření prostředí Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostředí, které je naplněné daty z simulovaných zařízení. V tomto kurzu se naučíte:
 
@@ -33,7 +36,7 @@ Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostře
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Pokud chcete získat další informace, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Zkontrolovat video
 
@@ -98,7 +101,7 @@ Za druhé vytvořte ve svém předplatném Azure Azure Time Series Insights pros
 
    Parametr|Popis
    ---|---
-   **Název prostředí** | Vyberte jedinečný název prostředí Azure Time Series Insights. Názvy používá Průzkumník Azure Time Series Insights a [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query).
+   **Název prostředí** | Vyberte jedinečný název prostředí Azure Time Series Insights. Názvy používá Průzkumník Azure Time Series Insights a [rozhraní API pro dotazy](/rest/api/time-series-insights/gen1-query).
    **Předplatné** | Předplatná představují kontejnery prostředků Azure. Vyberte předplatné, ve kterém chcete vytvořit prostředí Azure Time Series Insights.
    **Skupina prostředků** | Skupina prostředků představuje kontejner prostředků Azure. Vyberte existující skupinu prostředků nebo vytvořte novou pro prostředek prostředí Azure Time Series Insights.
    **Umístění** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights. Aby nedošlo k další latenci, vytvořte Azure Time Series Insights prostředí ve stejné oblasti jako jiné prostředky IoT.
@@ -109,7 +112,7 @@ Za druhé vytvořte ve svém předplatném Azure Azure Time Series Insights pros
 
    [![Vytvoření prostředku prostředí Azure Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
-1. Nyní připojte prostředí Azure Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** na `Select existing` . Pak při nastavení **IoT Hubho názvu**vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
+1. Nyní připojte prostředí Azure Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** na `Select existing` . Pak při nastavení **IoT Hubho názvu** vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
 
    [![Připojení prostředí Azure Time Series Insights k vytvořenému centru IoT Hub](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
@@ -139,7 +142,7 @@ Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikac
    ---|---
    **Cílová služba IoT Hub** | Vyberte možnost **použít předem zřízené IoT Hub**.
    **Model zařízení** | Vyberte **chladicíer**.
-   **Počet zařízení**  | Zadejte `10` **hodnotu**v poli množství.
+   **Počet zařízení**  | Zadejte `10` **hodnotu** v poli množství.
    **Frekvence telemetrie** | Zadejte `10` sekundy.
    **Doba trvání simulace** | Vyberte **Konec v:** a zadejte `5` minuty.
 

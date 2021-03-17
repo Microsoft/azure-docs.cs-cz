@@ -1,21 +1,17 @@
 ---
 title: Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 description: Tento článek porovnává Azure Data Factory s verzí 1 služby Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: kromerm
-manager: anandsub
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: makromer
-ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231229"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393713"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 
@@ -30,7 +26,7 @@ V následující tabulce najdete porovnání funkcí služby Data Factory s funk
 | ------- | --------- | --------- | 
 | Datové sady | Pojmenované zobrazení dat s odkazem na data, která chcete ve svých aktivitách použít jako vstupy nebo výstupy. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Například datová sada Azure Blob určuje kontejner objektů blob a složku úložiště Azure Blob, ze kterého má aktivita číst data.<br/><br/>**Dostupnost** definuje model dělení časového intervalu pro zpracování datové sady (například každou hodinu, každý den atd.). | V aktuální verzi jsou datové sady stejné. Nemusíte ale pro datové sady definovat plány **dostupnosti**. Můžete definovat aktivační prostředek, který může naplánovat kanály z paradigmatu plánovače hodin. Další informace najdete v tématech [Aktivační události](concepts-pipeline-execution-triggers.md#trigger-execution) a [Datové sady](concepts-datasets-linked-services.md). | 
 | Propojené služby | Propojené služby se velmi podobají připojovacím řetězcům. Tyto řetězce definují informace o připojení, které služba Data Factory potřebuje, aby se mohla připojit k externím prostředkům. | Propojené služby jsou stejné jako v Data Factory verze 1, ale mají novou vlastnost **connectVia**, která využívá výpočetní prostředí Integration Runtime aktuální verze služby Data Factory. Další informace najdete v tématech [Prostředí Integration Runtime v Azure Data Factory](concepts-integration-runtime.md) a [Vlastnosti propojených služeb pro Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). |
-| Pipelines | Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. K naplánování a spuštění kanálů slouží vlastnosti startTime, endTime a isPaused. | Kanály jsou skupiny aktivit, které se provádějí s daty. Plánování aktivit v kanálu je ale rozdělené do nových prostředků aktivačních událostí. Kanály v aktuální verzi služby Data Factory si můžete představit spíše jako „jednotky pracovních postupů“, které plánujete samostatně prostřednictvím aktivačních událostí. <br/><br/>Kanály v aktuální verzi služby Data Factory nevyužívají spouštění v „časových intervalech“. Koncepce Data Factory verze 1 pro startTime, endTime a isPaused se v aktuální verzi Data Factory už nevyužívají. Další informace najdete v tématech [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md) a [Kanály a aktivity](concepts-pipelines-activities.md). |
+| Pipelines | Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které společně provádějí úlohu. K naplánování a spuštění kanálů slouží vlastnosti startTime, endTime a isPaused. | Kanály jsou skupiny aktivit, které se provádějí s daty. Plánování aktivit v kanálu je ale rozdělené do nových prostředků aktivačních událostí. Kanály v aktuální verzi Data Factory můžete představit jako "jednotky pracovního postupu", které naplánujete samostatně prostřednictvím triggerů. <br/><br/>Pro kanály nejsou v aktuální verzi Data Factory spuštěná žádná časová období: "Windows". Koncepce Data Factory verze 1 pro startTime, endTime a isPaused se v aktuální verzi Data Factory už nevyužívají. Další informace najdete v tématech [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md) a [Kanály a aktivity](concepts-pipelines-activities.md). |
 | Aktivity | Aktivity definují akce, které se mají v kanálu provést s vašimi daty. Podporují se aktivity přesunu dat (aktivita kopírování) a transformace dat (jako je Hive, Pig a MapReduce). | V aktuální verzi Data Factory aktivity pořád definované akce v rámci kanálu. Aktuální verze Data Factory zavádí nové [aktivity toku řízení](concepts-pipelines-activities.md#control-flow-activities). Tyto aktivity používáte v toku řízení (smyčky a větvení). Aktivity přesunu a transformace dat podporované ve verzi 1 se podporují i v aktuální verzi. V aktuální verzi můžete definovat aktivity transformace bez použití datových sad. |
 | Hybridní přesun dat a odesílání aktivit | Nově se používá označení Integration Runtime. [Brána správy dat](v1/data-factory-data-management-gateway.md) podporovala přesun dat mezi místním prostředím a cloudem.| Brána správy dat se teď nazývá modul Integration Runtime (v místním prostředí). Nabízí stejné funkce jako verze 1. <br/><br/> Azure-SSIS Integration Runtime v aktuální verzi Data Factory také podporuje nasazování a spouštění balíčků služby SQL Server Integration Services (SSIS) v cloudu. Další informace najdete v tématu [Prostředí Integration Runtime v Azure Data Factory](concepts-integration-runtime.md).|
 | Parametry | NA | Parametry jsou páry klíč-hodnota. Jsou určené jen ke čtení a slouží k nastavení konfigurace. Definují se v kanálech. Pokud kanál spouštíte ručně, můžete parametrům předat argumenty. Pokud používáte aktivační událost plánovače, může tato aktivační událost také předávat hodnoty parametrů. Aktivity v rámci kanálu využívají hodnoty parametrů.  |
@@ -69,12 +65,12 @@ Kanály se můžou aktivovat na vyžádání (na základě události, tj. odesl�
 [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md) umožňuje kanálu služby Data Factory volat jiný kanál.
 
 ### <a name="delta-flows"></a>Toky rozdílů
-Nejdůležitějším případem použití ve vzorech ETL je „rozdílové načtení“, kdy se načítají jen data, která se změnila od poslední iterace kanálu. Nové možnosti v aktuální verzi, jako jsou [aktivita vyhledávání](control-flow-lookup-activity.md), flexibilní plánování a tok řízení, přirozeným způsobem podporují tento případ použití. Kurz s podrobnými pokyny najdete tady: [Tutorial: Incremental copy](tutorial-incremental-copy-powershell.md) (Kurz: Vytváření přírůstkových kopií).
+Klíčový případ použití ve vzorech ETL je "rozdílové načtení", ve kterém se načtou jenom data, která se změnila od poslední iterace kanálu. Nové možnosti v aktuální verzi, jako jsou [aktivita vyhledávání](control-flow-lookup-activity.md), flexibilní plánování a tok řízení, přirozeným způsobem podporují tento případ použití. Kurz s podrobnými pokyny najdete tady: [Tutorial: Incremental copy](tutorial-incremental-copy-powershell.md) (Kurz: Vytváření přírůstkových kopií).
 
 ### <a name="other-control-flow-activities"></a>Další aktivity toku řízení
 V dalším textu najdete popis několika dalších aktivit toku řízení podporovaných v aktuální verzi služby Data Factory. 
 
-Aktivita řízení | Popis
+Aktivita řízení | Description
 ---------------- | -----------
 [Aktivita ForEach](control-flow-for-each-activity.md) | Definuje v kanálu opakovaný tok řízení. Tato aktivita se používá k iteraci v kolekci. Určené aktivity se spouští ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
 [Aktivita webu](control-flow-web-activity.md) | Volá z kanálu Data Factory vlastní koncový bod REST. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup. 
@@ -87,12 +83,12 @@ Služba Azure-SSIS se používá k přesunutí úloh SSIS do cloudu, k vytvořen
 
 Azure-SSIS Integration Runtime je plně spravovaný cluster virtuálních počítačů Azure (uzlů) vyhrazených ke spouštění balíčků SSIS v cloudu. Po zřízení Azure-SSIS Integration Runtime můžete stejné nástroje, které jste použili k nasazení balíčků SSIS, použít i v místním prostředí SSIS. 
 
-K nasazení balíčků SSIS do tohoto modulu runtime v Azure můžete použít třeba SQL Server Data Tools nebo SQL Server Management Studio. Podrobné pokyny najdete v kurzu [Nasazení balíčků služby SSIS (SQL Server Integration Services) do Azure](tutorial-create-azure-ssis-runtime-portal.md). 
+K nasazení balíčků SSIS do tohoto modulu runtime v Azure můžete použít třeba SQL Server Data Tools nebo SQL Server Management Studio. Podrobné pokyny najdete v kurzu [Nasazení balíčků služby SSIS (SQL Server Integration Services) do Azure](./tutorial-deploy-ssis-packages-azure.md). 
 
 ## <a name="flexible-scheduling"></a>Flexibilní plánování
 V aktuální verzi služby Data Factory nemusíte pro datové sady definovat plány dostupnosti. Můžete definovat aktivační prostředek, který může naplánovat kanály z paradigmatu plánovače hodin. Pokud chcete, aby byl plánovací a prováděcí model flexibilní, můžete kanálům předávat parametry aktivační událostí. 
 
-Kanály v aktuální verzi služby Data Factory nevyužívají spouštění v „časových intervalech“. Koncepce Data Factory verze 1 pro startTime, endTime a isPaused se v aktuální verzi Data Factory už nevyužívají. Další informace o sestavení a naplánování kanálu v aktuální verzi služby Data Factory najdete v článku [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
+Pro kanály nejsou v aktuální verzi Data Factory spuštěná žádná časová období: "Windows". Koncepce Data Factory verze 1 pro startTime, endTime a isPaused se v aktuální verzi Data Factory už nevyužívají. Další informace o sestavení a naplánování kanálu v aktuální verzi služby Data Factory najdete v článku [Spouštění kanálů a aktivační události](concepts-pipeline-execution-triggers.md).
 
 ## <a name="support-for-more-data-stores"></a>Podpora pro další úložiště dat
 Aktuální verze podporuje kopírování dat do více úložišť nebo z více úložišť dat než verze 1. Seznam podporovaných úložišť dat najdete v následujících článcích:
@@ -133,11 +129,11 @@ Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klien
 | | Verze 2 | Verze 1 |
 | ------ | -- | -- | 
 | **Azure Portal** | [Ano](quickstart-create-data-factory-portal.md) | No |
-| **Azure PowerShell** | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](data-factory-build-your-first-pipeline-using-powershell.md) |
-| **.NET SDK** | [Ano](quickstart-create-data-factory-dot-net.md) | [Ano](data-factory-build-your-first-pipeline-using-vs.md) |
-| **REST API** | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Azure PowerShell** | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [Ano](quickstart-create-data-factory-dot-net.md) | [Ano](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
 | **Python SDK** | [Ano](quickstart-create-data-factory-python.md) | No |
-| **Šablona Resource Manageru** | [Ano](quickstart-create-data-factory-resource-manager-template.md) | [Ano](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Šablona Resource Manageru** | [Ano](quickstart-create-data-factory-resource-manager-template.md) | [Ano](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
@@ -148,4 +144,4 @@ V aktuální verzi můžete k monitorování datových továren použít také [
 
 
 ## <a name="next-steps"></a>Další kroky
-Návod na vytvoření datové továrny najdete v podrobných pokynech v následujících úvodních příručkách: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+Návod na vytvoření datové továrny najdete v podrobných pokynech v následujících úvodních příručkách: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md).

@@ -1,37 +1,18 @@
 ---
-title: Přehled služby Azure Media Services v3
-titleSuffix: Azure Media Services
-description: Podrobný přehled Azure Media Services V3 s odkazy na rychlé starty, kurzy a ukázky kódu.
-services: media-services
-documentationcenter: na
-author: Juliako
-manager: femila
-editor: ''
-tags: ''
-keywords: azure media services, stream, všesměrové vysílání, live, režim offline
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000921"
+title: Azure Media Services V3 přehled: Azure Media Services popis: podrobný přehled Azure Media Services V3 s odkazy na rychlé starty, kurzy a ukázky kódu.
+služby: Media-Services documentationcenter: na Author: IngridAtMicrosoft Manager: femila Editor: ' ' Tags: ' ' klíčová slova: Azure Media Services, Stream, Broadcast, Live, offline
+
+MS. Service: Media-Services MS. devlang: více MS. téma: Přehled ms.tgt_pltfrm: více MS. úlohy: Media MS. Date: 3/10/2021 MS. Author: inhenkel MS. Custom: MVC
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Záměr zákazníka: jako vývojář nebo poskytovatel obsahu chci kódovat, streamovat (na vyžádání nebo živě), analyzovat multimediální obsah tak, aby moji zákazníci mohli: zobrazit obsah v nejrůznějších prohlížečích a zařízeních, získat cenné poznatky z zaznamenaného obsahu.
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to. Bez ohledu na to, jestli jste vývojář aplikace, centrum volání, státní úřad nebo zábava, Media Services vám pomůže vytvářet aplikace, které dodávají mediální prostředí vynikající kvality pro velké cílové skupiny na nejoblíbenějších mobilních zařízeních a prohlížečích.
 
 Sady SDK Media Services V3 jsou založené na [Media Services V3 openapi Specification (Swagger)](https://aka.ms/ams-v3-rest-sdk).
-
-> [!NOTE]
-> V současné době můžete použít [Azure Portal](https://portal.azure.com/) k: správa prostředků Media Services V3 [Live Events](live-events-outputs-concept.md), View (ne Manage) v3 [assets](assets-concept.md), [získat informace o přístupu k rozhraním API](./access-api-howto.md). Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -57,12 +38,12 @@ Media Services umožňuje vytvářet různé pracovní postupy pro média v clou
 * Pomocí Azure Media Services společně se službou [Azure rozhraní API služeb Cognitive Services](../../index.yml?pivot=products&panel=ai) můžete přidat titulky a titulky do videí do služby stravování pro širší cílovou skupinu (například lidem s postižením sluchu nebo lidem, kteří chtějí načítat v jiném jazyce).
 * Umožněte Azure CDN dosáhnout velkého měřítka, aby bylo možné lépe zvládnout okamžité vysoké zátěže (například začátek události spuštění produktu).
 
-## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3? 
+## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3?
 
 Naučte se kódovat a zabalit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services V3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
 > [!TIP]
-> Než začnete s vývojem, přečtěte si:<br/>* [Základní koncepty](concepts-overview.md) (incudes důležité koncepty, jako je balení, kódování a ochrana)<br/>* [Vývoj s využitím rozhraní Media Services V3 API](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraním API, konvencím pojmenování atd.)
+> Než začnete s vývojem, Projděte si téma: [základní koncepty](concepts-overview.md) , které zahrnují důležité koncepty, jako je balení, kódování a ochrana, a [vývoj s rozhraními API Media Services V3](media-services-apis-overview.md) , která obsahují informace o přístupu k rozhraním API, konvencím pojmenování atd.
 
 ### <a name="sdks"></a>Sady SDK
 
@@ -86,7 +67,7 @@ Kurzy ukazují postupy založené na scénářích pro některé z hlavních Med
 * [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamické šifrování AES-128 – .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>ukázky
 
 Pomocí [tohoto prohlížeče ukázek](/samples/browse/?products=azure-media-services) můžete procházet Azure Media Services ukázky kódu.
 

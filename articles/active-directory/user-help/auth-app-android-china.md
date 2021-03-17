@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 05/20/2020
+ms.date: 01/27/2021
 ms.author: curtand
-ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84323021"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054834"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator pro Android ve veřejném cloudu v Číně
 
 Aplikace Microsoft Authenticator pro Android je dostupná ke stažení v Číně. Obchod Google Play není k dispozici v Číně, takže se aplikace musí stáhnout z jiných čínských Marketplace aplikací. Aplikace Microsoft Authenticator pro Android je aktuálně dostupná v následujících úložištích v Číně:
 
-- [Baidu](https://shouji.baidu.com/software/26638379.html)
 - [Lenovo](https://www.lenovomm.com/appdetail/com.azure.authenticator/20197724)
 - [Huawei](https://appgallery.cloud.huawei.com/uowap/index.html#/detailApp/C100262999?source=appshare&subsource=C100262999&shareTo=weixin&locale=zh_CN)
 - [Samsung Galaxy Store](http://apps.samsung.com/appquery/appDetail.as?appId=com.azure.authenticator)
@@ -44,19 +43,20 @@ Pokud uživatel dřív spravoval, aby v aplikaci nastavil přihlášení k telef
 
 ## <a name="multi-factor-authentication-workaround"></a>Alternativní řešení Multi-Factor Authentication
 
-Místo používání nabízených oznámení pro službu Multi-Factor Authentication můžou uživatelé [nastavit svou ověřovací aplikaci tak, aby na svém zařízení přijímala ověřovací kódy](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) , které můžou použít pro MFA k ověření jejich identity. Tyto ověřovací kódy jsou platné po dobu 30 sekund a jejich použití vyžaduje, aby si správci povolili, aby mohli provádět ověřování pomocí ověřovacích kódů s jednorázovým heslem (TOTP).
+Místo používání nabízených oznámení pro službu Multi-Factor Authentication můžou uživatelé [nastavit svou ověřovací aplikaci tak, aby na svém zařízení přijímala ověřovací kódy](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) , které můžou použít pro MFA k ověření jejich identity. Tyto ověřovací kódy jsou platné po dobu 30 sekund a jejich použití musí správci povolit, aby mohli provádět ověřování pomocí ověřovacích kódů One-Time (Time-to-based Password).
 
 ## <a name="availability"></a>Dostupnost
 
 Microsoft Authenticator funkce | Dostupnost v Číně
 ------------------------------- | ---------------------
-Registrace MFA pomocí nabízených oznámení | Ne
-Již existující účet MFA ověřování identity pomocí nabízených oznámení | Ne
-Již existující účet MFA, který provádí ruční kontrolu oznámení | Ano
-Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Ano
-Registrace přihlášení k telefonu | Ne
-Existující přihlášení k telefonu pomocí nabízených oznámení | Ne
-Stávající ověřování přihlášení k telefonu pomocí ruční kontroly žádostí o ověření | Ano
+Registrace MFA pomocí nabízených oznámení | No
+Již existující účet MFA ověřování identity pomocí nabízených oznámení | No
+Již existující účet MFA, který provádí ruční kontrolu oznámení | Yes
+Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Yes
+Registrace přihlášení k telefonu | No
+Existující přihlášení k telefonu pomocí nabízených oznámení | No
+Stávající ověřování přihlášení k telefonu pomocí ruční kontroly žádostí o ověření | Yes
+Podpora ověřovací aplikace pro osobní účty Microsoft | No
 
 ## <a name="next-steps"></a>Další kroky
 

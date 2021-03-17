@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: vytvoření kompletního kanálu ETL pro odvodit Sales Insights v Azure HDInsight'
 description: Naučte se, jak pomocí Azure HDInsight vytvořit kanály ETL k odvozování přehledů z prodejních dat pomocí clusterů Spark na vyžádání a Power BI.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d026d93ebe6f6a0bd9afbd277294d58d7a2a69b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006428"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932053"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Kurz: vytvoření uceleného datového kanálu pro odvoditelné prodejní přehledy ve službě Azure HDInsight
 
@@ -23,17 +20,17 @@ Tento datový kanál kombinuje data z různých úložišť, odebírá všechna 
 
 ![Architektura ETL](./media/hdinsight-sales-insights-etl/architecture.png)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Azure CLI – minimálně verze 2.2.0 Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI – minimálně verze 2.2.0 Viz [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 * JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 * Člen [předdefinovaného vlastníka role Azure](../role-based-access-control/built-in-roles.md)
 
-* Pokud k aktivaci kanálu Data Factory používáte PowerShell, budete potřebovat [modul AZ](https://docs.microsoft.com/powershell/azure/).
+* Pokud k aktivaci kanálu Data Factory používáte PowerShell, budete potřebovat [modul AZ](/powershell/azure/).
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller) k vizualizaci obchodních přehledů na konci tohoto kurzu.
 
@@ -93,7 +90,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    Pokud si nejste jistí, kterou oblast určíte, můžete pro své předplatné načíst seznam podporovaných oblastí pomocí příkazu [AZ Account list-Locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) .
+    Pokud si nejste jistí, kterou oblast určíte, můžete pro své předplatné načíst seznam podporovaných oblastí pomocí příkazu [AZ Account list-Locations](/cli/azure/account#az-account-list-locations) .
 
     Příkaz nasadí následující prostředky:
 
@@ -110,7 +107,7 @@ Výchozí heslo pro přístup SSH ke clusterům je `Thisisapassword1` . Pokud ch
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Ověření nasazení a shromažďování informací o prostředcích
 
-1. Pokud chcete zjistit stav svého nasazení, na Azure Portal se podívejte do skupiny prostředků. V části **Nastavení**vyberte **nasazení**a pak nasazení. Tady vidíte prostředky, které se úspěšně nasadily, a prostředky, které pořád probíhají.
+1. Pokud chcete zjistit stav svého nasazení, na Azure Portal se podívejte do skupiny prostředků. V části **Nastavení** vyberte **nasazení** a pak nasazení. Tady vidíte prostředky, které se úspěšně nasadily, a prostředky, které pořád probíhají.
 
 1. Chcete-li zobrazit názvy clusterů, zadejte následující příkaz:
 
@@ -254,7 +251,7 @@ Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [t
 
 1. V nabídce přejděte na **získat data**  >  **...**  >  **Azure**  >  **Interaktivní dotaz HDInsight**
 
-1. Vyberte **Připojit**.
+1. Vyberte **Connect** (Připojit).
 
 1. Z dialogového okna **HDInsight Interactive Query** :
     1. Do textového pole **Server** zadejte název clusteru LLAP ve formátu `https://LLAPCLUSTERNAME.azurehdinsight.net` .
@@ -264,9 +261,9 @@ Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [t
 1. V dialogovém okně **AzureHive** :
     1. Do textového pole **uživatelské jméno** zadejte `admin` .
     1. Do textového pole **heslo** zadejte `Thisisapassword1` .
-    1. Vyberte **Připojit**.
+    1. Vyberte **Connect** (Připojit).
 
-1. Z **navigátoru**vyberte `sales` a/nebo `sales_raw` Zobrazte náhled dat. Po načtení dat můžete experimentovat s řídicím panelem, který chcete vytvořit. Pokud chcete začít s Power BI řídicími panely, přečtěte si následující odkazy:
+1. Z **navigátoru** vyberte `sales` a/nebo `sales_raw` Zobrazte náhled dat. Po načtení dat můžete experimentovat s řídicím panelem, který chcete vytvořit. Pokud chcete začít s Power BI řídicími panely, přečtěte si následující odkazy:
 
 * [Úvod do řídicích panelů pro návrháře Power BI](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Kurz: Začínáme se službou Power BI](https://docs.microsoft.com/power-bi/service-get-started)

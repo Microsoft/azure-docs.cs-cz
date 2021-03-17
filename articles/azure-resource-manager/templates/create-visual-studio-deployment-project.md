@@ -3,18 +3,18 @@ title: Vytvoření projektů skupiny prostředků sady Visual Studio pro & nasaz
 description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků Azure a nasaďte prostředky do Azure.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152727"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704410"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
 Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například nasadit webového hostitele, web a kód webu. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci.
 
-Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nainstalovanými úlohami vývoje a ASP.NET pro Azure](/visualstudio/install/install-visual-studio?view=vs-2019). Pokud používáte Visual Studio 2017, vaše prostředí je převážně stejné.
+Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nainstalovanými úlohami vývoje a ASP.NET pro Azure](/visualstudio/install/install-visual-studio). Pokud používáte Visual Studio 2017, vaše prostředí je převážně stejné.
 
 ## <a name="create-azure-resource-group-project"></a>Vytvoření projektu skupiny prostředků Azure
 
@@ -23,7 +23,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 1. Vyberte šablonu projektu **skupiny prostředků Azure** a **Další**.
 
-    ![Vytvoření projektu](./media/create-visual-studio-deployment-project/create-project.png)
+    ![Snímek obrazovky se zobrazí okno vytvořit nové projektu se skupinou prostředků Azure a zvýrazněným tlačítkem Další.](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. Zadejte název svého projektu. Ostatní výchozí nastavení jsou pravděpodobně jemné, ale je třeba je zkontrolovat, aby fungovaly pro vaše prostředí. Až budete hotovi, vyberte **Vytvořit**.
 
@@ -41,7 +41,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 
     Vzhledem k tomu, že jste vybrali šablonu webové aplikace, zobrazí se následující soubory:
 
-   | Název souboru | Description |
+   | Název souboru | Popis |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
    | WebSite.jsna |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
@@ -65,7 +65,7 @@ Projekt nasazení můžete přizpůsobit úpravou šablony Správce prostředků
 
 1. Pokud chcete přidat prostředek, můžete buď použít tlačítko **Přidat prostředek** v horní části okna s osnovou JSON, nebo kliknout pravým tlačítkem na **resources** a vybrat **Přidat nový prostředek**.
 
-   ![Přidat prostředek](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![Snímek obrazovky znázorňující okno osnovy JSON s zvýrazněnou možností přidat nový prostředek.](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. Vyberte **účet úložiště** a pojmenujte ho. Zadejte název, který nebude delší než 11 znaků. Obsahovat smí jenom čísla a malá písmena.
 
@@ -189,7 +189,7 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
 
 1. Teď potřebujete zajistit, aby projekt skupiny prostředků věděl o novém projektu. Vraťte se do projektu skupiny prostředků (ExampleAppDeploy). Klikněte pravým tlačítkem na **Odkazy** a vyberte **Přidat odkaz**.
 
-    ![Přidání odkazu](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![Snímek obrazovky s zvýrazněnou možností přidat odkaz se zobrazí nabídka ExampleAppDeploy.](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. Vyberte vámi vytvořený projekt webové aplikace.
 
@@ -259,7 +259,7 @@ Nyní otevřete konzolu prostředí PowerShell a spusťte příkaz:
 
 Pro skript modulu AzureRM použijte Visual Studio:
 
-1. Pokud ho chcete znovu nasadit, vyberte **nasadit**a skupinu prostředků, kterou jste předtím nasadili.
+1. Pokud ho chcete znovu nasadit, vyberte **nasadit** a skupinu prostředků, kterou jste předtím nasadili.
 
     ![Znovu nasadit projekt](./media/create-visual-studio-deployment-project/redeploy.png)
 
@@ -364,13 +364,13 @@ Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady 
 
 1. Po dokončení nasazení si zobrazte řídicí panel na portálu. Vyberte **řídicí panel** a vyberte ten, který jste nasadili.
 
-   ![Vlastní řídicí panel](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![Snímek obrazovky zobrazující stránku řídicího panelu se zvýrazněným ukázkovým vlastním řídicím panelem](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. Zobrazí se přizpůsobený řídicí panel.
 
    ![Vlastní řídicí panel](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-Přístup k řídicímu panelu můžete spravovat pomocí skupin RBAC. Vzhled řídicího panelu můžete také upravit po nasazení. Pokud ovšem provádíte opakované nasazení skupiny prostředků, uvede se řídicí panel do výchozího stavu ve vaší šabloně. Další informace o vytváření řídicích panelů najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../../azure-portal/azure-portal-dashboards-create-programmatically.md).
+Přístup k řídicímu panelu můžete spravovat pomocí řízení přístupu na základě role Azure (RBAC). Vzhled řídicího panelu můžete také upravit po nasazení. Pokud ovšem provádíte opakované nasazení skupiny prostředků, uvede se řídicí panel do výchozího stavu ve vaší šabloně. Další informace o vytváření řídicích panelů najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

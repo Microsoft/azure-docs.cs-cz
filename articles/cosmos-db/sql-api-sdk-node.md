@@ -8,38 +8,39 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-js
+ms.openlocfilehash: 8408cdada40bd3595f9bf7cf2c6a2de90040ec0b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586099"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217257"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 |Prostředek  |Odkaz  |
 |---------|---------|
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](/javascript/api/%40azure/cosmos/)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-sdk-for-js)
 |Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | ukázky | [ Ukázky kóduNode.js](sql-api-nodejs-samples.md)
@@ -353,7 +354,7 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Přidali jsme podporu funkce Time to Live (TTL) pro dokumenty.
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* Implementované [dělené kolekce](partition-data.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
+* Implementované [dělené kolekce](partitioning-overview.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
 
 ### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * Opravila se chyba RangePartitionResolver. resolveForRead, kde nevrátila odkazy z důvodu nesprávného concatu výsledků.
@@ -414,7 +415,7 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
+Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
@@ -471,9 +472,8 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | [1.0.1](#1.0.1) |15. května 2015 |30. srpna 2020 |
 | [1.0.0](#1.0.0) |08 8. dubna 2015 |30. srpna 2020 |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
-
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

@@ -5,16 +5,16 @@ services: key-vault
 author: ghogen
 manager: jillfra
 ms.service: key-vault
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588479"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792391"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -22,9 +22,9 @@ V tomto kurzu se naučíte, jak snadno přidat všechno, co potřebujete, abyste
 
 Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby umožňovaly Key Vault, najdete v tématu [Key Vault připojené služby – co se stalo s mým projektem ASP.NET 4.7.1](#how-your-aspnet-framework-project-is-modified) nebo [Key Vault připojenou službou – co se stalo s mým ASP.NET corem projektem](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- **Předplatné Azure**. Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+- **Předplatné Azure** . Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual Studio 2019 verze 16,3** nebo novější [Stáhnout nyní](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 
@@ -32,15 +32,15 @@ Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby um
 
 Než začnete, ujistěte se, že jste se přihlásili do sady Visual Studio. Přihlaste se pomocí stejného účtu, který používáte pro předplatné Azure. Pak otevřete webový projekt ASP.NET 4.7.1 nebo novější verze nebo ASP.NET Core 2,0 a postupujte podle následujících kroků:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt, do kterého chcete přidat podporu Key Vault a vyberte **Přidat**  >  **připojenou službu**  >  **Přidat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt, do kterého chcete přidat podporu Key Vault a vyberte **Přidat**  >  **připojenou službu**  >  **Přidat** .
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
-1. V nabídce dostupných služeb vyberte možnost **Azure Key Vault** a klikněte na tlačítko **Další**.
+1. V nabídce dostupných služeb vyberte možnost **Azure Key Vault** a klikněte na tlačítko **Další** .
 
    ![Vyberte "Azure Key Vault"](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. Vyberte předplatné, které chcete použít, a pak zvolte existující Key Vault a klikněte na **Dokončit**. 
+1. Vyberte předplatné, které chcete použít, a pak zvolte existující Key Vault a klikněte na **Dokončit** . 
 
-   ![Vyberte své předplatné.](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Výběr předplatného](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 Nyní je připojení k Key Vault navázáno a přístup k tajným klíčům můžete získat v kódu. Další postup se liší v závislosti na tom, zda používáte ASP.NET 4.7.1 nebo ASP.NET Core.
 
@@ -115,7 +115,7 @@ Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. Upravte `About` metodu v *HomeController.cs*, aby se zobrazila hodnota pro potvrzení.
+1. Upravte `About` metodu v *HomeController.cs* , aby se zobrazila hodnota pro potvrzení.
 
    ```csharp
    public ActionResult About()
@@ -131,12 +131,12 @@ Pokud vaše Key Vault běží na jiném účet Microsoft než na tom, co jste p�
 
 1. Přejít na [Azure Portal](https://portal.azure.com) a otevřete Key Vault.
 
-1. Zvolte **zásady přístupu**, pak **Přidat zásady přístupu**a zvolte účet, ke kterému jste přihlášeni jako objekt zabezpečení.
+1. Zvolte **zásady přístupu** , pak **Přidat zásady přístupu** a zvolte účet, ke kterému jste přihlášeni jako objekt zabezpečení.
 
-1. V aplikaci Visual Studio vyberte **File**  >  **Nastavení účtu**souboru.
+1. V aplikaci Visual Studio vyberte **File**  >  **Nastavení účtu** souboru.
 V části **všechny účty** vyberte **Přidat účet** . Přihlaste se pomocí účtu, který jste zvolili jako objekt zabezpečení vašich zásad přístupu.
 
-1. Vyberte **Tools**  >  **Možnosti**nástroje a vyhledejte **ověřování služby Azure**. Pak vyberte účet, který jste právě přidali do sady Visual Studio.
+1. Vyberte **Tools**  >  **Možnosti** nástroje a vyhledejte **ověřování služby Azure** . Pak vyberte účet, který jste právě přidali do sady Visual Studio.
 
 Když teď ladíte aplikaci, Visual Studio se připojí k účtu, na kterém se nachází Key Vault.
 
@@ -190,6 +190,9 @@ Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 | Pohyby NuGet | Azure. Security. Keys – trezory. Keys |
 | Pohyby NuGet | Azure. Security. klíčů trezor. tajných kódů |
 
+> [!IMPORTANT] 
+> Ve výchozím nastavení je nainstalovaná služba Azure. identity 1.1.1, která nepodporuje přihlašovací údaje sady Visual Studio. Odkaz na balíček můžete aktualizovat ručně na 1,2 + pomocí pověření sady Visual Studio.
+
 ### <a name="added-files-for-aspnet-framework"></a>Přidané soubory pro ASP.NET Framework
 
 - `ConnectedService.json` přidáno, které zaznamenává některé informace o poskytovateli připojené služby, verzi a odkazu na dokumentaci.
@@ -201,6 +204,6 @@ Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste postupovali podle tohoto kurzu, vaše oprávnění Key Vault se nastaví tak, aby běžela s vlastním předplatným Azure, ale nemusí být žádoucí pro produkční scénář. Můžete vytvořit spravovanou identitu pro správu přístupu k Key Vault vaší aplikaci. Viz [poskytnutí Key Vault ověřování se spravovanou identitou](/azure/key-vault/managed-identity).
+Pokud jste postupovali podle tohoto kurzu, vaše oprávnění Key Vault se nastaví tak, aby běžela s vlastním předplatným Azure, ale nemusí být žádoucí pro produkční scénář. Můžete vytvořit spravovanou identitu pro správu přístupu k Key Vault vaší aplikaci. Další informace najdete v tématu [ověření Key Vault](./authentication.md) a [přiřazení zásad Key Vault přístupu](./assign-access-policy-portal.md).
 
 Další informace o vývoji Key Vault najdete v [příručce pro vývojáře Key Vault](developers-guide.md).

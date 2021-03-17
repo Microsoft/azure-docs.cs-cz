@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983301"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88798376"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Změna metody a nastavení dvou faktorů ověřování
 
@@ -31,10 +31,10 @@ Po nastavení metod ověřování zabezpečení pro svůj pracovní nebo školn�
 
 ## <a name="using-the-additional-security-verification-page"></a>Použití stránky další ověření zabezpečení
 
-Pokud vám vaše organizace poskytne konkrétní postup, jak zapnout a spravovat dvojúrovňové ověřování, měli byste nejdřív postupovat podle těchto pokynů. V opačném případě můžete k nastavení metody ověření zabezpečení získat přístup ze stránky [Další ověření zabezpečení](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) .
+Pokud vám vaše organizace poskytne konkrétní postup, jak zapnout a spravovat dvojúrovňové ověřování, měli byste nejdřív postupovat podle těchto pokynů. V opačném případě můžete k nastavení metody ověření zabezpečení získat přístup ze stránky [Další ověření zabezpečení](./multi-factor-authentication-end-user-first-time.md) .
 
 >[!Note]
->Pokud to, co vidíte na obrazovce, se neshoduje s tím, co je zahrnuté v tomto článku, znamená to, že správce zapnul možnosti **zabezpečení (Preview)** nebo že vaše organizace poskytla vlastní portál. Další informace o novém prostředí informací o zabezpečení najdete v tématu [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md). Pokud chcete získat další informace o vlastním portálu vaší organizace, musíte se obrátit na oddělení technické podpory vaší organizace.
+>Pokud to, co vidíte na obrazovce, se neshoduje s tím, co je zahrnuté v tomto článku, znamená to, že správce zapnul možnosti **zabezpečení (Preview)** nebo že vaše organizace poskytla vlastní portál. Další informace o novém prostředí informací o zabezpečení najdete v tématu [Přehled informací o zabezpečení (Preview)](./security-info-setup-signin.md). Pokud chcete získat další informace o vlastním portálu vaší organizace, musíte se obrátit na oddělení technické podpory vaší organizace.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>Získání na stránku dodatečného ověření zabezpečení
 

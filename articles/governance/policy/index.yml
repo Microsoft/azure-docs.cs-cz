@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 08/10/2020
-  ms.openlocfilehash: 66095427637b52d9bc220cba911c3099fd8f397c
-  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+  ms.date: 10/26/2020
+  ms.openlocfilehash: 753a2b112929b785526e32df9c9836f48b8675ba
+  ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/12/2020
-  ms.locfileid: "88135942"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98034947"
 landingContent:
 - title: O službě Azure Policy
   linkLists:
@@ -27,8 +27,12 @@ landingContent:
       url: ./concepts/effects.md
     - text: Struktura definic
       url: ./concepts/definition-structure.md
+    - text: Obor
+      url: ./concepts/scope.md
     - text: Struktura přiřazení
       url: ./concepts/assignment-structure.md
+    - text: Struktura výjimky
+      url: ./concepts/exemption-structure.md
   - linkListType: video
     links:
     - text: Azure Policy na konferenci Build 2018
@@ -43,20 +47,28 @@ landingContent:
       url: ./assign-policy-azurecli.md
     - text: Přiřazení zásad (Azure PowerShell)
       url: ./assign-policy-powershell.md
+    - text: Přiřazení zásad (.NET)
+      url: ./assign-policy-dotnet.md
+    - text: Přiřazení zásad (JavaScript)
+      url: ./assign-policy-javascript.md
     - text: Přiřazení zásad (Python)
       url: ./assign-policy-python.md
     - text: Přiřazení zásad (REST)
       url: ./assign-policy-rest-api.md
     - text: Přiřazení zásad (šablona Resource Manageru)
       url: ./assign-policy-template.md
+    - text: Přiřazení zásad (Terraform)
+      url: ./assign-policy-terraform.md
   - linkListType: tutorial
     links:
     - text: Vytvoření a správa zásad
       url: ./tutorials/create-and-manage.md
     - text: Použití rozšíření VS Code
       url: ./how-to/extension-for-vscode.md
-    - text: Návrh pracovních postupů pro zásady jako kód
+    - text: Návrh pracovních postupů pro Azure Policy jako kód
       url: ./concepts/policy-as-code.md
+    - text: Implementace Azure Policy jako kódu s využitím GitHubu
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: Index ukázek zásad
@@ -75,13 +87,15 @@ landingContent:
       url: ./how-to/programmatically-create.md
     - text: Vytváření zásad pro pole
       url: ./how-to/author-policies-for-arrays.md
+    - text: Export prostředků
+      url: ./how-to/export-resources.md
   - linkListType: concept
     links:
     - text: Dodržování legislativní předpisů
       url: ./concepts/regulatory-compliance.md
-    - text: Zásady pro Kubernetes
+    - text: Azure Policy pro Kubernetes
       url: ./concepts/policy-for-kubernetes.md
-    - text: Zásady pro virtuální počítače
+    - text: Azure Policy pro virtuální počítače
       url: ./concepts/guest-configuration.md
 - title: Kontrola a náprava prostředků
   linkLists:
@@ -91,6 +105,8 @@ landingContent:
       url: ./how-to/get-compliance-data.md
     - text: Určení příčiny nedodržování předpisů
       url: ./how-to/determine-non-compliance.md
+    - text: Vyloučení prostředků
+      url: ./concepts/exemption-structure.md
     - text: Oprava prostředků, které nevyhovují předpisům
       url: ./how-to/remediate-resources.md
 - title: Zapojení
@@ -112,15 +128,17 @@ landingContent:
     - text: Azure CLI
       url: /cli/azure/policy
     - text: Azure PowerShell (Policy)
-      url: /powershell/module/az.resources/#policies
+      url: /powershell/module/az.resources/#policy
     - text: Azure PowerShell (Policy Insights)
-      url: /powershell/module/az.policyinsights#policy_insights
+      url: /powershell/module/az.policyinsights#policy-insights
     - text: REST (Policy Insights)
       url: /rest/api/policy-insights/
     - text: REST (přiřazení)
       url: /rest/api/resources/policyassignments
     - text: REST (definice)
       url: /rest/api/resources/policydefinitions
+    - text: REST (výjimky)
+      url: /rest/api/resources/policyexemptions
     - text: REST (iniciativy)
       url: /rest/api/resources/policysetdefinitions
     - text: Šablony Resource Manageru

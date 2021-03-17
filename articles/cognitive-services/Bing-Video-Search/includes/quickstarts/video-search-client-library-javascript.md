@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7cf28df4f009b017699c926d1ca54b7e5320a179
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404106"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377449"
 ---
 V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vvyhledávání videí Bingu pro JavaScript. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Obsahuje další poznámky a funkce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Node.js](https://www.nodejs.org/)
-
-Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vvyhledávání videí Bingu:
-* Spusťte `npm install ms-rest-azure` ve vývojovém prostředí.
-* Spusťte `npm install azure-cognitiveservices-videosearch` ve vývojovém prostředí.
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* [Sada Vvyhledávání videí Bingu SDK pro JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)
+     *  Chcete-li nainstalovat, spusťte příkaz `npm install @azure/cognitiveservices-videosearch`
+* `CognitiveServicesCredentials`Třída z `@azure/ms-rest-azure-js` balíčku pro ověření klienta.
+     * Chcete-li nainstalovat, spusťte příkaz `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,8 +33,8 @@ Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vvyhledáván
 1. Vytvořte nový soubor JavaScriptu v oblíbených IDE nebo editoru a přidejte `require()` příkaz pro klientskou knihovnu Vvyhledávání videí Bingu a `CognitiveServicesCredentials` modul. Vytvořte proměnnou pro klíč předplatného. 
     
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+    const VideoSearchAPIClient = require('@azure/cognitiveservices-videosearch');
     ```
 
 2. Vytvořte instanci `CognitiveServicesCredentials` s klíčem. Pak ho použijte k vytvoření instance klienta hledání videí.

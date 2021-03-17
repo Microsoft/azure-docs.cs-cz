@@ -2,16 +2,51 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313194"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89272153"
 ---
-V Azure Stack hraniční zařízení, které má nakonfigurovanou výpočetní roli, je k dispozici podmnožina příkazů Docker pro sledování nebo odstraňování potíží s moduly. Pokud chcete zobrazit seznam dostupných příkazů, [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface) a použijte `dkrdbe` funkci.
+Na Azure Stack hraničním zařízení s nakonfigurovanou výpočetní rolí můžete zařízení řešit nebo monitorovat pomocí dvou různých sad příkazů.
+
+- Použití `iotedge` příkazů. Tyto příkazy jsou k dispozici pro základní operace vašeho zařízení.
+- Použití `dkrdbe` příkazů. Tyto příkazy jsou k dispozici pro rozsáhlou sadu operací pro vaše zařízení.
+
+Pokud chcete spustit některou z výše uvedených příkazů, musíte se [připojit k rozhraní PowerShell](#connect-to-the-powershell-interface).
+
+### <a name="use-iotedge-commands"></a>Použití `iotedge` příkazů
+
+Pokud chcete zobrazit seznam dostupných příkazů, [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface) a použijte `iotedge` funkci.
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                                                                                                 Usage: iotedge COMMAND
+
+Commands:
+   check
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+Následující tabulka obsahuje stručný popis příkazů, které jsou k dispozici pro `iotedge` :
+
+|command  |Description |
+|---------|---------|
+|`check`     | Provádění automatizovaných kontrol běžných problémů s konfigurací a připojením       |
+|`list`     | Seznam modulů         |
+|`logs`     | Načtení protokolů modulu        |
+|`restart`     | Zastavení a restartování modulu         |
+
+
+### <a name="use-dkrdbe-commands"></a>Použití `dkrdbe` příkazů
+
+Pokud chcete zobrazit seznam dostupných příkazů, [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface) a použijte `dkrdbe` funkci.
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -39,7 +74,7 @@ Následující tabulka obsahuje stručný popis příkazů, které jsou k dispoz
 
 |command  |Description |
 |---------|---------|
-|`image`     | Správa imagí. K odebrání nepoužívaných imagí použijte:`dkrdbe image prune -a -f`       |
+|`image`     | Správa imagí. K odebrání nepoužívaných imagí použijte: `dkrdbe image prune -a -f`       |
 |`images`     | Zobrazit obrázky         |
 |`inspect`     | Vrátí informace o nízké úrovni objektů Docker.         |
 |`login`     | Přihlášení k registru Docker         |
@@ -89,14 +124,14 @@ Pokud chcete získat seznam všech kontejnerů (včetně těch, které jsou poza
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
-Pokud došlo k chybě při vytváření image kontejneru nebo při nastavování image, spusťte příkaz `logs edgeAgent` .  `EdgeAgent`je kontejner IoT Edge runtime, který zodpovídá za zřizování jiných kontejnerů.
+Pokud došlo k chybě při vytváření image kontejneru nebo při nastavování image, spusťte příkaz `logs edgeAgent` .  `EdgeAgent` je kontejner IoT Edge runtime, který zodpovídá za zřizování jiných kontejnerů.
 
 Protože `logs edgeAgent` vypíše všechny protokoly, dobrým způsobem, jak zobrazit nedávné chyby, je použití možnosti `--tail 20` .
 
@@ -127,10 +162,10 @@ Chcete-li získat protokoly pro konkrétní kontejner, nejprve seznamte s kontej
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
 3. Poznamenejte si ID kontejneru pro kontejner, pro který budete potřebovat protokoly.

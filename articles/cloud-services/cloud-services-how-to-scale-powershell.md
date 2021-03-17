@@ -1,20 +1,24 @@
 ---
-title: Škálování cloudové služby Azure v prostředí Windows PowerShell | Microsoft Docs
+title: Škálování cloudové služby Azure (Classic) v prostředí Windows PowerShell | Microsoft Docs
 description: standardním Naučte se používat PowerShell ke škálování webové role nebo role pracovního procesu v Azure.
-services: cloud-services
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/01/2016
-ms.author: memccror
-ms.openlocfilehash: a1945aad12eb34bad1b593878779e1ceb0dae686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68359041"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743300"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Jak škálovat cloudovou službu v PowerShellu
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>Jak škálovat cloudovou službu Azure (Classic) v PowerShellu
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 K škálování webové role nebo role pracovního procesu můžete přidat nebo odebrat instance pomocí prostředí Windows PowerShell.  
 

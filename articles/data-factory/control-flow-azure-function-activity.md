@@ -1,22 +1,18 @@
 ---
 title: Aktivita funkce Azure v Azure Data Factory
 description: Naučte se používat aktivitu Azure Functions ke spuštění funkce Azure ve Data Factoryovém kanálu.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 615fb1b9f5a9d87a8d69778930b7359823e1ec39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415313"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738017"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,9 +24,9 @@ Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
 
 ## <a name="azure-function-linked-service"></a>Propojená služba Functions Azure
 
-Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) že JArray *není* `JObject` .) Libovolný návratový typ jiný než `JObject` neúspěch a vyvolá *obsah odpovědi*na chyb uživatele není platný JObject.
+Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, [](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) že JArray *není* `JObject` .) Libovolný návratový typ jiný než `JObject` neúspěch a vyvolá *obsah odpovědi* na chyb uživatele není platný JObject.
 
-| **Vlastnost** | **Popis** | **Požadováno** |
+| **Vlastnost** | **Popis** | **Povinné** |
 | --- | --- | --- |
 | typ   | Vlastnost Type musí být nastavená na: **AzureFunction** . | ano |
 | Adresa URL aplikace Function App | Adresa URL pro Azure Function App. Formát je `https://<accountname>.azurewebsites.net` . Tato adresa URL je hodnota v sekci **URL** při zobrazení Function App v Azure Portal  | ano |
@@ -39,7 +35,7 @@ Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, 
 
 ## <a name="azure-function-activity"></a>Aktivita funkce Azure
 
-| **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadováno** |
+| **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Povinné** |
 | --- | --- | --- | --- |
 | name  | Název aktivity v kanálu  | Řetězec | ano |
 | typ  | Typ aktivity je "AzureFunctionActivity". | Řetězec | ano |
@@ -47,14 +43,14 @@ Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, 
 | název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
 | method  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
 | header  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |
-| text  | tělo, které se odesílá spolu s požadavkem na metodu rozhraní API funkce  | Řetězec (nebo výraz s hodnotou resultType String) nebo objekt.   | Vyžadováno pro metody PUT/POST |
+| text  | tělo, které se odesílá spolu s požadavkem na metodu rozhraní API funkce  | Řetězec (nebo výraz s hodnotou resultType String) nebo objekt.   | Vyžadováno pro metody PUT/POST |
 |   |   |   | |
 
-Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](control-flow-web-activity.md#request-payload-schema)   .
+Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](control-flow-web-activity.md#request-payload-schema) .
 
 ## <a name="routing-and-queries"></a>Směrování a dotazy
 
-Aktivita funkce Azure podporuje **Směrování**. Pokud má například služba Azure Functions koncový bod `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` , pak bude `functionName` pro použití v aktivitě funkce Azure Functions `<functionName>/<value>` . Tuto funkci můžete parametrizovat tak, aby poskytovala požadovaný čas `functionName` za běhu.
+Aktivita funkce Azure podporuje **Směrování**. Pokud má například služba Azure Functions koncový bod  `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` , pak bude `functionName` pro použití v aktivitě funkce Azure Functions `<functionName>/<value>` . Tuto funkci můžete parametrizovat tak, aby poskytovala požadovaný čas `functionName` za běhu.
 
 Aktivita funkce Azure také podporuje **dotazy**. Dotaz musí být zahrnut jako součást `functionName` . Například pokud je název funkce `HttpTriggerCSharp` a dotaz, který chcete zahrnout `name=hello` , můžete vytvořit `functionName` v aktivitě funkce Azure jako `HttpTriggerCSharp?name=hello` . Tato funkce může být Parametrizovaná, takže hodnotu je možné určit za běhu.
 

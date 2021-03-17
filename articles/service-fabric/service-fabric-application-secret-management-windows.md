@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit šifrovací certifikát a šifrovat tajné
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583292"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows

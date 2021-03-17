@@ -3,18 +3,20 @@ title: Migrace dat z Cassandra do Azure Cosmos DB rozhraní API Cassandra pomoc�
 description: Naučte se migrovat data z databáze Apache Cassandra do Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260623"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339981"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Cassandra na účet Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podniková zatížení, která běží na Apache Cassandra, z nejrůznějších důvodů: 
 
@@ -34,7 +36,7 @@ Existují různé způsoby, jak migrovat databázové úlohy z jedné platformy 
 
 * Blitzz nabízí vysoce velký objem a paralelní replikaci databáze. Umožňuje, aby zdrojové i cílové platformy byly během migrace synchronizované pomocí techniky označované jako Change-Data-Capture (CDC). Pomocí funkce CDC Blitzz nepřetržitě vyžádá datový proud změn ze zdrojové databáze (Apache Cassandra) a použije ho pro cílovou databázi (Azure Cosmos DB).
 
-* Je odolný proti chybám a zaručuje přesně po doručení dat, i když dojde v systému k selhání hardwaru nebo softwaru.
+* Je odolná proti chybám a poskytuje přesně jedno doručení dat, i když dojde v systému k selhání hardwaru nebo softwaru.
 
 * Zabezpečuje data během přenosu s využitím nejrůznějších metod zabezpečení, jako je TLS, šifrování.
 
@@ -96,7 +98,7 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
    Snižte propustnost po dokončení migrace. Na základě množství uložených dat a ru vyžadovaných pro jednotlivé operace můžete odhadnout propustnost vyžadovanou po migraci dat. Další informace o tom, jak odhadovat požadované ru, najdete v tématech [zřízení propustnosti pro kontejnery a databáze](set-throughput.md) a [odhad ru/s pomocí článků Azure Cosmos DB kapacity pro plánování](estimate-ru-with-capacity-planner.md) .
 
-1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno**a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
+1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno** a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
 
 1. V terminálu CLI nastavte konfiguraci cílové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/cosmosdb.yml`** příkazu a přidejte čárkami oddělený seznam identifikátorů URI hostitele, číslo portu, uživatelské jméno, heslo a další požadované parametry. Následující příklad ukazuje obsah konfiguračního souboru:
 

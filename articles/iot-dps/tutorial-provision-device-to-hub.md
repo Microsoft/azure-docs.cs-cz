@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74975036"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968073"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: zřízení zařízení ve službě IoT Hub pomocí IoT Hub Device Provisioning Service Azure
 
@@ -28,27 +28,27 @@ V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke sl
 
 Než budete pokračovat, nezapomeňte své zařízení nakonfigurovat, jak je popsáno v kurzu [Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 
-Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o [konceptech automatického zřizování](concepts-auto-provisioning.md), než budete pokračovat.
+Pokud neznáte proces automatického zřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) a teprve potom pokračujte.
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>Registrace zařízení
 
-Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízení do služby Device Provisioning. Tyto artefakty zabezpečení jsou založené na [mechanismu ověřování](concepts-device.md#attestation-mechanism) zařízení následujícím způsobem:
+Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízení do služby Device Provisioning. Tyto artefakty zabezpečení jsou založené na [mechanismu ověřování](concepts-service.md#attestation-mechanism) zařízení následujícím způsobem:
 
 - Pro zařízení založená na TPM potřebujete:
-    - *Ověřovací klíč*, který je jedinečný pro každou simulaci nebo čip TPM a který získáte od výrobce čipu TPM.  Další informace najdete v tématu [Vysvětlení ověřovacího klíče TPM](https://technet.microsoft.com/library/cc770443.aspx).
+    - *Ověřovací klíč*, který je jedinečný pro každou simulaci nebo čip TPM a který získáte od výrobce čipu TPM.  Další informace najdete v tématu [Vysvětlení ověřovacího klíče TPM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)).
     - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. U zařízení založených na TPM můžete ID registrace získat přímo z TMP, například jako hodnotu hash SHA-256 ověřovacího klíče TPM.
 
       [![Informace o registraci TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Pro zařízení založená na X.509 potřebujete:
-    - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. Pro jednotlivé registrace musíte použít *certifikát podepsaný* podle zařízení pro systém X. 509, ale u skupin registrací musíte použít *kořenový certifikát*. 
+    - [Certifikát vydaný pro simulaci nebo čip X.509](/windows/win32/seccertenroll/about-x-509-public-key-certificates) ve formě souboru *.pem* nebo *.cer*. Pro jednotlivé registrace musíte použít  *certifikát podepsaný* podle zařízení pro systém X. 509, ale u skupin registrací musíte použít *kořenový certifikát*. 
 
       [![Přidání jednotlivé registrace pro ověření X. 509 na portálu](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsoby:
 
-- **Skupiny registrací** představují skupinu zařízení, která sdílí konkrétní mechanismus ověřování. Skupinu registrací doporučujeme použít pro velké množství zařízení, která sdílí požadovanou počáteční konfiguraci, nebo pro zařízení, která budou patřit do stejného tenanta. Další informace o ověření identity u skupin registrací najdete v tématu o [zabezpečení](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+- **Skupiny registrací** představují skupinu zařízení, která sdílí konkrétní mechanismus ověřování. Skupinu registrací doporučujeme použít pro velké množství zařízení, která sdílí požadovanou počáteční konfiguraci, nebo pro zařízení, která budou patřit do stejného tenanta. Další informace o ověření identity u skupin registrací najdete v tématu o [zabezpečení](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
     [![Přidání registrace skupin pro ověření identity X. 509 na portálu](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -88,7 +88,7 @@ Po spuštění zařízení by mělo proběhnout následující:
 
     ![Úspěšné připojení k centru na portálu](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-Další informace najdete v ukázce klienta zřízení zařízení [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). Ukázka znázorňuje zřízení simulovaného zařízení pomocí čipu TPM, certifikátů X. 509 a symetrických klíčů. Podrobné pokyny k používání ukázky najdete v článku rychlé starty k [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X. 509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)a ověřování pomocí [symetrického klíče](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) .
+Další informace najdete v ukázce klienta zřízení zařízení [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). Ukázka znázorňuje zřízení simulovaného zařízení pomocí čipu TPM, certifikátů X. 509 a symetrických klíčů. Podrobné pokyny k používání ukázky najdete v článku rychlé starty k [TPM](./quick-create-simulated-device.md), [X. 509](./quick-create-simulated-device-x509.md)a ověřování pomocí [symetrického klíče](./quick-create-simulated-device-symm-key.md) .
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:

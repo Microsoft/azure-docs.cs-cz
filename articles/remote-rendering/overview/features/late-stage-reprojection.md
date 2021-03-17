@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022176"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205638"
 ---
 # <a name="late-stage-reprojection"></a>Reprojekce pozdní fáze
 
@@ -34,7 +34,9 @@ Pokud je, vaše aplikace bude používat LSR hloubku, jinak bude používat plan
 
 Aby LSRa hloubka fungovala, musí klientská aplikace dodat platnou hloubkovou vyrovnávací paměť, která obsahuje všechny relevantní geometrie, které by měly být během LSR zváženy.
 
-LSR hloubky se pokusí stabilizovat snímek videa na základě obsahu poskytnuté vyrovnávací paměti s hloubkou. Vzhledem k tomu, že obsah, který se na něj nevykresluje, jako jsou průhledné objekty, nejde upravit pomocí LSR a může zobrazovat artefakty nestability a reprojekce.
+LSR hloubky se pokusí stabilizovat snímek videa na základě obsahu poskytnuté vyrovnávací paměti s hloubkou. Vzhledem k tomu, že obsah, který se na něj nevykresluje, jako jsou průhledné objekty, nejde upravit pomocí LSR a může zobrazovat artefakty nestability a reprojekce. 
+
+Chcete-li zmírnit nestabilitu reprojekce u průhledných objektů, můžete vynutit zápis hloubky do vyrovnávací paměti. Prohlédněte si příznak materiál *TransparencyWritesDepth* pro [barevný](color-materials.md) a [PBR](pbr-materials.md) materiál. Všimněte si ale, že při povolování tohoto příznaku může dojít k tomu, že vizuální kvalita transparentního nebo neprůhledné interakce objektu.
 
 ## <a name="planar-lsr"></a>Planární LSR
 
@@ -44,7 +46,7 @@ Planární LSR reprojektuje tyto objekty nejlépe, které leží blízko dodané
 
 ### <a name="configure-planar-lsr-in-unity"></a>Konfigurace planární LSR v Unity
 
-Parametry roviny jsou odvozeny od třídy, která se označuje jako vstupní *bod*, který je nutné zadat každý rámec `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Podrobnosti najdete v tématu [rozhraní API pro zaměření služby Unity](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Pokud nenastavíte fokus, bude pro vás zvolena možnost záložního bodu. Automatické nouzové řešení často vede k neoptimálním výsledkům.
+Parametry roviny jsou odvozeny od třídy, která se označuje jako vstupní *bod*, který je nutné zadat každý rámec `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Podrobnosti najdete v tématu [rozhraní API pro zaměření služby Unity](/windows/mixed-reality/focus-point-in-unity) . Pokud nenastavíte fokus, bude pro vás zvolena možnost záložního bodu. Automatické nouzové řešení často vede k neoptimálním výsledkům.
 
 Fokus můžete vypočítat sami, ale může to mít smysl na základu vypočítaného hostitelem vzdáleného vykreslování. Zavolejte `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` k získání. Zobrazí se výzva k zadání souřadnicového rámce, ve kterém se bude soustředit pozice kurzoru. Ve většině případů budete chtít jenom zadat výsledek z `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` tohoto místa.
 

@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255604"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91312953"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co je agent pro správu Azure AD Connectu? 
 Azure AD Connect Agent pro správu je nová součást Azure Active Directory Connect, kterou je možné nainstalovat na Azure Active Directory Connect Server. Slouží ke shromažďování konkrétních dat z prostředí služby Active Directory, které pomáhá pracovníkovi podpory společnosti Microsoft řešit problémy při otevření případu podpory. 
@@ -46,7 +46,7 @@ Po zobrazení výzvy zadejte svoje přihlašovací údaje globálního správce 
 
 Po instalaci agenta se v seznamu přidat nebo odebrat programy v Ovládacích panelech serveru zobrazí následující dva nové programy: 
 
-![Agent správce](media/whatis-aadc-admin-agent/adminagent1.png)
+![Snímek obrazovky, který zobrazuje seznam přidat nebo odebrat programy obsahující nové programy, které jste přidali.](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Jaká data má vaše služba synchronizace zobrazit pro Microsoft Service inženýr? 
 Když otevřete případ podpory, může podpora Microsoftu pracovník pro daného uživatele zobrazit relevantní data ve službě Active Directory místo konektoru služby Active Directory na serveru Azure Active Directory Connect, Azure Active Directory konektoru v serveru Azure Active Directory Connect a v úložišti Metaverse na Azure Active Directory Connect serveru. 
@@ -69,7 +69,7 @@ Pokud nechcete, aby měl Microsoft Service inženýr přístup k vašim datům p
 3. Uložte konfigurační soubor.
 4. Restartujte službu agenta správy Azure AD Connect, jak je znázorněno níže.
 
-![Agent správce](media/whatis-aadc-admin-agent/adminagent2.png)
+![Snímek obrazovky, který ukazuje, kde restartovat službu agenta správce Azure AD.](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

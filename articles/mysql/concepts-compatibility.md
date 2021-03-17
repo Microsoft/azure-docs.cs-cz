@@ -1,17 +1,17 @@
 ---
 title: Kompatibilita ovladačů a nástrojů – Azure Database for MySQL
 description: Tento článek popisuje ovladače a nástroje pro správu MySQL, které jsou kompatibilní s Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: b3cf2603dec7e921159824f565336cd91a575731
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205657"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006849"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
 Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQL.
@@ -34,7 +34,7 @@ Azure Database for MySQL používá nejoblíbenější komunitní edici Communit
 | C | Konektor MySQL/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
 | C | Konektor MySQL/rozhraní ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
 | C++ | Konektor MySQL/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 + | 1.1.3 a níže | | 
-| C++ | MySQL + +| https://tangentsoft.net/mysql++ | 3.2.3 + | | |
+| C++ | MySQL + +| https://github.com/tangentsoft/mysqlpp | 3.2.3 + | | |
 | Ruby | mysql2 | https://github.com/brianmario/mysql2 | 0.4.10 + | | |
 | R | RMySQL | https://github.com/rstats-db/RMySQL | 0.10.16 + | | |
 | Swift | MySQL – SWIFT | https://github.com/novi/mysql-swift | 0.7.2 + | | |
@@ -43,16 +43,16 @@ Azure Database for MySQL používá nejoblíbenější komunitní edici Communit
 ## <a name="management-tools"></a>Nástroje pro správu
 Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stávající nástroje by měly nadále fungovat s Azure Database for MySQL, pokud manipulace s databází funguje v rámci omezeného počtu uživatelských oprávnění. Existují tři běžné nástroje pro správu databáze, které byly testovány a shledány jako kompatibilní s Azure Database for MySQL 5,6 a 5,7 jsou uvedeny v následující tabulce:
 
-|                                     | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více** |
-| :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| **Vytvořit, aktualizovat, číst, zapsat, odstranit** | X | X | X |
-| **Připojení SSL** | X | X | X |
-| **Automatické dokončování dotazů SQL** | X | X |  |
-| **Import a export dat** | X | X | X |
-| **Exportovat do více formátů** | X | X | X |
-| **Zálohování a obnovení** |  | × |  |
-| **Zobrazit parametry serveru** | X | X | X |
-| **Zobrazit klientská připojení** | X | X | X |
+|                                     | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více** | **dbForge Studio pro MySQL 9,0** |
+| :---------------------------------- | :----------------------------- | :------------- | :-------------------------| :------------------------------- |
+| **Vytvořit, aktualizovat, číst, zapsat, odstranit** | × | × | × | × |
+| **Připojení SSL** | × | × | × | × |
+| **Automatické dokončování dotazů SQL** | × | × |  | × |
+| **Import a export dat** | × | × | × | × |
+| **Exportovat do více formátů** | × | × | × | × |
+| **Zálohování a obnovení** |  | × |  | × |
+| **Zobrazit parametry serveru** | × | × | × | × |
+| **Zobrazit klientská připojení** | × | × | × | × |
 
 ## <a name="next-steps"></a>Další kroky
 

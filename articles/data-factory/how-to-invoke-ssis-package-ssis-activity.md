@@ -1,25 +1,19 @@
 ---
 title: Spuštění balíčku SSIS pomocí aktivity balíčku Execute SSIS
 description: Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) v kanálu Azure Data Factory pomocí aktivity spustit balíček SSIS.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
-ms.reviewer: douglasl
-manager: mflasko
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
-ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 40e7d5c11a2ebc62e59c3d5d20dfefe18a33f9a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926694"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391605"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Spustit balíček SSIS ve službě Azure Data Factory
 
@@ -31,7 +25,7 @@ Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integrat
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Vytvořte prostředí Azure-SSIS Integration runtime (IR), pokud ho ještě nemáte, podle podrobných pokynů v tomto [kurzu: zřizování Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md).
+Vytvořte prostředí Azure-SSIS Integration runtime (IR), pokud ho ještě nemáte, podle podrobných pokynů v tomto [kurzu: zřizování Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md).
 
 ## <a name="run-a-package-in-the-azure-portal"></a>Spuštění balíčku v Azure Portal
 V této části použijete Data Factory uživatelské rozhraní (UI) nebo aplikace k vytvoření kanálu Data Factory s aktivitou spustit SSIS balíčku, která spouští balíček SSIS.
@@ -51,7 +45,7 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
    ![Přetáhněte aktivitu spustit balíček SSIS na plochu návrháře](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-   Vyberte objekt aktivity balíčku Execute SSIS a nakonfigurujte jeho **Obecné**, **Nastavení**, **parametry SSIS**, **Správce připojení**a záložky **vlastností Overrides** .
+   Vyberte objekt aktivity balíčku Execute SSIS a nakonfigurujte jeho **Obecné**, **Nastavení**, **parametry SSIS**, **Správce připojení** a záložky **vlastností Overrides** .
 
 #### <a name="general-tab"></a>Karta Obecné
 
@@ -59,15 +53,15 @@ Na kartě **Obecné** v aktivitě SSIS balíčku proveďte následující kroky.
 
 ![Nastavení vlastností na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-   1. Do pole **název**zadejte název aktivity vykonání balíčku SSIS.
+   1. Do pole **název** zadejte název aktivity vykonání balíčku SSIS.
 
-   1. Jako **Popis**zadejte popis aktivity SSIS balíčku Execute.
+   1. Jako **Popis** zadejte popis aktivity SSIS balíčku Execute.
 
-   1. V poli **časový limit**zadejte maximální dobu, po kterou může být spuštěná aktivita SSIS balíčku pro spuštění. Výchozí hodnota je 7 dní, formát je D. HH: MM: SS.
+   1. V poli **časový limit** zadejte maximální dobu, po kterou může být spuštěná aktivita SSIS balíčku pro spuštění. Výchozí hodnota je 7 dní, formát je D. HH: MM: SS.
 
-   1. Pro **opakování**zadejte maximální počet opakovaných pokusů o spuštění aktivity balíčku SSIS.
+   1. Pro **opakování** zadejte maximální počet opakovaných pokusů o spuštění aktivity balíčku SSIS.
 
-   1. V poli **interval opakování**zadejte počet sekund mezi jednotlivými pokusy o spuštění aktivity balíčku SSIS. Výchozí hodnota je 30 sekund.
+   1. V poli **interval opakování** zadejte počet sekund mezi jednotlivými pokusy o spuštění aktivity balíčku SSIS. Výchozí hodnota je 30 sekund.
 
    1. Zaškrtněte políčko **zabezpečený výstup** a zvolte, jestli chcete z protokolování vyloučit výstup aktivity SSIS balíčku Execute.
 
@@ -79,27 +73,27 @@ Na kartě **Nastavení** aktivity spustit balíček SSIS proveďte následujíc�
 
 ![Nastavení vlastností na kartě nastavení – automaticky](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   1. V **Azure-SSIS IR**vyberte určenou Azure-SSIS IR pro spuštění aktivity balíčku Execute SSIS.
+   1. V **Azure-SSIS IR** vyberte určenou Azure-SSIS IR pro spuštění aktivity balíčku Execute SSIS.
 
-   1. Jako **Popis**zadejte popis aktivity SSIS balíčku Execute.
+   1. Jako **Popis** zadejte popis aktivity SSIS balíčku Execute.
 
    1. Zaškrtněte políčko **ověřování systému Windows** , chcete-li zvolit, zda chcete použít ověřování systému Windows pro přístup k úložištím dat, jako jsou například servery SQL nebo sdílené složky souborů v místním počítači nebo soubory Azure.
    
-      Pokud zaškrtnete toto políčko, zadejte hodnoty přihlašovacích údajů pro spuštění balíčku do polí **doména**, **uživatelské jméno**a **heslo** . Například pro přístup k souborům Azure je doména `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` .
+      Pokud zaškrtnete toto políčko, zadejte hodnoty přihlašovacích údajů pro spuštění balíčku do polí **doména**, **uživatelské jméno** a **heslo** . Například pro přístup k souborům Azure je doména `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` .
 
       Alternativně můžete jako své hodnoty použít tajné kódy uložené v Azure Key Vault. Provedete to tak, že zaškrtnete políčko **Trezor klíčů Azure** vedle sebe. Vyberte nebo upravte existující propojenou službu trezoru klíčů nebo vytvořte novou. Pak vyberte název a verzi tajného klíče pro vaši hodnotu. Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Svůj tajný klíč můžete zadat také přímo v následujícím formátu: `<key vault linked service name>/<secret name>/<secret version>` .
       
    1. Zaškrtnutím políčka **32-bit runtime** zvolte, jestli váš balíček potřebuje ke spuštění 32 běhový modul runtime.
 
-   1. V případě **umístění balíčku**vyberte **SSISDB**, **systém souborů (balíček)**, **systém souborů (projekt)**, **vložený balíček**nebo **úložiště balíčků**. 
+   1. V případě **umístění balíčku** vyberte **SSISDB**, **systém souborů (balíček)**, **systém souborů (projekt)**, **vložený balíček** nebo **úložiště balíčků**. 
 
 ##### <a name="package-location-ssisdb"></a>Umístění balíčku: SSISDB
 
 Pokud je vaše Azure-SSIS IR vytvořená pomocí katalogu SSIS (SSISDB) hostovaného serverem Azure SQL Database Server/spravovanou instancí, **SSISDB** při automatickém výběru umístění balíčku, nebo ho můžete vybrat sami. Pokud je vybraná, proveďte následující kroky.
 
-   1. Pokud je spuštěný Azure-SSIS IR a políčko **Ruční Ruční zadání** není zaškrtnuto, vyhledejte a vyberte existující složky, projekty, balíčky a prostředí z SSISDB. Vyberte **aktualizovat** a načtěte vaše nově přidané složky, projekty, balíčky nebo prostředí z SSISDB, aby byly dostupné pro procházení a výběr. Chcete-li procházet a vybírat prostředí pro provádění balíčků, je nutné nakonfigurovat vaše projekty předem, aby byla tato prostředí přidána jako odkazy ze stejných složek v SSISDB. Další informace najdete v tématu [Vytvoření a mapování SSIS prostředí](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
+   1. Pokud je spuštěný Azure-SSIS IR a políčko **Ruční Ruční zadání** není zaškrtnuto, vyhledejte a vyberte existující složky, projekty, balíčky a prostředí z SSISDB. Vyberte **aktualizovat** a načtěte vaše nově přidané složky, projekty, balíčky nebo prostředí z SSISDB, aby byly dostupné pro procházení a výběr. Chcete-li procházet a vybírat prostředí pro provádění balíčků, je nutné nakonfigurovat vaše projekty předem, aby byla tato prostředí přidána jako odkazy ze stejných složek v SSISDB. Další informace najdete v tématu [Vytvoření a mapování SSIS prostředí](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
 
-   1. V části **úroveň protokolování**vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
+   1. V části **úroveň protokolování** vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
 
    1. Pokud vaše Azure-SSIS IR není spuštěná nebo je zaškrtnuté políčko **Ruční** zadání, zadejte cestu k balíčku a prostředí z SSISDB přímo v následujících formátech: `<folder name>/<project name>/<package name>.dtsx` a `<folder name>/<environment name>` .
 
@@ -115,7 +109,7 @@ Pokud je vaše Azure-SSIS IR vytvořená pomocí katalogu SSIS (SSISDB) hostovan
    
    1. Pokud nakonfigurujete balíček v samostatném souboru, budete také muset zadat cestu UNC ke konfiguračnímu souboru (s `.dtsConfig` ) v poli **cesta konfigurace** . Můžete procházet a vybírat konfiguraci výběrem možnosti **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte konfiguraci do souborů Azure, je její cesta `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` .
 
-   1. Zadejte přihlašovací údaje pro přístup k balíčku a konfigurační soubory. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (pro **ověřování systému Windows**), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů k balíčku do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte balíček a konfiguraci do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . 
+   1. Zadejte přihlašovací údaje pro přístup k balíčku a konfigurační soubory. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (pro **ověřování systému Windows**), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů k balíčku do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte balíček a konfiguraci do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . 
 
       Alternativně můžete jako své hodnoty použít tajné kódy uložené v Azure Key Vault. Provedete to tak, že zaškrtnete políčko **Trezor klíčů Azure** vedle sebe. Vyberte nebo upravte existující propojenou službu trezoru klíčů nebo vytvořte novou. Pak vyberte název a verzi tajného klíče pro vaši hodnotu. Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Svůj tajný klíč můžete zadat také přímo v následujícím formátu: `<key vault linked service name>/<secret name>/<secret version>` . 
 
@@ -123,15 +117,15 @@ Pokud je vaše Azure-SSIS IR vytvořená pomocí katalogu SSIS (SSISDB) hostovan
 
    1. Pokud jste při vytváření balíčku pomocí nástroje SQL Server Data Tools (SSDT) použili úroveň ochrany **EncryptAllWithPassword** nebo **EncryptSensitiveWithPassword** , zadejte v poli **Šifrovací heslo** hodnotu pro heslo. Alternativně můžete použít tajný kód uložený v Azure Key Vault jako jeho hodnotu (viz výše).
       
-      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení**nebo **přepisy vlastností** (viz níže).
+      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení** nebo **přepisy vlastností** (viz níže).
       
       Pokud jste použili úroveň ochrany **EncryptAllWithUserKey** , není podporována. Musíte znovu nakonfigurovat balíček tak, aby používal jinou úroveň ochrany prostřednictvím SSDT nebo `dtutil` nástroje příkazového řádku. 
 
-   1. V části **úroveň protokolování**vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
+   1. V části **úroveň protokolování** vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
    
    1. Pokud chcete protokolovat provádění balíčků mimo použití standardních zprostředkovatelů protokolů, které lze zadat v balíčku, zadejte svou složku protokolu zadáním cesty UNC do pole **cesta protokolování** . Složku protokolu můžete procházet a vybrat tak, že vyberete **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte protokoly do souborů Azure, vaše cesta protokolování je `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . V této cestě se vytvoří podsložka pro každý spuštěný balíček, který se pojmenuje po spuštění ID běhu aktivity balíčku SSIS a kdy se soubory protokolů generují každých pět minut. 
    
-   1. Zadejte přihlašovací údaje pro přístup do složky protokolu. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro přístup k balíčku (viz výše), můžete je znovu použít tak, že vyberete **stejné jako Přístupová pověření k balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů pro přístup k přihlášení do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
+   1. Zadejte přihlašovací údaje pro přístup do složky protokolu. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro přístup k balíčku (viz výše), můžete je znovu použít tak, že vyberete **stejné jako Přístupová pověření k balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů pro přístup k přihlášení do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
    
 U všech výše zmíněných cest UNC musí mít plně kvalifikovaný název souboru méně než 260 znaků. Název adresáře musí být kratší než 248 znaků.
 
@@ -143,7 +137,7 @@ Pokud jako umístění balíčku vyberete **systém souborů (projekt)** , prove
 
    1. Určete balíček, který se má spustit, zadáním cesty UNC k souboru projektu (s `.ispac` ) v poli **cesta k projektu** a souborem balíčku (s `.dtsx` ) z projektu v poli **název balíčku** . Můžete procházet a vybírat projekt výběrem možnosti **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte projekt do souborů Azure, jeho cesta je `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` .
 
-   1. Zadejte přihlašovací údaje pro přístup k souborům projektu a balíčku. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (pro **ověřování systému Windows**), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů k balíčku do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte projekt a balíček do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . 
+   1. Zadejte přihlašovací údaje pro přístup k souborům projektu a balíčku. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (pro **ověřování systému Windows**), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů k balíčku do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte projekt a balíček do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . 
 
       Alternativně můžete jako své hodnoty použít tajné kódy uložené v Azure Key Vault. Provedete to tak, že zaškrtnete políčko **Trezor klíčů Azure** vedle sebe. Vyberte nebo upravte existující propojenou službu trezoru klíčů nebo vytvořte novou. Pak vyberte název a verzi tajného klíče pro vaši hodnotu. Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Svůj tajný klíč můžete zadat také přímo v následujícím formátu: `<key vault linked service name>/<secret name>/<secret version>` . 
 
@@ -151,15 +145,15 @@ Pokud jako umístění balíčku vyberete **systém souborů (projekt)** , prove
 
    1. Pokud jste při vytváření balíčku prostřednictvím SSDT použili úroveň ochrany **EncryptAllWithPassword** nebo **EncryptSensitiveWithPassword** , zadejte v poli **Šifrovací heslo** hodnotu pro heslo. Alternativně můžete použít tajný kód uložený v Azure Key Vault jako jeho hodnotu (viz výše).
       
-      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte citlivé hodnoty na kartách **SSIS**, **Connection**Manager nebo **přepisy vlastností** (viz níže).
+      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte citlivé hodnoty na kartách **SSIS**, **Connection** Manager nebo **přepisy vlastností** (viz níže).
       
       Pokud jste použili úroveň ochrany **EncryptAllWithUserKey** , není podporována. Musíte znovu nakonfigurovat balíček tak, aby používal jinou úroveň ochrany prostřednictvím SSDT nebo `dtutil` nástroje příkazového řádku. 
 
-   1. V části **úroveň protokolování**vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
+   1. V části **úroveň protokolování** vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
    
    1. Pokud chcete protokolovat provádění balíčků mimo použití standardních zprostředkovatelů protokolů, které lze zadat v balíčku, zadejte svou složku protokolu zadáním cesty UNC do pole **cesta protokolování** . Složku protokolu můžete procházet a vybrat tak, že vyberete **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte protokoly do souborů Azure, vaše cesta protokolování je `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . V této cestě se vytvoří podsložka pro každý spuštěný balíček, který se pojmenuje po spuštění ID běhu aktivity balíčku SSIS a kdy se soubory protokolů generují každých pět minut. 
    
-   1. Zadejte přihlašovací údaje pro přístup do složky protokolu. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro přístup k balíčku (viz výše), můžete je znovu použít tak, že vyberete **stejné jako Přístupová pověření k balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů pro přístup k přihlášení do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
+   1. Zadejte přihlašovací údaje pro přístup do složky protokolu. Pokud jste dříve zadali hodnoty přihlašovacích údajů pro přístup k balíčku (viz výše), můžete je znovu použít tak, že vyberete **stejné jako Přístupová pověření k balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů pro přístup k přihlášení do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
    
 U všech výše zmíněných cest UNC musí mít plně kvalifikovaný název souboru méně než 260 znaků. Název adresáře musí být kratší než 248 znaků.
 
@@ -179,15 +173,15 @@ Pokud jako umístění balíčku vyberete **vložený balíček** , proveďte n�
    
       Alternativně můžete použít tajný kód uložený v Azure Key Vault jako jeho hodnotu. Pokud to chcete udělat, zaškrtněte políčko **Trezor klíčů Azure** vedle něho. Vyberte nebo upravte existující propojenou službu trezoru klíčů nebo vytvořte novou. Pak vyberte název a verzi tajného klíče pro vaši hodnotu. Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Svůj tajný klíč můžete zadat také přímo v následujícím formátu: `<key vault linked service name>/<secret name>/<secret version>` .
       
-      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení**nebo **přepisy vlastností** (viz níže).
+      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení** nebo **přepisy vlastností** (viz níže).
       
       Pokud jste použili úroveň ochrany **EncryptAllWithUserKey** , není podporována. Musíte znovu nakonfigurovat balíček tak, aby používal jinou úroveň ochrany prostřednictvím SSDT nebo `dtutil` nástroje příkazového řádku.
 
-   1. V části **úroveň protokolování**vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
+   1. V části **úroveň protokolování** vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
    
    1. Pokud chcete protokolovat provádění balíčků mimo použití standardních zprostředkovatelů protokolů, které lze zadat v balíčku, zadejte svou složku protokolu zadáním cesty UNC do pole **cesta protokolování** . Složku protokolu můžete procházet a vybrat tak, že vyberete **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte protokoly do souborů Azure, vaše cesta protokolování je `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . V této cestě se vytvoří podsložka pro každý spuštěný balíček, který se pojmenuje po spuštění ID běhu aktivity balíčku SSIS a kdy se soubory protokolů generují každých pět minut. 
    
-   1. Zadejte přihlašovací údaje pro přístup ke složce protokolu zadáním jejich hodnot do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
+   1. Zadejte přihlašovací údaje pro přístup ke složce protokolu zadáním jejich hodnot do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
    
 U všech výše zmíněných cest UNC musí mít plně kvalifikovaný název souboru méně než 260 znaků. Název adresáře musí být kratší než 248 znaků.
 
@@ -197,29 +191,29 @@ Pokud jako umístění balíčku vyberete možnost **obchod s balíčky** , prov
 
 ![Nastavení vlastností na kartě nastavení – úložiště balíčků](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
    
-   1. V případě **názvu úložiště balíčků**vyberte existující úložiště balíčků, které je připojené k vašemu Azure-SSIS IR.
+   1. V případě **názvu úložiště balíčků** vyberte existující úložiště balíčků, které je připojené k vašemu Azure-SSIS IR.
 
-   1. Určete balíček, který se má spustit, zadáním jeho cesty (bez `.dtsx` ) z vybraného úložiště balíčků v poli **cesta k balíčku** . Pokud je vybrané úložiště balíčků nad systémem souborů/soubory Azure, můžete procházet a vybírat balíček výběrem možnosti **Procházet soubor úložiště**, jinak můžete zadat jeho cestu ve formátu `<folder name>\<package name>` . Nové balíčky můžete také importovat do vybraného úložiště balíčků prostřednictvím SQL Server Management Studio (SSMS) podobně jako u [starší verze úložiště balíčků SSIS](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). Další informace najdete v tématu [Správa balíčků SSIS pomocí Azure-SSIS IRch balíčků](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store).
+   1. Určete balíček, který se má spustit, zadáním jeho cesty (bez `.dtsx` ) z vybraného úložiště balíčků v poli **cesta k balíčku** . Pokud je vybrané úložiště balíčků nad systémem souborů/soubory Azure, můžete procházet a vybírat balíček výběrem možnosti **Procházet soubor úložiště**, jinak můžete zadat jeho cestu ve formátu `<folder name>\<package name>` . Nové balíčky můžete také importovat do vybraného úložiště balíčků prostřednictvím SQL Server Management Studio (SSMS) podobně jako u [starší verze úložiště balíčků SSIS](/sql/integration-services/service/package-management-ssis-service). Další informace najdete v tématu [Správa balíčků SSIS pomocí Azure-SSIS IRch balíčků](./azure-ssis-integration-runtime-package-store.md).
 
    1. Pokud nakonfigurujete balíček v samostatném souboru, musíte zadat cestu UNC ke konfiguračnímu souboru (s `.dtsConfig` ) v poli **cesta konfigurace** . Můžete procházet a vybírat konfiguraci výběrem možnosti **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte konfiguraci do souborů Azure, je její cesta `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` .
 
    1. Zaškrtnutím políčka **přihlašovací údaje pro přístup k konfiguraci** vyberte, jestli chcete zadat přihlašovací údaje pro přístup ke konfiguračnímu souboru samostatně. To je nutné v případě, že je vybrané úložiště balíčků nad SQL Server Database (MSDB), jejímž hostitelem je vaše spravovaná instance Azure SQL, nebo neukládá i konfigurační soubor.
    
-      Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (pro **ověřování systému Windows**), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů pro přístup k konfiguraci do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte konfiguraci do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . 
+      Pokud jste dříve zadali hodnoty přihlašovacích údajů pro spuštění balíčku (pro **ověřování systému Windows**), můžete je znovu použít zaškrtnutím políčka **stejné jako přihlašovací údaje pro spuštění balíčku** . V opačném případě zadejte hodnoty přihlašovacích údajů pro přístup k konfiguraci do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte konfiguraci do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . 
 
       Alternativně můžete jako své hodnoty použít tajné kódy uložené v Azure Key Vault. Provedete to tak, že zaškrtnete políčko **Trezor klíčů Azure** vedle sebe. Vyberte nebo upravte existující propojenou službu trezoru klíčů nebo vytvořte novou. Pak vyberte název a verzi tajného klíče pro vaši hodnotu. Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Svůj tajný klíč můžete zadat také přímo v následujícím formátu: `<key vault linked service name>/<secret name>/<secret version>` .
 
    1. Pokud jste při vytváření balíčku prostřednictvím SSDT použili úroveň ochrany **EncryptAllWithPassword** nebo **EncryptSensitiveWithPassword** , zadejte v poli **Šifrovací heslo** hodnotu pro heslo. Alternativně můžete použít tajný kód uložený v Azure Key Vault jako jeho hodnotu (viz výše).
       
-      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení**nebo **přepisy vlastností** (viz níže).
+      Pokud jste použili úroveň ochrany **EncryptSensitiveWithUserKey** , znovu zadejte své citlivé hodnoty do konfiguračních souborů nebo na karty **SSIS**, **Správce připojení** nebo **přepisy vlastností** (viz níže).
       
       Pokud jste použili úroveň ochrany **EncryptAllWithUserKey** , není podporována. Musíte znovu nakonfigurovat balíček tak, aby používal jinou úroveň ochrany prostřednictvím SSDT nebo `dtutil` nástroje příkazového řádku. 
 
-   1. V části **úroveň protokolování**vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
+   1. V části **úroveň protokolování** vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
    
    1. Pokud chcete protokolovat provádění balíčků mimo použití standardních zprostředkovatelů protokolů, které lze zadat v balíčku, zadejte svou složku protokolu zadáním cesty UNC do pole **cesta protokolování** . Složku protokolu můžete procházet a vybrat tak, že vyberete **Procházet soubor úložiště** nebo zadat jeho cestu ručně. Pokud například uložíte protokoly do souborů Azure, vaše cesta protokolování je `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . V této cestě se vytvoří podsložka pro každý spuštěný balíček, který se pojmenuje po spuštění ID běhu aktivity balíčku SSIS a kdy se soubory protokolů generují každých pět minut. 
    
-   1. Zadejte přihlašovací údaje pro přístup ke složce protokolu zadáním jejich hodnot do polí **doména**, **uživatelské jméno**a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
+   1. Zadejte přihlašovací údaje pro přístup ke složce protokolu zadáním jejich hodnot do polí **doména**, **uživatelské jméno** a **heslo** . Pokud například uložíte protokoly do souborů Azure, doména je `Azure` , uživatelské jméno `<storage account name>` a heslo `<storage account key>` . Alternativně můžete použít tajné klíče uložené v Azure Key Vault jako jejich hodnoty (viz výše).
    
 U všech výše zmíněných cest UNC musí mít plně kvalifikovaný název souboru méně než 260 znaků. Název adresáře musí být kratší než 248 znaků.
 
@@ -231,7 +225,7 @@ Na kartě **parametry SSIS** aktivity spustit balíček SSIS proveďte následuj
 
    1. Pokud je spuštěný Azure-SSIS IR, jako umístění balíčku je vybraný **SSISDB** a zaškrtávací políčko Ruční položky na kartě **Nastavení** se neodstraní. pro přiřazení hodnot k těmto **položkám** se zobrazí existující parametry SSIS ve vybraném projektu a balíčku z SSISDB. V opačném případě je můžete zadat jednu po jedné a přiřadit k nim hodnoty ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. 
    
-   1. Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** prostřednictvím SSDT a **systému souborů (balíček)**, **systému souborů (projektu)**, **vloženého balíčku**nebo **úložiště balíčků** , jako umístění balíčku je také potřeba znovu zadat citlivé parametry a přiřadit jim hodnoty na této kartě. 
+   1. Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** prostřednictvím SSDT a **systému souborů (balíček)**, **systému souborů (projektu)**, **vloženého balíčku** nebo **úložiště balíčků** , jako umístění balíčku je také potřeba znovu zadat citlivé parametry a přiřadit jim hodnoty na této kartě. 
    
 Při přiřazování hodnot k parametrům můžete přidat dynamický obsah pomocí výrazů, funkcí, Data Factory systémových proměnných a Data Factory parametrů kanálu nebo proměnných.
 
@@ -245,17 +239,17 @@ Na kartě **Správci připojení** aktivity spustit balíček SSIS proveďte ná
 
    1. Pokud je spuštěný Azure-SSIS IR, jako umístění balíčku se vybere **SSISDB** a na kartě **Nastavení** se zruší zaškrtávací políčko **Ruční zadání** . pro přiřazení hodnot ke svým vlastnostem se zobrazí stávající Správci připojení ve vybraném projektu a balíčku z SSISDB. V opačném případě je můžete zadat jednu po jedné a přiřadit hodnoty jejich vlastnostem ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. 
    
-      Správný **obor**, **název**a názvy **vlastností** pro libovolného Správce připojení můžete získat tak, že otevřete balíček, který ho obsahuje v SSDT. Po otevření balíčku vyberte odpovídajícího Správce připojení a zobrazte názvy a hodnoty všech jejích vlastností v okně **vlastnosti** SSDT. Pomocí těchto informací můžete v době běhu přepsat hodnoty všech vlastností Správce připojení. 
+      Správný **obor**, **název** a názvy **vlastností** pro libovolného Správce připojení můžete získat tak, že otevřete balíček, který ho obsahuje v SSDT. Po otevření balíčku vyberte odpovídajícího Správce připojení a zobrazte názvy a hodnoty všech jejích vlastností v okně **vlastnosti** SSDT. Pomocí těchto informací můžete v době běhu přepsat hodnoty všech vlastností Správce připojení. 
 
       ![Získání vlastností Správce připojení z SSDT](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
 
-      Například bez úprav původního balíčku na SSDT můžete převést své místní toky dat běžící na SQL Server do toků dat v místním prostředí, které běží na SSIS IR v ADF, a to přepsáním hodnot vlastností **ConnectByProxy**, **ConnectionString**a **ConnectUsingManagedIdentity** v existujících správcích připojení v době běhu.
+      Například bez úprav původního balíčku na SSDT můžete převést své místní toky dat běžící na SQL Server do toků dat v místním prostředí, které běží na SSIS IR v ADF, a to přepsáním hodnot vlastností **ConnectByProxy**, **ConnectionString** a **ConnectUsingManagedIdentity** v existujících správcích připojení v době běhu.
       
-      Tyto přepisy za běhu můžou při přístupu k datům místně povolit prostředí IR (SHIR) jako proxy pro SSIS IR, a to v části [Konfigurace SHIR jako proxy serveru pro SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)a Azure SQL Database/spravované instance připojení pomocí nejnovějšího ovladače MSOLEDBSQL, který umožňuje ověřování Azure Active Directory (AAD) pomocí spravované identity přes ADF, najdete v tématu [Konfigurace ověřování AAD pomocí spravované identity ADF pro připojení OLEDB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+      Tyto přepisy za běhu můžou povolit Self-Hosted IR (SHIR) jako proxy pro SSIS IR při přístupu k datům místně, najdete v tématu [Konfigurace SHIR jako proxy serveru pro SSIS IR](./self-hosted-integration-runtime-proxy-ssis.md)a připojení Azure SQL Database/spravované instance pomocí nejnovějšího ovladače MSOLEDBSQL, který umožňuje ověřování Azure Active Directory (AAD) pomocí spravované identity ADF, v tématu [Konfigurace ověřování AAD pomocí spravované identity ADF pro připojení OLEDB](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication).
 
       ![Nastavení vlastností z SSDT na kartě Správci připojení](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    
-   1. Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** prostřednictvím SSDT a **systému souborů (balíček)**, **systému souborů (projektu)**, **vloženého balíčku**nebo **úložiště balíčků** , jako umístění balíčku je třeba znovu zadat vlastnosti citlivého Správce připojení a přiřadit jim hodnoty na této kartě. 
+   1. Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** prostřednictvím SSDT a **systému souborů (balíček)**, **systému souborů (projektu)**, **vloženého balíčku** nebo **úložiště balíčků** , jako umístění balíčku je třeba znovu zadat vlastnosti citlivého Správce připojení a přiřadit jim hodnoty na této kartě. 
 
 Když přiřazujete hodnoty k vlastnostem Správce připojení, můžete přidat dynamický obsah pomocí výrazů, funkcí, Data Factory systémových proměnných a Data Factory parametrů kanálu nebo proměnných. 
 
@@ -269,13 +263,13 @@ Na kartě **přepsání vlastností** aktivity spustit balíček SSIS proveďte 
 
    1. Zadejte cesty k existujícím vlastnostem ve vybraném balíčku jeden po jednom, aby byly hodnoty přiřazeny ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. Chcete-li například přepsat hodnotu proměnné uživatele, zadejte cestu v následujícím formátu: `\Package.Variables[User::<variable name>].Value` . 
 
-      Správnou **cestu vlastnosti** pro libovolnou vlastnost balíčku můžete získat otevřením balíčku, který ho obsahuje v SSDT. Po otevření balíčku vyberte jeho vlastnost tok a **Konfigurace** v okně **vlastnosti** SSDT. V dalším kroku vyberte tlačítko se třemi tečkami (**...**) vedle vlastnosti **Konfigurace** a otevřete tak **organizátor konfigurací balíčku** , který se obvykle používá k [Vytvoření konfigurací balíčku v modelu nasazení balíčku](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations). 
+      Správnou **cestu vlastnosti** pro libovolnou vlastnost balíčku můžete získat otevřením balíčku, který ho obsahuje v SSDT. Po otevření balíčku vyberte jeho vlastnost tok a **Konfigurace** v okně **vlastnosti** SSDT. V dalším kroku vyberte tlačítko se třemi tečkami (**...**) vedle vlastnosti **Konfigurace** a otevřete tak **organizátor konfigurací balíčku** , který se obvykle používá k [Vytvoření konfigurací balíčku v modelu nasazení balíčku](/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations). 
 
       ![Získat vlastnosti balíčku z SSDT – vlastnost Configurations](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 
-      V **Organizátoru konfigurace balíčku**zaškrtněte políčko **Povolit konfigurace balíčků** a klikněte na tlačítko **Přidat...** a otevřete **Průvodce konfigurací balíčku**. 
+      V **Organizátoru konfigurace balíčku** zaškrtněte políčko **Povolit konfigurace balíčků** a klikněte na tlačítko **Přidat...** a otevřete **Průvodce konfigurací balíčku**. 
       
-      V **Průvodci konfigurací balíčku**vyberte položku **konfigurační soubor XML** v rozevírací nabídce **typ konfigurace** a klikněte na tlačítko **zadat nastavení konfigurace přímo** , zadejte název konfiguračního souboru a vyberte tlačítko **Další >** . 
+      V **Průvodci konfigurací balíčku** vyberte položku **konfigurační soubor XML** v rozevírací nabídce **typ konfigurace** a klikněte na tlačítko **zadat nastavení konfigurace přímo** , zadejte název konfiguračního souboru a vyberte tlačítko **Další >** . 
 
       ![Získat vlastnosti balíčku z SSDT – organizátor konfigurací](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
 
@@ -283,13 +277,13 @@ Na kartě **přepsání vlastností** aktivity spustit balíček SSIS proveďte 
 
       ![Získat vlastnosti balíčku z SSDT – Průvodce konfigurací](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
-   1. Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** prostřednictvím SSDT a **systému souborů (balíček)**, **systému souborů (projektu)**, **vloženého balíčku**nebo **úložiště balíčků** , je také nutné znovu zadat vlastnosti citlivého balíčku a přiřadit k nim hodnoty na této kartě. 
+   1. Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** prostřednictvím SSDT a **systému souborů (balíček)**, **systému souborů (projektu)**, **vloženého balíčku** nebo **úložiště balíčků** , je také nutné znovu zadat vlastnosti citlivého balíčku a přiřadit k nim hodnoty na této kartě. 
    
 Když přiřazujete hodnoty k vlastnostem balíčku, můžete přidat dynamický obsah pomocí výrazů, funkcí, Data Factory systémových proměnných a Data Factory parametrů kanálu nebo proměnných.
 
 Hodnoty přiřazené v konfiguračních souborech a na kartě **parametry SSIS** lze přepsat pomocí karet **Správce připojení** nebo **přepsání vlastností** . Hodnoty přiřazené na kartě **Správci připojení** lze také přepsat pomocí karty **vlastnosti Overrides** .
 
-Pokud chcete ověřit konfiguraci kanálu, vyberte **ověřit** na panelu nástrojů. Pokud chcete **sestavu ověření kanálu**zavřít, vyberte **>>** .
+Pokud chcete ověřit konfiguraci kanálu, vyberte **ověřit** na panelu nástrojů. Pokud chcete **sestavu ověření kanálu** zavřít, vyberte **>>** .
 
 Pokud chcete publikovat kanál do Data Factory, vyberte **publikovat vše**. 
 
@@ -334,7 +328,7 @@ V této části použijete Azure PowerShell k vytvoření kanálu Data Factory s
 Pomocí podrobných pokynů, [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-az-ps), nainstalujte nejnovější Azure PowerShell moduly.
 
 ### <a name="create-a-data-factory-with-azure-ssis-ir"></a>Vytvoření datové továrny pomocí Azure-SSIS IR
-Můžete buď použít stávající objekt pro vytváření dat, který už Azure-SSIS IR zřízený, nebo vytvořit novou datovou továrnu s Azure-SSIS IR. Postupujte podle podrobných pokynů v tomto [kurzu: nasazení balíčků SSIS do Azure prostřednictvím PowerShellu](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell).
+Můžete buď použít stávající objekt pro vytváření dat, který už Azure-SSIS IR zřízený, nebo vytvořit novou datovou továrnu s Azure-SSIS IR. Postupujte podle podrobných pokynů v tomto [kurzu: nasazení balíčků SSIS do Azure prostřednictvím PowerShellu](./tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Vytvoření kanálu s aktivitou Execute SSIS Package 
 V tomto kroku vytvoříte kanál s aktivitou spustit SSIS s balíčkem. Aktivita spustí balíček SSIS. 

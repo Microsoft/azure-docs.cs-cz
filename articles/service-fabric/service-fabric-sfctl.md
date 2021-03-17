@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257049"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,16 +18,16 @@ Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibiln
 Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v tématu podskupiny.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Popis|
+|Podskupina|Description|
 | --- | --- |
 | [aplikace](service-fabric-sfctl-application.md) | Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací. |
 | [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a hlášení služby chaos test Service. |
 | [služby](service-fabric-sfctl-cluster.md) | Umožňuje vybrat, spravovat a provozovat clustery Service Fabric. |
 | [sestavit](service-fabric-sfctl-compose.md) | Vytvářejte, odstraňujte a spravujte aplikace Docker Compose. |
-| [vnitřního](service-fabric-sfctl-container.md) | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
+| [container (kontejner)](service-fabric-sfctl-container.md)  | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
 | [událost](service-fabric-sfctl-events.md) | Načtěte události z úložiště událostí (Pokud je už nainstalovaná služba Eventstoru). |
 | [dojde](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
-| [mesh](service-fabric-sfctl-mesh.md) | Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě. |
+| [dílce](service-fabric-sfctl-mesh.md) | Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě. |
 | [uzlu](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
 | [rozdělován](service-fabric-sfctl-partition.md) | Dotazování a Správa oddílů pro libovolnou službu. |
 | [majetek](service-fabric-sfctl-property.md) | Uložení a dotazování vlastností pod názvy Service Fabric. |

@@ -3,18 +3,19 @@ title: Nasazení OKD v Azure
 description: Nasaďte OKD v Azure.
 author: haroldwongms
 manager: joraio
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: a7524ea80906f9df5f63af9e7d672bbef500b0d9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc14b10081cf175581d29524dcea60c52763b03c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373330"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667206"
 ---
 # <a name="deploy-okd-in-azure"></a>Nasazení OKD v Azure
 
@@ -119,12 +120,12 @@ Různé verze mohou mít různé parametry, proto ověřte, zda jsou potřebné 
 
 
 > [!NOTE] 
-> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku můžete ověřit pomocí `az --version` příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku můžete ověřit pomocí `az --version` příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Následující příklad nasadí cluster OKD a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHub při použití souboru místních parametrů s názvem azuredeploy.parameters.jsv.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```

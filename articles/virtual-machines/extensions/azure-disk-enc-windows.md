@@ -1,24 +1,19 @@
 ---
 title: Azure Disk Encryption pro Windows
 description: Nasadí Azure Disk Encryption na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
-services: virtual-machines-windows
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.collection: windows
+ms.date: 03/19/2020
+ms.openlocfilehash: 10268f8041f21f74e8ebcfaee41d207a53618260
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066867"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566239"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -61,9 +56,9 @@ Schéma v 2.2 se doporučuje pro všechny nové virtuální počítače a nevyž
           "EncryptionOperation": "[encryptionOperation]",
           "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
           "KeyVaultURL": "[keyVaultURL]",
-          "KekVaultResourceId": "[keyVaultResourceID]",
-          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
           "KeyVaultResourceId": "[keyVaultResourceID]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[kekVaultResourceID]",
           "SequenceVersion": "sequenceVersion]",
           "VolumeType": "[volumeType]"
         }
@@ -97,8 +92,8 @@ Používá se `aadClientSecret` :
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[kekVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     }
@@ -127,8 +122,8 @@ Používá se `AADClientCertificate` :
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[kekVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     }
@@ -148,7 +143,7 @@ Používá se `AADClientCertificate` :
 | (schéma 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (schéma 1,1) AADClientSecret | heslo | řetězec |
 | (schéma 1,1) AADClientCertificate | kryptografický | řetězec |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
+| EncryptionOperation | EnableEncryption | řetězec | 
 | (volitelné – výchozí RSA – výplně OAEP) KeyEncryptionAlgorithm | ' RSA-VÝPLNĚ OAEP ', ' RSA-VÝPLNĚ OAEP-256 ', ' RSA1_5 ' | řetězec |
 | KeyVaultURL | url | řetězec |
 | KeyVaultResourceId | url | řetězec |

@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067663"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730282"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -16,13 +16,22 @@ V tomto rychlém startu se dozvíte, jak začít se službou Live video Analytic
 
 Po dokončení kroků nastavení budete moct spustit simulovaný živý datový proud prostřednictvím mediálního grafu, který v tomto datovém proudu detekuje a hlásí jakýkoliv pohyb. Následující diagram graficky znázorňuje, že se jedná o mediální graf.
 
-![Analýza živých videí na základě detekce pohybu](./media/analyze-live-video/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="Analýza živých videí na základě detekce pohybu":::
+
+Můžete si prohlédnout následující video s podrobnými kroky, jak začít se službou Live video Analytics na IoT Edge:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+
+  > [!NOTE]
+  > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění.  
+
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Ujistěte se, že je síť, ke které je připojený váš vývojový počítač, povolená prostřednictvím portu 5671 rozšířený Protokol AMQP (Message Queueing Protocol). Tato instalace umožňuje, aby nástroje Azure IoT komunikovaly se službou Azure IoT Hub.
+* Ujistěte se, že je síť, ke které je připojený váš vývojový počítač, povolená prostřednictvím portu 5671 pro odchozí přenosy prostřednictvím protokolu AMQP (Message Queueing Protocol). Tato instalace umožňuje, aby nástroje Azure IoT komunikovaly se službou Azure IoT Hub.
 
 > [!TIP]
 > Při instalaci rozšíření Azure IoT Tools se může zobrazit výzva k instalaci Docker. Bez obav tuto výzvu ignorujte.
@@ -34,25 +43,45 @@ Tento kurz vyžaduje následující prostředky Azure:
 * IoT Hub
 * Účet úložiště
 * Účet Azure Media Services
-* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md)
 
-Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Postup je následující:
+Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . To můžete provést pomocí těchto kroků:
 
-1. Přejít na [Azure Cloud Shell](https://shell.azure.com).
+1. Přejít na [Azure Portal](https://portal.azure.com) a vyberte ikonu Cloud Shell.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
-    ![Výběr prostředí](./media/quickstarts/env-selector.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Výběr prostředí":::
 1. Spusťte následující příkaz.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného. Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku `Microsoft.Devices/IotHubs` a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku. 
+    Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného. Skript nastaví celkem 12 prostředků:
+    1. **Koncový bod streamování** – to vám pomůže při přehrávání zaznamenaného prostředku AMS.
+    1. **Virtuální počítač** – jedná se o virtuální počítač, který bude fungovat jako hraniční zařízení.
+    1. **Disk** – jedná se o disk úložiště, který je připojený k virtuálnímu počítači pro ukládání médií a artefaktů.
+    1. **Skupina zabezpečení sítě** – slouží k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network.
+    1. **Síťové rozhraní** – umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a dalšími prostředky.
+    1. **Připojení bastionu** – to vám umožní připojit se k virtuálnímu počítači pomocí prohlížeče a Azure Portal.
+    1. **Veřejná IP adresa** – umožňuje prostředkům Azure komunikovat s internetem a veřejně přístupnými službami Azure.
+    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Přečtěte si další informace o [virtuálních sítích](../../virtual-network/virtual-networks-overview.md).
+    1. **IoT Hub** – slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT, IoT Edge moduly a zařízeními, která spravuje.
+    1. **Účet Media Service** – to pomáhá se správou a streamování mediálního obsahu v Azure.
+    1. **Účet úložiště** – musíte mít jeden primární účet úložiště a k vašemu Media Services účtu můžete mít k dispozici libovolný počet sekundárních účtů úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](../latest/storage-account-concept.md).
+    1. **Registr kontejnerů** – to pomáhá ukládat a spravovat vaše soukromé image kontejnerů Docker a související artefakty.
 
-Skript také vygeneruje několik konfiguračních souborů v adresáři *~/clouddrive/lva-Sample/* . Tyto soubory budete potřebovat později v rychlém startu.
+Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku **`Microsoft.Devices/IotHubs`** a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku.  
+
+> [!NOTE]
+> Skript také vygeneruje několik konfiguračních souborů v adresáři ***~/clouddrive/lva-Sample/*** . Tyto soubory budete potřebovat později v rychlém startu.
+
+> [!TIP]
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Nasazení modulů na hraničním zařízení
 
@@ -65,7 +94,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 Tento příkaz nasadí následující moduly do hraničního zařízení, které je v tomto případě virtuálním počítačem se systémem Linux.
 
 * Live video Analytics na IoT Edge (název modulu `lvaEdge` )
-* Simulátor protokolu RTSP (Real-time streaming Protocol) (název modulu `rtspsim` )
+* Simulátor protokolu RTSP (Real-Time streaming Protocol) (název modulu `rtspsim` )
 
 Modul simulátoru RTSP simuluje živý Stream videa pomocí videosouboru, který jste zkopírovali do hraničního zařízení, když jste spustili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 
@@ -75,14 +104,32 @@ Moduly jsou nyní nasazeny, ale nejsou aktivní žádné mediální grafy.
 
 Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azure IoT Tools.
 
-1. V Visual Studio Code vyberte možnost **Zobrazit**  >  **Průzkumníka**. Nebo vyberte CTRL + SHIFT + E.
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
+1. Vyberte **Zobrazit**  >  **Průzkumníka**. Případně vyberte CTRL + SHIFT + E.
 1. V levém dolním rohu karty **Průzkumník** vyberte **Azure IoT Hub**.
 1. Kliknutím na ikonu **Další možnosti** zobrazíte kontextovou nabídku. Pak vyberte **nastavit IoT Hub připojovací řetězec**.
 1. Po zobrazení vstupního pole zadejte připojovací řetězec IoT Hub. V Cloud Shell můžete získat připojovací řetězec z *~/clouddrive/lva-sample/appsettings.jsna*.
 
-Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měli byste vidět aspoň jedno zařízení s názvem **lva-Sample-Device**. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části **lva-Sample-Device**rozbalte uzel **moduly** .
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
+Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měli byste vidět aspoň jedno zařízení s názvem **lva-Sample-Device**. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části **lva-Sample-Device** rozbalte uzel **moduly** .
 
 ![lva – uzel Sample-Device](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> Pokud jste [ručně nasadili Live video Analytics na IoT Edge](deploy-iot-edge-device.md) yourselves na hraničním zařízení (třeba zařízení ARM64), zobrazí se v části Azure IoT Hub modul pod tímto zařízením. Tento modul můžete vybrat a postupovat podle dalších kroků níže.
 
 ## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 
@@ -98,7 +145,7 @@ Chcete-li vytvořit výčet všech [topologií grafu](media-graph-concept.md#med
 
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 
@@ -120,11 +167,11 @@ Chcete-li vytvořit výčet všech [topologií grafu](media-graph-concept.md#med
 
 ### <a name="invoke-graphtopologyset"></a>Vyvolat GraphTopologySet
 
-Pomocí kroků pro vyvolání `GraphTopologyList` můžete vyvolat `GraphTopologySet` pro nastavení [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances). Jako datovou část použijte následující JSON.
+Stejně jako předtím jsme teď mohli vyvolat `GraphTopologySet` nastavení [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances). Jako datovou část použijte následující JSON.
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "MotionDetection",
     "properties": {
         "description": "Analyzing live video to detect motion and emit events",
@@ -287,7 +334,7 @@ Vyvolat `GraphTopologyGet` pomocí následující datové části.
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
@@ -385,7 +432,7 @@ Volejte přímou metodu `GraphInstanceSet` pomocí následující datové část
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1",
     "properties" : {
         "topologyName" : "MotionDetection",
@@ -400,8 +447,8 @@ Volejte přímou metodu `GraphInstanceSet` pomocí následující datové část
 Všimněte si, že tato datová část:
 
 * Určuje název topologie ( `MotionDetection` ), pro který je nutné vytvořit instanci.
-* Obsahuje hodnotu parametru pro `rtspUrl` , která neobsahovala výchozí hodnotu v datové části topologie grafu.
-
+* Obsahuje hodnotu parametru pro `rtspUrl` , která neobsahovala výchozí hodnotu v datové části topologie grafu. Tato hodnota je odkazem na následující ukázkové video:
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 Během několika sekund se v okně **výstup** zobrazí následující odpověď:
 
 ```
@@ -445,7 +492,7 @@ Nyní aktivujte instanci grafu, aby bylo možné spustit tok živého videa pros
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -469,7 +516,7 @@ Nyní volejte přímou metodu `GraphInstanceGet` pomocí následující datové 
 
 ```
  {
-     "@apiVersion" : "1.0",
+     "@apiVersion" : "2.0",
      "name" : "Sample-Graph-1"
  }
  ```
@@ -516,6 +563,12 @@ Chcete-li sledovat výsledky, postupujte podle těchto kroků.
 3. Klikněte pravým tlačítkem na **lva-Sample-Device** a pak vyberte **Spustit monitorování integrovaného monitorování událostí**.
 
     ![Spustit monitorování událostí IoT Hub](./media/quickstarts/start-monitoring-iothub-events.png)
+
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     
 V okně **výstup** se zobrazí následující zpráva:
 
@@ -548,13 +601,6 @@ V okně **výstup** se zobrazí následující zpráva:
         }
         }
     ]
-    },
-    "applicationProperties": {
-    "topic": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.media/mediaservices/{amsAccountName}",
-    "subject": "/graphInstances/Sample-Graph-1/processors/motionDetection",
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",
-    "eventTime": "2020-05-19T07:45:34.404Z",
-    "dataVersion": "1.0"
     }
 }
 ```
@@ -602,7 +648,7 @@ Volejte přímou metodu `GraphInstanceDeactivate` pomocí následující datové
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -628,7 +674,7 @@ Volejte přímou metodu `GraphInstanceDelete` pomocí následující datové č�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -652,7 +698,7 @@ Volejte přímou metodu `GraphTopologyDelete` pomocí následující datové č�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```

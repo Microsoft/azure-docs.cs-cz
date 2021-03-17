@@ -1,26 +1,26 @@
 ---
-title: 'Kurz: nasazení modelů ML pomocí návrháře (Preview)'
+title: 'Kurz: nasazení modelů ML pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se dozvíte, jak vytvořit řešení prediktivní analýzy v Návrháři Azure Machine Learning (Preview). Využijte moduly pro vytažení, skóre a nasazení modelu strojového učení.
-author: peterclu
-ms.author: peterlu
+description: Sestavte řešení prediktivní analýzy v Návrháři Azure Machine Learning. Naučte se, vyhodnocovat a nasazovat model strojového učení pomocí modulů přetažení.
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 453971d776a0953a344d147bca387a81f65ac73c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287985"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659497"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
-Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu budete:
+
+Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit předpovědi na základě vstupu uživatele. V této části kurzu budete:
 
 > [!div class="checklist"]
 > * Vytvoří kanál pro odvození v reálném čase.
@@ -42,7 +42,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
 1. Nad plátnem kanálu vyberte **vytvořit odvození kanálu**  >  **odvození kanálu v reálném čase**.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
 
     Váš kanál by teď měl vypadat takto: 
 
@@ -59,9 +59,9 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
     > Ve výchozím nastavení bude **vstup webové služby** očekávat stejné schéma dat jako školicí data použitá k vytvoření prediktivního kanálu. V tomto scénáři je cena zahrnutá ve schématu. Cena se ale během předpovědi nepoužívá jako faktor.
     >
 
-1. Vyberte **Odeslat**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
+1. Vyberte **Odeslat** a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
 
-    Pokud je první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
+    Pokud se jedná o první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
 
 1. Vyberte **Nasadit**.
 
@@ -77,7 +77,7 @@ V dialogovém okně, které se zobrazí, můžete vybrat z existujících cluste
    
 1. V podokně odvození clusteru nakonfigurujte novou službu Kubernetes.
 
-1. Jako **výpočetní název**zadejte *AKS-COMPUTE* .
+1. Jako **výpočetní název** zadejte *AKS-COMPUTE* .
     
 1. Vyberte okolní oblast, která je k dispozici pro **oblast**.
 
@@ -97,27 +97,62 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
 1. Vyberte cluster AKS, který jste vytvořili.
 
-1. Vyberte **Nasadit**.
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
+
+    Můžete také změnit **upřesňující** nastavení koncového bodu v reálném čase.
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
+    |Rozšířené nastavení|Popis|
+    |---|---|
+    |Povolit diagnostiku Application Insights a shromažďování dat| Určuje, jestli se má pro Azure Application Insights Povolit shromažďování dat z nasazených koncových bodů. </br> Ve výchozím nastavení: false |
+    |Časový limit vyhodnocování| Časový limit (v milisekundách), který se má vymáhat pro volání bodování webové služby.</br>Ve výchozím nastavení: 60000|
+    |Automatické škálování povoleno|   Určuje, zda má být povoleno automatické škálování webové služby.</br>Ve výchozím nastavení: true|
+    |Minimální počet replik| Minimální počet kontejnerů, které se mají použít při automatickém škálování této webové služby.</br>Ve výchozím nastavení: 1|
+    |Maximální počet replik| Maximální počet kontejnerů, které se mají použít při automatickém škálování této webové služby.</br> Ve výchozím nastavení: 10|
+    |Cílové využití|Cílové využití (v procentech z 100), které by měl modul automatického škálování zkusit zachovat pro tuto webovou službu.</br> Ve výchozím nastavení: 70|
+    |Interval aktualizace|Jak často (v sekundách) se automatické škálování pokusí škálovat tuto webovou službu.</br> Ve výchozím nastavení: 1|
+    |Rezervní kapacita procesoru|Počet jader procesoru, které se mají přidělit této webové službě.</br> Ve výchozím nastavení: 0,1|
+    |Kapacita rezervy paměti|Velikost paměti (v GB), která má být přidělena této webové službě.</br> Ve výchozím nastavení: 0,5|
+        
+
+1. Vyberte **Nasadit**. 
 
     Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
 
+> [!TIP]
+> Pokud v poli nastavení koncového bodu v reálném čase vyberete **Azure Container instance** pro **COMPUTE** , můžete ho nasadit taky na **Azure Container instance** (ACI).
+> Instance kontejneru Azure se používá pro testování nebo vývoj. Použijte ACI pro úlohy s nižší škálou zatížení procesoru, které vyžadují méně než 48 GB paměti RAM.
+
 ## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
 
-Po dokončení nasazení můžete koncový bod v reálném čase otestovat tak, že na stránku **koncové body** kliknete.
+Po dokončení nasazení můžete zobrazit koncový bod v reálném čase tak, že na stránce **koncové body** kliknete.
 
 1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
 
-    ![Snímek obrazovky zobrazující kartu koncových bodů v reálném čase s zvýrazněným nedávno vytvořeným koncovým bodem](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
+    Na kartě **Podrobnosti** můžete zobrazit další informace, jako je identifikátor URI REST, definice, stav a značky v Swagger.
 
-1. Vyberte **Test**.
+    Na kartě **spotřebovávat** můžete najít ukázkový kód pro spotřebu, klíče zabezpečení a nastavit metody ověřování.
 
-1. Můžete ručně zadat data testování, nebo použít ukázková data automatického vyplňování a vybrat **test**.
+    Na kartě **protokoly nasazení** můžete najít podrobné protokoly nasazení koncového bodu v reálném čase.
 
-    Portál odešle požadavek na test na koncový bod a zobrazí výsledky. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
+1. Pokud chcete otestovat koncový bod, klikněte na kartu **test** . Odtud můžete zadat testovací data a vybrat **test** ověřit výstup svého koncového bodu.
 
-    ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase pomocí popisku s skóre pro zvýrazněnou cenu](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
+Další informace o využívání webové služby najdete v tématu [Spotřeba modelu nasazeného jako WebService](how-to-consume-web-service.md) .
+
+## <a name="limitations"></a>Omezení
+
+Pokud provedete některé úpravy kanálu školení, měli byste znovu odeslat kanál školení, **aktualizovat** kanál odvození a znovu spustit kanál odvození.
+
+Všimněte si, že v kanálu odvození budou aktualizovány pouze proškolené modely, zatímco transformaci dat nebude aktualizováno.
+
+Chcete-li použít aktualizovanou transformaci v kanálu odvození, je třeba registrovat výstup transformace modulu transformace jako datovou sadu.
+
+![Snímek obrazovky, který ukazuje, jak registrovat datovou sadu transformace](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+Pak ručně nahraďte modul **td** v kanálu odvození s registrovanou datovou sadou.
+
+![Snímek obrazovky ukazující, jak nahradit transformační modul](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+Pak můžete odeslat kanál odvození s aktualizovaným modelem a transformací a nasadit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -125,7 +160,7 @@ Po dokončení nasazení můžete koncový bod v reálném čase otestovat tak, 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu Machine Learning v návrháři. Další informace o tom, jak můžete pomocí návrháře vyřešit jiné typy problémů, najdete v našich ukázkových kanálech.
+V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu Machine Learning v návrháři. Další informace o tom, jak můžete použít návrháře, najdete v následujících odkazech:
 
-> [!div class="nextstepaction"]
-> [Ukázky návrháře](samples-designer.md)
++ [Ukázky Návrháře](samples-designer.md): Naučte se, jak pomocí návrháře řešit jiné typy problémů.
++ [Použijte Azure Machine Learning Studio ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md).

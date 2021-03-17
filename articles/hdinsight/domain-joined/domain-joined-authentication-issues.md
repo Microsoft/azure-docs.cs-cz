@@ -1,18 +1,15 @@
 ---
 title: Problémy s ověřováním ve službě Azure HDInsight
 description: Problémy s ověřováním ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 11/08/2019
-ms.openlocfilehash: 218850feea8b0e22b8e11695a3aa3c69173f1ab7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 08/24/2020
+ms.openlocfilehash: b5a55b3b5f9affcd9f34e1c0d4c439a7ada8c0b9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504921"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095120"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problémy s ověřováním ve službě Azure HDInsight
 
@@ -38,7 +35,7 @@ Kód chyby Azure AD 50126 znamená, že `AllowCloudPasswordValidation` klient ne
 
 ### <a name="resolution"></a>Řešení
 
-Správce společnosti tenanta Azure AD by měl povolit, aby služba Azure AD používala pro uživatele v AD FS hodnoty hash hesel.  Použijte, `AllowCloudPasswordValidationPolicy` jak je uvedeno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Globální správce tenanta Azure AD by měl povolit, aby služba Azure AD používala hodnoty hash hesel pro uživatele se službou AD FS.  Použijte, `AllowCloudPasswordValidationPolicy` jak je uvedeno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 
@@ -82,7 +79,7 @@ Počkejte 30 minut nebo zastavte všechny aplikace, které se mohou pokoušet ov
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant nebo unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053-2"></a>invalid_grant nebo unauthorized_client, 50053 (#2)
 
 ### <a name="issue"></a>Problém
 
@@ -154,7 +151,7 @@ Způsoby, jak najít `sAMAccountName` :
 
 * Pokud se můžete přihlásit k Ambari pomocí místního správce Ambari, podívejte se na seznam uživatelů.
 
-* Pokud máte počítač s [Windows připojen k doméně](../../active-directory-domain-services/manage-domain.md), můžete k procházení použít standardní nástroje Windows AD. To vyžaduje pracovní účet v doméně.
+* Pokud máte počítač s [Windows připojen k doméně](../../active-directory-domain-services/tutorial-create-management-vm.md), můžete k procházení použít standardní nástroje Windows AD. To vyžaduje pracovní účet v doméně.
 
 * Z hlavního uzlu můžete k hledání použít příkazy služby SAMBA. To vyžaduje platnou relaci protokolu Kerberos (úspěšné kinit). NET ADS Search "(userPrincipalName = Bob *)"
 
@@ -214,10 +211,4 @@ K této chybě dochází občas, když se uživatelé pokusí o přístup k ADLS
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

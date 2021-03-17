@@ -1,42 +1,55 @@
 ---
-title: Ukázkové skripty pro službu Azure Disk Encryption
+title: Azure Disk Encryption ukázkové skripty pro virtuální počítače s Windows
 description: Tento článek je dodatek pro Microsoft Azure šifrování disku pro virtuální počítače s Windows.
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9dc6acf33208de44eec2b5b9706b9f0b176f0d7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 413553165fcf74fa4590cb4661212b885a277579
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284468"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550633"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Ukázkové skripty pro službu Azure Disk Encryption 
 
 Tento článek poskytuje ukázkové skripty pro přípravu předem šifrovaných virtuálních pevných disků a dalších úloh.
 
+> [!NOTE]
+> Všechny skripty odkazují na nejnovější verzi ADE bez AAD, s výjimkou případů popsaných v tématu.
+
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Ukázkové skripty PowerShellu pro Azure Disk Encryption 
+
+
+- **Zobrazit seznam všech šifrovaných virtuálních počítačů ve vašem předplatném**
+
+  Všechny virtuální počítače zašifrované přes ADE a verzi rozšíření můžete najít ve všech skupinách prostředků v rámci předplatného pomocí [tohoto skriptu PowerShellu](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1).
+
+  Nebo tyto rutiny zobrazí všechny virtuální počítače zašifrované přes ADE (ale ne verzi rozšíření):
+
+    ```azurepowershell-interactive
+    $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+    $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+    Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+    ```
+
+- **Vypíše všechny šifrované VMSS instance v rámci vašeho předplatného.**
+    
+    Pomocí [tohoto skriptu PowerShellu](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)můžete najít všechny instance VMSS ŠIFROVANÉ v ADE a verzi rozšíření ve všech skupinách prostředků přítomných v rámci předplatného.
  
-
-## <a name="list-vms-and-secrets"></a>Výpis virtuálních počítačů a tajných klíčů
-
-Vypíše všechny šifrované virtuální počítače ve vašem předplatném:
-
-```azurepowershell-interactive
-$osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-$dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
-```
-Vypíše všechny tajné klíče pro šifrování disků používané k šifrování virtuálních počítačů v trezoru klíčů:
+- **Vypíše všechny tajné klíče pro šifrování disků používané k šifrování virtuálních počítačů v trezoru klíčů.**
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
 ```
 
-## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>Skripty pro Azure Disk Encryption předpoklady
+### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Použití skriptu PowerShellu pro Azure Disk Encryption předpoklady
+
 Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption, můžete použít [skript PowerShellu pro Azure Disk Encryption požadavků](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Příklad použití tohoto skriptu PowerShellu najdete v tématu [rychlý Start k šifrování virtuálního počítače](disk-encryption-powershell-quickstart.md). Komentáře můžete z části skriptu odebrat, od řádku 211 až po zašifrování všech disků pro existující virtuální počítače v existující skupině prostředků. 
 
 Následující tabulka ukazuje, které parametry lze použít ve skriptu prostředí PowerShell: 
@@ -69,7 +82,7 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 Níže uvedené části jsou nezbytné k přípravě předem zašifrovaného virtuálního pevného disku s Windows pro nasazení jako šifrovaného virtuálního pevného disku v Azure IaaS. Tyto informace slouží k přípravě a spuštění nového virtuálního počítače s Windows (VHD) v systému Azure Site Recovery nebo Azure. Další informace o tom, jak připravit a nahrát VHD, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů v Azure](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Aktualizace zásad skupiny pro povolení ochrany operačního systému bez čipu TPM
-Nakonfigurujte nastavení zásady skupiny BitLockeru **Nástroj BitLocker Drive Encryption**, které najdete v části konfigurace **počítače zásady místního počítače**  >  **Computer Configuration**  >  **šablony pro správu**  >  **součásti systému Windows**. Toto nastavení změňte na **jednotky s operačním systémem**  >  **vyžadovat při spuštění další ověření**  >  , které**umožňuje BitLocker bez kompatibilního čipu TPM**, jak je znázorněno na následujícím obrázku:
+Nakonfigurujte nastavení zásady skupiny BitLockeru **Nástroj BitLocker Drive Encryption**, které najdete v části konfigurace **počítače zásady místního počítače**  >    >  **šablony pro správu**  >  **součásti systému Windows**. Toto nastavení změňte na **jednotky s operačním systémem**  >  **vyžadovat při spuštění další ověření**  >  , které **umožňuje BitLocker bez kompatibilního čipu TPM**, jak je znázorněno na následujícím obrázku:
 
 ![Microsoft Antimalware v Azure](../media/disk-encryption/disk-encryption-fig8.png)
 
@@ -86,7 +99,7 @@ Pro Windows Server 2008 R2 použijte následující příkaz:
 ServerManagerCmd -install BitLockers
 ```
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Příprava svazku operačního systému pro BitLocker pomocí`bdehdcfg`
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Příprava svazku operačního systému pro BitLocker pomocí `bdehdcfg`
 Pokud chcete zkomprimovat oddíl s operačním systémem a připravit počítač na BitLocker, spusťte v případě potřeby [BdeHdCfg](/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) :
 
 ```console
@@ -105,7 +118,7 @@ reboot
 > Připravte virtuální počítač se samostatným virtuálním pevným diskem dat nebo prostředků, abyste mohli získat externí klíč pomocí BitLockeru.
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Nahrání šifrovaného virtuálního pevného disku do účtu služby Azure Storage
-Po povolení šifrování DM-crypt je potřeba odeslat místní zašifrovaný virtuální pevný disk do svého účtu úložiště.
+Po povolení šifrování DM-Crypt se místní zašifrovaný virtuální pevný disk musí nahrát do svého účtu úložiště.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```

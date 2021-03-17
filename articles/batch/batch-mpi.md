@@ -2,14 +2,14 @@
 title: Použití úkolů s více instancemi ke spouštění aplikací MPI
 description: Naučte se spouštět aplikace MPI (Message Passing Interface) pomocí typu úlohy s více instancemi v Azure Batch.
 ms.topic: how-to
-ms.date: 03/13/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66cedc4cdb7c55401b7dbbc892687d08f56eb875
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 10/08/2020
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 6aa6a910dd57a255d9ec9292119bc692edf4946f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147369"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351516"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve Batch
 
@@ -21,14 +21,14 @@ ms.locfileid: "86147369"
 >
 
 ## <a name="multi-instance-task-overview"></a>Přehled úlohy s více instancemi
-V dávce se každý úkol obvykle spouští na jednom výpočetním uzlu – do úlohy odešlete více úkolů a služba Batch naplánuje každou úlohu k provedení na uzlu. Když ale konfigurujete **nastavení více instancí**úlohy, řekněte službě Batch, aby vytvořila jednu primární úlohu a několik dílčích úloh, které se pak spustí na více uzlech.
+V dávce se každý úkol obvykle spouští na jednom výpočetním uzlu – do úlohy odešlete více úkolů a služba Batch naplánuje každou úlohu k provedení na uzlu. Když ale konfigurujete **nastavení více instancí** úlohy, řekněte službě Batch, aby vytvořila jednu primární úlohu a několik dílčích úloh, které se pak spustí na více uzlech.
 
 ![Přehled úlohy s více instancemi][1]
 
 Když odešlete úlohu s nastavením více instancí do úlohy, dávka provede několik kroků, které jsou jedinečné pro úlohy s více instancemi:
 
 1. Služba Batch vytvoří jeden **primární** a několik dílčích **úloh** na základě nastavení s více instancemi. Celkový počet úloh (primární a všechny dílčí úkoly) odpovídá počtu **instancí** (výpočetních uzlů), které zadáte v nastavení více instancí.
-2. Batch označí jeden z výpočetních uzlů jako **Hlavní**a naplánuje primární úlohu, která se má spustit na hlavním serveru. Naplánuje dílčí úkoly, které se mají provést, na zbytek výpočetních uzlů přidělených úloze s více instancemi, jednoho dílčího úkolu na uzel.
+2. Batch označí jeden z výpočetních uzlů jako **Hlavní** a naplánuje primární úlohu, která se má spustit na hlavním serveru. Naplánuje dílčí úkoly, které se mají provést, na zbytek výpočetních uzlů přidělených úloze s více instancemi, jednoho dílčího úkolu na uzel.
 3. Primární a všechny dílčí úkoly stáhnou všechny **běžné soubory prostředků** , které zadáte v nastavení více instancí.
 4. Po stažení běžných souborů prostředků provede primární a dílčí úkoly **příkaz koordinace** , který zadáte v nastavení více instancí. Příkaz koordinace se obvykle používá k přípravě uzlů pro provedení úlohy. To může zahrnovat spouštění služeb na pozadí (například [Microsoft MPI][msmpi_msdn] `smpd.exe` ) a ověření, že uzly jsou připravené na zpracování zpráv mezi uzly.
 5. Primární úloha spustí **příkaz aplikace** na hlavním uzlu *po* úspěšném dokončení příkazu koordinace primárním a všemi dílčími úkoly. Příkaz aplikace je příkazový řádek samotného úkolu s více instancemi a je proveden pouze primárním úkolem. V řešení založeném na [MS-MPI][msmpi_msdn]se jedná o místo, kde spouštíte aplikaci s povoleným MPI pomocí `mpiexec.exe` .
@@ -39,7 +39,7 @@ Když odešlete úlohu s nastavením více instancí do úlohy, dávka provede n
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Požadavky na úlohy s více instancemi
-Úkoly s více instancemi vyžadují fond se **zapnutou komunikací mezi uzly**a **Souběžné spouštění úloh je zakázané**. Chcete-li zakázat souběžné provádění úloh, nastavte vlastnost [CloudPool. MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) na hodnotu 1.
+Úkoly s více instancemi vyžadují fond se **zapnutou komunikací mezi uzly** a **Souběžné spouštění úloh je zakázané**. Chcete-li zakázat souběžné provádění úloh, nastavte vlastnost [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) na hodnotu 1.
 
 > [!NOTE]
 > Batch [omezuje](batch-quota-limit.md#pool-size-limits) velikost fondu, který má povolenou komunikaci mezi uzly.
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> Pokud se pokusíte spustit úlohu s více instancemi ve fondu s zakázáním komunikace mezi uzly nebo s hodnotou *maxTasksPerNode* větší než 1, úloha není nikdy naplánována – zůstane neomezeně ve stavu "aktivní". 
+> Pokud se pokusíte spustit úlohu s více instancemi ve fondu s zakázáním komunikace mezi uzly nebo s hodnotou *taskSlotsPerNode* větší než 1, úloha není nikdy naplánována – zůstane neomezeně ve stavu "aktivní".
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Použití StartTask k instalaci MPI
@@ -95,11 +95,11 @@ V následujících článcích vyhledejte velikosti zadané jako "RDMA podporuje
   * [Velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (jenom Windows)
 * Fondy **VirtualMachineConfiguration**
 
-  * [Velikosti pro virtuální počítače v Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Velikosti virtuálních počítačů v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Velikosti pro virtuální počítače v Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Velikosti virtuálních počítačů v Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Pokud chcete využít výhod RDMA na [výpočetních uzlech pro Linux](batch-linux-nodes.md), musíte na uzlech použít **Intel MPI** . 
+> Pokud chcete využít výhod RDMA na [výpočetních uzlech pro Linux](batch-linux-nodes.md), musíte na uzlech použít **Intel MPI** .
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Vytvoření úlohy s více instancemi pomocí batch .NET
@@ -153,7 +153,7 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 Všimněte si použití `start` v tomto příkazu koordinace. To je nutné, protože `smpd.exe` aplikace se po provedení nevrátí hned. Bez použití příkazu [Start][cmd_start] by tento příkaz koordinace nevrátil, a proto zablokoval spuštění příkazu aplikace.
 
 ## <a name="application-command"></a>Příkaz aplikace
-Jakmile primární úkol a všechny dílčí úkoly dokončí příkaz koordinace, příkazový řádek úlohy s více instancemi se spustí *jenom*primární úlohou. Tento **příkaz aplikace** voláme, aby se lišil od příkazu koordinace.
+Jakmile primární úkol a všechny dílčí úkoly dokončí příkaz koordinace, příkazový řádek úlohy s více instancemi se spustí *jenom* primární úlohou. Tento **příkaz aplikace** voláme, aby se lišil od příkazu koordinace.
 
 Pro aplikace MS-MPI použijte příkaz aplikace a spusťte aplikaci s podporou MPI `mpiexec.exe` . Například tady je příkaz aplikace pro řešení s použitím MS-MPI verze 7:
 
@@ -267,7 +267,7 @@ Ukázka kódu [MultiInstanceTasks][github_mpi] na GitHubu ukazuje, jak používa
 >
 >
 
-### <a name="execution"></a>Spouštěcí
+### <a name="execution"></a>Spuštění
 1. Stáhněte si [Azure-Batch-Samples][github_samples_zip] z GitHubu.
 2. Otevřete **řešení** MultiInstanceTasks v aplikaci Visual Studio 2019. `MultiInstanceTasks.sln`Soubor řešení je umístěný v:
 

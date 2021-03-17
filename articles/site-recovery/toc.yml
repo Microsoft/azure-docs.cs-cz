@@ -48,6 +48,22 @@
           href: tutorial-dr-drill-azure.md
         - name: Převzetí služeb při selhání do Azure
           href: vmware-azure-tutorial-failover-failback.md
+    - name: Zotavení po havárii služby Azure VMware Solution do Azure
+      items:
+        - name: Příprava Azure
+          href: avs-tutorial-prepare-azure.md
+        - name: Příprava služby Azure VMware Solution
+          href: avs-tutorial-prepare-avs.md
+        - name: Nastavení replikace
+          href: avs-tutorial-replication.md
+        - name: Spuštění postupu zotavení po havárii
+          href: avs-tutorial-dr-drill-azure.md
+        - name: Převzetí služeb při selhání do Azure
+          href: avs-tutorial-failover.md
+        - name: Znovunastavení ochrany virtuálních počítačů
+          href: avs-tutorial-reprotect.md
+        - name: Navrácení služeb po obnovení z Azure
+          href: avs-tutorial-failback.md
     - name: Zotavení po havárii virtuálního počítače Hyper-V do Azure
       items:
         - name: Příprava Azure
@@ -160,6 +176,10 @@
           href: hyper-v-vmm-secondary-support-matrix.md
         - name: Architektura pro replikaci virtuálního počítače Hyper-V do sekundární lokality
           href: hyper-v-vmm-architecture.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Zotavení po havárii Azure do Azure
@@ -196,7 +216,9 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure
               href: azure-to-azure-replicate-after-migration.md
-            - name: Povolení zotavení po havárii mezi zónami
+        - name: Zotavení po havárii zóny do zóny
+          items:
+            - name: Povolení replikace mezi zónami v rámci oblasti
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Spravovat
           items:
@@ -458,6 +480,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Přidání runbooků automatizace do plánů obnovení
       href: site-recovery-runbook-automation.md
+    - name: Šablony ARM
+      href: asr-arm-templates.md
 - name: Monitorování
   items:
     - name: Běžné otázky týkající se monitorování
@@ -466,6 +490,8 @@
       href: site-recovery-monitor-and-troubleshoot.md
     - name: Monitorování Site Recovery s využitím protokolů Azure Monitoru
       href: monitor-log-analytics.md
+    - name: Monitorování vzorů změn ve virtuální počítačích
+      href: monitoring-high-churn.md
     - name: Monitorování procesových serverů
       href: vmware-physical-azure-monitor-process-server.md
 - name: Řešení potíží

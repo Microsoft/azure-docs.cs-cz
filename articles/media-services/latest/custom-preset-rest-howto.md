@@ -1,25 +1,27 @@
 ---
-title: Kódování vlastní transformace pomocí Media Services V3 REST – Azure | Microsoft Docs
+title: Kódování REST pro vlastní transformaci
 description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí REST.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2c0416e2787bc69465e18a71f6b9912f7571c24d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053313"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956085"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak kódovat pomocí vlastní transformace – REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-rest.md#create-a-transform) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
@@ -30,7 +32,7 @@ Při vytváření vlastních přednastavení platí následující požadavky:
 * Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
 * V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - [Vytvořte účet Media Services](./create-account-howto.md). <br/>Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 - [Nakonfigurujte metodu post pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).<br/>Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
@@ -145,7 +147,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 Vyberte kartu **tělo** a nahraďte text kódem JSON, který jste [definovali dříve](#define-a-custom-preset). Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat.
 
-Vyberte **Poslat**. 
+Vyberte **Odeslat**. 
 
 Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat. Kompletní příklad, který ukazuje, jak odeslat úlohu v rámci transformace, najdete v tématu [kurz: streamování souborů videa – REST](stream-files-tutorial-with-rest.md).
 

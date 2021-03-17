@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 02/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62bae22b6a4bb06b1e97c18e52ad614fd2439902
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85202853"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489317"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,7 +24,7 @@ ms.locfileid: "85202853"
 
 Můžete přizpůsobit vzhled a chování každého [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md). Azure Active Directory B2C (Azure AD B2C) spouští kód v prohlížeči zákazníka a používá moderní přístup nazvaný sdílení prostředků mezi zdroji (CORS).
 
-Chcete-li přizpůsobit uživatelské rozhraní, zadejte adresu URL v elementu **ContentDefinition** s přizpůsobeným obsahem HTML. V technickém profilu nebo **OrchestrationStep**s vlastním uplatněním odkazujete na tento identifikátor definice obsahu. Definice obsahu může obsahovat element **LocalizedResourcesReferences** , který určuje seznam lokalizovaných prostředků, které se mají načíst. Azure AD B2C sloučí prvky uživatelského rozhraní s obsahem HTML načteným z vaší adresy URL a pak zobrazí stránku uživateli.
+Chcete-li přizpůsobit uživatelské rozhraní, zadejte adresu URL v elementu **ContentDefinition** s přizpůsobeným obsahem HTML. V technickém profilu nebo **OrchestrationStep** s vlastním uplatněním odkazujete na tento identifikátor definice obsahu. Definice obsahu může obsahovat element **LocalizedResourcesReferences** , který určuje seznam lokalizovaných prostředků, které se mají načíst. Azure AD B2C sloučí prvky uživatelského rozhraní s obsahem HTML načteným z vaší adresy URL a pak zobrazí stránku uživateli.
 
 Element **ContentDefinitions** obsahuje adresy URL pro šablony HTML5, které lze použít při cestě uživatele. Identifikátor URI stránky HTML5 se používá pro zadaný krok uživatelského rozhraní. Například přihlášení nebo registrace, resetování hesla nebo chybové stránky. Vzhled a chování můžete upravit přepsáním LoadUri pro soubor HTML5. Nové definice obsahu můžete vytvořit podle svých potřeb. Tento element může obsahovat odkaz na lokalizované prostředky na identifikátor lokalizace zadaný v elementu [Localization](localization.md) .
 
@@ -44,7 +44,7 @@ Následující příklad ukazuje identifikátor definice obsahu a definici lokal
     ...
 ```
 
-Metadata **LocalAccountSignUpWithLogonEmailho** technického profilu s vlastním uplatněním obsahují identifikátor definice obsahu **ContentDefinitionReferenceId** nastaven na`api.localaccountsignup`
+Metadata **LocalAccountSignUpWithLogonEmailho** technického profilu s vlastním uplatněním obsahují identifikátor definice obsahu **ContentDefinitionReferenceId** nastaven na `api.localaccountsignup`
 
 ```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -63,11 +63,11 @@ Element **ContentDefinition** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
+| Id | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
 
 Element **ContentDefinition** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
 | RecoveryUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. Aktuálně se nepoužívá, hodnota musí být `~/common/default_page_error.html` . |
@@ -79,18 +79,18 @@ Element **ContentDefinition** obsahuje následující prvky:
 
 Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky k načtení a spuštění prvků uživatelského rozhraní a JavaScriptu na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version` . Následující tabulka obsahuje seznam identifikátorů stránek, které můžete použít.
 
-| Identifikátor stránky | Description |
+| Identifikátor stránky | Popis |
 | ----- | ----------- |
 | `globalexception` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
 | `providerselection`, `idpselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování.  |
-| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " propojit. |
+| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " . |
 | `unifiedssd` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
 | `multifactor` | Ověřuje telefonní čísla pomocí textu nebo hlasu během registrace nebo přihlašování. |
 | `selfasserted` | Zobrazí formulář pro shromažďování dat od uživatele. Například umožňuje uživatelům vytvořit nebo aktualizovat svůj profil. |
 
 ### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
 
-Můžete povolit [javascriptový kód na straně klienta](javascript-samples.md) vložením `contract` mezi `elements` a a typem stránky. Například, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+Můžete povolit [javascriptový kód na straně klienta](javascript-and-page-layout.md) vložením `contract` mezi `elements` a a typem stránky. Například, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -115,23 +115,60 @@ Formát hodnoty musí obsahovat slovo `contract` : _urn: com: Microsoft: AAD: B2
 
 | Stará hodnota DataUri | Nová hodnota DataUri |
 | ----------------- | ----------------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+Následující příklad ukazuje identifikátory definice obsahu a odpovídající **DataUri** s nejnovější verzí stránky: 
+
+```xml
+<!-- 
+<BuildingBlocks> -->
+  <ContentDefinitions>
+    <ContentDefinition Id="api.error">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.idpselections">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.idpselections.signup">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.signuporsignin">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.selfasserted">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.selfasserted.profileupdate">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.localaccountsignup">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.localaccountpasswordreset">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.phonefactor">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.2</DataUri>
+    </ContentDefinition>
+  </ContentDefinitions>
+<!-- 
+</BuildingBlocks> -->
+```
 
 ### <a name="metadata"></a>Metadata
 
 Element **metadata** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Metadata vztahující se k definici obsahu. |
 
@@ -139,7 +176,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Klíč | Yes | Klíč metadat.  |
+| Klíč | Ano | Klíč metadat.  |
 
 #### <a name="metadata-keys"></a>Klíče metadat
 
@@ -147,13 +184,13 @@ Definice obsahu podporuje následující položky metadat:
 
 | Klíč | Povinné | Popis |
 | --------- | -------- | ----------- |
-| DisplayName | No | Řetězec, který obsahuje název definice obsahu. |
+| DisplayName | Ne | Řetězec, který obsahuje název definice obsahu. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 Element **LocalizedResourcesReferences** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Seznam lokalizovaných odkazů na prostředky pro definici obsahu. |
 
@@ -161,8 +198,8 @@ Element **LocalizedResourcesReference** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Jazyk | Yes | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
-| LocalizedResourcesReferenceId | Yes | Identifikátor elementu **LocalizedResources** |
+| Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
+| LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |
 
 Následující příklad ukazuje definici obsahu pro registraci nebo přihlašování s odkazem na lokalizaci pro angličtinu, francouzštinu a španělštinu:
 
@@ -188,7 +225,7 @@ Další informace o tom, jak přidat podporu lokalizace do definic obsahu, nalez
 
 Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahuje k definici obsahu. Prvek definuje kontext, který bude použita vlastní šablona HTML5/CSS. V následující tabulce jsou popsány sady ID definic obsahu rozpoznávané architekturou prostředí identity a typy stránek, které se na ně vztahují. Můžete vytvořit vlastní definice obsahu s libovolným ID.
 
-| ID | Výchozí šablona | Description |
+| ID | Výchozí šablona | Popis |
 | -- | ---------------- | ----------- |
 | **rozhraní API. Chyba** | [výjimka. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka** – zobrazí chybovou stránku, když dojde k výjimce nebo chybě. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka Výběr zprostředkovatele identity** – zobrazí seznam zprostředkovatelů identity, ze kterých si uživatelé můžou během přihlašování vybírat. Tyto možnosti jsou obvykle poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
@@ -205,4 +242,4 @@ Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahu
 
 Příklad přizpůsobení uživatelského rozhraní pomocí definic obsahu najdete v těchto tématech:
 
-[Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](custom-policy-ui-customization.md)
+[Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](customize-ui-with-html.md)

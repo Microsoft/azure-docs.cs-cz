@@ -19,23 +19,23 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201391"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935785"
 ---
-# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funkce fulltextového vyhledávání OData v Azure Kognitivní hledání – `search.ismatch` a`search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funkce fulltextového vyhledávání OData v Azure Kognitivní hledání – `search.ismatch` a `search.ismatchscoring`
 
-Azure Kognitivní hledání podporuje fulltextové vyhledávání v kontextu [výrazů filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `search.ismatch` `search.ismatchscoring` funkcí a. Tyto funkce umožňují kombinovat fulltextové vyhledávání s přísným filtrováním, které není možné pouze pomocí parametru nejvyšší úrovně `search` [rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Kognitivní hledání podporuje fulltextové vyhledávání v kontextu [výrazů filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `search.ismatch` `search.ismatchscoring` funkcí a. Tyto funkce umožňují kombinovat fulltextové vyhledávání s přísným filtrováním, které není možné pouze pomocí parametru nejvyšší úrovně `search` [rozhraní API pro hledání](/rest/api/searchservice/search-documents).
 
 > [!NOTE]
-> `search.ismatch`Funkce a `search.ismatchscoring` jsou podporovány pouze ve filtrech v [rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents). Nejsou podporovány v rozhraních API pro [navrhování](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
+> `search.ismatch`Funkce a `search.ismatchscoring` jsou podporovány pouze ve filtrech v [rozhraní API pro hledání](/rest/api/searchservice/search-documents). Nejsou podporovány v rozhraních API pro [navrhování](/rest/api/searchservice/suggestions) nebo [Automatické dokončování](/rest/api/searchservice/autocomplete) .
 
 ## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.ismatch` `search.ismatchscoring` funkcí a:
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.ismatch` `search.ismatchscoring` funkcí a:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -69,14 +69,14 @@ K dispozici je také diagram interaktivní syntaxe:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Typ | Popis |
+| Název parametru | Typ | Description |
 | --- | --- | --- |
 | `search` | `Edm.String` | Vyhledávací dotaz (buď v [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxi dotazů Lucene). |
 | `searchFields` | `Edm.String` | Čárkami oddělený seznam vyhledávacích polí, ve kterých chcete hledat; Výchozí hodnota pro všechna hledaná pole v indexu. Při použití [vyhledávacího pole](query-lucene-syntax.md#bkmk_fields) v `search` parametru přepíše specifikátory pole v dotazu Lucene všechna pole zadaná v tomto parametru. |
-| `queryType` | `Edm.String` | `'simple'`nebo `'full'` ; Výchozí hodnota je `'simple'` . Určuje, který dotazovací jazyk byl použit v `search` parametru. |
-| `searchMode` | `Edm.String` | `'any'`nebo `'all'` , standardně `'any'` . Označuje, zda musí být některé nebo všechny hledané výrazy v `search` parametru porovnány, aby bylo možné dokument počítat jako shodu. Při použití [logických operátorů Lucene](query-lucene-syntax.md#bkmk_boolean) v `search` parametru budou mít přednost před tímto parametrem. |
+| `queryType` | `Edm.String` | `'simple'` nebo `'full'` ; Výchozí hodnota je `'simple'` . Určuje, který dotazovací jazyk byl použit v `search` parametru. |
+| `searchMode` | `Edm.String` | `'any'` nebo `'all'` , standardně `'any'` . Označuje, zda musí být některé nebo všechny hledané výrazy v `search` parametru porovnány, aby bylo možné dokument počítat jako shodu. Při použití [logických operátorů Lucene](query-lucene-syntax.md#bkmk_boolean) v `search` parametru budou mít přednost před tímto parametrem. |
 
-Všechny výše uvedené parametry jsou ekvivalentem odpovídajících [parametrů vyhledávacího požadavku v rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Všechny výše uvedené parametry jsou ekvivalentem odpovídajících [parametrů vyhledávacího požadavku v rozhraní API pro hledání](/rest/api/searchservice/search-documents).
 
 `search.ismatch`Funkce vrátí hodnotu typu `Edm.Boolean` , která umožňuje její sestavení pomocí dalších podvýrazů filtru s použitím logických [logických operátorů](search-query-odata-logical-operators.md).
 
@@ -96,7 +96,7 @@ Všechny výše uvedené parametry jsou ekvivalentem odpovídajících [parametr
 
 ## <a name="examples"></a>Příklady
 
-Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront` .
+Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](/rest/api/searchservice/search-documents) s `search=waterfront` .
 
 ```odata-filter-expr
     search.ismatchscoring('waterfront')
@@ -133,4 +133,4 @@ Vyhledá dokumenty, kde jsou termíny "Hotel" a "letiště" mezi 5 slovy od sebe
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

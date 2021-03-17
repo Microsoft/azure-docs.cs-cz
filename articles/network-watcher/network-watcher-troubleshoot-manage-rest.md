@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a3cd2323900dfbe6bec8f192822135f0c9dbb1cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f279d90d071b0e5fe7f552a05474bc3b37a82e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738664"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011029"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher
 
@@ -133,7 +133,7 @@ Po dokončení operace se stav změní na **úspěch**.
 
 ### <a name="retrieve-the-results"></a>Načtení výsledků
 
-Po **úspěšném**dokončení stavu volejte metodu GET na identifikátor URI výsledek operace uvnitř a načtěte výsledky.
+Po **úspěšném** dokončení stavu volejte metodu GET na identifikátor URI výsledek operace uvnitř a načtěte výsledky.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
@@ -266,7 +266,7 @@ Následující odpovědi jsou příklady typické odpovědi vracené při dotazo
 
 ### <a name="retrieve-the-results"></a>Načtení výsledků
 
-Po **úspěšném**dokončení stavu volejte metodu GET na identifikátor URI výsledek operace uvnitř a načtěte výsledky.
+Po **úspěšném** dokončení stavu volejte metodu GET na identifikátor URI výsledek operace uvnitř a načtěte výsledky.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
@@ -323,7 +323,7 @@ is a transient state while the Azure platform is being updated.",
 
 Text akce poskytuje obecné pokyny k vyřešení tohoto problému. Pokud je možné provést akci pro daný problém, je k dispozici odkaz s dalšími pokyny. V případě, že nejsou k dispozici žádné další doprovodné materiály, odpověď poskytne adresu URL pro otevření případu podpory.  Další informace o vlastnostech odpovědi a o tom, co je zahrnuto, najdete v tématu [Network Watcher řešení potíží – přehled](network-watcher-troubleshoot-overview.md)
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Další kroky
 

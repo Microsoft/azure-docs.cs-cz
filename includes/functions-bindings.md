@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 819eed1eb4e32469bf0572a6548f5a2a44091ef0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 182f448ca852f114bb9564e04c1316119f2b6aa3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77279493"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506255"
 ---
 Tato tabulka ukazuje vazby, které jsou podporovány v hlavních verzích modulu runtime Azure Functions:
 
@@ -18,19 +18,17 @@ Tato tabulka ukazuje vazby, které jsou podporovány v hlavních verzích modulu
 | Typ | verze | 2. x a vyšší<sup>1</sup> | Trigger | Vstup | Výstup |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
-| [Databáze Cosmos](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
+| [Azure Cosmos DB](../articles/azure-functions/functions-bindings-cosmosdb-v2.md)               |✔|✔|✔|✔|✔|
+| [Dapr](https://github.com/dapr/azure-functions-extension)<sup>3</sup>             | |✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
 | [HTTP & Webhooky](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
 | [IoT Hub](../articles/azure-functions/functions-bindings-event-iot.md)             |✔|✔|✔| |✔|
-| [Microsoft Graph <br/> excelové tabulky](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
-| [<br/>Soubory Microsoft Graph OneDrive](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
-| [Microsoft Graph <br/> outlookový e-mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
-| [<br/>Události Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
-| [Microsoft Graph <br/> ověřovacích tokenů](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
+| [Kafka](https://github.com/azure/azure-functions-kafka-extension)<sup>2</sup>             | |✔|✔| |✔|
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|
+| [RabbitMQ](../articles/azure-functions/functions-bindings-rabbitmq.md)<sup>2</sup>             | |✔|✔| |✔|
 | [SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md)                   |✔|✔| | |✔|
 | [Service Bus](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|
 | [SignalR](../articles/azure-functions/functions-bindings-signalr-service.md)             | |✔| |✔|✔|
@@ -39,3 +37,7 @@ Tato tabulka ukazuje vazby, které jsou podporovány v hlavních verzích modulu
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
 <sup>1</sup> počínaje modulem runtime verze 2. x musí být registrovány všechny vazby kromě protokolu HTTP a časovače. Viz [Registrace rozšíření vazby](../articles/azure-functions/functions-bindings-register.md).
+
+<sup>2</sup> triggery nejsou podporované v plánu spotřeby. Vyžaduje [triggery řízené modulem runtime](../articles/azure-functions/functions-networking-options.md#premium-plan-with-virtual-network-triggers).
+
+<sup>3</sup> podporuje se jenom v Kubernetes, IoT Edge a dalších režimech v místním prostředí.

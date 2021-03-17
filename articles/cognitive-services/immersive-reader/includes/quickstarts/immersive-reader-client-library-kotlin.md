@@ -6,25 +6,25 @@ services: cognitive-services
 author: dylankil
 manager: guillasi
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.author: dylankil
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0904694a461f57a1988444aea71ffe64bfa7e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-js
+ms.openlocfilehash: fa28d5779c05af615479e3143713badb7842f6c6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602298"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619201"
 ---
-[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
 V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
-
 ## <a name="prerequisites"></a>Požadavky
 
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * [Git](https://git-scm.com/).
 * [Sada moderního čtecího zařízení](https://github.com/microsoft/immersive-reader-sdk).
@@ -34,27 +34,27 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k dispozici jako součást [sady pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-![Nový projekt](../../media/android/kotlin/android-studio-create-project.png)
+![Nový projekt – Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
-V okně **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**.
+V okně **Zvolte projekt** vyberte možnost **prázdná aktivita** a potom vyberte možnost **Další**.
 
-![Prázdný projekt aktivity](../../media/android/kotlin/android-studio-empty-activity.png)
+![Prázdný projekt aktivity – Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurace projektu
 
-Pojmenujte projekt **QuickstartKotlin**a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Kotlin** a pak vyberte **Dokončit**.
+Pojmenujte projekt **QuickstartKotlin** a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Kotlin** a pak vyberte **Dokončit**.
 
-![Konfigurace projektu](../../media/android/kotlin/android-studio-configure-project.png)
+![Konfigurace projektu – Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Nastavení prostředků a ověřování
 
 Vytvořte novou složku **/assets** .
 
-![Vytvoří novou složku assets.](../../media/android/kotlin/android-studio-assets-folder.png)
+![Vytvoření nové složky assets – Kotlin](../../media/android/kotlin/android-studio-assets-folder.png)
 
  Ve složce assets (prostředky) vytvořte soubor s názvem **ENV** . Přidejte následující názvy a hodnoty a podle potřeby zadejte hodnoty. Tento soubor ENV Nepotvrzujte do správy zdrojových kódů, protože obsahuje tajné klíče, které by se neměly zveřejnit.
 
-![Vytvořit nový soubor ENV](../../media/android/kotlin/android-studio-create-env-file.png)
+![Vytvoření nového souboru ENV – Kotlin](../../media/android/kotlin/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -62,7 +62,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Proměnné prostředí v Android Studio](../../media/android/kotlin/android-studio-assets-and-env-file.png)
+![Proměnné prostředí ve Android Studio – Kotlin](../../media/android/kotlin/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
@@ -85,13 +85,13 @@ dependencies {
 }
 ```
 
-![Implementace aplikace Gradle](../../media/android/kotlin/android-studio-build-gradle.png)
+![Implementace aplikace Gradle – Kotlin](../../media/android/kotlin/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Aktualizace řetězců aplikace a prostředků rozložení
 
 Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězců, které se mají v aplikaci použít.
 
-![strings.xml aplikace](../../media/android/kotlin/android-studio-strings.png)
+![Aplikace strings.xml – Kotlin](../../media/android/kotlin/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -101,7 +101,7 @@ Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězc�
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -109,7 +109,7 @@ Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězc�
 
 Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kódem XML, který se použije v aplikaci. Toto XML je rozložení uživatelského rozhraní aplikace.
 
-![activity_main.xml aplikace](../../media/android/kotlin/android-studio-activity-main-xml.png)
+![Aplikace activity_main.xml – Kotlin](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -210,9 +210,9 @@ Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kóde
 
 Ve složce **/Java/com.example.quickstartkotlin** vytvořte novou třídu Kotlin a pojmenujte ji **WebAppInterface**. Potom do něj přidejte následující kód. Tento kód umožňuje aplikaci rozhraní s funkcemi jazyka JavaScript v jazyce HTML, které budou přidány v pozdějším kroku.
 
-![com. example. quickstartkotlin složka](../../media/android/kotlin/android-studio-com-folder.png)
+![com. example. quickstartkotlin složka – Kotlin](../../media/android/kotlin/android-studio-com-folder.png)
 
-![WebAppInterface](../../media/android/kotlin/android-studio-web-app-interface.png)
+![WebAppInterface - Kotlin](../../media/android/kotlin/android-studio-web-app-interface.png)
 
 ```WebAppInterface.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -524,9 +524,9 @@ class MainActivity : AppCompatActivity() {
 
 Implementace webového zobrazení potřebuje k práci HTML. Klikněte pravým tlačítkem na složku **/assets** , vytvořte nový soubor a pojmenujte ho **immersiveReader.html**.
 
-![Vytvořit nový soubor HTML](../../media/android/kotlin/android-studio-immersive-reader-html.png)
+![Vytvořit nový soubor HTML – Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
-![Umístění prostředku HTML](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
+![Umístění prostředku HTML – Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
 Přidejte následující kód HTML a JavaScript. Tento kód přidá do aplikace sadu pro moderní čtečku a použije ji k otevření moderního čtecího zařízení pomocí kódu aplikace, který jsme napsali.
 
@@ -575,7 +575,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Nastavení oprávnění aplikace
 
-![Souboru AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
+![Souboru AndroidManifest – Kotlin](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
 Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady moderní čtečky, aby fungovala, potřebujeme, abyste zajistili, že oprávnění aplikace jsou nakonfigurovaná tak, aby povolovala přístup k síti. Obsah **/manifests/AndroidManifest.xml** nahraďte následujícím kódem XML:
 
@@ -609,8 +609,9 @@ Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady modern�
 
 Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Když vyberete **moderní čtečku**, otevře se moderní čtečka s obsahem aplikace.
 
-![Asistivní čtečka](../../media/android/kotlin/android-studio-device-emulator.png)
+![Moderní čtecí zařízení – Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md).
+> [!div class="nextstepaction"]
+> [Vytvoření prostředku a konfigurace AAD](../../how-to-create-immersive-reader.md)

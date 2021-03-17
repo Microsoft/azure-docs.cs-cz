@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: da108e5f4832b1b72f252803ca0f4bc93c011c9a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f05e1a458bc83fe4042c4b6cf35d9aa2095868ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327629"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217954"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
 
@@ -54,7 +54,7 @@ Na konci tohoto kurzu máte dvě konzolové aplikace Java:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java se Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

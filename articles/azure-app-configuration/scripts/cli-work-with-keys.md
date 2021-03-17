@@ -3,19 +3,19 @@ title: Ukázkový skript Azure CLI – práce s klíčovými hodnotami v App Con
 titleSuffix: Azure App Configuration
 description: Použití skriptu Azure CLI k vytváření, zobrazování, aktualizaci a odstraňování hodnot klíčů z úložiště konfigurace aplikace
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3407a1da469bf4f31e5d54d83ee837bddbafffc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494753"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929986"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
 
@@ -27,10 +27,9 @@ Tento ukázkový skript ukazuje, jak:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
-
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 ## <a name="sample-script"></a>Ukázkový skript
 
 ```azurecli-interactive

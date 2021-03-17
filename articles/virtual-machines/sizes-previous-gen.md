@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
-ms.author: jushiman
-ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 11/01/2020
+ms.author: mimckitt
+ms.openlocfilehash: 90bc98d63b45e43c9325eed4fe019b18f52d0de8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683891"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500287"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -59,7 +59,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), která je možné použít pro virtuální počítač FS, může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v článku [návrh pro vysoký výkon (./Premium-Storage-Performance.MD).
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), která je možné použít pro virtuální počítač FS, může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [Návrh pro vysoký výkon](premium-storage-performance.md).
 
 
 ## <a name="nvv2-series"></a>NVv2-Series
@@ -76,11 +76,9 @@ Každý grafický procesor v NVv2 instancích obsahuje licenci na MŘÍŽKu. Tat
 | Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
 | Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 ## <a name="older-generations-of-virtual-machine-sizes"></a>Starší generace velikostí virtuálních počítačů
 
-Tato část poskytuje informace o starších generacích velikostí virtuálních počítačů. Tyto velikosti se pořád podporují, ale nezískají další kapacitu. K dispozici jsou novější nebo alternativní velikosti, které jsou všeobecně dostupné. Pokud chcete zvolit velikosti virtuálních počítačů, které budou nejlépe vyhovovat vašim potřebám, přečtěte si informace o [velikostech virtuálních počítačů se systémem Linux v Azure](./sizes.md) .  
+Tato část poskytuje informace o starších generacích velikostí virtuálních počítačů. Tyto velikosti se pořád podporují, ale nezískají další kapacitu. K dispozici jsou novější nebo alternativní velikosti, které jsou všeobecně dostupné. Chcete-li zvolit velikosti virtuálních počítačů, které budou nejlépe vyhovovat vašim potřebám, přečtěte si informace o [velikosti virtuálních počítačů v Azure](./sizes.md) .  
 
 Další informace o změně velikosti virtuálního počítače se systémem Linux najdete v tématu [Změna velikosti virtuálního počítače se systémem Linux](linux/change-vm-size.md).  
 
@@ -163,7 +161,7 @@ Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní
 <sup>1</sup> V případě aplikací MPI je v síti FDR InfiniBand povolena vyhrazená síť s back-end službou RDMA, která zajišťuje extrémně nízkou latenci a vysokou šířku pásma.  
 
 > [!NOTE]
-> Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> [Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021](https://azure.microsoft.com/updates/a8-a11-azure-virtual-machine-sizes-will-be-retired-on-march-1-2021/). Důrazně doporučujeme nevytvářet žádné nové virtuální počítače A8 – A11. Migrujte všechny stávající virtuální počítače A8-A11 do novějších a výkonných vysoce výkonných výpočetních počítačů, jako je například H, zaplnění, HC, HBv2, a také obecné účely výpočetních virtuálních počítačů, jako jsou například D, E a F, pro lepší cenový výkon. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 
@@ -209,7 +207,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 <br>
 
-## <a name="preview-dc-series"></a>Verze Preview: DC-Series
+### <a name="preview-dc-series"></a>Verze Preview: DC-Series
 
 **Doporučení pro novější velikost**: [DCsv2-Series](dcv2-series.md)
 
@@ -226,7 +224,7 @@ DC-Series využívá nejnovější generaci procesorů Intel XEON s 2176G s vyu�
 
 > [!IMPORTANT]
 >
-> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
+> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
 
 
 ### <a name="ds-series"></a>DS-series  
@@ -267,7 +265,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288) | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576) | 51200/512 | 8/8000 |
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), která je možné použít u virtuálního počítače DS, může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v článku [návrh pro vysoký výkon (./Premium-Storage-Performance.MD).
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), která je možné použít u virtuálního počítače DS, může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [Návrh pro vysoký výkon](premium-storage-performance.md).
 <sup>2</sup> řada virtuálních počítačů může běžet na jednom z následujících procesorů: 2,2 GHz intel Xeon® E5-2660 v2, 2,4 GHz Intel Xeon® E5-2673 V3 (Haswell) nebo 2,3 GHz Intel Xeon® E5-2673 v4 (Broadwell).  
 
 <br>
@@ -293,7 +291,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-Maximální propustnost disku dostupná pro virtuální počítače ls-series může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v článku [návrh pro vysoký výkon (./Premium-Storage-Performance.MD).
+Maximální propustnost disku dostupná pro virtuální počítače ls-series může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu [Návrh pro vysoký výkon](premium-storage-performance.md).
 
 <sup>1</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
@@ -315,7 +313,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 | Standard_GS4 &nbsp; <sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112) | 40000/1000 | 8/16000 |
 | Standard_GS5 &nbsp; <sup>2, &nbsp; 3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224) | 80000/2000 | 8/20000 |
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), kterou je možné použít pro virtuální počítač GS Series, může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v článku [návrh pro vysoký výkon (./Premium-Storage-Performance.MD).
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), kterou je možné použít pro virtuální počítač GS Series, může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu [Návrh pro vysoký výkon](premium-storage-performance.md).
 
 <sup>2</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
@@ -344,7 +342,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 <sup>1</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 <br>
 
-## <a name="nv-series"></a>Řada NV
+### <a name="nv-series"></a>Řada NV
 **Doporučení pro novější velikost**: [NVv3-Series](nvv3-series.md) a [NVv4-Series](nvv4-series.md)
 
 Virtuální počítače řady NV využívají technologii [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a technologii NVIDIA Grid pro aplikace s akcelerovanými pracovními plochami a virtuálními plochami, kde zákazníci mohou vizualizovat svá data nebo simulace. Uživatelé mohou vizualizovat své pracovní postupy náročné na grafiku na instancích NV a získat tak vynikající možnosti grafiky a také spouštět úlohy s jednoduchou přesností, jako je například kódování a vykreslování. Virtuální počítače řady NV využívají i procesory Intel Xeon E5-2690 V3 (Haswell).
@@ -368,14 +366,86 @@ Aktualizace pro zachování paměti: nepodporováno
 1 GPU = polovina karty M60.
 <br>
 
-## <a name="other-sizes"></a>Jiné velikosti
+### <a name="nc-series"></a>Řada NC
+**Doporučení k novější velikosti**: [NC T4 V3-Series](nct4-v3-series.md)
 
-* [Obecné účely](sizes-general.md)
-* [Optimalizované pro výpočty](sizes-compute.md)
-* [Optimalizované pro paměť](sizes-memory.md)
-* [Optimalizované pro úložiště](sizes-storage.md)
-* [GPU](sizes-gpu.md)
-* [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+Virtuální počítače řady NC-Series jsou napájené kartou [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) a procesorem Intel Xeon E5-2690 V3 (Haswell). Uživatelé můžou zpracovávejte data rychleji tím, že využívají CUDA pro aplikace pro průzkumy energie, simulace havárií, trasování paprsků, hloubkové učení a další. Konfigurace NC24r poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování.
+
+[Premium Storage](premium-storage-performance.md): nepodporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+<br>
+
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
+|---|---|---|---|---|---|---|---|
+| Standard_NC6    | 6  | 56  | 340  | 1 | 12 | 24 | 1 |
+| Standard_NC12   | 12 | 112 | 680  | 2 | 24 | 48 | 2 |
+| Standard_NC24   | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+| Standard_NC24r* | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+
+1 GPU = polovina karty K80.
+
+*Podpora RDMA
+
+
+<br>
+
+
+### <a name="ncv2-series"></a>Řada NCv2
+**Doporučení k novější velikosti**: [NC T4 V3-Series](nct4-v3-series.md) a [NC V100 V3-Series](ncv3-series.md)
+
+Virtuální počítače řady NCv2-Series využívají grafické procesory NVIDIA Tesla P100. Tyto GPU můžou poskytnout více než dvojnásobný výpočetní výkon řady NC-Series. Zákazníci můžou využít těchto aktualizovaných GPU pro tradiční úlohy HPC, jako je modelování zásobníku, sekvence DNA, analýza bílkovin, simulace Monte Carlo a další. Kromě GPU využívají virtuální počítače řady NCv2-Series také procesory Intel Xeon E5-2690 v4 (Broadwell).
+
+Konfigurace NC24rs v2 poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování.
+
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+
+> Pro tuto řadu virtuálních počítačů je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+>
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
+|---|---|---|---|---|---|---|---|---|
+| Standard_NC6s_v2    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
+| Standard_NC12s_v2   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v2   | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+| Standard_NC24rs_v2 * | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+
+1 GPU = jedna karta P100.
+
+*Podpora RDMA
+
+<br>
+
+### <a name="nd-series"></a>Řada ND
+**Doporučení k novější velikosti**: [NDv2-Series](ndv2-series.md) a [NC V100 V3-Series](ncv3-series.md)
+
+Virtuální počítače řady ND-Series jsou nově přidané do rodiny GPU navržené pro AI a pro úlohy s hloubkovým učením. Nabízí vynikající výkon pro školení a odvozování. Instance ND jsou napájené pomocí [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU a procesorů Intel Xeon E5-2690 v4 (Broadwell). Tyto instance poskytují vynikající výkon pro operace s plovoucí desetinnou čárkou s jednoduchou přesností pro úlohy AI s využitím Microsoft Cognitive Toolkit, TensorFlow, Caffe a dalších platforem. Řada ND-Series také nabízí mnohem větší velikost paměti GPU (24 GB), což umožňuje přizpůsobit mnohem větší neuronové modely .NET. Podobně jako řada NC-Series nabízí konfiguraci se sekundární sítí s nízkou latencí a vysokou propustností prostřednictvím RDMA a InfiniBand konektivitu, takže můžete spouštět rozsáhlé školicí úlohy zahrnující mnoho GPU.
+
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+
+> Pro tuto řadu virtuálních počítačů je kvóta vCPU (jader) na oblast ve vašem předplatném zpočátku nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+>
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
+|---|---|---|---|---|---|---|---|---|
+| Standard_ND6s    | 6  | 112 | 736  | 1 | 24 | 12 | 20000/200 | 4 |
+| Standard_ND12s   | 12 | 224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 |
+| Standard_ND24s   | 24 | 448 | 2948 | 4 | 24 | 32 | 80000/800 | 8 |
+| Standard_ND24rs * | 24 | 448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+
+1 GPU = jedna karta P40.
+
+*Podpora RDMA
+
+<br>
 
 ## <a name="next-steps"></a>Další kroky
 

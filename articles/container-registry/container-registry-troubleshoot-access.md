@@ -2,13 +2,13 @@
 title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 10/01/2020
+ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227226"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699602"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -22,6 +22,7 @@ Může zahrnovat jednu nebo více z následujících možností:
 * Nepovedlo se odeslat nebo načíst image a zobrazí se chyba rozhraní příkazového řádku Azure CLI. `Could not connect to the registry login server`
 * Nepovedlo se načíst image z registru do služby Azure Kubernetes nebo jiné služby Azure.
 * Nejde získat přístup k registru za proxy HTTPS a zobrazí se chyba. `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Nepovedlo se nakonfigurovat nastavení virtuální sítě a zobrazí se chyba. `Failed to save firewall and virtual network settings for container registry`
 * Nejde získat přístup k nastavení registru v Azure Portal nebo spravovat registr pomocí rozhraní příkazového řádku Azure CLI.
 * Nelze přidat nebo změnit nastavení virtuální sítě ani pravidla veřejného přístupu.
 * Úlohy ACR nemůžou vyžádat nebo načíst image.
@@ -32,13 +33,15 @@ Může zahrnovat jednu nebo více z následujících možností:
 * Brána firewall nebo proxy server klienta brání v přístupu k [řešení](#configure-client-firewall-access)
 * Pravidla přístupu k veřejné síti v registru zabraňující přístupu – [řešení](#configure-public-access-to-registry)
 * Konfigurace virtuální sítě brání přístupu – [řešení](#configure-vnet-access)
-* Pokusíte se o integraci Azure Security Center s registrem, který má privátní koncový bod nebo koncový bod služby – [řešení](#configure-image-scanning-solution)
+* Pokoušíte se integrovat Azure Security Center nebo některé jiné služby Azure s registrem, který má privátní koncový bod, koncový bod služby nebo pravidla přístupu veřejných IP adres – [řešení](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>Další Diagnostika 
 
 Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) . Například Diagnostikujte určité síťové připojení nebo problémy s konfigurací. 
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
+
+Pokud máte potíže s použitím služby Registry wih Azure Kubernetes, spusťte pomocí příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) , zda je registr přístupný z clusteru AKS.
 
 > [!NOTE]
 > Při potížích s ověřováním v registru nebo autorizací může dojít k určitým potížím se síťovým připojením. Viz [Poradce při potížích s přihlášením do registru](container-registry-troubleshoot-login.md).
@@ -47,7 +50,7 @@ Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Containe
 
 ### <a name="configure-client-firewall-access"></a>Konfigurace přístupu klienta k bráně firewall
 
-Pokud chcete získat přístup k registru z za bránou firewall nebo proxy server klienta, nakonfigurujte pravidla brány firewall pro přístup k koncovým bodům REST a dat registru. Pokud jsou [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) povolené, budete potřebovat pravidla pro přístup:
+Pokud chcete získat přístup k registru z za bránou firewall nebo proxy server klienta, nakonfigurujte pravidla brány firewall pro přístup k veřejným koncovým bodům REST a dat registru. Pokud jsou [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) povolené, budete potřebovat pravidla pro přístup:
 
 * Koncový bod REST: `<registryname>.azurecr.io`
 * Datový koncový bod (y): `<registry-name>.<region>.data.azurecr.io`
@@ -86,7 +89,11 @@ Zkontrolujte pravidla NSG a značky služeb, které se používají k omezení p
 
 Pokud je nakonfigurován koncový bod služby registru, zkontrolujte, že je do registru přidáno síťové pravidlo, které umožňuje přístup z této podsítě sítě. Koncový bod služby podporuje přístup jenom z virtuálních počítačů a clusterů AKS v síti.
 
+Pokud chcete omezit přístup k registru pomocí virtuální sítě v jiném předplatném Azure, ujistěte se, že `Microsoft.ContainerRegistry` v tomto předplatném zaregistrujete poskytovatele prostředků. [Zaregistrujte poskytovatele prostředků](../azure-resource-manager/management/resource-providers-and-types.md) pro Azure Container Registry pomocí Azure Portal, rozhraní příkazového řádku Azure nebo dalších nástrojů Azure.
+
 Pokud je v síti nakonfigurované Azure Firewall nebo podobné řešení, ověřte, že se pro přístup k koncovým bodům registru má povolit odchozí přenos dat z jiných prostředků, jako je cluster AKS.
+
+Pokud je nakonfigurovaný privátní koncový bod, zkontrolujte, jestli DNS překládá veřejný plně kvalifikovaný název domény (FQDN) registru, například *myregistry.azurecr.IO* , na privátní IP adresu registru. Použijte síťový nástroj, například `dig` nebo `nslookup` pro vyhledávání DNS.
 
 Související odkazy:
 
@@ -96,17 +103,22 @@ Související odkazy:
 * [Kubernetes: ladění překladu DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>Konfigurace řešení pro kontrolu imagí
+### <a name="configure-service-access"></a>Konfigurace přístupu ke službě
 
-Pokud je váš registr nakonfigurovaný s privátním koncovým bodem nebo koncovým bodem služby, nemůžete v současnosti integrovat s Azure Security Center pro kontrolu imagí. Volitelně můžete nakonfigurovat další řešení pro kontrolu imagí, která jsou k dispozici v Azure Marketplace včetně:
+V současné době není přístup k registru kontejnerů s omezeními sítě povolený z několika služeb Azure:
 
-* [Azurová nativní cloudová platforma zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Edice TwistLock Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure Security Center nemůže provádět [kontrolu ohrožení zabezpečení imagí](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) v registru, který omezuje přístup k privátním koncovým bodům, vybraným podsítím nebo IP adresám. 
+* Zdroje určitých služeb Azure nemají přístup k registru kontejneru s omezeními sítě, včetně Azure App Service a Azure Container Instances.
+
+Pokud se vyžaduje přístup nebo integrace těchto služeb Azure s registrem kontejneru, odeberte omezení sítě. Můžete například odebrat soukromé koncové body registru nebo odebrat nebo upravit pravidla pro veřejný přístup registru.
+
+Od ledna 2021 můžete nakonfigurovat registr s omezeným přístupem sítě tak, aby [povoloval přístup](allow-access-trusted-services.md) z vybraných důvěryhodných služeb.
 
 Související odkazy:
 
-* [Azure Container Registry skenování imagí Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry skenování imagí Security Center](../security-center/defender-for-container-registries-introduction.md)
 * Poskytnutí [zpětné vazby](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
+* [Povoluje důvěryhodným službám zabezpečený přístup k registru kontejneru omezeného na síť.](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Řešení potíží na pokročilé úrovni
@@ -128,7 +140,5 @@ Pokud se vám problém nevyřeší, přečtěte si následující možnosti.
   * [Řešení potíží s přihlášením k registru](container-registry-troubleshoot-login.md) 
   * [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 * Možnosti [podpory komunity](https://azure.microsoft.com/support/community/)
-* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/products/)
+* [Microsoft – otázky a odpovědi](/answers/products/)
 * [Otevření lístku podpory](https://azure.microsoft.com/support/create-ticket/)
-
-

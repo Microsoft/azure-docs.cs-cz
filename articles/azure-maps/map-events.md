@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036437"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890781"
 ---
 # <a name="interact-with-the-map"></a>Interakce s mapou
 
-V tomto článku se dozvíte, jak používat [třídu událostí mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events). Vlastnost zvýrazní události na mapě a v různých vrstvách mapy. Můžete také zvýraznit události při interakci se značkou HTML.
+V tomto článku se dozvíte, jak používat [třídu událostí mapy](/javascript/api/azure-maps-control/atlas.map#events). Vlastnost zvýrazní události na mapě a v různých vrstvách mapy. Můžete také zvýraznit události při interakci se značkou HTML.
 
 ## <a name="interact-with-the-map"></a>Interakce s mapou
 
@@ -26,7 +26,7 @@ Začněte s mapou níže a podívejte se na odpovídající události myši zvý
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakce s mapou – události myši' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interakce s mapou – události myši</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interakce s mapou – události myši' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interakce s mapou – události myši</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>Interakce s vrstvami mapy
@@ -35,7 +35,7 @@ Následující kód zvýrazní událost, která je aktivována při interakci s 
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakce s mapami – události vrstev' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero v <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interakci s mapou – události vrstev</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interakce s mapami – události vrstev' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero v <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interakci s mapou – události vrstev</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>Interakce s HTML značkou
@@ -44,7 +44,7 @@ Následující kód přidá události mapy JavaScriptu do značky HTML. Také zv
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interakce s událostmi značky HTML map' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>s událostmi značky HTML map –</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Interakce s událostmi značky HTML map' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>s událostmi značky HTML map –</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 V následující tabulce jsou uvedeny všechny podporované události třídy map.
@@ -98,11 +98,11 @@ V následující tabulce jsou uvedeny všechny podporované události třídy ma
 | `sourceremoved`     | Je aktivována, když dojde k `DataSource` `VectorTileSource` Odebrání nebo z mapy.|
 | `styledata`         | Je aktivována, když styl mapy načítá nebo mění.|
 | `styleimagemissing` | Je aktivována, když se vrstva pokusí načíst obrázek z Sprite obrázku, který neexistuje. |
-| `tokenacquired`     | Je aktivována při získání přístupového tokenu AAD.|
-| `touchcancel`       | Je aktivována, když dojde k události touchcancel v rámci mapy.|
-| `touchend`          | Je aktivována, když dojde k události touchend v rámci mapy.|
-| `touchmove`         | Je aktivována, když dojde k události TouchMove v rámci mapy.|
-| `touchstart`        | Je aktivována, když dojde k události touchstart v rámci mapy.|
+| `tokenacquired`     | Je aktivována při získání přístupového tokenu Azure Active Directory.|
+| `touchcancel`       | Je aktivována, když `touchcancel` dojde k události v rámci mapy.|
+| `touchend`          | Je aktivována, když `touchend` dojde k události v rámci mapy.|
+| `touchmove`         | Je aktivována, když `touchmove` dojde k události v rámci mapy.|
+| `touchstart`        | Je aktivována, když `touchstart` dojde k události v rámci mapy.|
 | `wheel`             | Je aktivována, když dojde k události kolečka myši v rámci mapy.|
 | `zoom`              | Se opakovaně vyvolala během animovaného přechodu z jedné úrovně přiblížení na jinou v důsledku interakce uživatele nebo metody.|
 | `zoomend`           | Vyvoláno bezprostředně poté, co mapa dokončí přechod z jedné úrovně zvětšení na jinou, jako výsledek interakce uživatele nebo metody.|
@@ -117,4 +117,4 @@ V následující tabulce jsou uvedeny všechny podporované události třídy ma
 > [Použití modulu služby Azure Maps Services](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

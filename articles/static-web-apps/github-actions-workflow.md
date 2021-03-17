@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57c83a94925e94088085efacf1192416f63e6383
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340940"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232031"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_job:
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -87,11 +87,11 @@ jobs:
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 ```
 
 Pomocí nastavení přidružených k této `on` vlastnosti můžete definovat, které větve aktivují úlohu, a nastavit triggery, které se aktivují pro různé stavy žádostí o přijetí změn.
@@ -104,18 +104,18 @@ Každá aktivační událost události vyžaduje obslužnou rutinu události. [�
 
 V souboru pracovního postupu statického Web Apps jsou k dispozici dvě dostupné úlohy.
 
-| Name  | Description |
+| Název  | Description |
 |---------|---------|
 |`build_and_deploy_job` | Provede se při vložení potvrzení změn nebo otevření žádosti o přijetí změn pro větev uvedenou ve `on` Vlastnosti. |
 |`close_pull_request_job` | Provede se jenom při zavření žádosti o přijetí změn, která odebere pracovní prostředí vytvořené z žádostí o přijetí změn. |
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 Kroky jsou sekvenční úlohy pro úlohu. Krok provádí akce, jako je instalace závislostí, spouštění testů a nasazování vaší aplikace do produkčního prostředí.
 
 Soubor pracovního postupu definuje následující postup.
 
-| Úloha  | Kroky  |
+| Úloha  | Postup  |
 |---------|---------|
 | `build_and_deploy_job` |<ol><li>Rezervuje úložiště v prostředí akce.<li>Vytvoří a nasadí úložiště do statického Web Apps Azure.</ol>|
 | `close_pull_request_job` | <ol><li>Upozorňuje na statickou Web Apps Azure, že se uzavřela žádost o získání dat.</ol>|
@@ -132,15 +132,15 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |---|---|---|
 | `app_location` | Umístění kódu aplikace<br><br>Například zadejte, `/` Pokud je zdrojový kód vaší aplikace v kořenu úložiště, nebo `/app` Pokud je kód aplikace v adresáři s názvem `app` . | Yes |
-| `api_location` | Umístění kódu Azure Functions.<br><br>Zadejte například, `/api` Pokud je kód vaší aplikace ve složce s názvem `api` . Pokud ve složce není zjištěna žádná Azure Functions aplikace, sestavení selže, pracovní postup předpokládá, že nechcete rozhraní API. | No |
-| `app_artifact_location` | Umístění výstupního adresáře sestavení vzhledem k `app_location` .<br><br>Například pokud je zdrojový kód aplikace umístěn na `/app` , a skript sestavení výstupuje soubory do `/app/build` složky a pak nastaví `build` jako `app_artifact_location` hodnotu. | No |
+| `api_location` | Umístění kódu Azure Functions.<br><br>Zadejte například, `/api` Pokud je kód vaší aplikace ve složce s názvem `api` . Pokud ve složce není zjištěna žádná Azure Functions aplikace, sestavení neselže, pracovní postup předpokládá, že nechcete rozhraní API. | No |
+| `output_location` | Umístění výstupního adresáře sestavení vzhledem k `app_location` .<br><br>Například pokud je zdrojový kód aplikace umístěn na `/app` , a skript sestavení výstupuje soubory do `/app/build` složky a pak nastaví `build` jako `output_location` hodnotu. | No |
 
 `repo_token`Hodnoty, `action` a `azure_static_web_apps_api_token` jsou nastaveny za vás službou Azure static Web Apps by se neměly ručně změnit.
 
@@ -150,12 +150,12 @@ Můžete mít jemně odstupňovanou kontrolu nad tím, které příkazy se spust
 
 Nasazení vždy volá `npm install` před libovolným vlastním příkazem.
 
-| Příkaz            | Description |
+| Příkaz            | Popis |
 |---------------------|-------------|
-| `app_build_command` | Definuje vlastní příkaz, který se má spustit během nasazování aplikace statického obsahu.<br><br>Například pro konfiguraci výrobního sestavení pro úhlovou aplikaci ENTER `ng build --prod` . Pokud necháte pole prázdné, pracovní postup se pokusí spustit `npm run build` příkazy nebo `npm run build:Azure` .  |
+| `app_build_command` | Definuje vlastní příkaz, který se má spustit během nasazování aplikace statického obsahu.<br><br>Například pro konfiguraci výrobního sestavení pro úhlovou aplikaci vytvořte skript npm s názvem `build-prod` ke spuštění `ng build --prod` a zadejte `npm run build-prod` jako vlastní příkaz. Pokud necháte pole prázdné, pracovní postup se pokusí spustit `npm run build` příkazy nebo `npm run build:azure` .  |
 | `api_build_command` | Definuje vlastní příkaz, který se spustí během nasazování aplikace Azure Functions API. |
 
-## <a name="route-file-location"></a>Umístění souboru směrování
+## <a name="route-file-location"></a>Umístění souboru tras
 
 Pracovní postup můžete přizpůsobit tak, aby vyhledal [routes.js](routes.md) v libovolné složce v úložišti. Následující vlastnost může být definována v `with` oddílu úlohy.
 
@@ -163,7 +163,85 @@ Pracovní postup můžete přizpůsobit tak, aby vyhledal [routes.js](routes.md)
 |---------------------|-------------|
 | `routes_location` | Definuje umístění adresáře, kde se nachází _routes.jsv_ souboru. Toto umístění je relativní vzhledem ke kořenu úložiště. |
 
- Explicitní informace o umístění vašeho _routes.jsv_ souboru je zvláště důležité, pokud se ve výchozím kroku sestavení rozhraní front-end nepřesouvá tento soubor do `app_artifact_location` výchozího nastavení.
+ Explicitní informace o umístění vašeho _routes.jsv_ souboru je zvláště důležité, pokud se ve výchozím kroku sestavení rozhraní front-end nepřesouvá tento soubor do `output_location` výchozího nastavení.
+
+## <a name="environment-variables"></a>Proměnné prostředí
+
+Můžete nastavit proměnné prostředí pro sestavení prostřednictvím `env` oddílu konfigurace úlohy.
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          ###### Repository/Build Configurations
+          app_location: "/"
+          api_location: "api"
+          output_location: "public"
+          ###### End of Repository/Build Configurations ######
+        env: # Add environment variables here
+          HUGO_VERSION: 0.58.0
+```
+
+## <a name="monorepo-support"></a>Podpora Monorepo
+
+Monorepo je úložiště, které obsahuje kód pro více než jednu aplikaci. Ve výchozím nastavení sleduje statický soubor pracovního postupu Web Apps všechny soubory v úložišti, ale můžete je upravit tak, aby se nacházela na jednu aplikaci. Proto pro monorepos každá statická aplikace má vlastní konfigurační soubor, který se nachází vedle sebe ve složce *. GitHub/pracovní postupy* úložiště.
+
+```files
+├── .github
+│   └── workflows
+│       ├── azure-static-web-apps-purple-pond.yml
+│       └── azure-static-web-apps-yellow-shoe.yml
+│
+├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+└── README.md
+```
+
+Chcete-li zacílit soubor pracovního postupu na jednu aplikaci, zadejte cesty `push` v `pull_request` částech a.
+
+Následující příklad ukazuje, jak přidat `paths` uzel do `push` `pull_request` oddílů a souboru s názvem _Azure-static-Web-Apps-Purple-Pond. yml_.
+
+```yml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+```
+
+V této instanci spustí nové sestavení pouze změny provedené v následujících souborech:
+
+- Všechny soubory ve složce *app1*
+- Všechny soubory ve složce *api1*
+- Změny souboru pracovního postupu *Azure-static-Web-Apps-Purple-Pond. yml* aplikace
 
 ## <a name="next-steps"></a>Další kroky
 

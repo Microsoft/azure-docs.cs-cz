@@ -1,19 +1,16 @@
 ---
 title: Vytváření clusterů Apache Hadoop s využitím Azure REST API – Azure
 description: Naučte se vytvářet clustery HDInsight odesláním Azure Resource Manager šablon do Azure REST API.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
-ms.openlocfilehash: 75eda1720e80a886ca0efb2d1f4204416a5b55f8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fa5675104d9614e1bd917585ea537c92dddd88cc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083334"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945789"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů Apache Hadoop pomocí Azure REST API
 
@@ -214,12 +211,12 @@ Tento příklad se používá v krocích v tomto dokumentu. Nahraďte ukázkové
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
-Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) a připojte se k předplatnému pomocí `az login` příkazu.
+Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](/cli/azure/get-started-with-az-cli2) a připojte se k předplatnému pomocí `az login` příkazu.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]  
-> Tyto kroky jsou zkrácená verze oddílu *vytvořit instanční objekt s heslem* v tématu [použití Azure CLI k vytvoření instančního objektu pro přístup](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) k dokumentu prostředků. Pomocí těchto kroků můžete vytvořit instanční objekt, který se používá k ověření REST API služby Azure.
+> Tyto kroky jsou zkrácená verze oddílu *vytvořit instanční objekt s heslem* v tématu [použití Azure CLI k vytvoření instančního objektu pro přístup](/cli/azure/create-an-azure-service-principal-azure-cli) k dokumentu prostředků. Pomocí těchto kroků můžete vytvořit instanční objekt, který se používá k ověření REST API služby Azure.
 
 1. Z příkazového řádku použijte následující příkaz k vypsání předplatných Azure.
 
@@ -242,7 +239,7 @@ Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](https://d
 
    Hodnota vrácená z tohoto příkazu je __ID aplikace__ pro novou aplikaci. Uložte tuto hodnotu.
 
-3. K vytvoření instančního objektu s použitím **ID aplikace**použijte následující příkaz.
+3. K vytvoření instančního objektu s použitím **ID aplikace** použijte následující příkaz.
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'

@@ -2,19 +2,19 @@
 title: Jak spravovat nastavení? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Jak spravovat nastavení, vytvářet pracovní prostory, sdílet pracovní prostor a spravovat klíč předplatného ve vlastním překladateli.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 49801eddd748a88109bb7f6d075def03cd798754
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510462"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895777"
 ---
 # <a name="how-to-manage-settings"></a>Správa nastavení
 
@@ -33,7 +33,7 @@ Ke školení nebo nasazení modelů potřebujete ke svému pracovnímu prostoru 
 
 Pokud předplatné nemáte, postupujte podle následujících kroků:
 
-1. Přihlaste se k odběru a vytvořte prostředek překladatele. Postupujte podle pokynů, [jak se zaregistrovat k odběru překladatelů](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) a získat klíč překladatele.
+1. Přihlaste se k odběru a vytvořte prostředek překladatele. Postupujte podle pokynů, [jak se zaregistrovat k odběru překladatelů](../translator-how-to-signup.md) a získat klíč překladatele.
 2. Poznamenejte si klíč k vašemu předplatnému překladatele. Obě Klíč1 nebo key2 jsou přijatelné.
 3. Přejděte zpátky na vlastní portál překladatelů.
 
@@ -51,6 +51,8 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
 
     ![Dialog vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>Vlastní Překladatel nepodporuje vytváření pracovních prostorů pro prostředek Translator Text API (označuje se také jako Klíč předplatného Azure), který byl vytvořen v rámci [povolené virtuální](../../../api-management/api-management-using-with-vnet.md)sítě.
 
 ### <a name="modify-existing-key"></a>Upravit existující klíč
 
@@ -61,7 +63,7 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
 
 3. V dialogovém okně zadejte klíč pro vaše předplatné překladatele a potom klikněte na tlačítko Uložit.
 
-    ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![Dialog Přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>Správa pracovního prostoru
 

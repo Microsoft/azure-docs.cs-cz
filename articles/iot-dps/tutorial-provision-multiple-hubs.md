@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976736"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91315996"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: zřízení zařízení napříč centrem IoT s vyrovnáváním zatížení
 
@@ -25,7 +25,7 @@ Tento kurz ukazuje, jak zřídit zařízení pro několik center IoT s vyrovnáv
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
 > * Propojit nové centrum IoT se službou Device Provisioning
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,11 +63,9 @@ Propojte službu Device Provisioning a centrum IoT, aby služba Device Provision
 
 1. Na stránce **Všechny prostředky** klikněte na službu Device Provisioning, kterou jste vytvořili dříve.
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
-
-## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -76,6 +74,8 @@ V tomto kurzu jste se naučili:
 > * Přidat položku seznamu registrací do druhého zařízení
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
 > * Propojit nové centrum IoT se službou Device Provisioning
+
+## <a name="next-steps"></a>Další kroky
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

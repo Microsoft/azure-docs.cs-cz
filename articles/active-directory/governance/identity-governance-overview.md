@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb7ab566d861e0c4256acda8f8facd1e94d4ad6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796773"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362446"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -46,7 +46,7 @@ Konkrétně je určena k tomu, aby organizacím pomáhaly řešit tyto čtyři k
 
 ![Životní cyklus identity](./media/identity-governance-overview/identity-lifecycle.png)
 
-Pro mnoho organizací je životní cyklus identit zaměstnanců vázaný na zastoupení daného uživatele v systému HCM (lidské správy velkých písmen).  Azure AD Premium automaticky zachovává identity uživatelů v Workday v rámci služby Active Directory a Azure Active Directory, jak je popsáno v [kurzu pro příchozí zřizování v Workday](../saas-apps/workday-inbound-tutorial.md).  Azure AD Premium také zahrnuje [Microsoft Identity Manager](/microsoft-identity-manager/), které mohou importovat záznamy z místních systémů HCM, jako jsou SAP, Oracle EBusiness a Oracle PeopleSoft spouštěných místně.
+Pro mnoho organizací je životní cyklus identit zaměstnanců vázaný na zastoupení daného uživatele v systému HCM (lidské správy velkých písmen).  Azure AD Premium automaticky zachovává identity uživatelů pro lidi reprezentované v Workday a v SuccessFactors jak v rámci služby Active Directory, tak v Azure Active Directory, jak je popsáno v tématu  [aplikace cloudového HR pro Azure Active Directory Průvodce plánováním zřizování uživatelů](../app-provisioning/plan-cloud-hr-provision.md).  Azure AD Premium také zahrnuje [Microsoft Identity Manager](/microsoft-identity-manager/), které mohou importovat záznamy z místních systémů HCM, jako jsou SAP HCM, Oracle EBusiness a Oracle PeopleSoft spouštěných místně.
 
 Stále více scénářů vyžaduje spolupráci s lidmi mimo vaši organizaci. Spolupráce [B2B Azure AD](/azure/active-directory/b2b/) umožňuje bezpečně sdílet aplikace a služby vaší organizace s uživateli typu Host a externími partnery z jakékoli organizace a přitom zachovat kontrolu nad vašimi podnikovými daty.  [Správa opravňujících k Azure AD](entitlement-management-overview.md) umožňuje vybrat uživatele organizace, kteří můžou požádat o přístup a přidat je jako hosty do adresáře vaší organizace a zajistit, aby se tito hosté odebrali, když už nepotřebují přístup.
 
@@ -58,9 +58,9 @@ Organizace potřebují proces pro správu přístupu nad rámec toho, co byl pop
 
 Obvykle IT deleguje rozhodnutí o schválení přístupu u tvůrců obchodních rozhodnutí.  Kromě toho může zahrnovat samotné uživatele.  Například uživatelé, kteří mají přístup k důvěrným zákaznickým datům v obchodní aplikaci společnosti v Evropě, potřebují znát zásady společnosti. Uživatelé typu Host mohou být nevědomi požadavků na zpracování dat v organizaci, které byly pozvány.
 
-Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md), společně s zřizováním uživatelů, aby [SaaS aplikace](../saas-apps/tutorial-list.md) nebo [aplikace integrované s SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../b2b/hybrid-cloud-to-on-premises.md).  Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](access-reviews-overview.md).   [Správa opravňujících k Azure AD](entitlement-management-overview.md) také umožňuje definovat, jak uživatelé požadují přístup mezi balíčky členství v rámci skupiny a týmu, aplikační role a role SharePointu Online.
+Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../enterprise-users/groups-dynamic-membership.md), společně s zřizováním uživatelů, aby [SaaS aplikace](../saas-apps/tutorial-list.md) nebo [aplikace integrované s SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md).  Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](access-reviews-overview.md).   [Správa opravňujících k Azure AD](entitlement-management-overview.md) také umožňuje definovat, jak uživatelé požadují přístup mezi balíčky členství v rámci skupiny a týmu, aplikační role a role SharePointu Online.
 
-Když se uživatel pokusí o přístup k aplikacím, Azure AD vynutil zásady [podmíněného přístupu](/azure/active-directory/conditional-access/) . Zásady podmíněného přístupu můžou například zahrnovat zobrazení [podmínek použití](../conditional-access/terms-of-use.md) a [zajištění souhlasu uživatele s těmito podmínkami](../conditional-access/require-tou.md) předtím, než bude moci získat přístup k aplikaci.
+Když se uživatel pokusí o přístup k aplikacím, Azure AD vynutil zásady [podmíněného přístupu](../conditional-access/index.yml) . Zásady podmíněného přístupu můžou například zahrnovat zobrazení [podmínek použití](../conditional-access/terms-of-use.md) a [zajištění souhlasu uživatele s těmito podmínkami](../conditional-access/require-tou.md) předtím, než bude moci získat přístup k aplikaci.
 
 ## <a name="privileged-access-lifecycle"></a>Životní cyklus privilegovaného přístupu
 
@@ -68,7 +68,25 @@ V minulosti byl privilegovaný přístup popsán jinými dodavateli jako samosta
 
 ![Životní cyklus privilegovaného přístupu](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) poskytuje další ovládací prvky přizpůsobené zabezpečení přístupových práv k prostředkům, v Azure AD, Azure a dalších online službách Microsoftu.  Přístup za běhu a možnosti upozorňování při změně role poskytované službou Azure AD PIM, kromě služby Multi-Factor Authentication a podmíněného přístupu, poskytují komplexní sadu kontrolních mechanismů, které vám pomůžou zabezpečit firemní prostředky (adresáře, Office 365 a role prostředků Azure). Stejně jako u jiných forem přístupu můžou organizace použít kontroly přístupu ke konfiguraci opakovaného ověření přístupu pro všechny uživatele v rolích správce.
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) poskytuje další ovládací prvky přizpůsobené zabezpečení přístupových práv k prostředkům, v Azure AD, Azure a dalších online službách Microsoftu.  Přístup za běhu a možnosti upozorňování při změně role poskytované službou Azure AD PIM, kromě služby Multi-Factor Authentication a podmíněného přístupu, poskytují komplexní sadu kontrolních mechanismů, které vám pomůžou zabezpečit firemní prostředky (adresáře, Microsoft 365 a role prostředků Azure). Stejně jako u jiných forem přístupu můžou organizace použít kontroly přístupu ke konfiguraci opakovaného ověření přístupu pro všechny uživatele v rolích správce.
+
+## <a name="governance-capabilities-in-other-azure-ad-features"></a>Možnosti zásad správného řízení v jiných funkcích služby Azure AD
+
+Kromě výše uvedených funkcí další funkce služby Azure AD, které se často používají k poskytování scénářů zásad správného řízení identit, patří:
+
+| Schopnost | Scénář |Funkce
+| ------- | --------------------- |-----|
+|Životní cyklus identity (zaměstnanci)|Správci můžou povolit zřizování uživatelských účtů z Workday nebo SuccessFactors cloudového HR nebo místního HR.|[cloudové zajištění pro zřizování uživatelů Azure AD](../app-provisioning/plan-cloud-hr-provision.md)|
+|Životní cyklus identity (hosty)|Správci můžou povolit registraci samoobslužného uživatele hosta z jiného tenanta Azure AD, přímé federace, jednorázového hesla nebo účtů Google.  Uživatelé typu Host se automaticky zřídí a odúčtují v souladu se zásadami životního cyklu.|[Správa nároků](entitlement-management-overview.md) pomocí [B2B](../external-identities/what-is-b2b.md)|
+|Správa nároků|Vlastníci prostředků můžou vytvářet balíčky přístupu obsahující aplikace, týmy, skupiny Azure AD a Microsoft 365 a weby SharePointu Online.|[Správa nároků](entitlement-management-overview.md)|
+|Žádosti o přístup|Koncoví uživatelé můžou žádat o členství ve skupině nebo přístup k aplikacím. Koncoví uživatelé, včetně hostů z jiných organizací, můžou požádat o přístup k balíčkům přístupu.|[Správa nároků](entitlement-management-overview.md)|
+|Pracovní postup|Vlastníci prostředků mohou definovat schvalovatele a schvalovatele eskalace pro žádosti o přístup a schvalovatele pro žádosti o aktivaci role.  |[Správa nároků](entitlement-management-overview.md) a [PIM](../privileged-identity-management/pim-configure.md)|
+|Zásady a Správa rolí|Správce může definovat zásady podmíněného přístupu pro přístup k aplikacím v době běhu.  Vlastníci prostředků můžou definovat zásady přístupu uživatele prostřednictvím balíčků přístupu.|Zásady pro [podmíněný přístup](../conditional-access/overview.md) a [oprávnění pro správu](entitlement-management-overview.md)|
+|Přístup k certifikaci|Správci můžou povolit opakovaný přístup k opětovné certifikaci pro: aplikace SaaS nebo členství ve skupinách cloudu, přiřazení rolí prostředků Azure AD nebo Azure. Automaticky odeberte přístup k prostředkům, zablokujte přístup hostů a odstraňte účty hostů.|Kontroly [přístupu](access-reviews-overview.md), také Surface v [PIM](../privileged-identity-management/pim-how-to-start-security-review.md)|
+|Plnění a zřizování|Automatické zřizování a rušení zřizování v aplikacích připojených k Azure AD, včetně přes SCIM a na weby SharePointu Online. |[zřizování uživatelů](../app-provisioning/user-provisioning.md)|
+|Vytváření sestav a analýza|Správci mohou načíst protokoly auditu nedávných uživatelských zřízení a přihlašovacích aktivit. Integrace s Azure Monitor a "kdo má přístup" prostřednictvím balíčků přístupu.|Sestavy a [monitorování](../reports-monitoring/overview-monitoring.md) [Azure AD](../reports-monitoring/overview-reports.md)|
+|Privilegovaný přístup|Pracovní postupy schvalování pro role Azure AD (včetně vlastních rolí) a role prostředků Azure, a to za běhu a plánovaného přístupu.|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|
+|Auditování|Správci mohou být upozorňováni na vytváření účtů správce.|[Výstrahy Azure AD PIM](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -82,13 +100,13 @@ Pokud máte zpětnou vazbu k funkcím zásad správného řízení identit, klik
 I když pro každého zákazníka není k dispozici žádné dokonalé řešení nebo doporučení, poskytují následující konfigurační příručky také základní zásady, které společnost Microsoft doporučuje, abyste zajistili bezpečnější a produktivní pracovní síly.
 
 - [Konfigurace identit a přístupu k zařízením](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Zabezpečení privilegovaného přístupu](../users-groups-roles/directory-admin-roles-secure.md)
+- [Zabezpečení privilegovaného přístupu](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Příloha – nejnižší privilegované role pro správu v funkcích zásad správného řízení identity
 
 Osvědčeným postupem je použití minimální privilegované role k provádění úloh správy v řízení identit. K provedení těchto úloh doporučujeme použít Azure AD PIM k aktivaci role podle potřeby. Níže jsou uvedené nejnižší privilegované role adresáře ke konfiguraci funkcí zásad správného řízení identit:
 
-| Příznak | Nejnižší privilegovaná role |
+| Funkce | Nejnižší privilegovaná role |
 | ------- | --------------------- |
 | Správa nároků | Správce uživatelů (s výjimkou přidávání webů SharePointu Online do katalogů, které vyžadují globálního správce) |
 | Kontroly přístupu | Správce uživatelů (s výjimkou kontrol přístupu pro role Azure nebo Azure AD, které vyžadují správce privilegovaných rolí) |
@@ -100,6 +118,4 @@ Osvědčeným postupem je použití minimální privilegované role k prováděn
 - [Co je správa nároků Azure AD?](entitlement-management-overview.md)
 - [Co jsou kontroly přístupu Azure AD?](access-reviews-overview.md)
 - [Co je Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
-- [Co můžu dělat s podmínkami použití?](active-directory-tou.md)
-
-
+- [Co můžu dělat s podmínkami použití?](../conditional-access/terms-of-use.md)

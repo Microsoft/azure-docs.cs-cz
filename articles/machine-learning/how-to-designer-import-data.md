@@ -1,23 +1,23 @@
 ---
-title: Importovat data do návrháře (Preview)
+title: Import dat do návrháře
 titleSuffix: Azure Machine Learning
-description: Naučte se importovat data do návrháře Azure Machine Learning (Preview) z různých zdrojů dat.
+description: Naučte se, jak importovat data do návrháře Azure Machine Learning pomocí datových sad Azure Machine Learning a modulu import dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495367"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739854"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
+# <a name="import-data-into-azure-machine-learning-designer"></a>Import dat do návrháře Azure Machine Learning
 
 V tomto článku se dozvíte, jak v Návrháři importovat vlastní data, abyste mohli vytvářet vlastní řešení. Existují dva způsoby, jak můžete importovat data do návrháře: 
 
@@ -32,25 +32,43 @@ Pro import dat do návrháře doporučujeme použít datové [sady](concept-data
 
 ### <a name="register-a-dataset"></a>Registrace datové sady
 
-Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#datasets-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-create-register-datasets.md#datasets-ui).
+Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#datasets-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-connect-data-ui.md#create-datasets).
 
 Výstup můžete také zaregistrovat pro libovolný modul návrháře jako datovou sadu.
 
 1. Vyberte modul, který vypíše data, která chcete zaregistrovat.
 
-1. V podokně Vlastnosti vyberte možnost **výstupy**pro  >  **registrační datovou sadu**.
+1. V podokně Vlastnosti vyberte **výstupy + protokoly**  >  **Registrovat datovou sadu**.
 
     ![Snímek obrazovky ukazující, jak přejít na možnost Registrovat datovou sadu](media/how-to-designer-import-data/register-dataset-designer.png)
 
+Pokud jsou výstupní data modulu v tabulkovém formátu, je nutné se rozhodnout zaregistrovat výstup jako **datovou sadu** nebo **tabulkovou datovou sadu**.
+
+ - **Datová sada souborů** registruje výstupní složku modulu jako datovou sadu souboru. Výstupní složka obsahuje datový soubor a meta soubory, které Návrhář používá interně. Tuto možnost vyberte, pokud chcete i nadále používat registrovanou datovou sadu v návrháři. 
+
+ - **Tabulková datová sada** registruje pouze výstupní datový soubor modulu jako tabelární datovou sadu. Tento formát je snadno využíván jinými nástroji, například v automatizovaných Machine Learning nebo v sadě Python SDK. Tuto možnost vyberte, pokud plánujete použít registrovanou datovou sadu mimo Návrhář.  
+ 
+
 ### <a name="use-a-dataset"></a>Použití datové sady
 
-Vaše registrované datové sady se dají najít v paletě modulu **v části datové sady**  >  **My Datasets**. Pokud chcete datovou sadu použít, přetáhněte ji na plátno kanálu. Pak připojte výstupní port datové sady k jiným modulům v paletě.
+Vaše registrované datové sady lze nalézt v paletě modulu v části **datové sady**. Pokud chcete datovou sadu použít, přetáhněte ji na plátno kanálu. Pak připojte výstupní port datové sady k ostatním modulům na plátně. 
+
+Pokud zaregistrujete datovou sadu souborů, je typ výstupního portu datové sady **AnyDirectory**. Pokud zaregistrujete tabulkovou sadu, typ výstupního portu pro datovou sadu, pokud **DataFrameDirectory**. Všimněte si, že pokud připojíte výstupní port datové sady k jiným modulům v návrháři, je nutné zarovnat typ portu datových sad a modulů.
 
 ![Snímek obrazovky znázorňující umístění uložených datových sad v paletě návrháře](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> Návrhář aktuálně podporuje pouze zpracování [tabelárních datových sad](how-to-create-register-datasets.md#dataset-types). Pokud chcete použít [souborové sady](how-to-create-register-datasets.md#dataset-types), použijte sadu SDK Azure Machine Learning dostupnou pro Python a R.
+> Návrhář podporuje [správu verzí datových sad](how-to-version-track-datasets.md). Zadejte verzi datové sady na panelu vlastností modulu DataSet.
+
+### <a name="limitations"></a>Omezení 
+
+- V současné době je možné vizualizovat pouze tabelární datovou sadu v návrháři. Pokud zaregistrujete souborovou sadu mimo návrháře, nemůžete ji vizualizovat na plátně návrháře.
+- Vaše datová sada je uložená ve virtuální síti (VNet). Chcete-li vizualizovat, je nutné povolit správu pracovního prostoru s identitou úložiště dat.
+    1. Přejděte na související úložiště dat a klikněte na **aktualizovat** přihlašovací údaje 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="aktualizovat"::: přihlašovací údaje.
+    1. Vyberte **Ano** , pokud chcete povolit spravovanou identitu pracovního prostoru.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Povolit spravovanou identitu pracovního prostoru":::
 
 ## <a name="import-data-using-the-import-data-module"></a>Import dat pomocí modulu import dat
 
@@ -59,7 +77,7 @@ I když doporučujeme k importu dat použít datové sady, můžete také použ�
 Podrobné informace o tom, jak používat modul import dat, najdete na [stránce s referenčními informacemi k importu dat](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-create-register-datasets.md#datasets-ui).
+> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-connect-data-ui.md#create-datasets).
 
 ## <a name="supported-sources"></a>Podporované zdroje
 
@@ -81,8 +99,8 @@ Návrhář podporuje tabulkové datové sady vytvořené z následujících zdro
 Návrhář interně rozpoznává následující typy dat:
 
 * Řetězec
-* Celé číslo
-* Desetinné číslo
+* Integer
+* Decimal
 * Logická hodnota
 * Datum
 
@@ -94,8 +112,8 @@ Moduly v návrháři jsou omezeny velikostí cíle výpočtů. U větších dato
 
 ## <a name="access-data-in-a-virtual-network"></a>Přístup k datům ve virtuální síti
 
-Pokud je váš pracovní prostor ve virtuální síti, musíte provést další kroky konfigurace, aby bylo možné vizualizovat data v návrháři. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](how-to-enable-virtual-network.md#machine-learning-studio).
+Pokud je váš pracovní prostor ve virtuální síti, musíte provést další kroky konfigurace, aby bylo možné vizualizovat data v návrháři. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se se základy návrháře pomocí [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md).
+Naučte se základy pro návrháře v tomto [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md).

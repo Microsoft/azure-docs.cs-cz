@@ -3,15 +3,15 @@ title: Přehled Durable Functions – Azure
 description: Úvod do rozšíření Durable Functions pro Azure Functions
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: f6199cb20cd56538823f7f7d0967a9cfe59f7099
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660678"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636653"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -23,9 +23,11 @@ Durable Functions aktuálně podporuje následující jazyky:
 
 * **C#**: [knihovny předkompilovaných tříd](../functions-dotnet-class-library.md) a [skript jazyka C#](../functions-reference-csharp.md).
 * **JavaScript**: podporuje se jenom pro verzi 2. x Azure Functions runtime. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější verzi. 
-* **Python**: vyžaduje verzi 1.8.5 rozšíření Durable Functions nebo novější verzi. 
+* **Python**: vyžaduje verzi 2.3.1 rozšíření Durable Functions nebo novější verzi.
 * **F #**: předkompilované knihovny tříd a skript jazyka F #. Skript F # se podporuje jenom pro verzi 1. x modulu runtime Azure Functions.
 * **PowerShell**: podpora pro Durable Functions je aktuálně ve verzi Public Preview. Podporováno pouze pro verzi 3. x modulu Azure Functions runtime a prostředí PowerShell 7. Vyžaduje verzi 2.2.2 rozšíření Durable Functions nebo novější verzi. V současné době jsou podporovány pouze následující vzorce: [řetězení funkcí](#chaining), [ventilátor nebo ventilátor –](#fan-in-out) [asynchronní rozhraní HTTP API](#async-http).
+
+Pro přístup k nejnovějším funkcím a aktualizacím se doporučuje používat nejnovější verze rozšíření Durable Functions a knihovny Durable Functions pro konkrétní jazyk. Přečtěte si další informace o [Durable Functions verzích](durable-functions-versions.md).
 
 Durable Functions má za cíl podporu všech [Azure Functionsch jazyků](../supported-languages.md). Nejnovější stav práce pro podporu dalších jazyků najdete v [seznamu problémů s Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) .
 
@@ -631,7 +633,31 @@ module.exports = df.entity(function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-V Pythonu se v současnosti nepodporují trvalé entity.
+```python
+import logging
+import json
+
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableOrchestrationContext):
+
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+        context.set_result(current_value)
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    
+    context.set_state(current_value)
+
+main = df.Entity.create(entity_function)
+```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -675,7 +701,17 @@ module.exports = async function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-V Pythonu se v současnosti nepodporují trvalé entity.
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    entity_id = df.EntityId("Counter", "myCounter")
+    instance_id = await client.signal_entity(entity_id, "add", 1)
+    return func.HttpResponse("Entity signaled")
+```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -683,7 +719,7 @@ V PowerShellu se v současnosti nepodporují trvalé entity.
 
 ---
 
-Funkce entit jsou k dispozici v [Durable Functions 2,0](durable-functions-versions.md) a vyšších pro C# a JavaScript.
+Funkce entit jsou k dispozici v [Durable Functions 2,0](durable-functions-versions.md) a vyšších pro jazyky C#, JavaScript a Python.
 
 ## <a name="the-technology"></a>Technologie
 
@@ -695,7 +731,7 @@ Za účelem zajištění spolehlivých a dlouhotrvajících záruk spouštění 
 
 ## <a name="billing"></a>Fakturace
 
-Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [Azure Functions ceny](https://azure.microsoft.com/pricing/details/functions/). Při provádění funkcí Orchestrator v plánu Azure Functions [spotřeby](../functions-scale.md#consumption-plan)existují některá nastavení fakturace, o kterých je potřeba vědět. Další informace o tomto chování najdete v článku o [fakturaci Durable Functions](durable-functions-billing.md) .
+Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [Azure Functions ceny](https://azure.microsoft.com/pricing/details/functions/). Při provádění funkcí Orchestrator v plánu Azure Functions [spotřeby](../consumption-plan.md)existují některá nastavení fakturace, o kterých je potřeba vědět. Další informace o tomto chování najdete v článku o [fakturaci Durable Functions](durable-functions-billing.md) .
 
 ## <a name="jump-right-in"></a>Skok přímo v
 

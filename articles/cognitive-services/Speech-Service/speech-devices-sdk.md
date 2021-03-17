@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 0309329b37436022dc88f8951853c4bb09a2c080
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730301"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015269"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Co je sada Speech Devices SDK?
 
@@ -29,9 +29,9 @@ Sada Speech Devices SDK vám může pomáhat:
 
 SADA Speech SDK pro zařízení spotřebovává [sadu Speech](speech-sdk.md). Použití našich pokročilých algoritmů pro zpracování zvuku s polem mikrofonu zařízení k odeslání zvuku do [služby pro rozpoznávání řeči](overview.md). Poskytuje přesné [rozpoznávání řeči](speech-to-text.md) se špičkovým potlačením hluku, ozvěnou zrušení, beamforming a dereverberation.
 
-Můžete také použít sadu Speech SDK pro zařízení k vytváření okolních zařízení, která mají vlastní [přizpůsobené klíčové slovo](speech-devices-sdk-create-kws.md). Vlastní klíčové slovo poskytuje hromádku, která spouští interakci uživatele, která je pro vaši značku jedinečná.
+Můžete také použít sadu Speech SDK pro zařízení k vytváření okolních zařízení, která mají vlastní [přizpůsobené klíčové slovo](./custom-keyword-basics.md). Vlastní klíčové slovo poskytuje hromádku, která spouští interakci uživatele, která je pro vaši značku jedinečná.
 
-Sada Speech Devices SDK umožňuje celou řadu scénářů s podporou hlasu, jako jsou například [hlasové asistenty](https://aka.ms/bots/speech/va), systémy řazení, [přepisy konverzací](conversation-transcription-service.md)a inteligentní reproduktory. Můžete reagovat na uživatele s textem, mluvit zpátky do nich ve výchozím nebo [vlastním hlasu](how-to-customize-voice-font.md), poskytovat výsledky hledání, [překládat](speech-translation.md) je na jiné jazyky a další. Těšíme se, abychom viděli, co sestavíte!
+Sada Speech Devices SDK umožňuje celou řadu scénářů s podporou hlasu, jako jsou například [hlasové asistenty](./voice-assistants.md), systémy řazení, [přepisy konverzací](./conversation-transcription.md)a inteligentní reproduktory. Můžete reagovat na uživatele s textem, mluvit zpátky do nich ve výchozím nebo [vlastním hlasu](./how-to-custom-voice-create-voice.md), poskytovat výsledky hledání, [překládat](speech-translation.md) je na jiné jazyky a další. Těšíme se, abychom viděli, co sestavíte!
 
 ## <a name="get-the-speech-devices-sdk"></a>Získání sady Speech Devices SDK
 
@@ -60,4 +60,4 @@ K dispozici jsou další binární soubory, které podporují nadcházející za
 > [!div class="nextstepaction"]
 > [Volba zařízení pro rozpoznávání řeči](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
-> [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+> [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)

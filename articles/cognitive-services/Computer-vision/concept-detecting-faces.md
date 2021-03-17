@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d10e4c98d3e2f00e7139063c8263e65ffd015d7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3aa8f9057c3c9e3a141824a9d23e9be8d0bbe4b2
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80244696"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532631"
 ---
 # <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře pomocí Počítačové zpracování obrazu
 
 Počítačové zpracování obrazu dokáže detekovat lidské obličeje v rámci obrázku a generovat věk, pohlaví a obdélník pro každou zjištěnou plochu. 
 
 > [!NOTE]
-> Tuto funkci nabízí i služba Azure [Face](/azure/cognitive-services/face/) . Viz Tato alternativa pro podrobnější analýzu obličeje, včetně identifikace obličeje a detekce pozice. 
+> Tuto funkci nabízí i služba Azure [Face](../face/index.yml) . Viz Tato alternativa pro podrobnější analýzu obličeje, včetně identifikace obličeje a detekce pozice. 
 
 ## <a name="face-detection-examples"></a>Příklady detekce obličeje
 
@@ -113,7 +113,6 @@ Následující příklad ukazuje odpověď JSON vrácenou pro obrázek obsahují
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Funkce detekce tváře je součástí rozhraní API pro [analýzu obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Do `Faces` parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"faces"` oddílu.
+Funkce detekce tváře je součástí rozhraní API pro [analýzu obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. `Faces`Do parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"faces"` oddílu.
 
-* [Rychlý Start: Počítačové zpracování obrazu .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Rychlý Start: analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)
+* [Rychlý Start: Počítačové zpracování obrazu REST API nebo klientské knihovny](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

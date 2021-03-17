@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 02/11/2021
+ms.openlocfilehash: 13e049d3e7e0c87bd0a214a92491e10d652a3619
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516686"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380606"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
@@ -62,12 +62,12 @@ V tomto kurzu se naučíte:
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <server name> -AssignIdentity
     ```
 
-    Další informace najdete v příkazu [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) .
+    Další informace najdete v příkazu [set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) .
 
     > [!IMPORTANT]
-    > Pokud je pro logický Server Azure SQL nastavená identita Azure AD, musí být oprávnění [**čtenářům adresáře**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) udělená identitě. Provedeme vás tento krok v následující části. Tento krok **nepřeskakujte** , protože ověřování Azure AD přestane fungovat.
+    > Pokud je pro logický Server Azure SQL nastavená identita Azure AD, musí být oprávnění [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) udělená identitě. Provedeme vás tento krok v následující části. Tento krok **nepřeskakujte** , protože ověřování Azure AD přestane fungovat.
 
-    - Pokud jste v minulosti použili příkaz [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) s parametrem `AssignIdentity` pro nové vytvoření SQL serveru, budete muset příkaz [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) spustit později jako samostatný příkaz, který tuto vlastnost povolí v prostředcích infrastruktury Azure.
+    - Pokud jste v minulosti použili příkaz [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) s parametrem `AssignIdentity` pro nové vytvoření SQL serveru, budete muset příkaz [set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) spustit později jako samostatný příkaz, který tuto vlastnost povolí v prostředcích infrastruktury Azure.
 
 1. Ověření identity serveru bylo úspěšně přiřazeno. Spusťte následující příkaz prostředí PowerShell:
 
@@ -95,19 +95,19 @@ Pokud chcete toto požadované oprávnění udělit, spusťte následující skr
 > [!NOTE] 
 > Tento skript musí být spuštěný pomocí Azure AD `Global Administrator` nebo `Privileged Roles Administrator` .
 >
-> Ve **verzi Public Preview**můžete tuto roli přiřadit `Directory Readers` ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat spravovanou identitu jako člena této skupiny, což by obejít potřebu `Global Administrator` nebo `Privileged Roles Administrator` pro udělení této `Directory Readers` role. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
+> Ve **verzi Public Preview** můžete tuto roli přiřadit `Directory Readers` ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat spravovanou identitu jako člena této skupiny, což by obejít potřebu `Global Administrator` nebo `Privileged Roles Administrator` pro udělení této `Directory Readers` role. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
 - Nahraďte `<TenantId>` `TenantId` dříve shromážděnými.
 - Nahraďte `<server name>` názvem logického serveru SQL. Pokud je název vašeho serveru `myserver.database.windows.net` , nahraďte parametr `<server name>` `myserver` .
 
 ```powershell
-# This script grants Azure “Directory Readers” permission to a Service Principal representing the Azure SQL logical server
-# It can be executed only by a "Global Administrator" or “Privileged Roles Administrator” type of user.
-# To check if the “Directory Readers" permission was granted, execute this script again
+# This script grants Azure "Directory Readers" permission to a Service Principal representing the Azure SQL logical server
+# It can be executed only by a "Global Administrator" or "Privileged Roles Administrator" type of user.
+# To check if the "Directory Readers" permission was granted, execute this script again
 
-Import-Module AzureAd
-connect-azuread -TenantId "<TenantId>"     #Enter your actual TenantId
- $AssignIdentityName = "<server name>"     #Enter Azure SQL logical server name
+Import-Module AzureAD
+Connect-AzureAD -TenantId "<TenantId>"    #Enter your actual TenantId
+$AssignIdentityName = "<server name>"     #Enter Azure SQL logical server name
  
 # Get Azure AD role "Directory Users" and create if it doesn't exist
 $roleName = "Directory Readers"
@@ -122,14 +122,13 @@ if ($role -eq $null) {
 # Get service principal for managed instance
 $roleMember = Get-AzureADServicePrincipal -SearchString $AssignIdentityName
 $roleMember.Count
-if ($roleMember -eq $null)
-{
-    Write-Output "Error: No Service Principals with name '$    ($AssignIdentityName)', make sure that AssignIdentityName parameter was     entered correctly."
+if ($roleMember -eq $null) {
+    Write-Output "Error: No Service Principals with name '$($AssignIdentityName)', make sure that AssignIdentityName parameter was entered correctly."
     exit
 }
-if (-not ($roleMember.Count -eq 1))
-{
-    Write-Output "Error: More than one service principal with name pattern '$    ($AssignIdentityName)'"
+
+if (-not ($roleMember.Count -eq 1)) {
+    Write-Output "Error: More than one service principal with name pattern '$($AssignIdentityName)'"
     Write-Output "Dumping selected service principals...."
     $roleMember
     exit
@@ -137,21 +136,18 @@ if (-not ($roleMember.Count -eq 1))
  
 # Check if service principal is already member of readers role
 $allDirReaders = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
-$selDirReader = $allDirReaders | where{$_.ObjectId -match     $roleMember.ObjectId}
+$selDirReader = $allDirReaders | where{$_.ObjectId -match $roleMember.ObjectId}
  
-if ($selDirReader -eq $null)
-{
+if ($selDirReader -eq $null) {
     # Add principal to readers role
-    Write-Output "Adding service principal '$($msName)' to     'Directory Readers' role'..."
-    Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId     $roleMember.ObjectId
-    Write-Output "'$($AssignIdentityName)' service principal added to     'Directory Readers' role'..."
+    Write-Output "Adding service principal '$($AssignIdentityName)' to 'Directory Readers' role'..."
+    Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember.ObjectId
+    Write-Output "'$($AssignIdentityName)' service principal added to 'Directory Readers' role'..."
  
     #Write-Output "Dumping service principal '$($AssignIdentityName)':"
     #$allDirReaders = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
     #$allDirReaders | where{$_.ObjectId -match $roleMember.ObjectId}
-}
-else
-{
+} else {
     Write-Output "Service principal '$($AssignIdentityName)' is already member of 'Directory Readers' role'."
 }
 ```
@@ -167,11 +163,11 @@ Podobný přístup k nastavení oprávnění **čtenářů adresáře** pro SPRA
 
     Nezapomeňte přidat **oprávnění aplikace** i **delegovaná oprávnění**.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="AAD – aplikace":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Snímek obrazovky zobrazující stránku Registrace aplikací Azure Active Directory Aplikace se zobrazeným názvem AppSP se zvýrazní.":::
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="rozhraní API – oprávnění":::
 
-2. Také budete muset vytvořit tajný klíč klienta pro přihlášení. Pomocí příručky sem [Nahrajte certifikát nebo vytvořte tajný klíč pro přihlášení](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in).
+2. Také budete muset vytvořit tajný klíč klienta pro přihlášení. Pomocí příručky sem [Nahrajte certifikát nebo vytvořte tajný klíč pro přihlášení](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
 3. Zaznamenejte následující z registrace aplikace. Měl by být k dispozici v podokně s **přehledem** :
     - **ID aplikace**
@@ -181,6 +177,16 @@ V tomto kurzu budeme používat *AppSP* jako hlavní instanční objekt a *Mojea
 
 Další informace o tom, jak vytvořit aplikaci Azure AD, najdete v článku [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Oprávnění požadovaná k nastavení nebo zrušení správce Azure AD
+
+Aby instanční objekt nastavil nebo oddělil správce Azure AD pro Azure SQL, je potřeba další oprávnění API. [Adresář. Read. všechna](/graph/permissions-reference#application-permissions-18) oprávnění Application API se budou muset do vaší aplikace přidat ve službě Azure AD.
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory. Reader. všechna oprávnění ve službě Azure AD":::
+
+Instanční objekt bude také potřebovat roli [**přispěvatel SQL Server**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) pro SQL Database nebo roli [**Přispěvatel spravované instance SQL**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) pro spravovanou instanci SQL.
+
+> [!NOTE]
+> I když je služba Azure AD Graph API zastaralá, **adresář. Reader. všechna** oprávnění se pořád týkají tohoto kurzu. Rozhraní API pro Microsoft Graph se nevztahuje na tento kurz.
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Vytvořit uživatele instančního objektu v Azure SQL Database
 
@@ -200,7 +206,7 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
     GO
     ```
 
-    Další informace najdete v tématu [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)
+    Další informace najdete v tématu [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)
 
     Alternativně `ALTER ANY USER` lze místo poskytování role udělit oprávnění `db_owner` . Tato akce umožní instančnímu objektu přidat další uživatele služby Azure AD.
 
@@ -227,35 +233,27 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
 
     ```powershell
     # PowerShell script for creating a new SQL user called myapp using application AppSP with secret
-
-    $tenantId = "<TenantId>"   #  tenantID (Azure Directory ID) were AppSP resides
-    $clientId = "<ClientId>"   #  AppID also ClientID for AppSP     
-    $clientSecret = "<ClientSecret>"   #  client secret for AppSP 
-    $Resource = "https://database.windows.net/"
+    # AppSP is part of an Azure AD admin for the Azure SQL server below
     
-    $adalPath  = "${env:ProgramFiles}\WindowsPowerShell\Modules\AzureRM.profile\5.8.3"
-    # To install the latest AzureRM.profile version execute  -Install-Module -Name AzureRM.profile
-    $adal      = "$adalPath\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "$adalPath\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    [System.Reflection.Assembly]::LoadFrom($adal) | Out-Null
-      $resourceAppIdURI = 'https://database.windows.net/'
-
-      # Set Authority to Azure AD Tenant
-      $authority = 'https://login.windows.net/' + $tenantId
-
-      $ClientCred = [Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential]::new($clientId, $clientSecret)
-      $authContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]::new($authority)
-      $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI,$ClientCred)
-      $Tok = $authResult.Result.CreateAuthorizationHeader()
-      $Tok=$Tok.Replace("Bearer ","")
-      Write-host "token"
-      $Tok
-      Write-host  " "
-
+    # Download latest  MSAL  - https://www.powershellgallery.com/packages/MSAL.PS
+    Import-Module MSAL.PS
+    
+    $tenantId = "<TenantId>"   # tenantID (Azure Directory ID) were AppSP resides
+    $clientId = "<ClientId>"   # AppID also ClientID for AppSP     
+    $clientSecret = "<ClientSecret>"   # Client secret for AppSP 
+    $scopes = "https://database.windows.net/.default" # The end-point
+    
+    $result = Get-MsalToken -RedirectUri $uri -ClientId $clientId -ClientSecret (ConvertTo-SecureString $clientSecret -AsPlainText -Force) -TenantId $tenantId -Scopes $scopes
+    
+    $Tok = $result.AccessToken
+    #Write-host "token"
+    $Tok
+      
     $SQLServerName = "<server name>"    # Azure SQL logical server name 
-    Write-Host "Create SQL connectionstring"
-    $conn = New-Object System.Data.SqlClient.SQLConnection 
     $DatabaseName = "<database name>"     # Azure SQL database name
+    
+    Write-Host "Create SQL connection string"
+    $conn = New-Object System.Data.SqlClient.SQLConnection 
     $conn.ConnectionString = "Data Source=$SQLServerName.database.windows.net;Initial Catalog=$DatabaseName;Connect Timeout=30"
     $conn.AccessToken = $Tok
     
@@ -269,20 +267,11 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
     
     Write-host "results"
     $command.ExecuteNonQuery()
-    $conn.Close()  
+    $conn.Close()
     ``` 
 
     Alternativně můžete použít ukázku kódu v blogu, [ověřování instančního objektu služby Azure AD v ukázce kódu SQL DB](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467). Upravte skript pro spuštění příkazu DDL `CREATE USER [myapp] FROM EXTERNAL PROVIDER` . Stejný skript se dá použít k vytvoření běžného uživatele Azure AD ve SQL Database skupině.
 
-    > [!NOTE]
-    > Pokud potřebujete nainstalovat modul AzureRM. Profile, budete muset otevřít PowerShell jako správce. Pomocí následujících příkazů můžete automaticky nainstalovat nejnovější verzi AzureRM. Profile a nastavit `$adalpath` pro výše uvedený skript:
-    > 
-    > ```powershell
-    > Install-Module AzureRM.profile -force
-    > Import-Module AzureRM.profile
-    > $version = (Get-Module -Name AzureRM.profile).Version.toString()
-    > $adalPath = "${env:ProgramFiles}\WindowsPowerShell\Modules\AzureRM.profile\${version}"
-    > ```
     
 2. Spuštěním následujícího příkazu ověřte, jestli uživatel *MyApp* v databázi existuje:
 
@@ -305,5 +294,5 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
 - [Použití spravovaných identit pro App Service a Azure Functions](../../app-service/overview-managed-identity.md)
 - [Ověřování instančního objektu služby Azure AD do SQL DB – ukázka kódu](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Instanční objekty aplikace a služby v Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
-- [Vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)
 - [Role čtenáři adresáře v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md)

@@ -2,17 +2,19 @@
 title: Ruční zastavení nebo spuštění skupiny kontejnerů
 description: Přečtěte si, jak ručně zastavit nebo spustit skupinu kontejnerů v Azure Container Instances.
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 1801dad463d478c754e621dad0ae9406899ae7e3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74533425"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198111"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ruční zastavení nebo spuštění kontejnerů ve službě Azure Container Instances
 
 Nastavení [zásad restartování](container-instances-restart-policy.md) skupiny kontejnerů určuje, jak se ve výchozím nastavení spouštějí a zastavují instance kontejnerů. Výchozí nastavení můžete přepsat ručním zastavením nebo spuštěním skupiny kontejnerů.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="stop"></a>Zastavit
 
@@ -53,6 +55,6 @@ Kromě ručního zastavení a spuštění skupiny kontejnerů s existující kon
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
-[az-container-start]: /cli/azure/container?view=azure-cli-latest#az-container-start
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
+[az-container-restart]: /cli/azure/container#az-container-restart
+[az-container-start]: /cli/azure/container#az-container-start
+[az-container-stop]: /cli/azure/container#az-container-stop

@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 9f0ed5265bc4371169097d2fedcbfcddb62d3bff
-  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
-  ms.translationtype: HT
+  ms.openlocfilehash: 4cc05d3b99530e5ba923bfcbf7f749fbcd1c0f20
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/07/2020
-  ms.locfileid: "86045429"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102616634"
 landingContent:
 - title: Informace o Asistivní čtečce
   linkLists:
@@ -43,28 +43,20 @@ landingContent:
       url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
     - text: Použití Swiftu (iOS)
       url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
-  - linkListType: tutorial
-    links:
-    - text: Android
-      url: tutorial-android.md
-    - text: iOS
-      url: tutorial-ios.md
-    - text: Python
-      url: tutorial-python.md
-    - text: Použití několika prostředků Asistivní čtečky
-      url: tutorial-multiple-resources.md
 - title: Seznámení s Asistivní čtečkou
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Vytvoření prostředku Asistivní čtečky
       url: how-to-create-immersive-reader.md
+    - text: Použití několika prostředků Asistivní čtečky
+      url: how-to-multiple-resources.md
+    - text: Spuštění moderního čtecího zařízení
+      url: how-to-launch-immersive-reader.md
     - text: Nastavení zásad souborů cookie
       url: how-to/set-cookie-policy.md
     - text: Zobrazovaná matematika
       url: how-to/display-math.md
-    - text: Spuštění Asistivní čtečky s obsahem HTML
-      url: how-to-launch-with-html.md
     - text: Přizpůsobení tlačítka pro asistivní čtečku
       url: how-to-customize-launch-button.md
     - text: Uložení ověřovacího tokenu do mezipaměti
@@ -79,3 +71,11 @@ landingContent:
     links:
     - text: JavaScript SDK
       url: reference.md
+    - text: Poznámky k verzi
+      url: release-notes.md
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context

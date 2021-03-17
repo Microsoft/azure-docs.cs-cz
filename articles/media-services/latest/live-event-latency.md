@@ -1,26 +1,29 @@
 ---
-title: Livestream nastavení nízké latence v Azure Media Services | Microsoft Docs
+title: Livestream nastavení nízké latence v Azure Media Services
 description: Toto téma obsahuje přehled nastavení Livestream s nízkou latencí a ukazuje, jak nastavit nízkou latenci.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 04/22/2019
-ms.author: juliako
-ms.openlocfilehash: 24eb5f8691c94c1f319820f3133b66065504ace3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f9f4476e932df9a5f4c093968b2e7c4840e7ff39
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000887"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122897"
 ---
 # <a name="live-event-low-latency-settings"></a>Nastavení nízké latence události za provozu
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento článek ukazuje, jak nastavit nízkou latenci pro [živou událost](/rest/api/media/liveevents). Pojednává také o typických výsledcích, které vidíte při použití nastavení nízké latence v různých přehrávačích. Výsledky se liší v závislosti na síti CDN a latenci sítě.
 
@@ -31,28 +34,9 @@ Chcete-li použít novou funkci **LowLatency** , nastavte **StreamOptionsFlag** 
 
 Následující příklad rozhraní .NET ukazuje, jak nastavit **LowLatency** na **Livestream**:
 
-```csharp
-LiveEvent liveEvent = new LiveEvent(
-            location: mediaService.Location, 
-            description: "Sample LiveEvent for testing",
-            vanityUrl: false,
-            encoding: new LiveEventEncoding(
-                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
-                        encodingType:LiveEventEncodingType.None, 
-                        presetName:null
-                    ),
-            input: new LiveEventInput(LiveEventInputProtocol.RTMP,liveEventInputAccess), 
-            preview: liveEventPreview,
-            streamOptions: new List<StreamOptionsFlag?>()
-            {
-                // Set this to Default or Low Latency
-                // To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length instead of 2 seconds.
-                StreamOptionsFlag.LowLatency
-            }
-        );
-```                
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#NewLiveEvent)]
 
-Podívejte se na úplný příklad: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Podívejte se na úplný příklad: [živá událost se systémem DVR](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs).
 
 ## <a name="live-events-latency"></a>Latence živých událostí
 

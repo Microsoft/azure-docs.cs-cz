@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71213021"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Sady SDK pro Azure Notification Hubs
@@ -27,13 +27,13 @@ Microsoft a třetí strany publikují sady SDK pro Azure Notification Hubs. Mezi
 
 | Sada SDK            | Publisher      |
 | -------------- | -------------- |
-| [Server .NET](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
-| [Android](https://github.com/Azure/azure-notificationhubs-android)  |Microsoft |
+| [Server .NET](https://github.com/Azure/azure-notificationhubs-dotnet) | Partnerský vztah Microsoftu |
+| [Android](https://github.com/Azure/azure-notificationhubs-android)  |Partnerský vztah Microsoftu |
 | [Apache Cordova](https://github.com/derek82511/cordova-azure-notification-hubs) | Třetí strana |
-| [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
-| [Server Java](https://github.com/Azure/azure-notificationhubs-java-backend) |Microsoft |
-| [NodeJS](https://github.com/Azure/azure-sdk-for-node) | Microsoft |
-| [Reagovat nativní](https://github.com/CatalystCode/react-native-azurenotificationhub) | Třetí strana |
+| [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Partnerský vztah Microsoftu |
+| [Server Java](https://github.com/Azure/azure-notificationhubs-java-backend) |Partnerský vztah Microsoftu |
+| [NodeJS](https://github.com/Azure/azure-sdk-for-node) | Partnerský vztah Microsoftu |
+| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | Třetí strana |
 
 > [!Note]
 > Společnost Microsoft není zodpovědná za kvalitu, užitečnost a podporu řešení třetích stran.

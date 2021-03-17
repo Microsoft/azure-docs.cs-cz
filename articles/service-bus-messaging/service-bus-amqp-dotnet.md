@@ -3,16 +3,19 @@ title: Azure Service Bus s .NET a AMQP 1,0 | Microsoft Docs
 description: Tento článek popisuje, jak použít Azure Service Bus z aplikace .NET pomocí AMQP (rozšířený protokol řízení front zpráv).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067099"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632846"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití Service Bus z rozhraní .NET s AMQP 1,0
 
 Podpora AMQP 1,0 je k dispozici v balíčku Service Bus verze 2,1 nebo novější. Nejnovější verzi si můžete ověřit stažením Service Bus bitů z [nugetu][NuGet].
+
+> [!NOTE]
+> V knihovně .NET pro Service Bus můžete použít buď rozšířený protokol řízení front zpráv (AMQP) (AMQP), nebo protokol SBMP (Service Bus Messaging Protocol). AMQP je výchozí protokol používaný knihovnou .NET. Doporučujeme, abyste použili Protokol AMQP (což je výchozí nastavení) a nepřepíšete ho. 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurace aplikací .NET pro použití AMQP 1,0
 
@@ -41,6 +44,14 @@ Hodnota `Microsoft.ServiceBus.ConnectionString` nastavení je Service Bus připo
 Kde `namespace` a `SAS key` jsou získány z [Azure Portal][Azure portal] při vytváření oboru názvů Service Bus. Další informace najdete v tématu [Vytvoření oboru názvů Service Bus pomocí Azure Portal][Create a Service Bus namespace using the Azure portal].
 
 Při použití AMQP připojit připojovací řetězec k `;TransportType=Amqp` . Tento zápis dá pokyn klientské knihovně k tomu, aby připojení k Service Bus pomocí AMQP 1,0.
+
+### <a name="amqp-over-websockets"></a>AMQP přes WebSockets
+Pokud chcete používat AMQP přes objekty WebSockets, nastavte `TransportType` v připojovacím řetězci na `AmqpWebSockets` . Příklad: `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`. 
+
+Pokud používáte knihovnu .NET Microsoft. Azure. ServiceBus, nastavte [ServiceBusConnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) na AmqpWebSockets z [TransportType enum](/dotnet/api/microsoft.azure.servicebus.transporttype).
+
+Pokud používáte knihovnu .NET Azure. Messaging. ServiceBus, nastavte [ServiceBusClient. TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) na AmqpWebSockets z [ServiceBusTransportType enum](/dotnet/api/azure.messaging.servicebus.servicebustransporttype).
+
 
 ## <a name="message-serialization"></a>Serializace zprávy
 
@@ -89,17 +100,17 @@ Pro usnadnění interoperability s klienty non-.NET používejte pouze typy .NET
 V porovnání s výchozím protokolem je v chování rozhraní Service Bus .NET API k dispozici několik malých rozdílů:
 
 * Vlastnost [OperationTimeout][OperationTimeout] je ignorována.
-* `MessageReceiver.Receive(TimeSpan.Zero)`je implementován jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
+* `MessageReceiver.Receive(TimeSpan.Zero)` je implementován jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Vytváření zpráv pomocí zámků tokenů může být provedeno pouze příjemci zprávy, kteří zprávy původně obdrželi.
 
 ## <a name="control-amqp-protocol-settings"></a>Control – nastavení protokolu AMQP
 
 Rozhraní [API .NET](/dotnet/api/) zveřejňují několik nastavení pro řízení chování protokolu AMQP:
 
-* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: řídí počáteční kredit aplikovaný na odkaz. Výchozí hodnota je 0.
-* **[MessagingFactorySettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: Určuje maximální velikost rámce AMQP nabízená během vyjednávání v době otevření připojení. Výchozí hodnota je 65 536 bajtů.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Pokud jsou přenosy k dispozici, určuje tato hodnota maximální zpoždění odeslání. Zděděni odesílateli a přijímači ve výchozím nastavení. Každý odesílatel/příjemce může přepsat výchozí hodnotu, což je 20 milisekund.
-* **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Určuje, zda jsou připojení AMQP navázána přes připojení TLS. Výchozí hodnota je **true**.
+* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: řídí počáteční kredit aplikovaný na odkaz. Výchozí hodnota je 0.
+* **[MessagingFactorySettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: Určuje maximální velikost rámce AMQP nabízená během vyjednávání v době otevření připojení. Výchozí hodnota je 65 536 bajtů.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Pokud jsou přenosy k dispozici, určuje tato hodnota maximální zpoždění odeslání. Zděděni odesílateli a přijímači ve výchozím nastavení. Každý odesílatel/příjemce může přepsat výchozí hodnotu, což je 20 milisekund.
+* **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Určuje, zda jsou připojení AMQP navázána přes připojení TLS. Výchozí hodnota je **true**.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -109,10 +120,10 @@ Jste připraveni na další informace? Navštivte následující odkazy:
 * [Průvodce protokolem AMQP 1.0]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
-[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
-[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
+[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Přehled Service Bus AMQP]: service-bus-amqp-overview.md

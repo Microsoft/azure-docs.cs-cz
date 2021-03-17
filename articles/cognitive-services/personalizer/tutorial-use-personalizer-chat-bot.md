@@ -1,14 +1,17 @@
 ---
 title: Použít přizpůsobování v programu chat robot – Přizpůsobte
 description: Přizpůsobte si robota chatu v C# .NET se smyčkou pro přizpůsobení a poskytněte tak správnému obsahu uživatele na základě akcí (s funkcemi) a funkcí kontextu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131663"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565717"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot
 
@@ -20,7 +23,7 @@ K poskytnutí správného obsahu uživateli použijte robota chatu v C# .NET se 
 > [!div class="checklist"]
 > * Nastavení prostředků Azure
 > * Konfigurace a spuštění robota
-> * Interakce s robotem pomocí emulátoru bot
+> * Interakce s robotem pomocí emulátoru bot Frameworku
 > * Informace o tom, kde a jak Robot používá přizpůsobování
 
 
@@ -40,7 +43,7 @@ Toto je jednoduchý robot pro chat, který umožňuje zadat textové dotazy.
 |--|--|--|
 |Nebyl zadán text – robot zahájí konverzaci.|`This is a simple chatbot example that illustrates how to use Personalizer. The bot learns what coffee or tea order is preferred by customers given some context information (such as weather, temperature, and day of the week) and information about the user.`<br>`To use the bot, just follow the prompts. To try out a new imaginary context, type “Reset” and a new one will be randomly generated.`<br>`Welcome to the coffee bot, please tell me if you want to see the menu or get a coffee or tea suggestion for today. Once I’ve given you a suggestion, you can reply with ‘like’ or ‘don’t like’. It’s Tuesday today and the weather is Snowy.`|Robot zahájí konverzaci s instruktážní textem a informuje o tom, co kontext je: `Tuesday` , `Snowy` .|
 |`Show menu`|`Here is our menu: Coffee: Cappuccino Espresso Latte Macchiato Mocha Tea: GreenTea Rooibos`|Určení záměru dotazu pomocí LUIS a zobrazení možností nabídky pro kávové a čaj položky. Funkce akcí jsou |
-|`What do you suggest`|`How about Latte?`|Určete záměr dotazů pomocí LUIS, pak zavolejte **rozhraní API pro řazení**a jako otázku si zvolte horní volbu `How about {response.RewardActionId}?` . Zobrazuje také volání JSON a odpověď pro ilustraci.|
+|`What do you suggest`|`How about Latte?`|Určete záměr dotazů pomocí LUIS, pak zavolejte **rozhraní API pro řazení** a jako otázku si zvolte horní volbu `How about {response.RewardActionId}?` . Zobrazuje také volání JSON a odpověď pro ilustraci.|
 |`I like it`|`That’s great! I’ll keep learning your preferences over time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|Určete záměr dotazů pomocí LUIS a pak zavolejte **API** pro odměnu s odměňováním `1` , zobrazí volání JSON a odpověď pro ilustraci.|
 |`I don't like it`|`Oh well, maybe I’ll guess better next time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|Určete záměr dotazů pomocí LUIS a pak zavolejte **API** pro odměnu s odměňováním `0` , zobrazí volání JSON a odpověď pro ilustraci.|
 |`Reset`|Vrátí instruktážní text.|Určete záměr dotazu pomocí LUIS a pak zobrazí text s pokyny a obnoví kontext.|
@@ -102,9 +105,9 @@ Výběr funkcí je v této robotice pro chat náhodný. V reálném bot použijt
 ### <a name="design-considerations-for-this-bot"></a>Faktory návrhu pro tento robot
 
 Poznámka k této konverzaci je popsána v několika upozorněních:
-* **Interakce robota**: konverzace je velmi jednoduchá, protože je v jednoduchém případu použití demonstruje rozsah a měna. Nejedná se o plnou funkčnost sady robot Framework SDK nebo emulátoru.
-* **Přizpůsobování**: funkce jsou náhodně vybrány pro simulaci využití. Ve scénáři přizpůsobení produkčního prostředí nepoužívejte náhodné funkce.
-* **Language Understanding (Luis)**: několik příkladů projevy modelu Luis jsou určeny pouze pro tuto ukázku. Nepoužívejte k tomu projevy ve vaší produkční aplikaci LUIS několik příkladů.
+* **Interakce robota** : konverzace je velmi jednoduchá, protože je v jednoduchém případu použití demonstruje rozsah a měna. Nejedná se o plnou funkčnost sady robot Framework SDK nebo emulátoru.
+* **Přizpůsobování** : funkce jsou náhodně vybrány pro simulaci využití. Ve scénáři přizpůsobení produkčního prostředí nepoužívejte náhodné funkce.
+* **Language Understanding (Luis)** : několik příkladů projevy modelu Luis jsou určeny pouze pro tuto ukázku. Nepoužívejte k tomu projevy ve vaší produkční aplikaci LUIS několik příkladů.
 
 
 ## <a name="install-required-software"></a>Nainstalovat požadovaný software
@@ -127,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 Pro použití tohoto robota chatu potřebujete vytvořit prostředky Azure pro přizpůsobování a Language Understanding (LUIS).
 
-* [Vytvoření prostředků Luis](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal). V kroku vytvoření vyberte **obojí** , protože potřebujete prostředky pro vytváření i předpovědi.
+* [Vytvoření prostředků Luis](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal). V kroku vytvoření vyberte **obojí** , protože potřebujete prostředky pro vytváření i předpovědi.
 * [Vytvořte prostředek pro přizpůsobení](how-to-create-resource.md) a pak zkopírujte klíč a koncový bod z Azure Portal. Tyto hodnoty budete muset nastavit v `appsettings.json` souboru projektu .NET.
 
 ### <a name="create-luis-app"></a>Vytvoření aplikace LUIS
@@ -135,11 +138,11 @@ Pro použití tohoto robota chatu potřebujete vytvořit prostředky Azure pro p
 Pokud s LUIS začínáte, musíte se [Přihlásit](https://www.luis.ai) a hned migrovat svůj účet. Nemusíte vytvářet nové prostředky, místo toho vyberte prostředky, které jste vytvořili v předchozí části tohoto kurzu.
 
 1. Pokud chcete vytvořit novou aplikaci LUIS, vyberte na [portálu Luis](https://www.luis.ai)svůj odběr a prostředek pro vytváření obsahu.
-1. Pak pořád na stejné stránce vyberte **+ Nová aplikace pro konverzaci**a pak **importovat jako JSON**.
+1. Pak pořád na stejné stránce vyberte **+ Nová aplikace pro konverzaci** a pak **importovat jako JSON**.
 1. V místním dialogovém okně vyberte **zvolit soubor** a pak vyberte `/samples/ChatbotExample/CognitiveModels/coffeebot.json` soubor. Zadejte název `Personalizer Coffee bot` .
 1. Vyberte tlačítko **výuka** v pravém horním rohu portálu Luis.
 1. Vyberte tlačítko **publikovat** a publikujte aplikaci do **produkčního slotu** pro předpověď modulu runtime.
-1. Vyberte **Spravovat**a pak **Nastavení**. Zkopírujte hodnotu **ID aplikace**. Tuto hodnotu budete muset nastavit v `appsettings.json` souboru projektu .NET.
+1. Vyberte **Spravovat** a pak **Nastavení**. Zkopírujte hodnotu **ID aplikace**. Tuto hodnotu budete muset nastavit v `appsettings.json` souboru projektu .NET.
 1. Pořád v části **Spravovat** vyberte **prostředky Azure**. Tím se zobrazí přidružené prostředky v aplikaci.
 1. Vyberte **Přidat prostředek předpovědi**. V místním dialogovém okně vyberte vaše předplatné a prostředek předpovědi vytvořený v předchozí části tohoto kurzu a potom vyberte **Hotovo**.
 1. Zkopírujte hodnoty **primárního klíče** a **adresy URL koncového bodu**. Tyto hodnoty budete muset nastavit v `appsettings.json` souboru projektu .NET.
@@ -173,12 +176,12 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 
 ## <a name="set-up-the-bot-emulator"></a>Nastavení emulátoru bot
 
-1. Otevřete emulátor bot a vyberte **otevřít robot**.
+1. Otevřete emulátor rozhraní bot Framework a vyberte **otevřít robot**.
 
     :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Snímek obrazovky s úvodní obrazovkou emulátoru bot":::
 
 
-1. Nakonfigurujte robota s následující **adresou URL robota** a pak vyberte **připojit**:
+1. Nakonfigurujte robota s následující **adresou URL robota** a pak vyberte **připojit** :
 
     `http://localhost:3978/api/messages`
 
@@ -191,8 +194,8 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Použití robota v emulátoru bot
 
 1. Požádejte o zobrazení nabídky zadáním `I would like to see the menu` . Robot pro chat zobrazí položky.
-1. Umožněte, aby robot navrhl položku zadáním `Please suggest a drink for me.` emulátoru. v okně chatu se zobrazí požadavek a odpověď pořadí, takže uvidíte úplný formát JSON. A robot vytvoří nějaký návrh, např.`How about Latte?`
-1. Podle toho, co byste chtěli přijmout, což znamená, že přijměte horní seřazený výběr, `I like it.` emulátor zobrazí požadavek na odměnu s hodnotou 1 a odpověď v okně chatu, takže uvidíte úplný formát JSON. A robot odpoví `That’s great! I’ll keep learning your preferences over time.` a`Would you like to get a new suggestion or reset the simulated context to a new day?`
+1. Umožněte, aby robot navrhl položku zadáním `Please suggest a drink for me.` emulátoru. v okně chatu se zobrazí požadavek a odpověď pořadí, takže uvidíte úplný formát JSON. A robot vytvoří nějaký návrh, např. `How about Latte?`
+1. Podle toho, co byste chtěli přijmout, což znamená, že přijměte horní seřazený výběr, `I like it.` emulátor zobrazí požadavek na odměnu s hodnotou 1 a odpověď v okně chatu, takže uvidíte úplný formát JSON. A robot odpoví `That’s great! I’ll keep learning your preferences over time.` a `Would you like to get a new suggestion or reset the simulated context to a new day?`
 
     Pokud odpovíte na výběr, bude do přizpůsobeného přizpůsobené `no` skóre pro odměnu 0.
 
@@ -201,9 +204,9 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 
 Řešení .NET je jednoduchý robot na chatu pro robot Framework. Kód související s přizpůsobením je v následujících složkách:
 * `/samples/ChatbotExample/Bots`
-    * `PersonalizerChatbot.cs`soubor pro interakci mezi robotem a přizpůsobením
-* `/samples/ChatbotExample/ReinforcementLearning`– spravuje akce a funkce pro model přizpůsobeného přizpůsobování.
-* `/samples/ChatbotExample/Model`– soubory pro akce a funkce přizpůsobeného přizpůsobování a pro LUIS záměry
+    * `PersonalizerChatbot.cs` soubor pro interakci mezi robotem a přizpůsobením
+* `/samples/ChatbotExample/ReinforcementLearning` – spravuje akce a funkce pro model přizpůsobeného přizpůsobování.
+* `/samples/ChatbotExample/Model` – soubory pro akce a funkce přizpůsobeného přizpůsobování a pro LUIS záměry
 
 ### <a name="personalizerchatbotcs---working-with-personalizer"></a>PersonalizerChatbot.cs – práce s přizpůsobením
 

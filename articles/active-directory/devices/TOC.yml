@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: Primární obnovovací tokeny
       href: concept-primary-refresh-token.md
-    - name: Pracovní stanice spravované v Azure
-      href: concept-azure-managed-workstation.md
 - name: Návody
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: Infrastruktura virtuálního klienta
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: Nasazení pracovních stanic spravovaných v Azure
-      href: howto-azure-managed-workstation.md
     - name: Řešení problémů s identitami zařízení
       items:
         - name: Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD
@@ -84,13 +80,13 @@
     - name: Rozhraní Graph API
       items:
         - name: Rozhraní API pro identitu zařízení
-          href: /graph/api/resources/device?view=graph-rest-1.0
+          href: /graph/api/resources/device
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizace služeb

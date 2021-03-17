@@ -1,6 +1,6 @@
 ---
 title: Upgrade Windows serveru/System Center VMM 2012 R2 na Windows Server 2016-Azure Site Recovery
-description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
+description: Naučte se upgradovat hostitele Windows Serveru 2012 R2 & SCVMM 2012 R2, které jsou nakonfigurované pomocí Azure Site Recovery, na Windows Server 2016 & SCVMM 2016.
 services: site-recovery
 author: Sharmistha-Rai
 manager: gaggupta
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
-ms.openlocfilehash: 82e178d37074b22cd170d6b2478525dd2ea7ddf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91250062"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Upgrade Windows Server serveru/System Center 2012 R2 VMM na Windows Server/VMM 2016 
 
@@ -78,7 +78,7 @@ Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradov
 3. V panelu **Přidat nebo odebrat programy**vyberte možnost odinstalovat **Nástroj VMM**  >  **Uninstall**. b. Vyberte **Odebrat funkce**a pak vyberte V**mm Server pro správu a konzolu VMM**. c. V **Možnosti databáze**vyberte **Zachovat databázi**. d. Zkontrolujte souhrn a klikněte na **odinstalovat**.
 
 4. [Instalace nástroje VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. Spusťte SCVMM a zaškrtněte na kartě **prostředky infrastruktury** stav pro každého hostitele. Kliknutím na **aktualizovat** získáte nejnovější stav. Měl by se zobrazit stav "vyžaduje pozornost". 
+5. Spusťte SCVMM a zaškrtněte na kartě **prostředky infrastruktury** stav všech hostitelů. Kliknutím na **aktualizovat** získáte nejnovější stav. Měl by se zobrazit stav "vyžaduje pozornost". 
 17. Nainstalujte na SCVMM nejnovějšího [poskytovatele Microsoft Azure Site Recovery](https://aka.ms/downloaddra) .
 16. Nainstalujte nejnovějšího [agenta služby Microsoft Azure Recovery Services (MARS)](https://aka.ms/latestmarsagent) na každého hostitele clusteru. Aktualizujte, aby se SCVMM mohl úspěšně dotazovat na hostitele.
 

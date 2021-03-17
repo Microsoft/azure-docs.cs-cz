@@ -1,24 +1,26 @@
 ---
-title: Vytvoření vstupu Azure Media Services úlohy z adresy URL protokolu HTTPS | Microsoft Docs
+title: Vytvoření vstupu úlohy z adresy URL HTTPS
 description: Toto téma ukazuje, jak vytvořit vstup Azure Media Services úlohy z adresy URL HTTPS.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/13/2019
-ms.author: juliako
-ms.openlocfilehash: 1ff2bc6d4bb4f7b983787b287fbb27e1c33cc179
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1073a13f477894e1b35d732fd1cd6191747a62a2
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022986"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955983"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>Vytvoření vstupu úlohy z adresy URL HTTPS
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto příkladu). Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS. Úplný příklad najdete v této [ukázce GitHubu](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
 

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67509092"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009095"
 ---
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. V nabídce vlevo vyberte **všechny služby** a v části **mobilní zařízení** vyberte **Notification Hubs** . Výběrem ikony hvězdičky vedle názvu služby přidáte službu do oddílu **Oblíbené položky** v levé nabídce. Po přidání **Notification Hubs** k **oblíbeným položkám**ji vyberte v nabídce vlevo.
+1. V nabídce vlevo vyberte **všechny služby** a v části **mobilní zařízení** vyberte **Notification Hubs** . Výběrem ikony hvězdičky vedle názvu služby přidáte službu do oddílu **Oblíbené položky** v levé nabídce. Po přidání **Notification Hubs** k **oblíbeným položkám** ji vyberte v nabídce vlevo.
 
       ![Azure Portal – výběr Notification Hubs](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "67509092"
 
     1. V rozevíracím seznamu **umístění** vyberte hodnotu. Tato hodnota určuje umístění, ve kterém chcete vytvořit centrum.
 
-    1. Vyberte existující skupinu prostředků ve **skupině prostředků**nebo vytvořte název nové skupiny prostředků.
+    1. Vyberte existující skupinu prostředků ve **skupině prostředků** nebo vytvořte název nové skupiny prostředků.
 
     1. Vyberte **Vytvořit**.
 
@@ -41,7 +41,7 @@ ms.locfileid: "67509092"
 
 1. Vyberte **oznámení** (ikona zvonku) a pak vyberte **Přejít k prostředku**. Můžete také aktualizovat seznam na stránce **Notification Hubs** a vybrat své centrum.
 
-      ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
+      ![Azure Portal – přejít k prostředku](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
 1. Vyberte ze seznamu **Zásady přístupu**. Všimněte si, že jsou k dispozici dva připojovací řetězce. Budete je potřebovat později pro zpracování nabízených oznámení.
 

@@ -3,9 +3,11 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je kognitivní hledání Azure?
+    - name: Co je Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Co je nového
+    - name: Seznam funkcí
+      href: search-features-list.md
+    - name: Nově ve vyhledávání
       href: whats-new.md
 - name: Rychlé starty
   items:
@@ -23,21 +25,23 @@
           href: knowledge-store-create-portal.md
         - name: Dotaz s využitím Průzkumníka služby Hledání
           href: search-explorer.md
-    - name: Šablona ARM
-      displayName: Resource Manager
-      href: search-get-started-arm.md
+    - name: Visual Studio Code
+      href: search-get-started-vs-code.md
     - name: C#
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: Node.js
-      href: search-get-started-nodejs.md
-    - name: Postman
-      href: search-get-started-postman.md
+    - name: JavaScript
+      href: search-get-started-javascript.md
+    - name: REST
+      href: search-get-started-rest.md
     - name: PowerShell
       href: search-get-started-powershell.md
     - name: Python
       href: search-get-started-python.md
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: search-get-started-arm.md
 - name: Kurzy
   items:
     - name: Vytvoření aplikace v C#
@@ -79,22 +83,23 @@
 - name: ukázky
   items:
     - name: Ukázky C#
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
+      href: samples-dotnet.md
     - name: Ukázky Java
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
+      href: samples-java.md
     - name: Ukázky JavaScriptu
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
+      href: samples-javascript.md
     - name: Ukázky Pythonu
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
+      href: samples-python.md
     - name: Ukázky REST
-      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+      href: samples-rest.md
 - name: Koncepty
   items:
     - name: Fulltextové vyhledávání
       href: search-lucene-query-architecture.md
+    - name: Sémantické vyhledávání
+      href: semantic-search-overview.md
+    - name: Vyhodnocení relevance
+      href: index-similarity-and-scoring.md
     - name: Indexery
       href: search-indexer-overview.md
     - name: Obohacení AI
@@ -117,33 +122,83 @@
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Přístup k chráněnému obsahu
+          href: search-indexer-securing-resources.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
-    - name: Vytváření indexů a konstrukcí
+    - name: Plánování
+      items:
+        - name: Volba úrovně
+          href: search-sku-tier.md
+        - name: Odhad a správa kapacity
+          href: search-capacity-planning.md
+        - name: Odhadněte náklady
+          href: search-sku-manage-costs.md
+        - name: Omezení služby
+          href: search-limits-quotas-capacity.md
+        - name: Škálování pro zajištění výkonu
+          href: search-performance-optimization.md
+        - name: Víceklientská architektura
+          href: search-modeling-multitenant-saas-applications.md
+    - name: Vývoj
+      items:
+        - name: Verze rozhraní API
+          href: search-api-versions.md
+        - name: Funkce ve verzi Preview
+          href: search-api-preview.md
+        - name: Vývoj v .NET
+          items:
+            - name: Použití Azure.Search.Documents
+              href: search-howto-dotnet-sdk.md
+            - name: Použití Microsoft.Azure.Search
+              href: search-howto-dotnet-sdk-v10.md
+            - name: Rychlé zprovoznění starší verze (Microsoft.Azure.Search)
+              href: search-get-started-dotnet-v10.md
+        - name: Upgrade sady SDK
+          items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: Upgrade rozhraní REST API
+          href: search-api-migration.md
+    - name: Indexy
       items:
         - name: Vytvoření indexu
           href: search-what-is-an-index.md
         - name: Vytvoření vícejazyčného indexu
           href: search-language-support.md
-        - name: Analyzátory
-          items:
-            - name: Přidávání analyzátorů
-              href: search-analyzers.md
-            - name: Přidání analyzátoru jazyka
-              href: index-add-language-analyzers.md
-            - name: Přidání vlastního analyzátoru
-              href: index-add-custom-analyzers.md
         - name: Synonyma
           items:
             - name: Přidání synonym
               href: search-synonyms.md
-            - name: Příklad synonym
+            - name: Příklad synonym v C#
               href: search-synonyms-tutorial-sdk.md
         - name: Modelování komplexních datových typů
           href: search-howto-complex-data-types.md
         - name: Modelování relačních dat
           href: index-sql-relational-data.md
-    - name: Ingestování libovolných dat
+    - name: Analyzátory
+      items:
+        - name: Přidávání analyzátorů
+          href: search-analyzers.md
+        - name: Přidání analyzátoru jazyka
+          href: index-add-language-analyzers.md
+        - name: Přidání vlastního analyzátoru
+          href: index-add-custom-analyzers.md
+    - name: Data
       items:
         - name: Přehled importu dat
           href: search-what-is-data-import.md
@@ -155,44 +210,18 @@
           href: search-howto-large-index.md
         - name: Zpracování souběžných aktualizací
           href: search-howto-concurrency.md
-    - name: Ingestování dat Azure
+    - name: Indexery
       items:
-        - name: Konfigurace indexerů
-          href: search-indexer-overview.md
-        - name: Monitorování indexerů
-          href: search-howto-monitor-indexers.md
-        - name: Plánování indexerů
+        - name: Vytvoření indexeru
+          href: search-howto-create-indexers.md
+        - name: Spustit nebo resetovat indexery
+          href: search-howto-run-reset-indexers.md
+        - name: Naplánování indexeru
           href: search-howto-schedule-indexers.md
-        - name: Pole map
+        - name: Definování mapování polí
           href: search-indexer-field-mappings.md
-        - name: Zdroje dat
-          items:
-            - name: Objekty blob Azure
-              items:
-                - name: Prohledávání objektů blob
-                  href: search-blob-storage-integration.md
-                - name: Principy objektů blob s využitím AI
-                  href: search-blob-ai-integration.md
-                - name: Konfigurace indexeru objektů blob
-                  href: search-howto-indexing-azure-blob-storage.md
-                - name: 'Indexování objektů blob 1:N'
-                  href: search-howto-index-one-to-many-blobs.md
-                - name: Indexování objektů blob CSV
-                  href: search-howto-index-csv-blobs.md
-                - name: Indexování objektů blob JSON
-                  href: search-howto-index-json-blobs.md
-            - name: Tabulky Azure
-              href: search-howto-indexing-azure-tables.md
-            - name: Azure Cosmos DB
-              href: search-howto-index-cosmosdb.md
-            - name: Azure Data Lake Storage Gen2
-              href: search-howto-index-azure-data-lake-storage.md
-            - name: Databáze SQL
-              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: Spravované instance SQL
-              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-            - name: Virtuální počítače s SQL Serverem
-              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Vlastnosti metadat obsahu
+          href: search-blob-metadata-properties.md
         - name: Připojení s využitím spravovaných identit
           items:
             - name: Přehled spravovaných identit
@@ -203,7 +232,41 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: Databáze SQL
               href: search-howto-managed-identities-sql.md
-    - name: Ingestování s využitím AI
+        - name: SharePoint Online
+          href: search-howto-index-sharepoint-online.md
+        - name: Objekty blob Azure
+          items:
+            - name: Prohledávání objektů blob
+              href: search-blob-storage-integration.md
+            - name: Obohacení AI přes objekty blob
+              href: search-blob-ai-integration.md
+            - name: Konfigurace indexeru objektů blob
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: Indexování změněných a odstraněných objektů blob
+              href: search-howto-index-changed-deleted-blobs.md
+            - name: 'Indexování objektů blob 1:N'
+              href: search-howto-index-one-to-many-blobs.md
+            - name: Indexování prostého textu
+              href: search-howto-index-plaintext-blobs.md
+            - name: Indexování objektů blob CSV
+              href: search-howto-index-csv-blobs.md
+            - name: Indexování objektů blob JSON
+              href: search-howto-index-json-blobs.md
+            - name: Indexování šifrovaných objektů blob
+              href: search-howto-index-encrypted-blobs.md
+        - name: Tabulky Azure
+          href: search-howto-indexing-azure-tables.md
+        - name: Azure Cosmos DB
+          href: search-howto-index-cosmosdb.md
+        - name: Azure Data Lake Storage Gen2
+          href: search-howto-index-azure-data-lake-storage.md
+        - name: Azure SQL Databases
+          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+        - name: Azure SQL Managed Instances
+          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+        - name: Virtuální počítače Azure s SQL Serverem
+          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: Sady dovedností
       items:
         - name: Připojení prostředku služeb Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +278,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Mapování na pole indexu
               href: cognitive-search-output-field-mapping.md
-            - name: Extrahování informací z obrázků
+            - name: Zpracování obrázkových souborů
               href: cognitive-search-concept-image-scenarios.md
             - name: Obohacení mezipaměti (přírůstkové)
               href: search-howto-incremental-index.md
@@ -223,6 +286,8 @@
           items:
             - name: Integrace vlastních dovedností
               href: cognitive-search-custom-skill-interface.md
+            - name: Horizontální navýšení kapacity – vlastní dovednosti
+              href: cognitive-search-custom-skill-scale.md
             - name: Příklad – Azure Functions (Python)
               href: cognitive-search-custom-skill-python.md
             - name: Příklad – Azure Functions
@@ -243,13 +308,21 @@
               href: knowledge-store-connect-power-bi.md
             - name: Příklady projekcí
               href: knowledge-store-projections-examples.md
-    - name: Dotaz
+    - name: Dotazy
       items:
+        - name: Vytvoření základního dotazu
+          href: search-query-create.md
+        - name: Vytvořit sémantický dotaz
+          href: semantic-how-to-query-request.md
+        - name: Vrátí sémantickou odpověď.
+          href: semantic-answers.md
+        - name: Přidat kontrolu pravopisu do dotazů
+          href: speller-how-to-add.md
         - name: Sestavení a typy dotazů
           href: search-query-overview.md
-        - name: Vytvoření jednoduchého dotazu
+        - name: Použití jednoduché syntaxe (příklady)
           href: search-query-simple-examples.md
-        - name: Použití úplné syntaxe Lucene
+        - name: Použití úplné syntaxe Lucene (příklady)
           href: search-query-lucene-examples.md
         - name: Částečné výrazy a speciální znaky
           href: search-query-partial-matching.md
@@ -261,6 +334,8 @@
               href: index-add-suggesters.md
             - name: Přidání návrhů a automatického dokončování
               href: search-autocomplete-tutorial.md
+        - name: Stránkování a počty
+          href: search-pagination-page-layout.md
         - name: Reference k syntaxi
           items:
             - name: Jednoduchá syntaxe dotazů
@@ -269,7 +344,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis (Preview)
               href: search-more-like-this.md
-    - name: Filtr
+    - name: Filtry
       items:
         - name: Přehled filtrů
           href: search-filters.md
@@ -283,58 +358,14 @@
           href: search-query-understand-collection-filters.md
         - name: Filtrování podle jazyka
           href: search-filters-language.md
-    - name: Výsledky
+    - name: Relevance
       items:
-        - name: Práce s výsledky
-          href: search-pagination-page-layout.md
-        - name: Vyhodnocení relevance
-          href: index-similarity-and-scoring.md
+        - name: Řazení podobnosti
+          href: index-ranking-similarity.md
+        - name: Sémantické hodnocení
+          href: semantic-ranking.md
         - name: Profily skórování
           href: index-add-scoring-profiles.md
-        - name: Algoritmus podobnosti
-          href: index-ranking-similarity.md
-    - name: Plánování
-      items:
-        - name: Volba úrovně
-          href: search-sku-tier.md
-        - name: Omezení služby
-          href: search-limits-quotas-capacity.md
-        - name: Úprava kapacity
-          href: search-capacity-planning.md
-        - name: Škálování pro zajištění výkonu
-          href: search-performance-optimization.md
-        - name: Víceklientská architektura
-          href: search-modeling-multitenant-saas-applications.md
-    - name: Vývoj
-      items:
-        - name: Verze rozhraní API
-          href: search-api-versions.md
-        - name: Seznam funkcí Preview
-          href: search-api-preview.md
-        - name: Vývoj v .NET
-          items:
-            - name: Použití Microsoft.Azure.Search (v10)
-              href: search-howto-dotnet-sdk.md
-            - name: Začínáme (v10)
-              href: search-get-started-dotnet-v10.md
-        - name: Upgrade sady SDK
-          items:
-            - name: .NET SDK 11.0
-              href: search-dotnet-sdk-migration-version-11.md
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Management SDK
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: Upgrade rozhraní REST API
-          href: search-api-migration.md
     - name: Zabezpečení
       items:
         - name: Šifrování dat
@@ -351,7 +382,15 @@
               href: service-configure-firewall.md
             - name: Vytvoření privátního koncového bodu
               href: service-create-private-endpoint.md
-        - name: Přístup na základě identity
+        - name: Odchozí zabezpečení (indexery)
+          items:
+            - name: Přístup přes rozsah IP adres
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: Přístup prostřednictvím výjimky důvěryhodné služby
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: Přístup prostřednictvím privátních koncových bodů
+              href: search-indexer-howto-access-private.md
+        - name: Zabezpečení na úrovni dokumentů
           items:
             - name: Filtry zabezpečení
               href: search-security-trimming-for-azure-search.md
@@ -363,6 +402,8 @@
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
+        - name: Azure CLI
+          href: search-manage-azure-cli.md
         - name: Přesun služby napříč oblastmi
           href: search-howto-move-across-regions.md
         - name: Přístup správce na základě role
@@ -377,6 +418,8 @@
           href: search-monitor-logs-powerbi.md
         - name: Monitorování aktivity dotazů
           href: search-monitor-queries.md
+        - name: Monitorování indexerů
+          href: search-howto-monitor-indexers.md
         - name: Prohledání analýzy provozu
           href: search-traffic-analytics.md
     - name: Řešení potíží
@@ -388,43 +431,45 @@
 - name: Referenční informace
   items:
     - name: Azure CLI
-      href: /cli/azure/search?view=azure-cli-latest
+      href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: Search 2020-06-30
+        - name: Rozhraní API pro hledání (stabilní)
           href: /rest/api/searchservice
-        - name: Search 2020-06-30-Preview
+        - name: Rozhraní API pro hledání (Preview)
           href: /rest/api/searchservice/index-preview
-        - name: Management 2020-03-13
+        - name: Rozhraní API pro správu (stabilní)
           href: /rest/api/searchmanagement
-        - name: Management 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Rozhraní API pro správu (Preview)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Search API
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: Rozhraní API pro správu
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: Search API
+          href: /java/api/overview/azure/search-documents-readme
         - name: Rozhraní API pro správu
-          href: 'https://docs.microsoft.com/java/api/overview/azure/search/management?view=azure-java-stable'
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: Search API
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest'
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: Rozhraní API pro správu
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/search/management?view=azure-node-latest'
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: Search API
-          href: 'https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python'
+          href: /python/api/overview/azure/search-documents-readme
         - name: Rozhraní API pro správu
-          href: 'https://docs.microsoft.com/python/api/overview/azure/search/management?view=azure-python'
+          href: /python/api/overview/azure/search/management
     - name: Referenční informace k jazyku OData
       items:
         - name: Přehled
@@ -496,10 +541,15 @@
           items:
             - name: Rozpoznávání pojmenovaných entit
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Podpora komunity Azure
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: Spotlight pro partnery
+      href: resource-partners-knowledge-mining.md
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Fórum pro názory (UserVoice)
@@ -514,10 +564,12 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: Ukázka souborů JFK
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: Ukázka úloh NYC
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: Školení
       items:
         - name: Úvod (Microsoft Learn)
-          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+          href: /learn/modules/intro-to-azure-search/
         - name: Přidání vyhledávání do aplikací (Pluralsight)
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Kurz pro vývojáře (Pluralsight)

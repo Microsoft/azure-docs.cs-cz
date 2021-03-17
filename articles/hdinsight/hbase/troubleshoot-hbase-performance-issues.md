@@ -1,18 +1,15 @@
 ---
 title: Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
 description: Různé pokyny k ladění výkonu Apache HBA a tipy pro získání optimálního výkonu v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75887151"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942899"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
 
@@ -55,7 +52,7 @@ Pokud používáte srovnávací testy, například Yahoo! Cloud obsluhující sr
 
 Pokud vaše dotazy náhle začaly mnohem horší než předtím, vyhledejte potenciální chyby v kódu aplikace. Dochází k náhlému generování velkých objemů neplatných dat? V takovém případě může zvýšit latenci čtení.
 
-## <a name="migration-issues"></a>Problémy s migrací
+## <a name="migration-issues"></a>problémy s migrací
 
 Pokud migrujete do Azure HDInsight, ujistěte se, že je migrace prováděna systematicky a přesně, nejlépe prostřednictvím automatizace. Vyhněte se ruční migraci. Ujistěte se, že:
 
@@ -110,7 +107,7 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 
 Níže jsou uvedené další parametry pro zvážení ladění:
 
-- `Hbase.rs.cacheblocksonwrite`– ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
+- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
 
 - Nastavení, které umožňuje odložit menší komprimaci na později.
 
@@ -124,4 +121,4 @@ Pokud váš problém zůstane nevyřešený, podívejte se na jeden z následuj�
 
 - Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Vaše předplatné Microsoft Azure zahrnuje přístup k podpoře správy předplatných a fakturaci a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Vaše předplatné Microsoft Azure zahrnuje přístup k podpoře správy předplatných a fakturaci a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

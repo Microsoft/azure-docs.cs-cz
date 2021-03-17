@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387673"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928711"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Správa Azure AD B2C vlastních zásad pomocí Azure PowerShell
 
@@ -27,17 +27,17 @@ Azure PowerShell poskytuje několik rutin pro správu vlastních zásad na zákl
 * Nahrajte do svého tenanta Azure AD B2C novou zásadu.
 * Odstranění vlastních zásad z tenanta
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
+* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
-* [Azure AD PowerShell pro **modul Graph Preview**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Azure AD PowerShell pro **modul Graph Preview**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>Připojení relace PowerShellu k tenantovi B2C
 
 Pokud chcete pracovat s vlastními zásadami ve vašem tenantovi Azure AD B2C, musíte nejdřív připojit relaci PowerShellu k tenantovi pomocí příkazu [Connect-AzureAD][Connect-AzureAD] .
 
-Spusťte následující příkaz a nahraďte `{b2c-tenant-name}` názvem vašeho tenanta Azure AD B2C. Přihlaste se pomocí účtu, který má přiřazenou roli [správce zásad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) v adresáři.
+Spusťte následující příkaz a nahraďte `{b2c-tenant-name}` názvem vašeho tenanta Azure AD B2C. Přihlaste se pomocí účtu, který má přiřazenou roli [správce zásad B2C IEF](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) v adresáři.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -191,15 +191,15 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-Informace o řešení potíží s vlastními zásadami najdete v tématu [řešení potíží s Azure AD B2C vlastní zásady a architektura prostředí identit](active-directory-b2c-guide-troubleshooting-custom.md).
+Informace o řešení potíží s vlastními zásadami najdete v tématu [řešení potíží s Azure AD B2C vlastní zásady a architektura prostředí identit](./troubleshoot-custom-policies.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak pomocí PowerShellu nasadit vlastní zásady v rámci kanálu průběžné integrace nebo průběžného doručování (CI/CD), najdete v tématu [nasazení vlastních zásad z kanálu Azure DevOps](deploy-custom-policies-devops.md).
 
 <!-- LINKS - External -->
-[Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[Get-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[New-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/new-azureadmstrustframeworkpolicy
-[Remove-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/remove-azureadmstrustframeworkpolicy
-[Set-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/set-azureadmstrustframeworkpolicy
+[Connect-AzureAD]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[Get-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[New-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/new-azureadmstrustframeworkpolicy
+[Remove-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/remove-azureadmstrustframeworkpolicy
+[Set-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/set-azureadmstrustframeworkpolicy

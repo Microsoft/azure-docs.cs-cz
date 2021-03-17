@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace v Pythonu – mezipaměť Azure pro Redis'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci v Pythonu, která používá Azure cache pro Redis.
 author: yegu-ms
 ms.author: yegu
@@ -11,16 +11,20 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845320"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121146"
 ---
-# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
+# <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu
 
 V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
+
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start Pythonu](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +46,7 @@ Následující příklad používá *PIP3* pro Python 3 k instalaci *Redis-py* v
 
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
 
-Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
+Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu *\<DNS name> . Redis.cache.Windows.NET*.
 
 ```python
 >>> import redis
@@ -59,7 +63,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Vytvoření ukázkové aplikace v Pythonu
 
-Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py*. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
+Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py*. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu *\<DNS name> . Redis.cache.Windows.NET*.
 
 ```python
 import redis

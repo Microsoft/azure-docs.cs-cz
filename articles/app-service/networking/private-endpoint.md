@@ -4,24 +4,22 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/09/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135381"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563607"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
+# <a name="using-private-endpoints-for-azure-web-app"></a>Používání privátních koncových bodů pro webovou aplikaci Azure
 
-> [!Note]
-> S aktualizací Preview jsme vydali funkci data exfiltrace Protection.
->
-> Verze Preview je dostupná ve všech veřejných oblastech pro PremiumV2 Windows a Linux Web Apps a elastické funkce Premium. 
+> [!IMPORTANT]
+> Privátní koncový bod je k dispozici pro webovou aplikaci Windows a Linux, kontejnerová nebo nehostovaná na těchto App Servicech plánech: **izolované**, **PremiumV2**, **PremiumV3**, **Functions Premium** (někdy označované jako plán elastické Premium). 
 
 Pro webovou aplikaci Azure můžete použít privátní koncový bod, který umožňuje klientům umístěným ve vaší privátní síti zabezpečený přístup k aplikaci prostřednictvím privátního propojení. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě Azure. Síťový provoz mezi klientem v privátní síti a webovou aplikací prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
@@ -93,13 +91,13 @@ Například překlad názvů bude:
 
 |Název |Typ |Hodnota |Přeznačit |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|< – Azure vytvoří tuto položku ve veřejném DNS Azure, aby odkazovala službu App Service na privatelink a spravovala ji v USA.|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – tuto položku můžete spravovat v systému DNS, aby odkazovala na IP adresu privátního koncového bodu.|
 
-Po této konfiguraci DNS se můžete připojit k webové aplikaci soukromě s výchozím názvem mywebappname.azurewebsites.net.
+Po této konfiguraci DNS se můžete připojit k webové aplikaci soukromě s výchozím názvem mywebappname.azurewebsites.net. Je nutné použít tento název, protože výchozí certifikát je vydaný pro *. azurewebsites.net.
 
 
-Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Ve verzi Preview se vlastní název musí ověřit jako libovolný vlastní název, a to pomocí veřejného překladu názvů DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
+Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Vlastní název musí být ověřen jako libovolný vlastní název, a to pomocí veřejného překladu DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
 
 V případě konzoly Kudu nebo Kudu REST API (například nasazení pomocí samoobslužných agentů Azure DevOps) musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
 
@@ -118,7 +116,13 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure][pr
 
 Když použijete funkci Azure v plánu elastické Premium s privátním koncovým bodem, spustíte nebo spustíte funkci na webovém portálu Azure, musíte mít přímý přístup k síti nebo se zobrazí chyba HTTP 403. Jinými slovy, váš prohlížeč musí být schopný spojit se s privátním koncovým bodem a spustit funkci z webového portálu Azure. 
 
-Během období Preview se za soukromým koncovým bodem zveřejňuje jenom produkční slot, ale v rámci veřejného koncového bodu musí být dostupné jiné sloty.
+K určité webové aplikaci můžete připojit až 100 privátních koncových bodů.
+
+Sloty nemůžou používat privátní koncový bod.
+
+Funkce vzdáleného ladění nejsou k dispozici, pokud je pro webovou aplikaci povolen soukromý koncový bod. Doporučení je nasazení kódu do slotu a jeho vzdálené ladění.
+
+Přístup k FTP se poskytuje prostřednictvím příchozí veřejné IP adresy. Privátní koncový bod nepodporuje přístup FTP k webové aplikaci.
 
 Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod. Další informace o omezeních najdete v [tomto článku][pllimitations] .
 
@@ -133,18 +137,18 @@ Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod
 
 
 <!--Links-->
-[serviceendpoint]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
-[privatelink]: https://docs.microsoft.com/azure/private-link/private-link-overview
-[vnetintegrationfeature]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[disablesecuritype]: https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy
-[accessrestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[serviceendpoint]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[privatelink]: ../../private-link/private-link-overview.md
+[vnetintegrationfeature]: ../web-sites-integrate-with-vnet.md
+[disablesecuritype]: ../../private-link/disable-private-endpoint-network-policy.md
+[accessrestrictions]: ../app-service-ip-restrictions.md
 [tcpproxy]: ../../private-link/private-link-service-overview.md#getting-connection-information-using-tcp-proxy-v2
-[dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
-[pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
+[dnsvalidation]: ../app-service-web-tutorial-custom-domain.md
+[pllimitations]: ../../private-link/private-endpoint-overview.md#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
-[howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
-[howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
-[howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide1]: ../../private-link/tutorial-private-endpoint-webapp-portal.md
+[howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
+[howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
+[howtoguide4]: ../scripts/template-deploy-private-endpoint.md
 [howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
-[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend
+[howtoguide6]: ../scripts/terraform-secure-backend-frontend.md

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710367"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
@@ -29,7 +29,7 @@ Tyto tabulky shrnují datové operace, které lze použít a jsou uspořádány 
 
 Tyto akce vám pomůžou pracovat s daty v polích.
 
-| Akce | Description |
+| Akce | Popis |
 |--------|-------------|
 | [**Vytvořit tabulku CSV**](#create-csv-table-action) | Vytvoří tabulku hodnot s oddělovači (CSV) z pole. |
 | [**Vytvořit tabulku HTML**](#create-html-table-action) | Vytvoří tabulku HTML z pole. |
@@ -42,7 +42,7 @@ Tyto akce vám pomůžou pracovat s daty v polích.
 
 Tyto akce vám pomůžou pracovat s daty ve formátu JavaScript Object Notation (JSON).
 
-| Akce | Description |
+| Akce | Popis |
 |--------|-------------|
 | [**Vytvořit**](#compose-action) | Vytvoření zprávy nebo řetězce z více vstupů, které mohou mít různé datové typy. Tento řetězec je pak možné použít jako jeden vstup místo opakovaného zadávání stejných vstupů. Můžete například vytvořit jednu zprávu JSON z různých vstupů. |
 | [**Analyzovat JSON**](#parse-json-action) | Vytvářejte uživatelsky přívětivé datové tokeny pro vlastnosti v obsahu JSON, abyste mohli snadněji používat vlastnosti ve svých aplikacích logiky. |
@@ -106,7 +106,7 @@ Pokud chcete vyzkoušet příklad, postupujte podle těchto kroků pomocí návr
 
    ![Příklad dokončení pro akci "sestavit"](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Další informace o této akci v příslušné definici pracovního postupu najdete v tématu [akce psaní](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
 
@@ -167,7 +167,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
    ![Příklad dokončené akce vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ### <a name="customize-table-format"></a>Přizpůsobení formátu tabulky
 
@@ -200,7 +200,7 @@ V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci 
 
    `item()?['<array-property-name>']`
 
-   Příklad:
+   Například:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ V definici JSON akce `columns` nastavte v poli `header` vlastnost na prázdný �
    }
    ```
 
-   Příklad:
+   Například:
 
    ```json
    "Create_CSV_table": {
@@ -318,7 +318,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
    ![Příklad dokončené pro "vytvoření tabulky HTML"](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ### <a name="customize-table-format"></a>Přizpůsobení formátu tabulky
 
@@ -351,7 +351,7 @@ V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci 
 
    `item()?['<array-property-name>']`
 
-   Příklad:
+   Například:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ V definici JSON akce `columns` nastavte v poli `header` vlastnost na prázdný �
    }
    ```
 
-   Příklad:
+   Například:
 
    ```json
    "Create_HTML_table": {
@@ -482,7 +482,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
    ![Příklad dokončení pro akci "Filter Array"](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Další informace o této akci v základní definici pracovního postupu najdete v tématu [Akce dotazu](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action).
 
@@ -544,7 +544,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
    ![Zadejte znak oddělovače.](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Další informace o této akci v základní definici pracovního postupu najdete v [akci spojení](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
 
@@ -612,7 +612,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
       ![Zadejte obsah JSON pro generování schématu.](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Další informace o této akci v základní definici pracovního postupu najdete v tématu [analýza akce JSON](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
@@ -683,7 +683,7 @@ Pokud dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat
 
    ![Příklad dokončení pro akci "vybrat"](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Další informace o této akci v základní definici pracovního postupu najdete v tématu [Výběr akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
 

@@ -1,21 +1,18 @@
 ---
 title: Spuštění Azure Data Lake skriptů U-SQL na místním počítači
 description: Naučte se používat Nástroje Azure Data Lake pro Visual Studio ke spouštění úloh U-SQL na místním počítači.
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 24f1156fa4a97adb500033034bc7396fd1badbeb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5f9410cc91174420662bb5efc67c8904b5d5e647
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018983"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>Spouštění skriptů U-SQL na místním počítači
 
@@ -25,7 +22,7 @@ Když vyvíjíte skripty U-SQL, můžete ušetřit čas a výdaje spuštěním s
 
 Následující graf znázorňuje komponenty pro místní spuštění a způsob mapování těchto součástí do cloudového spuštění.
 
-|Komponenta|Místní spuštění|Spuštění cloudu|
+|Součást|Místní spuštění|Spuštění cloudu|
 |---------|---------|---------|
 |Storage|Kořenová složka místních dat|Výchozí účet Azure Data Lake Store|
 |Compute|Místní modul runtime U-SQL|Služba Azure Data Lake Analytics|
@@ -75,7 +72,7 @@ Projekt U-SQL spravuje izolované místní běhové prostředí prostřednictví
 
 Projekt U-SQL vytvoří kořenovou složku místních dat a nastaví data pro účet **místního projektu** . Dočasná kořenová složka dat se vyčistí a znovu vytvoří v pracovním adresáři U-SQL projektu pokaždé, když dojde k opětovnému sestavení a místnímu spuštění. Všechny zdroje dat, které jsou konfigurovány projektem U-SQL, se zkopírují do této dočasné kořenové složky místních dat, než se spustí místní úloha. 
 
-Můžete nakonfigurovat kořenovou složku zdrojů dat. Klikněte pravým **U-SQL project**tlačítkem na  >  **Property**  >  **zdroj dat testu**vlastnosti projektu U-SQL. Když spustíte skript U-SQL na účtu **místní projekt** , všechny soubory a podsložky ve složce **zdroje testovacích dat** se zkopírují do dočasné místní kořenové složky dat. Jsou zahrnuty soubory podsložek. Po spuštění místní úlohy je možné výsledky výstupů najít také v dočasné místní složce pro kořen dat v pracovním adresáři projektu. Veškerý tento výstup se odstraní a vyčistí, když se projekt znovu sestaví a vyčistí. 
+Můžete nakonfigurovat kořenovou složku zdrojů dat. Klikněte pravým **U-SQL project** tlačítkem na  >  **Property**  >  **zdroj dat testu** vlastnosti projektu U-SQL. Když spustíte skript U-SQL na účtu **místní projekt** , všechny soubory a podsložky ve složce **zdroje testovacích dat** se zkopírují do dočasné místní kořenové složky dat. Jsou zahrnuty soubory podsložek. Po spuštění místní úlohy je možné výsledky výstupů najít také v dočasné místní složce pro kořen dat v pracovním adresáři projektu. Veškerý tento výstup se odstraní a vyčistí, když se projekt znovu sestaví a vyčistí. 
 
 ![Konfigurace zdroje testovacích dat projektu](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 

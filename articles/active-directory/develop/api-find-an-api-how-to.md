@@ -10,16 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 8c3d79211ce594ec4c175aa6f6b5f8df3a7c4ba8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 28cfb3d8b09c9661d16ac6e7146c50e7043d913a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115539"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581954"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Vyhledání konkrétního rozhraní API, které je potřeba pro aplikaci vytvořenou pro vlastní použití
 
-Přístup k rozhraním API vyžaduje konfiguraci oborů přístupu a rolí. Pokud chcete zpřístupnit webová rozhraní API pro klientské aplikace, musíte nakonfigurovat obory přístupu a role pro rozhraní API. Pokud chcete, aby klientská aplikace měla přístup k webovému rozhraní API, musíte nakonfigurovat oprávnění pro přístup k rozhraní API v registraci aplikace.
+Přístup k rozhraním API vyžaduje konfiguraci oborů přístupu a rolí. Pokud chcete zpřístupnit webová rozhraní API pro klientské aplikace, nakonfigurujte obory přístupu a role pro toto rozhraní API. Pokud chcete, aby klientská aplikace měla přístup k webovému rozhraní API, nakonfigurujte oprávnění pro přístup k rozhraní API v registraci aplikace.
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurace aplikace prostředků k zveřejnění webových rozhraní API
 

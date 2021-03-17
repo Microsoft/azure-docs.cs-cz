@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – nastavení brány VPN
 description: Popisuje, jak nastavit bránu VPN typu Point-to-site a bránu VPN typu Site-to-site a vytvořit připojení mezi místní sítí a privátním cloudem CloudSimple.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79279491"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899095"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Nastavení bran sítě VPN v síti CloudSimple
 
@@ -44,7 +44,7 @@ Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického
 
     ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
-4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
+4. V části **Konfigurace brány** zadejte následující nastavení a klikněte na **Další**.
 
     * Jako typ brány vyberte **VPN typu Site-to-site** .
     * Zadejte název pro identifikaci brány.
@@ -62,7 +62,7 @@ Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického
     * V poli IP adresa partnerského uzlu zadejte veřejnou IP adresu místní brány VPN.
     * Zadejte identifikátor partnerského vztahu místní brány VPN.  Identifikátor partnerského vztahu je obvykle veřejná IP adresa vaší místní brány VPN.  Pokud jste v bráně nakonfigurovali určitý identifikátor, zadejte identifikátor.
     * Zkopírujte sdílený klíč, který se použije pro připojení z místní brány VPN.  Pokud chcete změnit výchozí sdílený klíč a zadat nový, klikněte na ikonu Upravit.
-    * **V části místní předpony**zadejte místní předpony CIDR, které budou přistupovat k CloudSimple síti.  Při vytváření připojení můžete přidat několik předpon CIDR.
+    * **V části místní předpony** zadejte místní předpony CIDR, které budou přistupovat k CloudSimple síti.  Při vytváření připojení můžete přidat několik předpon CIDR.
 
     ![Vytvoření připojení brány VPN typu Site-to-site](media/create-vpn-gateway-s2s-connection.png)
 
@@ -87,14 +87,14 @@ Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického
 
     ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
-4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
+4. V části **Konfigurace brány** zadejte následující nastavení a klikněte na **Další**.
 
     * Jako typ brány vyberte **síť VPN typu Point-to-site** .
     * Zadejte název pro identifikaci brány.
     * Vyberte umístění Azure, kde je vaše služba CloudSimple nasazená.
     * Zadejte podsíť klienta pro bránu Point-to-site.  Adresy DHCP se budou předávat z klientské podsítě, když se připojíte.
 
-5. V poli **připojení/uživatel**zadejte následující nastavení a klikněte na tlačítko **Další**.
+5. V poli **připojení/uživatel** zadejte následující nastavení a klikněte na tlačítko **Další**.
 
     * Pokud chcete všem současným a budoucím uživatelům automaticky dovolit přístup k privátnímu cloudu prostřednictvím brány Point-to-site, vyberte **automaticky přidat všechny uživatele**. Když vyberete tuto možnost, automaticky se vyberou všichni uživatelé v seznamu uživatelů. Automatickou možnost můžete přepsat tak, že zrušíte výběr jednotlivých uživatelů v seznamu.
     * Chcete-li vybrat jednotlivé uživatele, zaškrtněte políčka v seznamu uživatelů.
@@ -103,7 +103,7 @@ Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického
 
     * Možnosti **automaticky přidat** můžete nastavit globální zásady pro bránu. Nastavení platí pro aktuální bránu. Nastavení lze přepsat v oblasti **výběru** .
     * Vyberte **Přidat sítě VLAN pro správu/podsítě privátních cloudů**. 
-    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na **Přidat uživatelsky definované sítě VLAN/podsítě**.
+    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na  **Přidat uživatelsky definované sítě VLAN/podsítě**.
     * Nastavení **Vybrat** přepíše globální nastavení v části **automaticky přidat**.
 
 7. Kliknutím na **Další** zkontrolujte nastavení. Kliknutím na ikony úprav proveďte požadované změny.

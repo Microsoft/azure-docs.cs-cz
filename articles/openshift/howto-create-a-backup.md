@@ -1,19 +1,19 @@
 ---
 title: Vytvoření zálohování clusterové aplikace Azure Red Hat OpenShift 4 pomocí Velero
 description: Naučte se vytvořit zálohu aplikací clusteru Azure Red Hat OpenShift pomocí Velero
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 06/22/2020
 author: troy0820
 ms.author: b-trconn
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bbfe280ed0b1b562e0f50b23a09ea159750c4a79
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690217"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217087"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Vytvoření zálohování clusterové aplikace Azure Red Hat OpenShift 4
 
@@ -23,7 +23,7 @@ V tomto článku připravíte své prostředí, aby se vytvořila záloha aplika
 > * Nastavte požadované součásti a nainstalujte potřebné nástroje.
 > * Vytvoření zálohy aplikace Azure Red Hat OpenShift 4
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -60,7 +60,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 Velero potřebuje oprávnění k zálohování a obnovení. Při vytváření instančního objektu udělíte Velero oprávnění pro přístup ke skupině prostředků, kterou jste definovali v předchozím kroku. Tento krok zobrazí skupinu prostředků clusteru:
 
 ```bash
-export AZURE_RESOURCE_GROUP=aro-$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r '.clusterProfile.domain')
+export AZURE_RESOURCE_GROUP=$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r .clusterProfile.resourceGroupId | cut -d '/' -f 5,5)
 ```
 
 
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 Úspěšná záloha bude mít výstup `phase:Completed` a objekty budou v kontejneru v účtu úložiště aktivní.
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Vytvoření zálohy s Velero pro zahrnutí snímků
+
+Pokud chcete vytvořit zálohu aplikace pomocí Velero, aby zahrnovala trvalé svazky vaší aplikace, budete muset zahrnout obor názvů, ve kterém je aplikace, a `snapshot-volumes=true` při vytváření zálohy přidat příznak.
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+Stav zálohování můžete zjistit spuštěním:
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+Úspěšná záloha s výstupem `phase:Completed` a objekty budou v kontejneru v účtu úložiště aktivní.
+
+Další informace o tom, jak vytvářet zálohy a obnovování pomocí Velero, najdete v tématu [zálohování prostředků záložních OpenShift nativním způsobem](https://www.openshift.com/blog/backup-openshift-resources-the-native-way) .
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku se zazálohovali Clusterová aplikace Azure Red Hat OpenShift 4. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření zálohy clusterové aplikace OpenShift v4 pomocí Velero
+> * Vytvoření zálohy clusterové aplikace OpenShift v4 pomocí snímků pomocí Velero
 
 
 V dalším článku se dozvíte, jak vytvořit obnovení clusterové aplikace Azure Red Hat OpenShift 4.
 
 * [Vytvoření clusteru Azure Red Hat OpenShift 4 – obnovení clusterové aplikace](howto-create-a-restore.md)
+* [Vytvoření clusterové aplikace Azure Red Hat OpenShift 4 obnovení zahrnující snímky](howto-create-a-restore.md)

@@ -3,12 +3,12 @@ title: Obnovení dat z Azure Backup Server
 description: Obnovte data, která jste chránili do trezoru Recovery Services, z jakéhokoli Azure Backup Server zaregistrovaného v tomto trezoru.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 5531a2a9599465bd5ad3410504cbf341fb6c0c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84249072"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806020"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 
@@ -21,7 +21,7 @@ Pomocí Azure Backup Server můžete obnovit data, která jste zálohovali do tr
 
 Postup obnovení dat z Azure Backup Server:
 
-1. Na kartě **obnovení** v konzole pro správu Azure Backup Server klikněte na **Přidat externí DPM** (v levém horním rohu obrazovky).
+1. Na kartě **obnovení** v konzole pro správu Azure Backup server vyberte **Přidat externí DPM** (v levém horním rohu obrazovky).
 
     ![Přidat externí DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Stáhněte si nové **přihlašovací údaje trezoru** z trezoru přidruženého k **Azure Backup Server** , kde se mají data obnovovat, vyberte Azure Backup server ze seznamu Azure Backup serverů zaregistrovaných v úložišti Recovery Services a poskytněte **Šifrovací heslo** přidružené k serveru, jehož data se obnovují.
@@ -42,16 +42,16 @@ Postup obnovení dat z Azure Backup Server:
     V dolním podokně se zobrazí seznam souborů a složek, které se dají Procházet a obnovovat do libovolného umístění.
 
     ![Body obnovení externího serveru DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Pravým tlačítkem myši klikněte na příslušnou položku a klikněte na tlačítko **obnovit**.
+5. Klikněte pravým tlačítkem na příslušnou položku a vyberte **obnovit**.
 
     ![Externí obnovení DPM](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Zkontrolujte **Výběr obnovení**. Ověřte data a čas obnovení záložní kopie a také zdroj, ze kterého byla vytvořena záložní kopie. Pokud je výběr nesprávný, kliknutím na tlačítko **Storno** přejděte zpět na kartu obnovení a vyberte příslušný bod obnovení. Pokud je výběr správný, klikněte na tlačítko **Další**.
+6. Zkontrolujte **Výběr obnovení**. Ověřte data a čas obnovení záložní kopie a také zdroj, ze kterého byla vytvořena záložní kopie. Pokud je výběr nesprávný, kliknutím na **tlačítko Storno** přejděte zpět na kartu obnovení a vyberte příslušný bod obnovení. Pokud je výběr správný, vyberte **Další**.
 
     ![Souhrn obnovení externí aplikace DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. Vyberte **obnovit do alternativního umístění**. **Přejděte** do správného umístění pro obnovení.
 
     ![Alternativní umístění pro obnovení externí aplikace DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. Vyberte možnost související s **vytvořením kopie**, **přeskočení**nebo **přepsání**.
+8. Vyberte možnost související s **vytvořením kopie**, **přeskočení** nebo **přepsání**.
 
    * **Vytvořit kopii** – vytvoří kopii souboru, pokud dojde ke kolizi názvů.
    * **Přeskočit** – Pokud dojde ke kolizi názvů, neobnovuje soubor, což ponechá původní soubor.
@@ -62,7 +62,7 @@ Postup obnovení dat z Azure Backup Server:
      Určete, zda bude odesláno **oznámení** po úspěšném dokončení obnovení.
 
      ![Oznámení o externím obnovení DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Na obrazovce **souhrnu** jsou uvedené možnosti, které zatím byly vybrány. Po kliknutí na tlačítko **obnovit**se data obnoví do příslušného místního umístění.
+9. Na obrazovce **souhrnu** jsou uvedené možnosti, které zatím byly vybrány. Po výběru **obnovení** se data obnoví do příslušného místního umístění.
 
     ![Souhrn možností externích obnovení DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ Postup obnovení dat z Azure Backup Server:
    >
 
     ![Monitorování obnovení](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. Kliknutím na **Vymazat externí DPM** na kartě **obnovení** na serveru DPM můžete odebrat zobrazení externího serveru DPM.
+10. Můžete vybrat možnost **Vymazat externí DPM** na kartě **obnovení** serveru DPM a odebrat tak zobrazení externího serveru DPM.
 
     ![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
@@ -83,11 +83,11 @@ Postup obnovení dat z Azure Backup Server:
 | 1. |Tento server není zaregistrován do trezoru určeného přihlašovacími údaji trezoru. |**Příčina:** Tato chyba se zobrazí, když vybraný soubor s přihlašovacími údaji trezoru nepatří do trezoru Recovery Services přidruženého k Azure Backup Server, na kterých se provádí obnovení. <br> **Řešení:** Stáhněte si soubor s přihlašovacími údaji trezoru z Recovery Services trezoru, do kterého je Azure Backup Server zaregistrovaný. |
 | 2. |Buď obnovitelná data nejsou k dispozici, nebo zvolený server není server DPM. |**Příčina:** Do trezoru Recovery Services nejsou zaregistrovány žádné další Azure Backup servery, nebo servery ještě neodeslaly metadata, nebo vybraný server není Azure Backup Server (pomocí Windows serveru nebo klienta Windows). <br> **Řešení:** Pokud jsou v trezoru Recovery Services zaregistrované další Azure Backup servery, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou v trezoru Recovery Services zaregistrovány jiné Azure Backup servery, počkejte po instalaci za účelem spuštění procesu obnovení dne. Noční úloha odešle metadata pro všechna chráněná zálohování do cloudu. Data budou k dispozici pro obnovení. |
 | 3. |K tomuto úložišti není registrovaný žádný další server DPM. |**Příčina:** Nejsou k dispozici žádné další Azure Backup servery, které jsou registrovány do trezoru, ze kterého Probíhá obnovení.<br>**Řešení:** Pokud jsou v trezoru Recovery Services zaregistrované další Azure Backup servery, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup.<br>Pokud jsou v trezoru Recovery Services zaregistrovány jiné Azure Backup servery, počkejte po instalaci za účelem spuštění procesu obnovení dne. Noční úloha nahrává metadata pro všechny chráněné zálohy do cloudu. Data budou k dispozici pro obnovení. |
-| 4. |Zadané šifrovací heslo se neshoduje s heslem přidruženým k následujícímu serveru:**\<server name>** |**Příčina:** Šifrovací heslo použité v procesu šifrování dat z obnovených dat Azure Backup Server se neshoduje s zadaným šifrovacím heslem. Agent nemůže data dešifrovat, takže obnovení nebude úspěšné.<br>**Řešení:** Poskytněte prosím stejné šifrovací heslo, které je přidružené k Azure Backup Server, u kterého se data obnovují. |
+| 4. |Zadané šifrovací heslo se neshoduje s heslem přidruženým k následujícímu serveru: **\<server name>** |**Příčina:** Šifrovací heslo použité v procesu šifrování dat z obnovených dat Azure Backup Server neodpovídá zadanému šifrovacímu heslu. Agent nemůže data dešifrovat, takže obnovení nebude úspěšné.<br>**Řešení:** Poskytněte přesně stejné šifrovací heslo, které je přidružené k Azure Backup Server, jejichž data se obnovují. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další nejčastější dotazy:
 
-* [Běžné dotazy](backup-azure-vm-backup-faq.md) k zálohování virtuálních počítačů Azure
+* [Běžné dotazy](backup-azure-vm-backup-faq.yml) k zálohování virtuálních počítačů Azure
 * [Běžné dotazy](backup-azure-file-folder-backup-faq.md) týkající se agenta Azure Backup

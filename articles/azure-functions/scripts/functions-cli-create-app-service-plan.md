@@ -5,12 +5,12 @@ ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a2faef6162a1a9fe09082330bf52f25dde5f75f6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 020bd064628554703bb375c06c72e68d4536a2a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498578"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934437"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Vytvoření aplikace funkcí v plánu služby App Service
 
@@ -18,13 +18,13 @@ Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kont
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří aplikaci funkcí Azure s použitím vyhrazeného [plánu služby App Service](../functions-scale.md#app-service-plan).
+Tento skript vytvoří aplikaci funkcí Azure s použitím vyhrazeného [plánu služby App Service](../dedicated-plan.md).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Create an Azure Function on an App Service plan")]
 

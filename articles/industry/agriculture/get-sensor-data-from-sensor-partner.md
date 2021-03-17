@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak získat data ze senzorů od partnerů.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649155"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182770"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -66,13 +66,13 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
     cd
     ```
 
-6. Spusťte následující příkaz: Tím se k tomu připojí ověřený účet, který se bude používat pro žádosti Azure AD.
+6. Spusťte následující příkaz. Tím se k tomu připojí ověřený účet, který se bude používat pro žádosti Azure AD.
 
     ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
-7. Spusťte následující příkaz: Tím se stáhne skript do domovského adresáře.
+7. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
 
     ```azurepowershell-interactive
 
@@ -80,7 +80,7 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 
     ```
 
-8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
+8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze   >  stránky s **přehledem** Azure Active Directory.
 
     ```azurepowershell-interactive
 
@@ -92,7 +92,7 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 > 1. Název koncového bodu rozhraní DataHub API musí být malými písmeny.
 > 2. Pokud kopírujete adresu URL názvu webu farmbeats pro koncový bod rozhraní API DataHub, ujistěte se, že neexistuje žádné koncové lomítko (/).
 
-9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
+9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta** a **připojovací řetězec EventHub**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrace dat zařízení pomocí generovaných přihlašovacích údajů
 
@@ -124,7 +124,7 @@ V současné době FarmBeats podporuje následující zařízení:
 - **Uzel**: zařízení, ke kterému jsou připojené některé snímače.
 - **Brána**: zařízení, ke kterému jsou připojené aspoň jeden uzel.
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Na domovské stránce v nabídce vyberte **zařízení** .
   Na stránce **zařízení** se zobrazí typ zařízení, model, stav, farma, na kterou je umístěna, a datum poslední aktualizace pro metadata. Ve výchozím nastavení je sloupec farma nastaven na *hodnotu null*. Můžete se rozhodnout přiřadit zařízení k farmě. Další informace najdete v tématu [přiřazení zařízení](#assign-devices).
@@ -134,7 +134,7 @@ Postupujte následovně:
 
 ### <a name="view-sensors"></a>Zobrazit senzory
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Na domovské stránce vyberte z nabídky **snímače** .
   Na stránce **senzory** se zobrazí podrobnosti o typu senzoru, farmě, k níž je připojen, k nadřazenému zařízení, názvu portu, typu portu a posledním aktualizovanému stavu.
@@ -163,7 +163,7 @@ Po přetečení dat senzoru je můžete přiřadit do farmy, do které jste nasa
 
 ### <a name="visualize-sensor-data"></a>Vizualizace dat ze snímačů
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Na stránce domů v nabídce vyberte možnost **farmy** a zobrazte stránku **farmy** .
 2. Vyberte **farmu** , pro kterou chcete zobrazit data ze senzorů.
@@ -173,18 +173,18 @@ Postupujte následovně:
 
 ## <a name="delete-a-sensor"></a>Odstranění snímače
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Na domovské stránce výběrem **senzorů** z nabídky zobrazíte stránku **senzory** .
 2. Vyberte zařízení, které chcete odstranit, a v potvrzovacím okně vyberte **Odstranit** .
 
-    ![Tlačítko Odstranit](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![Snímek obrazovky, který zvýrazní stránku odstranění senzorů a tlačítko Odstranit](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
 Potvrzovací zpráva ukazuje, že senzor byl úspěšně odstraněn.
 
 ## <a name="delete-devices"></a>Odstranit zařízení
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Na stránce domů v nabídce vyberte **zařízení** a zobrazte stránku **zařízení** .
 2. Vyberte zařízení, které chcete odstranit, a v potvrzovacím okně vyberte **Odstranit** .

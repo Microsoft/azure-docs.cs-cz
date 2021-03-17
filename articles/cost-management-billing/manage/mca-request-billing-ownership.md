@@ -4,15 +4,16 @@ description: Přečtěte si, jak požádat ostatní uživatele o udělení vlast
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 44fb7a8a93569b2591150a99d39fcb3bac0134c0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290781"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938473"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Získání vlastnictví fakturace předplatných Azure od ostatních účtů
 
@@ -22,12 +23,20 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem oddílu faktur** nebo **přispěvatelem oddílu faktur**. Podrobnosti najdete v části [Role a úlohy související s oddíly faktur](understand-mca-roles.md#invoice-section-roles-and-tasks).
 
+Osoba, od které požadujete vlastnictví fakturace, musí mít jednu z následujících rolí:
+
+- Pro podnikovou Smlouvu se zákazníkem Microsoftu to je vlastník fakturace.
+- Pro smlouvu Enterprise to je vlastník účtu.
+- Pro fakturační účet programu Microsoft Online Service je to správce účtu.
+
+Další informace najdete v tématu věnovaném [zobrazení fakturačních účtů na webu Azure Portal](view-all-accounts.md).
+
 ## <a name="request-billing-ownership"></a>Podání žádosti o vlastnictví fakturace
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako vlastník nebo přispěvatel oddílu faktury pro fakturační účet spojený se smlouvou se zákazníkem Microsoftu.
 1. Vyhledejte **Cost Management a fakturace**.  
     ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. Na stránce s rozsahy fakturace vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.  
+1. Na stránce s rozsahy fakturace vyberte **Rozsahy fakturace** a potom vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.  
     [![Screenshot zachycující hledání položky Cost Management a fakturace na portálu](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > Azure Portal si pamatuje poslední rozsah fakturace, který jste využili, a tento rozsah se zobrazí, když na stránku Správa nákladů a fakturace vrátíte příště. Pokud jste stránku Správa nákladů a fakturace navštívili dřív, stránka s rozsahy fakturace se vám nezobrazí. Pokud ano, zkontrolujte, že jste ve [správném rozsahu](#check-for-access). Pokud ne, [přepněte rozsah](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) a vyberte fakturační účet pro smlouvu se zákazníkem Microsoftu.
@@ -41,7 +50,7 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
 1. V seznamu vyberte oddíl faktury. Jakmile převezmete vlastnictví předplatných, jejich využití se přiřadí k tomuto oddílu faktury fakturačního profilu.
 1. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.  
     [![Screenshot znázorňující výběr možnosti Žádosti o převod](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. Zadejte e-mailovou adresu uživatele, o jehož vlastnictví fakturace žádáte. Uživatel musí být správcem účtu pro fakturační účet programu služby Microsoft Online, nebo vlastníkem účtu souvisejícího se smlouvou Enterprise. Další informace najdete v tématu věnovaném [zobrazení fakturačních účtů na webu Azure Portal](view-all-accounts.md). Vyberte možnost **Poslat žádost o převod**.  
+1. Zadejte e-mailovou adresu uživatele, o jehož vlastnictví fakturace žádáte. Vyberte možnost **Poslat žádost o převod**.  
     [![Screenshot znázorňující výběr možnosti Poslat žádost o převod](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. Tento uživatel obdrží e-mail s pokyny ke kontrole vaší žádosti o převod.  
     ![Snímek obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -67,6 +76,7 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
 1. V seznamu vyberte oddíl faktury, pro který se odeslala žádost o převod.
 1. Vlevo dole vyberte **Žádosti o převod**. Zobrazí se stránka žádostí o převod, která obsahuje následující informace:  
     [![Screenshot znázorňující seznam žádostí o převod](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |Sloupec|Definice|
    |---------|---------|
    |Datum žádosti|Datum odeslání žádosti o převod|
@@ -151,7 +161,7 @@ Pokud převádíte předplatná smlouvy Enterprise (EA) nebo Smlouvy se zákazn�
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
-Na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí Azure RBAC (řízení přístupu na základě role)[../role-based-access-control/overview.md] nemá převod vliv.
+Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="azure-support-plan"></a>plán podpory Azure
 

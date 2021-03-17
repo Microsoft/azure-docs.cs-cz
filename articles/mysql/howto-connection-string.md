@@ -1,18 +1,18 @@
 ---
 title: Připojovací řetězce – Azure Database for MySQL
 description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení k Azure Database for MySQL, včetně ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python a Ruby.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2dc701b15b0fd30af0f4a28e39153c0ee77ae128
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 40af2660f0052a876ef9310bc2426295ba67558b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850334"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541483"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Postup připojení aplikací k Azure Database for MySQL
 Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MySQL, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.
@@ -63,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o připojovacím řetězci z Azure Portal
-V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MySQL server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![ podokno připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MySQL server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: :::image type="content" source="./media/howto-connection-strings/connection-strings-on-portal.png" alt-text="podokno připojovací řetězce v Azure Portal":::
 
 Řetězec poskytuje podrobnosti, jako je například ovladač, server a další parametry připojení databáze. Upravte tyto příklady tak, aby používaly vlastní parametry, jako je třeba název databáze, heslo a tak dále. Pak můžete použít tento řetězec pro připojení k serveru z kódu a aplikací.
 

@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8c834caa2285135b7d39c440489b42c366418042
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5833308f03d328d988ac818d83ff5ee618a4c79c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186465"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563568"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Převod konfigurací na složené prostředky
 
@@ -49,7 +49,7 @@ Rutina načte obsah vaší konfigurace, získá seznam parametrů a vygeneruje n
 
 Jakmile vygenerujete modul, můžete zvýšit verzi a přidat poznámky k verzi pokaždé, když provedete změny a publikujete ji do vlastního [úložiště PowerShellGet](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
 
-Jakmile vytvoříte složený modul prostředků obsahující vaši konfiguraci (nebo několik konfigurací), můžete je použít v [prostředí pro vytváření obsahu](./compose-configurationwithcompositeresources.md) v Azure nebo je přidat do [konfiguračních skriptů DSC](/powershell/scripting/dsc/configurations/configurations) a vygenerovat soubory MOF a [nahrajte soubory MOF do Azure Automation](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation).
+Jakmile vytvoříte složený modul prostředků obsahující vaši konfiguraci (nebo několik konfigurací), můžete je použít v [prostředí pro vytváření obsahu](./compose-configurationwithcompositeresources.md) v Azure, nebo je přidat do [konfiguračních skriptů DSC](/powershell/scripting/dsc/configurations/configurations) pro generování souborů MOF a [nahrání souborů MOF do Azure Automation](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation).
 Pak můžete své servery zaregistrovat z [místního](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines) prostředí nebo [v Azure](./automation-dsc-onboarding.md#enable-azure-vms) a vyžádat si konfigurace.
 Nejnovější aktualizace projektu také publikovala [Runbooky](https://www.powershellgallery.com/packages?q=DscGallerySamples) pro Azure Automation pro automatizaci procesu importu konfigurací z Galerie prostředí PowerShell.
 

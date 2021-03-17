@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: návrh databáze s více instancemi – Citus (multi-tenant) – Azure Database for PostgreSQL'
-description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky na Azure Database for PostgreSQL Citus (Scale).
+description: V tomto kurzu se dozvíte, jak vytvořit škálovatelnou aplikaci pro více tenantů s Azure Database for PostgreSQL Citus (škálování).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: d8dee086f55c5596af50245b5271d98536eb7e57
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386384"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026195"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (škálování)
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (
 > * Sdílení dat mezi klienty
 > * Přizpůsobení schématu pro jednotlivé klienty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -275,6 +275,5 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů.
 
 V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data uvnitř i mezi klienty a k přizpůsobení schématu pro každého tenanta.
 
-V dalším kroku se dozvíte o konceptech škálování.
-> [!div class="nextstepaction"]
-> [Typy uzlů s měřítkem](https://aka.ms/hyperscale-concepts)
+- Informace o [typech uzlů](./concepts-hyperscale-nodes.md) skupin serverů
+- Určení nejlepší [počáteční velikosti](howto-hyperscale-scale-initial.md) pro skupinu serverů

@@ -14,13 +14,13 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: bace9130f87300585d1e7d90c6c1a30041171f4b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-csharp
+ms.openlocfilehash: 098fb0ed967dcacac24ce3abfd4843f9fe14ff49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324654"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727171"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
 
@@ -134,7 +134,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     !! <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" />
-    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME"android:protectionLevel="normal" />
+    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" android:protectionLevel="normal" />
 
     ```
 

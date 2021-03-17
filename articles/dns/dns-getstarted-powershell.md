@@ -6,14 +6,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: e33f6fdba1a15032d76b94804d610e292f663d59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f2563c33d02490732f73fcf9d1a78f548ec2d3e2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76937160"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282220"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rychlé zprovoznění: Vytvoření záznamu a zóny Azure DNS pomocí Azure PowerShellu
 
@@ -25,9 +26,12 @@ K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pok
 
 Azure DNS také podporuje vytváření privátních domén. Podrobné pokyny k vytvoření první privátní zóny DNS a záznamu najdete v tématu [Začínáme s privátními zónami DNS Azure pomocí PowerShellu](private-dns-getstarted-powershell.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -89,11 +93,11 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
 
    Mělo by se zobrazit něco podobného jako na následující obrazovce:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Snímek obrazovky zobrazuje okno příkazového řádku s vyhledávacím příkazem n s a hodnotami pro server, adresu, název a adresu.](media/dns-getstarted-portal/nslookup.PNG)
 
-Název hostitele **www\.contoso. xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
+Název hostitele **www \. contoso. xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 
-## <a name="delete-all-resources"></a>Odstranění všech prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nejsou potřeba, můžete odstranit všechny prostředky vytvořené v rámci tohoto rychlého startu odstraněním skupiny prostředků:
 

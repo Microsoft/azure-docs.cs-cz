@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a5c09ef5ca1e3a4f47c4fd9d7d022c000378a6d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046366"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472238"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>Načtení dat z CSV do Azure SQL Database nebo spravované instance SQL (ploché soubory)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ K dokončení kroků v tomto článku potřebujete:
 * Nainstalovaný nástroj příkazového řádku bcp
 * Nainstalovaný nástroj příkazového řádku sqlcmd
 
-Nástroje bcp a sqlcmd si můžete stáhnout z webu [Stažení softwaru společnosti Microsoft][Microsoft Download Center].
+Nástroje BCP a Sqlcmd si můžete stáhnout z [dokumentace Microsoft Sqlcmd] [ https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 ].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data ve formátu ASCII nebo UTF-16
 
@@ -118,8 +118,8 @@ Výsledky by měly vypadat takto:
 Postup migrace databáze serveru SQL Server naleznete v části [Migrace databáze serveru SQL Server](database/migrate-to-database-from-sql-server.md).
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[bcp]: /sql/tools/bcp-utility
+[CREATE TABLE syntax]: /sql/t-sql/statements/create-table-azure-sql-data-warehouse
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433

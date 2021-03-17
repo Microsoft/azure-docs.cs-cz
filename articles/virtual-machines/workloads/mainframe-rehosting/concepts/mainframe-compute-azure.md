@@ -5,13 +5,13 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.service: virtual-machines
+ms.openlocfilehash: 32f259f20e0e24b4d5346c598e23fdc2df48dee6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998931"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556430"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Přesunout do Azure výpočetní sálové počítače
 
@@ -135,4 +135,4 @@ Jednotlivé úrovně můžou také poskytovat vhodné služby pro zotavení po h
 ### <a name="more-migration-resources"></a>Další zdroje migrace
 
 - [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

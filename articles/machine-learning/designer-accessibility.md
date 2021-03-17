@@ -1,5 +1,5 @@
 ---
-title: Použití funkcí usnadnění v Návrháři (Preview)
+title: Použití funkcí usnadnění v Návrháři
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o funkcích, které jsou k dispozici v návrháři, klávesových zkratek a obrazovkách čtečky
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210365"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90893425"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití klávesnice k použití návrháře Azure Machine Learning (Preview)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Použití klávesnice k použití návrháře Azure Machine Learning
 
 Naučte se používat čtečku klávesnice a obrazovky k používání návrháře Azure Machine Learning. Seznam klávesových zkratek, které fungují všude v Azure Portal, najdete v tématu [klávesové zkratky v Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
@@ -53,7 +53,7 @@ Připojení modulu k jinému modulu:
 
 ## <a name="navigation-shortcuts"></a>Navigační zástupci
 
-| Klávesnice | Popis |
+| Klávesnice | Description |
 |-|-|
 | Ctrl+F6 | Přepnout fokus mezi plátnem a stromem modulu |
 | CTRL + F1   | Při zaměření na uzel ve stromu modulů otevřít informační kartu |
@@ -70,7 +70,7 @@ Použijte následující klávesové zkratky s přístupovým klíčem. Další 
 | Přístupový klíč + R | Spustit |
 | Přístupový klíč + P | Publikovat |
 | Přístupová klávesa + C | Klonování |
-| Přístupová klávesa + D | Nasazení |
+| Přístupová klávesa + D | Nasadit |
 | Přístupový klíč + I | Vytvořit nebo aktualizovat kanál odvození |
 | Přístupový klíč + B | Vytvořit nebo aktualizovat kanál odvození dávky |
 | Přístupový klíč + K | Otevřete rozevírací seznam vytvořit kanál odvození. |

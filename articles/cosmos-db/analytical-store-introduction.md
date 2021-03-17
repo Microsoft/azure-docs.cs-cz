@@ -1,24 +1,25 @@
 ---
-title: Co je Azure Cosmos DB analytické úložiště (Preview)?
+title: Co je Azure Cosmos DB analytické úložiště?
 description: Přečtěte si o Azure Cosmos DB transakční (založený na řádku) a analytickém (sloupcovém) úložišti. Výhody analytického úložiště, dopad na výkon pro rozsáhlé úlohy a automatickou synchronizaci dat z transakčního úložiště do analytického úložiště
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/30/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: seo-nov-2020
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037095"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452850"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Co je Azure Cosmos DB analytické úložiště?
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB analytické úložiště je momentálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Azure Cosmos DB analytické úložiště je plně izolované úložiště sloupců, které umožňuje rozsáhlou analýzu před provozními daty v Azure Cosmos DB, aniž by to mělo dopad na vaše transakční úlohy. 
 
-Azure Cosmos DB analytické úložiště je plně izolované úložiště sloupců, které umožňuje rozsáhlou škálu analýz dat v rámci vašeho Azure Cosmos DB, aniž by to mělo dopad na vaše transakční úlohy.  
+Azure Cosmos DB transakční úložiště je nezávislá schématu a umožňuje iterovat na transakčních aplikacích bez nutnosti zabývat se správou schématu nebo indexu. Na rozdíl od toho Azure Cosmos DB analytické úložiště optimalizuje výkon dotazů v analytických dotazech. Tento článek popisuje podrobné informace o analytickém úložišti.
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Problémy s velkými objemy analýz provozních dat
 
@@ -30,11 +31,11 @@ Kanály ETL jsou také složité při zpracování aktualizací provozních dat 
 
 ## <a name="column-oriented-analytical-store"></a>Sloupcově orientované analytické úložiště
 
-Azure Cosmos DB analytické úložiště řeší problémy se složitostí a latencí, ke kterým dochází v tradičních kanálech ETL. Azure Cosmos DB analytické úložiště může automaticky synchronizovat vaše provozní data do samostatného úložiště sloupce. Formát úložiště sloupců je vhodný pro analytické analytické dotazy, které jsou optimalizované tak, aby se zvýšila latence těchto dotazů.
+Azure Cosmos DB analytické úložiště řeší problémy se složitostí a latencí, ke kterým dochází v tradičních kanálech ETL. Azure Cosmos DB analytické úložiště může automaticky synchronizovat vaše provozní data do samostatného úložiště sloupce. Formát úložiště sloupců je vhodný pro provádění rozsáhlých analytických dotazů optimalizovaným způsobem, což vede k lepší latenci takových dotazů.
 
-Pomocí odkazu na Azure synapse teď můžete vytvářet HTAP řešení bez ETL tím, že přímo propojíte s Azure Cosmos DB analytické úložiště z analýzy synapse. Umožňuje provozovat rozsáhlé analýzy v reálném čase pro vaše provozní data.
+Pomocí odkazu na Azure synapse teď můžete vytvářet HTAP řešení bez ETL tím, že přímo propojíte s Azure Cosmos DB analytické úložiště z Azure synapse Analytics. Umožňuje provozovat rozsáhlé analýzy v reálném čase pro vaše provozní data.
 
-## <a name="analytical-store-details"></a>Podrobnosti o analytickém úložišti
+## <a name="features-of-analytical-store"></a>Funkce analytického úložiště 
 
 Když v kontejneru Azure Cosmos DB povolíte analytické úložiště, nové úložiště sloupce se interně vytvoří na základě provozních dat ve vašem kontejneru. Toto úložiště sloupce je trvale zachované odděleně od transakčního úložiště orientovaného na řádky tohoto kontejneru. Vložení, aktualizace a odstranění provozních dat se automaticky synchronizují s analytickým úložištěm. K synchronizaci dat nepotřebujete kanál změn ani ETL.
 
@@ -60,7 +61,7 @@ V důsledku analytických dotazů neexistuje žádný vliv na výkon transakčn�
 
 ### <a name="auto-sync"></a>Automatická synchronizace
 
-Automatická synchronizace odkazuje na plně spravovanou funkci Azure Cosmos DB, kde se vložení, aktualizace a odstranění dat na provozní data automaticky synchronizují z transakčního úložiště do analytického úložiště téměř v reálném čase do 5 minut.
+Automatická synchronizace odkazuje na plně spravovanou funkci Azure Cosmos DB, kde se vložení, aktualizace a odstranění dat na provozní data automaticky synchronizují z transakčního úložiště do analytického úložiště téměř v reálném čase. Latence automatické synchronizace je obvykle do 2 minut. V případě sdílené databáze propustnosti s velkým počtem kontejnerů může být latence automatické synchronizace v jednotlivých kontejnerech vyšší a trvat až 5 minut. Rádi bychom se dozvěděli, jak tato latence vyhovuje vašim scénářům. V takovém případě se prosím obraťte na [tým Azure Cosmos DB](mailto:cosmosdbsynapselink@microsoft.com).
 
 Funkce automatické synchronizace společně s analytickým úložištěm nabízí tyto klíčové výhody:
 
@@ -70,35 +71,94 @@ Při použití horizontálního dělení Azure Cosmos DB transakční úložišt
 
 #### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Automatické zpracování aktualizací schématu
 
-Azure Cosmos DB transakční úložiště je nezávislá schématu a umožňuje iterovat na transakčních aplikacích bez nutnosti zabývat se správou schématu nebo indexu. Na rozdíl od toho Azure Cosmos DB analytické úložiště optimalizuje výkon dotazů v analytických dotazech. Díky funkci automatické synchronizace Azure Cosmos DB spravuje odvození schématu prostřednictvím nejnovějších aktualizací z transakčního úložiště.  Spravuje také reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů.
+Azure Cosmos DB transakční úložiště je nezávislá schématu a umožňuje iterovat na transakčních aplikacích bez nutnosti zabývat se správou schématu nebo indexu. Na rozdíl od toho Azure Cosmos DB analytické úložiště optimalizuje výkon dotazů v analytických dotazech. Díky funkci automatické synchronizace Azure Cosmos DB spravuje odvození schématu přes nejnovější aktualizace z transakčního úložiště.  Spravuje také reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů.
 
-V případě vývoje schématu, kde se v průběhu času přidávají nové vlastnosti, analytické úložiště automaticky prezentuje sjednocené schéma ve všech historických schématech v transakčním úložišti.
+Když se vaše schéma vyvíjí a v průběhu času se přidají nové vlastnosti, analytické úložiště automaticky prezentuje sjednocené schéma ve všech historických schématech v transakčním úložišti.
 
-Pokud všechna provozní data v Azure Cosmos DB řídí dobře definované schéma pro analýzy, pak se schéma automaticky odvozuje a v analytickém úložišti se reprezentuje správně. Pokud jsou správně definované schéma pro analýzu, jak je definováno níže, porušuje určité položky, nebudou zahrnuty do analytického úložiště. Pokud máte scénáře blokované v důsledku dobře definovaného schématu definice analýz, pošlete [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com)e-mail.
+##### <a name="schema-constraints"></a>Omezení schématu
 
-Dobře definované schéma pro analýzu je definováno s následujícími požadavky:
+Následující omezení se vztahují na provozní data v Azure Cosmos DB, když povolíte analytické úložiště pro automatické odvození a reprezentaci schématu:
 
-* Vlastnost má vždycky stejný typ napříč několika položkami.
-
-  * Například `{"a":123} {"a": "str"}` nemá správně definované schéma, protože `"a"` je někdy řetězec a někdy číslo. 
+* Ve schématu můžete mít maximálně 200 vlastností na úrovni vnoření a maximální hloubku vnoření 5.
   
-    V tomto případě analytické úložiště zaregistruje datový typ `“a”` jako datový typ `“a”` v první vyskytující položce po dobu života kontejneru. Položky, ve kterých se datový typ liší, nebudou `“a”` zahrnuty do analytického úložiště.
+  * Položka s 201 vlastnostmi na nejvyšší úrovni nevyhovuje tomuto omezení, a proto nebude reprezentována v analytickém úložišti.
+  * Položka s více než pěti vnořenými úrovněmi ve schématu také nevyhovuje tomuto omezení, a proto nebude reprezentována v analytickém úložišti. Například následující položka nesplňuje požadavek:
+
+     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+
+* Názvy vlastností by měly být jedinečné při porovnání malých a velkých písmen. Například následující položky nesplňují toto omezení, a proto nebudou v analytickém úložišti zastoupeny:
+
+  `{"Name": "fred"} {"name": "john"}` – "Name" a "Name" jsou stejné, pokud jsou porovnány způsobem, který nerozlišuje velká a malá písmena.
+
+##### <a name="schema-representation"></a>Reprezentace schématu
+
+V analytickém úložišti existují dva režimy reprezentace schématu. Tyto režimy dělají kompromisy mezi jednoduchostí sloupcové reprezentace, zpracováním polymorfních schémat a jednoduchostí dotazování:
+
+* Dobře definovaná reprezentace schématu
+* Reprezentace schématu s úplnou věrností
+
+> [!NOTE]
+> U účtů rozhraní API SQL (Core) je v případě, že je povolené analytické úložiště, správně definované výchozí reprezentace schématu v analytickém úložišti. Vzhledem k tomu, že Azure Cosmos DB API pro účty MongoDB, je výchozí reprezentace schématu v analytickém úložišti úplnou reprezentací schématu přesnosti. Pokud máte scénáře, které vyžadují jinou reprezentaci schématu, než je výchozí nabídka pro každé z těchto rozhraní API, umožněte vám [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com) .
+
+**Dobře definovaná reprezentace schématu**
+
+Dobře definovaná reprezentace schématu vytvoří jednoduché tabulkové vyjádření nezávislá dat schématu v transakčním úložišti. Dobře definovaná reprezentace schématu má následující požadavky:
+
+* Vlastnost vždy má stejný typ v několika položkách.
+
+  * Například `{"a":123} {"a": "str"}` nemá správně definované schéma, protože `"a"` je někdy řetězec a někdy číslo. V tomto případě analytické úložiště zaregistruje datový typ `“a”` jako datový typ `“a”` v první vyskytující položce po dobu života kontejneru. Položky, ve kterých se datový typ liší, nebudou `“a”` zahrnuty do analytického úložiště.
   
-    Tento stav se nevztahuje na vlastnosti null. Například `{"a":123} {"a":null}` je stále správně definován.
+    Tento stav se nevztahuje na vlastnosti null. Například `{"a":123} {"a":null}` je stále dobře definován.
 
 * Typy polí musí obsahovat jeden opakovaný typ.
 
-  * Nejedná se například `{"a": ["str",12]}` o dobře definované schéma, protože pole obsahuje kombinaci typů Integer a String.
+  * Například `{"a": ["str",12]}` není správně definované schéma, protože pole obsahuje kombinaci celočíselného a řetězcového typu.
 
-* Existuje maximálně 200 vlastností na libovolné úrovni vnoření schématu a maximální hloubka vnořování 5.
+> [!NOTE]
+> Pokud Azure Cosmos DB analytické úložiště následuje dobře definovaná reprezentace schématu a výše uvedená specifikace je v rozporu s některými položkami, nebudou tyto položky součástí analytického úložiště.
 
-  * Položka s 201 vlastnostmi na nejvyšší úrovni nemá dobře definované schéma.
+**Reprezentace schématu s úplnou věrností**
 
-  * Položka s více než pěti vnořenými úrovněmi ve schématu také nemá dobře definované schéma. Například `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`.
+Úplná reprezentace schématu přesnosti je navržená tak, aby zpracovávala celou škálu polymorfních schémat v provozních datech nezávislá schématu. V tomto vyjádření schématu nejsou žádné položky z analytického úložiště vynechány, i když nejsou porušena dobře definovaná omezení schématu (která nemají pole se smíšeným datovým typem ani pole se smíšeným datovým typem).
 
-* Názvy vlastností jsou v porovnání s rozlišováním velkých a malých písmen jedinečné.
+Toho dosáhnete tak, že přeložíte vlastnosti listu provozních dat do analytického úložiště s odlišnými sloupci na základě datového typu hodnot ve vlastnosti. Názvy vlastností listu se rozšiřují pomocí datových typů jako přípona ve schématu analytického úložiště tak, aby mohly být dotazy bez nejednoznačnosti.
 
-  * Například následující položky nemají dobře definované schéma `{"Name": "fred"} {"name": "john"}` – `"Name"` a `"name"` jsou stejné při porovnání s rozlišováním malých a velkých písmen
+Řekněme například, že se v transakčním úložišti vezme následující ukázkový dokument:
+
+```json
+{
+name: "John Doe",
+age: 32,
+profession: "Doctor",
+address: {
+  streetNo: 15850,
+  streetName: "NE 40th St.",
+  zip: 98052
+},
+salary: 1000000
+}
+```
+
+Vlastnost List `streetNo` v rámci vnořeného objektu `address` bude reprezentována ve schématu analytického úložiště jako sloupec `address.object.streetNo.int32` . Datový typ se přidá jako přípona do sloupce. To znamená, že pokud se do transakčního úložiště přidá jiný dokument, kde hodnota vlastnosti listu `streetNo` je "123" (Všimněte si, že se jedná o řetězec), schéma analytického úložiště se automaticky rozvíjejí bez změny typu dříve zapsaného sloupce. Nový sloupec přidaný do analytického úložiště, ve `address.object.streetNo.string` kterém je tato hodnota "123" uložena.
+
+**Mapování datového typu na mapu přípon**
+
+Tady je mapa všech datových typů vlastností a jejich reprezentace přípon v analytickém úložišti:
+
+|Původní datový typ  |Auditování  |Příklad  |
+|---------|---------|---------|
+| dvojité |  ". float64" |    24,99|
+| Pole | ". Array" |    ["a", "b"]|
+|Binární | . Binary |0|
+|Logická hodnota    | . bool   |Pravda|
+|Int32  | . Int32  |123|
+|Int64  | ". Int64"  |255486129307|
+|Null   | ". null"   | null|
+|Řetězec|    řetězec ". String" | "ABC"|
+|Timestamp |    ". timestamp" |  Časové razítko (0, 0)|
+|DateTime   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
+|ObjectId   |". objectId"    | ObjectId ("5f3f7b59330ec25c132623a2")|
+|Dokument   |". Object" |    {"a": "a"}|
 
 ### <a name="cost-effective-archival-of-historical-data"></a>Nákladově efektivní archivace historických dat
 
@@ -112,18 +172,18 @@ Pokud máte globálně distribuovaný Azure Cosmos DB účet, pak po povolení a
 
 ### <a name="security"></a>Zabezpečení
 
-Ověřování pomocí analytického úložiště je stejné jako transakční úložiště pro danou databázi. K ověřování můžete použít hlavní klíče nebo klíče jen pro čtení. V synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
+Ověřování pomocí analytického úložiště je stejné jako transakční úložiště pro danou databázi. Pro ověřování můžete použít primární klíče nebo klíče jen pro čtení. V synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Podpora více běhových prostředí Azure synapse Analytics
 
 Analytické úložiště je optimalizováno pro zajištění škálovatelnosti, pružnosti a výkonu pro analytické úlohy bez jakékoli závislosti na výpočetních časech. Technologie úložiště je samoobslužně spravovaná pro optimalizaci vašich úloh analýzy bez ručního úsilí.
 
-Díky oddělení analytického úložného systému z výpočetního systému se data v Azure Cosmos DB analytickém úložišti dají dotazovat souběžně z různých běhových modulů, které Azure synapse Analytics podporuje. Od dnešního dne podporuje synapse Analytics Apache Spark a SQL Server bez Azure Cosmos DB analytického úložiště.
+Díky oddělení analytického úložného systému z výpočetního systému se data v Azure Cosmos DB analytickém úložišti dají dotazovat souběžně z různých běhových modulů, které Azure synapse Analytics podporuje. Od dnešního dne podporuje Azure synapse Analytics Apache Spark fond SQL bez serveru s využitím Azure Cosmos DB analytického úložiště.
 
 > [!NOTE]
-> Z analytického úložiště se dá číst jenom pomocí synapse analýzy běhu. Data můžete zapsat zpátky do transakčního úložiště jako obsluhující vrstvu.
+> Z analytického úložiště se můžete číst jenom pomocí doby běhu Azure synapse Analytics. Data můžete zapsat zpátky do transakčního úložiště jako obsluhující vrstvu.
 
-## <a name="pricing"></a><a id="analytical-store-pricing"></a>Stanov
+## <a name="pricing"></a><a id="analytical-store-pricing"></a> Stanov
 
 Analytické úložiště sleduje cenový model založený na spotřebě, kde se vám účtují poplatky za:
 
@@ -131,20 +191,17 @@ Analytické úložiště sleduje cenový model založený na spotřebě, kde se 
 
 * Analytické operace zápisu: plně spravovaná synchronizace aktualizací provozních dat do analytického úložiště z transakčního úložiště (Automatická synchronizace)
 
-* Analytické operace čtení: operace čtení provedené na analytickém úložišti z synapse Analytics Spark a za běhu bez SQL serveru.
-
-> [!NOTE]
-> Azure Cosmos DB analytické úložiště je dostupné ve verzi Public Preview bez jakýchkoli poplatků do 30. srpna 2020.
+* Analytické operace čtení: operace čtení prováděné s analytickým úložištěm z fondu Azure synapse Analytics Spark a bez serveru SQL pro provoz.
 
 Ceny za analytické úložiště jsou oddělené od cenového modelu úložiště transakcí. V analytickém úložišti neexistuje koncept zřízené ru. Úplné podrobnosti o cenovém modelu pro analytické úložiště najdete na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 Abyste získali odhad nákladů na nejvyšší úroveň, abyste mohli analytické úložiště v kontejneru Azure Cosmos DB povolit, můžete použít [Plánovač kapacity Azure Cosmos DB](https://cosmos.azure.com/capacitycalculator/) a získat odhad nákladů na analytické úložiště a operace zápisu. Náklady na operace čtení v analytickém režimu závisí na charakteristikách úloh analýzy, ale jako odhad vysoké úrovně, skenování 1 TB dat v analytickém úložišti obvykle vede k 130 000 operací analýzy čtení a výsledkem je cena $0,065.
 
-## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analytická hodnota TTL (Time to Live)
+## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analytická hodnota TTL (Time to Live)
 
 Analytická hodnota TTL pro kontejner určuje, jak dlouho se mají uchovávat data v analytickém úložišti. 
 
-Vložení, aktualizace a odstranění provozních dat se automaticky synchronizují z transakčního úložiště do analytického úložiště, bez ohledu na konfiguraci transakčního standardu TTL. Uchovávání těchto provozních dat v analytickém úložišti se dá řídit analytickou hodnotou TTL na úrovni kontejneru, jak je uvedeno níže:
+Pokud je analytické úložiště povolené, vkládání, aktualizace a odstraňování provozních dat se automaticky synchronizují z transakčního úložiště do analytického úložiště, bez ohledu na konfiguraci transakčního standardu TTL. Uchovávání těchto provozních dat v analytickém úložišti se dá řídit analytickou hodnotou TTL na úrovni kontejneru, jak je uvedeno níže:
 
 Analytická hodnota TTL na kontejneru je nastavena pomocí `AnalyticalStoreTimeToLiveInSeconds` vlastnosti:
 
@@ -152,13 +209,20 @@ Analytická hodnota TTL na kontejneru je nastavena pomocí `AnalyticalStoreTimeT
 
 * Je-li k dispozici a hodnota je nastavena na "-1": analytické úložiště uchovává všechna historická data bez ohledu na uchovávání dat v transakčním úložišti. Toto nastavení indikuje, že analytické úložiště nemá nekonečné uchovávání vašich provozních dat.
 
-* Je-li k dispozici a hodnota je nastavena na nějaké kladné číslo "n", vyprší platnost položek z analytického úložiště "n" sekund po datu poslední změny v transakčním úložišti. Toto nastavení se dá využít, pokud chcete uchovávat provozní data po určitou dobu v analytickém úložišti bez ohledu na uchovávání dat v transakčním úložišti.
+* Je-li k dispozici a hodnota je nastavena na nějaké kladné číslo "n", vyprší platnost položek z analytického úložiště "n" sekund po datu poslední změny v transakčním úložišti. Toto nastavení se dá využít, pokud chcete uchovávat provozní data po určitou dobu v analytickém úložišti, bez ohledu na uchovávání dat v transakčním úložišti.
 
 Některé body ke zvážení:
+
 *   Až bude analytické úložiště povolené s analytickou hodnotou TTL, dá se později aktualizovat na jinou platnou hodnotu. 
 *   Zatímco transakční hodnotu TTL je možné nastavit na úrovni kontejneru nebo položky, analytická hodnota TTL se dá nastavit jenom na úrovni kontejneru v současnosti.
 *   Můžete dosáhnout delšího uchovávání provozních dat v analytickém úložišti nastavením analytického TTL >= transakční hodnota TTL na úrovni kontejneru.
 *   Analytické úložiště je možné provést zrcadlením transakčního úložiště nastavením analytického TTL = transakční hodnota TTL.
+
+Pokud povolíte analytické úložiště na kontejneru:
+
+* Z Azure Portal je možnost analytického TTL nastavena na výchozí hodnotu-1. Tuto hodnotu můžete změnit na n sekund, a to tak, že přejdete na nastavení kontejneru v části Průzkumník dat. 
+ 
+* V rámci Azure SDK nebo PowerShellu nebo rozhraní příkazového řádku (CLI) je možné povolit možnost analytického TTL nastavením na hodnotu-1 nebo n. 
 
 Další informace najdete v tématu [Postup konfigurace analytického TTL na kontejneru](configure-synapse-link.md#create-analytical-ttl).
 

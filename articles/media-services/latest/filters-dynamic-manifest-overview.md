@@ -1,27 +1,28 @@
 ---
 title: Filtrování manifestů pomocí dynamického balíčku
-titleSuffix: Azure Media Services
 description: Naučte se vytvářet filtry pomocí dynamického balíčku pro filtrování a selektivní streamování manifestů.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705198"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897658"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při doručování obsahu streamování s adaptivní přenosovou rychlostí do zařízení někdy potřebujete publikovat více verzí manifestu, aby se mohly zaměřit konkrétní možnosti zařízení nebo dostupná šířka pásma sítě. [Dynamický balíček](dynamic-packaging-overview.md) vám umožní určit filtry, které mohou vyfiltrovat konkrétní kodeky, rozlišení, přenosové rychlosti a kombinace zvukového stopu průběžně. Toto filtrování odstraní nutnost vytvářet více kopií. Jednoduše potřebujete publikovat novou adresu URL s konkrétní sadou filtrů nakonfigurovaných na vaše cílová zařízení (iOS, Android, byznysu nebo prohlížeče) a možnosti sítě (scénáře s vysokou šířkou pásma, mobilním nebo malou šířkou pásma). V takovém případě můžou klienti manipulovat s datovým proudem vašeho obsahu prostřednictvím řetězce dotazu (zadáním dostupných [filtrů assetů nebo filtrů účtu](filters-concept.md)) a pomocí filtrů streamovat konkrétní oddíly streamu.
 
@@ -56,7 +57,7 @@ Ke sledování přenosové rychlosti streamu videa můžete použít [stránku A
 
 Můžete použít filtry na protokoly streamování ABR: HLS, MPEG-POMLČKa a Smooth Streaming. V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -139,7 +140,7 @@ Další informace najdete v [tomto blogovém příspěvku](https://azure.microso
 
 ## <a name="considerations-and-limitations"></a>Důležité informace a omezení
 
-- Pro filtr VOD by se neměly nastavit hodnoty pro **forceEndTimestamp**, **presentationWindowDuration**a **liveBackoffDuration** . Používají se jenom pro scénáře živého filtru.
+- Pro filtr VOD by se neměly nastavit hodnoty pro **forceEndTimestamp**, **presentationWindowDuration** a **liveBackoffDuration** . Používají se jenom pro scénáře živého filtru.
 - Dynamický manifest funguje v hranicích skupinu GOP (klíčové snímky), takže ořezávání má skupinu GOPou přesnost.
 - Pro účty a filtry assetů můžete použít stejný název filtru. Filtry prostředků mají vyšší prioritu a přepíšou filtry účtu.
 - Pokud filtr aktualizujete, může trvat až 2 minuty, než koncový bod streamování aktualizuje pravidla. Pokud jste použili filtry pro poskytování obsahu (a ukládáte obsah do mezipaměti v proxy serverech a v mezipamětech CDN), může aktualizace těchto filtrů způsobit selhání přehrávače. Doporučujeme, abyste po aktualizaci filtru vymazali mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru.

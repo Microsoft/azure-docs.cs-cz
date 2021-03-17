@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03a6e927a074067e85f1a3adca38cae386d1af38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547694"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026212"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Rychlý Start: Vytvoření skupiny serverů Citus () v Azure Portal
 
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte
 
 Po připojení k uzlu koordinátora s jednoduchým škálováním pomocí psql můžete provést některé základní úlohy.
 
-Na serverech s škálovatelným škálováním existují tři typy tabulek:
+V rámci serverů Citus () Existují tři typy tabulek:
 
 - Distribuované nebo horizontálně dělené tabulky (rozprostření za účelem zvýšení kapacity pro výkon a paralelní zpracování)
 - Referenční tabulky (zachované více kopií)
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-V dalším kroku převezmeme tyto tabulky Postgres v uzlu koordinátora a oznámíme tak, aby se horizontálních oddílů napříč zaměstnanci. Uděláte to tak, že spustíte dotaz pro každou tabulku, která určuje klíč, na který se má horizontálních oddílů. V aktuálním příkladu horizontálních oddílů události a uživatele v tabulce `user_id` :
+V dalším kroku převezmeme tyto tabulky Postgres v uzlu koordinátora a oznámíme tak škálování (Citus), aby se na ně horizontálních oddílůi napříč zaměstnanci. Uděláte to tak, že spustíte dotaz pro každou tabulku, která určuje klíč, na který se má horizontálních oddílů. V aktuálním příkladu horizontálních oddílů události a uživatele v tabulce `user_id` :
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 Doposud dotazy zahrnovaly jenom události GitHubu \_ , ale tyto informace můžeme kombinovat s uživateli GitHubu \_ . Vzhledem k tomu, že jsme horizontálně dělené uživatele i události na stejný identifikátor ( `user_id` ), řádky obou tabulek s ID odpovídajícího uživatele budou společně [umístěny](concepts-hyperscale-colocation.md) na stejných uzlech databáze a lze je snadno připojit.
 
-V případě, že se připojíme k systému, může být do horizontálních oddílů spuštěno `user_id` Souběžné spouštění. Pojďme například najít uživatele, kteří vytvořili největší počet úložišť:
+Pokud se připojíme k `user_id` Citus, může se spuštění spojení do horizontálních oddílů spustit souběžně na pracovních uzlech. Pojďme například najít uživatele, kteří vytvořili největší počet úložišť:
 
 ```sql
 SELECT gu.login, count(*)
@@ -138,6 +138,5 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů.
 
 V tomto rychlém startu jste se dozvěděli, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data.
 
-Dále postupujte podle kurzu a sestavte škálovatelné víceklientské aplikace.
-> [!div class="nextstepaction"]
-> [Návrh databáze s více klienty](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- Postupujte podle kurzu pro [vytváření škálovatelných víceklientské aplikací](./tutorial-design-database-hyperscale-multi-tenant.md) .
+- Určení nejlepší [počáteční velikosti](howto-hyperscale-scale-initial.md) pro skupinu serverů

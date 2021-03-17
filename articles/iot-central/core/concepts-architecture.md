@@ -3,21 +3,19 @@ title: Koncepty architektury v Azure IoT Central | Microsoft Docs
 description: Tento článek představuje klíčové koncepty týkající se architektury Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337139"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796716"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
-
-
 
 Tento článek poskytuje přehled architektury Microsoft Azure IoT Central.
 
@@ -54,7 +52,7 @@ IoT Central povoluje pro IoT Edge zařízení následující funkce:
   - Telemetrii každý modul odesílá.
   - Vlastnosti každého modulu hlásí.
   - Příkazy, na které každý modul reaguje.
-  - Vztahy mezi modelem schopností zařízení IoT Edge brány a modelem schopností pro příjem dat z libovolného zařízení.
+  - Vztahy mezi zařízením IoT Edge brány a zařízením pro příjem dat.
   - Vlastnosti cloudu, které nejsou uložené na zařízení IoT Edge.
   - Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
 
@@ -104,7 +102,7 @@ Azure IoT Central používá Azure IoT Hub jako cloudovou bránu, která umožň
 - Správa zařízení.
 - Zabezpečte připojení zařízení.
 
-Další informace o IoT Hub najdete v tématu [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Další informace o IoT Hub najdete v tématu [Azure IoT Hub](../../iot-hub/index.yml).
 
 Další informace o připojení zařízení v Azure IoT Central najdete v tématu [připojení zařízení](concepts-get-connected.md).
 
@@ -133,12 +131,12 @@ V aplikaci IoT Central Azure definují šablony zařízení chování a možnost
 
 ![Architektura šablon](media/concepts-architecture/template-architecture.png)
 
-V šabloně zařízení IoT Central aplikace obsahuje:
+V IoT Central [Šablona zařízení](concepts-device-templates.md) obsahuje:
 
-- **Modely schopností zařízení** určují možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní.
+- **Model zařízení** , který určuje možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní.
 - **Vlastnosti cloudu** určují vlastnosti IoT Central úložišť pro zařízení. Tyto vlastnosti jsou uloženy pouze v IoT Central a nejsou nikdy odesílány do zařízení.
 - **Zobrazení** určují řídicí panely a formuláře, které tvůrce vytvoří, aby mohl obsluhu monitorovat a spravovat zařízení.
-- **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu schopností zařízení, aby byly lépe relevantní pro IoT Central aplikace.
+- **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu zařízení, aby byly lépe relevantní pro IoT Central aplikace.
 
 Aplikace může mít jedno nebo několik simulovaných a reálných zařízení založených na každé šabloně zařízení.
 
@@ -152,7 +150,7 @@ V aplikaci IoT Central Azure můžete [vytvářet a spouštět úlohy](howto-run
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
 
-[Správce může definovat pravidla přístupu](howto-manage-users-roles.md) pro aplikaci Azure IoT Central pomocí jedné z předdefinovaných rolí nebo vytvořením vlastní role. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět.
+Každá aplikace IoT Central má vlastní vestavěný systém RBAC. [Správce může definovat pravidla přístupu](howto-manage-users-roles.md) pro aplikaci Azure IoT Central pomocí jedné z předdefinovaných rolí nebo vytvořením vlastní role. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět.
 
 ## <a name="security"></a>Zabezpečení
 

@@ -1,25 +1,19 @@
 ---
 title: Rozšíření virtuálního počítače o agenta Azure Network Watcher pro Windows
 description: Nasaďte agenta Network Watcher na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
-services: virtual-machines-windows
-documentationcenter: ''
-author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 02/14/2017
-ms.author: mimckitt
-ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d336a39714712e5436086e22ad24fc942a7d850a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563536"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Windows
 
@@ -64,7 +58,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. Azure. NetworkWatcher |
@@ -76,7 +70,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Můžete použít schéma JSON popsané v předchozí části šablony Azure Resource Manager ke spuštění rozšíření agenta Network Watcher během nasazování šablony Azure Resource Manager.
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 Pomocí `Set-AzVMExtension` příkazu nasaďte rozšíření Network Watcher agenta virtuálního počítače do existujícího virtuálního počítače:
 

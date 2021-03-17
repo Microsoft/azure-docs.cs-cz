@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010295"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování služba-služba s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -32,9 +32,9 @@ V tomto článku se dozvíte, jak používat sadu .NET SDK k ověřování služ
 * **Vytvořte Azure Active Directory aplikaci "Web"**. Musíte dokončit kroky v [ověřování služba-služba s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
-1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
+1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový** a poté **projekt**.
 2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-3. Do **název projektu**zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
+3. Do **název projektu** zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
 
 4. Přidejte do projektu balíčky NuGet.
 

@@ -1,23 +1,18 @@
 ---
 title: Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
 description: Přečtěte si, jak přesunout data ze SAP Business Warehouse pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707272"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386964"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +41,7 @@ Pokud chcete povolit připojení k instanci SAP BW, nainstalujte následující 
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -66,7 +61,7 @@ Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Yes
 systemNumber | Číslo systému SAP BW systému | Desítkové číslo se dvěma číslicemi reprezentované jako řetězec. | Yes
 clientId | ID klienta klienta v systému SAP W. | Desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
+username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
 heslo | Heslo pro tohoto uživatele. | řetězec | Yes
 gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | řetězec | Yes
 encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
@@ -74,7 +69,7 @@ encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetěz
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Pro SAP BW datovou sadu **relačních**objektů typu není podporována žádná vlastnost specifická pro typ. 
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Pro SAP BW datovou sadu **relačních** objektů typu není podporována žádná vlastnost specifická pro typ. 
 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
@@ -278,8 +273,6 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 }
 ```
 
-
-
 ### <a name="type-mapping-for-sap-bw"></a>Mapování typů pro SAP BW
 Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím dvěma kroky:
 
@@ -290,13 +283,13 @@ Při přesunu dat z SAP BW se z SAP BW typů do typů .NET používají následu
 
 Datový typ ve slovníku ABAP | .NET – datový typ
 -------------------------------- | --------------
-ACCP |  Int
+ACCP |    Int
 CHAR | Řetězec
 CLNT | Řetězec
-CURR | Desetinné číslo
+CURR | Decimal
 CUKY | Řetězec
-18.12 | Desetinné číslo
-FLTP | Double
+18.12 | Decimal
+FLTP | dvojité
 INT1 | Byte
 INT2 | Int16
 INT4 | Int
@@ -304,7 +297,7 @@ JAZYK | Řetězec
 LCHR | Řetězec
 LRAW | Byte []
 PREC | Int16
-QUAN | Desetinné číslo
+QUAN | Decimal
 ZÍSKÁNÍ | Byte []
 RAWSTRING | Byte []
 ŘETEZCE | Řetězec

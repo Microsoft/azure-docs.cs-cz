@@ -1,20 +1,25 @@
 ---
 title: Přesun virtuálních počítačů do oblasti Azure se zónami dostupnosti pomocí Azure Site Recovery
+description: Přečtěte si, jak přesunout virtuální počítače do zóny dostupnosti v jiné oblasti s Site Recovery
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135461"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393128"
 ---
-# <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do zón dostupnosti
+# <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do Zóny dostupnosti
+
+V tomto článku se dozvíte, jak přesunout virtuální počítače Azure do zóny dostupnosti v jiné oblasti. Pokud chcete přejít do jiné zóny ve stejné oblasti, [Přečtěte si tento článek](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+
+
 Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporovány ve vybraných oblastech, jak je uvedeno v [oblastech, které podporují zóny dostupnosti](../availability-zones/az-region.md).
 
 V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instance* do konkrétní oblasti a chcete zlepšit dostupnost tím, že tyto virtuální počítače přesunete do zóny dostupnosti, můžete to udělat pomocí Azure Site Recovery. Tuto akci je dále možné rozdělit do kategorií:
@@ -23,7 +28,15 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 - Přesun virtuálních počítačů ve skupině dostupnosti do Zóny dostupnosti v cílové oblasti
 
 > [!IMPORTANT]
-> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé. Podporuje pouze přesun mezi zónami v rámci oblasti v několika oblastech. [Další informace](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+> K přesunutí virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti teď doporučujeme použít [Azure Resource stěhovací](../resource-mover/move-region-availability-zone.md). Resource stěhovací je ve verzi Public Preview a poskytuje:
+> - Jediné centrum pro přesouvání prostředků napříč oblastmi.
+> - Zkrácená doba přesunutí a složitost. Všechno, co potřebujete, je na jednom místě.
+> - Jednoduché a konzistentní prostředí pro přesun různých typů prostředků Azure.
+> - Snadný způsob, jak identifikovat závislosti mezi prostředky, které chcete přesunout. To vám pomůže přesunout související prostředky dohromady, takže vše funguje podle očekávání v cílové oblasti, a to po přesunutí.
+> - Automatické vyčištění prostředků ve zdrojové oblasti, pokud je chcete po přesunutí odstranit.
+> - Testování. Můžete si vyzkoušet přesunutí a pak ho zahodit, pokud nechcete provést úplné přesunutí.
+
+
 
 ## <a name="check-prerequisites"></a>Kontrola požadavků
 
@@ -49,7 +62,7 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 4. Pro virtuální počítače se systémem Linux postupujte podle pokynů, které poskytuje distributor pro Linux, a získejte nejnovější důvěryhodné kořenové certifikáty a seznam odvolaných certifikátů na virtuálním počítači.
 5. Ujistěte se, že nepoužíváte ověřovací proxy server k řízení připojení k síti pro virtuální počítače, které chcete přesunout.
 
-6. Pokud virtuální počítač, který se pokoušíte přesunout, nemá přístup k Internetu a k řízení odchozího přístupu používá proxy server brány firewall, Projděte si požadavky v části [Konfigurace odchozího připojení k síti](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
+6. Ověřte [požadavky na odchozí připojení pro virtuální počítače](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity).
 
 7. Identifikujte rozložení zdrojové sítě a prostředky, které aktuálně používáte k ověřování, včetně nástrojů pro vyrovnávání zatížení, skupin zabezpečení sítě a veřejné IP adresy.
 
@@ -81,21 +94,17 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 Následující kroky vás provedou při použití Azure Site Recovery k povolení replikace dat do cílové oblasti, než je nakonec přesunete do Zóny dostupnosti.
 
 > [!NOTE]
-> Tyto kroky jsou pro jeden virtuální počítač. Stejný postup můžete roztáhnout na více virtuálních počítačů. Přejít do trezoru Recovery Services, vybrat **+ replikovat**a vybrat příslušné virtuální počítače společně.
+> Tyto kroky jsou pro jeden virtuální počítač. Stejný postup můžete roztáhnout na více virtuálních počítačů. Přejít do trezoru Recovery Services, vybrat **+ replikovat** a vybrat příslušné virtuální počítače společně.
 
-1. V Azure Portal vyberte **virtuální počítače**a vyberte virtuální počítač, do kterého chcete přejít zóny dostupnosti.
+1. V Azure Portal vyberte **virtuální počítače** a vyberte virtuální počítač, do kterého chcete přejít zóny dostupnosti.
 2. V části **Operace** vyberte **Zotavení po havárii**.
-3. V části **Konfigurovat zotavení po havárii**  >  **cílová oblast**vyberte cílovou oblast, do které budete replikovat. Ujistěte se, že tato oblast [podporuje](../availability-zones/az-region.md) zóny dostupnosti.
-
-    ![Výběr cílové oblasti](media/azure-vms-to-zones/enable-rep-1.PNG)
-
+3. V části **Konfigurovat zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést. Ujistěte se, že tato oblast [podporuje](../availability-zones/az-region.md) zóny dostupnosti.
 4. Vyberte **Další: Upřesnit nastavení**.
 5. Vyberte odpovídající hodnoty pro cílové předplatné, cílovou skupinu prostředků virtuálního počítače a virtuální síť.
 6. V části **dostupnost** vyberte zónu dostupnosti, do které chcete virtuální počítač přesunout. 
    > [!NOTE]
    > Pokud nevidíte možnost pro skupinu dostupnosti nebo zónu dostupností, ujistěte se, že jsou splněné [předpoklady](#prepare-the-source-vms) a že se dokončí [Příprava](#prepare-the-source-vms) zdrojových virtuálních počítačů.
   
-    ![Výběry pro výběr zóny dostupnosti](media/azure-vms-to-zones/enable-rep-2.PNG)
 
 7. Vyberte **Povolit replikaci**. Tato akce spustí úlohu, která povolí replikaci pro virtuální počítač.
 
@@ -106,30 +115,29 @@ Po dokončení úlohy replikace můžete zkontrolovat stav replikace, upravit na
 1. V nabídce virtuálního počítače vyberte **Zotavení po havárii**.
 2. Můžete kontrolovat stav replikace, vytvořené body obnovení a zdrojovou a cílovou oblast na mapě.
 
-   ![Stav replikace](media/azure-to-azure-quickstart/replication-status.png)
 
 ## <a name="test-the-configuration"></a>Otestování konfigurace
 
-1. V nabídce virtuální počítač vyberte možnost **zotavení po havárii**.
+1. V nabídce virtuální počítač vyberte možnost  **zotavení po havárii**.
 2. Vyberte ikonu **Test převzetí služeb při selhání** .
-3. V části **testovací převzetí služeb při selhání**vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
+3. V části **testovací převzetí služeb při selhání** vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
 
    - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Zobrazí se časové razítko.
-   - **Vlastní**: Vyberete si libovolný bod obnovení.
+   - **Nejnovější konzistentní vzhledem k aplikacím** : Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Zobrazí se časové razítko.
+   - **Vlastní** : Vyberete si libovolný bod obnovení.
 
 3. Vyberte testovací cílovou virtuální síť Azure, ke které chcete přesunout virtuální počítače Azure, abyste mohli otestovat konfiguraci. 
 
     > [!IMPORTANT]
     > Doporučujeme použít pro selhání testu samostatnou síť virtuálních počítačů Azure, nikoli produkční síť v cílové oblasti, do které chcete virtuální počítače přesunout.
 
-4. Chcete-li zahájit testování přesunu, vyberte **OK**. Pokud chcete sledovat průběh, vyberte virtuální počítač a otevřete jeho vlastnosti. Nebo můžete vybrat úlohu **testovací převzetí služeb při selhání** v **Nastavení**název trezoru >  >  **úlohy**  >  **Site Recovery úlohy**.
+4. Chcete-li zahájit testování přesunu, vyberte **OK**. Pokud chcete sledovat průběh, vyberte virtuální počítač a otevřete jeho vlastnosti. Nebo můžete vybrat úlohu **testovací převzetí služeb při selhání** v **Nastavení** název trezoru >  >  **úlohy**  >  **Site Recovery úlohy**.
 5. Po dokončení převzetí služeb při selhání se na portálu Azure Portal v části **Virtuální počítače** objeví replika virtuálního počítače Azure. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
-6. Pokud chcete virtuální počítač vytvořený jako součást testování přesunu odstranit, vyberte v replikované položce možnost **vyčistit testovací převzetí služeb při selhání** . V části **poznámky**si zaznamenejte a uložte všechny poznámky spojené s testem.
+6. Pokud chcete virtuální počítač vytvořený jako součást testování přesunu odstranit, vyberte v replikované položce možnost **vyčistit testovací převzetí služeb při selhání** . V části **poznámky** si zaznamenejte a uložte všechny poznámky spojené s testem.
 
 ## <a name="move-to-the-target-region-and-confirm"></a>Přejděte do cílové oblasti a potvrďte
 
-1.  V nabídce virtuální počítač vyberte možnost **zotavení po havárii**.
+1.  V nabídce virtuální počítač vyberte možnost  **zotavení po havárii**.
 2. Vyberte ikonu **převzetí služeb při selhání** .
 3. V okně **Převzetí služeb při selhání** vyberte **Nejnovější**. 
 4. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Služba Site Recovery se před aktivací převzetí služeb při selhání pokusí zdrojový virtuální počítač vypnout. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **úlohy** . 

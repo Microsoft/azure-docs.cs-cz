@@ -1,18 +1,18 @@
 ---
 title: Přístup k protokolům auditu – Azure CLI – Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům auditu v Azure Database for MySQL z Azure CLI.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 568f49565c6e6d8062f8869566cf3879b7c97eaa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: db7ffabae785a589bacf349356079f6046039f9c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503323"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541993"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Konfigurace a přístup k protokolům auditu v rozhraní příkazového řádku Azure
 
@@ -20,14 +20,13 @@ ms.locfileid: "87503323"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete projít tento průvodce, budete potřebovat:
+Postup pro krokování této příručky:
 
-- [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
+- Potřebujete [server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 

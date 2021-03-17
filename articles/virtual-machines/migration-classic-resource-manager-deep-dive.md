@@ -1,29 +1,28 @@
 ---
-title: Klasický Azure Resource Manager migrace – Technical hluboká podrobně
+title: Nástroj pro migraci podporovaný platformou.
 description: Technická podrobněá migrace prostředků z modelu nasazení Classic na platformu, která je pro Azure Resource Manager podporovaná
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 43473b734968b25ca90bd8809c8291625011d46f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513107"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667003"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager
 
 > [!IMPORTANT]
 > V dnešní době se o 90% virtuálních počítačů IaaS používají [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Od 28. února 2020 se klasické virtuální počítače zastaraly a budou plně vyřazeny od 1. března 2023. [Přečtěte si další informace]( https://aka.ms/classicvmretirement) o této zastaralosti a [o tom, jak vás to ovlivní](./classic-vm-deprecation.md#how-does-this-affect-me).
 
-Pojďme se podrobně na migraci z modelu nasazení Azure Classic na model nasazení Azure Resource Manager. Podíváme se na zdroje na úrovni prostředků a funkcí, které vám pomůžou pochopit, jak platforma Azure migruje prostředky mezi těmito dvěma modely nasazení. Další informace najdete v článku oznámení služby:
+Pojďme se podrobně na migraci z modelu nasazení Azure Classic na model nasazení Azure Resource Manager. Podíváme se na zdroje na úrovni prostředků a funkcí, které vám pomůžou pochopit, jak platforma Azure migruje prostředky mezi těmito dvěma modely nasazení. Další informace najdete v článku oznámení služby: [migrace prostředků IaaS podporovaných platformou z klasický na Azure Resource Manager](migration-classic-resource-manager-overview.md).
 
-* Pro Linux: [migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Pro Windows:  [migrace prostředků IaaS podporovaných platformou z klasický na Azure Resource Manager](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrace prostředků IaaS z modelu nasazení Classic na Azure Resource Manager
 Nejdřív je důležité pochopit rozdíl mezi operacemi na úrovni datové roviny a rovinou správy v prostředcích infrastruktury jako služby (IaaS).
@@ -33,7 +32,7 @@ Nejdřív je důležité pochopit rozdíl mezi operacemi na úrovni datové rovi
 
 Rovina dat je stejná mezi modelem nasazení Classic a zásobníky Správce prostředků. Rozdílem je to, že během procesu migrace společnost Microsoft překládá reprezentace prostředků z modelu nasazení Classic na rozhraní Správce prostředků Stack. V důsledku toho je potřeba použít nové nástroje, rozhraní API a sady SDK ke správě prostředků v Správce prostředkůovém zásobníku.
 
-![Diagram, který ukazuje rozdíl mezi rovinou správy/řízení a rovinou dat](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Diagram, který ukazuje rozdíl mezi rovinou správy/řízení a rovinou dat](./media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -48,11 +47,11 @@ Než zahájíte migraci:
 * Naplánujte migraci mimo pracovní dobu, abyste mohli vyřešit případné neočekávané chyby, ke kterým by mohlo při migraci dojít.
 * Pro usnadnění ověření po dokončení kroku přípravy si stáhněte aktuální konfiguraci vašich virtuálních počítačů pomocí PowerShellu, příkazů rozhraní příkazového řádku nebo rozhraní REST API.
 * Než začnete s migrací, aktualizujte skripty pro automatizaci a provozní prostředí, aby zpracovávala model nasazení Správce prostředků. Volitelně můžete provádět operace načtení, když jsou prostředky v připraveném stavu.
-* Vyhodnoťte zásady Access Control na základě rolí (RBAC), které jsou nakonfigurované na IaaSch prostředcích v modelu nasazení Classic, a naplánujte po dokončení migrace.
+* Vyhodnoťte zásady řízení přístupu na základě role Azure (Azure RBAC), které jsou nakonfigurované na IaaSch prostředcích v modelu nasazení Classic, a naplánujte po dokončení migrace.
 
 Pracovní postup migrace je následující:
 
-![Diagram znázorňující pracovní postup migrace](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Diagram znázorňující pracovní postup migrace](./media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > Operace popsané v následujících částech jsou všechny idempotentní. Pokud máte jiný problém než Nepodporovaná funkce nebo chybu konfigurace, zkuste operaci příprava, přerušení nebo potvrzení zopakovat. Azure se o akci pokusí znovu.
@@ -94,17 +93,17 @@ Azure potom spustí migraci metadat z modelu nasazení Classic na Správce prost
 Po dokončení operace přípravy máte možnost vizualizovat prostředky v modelu nasazení Classic i Správce prostředků. Pro každou cloudovou službu v modelu nasazení Classic vytvoří platforma Azure název skupiny prostředků ve tvaru `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Není možné vybrat název skupiny prostředků vytvořené pro migrované prostředky (tj. "-migrované"). Po dokončení migrace ale můžete použít funkci přesunout Azure Resource Manager k přesunutí prostředků do jakékoli skupiny prostředků, kterou požadujete. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](~/articles/resource-group-move-resources.md).
+> Není možné vybrat název skupiny prostředků vytvořené pro migrované prostředky (tj. "-migrované"). Po dokončení migrace ale můžete použít funkci přesunout Azure Resource Manager k přesunutí prostředků do jakékoli skupiny prostředků, kterou požadujete. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Následující dva snímky obrazovky znázorňují výsledek po úspěšné operaci přípravy. První z nich zobrazuje skupinu prostředků, která obsahuje původní cloudovou službu. Druhá z nich ukazuje novou skupinu prostředků "-migrované", která obsahuje ekvivalentní Azure Resource Manager prostředky.
 
-![Snímek obrazovky, který zobrazuje původní cloudovou službu](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Snímek obrazovky, který zobrazuje původní cloudovou službu](./media/migration-classic-resource-manager/portal-classic.png)
 
-![Snímek obrazovky zobrazující Azure Resource Manager prostředky v operaci Prepare](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Snímek obrazovky zobrazující Azure Resource Manager prostředky v operaci Prepare](./media/migration-classic-resource-manager/portal-arm.png)
 
 Tady je pohled na pozadí po skončení fáze přípravy. Všimněte si, že zdroj v rovině dat je stejný. Je reprezentován jak v rovině správy (model nasazení Classic), tak i rovině ovládacího prvku (Správce prostředků).
 
-![Diagram fáze přípravy](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Diagram fáze přípravy](./media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > Virtuální počítače, které nejsou ve virtuální síti v modelu nasazení Classic, se v této fázi migrace zastaví a oddělují.
@@ -124,7 +123,7 @@ Pokud nastanou nějaké problémy, vždycky můžete migraci přerušit a vráti
 ### <a name="abort"></a>Přerušení
 Tento krok je volitelný, pokud chcete vrátit změny v modelu nasazení Classic a zastavit migraci. Tato operace odstraní metadata Správce prostředků (vytvořená v kroku Příprava) pro vaše prostředky. 
 
-![Diagram kroku přerušení](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Diagram kroku přerušení](media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -135,24 +134,24 @@ Tento krok je volitelný, pokud chcete vrátit změny v modelu nasazení Classic
 Po dokončení ověření můžete migraci potvrdit. Prostředky se již v modelu nasazení Classic neobjevují a jsou k dispozici pouze v modelu nasazení Správce prostředků. Migrované prostředky je možné spravovat pouze na novém portálu.
 
 > [!NOTE]
-> Toto je idempotentní operace. Pokud dojde k chybě, zkuste operaci zopakovat. Pokud se tato chyba bude opakovat, vytvořte lístek podpory nebo vytvořte fórum na [webu Microsoft Q&](https://docs.microsoft.com/answers/index.html)
+> Toto je idempotentní operace. Pokud dojde k chybě, zkuste operaci zopakovat. Pokud se tato chyba bude opakovat, vytvořte lístek podpory nebo vytvořte fórum na [webu Microsoft Q&](/answers/index.html)
 >
 >
 
-![Diagram kroku potvrzení](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Diagram kroku potvrzení](media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Vývojový diagram migrace
 
 Tady je vývojový diagram, který ukazuje, jak pokračovat v migraci:
 
-![Snímek obrazovky, který ukazuje kroky migrace](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Snímek obrazovky, který ukazuje kroky migrace](media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Překlad modelu nasazení Classic na prostředky Správce prostředků
 Model nasazení Classic a Správce prostředků reprezentace prostředků najdete v následující tabulce. Jiné funkce a prostředky se aktuálně nepodporují.
 
 | Reprezentace v modelu Classic | Reprezentace v modelu Resource Manager | Poznámky |
 | --- | --- | --- |
-| Název cloudové služby |Název DNS |Během migrace se pro každou cloudovou službu vytvoří nová skupina prostředků s formátem pojmenování `<cloudservicename>-migrated`. Tato skupina prostředků obsahuje všechny vaše prostředky. Název cloudové služby se stane názvem DNS přidruženým k veřejné IP adrese. |
+| Název cloudové služby (název hostované služby) |Název DNS |Během migrace se pro každou cloudovou službu vytvoří nová skupina prostředků s formátem pojmenování `<cloudservicename>-migrated`. Tato skupina prostředků obsahuje všechny vaše prostředky. Název cloudové služby se stane názvem DNS přidruženým k veřejné IP adrese. |
 | Virtuální počítač |Virtuální počítač |Vlastnosti specifické pro virtuální počítače se migrují beze změny. Některé osProfile informace, jako je název počítače, se neukládají v modelu nasazení Classic a po migraci zůstávají prázdné. |
 | Prostředky disku připojené k virtuálnímu počítači |Implicitní disky připojené k virtuálnímu počítači |Disky se v modelu nasazení Resource Manager nemodelují jako prostředky nejvyšší úrovně. Migrují se jako implicitní disky v rámci virtuálního počítače. Aktuálně se podporují pouze disky připojené k virtuálnímu počítači. Správce prostředků virtuální počítače teď můžou používat účty úložiště v modelu nasazení Classic, což umožňuje snadnou migraci disků bez jakýchkoli aktualizací. |
 | Rozšíření virtuálních počítačů |Rozšíření virtuálních počítačů |Z modelu nasazení Classic se migrují všechna rozšíření prostředků s výjimkou rozšíření XML. |
@@ -165,11 +164,11 @@ Model nasazení Classic a Správce prostředků reprezentace prostředků najdet
 | Příchozí pravidla NAT |Příchozí pravidla NAT |Vstupní koncové body definované na virtuálním počítači se během migrace převedou na pravidla příchozího překladu adres v rámi nástroje pro vyrovnávání zatížení. |
 | Virtuální IP adresa |Veřejná IP adresa s názvem DNS |Virtuální IP adresa se stala veřejnou IP adresou a je přidružená k nástroji pro vyrovnávání zatížení. Virtuální IP adresu je možné migrovat pouze v případě, že k ní je přidružený vstupní koncový bod. |
 | Virtuální síť |Virtuální síť |Virtuální síť se migruje se všemi vlastnostmi na model nasazení Resource Manager. Vytvoří se nová skupina prostředků s názvem `-migrated`. |
-| Vyhrazené IP adresy |Veřejná IP adresa s metodou statického přidělování |Vyhrazené IP adresy přidružené k nástroji pro vyrovnávání zatížení se migrují společně s migrací cloudové služby nebo virtuálního počítače. Nepřidružené rezervované IP adresy se dají migrovat pomocí [Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip?view=azuresmps-4.0.0).  |
+| Vyhrazené IP adresy |Veřejná IP adresa s metodou statického přidělování |Vyhrazené IP adresy přidružené k nástroji pro vyrovnávání zatížení se migrují společně s migrací cloudové služby nebo virtuálního počítače. Nepřidružené rezervované IP adresy se dají migrovat pomocí [Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip).  |
 | Veřejná IP adresa na virtuální počítač |Veřejná IP adresa s metodou dynamického přidělování |Veřejná IP adresa přidružená k virtuálnímu počítači se převede na prostředek veřejné IP adresy s nastavenou statickou metodou přidělování. |
-| Skupiny NSG |Skupiny NSG |Skupiny zabezpečení sítě (NSG) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. Skupina NSG v modelu nasazení Classic se během migrace neodebere. Operace se skupinou NSG v rovině správy jsou však v průběhu migrace blokované. Nepřidružená skupin zabezpečení sítě se dají migrovat pomocí [Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup?view=azuresmps-4.0.0).|
+| Skupiny NSG |Skupiny NSG |Skupiny zabezpečení sítě (NSG) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. Skupina NSG v modelu nasazení Classic se během migrace neodebere. Operace se skupinou NSG v rovině správy jsou však v průběhu migrace blokované. Nepřidružená skupin zabezpečení sítě se dají migrovat pomocí [Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup).|
 | Servery DNS |Servery DNS |Servery DNS přidružené k virtuální síti nebo virtuálnímu počítači se migrují v rámci migrace odpovídajícího prostředku, a to společně se všemi vlastnostmi. |
-| UDR |UDR |Trasy definované uživatelem (UDR) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. UDR v modelu nasazení Classic se během migrace neodebere. V průběhu migrace jsou blokované operace s UDR v rovině správy. Nepřidružená udr se dají migrovat pomocí [Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable?view=azuresmps-4.0.0). |
+| UDR |UDR |Trasy definované uživatelem (UDR) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. UDR v modelu nasazení Classic se během migrace neodebere. V průběhu migrace jsou blokované operace s UDR v rovině správy. Nepřidružená udr se dají migrovat pomocí [Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable). |
 | Vlastnost předávání IP v konfiguraci sítě na virtuálním počítači |Vlastnost předávání IP na síťové kartě |Vlastnost předávání IP na virtuálním počítači se během migrace převede na vlastnost na síťových rozhraních. |
 | Nástroj pro vyrovnávání zatížení s několika IP adresami |Nástroj pro vyrovnávání zatížení s několika prostředky veřejné IP adresy |Každá veřejná IP adresa přidružená k nástroji pro vyrovnávání zatížení je po migraci převedena na prostředek veřejné IP adresy a přidružená k nástroji pro vyrovnávání zatížení. |
 | Interní názvy DNS na virtuálním počítači |Interní názvy DNS na síťové kartě |Během migrace se interní přípony DNS pro virtuální počítače migrují do vlastnosti jen pro čtení s názvem InternalDomainNameSuffix na síťové kartě. Přípona zůstane po migraci beze změny a řešení virtuálních počítačů by mělo dál fungovat jako dřív. |
@@ -183,24 +182,12 @@ V rámci migrace prostředků z modelu nasazení Classic do modelu nasazení Spr
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro Linux:
-
-* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Běžné chyby při migraci](./linux/migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/linux/toc.json)
-* [Přečtěte si nejčastější dotazy týkající se migrace prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-Ve Windows:
-
-* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](migration-classic-resource-manager-overview.md)
+* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md)
+* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md)
+* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](migration-classic-resource-manager-cli.md)
 * [Migrace VPN Gateway Classic na Správce prostředků](../vpn-gateway/vpn-gateway-classic-resource-manager-migration.md)
 * [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic do modelu nasazení Správce prostředků](../expressroute/expressroute-migration-classic-resource-manager.md)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Běžné chyby při migraci](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Přečtěte si nejčastější dotazy týkající se migrace prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md)
+* [Běžné chyby při migraci](migration-classic-resource-manager-errors.md)
+* [Přečtěte si nejčastější dotazy týkající se migrace prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-faq.md)

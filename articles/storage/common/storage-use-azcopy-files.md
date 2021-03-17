@@ -4,19 +4,19 @@ description: Přenos dat pomocí AzCopy a úložiště souborů AzCopy je nástr
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2cca8a93330e5ddd965d27532895ed1d6702c123
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037146"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179642"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Přenos dat s použitím AzCopy a úložiště souborů 
 
-AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat objekty blob nebo soubory do nebo z účtu úložiště. Tento článek obsahuje příklady příkazů, které fungují se soubory Azure.
+AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování souborů do nebo z účtu úložiště. Tento článek obsahuje příklady příkazů, které fungují se soubory Azure.
 
 Než začnete, přečtěte si článek Začínáme [s AzCopy](storage-use-azcopy-v10.md) ke stažení AzCopy a seznámení s nástrojem.
 
@@ -49,12 +49,10 @@ Tato část obsahuje následující příklady:
 > [!TIP]
 > Operaci nahrávání můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.
 >
-> |Scénář|Příznak|
+> |Scenario|Příznak|
 > |---|---|
 > |Zkopírujte seznamy řízení přístupu (ACL) spolu se soubory.|**--Preserve-SMB-Permissions** = \[ true \| false\]|
 > |Zkopírujte informace o vlastnostech protokolu SMB spolu se soubory.|**--Preserve-SMB-info** = \[ true \| false\]|
-> |Nahrání souborů jako doplňovacích objektů blob nebo objektů blob stránky:|**--BLOB-typ** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
-> |Nahrání do konkrétní úrovně přístupu (například do archivní úrovně):|**--Block-– úroveň** = \[ objektu BLOB Žádný \| horká \| studená \| archiv\]|
 > 
 > Úplný seznam najdete v tématu [Možnosti](storage-ref-azcopy-copy.md#options).
 
@@ -72,7 +70,7 @@ Soubor můžete také nahrát pomocí zástupného symbolu (*) kdekoli v cestě 
 
 ### <a name="upload-a-directory"></a>Odeslat adresář
 
-Tento příklad zkopíruje adresář (a všechny soubory v tomto adresáři) do sdílené složky. Výsledkem je adresář ve sdílené složce se stejným názvem.
+V tomto příkladu se zkopíruje adresář (a všechny soubory v tomto adresáři) do sdílené složky. Výsledkem je adresář se stejným názvem ve sdílené složce.
 
 |    |     |
 |--------|-----------|
@@ -127,7 +125,7 @@ Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-patter
 
 Soubory můžete také vyloučit pomocí `--exclude-pattern` Možnosti. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
 
-`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `–recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `–include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
+`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `--recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `--include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Nahrání souborů, které byly upraveny po datu a čase 
 
@@ -155,7 +153,7 @@ Tato část obsahuje následující příklady:
 > [!TIP]
 > Operaci stahování můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.
 >
-> |Scénář|Příznak|
+> |Scenario|Příznak|
 > |---|---|
 > |Zkopírujte seznamy řízení přístupu (ACL) spolu se soubory.|**--Preserve-SMB-Permissions** = \[ true \| false\]|
 > |Zkopírujte informace o vlastnostech protokolu SMB spolu se soubory.|**--Preserve-SMB-info** = \[ true \| false\]|
@@ -184,7 +182,7 @@ Tento příklad vede k adresáři s názvem `C:\myDirectory\myFileShareDirectory
 
 ### <a name="download-the-contents-of-a-directory"></a>Stažení obsahu adresáře
 
-Obsah adresáře si můžete stáhnout bez zkopírování samotného obsahujícího adresáře pomocí zástupného znaku (*).
+S použitím zástupného znaku (*) můžete stáhnout obsah adresáře bez kopírování samotného adresáře.
 
 |    |     |
 |--------|-----------|
@@ -207,7 +205,7 @@ Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-path` 
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Příklad** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-V tomto příkladu AzCopy přenáší `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` adresář a `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` soubor. Je nutné zahrnout `--recursive` možnost pro přenos všech souborů v `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` adresáři.
+V tomto příkladu AzCopy přenáší `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` adresář a `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` soubor. Zahrňte `--recursive` možnost pro přenos všech souborů v `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` adresáři.
 
 Soubory můžete také vyloučit pomocí `--exclude-path` Možnosti. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
 
@@ -217,12 +215,12 @@ Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-patter
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Příklad** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Příklad** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
 Soubory můžete také vyloučit pomocí `--exclude-pattern` Možnosti. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
 
-`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `–recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `–include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
+`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `--recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `--include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>Stáhnout soubory, které byly změněny po datu a čase 
 
@@ -236,11 +234,24 @@ Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-after`
 
 Podrobné informace najdete v referenčních dokumentech ke [kopírování AzCopy](storage-ref-azcopy-copy.md) .
 
+#### <a name="download-from-a-share-snapshot"></a>Stáhnout ze snímku sdílené složky
+
+Konkrétní verzi souboru nebo adresáře si můžete stáhnout tak, že odkazujete na hodnotu **DateTime** snímku sdílené složky. Další informace o snímcích sdílených složek najdete v tématu [Přehled snímků sdílených složek pro soubory Azure](../files/storage-snapshots-files.md). 
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path-or-directory-name><SAS-token>&sharesnapshot=<DateTime-of-snapshot>' '<local-file-or-directory-path>'` |
+| **Příklad** (stažení souboru) | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
+| **Příklad** (stažení adresáře) | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory'  --recursive`|
+
+
 ## <a name="copy-files-between-storage-accounts"></a>Kopírovat soubory mezi účty úložiště
 
 Pomocí AzCopy můžete kopírovat soubory do jiných účtů úložiště. Operace kopírování je synchronní, takže když příkaz vrátí výsledek, znamená to, že se zkopírovaly všechny soubory.
 
-AzCopy používá [server-to-server](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [rozhraní API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)pro servery, takže se data zkopírují přímo mezi úložnými servery. Tyto operace kopírování nepoužívají šířku pásma sítě vašeho počítače. Propustnost těchto operací můžete zvýšit nastavením hodnoty `AZCOPY_CONCURRENCY_VALUE` proměnné prostředí. Další informace najdete v tématu [optimalizace propustnosti](storage-use-azcopy-configure.md#optimize-throughput).
+AzCopy používá [](/rest/api/storageservices/put-block-from-url) [rozhraní API](/rest/api/storageservices/put-page-from-url)pro servery, takže se data zkopírují přímo mezi úložnými servery. Tyto operace kopírování nepoužívají šířku pásma sítě vašeho počítače. Propustnost těchto operací můžete zvýšit nastavením hodnoty `AZCOPY_CONCURRENCY_VALUE` proměnné prostředí. Další informace najdete v tématu [optimalizace propustnosti](storage-use-azcopy-configure.md#optimize-throughput).
+
+Můžete také zkopírovat konkrétní verze souborů odkazem na hodnotu **DateTime** snímku sdílené složky. Další informace o snímcích sdílených složek najdete v tématu [Přehled snímků sdílených složek pro soubory Azure](../files/storage-snapshots-files.md). 
 
 Tato část obsahuje následující příklady:
 
@@ -253,12 +264,10 @@ Tato část obsahuje následující příklady:
 > [!TIP]
 > Operaci kopírování můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.
 >
-> |Scénář|Příznak|
+> |Scenario|Příznak|
 > |---|---|
 > |Zkopírujte seznamy řízení přístupu (ACL) spolu se soubory.|**--Preserve-SMB-Permissions** = \[ true \| false\]|
 > |Zkopírujte informace o vlastnostech protokolu SMB spolu se soubory.|**--Preserve-SMB-info** = \[ true \| false\]|
-> |Zkopírujte soubory jako doplňovací objekty blob nebo objekty blob stránky.|**--BLOB-typ** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
-> |Zkopírujte do konkrétní úrovně přístupu (například do archivní vrstvy).|**--Block-– úroveň** = \[ objektu BLOB Žádný \| horká \| studená \| archiv\]|
 > 
 > Úplný seznam najdete v tématu [Možnosti](storage-ref-azcopy-copy.md#options).
 
@@ -268,13 +277,16 @@ Tato část obsahuje následující příklady:
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
+| **Příklad** (sdílení snímku) | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>Zkopírování adresáře do jiného účtu úložiště
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Příklad** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Příklad** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myFileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Příklad** (sdílení snímku) | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myFileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ### <a name="copy-a-file-share-to-another-storage-account"></a>Kopírování sdílené složky do jiného účtu úložiště
 
@@ -282,6 +294,8 @@ Tato část obsahuje následující příklady:
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Příklad** (sdílení snímku) | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Kopírování všech sdílených složek, adresářů a souborů do jiného účtu úložiště
 
@@ -289,24 +303,27 @@ Tato část obsahuje následující příklady:
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Příklad** (sdílení snímku) | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ## <a name="synchronize-files"></a>Synchronizovat soubory
 
-Obsah sdílené složky můžete synchronizovat s jinou sdílenou složkou souborů. Můžete také synchronizovat obsah adresáře ve sdílené složce s obsahem adresáře, který je umístěn v jiné sdílené složce. Synchronizace je jednosměrná. Jinými slovy, jste si zvolili, který z těchto dvou koncových bodů je zdroj a který je cílový. Synchronizace používá také server k rozhraní API serveru.
+Obsah sdílené složky můžete synchronizovat s jinou sdílenou složkou souborů. Můžete také synchronizovat obsah adresáře ve sdílené složce s obsahem adresáře, který je umístěn v jiné sdílené složce. Synchronizace je jedním ze způsobů. Jinými slovy, jste si zvolili, který z těchto dvou koncových bodů je zdroj a který je cílový. Synchronizace používá také server k rozhraní API serveru.
 
 > [!NOTE]
 > V současné době je tento scénář podporován pouze pro účty, které nemají hierarchický obor názvů. Aktuální verze AzCopy se nesynchronizuje mezi soubory Azure a Blob Storage.
 
 Příkaz [synchronizovat](storage-ref-azcopy-sync.md) porovná názvy souborů a poslední upravená časová razítka. Nastavením `--delete-destination` volitelného příznaku na hodnotu `true` nebo `prompt` odstraňte soubory v cílovém adresáři, pokud už tyto soubory ve zdrojovém adresáři neexistují.
 
-Pokud jste příznak nastavili `--delete-destination` tak, aby `true` AzCopy odstranit soubory bez zadání výzvy. Pokud chcete, aby se zobrazila výzva před tím, než AzCopy odstraní soubor, nastavte `--delete-destination` příznak na `prompt` .
+Pokud jste příznak nastavili `--delete-destination` na `true` , AzCopy odstraní soubory bez zadání výzvy. Pokud chcete, aby se zobrazila výzva před tím, než AzCopy odstraní soubor, nastavte `--delete-destination` příznak na `prompt` .
 
 > [!TIP]
 > Operaci synchronizace můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.
 >
-> |Scénář|Příznak|
+> |Scenario|Příznak|
 > |---|---|
-> |Určete, jak mají být při stahování ověřovány striktní hodnoty hash MD5.|**--check-MD5** = \[ Kontrolujte \| \| FailIfDifferent FailIfDifferentOrMissing přihlášení \|\]|
+> |Zkopírujte seznamy řízení přístupu (ACL) spolu se soubory.|**--Preserve-SMB-Permissions** = \[ true \| false\]|
+> |Zkopírujte informace o vlastnostech protokolu SMB spolu se soubory.|**--Preserve-SMB-info** = \[ true \| false\]|
 > |Vyloučení souborů na základě vzoru.|**--Exclude-Path**|
 > |Zadejte, jak chcete, aby byly položky protokolu související s synchronizací.|**--úroveň protokolu** = \[ \| \| informace o chybě upozornění \| none\]|
 > 
@@ -339,7 +356,7 @@ První sdílená složka, která se zobrazí v tomto příkazu, je zdroj. Na kon
 | **Syntax** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **Příklad** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-Další informace o snímcích sdílených složek najdete v tématu [Přehled snímků sdílených složek pro soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
+Další informace o snímcích sdílených složek najdete v tématu [Přehled snímků sdílených složek pro soubory Azure](../files/storage-snapshots-files.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -347,8 +364,6 @@ Další příklady najdete v některém z těchto článků:
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-
-- [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
+- [Přenos dat](storage-use-azcopy-v10.md#transfer-data)
 
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)

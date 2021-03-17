@@ -1,35 +1,37 @@
 ---
 title: Rozšíření ovladače NVIDIA GPU – virtuální počítače Azure s Windows
 description: Microsoft Azure rozšíření pro instalaci ovladačů NVIDIA GPU na výpočetní virtuální počítače řady N-Series s Windows
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 manager: gwallace
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 4491171062e582db8388c3eff380d67ea1a0c51c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cd2c5e54ccb81294a93c0ecebaa174df8d14011
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085652"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559660"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozšíření ovladače NVIDIA GPU pro Windows
 
 ## <a name="overview"></a>Přehled
 
-Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače řady Windows N-Series. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje ovladače CUDA nebo GRIDu. Když instalujete ovladače NVIDIA pomocí tohoto rozšíření, přijímáte podmínky [licenční smlouvy pro koncové uživatele NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330)a souhlasíte s nimi. Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
+Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače řady Windows N-Series. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje ovladače CUDA nebo GRIDu. Když instalujete ovladače NVIDIA pomocí tohoto rozšíření, přijímáte a souhlasíte s podmínkami [licenční smlouvy NVIDIA End-User](https://go.microsoft.com/fwlink/?linkid=874330). Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
 
 Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](../windows/n-series-driver-setup.md).
 K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU pro [virtuální počítače řady Linux N-Series](hpccompute-gpu-linux.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -71,7 +73,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
@@ -139,7 +141,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

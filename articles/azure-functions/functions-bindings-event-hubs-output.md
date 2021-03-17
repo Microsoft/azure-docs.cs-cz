@@ -6,12 +6,12 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 8c829f7e4dcca5aa731f505092739146c72bd293
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab1171c69dc210051f034e8444c87de5d49a92be
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002068"
 ---
 # <a name="azure-event-hubs-output-binding-for-azure-functions"></a>Výstupní vazba Azure Event Hubs pro Azure Functions
 
@@ -23,4 +23,4 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Reakce na události odeslané do datového proudu událostí centra událostí (aktivační událost)](./functions-bindings-storage-blob-trigger.md)
+- [Reakce na události odeslané do datového proudu událostí centra událostí (aktivační událost)](./functions-bindings-event-hubs-trigger.md)

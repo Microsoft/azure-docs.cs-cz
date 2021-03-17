@@ -9,10 +9,10 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75392398"
 ---
 Následující tabulka popisuje jednotlivé hlavní kvóty, omezení, výchozí hodnoty a omezení v Azure Scheduleru.
@@ -29,7 +29,7 @@ Následující tabulka popisuje jednotlivé hlavní kvóty, omezení, výchozí 
 | **Velikost adresy URL požadavku** | Maximální velikost adresy URL požadavku je 2 048 znaků. |
 | **Počet hlaviček** | Maximální počet hlaviček je 50 hlaviček. | 
 | **Agregovaná velikost záhlaví** | Maximální velikost agregované hlavičky je 4 096 znaků. |
-| **Časový limit** | Časový limit žádosti je statický, to znamená, že není možné konfigurovat. a pro akce HTTP je 60 sekund. V případě delšího provozu použijte asynchronní protokoly HTTP. Například vrátí 202 hned, ale pokračuje v práci na pozadí. | 
+| **Prodlev** | Časový limit žádosti je statický, to znamená, že není možné konfigurovat. a pro akce HTTP je 60 sekund. V případě delšího provozu použijte asynchronní protokoly HTTP. Například vrátí 202 hned, ale pokračuje v práci na pozadí. | 
 | **Historie úlohy** | Maximální tělo odpovědi uložené v historii úlohy je 2 048 bajtů. |
 | **Uchování historie úloh** | Historie úloh je udržována po dobu až dvou měsíců nebo až do posledního 1 000 spuštění. | 
 | **Dokončené a chybné uchování úlohy** | Dokončené a chybné úlohy se uchovávají po dobu 60 dnů. |

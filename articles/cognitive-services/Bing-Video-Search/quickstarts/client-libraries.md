@@ -9,17 +9,22 @@ zone_pivot_groups: programming-languages-set-ten
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 03/19/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 57cbc2e12b06082b6449a6718bc43d46a2e8269d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 98ce616550397862dd5cea081af9330c5255aaf4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852085"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341510"
 ---
 # <a name="quickstart-use-the-bing-video-search-client-library"></a>Rychlý Start: použití klientské knihovny Vvyhledávání videí Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 ::: zone pivot="programming-language-csharp"
 

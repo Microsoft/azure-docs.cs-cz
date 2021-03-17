@@ -4,14 +4,15 @@ description: Přečtěte si o interních datech služby signalizace Azure, archi
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169795"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572557"
 ---
 # <a name="azure-signalr-service-internals"></a>Interní informace služby Azure SignalR Service
 
@@ -41,7 +42,7 @@ Po spuštění aplikačního serveru,
 - V případě nástroje ASP.NET Core Signal služba Azure Signal Service SDK otevírá 5 připojení protokolu WebSocket na rozbočovač ke službě signalizace. 
 - Pro signál ASP.NET se v sadě SDK služby Azure Signal Service otevírá 5 připojení protokolu WebSocket podle rozbočovače do služby signalizace a jedno pro každé připojení k webovému soketu aplikace.
 
-5 připojení WebSocket je výchozí hodnota, kterou je možné změnit v [konfiguraci](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount).
+5 připojení WebSocket je výchozí hodnota, kterou je možné změnit v [konfiguraci](https://github.com/Azure/azure-signalr/blob/dev/docs/run-asp-net-core.md#connectioncount).
 
 Zprávy klientům a z nich budou do těchto připojení zamultiplexované.
 

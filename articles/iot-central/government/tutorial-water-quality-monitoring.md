@@ -3,21 +3,19 @@ title: 'Kurz: Vytvoření aplikace pro monitorování kvality vody pomocí Azure
 description: 'Kurz: Naučte se vytvářet aplikace monitorování kvality vody pomocí šablon aplikací Azure IoT Central.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3e55970b0603da9be9bf28a50d4c474e34a1cad3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024468"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017235"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
-
-
 
 Tento kurz vás provede vytvořením aplikace monitorování kvality vody v Azure IoT Central. Aplikaci vytvoříte z šablony aplikace **monitorování kvality** služby Azure IoT Central voda.
 
@@ -56,9 +54,9 @@ V této části použijete šablonu **monitorování kvality vody** Azure IoT Ce
 
     * **Název aplikace**: ve výchozím nastavení má název aplikace **monitorování kvality vody** následovaný jedinečným řetězcem ID, který vygeneruje služba Azure IoT Central. Pokud chcete, můžete zadat zobrazované jméno nebo změnit název aplikace později.
     * **Adresa URL**: můžete zadat libovolnou adresu URL, kterou chcete, nebo změnit hodnotu adresy URL později.
-    * Pokud máte předplatné Azure, zadejte hodnoty pro **adresář**, **předplatné Azure**a **oblast**. Pokud předplatné nemáte, můžete zapnout **7 dní bezplatnou zkušební verzi** a doplnit požadované kontaktní údaje.
+    * Pokud máte předplatné Azure, zadejte hodnoty pro **adresář**, **předplatné Azure** a **oblast**. Pokud předplatné nemáte, můžete zapnout **7 dní bezplatnou zkušební verzi** a doplnit požadované kontaktní údaje.
 
-    Další informace o adresářích a předplatných najdete v tématu rychlý Start [k vytvoření aplikace](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
+    Další informace o adresářích a předplatných najdete v tématu rychlý Start [k vytvoření aplikace](../core/quick-deploy-iot-central.md) .
 
 1. V levé dolní části stránky vyberte tlačítko **vytvořit** .
 
@@ -188,7 +186,7 @@ Na kartě **zařízení** vyberte **+ Nová** a přidejte nové zařízení.
 
 ## <a name="explore-and-configure-rules"></a>Prozkoumat a nakonfigurovat pravidla
 
-V Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení. Tato pravidla aktivují akci, když je splněna kterákoli z podmínek. Jednou z možných akcí je odesílání e-mailových oznámení. Mezi další možnosti patří akce Microsoft Flow nebo akce Webhooku pro posílání dat do jiných služeb.
+V Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení. Tato pravidla aktivují akci, když je splněna kterákoli z podmínek. Jednou z možných akcí je odesílání e-mailových oznámení. Mezi další možnosti patří akce automatizace nebo akce Webhooku, která odesílá data do jiných služeb.
 
 Vytvořená aplikace pro monitorování kvality vody má dvě předem nakonfigurovaná pravidla.
 
@@ -231,17 +229,17 @@ Pomocí úloh Azure IoT Central můžete na více zařízeních aktivovat aktual
 
 Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace.
 
-1. Vyberte možnost **Správa** > **přizpůsobení aplikace**.
-1. V části **logo aplikace**vyberte **změnit** a zvolte obrázek, který se má nahrát jako logo.
-1. V části **ikona prohlížeče**vyberte **změnit** a zvolte bitovou kopii, která se zobrazí na kartách prohlížeče.
-1. V části **barvy v prohlížeči**můžete nahradit výchozí hodnoty kódy hexadecimálních barev HTML.
+1. Vyberte možnost **Správa**  >  **přizpůsobení aplikace**.
+1. V části **logo aplikace** vyberte **změnit** a zvolte obrázek, který se má nahrát jako logo.
+1. V části **ikona prohlížeče** vyberte **změnit** a zvolte bitovou kopii, která se zobrazí na kartách prohlížeče.
+1. V části **barvy v prohlížeči** můžete nahradit výchozí hodnoty kódy hexadecimálních barev HTML.
 1. Vyberte **Nastavení** a změňte hodnotu **Theme**.
 
    ![Přizpůsobení aplikace](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
 ### <a name="update-the-application-image"></a>Aktualizace image aplikace
 
-1. Vyberte**nastavení aplikace** **pro správu** > .
+1. Vyberte   >  **nastavení aplikace** pro správu.
 
 1. Pomocí tlačítka **Vybrat obrázek** můžete zvolit obrázek, který se má nahrát jako obrázek aplikace.
 
@@ -256,4 +254,7 @@ Pokud nebudete nadále používat aplikaci, odstraňte aplikaci pomocí následu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [konceptech monitorování kvality vody](./concepts-waterqualitymonitoring-architecture.md).
+* Další informace: 
+
+> [!div class="nextstepaction"]
+> [Koncepty monitorování kvality vody](./concepts-waterqualitymonitoring-architecture.md).

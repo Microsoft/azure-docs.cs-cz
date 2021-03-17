@@ -4,19 +4,19 @@ ms.service: databox
 ms.topic: include
 ms.date: 07/01/2020
 ms.author: alkohli
-ms.openlocfilehash: d099e33e7b35381f5404c9f8964d3ea90d4f3908
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a78bce9f6e714aa5564791f6bb63996554beabf1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959446"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375813"
 ---
 Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všechny sdílené složky zařízení převedou do režimu offline. Jakmile tento proces zahájíte, ztratíte přístup ke sdíleným složkám.
 
 > [!IMPORTANT]
 > Příprava k odeslání je povinná, protože se během ní označí příznakem data, která neodpovídají zásadám vytváření názvů v Azure. Tento krok zabraňuje potenciálnímu selhání nahrávání z důvodu nevyhovujících dat.
 
-1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Ve výchozím nastavení se během kopírování dat počítají kontrolní součty. Příprava k odeslání dokončí výpočet kontrolních součtů a vytvoří seznam souborů (*soubor BOM*). Výpočet kontrolního součtu může v závislosti na velikosti vašich dat trvat i několik hodin nebo dnů. 
+1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Ve výchozím nastavení se během kopírování dat počítají kontrolní součty. Příprava k odeslání dokončí výpočet kontrolních součtů a vytvoří seznam souborů ( *soubor BOM* ). Výpočet kontrolního součtu může v závislosti na velikosti vašich dat trvat i několik hodin nebo dnů. 
    
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -30,9 +30,9 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
 
     Pokud chcete do zařízení zkopírovat více dat, můžete ho odemknout, zkopírovat další data a znovu spustit přípravu k odeslání.
 
-    Pokud v tomto kroku došlo k nějakým chybám, stav se aktualizuje na *Kontrola dokončena s chybami*. Odemkněte zařízení, přejděte na stránku **Připojit a kopírovat**, stáhněte si seznam problémů a vyřešte příslušné chyby.
+    Pokud v tomto kroku došlo k nějakým chybám, stav se aktualizuje na *Kontrola dokončena s chybami*. Odemkněte zařízení, přejděte na stránku **Připojit a kopírovat** , stáhněte si seznam problémů a vyřešte příslušné chyby.
 
-    ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
+    ![Příprava k odeslání 4](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
     Po vyřešení chyb spusťte **přípravu k odeslání**.
 
@@ -41,7 +41,7 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
     1. Poznamenejte si referenční číslo dokončení. V závislosti na zemi, ve které se nacházíte, se toto číslo může vyžadovat pro různé operace.
     2. Stáhněte si seznam souborů, které se v tomto procesu zkopírovaly (označovaný také jako manifest). Později můžete tento seznam použít k ověření nahrání souborů do Azure. Další informace najdete v tématu popisujícím [zkoumání souborů BOM během přípravy k odeslání](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
-        ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship5.png)
+        ![Příprava k odeslání 5](media/data-box-prepare-to-ship/prepare-to-ship5.png)
     3. Vyberte a stáhněte pokyny k expedici pro příslušné zařízení. Pokyny k expedici se liší v závislosti na zemi, ve které se nacházíte.
     4. Pokud E-ink nezobrazuje expediční štítek, můžete si tento štítek stáhnout tady. 
 

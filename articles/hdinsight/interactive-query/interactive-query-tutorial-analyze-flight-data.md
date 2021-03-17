@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: operace ETL s interaktivním dotazem – Azure HDInsight'
 description: Kurz – Zjistěte, jak extrahovat data z nezpracované sady dat CSV. Transformuje ho pomocí interaktivního dotazu na HDInsight. Pak načtěte transformovaná data do Azure SQL Database pomocí Apache Sqoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1aab6b4fe4ffafb3cbba60b2b3774d2577d3d53c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319187"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562463"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
 
@@ -32,23 +29,23 @@ Tento kurz se zabývá následujícími úkony:
 
 * Interaktivní cluster dotazů v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **interaktivního dotazu** pro **typ clusteru**.
 
-* Databáze v Azure SQL Database. Tuto databázi použijete jako cílové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Databáze v Azure SQL Database. Tuto databázi použijete jako cílové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Stažení letových údajů
 
-1. Přejděte na web [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Přejděte na web [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ).
 
 2. Na stránce zrušte zaškrtnutí všech polí a pak vyberte následující hodnoty:
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Fields (Pole) |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
+   | Pole |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
-3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
+3. Vyberte **Stáhnout**. Získáte soubor .zip s vybranými datovými poli.
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>Nahrání dat do clusteru HDInsight
 
@@ -165,7 +162,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
     FROM delays_raw;
     ```
 
-3. Soubor uložíte tak, že stisknete **kombinaci kláves CTRL + X**, pak **y**a pak zadáte.
+3. Soubor uložíte tak, že stisknete **kombinaci kláves CTRL + X**, pak **y** a pak zadáte.
 
 4. Spusťte Hive a soubor **flightdelays.hql** pomocí následujícího příkazu:
 
@@ -232,7 +229,7 @@ Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit 
     GO
     ```
 
-    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tento příkaz vytvoří tabulku s názvem **zpoždění**s clusterovaným indexem.
+    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tento příkaz vytvoří tabulku s názvem **zpoždění** s clusterovaným indexem.
 
     K ověření vytvoření tabulky použijte následující dotaz:
 

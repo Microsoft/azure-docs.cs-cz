@@ -1,21 +1,21 @@
 ---
-title: Spustit skript v jazyce Python v Návrháři (Preview)
+title: Spustit skript jazyka Python v Návrháři
 titleSuffix: Azure Machine Learning
-description: Naučte se používat Python v Návrháři Azure Machine Learning (Preview) k transformaci dat.
+description: Naučte se používat model skriptu Pythonu v Návrháři Azure Machine Learning ke spouštění vlastních operací napsaných v Pythonu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 02/28/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: 7cb6fc0f4f2c2d3f57588d8ef0412177f612ee02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853122"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556229"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Spuštění kódu Pythonu v Návrháři Azure Machine Learning
 
@@ -58,7 +58,7 @@ Vstupní moduly jsou volitelné, protože data můžete generovat nebo importova
 
 Návrhář poskytuje počáteční skript vstupního bodu, který můžete upravit a zadat vlastní kód Pythonu. 
 
-V tomto příkladu použijete PANDAS ke kombinování dvou sloupců, které se nacházejí v datové sadě automobilů, **Price** a **koňské síly**, k vytvoření nového sloupce na základě **počtu dolarů**. Tento sloupec představuje, kolik platíte za jednotlivé síly, což může být užitečnou funkcí pro rozhodování o tom, jestli je automobil pro peníze dobrým řešením. 
+V tomto příkladu použijete PANDAS ke kombinování dvou sloupců, které se nacházejí v datové sadě automobilů, **Price** a **koňské síly** , k vytvoření nového sloupce na základě **počtu dolarů**. Tento sloupec představuje, kolik platíte za jednotlivé síly, což může být užitečnou funkcí pro rozhodování o tom, jestli je automobil pro peníze dobrým řešením. 
 
 1. Vyberte modul **spouštění skriptu Pythonu** .
 
@@ -83,7 +83,7 @@ V tomto příkladu použijete PANDAS ke kombinování dvou sloupců, které se n
     
 1. Odešlete kanál.
 
-Teď máte datovou sadu s novou funkcí **dolar/HP**, která by mohla být užitečná při výuce doporučení pro automobil. Toto je příklad extrakce funkcí a snížení rozměru. 
+Teď máte datovou sadu s novou funkcí **dolar/HP** , která by mohla být užitečná při výuce doporučení pro automobil. Toto je příklad extrakce funkcí a snížení rozměru. 
 
 ## <a name="next-steps"></a>Další kroky
 

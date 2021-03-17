@@ -4,10 +4,10 @@ description: Pomocí spouštěcích kontejnerů v Azure Container Instances prov
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 5a729263ee632eb9227694ec8684eb6889c6324b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85954277"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Spuštění kontejneru init pro úlohy nastavení ve skupině kontejnerů
@@ -213,7 +213,7 @@ Výstup:
 
 Kontejnery init vám pomůžou provádět úlohy nastavení a inicializace pro kontejnery aplikací. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh pomocí zásad restartování](container-instances-restart-policy.md).
 
-Azure Container Instances poskytuje další možnosti pro úpravu chování kontejnerů aplikací. Mezi příklady patří:
+Azure Container Instances poskytuje další možnosti pro úpravu chování kontejnerů aplikací. Příklady:
 
 * [Nastavení proměnných prostředí v instancích kontejnerů](container-instances-environment-variables.md)
 * [Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku](container-instances-start-command.md)

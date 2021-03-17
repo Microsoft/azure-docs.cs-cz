@@ -11,18 +11,22 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another resource group.
-ms.openlocfilehash: fe8051d551077666c06ac033f22303fd643ac602
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ea152e1d78ab1ea610eee5420394c89524673993
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585729"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042378"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>Přesunutí Azure Key Vault mezi skupinami prostředků
 
 ## <a name="overview"></a>Přehled
 
 Přesun trezoru klíčů mezi skupinami prostředků je podporovaná funkce trezoru klíčů. Přesunutí trezoru klíčů mezi skupinami prostředků nebude mít vliv na bránu firewall trezoru klíčů ani na konfigurace zásad přístupu. Připojené aplikace a instanční objekty by měly dál fungovat tak, jak mají.
+
+> [!IMPORTANT]
+> **Trezory klíčů použité pro šifrování disku nelze přesunout.**
+> Pokud používáte Trezor klíčů s šifrováním disku pro virtuální počítač, Trezor klíčů nejde přesunout do jiné skupiny prostředků nebo předplatného, když je povolené šifrování disku. Před přesunutím trezoru klíčů do nové skupiny prostředků nebo předplatného je nutné zakázat šifrování disku. 
 
 ## <a name="design-considerations"></a>Aspekty návrhu
 

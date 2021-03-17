@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017419"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a obnovení fyzických serverů replikovaných do Azure
 
@@ -34,11 +34,11 @@ V tomto kurzu se dozvíte, jak převzít služby při selhání místních fyzic
 
 Ověřte vlastnosti serveru a ujistěte se, že jsou v souladu s [požadavky Azure](vmware-physical-azure-support-matrix.md#replicated-machines) na virtuální počítače Azure.
 
-1. V části **chráněné položky**klikněte na **replikované položky**a vyberte počítač.
+1. V části **chráněné položky** klikněte na **replikované položky** a vyberte počítač.
 2. V podokně **Replikovaná položka** se zobrazí souhrn informací o počítači, stav a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
-3. V části **výpočty a síť**můžete upravit název Azure, skupinu prostředků, cílovou velikost, skupinu [dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md)a nastavení spravovaného disku.
+3. V části **výpočty a síť** můžete upravit název Azure, skupinu prostředků, cílovou velikost, skupinu [dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md)a nastavení spravovaného disku.
 4. Můžete zobrazit a upravit nastavení sítě, včetně sítě a podsítě, do které se virtuální počítače Azure umístí po převzetí služeb při selhání, a IP adresy, která se jim přiřadí.
-5. V části **disky**můžete zobrazit informace o operačním systému počítače a datových discích.
+5. V části **disky** můžete zobrazit informace o operačním systému počítače a datových discích.
 
 ### <a name="fail-over-to-azure"></a>Převzetí služeb při selhání do Azure
 
@@ -80,7 +80,7 @@ Po převzetí služeb při selhání do Azure můžete znovu nastavit ochranu vi
 6. Ujistěte se, že je vCenter Server připojená před navrácením služeb po obnovení. V opačném případě dojde k chybě odpojení disků a jejich připojení zpátky k virtuálnímu počítači.
 7. Pokud Server vCenter spravuje virtuální počítače, ke kterým se vrátíte, ujistěte se, že máte požadovaná oprávnění. Pokud provádíte zjišťování vCenter uživatele, který je jen pro čtení, a ochranu virtuálních počítačů, ochrana bude úspěšná a funguje převzetí služeb při selhání. Během opakované ochrany ale převzetí služeb při selhání se nepovede, protože úložiště dat nejde zjistit a nejsou uvedené během ochrany. Chcete-li tento problém vyřešit, můžete aktualizovat přihlašovací údaje pro vCenter pomocí [příslušného účtu nebo oprávnění](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)a pak úlohu opakovat. 
 8. Pokud jste pro vytváření virtuálních počítačů použili šablonu, ujistěte se, že každý virtuální počítač má vlastní UUID pro tyto disky. Pokud je identifikátor UUID místního virtuálního počítače v konfliktu s identifikátorem UUID hlavního cílového serveru, protože oba se vytvořily ze stejné šablony, znovu se ochrana nezdařila. Nasaďte z jiné šablony.
-9. Pokud nasazujete zpět na alternativní vCenter Server, ujistěte se, že se zjistil nový vCenter Server a hlavní cílový server. Obvykle nejsou úložiště dat přístupná, nebo nejsou v rámci opětovného zapnutí **ochrany**viditelná.
+9. Pokud nasazujete zpět na alternativní vCenter Server, ujistěte se, že se zjistil nový vCenter Server a hlavní cílový server. Obvykle nejsou úložiště dat přístupná, nebo nejsou v rámci opětovného zapnutí **ochrany** viditelná.
 10. Ověřte následující scénáře, ve kterých nelze provést navrácení služeb po obnovení:
     - Pokud používáte buď bezplatnou edici ESXi 5,5 nebo edici hypervisoru vSphere 6. Upgradujte na jinou verzi.
     - Pokud máte fyzický server se systémem Windows Server 2008 R2 SP1.
@@ -95,7 +95,7 @@ Po převzetí služeb při selhání do Azure můžete znovu nastavit ochranu vi
 
 Tento postup předpokládá, že místní virtuální počítač není k dispozici.
 
-1. V trezoru > **Nastavení**  >  **replikované položky**klikněte pravým tlačítkem myši na počítač, u kterého došlo k převzetí služeb při selhání > **znovu zapnout ochranu**.
+1. V trezoru > **Nastavení**  >  **replikované položky** klikněte pravým tlačítkem myši na počítač, u kterého došlo k převzetí služeb při selhání > **znovu zapnout ochranu**.
 2. V části **Znovu nastavit ochranu** ověřte, že je vybraná možnost **Z Azure do místní lokality**.
 3. Zadejte místní hlavní cílový server a procesový server.
 4. V části **Úložiště dat** vyberte úložiště dat hlavního cílového serveru, do kterého chcete obnovit disky v místním prostředí.

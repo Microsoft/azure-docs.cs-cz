@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d522d305c70214009b8aa2886d07d2d5403dd2b1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725082"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656304"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Správa a analýza protokolů toku skupiny zabezpečení sítě pomocí Network Watcher a Grafana
 
@@ -104,11 +104,11 @@ Pomocí Logstash můžete shrnout protokoly toku ve formátu JSON do úrovně ř
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
-      "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
-      "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
-      "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
-      "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
-      "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
+    "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+    "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+    "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+    "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+    "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"
@@ -199,7 +199,7 @@ Teď, když jste úspěšně nakonfigurovali Grafana ke čtení z indexu Elastic
 
 Následující snímek obrazovky znázorňuje graf a graf znázorňující horní toky a jejich četnost. Toky také ukazují pravidlo NSG a toky podle rozhodnutí. Grafana je vysoce přizpůsobitelná, takže je vhodné vytvořit řídicí panely, které budou vyhovovat vašim konkrétním požadavkům na monitorování. Následující příklad ukazuje typický řídicí panel:
 
-![Graf řídicích panelů](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Snímek obrazovky znázorňující konfiguraci ukázkového grafu s toky segmentované podle NSG pravidla.](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Závěr
 

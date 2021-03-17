@@ -1,6 +1,5 @@
 ---
-title: Prostředky
-titleSuffix: Azure Media Services
+title: Prostředky v Azure Media Services
 description: Přečtěte si, co jsou assety a jak se používají v Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,18 +8,20 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 08/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 27082499263af6eedd7d9d628b7b1746a9177672
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 5159432107e60f6c21bcf70e0bbc9a9e2123a728
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606831"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897692"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Prostředky v Azure Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V Azure Media Services [Asset](/rest/api/media/assets) je základní koncept. Je místo, kde zadáváte média (například prostřednictvím upload nebo Live ingestování), výstupní média (z výstupu úlohy) a publikování médií z (pro streamování). 
 
@@ -46,4 +47,4 @@ Názvy souborů nebo objektů BLOB v rámci assetu musí splňovat požadavky na
 
 ## <a name="see-also"></a>Viz také
 
-[Rozdíly mezi Media Services V2 a V3](migrate-from-v2-to-v3.md)
+[Rozdíly mezi Media Services V2 a V3](migrate-v-2-v-3-migration-introduction.md)

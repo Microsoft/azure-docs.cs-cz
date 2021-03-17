@@ -1,17 +1,17 @@
 ---
-title: Správa učebných cvičení v Azure Lab Services | Microsoft Docs
-description: Naučte se vytvářet a konfigurovat testovací prostředí pro učebnu, Zobrazit všechny vývojové laboratoře, sdílet odkaz na registraci s uživatelem testovacího prostředí nebo odstranit testovací prostředí.
+title: Správa Labs v Azure Lab Services | Microsoft Docs
+description: Naučte se vytvářet a konfigurovat prostředí učebny, zobrazovat všechny laboratoře, sdílet odkaz na registraci s uživatelem testovacího prostředí nebo odstranit testovací prostředí.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445385"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434205"
 ---
-# <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
-Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
+# <a name="manage-labs-in-azure-lab-services"></a>Správa Labs v Azure Lab Services 
+Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny laboratoře v účtu testovacího prostředí. 
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího prostředí, musíte v účtu testovacího prostředí být členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Vlastník testovacího prostředí může přidat další uživatele do role Autor testovacího prostředí podle postupu v následujícím článku: [Přidání uživatele do role Autor testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
@@ -32,7 +32,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     1. Zkontrolujte **celkovou cenu za hodinu** zobrazenou na stránce. 
     1. Vyberte **Uložit**.
 
-        ![Nové okno testovacího prostředí](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![Snímek obrazovky, který zobrazuje okno nové testovací prostředí.](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > Pokud byl účet testovacího prostředí nastavený tak, aby [umožňoval výběr umístění testovacího](allow-lab-creator-pick-lab-location.md) prostředí, zobrazí se vám možnost vybrat umístění pro testovací prostředí. 
@@ -85,11 +85,11 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     
     1. Pokud chcete změnit kapacitu testovacího prostředí (počet virtuálních počítačů v testovacím prostředí), vyberte na panelu nástrojů možnost **kapacita testovacího prostředí** .
     2. Chcete-li spustit všechny virtuální počítače najednou, vyberte možnost **Spustit vše** na panelu nástrojů. 
-    3. Pokud chcete spustit konkrétní virtuální počítač, vyberte ve **stavu**šipku dolů a pak vyberte **Spustit**. Virtuální počítač můžete spustit také tak, že vyberete virtuální počítač v prvním sloupci a pak výběrem možnosti **Spustit** na panelu nástrojů.                
+    3. Pokud chcete spustit konkrétní virtuální počítač, vyberte ve **stavu** šipku dolů a pak vyberte **Spustit**. Virtuální počítač můžete spustit také tak, že vyberete virtuální počítač v prvním sloupci a pak výběrem možnosti **Spustit** na panelu nástrojů.                
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malá | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
 | Střední | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 
@@ -103,22 +103,26 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 > [!NOTE]
 > Některé z těchto velikostí virtuálních počítačů se v seznamu nemusí zobrazovat při vytváření testovacího prostředí učebny. Seznam se naplní na základě aktuální kapacity umístění testovacího prostředí. Pokud tvůrce účtu testovacího prostředí [umožňuje tvůrcům testovacího prostředí vybrat umístění pro testovací prostředí](allow-lab-creator-pick-lab-location.md), můžete zkusit zvolit jiné umístění pro testovací prostředí a zjistit, jestli je velikost virtuálního počítače dostupná. 
 
+## <a name="view-all-labs"></a>Zobrazit všechna testovací prostředí
 
-## <a name="view-all-classroom-labs"></a>Zobrazit všechna cvičení v učebně
 1. Přejděte na [portál Azure Lab Services](https://labs.azure.com).
-2. Vyberte **Sign in** (Přihlásit se). Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
-3. Potvrďte, že ve vybraném účtu testovacího prostředí vidíte všechny laboratoře. Na dlaždici testovacího prostředí uvidíte počet virtuálních počítačů v testovacím prostředí a kvótu pro každého uživatele (mimo naplánovaný čas).
+1. Vyberte **Sign in** (Přihlásit se). Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
+
+    [!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+1. Potvrďte, že ve vybraném účtu testovacího prostředí vidíte všechny laboratoře. Na dlaždici testovacího prostředí uvidíte počet virtuálních počítačů v testovacím prostředí a kvótu pro každého uživatele (mimo naplánovaný čas).
 
     ![Všechny laboratoře](./media/how-to-manage-classroom-labs/all-labs.png)
-3. Pomocí rozevíracího seznamu v horní části vyberte jiný účet testovacího prostředí. V rámci vybraného účtu testovacího prostředí uvidíte Labs. 
+1. Pomocí rozevíracího seznamu v horní části vyberte jiný účet testovacího prostředí. V rámci vybraného účtu testovacího prostředí uvidíte Labs. 
 
 ## <a name="delete-a-classroom-lab"></a>Odstranění testovacího prostředí učebny
+
 1. Na dlaždici pro testovací prostředí vyberte v rohu tři tečky (...) a pak vyberte **Odstranit**. 
 
     ![Tlačítko Odstranit](./media/how-to-manage-classroom-labs/delete-button.png)
-3. V dialogovém okně **Odstranit testovací prostředí** vyberte **Odstranit** , aby bylo možné pokračovat v odstraňování. 
+1. V dialogovém okně **Odstranit testovací prostředí** vyberte **Odstranit** , aby bylo možné pokračovat v odstraňování. 
 
 ## <a name="switch-to-another-classroom-lab"></a>Přepnout na další prostředí učebny
+
 Pokud chcete z aktuální nabídky přejít na jiné prostředí učebny, vyberte rozevírací seznam cvičení v účtu testovacího prostředí v horní části.
 
 ![V horní části vyberte testovací prostředí z rozevíracího seznamu.](./media/how-to-manage-classroom-labs/switch-lab.png)
@@ -135,5 +139,5 @@ Viz následující články:
 
 - [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
 - [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)
+- [Jako uživatel testovacího prostředí, Access Labs](how-to-use-classroom-lab.md)
 

@@ -3,22 +3,23 @@ title: Řízení údržby pro virtuální počítače Azure pomocí Azure Portal
 description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby a Azure Portal.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676042"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563009"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Řízení aktualizací s využitím řízení údržby a Azure Portal
 
 Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti Azure Portal pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
 
-## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
+## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
 1. Přihlaste se k portálu Azure.
 
@@ -26,15 +27,15 @@ ms.locfileid: "84676042"
 
    ![Snímek obrazovky znázorňující otevření konfigurací údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
    ![Snímek obrazovky ukazující, jak přidat konfiguraci údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
 
-1. Vyberte předplatné a skupinu prostředků, zadejte název konfigurace a vyberte oblast. Klikněte na **Další**.
+1. Vyberte předplatné a skupinu prostředků, zadejte název konfigurace a vyberte oblast. Klikněte na **Next** (Další).
 
    ![Snímek obrazovky se základními informacemi o konfiguraci údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
 
-1. Přidejte značky a hodnoty. Klikněte na **Další**.
+1. Přidejte značky a hodnoty. Klikněte na **Next** (Další).
 
    ![Snímek obrazovky ukazující Přidání značek do konfigurace údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
 
@@ -70,13 +71,13 @@ Na stránce vlastností můžete také ověřit konfiguraci pro konkrétní virt
 
 ## <a name="check-for-pending-updates"></a>Vyhledat nedokončené aktualizace
 
-Existují také dva způsoby, jak ověřit, zda čekají aktualizace na konfiguraci údržby. V části **Konfigurace údržby**na stránce Podrobnosti o konfiguraci klikněte na **přiřazení** a zaškrtněte políčko **stav údržby**.
+Existují také dva způsoby, jak ověřit, zda čekají aktualizace na konfiguraci údržby. V části **Konfigurace údržby** na stránce Podrobnosti o konfiguraci klikněte na **přiřazení** a zaškrtněte políčko **stav údržby**.
 
 ![Snímek obrazovky ukazující, jak kontrolovat probíhající aktualizace](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending.png)
 
 Můžete také kontrolovat konkrétního hostitele pomocí **Virtual Machines** nebo vlastností vyhrazeného hostitele. 
 
-![Snímek obrazovky znázorňující kontrolu údržby hostitele](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![Snímek obrazovky zobrazující zvýrazněný stav údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>Instalace aktualizací
 
@@ -94,7 +95,7 @@ Můžete se podívat na průběh aktualizací pro konfiguraci v části **Konfig
 
 Pokud chcete konfiguraci odstranit, otevřete podrobnosti konfigurace a klikněte na **Odstranit**.
 
-![Snímek obrazovky znázorňující kontrolu údržby hostitele](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![Snímek obrazovky, který ukazuje, jak odstranit konfiguraci.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>Další kroky

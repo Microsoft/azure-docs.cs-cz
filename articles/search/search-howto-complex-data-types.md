@@ -8,17 +8,17 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 0fd7ba1723da77313407725ec676e69b0ef3bca1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 11/27/2020
+ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496668"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303762"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Postup modelování komplexních datových typů v Azure Kognitivní hledání
 
-Externí datové sady, které se používají k naplnění indexu služby Azure Kognitivní hledání, můžou být v mnoha tvarech. Někdy zahrnují hierarchické nebo vnořené podstruktury. Příklady mohou zahrnovat několik adres pro jednoho zákazníka, více barev a velikostí pro jednu SKU, více autorů jedné knihy a tak dále. V rámci modelovacích podmínek se tyto struktury můžou zobrazit jako *komplexní*, *složené*, *složené*nebo *agregované* datové typy. Pojem Azure Kognitivní hledání používá pro tento koncept je **komplexní typ**. V Azure Kognitivní hledání jsou komplexní typy modelovány pomocí **složitých polí**. Komplexní pole je pole, které obsahuje podřízené položky (podpole), které mohou být libovolného datového typu, včetně jiných složitých typů. Funguje podobným způsobem jako strukturované datové typy v programovacím jazyce.
+Externí datové sady, které se používají k naplnění indexu služby Azure Kognitivní hledání, můžou být v mnoha tvarech. Někdy zahrnují hierarchické nebo vnořené podstruktury. Příklady mohou zahrnovat několik adres pro jednoho zákazníka, více barev a velikostí pro jednu SKU, více autorů jedné knihy a tak dále. V rámci modelovacích podmínek se tyto struktury můžou zobrazit jako *komplexní*, *složené*, *složené* nebo *agregované* datové typy. Pojem Azure Kognitivní hledání používá pro tento koncept je **komplexní typ**. V Azure Kognitivní hledání jsou komplexní typy modelovány pomocí **složitých polí**. Komplexní pole je pole, které obsahuje podřízené položky (podpole), které mohou být libovolného datového typu, včetně jiných složitých typů. Funguje podobným způsobem jako strukturované datové typy v programovacím jazyce.
 
 Složitá pole zastupují buď jeden objekt v dokumentu, nebo pole objektů, v závislosti na datovém typu. Pole typu `Edm.ComplexType` reprezentují jednotlivé objekty, zatímco pole typu `Collection(Edm.ComplexType)` reprezentují pole objektů.
 
@@ -33,13 +33,15 @@ Chcete-li začít, doporučujeme [sadu dat hotelů](https://github.com/Azure-Sam
 
 ## <a name="example-of-a-complex-structure"></a>Příklad komplexní struktury
 
-Následující dokument JSON se skládá z jednoduchých polí a složitých polí. Složitá pole, například `Address` a `Rooms` , mají dílčí pole. `Address`má jednu sadu hodnot pro tyto dílčí pole, protože se jedná o jediný objekt v dokumentu. Naproti tomu `Rooms` má více sad hodnot pro své dílčí pole, jeden pro každý objekt v kolekci.
+Následující dokument JSON se skládá z jednoduchých polí a složitých polí. Složitá pole, například `Address` a `Rooms` , mají dílčí pole. `Address` má jednu sadu hodnot pro tyto dílčí pole, protože se jedná o jediný objekt v dokumentu. Naproti tomu `Rooms` má více sad hodnot pro své dílčí pole, jeden pro každý objekt v kolekci.
+
 
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,23 +50,30 @@ Následující dokument JSON se skládá z jednoduchých polí a složitých pol
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
 
+## <a name="indexing-complex-types"></a>Indexování složitých typů
+
+Během indexování můžete mít ve všech komplexních kolekcích v rámci jednoho dokumentu maximálně 3000 prvků. Prvek komplexní kolekce je členem této kolekce, takže v případě místností (pouze komplexní kolekce v příkladu hotelu) je každá místnost prvkem. Pokud se v předchozím příkladu Motel "tajným bodem" mělo 500 místností, bude mít dokument z hotelu 500 prvky místnosti. U vnořených komplexních kolekcí je každý vnořený prvek také počítán Kromě vnějšího (nadřazeného) prvku.
+
+Toto omezení platí pouze pro komplexní kolekce, nikoli pro komplexní typy (například adresy) nebo kolekce řetězců (například značky).
+
 ## <a name="creating-complex-fields"></a>Vytváření složitých polí
 
-Stejně jako u libovolné definice indexu můžete použít portál, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) k vytvoření schématu, které obsahuje komplexní typy. 
+Stejně jako u libovolné definice indexu můžete použít portál, [REST API](/rest/api/searchservice/create-index)nebo [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindex) k vytvoření schématu, které obsahuje komplexní typy. 
 
-Následující příklad ukazuje schéma indexu JSON s jednoduchými poli, kolekcemi a komplexními typy. Všimněte si, že v rámci komplexního typu má každé dílčí pole typ a může mít atributy, stejně jako pole nejvyšší úrovně. Schéma odpovídá výše uvedeným ukázkovým datům. `Address`je komplexní pole, které není kolekcí (Hotel má jednu adresu). `Rooms`je komplexní pole kolekce (Hotel má mnoho místností).
+Následující příklad ukazuje schéma indexu JSON s jednoduchými poli, kolekcemi a komplexními typy. Všimněte si, že v rámci komplexního typu má každé dílčí pole typ a může mít atributy, stejně jako pole nejvyšší úrovně. Schéma odpovídá výše uvedeným ukázkovým datům. `Address` je komplexní pole, které není kolekcí (Hotel má jednu adresu). `Rooms` je komplexní pole kolekce (Hotel má mnoho místností).
 
 ```json
 {
@@ -93,7 +102,7 @@ Následující příklad ukazuje schéma indexu JSON s jednoduchými poli, kolek
 
 ## <a name="updating-complex-fields"></a>Aktualizace složitých polí
 
-Všechna [pravidla přeindexace](search-howto-reindex.md) , která platí pro pole obecně, se stále vztahují na složitá pole. Pokud je zde uvedeno několik hlavních pravidel, přidání pole nevyžaduje opětovné sestavení indexu, ale většina úprav provádí.
+Všechna [pravidla přeindexace](search-howto-reindex.md) , která platí pro pole obecně, se stále vztahují na složitá pole. Pokud je zde uvedeno několik hlavních pravidel, přidání pole do komplexního typu nevyžaduje opětovné sestavení indexu, ale většina úprav provádí.
 
 ### <a name="structural-updates-to-the-definition"></a>Strukturální aktualizace definice
 

@@ -5,13 +5,14 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: virtual-machines
+ms.subservice: workloads
+ms.openlocfilehash: a8210a47cdc31b28bd7dd2b0021570c18db89423
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61485364"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558198"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Začínáme s TmaxSoft OpenFrame v Azure
 

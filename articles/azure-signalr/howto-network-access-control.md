@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 78b9859adbcf61ae3a9fc0d72a63d5973f90a487
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300215"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143217"
 ---
 # <a name="configure-network-access-control"></a>Konfigurace řízení přístupu k síti
 
@@ -48,7 +48,7 @@ V tomto scénáři můžete nakonfigurovat pravidlo veřejné sítě tak, aby po
 1. Chcete-li upravit výchozí akci, přepněte tlačítko **Povolit/odepřít** .
 
     > [!TIP]
-    > Výchozí akce je akce, kterou provedeme v případě, že se neshodují žádné pravidlo seznamu ACL. Například pokud je výchozí akce **Zamítnutá**, pak typy požadavků, které nejsou explicitně na seznamu pod ním, budou odepřeny.
+    > Výchozí akce je akce, kterou provedeme v případě, že se neshodují žádné pravidlo seznamu ACL. Například pokud je výchozí akce **Zamítnutá**, pak typy požadavků, které nejsou explicitně schváleny, budou odepřeny.
 
 1. Chcete-li upravit pravidlo veřejné sítě, vyberte možnost povolené typy požadavků v rámci **veřejné sítě**.
 
@@ -62,4 +62,4 @@ V tomto scénáři můžete nakonfigurovat pravidlo veřejné sítě tak, aby po
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [privátních odkazech Azure](/azure/private-link/private-link-overview).
+Přečtěte si další informace o [privátních odkazech Azure](../private-link/private-link-overview.md).

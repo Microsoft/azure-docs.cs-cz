@@ -3,20 +3,18 @@ title: Předem připravené modely – LUIS
 titleSuffix: Azure Cognitive Services
 description: Předem připravené modely poskytují domény, záměry, projevy a entity. Můžete spustit aplikaci s předem vytvořenou doménou nebo přidat relevantní doménu do aplikace později.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74280836"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019139"
 ---
 # <a name="prebuilt-models"></a>Předem připravené modely
 
@@ -28,7 +26,7 @@ LUIS poskytuje tři typy předem sestavených modelů. Každý model lze kdykoli
 
 |Typ modelu|Zahrnuje|
 |--|--|
-|[Domain](luis-reference-prebuilt-domains.md)|Záměry, projevy, entity|
+|[Doména](luis-reference-prebuilt-domains.md)|Záměry, projevy, entity|
 |Záměry|Záměry, projevy|
 |[Entity](luis-reference-prebuilt-entities.md)|Pouze entity| 
 
@@ -63,4 +61,4 @@ Pokud je do aplikace zahrnutá předem sestavená entita, je její předpovědi 
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, jak do své aplikace [Přidat předem připravené entity](luis-prebuilt-entities.md) .
+Naučte se, jak do své aplikace [Přidat předem připravené entity](./howto-add-prebuilt-models.md) .

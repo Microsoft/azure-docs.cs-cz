@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 162946ca2de9e613f0ad92297944a9f5390ab378
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 987f5de78edc4c0fe2814259a1461e58018ec270
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285250"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879016"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
 
@@ -30,7 +30,7 @@ azcopy logout [flags]
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
@@ -48,6 +48,6 @@ azcopy logout [flags]
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 |--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

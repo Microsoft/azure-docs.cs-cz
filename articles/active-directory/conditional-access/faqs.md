@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253235"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145232"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
 
@@ -31,11 +31,11 @@ Pro uživatele spolupráce B2B (Business-to-Business) se vynutily zásady. V ně
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Vztahují se zásady SharePointu Online i na OneDrive pro firmy?
 
-Ano. Zásady SharePointu Online platí i pro OneDrive pro firmy. Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Yes. Zásady SharePointu Online platí i pro OneDrive pro firmy. Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Proč nejde nastavit zásadu přímo na klientských aplikacích, jako je Word nebo Outlook?
 
-Zásada podmíněného přístupu nastavuje požadavky pro přístup ke službě. Vynutilo se při ověřování k této službě. Zásady nejsou nastaveny přímo v klientské aplikaci. Místo toho se použije, když klient zavolá službu. Například zásada nastavená na SharePointu se vztahuje na klienty, kteří volají SharePoint. Zásada nastavená na Exchangi se vztahuje na Outlook. Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Zásada podmíněného přístupu nastavuje požadavky pro přístup ke službě. Vynutilo se při ověřování k této službě. Zásady nejsou nastaveny přímo v klientské aplikaci. Místo toho se použije, když klient zavolá službu. Například zásada nastavená na SharePointu se vztahuje na klienty, kteří volají SharePoint. Zásada nastavená na Exchangi se vztahuje na Outlook. Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Vztahují se zásady podmíněného přístupu na účty služeb?
 
@@ -53,14 +53,14 @@ Microsoft Teams se podporuje taky samostatně jako cloudová aplikace v rámci z
 
 Klienti Microsoft Teams Desktop pro Windows a Mac podporují moderní ověřování. Moderní ověřování přináší přihlášení na základě knihovny Azure Active Directory Authentication Library (ADAL), která systém Microsoft Office klientské aplikace napříč platformami.
 
-Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Proč některé karty nefungují v Microsoft Teams po povolení zásad podmíněného přístupu?
 
 Po povolení některých zásad podmíněného přístupu v tenantovi v Microsoft Teams už některé karty nebudou fungovat na desktopovém klientovi podle očekávání. Ovlivněné karty ale při použití webového klienta Microsoft Teams. Ovlivněné karty mohou zahrnovat Power BI, formuláře, VSTS, PowerApps a SharePoint.
 
-Chcete-li zobrazit zasažené karty, je nutné použít webového klienta týmů v aplikaci Edge, Internet Explorer nebo Chrome s nainstalovaným rozšířením účtů Windows 10. Některé karty závisí na webovém ověřování, které nefunguje v klientském počítači Microsoft teams, pokud je povolený podmíněný přístup. Microsoft spolupracuje s partnery, aby tyto scénáře povolil. K datu jsme povolili scenrarios zahrnující Planner, OneNote a Stream.
+Chcete-li zobrazit zasažené karty, je nutné použít webového klienta týmů v aplikaci Edge, Internet Explorer nebo Chrome s nainstalovaným rozšířením účtů Windows 10. Některé karty závisí na webovém ověřování, které nefunguje v klientském počítači Microsoft teams, pokud je povolený podmíněný přístup. Microsoft spolupracuje s partnery, aby tyto scénáře povolil. K datu jsme povolili scénáře zahrnující Planner, OneNote a Stream.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
+- Informace o konfiguraci zásad podmíněného přístupu pro vaše prostředí najdete v článku [Plánování nasazení podmíněného přístupu](plan-conditional-access.md). 

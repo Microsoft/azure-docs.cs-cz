@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192634"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020717"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace stahování velkých souborů pomocí Azure CDN
 
@@ -44,10 +44,10 @@ Jakmile se blok dorazí na hraniční síť CDN, uloží se do mezipaměti a oka
 
 Další informace o požadavku na rozsah bajtů najdete v [dokumentu RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-CDN ukládá do mezipaměti všechny bloky dat, jak jsou přijaty. Celý soubor není nutné ukládat do mezipaměti v mezipaměti CDN. Následné požadavky na rozsahy souborů nebo bajtů jsou obsluhovány z mezipaměti CDN. Pokud nejsou všechny bloky dat v síti CDN uložené v mezipaměti, použije se k vypsání bloků od počátku předběžné načtení. Tato optimalizace spoléhá na to, jestli má zdrojový server podporovat požadavky na rozsah bajtů. Pokud zdrojový server nepodporuje požadavky na rozsah bajtů, tato optimalizace se neprojeví. 
+CDN ukládá do mezipaměti všechny bloky dat, jak jsou přijaty. Celý soubor není nutné ukládat do mezipaměti v mezipaměti CDN. Následné požadavky na rozsahy souborů nebo bajtů jsou obsluhovány z mezipaměti CDN. Pokud nejsou všechny bloky dat v síti CDN uložené v mezipaměti, použije se k vypsání bloků od počátku předběžné načtení. Tato optimalizace spoléhá na to, jestli má zdrojový server podporovat požadavky na rozsah bajtů. Pokud zdrojový server nepodporuje požadavky na rozsah bajtů, požadavky na stažení dat větší než 8mb se nezdaří. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizaci velkých souborů
-Funkce optimalizace velkých souborů pro **Azure CDN Standard od Microsoftu** jsou standardně zapnuté, když použijete obecný typ optimalizace webového doručování. Neexistují žádná omezení pro maximální velikost souboru.
+Neexistují žádná omezení pro maximální velikost souboru.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimalizace pro doručování velkých souborů s Azure CDN z Verizon
@@ -122,7 +122,7 @@ Když se připojení vyprší, služba CDN se pokusy opakuje několikrát, než 
 
 Následující tabulka uvádí sadu kritérií, která se mají splnit pro optimalizaci velkých souborů:
 
-Podmínka | Hodnoty 
+Stav | Hodnoty 
 --- | --- 
 Podporované typy souborů | 3g2, 3GP, ASF, AVI, bz2, dmg, exe, F4V, FLV, <br> GZ, HDP, ISO, jxr, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pkg, QT, RM, SWF, tar, <br> TGZ, WDP, webm, WEBP, WMA, WMV, zip  
 Minimální velikost souboru | 10 MB 

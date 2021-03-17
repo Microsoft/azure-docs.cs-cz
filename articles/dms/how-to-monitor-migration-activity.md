@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77648508"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91297466"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorování aktivity migrace pomocí Azure Database Migration Service
 V tomto článku se dozvíte, jak monitorovat průběh migrace na úrovni databáze i na úrovni tabulky.
@@ -46,7 +46,7 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
       <td>Aktivita migrace je spuštěná.</td>
     </tr>
     <tr>
-      <td>Úspěch</td>
+      <td>Úspěšný</td>
       <td>Migrace se úspěšně zdařila bez problémů.</td>
     </tr>
     <tr>
@@ -67,7 +67,7 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
       <td>Migrace se dokončila.</td>
     </tr>
     <tr>
-      <td>Failed</td>
+      <td>Neúspěšný</td>
       <td>Migrace se nezdařila. Kliknutím na podrobnosti o migraci zobrazíte chyby migrace.</td>
     </tr>
     <tr>

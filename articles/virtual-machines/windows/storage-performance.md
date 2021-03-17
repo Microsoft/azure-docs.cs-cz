@@ -1,19 +1,19 @@
 ---
-title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – úložiště
-description: Přečtěte si, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2-Series.
+title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series
+description: Naučte se, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích Lsv2-Series pomocí příkladu Windows.
 author: sasha-melamed
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.subservice: vm-sizes-storage
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 82554982cd55b6c5fb2b96b2752b00401cb896d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8d38e3f58de0fc4cc1e963c18b002dc1e16852ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653626"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556005"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích s Windows Lsv2-Series
 

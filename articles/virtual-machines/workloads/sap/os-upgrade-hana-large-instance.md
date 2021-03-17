@@ -6,19 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77c16f16ddac01329a8315893021767a4120295
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192412"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179234"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
 Tento dokument popisuje podrobnosti o upgradech operačního systému ve velkých instancích HANA.
@@ -29,7 +29,7 @@ Tento dokument popisuje podrobnosti o upgradech operačního systému ve velkýc
 Během zřizování jednotky HLI nainstaluje Microsoft Operations Team operační systém.
 V průběhu času je nutné zachovat operační systém (například opravy, ladění, upgradování atd.) na HLI jednotce.
 
-Před prováděním podstatných změn v operačním systému (například upgrade SP1 na verzi SP2) musíte kontaktovat tým Microsoft Operations, a to tak, že si spustíte lístek podpory.
+Před prováděním podstatných změn v operačním systému (například upgrade SP1 na verzi SP2) se poradíte s provozním týmem Microsoftu otevřením lístku podpory, který vám podá informace.
 
 Zahrnout do lístku:
 
@@ -38,11 +38,9 @@ Zahrnout do lístku:
 * Úroveň opravy, kterou plánujete použít.
 * Datum, kdy plánujete tuto změnu. 
 
-Doporučujeme, abyste tento lístek otevřeli aspoň jeden týden před tím, než je vhodné datum aktualizace kvůli kontrole, jestli bude v okně serveru nutné upgradovat firmware.
-
+Doporučujeme, abyste tento lístek otevřeli aspoň jeden týden před požadovaným upgradem, který týmu opration ví o požadované verzi firmwaru.
 
 Pro matrici podpory různých verzí SAP HANA s různými verzemi systému Linux najdete informace v tématu [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
-
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -55,17 +53,20 @@ V následující části najdete několik běžných známých problémů během
 Konfigurace operačního systému se může v průběhu času v důsledku oprav, upgradů systému a změn provedených zákazníky odsílat od doporučeného nastavení. Kromě toho společnost Microsoft identifikuje aktualizace potřebné pro stávající systémy, aby bylo zajištěno, že jsou optimálně nakonfigurované pro dosažení optimálního výkonu a odolnosti. Následující pokyny popisují doporučení, která řeší výkon sítě, stabilitu systému a optimální výkon HANA.
 
 ### <a name="compatible-enicfnic-driver-versions"></a>Kompatibilní verze ovladače eNIC/fNIC
-  Aby bylo zajištěno správné fungování sítě a stabilita systému, je doporučeno, aby byly nainstalovány odpovídající verze ovladačů eNIC a fNIC specifické pro operační systém, jak je znázorněno v následující tabulce kompatibility. Servery jsou doručovány zákazníkům s kompatibilními verzemi. Všimněte si, že v některých případech během oprav operačního systému nebo jádra se ovladače můžou vrátit zpátky na výchozí verze ovladačů. Zajistěte, aby na příslušné verzi ovladače běžely operace post-OS/kernel patching.
+  Aby bylo zajištěno správné fungování sítě a stabilita systému, doporučujeme, abyste zajistili, že jsou v následující tabulce kompatibility nainstalovány odpovídající verze ovladačů eNIC a fNIC specifické pro operační systém. Servery jsou doručovány zákazníkům s kompatibilními verzemi. V některých případech se během oprav operačního systému/jádra můžou ovladače vrátit zpátky na výchozí verze ovladačů. Zajistěte, aby příslušná verze ovladače běžela po operacích s operačním systémem nebo opravou jádra.
        
       
   |  Dodavatel operačního systému    |  Verze balíčku operačního systému     |  Verze firmwaru  |  Ovladač eNIC |  Ovladač fNIC | 
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
-  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP5            |   3.2.3 i           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
+  |   Red Hat     |  RHEL 7,6               |   3.2.3 i           |  3.1.137.5   |   2.0.0.50   |
+  |   Red Hat     |  RHEL 7,6               |   4.1.1 b           |  4.0.0.8     |   2.0.0.60   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Příkazy pro upgrade ovladače a vyčištění starých balíčků ot./min.
@@ -89,13 +90,22 @@ modinfo enic
 modinfo fnic
 ```
 
+#### <a name="steps-for-enicfnic-drivers-installation-during-os-upgrade"></a>Kroky při instalaci ovladačů eNIC/fNIC během upgradu operačního systému
+
+* Upgradovat verzi operačního systému
+* Odebrat staré balíčky ot./min.
+* Nainstalovat kompatibilní ovladače eNIC/fNIC podle nainstalované verze operačního systému
+* Restartovat systém
+* Po restartování ověřte verzi eNIC/fNIC.
+
+
 ### <a name="suse-hlis-grub-update-failure"></a>Selhání aktualizace SuSE HLIs GRUB
 SAP ve velkých instancích Azure HANA (typ I) může být po upgradu v nespouštěcím stavu. Následující postup opravuje tento problém.
 #### <a name="execution-steps"></a>Kroky provedení
 
 
 *   Provést `multipath -ll` příkaz.
-*   Získejte ID logické jednotky (LUN), jejíž velikost je přibližně 50G, nebo použijte příkaz:`fdisk -l | grep mapper`
+*   Získejte ID logické jednotky (LUN), jejíž velikost je přibližně 50G, nebo použijte příkaz: `fdisk -l | grep mapper`
 *   Aktualizuje `/etc/default/grub_installdevice` soubor řádek `/dev/mapper/<LUN ID>` . Příklad:/dev/Mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >ID logické jednotky (LUN) se liší od serveru k serveru.
@@ -110,27 +120,25 @@ SAP ve velkých instancích Azure HANA (typ I) může být po upgradu v nespouš
 ```
 lsmod | grep -i edac 
 ```
-* Zakázat moduly připojením následujících řádků k souboru`/etc/modprobe.d/blacklist.conf`
+* Zakázat moduly připojením následujících řádků k souboru `/etc/modprobe.d/blacklist.conf`
 ```
 blacklist sb_edac
 blacklist edac_core
 ```
 Aby se změny projevily, je potřeba restartovat počítač. Spusťte `lsmod` příkaz a ověřte, že modul není přítomen ve výstupu.
 
-
 ### <a name="kernel-parameters"></a>Parametry jádra
    Ujistěte se, že je použito správné nastavení pro `transparent_hugepage` , `numa_balancing` , a `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` .
 
-* intel_idle. max_cstate = 1
-* procesor. max_cstate = 1
+* intel_idle intel_idle.max_cstate = 1
+* processor.max_cstate = 1
 * transparent_hugepage = nikdy
 * numa_balancing = zakázat
 * MCE = ignore_ce
 
-
 #### <a name="execution-steps"></a>Kroky provedení
 
-* Přidat tyto parametry do `GRB_CMDLINE_LINUX` řádku v souboru`/etc/default/grub`
+* Přidat tyto parametry do `GRB_CMDLINE_LINUX` řádku v souboru `/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

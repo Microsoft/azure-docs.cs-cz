@@ -1,34 +1,32 @@
 ---
 title: Zálohování a obnovení – Azure CLI – Azure Database for PostgreSQL – jeden server
 description: Naučte se nastavovat konfigurace zálohování a obnovovat Server v Azure Database for PostgreSQL-Single server pomocí Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ef397eb67c1f60c14fb36bf455236d84b730f611
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500636"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659569"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Postup zálohování a obnovení serveru na serveru Azure Database for PostgreSQL pomocí Azure CLI
 
 Azure Database for PostgreSQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
 ## <a name="prerequisites"></a>Požadavky
-K dokončení tohoto průvodce budete potřebovat:
-- [Server a databáze Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
+Postup dokončení této příručky:
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- Potřebujete [Azure Database for PostgreSQL Server a databázi](quickstart-create-server-database-azure-cli.md).
 
- 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+ - Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="set-backup-configuration"></a>Nastavení konfigurace zálohování
 
@@ -69,9 +67,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
 | name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například `2018-03-13T05:59:00-08:00` . Můžete použít také formát UTC Zulu, například `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -109,7 +107,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 `az postgres server georestore`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků, do které bude nový server patřit|
 |name | mydemoserver – geograficky obnovené | Název nového serveru. |

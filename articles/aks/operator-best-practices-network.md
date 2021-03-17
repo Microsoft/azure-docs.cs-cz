@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro používání virtuálníc
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2bd332dbf9412f5c42e77b14ada3aab67ec8b66a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542700"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508584"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -19,7 +19,7 @@ Když vytváříte a spravujete clustery ve službě Azure Kubernetes Service (A
 Tento článek o osvědčených postupech se zaměřuje na připojení k síti a zabezpečení pro operátory clusterů. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Porovnání režimů kubenet a Azure CNI Network v AKS
+> * Porovnání síťových režimů kubenet a CNI (Azure Container Networking Interface) v AKS
 > * Plánování požadovaného přidělování IP adres a připojení
 > * Distribuce provozu pomocí nástrojů pro vyrovnávání zatížení, řadičů příchozího přenosu dat nebo brány firewall webových aplikací (WAF)
 > * Zabezpečené připojení k uzlům clusteru
@@ -31,46 +31,52 @@ Tento článek o osvědčených postupech se zaměřuje na připojení k síti a
 Virtuální sítě poskytují základní konektivitu pro uzly AKS a zákazníkům, kteří budou mít přístup k vašim aplikacím. Existují dva různé způsoby, jak nasadit clustery AKS do virtuálních sítí:
 
 * **Kubenet Networking** – Azure spravuje prostředky virtuální sítě při nasazení clusteru a používá modul plug-in [Kubenet][kubenet] Kubernetes.
-* **Azure CNI Networking** – nasazuje se do existující virtuální sítě a používá modul plug-in [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes. Lusky přijímají jednotlivé IP adresy, které se můžou směrovat na jiné síťové služby nebo místní prostředky.
+* **Azure CNI Networking** – nasazuje se do virtuální sítě a používá modul plug-in [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes. Lusky přijímají jednotlivé IP adresy, které se můžou směrovat na jiné síťové služby nebo místní prostředky.
+
+V produkčních nasazeních jsou platné možnosti kubenet i Azure CNI.
+
+### <a name="cni-networking"></a>CNI sítě
 
 Rozhraní CNI (Container Network Interface) je nezávislý na dodavateli, který umožňuje modulu runtime kontejneru vydávat požadavky poskytovateli sítě. Azure CNI přiřazuje IP adresy do lusků a uzlů a poskytuje funkce správy IP adres (IPAM) jako připojení ke stávajícím virtuálním sítím Azure. Každý uzel a prostředek pod obdrží IP adresu ve virtuální síti Azure a žádné další směrování není potřeba ke komunikaci s dalšími prostředky a službami.
 
 ![Diagram znázorňující dva uzly s mostem připojujícím se každé virtuální síti Azure](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-V produkčních nasazeních jsou platné možnosti kubenet i Azure CNI.
-
 Významnou výhodou CNI sítě Azure pro produkční prostředí je síťový model, který umožňuje oddělení řízení a správy prostředků. Z hlediska zabezpečení často budete chtít, aby tyto prostředky spravovali a zabezpečili různí týmy. Služba Azure CNI Networking umožňuje připojit se k existujícím prostředkům Azure, místním prostředkům nebo jiným službám přímo prostřednictvím IP adres přiřazených ke každému pod.
 
-Pokud používáte síť Azure CNI, je prostředek virtuální sítě v samostatné skupině prostředků do clusteru AKS. Delegování oprávnění pro objekt služby AKS pro přístup k těmto prostředkům a jejich správu. Instanční objekt používaný clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
+Pokud používáte síť Azure CNI, je prostředek virtuální sítě v samostatné skupině prostředků do clusteru AKS. Delegovat oprávnění pro identitu clusteru AKS pro přístup k těmto prostředkům a jejich správu. Identita clusteru používaná clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Další informace o delegování instančního objektu služby AKS najdete v tématu delegování [přístupu k jiným prostředkům Azure][sp-delegation]. Místo instančního objektu můžete pro oprávnění použít taky spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
+Ve výchozím nastavení používá AKS ke své identitě clusteru spravovanou identitu, ale místo toho máte možnost použít instanční objekt. Další informace o delegování instančního objektu služby AKS najdete v tématu delegování [přístupu k jiným prostředkům Azure][sp-delegation]. Další informace o spravovaných identitách najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 
-Když každý uzel a pod obdrží svou vlastní IP adresu, naplánujte rozsahy adres pro podsítě AKS. Podsíť musí být dostatečně velká, aby poskytovala IP adresy pro každý uzel, lusky a síťové prostředky, které nasadíte. Každý cluster AKS musí být umístěný ve vlastní podsíti. Pokud chcete povolit připojení k místním nebo partnerským sítím v Azure, nepoužívejte rozsahy IP adres, které se překrývají se stávajícími síťovými prostředky. Existují výchozí omezení počtu lusků, které každý uzel spouští s kubenet i s využitím sítě Azure CNI. Aby bylo možné zpracovávat události horizontálního navýšení kapacity nebo upgrady clusterů, potřebujete další IP adresy, které jsou k dispozici pro použití v přiřazené podsíti. Tento další adresní prostor je obzvláště důležitý, pokud používáte kontejnery Windows serveru, protože tyto fondy uzlů vyžadují upgrade na použití nejnovějších oprav zabezpečení. Další informace o uzlech Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
+Když každý uzel a pod obdrží svou vlastní IP adresu, naplánujte rozsahy adres pro podsítě AKS. Podsíť musí být dostatečně velká, aby poskytovala IP adresy pro každý uzel, lusky a síťové prostředky, které nasadíte. Každý cluster AKS musí být umístěný ve vlastní podsíti. Pokud chcete povolit připojení k místním nebo partnerským sítím v Azure, nepoužívejte rozsahy IP adres, které se překrývají se stávajícími síťovými prostředky. Existují výchozí omezení počtu lusků, které každý uzel spouští s kubenet i s využitím sítě Azure CNI. Aby bylo možné zpracovávat události horizontálního navýšení kapacity nebo upgrady clusterů, potřebujete další IP adresy, které jsou k dispozici pro použití v přiřazené podsíti. Tento dodatečný adresní prostor je obzvláště důležitý, pokud používáte kontejnery Windows serveru, protože tyto fondy uzlů vyžadují upgrade na použití nejnovějších oprav zabezpečení. Další informace o uzlech Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
 Pokud chcete vypočítat požadovanou IP adresu, přečtěte si téma [Konfigurace sítě Azure CNI v AKS][advanced-networking].
+
+Při vytváření clusteru pomocí sítě Azure CNI zadáte další rozsahy adres, které cluster používá, jako je adresa mostu Docker, IP adresa služby DNS a rozsah adres služby. Obecně platí, že tyto rozsahy adres by se neměly navzájem překrývat a neměly by se překrývat s žádnou sítí přidruženou ke clusteru, včetně všech virtuálních sítí, podsítí, místních a partnerských sítí. Konkrétní podrobnosti o omezeních a velikosti pro tyto rozsahy adres najdete v tématu [Konfigurace sítě Azure CNI v AKS][advanced-networking].
 
 ### <a name="kubenet-networking"></a>Kubenet sítě
 
 I když kubenet nevyžaduje, abyste nastavili virtuální sítě před nasazením clusteru, existují nevýhody:
 
-* Uzly a lusky jsou umístěné v různých podsítích IP adres. Směrování definované uživatelem (UDR) a předávání IP se používá ke směrování provozu mezi lusky a uzly. Tento další postup může snížit výkon sítě.
+* Uzly a lusky jsou umístěné v různých podsítích IP adres. Směrování definované uživatelem (UDR) a předávání IP se používá ke směrování provozu mezi lusky a uzly. Toto dodatečné směrování může snížit výkon sítě.
 * Připojení k existujícím místním sítím nebo partnerským vztahům k jiným virtuálním sítím Azure můžou být složitá.
 
-Kubenet je vhodný pro malé vývojové nebo testovací úlohy, protože nemusíte vytvářet virtuální síť a podsítě odděleně od clusteru AKS. Jednoduché weby s nízkým provozem nebo přenesené a přesunuté úlohy do kontejnerů můžou také těžit z jednoduchosti AKS clusterů nasazených pomocí sítě kubenet. U většiny nasazení v produkčním prostředí byste měli naplánovat a použít službu Azure CNI Networking. [Pomocí kubenet můžete také nakonfigurovat vlastní rozsahy IP adres a virtuální sítě][aks-configure-kubenet-networking].
+Kubenet je vhodný pro malé vývojové nebo testovací úlohy, protože nemusíte vytvářet virtuální síť a podsítě odděleně od clusteru AKS. Jednoduché weby s nízkým provozem nebo přenesené a přesunuté úlohy do kontejnerů můžou také těžit z jednoduchosti AKS clusterů nasazených pomocí sítě kubenet. U většiny nasazení v produkčním prostředí byste měli naplánovat a použít službu Azure CNI Networking.
+
+[Pomocí kubenet můžete také nakonfigurovat vlastní rozsahy IP adres a virtuální sítě][aks-configure-kubenet-networking]. Podobně jako v případě sítě Azure CNI se tyto rozsahy adres nepřesahují navzájem a neměly by se překrývat s žádnou sítí přidruženou ke clusteru, včetně všech virtuálních sítí, podsítí, místních a partnerských sítí. Konkrétní informace o omezeních a velikosti pro tyto rozsahy adres najdete v tématu [použití sítě kubenet s vlastními rozsahy IP adres v AKS][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Distribuce příchozího provozu
 
-**Doprovodné materiály k osvědčeným postupům** k distribuci přenosů http nebo https do aplikací, použijte prostředky a řadiče příchozího přenosu dat. Řadiče příchozího přenosu dat poskytují další funkce přes běžný nástroj pro vyrovnávání zatížení Azure a dají se spravovat jako nativní prostředky Kubernetes.
+**Doprovodné materiály k osvědčeným postupům** k distribuci přenosů http nebo https do aplikací, použijte prostředky a řadiče příchozího přenosu dat. Řadiče příchozího přenosu dat poskytují navíc funkce pro běžný nástroj pro vyrovnávání zatížení Azure a dají se spravovat jako nativní prostředky Kubernetes.
 
-Nástroj pro vyrovnávání zatížení Azure může distribuovat provoz zákazníků do aplikací v clusteru AKS, ale je omezený v tom, co tento provoz chápe. Prostředek nástroje pro vyrovnávání zatížení pracuje ve vrstvě 4 a distribuuje provoz na základě protokolu nebo portů. Většina webových aplikací, které používají protokol HTTP nebo HTTPS, by měly používat Kuberenetes prostředky a řadiče příchozího přenosu dat, které fungují ve vrstvě 7. Příchozí přenos dat může distribuovat provoz na základě adresy URL aplikace a zpracovat ukončení protokolu TLS/SSL. Tato možnost také snižuje počet IP adres, které zveřejňujete a namapujete. U nástroje pro vyrovnávání zatížení každá aplikace obvykle potřebuje veřejnou IP adresu přiřazenou a namapovanou na službu v clusteru AKS. Pomocí prostředku příchozího přenosu dat může jedna IP adresa distribuovat provoz do více aplikací.
+Nástroj pro vyrovnávání zatížení Azure může distribuovat provoz zákazníků do aplikací v clusteru AKS, ale je omezený v tom, co tento provoz chápe. Prostředek nástroje pro vyrovnávání zatížení pracuje ve vrstvě 4 a distribuuje provoz na základě protokolu nebo portů. Většina webových aplikací, které používají protokol HTTP nebo HTTPS, by měly používat Kubernetes prostředky a řadiče příchozího přenosu dat, které fungují ve vrstvě 7. Příchozí přenos dat může distribuovat provoz na základě adresy URL aplikace a zpracovat ukončení protokolu TLS/SSL. Tato možnost také snižuje počet IP adres, které zveřejňujete a namapujete. U nástroje pro vyrovnávání zatížení každá aplikace obvykle potřebuje veřejnou IP adresu přiřazenou a namapovanou na službu v clusteru AKS. Pomocí prostředku příchozího přenosu dat může jedna IP adresa distribuovat provoz do více aplikací.
 
 ![Diagram znázorňující tok příchozího provozu v clusteru AKS](media/operator-best-practices-network/aks-ingress.png)
 
  Pro příchozí přenos dat jsou k dispozici dvě komponenty:
 
- * *Prostředek*příchozího přenosu dat a
+ * *Prostředek* příchozího přenosu dat a
  * *Kontroler* příchozího přenosu dat
 
 Prostředek příchozího přenosu dat je YAML manifest `kind: Ingress` , který definuje hostitele, certifikáty a pravidla pro směrování provozu do služeb, které běží v clusteru AKS. Následující ukázkový manifest YAML by distribuuje provoz pro *MyApp.com* do jedné ze dvou služeb, *blogservice* nebo *StoreService*. Zákazník je směrován na jednu službu nebo druhý na základě adresy URL, které má přístup.
@@ -118,7 +124,7 @@ Kontroler příchozího přenosu dat, který distribuuje provoz do služeb a apl
 
 ![Firewall webových aplikací (WAF), například Azure App Gateway, může chránit a distribuovat provoz pro cluster AKS.](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Firewall webových aplikací (WAF) poskytuje další úroveň zabezpečení pomocí filtrování příchozího provozu. Projekt OWASP (Open Web Application Security) poskytuje sadu pravidel pro sledování útoků, jako jsou skriptování mezi weby nebo poškození souborů cookie. [Azure Application Gateway][app-gateway] (v současné době ve verzi Preview v AKS) je WAF, který se dá integrovat s clustery AKS pro poskytování těchto funkcí zabezpečení před tím, než přenos dosáhne vašeho clusteru a aplikací AKS. Tato funkce také provádí jiná řešení třetích stran, takže můžete nadále používat stávající investice nebo odbornost v daném produktu.
+Firewall webových aplikací (WAF) poskytuje další vrstvu zabezpečení, která filtruje příchozí provoz. Projekt OWASP (Open Web Application Security) poskytuje sadu pravidel pro sledování útoků, jako jsou skriptování mezi weby nebo poškození souborů cookie. [Azure Application Gateway][app-gateway] (v současné době ve verzi Preview v AKS) je WAF, který se dá integrovat s clustery AKS pro poskytování těchto funkcí zabezpečení před tím, než přenos dosáhne vašeho clusteru a aplikací AKS. Tato funkce také provádí jiná řešení třetích stran, takže můžete nadále používat stávající investice nebo odbornost v daném produktu.
 
 Nástroj pro vyrovnávání zatížení nebo prostředky příchozího přenosu dál běží v clusteru AKS, aby bylo možné dále upřesnit distribuci provozu. Aplikační brána se dá centrálně spravovat jako kontroler příchozího přenosu s definicí prostředků. Začněte tím, [že vytvoříte řadič Application Gateway příchozího][app-gateway-ingress]přenosu dat.
 

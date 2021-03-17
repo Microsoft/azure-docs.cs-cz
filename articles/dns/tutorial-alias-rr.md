@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939252"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Kurz: Vytvoření záznamu aliasu odkazujícího na záznam prostředku zóny
@@ -57,8 +57,8 @@ Vytvořte záznam aliasu, který odkazuje na záznam prostředku v zóně.
 
 ## <a name="test-the-alias-record"></a>Test záznamu aliasu
 
-1. Spusťte svůj oblíbený nástroj nslookup. Jednou z možností je procházení [https://network-tools.com/nslook](https://network-tools.com/nslook).
-2. Nastavte typ dotazu na záznamy A a vyhledejte **test.\<název_vaší_domény\>**. Odpověď je **10.10.10.10**.
+1. Spusťte svůj oblíbený nástroj nslookup. Jednou z možností je procházení [https://network-tools.com/nslook](https://network-tools.com/nslook) .
+2. Nastavte typ dotazu pro záznamy a vyhledejte **test. \<your domain name\> **. Odpověď je **10.10.10.10**.
 3. Na webu Azure Portal změňte záznam A **server** na hodnotu **10.11.11.11**.
 4. Počkejte několik minut a pak znovu použijte nástroj nslookup pro záznam **test**. Odpověď je **10.11.11.11**.
 

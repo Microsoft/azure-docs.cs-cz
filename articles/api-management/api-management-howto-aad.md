@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91363201"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management
 
 V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře pro uživatele z Azure Active Directory (Azure AD). Tato příručka také ukazuje, jak spravovat skupiny uživatelů Azure AD přidáním externích skupin, které obsahují uživatele.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 - Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md).
@@ -33,8 +33,8 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorizace vývojářských účtů pomocí Azure AD
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). 
-2. Vyberte ![šipka](./media/api-management-howto-aad/arrow.png).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+2. Vyberte ![Ikona šipky](./media/api-management-howto-aad/arrow.png).
 3. Do vyhledávacího pole zadejte **API** .
 4. Vyberte **API Management Services**.
 5. Vyberte instanci služby API Management.
@@ -103,7 +103,7 @@ Po přidání externí skupiny služby Azure AD můžete zkontrolovat a nakonfig
  
 Uživatelé z nakonfigurované instance služby Azure AD se teď můžou přihlásit k portálu pro vývojáře. Můžou zobrazit a přihlásit se k odběru všech skupin, pro které mají viditelnost.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>Portál pro vývojáře – přidání ověřování účtu Azure AD
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> Portál pro vývojáře – přidání ověřování účtu Azure AD
 
 Na portálu pro vývojáře se může přihlásit pomocí AAD pomocí **tlačítka pro přihlášení: widget OAuth** . Pomůcka už je součástí přihlašovací stránky výchozího obsahu portálu pro vývojáře.
 

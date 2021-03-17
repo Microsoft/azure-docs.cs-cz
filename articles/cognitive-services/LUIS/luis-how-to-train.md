@@ -3,26 +3,24 @@ title: Výuka aplikace – LUIS
 titleSuffix: Azure Cognitive Services
 description: Školení je proces výuky vaší verze aplikace Language Understanding (LUIS), která vylepšuje svůj přirozený jazyk. LUIS aplikaci po aktualizacích modelu, jako je přidání, úpravy, označení nebo odstranění entit, záměrů nebo projevy.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7511d7379e7b51b19e3436ed7cef53fb914b80ac
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343067"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762698"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Výuka aktivní verze aplikace LUIS
 
 Školení je proces výuky vaší aplikace Language Understanding (LUIS), která vylepšuje svůj přirozený jazyk. LUIS aplikaci po aktualizacích modelu, jako je přidání, úpravy, označení nebo odstranění entit, záměrů nebo projevy.
 
-Školení a [testování](luis-concept-test.md) aplikace je iterativní proces. Po prostudování aplikace LUIS ji otestujete pomocí ukázkového projevy, abyste viděli, jestli jsou záměry a entity správně rozpoznané. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu.
+Školení a [testování](luis-concept-test.md) aplikace je iterativní proces. Po natrénování aplikace LUIS ji můžete otestovat s ukázkovými promluvami, abyste zjistili, jestli se správně rozpoznávají záměry a entity. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu.
 
 Školení se aplikuje na aktivní verzi na portálu LUIS.
 
@@ -42,9 +40,15 @@ Datum a čas školení jsou GMT + 2.
 
 ## <a name="train-with-all-data"></a>Naučit se všemi daty
 
-Školení používá malé procento negativního vzorkování. Pokud chcete použít všechna data namísto malého negativního vzorkování, použijte [rozhraní API](#version-settings-api-use-of-usealltrainingdata).
+Školení používá malé procento negativního vzorkování. Všechna dostupná data můžete použít místo toho, když použijete portál nebo rozhraní API. 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Nastavení verze API použití UseAllTrainingData
+### <a name="using-the-luis-portal"></a>Používání portálu LUIS
+
+Přihlaste se k [portálu Luis](https://www.luis.ai/) a klikněte na svou aplikaci. V horní části obrazovky vyberte **Spravovat** , vyberte **Nastavení** a povolte nebo zakažte možnost **použít deterministické školení** . Pokud je tato možnost zakázaná, bude školení používat všechna dostupná data.
+
+![Tlačítko pro povolení nebo zakázání nedeterministického školení](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>Použití rozhraní API pro nastavení verze
 
 Tuto funkci můžete vypnout pomocí [rozhraní API pro nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` nastavením na hodnotu true.
 

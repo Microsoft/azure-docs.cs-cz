@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541885"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89268600"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 
@@ -32,15 +32,15 @@ Pokud povolíte Enterprise State Roaming, vaše organizace vám automaticky udě
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/).
 1. Vyberte **Azure Active Directory**  >  **zařízení**  >  **Enterprise State Roaming**.
-1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](/azure/active-directory/device-management-azure-portal).
+1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](./device-management-azure-portal.md).
   
    ![Obrázek nastavení zařízení s označením uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními.](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Aby zařízení s Windows 10 mohl používat službu Enterprise State Roaming, musí se zařízení ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD, je primární přihlašovací identita uživatele svou identitou Azure AD, takže se nevyžaduje žádná další konfigurace. U zařízení, která používají místní službu Active Directory, musí správce IT [nakonfigurovat zařízení připojená k hybridnímu Azure Active Directory](hybrid-azuread-join-manual-steps.md). 
+Aby zařízení s Windows 10 mohl používat službu Enterprise State Roaming, musí se zařízení ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD, je primární přihlašovací identita uživatele svou identitou Azure AD, takže se nevyžaduje žádná další konfigurace. U zařízení, která používají místní službu Active Directory, musí správce IT [nakonfigurovat zařízení připojená k hybridnímu Azure Active Directory](./hybrid-azuread-join-plan.md). 
 
 ## <a name="data-storage"></a>Úložiště dat
 
-Data Enterprise State Roaming se hostují v jedné nebo několika [oblastech Azure](https://azure.microsoft.com/regions/) , které jsou nejlépe zarovnané s hodnotou země nebo oblasti nastavenou v instanci Azure Active Directory. Data Enterprise State Roaming jsou rozdělená na oddíly na základě tří hlavních geografických oblastí: Severní Amerika, EMEA a APAC. Data Enterprise State Roaming pro tenanta se místně nacházejí v geografickém regionu a nereplikují se mezi regiony.  Příklad:
+Data Enterprise State Roaming se hostují v jedné nebo několika [oblastech Azure](https://azure.microsoft.com/regions/) , které jsou nejlépe zarovnané s hodnotou země nebo oblasti nastavenou v instanci Azure Active Directory. Data Enterprise State Roaming jsou rozdělená na oddíly na základě tří hlavních geografických oblastí: Severní Amerika, EMEA a APAC. Data Enterprise State Roaming pro tenanta se místně nacházejí v geografickém regionu a nereplikují se mezi regiony.  Například:
 
 | Hodnota země/oblasti | hostuje svá data v |
 | -------------------- | ------------------------ |
@@ -80,7 +80,7 @@ Explicitní odstranění je v případě, že správce Azure odstraní uživatel
 
 ### <a name="stale-data-deletion"></a>Odstranění zastaralých dat
 
-Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Příklad:
+Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Například:
 
 * Pokud žádná zařízení nepřistupuje ke konkrétní kolekci nastavení (například když je aplikace ze zařízení odebraná nebo pokud je skupina nastavení, jako je "motiv", zakázaná pro všechna zařízení uživatele), pak se tato kolekce po dobu uchování zastará a může se odstranit. 
 * Pokud uživatel vypnul nastavení na všech svých zařízeních, nebude k dispozici žádná data nastavení a veškerá data nastavení pro tohoto uživatele budou zastaralá a můžou se po uplynutí doby uchování odstranit. 

@@ -1,17 +1,17 @@
 ---
 title: Scénáře úložiště dotazů – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje některé scénáře pro úložiště dotazů na serveru Azure Database for PostgreSQL-Single.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad646e39e9b6a87611dc2f40330a77fe70c92c27
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768346"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710545"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Scénáře použití pro úložiště dotazů
 
@@ -19,7 +19,7 @@ ms.locfileid: "74768346"
 
 Úložiště dotazů můžete použít v nejrůznějších scénářích, ve kterých je sledování a udržování předvídatelného výkonu úloh velmi důležité. Představte si následující příklady: 
 - Identifikace a ladění hlavních náročných dotazů 
-- Testování a/B 
+- Testování A/B 
 - Udržení stabilního výkonu během upgradů 
 - Identifikace a vylepšení úloh ad hoc 
 
@@ -38,7 +38,7 @@ Pokud identifikujete dotaz s optimálním výkonem, záleží na tom, jakou akci
 - Zvažte přepsání drahých dotazů. Můžete například využít výhod dotazů Parametrizace a snížit používání dynamického jazyka SQL. Implementujte optimální logiku při čtení dat, jako je použití filtrování dat na straně databáze, nikoli na straně aplikace. 
 
 
-## <a name="ab-testing"></a>Testování a/B 
+## <a name="ab-testing"></a>Testování A/B 
 Použijte úložiště dotazů pro porovnání výkonu úloh před a po změně plánu, který chcete zavést. Příklady scénářů použití úložiště dotazů k vyhodnocení dopadu změny prostředí nebo aplikace na výkon úlohy: 
 - Zavedení nové verze aplikace 
 - Přidání dalších prostředků na server. 

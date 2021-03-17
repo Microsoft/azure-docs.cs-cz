@@ -2,24 +2,25 @@
 title: Připojení virtuálního systému souborů ve fondu
 description: Přečtěte si, jak připojit virtuální systém souborů ve fondu Batch.
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144406"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89145480"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
 Azure Batch teď podporuje připojení cloudového úložiště nebo externího systému souborů ve výpočetních uzlech se systémem Windows nebo Linux ve fondech služby Batch. Když je výpočetní uzel připojen k fondu, je virtuální systém souborů připojen a je v tomto uzlu považován za místní disk. Můžete připojit souborové systémy, jako jsou soubory Azure, Azure Blob Storage, systém souborů NFS (Network File System), včetně [mezipaměti avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)nebo protokolu CIFS (Common Internet File System).
 
-V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](/dotnet/api/overview/azure/batch?view=azure-dotnet).
+V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](/dotnet/api/overview/azure/batch).
 
 > [!NOTE]
 > Připojení virtuálního systému souborů je podporováno v fondech Batch vytvořených v nebo po 2019-08-19. Fondy dávek vytvořené před 2019-08-19 tuto funkci nepodporují.
 > 
-> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) .
+> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](/dotnet/api/microsoft.azure.batch) .
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Výhody připojení ve fondu
 
@@ -167,12 +168,12 @@ Chcete-li získat soubory protokolu pro ladění, použijte [OutputFiles](batch-
 | Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-ADS | Linux – data-věda – virtuální počítač | linuxdsvm | :heavy_check_mark: <br>Poznámka: kompatibilní s CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-Batch | CentOS – kontejner | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-Batch | CentOS-kontejner – RDMA | 7.4 | :heavy_check_mark: <br>Poznámka: podporuje úložiště A_8 nebo 9.</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Microsoft-Azure-Batch | CentOS-kontejner – RDMA | 7,4 | :heavy_check_mark: <br>Poznámka: podporuje úložiště A_8 nebo 9.</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-Batch | Ubuntu-Server-kontejner | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-dsvm | Linux – data-věda-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS – HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle – Linux | 7.6 | znak | znak | znak | znak |
+| Oracle | Oracle-Linux | 7.6 | znak | znak | znak | znak |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | znak | znak | znak |
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721825"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309608"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Vytváření kanálů CI/CD pro aplikace AI pomocí Azure Pipelines, Docker a Kubernetes
 
@@ -34,9 +34,9 @@ Chcete-li použít stažený zdrojový kód a kurz, potřebujete následující 
 - [Zdrojové úložiště zdrojového kódu](https://github.com/Azure/DevOps-For-AI-Apps) rozvětvené do vašeho účtu GitHubu
 - [Organizace Azure DevOps](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Azure CLI](/cli/azure/install-azure-cli)
-- [Cluster Azure Container Service pro Kubernetes (AKS)](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- [Cluster Azure Container Service pro Kubernetes (AKS)](/previous-versions/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) spuštění příkazů a načtení konfigurace z clusteru AKS 
-- [Účet Azure Container Registry (ACR)](/azure/container-registry/container-registry-get-started-portal)
+- [Účet Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-portal.md)
 
 ## <a name="cicd-pipeline-summary"></a>Shrnutí kanálu CI/CD
 
@@ -60,9 +60,9 @@ Následující diagram a kroky popisují architekturu kanálu CI/CD:
 10. Žádosti uživatelů o aplikaci procházejí serverem DNS.
 11. Server DNS předává požadavky do nástroje pro vyrovnávání zatížení a odesílá odpovědi zpět uživatelům.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-- [Vědecké zpracování týmových dat (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Vědecké zpracování týmových dat (TDSP)](./index.yml)
+- [Azure Machine Learning (AML)](../index.yml)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Služby Azure Kubernetes (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Services (AKS)](../../aks/intro-kubernetes.md)

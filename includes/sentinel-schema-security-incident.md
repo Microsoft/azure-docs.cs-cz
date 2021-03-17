@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.custom: include file
-ms.openlocfilehash: 76020b3c1f28e5b5f6363aef181b76bc93a9613e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 63cb53dc60a718892d4bf86140e7fd51303bd61c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294088"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88761711"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
 | Pole | Datový typ | Popis |
 | ---- | ---- | ---- |
-| **AdditionalData** | dynamické | Počet výstrah, počet záložek, počet komentářů, názvy produktů s výstrahami a taktiku |
-| **AlertIds** | dynamické | Výstrahy, ze kterých byl vytvořen incident |
-| **BookmarkIds** | dynamické | Entity s záložkami |
+| **AdditionalData** | dynamic | Počet výstrah, počet záložek, počet komentářů, názvy produktů s výstrahami a taktiku |
+| **AlertIds** | dynamic | Výstrahy, ze kterých byl vytvořen incident |
+| **BookmarkIds** | dynamic | Entity s záložkami |
 | **Classification** | řetězec | Klasifikace uzavření incidentu |
 | **ClassificationComment** | řetězec | Komentář k uzavření klasifikace incidentu |
 | **ClassificationReason** | řetězec | Důvod klasifikace uzavření incidentu |
-| **ClosureTime** | datetime | Časové razítko (UTC), kdy se incident naposledy zavřel |
-| **Komentáře** | dynamické | Komentáře k incidentu |
+| **ClosedTime** | datetime | Časové razítko (UTC), kdy se incident naposledy zavřel |
+| **Komentáře** | dynamic | Komentáře k incidentu |
 | **CreatedTime** | datetime | Časové razítko (UTC), kdy se incident vytvořil |
 | **Popis** | řetězec | Popis incidentu |
 | **FirstActivityTime** | datetime | Čas první události |
@@ -34,12 +34,12 @@ ms.locfileid: "87294088"
 | **Nazevincidentu** | řetězec | Vnitřní identifikátor GUID |
 | **IncidentNumber** | int |  |
 | **IncidentUrl** | řetězec | Odkaz na incident |
-| **Popisky** | dynamické | Značky |
+| **Popisky** | dynamic | Značky |
 | **LastActivityTime** | datetime | Čas poslední události |
 | **Časposledníúpravy** | datetime | Časové razítko (UTC), kdy se incident naposledy změnil <br>(úprava popsaná aktuálním záznamem) |
 | **ModifiedBy** | řetězec | Uživatel nebo systém, který změnil incident |
-| **Vlastník** | dynamické |  |
-| **RelatedAnalyticRuleIds** | dynamické | Pravidla, ze kterých se aktivovaly výstrahy incidentu |
+| **Vlastník** | dynamic |  |
+| **RelatedAnalyticRuleIds** | dynamic | Pravidla, ze kterých se aktivovaly výstrahy incidentu |
 | **Závažnost** | řetězec | Závažnost incidentu (vysoká/střední/nízká/informativní) |
 | **SourceSystem** | řetězec | Konstanta (' Azure ') |
 | **Stav** | řetězec |  |

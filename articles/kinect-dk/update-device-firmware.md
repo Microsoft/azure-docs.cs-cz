@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, firmware, aktualizace, obnovení
-ms.openlocfilehash: eb60003a4233110cb33208bcb8e9784737bb2a8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277206"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356219"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>Aktualizovat firmware Azure Kinect DK
 
@@ -57,15 +57,15 @@ Azure Kinect DK neaktualizuje firmware automaticky. Pomocí [nástroje Azure Kin
 
     ```console
        >AzureKinectFirmwareTool.exe -q
- == Azure Kinect DK Firmware Tool ==
-Device Serial Number: 000805192412
-Current Firmware Versions:
-  RGB camera firmware:      1.6.102
-  Depth camera firmware:    1.6.75
-  Depth config file:        6109.7
-  Audio firmware:           1.6.14
-  Build Config:             Production
-  Certificate Type:         Microsoft
+       == Azure Kinect DK Firmware Tool ==
+        Device Serial Number: 000805192412
+        Current Firmware Versions:
+        RGB camera firmware:      1.6.102
+        Depth camera firmware:    1.6.75
+        Depth config file:        6109.7
+        Audio firmware:           1.6.14
+        Build Config:             Production
+        Certificate Type:         Microsoft
     ```
 
 3. Pokud vidíte výše uvedený výstup, váš firmware se aktualizuje.
@@ -82,7 +82,7 @@ Aktualizace firmwaru mohou selhat z několika důvodů. Při neúspěšné aktua
 
 3. Pokud všechny ostatní selžou, postupujte podle kroků [obnovení](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk) a vraťte se do firmwaru továrny a zkuste to znovu.
 
-Všechny další problémy najdete na [stránkách podpory Microsoftu](https://aka.ms/kinectsupport) .
+Všechny další problémy najdete na [stránkách podpory Microsoftu](./index.yml) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337870"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148801"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
 
@@ -34,7 +34,7 @@ V tomto projektu se naučíte:
 
 Dokončete [průvodce Začínáme](iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
-* Připojení DevKit k Wi-Fi
+* Připojte DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
 Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat pomocí jedné z těchto metod:
@@ -171,7 +171,7 @@ Připojovací řetězec, který se načte z kroku [zřízení služeb Azure](#pr
 
 VS Code potom spustí ověřování a nahrání Arduino náčrtu do DevKit.
 
-![zařízení – nahrání](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
+![Snímek obrazovky ukazuje Visual Studio Code ověřování a nahrávání náčrtu Arduino.](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
 DevKit se restartuje a začne používat kód.
 
@@ -197,4 +197,4 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a použít službu SendGrid k odeslání e-mailu. Tady je doporučený další krok:[Přehled akcelerátoru řešení Azure IoT Remote Monitoring](https://docs.microsoft.com/azure/iot-suite/) .
+Zjistili jste, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a použít službu SendGrid k odeslání e-mailu. Tady je doporučený další krok:[Přehled akcelerátoru řešení Azure IoT Remote Monitoring](/azure/iot-suite/) .

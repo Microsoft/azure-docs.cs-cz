@@ -1,19 +1,19 @@
 ---
-title: Kotvy vztahů a způsobů hledání
+title: Relace mezi kotvami a hledání cesty
 description: Přečtěte si o koncepčním modelu za vztahy kotvy. Naučte se spojit kotvy v rámci prostoru a použít rozhraní API v okolí k uspokojení scénáře, jak se hledání provést.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006020"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696166"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Vztahy ukotvení a způsoby hledání v prostorových kotvách Azure
 
@@ -64,7 +64,7 @@ Prostorové kotvy můžete propojit s více relacemi. Pomocí této metody můž
 
 Připojení kotev přes více relací:
 
-1. Aplikace vytvoří některé kotvy v jednom CloudSpatialAnchorSession.
+1. Aplikace vytvoří některé kotvy (kotvy a a B) v jednom CloudSpatialAnchorSession.
 2. V jinou dobu aplikace vyhledá jednu z těchto kotev (například kotvu A) pomocí nového CloudSpatialAnchorSession.
 3. Procházení k novému umístění. Pohyb vychází z základní nebo rozšířené platformy pro hybridní realitu.
 4. Vytvořte kotvu C pomocí stejného CloudSpatialAnchorSession. Kotvy a, B a C jsou nyní připojeny. Služba prostorových ukotvení udržuje tento vztah.

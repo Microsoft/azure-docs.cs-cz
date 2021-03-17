@@ -3,18 +3,21 @@ title: NAHRADIT v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o nahrazení funkce systém SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9b7ffdf8395944cf75dabbbf4c42cea0e0c9b3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302198"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341616"
 ---
 # <a name="replace-azure-cosmos-db"></a>NAHRADIT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Nahradí všechny výskyty zadané hodnoty řetězce hodnotou jiné řetězcové hodnoty.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -60,4 +63,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

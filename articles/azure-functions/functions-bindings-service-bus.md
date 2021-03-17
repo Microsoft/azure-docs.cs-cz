@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 46660a0c8d20ab82c994a62b1c781108ea1070c1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111197"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104440"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro Azure Functions
 
@@ -23,6 +24,9 @@ Azure Functions se integruje s [Azure Service Bus](https://azure.microsoft.com/s
 | Odesílání zpráv Azure Service Bus |[Výstupní vazba](./functions-bindings-service-bus-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
+
+> [!NOTE]
+> Vazba Service Bus v současné době nepodporuje ověřování pomocí spravované identity. Místo toho prosím použijte [sdílený přístupový podpis Service Bus](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature).
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
 
@@ -37,7 +41,7 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
-[Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
+[Aktualizace rozšíření]: ./functions-bindings-register.md
 [Rozšíření nástrojů Azure]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

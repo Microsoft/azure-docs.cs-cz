@@ -3,18 +3,21 @@ title: IS_NUMBER v dotazovacím jazyce Azure Cosmos DB
 description: Přečtěte si o funkcích systému SQL IS_NUMBER v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c019424241bc07d5a5d2cc19a64685c476f94548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a2bac51426e6e7fb96fb4e1691bb3d164a1db1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303813"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340868"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrací logickou hodnotu označující, zda je typ zadaného výrazu číslo.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -61,4 +64,4 @@ Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#
 
 - [Funkce pro kontrolu typu Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

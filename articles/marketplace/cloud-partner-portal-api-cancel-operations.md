@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 095d9cf68374ee81cafdb6e7a32df29a57d122cb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287929"
 ---
 # <a name="cancel-operation"></a>Zrušit operaci
@@ -29,12 +29,12 @@ Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. 
 
 |  **Název**    |      **Popis**                                  |    **Datový typ**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Identifikátor vydavatele, například`contoso`         |   Řetězec          |
+| publisherId  |  Identifikátor vydavatele, například `contoso`         |   Řetězec          |
 | Hodnotami OfferId      |  Identifikátor nabídky                                     |   Řetězec          |
 | verze-api  |  Aktuální verze rozhraní API                               |    Datum           |
 |  |  |  |
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 ------
 
 |  **Název**              |  **Hodnota**         |

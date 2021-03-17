@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
-ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67659499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397168"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Přehled služby Azure Application Gateway Resource Health
 
@@ -43,7 +43,7 @@ Resource Health poskytuje další podrobnosti o události a procesu obnovení. T
 
 ![Nedostupný stav](media/resource-health-overview/unavailable.png)
 
-## <a name="unknown"></a>Není známo
+## <a name="unknown"></a>Neznámý
 
 **Neznámý** stav stavu indikuje, Resource Health nedostaly informace o bráně déle než 10 minut. Tento stav není konečným náznakem stavu brány. Ale jedná se o důležitý datový bod v procesu řešení potíží.
 
@@ -61,4 +61,4 @@ Stav **Degraded** znamená, že brána zjistila ztrátu výkonu, i když je stá
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešení potíží s Application Gateway firewallu webových aplikací (WAF) najdete v tématu [řešení potíží s bránou firewall webových aplikací (WAF) pro Azure Application Gateway](web-application-firewall-troubleshoot.md).
+Další informace o řešení potíží s Application Gateway firewallu webových aplikací (WAF) najdete v tématu [řešení potíží s bránou firewall webových aplikací (WAF) pro Azure Application Gateway](../web-application-firewall/ag/web-application-firewall-troubleshoot.md).

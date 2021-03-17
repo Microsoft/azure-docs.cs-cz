@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 61804aaf65a97485e2b2b5bb4869c335a14ce812
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 1d7c9935d7e0d6bb2d457aa4c08f9b2b3e5fa910
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513554"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218693"
 ---
 # <a name="disaster-recovery-for-azure-data-share"></a>Zotavení po havárii pro sdílenou složku Azure
 
@@ -29,13 +29,9 @@ Příjemci dat můžou mít aktivní sdílení předplatného, které je nečinn
 
 ## <a name="related-information"></a>Související informace
 
-- [Provozní kontinuita a zotavení po havárii](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-- [Integrace vysoké dostupnosti do strategie BCDR](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
+- [Provozní kontinuita a zotavení po havárii](../best-practices-availability-paired-regions.md)
+- [Integrace vysoké dostupnosti do strategie BCDR](/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
-
-
-
-

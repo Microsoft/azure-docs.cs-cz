@@ -2,7 +2,7 @@
 title: Vytvoření a použití zásad hesel v Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak a proč používat podrobné zásady pro hesla k zabezpečení a řízení hesel účtů ve spravované doméně Azure služba AD DS.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040040"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619228"
 ---
-# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Zásady hesel a uzamčení účtů v Active Directory Domain Services spravované domény
+# <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Zásady hesel a uzamčení účtů v Azure Active Directory Domain Services spravované domény
 
 Pokud chcete spravovat zabezpečení uživatelů v Azure Active Directory Domain Services (Azure služba AD DS), můžete definovat podrobné zásady pro hesla, které řídí nastavení uzamčení účtu nebo minimální délku hesla a složitost. Na všech uživatelích ve spravované doméně Azure služba AD DS se vytvoří a použije výchozí jemně odstupňované zásady hesel. Pro zajištění podrobného řízení a splnění konkrétních potřeb obchodu nebo dodržování předpisů je možné vytvořit další zásady a použít je u konkrétních skupin uživatelů.
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak vytvořit a nakonfigurovat jemně odstupňovan
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
   * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
   * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].

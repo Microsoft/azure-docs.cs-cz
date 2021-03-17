@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323719"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583463"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Zjistěte, jak zákazníci používají vaši aplikaci s Application Insights trychtýři.
 
@@ -45,8 +45,8 @@ Předchozí snímek obrazovky obsahuje pět zvýrazněných oblastí. Jedná se 
 ## <a name="next-steps"></a>Další kroky
   * [Přehled využití](usage-overview.md)
   * [Uživatelé, relace a události](usage-segmentation.md)
-  * [Uchovávání](usage-retention.md)
-  * [Workbooks](../platform/workbooks-overview.md)
+  * [Toalet](usage-retention.md)
+  * [Workbooks](../visualize/workbooks-overview.md)
   * [Přidat kontext uživatele](usage-send-user-context.md)
   * [Export do Power BI](./export-power-bi.md)
 

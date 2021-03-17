@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494481"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337504"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy exportu objednávek
 
@@ -25,7 +25,7 @@ Následující tabulka obsahuje souhrn kroků Data Box exportu a nástroje, kter
 
 | Data Box fáze exportu objednávky       | Nástroj pro sledování a audit                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Vytvoření objednávky               | [Nastavení řízení přístupu v pořadí přes RBAC](#set-up-access-control-on-the-order) <br> [Povolit podrobný protokol v pořadí](#enable-verbose-log-in-the-order)                                                    |
+| Vytvoření objednávky               | [Nastavení řízení přístupu v objednávce prostřednictvím Azure RBAC](#set-up-access-control-on-the-order) <br> [Povolit podrobný protokol v pořadí](#enable-verbose-log-in-the-order)                                                    |
 | Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> portál Azure </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
 | Nastavení zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)              |
 | Kopírování dat ze zařízení        | [Zkontrolovat protokoly kopírování](#copy-log) <br> [Kontrola podrobných protokolů](#verbose-log) před kopírováním dat            |
@@ -46,15 +46,15 @@ Chcete-li omezit přístup k objednávce, můžete:
 - Přiřaďte roli na úrovni objednávky. Uživatel má pouze ta oprávnění definovaná rolemi k interakci s tímto konkrétním Data Box objednávka a nic jiného.
 - Přiřaďte roli na úrovni skupiny prostředků, uživatel má přístup ke všem Data Box objednávkám v rámci skupiny prostředků.
 
-Další informace o navrhovaném použití RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../role-based-access-control/best-practices.md).
+Další informace o navrhovaných použitích služby Azure RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="enable-verbose-log-in-the-order"></a>Povolit podrobný protokol v pořadí
 
-Při umísťování pořadí exportu pro Data Box máte možnost Povolit shromažďování podrobného protokolu. Tady je obrazovka s objednávkou, kde můžete povolit podrobný protokol:
+Při umísťování pořadí exportu pro Data Box máte možnost Povolit kolekci podrobného protokolu. Tady je obrazovka s objednávkou, kde můžete povolit podrobný protokol:
 
-![Vybrat možnost exportu](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Vybrat možnost exportu](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-Když vyberete možnost **zahrnout podrobný protokol** , při kopírování dat z účtu Azure Storage se vygeneruje podrobný soubor protokolu. Tento protokol obsahuje seznam všech souborů, které byly úspěšně exportovány.      
+Když vyberete možnost **zahrnout podrobný protokol** , při kopírování dat z účtu Azure Storage se vygeneruje podrobný soubor protokolu. Tento protokol obsahuje seznam všech souborů, které byly úspěšně exportovány.
 
 Další informace o pořadí exportu najdete v tématu [vytvoření objednávky exportu pro data box](data-box-deploy-export-ordered.md)
 
@@ -122,14 +122,14 @@ Tady je ukázkový výstup, když *protokol kopírování* obsahuje chyby a něk
 </CopyLog>    
 ```
 
-K exportu těchto souborů máte následující možnosti: 
+Pro export těchto souborů máte následující možnosti: 
 
-- Soubory, které se nedají zkopírovat přes síť, můžete přenést. 
-- Pokud byla velikost dat větší než použitelná kapacita zařízení, pak dojde k částečnému kopírování a všechny soubory, které nebyly zkopírovány, jsou uvedeny v tomto protokolu. Tento protokol můžete použít jako vstupní XML k vytvoření nového pořadí Data Box a pak tyto soubory zkopírovat.
+- Soubory, které se nedaly zkopírovat přes síť, můžete přenést. 
+- Pokud velikost dat přesahuje použitelnou kapacitu zařízení, dojde k částečnému kopírování a všechny soubory, které se nezkopírují, jsou uvedené v tomto protokolu. Tento protokol můžete použít jako vstupní XML k vytvoření nové objednávky Data Boxu a potom tyto soubory zkopírovat.
 
 ### <a name="verbose-log"></a>Podrobný protokol
 
-*Podrobný protokol* obsahuje seznam všech souborů, které byly úspěšně exportovány z Azure Storage účtu. Protokol také obsahuje velikost souboru a výpočet kontrolního součtu.
+*Podrobný protokol* obsahuje seznam všech souborů úspěšně vyexportovaných z účtu Azure Storage. Tento protokol obsahuje také velikosti souborů a výpočty kontrolního součtu.
 
 Podrobný protokol má informace v následujícím formátu:
 
@@ -190,7 +190,7 @@ Po vymazání dat z Data Box disků podle pokynů pro NIST SP 800-88 verze 1 je 
 
 ### <a name="chain-of-custody-audit-logs"></a>Řetěz protokolů auditu pro úschovu
 
-Řetězec protokolů auditu v rámci úschovy obsahuje informace o zapnutí a přístupu ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese:`storage-account/azuredatabox-chainofcustodylogs`
+Řetězec protokolů auditu v rámci úschovy obsahuje informace o zapnutí a přístupu ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese: `storage-account/azuredatabox-chainofcustodylogs`
 
 Tady je ukázka protokolu auditu z Data Box:
 
@@ -252,7 +252,7 @@ Pokud se posunete přes historii objednávek, uvidíte:
 
 - Informace o sledování dopravce pro vaše zařízení.
 - Události s aktivitou *SecureErase* Tyto události odpovídají mazání dat na disku.
-- Data Box odkazy protokolu. Zobrazí se cesty k *protokolům auditu*, *kopírování protokolů*a souborům *kusovníků* .
+- Data Box odkazy protokolu. Zobrazí se cesty k *protokolům auditu* , *kopírování protokolů* a souborům *kusovníků* .
 
 Tady je ukázka protokolu historie objednávky z Azure Portal:
 

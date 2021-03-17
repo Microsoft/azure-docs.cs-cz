@@ -1,23 +1,24 @@
 ---
-title: Správa Azure Cloud Services pomocí Azure Automation | Microsoft Docs
+title: Správa Azure Cloud Services (Classic) pomocí Azure Automation | Microsoft Docs
 description: Přečtěte si, jak se služba Azure Automation dá použít ke správě cloudových služeb Azure ve velkém měřítku.
-services: cloud-services, automation
-author: jodoglevy
-manager: timlt
-editor: ''
-ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
-ms.service: cloud-services
 ms.topic: article
-ms.date: 06/20/2016
-ms.author: timlt
-ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 530efd09f3632637c6a12648495dcff0e7bf0e6d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72439070"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743487"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa Azure Cloud Services pomocí Azure Automation
+# <a name="managing-azure-cloud-services-classic-using-azure-automation"></a>Správa Azure Cloud Services (Classic) pomocí Azure Automation
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 Tato příručka vás seznámí s Azure Automationovou službou a jejím použitím ke zjednodušení správy cloudových služeb Azure.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
@@ -39,4 +40,4 @@ Příklady použití Azure Automation ke správě Azure Cloud Services zahrnují
 Teď, když jste se naučili základy Azure Automation a jak se dají použít ke správě cloudových služeb Azure, použijte následující odkazy, kde najdete další informace o Azure Automation.
 
 * [Přehled Azure Automation](../automation/automation-intro.md)
-* [Můj první runbook](../automation/automation-first-runbook-graphical.md)
+* [Můj první runbook](../automation/learn/automation-tutorial-runbook-graphical.md)

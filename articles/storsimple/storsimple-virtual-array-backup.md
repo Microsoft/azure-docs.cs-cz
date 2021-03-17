@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183220"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018286"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Zálohování sdílených složek nebo svazků ve virtuálním poli StorSimple
 
@@ -28,7 +28,7 @@ ms.locfileid: "88183220"
 
 Virtuální pole StorSimple je hybridní cloudové úložiště, které se dá nakonfigurovat jako souborový server nebo server iSCSI. Virtuální pole umožňuje uživateli vytvářet naplánované a ruční zálohy všech sdílených složek nebo svazků v zařízení. Když je nakonfigurovaný jako souborový server, umožňuje taky obnovení na úrovni položek. V tomto kurzu se dozvíte, jak vytvořit naplánované a ruční zálohy a provést obnovení na úrovni položky k obnovení odstraněného souboru ve virtuálním poli.
 
-Tento kurz se vztahuje pouze na virtuální pole StorSimple. Informace o řadě 8000 najdete na webu [vytvoření zálohy pro zařízení 8000 series](storsimple-manage-backup-policies-u2.md) .
+Tento kurz se vztahuje pouze na virtuální pole StorSimple. Informace o řadě 8000 najdete na webu [vytvoření zálohy pro zařízení 8000 series](./storsimple-8000-manage-backup-policies-u2.md) .
 
 ## <a name="back-up-shares-and-volumes"></a>Zálohování sdílených složek a svazků
 
@@ -76,13 +76,13 @@ Kromě naplánovaných záloh můžete kdykoli ručně (na vyžádání) vytvoř
    
     Spustí se zálohování na vyžádání a uvidíte, že se spustila úloha zálohování.
    
-    ![spouští se zálohování](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![zálohování počínaje 2](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     Po úspěšném dokončení úlohy budete znovu upozorněni. Pak se spustí proces zálohování.
    
     ![Úloha zálohování se vytvořila.](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Pokud chcete sledovat průběh zálohování a podívat se na Podrobnosti úlohy, klikněte na oznámení. Tím přejdete k **podrobnostem úlohy**.
+3. Pokud chcete sledovat průběh zálohování a podívat se na Podrobnosti úlohy, klikněte na oznámení. Tím přejdete k  **podrobnostem úlohy**.
    
      ![Podrobnosti úlohy zálohování](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
@@ -100,7 +100,7 @@ Chcete-li zobrazit existující zálohy, proveďte následující kroky v Azure 
     ![Přejít ke katalogu záloh](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. Zadejte následující kritéria, která budou použita pro filtrování:
    
-   - **Časový rozsah** – může být **za 1 hodinu**, **posledních 24 hodin**, **posledních 7 dní**, **posledních 30 dní**, **minulý rok**a **vlastní datum**.
+   - **Časový rozsah** – může být **za 1 hodinu**, **posledních 24 hodin**, **posledních 7 dní**, **posledních 30 dní**, **minulý rok** a **vlastní datum**.
     
    - **Zařízení** – vyberte ze seznamu souborové servery nebo servery iSCSI, které jsou zaregistrované ve službě StorSimple Device Manager.
    
@@ -115,4 +115,3 @@ Chcete-li zobrazit existující zálohy, proveďte následující kroky v Azure 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
-

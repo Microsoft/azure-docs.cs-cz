@@ -8,19 +8,19 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efd3f0f19325bdaccf98d10306c90488c78b3de7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6aedaf829df941a225cd0684318f28bb06ba89d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653762"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674603"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -469,7 +469,7 @@ Tyto články zahrnují nasazení SAP v Azure:
 
 Tyto poznámky SAP souvisejí s tématem SAP v Azure:
 
-| Číslo poznámky | Title |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a velikost |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -798,7 +798,7 @@ Následující části obsahují další podrobnosti o šablonách a parametry, 
   -  **Dostupnost systému**. Vyberte **ha**.
   -  **Uživatelské jméno správce a heslo správce**. Vytvořte nového uživatele, který se dá použít k přihlášení k počítači.
   -  **Nová nebo existující podsíť**. Nastavte, zda má být vytvořena nová virtuální síť a podsíť, nebo by měla být použita existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-  -  **ID podsítě** Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: *ID předplatného* /subscriptions/<>/ResourceGroups/<*název skupiny prostředků*>/Providers/Microsoft.Network/virtualnetworks/<*virtuální síť* název>/subnets/<*název podsítě*>
+  -  **ID podsítě** Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: *ID předplatného* /subscriptions/<>/resourceGroups/<*název skupiny prostředků*>/Providers/Microsoft.Network/virtualNetworks/<*virtuální síť* název>/subnets/<*název podsítě*>
 
 Šablona nasadí jednu instanci Azure Load Balancer, která podporuje více systémů SAP.
 
@@ -852,7 +852,7 @@ Nástroj pro vyrovnávání zatížení je nakonfigurován tak, aby používal n
 
 
 ### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Virtuální síť Azure
-V našem příkladu je adresní prostor virtuální sítě Azure 10.0.0.0/16. Existuje jedna podsíť s názvem **podsíť**s rozsahem adres 10.0.0.0/24. Všechny virtuální počítače a interní nástroje pro vyrovnávání zatížení se nasazují v této virtuální síti.
+V našem příkladu je adresní prostor virtuální sítě Azure 10.0.0.0/16. Existuje jedna podsíť s názvem **podsíť** s rozsahem adres 10.0.0.0/24. Všechny virtuální počítače a interní nástroje pro vyrovnávání zatížení se nasazují v této virtuální síti.
 
 > [!IMPORTANT]
 > V hostovaném operačním systému neprovádějte žádné změny nastavení sítě. Patří sem IP adresy, servery DNS a podsíť. Nakonfigurujte všechna nastavení sítě v Azure. Služba DHCP (Dynamic Host Configuration Protocol) rozšíří vaše nastavení.
@@ -897,13 +897,13 @@ Pro místní nasazení potřebujete tyto rezervované názvy hostitelů a IP adr
 
 Při vytváření clusteru vytvořte názvy virtuálních hostitelů **PR1-ASCS-vir** a **PR1-DBMS-vir** a přidružené IP adresy, které spravují samotný cluster. Informace o tom, jak to provést, najdete v tématu [shromáždění uzlů clusteru v konfiguraci clusteru][sap-ha-guide-8.12.1].
 
-Na serveru DNS můžete ručně vytvořit další dva názvy virtuálních hostitelů, **PR1-ASCS-SAP** a **PR1-DBMS-SAP**a přidružené IP adresy. Tyto prostředky používají clusterovaná instance SAP ASCS/SCS a instance clusterovaného systému DBMS. Informace o tom, jak to provést, najdete v tématu [Vytvoření virtuálního hostitele pro clusterovanou instanci SAP ASCS/SCS][sap-ha-guide-9.1.1].
+Na serveru DNS můžete ručně vytvořit další dva názvy virtuálních hostitelů, **PR1-ASCS-SAP** a **PR1-DBMS-SAP** a přidružené IP adresy. Tyto prostředky používají clusterovaná instance SAP ASCS/SCS a instance clusterovaného systému DBMS. Informace o tom, jak to provést, najdete v tématu [Vytvoření virtuálního hostitele pro clusterovanou instanci SAP ASCS/SCS][sap-ha-guide-9.1.1].
 
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> Nastavení statických IP adres pro virtuální počítače SAP
 Po nasazení virtuálních počítačů, které se mají použít v clusteru, je potřeba nastavit statické IP adresy pro všechny virtuální počítače. Provedete to v konfiguraci Azure Virtual Network, a ne v hostovaném operačním systému.
 
 1. V Azure Portal vyberte možnost **Skupina prostředků**  >  **Síťová karta**  >  **Nastavení**  >  **IP adresa**.
-2. V okně **IP adresy** vyberte v části **přiřazení**možnost **statické**. Do pole **IP adresa** zadejte IP adresu, kterou chcete použít.
+2. V okně **IP adresy** vyberte v části **přiřazení** možnost **statické**. Do pole **IP adresa** zadejte IP adresu, kterou chcete použít.
 
    > [!NOTE]
    > Pokud změníte IP adresu síťové karty, budete muset virtuální počítače Azure restartovat, aby se změny projevily.  
@@ -941,7 +941,7 @@ V našem příkladu máme tyto virtuální počítače a statické IP adresy:
 
 Nastavení statické IP adresy pro interní nástroj pro vyrovnávání zatížení Azure:
 
-1. Počáteční nasazení nastaví IP adresu interního nástroje pro vyrovnávání zatížení na **dynamickou**. V Azure Portal v okně **IP adresy** v části **přiřazení**vyberte **statické**.
+1. Počáteční nasazení nastaví IP adresu interního nástroje pro vyrovnávání zatížení na **dynamickou**. V Azure Portal v okně **IP adresy** v části **přiřazení** vyberte **statické**.
 2. Nastavte IP adresu interního nástroje pro vyrovnávání zatížení **PR1-9,1-ASCS** na IP adresu názvu virtuálního hostitele instance SAP ASCS/SCS.
 3. Nastavte IP adresu interního nástroje pro vyrovnávání zatížení **PR1-9,1-DBMS** na IP adresu názvu virtuálního hostitele instance systému DBMS.
 
@@ -1013,7 +1013,7 @@ Nastavte IP adresu nástroje pro vyrovnávání zatížení **PR1-9,1-DBMS** na 
 
 Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musíte změnit názvy a hodnoty jejich portů z výchozích hodnot.
 
-1. V Azure Portal vyberte ** < *SID*>-disascs**  >  **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
+1. V Azure Portal vyberte **< *SID*>-disascs**  >  **pravidla vyrovnávání zatížení pro vyrovnávání** zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
    * Název
@@ -1074,7 +1074,7 @@ Nastavení clusteru clusteringu Windows Server s podporou převzetí služeb př
 #### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> Shromáždění uzlů clusteru v konfiguraci clusteru
 
 1. V Průvodci přidáním role a funkce přidejte Clustering s podporou převzetí služeb při selhání do obou uzlů clusteru.
-2. Cluster s podporou převzetí služeb při selhání nastavte pomocí Správce clusteru s podporou převzetí služeb při selhání. V Správce clusteru s podporou převzetí služeb při selhání vyberte **vytvořit cluster**a pak přidejte jenom název prvního clusteru, Node a. Ještě Nepřidávat druhý uzel; druhý uzel přidáte v pozdějším kroku.
+2. Cluster s podporou převzetí služeb při selhání nastavte pomocí Správce clusteru s podporou převzetí služeb při selhání. V Správce clusteru s podporou převzetí služeb při selhání vyberte **vytvořit cluster** a pak přidejte jenom název prvního clusteru, Node a. Ještě Nepřidávat druhý uzel; druhý uzel přidáte v pozdějším kroku.
 
    ![Obrázek 18: Přidejte název serveru nebo virtuálního počítače prvního uzlu clusteru.][sap-ha-guide-figure-3007]
 
@@ -1270,7 +1270,7 @@ Existují dva způsoby, jak přidat .NET Framework 3,5:
 
 Nainstalujte cluster s DataKeeper Edition do každého uzlu v clusteru. Pokud chcete vytvořit virtuální sdílené úložiště s využitím DataKeeper, vytvořte synchronizovaný zrcadlový svazek a pak Simulujte sdílené úložiště clusteru.
 
-Před instalací softwaru s **DataKeeperSvc**vytvořte uživatele domény.
+Před instalací softwaru s **DataKeeperSvc** vytvořte uživatele domény.
 
 > [!NOTE]
 > Přidejte uživatele **DataKeeperSvc** do místní skupiny **správců** na obou uzlech clusteru.
@@ -1409,7 +1409,7 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
 1. Ve Správci DNS systému Windows vytvořte záznam DNS pro název virtuálního hostitele instance ASCS/SCS.
 
    > [!IMPORTANT]
-   > IP adresa, kterou přiřadíte názvu virtuálního hostitele instance ASCS/SCS, musí být stejná jako IP adresa, kterou jste přiřadili Azure Load Balancer (** < *SID*>-** dis--ASCS).  
+   > IP adresa, kterou přiřadíte názvu virtuálního hostitele instance ASCS/SCS, musí být stejná jako IP adresa, kterou jste přiřadili Azure Load Balancer (**< *SID*>-** dis--ASCS).  
    >
    >
 
@@ -1419,7 +1419,7 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
 
    _**Obrázek 56:** Zadejte položku DNS pro virtuální název clusteru SAP ASCS/SCS a adresu TCP/IP._
 
-2. Pokud chcete definovat IP adresu přiřazenou k názvu virtuálního hostitele, vyberte **doména Správce DNS**  >  **Domain**.
+2. Pokud chcete definovat IP adresu přiřazenou k názvu virtuálního hostitele, vyberte **doména Správce DNS**  >  .
 
    ![Obrázek 57: nový virtuální název a adresa TCP/IP pro konfiguraci clusteru SAP ASCS/SCS][sap-ha-guide-figure-3047]
 
@@ -1489,7 +1489,7 @@ Postup přidání portu sondy:
 
    Číslo portu je definované v šablonách SAP Azure Resource Manager. V PowerShellu můžete přiřadit číslo portu.
 
-   Pokud chcete nastavit novou hodnotu ProbePort pro prostředek clusteru **IP> SAP <*SID* ** , spusťte následující skript prostředí PowerShell. Aktualizujte proměnné PowerShellu pro vaše prostředí. Po spuštění skriptu se zobrazí výzva k restartování skupiny clusterů SAP, aby se změny aktivovaly.
+   Pokud chcete nastavit novou hodnotu ProbePort pro prostředek clusteru **IP> SAP <*SID*** , spusťte následující skript prostředí PowerShell. Aktualizujte proměnné PowerShellu pro vaše prostředí. Po spuštění skriptu se zobrazí výzva k restartování skupiny clusterů SAP, aby se změny aktivovaly.
 
    ```PowerShell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1547,7 +1547,7 @@ Postup přidání portu sondy:
    }
    ```
 
-   Po převedení role clusteru **SAP <*SID* > ** do online režimu ověřte, že je **ProbePort** nastavená na novou hodnotu.
+   Po převedení role clusteru **SAP <*SID* >** do online režimu ověřte, že je **ProbePort** nastavená na novou hodnotu.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1571,7 +1571,7 @@ V obou uzlech clusteru musíte otevřít port sondy brány Windows Firewall. Pom
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**ProbePort** je nastavená na **62000**. Nyní můžete přistupovat ke sdílené složce ** \\ \ascsha-clsap\sapmnt** z jiných hostitelů, například z **ascsha-specializující**.
+**ProbePort** je nastavená na **62000**. Nyní můžete přistupovat ke sdílené složce **\\ \ascsha-clsap\sapmnt** z jiných hostitelů, například z **ascsha-specializující**.
 
 ### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Instalace instance databáze
 

@@ -5,18 +5,17 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041404"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505575"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Řešení potíží s agentem Application Insights (dříve s názvem Monitorování stavu v2)
 
 Pokud povolíte monitorování, může docházet k problémům, které zabraňují shromažďování dat.
 V tomto článku jsou uvedené všechny známé problémy, které obsahují příklady řešení potíží.
-Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat na [GitHubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -53,6 +52,11 @@ Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky ch
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
+### <a name="powershell-versions"></a>Verze PowerShellu
+Tento produkt byl napsán a testován pomocí prostředí PowerShell v 5.1.
+Tento modul není kompatibilní s prostředím PowerShell verze 6 nebo 7.
+Doporučujeme používat prostředí PowerShell v 5.1 spolu s novějšími verzemi. Další informace najdete v tématu [použití prostředí PowerShell 7 vedle sebe s prostředím powershell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7#using-powershell-7-side-by-side-with-windows-powershell-51).
+
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt se sdílenou konfigurací služby IIS
 
 Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
@@ -72,16 +76,14 @@ Po spuštění příkazu Enable proveďte tyto kroky:
 ### <a name="iis-nested-applications"></a>Vnořené aplikace IIS
 
 Ve verzi 1,0 nemusíme ve službě IIS instrumentovat vnořené aplikace.
-Tento problém sledujeme [tady](https://github.com/microsoft/ApplicationInsights-Home/issues/369).
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Pokročilá konfigurace sady SDK není k dispozici.
 
 Konfigurace sady SDK není pro koncového uživatele vystavena ve verzi 1,0.
-Tento problém sledujeme [tady](https://github.com/microsoft/ApplicationInsights-Home/issues/375).
 
     
     
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
     
 ### <a name="troubleshooting-powershell"></a>Řešení potíží s PowerShellem
 
@@ -140,7 +142,7 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
     - **Věřitel**
     - **Sloučit**
     - **Kolekce symbolů .NET**
-5. Nastavit tyto **Další zprostředkovatele**:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. Nastavit tyto **Další zprostředkovatele**: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Shromažďování protokolů
@@ -156,4 +158,3 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [Reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) , kde najdete informace o parametrech, které jste možná vynechali
-- Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat na [GitHubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).

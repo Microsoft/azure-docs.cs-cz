@@ -1,23 +1,18 @@
 ---
 title: Opakující se kopírování v Azure Data Factory
 description: Zjistěte, jak se vyhnout duplicitám, i když je řez, který kopíruje data, spuštěn více než jednou.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707289"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387083"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Opakující se kopírování v Azure Data Factory
 
@@ -104,7 +99,7 @@ Aktivita kopírování spustila skript vyčištění, který odstraní odpovída
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanismus 2: použití sliceIdentifierColumnName
 > [!IMPORTANT]
-> SliceIdentifierColumnName se v současné době nepodporuje pro Azure SQL Data Warehouse. 
+> V současné době se sliceIdentifierColumnName pro Azure synapse Analytics nepodporuje. 
 
 Druhým mechanismem, který se má dosáhnout opakovatelnosti, je vytvoření vyhrazeného sloupce (sliceIdentifierColumnName) v cílové tabulce. Tento sloupec Azure Data Factory použít k tomu, aby bylo zajištěno, že zůstane synchronizován zdroj a cíl. Tento přístup funguje v případě, že dojde k flexibilitě při změně nebo definování schématu cílové tabulky SQL. 
 
@@ -151,5 +146,5 @@ Podobně jako mechanismus – aktivita kopírování automaticky vyčistí data 
 Přečtěte si následující články konektoru, které jsou kompletními příklady JSON: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239643"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199522"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení IoT Hub Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "80239643"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je open source rozšíření IoT, které přináší možnosti [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
+[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je open source rozšíření IoT, které přináší možnosti [Azure CLI](/cli/azure/overview). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -49,11 +49,11 @@ Naučíte se používat rozšíření IoT pro Azure CLI s různými možnostmi s
 
 Spusťte Azure CLI a rozšíření IoT pro Azure CLI s různými možnostmi správy.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 * Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto položky se týkají následujících požadavků:
 
-  - Aktivní předplatné Azure.
+  - Musíte mít aktivní předplatné Azure.
   - Azure IoT Hub v rámci vašeho předplatného.
   - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 
@@ -61,7 +61,7 @@ Spusťte Azure CLI a rozšíření IoT pro Azure CLI s různými možnostmi spr�
 
 * [Python 2.7 x nebo Python 3. x](https://www.python.org/downloads/)
 
-* Rozhraní příkazového řádku Azure Pokud ho potřebujete nainstalovat, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az –version`.
+* Rozhraní příkazového řádku Azure Pokud ho potřebujete nainstalovat, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az –version`.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

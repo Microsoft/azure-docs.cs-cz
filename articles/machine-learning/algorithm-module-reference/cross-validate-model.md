@@ -1,7 +1,7 @@
 ---
 title: 'Model vzájemného ověřování: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul pro různé ověřování modelů v Azure Machine Learning k vzájemnému ověření odhadů parametrů pro klasifikace nebo regresní modely pomocí dělení dat.
+description: Pomocí modulu model křížového ověřování v Návrháři Azure Machine Learning můžete vyhodnocovat odhady parametrů pro klasifikace nebo regresní modely.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477642"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421341"
 ---
 # <a name="cross-validate-model"></a>Křížové ověření modelu
 
-Tento článek popisuje, jak používat modul pro různé ověřování modelu v Návrháři Azure Machine Learning (Preview). *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
+Tento článek popisuje, jak použít modul pro různé ověřování modelu v Návrháři Azure Machine Learning. *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
 
-Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin (*skládání*), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
+Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin ( *skládání* ), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
 
 Model vzájemného ověřování také vrací předpovězené výsledky a pravděpodobnosti pro datovou sadu, abyste mohli posoudit spolehlivost předpovědi.  
 
@@ -86,7 +86,7 @@ První výstup modulu poskytuje zdrojová data pro každý řádek spolu s někt
 
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **Vizualizace výsledků skóre**.
 
-| Nový název sloupce      | Description                              |
+| Nový název sloupce      | Popis                              |
 | -------------------- | ---------------------------------------- |
 | Vyhodnocené popisky        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
 | Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |
@@ -101,7 +101,7 @@ V této sestavě jsou skládání uvedena podle hodnoty indexu ve vzestupném po
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **vizualizovat výsledky vyhodnocení podle skládání**.
 
 
-|Název sloupce| Description|
+|Název sloupce| Popis|
 |----|----|
 |Číslo skládání| Identifikátor pro každé skládání. Pokud jste vytvořili pět přeložení, bude se jednat o pět podmnožin dat, očíslované od 0 do 4.
 |Počet příkladů v skládání|Počet řádků přiřazených každému skládání. Měly by být zhruba stejné. |
@@ -109,9 +109,9 @@ Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modu
 
 Modul obsahuje také následující metriky pro každé skládání v závislosti na typu modelu, který vyhodnocujete: 
 
-+ **Modely klasifikace**: přesnost, odvolání, F-SKORE, AUC, přesnost  
++ **Modely klasifikace** : přesnost, odvolání, F-SKORE, AUC, přesnost  
 
-+ **Regresní modely**: střední chyba, hlavní střední hodnota, chyba, relativní absolutní chyba, relativní natažená chyba a koeficient určení
++ **Regresní modely** : střední chyba, hlavní střední hodnota, chyba, relativní absolutní chyba, relativní natažená chyba a koeficient určení
 
 
 ## <a name="technical-notes"></a>Technické poznámky  

@@ -3,22 +3,22 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578557"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
 Existují tři typy hostujících plánů pro aplikaci, která běží v Azure Functions, přičemž každý plán má svůj vlastní cenový model: 
 
-| Plánování | Popis |
+| Plánování | Description |
 | ---- | ----------- |
-| [**Consumption**](functions-scale.md#consumption-plan) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
-| [**Premium**](functions-scale.md#premium-plan) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
-| [**Vyhrazeno (App Service)**](functions-scale.md#app-service-plan) <br/>(úroveň Basic nebo vyšší) | Pokud potřebujete spustit na vyhrazených virtuálních počítačích nebo v izolaci, použijte vlastní image nebo využijte své nadměrné App Service plánování kapacity. Používá k [fakturaci pravidelného plánování App Service](https://azure.microsoft.com/pricing/details/app-service/). Náklady jsou založené na vaší zvolené cenové úrovni.|
+| [**Využití**](consumption-plan.md) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
+| [**Premium**](functions-premium-plan.md) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
+| [**Vyhrazeno (App Service)**](dedicated-plan.md) <br/>(úroveň Basic nebo vyšší) | Pokud potřebujete spustit na vyhrazených virtuálních počítačích nebo v izolaci, použijte vlastní image nebo využijte své nadměrné App Service plánování kapacity. Používá k [fakturaci pravidelného plánování App Service](https://azure.microsoft.com/pricing/details/app-service/). Náklady jsou založené na vaší zvolené cenové úrovni.|
 
 Zvolili jste plán, který nejlépe podporuje výkon vaší funkce a požadavky na náklady. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md).
 
@@ -50,7 +50,7 @@ Při odhadování celkových nákladů na vaši aplikaci Function App a souvisej
 | Související náklady | Popis |
 | ------------ | ----------- |
 | **Účet úložiště** | Každá aplikace Function App vyžaduje, abyste měli přidružený [účet Pro obecné účely Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts), který se [fakturuje zvlášť](https://azure.microsoft.com/pricing/details/storage/). Tento účet se používá interně modulem runtime Functions, ale můžete ho použít i pro triggery a vazby úložiště. Pokud nemáte účet úložiště, vytvoří se pro vás při vytváření aplikace Function App. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).|
-| **Application Insights** | Funkce spoléhá na [Application Insights](../azure-monitor/app/app-insights-overview.md) , aby poskytovala vysoce výkonné prostředí pro monitorování aplikací Function App. I když to není nutné, měli byste [Povolit integraci Application Insights](functions-monitoring.md#enable-application-insights-integration). K dispozici je bezplatný grant dat telemetrie každý měsíc. Další informace najdete [na stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). |
+| **Application Insights** | Funkce spoléhá na [Application Insights](../azure-monitor/app/app-insights-overview.md) , aby poskytovala vysoce výkonné prostředí pro monitorování aplikací Function App. I když to není nutné, měli byste [Povolit integraci Application Insights](configure-monitoring.md#enable-application-insights-integration). K dispozici je bezplatný grant dat telemetrie každý měsíc. Další informace najdete [na stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). |
 | **Šířka pásma sítě** | Neplatíte za přenos dat mezi službami Azure ve stejné oblasti. Můžete ale účtovat náklady na přenosy odchozích dat do jiné oblasti nebo mimo Azure. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
 ## <a name="behaviors-affecting-execution-time"></a>Chování ovlivňující dobu provádění
@@ -61,19 +61,21 @@ Doba spuštění může ovlivnit následující chování vašich funkcí:
 
 + **Asynchronní spuštění**: doba, kterou vaše funkce čeká na výsledky asynchronního požadavku ( `await` v jazyce C#), se počítá jako doba provádění. Výpočet GB druhé je založen na počátečním a koncovém času funkce a využití paměti v tomto období. Co se v této době děje z důvodu aktivity procesoru, se do výpočtu nepočítá. Během asynchronních operací může být možné snížit náklady pomocí [Durable Functions](durable/durable-functions-overview.md). Neúčtuje se vám čas strávený za await ve funkcích Orchestrator.
 
-## <a name="view-execution-data"></a>Zobrazit data spuštění
+## <a name="viewing-cost-related-data"></a>Zobrazení dat souvisejících s náklady
 
-Ve [vaší faktuře](../cost-management-billing/understand/download-azure-invoice.md)si můžete zobrazit data související s náklady z celkového počtu **spuštění –** funkce a **čas spuštění – funkce**a také skutečné fakturované náklady. Tato data faktury jsou však za měsíc agregovaná za období minulé faktury. 
+Ve [vaší faktuře](../cost-management-billing/understand/download-azure-invoice.md)si můžete zobrazit data související s náklady z celkového počtu **spuštění –** funkce a **čas spuštění – funkce** a také skutečné fakturované náklady. Tato data faktury jsou však za měsíc agregovaná za období minulé faktury. 
 
-Abyste lépe pochopili dopad vašich funkcí, můžete pomocí Azure Monitor zobrazit metriky související s náklady aktuálně vygenerované vašimi aplikacemi Function App. K získání těchto dat můžete použít buď [průzkumníka Azure monitor metriky](../azure-monitor/platform/metrics-getting-started.md) v rozhraních API [Azure Portal] nebo REST.
+### <a name="function-app-level-metrics"></a>Funkce metrik na úrovni aplikace
 
-### <a name="monitor-metrics-explorer"></a>Monitorovat Průzkumníka metrik
+Abyste lépe pochopili dopad vašich funkcí, můžete pomocí Azure Monitor zobrazit metriky související s náklady aktuálně vygenerované vašimi aplikacemi Function App. K získání těchto dat můžete použít buď [průzkumníka Azure monitor metriky](../azure-monitor/essentials/metrics-getting-started.md) v rozhraních API [Azure Portal] nebo REST.
 
-Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/platform/metrics-getting-started.md) můžete zobrazit data související s náklady pro aplikace funkcí plánu spotřeby v grafickém formátu. 
+#### <a name="monitor-metrics-explorer"></a>Monitorovat Průzkumníka metrik
 
-1. V horní části [Azure Portal] v části **Hledat služby, prostředky a hledání dokumentů** vyhledejte `monitor` a v části **služby**vyberte **monitor** .
+Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/essentials/metrics-getting-started.md) můžete zobrazit data související s náklady pro aplikace funkcí plánu spotřeby v grafickém formátu. 
 
-1. Na levé straně vyberte **metriky**  >  **Vybrat prostředek**a pak pomocí nastavení pod imagí zvolte aplikaci Function App.
+1. V horní části [Azure Portal] v části **Hledat služby, prostředky a hledání dokumentů** vyhledejte `monitor` a v části **služby** vyberte **monitor** .
+
+1. Na levé straně vyberte **metriky**  >  **Vybrat prostředek** a pak pomocí nastavení pod imagí zvolte aplikaci Function App.
 
     ![Výběr prostředku Function App](media/functions-consumption-costing/select-a-resource.png)
 
@@ -87,7 +89,7 @@ Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/platform/metrics-g
 
 1. Vyberte **použít** a zvolte svou aplikaci Function App jako prostředek, který chcete monitorovat.
 
-1. Z **metriky**vyberte **počet spuštění funkce** a **součet** pro **agregaci**. Tím se do grafu přidá součet počtu spuštění během zvoleného období.
+1. Z **metriky** vyberte **počet spuštění funkce** a **součet** pro **agregaci**. Tím se do grafu přidá součet počtu spuštění během zvoleného období.
 
     ![Definování funkce Function App metriky, která se má přidat do grafu](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
@@ -101,7 +103,7 @@ Vzhledem k tomu, že počet jednotek spuštění je mnohem větší než počet 
 
 Tento graf znázorňuje celkem 1 110 000 000 `Function Execution Units` spotřebovaných v období 2 hodiny, měřeno v MB-milisekundách. Chcete-li převést na GB-s, vydělte 1024000. V tomto příkladu aplikace Function App využila `1110000000 / 1024000 = 1083.98` GB-sekund. Tuto hodnotu můžete přijmout a vynásobit aktuální cenu za spuštění na[stránce] [Functions Price]Price Page, která vám poskytne náklady na tyto dvě hodiny za předpokladu, že jste už použili bezplatné granty na dobu spuštění. 
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 Rozhraní příkazového [řádku Azure CLI](/cli/azure/) obsahuje příkazy pro načítání metrik. Rozhraní příkazového řádku můžete použít z místního příkazového prostředí nebo přímo z portálu pomocí [Azure Cloud Shell](../cloud-shell/overview.md). Například následující příkaz [AZ monitor Metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) vrátí hodinová data ve stejném časovém období použitém dříve.
 
@@ -192,47 +194,13 @@ Tento příkaz vrátí datovou část JSON, která vypadá jako v následující
 ```
 Tato konkrétní odezva ukazuje, že z aplikace do jste vypnuli `2019-09-11T21:46` `2019-09-11T23:18` 1110000000 MB – milisekund (1083,98 GB-s).
 
-## <a name="determine-memory-usage"></a>Určení využití paměti
+### <a name="function-level-metrics"></a>Metriky na úrovni funkcí
 
 Jednotky spuštění funkce jsou kombinací času spuštění a využití paměti. díky tomu je obtížné metriky pochopit využití paměti. Data paměti nejsou metrikou, která je aktuálně dostupná prostřednictvím Azure Monitor. Pokud ale chcete optimalizovat využití paměti ve vaší aplikaci, může použít data čítače výkonu shromažďovaná nástrojem Application Insights.  
 
-Pokud jste to ještě neudělali, [povolte Application Insights ve vaší aplikaci Function App](functions-monitoring.md#enable-application-insights-integration). Když je tato integrace povolená, můžete na [portálu zadat dotaz na tato data telemetrie](functions-monitoring.md#query-telemetry-data).  
+Pokud jste to ještě neudělali, [povolte Application Insights ve vaší aplikaci Function App](configure-monitoring.md#enable-application-insights-integration). Když je tato integrace povolená, můžete na [portálu zadat dotaz na tato data telemetrie](analyze-telemetry-data.md#query-telemetry-data). 
 
-V části **monitorování**vyberte **protokoly (Analytics)**, zkopírujte následující dotaz telemetrie a vložte ho do okna dotazu a vyberte **Spustit**. Tento dotaz vrátí celkové využití paměti v každém vzorku.
-
-```
-performanceCounters
-| where name == "Private Bytes"
-| project timestamp, name, value
-```
-
-Výsledky vypadají jako v následujícím příkladu:
-
-| časové razítko \[ UTC\]          | name          | value       |
-|----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14 \. 947 am | Soukromé bajty | 209 932 288 |
-| 9/12/2019, 1:06:14 \. 994 am | Soukromé bajty | 212 189 184 |
-| 9/12/2019, 1:06:30 \. 010 am | Soukromé bajty | 231 714 816 |
-| 9/12/2019, 1:07:15 \. 040 am | Soukromé bajty | 210 591 744 |
-| 9/12/2019, 1:12:16 \. 285 am | Soukromé bajty | 216 285 184 |
-| 9/12/2019, 1:12:31 \. 376 am | Soukromé bajty | 235 806 720 |
-
-## <a name="function-level-metrics"></a>Metriky na úrovni funkcí
-
-Azure Monitor sleduje metriky na úrovni prostředků, což pro funkce je aplikace Function App. Application Insights Integration generuje metriky na základě jednotlivých funkcí. Zde je příklad analytického dotazu, který získá průměrnou dobu trvání funkce:
-
-```
-customMetrics
-| where name contains "Duration"
-| extend averageDuration = valueSum / valueCount
-| summarize averageDurationMilliseconds=avg(averageDuration) by name
-```
-
-| name                       | averageDurationMilliseconds |
-|----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16 \. 087                     |
-| QueueTrigger MaxDurationMs | 90 \. 249                     |
-| QueueTrigger MinDurationMs | 8 \. 522                      |
+[!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

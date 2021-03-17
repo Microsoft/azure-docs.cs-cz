@@ -3,12 +3,12 @@ title: Informace o SAP HANA zálohování databáze na virtuálních počítač�
 description: V tomto článku se dozvíte o zálohování SAP HANA databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533440"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296450"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informace o SAP HANA zálohování databáze na virtuálních počítačích Azure
 
@@ -31,9 +31,9 @@ Pokud chcete zobrazit scénáře zálohování a obnovení, které podporujeme d
 
 ![Diagram architektury zálohování](./media/sap-hana-db-about/backup-architecture.png)
 
-* Proces zálohování začíná [vytvořením trezoru služby Recovery Services](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) v Azure. Tento trezor se použije k uložení záloh a bodů obnovení vytvořených v průběhu času.
+* Proces zálohování začíná [vytvořením trezoru Recovery Services](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault) v Azure. Tento trezor se použije k uložení záloh a bodů obnovení vytvořených v průběhu času.
 * Virtuální počítač Azure se spuštěným SAP HANA serverem je zaregistrován v trezoru a jsou [zjištěny](./tutorial-backup-sap-hana-db.md#discover-the-databases)databáze, které mají být zálohovány. Aby služba Azure Backup mohla zjišťovat databáze, musí se na serveru HANA spustit [skript pro registraci](https://aka.ms/scriptforpermsonhana) jako uživatel root user.
-* Tento skript vytvoří uživatele **AZUREWLBACKUPHANAUSER** DB a odpovídající klíč se stejným názvem v **hdbuserstore**. Další informace o tom, co skript dělá, najdete v části [co je to skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) pro předběžnou registraci.
+* Tento skript vytvoří uživatele **AZUREWLBACKUPHANAUSER** DB a odpovídající klíč se stejným názvem v **hdbuserstore**. Další informace o tom, co skript dělá, najdete v části  [co je to skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) pro předběžnou registraci.
 * Služba Azure Backup nyní na zaregistrovaném serveru SAP HANA nainstaluje **modul plug-in Azure Backup pro Hana** .
 * Uživatel **AZUREWLBACKUPHANAUSER** DB vytvořený pomocí předregistračního skriptu používá **modul plug-in Azure Backup pro Hana** k provádění všech operací zálohování a obnovení. Pokud se pokusíte nakonfigurovat zálohování pro SAP HANA databáze bez spuštění tohoto skriptu, může se zobrazit následující chyba: **UserErrorHanaScriptNotRun**.
 * Pokud chcete [nakonfigurovat zálohování](./tutorial-backup-sap-hana-db.md#configure-backup) u databází, které se zjistily, vyberte požadované zásady zálohování a povolte zálohování.
@@ -60,16 +60,13 @@ Kromě používání služby SAP HANA Backup v Azure, která poskytuje zálohov�
 
 [Řešení zálohování Backint Certified pro Azure SAP HANA](#backup-architecture) se dá použít k zálohování a obnovení databáze.
 
-[Zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md) se dá použít k zálohování operačního systému a dalších jiných nedatabázových disků. Zálohování virtuálních počítačů se jednou denně povede a zálohuje všechny disky (kromě disků **akcelerátor zápisu (WA)** a disků **Ultra**. Vzhledem k tomu, že se databáze zálohuje pomocí řešení zálohování Azure SAP HANA, můžete pro virtuální počítače s využitím funkce [zálohování a obnovení pro virtuální počítače Azure](selective-disk-backup-restore.md) použít zálohování s konzistentními soubory jenom s operačním systémem a nedatabázovými disky.
-
->[!NOTE]
-> Použití předzálohovacích skriptů se zálohováním virtuálního počítače Azure umožní zálohování datových svazků v databázi konzistentní vzhledem k aplikacím. Pokud se ale oblast protokolu nachází na discích s WA, nemusí mít snímek těchto disků zaručenou konzistenci oblasti protokolu. HANA má explicitní způsob generování záloh protokolů z tohoto přesného důvodu. Povolte ve svém SAP HANA stejné a můžou se zálohovat pomocí Azure SAP HANA Backup.
+[Zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md) se dá použít k zálohování operačního systému a dalších jiných nedatabázových disků. Zálohování virtuálních počítačů se jednou denně vybere a zálohuje všechny disky (kromě disků s **operačním systémem akcelerátor zápisu (WA)** a disků **Ultra**. Vzhledem k tomu, že se databáze zálohuje pomocí řešení zálohování Azure SAP HANA, můžete pro virtuální počítače s využitím funkce [zálohování a obnovení pro virtuální počítače Azure](selective-disk-backup-restore.md) použít zálohování s konzistentními soubory jenom s operačním systémem a nedatabázovými disky.
 
 Pokud chcete obnovit virtuální počítač se spuštěným SAP HANA, postupujte podle těchto kroků:
 
 * [Obnovte nový virtuální počítač ze zálohy virtuálního počítače Azure](backup-azure-arm-restore-vms.md) z posledního bodu obnovení. Nebo vytvořte nový prázdný virtuální počítač a připojte disky z posledního bodu obnovení.
-* Vzhledem k tomu, že disky WA nejsou zálohovány, nejsou obnoveny. Vytvořte prázdné disky a oblast protokolu WA.
-* Po nastavení všech ostatních konfigurací (například IP adresa, název systému atd.) je virtuální počítač nastavený na přijímání DATABÁZOVÝch dat ze služby Azure Backup.
+* Pokud jsou vyloučené disky WA, nebudou obnoveny. V takovém případě vytvořte prázdné disky WA a oblast protokolu.
+* Po nastavení všech ostatních konfigurací (například IP adresa, název systému atd.) je virtuální počítač nastavený na příjem dat databáze z Azure Backup.
 * Teď obnovte databázi do virtuálního počítače ze [zálohy služby Azure SAP HANA DB](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) na požadovaný časový okamžik.
 
 ## <a name="next-steps"></a>Další kroky

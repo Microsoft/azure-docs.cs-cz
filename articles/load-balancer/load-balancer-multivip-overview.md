@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956368"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696876"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-endu pro Azure Load Balancer
 
 Azure Load Balancer umožňuje vyrovnávat zatížení služeb na několika portech, několika IP adresách nebo obojím. Můžete použít definice veřejného a interního nástroje pro vyrovnávání zatížení k vyrovnávání zatížení toků v rámci sady virtuálních počítačů.
 
-Tento článek popisuje základy této možnosti, důležitých konceptů a omezení. Pokud máte v úmyslu zveřejnit jenom služby na jedné IP adrese, můžete najít zjednodušené pokyny pro konfiguraci [veřejného](load-balancer-get-started-internet-portal.md) nebo [interního](load-balancer-get-started-ilb-arm-portal.md) nástroje pro vyrovnávání zatížení. Přidání více front-endu je přírůstkové na jednu konfiguraci front-endu. Pomocí konceptů v tomto článku můžete kdykoli rozšířit zjednodušenou konfiguraci.
+Tento článek popisuje základy této možnosti, důležitých konceptů a omezení. Pokud máte v úmyslu zveřejnit jenom služby na jedné IP adrese, můžete najít zjednodušené pokyny pro konfiguraci [veřejného](./quickstart-load-balancer-standard-public-portal.md) nebo [interního](./quickstart-load-balancer-standard-internal-portal.md) nástroje pro vyrovnávání zatížení. Přidání více front-endu je přírůstkové na jednu konfiguraci front-endu. Pomocí konceptů v tomto článku můžete kdykoli rozšířit zjednodušenou konfiguraci.
 
 Při definování Azure Load Balancer se s pravidly připojí front-end a konfigurace fondu back-endu. Sonda stavu, na kterou pravidlo odkazuje, se používá k určení toho, jak se nové toky odesílají do uzlu ve fondu back-endu. Front-end (označovaný také jako VIP) je definován třemi řazenými kolekcemi, které se skládají z IP adresy (veřejné nebo interní), přenosového protokolu (UDP nebo TCP) a čísla portu z pravidla vyrovnávání zatížení. Back-end fond je kolekcí konfigurací IP adres virtuálních počítačů (součást prostředku síťové karty), která odkazuje na Load Balancer fond back-endu.
 
@@ -64,8 +64,8 @@ Definujeme dvě pravidla:
 
 | Pravidlo | Mapování front-endu | Do back-endu fondu |
 | --- | --- | --- |
-| 1 |![zelený front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![Virtuální IP adresa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![zelený front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zelený back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zelený back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![Virtuální IP adresa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Nachový back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Nachový back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Úplné mapování v Azure Load Balancer je teď následující:
 
@@ -143,8 +143,8 @@ Definujeme dvě pravidla:
 
 | Pravidlo | Front-end | Mapovat na back-end fond |
 | --- | --- | --- |
-| 1 |![pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (v VM1 a VM2) |
-| 2 |![pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (v VM1 a VM2) |
+| 1 |![zelené pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zelený back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (v VM1 a VM2) |
+| 2 |![fialové pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Nachový back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (v VM1 a VM2) |
 
 V následující tabulce je uvedeno úplné mapování v nástroji pro vyrovnávání zatížení:
 
@@ -163,6 +163,7 @@ Typ pravidla plovoucí IP adresy je základem několika vzorů konfigurace nást
 
 * Víc konfigurací front-endu podporuje jenom virtuální počítače s IaaS.
 * V případě plovoucího pravidla IP musí vaše aplikace používat primární konfiguraci IP adres pro odchozí toky SNAT. Pokud se vaše aplikace váže k IP adrese front-endu nakonfigurované na rozhraní zpětné smyčky v hostovaném operačním systému, odchozí SNAT Azure není k dispozici pro přepsání odchozího toku a tok se nezdařil.  Projděte si [odchozí scénáře](load-balancer-outbound-connections.md).
+* Plovoucí IP adresa se v současné době nepodporuje u sekundárních konfigurací IP pro scénáře interního vyrovnávání zatížení.
 * Veřejné IP adresy mají vliv na fakturaci. Další informace najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/) .
 * Platí omezení předplatného. Další informace najdete v tématu [omezení služby](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) pro podrobnosti.
 

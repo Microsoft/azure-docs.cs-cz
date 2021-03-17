@@ -2,28 +2,29 @@
 title: Vytvoření virtuálního počítače z odeslaného zobecněného virtuálního pevného disku
 description: Nahrajte zobecněný virtuální pevný disk do Azure a použijte ho k vytvoření nových virtuálních počítačů v modelu nasazení Správce prostředků.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 9d5add1349650663b226023b9f46868f242ac4f9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 793bc5518664761a2a9b0cfd46e616d2fb72c3e6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265207"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562091"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrání generalizovaného virtuálního pevného disku a jeho použití k vytváření nových virtuálních počítačů v Azure
 
-Tento článek vás provede použitím prostředí PowerShell k nahrání virtuálního pevného disku pro zobecněný virtuální počítač do Azure, vytvoření image z virtuálního pevného disku a vytvoření nového virtuálního počítače z této image. Můžete nahrát virtuální pevný disk exportovaný z místního nástroje virtualizace nebo z jiného cloudu. Použití [Managed disks](managed-disks-overview.md) pro nový virtuální počítač zjednodušuje správu virtuálních počítačů a zajišťuje lepší dostupnost při umístění virtuálního počítače do skupiny dostupnosti. 
+Tento článek vás provede použitím prostředí PowerShell k nahrání virtuálního pevného disku pro zobecněný virtuální počítač do Azure, vytvoření image z virtuálního pevného disku a vytvoření nového virtuálního počítače z této image. Můžete nahrát virtuální pevný disk exportovaný z místního nástroje virtualizace nebo z jiného cloudu. Použití [Managed disks](../managed-disks-overview.md) pro nový virtuální počítač zjednodušuje správu virtuálních počítačů a zajišťuje lepší dostupnost při umístění virtuálního počítače do skupiny dostupnosti. 
 
-Vzorový skript najdete v tématu [ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
+Vzorový skript najdete v tématu [ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Než začnete s migrací do [Managed disks](managed-disks-overview.md), přečtěte si téma [plánování migrace na Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) .
+- Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](prepare-for-upload-vhd-image.md).
+- Než začnete s migrací do [Managed disks](../managed-disks-overview.md), přečtěte si téma [plánování migrace na Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) .
 
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalizace zdrojového virtuálního počítače pomocí nástroje Sysprep
@@ -33,18 +34,20 @@ Pokud jste to ještě neudělali, musíte virtuální počítač Sysprep před n
 Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Pokud máte v úmyslu před prvním nahráním virtuálního pevného disku do Azure spustit nástroj Sysprep, ujistěte se, že jste [připravili virtuální](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)počítač. 
+> Pokud máte v úmyslu před prvním nahráním virtuálního pevného disku do Azure spustit nástroj Sysprep, ujistěte se, že jste [připravili virtuální](prepare-for-upload-vhd-image.md)počítač. 
 > 
 > 
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe` .
-3. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtávací políčko **generalize** povoleno.
-4. V **Možnosti vypnutí**vyberte **vypnout**.
-5. Vyberte **OK**.
+1. Otevřete okno příkazového řádku jako správce. 
+1. Odstraňte adresář Panther (C:\Windows\Panther).
+1. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe` .
+1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtávací políčko **generalize** povoleno.
+1. V **Možnosti vypnutí** vyberte **vypnout**.
+1. Vyberte **OK**.
    
     ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Po dokončení programu Sysprep vypne virtuální počítač. Virtuální počítač nerestartujte.
+1. Po dokončení programu Sysprep vypne virtuální počítač. Virtuální počítač nerestartujte.
 
 
 ## <a name="upload-the-vhd"></a>Nahrání virtuálního pevného disku 
@@ -93,7 +96,7 @@ $image = New-AzImage `
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
-Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Tento příklad vytvoří virtuální počítač s názvem *myVM* z *myImage*v *myResourceGroup*.
+Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Tento příklad vytvoří virtuální počítač s názvem *myVM* z *myImage* v *myResourceGroup*.
 
 
 ```powershell
@@ -112,4 +115,4 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Další kroky
 
-Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md).

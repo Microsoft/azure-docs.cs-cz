@@ -9,16 +9,18 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a20992ef26b74bcc37a7403e4ee77cacc0f8f66e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134361"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200294"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Visual Studio Code
 
-**Automatické nasazení IoT Edge** můžete vytvořit pomocí Visual Studio Code ke správě probíhajících nasazení v mnoha zařízeních najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](/azure/iot-hub/iot-hub-automatic-device-management) v IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů na více zařízení. Můžete také sledovat stav a stav modulů a v případě potřeby provádět změny.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+**Automatické nasazení IoT Edge** můžete vytvořit pomocí Visual Studio Code ke správě probíhajících nasazení v mnoha zařízeních najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](../iot-hub/iot-hub-automatic-device-management.md) v IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů na více zařízení. Můžete také sledovat stav a stav modulů a v případě potřeby provádět změny.
 
 Další informace najdete v tématu [vysvětlení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
 
@@ -27,7 +29,10 @@ V tomto článku jste nastavili Visual Studio Code a rozšíření IoT. Pak se d
 ## <a name="prerequisites"></a>Požadavky
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
-* [IoT Edge zařízení](how-to-register-device.md#register-with-visual-studio-code) s nainstalovaným modulem runtime IoT Edge.
+* Nejméně jedno IoT Edge zařízení.
+
+  Pokud nemáte nastavené zařízení IoT Edge, můžete ho vytvořit na virtuálním počítači Azure. Použijte postup v jednom z článků rychlý Start k [Vytvoření virtuálního zařízení](quickstart-linux.md) se systémem Linux nebo [Vytvoření virtuálního zařízení s Windows](quickstart.md).
+
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) pro Visual Studio Code.
 
@@ -57,13 +62,16 @@ Chcete-li nasadit moduly pomocí Visual Studio Code, uložte manifest nasazení 
 
 Tady je základní manifest nasazení s jedním modulem jako příklad:
 
+>[!NOTE]
+>Tento ukázkový manifest nasazení používá schéma verze 1,1 pro agenta IoT Edge a centrum. Verze schématu 1,1 byla vydána společně s IoT Edge verze 1.0.10 a umožňuje funkce, jako je pořadí spouštění modulu a stanovení priorit směrování.
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -76,7 +84,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -85,14 +93,14 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
           },
           "modules": {
             "SimulatedTemperatureSensor": {
-              "version": "1.0",
+              "version": "1.1",
               "type": "docker",
               "status": "running",
               "restartPolicy": "always",
@@ -223,7 +231,7 @@ Po dokončení konfigurace manifestu nasazení a nakonfigurované značky v zař
   | Parametr | Popis |
   | --- | --- |
   | ID nasazení | Název nasazení, které se vytvoří ve službě IoT Hub. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` . |
-  | Cílová podmínka | Zadejte cílovou podmínku pro určení, která zařízení budou cílem tohoto nasazení.Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu.Například `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
+  | Cílová podmínka | Zadejte cílovou podmínku pro určení, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například, `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
   | Priorita |  Kladné celé číslo. Pokud jsou na jednom zařízení cílené dva nebo více nasazení, uplatní se nasazení s nejvyšší číselnou hodnotou priority. |
 
   Po zadání priority by měl terminál zobrazit výstup podobný následujícímu znázornění:

@@ -1,18 +1,15 @@
 ---
 title: Použití Apache Ambari v Azure HDInsight
 description: Diskuze o tom, jak se používá Apache Ambari v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: fe7d6d4e70bc55a6a91d3c1a1b910db4b5469fe6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/12/2021
+ms.openlocfilehash: 6233c42d7fbf8dc7821d26f77171c44485fb8d34
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197072"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946939"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Použití Apache Ambari v Azure HDInsight
 
@@ -66,15 +63,18 @@ Nikdy ručně nespouštějte nebo zastavte služby Ambari-Server nebo Ambari-age
 
 Nikdy ručně Neměňte žádné konfigurační soubory na žádném uzlu clusteru, takže Ambari uživatelské rozhraní provede úlohu.
 
+## <a name="property-values-in-esp-clusters"></a>Hodnoty vlastností v clusterech ESP
+
+Ve službě HDInsight 4,0 Balíček zabezpečení podniku clustery používejte `|` jako oddělovače proměnných kanály místo čárky. Příklad najdete níže:
+
+```
+Property Key: hive.security.authorization.sqlstd.confwhitelist.append
+Property Value: environment|env|dl_data_dt
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Správa clusterů HDInsight pomocí REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -1,16 +1,14 @@
 ---
 title: Vytvoření samostatného clusteru Azure Service Fabric
 description: Vytvořte cluster Azure Service Fabric na jakémkoli počítači (fyzickém nebo virtuálním) s Windows serverem, ať už je to místní nebo v jakémkoli cloudu.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.author: dekapur
-ms.openlocfilehash: 6fa27008ea22e1a2bd9a83ce3888370cf2213935
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87458072"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785680"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžícího na Windows Serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů se systémem Windows Server, je místní nebo s jakýmkoli poskytovatelem cloudu. Service Fabric poskytuje instalační balíček pro vytváření clusterů Service Fabric s názvem samostatný balíček Windows serveru. Tradiční Service Fabric clustery v Azure jsou k dispozici jako spravovaná služba, zatímco samostatné clustery Service Fabric jsou samoobslužné. Další informace o rozdílech najdete v tématu [porovnání clusterů Azure a samostatných Service Fabric](./service-fabric-deploy-anywhere.md).
@@ -118,7 +116,7 @@ Balíček modulu runtime lze stáhnout samostatně, z jiného počítače připo
 *.\ClusterConfig.jsv* a *.\MicrosoftAzureServiceFabric.cab* jsou cesty ke konfiguraci clusteru a souboru runtime. cab v uvedeném pořadí.
 
 ### <a name="step-2-connect-to-the-cluster"></a>Krok 2: připojení ke clusteru
-Připojte se ke clusteru a ověřte, jestli je cluster spuštěný a dostupný. Modul PowerShell ServiceFabric se instaluje spolu s modulem runtime.  Ke clusteru se můžete připojit z jednoho z uzlů clusteru nebo ze vzdáleného počítače s modulem runtime Service Fabric.  Rutina [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) vytvoří připojení ke clusteru.
+Připojte se ke clusteru a ověřte, jestli je cluster spuštěný a dostupný. Modul PowerShell ServiceFabric se instaluje spolu s modulem runtime.  Ke clusteru se můžete připojit z jednoho z uzlů clusteru nebo ze vzdáleného počítače s modulem runtime Service Fabric.  Rutina [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) vytvoří připojení ke clusteru.
 
 Pokud se chcete připojit k nezabezpečenému clusteru, spusťte následující příkaz prostředí PowerShell:
 
@@ -126,12 +124,12 @@ Pokud se chcete připojit k nezabezpečenému clusteru, spusťte následující 
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Příklad:
+Například:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-Další příklady připojení ke clusteru najdete v článku [Připojení k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md). Po připojení ke clusteru zobrazte pomocí rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) seznam uzlů v clusteru a stavové informace pro každý uzel. Položka **HealthState** by měla mít pro každý uzel hodnotu *OK*.
+Další příklady připojení ke clusteru najdete v článku [Připojení k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md). Po připojení ke clusteru zobrazte pomocí rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) seznam uzlů v clusteru a stavové informace pro každý uzel. Položka **HealthState** by měla mít pro každý uzel hodnotu *OK*.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table

@@ -17,14 +17,14 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304475"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015447"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Odeslání e-mailu pomocí SendGrid z Java
-Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů**a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
+Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů** a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Co je e-mailová služba SendGrid?
 SendGrid je [Cloudová e-mailová služba] , která poskytuje spolehlivé zasílání [transakčních e-mailů], škálovatelnost a analýzy v reálném čase spolu s flexibilními rozhraními API, která usnadňují vlastní integraci. Mezi běžné scénáře použití SendGrid patří:
@@ -86,7 +86,7 @@ Získejte knihovny javax. mail, například z <https://www.oracle.com/technetwor
     Authenticator auth = new SMTPAuthenticator();
     Session mailSession = Session.getDefaultInstance(properties, auth);
     ```
-3. Vytvořte zprávu a přiřaďte **k**nim hodnoty, **od**, **Předmět** a obsah. To se zobrazuje v části [Postupy: vytvoření e-mailu](#how-to-create-an-email) .
+3. Vytvořte zprávu a přiřaďte **k** nim hodnoty, **od**, **Předmět** a obsah. To se zobrazuje v části [Postupy: vytvoření e-mailu](#how-to-create-an-email) .
 4. Odešle zprávu prostřednictvím objektu *javax. mail. Transport* . Zobrazuje se v části [postupy: odeslání e-mailu] [#how-to-Send-e-mail].
 
 ## <a name="how-to-create-an-email"></a>Postupy: vytvoření e-mailu
@@ -202,9 +202,9 @@ SendGrid nabízí webová rozhraní API, která můžete použít k využití da
 Teď, když jste se seznámili se základy e-mailové služby SendGrid, získáte další informace na následujících odkazech.
 
 * Ukázka, která ukazuje použití SendGrid v nasazení Azure: [odeslání e-mailu pomocí SendGrid z Java v nasazení Azure](store-sendgrid-java-how-to-send-email-example.md)
-* SendGrid Java SDK:<https://sendgrid.com/docs/Code_Examples/java.html>
-* Dokumentace k rozhraní SendGrid API:<https://sendgrid.com/docs/API_Reference/index.html>
-* SendGrid speciální nabídka pro zákazníky Azure:<https://sendgrid.com/windowsazure.html>
+* SendGrid Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
+* Dokumentace k rozhraní SendGrid API: <https://sendgrid.com/docs/API_Reference/index.html>
+* SendGrid speciální nabídka pro zákazníky Azure: <https://sendgrid.com/windowsazure.html>
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/pricing.html]: https://sendgrid.com/pricing.html

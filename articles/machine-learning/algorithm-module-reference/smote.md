@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477455"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90898257"
 ---
 # <a name="smote"></a>SMOTE
 
-Tento článek popisuje, jak použít modul SMOTE v Návrháři Azure Machine Learning (Preview) ke zvýšení počtu nezastoupených případů v datové sadě, která se používá pro strojové učení. SMOTE je lepší způsob, jak zvýšit počet vzácných případů, než jednoduše duplikují existující případy.  
+Tento článek popisuje, jak použít modul SMOTE v Návrháři Azure Machine Learning ke zvýšení počtu nezastoupených případů v datové sadě, která se používá pro strojové učení. SMOTE je lepší způsob, jak zvýšit počet vzácných případů, než jednoduše duplikují existující případy.  
 
 Připojíte modul SMOTE k datové sadě, která je *nevyvážená*. Existuje mnoho důvodů, proč může být datová sada nevyvážená. Například kategorie, kterou cílíte, může být v populaci vzácná nebo může být obtížné shromažďovat data. Obvykle používáte SMOTE, pokud je *Třída* , kterou chcete analyzovat, nereprezentace. 
   
@@ -62,7 +62,7 @@ Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent*
   
 4.  Modul SMOTE automaticky identifikuje třídu menšin ve sloupci Label a pak získá všechny příklady pro třídu menšin. Všechny sloupce nemůžou mít hodnoty NaN.
   
-5.  V možnosti **procento SMOTE** zadejte celé číslo, které označuje cílové procento minoritních případů ve výstupní datové sadě. Příklad:  
+5.  V možnosti **procento SMOTE** zadejte celé číslo, které označuje cílové procento minoritních případů ve výstupní datové sadě. Například:  
   
     - Zadáte **0**. Modul SMOTE vrací přesně stejnou datovou sadu, kterou jste zadali jako vstup. Nepřidává žádné nové menšinové případy. V této datové sadě se nezměnila procentní část třídy.  
   

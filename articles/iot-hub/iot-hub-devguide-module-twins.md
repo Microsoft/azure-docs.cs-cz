@@ -1,21 +1,21 @@
 ---
 title: Principy nevláken modulu Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře – pomocí vláken modulu můžete synchronizovat stavová a konfigurační data mezi IoT Hub a vašimi zařízeními.
-author: ash2017
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.author: asrastog
+ms.date: 09/29/2020
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323005"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996468"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Pochopení a použití vláken v modulech v IoT Hub
 
@@ -116,7 +116,7 @@ V předchozím příkladu modul má nevlákennou `batteryLevel` vlastnost, kter�
 
 ### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu modul neplní `telemetryConfig` požadované a hlášené vlastnosti, které jsou používány back-end řešení a aplikaci modulu k synchronizaci konfigurace telemetrie pro tento modul. Například:
+V předchozím příkladu modul neplní `telemetryConfig` požadované a hlášené vlastnosti, které jsou používány back-end řešení a aplikaci modulu k synchronizaci konfigurace telemetrie pro tento modul. Příklad:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
@@ -179,7 +179,7 @@ Back-end řešení funguje v modulu s dvojím použitím následujících atomic
 
   - Vlastnosti
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     $content – typ | application/json |
     $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -241,7 +241,7 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
 
 * **Keys**: všechny klíče v objektech JSON jsou v kódování UTF-8, Velká a malá písmena a dlouhé až 1 KB. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1), a `.` , a `$` SP.
 
-* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena.
+* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole jsou také podporována.
 
     * Celá čísla můžou mít minimální hodnotu-4503599627370496 a maximální hodnotu 4503599627370495.
 
@@ -300,7 +300,7 @@ IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost těch
 ## <a name="module-twin-metadata"></a>Moduly s dvojitou metadaty
 
 IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v modulu, který má požadovanou a nahlášené vlastnosti. Časová razítka jsou v UTC a kódovaná ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátu ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ` .
-Například:
+Příklad:
 
 ```json
 {

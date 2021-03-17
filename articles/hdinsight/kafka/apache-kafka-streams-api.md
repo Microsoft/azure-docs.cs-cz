@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: Použití rozhraní Kafka Streams API – Azure HDInsight '
 description: Kurz – Naučte se používat rozhraní API pro Apache Kafka streamování s Kafka ve službě HDInsight. Toto rozhraní API umožňuje provádět zpracování datových proudů mezi tématy v systému Kafka.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850558"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939206"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: použití rozhraní API streamování Apache Kafka ve službě Azure HDInsight
 
@@ -39,11 +36,11 @@ V tomto kurzu se naučíte:
 
 * Proveďte kroky v dokumentu [Apache Kafka příjemce a rozhraní API pro výrobce](apache-kafka-producer-consumer-api.md) . Kroky v tomto dokumentu používají ukázkovou aplikaci a témata vytvořená v tomto kurzu.
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) nebo ekvivalent, jako je například OpenJDK.
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 

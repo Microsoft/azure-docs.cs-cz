@@ -1,165 +1,275 @@
 ---
-title: Vytvoření služby privátního propojení Azure pomocí Azure CLI
-description: Naučte se vytvořit službu privátního propojení Azure pomocí Azure CLI.
+title: Rychlý Start – vytvoření služby privátního propojení Azure pomocí Azure CLI
+description: V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení Azure pomocí Azure CLI.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
-ms.topic: how-to
-ms.date: 09/16/2019
+ms.topic: quickstart
+ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737338"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563026"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>Vytvoření služby privátního propojení pomocí Azure CLI
-V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí rozhraní příkazového řádku Azure CLI.
+# <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure CLI
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Začněte vytvářet službu privátního propojení, která odkazuje na vaši službu.  Poskytněte soukromému odkazu přístup k vaší službě nebo prostředku nasazenému za službou Azure Standard Load Balancer.  Uživatelé vaší služby mají privátní přístup ze své virtuální sítě.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
-## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Než budete moct vytvořit virtuální síť, musíte vytvořit skupinu prostředků, která bude hostovat virtuální síť. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westcentralus* :
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
-```azurecli-interactive
-az group create --name myResourceGroup --location westcentralus
-```
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet*:
+- V tomto rychlém startu se vyžaduje verze Azure CLI 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-```azurecli-interactive
-az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
-```
-### <a name="create-a-subnet"></a>Vytvoření podsítě
-Vytvořte podsíť pro virtuální síť pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). Tento příklad vytvoří podsíť s názvem *mySubnet* ve virtuální síti *myVirtualNetwork* :
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create):
+
+* Název **CreatePrivLinkService-RG**. 
+* V umístění **eastus** .
 
 ```azurecli-interactive
-az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
+  az group create \
+    --name CreatePrivLinkService-rg \
+    --location eastus2
+
 ```
-### <a name="create-a-internal-load-balancer"></a>Vytvoření interní Load Balancer 
-Vytvořte interní nástroj pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az-network-lb-create)diskont Create. Tento příklad vytvoří interní nástroj pro vyrovnávání zatížení s názvem *myILB* ve skupině prostředků s názvem *myResourceGroup*. 
+
+## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
+
+V této části vytvoříte virtuální síť a interní Azure Load Balancer.
+
+### <a name="virtual-network"></a>Virtuální síť
+
+V této části vytvoříte virtuální síť a podsíť pro hostování nástroje pro vyrovnávání zatížení, který přistupuje ke službě privátního propojení.
+
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create):
+
+* S názvem **myVNet**.
+* Předpona adresy **10.1.0.0/16**
+* Podsíť s názvem **mySubnet**.
+* Předpona podsítě **10.1.0.0/24**.
+* Ve skupině prostředků **CreatePrivLinkService-RG** .
+* Umístění **eastus2**
+* Zakažte v podsíti zásadu sítě pro službu privátního propojení.
 
 ```azurecli-interactive
-az network lb create --resource-group myResourceGroup --name myILB --sku standard --vnet-name MyVirtualNetwork --subnet mySubnet --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool
+  az network vnet create \
+    --resource-group CreatePrivLinkService-rg \
+    --location eastus2 \
+    --name myVNet \
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name mySubnet \
+    --subnet-prefixes 10.1.0.0/24
+
 ```
 
-### <a name="create-a-load-balancer-health-probe"></a>Vytvoření sondy stavu nástroje pro vyrovnávání zatížení
+Chcete-li aktualizovat podsíť, aby se zakázaly síťové zásady služby privátního propojení, použijte příkaz [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
-Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že můžou přijímat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Pomocí příkazu [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
+```azurecli-interactive
+az network vnet subnet update \
+    --name mySubnet \
+    --resource-group CreatePrivLinkService-rg \
+    --vnet-name myVNet \
+    --disable-private-link-service-network-policies true
+```
+
+### <a name="create-standard-load-balancer"></a>Vytvořit službu Load Balancer úrovně Standard
+
+Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
+
+  * Fond IP adres front-endu, který přijímá příchozí síťový provoz v nástroji pro vyrovnávání zatížení.
+  * Back-end fond IP adres, ve kterém front-endu odesílá síťový provoz s vyrovnáváním zatížení.
+  * Sonda stavu, která určuje stav instancí virtuálních počítačů back-endu.
+  * Pravidlo nástroje pro vyrovnávání zatížení, které definuje způsob distribuce provozu do virtuálních počítačů.
+
+### <a name="create-the-load-balancer-resource"></a>Vytvoření prostředku nástroje pro vyrovnávání zatížení
+
+Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az-network-lb-create)diskont Create:
+
+* S názvem **myLoadBalancer**.
+* Front-endového fondu s názvem **myFrontEnd**.
+* Back-end fond s názvem **myBackEndPool**.
+* Přidruženo k virtuální síti **myVNet**.
+* Přidruženo k **mySubnet** podsíti back-endu.
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group CreatePrivLinkService-rg \
+    --name myLoadBalancer \
+    --sku Standard \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool
+```
+
+### <a name="create-the-health-probe"></a>Vytvoření sondy stavu
+
+Sonda stavu kontroluje všechny instance virtuálních počítačů, aby bylo zajištěno, že budou moci odesílat síťový provoz. 
+
+Z nástroje pro vyrovnávání zatížení se odebere virtuální počítač s neúspěšnou kontrolou testu. Po vyřešení chyby se virtuální počítač do nástroje pro vyrovnávání zatížení přidá zpátky.
+
+Vytvořte sondu stavu pomocí [AZ Network disprobe test Create](/cli/azure/network/lb/probe#az-network-lb-probe-create):
+
+* Monitoruje stav virtuálních počítačů.
+* S názvem **myHealthProbe**.
+* Protokol **TCP**.
+* **Port monitorování 80**.
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroup \
-    --lb-name myILB \
+    --resource-group CreatePrivLinkService-rg \
+    --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
-### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
+### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje:
+
+* Konfigurace IP adresy front-endu pro příchozí provoz.
+* Fond IP adres back-endu pro příjem provozu.
+* Požadovaný zdrojový a cílový port. 
+
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network diskont Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create):
+
+* Pojmenovaný **myHTTPRule**
+* Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd**.
+* Odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres **myBackEndPool** pomocí **portu 80**. 
+* Pomocí **myHealthProbe** sondy stavu.
+* Protokol **TCP**.
+* Časový limit nečinnosti **15 minut**.
+* Povolte resetování protokolu TCP.
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroup \
-    --lb-name myILB \
+    --resource-group CreatePrivLinkService-rg \
+    --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
     --frontend-port 80 \
     --backend-port 80 \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe  
+    --probe-name myHealthProbe \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
 ```
-### <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
-V tomto příkladu nepokrýváme vytváření virtuálních počítačů. Můžete postupovat podle kroků v části [Vytvoření interního nástroje pro](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) vyrovnávání zatížení virtuálních počítačů pomocí rozhraní příkazového řádku Azure a vytvořit dva virtuální počítače, které se použijí jako servery back-end pro nástroj pro vyrovnávání zatížení. 
+## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení
 
+V této části vytvoříte službu privátního propojení, která používá Azure Load Balancer vytvořené v předchozím kroku.
 
-### <a name="disable-private-link-service-network-policies-on-subnet"></a>Zakázat zásady sítě služby privátního propojení v podsíti 
-Služba privátního propojení vyžaduje IP adresu z libovolné podsítě podle vašeho výběru v rámci virtuální sítě. V současné době nepodporujeme pro tyto IP adresy zásady sítě.  Proto je nutné zakázat zásady sítě v podsíti. Aktualizujte podsíť, aby se zakázaly zásady sítě služby privátního propojení pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update).
+Vytvoření služby privátního propojení pomocí konfigurace IP adresy standardního front-endu pro vyrovnávání zatížení pomocí metody [AZ Network Private-Link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create):
 
-```azurecli-interactive
-az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
-```
- 
-## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení  
- 
-Vytvoření služby privátního propojení pomocí Standard Load Balancer konfigurace IP adresy front [-Endu pomocí AZ Network Private-Link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create). Tento příklad vytvoří službu privátního propojení s názvem *myPLS* pomocí Standard Load Balancer s názvem *myLoadBalancer* ve skupině prostředků s názvem *myResourceGroup*. 
+* S názvem **myPrivateLinkService**.
+* Ve virtuální síti **myVNet**.
+* Přidruženo ke službě Load Balancer úrovně Standard **myLoadBalancer** a front-endu Configuration **myFrontEnd**.
+* V umístění **eastus2** .
  
 ```azurecli-interactive
 az network private-link-service create \
---resource-group myResourceGroup \
---name myPLS \
---vnet-name myVirtualNetwork \
---subnet mySubnet \
---lb-name myILB \
---lb-frontend-ip-configs myFrontEnd \
---location westcentralus 
+    --resource-group CreatePrivLinkService-rg \
+    --name myPrivateLinkService \
+    --vnet-name myVNet \
+    --subnet mySubnet \
+    --lb-name myLoadBalancer \
+    --lb-frontend-ip-configs myFrontEnd \
+    --location eastus2
 ```
-Po vytvoření si poznamenejte ID služby privátního propojení. Později budete potřebovat, abyste požádali o připojení k této službě.  
- 
-V této fázi je vaše služba privátního propojení úspěšně vytvořená a připravená na příjem provozu. Všimněte si, že výše uvedený příklad je pouze ukázka vytvoření služby privátního propojení pomocí Azure CLI.  Nenakonfigurovali jsme back-end fondy nástroje pro vyrovnávání zatížení ani žádné aplikace na back-end fondu, aby naslouchaly provozu. Pokud chcete zobrazit komplexní toky přenosů dat, důrazně doporučujeme nakonfigurovat aplikaci za vaším Standard Load Balancer.  
- 
-V dalším kroku ukážeme, jak namapovat tuto službu na privátní koncový bod v jiné virtuální síti pomocí Azure CLI. V tomto příkladu je tento příklad omezený na vytvoření privátního koncového bodu a připojení ke službě privátního propojení vytvořené výše pomocí Azure CLI. Kromě toho můžete vytvořit virtuální počítače ve virtuální síti pro odesílání a příjem provozu do privátního koncového bodu.        
- 
-## <a name="private-endpoints"></a>Soukromé koncové body
 
-### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě 
-Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří virtuální síť s názvem *myPEVNet*   ve skupině prostředků s názvem *myResourcegroup*: 
+Vaše služba privátního propojení se vytvoří a může přijímat provoz. Pokud chcete zobrazit přenosové toky, nakonfigurujte svoji aplikaci za vaším standardním nástrojem pro vyrovnávání zatížení.
+
+
+## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
+
+V této části namapujete službu privátního propojení na soukromý koncový bod. Virtuální síť obsahuje privátní koncový bod pro službu privátního propojení. Tato virtuální síť obsahuje prostředky, které budou mít přístup ke službě privátního propojení.
+
+### <a name="create-private-endpoint-virtual-network"></a>Vytvořit virtuální síť privátního koncového bodu
+
+Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create):
+
+* S názvem **myVNetPE**.
+* Předpona adresy **11.1.0.0/16**
+* Podsíť s názvem **mySubnetPE**.
+* Předpona podsítě **11.1.0.0/24**.
+* Ve skupině prostředků **CreatePrivLinkService-RG** .
+* Umístění **eastus2**
+
 ```azurecli-interactive
-az network vnet create \
---resource-group myResourceGroup \
---name myPEVnet \
---address-prefix 10.0.0.0/16  
+  az network vnet create \
+    --resource-group CreatePrivLinkService-rg \
+    --location eastus2 \
+    --name myVNetPE \
+    --address-prefixes 11.1.0.0/16 \
+    --subnet-name mySubnetPE \
+    --subnet-prefixes 11.1.0.0/24
 ```
-### <a name="create-the-subnet"></a>Vytvoření podsítě 
-Vytvořte podsíť ve virtuální síti pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). Tento příklad vytvoří podsíť s názvem *mySubnet*   ve virtuální síti s názvem *myPEVnet* ve skupině prostředků s názvem *myResourcegroup*: 
 
-```azurecli-interactive 
-az network vnet subnet create \
---resource-group myResourceGroup \
---vnet-name myPEVnet \
---name myPESubnet \
---address-prefixes 10.0.0.0/24 
-```   
-## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Zakázat zásady sítě privátního koncového bodu v podsíti 
-Privátní koncový bod se dá vytvořit v libovolné podsíti dle vašeho výběru v rámci virtuální sítě. V současné době nepodporujeme zásady sítě u privátních koncových bodů.  Proto je nutné zakázat zásady sítě v podsíti. Aktualizujte podsíť a zakažte zásady sítě privátního koncového bodu pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update). 
+Pokud chcete aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu, použijte [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
---resource-group myResourceGroup \
---vnet-name myPEVnet \
---name myPESubnet \
---disable-private-endpoint-network-policies true 
+    --name mySubnetPE \
+    --resource-group CreatePrivLinkService-rg \
+    --vnet-name myVNetPE \
+    --disable-private-endpoint-network-policies true
 ```
-## <a name="create-private-endpoint-and-connect-to-private-link-service"></a>Vytvoření privátního koncového bodu a připojení ke službě privátního propojení 
-Vytvořte privátní koncový bod pro využívání služby privátního propojení vytvořené výše ve vaší virtuální síti:
-  
+
+### <a name="create-endpoint-and-connection"></a>Vytvoření koncového bodu a připojení
+
+* Chcete-li získat ID prostředku služby privátního propojení, použijte příkaz [AZ Network Private-Link-Service show](/cli/azure/network/private-link-service#az_network_private_link_service_show) . Příkaz umístí ID prostředku do proměnné pro pozdější použití.
+
+* Pomocí [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) vytvořte privátní koncový bod ve virtuální síti, kterou jste předtím vytvořili.
+
+* S názvem **MyPrivateEndpoint**.
+* Ve skupině prostředků **CreatePrivLinkService-RG** .
+* Název připojení **myPEconnectiontoPLS**.
+* Umístění **eastus2**
+* Ve virtuální síti **myVNetPE** a v podsíti **mySubnetPE**.
+
 ```azurecli-interactive
-az network private-endpoint create \
---resource-group myResourceGroup \
---name myPE \
---vnet-name myPEVnet \
---subnet myPESubnet \
---private-connection-resource-id {PLS_resourceURI} \
---connection-name myPEConnectingPLS \
---location westcentralus 
+  export resourceid=$(az network private-link-service show \
+    --name myPrivateLinkService \
+    --resource-group CreatePrivLinkService-rg \
+    --query id \
+    --output tsv)
+
+  az network private-endpoint create \
+    --connection-name myPEconnectiontoPLS \
+    --name myPrivateEndpoint \
+    --private-connection-resource-id $resourceid \
+    --resource-group CreatePrivLinkService-rg \
+    --subnet mySubnetPE \
+    --manual-request false \
+    --vnet-name myVNetPE 
+
 ```
-Můžete získat *privátní připojení-Resource-ID* `az network private-link-service show` ve službě privátního propojení. ID bude vypadat takto:   
-/subscriptions/subID/resourceGroups/*ResourceGroupName*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
- 
-## <a name="show-private-link-service-connections"></a>Zobrazit připojení služby privátního propojení 
- 
-V tématu žádosti o připojení ve službě privátního propojení použijte příkaz [AZ Network Private-Link-Service show](/cli/azure/network/private-link-service#az-network-private-link-service-show).    
-```azurecli-interactive 
-az network private-link-service show --resource-group myResourceGroup --name myPLS 
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odeberte pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) skupinu prostředků, službu privátního propojení, nástroj pro vyrovnávání zatížení a všechny související prostředky.
+
+```azurecli-interactive
+  az group delete \
+    --name CreatePrivLinkService-rg 
 ```
+
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [službě Azure Private Link](private-link-service-overview.md)
- 
+
+V tomto rychlém startu:
+
+* Vytvořila se virtuální síť a interní Azure Load Balancer.
+* Vytvořili jste službu privátního propojení.
+
+Pokud chcete získat další informace o privátním koncovém bodu Azure, přejděte na:
+> [!div class="nextstepaction"]
+> [Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure CLI](create-private-endpoint-cli.md)

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009167"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Rozšíření existujícího fondu hostitelů na nové hostitele relací ve virtuálním počítači s Windows (Classic)
@@ -47,7 +47,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Reso
 
 Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšíření fondu hostitelů:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Na panelu hledání v horní části Azure Portal vyhledejte **skupiny prostředků** a vyberte položku v části **služby**.
 3. Vyhledejte a vyberte skupinu prostředků, kterou jste vytvořili při vytváření fondu hostitelů.
 4. V panelu na levé straně prohlížeče vyberte **nasazení**.
@@ -64,7 +64,7 @@ Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšířen
      >[!NOTE]
      >Pokud se zobrazí chyba s informací, že chcete vybrat jinou skupinu prostředků, i když je ta, kterou jste zadali, je správná, vyberte jinou skupinu prostředků a pak vyberte původní skupinu prostředků.
 
-8. Jako *_artifactsLocation*zadejte následující adresu URL:`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+8. Jako *_artifactsLocation*zadejte následující adresu URL: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
 9. Zadejte nový celkový počet hostitelů relací, které chcete mít, do *počtu instancí relace vzdálené plochy*. Pokud například rozšíříte fond hostitelů z pěti hostitelů relace na osm, zadejte **8**.
 10. Zadejte stejné existující heslo k doméně, které jste použili pro existující hlavní název uživatele domény. Neměňte uživatelské jméno, protože při spuštění šablony dojde k chybě.
 11. Zadejte stejné heslo správce klienta, které jste použili pro ID uživatele nebo aplikace, které jste zadali pro *hlavní název uživatele (UPN) správce klienta nebo ID aplikace*. Znovu neměňte uživatelské jméno.

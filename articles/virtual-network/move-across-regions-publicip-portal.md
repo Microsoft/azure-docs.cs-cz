@@ -7,18 +7,18 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b00fca8cf39bc44e0e53a112a332e6f6c5f0194e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711472"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218599"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Přesuňte konfiguraci veřejné IP adresy Azure do jiné oblasti pomocí Azure Portal
 
 Existují různé scénáře, ve kterých byste chtěli přesunout existující konfigurace veřejné IP adresy Azure z jedné oblasti do druhé. Například můžete chtít vytvořit veřejnou IP adresu se stejnou konfigurací a skladovou jednotkou pro testování. V rámci plánování zotavení po havárii možná budete chtít přesunout konfiguraci veřejné IP adresy do jiné oblasti.
 
-**Veřejné IP adresy Azure jsou specifické pro oblast a nejde je přesunout z jedné oblasti do druhé.** Můžete ale použít šablonu Azure Resource Manager k exportu stávající konfigurace veřejné IP adresy.  Potom můžete prostředek připravit v jiné oblasti tak, že do šablony vyexportujete veřejnou IP adresu, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+**Veřejné IP adresy Azure jsou specifické pro oblast a nejde je přesunout z jedné oblasti do druhé.** Můžete ale použít šablonu Azure Resource Manager k exportu stávající konfigurace veřejné IP adresy.  Potom můžete prostředek připravit v jiné oblasti tak, že do šablony vyexportujete veřejnou IP adresu, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,7 +33,7 @@ Existují různé scénáře, ve kterých byste chtěli přesunout existující 
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet veřejné IP adresy v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu Přidání veřejných IP adres pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu Přidání veřejných IP adres pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
@@ -41,7 +41,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Export šablony a nasazení ze skriptu
 
-1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků**Azure Portal.
+1. Přihlaste [](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou veřejnou IP adresu, a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
@@ -94,7 +94,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** – vlastnost název SKU pro veřejnou IP adresu můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou **sku**  >  vlastnosti**název** SKU v **template.js** souboru:
+    * **SKU** – vlastnost název SKU pro veřejnou IP adresu můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou   >  vlastnosti **název** SKU v **template.js** souboru:
 
         ```json
           "resources": [
@@ -109,7 +109,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
             },
         ```
 
-        Další informace o rozdílech mezi veřejnými IP adresami Basic a Standard SKU najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address):
+        Další informace o rozdílech mezi veřejnými IP adresami Basic a Standard SKU najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](./virtual-network-public-ip-address.md):
 
     * **Metoda přidělování veřejných IP adres** a **časový limit nečinnosti** – obě tyto možnosti v šabloně můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo **statickou** na **dynamickou**. Časový limit nečinnosti lze změnit změnou vlastnosti **idleTimeoutInMinutes** na požadovanou hodnotu.  Výchozí hodnota je **4**:
 
@@ -135,7 +135,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
         ```
 
-        Další informace o metodách přidělování a hodnotách časového limitu nečinnosti najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+        Další informace o metodách přidělování a hodnotách časového limitu nečinnosti najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](./virtual-network-public-ip-address.md).
 
 
 13. V online Editoru klikněte na **Uložit** .
@@ -165,5 +165,5 @@ Pokud chcete potvrdit změny a dokončit přesun veřejné IP adresy, odstraňte
 V tomto kurzu jste přesunuli veřejnou IP adresu Azure z jedné oblasti na jinou a vyčistili zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Přesun virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Přesun virtuálních počítačů Azure do jiné oblasti](../site-recovery/azure-to-azure-tutorial-migrate.md)

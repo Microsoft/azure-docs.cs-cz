@@ -1,28 +1,25 @@
 ---
-title: Možnosti pomoci a podpory
-titleSuffix: Azure Cognitive Services
+title: Podpora a možnosti pomoci pro Azure Cognitive Services
 description: Jak získat nápovědu a podporu pro otázky a problémy při vytváření aplikací, které se integrují s Azure Cognitive Services.
 services: cognitive-services
-author: IEvangelist
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.author: dapine
-ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 10/11/2020
+ms.author: erhopf
+ms.openlocfilehash: dbfe4a44f359f8db59ae80e04aae57164d0ccaf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590532"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736844"
 ---
-# <a name="azure-cognitive-services-support-and-feedback-options"></a>Podpora a možnosti zpětné vazby pro Azure Cognitive Services
+# <a name="azure-cognitive-services-support-and-help-options"></a>Podpora a možnosti pomoci pro Azure Cognitive Services
 
 Právě začínáte zkoumat funkčnost služby Azure Cognitive Services? Možná implementujete novou funkci ve vaší aplikaci. Nebo po používání služby máte návrhy na jejich vylepšení? Tady jsou možnosti, kde můžete získat podporu, udržet si přehled o chybách a nahlásit chyby pro Cognitive Services.
 
-## <a name="get-support"></a>Získat podporu
-
-### <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
+## <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -33,78 +30,82 @@ Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azur
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal pro vládu USA](https://portal.azure.us)
 
-### <a name="search"></a>Hledat
+## <a name="post-a-question-on-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
 
-<div class='icon is-large'>
-    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
-</div>
+Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](/answers/products/azure?product=all), preferovaný cíl Azure pro podporu komunity.
 
-Pro rychlejší výsledky proveďte hledání relevantních webů, jako jsou například [Stack Overflow](https://stackoverflow.com/), [dokumentace Microsoftu](https://docs.microsoft.com/azure/cognitive-services/)nebo [ukázky kódu GitHubu](https://github.com/azure-samples). Použijte `site:` zápis dotazů v [oblíbeném vyhledávacím modulu](https://bing.com), například:
+Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku do složky Microsoft Q&A. Když požádáte o svoji otázku, použijte jednu z následujících značek:
 
-```
-{search keywords} site:stackoverflow.com
-```
+* [Cognitive Services](/answers/topics/azure-cognitive-services.html)
 
-Kde `{search keywords}` je kontext hledání. Zvažte vhodné použití těchto vymezených hledání:
+**Obraz**
 
- - Stack Overflow:`site:stackoverflow.com`
- - Microsoft Docs:`site:docs.microsoft.com`
- - Ukázky GitHubu:`site:github.com/azure-samples`
+* [Počítačové zpracování obrazu](/answers/topics/azure-computer-vision.html)
+* [Custom Vision](/answers/topics/azure-custom-vision.html)
+* [Rozpoznávání tváře](/answers/topics/azure-face.html)
+* [Rozpoznávání formulářů](/answers/topics/azure-form-recognizer.html)
+* [Video Indexer](/answers/topics/azure-media-services.html)
 
-### <a name="post-a-question-on-stack-overflow"></a>Odeslat dotaz na Stack Overflow
+**Jazyk**
+
+* [Asistivní čtečka](/answers/topics/azure-immersive-reader.html)
+* [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
+* [QnA Maker](/answers/topics/azure-qna-maker.html)
+* [Analýza textu](/answers/topics/azure-text-analytics.html)
+* [Translator](/answers/topics/azure-translator.html)
+
+**Speech**
+
+* [Služba řeči](/answers/topics/azure-speech.html)
+
+
+**Rozhodnutí**
+
+* [Detektor anomálií](/answers/topics/azure-anomaly-detector.html) 
+* [Content Moderator](/answers/topics/azure-content-moderator.html)
+* [Poradce pro metriky (Preview)]()
+* [Personalizace](/answers/topics/azure-personalizer.html)
+
+## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Pokud nemůžete najít odpověď na váš problém pomocí vyhledávacího pole na Stack Overflow, odešlete novou otázku. Stack Overflow je preferovaným kanálem pro otázky související s vývojem. Je tam, kde jsou členové Stack Overflow komunity a společnosti Microsoft přímo zapojeni na pomoc při řešení vašich problémů.
+Odpovědi na otázky pro vývojáře od největšího ekosystému vývojářů komunity vám požádají o Stack Overflow.
 
-[Sem můžete](https://go.microsoft.com/fwlink/?linkid=2126464)poslat otázku. Použijte odpovídající značku pro svůj dotaz, takže jsme si jisti, že se zobrazí otázka.
+Pokud odešlete novou otázku pro Stack Overflow, při vytváření otázky prosím použijte jednu nebo více následujících značek:
 
-> [!TIP]
-> Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:
-> * [Návody klást dobré otázky?](https://stackoverflow.com/help/how-to-ask)
-> * [Jak vytvořit minimální, reprodukovatelnou ukázku?](https://stackoverflow.com/help/minimal-reproducible-example)
+* [Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
 
-## <a name="stay-informed"></a>Aktuální informace
+**Obraz**
 
-Zaznamenání informací o funkcích v nové verzi nebo novinkách na blogu Azure vám může pomáhat najít rozdíl mezi chybou programování, chybou služby nebo funkcí, která ještě není k dispozici v Cognitive Services.
+* [Počítačové zpracování obrazu](https://stackoverflow.com/search?q=azure+computer+vision)
+* [Custom Vision](https://stackoverflow.com/search?q=azure+custom+vision)
+* [Rozpoznávání tváře](https://stackoverflow.com/search?q=azure+face)
+* [Rozpoznávání formulářů](https://stackoverflow.com/search?q=azure+form+recognizer)
+* [Video Indexer](https://stackoverflow.com/search?q=azure+video+indexer)
 
-### <a name="release-notes"></a>Zpráva k vydání verze
+**Jazyk**
 
-<div class='icon is-large'>
-    <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
-</div>
+* [Asistivní čtečka](https://stackoverflow.com/search?q=azure+immersive+reader)
+* [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
+* [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
+* [Analýza textu](https://stackoverflow.com/search?q=azure+text+analytics)
+* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
-Poznámky k verzi Cognitive Services jsou aktualizovány, protože jsou k dispozici nové verze. Poznámky obsahují informace o nových funkcích, vylepšeních a opravách chyb.
+**Speech**
 
- - [Custom Vision](custom-vision-service/release-notes.md)
- - [Rozpoznávání tváře](face/releasenotes.md)
- - [Language Understanding (LUIS)](LUIS/whats-new.md)
- - [Hlasové služby](speech-service/releasenotes.md)
- - [Sada Speech Services SDK](speech-service/devices-sdk-release-notes.md)
- - [Analýza textu](text-analytics/whats-new.md)
- - [Video Indexer](../media-services/video-indexer/release-notes.md)
+* [Služba řeči](https://stackoverflow.com/search?q=azure+speech)
 
-### <a name="azure-blog"></a>Blog o Azure
+**Rozhodnutí**
 
-<div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
-</div>
+* [Detektor anomálií](https://stackoverflow.com/search?q=azure+anomaly+detector) 
+* [Content Moderator](https://stackoverflow.com/search?q=azure+content+moderator)
+* [Poradce pro metriky (Preview)](https://stackoverflow.com/search?q=azure+metrics+advisor)
+* [Personalizace](https://stackoverflow.com/search?q=azure+personalizer)
 
-Novinky o Cognitive Services se sdílí na [blogu Azure](https://azure.microsoft.com/blog/topics/cognitive-services/).
-
-### <a name="reddit"></a>Reddit
-
-<div class='icon is-large'>
-    <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
-</div>
-
-Reddit je diskuzní web založený na komunitě, který nabízí nejnovější informace o [Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) novinky, nápovědu, informace, tipy a triky. Zaregistrované členy můžou odesílat obsah a ostatní můžou na něm hlasovat, což organicky zvyšuje nejrelevantnější obsah na nejvyšší úrovni svých informačních kanálů.
-
-## <a name="give-feedback"></a>Poskytnout zpětnou vazbu
-
-### <a name="uservoice-forum"></a>Fórum UserVoice
+## <a name="submit-feedback-on-user-voice"></a>Odeslat zpětnou vazbu na uživatelský hlas
 
 <div class='icon is-large'>
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
@@ -112,72 +113,45 @@ Reddit je diskuzní web založený na komunitě, který nabízí nejnovější i
 
 Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte své nápady, jak Cognitive Services a jaká rozhraní API fungují lépe pro aplikace, které vyvíjíte. 
 
-> [!NOTE]
-> I když se jedná o veřejné fórum, neočekává se vám podpora od Microsoftu, ale Využijte diskuze o nových funkcích, které byste chtěli vidět v nadcházejících Cognitive Services verzích.
+* [Cognitive Services](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
 
+**Obraz**
 
-| Služba                       | Adresa URL Cognitive Services UserVoice |
-|-------------------------------|---------------|
-| Detektor anomálií              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Služby Bing                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| Počítačové zpracování obrazu               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
-| Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Tvář                          | https://cognitive.uservoice.com/forums/430315-face |
-| Rozpoznávání formulářů               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| Rozpoznávání rukopisu                | https://cognitive.uservoice.com/forums/921559-ink-recognizer |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
-| Personalizace                  | https://cognitive.uservoice.com/forums/921562-personalizer |
-| QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Služby Speech               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Analýza textu                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
-| Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+* [Počítačové zpracování obrazu](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Custom Vision](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Rozpoznávání tváře](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Rozpoznávání formulářů](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Video Indexer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
 
-## <a name="report-bugs"></a>Hlášení chyb
+**Jazyk**
 
-### <a name="create-a-github-issue-or-pull-request"></a>Vytvoření problému GitHubu nebo žádosti o získání dat
+* [Asistivní čtečka](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Language Understanding (LUIS)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [QnA Maker](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Analýza textu](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Translator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
 
-<div class='icon is-large'>
-    <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
-</div>
+**Speech**
 
-Níže jsou uvedené tři typy úložišť, ve kterých může vývojář vystavit nějaký problém nebo vytvořit žádost o získání dat. Pokud chcete vytvořit problém, použijte kartu *problémy* v příslušném úložišti GitHub a vyberte *Nový problém*. Pokud chcete navrhnout opravu, odešlete žádost o přijetí změn přímo úpravou souboru. Žádost o přijetí změn pak přijde na kartu *žádosti o* přijetí změn, dokud ji vlastníci úložiště neuvidí.
+* [Služba řeči](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395740)
 
-#### <a name="cognitive-services-samples"></a>Ukázky Cognitive Services
+**Rozhodnutí**
 
-Ukázky jsou často k dispozici ve veřejných úložištích jako open source. Ukázky rychlý Start mají své vlastní úložiště a jsou odkazovány v dokumentaci Microsoftu. Pokud v kódu vyhledáte chyby, vytvořte problém nebo žádost o přijetí změn.
+* [Detektor anomálií](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746) 
+* [Content Moderator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Poradce pro metriky (Preview)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Personalizace](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
 
-Tady je seznam Cognitive Services rychlý Start a ukázkový kód:
+## <a name="stay-informed"></a>Aktuální informace
 
-* [Ukázky Azure – Cognitive Services](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
-* [Cognitive Services rychlý Start](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
-* [Cognitive Services: dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
-* [Cognitive Services: Přejít](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
-* [Cognitive Services: Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Cognitive Services: Node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-* [Cognitive Services: Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+Zaznamenání informací o funkcích v nové verzi nebo novinkách na blogu Azure vám může pomáhat najít rozdíl mezi chybou programování, chybou služby nebo funkcí, která ještě není k dispozici v Cognitive Services.
 
-#### <a name="cognitive-services-sdk-source-code"></a>Zdrojový kód sady Cognitive Services SDK
-
-Zdrojový kód sad SDK zobrazuje některé z těchto verzí sady SDK pro každou službu. Pokud jste zjistili chybu nebo chcete navrhnout opravu, vydejte problém nebo vytvořte žádost o přijetí změn.
-
-Tady je seznam zdrojového kódu Cognitive Services SDK podle jazyka:
-
-* [Sada Azure SDK pro dotnet](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices)
-* [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)<br>
-* [Azure SDK pro Javu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices)
-* [Azure SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices)
-* [Azure SDK pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices)
-
-#### <a name="azure-cognitive-services-documentation"></a>Dokumentace k Azure Cognitive Services
-
-Dokumentace k Cognitive Services vysvětluje, jak používat službu a poskytuje příklady a prostředky pro vývojáře. Pokud jste zjistili chybu nebo chcete navrhnout opravu, vydejte problém nebo vytvořte žádost o přijetí změn.
-
-[MicrosoftDocs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/cognitive-services)
+* Další informace o aktualizacích produktů, plánech a oznámeních najdete v [aktualizacích Azure](https://azure.microsoft.com/updates/?category=ai-machine-learning&query=Azure%20Cognitive%20Services).
+* Přečtěte si, jaké Cognitive Services články nedávno byly přidány nebo aktualizovány v článku [co je nového v docs?](whats-new-docs.md)
+* Novinky o Cognitive Services se sdílí na [blogu Azure](https://azure.microsoft.com/blog/topics/cognitive-services/).
+* [Připojte se ke konverzaci na Reddit](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) o Cognitive Services.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Co je Azure Cognitive Services?](welcome.md)
+> [Co je Azure Cognitive Services?](./what-are-cognitive-services.md)

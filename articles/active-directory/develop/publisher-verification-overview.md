@@ -1,6 +1,6 @@
 ---
 title: Přehled ověření vydavatele – Microsoft Identity Platform | Azure
-description: Poskytuje přehled programu pro ověření vydavatele (Preview) pro platformu Microsoft identity. Obsahuje seznam výhod, požadavků programu a nejčastějších dotazů. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu Microsoft Partner Network, který dokončil proces ověření a přidružil tento účet MPN k registraci aplikace.
+description: Poskytuje přehled programu pro ověřování vydavatele pro platformu Microsoft identity. Obsahuje seznam výhod, požadavků programu a nejčastějších dotazů. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu Microsoft Partner Network, který dokončil proces ověření a přidružil tento účet MPN k registraci aplikace.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,20 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120775"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308776"
 ---
-# <a name="publisher-verification-preview"></a>Ověření vydavatele (Preview)
+# <a name="publisher-verification"></a>Ověření vydavatele
 
-Ověřování vydavatele (Preview) pomáhá správcům a koncovým uživatelům pochopit pravost vývojářů aplikací, které jsou integrovány s platformou Microsoft identity. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) a přidružil tento účet MPN k registraci aplikace. 
+Ověřování vydavatele pomáhá správcům a koncovým uživatelům pochopit pravost vývojářů aplikací, které jsou integrovány s platformou Microsoft identity. 
+
+> [!VIDEO https://www.youtube.com/embed/IYRN2jDl5dc]
+
+Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) a přidružil tento účet MPN k registraci aplikace. 
 
 Modrá "ověřená" výzva se zobrazí na výzvu k vyjádření souhlasu služby Azure AD a na dalších obrazovkách: ![ výzva k vyjádření souhlasu](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -29,29 +33,32 @@ Tato funkce je primárně určená pro vývojáře, kteří sestavují víceklie
 
 ## <a name="benefits"></a>Výhody
 Ověřování vydavatele nabízí následující výhody:
-- **Zvýšení transparentnosti a snížení rizik pro zákazníky**– Tato možnost pomáhá zákazníkům pochopit, které aplikace používané ve svých organizacích jsou publikovány vývojáři, kterým důvěřují. 
+- **Zvýšení transparentnosti a snížení rizik pro zákazníky** – Tato možnost pomáhá zákazníkům pochopit, které aplikace používané ve svých organizacích jsou publikovány vývojáři, kterým důvěřují. 
 
-- **Vylepšené branding**– "ověřené" označení se zobrazí na stránce s [výzvou k vyjádření souhlasu](application-consent-experience.md)služby Azure AD, na stránce podnikové aplikace a na dalších plochách uživatelského prostředí, které používají koncoví uživatelé a správci. 
+- **Vylepšené branding** – "ověřené" označení se zobrazí na stránce s [výzvou k vyjádření souhlasu](application-consent-experience.md)služby Azure AD, na stránce podnikové aplikace a na dalších plochách uživatelského prostředí, které používají koncoví uživatelé a správci. 
 
-- Řešení pro zajištění **hladkého podnikání**– správci můžou konfigurovat nové zásady pro vyjádření souhlasu s uživatelem a stav ověření vydavatele je jedno z primárních kritérií zásad. 
+- Zajištění **plynulejšího podnikání** – správci můžou konfigurovat [zásady pro vyjádření souhlasu s uživatelem](../manage-apps/configure-user-consent.md), přičemž stav ověření vydavatele je jedno z primárních kritérií zásad.
 
-- **Vylepšené hodnocení rizik**– pro žádosti o udělení souhlasu společnosti Microsoft budou zjištěny požadavky na udělení souhlasu od vydavatele jako signál. 
+> [!NOTE]
+> Od listopadu 2020 již koncoví uživatelé nebudou moci udělit souhlas s nově registrovanými aplikacemi pro více tenantů bez ověřených vydavatelů. Tato akce bude platit pro aplikace, které jsou zaregistrované po 8. listopadu 2020, pomocí OAuth 2.0 vyžádá oprávnění mimo základní přihlášení a čtení profilu uživatele a vyžádá si souhlas od uživatelů v různých tenantůch, než je ta, ve které je aplikace zaregistrovaná. Na obrazovce pro vyjádření souhlasu se zobrazí upozornění informující o uživatelích, že tyto aplikace jsou riskantní a že jsou od neověřených vydavatelů.    
 
 ## <a name="requirements"></a>Požadavky
 Je k dispozici několik požadavků na ověření vydavatele, některé z nich již byly dokončeny mnoha partnery společnosti Microsoft. Jsou to tyto: 
 
 -  ID MPN pro platný účet [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) . Tento účet MPN musí být [globální účet partnera (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) pro vaši organizaci. 
 
--  Tenant Azure AD s [vlastní doménou](../fundamentals/add-custom-domain.md)OVĚŘENOU službou DNS. Vlastní doména se musí shodovat s doménou e-mailové adresy použité během ověřování v předchozím kroku. 
+-  Aplikace registrovaná v tenantovi Azure AD s nakonfigurovanou [doménou vydavatele](howto-configure-publisher-domain.md)
 
--  Aplikace zaregistrovaná v tenantovi Azure AD s [doménou vydavatele](howto-configure-publisher-domain.md) nakonfigurovanou pomocí stejné domény, jakou používali dřív. 
+-  Doména e-mailové adresy použité během ověřování účtu MPN musí být buď shodná s doménou vydavatele nakonfigurovanou v aplikaci, nebo [vlastní doménou](../fundamentals/add-custom-domain.md) ověřenou DNS, kterou jste přidali do tenanta služby Azure AD. 
 
 -  Uživatel, který provádí ověřování, musí mít autorizaci k provádění změn v registraci aplikace v Azure AD a účtu MPN v partnerském centru. 
 
-    -  V Azure AD musí být tento uživatel buď vlastníkem aplikace, nebo mít jednu z následujících [rolí](../users-groups-roles/directory-assign-admin-roles.md): správce aplikace, správce cloudové aplikace, globální správce. 
+    -  V Azure AD musí být tento uživatel členem jedné z následujících [rolí](../roles/permissions-reference.md): správce aplikace, správce cloudové aplikace nebo globální správce. 
 
     -  V partnerském centru musí mít tento uživatel tyto [role](/partner-center/permissions-overview): správce MPN, účty správce nebo globální správce (Toto je sdílená role spravovaná ve službě Azure AD).
     
+-  Uživatel, který provádí ověření, se musí přihlásit pomocí [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
+
 -  Vydavatel souhlasí s [podmínkami použití pro vývojáře na platformě Microsoft Identity](/legal/microsoft-identity-platform/terms-of-use).
 
 Vývojáři, kteří už tyto požadavky splnili, se můžou ověřit během několika minut. Pokud se požadavky nesplní, nastavování je zdarma. 
@@ -67,7 +74,7 @@ Níže najdete nejčastější dotazy týkající se ověřovacího programu vyd
 
   Vývojáři, kteří integrují taky Microsoft 365, můžou z těchto programů získat další výhody. Další informace najdete v tématu [Microsoft 365 ověřování vydavatele](/microsoft-365-app-certification/docs/attestation) a [Microsoft 365 certifikace aplikací](/microsoft-365-app-certification/docs/certification). 
 
-- **Je to totéž jako Galerie aplikací Azure AD?** Ověřování bez vydavatele je doplňkový, ale oddělený program v [galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md). Vývojáři, kteří vyhovují výše uvedeným kritériím, by měli dokončit proces ověření vydavatele nezávisle na účasti v tomto programu. 
+- **Je to totéž jako Galerie aplikací Azure AD?** Ověřování bez vydavatele je doplňkový, ale oddělený program v [galerii aplikací Azure Active Directory](v2-howto-app-gallery-listing.md). Vývojáři, kteří vyhovují výše uvedeným kritériím, by měli dokončit proces ověření vydavatele nezávisle na účasti v tomto programu. 
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se, jak [Označit aplikaci jako ověřenou vydavatelem](mark-app-as-publisher-verified.md).

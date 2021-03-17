@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: c11fd7a9cb6fdd3eb976d0b9e6a91fdc69bf9fba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136772"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652843"
 ---
 # <a name="system-tables-and-views"></a>Systémové tabulky a zobrazení
 
@@ -27,18 +27,18 @@ Tyto tabulky můžete zobrazit a dotazovat pomocí jazyka SQL po přihlášení 
 
 > [!NOTE]
 >
-> Skupiny serverů s technologií Citus se staršími verzemi modulu nemusí nabízet všechny tabulky uvedené níže.
+> Skupiny serverů Citus (), na kterých běží starší verze modulu Citus, nemusí nabízet všechny tabulky uvedené níže.
 
 ### <a name="partition-table"></a>Tabulka oddílů
 
 \_ \_ Tabulka oddílů pg DIST ukládá metadata o tom, které tabulky v databázi jsou distribuované. Pro každou distribuovanou tabulku také ukládá informace o metodě distribuce a podrobné informace o distribučním sloupci.
 
-| Název         | Typ     | Description                                                                                                                                                                                                                                           |
+| Název         | Typ     | Popis                                                                                                                                                                                                                                           |
 |--------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid | regclass | Distribuovaná tabulka, do které tento řádek odpovídá Tato hodnota odkazuje na sloupec relfilenode v tabulce katalogu katalogu pg_class System.                                                                                                                   |
 | partmethod   | char     | Metoda použitá pro dělení a distribuci. Hodnoty tohoto sloupce odpovídající různým metodám distribuce jsou připojeny: "a", hash: ' h ', referenční tabulka: ' n '                                                                          |
 | partkey      | text     | Podrobné informace o distribučním sloupci, včetně čísla sloupce, typu a dalších relevantních informací.                                                                                                                                      |
-| colocationid | celé číslo  | Skupina kolokace, do níž patří tato tabulka Tabulky ve stejné skupině umožňují společně umístěná spojení a distribuované souhrny mezi dalšími optimalizacemi. Tato hodnota odkazuje na sloupec colocationid v tabulce pg_dist_colocation.                      |
+| colocationid | integer  | Skupina kolokace, do níž patří tato tabulka Tabulky ve stejné skupině umožňují společně umístěná spojení a distribuované souhrny mezi dalšími optimalizacemi. Tato hodnota odkazuje na sloupec colocationid v tabulce pg_dist_colocation.                      |
 | repmodel     | char     | Metoda použitá pro replikaci dat Hodnoty tohoto sloupce odpovídající různým metodám replikace jsou: replikace založená na příkazech Citus: c, replikace PostgreSQL streaming:, dvoufázové potvrzení (pro referenční tabulky): t |
 
 ```
@@ -54,7 +54,7 @@ SELECT * from pg_dist_partition;
 Tabulka pg \_ DIST \_ horizontálních oddílů ukládá metadata o jednotlivých horizontálních oddílů tabulky. Pg_dist_shard obsahuje informace o tom, kterou distribuovanou tabulku horizontálních oddílů patří, a statistiku distribučního sloupce pro horizontálních oddílů.
 Pro připojené distribuované tabulky odpovídají tyto statistiky Minimálním a maximálním hodnotám distribučního sloupce. U distribuovaných tabulek hash se jedná o rozsahy tokenů hash přiřazené k tomuto horizontálních oddílů. Tyto statistiky se používají k vyřazení nesouvisejících horizontálních oddílů při výběru dotazů.
 
-| Název          | Typ     | Description                                                                                                                                                                                  |
+| Název          | Typ     | Popis                                                                                                                                                                                  |
 |---------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid  | regclass | Distribuovaná tabulka, do které tento řádek odpovídá Tato hodnota odkazuje na sloupec relfilenode v tabulce katalogu katalogu pg_class System.                                                          |
 | shardid       | bigint   | K tomuto horizontálních oddílů je přiřazen globálně jedinečný identifikátor.                                                                                                                                           |
@@ -77,7 +77,7 @@ SELECT * from pg_dist_shard;
 
 Sloupec shardstorage v pg \_ DIST \_ horizontálních oddílů označuje typ úložiště, který se používá pro horizontálních oddílů. Stručný přehled různých typů úložiště horizontálních oddílů a jejich reprezentace najdete níže.
 
-| Typ úložiště | Hodnota Shardstorage | Description                                                                        |
+| Typ úložiště | Hodnota Shardstorage | Popis                                                                        |
 |--------------|--------------------|------------------------------------------------------------------------------------|
 | STOLNÍ        | 's                | Označuje, že horizontálních oddílů ukládá data patřící do běžné distribuované tabulky.         |
 | SLOUPC     | r                | Označuje, že horizontálních oddílů ukládá sloupcová data. (Používá se v distribuovaných cstore_fdw tabulkách) |
@@ -87,7 +87,7 @@ Sloupec shardstorage v pg \_ DIST \_ horizontálních oddílů označuje typ úl
 
 \_ \_ Tabulka umístění pro umístění balíčku pg sleduje umístění replik horizontálních oddílů na pracovních uzlech. Každá replika horizontálních oddílů přiřazená konkrétnímu uzlu se nazývá umístění horizontálních oddílů. V této tabulce jsou uloženy informace o stavu a umístění každého umístění horizontálních oddílů.
 
-| Název        | Typ   | Description                                                                                                                               |
+| Název        | Typ   | Popis                                                                                                                               |
 |-------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | shardid     | bigint | Horizontálních oddílů identifikátor přidružený k tomuto umístění Tato hodnota odkazuje na sloupec shardid v tabulce katalogu pg_dist_shard.             |
 | shardstate  | int    | Popisuje stav tohoto umístění. V následující části jsou popsány různé horizontálních oddílů stavy.                                         |
@@ -112,7 +112,7 @@ SELECT * from pg_dist_placement;
 
 Citus () spravuje horizontálních oddílů stav na základě jednotlivých umístění. Pokud umístění přepne systém do nekonzistentního stavu, Citus ho automaticky označí jako nedostupný. Stav umístění je zaznamenán v tabulce pg_dist_shard_placement v rámci sloupce shardstate. Tady je stručný přehled různých stavů umístění horizontálních oddílů:
 
-| Název stavu | Hodnota Shardstate | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Název stavu | Hodnota Shardstate | Popis                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | FINALIZOVÁN  | 1                | Stav nový horizontálních oddílů se vytvoří v. Horizontálních oddílů místa v tomto stavu se považují za aktuální a používají se při plánování a provádění dotazů.                                                                                                                                                                                                                                                                                 |
 | TERMÍN   | 3                | Horizontálních oddílů místa v tomto stavu se považují za neaktivní, protože se nesynchronizují s ostatními replikami stejného horizontálních oddílů. K tomuto stavu může dojít v případě, že pro toto umístění dojde k chybě připojení, úpravy (vložení, aktualizace, odstranění) nebo operace DDL. Plánovač dotazů bude během plánování a provádění ignorovat počet míst v tomto stavu. Uživatelé mohou synchronizovat data v těchto horizontálních oddílů s konečnou replikou jako aktivitu na pozadí. |
@@ -122,7 +122,7 @@ Citus () spravuje horizontálních oddílů stav na základě jednotlivých umí
 
 \_ \_ Tabulka uzlu pg DIST obsahuje informace o uzlech pracovních procesů v clusteru.
 
-| Název             | Typ    | Description                                                                                                                                                                                |
+| Název             | Typ    | Popis                                                                                                                                                                                |
 |------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | NodeId           | int     | Automaticky generovaný identifikátor pro jednotlivý uzel                                                                                                                                          |
 | GroupID          | int     | Identifikátor používaný k označení skupiny jednoho primárního serveru a nulového nebo více sekundárních serverů při použití modelu replikace streamování. Ve výchozím nastavení je stejný jako NodeId.         |
@@ -149,16 +149,16 @@ SELECT * from pg_dist_node;
 
 \_ \_ Tabulka objektů citus.pg DIST obsahuje seznam objektů, jako jsou typy a funkce, které byly vytvořeny v uzlu koordinátora a šířeny do pracovních uzlů. Když správce přidá do clusteru nové pracovní uzly, Citus (škálování) automaticky vytvoří kopie distribuovaných objektů na nových uzlech (ve správném pořadí, aby splňovaly závislosti objektů).
 
-| Název                        | Typ    | Description                                          |
+| Název                        | Typ    | Popis                                          |
 |-----------------------------|---------|------------------------------------------------------|
 | ClassID                     | identifikátor     | Třída distribuovaného objektu                      |
 | objid                       | identifikátor     | ID objektu distribuovaného objektu                  |
-| objsubid                    | celé číslo | Dílčí ID objektu distribuovaného objektu, například attnum |
+| objsubid                    | integer | Dílčí ID objektu distribuovaného objektu, například attnum |
 | typ                        | text    | Část stabilní adresy používané během upgradů pg   |
 | object_names                | text []  | Část stabilní adresy používané během upgradů pg   |
 | object_args                 | text []  | Část stabilní adresy používané během upgradů pg   |
-| distribution_argument_index | celé číslo | Platí pouze pro distribuované funkce nebo procedury.      |
-| colocationid                | celé číslo | Platí pouze pro distribuované funkce nebo procedury.      |
+| distribution_argument_index | integer | Platí pouze pro distribuované funkce nebo procedury.      |
+| colocationid                | integer | Platí pouze pro distribuované funkce nebo procedury.      |
 
 \"Stabilní adresy \" jednoznačně identifikují objekty nezávisle na určitém serveru. Citus (škálování na úrovni) sleduje objekty během upgradu PostgreSQL pomocí stabilních adres vytvořených pomocí funkce [pg \_ identifikují \_ objekt \_ jako \_ adresu ()](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-OBJECT-TABLE) .
 
@@ -212,7 +212,7 @@ Tabulka v \_ rámci \_ kolokace na str DIST obsahuje informace o tom, které tab
 Pokud jsou dvě tabulky ve stejné skupině kolocation (Citus), zajistíte, aby horizontálních oddílů se stejnými hodnotami oddílů byly umístěny na stejných pracovních uzlech.
 Společné umístění umožňuje optimalizace spojení, určité distribuované souhrny a podporu cizích klíčů. Horizontálních oddílů společné umístění je odvozeno v případě, že se počty horizontálních oddílů, faktory replikace a sloupce oddílů shodují mezi dvěma tabulkami. je však možné zadat vlastní skupinu kolocation při vytváření distribuované tabulky, pokud je to žádoucí.
 
-| Název                   | Typ | Description                                                                   |
+| Název                   | Typ | Popis                                                                   |
 |------------------------|------|-------------------------------------------------------------------------------|
 | colocationid           | int  | Jedinečný identifikátor pro skupinu kolocation, na kterou tento řádek odpovídá          |
 | shardcount             | int  | Počet horizontálních oddílů pro všechny tabulky v této skupině kolocation                          |
@@ -231,7 +231,7 @@ SELECT * from pg_dist_colocation;
 
 Tato tabulka definuje strategie, které [rebalance_table_shards](reference-hyperscale-functions.md#rebalance_table_shards) můžou použít k určení místa přesunutí horizontálních oddílů.
 
-| Název                           | Typ    | Description                                                                                                                                       |
+| Název                           | Typ    | Popis                                                                                                                                       |
 |--------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | default_strategy               | boolean | Určuje, zda má rebalance_table_shards zvolit tuto strategii ve výchozím nastavení. K aktualizaci tohoto sloupce použijte citus_set_default_rebalance_strategy             |
 | shard_cost_function            | regproc | Identifikátor pro nákladovou funkci, která musí přebírat shardid jako bigint a vracet svůj pojem nákladů, jako typ Real                                |
@@ -329,7 +329,7 @@ Citus () poskytuje `citus_stat_statements` informace o tom, jak se dotazy prová
 
 Toto zobrazení může trasovat dotazy na původce klientů v aplikaci s více klienty, což pomáhá při rozhodování o izolaci tenanta.
 
-| Název          | Typ   | Description                                                                      |
+| Název          | Typ   | Popis                                                                      |
 |---------------|--------|----------------------------------------------------------------------------------|
 | QueryId       | bigint | identifikátor (vhodný pro spojení pg_stat_statements)                                   |
 | UserID        | identifikátor    | uživatel, který spustil dotaz                                                           |
@@ -395,7 +395,7 @@ Upozornění
 Citus () poskytuje speciální zobrazení pro sledování dotazů a zámků v celém clusteru, včetně dotazů specifických pro horizontálních oddílů interně používaných k sestavení výsledků pro distribuované dotazy.
 
 -   **citus \_ DIST \_ stat \_ Activity**: zobrazuje distribuované dotazy, které jsou spuštěny na všech uzlech. Nadmnožina `pg_stat_activity` , použitelná všude, kde je tato.
--   ** \_ \_ \_ aktivita citus Worker stat**: zobrazuje dotazy na pracovní procesy včetně fragmentů dotazů na jednotlivé horizontálních oddílů.
+-   **\_ \_ \_ aktivita citus Worker stat**: zobrazuje dotazy na pracovní procesy včetně fragmentů dotazů na jednotlivé horizontálních oddílů.
 -   **citus \_ Lock \_ čeká**: blokované dotazy v rámci clusteru.
 
 První dvě zobrazení zahrnují všechny sloupce [ \_ \_ aktivity pg stat](https://www.postgresql.org/docs/current/static/monitoring-stats.html#PG-STAT-ACTIVITY-VIEW) plus hostitelský Hostitel/port pracovního procesu, který inicioval dotaz a hostitele/port koordinátora clusteru.
@@ -524,5 +524,5 @@ V tomto příkladu se jedná o dotazy pocházející z koordinátora, ale zobraz
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak některé [funkce škálování](reference-hyperscale-functions.md) mění systémové tabulky.
+* Přečtěte si, jak některé [funkce Citus ()](reference-hyperscale-functions.md) mění systémové tabulky.
 * Kontrola konceptů [uzlů a tabulek](concepts-hyperscale-nodes.md)

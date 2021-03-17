@@ -1,75 +1,92 @@
 ---
 title: 'Rychlý Start: připojení pomocí PHP-Azure Database for MySQL'
 description: V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: ec4b4d705e6cc8b9cfc26952083292b74b3d4abf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 10/28/2020
+ms.openlocfilehash: bf62eca26d846cc529df43b519b1377f88c8aede
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185872"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132898"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for MySQL
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for MySQL.
+Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi.
 
-## <a name="prerequisites"></a>Předpoklady
-Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
-- [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+## <a name="prerequisites"></a>Požadavky
+Pro tento rychlý Start budete potřebovat:
 
-> [!IMPORTANT] 
-> Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free).
+- Vytvoření jednoho serveru Azure Database for MySQL pomocí [Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) <br/> nebo [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) , pokud ho ještě nemáte.
+- Na základě toho, jestli používáte veřejný nebo privátní přístup, proveďte **jednu** z následujících akcí, aby se povolilo připojení.
 
-## <a name="install-php"></a>Instalace PHP
-Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../app-service/overview.md) Azure, která zahrnuje PHP.
+    |Akce| Metoda připojení|Praktičtí průvodci|
+    |:--------- |:--------- |:--------- |
+    | **Konfigurace pravidel brány firewall** | Veřejná | [Azure Portal](./howto-manage-firewall-using-portal.md) <br/> [Rozhraní příkazového řádku](./howto-manage-firewall-using-cli.md)|
+    | **Konfigurace koncového bodu služby** | Veřejná | [Azure Portal](./howto-manage-vnet-using-portal.md) <br/> [Rozhraní příkazového řádku](./howto-manage-vnet-using-cli.md)|
+    | **Konfigurace privátního odkazu** | Privátní | [Azure Portal](./howto-configure-privatelink-portal.md) <br/> [Rozhraní příkazového řádku](./howto-configure-privatelink-cli.md) |
 
-### <a name="macos"></a>MacOS
-- Stažení [verze PHP 7.1.4](https://secure.php.net/downloads.php)
-- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k php](https://secure.php.net/manual/install.macosx.php) .
+- [Vytvoření databáze a uživatele bez role správce](./howto-create-users.md?tabs=single-server)
+- Nainstalovat nejnovější verzi PHP pro váš operační systém
+    - [PHP na macOS](https://secure.php.net/manual/install.macosx.php)
+    - [PHP v systému Linux](https://secure.php.net/manual/install.unix.php)
+    - [PHP ve Windows](https://secure.php.net/manual/install.windows.php)
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Stáhněte si [verzi PHP 7.1.4 non-Thread Safe (x64)](https://secure.php.net/downloads.php).
-- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k php](https://secure.php.net/manual/install.unix.php) .
-
-### <a name="windows"></a>Windows
-- Stáhněte si [verzi PHP 7.1.4 non-Thread Safe (x64)](https://windows.php.net/download#php-7.1).
-- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k php](https://secure.php.net/manual/install.windows.php) .
+> [!NOTE]
+> Ke správě připojení a dotazování serveru v tomto rychlém startu používáme knihovnu [MySQL](https://www.php.net/manual/en/book.mysqli.php) .
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Informace o připojení k databázovému serveru můžete získat z Azure Portal pomocí následujících kroků:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
-3. Klikněte na název serveru.
-4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for MySQL](./media/connect-php/1_server-overview-name-login.png)
+2. Přejděte na stránku databáze Azure pro MySQL. Můžete vyhledat a vybrat **Azure Database for MySQL**.
+:::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Najít Azure Database for MySQL":::
 
-## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
-Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL. 
+2. Vyberte svůj server MySQL (například **mydemoserver**).
+3. Na stránce **Přehled** zkopírujte název plně kvalifikovaného serveru vedle pole **název serveru** a uživatelské jméno správce vedle **přihlašovací jméno správce serveru**. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód volá metody [mysqli_init](https://secure.php.net/manual/mysqli.init.php) a [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) pro připojení k MySQL. Potom volá metodu [mysqli_query](https://secure.php.net/manual/mysqli.query.php) pro spuštění dotazu. Potom volá metodu [mysqli_close](https://secure.php.net/manual/mysqli.close.php) pro ukončení připojení.
+> [!IMPORTANT]
+> - Pokud jste zapomněli heslo, můžete [heslo resetovat](./howto-create-manage-server-portal.md#update-admin-password).
+> - Nahraďte parametry **hostitel, uživatelské jméno, heslo** a **db_name** vlastními hodnotami * *
 
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+## <a name="step-1-connect-to-the-server"></a>Krok 1: připojení k serveru
+Protokol SSL je ve výchozím nastavení povolený. Možná budete muset stáhnout [certifikát SSL DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) pro připojení z místního prostředí. Tento kód volá:
+- [mysqli_init](https://secure.php.net/manual/mysqli.init.php) k inicializaci MySQL.
+- [mysqli_ssl_set](https://www.php.net/manual/en/mysqli.ssl-set.php) odkazovat na cestu k certifikátu SSL. To se vyžaduje pro vaše místní prostředí, ale nevyžaduje se pro App Service webové aplikace nebo virtuální počítače Azure.
+- [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) se připojit k MySQL.
+- připojení se [mysqli_close](https://secure.php.net/manual/mysqli.close.php) zavřít.
+
 
 ```php
-<?php
 $host = 'mydemoserver.mysql.database.azure.com';
 $username = 'myadmin@mydemoserver';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Initializes MySQLi
 $conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
 
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootG2.crt.pem", NULL, NULL);
+
+// Establish the connection
+mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin@mydemoserver', 'yourpassword', 'quickstartdb', 3306, NULL, MYSQLI_CLIENT_SSL);
+
+//If connection failed, show the error
+if (mysqli_connect_errno($conn))
+{
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
+```
+[Máte problémy? Dejte nám prosím jistotu](https://aka.ms/mysql-doc-feedback)
+
+## <a name="step-2-create-a-table"></a>Krok 2: vytvoření tabulky
+Pomocí následujícího kódu se připojte. Tento kód volá:
+- spuštění dotazu [mysqli_query](https://secure.php.net/manual/mysqli.query.php) .
+```php
 // Run the create table query
 if (mysqli_query($conn, '
 CREATE TABLE Products (
@@ -82,139 +99,56 @@ PRIMARY KEY (`Id`)
 ')) {
 printf("Table created\n");
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="insert-data"></a>Vložení dat
-Pomocí následujícího kódu se připojte a vložte data s využitím příkazu **INSERT** jazyka SQL.
+## <a name="step-3-insert-data"></a>Krok 3: vložení dat
+Pomocí následujícího kódu vložte data pomocí příkazu **INSERT** jazyka SQL. Tento kód používá metody:
+- Vytvoření připraveného příkazu INSERT pomocí [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)
+- [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) vytvořit vazby parametrů pro každou hodnotu vloženého sloupce.
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php)
+- [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) uzavření příkazu pomocí metody
 
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód využívá metodu [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) k vytvoření připraveného příkazu Insert a potom vytvoří vazbu parametrů pro každou vloženou hodnotu sloupce pomocí metody [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php). Kód spustí tento příkaz pomocí metody [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) a potom tento příkaz zavře pomocí metody [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php).
-
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Create an Insert prepared statement and run it
 $product_name = 'BrandNewProduct';
 $product_color = 'Blue';
 $product_price = 15.5;
-if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)")) {
-mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
-mysqli_stmt_execute($stmt);
-printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-mysqli_stmt_close($stmt);
+if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)"))
+{
+    mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
+    mysqli_stmt_execute($stmt);
+    printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
+    mysqli_stmt_close($stmt);
 }
 
-// Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL.  Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód používá metodu [mysqli_query](https://secure.php.net/manual/mysqli.query.php) k provedení příkazu jazyka SQL a metodu [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) k načtení výsledných řádků.
-
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+## <a name="step-4-read-data"></a>Krok 4: čtení dat
+Pomocí následujícího kódu načtěte data pomocí příkazu **Select** jazyka SQL.  Kód používá metodu:
+- [mysqli_query](https://secure.php.net/manual/mysqli.query.php) spustit dotaz **Select**
+- [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) načtení výsledných řádků.
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Select query
 printf("Reading data from table: \n");
 $res = mysqli_query($conn, 'SELECT * FROM Products');
-while ($row = mysqli_fetch_assoc($res)) {
-var_dump($row);
-}
+while ($row = mysqli_fetch_assoc($res))
+ {
+    var_dump($row);
+ }
 
-//Close the connection
-mysqli_close($conn);
-?>
-```
-
-## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
-
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód využívá metodu [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) k vytvoření připraveného příkazu Update a potom vytvoří vazbu parametrů pro každou aktualizovanou hodnotu sloupce pomocí metody [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php). Kód spustí tento příkaz pomocí metody [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) a potom tento příkaz zavře pomocí metody [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php).
-
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
-
-```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
-//Run the Update statement
-$product_name = 'BrandNewProduct';
-$new_product_price = 15.1;
-if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
-mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
-mysqli_stmt_execute($stmt);
-printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-
-//Close the connection
-mysqli_stmt_close($stmt);
-}
-
-mysqli_close($conn);
-?>
 ```
 
 
-## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
-
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód využívá metodu [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) k vytvoření připraveného příkazu Delete a potom vytvoří vazbu parametrů pro klauzuli Where v tomto příkazu pomocí metody [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php). Kód spustí tento příkaz pomocí metody [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) a potom tento příkaz zavře pomocí metody [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php).
-
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+## <a name="step-5-delete-data"></a>Krok 5: odstranění dat
+Pomocí následujícího kódu odstraňte řádky pomocí příkazu **Delete** jazyka SQL. Kód používá metody:
+- Vytvoření připraveného příkazu Delete pomocí [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)
+- [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) váže parametry
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) provede připravený příkaz DELETE.
+- [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) uzavře příkaz.
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Delete statement
 $product_name = 'BrandNewProduct';
 if ($stmt = mysqli_prepare($conn, "DELETE FROM Products WHERE ProductName = ?")) {
@@ -223,12 +157,23 @@ mysqli_stmt_execute($stmt);
 printf("Delete: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
+```
 
-//Close the connection
-mysqli_close($conn);
-?>
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Připojení ke službě Azure Database for MySQL přes SSL](howto-configure-ssl.md)
+> [Správa serveru Azure Database for MySQL pomocí portálu](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [Správa serveru Azure Database for MySQL pomocí rozhraní příkazového řádku](./how-to-manage-single-server-cli.md)
+
+[Nemůžete najít, co hledáte? Dejte nám prosím jistotu.](https://aka.ms/mysql-doc-feedback)

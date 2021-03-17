@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082965"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093994"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v Linuxu
 
@@ -35,7 +35,7 @@ Všechny soubory Docker můžete najít na [GitHubu](https://github.com/azure-ap
 | Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
 | Tomcat          | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | konfigurační soubor konfiguračního PM2 nebo soubor skriptu                                |
-| .NET Core       | název zkompilované knihovny DLL jako`dotnet <myapp>.dll`                                 |
+| .NET Core       | název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
 | Ruby            | skript Ruby, se kterým chcete aplikaci inicializovat                     |
 
 Tyto příkazy nebo skripty se spustí po spuštění předdefinovaného kontejneru Docker, ale před spuštěním kódu aplikace.
@@ -94,7 +94,7 @@ Ano, zakázat `perMessageDeflate` kód Node.js na straně serveru. Například p
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -110,7 +110,7 @@ Ano, Kudu by během nasazování Gitu měli zjistit, že nasazujete aplikaci PHP
 
 **Používám vlastní kontejner. Chci, aby platforma připojovat sdílenou složku SMB k `/home/` adresáři.**
 
-Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení není **zadáno** nebo je nastaveno na *hodnotu true*, bude `/home/` adresář **sdílen** napříč instancemi škálování a zapsané soubory **budou uchovány** v rámci restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *false* se připojení zakáže.
+Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení **neurčíte** nebo nastavíte na *false*, nebude se `/home/` adresář **sdílet** mezi instancemi škálování a zapsané soubory **se nebudou uchovávat** v restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *hodnotu true* se připojení povolí.
 
 **Spuštění vlastního kontejneru trvá dlouhou dobu a platforma restartuje kontejner před tím, než se začne dokončí.**
 
@@ -122,7 +122,7 @@ Zadejte úplnou adresu URL registru, včetně `http://` nebo `https://` .
 
 **Jaký je formát názvu bitové kopie v možnosti privátního registru?**
 
-Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](/cli/azure/webapp/config/container#az-webapp-config-container-set).
 
 **Můžu na vlastní imagi kontejneru zobrazit víc než jeden port?**
 
@@ -130,7 +130,7 @@ Nepodporujeme vystavení více než jednoho portu.
 
 **Můžu přinášet vlastní úložiště?**
 
-Ano, [Přineste si vlastní úložiště](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage) ve verzi Preview.
+Ano, [Přineste si vlastní úložiště](./configure-connect-to-azure-storage.md) ve verzi Preview.
 
 **Proč nemůžu procházet systém souborů vlastního kontejneru nebo spuštěné procesy z webu SCM?**
 

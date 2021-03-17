@@ -2,18 +2,15 @@
 title: Řešení potíží s Azure Automation účtu
 description: Tento článek popisuje, jak řešit potíže s účtem Azure a řešit problémy s nimi.
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/24/2020
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.topic: troubleshooting
+ms.openlocfilehash: 06c15136e9d2fabdf50031c8b4be455cf2f7bbca
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187281"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896575"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>Řešení potíží s Azure Automation účtu
 
@@ -39,9 +36,9 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
 
-2. Přejít na **předplatná**a vybrat své předplatné.   
+2. Přejít na **předplatná** a vybrat své předplatné.   
 
-3. V části **Nastavení**vyberte **poskytovatelé prostředků**.
+3. V části **Nastavení** vyberte **poskytovatelé prostředků**.
 
 4. V seznamu poskytovatelů prostředků ověřte, že je zaregistrován poskytovatel prostředků **Microsoft. Automation** .
 

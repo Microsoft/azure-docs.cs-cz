@@ -1,32 +1,27 @@
 ---
 title: Načtení dat ze sady Office 365 pomocí Azure Data Factory
 description: Použití Azure Data Factory ke kopírování dat z Office 365
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54aa511414695d28e390529af61d484e465f1c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710261"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 365 do úložiště objektů BLOB v Azure_. Pomocí podobných kroků můžete zkopírovat data do Azure Data Lake Gen1 nebo Gen2. V [článku konektor office 365](connector-office-365.md) najdete obecné informace o kopírování dat z Office 365.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků: 
+1. V nabídce vlevo vyberte **vytvořit**  >    >  **Data Factory** analýzy prostředků: 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -37,7 +32,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
     * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat *LoadFromOffice365Demo* není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**LoadFromOffice365Demo**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
-    * **Verze**: vyberte **v2**.
+    * **Verze**: Vyberte **V2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
@@ -61,9 +56,9 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
 1. Přejděte na **kartu zdroj**> kanálu a kliknutím na **+ Nový** vytvořte zdrojovou datovou sadu. 
 
-2. V okně Nová datová sada vyberte možnost **Office 365**a potom vyberte **pokračovat**.
+2. V okně Nová datová sada vyberte možnost **Office 365** a potom vyberte **pokračovat**.
  
-3. Teď jste na kartě Konfigurace aktivity kopírování. Kliknutím na tlačítko **Upravit** vedle datové sady Office 365 můžete pokračovat v konfiguraci dat.
+3. Nyní jste na kartě Konfigurace aktivity kopírování. Pokud chcete pokračovat v konfiguraci dat, klikněte na tlačítko **Upravit** vedle datové sady Office 365.
 
     ![Obecná konfigurace Office 365 datová sada](./media/load-office-365-data/transition-to-edit-dataset.png)
  
@@ -75,11 +70,11 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
     ![Nová propojená služba Office 365](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle pole **tabulka**vyberte šipku dolů a rozbalte seznam dostupných datových sad sady Office 365 a vyberte možnost "BasicDataSet_v0. Message_v0 v rozevíracím seznamu:
+7. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle pole **tabulka** vyberte šipku dolů a rozbalte seznam dostupných datových sad sady Office 365 a vyberte možnost "BasicDataSet_v0. Message_v0 v rozevíracím seznamu:
 
     ![Konfigurační tabulka sady Office 365](./media/load-office-365-data/edit-dataset.png)
 
-8. Teď se vraťte na **pipeline**  >  **kartu zdroj** kanálu a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) .
+8. Teď se vraťte na   >  **kartu zdroj** kanálu a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](./connector-office-365.md#dataset-properties) .
 
 9. Je nutné zvolit jeden z filtrů data a zadat počáteční a koncové hodnoty času.
 
@@ -130,7 +125,7 @@ Pokud se chcete podívat na spuštění aktivit, která souvisí se spuštěním
 
 ![Aktivita monitorování](./media/load-office-365-data/activity-status.png) 
 
-Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, na jehož cílovém účtu se načítají data a jakou identitu uživatele vytváří požadavek na přístup k datům), zobrazí se stav aktivity kopírování jako probíhající a jenom když kliknete na odkaz Podrobnosti v části **akce, zobrazí**se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
+Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, na jehož cílovém účtu se načítají data a jakou identitu uživatele vytváří požadavek na přístup k datům), zobrazí se stav aktivity kopírování jako probíhající a jenom když kliknete na odkaz Podrobnosti v části **akce, zobrazí** se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
 
 _Stav jako požadavek souhlasu:_ 
  ![ Podrobnosti spuštění aktivity – souhlas s žádostí](./media/load-office-365-data/activity-details-request-consent.png) 
@@ -147,7 +142,7 @@ Nyní přejdete do cílového Azure Blob Storage a ověříte, že data Office 3
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku se dozvíte o podpoře Azure SQL Data Warehouse: 
+V následujícím článku se dozvíte o podpoře Azure synapse Analytics: 
 
 > [!div class="nextstepaction"]
 >[Konektor Office 365](connector-office-365.md)

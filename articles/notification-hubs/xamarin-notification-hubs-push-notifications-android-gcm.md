@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/01/2019
-ms.author: sethm
+ms.custom: mvc, devx-track-csharp
+ms.date: 01/12/2021
+ms.author: matthewp
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: f0a52decfe77b37c4fa14fc4c4ba922ed351bd3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e7d4206de1e097c30e9f5e96bbd935e94892ce0e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519911"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221030"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Notification Hubs
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoříte aplikaci pro Xamarin.Android a připojíte ji k centru oznámení
 > * Odešlete z webu Azure Portal zkušební oznámení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * [Visual Studio s Xamarinem] ve Windows nebo [Visual Studio pro Mac] v systému OS X.
@@ -71,27 +71,27 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 > [!NOTE]
 > Kroky popsané v tomto kurzu jsou pro Visual Studio 2017. 
 
-1. V aplikaci Visual Studio otevřete nabídku **soubor** , vyberte možnost **Nový**a pak vyberte možnost **projekt**. V okně **Nový projekt** proveďte tyto kroky:
+1. V aplikaci Visual Studio otevřete nabídku **soubor** , vyberte možnost **Nový** a pak vyberte možnost **projekt**. V okně **Nový projekt** proveďte tyto kroky:
     1. Rozbalte položku **nainstalované**, **Visual C#** a potom klikněte na možnost **Android**.
     2. V seznamu vyberte **aplikace pro Android (Xamarin)** .
     3. Zadejte **název** projektu.
     4. Vyberte **umístění** projektu.
-    5. Vybrat **OK**
+    5. Vyberte **OK**.
 
         ![Dialogové okno Nový projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
-2. V dialogovém okně **Nová aplikace pro Android** vyberte **prázdná aplikace**a pak vyberte **OK**.
+2. V dialogovém okně **Nová aplikace pro Android** vyberte **prázdná aplikace** a pak vyberte **OK**.
 
-    ![Dialogové okno Nový projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![Snímek obrazovky, který zvýrazní šablonu prázdné aplikace](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. V okně **Průzkumník řešení** rozbalte **Vlastnosti** a klikněte na **AndroidManifest.xml**. Aktualizujte název balíčku, aby odpovídal názvu balíčku, který jste v konzole Google Firebase Console zadali, když jste do projektu přidávali službu Firebase Cloud Messaging.
 
     ![Název balíčku v GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Nastavte cílovou verzi Androidu pro projekt na **android 9,0 (výseč)** pomocí následujících kroků: 
+4. Nastavte cílovou verzi Androidu pro projekt na **android 10,0** pomocí následujících kroků: 
     1. Klikněte pravým tlačítkem na projekt a vyberte **vlastnosti**. 
-    1. V poli **kompilovat pomocí verze Androidu: (cílové rozhraní)** vyberte **Android 9,0 (výseč)**. 
+    1. V poli **kompilovat pomocí verze Androidu: (cílové rozhraní)** vyberte **Android 10,0**. 
     1. V okně se zprávou vyberte **Ano** , pokud chcete pokračovat se změnou cílové architektury.
 1. Pomocí následujících kroků přidejte do projektu požadované balíčky NuGet:
     1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
-    1. Přepněte na kartu **Installed (instalovat** ), vyberte **Xamarin. Android. support. Design**a v pravém podokně vyberte **aktualizovat** , aby se balíček aktualizoval na nejnovější verzi.
+    1. Přepněte na kartu **Installed (instalovat** ), vyberte **Xamarin. Android. support. Design** a v pravém podokně vyberte **aktualizovat** , aby se balíček aktualizoval na nejnovější verzi.
     1. Přepněte na kartu **Procházet** . Vyhledejte **Xamarin. GooglePlayServices. Base**. V seznamu výsledků vyberte **Xamarin.GooglePlayServices.Base**. Pak vyberte **Nainstalovat**.
 
         ![Balíček NuGet služeb Google Play](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
@@ -111,15 +111,20 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
 
-1. Otevřete `AndroidManifest.xml` soubor a vložte `<receiver>` do prvku následující prvky `<application>` :
+1. Pokud migrujete z Google Cloud Messaging na Firebase, `AndroidManifest.xml` soubor projektu může obsahovat zastaralou konfiguraci GCM, která může způsobit duplicity oznámení. Upravte soubor a odeberte následující řádky v `<application>` části, pokud je k dispozici:
 
     ```xml
-    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
-    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+    <receiver
+        android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+        android:exported="false" />
+    <receiver
+        android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND">
         <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-        <category android:name="${applicationId}" />
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="${applicationId}" />
         </intent-filter>
     </receiver>
     ```
@@ -137,7 +142,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
    * **Připojovací řetězec naslouchání:** Na řídicím panelu na webu [Azure Portal] zvolte **Zobrazit připojovací řetězce**. Zkopírujte `DefaultListenSharedAccessSignature` připojovací řetězec pro tuto hodnotu.
    * **Název centra**: Pojmenujte centrum na webu [Azure Portal]. Například *mynotificationhub2*.
-4. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na **projekt**, vyberte možnost **Přidat**a poté možnost **Třída**.
+4. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na **projekt**, vyberte možnost **Přidat** a poté možnost **Třída**.
 5. Vytvořte `Constants.cs` třídu pro projekt Xamarin a ve třídě definujte následující konstantní hodnoty. Nahraďte zástupné symboly vašimi hodnotami.
 
     ```csharp
@@ -151,127 +156,42 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 6. Přidejte následující příkazy using do `MainActivity.cs` :
 
     ```csharp
-    using Android.Util;
-    using Android.Gms.Common;
+    using Azure.Messaging.NotificationHubs;
     ```
 
-7. Do třídy MainActivity přidejte následující vlastnosti. Proměnná značky se použije k zobrazení dialogového okna výstrahy, když je aplikace spuštěná:
+7. Do třídy MainActivity přidejte následující vlastnosti:
 
     ```csharp
-    public const string TAG = "MainActivity";
     internal static readonly string CHANNEL_ID = "my_notification_channel";
-    ```
 
-8. Do třídy MainActivity přidejte následující metodu. Kontroluje, zda jsou **služby Google Play** k dispozici na zařízení.
-
-    ```csharp
-    public bool IsPlayServicesAvailable()
-    {
-        int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.Success)
-        {
-            if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
-                Log.Debug(TAG, GoogleApiAvailability.Instance.GetErrorString(resultCode));
-            else
-            {
-                Log.Debug(TAG, "This device is not supported");
-                Finish();
-            }
-            return false;
-        }
-
-        Log.Debug(TAG, "Google Play Services is available.");
-        return true;
-    }
-    ```
-
-9. Přidejte následující metodu do třídy MainActivity, která vytvoří kanál oznámení.
+8. In `MainActivity.cs`, add the following code to `OnCreate` after `base.OnCreate(savedInstanceState)`:
 
     ```csharp
-    private void CreateNotificationChannel()
-    {
-        if (Build.VERSION.SdkInt < BuildVersionCodes.O)
-        {
-            // Notification channels are new in API 26 (and not a part of the
-            // support library). There is no need to create a notification
-            // channel on older versions of Android.
-            return;
-        }
+    // Listen for push notifications
+    NotificationHub.SetListener(new AzureListener());
 
-        var channelName = CHANNEL_ID;
-        var channelDescription = string.Empty;
-        var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
-        {
-            Description = channelDescription
-        };
-
-        var notificationManager = (NotificationManager)GetSystemService(NotificationService);
-        notificationManager.CreateNotificationChannel(channel);
-    }
+    // Start the SDK
+    NotificationHub.Start(this.Application, HubName, ConnectionString);
     ```
 
-10. Do `MainActivity.cs` přidejte následující kód `OnCreate` po `base.OnCreate(savedInstanceState)` :
+9. Přidejte do projektu třídu s názvem `AzureListener` .
+10. Přidejte následující příkazy using do `AzureListener.cs` .
 
     ```csharp
-    if (Intent.Extras != null)
-    {
-        foreach (var key in Intent.Extras.KeySet())
-        {
-            if(key!=null)
-            {
-                var value = Intent.Extras.GetString(key);
-                Log.Debug(TAG, "Key: {0} Value: {1}", key, value);
-            }
-        }
-    }
-
-    IsPlayServicesAvailable();
-    CreateNotificationChannel();
+    using Android.Content;
+    using WindowsAzure.Messaging.NotificationHubs;
     ```
 
-15. Přidejte do projektu třídu s názvem `MyFirebaseMessagingService` . 
-16. Přidejte následující příkazy using do `MyFirebaseMessagingService.cs` .
+11. Přidejte následující nad deklaraci třídy a požádejte třídu, aby dědila z `Java.Lang.Object` a implementovala `INotificationListener` :
 
     ```csharp
-    using Android.Util;
-    using Firebase.Messaging;
-    using Android.Support.V4.App;    
-    using WindowsAzure.Messaging;
+    public class AzureListener : Java.Lang.Object, INotificationListener
     ```
 
-17. Do deklarace třídy přidejte následující a vaše třída zdědí `FirebaseMessagingService` :
+12. Do třídy přidejte následující kód `MyFirebaseMessagingService` pro zpracování zpráv, které jsou přijaty.
 
     ```csharp
-    [Service]
-    [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
-    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
-    public class MyFirebaseMessagingService : FirebaseMessagingService
-    ```
-
-18. Do třídy přidejte následující kód `MyFirebaseMessagingService` pro zpracování zpráv, které jsou přijaty. 
-
-    ```csharp
-        const string TAG = "MyFirebaseMsgService";
-        NotificationHub hub;
-    
-        public override void OnMessageReceived(RemoteMessage message)
-        {
-            Log.Debug(TAG, "From: " + message.From);
-            if (message.GetNotification() != null)
-            {
-                //These is how most messages will be received
-                Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
-                SendNotification(message.GetNotification().Body);
-            }
-            else
-            {
-                //Only used for debugging payloads sent from the Azure portal
-                SendNotification(message.Data.Values.First());
-    
-            }
-        }
-    
-        void SendNotification(string messageBody)
+        public void OnPushNotificationReceived(Context context, INotificationMessage message)
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
@@ -279,9 +199,9 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     
             var notificationBuilder = new NotificationCompat.Builder(this, MainActivity.CHANNEL_ID);
     
-            notificationBuilder.SetContentTitle("FCM Message")
+            notificationBuilder.SetContentTitle(message.Title)
                         .SetSmallIcon(Resource.Drawable.ic_launcher)
-                        .SetContentText(messageBody)
+                        .SetContentText(message.Body)
                         .SetAutoCancel(true)
                         .SetShowWhen(false)
                         .SetContentIntent(pendingIntent);
@@ -292,27 +212,6 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
         }
     ```
 
-19. Přidejte následující metody do třídy MyFirebaseMessagingService (napravo pod kódem přidaným v předchozím kroku) k získání registračního tokenu FCM a jeho odeslání do instance Notification Hubs (centra). 
-
-    ```csharp
-        public override void OnNewToken(string token)
-        {
-            Log.Debug(TAG, "FCM token: " + token);
-            SendRegistrationToServer(token);
-        }
-
-        void SendRegistrationToServer(string token)
-        {
-            // Register with Notification Hubs
-            hub = new NotificationHub(Constants.NotificationHubName,
-                                        Constants.ListenConnectionString, this);
-
-            var tags = new List<string>() { };
-            var regID = hub.Register(token, tags.ToArray()).RegistrationId;
-
-            Log.Debug(TAG, $"Successful registration of ID {regID}");
-        }
-    ```
 1. **Sestavte** projekt.
 1. **Spuštění** aplikace na zařízení nebo zavedeném emulátoru
 
@@ -362,7 +261,7 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [Visual Studio s Xamarinem]: /visualstudio/install/install-visual-studio
 [Visual Studio pro Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure Portal]: https://portal.azure.com/
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Android]: /previous-versions/azure/dn282661(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md

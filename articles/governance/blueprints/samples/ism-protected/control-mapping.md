@@ -1,24 +1,23 @@
 ---
-title: Přehled ukázkového podrobného plánu podrobného plánu australské vlády ISM
-description: Přehled ukázkového podrobného plánu podrobného plánu australské vlády ISM Tento ukázkový plán pomůže zákazníkům vyhodnotit konkrétní chráněné ovládací prvky ISM.
-ms.date: 08/03/2020
+title: Ukázkové ovládací prvky podrobného plánu podrobného plánu australské vlády ISM
+description: Mapování ovládacího prvku australského plánu CHRÁNĚNÉho plánu pro státní správu ISM Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: df143a871db3d871fe6354eab23b7ca6dc012b78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760426"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679993"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Mapování ovládacího prvku pro ukázkovou verzi plánu CHRÁNĚNÉho plánu australské vlády ISM
 
 Následující článek podrobně popisuje, jak ukázka Azure Modrotiskys australské vlády ISM (PROTECTed Details) mapuje na chráněné ovládací prvky ISM. Další informace o ovládacích prvcích najdete v tématu [chráněném ISM](https://www.cyber.gov.au/ism).
 
-Následující mapování jsou k ovládacím prvkům **chráněným pro ISM** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[ verzi Preview \] : audit australské vlády ISM chráněné ovládací prvky a nasaďte specifická rozšíření virtuálních počítačů, aby podporovaly** integrovanou zásadu požadavky na audit.
+Následující mapování jsou k ovládacím prvkům **chráněným pro ISM** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve **\[ verzi Preview \] : audit australské vlády ISM chráněné ovládací prvky a nasaďte specifická rozšíření virtuálních počítačů, aby podporovaly** integrovanou zásadu požadavky na audit.
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit.
-> Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ism-protected/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ism-protected/control-mapping.md).
 
 
 ## <a name="location-constraints"></a>Omezení umístění
@@ -33,7 +32,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="0414-personnel-granted-access-to-a-system-and-its-resources-are-uniquely-identifiable"></a>0414 personál, kterému je udělený přístup k systému, a jeho prostředky jsou jednoznačně identifikovatelné
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 
 ### <a name="1503-standard-access-to-systems-applications-and-data-repositories-is-limited-to-that-required-for-personnel-to-undertake-their-duties"></a>1503 standardní přístup k systémům, aplikacím a úložištím dat je omezený na to, aby pracovníci mohli plnit své povinnosti.
@@ -118,7 +117,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="1173-multi-factor-authentication-is-used-to-authenticate-all-privileged-users-and-any-other-positions-of-trust"></a>1173 Multi-Factor Authentication se používá k ověřování všech privilegovaných uživatelů a všech dalších pozic důvěry.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 přístupových hesel používaných pro jednotné vícefaktorové ověřování je minimálně 14 znaků a složitá, v ideálním případě 4 náhodná slova.
 
@@ -130,7 +129,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="1384-multi-factor-authentication-is-used-to-authenticate-users-each-time-they-perform-privileged-actions"></a>1384 Multi-Factor Authentication se používá k ověřování uživatelů při každém provedení privilegovaných akcí.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 
 ### <a name="1386-management-traffic-is-only-allowed-to-originate-from-network-zones-that-are-used-to-administer-systems-and-applications"></a>1386 provoz správy je povolený jenom ze síťových zón, které se používají ke správě systémů a aplikací.
@@ -350,6 +349,10 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ## <a name="next-steps"></a>Další kroky
 
 Další články věnované podrobným plánům a postupu jejich využití:
+
+> [!div class="nextstepaction"]
+> [Chráněný podrobný plán pro ISM – přehled](./index.md) 
+>  [Chráněný podrobný plán pro ISM – postup nasazení](./deploy.md)
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

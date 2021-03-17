@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231807"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672914"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Konfigurace předvolby směrování pro veřejnou IP adresu pomocí Azure Portal
 
-V tomto článku se dozvíte, jak nakonfigurovat [Předvolby směrování](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) prostřednictvím sítě poskytovatele internetových služeb (možnost**Internet** ) pro veřejnou IP adresu. Po vytvoření veřejné IP adresy ji můžete přidružit k následujícím prostředkům Azure pro příchozí a odchozí provoz do Internetu:
+V tomto článku se dozvíte, jak nakonfigurovat [Předvolby směrování](./routing-preference-overview.md) prostřednictvím sítě poskytovatele internetových služeb (možnost **Internet** ) pro veřejnou IP adresu. Po vytvoření veřejné IP adresy ji můžete přidružit k následujícím prostředkům Azure pro příchozí a odchozí provoz do Internetu:
 
 * Virtuální počítač
 * Škálovací sada virtuálních počítačů
@@ -32,26 +32,26 @@ V tomto článku se dozvíte, jak nakonfigurovat [Předvolby směrování](https
 
 Ve výchozím nastavení je předvolby směrování pro veřejnou IP adresu nastavená na globální síť Microsoft pro všechny služby Azure a může být přidružená k jakékoli službě Azure.
 
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="register-the-feature-for-your-subscription"></a>Registrace funkce pro vaše předplatné
-Funkce předvolby směrování je aktuálně ve verzi Preview. Zaregistrujte funkci pro vaše předplatné pomocí Azure PowerShell následujícím způsobem:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
-
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Vytvoření veřejné IP adresy s prioritou směrování
-1. Přihlaste se na [Azure Portal](https://preview.portal.azure.com/).
-2. Vyberte **Vytvořit prostředek**. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. Vyberte **Vytvořit prostředek**.
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 3. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
-3. V možnosti **Předvolby směrování** vyberte **Internet**.
+1. V případě SKU vyberte možnost **Standard**.
+1. V **předvolbách směrování** vyberte **Internet**.
 
-      ![Vytvoření veřejné IP adresy](./media/routing-preference-portal/pip-new.png)
+      ![Vytvoření veřejné IP adresy](./media/routing-preference-portal/public-ip-new.png)
+1. V části **Konfigurace IP adresy IPv4** zadejte nebo vyberte tyto informace:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Předplatné | Vyberte své předplatné.|
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *RoutingPreferenceResourceGroup* a pak vyberte **OK**. |
+    | Umístění | Vyberte **USA – východ**.|
+    | Zóna dostupnosti | Ponechte výchozí hodnotu- **Zone-redundantní**. |
+1. Vyberte **Vytvořit**.
 
     > [!NOTE]
     > Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. Předvolby směrování ale v současné době podporují jenom protokol IPV4.
@@ -62,5 +62,5 @@ Výše vytvořenou veřejnou IP adresu můžete přidružit k virtuálnímu poč
 - Přečtěte si další informace o [veřejné IP adrese s upřednostněním směrování](routing-preference-overview.md).
 - [Nakonfigurujte předvolby směrování pro virtuální počítač](tutorial-routing-preference-virtual-machine-portal.md).
 - [Nakonfigurujte předvolby směrování pro veřejnou IP adresu pomocí PowerShellu](routing-preference-powershell.md).
-- Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure.
+- Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure.
 - Přečtěte si další informace o všech [nastaveních veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).

@@ -3,21 +3,22 @@ title: Použití Azure image Builder s galerií imagí pro virtuální počíta�
 description: Vytvářejte image virtuálních počítačů se systémem Linux pomocí nástroje Azure image Builder a galerie sdílených imagí.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2019
+ms.date: 03/02/2020
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: d4715bd8b7a13a5ab53d254ac853ac324440b403
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6ae7e384aa5d70b688b7fe4c6d4140e886b789f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502609"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694287"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>Preview: vytvoření image pro Linux a její distribuce do galerie sdílených imagí pomocí Azure CLI
 
-V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure a rozhraní příkazového řádku Azure vytvořit verzi image v [galerii sdílených imagí](../windows/shared-image-galleries.md)a pak tuto image distribuovat globálně. Můžete to provést také pomocí [Azure PowerShell](../windows/image-builder-gallery.md).
+V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure a rozhraní příkazového řádku Azure vytvořit verzi image v [galerii sdílených imagí](../shared-image-galleries.md)a pak tuto image distribuovat globálně. Můžete to provést také pomocí [Azure PowerShell](../windows/image-builder-gallery.md).
 
 
 K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIG.js](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
@@ -38,16 +39,17 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 Ověřte stav registrace funkce.
 
 ```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
+az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview -o json | grep state
 ```
 
 Ověřte vaši registraci.
 
 ```azurecli-interactive
-az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.KeyVault | grep registrationState
-az provider show -n Microsoft.Compute | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.VirtualMachineImages -o json | grep registrationState
+az provider show -n Microsoft.KeyVault -o json | grep registrationState
+az provider show -n Microsoft.Compute -o json | grep registrationState
+az provider show -n Microsoft.Storage -o json | grep registrationState
+az provider show -n Microsoft.Network -o json | grep registrationState
 ```
 
 Pokud nevyžadují registraci, spusťte tento příkaz:
@@ -57,6 +59,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 ## <a name="set-variables-and-permissions"></a>Nastavení proměnných a oprávnění 
@@ -80,7 +83,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id` .
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show -o json | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -101,13 +104,13 @@ identityName=aibBuiUserId$(date +'%s')
 az identity create -g $sigResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName -o json | grep "clientId" | cut -c16- | tr -d '",')
 
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # this command will download an Azure role definition template, and update the template with the parameters specified earlier.
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/Azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
 
@@ -158,7 +161,7 @@ az sig image-definition create \
 Stáhněte šablonu. JSON a nakonfigurujte ji pomocí proměnných.
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
+curl https://raw.githubusercontent.com/Azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIG.json
 sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIG.json
@@ -298,4 +301,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [galeriích sdílených imagí Azure](shared-image-galleries.md).
+Přečtěte si další informace o [galeriích sdílených imagí Azure](../shared-image-galleries.md).

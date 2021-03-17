@@ -5,40 +5,38 @@ services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 08/14/2020
 ms.author: jmprieur
-ms.custom: include file
-ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102559"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995998"
 ---
-## <a name="register-secrets-or-certificates"></a>Registrace tajných klíčů nebo certifikátů
+## <a name="add-a-client-secret-or-certificate"></a>Přidání tajného klíče nebo certifikátu klienta
 
-Stejně jako u jakýchkoli důvěrných klientských aplikací je nutné zaregistrovat tajný klíč nebo certifikát. Tajná klíč aplikace můžete zaregistrovat buď pomocí interaktivního prostředí v [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) nebo pomocí nástrojů příkazového řádku (například PowerShell).
+Stejně jako u libovolné důvěrné klientské aplikace musíte přidat tajný klíč nebo certifikát, který bude fungovat jako *pověření* této aplikace, aby se mohl ověřit jako sám, bez zásahu uživatele.
 
-### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Registrace klientských tajných klíčů pomocí portálu pro registraci aplikací
+Přihlašovací údaje můžete do registrace klientské aplikace přidat pomocí [Azure Portal](#add-client-credentials-by-using-the-azure-portal) nebo pomocí nástroje příkazového řádku, jako je [PowerShell](#add-client-credentials-by-using-powershell).
 
-Správa přihlašovacích údajů klienta se stane na stránce **certifikáty & tajných** kódů pro aplikaci:
+### <a name="add-client-credentials-by-using-the-azure-portal"></a>Přidání přihlašovacích údajů klienta pomocí Azure Portal
 
-![Stránka & tajných klíčů certifikátů](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+Chcete-li přidat pověření k registraci aplikace důvěrné klientské aplikace, postupujte podle kroků v části [rychlý Start: registrace aplikace s platformou Microsoft Identity](../articles/active-directory/develop/quickstart-register-app.md) pro typ přihlašovacích údajů, které chcete přidat:
 
-- Pokud chcete vytvořit *tajný klíč klienta* , vyberte **nový tajný klíč klienta** v registraci aplikace v Azure Portal. Když vytváříte tajný klíč klienta, je _nutné_ před navigací z podokna **certifikáty & tajných** kódů nahrát řetězec tajného kódu. Řetězec tajného klíče se už nezobrazuje znovu.
-- Během registrace aplikace použijete tlačítko **Odeslat certifikát** k nahrání certifikátu. Azure AD podporuje jenom certifikáty, které jsou v aplikaci registrované přímo, a nedodržují řetězy certifikátů.
+* [Přidat tajný klíč klienta](../articles/active-directory/develop/quickstart-register-app.md#add-a-client-secret)
+* [Přidat certifikát](../articles/active-directory/develop/quickstart-register-app.md#add-a-certificate)
 
-Podrobnosti najdete v tématu [rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API | Přidejte do své aplikace přihlašovací údaje](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+### <a name="add-client-credentials-by-using-powershell"></a>Přidání přihlašovacích údajů klienta pomocí PowerShellu
 
-### <a name="register-client-secrets-by-using-powershell"></a>Registrace klientských tajných klíčů pomocí PowerShellu
+Případně můžete přihlašovací údaje přidat při registraci aplikace pomocí platformy Microsoft Identity Platform pomocí prostředí PowerShell.
 
-Případně můžete svou aplikaci zaregistrovat ve službě Azure AD pomocí nástrojů příkazového řádku. Ukázka [Active-Directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) ukazuje, jak zaregistrovat tajný klíč nebo certifikát aplikace pomocí aplikace Azure AD:
+Ukázka kódu [Active-Directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) na GitHubu ukazuje, jak přidat tajný klíč nebo certifikát aplikace při registraci aplikace:
 
-- Podrobnosti o tom, jak zaregistrovat tajný klíč aplikace, najdete v tématu [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
-- Podrobnosti o tom, jak zaregistrovat certifikát s aplikací, najdete v tématu [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).
+- Podrobnosti o tom, jak přidat **tajný klíč klienta** pomocí PowerShellu, najdete v tématu [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
+- Podrobnosti o tom, jak přidat **certifikát** pomocí PowerShellu, najdete v tématu [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).

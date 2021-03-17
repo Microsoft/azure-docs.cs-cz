@@ -3,18 +3,18 @@ title: Kopírování verze image z jiné galerie pomocí rozhraní příkazovéh
 description: Kopírování verze image z jiné galerie pomocí Azure CLI.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225831"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553098"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopírování obrázku z jiné galerie pomocí Azure CLI
 
@@ -161,6 +161,6 @@ az sig image-version create \
 
 Vytvořte virtuální počítač z [zobecněné](vm-generalized-image-version-cli.md) nebo [specializované](vm-specialized-image-version-cli.md) verze image.
 
-Také si vyzkoušejte [Azure image Builder (Preview)](./linux/image-builder-overview.md) , které vám pomůžou automatizovat vytváření verzí imagí, můžete ho dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+Také si vyzkoušejte [Azure image Builder (Preview)](./image-builder-overview.md) , které vám pomůžou automatizovat vytváření verzí imagí, můžete ho dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
 
 Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

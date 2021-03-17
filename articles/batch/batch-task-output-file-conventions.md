@@ -3,13 +3,13 @@ title: Zachovat výstupní data Azure Storage pomocí knihovny konvence souborů
 description: Naučte se, jak pomocí Azure Batch knihovny konvencí souborů pro .NET uchovat výstup úlohy & dávkové úlohy do Azure Storage a zobrazit tento výstup v Azure Portal.
 ms.topic: how-to
 ms.date: 11/14/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936958"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
 

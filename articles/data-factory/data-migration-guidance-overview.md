@@ -1,22 +1,18 @@
 ---
 title: Migrace dat ze služby Data Lake a Data Warehouse do Azure
 description: Pomocí Azure Data Factory migrujte data ze svých datových Lake a datových skladů do Azure.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e7421cb8ea4b0c14e4f4b59a688cdb1afe7d462
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416436"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367703"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure
 

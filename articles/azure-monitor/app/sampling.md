@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549561"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589546"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -25,7 +25,7 @@ Když se počty metrik zobrazují na portálu, jsou znovu normalizovány, aby se
 * Vzorkování s pevnou sazbou je dostupné v posledních verzích sady Application Insights SDK pro ASP.NET, ASP.NET Core, Java (agent i SDK) a Python.
 * Vzorkování ingestování funguje na koncovém bodu služby Application Insights. Platí jenom v případě, že se neplatí žádné jiné vzorkování. Pokud sada SDK vzorkuje vaši telemetrii, vzorkování ingestování je zakázané.
 * Pokud se pro webové aplikace protokolují vlastní události a potřebujete zajistit, aby byla sada událostí zachována nebo zahozena společně, musí mít události stejnou `OperationId` hodnotu.
-* Pokud píšete analytické dotazy, měli byste [vzít v úvahu vzorkování](../log-query/aggregations.md). Konkrétně místo pouhého počítání záznamů byste měli použít `summarize sum(itemCount)` .
+* Pokud píšete analytické dotazy, měli byste [vzít v úvahu vzorkování](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations). Konkrétně místo pouhého počítání záznamů byste měli použít `summarize sum(itemCount)` .
 * Některé typy telemetrie, včetně metrik výkonu a vlastních metrik, se vždycky uchovávají bez ohledu na to, jestli je povolený vzorkování, nebo ne.
 
 Následující tabulka shrnuje typy vzorkování dostupné pro každou sadu SDK a typ aplikace:
@@ -54,7 +54,7 @@ Existují tři různé metody vzorkování:
 * **Vzorkování** ingestování proběhne na koncovém bodu služby Application Insights. Zahodí některé telemetrie, které dorazí z vaší aplikace, při vzorkovací frekvenci, kterou jste nastavili. Neomezuje provoz telemetrie odeslaný z vaší aplikace, ale pomáhá udržet se v rámci měsíční kvóty. Hlavní výhodou pro vzorkování ingestování je, že můžete nastavit vzorkovací frekvenci bez opětovného nasazení aplikace. Vzorkování ingestování funguje jednotně pro všechny servery a klienty, ale nevztahuje se na to, kdy se v provozu nacházejí jiné typy vzorkování.
 
 > [!IMPORTANT]
-> Pokud se v provozu používají metody vzorkování s adaptivní nebo pevnou sazbou, je vzorkování ingest vypnuto.
+> Pokud jsou pro typ telemetrie povolené metody vzorkování s adaptivní nebo pevnou sazbou, je vzorkování ingest pro tuto telemetrii zakázané. Typy telemetrie, které jsou vyloučené z vzorkování na úrovni sady SDK, však budou i nadále v rámci míry nastavené na portálu vycházet z vzorkování ingestování.
 
 ## <a name="adaptive-sampling"></a>Adaptivní vzorkování
 
@@ -212,7 +212,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Konfigurace adaptivního vzorkování pro Azure Functions
 
-Podle pokynů na [této stránce](../../azure-functions/functions-monitoring.md#configure-sampling) můžete nakonfigurovat adaptivní vzorkování pro aplikace běžící v Azure Functions.
+Podle pokynů na [této stránce](../../azure-functions/configure-monitoring.md#configure-sampling) můžete nakonfigurovat adaptivní vzorkování pro aplikace běžící v Azure Functions.
 
 ## <a name="fixed-rate-sampling"></a>Vzorkování s pevnou sazbou
 
@@ -295,9 +295,9 @@ V Průzkumník metrik se tarify, jako je počet požadavků a výjimek, vynásob
 
         var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
         // For older versions of the Application Insights SDK, use the following line instead:
-        // var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+        // var builder = configuration.TelemetryProcessorChainBuilder;
 
-        // Using fixed rate sampling   
+        // Using fixed rate sampling
         double fixedSamplingPercentage = 10;
         builder.UseSampling(fixedSamplingPercentage);
 
@@ -315,18 +315,12 @@ Ve výchozím nastavení nejsou v agentech Java a v sadě SDK povoleny žádné 
 
 1. Stáhnout [ApplicationInsights-agent-3.0.0-Preview. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
-1. Pokud chcete vzorkování povolit, přidejte do `ApplicationInsights.json` souboru následující:
+1. Pokud chcete vzorkování povolit, přidejte do `applicationinsights.json` souboru následující:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -482,9 +476,9 @@ Hlavní výhody vzorkování:
 
 Pokud se podmínky použití ostatních forem vzorkování nepoužijí, doporučujeme adaptivní vzorkování. Toto nastavení je ve výchozím nastavení povoleno v sadě ASP.NET/ASP.NET Core SDK. Nebude snižovat provoz, dokud nedosáhnete určité minimální míry, takže weby s nízkým použitím nebudou pravděpodobně vzorkovat vůbec.
 
-## <a name="knowing-whether-sampling-is-in-operation"></a>Znalost toho, zda je vzorkování v provozu
+## <a name="knowing-whether-sampling-is-in-operation"></a>Určení, jestli probíhá vzorkování
 
-Pokud chcete zjistit skutečnou vzorkovací frekvenci bez ohledu na to, kde byla použita, použijte [dotaz Analytics](../log-query/log-query-overview.md) , jako je například:
+Pokud chcete zjistit skutečnou vzorkovací frekvenci bez ohledu na to, kde byla použita, použijte [dotaz Analytics](../logs/log-query-overview.md) , jako je například:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -531,7 +525,7 @@ Přesnost aproximace je převážně závislá na nakonfigurované procentuáln�
 
 *Je možné telemetrii vzorkovat více než jednou?*
 
-* Ne. SamplingTelemetryProcessors ignorovat položky z hlediska vzorkování, pokud je položka již vzorkovat. Totéž platí také pro vzorkování ingestování, které nepoužijí vzorkování na ty položky, které jsou již v samotné sadě SDK navzorkované.
+* No. SamplingTelemetryProcessors ignorovat položky z hlediska vzorkování, pokud je položka již vzorkovat. Totéž platí také pro vzorkování ingestování, které nepoužijí vzorkování na ty položky, které jsou již v samotné sadě SDK navzorkované.
 
 *Proč není vzorkování jednoduché "shromáždit X procento každého typu telemetrie"?*
 
@@ -559,7 +553,7 @@ Přesnost aproximace je převážně závislá na nakonfigurované procentuáln�
 
 * Vzorkování příjmu se může vyskytnout automaticky pro všechny telemetrie nad určitým svazkem, pokud sada SDK neprovádí vzorkování. Tato konfigurace by mohla fungovat například v případě, že používáte starší verzi sady ASP.NET SDK nebo Java SDK.
 * Pokud používáte aktuální ASP.NET nebo ASP.NET Core sady SDK (hostované buď v Azure, nebo na vašem vlastním serveru), můžete ve výchozím nastavení získat adaptivní vzorkování, ale můžete přejít na pevný kurz, jak je popsáno výše. Při vzorkování s pevnou sazbou se sada SDK pro prohlížeč automaticky synchronizuje s ukázkovými událostmi, které se týkají. 
-* Pokud používáte aktuálního agenta Java, můžete pro `ApplicationInsights.json` vzorkování s pevnou sazbou nakonfigurovat (pro sadu Java SDK, nakonfigurovat `ApplicationInsights.xml` ). Vzorkování je ve výchozím nastavení vypnuté. Při vzorkování s pevnou sazbou se sada SDK pro prohlížeč a server automaticky synchronizuje s ukázkovými událostmi, které jsou v relaci.
+* Pokud používáte aktuálního agenta Java, můžete pro `applicationinsights.json` vzorkování s pevnou sazbou nakonfigurovat (pro sadu Java SDK, nakonfigurovat `ApplicationInsights.xml` ). Vzorkování je ve výchozím nastavení vypnuté. Při vzorkování s pevnou sazbou se sada SDK pro prohlížeč a server automaticky synchronizuje s ukázkovými událostmi, které jsou v relaci.
 
 *Existují určité vzácné události, které vždycky chcete vidět. Jak se dají dostat za modul vzorkování?*
 

@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Přečtěte si o podporovaných datových platformách a nástrojích pro Azure Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 927e945a0d045abcd1caa2951dbd484224b2f425
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012481"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519537"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované v Data Science Virtual Machine
 
@@ -53,7 +52,7 @@ Pokud chcete spustit SQL Server Management Studio, můžete v seznamu programů 
 
 Ve výchozím nastavení se databázový server s výchozí instancí databáze spustí automaticky. K místnímu přístupu k databázi SQL Server můžete použít nástroje, jako je SQL Server Management Studio na virtuálním počítači. Účty místních správců mají v databázi přístup správce.
 
-Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komunikovat s SQL Server, databázemi SQL Azure a Azure SQL Data Warehouse z aplikací napsaných v několika jazycích, včetně Pythonu a Machine Learning Server.
+Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komunikovat s SQL Server, databázemi SQL Azure a Azure synapse Analytics z aplikací napsaných v několika jazycích, včetně Pythonu a Machine Learning Server.
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Jak je nakonfigurovaná a nainstalovaná na DSVM? 
 
@@ -103,5 +102,4 @@ Knihovny pro přístup k datům ze služby Azure Blob Storage nebo Azure Data La
 
 Aby instance Spark na DSVM mohla získat přístup k datům uloženým ve službě BLOB Storage nebo Azure Data Lake Storage, musíte soubor vytvořit a nakonfigurovat na `core-site.xml` základě šablony nalezené v $SPARK _HOME/conf/core-site.xml. template. Musíte mít také příslušné přihlašovací údaje pro přístup k úložišti objektů BLOB a Azure Data Lake Storage. (Všimněte si, že soubory šablon používají zástupné symboly pro úložiště objektů BLOB a Azure Data Lake Storage konfigurace.)
 
-Podrobnější informace o vytváření přihlašovacích údajů služby Azure Data Lake Storage najdete v tématu [ověřování pomocí Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Po zadání přihlašovacích údajů pro úložiště objektů BLOB nebo Azure Data Lake Storage do souboru core-site.xml můžete odkazovat na data uložená v těchto zdrojích prostřednictvím předpony URI wasb://nebo adl://.
-
+Podrobnější informace o vytváření přihlašovacích údajů služby Azure Data Lake Storage najdete v tématu [ověřování pomocí Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Po zadání přihlašovacích údajů pro úložiště objektů BLOB nebo Azure Data Lake Storage do souboru core-site.xml můžete odkazovat na data uložená v těchto zdrojích prostřednictvím předpony URI wasb://nebo adl://.

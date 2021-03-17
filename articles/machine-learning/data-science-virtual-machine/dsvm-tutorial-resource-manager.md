@@ -7,42 +7,44 @@ author: lobrien
 ms.author: laobri
 ms.custom: subject-armqs
 ms.date: 06/10/2020
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 675ddf073393afde6ac8d08a65b40da11d90d3ea
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7feacec9f0e78749f17359a9080411b6d9696136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026657"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518211"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony ARM
 
-[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager (šablony ARM). Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU. 
+V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager (šablony ARM). Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/services/machine-learning/), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/services/machine-learning/).
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Úplná šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit úplnou šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Část definující konkrétní DSVM se zobrazí zde:
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/).
 
-:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
+:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
 V šabloně jsou definované následující prostředky:
 
+* [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Vytvořte cloudový virtuální počítač. V této šabloně je virtuální počítač nakonfigurovaný jako Data Science Virtual Machine se systémem Ubuntu 18,04.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
@@ -74,8 +76,8 @@ Když spustíte výše uvedený příkaz, zadejte:
 
 Postup zobrazení Data Science Virtual Machine:
 
-1. Přejděte do části https://portal.azure.com (Soubor > Nový > Jiné).
-1. Přihlásit se.
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se.
 1. Vyberte skupinu prostředků, kterou jste právě vytvořili.
 
 Zobrazí se informace o skupině prostředků:

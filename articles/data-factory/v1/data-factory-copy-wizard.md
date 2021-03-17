@@ -1,24 +1,18 @@
 ---
 title: Snadné kopírování dat pomocí Průvodce kopírováním – Azure
 description: Přečtěte si, jak pomocí Průvodce kopírováním Data Factory kopírovat data z podporovaných zdrojů dat do jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3686a22291e8595deabe3e207ce66744c3cdd82
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086904"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376900"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Snadné kopírování a přesouvání dat pomocí Průvodce kopírováním Azure Data Factory
 > [!NOTE]
@@ -77,7 +71,7 @@ Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte j
 
 ![Použití systémových proměnných](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak je znázorněno na následujícím snímku obrazovky, můžete také použít **vlastní** proměnnou a všechny [podporované formátovací řetězce](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Chcete-li vybrat složku s touto strukturou, použijte nejprve tlačítko **Procházet** . Potom hodnotu nahraďte hodnotou **{Custom}** a stisknutím klávesy TAB zobrazte textové pole, ve kterém můžete zadat řetězec formátu.     
+Jak je znázorněno na následujícím snímku obrazovky, můžete také použít **vlastní** proměnnou a všechny [podporované formátovací řetězce](/dotnet/standard/base-types/custom-date-and-time-format-strings). Chcete-li vybrat složku s touto strukturou, použijte nejprve tlačítko **Procházet** . Potom hodnotu nahraďte hodnotou **{Custom}** a stisknutím klávesy TAB zobrazte textové pole, ve kterém můžete zadat řetězec formátu.     
 
 ![Použití vlastní proměnné](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -95,4 +89,3 @@ Jednorázová operace kopírování umožňuje přesun dat ze zdroje do cíle po
 
 ## <a name="next-steps"></a>Další kroky
 Rychlý návod, jak pomocí Průvodce kopírováním Data Factory vytvořit kanál s aktivitou kopírování, najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
-

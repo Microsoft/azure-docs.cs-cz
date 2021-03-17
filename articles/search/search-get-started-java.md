@@ -1,33 +1,33 @@
 ---
-title: 'Rychlý Start: vytvoření indexu vyhledávání v jazyce Java pomocí rozhraní REST API'
+title: 'Rychlý Start: vytvoření indexu vyhledávání v jazyce Java'
 titleSuffix: Azure Cognitive Search
-description: V tomto rychlém startu v Java se dozvíte, jak vytvořit index, načíst data a spustit dotazy pomocí rozhraní REST API pro Azure Kognitivní hledání.
+description: V tomto rychlém startu v Java se dozvíte, jak vytvořit index, načíst data a spustit dotazy pomocí klientské knihovny Azure Kognitivní hledání pro Java.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 03/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f833c0539d4aa28033cd6f76c1ca7cec7f11f6b5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327527"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124563"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
-> * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
+> * [JavaScript](search-get-started-javascript.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Azure Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
-Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](hhttps://github.com/Azure-Samples/azure-search-java-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -37,7 +37,7 @@ Pro sestavování a testování tohoto rychlého startu jsme použili následuj�
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Sada SDK pro Java 11](/java/azure/jdk/?view=azure-java-stable)
++ [Sada SDK pro Java 11](/java/azure/jdk/)
 
 + [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
@@ -49,11 +49,9 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   Vytvořte také klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
-
-![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 Každý požadavek odeslaný do vaší služby vyžaduje klíč rozhraní API. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -67,18 +65,18 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 1. Vyberte **Maven**.
 1. V seznamu **SDK projektu** vyberte sadu SDK Java 11.
 
-    ![Vytvoření projektu Maven](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Vytvoření projektu Maven" border="false":::
 
-1. Pro ID **skupiny** a **ArtifactId**zadejte `AzureSearchQuickstart` .
+1. Pro ID **skupiny** a **ArtifactId** zadejte `AzureSearchQuickstart` .
 1. Přijměte zbývající výchozí hodnoty pro otevření projektu.
 
 ### <a name="specify-maven-dependencies"></a>Zadat závislosti Maven
 
-1. Vyberte **File**  >  **Nastavení**souboru.
-1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení**nasazení  >  **Maven**  >  **Import**.
-1. Zaškrtněte políčko **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
+1. Vyberte   >  **Nastavení** souboru.
+1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení** nasazení  >  **Maven**  >  **Import**.
+1. Zaškrtněte políčko  **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
 
-    ![Možnosti importu Maven v nastavení IntelliJ](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Možnosti importu Maven v nastavení IntelliJ" border="false":::
 
 1. Otevřete soubor pom.xml a nahraďte jeho obsah následujícími podrobnostmi konfigurace Maven. Patří sem odkazy na [modul plug-in exec Maven](https://www.mojohaus.org/exec-maven-plugin/) a [rozhraní API rozhraní JSON](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) .
 
@@ -88,21 +86,72 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
-    
         <groupId>AzureSearchQuickstart</groupId>
         <artifactId>AzureSearchQuickstart</artifactId>
+        <packaging>jar</packaging>
         <version>1.0-SNAPSHOT</version>
+        <properties>
+            <jackson.version>2.12.1</jackson.version>
+            <auto-value.version>1.6.2</auto-value.version>
+            <junit.version>5.4.2</junit.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <name>azuresearch-console</name>
+        <url>http://maven.apache.org</url>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value-annotations</artifactId>
+                <version>${auto-value.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value</artifactId>
+                <version>${auto-value.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-search-documents</artifactId>
+                <version>11.1.3</version>
+            </dependency>
+        </dependencies>
+    
         <build>
-            <sourceDirectory>src</sourceDirectory>
             <plugins>
+                <!--put generated source files to generated-sources-->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.0</version>
                     <configuration>
                         <source>11</source>
                         <target>11</target>
                     </configuration>
                 </plugin>
+                <!-- For JUnit -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <!-- Add exec plugin to run demo program -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -115,40 +164,34 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>main.java.app.App</mainClass>
+                        <mainClass>com.microsoft.azure.search.samples.demo.App</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
             </plugins>
         </build>
-        <dependencies>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.json</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-        </dependencies>   
     </project>
     ```
 
+<!-- STOPPED HERE -- SENT EMAIL TO TONG XU ASKING FOR INFO -->
 ### <a name="set-up-the-project-structure"></a>Nastavení struktury projektu
 
 1. Vyberte **Souborová**  >  **struktura projektu**.
-1. Vyberte **moduly**a rozbalte zdrojový strom pro přístup k obsahu `src`  >   `main` složky.
-1. Ve `src`  >   `main`  >  `java` složce přidejte `app` `service` složky a. Provedete to tak, že vyberete `java` složku, stisknete ALT + INSERT a pak zadáte název složky.
+1. Vyberte **moduly** a rozbalte zdrojový strom pro přístup k obsahu `src`  >   `main` složky.
+1. Ve `src`  >   `main`  >  `java` složce přidejte složky pro `com` , `microsoft` , `azure` , `search` , `samples` , `demo` . Provedete to tak, že vyberete `java` složku, stisknete ALT + INSERT a pak zadáte název složky.
 1. Ve `src`  >   `main`  > `resources` složce přidejte `app` `service` složky a.
 
     Až skončíte, strom projektu by měl vypadat podobně jako na následujícím obrázku.
 
-    ![Adresářová struktura projektu](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Adresářová struktura projektu" border="false":::
 
 1. Kliknutím na tlačítko **OK** zavřete toto okno.
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Přidání informací o službě Azure Kognitivní hledání
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `app` složce a přidejte `config.properties` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `app` složce a přidejte `config.properties` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor** a pak zadáte název souboru.
 
-1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>` je, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl "mydemo".
+1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>` je, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl `"mydemo"` .
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -160,7 +203,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-main-method"></a>Přidat metodu Main
 
-1. Ve `src`  >   `main`  >  `java`  >  `app` složce přidejte `App` třídu. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Ve `src`  >   `main`  >  `java`  >  `app` složce přidejte `App` třídu. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **třídu Java** a pak zadáte název třídy.
 1. Otevřete `App` třídu a nahraďte obsah následujícím kódem. Tento kód obsahuje `main` metodu. 
 
     Nekomentovaný kód přečte parametry vyhledávací služby a použije je k vytvoření instance klienta služby Search Service. Kód klienta služby Search se přidá do další části.
@@ -259,7 +302,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-http-operations"></a>Přidat operace HTTP
 
-1. Ve `src`  >   `main`  >  `java`  >  `service` složce přidejte `SearchServiceClient` třídu. Provedete to tak, že vyberete `service` složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Ve `src`  >   `main`  >  `java`  >  `service` složce přidejte `SearchServiceClient` třídu. Provedete to tak, že vyberete `service` složku, stisknete ALT + INSERT, vyberete **třídu Java** a pak zadáte název třídy.
 1. Otevřete `SearchServiceClient` třídu a nahraďte obsah následujícím kódem. Tento kód poskytuje operace HTTP vyžadované k použití REST API Azure Kognitivní hledání. Další metody pro vytvoření indexu, nahrání dokumentů a dotazování indexu budou přidány v pozdější části.
 
     ```java
@@ -373,10 +416,10 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 1. Ověřte, zda má projekt následující strukturu.
 
-    ![Adresářová struktura projektu](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Třídy adresářové struktury a třídy projektu" border="false":::
 
 1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java` 
- ![ Spusťte Maven cíl: ověřit exec: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Spusťte Maven cíl: ověřit exec: Java" border="false":::
 
 Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následovaný nulou (0) ukončovacím kódem.
 
@@ -384,7 +427,7 @@ Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následova
 
 Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Příkladem jednoduchého pole jsou "hotely" nebo "Description". Pole adresa je komplexní pole, protože obsahuje podpole, jako je například ulice a město. V tomto rychlém startu je definice indexu určena pomocí formátu JSON.
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `index.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `index.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor** a pak zadáte název souboru.
 
 1. Otevřete `index.json` soubor a vložte následující definici indexu.
 
@@ -511,11 +554,11 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     }
     ```
 
-    Název indexu bude "hotely-rychlý Start". Atributy polí indexu určují, jak lze v aplikaci vyhledat indexovaná data. Například `IsSearchable` atribut musí být přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. Další informace o atributech naleznete v tématu [kolekce polí a atributy polí](search-what-is-an-index.md#fields-collection).
+    Název indexu bude "hotely-rychlý Start". Atributy polí indexu určují, jak lze v aplikaci vyhledat indexovaná data. Například `IsSearchable` atribut musí být přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. Další informace o atributech najdete v tématu [vytvoření indexu (REST)](/rest/api/searchservice/create-index).
     
     `Description`Pole v tomto indexu používá volitelnou `analyzer` vlastnost k přepsání výchozího analyzátoru jazyka Lucene. Toto `Description_fr` pole používá analyzátor Lucene pro francouzštinu, `fr.lucene` protože ukládá francouzský text. Používá `Description` volitelnou jazykovou analyzátoru Microsoft en. Lucene. Další informace o analyzátorech najdete v tématu [analyzátory pro zpracování textu v Azure kognitivní hledání](search-analyzers.md).
 
-1. Do třídy přidejte následující kód `SearchServiceClient` . Tyto metody sestavují adresy URL služby Azure Kognitivní hledání REST, které vytvářejí a odstraňují index a které určují, jestli index existuje. Metody také vytvářejí požadavek protokolu HTTP.
+1. Do třídy `SearchServiceClient` přidejte následující kód. Tyto metody sestavují adresy URL služby Azure Kognitivní hledání REST, které vytvářejí a odstraňují index a které určují, jestli index existuje. Metody také vytvářejí požadavek protokolu HTTP.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -565,13 +608,13 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven:`verify exec:java`
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
 
     Při spuštění kódu vyhledejte zprávu "vytvoření indexu" následovaný kódem odpovědi 201. Tento kód odpovědi potvrzuje, že byl index vytvořen. Běh by měl končit zprávou o ÚSPĚŠNÉm sestavení a nulovým (0) ukončovacím kódem.
     
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete  **soubor** a pak zadáte název souboru.
 1. Do souboru vložte následující hotelové dokumenty.
 
     ```json
@@ -685,7 +728,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
     Po žádosti o nahrání se vloží pauza o dvou sekundách, abyste zajistili, že se proces načítání dokumentu dokončil před dotazem na index.
 
-1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven:`verify exec:java`
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
 
     Vzhledem k tomu, že jste v předchozím kroku vytvořili index "hotely-rychlé spuštění", kód ho teď odstraní a znovu ho znovu vytvoří před načtením dokumentů hotelového typu.
 
@@ -695,7 +738,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
 Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací dotazy pro přístup k datům hotelů.
 
-1. Do třídy přidejte následující kód `SearchServiceClient` . Tento kód sestaví adresy URL služby Azure Kognitivní hledání REST pro hledání indexovaných dat a vytiskne výsledky hledání.
+1. Do třídy `SearchServiceClient` přidejte následující kód. Tento kód sestaví adresy URL služby Azure Kognitivní hledání REST pro hledání indexovaných dat a vytiskne výsledky hledání.
 
     `SearchOptions`Třída a `createSearchOptions` Metoda vám umožní určit podmnožinu dostupných možností dotazu REST API kognitivní hledání Azure. Další informace o možnostech dotazů REST API najdete v tématu [Search Documents (Azure Kognitivní hledání REST API)](/rest/api/searchservice/search-documents).
 
@@ -814,13 +857,13 @@ Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací do
 
     Existují dva [způsoby, kterými se v dotazu shodují výrazy](search-query-overview.md#types-of-queries): fulltextové vyhledávání a filtry. Fulltextový vyhledávací dotaz vyhledává jeden nebo více podmínek v `IsSearchable` polích indexu. Filtr je logický výraz, který se vyhodnocuje přes `IsFilterable` pole v indexu. Můžete použít fulltextové vyhledávání a filtry společně nebo samostatně.
 
-1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven:`verify exec:java`
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
 
     Vyhledejte souhrn jednotlivých dotazů a jejich výsledků. Spuštění by mělo být dokončeno se zprávou o ÚSPĚŠNÉm sestavení a nulovým (0) ukončovacím kódem.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

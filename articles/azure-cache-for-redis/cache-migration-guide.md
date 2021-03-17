@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d63cafb32dc1db0a901ed3e6004446b450db10c7
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009575"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451519"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrace na Azure Cache for Redis
 Tento článek popisuje několik přístupů k migraci stávající mezipaměti Redis spuštěné v místním prostředí nebo v jiné cloudové službě do mezipaměti Azure pro Redis.
@@ -34,7 +34,7 @@ Existují různé způsoby, jak můžete přepínat z jedné mezipaměti do druh
    | ------------ | ---------- | ------------- |
    | Vytvořit novou mezipaměť | Nejjednodušší pro implementaci. | Je nutné znovu naplnit data do nové mezipaměti, což nemusí fungovat s mnoha aplikacemi. |
    | Export a import dat pomocí souboru RDB | Obecně kompatibilní s jakoukoliv mezipamětí Redis Cache. | Některá data mohou být ztracena, pokud jsou zapsána do existující mezipaměti po vygenerování souboru RDB. | 
-   | Duální zápis dat do dvou mezipamětí | Žádná ztráta dat ani centru. Nepřerušené operace stávající mezipaměti. Jednodušší testování nové mezipaměti. | Potřebuje dvě mezipaměti po delší dobu. | 
+   | Duální zápis dat do dvou mezipamětí | Nedochází ke ztrátě dat ani výpadkům. Nepřerušené operace stávající mezipaměti. Jednodušší testování nové mezipaměti. | Potřebuje dvě mezipaměti po delší dobu. | 
    | Programové migrace dat | Úplná kontrola nad tím, jak se data přesunou | Vyžaduje vlastní kód. | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>Vytvoření nové mezipaměti Azure pro Redis
@@ -64,12 +64,12 @@ K implementaci této možnosti slouží obecné kroky:
 2. Uložte snímek stávající mezipaměti Redis. Redis můžete [nakonfigurovat tak, aby pravidelně ukládaly snímky](https://redis.io/topics/persistence) , nebo můžete proces spustit ručně pomocí příkazů [Save](https://redis.io/commands/save) nebo [BGSAVE](https://redis.io/commands/bgsave) . Soubor RDB se ve výchozím nastavení nazývá "dump. RDB" a bude umístěn v cestě zadané v konfiguračním souboru *Redis. conf* .
 
     > [!NOTE]
-    > Pokud migrujete data v rámci Azure cache pro Redis, přečtěte si [tyto pokyny, jak exportovat soubor RDB](cache-how-to-import-export-data.md) , nebo místo toho použít [rutinu exportu prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) .
+    > Pokud migrujete data v rámci Azure cache pro Redis, přečtěte si [tyto pokyny, jak exportovat soubor RDB](cache-how-to-import-export-data.md) , nebo místo toho použít [rutinu exportu prostředí PowerShell](/powershell/module/azurerm.rediscache/export-azurermrediscache) .
     >
 
 3. Zkopírujte soubor RDB do účtu služby Azure Storage v oblasti, ve které se nachází vaše nová mezipaměť. Pro tuto úlohu můžete použít AzCopy.
 
-4. Importujte soubor RDB do nové mezipaměti pomocí těchto [instrukcí pro import](cache-how-to-import-export-data.md) nebo [rutiny importu PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0).
+4. Importujte soubor RDB do nové mezipaměti pomocí těchto [instrukcí pro import](cache-how-to-import-export-data.md) nebo [rutiny importu PowerShellu](/powershell/module/azurerm.rediscache/import-azurermrediscache).
 
 5. Aktualizujte aplikaci tak, aby používala novou instanci mezipaměti.
 

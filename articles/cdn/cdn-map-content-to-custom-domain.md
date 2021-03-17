@@ -1,30 +1,31 @@
 ---
-title: Kurz – Přidání vlastní domény do koncového bodu Azure CDN | Microsoft Docs
+title: 'Kurz: Přidání vlastní domény do koncového bodu'
+titleSuffix: Azure Content Delivery Network
 description: Pomocí tohoto kurzu můžete přidat vlastní doménu do koncového bodu Azure Content Delivery Network, aby se název vaší domény zobrazoval v adrese URL.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
+manager: KumudD
 ms.service: azure-cdn
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2018
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192686"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537742"
 ---
-# <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu Azure CDN
-V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
+# <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu
 
-Ve výchozím nastavení se po vytvoření koncového bodu CDN ve vašem profilu vloží název koncového bodu, což je subdoména domény azureedge.net, do adresy URL pro doručování obsahu CDN (například https:\//contoso.azureedge.net/photo.png). Pro usnadnění práce poskytuje Azure CDN možnost přidružit ke koncovému bodu CDN vlastní doménu. Díky této možnosti můžete doručovat obsah na adrese URL s vlastní doménou místo názvu koncového bodu (například https:\//www.contoso.com/photo.png). 
+V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). 
+
+Název koncového bodu v profilu CDN je subdoménou azureedge.net. Ve výchozím nastavení je při doručování obsahu zahrnutá doména profilu CDN v rámci adresy URL.
+
+Příklad: **https://contoso.azureedge.net/photo.png**.
+
+Azure CDN poskytuje možnost přidružení vlastní domény ke koncovému bodu CDN. Tato možnost doručuje obsah s vlastní doménou v adrese URL namísto výchozí domény.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -36,98 +37,152 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
+* Než budete moct dokončit kroky v tomto kurzu, vytvořte profil CDN a aspoň jeden koncový bod CDN. 
+    * Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
 
-Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+* Pokud nemáte vlastní doménu, kupte si ji od poskytovatele domény. 
+    * Další informace najdete v tématu [zakoupení vlastního názvu domény](../app-service/manage-custom-dns-buy-domain.md).
 
-Pokud k hostování [domén DNS](https://docs.microsoft.com/azure/dns/dns-overview) používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domén na Azure DNS. Další informace najdete v tématu [delegování domény na Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Jinak, pokud vaši doménu DNS spravuje poskytovatel domény, přejděte k části [Vytvoření záznamu DNS CNAME](#create-a-cname-dns-record).
+* Pokud k hostování [domén DNS](../dns/dns-overview.md)používáte Azure, delegujete svoji vlastní doménu na Azure DNS. 
+    * Další informace najdete v tématu [delegování domény na Azure DNS](../dns/dns-delegate-domain-azure-dns.md).
+
+* Pokud ke zpracování domény DNS používáte poskytovatele domény, pokračujte v [vytváření záznamu DNS CNAME](#create-a-cname-dns-record).
 
 
 ## <a name="create-a-cname-dns-record"></a>Vytvoření záznamu DNS CNAME
 
-Než budete moct použít vlastní doménu u koncového bodu Azure CDN, musíte nejprve u svého poskytovatele domény vytvořit záznam kanonického názvu (CNAME) odkazující na váš koncový bod CDN. Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény. V případě Azure CDN je zdrojovým názvem domény vlastní název domény a cílovým názvem domény je název hostitele koncového bodu CDN. Jakmile Azure CDN ověří záznam CNAME, který vytvoříte, bude provoz adresovaný do zdrojové vlastní domény (například na webové \. contoso.com) směrován do zadaného cílového koncového bodu CDN (například contoso.azureedge.NET). 
+Než budete moct použít vlastní doménu s koncovým bodem Azure CDN, musíte nejdřív vytvořit záznam kanonického názvu (CNAME) s Azure DNS nebo vaším poskytovatelem DNS, aby odkazoval na koncový bod CDN. 
 
-K vlastní doméně a její subdoméně může současně být přidružený pouze jeden koncový bod. Pro různé koncové body služeb Azure však můžete použít různé subdomény stejné vlastní domény, a to pomocí několika záznamů CNAME. Na stejný koncový bod CDN můžete také namapovat vlastní doménu s různými subdoménami.
+Záznam CNAME je záznam DNS, který mapuje název zdrojové domény na název cílové domény. 
+
+V případě Azure CDN je zdrojovým názvem domény vlastní název domény a cílovým názvem domény je název hostitele koncového bodu CDN. 
+
+Po ověření záznamu CNAME Azure CDN směrovat provoz adresovaný do zdrojové vlastní domény na cílový název hostitele koncového bodu CDN.
+
+Vlastní doménu a její subdoménu lze současně přidružit k jednomu koncovému bodu. 
+
+Pro různé subdomény ze stejné vlastní domény pro různé služby Azure použijte více záznamů CNAME.
+
+Můžete namapovat vlastní doménu s různými subdoménami na stejný koncový bod CDN.
 
 > [!NOTE]
-> Libovolný typ záznamu aliasu se dá použít pro vlastní domény, pokud používáte Azure DNS jako poskytovatele domény. Tento návod používá typ záznamu CNAME. Pokud používáte typy záznamů nebo AAAA, použijte stejný postup a nahraďte záznam CNAME typem záznamu podle vlastního výběru. Pokud používáte záznam aliasu k přidání kořenové domény jako vlastní domény a chcete povolit TLS, musíte použít ruční ověřování, jak je popsáno v [tomto článku](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). Další informace najdete v tématu [vrchol zóny bodu a Azure CDN koncových bodů](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
+> V tomto kurzu se používá typ záznamu CNAME. Pokud používáte typy záznamů nebo AAAA, použijte stejný postup a nahraďte záznam CNAME typem záznamu podle vlastního výběru.
+
+---
+# <a name="azure-dns"></a>[**Azure DNS**](#tab/azure-dns)
+
+Azure DNS používá záznamy aliasů pro prostředky Azure v rámci stejného předplatného.
+
+Postup přidání záznamu aliasu pro Azure CDN koncový bod:
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+
+2. V nabídce na levé straně vyberte **všechny prostředky** a pak Azure DNS zónu vlastní domény.
+
+3. V zóně DNS vlastní domény vyberte **+ Sada záznamů**.
+
+4. V části **Přidat sadu záznamů** zadejte nebo vyberte následující informace:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Název  | Zadejte alias, který chcete použít pro koncový bod CDN. Například **www**. |
+    | Typ  | Vyberte **CNAME**. |
+    | Sada záznamů aliasů | Vyberte **Ano**. |
+    | Typ aliasu | Vyberte **prostředek Azure**. |
+    | Zvolit předplatné | Vyberte své předplatné. |
+    | Prostředek Azure | Vyberte svůj koncový bod Azure CDN. |
+
+5. Změňte hodnotu **TTL** záznamu na hodnotu.
+
+6. Vyberte **OK**.
+
+# <a name="dns-provider"></a>[**Poskytovatel DNS**](#tab/dns-provider)
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Mapování dočasné subdomény cdnverify
 
-Pokud mapujete existující doménu, která je v produkčním prostředí, je potřeba vzít v úvahu zvláštní požadavky. Během registrace vlastní domény na webu Azure Portal může dojít ke krátkému výpadku domény. Abyste se vyhnuli přerušení webového provozu, namapujte vlastní doménu nejprve na název hostitele koncového bodu CDN se subdoménou Azure cdnverify a vytvořte tak dočasné mapování CNAME. Díky tomu mají uživatelé v průběhu mapování DNS přístup k vaší doméně bez přerušení. 
+Pokud mapujete existující doménu, která je v produkčním prostředí, je potřeba vzít v úvahu zvláštní požadavky. 
 
-Jinak, pokud používáte vlastní doménu poprvé a neprobíhá na ní žádný produkční provoz, můžete vlastní doménu namapovat přímo na koncový bod CDN. Pokračujte k části [Mapování trvalé vlastní domény](#map-the-permanent-custom-domain).
+Při registraci vlastní domény v Azure Portal může dojít k krátké době výpadku domény.
+
+Abyste se vyhnuli přerušení webového provozu, namapujte svoji vlastní doménu na název hostitele koncového bodu CDN s poddoménou Azure **cdnverify** . Tento proces vytvoří dočasné mapování CNAME. 
+
+Díky tomu mají uživatelé v průběhu mapování DNS přístup k vaší doméně bez přerušení. 
+
+Pokud nezáleží na provozním výpadku, můžete přímo namapovat vlastní doménu na koncový bod CDN. Pokračujte a [namapujte trvalou vlastní doménu](#map-the-permanent-custom-domain).
 
 Vytvoření záznamu CNAME se subdoménou cdnverify:
 
-1. Přihlaste se k webu poskytovatele vaší vlastní domény.
+1. Přihlaste se k webu poskytovatele DNS pro vaši vlastní doménu.
 
-2. Vyhledejte stránku pro správu záznamů DNS – projděte si dokumentaci poskytovatele nebo hledejte oblasti webu označené jako **Domain Name** (Název domény), **DNS** nebo **Name server management** (Správa názvových serverů). 
-
-3. Vytvořte položku záznamu CNAME pro svou vlastní doménu a vyplňte pole podle následující tabulky (názvy polí se můžou lišit):
+2. Vytvořte položku záznamu CNAME pro svou vlastní doménu a vyplňte pole podle následující tabulky (názvy polí se můžou lišit):
 
     | Zdroj                    | Typ  | Cíl                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Zdroj: zadejte název vlastní domény včetně subdomény cdnverify v následujícím formátu: cdnverify. &lt; vlastní název domény &gt; . Například cdnverify.www.contoso.com.
+    - Zdroj: zadejte název vlastní domény včetně subdomény cdnverify v následujícím formátu: **cdnverify. \<custom-domain-name>**
+        - Příklad: **cdnverify.www.contoso.com**
 
-    - Typ: Zadejte *CNAME*.
+    - Zadejte: zadejte nebo vyberte **CNAME**.
 
-    - Cíl: zadejte název hostitele koncového bodu CDN včetně subdomény cdnverify v následujícím formátu: cdnverify. _ &lt; název &gt; koncového bodu_. azureedge.NET. Například cdnverify.contoso.azureedge.net.
+    - Cíl: zadejte název hostitele koncového bodu CDN včetně subdomény cdnverify v následujícím formátu: **cdnverify. \<endpoint-name> . azureedge.net**. 
+        - Příklad: **cdnverify.contoso.azureedge.NET**
 
-4. Uložte provedené změny.
+3. Uložte provedené změny.
 
-Například postup pro registrátora domén GoDaddy je následující:
+## <a name="map-the-permanent-custom-domain"></a>Mapování trvalé vlastní domény
 
-1. Přihlaste se a vyberte vlastní doménu, kterou chcete použít.
+V této části namapujete trvalou vlastní doménu na koncový bod CDN. 
 
-2. V části Domains (Domény) vyberte **Manage All** (Spravovat vše) a pak vyberte **DNS** | **Manage Zones** (Spravovat zóny).
+Vytvoření záznamu CNAME pro vlastní doménu:
 
-3. Jako **Domain Name** (Název domény) zadejte vlastní doménu a vyberte **Search** (Vyhledat).
+1. Přihlaste se k webu poskytovatele vaší vlastní domény.
 
-4. Na stránce **DNS Management** (Správa DNS) vyberte **Add** (Přidat) a pak v seznamu **Type** (Typ) vyberte **CNAME**.
+2. Vytvořte položku záznamu CNAME pro svou vlastní doménu a vyplňte pole podle následující tabulky (názvy polí se můžou lišit):
 
-5. Vyplňte následující pole záznamu CNAME:
+    | Zdroj          | Typ  | Cíl           |
+    |-----------------|-------|-----------------------|
+    | www.contoso.com | CNAME | contoso.azureedge.net |
 
-    ![Záznam CNAME](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    - Zdroj: zadejte název vlastní domény.
+        - Příklad: **www.contoso.com**
 
-    - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
+    - Zadejte: zadejte nebo vyberte **CNAME**.
 
-    - Host (Hostitel): Zadejte subdoménu své vlastní domény, kterou chcete použít, včetně názvu subdomény cdnverify. Například cdnverify.www.
+    - Cíl: zadejte název hostitele koncového bodu CDN v následujícím formátu: **\<endpoint-name> . azureedge.NET**. 
+        - Příklad: **contoso.azureedge.NET**
 
-    - Points to (Odkazuje na): Zadejte název hostitele vašeho koncového bodu CDN včetně názvu subdomény cdnverify. Například cdnverify.contoso.azureedge.net. 
+3. Uložte provedené změny.
 
-    - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
+4. Pokud jste předtím vytvořili záznam CNAME dočasné subdomény cdnverify, odstraňte ho. 
 
-6. Vyberte **Uložit**.
- 
-    Záznam CNAME se přidá do tabulky záznamů DNS.
+5. Pokud tuto vlastní doménu používáte v produkčním prostředí poprvé, postupujte podle kroků pro [přidružení vlastní domény ke koncovému bodu CDN](#associate-the-custom-domain-with-your-cdn-endpoint) a [Ověřte vlastní doménu](#verify-the-custom-domain).
 
-    ![Tabulka záznamů DNS](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
-
-
+---
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>Přidružení vlastní domény ke koncovému bodu CDN
 
 Po zaregistrování vlastní domény ji můžete přidat do svého koncového bodu CDN. 
+
+
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal)
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a přejděte k profilu CDN obsahujícímu koncový bod, který chcete namapovat na vlastní doménu.
     
 2. Na stránce **Profil CDN** vyberte koncový bod CDN, který chcete přidružit k vlastní doméně.
 
-   Otevře se stránka **Koncový bod**.
+    :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-endpoint-selection.png" alt-text="Výběr koncového bodu CDN" border="true":::
     
-3. Vyberte **Vlastní doména**. 
+3. Vyberte **+ vlastní doména**. 
 
-   ![Tlačítko Vlastní doména CDN](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
+   :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png" alt-text="Tlačítko Přidat vlastní doménu" border="true":::
 
-   Otevře se stránka **Přidat vlastní doménu**.
+4. V nástroji **Přidat vlastní doménu** je **název hostitele koncového bodu** předem vyplněn a je odvozen z adresy URL koncového bodu CDN: **\<endpoint-hostname>** . azureedge.NET. Název není možné změnit.
 
-4. V poli **Název hostitele koncového bodu** je už uveden název hostitele koncového bodu, který se má použít jako cílová doména záznamu CNAME. Je odvozen z adresy URL cílového bodu CDN: *&lt;název hostitele koncového bodu&gt;*.azureedge.net. Název není možné změnit.
+5. Do pole **Vlastní název hostitele** zadejte vlastní doménu (včetně subdomény), kterou chcete použít jako zdrojovou doménu záznamu CNAME. 
+    1. Například **www.contoso.com** nebo **CDN.contoso.com**. **Nepoužívejte název subdomény cdnverify**.
 
-5. Do pole **Vlastní název hostitele** zadejte vlastní doménu (včetně subdomény), kterou chcete použít jako zdrojovou doménu záznamu CNAME. Například webová \. contoso.com nebo CDN.contoso.com. Nepoužívejte název subdomény cdnverify.
-
-   ![Dialogové okno vlastní domény CDN](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
+    :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png" alt-text="Přidat vlastní doménu" border="true":::
 
 6. Vyberte **Přidat**.
 
@@ -138,88 +193,87 @@ Po zaregistrování vlastní domény ji můžete přidat do svého koncového bo
     - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
     - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut.   
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
 
+1. Přihlaste se k Azure PowerShell:
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. K namapování vlastní domény na koncový bod CDN použijte [New-AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) . 
+
+    * Nahraďte **myendpoint8675.azureedge.NET** adresou URL koncového bodu.
+    * Nahraďte **myendpoint8675** názvem koncového bodu CDN.
+    * Nahraďte **www.contoso.com** vlastním názvem domény.
+    * Nahraďte **myCDN** názvem vašeho profilu CDN.
+    * Nahraďte **myResourceGroupCDN** názvem vaší skupiny prostředků.
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří. 
+
+   Rozšíření nastavení nové vlastní domény do všech hraničních uzlů CDN může chvíli trvat: 
+
+- U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
+- V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
+- V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut.   
+
+
+---
 ## <a name="verify-the-custom-domain"></a>Ověření vlastní domény
 
-Po dokončení registrace vlastní domény ověřte, že odkazuje na váš koncový bod CDN.
+Po dokončení registrace vlastní domény ověřte, že vlastní doména odkazuje na koncový bod CDN.
  
-1. Ujistěte se, že na koncovém bodu máte veřejný obsah uložený v mezipaměti. Pokud je váš koncový bod CDN například přidružený k účtu úložiště, Azure CDN uloží do mezipaměti obsah veřejného kontejneru. Pokud chcete vlastní doménu otestovat, ověřte, že je váš kontejner nastavený tak, aby povoloval veřejný přístup, a že obsahuje alespoň jeden soubor.
+1. Ujistěte se, že na koncovém bodu máte veřejný obsah uložený v mezipaměti. Pokud je váš koncový bod CDN například přidružený k účtu úložiště, Azure CDN uloží do mezipaměti obsah veřejného kontejneru. Nastavte kontejner tak, aby povoloval veřejný přístup, který obsahuje alespoň jeden soubor k otestování vlastní domény.
 
-2. V prohlížeči přejděte na adresu souboru s použitím vlastní domény. Pokud je vaše vlastní doména například `www.contoso.com` , adresa URL souboru uloženého v mezipaměti by měla být podobná následující adrese URL: `http://www.contoso.com/my-public-container/my-file.jpg` . Ověřte, že výsledek je stejný jako při přístupu ke koncovému bodu CDN přímo v * &lt; koncovém &gt; názvu hostitele*. azureedge.NET.
-
-
-## <a name="map-the-permanent-custom-domain"></a>Mapování trvalé vlastní domény
-
-Pokud jste ověřili úspěšné namapování subdomény cdnverify na váš koncový bod (nebo pokud používáte novou vlastní doménu, která není v produkčním prostředí), můžete pak vlastní doménu namapovat přímo na název hostitele koncového bodu CDN.
-
-Vytvoření záznamu CNAME pro vlastní doménu:
-
-1. Přihlaste se k webu poskytovatele vaší vlastní domény.
-
-2. Stránku pro správu záznamů DNS najdete v dokumentaci k poskytovateli nebo v části hledání oblastí webu s **názvem domény**, **DNS**nebo **správy názvových serverů**. 
-
-3. Vytvořte položku záznamu CNAME pro svou vlastní doménu a vyplňte pole podle následující tabulky (názvy polí se můžou lišit):
-
-    | Zdroj          | Typ  | Cíl           |
-    |-----------------|-------|-----------------------|
-    | <www.contoso.com> | CNAME | contoso.azureedge.net |
-
-   - Zdroj: zadejte název vlastní domény (například webová \. contoso.com).
-
-   - Typ: Zadejte *CNAME*.
-
-   - Cíl: Zadejte název hostitele koncového bodu CDN. Musí být v následujícím formátu:_ &lt; název &gt; koncového bodu_. azureedge.NET. Například contoso.azureedge.net.
-
-4. Uložte provedené změny.
-
-5. Pokud jste předtím vytvořili záznam CNAME dočasné subdomény cdnverify, odstraňte ho. 
-
-6. Pokud tuto vlastní doménu používáte v produkčním prostředí poprvé, postupujte podle kroků v částech [Přidružení vlastní domény ke koncovému bodu CDN](#associate-the-custom-domain-with-your-cdn-endpoint) a [Ověření vlastní domény](#verify-the-custom-domain).
-
-Například postup pro registrátora domén GoDaddy je následující:
-
-1. Přihlaste se a vyberte vlastní doménu, kterou chcete použít.
-
-2. V části Domains (Domény) vyberte **Manage All** (Spravovat vše) a pak vyberte **DNS** | **Manage Zones** (Spravovat zóny).
-
-3. Jako **Domain Name** (Název domény) zadejte vlastní doménu a vyberte **Search** (Vyhledat).
-
-4. Na stránce **DNS Management** (Správa DNS) vyberte **Add** (Přidat) a pak v seznamu **Type** (Typ) vyberte **CNAME**.
-
-5. Vyplňte pole záznamu CNAME:
-
-    ![Záznam CNAME](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
-
-    - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
-
-    - Host (Hostitel): Zadejte subdoménu vlastní domény, kterou chcete použít. Například www nebo cdn.
-
-    - Points to (Odkazuje na): Zadejte název hostitele vašeho koncového bodu CDN. Například contoso.azureedge.net. 
-
-    - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
-
-6. Vyberte **Uložit**.
- 
-    Záznam CNAME se přidá do tabulky záznamů DNS.
-
-    ![Tabulka záznamů DNS](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
-
-7. Pokud máte záznam CNAME cdnverify, vyberte ikonu tužky vedle něj a pak vyberte ikonu koše.
-
-8. Vyberte **Delete** (Odstranit) a odstraňte záznam CNAME.
-
+2. V prohlížeči přejděte na adresu souboru s použitím vlastní domény. Pokud je vaše vlastní doména například `www.contoso.com` , adresa URL souboru uloženého v mezipaměti by měla být podobná následující adrese URL: `http://www.contoso.com/my-public-container/my-file.jpg` . Ověřte, že výsledek je stejný jako při přístupu ke koncovému bodu CDN přímo na adrese **\<endpoint-hostname>** . azureedge.NET.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste přidali vlastní doménu do koncového bodu CDN. Pokud už nechcete mít ke koncovému bodu přidruženou vlastní doménu, můžete vlastní doménu odebrat provedením následujících kroků:
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal-cleanup)
+
+Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte vlastní doménu pomocí následujících kroků:
  
 1. Ve svém profilu CDN vyberte koncový bod s vlastní doménou, kterou chcete odstranit.
 
-2. Na stránce **Koncový bod** v části Vlastní domény klikněte pravým tlačítkem na vlastní doménu, kterou chcete odebrat, a v místní nabídce vyberte **Odstranit**.  
+2. Na stránce **Koncový bod** v části Vlastní domény klikněte pravým tlačítkem na vlastní doménu, kterou chcete odebrat, a v místní nabídce vyberte **Odstranit**. Vyberte **Ano**.
 
    Zruší se přidružení vlastní domény ke koncovému bodu.
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
 
+Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte vlastní doménu pomocí následujících kroků:
+
+1. K odebrání vlastní domény z koncového bodu použijte [příkaz Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) :
+
+    * Nahraďte **myendpoint8675** názvem koncového bodu CDN.
+    * Nahraďte **www.contoso.com** vlastním názvem domény.
+    * Nahraďte **myCDN** názvem vašeho profilu CDN.
+    * Nahraďte **myResourceGroupCDN** názvem vaší skupiny prostředků.
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
@@ -233,5 +287,3 @@ V dalším kurzu se dozvíte, jak pro vlastní doménu Azure CDN nakonfigurovat 
 
 > [!div class="nextstepaction"]
 > [Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md)
-
-

@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511717"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369222"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Vytvoření nebo aktualizace vlastních rolí pomocí portálu Azure Portal
 
@@ -31,14 +29,12 @@ K vytvoření vlastních rolí budete potřebovat:
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>Krok 1: určení potřebných oprávnění
 
-Azure má tisíce oprávnění, která můžete zahrnout do vaší vlastní role. Tady je čtyř způsobů, jak můžete určit oprávnění, která budete chtít přidat do vlastní role:
+Azure má tisíce oprávnění, která můžete zahrnout do vaší vlastní role. Tady je několik metod, které vám pomůžou určit oprávnění, která budete chtít přidat do vlastní role:
 
-| Metoda | Popis |
-| --- | --- |
-| Podívejte se na stávající role | Můžete si prohlédnout stávající role a zjistit, jaká oprávnění jsou používána. Další informace najdete v tématu [předdefinované role Azure](built-in-roles.md). |
-| Vyhledat oprávnění podle klíčového slova | Když vytvoříte vlastní roli pomocí Azure Portal, můžete vyhledat oprávnění podle klíčového slova. Můžete například vyhledat *virtuální počítač* nebo oprávnění *fakturace* . Tato funkce hledání je podrobněji popsána v [kroku 4: oprávnění](#step-4-permissions). |
-| Stáhnout všechna oprávnění | Když vytvoříte vlastní roli pomocí Azure Portal, můžete stáhnout všechna oprávnění jako soubor CSV a potom tento soubor vyhledat. V podokně **Přidat oprávnění** kliknutím na tlačítko **Stáhnout všechna oprávnění** Stáhněte všechna oprávnění. Další informace o podokně Přidat oprávnění najdete v části [Krok 4: oprávnění](#step-4-permissions). |
-| Zobrazení oprávnění v dokumentaci | Dostupná oprávnění můžete zobrazit v [Azure Resource Manager operacích poskytovatele prostředků](resource-provider-operations.md). |
+- Podívejte se na stávající [předdefinované role](built-in-roles.md).
+- Seznam služeb Azure, ke kterým chcete udělit přístup
+- Určete [poskytovatele prostředků, kteří se mapují ke službám Azure](../azure-resource-manager/management/azure-services-resource-providers.md). Metoda hledání je popsána dále v [kroku 4: oprávnění](#step-4-permissions).
+- V části [dostupná oprávnění](resource-provider-operations.md) vyhledejte oprávnění, která chcete zahrnout. Metoda hledání je popsána dále v [kroku 4: oprávnění](#step-4-permissions).
 
 ## <a name="step-2-choose-how-to-start"></a>Krok 2: Volba způsobu spuštění
 
@@ -142,7 +138,7 @@ Pokud dáváte přednost, můžete v souboru JSON zadat většinu vlastních hod
 
     Otevře se Editor vlastních rolí.
 
-1. Na kartě základy vyberte v části **základní oprávnění**možnost **začít od formátu JSON**.
+1. Na kartě základy vyberte v části **základní oprávnění** možnost **začít od formátu JSON**.
 
 1. Vedle pole vybrat soubor klikněte na tlačítko Složka a otevřete dialogové okno otevřít.
 
@@ -331,7 +327,7 @@ Pomocí těchto kroků můžete zobrazit vlastní role.
 
 1. Klikněte na tlačítko se třemi tečkami (**...**) pro vlastní roli, kterou chcete odstranit, a pak klikněte na **Odstranit**.
 
-    ![Nabídka vlastní role](./media/custom-roles-portal/delete-menu.png)
+    ![Snímek obrazovky zobrazující seznam vlastních rolí, které se dají vybrat k odstranění](./media/custom-roles-portal/delete-menu.png)
 
     Zcela odstranění vlastní role může trvat několik minut.
 
@@ -339,4 +335,4 @@ Pomocí těchto kroků můžete zobrazit vlastní role.
 
 - [Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Vlastní role Azure](custom-roles.md)
-- [Operace poskytovatele prostředků Azure Resource Manager](resource-provider-operations.md)
+- [Operace poskytovatele prostředků Azure](resource-provider-operations.md)

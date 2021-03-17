@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154742"
 ---
 # <a name="single-page-applications"></a>Jednostránkové aplikace
@@ -47,7 +47,7 @@ V tomto scénáři, když se uživatel přihlásí, používá front-end JavaScr
 
 Podívejte se na [ukázky kódu pro scénáře aplikací s jednou stránkou](sample-v1-code.md#single-page-applications). Nezapomeňte pravidelně kontrolovat, jak se často přidávají nové ukázky.
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 * Jeden tenant – Pokud vytváříte aplikaci jenom pro vaši organizaci, musí být zaregistrovaná v adresáři vaší společnosti pomocí Azure Portal.
 * Vícenásobný tenant – Pokud vytváříte aplikaci, kterou můžou používat uživatelé mimo vaši organizaci, musí být zaregistrované v adresáři vaší společnosti, ale musí být zaregistrované v adresáři každé organizace, který bude aplikaci používat. Aby vaše aplikace byla ve svém adresáři k dispozici, můžete pro zákazníky zahrnout proces registrace, který jim umožní vyjádřit souhlas s vaší aplikací. Při registraci do aplikace se zobrazí dialogové okno, které zobrazuje oprávnění, která aplikace vyžaduje, a pak možnost souhlasu. V závislosti na požadovaných oprávněních může být vyžadováno poskytnutí souhlasu správce v jiné organizaci. Když uživatel nebo správce souhlasí, aplikace se zaregistruje ve svém adresáři.

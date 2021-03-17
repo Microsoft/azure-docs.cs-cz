@@ -5,27 +5,29 @@ author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483291"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339661"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rychlý Start: vytvoření Azure Cosmos DB a kontejneru pomocí šablony ARM
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databází klíčů a hodnot, databází dokumentů a grafů. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření databáze Azure Cosmos a kontejneru v rámci této databáze. Později můžete do tohoto kontejneru ukládat data.
+Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhraními API pro jakékoli škálování. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databází klíčů a hodnot, databází dokumentů a grafů. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření databáze Azure Cosmos a kontejneru v rámci této databáze. Později můžete do tohoto kontejneru ukládat data.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
@@ -35,7 +37,7 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -62,18 +64,18 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
     Pokud není zadaný, použijte k vytvoření prostředků Azure Cosmos výchozí hodnoty.
 
     * **Předplatné:** Vyberte předplatné Azure.
-    * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
+    * **Skupina prostředků** : vyberte **vytvořit novou** , zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
     * **Umístění:** Vyberte prosím umístění.  Například **USA – střed**.
-    * **Název účtu**: zadejte název účtu Azure Cosmos. Musí být globálně jedinečný.
-    * **Umístění**: zadejte umístění, kde chcete vytvořit účet Azure Cosmos. Účet Azure Cosmos může být ve stejném umístění jako skupina prostředků.
-    * **Primární oblast**: primární oblast repliky pro účet Azure Cosmos.
-    * **Sekundární oblast**: sekundární oblast repliky pro účet Azure Cosmos.
-    * **Výchozí úroveň konzistence**: výchozí úroveň konzistence pro účet Azure Cosmos.
-    * **Maximální předpona aktuálnosti**: maximální počet zastaralých požadavků. Vyžaduje se pro BoundedStaleness.
-    * **Maximální délka intervalu v sekundách**: maximální prodleva. Vyžaduje se pro BoundedStaleness.
-    * **Název databáze**: název databáze Azure Cosmos.
-    * **Název kontejneru**: název kontejneru Azure Cosmos.
-    * **Propustnost**: propustnost kontejneru, minimální hodnota propustnosti je 400 ru/s.
+    * **Název účtu** : zadejte název účtu Azure Cosmos. Musí být globálně jedinečný.
+    * **Umístění** : zadejte umístění, kde chcete vytvořit účet Azure Cosmos. Účet Azure Cosmos může být ve stejném umístění jako skupina prostředků.
+    * **Primární oblast** : primární oblast repliky pro účet Azure Cosmos.
+    * **Sekundární oblast** : sekundární oblast repliky pro účet Azure Cosmos.
+    * **Výchozí úroveň konzistence** : výchozí úroveň konzistence pro účet Azure Cosmos.
+    * **Maximální předpona aktuálnosti** : maximální počet zastaralých požadavků. Vyžaduje se pro BoundedStaleness.
+    * **Maximální délka intervalu v sekundách** : maximální prodleva. Vyžaduje se pro BoundedStaleness.
+    * **Název databáze** : název databáze Azure Cosmos.
+    * **Název kontejneru** : název kontejneru Azure Cosmos.
+    * **Propustnost** : propustnost kontejneru, minimální hodnota propustnosti je 400 ru/s.
     * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.
 
 3. Vyberte **Koupit**. Po úspěšném nasazení účtu Azure Cosmos se zobrazí oznámení:
@@ -136,4 +138,4 @@ V tomto rychlém startu jste vytvořili účet Azure Cosmos, databázi a kontejn
 
 - Přečtěte si [přehled Azure Cosmos DB](introduction.md)
 - Další informace o [Azure Resource Manageru](../azure-resource-manager/management/overview.md)
-- Získat další [šablony Azure Cosmos DB správce prostředků](resource-manager-samples.md)
+- Získat další [šablony Azure Cosmos DB správce prostředků](./templates-samples-sql.md)

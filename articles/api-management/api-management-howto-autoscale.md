@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205851"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018239"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  
 
@@ -31,7 +31,7 @@ Tento článek vás provede procesem konfigurace automatického škálování a 
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
-+ Máte aktivní předplatné Azure.
++ Musíte mít aktivní předplatné Azure.
 + Mít instanci Azure API Management. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 + Pochopení konceptu [kapacity instance služby Azure API Management](api-management-capacity.md).
 + Pochopení [procesu ručního škálování instance služby Azure API Management](upgrade-and-scale.md), včetně ovlivnění nákladů.
@@ -125,11 +125,11 @@ Při konfiguraci automatického škálování pro službu Azure API Management p
     > [!NOTE]
     > Azure API Management má limit jednotek, na které může instance navýšit horizontální navýšení kapacity. Limit závisí na úrovni služby.
 
-    ![Azure Monitor škálování v pravidle](media/api-management-howto-autoscale/07.png)
+    ![Snímek obrazovky, který zvýrazní, kde se má nastavit maximální počet jednotek Azure API Management](media/api-management-howto-autoscale/07.png)
 
 13. Klikněte na **Uložit**. Vaše automatické škálování je nakonfigurované.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Postup při nasazení instance služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md)
-- [Optimalizace a ukládání na cloudové útratě](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Optimalizace a ukládání na cloudové útratě](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -1,30 +1,30 @@
 ---
 title: Trénování modelu PyTorch
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak proškolit model pytorch od začátku nebo ho finetune.
+description: Pomocí modulu analýza Pytorch modelů v Návrháři Azure Machine Learning můžete vytvářet modely od nuly nebo doladit stávající modely.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 09/26/2020
+ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170254"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420661"
 ---
 # <a name="train-pytorch-model"></a>Trénování modelu PyTorch
 
-Tento článek popisuje, jak pomocí modulu **Pytorch** designer (Azure Machine Learning ve verzi Preview) v Návrháři (Preview) proškolit Pytorch modely, jako je DenseNet. Školení probíhá po definování modelu a nastavení jeho parametrů a vyžaduje data s popisky. 
+V tomto článku se dozvíte, jak pomocí modulu **Pytorch** designeru Azure Machine Learning v Návrháři přePytorch modely, jako je DenseNet. Školení probíhá po definování modelu a nastavení jeho parametrů a vyžaduje data s popisky. 
 
 ## <a name="how-to-use-train-pytorch-model"></a>Jak používat model Pytorch pro analýzu 
 
 1. Přidejte do konceptu kanálu v Návrháři modul [DenseNet](densenet.md) nebo [ResNet](resnet.md) .
 
-2. Přidejte do kanálu modul **Pytorch model výuky** . Tento modul můžete najít v kategorii **školení modelu** . Rozbalte položku **vlak**a přetáhněte do svého kanálu modul **Pytorch modelu pro analýzu** .
+2. Přidejte do kanálu modul **Pytorch model výuky** . Tento modul můžete najít v kategorii **školení modelu** . Rozbalte položku **vlak** a přetáhněte do svého kanálu modul **Pytorch modelu pro analýzu** .
 
    > [!NOTE]
    > Modul **výukového modelu Pytorch** je pro velkou datovou sadu lepší běžet na výpočetním typu **GPU** , jinak se váš kanál nezdaří. Můžete vybrat COMPUTE pro určitý modul v pravém podokně modulu nastavením **použít jiný cíl služby COMPUTE**.
@@ -37,19 +37,19 @@ Tento článek popisuje, jak pomocí modulu **Pytorch** designer (Azure Machine 
 
     Datová sada školení a datová sada ověření mají stejné kategorie označení, jinak bude vyvolána výjimka InvalidDatasetError.
 
-4.  V případě **Epochs**určete, kolik Epochs se má naučit. Celá sada dat bude v každém epocha ve výchozím nastavení iterace 5.
+4.  V případě **Epochs** určete, kolik Epochs se má naučit. Celá sada dat bude v každém epocha ve výchozím nastavení iterace 5.
 
-5.  V případě **velikosti dávky**určete, kolik instancí se má v dávce vytvořit, ve výchozím nastavení se 16.
+5.  V případě **velikosti dávky** určete, kolik instancí se má v dávce vytvořit, ve výchozím nastavení se 16.
 
-6.  Do pole **rychlost učení**zadejte hodnotu *studijní frekvence*. Hodnoty studijních kurzů řídí velikost kroku, který se používá v Optimalizátoru jako SGD pokaždé, když se model testuje a opraví.
+6.  Do pole **rychlost učení** zadejte hodnotu *studijní frekvence*. Hodnoty studijních kurzů řídí velikost kroku, který se používá v Optimalizátoru jako SGD pokaždé, když se model testuje a opraví.
 
     Tím, že se rychlost zmenší, otestujete model častěji s rizikem, že se můžete zablokovat v místních stabilní úrovně. Tím, že krok provedete větší, můžete provést sblížení rychleji a na riziko překročení skutečných minimálních minim. ve výchozím nastavení 0,001.
 
-7.  V případě **náhodného osazení**volitelně zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota. Použití počáteční hodnoty se doporučuje, pokud chcete zajistit reprodukovatelnost experimentu v rámci spuštění.
+7.  V případě **náhodného osazení** volitelně zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota. Použití počáteční hodnoty se doporučuje, pokud chcete zajistit reprodukovatelnost experimentu v rámci spuštění.
 
-8.  V případě **trpělivosti**určete, kolik epochs se má v předčasném zastavení školení zastavit, pokud se ztráta ověřování nesníží po sobě. ve výchozím nastavení 3.
+8.  V případě **trpělivosti** určete, kolik epochs se má v předčasném zastavení školení zastavit, pokud se ztráta ověřování nesníží po sobě. ve výchozím nastavení 3.
 
-9.  Odešlete kanál. Pokud má datová sada větší velikost, bude chvíli trvat.
+9.  Odešlete kanál. Pokud má datová sada větší velikost, bude to chvíli trvat, ale doporučí se výpočetní prostředí GPU.
 
 ## <a name="results"></a>Výsledky
 
@@ -66,7 +66,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Název          | Rozsah            | Type    | Výchozí | Popis                              |
+| Name          | Rozsah            | Typ    | Výchozí | Popis                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epochs        | > 0               | Integer | 5       | Výběr sloupce obsahujícího sloupec popisek nebo výsledek |
 | Velikost dávky    | > 0               | Integer | 16      | Kolik instancí se má naučit v dávce   |

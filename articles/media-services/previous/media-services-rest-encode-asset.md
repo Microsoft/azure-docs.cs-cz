@@ -3,7 +3,7 @@ title: Postup kódování prostředku Azure pomocí Media Encoder Standard | Mic
 description: Naučte se používat Media Encoder Standard ke kódování mediálního obsahu v Azure Media Services. Ukázky kódu používají REST API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d4b7a188a9509c3510de2843b232f57e3437177b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837325"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009823"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Postup při kódování assetu pomocí Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -98,7 +101,7 @@ Následující příklad ukazuje, jak nastavit atribut majetku:
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-## <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Požadavky
 * Vlastnosti TaskBody – musí použít literál XML pro definování počtu vstupních nebo výstupních prostředků, které úkol používá. Článek o úloze obsahuje definici schématu XML pro XML.
 * V definici TaskBody – je nutné, aby každá vnitřní hodnota pro `<inputAsset>` a `<outputAsset>` byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
 * Úloha může mít více výstupních prostředků. Jeden JobOutputAsset (x) lze použít pouze jednou jako výstup úkolu v úloze.

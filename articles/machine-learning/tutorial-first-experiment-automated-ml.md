@@ -9,21 +9,19 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
-ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/21/2020
+ms.custom: automl
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691939"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu se naučíte, jak vytvořit základní model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
->[!IMPORTANT]
-> Automatizované prostředí strojového učení v nástroji Azure Machine Learning Studio je ve verzi Preview. Některé funkce nemusí být podporované nebo mají omezené možnosti.
+V tomto kurzu se naučíte, jak vytvořit jednoduchý model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
 Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
 
@@ -37,7 +35,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -47,9 +45,9 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
-Pracovní prostor **Enterprise Edition** vytvoříte prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
+Existuje mnoho způsobů, jak [vytvořit pracovní prostor](how-to-manage-workspace.md). V tomto kurzu vytvoříte pracovní prostor prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
 > Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
@@ -76,7 +74,7 @@ Provedete následující kroky experimentu a spustíte je pomocí nástroje Azur
 
 Před konfigurací experimentu nahrajte datový soubor do svého pracovního prostoru ve formě Azure Machine Learning datové sady. V takovém případě vám umožní zajistit, aby vaše data byla pro váš experiment vhodně formátována.
 
-1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu **+ vytvořit datovou sadu** . 
+1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu  **+ vytvořit datovou sadu** . 
 
     1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Rozhraní Automated ML aktuálně podporuje pouze TabularDatasets, takže typ datové sady by měl být výchozí *tabulkou*.
 
@@ -104,42 +102,52 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Další**.
-
-        ![Konfigurace karty Preview](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
-
+    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro **day_of_week**, tak, aby se nezahrnul. Vyberte **Další**.
+         ![Formulář schématu](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
     1. Na formuláři **potvrdit podrobnosti** ověřte, že se informace shodují s dříve vyplněnými **základními informacemi, úložištěm dat a výběrem souborů** a **nastaveními a náhledem** .
     
     1. Vyberte **vytvořit** a dokončete vytvoření datové sady.
     
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
     
-    1. Přečtěte si **Náhled dat** a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK**.
+    1. Přečtěte si **Náhled dat**  a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **Zavřít**.
 
-    1. Vyberte **Další**.
+    1. Vyberte  **Další**.
 
-## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
+## <a name="configure-run"></a>Konfigurace běhu
 
 Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahrnuje úkoly návrhu, jako je například, výběr velikosti prostředí COMPUTE a určení toho, který sloupec chcete odhadnout. 
 
+1. Zvolte přepínač **vytvořit nový** .
+
 1. Naplňte formulář pro **spuštění konfigurace** následujícím způsobem:
-    1. Zadejte tento název experimentu:`my-1st-automl-experiment`
+    1. Zadejte tento název experimentu: `my-1st-automl-experiment`
 
     1. Jako cílový sloupec vyberte **y** , co chcete předpovědět. Tento sloupec indikuje, jestli se klient přihlásil k odběru termínu nebo ne.
     
-    1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
+    1. Vyberte **+ vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
+        1. Naplňte formulář **virtuálního počítače** a nastavte výpočetní výkon.
 
-        Pole | Popis | Hodnota pro kurz
-        ----|---|---
-        Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
-        &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
-        &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
-        Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
-        Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-        Upřesnit nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
-        1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
+            Pole | Popis | Hodnota pro kurz
+            ----|---|---
+            &nbsp;Priorita virtuálního počítače &nbsp; |Vyberte prioritu, kterou by měl váš experiment mít.| Vyhrazená
+            &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
+            &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon. Seznam doporučených velikostí je k dispozici na základě vašich dat a typu experimentu. |Standard_DS12_V2
+        
+        1. Výběrem možnosti **Další** naplňte **formulář Konfigurovat nastavení**.
+        
+            Pole | Popis | Hodnota pro kurz
+            ----|---|---
+            Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | automl – COMPUTE
+            Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
+            Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
+            Rozšířená nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné               
+
+        1. Vyberte **vytvořit** a vytvořte tak cíl služby Compute. 
 
             **Dokončení této akce trvá několik minut.** 
+
+             ![Stránka Nastavení](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. Po vytvoření vyberte nový cíl služby COMPUTE z rozevíracího seznamu.
 
@@ -161,14 +169,12 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální počet &nbsp; souběžných &nbsp; iterací: 5
         
         Vyberte **Uložit**.
-
-1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** v horní části.
+    
+1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části. Tento stav se aktualizuje v průběhu experimentu. Oznámení se zobrazí také v pravém horním rohu studia, aby se informovalo o stavu experimentu.
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
-> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  
-> Pokud chcete zobrazit stav spuštění v průběhu experimentu, vyberte **aktualizovat** pravidelně.
->
+> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  <br> <br>
 > V produkčním prostředí byste pravděpodobně nemuseli trochu začít. Pro tento kurz ale doporučujeme začít zkoumat testované algoritmy na kartě **modely** , jak jsou dokončeny, zatímco ostatní stále běží. 
 
 ##  <a name="explore-models"></a>Prozkoumat modely
@@ -180,6 +186,30 @@ Až budete čekat na dokončení všech modelů experimentů, vyberte **název a
 Následující naviguje **Podrobnosti** a karty **metriky** k zobrazení vlastností, metrik a výkonu vybraného modelu. 
 
 ![Podrobnosti spuštění iterace](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
+
+## <a name="model-explanations"></a>Vysvětlení modelu
+
+Počkejte, až se modely dokončí, můžete se také podívat na vysvětlení modelů a zjistit, které datové funkce (RAW nebo inženýr) ovlivnily předpovědi konkrétního modelu. 
+
+Tato vysvětlení modelu je možné vygenerovat na vyžádání a jsou shrnuty na řídicím panelu vysvětlení modelu, který je součástí karty **vysvětlení (Preview)** .
+
+Chcete-li vygenerovat vysvětlení modelu, 
+ 
+1. Vyberte **Spustit 1** v horní části pro přechod zpět na obrazovku **modely** . 
+1. Vyberte kartu **modely** .
+1. Pro tento kurz vyberte první MaxAbsScaler model **LightGBM** .
+1. V horní části vyberte tlačítko **vysvětlit model** . Napravo se zobrazí podokno **vysvětlený model** . 
+1. Vyberte **automl – výpočetní** prostředí, které jste předtím vytvořili. Tento výpočetní cluster iniciuje podřízený běh pro generování vysvětlení modelu.
+1. V dolní části vyberte **vytvořit** . K hornímu okraji obrazovky se zobrazí zelená zpráva o úspěchu. 
+    >[!NOTE]
+    > Spuštění vysvětlení trvá přibližně 2-5 minut.
+1. Vyberte tlačítko **vysvětlení (Preview)** . Tato karta se vyplní, jakmile se spuštění vysvětlení dokončí.
+1. Na levé straně rozbalte podokno a vyberte řádek, který je v části **funkce** **nezpracovaný** . 
+1. Na pravé straně vyberte kartu **důležitost agregované funkce** . Tento graf znázorňuje, které datové funkce ovlivnily předpovědi vybraného modelu. 
+
+    V tomto příkladu se zdá, že *Doba trvání* má největší vliv na předpovědi tohoto modelu.
+    
+    ![Řídicí panel vysvětlení modelu](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
 
 ## <a name="deploy-the-best-model"></a>Nasazení nejlepšího modelu
 
@@ -203,9 +233,9 @@ Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přib
     ----|----
     Název nasazení| Moje automl – nasazení
     Popis nasazení| Moje první automatizované nasazení experimentu Machine Learning
-    Typ výpočtu | Výběr instance služby Azure COMPUTE (ACI)
+    Typ výpočetních prostředků | Výběr instance služby Azure COMPUTE (ACI)
     Povolit ověřování| Zakázat. 
-    Použití vlastních nasazení| Zakázat. Umožňuje automaticky vygenerovat výchozí soubor ovladače (skript bodování) a soubor prostředí. 
+    Použití vlastních nasazení| Zakázat. Umožňuje automatické vygenerování výchozího souboru ovladače (skriptu bodování) a souboru prostředí. 
     
     V tomto příkladu používáme výchozí hodnoty uvedené v nabídce *Upřesnit* . 
 
@@ -240,12 +270,12 @@ Soubory nasazení jsou větší než data a experimenty, takže se o jejich ulo�
 V tomto kurzu automatizovaného strojového učení jste pomocí automatizovaného rozhraní ML Azure Machine Learning vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
-> [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Využívání webové služby](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
-+ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
++ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) .
 + Přečtěte si další informace o [featurization](how-to-configure-auto-features.md#featurization).
-+ Přečtěte si další informace o [profilování dat](how-to-use-automated-ml-for-ml-models.md#profile).
++ Přečtěte si další informace o [profilování dat](how-to-connect-data-ui.md#profile).
 
 
 >[!NOTE]

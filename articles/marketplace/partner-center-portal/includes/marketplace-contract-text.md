@@ -9,12 +9,12 @@ ms.date: 01/22/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d899db8b5f6f3b7c0ccef4e44c814f1e126c626a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e1119cf5c40cdcb1fd598b85410ea9149a7cc146
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326663"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400946"
 ---
 Microsoft poskytuje standardní šablonu smlouvy pro komerční web Marketplace.
 
@@ -46,7 +46,7 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 **Vlastní výrazy pro změny standardní smlouvy pro komerční tržiště Microsoftu**: Začněte tím, že vyberete **Přidat vlastní výrazy pro změnu**. Pro každou nabídku můžete zadat až 10 vlastních podmínek pro změnu.
 
 - **Vlastní výrazy pro změnu**: do pole vlastní výrazy pro změnu zadejte vlastní vlastní údaje. Do tohoto pole můžete zadat neomezený počet znaků. Pouze zákazníkům z ID tenanta, které zadáte pro tyto vlastní výrazy, se zobrazí vlastní výrazy změny v toku nákupu nabídky v Azure Portal.  
-- **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > vlastnosti. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také vyhledat pomocí adresy URL svého názvu domény v umístění [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com).
+- **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > vlastnosti. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete vyhledat také pomocí adresy URL svého názvu domény na adrese [moje Microsoft Azure a Microsoft 365 ID tenanta?](https://www.whatismytenantid.com).
 - **Popis** (volitelné): Volitelně můžete zadat popis ID tenanta, který vám pomůže identifikovat zákazníka, kterému cílíte na změnu.
 
 **Podmínky a ujednání**

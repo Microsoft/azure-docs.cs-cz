@@ -1,33 +1,36 @@
 ---
-title: Kurz – nastavení automatického škálování pro aplikace mikroslužeb
+title: Nastavení automatického škálování pro aplikace mikroslužeb
 description: Tento článek popisuje, jak nastavit nastavení automatického škálování pro vaše aplikace pomocí portál Microsoft Azure nebo rozhraní příkazového řádku Azure CLI.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: eaa4a219a1020639c930f8a07bfcaa1c45d0cef8
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450979"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219008"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Kurz: nastavení automatického škálování pro aplikace mikroslužeb
+# <a name="set-up-autoscale-for-microservice-applications"></a>Nastavení automatického škálování pro aplikace mikroslužeb
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
+
 Automatické škálování je integrovaná funkce Azure jarního cloudu, která pomáhá aplikacím mikroslužeb při změnách na vyžádání vykonat jejich nejlepší výkon. To zahrnuje úpravu počtu virtuálních procesorů, paměti a instancí aplikací. Tento článek popisuje, jak nastavit nastavení automatického škálování pro vaše aplikace pomocí portál Microsoft Azure nebo rozhraní příkazového řádku Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li provést tyto postupy, potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) .
+* Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](./spring-cloud-quickstart.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Přejít na stránku automatického škálování v Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejít na stránku **přehledu** jarního cloudu Azure.
 3. Vyberte skupinu prostředků, která obsahuje vaši službu.
 4. V nabídce **Nastavení** v levém navigačním podokně vyberte kartu **aplikace** .
@@ -67,5 +70,5 @@ Pokud se nacházíte na úrovni Basic a omezujete je na jednu nebo více těchto
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled automatického škálování v Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Automatické škálování monitorování Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Přehled automatického škálování v Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md)
+* [Automatické škálování monitorování Azure CLI](/cli/azure/monitor/autoscale)

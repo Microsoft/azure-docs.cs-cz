@@ -2,25 +2,24 @@
 title: Získání modelu pomocí volání REST v jazyce Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.custom: devx-track-java
-ms.author: diberry
-ms.openlocfilehash: a18cee5d6bfa13d377aa6900b0ea4a35c9edf4e8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5ece29b7189f31654056ec357f522b59ccb16587
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375636"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098393"
 ---
 [Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java Development Kit, Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) nebo vaše oblíbené integrované vývojové prostředí (IDE)
 
 ## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
@@ -53,13 +52,13 @@ ms.locfileid: "87375636"
 
 1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste vytvořili `Model.java` soubor, zadejte následující příkaz pro zkompilování souboru Java:
 
-    * Pokud používáte Windows, použijte tento příkaz:`javac -cp ";lib/*" Model.java`
-    * Pokud používáte macOS nebo Linux, použijte tento příkaz:`javac -cp ":lib/*" Model.java`
+    * Pokud používáte Windows, použijte tento příkaz: `javac -cp ";lib/*" Model.java`
+    * Pokud používáte macOS nebo Linux, použijte tento příkaz: `javac -cp ":lib/*" Model.java`
 
 1. Spusťte aplikaci Java z příkazového řádku zadáním následujícího textu do příkazového řádku:
 
-    * Pokud používáte Windows, použijte tento příkaz:`java -cp ";lib/*" Model`
-    * Pokud používáte macOS nebo Linux, použijte tento příkaz:`java -cp ":lib/*" Model`
+    * Pokud používáte Windows, použijte tento příkaz: `java -cp ";lib/*" Model`
+    * Pokud používáte macOS nebo Linux, použijte tento příkaz: `java -cp ":lib/*" Model`
 
 1. Přečtěte si odpověď pro vytváření obsahu:
 

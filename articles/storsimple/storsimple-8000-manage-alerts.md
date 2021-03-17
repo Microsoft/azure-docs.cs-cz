@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207783"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016841"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Použití služby StorSimple Device Manager k zobrazení a správě upozornění StorSimple
 
@@ -41,7 +41,7 @@ Výstrahy mají různé úrovně závažnosti v závislosti na tom, jaký vliv b
 * **Upozornění** – tento stav může být kritický, pokud není vyřešen. Měli byste prošetřit situaci a provést jakoukoli akci nutnou k odstranění problému.
 * **Informace** – Tato výstraha obsahuje informace, které mohou být užitečné při sledování a správě systému.
 
-## <a name="configure-alert-settings"></a>Konfigurace nastavení výstrah
+## <a name="configure-alert-settings"></a>Konfigurace nastavení upozornění
 
 Můžete zvolit, jestli chcete být upozorňováni e-mailem podmínek upozornění pro každé zařízení StorSimple. Kromě toho můžete určit další příjemce oznámení výstrah zadáním jejich e-mailových adres v poli **ostatní příjemci e-mailu** , které jsou odděleny středníky.
 
@@ -75,7 +75,7 @@ Po povolení e-mailových oznámení pro zařízení budou členové seznamu ozn
 
 5. Po dokončení konfigurace klikněte na **Uložit**. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-     ![E-mail s testovacím oznámením výstrah odeslán](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![E-mail s oznámením o testování výstrah odeslán 2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>Zobrazení a sledování výstrah
 
@@ -139,7 +139,7 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 
     V závislosti na množství dat ve vašem zařízení budou zápisy taky pořád po přerušení připojení cloudu i po výpadku. Zápisy se pak zpomalí a nakonec začnou selhat, pokud dojde k narušení cloudového připojení několik hodin. (Na zařízení je dočasné úložiště pro data, která se mají vložit do cloudu. Tato oblast se po odeslání dat vyprázdní. Pokud se připojení nezdaří, data v této oblasti úložiště nebudou vložena do cloudu a vstupně-výstupní operace selže.)
 * **Pro data v cloudu**: pro většinu chyb cloudového připojení se vrátí chyba. Po obnovení připojení se IOs obnoví, aniž by uživatel musel převést svazek do online režimu. Ve výjimečných případech může být nutný zásah uživatele, aby se vrátil zpátky do online režimu z Azure Portal.
-* **Pro cloudové snímky**probíhá opakování operace několikrát během 4-5 hodin, a pokud se připojení neobnoví, snímky v cloudu se nezdaří.
+* **Pro cloudové snímky** probíhá opakování operace několikrát během 4-5 hodin, a pokud se připojení neobnoví, snímky v cloudu se nezdaří.
 
 ### <a name="cluster-alerts"></a>Výstrahy clusteru
 
@@ -182,8 +182,8 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 |:--- |:--- |:--- |
 | Vytvoření místního svazku <*název svazku*> se nezdařilo. |Úloha vytvoření svazku se nezdařila. <*Chybová zpráva odpovídající neúspěšnému kódu chyby*>. |Kvůli problémům s připojením se nepovedlo úspěšně dokončit operaci vytváření prostoru. Místně připnuté svazky jsou silným zřizováním a proces vytváření prostoru zahrnuje přelití vrstvených svazků do cloudu. Pokud nedochází k žádným problémům s připojením, možná jste vyčerpali místní prostor na zařízení. Než zkusíte operaci zopakovat, určete, jestli na zařízení existuje prostor. |
 | Nepovedlo se rozbalení *názvu svazku* <místního svazku>. |Úloha změny svazku se nezdařila z důvodu <*chybové zprávy odpovídající neúspěšnému kódu chyby*>. |Kvůli problémům s připojením se nepovedlo úspěšně dokončit operaci rozšíření svazku. Místně připnuté svazky jsou silným zajišťovány a proces rozšíření stávajícího prostoru zahrnuje přelití vrstvených svazků do cloudu. Pokud nedochází k žádným problémům s připojením, možná jste vyčerpali místní prostor na zařízení. Než zkusíte operaci zopakovat, určete, jestli na zařízení existuje prostor. |
-| Převod> *názvu* svazku <svazku se nezdařil. |Úloha převodu svazků pro převod typu svazku z místně připnutého na vrstvený typ se nezdařila. |Převod svazku z typu místně připnutého na vrstvený nelze dokončit. Zajistěte, aby nedocházelo k úspěšnému dokončení operace, protože nedochází k problémům se sítí. Problémy s připojením najdete v tématu [řešení potíží pomocí rutiny Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní místně připojený svazek je teď označený jako vrstvený svazek, protože některá z dat z místně připnutého svazku se během převodu převedla do cloudu. Výsledný vrstvený svazek stále používá místní prostor na zařízení, které se nedá uvolnit pro budoucí místní svazky.<br>Vyřešte všechny problémy s připojením, zrušte výstrahu a převeďte tento svazek zpátky na původní typ připojeného svazku, abyste zajistili, že budou všechna data místně k dispozici. |
-| Převod> *názvu* svazku <svazku se nezdařil. |Úloha převodu svazků pro převod typu svazku z vrstveného na místně připnuté se nezdařila. |Převod svazku z typu vrstveného na místně připnutý nešlo dokončit. Zajistěte, aby nedocházelo k úspěšnému dokončení operace, protože nedochází k problémům se sítí. Problémy s připojením najdete v tématu [řešení potíží pomocí rutiny Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní vrstvený svazek teď označený jako součást procesu převodu, který je místně připnutého svazku, má nadále data v cloudu, ale silné zřízené místo na zařízení pro tento svazek se už nedá uvolnit pro budoucí místní svazky.<br>Vyřešte všechny problémy s připojením, vymažte výstrahu a převeďte tento svazek zpátky na původní typ svazku s vrstvenými vrstvami, aby bylo zajištěno, že se místní prostor na zařízení dá znovu zřídit. |
+| Převod> *názvu* svazku <svazku se nezdařil. |Úloha převodu svazků pro převod typu svazku z místně připnutého na vrstvený typ se nezdařila. |Převod svazku z typu místně připnutého na vrstvený nelze dokončit. Zajistěte, aby nedocházelo k úspěšnému dokončení operace, protože nedochází k problémům se sítí. Potíže s připojením najdete v tématu [řešení potíží pomocí rutiny Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní místně připojený svazek je teď označený jako vrstvený svazek, protože některá z dat z místně připnutého svazku se během převodu převedla do cloudu. Výsledný vrstvený svazek stále používá místní prostor na zařízení, které se nedá uvolnit pro budoucí místní svazky.<br>Vyřešte všechny problémy s připojením, zrušte výstrahu a převeďte tento svazek zpátky na původní typ připojeného svazku, abyste zajistili, že budou všechna data místně k dispozici. |
+| Převod> *názvu* svazku <svazku se nezdařil. |Úloha převodu svazků pro převod typu svazku z vrstveného na místně připnuté se nezdařila. |Převod svazku z typu vrstveného na místně připnutý nešlo dokončit. Zajistěte, aby nedocházelo k úspěšnému dokončení operace, protože nedochází k problémům se sítí. Potíže s připojením najdete v tématu [řešení potíží pomocí rutiny Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní vrstvený svazek teď označený jako součást procesu převodu, který je místně připnutého svazku, má nadále data v cloudu, ale silné zřízené místo na zařízení pro tento svazek se už nedá uvolnit pro budoucí místní svazky.<br>Vyřešte všechny problémy s připojením, vymažte výstrahu a převeďte tento svazek zpátky na původní typ svazku s vrstvenými vrstvami, aby bylo zajištěno, že se místní prostor na zařízení dá znovu zřídit. |
 | Blíží se místní spotřebě místa pro místní snímky <*název skupiny svazků* .> |Místním snímkům pro zásady zálohování může dojít k brzkému vyzkoušení místa a zrušení platnosti, aby se předešlo chybám při zápisu hostitele. |Časté místní snímky spolu s vysokou četností změn dat ve svazcích přidružených k této skupině zásad zálohování způsobují, že místní prostor na zařízení bude možné rychle spotřebovat. Odstraňte všechny místní snímky, které už nepotřebujete. Aktualizujte také místní plány snímků pro tyto zásady zálohování tak, aby se zohlednily méně časté místní snímky, a zajistěte, aby se snímky cloudu pravidelně provedly. Pokud tyto akce nejsou podniknuty, může dojít k brzkému vyčerpání místního prostoru pro tyto snímky a systém je automaticky odstraní, aby bylo zajištěno, že budou zápisy hostitele nadále zpracovávány úspěšně. |
 | Došlo k zrušení platnosti místních snímků pro <*název skupiny svazků*>. |Místní snímky pro <*název skupiny svazků*> se zrušily a pak se odstranily, protože překročily místní prostor na zařízení. |Abyste se ujistili, že se to v budoucnu neopakuje, Projděte si plány místních snímků pro tyto zásady zálohování a odstraňte všechny místní snímky, které už nepotřebujete. Časté místní snímky spolu s vysokou četností změn dat ve svazcích přidružených k této skupině zásad zálohování můžou způsobit, že se místní prostor na zařízení bude rychle spotřebovat. |
 | Obnovení *ID elementu zálohování zdroje* <> se nezdařilo. |Úloha obnovení se nezdařila. |Pokud jste v této zásadě zálohování připnuli místně nebo kombinaci místně připnutých a vrstvených svazků, aktualizujte seznam zálohování a ověřte, jestli je záloha pořád platná. Pokud je záloha platná, je možné, že potíže s cloudovým připojením brání úspěšnému dokončení operace obnovení. Místně připojené svazky, které se obnovily jako součást této skupiny snímků, neobsahují všechna data stažená do zařízení, a pokud máte v této skupině snímků kombinaci vrstvených a místně připnuté svazků, nebudou se vzájemně synchronizovat. Chcete-li úspěšně dokončit operaci obnovení, převeďte svazky v této skupině do stavu offline na hostiteli a opakujte operaci obnovení. Všimněte si, že všechny změny dat svazků, které byly provedeny během procesu obnovení, budou ztraceny. |
@@ -193,8 +193,8 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
 | Nepovedlo se spustit služby StorSimple. |Chyba DataPath |Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
-| Byla zjištěna duplicitní IP adresa pro ' DATA0 '. | |Systém zjistil konflikt pro IP adresu 10.0.0.1. Síťový prostředek ' DATA0 ' na zařízení *\<device1>* je offline. Ujistěte se, že se tato IP adresa nepoužívá v žádné jiné entitě v této síti. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Pokud chcete tento problém vyřešit, obraťte se na správce sítě. Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
-| Adresa IPv4 (nebo IPv6) pro ' DATA0 ' je offline. | |Síťový prostředek "DATA0" s IP adresou "10.0.0.1" a délka předpony 22 na zařízení *\<device1>* je offline. Zajistěte, aby byly porty přepínače, ke kterým je toto rozhraní připojené, v provozu. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Byla zjištěna duplicitní IP adresa pro ' DATA0 '. | |Systém zjistil konflikt pro IP adresu 10.0.0.1. Síťový prostředek ' DATA0 ' na zařízení *\<device1>* je offline. Ujistěte se, že se tato IP adresa nepoužívá v žádné jiné entitě v této síti. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Pokud chcete tento problém vyřešit, obraťte se na správce sítě. Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
+| Adresa IPv4 (nebo IPv6) pro ' DATA0 ' je offline. | |Síťový prostředek "DATA0" s IP adresou "10.0.0.1" a délka předpony 22 na zařízení *\<device1>* je offline. Zajistěte, aby byly porty přepínače, ke kterým je toto rozhraní připojené, v provozu. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Nelze se připojit k ověřovací službě. |Chyba DataPath |URLthat se používá k ověření, není dosažitelný. Ujistěte se, že pravidla brány firewall obsahují vzory adres URL určené pro zařízení StorSimple. Další informace o vzorech adresy URL v Azure Portal najdete v protokolu https: \/ /aka.MS/SS-8000-Network-reqs. Pokud používáte Azure Government Cloud, pokračujte na vzory adres URL v protokolu https: \/ /aka.MS/ss8000-gov-Network-reqs.|
 
 ### <a name="performance-alerts"></a>Výstrahy výkonu

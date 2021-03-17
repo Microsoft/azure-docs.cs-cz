@@ -5,12 +5,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2ddd7db17f8e54e9075790b11d3a798ce9074a45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 74a43bcddf99e42c43a86add64560bc54a5b8243
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421671"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135524"
 ---
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky Pythonu na GitHubu](https://aka.ms/speech/github-python)
+> [Prozkoumejte ukázky Pythonu na GitHubu](https://aka.ms/speech/github-python) 
+>  [Viz Pokročilá ukázka Luis na GitHubu](https://github.com/Azure/pizza_luis_bot) .

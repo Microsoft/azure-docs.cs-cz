@@ -12,15 +12,15 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119783"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063718"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro JavaScript pro práci s Azure AD B2C
 
 [Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) umožňuje vývojářům JavaScriptu ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C).
 
@@ -56,18 +56,24 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Krok 3: Konfigurace ověřování
 
-1. Otevřete `config.js` soubor v ukázce.
+1. Otevřete *config.js* v souboru v ukázce.
 
-2. Nakonfigurujte ukázku pomocí přihlašovacích údajů aplikace, které jste získali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvy clientID, Host, tenantId a název zásady.
+2. Nakonfigurujte ukázku pomocí přihlašovacích údajů aplikace, které jste získali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvem vašeho tenanta, ID klienta a názvem zásady.
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
-Další informace najdete v této [ukázceNode.js B2C webového rozhraní API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
+Další informace najdete v této [ ukázceNode.js B2C webového rozhraní API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
@@ -203,7 +209,7 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
     :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Obrazovky toku resetování hesla zobrazené Azure AD B2C" border="false":::
 
-    Další informace o kódech chyb a o zpracování výjimek naleznete v tématu [MSAL Error and Exception Codes](msal-handling-exceptions.md).
+    Další informace o kódech chyb a o zpracování výjimek naleznete v tématu [MSAL Error and Exception Codes](msal-error-handling-js.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -211,4 +217,4 @@ Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
 - [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
-- [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/configure-user-input.md)

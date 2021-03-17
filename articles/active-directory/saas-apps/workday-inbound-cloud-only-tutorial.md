@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540962"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954085"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování uživatelů v Workday na Azure AD
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést při zřizování pracovních dat z Workday do Azure Active Directory. 
@@ -27,13 +27,13 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést při zřizován�
 
 [Služba zřizování uživatelů Azure Active Directory](../app-provisioning/user-provisioning.md) se integruje s [rozhraním API Workday pro lidské zdroje](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) , aby bylo možné zřídit uživatelské účty. Pracovní postupy zřizování uživatelů Workday, které podporuje služba zřizování uživatelů Azure AD, umožňují automatizaci následujících scénářů lidských zdrojů a životního cyklu identit:
 
-* Připravují se **noví zaměstnanci** – když se do pracovního dne přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet v Azure Active Directory a volitelně i na Office 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md), a to s zpětným zápisem e-mailové adresy do Workday.
+* Připravují se **noví zaměstnanci** – když se do Workday přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet v Azure Active Directory a volitelně Microsoft 365 a [jiné aplikace SaaS, které Azure AD podporuje](../app-provisioning/user-provisioning.md), s zpětným zápisem e-mailové adresy do Workday.
 
-* **Aktualizace atributů a profilů zaměstnanců** – když se v Workday aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet Azure Active Directory a volitelně Office 365 a [Další aplikace SaaS, které Azure AD podporuje](../app-provisioning/user-provisioning.md).
+* **Aktualizace atributů a profilů zaměstnanců** – když se v Workday aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet Azure Active Directory a případně Microsoft 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Ukončení zaměstnanců** – když se zaměstnanec v Workday ukončí, jejich uživatelský účet se automaticky zakáže v Azure Active Directory a volitelně Office 365 a [Další aplikace SaaS, které Azure AD podporuje](../app-provisioning/user-provisioning.md).
+* **Ukončení zaměstnanců** – když se zaměstnanec v Workday ukončí, jejich uživatelský účet se automaticky zakáže v Azure Active Directory a volitelně Microsoft 365 a [Další SaaS aplikace podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Pracovní zařazení zaměstnanců** – když se zaměstnanec v Workday odkoupí, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) Azure Active Directory a volitelně Office 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md).
+* **Pracovní zařazení zaměstnanců** – když se zaměstnanec v Workday odkoupí, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) a volitelně Microsoft 365 a další SaaS aplikace, Azure Active Directory které [Azure AD podporuje](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Na koho se toto řešení pro zřizování uživatelů nejlépe hodí?
 
@@ -45,7 +45,7 @@ Tento pracovní den pro Azure Active Directory řešení zřizování uživatel�
 
 * Organizace, které vyžadují, aby se uživatelé zřídili pomocí dat získaných z Workday
 
-* Organizace, které používají Office 365 k e-mailu
+* Organizace, které používají Microsoft 365 k e-mailu
 
 ## <a name="solution-architecture"></a>Architektura řešení
 
@@ -95,15 +95,15 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
-3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
+3. Vyberte **podnikové aplikace** a pak **všechny aplikace**.
 
-4. Vyberte **Přidat aplikaci**a pak vyberte kategorii **vše** .
+4. Vyberte **Přidat aplikaci** a pak vyberte kategorii **vše** .
 
-5. Vyhledejte v **Workday zřizování uživatelů Azure AD**a přidejte tuto aplikaci z galerie.
+5. Vyhledejte v **Workday zřizování uživatelů Azure AD** a přidejte tuto aplikaci z galerie.
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změňte režim **zřizování** **Mode** na **automaticky**.
+7. Změňte režim **zřizování**  na **automaticky**.
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
@@ -134,7 +134,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday Azure Active Directory jenom pro uživatele, kteří jsou jenom pro Cloud.
 
-1. Na kartě zřizování v části **mapování**klikněte na **synchronizovat pracovní procesy s Azure AD**.
+1. Na kartě zřizování v části **mapování** klikněte na **synchronizovat pracovní procesy s Azure AD**.
 
 2. V poli **obor zdrojového objektu** můžete vybrat, které sady uživatelů v Workday by měly být v oboru pro zřizování do Azure AD, a to definováním sady filtrů založených na atributech. Výchozí obor je "Všichni uživatelé v Workday". Příklady filtrů:
 
@@ -183,7 +183,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
      * **Pouze během vytváření** – použít toto mapování pouze při akcích vytvoření uživatele
 
-6. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
+6. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části Attribute-Mapping části.
 
 
 ## <a name="enable-and-launch-user-provisioning"></a>Povolení a spuštění zřizování uživatelů
@@ -208,11 +208,11 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Další informace o scénářích Integrace Azure AD a Workday a volání webové služby](../app-provisioning/workday-integration-reference.md)
 * [Další informace o podporovaných atributech Workday pro příchozí zřizování](../app-provisioning/workday-attribute-reference.md)
 * [Informace o tom, jak nakonfigurovat zpětný zápis do Workday](workday-writeback-tutorial.md)
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
-* [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)
 
 

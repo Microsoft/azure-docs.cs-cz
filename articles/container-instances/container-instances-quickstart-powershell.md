@@ -2,18 +2,17 @@
 title: Rychlý Start – nasazení kontejneru Docker do instance kontejneru – PowerShell
 description: V tomto rychlém startu použijete Azure PowerShell k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 services: container-instances
-author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7002d8a83e58a9089ee3c3840b0397d63e2f198
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533608"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89565578"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí Azure PowerShell
 
@@ -23,7 +22,7 @@ V tomto rychlém startu použijete Azure PowerShell k nasazení izolovaného kon
 
 ![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][qs-powershell-01]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +46,7 @@ Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chce
 
 Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla služba IIS veřejně dosažitelná.
 
-Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte jedinečnou `-DnsNameLabel` hodnotu v rámci oblasti Azure, ve které jste instanci vytvořili. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte `-DnsNameLabel` jedinečnou hodnotu v rámci oblasti Azure, ve které jste instanci vytvořili. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

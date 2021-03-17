@@ -8,14 +8,16 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 66a53840d6002731910baf63a331a79a6f654078
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92771bb22897b0568ae601813ca919a260a31d8d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167957"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499386"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky SDK pro Python: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,9 +29,9 @@ ms.locfileid: "84167957"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/overview/azure/cosmosdb)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) nebo [python 3,3, 3,4, 3,5 nebo 3,6](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
@@ -45,7 +47,7 @@ ms.locfileid: "84167957"
 * Předběžná verze sady SDK
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
-Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 
@@ -61,5 +63,4 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
-
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

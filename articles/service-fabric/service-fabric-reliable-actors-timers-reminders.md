@@ -3,12 +3,13 @@ title: Reliable Actors časovače a připomenutí
 description: Úvod do časovačů a připomenutí Service Fabric Reliable Actors, včetně pokynů k použití jednotlivých.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f77eb29c9146fe66d5d2b6073c33e30fbab649c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245943"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791790"
 ---
 # <a name="actor-timers-and-reminders"></a>Časovače a připomenutí objektu actor
 Objekty actor mohou naplánovat pravidelnou práci sami registrací časovačů nebo připomenutí. Tento článek ukazuje, jak používat časovače a připomenutí a vysvětluje rozdíly mezi nimi.
@@ -130,7 +131,7 @@ Připomenutí jsou mechanismem, jak aktivovat trvalá zpětná volání v objekt
 > [!NOTE]
 > Spolehlivost upomínek je vázána na záruky spolehlivosti stavu poskytované poskytovatelem stavu objektu actor. To znamená, že u aktérů, jejichž trvalost stavu je nastavená na *none*, se připomenutí po převzetí služeb při selhání neaktivují.
 
-Pro registraci připomenutí volá objekt actor [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
+Pro registraci připomenutí volá objekt actor [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync#remarks) metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -204,7 +205,7 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Když se aktivuje připomenutí, modul runtime Reliable Actors vyvolá `ReceiveReminderAsync` metodu (C#) nebo `receiveReminderAsync` (Java) objektu actor. Objekt actor může registrovat více připomenutí a `ReceiveReminderAsync` metoda (C#) nebo `receiveReminderAsync` (Java) je vyvolána při aktivaci kterékoli z těchto připomenutí. Objekt actor může použít název připomenutí, který je předán `ReceiveReminderAsync` metodě (C#) nebo `receiveReminderAsync` (Java), a zjistit, jaké připomenutí bylo aktivováno.
+Když se aktivuje připomenutí, modul runtime Reliable Actors vyvolá  `ReceiveReminderAsync` metodu (C#) nebo `receiveReminderAsync` (Java) objektu actor. Objekt actor může registrovat více připomenutí a `ReceiveReminderAsync` metoda (C#) nebo `receiveReminderAsync` (Java) je vyvolána při aktivaci kterékoli z těchto připomenutí. Objekt actor může použít název připomenutí, který je předán `ReceiveReminderAsync` metodě (C#) nebo `receiveReminderAsync` (Java), a zjistit, jaké připomenutí bylo aktivováno.
 
 Modul runtime Actors uloží stav objektu actor po `ReceiveReminderAsync` dokončení volání (C#) nebo `receiveReminderAsync` (Java). Pokud při ukládání stavu dojde k chybě, bude objekt actor deaktivován a bude aktivována nová instance.
 

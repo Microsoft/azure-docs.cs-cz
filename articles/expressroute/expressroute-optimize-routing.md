@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: optimalizace směrování'
 description: Tato stránka obsahuje podrobné informace o tom, jak optimalizovat směrování, pokud máte více než jeden okruh ExpressRoute, který poskytuje připojení mezi Microsoftem a vaší podnikovou sítí.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
-ms.author: charwen
-ms.openlocfilehash: 2672068e505b7c86127b8b765372e7c607c3875a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: duau
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259772"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204873"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
@@ -27,7 +27,7 @@ Je důležité zajistit, aby při použití partnerského vztahu Microsoftu nebo
 
 Vezměte v úvahu následující vzorový scénář:
 
-![Případ 1 ExpressRoute – Problém: Neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![Diagram, který ukazuje problém s ExpressRoute případem 1 – neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 Ve výše uvedeném příkladu dáváte přednost ExpressRoute cestám konfigurace místní předvolby následujícím způsobem. 
 
@@ -64,7 +64,7 @@ Abyste optimalizovali směrování pro uživatele obou poboček, musíte vědět
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Neoptimální směrování od Microsoftu k zákazníkovi
-Zde je další příklad, kdy připojení z Microsoftu používá delší cestu pro přístup do vaší sítě. V tomto případě používáte místní servery Exchange a Exchange Online v [hybridním prostředí](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx). Vaše pobočky jsou připojené k síti WAN. Inzerujete předpony vašich místních serverů v obou vašich pobočkách Microsoftu prostřednictvím dvou okruhů ExpressRoute. Exchange Online bude inicializovat připojení k místním serverům v případech, jako je například přenesení poštovní schránky. Bohužel připojení k pobočce v Los Angeles se směruje na okruh ExpressRoute v oblasti USA – východ, aby se pak celý obsah přenášel zpátky na západní pobřeží. Příčina problému je podobná té předchozí. Bez jakékoli pomoci namůže síť Microsoftu zjistit, která předpona zákazníka je blíž oblasti USA – východ a která je blíž oblasti USA – západ. Tak se stane, že se pro pobočku v Los Angeles zvolí špatná cesta.
+Zde je další příklad, kdy připojení z Microsoftu používá delší cestu pro přístup do vaší sítě. V tomto případě používáte místní servery Exchange a Exchange Online v [hybridním prostředí](/exchange/exchange-hybrid). Vaše pobočky jsou připojené k síti WAN. Inzerujete předpony vašich místních serverů v obou vašich pobočkách Microsoftu prostřednictvím dvou okruhů ExpressRoute. Exchange Online bude inicializovat připojení k místním serverům v případech, jako je například přenesení poštovní schránky. Bohužel připojení k pobočce v Los Angeles se směruje na okruh ExpressRoute v oblasti USA – východ, aby se pak celý obsah přenášel zpátky na západní pobřeží. Příčina problému je podobná té předchozí. Bez jakékoli pomoci namůže síť Microsoftu zjistit, která předpona zákazníka je blíž oblasti USA – východ a která je blíž oblasti USA – západ. Tak se stane, že se pro pobočku v Los Angeles zvolí špatná cesta.
 
 ![Případ 2 ExpressRoute – Neoptimální směrování od Microsoftu k zákazníkovi](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 

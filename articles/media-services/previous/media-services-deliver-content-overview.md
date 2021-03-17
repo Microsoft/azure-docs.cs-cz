@@ -2,22 +2,25 @@
 title: Doručování obsahu zákazníkům
 description: Toto téma poskytuje přehled toho, co je součástí doručování obsahu pomocí Azure Media Services.
 services: media-services
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1ad89345a2779766fde4559758e61dff92023741
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060358"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016606"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Při doručování obsahu streamování nebo videa na vyžádání zákazníkům je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách.
 
 K dosažení tohoto cíle můžete:
@@ -66,7 +69,7 @@ Lokátory mají datum vypršení platnosti. Azure Portal nastaví datum vypršen
 > 
 > 
 
-Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](https://go.microsoft.com/fwlink/?LinkID=533259). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
+Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
 
 Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pomocí řešení Digital Rights Management (DRM) můžete jednotlivým uživatelům udělit různá přístupová práva. Další informace najdete v tématu [zabezpečení médií](/previous-versions/azure/dn282272(v=azure.100)).
 
@@ -151,7 +154,7 @@ Koncový bod streamování představuje službu streamování, která může dor
 
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Smooth Streaming
-Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Příklad:
+Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Například:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -166,7 +169,7 @@ Před vydáním služby z července 2016 – když byly assety vytvořené pomoc
 </SmoothStreamingMedia>
 ```
 
-Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Příklad:
+Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Například:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -1,15 +1,15 @@
 ---
 title: Vytvoření aplikace v blockchain – Azure blockchain Workbench
 description: Kurz týkající se vytvoření aplikace blockchain pro Azure blockchain Workbench Preview
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073109"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88784024"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Kurz: Vytvoření aplikace blockchain pro Azure blockchain Workbench
 
@@ -25,7 +25,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
 * Azure Active Directory uživatelů v tenantovi přidružených k blockchain Workbench. Další informace najdete v tématu [Přidání uživatelů Azure AD v Azure blockchain Workbench](manage-users.md#add-azure-ad-users).
@@ -40,7 +40,7 @@ Použijte postup vytvoření souborů aplikace nebo si ukázku si můžete [stá
 
 ## <a name="configuration-file"></a>Konfigurační soubor
 
-Metadata konfigurace definují pracovní postupy vysoké úrovně a model interakce aplikace blockchain. Metadata konfigurace představují fáze pracovního postupu a model interakce aplikace blockchain.
+Metadata konfigurace definují pracovní postupy vysoké úrovně a model interakce aplikace blockchain. Metadata konfigurace představují fáze pracovního postupu a model interakce aplikace blockchain. Další informace o obsahu konfiguračních souborů najdete v referenčních informacích k [Azure blockchain Workflow Configuration](configuration.md).
 
 1. V oblíbeném editoru vytvořte soubor s názvem `HelloBlockchain.json` .
 2. Přidejte následující JSON pro definování konfigurace aplikace blockchain.
@@ -212,8 +212,6 @@ Oddíl role aplikace definuje role uživatelů, kteří můžou pracovat s aplik
 
 Pracovní postupy definují jednu nebo více fází a akcí smlouvy. Ve scénáři požadavek-odpověď je první fází (stav) pracovního postupu žadatelem (role), který odešle požadavek (funkce), provede akci (přechod). Další fáze (stav) je respondér (role), který provádí akci (přechod) k odeslání odpovědi (funkce). Pracovní postup aplikace může zahrnovat vlastnosti, funkce a stavy, které jsou nutné k popisu toku kontraktu.
 
-Další informace o obsahu konfiguračních souborů najdete v referenčních informacích k [Azure blockchain Workflow Configuration](configuration.md).
-
 ## <a name="smart-contract-code-file"></a>Soubor kódu inteligentního kontraktu
 
 Inteligentní kontrakty reprezentují obchodní logiku aplikace blockchain. V současné době blockchain Workbench podporuje Ethereem pro hlavní knihu blockchain. Ethereem využívá jako svůj programovací jazyk [plnou](https://solidity.readthedocs.io) zárukou pro vytváření samoobslužných obchodních logik pro inteligentní kontrakty.
@@ -281,7 +279,7 @@ Přidejte funkci konstruktoru do svého kontraktu do `HelloBlockchain.sol` soubo
     }
 ```
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Funkce jsou spustitelné jednotky obchodní logiky v rámci smlouvy. Požadované parametry pro funkci jsou definovány jako parametry funkce v konfiguračním souboru. Počet, pořadí a typ parametrů se musí shodovat v obou souborech. Funkce jsou přidruženy k přechodům v pracovním postupu blockchain Workbench v konfiguračním souboru. Přechod je akce prováděná za účelem přechodu na další fázi pracovního postupu aplikace, kterou Určuje smlouva.
 

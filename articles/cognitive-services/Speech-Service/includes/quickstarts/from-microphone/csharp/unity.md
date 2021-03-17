@@ -6,15 +6,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
+ms.custom: devx-track-csharp
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: e2302c92cf723b1ab28611d46769290ed54df43c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 974f147492877f481616b43d67146a03814ada16
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377138"
 ---
 > [!NOTE]
 > Sada Speech SDK for Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
@@ -24,7 +25,7 @@ ms.locfileid: "88226579"
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 

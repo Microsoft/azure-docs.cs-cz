@@ -2,17 +2,17 @@
 title: Začínáme s Cloud Foundry na Microsoft Azure
 description: Spuštění OSS nebo Pivot Cloud Foundry v Microsoft Azure
 author: seanmck
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 8645afac5734cdbffb8df6f341529e688ca526d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3b13dffcf251f79a04182d32f23fd40e6ed6044
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754592"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562890"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry v Azure
 

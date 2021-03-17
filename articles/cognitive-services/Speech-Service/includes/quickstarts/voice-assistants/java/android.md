@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: bc27c73fbf9e827ce9a95c8aaaddc82ffb0aec53
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226411"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187506"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
   > [!NOTE]
@@ -257,7 +257,7 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
 1. Připojte k vývojovému počítači zařízení s Androidem. Nezapomeňte na tomto zařízení povolit [režim vývoje a ladění USB](https://developer.android.com/studio/debug/dev-options).
 
-1. Chcete-li sestavit aplikaci, stiskněte klávesy CTRL + F9 nebo **Build**  >  z panelu nabídek zvolte sestavit**vytvořit projekt** .
+1. Chcete-li sestavit aplikaci, stiskněte klávesy CTRL + F9 nebo **Build**  >  z panelu nabídek zvolte sestavit **vytvořit projekt** .
 
 1. Chcete-li spustit aplikaci, stiskněte klávesy SHIFT + F10 nebo zvolte možnost **Spustit**  >  **běh aplikace**.
 
@@ -272,4 +272,3 @@ Jakmile se aplikace a její činnost spustí, klikněte na tlačítko a začnět
 ## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [footer](./footer.md)]
-

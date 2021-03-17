@@ -15,16 +15,16 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: aebe7772c673162d60f35d6a81725ba1452d16a8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207064"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979857"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Core
 
-Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá instanci `IConfigurationRefresher` z možností pro poskytovatele konfigurace a potom zavolá `TryRefreshAsync` tuto instanci kdekoli v kódu.
+Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá instanci `IConfigurationRefresher` z možností pro poskytovatele konfigurace a potom zavolá `TryRefreshAsync` tuto instanci kdekoli v kódu.
 
 Aby se nastavení zachovalo jako aktualizované a zabránilo se příliš velkému počtu volání do úložiště konfigurace, použije se pro každé nastavení mezipaměť. Dokud neuplyne hodnota nastavení uložené v mezipaměti, operace aktualizace neaktualizuje hodnotu, a to ani v případě, že se hodnota v úložišti konfigurace změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund, ale v případě potřeby může být přepsána.
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Nastavte si aplikaci .NET Core, abyste aktualizovali její konfiguraci v reakci na změny v úložišti konfigurace aplikace.
 > * Využijte ve své aplikaci nejnovější konfiguraci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -99,7 +99,7 @@ class Program
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```console
      setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -131,9 +131,9 @@ class Program
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
+1. Vyberte **Průzkumník konfigurace** a aktualizujte hodnoty následujících klíčů:
 
     | Klíč | Hodnota |
     |---|---|

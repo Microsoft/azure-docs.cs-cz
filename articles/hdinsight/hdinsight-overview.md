@@ -1,19 +1,16 @@
 ---
 title: Co je Azure HDInsight
 description: Úvod do HDInsight a Apache Hadoop a Apache Spark technologický zásobník a komponenty, včetně Kafka, podregistru, bohatého a HBA pro analýzu velkých objemů dat.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
-ms.date: 02/27/2020
-ms.openlocfilehash: 31e8506067133304144614ff58974ee21e9680be
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.custom: contperf-fy21q1
+ms.date: 08/21/2020
+ms.openlocfilehash: d1c32bf749850ac40e23c1a9cb9c5cd7755d45c6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709228"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939440"
 ---
 # <a name="what-is-azure-hdinsight"></a>Co je Azure HDInsight?
 
@@ -27,7 +24,7 @@ Komponenty technologie Hadoop dostupné ve službě HDInsight najdete v tématu 
 
 ## <a name="what-is-big-data"></a>Co jsou velké objemy dat?
 
-Velké objemy dat se shromažďují v narůstajícím množství, s vyšší rychlostí a stále větší pestrostí formátů. Může se to týkat historických dat (tj. uložených) nebo dat v reálném čase (tj. streamovaných ze zdroje). Informace o nejběžnějších případech použití velkých objemů dat najdete v části [Scénáře použití služby HDInsight](#scenarios-for-using-hdinsight).
+Velké objemy dat se shromažďují v narůstajícím množství, s vyšší rychlostí a stále větší pestrostí formátů. Může jít o historické (tzn. uložené) objemy dat nebo o objemy dat v reálném čase (streamované ze zdroje). Informace o nejběžnějších případech použití velkých objemů dat najdete v části [Scénáře použití služby HDInsight](#scenarios-for-using-hdinsight).
 
 ## <a name="why-should-i-use-azure-hdinsight"></a>Proč mám použít Azure HDInsight?
 
@@ -35,13 +32,13 @@ Tato část uvádí schopnosti služby Azure HDInsight.
 
 |Schopnost  |Description  |
 |---------|---------|
-|Nativní pro cloud     |     Azure HDInsight umožňuje vytvářet optimalizované clustery pro [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md),  [Spark](./spark/apache-spark-jupyter-spark-sql.md),  [Interaktivní dotazy (LLAP)](./interactive-query/apache-interactive-query-get-started.md),  [Kafka](./kafka/apache-kafka-get-started.md),  [Storm](./storm/apache-storm-tutorial-get-started-linux.md),  [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) a  [ML Services](./r-server/r-server-overview.md) v Azure. HDInsight poskytuje také komplexní smlouvu SLA pro všechny vaše produkční úlohy.  |
-|Škálovatelnost a nízké náklady     | HDInsight vám umožní [škálovat](./hdinsight-administer-use-portal-linux.md#scale-clusters)   úlohy nahoru nebo dolů.Můžete snížit náklady tím, že [vytvoříte clustery na vyžádání](./hdinsight-hadoop-create-linux-clusters-adf.md)   a platíte jenom za to, co využijete. Můžete také sestavovat datové kanály pro zprovoznění úloh. Oddělený výpočetní výkon a úložiště poskytují lepší výkon a flexibilitu. |
-|Bezpečnost a dodržování předpisů    | HDInsight umožňuje chránit datové prostředky vašeho podniku pomocí služby [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), [šifrování](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) a integrace se službou [Azure Active Directory](./domain-joined/hdinsight-security-overview.md). HDInsight také splňuje nejoblíbenější oborové a vládní [standardy dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud).        |
-|Monitorování    | Azure HDInsight se integruje s [protokoly Azure monitor](./hdinsight-hadoop-oms-log-analytics-tutorial.md) a poskytuje jedno rozhraní, se kterým můžete monitorovat všechny clustery.        |
-|Globální dostupnost | HDInsight je k dispozici ve více [oblastech](https://azure.microsoft.com/regions/services/)   než jakákoli jiná nabídka analýzy velkých objemů dat. Služba Azure HDInsight je dostupná také pro Azure Government, Čínu a Německo a umožňuje tak splnit požadavky vašeho podniku v klíčových suverénních oblastech. |  
-|Produktivita     |  Azure HDInsight umožňuje používat bohaté nástroje zvyšující produktivitu pro Hadoop a Spark s oblíbeným vývojovým prostředím. Mezi tato vývojová prostředí patří [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md), [VSCode](./hdinsight-for-vscode.md), [Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) a [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md) pro zajištění podpory jazyků Scala, Python, R, Java a .NET. Odborníci přes data můžou také spolupracovat s využitím oblíbených poznámkových bloků, jako jsou [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) a [Zeppelin](./spark/apache-spark-zeppelin-notebook.md).    |
-|Rozšiřitelnost     |  Clustery HDInsight můžete rozšířit instalací komponent (Hue, Presto atd.) pomocí [akcí skriptů](./hdinsight-hadoop-customize-cluster-linux.md), [přidáním hraničních uzlů](./hdinsight-apps-use-edge-node.md) nebo [integrací s dalšími aplikacemi certifikovanými pro práci s velkými objemy dat](./hdinsight-apps-install-applications.md). HDInsight umožňuje bezproblémovou integraci s nejoblíbenějšími řešeními pro velké objemy dat prostřednictvím nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/).|
+|Nativní pro cloud     |     Azure HDInsight umožňuje vytvářet optimalizované clustery pro služby Hadoop, Spark, [interaktivní dotazy (LLAP)](./interactive-query/apache-interactive-query-get-started.md), Kafka, proplavování, HBA a ml v Azure. HDInsight poskytuje také komplexní smlouvu SLA pro všechny vaše produkční úlohy.  |
+|Škálovatelnost a nízké náklady     | HDInsight vám umožní škálovat úlohy nahoru nebo dolů.Můžete snížit náklady tím, že vytvoříte clustery na vyžádání a platíte jenom za to, co využijete. Můžete také sestavovat datové kanály pro zprovoznění úloh. Oddělený výpočetní výkon a úložiště poskytují lepší výkon a flexibilitu. |
+|Bezpečnost a dodržování předpisů    | HDInsight umožňuje chránit datové prostředky vašeho podniku pomocí služby Azure Virtual Network, šifrování a integrace se službou Azure Active Directory. HDInsight také splňuje nejoblíbenější oborové a vládní standardy dodržování předpisů.        |
+|Sledování    | Azure HDInsight se integruje s protokoly Azure Monitor a poskytuje jedno rozhraní, se kterým můžete monitorovat všechny clustery.        |
+|Globální dostupnost | HDInsight je k dispozici ve více oblastech než jakákoli jiná nabídka analýzy velkých objemů dat. Služba Azure HDInsight je dostupná také pro Azure Government, Čínu a Německo a umožňuje tak splnit požadavky vašeho podniku v klíčových suverénních oblastech. |  
+|Produktivita     |  Azure HDInsight umožňuje používat bohaté nástroje zvyšující produktivitu pro Hadoop a Spark s oblíbeným vývojovým prostředím. Mezi tato vývojová prostředí patří Visual Studio, VSCode, Eclipse a IntelliJ pro zajištění podpory jazyků Scala, Python, R, Java a .NET. Odborníci přes data můžou také spolupracovat s využitím oblíbených poznámkových bloků, jako jsou Jupyter a Zeppelin.    |
+|Rozšiřitelnost     |  Clustery HDInsight můžete rozšířit instalací komponent (Hue, Presto atd.) pomocí akcí skriptů, přidáním hraničních uzlů nebo integrací s dalšími aplikacemi certifikovanými pro práci s velkými objemy dat. HDInsight umožňuje bezproblémovou integraci s nejoblíbenějšími řešeními pro velké objemy dat prostřednictvím nasazení jedním kliknutím.|
 
 ## <a name="scenarios-for-using-hdinsight"></a>Scénáře použití služby HDInsight
 
@@ -53,7 +50,7 @@ Extrakce, transformace a načítání (ETL) je proces, při kterém se nestruktu
 
 ### <a name="data-warehousing"></a>Datové sklady
 
-Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtovém měřítku nad strukturovanými i nestrukturovanými daty v jakémkoli měřítku. Můžete také sestavovat modely, které je propojí s nástroji BI. Další informace najdete v [tomto příběhu zákazníka](https://customers.microsoft.com/story/milliman).
+Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtovém měřítku nad strukturovanými i nestrukturovanými daty v jakémkoli měřítku. Můžete také sestavovat modely, které je propojí s nástroji BI.
 
 ![Architektura HDInsight: Datové sklady](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "Architektura HDInsight pro datové sklady")
 
@@ -79,7 +76,7 @@ Pomocí služby HDInsight můžete rozšířit svou stávající místní infras
 
 HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení clusterů, jako je například možnost přidávání komponent, nástrojů a jazyků. HDInsight nabízí následující typy clusteru:
 
-|Typ clusteru | Description |
+|Typ clusteru | Popis |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Rozhraní, které používá HDFS, správu prostředků PŘÍZe a jednoduchý programovací model MapReduce pro souběžné zpracování a analýzu dat Batch.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Open source architektura paralelního zpracování, která podporuje zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat. Podívejte [se, co je Apache Spark v HDInsight?](./spark/apache-spark-overview.md).|
@@ -91,11 +88,11 @@ HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení cluste
 
 ## <a name="open-source-components-in-hdinsight"></a>Opensourcové komponenty ve službě HDInsight
 
-Azure HDInsight umožňuje vytvářet clustery s open source rozhraními, jako jsou Hadoop, Spark, podregistr, LLAP, Kafka, vyplavení, HBA a R. Tyto clustery ve výchozím nastavení přicházejí k ostatním otevřeným zdrojovým komponentám, které jsou součástí clusteru, jako je [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), [Avro](https://avro.apache.org/docs/current/spec.html), [Apache Hive](https://hive.apache.org), [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), [apache Mahout](https://mahout.apache.org/), [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), [Apache Hadoop nitě](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Phoenix](https://phoenix.apache.org/), [Apache prasete](https://pig.apache.org/), [Apache Sqoop](https://sqoop.apache.org/), [Apache tez](https://tez.apache.org/), [Apache Oozie](https://oozie.apache.org/), [Apache Zookeeper](https://zookeeper.apache.org/).  
+Azure HDInsight umožňuje vytvářet clustery s open source rozhraními, jako jsou Hadoop, Spark, podregistr, LLAP, Kafka, vyplavení, HBA a R. Tyto clustery ve výchozím nastavení přidávají s dalšími Open Source komponentami, které jsou součástí clusteru, jako je Apache Ambari5, Avro5, Apache Hive3, HCatalog2, Apache Mahout2, Apache Hadoop MapReduce3, Apache Hadoop YARN2, Apache Phoenix3, Apache Pig3, Apache Sqoop3, Apache Tez3, Apache Oozie2 a Apache ZooKeeper5.  
 
 ## <a name="programming-languages-in-hdinsight"></a>Programovací jazyky v prostředí HDInsight
 
-Clustery HDInsight, včetně clusterů Spark, HBase, Kafka, Hadoop a dalších, podporují celou řadu programovacích jazyků. Některé z nich ale nejsou ve výchozím nastavení nainstalované. Pro knihovny, moduly nebo balíčky, které nejsou nainstalované ve výchozím nastavení, [použijte k instalaci komponenty akci skriptu](./hdinsight-hadoop-script-actions-linux.md).
+Clustery HDInsight, včetně clusterů Spark, HBase, Kafka, Hadoop a dalších, podporují celou řadu programovacích jazyků. Některé z nich ale nejsou ve výchozím nastavení nainstalované. Pro knihovny, moduly nebo balíčky, které nejsou nainstalované ve výchozím nastavení, použijte k instalaci komponenty akci skriptu.
 
 |Programovací jazyk  |Informace  |
 |---------|---------|
@@ -107,13 +104,10 @@ Clustery HDInsight, včetně clusterů Spark, HBase, Kafka, Hadoop a dalších, 
 
 Vývojářské nástroje pro HDInsight, včetně nástrojů IntelliJ, Eclipse, Visual Studio Code a Visual Studio, můžete díky bezproblémové integraci s Azure použít k vytváření a odesílání úloh a dotazů na data HDInsight.
 
-* [Sada Azure Toolkit pro IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [Sada Azure Toolkit pro zatmění](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [Azure HDInsight Tools pro VS Code](./hdinsight-for-vscode.md)
-
-* [Nástroje Azure Data Lake pro Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* Sada Azure Toolkit pro IntelliJ10
+* Sada Azure Toolkit pro Eclipse6
+* Nástroje Azure HDInsight pro VS Code13
+* Nástroje Azure Data Lake pro Visual Studio9
 
 ## <a name="business-intelligence-on-hdinsight"></a>Business intelligence ve službě HDInsight
 
@@ -129,6 +123,18 @@ Známé nástroje business intelligence (BI) načítají, analyzují a vykazují
 
 * [Připojení Excelu k Apache Hadoop pomocí Microsoft Hive ODBC Driver](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (vyžaduje Windows)
 
+
+## <a name="in-region-data-residency"></a>Zasídlí dat v oblasti 
+
+Spark, Hadoop, LLAP, Hadoop a MLService neukládají zákaznická data, aby tyto služby automaticky splňovaly požadavky na umístění dat v regionu, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/). 
+
+Kafka a HBA ukládají zákaznická data. Tato data se automaticky ukládají pomocí Kafka a HBA v jedné oblasti, takže tato služba splňuje požadavky na umístění dat v rámci oblasti, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/). 
+
+
+Známé nástroje business intelligence (BI) načítají, analyzují a vykazují data, která jsou integrovaná do HDInsight, pomocí Power Queryho doplňku nebo Microsoft Hive ODBC Driver.
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření clusteru Apache Hadoop v HDInsight](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Vytvoření clusteru Apache Spark – portál](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* [Podnikové zabezpečení ve službě Azure HDInsight](./domain-joined/hdinsight-security-overview.md)

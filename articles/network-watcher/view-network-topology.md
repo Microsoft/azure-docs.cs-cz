@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737525"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie virtuální sítě Azure
@@ -30,7 +30,7 @@ K zobrazení topologie můžete použít [Azure Portal](#azure-portal), [Azure C
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, který má potřebná [oprávnění](required-rbac-permissions.md).
 2. V levém horním rohu portálu vyberte **všechny služby**.
-3. Do pole Filtr **všechny služby** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+3. Do pole Filtr **všechny služby** zadejte *Network Watcher*. Pokud se ve výsledcích zobrazí **Network Watcher** , vyberte ji.
 4. Vyberte **Topologie**. Generování topologie vyžaduje sledovací proces sítě ve stejné oblasti, ve které je virtuální síť, pro kterou chcete vygenerovat topologii. Pokud nemáte zapnutý sledovací proces sítě v oblasti, ve které je virtuální síť, pro kterou chcete vygenerovat topologii, pro vás ve všech oblastech automaticky vytvoří sledovací procesy sítě. Sledovací procesy sítě se vytvoří ve skupině prostředků s názvem **NetworkWatcherRG**.
 5. Vyberte předplatné, skupinu prostředků virtuální sítě, pro kterou chcete zobrazit topologii, a pak vyberte virtuální síť. Na následujícím obrázku se zobrazí topologie pro virtuální síť s názvem *MyVnet*ve skupině prostředků s názvem *MyResourceGroup*:
 

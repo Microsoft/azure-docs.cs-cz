@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611309"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083212"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
 
@@ -28,8 +28,8 @@ Další klienty se systémem Windows najdete v článku [řešení potíží s h
 V tomto článku se předpokládá, že jste [nakonfigurovali zařízení se hybridem Azure Active Directory připojená](hybrid-azuread-join-plan.md) k podpoře následujících scénářů:
 
 - Podmíněný přístup podle zařízení
-- [Podnikový roaming nastavení](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello pro firmy](../active-directory-azureadjoin-passport-deployment.md)
+- [Podnikový roaming nastavení](./enterprise-state-roaming-overview.md)
+- [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Tento dokument poskytuje pokyny k odstraňování potíží, které vám pomohou vyřešit potenciální problémy.
 
@@ -95,16 +95,16 @@ Zkontrolujte následující pole a ujistěte se, že mají očekávané hodnoty:
 
 #### <a name="domainjoined--yes"></a>DomainJoined: Ano
 
-Toto pole indikuje, jestli je zařízení připojené k místní službě Active Directory, nebo ne. Pokud je hodnota **ne**, zařízení nemůže provést hybridní připojení k Azure AD.
+Toto pole indikuje, jestli je zařízení připojené k místní službě Active Directory, nebo ne. Pokud je hodnota **ne** , zařízení nemůže provést hybridní připojení k Azure AD.
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined: ne
 
-Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojené k pracovišti*). Tato hodnota by neměla **být pro počítač** připojený k doméně, který je taky připojený k hybridní službě Azure AD. Pokud je hodnota **Ano**, přidal se pracovní nebo školní účet před dokončením připojení k hybridní službě Azure AD. V takovém případě se účet ignoruje při použití aktualizace výročí Windows 10 (1607).
+Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojené k pracovišti* ). Tato hodnota by neměla **být pro počítač** připojený k doméně, který je taky připojený k hybridní službě Azure AD. Pokud je hodnota **Ano** , přidal se pracovní nebo školní účet před dokončením připojení k hybridní službě Azure AD. V takovém případě se účet ignoruje při použití Windows 10 verze 1607 nebo novější.
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano
 
 Toto pole indikuje, jestli je zařízení připojené. Pokud se jedná o zařízení připojené k Azure AD nebo k hybridnímu zařízení připojenému k Azure AD, bude tato hodnota **Ano** .
-Pokud je hodnota **ne**, připojení ke službě Azure AD ještě není dokončené.
+Pokud je hodnota **ne** , připojení ke službě Azure AD ještě není dokončené.
 
 Další kroky k odstraňování potíží můžete pokračovat v dalších krocích.
 
@@ -135,9 +135,9 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a chybový kód pro 
 1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím identifikátory EventID rozmezí 304, 305, 307.
 
-![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/1.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="Snímek obrazovky prohlížeče událostí. Je vybrána událost s I D 304 a zobrazí se její informace s kódem chyby a zvýrazněnou fází." border="false":::
 
-![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/2.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Snímek obrazovky prohlížeče událostí. Je vybrána událost s I D 304 a zobrazí se její informace s kódem chyby a zvýrazněnou fází." border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Krok 4: Projděte si možné příčiny a řešení ze seznamu níže.
 
@@ -170,7 +170,7 @@ Možné příčiny selhání:
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
    - Důvod: selhání obecného zjišťování. Nepovedlo se získat metadata zjišťování z DRS.
    - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
-- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609)
    - Důvod: při provádění zjišťování vypršel časový limit operace.
    - Řešení: Ujistěte se, že `https://enterpriseregistration.windows.net` je přístupná v kontextu systému. Další informace najdete v části požadavky na [připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
@@ -210,7 +210,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím identifikátory EventID rozmezí 201
 
-![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/5.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Snímek obrazovky prohlížeče událostí. Je vybrána událost s I D 304 a zobrazí se její informace s kódem chyby a zvýrazněnou fází." border="false":::
 
 ###### <a name="network-errors"></a>Chyby sítě
 
@@ -233,7 +233,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
    - Důvod: HTTP 503 ze serveru DRS.
    - Řešení: Server je momentálně nedostupný. budoucí pokusy o připojení budou po návratu serveru do režimu online nejspíš úspěšné.
 
-###### <a name="other-errors"></a>Další chyby
+###### <a name="other-errors"></a>Jiné chyby
 
 - **E_INVALIDDATA** (0x8007000D/-2147024883)
    - Důvod: odpověď serveru JSON se nedala analyzovat. Důvodem je, že proxy vrací HTTP 200 se stránkou ověřování HTML.
@@ -246,7 +246,7 @@ Platí pouze pro účty federované domény.
 Důvody pro selhání:
 
 - Nepovedlo se získat přístupový token pro prostředek DRS v tichém režimu.
-   - Zařízení s Windows 10 získávají ověřovací token ze služby Federation Service pomocí integrovaného ověřování systému Windows na aktivní koncový bod WS-Trust. Podrobnosti: [Služba FS (Federation Service) konfigurace](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - Zařízení s Windows 10 získávají ověřovací token ze služby Federation Service pomocí integrovaného ověřování systému Windows do aktivního WS-Trustho koncového bodu. Podrobnosti: [Služba FS (Federation Service) konfigurace](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Běžné kódy chyb:**
 
@@ -255,13 +255,13 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
 1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím ID události 305
 
-![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/3.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Snímek obrazovky prohlížeče událostí. Je vybrána událost s I D 304 a zobrazí se její informace s kódem chyby a zvýrazněnou fází." border="false":::
 
 ##### <a name="configuration-errors"></a>Chyby konfigurace
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Důvod: ověřovací protokol není WS-Trust.
-   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust.
+   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Důvod: místní služba FS (Federation Service) nevrátila odpověď XML.
    - Řešení: Zajistěte, aby koncový bod MEX vrátil platný kód XML. Zajistěte, aby proxy nenarušil a vracel odpovědi, které nejsou ve formátu XML.
@@ -284,7 +284,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
    - Důvod: pokus o připojení `https://login.microsoftonline.com` se nezdařil.
    - Řešení: Ověřte síťové připojení k `https://login.microsoftonline.com` .
 
-##### <a name="other-errors"></a>Další chyby
+##### <a name="other-errors"></a>Jiné chyby
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
    - Důvod: Služba Azure AD nepřijala token SAML od místního zprostředkovatele identity.
@@ -330,7 +330,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím identifikátory EventID rozmezí 204
 
-![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/4.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Snímek obrazovky prohlížeče událostí. Je vybrána událost s I D 304 a zobrazí se její informace s kódem chyby a zvýrazněnou fází." border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>Chyby HTTP vrácené ze serveru DRS
 
@@ -387,14 +387,14 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5: shromáždění protokolů a kontaktování podpora Microsoftu
 
-Stáhnout soubor Auth.zip z[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Stáhnout soubor Auth.zip z [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Rozbalte soubory a přejmenujte zahrnuté soubory **start-auth.txt** a **stop-auth.txt** na **Start-auth. cmd** a **stop-auth. cmd**.
-1. Z příkazového řádku se zvýšenými oprávněními spusťte **Start-auth. cmd**.
+1. Rozbalte soubory a přejmenujte zahrnuté soubory **start-auth.txt** a **stop-auth.txt** na **Start-auth. cmd** a **stop-auth. cmd** .
+1. Z příkazového řádku se zvýšenými oprávněními spusťte **Start-auth. cmd** .
 1. Přepínač přepnout účet použijte k přepnutí na jinou relaci s problémem uživatele.
 1. Reprodukujte problém.
 1. Přepínač přepnout účet můžete použít k přepnutí zpět do relace správce s trasováním.
-1. Z příkazového řádku se zvýšenými oprávněními spusťte **stop-auth. cmd**.
+1. Z příkazového řádku se zvýšenými oprávněními spusťte **stop-auth. cmd** .
 1. Zip a odešlete složku **Authlogs** ze složky, ze které byly spouštěny skripty.
 
 ## <a name="troubleshoot-post-join-issues"></a>Řešení problémů po připojení
@@ -404,7 +404,7 @@ Stáhnout soubor Auth.zip z[https://github.com/CSS-Windows/WindowsDiag/tree/mast
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: YES a AzureADPrt: YES
 
 Tato pole označují, jestli se uživatel úspěšně ověřil do služby Azure AD při přihlášení k zařízení.
-Pokud jsou hodnoty **ne**, může to být způsobeno:
+Pokud jsou hodnoty **ne** , může to být způsobeno:
 
 - Chybný klíč úložiště v čipu TPM přidruženého k zařízení při registraci (při spuštění se zvýšenými oprávněními zkontrolujte KeySignTest).
 - Alternativní ID přihlášení

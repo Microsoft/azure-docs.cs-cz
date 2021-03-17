@@ -3,15 +3,15 @@ title: Co je Windows Virtual Desktop? – Azure
 description: Přehled virtuálního klienta Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661108"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730781"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -71,7 +71,7 @@ Podporujeme následující operační systémy, takže se ujistěte, že máte [
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
 
-* [Azure Active Directory](/azure/active-directory/).
+* [Azure Active Directory](../active-directory/index.yml).
 * Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Tuto možnost můžete nakonfigurovat pomocí Azure AD Connect (pro hybridní organizace) nebo Azure AD Domain Services (pro hybridní nebo cloudové organizace).
   * Windows Server AD se synchronizuje s Azure Active Directory. Uživatel se nachází z Windows serveru AD a virtuální počítač virtuálních počítačů s Windows je připojený k doméně Windows serveru AD.
   * Windows Server AD se synchronizuje s Azure Active Directory. Uživatel se nachází z Windows serveru AD a virtuální počítač virtuálních počítačů s Windows je připojený k doméně Azure AD Domain Services.
@@ -85,7 +85,7 @@ Požadavky uživatelů pro připojení k virtuálnímu počítači s Windows:
 
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
-* [Standardní](../active-directory-domain-services/active-directory-ds-comparison.md) služba AD připojená k doméně nebo k ní [připojená](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuální počítače nemůžou být připojené k Azure AD.
+* [Standardní](../active-directory-domain-services/compare-identity-solutions.md) služba AD připojená k doméně nebo k ní [připojená](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuální počítače nemůžou být připojené k Azure AD.
 * Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-images).
 
 >[!NOTE]
@@ -101,6 +101,8 @@ Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala n�
 * Síťový provoz se může směrovat mimo hranice země/oblasti, když se virtuální počítače, které hostují desktopy a aplikace, připojí ke službě správy.
 * Pro optimalizaci výkonu sítě doporučujeme, aby se virtuální počítače hostitele relace společně umístěného ve stejné oblasti Azure jako služba pro správu.
 
+V naší [architektuře documenation](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)se můžete podívat na typické nastavení architektury virtuálního klienta Windows pro podnik.
+
 ## <a name="supported-remote-desktop-clients"></a>Podporovaní klienti vzdálené plochy
 
 Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
@@ -110,12 +112,10 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Klient Microsoft Store
 
 > [!IMPORTANT]
 > Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
-
-> [!IMPORTANT]
-> Virtuální počítač s Windows v současné době nepodporuje klienta vzdálené plochy z Windows Storu. Podpora tohoto klienta se přidá v budoucí verzi.
 
 Další informace o adresách URL, které musíte odblokovat, abyste mohli používat klienty, najdete v [seznamu bezpečných adres URL](safe-url-list.md).
 
@@ -130,7 +130,7 @@ Virtuální počítač s Windows podporuje následující image operačních sys
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Virtuální počítač s Windows nepodporuje image operačního systému x86 (32-bit), Windows 10 Enterprise N nebo Windows 10 Enterprise KN. Windows 7 také nepodporuje žádná profilová řešení založená na VHD nebo VHDX, která jsou hostovaná na spravovaných Azure Storage z důvodu omezení velikosti sektoru.
+Windows Virtual Desktop 32 nepodporuje image operačního systému Windows 10 Enterprise N, Windows 10 pro nebo Windows 10 Enterprise KN. Windows 7 také nepodporuje žádná profilová řešení založená na VHD nebo VHDX, která jsou hostovaná na spravovaných Azure Storage z důvodu omezení velikosti sektoru.
 
 Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce:
 
@@ -138,12 +138,12 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
 |Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
-|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
-|Windows Server 2019|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|No|No|
+|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|No|No|
+|Windows 7 Enterprise|Ano|Ano|No|No|
+|Windows Server 2019|Ano|Ano|No|No|
 |Windows Server 2016|Ano|Ano|Ano|Ano|
-|Windows Server 2012 R2|Ano|Ano|Ne|No|
+|Windows Server 2012 R2|Ano|Ano|No|No|
 
 ## <a name="next-steps"></a>Další kroky
 

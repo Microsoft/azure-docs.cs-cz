@@ -1,23 +1,23 @@
 ---
 title: Zrcadlení Apache Kafka témata – Azure HDInsight
 description: Naučte se používat funkci zrcadlení Apache Kafka k údržbě repliky Kafka v clusteru HDInsight tím, že rozzrcadlí témata do sekundárního clusteru.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087358"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940846"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci témat Apache Kafka s využitím platformy Kafka ve službě HDInsight
 
 Naučte se používat funkci zrcadlení Apache Kafka k replikaci témat do sekundárního clusteru. Zrcadlení může být spuštěno jako nepřetržitý proces nebo občasně používáno jako metoda migrace dat z jednoho clusteru do jiného.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 V tomto příkladu se zrcadlení používá k replikaci témat mezi dvěma clustery HDInsight. Oba clustery jsou v různých datových centrech v různých virtuálních sítích.
 
@@ -80,8 +80,8 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
 1. Vytvořte partnerské vztahy virtuálních sítí. V tomto kroku vytvoříte dvě partnerské vztahy: jednu z **Kafka-Primary-** VNet na **Kafka-Secondary-VNet** a jednu zpět od **Kafka-Secondary-VNet** až **Kafka-Primary-VNet**.
     1. Vyberte virtuální síť **Kafka-Primary-VNet** .
-    1. V části **Nastavení**vyberte **partnerské vztahy** .
-    1. Vyberte možnost **Přidat**.
+    1. V části **Nastavení** vyberte **partnerské vztahy** .
+    1. Vyberte **Přidat**.
     1. Na obrazovce **Přidat partnerský vztah** zadejte podrobnosti, jak je znázorněno na snímku obrazovky níže.
 
         ![HDInsight Kafka Přidání partnerského vztahu virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -104,8 +104,8 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
 1. Na obrazovce **Uložit konfiguraci** zadejte poznámku a klikněte na **Uložit**.
 1. Pokud se zobrazí výzva s upozorněním konfigurace, klikněte **přesto na pokračovat**.
-1. V části **Uložit změny konfigurace**vyberte **OK** .
-1. Vyberte **restartovat**restart  >  **všech ovlivněných** v oznámení **požadovaná k restartování** . Vyberte **Potvrdit restartování vše**.
+1. V části **Uložit změny konfigurace** vyberte **OK** .
+1. Vyberte **restartovat** restart  >  **všech ovlivněných** v oznámení **požadovaná k restartování** . Vyberte **Potvrdit restartování vše**.
 
     ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
@@ -113,7 +113,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
     
 1. Zůstat na kartě **Konfigurace** v části **služby**  >  **Kafka**. V části **Kafka Broker** nastavte vlastnost **Listeners** na `PLAINTEXT://0.0.0.0:9092` .
 1. Vyberte **Uložit**.
-1. Vyberte **restartovat**a **potvrďte restart vše**.
+1. Vyberte **restartovat** a **potvrďte restart vše**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Zaznamenání IP adres zprostředkovatele a adres Zookeeper pro primární cluster.
 
@@ -198,7 +198,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
     Tento soubor popisuje informace o uživateli, které se mají použít při čtení z primárního clusteru Kafka. Další informace o konfiguraci příjemce najdete v tématu Konfigurace [příjemců](https://kafka.apache.org/documentation#consumerconfigs) na adrese Kafka.Apache.org.
 
-    Pokud chcete soubor uložit, použijte **CTRL + X**, **Y**a pak **Zadejte**.
+    Pokud chcete soubor uložit, použijte **CTRL + X**, **Y** a pak **Zadejte**.
 
 1. Před konfigurací producenta, který komunikuje se sekundárním clusterem, nastavte proměnnou pro IP adresy zprostředkovatele **sekundárního** clusteru. K vytvoření této proměnné použijte následující příkazy:
 
@@ -254,7 +254,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
         1. Klikněte na **služby**  >  **Kafka**. Klikněte na kartu **Konfigurace** .
         1. Do pole __Filtr__ zadejte hodnotu `auto.create` . Tím se vyfiltruje seznam vlastností a zobrazí se `auto.create.topics.enable` nastavení.
         1. Změňte hodnotu `auto.create.topics.enable` na true a pak vyberte __Save (Uložit__). Přidejte poznámku a pak znovu vyberte __Uložit__ .
-        1. Vyberte službu __Kafka__ , vyberte __restartovat__a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
+        1. Vyberte službu __Kafka__ , vyberte __restartovat__ a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
         ![Kafka povolit automatické vytváření témat](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 

@@ -9,14 +9,16 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548692"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492553"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Správce zabezpečení Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge Security Manager je dobře ohraničená jádro zabezpečení pro ochranu zařízení IoT Edge a všech jeho součástí abstrakcí zabezpečeného karbidu hardwaru. Správce zabezpečení je ústředním bodem pro posílení zabezpečení a poskytuje technologii pro integraci technologie výrobcům OEM (Original Equipment Manufacturer).
 
@@ -75,7 +77,7 @@ IoT Edge démon zabezpečení využívá všechny dostupné hardwarové kořenov
 
 #### <a name="cloud-interface"></a>Cloudové rozhraní
 
-Cloudové rozhraní umožňuje, aby démon zabezpečení IoT Edge mohl přistupovat ke cloudovým službám, jako je cloudový přístup k zabezpečení zařízení, jako je třeba obnovení zabezpečení.  Například démon zabezpečení IoT Edge aktuálně používá toto rozhraní pro přístup ke službě Azure IoT Hub [Device Provisioning](https://docs.microsoft.com/azure/iot-dps/) pro správu životního cyklu identity zařízení.  
+Cloudové rozhraní umožňuje, aby démon zabezpečení IoT Edge mohl přistupovat ke cloudovým službám, jako je cloudový přístup k zabezpečení zařízení, jako je třeba obnovení zabezpečení.  Například démon zabezpečení IoT Edge aktuálně používá toto rozhraní pro přístup ke službě Azure IoT Hub [Device Provisioning](../iot-dps/index.yml) pro správu životního cyklu identity zařízení.  
 
 #### <a name="management-api"></a>Rozhraní API pro správu
 

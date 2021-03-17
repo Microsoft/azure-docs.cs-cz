@@ -5,47 +5,52 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 03/15/2021
 ms.author: rogarana
-ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272327"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472140"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
-[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: místní Active Directory Domain Services (služba AD DS) a Azure Active Directory Domain Services (Azure služba AD DS). Důrazně doporučujeme, abyste si v [části Jak funguje, jak](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) vybrat správnou doménu služby pro authentcation. Nastavení se liší v závislosti na zvolené doménové službě. Tato série článků se zaměřuje na povolování a konfigurování místních služba AD DS pro ověřování pomocí sdílených složek Azure.
+[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: místní Active Directory Domain Services (služba AD DS) a Azure Active Directory Domain Services (Azure služba AD DS). Důrazně doporučujeme, abyste si v [části jak to funguje](./storage-files-active-directory-overview.md#how-it-works) , abyste si vybrali správnou doménovou službu pro ověřování. Nastavení se liší v závislosti na zvolené doménové službě. Tato série článků se zaměřuje na povolování a konfigurování místních služba AD DS pro ověřování pomocí sdílených složek Azure.
 
 Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přečíst si náš [Průvodce plánováním](storage-files-planning.md) , abyste si přečetli následující řadu článků.
 
 ## <a name="supported-scenarios-and-restrictions"></a>Podporované scénáře a omezení
 
 - Služba AD DS identit, které se používají pro místní služba AD DS ověřování souborů Azure, musí být synchronizované do Azure AD. Synchronizace hodnot hash hesel je volitelná. 
-- Podporuje sdílené složky Azure spravované pomocí Azure File Sync.
-- Podporuje ověřování pomocí protokolu Kerberos se službou AD s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
+- Podporuje sdílené složky Azure spravované pomocí Synchronizace souborů Azure.
+- Podporuje ověřování pomocí protokolu Kerberos se službou AD s šifrováním RC4-HMAC a [AES 256](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). Podpora šifrování AES 256 je aktuálně omezená na účty úložiště s názvy <= 15 znaků. Šifrování AES-128 Kerberos se zatím nepodporuje.
 - Podporuje prostředí s jednotným přihlašováním.
 - Podporuje se jenom na klientech, na kterých běží novější verze operačních systémů než Windows 7 nebo Windows Server 2008 R2.
 - Podporuje se jenom s doménovou strukturou služby AD, na kterou je účet úložiště zaregistrovaný. Ve výchozím nastavení můžete přistupovat ke sdíleným složkám Azure jenom s přihlašovacími údaji služba AD DS z jedné doménové struktury. Pokud potřebujete mít přístup ke sdílené složce Azure z jiné doménové struktury, ujistěte se, že máte nakonfigurovanou správnou důvěryhodnost doménové struktury. Podrobnosti najdete v [nejčastějších dotazech](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) .
-- Nepodporuje ověřování u účtů počítačů vytvořených v služba AD DS. 
+- Nepodporuje ověřování u účtů počítačů vytvořených v služba AD DS.
+- Nepodporuje ověřování proti sdíleným složkám souborů NFS (Network File System).
 
 Když povolíte služba AD DS pro sdílené složky Azure přes protokol SMB, počítače připojené služba AD DS můžou připojit sdílené složky Azure pomocí svých stávajících přihlašovacích údajů služba AD DS. Tato funkce se dá povolit u prostředí služba AD DS hostovaného buď v premch počítačích, nebo hostovaných v Azure.
 
-> [!NOTE]
-> Abychom vám pomohli nastavit ověřování Azure Files AD pro některé běžné případy použití, publikovali jsme dvě videa s podrobnými pokyny pro následující scénáře:
-> - [Výměna místních souborových serverů se soubory Azure (včetně nastavení na privátním odkazu pro soubory a ověřování AD)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [Používání služby soubory Azure jako kontejneru profilů pro virtuální počítače s Windows (včetně nastavení ověřování AD a konfigurace FsLogix)](https://www.youtube.com/embed/9S5A1IJqfOQ)
+## <a name="videos"></a>Videa
+
+Abychom vám pomohli nastavit ověřování Azure Files AD pro některé běžné případy použití, publikovali jsme dvě videa s podrobnými pokyny pro následující scénáře:
+
+| Výměna místních souborových serverů se soubory Azure (včetně nastavení na privátním odkazu pro soubory a ověřování AD) | Používání služby soubory Azure jako kontejneru profilů pro virtuální počítače s Windows (včetně nastavení ověřování AD a konfigurace FsLogix)  |
+|-|-|
+| [![Záznam dění na záznamovém zařízení s výměnou místních souborových serverů – kliknutím si můžete přehrát.](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![Záznam dění na záznamovém okně s použitím souborů Azure jako videa kontejneru profilu – kliknutím si ho můžete přehrát.](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
+
 
 ## <a name="prerequisites"></a>Požadavky 
 
 Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte se, že jste dokončili následující požadavky: 
 
-- Vyberte nebo vytvořte [prostředí služba AD DS](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) a [synchronizujte ho s Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md) s Azure AD Connect. 
+- Vyberte nebo vytvořte [prostředí služba AD DS](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) a [synchronizujte ho s Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md) s Azure AD Connect. 
 
     Tuto funkci můžete povolit na novém nebo existujícím místním služba AD DS prostředí. Identity používané pro přístup se musí synchronizovat do Azure AD. Tenant služby Azure AD a sdílená složka, ke kterým přistupujete, musí být přidruženy ke stejnému předplatnému.
 
-- Připojte se k místnímu počítači nebo VIRTUÁLNÍmu počítači Azure k místnímu služba AD DS. Informace o tom, jak připojit k doméně, najdete v tématu [připojení počítače k doméně](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
+- Připojte se k místnímu počítači nebo VIRTUÁLNÍmu počítači Azure k místnímu služba AD DS. Informace o tom, jak připojit k doméně, najdete v tématu [připojení počítače k doméně](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
 
     Pokud počítač není připojený k doméně služba AD DS, může být pro ověřování stále možné využít přihlašovací údaje služby AD, pokud má váš počítač dohled nad řadičem domény služby AD.
 
@@ -53,17 +58,19 @@ Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte 
 
     Ujistěte se, že účet úložiště obsahující vaše sdílené složky ještě není nakonfigurovaný pro ověřování Azure služba AD DS. Pokud je v účtu úložiště povolené Azure Files Azure služba AD DS Authentication, musí být před změnou na použití v místním služba AD DS zakázané. To znamená, že existující seznamy ACL, které jsou nakonfigurované v prostředí Azure služba AD DS, bude nutné překonfigurovat pro správné vynucení oprávnění.
 
-    Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
+
+    Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Poskytujeme také [pokyny](./storage-files-faq.md#on-premises-access) pro řešení scénářů při zablokování portu 445. 
+
 
 - Před povolením a konfigurací služba AD DS ověřování ke sdíleným složkám souborů Azure proveďte veškeré relevantní síťové konfigurace. Další informace najdete v tématu věnovaném [důležitým informacím o sítích Azure Files](storage-files-networking-overview.md) .
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Ověřování pomocí služby soubory Azure s služba AD DS je dostupné ve [všech oblastech veřejné a gov Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+Ověřování souborů Azure pomocí služba AD DS je k dispozici ve [všech oblastech Azure Public, Čína a gov](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview"></a>Přehled
 
-Pokud máte v plánu povolit pro sdílenou složku všechny síťové konfigurace, doporučujeme, abyste si přečetli článek s [důležitými informacemi o sítích](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) a dokončili související konfiguraci, než povolíte služba AD DS ověřování.
+Pokud máte v plánu povolit pro sdílenou složku všechny síťové konfigurace, doporučujeme, abyste si přečetli článek s [důležitými informacemi o sítích](./storage-files-networking-overview.md) a dokončili související konfiguraci, než povolíte služba AD DS ověřování.
 
 Povolením ověřování služba AD DS pro sdílené složky Azure vám umožníte ověřit sdílené složky Azure pomocí vašich přihlašovacích údajů služba AD DS on-Prem. Dále vám umožní lépe spravovat vaše oprávnění, aby bylo možné podrobnější řízení přístupu. To vyžaduje synchronizaci identit z Prem služba AD DS do služby Azure AD pomocí služby AD Connect. Přístup na úrovni sdílené složky s identitami synchronizovanými v Azure AD se řídí při správě přístupu na úrovni souborů nebo sdílení pomocí Prem služba AD DS přihlašovacích údajů.
 
@@ -83,7 +90,7 @@ Následující diagram znázorňuje kompletní pracovní postup pro povolení ov
 
 ![Diagram souborů pracovního postupu služby AD](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-Identity používané pro přístup ke sdíleným složkám Azure musí být synchronizované do Azure AD, aby bylo možné vyhodnotit oprávnění k souborům na úrovni sdílené složky prostřednictvím modelu [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/overview.md) . Pro soubory nebo adresáře přenesené z existujících souborových serverů se zachovají a vynutily [volitelné seznamy stylů Windows](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) . To nabízí bezproblémovou integraci s podnikovým služba AD DSm prostředím. Při nahrazení Prem souborové servery pomocí sdílených složek Azure mají stávající uživatelé přístup ke sdíleným složkám Azure ze svých současných klientů s jednotným přihlašováním bez jakýchkoli změn v přihlašovacích údajích, které se používají.  
+Identity používané pro přístup ke sdíleným složkám Azure musí být synchronizované do Azure AD, aby bylo možné vyhodnotit oprávnění k souborům na úrovni sdílené složky prostřednictvím modelu [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/overview.md) . Pro soubory nebo adresáře přenesené z existujících souborových serverů se zachovají a vynutily [volitelné seznamy stylů Windows](/previous-versions/technet-magazine/cc161041(v=msdn.10)) . To nabízí bezproblémovou integraci s podnikovým služba AD DSm prostředím. Při nahrazení Prem souborové servery pomocí sdílených složek Azure mají stávající uživatelé přístup ke sdíleným složkám Azure ze svých současných klientů s jednotným přihlašováním bez jakýchkoli změn v přihlašovacích údajích, které se používají.  
 
 ## <a name="next-steps"></a>Další kroky
 

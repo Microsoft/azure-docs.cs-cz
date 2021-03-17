@@ -11,13 +11,13 @@
         - name: Asymetrické směrování s několika síťovými cestami
           href: ../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Zabezpečení návrhů sítí
-          href: ../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: /azure/cloud-adoption-framework/reference/networking-vdc?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Hvězdicová topologie
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke'
+          href: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
         - name: Osvědčené postupy zabezpečení sítě
           href: ../security/fundamentals/network-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vysoce dostupná virtuální síťová zařízení
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha'
+          href: /azure/architecture/reference-architectures/dmz/nva-ha
         - name: Kombinace metod vyrovnávání zatížení
           href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Zotavení po havárii s využitím Azure DNS a Traffic Manageru
@@ -51,6 +51,11 @@
               href: azure-network-latency.md
             - name: Předvolba internetového směrování v Azure
               href: ../virtual-network/routing-preference-overview.md
+        - name: Zabezpečení
+          items:
+            - name: Mechanismy zabezpečení služby Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Virtuální sítě
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vyrovnávání zatížení sítě
@@ -74,27 +79,27 @@
     - name: Připojení k internetu
       items:
         - name: Veřejné servery vyrovnávání zatížení sítě
-          href: ../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Veřejné servery vyrovnávání zatížení aplikace
           href: ../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Ochrana webových aplikací
-          href: ../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Distribuce přenosu mezi umístění
           href: ../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Interní připojení
       items:
         - name: Privátní servery vyrovnávání zatížení sítě
-          href: ../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Privátní servery vyrovnávání zatížení aplikace
           href: ../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Propojení virtuálních sítí (stejné umístění)
-          href: ../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Propojení virtuálních sítí (různá umístění)
           href: ../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Připojení mezi místními sítěmi
       items:
         - name: Vytvoření připojení S2S VPN (IPsec/IKE)
-          href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vytvoření připojení P2S VPN (SSTP s certifikáty)
           href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vytvoření vyhrazeného privátního připojení (ExpressRoute)
@@ -110,7 +115,7 @@
         - name: Kontrola využití prostředků na základě omezení Azure
           href: check-usage-against-limits.md
         - name: Zobrazení topologie sítě
-          href: ../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../network-watcher/view-network-topology.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Ukázkové skripty
       items:
         - name: Azure CLI
@@ -126,19 +131,22 @@
 - name: Referenční informace
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/network'
+      href: /cli/azure/network
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.network/'
+      href: /powershell/module/az.network/
     - name: .Net
-      href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview'
+      href: /dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview
     - name: Node.js
       href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
     - name: REST
-      href: 'https://msdn.microsoft.com/library/mt163658.aspx'
+      href: /rest/api/virtual-network/
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Tvorba šablon
-      href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+      href: ../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Poskytovatelé
       href: networking-partners-msp.md
     - name: Plány Azure do budoucna

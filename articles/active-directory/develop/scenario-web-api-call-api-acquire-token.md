@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f9758ec765ad34e5ef5d8b4d4e0a420a6701b6e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026454"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756391"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.
 
@@ -25,9 +25,12 @@ Po vytvoření objektu klientské aplikace jej použijte k získání tokenu, kt
 
 ## <a name="code-in-the-controller"></a>Kód v kontroleru
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Tady je příklad kódu pomocí Microsoft. identity. Web, který se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*. Chcete-li získat token pro volání rozhraní API pro příjem dat, vložíte `ITokenAcquisition` službu pomocí injektáže závislosti do konstruktoru kontroleru (nebo vašeho konstruktoru stránky, pokud používáte Blazor), a použijete ji v akcích kontroleru, získáte token pro uživatele ( `GetAccessTokenForUserAsync` ) nebo pro samotnou aplikaci ( `GetAccessTokenForAppAsync` ) v případě scénáře démona.
+*Microsoft. identity. Web* přidává rozšiřující metody, které poskytují praktické služby pro volání Microsoft Graph nebo webového rozhraní API pro příjem dat. Tyto metody jsou podrobně vysvětleny ve [webovém rozhraní API, které volá webová rozhraní API: volání rozhraní API](scenario-web-api-call-api-call-api.md). Pomocí těchto pomocných metod není nutné ručně získat token.
+
+Pokud ale chcete token získat ručně, následující kód ukazuje příklad použití *Microsoft. identity. Web* k tomu v kontroleru rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*.
+Chcete-li získat token pro volání rozhraní API pro příjem dat, vložíte `ITokenAcquisition` službu pomocí injektáže závislosti do konstruktoru kontroleru (nebo vašeho konstruktoru stránky, pokud používáte Blazor), a použijete ji v akcích kontroleru, získáte token pro uživatele ( `GetAccessTokenForUserAsync` ) nebo pro samotnou aplikaci ( `GetAccessTokenForAppAsync` ) v případě scénáře démona.
 
 ```csharp
 [Authorize]
@@ -58,9 +61,10 @@ public class MyApiController : Controller
 }
 ```
 
-Podrobnosti o této `callTodoListService` metodě najdete v tématu [webové rozhraní API, které volá webová rozhraní API: volání rozhraní API](scenario-web-api-call-api-call-api.md).
+Podrobnosti o této `callTodoListService` metodě najdete v tématu  [webové rozhraní API, které volá webová rozhraní API: volání rozhraní API](scenario-web-api-call-api-call-api.md).
 
-# <a name="java"></a>[Java](#tab/java)
+### <a name="java"></a>[Java](#tab/java)
+
 Tady je příklad kódu, který se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat Microsoft Graph.
 
 ```java
@@ -81,13 +85,45 @@ public class ApiController {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
+ 
+Webové rozhraní API v Pythonu vyžaduje k ověření, že je nosný token přijatý od klienta, použití middleware. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí knihovny Pythonu MSAL voláním [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metody.
+ 
+Zde je příklad kódu, který získá přístupový token pomocí `acquire_token_on_behalf_of` metody a rozhraní pro baňky. Volá rozhraní API pro příjem dat – koncový bod předplatných pro správu Azure.
+ 
+```python
+def get(self):
+ 
+        _scopes = ["https://management.azure.com/user_impersonation"]
+        _azure_management_subscriptions_uri = "https://management.azure.com/subscriptions?api-version=2020-01-01"
+ 
+        current_access_token = request.headers.get("Authorization", None)
+        
+        #This example only uses the default memory token cache and should not be used for production
+        msal_client = msal.ConfidentialClientApplication(
+                client_id=os.environ.get("CLIENT_ID"),
+                authority=os.environ.get("AUTHORITY"),
+                client_credential=os.environ.get("CLIENT_SECRET"))
+ 
+        #acquire token on behalf of the user that called this API
+        arm_resource_access_token = msal_client.acquire_token_on_behalf_of(
+            user_assertion=current_access_token.split(' ')[1],
+            scopes=_scopes
+        )
+ 
+        headers = {'Authorization': arm_resource_access_token['token_type'] + ' ' + arm_resource_access_token['access_token']}
+ 
+        subscriptions_list = req.get(_azure_management_subscriptions_uri), headers=headers).json()
+ 
+        return jsonify(subscriptions_list)
+```
 
-Webové rozhraní API v Pythonu bude muset použít nějaký middleware k ověření, že je nosný token přijatý od klienta. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí knihovny Python MSAL voláním [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metody. Ukázka demonstrující tento tok pomocí MSAL Python ještě není k dispozici.
+## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a>Upřesnit Přístup k mezipaměti tokenů přihlášeného uživatele z aplikací na pozadí, rozhraní API a služeb
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.](scenario-web-api-call-api-call-api.md)
+Přejděte k dalšímu článku v tomto scénáři, zavolejte na [rozhraní API](scenario-web-api-call-api-call-api.md).

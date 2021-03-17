@@ -7,37 +7,37 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 87b674a9c6b7f7d591b39f1baf54c4d54082f306
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715713"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. To je prováděno napřed nastavením **koncových bodů** , které mohou přijímat události. Pak můžete vytvořit [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
+V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. K tomu je potřeba nejprve nastavit **koncové body**, které mohou události přijímat. Pak můžete vytvořit [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
 
 Tento článek vás provede procesem vytvoření koncových bodů a tras pomocí [Azure Portal](https://portal.azure.com).
 
-Můžete také spravovat koncové body a trasy pomocí [rozhraní API EventRoutes](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
+Alternativně můžete také spravovat koncové body a trasy pomocí [rozhraní API pro směrování událostí](/rest/api/digital-twins/dataplane/eventroutes), sady [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)nebo rozhraní příkazového [řádku Azure Digital revlákens CLI](how-to-use-cli.md). Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
+* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
     - Název instance
     - Skupina prostředků
 
 Tyto podrobnosti můžete najít v [Azure Portal](https://portal.azure.com) po nastavení instance. Přihlaste se na portál a na panelu hledání na portálu vyhledejte název vaší instance.
  
-:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
+:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal." lightbox="media/how-to-manage-routes-portal/search-field-portal.png":::
 
-Výběrem vaší instance z výsledků zobrazíte stránku podrobností pro vaši instanci:
+Výběrem vaší instance z výsledků zobrazíte tyto podrobnosti v přehledu vaší instance:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Snímek obrazovky s podrobnostmi instance ADT" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Snímek obrazovky se stránkou s přehledem instance digitálních vláken Azure Název a skupina prostředků jsou zvýrazněné.":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Vytvoření koncového bodu pro digitální vlákna Azure
 
@@ -48,77 +48,61 @@ Toto jsou podporované typy koncových bodů, které můžete vytvořit pro inst
 
 Další informace o různých typech koncových bodů najdete v tématu [*Výběr mezi službou zasílání zpráv Azure*](../event-grid/compare-messaging-services.md).
 
-Aby bylo možné propojit koncový bod s digitálními podsítěmi Azure, musí již existovat téma Event gridu, centrum událostí nebo Service Bus, které používáte pro koncový bod. 
+V této části se dozvíte, jak vytvořit jeden z těchto koncových bodů v [Azure Portal](https://portal.azure.com).
 
-### <a name="create-an-event-grid-endpoint"></a>Vytvoření koncového bodu Event Grid
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-**Předpoklad**: Vytvořte téma Event Grid podle kroků uvedených v [části *Vytvoření vlastního tématu* ](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) v rychlém startu Event Grid *vlastních událostí* .
+### <a name="create-the-endpoint"></a>Vytvoření koncového bodu 
 
-Jakmile téma vytvoříte, můžete ho propojit s digitálními výsledky Azure na stránce instance digitálních vláken Azure v [Azure Portal](https://portal.azure.com) (instanci můžete najít zadáním jejího názvu do panelu hledání na portálu).
+Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Pokud chcete vytvořit nový koncový bod, na stránce vaší instance v [Azure Portalu](https://portal.azure.com) přejít na stránku vaší instance (můžete najít instanci zadáním jejího názvu do panelu hledání na portálu).
 
-V nabídce instance vyberte _koncové body_. Pak na stránce *koncové body* , které následuje, vyberte *+ vytvořit koncový bod*. 
+1. V nabídce instance vyberte _koncové body_. Pak na stránce *koncové body* , které následuje, vyberte *+ vytvořit koncový bod*. Tím se otevře stránka *vytvořit koncový bod* , kde budete vyplňovat pole v následujících krocích.
 
-Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit koncový bod typu _Event Grid_ tak, že vyberete odpovídající přepínač. Dokončete ostatní podrobnosti: do pole _název_ zadejte název vašeho koncového bodu, v rozevíracím seznamu vyberte své _předplatné_ a z třetího rozevíracího seznamu vyberte předem vytvořené _Event Grid téma_ .
+    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Event Grid." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
 
-Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
+1. Zadejte **název** koncového bodu a vyberte **Typ koncového bodu**.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Event Grid.":::
+1. Dokončete další podrobnosti, které jsou požadovány pro váš typ koncového bodu, včetně vašeho předplatného a [výše](#prerequisite-create-endpoint-resources)popsaných prostředků koncového bodu.
+    1. V případě centra událostí a Service Bus jenom koncových bodů, musíte vybrat **typ ověřování**. Ověřování pomocí klíčů můžete použít s předem vytvořeným autorizačním pravidlem nebo ověřováním na základě identity, pokud budete používat koncový bod se [spravovanou identitou](concepts-security.md#managed-identity-for-accessing-other-resources-preview) pro instanci digitálních vláken Azure. 
 
-Pomocí ikony oznámení na horním panelu Azure Portal můžete ověřit, že je koncový bod úspěšně vytvořen: 
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu centrum událostí" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Snímek obrazovky s oznámením, že se má ověřit vytvoření koncového bodu" border="false":::
+1. Vytvoření koncového bodu dokončíte tak, že vyberete _Uložit_.
+
+>[!IMPORTANT]
+> Aby bylo možné úspěšně použít ověřování na základě identity pro váš koncový bod, bude nutné vytvořit spravovanou identitu pro vaši instanci pomocí kroků v tématu [*Postupy: povolení spravované identity pro události směrování (Preview)*](./how-to-enable-managed-identities-portal.md).
+
+Po vytvoření koncového bodu můžete ověřit, že byl koncový bod úspěšně vytvořen, zaškrtnutím ikony oznámení na horním panelu Azure Portal: 
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Snímek obrazovky s oznámením, že se má ověřit vytvoření koncového bodu Na horním panelu portálu se vybere ikona ve tvaru zvonku a zobrazí se oznámení o tom, že koncový bod ADT-eh-Endpoint byl úspěšně vytvořen.":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
 
 Koncový bod, který byl vytvořen zpátky, můžete také zobrazit na stránce *koncových bodů* pro instanci digitálních vláken Azure.
 
-Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
+Teď je služba Event Grid, centrum událostí nebo Service Bus k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem, který jste zvolili pro koncový bod. Tento název obvykle použijete jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route).
 
-Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
+### <a name="create-an-endpoint-with-dead-lettering"></a>Vytvoření koncového bodu s nedoručenými písmeny
 
-### <a name="create-an-event-hubs-endpoint"></a>Vytvoření koncového bodu Event Hubs
+Když koncový bod nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**.
 
-**Požadavky**: 
-* Budete potřebovat _Event Hubs obor názvů_ a _centrum událostí_. Oba z těchto možností vytvořte pomocí postupu v Event Hubs [*vytvoření centra událostí*](../event-hubs/event-hubs-create.md) rychlý Start.
-* Budete potřebovat _autorizační pravidlo_. Pokud to chcete vytvořit, přečtěte si článek Event Hubs [*autorizaci přístupu k prostředkům Event Hubs pomocí článku sdílené přístupové podpisy*](../event-hubs/authorize-access-shared-access-signature.md) .
+Aby bylo možné vytvořit koncový bod s povolenou výjimkou, je nutné použít příkazy rozhraní [příkazového řádku](how-to-use-cli.md) nebo [rozhraní API plochy ovládacího prvku](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) pro vytvoření koncového bodu, nikoli Azure Portal.
 
-Přejít na stránku podrobností pro instanci digitálních vláken Azure v [Azure Portal](https://portal.azure.com) (můžete ji najít zadáním jejího názvu do panelu hledání na portálu).
+Pokyny k tomu, jak to provést pomocí těchto nástrojů, najdete v tématu [*rozhraní API a verze CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) tohoto článku.
 
-V nabídce instance vyberte _koncové body_. Pak na stránce *koncové body* , které následuje, vyberte *+ vytvořit koncový bod*. 
-
-Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit koncový bod typu _centrum událostí_ , a to tak, že vyberete odpovídající přepínač. Do pole _název_ zadejte název koncového bodu. Pak vyberte své _předplatné_a předem vytvořený _obor názvů centra událostí_, _centrum událostí_a _autorizační pravidlo_ z příslušných rozevíracích seznamů.
-
-Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Event Hubs.":::
-
-To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zkontrolujete ikonu oznámení na horním Azure Portalovém panelu. 
-
-Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
-
-Centrum událostí je teď k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
-
-### <a name="create-a-service-bus-endpoint"></a>Vytvoření koncového bodu Service Bus
-
-**Požadavky**: 
-* Budete potřebovat _Service Bus obor názvů_ a _Service Bus téma_. Oba z těchto možností vytvořte pomocí postupu v [*tématu Service Bus vytváření témat a odběrů*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) rychlý Start. Nemusíte dokončit [*vytváření odběrů v části tématu*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic) .
-* Budete potřebovat _autorizační pravidlo_. Pokud to chcete vytvořit, přečtěte si článek Service Bus [*ověřování a autorizaci*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature) .
-
-Přejít na stránku podrobností pro instanci digitálních vláken Azure v [Azure Portal](https://portal.azure.com) (můžete ji najít zadáním jejího názvu do panelu hledání na portálu).
-
-V nabídce instance vyberte _koncové body_. Pak na stránce *koncové body* , které následuje, vyberte *+ vytvořit koncový bod*. 
-
-Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit koncový bod typu _Service Bus_ tak, že vyberete odpovídající přepínač. Do pole _název_ zadejte název koncového bodu. Pak vyberte své _předplatné_a předem vytvořený _Service Bus obor názvů_, _Service Bus téma_a _autorizační pravidlo_ z příslušných rozevíracích seznamů.
-
-Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Service Bus.":::
-
-To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zkontrolujete ikonu oznámení na horním Azure Portalovém panelu. 
-
-Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
-
-Nyní je téma Service Bus k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
-
-## <a name="event-routes"></a>Trasy událostí
+## <a name="create-an-event-route"></a>Vytvoření trasy události
 
 Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do koncového bodu, bude nutné definovat **trasu události**. Tyto trasy umožňují vývojářům nasměrovat tok událostí v celém systému a na navazující služby. Přečtěte si další informace o trasách událostí v tématu [*Koncepty: směrování událostí digitálních vláken Azure*](concepts-route-events.md).
 
@@ -127,14 +111,14 @@ Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do
 >[!NOTE]
 >Pokud jste své koncové body v poslední době nasadili, ověřte, že se jejich nasazení dokončilo, **než** se pokusíte použít pro novou trasu události. Pokud nemůžete nastavit trasu, protože koncové body nejsou připravené, počkejte pár minut a zkuste to znovu.
 
-### <a name="create-an-event-route"></a>Vytvoření trasy události 
+### <a name="creation-steps-with-the-azure-portal"></a>Postup vytvoření pomocí Azure Portal
 
 Definice trasy události obsahuje tyto prvky:
 * Název trasy, kterou chcete použít
 * Název koncového bodu, který chcete použít
-* Filtr definující události odesílané do koncového bodu
-    - Pokud chcete zakázat trasu, aby se neodesílaly žádné události, použijte hodnotu filtru.`false`
-    - Pokud chcete povolit trasu, která nemá žádné konkrétní filtrování, použijte hodnotu filtru.`true`
+* Filtr definující události posílané do koncového bodu
+    - Pokud chcete zakázat trasu, aby se neodesílaly žádné události, použijte hodnotu filtru. `false`
+    - Pokud chcete povolit trasu, která nemá žádné konkrétní filtrování, použijte hodnotu filtru. `true`
     - Podrobnosti o jakémkoli jiném typu filtru najdete v části [*události filtru*](#filter-events) níže.
 
 Jedna trasa může umožňovat výběr více oznámení a typů událostí.
@@ -153,7 +137,7 @@ Aby bylo možné trasu povolit, je nutné také **Přidat filtr trasy události*
 
 Po dokončení stiskněte tlačítko _Uložit_ a vytvořte tak trasu události.
 
-### <a name="filter-events"></a>Události filtru
+## <a name="filter-events"></a>Události filtru
 
 Jak je popsáno výše, trasy mají pole **filtru** . Pokud je hodnota filtru v trase `false` , nebudou do koncového bodu odesílány žádné události. 
 
@@ -161,7 +145,6 @@ Po povolení minimálního filtru `true` koncových bodů dostane z digitálníc
 * Telemetrie aktivovaná pomocí [digitálních vláken](concepts-twins-graph.md) pomocí rozhraní API služby Azure Digital Service
 * Dvojitá oznámení o změně vlastností, která se aktivují při změnách vlastností u všech vláken v instanci digitálních vláken Azure
 * Události životního cyklu aktivované při vytváření nebo odstraňování vazeb
-* Přidané nebo odstraněné události změny modelu aktivované při přidání nebo odstranění [modelů](concepts-models.md) nakonfigurovaných v instanci digitálních vláken Azure
 
 Můžete omezit typy odesílaných událostí tak, že definujete konkrétnější filtr.
 

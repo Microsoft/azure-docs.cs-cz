@@ -3,7 +3,7 @@ title: Rozšířené kódování pomocí Media Encoder Premium Workflow | Micros
 description: Naučte se kódovat pomocí Media Encoder Premium Workflow. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792306"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013495"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Pokročilé kódování pomocí Media Encoderu Premium Workflow
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
 > Procesor Media Encoder Premium Workflow médií popisovaný v tomto článku není v Číně k dispozici.
 >
@@ -31,7 +35,7 @@ Microsoft Azure Media Services zavádí procesor **Media Encoder Premium Workflo
 
 Následující témata popisují podrobnosti související s **Media Encoder Premium Workflow**:
 
-* [Formáty podporované Media Encoder Premium Workflow](media-services-premium-workflow-encoder-formats.md) – popisuje formáty souborů a kodeky, které **Media Encoder Premium Workflow**podporuje.
+* [Formáty podporované Media Encoder Premium Workflow](./media-services-encode-asset.md) – popisuje formáty souborů a kodeky, které **Media Encoder Premium Workflow** podporuje.
 * [Přehled a porovnání kodérů médií na vyžádání v Azure](media-services-encode-asset.md) porovnává funkce kódování **Media Encoder Premium Workflow** a **Media Encoder Standard**.
 
 Tento článek ukazuje, jak se zakódovat pomocí **Media Encoder Premium Workflow** pomocí rozhraní .NET.

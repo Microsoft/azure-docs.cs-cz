@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730877"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
@@ -27,12 +27,14 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
   Koncový bod REST musí obvykle splňovat tato kritéria, aby mohl konektor fungovat:
 
   * Soubor Swagger musí být hostovaný na adrese URL HTTPS, která je veřejně přístupná.
+  
+  * Soubor Swagger musí `operationID` pro každou operaci v definici obsahovat. V takovém případě konektor zobrazuje pouze poslední operaci v souboru Swagger. 
 
   * Soubor Swagger musí mít povolený [sdílení prostředků mezi zdroji (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
   Chcete-li vytvořit odkaz na soubor Swagger, který není hostovaný nebo který nesplňuje požadavky na zabezpečení a více zdrojů, můžete [nahrát soubor Swagger do kontejneru objektů BLOB v účtu úložiště Azure](#host-swagger)a povolit pro tento účet úložiště CORS, abyste mohli soubor odkázat.
 
-  V příkladech v tomto tématu se používá [Cognitive Services Face API](../cognitive-services/face/overview.md), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
+  V příkladech v tomto tématu se používá [Cognitive Services rozhraní API pro rozpoznávání tváře](../cognitive-services/face/overview.md), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -50,21 +52,21 @@ Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro 
 
 1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další**.
 
-   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Zadejte adresu URL koncového bodu Swagger.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky s triggerem "H T T P + Swagger" a vlastností "koncový bod" koncového bodu U R L nastavenou na hodnotu U R L.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Když Návrhář zobrazí operace popsané souborem Swagger, vyberte operaci, kterou chcete použít.
 
-   ![Operace v souboru Swagger](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky s triggerem "H T T P + Swagger" a seznamem, který zobrazuje operace Swagger.](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Zadejte hodnoty pro parametry triggeru, které se liší v závislosti na vybrané operaci, kterou chcete zahrnout do volání koncového bodu. Nastavte opakování pro to, jak často chcete, aby Trigger volal koncový bod.
 
    Tento příklad přejmenuje aktivační událost na "aktivační událost HTTP + Swagger: Face-Detect", aby měl krok výstižnější název.
 
-   ![Podrobnosti o operaci](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![Snímek obrazovky, který zobrazuje návrháře aplikace logiky s triggerem "H T T P + Swagger", který zobrazuje operaci "obličeje-rozpoznávání".](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
@@ -90,7 +92,7 @@ Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger
 
 1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další**.
 
-   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
@@ -166,4 +168,3 @@ Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Vol
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-

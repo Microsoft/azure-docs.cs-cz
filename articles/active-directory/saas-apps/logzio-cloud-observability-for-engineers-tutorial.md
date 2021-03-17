@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 67c9a46fd27851749fb8e97363de89cd6e86bd0a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18160f5bbd6747596a1f0b118574eccd6e3c63f5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549649"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací Logz.io-Azure AD
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat integraci Logz.io-Azure AD s Azure Act
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k integraci Logz.io-Azure AD s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Logz.io – Integrace Azure AD podporuje **IDP** iniciované jednotné přihlašování.
-* Jakmile nakonfigurujete integraci Logz.io-Azure AD, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Jakmile nakonfigurujete integraci Logz.io-Azure AD, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-logzio---azure-ad-integration-from-the-gallery"></a>Přidání integrace Logz.io-Azure AD z Galerie
 
@@ -95,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | ---------------| --------- |
     | relace – vypršení platnosti | uživatel. relace – vypršení platnosti |
     | e-mail | uživatel. pošta |
-    | Skupina | User. Groups |
+    | Group (Skupina) | User. Groups |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -115,7 +115,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -141,25 +141,24 @@ Ke konfiguraci jednotného přihlašování na straně **LOGZ.IO-Azure AD Integr
 
 ### <a name="create-logzio-azure-ad-integration-test-user"></a>Vytvořit testovacího uživatele pro integraci služby Azure AD Logz.io
 
-V této části vytvoříte uživatele s názvem Britta Simon v integraci Logz.io-Azure AD. Spolupracujte s [LOGZ.IO-týmem podpory Integrace Azure AD](mailto:help@logz.io) a přidejte uživatele z LOGZ.IO – Azure AD Integration Platform. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v integraci Logz.io-Azure AD. Spolupracujte s [LOGZ.IO-týmem podpory Integrace Azure AD](mailto:help@logz.io) a přidejte uživatele z LOGZ.IO – Azure AD Integration Platform. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici integrace Logz.io-Azure AD na přístupovém panelu byste měli být automaticky přihlášení k integraci Logz.io-Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici integrace Logz.io-Azure AD na přístupovém panelu byste měli být automaticky přihlášení k integraci Logz.io-Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte Logz.io – Integrace Azure AD se službou Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit integraci Logz.io-Azure AD s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Jak chránit integraci Logz.io-Azure AD s pokročilou viditelností a ovládacími prvky](/cloud-app-security/proxy-intro-aad)

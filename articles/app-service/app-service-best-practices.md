@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75768482"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144872"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
-Tento článek shrnuje osvědčené postupy pro používání [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
+Tento článek shrnuje osvědčené postupy pro používání [Azure App Service](./overview.md). 
 
 ## <a name="colocation"></a><a name="colocation"></a>Společné umístění
 Když jsou prostředky Azure, které vytváří řešení, jako je webová aplikace a databáze, umístěné v různých oblastech, může to mít následující důsledky:
@@ -34,10 +34,10 @@ Když si všimnete, že aplikace spotřebovává více PROCESORů, než se oček
 Další informace o stavových a bezstavových aplikacích můžete sledovat v tomto videu: [plánování škálovatelné komplexní aplikace na více úrovních v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnostech škálování App Service a automatického škálování najdete v tématu [škálování webové aplikace v Azure App Service](manage-scale-up.md).  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>Při vyčerpání prostředků soketu
-Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je třeba HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
+Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js a odchozí požadavky http
-Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší protokol HTTP – Keep-Alive, je důležité. Pomocí balíčku agentkeepalive můžete [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
+Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší Keep-Alive HTTP, je důležité. Pomocí balíčku agentkeepalive můžete [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
 
 Vždy zpracujte `http` odpověď, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
 
@@ -67,7 +67,7 @@ Azure App Service výchozí konfigurace pro Node.js aplikace má za cíl nejlép
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o osvědčených postupech najdete v [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
+Další informace o osvědčených postupech najdete v [App Service Diagnostics](./overview-diagnostics.md) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
 
 - Přejděte do webové aplikace v [Azure Portal](https://portal.azure.com).
 - Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku App Service.

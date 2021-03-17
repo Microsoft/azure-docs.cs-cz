@@ -1,25 +1,19 @@
 ---
 title: Exportování skupin prostředků Azure, které obsahují rozšíření virtuálních počítačů
 description: Exportujte Správce prostředků šablony, které obsahují rozšíření virtuálních počítačů.
-services: virtual-machines-windows
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 12/05/2016
-ms.author: akjosh
-ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df1ae43b2c6a74448a6782a43fb86f8f4939b13a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494747"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560000"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportování skupin prostředků, které obsahují rozšíření virtuálních počítačů
 

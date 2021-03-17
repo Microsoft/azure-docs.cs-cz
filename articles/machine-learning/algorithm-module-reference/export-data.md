@@ -1,7 +1,7 @@
 ---
 title: 'Exportovat data: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul exportovat data v Azure Machine Learning k uložení výsledků, mezilehlých dat a pracovních dat z vašich kanálů do cloudového úložiště do míst mimo Azure Machine Learning.
+description: Pomocí modulu export dat v Návrháři Azure Machine Learning můžete ukládat výsledky a mezilehlá data mimo Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: d0fd11ce5b25b8796b07176a4ba83091a8f7cc0b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461013"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421307"
 ---
 # <a name="export-data-module"></a>Exportovat datový modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete ukládat výsledky, mezilehlá data a pracovní data z vašich kanálů do cílů cloudového úložiště. 
 
@@ -40,12 +40,12 @@ Před exportem dat je třeba nejprve zaregistrovat úložiště dat v pracovním
 
 1. Vyberte **exportovat data** a otevřete podokno **vlastnosti** .
 
-1. V případě **úložiště dat**vyberte v rozevíracím seznamu existující úložiště dat. Můžete také vytvořit nové úložiště dat. Podívejte se, jak navštívíte [přístup k datům ve službě Azure Storage](../how-to-access-data.md).
+1. V případě **úložiště dat** vyberte v rozevíracím seznamu existující úložiště dat. Můžete také vytvořit nové úložiště dat. Podívejte se, jak navštívíte [přístup k datům ve službě Azure Storage](../how-to-access-data.md).
 
     > [!NOTE]
     > Export dat určitého datového typu do sloupce databáze SQL, který je zadaný jako jiný datový typ, se nepodporuje. Cílová tabulka nemusí nejprve existovat.
 
-1. Zaškrtávací políčko **znovu vygenerovat výstup**určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
+1. Zaškrtávací políčko **znovu vygenerovat výstup** určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
 
     Ve výchozím nastavení je Nevybraná, což znamená, že pokud byl modul spuštěn se stejnými parametry dřív, systém použije výstup z posledního spuštění k omezení doby běhu. 
 
@@ -54,7 +54,7 @@ Před exportem dat je třeba nejprve zaregistrovat úložiště dat v pracovním
 1. Definujte cestu v úložišti dat, kde jsou data. Cesta je relativní cesta. Prázdné cesty nebo cesty URL nejsou povoleny.
 
 
-1. V poli **Formát souboru**vyberte formát, ve kterém mají být data uložena.
+1. V poli **Formát souboru** vyberte formát, ve kterém mají být data uložena.
  
 1. Odešlete kanál.
 

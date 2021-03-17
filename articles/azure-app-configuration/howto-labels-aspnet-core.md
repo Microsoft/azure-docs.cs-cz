@@ -3,17 +3,17 @@ title: Použití konfigurace pro jednotlivé prostředí
 titleSuffix: Azure App Configuration
 description: Pomocí popisků zadejte hodnoty konfigurace pro jednotlivé prostředí.
 ms.service: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: 689fdbd444aa4b20f5bef225faa259788c47cf9d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.author: alkemper
+ms.openlocfilehash: 84286df063994f3def15079cb9b190550d5bd977
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206659"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929612"
 ---
 # <a name="use-labels-to-enable-configurations-for-different-environments"></a>Použití popisků pro povolení konfigurací pro různá prostředí
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905882"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974115"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Kurz: Vynucení vícefaktorového ověřování pro uživatele typu host B2B
 
@@ -32,7 +32,7 @@ Příklad:
 3.  Potom se mu zobrazí výzva, aby dokončil výzvu vícefaktorového ověřování. 
 4.  Uživatel si u společnosti A nastaví vícefaktorové ověřování a vybere si svou možnost. Uživatel k aplikaci získá přístup.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Před nastavením vícefaktorového ověřování otestujete přihlašovací prostředí.
@@ -73,7 +73,7 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Vytvoření zásady podmíněného přístupu, které vyžadují MFA
 1.  Přihlaste se k vašemu [Azure Portal](https://portal.azure.com/) jako správce zabezpečení nebo správce podmíněného přístupu.
-2.  V Azure Portal vyberte **Azure Active Directory**. 
+2.  Na portálu Azure Portal vyberte **Azure Active Directory**. 
 3.  Na stránce **Azure Active Directory** v části **zabezpečení** vyberte **podmíněný přístup**.
 4.  Na stránce **Podmíněný přístup** vyberte nahoře na panelu nástrojů možnost **Nové zásady**.
 5.  Do textového pole **Název** na stránce **Nový** zadejte **Vyžadovat vícefaktorové ověřování pro B2B přístup k webu Azure Portal**.
@@ -89,7 +89,7 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 
 12. Na stránce **Vybrat** zvolte **Microsoft Azure Management** a potom zvolte **Vybrat**.
 
-    ![Snímek obrazovky znázorňující vybranou aplikaci pro správu Microsoft Azure](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![Snímek obrazovky, který zvýrazní možnost správy Microsoft Azure.](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. Na stránce **Cloudové aplikace** vyberte **Hotovo**.
 14. V části **Ovládací prvky přístupu** na stránce **Nový** vyberte **Udělení**.
@@ -107,7 +107,7 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 
 1.  Na stránce **podmíněný přístup – zásady** vyberte **What If**. 
 
-    ![Snímek obrazovky znázorňující, kde vybrat možnost citlivostní informace](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![Snímek obrazovky, který zvýrazní, kde vybrat možnost citlivostní informace na stránce Zásady podmíněného přístupu](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  Vyberte **Uživatel**, zvolte svého testovacího uživatele typu host a potom zvolte **Vybrat**.
 

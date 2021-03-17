@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 58fa9361cc591f7d2b78a19f3db620112e288592
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 51b919c97a15946f57211cf8fe12d7c5efe435bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284204"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934632"
 ---
 ## <a name="upload-the-audio"></a>Nahrát zvuk
 
@@ -109,7 +110,7 @@ Nainstalujte **Microsoft. cognitiveservices Account. Speech. Remoteconversation 
 
 ### <a name="sample-transcription-code"></a>Ukázka přepisu kódu
 
-Až budete mít `conversationId` , vytvořte v klientské aplikaci vzdálenou konverzaci s přepisem **RemoteConversationTranscriptionClient** , která se dotazuje na stav asynchronního přepisu. Vytvořte objekt **RemoteConversationTranscriptionOperation** , abyste získali dlouho běžící objekt [operace](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) . Můžete kontrolovat stav operace nebo počkat na její dokončení. 
+Až budete mít `conversationId` , vytvořte v klientské aplikaci vzdálenou konverzaci s přepisem **RemoteConversationTranscriptionClient** , která se dotazuje na stav asynchronního přepisu. Vytvořte objekt  **RemoteConversationTranscriptionOperation** , abyste získali dlouho běžící objekt [operace](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) . Můžete kontrolovat stav operace nebo počkat na její dokončení. 
 
 ```csharp
 // Create the speech config

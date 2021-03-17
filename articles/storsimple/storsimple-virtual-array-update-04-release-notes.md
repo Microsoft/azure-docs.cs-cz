@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 392e930dcb69392b6f9425abba0efa516d5c82b8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60334790"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967053"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4
 
@@ -29,7 +29,7 @@ Následující poznámky k verzi identifikují kritické otevřené problémy a 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením StorSimple virtuálního pole pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
-Aktualizace 0,4 odpovídá **10.0.10289.0**verze softwaru.
+Aktualizace 0,4 odpovídá **10.0.10289.0** verze softwaru.
 
 > [!NOTE]
 > Aktualizace jsou rušivé a restartují vaše zařízení. Pokud probíhá vstupně-výstupní operace, dojde k výpadku zařízení.
@@ -53,7 +53,7 @@ Aktualizace 0,4 je primárně sestavení s opravou chyby, které je několik vyl
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Funkce | Problém |
+| Ne. | Příznak | Problém |
 | --- | --- | --- |
 | 1 |Výkon zálohování|V dřívějších verzích se zálohování zahrnující velký počet souborů může trvat dlouhou dobu (v řádu dnů). V této verzi se úplné i přírůstkové zálohování zobrazuje výrazné snížení času na dokončení. |
 | 2 |Balíček pro podporu|Statistiky disku, procesoru, paměti, sítě a cloudu jsou teď přihlášené k protokolům podpory, které usnadňují řešení problémů s problémy v zařízení.|
@@ -65,7 +65,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí. 
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi Preview nejde aktualizovat na podporovanou obecnou verzi dostupnosti. |U těchto virtuálních zařízení je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte tento datový disk rozbalit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
@@ -87,10 +87,9 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-step"></a>Další krok
 [Nainstalujte aktualizaci 0,4](storsimple-virtual-array-install-update-04.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 Hledáte starší poznámku k verzi? Přejít na: 
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3](storsimple-ova-update-03-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](storsimple-ova-update-01-release-notes.md)
-* [Poznámky k verzi pro StorSimple Virtual Array General Availability](storsimple-ova-pp-release-notes.md)
-
+* [Poznámky k verzi pro StorSimple Virtual Array General Availability](./storsimple-virtual-array-update-06-release-notes.md)

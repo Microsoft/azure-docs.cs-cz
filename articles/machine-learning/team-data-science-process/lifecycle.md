@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720448"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305589"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Životní cyklus procesu vědeckého zpracování dat týmu
 
@@ -43,12 +43,12 @@ Tady je vizuální znázornění životního cyklu TDSP:
 
 Pro každou fázi poskytujeme následující informace:
 
-   * **Cíle**: konkrétní cíle.
-   * **Jak to udělat**: Osnova konkrétních úkolů a pokyny k jejich dokončení.
-   * **Artefakty**: dodávky a podpora pro jejich vyprodukování.
+   * **Cíle** : konkrétní cíle.
+   * **Jak to udělat** : Osnova konkrétních úkolů a pokyny k jejich dokončení.
+   * **Artefakty** : dodávky a podpora pro jejich vyprodukování.
 
 ## <a name="next-steps"></a>Další kroky
 
 Poskytujeme kompletní podrobné návody, které znázorňují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](./index.yml).

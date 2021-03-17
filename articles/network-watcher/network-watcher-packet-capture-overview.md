@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c458508dbf8d98349ec8549af32e3dd48bbd09b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840804"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966424"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Seznámení s proměnným zachytávání paketů v Azure Network Watcher
 
@@ -25,7 +25,7 @@ Network Watcher variabilní zachytávání paketů umožňuje vytvářet relace 
 Zachytávání paketů je rozšíření virtuálního počítače, které se vzdáleně spouští prostřednictvím Network Watcher. Tato schopnost usnadňuje zatížení při ručním zachytávání paketů na požadovaném virtuálním počítači, který šetří cenné časy. Zachytávání paketů se dá aktivovat prostřednictvím portálu, PowerShellu, CLI nebo REST API. Jedním z příkladů, jak se dá zachytávání paketů aktivovat, jsou výstrahy virtuálního počítače. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit provoz, který chcete monitorovat. Filtry jsou založené na 5-tice (protokol, místní IP adresa, vzdálená IP adresa, místní port a vzdálený port). Zachycená data jsou uložená na místním disku nebo v objektu BLOB úložiště. Limit 10 relací zachytávání paketů je omezen na jednu oblast a předplatné. Toto omezení platí jenom pro relace a nevztahují se na uložené soubory zachytávání paketů místně na virtuálním počítači nebo v účtu úložiště.
 
 > [!IMPORTANT]
-> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension` . Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension` . Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md).
 
 Chcete-li omezit informace, které zachytíte pouze na požadované informace, jsou k dispozici následující možnosti pro relaci zachytávání paketů:
 
@@ -41,7 +41,7 @@ Chcete-li omezit informace, které zachytíte pouze na požadované informace, j
 
 |Vlastnost|Popis|
 |---|---|
-|**Protocol (Protokol)** | Protokol, který se má vyfiltrovat pro zachytávání paketů. Dostupné hodnoty jsou TCP, UDP a All.|
+|**Protokol** | Protokol, který se má vyfiltrovat pro zachytávání paketů. Dostupné hodnoty jsou TCP, UDP a All.|
 |**Místní IP adresa** | Tato hodnota filtruje zachytávání paketů do paketů, u kterých místní IP adresa odpovídá této hodnotě filtru.|
 |**Místní port** | Tato hodnota filtruje zachytávání paketů do paketů, kde místní port odpovídá této hodnotě filtru.|
 |**Vzdálená IP adresa** | Tato hodnota filtruje zachytávání paketů do paketů, ve kterých Vzdálená IP adresa odpovídá této hodnotě filtru.|
@@ -55,16 +55,3 @@ Přečtěte si, jak vytvořit proaktivní zachycení paketů na základě výstr
 
 <!--Image references-->
 [1]: ./media/network-watcher-packet-capture-overview/figure1.png
-
-
-
-
-
-
-
-
-
-
-
-
-

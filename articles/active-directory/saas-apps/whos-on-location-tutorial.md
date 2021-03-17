@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ba9fe6b727ec3f2f5ec8133901fb1aea287fbcd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d0e5134da9083e97b3977b05d601c2cfba25f5d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523103"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636676"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s WhosOnLocation
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat WhosOnLocation s Azure Active Director
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k WhosOnLocation svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * WhosOnLocation podporuje jednotné přihlašování iniciované v **SP**
 
-* Po nakonfigurování WhosOnLocation můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování WhosOnLocation můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-whosonlocation-from-the-gallery"></a>Přidání WhosOnLocation z Galerie
 
@@ -49,15 +49,15 @@ Pokud chcete nakonfigurovat integraci WhosOnLocation do služby Azure AD, musít
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **WhosOnLocation** .
 1. Na panelu výsledků vyberte **WhosOnLocation** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-whosonlocation"></a>Konfigurace a testování jednotného přihlašování Azure AD pro WhosOnLocation
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí WhosOnLocation pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v WhosOnLocation.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí WhosOnLocation pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v WhosOnLocation.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí WhosOnLocation, dokončete následující stavební bloky:
 
@@ -72,8 +72,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **WhosOnLocation** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **WhosOnLocation** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -101,25 +101,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k WhosOnLocation.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **WhosOnLocation**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **WhosOnLocation** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -131,19 +131,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V jiném okně prohlížeče se přihlaste k webu WhosOnLocation společnosti jako správce.
 
-2. Klikněte na **Tools**tlačítko  ->  **účet**nástrojů.
+2. Klikněte na **Tools** tlačítko  ->  **účet** nástrojů.
 
-    ![Konfigurace WhosOnLocation](./media/WhosOnLocation-tutorial/config1.png)
+    ![Snímek obrazovky zobrazuje účet vybraný z nabídky nástroje na webu WhosOnLocation.](./media/WhosOnLocation-tutorial/config1.png)
 
-3. V Navigátoru na levé straně vyberte **přístup zaměstnanců**.
+3. V Navigátoru na levé straně vyberte **přístup zaměstnanců** .
 
-    ![Konfigurace WhosOnLocation](./media/WhosOnLocation-tutorial/config2.png)
+    ![Snímek obrazovky ukazuje přístup zaměstnanců vybraný z profilu účtu.](./media/WhosOnLocation-tutorial/config2.png)
 
 4. Na následující stránce proveďte následující kroky.
 
-    ![Konfigurace WhosOnLocation](./media/WhosOnLocation-tutorial/config3.png)
+    ![Snímek obrazovky se zobrazí na kartě přístup employess, kde můžete zadat uživatelská data.](./media/WhosOnLocation-tutorial/config3.png)
 
-    a. Změňte **jednotné přihlašování pomocí SAML** na **Ano**.
+    a. Změňte **jednotné přihlašování pomocí SAML** na **Ano** .
 
     b. Do textového pole **Adresa URL vystavitele** vložte hodnotu **ID entity** , kterou jste zkopírovali z Azure Portal.
 
@@ -151,29 +151,28 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Otevřete stažený **certifikát (Base64)** z Azure Portal do programu Poznámkový blok a vložte obsah do textového pole **certifikátu** .
 
-    e. Klikněte na **Uložit konfiguraci SAML**.
+    e. Klikněte na **Uložit konfiguraci SAML** .
 
 ### <a name="create-whosonlocation-test-user"></a>Vytvořit testovacího uživatele WhosOnLocation
 
-V této části vytvoříte uživatele s názvem B. Simon v WhosOnLocation. Pokud chcete přidat uživatele na platformě WhosOnLocation, pracujte s [týmem podpory WhosOnLocation](mailto:support@whosonlocation.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v WhosOnLocation. Pokud chcete přidat uživatele na platformě WhosOnLocation, pracujte s [týmem podpory WhosOnLocation](mailto:support@whosonlocation.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici WhosOnLocation, měli byste se automaticky přihlásit k WhosOnLocation, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici WhosOnLocation, měli byste se automaticky přihlásit k WhosOnLocation, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si WhosOnLocation s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit WhosOnLocation pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Jak chránit WhosOnLocation pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

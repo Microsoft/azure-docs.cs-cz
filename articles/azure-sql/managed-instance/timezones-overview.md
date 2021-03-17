@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: 84df755d4a89b83a0842a74a619fad5275396dec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: b4ba5f50f5c66b404ec76128a828a1060328f81c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711353"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690987"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,9 +32,9 @@ Funkce T-SQL, jako je [GETDATE ()](/sql/t-sql/functions/getdate-transact-sql) ne
 
 Sada podporovaných časových pásem je děděna ze základního operačního systému spravované instance. Pravidelně se aktualizuje a získá nové definice časových pásem a projeví se změny stávajících.
 
-[Zásady letního času a časového pásma pro letní](https://aka.ms/time) čas garantuje historickou přesnost od 2010 do výše.
+[Zásady letního času a časového pásma pro letní](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support) čas garantuje historickou přesnost od 2010 do výše.
 
-Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení [Sys. time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) System.
+Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení systému [Sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) .
 
 ## <a name="set-a-time-zone"></a>Nastavení časového pásma
 
@@ -51,7 +51,7 @@ Když zadáte parametry nové instance, vyberte časové pásmo ze seznamu podpo
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-V [šabloně správce prostředků](https://aka.ms/sql-mi-create-arm-posh) zadejte vlastnost timezoneId, která nastaví časové pásmo během vytváření instance.
+V [šabloně správce prostředků](./create-template-quickstart.md) zadejte vlastnost timezoneId, která nastaví časové pásmo během vytváření instance.
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 
 ## <a name="limitations"></a>Omezení
 
-- Časové pásmo existující spravované instance nelze změnit.
+- Časové pásmo existující spravované instance nelze změnit. Jako alternativní řešení vytvořte novou spravovanou instanci se správným časovým pásmem a pak buď proveďte ruční zálohování a obnovení, nebo co doporučujeme, proveďte obnovení k určitému [bodu v čase v době mezi instancemi](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database).
 - Externí procesy spouštěné z úloh agenta SQL Server nezohledňují časové pásmo instance.
 
 ## <a name="list-of-supported-time-zones"></a>Seznam podporovaných časových pásem
@@ -144,7 +144,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Saint-Pierre (běžný čas) | (UTC-03:00) Saint-Pierre a Miquelon |
 | Bahia ((běžný čas) | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Koordinovaný univerzální čas-02 |
-| Střední Atlantik (běžný čas) | (UTC-02:00) Střední Atlantik – starý |
+| Mid-Atlantic běžný čas) | (UTC-02:00) Mid-Atlantic – staré |
 | Azory (běžný čas) | (UTC-01:00) Azory |
 | Cabo Verde (běžný čas) | (UTC-01:00) Cabo Verde. |
 | UTC | Koordinovaný univerzální čas (UTC) |
@@ -199,7 +199,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Omsk (běžný čas) | (UTC + 06:00) Omsk |
 | Myanmar (běžný čas) | (UTC + 06:30) Yangon (Rangún) |
 | JIHOVÝCHODNÍ Asie (běžný čas) | (UTC + 07:00) Bangkok, Hanoj, Jakarta |
-| Altajský (běžný čas) | (UTC + 07:00) Barnaul, Gorno-Altajsk |
+| Altajský (běžný čas) | (UTC + 07:00) Barnaul, Gorno-Altaysk |
 | W. Mongolsko (běžný čas) | (UTC + 07:00) Chovd |
 | Severní Asie (běžný čas) | (UTC + 07:00) Krasnojarsk |
 | N. Střední Asie (běžný čas) | (UTC + 07:00) Novosibirsk |
@@ -230,11 +230,11 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Norfolk (běžný čas) | (UTC + 11:00) Ostrov Norfolk |
 | Sachalin (běžný čas) | (UTC + 11:00) Sachalin |
 | Střední Tichomoří (běžný čas) | (UTC + 11:00) Šalamounovy ostrovy, Nová Kaledonie |
-| Rusko – časové pásmo 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamčatskij |
+| Rusko – časové pásmo 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamchatsky |
 | Nový Zéland (běžný čas) | (UTC + 12:00) Auckland, Wellington |
 | UTC + 12 | (UTC + 12:00) Koordinovaný světový čas + 12 |
 | Fidži (běžný čas) | (UTC + 12:00) Fidži |
-| Kamčatka (běžný čas) | (UTC + 12:00) Petropavlovsk-Kamčatskij – starý |
+| Kamčatka (běžný čas) | (UTC + 12:00) Petropavlovsk-Kamchatsky – staré |
 | Chathamovy ostrovy (běžný čas) | (UTC + 12:45) Chathamovy ostrovy |
 | UTC + 13 | (UTC + 13:00) Koordinovaný světový čas + 13 |
 | Tonga (běžný čas) | (UTC + 13:00) Nuku ' Alofa |
@@ -243,7 +243,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 
 ## <a name="see-also"></a>Viz také 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [V ČASOVÉm PÁSMu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [V ČASOVÉm PÁSMu (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

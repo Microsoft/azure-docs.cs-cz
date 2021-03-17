@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cafde6ed66e5b636be60533abafcd6f221fe33a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502503"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559685"
 ---
 Azure Shared disks je nová funkce pro služby Azure Managed disks, která umožňuje současně připojit spravovaný disk k několika virtuálním počítačům (VM). Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
@@ -41,7 +41,7 @@ Sdílené disky podporují více operačních systémů. Podporované operační
 
 ### <a name="windows"></a>Windows
 
-Sdílené disky Azure jsou podporované na Windows serveru 2008 a novějších verzích. Většina sestavení clusteringu založeného na systému Windows ve službě WSFC, která zpracovává veškerou základní infrastrukturu pro komunikaci uzlu clusteru, umožňuje aplikacím využívat vzorce paralelního přístupu. Služba WSFC v závislosti na vaší verzi Windows Serveru umožňuje variantu založenou na sdílených svazcích clusteru i variantu bez nich. Podrobnosti najdete v tématu [Vytvoření clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
+Sdílené disky Azure jsou podporované na Windows serveru 2008 a novějších verzích. Většina sestavení clusteringu založeného na systému Windows ve službě WSFC, která zpracovává veškerou základní infrastrukturu pro komunikaci uzlu clusteru, umožňuje aplikacím využívat vzorce paralelního přístupu. Služba WSFC v závislosti na vaší verzi Windows Serveru umožňuje variantu založenou na sdílených svazcích clusteru i variantu bez nich. Podrobnosti najdete v tématu [Vytvoření clusteru s podporou převzetí služeb při selhání](/windows-server/failover-clustering/create-failover-cluster).
 
 Mezi některé oblíbené aplikace využívající službu WSFC patří:
 
@@ -54,10 +54,10 @@ Mezi některé oblíbené aplikace využívající službu WSFC patří:
 ### <a name="linux"></a>Linux
 
 Sdílené disky Azure jsou podporované na:
-- [SUSE SLE for SAP and SUSE SLE HA 15 SP1 a vyšší](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [SUSE SLE for SAP and SUSE SLE HA 15 SP1 a vyšší](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18,04 a novější](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
-- [RHEL Developer Preview na všech RHEL ve verzi 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
-- [Oracle Enterprise Linux] (https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
+- [RHEL Developer Preview na všech RHEL ve verzi 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
+- [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 Clustery se systémem Linux můžou využívat Správce clusterů, jako je [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker se vytváří na [Corosync](http://corosync.github.io/corosync/)a povoluje komunikaci clusteru pro aplikace nasazené v prostředích s vysokou dostupností. Mezi běžné Clusterové systémy souborů patří [OCFS2](https://oss.oracle.com/projects/ocfs2/) a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). Pro arbitrating přístup k disku můžete použít modely clusteringu založené na trvalé rezervaci (SCSI PR) nebo STONITH Block Device (SBD). Při použití SCSI PR můžete manipulovat s rezervacemi a registrací pomocí nástrojů, jako jsou [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) a [sg_persist](https://linux.die.net/man/8/sg_persist).
 
@@ -91,7 +91,7 @@ Tok je následující:
 
 Disky Ultra nabízejí dodatečné omezení pro celkový počet dvou omezení. Z tohoto důvodu může tok rezervací Ultra discích fungovat jak je popsáno v předchozí části, nebo může lépe omezit a distribuovat výkon.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup ReadOnly nebo čtení/zápisu pro rezervovaného držitele, registraci a další.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup &quot;ReadOnly&quot; nebo &quot;čtení/zápisu&quot; pro rezervovaného držitele, registraci a další.":::
 
 ## <a name="performance-throttles"></a>Omezení výkonu
 
@@ -111,7 +111,7 @@ Disky Ultra mají jedinečnou schopnost nastavit svůj výkon vyplněním upravi
 |DiskIOPSReadOnly*     |Celkový počet vstupně-výstupních operací povolených ve všech virtuálních počítačích, ve kterých se sdílený disk připojuje `ReadOnly` .         |
 |DiskMBpsReadOnly*     |Celková propustnost (MB/s) povolená napříč všemi virtuálními počítači, které sdílí sdílený disk `ReadOnly` .         |
 
-\*Platí jenom pro sdílené disky jen pro Ultra
+\* Platí jenom pro sdílené disky jen pro Ultra
 
 Následující vzorce vysvětlují, jak lze nastavit atributy výkonu, protože jsou uživatelsky upravitelné:
 

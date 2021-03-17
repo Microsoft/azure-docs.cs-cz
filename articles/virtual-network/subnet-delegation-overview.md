@@ -7,17 +7,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2019
+ms.date: 12/15/2020
 ms.author: kumud
-ms.openlocfilehash: b33ff808b802b6848e2d5debaf515a73bf21a1bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2801aa6b2e2b72df815b170200587c49ec0bae14
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74281334"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538988"
 ---
 # <a name="what-is-subnet-delegation"></a>Co je delegování podsítě?
 
@@ -51,6 +51,8 @@ Každá služba Azure definuje svůj vlastní model nasazení, kde může defino
 - Určuje minimální počet IP adres v delegované podsíti.
 - Určuje adresní prostor IP adres v delegované podsíti, který bude z privátního adresního prostoru IP adres (10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12).
 - Určuje, že vlastní konfigurace DNS má položku Azure DNS.
+- vyžaduje odebrání delegování, aby bylo možné odstranit podsíť nebo virtuální síť.
+- nelze použít s privátním koncovým bodem, pokud je podsíť delegována.
 
 Vložené služby mohou také přidat vlastní zásady následujícím způsobem:
 - **Zásady zabezpečení**: kolekce pravidel zabezpečení potřebných pro fungování dané služby.

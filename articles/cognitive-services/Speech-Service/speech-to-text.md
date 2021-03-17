@@ -1,25 +1,28 @@
 ---
-title: Služba Speech to text-Speech
+title: Přehled převodu řeči na text – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Funkce převodu řeči na text umožňuje přepis zvukových streamů v reálném čase na text. Tyto textové vstupy můžou aplikace, nástroje a zařízení využívat, zobrazovat a provádět s nimi akce. Tato služba funguje bez problémů s převodem textu na řeč (rozpoznávání řeči) a funkcemi překladu řeči.
+description: Software pro převod řeči na text umožňuje přepis zvukových streamů v reálném čase na text. Tyto textové vstupy můžou aplikace, nástroje a zařízení využívat, zobrazovat a provádět s nimi akce. Tento článek představuje přehled výhod a možností služby Speech-to-text.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: cog-serv-seo-aug-2020
+keywords: Převod řeči na text, převod řeči na textový software
+ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640408"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434304"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
-Převod řeči na text ze služby Speech, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových streamů v reálném čase na text. Vaše aplikace, nástroje nebo zařízení můžou používat, zobrazovat a provádět na tomto textu akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office. Bez problémů funguje s nabídkami služeb pro <a href="./speech-translation.md" target="_blank">převod a převod <span class="docon docon-navigate-external x-hidden-focus"></span> </a> <a href="./text-to-speech.md" target="_blank">textu na <span class="docon docon-navigate-external x-hidden-focus"></span> řeč</a> . Úplný seznam dostupných jazyků pro převod řeči na text najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
+V tomto přehledu se dozvíte o výhodách a funkcích služby Speech-to-text.
+Převod řeči na text, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových streamů v reálném čase na text. Vaše aplikace, nástroje nebo zařízení můžou používat, zobrazovat a provádět na tomto textu akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office. Bez problémů funguje s nabídkami služeb pro <a href="./speech-translation.md" target="_blank">převod a převod </a> <a href="./text-to-speech.md" target="_blank">textu na řeč </a> . Úplný seznam dostupných jazyků pro převod řeči na text najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
 
 Služba převod řeči na text standardně používá univerzální jazykový model. Tento model byl vyškolený pomocí dat vlastněných společností Microsoft a nasazený v cloudu. Je ideální pro scénáře konverzace a diktování. Při použití převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvořit a naučit vlastní modely akustického, jazyka a výslovnosti. Přizpůsobení je užitečné pro řešení hlučného hluku nebo slovníku specifického pro konkrétní odvětví.
 
@@ -31,23 +34,11 @@ Pomocí dalšího referenčního textu jako vstupu služba Speech-to-text Servic
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started-with-speech-to-text"></a>Začínáme s převodem řeči na text
+## <a name="get-started"></a>Začínáme
 
-Služba převod řeči na text je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md). V různých jazycích a platformách je k dispozici několik běžných scénářů jako rychlé starty:
+Projděte si [rychlý Start](get-started-speech-to-text.md) a začněte s převodem řeči na text. Služba je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md), [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)a rozhraní příkazového [řádku pro rozpoznávání řeči](spx-overview.md).
 
- - [Rychlý Start: rozpoznávání řeči pomocí vstupu mikrofonu](quickstarts/speech-to-text-from-microphone.md)
- - [Rychlý Start: rozpoznávání řeči ze souboru](quickstarts/speech-to-text-from-file.md)
- - [Rychlý Start: rozpoznávání řeči uložených v úložišti objektů BLOB](quickstarts/from-blob.md)
-
-Pokud dáváte přednost používání služby REST (Speech-to-text), přečtěte si téma [rozhraní REST API](rest-speech-to-text.md).
-
- - [Rychlý Start: posouzení výslovnosti pomocí referenčního vstupu](rest-speech-to-text.md#pronunciation-assessment-parameters)
-
-## <a name="tutorials-and-sample-code"></a>Kurzy a ukázkový kód
-
-Až budete mít možnost používat službu rozpoznávání řeči, vyzkoušejte náš kurz, který vás seznámí s postupem rozpoznávání řeči pomocí sady Speech SDK a LUIS.
-
-- [Kurz: rozpoznávání záměrů z řeči pomocí sady Speech SDK a LUIS pomocí jazyka C #](how-to-recognize-intents-from-speech-csharp.md)
+## <a name="sample-code"></a>Ukázka kódu
 
 Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se týkají běžných scénářů, jako je čtení zvuku ze souboru nebo datového proudu, průběžné a jednorázové rozpoznávání a práce s vlastními modely.
 
@@ -57,15 +48,15 @@ Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se tý
 
 ## <a name="customization"></a>Přizpůsobení
 
-Kromě standardního modelu služby Speech můžete vytvořit vlastní modely. Přizpůsobení pomáhá překonat překážky rozpoznávání řeči, jako je například mluvený styl, slovník a šum na pozadí, viz [Custom Speech](how-to-custom-speech.md). Možnosti vlastního nastavení se liší podle jazyka nebo národního prostředí, viz [podporované jazyky](supported-languages.md) pro ověření podpory.
+Kromě standardního modelu služby Speech můžete vytvořit vlastní modely. Přizpůsobení pomáhá překonat překážky rozpoznávání řeči, jako je například mluvený styl, slovník a šum na pozadí, viz [Custom Speech](./custom-speech-overview.md). Možnosti vlastního nastavení se liší podle jazyka nebo národního prostředí, viz [podporované jazyky](./language-support.md) pro ověření podpory.
 
 ## <a name="batch-transcription"></a>Dávkový přepis
 
-Batch přepis je sada REST API operací, které umožňují přepisovat velké množství zvuků v úložišti. Můžete odkazovat na zvukové soubory pomocí identifikátoru URI sdíleného přístupového podpisu (SAS) a asynchronní příjem výsledků přepisu. Další informace o tom, jak používat rozhraní API služby Batch pro přepis, najdete v tématu [How to](batch-transcription.md) .
+Batch přepis je sada REST API operací, které umožňují přepisovat velké množství zvuků v úložišti. Na zvukové soubory můžete odkazovat pomocí identifikátoru URI sdíleného přístupového podpisu (SAS) a asynchronně přijímat výsledky přepisu. Další informace o tom, jak používat rozhraní API služby Batch pro přepis, najdete v tématu [How to](batch-transcription.md) .
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+- [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 - [Získat sadu Speech SDK](speech-sdk.md)

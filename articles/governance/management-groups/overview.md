@@ -1,14 +1,15 @@
 ---
 title: Uspořádání prostředků pomocí skupin pro správu – zásady správného řízení Azure
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
-ms.date: 07/06/2020
+ms.date: 01/22/2021
 ms.topic: overview
-ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920156"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590844"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -21,11 +22,13 @@ Zásady můžete například použít pro skupinu pro správu, která omezuje ob
 
 Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a uspořádat tak prostředky do hierarchie umožňující využít jednotné zásady a správu přístupu. Následující diagram ukazuje příklad vytvoření hierarchie pro zásady správného řízení s využitím skupin pro správu.
 
-:::image type="content" source="./media/tree.png" alt-text="Příklad hierarchického stromu skupin pro správu" border="false":::
+:::image type="complex" source="./media/tree.png" alt-text="Diagram ukázkové hierarchie skupin pro správu" border="false":::
+   Diagram kořenové skupiny pro správu, který má skupiny pro správu i odběry. Některé podřízené skupiny pro správu uchovávají skupiny pro správu, některá předplatná a některá se uchovávají. Jedním z příkladů v ukázkové hierarchii jsou čtyři úrovně skupin pro správu, které mají úroveň podřízenosti všechna předplatná.
+:::image-end:::
 
-Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada bude dědit na všechna předplatná smlouva Enterprise (EA), která jsou následníky této skupiny pro správu a bude platit pro všechny virtuální počítače v těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
+Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada se bude dědit do všech předplatných se smlouvou Enterprise, která jsou následníky dané skupiny pro správu, a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 
-Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím více předplatných v rámci této skupiny pro správu můžete vytvořit jedno [přiřazení role Azure](../../role-based-access-control/overview.md) ve skupině pro správu, které zdědí tento přístup ke všem předplatným. Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript řízení přístupu na základě role pro různá předplatná.
+Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím více předplatných v rámci této skupiny pro správu můžete vytvořit jedno [přiřazení role Azure](../../role-based-access-control/overview.md) ve skupině pro správu, které zdědí tento přístup ke všem předplatným. Jedno přiřazení ve skupině pro správu může uživatelům umožnit přístup ke všemu, co potřebují, místo skriptování Azure RBAC přes různá předplatná.
 
 ### <a name="important-facts-about-management-groups"></a>Důležitá fakta týkající se skupin pro správu
 
@@ -72,7 +75,7 @@ U několika adresářů, které začaly využívat skupiny pro správu v rané f
 Tento problém můžete vyřešit dvěma způsoby.
 
 - Odebrání všech přiřazení rolí a zásad z kořenové skupiny pro správu
-  - Odebrání všech přiřazení zásad a rolí z kořenové skupiny pro správu způsobí, že tato služba obnoví všechna předplatná do hierarchie při příštím nočním cyklu. Smyslem tohoto procesu je zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
+  - Odebráním všech přiřazení zásad a rolí z kořenové skupiny pro správu služba vyplní všechna předplatná do hierarchie dalším jednodenním cyklem. Smyslem tohoto procesu je zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
   - Nejlepší způsob, jak to provést bez dopadu na vaše služby, je použít přiřazení zásad nebo rolí o jednu úroveň pod kořenovou skupinu pro správu. Potom můžete všechna přiřazení z kořenového oboru odebrat.
 - Přímé volání rozhraní API pro zahájení procesu obnovení
   - Libovolný uživatel adresáře může volat rozhraní API _TenantBackfillStatusRequest_ nebo _StartTenantBackfillRequest_. Rozhraní API StartTenantBackfillRequest po zavolání zahájí proces nastavení přesunu všech předplatných do hierarchie. Tento proces také začne vynucovat, aby se všechna nová předplatná stala podřízeným elementem kořenové skupiny pro správu.
@@ -89,13 +92,13 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
 | Název role Azure             | Vytvořit | přejmenování | Pøesunout\*\* | Odstranit | Přiřazení přístupu | Přiřazení zásad | Číst  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|Vlastník                       | X      | X      | X        | X      | X             | X             | X     |
-|Přispěvatel                 | X      | X      | X        | X      |               |               | X     |
-|G Přispěvatel\*            | X      | X      | X        | X      |               |               | X     |
-|Čtenář                      |        |        |          |        |               |               | X     |
-|Čtečka MG\*                 |        |        |          |        |               |               | X     |
-|Přispěvatel zásad prostředků |        |        |          |        |               | X             |       |
-|Správce uživatelských přístupů   |        |        |          |        | X             | X             |       |
+|Vlastník                       | ×      | ×      | ×        | ×      | ×             | ×             | ×     |
+|Přispěvatel                 | ×      | ×      | ×        | ×      |               |               | ×     |
+|G Přispěvatel\*            | ×      | ×      | ×        | ×      |               |               | ×     |
+|Čtenář                      |        |        |          |        |               |               | ×     |
+|Čtečka MG\*                 |        |        |          |        |               |               | ×     |
+|Přispěvatel zásad prostředků |        |        |          |        |               | ×             |       |
+|Správce uživatelských přístupů   |        |        |          |        | ×             | ×             |       |
 
 \*: MG čtenář a g Reader umožňují uživatelům provádět tyto akce pouze v oboru skupiny pro správu.  
 \*\*: Přiřazení rolí u kořenové skupiny pro správu se nevyžadují k přesunu předplatného nebo skupiny pro správu do a z ní. Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).
@@ -147,7 +150,9 @@ Definice rolí se přiřadí oboru kdekoli v rámci hierarchie skupiny pro sprá
 
 Řekněme například, že se podíváme na malou část hierarchie pro vizuál.
 
-:::image type="content" source="./media/subtree.png" alt-text="dílčí strom" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Diagram podmnožiny hierarchie vzorových skupin pro správu." border="false":::
+   Diagram se zaměřuje na kořenovou skupinu pro správu s podřízenými a marketingovými skupinami pro správu. Skupina pro správu I T má jednu podřízenou skupinu pro správu s názvem produkční, zatímco skupina pro správu marketingu má dvě bezplatné zkušební verze předplatného.
+:::image-end:::
 
 Řekněme, že ve skupině pro správu marketingu je definovaná vlastní role. Tato vlastní role se pak přiřadí ke dvěma bezplatným zkušebním předplatným.  
 
@@ -157,16 +162,20 @@ Tento scénář můžete vyřešit několika různými možnostmi:
 - Před přesunutím předplatného na nový nadřazený prvek MG odeberte přiřazení role z předplatného.
 - Přidejte předplatné do oboru přiřazení definice role.
 - Změňte rozsah přiřazení v rámci definice role. V předchozím příkladu můžete aktualizovat obory přiřazení z marketingu na kořenovou skupinu pro správu, aby definice mohla být dostupná jak v obou větvích hierarchie.  
-- Vytvořte další vlastní roli, která bude definovaná ve druhé větvi. Tato nová role bude vyžadovat, aby se u předplatného změnilo i přiřazení role.  
+- Vytvořte další vlastní roli, která je definovaná ve druhé větvi. Tato nová role vyžaduje, aby přiřazení role pro předplatné bylo také změněno.  
 
 ### <a name="limitations"></a>Omezení  
 
 Existují určitá omezení, která existují při použití vlastních rolí ve skupinách pro správu. 
 
- - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když je předplatné nebo skupina pro správu s přiřazením role přesunuta na jinou nadřazenou položku, která nemá definici role.  
- - Akce roviny dat RBAC nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je v platnosti, protože došlo k potížím s latencí s aktualizacemi poskytovatelů prostředků datové roviny pomocí akcí RBAC.
-   Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
- - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uvedeno překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.  
+ - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když se předplatné nebo skupina pro správu s přiřazením role přesune na jiný nadřazený prvek, který nemá definici role.  
+ - Akce roviny dat poskytovatele prostředků nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je zavedeno, protože došlo k potížím s latencí při aktualizaci poskytovatelů prostředků datové roviny. Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
+ - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uveden překlep nebo nesprávné ID skupiny pro správu, je definice role stále vytvořena.
+ - Přiřazení role pro roli s _Dataactions_ se nepodporuje. Místo toho vytvořte přiřazení role v oboru předplatného.
+
+> [!IMPORTANT]
+> Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí.
+> Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Přesun skupin pro správu a předplatných 
 
@@ -187,9 +196,9 @@ Pokud je role vlastníka v předplatném zděděná z aktuální skupiny pro spr
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
 
-Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md). Můžete hledat všechny události, ke kterým dochází ve skupině pro správu ve stejném centrálním umístění jako ostatní prostředky Azure. Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
+Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md). Můžete hledat všechny události, ke kterým dochází ve skupině pro správu ve stejném centrálním umístění jako ostatní prostředky Azure. Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Protokoly aktivit se skupinami pro správu" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Snímek obrazovky protokolů aktivit a operací vztahujících se k vybrané skupině pro správu." border="false":::
 
 Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
@@ -197,6 +206,6 @@ Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obo
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Vytváření skupin pro správu pro organizaci prostředků Azure](./create.md)
+- [Vytváření skupin pro správu pro organizaci prostředků Azure](./create-management-group-portal.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](./manage.md)
 - Další informace najdete v tématu možnosti [ochrany vaší hierarchie prostředků](./how-to/protect-resource-hierarchy.md) .

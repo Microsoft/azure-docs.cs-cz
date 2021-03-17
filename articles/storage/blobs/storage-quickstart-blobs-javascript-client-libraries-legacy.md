@@ -3,18 +3,18 @@ title: 'Rychlý Start: Azure Blob Storage pro JavaScript v10 za účelem v prohl
 description: Naučte se nahrávat, vypisovat a odstraňovat objekty BLOB pomocí JavaScriptu v10 za účelem SDK na stránce HTML.
 services: storage
 author: mhopkins-msft
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.service: storage
 ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: d212029936bcd257ef5a78eeedc98c2d6e1df514
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429214"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012778"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí kódu JavaSc
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí JavaScriptu V12 SDK v prohlížeči](quickstart-blobs-javascript-browser.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).
@@ -35,7 +35,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí kódu JavaSc
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Nastavení pravidel CORS pro účet úložiště
 
-Předtím, než může vaše webová aplikace získat přístup k úložišti objektů BLOB z klienta, musíte nakonfigurovat účet, aby povoloval [sdílení prostředků mezi zdroji](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)nebo CORS.
+Předtím, než může vaše webová aplikace získat přístup k úložišti objektů BLOB z klienta, musíte nakonfigurovat účet, aby povoloval [sdílení prostředků mezi zdroji](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)nebo CORS.
 
 Vraťte se na web Azure Portal a vyberte svůj účet úložiště. Pokud chcete definovat nové pravidlo CORS, přejděte do části **Nastavení** a klikněte na odkaz **CORS** . Pak kliknutím na tlačítko **Přidat** otevřete okno **Přidat pravidlo CORS**. Pro účely tohoto rychlého startu vytvoříte otevřené pravidlo CORS:
 
@@ -127,7 +127,7 @@ Nejdřív vytvořte novou složku s názvem *Azure-BLOBs-JavaScript* a otevřete
 
 ### <a name="configure-the-debugger"></a>Konfigurace ladicího programu
 
-Chcete-li nastavit rozšíření ladicího programu v VS Code, vyberte možnost **ladění > Přidat konfiguraci...** pak vyberte možnost **Chrome** nebo **Edge**v závislosti na tom, které rozšíření jste dříve nainstalovali v části požadavky. Tato akce vytvoří *launch.js* v souboru a otevře se v editoru.
+Chcete-li nastavit rozšíření ladicího programu v VS Code, vyberte možnost **ladění > Přidat konfiguraci...** pak vyberte možnost **Chrome** nebo **Edge** v závislosti na tom, které rozšíření jste dříve nainstalovali v části požadavky. Tato akce vytvoří *launch.js* v souboru a otevře se v editoru.
 
 V dalším kroku upravte *launch.jsv* souboru tak, aby `url` obsahovala hodnotu, `/index.html` jak je znázorněno níže:
 
@@ -185,7 +185,7 @@ Dále vložte následující kód HTML do *index.html* za `</body>` uzavírací 
 
 Tento kód přidá odkaz na soubor skriptu a poskytne místo pro váš vlastní kód JavaScriptu. Pro účely tohoto rychlého startu používáme soubor skriptu *azure-storage-blob.js* , abyste ho mohli otevřít v vs Code, číst jeho obsah a nastavovat zarážky. V produkčním prostředí byste měli použít kompaktnější *azure-storage.blob.min.js* soubor, který je také k dispozici v souboru ZIP.
 
-Další informace o jednotlivých funkcích služby Blob Storage najdete v [referenční dokumentaci](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index). Všimněte si, že některé funkce v sadě SDK jsou k dispozici pouze v Node.js nebo pouze k dispozici v prohlížeči.
+Další informace o jednotlivých funkcích služby Blob Storage najdete v [referenční dokumentaci](/javascript/api/%40azure/storage-blob/index). Všimněte si, že některé funkce v sadě SDK jsou k dispozici pouze v Node.js nebo pouze k dispozici v prohlížeči.
 
 Kód v *azure-storage-blob.js* exportuje globální proměnnou s názvem `azblob` , kterou použijete v kódu JavaScriptu pro přístup k rozhraním API služby Blob Storage.
 
@@ -226,7 +226,7 @@ const containerURL = new azblob.ContainerURL(
     azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
-Tento kód používá informace o účtu a SAS k vytvoření instance [ContainerURL](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) , která je užitečná pro vytváření a manipulaci s kontejnerem úložiště.
+Tento kód používá informace o účtu a SAS k vytvoření instance [ContainerURL](/javascript/api/@azure/storage-blob/ContainerURL) , která je užitečná pro vytváření a manipulaci s kontejnerem úložiště.
 
 ### <a name="create-and-delete-a-storage-container"></a>Vytvoření a odstranění kontejneru úložiště
 
@@ -257,7 +257,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Tento kód volá funkce ContainerURL [Create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) a [Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) bez použití instance [Abort](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) . Tento kód předpokládá, že váš účet úložiště je vytvořený a je povolený, aby pro tento rychlý Start byly jednoduché věci. V produkčním kódu použijte k přidání funkce časového limitu instanci přerušit.
+Tento kód volá funkce ContainerURL [Create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) a [Delete](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) bez použití instance [Abort](/javascript/api/@azure/storage-blob/aborter) . Tento kód předpokládá, že váš účet úložiště je vytvořený a je povolený, aby pro tento rychlý Start byly jednoduché věci. V produkčním kódu použijte k přidání funkce časového limitu instanci přerušit.
 
 ### <a name="list-blobs"></a>Výpis objektů blob
 
@@ -293,7 +293,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Tento kód zavolá funkci [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) ve smyčce, aby se zajistilo, že se načtou všechny segmenty. U každého segmentu se přeskočí přes seznam položek objektů blob, které obsahuje, a aktualizuje seznam **soubory** .
+Tento kód zavolá funkci [ContainerURL. listBlobFlatSegment](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) ve smyčce, aby se zajistilo, že se načtou všechny segmenty. U každého segmentu se přeskočí přes seznam položek objektů blob, které obsahuje, a aktualizuje seznam **soubory** .
 
 ### <a name="upload-blobs"></a>Nahrát objekty blob
 
@@ -321,7 +321,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Tímto způsobem `click` Událost tlačítka aktivuje událost vstupu souboru `click` a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna `input` dojde k události a `uploadFiles` zavolá se funkce. Tato funkce volá funkci [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí příslib, který je přidán do seznamu tak, aby bylo možné všechny očekávat najednou, což způsobí, že se soubory budou nahrávat paralelně.
+Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Tímto způsobem `click` Událost tlačítka aktivuje událost vstupu souboru `click` a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna `input` dojde k události a `uploadFiles` zavolá se funkce. Tato funkce volá funkci [uploadBrowserDataToBlockBlob](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí příslib, který je přidán do seznamu tak, aby bylo možné všechny očekávat najednou, což způsobí, že se soubory budou nahrávat paralelně.
 
 ### <a name="delete-blobs"></a>Odstraňovat objekty blob
 
@@ -349,7 +349,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-Tento kód zavolá funkci [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) pro odebrání každého souboru vybraného v seznamu. Pak zavolá `listFiles` funkci uvedenou výše a aktualizuje obsah seznamu **souborů** .
+Tento kód zavolá funkci [BlobURL. Delete](/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) pro odebrání každého souboru vybraného v seznamu. Pak zavolá `listFiles` funkci uvedenou výše a aktualizuje obsah seznamu **souborů** .
 
 ### <a name="run-and-test-the-web-application"></a>Spuštění a testování webové aplikace
 
@@ -364,4 +364,4 @@ Pokud chcete vyčistit prostředky vytvořené v rámci tohoto rychlého startu,
 V tomto rychlém startu jste vytvořili jednoduchý web, který přistupuje k úložišti objektů BLOB z JavaScriptu založeného na prohlížeči. Pokud se chcete dozvědět, jak můžete hostovat samotný web na úložišti objektů blob, pokračujte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Hostování statického webu na Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)
+> [Hostování statického webu na Blob Storage](./storage-blob-static-website-host.md)

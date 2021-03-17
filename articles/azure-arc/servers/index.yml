@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Servery s podporou služby Azure Arc
+summary: Servery s podporou služby Azure Arc
+metadata:
+  title: Servery s podporou služby Azure Arc
+  description: Další informace o správě místních počítačů v Azure
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 02/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101686372"
+landingContent:
+- title: Připojení počítačů k Azure s využitím serverů s podporou služby Azure Arc
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou servery s podporou služby Azure Arc?
+      url: overview.md
+  - linkListType: architecture
+    links:
+    - text: Plánování nasazení během škálování
+      url: plan-at-scale-deployment.md
+  - linkListType: get-started
+    links:
+    - text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+      url: onboard-portal.md
+    - text: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+      url: onboard-service-principal.md
+    - text: Připojení počítačů k Azure s využitím DSC PowerShellu
+      url: onboard-dsc.md
+- title: Zprovoznění během 10 minut
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nasazení agenta Servery s podporou služby Arc
+      url: ./learn/quick-enable-hybrid-vm.md
+- title: Testování konceptu
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Rychlé zprovoznění
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_servers/
+- title: Referenční architektura
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Správa konfigurací pro hybridní servery
+      url: /azure/architecture/hybrid/azure-arc-hybrid-config

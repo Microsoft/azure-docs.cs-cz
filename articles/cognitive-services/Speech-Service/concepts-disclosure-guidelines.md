@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: shlo
+ms.openlocfilehash: 472d55f79033d60c4f40e60b55e0f7fc2ea4517e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74776381"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716648"
 ---
 # <a name="disclosure-design-guidelines"></a>Zpřístupnění pokynů pro návrh
 Naučte se vytvářet a udržovat vztahy důvěryhodnosti se zákazníky transparentním z hlediska syntetické povahy hlasového prostředí.
@@ -56,7 +56,7 @@ S ohledem na obrovské tělo pokynů pro vytváření hlasových prostředí se 
 3. [**Kdy se má zveřejnit**](concepts-disclosure-patterns.md#when-to-disclose): optimální moment pro zveřejnění celé cesty uživatele
 
 ## <a name="disclosure-assessment"></a>Vyhodnocování zveřejnění
-Berte v úvahu své uživatele&#39; očekávání týkající se interakce a kontextu, ve kterém se budou na hlasu zacházet. Pokud je v kontextu jasné, že je &quot;hovoří syntetický hlas,&quot; může být odhalení minimální, chvilku nebo dokonce zbytečné. Hlavní typy kontextu, které mají vliv na zveřejnění, zahrnují typ osoby, typ scénáře a úroveň ozáření. Pomáhá také zvážit, kdo může naslouchat.
+Berte v úvahu své uživatele&#39; očekávání týkající se interakce a kontextu, ve kterém se budou na hlasu zacházet. Pokud je v kontextu jasné, že je hovoří syntetický hlas &quot; , &quot; může být odhalení minimální, chvilku nebo dokonce zbytečné. Hlavní typy kontextu, které mají vliv na zveřejnění, zahrnují typ osoby, typ scénáře a úroveň ozáření. Pomáhá také zvážit, kdo může naslouchat.
 
 ### <a name="understand-context"></a>Pochopení kontextu
 
@@ -74,12 +74,8 @@ Pomocí následujícího diagramu zjistíte, jestli vaše syntetické hlasové p
 
   ![Diagram vyhodnocení zpřístupnění](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>Referenční dokumenty
-
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
-* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Přehled o uzavírání](concepts-gating-overview.md)
-
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 * [Zpřístupnění způsobů návrhu](concepts-disclosure-patterns.md)
+* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
+* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)

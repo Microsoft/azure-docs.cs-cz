@@ -1,14 +1,16 @@
 ---
 title: Popisek entity příkladu utterance
 description: Naučte se, jak označit entitu strojového učení s podentitami na příkladu utterance na stránce s podrobnostmi záměru na portálu LUIS.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019731"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Označení entity strojového učení v příkladu utterance
 
@@ -53,7 +55,7 @@ Paleta entit nabízí alternativu k předchozímu prostředí označování. Umo
 3. V příkladu utterance _malujte_ entitu pomocí kurzoru.
 
     > [!div class="mx-imgBorder"]
-    > ![Paleta entit pro entitu strojového učení](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+    > ![Snímek obrazovky ukazuje, že se entita vykresluje se kurzorem.](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>Přidání entity jako funkce z palety entit
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551858"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018898"
 ---
 # <a name="availability-of-service-fabric-services"></a>Dostupnost služeb Service Fabric Services
 Tento článek poskytuje přehled o tom, jak Azure Service Fabric udržuje dostupnost služby.
@@ -23,11 +23,11 @@ Vytvoření bezstavové služby vyžaduje definování `InstanceCount` . Počet 
 V případě, že dojde k neúspěšnému výskytu instance pojmenované služby, vytvoří se nová instance v oprávněném uzlu v clusteru. Například instance bezstavové služby může selhat na Uzel1 a znovu vytvořit v počítač Uzel5.
 
 ## <a name="availability-of-service-fabric-stateful-services"></a>Dostupnost stavových služeb Service Fabric
-Stavová služba je přidružená k ní. V Service Fabric je stavová služba modelována jako sada replik. Každá replika je spuštěná instance kódu služby. Replika má také kopii stavu pro tuto službu. Operace čtení a zápisu se provádějí v jedné replice, která se nazývá *primární*. Změny stavu z operací zápisu se *replikují* do ostatních replik v sadě repliky, označované jako *aktivní sekundární*a použité. 
+Stavová služba je přidružená k ní. V Service Fabric je stavová služba modelována jako sada replik. Každá replika je spuštěná instance kódu služby. Replika má také kopii stavu pro tuto službu. Operace čtení a zápisu se provádějí v jedné replice, která se nazývá *primární*. Změny stavu z operací zápisu se *replikují* do ostatních replik v sadě repliky, označované jako *aktivní sekundární* a použité. 
 
 Může existovat jenom jedna primární replika, ale může existovat několik aktivních sekundárních replik. Počet aktivních sekundárních replik je konfigurovatelný a vyšší počet replik může tolerovat větší počet souběžných selhání softwaru a hardwaru.
 
-Pokud dojde k výpadku primární repliky, Service Fabric vytvoří jednu z aktivních sekundárních replik nové primární repliky. Tato aktivní sekundární replika již má aktualizovanou verzi stavu prostřednictvím *replikace*a může pokračovat ve zpracování dalších operací čtení a zápisu. Tento proces se označuje jako *rekonfigurace* a je podrobněji popsaný v článku o [Překonfiguraci](service-fabric-concepts-reconfiguration.md) .
+Pokud dojde k výpadku primární repliky, Service Fabric vytvoří jednu z aktivních sekundárních replik nové primární repliky. Tato aktivní sekundární replika již má aktualizovanou verzi stavu prostřednictvím *replikace* a může pokračovat ve zpracování dalších operací čtení a zápisu. Tento proces se označuje jako *rekonfigurace* a je podrobněji popsaný v článku o [Překonfiguraci](service-fabric-concepts-reconfiguration.md) .
 
 Koncept repliky, která je buď primární nebo aktivní sekundární, se označuje jako *role repliky*. Tyto repliky jsou podrobněji popsány v článku [repliky a instance](service-fabric-concepts-replica-lifecycle.md) . 
 

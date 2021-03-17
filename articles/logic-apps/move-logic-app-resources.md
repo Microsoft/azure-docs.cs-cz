@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826207"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Přesunutí prostředků aplikace logiky do jiných skupin prostředků Azure, oblastí nebo předplatných
@@ -27,7 +27,7 @@ K migraci aplikace logiky nebo souvisejících prostředků do jiné skupiny pro
 
 * [Prostředí ISE (Integration Service Environment)](connect-virtual-network-vnet-isolated-environment-overview.md) můžete přesunout jenom do jiné skupiny prostředků, která existuje ve stejné oblasti Azure nebo předplatném Azure. ISE nejde přesunout do skupiny prostředků, která existuje v jiné oblasti Azure nebo předplatném Azure. Po takovém přesunutí musíte také aktualizovat všechny odkazy na ISE v pracovních postupech aplikace logiky, účtů pro integraci, připojeních atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 

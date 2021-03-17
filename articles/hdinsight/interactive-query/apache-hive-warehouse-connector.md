@@ -3,16 +3,15 @@ title: Apache Spark & – konektor pro datový sklad podregistru – Azure HDIns
 description: Přečtěte si, jak integrovat Apache Spark a Apache Hive pomocí konektoru skladu pro podregistr v Azure HDInsight.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511887"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594430"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
 
@@ -39,7 +38,11 @@ Mezi operace podporované konektorem skladu podregistru patří:
 ## <a name="hive-warehouse-connector-setup"></a>Nastavení konektoru pro skladiště v podregistru
 
 > [!IMPORTANT]
-> HiveServer2 Interactive instance, která je nainstalovaná na Spark 2,4 Balíček zabezpečení podniku clustery, se nepodporuje pro použití s konektorem skladu pro podregistr. Místo toho musíte nakonfigurovat samostatný HiveServer2 interaktivní cluster pro hostování HiveServer2 interaktivních úloh. Konfigurace konektoru skladu podregistru, která využívá jeden cluster Spark 2,4, není podporována.
+> - HiveServer2 Interactive instance, která je nainstalovaná na Spark 2,4 Balíček zabezpečení podniku clustery, se nepodporuje pro použití s konektorem skladu pro podregistr. Místo toho musíte nakonfigurovat samostatný HiveServer2 interaktivní cluster pro hostování HiveServer2 interaktivních úloh. Konfigurace konektoru skladu podregistru, která využívá jeden cluster Spark 2,4, není podporována.
+> - Knihovna umožní (podregistr Warehouse Connector) není podporována pro použití s clustery interaktivních dotazů, kde je povolena funkce Správa úloh (WLM). <br>
+V případě, že máte jenom úlohy Sparku a chcete použít knihovnu umožní, ujistěte se, že cluster interaktivních dotazů nemá povolenou funkci správy úloh ( `hive.server2.tez.interactive.queue` konfigurace není nastavená v konfiguracích podregistru). <br>
+V případě scénáře, kdy existuje jak úlohy Spark (umožní), tak nativní úlohy LLAP, je třeba vytvořit dva samostatné clustery interaktivních dotazů se sdílenou databází metastore. Jeden cluster pro nativní úlohy LLAP, ve kterých se dá povolit funkce WLM, a další cluster pro umožní úlohy, kde by se neměla konfigurovat funkce WLM.
+Je důležité si uvědomit, že plány prostředků WLM můžete zobrazit z obou clusterů i v případě, že jsou povolené jenom v jednom clusteru. Neprovádějte žádné změny v plánech prostředků v clusteru, kde je funkce WLM zakázaná, protože by mohla ovlivnit funkčnost WLM v jiném clusteru.
 
 Konektor Warehouse pro podregistr potřebuje samostatné clustery pro úlohy Spark a interaktivní dotazy. Pomocí těchto kroků nastavte tyto clustery ve službě Azure HDInsight.
 
@@ -78,7 +81,7 @@ Konektor Warehouse pro podregistr potřebuje samostatné clustery pro úlohy Spa
     |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> Nastavte vhodný přípravný adresář kompatibilní s HDFS. Pokud máte dva různé clustery, pracovní adresář by měl být složka v pracovním adresáři účtu úložiště LLAP clusteru, aby k němu měl přístup HiveServer2.  Nahraďte `STORAGE_ACCOUNT_NAME` názvem účtu úložiště použitým clusterem a `STORAGE_CONTAINER_NAME` názvem kontejneru úložiště. |
     |`spark.sql.hive.hiveserver2.jdbc.url`| Hodnota, kterou jste získali dříve z **HiveServer2 Interactive JDBC URL** |
     |`spark.datasource.hive.warehouse.metastoreUri`| Hodnota, kterou jste získali dříve z **podregistru. metastore. URI**. |
-    |`spark.security.credentials.hiveserver2.enabled`|`true`pro režim clusteru PŘÍZe a `false` pro režim přízového klienta. |
+    |`spark.security.credentials.hiveserver2.enabled`|`true` pro režim clusteru PŘÍZe a `false` pro režim přízového klienta. |
     |`spark.hadoop.hive.zookeeper.quorum`| Hodnota, kterou jste získali dříve z **podregistru. Zookeeper. kvora**. |
     |`spark.hadoop.hive.llap.daemon.service.hosts`| Hodnota, kterou jste získali dříve z **podregistru. llap. démon. Service. Hosts**. |
 
@@ -218,7 +221,7 @@ kinit USERNAME
 
         ![seznam zásad podregistru Ranger konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na **Přidat**.
+    1. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat** a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na **Přidat**.
                 ![vytvořit zásadu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
 

@@ -2,17 +2,20 @@
 title: Určení koncových bodů služby Service Fabric
 description: Popis prostředků koncového bodu v manifestu služby, včetně postupu nastavení koncových bodů HTTPS
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610740"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033302"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Určení prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
-Manifest služby umožňuje deklarovat nebo změnit prostředky používané službou, aniž by došlo ke změně zkompilovaného kódu. Service Fabric podporuje konfiguraci prostředků koncového bodu pro službu. Přístup k prostředkům, které jsou zadány v manifestu služby, lze ovládat prostřednictvím služby zabezpečení v manifestu aplikace. Deklarace prostředků umožňuje změnit tyto prostředky v době nasazení, což znamená, že služba nemusí zavést nový konfigurační mechanismus. Definice schématu pro ServiceManifest.xml soubor je nainstalovaná s Service Fabric SDK a nástroji do složky *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+Service Fabric aplikace a služby jsou definovány a se správou verzí pomocí souborů manifestu. Podrobný přehled ServiceManifest.xml a ApplicationManifest.xml naleznete v tématu [Service Fabric manifesty aplikací a služeb](service-fabric-application-and-service-manifests.md).
+
+Manifest služby umožňuje deklarovat nebo změnit prostředky používané službou, aniž by došlo ke změně zkompilovaného kódu. Service Fabric podporuje konfiguraci prostředků koncového bodu pro službu. Přístup k prostředkům, které jsou zadány v manifestu služby, lze ovládat prostřednictvím služby zabezpečení v manifestu aplikace. Deklarace prostředků umožňuje změnit tyto prostředky v době nasazení, což znamená, že služba nemusí zavést nový konfigurační mechanismus. Definice schématu pro ServiceManifest.xml soubor je nainstalovaná s Service Fabric SDK a nástroji do složky *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* a je popsaná v [dokumentaci ke schématu ServiceFabricServiceModel. xsd](service-fabric-service-model-schema.md).
 
 ## <a name="endpoints"></a>Koncové body
 Pokud je prostředek koncového bodu definovaný v manifestu služby, Service Fabric přiřadí porty z rezervovaného rozsahu portů aplikace, když není explicitně zadaný port. Podívejte se například na koncový bod *ServiceEndpoint1* zadaný v fragmentu manifestu, který je k dispozici po tomto odstavci. Kromě toho můžou služby také požadovat konkrétní port v prostředku. K replikám služby spuštěným v různých uzlech clusteru je možné přiřadit různá čísla portů, zatímco repliky služby spuštěné ve stejném uzlu sdílejí port. Repliky služby pak můžou tyto porty použít pro replikaci a naslouchání požadavkům klientů.
@@ -155,14 +158,16 @@ Tady je příklad souboru ApplicationManifest, který demonstruje konfiguraci po
 
 V případě clusterů se systémem Linux je **Moje** úložiště standardně nastaveno na složku **/var/lib/sfcerts**.
 
+Příklad úplné aplikace, která využívá koncový bod HTTPS, najdete v tématu [Přidání koncového bodu https do front-endové služby ASP.NET Core webového rozhraní API pomocí Kestrel](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
+
 ## <a name="port-acling-for-http-endpoints"></a>Funkce acling portu pro koncové body HTTP
 Ve výchozím nastavení budou automaticky zadané koncové body HTTP (S) Service Fabric. **Neprovede automaticky** funkce acling, pokud k koncovému bodu není přidružen [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) a Service Fabric je nakonfigurován tak, aby běžel pomocí účtu s oprávněními správce.
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Přepsání koncových bodů v ServiceManifest.xml
 
-V části souboru ApplicationManifest přidejte oddíl ResourceOverrides, který bude mít oddíl na stejné úrovni jako ConfigOverrides. V této části můžete zadat přepsání pro oddíl Endpoints v oddílu Resources, který je zadaný v manifestu služby. Přepsání koncových bodů je podporováno v modulu runtime 5.7.217/SDK 2.7.217 a vyšších.
+Do souboru ApplicationManifest přidejte oddíl ResourceOverrides, který bude mít oddíl na stejné úrovni jako ConfigOverrides. V této části můžete zadat přepsání pro oddíl Endpoints v oddílu Resources, který je zadaný v manifestu služby. Přepsání koncových bodů je podporováno v modulu runtime 5.7.217/SDK 2.7.217 a vyšších.
 
-Aby bylo možné přepsat koncový bod v ServiceManifest pomocí ApplicationParameters, změňte souboru ApplicationManifest následujícím způsobem:
+Chcete-li přepsat koncový bod v ServiceManifest pomocí ApplicationParameters, změňte souboru ApplicationManifest jako:
 
 V části ServiceManifestImport přidejte novou část "ResourceOverrides".
 
@@ -200,7 +205,7 @@ Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParamet
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Poznámka: Pokud jsou hodnoty zadané pro ApplicationParameters prázdné, vrátíme výchozí hodnotu poskytnutou v ServiceManifest pro odpovídající koncové číslo koncového bodu.
+Poznámka: Pokud je hodnota zadaná pro daný ApplicationParameter prázdná, vrátíme se k výchozí hodnotě poskytnuté v ServiceManifest pro odpovídající koncový bod.
 
 Příklad:
 
@@ -214,6 +219,18 @@ Pokud jste zadali ServiceManifest
   </Resources>
 ```
 
-A hodnota Port1 a Protocol1 pro parametry aplikace je null nebo prázdná. Port se stále určuje pomocí ServiceFabric. A protokol bude TCP.
+Předpokládá, že hodnota Port1 a Protocol1 pro parametry aplikace je null nebo prázdná. Port bude ServiceFabric a protokol bude TCP.
 
-Předpokládejme, že zadáváte nesprávnou hodnotu. Podobně jako u portu jste zadali řetězcovou hodnotu "foo" namísto int.  Příkaz New-ServiceFabricApplication selže s chybou: parametr override s názvem ' ServiceEndpoint1 ' atributu ' PORT1 ' v oddílu ' ResourceOverrides ' je neplatný. Zadaná hodnota je ' foo ' a požadovaná je ' int '.
+Předpokládejme, že zadáváte nesprávnou hodnotu. Řekněme, že pro port jste zadali řetězcovou hodnotu "foo" místo int.  Příkaz New-ServiceFabricApplication se nezdaří s chybou: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+
+## <a name="next-steps"></a>Další kroky
+
+Tento článek vysvětluje, jak definovat koncové body v manifestu služby Service Fabric. Podrobnější příklady najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Příklady manifestu služby a aplikace](service-fabric-manifest-examples.md)
+
+Návod k balení a nasazení existující aplikace na Service Fabricovém clusteru najdete v tématu:
+
+> [!div class="nextstepaction"]
+> [Zabalit a nasadit existující spustitelný soubor pro Service Fabric](service-fabric-deploy-existing-app.md)

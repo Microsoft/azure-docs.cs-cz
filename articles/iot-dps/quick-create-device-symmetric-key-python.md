@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 7c8254609b8db9c2796d431485507de7083509aa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570012"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426379"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Rychlý Start: zřízení zařízení v Pythonu pomocí symetrických klíčů
 
-V tomto rychlém startu se dozvíte, jak zřídit vývojový počítač s Windows jako zařízení pro IoT Hub pomocí Pythonu. Toto zařízení bude používat symetrický klíč k ověřování pomocí instance služby Device Provisioning (DPS), aby se daly přiřadit ke službě IoT Hub. Ověřené zařízení bude rozpoznáno pomocí DPS na základě individuální registrace a přiřazeno ke službě IoT Hub. K zřízení zařízení se použije ukázkový kód ze [sady Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) . 
+V tomto rychlém startu se dozvíte, jak zřídit vývojový počítač s Windows jako zařízení pro IoT Hub pomocí Pythonu. Toto zařízení bude používat symetrický klíč a jednotlivou registraci k ověřování pomocí instance služby Device Provisioning (DPS), aby se daly přiřadit ke službě IoT Hub. K zřízení zařízení se použije ukázkový kód ze [sady Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) . 
 
 I když tento článek popisuje, jak zřídit jednotlivé registrace, můžete také použít skupiny registrací. Při používání skupin registrací jsou některé rozdíly. Například je nutné použít odvozený klíč zařízení s jedinečným ID registrace pro zařízení. Přestože skupiny registrací symetrického klíče nejsou omezené na starší verze zařízení, příklad skupiny registrací najdete v článku o [zřízení starší verze zařízení pomocí osvědčení symetrického klíče](how-to-legacy-device-symm-key.md). Další informace najdete v článku o [osvědčení symetrického klíče v části o skupinových registracích](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Pokud neznáte proces automatického zřizování, projděte si [koncepty automatického zřizování](concepts-auto-provisioning.md). 
+Pokud nejste obeznámeni s procesem automatického zřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . 
 
 Než budete pokračovat v tomto rychlém zprovoznění, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). Tento rychlý start vyžaduje vytvořenou instanci služby Device Provisioning Service.
 
@@ -178,7 +178,7 @@ Zřizovací kód se spojí s instancí DPS na základě těchto proměnných, ab
 
 Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a pak stiskněte tlačítko **Odstranit** v horní části podokna. 
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
 1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
 
 ## <a name="next-steps"></a>Další kroky

@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: fe540dbb230f033f139e82325bf8e20846f5bfe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761cc3908b677b129e85be442b7a593a38a367f9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832538"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341559"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Pokud chcete zkontrolovat pravopisné a gramatické chyby v textovém řetězci, odešlete požadavek GET do následujícího koncového bodu:  
 
@@ -29,20 +34,20 @@ Tento požadavek musí používat protokol HTTPS.
 
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace poskytuje škodlivým třetím stranám víc příležitostí získat k ní přístup. Server také poskytuje jeden bod upgradu pro budoucí verze rozhraní API.
 
-Požadavek musí obsahovat parametr dotazu [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text), který obsahuje textový řetězec ke kontrole. Požadavek by měl obsahovat taky parametr [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky, i když je tento parametr volitelný. Seznam volitelných parametrů dotazu, jako `mode`, naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
+Požadavek musí obsahovat parametr dotazu [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text), který obsahuje textový řetězec ke kontrole. Požadavek by měl obsahovat taky parametr [mkt](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky, i když je tento parametr volitelný. Seznam volitelných parametrů dotazu, jako `mode`, naleznete v tématu [Parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
   
-Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey). I když volitelné, doporučujeme také zadat následující hlavičky. Tyto hlavičky pomůžou rozhraní API Bingu pro kontrolu pravopisu vrátit přesnější výsledky:  
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey). I když volitelné, doporučujeme také zadat následující hlavičky. Tyto hlavičky pomůžou rozhraní API Bingu pro kontrolu pravopisu vrátit přesnější výsledky:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
+-   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
 
-Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers).
 
 Při volání rozhraní API Bingu pro kontrolu pravopisu pomocí JavaScriptu vám integrované funkce zabezpečení prohlížeče můžou zabránit v přístupu k hodnotám těchto hlaviček.
 
-Pokud chcete tento problém vyřešit, můžete žádost o rozhraní API Bingu pro kontrolu pravopisu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které obsahuje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
+Pokud chcete tento problém vyřešit, můžete žádost o rozhraní API Bingu pro kontrolu pravopisu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového proxy serveru obsahuje `Access-Control-Expose-Headers` hlavičku, která filtruje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
 
 Je snadné nainstalovat proxy CORS, aby [aplikace tutorial](../tutorials/spellcheck.md) mohla získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
@@ -127,4 +132,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

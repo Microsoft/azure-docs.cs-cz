@@ -9,26 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141546"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366084"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Architektura Azure AD pro udělování souhlasu
 
-Rozhraní pro vyjádření souhlasu Azure Active Directory (Azure AD) usnadňuje vývoj webových a nativních klientských aplikací pro více tenantů. Tyto aplikace umožňují přihlášení pomocí uživatelských účtů z klienta Azure AD, které se liší od účtu, ve kterém je aplikace zaregistrovaná. Můžou také vyžadovat přístup k webovým rozhraním API, jako je Microsoft Graph API (pro přístup k Azure AD, Intune a službám v Office 365) a dalším rozhraním API služeb Microsoftu, a to i k vašim vlastním webovým rozhraním API.
+Rozhraní pro vyjádření souhlasu Azure Active Directory (Azure AD) usnadňuje vývoj webových a nativních klientských aplikací pro více tenantů. Tyto aplikace umožňují přihlášení pomocí uživatelských účtů z klienta Azure AD, které se liší od účtu, ve kterém je aplikace zaregistrovaná. Můžou taky potřebovat přístup k webovým rozhraním API, jako je Microsoft Graph API (pro přístup k Azure AD, Intune a službám v Microsoft 365) a dalších rozhraních API služeb Microsoftu, a to i s vašimi webovými rozhraními API.
 
-Rozhraní je založené na uživateli nebo správci, kteří přistupují k aplikaci, která žádá o registraci ve svém adresáři, což může zahrnovat přístup k datům adresáře. Například pokud Webová klientská aplikace potřebuje číst informace o kalendáři uživatele z Office 365, musí nejdřív souhlasit s klientskou aplikací. Po přijetí souhlasu bude klientská aplikace moci volat rozhraní Microsoft Graph API jménem uživatele a podle potřeby použít informace v kalendáři. [Rozhraní Microsoft Graph API](https://developer.microsoft.com/graph) poskytuje přístup k datům v Office 365 (jako jsou kalendáře a zprávy z Exchange, webů a seznamů ze SharePointu, dokumentů z OneDrivu, poznámkových bloků z OneNotu, úkolů z Planneru a sešitů z Excelu) a také uživatelů a skupin z Azure AD a dalších datových objektů z dalších cloudových služeb Microsoftu.
+Rozhraní je založené na uživateli nebo správci, kteří přistupují k aplikaci, která žádá o registraci ve svém adresáři, což může zahrnovat přístup k datům adresáře. Například pokud Webová klientská aplikace potřebuje číst informace o kalendáři uživatele z Microsoft 365, musí nejprve souhlasit s klientskou aplikací. Po přijetí souhlasu bude klientská aplikace moci volat rozhraní Microsoft Graph API jménem uživatele a podle potřeby použít informace v kalendáři. [Rozhraní Microsoft Graph API](https://developer.microsoft.com/graph) poskytuje přístup k datům v Microsoft 365 (jako jsou kalendáře a zprávy z Exchange, webů a seznamů ze SharePointu, dokumentů z OneDrivu, poznámkových bloků z OneNotu, úkolů z Planneru a sešitů z Excelu) a také uživatelů a skupin z Azure AD a dalších datových objektů z dalších cloudových služeb Microsoftu.
 
 Rozhraní pro vyjádření souhlasu je postavené na OAuth 2,0 a jeho různých tocích, jako je udělení autorizačního kódu a udělení přihlašovacích údajů klienta, pomocí veřejných nebo důvěrných klientů. Díky použití OAuth 2,0 může Azure AD vytvořit mnoho různých typů klientských aplikací – například na telefonu, tabletu, serveru nebo webové aplikaci – a získat přístup k požadovaným prostředkům.
 
-Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](./authentication-vs-authorization.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](/graph/).
+Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](./authentication-vs-authorization.md). Informace o tom, jak získat autorizovaný přístup k Microsoft 365 prostřednictvím Microsoft Graph, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](/graph/).
 
 ## <a name="consent-experience---an-example"></a>Prostředí pro vyjádření souhlasu – příklad
 
@@ -50,7 +49,7 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
 
 1. Jakmile uživatel udělí souhlas, vrátí se do vaší aplikace autorizační kód, který se považuje za získání přístupového tokenu a aktualizačního tokenu. Další informace o tomto toku najdete v tématu [tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
-1. Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazoval dialog a uživatel s rolí správce může provádět [Azure Portal](https://portal.azure.com) . Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+1. Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazoval dialog a uživatel s rolí správce může provádět [Azure Portal](https://portal.azure.com) . Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../roles/permissions-reference.md).
 
     **Vyjádření souhlasu s delegovanými oprávněními aplikace**
 
@@ -64,5 +63,4 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .
-* Podrobnější informace najdete [v tématu o tom, jak je podpora podporovaná na úrovni protokolu OAuth 2,0 během toku udělení autorizačního kódu.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
+Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .

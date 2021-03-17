@@ -3,7 +3,7 @@ title: Rozšířené kódování pomocí přizpůsobení předvoleb v inverze | 
 description: V tomto tématu se dozvíte, jak provést rozšířené kódování přizpůsobením Media Encoder Standard přednastavení úloh.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a4ade25-e600-4bce-a66e-e29cf4a38369
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 345fd56e5ff069ea222661a4820e75d96a9e2395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071922"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014498"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Rozšířené kódování pomocí přizpůsobení předvoleb inverze 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Rozšířené kódování pomocí přizpůsobení předvoleb inverze
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -30,7 +33,7 @@ V tomto tématu se dozvíte, jak přizpůsobit Media Encoder Standard předvolby
 Pokud používáte předvolbu XML, nezapomeňte zachovat pořadí prvků, jak je znázorněno v ukázkách XML níže (například KeyFrameInterval by měl předcházet SceneChangeDetection).
 
 > [!NOTE] 
-> Mnohé z pokročilých funkcí Media Services V2 Media Encoder Standard v současnosti nejsou v systému V3 k dispozici. Další informace najdete v tématu [mezery k funkcím](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+> Mnohé z pokročilých funkcí Media Services V2 Media Encoder Standard v současnosti nejsou v systému V3 k dispozici. Další informace najdete [v Průvodci migrací](../latest/migrate-v-2-v-3-migration-introduction.md).
 
 ## <a name="support-for-relative-sizes"></a>Podpora relativních velikostí
 
@@ -50,7 +53,7 @@ Při generování miniatur není nutné vždy zadávat šířku a výšku výstu
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Generovat miniatury
+## <a name="generate-thumbnails"></a>Generovat miniatury
 
 V této části se dozvíte, jak přizpůsobit předvolbu, která generuje miniatury. Předem definovaná přednastavení obsahují informace o tom, jak chcete soubor zakódovat, i informace potřebné k vygenerování miniatur. Můžete využít kterékoli z přednastavených součástí informovaná v [této](media-services-mes-presets-overview.md) části a přidat kód, který generuje miniatury.  
 
@@ -63,7 +66,7 @@ Informace o schématu naleznete v [tomto](media-services-mes-schema.md) tématu.
 
 Nezapomeňte si prohlédnout část s [informacemi](#considerations) o tom, co je potřeba.
 
-### <a name="json-preset"></a><a id="json"></a>Přednastavení JSON
+### <a name="json-preset"></a>Přednastavení JSON
 
 ```json
 {
@@ -165,7 +168,7 @@ Nezapomeňte si prohlédnout část s [informacemi](#considerations) o tom, co j
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>Přednastavení XML
+### <a name="xml-preset"></a>Přednastavení XML
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

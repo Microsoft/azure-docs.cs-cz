@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174712"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019127"
 ---
 1. Spuštění UnifiedSetup.exe služby Azure Site Recovery
 2. V části **Než začnete** vyberte **Přidat další procesové servery pro horizontální navýšení kapacity nasazení**.
@@ -19,7 +19,7 @@ ms.locfileid: "67174712"
 3. V části **Podrobnosti konfiguračního serveru** zadejte IP adresu konfiguračního serveru a přístupové heslo.
 
    ![Přidání procesového serveru 2](./media/site-recovery-add-process-server/ps-page-2.png)
-4. V části **nastavení Internetu**určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes Internet.
+4. V části **nastavení Internetu** určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes Internet.
 
    ![Přidání procesového serveru 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "67174712"
      ![Přidání procesového serveru 5](./media/site-recovery-add-process-server/ps-page-5.png)
 
 7. Na stránce **Umístění instalace** vyberte, kam chcete nainstalovat binární soubory a ukládat mezipaměť. Vybraná jednotka musí mít minimálně 5 GB dostupného místa na disku, ale pro mezipaměť doporučujeme jednotku alespoň s 600 GB volného místa.
-     ![Přidání procesového serveru 5](./media/site-recovery-add-process-server/ps-page-6.png)
+     ![Snímek obrazovky zobrazující umístění instalace binárních souborů a úložiště mezipaměti.](./media/site-recovery-add-process-server/ps-page-6.png)
 
 8. Na stránce **Výběr sítě** zadejte naslouchací proces (síťový adaptér a port SSL), na kterém konfigurační server odesílá a přijímá data replikace. Výchozím portem pro odesílání a příjem přenosů replikace je port 9443, ale toto číslo portu můžete změnit podle potřeb vašeho prostředí. Kromě portu 9443 otevíráme také port 443, který používá webový server k orchestraci operací replikace. Nepoužívejte port 443 pro odesílání nebo příjem provozu replikace.
 

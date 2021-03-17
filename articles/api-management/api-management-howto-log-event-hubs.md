@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903387"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072403"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs slouží jako "přední dveře" pro kanál událostí a jakmile se data shromažďují do centra událostí, je možné je transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování/ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -32,7 +32,7 @@ Podrobné informace o tom, jak vytvořit centrum událostí a jak získat připo
 ## <a name="create-an-api-management-logger"></a>Vytvoření protokolovacího nástroje API Management
 Teď, když máte centrum událostí, je dalším krokem konfigurace [protokolovacího](/rest/api/apimanagement/2019-12-01/logger) nástroje ve službě API Management, aby mohla protokolovat události do centra událostí.
 
-API Management protokolovacích nástrojů se konfigurují pomocí [REST API API Management](https://aka.ms/apimapi). Podrobné příklady požadavků najdete v tématu [Vytvoření protokolovacích](/rest/api/apimanagement/2019-12-01/logger/createorupdate)nástrojů.
+API Management protokolovacích nástrojů se konfigurují pomocí [REST API API Management](/rest/api/apimanagement/ApiManagementREST/API-Management-REST). Podrobné příklady požadavků najdete v tématu [Vytvoření protokolovacích](/rest/api/apimanagement/2019-12-01/logger/createorupdate)nástrojů.
 
 ## <a name="configure-log-to-eventhub-policies"></a>Konfigurace zásad přihlášení k protokolu eventhub
 

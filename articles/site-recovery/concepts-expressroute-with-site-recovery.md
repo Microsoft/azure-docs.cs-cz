@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654306"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330253"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
+Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. V ExpressRoute můžete vytvořit připojení ke cloudovým službám, jako je Microsoft Azure, Microsoft 365 a Dynamics 365.
 
 Tento článek popisuje, jak můžete použít Azure ExpressRoute s Azure Site Recovery pro zotavení po havárii a migraci.
 
@@ -31,13 +31,13 @@ K okruhu ExpressRoute je přidruženo více domén směrování. Další informa
 
 Azure Site Recovery umožňuje zotavení po havárii a migraci do Azure pro místní [virtuální počítače Hyper-V](hyper-v-azure-architecture.md), [virtuální počítače VMware](vmware-azure-architecture.md)a [fyzické servery](physical-azure-architecture.md). Pro všechny místní scénáře do Azure se data replikace odesílají do účtu Azure Storage a ukládají se do něj. Během replikace neplatíte žádné poplatky za virtuální počítače. Když spustíte převzetí služeb při selhání do Azure, Site Recovery automaticky vytvoří virtuální počítače Azure s IaaS.
 
-Site Recovery replikuje data na účet Azure Storage nebo replikovaný disk repliky v cílové oblasti Azure prostřednictvím veřejného koncového bodu. Pokud chcete pro Site Recovery provozu replikace použít službu ExpressRoute, můžete využít [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nebo stávající [veřejný partnerský vztah](../expressroute/about-public-peering.md) (nepoužívané pro nová vytvoření). Partnerský vztah Microsoftu je doporučená doména směrování pro replikaci. Všimněte si, že replikace není podporovaná přes privátní partnerský vztah.
+Site Recovery replikuje data na účet Azure Storage nebo replikovaný disk repliky v cílové oblasti Azure prostřednictvím veřejného koncového bodu. Pokud chcete pro Site Recovery provozu replikace použít službu ExpressRoute, můžete využít [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nebo stávající [veřejný partnerský vztah](../expressroute/about-public-peering.md) (nepoužívané pro nová vytvoření). Partnerský vztah Microsoftu je doporučená doména směrování pro replikaci. Všimněte si, že replikace je podporována přes privátní partnerský vztah pouze v případě, že [jsou pro trezor povoleny soukromé body ukončení](hybrid-how-to-enable-replication-private-endpoints.md).
 
 Zajistěte, aby byly splněny také [požadavky na síť](vmware-azure-configuration-server-requirements.md#network-requirements) pro konfigurační server. Konfigurační server vyžaduje k orchestraci replikace Site Recovery připojení ke konkrétním adresám URL. ExpressRoute nelze použít pro toto připojení. 
 
 V případě, že používáte proxy v místním prostředí a chcete pro provoz replikace použít ExpressRoute, musíte nakonfigurovat seznam obcházení proxy serveru na konfiguračním serveru a procesových serverech. Postupujte následovně:
 
-- Stáhněte si z [tohoto místa](https://aka.ms/PsExec) nástroj PsExec pro přístup k systémovému kontextu uživatele.
+- Stáhněte si z [tohoto místa](/sysinternals/downloads/psexec) nástroj PsExec pro přístup k systémovému kontextu uživatele.
 - Spusťte aplikaci Internet Explorer v kontextu uživatele systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
 - Přidání nastavení proxy serveru v IE
 - V seznamu vynechat přidejte adresu URL úložiště Azure *. blob.core.windows.net.

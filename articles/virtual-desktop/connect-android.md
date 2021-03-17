@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ebf91f68e45148d9a609ff671ffa4683bd74c82c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007756"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89226110"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Připojení k virtuálnímu počítači s Windows pomocí klienta pro Android
 
@@ -36,6 +36,7 @@ Přihlášení k odběru informačního kanálu:
 2. Do pole **Adresa URL informačního kanálu** zadejte adresu URL informačního kanálu. Adresa URL informačního kanálu může být buď adresa URL, nebo e-mailová adresa.
    - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl, normálně <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. Pokud váš správce nakonfiguroval server tímto způsobem, bude klient hledat adresu URL přidruženou k vaší e-mailové adrese.
+   - Pokud se chcete připojit prostřednictvím portálu US Gov, použijte <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. Klepněte na **Další**.
 4. Po zobrazení výzvy zadejte své přihlašovací údaje.
    - V poli **uživatelské jméno**zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.

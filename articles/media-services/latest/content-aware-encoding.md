@@ -1,25 +1,27 @@
 ---
-title: Přednastavení pro kódování s podporou obsahu – Azure Media Services
+title: Přednastavení pro kódování zohledňující obsah
 description: Tento článek popisuje kódování zohledňující obsah v Microsoft Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
-ms.custom: ''
-ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039138"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095930"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Tím se zajistí řádné snížení kvality, protože přenosová rychlost je snížena, takže se jedná o rozlišení videa. Například kódování s více přenosovými rychlostmi používá pro kódovací žebřík, který se označuje jako tabulka rozlišení a přenosové rychlosti, informace o Media Services [vestavěných přednastavení kódování](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
@@ -27,7 +29,7 @@ Měli byste znát obsah, který zpracováváte, a přizpůsobit nebo ladit žeb�
 
 Přednastavení [adaptivního streamování](autogen-bitrate-ladder.md) od Microsoftu částečně řeší problém proměnlivosti kvality a rozlišení zdrojových videí. Naši zákazníci mají různou škálu obsahu, některé na webu 1080p, dalších ve 720p a pár v SD a nižších rozlišeních. Kromě toho ne všechen zdrojový obsah je vysoce kvalitní mezzanines z filmu nebo TV studia. Přednastavení adaptivního streamování řeší tyto problémy tím, že zajišťuje, že žebřík přenosů nikdy nepřekračuje rozlišení nebo průměrnou rychlost vstupního mezzanineu. Tato předvolba však neověřuje vlastnosti zdrojového kódu kromě rozlišení a přenosové rychlosti.
 
-## <a name="the-content-aware-encoding"></a>Kódování zohledňující obsah 
+## <a name="the-content-aware-encoding"></a>Kódování zohledňující obsah
 
 Přednastavení kódování zohledňující obsah rozšiřuje mechanismus "s adaptivní přenosovou rychlostí", který začleňuje vlastní logiku, která umožňuje kodéru vyhledat optimální přenosovou hodnotu pro dané řešení, ale bez nutnosti rozsáhlé výpočetní analýzy. Tato předvolba vytvoří sadu rychlostmi zarovnaných na skupinu GOP. Vzhledem k jakémukoli vstupnímu obsahu služba provádí počáteční odlehčenou analýzu vstupního obsahu a výsledky používá k určení optimálního počtu vrstev, vhodné rychlosti a nastavení rozlišení pro doručování pomocí adaptivního streamování. Tato předvolba je zvláště platná pro videa s nízkou a střední složitostí, kde výstupní soubory budou s nižšími přenosovými rychlostmi, než je přednastavení adaptivního streamování, ale kvalita, která uživatelům poskytuje dobrý zážitek. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem.
 
@@ -55,7 +57,7 @@ Níže jsou uvedeny výsledky jiné kategorie zdrojového obsahu, kde kodér dok
 
 Transformace, které používají tuto předvolbu, můžete vytvořit následujícím způsobem. 
 
-Kurzy, které používají výstupy transformace, najdete v části [Další kroky](#next-steps) . Výstupní Asset se dá doručovat z Media Services koncových bodů streamování v protokolech, jako jsou MPEG-SPOJOVNÍKy a HLS (jak je znázorněno v kurzech).
+V části [Další kroky](#next-steps) najdete kurzy, které využívají transformační výstupy. Výstupní Asset se dá doručovat z Media Services koncových bodů streamování v protokolech, jako jsou MPEG-SPOJOVNÍKy a HLS (jak je znázorněno v kurzech).
 
 > [!NOTE]
 > Ujistěte se, že jste použili předvolbu **ContentAwareEncoding** , která není ContentAwareEncodingExperimental.
@@ -85,4 +87,4 @@ TransformOutput[] output = new TransformOutput[]
 * [Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST](stream-files-tutorial-with-rest.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – CLI](stream-files-cli-quickstart.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET](stream-files-dotnet-quickstart.md)
-* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu Node.jsvidea](stream-files-nodejs-quickstart.md)
+* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu Node.jsvidea ](stream-files-nodejs-quickstart.md)

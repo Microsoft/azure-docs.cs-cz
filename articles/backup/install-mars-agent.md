@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533474"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986866"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -42,16 +42,16 @@ Data, která jsou k dispozici pro zálohování, závisí na tom, kde je agent n
 
 ## <a name="modify-storage-replication"></a>Úprava replikace úložiště
 
-Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md).
+Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Pokud je trezor vaším primárním zálohovacím mechanismem, doporučujeme použít GRS.
-* Pomocí [místně redundantního úložiště (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) můžete snížit náklady na službu Azure Storage.
+* Pomocí [místně redundantního úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) můžete snížit náklady na službu Azure Storage.
 
 Postup úpravy typu replikace úložiště:
 
 1. V novém trezoru vyberte v části **Nastavení** možnost **vlastnosti** .
 
-1. Na stránce **vlastnosti** v části **Konfigurace zálohování**vyberte **aktualizovat**.
+1. Na stránce **vlastnosti** v části **Konfigurace zálohování** vyberte **aktualizovat**.
 
 1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
@@ -88,6 +88,9 @@ Pokud chcete použít veřejný partnerský vztah, nejdřív zajistěte přístu
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
 * `.windows.net`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Chcete-li použít partnerský vztah Microsoftu, vyberte následující služby, oblasti a příslušné hodnoty komunity:
 
@@ -112,7 +115,7 @@ Stáhněte agenta MARS, abyste ho mohli nainstalovat na počítače, které chce
 
 Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že používáte nejnovější verzi agenta. Na portálu můžete najít nejnovější verzi nebo přejít přímo ke [stažení](https://aka.ms/azurebackup_agent).
 
-1. V trezoru v části **Začínáme**vyberte **zálohovat**.
+1. V trezoru v části **Začínáme** vyberte **zálohovat**.
 
     ![Otevřít cíl zálohování](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
@@ -121,13 +124,13 @@ Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že p
 
     ![Konfigurace souborů a složek](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-1. Pro **připravit infrastrukturu**si v části **instalovat Recovery Services agenta**Stáhněte agenta Mars.
+1. Pro **připravit infrastrukturu** si v části **instalovat Recovery Services agenta** Stáhněte agenta Mars.
 
     ![Příprava infrastruktury](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
 1. V nabídce stáhnout vyberte **Uložit**. Ve výchozím nastavení se soubor *MARSagentinstaller.exe* uloží do složky Stažené soubory.
 
-1. Vyberte možnost **už si stáhněte nebo použijte nejnovějšího agenta Recovery Services**a pak stáhněte přihlašovací údaje trezoru.
+1. Vyberte možnost **už si stáhněte nebo použijte nejnovějšího agenta Recovery Services** a pak stáhněte přihlašovací údaje trezoru.
 
     ![Stažení přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
@@ -142,16 +145,16 @@ Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že p
 
     ![V Průvodci instalací agenta MARS vyberte nastavení instalace.](./media/backup-configure-vault/mars1.png)
 
-1. V případě **konfigurace proxy**určete, jak se agent, který běží na počítači s Windows, připojí k Internetu. Pak vyberte **Další**.
+1. V případě **konfigurace proxy** určete, jak se agent, který běží na počítači s Windows, připojí k Internetu. Pak vyberte **Další**.
 
    * Pokud používáte vlastní proxy server, zadejte všechna potřebná nastavení proxy serveru a přihlašovací údaje.
    * Mějte na paměti, že agent potřebuje přístup k [určitým adresám URL](#before-you-start).
 
     ![Nastavení přístupu k Internetu v průvodci MARS](./media/backup-configure-vault/mars2.png)
 
-1. Pro **instalaci**Zkontrolujte požadavky a vyberte **nainstalovat**.
+1. Pro **instalaci** Zkontrolujte požadavky a vyberte **nainstalovat**.
 1. Po instalaci agenta vyberte **pokračovat k registraci**.
-1. V části Identifikace trezoru **Průvodce registrací serveru**  >  **Vault Identification**vyhledejte a vyberte soubor s přihlašovacími údaji, který jste stáhli. Pak vyberte **Další**.
+1. V části Identifikace trezoru **Průvodce registrací serveru**  >  vyhledejte a vyberte soubor s přihlašovacími údaji, který jste stáhli. Pak vyberte **Další**.
 
     ![Přidání přihlašovacích údajů trezoru pomocí Průvodce registrací serveru](./media/backup-configure-vault/register1.png)
 

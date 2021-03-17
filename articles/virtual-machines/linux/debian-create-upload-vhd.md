@@ -2,16 +2,17 @@
 title: Příprava virtuálního pevného disku s Debian Linux
 description: Naučte se vytvářet Debian image VHD pro nasazení virtuálních počítačů v Azure.
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368196"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554509"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
 ## <a name="prerequisites"></a>Požadavky
@@ -20,11 +21,11 @@ V této části se předpokládá, že jste už nainstalovali operační systém
 ## <a name="installation-notes"></a>Poznámky k instalaci
 * Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Novější formát VHDX se v Azure nepodporuje. Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny **Convert-VHD** .
-* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
+* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) se můžou použít na datových discích, pokud jsou preferované.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent Azure Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor. Další informace najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes).
 
-## <a name="use-azure-manage-to-create-debian-vhds"></a>Použití Azure-Manage k vytváření virtuálních pevných disků Debian
+## <a name="use-azure-manage-to-create-debian-vhds"></a>Vytvoření VHD Debian pomocí Azure-Manage
 K dispozici jsou nástroje pro generování Debian VHD pro Azure, například skripty [Azure-Manage](https://github.com/credativ/azure-manage) z [credativ](https://www.credativ.com/). Toto je doporučený přístup a vytvoření obrázku od začátku. Pokud třeba chcete vytvořit virtuální pevný disk Debian 8, spusťte následující příkazy ke stažení `azure-manage` nástroje (a závislostí) a spusťte tento `azure_build_image` skript:
 
 ```console
@@ -58,7 +59,7 @@ K dispozici jsou nástroje pro generování Debian VHD pro Azure, například sk
     # sudo update-grub
     ```
 
-6. Přidejte Debian úložiště Azure do/etc/apt/sources.list pro Debian 8 nebo 9:
+6. Přidejte Debian úložiště Azure do/etc/apt/sources.list pro Debian 8, 9 nebo 10:
 
     **Debian 8. x "Jessie"**
 
@@ -85,7 +86,18 @@ K dispozici jsou nástroje pro generování Debian VHD pro Azure, například sk
     deb http://debian-archive.trafficmanager.net/debian stretch-backports main
     deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
     ```
-
+    
+    **Debian 10. x "Buster"**
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian buster main
+    deb-src http://debian-archive.trafficmanager.net/debian buster main
+    deb http://debian-archive.trafficmanager.net/debian-security buster/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security buster/updates main
+    deb http://debian-archive.trafficmanager.net/debian buster-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian buster-updates main
+    deb http://debian-archive.trafficmanager.net/debian buster-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian buster-backports main
+    ```
 
 7. Instalace agenta Azure Linux:
 

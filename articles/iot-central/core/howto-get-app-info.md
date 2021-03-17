@@ -2,17 +2,17 @@
 title: Získat informace o verzi aplikace Azure IoT Central | Microsoft Docs
 description: Jak získat informace o IoT Central aplikaci, kterou používáte
 services: iot-central
-author: dominicbetts
-ms.author: dobett
-ms.date: 06/26/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/26/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 12ba8526be68d2cb15e37510e66f959ab65c6e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80a35ab41b05609642667da9e8561921ecc20852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85802110"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051700"
 ---
 # <a name="about-your-application"></a>Informace o aplikaci
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak získat informace o vaší aplikaci IoT Centra
 
 ## <a name="get-information-about-your-application"></a>Získání informací o aplikaci
 
-Chcete-li získat informace o vaší aplikaci IoT Central:
+Chcete-li získat informace o vaší aplikaci IoT Central: 
 
 1. V horní nabídce vyberte odkaz **help** .
 
@@ -33,10 +33,12 @@ Chcete-li získat informace o vaší aplikaci IoT Central:
 
 1. Stránka **o aplikaci** zobrazuje informace o vaší aplikaci:  
 
-    :::image type="content" source="media/howto-get-app-info/about-your-app.png" alt-text="O snímku vaší aplikace":::
+    :::image type="content" source="media/howto-get-app-info/about-your-app2.png" alt-text="O snímku vaší aplikace":::
 
     K zkopírování informací do schránky použijte tlačítko **Kopírovat informace** .
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když víte, jak najít verzi vaší IoT Central aplikace, je navržený další krok, ve kterém můžete dál prozkoumat články s postupy pro správce: [změna IoT Central nastavení aplikace](howto-administer.md).
+
+Pokud máte aplikaci v2, přečtěte si téma [migrace aplikace IoT Central v2 na V3](howto-migrate.md).

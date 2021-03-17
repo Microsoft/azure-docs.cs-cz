@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654697"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224703"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -21,31 +21,35 @@ Tento článek vám pomůže pochopit proces vytváření privátních koncovýc
 - Soukromé koncové body lze vytvořit pouze pro nové trezory Recovery Services (které nemají zaregistrovány žádné položky do trezoru). Proto je nutné před pokusem o ochranu položek do trezoru vytvořit privátní koncové body.
 - Jedna virtuální síť může obsahovat privátní koncové body pro několik trezorů Recovery Services. Kromě toho může mít jeden Recovery Services trezor pro něj privátní koncové body ve více virtuálních sítích. Maximální počet privátních koncových bodů, které je možné vytvořit pro trezor, je však 12.
 - Po vytvoření privátního koncového bodu pro trezor se trezor zamkne. Nebude k dispozici (pro zálohování a obnovení) z sítí kromě těch, které obsahují soukromý koncový bod pro trezor. Pokud jsou všechny privátní koncové body trezoru odebrány, bude trezor přístupný ze všech sítí.
-- Připojení privátního koncového bodu pro zálohování používá celkem 11 privátních IP adres ve vaší podsíti. Toto číslo může být pro určité oblasti Azure vyšší (až 25). Proto doporučujeme, abyste při pokusu o vytvoření privátních koncových bodů pro zálohování měli k dispozici dostatek privátních IP adres.
+- Připojení privátního koncového bodu pro zálohování používá celkem 11 privátních IP adres ve vaší podsíti, včetně těch, které používá Azure Backup pro úložiště. Toto číslo může být pro určité oblasti Azure vyšší (až 25). Proto doporučujeme, abyste při pokusu o vytvoření privátních koncových bodů pro zálohování měli k dispozici dostatek privátních IP adres.
 - I když je Recovery Services trezor používá (obojí) Azure Backup a Azure Site Recovery, Tento článek popisuje použití privátních koncových bodů jenom pro Azure Backup.
 - Azure Active Directory v současné době nepodporuje privátní koncové body. Takže IP adresy a plně kvalifikované názvy domény, které Azure Active Directory pro práci v oblasti, musí mít povolený odchozí přístup ze zabezpečené sítě při provádění zálohování databází ve virtuálních počítačích Azure a při zálohování pomocí agenta MARS. Můžete také použít značky NSG a značky Azure Firewall pro povolení přístupu ke službě Azure AD (podle potřeby).
-- U privátních koncových bodů se virtuální sítě se zásadami sítě nepodporují. Než budete pokračovat, budete muset zakázat zásady sítě.
+- U privátních koncových bodů se virtuální sítě se zásadami sítě nepodporují. Než budete pokračovat, budete muset [zakázat zásady sítě](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) .
 - Pokud jste ho zaregistrovali před 1 2020, je nutné znovu zaregistrovat poskytovatele prostředků Recovery Services k předplatnému. Pokud chcete poskytovatele znovu zaregistrovat, přejděte do svého předplatného v Azure Portal, v levém navigačním panelu přejděte na **poskytovatel prostředků** , vyberte **Microsoft. RecoveryServices** a vyberte **znovu registrovat**.
+- [Obnovení mezi oblastmi](backup-create-rs-vault.md#set-cross-region-restore) pro SQL a SAP HANA zálohy databáze není podporované, pokud má Trezor povolené privátní koncové body.
+- Když přesunete Recovery Services trezor již s použitím privátních koncových bodů na nového tenanta, budete muset aktualizovat trezor Recovery Services a znovu vytvořit a znovu nakonfigurovat spravovanou identitu trezoru a vytvořit nové privátní koncové body podle potřeby (které by měly být v novém tenantovi). Pokud to neuděláte, operace zálohování a obnovení začnou selhat. Všechna oprávnění řízení přístupu na základě role (RBAC) nastavená v rámci předplatného se taky musí překonfigurovat.
 
 ## <a name="recommended-and-supported-scenarios"></a>Doporučené a podporované scénáře
 
 I když jsou v trezoru povolené privátní koncové body, používají se k zálohování a obnovení úloh SQL a SAP HANA jenom na virtuálních počítačích Azure a na zálohování agenta MARS. Trezor můžete použít i pro zálohování dalších úloh (nevyžadují i privátní koncové body). Kromě zálohování úloh SQL a SAP HANA a zálohování pomocí agenta MARS se také k provádění obnovení souborů pro zálohování virtuálních počítačů Azure používá privátní koncové body. Další informace najdete v následující tabulce:
 
-| Zálohování úloh na virtuálním počítači Azure (SQL, SAP HANA), zálohování pomocí agenta MARS | Použití privátních koncových bodů se doporučuje, aby se povolilo zálohování a obnovení bez nutnosti povolení – vypíše všechny IP adresy nebo plně kvalifikované názvy domény pro Azure Backup nebo Azure Storage z vašich virtuálních sítí. |
+| Zálohování úloh na virtuálním počítači Azure (SQL, SAP HANA), zálohování pomocí agenta MARS | Použití privátních koncových bodů se doporučuje k povolení zálohování a obnovení, aniž byste museli přidávat do seznamu povolených IP adres nebo plně kvalifikovaných názvů domén pro Azure Backup nebo Azure Storage z vašich virtuálních sítí. V takovém případě zajistěte, aby virtuální počítače, které hostují databáze SQL, mohly získat IP adresy nebo plně kvalifikované názvy domény služby Azure |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Zálohování virtuálních počítačů Azure**                                         | Zálohování virtuálního počítače nevyžaduje povolení přístupu k žádným IP adresám nebo plně kvalifikovaným názvům domén. Proto nevyžaduje privátní koncové body pro zálohování a obnovení disků.  <br><br>   Obnovení souborů z trezoru obsahujícího privátní koncové body by ale mělo být omezené na virtuální sítě, které obsahují privátní koncový bod pro trezor. <br><br>    Pokud používáte nespravované disky ACL'ed, ujistěte se, že účet úložiště, který obsahuje disky, umožňuje přístup k **důvěryhodným službám Microsoftu** , pokud je ACL'ed. |
 | **Zálohování souborů Azure**                                      | Zálohy souborů Azure se ukládají v místním účtu úložiště. Proto nevyžaduje privátní koncové body pro zálohování a obnovení. |
 
-## <a name="creating-and-using-private-endpoints-for-backup"></a>Vytváření a používání privátních koncových bodů pro zálohování
+## <a name="get-started-with-creating-private-endpoints-for-backup"></a>Začínáme s vytvářením privátních koncových bodů pro zálohování
 
-Tato část pojednává o krocích při vytváření a používání privátních koncových bodů pro Azure Backup v rámci virtuálních sítí.
+Následující části popisují kroky týkající se vytváření a používání privátních koncových bodů pro Azure Backup v rámci virtuálních sítí.
 
 >[!IMPORTANT]
 > Důrazně doporučujeme postupovat podle kroků ve stejné posloupnosti, jak je uvedeno v tomto dokumentu. V takovém případě může dojít k tomu, že se vygenerování trezoru nekompatibilním s používáním privátních koncových bodů a vyžaduje restartování procesu v novém trezoru.
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-V [této části](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) se dozvíte, jak vytvořit trezor pomocí klienta Azure Resource Manager. Tím se vytvoří trezor s spravovanou identitou, který už je povolený. Další informace o úložištích Recovery Services [najdete tady](./backup-azure-recovery-services-vault-overview.md).
+Privátní koncové body pro zálohování je možné vytvořit jenom pro Recovery Services trezorů, které nemají chráněné žádné položky (nebo se v minulosti neudělaly žádné položky, které se do ní nepokusily chránit nebo zaregistrovat). Proto doporučujeme vytvořit nový trezor pro zahájení. Další informace o vytvoření nového trezoru najdete v tématu  [Vytvoření a konfigurace trezoru Recovery Services](backup-create-rs-vault.md).
+
+V [této části](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) se dozvíte, jak vytvořit trezor pomocí klienta Azure Resource Manager. Tím se vytvoří trezor s spravovanou identitou, který už je povolený.
 
 ## <a name="enable-managed-identity-for-your-vault"></a>Povolit spravovanou identitu pro svůj trezor
 
@@ -60,69 +64,7 @@ Spravované identity umožňují trezoru vytvářet a používat soukromé konco
 1. Generuje se **ID objektu** , což je spravovaná identita trezoru.
 
     >[!NOTE]
-    >Po povolení nesmí být spravovaná identita zakázaná (ještě dočasně). Zakázání spravované identity může vést k nekonzistentnímu chování.
-
-## <a name="dns-changes"></a>Změny DNS
-
-Použití privátních koncových bodů vyžaduje Privátní DNS zóny, aby rozšíření zálohování mohlo překládat plně kvalifikované názvy domény privátního propojení na soukromé IP adresy. Zcela se vyžadují tři privátní zóny DNS. I když se dvě z těchto zón musí mandatorily vytvořit, třetí může být buď výslovný, aby byla integrovaná s privátním koncovým bodem (při vytváření privátního koncového bodu), nebo se dá vytvořit samostatně.
-
-Můžete také použít vlastní servery DNS. Podrobnosti o používání vlastních serverů DNS najdete v tématu [změny DNS pro vlastní servery DNS](#dns-changes-for-custom-dns-servers) .
-
-### <a name="creating-mandatory-dns-zones"></a>Vytváření povinných zón DNS
-
-Existují dvě povinné zóny DNS, které je třeba vytvořit:
-
-- `privatelink.blob.core.windows.net` (pro data zálohování a obnovení)
-- `privatelink.queue.core.windows.net` (pro komunikaci se službou)
-
-1. Vyhledejte **zónu privátní DNS** na panelu hledání **všechny služby** a v rozevíracím seznamu vyberte možnost **privátní DNS zóna** .
-
-    ![Vybrat zónu Privátní DNS](./media/private-endpoints/private-dns-zone.png)
-
-1. V podokně **privátní DNS zóna** vyberte tlačítko **+ Přidat** a začněte vytvářet novou zónu.
-
-1. V podokně **vytvořit privátní ZÓNU DNS** vyplňte požadované podrobnosti. Předplatné musí být stejné jako místo, kde se vytvoří privátní koncový bod.
-
-    Zóny se musí pojmenovat jako:
-
-    - `privatelink.blob.core.windows.net`
-    - `privatelink.queue.core.windows.net`
-
-    | **Zóna**                           | **Služba** | **Podrobnosti o předplatném a skupině prostředků (RG)**                  |
-    | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Předplatné**: stejné jako místo, kde je potřeba vytvořit privátní koncový bod  **RG**: RG virtuální sítě nebo privátního koncového bodu. |
-    | `privatelink.queue.core.windows.net` | Fronta       | **RG**: buď RG virtuální sítě, nebo privátního koncového bodu. |
-
-    ![Vytvořit zónu Privátní DNS](./media/private-endpoints/create-private-dns-zone.png)
-
-1. Po dokončení pokračujte v kontrole a vytvoření zóny DNS.
-
-### <a name="optional-dns-zone"></a>Volitelná zóna DNS
-
-Zákazníci si můžou vybrat integraci svých privátních koncových bodů s privátními zónami DNS pro Azure Backup (popsaná v části vytváření privátních koncových bodů) pro komunikaci se službou. Pokud nechcete integrovat s privátní zónou DNS, můžete se rozhodnout použít vlastní server DNS nebo vytvořit privátní zónu DNS samostatně. To je kromě těchto dvou povinných privátních zón DNS popsaných v předchozí části.
-
-Pokud chcete vytvořit samostatnou privátní zónu DNS v Azure, můžete stejný postup použít stejný postup jako při vytváření závazných zón DNS. Podrobnosti o pojmenování a předplatném jsou sdílené níže:
-
-| **Zóna**                                                     | **Služba** | **Podrobnosti o předplatném a skupině prostředků**                  |
-| ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Poznámka**: *geografické* umístění tady odkazuje na kód oblasti. Například *wcus* a *ne* pro středozápadní USA a Severní Evropa v uvedeném pořadí. | Backup      | **Předplatné**: stejné jako místo, kde je potřeba vytvořit privátní koncový bod  **RG**: libovolný RG v rámci předplatného. |
-
-Kódy oblastí najdete v [tomto seznamu](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) .
-
-Pro konvence pojmenování adres URL v národních oblastech:
-
-- [Čína](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Německo](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov](../azure-government/documentation-government-developer-guide.md)
-
-### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Propojení privátních zón DNS s vaší virtuální sítí
-
-Zóny DNS vytvořené výše se teď musí propojit s virtuální sítí, kde se nacházejí servery, které se mají zálohovat. To je potřeba udělat pro všechny zóny DNS, které jste vytvořili.
-
-1. Přejděte do zóny DNS (kterou jste vytvořili v předchozím kroku) a přejděte na **odkazy virtuální sítě** na levém panelu. Po tom vyberte tlačítko **+ Přidat** .
-1. Vyplňte požadované podrobnosti. Pole **odběr** a **virtuální síť** musí být vyplněna odpovídajícími podrobnostmi o virtuální síti, ve které vaše servery existují. Ostatní pole musí být ponechána tak, jak je.
-
-    ![Přidat odkaz virtuální sítě](./media/private-endpoints/add-virtual-network-link.png)
+    >Po povolení nesmí být spravovaná identita zakázaná **(ještě dočasně** ). Zakázání spravované identity může vést k nekonzistentnímu chování.
 
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>Udělení oprávnění k trezoru pro vytvoření požadovaných privátních koncových bodů
 
@@ -130,54 +72,54 @@ Pro vytvoření požadovaných privátních koncových bodů pro Azure Backup mu
 
 - Skupina prostředků, která obsahuje cílovou virtuální síť
 - Skupina prostředků, ve které se mají vytvořit privátní koncové body
-- Skupina prostředků, která obsahuje Privátní DNS zóny
+- Skupina prostředků, která obsahuje zóny Privátní DNS, jak je popsáno [v podrobnostech](#create-private-endpoints-for-azure-backup)
 
 Doporučujeme, abyste roli **přispěvatele** nadělili pro tyto tři skupiny prostředků do trezoru (spravovaná identita). Následující postup popisuje, jak to provést pro konkrétní skupinu prostředků (je potřeba provést u každé ze tří skupin prostředků):
 
 1. Přejděte do skupiny prostředků a na levém panelu přejděte na **Access Control (IAM)** .
-1. V **Access Control**klikněte na **Přidat přiřazení role**.
+1. V **Access Control** klikněte na **Přidat přiřazení role**.
 
     ![Přidat přiřazení role](./media/private-endpoints/add-role-assignment.png)
 
-1. V podokně **Přidat přiřazení role** vyberte jako **roli**možnost **Přispěvatel** a jako **objekt zabezpečení**použijte **název** trezoru. Vyberte svůj trezor a po dokončení vyberte **Uložit** .
+1. V podokně **Přidat přiřazení role** vyberte jako **roli** možnost **Přispěvatel** a jako **objekt zabezpečení** použijte **název** trezoru. Vyberte svůj trezor a po dokončení vyberte **Uložit** .
 
     ![Výběr role a objektu zabezpečení](./media/private-endpoints/choose-role-and-principal.png)
 
 Pokud chcete spravovat oprávnění na podrobnější úrovni, přečtěte si téma [Vytvoření rolí a oprávnění ručně](#create-roles-and-permissions-manually).
 
-## <a name="creating-and-approving-private-endpoints-for-azure-backup"></a>Vytváření a schvalování privátních koncových bodů pro Azure Backup
+## <a name="create-private-endpoints-for-azure-backup"></a>Vytvoření privátních koncových bodů pro Azure Backup
 
-### <a name="creating-private-endpoints-for-backup"></a>Vytváření privátních koncových bodů pro zálohování
+V této části se dozvíte, jak vytvořit privátní koncový bod pro svůj trezor.
 
-Tato část popisuje proces vytvoření privátního koncového bodu pro váš trezor.
+1. Přejděte do trezoru, který jste vytvořili výše, a v levém navigačním panelu přejděte na **připojení privátního koncového bodu** . V horní části vyberte **+ privátní koncový bod** a začněte vytvářet nový privátní koncový bod pro tento trezor.
 
-1. Na panelu hledání vyhledejte a vyberte **privátní odkaz**. Tím přejdete na **centrum privátních odkazů**.
-
-    ![Vyhledat privátní odkaz](./media/private-endpoints/search-for-private-link.png)
-
-1. V levém navigačním panelu vyberte **soukromé koncové body**. V podokně **privátní koncové body** vyberte **+ Přidat** a začněte vytvářet privátní koncový bod pro svůj trezor.
-
-    ![Přidat privátní koncový bod do centra privátních odkazů](./media/private-endpoints/add-private-endpoint.png)
+    ![Vytvořit nový privátní koncový bod](./media/private-endpoints/new-private-endpoint.png)
 
 1. Jednou v procesu **Vytvoření privátního koncového bodu** budete muset zadat podrobnosti pro vytvoření připojení privátního koncového bodu.
+  
+    1. **Základy**: Vyplňte základní podrobnosti vašich privátních koncových bodů. Oblast by měla být stejná jako trezor a prostředek, který se zálohuje.
 
-    1. **Základy**: Vyplňte základní podrobnosti vašich privátních koncových bodů. Oblast by měla být stejná jako u trezoru a prostředku.
+        ![Vyplnit základní podrobnosti](./media/private-endpoints/basics-tab.png)
 
-        ![Vyplnit základní podrobnosti](./media/private-endpoints/basic-details.png)
+    1. **Prostředek**: Tato karta vyžaduje, abyste vybrali prostředek PaaS, pro který chcete vytvořit připojení. Pro požadované předplatné vyberte **Microsoft. RecoveryServices/trezory** z typu prostředku. Po dokončení vyberte název vašeho trezoru Recovery Services jako **prostředek** a **AzureBackup** jako **cílový dílčí prostředek**.
 
-    1. **Prostředek**: Tato karta vyžaduje, abyste uváděli prostředek PaaS, pro který chcete vytvořit připojení. Pro požadované předplatné vyberte **Microsoft. RecoveryServices/trezory** z typu prostředku. Po dokončení vyberte název vašeho trezoru Recovery Services jako **prostředek** a **AzureBackup** jako **cílový dílčí prostředek**.
+        ![Vyberte prostředek pro vaše připojení.](./media/private-endpoints/resource-tab.png)
 
-        ![Vyplnit kartu prostředku](./media/private-endpoints/resource-tab.png)
+    1. **Konfigurace**: v části Konfigurace zadejte virtuální síť a podsíť, ve které chcete vytvořit privátní koncový bod. Toto bude virtuální síť, ve které se virtuální počítač nachází.
 
-    1. **Konfigurace**: v části Konfigurace zadejte virtuální síť a podsíť, ve které chcete vytvořit privátní koncový bod. Toto bude virtuální síť, ve které se virtuální počítač nachází. Můžete se rozhodnout pro **integraci privátního koncového bodu** s privátní zónou DNS. Alternativně můžete použít také vlastní server DNS nebo vytvořit privátní zónu DNS.
+        Chcete-li se připojit soukromě, potřebujete požadované záznamy DNS. V závislosti na nastavení sítě můžete vybrat jednu z následujících možností:
 
-        ![Vyplnit kartu Konfigurace](./media/private-endpoints/configuration-tab.png)
+          - Integrace privátního koncového bodu s privátní zónou DNS: Pokud chcete integrovat, vyberte **Ano** .
+          - Použijte vlastní server DNS: Pokud chcete použít vlastní server DNS, zvolte **ne** .
+
+        Správa záznamů DNS pro obě jsou [popsány později](#manage-dns-records).
+
+          ![Zadejte virtuální síť a podsíť.](./media/private-endpoints/configuration-tab.png)
 
     1. Volitelně můžete přidat **značky** pro privátní koncový bod.
-
     1. Až se dokončí zadání podrobností, pokračujte v **kontrole a vytváření** . Po dokončení ověření vyberte **vytvořit** a vytvořte tak privátní koncový bod.
 
-## <a name="approving-private-endpoints"></a>Schvalování privátních koncových bodů
+## <a name="approve-private-endpoints"></a>Schválení privátních koncových bodů
 
 Pokud uživatel vytvářející soukromý koncový bod je zároveň vlastníkem Recovery Services trezoru, pak se privátní koncový bod, který jste vytvořili výše, automaticky schválí. V opačném případě musí vlastník trezoru před jeho použitím schválit privátní koncový bod. Tato část popisuje ruční schválení privátních koncových bodů prostřednictvím Azure Portal.
 
@@ -189,77 +131,175 @@ V tématu [ruční schválení privátních koncových bodů pomocí klienta Azu
 
     ![Schválení privátních koncových bodů](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="adding-dns-records"></a>Přidávání záznamů DNS
+## <a name="manage-dns-records"></a>Správa záznamů DNS
+
+Jak už bylo popsáno, budete potřebovat záznamy DNS ve svých privátních zónách DNS nebo serverech, abyste se mohli připojit soukromě. Svůj privátní koncový bod můžete integrovat přímo s privátními zónami DNS Azure, případně můžete k tomu využít vlastní servery DNS, které jsou založené na vašich preferencích sítě. To se bude muset udělat pro všechny tři služby: zálohování, objekty BLOB a fronty.
+
+### <a name="when-integrating-private-endpoints-with-azure-private-dns-zones"></a>Při integraci privátních koncových bodů s privátními zónami DNS Azure
+
+Pokud se rozhodnete integrovat privátní koncový bod s privátními zónami DNS, bude služba Backup přidávat požadované záznamy DNS. Privátní zóny DNS, které se používají, můžete zobrazit v části **Konfigurace DNS** privátního koncového bodu. Pokud tyto zóny DNS nejsou k dispozici, budou vytvořeny automaticky při vytváření privátního koncového bodu. Je však nutné ověřit, zda je vaše virtuální síť (obsahující prostředky, které mají být zálohovány) správně propojena se všemi třemi privátními zónami DNS, jak je popsáno níže.
+
+![Konfigurace DNS v privátní zóně DNS Azure](./media/private-endpoints/dns-configuration.png)
+
+#### <a name="validate-virtual-network-links-in-private-dns-zones"></a>Ověřit odkazy virtuální sítě v privátních zónách DNS
+
+Pro každou z výše uvedených **privátních zón DNS** (pro zálohování, objekty BLOB a fronty) udělejte toto:
+
+1. V levém navigačním panelu přejděte na příslušnou možnost **odkazy virtuální sítě** .
+1. Měli byste být schopni zobrazit položku pro virtuální síť, pro kterou jste vytvořili privátní koncový bod, jako je ten, který vidíte níže:
+
+    ![Virtuální síť pro soukromý koncový bod](./media/private-endpoints/virtual-network-links.png)
+
+1. Pokud nevidíte položku, přidejte odkaz virtuální sítě do všech zón DNS, které je nemají.
+
+    ![Přidat odkaz virtuální sítě](./media/private-endpoints/add-virtual-network-link.png)
+
+### <a name="when-using-custom-dns-server-or-host-files"></a>Při použití vlastního serveru DNS nebo hostitelských souborů
+
+Pokud používáte vlastní servery DNS, budete muset vytvořit požadované zóny DNS a přidat záznamy DNS vyžadované privátními koncovými body do vašich serverů DNS. U objektů BLOB a front můžete také použít podmíněné služby pro dodávání.
+
+#### <a name="for-the-backup-service"></a>Pro službu zálohování
+
+1. Na serveru DNS vytvořte zónu DNS pro zálohování podle následujících zásad vytváření názvů:
+
+    |Zóna |Služba |
+    |---------|---------|
+    |`privatelink.<geo>.backup.windowsazure.com`   |  Backup        |
+
+    >[!NOTE]
+    > Ve výše uvedeném textu `<geo>` odkazuje na kód oblasti (například *EUS* a *ne* pro východní USA a Severní Evropa). Kódy oblastí najdete v následujících seznamech:
+    >
+    > - [Všechny veřejné cloudy](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
+    > - [Čína](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [Německo](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov](../azure-government/documentation-government-developer-guide.md)
+
+1. Dál je potřeba přidat požadované záznamy DNS. Chcete-li zobrazit záznamy, které je třeba přidat do zóny DNS zálohy, přejděte do privátního koncového bodu, který jste vytvořili výše, a v levém navigačním panelu přejděte na možnost **Konfigurace služby DNS** .
+
+    ![Konfigurace DNS pro vlastní server DNS](./media/private-endpoints/custom-dns-configuration.png)
+
+1. Přidejte jednu položku pro každý plně kvalifikovaný název domény a IP adresu zobrazenou jako záznamy typu v zóně DNS pro zálohování. Pokud k překladu názvů používáte hostitelský soubor, zajistěte odpovídající položky v souboru hostitele pro každou IP adresu a plně kvalifikovaný název domény v závislosti na následujícím formátu:
+
+    `<private ip><space><backup service privatelink FQDN>`
 
 >[!NOTE]
-> Tento krok není nutný, pokud používáte integrovanou zónu DNS. Pokud jste ale vytvořili vlastní zónu Azure Privátní DNS nebo používáte vlastní privátní zónu DNS, zajistěte, aby byly záznamy popsané v této části.
+>Jak je znázorněno na snímku obrazovky výše, zobrazují se plně kvalifikované názvy domény `xxxxxxxx.<geo>.backup.windowsazure.com` a ne `xxxxxxxx.privatelink.<geo>.backup. windowsazure.com` . V takových případech nezapomeňte zahrnout (a pokud je to potřeba, přidat) `.privatelink.` podle uvedeného formátu.
 
-Po vytvoření volitelné privátní zóny DNS a privátních koncových bodů pro váš trezor budete muset do zóny DNS přidat záznamy DNS. To můžete provést ručně nebo pomocí skriptu PowerShellu. To je potřeba udělat jenom pro zálohu zóny DNS, ta se automaticky aktualizuje pro objekty BLOB a fronty.
+#### <a name="for-blob-and-queue-services"></a>Pro objekty BLOB a Queue Services
 
-### <a name="add-records-manually"></a>Ruční přidání záznamů
+U objektů BLOB a front můžete na serveru DNS použít podmíněné servery pro směrování nebo vytvořit zóny DNS.
 
-To vyžaduje, abyste v rámci vašeho privátního koncového bodu v zóně Privátní DNS provedli záznamy pro každý plně kvalifikovaný název domény.
+##### <a name="if-using-conditional-forwarders"></a>Pokud používáte podmíněné předávací aplikace
 
-1. Přejděte do **privátní zóny DNS** a na levém panelu přejděte na možnost **Přehled** . Potom vyberte **+ Sada záznamů** a začněte přidávat záznamy.
+Pokud používáte podmíněné služby pro dodávání, přidejte služby pro dopředné názvy objektů BLOB a fronty následujícím způsobem:
 
-    ![Výběr + sada záznamů pro přidání záznamů](./media/private-endpoints/select-record-set.png)
+|FQDN  |IP adresa  |
+|---------|---------|
+|`privatelink.blob.core.windows.net`     |  168.63.129.16       |
+|`privatelink.queue.core.windows.net`     | 168.63.129.16        |
 
-1. V podokně **Přidat sadu záznamů** , které se otevře, přidejte jednu položku pro každý plně kvalifikovaný název domény a soukromou IP adresu jako záznam **typu** . Seznam plně kvalifikovaných názvů domén a IP adres se dá získat z privátního koncového bodu (v části **Přehled**). Jak je znázorněno v následujícím příkladu, první plně kvalifikovaný název domény z privátního koncového bodu se přidávají do sady záznamů v privátní zóně DNS.
+##### <a name="if-using-private-dns-zones"></a>Při použití privátních zón DNS
 
-    ![Seznam plně kvalifikovaných názvů domény a IP adres](./media/private-endpoints/list-of-fqdn-and-ip.png)
+Pokud používáte zóny DNS pro objekty BLOB a fronty, musíte nejdřív vytvořit tyto zóny DNS a později přidat požadované záznamy.
 
-    ![Přidat sadu záznamů](./media/private-endpoints/add-record-set.png)
+|Zóna |Služba  |
+|---------|---------|
+|`privatelink.blob.core.windows.net`     |  Objekt blob     |
+|`privatelink.queue.core.windows.net`     | Fronta        |
 
-### <a name="add-records-using-powershell-script"></a>Přidávání záznamů pomocí skriptu PowerShellu
+V tuto chvíli vytvoříme při používání vlastních serverů DNS jenom zóny pro objekty BLOB a fronty. Přidání záznamů DNS se provede později ve dvou krocích:
 
-1. Spusťte **Cloud Shell** v Azure Portal a v okně PowerShellu vyberte **nahrát soubor** .
+1. Když zaregistrujete první instanci zálohování, to znamená při první konfiguraci zálohování
+1. Při spuštění první zálohy
 
-    ![Vybrat odeslat soubor v okně PowerShellu](./media/private-endpoints/upload-file-in-powershell.png)
+Tyto kroky provedeme v následujících oddílech.
 
-1. Nahrát tento skript: [DnsZoneCreation](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/dnszonerecordcreation.ps1)
-
-1. Přejít do domovské složky (například: `cd /home/user` )
-
-1. Spusťte tento skript:
-
-    ```azurepowershell
-    ./dnszonerecordcreation.ps1 -Subscription <SubscriptionId> -VaultPEName <VaultPE Name> -VaultPEResourceGroup <Vault PE RG> -DNSResourceGroup <Private DNS RG> -Privatezone <privatednszone>
-    ```
-
-    Tyto parametry jsou:
-
-    - **předplatné**: předplatné, ve kterém se nachází prostředky (soukromý koncový bod trezoru a privátní zóna DNS)
-    - **vaultPEName**: název privátního koncového bodu vytvořeného pro trezor
-    - **vaultPEResourceGroup**: Skupina prostředků, která obsahuje privátní koncový bod trezoru.
-    - **dnsResourceGroup**: Skupina prostředků, která obsahuje privátní zóny DNS
-    - **Privatezone**: název privátní zóny DNS
-
-## <a name="using-private-endpoints-for-backup"></a>Použití privátních koncových bodů pro zálohování
+## <a name="use-private-endpoints-for-backup"></a>Použití privátních koncových bodů pro zálohování
 
 Po schválení privátních koncových bodů vytvořených pro trezor ve vaší virtuální síti je můžete začít používat pro zálohování a obnovení.
 
 >[!IMPORTANT]
->Než budete pokračovat, ujistěte se prosím, že jste úspěšně dokončili všechny kroky uvedené výše v dokumentu. K rekapitulace je nutné provést kroky v následujícím kontrolním seznamu:
+>Než budete pokračovat, ujistěte se, že jste úspěšně dokončili všechny kroky uvedené výše v dokumentu. K rekapitulace je nutné provést kroky v následujícím kontrolním seznamu:
 >
 >1. Vytvořil se (nový) Recovery Services trezor.
->1. Povolit trezor pro použití spravované identity přiřazené systémem
->1. Vytvoření tří zón Privátní DNS (dvě, pokud se používá integrovaná zóna DNS pro zálohování)
->1. Propojení vašich Privátní DNSch zón s Azure Virtual Network
->1. Přiřazená příslušná oprávnění k spravované identitě trezoru
->1. Vytvořili jste privátní koncový bod pro svůj trezor.
->1. Schválen privátní koncový bod (Pokud není automaticky schválen)
->1. Do privátní zóny DNS se přidaly požadované záznamy DNS pro zálohování (platí jenom v případě, že se nepoužívá integrovaná privátní zóna DNS).
+>2. Povolit trezor pro použití spravované identity přiřazené systémem
+>3. Přiřazená příslušná oprávnění k spravované identitě trezoru
+>4. Vytvořili jste privátní koncový bod pro svůj trezor.
+>5. Schválen privátní koncový bod (Pokud není automaticky schválen)
+>6. Všechny záznamy DNS jsou vhodně přidány (kromě záznamů objektů BLOB a front pro vlastní servery, které budou popsány v následujících částech).
 
-### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>Zálohování a obnovení úloh na virtuálním počítači Azure (SQL, SAP HANA)
+### <a name="check-vm-connectivity"></a>Ověřit konektivitu virtuálních počítačů
 
-Po vytvoření a schválení privátního koncového bodu se na straně klienta nevyžadují žádné další změny pro použití privátního koncového bodu. Veškerá komunikace a přenos dat ze zabezpečené sítě do trezoru se provede prostřednictvím privátního koncového bodu.
-Pokud ale po registraci serveru (SQL/SAP HANA) odeberete privátní koncové body pro trezor, budete muset kontejner znovu zaregistrovat do trezoru. Nemusíte pro ně zastavovat ochranu.
+V části virtuální počítač v uzamčené síti ověřte následující:
+
+1. Virtuální počítač by měl mít přístup k AAD.
+2. Spuštěním **příkazu nslookup** na adrese URL zálohy ( `xxxxxxxx.privatelink.<geo>.backup. windowsazure.com` ) z virtuálního počítače zajistěte připojení. To by mělo vrátit privátní IP adresu přiřazenou ve vaší virtuální síti.
+
+### <a name="configure-backup"></a>Konfigurace zálohování
+
+Po zajištění úspěšného dokončení výše uvedeného kontrolního seznamu a přístup k němu můžete pokračovat v konfiguraci zálohování úloh do trezoru. Pokud používáte vlastní server DNS, budete muset přidat záznamy DNS pro objekty BLOB a fronty, které jsou k dispozici po konfiguraci prvního zálohování.
+
+#### <a name="dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration"></a>Záznamy DNS pro objekty BLOB a fronty (jenom pro vlastní servery DNS/soubory hostitelů) po první registraci
+
+Po nakonfigurování zálohy pro alespoň jeden prostředek v trezoru s povoleným privátním koncovým bodem přidejte požadované záznamy DNS pro objekty BLOB a fronty, jak je popsáno níže.
+
+1. Přejděte do skupiny prostředků a vyhledejte privátní koncový bod, který jste vytvořili.
+1. Kromě názvu privátního koncového bodu, který si využijete, se zobrazí dvě další privátní koncové body. Tyto začínají `<the name of the private endpoint>_ecs` na a jsou začínat příponou `_blob` a `_queue` v uvedeném pořadí.
+
+    ![Prostředky privátního koncového bodu](./media/private-endpoints/private-endpoint-resources.png)
+
+1. Přejděte ke každému z těchto privátních koncových bodů. V možnosti konfigurace DNS pro každý ze dvou privátních koncových bodů se zobrazí záznam s názvem a plně kvalifikovaným názvem domény a IP adresou. Kromě těch, které jsou popsány dříve, je přidejte do svého vlastního serveru DNS.
+Pokud používáte hostitelský soubor, zajistěte odpovídající položky v souboru hostitele pro každý protokol IP nebo plně kvalifikovaný název domény v závislosti na následujícím formátu:
+
+    `<private ip><space><blob service privatelink FQDN>`<br>
+    `<private ip><space><queue service privatelink FQDN>`
+
+    ![Konfigurace DNS objektu BLOB](./media/private-endpoints/blob-dns-configuration.png)
+
+Kromě výše uvedeného je po prvním zálohování nutné zadat další položku, která je popsána [později](#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup).
+
+### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-and-sap-hana"></a>Zálohování a obnovení úloh na virtuálním počítači Azure (SQL a SAP HANA)
+
+Po vytvoření a schválení privátního koncového bodu se na straně klienta nevyžadují žádné další změny, aby bylo možné používat privátní koncový bod (Pokud nepoužíváte skupiny dostupnosti SQL, které probereme dále v této části). Veškerá komunikace a přenos dat ze zabezpečené sítě do trezoru se provede prostřednictvím privátního koncového bodu. Pokud ale po registraci serveru (SQL nebo SAP HANA) odeberete privátní koncové body pro trezor, budete muset kontejner znovu zaregistrovat do trezoru. Nemusíte pro ně zastavovat ochranu.
+
+#### <a name="dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup"></a>Záznamy DNS pro objekty BLOB (pouze pro vlastní servery DNS/soubory hostitelů) po prvním zálohování
+
+Po spuštění první zálohy a používání vlastního serveru DNS (bez podmíněného předávání) se pravděpodobně nezdaří zálohování. Pokud k tomu dojde:
+
+1. Přejděte do skupiny prostředků a vyhledejte privátní koncový bod, který jste vytvořili.
+1. Kromě tří privátních koncových bodů popsaných výše se teď zobrazí čtvrtý soukromý koncový bod s názvem začínajícím `<the name of the private endpoint>_prot` a s příponou `_blob` .
+
+    ![Privátní endpoing s příponou "prot"](./media/private-endpoints/private-endpoint-prot.png)
+
+1. Přejděte do tohoto nového privátního koncového bodu. V možnosti konfigurace DNS se zobrazí záznam s plně kvalifikovaným názvem domény a IP adresou. Přidejte je do privátního serveru DNS kromě těch popsaných výše.
+
+    Pokud používáte hostitelský soubor, proveďte odpovídající položky v souboru hostitele pro každou IP adresu a plně kvalifikovaný název domény v závislosti na následujícím formátu:
+
+    `<private ip><space><blob service privatelink FQDN>`
+
+>[!NOTE]
+>V tuto chvíli byste měli být schopni spustit nástroj **nslookup** z virtuálního počítače a po dokončení práce na záložních adresách úložiště a v úložištích znovu přeložit na privátní IP adresy.
+
+### <a name="when-using-sql-availability-groups"></a>Při použití skupin dostupnosti SQL
+
+Pokud používáte skupiny dostupnosti SQL (AG), budete muset zřídit podmíněné přesměrování ve vlastním DNS služby AG, jak je popsáno níže:
+
+1. Přihlaste se k řadiči domény.
+1. V rámci aplikace DNS přidejte v případě potřeby podmíněný předávací servery pro všechny tři zóny DNS (zálohování, objekty BLOB a fronty) na IP adresu hostitele 168.63.129.16 nebo vlastní IP adresu serveru DNS. Při předávání na IP adresu hostitele Azure se zobrazí následující snímky obrazovky. Pokud používáte vlastní server DNS, nahraďte IP adresou vašeho serveru DNS.
+
+    ![Podmíněné servery pro přeposílání ve Správci DNS](./media/private-endpoints/dns-manager.png)
+
+    ![Nové podmíněné dopředné](./media/private-endpoints/new-conditional-forwarder.png)
 
 ### <a name="backup-and-restore-through-mars-agent"></a>Zálohování a obnovení prostřednictvím agenta MARS
 
 Při použití agenta MARS k zálohování místních prostředků se ujistěte, že vaše místní síť (obsahující vaše prostředky, které se mají zálohovat) má partnerský vztah s virtuální sítí Azure, která obsahuje privátní koncový bod pro trezor, takže ho můžete použít. Pak můžete pokračovat v instalaci agenta MARS a nakonfigurovat zálohování tak, jak je popsáno zde. Je však třeba zajistit, aby veškerá komunikace pro zálohování procházela pouze prostřednictvím partnerské sítě.
 
-Pokud však po registraci agenta MARS dojde k odebrání privátních koncových bodů pro trezor, bude nutné kontejner znovu zaregistrovat do trezoru. Nemusíte pro ně zastavovat ochranu.
+Pokud ale po registraci agenta MARS pro trezor odeberete privátní koncové body, budete muset kontejner znovu zaregistrovat do trezoru. Nemusíte pro ně zastavovat ochranu.
+
+## <a name="deleting-private-endpoints"></a>Odstraňování privátních koncových bodů
+
+V [této části](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete) se dozvíte, jak odstranit privátní koncové body.
 
 ## <a name="additional-topics"></a>Další témata
 
@@ -444,7 +484,11 @@ $privateEndpointConnection = New-AzPrivateLinkServiceConnection `
         -Name $privateEndpointConnectionName `
         -PrivateLinkServiceId $vault.ID `
         -GroupId "AzureBackup"  
-  
+
+$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $VMResourceGroupName
+$subnet = $vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq '<subnetName>'}
+
+
 $privateEndpoint = New-AzPrivateEndpoint `
         -ResourceGroupName $vmResourceGroupName `
         -Name $privateEndpointName `
@@ -466,7 +510,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
     `privateendpointconnectionid = {peName}.{vaultId}.backup.{guid}`
 
-1. Získejte **ID připojení privátního koncového bodu** (a **název privátního koncového bodu**bez ohledu na to, kde je potřeba), a nahraďte ho v následujících JSON a Azure Resource Manager URI a zkuste změnit stav na "schváleno/odmítnuto/odpojeno", jak je znázorněno v následující ukázce:
+1. Získejte **ID připojení privátního koncového bodu** (a **název privátního koncového bodu** bez ohledu na to, kde je potřeba), a nahraďte ho v následujících JSON a Azure Resource Manager URI a zkuste změnit stav na "schváleno/odmítnuto/odpojeno", jak je znázorněno v následující ukázce:
 
     ```rest
     armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/Vaults/<vaultname>/privateEndpointConnections/<privateendpointconnectionid>?api-version=2020-02-02-preview @C:\<filepath>\BackupAdminApproval.json
@@ -488,60 +532,6 @@ $privateEndpoint = New-AzPrivateEndpoint `
     }
     }
     ```
-
-### <a name="dns-changes-for-custom-dns-servers"></a>Změny DNS pro vlastní servery DNS
-
-#### <a name="create-dns-zones-for-custom-dns-servers"></a>Vytváření zón DNS pro vlastní servery DNS
-
-Musíte vytvořit tři privátní zóny DNS a propojit je s vaší virtuální sítí.
-
-| **Zóna**                                                     | **Služba** |
-| ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
-| `privatelink.blob.core.windows.net`                            | Blob        |
-| `privatelink.queue.core.windows.net`                           | Fronta       |
-
->[!NOTE]
->V textu výše odkazuje *zeměpis* na kód oblasti. Například *wcus* a *ne* pro středozápadní USA a Severní Evropa v uvedeném pořadí.
-
-Kódy oblastí najdete v [tomto seznamu](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) .
-
-#### <a name="adding-dns-records-for-custom-dns-servers"></a>Přidávání záznamů DNS pro vlastní servery DNS
-
-To vyžaduje, abyste v rámci vašeho privátního koncového bodu v zóně Privátní DNS provedli záznamy pro každý plně kvalifikovaný název domény.
-
-Je potřeba poznamenat, že budeme používat privátní koncové body vytvořené pro zálohování, BLOB a Služba front.
-
-- Privátní koncový bod pro trezor používá název zadaný při vytváření privátního koncového bodu.
-- U privátních koncových bodů pro objekty BLOB a front jsou předpony s názvem stejnými pro trezor.
-
-Následující obrázek například ukazuje tři privátní koncové body vytvořené pro připojení privátního koncového bodu s názvem *pee2epe*:
-
-![Tři privátní koncové body pro připojení privátního koncového bodu](./media/private-endpoints/three-private-endpoints.png)
-
-Zóna DNS pro službu zálohování ( `privatelink.<geo>.backup.windowsazure.com` ):
-
-1. Přejděte do privátního koncového bodu pro zálohování v **centru privátních odkazů**. Na stránce Přehled je uveden seznam plně kvalifikovaného názvu domény a privátních IP adres pro váš soukromý koncový bod.
-
-1. Přidejte jednu položku pro každý plně kvalifikovaný název domény a soukromou IP adresu jako záznam typu.
-
-    ![Přidat položku pro každý plně kvalifikovaný název domény a privátní IP adresu](./media/private-endpoints/add-entry-for-each-fqdn-and-ip.png)
-
-Zóna DNS pro Blob service ( `privatelink.blob.core.windows.net` ):
-
-1. Přejděte na soukromý koncový bod pro objekt BLOB v **centru privátních odkazů**. Na stránce Přehled je uveden seznam plně kvalifikovaného názvu domény a privátních IP adres pro váš soukromý koncový bod.
-
-1. Přidejte položku pro plně kvalifikovaný název domény a soukromou IP adresu jako záznam typu.
-
-    ![Přidat položku pro plně kvalifikovaný název domény a privátní IP adresu jako záznam typu pro Blob service](./media/private-endpoints/add-type-a-record-for-blob.png)
-
-Zóna DNS pro Služba front ( `privatelink.queue.core.windows.net` ):
-
-1. Přejděte na soukromý koncový bod pro frontu v **centru privátních odkazů**. Na stránce Přehled je uveden seznam plně kvalifikovaného názvu domény a privátních IP adres pro váš soukromý koncový bod.
-
-1. Přidejte položku pro plně kvalifikovaný název domény a soukromou IP adresu jako záznam typu.
-
-    ![Přidat položku pro plně kvalifikovaný název domény a privátní IP adresu jako záznam typu pro Služba front](./media/private-endpoints/add-type-a-record-for-queue.png)
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -568,4 +558,4 @@ A. Po provedení postupu popsaného v tomto článku není nutné provádět dal
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o všech [funkcích zabezpečení v Azure Backup](security-overview.md)
+- Přečtěte si o všech [funkcích zabezpečení v Azure Backup](security-overview.md).

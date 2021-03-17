@@ -1,22 +1,18 @@
 ---
 title: Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí Azure Data Factory
 description: Popisuje postup vytvoření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning Studio (Classic).
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef89ecef34a7c5afb94547181f449b0fc393e67c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092537"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377563"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí aktivity aktualizovat prostředek
 
@@ -59,11 +55,11 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky Azure Ma
 }
 ```
 
-| Vlastnost                      | Popis                              | Povinné |
+| Vlastnost                      | Popis                              | Vyžadováno |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Název aktivity v kanálu     | Yes      |
-| Popis                   | Text popisující, co aktivita dělá.  | No       |
-| typ                          | U Azure Machine Learning Studio (Classic) aktivita aktualizace prostředku je typ aktivity **povinná**. | Yes      |
+| description                   | Text popisující, co aktivita dělá.  | No       |
+| typ                          | U Azure Machine Learning Studio (Classic) aktivita aktualizace prostředku je typ aktivity  **povinná**. | Yes      |
 | linkedServiceName             | Propojená služba Azure Machine Learning Studio (Classic), která obsahuje vlastnost updateResourceEndpoint. | Yes      |
 | trainedModelName              | Název modulu trained model v experimentu webové služby, který se má aktualizovat | Yes      |
 | trainedModelLinkedServiceName | Název propojené služby Azure Storage, která uchovává soubor ilearner, který je nahraný operací Update | Yes      |

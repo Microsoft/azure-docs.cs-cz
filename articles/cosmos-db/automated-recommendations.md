@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450336"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087821"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatizovaná doporučení pro Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Všechny cloudové služby, včetně Azure Cosmos DB, poskytují časté aktualizace s novými funkcemi, funkcemi a vylepšeními. Je důležité, aby vaše aplikace zůstala v provozu s nejnovějšími aktualizacemi výkonu a zabezpečení. Azure Portal nabízí vlastní doporučení, která vám umožní maximalizovat výkon aplikace. Poradenský modul Azure Cosmos DB průběžně analyzuje historii využití vašich prostředků Azure Cosmos DB a poskytuje doporučení založená na vašich vzorcích úloh. Tato doporučení odpovídají oblastem, jako je vytváření oddílů, indexování, síť, zabezpečení atd. Tato vlastní doporučení vám pomůžou zlepšit výkon aplikace.
 
@@ -26,9 +27,9 @@ Doporučení pro Azure Cosmos DB můžete zobrazit následujícími způsoby:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Cosmos DBho podokna":::
 
-- Doporučení můžete také najít prostřednictvím [Azure Advisor](../advisor/advisor-overview.md) v kategoriích podle různých sad, jako jsou náklady, zabezpečení, spolehlivost, výkon a provozní kvalita. Můžete vybrat konkrétní předplatná a filtrovat podle typu prostředku, který je **Azure Cosmos DB účtů**.  Když vyberete konkrétní doporučení, zobrazí se akce, které můžete využít k výhodám vašich úloh.
+- Doporučení můžete také najít prostřednictvím [Azure Advisor](../advisor/advisor-overview.md) v kategoriích podle různých sad, jako jsou náklady, zabezpečení, spolehlivost, výkon a provozní kvalita. Můžete vybrat konkrétní předplatná a filtrovat podle typu prostředku, který je **Azure Cosmos DB účtů** .  Když vyberete konkrétní doporučení, zobrazí se akce, které můžete využít k výhodám vašich úloh.
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Advisorho podokna":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Cosmos DBho podokna":::
 
 Ne všechna doporučení zobrazená v podokně Azure Cosmos DB jsou k dispozici v Azure Advisor a naopak. To je proto, že na základě typu doporučení, které odpovídají, do podokna Azure Advisor, Azure Cosmos DBho podokna nebo obojího.
 
@@ -38,7 +39,7 @@ V současné době Azure Cosmos DB podporuje doporučení v následujících obl
 
 V této kategorii Advisor detekuje použití staré verze sad SDK a doporučuje upgradovat na novější verzi a využívat nejnovější opravy chyb a vylepšení výkonu. V současné době jsou k dispozici následující doporučení specifická pro sadu SDK:
 
-|Název  |Popis  |
+|Název  |Description  |
 |---------|---------|
 | Starý konektor Spark | Detekuje použití starých verzí konektoru Spark a doporučuje upgradovat. |
 | Stará sada .NET SDK | Detekuje použití starších verzí sady .NET SDK a doporučuje upgrade. |
@@ -48,7 +49,7 @@ V této kategorii Advisor detekuje použití staré verze sad SDK a doporučuje 
 
 V této kategorii Advisor detekuje režim indexování, zásadu indexování, indexované cesty a doporučuje změnu v případě, že aktuální konfigurace má dopad na výkon dotazů. V současné době jsou k dispozici následující doporučení specifická pro indexování:
 
-|Název  |Popis  |
+|Název  |Description  |
 |---------|---------|
 | Opožděné indexování | Detekuje využití režimu opožděného indexování a doporučuje použít místo toho konzistentní režim indexování. Účelem režimu opožděného indexování Azure Cosmos DB je omezené a může mít dopad na aktuálnost výsledků dotazů v některých situacích, takže se doporučuje konzistentní režim indexování. |
 | Složené indexování| Zjistí účty, ve kterých můžou dotazy těžit ze složených indexů, a doporučuje je použít. Složené indexy můžou významně zlepšit výkon a využití propustnosti některých dotazů.|
@@ -60,7 +61,7 @@ V této kategorii Advisor detekuje režim indexování, zásadu indexování, in
 
 V této kategorii služba Advisor detekuje využití RU/s a zjistí, že můžete optimalizovat cenu tím, že provedete některé změny vašich prostředků nebo využijete jiný cenový model. V současné době jsou k dispozici následující doporučení týkající se optimalizace nákladů:
 
-|Název  |Popis  |
+|Název  |Description  |
 |---------|---------|
 | Rezervovaná kapacita | Detekuje využití RU/s a doporučuje rezervované instance pro uživatele, kteří jim můžou z něj těžit. |
 | Neaktivní kontejnery | Detekuje kontejnery, které se nepoužily déle než 30 dní, a doporučuje snižovat propustnost takových kontejnerů nebo jejich odstranění.|
@@ -70,7 +71,7 @@ V této kategorii služba Advisor detekuje využití RU/s a zjistí, že můžet
 
 V této kategorii Advisor detekuje, že používáte starší funkce, doporučuje migraci, takže můžete využívat Azure Cosmos DB obrovské škálovatelnost a další výhody. V současné době jsou k dispozici následující doporučení specifická pro migraci:
 
-|Název  |Popis  |
+|Název  |Description  |
 |---------|---------|
 | Kontejnery bez oddílů | Detekuje kontejnery pevné velikosti, které se blíží maximálnímu limitu úložiště, a doporučuje je migrovat do dělených kontejnerů.|
 
@@ -78,7 +79,7 @@ V této kategorii Advisor detekuje, že používáte starší funkce, doporučuj
 
 V této kategorii Advisor detekuje provádění dotazů a určí, že výkon dotazů může být vyladěn pomocí některých změn. V současné době jsou k dispozici následující doporučení k používání dotazů:
 
-|Název  |Popis  |
+|Název  |Description  |
 |---------|---------|
 | Dotazy s pevnou velikostí stránky | Detekuje dotazy vydané s pevnou velikostí stránky a doporučuje použít hodnotu-1 (bez omezení velikosti stránky) místo definování konkrétní hodnoty. Tato možnost snižuje počet síťových přenosů potřebných k načtení všech výsledků. |
 

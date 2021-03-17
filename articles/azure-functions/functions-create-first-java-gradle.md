@@ -6,25 +6,25 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c9ecb670cea022988efda8ec690c0724310cdb4b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322172"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934845"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
-V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Gradle. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a spustí se požadavkem http. 
+V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Gradle. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](consumption-plan.md) a spustí se požadavkem http. 
 
 > [!NOTE]
-> Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
+> Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./create-first-function-cli-java.md), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./create-first-function-vs-code-java.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K vývoji funkcí pomocí Javy musíte mít nainstalovaný následující software:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) verze 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
 - [Gradle](https://gradle.org/)verze 4,10 a vyšší
@@ -127,7 +127,7 @@ Tím se v Azure vytvoří následující prostředky na základě hodnot v soubo
 + Skupina prostředků. Pojmenovaná se _zdrojem_ prostředků, kterou jste zadali.
 + Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
 + App Service plán. Plán spotřeby bez serveru hostuje pro vaši aplikaci Function App v zadaném _appRegion_. Název se vygeneruje náhodně.
-+ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název je vaše _AppName_a je připojen s náhodně generovaným číslem. 
++ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název je vaše _AppName_ a je připojen s náhodně generovaným číslem. 
 
 Nasazení také zabalí soubory projektu a nasadí je do nové aplikace Function App pomocí [nasazení zip](functions-deployment-technologies.md#zip-deploy)s povoleným režimem spuštění z balíčku.
 

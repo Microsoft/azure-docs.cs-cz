@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547991"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359693"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Kurz: Konfigurace MerchLogix pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v MerchLogix a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro MerchLogix.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,9 +53,9 @@ Před konfigurací MerchLogix pro Automatické zřizování uživatelů se služ
 
 4. Do vyhledávacího pole zadejte **MerchLogix**.
 
-5. Na panelu výsledků vyberte **MerchLogix**a potom kliknutím na tlačítko **Přidat** přidejte MerchLogix do seznamu aplikací SaaS.
+5. Na panelu výsledků vyberte **MerchLogix** a potom kliknutím na tlačítko **Přidat** přidejte MerchLogix do seznamu aplikací SaaS.
 
-    ![Zřizování MerchLogix][4]
+    ![Snímek obrazovky přidat z části sloupce s textovým polem pro zadání názvu s názvem.][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>Přiřazování uživatelů k MerchLogix
 
@@ -84,11 +84,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 2. V seznamu aplikací SaaS vyberte MerchLogix.
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Zřizování MerchLogix](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![Snímek obrazovky s oddílem MerchLogix-Prisioning s možností zřizování s názvem, režim zřizování nastavený na hodnotu automaticky a možnost Test připojení se vyvolala.](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. V části **přihlašovací údaje správce** :
 
@@ -112,20 +112,20 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 13. Pokud chcete povolit službu Azure AD Provisioning pro MerchLogix, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-14. Až budete připraveni zřídit, klikněte na **Uložit**.
+14. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v MerchLogix.
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 
 <!--Image references-->
 [1]: common/select-azuread.png

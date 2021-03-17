@@ -3,12 +3,13 @@ title: PowerShellový skript – zrušení odstranění odstraněné sdílené s
 description: Naučte se, jak pomocí skriptu Azure PowerShell obnovit omylem odstraněnou sdílenou složku.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: d3a3ad3c2904b98f7a3350d3672b51f3a1e9415e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007628"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89079859"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>Skript PowerShellu pro zrušení odstranění omylem odstraněné sdílené složky
 
@@ -152,7 +153,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ## <a name="how-to-use-the-script-in-different-scenarios"></a>Jak používat skript v různých scénářích
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. Před spuštěním skriptu nainstalujte nejnovější Azure PowerShell AZ modules from [tohoto odkazu](/powershell/azure/install-az-ps) .
 2. Následující podrobnosti si ponechte, protože je budete muset předat jako hodnoty pro různé parametry skriptu:
@@ -177,7 +178,7 @@ Následující příklad odstraní sdílenou složku *share1* , která se nachá
    .\UnDelete.ps1 -ResourceGroupName afsshare -StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1
 ```
 
-Výstup by měl zobrazovat zprávu`Completed:Restore File Share`
+Výstup by měl zobrazovat zprávu `Completed:Restore File Share`
 
 #### <a name="scenario-2"></a>Scénář 2
 
@@ -185,7 +186,7 @@ Existuje několik odstraněných verzí se stejným názvem, jako má sdílená 
 
 V následujícím příkladu se odstraní verze sdílené složky *share1*
 
-##### <a name="step-1"></a>Step 1
+##### <a name="step-1"></a>Krok 1
 
 Spusťte skript následujícím způsobem zadáním názvu sdílené složky.
 

@@ -1,25 +1,22 @@
 ---
 title: Hromadné kopírování dat pomocí PowerShellu
 description: Tento skript PowerShellu ukazuje, jak použít Azure Data Factory ke kopírování dat ze zdrojového úložiště dat do cílového úložiště dat hromadně.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16cb08d49efcd46e2746c5031793af8b747a2b31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248595"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373568"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Skript PowerShellu – hromadné kopírování více tabulek pomocí Azure Data Factory
 
-Tento ukázkový skript PowerShellu kopíruje data z několika tabulek v Azure SQL Database do služby Azure SQL Data Warehouse.
+Tento ukázkový skript PowerShellu kopíruje data z několika tabulek v Azure SQL Database do služby Azure synapse Analytics.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -32,7 +29,7 @@ Viz [kurz: hromadné kopírování](../tutorial-bulk-copy.md#prerequisites) pož
 > [!IMPORTANT]
 > Tento skript vytvoří soubory JSON, které definují Data Factory entit (propojená služba, datová sada a kanál) na pevném disku v c:\. složky.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure SQL Data Warehouse")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure Synapse Analytics")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -65,6 +62,6 @@ Tento skript používá následující příkazy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [Azure Data Factory skriptech PowerShellu](../samples-powershell.md).

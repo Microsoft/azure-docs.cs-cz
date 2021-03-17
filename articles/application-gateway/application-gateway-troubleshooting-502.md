@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808158"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182933"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
 
@@ -82,7 +82,7 @@ Při zřizování instance služby Application Gateway automaticky nakonfiguruje
 
 Následující tabulka uvádí hodnoty spojené s výchozím testem stavu:
 
-| Vlastnost sondy | Hodnota | Description |
+| Vlastnost sondy | Hodnota | Popis |
 | --- | --- | --- |
 | Adresa URL testu paměti |`http://127.0.0.1/` |Cesta URL |
 | Interval |30 |Interval testu paměti v sekundách |
@@ -95,8 +95,8 @@ Následující tabulka uvádí hodnoty spojené s výchozím testem stavu:
 * Pokud BackendHttpSetting určuje jiný port než 80, měla by být výchozí lokalita nakonfigurována tak, aby naslouchala na tomto portu.
 * Volání metody `http://127.0.0.1:port` by mělo vracet kód výsledku HTTP 200. To by mělo být vráceno v průběhu 30 sekund časového limitu.
 * Ujistěte se, že je port nakonfigurovaný a že nejsou k dispozici žádná pravidla brány firewall nebo skupiny zabezpečení sítě Azure, které blokují příchozí nebo odchozí provoz na konfigurovaném portu.
-* Pokud se virtuální počítače Azure Classic nebo cloudová služba používají s plně kvalifikovaným názvem domény nebo veřejnou IP adresou, ujistěte se, že je otevřený odpovídající [koncový bod](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) .
-* Pokud je virtuální počítač nakonfigurovaný přes Azure Resource Manager a je mimo virtuální síť, ve které je nasazená Aplikační brána, musí být nakonfigurovaná [Skupina zabezpečení sítě](../virtual-network/security-overview.md) , aby se povolil přístup na požadovaném portu.
+* Pokud se virtuální počítače Azure Classic nebo cloudová služba používají s plně kvalifikovaným názvem domény nebo veřejnou IP adresou, ujistěte se, že je otevřený odpovídající [koncový bod](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json) .
+* Pokud je virtuální počítač nakonfigurovaný přes Azure Resource Manager a je mimo virtuální síť, ve které je nasazená Aplikační brána, musí být nakonfigurovaná [Skupina zabezpečení sítě](../virtual-network/network-security-groups-overview.md) , aby se povolil přístup na požadovaném portu.
 
 ## <a name="problems-with-custom-health-probe"></a>Problémy s vlastním sondou stavu
 
@@ -106,10 +106,10 @@ Vlastní sondy stavu umožňují větší flexibilitu při výchozím chování 
 
 Jsou přidány následující další vlastnosti:
 
-| Vlastnost sondy | Description |
+| Vlastnost sondy | Popis |
 | --- | --- |
-| Name |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
-| Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
+| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
+| Protokol |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
 | Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na aplikační bráně nakonfigurovaný vícenásobný Web. To se liší od názvu hostitele virtuálního počítače. |
 | Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. Sonda se posílá do \<protocol\> :// \<host\> :\<port\>\<path\> |
 | Interval |Interval testu paměti v sekundách. Toto je časový interval mezi dvěma po sobě jdoucími sondami. |
@@ -195,4 +195,3 @@ Ujistěte se, že jsou instance v pořádku a že je aplikace správně nakonfig
 ## <a name="next-steps"></a>Další kroky
 
 Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).
-

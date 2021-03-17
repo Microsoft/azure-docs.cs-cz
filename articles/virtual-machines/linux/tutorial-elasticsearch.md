@@ -1,24 +1,25 @@
 ---
 title: Nasazení Elasticsearch na vývojový virtuální počítač v Azure
 description: Kurz – Instalace řešení Elastic Stack na vývojový virtuální počítač s Linuxem v Azure
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80066546"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557807"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalace řešení Elastic Stack na virtuální počítač Azure
 
@@ -35,9 +36,9 @@ Co se v tomto kurzu naučíte:
 
  Toto nasazení je vhodné pro základní vývoj s řešením Elastic Stack. Další informace o řešení Elastic Stack, včetně doporučení pro produkční prostředí, najdete v [dokumentaci Elastic](https://www.elastic.co/guide/index.html) a v [Azure Architecture Center](/azure/architecture/elasticsearch/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -211,7 +212,7 @@ V terminálu se budou vypisovat položky Syslogu odesílané do Elasticsearch. J
 Upravte soubor `/etc/kibana/kibana.yml` a změňte IP adresu, na které Kibana naslouchá, abyste k ní měli přístup z webového prohlížeče.
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 Spusťte Kibana pomocí následujícího příkazu:
@@ -228,7 +229,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Otevřete konzolu Kibana a vyberte **Create** (Vytvořit). Vygeneruje se výchozí index založený na datech Syslogu, která jste dříve odeslali do Elasticsearch. 
 
-![Proházení událostí Syslogu v Kibana](media/elasticsearch-install/kibana-index.png)
+![Snímek obrazovky, který zobrazuje konzolu Kibana a zvýrazní tlačítko vytvořit.](media/elasticsearch-install/kibana-index.png)
 
 V konzole Kibana vyberte **Discover** (Vyhledat), abyste mohli prohledávat, procházet a filtrovat události Syslogu.
 
@@ -236,7 +237,7 @@ V konzole Kibana vyberte **Discover** (Vyhledat), abyste mohli prohledávat, pro
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste na vývojový virtuální počítač v Azure nasadili řešení Elastic Stack. Naučili jste se tyto postupy:
+V tomto kurzu jste na vývojový virtuální počítač v Azure nasadili řešení Elastic Stack. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Ubuntu ve skupině prostředků Azure

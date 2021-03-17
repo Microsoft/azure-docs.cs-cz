@@ -7,19 +7,20 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3165b72ae5612aaeaa66a95299db97182fef2232
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198520"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677586"
 ---
 # <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
 Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
+## <a name="supported-tools-for-serverless-sql-pool"></a>Podporované nástroje pro fond SQL bez serveru
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) se plně podporuje od verze 1.18.0. SSMS je částečně podporovaná od verze 18,5, můžete ji použít jenom pro připojení a dotazování.
 
@@ -30,14 +31,14 @@ Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 
-Název serveru pro fond SQL v následujícím příkladu: showdemoweu.sql.azuresynapse.net.
-Název serveru pro SQL na vyžádání v následujícím příkladu: showdemoweu-ondemand.sql.azuresynapse.net.
+Název serveru pro vyhrazený fond SQL v následujícím příkladu: showdemoweu.sql.azuresynapse.net.
+Název serveru pro fond SQL bez serveru v následujícím příkladu: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
-2. Klikněte na **synapse pracovní prostory**.
-3. Klikněte na pracovní prostor, ke kterému se chcete připojit.
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+2. Vyberte v **pracovních prostorech synapse**.
+3. Vyberte pracovní prostor, ke kterému se chcete připojit.
 4. Přejít na přehled
 5. Vyhledejte úplný název serveru.
 
@@ -45,12 +46,12 @@ Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
 ![Úplný název serveru](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**SQL na vyžádání**
+## <a name="serverless-sql-pool"></a>**Bezserverový fond SQL**
 
-![Úplný název serveru SQL na vyžádání](./media/connect-overview/server-connect-example-sqlod.png)
+![Úplný fond SQL bez názvového serveru](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Synapse SQL podporuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, klikněte na příkaz **Zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Synapse SQL podporuje [ADO.NET](/dotnet/framework/data/adonet/), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Pokud chcete najít nejnovější verzi a dokumentaci, vyberte jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, vyberte v předchozím příkladu **Zobrazit databázové připojovací řetězce** . Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
@@ -80,18 +81,18 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Nastavení připojení
-Synapse SQL v rámci připojení a vytváření objektů standardizace některá nastavení. Tato nastavení nelze přepsat a zahrnují:
+Synapse SQL v rámci připojení a vytváření objektů standardizace některá nastavení. Tato nastavení nelze přepsat a zahrnout:
 
 | Nastavení databáze | Hodnota |
 |:--- |:--- |
-| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |mdy |
-| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
+| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?view=azure-sqldw-latest&preserve-view=true) |ON |
+| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?view=azure-sqldw-latest&preserve-view=true) |ON |
+| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?view=azure-sqldw-latest&preserve-view=true) |mdy |
+| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?view=azure-sqldw-latest&preserve-view=true) |7 |
 
 ## <a name="recommendations"></a>Doporučení
 
-Pro spouštění dotazů **na vyžádání SQL** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
+Pro spouštění dotazů na **fond SQL bez serveru** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
 
 ## <a name="next-steps"></a>Další kroky
 Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Další informace o možnostech ověřování najdete v tématu [ověřování pro synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

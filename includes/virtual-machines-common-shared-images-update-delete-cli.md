@@ -7,25 +7,25 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 4392e7f146f13e581f722b94f13038ad8abff0ba
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175019"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244757"
 ---
 ## <a name="update-resources"></a>Aktualizace prostředků
 
 Existují určitá omezení, která je možné aktualizovat. Následující položky lze aktualizovat: 
 
 Galerie sdílených imagí:
-- Description
+- Popis
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Description
+- Popis
 - Datum konce životnosti
 
 Verze Image:
@@ -36,7 +36,7 @@ Verze Image:
 
 Pokud plánujete přidání oblastí repliky, neodstraňujte zdrojovou spravovanou bitovou kopii. Zdrojová image spravovaná při replikaci verze image do dalších oblastí je nutná. 
 
-Aktualizujte popis Galerie pomocí ([AZ SIG Update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update). 
+Aktualizujte popis Galerie pomocí ([AZ SIG Update](/cli/azure/sig#az-sig-update). 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-Aktualizujte popis definice obrázku pomocí [AZ SIG image-definition Update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update).
+Aktualizujte popis definice obrázku pomocí [AZ SIG image-definition Update](/cli/azure/sig/image-definition#az-sig-image-definition-update).
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-Aktualizací verze image přidejte oblast, do které chcete replikovat, pomocí [AZ SIG Image-Version Update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update). Tato změna bude chvíli trvat, protože se image replikuje do nové oblasti.
+Aktualizací verze image přidejte oblast, do které chcete replikovat, pomocí [AZ SIG Image-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update). Tato změna bude chvíli trvat, protože se image replikuje do nové oblasti.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,11 +67,33 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
+Tento příklad ukazuje, jak pomocí funkce [AZ SIG Image-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update) vyloučit tuto verzi image z použití jako *posledního* obrázku.
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=true
+```
+
+Tento příklad ukazuje, jak pomocí funkce [AZ SIG Image-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update) zahrnout tuto verzi image v potaz pro *nejnovější* obrázek.
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=false
+```
+
 ## <a name="delete-resources"></a>Odstranění prostředků
 
 Prostředky je nutné odstranit v opačném pořadí, protože nejprve odstraňte verzi image. Po odstranění všech verzí imagí můžete definici image odstranit. Po odstranění všech definicí imagí můžete galerii odstranit. 
 
-Odstraňte verzi Image pomocí [AZ SIG Image-Version Delete](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete).
+Odstraňte verzi Image pomocí [AZ SIG Image-Version Delete](/cli/azure/sig/image-version#az-sig-image-version-delete).
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -81,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-Odstraňte definici obrázku pomocí [AZ SIG image-definition Delete](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete).
+Odstraňte definici obrázku pomocí [AZ SIG image-definition Delete](/cli/azure/sig/image-definition#az-sig-image-definition-delete).
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -91,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-Odstraňte galerii obrázků pomocí [AZ SIG Delete](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete).
+Odstraňte galerii obrázků pomocí [AZ SIG Delete](/cli/azure/sig#az-sig-delete).
 
 ```azurecli-interactive
 az sig delete \

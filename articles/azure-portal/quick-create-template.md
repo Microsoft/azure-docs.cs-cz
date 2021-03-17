@@ -1,18 +1,15 @@
 ---
 title: Vytvoření řídicího panelu Azure Portal pomocí šablony Azure Resource Manager
 description: Naučte se vytvořit řídicí panel Azure Portal pomocí šablony Azure Resource Manager.
-author: mgblythe
-ms.service: azure-portal
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 06/15/2020
-ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560505"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745719"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rychlý Start: Vytvoření řídicího panelu v Azure Portal pomocí šablony ARM
 
@@ -20,13 +17,13 @@ ms.locfileid: "85560505"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Existující virtuální počítač.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
@@ -60,7 +57,7 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/). Šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json). Jeden prostředek Azure je definovaný v šabloně, [Microsoft. Portal/řídicích panelech](/azure/templates/microsoft.portal/dashboards) – vytvoří řídicí panel v Azure Portal.
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/). Šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json). Jeden prostředek Azure je definovaný v šabloně, [Microsoft. Portal/řídicích panelech](/azure/templates/microsoft.portal/dashboards) – vytvoří řídicí panel v Azure Portal.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -90,7 +87,7 @@ Azure Portal se použila k nasazení šablony. Kromě webu Azure Portal můžete
 
 Zkontrolujte, zda byl řídicí panel úspěšně vytvořen a zda můžete zobrazit data z virtuálního počítače.
 
-1. V Azure Portal vyberte možnost **řídicí panel**.
+1. Na webu Azure Portal vyberte **Řídicí panel**.
 
     ![Azure Portal navigace na řídicí panel](media/quick-create-template/navigate-to-dashboards.png)
 
@@ -106,7 +103,7 @@ Zkontrolujte, zda byl řídicí panel úspěšně vytvořen a zda můžete zobra
 
 Pokud chcete odebrat virtuální počítač a přidružený řídicí panel, odstraňte skupinu prostředků, která je obsahuje.
 
-1. V Azure Portal vyhledejte **SimpleWinVmResourceGroup**a potom ho vyberte ve výsledcích hledání.
+1. V Azure Portal vyhledejte **SimpleWinVmResourceGroup** a potom ho vyberte ve výsledcích hledání.
 
 1. Na stránce **SimpleWinVmResourceGroup** vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků, který chcete potvrdit, a pak vyberte **Odstranit**.
 

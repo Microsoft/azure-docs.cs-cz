@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80985435"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu aliasu odkazujícího na veřejnou IP adresu Azure 
@@ -38,14 +38,14 @@ Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastn�
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-pip**.
-3. Vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+3. Vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 4. Vytvořte virtuální síť **VNet-Server**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-pip** a podsíť pojmenujte **SN-Web**.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Vytvoření virtuálního počítače s webovým serverem
-1. Vyberte **vytvořit prostředek** > **virtuální počítač s Windows serverem 2016**.
+1. Vyberte **vytvořit prostředek**  >  **virtuální počítač s Windows serverem 2016**.
 2. Jako název zadejte **Web-01** a umístěte virtuální počítač do skupiny prostředků **RG-DNS-Alias-TM**. Zadejte uživatelské jméno a heslo a vyberte **OK**.
 3. Jako **Velikost** vyberte skladovou položku s 8 GB paměti RAM.
-4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. Pro veřejné příchozí porty vyberte **http** > **https** > **RDP (3389)** a pak vyberte **OK**.
+4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. Pro veřejné příchozí porty vyberte **http**  >  **https**  >  **RDP (3389)** a pak vyberte **OK**.
 5. Na stránce **Souhrn** vyberte **Vytvořit**.
 
 Dokončení tohoto postupu trvá několik minut. Virtuální počítač bude mít připojenou síťovou kartu, která bude mít základní dynamickou veřejnou IP adresu nazvanou web-01-IP. Veřejná IP adresa se změní pokaždé, když se virtuální počítač restartuje.

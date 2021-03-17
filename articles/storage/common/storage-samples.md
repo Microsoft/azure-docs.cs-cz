@@ -3,17 +3,17 @@ title: Ukázka kódu Azure Storage | Microsoft Docs
 description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven .NET, Java, Python, Node.js, Azure CLI a C++ Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de587483f5dc15b17fa32e044b569ef9d7f007f7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503646"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792952"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -43,35 +43,35 @@ Pokud chcete prozkoumat ukázky Pythonu, Stáhněte si [klientskou knihovnu pro 
 
 ## <a name="nodejs-samples"></a>Ukázky Node.js
 
-Pokud chcete prozkoumat ukázky Node.js, Stáhněte si [klientskou knihovnuNode.js Storage](https://github.com/Azure/azure-storage-node).
+Pokud chcete prozkoumat ukázky Node.js, Stáhněte si [ klientskou knihovnuNode.js Storage](https://github.com/Azure/azure-storage-node).
 
 * [Ukázky Azure Storage pomocí JavaScriptu/Node.js](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>Ukázky jazyka C++
 
-Chcete-li prozkoumat ukázky jazyka C++, Stáhněte si [knihovnu klienta úložiště c++](https://www.nuget.org/packages/wastorage/) z NuGet.
+Chcete-li prozkoumat ukázky jazyka C++, Získejte [Azure Storage klientskou knihovnu pro C++](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage) z GitHubu.
 
-* [Začínáme s objekty blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
-* [Začínáme s tabulkami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
-* [Začínáme s frontami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
+* [Začínáme s objekty blob Azure](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-blobs/sample/blob_getting_started.cpp)
+* [Začínáme s Azure Data Lake](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
+* [Začínáme se službou Azure Files](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
 Pokud chcete prozkoumat ukázky Azure CLI, nejdřív [nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 * [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli)
-* [Ukázky Azure Storage pomocí Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Ukázky Azure Storage pomocí Azure CLI](../blobs/storage-samples-blobs-cli.md)
 * [Oblíbené články o používání rozhraní příkazového řádku Azure s Azure Storage](/cli/azure/popular-articles-using-the-azure-cli#storage)
 
 ## <a name="api-reference-and-source-code"></a>Reference k rozhraní API a zdrojový kód
 
-| Jazyk | Referenční informace k rozhraní API | Zdrojový kód |
+| Jazyk | API – referenční informace | Zdrojový kód |
 |----------|---------------|-------------|
-| .NET | [Reference ke klientské knihovně .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
-| Java | [Reference ke klientské knihovně Java](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
+| .NET | [Reference ke klientské knihovně .NET](/dotnet/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
+| Java | [Reference ke klientské knihovně Java](/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
 | Python | [Referenční dokumentace klientské knihovny Pythonu](https://azure-storage.readthedocs.io/) | [Zdrojový kód pro knihovnu klienta úložiště Python](https://github.com/Azure/azure-storage-python) |
-| Node.js | [Reference ke klientské knihovněNode.js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu Node.js Storage](https://github.com/Azure/azure-storage-node) |
-| C++ | [C++ – Reference klientské knihovny](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód pro klientskou knihovnu úložiště C++](https://github.com/Azure/azure-storage-cpp)|
+| Node.js | [ Reference ke klientské knihovněNode.js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu Node.js Storage](https://github.com/Azure/azure-storage-node) |
+| C++ | [C++ – Reference klientské knihovny](https://azure.github.io/azure-sdk-for-cpp/) | [Zdrojový kód pro klientskou knihovnu úložiště C++](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|
 | Azure CLI | [Reference ke knihovně Azure CLI](/cli/azure/storage) | [Zdrojový kód pro klientskou knihovnu Azure CLI Storage](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 
 ## <a name="next-steps"></a>Další kroky
@@ -82,4 +82,5 @@ Následující články indexují každou ze vzorků podle služby (objekt blob,
 * [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
 * [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
-* [Ukázky Azure Storage pomocí Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Ukázky Azure Storage pomocí jazyka C++](storage-samples-c-plus-plus.md)
+* [Ukázky Azure Storage pomocí Azure CLI](../blobs/storage-samples-blobs-cli.md)

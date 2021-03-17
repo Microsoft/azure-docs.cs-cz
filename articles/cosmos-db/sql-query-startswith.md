@@ -3,18 +3,20 @@ title: StartsWith v jazyce Azure Cosmos DB Query Language
 description: Další informace o funkci SQL System Function STARTSWITH v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7217a8416354de260f958bfb5b980a8fdc391618
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83847110"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334918"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým.  
   
@@ -66,4 +68,4 @@ Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

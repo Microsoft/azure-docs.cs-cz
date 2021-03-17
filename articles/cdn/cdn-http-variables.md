@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192683"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro modul pravidel Azure CDN
@@ -34,11 +34,11 @@ Proměnné HTTP poskytují prostředky, pomocí kterých můžete načíst metad
 Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GEOGRAFICKá metadata (například PSČ) nejsou pro konkrétní požadavek k dispozici, vrátí se prázdná hodnota.
 
 
-| Název | Proměnná | Popis | Ukázková hodnota |
+| Name | Proměnná | Popis | Ukázková hodnota |
 | ---- | -------- | ----------- | ------------ |
 | ASN (žadatel) | % {geo_asnum} | Označuje žadatele jako číslo. <br /><br />**Zastaralé:** % {virt_dst_asnum}. <br />Tato proměnná se už nepoužívá namísto% {geo_asnum}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | AS15133 |
 | Město (žadatel) | % {geo_city} | Označuje město žadatele. | Los Angeles |
-| Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| – |
+| Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| Není k dispozici |
 | Hodnota souboru cookie | % {cookie_Cookie} | Vrátí hodnotu odpovídající klíči souboru cookie identifikovanému termínem souboru cookie. | Ukázka použití: <br />% {cookie__utma}<br /><br />Ukázková hodnota:<br />111662281.2.10.1222100123 |
 | Země/oblast (žadatel) | % {geo_country} | Určuje zemi nebo oblast původu žadatele prostřednictvím kódu země nebo oblasti. <br />**Zastaralé:** % {virt_dst_country}. <br /><br />Tato proměnná se už nepoužívá namísto% {geo_country}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | USA |
 | Vymezená oblast trhu (žadatel) | % {geo_dma_code} |Označuje mediální trh žadatele podle kódu oblasti. <br /><br />Toto pole se vztahuje pouze na žádosti, které pocházejí z USA.| 745 |
@@ -69,7 +69,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 V následující tabulce jsou popsány správné syntaxe pro určení proměnné HTTP.
 
 
-| Syntaxe | Příklad | Popis |
+| Syntax | Příklad | Description |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt; HTTPVariable &gt; . |
 | % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému  &lt; HTTPVariableDelimiter &gt; . |
@@ -92,7 +92,7 @@ Oddělovač lze zadat za proměnnou HTTP, aby bylo možné provést některý z 
 
 Oddělovače jsou popsány v následující tabulce.
 
-| Oddělovač | Popis |
+| Oddělovač | Description |
 | --------- | ----------- |
 | := | Označuje, že výchozí hodnota bude přiřazena proměnné, pokud je buď: <br />– Chybějící <br />-Nastavit na hodnotu NULL. |
 | :+ | Označuje, že se k proměnné přiřadí výchozí hodnota, když je jí přiřazena hodnota. |
@@ -110,7 +110,7 @@ Oddělovače jsou popsány v následující tabulce.
 ## <a name="exceptions"></a>Výjimky
 Následující tabulka popisuje okolnosti, za kterých se zadaný text nepovažuje za proměnnou HTTP.
 
-| Podmínka | Popis | Příklad |
+| Stav | Popis | Příklad |
 | --------- | ----------- | --------|
 | Symbol uvozovacího znaku% | Symbol procenta může být uvozen pomocí zpětného lomítka. <br />Vzorová hodnota vpravo bude považována za hodnotu literálu a ne jako proměnnou HTTP.| \%provoz |
 | Neznámé proměnné | U neznámých proměnných se vždycky vrátí prázdný řetězec. | % {unknown_variable} |
@@ -125,7 +125,7 @@ Výchozí hodnota může být přiřazena k hlavičce, pokud splňuje některou 
 
 Následující tabulka popisuje, jak definovat výchozí hodnotu.
 
-| Podmínka | Syntaxe | Příklad | Popis |
+| Stav | Syntax | Příklad | Description |
 | --------- | ------ | --------| ----------- |
 | Nastavte hlavičku na výchozí hodnotu, pokud splňuje některou z následujících podmínek: <br /><br />– Chybějící hlavička <br /><br />-Hodnota hlavičky je nastavena na hodnotu NULL.| % {Proměnná: = hodnota} | % {http_referrer: = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud buď chybí, nebo nastaveno na hodnotu null. Žádná akce se neprovede, pokud byla nastavena. |
 | Nastavte hlavičku na výchozí hodnotu, pokud chybí. | % {Variable = hodnota} | % {http_referrer = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud chybí. Žádná akce se neprovede, pokud byla nastavena. |
@@ -174,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Odebrání vzorku
 Text, který odpovídá určitému vzoru, lze odebrat buď od začátku, nebo od konce hodnoty proměnné.
 
-| Syntaxe | Akce |
+| Syntax | Akce |
 | ------ | ------ |
 | % {Variable # vzor} | Odebere text, pokud je zadaný vzor nalezen na začátku hodnoty proměnné. |
 | % {Proměnná% vzor} | Odebere text, pokud je zadaný vzor nalezen na konci hodnoty proměnné. |
@@ -187,7 +187,7 @@ V tomto ukázkovém scénáři je proměnná *REQUEST_URI* nastavena na:
 
 Následující tabulka ukazuje, jak tato syntaxe funguje.
 
-| Ukázková syntaxe | Výsledky | Popis |
+| Ukázková syntaxe | Výsledky | Description |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Vzhledem k tomu, že proměnná začíná vzorem, byla nahrazena. |
 | % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Vzhledem k tomu, že proměnná nekončí vzorem, došlo k žádné změně.|
@@ -195,7 +195,7 @@ Následující tabulka ukazuje, jak tato syntaxe funguje.
 ### <a name="find-and-replace"></a>Vyhledání a nahrazení
 Syntaxe Find a Replace je popsána v následující tabulce.
 
-| Syntaxe | Akce |
+| Syntax | Akce |
 | ------ | ------ |
 | % {Proměnná/najít/nahradit} | Najde a nahradí první výskyt zadaného vzoru. |
 | % {Variable//Find/Replace} | Najde a nahradí všechny výskyty zadaného vzoru. |
@@ -207,7 +207,7 @@ Syntaxe Find a Replace je popsána v následující tabulce.
 ### <a name="find-and-rewrite"></a>Najít a přepsat
 Pro variaci hledání a nahrazování použijte při přepisu text, který odpovídá zadanému vzoru. Syntaxe Find a Rewrite je popsána v následující tabulce.
 
-| Syntaxe | Akce |
+| Syntax | Akce |
 | ------ | ------ |
 | % {Variable/= najít/přepsat} | Vyhledejte, zkopírujte a přepište všechny výskyty zadaného vzoru. |
 | % {Variable/^ vyhledat a přepsat} | Najděte, zkopírujte a přepište zadaný vzor, když se vyskytne na začátku proměnné. |

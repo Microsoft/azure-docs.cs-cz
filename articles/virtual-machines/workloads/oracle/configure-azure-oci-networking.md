@@ -1,24 +1,19 @@
 ---
 title: Připojení Azure ExpressRoute pomocí cloudové infrastruktury Oracle | Microsoft Docs
 description: Připojení Azure ExpressRoute pomocí Oracle Cloud Infrastructure (OCI) FastConnect pro povolení mezicloudových řešení Oracle pro aplikace
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 09264f9f20411e7536eb4a1dbf12ac297e7e3ef9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220469"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675705"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
@@ -36,7 +31,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
 
 ![Připojení k síti mezi cloudy](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * K navázání připojení mezi Azure a OCI musíte mít aktivní předplatné Azure a aktivní nájem architektury OCI.
 
@@ -49,7 +44,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
     * Okruh Azure ExpressRoute poskytuje podrobné možnosti šířky pásma, zatímco FastConnect podporuje 1, 2, 5 nebo 10 GB/s. Proto se doporučuje zvolit jednu z těchto možností pro porovnání šířky pásma v rámci ExpressRoute.
 
     ![Vytvořit okruh ExpressRoute](media/configure-azure-oci-networking/exr-create-new.png)
-1. Poznamenejte si **klíč služby**ExpressRoute. Klíč je potřeba zadat při konfiguraci okruhu FastConnect.
+1. Poznamenejte si **klíč služby** ExpressRoute. Klíč je potřeba zadat při konfiguraci okruhu FastConnect.
 
     ![Klíč služby ExpressRoute](media/configure-azure-oci-networking/exr-service-key.png)
 
@@ -63,10 +58,10 @@ Následující obrázek ukazuje podrobný přehled propojení:
     * V části Konfigurace FastConnect jako zprostředkovatel vyberte **Microsoft Azure: ExpressRoute** .
     * Vyberte bránu dynamického směrování, kterou jste zřídili v předchozím kroku.
     * Vyberte šířku pásma, která se má zřídit. Pro zajištění optimálního výkonu musí šířka pásma odpovídat šířce pásma vybrané při vytváření okruhu ExpressRoute.
-    * Do pole **klíč služby poskytovatele**vložte klíč služby ExpressRoute.
+    * Do pole **klíč služby poskytovatele** vložte klíč služby ExpressRoute.
     * Použijte první/30 privátního prostoru IP adres Carved v předchozím kroku pro **primární IP adresu protokolu BGP** a druhý/30 privátní adresní prostor IP adres pro **sekundární IP adresu protokolu BGP** .
         * Přiřaďte první IP adresu dvou rozsahů pro IP adresu protokolu BGP Oracle (primární a sekundární) a druhou adresu IP adrese protokolu BGP zákazníka (z perspektivy FastConnect). První dostupná IP adresa je druhá IP adresa v adresním prostoru/30 (první IP adresa je vyhrazená Microsoftem).
-    * Klikněte na **Create** (Vytvořit).
+    * Klikněte na **Vytvořit**.
 1. Dokončete propojení FastConnect s virtuální cloudovou sítí v rámci vašeho tenanta Oracle přes bránu dynamického směrování pomocí směrovací tabulky.
 1. Přejděte do Azure a ujistěte se, že se **stav poskytovatele** pro váš okruh ExpressRoute změnil na **zřízený** a že se zřídil partnerský vztah typu **Private Azure** . Tento postup je nezbytný pro následující kroky.
 
@@ -88,7 +83,7 @@ Společnost Microsoft vytvořila skripty Terraformu, které umožňují automati
 
 V tomto [úložišti GitHubu](https://aka.ms/azureociinterconnecttf)najdete skripty terraformu a související dokumentace k nasazení připojení mezi lokalitami.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Instalace agentů v cloudech vám umožní využít Azure [Network Performance Monitor (npm)](../../../expressroute/how-to-npm.md) a monitorovat výkon komplexní sítě. NPM pomáhá snadno identifikovat problémy se sítí a pomáhá je eliminovat.
 
@@ -96,7 +91,7 @@ Instalace agentů v cloudech vám umožní využít Azure [Network Performance M
 
 Aby bylo možné propojení odstranit, musí být v zadaném pořadí dodrženy následující kroky. K tomuto selhání dojde v důsledku neúspěšného okruhu ExpressRouteho stavu.
 
-1. Odstraňte připojení ExpressRoute. Odstraňte připojení kliknutím na ikonu **Odstranit** na stránce pro vaše připojení. Další informace najdete v [dokumentaci k ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet).
+1. Odstraňte připojení ExpressRoute. Odstraňte připojení kliknutím na ikonu **Odstranit** na stránce pro vaše připojení. Další informace najdete v [dokumentaci k ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources).
 1. Odstraňte Oracle FastConnect z cloudové konzoly Oracle.
 1. Po odstranění okruhu Oracle FastConnect můžete odstranit okruh Azure ExpressRoute.
 

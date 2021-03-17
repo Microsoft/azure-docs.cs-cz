@@ -1,6 +1,6 @@
 ---
 title: Změna nastavení životního cyklu pro balíček přístupu ve správě nároků Azure AD – Azure Active Directory
-description: Přečtěte si, jak změnit nastavení životního cyklu pro balíček přístupu v Azure Active Directory správě nároků.
+description: Přečtěte si, jak změnit informace o žadateli & nastavení životního cyklu pro balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,18 +16,21 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c628c3c1f11cb973176e7a689856b64177036c9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798694"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90980122"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna nastavení životního cyklu pro balíček přístupu v Azure AD – Správa nároků
 
 Jako správce balíčků přístupu můžete kdykoli změnit nastavení životního cyklu pro balíček přístupu úpravou stávající zásady. Pokud změníte datum vypršení platnosti zásady, datum vypršení platnosti požadavků, které jsou již v nedokončeném schválení nebo schváleném stavu, se nezmění.
 
 Tento článek popisuje, jak změnit nastavení životního cyklu pro existující balíček přístupu.
+
+## <a name="open-requestor-information"></a>Otevřít informace o žadateli
+Pokud chcete zajistit, aby uživatelé měli správný přístup k balíčku přístupu, můžete si nakonfigurovat vlastní otázky, které požádají uživatele požadující přístup k určitým balíčkům přístupu. Mezi možnosti konfigurace patří: lokalizace, povinné/volitelné, a text/více formátů odpovědí volby. Žadatelům se zobrazí otázky, které požadují balíček, a odpovědi na otázky, aby jim pomohli své rozhodnutí. Pomocí následujících kroků můžete nakonfigurovat otázky v přístupovém balíčku:
 
 ## <a name="open-lifecycle-settings"></a>Otevřít nastavení životního cyklu
 

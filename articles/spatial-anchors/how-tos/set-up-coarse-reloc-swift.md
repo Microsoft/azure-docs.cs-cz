@@ -1,19 +1,19 @@
 ---
 title: Hrubá reprostředí v SWIFT
 description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubého opětovného rozmístění v SWIFT.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cc964ca8339e82aa7388aeab8718a6102a23d1b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76546159"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95999727"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Jak vytvořit a najít kotvy s využitím hrubého opětovného rozmístění v SWIFT
 

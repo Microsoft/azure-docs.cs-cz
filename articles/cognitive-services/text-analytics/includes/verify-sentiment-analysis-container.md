@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: c9b5411c044bb45d284cac0d30705c2b3d40ccd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0a5e09f1d697c2f5f842edfb06be4b13229d095
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009856"
 ---
 ### <a name="verify-the-sentiment-analysis-container-instance"></a>Ověření instance kontejneru Analýza mínění
 
 1. Vyberte kartu **Přehled** a zkopírujte IP adresu.
-1. Otevřete novou kartu prohlížeče a zadejte IP adresu. Zadejte `http://<IP-address>:5000 (http://55.55.55.55:5000`například). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
+1. Otevřete novou kartu prohlížeče a zadejte IP adresu. Zadejte například `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
 
     ![Zobrazte domovskou stránku kontejneru a ověřte, že je spuštěný.](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -63,7 +64,7 @@ ms.locfileid: "80876399"
     }
     ```
 
-1. Nastavte **showStats** na `true`.
+1. Nastavte **showStats** na `true` .
 
 1. Výběrem příkazu **Execute** určete mínění textu.
 
@@ -93,4 +94,4 @@ ms.locfileid: "80876399"
     }
     ```
 
-Nyní můžeme sladit dokument `id` dat JSON datové části odpovědi s původním dokumentem `id`datové části požadavku. Skóre více než `0.98` značí velmi pozitivní mínění.
+Nyní můžeme sladit dokument `id` dat JSON datové části odpovědi s původním dokumentem datové části požadavku `id` . Skóre více než `0.98` značí velmi pozitivní mínění.

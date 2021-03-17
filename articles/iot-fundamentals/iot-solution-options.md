@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 046116addf643d6c0eb0faf2f821b6ef78d440c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77050337"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453010"
 ---
-# <a name="choose-the-right-iot-solution"></a>Volba vhodného řešení IoT
+# <a name="what-is-the-right-iot-solution-for-your-business"></a>Jaké je správné řešení IoT pro vaši firmu?
 
 Pokud chcete vytvořit řešení IoT pro vaši firmu, obvykle se rozhodnete použít buď *službu platformy* , nebo přístup ke *spravované platformě aplikací* .
 
@@ -55,7 +55,7 @@ Jakou cenovou strukturu nejlépe vyhovuje vašim potřebám?
 
 - Vyberte přístup k spravované aplikační platformě pro jednoduchou a předvídatelný cenovou strukturu.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Přístup ke službám platformy je vhodný pro firmu s cloudovým řešením a odbornými znalostmi zařízení, které chtějí:
 
@@ -75,4 +75,4 @@ Komplexnější vysvětlení různých služeb a platforem a způsobu jejich pou
 
 Další informace o klíčových atributech úspěšných řešení IoT najdete v dokumentu White Paper s [8 atributy úspěšných řešení IoT](https://aka.ms/8attributes) .
 
-Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).
+Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](/azure/architecture/reference-architectures/iot).

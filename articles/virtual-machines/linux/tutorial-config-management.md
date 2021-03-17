@@ -1,30 +1,31 @@
 ---
 title: Kurz – Správa konfigurace virtuálního počítače se systémem Linux v Azure
 description: V tomto kurzu zjistíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači se systémem Linux.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: mgoedtel
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 979cac8fd3d2c09443d52c9142a5e7c44127713a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445798"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552523"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače se systémem Linux v Azure
 
-Azure [Change Tracking](../../automation/change-tracking.md) umožňuje snadno identifikovat změny a [Update Management](../../automation/update-management/update-mgmt-overview.md) vám umožní spravovat aktualizace operačního systému pro virtuální počítače Azure Linux.
+Azure [Change Tracking](../../automation/change-tracking/overview.md) umožňuje snadno identifikovat změny a [Update Management](../../automation/update-management/overview.md) vám umožní spravovat aktualizace operačního systému pro virtuální počítače Azure Linux.
 
 V tomto kurzu se naučíte:
 
@@ -32,13 +33,9 @@ V tomto kurzu se naučíte:
 > * Správa aktualizací pro Linux
 > * Monitorování změn a inventáře
 
-## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.30 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-vm"></a>Vytvoření virtuálního počítače
 
@@ -77,7 +74,7 @@ Povolení řešení Update Management pro virtuální počítač:
 Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management.
 Toto ověření zahrnuje kontroly pracovního prostoru služby Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
 
-Pracovní prostor [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management.
+Pracovní prostor [Log Analytics](../../azure-monitor/logs/log-query-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 Pokud na virtuálních počítačích, které vyžadují aktualizace, chcete provádět další akce, Azure Automation umožňuje spouštět proti virtuálním počítačům runbooky například pro stahování a aplikování aktualizací.
 
@@ -87,7 +84,7 @@ Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Pov
 
 Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
-* Pracovní prostor [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
+* Pracovní prostor [Log Analytics](../../azure-monitor/logs/log-query-overview.md)
 * [Účet služby Automation](../../automation/index.yml)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
@@ -115,10 +112,10 @@ Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasaze
 | --- | --- |
 | Název |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
-| Skupiny, které se mají aktualizovat |V případě počítačů Azure definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. </br></br>V případě počítačů mimo Azure vyberte existující uložené hledání a vyberte skupinu počítačů mimo Azure, které chcete zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/update-management/update-mgmt-groups.md) .|
-| Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
+| Skupiny, které se mají aktualizovat |V případě počítačů Azure definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. </br></br>V případě počítačů mimo Azure vyberte existující uložené hledání a vyberte skupinu počítačů mimo Azure, které chcete zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/update-management/configure-groups.md) .|
+| Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/logs/computer-groups.md) |
 |Update classifications|Vyberte všechny klasifikace aktualizací, které potřebujete.|
-|Zahrnout nebo vyloučit aktualizace|Tím se otevře stránka **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizace](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) . |
+|Zahrnout nebo vyloučit aktualizace|Tím se otevře stránka **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizace](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) . |
 |Nastavení plánu|Vyberte čas, kdy se má spustit, a pro opakování vyberte buď jednou, nebo opakovanou.|
 | Pre-Scripts + post-Scripts|Vyberte skripty, které se spustí před nasazením a po něm.|
 | Časové období údržby |Počet minut, po které se nastaví aktualizace. Hodnota nesmí být kratší než 30 minut a maximálně 6 hodin. |
@@ -205,4 +202,4 @@ V tomto kurzu jste nakonfigurovali a zkontrolovali Change Tracking a Update Mana
 Přejděte k dalšímu kurzu, kde se dozvíte o monitorování virtuálního počítače.
 
 > [!div class="nextstepaction"]
-> [Monitorování virtuálních počítačů](tutorial-monitor.md)
+> [Monitorování virtuálních počítačů](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)

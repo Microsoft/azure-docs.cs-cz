@@ -1,20 +1,20 @@
 ---
 title: Sada nástrojů pro test šablon ARM
-description: Popisuje, jak spustit sadu nástrojů pro test šablon ARM ve vaší šabloně. Sada nástrojů vám umožní zjistit, jestli jste implementovali Doporučené postupy.
+description: Popisuje, jak spustit sadu nástrojů test Toolkit šablony Azure Resource Manager (ARM Template) ve vaší šabloně. Sada nástrojů vám umožní zjistit, jestli jste implementovali Doporučené postupy.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7b88096dfdd1c7fb3e2671a369132e75a8885b8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255916"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674008"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Použít sadu nástrojů pro test šablon ARM
 
-[Sada testů šablon ARM](https://aka.ms/arm-ttk) kontroluje, jestli vaše šablona používá Doporučené postupy. Pokud vaše šablona není kompatibilní s doporučenými postupy, vrátí seznam upozornění s navrhovanými změnami. Pomocí sady nástrojů test Toolkit se můžete dozvědět, jak se vyhnout běžným problémům při vývoji šablon.
+[Sada testů pro šablonu Azure Resource Manager (šablona ARM)](https://aka.ms/arm-ttk) kontroluje, jestli vaše šablona používá Doporučené postupy. Pokud vaše šablona není kompatibilní s doporučenými postupy, vrátí seznam upozornění s navrhovanými změnami. Pomocí sady nástrojů test Toolkit se můžete dozvědět, jak se vyhnout běžným problémům při vývoji šablon.
 
 Sada testů poskytuje [sadu výchozích testů](test-cases.md). Tyto testy jsou doporučení, ale ne požadavky. Můžete určit, které testy jsou relevantní pro vaše cíle, a přizpůsobit, které testy se mají spustit.
 
@@ -22,55 +22,105 @@ Tento článek popisuje, jak spustit sadu testů a jak přidat nebo odebrat test
 
 Sada nástrojů je sada PowerShellových skriptů, které se dají spouštět z příkazu v PowerShellu nebo rozhraní příkazového řádku.
 
-## <a name="download-test-toolkit"></a>Stáhnout sadu testů
+## <a name="install-on-windows"></a>Instalace v systému Windows
 
-Chcete-li použít sadu nástrojů test Toolkit, můžete buď rozvětvit a klonovat [úložiště](https://aka.ms/arm-ttk) obsahující skripty, nebo [Stáhnout nejnovější soubor. zip](https://aka.ms/arm-ttk-latest).
+1. Pokud prostředí PowerShell ještě nemáte, [nainstalujte PowerShell ve Windows](/powershell/scripting/install/installing-powershell-core-on-windows).
 
-V závislosti na zásadách spouštění počítače, na kterém spouštíte skript, se může zobrazit chyba týkající se spouštění skriptů z Internetu. Musíte buď změnit [zásady spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) , nebo [odblokovat soubory skriptu](/powershell/module/microsoft.powershell.utility/unblock-file).
+1. [Stáhněte si nejnovější soubor. zip](https://aka.ms/arm-ttk-latest) pro sadu testů a rozbalte ho.
 
-## <a name="run-on-powershell"></a>Spuštění v PowerShellu
+1. Spusťte PowerShell.
 
-Před spuštěním testů Importujte modul.
+1. Přejděte do složky, do které jste extrahovali sadu testů. V této složce přejděte do složky **ARM-TTK** .
 
-```powershell
-Import-Module .\arm-ttk.psd1 # from the same directory as .\arm-ttk.psd1
-```
+1. Pokud vaše [zásada spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) blokuje skripty z Internetu, je potřeba odblokovat soubory skriptu. Ujistěte se, že jste ve složce **ARM-TTK** .
 
-Chcete-li spustit testy v **prostředí PowerShell**, použijte následující příkaz:
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
 
-```powershell
-Test-AzTemplate -TemplatePath $TemplateFolder
-```
+1. Importujte modul.
 
-## <a name="run-on-linux"></a>Spustit na Linux
+   ```powershell
+   Import-Module .\arm-ttk.psd1
+   ```
 
-Před spuštěním testů nainstalujte [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux).
+1. Chcete-li spustit testy, použijte následující příkaz:
 
-Chcete-li spustit testy na **platformě Linux** v bash, použijte následující příkaz:
+   ```powershell
+   Test-AzTemplate -TemplatePath \path\to\template
+   ```
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+## <a name="install-on-linux"></a>Instalace v systému Linux
 
-Můžete také spustit test na pwsh.exe.
+1. Pokud prostředí PowerShell ještě nemáte, [nainstalujte PowerShell na Linux](/powershell/scripting/install/installing-powershell-core-on-linux).
 
-## <a name="run-on-macos"></a>Spustit na macOS
+1. [Stáhněte si nejnovější soubor. zip](https://aka.ms/arm-ttk-latest) pro sadu testů a rozbalte ho.
 
-Před spuštěním testů nainstalujte [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-macos). 
+1. Spusťte PowerShell.
 
-Nainstalujte `coreutils`:
+   ```bash
+   pwsh
+   ```
 
-```bash
-brew install coreutils
-```
+1. Přejděte do složky, do které jste extrahovali sadu testů. V této složce přejděte do složky **ARM-TTK** .
 
-Chcete-li spustit testy na **MacOS**, použijte následující příkaz:
+1. Pokud vaše [zásada spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) blokuje skripty z Internetu, je potřeba odblokovat soubory skriptu. Ujistěte se, že jste ve složce **ARM-TTK** .
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
 
-## <a name="result-format"></a>Výsledný formát
+1. Importujte modul.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. Chcete-li spustit testy, použijte následující příkaz:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
+
+## <a name="install-on-macos"></a>Instalace v systému macOS
+
+1. Pokud prostředí PowerShell ještě nemáte, [nainstalujte PowerShell na MacOS](/powershell/scripting/install/installing-powershell-core-on-macos).
+
+1. Nainstalujte `coreutils`:
+
+   ```bash
+   brew install coreutils
+   ```
+
+1. [Stáhněte si nejnovější soubor. zip](https://aka.ms/arm-ttk-latest) pro sadu testů a rozbalte ho.
+
+1. Spusťte PowerShell.
+
+   ```bash
+   pwsh
+   ```
+
+1. Přejděte do složky, do které jste extrahovali sadu testů. V této složce přejděte do složky **ARM-TTK** .
+
+1. Pokud vaše [zásada spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) blokuje skripty z Internetu, je potřeba odblokovat soubory skriptu. Ujistěte se, že jste ve složce **ARM-TTK** .
+
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Importujte modul.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. Chcete-li spustit testy, použijte následující příkaz:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
+
+## <a name="result-format"></a>Formát výsledku
 
 Testy, které jsou předávány, jsou zobrazeny **zeleně** a uvozeny **[+]**.
 
@@ -232,4 +282,5 @@ Další příklad ukazuje, jak spustit testy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o výchozích testech naleznete v tématu [testové případy pro sadu nástrojů](test-cases.md).
+- Další informace o výchozích testech naleznete v tématu [Default test Cases for a Template test Toolkit](test-cases.md).
+- Microsoft Learn modul, který se zabývá používáním sady nástrojů test Toolkit, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).

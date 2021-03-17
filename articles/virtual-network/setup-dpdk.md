@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124665"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavení DPDK na virtuálním počítači se systémem Linux
 
@@ -45,20 +45,20 @@ Jsou podporovány následující distribuce z Azure Marketplace:
 | Ubuntu 16.04 | 4.15.0-1014 – Azure +           | 
 | Ubuntu 18.04 | 4.15.0-1014 – Azure +           |
 | SLES 15 SP1  | 4.12.14-8.19 – Azure +          | 
-| RHEL 7.5     | 3.10.0-862.11.6. el7. x86_64 +  | 
-| CentOS 7.5   | 3.10.0-862.11.6. el7. x86_64 +  | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64 +  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64 +  | 
 
 **Podpora vlastního jádra**
 
-Informace o všech neuvedených verzích jádra pro Linux najdete v tématu [opravy pro sestavení jádra systému Linux pro Azure](https://github.com/microsoft/azure-linux-kernel). Další informace můžete také kontaktovat [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
+Informace o všech neuvedených verzích jádra pro Linux najdete v tématu [opravy pro sestavení jádra systému Linux pro Azure](https://github.com/microsoft/azure-linux-kernel). Další informace můžete také kontaktovat [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Podpora oblastí
 
 Všechny oblasti Azure podporují DPDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Na virtuálním počítači se systémem Linux musí být povoleny akcelerované síťové služby. Virtuální počítač by měl mít alespoň dvě síťová rozhraní s jedním rozhraním pro správu. Naučte se, jak [vytvořit virtuální počítač se systémem Linux s povolenými akcelerovanými síťovými](create-vm-accelerated-networking-cli.md)službami.
+Na virtuálním počítači se systémem Linux musí být povoleny akcelerované síťové služby. Virtuální počítač by měl mít alespoň dvě síťová rozhraní s jedním rozhraním pro správu. Povolení akcelerovaných síťových rozhraní u rozhraní pro správu se nedoporučuje. Naučte se, jak [vytvořit virtuální počítač se systémem Linux s povolenými akcelerovanými síťovými](create-vm-accelerated-networking-cli.md)službami.
 
 ## <a name="install-dpdk-dependencies"></a>Nainstalovat závislosti DPDK
 
@@ -251,7 +251,7 @@ Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
 
 Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v systému `app/test-pmd/txonly.c` tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety vyřazeny před tím, než se dostane do serveru pro předání. Nebudete mít přístup k přesměrovanému provozu z jiného počítače, protože server pro přeposílání *testpmd* nemění adresy vrstvy 3, Pokud neprovedete nějaké změny kódu.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 * [EAL možnosti](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Příkazy Testpmd](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

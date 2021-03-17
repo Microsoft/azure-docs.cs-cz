@@ -1,19 +1,16 @@
 ---
 title: Řešení potíží s Apache Sparkm clusterem v Azure HDInsight
 description: Přečtěte si o problémech souvisejících s Apache Spark clustery ve službě Azure HDInsight a o tom, jak tyto problémy obejít.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c92b55d3ac7f4476b7b74d25b40150a74c6ea1cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084638"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930153"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 
@@ -73,7 +70,7 @@ Clustery HDInsight Spark nepodporují konektor Spark-Phoenix.
 
 **Zmírnění**
 
-Místo toho je nutné použít konektor Spark-HBA. Pokyny najdete v tématu [Jak používat konektor Spark-HBA](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+Místo toho je nutné použít Spark-HBase konektor. Pokyny najdete v tématu [použití konektoru Spark-HBase](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Problémy související s Jupyter poznámkovým blokem
 
@@ -81,7 +78,7 @@ Níže jsou uvedené některé známé problémy související s Jupyter poznám
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Poznámkové bloky s jinými znaky než ASCII v názvech souborů
 
-V názvech souborů poznámkových bloků Jupyter nepoužívejte jiné znaky než ASCII. Pokud se pokusíte nahrát soubor prostřednictvím uživatelského rozhraní Jupyter, které obsahuje název souboru, který není ASCII, dojde k chybě bez jakékoli chybové zprávy. Jupyter neumožňuje odeslat soubor, ale nevyvolává viditelnou chybu.
+V Jupyter Notebookch názvech souborů nepoužívejte jiné znaky než ASCII. Pokud se pokusíte nahrát soubor prostřednictvím uživatelského rozhraní Jupyter, které obsahuje název souboru, který není ASCII, dojde k chybě bez jakékoli chybové zprávy. Jupyter neumožňuje odeslat soubor, ale nevyvolává viditelnou chybu.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Při načítání poznámkových bloků větších velikostí došlo k chybě.
 
@@ -100,15 +97,15 @@ Aby nedošlo k této chybě v budoucnu, je nutné dodržovat některé osvědče
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Počáteční spuštění poznámkového bloku trvá déle, než bylo očekáváno
 
-První příkaz kódu v poznámkovém bloku Jupyter pomocí Spark Magic může trvat déle než minutu.  
+První příkaz kódu v Jupyter Notebook pomocí Spark Magic může trvat déle než minutu.  
 
 **Požadované**
 
 K tomu dochází, protože při spuštění první buňky kódu. Na pozadí se zahájí nastavení konfigurace relace a kontexty Spark, SQL a podregistr. Po nastavení těchto kontextů se spustí první příkaz, který dává dojem, že dokončení příkazu trvalo dlouhou dobu.
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Časový limit Jupyter poznámkového bloku při vytváření relace
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter Notebook časový limit při vytváření relace
 
-Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace se v jádrech Sparku a PySpark v Jupyter poznámkovém bloku vyprší časový limit.
+Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace vyprší časový limit pro jádra Spark a PySpark v Jupyter Notebook.
 
 **Hrozeb**
 
@@ -140,8 +137,8 @@ Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace 
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

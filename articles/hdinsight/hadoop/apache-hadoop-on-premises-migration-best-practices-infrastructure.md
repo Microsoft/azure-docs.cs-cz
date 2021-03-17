@@ -1,19 +1,16 @@
 ---
 title: 'Infrastruktura: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083096"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740660"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -23,11 +20,11 @@ Tento článek obsahuje doporučení pro správu infrastruktury clusterů Azure 
 
 K dispozici jsou následující klíčové volby pro plánování kapacity clusteru HDInsight:
 
-**Věřitel**  
+**Oblast**  
 Oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být ve stejné oblasti jako data.
 
 **Umístění a velikost úložiště**  
-Výchozí úložiště musí být ve stejné oblasti jako cluster.Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
+Výchozí úložiště musí být ve stejné oblasti jako cluster. Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
 
 **Velikost a typ virtuálního počítače (teď podporuje G-series)**  
 Každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní možnosti pro velikost a typ virtuálního počítače. Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě. Simulované úlohy lze použít k určení optimální velikosti a typu virtuálního počítače pro jednotlivé typy uzlů.
@@ -39,7 +36,7 @@ Další informace najdete v článku [plánování kapacity pro clustery HDInsig
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Použít doporučený typ virtuálního počítače pro cluster
 
-Doporučené typy virtuálních počítačů pro každý typ clusteru HDInsight najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) .
+Doporučené typy virtuálních počítačů pro každý typ clusteru HDInsight najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](../hdinsight-supported-node-configuration.md) .
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>Zkontroluje dostupnost součástí Hadoop ve službě HDInsight.
 
@@ -52,31 +49,31 @@ Aplikace nebo komponenty, které byly dostupné v místních clusterech, ale nej
 |**Aplikace**|**Integrace**
 |---|---|
 |Tok dat|Hraniční uzel IaaS nebo HDInsight
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Tamazight|Žádné (pouze HDP)
 |Datameer|Hraniční uzel HDInsight
 |DataStax (Cassandra)|IaaS (CosmosDB alternativa v Azure)
-|DataTorrent|IaaS 
-|Drill|IaaS 
+|DataTorrent|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (CosmosDB alternativa v Azure)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|Hraniční uzel IaaS nebo HDInsight
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|VEDE|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW alternativa v Azure)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Hlavní|Hraniční uzel HDInsight
-|StreamSets|Edge HDInsight 
-|Palantir|IaaS 
-|Sailpoint|IaaS 
+|StreamSets|Edge HDInsight 
+|Palantir|IaaS 
+|Sailpoint|IaaS 
 
-Další informace najdete v článku věnovaném [Apache Hadoop komponentám, které jsou k dispozici v různých verzích HDInsight](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) .
+Další informace najdete v článku věnovaném [Apache Hadoop komponentám, které jsou k dispozici v různých verzích HDInsight](../hdinsight-component-versioning.md) .
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight pomocí akcí skriptů
 
@@ -109,7 +106,7 @@ Další informace najdete v následujících článcích:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Přizpůsobení konfigurací HDInsight pomocí Bootstrap
 
-Změny konfiguračních souborů v konfiguračních souborech `core-site.xml` , například `hive-site.xml` a, `oozie-env.xml` lze provádět pomocí Bootstrap. Následující skript je příkladem použití PowerShellu [AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) rutina [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Změny konfiguračních souborů v konfiguračních souborech `core-site.xml` , například `hive-site.xml` a, `oozie-env.xml` lze provádět pomocí Bootstrap. Následující skript je příkladem použití PowerShellu [AZ Module](/powershell/azure/new-azureps-module-az) rutina [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration
@@ -152,7 +149,7 @@ Další informace najdete v článku [použití prázdných hraničních uzlů n
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Použití funkcí horizontálního navýšení kapacity a škálování clusterů
 
-Služba HDInsight poskytuje pružnost díky možnosti horizontálního navýšení a snížení kapacity počtu pracovních uzlů ve vašich clusterech. Tato funkce umožňuje zmenšit cluster po hodinách nebo na víkendech a rozšířit ho během špičkových obchodních požadavků. Další informace naleznete v tématech:
+Služba HDInsight poskytuje pružnost díky možnosti horizontálního navýšení a snížení kapacity počtu pracovních uzlů ve vašich clusterech. Tato funkce umožňuje zmenšit cluster po hodinách nebo na víkendech a rozšířit ho během špičkových obchodních požadavků. Další informace naleznete v tématu:
 
 * [Škálování clusterů HDInsight](../hdinsight-scaling-best-practices.md).
 * [Škálování clusterů](../hdinsight-administer-use-portal-linux.md#scale-clusters).

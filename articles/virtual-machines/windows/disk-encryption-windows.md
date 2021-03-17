@@ -2,18 +2,19 @@
 title: Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače s Windows pro různé scénáře.
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: a01d5f48ca3b10f4c49ee621398ae87392dc34a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509157"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493454"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -135,7 +136,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI. `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Název skupiny prostředků, která obsahuje Trezor klíčů|
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče ve formátu https:// &lt; trezoru klíčů-name &gt; . Vault.Azure.NET/Key/ &lt; &gt; . Pokud nechcete používat KEK, nechte toto pole prázdné. |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_ a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
 | location | Umístění pro všechny prostředky |
@@ -151,7 +152,7 @@ Povolení šifrování na NVMe discích:
 
 Šifrování na discích s NVMe bude zachováno v následujících situacích:
 - Restartování virtuálního počítače
-- VMSS obnovení obrazu
+- Obrázek sady škálování virtuálního počítače – obnovení
 - Prohození operačního systému
 
 NVMe disky budou neinicializované v následujících scénářích:
@@ -260,13 +261,12 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Kontejnery Windows serveru, které vytvářejí dynamické svazky pro každý kontejner.
 - Dočasné disky s operačním systémem.
 - Šifrování sdílených/distribuovaných systémů souborů (ale ne omezené na) DFS, GFS, DRDB a CephFS.
-- Přesunutí šifrovaných virtuálních počítačů do jiného předplatného nebo oblasti.
+- Přesunutí šifrovaného virtuálního počítače do jiného předplatného nebo oblasti.
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
-- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
-- Použití ADE na virtuální počítač, který má nebo byl *dřív* , byly disky šifrované pomocí [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
-- Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
-
+- Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
+- Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).
+- Šifrování virtuálních počítačů v clusterech s podporou převzetí služeb při selhání
 
 ## <a name="next-steps"></a>Další kroky
 

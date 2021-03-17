@@ -12,12 +12,12 @@ metadata:
   author: shreyasharmamsft
   ms.author: shresha
   ms.date: 07/09/2020
-  ms.openlocfilehash: 7419fed9084425f50eda4b504c2f3158873559a4
-  ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
-  ms.translationtype: HT
+  ms.openlocfilehash: eff34e8ac069a05da0f59cc7d2f115370ee5c7dd
+  ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/15/2020
-  ms.locfileid: "88245685"
+  ms.lasthandoff: 03/14/2021
+  ms.locfileid: "103461874"
 landingContent:
 - title: Informace o službě Azure Time Series Insights
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Kurz k Azure Time Series Insights Gen2
-      url: tutorials-set-up-tsi-environment.md
+      url: tutorial-set-up-environment.md
   - linkListType: deploy
     links:
     - text: Připojení k Event Hubs
@@ -62,9 +62,11 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Zřizování a správa
-      url: time-series-insights-update-how-to-manage.md
+      url: ./how-to-provision-manage.md
+    - text: Postup při výběru TSID
+      url: how-to-select-tsid.md
     - text: Udělení přístupu k datům
-      url: time-series-insights-data-access.md
+      url: ./concepts-access-policies.md
     - text: Vytvoření modelu časových řad
       url: how-to-edit-your-model.md
     - text: Dotazování dat
@@ -74,8 +76,8 @@ landingContent:
   - linkListType: reference
     links:
     - text: Přehled rozhraní REST API
-      url: https://docs.microsoft.com/rest/api/time-series-insights/
+      url: /rest/api/time-series-insights/
     - text: Koncepty přístupu k datům ve verzi Gen2
-      url: https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview
+      url: /rest/api/time-series-insights/reference-data-access-overview
     - text: Javascriptová klientská sada SDK
       url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

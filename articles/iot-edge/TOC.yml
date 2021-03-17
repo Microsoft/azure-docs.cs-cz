@@ -1,5 +1,7 @@
 - name: Dokumentace k Azure IoT Edge
   href: index.yml
+- name: Verze Azure IoT Edge
+  href: version-history.md
 - name: Přehled
   items:
     - name: Informace o Azure IoT Edge
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: Kurzy
   items:
-    - name: 1. Nastavení vývojového prostředí
+    - name: Nastavení vývojového prostředí
       items:
-        - name: Vývoj pro zařízení s Linuxem
+        - name: Vývoj s kontejnery pro Linux
           href: tutorial-develop-for-linux.md
-        - name: Vývoj pro zařízení s Windows
+        - name: Vývoj s kontejnery Windows
           href: tutorial-develop-for-windows.md
-    - name: 2. Vývoj modulů vlastního kódu
+    - name: Vývoj modulů vlastního kódu
       items:
         - name: C
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. Nasazení služeb Azure jako modulů
+    - name: Nasazení služeb Azure jako modulů
       items:
         - name: Filtrování dat s využitím Azure Functions
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: Místní ukládání dat s využitím SQL
           href: tutorial-store-data-sql-server.md
-    - name: 4. Kompletní ukázka strojového učení na hraničním zařízení
+    - name: Použití IoT Edge jako brány
+      items:
+        - name: Vytváření hierarchií zařízení IoT Edge
+          href: tutorial-nested-iot-edge.md
+    - name: Kompletní ukázka strojového učení na hraničním zařízení
       items:
         - name: Úvod
           href: tutorial-machine-learning-edge-01-intro.md
@@ -71,6 +77,8 @@
   items:
     - name: Modul runtime IoT Edge
       href: iot-edge-runtime.md
+    - name: IoT Edge pro Linux ve Windows
+      href: iot-edge-for-linux-on-windows.md
     - name: Moduly IoT Edge
       items:
         - name: Vysvětlení modulů Azure IoT Edge
@@ -101,36 +109,36 @@
           href: iot-edge-security-manager.md
         - name: Certifikáty IoT Edge
           href: iot-edge-certs.md
+        - name: Důvěrné výpočetní operace
+          href: deploy-confidential-applications.md
     - name: Podpora platformy
       href: support.md
     - name: Kontrolní seznam pro produkční nasazení
       href: production-checklist.md
-    - name: Glosář IoT Edge
-      href: iot-edge-glossary.md
 - name: Návody
   items:
-    - name: Zaregistrovat zařízení IoT Edge
-      href: how-to-register-device.md
-    - name: Instalace a správa IoT Edge
+    - name: Vytvoříte zařízení IoT Edge.
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Linuxové kontejnery ve Windows
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Virtuální počítač s Windows Serverem
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Virtuální počítač s Ubuntu
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: Zaregistrovat zařízení v IoT Hub
+          href: how-to-register-device.md
+        - name: Instalace a zřízení IoT Edge
+          items:
+            - name: Nainstalovat IoT Edge pro Linux
+              href: how-to-install-iot-edge.md
+            - name: Spuštění IoT Edge pro Linux ve Windows
+              href: how-to-install-iot-edge-on-windows.md
+        - name: Aktualizace modulu runtime
+          href: how-to-update-iot-edge.md
         - name: Správa certifikátů zařízení
           href: how-to-manage-device-certificates.md
-        - name: Vytvoření testovacích certifikátů
-          href: how-to-create-test-certificates.md
-        - name: Aktualizace verze modulu runtime
-          href: how-to-update-iot-edge.md
+    - name: Alternativní scénáře zařízení
+      items:
+        - name: Spuštění IoT Edge s kontejnery Windows
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: Spuštění IoT Edge v Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: Nasazení virtuálního počítače s IoT Edge pomocí šablony ARM
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: Automatické zřizování s využitím DPS
       items:
         - name: Osvědčení TPM
@@ -181,18 +189,32 @@
           href: how-to-monitor-module-twins.md
         - name: Přímé metody EdgeAgenta
           href: how-to-edgeagent-direct-method.md
+        - name: Načtení protokolů IoT Edge
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: Přístup k integrovaným metrikám
+          href: how-to-access-built-in-metrics.md
     - name: Použití zařízení IoT Edge jako bran
       items:
-        - name: Konfigurace transparentní brány
-          href: how-to-create-transparent-gateway.md
-        - name: Ověření podřízeného zařízení
-          href: how-to-authenticate-downstream-device.md
-        - name: Připojení podřízeného zařízení
-          href: how-to-connect-downstream-device.md
-        - name: Protokolová brána Modbus
-          href: deploy-modbus-gateway.md
+        - name: Brány pro zařízení IoT
+          items:
+            - name: Konfigurace transparentní brány
+              href: how-to-create-transparent-gateway.md
+            - name: Ověření podřízeného zařízení
+              href: how-to-authenticate-downstream-device.md
+            - name: Připojení podřízeného zařízení
+              href: how-to-connect-downstream-device.md
+            - name: Protokolová brána Modbus
+              href: deploy-modbus-gateway.md
+        - name: Brány pro zařízení IoT Edge
+          items:
+            - name: Konfigurace bran pro zařízení IoT Edge
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: Konfigurace modulu proxy rozhraní API
+              href: how-to-configure-api-proxy-module.md
     - name: Konfigurace podpory proxy
       href: how-to-configure-proxy-support.md
+    - name: Publikování a přihlášení k odběru s využitím IoT Edge
+      href: how-to-publish-subscribe.md
     - name: Azure Blob Storage ve službě IoT Edge
       items:
         - name: Principy úložiště objektů blob na hraničních zařízeních
@@ -207,10 +229,14 @@
           href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Správa pomocí nástrojů DevOps
       items:
-        - name: Azure DevOps Projects
-          href: how-to-devops-project.md
+        - name: Azure DevOps Starter
+          href: how-to-devops-starter.md
         - name: Azure DevOps
-          href: how-to-ci-cd.md
+          items:
+            - name: YAML
+              href: how-to-continuous-integration-continuous-deployment.md
+            - name: Klasický Editor
+              href: how-to-continuous-integration-continuous-deployment-classic.md
     - name: Řešení potíží
       items:
         - name: Standardní postup diagnostiky
@@ -219,36 +245,44 @@
           href: troubleshoot-common-errors.md
 - name: Referenční informace
   items:
+    - name: Vytvoření testovacích certifikátů
+      href: how-to-create-test-certificates.md
+    - name: Skripty správy pro zařízení s Windows
+      href: reference-windows-scripts.md
+    - name: IoT Edge pro Linux ve skriptech Windows
+      href: reference-iot-edge-for-linux-on-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ./index.yml
         - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Ukázky Azure IoT
       items:
         - name: C# (.NET)

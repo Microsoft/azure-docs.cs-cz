@@ -1,18 +1,18 @@
 ---
 title: Omezení – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje omezení v Azure Database for PostgreSQL jednom serveru, například počet připojení a možnosti modulu úložiště.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76836452"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91707519"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Omezení v Azure Database for PostgreSQL – jeden server
 Následující části popisují kapacitu a funkční omezení v databázové službě. Pokud se chcete dozvědět víc o úrovních prostředků (výpočetních, paměť, úložiště), přečtěte si článek o [cenových úrovních](concepts-pricing-tiers.md) .
@@ -66,6 +66,11 @@ Připojení PostgreSQL, dokonce nečinné, může zabírat přibližně 10 MB pa
 
 ### <a name="utf-8-characters-on-windows"></a>Znaky UTF-8 ve Windows
 - V některých scénářích nejsou znaky UTF-8 v systému Open Source PostgreSQL ve Windows plně podporované, což má vliv na Azure Database for PostgreSQL. Další informace najdete v tématu věnovaném [chybě #15476 v archivu](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) .
+
+### <a name="gss-error"></a>Chyba služby GSS
+Pokud se vám zobrazí chyba týkající se služby **GSS**, pravděpodobně používáte novější verzi klienta nebo ovladače, kterou Azure Postgres Single server ještě plně nepodporuje. Tato chyba se označuje jako ovlivnění [verzí ovladačů JDBC 42.2.15 a 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868).
+   - Tuto aktualizaci plánujeme dokončit na konci listopadu. Během této doby zvažte použití funkční verze ovladače.
+   - Nebo zvažte zakázání žádosti služby GSS.  Použijte parametr připojení, jako je `gssEncMode=disable` .
 
 ## <a name="next-steps"></a>Další kroky
 - Informace o [tom, co je k dispozici v každé cenové úrovni](concepts-pricing-tiers.md)

@@ -1,22 +1,18 @@
 ---
 title: Aktivita Webhooku v Azure Data Factory
 description: Aktivita Webhooku nepokračuje v provádění kanálu, dokud neověřuje připojenou datovou sadu s určitými kritérii, které uživatel zadá.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417874"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361481"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
 
@@ -55,25 +51,25 @@ Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu.
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-**Jméno** | Název aktivity Webhooku. | Řetězec | Ano |
-**textový** | Musí být nastavené na Webhook. | Řetězec | Ano |
-**Metoda** | Metoda REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je POST. | Ano |
-**Adresa URL** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano |
+**name** | Název aktivity Webhooku. | Řetězec | Yes |
+**textový** | Musí být nastavené na Webhook. | Řetězec | Yes |
+**Metoda** | Metoda REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je POST. | Yes |
+**Adresa URL** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Yes |
 **záhlaví** | Hlavičky, které se odesílají do žádosti Tady je příklad, který nastaví jazyk a typ v žádosti: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano. `Content-Type` `"headers":{ "Content-Type":"application/json"}` Požaduje se záhlaví. |
-**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Ano |
-**přihlašovací** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ne |
-**prodlev** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *HH*:*mm*:*SS*. | Řetězec | Ne |
-**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | Ne |
+**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](./control-flow-web-activity.md#request-payload-schema) . | Yes |
+**ověřování** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](./control-flow-web-activity.md#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | No |
+**timeout** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *HH*:*mm*:*SS*. | Řetězec | No |
+**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | No |
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Aktivita Webhooku podporuje následující typy ověřování.
 
-### <a name="none"></a>Žádná
+### <a name="none"></a>Žádné
 
 Pokud se ověřování nepožaduje, nezahrnujte vlastnost **ověřování** .
 
-### <a name="basic"></a>Základní
+### <a name="basic"></a>Basic
 
 Zadejte uživatelské jméno a heslo, které chcete použít pro základní ověřování.
 
@@ -99,7 +95,7 @@ Zadejte obsah souboru PFX v kódování Base64 a heslo.
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Pomocí spravované identity objektu pro vytváření dat určete identifikátor URI prostředku, pro který je požadován přístupový token. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/` . Další informace o tom, jak spravované identity fungují, najdete v tématu [Přehled prostředků spravovaných identit pro Azure](/azure/active-directory/managed-identities-azure-resources/overview).
+Pomocí spravované identity objektu pro vytváření dat určete identifikátor URI prostředku, pro který je požadován přístupový token. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/` . Další informace o tom, jak spravované identity fungují, najdete v tématu [Přehled prostředků spravovaných identit pro Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {

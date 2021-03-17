@@ -1,26 +1,22 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí Azure Portal
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
-services: data-factory
+description: V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 02/18/2021
+ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251144"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724893"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Přírůstkové načtení dat z více tabulek v SQL Server do databáze v Azure SQL Database pomocí Azure Portal
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.    
 
@@ -34,7 +30,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -65,7 +61,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     ![Přírůstkové načtení dat](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 * **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
@@ -168,8 +164,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -236,7 +232,7 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků: 
+2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  : 
    
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -250,7 +246,7 @@ END
 5. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      
     - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-    - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+    - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 6. Jako **verzi** vyberte **V2**.
 7. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
@@ -263,7 +259,7 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v místním prostředí) do úložiště dat Azure, nainstalujte do svého místního prostředí místní prostředí Integration Runtime (IR). Místní prostředí IR přesouvá data mezi privátní sítí a Azure. 
 
-1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) z levého podokna.
+1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](./author-management-hub.md) z levého podokna.
 
    ![Tlačítko Správa domovské stránky](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -271,10 +267,10 @@ Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v 
 
    ![Vytvoření prostředí Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. V okně **nastavení Integration runtime** vyberte možnost **provést přesun dat a odeslat aktivity do externích výpočtů**a klikněte na **pokračovat**. 
+1. V okně **nastavení Integration runtime** vyberte možnost **provést přesun dat a odeslat aktivity do externích výpočtů** a klikněte na **pokračovat**. 
 
-1. Vyberte místní **hostování**a klikněte na **pokračovat**. 
-1. Jako **název**zadejte **MySelfHostedIR** a klikněte na **vytvořit**. 
+1. Vyberte místní **hostování** a klikněte na **pokračovat**. 
+1. Jako **název** zadejte **MySelfHostedIR** a klikněte na **vytvořit**. 
 
 1. Klikněte na text **Kliknutím sem spustíte expresní instalaci pro tento počítač** v části **Možnost 1: Expresní instalace**. 
 
@@ -318,9 +314,9 @@ V posledním kroku vytvoříte propojenou službu, která propojí vaši zdrojov
 1. V okně **Nová propojená služba** proveďte následující kroky:
 
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**. 
-    1. V rozevíracím seznamu **název serveru**vyberte název serveru. 
-    1. V poli **název databáze**vyberte databázi, ve které jste vytvořili customer_table a project_table jako součást požadavků. 
-    1. Do pole **uživatelské jméno**zadejte jméno uživatele, který má přístup k databázi. 
+    1. V rozevíracím seznamu **název serveru** vyberte název serveru. 
+    1. V poli **název databáze** vyberte databázi, ve které jste vytvořili customer_table a project_table jako součást požadavků. 
+    1. Do pole **uživatelské jméno** zadejte jméno uživatele, který má přístup k databázi. 
     1. Jako **Heslo** zadejte **heslo** pro tohoto uživatele. 
     1. Pokud chcete otestovat, jestli se služba Data Factory může připojit k vaší databázi SQL Serveru, klikněte na **Test připojení**. Opravte všechny chyby, dokud připojení nebude úspěšné. 
     1. Pokud chcete propojenou službu uložit, klikněte na **Dokončit**.
@@ -348,7 +344,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 ### <a name="create-a-sink-dataset"></a>Vytvoření datové sady jímky
 1. V levém podokně klikněte na symbol **+ (plus)** a pak klikněte na **Datová sada**.
 
-1. V okně **Nová datová sada** vyberte **Azure SQL Database**a klikněte na **pokračovat**. 
+1. V okně **Nová datová sada** vyberte **Azure SQL Database** a klikněte na **pokračovat**. 
 
 1. Ve webovém prohlížeči se otevře nová karta, na které můžete datovou sadu konfigurovat. Datová sada se zobrazí také ve stromovém zobrazení. Na kartě **Obecné** v dolní části okna Vlastnosti jako **Název** zadejte **SinkDataset**.
 
@@ -358,11 +354,11 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
     1. Jako **název** zadejte **SinkTableName** a jako **typ** zadejte **Řetězec**. Tato datová sada jako parametr přijímá **SinkTableName**. Parametr SinkTableName nastavuje kanál dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě.
    
         ![Datová sada jímky – vlastnosti](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-1. V okno Vlastnosti přepněte na kartu **připojení** a jako **propojená služba**vyberte **AzureSqlDatabaseLinkedService** . U vlastnosti **Tabulka** klikněte na **Přidat dynamický obsah**.   
+1. V okno Vlastnosti přepněte na kartu **připojení** a jako **propojená služba** vyberte **AzureSqlDatabaseLinkedService** . U vlastnosti **Tabulka** klikněte na **Přidat dynamický obsah**.   
     
 1. V okně **Přidat dynamický obsah** vyberte v části **parametry** možnost **SinkTableName** . 
  
-1. Po kliknutí na **Dokončit**se zobrazí zpráva @dataset (). SinkTableName jako název tabulky.
+1. Po kliknutí na **Dokončit** se zobrazí zpráva @dataset (). SinkTableName jako název tabulky.
 
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -371,7 +367,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
 
 1. V levém podokně klikněte na symbol **+ (plus)** a pak klikněte na **Datová sada**.
 
-1. V okně **Nová datová sada** vyberte **Azure SQL Database**a klikněte na **pokračovat**. 
+1. V okně **Nová datová sada** vyberte **Azure SQL Database** a klikněte na **pokračovat**. 
 
 1. Na kartě **Obecné** v dolní části okna Vlastnosti jako **Název** zadejte **WatermarkDataset**.
 1. Přepněte na kartu **Připojení** a proveďte následující kroky: 
@@ -396,13 +392,13 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 
 1. V levém podokně klikněte na symbol **+ (plus)** a pak klikněte na **Kanál**.
 
-1. Na panelu Obecné v části **vlastnosti**zadejte **IncrementalCopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.  
+1. Na panelu Obecné v části **vlastnosti** zadejte **IncrementalCopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.  
 
 1. Na kartě **parametry** proveďte následující kroky: 
 
     1. Klikněte na **+ Nový**. 
     1. Jano **název parametru** zadejte **tableList**. 
-    1. Vyberte **pole** pro **typ**parametru.
+    1. Vyberte **pole** pro **typ** parametru.
 
 1. V sadě nástrojů **Aktivity** rozbalte **Iterace a podmíněné výrazy** a přetáhněte aktivitu **ForEach** na plochu návrháře kanálu. Na kartě **Obecné** v okně **Vlastnosti** jako název zadejte **IterateSQLTables**. 
 
@@ -410,7 +406,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 
     ![Aktivita ForEach – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
-1. Pokud ještě není vybraná, vyberte v kanálu aktivitu **ForEach**. Klikněte na tlačítko **Upravit (ikona tužky)**.
+1. Pokud ještě není vybraná, vyberte v kanálu aktivitu **ForEach**. Klikněte na tlačítko **Upravit (ikona tužky)** .
 
 1. V sadě nástrojů **Aktivity** rozbalte **Obecné** a přetáhněte aktivitu **Vyhledávání** na plochu návrháře kanálu. Pak jako **Název** zadejte **LookupOldWaterMarkActivity**.
 
@@ -458,17 +454,17 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
         
 1. Proveďte následující kroky:
 
-    1. V části **Vlastnosti datové sady**zadejte do pole **SinkTableName** parametr `@{item().TABLE_NAME}` .
+    1. V části **Vlastnosti datové sady** zadejte do pole **SinkTableName** parametr `@{item().TABLE_NAME}` .
     1. Jako vlastnost **název uložené procedury** zadejte `@{item().StoredProcedureNameForMergeOperation}` .
     1. Jako vlastnost **typ tabulky** zadejte `@{item().TableType}` .
-    1. Jako **název parametru typu tabulky**zadejte `@{item().TABLE_NAME}` .
+    1. Jako **název parametru typu tabulky** zadejte `@{item().TABLE_NAME}` .
 
         ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Propojte aktivitu **kopírování** s aktivitou **Uložená procedura**. 
 
 1. Vyberte v kanálu aktivitu **Uložená procedura** a na kartě **Obecné** v okně **Vlastnosti** jako **Název** zadejte **StoredProceduretoWriteWatermarkActivity**. 
 
-1. Přepněte na kartu **účet SQL** a jako **propojená služba**vyberte **AzureSqlDatabaseLinkedService** .
+1. Přepněte na kartu **účet SQL** a jako **propojená služba** vyberte **AzureSqlDatabaseLinkedService** .
 
     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Přepněte na kartu **Uložená procedura** a proveďte následující kroky:
@@ -477,7 +473,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     1. Vyberte **Importovat parametr**. 
     1. Zadejte následující hodnoty parametrů: 
 
-        | Name | Typ | Hodnota | 
+        | Název | Typ | Hodnota | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Řetězec | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -490,7 +486,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
  
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
-1. Na panelu nástrojů pro kanál klikněte na **Přidat aktivační událost**a potom klikněte na **aktivovat**.     
+1. Na panelu nástrojů pro kanál klikněte na **Přidat aktivační událost** a potom klikněte na **aktivovat**.     
 
 1. V okně **Spuštění kanálu** zadejte následující hodnotu parametru **tableList** a klikněte na **Dokončit**. 
 
@@ -593,7 +589,7 @@ VALUES
 
 ## <a name="rerun-the-pipeline"></a>Opětovné spuštění kanálu
 1. V levé části okna webového prohlížeče přepněte na kartu **Upravit**. 
-1. Na panelu nástrojů pro kanál klikněte na **Přidat aktivační událost**a potom klikněte na **aktivovat**.   
+1. Na panelu nástrojů pro kanál klikněte na **Přidat aktivační událost** a potom klikněte na **aktivovat**.   
 1. V okně **Spuštění kanálu** zadejte následující hodnotu parametru **tableList** a klikněte na **Dokončit**. 
 
     ```
@@ -692,7 +688,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -701,5 +697,3 @@ Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azur
 
 > [!div class="nextstepaction"]
 >[Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
-
-

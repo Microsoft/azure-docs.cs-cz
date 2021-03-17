@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604395"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029343"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -60,15 +60,14 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 |   |   |   | Bez trvalého přihlášení | No |
 | Registrováno v Azure AD | Federované/spravované | Windows Current/Windows nižší úrovně | Trvalá/netrvalá | Neuvedeno |
 
-<sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 a Windows Server 2019.
-
+<sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 V1803 nebo novější a Windows Server 2019.
 <sup>2</sup> zařízení **nižší úrovně Windows** reprezentují Windows 7, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Informace o podpoře na Windows serveru 2008 R2 najdete v článku [Příprava pro Windows server 2008 na konci podpory](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 <sup>3</sup> **federované** prostředí infrastruktury identit představuje prostředí s poskytovatelem identity, jako je AD FS nebo jiné IDP třetí strany.
 
 <sup>4</sup> **spravované** prostředí infrastruktury identit představuje prostředí se službou Azure AD jako zprostředkovatele identity nasazeného s použitím [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování](../hybrid/how-to-connect-sso.md).
 
-<sup>5</sup> **Podpora nestálosti systému Windows** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny.
+<sup>5</sup> **Podpora nestálosti systému Windows** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny. Tento scénář vyžaduje systém Windows 10 1803, Windows Server 2019 nebo Windows Server (půlroční kanál) počínaje verzí 1803.
 
 <sup>6</sup> **Podpora nestálosti Windows na nižší úrovni** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny.
 

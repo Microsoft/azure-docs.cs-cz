@@ -1,6 +1,6 @@
 ---
-title: Analýza úloh
-description: Techniky pro analýzu priorit dotazů pro vaše úlohy ve službě Azure synapse Analytics.
+title: Analýza úloh pro vyhrazený fond SQL
+description: Techniky pro analýzu priorit dotazů pro vyhrazený fond SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208395"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454527"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure synapse Analytics
+# <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Analýza úloh vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-Techniky analýzy úloh SQL synapse ve službě Azure synapse Analytics. 
+Techniky analýzy vyhrazené zátěže fondu SQL ve službě Azure synapse Analytics. 
 
 ## <a name="resource-classes"></a>Třídy prostředků
 
-Synapse SQL poskytuje třídy prostředků pro přiřazení systémových prostředků dotazům.  Další informace o třídách prostředků naleznete v tématu [třídy prostředků & Správa úloh](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud Třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
+Vyhrazený fond SQL poskytuje třídy prostředků pro přiřazení systémových prostředků dotazům.  Další informace o třídách prostředků naleznete v tématu [třídy prostředků & Správa úloh](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud Třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Detekce dotazu ve frontě a další zobrazení dynamické správy
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Synapse SQL má následující typy čekání:
+Vyhrazený fond SQL má následující typy čekání:
 
 * **LocalQueriesConcurrencyResourceType**: dotazy, které sedí mimo rámec rozhraní pro sloty Concurrency. Dotazy DMV a systémové funkce, jako `SELECT @@VERSION` jsou příklady místních dotazů.
 * **UserConcurrencyResourceType**: dotazy, které sedí v rámci rozhraní slotu pro souběžnost. Dotazy na tabulky koncového uživatele reprezentují příklady, které by používaly tento typ prostředku.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterového indexu columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení vyhrazeného fondu SQL (dřív SQL DW)](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterového indexu columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

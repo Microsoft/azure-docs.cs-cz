@@ -1,9 +1,9 @@
 ---
 title: Vysvětlení konektorů služby Azure Proxy aplikací služby AD | Microsoft Docs
-description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
+description: Přečtěte si o konektorech Azure Proxy aplikací služby AD.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f57d390ed71cb4e0e76972e02170afde7b13e4ae
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764668"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253455"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
 
@@ -25,7 +25,7 @@ Konektory jsou to, co umožňuje Azure Proxy aplikací služby AD. Jsou jednoduc
 
 ## <a name="what-is-an-application-proxy-connector"></a>Co je konektor proxy aplikací?
 
-Konektory jsou odlehčené agenti, kteří jsou místně a usnadňují odchozí připojení ke službě proxy aplikací. Konektory musí být nainstalované na Windows serveru, který má přístup k back-endové aplikaci. Konektory můžete uspořádat do skupin konektorů, přičemž každá skupina zpracovává provoz na konkrétní aplikace.
+Konektory jsou odlehčené agenti, kteří jsou místně a usnadňují odchozí připojení ke službě proxy aplikací. Konektory musí být nainstalované na Windows serveru, který má přístup k back-endové aplikaci. Konektory můžete uspořádat do skupin konektorů, přičemž každá skupina zpracovává provoz na konkrétní aplikace. Další informace o tom, jak se má proxy aplikace a diagramatické reprezentace architektury aplikačního serveru, najdete v tématu [použití Azure proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele](what-is-application-proxy.md#application-proxy-connectors) .
 
 ## <a name="requirements-and-deployment"></a>Požadavky a nasazení
 
@@ -37,7 +37,7 @@ Potřebujete server se systémem Windows Server 2012 R2 nebo novějším, na kte
 Aby mohl Windows Server nainstalovat konektor proxy aplikací, musí mít povolený protokol TLS 1,2. Povolení TLS 1,2 na serveru:
 
 1. Nastavte následující klíče registru:
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -99,12 +99,12 @@ Obecně platí, že čím více uživatelů máte, tím větší je počítač, 
 |8|32|270|1190|
 |16|64|245|1200 *|
 
-\*Tento počítač použil vlastní nastavení k vyvolání některých výchozích omezení připojení nad rámec doporučených nastavení .NET. Doporučujeme spustit test s výchozím nastavením předtím, než se obrátíte na podporu, aby se tento limit u vašeho tenanta změnil.
+\* Tento počítač použil vlastní nastavení k vyvolání některých výchozích omezení připojení nad rámec doporučených nastavení .NET. Doporučujeme spustit test s výchozím nastavením předtím, než se obrátíte na podporu, aby se tento limit u vašeho tenanta změnil.
 
 > [!NOTE]
 > Maximální počet TPS počítačů mezi 4, 8 a 16 jádry není velký. Hlavní rozdíl mezi nimi je v očekávané latenci.
 >
-> Tato tabulka se zaměřuje taky na očekávaný výkon konektoru na základě typu počítače, na kterém je nainstalovaný. To je oddělené od limitů omezování služby proxy aplikací, a to v tématu omezení [a omezení služby](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+> Tato tabulka se zaměřuje taky na očekávaný výkon konektoru na základě typu počítače, na kterém je nainstalovaný. To je oddělené od limitů omezování služby proxy aplikací, a to v tématu omezení [a omezení služby](../enterprise-users/directory-service-limits-restrictions.md).
 
 ## <a name="security-and-networking"></a>Zabezpečení a sítě
 
@@ -155,14 +155,17 @@ Používané certifikáty jsou specifické pro službu proxy aplikací. Vytvář
 
 Po prvním úspěšném obnovení certifikátu nemá služba Azure Proxy aplikací služby AD Connector (síťová služba) oprávnění k odebrání starého certifikátu z úložiště místního počítače. Pokud vypršela platnost certifikátu nebo už ho služba nepoužívá, můžete ho bezpečně odstranit.
 
-Aby se zabránilo problémům s obnovením certifikátu, zajistěte, aby byla povolena síťová komunikace z konektoru s [dokumentovanými cíli](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) .
+Aby se zabránilo problémům s obnovením certifikátu, zajistěte, aby byla povolena síťová komunikace z konektoru s [dokumentovanými cíli](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) .
 
 Pokud konektor není po několik měsíců připojený ke službě, můžou být jeho certifikáty zastaralé. V takovém případě odinstalujte a znovu nainstalujte konektor, aby se aktivovala registrace. Můžete spustit následující příkazy PowerShellu:
 
 ```
 Import-module AppProxyPSModule
-Register-AppProxyConnector
+Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ```
+
+Pro státní správu použijte `-EnvironmentName "AzureUSGovernment"` . Další podrobnosti najdete v tématu [instalace agenta pro Azure Government Cloud](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
+
 Další informace o tom, jak ověřit certifikát a řešit problémy, najdete v tématu [ověření podpory součástí počítačů a back-endu pro certifikát důvěryhodnosti proxy aplikací](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate).
 
 ## <a name="under-the-hood"></a>Pod pokličkou

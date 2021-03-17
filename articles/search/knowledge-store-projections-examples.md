@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85566011"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509916"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Jak natvarovat a exportovat obohacení
 
@@ -206,7 +206,7 @@ Sestavování do tabulek v Azure Storage je užitečné pro vytváření sestav 
 Pojďme vytvořit řídicí panel, který vizualizuje klíčové fráze extrahované z dokumentů jako Cloud Wordu. Chcete-li vytvořit správnou datovou strukturu, přidejte do dovednosti dovednost Shaper a vytvořte vlastní obrazec, který obsahuje podrobnosti a klíčové fráze specifické pro dokument. Vlastní tvar bude volán `pbiShape` v `document` kořenovém uzlu.
 
 > [!NOTE] 
-> Výčnělky tabulek jsou Azure Storage tabulky, které se řídí limity úložiště, které jsou uložené Azure Storage. Další informace najdete v tématu [omezení úložiště tabulek](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Je užitečné znát, že velikost entity nemůže být větší než 1 MB a jedna vlastnost nemůže být větší než 64 KB. Tato omezení vytvářejí v tabulkách dobré řešení pro ukládání velkého počtu malých entit.
+> Výčnělky tabulek jsou Azure Storage tabulky, které se řídí limity úložiště, které jsou uložené Azure Storage. Další informace najdete v tématu [omezení úložiště tabulek](/rest/api/storageservices/understanding-the-table-service-data-model). Je užitečné znát, že velikost entity nemůže být větší než 1 MB a jedna vlastnost nemůže být větší než 64 KB. Tato omezení vytvářejí v tabulkách dobré řešení pro ukládání velkého počtu malých entit.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Použití dovedností Shaper k vytvoření vlastního obrazce
 
@@ -576,13 +576,12 @@ Z konsolidovaného objektu crossProjection vyrovnejte objekt do několika tabule
                     }
                 ],
                 "files": [
-                     {
+                    {
                         "storageContainer": "crossimages",
                         "generatedKeyName": "crossimages",
                         "source": "/document/crossProjection/images/*/image"
                     }
-                    ]
-                
+                ]
             }
         ]
     }
@@ -677,4 +676,3 @@ Přehled o projekcích najdete v tématu Další informace o možnostech, jako j
 
 > [!div class="nextstepaction"]
 > [Projekce ve znalostní bázi Knowledge Store](knowledge-store-projection-overview.md)
-

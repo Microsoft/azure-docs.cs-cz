@@ -1,28 +1,25 @@
 ---
 title: Použití příručky rozhraní API pro správu služeb (Python) – Průvodce funkcemi
 description: Naučte se programově provádět běžné úlohy správy služeb z Pythonu.
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851507"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741396"
 ---
 # <a name="use-service-management-from-python"></a>Použití správy služeb z Pythonu
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 V této příručce se dozvíte, jak programově provádět běžné úlohy správy služeb z Pythonu. Třída **ServiceManagementService** v [sadě Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k většině funkcí souvisejících se správou služeb, které jsou k dispozici v [Azure Portal][management-portal]. Pomocí této funkce můžete vytvářet, aktualizovat a odstraňovat cloudové služby, nasazení, služby správy dat a virtuální počítače. Tato funkce může být užitečná při sestavování aplikací, které potřebují programový přístup ke správě služeb.
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>Co je Správa služeb?
@@ -114,25 +111,25 @@ for location in result:
     print(location.name)
 ```
 
-Když vytváříte cloudovou službu nebo službu úložiště, musíte zadat platné umístění. Metoda ** \_ umístění seznamu** vždy vrátí aktuální seznam aktuálně dostupných umístění. V době psaní tohoto textu jsou dostupná umístění:
+Když vytváříte cloudovou službu nebo službu úložiště, musíte zadat platné umístění. Metoda **\_ umístění seznamu** vždy vrátí aktuální seznam aktuálně dostupných umístění. V době psaní tohoto textu jsou dostupná umístění:
 
 * West Europe
 * Severní Evropa
 * Jihovýchodní Asie
 * Východní Asie
-* Střední USA
+* USA – střed
 * USA – středosever
 * Středojižní USA
 * USA – západ
 * East US
 * Japonsko – východ
 * Japonsko – západ
-* Brazil South
+* Brazílie – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>Vytvoření cloudové služby
-Když vytvoříte aplikaci a spustíte ji v Azure, kód a konfigurace společně se nazývají [cloudová služba][cloud service]Azure. (Tato služba byla známá jako *hostovaná služba* v dřívějších verzích Azure.) Pomocí metody **Create \_ Hosted \_ ** Service můžete vytvořit novou hostovanou službu. Vytvořte službu tím, že poskytnete název hostované služby (který musí být v Azure jedinečný), popisek (automaticky kódovaný na base64), popis a umístění.
+Když vytvoříte aplikaci a spustíte ji v Azure, kód a konfigurace společně se nazývají [cloudová služba][cloud service]Azure. (Tato služba byla známá jako *hostovaná služba* v dřívějších verzích Azure.) Pomocí metody **Create \_ Hosted \_** Service můžete vytvořit novou hostovanou službu. Vytvořte službu tím, že poskytnete název hostované služby (který musí být v Azure jedinečný), popisek (automaticky kódovaný na base64), popis a umístění.
 
 ```python
 from azure import *
@@ -194,7 +191,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Vytvoření služby úložiště
-[Služba úložiště](../storage/common/storage-create-storage-account.md) vám poskytne přístup k objektům [BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabulkám](../cosmos-db/table-storage-how-to-use-python.md)a [frontám](../storage/queues/storage-python-how-to-use-queue-storage.md)Azure. Pokud chcete vytvořit službu úložiště, budete potřebovat název služby (v rozmezí 3 až 24 malých písmen a jedinečné v rámci Azure). Potřebujete také popis, popisek (až 100 znaků, automaticky kódovaný na base64) a umístění. Následující příklad ukazuje, jak vytvořit službu úložiště zadáním umístění:
+[Služba úložiště](../storage/common/storage-account-create.md) vám poskytne přístup k objektům [BLOB](../storage/blobs/storage-quickstart-blobs-python.md), [tabulkám](../cosmos-db/table-storage-how-to-use-python.md)a [frontám](../storage/queues/storage-python-how-to-use-queue-storage.md)Azure. Pokud chcete vytvořit službu úložiště, budete potřebovat název služby (v rozmezí 3 až 24 malých písmen a jedinečné v rámci Azure). Potřebujete také popis, popisek (až 100 znaků, automaticky kódovaný na base64) a umístění. Následující příklad ukazuje, jak vytvořit službu úložiště zadáním umístění:
 
 ```python
 from azure import *
@@ -213,7 +210,7 @@ operation_result = sms.get_operation_status(result.request_id)
 print('Operation status: ' + operation_result.status)
 ```
 
-V předchozím příkladu se stav operace **vytvoření \_ \_ účtu úložiště** dá načíst předáním výsledku vráceného **vytvořením \_ \_ účtu úložiště** do metody ** \_ \_ stavu operace Get** . 
+V předchozím příkladu se stav operace **vytvoření \_ \_ účtu úložiště** dá načíst předáním výsledku vráceného **vytvořením \_ \_ účtu úložiště** do metody **\_ \_ stavu operace Get** . 
 
 Můžete vypsat účty úložiště a jejich vlastnosti pomocí metody **listovat \_ \_ účty úložiště** .
 
@@ -419,7 +416,7 @@ Abyste se ujistili, že jste úspěšně zachytili image, použijte rozhraní AP
 images = sms.list_vm_images()
 ```
 
-Pokud chcete nakonec vytvořit virtuální počítač pomocí zaznamenané bitové kopie, použijte k tomu metodu ** \_ \_ \_ nasazení virtuálního počítače** jako dřív, ale tentokrát tento čas projde vm_image_name.
+Pokud chcete nakonec vytvořit virtuální počítač pomocí zaznamenané bitové kopie, použijte k tomu metodu **\_ \_ \_ nasazení virtuálního počítače** jako dřív, ale tentokrát tento čas projde vm_image_name.
 
 ```python
 from azure import *
@@ -446,9 +443,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-Další informace o tom, jak zachytit virtuální počítač se systémem Linux v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače se systémem Linux](../virtual-machines/linux/classic/capture-image-classic.md).
+Další informace o tom, jak zachytit virtuální počítač se systémem Linux v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače se systémem Linux](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic).
 
-Další informace o tom, jak zachytit virtuální počítač s Windows v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače s Windows](../virtual-machines/windows/classic/capture-image-classic.md).
+Další informace o tom, jak zachytit virtuální počítač s Windows v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače s Windows](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic).
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>Další kroky
 Teď, když jste se naučili základy správy služeb, můžete získat přístup k [kompletní dokumentaci k rozhraní API pro Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) a provádět složité úlohy ke správě vaší aplikace v Pythonu.
@@ -474,7 +471,7 @@ Další informace naleznete ve [Středisku pro vývojáře Python](https://azure
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/

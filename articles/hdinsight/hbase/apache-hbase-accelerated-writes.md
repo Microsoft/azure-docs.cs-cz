@@ -1,18 +1,15 @@
 ---
 title: Zrychlené zápisy služby Azure HDInsight pro Apache HBase
 description: Poskytuje přehled funkce akcelerovaného zápisu Azure HDInsight, která využívá službu Managed disks úrovně Premium ke zvýšení výkonu protokolu Apache HBA pro zápis.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654850"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943024"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Zrychlené zápisy služby Azure HDInsight pro Apache HBase
 
@@ -20,25 +17,25 @@ Tento článek poskytuje základní informace o funkci **akcelerovaných zápis�
 
 ## <a name="overview-of-hbase-architecture"></a>Přehled architektury HBA
 
-V adaptérech HBA se **řádek** skládá z jednoho nebo více **sloupců** a je identifikovaný **klíčovým řádkem**. **Tabulka**je tvořena více řádky. Sloupce obsahují **buňky**, které jsou verze hodnoty v tomto sloupci s časovým razítkem. Sloupce jsou seskupeny do **rodin sloupců**a všechny sloupce v řadě sloupců jsou uloženy společně v úložištích souborů s názvem **HFiles**.
+V adaptérech HBA se **řádek** skládá z jednoho nebo více **sloupců** a je identifikovaný **klíčovým řádkem**. **Tabulka** je tvořena více řádky. Sloupce obsahují **buňky**, které jsou verze hodnoty v tomto sloupci s časovým razítkem. Sloupce jsou seskupeny do **rodin sloupců** a všechny sloupce v řadě sloupců jsou uloženy společně v úložištích souborů s názvem **HFiles**.
 
 **Oblasti** v adaptérech HBA slouží k vyrovnávání zatížení zpracování dat. HBA nejprve uloží řádky tabulky v jedné oblasti. Řádky jsou rozloženy mezi více oblastí, když se zvyšuje objem dat v tabulce. **Servery oblastí** mohou zpracovávat žádosti pro více oblastí.
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Zápis do protokolu pro Apache HBA
 
-HBA nejprve zapisuje aktualizace dat do typu protokolu potvrzení nazvané protokol zápisu předem (WAL). Po uložení aktualizace do WAL se zapíše do **setSize paměťového úložiště**v paměti. Když data v paměti dosáhnou své maximální kapacity, je zapsána na disk jako **HFile**.
+HBA nejprve zapisuje aktualizace dat do typu protokolu potvrzení nazvané protokol zápisu předem (WAL). Po uložení aktualizace do WAL se zapíše do **setSize paměťového úložiště** v paměti. Když data v paměti dosáhnou své maximální kapacity, je zapsána na disk jako **HFile**.
 
 Pokud dojde k selhání **RegionServer** nebo dojde k nedostupnosti předtím, než se setSize paměťového úložiště vyprázdní, můžete k přehrání aktualizací použít protokol zápisu předem. Bez WAL, pokud dojde k chybě **RegionServer** před vyprázdněním aktualizací na **HFile**, ztratí všechny tyto aktualizace.
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Funkce akcelerovaného zápisu ve službě Azure HDInsight pro Apache HBA
 
-Funkce akcelerované zápisy řeší potíže s vyšší latencí zápisu způsobenou použitím protokolů pro zápis, které jsou v cloudovém úložišti.  Funkce akcelerované zápisy pro clustery HDInsight Apache HBA, připojuje disky spravované na disk SSD ke každému RegionServer (pracovní uzel). Protokoly pro zápis se pak zapisují do systému souborů Hadoop (HDFS) připojeného na tyto úrovně Premium Managed-disks místo cloudového úložiště.  Spravované disky úrovně Premium používají disky SSD (Solid-State Disks) a nabízejí vynikající vstupně-výstupní výkon s odolností proti chybám.  Na rozdíl od nespravovaných disků v případě výpadku jedné jednotky úložiště nebude mít vliv na jiné jednotky úložiště ve stejné skupině dostupnosti.  Výsledkem je, že spravované disky poskytují nízkou latenci zápisu a lepší odolnost pro vaše aplikace. Další informace o discích spravovaných v Azure najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md).
+Funkce akcelerované zápisy řeší potíže s vyšší latencí zápisu způsobenou použitím protokolů pro zápis, které jsou v cloudovém úložišti.  Funkce akcelerované zápisy pro clustery HDInsight Apache HBA, připojuje disky spravované na disk SSD ke každému RegionServer (pracovní uzel). Protokoly pro zápis se pak zapisují do systému souborů Hadoop (HDFS) připojeného na tyto úrovně Premium Managed-disks místo cloudového úložiště.  Managed Premium – disky používají Solid-State disky (SSD) a nabízejí vynikající vstupně-výstupní výkon s odolností proti chybám.  Na rozdíl od nespravovaných disků v případě výpadku jedné jednotky úložiště nebude mít vliv na jiné jednotky úložiště ve stejné skupině dostupnosti.  Výsledkem je, že spravované disky poskytují nízkou latenci zápisu a lepší odolnost pro vaše aplikace. Další informace o discích spravovaných v Azure najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak povolit urychlené zápisy pro adaptéry HBA v HDInsight
 
-Pokud chcete vytvořit nový cluster HBA s funkcí akcelerované zápisy, postupujte podle kroků v části [Nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) , dokud nedosáhnete **kroku 3, úložiště**. V části **Nastavení metastore**zaškrtněte políčko vedle **Povolit urychlení zápisů HBA**. Pak pokračujte zbývajícími kroky pro vytvoření clusteru.
+Pokud chcete vytvořit nový cluster HBA s funkcí akcelerované zápisy, postupujte podle kroků v části [Nastavení clusterů ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Na kartě **základy** vyberte typ clusteru jako HBA, zadejte verzi součásti a potom klikněte na zaškrtávací políčko vedle **povolit akceleraci zapisování HBA**. Pak pokračujte zbývajícími kroky pro vytvoření clusteru.
 
-![Povolit možnost urychleného zápisu pro HDInsight Apache HBA](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![Povolit možnost urychleného zápisu pro HDInsight Apache HBA](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
 ## <a name="other-considerations"></a>Další důležité informace
 

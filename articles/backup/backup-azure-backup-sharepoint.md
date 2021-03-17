@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint do Azure pomocí DPM
 description: Tento článek poskytuje přehled ochrany DPM/Azure Backup serveru SharePointové farmy do Azure.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032880"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91254427"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Zálohování farmy služby SharePoint do Azure pomocí DPM
 
@@ -18,29 +18,29 @@ Zálohování SharePointu do Azure pomocí DPM je velice podobný proces záloho
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Podporované verze SharePointu a související scénáře ochrany
 
-Seznam podporovaných verzí SharePointu a verzí DPM, které jsou nezbytné k jejich zálohování, najdete v článku [Co může aplikace DPM zálohovat?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup).
+Seznam podporovaných verzí SharePointu a verzí DPM, které jsou nezbytné k jejich zálohování, najdete v článku [Co může aplikace DPM zálohovat?](/system-center/dpm/dpm-protection-matrix#applications-backup).
 
 ## <a name="before-you-start"></a>Než začnete
 
 Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit několik věcí.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že jste splnili všechny [předpoklady pro použití Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Mezi úlohy týkající se požadavků patří: vytvoření trezoru záloh, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace DPM/Azure Backup Server s trezorem.
 
-Další předpoklady a omezení najdete v článku [zálohování SharePointu pomocí DPM](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) .
+Další předpoklady a omezení najdete v článku [zálohování SharePointu pomocí DPM](/system-center/dpm/back-up-sharepoint#prerequisites-and-limitations) .
 
 ## <a name="configure-backup"></a>Konfigurace zálohování
 
-Abyste mohli zálohovat farmu SharePointu, nakonfigurujte ochranu SharePointu pomocí ConfigureSharePoint.exe a potom v DPM vytvořte skupinu ochrany. Pokyny najdete v dokumentaci k aplikaci DPM v tématu [Konfigurace zálohování](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) .
+Abyste mohli zálohovat farmu SharePointu, nakonfigurujte ochranu SharePointu pomocí ConfigureSharePoint.exe a potom v DPM vytvořte skupinu ochrany. Pokyny najdete v dokumentaci k aplikaci DPM v tématu [Konfigurace zálohování](/system-center/dpm/back-up-sharepoint#configure-backup) .
 
 ## <a name="monitoring"></a>Monitorování
 
-Chcete-li monitorovat úlohu zálohování, postupujte podle pokynů v tématu [monitorování zálohy aplikace DPM](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring) .
+Chcete-li monitorovat úlohu zálohování, postupujte podle pokynů v tématu [monitorování zálohy aplikace DPM](/system-center/dpm/back-up-sharepoint#monitoring) .
 
 ## <a name="restore-sharepoint-data"></a>Obnovení dat SharePointu
 
-Informace o tom, jak obnovit položku SharePointu z disku s DPM, najdete v tématu [obnovení dat SharePointu](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data).
+Informace o tom, jak obnovit položku SharePointu z disku s DPM, najdete v tématu [obnovení dat SharePointu](/system-center/dpm/back-up-sharepoint#restore-sharepoint-data).
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Obnovení databáze služby SharePoint z Azure pomocí DPM
 
@@ -53,7 +53,7 @@ Informace o tom, jak obnovit položku SharePointu z disku s DPM, najdete v téma
    > Protože je farma služby SharePoint chráněná pro dlouhodobé uchovávání v Azure, na serveru DPM nejsou k dispozici žádné informace o katalogu (metadata). V důsledku toho je potřeba obnovit katalog farmy služby SharePoint, kdykoli bude nutné obnovit databázi obsahu služby SharePoint v čase.
    >
    >
-3. Klikněte na **znovu zařadit do katalogu**.
+3. Vyberte **znovu katalog**.
 
     ![DPM SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -61,17 +61,17 @@ Informace o tom, jak obnovit položku SharePointu z disku s DPM, najdete v téma
 
     ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Po dokončení katalogu se stav změní na *úspěch*. Klikněte na **Zavřít**.
+    Po dokončení katalogu se stav změní na *úspěch*. Vyberte **Zavřít**.
 
     ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Klikněte na objekt služby SharePoint zobrazený na kartě **obnovení** DPM a získejte strukturu databáze obsahu. Klikněte na položku pravým tlačítkem myši a pak klikněte na tlačítko **obnovit**.
+4. Vyberte objekt služby SharePoint zobrazený na kartě **obnovení** DPM a získejte strukturu databáze obsahu. Klikněte na položku pravým tlačítkem a pak vyberte **obnovit**.
 
     ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. V tomto okamžiku postupujte podle kroků pro obnovení výše v tomto článku a obnovte databázi obsahu služby SharePoint z disku.
 
-## <a name="switching-the-front-end-web-server"></a>Přepínání předřazeného webového serveru
+## <a name="switching-the-front-end-web-server"></a>Přepínání Front-Endho webového serveru
 
-Pokud máte více než jeden front-end webový server a chcete přepnout Server, který aplikace DPM používá k ochraně farmy, postupujte podle pokynů v části [Přepnutí front-end webového serveru](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server).
+Pokud máte více než jeden front-end webový server a chcete přepnout Server, který aplikace DPM používá k ochraně farmy, postupujte podle pokynů v [části přepnutí Front-End webového serveru](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server).
 
 ## <a name="next-steps"></a>Další kroky
 

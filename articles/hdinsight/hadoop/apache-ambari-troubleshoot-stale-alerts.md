@@ -1,18 +1,15 @@
 ---
 title: Zastaralé výstrahy Apache Ambari v Azure HDInsight
 description: Diskuze a analýza možných důvodů a řešení pro zastaralá upozornění Apache Ambari v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77539106"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946715"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scénář: zastaralá upozornění Apache Ambari v Azure HDInsight
 
@@ -84,6 +81,6 @@ Pokud se tady problém nezmiňuje nebo ho nemůžete vyřešit, navštivte jeden
 
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) na Twitteru. Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, odešlete žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Tam si můžete vybrat nápovědu (**?**) z nabídky portál nebo otevřít podokno Nápověda a **Podpora** . Další informace najdete v tématu [Postup vytvoření žádosti o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
+* Pokud potřebujete další pomoc, odešlete žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Tam si můžete vybrat nápovědu (**?**) z nabídky portál nebo otevřít podokno Nápověda a **Podpora** . Další informace najdete v tématu [Postup vytvoření žádosti o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Součástí předplatného Microsoft Azure je podpora správy předplatných a fakturace. Technická podpora je dostupná prostřednictvím [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

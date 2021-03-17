@@ -12,30 +12,30 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338217"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176786"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
-Správa nároků Azure AD využívá [Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md) a spolupracuje s lidmi mimo vaši organizaci v jiném adresáři. Pomocí Azure AD B2B se externí uživatelé ověřují do svého domovského adresáře, ale mají v adresáři reprezentace. Reprezentace v adresáři umožňuje uživateli přiřadit přístup k vašim prostředkům.
+Správa nároků Azure AD využívá [Azure AD Business-to-Business (B2B)](../external-identities/what-is-b2b.md) a spolupracuje s lidmi mimo vaši organizaci v jiném adresáři. Pomocí Azure AD B2B se externí uživatelé ověřují do svého domovského adresáře, ale mají v adresáři reprezentace. Reprezentace v adresáři umožňuje uživateli přiřadit přístup k vašim prostředkům.
 
 Tento článek popisuje nastavení, která můžete zadat pro řízení přístupu pro externí uživatele.
 
 ## <a name="how-entitlement-management-can-help"></a>Jak může správa nároků pomáhat
 
-Pokud používáte prostředí pozvánky [B2B Azure AD](../b2b/what-is-b2b.md) , musíte už znát e-mailové adresy externích uživatelů typu Host, které chcete uvést do svého adresáře prostředků a pracovat s. To funguje skvěle, když pracujete na kratším nebo krátkodobém projektu a už znáte všechny účastníky, ale to je těžké spravovat, pokud máte spoustu uživatelů, se kterými chcete pracovat, nebo pokud se účastníci v průběhu času změnili.  Můžete například pracovat s jinou organizací a mít jeden kontaktní bod s touto organizací, ale v průběhu času budou mít přístup i další uživatelé z této organizace.
+Pokud používáte prostředí pozvánky [B2B Azure AD](../external-identities/what-is-b2b.md) , musíte už znát e-mailové adresy externích uživatelů typu Host, které chcete uvést do svého adresáře prostředků a pracovat s. To funguje skvěle, když pracujete na kratším nebo krátkodobém projektu a už znáte všechny účastníky, ale to je těžké spravovat, pokud máte spoustu uživatelů, se kterými chcete pracovat, nebo pokud se účastníci v průběhu času změnili.  Můžete například pracovat s jinou organizací a mít jeden kontaktní bod s touto organizací, ale v průběhu času budou mít přístup i další uživatelé z této organizace.
 
 Díky správě nároků můžete definovat zásadu, která uživatelům ze zadaných organizací umožní získat přístup k balíčku pro přístup sami. Můžete určit, jestli se vyžaduje schválení, a datum vypršení platnosti pro přístup. Pokud se vyžaduje schválení, můžete taky pozvat jednoho nebo více uživatelů z externí organizace do svého adresáře a označit je jako schvalovatele – protože budou mít pravděpodobně jistotu, které externí uživatelé z jejich organizace potřebují přístup. Po nakonfigurování přístupového balíčku můžete odeslat odkaz na kontaktní osobu (Sponzor) v externí organizaci. Tento kontakt může sdílet s ostatními uživateli v externí organizaci a může použít tento odkaz k vyžádání přístupového balíčku. Tento odkaz můžou použít i uživatelé z této organizace, kteří už byli pozváni do vašeho adresáře.
 
-Pokud je žádost schválena, Správa oprávnění zřídí uživatele, který má nezbytný přístup, který může zahrnovat pozvání uživatele, pokud ještě nejsou ve vašem adresáři. Azure AD vytvoří pro ně automaticky účet hosta B2B. Všimněte si, že správce mohl dříve omezit, které organizace jsou povolené pro spolupráci, nastavením [seznamu povolených nebo zakázaných aplikací B2B](../b2b/allow-deny-list.md) povolit nebo zablokovat pozvánky jiným organizacím.  Pokud uživatel není povolený seznamem povolených nebo blokovaných uživatelů, pak nebude pozván.
+Pokud je žádost schválena, Správa oprávnění zřídí uživatele, který má nezbytný přístup, který může zahrnovat pozvání uživatele, pokud ještě nejsou ve vašem adresáři. Azure AD vytvoří pro ně automaticky účet hosta B2B. Všimněte si, že správce mohl dříve omezit, které organizace jsou povolené pro spolupráci, nastavením [seznamu povolených nebo zakázaných aplikací B2B](../external-identities/allow-deny-list.md) povolit nebo zablokovat pozvánky jiným organizacím.  Pokud uživatel není povolený seznamem povolených nebo blokovaných uživatelů, pak nebude pozván.
 
 Vzhledem k tomu, že nechcete, aby byl externí uživatel přístupný k poslednímu typu navždy, zadejte v zásadách datum vypršení platnosti, například 180 dní. Pokud jejich přístup není rozšířený, Správa oprávnění po 180 dnů odebere veškerý přístup spojený s tímto balíčkem přístupu. Ve výchozím nastavení platí, že pokud uživatel, který byl pozván prostřednictvím správy oprávnění, nemá žádné jiné přiřazení balíčků přístupu, pak když ztratí své poslední přiřazení, účet Guest se zablokuje přihlášení po dobu 30 dnů a následně se odebere. Tím se zabrání šíření zbytečných účtů. Jak je popsáno v následujících částech, tato nastavení lze konfigurovat.
 
@@ -51,13 +51,13 @@ Následující diagram a kroky poskytují přehled o tom, jak mají externí už
 
 1. Pošlete odkaz na [portál pro přístup](entitlement-management-access-package-settings.md) k vašemu kontaktu v externí organizaci, kterou můžou sdílet s uživateli, aby si vyžádali balíček pro přístup.
 
-1. Externí uživatel (v tomto příkladu**žadatel a** ) používá odkaz Můj portál přístupu k [vyžádání přístupu](entitlement-management-request-access.md) k balíčku přístupu. Způsob přihlášení uživatele závisí na typu ověřování adresáře nebo domény definované v připojené organizaci.
+1. Externí uživatel (v tomto příkladu **žadatel a** ) používá odkaz Můj portál přístupu k [vyžádání přístupu](entitlement-management-request-access.md) k balíčku přístupu. Způsob přihlášení uživatele závisí na typu ověřování adresáře nebo domény definované v připojené organizaci.
 
 1. Schvalovatel [žádost schválí](entitlement-management-request-approve.md) (nebo se žádost automaticky schválí).
 
 1. Požadavek přejde do [stavu doručování](entitlement-management-process.md).
 
-1. Pomocí procesu pozvání B2B se ve vašem adresáři vytvoří uživatelský účet hosta (v tomto příkladu**žadatel a (host)** ). Pokud je definovaný seznam [povolených nebo zakázaných](../b2b/allow-deny-list.md) seznamů, použije se nastavení list.
+1. Pomocí procesu pozvání B2B se ve vašem adresáři vytvoří uživatelský účet hosta (v tomto příkladu **žadatel a (host)** ). Pokud je definovaný seznam [povolených nebo zakázaných](../external-identities/allow-deny-list.md) seznamů, použije se nastavení list.
 
 1. Uživatel typu host má přiřazený přístup ke všem prostředkům v balíčku pro přístup. Může trvat nějakou dobu, než se změny provedou v Azure AD a dalších online službách Microsoftu nebo připojených aplikacích SaaS. Další informace najdete v tématu [Změna použití změn](entitlement-management-access-package-resources.md#when-changes-are-applied).
 
@@ -83,9 +83,9 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 - Pokud hostům umožníte pozvat ostatní hosty do vašeho adresáře, znamená to, že se pozvánky hostů můžou vyskytnout mimo správu nároků. Doporučujeme nastavit možnost **hostů může pozvat** na **ne** , aby bylo možné pouze správně řídit pozvánky.
 - Pokud používáte seznam povolených B2B, je nutné zajistit, aby se do seznamu přidala všechny domény, které chcete partnerům s použitím správy oprávnění použít. Případně, pokud používáte seznam s odepřenými seznamem B2B, je nutné zajistit, aby se do seznamu nepřidala žádná doména, se kterou chcete partnerovi přidružit.
-- Pokud vytvoříte zásadu správy nároků pro **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), bude mít přednost nastavení seznamu povolených a zakázaných seznamů B2B. Proto nezapomeňte zahrnout domény, které chcete zahrnout do této zásady, do svého seznamu povolených použití, pokud používáte seznam pro odepření, a vyloučit je ze seznamu odepřených.
-- Pokud chcete vytvořit zásadu správy nároků, která bude obsahovat **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), musíte nejdřív pro svůj adresář povolit jednorázové ověřování heslem e-Time. Další informace najdete v tématu [ověřování e-mailového hesla s jedním časem (Preview)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
-- Další informace o externích nastaveních spolupráce Azure AD B2B najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../b2b/delegate-invitations.md).
+- Pokud vytvoříte zásadu správy nároků pro **všechny uživatele** (všechny připojené organizace a všichni noví uživatelé) a uživatel nepatří do připojené organizace ve vašem adresáři, při vyžádání balíčku se automaticky vytvoří připojená organizace. Nastavení seznamu povolených a zakázaných přihlášení B2B bude mít přednost. Proto nezapomeňte zahrnout domény, které chcete zahrnout do této zásady, do svého seznamu povolených použití, pokud používáte seznam pro odepření, a vyloučit je ze seznamu odepřených.
+- Pokud chcete vytvořit zásadu správy nároků, která bude obsahovat **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), musíte nejdřív pro svůj adresář povolit jednorázové ověřování heslem e-Time. Další informace najdete v tématu [ověřování e-mailového hesla jednorázovým heslem](../external-identities/one-time-passcode.md).
+- Další informace o externích nastaveních spolupráce Azure AD B2B najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../external-identities/delegate-invitations.md).
 
     ![Nastavení externí spolupráce Azure AD](./media/entitlement-management-external-users/collaboration-settings.png)
 
@@ -97,19 +97,19 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>Kontrola nastavení externího sdílení SharePointu Online
 
-- Pokud chcete zahrnout weby SharePointu Online do balíčků pro přístup externích uživatelů, ujistěte se, že nastavení externího sdílení na úrovni vaší organizace je nastavené na hodnotu **kdokoli** (uživatelé nepotřebují přihlášení) nebo **noví a stávající hosté** (hosté se musí přihlásit nebo zadat ověřovací kód). Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Pokud chcete zahrnout weby SharePointu Online do balíčků pro přístup externích uživatelů, ujistěte se, že nastavení externího sdílení na úrovni vaší organizace je nastavené na hodnotu **kdokoli** (uživatelé nepotřebují přihlášení) nebo **noví a stávající hosté** (hosté se musí přihlásit nebo zadat ověřovací kód). Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Pokud chcete omezit jakékoli externí sdílení mimo správu nároků, můžete nastavit externí nastavení sdílení na **stávající hosty**. Pak budou moci získat přístup k těmto webům pouze noví uživatelé pozvaní prostřednictvím správy nároků. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Pokud chcete omezit jakékoli externí sdílení mimo správu nároků, můžete nastavit externí nastavení sdílení na **stávající hosty**. Pak budou moci získat přístup k těmto webům pouze noví uživatelé pozvaní prostřednictvím správy nároků. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Ujistěte se, že nastavení na úrovni webu povoluje přístup hosta (stejné výběry možností jako v seznamu výše). Další informace najdete v tématu [Zapnutí nebo vypnutí externího sdílení pro lokalitu](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+- Ujistěte se, že nastavení na úrovni webu povoluje přístup hosta (stejné výběry možností jako v seznamu výše). Další informace najdete v tématu [Zapnutí nebo vypnutí externího sdílení pro lokalitu](/sharepoint/change-external-sharing-site).
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>Kontrola nastavení sdílení skupin Microsoft 365
 
-- Pokud chcete zahrnout skupiny Microsoft 365 do balíčků pro přístup externích uživatelů, ujistěte se, že je možnost **umožnit uživatelům přidat nové hosty do organizace** nastavená na **zapnuto** , aby povolila přístup hostů. Další informace najdete v tématu [Správa přístupu hostů k skupinám Microsoft 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Pokud chcete zahrnout skupiny Microsoft 365 do balíčků pro přístup externích uživatelů, ujistěte se, že je možnost **umožnit uživatelům přidat nové hosty do organizace** nastavená na **zapnuto** , aby povolila přístup hostů. Další informace najdete v tématu [Správa přístupu hostů k skupinám Microsoft 365](/Microsoft 365/admin/create-groups/manage-guest-access-in-groups?view=Microsoft 365-worldwide#manage-groups-guest-access).
 
-- Pokud chcete, aby externí uživatelé měli přístup k webu SharePointu Online a prostředkům přidruženým ke skupině Microsoft 365, ujistěte se, že jste zapnuli externí sdílení SharePointu Online. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Pokud chcete, aby externí uživatelé měli přístup k webu SharePointu Online a prostředkům přidruženým ke skupině Microsoft 365, ujistěte se, že jste zapnuli externí sdílení SharePointu Online. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Informace o tom, jak nastavit zásady hosta pro Microsoft 365 skupiny na úrovni adresáře v prostředí PowerShell, najdete v tématu [Příklad: Konfigurace zásad hostů pro skupiny na úrovni adresáře](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Informace o tom, jak nastavit zásady hosta pro Microsoft 365 skupiny na úrovni adresáře v prostředí PowerShell, najdete v tématu [Příklad: Konfigurace zásad hostů pro skupiny na úrovni adresáře](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Kontrola nastavení sdílení týmů
 

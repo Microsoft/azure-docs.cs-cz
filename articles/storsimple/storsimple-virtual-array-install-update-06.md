@@ -1,6 +1,6 @@
 ---
 title: Instalace aktualizace 0,6 ve virtuálním poli StorSimple | Microsoft Docs
-description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k instalaci aktualizací pomocí metody Azure Portal a opravy hotfix.
+description: Popisuje, jak použít webové uživatelské rozhraní StorSimple Virtual Array k použití aktualizace 0,6 s použitím metody Azure Portal a Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b379bb76eaf7587c53ec55972ccee3f54a55f22
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513583"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534241"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,6 ve virtuálním poli StorSimple
 
@@ -35,7 +35,7 @@ Než použijete aktualizaci, doporučujeme, abyste nejprve převzali svazky nebo
 >
 > - Pokud používáte aktualizaci 0,2 nebo novější, doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Pokud používáte Software Update 0,1 nebo GA, je nutné použít metodu hotfix prostřednictvím místního webového uživatelského rozhraní k instalaci aktualizace 0,6.
 >
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -95,30 +95,30 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. Pokud používáte **10.0.10290.0**, nemusíte v kroku 6 aktualizovat agenta služby MDS.
+1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. Pokud používáte **10.0.10290.0** , nemusíte v kroku 6 aktualizovat agenta služby MDS.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![Snímek obrazovky se zobrazí aktualizace softwaru vybrané z nabídky Údržba.](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. Do pole **cesta k souboru aktualizace**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
+2. Do pole **cesta k souboru aktualizace** zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![Snímek obrazovky se zobrazí textové pole cesta k souboru aktualizace na stránce aktualizace softwaru.](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. Zobrazí se upozornění. Vzhledem k tom, že virtuální pole je zařízení s jedním uzlem, po použití aktualizace se zařízení restartuje a dojde k výpadku. Klikněte na ikonu zaškrtněte.
    
-   ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![Snímek obrazovky se zobrazí dialogové okno s upozorněním na výpadky.](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![Snímek obrazovky ukazuje zprávu o úspěchu aktualizace.](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10293** pro aktualizaci 0,6.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10293** pro aktualizaci 0,6.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10293** a sestavy Azure Portal **10.0.10293.0** pro stejnou verzi.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-06/update6m.png)
+    ![Snímek obrazovky s aktuální verzí softwaru zobrazí stránku aktualizace softwaru.](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
-6. Tento krok přeskočte, pokud jste před instalací této aktualizace spustili StorSimple Virtual Array Update 0,5 (**10.0.10290.0**). Verzi softwaru jste si poznamenali v kroku 1 před zahájením aktualizace. Pokud jste spustili aktualizaci 0,5, Váš agent služby MDS už je aktuální.
+6. Tento krok přeskočte, pokud jste před instalací této aktualizace spustili StorSimple Virtual Array Update 0,5 ( **10.0.10290.0** ). Verzi softwaru jste si poznamenali v kroku 1 před zahájením aktualizace. Pokud jste spustili aktualizaci 0,5, Váš agent služby MDS už je aktuální.
 
     Pokud používáte verzi softwaru před aktualizací 0,5, je dalším krokem pro aktualizaci agenta služby MDS. Na stránce **aktualizace softwaru** přejděte na **cestu k souboru aktualizace** a přejděte k `GenevaMonitoringAgentPackageInstaller.msi` souboru. Opakujte kroky 2-4. Po restartování virtuálního pole se přihlaste k místnímu webovému uživatelskému rozhraní.
 

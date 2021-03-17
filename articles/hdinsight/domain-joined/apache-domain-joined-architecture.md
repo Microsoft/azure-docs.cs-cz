@@ -1,19 +1,17 @@
 ---
 title: Architektura Azure HDInsight s Balíček zabezpečení podniku
 description: Naučte se plánovat zabezpečení Azure HDInsight pomocí Balíček zabezpečení podniku.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: omidm
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 404cd8652a4daf602f3326696ef5df2c3a23a548
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79365765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943324"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použití Balíčku zabezpečení podniku ve službě HDInsight
 
@@ -57,7 +55,7 @@ Další informace najdete v tématu [konfigurace clusterů HDInsight s protokole
 
 Pokud máte místní instanci služby Active Directory nebo složitější nastavení služby Active Directory pro vaši doménu, můžete tyto identity synchronizovat do Azure AD pomocí Azure AD Connect. Pak můžete povolit Azure služba AD DS v tomto tenantovi Active Directory.
 
-Vzhledem k tomu, že protokol Kerberos spoléhá na hodnoty hash hesla, musíte [Povolit synchronizaci hodnot hash hesel v Azure služba AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+Vzhledem k tomu, že protokol Kerberos spoléhá na hodnoty hash hesla, musíte [Povolit synchronizaci hodnot hash hesel v Azure služba AD DS](../../active-directory-domain-services/tutorial-create-instance.md).
 
 Pokud používáte federaci s Active Directory Federation Services (AD FS) (AD FS), musíte povolit synchronizaci hodnot hash hesel. (Pro doporučené nastavení se podívejte na [Toto video](https://youtu.be/qQruArbu2Ew).) Synchronizace hodnot hash hesel pomáhá při zotavení po havárii v případě selhání infrastruktury AD FS a také pomáhá zajistit ochranu proti nevráceným přihlašovacím údajům. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
@@ -65,7 +63,7 @@ Použití místní služby Active Directory nebo Active Directory na virtuální
 
 Pokud se používá federační služba a hodnoty hash hesel se synchronizují správně, ale dojde k chybám ověřování, ověřte, jestli je pro instanční objekt PowerShellu povolené ověřování heslem cloudu. Pokud ne, musíte nastavit [zásadu zjišťování domovské sféry (HRD)](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) pro vašeho TENANTA Azure AD. Postup kontroly a nastavení zásad HRD:
 
-1. Nainstalujte si náhled [modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
+1. Nainstalujte si náhled [modulu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
 
    ```powershell
    Install-Module AzureAD

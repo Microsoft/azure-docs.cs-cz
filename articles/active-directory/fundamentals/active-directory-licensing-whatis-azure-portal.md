@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce0d543f11a1dcc61616d8a386176272ab44aee
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797266"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369807"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je licencování na základě skupin v Azure Active Directory?
 
-Placené cloudové služby Microsoftu, jako jsou Office 365, Enterprise Mobility + Security, Dynamics 365 a další podobné produkty, vyžadují licence. Tyto licence se přiřazují jednotlivým uživatelům, kteří potřebují přístup k těmto službám. Ke správě licencí používají správci některý z portálů pro správu (Office nebo Azure) a rutiny PowerShellu. Azure Active Directory (Azure AD) je základní infrastruktura, která podporuje správu identit pro všechny cloudové služby Microsoftu. Azure AD uchovává informace o stavu přiřazení licencí uživatelům.
+Placené cloudové služby Microsoftu, jako jsou Microsoft 365, Enterprise Mobility + Security, Dynamics 365 a další podobné produkty, vyžadují licence. Tyto licence se přiřazují jednotlivým uživatelům, kteří potřebují přístup k těmto službám. Ke správě licencí používají správci některý z portálů pro správu (Office nebo Azure) a rutiny PowerShellu. Azure Active Directory (Azure AD) je základní infrastruktura, která podporuje správu identit pro všechny cloudové služby Microsoftu. Azure AD uchovává informace o stavu přiřazení licencí uživatelům.
 
 Až doposud bylo možné licence přiřazovat jenom na úrovni jednotlivých uživatelů, což mohlo správu ve velkém měřítku ztěžovat. Pokud chtěl správce například při změnách v organizaci (třeba při nástupu nebo odchodu uživatelů v organizaci nebo oddělení) přidat nebo odebrat uživatelské licence, musel často psát složitý powershellový skript. Tento skript prováděl jednotlivá volání cloudové služby.
 
@@ -45,9 +45,9 @@ Toto jsou hlavní znaky licencování na základě skupin:
 
 - Licence lze přiřazovat jakékoli skupině zabezpečení v Azure AD. Skupiny zabezpečení je možné synchronizovat z místního prostředí pomocí Azure AD Connect. Skupiny zabezpečení můžete vytvářet také přímo v Azure AD (označují se také jako výhradně cloudové skupiny) nebo automaticky prostřednictvím funkce dynamické skupiny Azure AD.
 
-- Pokud je licence produktu přiřazená skupině, může správce jeden nebo více plánů služby v daném produktu zakázat. Toto přiřazení se obvykle provádí, když organizace ještě není připravená začít používat službu, která je součástí produktu. Správce může například jednomu oddělení přiřadit Office 365, ale dočasně zakázat službu Yammer.
+- Pokud je licence produktu přiřazená skupině, může správce jeden nebo více plánů služby v daném produktu zakázat. Toto přiřazení se obvykle provádí, když organizace ještě není připravená začít používat službu, která je součástí produktu. Správce může například přiřadit Microsoft 365 oddělení, ale dočasně zakázat službu Yammer.
 
-- Všechny cloudové služby Microsoftu, které vyžadují licencování na úrovni uživatele, jsou podporované. Tato podpora zahrnuje všechny produkty Office 365, Enterprise Mobility + Security a Dynamics 365.
+- Všechny cloudové služby Microsoftu, které vyžadují licencování na úrovni uživatele, jsou podporované. Tato podpora zahrnuje všechny Microsoft 365 produkty, Enterprise Mobility + Security a Dynamics 365.
 
 - Licencování na základě skupin je aktuálně k dispozici pouze prostřednictvím [Azure Portal](https://portal.azure.com). Pokud primárně používáte jiné portály pro správu uživatelů a skupin, jako je například [Centrum pro správu Microsoft 365](https://admin.microsoft.com), můžete pokračovat. Ke správě licencí na úrovni skupin byste však měli používat Azure Portal.
 
@@ -65,9 +65,9 @@ Pokud máte vaše připomínky nebo žádosti o funkce, sdílejte je s námi pom
 
 Další informace o jiných scénářích pro správu licencí pomocí licencování na základě skupin najdete v tématech:
 
-* [Přiřazení licencí ke skupině v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
-* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Další scénáře licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](../enterprise-users/licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](../enterprise-users/licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-groups-migrate-users.md)
+* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-groups-change-licenses.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-group-advanced.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-ps-examples.md)

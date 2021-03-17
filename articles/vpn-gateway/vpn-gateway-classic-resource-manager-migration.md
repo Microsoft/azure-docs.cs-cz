@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988036"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488200"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migrace VPN Gateway Classic na Správce prostředků
 Brány VPN se teď dají migrovat z modelu nasazení Classic na Správce prostředků. Další informace o [funkcích Azure Resource Manager a výhodách](../azure-resource-manager/management/overview.md)najdete v článku. V tomto článku najdete podrobné informace o tom, jak migrovat z klasických nasazení na novější model založený Správce prostředků. 
 
-Brány VPN se migrují v rámci migrace virtuální sítě z klasického na Správce prostředků. Tato migrace se provádí po jedné virtuální síti v jednom okamžiku. Neexistují žádné další požadavky na nástroje nebo předpoklady pro migraci. Kroky migrace jsou stejné jako stávající migrace virtuální sítě a jsou zdokumentovány na [stránce migrace prostředků IaaS](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Během migrace nedochází k žádnému výpadku dat, takže stávající úlohy by během migrace nadále fungovaly bez ztráty místního připojení. Veřejná IP adresa přidružená k bráně VPN se během procesu migrace nemění. To znamená, že po dokončení migrace nebudete muset znovu nakonfigurovat místní směrovač.  
+Brány VPN se migrují v rámci migrace virtuální sítě z klasického na Správce prostředků. Tato migrace se provádí po jedné virtuální síti v jednom okamžiku. Neexistují žádné další požadavky na nástroje nebo předpoklady pro migraci. Kroky migrace jsou stejné jako stávající migrace virtuální sítě a jsou zdokumentovány na [stránce migrace prostředků IaaS](../virtual-machines/migration-classic-resource-manager-ps.md). Během migrace nedochází k žádnému výpadku dat, takže stávající úlohy by během migrace nadále fungovaly bez ztráty místního připojení. Veřejná IP adresa přidružená k bráně VPN se během procesu migrace nemění. To znamená, že po dokončení migrace nebudete muset znovu nakonfigurovat místní směrovač.  
 
 Model v Správce prostředků se liší od modelu Classic a skládá se z bran virtuální sítě, místních síťových bran a prostředků připojení. Tyto představují samotnou bránu VPN, místní lokalitu, která představuje místní adresní prostor a připojení mezi dvěma v uvedeném pořadí. Po dokončení migrace nebudou brány k dispozici v klasickém modelu a všechny operace správy u bran virtuální sítě, místních síťových bran a objektů připojení se musí provádět pomocí modelu Správce prostředků.
 
@@ -66,5 +66,4 @@ Vzhledem k tomu, že transformuje připojení VNet-to-VNet bez nutnosti místní
 * Vytvořte explicitní připojení ze zasažené virtuální sítě k místní síťové bráně, která představuje místní umístění. To by taky vyžadovalo změnu konfigurace na místním směrovači a vytvoření a konfiguraci tunelu IPsec.
 
 ## <a name="next-steps"></a>Další kroky
-Po získání informací o podpoře migrace brány VPN můžete začít tím, že přejdete na [migraci prostředků IaaS podporovaných platformou z klasických na správce prostředků](../virtual-machines/windows/migration-classic-resource-manager-ps.md) .
-
+Po získání informací o podpoře migrace brány VPN můžete začít tím, že přejdete na [migraci prostředků IaaS podporovaných platformou z klasických na správce prostředků](../virtual-machines/migration-classic-resource-manager-ps.md) .

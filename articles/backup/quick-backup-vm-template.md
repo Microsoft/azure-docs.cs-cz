@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 5b2677e7b83c1d86fd12f8c89c51e95460e8694f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e64aa10d8ddadd367d04b2b480770a99f3ece1dc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690642"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88826527"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Rychlý Start: zálohování virtuálního počítače v Azure pomocí šablony ARM
 
@@ -47,7 +47,7 @@ Pokud chcete šablonu nasadit, vyberte **zkusit** , aby se Azure Cloud Shell ote
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$location = Read-Host -Prompt "Enter the location (for example, centralus)"
 $adminUsername = Read-Host -Prompt "Enter the administrator username for the virtual machine"
 $adminPassword = Read-Host -Prompt "Enter the administrator password for the virtual machine" -AsSecureString
 $dnsPrefix = Read-Host -Prompt "Enter the unique DNS Name for the Public IP used to access the virtual machine"

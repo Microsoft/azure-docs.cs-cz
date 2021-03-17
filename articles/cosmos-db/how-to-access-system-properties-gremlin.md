@@ -5,16 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/10/2019
-author: luisbosquez
-ms.author: lbosq
-ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: SnehaGunda
+ms.author: sngun
+ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390342"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081837"
 ---
 # <a name="system-document-properties"></a>Vlastnosti systémového dokumentu
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB má [systémové vlastnosti](/rest/api/cosmos-db/databases) , jako jsou ```_ts``` ,, ```_self``` ```_attachments``` , ```_rid``` a ```_etag``` v každém dokumentu. Modul Gremlin kromě toho přidává pro hrany vlastnosti ```inVPartition``` a ```outVPartition```. Ve výchozím nastavení jsou tyto vlastnosti k dispozici pro procházení. Je však možné do průchodu Gremlin zahrnout konkrétní vlastnosti nebo všechny.
 
@@ -32,9 +33,9 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 ## <a name="time-to-live-ttl"></a>Hodnota TTL (Time-To-Live)
 
-Pokud má kolekce zapnuté vypršení platnosti dokumentu a ```ttl``` pro ně je nastavená vlastnost Documents, bude tato vlastnost k dispozici v Gremlin procházení jako běžná vlastnost vrcholu nebo Edge. ```ProjectionStrategy```není nutné povolit expozici vlastností Time to Live.
+Pokud má kolekce zapnuté vypršení platnosti dokumentu a ```ttl``` pro ně je nastavená vlastnost Documents, bude tato vlastnost k dispozici v Gremlin procházení jako běžná vlastnost vrcholu nebo Edge. ```ProjectionStrategy``` není nutné povolit expozici vlastností Time to Live.
 
-Vrchol vytvořený s následujícím procházením se automaticky odstraní za **123 sekund**.
+Vrchol vytvořený s následujícím procházením se automaticky odstraní za **123 sekund** .
 
 ```
 g.addV('vertex-one').property('ttl', 123)

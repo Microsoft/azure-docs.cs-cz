@@ -4,21 +4,21 @@ description: Azure Storage chrání vaše data tím, že je před trvalým nasaz
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/16/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089392"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180356"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
-Azure Storage automaticky šifruje vaše data při jejich trvalém uložení do cloudu. Azure Storage šifrování chrání vaše data a umožňuje vám plnit závazky zabezpečení vaší organizace a dodržování předpisů.
+Azure Storage používá šifrování na straně serveru (SSE) k automatickému šifrování vašich dat při trvalém ukládání do cloudu. Azure Storage šifrování chrání vaše data a umožňuje vám plnit závazky zabezpečení vaší organizace a dodržování předpisů.
 
 ## <a name="about-azure-storage-encryption"></a>O šifrování Azure Storage
 
@@ -30,29 +30,40 @@ Data v účtu úložiště jsou šifrovaná bez ohledu na úroveň výkonu (Stan
 
 Všechny objekty blob bloku, doplňovací objekty blob nebo objekty blob stránky, které byly zapsány do Azure Storage po 20. října 2017, jsou zašifrovány. Objekty blob vytvořené před tímto datem budou i nadále zašifrovány procesem na pozadí. Pokud chcete vynutit šifrování objektu blob, který se vytvořil před 20. října 2017, můžete objekt BLOB přepsat. Informace o tom, jak zjistit stav šifrování objektu blob, najdete v tématu [ověření stavu šifrování objektu BLOB](../blobs/storage-blob-encryption-status.md).
 
-Další informace o kryptografických modulech podkladových Azure Storage šifrování najdete v tématu [kryptografické rozhraní API: další generace](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
+Další informace o kryptografických modulech podkladových Azure Storage šifrování najdete v tématu [kryptografické rozhraní API: další generace](/windows/desktop/seccng/cng-portal).
 
-Informace o šifrování a správě klíčů pro Azure Managed disks najdete v tématu [šifrování Azure Managed](../../virtual-machines/windows/disk-encryption.md) disks na straně serveru pro virtuální počítače s Windows nebo pro [šifrování na straně serveru Azure Managed disks](../../virtual-machines/linux/disk-encryption.md) pro virtuální počítače se systémem Linux.
+Informace o šifrování a správě klíčů pro Azure Managed disks najdete v tématu [šifrování na straně serveru služby Azure Managed disks](../../virtual-machines/disk-encryption.md).
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Data v novém účtu úložiště se šifrují pomocí klíčů spravovaných Microsoftem. Pro šifrování vašich dat můžete spoléhat na klíče spravované Microsoftem, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, máte dvě možnosti:
+Data v novém účtu úložiště se ve výchozím nastavení šifrují pomocí klíčů spravovaných Microsoftem. Můžete i nadále spoléhat na klíče spravované Microsoftem pro šifrování vašich dat, nebo můžete spravovat šifrování pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, máte dvě možnosti. Můžete použít buď typ správy klíčů, nebo obojí:
 
-- Můžete zadat *klíč spravovaný zákazníkem* Azure Key Vault, který se má použít pro šifrování a dešifrování dat v úložišti objektů BLOB a ve službě soubory Azure. <sup>1.2</sup> . Další informace o klíčích spravovaných zákazníkem najdete v tématu [použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md).
-- Můžete zadat *klíč poskytnutý zákazníkem* pro operace BLOB Storage. Klient, který vytváří požadavek na čtení nebo zápis proti úložišti objektů blob, může do žádosti přidat šifrovací klíč a získat tak podrobné řízení způsobu, jakým se data objektů BLOB šifrují a dešifrují. Další informace o klíčích poskytovaných zákazníkem najdete v tématu [poskytnutí šifrovacího klíče pro požadavek na úložiště objektů BLOB](encryption-customer-provided-keys.md).
+- Můžete zadat *klíč spravovaný zákazníkem* , který se použije pro šifrování a dešifrování dat v úložišti objektů BLOB a ve službě soubory Azure. <sup>1, 2</sup> spravované klíče pro zákazníky musí být uložené ve Azure Key Vault nebo Azure Key Vault spravovaném modelu hardwarového zabezpečení (HSM) (Preview). Další informace o klíčích spravovaných zákazníkem najdete v tématu [použití klíčů spravovaných zákazníkem pro Azure Storage šifrování](./customer-managed-keys-overview.md).
+- Můžete zadat *klíč poskytnutý zákazníkem* pro operace BLOB Storage. Klient, který vytváří požadavek na čtení nebo zápis proti úložišti objektů blob, může do žádosti přidat šifrovací klíč a získat tak podrobné řízení způsobu, jakým se data objektů BLOB šifrují a dešifrují. Další informace o klíčích poskytovaných zákazníkem najdete v tématu [poskytnutí šifrovacího klíče pro požadavek na úložiště objektů BLOB](../blobs/encryption-customer-provided-keys.md).
 
 Následující tabulka porovnává možnosti správy klíčů pro Azure Storage šifrování.
 
-| Parametr správy klíčů | Klíče spravované společností Microsoft | Klíče spravované zákazníkem | Klíče poskytované zákazníky |
+| Parametr správy klíčů | Klíče spravované Microsoftem | Klíče spravované zákazníkem | Klíče poskytované zákazníky |
 |--|--|--|--|
 | Operace šifrování a dešifrování | Azure | Azure | Azure |
 | Podporované služby Azure Storage Services | Vše | BLOB Storage, soubory Azure<sup>1, 2</sup> | Blob Storage |
-| Úložiště klíčů | Úložiště klíčů Microsoftu | Azure Key Vault | Vlastní úložiště klíčů zákazníka |
-| Zodpovědnost za střídání klíčů | Partnerský vztah Microsoftu | Customer (Zákazník) | Customer (Zákazník) |
-| Řízení klíčů | Partnerský vztah Microsoftu | Customer (Zákazník) | Customer (Zákazník) |
+| Úložiště klíčů | Úložiště klíčů Microsoftu | Azure Key Vault nebo Key Vault HSM | Vlastní úložiště klíčů zákazníka |
+| Zodpovědnost za střídání klíčů | Microsoft | Zákazník | Zákazník |
+| Řízení klíčů | Microsoft | Zákazník | Zákazník |
 
 <sup>1</sup> informace o vytvoření účtu, který podporuje použití klíčů spravovaných zákazníkem s úložištěm Queue, najdete v tématu [Vytvoření účtu, který podporuje klíče spravované zákazníkem pro fronty](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> informace o vytvoření účtu, který podporuje použití klíčů spravovaných zákazníkem s tabulkovým úložištěm, najdete v tématu [Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+
+> [!NOTE]
+> Klíče spravované Microsoftem se podle požadavků na dodržování předpisů otočí odpovídajícím způsobem. Pokud máte specifické požadavky na střídání klíčů, společnost Microsoft doporučuje přejít na klíče spravované zákazníkem, abyste mohli snadno spravovat a auditovat své otáčení.
+
+## <a name="doubly-encrypt-data-with-infrastructure-encryption"></a>Dvojité šifrování dat pomocí šifrování infrastruktury
+
+Zákazníci, kteří vyžadují vysokou úroveň záruky, že jejich data jsou zabezpečená, můžou na úrovni infrastruktury Azure Storage povolit taky 256 šifrování AES. Když je povolené šifrování infrastruktury, data v účtu úložiště se &mdash; na úrovni služby šifrují dvakrát a jednou na úrovni infrastruktury &mdash; se dvěma různými šifrovacími algoritmy a dvěma různými klíči. Dvojité šifrování Azure Storage dat chrání před scénářem, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V tomto scénáři bude další vrstva šifrování nadále chránit vaše data.
+
+Šifrování na úrovni služby podporuje použití klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem s Azure Key Vault. Šifrování na úrovni infrastruktury spoléhá na klíče spravované Microsoftem a vždycky používá samostatný klíč.
+
+Další informace o tom, jak vytvořit účet úložiště, který umožňuje šifrování infrastruktury, najdete v tématu [Vytvoření účtu úložiště s povoleným šifrováním infrastruktury pro dvojité šifrování dat](infrastructure-encryption-enable.md).
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>Obory šifrování pro úložiště objektů BLOB (Preview)
 
@@ -65,7 +76,9 @@ Pro účet úložiště můžete vytvořit jeden nebo víc rozsahů šifrování
 Po vytvoření oboru šifrování můžete zadat obor šifrování pro požadavek na vytvoření kontejneru nebo objektu BLOB. Další informace o tom, jak vytvořit rozsah šifrování, najdete v tématu [Vytvoření a Správa oborů šifrování (Preview)](../blobs/encryption-scope-manage.md).
 
 > [!NOTE]
-> Obory šifrování nejsou ve verzi Preview podporované pomocí geograficky redundantního úložiště s přístupem pro čtení (RA-GRS).
+> Obory šifrování nejsou podporovány v geograficky redundantním úložišti s přístupem pro čtení (RA-GRS) a v geograficky redundantním úložišti s přístupem pro čtení (RA-GZRS) ve verzi Preview.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!IMPORTANT]
 > Obory šifrování ve verzi Preview jsou určené jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
@@ -88,8 +101,8 @@ Pokud je zakázaný obor šifrování, už se vám neúčtují. Zakažte všechn
 
 Pokud je váš obor šifrování chráněný pomocí klíčů spravovaných zákazníkem pro Azure Key Vault, můžete také odstranit přidružený klíč v trezoru klíčů, aby se tento obor šifrování zakázal. Mějte na paměti, že klíče spravované zákazníkem v Azure Key Vault jsou chráněny ochranou pomocí obnovitelného odstranění a vyprázdnění a odstraněný klíč podléhá chování definovanému pro tyto vlastnosti. Další informace najdete v následujících tématech v dokumentaci k Azure Key Vault:
 
-- [Použití obnovitelného odstranění s využitím PowerShellu](../../key-vault/general/soft-delete-powershell.md)
-- [Jak používat obnovitelné odstranění pomocí rozhraní příkazového řádku](../../key-vault/general/soft-delete-cli.md)
+- [Použití obnovitelného odstranění s využitím PowerShellu](../../key-vault/general/key-vault-recovery.md)
+- [Jak používat obnovitelné odstranění pomocí rozhraní příkazového řádku](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > Rozsah šifrování není možné odstranit.
@@ -97,6 +110,5 @@ Pokud je váš obor šifrování chráněný pomocí klíčů spravovaných zák
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v PowerShellu](storage-encryption-keys-powershell.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v Azure CLI](storage-encryption-keys-cli.md)
+- [Klíče spravované zákazníkem pro šifrování Azure Storage](customer-managed-keys-overview.md)
+- [Obory šifrování pro úložiště objektů BLOB (Preview)](../blobs/encryption-scope-overview.md)

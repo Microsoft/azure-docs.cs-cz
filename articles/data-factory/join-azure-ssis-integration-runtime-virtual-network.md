@@ -1,22 +1,17 @@
 ---
 title: Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
 description: Naučte se připojit prostředí Azure-SSIS Integration runtime k virtuální síti Azure.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9a82b305adec1385bf659987ea39df6bb953cd70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187808"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370967"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
 
@@ -49,7 +44,7 @@ Kurz [Konfigurace prostředí Azure-služba SSIS (SQL Server Integration Service
 
 ## <a name="access-to-on-premises-data-stores"></a>Přístup k místním úložištím dat
 
-Pokud vaše SSIS balíčky přistupují k místním úložištím dat, můžete se Azure-SSIS IR připojit k virtuální síti, která je připojená k místní síti. Případně můžete pro Azure-SSIS IR nakonfigurovat a spravovat místní prostředí IR jako proxy. Další informace najdete v tématu [Konfigurace prostředí IR pro místní hostování jako proxy serveru pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
+Pokud vaše SSIS balíčky přistupují k místním úložištím dat, můžete se Azure-SSIS IR připojit k virtuální síti, která je připojená k místní síti. Případně můžete pro Azure-SSIS IR nakonfigurovat a spravovat místní prostředí IR jako proxy. Další informace najdete v tématu [Konfigurace prostředí IR pro místní hostování jako proxy serveru pro Azure-SSIS IR](./self-hosted-integration-runtime-proxy-ssis.md). 
 
 Při připojování k vašemu Azure-SSIS IR k virtuální síti si pamatujte tyto důležité body: 
 
@@ -73,7 +68,10 @@ Pokud vaše balíčky SSIS přistupují k prostředkům Azure, které podporují
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>Přístup ke zdrojům dat chráněným pravidlem brány firewall protokolu IP
 
-Pokud vaše SSIS balíčky přistupují k úložištím nebo prostředkům, které umožňují pouze konkrétní statické veřejné IP adresy, a chcete zabezpečit přístup k těmto prostředkům z Azure-SSIS IR, můžete použít vlastní [veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) pro Azure-SSIS IR při připojení k virtuální síti a pak přidat pravidlo brány firewall protokolu IP k příslušným prostředkům, aby bylo možné přístup z těchto IP adres.
+Pokud vaše balíčky SSIS přístup k úložištím nebo prostředkům, které umožňují pouze konkrétní statické veřejné IP adresy, a chcete zabezpečit přístup k těmto prostředkům z Azure-SSIS IR, můžete přidružit [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) k Azure-SSIS IR při jejich připojení k virtuální síti a pak přidat pravidlo brány firewall protokolu IP k relevantním prostředkům, aby bylo možné přístup z těchto IP adres. Existují dva alternativní způsoby: 
+
+- Při vytváření Azure-SSIS IR můžete přinášet vlastní veřejné IP adresy a zadat je prostřednictvím [uživatelského rozhraní Data Factory nebo sady SDK](#join-the-azure-ssis-ir-to-a-virtual-network). Jenom odchozí připojení k Internetu z Azure-SSIS IR použije vaše poskytnuté veřejné IP adresy a jiná zařízení v podsíti je nepoužije.
+- Můžete také nastavit [Virtual Network překlad adres (NAT)](../virtual-network/nat-overview.md) pro podsíť, ke které se Azure-SSIS IR připojí, a všechna odchozí připojení v této podsíti budou používat vaše zadané veřejné IP adresy.
 
 Ve všech případech se virtuální síť dá nasadit jenom prostřednictvím modelu nasazení Azure Resource Manager.
 
@@ -99,13 +97,13 @@ Nastavte si virtuální síť tak, aby splňovala tyto požadavky:
 
 - Pokud přenesete vlastní veřejné IP adresy, ujistěte se, že skupina prostředků virtuální sítě (nebo skupina prostředků veřejné IP adresy) může vytvořit a odstranit určité síťové prostředky Azure. Další informace najdete v tématu [Nastavení skupiny prostředků](#resource-group). 
 
-- Pokud přizpůsobíte Azure-SSIS IR, jak je popsáno v tématu [vlastní nastavení pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup), Azure-SSIS IR uzly budou mít privátní IP adresy z předdefinovaného rozsahu 172.16.0.0 až 172.31.255.255. Proto se ujistěte, že se rozsahy privátních IP adres ve vašich virtuálních nebo místních sítích nekolidují s tímto rozsahem.
+- Pokud přizpůsobíte Azure-SSIS IR, jak je popsáno v tématu [vlastní nastavení pro Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md), náš interní proces pro správu uzlů bude využívat privátní IP adresy z předdefinovaného rozsahu 172.16.0.0 až 172.31.255.255. V důsledku toho se ujistěte, že rozsahy privátních IP adres ve vašich virtuálních nebo místních sítích nebudou v tomto rozsahu kolidovat.
 
 Tento diagram zobrazuje požadovaná připojení pro vaše Azure-SSIS IR:
 
-![Prostředí Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
+![Diagram, který zobrazuje požadovaná připojení pro vaši Azure-SSIS IR.](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
-### <a name="set-up-permissions"></a><a name="perms"></a>Nastavení oprávnění
+### <a name="set-up-permissions"></a><a name="perms"></a> Nastavení oprávnění
 
 Uživatel, který vytváří Azure-SSIS IR, musí mít následující oprávnění:
 
@@ -117,7 +115,7 @@ Uživatel, který vytváří Azure-SSIS IR, musí mít následující oprávněn
 
 - Pokud se připojujete k SSIS IR k klasické virtuální síti, doporučujeme použít integrovanou roli přispěvatele klasického virtuálního počítače. V opačném případě musíte definovat vlastní roli, která zahrnuje oprávnění k připojení k virtuální síti.
 
-### <a name="select-the-subnet"></a><a name="subnet"></a>Vyberte podsíť.
+### <a name="select-the-subnet"></a><a name="subnet"></a> Vyberte podsíť.
 
 Při volbě podsítě: 
 
@@ -133,7 +131,7 @@ Pokud chcete použít vlastní statické veřejné IP adresy pro Azure-SSIS IR p
 
 - Měla by se zadat přesně dvě nepoužitá ta, která ještě nejsou přidružená k ostatním prostředkům Azure. Ta, která se používá, se použije při pravidelném upgradu vašeho Azure-SSIS IR. Upozorňujeme, že jedna veřejná IP adresa se nedá sdílet mezi aktivním úřadem Azure-SSIS.
 
-- Měly by být oba staticky typu Standard. Další podrobnosti najdete v [části SKU veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) .
+- Měly by být oba staticky typu Standard. Další podrobnosti najdete v [části SKU veřejné IP adresy](../virtual-network/public-ip-addresses.md#sku) .
 
 - Měly by mít název DNS. Pokud jste nezadali název DNS při jeho vytváření, můžete tak učinit na Azure Portal.
 
@@ -141,7 +139,7 @@ Pokud chcete použít vlastní statické veřejné IP adresy pro Azure-SSIS IR p
 
 - A virtuální síť by měly být v rámci stejného předplatného a ve stejné oblasti.
 
-### <a name="set-up-the-dns-server"></a><a name="dns_server"></a>Nastavení serveru DNS 
+### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> Nastavení serveru DNS 
 Pokud potřebujete použít vlastní server DNS ve virtuální síti připojené pomocí Azure-SSIS IR k překladu názvu privátního hostitele, ujistěte se, že dokáže přeložit i globální názvy hostitelů Azure (například objekt blob Azure Storage s názvem `<your storage account>.blob.core.windows.net` ). 
 
 Jeden doporučený postup je následující: 
@@ -151,9 +149,9 @@ Jeden doporučený postup je následující:
 Další informace najdete v tématu [překlad názvů, který používá vlastní server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
 > [!NOTE]
-> Použijte prosím plně kvalifikovaný název domény (FQDN) pro název vašeho privátního hostitele, třeba použijte místo toho `<your_private_server>.contoso.com` , aby `<your_private_server>` Azure-SSIS IR automaticky nepřidal vlastní příponu DNS.
+> Jako název privátního hostitele použijte plně kvalifikovaný název domény (FQDN) (například použijte `<your_private_server>.contoso.com` místo `<your_private_server>` ). Alternativně můžete použít standardní vlastní instalaci v Azure-SSIS IR k automatickému připojení vlastní přípony DNS (například `contoso.com` k libovolnému nekvalifikovanému názvu domény s názvem bez přípony) a převeďte ho na plně kvalifikovaný název domény, než ho použijete v dotazech DNS. Další informace najdete v tématu [standardní ukázky instalačních vlastních nastavení](./how-to-configure-azure-ssis-ir-custom-setup.md#standard-custom-setup-samples). 
 
-### <a name="set-up-an-nsg"></a><a name="nsg"></a>Nastavení NSG
+### <a name="set-up-an-nsg"></a><a name="nsg"></a> Nastavení NSG
 Pokud potřebujete implementovat NSG pro podsíť, kterou používá vaše Azure-SSIS IR, povolte příchozí a odchozí provoz prostřednictvím následujících portů: 
 
 -   **Příchozí požadavek Azure-SSIS IR**
@@ -172,11 +170,11 @@ Pokud potřebujete implementovat NSG pro podsíť, kterou používá vaše Azure
 | Odchozí | TCP | VirtualNetwork | * | Internet | 80 | Volitelné Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port ke stažení seznamu odvolaných certifikátů z Internetu. Pokud zablokujete tento provoz, může dojít ke snížení výkonu při spuštění prostředí IR a ke ztrátě možností použití certifikátu pro kontrolu seznamu odvolaných certifikátů. Pokud chcete cíl dále zúžit na určité plně kvalifikované názvy domény, přečtěte si téma **použití Azure ExpressRoute nebo udr** .|
 | Odchozí | TCP | VirtualNetwork | * | Sql | 1433, 11000-11999 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že uzly Azure-SSIS IR ve virtuální síti přístup k SSISDB hostovanému vaším serverem. Pokud je zásada připojení k serveru nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433. <br/><br/> Toto odchozí pravidlo zabezpečení se nevztahuje na SSISDB, které hostuje vaše spravovaná instance SQL ve virtuální síti nebo SQL Database nakonfigurovaná pomocí privátního koncového bodu. |
 | Odchozí | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že uzly vaší Azure-SSIS IR ve virtuální síti přistupují k SSISDB hostovanému vaší spravovanou instancí SQL ve virtuální síti nebo SQL Database nakonfigurované pomocí privátního koncového bodu. Pokud je zásada připojení k serveru nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433. |
-| Odchozí | TCP | VirtualNetwork | * | Úložiště | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
+| Odchozí | TCP | VirtualNetwork | * | Storage | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
 ||||||||
 
-### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a>Použití Azure ExpressRoute nebo UDR
-Pokud chcete zkontrolovat odchozí provoz z Azure-SSIS IR, můžete směrovat provoz iniciované z Azure-SSIS IR na místní zařízení brány firewall prostřednictvím tunelového připojení [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) Force (inzerování trasy protokolu BGP, 0.0.0.0/0, virtuální sítě) nebo síťového virtuálního zařízení (síťové virtuální zařízení) jako brány firewall nebo [Azure firewall](https://docs.microsoft.com/azure/firewall/) prostřednictvím [udr](../virtual-network/virtual-networks-udr-overview.md). 
+### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Použití Azure ExpressRoute nebo UDR
+Pokud chcete zkontrolovat odchozí provoz z Azure-SSIS IR, můžete směrovat provoz iniciované z Azure-SSIS IR na místní zařízení brány firewall prostřednictvím tunelového připojení [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) Force (inzerování trasy protokolu BGP, 0.0.0.0/0, virtuální sítě) nebo síťového virtuálního zařízení (síťové virtuální zařízení) jako brány firewall nebo [Azure firewall](../firewall/index.yml) prostřednictvím [udr](../virtual-network/virtual-networks-udr-overview.md). 
 
 ![Scénář síťové virtuální zařízení pro Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
@@ -186,7 +184,7 @@ Chcete-li udělat celý scénář, musíte provést následující kroky.
 
 Příchozí provoz mezi Azure Batch Management Services a Azure-SSIS IR není možné směrovat do zařízení brány firewall. v důsledku problému s asymetrickým směrováním dojde k přerušení provozu. Trasy musí být definovány pro příchozí provoz, aby přenos mohl odpovídat stejnému způsobu, jakým přišel. Můžete definovat konkrétní udr ke směrování provozu mezi Azure Batch služby správy a Azure-SSIS IR s typem dalšího segmentu směrování jako **Internet**.
 
-Pokud se například vaše Azure-SSIS IR nachází v `UK South` a chcete kontrolovat odchozí přenosy prostřednictvím Azure firewall, měli byste nejprve získat seznam rozsahů IP adres služby `BatchNodeManagement.UKSouth` z [odkazu ke stažení z rozsahu IP adres značek služby](https://www.microsoft.com/download/details.aspx?id=56519) nebo prostřednictvím [rozhraní API pro zjišťování značek služby](https://aka.ms/discoveryapi). Pak použijte následující udr trasy rozsahu IP adres s typem dalšího segmentu směrování jako **Internet** společně s trasou 0.0.0.0/0 s typem dalšího segmentu směrování jako **virtuální zařízení**.
+Pokud se například vaše Azure-SSIS IR nachází v `UK South` a chcete kontrolovat odchozí přenosy prostřednictvím Azure firewall, měli byste nejprve získat seznam rozsahů IP adres služby `BatchNodeManagement.UKSouth` z [odkazu ke stažení z rozsahu IP adres značek služby](https://www.microsoft.com/download/details.aspx?id=56519) nebo prostřednictvím [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#service-tags-on-premises). Pak použijte následující udr trasy rozsahu IP adres s typem dalšího segmentu směrování jako **Internet** společně s trasou 0.0.0.0/0 s typem dalšího segmentu směrování jako **virtuální zařízení**.
 
 ![Nastavení UDR Azure Batch](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -236,7 +234,7 @@ Aby bylo možné u zařízení s bránou firewall povolený odchozí provoz, je 
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Veřejný partnerský vztah Azure      | <ul><li><b>Azure Data Factory (Správa)</b><ul><li>\*. frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (Správa)</b><ul><li>\*.blob.core.windows.net</li><li>\*. table.core.windows.net</li></ul></li><li><b>Azure Container Registry (vlastní nastavení)</b><ul><li>\*. azurecr.io</li></ul></li><li><b>Centrum událostí (protokolování)</b><ul><li>\*. servicebus.windows.net</li></ul></li><li><b>Služba protokolování společnosti Microsoft (interní použití)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
     | Azure Government  | <ul><li><b>Azure Data Factory (Správa)</b><ul><li>\*. frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (Správa)</b><ul><li>\*. blob.core.usgovcloudapi.net</li><li>\*. table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry (vlastní nastavení)</b><ul><li>\*. azurecr.us</li></ul></li><li><b>Centrum událostí (protokolování)</b><ul><li>\*. servicebus.usgovcloudapi.net</li></ul></li><li><b>Služba protokolování společnosti Microsoft (interní použití)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (Správa)</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (Správa)</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (vlastní nastavení)</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>Centrum událostí (protokolování)</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Služba protokolování společnosti Microsoft (interní použití)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
+    | Azure (Čína) 21Vianet     | <ul><li><b>Azure Data Factory (Správa)</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (Správa)</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (vlastní nastavení)</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>Centrum událostí (protokolování)</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Služba protokolování společnosti Microsoft (interní použití)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     U plně kvalifikovaných názvů domén Azure Storage Azure Container Registry a centra událostí můžete také povolit pro virtuální síť tyto koncové body služby, aby síťový provoz do těchto koncových bodů procházel přes páteřní síť Azure místo přesměrování na zařízení brány firewall:
     -  Microsoft.Storage
@@ -279,12 +277,12 @@ Pokud nepotřebujete mít možnost kontrolovat odchozí provoz Azure-SSIS IR, m�
 > [!NOTE]
 > Zadání trasy s typem dalšího segmentu směrování **Internet** neznamená, že veškerý provoz bude přecházet přes Internet. Pokud je cílová adresa pro jednu ze služeb Azure, Azure směruje provoz přímo do služby přes páteřní síť Azure místo směrování provozu na Internet.
 
-### <a name="set-up-the-resource-group"></a><a name="resource-group"></a>Nastavení skupiny prostředků
+### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> Nastavení skupiny prostředků
 
 Azure-SSIS IR musí vytvořit určité síťové prostředky ve stejné skupině prostředků jako virtuální síť. Mezi tyto prostředky patří:
-- Nástroj pro vyrovnávání zatížení Azure s názvem * \<Guid> -azurebatch-cloudserviceloadbalancer*.
-- Veřejná IP adresa Azure s názvem * \<Guid> -azurebatch-cloudservicepublicip*.
-- Skupina zabezpečení práce v síti s názvem * \<Guid> -azurebatch-cloudservicenetworksecuritygroup*. 
+- Nástroj pro vyrovnávání zatížení Azure s názvem *\<Guid> -azurebatch-cloudserviceloadbalancer*.
+- Veřejná IP adresa Azure s názvem *\<Guid> -azurebatch-cloudservicepublicip*.
+- Skupina zabezpečení práce v síti s názvem *\<Guid> -azurebatch-cloudservicenetworksecuritygroup*. 
 
 > [!NOTE]
 > Teď můžete využít vlastní statické veřejné IP adresy pro Azure-SSIS IR. V tomto scénáři vytvoříme jenom skupinu zabezpečení pro vyrovnávání zatížení Azure a skupinu zabezpečení sítě ve stejné skupině prostředků jako vaše statické veřejné IP adresy místo virtuální sítě.
@@ -300,13 +298,13 @@ Ujistěte se, že nemáte přiřazení Azure Policy, které brání vytvoření 
 
 Ujistěte se, že je kvóta prostředků vašeho předplatného dostatečná pro výše uvedené tři síťové prostředky. Konkrétně pro každý Azure-SSIS IR vytvořený ve virtuální síti musíte pro každý z výše uvedených tří síťových prostředků rezervovat dvě bezplatné kvóty. Při pravidelném upgradu vašeho Azure-SSIS IR se použije jedna kvóta navíc.
 
-### <a name="faq"></a><a name="faq"></a>DOTAZ
+### <a name="faq"></a><a name="faq"></a> DOTAZ
 
 - Jak můžu chránit veřejnou IP adresu zveřejněnou na mém Azure-SSIS IR pro příchozí připojení? Je možné odebrat veřejnou IP adresu?
  
   V současné době se při Azure-SSIS IR připojení k virtuální síti automaticky vytvoří veřejná IP adresa. K dispozici je NSG na úrovni síťové karty, aby bylo možné pouze příchozí připojení k vašemu Azure-SSIS IR Azure Batch služby pro správu. Pro příchozí ochranu můžete zadat také NSG na úrovni podsítě.
 
-  Pokud nechcete, aby se žádná veřejná IP adresa nastavila, zvažte možnost [nakonfigurovat pro svůj Azure-SSIS IR místní prostředí IR jako proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) místo připojení Azure-SSIS IR k virtuální síti, pokud to platí pro váš scénář.
+  Pokud nechcete, aby se žádná veřejná IP adresa nastavila, zvažte možnost [nakonfigurovat pro svůj Azure-SSIS IR místní prostředí IR jako proxy](./self-hosted-integration-runtime-proxy-ssis.md) místo připojení Azure-SSIS IR k virtuální síti, pokud to platí pro váš scénář.
  
 - Můžu přidat veřejnou IP adresu mých Azure-SSIS IR do seznamu povolených adres brány firewall pro moje zdroje dat?
 
@@ -315,7 +313,7 @@ Ujistěte se, že je kvóta prostředků vašeho předplatného dostatečná pro
   - Pokud je váš zdroj dat místní, po připojení virtuální sítě k místní síti a připojení Azure-SSIS IR k podsíti virtuální sítě můžete přidat rozsah privátních IP adres této podsítě do seznamu povolených adres brány firewall pro váš zdroj dat.
   - Pokud je zdrojem dat služba Azure, která podporuje koncové body služby virtuální sítě, můžete v podsíti virtuální sítě nakonfigurovat koncový bod služby virtuální sítě a připojit Azure-SSIS IR k této podsíti. Pak můžete přidat pravidlo virtuální sítě s touto podsítí do brány firewall pro zdroj dat.
   - Pokud je váš zdroj dat cloudovou službou mimo Azure, můžete použít UDR ke směrování odchozího provozu z vaší Azure-SSIS IR do síťové virtuální zařízení/Azure Firewall prostřednictvím statické veřejné IP adresy. Pak můžete přidat statickou veřejnou IP adresu vašeho síťové virtuální zařízení nebo Azure Firewall do seznamu povolených adres brány firewall pro váš zdroj dat.
-  - Pokud žádná z výše uvedených možností nevyhovuje vašim potřebám, zvažte [konfiguraci místního prostředí IR jako proxy serveru pro váš Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). Pak můžete přidat statickou veřejnou IP adresu počítače, který je hostitelem místního prostředí IR, do seznamu povolených v bráně firewall pro váš zdroj dat.
+  - Pokud žádná z výše uvedených možností nevyhovuje vašim potřebám, zvažte [konfiguraci místního prostředí IR jako proxy serveru pro váš Azure-SSIS IR](./self-hosted-integration-runtime-proxy-ssis.md). Pak můžete přidat statickou veřejnou IP adresu počítače, který je hostitelem místního prostředí IR, do seznamu povolených v bráně firewall pro váš zdroj dat.
 
 - Proč potřebuji zadat dvě statické veřejné adresy, pokud chci Azure-SSIS IR vlastní?
 
@@ -338,7 +336,7 @@ Použijte portál ke konfiguraci Azure Resource Manager virtuální sítě před
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě**. 
 
@@ -356,7 +354,7 @@ Použijte portál ke konfiguraci Azure Resource Manager virtuální sítě před
 
    1. Vyberte své předplatné. 
 
-   1. Na levé straně vyberte **poskytovatelé prostředků**a potvrďte, že **Microsoft.Batch** je registrovaný poskytovatel. 
+   1. Na levé straně vyberte **poskytovatelé prostředků** a potvrďte, že **Microsoft.Batch** je registrovaný poskytovatel. 
 
    ![Potvrzení stavu "zaregistrován"](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
@@ -368,7 +366,7 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě (klasické)**. 
 
@@ -392,7 +390,7 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
    1. Vyberte **Přidat přiřazení role**.
 
-   1. Na stránce **Přidat přiřazení role** vyberte pro **role**možnost **Přispěvatel klasických virtuálních počítačů**. Do pole **Vybrat** vložte **ddbf3205-c6bd-46ae-8127-60eb93363864**a potom v seznamu výsledků hledání vyberte **Microsoft Azure Batch** . 
+   1. Na stránce **Přidat přiřazení role** vyberte pro **role** možnost **Přispěvatel klasických virtuálních počítačů**. Do pole **Vybrat** vložte **ddbf3205-c6bd-46ae-8127-60eb93363864** a potom v seznamu výsledků hledání vyberte **Microsoft Azure Batch** . 
 
        ![Výsledky hledání na stránce přidat přiřazení role](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
@@ -410,7 +408,7 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
    1. Vyberte své předplatné. 
 
-   1. Na levé straně vyberte **poskytovatelé prostředků**a potvrďte, že **Microsoft.Batch** je registrovaný poskytovatel. 
+   1. Na levé straně vyberte **poskytovatelé prostředků** a potvrďte, že **Microsoft.Batch** je registrovaný poskytovatel. 
 
    ![Potvrzení stavu "zaregistrován"](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
@@ -422,7 +420,7 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **Datové továrny**. Pokud v nabídce nevidíte **Datové továrny** , vyberte **Další služby**a potom v části **Intelligence + Analytics** vyberte **Datové továrny**. 
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **Datové továrny**. Pokud v nabídce nevidíte **Datové továrny** , vyberte **Další služby** a potom v části **Intelligence + Analytics** vyberte **Datové továrny**. 
 
    ![Seznam datových továren](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
@@ -430,7 +428,7 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
 
    ![Domovská stránka objektu pro vytváření dat](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 
-1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** , vyberte **připojení**a přepněte na kartu **prostředí Integration runtime** . 
+1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** , vyberte **připojení** a přepněte na kartu **prostředí Integration runtime** . 
 
    ![Karta prostředí Integration runtime](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
 
@@ -448,25 +446,25 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
 
    1. Vyberte **virtuální síť, ke které se má Azure-SSIS Integration runtime připojit, umožněte ADF vytvořit určité síťové prostředky a volitelně uveďte vlastní statické veřejné IP adresy** . 
 
-   1. V poli **předplatné**vyberte předplatné Azure, které má vaši virtuální síť.
+   1. V poli **předplatné** vyberte předplatné Azure, které má vaši virtuální síť.
 
-   1. Pro **umístění**je vybrané stejné umístění prostředí Integration runtime.
+   1. Pro **umístění** je vybrané stejné umístění prostředí Integration runtime.
 
-   1. Jako **typ**vyberte typ virtuální sítě: classic nebo Azure Resource Manager. Doporučujeme vybrat Azure Resource Manager virtuální síť, protože klasické virtuální sítě budou brzy zastaralé.
+   1. Jako **typ** vyberte typ virtuální sítě: classic nebo Azure Resource Manager. Doporučujeme vybrat Azure Resource Manager virtuální síť, protože klasické virtuální sítě budou brzy zastaralé.
 
-   1. V poli **název virtuální**sítě vyberte název vaší virtuální sítě. Měla by být stejná jako ta, která se používá pro SQL Database s koncovými body služby virtuální sítě nebo spravovanou instancí SQL s privátním koncovým bodem pro hostování SSISDB. Nebo by měl být stejný jako připojený k vaší místní síti. V opačném případě může být libovolná virtuální síť, která bude obsahovat vlastní statické veřejné IP adresy pro Azure-SSIS IR.
+   1. V poli **název virtuální** sítě vyberte název vaší virtuální sítě. Měla by být stejná jako ta, která se používá pro SQL Database s koncovými body služby virtuální sítě nebo spravovanou instancí SQL s privátním koncovým bodem pro hostování SSISDB. Nebo by měl být stejný jako připojený k vaší místní síti. V opačném případě může být libovolná virtuální síť, která bude obsahovat vlastní statické veřejné IP adresy pro Azure-SSIS IR.
 
-   1. Jako **název podsítě**vyberte název podsítě pro virtuální síť. Měla by být stejná jako ta, která se používá pro SQL Database s koncovými body služby virtuální sítě pro hostování SSISDB. Nebo by měla být jiná podsíť než ta, která se používá pro spravovanou instanci SQL s privátním koncovým bodem pro hostování SSISDB. V opačném případě může to být jakákoli podsíť, která přináší vlastní statické veřejné IP adresy pro Azure-SSIS IR.
+   1. Jako **název podsítě** vyberte název podsítě pro virtuální síť. Měla by být stejná jako ta, která se používá pro SQL Database s koncovými body služby virtuální sítě pro hostování SSISDB. Nebo by měla být jiná podsíť než ta, která se používá pro spravovanou instanci SQL s privátním koncovým bodem pro hostování SSISDB. V opačném případě může to být jakákoli podsíť, která přináší vlastní statické veřejné IP adresy pro Azure-SSIS IR.
 
    1. Zaškrtněte políčko **přenést statické veřejné IP adresy pro Azure-SSIS Integration runtime** a zvolte, jestli chcete použít vlastní statické veřejné IP adresy pro Azure-SSIS IR, abyste je mohli v bráně firewall pro zdroje dat zapnout.
 
       Pokud zaškrtnete políčko, proveďte následující kroky.
 
-      1. U **první statické veřejné IP adresy**vyberte první STATICKOU veřejnou IP adresu, která [splňuje požadavky](#publicIP) pro váš Azure-SSIS IR. Pokud žádné nemáte, klikněte na **vytvořit nový** odkaz pro vytvoření statických veřejných IP adres na Azure Portal a pak klikněte na tlačítko Aktualizovat, abyste je mohli vybrat.
+      1. U **první statické veřejné IP adresy** vyberte první STATICKOU veřejnou IP adresu, která [splňuje požadavky](#publicIP) pro váš Azure-SSIS IR. Pokud žádné nemáte, klikněte na **vytvořit nový** odkaz pro vytvoření statických veřejných IP adres na Azure Portal a pak klikněte na tlačítko Aktualizovat, abyste je mohli vybrat.
       
-      1. U **druhé statické veřejné IP adresy**vyberte druhou STATICKOU veřejnou IP adresu, která [splňuje požadavky](#publicIP) pro váš Azure-SSIS IR. Pokud žádné nemáte, klikněte na **vytvořit nový** odkaz pro vytvoření statických veřejných IP adres na Azure Portal a pak klikněte na tlačítko Aktualizovat, abyste je mohli vybrat.
+      1. U **druhé statické veřejné IP adresy** vyberte druhou STATICKOU veřejnou IP adresu, která [splňuje požadavky](#publicIP) pro váš Azure-SSIS IR. Pokud žádné nemáte, klikněte na **vytvořit nový** odkaz pro vytvoření statických veřejných IP adres na Azure Portal a pak klikněte na tlačítko Aktualizovat, abyste je mohli vybrat.
 
-   1. Vyberte **ověření virtuální**sítě. Pokud je ověření úspěšné, vyberte **pokračovat**. 
+   1. Vyberte **ověření virtuální** sítě. Pokud je ověření úspěšné, vyberte **pokračovat**. 
 
    ![Rozšířené nastavení virtuální sítě](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
@@ -601,7 +599,7 @@ Dokončení tohoto příkazu trvá 20 až 30 minut.
 
 Další informace o Azure-SSIS IR najdete v následujících článcích: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje obecné koncepční informace o finančním úřadu, včetně Azure-SSIS IR. 
-- [Kurz: nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md). V tomto kurzu najdete podrobné pokyny k vytvoření Azure-SSIS IR. Pro hostování katalogu SSIS používá Azure SQL Database. 
+- [Kurz: nasazení balíčků SSIS do Azure](./tutorial-deploy-ssis-packages-azure.md). V tomto kurzu najdete podrobné pokyny k vytvoření Azure-SSIS IR. Pro hostování katalogu SSIS používá Azure SQL Database. 
 - [Vytvořte Azure-SSIS IR](create-azure-ssis-integration-runtime.md). Tento článek se rozbalí v tomto kurzu. Poskytuje pokyny, jak Azure SQL Database s použitím koncových bodů služby virtuální sítě nebo spravované instance SQL ve virtuální síti pro hostování katalogu SSIS. Ukazuje, jak připojit Azure-SSIS IR k virtuální síti. 
 - [Monitorování Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). V tomto článku se dozvíte, jak získat informace o Azure-SSIS IR. Poskytuje popisy stavu pro vrácené informace. 
 - [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). V tomto článku se dozvíte, jak zastavit, spustit nebo odstranit Azure-SSIS IR. Také ukazuje, jak horizontální navýšení kapacity Azure-SSIS IR přidáním uzlů.

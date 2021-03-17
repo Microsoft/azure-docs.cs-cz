@@ -3,16 +3,13 @@ title: Nepovedlo se získat přístup k souborům úložiště Data Lake ve slu�
 description: Nepovedlo se získat přístup k souborům úložiště Data Lake ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c5a23b604334952730fcc4cf1fcb3fcbed6237
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75894153"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944393"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Nepovedlo se získat přístup k souborům úložiště Data Lake ve službě Azure HDInsight.
 
@@ -32,7 +29,7 @@ Uživatel může mít odvolaná oprávnění k instančnímu objektu (SP) pro so
 
 ### <a name="resolution"></a>Řešení
 
-1. Ověřte, zda má aktualizace SP oprávnění "x", aby bylo možné procházet podél cesty. Další informace najdete v tématu [oprávnění](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Ukázka příkazu DFS pro kontrolu přístupu k souborům nebo složkám v Data Lakem účtu úložiště:
+1. Ověřte, zda má aktualizace SP oprávnění "x", aby bylo možné procházet podél cesty. Další informace najdete v tématu [oprávnění](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Ukázkový `dfs` příkaz pro kontrolu přístupu k souborům nebo složkám v data lakem účtu úložiště:
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +51,13 @@ Token Refresh failed - Received invalid http response: 500
 
 Platnost certifikátu zadaného pro přístup k instančnímu objektu možná vypršela.
 
-1. SSH do hlavnímu uzlu. Pomocí následujícího příkazu DFS ověřte přístup k účtu úložiště:
+1. SSH do hlavnímu uzlu. Pomocí následujícího příkazu ověřte přístup k účtu úložiště `dfs` :
 
     ```
     hdfs dfs -ls /
     ```
 
-1. Potvrďte, že je chybová zpráva podobná následující:
+1. Potvrďte, že je chybová zpráva podobná následujícímu výstupu:
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -161,16 +158,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-Pokud chcete přiřadit existující certifikát, vytvořte certifikát a připravte si ho na soubor. pfx a heslo. Přidružte certifikát k instančnímu objektu, pomocí kterého byl cluster vytvořen, a připravte si AppId.
+Pokud chcete přiřadit existující certifikát, vytvořte certifikát a připravte si ho na soubor. pfx a heslo. Přidružte certifikát k instančnímu objektu, pomocí kterého byl cluster vytvořen, pomocí AppId připravený.
 
 Po nahrazení parametrů skutečnými hodnotami spusťte příkaz prostředí PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

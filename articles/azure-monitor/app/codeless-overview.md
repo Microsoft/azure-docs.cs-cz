@@ -6,34 +6,34 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708488"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Co je automatické instrumentace nebo připojení s nekódováním Azure Monitor Application Insights?
 
 Automatické instrumentace nebo připojení bez kódu umožňuje povolit monitorování aplikací pomocí Application Insights beze změny kódu.  
 
-Application Insights je integrován s různými poskytovateli prostředků a pracuje v různých prostředích. V podstatě je to vše, co musíte udělat, a to v některých případech – nakonfigurujte agenta, který bude shromažďovat telemetrii ze seznamu. V takovém případě uvidíte metriky, data a závislosti v prostředku Application Insights, což vám umožní vymezit zdroj potenciálních problémů a analyzovat hlavní příčinu pomocí zobrazení koncových transakcí.
+Application Insights je integrován s různými poskytovateli prostředků a pracuje v různých prostředích. V podstatě je to vše, co musíte udělat, a to v některých případech – nakonfigurujte agenta, který bude automaticky shromažďovat telemetrii. V takovém případě uvidíte metriky, data a závislosti v prostředku Application Insights, což vám umožní vymezit zdroj potenciálních problémů a analyzovat hlavní příčinu pomocí zobrazení koncových transakcí.
 
 ## <a name="supported-environments-languages-and-resource-providers"></a>Podporovaná prostředí, jazyky a poskytovatelé prostředků
 
-Po přidání dalších a dalších integrací se matice schopností automatické instrumentace stane složitou. Následující tabulka ukazuje aktuální stav otázky, pokud je to podpora různých poskytovatelů prostředků, jazyků a prostředí.
+Po přidání dalších integrací se matice schopností automatické instrumentace stane složitou. Následující tabulka ukazuje aktuální stav otázky, pokud je to podpora různých poskytovatelů prostředků, jazyků a prostředí.
 
-|Prostředí/poskytovatel prostředků | .NET            | .NET Core       | Java            | Node.js         |
-|------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service ve Windows  | GA, OnBD *       | GA, výslovný souhlas      | Privátní verze Preview | Privátní verze Preview |
-|Azure App Service v systému Linux    | –             | Nepodporováno   | Public Preview  | Public Preview  |
-|Azure App Service na AKS      | –             | V návrhu       | V návrhu       | V návrhu       |
-|Azure Functions – Basic       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Functions – závislosti| Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   |
-|Azure Kubernetes Service      | –             | V návrhu       | Prostřednictvím agenta   | V návrhu       |
-|Okna virtuálních počítačů Azure             | Public Preview  | Nepodporováno   | Nepodporováno   | Nepodporováno   |
-|Okna místních virtuálních počítačů       | GA, výslovný souhlas      | Nepodporováno   | Prostřednictvím agenta   | Nepodporováno   |
-|Samostatný agent – libovolný env.   | Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   |
+|Prostředí/poskytovatel prostředků          | .NET            | .NET Core       | Java            | Node.js         | Python          |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|Azure App Service ve Windows           | GA, OnBD *       | GA, výslovný souhlas      | Rozpracované     | Rozpracované     | Nepodporováno   |
+|Azure App Service v systému Linux             | –             | Nepodporováno   | Rozpracované     | Public Preview  | Nepodporováno   |
+|Azure App Service na AKS               | –             | V návrhu       | V návrhu       | V návrhu       | Nepodporováno   |
+|Azure Functions – Basic                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
+|Azure Functions závislosti Windows | Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   | Nepodporováno   |
+|Azure Kubernetes Service               | –             | V návrhu       | Prostřednictvím agenta   | V návrhu       | Nepodporováno   |
+|Okna virtuálních počítačů Azure                      | Public Preview  | Nepodporováno   | Nepodporováno   | Nepodporováno   | Nepodporováno   |
+|Okna místních virtuálních počítačů                | GA, výslovný souhlas      | Nepodporováno   | Prostřednictvím agenta   | Nepodporováno   | Nepodporováno   |
+|Samostatný agent – libovolný env.            | Nepodporováno   | Nepodporováno   | GA              | Nepodporováno   | Nepodporováno   |
 
 * OnBD ve výchozím nastavení je krátké – Application Insights se po nasazení aplikace do podporovaných prostředí automaticky povolí. 
 
@@ -41,11 +41,31 @@ Po přidání dalších a dalších integrací se matice schopností automatick�
 
 ### <a name="windows"></a>Windows
 
-[Monitorování aplikací v Azure App Service](./azure-web-apps.md?tabs=net) je k dispozici pro aplikaci .NET a je ve výchozím nastavení povoleno, rozhraní .NET Core lze povolit jediným kliknutím a jazyky Java a Node.js jsou v privátní verzi Preview.
+#### <a name="net"></a>.NET
+Monitorování aplikací na Azure App Service ve Windows je dostupné pro .NET pro [aplikace](./azure-web-apps.md?tabs=net) .NET a ve výchozím nastavení je povolené.
 
-### <a name="linux"></a>Linux 
+#### <a name="netcore"></a>. NETCore
+Monitorování pro [. NETCore aplikace](./azure-web-apps.md?tabs=netcore) lze povolit jediným kliknutím.
 
-Monitorování aplikací Java a Node.js v App Service je ve verzi Public Preview a je možné je povolit v Azure Portal, které jsou k dispozici ve všech oblastech.
+#### <a name="java"></a>Java
+Integrace portálu pro monitorování aplikací Java v App Service ve Windows není momentálně k dispozici. do své aplikace ale můžete přidat Application Insights [samostatného agenta java 3,0](./java-in-process-agent.md) , aniž byste museli změny kódu nasadit do App Service. Agent Application Insights Java 3,0 je všeobecně dostupný.
+
+#### <a name="nodejs"></a>Node.js
+Monitorování pro Node.js aplikace ve Windows se momentálně nedá na portálu povolit. K monitorování aplikací Node.js použijte [sadu SDK](./nodejs.md).
+
+### <a name="linux"></a>Linux
+
+#### <a name="netcore"></a>. NETCore
+K monitorování. NETCore aplikace spuštěné v systému Linux, použijte [sadu SDK](./asp-net-core.md).
+
+#### <a name="java"></a>Java 
+Povolení monitorování aplikací Java pro App Service v systému Linux z portálu není k dispozici, ale před nasazením aplikací do App Service můžete do aplikace přidat [Application Insights agenta java 3,0](./java-in-process-agent.md) . Agent Application Insights Java 3,0 je všeobecně dostupný.
+
+#### <a name="nodejs"></a>Node.js
+[Monitorování Node.js aplikací v App Service v systému Linux](./azure-web-apps.md?tabs=nodejs) je ve verzi Public Preview a je možné je povolit v Azure Portal, které jsou k dispozici ve všech oblastech. 
+
+#### <a name="python"></a>Python
+Použití sady SDK k [monitorování aplikace v Pythonu](./opencensus-python.md) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -57,7 +77,7 @@ Instrumentace služby Azure Kubernetes bez kódu je teď k dispozici pro aplikac
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Virtuální počítače Azure s Windows a sada škálování virtuálních počítačů
 
-Pro aplikace .NET je k dispozici [Automatické instrumentace pro virtuální počítače Azure a sadu škálování virtuálního počítače](./azure-vm-vmss-apps.md) . 
+Pro [.NET](./azure-vm-vmss-apps.md) a [Java](./java-in-process-agent.md)jsou k dispozici automatické instrumentace pro virtuální počítače Azure a sadu škálování virtuálního počítače.  
 
 ## <a name="on-premises-servers"></a>Místní servery
 Můžete snadno povolit monitorování pro [místní Windows servery pro aplikace .NET](./status-monitor-v2-overview.md) a pro [aplikace v jazyce Java](./java-in-process-agent.md).
@@ -69,5 +89,4 @@ Univerzální samostatný agent Java funguje v jakémkoli prostředí, není pot
 
 * [Přehled Application Insights](./app-insights-overview.md)
 * [Mapa aplikace](./app-map.md)
-* [Monitorování výkonu na konci](../learn/tutorial-performance.md)
-
+* [Monitorování výkonu na konci](../app/tutorial-performance.md)

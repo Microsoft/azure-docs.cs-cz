@@ -4,19 +4,22 @@ description: Naučte se integrovat službu Azure Kubernetes Service (AKS) s vyu�
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 01/08/2021
+ms.openlocfilehash: 19ece696dabc81e643e8a904d506d22e40eaa099
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406499"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499148"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry ze služby Azure Kubernetes Service
 
 Pokud používáte Azure Container Registry (ACR) se službou Azure Kubernetes Service (AKS), je nutné vytvořit ověřovací mechanismus. Tato operace je implementovaná v rámci prostředí CLI a portálu tím, že uděluje požadovaná oprávnění vašemu ACR. Tento článek popisuje příklady konfigurace ověřování mezi těmito dvěma službami Azure. 
 
-AKS můžete nastavit na integraci ACR v několika jednoduchých příkazech pomocí Azure CLI. Tato integrace přiřadí roli AcrPull instančnímu objektu přidruženému ke clusteru AKS.
+AKS můžete nastavit na integraci ACR v několika jednoduchých příkazech pomocí Azure CLI. Tato integrace přiřadí roli AcrPull ke spravované identitě přidružené ke clusteru AKS.
+
+> [!NOTE]
+> Tento článek se zabývá automatickým ověřováním mezi AKS a ACR. Pokud potřebujete načíst image z privátního externího registru, použijte [tajný klíč pro stažení bitové kopie][Image Pull Secret].
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -25,11 +28,11 @@ Tyto příklady vyžadují:
 * Role **vlastníka** nebo **správce účtu Azure** v **předplatném Azure**
 * Azure CLI verze 2.7.0 nebo novější
 
-Abyste se vyhnuli nutnosti potřebovat roli **vlastníka** nebo **správce účtu Azure** , můžete instanční objekt nakonfigurovat ručně nebo použít existující INSTANČNÍ objekt k ověření ACR z AKS. Další informace najdete v tématech [ověřování ACR pomocí instančních objektů](../container-registry/container-registry-auth-service-principal.md) nebo [ověřování z Kubernetes s tajným klíčem pro vyžádání](../container-registry/container-registry-auth-kubernetes.md)obsahu.
+Abyste se vyhnuli nutnosti potřebovat roli **vlastníka** nebo **správce účtu Azure** , můžete spravovanou identitu nakonfigurovat ručně nebo pomocí existující spravované identity ověřit ACR z AKS. Další informace najdete v tématu [použití spravované identity Azure k ověření ve službě Azure Container Registry](../container-registry/container-registry-authentication-managed-identity.md).
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Vytvoření nového clusteru AKS s integrací ACR
 
-Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se Azure Active Directory **instanční objekt** . Následující příkaz rozhraní příkazového řádku umožňuje autorizovat stávající ACR ve vašem předplatném a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Zadejte platné hodnoty pro následující parametry.
+Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se **spravovaná identita** Azure Active Directory. Následující příkaz rozhraní příkazového řádku umožňuje autorizovat stávající ACR ve vašem předplatném a nakonfiguruje příslušnou roli **ACRPull** pro spravovanou identitu. Zadejte platné hodnoty pro následující parametry.
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
@@ -75,7 +78,7 @@ Integraci mezi ACR a clusterem AKS taky můžete odebrat pomocí následujícíc
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 ```
 
-– nebo –
+nebo
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
@@ -147,8 +150,10 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
 ### <a name="troubleshooting"></a>Řešení potíží
+* Spuštěním příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) ověřte, že je registr přístupný z clusteru AKS.
 * Další informace o [diagnostice ACR](../container-registry/container-registry-diagnostics-audit-logs.md)
 * Další informace o [stavu ACR](../container-registry/container-registry-check-health.md)
 
 <!-- LINKS - external -->
-[AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[AKS AKS CLI]: /cli/azure/aks#az-aks-create
+[Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

@@ -1,17 +1,17 @@
 ---
 title: Úložiště dotazů – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci úložiště dotazů na Azure Database for PostgreSQL jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830277"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581561"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
 
@@ -88,19 +88,19 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti**|
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah**|
 |---|---|---|---|
-| pg_qs. query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádné | žádné, nahoře, vše |
-| pg_qs. max_query_text_length | Nastaví maximální délku dotazu, kterou lze uložit. Delší dotazy budou zkráceny. | 6000 | 100 – 10 000 |
-| pg_qs. retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
-| pg_qs. track_utility | Nastaví, jestli se mají sledovat příkazy nástrojů. | on | zapnuto, vypnuto |
+| pg_qs pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádné | žádné, nahoře, vše |
+| pg_qs pg_qs.max_query_text_length | Nastaví maximální délku dotazu, kterou lze uložit. Delší dotazy budou zkráceny. | 6000 | 100 – 10 000 |
+| pg_qs pg_qs.retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
+| pg_qs pg_qs.track_utility | Nastaví, jestli se mají sledovat příkazy nástrojů. | on | zapnuto, vypnuto |
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti**|
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah**|
 |---|---|---|---|
-| pgms_wait_sampling. query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | žádné | žádné, vše|
-| Pgms_wait_sampling. history_period | Nastavte četnost vzorkování událostí čekání v milisekundách. | 100 | 1-600000 |
+| pgms_wait_sampling pgms_wait_sampling.query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | žádné | žádné, vše|
+| Pgms_wait_sampling Pgms_wait_sampling.history_period | Nastavte četnost vzorkování událostí čekání v milisekundách. | 100 | 1-600000 |
 
 > [!NOTE] 
 > **pg_qs. query_capture_mode** nahrazuje **pgms_wait_sampling. query_capture_mode**. Pokud pg_qs. query_capture_mode je NONE, nastavení pgms_wait_sampling. query_capture_mode nemá žádný vliv.
@@ -113,7 +113,7 @@ Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zo
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 
-### <a name="query_storeqs_view"></a>query_store. qs_view
+### <a name="query_storeqs_view"></a>query_store query_store.qs_view
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek. 
 
 |**Název**   |**Typ** | **Reference**  | **Popis**|
@@ -146,39 +146,39 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 |blk_read_time  |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil bloky čtení, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
 |blk_write_time |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil zápis bloků, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
     
-### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store query_store.query_texts_view
 Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý query_text je k dispozici jeden řádek.
 
-|**Název**|  **Typ**|   **Popis**|
-|---|---|---|
-|query_text_id  |bigint     |ID pro query_textsovou tabulku|
-|query_sql_text |Varchar (10000)     |Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
+| **Název** | **Typ** | **Popis** |
+|--|--|--|
+| query_text_id | bigint | ID pro query_textsovou tabulku |
+| query_sql_text | Varchar (10000) | Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru. |
 
-### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-|**Název**|  **Typ**|   **Reference**| **Popis**|
-|---|---|---|---|
-|user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
-|db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
-|query_id   |bigint     ||Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
-|event_type |text       ||Typ události, pro kterou back-end čeká|
-|event  |text       ||Název události čekání, pokud back-end momentálně čeká|
-|volání  |Integer        ||Číslo stejné zachycené události|
-
+| **Název** | **Typ** | **Reference** | **Popis** |
+|--|--|--|--|
+| user_id | identifikátor | pg_authid. OID | Identifikátor OID uživatele, který příkaz provedl |
+| db_id | identifikátor | pg_database. OID | Identifikátor objektu databáze, ve kterém byl příkaz proveden |
+| query_id | bigint |  | Vnitřní kód hash vypočítaný z stromu analýzy příkazu |
+| event_type | text |  | Typ události, pro kterou back-end čeká |
+| event | text |  | Název události čekání, pokud back-end momentálně čeká |
+| volání | Integer |  | Číslo stejné zachycené události |
 
 ### <a name="functions"></a>Functions
-Query_store. qs_reset () vrátí typ void.
 
-`qs_reset`zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
+Query_store Query_store.qs_reset () vrátí typ void.
 
-Query_store. staging_data_reset () vrátí typ void.
+`qs_reset` zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
 
-`staging_data_reset`zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
+Query_store Query_store.staging_data_reset () vrátí typ void.
+
+`staging_data_reset` zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL je integrován s [nastavením diagnostiky Azure monitor](../azure-monitor/platform/diagnostic-settings.md). Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci.
+Azure Database for PostgreSQL je integrován s [nastavením diagnostiky Azure monitor](../azure-monitor/essentials/diagnostic-settings.md). Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste [Azure monitor protokoly](../azure-monitor/logs/log-query-overview.md) pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci.
 
 >[!IMPORTANT]
 > Tato diagnostická funkce pro je dostupná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
@@ -195,7 +195,7 @@ Postup povolení protokolů prostředku pomocí Azure Portal:
 5. Vyberte typy protokolů **QueryStoreRuntimeStatistics** a **QueryStoreWaitStatistics**.
 6. Uložte nastavení.
 
-Pokud chcete toto nastavení povolit pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na [článek nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md).
+Pokud chcete toto nastavení povolit pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na [článek nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="json-log-format"></a>Formát protokolu JSON
 V následujících tabulkách jsou popsána pole pro dva typy protokolů. V závislosti na zvoleném výstupním koncovém bodu se můžou pole zahrnutá a pořadí, ve kterém se zobrazují, lišit.
@@ -250,7 +250,7 @@ V následujících tabulkách jsou popsána pole pro dva typy protokolů. V záv
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 - Pokud má server PostgreSQL parametr default_transaction_read_only na, nemůže úložiště dotazů zachytit data.
 - Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (>= 6000 bajtů).
-- [Čtení replik](concepts-read-replicas.md) replikuje data úložiště dotazů z hlavního serveru. To znamená, že úložiště dotazů repliky pro čtení neposkytuje statistiku o dotazech spuštěných v replice pro čtení.
+- [Čtení replik](concepts-read-replicas.md) replikuje data úložiště dotazů z primárního serveru. To znamená, že úložiště dotazů repliky pro čtení neposkytuje statistiku o dotazech spuštěných v replice pro čtení.
 
 
 ## <a name="next-steps"></a>Další kroky

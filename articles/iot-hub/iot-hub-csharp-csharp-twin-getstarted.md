@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135548"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89013754"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
 
@@ -33,13 +33,13 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -135,7 +135,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
 
 V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
 
-## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
+## <a name="create-the-device-app"></a>Vytvoření aplikace zařízení
 
 V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje své hlášené vlastnosti tak, aby obsahovala informace, které jsou připojené pomocí mobilní sítě.
 
@@ -211,7 +211,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
     }
     ```
 
-   Výše uvedený kód aktualizuje oznámenou vlastnost **myDeviceId** informacemi o připojení.
+   Výše uvedený kód aktualizuje oznámenou vlastnost  **myDeviceId** informacemi o připojení.
 
 1. Nakonec přidejte do metody **Main** následující řádky:
 

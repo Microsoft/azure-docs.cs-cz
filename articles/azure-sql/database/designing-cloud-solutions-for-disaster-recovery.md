@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405037"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91321675"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Návrh globálně dostupných služeb pomocí Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

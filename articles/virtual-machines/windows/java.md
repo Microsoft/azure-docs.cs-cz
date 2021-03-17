@@ -1,24 +1,24 @@
 ---
 title: Vytvoření a Správa virtuálního počítače Azure pomocí Java
 description: Pomocí jazyků Java a Azure Resource Manager nasaďte virtuální počítač a všechny jeho podpůrné prostředky.
-services: virtual-machines-windows
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ea9d5d92d45db50470276929b6e7b4200bb427d6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557518"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
-[Virtuální počítač Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) potřebuje několik pomocných prostředků Azure. Tento článek popisuje vytváření, správu a odstraňování prostředků virtuálních počítačů pomocí jazyka Java. Získáte informace o těchto tématech:
+[Virtuální počítač Azure](overview.md) (VM) potřebuje několik pomocných prostředků Azure. Tento článek popisuje vytváření, správu a odstraňování prostředků virtuálních počítačů pomocí jazyka Java. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření projektu Maven
@@ -33,7 +33,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-1. Pokud jste to ještě neudělali, nainstalujte [Java](https://aka.ms/azure-jdks).
+1. Pokud jste to ještě neudělali, nainstalujte [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 2. Nainstalujte [Maven](https://maven.apache.org/download.cgi).
 3. Vytvořte novou složku a projekt:
     
@@ -128,7 +128,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
     graphURL=https://graph.microsoft.com/
     ```
 
-    Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
+    Nahraďte **&lt; ID &gt;** předplatného identifikátorem vašeho předplatného, **&lt; ID &gt; aplikace** s identifikátorem aplikace služby Active **&lt; &gt;** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a **&lt; ID &gt; tenanta** s identifikátorem tenanta.
 
 2. Soubor uložte.
 3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
@@ -288,7 +288,7 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> V tomto kurzu se vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru dalších imagí najdete v tématu [navigace a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> V tomto kurzu se vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru dalších imagí najdete v tématu [navigace a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure CLI](../linux/cli-ps-findimage.md).
 > 
 >
 

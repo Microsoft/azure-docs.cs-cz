@@ -3,196 +3,300 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Informace o službě Security Center
-      href: security-center-intro.md
-    - name: Podporované platformy
-      href: security-center-os-coverage.md
-    - name: Funkce služby Security Center
+    - name: Co je Azure Security Center?
+      href: security-center-introduction.md
+    - name: Co je Azure Defender?
+      href: azure-defender.md
+    - name: Co je nového
+      displayName: 'changelog, news, release notes'
+      href: release-notes.md
+    - name: Důležité chystané změny
+      displayName: 'release notes, changelog, news'
+      href: upcoming-changes.md
+    - name: Dostupnost
       items:
-        - name: Pokrytí funkcí pro virtuální počítače
+        - name: Podporované platformy
+          displayName: coverage
+          href: security-center-os-coverage.md
+        - name: 'Pokrytí podle operačního systému, typu počítače a cloudu'
           href: security-center-services.md
         - name: Pokrytí funkcí pro prostředky Azure PaaS
           href: features-paas.md
-    - name: Co je nového ve službě Security Center?
-      href: release-notes.md
-    - name: Doporučení zabezpečení
-      href: recommendations-reference.md
-    - name: Výstrahy zabezpečení a model Kill Chain
-      href: alerts-reference.md
-    - name: Oprávnění
-      href: security-center-permissions.md
-    - name: Ceny
-      href: security-center-pricing.md
+        - name: Role a oprávnění uživatele
+          displayName: RBAC
+          href: security-center-permissions.md
+        - name: Povolený Security Center zdarma vs Azure Defender
+          href: security-center-pricing.md
 - name: Rychlé starty
   items:
-    - name: Předplatná Azure
+    - name: 1. Povolit Security Center v předplatných
       href: security-center-get-started.md
-    - name: Počítače s Windows
-      href: quick-onboard-windows-computer.md
-    - name: Počítače s Linuxem
-      href: quick-onboard-linux-computer.md
-    - name: Virtuální počítače Azure Stack
-      href: quick-onboard-azure-stack.md
-    - name: Automatizace onboardingu pomocí PowerShellu
-      href: security-center-powershell-onboarding.md
-    - name: Konfigurace shromažďování dat
+    - name: 2. Povolení Azure Defenderu
+      href: enable-azure-defender.md
+    - name: 3. Konfigurace automatického zřizování
       href: security-center-enable-data-collection.md
-    - name: Nastavení e-mailových oznámení
+    - name: 4. Nastavení e-mailových oznámení
       href: security-center-provide-security-contact-details.md
+    - name: 5. Připojení hybridních a cloudových počítačů
+      items:
+        - name: Připojení počítačů mimo Azure do Azure
+          displayName: 'azure stack, ash, windows, linux, hybrid, arc'
+          href: quickstart-onboard-machines.md
+        - name: Připojení účtů AWS
+          displayName: 'hybrid, multicloud, amazon, arc'
+          href: quickstart-onboard-aws.md
+        - name: Připojení účtů GCP
+          displayName: 'hybrid, multicloud, google'
+          href: quickstart-onboard-gcp.md
+    - name: 6. Vytváření automatických odpovědí na výstrahy
+      displayName: 'Resource Manager, ARM'
+      href: quickstart-automation-alert.md
+    - name: 7. Volba standardů pro řídicí panel dodržování předpisů
+      displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, ASB, Benchmark, Azure Security Benchmark, HIPAA'
+      href: update-regulatory-compliance-packages.md
 - name: Kurzy
   items:
     - name: Průvodce plánováním a provozem
       href: security-center-planning-and-operations-guide.md
     - name: Ochrana vašich prostředků
       href: tutorial-protect-resources.md
-    - name: Reakce na incidenty
+    - name: Prošetřování a reakce na výstrahy zabezpečení
       href: tutorial-security-incident.md
     - name: Vylepšené dodržování legislativních předpisů
       href: security-center-compliance-dashboard.md
+    - name: Správa zásad zabezpečení
+      href: tutorial-security-policy.md
 - name: Koncepty
   items:
-    - name: 'Skóre zabezpečení, doporučení a zásady'
+    - name: Koncepty správy stav Cloud Security
       items:
-        - name: Bezpečnostní skóre
+        - name: 'Zásady, iniciativy a doporučení'
+          href: security-policy-concept.md
+        - name: Bezpečné skóre a kontroly zabezpečení
           href: secure-score-security-controls.md
-        - name: Přehled doporučení k zabezpečení
-          href: security-center-recommendations.md
-        - name: Přehled zásad zabezpečení
-          href: tutorial-security-policy.md
-        - name: Předdefinované zásady zabezpečení
-          href: security-center-policy-definitions.md
-        - name: Použití doporučení k vylepšení zabezpečení
-          href: security-center-using-recommendations.md
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
-    - name: Ochrana před hrozbami a výstrahy zabezpečení
+        - name: Referenční seznam doporučení
+          href: recommendations-reference.md
+    - name: Koncepce ochrany úloh v cloudu
       items:
-        - name: Přehled ochrany před hrozbami ve službě Security Center
-          href: threat-protection.md
-        - name: Přehled výstrah zabezpečení
+        - name: Výstrahy a incidenty zabezpečení
           href: security-center-alerts-overview.md
         - name: Referenční seznam výstrah
           href: alerts-reference.md
-        - name: Schémata výstrah
-          href: alerts-schemas.md
-        - name: Přehled incidentů zabezpečení
-          href: security-center-alerts-cloud-smart.md
-    - name: Zabezpečení dat
-      href: security-center-data-security.md
-    - name: Přístup k virtuálnímu počítači za běhu
-      href: just-in-time-explained.md
-    - name: Správa napříč tenanty
-      href: security-center-cross-tenant-management.md
-    - name: Zabezpečení kontejneru
-      items:
-        - name: Přehled zabezpečení kontejnerů
-          href: container-security.md
-        - name: Integrace se službou Azure Container Registry
-          href: azure-container-registry-integration.md
-        - name: Integrace se službou Azure Kubernetes Service
-          href: azure-kubernetes-service-integration.md
 - name: Návody
   items:
-    - name: Upgrade na pokročilé zabezpečení
-      href: security-center-onboarding.md
-    - name: Konfigurace zásad zabezpečení a standardů dodržování předpisů
+    - name: Použití řídicího panelu přehled
+      displayName: 'overview, compliance, inventory'
+      href: overview-page.md
+    - name: Použití řídicího panelu Azure Defenderu
+      href: azure-defender-dashboard.md
+    - name: Přístup k zabezpečenému skóre a jejich sledování
+      href: secure-score-access-and-track.md
+    - name: Správa prostředků s využitím inventáře prostředků
+      href: asset-inventory.md
+    - name: Vytváření interaktivních sestav Security Center dat
+      displayName: 'workbooks, Secure Score Over Time, Vulnerability Assessment Findings'
+      href: custom-dashboards-azure-workbooks.md
+    - name: Použití bezpečnostních doporučení ke zvýšení zabezpečení
       items:
-        - name: Vytváření vlastních zásad zabezpečení
+        - name: Kontrola doporučení zabezpečení
+          href: security-center-recommendations.md
+        - name: Oprava doporučení
+          href: security-center-remediate-recommendations.md
+        - name: Jak zabránit chybným konfiguracím pomocí možností Vynutit/Zamítnout
+          displayName: recommendations
+          href: prevent-misconfigurations.md
+        - name: Automatizace odpovědí na doporučení
+          displayName: workflow
+          href: workflow-automation.md
+        - name: Zakázat doporučení
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: 'Vyloučení doporučení na prostředek, předplatné nebo skupinu pro správu'
+          displayName: disable
+          href: exempt-resource.md
+        - name: Vytváření vlastních iniciativ a zásad zabezpečení
           href: custom-security-policies.md
-        - name: Správa zásad s využitím REST API služby Azure Policy
-          href: configure-security-policy-azure-policy.md
-        - name: Volba standardů pro řídicí panel dodržování předpisů
-          href: update-regulatory-compliance-packages.md
-    - name: Kontrola ohrožení zabezpečení virtuálních počítačů
+    - name: Ochrana počítačů
+      displayName: 'hybrid, arc, Azure Defender for machines'
       items:
-        - name: Přehled kontroly ohrožení zabezpečení
-          href: security-center-vulnerability-assessment-recommendations.md
-        - name: Integrovaný skener ohrožení zabezpečení virtuálních počítačů
-          href: built-in-vulnerability-assessment.md
-        - name: Použití externích skenerů
-          href: partner-vulnerability-assessment.md
-    - name: Konfigurace ochrany před hrozbami a zpracování výstrah
+        - name: Přehled služby Azure Defender pro servery
+          displayName: VM
+          href: defender-for-servers-introduction.md
+        - name: Kontrola ohrožení zabezpečení
+          items:
+            - name: Skenování počítačů pomocí integrovaného skeneru VA
+              displayName: 'qualys, vulnerability, arc, hybrid'
+              href: deploy-vulnerability-assessment-vm.md
+            - name: Kontrola virtuálních počítačů s využitím integrovaného řešení VA BYOL
+              displayName: 'qualys, rapid7, vulnerability'
+              href: deploy-vulnerability-assessment-byol-vm.md
+            - name: Kontrola a náprava ohrožení zabezpečení
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md
+            - name: Zákaz konkrétních zjištěných ohrožení zabezpečení
+              displayName: 'qualys, rapid7'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
+        - name: Zabezpečené porty pro správu s využitím přístupu k virtuálním počítačům podle potřeby
+          items:
+            - name: Přehled přístupu k virtuálním počítačům podle potřeby
+              displayName: 'jit, management'
+              href: just-in-time-explained.md
+            - name: Správa přístupu za běhu
+              displayName: 'jit, management, ports'
+              href: security-center-just-in-time.md
+        - name: Použití integrované licence Microsoft Defenderu pro koncový bod
+          displayName: 'ATP, mdatp, wdatp'
+          href: security-center-wdatp.md
+        - name: Definování seznamů bezpečných aplikací pro počítače
+          displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
+          href: security-center-adaptive-application.md
+        - name: Sledování změn souborů a registrů
+          items:
+            - name: Přehled monitorování integrity souborů
+              displayName: 'fim, change'
+              href: security-center-file-integrity-monitoring.md
+            - name: Porovnání směrných plánů pomocí monitorování integrity souborů
+              displayName: 'fim, change'
+              href: security-center-file-integrity-monitoring-baselines.md
+        - name: Vylepšení stav zabezpečení sítě
+          displayName: 'anh, adaptive network hardening'
+          href: security-center-adaptive-network-hardening.md
+        - name: Posílení zabezpečení hostitelů Dockeru
+          displayName: containers
+          href: harden-docker-hosts.md
+    - name: Ochrana prostředků SQL
       items:
-        - name: Správa výstrah zabezpečení
+        - name: Přehled služby Azure Defender pro SQL
+          displayName: database
+          href: defender-for-sql-introduction.md
+        - name: Povolit Defender pro SQL servery na počítačích
+          href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: Prohledat chyby zabezpečení v prostředcích SQL
+          href: defender-for-sql-on-machines-vulnerability-assessment.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: Zakázání hledání ohrožení zabezpečení na SQL serverech
+          displayName: 'VA, registry, vulnerabilities'
+          href: defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview
+        - name: Přizpůsobení zásad SQL Information Protection
+          displayName: 'sql, database, data discovery'
+          href: security-center-info-protection-policy.md
+    - name: Ochrana kontejnerových prostředí
+      displayName: Azure Defender
+      items:
+        - name: Funkce zabezpečení kontejnerů služby Security Center
+          displayName: 'kubernetes, aks, acr, registries, k8s'
+          href: container-security.md
+        - name: Přehled programu Defender pro Kubernetes
+          displayName: 'clusters, k8s, aks'
+          href: defender-for-kubernetes-introduction.md
+        - name: Přehled programu Defender pro Registry kontejnerů
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
+        - name: Kontrola ohrožení zabezpečení v imagích registrů
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: Zákaz konkrétních zjištěných ohrožení zabezpečení v imagích
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
+        - name: Ochrana úloh Kubernetes
+          displayName: 'k8s, containers, aks'
+          href: kubernetes-workload-protections.md
+    - name: Ochrana rozhraní API a webových aplikací Azure App Service
+      displayName: 'Azure Defender for App Service, defender for app'
+      href: defender-for-app-service-introduction.md
+    - name: Ochrana účtů Azure Storage
+      displayName: 'blob, adls, files, Azure Defender for Storage, Defender for Storage'
+      href: defender-for-storage-introduction.md
+    - name: Ochrana Key Vault klíčů a tajných kódů
+      items:
+        - name: Přehled Azure Defenderu pro Key Vault
+          displayName: 'KV, akv'
+          href: defender-for-key-vault-introduction.md
+        - name: Zpracování výstrah pro Key Vault v Defenderu
+          displayName: 'akv, kv'
+          href: defender-for-key-vault-usage.md
+    - name: Monitorování operací správy prostředků
+      items:
+        - name: Přehled Azure Defenderu pro Správce prostředků
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
+        - name: Zpracování výstrah pro Správce prostředků v Defenderu
+          displayName: arm
+          href: defender-for-resource-manager-usage.md
+    - name: Monitorování dotazů DNS z vašich prostředků Azure
+      items:
+        - name: Přehled Azure Defenderu pro DNS
+          displayName: 'domain, Defender for DNS'
+          href: defender-for-dns-introduction.md
+        - name: Reakce na upozornění Azure Defenderu pro DNS
+          href: defender-for-dns-usage.md
+    - name: Ochrana serverů Windows Admin Center
+      href: windows-admin-center-integration.md
+    - name: Integrace řešení zabezpečení a zdrojů dat
+      href: security-center-partner-integration.md
+    - name: Ochrana síťových prostředků
+      href: security-center-network-recommendations.md
+    - name: Vynutilit a spravovat vícefaktorové ověřování
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
+      href: security-center-identity-access.md
+    - name: Použití dalších ochrany před hrozbami Security Center
+      href: other-threat-protections.md
+    - name: 'Správa předplatných, uživatelů a oprávnění'
+      items:
+        - name: Uspořádání skupin pro správu a předplatných
+          href: security-center-management-groups.md
+        - name: Udělení a vyžádání oprávnění na úrovni tenanta
+          displayName: 'global admin, Azure Active Directory (AD), AAD'
+          href: tenant-wide-permissions-management.md
+        - name: Povolení služby Security Center pro skupinu pro správu
+          href: onboard-management-group.md
+        - name: Nastavení správy různých tenantů
+          href: security-center-cross-tenant-management.md
+        - name: Automatizace onboardingu pomocí PowerShellu
+          href: security-center-powershell-onboarding.md
+    - name: 'Správa výstrah, incidentů a sestav hrozeb'
+      items:
+        - name: Reakce na výstrahy zabezpečení
           href: security-center-managing-and-responding-alerts.md
         - name: Vytváření a správa pravidel pro potlačení výstrah
           href: alerts-suppression-rules.md
-        - name: Nastavení služby Advanced Threat Protection pro Azure Key Vault
-          href: advanced-threat-protection-key-vault.md
+        - name: Export upozornění a doporučení
+          items:
+            - name: 'Export do SIEM, SOAR nebo ITSM'
+              displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+              href: export-to-siem.md
+            - name: Export do pracovního prostoru služby Log Analytics nebo do Azure Event Hubu
+              displayName: continuous
+              href: continuous-export.md
+            - name: Stažení sestavy CSV se všemi upozorněními
+              href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
+            - name: Schémata výstrah
+              href: alerts-schemas.md
         - name: Správa incidentů zabezpečení
           href: security-center-incident.md
         - name: Generování sestav analýzy hrozeb
           href: security-center-threat-report.md
-        - name: Ověření konfigurace výstrah (testovací soubor EICAR)
+        - name: Ověření konfigurace výstrah
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
-        - name: Použití pokročilého zabezpečení dat pro SQL na virtuálních počítačích Azure
-          href: security-center-iaas-advanced-data.md
         - name: Automatizace odpovědí na výstrahy
+          displayName: workflow
           href: workflow-automation.md
-        - name: Export výstrah
-          href: continuous-export.md
-    - name: Použití bezpečnostních doporučení ke zvýšení zabezpečení
-      items:
-        - name: Oprava doporučení
-          href: security-center-remediate-recommendations.md
-        - name: Posílení stavu zabezpečení
-          href: security-center-monitoring.md
-        - name: Referenční seznam doporučení
-          href: recommendations-reference.md
-        - name: Ochrana vašich počítačů a aplikací
-          href: security-center-virtual-machine-protection.md
-        - name: Ochrana síťových prostředků
-          href: security-center-network-recommendations.md
-        - name: Ochrana dat a služby úložiště
-          href: security-center-sql-service-recommendations.md
-        - name: Ochrana identit a přístupu
-          href: security-center-identity-access.md
-        - name: Automatizace odpovědí na doporučení
-          href: workflow-automation.md
-        - name: Export doporučení
-          href: continuous-export.md
-    - name: Správa prostředků s využitím inventáře prostředků
-      href: asset-inventory.md
-    - name: Integrace s ostatními nástroji a službami
-      items:
-        - name: Integrace s řešením Windows Admin Center
-          href: windows-admin-center-integration.md
-        - name: Ochrana rozhraní API a webových aplikací Azure App Service
-          href: security-center-app-services.md
-        - name: Integrace s programem Microsoft Defender ATP
-          href: security-center-wdatp.md
-        - name: Integrace řešení zabezpečení a zdrojů dat
-          href: security-center-partner-integration.md
-    - name: Použití cloudové ochrany
-      items:
-        - name: Správa přístupu za běhu
-          href: security-center-just-in-time.md
-        - name: Adaptivní řízení aplikací
-          href: security-center-adaptive-application.md
-        - name: Monitorování integrity souborů
-          href: security-center-file-integrity-monitoring.md
-        - name: Porovnání standardních hodnot s využitím monitorování Integrity souborů
-          href: security-center-file-integrity-monitoring-baselines.md
-        - name: Adaptivní posilování zabezpečení sítě
-          href: security-center-adaptive-network-hardening.md
-    - name: Monitorování kontejnerů
-      href: monitor-container-security.md
-    - name: Přizpůsobení zásad Information Protection
-      href: security-center-info-protection-policy.md
-    - name: Správa uživatelských dat šetření
-      href: security-center-investigation-user-data.md
-    - name: Zajištění viditelnosti v rámci celého tenanta
-      href: security-center-management-groups.md
-- name: Referenční informace
+- name: Reference
   items:
-    - name: Rozhraní REST API
-      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Archivované poznámky k verzi (starší než šest měsíců)
+      displayName: 'changelog, news'
+      href: release-notes-archive.md
+    - name: Jak Microsoft zabezpečuje zákaznická data
+      href: security-center-data-security.md
+    - name: Dokumentace k rozhraním REST API
+      href: /rest/api/securitycenter/
+    - name: Standardní hodnoty zabezpečení
+      href: security-baseline.md
     - name: Nejčastější dotazy ke službě Azure Security Center
       items:
         - name: Obecné otázky
           href: faq-general.md
-        - name: Dotazy k fakturaci
-          href: faq-billing.md
         - name: Dotazy k oprávněním
           href: faq-permissions.md
         - name: Dotazy k agentům a shromažďování dat
@@ -201,12 +305,11 @@
           href: faq-vms.md
         - name: Stávající uživatelé Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: Archiv novinek ve službě Security Center
-      href: release-notes-archive.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Blog s plány nasazení produktů Azure
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: Vyřazení funkcí a rozhraní API (červenec 2019)
-      href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení
       href: security-center-endpoint-protection.md
 - name: Zdroje a prostředky
@@ -215,20 +318,20 @@
       href: /learn/browse/?term=securityS
     - name: Správa uživatelských dat
       href: security-center-privacy.md
-    - name: Dokumentace ke službě Azure Security Center pro IoT
-      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
+    - name: Dokumentace k Azure Defenderu for IoT
+      href: /azure/asc-for-iot/
     - name: Dokumentace k zabezpečení Azure
-      href: /azure/security/
+      href: ../security/index.yml
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Plán připravenosti
       href: security-center-readiness-roadmap.md
-    - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: Blogy technické komunity služby Azure Security Center
+      href: 'https://techcommunity.microsoft.com/t5/azure-security-center/bg-p/AzureSecurityCenterBlog'
     - name: Azure Security Center na webu Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure-security-center'
-    - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: Videa ASCinTheField na YouTube
+      href: 'https://www.youtube.com/results?search_query=%23ASCInTheField'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Regionální dostupnost

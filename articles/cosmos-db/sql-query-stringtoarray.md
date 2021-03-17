@@ -3,18 +3,21 @@ title: StringToArray v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o StringToArray funkcí SQL systému v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ae1f69e92e890daae528eb1f4dfb95f76560043
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302912"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337978"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí výraz přeložený do pole. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -33,7 +36,7 @@ StringToArray(<str_expr>)
   Vrátí výraz pole nebo nedefinovaný. 
   
 ## <a name="remarks"></a>Poznámky
-  Vnořené řetězcové hodnoty musí být zapsány pomocí dvojitých uvozovek, aby byly platné JSON. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/) .
+  Vnořené řetězcové hodnoty musí být zapsány pomocí dvojitých uvozovek, aby byly platné JSON. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/). Tato systémová funkce nebude index využívat.
   
 ## <a name="examples"></a>Příklady
   
@@ -91,12 +94,8 @@ Zde je sada výsledků.
 [{}]
 ```
 
-## <a name="remarks"></a>Poznámky
-
-Tato systémová funkce nebude index využívat.
-
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

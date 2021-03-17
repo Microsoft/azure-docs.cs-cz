@@ -1,5 +1,5 @@
 ---
-title: Node. js, úhlová aplikace s využitím rozhraní API Azure Cosmos DB pro MongoB (part1)
+title: Node.Js, úhlové aplikace využívající rozhraní API Azure Cosmos DB pro MongoB (part1)
 description: V této sérii kurzů založených na videích zjistíte, jak vytvořit aplikaci MongoDB s Angular a Node postavenou na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,18 +10,19 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d3e33878fdd88ebe0582187274278e150b4507fc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75444687"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074331"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
+V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v Node.js pomocí Expressu a úhlu a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md).
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Umožňuje rychle vytvořit a dotazovat databáze dokumentů, klíčů/hodnot a grafů, které využívají možnosti globální distribuce a horizontálního škálování v jádru Cosmos DB. 
+Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhraními API pro jakékoli škálování. Umožňuje vyvíjet moderní aplikace s využitím rychlosti a dostupnosti zajištěné smlouvou SLA, automatické a okamžité škálovatelnosti a open source rozhraní API pro mnoho NoSQLch modulů.
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 

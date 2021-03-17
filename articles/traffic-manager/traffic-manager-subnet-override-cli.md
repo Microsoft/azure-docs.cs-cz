@@ -3,17 +3,17 @@ title: Přepsání podsítě Azure Traffic Manager pomocí rozhraní příkazov�
 description: Tento článek vám pomůže porozumět tomu, jak Traffic Manager přepsání podsítě použít k přepsání metody směrování Traffic Manager profilu pro směrování provozu do koncového bodu na základě IP adresy koncového uživatele prostřednictvím předdefinovaného rozsahu IP adres pro mapování koncových bodů.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: rohink
-ms.openlocfilehash: 33fdc2875d8d766f212301ddfecf9dbb734b876a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689686"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211324"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Přepsání podsítě Traffic Manager pomocí Azure CLI
 
@@ -34,17 +34,14 @@ Existují dva typy profilů směrování, které podporují přepsání podsít�
 
 Pokud chcete vytvořit přepsání podsítě Traffic Manager, můžete pomocí Azure CLI přidat podsítě pro přepsání do koncového bodu Traffic Manager.
 
-## <a name="azure-cli"></a>Azure CLI
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Aktualizujte Traffic Manager koncový bod pomocí přepsání podsítě.
-Pomocí Azure CLI aktualizujte koncový bod pomocí [AZ Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
+Pomocí Azure CLI aktualizujte koncový bod pomocí [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update).
 
-```azurecli
-
+```azurecli-interactive
 ### Add a range of IPs ###
 az network traffic-manager endpoint update \
     --name MyEndpoint \
@@ -60,22 +57,21 @@ az network traffic-manager endpoint update \
     --resource-group MyResourceGroup \
     --subnets 9.10.11.0:24 \
     --type AzureEndpoints
-
 ```
 
-Rozsahy IP adres můžete odebrat spuštěním příkazu [AZ Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) s možností **--Remove** .
+Rozsahy IP adres můžete odebrat spuštěním příkazu [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) s možností **--Remove** .
 
-```azurecli
-
+```azurecli-interactive
 az network traffic-manager endpoint update \
     --name MyEndpoint \
     --profile-name MyTmProfile \
     --resource-group MyResourceGroup \
     --remove subnets \
     --type AzureEndpoints
-
 ```
+
 ## <a name="next-steps"></a>Další kroky
+
 Přečtěte si další informace o [metodách směrování provozu](traffic-manager-routing-methods.md)Traffic Manager.
 
-Přečtěte si o [způsobu směrování provozu podsítě](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Přečtěte si o [způsobu směrování provozu podsítě](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

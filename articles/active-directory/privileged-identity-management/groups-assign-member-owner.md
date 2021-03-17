@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1dcc98366e37455f462fe1a0740aa161201912f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506222"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534416"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Přiřazení nároku na skupinu privilegovaného přístupu (Preview) v Privileged Identity Management
 
@@ -33,19 +33,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vám mů�
 
 Pomocí těchto kroků můžete uživateli nastavit, aby byl členem skupiny privilegovaných přístupových oprávnění nebo jeho vlastníkem.
 
-1. Přihlaste se k [Privileged Identity Management](https://portal.azure.com/) v Azure Portal s oprávněními role [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. [Přihlaste se ke službě Azure AD](https://aad.portal.azure.com) s oprávněními globálního správce nebo vlastníka skupiny.
+1. Vyberte **skupiny** a pak vyberte skupinu s přiřazením role, kterou chcete spravovat. Seznam můžete vyhledat nebo filtrovat.
 
-    Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu Privileged Identity Management](pim-how-to-give-access-to-pim.md).
+    ![vyhledání skupiny s možností přiřazení rolím ke správě v PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete skupinu a vyberte **privilegovaný přístup (Preview)**.
 
-1. Vyberte **privilegovaný přístup (Preview)**.
-
-1. Můžete vyhledat název skupiny a pomocí **typu skupiny** vyfiltrovat seznam a vybrat skupinu, kterou chcete spravovat.
-
-    ![Seznam privilegovaných přístupových skupin, které se mají spravovat](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. V části **Spravovat**vyberte **přiřazení**.
+    ![Otevření Privileged Identity Managementho prostředí](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Vyberte **Přidat přiřazení**.
 
@@ -53,7 +48,7 @@ Pomocí těchto kroků můžete uživateli nastavit, aby byl členem skupiny pri
 
 1. Vyberte členy nebo vlastníky, které chcete nastavit jako oprávněné pro skupinu privilegovaný přístup.
 
-    ![Vybrat člena nebo podokno skupiny](./media/groups-assign-member-owner/add-assignments.png)
+    ![Snímek obrazovky zobrazující stránku přidat přiřazení, která obsahuje podokno vybrat člena nebo skupinu otevřené a zvýrazněné tlačítko vybrat](./media/groups-assign-member-owner/add-assignments.png)
 
 1. Výběrem **Další** nastavte dobu trvání členství nebo vlastnictví.
 
@@ -77,21 +72,20 @@ Pomocí těchto kroků můžete uživateli nastavit, aby byl členem skupiny pri
 
 Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení role.
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. [Přihlaste se ke službě Azure AD](https://aad.portal.azure.com) s oprávněními globálního správce nebo vlastníka skupiny.
+1. Vyberte **skupiny** a pak vyberte skupinu s přiřazením role, kterou chcete spravovat. Seznam můžete vyhledat nebo filtrovat.
 
-1. Vyberte **privilegovaný přístup (Preview)**.
+    ![vyhledání skupiny s možností přiřazení rolím ke správě v PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Můžete vyhledat název skupiny a pomocí **typu skupiny** vyfiltrovat seznam a vybrat skupinu, kterou chcete spravovat.
+1. Otevřete skupinu a vyberte **privilegovaný přístup (Preview)**.
 
-    ![Seznam privilegovaných přístupových skupin, které se mají spravovat](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. V části **Spravovat**vyberte **přiřazení**.
+    ![Otevření Privileged Identity Managementho prostředí](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Vyberte roli, kterou chcete aktualizovat nebo odebrat.
 
 1. Vyhledejte přiřazení role na kartách **opravňující role** nebo **aktivní role** .
 
-    ![Aktualizovat nebo odebrat přiřazení role](./media/groups-assign-member-owner/groups-add-assignment.png)
+    ![Aktualizovat nebo odebrat přiřazení role](./media/groups-assign-member-owner/groups-bring-under-management.png)
 
 1. Pokud chcete aktualizovat nebo odebrat přiřazení role, vyberte **aktualizovat** nebo **Odebrat** .
 

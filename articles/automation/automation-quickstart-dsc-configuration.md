@@ -8,19 +8,19 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86186074"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s požadovanou konfigurací stavu
 
 Povolením konfigurace stavu Azure Automation můžete spravovat a monitorovat konfigurace serverů s Windows a Linux pomocí konfigurace požadovaného stavu (DSC). Konfigurace, které se posunou od požadované konfigurace, se dají identifikovat nebo automaticky opravit. Tento rychlý Start prochází postup povolením virtuálního počítače se systémem Linux a nasazení zásobníku LAMP pomocí konfigurace stavu Azure Automation.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 * Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](./manage-runas-account.md).

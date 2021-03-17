@@ -1,25 +1,25 @@
 ---
 title: Flexibilita velikosti virtuálního počítače – Azure Reserved VM Instances
 description: Zjistěte, na jaké velikosti se sleva na rezervaci vztahuje, když jste rezervovali instanci virtuálního počítače.
-author: manish-shukla01
+author: yashesvi
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 05119a6f9af935a0f4a2887eae53f3d5bdb1a482
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 03/01/2021
+ms.author: yashar
+ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658079"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030697"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů
 
-Když si koupíte rezervovanou instanci virtuálního počítače, můžete se rozhodnout optimalizovat pro flexibilitu velikosti instance nebo prioritu kapacity. Další informace o nastavení a změně nastavení optimalizace pro rezervované instance virtuálních počítačů najdete v tématu [Změna nastavení optimalizace pro rezervované instance virtuálních počítačů](~/articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+Když si koupíte rezervovanou instanci virtuálního počítače, můžete se rozhodnout optimalizovat pro flexibilitu velikosti instance nebo prioritu kapacity. Další informace o nastavení a změně nastavení optimalizace pro rezervované instance virtuálních počítačů najdete v tématu [Změna nastavení optimalizace pro rezervované instance virtuálních počítačů](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 
-U rezervované instance virtuálního počítače, která je optimalizovaná pro flexibilitu velikosti instance, se rezervace, kterou koupíte, může vztahovat na velikosti virtuálních počítačů ve stejné skupině flexibility velikosti instance. Pokud třeba koupíte rezervaci pro velikost virtuálního počítače, která je uvedená v DSv2 řadě, například Standard_DS5_v2, sleva rezervace se může vztahovat na ostatní čtyři velikosti, které jsou uvedené ve stejné skupině flexibility velikosti instance:
+U rezervované instance virtuálního počítače, která je optimalizovaná pro flexibilitu velikosti instance, se rezervace, kterou koupíte, může vztahovat na velikosti virtuálních počítačů ve stejné skupině flexibility velikosti instance. Pokud třeba koupíte rezervaci pro velikost virtuálního počítače, která je uvedená v DSv2 řadě, například Standard_DS3_v2, sleva rezervace se může vztahovat na jiné velikosti, které jsou uvedené ve stejné skupině flexibility velikosti instance:
 
 - Standard_DS1_v2
 - Standard_DS2_v2
@@ -48,8 +48,14 @@ Sdílený svazek clusteru dál má flexibilní skupiny, ArmSkuName a poměry vel
 
 [Poměr flexibility velikosti instance](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-Adresa URL souboru a schéma budeme uchovávat, aby bylo možné tento soubor zpracovat programově. Data budou také k dispozici prostřednictvím rozhraní API brzy.
+Azure udržuje aktualizovaný odkaz a schéma, takže můžete soubor použít programově.
+
+## <a name="view-vm-size-recommendations"></a>Zobrazit doporučení pro velikost virtuálního počítače
+
+Azure zobrazuje doporučení pro velikost virtuálních počítačů v možnosti nákupu. Chcete-li zobrazit doporučení na nejmenší velikost, vyberte **Seskupit podle nejmenší velikosti**.
+
+:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="Snímek obrazovky se zobrazenými doporučenými množstvími." lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [co je Azure reservations](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md).
+Další informace najdete v tématu [co je Azure reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md).

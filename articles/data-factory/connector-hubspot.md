@@ -1,30 +1,22 @@
 ---
-title: Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
+title: Kopírování dat z HubSpot pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z HubSpot do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f2ab069be7985376c44f2cd2ae3ccdd728d4e2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415210"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385655"
 ---
-# <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
+# <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Kopírování dat z HubSpot pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z HubSpot. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
-
-> [!IMPORTANT]
-> Tento konektor je momentálně ve verzi Preview. Můžete si to vyzkoušet a sdělit nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -48,16 +40,16 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu HubSpot jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **HubSpot** . | Ano |
-| clientId | ID klienta přidružené k vaší aplikaci HubSpot Naučte se vytvářet aplikace v HubSpot [odsud.](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot) | Ano |
-| clientSecret | Tajný kód klienta přidružený k vaší aplikaci HubSpot Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessToken | Přístupový token získaný při počátečním ověřování integrace OAuth. Přečtěte si, jak získat přístupový token pomocí ID klienta a tajného kódu z [tohoto místa](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| Refreshtoken kontextového tokenu | Obnovovací token získaný při počátečním ověřování integrace OAuth. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **HubSpot** . | Yes |
+| clientId | ID klienta přidružené k vaší aplikaci HubSpot Naučte se vytvářet aplikace v HubSpot [odsud.](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot) | Yes |
+| clientSecret | Tajný kód klienta přidružený k vaší aplikaci HubSpot Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| accessToken | Přístupový token získaný při počátečním ověřování integrace OAuth. Přečtěte si, jak získat přístupový token pomocí ID klienta a tajného kódu z [tohoto místa](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| Refreshtoken kontextového tokenu | Obnovovací token získaný při počátečním ověřování integrace OAuth. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -91,9 +83,9 @@ Pro propojenou službu HubSpot jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z HubSpot, nastavte vlastnost Type datové sady na **HubspotObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **HubspotObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **HubspotObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -121,10 +113,10 @@ Chcete-li kopírovat data z HubSpot, nastavte vlastnost Type datové sady na **H
 
 Chcete-li kopírovat data z HubSpot, nastavte typ zdroje v aktivitě kopírování na **HubspotSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HubspotSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Companies where Company_Id = xxx"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HubspotSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Companies where Company_Id = xxx"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

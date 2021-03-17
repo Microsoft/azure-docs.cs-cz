@@ -1,22 +1,17 @@
 ---
 title: Změna konfigurace modulu Azure-SSIS Integration Runtime
 description: Naučte se, jak znovu nakonfigurovat prostředí Azure-SSIS Integration runtime v Azure Data Factory poté, co jste ho již zřídili.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: f609cfb0945d79cfa8ae21b786a5761b92b9dabb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324619"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370678"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Změna konfigurace modulu Azure-SSIS Integration Runtime
 
@@ -28,7 +23,7 @@ Tento článek popisuje, jak znovu nakonfigurovat existující prostředí Azure
 K zastavení, úpravám a překonfigurování nebo odstranění Azure-SSIS IR můžete použít Data Factory uživatelské rozhraní. 
 
 1. Otevřete Data Factory uživatelské rozhraní tak, že na domovské stránce objektu pro vytváření dat vyberete dlaždici pro **monitorování autora &** .
-2. Kliknutím na **Manage** centra pro správu **Domů**, **Upravit**a **monitorovat** zobrazíte podokno **připojení** .
+2. Kliknutím na  centra pro správu **Domů**, **Upravit** a **monitorovat** zobrazíte podokno **připojení** .
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Postup překonfigurování Azure-SSIS IR
 V podokně **připojení** v části **Spravovat** centrum přepněte na stránku **prostředí Integration runtime** a vyberte **aktualizovat**. 
@@ -92,7 +87,7 @@ Po zřízení a spuštění instance prostředí Azure-SSIS Integration runtime 
 Další informace o modulu runtime Azure-SSIS najdete v následujících tématech: 
 
 - [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje koncepční informace o integračních modulech Integration obecně včetně Azure-SSIS IR. 
-- [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny k vytvoření Azure-SSIS IR a používá Azure SQL Database k hostování katalogu SSIS. 
+- [Kurz: Nasazení balíčků SSIS do Azure](./tutorial-deploy-ssis-packages-azure.md) Tento článek obsahuje podrobné pokyny k vytvoření Azure-SSIS IR a používá Azure SQL Database k hostování katalogu SSIS. 
 - [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek se rozbalí v tomto kurzu a poskytne pokyny k použití spravované instance Azure SQL a připojení IR k virtuální síti. 
 - [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md). Tento článek obsahuje koncepční informace o připojení Azure-SSIS IR k virtuální síti Azure. Poskytuje také kroky pro využití webu Azure Portal ke konfiguraci virtuální sítě, aby se k ní prostředí Azure-SSIS IR mohlo připojit. 
 - [Monitorování Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). Tento článek ukazuje, jak načíst informace o Azure-SSIS IR a popisy stavů ve vrácených informacích.

@@ -1,21 +1,18 @@
 ---
 title: Přírůstkové načtení dat pomocí PowerShellu
 description: Tento skript PowerShellu ukazuje, jak použít Azure Data Factory ke přírůstkové kopírování dat z Azure SQL Database na Blob Storage Azure.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 1919f89d2e39981effe14c1203446f8f9d930f41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736403696ec340e547547458cb62e243e6e660b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79462485"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389837"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Skript prostředí PowerShell – přírůstkové načítání dat pomocí Azure Data Factory
 
@@ -65,6 +62,6 @@ Tento skript používá následující příkazy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [Azure Data Factory skriptech PowerShellu](../samples-powershell.md).

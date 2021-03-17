@@ -1,19 +1,16 @@
 ---
 title: Apache Storm ukázka topologie Java – Azure HDInsight
 description: Naučte se vytvářet topologie Apache Storm v jazyce Java vytvořením ukázkové topologie počtu slov.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322869"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929116"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
@@ -26,7 +23,7 @@ Po dokončení kroků v tomto dokumentu můžete tuto topologii nasadit do Apach
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
@@ -199,9 +196,9 @@ Tato část slouží k přidání modulů plug-in, prostředků a dalších mož
 
     Dalším užitečným modulem plug-in je [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) , který se používá ke změně možností kompilace. Změňte verzi Java, kterou Maven používá pro zdroj a cíl vaší aplikace.
 
-  * Pro HDInsight __3,4 nebo starší__nastavte zdrojovou a cílovou verzi Java na __1,7__.
+  * Pro HDInsight __3,4 nebo starší__ nastavte zdrojovou a cílovou verzi Java na __1,7__.
 
-  * V případě HDInsight __3,5__nastavte zdrojovou a cílovou verzi Java na __1,8__.
+  * V případě HDInsight __3,5__ nastavte zdrojovou a cílovou verzi Java na __1,8__.
 
   Do části souboru přidejte následující text `<plugins>` `pom.xml` , který bude zahrnovat modul plug-in Maven pro Apache. Tento příklad určuje 1,8, takže cílová verze HDInsight je 3,5.
 

@@ -3,20 +3,21 @@ title: Vytvoření virtuálního počítače s Windows pomocí Azure image Build
 description: Vytvořte virtuální počítač s Windows pomocí Tvůrce imagí Azure.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 03/02/2020
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
+ms.openlocfilehash: 918cee723bfde69d08532aee6fe4f395dbddb4ee
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027933"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695443"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder
 
-V tomto článku se dozvíte, jak můžete vytvořit vlastní image Windows pomocí Tvůrce imagí virtuálních počítačů Azure. Příklad v tomto [článku používá pro](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) přizpůsobení image vlastníky:
+V tomto článku se dozvíte, jak můžete vytvořit vlastní image Windows pomocí Tvůrce imagí virtuálních počítačů Azure. Příklad v tomto [článku používá pro](../linux/image-builder-json.md#properties-customize) přizpůsobení image vlastníky:
 - PowerShell (ScriptUri) – Stáhněte a spusťte [powershellový skript](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1).
 - Restartování Windows – virtuální počítač se restartuje.
 - PowerShell (inline) – spusťte konkrétní příkaz. V tomto příkladu na virtuálním počítači vytvoří adresář pomocí `mkdir c:\\buildActions` .
@@ -58,6 +59,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.Network | grep registrationState
 ```
 
 Pokud nevyžadují registraci, spusťte tento příkaz:
@@ -67,6 +69,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 
@@ -117,7 +120,7 @@ imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
 
 # download preconfigured role definition example
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
 
@@ -143,7 +146,7 @@ az role assignment create \
 Vytvořili jste šablonu pro konfiguraci parametrizovaných imagí, kterou můžete vyzkoušet. Stáhněte soubor example. JSON a nakonfigurujte ho pomocí proměnných, které jste nastavili dříve.
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
 
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateWin.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
@@ -161,7 +164,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Pro zdrojovou image musíte vždycky [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), kterou nemůžete použít `latest` .
+> Pro zdrojovou image musíte vždycky [zadat verzi](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version), kterou nemůžete použít `latest` .
 > Pokud přidáte nebo změníte skupinu prostředků, do které je bitová kopie distribuována, musíte [nastavit oprávnění](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) pro skupinu prostředků.
  
 ## <a name="create-the-image"></a>Vytvoření image
@@ -179,13 +182,13 @@ az resource create \
 
 Po dokončení Tato akce vrátí zprávu o úspěchu zpět do konzoly a vytvoří `Image Builder Configuration Template` v `$imageResourceGroup` . Tento prostředek můžete zobrazit ve skupině prostředků v Azure Portal, pokud povolíte možnost Zobrazit skryté typy.
 
-Na pozadí vytvoří Tvůrce imagí také pracovní skupinu prostředků ve vašem předplatném. Tato skupina prostředků se používá pro sestavení image. Bude v tomto formátu:`IT_<DestinationResourceGroup>_<TemplateName>`
+Na pozadí vytvoří Tvůrce imagí také pracovní skupinu prostředků ve vašem předplatném. Tato skupina prostředků se používá pro sestavení image. Bude v tomto formátu: `IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
 > Pracovní skupinu prostředků nesmíte odstranit přímo. Nejprve odstraňte artefakt šablony imagí, což způsobí odstranění pracovní skupiny prostředků.
 
 Pokud služba ohlásí chybu během odesílání šablony konfigurace obrázku:
--  Projděte si tyto kroky pro [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) . 
+-  Projděte si tyto kroky pro [řešení potíží](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) . 
 - Před opakováním odeslání budete muset šablonu odstranit pomocí následujícího fragmentu kódu.
 
 ```azurecli-interactive
@@ -208,7 +211,7 @@ az resource invoke-action \
 
 Počkejte na dokončení sestavení. Tato možnost může trvat přibližně 15 minut.
 
-Pokud narazíte na nějaké chyby, přečtěte si prosím tyto kroky pro [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) .
+Pokud narazíte na nějaké chyby, přečtěte si prosím tyto kroky pro [řešení potíží](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) .
 
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
@@ -271,4 +274,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md).

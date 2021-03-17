@@ -8,31 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 01/08/2021
 ms.author: trbye
-ms.openlocfilehash: 5c356a1c707ede3b9417bc3e742a940333b4c4ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 90a4ad068f332b198696d96bddbb794c820f42f5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056818"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564384"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
-Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který plánujete použít. REST API je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) nemůže.
+Převod řeči na text má dvě různá rozhraní REST API. Každé rozhraní API slouží ke speciálnímu účelu a používá jiné sady koncových bodů.
 
-Než začnete používat převod řeči na text, REST API pochopit:
+Rozhraní REST API pro text jsou:
+- [Převod řeči na text REST API v 3.0](#speech-to-text-rest-api-v30) se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). v 3.0 je [následníkem v 2.0](./migrate-v2-to-v3.md).
+- [Převod řeči na text REST API pro krátký zvuk](#speech-to-text-rest-api-for-short-audio) se používá pro online přepis jako alternativu k [sadě Speech SDK](speech-sdk.md). Požadavky, které používají toto rozhraní API, můžou přenášet až 60 sekund zvuk na jednu žádost. 
 
-* Požadavky, které používají REST API a přímo odesílají zvuk, můžou obsahovat až 60 sekund zvukového přenosu.
-* REST API převodu řeči na text vrátí pouze konečné výsledky. Neposkytují se částečné výsledky.
+## <a name="speech-to-text-rest-api-v30"></a>Převod řeči na text REST API v 3.0
 
-Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo souborového REST API, jako je například [Batch přepis](batch-transcription.md).
+Převod řeči na text REST API v 3.0 se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). Pokud potřebujete komunikovat s online přepisem přes REST, používejte [pro krátké zvukové REST API převod řeči na text](#speech-to-text-rest-api-for-short-audio).
+
+REST API v 3.0 použijte k těmto akcím:
+- Zkopírujte modely do jiných předplatných, pokud chcete, aby měli kolegové přístup k modelu, který jste vytvořili, nebo v případech, kdy chcete model nasadit do více než jedné oblasti.
+- Přepisovat data z kontejneru (hromadný přepis) a poskytněte několik adres URL zvukového souboru.
+- Nahrávání dat z Azure Storage účtů pomocí identifikátoru URI SAS
+- Získat protokoly na koncový bod, pokud se pro tento koncový bod požadovaly protokoly
+- Vyžádejte si manifest modelů, které vytvoříte, pro účely nastavení místních kontejnerů.
+
+REST API v 3.0 zahrnuje tyto funkce:
+- **Oznámení – Webhooky**– všechny spuštěné procesy služby teď podporují oznámení Webhooku. REST API v 3.0 poskytuje volání, která umožňují registrovat Webhooky, ve kterých se odesílají oznámení.
+- **Aktualizace modelů za koncovými body** 
+- **Přizpůsobení modelu s více datovými sadami**– přizpůsobení modelu pomocí více kombinací dat akustického, jazyka a výslovnosti pro více datových sad
+- **Přineste si vlastní úložiště**– používejte vlastní účty úložiště pro protokoly, přepisované soubory a další data.
+
+V [tomto článku](batch-transcription.md)najdete příklady použití REST API v 3.0 s dávkovým přepisem.
+
+Pokud používáte převod řeči na text REST API v 2.0, přečtěte si téma jak můžete v [této příručce](./migrate-v2-to-v3.md)migrovat na verzi 3.0.
+
+[Tady](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)najdete odkaz na celý převod řeči na text REST API v 3.0.
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>REST API řeči na text pro krátký zvuk
+
+Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který plánujete použít. REST API pro krátký zvuk je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) není.
+
+Před použitím REST API řeči na text pro krátký zvuk zvažte následující:
+
+* Požadavky, které používají REST API pro krátký zvuk a přímý přenos zvuku, můžou obsahovat až 60 sekund zvukového přenosu.
+* REST API řeči na text pro krátký zvuk vrátí pouze konečné výsledky. Neposkytují se částečné výsledky.
+
+Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo [řeči-to-text REST API v 3.0](#speech-to-text-rest-api-v30).
+
+> [!TIP]
+> V [tomto článku](sovereign-clouds.md) najdete Azure Government a koncových bodů Azure Čína.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Oblasti a koncové body
+### <a name="regions-and-endpoints"></a>Oblasti a koncové body
 
-Koncový bod pro REST API má tento formát:
+Koncový bod pro REST API pro krátký zvuk má tento formát:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -45,7 +80,7 @@ Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vaš
 > [!NOTE]
 > Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-## <a name="query-parameters"></a>Parametry dotazu
+### <a name="query-parameters"></a>Parametry dotazů
 
 Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
@@ -54,13 +89,13 @@ Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 | `language` | Identifikuje mluvený jazyk, který se rozpozná. Viz [podporované jazyky](language-support.md#speech-to-text). | Vyžadováno |
 | `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed` . Jednoduché výsledky zahrnují `RecognitionStatus` , `DisplayText` , `Offset` a `Duration` . Podrobné odpovědi obsahují čtyři různé reprezentace zobrazovaného textu. Výchozí hodnota je `simple`. | Volitelné |
 | `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné jsou hodnoty `masked` , které nahradí vulgární znaky hvězdičkami, `removed` , které odstraní všechny vulgární výrazy z výsledku, nebo `raw` , které obsahují vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Volitelné |
-| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu použijte **ID koncového bodu** `cid` . | Volitelné |
+| `cid` | Při použití [portálu Custom Speech](./custom-speech-overview.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu použijte **ID koncového bodu** `cid` . | Volitelné |
 
-## <a name="request-headers"></a>Hlavičky požadavku
+### <a name="request-headers"></a>Hlavičky požadavku
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádosti o převod řeči na text.
 
-|Záhlaví| Popis | Požadováno/volitelné |
+|Hlavička| Popis | Požadováno/volitelné |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
@@ -70,7 +105,7 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádos
 | `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue` . Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Vyžaduje se, když se posílají zvuková data v bloku. |
 | `Accept` | Je-li tento příkaz zadán, musí být `application/json` . Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept` . | Volitelné, ale doporučené. |
 
-## <a name="audio-formats"></a>Formáty zvuku
+### <a name="audio-formats"></a>Formáty zvuku
 
 V těle požadavku HTTP se pošle zvuk `POST` . Musí být v jednom z formátů v této tabulce:
 
@@ -80,16 +115,16 @@ V těle požadavku HTTP se pošle zvuk `POST` . Musí být v jednom z formátů 
 | OGG    | OPUS  | 256 KPBS | 16 kHz, mono |
 
 >[!NOTE]
->Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
+>Výše uvedené formáty jsou podporovány prostřednictvím REST API pro krátké zvukové a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="pronunciation-assessment-parameters"></a>Parametry vyhodnocení výslovnosti
+### <a name="pronunciation-assessment-parameters"></a>Parametry vyhodnocení výslovnosti
 
 Tato tabulka uvádí seznam požadovaných a volitelných parametrů pro posouzení výslovnosti.
 
-| Parametr | Popis | Požadováno/volitelné |
+| Parametr | Popis | Povinné? |
 |-----------|-------------|---------------------|
 | ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Vyžadováno |
-| GradingSystem | Systém bodů pro kalibraci skóre. Přijaté hodnoty jsou `FivePoint` a `HundredMark` . Výchozí hodnota je `FivePoint`. | Volitelné |
+| GradingSystem | Systém bodů pro kalibraci skóre. `FivePoint`Systém poskytne skóre 0-5 s plovoucí desetinnou čárkou a `HundredMark` poskytne 0-100 skóre s plovoucí desetinnou čárkou. Výchozí: `FivePoint`. | Volitelné |
 | Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném, ve kterém se zobrazuje skóre `Phoneme` `Word` pro úplný text a na úrovni slova, ve `FullText` kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí hodnota je `Phoneme`. | Volitelné |
 | Dimenze | Definuje výstupní kritéria. Akceptují se hodnoty `Basic` , které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Volitelné |
 | EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True` . Výchozí hodnota je `False`. | Volitelné |
@@ -117,9 +152,9 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Při odesílání zvukových dat důrazně doporučujeme nahrávání streamování (blokování), což může výrazně snížit latenci. Jak povolit streamování, najdete [v tématu vzorový kód v různých programovacích jazycích](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) .
 
 >[!NOTE]
->Funkce posouzení výslovnosti je aktuálně dostupná pouze v `westus` `eastasia` oblastech a `centralindia` . A tato funkce je aktuálně dostupná jenom pro `en-US` jazyk.
+>Funkce hodnocení výslovnosti je aktuálně dostupná jenom pro `en-US` jazyk.
 
-## <a name="sample-request"></a>Ukázková žádost
+### <a name="sample-request"></a>Ukázková žádost
 
 Níže uvedená ukázka obsahuje název hostitele a požadované hlavičky. Je důležité si uvědomit, že služba také očekává zvuková data, která nejsou obsažena v této ukázce. Jak už bylo zmíněno dříve, doporučuje se používat bloky dat, ale nevyžadují se.
 
@@ -139,7 +174,7 @@ Pokud chcete povolit posouzení výslovnosti, můžete přidat pod záhlaví. In
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>Stavové kódy HTTP
+### <a name="http-status-codes"></a>Stavové kódy HTTP
 
 Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
@@ -151,11 +186,11 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | `401` | Neautorizováno | Klíč předplatného nebo autorizační token není v zadané oblasti platný, nebo je neplatný koncový bod. |
 | `403` | Forbidden | Chybí klíč předplatného nebo autorizační token. |
 
-## <a name="chunked-transfer"></a>Přenos v bloku
+### <a name="chunked-transfer"></a>Přenos v bloku
 
-Přenos v bloku ( `Transfer-Encoding: chunked` ) může přispět ke snížení latence při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. REST API neposkytuje částečné nebo dočasné výsledky.
+Přenos v bloku ( `Transfer-Encoding: chunked` ) může přispět ke snížení latence při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. REST API pro krátký zvuk neposkytuje částečné nebo dočasné výsledky.
 
-Tato ukázka kódu ukazuje, jak odeslat zvuk v blocích. Pouze první blok by měl obsahovat hlavičku zvukového souboru. `request`je `HttpWebRequest` objekt připojený k příslušnému koncovému bodu REST. `audioFile`je cesta ke zvukovému souboru na disku.
+Tato ukázka kódu ukazuje, jak odeslat zvuk v blocích. Pouze první blok by měl obsahovat hlavičku zvukového souboru. `request` je `HttpWebRequest` objekt připojený k příslušnému koncovému bodu REST. `audioFile` je cesta ke zvukovému souboru na disku.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
@@ -187,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Parametry odpovědi
+### <a name="response-parameters"></a>Parametry odpovědi
 
 Výsledky se poskytují jako JSON. Tento `simple` Formát zahrnuje tato pole nejvyšší úrovně.
 
@@ -229,7 +264,7 @@ Objekt v `NBest` seznamu může zahrnovat:
 | `PronScore` | Celkové skóre označující kvalitu výslovnosti daného řeči. To je agregované z `AccuracyScore` `FluencyScore` a `CompletenessScore` s váhou. |
 | `ErrorType` | Tato hodnota označuje, zda je slovo vynecháno, vloženo nebo špatně vyslovované, ve srovnání s `ReferenceText` . Možné hodnoty jsou `None` (to znamená, že toto slovo neobsahuje žádnou chybu), `Omission` `Insertion` a `Mispronunciation` . |
 
-## <a name="sample-responses"></a>Ukázkové odpovědi
+### <a name="sample-responses"></a>Ukázkové odpovědi
 
 Typická odpověď pro `simple` rozpoznávání:
 
@@ -303,5 +338,6 @@ Typická odpověď pro rozpoznávání s hodnocením výslovnosti:
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
-- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
+- [Přizpůsobení akustických modelů](./how-to-custom-speech-train-model.md)
+- [Přizpůsobení jazykových modelů](./how-to-custom-speech-train-model.md)
+- [Seznámení se službou Batch – přepis](batch-transcription.md)

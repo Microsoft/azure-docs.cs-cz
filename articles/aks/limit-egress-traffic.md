@@ -4,15 +4,14 @@ description: Informace o tom, jaké porty a adresy se vyžadují k řízení odc
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003180"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573825"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -29,7 +28,7 @@ Odchozí závislosti AKS jsou téměř zcela definovány s plně kvalifikovaným
 Ve výchozím nastavení mají clustery AKS neomezený odchozí (výstupní) přístup k Internetu. Tato úroveň přístupu k síti umožňuje uzlům a službám, které spouštíte pro přístup k externím prostředkům, podle potřeby. Pokud chcete omezit výstupní přenos dat, musí být k dispozici omezený počet portů a adres, aby bylo možné udržovat v pořádku úlohy údržby clusteru. Nejjednodušším řešením pro zabezpečení odchozích adres je použití zařízení brány firewall, které může řídit odchozí přenosy na základě názvů domén. Azure Firewall například může omezit odchozí přenosy HTTP a HTTPS na základě plně kvalifikovaného názvu domény cílového umístění. Můžete taky nakonfigurovat upřednostňovanou bránu firewall a pravidla zabezpečení, abyste tyto požadované porty a adresy povolili.
 
 > [!IMPORTANT]
-> Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS ve výchozím nastavení nemá žádné požadavky na příchozí přenosy.  Blokování **provozu interní podsítě** pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [***zásady sítě***][network-policy].
+> Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS ve výchozím nastavení nemá žádné požadavky na příchozí přenosy.  Blokování **provozu interní podsítě** pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [**_zásady sítě_**][network-policy].
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Požadovaná odchozí síťová pravidla a plně kvalifikované názvy domény pro clustery AKS
 
@@ -49,11 +48,11 @@ Požadovaná síťová pravidla a závislosti IP adres:
 
 | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. Nevyžaduje se pro [privátní clustery](private-clusters.md) .|
+| **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. Nevyžaduje se pro [privátní clustery](private-clusters.md) . |
 | **`*:123`** nebo **`ntp.ubuntu.com:123`** (Pokud používáte Azure firewall síťových pravidel)  | UDP      | 123     | Vyžadováno pro synchronizaci času NTP (Network Time Protocol) na uzlech se systémem Linux.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Pokud používáte vlastní servery DNS, musíte zajistit, aby byly přístupné pro uzly clusteru. |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se, aby při spuštění lusků a nasazení, které přistupují k serveru rozhraní API, používala tato lusky nebo nasazení rozhraní API IP.  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se, aby při spuštění lusků a nasazení, které přistupují k serveru rozhraní API, používala tato lusky nebo nasazení rozhraní API IP. Nevyžaduje se pro [privátní clustery](private-clusters.md) .  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Globální požadovaný plně kvalifikovaný název domény nebo pravidla aplikace v Azure 
 
@@ -63,7 +62,6 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Vyžaduje se pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje obrázky nebo grafy první strany (například coreDNS atd.). Tyto image jsou potřebné ke správnému vytvoření a fungování clusteru, včetně operací škálování a upgradu.  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje služba Azure Content Delivery Network (CDN). |
 | **`management.azure.com`**       | **`HTTPS:443`** | Vyžaduje se pro operace Kubernetes s rozhraním API Azure. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Vyžaduje se pro Azure Active Directory ověřování. |
@@ -76,12 +74,12 @@ Požadovaná síťová pravidla a závislosti IP adres:
 
 | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:22`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Ani* <br/> **`APIServerIP:22`** `(only known after cluster creation)`  | TCP           | 22      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:22`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Nebo* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:123`** nebo **`ntp.ubuntu.com:123`** (Pokud používáte Azure firewall síťových pravidel)  | UDP      | 123     | Vyžadováno pro synchronizaci času NTP (Network Time Protocol) na uzlech se systémem Linux.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Pokud používáte vlastní servery DNS, musíte zajistit, aby byly přístupné pro uzly clusteru. |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se v případě, že se používají lusky nebo nasazení, které přistupují k serveru rozhraní API. tyto položky nebo nasazení by používaly IP adresu rozhraní API.  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se v případě, že se používají lusky nebo nasazení, které přistupují k serveru rozhraní API. tyto položky nebo nasazení by používaly IP adresu rozhraní API.  |
 
 ### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure Čína 21Vianet vyžaduje plně kvalifikovaný název domény nebo pravidla použití aplikace
 
@@ -92,7 +90,6 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS. |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Vyžaduje se pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje obrázky nebo grafy první strany (například coreDNS atd.). Tyto image jsou potřebné ke správnému vytvoření a fungování clusteru, včetně operací škálování a upgradu. |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Vyžaduje se pro operace Kubernetes s rozhraním API Azure. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Vyžaduje se pro Azure Active Directory ověřování. |
@@ -105,11 +102,11 @@ Požadovaná síťová pravidla a závislosti IP adres:
 
 | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:123`** nebo **`ntp.ubuntu.com:123`** (Pokud používáte Azure firewall síťových pravidel)  | UDP      | 123     | Vyžadováno pro synchronizaci času NTP (Network Time Protocol) na uzlech se systémem Linux.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Pokud používáte vlastní servery DNS, musíte zajistit, aby byly přístupné pro uzly clusteru. |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se, aby při spuštění lusků a nasazení, které přistupují k serveru rozhraní API, používala tato lusky nebo nasazení rozhraní API IP.  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se, aby při spuštění lusků a nasazení, které přistupují k serveru rozhraní API, používala tato lusky nebo nasazení rozhraní API IP.  |
 
 ### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure USA – požadovaná plně kvalifikovaný název domény/pravidla použití 
 
@@ -119,7 +116,6 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Vyžaduje se pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje obrázky nebo grafy první strany (například coreDNS atd.). Tyto image jsou potřebné ke správnému vytvoření a fungování clusteru, včetně operací škálování a upgradu. |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje služba Azure Content Delivery Network (CDN). |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Vyžaduje se pro operace Kubernetes s rozhraním API Azure. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Vyžaduje se pro Azure Active Directory ověřování. |
@@ -205,10 +201,7 @@ Pro clustery AKS s povoleným Azure Dev Spaces jsou vyžadována následující 
 | `storage.googleapis.com` | **`HTTPS:443`** | Tato adresa se používá k získání imagí Helm/do pokladny. |
 
 
-### <a name="azure-policy-preview"></a>Azure Policy (Preview)
-
-> [!CAUTION]
-> Některé z následujících funkcí jsou ve verzi Preview.  Návrhy v tomto článku se můžou změnit, protože funkce se přesouvá do fází Public Preview a budoucích verzí.
+### <a name="azure-policy"></a>Azure Policy
 
 #### <a name="required-fqdn--application-rules"></a>Požadovaný plně kvalifikovaný název domény nebo pravidla použití aplikace 
 
@@ -216,10 +209,29 @@ Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující pln�
 
 | FQDN                                          | Port      | Použití      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Tato adresa se používá pro správnou operaci Azure Policy. (aktuálně ve verzi Preview v AKS) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Tato adresa se používá k vyžádání předdefinovaných zásad z GitHubu, aby bylo zajištěno správné fungování Azure Policy. (aktuálně ve verzi Preview v AKS) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání zásad Kubernetes a k hlášení stavu dodržování předpisů clusteru službě zásad. |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání artefaktů integrovaných zásad na serveru gatekeeper. |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Tato adresa se používá pro správnou operaci Azure Policy.  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Tato adresa se používá k vyžádání předdefinovaných zásad z GitHubu, aby bylo zajištěno správné fungování Azure Policy. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy doplněk, který odesílá data telemetrie do koncového bodu Application Insights. |
 
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure Čína 21Vianet vyžaduje plně kvalifikovaný název domény nebo pravidla použití aplikace 
+
+Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití.
+
+| FQDN                                          | Port      | Použití      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání zásad Kubernetes a k hlášení stavu dodržování předpisů clusteru službě zásad. |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání artefaktů integrovaných zásad na serveru gatekeeper. |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure USA – požadovaná plně kvalifikovaný název domény/pravidla použití
+
+Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití.
+
+| FQDN                                          | Port      | Použití      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání zásad Kubernetes a k hlášení stavu dodržování předpisů clusteru službě zásad. |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání artefaktů integrovaných zásad na serveru gatekeeper. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Omezení odchozího provozu pomocí brány Azure firewall
 
@@ -280,7 +292,7 @@ Zřídit virtuální síť se dvěma samostatnými podsítěmi, jednu pro cluste
 
 Vytvořte skupinu prostředků pro uložení všech prostředků.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +306,7 @@ Vytvořte virtuální síť se dvěma podsítěmi pro hostování clusteru AKS a
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +333,12 @@ Musí být nakonfigurovaná pravidla příchozího a odchozího Azure Firewall. 
 
 Vytvořte prostředek veřejné IP adresy standardní SKU, který bude použit jako Azure Firewall adresa front-endu.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Zaregistrujte verzi Preview rozhraní příkazového řádku pro vytvoření Azure Firewall.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +353,7 @@ IP adresa, kterou jste vytvořili dříve, se teď dá přiřadit ke front-endu 
 > Nastavení veřejné IP adresy na Azure Firewall může trvat několik minut.
 > Aby bylo možné využít plně kvalifikovaný název domény u pravidel sítě, potřebujeme povolený proxy server DNS, pokud je povolená brána firewall, bude naslouchat na portu 53 a předává požadavky DNS na výše uvedený server DNS. To umožní bráně firewall automaticky přeložit tento plně kvalifikovaný název domény.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +377,10 @@ Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi
 
 Vytvořte prázdnou směrovací tabulku, kterou chcete přidružit k dané podsíti. Směrovací tabulka bude definovat další segment směrování, jak Azure Firewall vytvořili výše. Každá podsíť může mít přidruženou žádnou nebo jednu směrovací tabulku.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +411,7 @@ Další informace o službě Azure Firewall najdete v [dokumentaci k Azure firew
 
 K přidružení clusteru k bráně firewall musí vyhrazená podsíť pro podsíť clusteru odkazovat na tabulku směrování vytvořenou výše. Přidružení se dá udělat vyvoláním příkazu do virtuální sítě, která drží cluster i bránu firewall k aktualizaci směrovací tabulky podsítě clusteru.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -412,9 +425,9 @@ Cluster AKS se teď dá nasadit do existující virtuální sítě. Použijeme t
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Vytvoření instančního objektu s přístupem ke zřízení v existující virtuální síti
 
-Objekt služby používá AKS k vytváření prostředků clusteru. Instanční objekt, který se předává v čase vytvoření, se používá k vytvoření základních prostředků AKS, jako jsou prostředky úložiště, IP adresy a nástroje pro vyrovnávání zatížení používané v AKS (místo toho můžete také použít [spravovanou identitu](use-managed-identity.md) ). Pokud nejsou níže udělená příslušná oprávnění, nebudete moct zřídit cluster AKS.
+Identitu clusteru (spravovanou identitu nebo instanční objekt) používá AKS k vytváření prostředků clusteru. Instanční objekt, který se předává v čase vytvoření, se používá k vytvoření základních prostředků AKS, jako jsou prostředky úložiště, IP adresy a nástroje pro vyrovnávání zatížení používané v AKS (místo toho můžete také použít [spravovanou identitu](use-managed-identity.md) ). Pokud nejsou níže udělená příslušná oprávnění, nebudete moct zřídit cluster AKS.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +435,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Nyní nahraďte `APPID` a `PASSWORD` níže objektem AppID a heslo instančního objektu, které jsou automaticky generovány předchozím výstupem příkazu. Odkaz na ID prostředku virtuální sítě vám poskytne oprávnění k instančnímu objektu, aby AKS mohli do něj nasadit prostředky.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +473,7 @@ Budete definovat typ odchozího připojení pro použití UDR, který již v pod
 >
 > Funkci AKS pro [**rozsahy IP adres autorizovaných serverem API**](api-server-authorized-ip-ranges.md) lze přidat k omezení přístupu serveru rozhraní API pouze k veřejnému koncovému bodu brány firewall. Funkce povolených rozsahů IP adres je v diagramu označena jako volitelná. Když povolíte funkci schváleného rozsahu IP adres pro omezení přístupu k serveru rozhraní API, nástroje pro vývojáře musí použít JumpBox z virtuální sítě brány firewall nebo musíte přidat všechny koncové body pro vývojáře do povoleného rozsahu IP adres.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +504,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  K nakonfigurování `kubectl` připojení k nově vytvořenému clusteru Kubernetes použijte příkaz [az AKS Get-Credentials] [az-AKS-Get-Credentials]. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -750,11 +763,11 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 
 Získejte IP adresu služby spuštěním:
 ```bash
-SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 Přidejte pravidlo překladu adres (NAT) tak, že spustíte:
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -765,14 +778,14 @@ V prohlížeči přejděte na IP adresu front-endu Azure Firewall a ověřte př
 Měla by se zobrazit hlasovací aplikace AKS. V tomto příkladu byla veřejná IP adresa brány firewall `52.253.228.132` .
 
 
-![AKS – hlas](media/limit-egress-traffic/aks-vote.png)
+![Snímek obrazovky zobrazuje hlasovací aplikaci A K S s tlačítky pro kočky, psy a Reset a součty.](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete vyčistit prostředky Azure, odstraňte skupinu prostředků AKS.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 
@@ -782,7 +795,7 @@ V tomto článku jste zjistili, jaké porty a adresy se mají povolit, pokud chc
 
 V případě potřeby můžete generalizovat výše uvedené kroky a přesměrovat provoz do preferovaného řešení pro odchozí přenosy, a to podle [ `userDefinedRoute` dokumentace typu odchozí](egress-outboundtype.md).
 
-Pokud chcete omezit, jak lusky komunikují mezi sebou a omezeními provozu na východním východě v rámci clusteru, podívejte [se na téma zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policy].
+Pokud chcete omezit, jak lusky komunikují mezi sebou a East-Westm omezením provozu v rámci clusteru, podívejte [se na téma zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policy].
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

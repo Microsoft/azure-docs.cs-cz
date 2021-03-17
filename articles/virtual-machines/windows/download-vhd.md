@@ -3,18 +3,18 @@ title: Stažení virtuálního pevného disku s Windows z Azure
 description: Stažení virtuálního pevného disku s Windows pomocí Azure Portal.
 author: cynthn
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: 5c57ac0fb0ab377f00770e3c9c03a413dcb345bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a33b248c18bcbf322a1e2d911453a1c4c087e625
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291027"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550514"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stažení virtuálního pevného disku s Windows z Azure
 
@@ -27,11 +27,11 @@ Pokud chcete virtuální pevný disk použít jako [Image](tutorial-custom-image
 Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších virtuálních počítačů, proveďte generalizaci virtuálního počítače.
 
 1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com/).
-2. [Připojte se k virtuálnímu počítači](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+2. [Připojte se k virtuálnímu počítači](connect-logon.md). 
 3. Na virtuálním počítači otevřete okno příkazového řádku jako správce.
 4. Změňte adresář na *%WINDIR%\system32\sysprep* a spusťte sysprep.exe.
 5. V dialogovém okně Nástroj pro přípravu systému vyberte možnost **Zadejte systém při spuštění prostředí (OOBE)** a ujistěte se, že je vybraná možnost **generalizace** .
-6. V možnosti vypnutí vyberte **vypnout**a pak klikněte na **OK**. 
+6. V možnosti vypnutí vyberte **vypnout** a pak klikněte na **OK**. 
 
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
@@ -65,6 +65,6 @@ Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného p
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nahrát soubor VHD do Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-- [Vytvořte spravované disky z nespravovaných disků v účtu úložiště](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- [Spravujte disky Azure pomocí PowerShellu](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Přečtěte si, jak [nahrát soubor VHD do Azure](upload-generalized-managed.md). 
+- [Vytvořte spravované disky z nespravovaných disků v účtu úložiště](attach-disk-ps.md).
+- [Spravujte disky Azure pomocí PowerShellu](tutorial-manage-data-disk.md).

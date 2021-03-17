@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287739"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359811"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -26,7 +26,7 @@ Místní konfigurační server nasadíte při použití [Azure Site Recovery](si
 
 Konfigurační server musí být nastavený jako vysoce dostupný virtuální počítač VMware s určitým minimálním požadavky na hardware a velikost. Pro pohodlné a snadné nasazení Site Recovery poskytuje šablonu aplikace Open Virtualization Virtualization (vajíček), která umožňuje nastavit konfigurační server, který splňuje všechny požadavky, které jsou tady uvedené.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Minimální požadavky na hardware pro konfigurační server jsou shrnuté v následujících oddílech.
 
@@ -42,7 +42,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
     - Ověřte, zda je role vývojář aplikace přiřazena uživateli. Pokud ne, použijte uživatele s tímto oprávněním nebo se obraťte na [správce, aby oprávnění povolil](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Pokud se role vývojáře aplikace nedá přiřadit, ujistěte se, že příznak **Uživatelé můžou registrovat aplikace** nastavené na **hodnotu true** , aby uživatel mohl vytvořit identitu. Povolení těchto oprávnění:
-    - Přihlaste se k webu Azure Portal.
+    - Přihlaste se k portálu Azure.
     - Přejít na **Azure Active Directory**  >  **nastavení uživatele**.
     - V **App registrations**části registrace aplikací **můžou uživatelé registrovat aplikace**, vyberte **Ano**.
 
@@ -121,10 +121,10 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 4. Při **instalaci softwaru třetí strany**:
 
-    |Scénář   |Postup při sledování  |
+    |Scénář   |Jak postupovat  |
     |---------|---------|
-    |Můžu si MySQL stáhnout a nainstalovat ručně?     |  Yes. Stáhněte si aplikaci MySQL, umístěte ji do složky **C:\Temp\ASRSetup**a pak ji nainstalujte ručně. Jakmile souhlasíte s podmínkami a vyberete **Stáhnout a nainstalovat**, portál už říká, že je *nainstalovaný*. Můžete přejít k dalšímu kroku.       |
-    |Můžu se vyhnout stažení MySQL online?     |   Yes. Uložte aplikaci pro instalaci MySQL do složky **C:\Temp\ASRSetup**. Přijměte podmínky, vyberte **Stáhnout a nainstalovat**a portál použije instalační program, který jste přidali k instalaci aplikace. Až se instalace dokončí, přejděte k dalšímu kroku.    |
+    |Můžu si MySQL stáhnout a nainstalovat ručně?     |  Ano. Stáhněte si aplikaci MySQL, umístěte ji do složky **C:\Temp\ASRSetup**a pak ji nainstalujte ručně. Jakmile souhlasíte s podmínkami a vyberete **Stáhnout a nainstalovat**, portál už říká, že je *nainstalovaný*. Můžete přejít k dalšímu kroku.       |
+    |Můžu se vyhnout stažení MySQL online?     |   Ano. Uložte aplikaci pro instalaci MySQL do složky **C:\Temp\ASRSetup**. Přijměte podmínky, vyberte **Stáhnout a nainstalovat**a portál použije instalační program, který jste přidali k instalaci aplikace. Až se instalace dokončí, přejděte k dalšímu kroku.    |
     |Chci stáhnout a nainstalovat MySQL prostřednictvím Azure Site Recovery.    |  Přijměte licenční smlouvu a vyberte **Stáhnout a nainstalovat**. Až se instalace dokončí, přejděte k dalšímu kroku.       |
 
 5. Před pokračováním ověřte, že je v **nastavení ověřit konfiguraci zařízení**nutné ověřit požadavky.
@@ -160,13 +160,13 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
     Ne. Po zaregistrování trezoru na konfiguračním serveru ho nelze změnit.
 * Můžu použít stejný konfigurační server k ochraně fyzických i virtuálních počítačů?
 
-    Yes. Stejný konfigurační server lze použít pro replikaci fyzických a virtuálních počítačů. Fyzický počítač se však může vrátit zpět pouze k VIRTUÁLNÍmu počítači VMware.
+    Ano. Stejný konfigurační server lze použít pro replikaci fyzických a virtuálních počítačů. Fyzický počítač se však může vrátit zpět pouze k VIRTUÁLNÍmu počítači VMware.
 * Jaký je účel konfiguračního serveru a kde se používá?
 
     Další informace o konfiguračním serveru a jeho funkcích najdete v tématu [Architektura replikace z VMware do Azure](vmware-azure-architecture.md).
 * Kde můžu najít nejnovější verzi konfiguračního serveru?
 
-    Postup upgradu konfiguračního serveru prostřednictvím portálu najdete v tématu [upgrade konfiguračního serveru](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Pokyny, jak upgradovat všechny součásti Site Recovery, najdete v tématu [aktualizace služby v Site Recovery](https://aka.ms/asr_how_to_upgrade).
+    Postup upgradu konfiguračního serveru prostřednictvím portálu najdete v tématu [upgrade konfiguračního serveru](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Pokyny, jak upgradovat všechny součásti Site Recovery, najdete v tématu [aktualizace služby v Site Recovery](./service-updates-how-to.md).
 * Kde můžu stáhnout heslo pro konfigurační server?
 
     Pokud chcete stáhnout heslo, přečtěte si téma [Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).

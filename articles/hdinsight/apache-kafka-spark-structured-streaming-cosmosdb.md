@@ -1,23 +1,20 @@
 ---
 title: Apache Spark & Apache Kafka s Cosmos DB – Azure HDInsight
-description: Naučte se používat strukturované streamování Apache Spark ke čtení dat z Apache Kafka a jejich následnému uložení do Azure Cosmos DB. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: Naučte se používat strukturované streamování Apache Spark ke čtení dat z Apache Kafka a jejich následnému uložení do Azure Cosmos DB. V tomto příkladu můžete streamovat data pomocí Jupyter Notebook ze Sparku ve službě HDInsight.
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e14784459a3c7733af274197507b76341d68477e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203460"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946907"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB
 
-Naučte se používat [Apache Spark](https://spark.apache.org/) [strukturované streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) Apache Spark ke čtení dat z [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight a pak data ukládat do Azure Cosmos DB.
+Naučte se používat [](https://spark.apache.org/) [strukturované streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) Apache Spark ke čtení dat z [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight a pak data ukládat do Azure Cosmos DB.
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuovaná databáze s více modely. V tomto příkladu se používá databázový model rozhraní SQL API. Další informace najdete v dokumentu [Vítá vás Azure Cosmos DB](../cosmos-db/introduction.md) .
 
@@ -78,7 +75,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
     ![Hodnoty vlastního nasazení HDInsight](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. Přečtěte si **podmínky a ujednání**a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+1. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
 1. Nakonec vyberte **koupit**. Vytvoření clusterů, virtuálních sítí a Cosmos DB účtu může trvat až 45 minut.
 
@@ -86,7 +83,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
 Projekt použitý v tomto dokumentu ukládá data v Cosmos DB. Před spuštěním kódu musíte nejprve vytvořit _databázi_ a _kolekci_ v instanci Cosmos DB. Také je nutné načíst koncový bod dokumentu a _klíč_ , který slouží k ověření požadavků na Cosmos DB.
 
-Jedním ze způsobů, jak to provést, je použití rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). V následujícím skriptu se vytvoří databáze s názvem `kafkadata` a kolekcí s názvem `kafkacollection` . Pak vrátí primární klíč.
+Jedním ze způsobů, jak to provést, je použití rozhraní příkazového [řádku Azure CLI](/cli/azure/). V následujícím skriptu se vytvoří databáze s názvem `kafkadata` a kolekcí s názvem `kafkacollection` . Pak vrátí primární klíč.
 
 ```azurecli
 #!/bin/bash
@@ -97,7 +94,7 @@ resourceGroupName='myresourcegroup'
 name='mycosmosaccount'
 
 # WARNING: If you change the databaseName or collectionName
-#          then you must update the values in the Jupyter notebook
+#          then you must update the values in the Jupyter Notebook
 databaseName='kafkadata'
 collectionName='kafkacollection'
 
@@ -134,7 +131,7 @@ Kód pro příklad popsaný v tomto dokumentu je k dispozici na adrese [https://
 
 Pomocí následujících kroků nahrajte poznámkové bloky z projektu do clusteru Spark v HDInsight:
 
-1. Ve webovém prohlížeči se připojte k poznámkovému bloku Jupyter na svém clusteru Spark. V následující adrese URL nahraďte `CLUSTERNAME` názvem svého clusteru __Spark__:
+1. Ve webovém prohlížeči se připojte k Jupyter Notebook v clusteru Spark. V následující adrese URL nahraďte `CLUSTERNAME` názvem svého clusteru __Spark__:
 
     ```http
     https://CLUSTERNAME.azurehdinsight.net/jupyter

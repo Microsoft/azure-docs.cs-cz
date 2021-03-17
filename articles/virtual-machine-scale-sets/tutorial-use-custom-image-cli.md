@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: dd0cf450ca63349d29aba3d65f3c76f40a44be2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503629"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683045"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. Co se v tomto kurzu naučíte:
@@ -27,15 +27,15 @@ Při vytváření škálovací sady zadáte image, která se použije při nasaz
 > * Sdílení Galerie imagí
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.4.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.4.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="overview"></a>Přehled
 
-[Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
+[Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
 
 Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. 
 
@@ -77,7 +77,7 @@ Galerie imagí je primární prostředek, který slouží k povolení sdílení 
 
 Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA*a galerii s názvem *myGallery*.
+Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -92,11 +92,11 @@ Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, čísl
 
 Ujistěte se, že je vaše definice image správným typem. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-devisioning pro Linux), měli byste vytvořit zobecněnou definici Image pomocí `--os-state generalized` . Pokud chcete virtuální počítač použít bez odebrání stávajících uživatelských účtů, vytvořte pomocí nástroje specializovanou definici image `--os-state specialized` .
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../virtual-machines/linux/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../virtual-machines/shared-image-galleries.md#image-definitions).
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
+V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -197,7 +197,7 @@ Zadejte veřejnou IP adresu do svého webového prohlížeče. Zobrazí se vých
 
 ## <a name="share-the-gallery"></a>Sdílení galerie
 
-Image můžete sdílet mezi předplatnými pomocí Access Control na základě rolí (RBAC). Obrázky můžete sdílet v galerii, definici obrázku nebo verzi image. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
+Image můžete sdílet mezi předplatnými pomocí řízení přístupu na základě role Azure (RBAC). Obrázky můžete sdílet v galerii, definici obrázku nebo verzi image. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
 
 Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az-sig-show).
 
@@ -217,7 +217,7 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Další informace o tom, jak sdílet prostředky pomocí RBAC, najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+Další informace o tom, jak sdílet prostředky pomocí Azure RBAC, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

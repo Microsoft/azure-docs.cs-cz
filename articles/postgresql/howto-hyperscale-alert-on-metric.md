@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 88425e2c875b3cce7c63cd66fd034e5a7af56ec7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117028"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577084"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for PostgreSQL – Citus (škálování)
 
@@ -26,28 +26,28 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 * Zavolejte Webhook.
 
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
+* [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla upozornění na metriku na webu Azure Portal
 1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for PostgreSQL, který chcete monitorovat.
 
 2. V části **monitorování** na bočním panelu vyberte **výstrahy** , jak je znázorněno níže:
 
-   ![Vybrat pravidla výstrah](./media/howto-hyperscale-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/2-alert-rules.png" alt-text="Vybrat pravidla výstrah":::
 
 3. Vyberte **nové pravidlo výstrahy** (+ ikona).
 
 4. Otevře se stránka **vytvořit pravidlo** , jak je znázorněno níže. Vyplňte požadované informace:
 
-   ![Přidat formulář upozornění metriky](./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Přidat formulář upozornění metriky":::
 
 5. V části **Podmínka** vyberte **Přidat**.
 
 6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
    
-   ![Vybrat metriku](./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Snímek obrazovky se zobrazí na stránce Konfigurovat logiku signálu, kde můžete zobrazit několik signálů.":::
 
 7. Konfigurace logiky výstrah:
 
@@ -58,13 +58,13 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
    Po dokončení vyberte **Hotovo** .
 
-   ![Vybrat metriku](./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Snímek obrazovky se zobrazí v podokně, kde můžete nakonfigurovat logiku výstrah.":::
 
 8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
 9. Vyplňte formulář přidat skupinu akcí s názvem, krátkým názvem, předplatným a skupinou prostředků.
 
-    ![Skupina akcí](./media/howto-hyperscale-alert-on-metric/9-add-action-group.png)
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Snímek obrazovky se zobrazí ve formuláři přidat skupinu akcí, kde můžete zadat popsané hodnoty.":::
 
 10. Nakonfigurujte typ akce **e-mail/SMS/Push/Voice** .
     
@@ -72,11 +72,11 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
     Po dokončení vyberte **OK** .
 
-    ![Skupina akcí](./media/howto-hyperscale-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Snímek obrazovky se zobrazí v podokně E-mail/S M/s/hlasové oznámení/hlas.":::
 
 11. Zadejte název, popis a závažnost pravidla výstrahy.
 
-    ![Skupina akcí](./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Snímek obrazovky se zobrazí v podokně Podrobnosti výstrahy."::: 
 
 12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
@@ -101,13 +101,13 @@ Doporučujeme nastavit upozornění na místo na disku pro každý uzel v každ�
 Vzhledem k dosažení limitu místa na disku Vyzkoušejte tyto techniky, abyste získali více volného místa:
 
 * Zkontrolujte zásady uchovávání dat. Pokud je to možné, přesuňte starší data do chladírenského úložiště.
-* Zvažte [Přidání uzlů](howto-hyperscale-scaling.md#add-worker-nodes) do skupiny serverů a nové vyrovnávání horizontálních oddílů. Nové vyrovnávání distribuuje data napříč více počítači.
-* Zvažte [větší kapacitu](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) pracovních uzlů. Každý pracovní proces může mít až 2 TiB úložiště. Před změnou velikosti uzlů by se ale mělo provést pokus o přidání uzlů, protože přidávání uzlů se dokončí rychleji.
+* Zvažte [Přidání uzlů](howto-hyperscale-scale-grow.md#add-worker-nodes) do skupiny serverů a nové vyrovnávání horizontálních oddílů. Nové vyrovnávání distribuuje data napříč více počítači.
+* Zvažte [větší kapacitu](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) pracovních uzlů. Každý pracovní proces může mít až 2 TiB úložiště. Před změnou velikosti uzlů by se ale mělo provést pokus o přidání uzlů, protože přidávání uzlů se dokončí rychleji.
 
 ### <a name="cpu-usage"></a>Využití procesoru
 
 Monitorování využití procesoru je užitečné k navázání standardních hodnot výkonu. Můžete si například všimnout, že využití CPU je obvykle přibližně 40-60%. Pokud využití CPU náhle začne najeďte kolem 95%, můžete rozpoznat anomálii. Využití CPU může odrážet ekologický růst, ale může také odhalit neosamocený dotaz. Při vytváření upozornění na procesor nastavte členitost agregované členitosti na průběžné zvyšování úrovně a ignorovat momentické špičky.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
-* Získejte [Přehled o kolekci metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/alerts/alerts-webhooks.md).
+* Získejte [Přehled o kolekci metrik](../azure-monitor/data-platform.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

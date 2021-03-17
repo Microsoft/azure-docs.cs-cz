@@ -1,22 +1,20 @@
 ---
 title: Ladění kódu C# pro úlohy Azure Data Lake U-SQL
 description: Tento článek popisuje, jak pomocí Nástroje Azure Data Lake pro Visual Studio ladit vrchol neúspěšného ladění U-SQL.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131867"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218013"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Ladit uživatelsky definovaný kód C# pro nezdařené úlohy U-SQL
 
-U-SQL poskytuje rozšiřitelný model pomocí C#. Ve skriptech U-SQL je snadné volat funkce jazyka C# a provádět analytické funkce, které jazyk SQL podobně jako deklarativní jazyk nepodporuje. Další informace o rozšiřitelnosti U-SQL najdete v tématu [Příručka k programovatelnosti u-SQL](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+U-SQL poskytuje rozšiřitelný model pomocí C#. Ve skriptech U-SQL je snadné volat funkce jazyka C# a provádět analytické funkce, které jazyk SQL podobně jako deklarativní jazyk nepodporuje. Další informace o rozšiřitelnosti U-SQL najdete v tématu [Příručka k programovatelnosti u-SQL](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
 V praxi může nějaký kód vyžadovat ladění, ale je těžké ladit distribuovanou úlohu s vlastním kódem v cloudu s použitím omezených souborů protokolu. [Nástroje Azure Data Lake pro Visual Studio](https://aka.ms/adltoolsvs) poskytuje funkci s názvem **ladění neúspěšných vrcholů**, která vám pomůže snadněji ladit selhání, ke kterým dochází ve vašem vlastním kódu. Pokud úloha U-SQL selže, služba udržuje stav selhání a nástroj vám pomůže stáhnout prostředí selhání cloudu do místního počítače pro ladění. Místní stahování zachytí celé cloudové prostředí včetně všech vstupních dat a uživatelského kódu.
 
@@ -78,7 +76,7 @@ Pokud kód uživatele není zahrnutý v souboru kódu na pozadí nebo jste nezar
 
 2. Získejte cestu ke složce projektu pro projekt **FailedVertexDebugHost** . 
 
-3. Klikněte pravým tlačítkem myši na **přidaný projekt zdrojového kódu sestavení > vlastnosti**, vyberte kartu **sestavení** vlevo a vložte zkopírovanou cestu končící na \Bin\debug jako **výstupní > výstupní cestu**. Poslední výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
+3. Right-Click **přidaných projektů zdrojového kódu sestavení > vlastnosti**vyberte kartu **sestavení** vlevo a vložte zkopírovanou cestu končící na \bin\debug jako výstupní **cestu > výstupní cesta**. Poslední výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Azure Data Lake Analytics nastavení ladění U-SQL nastavte cestu PDB](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

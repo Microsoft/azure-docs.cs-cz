@@ -1,17 +1,17 @@
 ---
 title: Query Performance Insight – Azure Database for MySQL
 description: Tento článek popisuje funkci Query Performance Insight v Azure Database for MySQL
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 51b478e5184c79e11d95ff004a652b2e5298558f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83402618"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535176"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight ve službě Azure Database for MySQL
 
@@ -19,7 +19,7 @@ ms.locfileid: "83402618"
 
 Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dotazy, jak se v průběhu času mění a co se na ně budou jejich vlivovat.
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 
 ### <a name="long-running-queries"></a>Dlouho běžící dotazy
 
@@ -51,12 +51,12 @@ Karta **dlouho běžící dotazy** zobrazuje prvních 5 dotazů podle průměrn�
 
 Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové okno. Případně můžete použít ikony přiblížení a ven k zobrazení kratšího nebo většího časového období.
 
-![Query Performance Insight dlouho běžící dotazy](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Query Performance Insight dlouho běžící dotazy"::: 
 
 ### <a name="wait-statistics"></a>Statistiky čekání
 
 > [!NOTE]
-> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží. <br>Pokud se zobrazí chybová zpráva v Azure Portal "*problém byl zjištěn pro ' Microsoft. DBforMySQL '; požadavek nelze splnit. Pokud tento problém přetrvává nebo je neočekávaný, obraťte se prosím na podporu s těmito informacemi.*" Při prohlížení statistik čekání použijte kratší časové období.
+> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží. <br>Pokud se zobrazí chybová zpráva v Azure Portal " *problém byl zjištěn pro ' Microsoft. DBforMySQL '; požadavek nelze splnit. Pokud tento problém přetrvává nebo je neočekávaný, obraťte se prosím na podporu s těmito informacemi.* " Při prohlížení statistik čekání použijte kratší časové období.
 
 Statistika čekání poskytuje zobrazení událostí čekání, ke kterým dojde během provádění konkrétního dotazu. Přečtěte si další informace o typech událostí čekání v [dokumentaci k modulu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 
@@ -64,7 +64,7 @@ Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace 
 
 Dotazy zobrazené v zobrazení statistiky čekání jsou seskupené podle dotazů, které vykazují největší čekání během zadaného časového intervalu.
 
-![Query Performance Insight čeká na statistiku](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight čeká na statistiku":::
 
 ## <a name="next-steps"></a>Další kroky
 

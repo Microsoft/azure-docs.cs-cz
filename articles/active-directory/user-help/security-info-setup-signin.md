@@ -11,18 +11,18 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747273"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88798495"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Nastavení bezpečnostních údajů z výzvy k přihlášení
 
 Pokud se zobrazí výzva k nastavení bezpečnostních údajů hned po přihlášení ke svému pracovnímu nebo školnímu účtu, můžete postupovat podle těchto kroků.
 
-Tato výzva se zobrazí jenom v případě, že jste nenastavili bezpečnostní údaje vyžadované vaší organizací. Pokud jste si dříve nastavili bezpečnostní údaje, ale chcete provést změny, můžete postupovat podle kroků v různých článcích o postupech založených na metodách. Další informace najdete v tématu věnovaném [Přidání nebo aktualizaci informací o zabezpečení](security-info-add-update-methods-overview.md).
+Tato výzva se zobrazí jenom v případě, že jste nenastavili bezpečnostní údaje vyžadované vaší organizací. Pokud jste si dříve nastavili bezpečnostní údaje, ale chcete provést změny, můžete postupovat podle kroků v různých článcích o postupech založených na metodách. Další informace najdete v tématu věnovaném [Přidání nebo aktualizaci informací o zabezpečení](./security-info-setup-auth-app.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 

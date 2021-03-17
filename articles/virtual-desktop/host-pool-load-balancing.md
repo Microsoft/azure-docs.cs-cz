@@ -3,15 +3,15 @@ title: Vyrovnávání zatížení fondu hostitelů virtuálních počítačů s 
 description: Přečtěte si informace o metodách vyrovnávání zatížení fondu hostitelů pro prostředí virtuálních počítačů s Windows.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007433"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951855"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Metody vyrovnávání zatížení fondu hostitelů
 
@@ -34,10 +34,13 @@ Každý fond hostitelů může nakonfigurovat pouze jeden typ vyrovnávání zat
 
 Metoda škálování na první vyrovnávání zatížení umožňuje distribuovat uživatelská připojení k optimalizaci pro tento scénář. Tato metoda je ideální pro organizace, které chtějí poskytovat nejlepší možnosti pro uživatele, kteří se připojují k prostředí virtuálních klientů ve fondu.
 
-Metoda geografického prvního dotazu nejprve dotazuje hostitele relací, kteří umožňují nová připojení. Metoda pak vybere hostitele relace s nejmenším počtem relací. Pokud je k dispozici, metoda vybere první hostitele relace v dotazu.
+Metoda geografického prvního dotazu nejprve dotazuje hostitele relací, kteří umožňují nová připojení. Metoda pak vybere hostitele relace náhodně z poloviny sady hostitelů relací s nejmenším počtem relací. Pokud je například devět počítačů s relací 11, 12, 13, 14, 15, 16, 17, 18 a 19, nová relace, kterou vytvoříte, nebude automaticky přejít na první počítač. Místo toho může přejít na některý z prvních pěti počítačů s nejnižším počtem relací (11, 12, 13, 14, 15).
 
 ## <a name="depth-first-load-balancing-method"></a>Metoda vyrovnávání zatížení první hloubky
 
 Metoda hloubkového vyrovnávání zatížení umožňuje naplnění jednoho hostitele relace v čase k optimalizaci pro tento scénář. Tato metoda je ideální pro organizace s důrazem na náklady, které mají podrobnější kontrolu nad počtem virtuálních počítačů, které jsou přiděleny pro fond hostitelů.
 
 První metoda se první dotazuje na hostitele relací, které povolují nová připojení a neprošly maximálním limitem relace. Metoda pak vybere hostitele relace s největším počtem relací. Pokud existuje, metoda vybere první hostitele relace v dotazu.
+
+>[!IMPORTANT]
+>Algoritmus pro vyrovnávání zatížení s první hloubkou distribuuje relace na hostitele relace na základě maximálního limitu hostitele relace. Tento parametr se vyžaduje, když použijete algoritmus vyrovnávání zatížení první hloubky. Pro nejlepší možné prostředí uživatele nezapomeňte změnit parametr maximální limit počtu hostitelů relace na číslo, které nejlépe vyhovuje vašemu prostředí.

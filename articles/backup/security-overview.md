@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589380"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325651"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -16,7 +16,7 @@ Jedním z nejdůležitějších kroků, které můžete provést při ochraně d
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Správa a řízení identit a přístupu uživatelů
 
-Účty úložiště používané trezory služby Recovery Services jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [řízení přístupu na základě role Azure (RBAC)](./backup-rbac-rs-vault.md). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
+Účty úložiště, které používá služba Recovery Services trezory, jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [řízení přístupu na základě role Azure (RBAC)](./backup-rbac-rs-vault.md). Azure RBAC umožňuje oddělení funkcí v rámci týmu a udělení přístupu pouze k uživatelům, kteří potřebují ke své práci.
 
 Azure Backup poskytuje tři [předdefinované role](../role-based-access-control/built-in-roles.md) pro řízení operací správy zálohování:
 
@@ -24,9 +24,9 @@ Azure Backup poskytuje tři [předdefinované role](../role-based-access-control
 * Operátor zálohování – všechno, co Přispěvatel s výjimkou odebrání zálohování a správy zásad zálohování
 * Čtečka zálohování – oprávnění k zobrazení všech operací správy zálohování
 
-Přečtěte si další informace o [řízení přístupu na základě rolí ke správě Azure Backup](./backup-rbac-rs-vault.md).
+Přečtěte si další informace o [řízení přístupu na základě role Azure ke správě Azure Backup](./backup-rbac-rs-vault.md).
 
-Azure Backup obsahuje několik ovládacích prvků zabezpečení, které jsou součástí služby pro prevenci, detekci a reakci na slabá místa zabezpečení. Přečtěte si další informace o [ovládacích prvcích zabezpečení pro Azure Backup](./backup-security-controls.md).
+Azure Backup obsahuje několik ovládacích prvků zabezpečení, které jsou součástí služby pro prevenci, detekci a reakci na slabá místa zabezpečení. Přečtěte si další informace o [ovládacích prvcích zabezpečení pro Azure Backup](./security-baseline.md).
 
 ## <a name="separation-between-guest-and-azure-storage"></a>Oddělení mezi hostem a službou Azure Storage
 
@@ -36,7 +36,7 @@ Pomocí Azure Backup, která zahrnuje zálohování virtuálních počítačů a
 
 Zálohování virtuálních počítačů Azure vyžaduje přesun dat z disku virtuálního počítače do trezoru Recovery Services. Veškerá požadovaná komunikace a přenos dat se ale stane jenom v páteřní síti Azure, aniž by bylo potřeba mít přístup k virtuální síti. Zálohování virtuálních počítačů Azure umístěných v zabezpečených sítích proto nevyžaduje povolení přístupu k žádným IP adresám nebo plně kvalifikovaným názvům domén.
 
-## <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro službu Azure Backup
+## <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) teď můžete data bezpečně zálohovat ze serverů ve virtuální síti do svého trezoru Recovery Services. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro váš trezor, takže nemusíte zveřejňovat virtuální sítě pro žádné veřejné IP adresy. Pomocí privátních koncových bodů se dají zálohovat a obnovovat databáze SQL a SAP HANA, které běží v rámci virtuálních počítačů Azure. Dá se taky použít pro vaše místní servery pomocí agenta MARS.
 
@@ -56,7 +56,7 @@ Pomocí [privátních koncových bodů](../private-link/private-endpoint-overvie
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Ochrana zálohovaných dat před neúmyslnými odstraněními
 
-Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po jejím odstranění. Pokud uživatel odstraní zálohu virtuálního počítače pomocí obnovitelného odstranění, uchovávají se data zálohy po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka. [Přečtěte si další informace o obnovitelném odstranění](backup-azure-security-feature-cloud.md).
+Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po jejím odstranění. Pokud uživatel odstraní zálohu virtuálního počítače pomocí obnovitelného odstranění, uchovávají se data zálohy po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Přečtěte si další informace o obnovitelném odstranění](backup-azure-security-feature-cloud.md).
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Monitorování a výstrahy podezřelé aktivity
 
@@ -64,13 +64,13 @@ Azure Backup poskytuje [integrované možnosti monitorování a upozorňování]
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy
 
-Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure. MARS nyní poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Mezi tyto funkce patří:
+Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure. MARS nyní poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Patří k nim:
 
 * Další úroveň ověřování se přidá vždy, když se provede kritická operace, jako je změna hesla. Ověření je zajištěno, že tyto operace mohou provádět pouze uživatelé, kteří mají platné přihlašovací údaje Azure. [Přečtěte si další informace o funkcích, které zabraňují útokům](./backup-azure-security-feature.md#prevent-attacks).
 
 * Data odstraněných záloh se uchovávají po dobu dalších 14 dní od data odstranění. Tím je zajištěna obnova dat během daného časového období, takže nedochází ke ztrátě dat, i když dojde k útoku. Pro ochranu před poškozenými daty je také udržován větší počet minimálních bodů obnovení. [Přečtěte si další informace o obnově odstraněných zálohovaných dat](./backup-azure-security-feature.md#recover-deleted-backup-data).
 
-* Pro data zálohovaná pomocí agenta Microsoft Azure Recovery Services (MARS) se před odesláním do Azure Backup a dešifrují data, která se zašifrují po stažení z Azure Backup, k zajištění šifrování dat. Podrobnosti přístupového hesla jsou dostupné jenom uživateli, který vytvořil heslo, a agenta, který je s ním nakonfigurovaný. Žádná služba není přenášená ani sdílená se službou. Tím zajistíte, že se data, která se nechtěně zveřejňují (například útok prostředníkem na síť), dokončí bez hesla a heslo se v síti nepošle.
+* Pro data zálohovaná pomocí agenta Microsoft Azure Recovery Services (MARS) se před odesláním do Azure Backup a dešifrují data, která se zašifrují po stažení z Azure Backup, k zajištění šifrování dat. Podrobnosti přístupového hesla jsou dostupné jenom uživateli, který vytvořil heslo, a agenta, který je s ním nakonfigurovaný. Žádná služba není přenášená ani sdílená se službou. Díky tomu zajistíte kompletní zabezpečení vašich dat, protože všechna data, která se nechtěně zveřejňují (například útok prostředníkem na síti), není možné použít bez přístupového hesla a heslo se neposílá přes síť.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Dodržování standardních požadavků na zabezpečení
 

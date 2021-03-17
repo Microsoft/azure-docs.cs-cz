@@ -11,24 +11,24 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ajburnle
 ms.reviewer: krbain
-ms.custom: it-pro, seodec18, contperfq4
+ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f8041656a11689d0cca64c3edae1af2e70409028
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797657"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027709"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
-Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
+Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../enterprise-users/index.yml).
 
 ## <a name="group-and-membership-types"></a>Typy skupin a členství
 Existuje několik typů skupin a členství. Následující informace popisují jednotlivé typy skupin a členství a jejich použití, které vám pomohou rozhodnout, jaké možnosti použít při vytváření skupiny.
 
 ### <a name="group-types"></a>Typy skupin:
 - **Zabezpečení**. Slouží ke správě členů a přístupu počítače ke sdíleným prostředkům u skupiny uživatelů. Můžete například vytvořit skupinu zabezpečení pro konkrétní zásady zabezpečení. Tímto způsobem můžete udělit sadu oprávnění všem členům najednou a nemusíte přidávat oprávnění členům jednotlivě. Skupina zabezpečení může mít uživatele, zařízení, skupiny a instanční objekty jako své členy a uživatele a instanční objekty jako vlastníci. Další informace o správě přístupu k prostředkům najdete v článku o [správě přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md).
-- **Office 365**. Poskytuje možnosti spolupráce tím, že umožňuje členům přístup ke sdílené poštovní schránce, kalendáři, souborům, sharepointovému webu a dalším prostředkům. Tato možnost vám také umožňuje udělit přístup ke skupině lidem mimo vaši organizaci. Skupina Office 365 může mít jako své členy pouze uživatele. Uživatelé i instanční objekty můžou být vlastníky skupiny Office 365. Další informace o skupinách Office 365 najdete v článku o [skupinách Office 365](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Microsoft 365**. Poskytuje možnosti spolupráce tím, že umožňuje členům přístup ke sdílené poštovní schránce, kalendáři, souborům, sharepointovému webu a dalším prostředkům. Tato možnost vám také umožňuje udělit přístup ke skupině lidem mimo vaši organizaci. Skupina Microsoft 365 může mít jako své členy pouze uživatele. Uživatelé i instanční objekty můžou být vlastníky skupiny Microsoft 365. Další informace o Microsoft 365 skupin najdete v tématu [informace o Microsoft 365Ch skupinách](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Typy členství:
 - **Přiřazení.** Umožňuje přidat konkrétní uživatele jako členy této skupiny s jedinečnými oprávněními. Pro účely tohoto článku používáme tuto možnost.
@@ -36,7 +36,7 @@ Existuje několik typů skupin a členství. Následující informace popisují 
 - **Dynamické zařízení**: Umožňuje použít dynamická skupinová pravidla a automaticky tak přidávat a odebírat zařízení. Pokud se změní atributy zařízení, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda zařízení splňuje požadavky pravidla (je přidáno) nebo zda již požadavky pravidel nesplňuje (je odebráno).
 
     > [!IMPORTANT]
-    > Dynamickou skupinu můžete vytvořit buď pro zařízení, nebo uživatele, ale nikoli pro obojí. Stejně tak nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení. Další informace o tom, jak vytvořit dynamickou skupinu pro uživatele a zařízení, najdete v tématu [Vytvoření dynamické skupiny a kontroly stavu](../users-groups-roles/groups-create-rule.md) .
+    > Dynamickou skupinu můžete vytvořit buď pro zařízení, nebo uživatele, ale nikoli pro obojí. Stejně tak nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení. Další informace o tom, jak vytvořit dynamickou skupinu pro uživatele a zařízení, najdete v tématu [Vytvoření dynamické skupiny a kontroly stavu](../enterprise-users/groups-create-rule.md) .
 
 ## <a name="create-a-basic-group-and-add-members"></a>Vytvoření základní skupiny a přidání členů
 Vytvořit základní skupinu a přidat do ní členy můžete současně. Chcete-li vytvořit základní skupinu a přidat členy, použijte následující postup:
@@ -77,10 +77,9 @@ Vytvořit základní skupinu a přidat do ní členy můžete současně. Chcete
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>Zapnout nebo vypnout e-mail pro uvítání skupiny
 
-Když se vytvoří jakákoli nová skupina Office 365, ať už s dynamickým nebo statickým členstvím, pošle se uvítací oznámení všem uživatelům, kteří se do této skupiny přidají. Když se změní kterýkoli atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci, aby se projevily případné změny členství. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete v [prostředí Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)vypnout. 
+Když se vytvoří jakákoli nová skupina Microsoft 365, ať už s dynamickým nebo statickým členstvím, pošle se oznámení uvítání všem uživatelům, kteří se do této skupiny přidají. Když se změní kterýkoli atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci, aby se projevily případné změny členství. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete v [prostředí Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup)vypnout. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa přístupu k aplikacím SaaS pomocí skupin](../users-groups-roles/groups-saasapps.md)
-- [Správa skupin pomocí powershellových příkazů](../users-groups-roles/groups-settings-v2-cmdlets.md)
-
+- [Správa přístupu k aplikacím SaaS pomocí skupin](../enterprise-users/groups-saasapps.md)
+- [Správa skupin pomocí powershellových příkazů](../enterprise-users/groups-settings-v2-cmdlets.md)

@@ -5,19 +5,20 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.reviewer: douglas, sstein
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691140"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek vysvětluje, jak ručně převzetí služeb při selhání primárního uzlu na úrovních služby SQL Managed instance Pro obecné účely (GP) a Pro důležité obchodní informace (BC) a ruční převzetí služeb při selhání sekundárního uzlu repliky jen pro čtení jenom na úrovni služby BC.
 
@@ -33,9 +34,18 @@ V některých z následujících důvodů můžete zvážit spuštění [ruční
 - V některých případech snížení výkonu dotazů může ruční převzetí služeb při potížích s výkonem snížit riziko.
 
 > [!NOTE]
-> Zajištění odolnosti před převzetím služeb při selhání před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací v produkčním prostředí a přispívat k dostupnosti aplikací pro vaše zákazníky.
+> Zajištění odolnosti před převzetím služeb při selhání před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací v produkčním prostředí a přispívat k dostupnosti aplikací pro vaše zákazníky. Přečtěte si další informace o testování připravenosti na Cloud s využitím [testování připravenosti cloudu pro zajištění odolnosti při selhání pomocí překódování videa spravované instance SQL](https://youtu.be/FACWYLgYDL8) .
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Iniciovat ruční převzetí služeb při selhání na spravované instanci SQL
+
+### <a name="azure-rbac-permissions-required"></a>Vyžaduje se oprávnění Azure RBAC.
+
+Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít jednu z následujících rolí Azure:
+
+- Role vlastníka předplatného nebo
+- Role [přispěvatele spravované instance](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) nebo
+- Vlastní role s následujícím oprávněním:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
@@ -53,7 +63,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-Pomocí příkazu PowerShellu [Invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) s následujícím příkladem můžete iniciovat převzetí služeb při selhání primárního uzlu, které platí pro úroveň služby BC a GP.
+Pomocí příkazu PowerShellu [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) s následujícím příkladem můžete iniciovat převzetí služeb při selhání primárního uzlu, které platí pro úroveň služby BC a GP.
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -85,9 +95,9 @@ Použijte následující příkaz rozhraní příkazového řádku pro převzet�
 az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableSecondary
 ```
 
-### <a name="using-rest-api"></a>Použití rozhraní REST API
+### <a name="using-rest-api"></a>S využitím rozhraní REST API
 
-Pokročilým uživatelům, kteří by museli potřebovat automatizovat převzetí služeb při selhání svých spravovaných instancí SQL pro účely implementace kanálu nepřetržitého testování nebo automatizovaného zmírnění výkonu, je možné tuto funkci provést prostřednictvím volání rozhraní API při inicializaci převzetí služeb při selhání. Podrobnosti najdete v tématu [spravované instance – převzetí služeb při selhání REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) .
+Pokročilým uživatelům, kteří by museli potřebovat automatizovat převzetí služeb při selhání svých spravovaných instancí SQL pro účely implementace kanálu nepřetržitého testování nebo automatizovaného zmírnění výkonu, je možné tuto funkci provést prostřednictvím volání rozhraní API při inicializaci převzetí služeb při selhání. Podrobnosti najdete v tématu [spravované instance – převzetí služeb při selhání REST API](/rest/api/sql/managed%20instances%20-%20failover/failover) .
 
 Pokud chcete spustit převzetí služeb při selhání pomocí REST API volání, nejdřív vygenerujte ověřovací token pomocí klienta rozhraní API podle vašeho výběru. Vygenerovaný ověřovací token se používá jako vlastnost Authorization v hlavičce požadavku rozhraní API a je povinný.
 
@@ -116,7 +126,7 @@ Stav operace se dá sledovat prostřednictvím revizí odpovědí rozhraní API 
 
 ## <a name="monitor-the-failover"></a>Monitorování převzetí služeb při selhání
 
-Chcete-li monitorovat průběh uživatelem iniciované ruční převzetí služeb při selhání, spusťte následující dotaz T-SQL ve vašem oblíbeném klientovi (například SSMS) na spravované instanci SQL. Přečte zobrazení System View sys. dm_hadr_fabric_replica_states a vygeneruje repliky sestav, které jsou k dispozici v instanci. Po zahájení ručního převzetí služeb při selhání aktualizujte stejný dotaz.
+Pokud chcete monitorovat průběh převzetí služeb při selhání uživatelem iniciované instance BC, spusťte následující dotaz T-SQL ve vašem oblíbeném klientovi (například SSMS) na spravované instanci SQL. Přečte zobrazení systému sys.dm_hadr_fabric_replica_states a repliky sestav, které jsou k dispozici na instanci. Po zahájení ručního převzetí služeb při selhání aktualizujte stejný dotaz.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -124,18 +134,26 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 Před zahájením převzetí služeb při selhání bude výstup označovat aktuální primární repliku ve vrstvě služby BC obsahující jednu primární a tři sekundární prostředí ve skupině dostupnosti AlwaysOn. Po provedení převzetí služeb při selhání bude nutné znovu spustit tento dotaz, aby označoval změnu primárního uzlu.
 
-Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno výše pro BC. Je to proto, že úroveň služby GP je založená jenom na jednom uzlu. Výstup dotazu T-SQL pro úroveň služby GP zobrazí pouze jeden uzel před a po převzetí služeb při selhání. Ztráta připojení z klienta během převzetí služeb při selhání, obvykle trvalá za minutu, bude znamenat provedení převzetí služeb při selhání.
+Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno výše pro BC. Je to proto, že úroveň služby GP je založená jenom na jednom uzlu. Můžete použít alternativní dotaz T-SQL ukazující čas spuštění procesu SQL na uzlu pro instanci vrstvy služby GP:
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+Krátkodobá ztráta připojení z klienta během převzetí služeb při selhání, obvykle trvalá za minutu, bude znamenat provedení převzetí služeb při selhání bez ohledu na úroveň služby.
 
 > [!NOTE]
 > Dokončení procesu převzetí služeb při selhání (nejedná se o skutečnou krátkou nedostupnost) může v případě úloh s **vysokou mírou svítivosti** trvat v čase několik minut. Důvodem je to, že instance Engine se stará o všechny aktuální transakce na primárním a zachytit v sekundárním uzlu před převzetím služeb při selhání.
 
 > [!IMPORTANT]
 > Funkční omezení uživatelsky iniciované ruční převzetí služeb při selhání:
-> - Každých **30 minut**může nacházet jedna (1) převzetí služeb při selhání spuštěné ve stejné spravované instanci.
+> - V rámci jedné spravované instance se každých **15 minut** může nacházet jedna (1) převzetí služeb při selhání.
 > - Pro instance BC musí existovat kvorum replik pro požadavek převzetí služeb při selhání, které se má přijmout.
 > - U instancí BC není možné určit, která čitelná sekundární replika má iniciovat převzetí služeb při selhání.
+> - Převzetí služeb při selhání nebude povoleno, dokud nebude první úplné zálohování nové databáze dokončeno automatizovanými zálohovacími systémy.
+> - Převzetí služeb při selhání nebude povoleno, pokud existuje obnovení databáze.
 
 ## <a name="next-steps"></a>Další kroky
-
+- Přečtěte si další informace o testování připravenosti na Cloud s využitím [testování připravenosti cloudu pro zajištění odolnosti při selhání pomocí překódování videa spravované instance SQL](https://youtu.be/FACWYLgYDL8) .
 - Přečtěte si další informace o vysoké dostupnosti spravované instance s [vysokou dostupností pro Azure SQL Managed instance](../database/high-availability-sla.md).
 - Přehled najdete v tématu [co je Azure SQL Managed instance?](sql-managed-instance-paas-overview.md).

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/14/2020
 ms.author: yelevin
 ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783159"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel.
@@ -48,7 +48,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 1. Vytvoření relace živě z loveckého dotazu:
     
     1. Na kartě **dotazy** vyhledejte lovecký dotaz, který chcete použít.
-    1. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Příklad:
+    1. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Například:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z loveckého dotazu Azure Sentinel](./media/livestream/livestream-from-query.png)
@@ -78,7 +78,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**  >  **lovecké**  >  **živě** .
 
-1. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Příklad:
+1. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Například:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z loveckého dotazu Azure Sentinel](./media/livestream/livestream-tab.png)
@@ -87,7 +87,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Dostávat oznámení, když dojde k novým událostem
 
-Vzhledem k tomu, že živě oznámení o nových událostech používají Azure Portal oznámení, uvidíte tato oznámení vždy, když použijete Azure Portal. Příklad:
+Vzhledem k tomu, že živě oznámení o nových událostech používají Azure Portal oznámení, uvidíte tato oznámení vždy, když použijete Azure Portal. Například:
 
 ![Oznámení Azure Portal pro živě](./media/livestream/notification.png)
 

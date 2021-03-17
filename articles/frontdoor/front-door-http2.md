@@ -3,26 +3,26 @@ title: Přední vrátka Azure – podpora HTTP2 | Microsoft Docs
 description: Tento článek vám pomůže získat informace o podpoře HTTP/2 v Azure front-dveřích.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/28/2020
+ms.author: duau
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985180"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448693"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Podpora HTTP/2 v Azure front-dveřích
 
 V současné době je podpora protokolu HTTP/2 aktivní pro všechny konfigurace front-dveří Azure. Od zákazníků není vyžadována žádná další akce.
 
-HTTP/2 je hlavní revize HTTP/1.1. Poskytuje rychlejší webový výkon, omezenou dobu odezvy a vylepšené uživatelské prostředí a současně zachovává známé metody HTTP, stavové kódy a sémantiku. I když je protokol HTTP/2 navržený tak, aby fungoval s HTTP a HTTPS, mnoho klientských webových prohlížečů podporuje jenom HTTP/2 přes TLS (Transport Layer Security).
+HTTP/2 je hlavní revize HTTP/1.1, která vám poskytne rychlejší webový výkon tím, že se zkrátí doba odezvy. HTTP/2 se provádí udržováním známých metod HTTP, stavových kódů a sémantiky pro zlepšení uživatelského prostředí. I když je HTTP/2 navržený tak, aby fungoval s HTTP a HTTPS, mnoho klientských webových prohlížečů podporuje jenom HTTP/2 přes TLS (Transport Layer Security).
 
 > [!NOTE]
 > Podpora protokolu HTTP/2 je k dispozici pouze pro požadavky od klientů do front-dveří. Komunikace z předních dveří do back-endu v rámci fondu back-end se stává přes HTTP/1.1. 
@@ -46,7 +46,7 @@ Mezi výhody HTTP/2 patří:
 
 ## <a name="http2-browser-support"></a>Podpora prohlížeče HTTP/2
 
-Všechny hlavní prohlížeče mají v jejich současných verzích naimplementovaná podpora HTTP/2. Nepodporované prohlížeče se automaticky přenemají na HTTP/1.1.
+Všechny hlavní prohlížeče mají v jejich současných verzích naimplementovaná podpora HTTP/2. Nepodporované prohlížeče se automaticky přestanou vrátit na HTTP/1.1.
 
 |Prohlížeč|Minimální verze|
 |-------------|------------|

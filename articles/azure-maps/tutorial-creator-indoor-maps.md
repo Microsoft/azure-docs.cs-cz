@@ -1,21 +1,25 @@
 ---
-title: Vytvoření vnitřních map pomocí autora
-description: K vytvoření vnitřních map použijte Tvůrce Azure Maps.
+title: 'Kurz: použití tvůrce map Microsoft Azure (Preview) k vytvoření vnitřních map'
+description: Kurz použití tvůrce map Microsoft Azure (Preview) k vytvoření vnitřních map
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 12/07/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720133"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
+# <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Kurz: použití Tvůrce (Preview) k vytvoření vnitřních map
+
+> [!IMPORTANT]
+> Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto kurzu se dozvíte, jak vytvořit mapy vnitřních. V tomto kurzu se naučíte používat rozhraní API k těmto akcím:
 
@@ -28,14 +32,14 @@ V tomto kurzu se dozvíte, jak vytvořit mapy vnitřních. V tomto kurzu se nau�
 > * Vytvoření funkce stateset pomocí vašich funkcí mapy a dat v datové sadě
 > * Aktualizace stateset funkcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvoření vnitřních map:
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
-3. [Vytvoření prostředku autora](how-to-manage-creator.md)
-4. Stáhněte si [vzorový balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+3. [Vytvoření prostředku Creator (Preview)](how-to-manage-creator.md)
+4. Stáhněte si [vzorový balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip).
 
 V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, ale můžete zvolit jiné vývojové prostředí API.
 
@@ -44,7 +48,7 @@ V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, al
 
 ## <a name="upload-a-drawing-package"></a>Nahrání balíčku pro kreslení
 
-Pomocí [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) nahrajte balíček pro kreslení do prostředků Azure Maps.
+Pomocí [rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview) nahrajte balíček pro kreslení do prostředků Azure Maps.
 
 Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vzor definovaný zde. Po dokončení operace použijeme `udid` pro přístup k nahranému balíčku k převedení. Použijte následující postup k získání `udid` .
 
@@ -102,7 +106,7 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 
  Teď, když se balíček pro kreslení nahraje, použijeme `udid` pro nahráný balíček k převedení balíčku na data mapy. Rozhraní API pro převod používá dlouhou běžící transakci, která implementuje [zde](creator-long-running-operation.md)definovaný vzor. Po dokončení operace použijeme `conversionId` pro přístup k převedeným datům. Použijte následující postup k získání `conversionId` .
 
-1. Vyberte **Nové**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
+1. Vyberte možnost pro **novou** položku. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
 
 2. Vyberte metodu **post** http na kartě tvůrce a zadejte následující adresu URL pro převedení nahraného balíčku pro vykreslování na data mapy. Použijte `udid` pro nahraný balíček.
 
@@ -111,16 +115,17 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
     ```
 
     >[!IMPORTANT]
-    > Adresy URL rozhraní API v tomto dokumentu může být potřeba upravit podle umístění prostředku autora. Další podrobnosti najdete v tématu [přístup ke službě Creator Services](how-to-manage-creator.md#access-to-creator-services).
+    > Adresy URL rozhraní API v tomto dokumentu může být potřeba upravit podle umístění prostředku autora. Další podrobnosti najdete v tématu [přístup ke službě Creator Services (Preview) ](how-to-manage-creator.md#access-to-creator-services).
+    > Pokud se zobrazí chyba s kódem `"RequiresCreatorResource"` , ujistěte se, že jste v Azure Maps účtu [zřídili Azure Maps Resource Creator](how-to-manage-creator.md) .
 
 3. Klikněte na tlačítko **Odeslat** a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi a vyhledejte klíč **umístění** . Zkopírujte hodnotu klíče **umístění** , který je `status URL` pro požadavek na převod. Tento postup použijete v dalším kroku.
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Zkopírujte hodnotu klíče umístění.":::
 
-4. Spusťte novou metodu **Get** http na kartě tvůrce. do přidejte Azure Maps klíč primárního předplatného `status URL` . Vytvořte požadavek **Get** `status URL` v umístění, které jste zkopírovali v kroku 3. `status URL`Vypadá to jako následující adresa URL:
+4. Spusťte novou metodu **Get** http na kartě tvůrce. Přidejte k adresáři Azure Maps primární klíč předplatného `status URL` . Vytvořte požadavek **Get** `status URL` v umístění, které jste zkopírovali v kroku 3. `status URL`Vypadá to jako následující adresa URL:
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     Pokud se proces převodu ještě nedokončí, může se zobrazit něco podobného jako u následující odpovědi JSON:
@@ -164,17 +169,17 @@ Vzorový balíček pro kreslení by měl být převeden bez chyb nebo upozorněn
 
 ## <a name="create-a-dataset"></a>Vytvoření datové sady
 
-Datová sada je kolekce funkcí mapy, jako jsou budovy, úrovně a místnosti. Chcete-li vytvořit datovou sadu, použijte [rozhraní API pro vytvoření datové sady](https://docs.microsoft.com/rest/api/maps/dataset/createpreview). Rozhraní API pro vytvoření datové sady přebírá `conversionId` pro převedený balíček a vrátí `datasetId` vytvořenou datovou sadu. Následující postup ukazuje, jak vytvořit datovou sadu.
+Datová sada je kolekce funkcí mapy, jako jsou budovy, úrovně a místnosti. Chcete-li vytvořit datovou sadu, použijte [rozhraní API pro vytvoření datové sady](/rest/api/maps/dataset/createpreview). Rozhraní API pro vytvoření datové sady přebírá `conversionId` pro převedený balíček a vrátí `datasetId` vytvořenou datovou sadu. Následující postup ukazuje, jak vytvořit datovou sadu.
 
 1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
 
-2. Vytvořte novou datovou sadu pomocí požadavku **post** pro [datovou sadu vytvořit rozhraní API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) . Před odesláním žádosti přidejte svůj klíč předplatného a `conversionId` společně `conversionId` získaný během procesu převodu v kroku 5.  Požadavek by měl vypadat jako na následující adrese URL:
+2. Vytvořte novou datovou sadu pomocí požadavku **post** pro [datovou sadu vytvořit rozhraní API](/rest/api/maps/dataset/createpreview) . Před odesláním žádosti přidejte svůj klíč předplatného a `conversionId` společně `conversionId` získaný během procesu převodu v kroku 5.  Požadavek by měl vypadat jako na následující adrese URL:
 
     ```http
     https://atlas.microsoft.com/dataset/create?api-version=1.0&conversionID={conversionId}&type=facility&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Získejte `statusURL` v klíči **umístění** **hlaviček**odpovědi.
+3. Získejte `statusURL` v klíči **umístění** **hlaviček** odpovědi.
 
 4. Vytvořte si požadavek **Get** na adresu, kde `statusURL` získáte `datasetId` . K ověřování přidejte svůj primární klíč předplatného Azure Maps. Požadavek by měl vypadat jako na následující adrese URL:
 
@@ -208,7 +213,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 3. Vytvořte si požadavek **Get** na `statusURL` TILESET. K ověřování přidejte svůj primární klíč předplatného Azure Maps. Požadavek by měl vypadat jako na následující adrese URL:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. Po úspěšném dokončení požadavku **Get** http bude hlavička odpovědi obsahovat `tilesetId` pro vytvořenou TILESET. Zkopírujte `tilesetId` .
@@ -224,7 +229,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
 ## <a name="query-datasets-with-wfs-api"></a>Dotazování datových sad pomocí rozhraní WFS API
 
- K datovým sadám se dá dotázat pomocí  [rozhraní WFS API](https://docs.microsoft.com/rest/api/maps/wfs). Pomocí rozhraní WFS API můžete zadávat dotazy na kolekce funkcí, konkrétní kolekci nebo konkrétní funkci s **ID**funkce. **ID** funkce jednoznačně identifikuje funkci v rámci datové sady. Používá se například k identifikaci toho, který stav funkce by měl být v daném stateset aktualizován.
+ K datovým sadám se dá dotázat pomocí  [rozhraní WFS API](/rest/api/maps/wfs). Pomocí rozhraní WFS API můžete zadávat dotazy na kolekce funkcí, konkrétní kolekci nebo konkrétní funkci s **ID** funkce. **ID** funkce jednoznačně identifikuje funkci v rámci datové sady. Používá se například k identifikaci toho, který stav funkce by měl být v daném stateset aktualizován.
 
 1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
 
@@ -234,7 +239,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. Text odpovědi bude dodán ve formátu injson a bude obsahovat všechny kolekce v datové sadě. Pro zjednodušení tento příklad zobrazuje pouze `unit` kolekci. Příklad, který obsahuje všechny kolekce, najdete v tématu [WFS Popis rozhraní API kolekcí](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Chcete-li získat další informace o jakékoli kolekci, můžete kliknout na kteroukoli z adres URL uvnitř `link` elementu.
+3. Text odpovědi bude dodán ve formátu injson a bude obsahovat všechny kolekce v datové sadě. Pro zjednodušení tento příklad zobrazuje pouze `unit` kolekci. Příklad, který obsahuje všechny kolekce, najdete v tématu [WFS Popis rozhraní API kolekcí](/rest/api/maps/wfs/collectiondescriptionpreview). Chcete-li získat další informace o jakékoli kolekci, můžete kliknout na kteroukoli z adres URL uvnitř `link` elementu.
 
     ```json
     {
@@ -304,13 +309,13 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
 1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
 
-2. Vytvořte požadavek **post** [rozhraní API pro vytvoření stateset](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview). Použijte `datasetId` datovou sadu, která obsahuje stav, který chcete upravit. Požadavek by měl vypadat jako na následující adrese URL:
+2. Vytvořte požadavek **post** [rozhraní API pro vytvoření stateset](/rest/api/maps/featurestate/createstatesetpreview). Použijte `datasetId` datovou sadu, která obsahuje stav, který chcete upravit. Požadavek by měl vypadat jako na následující adrese URL:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. V **záhlaví** žádosti **post** nastavte `Content-Type` na `application/json` . V **těle**zadejte níže styly, aby odrážely změny `occupied` `temperature` *stavů*a. Až skončíte, klikněte na **Odeslat**.
+3. V **záhlaví** žádosti **post** nastavte `Content-Type` na `application/json` . V **těle** poskytněte níže nezpracované styly JSON, aby odrážely změny `occupied` `temperature` *stavů* a. Až skončíte, klikněte na **Odeslat**.
 
     ```json
     {
@@ -402,45 +407,17 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
 7. Po úspěšné aktualizaci obdržíte `200 OK` stavový kód HTTP. Pokud jste pro mapu vnitřních umístění  [implementovali dynamické styly](indoor-map-dynamic-styling.md) , aktualizace se zobrazí ve vykreslené mapě v zadaném časovém razítku.
 
-[Rozhraní API pro získání](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) stavů funkce umožňuje načíst stav funkce pomocí její funkce `ID` . Stateset a jeho prostředky můžete také odstranit pomocí [rozhraní API pro odstranění stavu funkce](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview).
+[Rozhraní API pro získání](/rest/api/maps/featurestate/getstatespreview) stavů funkce umožňuje načíst stav funkce pomocí její funkce `ID` . Stateset a jeho prostředky můžete také odstranit pomocí [rozhraní API pro odstranění stavu funkce](/rest/api/maps/featurestate/deletestatesetpreview).
+
+Další informace o různých službách Azure Maps Creator (Preview) popsaných v tomto článku najdete v tématu [Tvůrce vnitřních map](creator-indoor-maps.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nahrání balíčku pro vykreslování mapy interiéru
-> * Převod balíčku pro kreslení na data mapy
-> * Vytvoření datové sady z dat mapy
-> * Vytvoření TILESET z dat v datové sadě
-> * Dotazování na službu Azure Maps WFS, kde se dozvíte o funkcích map
-> * Vytvoření funkce stateset pomocí vašich funkcí mapy a dat v datové sadě
-> * Aktualizace stateset funkcí
-
-Nyní jste vybaveni dovednostmi, které potřebujete k přechodu na další příručky:
+Další informace o použití modulu mapy vnitřníchy najdete v tématu.
 
 > [!div class="nextstepaction"]
 > [Použití modulu mapy Vnitřníchy](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [Implementovat dynamické styly pro mapy vnitřních.](indoor-map-dynamic-styling.md)
-
-Další informace o různých Azure Mapsch službách popsaných v tomto článku:
-
-> [!div class="nextstepaction"]
-> [Nahrávání dat](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Převod dat](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Datová sada](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [Tileset](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [Sada stavů funkcí](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [Služba WFS](creator-indoor-maps.md#web-feature-service-api)

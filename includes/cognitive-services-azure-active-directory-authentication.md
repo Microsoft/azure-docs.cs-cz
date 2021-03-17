@@ -4,18 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88011044"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510913"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
 > [!IMPORTANT]
-> 1. V současné době platí **pouze** rozhraní API pro počítačové zpracování obrazu, Face API, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bing s výjimkou vlastní vyhledávání Bingu ověřování pomocí Azure Active Directory (AAD).
-> 2. Ověřování AAD se musí vždycky používat společně s názvem vlastní subdomény vašeho prostředku Azure. [Regionální koncové body](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nepodporují ověřování AAD.
+> 1. V současné době platí **pouze** rozhraní API pro počítačové zpracování obrazu, rozhraní API pro rozpoznávání tváře, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií, QnA maker a všechny služby Bing s výjimkou vlastní vyhledávání Bingu ověřování pomocí Azure Active Directory (AAD).
+> 2. Ověřování AAD se musí vždycky používat společně s názvem vlastní subdomény vašeho prostředku Azure. [Regionální koncové body](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) nepodporují ověřování AAD.
 
 V předchozích částech jsme vám ukázali, jak ověřit službu Azure Cognitive Services pomocí klíče předplatného s jednou službou nebo více službami. I když tyto klíče poskytují rychlou a jednoduchou cestu k zahájení vývoje, jsou v složitějších scénářích, které vyžadují řízení přístupu na základě role v Azure (Azure RBAC). Pojďme se podívat na to, co je potřeba k ověřování pomocí Azure Active Directory (AAD).
 
@@ -23,15 +23,15 @@ V následujících částech budete pomocí prostředí Azure Cloud Shell nebo A
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Vytvoření prostředku s vlastní subdoménou
 
-Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existující prostředek Cognitive Services, který nemá název vlastní subdomény, postupujte podle pokynů v [Cognitive Services vlastní subdomény](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) , abyste pro svůj prostředek povolili vlastní subdoménu.
+Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existující prostředek Cognitive Services, který nemá název vlastní subdomény, postupujte podle pokynů v [Cognitive Services vlastní subdomény](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources) , abyste pro svůj prostředek povolili vlastní subdoménu.
 
-1. Začněte otevřením Azure Cloud Shell. Pak [Vyberte předplatné](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Začněte otevřením Azure Cloud Shell. Pak [Vyberte předplatné](/powershell/module/az.accounts/set-azcontext):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Dále [vytvořte prostředek Cognitive Services](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) s vlastní subdoménou. Název subdomény musí být globálně jedinečný a nesmí obsahovat speciální znaky, například: ".", "!", ",".
+2. Dále [vytvořte prostředek Cognitive Services](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount) s vlastní subdoménou. Název subdomény musí být globálně jedinečný a nesmí obsahovat speciální znaky, například: ".", "!", ",".
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 > [!NOTE]
 > Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut.
 
-1. Nejdřív si zaregistrujeme [aplikaci AAD](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
+1. Nejdřív si zaregistrujeme [aplikaci AAD](/powershell/module/Az.Resources/New-AzADApplication).
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 
    V následujícím kroku budete potřebovat **ApplicationId** .
 
-2. Dále musíte [vytvořit instanční objekt](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) pro aplikaci AAD.
+2. Dále musíte [vytvořit instanční objekt](/powershell/module/az.resources/new-azadserviceprincipal) pro aplikaci AAD.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
    >[!NOTE]
    > Pokud zaregistrujete aplikaci v Azure Portal, bude tento krok dokončen za vás.
 
-3. Posledním krokem je [přiřazení role "Cognitive Services uživatele"](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) k instančnímu objektu (vymezenému pro prostředek). Přiřazením role udělíte instančnímu objektu přístup k tomuto prostředku. Stejnému instančnímu objektu můžete udělit přístup k několika prostředkům v rámci vašeho předplatného.
+3. Posledním krokem je [přiřazení role "Cognitive Services uživatele"](/powershell/module/az.Resources/New-azRoleAssignment) k instančnímu objektu (vymezenému pro prostředek). Přiřazením role udělíte instančnímu objektu přístup k tomuto prostředku. Stejnému instančnímu objektu můžete udělit přístup k několika prostředkům v rámci vašeho předplatného.
    >[!NOTE]
    > Je použit identifikátor ObjectId objektu služby, nikoli identifikátor ObjectId pro aplikaci.
    > ACCOUNT_ID bude ID prostředku Azure účtu Cognitive Services, který jste vytvořili. ID prostředku Azure můžete najít z části vlastnosti prostředku v Azure Portal.
@@ -119,16 +119,16 @@ Případně můžete instanční objekt ověřit pomocí certifikátu. Kromě in
 
 ## <a name="authorize-access-to-managed-identities"></a>Autorizovat přístup ke spravovaným identitám
  
-Cognitive Services podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Spravované identity pro prostředky Azure můžou autorizovat přístup k prostředkům Cognitive Services pomocí přihlašovacích údajů Azure AD z aplikací běžících na virtuálních počítačích Azure, aplikacích funkcí, škálování virtuálních počítačů a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.  
+Cognitive Services podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../articles/active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k prostředkům Cognitive Services pomocí přihlašovacích údajů Azure AD z aplikací běžících na virtuálních počítačích Azure, aplikacích funkcí, škálování virtuálních počítačů a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.  
 
 ### <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
 
 Než budete moct použít spravované identity pro prostředky Azure k autorizaci přístupu k prostředkům Cognitive Services z virtuálního počítače, musíte na VIRTUÁLNÍm počítači povolit spravované identity pro prostředky Azure. Informace o tom, jak povolit spravované identity pro prostředky Azure, najdete v těchto tématech:
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-- [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-- [Šablona Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-- [Klientské knihovny Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+- [Azure Portal](../articles/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+- [Azure PowerShell](../articles/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../articles/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Šablona Azure Resource Manageru](../articles/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Klientské knihovny Azure Resource Manager](../articles/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](../articles/active-directory/managed-identities-azure-resources/overview.md).

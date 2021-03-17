@@ -1,6 +1,6 @@
 ---
 title: Správa hybridní identity – úlohy správy Azure | Microsoft Docs
-description: Při použití řízení podmíněného přístupu Azure Active Directory kontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci. Po splnění těchto podmínek bude uživatel ověřený a povolený přístup k aplikaci.
+description: Azure AD zkontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci pomocí podmíněného řízení přístupu.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109385"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90986528"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Plán pro hybridní životní cyklus identity
 Identita je jednou ze základů vaší strategie Enterprise mobility a přístupu k aplikacím. Bez ohledu na to, jestli se přihlašujete k mobilnímu zařízení nebo aplikaci SaaS, je vaše identita klíčem k získání přístupu ke všem. V nejvyšší úrovni zahrnuje řešení pro správu identit sjednocení a synchronizaci mezi úložišti identity, což zahrnuje automatizaci a centralizaci procesu zřizování prostředků. Řešení identity by mělo být centralizovanou identitou v místním prostředí a cloudu a taky používat určitou formu federace identit k údržbě centralizovaného ověřování a bezpečnému sdílení a spolupráci s externími uživateli a podniky. Prostředky jsou v rozsahu od operačních systémů a aplikací až po lidi, kteří jsou členy organizace. Organizační strukturu se dá změnit tak, aby vyhovovala zásadám zřizování a postupům.

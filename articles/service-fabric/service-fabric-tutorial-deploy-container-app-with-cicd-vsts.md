@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a n
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614124"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018847"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
@@ -42,15 +42,15 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 Sdílejte zdrojové soubory aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
 
-Pro svůj projekt vytvořte nové místní úložiště Git, a to tak, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete ->  **Přidat do správy zdrojového kódu****Git** .
+Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control** tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu **Git** .
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
-![Nasdílení úložiště Git][push-git-repo]
+![Snímek obrazovky okna Team Explorer-synchronizace v aplikaci Visual Studio. V části push do Azure DevOps se zvýrazní tlačítko publikovat na úložiště Git.][push-git-repo]
 
 Ověřte svůj e-mail a v rozevíracím seznamu **účet** vyberte svou organizaci. Je možné, že budete muset nastavit organizaci, pokud ji ještě nemáte. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
-![Nasdílení úložiště Git][publish-code]
+![Snímek obrazovky okna push do Azure DevOps. Zvýrazní se nastavení pro E-mail, účet, název úložiště a tlačítko publikovat úložiště.][publish-code]
 
 Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím týmovém projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte týmový projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
@@ -62,7 +62,7 @@ Definice vydané verze Azure DevOps popisuje pracovní postup, který nasadí ba
 
 ### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Otevřete nový týmový projekt tak, že přejdete https://dev.azure.com na webový prohlížeč a vyberete svou organizaci a potom nový projekt. 
+Otevřete nový týmový projekt tak, že přejdete na https://dev.azure.com webový prohlížeč a vyberete svou organizaci a potom nový projekt. 
 
 Na levém panelu vyberte možnost **kanály** a pak klikněte na **Nový kanál**.
 
@@ -103,7 +103,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze
 
-Na levém panelu vyberte možnost **kanály** a pak **verze**a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Na levém panelu vyberte možnost **kanály** a pak **verze** a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -134,7 +134,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 ![Povolení triggeru][enable-trigger]
 
-Výběrem **+ vydaná** -> verze**vytvořit vydání** -> **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
+Výběrem **+ vydaná** verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
@@ -142,7 +142,7 @@ Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clust
 
 Ověřte fungování kanálu kontinuální integrace tím, že do Azure DevOps vrátíte se změnami nějaký kód.
 
-Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající na vyřízení][pending]) na stavovém řádku v pravém dolním rohu.
+Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Ikona probíhajících změn zobrazuje tužku a číslo.][pending]) na stavovém řádku v pravém dolním rohu.
 
 V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktualizace a potvrďte provedené změny.
 
@@ -158,7 +158,7 @@ Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
-![Service Fabric Explorer][sfx1]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Na kartě základy se zvýrazní verze aplikace "1.0.0.20170815.3".][sfx1]
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
@@ -166,11 +166,11 @@ Proveďte v aplikaci změny kódu.  Podle předchozích kroků změny uložte a 
 
 Jakmile začne upgrade aplikace, můžete průběh upgradu sledovat v Service Fabric Exploreru:
 
-![Service Fabric Explorer][sfx2]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Zpráva "probíhá upgrade" je zvýrazněna a stav aplikace je "upgrade".][sfx2]
 
 Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplikace používat další verzi.  V tomto příkladu verzi 1.0.0.20170815.4.
 
-![Service Fabric Explorer][sfx3]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Na kartě základy je zvýrazněna aktualizovaná verze aplikace "1.0.0.20170815.4".][sfx3]
 
 ## <a name="next-steps"></a>Další kroky
 

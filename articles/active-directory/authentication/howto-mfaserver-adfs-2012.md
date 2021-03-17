@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fd1bf4f9c463973d70f5289f7a82f372d0156cb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653357"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742541"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS ve Windows Serveru
 
@@ -25,7 +25,13 @@ Pokud používáte službu AD FS (Active Directory Federation Services) a chcete
 V tomto článku se podíváme na to, jak používat Azure Multi-Factor Authentication Server s AD FS v systému Windows Server 2012 R2 nebo Windows Server 2016. Další informace najdete v tématu [Zabezpečení cloudových a lokálních prostředků pomocí Microsoft Azure Multi-Factor Authentication Serveru s AD FS 2.0](howto-mfaserver-adfs-2.md).
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Pokud používáte cloudové vícefaktorové ověřování, přečtěte si téma [zabezpečení cloudových prostředků pomocí Azure AD Multi-Factor Authentication a AD FS](howto-mfa-adfs.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>Zabezpečení Windows Serveru AD FS pomocí Azure Multi-Factor Authentication Serveru
 
@@ -51,8 +57,8 @@ Před zahájením se ujistěte, že znáte následující informace:
 
    ![Instalace adaptéru ADFS z konzoly MFA serveru](./media/howto-mfaserver-adfs-2012/server.png)
 
-5. Pokud se zobrazí okno služby Active Directory, znamená to dvě věci. Počítač je připojený k doméně a konfigurace Active Directory pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci služby Active Directory a konfigurovat nastavení ručně**. Klikněte na **Další**.
-6. Pokud se zobrazí okno místní skupiny, znamená to dvě věci. Počítač není připojený k doméně a konfigurace místní skupiny pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci místní skupiny a konfigurovat nastavení ručně**. Klikněte na **Další**.
+5. Pokud se zobrazí okno služby Active Directory, znamená to dvě věci. Počítač je připojený k doméně a konfigurace Active Directory pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci služby Active Directory a konfigurovat nastavení ručně**. Klikněte na **Next** (Další).
+6. Pokud se zobrazí okno místní skupiny, znamená to dvě věci. Počítač není připojený k doméně a konfigurace místní skupiny pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci místní skupiny a konfigurovat nastavení ručně**. Klikněte na **Next** (Další).
 7. V průvodci instalací klikněte na tlačítko **Další**. Azure Multi-Factor Authentication Server vytvoří skupinu PhoneFactor Admins a přidá do ní účet služby AD FS.
 8. V kroku **Spustit instalační program** klikněte na **Další**.
 9. V instalačním programu adaptéru Multi-Factor Authentication AD FS klikněte na **Další**.
@@ -85,7 +91,7 @@ Postupujte podle těchto kroků a upravte soubor MultiFactorAuthenticationAdfsAd
 
 1. Uzel **UseWebServiceSdk** nastavte na **true**.  
 2. Hodnotu **WebServiceSdkUrl** nastavte na URL sady SDK webové služby pro Multi-Factor Authentication. Například: *https: \/ \/ contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, kde *\<certificatename>* je název vašeho certifikátu.  
-3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 přidáním `-ConfigurationFilePath &lt;path&gt;` na konec `Register-AdfsAuthenticationProvider` příkazu, kde * &lt; &gt; cesta* je úplná cesta k souboru MultiFactorAuthenticationAdfsAdapter.config.
+3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 přidáním `-ConfigurationFilePath &lt;path&gt;` na konec `Register-AdfsAuthenticationProvider` příkazu, kde *&lt; &gt; cesta* je úplná cesta k souboru MultiFactorAuthenticationAdfsAdapter.config.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Konfigurace sady SDK webové služby pomocí uživatelského jména a hesla
 
@@ -98,7 +104,7 @@ Por konfiguraci sady SDK webové služby existují dvě možnosti. První možno
 
 Pokud nechcete použít uživatelské jméno a heslo, postupujte podle těchto kroků a nakonfigurujte sadu SDK webové služby pomocí klientského certifikátu.
 
-1. Od certifikační autority získejte klientský certifikát pro server, na kterém běží sada SDK webové služby. Přečtěte si, jak [získat klientský certifikát](https://technet.microsoft.com/library/cc770328.aspx).  
+1. Od certifikační autority získejte klientský certifikát pro server, na kterém běží sada SDK webové služby. Přečtěte si, jak [získat klientský certifikát](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770328(v=ws.10)).  
 2. Importujte klientský certifikát do osobního úložiště certifikátů na místním serveru, kde běží sada SDK webové služby. Ujistěte se, že se veřejný certifikát této autority nachází v úložišti certifikátů Důvěryhodné kořenové certifikáty.  
 3. Exportujte veřejný a privátní klíč klientského certifikátu do souboru .pfx.  
 4. Exportujte veřejný klíč ve formátu Base64 do souboru .cer.  

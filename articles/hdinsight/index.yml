@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 02/27/2020
-  ms.openlocfilehash: c32ca826eb7ebbc773d86a8cfae65cdd4984bcd0
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: b02a1a1e2f6407b2ac59735fb6f202e10c64a6c4
+  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78192723"
+  ms.lasthandoff: 10/26/2020
+  ms.locfileid: "92534749"
 landingContent:
 - title: Informace o HDInsightu
   linkLists:
@@ -24,209 +24,143 @@ landingContent:
     links:
     - text: Co je Azure HDInsight?
       url: ./hdinsight-overview.md
-  - linkListType: learn
+    - text: Verze a komponenty opensourcového softwaru HDInsight
+      url: ./hdinsight-component-versioning.md
+  - linkListType: get-started
     links:
     - text: Vytváření analytických řešení s využitím Azure HDInsightu
-      url: https://docs.microsoft.com/learn/paths/build-oss-analytical-solutions-az-hdinsight/
+      url: /learn/paths/build-oss-analytical-solutions-az-hdinsight/
+    - text: Vytváření clusterů HDInsight
+      url: ./hdinsight-hadoop-provision-linux-clusters.md
+    - text: Monitorování s využitím HDInsightu
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Škálování clusteru pro úsporu nákladů
+      url: ./hdinsight-scaling-best-practices.md
+    - text: Přehled zabezpečení HDInsightu
+      url: ./domain-joined/hdinsight-security-overview.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Co je Apache Spark?
+      url: ./spark/apache-spark-overview.md
+    - text: Vytváření sparkových clusterů a spuštění Sparku v Jupyteru
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+    - text: Načítání dat a spouštění sparkových dotazů
+      url: ./spark/apache-spark-load-data-run-query.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa závislostí Sparku
+      url: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+    - text: Optimalizace sparkových úloh
+      url: ./spark/apache-spark-perf.md
+- title: Apache Hadoop
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Co je to Apache Hadoop?
+      url: ./hadoop/apache-hadoop-introduction.md
+    - text: Vytváření clusterů Hadoop a spouštění dotazů Hive
+      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+    - text: Spouštění ukázek Map Reduce
+      url: ./hadoop/apache-hadoop-run-samples-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Monitorování a správa clusterů Hadoop
+      url: ./hdinsight-hadoop-manage-ambari.md
+    - text: Použití ovladače JDBC/ODBC
+      url: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+- title: Integrace
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Spark/Hive – připojení Sparku a Hivu s využitím konektoru Hive Warehouse
+      url: ./interactive-query/apache-hive-warehouse-connector.md
+    - text: Spark/Kafka – strukturované streamování Apache Sparku s využitím Apache Kafka
+      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - text: Spark/HBase – dotazování Apache HBase s využitím Apache Sparku
+      url: ./hdinsight-using-spark-query-hbase.md
+    - text: Vytváření clusterů na vyžádání s využitím ADF
+      url: ./hdinsight-hadoop-create-linux-clusters-adf.md
   - linkListType: concept
     links:
-    - text: Verze a komponenty HDInsightu
-      url: ./hdinsight-component-versioning.md
     - text: Volba vhodné velikosti virtuálního počítače
       url: ./hdinsight-selecting-vm-size.md
     - text: Typy virtuálních počítačů podporované HDInsightem
       url: ./hdinsight-supported-node-configuration.md
     - text: Porovnání možností úložiště
       url: ./hdinsight-hadoop-compare-storage-options.md
-  - linkListType: tutorial
-    links:
-    - text: Nastavení clusterů Azure HDInsight
-      url: ./hdinsight-hadoop-provision-linux-clusters.md
-    - text: Vytváření clusterů HDInsight s využitím služby Data Lake Store Gen2
-      url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
-  - linkListType: whats-new
-    links:
-    - text: Vlastní Ambari DB
-      url: ./hdinsight-custom-ambari-db.md
-    - text: 'Automatické škálování: automatické škálování clusterů Hadoop'
-      url: ./hdinsight-autoscale-clusters.md
-    - text: Monitorování s využitím HDInsightu
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Migrace tabulek Migrate Apache Hivu do HDInsightu 4.0
-      url: ./interactive-query/apache-hive-migrate-workloads.md
-- title: Apache Spark
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Co je Apache Spark?
-      url: ./spark/apache-spark-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Vytváření clusterů Apache Spark na webu Azure Portal
-      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-  - linkListType: concept
-    links:
-    - text: Optimalizace sparkových úloh
-      url: ./spark/apache-spark-perf.md
-  - linkListType: tutorial
-    links:
-    - text: Vytvoření aplikace Scala Maven pro Spark
-      url: ./spark/apache-spark-create-standalone-application.md
-    - text: Načítání dat a spouštění dotazů Apache Sparku
-      url: ./spark/apache-spark-load-data-run-query.md
-    - text: Dotazování Apache HBase s využitím Apache Sparku
-      url: ./hdinsight-using-spark-query-hbase.md
-    - text: Analýza sparkových dat s využitím Power BI
-      url: ./spark/apache-spark-use-bi-tools.md
-- title: Apache Hadoop
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Co je to Apache Hadoop?
-      url: ./hadoop/apache-hadoop-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Vytváření clusterů Apache Hadoop na webu Azure Portal
-      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-  - linkListType: concept
-    links:
-    - text: Hadoop ETL ve velkém měřítku
-      url: ./hadoop/apache-hadoop-etl-at-scale.md
-    - text: Migrace Hadoopu do cloudu
-      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-    - text: Plánování kapacity clusteru Hadoop
-      url: ./hdinsight-capacity-planning.md
-  - linkListType: tutorial
-    links:
-    - text: Připojení Excelu k Apache Hadoopu
-      url: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-    - text: Monitorování Hadoopu s využitím protokolů Azure Monitoru
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Monitorování a správa clusterů Hadoop s využitím uživatelského rozhraní Ambari
-      url: ./hdinsight-hadoop-manage-ambari.md
 - title: Apache Kafka
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Co je to Apache Kafka?
       url: ./kafka/apache-kafka-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Vytváření clusterů Apache Kafka na webu Azure Portal
+    - text: Vytváření clusterů Kafka a správa témat Kafka
       url: ./kafka/apache-kafka-get-started.md
-  - linkListType: concept
-    links:
-    - text: Proxy REST Kafka
-      url: ./kafka/rest-proxy.md
-    - text: Migrace 3.6 do 4.0
-      url: ./kafka/migrate-versions.md
-    - text: Optimalizace výkonu platformy Kafka
-      url: ./kafka/apache-kafka-performance-tuning.md
-    - text: Škálovatelnost platformy Kafka
-      url: ./kafka/apache-kafka-scalability.md
-    - text: Vysoká dostupnost platformy Kafka
-      url: ./kafka/apache-kafka-high-availability.md
-  - linkListType: tutorial
-    links:
-    - text: Použití rozhraní Kafka Producer and Consumer API
+    - text: Použití rozhraní API pro producenta a konzumenta
       url: ./kafka/apache-kafka-producer-consumer-api.md
-    - text: Strukturované streamování Apache Sparku s využitím Apache Kafka
-      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
-    - text: Zrcadlení platformy Kafka pro zotavení po havárii
-      url: ./kafka/apache-kafka-mirroring.md
-    - text: Nastavení Kafka SSL pro ověřování
+  - linkListType: how-to-guide
+    links:
+    - text: Použití proxy REST Kafka
+      url: ./kafka/rest-proxy.md
+    - text: Ověřování a šifrování TLS pro Kafka
       url: ./kafka/apache-kafka-ssl-encryption-authentication.md
-- title: Apache HBase
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Co je to Apache HBase?
-      url: ./hbase/apache-hbase-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Dotazování HBase s využitím Apache Phoenixu
-      url: ./hbase/apache-hbase-query-with-phoenix.md
-  - linkListType: concept
-    links:
-    - text: Zrychlené zápisy pro Apache HBase
-      url: ./hbase/apache-hbase-accelerated-writes.md
-    - text: Osvědčené postupy pro Apache Phoenix
-      url: ./hbase/apache-hbase-phoenix-performance.md
-  - linkListType: tutorial
-    links:
-    - text: Použití Apache HBase v Azure HDInsightu
-      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - text: Migrace HBase na novou verzi
-      url: ./hbase/apache-hbase-migrate-new-version.md
 - title: Interaktivní dotaz
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Co je interaktivní dotaz?
       url: ./interactive-query/apache-interactive-query-get-started.md
-  - linkListType: quickstart
-    links:
-    - text: Spouštění dotazů Apache Hivu s využitím Apache Zeppelinu
-      url: ./interactive-query/hdinsight-connect-hive-zeppelin.md
-  - linkListType: concept
-    links:
-    - text: Optimalizace dotazů Hive
-      url: ./hdinsight-hadoop-optimize-hive-query.md
-    - text: Použití Hivu jako nástroje ETL
-      url: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-  - linkListType: tutorial
-    links:
     - text: Analýza letových údajů s využitím Apache Hivu
       url: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
-    - text: Připojení Sparku a Hivu s využitím konektoru Hive Warehouse
-      url: ./interactive-query/apache-hive-warehouse-connector.md
-    - text: Připojení Hivu s Power BI s využitím DirectQuery
+  - linkListType: how-to-guide
+    links:
+    - text: Průvodce nastavením velikosti clusteru
+      url: ./interactive-query/hive-llap-sizing-guide.md
+    - text: Propojení Hivu s Power BI
       url: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
 - title: Připravenost pro podnikové zpracování
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Přehled zabezpečení HDInsightu
       url: ./domain-joined/hdinsight-security-overview.md
-  - linkListType: concept
-    links:
     - text: Plánování virtuální sítě
       url: ./hdinsight-plan-virtual-network-deployment.md
     - text: 'Hadoop v Active Directory: Balíček zabezpečení podniku'
       url: ./domain-joined/apache-domain-joined-architecture.md
-    - text: Automatické škálování clusterů Hadoop
-      url: ./hdinsight-autoscale-clusters.md
     - text: Migrace místních clusterů do cloudu
       url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-  - linkListType: tutorial
+- title: Apache HBase
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: Nastavení podnikového zabezpečení s využitím Azure ADDS
-      url: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+    - text: Co je to Apache HBase?
+      url: ./hbase/apache-hbase-overview.md
+    - text: Použití HBase v Azure HDInsightu
+      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - text: Dotazování HBase s využitím Apache Phoenixu
+      url: ./hbase/apache-hbase-query-with-phoenix.md
+  - linkListType: how-to-guide
+    links:
+    - text: Povolení zrychlených zápisů pro HBase
+      url: ./hbase/apache-hbase-accelerated-writes.md
+    - text: Osvědčené postupy pro Apache Phoenix
+      url: ./hbase/apache-hbase-phoenix-performance.md
 - title: Služby ML
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Co jsou služby ML Services v HDInsightu?
       url: ./r-server/r-server-overview.md
-  - linkListType: quickstart
-    links:
     - text: Spuštění skriptu R v clusteru ML Services
       url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
-  - linkListType: tutorial
-    links:
-    - text: Použití R ve výpočetním kontextu Sparku
-      url: ./r-server/ml-services-tutorial-spark-compute.md
 - title: Apache Storm
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Co je to Apache Storm?
       url: ./storm/apache-storm-overview.md
-  - linkListType: quickstart
-    links:
     - text: Vytvoření topologie Apache Stormu
       url: ./storm/apache-storm-quickstart.md
-  - linkListType: tutorial
-    links:
-    - text: Zápis do HDFS s využitím Apache Stormu
-      url: ./storm/apache-storm-write-data-lake-store.md

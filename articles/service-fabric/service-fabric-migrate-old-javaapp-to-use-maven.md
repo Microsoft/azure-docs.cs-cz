@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3efa51f5632dd5cdc274ea39df5178aa0351a01f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327306"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652292"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
 Service Fabric binární soubory Java se přesunuly z Service Fabric Java SDK na Maven hosting. Pomocí **mavencentral** můžete načíst nejnovější závislosti Service Fabric Java. Tato příručka vám pomůže aktualizovat existující aplikace Java vytvořené pro sadu Service Fabric Java SDK, aby byly kompatibilní se sestavením založeným na Maven, a to pomocí šablony Yeoman nebo zatmění.
@@ -165,7 +165,7 @@ task copyDeps <<{
 }
 ```
 
-Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď by měl **aktualizovaný soubor** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 
 ```gradle
 repositories {
@@ -244,7 +244,7 @@ dependencies {
 .
 ```
 
-Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď by měl **aktualizovaný soubor** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 
 ```gradle
 repositories {
@@ -319,7 +319,7 @@ task copyDeps<< {
 }
 ```
 
-Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď by měl **aktualizovaný soubor** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 
 ```gradle
 repositories {
@@ -385,7 +385,7 @@ Změny jsou v tomto případě podobné změnám probraným v předchozí část
 ```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
-      compile project(':MyactorInterface')
+    compile project(':MyactorInterface')
 }
 .
 .
@@ -398,7 +398,7 @@ jar
         "Class-Path": configurations.compile.collect { 'lib/' + it.getName() }.join(' '))
     }
     baseName "myactor-test"
-  destinationDir = file('out/lib')
+    destinationDir = file('out/lib')
 }
 .
 .
@@ -422,7 +422,7 @@ task copyDeps<< {
 }
 ```
 
-Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď by měl **aktualizovaný soubor** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
 
 ```gradle
 repositories {

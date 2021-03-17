@@ -1,19 +1,19 @@
 ---
 title: Kurz – Správa virtuálních počítačů pomocí PowerShellu
-description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu spravovat virtuální počítače Azure s využitím RBAC, zásad, zámků a značek.
+description: V tomto kurzu se naučíte používat Azure PowerShell ke správě virtuálních počítačů Azure pomocí Azure RBAC, policies, zámků a značek.
 author: tfitzmac
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 723eaeb6eb8946473b31b447e817a0a3b696f1cc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f0107a28a655097f983e0711c2ccab19f47f7cae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926565"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554305"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: informace o správě virtuálních počítačů s Windows pomocí Azure PowerShell
 
@@ -39,7 +39,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 V tuto chvíli je skupina prostředků prázdná.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
 Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) umožňuje spravovat uživatele, kteří mají oprávnění k provádění konkrétních akcí v oboru.
 

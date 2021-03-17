@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119891"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755061"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -30,7 +30,7 @@ Můžete také vymazat mezipaměť tokenu, která se dosahuje odebráním účt�
 
 ## <a name="scopes-when-acquiring-tokens"></a>Obory při získávání tokenů
 
-[Obory](v2-permissions-and-consent.md) jsou oprávnění, která webovým rozhraní API zpřístupňuje, že klientské aplikace můžou požádat o přístup k. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření žádostí o ověření, aby získaly tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v 1.0) a rozhraní Microsoft Identity Platform (v 2.0). protokol v 2.0 místo prostředků v požadavcích používá obory. Další informace najdete v tématu [porovnání čtení v 1.0 a v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, vrátí koncový bod v 2.0 přístupový token do MSAL.
+[Obory](v2-permissions-and-consent.md) jsou oprávnění, která webovým rozhraní API zpřístupňuje, že klientské aplikace můžou požádat o přístup k. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření žádostí o ověření, aby získaly tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v 1.0) a rozhraní Microsoft Identity Platform API. protokol v 2.0 místo prostředků v požadavcích používá obory. Další informace najdete v tématu [porovnání čtení v 1.0 a v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, vrátí koncový bod v 2.0 přístupový token do MSAL.
 
 Některé metody získání tokenu MSAL vyžadují `scopes` parametr. `scopes`Parametr je seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Dobře známé obory jsou [Microsoft Graph oprávnění](/graph/permissions-reference).
 
@@ -42,8 +42,8 @@ Pokud vaše aplikace potřebuje požádat o přístupový token s konkrétními 
 
 Příklady hodnot oboru pro různé prostředky:
 
-- Rozhraní Microsoft Graph API:`https://graph.microsoft.com/User.Read`
-- Vlastní webové rozhraní API:`api://11111111-1111-1111-1111-111111111111/api.read`
+- Rozhraní Microsoft Graph API: `https://graph.microsoft.com/User.Read`
+- Vlastní webové rozhraní API: `api://11111111-1111-1111-1111-111111111111/api.read`
 
 Formát hodnoty oboru se liší v závislosti na prostředku (rozhraní API) přijímajícího přístupového tokenu a `aud` hodnotách deklarace identity, které přijímá.
 
@@ -116,8 +116,14 @@ Když si klient vyžádá přístupový token, Azure AD také vrátí výsledek 
 - Obory, pro které byl token vydán.
 - Jedinečné ID uživatele
 
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>Upřesnit Přístup k tokenům v mezipaměti uživatele v aplikacích a službách na pozadí
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-Pokud používáte MSAL for Java, přečtěte si informace o [serializaci mezipaměti vlastního tokenu v MSAL pro Java](msal-java-token-cache-serialization.md).
-
-Další informace o [zpracování chyb a výjimek](msal-handling-exceptions.md).
+Několik platforem podporovaných nástrojem MSAL má další informace související s mezipamětí tokenů v dokumentaci k této knihovně platformy. Například:
+- [Získání tokenu z mezipaměti tokenů pomocí MSAL.NET](msal-net-acquire-token-silently.md)
+- [Jednotné přihlašování s využitím MSAL.js](msal-js-sso.md)
+- [Serializace mezipaměti vlastního tokenu v MSAL pro Python](msal-python-token-cache-serialization.md)
+- [Serializace mezipaměti vlastního tokenu v MSAL pro Java](msal-java-token-cache-serialization.md)

@@ -10,18 +10,18 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 438595096e808646da990e1871cab07d1a795372
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499071"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203551"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Kurz: migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS přes Azure CLI
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL a [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi pro **pronájem DVD** z místní instance PostgreSQL 9,6 na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
+Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL a [Azure Database for PostgreSQL](../postgresql/index.yml) s minimálními výpadky. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi pro **pronájem DVD** z místní instance PostgreSQL 9,6 na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -42,15 +42,15 @@ V tomto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-* Stáhněte a nainstalujte si [PostgreSQL community edition](https://www.postgresql.org/download/) 9,5, 9,6 nebo 10. Verze zdrojového PostgreSQL serveru musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+* Stáhněte a nainstalujte si [PostgreSQL community edition](https://www.postgresql.org/download/) 9,5, 9,6 nebo 10. Verze zdrojového PostgreSQL serveru musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](../postgresql/concepts-supported-versions.md).
 
     Všimněte si také, že cílová verze Azure Database for PostgreSQL musí být stejná nebo vyšší než verze místní PostgreSQL. Například PostgreSQL 9,6 lze migrovat pouze do Azure Database for PostgreSQL 9,6, 10 nebo 11, ale ne do Azure Database for PostgreSQL 9,5.
 
-* [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo [vytvořte server Azure Database for PostgreSQL-Citus (pro škálování](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)na více instancí).
-* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* [Vytvořte instanci v Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md) nebo [vytvořte server Azure Database for PostgreSQL-Citus (pro škálování](../postgresql/quickstart-create-hyperscale-portal.md)na více instancí).
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](../virtual-network/index.yml)a zejména v článcích rychlý Start s podrobnými údaji.
 
     > [!NOTE]
-    > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
+    > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](../virtual-network/virtual-network-service-endpoints-overview.md) služby:
     >
     > * Koncový bod cílové databáze (například koncový bod SQL, Cosmos DB koncový bod atd.)
     > * Koncový bod úložiště
@@ -58,11 +58,11 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >
     > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) vaší virtuální sítě neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) neblokovala odchozí port 443 ServiceTag pro ServiceBus, úložiště a AzureMonitor. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru PostgreSQL, který je ve výchozím nastavení port TCP 5432.
 * Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
-* Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
+* Vytvořte [pravidlo brány firewall](../postgresql/concepts-firewall-rules.md) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 * Existují dvě metody pro vyvolání rozhraní příkazového řádku:
 
   * V pravém horním rohu Azure Portal vyberte tlačítko Cloud Shell:
@@ -71,9 +71,9 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
   * Nainstalujte a spusťte místně rozhraní příkazového řádku. CLI 2.0 je nástroj příkazového řádku pro správu prostředků Azure.
 
-       Pokyny ke stažení CLI najdete v článku [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tento článek také uvádí platformy, které podporují CLI 2.0.
+       Pokyny ke stažení CLI najdete v článku [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Tento článek také uvádí platformy, které podporují CLI 2.0.
 
-       Pokud chcete nastavit subsystém Windows pro Linux (WSL), postupujte podle pokynů [Průvodce instalací systému Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
+       Pokud chcete nastavit subsystém Windows pro Linux (WSL), postupujte podle pokynů [Průvodce instalací systému Windows 10](/windows/wsl/install-win10).
 
 * Povolte logickou repliku v souboru postgresql.config a nastavte následující parametry:
 
@@ -100,7 +100,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 2. Vytvořte prázdnou databázi v cílovém prostředí, což je Azure Database for PostgreSQL.
 
-    Podrobnosti o tom, jak připojit a vytvořit databázi, najdete v článku [vytvoření serveru Azure Database for PostgreSQL v Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo [vytvoření serveru Azure Database for PostgreSQLového škálování (Citus) v Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
+    Podrobnosti o tom, jak připojit a vytvořit databázi, najdete v článku [vytvoření serveru Azure Database for PostgreSQL v Azure Portal](../postgresql/quickstart-create-server-database-portal.md) nebo [vytvoření serveru Azure Database for PostgreSQLového škálování (Citus) v Azure Portal](../postgresql/quickstart-create-hyperscale-portal.md).
 
 3. Importujte schéma do cílové databáze, kterou jste vytvořili pomocí obnovení souboru se schématem výpisu paměti.
 
@@ -108,7 +108,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    Příklad:
+    Například:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -230,7 +230,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    Příklad:
+    Například:
 
     ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -250,8 +250,8 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     * Přidejte ke zdroji IP adresu do souboru pg_hba.conf podobně jako následující položky:
 
         ```
-        host    all     all     172.16.136.18/10    md5
-        host    replication     postgres    172.16.136.18/10    md5
+        host     all            all        172.16.136.18/10    md5
+        host     replication    postgres   172.16.136.18/10    md5
         ```
 
 5. Dále spuštěním následujícího příkazu vytvořte projekt migrace PostgreSQL:
@@ -373,28 +373,26 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
-## <a name="understanding-migration-task-status"></a>Porozumění stavu úlohy migrace
-
 Ve výstupním souboru existuje několik parametrů, které označují průběh migrace. Viz například následující výstupní soubor:
 
   ```output
-    "output": [                                 Database Level
+    "output": [                                 // Database Level
           {
-            "appliedChanges": 0,        //Total incremental sync applied after full load
-            "cdcDeleteCounter": 0       // Total delete operation  applied after full load
-            "cdcInsertCounter": 0,      // Total insert operation applied after full load
-            "cdcUpdateCounter": 0,      // Total update operation applied after full load
+            "appliedChanges": 0,         // Total incremental sync applied after full load
+            "cdcDeleteCounter": 0        // Total delete operation  applied after full load
+            "cdcInsertCounter": 0,       // Total insert operation applied after full load
+            "cdcUpdateCounter": 0,       // Total update operation applied after full load
             "databaseName": "inventory",
             "endedOn": null,
             "fullLoadCompletedTables": 2,   //Number of tables completed full load
-            "fullLoadErroredTables": 0, //Number of tables that contain migration error
-            "fullLoadLoadingTables": 0, //Number of tables that are in loading status
-            "fullLoadQueuedTables": 0,  //Number of tables that are in queued status
+            "fullLoadErroredTables": 0,     //Number of tables that contain migration error
+            "fullLoadLoadingTables": 0,     //Number of tables that are in loading status
+            "fullLoadQueuedTables": 0,      //Number of tables that are in queued status
             "id": "db|inventory",
-            "incomingChanges": 0,       //Number of changes after full load
+            "incomingChanges": 0,           //Number of changes after full load
             "initializationCompleted": true,
             "latency": 0,
-            "migrationState": "READY_TO_COMPLETE",  //Status of migration task. READY_TO_COMPLETE means the database is ready for cutover
+            "migrationState": "READY_TO_COMPLETE",    //Status of migration task. READY_TO_COMPLETE means the database is ready for cutover
             "resultType": "DatabaseLevelOutput",
             "startedOn": "2018-07-05T23:36:02.27839+00:00"
           },
@@ -410,25 +408,25 @@ Ve výstupním souboru existuje několik parametrů, které označují průběh 
             "targetServer": "builddemotarget.postgres.database.azure.com",
             "targetVersion": "Azure Database for PostgreSQL"
           },
-          {                                     Table 1
+          {                                        // Table 1
             "cdcDeleteCounter": 0,
             "cdcInsertCounter": 0,
             "cdcUpdateCounter": 0,
             "dataErrorsCount": 0,
             "databaseName": "inventory",
-            "fullLoadEndedOn": "2018-07-05T23:36:20.740701+00:00",  //Full load completed time
+            "fullLoadEndedOn": "2018-07-05T23:36:20.740701+00:00",    //Full load completed time
             "fullLoadEstFinishTime": "1970-01-01T00:00:00+00:00",
             "fullLoadStartedOn": "2018-07-05T23:36:15.864552+00:00",    //Full load started time
-            "fullLoadTotalRows": 10,                    //Number of rows loaded in full load
-            "fullLoadTotalVolumeBytes": 7056,               //Volume in Bytes in full load
-            "id": "or|inventory|public|actor",          
+            "fullLoadTotalRows": 10,                     //Number of rows loaded in full load
+            "fullLoadTotalVolumeBytes": 7056,            //Volume in Bytes in full load
+            "id": "or|inventory|public|actor",
             "lastModifiedTime": "2018-07-05T23:36:16.880174+00:00",
             "resultType": "TableLevelOutput",
-            "state": "COMPLETED",                   //State of migration for this table
+            "state": "COMPLETED",                       //State of migration for this table
             "tableName": "public.catalog",              //Table name
-            "totalChangesApplied": 0                //Total sync changes that applied after full load
+            "totalChangesApplied": 0                    //Total sync changes that applied after full load
           },
-          {                                     Table 2
+          {                                            //Table 2
             "cdcDeleteCounter": 0,
             "cdcInsertCounter": 50,
             "cdcUpdateCounter": 0,
@@ -446,8 +444,8 @@ Ve výstupním souboru existuje několik parametrů, které označují průběh 
             "tableName": "public.orders",
             "totalChangesApplied": 0
           }
-        ],                          DMS migration task state
-        "state": "Running", //Migration task state – Running means it is still listening to any changes that might come in                  
+        ],                                      // DMS migration task state
+        "state": "Running",    //Migration task state – Running means it is still listening to any changes that might come in
         "taskType": null
       },
       "resourceGroup": "PostgresDemo",
@@ -462,12 +460,12 @@ Aby byla všechna data zachycena, ověřte počet řádků mezi zdrojovými a c�
 
 ```
 "migrationState": "READY_TO_COMPLETE", //Status of migration task. READY_TO_COMPLETE means database is ready for cutover
- "incomingChanges": 0,  //continue to check for a period of 5-10 minutes to make sure no new incoming changes that need to be applied to the target server
+ "incomingChanges": 0, //continue to check for a period of 5-10 minutes to make sure no new incoming changes that need to be applied to the target server
    "fullLoadTotalRows": 10, //full load for table 1
-    "cdcDeleteCounter": 0,  //delete, insert and update counter on incremental sync after full load
+    "cdcDeleteCounter": 0, //delete, insert and update counter on incremental sync after full load
     "cdcInsertCounter": 50,
     "cdcUpdateCounter": 0,
-     "fullLoadTotalRows": 112,  //full load for table 2
+     "fullLoadTotalRows": 112, //full load for table 2
 ```
 
 1. Pomocí následujícího příkazu proveďte úlohu přímé migrace databáze:
@@ -476,7 +474,7 @@ Aby byla všechna data zachycena, ověřte počet řádků mezi zdrojovými a c�
     az dms project task cutover -h
     ```
 
-    Příklad:
+    Například:
 
     ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
@@ -487,6 +485,7 @@ Aby byla všechna data zachycena, ověřte počet řádků mezi zdrojovými a c�
     ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
+3. Jakmile se zobrazí stav migrace databáze **dokončeno**, [znovu vytvořte sekvence](https://wiki.postgresql.org/wiki/Fixing_Sequences) (Pokud je k dispozici) a připojte své aplikace k nové cílové instanci Azure Database for PostgreSQL.
 
 ## <a name="service-project-task-cleanup"></a>Služba projekt, úloha vyčištění
 
@@ -527,5 +526,5 @@ Pokud potřebujete zrušit nebo odstranit všechny úlohy, projekt nebo služby 
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for PostgreSQL najdete v článku [Známé problémy s online migracemi do služby Azure Database for PostgreSQLa jejich řešení](known-issues-azure-postgresql-online.md).
-* Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informace o Azure Database for PostgreSQL najdete v článku [co je Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](./dms-overview.md).
+* Informace o Azure Database for PostgreSQL najdete v článku [co je Azure Database for PostgreSQL?](../postgresql/overview.md).

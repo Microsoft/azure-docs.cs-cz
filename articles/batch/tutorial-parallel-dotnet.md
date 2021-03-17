@@ -1,16 +1,16 @@
 ---
-title: Spuštění paralelní úlohy pomocí rozhraní .NET API
+title: Kurz – spuštění paralelní úlohy pomocí rozhraní .NET API
 description: Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/21/2018
-ms.custom: mvc
-ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/29/2020
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062594"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106525"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
@@ -35,7 +35,7 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
-* [64bitová verze aplikace ffmpeg 3.4 pro Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Stáhněte soubor zip na místní počítač. Pro tento kurz potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
+* [Windows 64-bitová verze ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (. zip). Stáhněte soubor zip na místní počítač. Pro tento kurz potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -45,9 +45,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Pomocí webu Azure Portal přidejte do svého účtu Batch aplikaci ffmpeg jako [balíček aplikace](batch-application-packages.md). Balíčky aplikací pomáhají spravovat aplikace úkolů a jejich nasazení do výpočetních uzlů ve fondu. 
 
-1. V Azure Portal klikněte na **Další služby**  >  **účty Batch**a potom klikněte na název vašeho účtu Batch.
+1. V Azure Portal klikněte na **Další služby**  >  **účty Batch** a potom klikněte na název vašeho účtu Batch.
 3. Klikněte na **aplikace**  >  **Přidat**.
-4. Jako **ID aplikace** zadejte *ffmpeg* a jako verzi balíčku zadejte *3.4*. Vyberte soubor zip s aplikací ffmpeg, který jste stáhli dříve, a pak klikněte na **OK**. Balíček aplikace ffmpeg se přidá do vašeho účtu Batch.
+4. Jako **ID aplikace** zadejte *ffmpeg* a verzi balíčku *4.3.1*. Vyberte soubor zip s aplikací ffmpeg, který jste stáhli dříve, a pak klikněte na **OK**. Balíček aplikace ffmpeg se přidá do vašeho účtu Batch.
 
 ![Přidání balíčku aplikace](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -84,7 +84,7 @@ Ujistěte se také, že reference na balíček aplikace ffmpeg v řešení odpov
 
 ```csharp
 const string appPackageId = "ffmpeg";
-const string appPackageVersion = "3.4";
+const string appPackageVersion = "4.3.1";
 ```
 
 ### <a name="build-and-run-the-sample-project"></a>Sestavení a spuštění ukázkového projektu
@@ -241,7 +241,7 @@ job.PoolInformation = new PoolInformation { PoolId = PoolId };
 await job.CommitAsync();
 ```
 
-### <a name="create-tasks"></a>Vytvoření úkolů
+### <a name="create-tasks"></a>Vytváření úloh
 
 Ukázka vytvoří v úloze úkoly zavoláním metody `AddTasksAsync`, která vytvoří seznam objektů [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Každý objekt `CloudTask` pomocí vlastnosti [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) spouští aplikaci ffmpeg, která zpracuje vstupní objekt `ResourceFile`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
@@ -263,7 +263,7 @@ for (int i = 0; i < inputFiles.Count; i++)
     string outputMediaFile = String.Format("{0}{1}",
         System.IO.Path.GetFileNameWithoutExtension(inputMediaFile),
         ".mp3");
-    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
+    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-4.3.1-2020-09-21-full_build\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
     // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);
@@ -317,7 +317,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a ú�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili těmto úkonům:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Přidání balíčku aplikace do účtu Batch
@@ -332,6 +332,3 @@ Další příklady použití rozhraní .NET API k plánování a zpracování ú
 
 > [!div class="nextstepaction"]
 > [Ukázky pro službu Batch v jazyce C#](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-Nastavení proměnné instance LowPriorityNodeCount = 0 a DedicatedNodeCount = 5 opravili problém a umožnili dokončení úlohy.

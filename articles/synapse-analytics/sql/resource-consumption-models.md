@@ -4,32 +4,33 @@ description: Přečtěte si o modelech spotřeby synapse SQL ve službě Azure s
 services: synapse analytics
 author: vvasic-msft
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 03144d478be0053ac77709132b08cdf17b062fb0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489567"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666298"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse využití prostředků SQL
 
-Tento článek popisuje modely spotřeby prostředků synapse SQL (Preview).
+Tento článek popisuje modely spotřeby prostředků synapse SQL.
 
-## <a name="sql-on-demand"></a>SQL na vyžádání
+## <a name="serverless-sql-pool"></a>Bezserverový fond SQL
 
-SQL na vyžádání je platba za službu pro dotaz, která nevyžaduje, abyste vybrali správnou velikost. Systém se automaticky přizpůsobí podle vašich požadavků a uvolňuje vám od správy infrastruktury a vybírá správnou velikost pro vaše řešení.
+Fond SQL bez serveru je platíte za službu Query Service, která nevyžaduje, abyste vybrali správnou velikost. Systém se automaticky přizpůsobí podle vašich požadavků a uvolňuje vám od správy infrastruktury a vybírá správnou velikost pro vaše řešení.
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Fond SQL – jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Vyhrazený fond SQL – jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
 
 Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU) pro optimalizaci ceny a výkonu a změnu počtu jednotek.
 
 ### <a name="data-warehouse-units"></a>Jednotky datového skladu
 
-Synapse fond SQL představuje kolekci analytických prostředků, které se zřídí. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vstupně-výstupních operací. Tyto tři prostředky jsou seskupené do jednotek výpočetního škálování s názvem jednotky datového skladu (DWU). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služby mění počet DWU, které jsou k dispozici pro systém, což zase upravuje výkon a náklady vašeho systému.
+Synapse fond SQL představuje kolekci analytických prostředků, které se zřídí. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vstupně-výstupních operací. Tyto tři prostředky jsou seskupené do jednotek výpočetního škálování s názvem jednotky datového skladu (DWU). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služby změní počet DWU, které jsou k dispozici pro systém. Tato změna pak upraví výkon a náklady na váš systém.
 
 Pro vyšší výkon můžete zvýšit počet jednotek datového skladu. Pro méně výkon omezte jednotky datového skladu. Náklady na úložiště a výpočetní prostředky se účtují zvlášť, takže změna jednotek datového skladu nemá vliv na náklady na úložiště.
 
@@ -37,7 +38,7 @@ Výkon pro jednotky datového skladu je založen na těchto metrikách úloh dat
 
 - Jak rychle standardní dotaz na datové sklady může kontrolovat velký počet řádků a pak provádět komplexní agregace. Tato operace je v/v a náročná na výkon procesoru.
 - Jak rychle může datový sklad ingestovat data z Azure Storage objektů BLOB nebo Azure Data Lake. Tato operace je náročná na síť a využití procesoru.
-- Jak rychle [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) příkaz T-SQL může zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na procesor, v/v a na síť.
+- Jak rychle [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) příkaz T-SQL může zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na procesor, v/v a na síť.
 
 Zvyšování DWU:
 
@@ -45,16 +46,16 @@ Zvyšování DWU:
 - Zvyšuje počet čtenářů a zapisovačů pro operace základního zatížení.
 - Zvyšuje maximální počet souběžných dotazů a souběžných slotů.
 
-### <a name="service-level-objective"></a>Service Level Objective
+### <a name="service-level-objective"></a>Service Level Objective (cíl úrovně služby)
 
 Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DWU, například DW2000.
 
-Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 fond SQL se měří v jednotkách datového skladu (DWU), například DW2000c.
+Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro vyhrazený fond SQL Gen2 se měří v jednotkách datového skladu (DWU), například DW2000c.
 
 > [!NOTE]
-> Azure SQL Data Warehouse Gen2 nedávno přidal další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající datové sklady, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Azure synapse Analytics Gen2 nedávno přidaly další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající datové sklady, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro váš fond SQL.
+V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro vyhrazený fond SQL.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -77,7 +78,7 @@ Při zvyšování počtu jednotek datového skladu lineárně roste výpočetní
 
 #### <a name="capacity-limits"></a>Omezení kapacity
 
-Každý SQL Server (například myserver.database.windows.net) má kvótu pro [databázovou jednotku (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , která umožňuje určit počet jednotek datového skladu. Další informace najdete v tématu [omezení kapacity správy úloh](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
+Každý SQL Server (například myserver.database.windows.net) má kvótu pro [databázovou jednotku (DTU)](../../azure-sql/database/service-tiers-dtu.md) , která umožňuje určit počet jednotek datového skladu. Další informace najdete v tématu [omezení kapacity správy úloh](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>Vyhodnoťte počet jednotek datového skladu, které potřebujete.
 
@@ -93,11 +94,11 @@ Fond SQL je systém škálování na více systémů, který dokáže zřídit o
 
 > [!NOTE]
 >
-> Výkon dotazů se zvyšuje s větší paralelismuou, pokud je možné rozdělit práci mezi výpočetními uzly. Pokud zjistíte, že škálování nemění váš výkon, možná budete muset vyladit návrh tabulky a dotazy. Pokyny k ladění dotazů najdete v tématu [Správa uživatelských dotazů](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Výkon dotazů se zvyšuje s větší paralelismuou, pokud je možné rozdělit práci mezi výpočetními uzly. Pokud zjistíte, že škálování nemění váš výkon, možná budete muset vyladit návrh tabulky a dotazy. Pokyny k ladění dotazů najdete v tématu [Správa uživatelských dotazů](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 ### <a name="permissions"></a>Oprávnění
 
-Změna jednotek datového skladu vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Změna jednotek datového skladu vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 Předdefinované role Azure, jako je Přispěvatel databáze SQL a SQL Server přispěvatel, můžou měnit nastavení DWU.
 
@@ -107,7 +108,7 @@ Chcete-li zobrazit aktuální nastavení DWU:
 
 1. Otevřete Průzkumník objektů systému SQL Server v aplikaci Visual Studio.
 2. Připojte se k hlavní databázi přidružené k logickému SQL serveru.
-3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Tady je příklad:
+3. Vyberte v zobrazení dynamické správy sys.database_service_objectives. Tady je příklad:
 
 ```sql
 SELECT  db.name [Database]
@@ -124,23 +125,23 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 Postup změny DWU:
 
-1. Otevřete [Azure Portal](https://portal.azure.com), otevřete databázi a klikněte na možnost **škálovat**.
+1. Otevřete [Azure Portal](https://portal.azure.com), otevřete databázi a vyberte možnost **škálovat**.
 
-2. V části **škálovat**přesuňte posuvník doleva nebo doprava, abyste změnili nastavení DWU.
+2. V části **škálovat** přesuňte posuvník doleva nebo doprava, abyste změnili nastavení DWU.
 
-3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
+3. Vyberte **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na tlačítko **Ano** potvrďte nebo **ne** .
 
 #### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ke změně DWU použijte rutinu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) prostředí PowerShell. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000 pro databázi MySQLDW, která je hostována na serveru MyServer.
+Ke změně DWU použijte rutinu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) prostředí PowerShell. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000 pro databázi MySQLDW, která je hostována na serveru MyServer.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Další informace najdete v tématu [rutiny PowerShellu pro SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Další informace najdete v tématu [rutiny PowerShellu pro Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 #### <a name="t-sql"></a>T-SQL
 
@@ -149,7 +150,7 @@ Pomocí T-SQL můžete zobrazit aktuální DWUsettings, změnit nastavení a pod
 Postup změny DWU:
 
 1. Připojte se k hlavní databázi přidružené k vašemu serveru.
-2. Použijte příkaz [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000c pro MySQLDW databáze.
+2. Použijte příkaz [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) TSQL. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000c pro MySQLDW databáze.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -159,7 +160,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 #### <a name="rest-apis"></a>Rozhraní REST API
 
-Chcete-li změnit DWU, použijte příkaz [Create nebo Update Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000c pro databázi MySQLDW, která je hostována na serveru MyServer. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li změnit DWU, použijte příkaz [Create nebo Update Database](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) REST API. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000c pro databázi MySQLDW, která je hostována na serveru MyServer. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -172,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Další příklady REST API najdete v tématu [rozhraní REST API pro SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Další příklady REST API najdete v tématu [rozhraní REST API pro Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="check-status-of-dwu-changes"></a>Kontrolovat stav DWU změn
 
@@ -203,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-Tento DMV vrací informace o různých operacích správy ve vašem fondu SQL, jako je například operace a stav operace, který je buď IN_PROGRESS nebo dokončeno.
+Tento DMV vrací informace o různých operacích správy vyhrazeného fondu SQL, jako je například operace a stav operace, který je buď IN_PROGRESS nebo dokončen.
 
 ### <a name="the-scaling-workflow"></a>Pracovní postup škálování
 

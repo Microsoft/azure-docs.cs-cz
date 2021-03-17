@@ -1,18 +1,18 @@
 ---
 title: Procházení prostředků Azure
 description: Naučte se používat jazyk dotazů grafu prostředků k prozkoumání vašich prostředků a zjištění způsobu jejich připojení.
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a76ce2bb34fd6e99fedf5030c4723b6dd5acbb91
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056580"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917720"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
-Azure Resource Graph nabízí možnost prozkoumat a zjišťovat prostředky Azure rychle a ve velkém měřítku. Je to skvělý způsob, jak se naučit vaše prostředí a také informace o vlastnostech, které tvoří prostředky Azure.
+Azure Resource Graph nabízí možnost prozkoumat a zjišťovat prostředky Azure rychle a ve velkém měřítku. Je skvělý způsob, jak se naučit vaše prostředí a také informace o vlastnostech, které existují na vašich prostředcích Azure, pro rychlé odpovědi.
 
 ## <a name="explore-virtual-machines"></a>Prozkoumat virtuální počítače
 
@@ -104,7 +104,7 @@ Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 ]
 ```
 
-Vlastnosti oznamují dodatečné informace o samotném prostředku virtuálního počítače, vše od SKU, operačního systému, disků, značek a skupiny prostředků a předplatného, které je členem.
+Vlastnosti oznamují dodatečné informace o samotném prostředku virtuálního počítače. Mezi tyto vlastnosti patří: operační systém, disky, značky a skupina prostředků a předplatné, které je členem.
 
 ### <a name="virtual-machines-by-location"></a>Virtuální počítače podle umístění
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuální počítače připojené k diskům spravovaným na úrovni Premium
 
-Pokud jsme chtěli získat podrobnosti o discích spravovaných na úrovni Premium, které jsou k těmto **Standard_B2sm** virtuálním počítačům připojené, můžeme dotaz rozšířit a poskytnout nám ID prostředků těchto spravovaných disků.
+Pokud chcete získat podrobné informace o discích spravovaných na úrovni Premium, které jsou připojené k těmto **Standard_B2s** virtuálních počítačů, rozšíříme dotaz tak, aby vracel ID prostředku těchto spravovaných disků.
 
 ```kusto
 Resources
@@ -174,9 +174,6 @@ Resources
 | where disk.storageAccountType == 'Premium_LRS'
 | project disk.id
 ```
-
-> [!NOTE]
-> Další způsob, jak získat SKU, je použít vlastnost **aliass** **Microsoft. COMPUTE/virtualMachines/SKU. Name**. Podívejte se na příklady [Zobrazit aliasy](../samples/starter.md#show-aliases) a [Zobrazit odlišné hodnoty aliasu](../samples/starter.md#distinct-alias-values) .
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"

@@ -10,25 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 14f87dff680fb72654d1d3e20fe2f0516f9709aa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1e08203076de2073e39c5b5f5eb40b66c88490d7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282725"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417696"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** v sadě Speech Service poskytuje způsob, jak streamovat komprimovaný zvuk do služby Speech Service pomocí `PullStream` nebo `PushStream` .
 
-V současné době se pro jazyky C#, C++, Java a Python v systému Windows podporuje streamování komprimovaného vstupu (aplikace UWP nejsou podporované) a Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8). Podporuje se i pro Java v Androidu.
+Platforma | Jazyky | Podporovaná verze GStreamer
+| :--- | ---: | :---:
+Windows (s výjimkou UWP)  | C++, C#, Java, Python | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/)
+Linux  | C++, C#, Java, Python | [Podporované distribuce systému Linux a cílové architektury](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.18.3/)
+
+## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>Pro komprimovaný zvukový vstup se vyžaduje verze sady Speech SDK.
 * Pro RHEL 8 a CentOS 8 se vyžaduje sada Speech SDK verze 1.10.0 nebo novější.
 * Pro systém Windows je vyžadována sada Speech SDK verze 1.11.0 nebo novější.
+* Sada Speech SDK verze 1.16.0 nebo novější pro nejnovější GStreamer v systémech Windows a Android.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="gstreamer-required-to-handle-compressed-audio"></a>GStreamer nutné ke zpracování komprimovaného zvuku
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]
@@ -67,4 +75,4 @@ V současné době se pro jazyky C#, C++, Java a Python v systému Windows podpo
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Naučte se rozpoznávat řeč.](quickstarts/speech-to-text-from-microphone.md)
+> [Naučte se rozpoznávat řeč.](./get-started-speech-to-text.md)

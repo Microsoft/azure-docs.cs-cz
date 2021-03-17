@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591735"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -41,8 +41,8 @@ Nejnovější informace o cenách najdete na stránce s [cenami Notification Hub
 Funkce úrovně Standard:
 
 * **Bohatá telemetrie**: pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
-* **Víceklientská architektura: můžete**pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
-* **Naplánovaná nabízená**oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
+* **Víceklientská architektura: můžete** pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
+* **Naplánovaná nabízená** oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
 * **Hromadné operace**: umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Export/Import registrací] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Jaká je smlouva SLA pro Notification Hubs?
@@ -103,6 +103,10 @@ PNS nezaručuje smlouvu SLA pro doručování oznámení. Většina nabízených
 
 Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifickým pro konkrétní platformu) není zaručena latence. Většina nabízených oznámení je obvykle dodána během několika minut.
 
+### <a name="where-does-azure-notification-hubs-store-data"></a>Kde Azure Notification Hubs ukládá data?
+
+Azure Notification Hubs ukládá data o registraci zákazníka v oblasti vybrané zákazníkem. Notification Hubs poskytuje pokrytí zotavení po havárii metadat (název Notification Hubs, připojovací řetězec a další důležité informace). U všech oblastí s výjimkou Brazílie – jih a jihovýchodní Asie je zálohování metadat hostované v jiné oblasti (obvykle spárováno s Azure). Pro oblast Brazílie – jih a jihovýchodní Asie jsou zálohy uložené ve stejné oblasti, aby vyhovovaly požadavkům na umístění dat pro tyto oblasti.
+
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Co je potřeba vzít v úvahu při navrhování řešení pomocí oborů názvů a Center oznámení?
 
 #### <a name="mobile-appenvironment"></a>Mobilní aplikace/prostředí
@@ -119,7 +123,7 @@ Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifi
 
 Při registraci mobilní aplikace portálu pro vývojáře platformy (například Apple nebo Google) se odesílají identifikátory aplikace a tokeny zabezpečení. Back-end aplikace poskytuje tyto tokeny PNS platformy, aby bylo možné odesílat nabízená oznámení do zařízení. Tokeny zabezpečení můžou být ve formě certifikátů (například Apple iOS nebo Windows Phone) nebo klíčů zabezpečení (například Google Android nebo Windows). Musí být nakonfigurovány v centrech oznámení. Konfigurace se obvykle provádí na úrovni centra oznámení, ale je možné ji také provést na úrovni oboru názvů ve scénáři s více klienty.
 
-#### <a name="namespaces"></a>Jmenné prostory
+#### <a name="namespaces"></a>Obory názvů
 
 Obory názvů lze použít pro seskupení nasazení. Můžou se také použít k reprezentaci všech Center oznámení pro všechny klienty stejné aplikace ve scénáři s více klienty.
 
@@ -159,15 +163,12 @@ Poskytujeme na našem konci pokrytí metadat pro zotavení po havárii (Notifica
 
 1. Vytvořte sekundární centrum oznámení v jiném datovém centru. Doporučujeme vytvořit jeden od začátku, abyste si ho převedli na událost zotavení po havárii, která může mít vliv na možnosti správy. Můžete ho také vytvořit v době události zotavení po havárii.
 
-2. Naplňte sekundární centrum oznámení pomocí registrací z primárního centra oznámení. Nedoporučujeme se pokoušet o údržbu registrací na obou rozbočovačích a udržovat je synchronizované, protože registrace přicházejí do. Tento postup nefunguje dobře, protože vyprší platnost registrací na straně PNS. Notification Hubs je vyčistí, protože obdrží zpětnou vazbu PNS o vypršení platnosti nebo neplatných registracích.  
+2. Používejte sekundární centrum oznámení v synchronizaci s primárním centrem oznámení pomocí jedné z následujících možností:
 
-Pro back-endy aplikací máme dvě doporučení:
+   * Použijte back-end aplikace, který současně vytvoří a aktualizuje instalace v obou centrech oznámení. Instalace umožňují zadat vlastní jedinečný identifikátor zařízení, což je vhodnější pro scénář replikace. Další informace najdete v tomto [ukázkovém kódu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/main/Samples/RedundantHubSample).
+   * Použijte back-end aplikace, který získá standardní výpis registrací z primárního centra oznámení jako zálohu. Pak může provést hromadné vložení do sekundárního centra oznámení.
 
-* Použijte back-end aplikace, který na konci udržuje danou sadu registrací. Pak může provést hromadné vložení do sekundárního centra oznámení.
-* Použijte back-end aplikace, který získá standardní výpis registrací z primárního centra oznámení jako zálohu. Pak může provést hromadné vložení do sekundárního centra oznámení.
-
-> [!NOTE]
-> Registrace funkcí exportu/importu, které jsou dostupné na úrovni Standard, je popsaná v dokumentu [Export/Import registrací] .
+Sekundární centrum oznámení může skončit s prošlými instalacemi nebo registrací. Když se nahraje na popisovač s vypršenou platností, Notification Hubs automaticky vyčistí přidružený záznam instalace nebo registrace na základě odpovědi přijaté na serveru PNS. Chcete-li vyčistit záznamy s vypršenou platností ze sekundárního centra oznámení, přidejte vlastní logiku, která zpracovává zpětnou vazbu od každého odeslání. Pak vypršení platnosti instalace/registrace v sekundárním centru oznámení.
 
 Pokud nemáte back-end, aplikace při spuštění na cílových zařízeních provede novou registraci v sekundárním centru oznámení. Sekundární centrum oznámení bude mít zaregistrovaná všechna aktivní zařízení.
 
@@ -179,7 +180,7 @@ Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimk
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 
-Yes. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
+Ano. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
@@ -195,7 +196,7 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 
 - [Načtěte metriky Azure monitor pomocí .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). V této ukázce se používá uživatelské jméno a heslo. Chcete-li použít certifikát, přetížením metody FromServicePrincipal poskytněte certifikát, jak je znázorněno v [tomto příkladu](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Získání metrik a protokolů aktivit pro prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Návod k Azure Monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Průvodce rozhraním REST API pro monitorování Azure](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Úspěšná oznámení znamenají jednoduše, že nabízená oznámení byla doručena externímu PNS (například APNs pro iOS a macOS nebo FCM pro zařízení s Androidem). PNS je zodpovědný za doručování oznámení na cílová zařízení. PNS obvykle nevystavuje metriky doručení třetím stranám.  
@@ -210,7 +211,7 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 [Model zabezpečení Notification Hubs]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Kurz zabezpečeného nabízení oznámení Notification Hubs]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Řešení potíží s Notification Hubs]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs metriky]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs metriky]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Registrace – export/import]: ./export-modify-registrations-bulk.md
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

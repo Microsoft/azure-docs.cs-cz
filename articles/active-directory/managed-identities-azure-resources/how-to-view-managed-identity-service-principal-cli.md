@@ -3,7 +3,7 @@ title: Zobrazení instančního objektu spravované identity – Azure CLI – A
 description: Podrobné pokyny pro zobrazení instančního objektu spravované identity pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2018
-ms.author: markvi
+ms.date: 09/30/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 82529ab954c5474345e2702840daa1c7bca2ff1d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ce3a35562bdef34f44ef1093a3196ea7afb0bd9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501180"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892039"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Zobrazení instančního objektu spravované identity pomocí Azure CLI
 
@@ -29,28 +29,24 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 V tomto článku se dozvíte, jak zobrazit instanční objekt spravované identity pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md).
-- Pokud ještě nemáte účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
-- Povolte [identitu přiřazenou systémem na virtuálním počítači nebo v](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) [aplikaci](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity).
-- Chcete-li spustit příklady skriptu rozhraní příkazového řádku, máte tři možnosti:
-    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (viz další oddíl).
-    - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu.
-    - Pokud upřednostňujete použití místní konzoly CLI a přihlásíte se k Azure pomocí nástroje, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .`az login`
- 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Předpoklady
+
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md).
+
+- Povolte [identitu přiřazenou systémem na virtuálním počítači nebo v](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) [aplikaci](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity).
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="view-the-service-principal"></a>Zobrazení instančního objektu
 
-Tento příkaz ukazuje, jak zobrazit instanční objekt virtuálního počítače nebo aplikace se zapnutou spravovanou identitou. Nahraďte `<VM or application name>` vlastními hodnotami. 
+Tento příkaz ukazuje, jak zobrazit instanční objekt virtuálního počítače nebo aplikace se zapnutou spravovanou identitou. Nahraďte `<Azure resource name>` vlastními hodnotami.
 
 ```azurecli-interactive
-az ad sp list --display-name <VM or application name>
+az ad sp list --display-name <Azure resource name>
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o správě instančních objektů služby Azure AD pomocí rozhraní příkazového řádku Azure najdete v tématu [AZ AD SP](/cli/azure/ad/sp).
-
-

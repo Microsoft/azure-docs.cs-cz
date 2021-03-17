@@ -3,17 +3,19 @@ title: Nejčastější dotazy k rozhraní Gremlin API v Azure Cosmos DB
 description: Získejte odpovědi na nejčastější dotazy k rozhraní Gremlin API v Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0374886482b43eefe6df5e107fd4da371633099d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614496"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359774"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Nejčastější dotazy k rozhraní Gremlin API v Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Tento článek vysvětluje odpovědi na některé nejčastější dotazy týkající se rozhraní Gremlin API v Azure Cosmos DB.
 
@@ -99,7 +101,7 @@ Poplatek za RU je založen na pracovní sadě dat procházení, nikoli v sadě v
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaká je maximální škála, kterou může databáze grafu mít Azure Cosmos DB rozhraní Gremlin API?
 
-Azure Cosmos DB využívá [horizontální dělení](partition-data.md) k automatickému zvýšení počtu požadavků na úložiště a propustnost. Maximální propustnost a kapacita úložiště úloh se určují podle počtu oddílů, které jsou přidružené k danému kontejneru. Kontejner rozhraní API Gremlin ale obsahuje specifickou sadu pokynů, které zajistí správné prostředí výkonu ve velkém měřítku. Další informace o dělení a osvědčených postupech najdete [v tématu dělení v Azure Cosmos DB](partition-data.md) článku.
+Azure Cosmos DB využívá [horizontální dělení](partitioning-overview.md) k automatickému zvýšení počtu požadavků na úložiště a propustnost. Maximální propustnost a kapacita úložiště úloh se určují podle počtu oddílů, které jsou přidružené k danému kontejneru. Kontejner rozhraní API Gremlin ale obsahuje specifickou sadu pokynů, které zajistí správné prostředí výkonu ve velkém měřítku. Další informace o dělení a osvědčených postupech najdete [v tématu dělení v Azure Cosmos DB](partitioning-overview.md) článku.
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Pro vývoj v jazyce C#/.NET je vhodné použít balíček Microsoft. Azure. Graphs nebo Gremlin.NET?
 
@@ -107,7 +109,7 @@ Rozhraní API pro Azure Cosmos DB Gremlin využívá Open Source ovladače jako 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžu chránit před útoky prostřednictvím injektáže pomocí ovladačů Gremlin?
 
-Většina nativních ovladačů Apache Tinkerpop Gremlin umožňuje, aby možnost poskytovala slovník parametrů pro provádění dotazů. Toto je příklad, jak to provést v [Gremlin.NET](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a v [Gremlin-JavaScript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Většina nativních ovladačů Apache Tinkerpop Gremlin umožňuje, aby možnost poskytovala slovník parametrů pro provádění dotazů. Toto je příklad, jak to provést v [Gremlin.NET](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a v [Gremlin-JavaScript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se mi zobrazuje chyba kompilace dotazu Gremlin: nepovedlo se najít žádnou metodu?
 

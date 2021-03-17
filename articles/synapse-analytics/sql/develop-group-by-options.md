@@ -6,30 +6,31 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2e1ddbfb87df40a0e3683e7bca7539c26191a7b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429041"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671310"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>SESKUPENÍ podle možností v synapse SQL
+
 Synapse SQL umožňuje vývoj řešení implementací různých možností pro skupinu. 
 
-## <a name="what-does-group-by-do"></a>Co dělá GROUP BY
+## <a name="what-group-by-does"></a>Co dělá GROUP BY
 
-Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje data na souhrnnou sadu řádků.
+Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) T-SQL agreguje data na souhrnnou sadu řádků.
 
-SQL na vyžádání podporuje celou škálu možností GROUP BY. Fond SQL podporuje omezený počet skupin podle možností.
+Fond SQL bez serveru podporuje celou škálu možností GROUP BY. Vyhrazený fond SQL podporuje omezený počet skupin podle možností.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>Možnosti seskupení podle podporované ve fondu SQL
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>Možnost seskupit podle je podporovaná ve vyhrazeném fondu SQL.
 
-Seskupit podle obsahuje některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
+Seskupit podle obsahuje některé možnosti, které vyhrazený fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
 
 * Seskupit podle se SOUHRNem
 * SADY SESKUPENÍ
@@ -58,7 +59,7 @@ Pomocí SOUHRNu si předchozí příklad vyžádá následující agregace:
 
 * Země a oblast
 * Země
-* Grand Total
+* Celkový součet
 
 Chcete-li nahradit souhrn a vrátit stejné výsledky, můžete použít příkaz UNION ALL a explicitně zadat požadované agregace:
 
@@ -124,7 +125,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Následující obrázek zobrazuje výsledky [Create Table jako vyberte](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest):
+Následující obrázek zobrazuje výsledky [Create Table jako vyberte](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true):
 
 ![Seskupit podle datové krychle](./media/develop-group-by-options/develop-group-by-cube.png)
 

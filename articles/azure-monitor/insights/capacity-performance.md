@@ -1,17 +1,16 @@
 ---
 title: Capacity and Performance řešení v Azure Monitor | Microsoft Docs
 description: Pomocí řešení Capacity and Performance v části monitorování vám pomůže pochopit kapacitu serverů Hyper-V.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317990"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704289"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Plánování kapacity virtuálních počítačů Hyper-V pomocí řešení Capacity and Performance (zastaralé)
 
@@ -41,10 +40,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podpora | Popis |
 |---|---|---|
-| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
-| [Skupina pro správu SCOM](../platform/om-agents.md) | Ano |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
-| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | Ne | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
+| [Agenti systému Windows](../agents/agent-windows.md) | Ano | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | Ne    | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
+| [Skupina pro správu SCOM](../agents/om-agents.md) | Ano |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Ne | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,7 +71,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Když se aktualizuje řešení Capacity and Performance, číslo verze se změní.
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../agents/om-agents.md).
 
 ## <a name="using-the-solution"></a>Použití řešení
 
@@ -85,7 +84,7 @@ Když do svého pracovního prostoru přidáte řešení Capacity and Performanc
 
 Kliknutím na dlaždici Capacity and Performance otevřete řídicí panel Capacity and Performance. Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec uvádí až deset položek odpovídajících kritériím tohoto sloupce pro zadaný obor a časový rozsah. Kliknutím na **Zobrazit vše** v dolní části sloupce nebo na záhlaví sloupce můžete spustit hledání v protokolu, které vrátí všechny záznamy.
 
-- **Dvou**
+- **Hostitelé**
     - **Využití CPU hostitele** Zobrazuje grafický trend využití CPU hostitelských počítačů a seznam hostitelů na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti určitého bodu v čase. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název hostitele otevřete prohledávání protokolů a zobrazte podrobnosti o čítačích procesoru pro hostované virtuální počítače.
     - **Využití paměti hostitele** Zobrazuje grafický trend využití paměti hostitelských počítačů a seznamu hostitelů na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti určitého bodu v čase. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název hostitele otevřete prohledávání protokolů a zobrazte podrobnosti o čítačích paměti pro hostované virtuální počítače.
 - **Virtual Machines**
@@ -129,5 +128,5 @@ V následující tabulce najdete ukázková hledání v protokolech pro data o k
 
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [prohledávání protokolů v Log Analytics](../log-query/log-query-overview.md) můžete zobrazit podrobná data Capacity and Performance.
+* Pomocí [prohledávání protokolů v Log Analytics](../logs/log-query-overview.md) můžete zobrazit podrobná data Capacity and Performance.
 

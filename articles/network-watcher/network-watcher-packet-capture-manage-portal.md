@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4112bd1d632ec21e2d8cb565027277eeb85452d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736726"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018255"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí portálu
 
@@ -40,14 +40,14 @@ Pokud je skupina zabezpečení sítě přidružená k síťovému rozhraní nebo
 
 ## <a name="start-a-packet-capture"></a>Spustit zachytávání paketů
 
-1. V prohlížeči přejděte na [Azure Portal](https://portal.azure.com) a vyberte **všechny služby**a potom vyberte **Network Watcher** v **části síť**.
-2. V části nástroje pro **diagnostiku sítě**vyberte **zachycení paketů** . Budou uvedena všechna existující zachycení paketů bez ohledu na jejich stav.
+1. V prohlížeči přejděte na [Azure Portal](https://portal.azure.com) a vyberte **všechny služby** a potom vyberte **Network Watcher** v **části síť**.
+2. V části nástroje pro **diagnostiku sítě** vyberte **zachycení paketů** . Budou uvedena všechna existující zachycení paketů bez ohledu na jejich stav.
 3. Vyberte **Přidat** a vytvořte zachytávání paketů. Můžete vybrat hodnoty pro následující vlastnosti:
    - **Předplatné**: předplatné, pro které je virtuální počítač, pro který chcete vytvořit zachytávání paketů, je v.
    - **Skupina prostředků**: Skupina prostředků virtuálního počítače.
    - **Cílový virtuální počítač**: virtuální počítač, pro který chcete vytvořit zachytávání paketů.
    - **Název zachytávání paketů**: název zachytávání paketů.
-   - **Účet úložiště nebo soubor**: vyberte **účet úložiště**, **soubor**nebo obojí. Pokud vyberete **soubor**, zachytávání se zapíše do cesty v rámci virtuálního počítače.
+   - **Účet úložiště nebo soubor**: vyberte **účet úložiště**, **soubor** nebo obojí. Pokud vyberete **soubor**, zachytávání se zapíše do cesty v rámci virtuálního počítače.
    - **Místní cesta k souboru**: místní cesta na virtuálním počítači, kam se bude zachytávání paketů ukládat (platí jenom v případě, že je vybraný *soubor* ). Cesta musí být platná cesta. Pokud používáte virtuální počítač se systémem Linux, cesta musí začínat na */var/Captures*.
    - **Účty úložiště**: Pokud jste vybrali *účet úložiště*, vyberte existující účet úložiště. Tato možnost je dostupná jenom v případě, že jste vybrali **úložiště**.
    
@@ -74,7 +74,7 @@ Po vypršení časového limitu nastaveného pro zachytávání paketů je zachy
 > [!NOTE]
 > Portál automaticky:
 >  * Vytvoří sledovací proces sítě ve stejné oblasti, ve které se nachází virtuální počítač, ve kterém jste zvolili, pokud tato oblast ještě nemá sledovací proces sítě.
->  * Přidá rozšíření virtuálního počítače se [systémem](../virtual-machines/windows/extensions-nwa.md) *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) nebo Windows k virtuálnímu počítači, pokud ještě není nainstalované.
+>  * Přidá rozšíření virtuálního počítače se [systémem](../virtual-machines/extensions/network-watcher-windows.md) *AzureNetworkWatcherExtension* [Linux](../virtual-machines/extensions/network-watcher-linux.md) nebo Windows k virtuálnímu počítači, pokud ještě není nainstalované.
 
 ## <a name="delete-a-packet-capture"></a>Odstranění zachytávání paketů
 

@@ -4,11 +4,11 @@ description: Tento článek vás provede nasazením aplikace Service Fabric, zm�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195863"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996232"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric kurz upgradu aplikací pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -22,11 +22,11 @@ ms.locfileid: "82195863"
 Azure Service Fabric zjednodušuje proces upgradu cloudových aplikací tím, že zajišťuje, že se upgradují jenom změněné služby a že stav aplikace se monitoruje během procesu upgradu. Při výskytu problémů se také automaticky vrátí aplikace na předchozí verzi. Service Fabric upgrady aplikací nejsou žádné *výpadky*, protože aplikaci lze upgradovat bez výpadků. Tento kurz popisuje, jak dokončit postupný upgrade ze sady Visual Studio.
 
 ## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Krok 1: sestavování a publikování ukázky vizuálních objektů
-Nejdřív Stáhněte aplikaci [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) z GitHubu. Poté sestavte a publikujte aplikaci kliknutím pravým tlačítkem na projekt aplikace, **VisualObjects**a výběrem příkazu **publikovat** v položce nabídky Service Fabric.
+Nejdřív Stáhněte aplikaci [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) z GitHubu. Poté sestavte a publikujte aplikaci kliknutím pravým tlačítkem na projekt aplikace, **VisualObjects** a výběrem příkazu **publikovat** v položce nabídky Service Fabric.
 
 ![Místní nabídka pro aplikaci Service Fabric][image1]
 
-Když vyberete **publikovat** , zobrazí se místní nabídka a můžete nastavit **cílový profil** na **PublishProfiles\Local.xml**. Před kliknutím na tlačítko **publikovat**by okno mělo vypadat takto.
+Když vyberete **publikovat** , zobrazí se místní nabídka a můžete nastavit **cílový profil** na **PublishProfiles\Local.xml**. Před kliknutím na tlačítko **publikovat** by okno mělo vypadat takto.
 
 ![Publikování aplikace Service Fabric][image2]
 

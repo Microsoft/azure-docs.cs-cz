@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/14/2019
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 7d1c54d05430600e9fffa2659dbaaf6db0b086b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012472"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Změna velikosti fondu kapacity nebo svazku
 Velikost fondu kapacity nebo svazku můžete podle potřeby změnit. 
@@ -40,3 +40,8 @@ Velikost svazku můžete podle potřeby změnit. Spotřeba kapacity svazku se po
 2. Klikněte pravým tlačítkem na název svazku, u kterého chcete změnit velikost, nebo klikněte na "..." ikona na konci řádku svazku, ve kterém se zobrazí místní nabídka.
 3. Pro změnu velikosti nebo odstranění svazku použijte možnosti místní nabídky.
 
+## <a name="next-steps"></a>Další kroky
+
+- [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
+- [Správa fondu ručně zřizovaného kapacity QoS](manage-manual-qos-capacity-pool.md)
+- [Dynamická změna úrovně služeb svazku](dynamic-change-volume-service-level.md) 

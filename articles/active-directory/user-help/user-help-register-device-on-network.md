@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/04/2019
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747396"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90033043"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrace svého osobního zařízení v síti vaší organizace
 Zaregistrujte své osobní zařízení (obvykle telefon nebo tablet) v síti vaší organizace. Po zaregistrování zařízení bude mít přístup k prostředkům s omezeným přístupem vaší organizace.
@@ -31,9 +31,9 @@ Při registraci zařízení v síti vaší organizace dojde k následujícím ak
 
 - Systém Windows zaregistruje vaše zařízení v síti vaší organizace.
 
-- V závislosti na volbách vaší organizace se může zobrazit výzva k nastavení dvoustupňového ověřování prostřednictvím [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) nebo [bezpečnostních údajů](user-help-security-info-overview.md).
+- V závislosti na volbách vaší organizace můžete být požádáni, abyste nastavili dvoustupňové ověřování prostřednictvím [dvojúrovňového ověřování](multi-factor-authentication-end-user-first-time.md) nebo [informací o zabezpečení](./security-info-setup-signin.md).
 
-- Volitelně můžete v závislosti na volbách vaší organizace automaticky zaregistrované v rámci správy mobilních zařízení, například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Volitelně můžete v závislosti na volbách vaší organizace automaticky zaregistrované v rámci správy mobilních zařízení, například Microsoft Intune. Další informace o registraci v Microsoft Intune najdete v tématu [registrace zařízení v Intune](/intune-user-help/enroll-your-device-in-intune-all).
 
 - Projdete přihlašovacím jménem a heslem svého pracovního nebo školního účtu.
 
@@ -70,6 +70,3 @@ Můžete se ujistit, že jste zaregistrováni, a to tak, že si prohlédněte na
 Po registraci osobního zařízení do sítě vaší organizace byste měli mít přístup k většině svých prostředků.
 
 - Pokud vaše organizace požaduje, abyste se připojili k pracovnímu zařízení, přečtěte si téma [připojení pracovního zařízení k síti vaší organizace](user-help-join-device-on-network.md).
-
-
-

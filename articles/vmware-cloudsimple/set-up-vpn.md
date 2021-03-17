@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – konfigurace sítě VPN mezi místním a privátním cloudem
 description: V této části najdete popis postupu konfigurace připojení VPN typu Site-to-site nebo Point-to-site mezi vaší místní sítí a privátním cloudem CloudSimple.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087126"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899214"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
 
@@ -26,7 +26,7 @@ Brány VPN vám umožňují připojit se k CloudSimple síti z místní sítě a
 
 V oblasti můžete vytvořit jednu bránu VPN typu Site-to-site a jednu bránu VPN typu Point-to-site.
 
-## <a name="point-to-site-vpn"></a>Point-to-site VPN
+## <a name="point-to-site-vpn"></a>SÍŤ VPN typu Point-to-site
 
 Pokud chcete vytvořit bránu VPN typu Point-to-site, přečtěte si téma [Vytvoření brány VPN typu Point-to-site](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
@@ -37,7 +37,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 1. Spusťte portál CloudSimple a vyberte **síť**.
 2. Vyberte **VPN Gateway**.
 3. V seznamu bran VPN klikněte na bránu VPN typu Point-to-site.
-4. Vyberte možnost **Uživatelé**.
+4. Vyberte **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN** .
 
     ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
@@ -63,7 +63,7 @@ Níže uvedený příklad ukazuje Import připojení pomocí **klienta viskozity
 
 4. Vyberte konfigurační soubor OpenVPN (. ovpn) pro protokol, který chcete použít, a klikněte na **otevřít**.
 
-    ![Síť VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Snímek obrazovky, který zvýrazní konfigurační soubory OpenVPN, které můžete vybrat.](media/import-p2s-vpn-config-choose-ovpn.png)
 
 Připojení se nyní zobrazí v nabídce viskozita.
 
@@ -71,7 +71,7 @@ Připojení se nyní zobrazí v nabídce viskozita.
 
 Pokud se chcete připojit k síti VPN pomocí klienta viskozita OpenVPN, vyberte připojení z nabídky. Ikona nabídky se aktualizuje, aby označovala, že je připojení navázáno.
 
-![Síť VPN](media/vis03.png)
+![Snímek obrazovky, který zobrazuje stav připojení CloudSimple VPN.](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Připojení k více privátním cloudům
 

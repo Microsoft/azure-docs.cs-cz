@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869948"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962804"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky Azure App Service
 
@@ -20,7 +20,7 @@ Pokud používáte webovou aplikaci, chcete být připravená na všechny probl�
 
 I když je toto prostředí nejužitečnější, když máte během posledních 24 hodin problémy s vaší aplikací, jsou všechny diagnostické grafy k dispozici vždy, když je budete chtít analyzovat.
 
-App Service Diagnostika funguje nejen pro vaši aplikaci ve Windows, ale také pro aplikace na [platformě Linux/kontejnery](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), [App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro)a [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+App Service Diagnostika funguje nejen pro vaši aplikaci ve Windows, ale také pro aplikace na [platformě Linux/kontejnery](./overview.md#app-service-on-linux), [App Service Environment](./environment/intro.md)a [Azure Functions](../azure-functions/functions-overview.md).
 
 ## <a name="open-app-service-diagnostics"></a>Otevřít diagnostiku App Service
 
@@ -71,7 +71,7 @@ V nástroji Health Checkup existují čtyři různé grafy.
 
 ### <a name="investigate-application-code-issues-only-for-windows-app"></a>Prozkoumat problémy s kódem aplikace (jenom pro aplikaci pro Windows)
 
-Vzhledem k tomu, že mnoho problémů s aplikacemi souvisí s problémy v kódu aplikace, App Service Diagnostika je integrována s [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) , aby vybrala výjimky a problémy závislostí s vybranými výpadky. Application Insights musí být povolená samostatně.
+Vzhledem k tomu, že mnoho problémů s aplikacemi souvisí s problémy v kódu aplikace, App Service Diagnostika je integrována s [Application Insights](../azure-monitor/app/app-insights-overview.md) , aby vybrala výjimky a problémy závislostí s vybranými výpadky. Application Insights musí být povolená samostatně.
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 

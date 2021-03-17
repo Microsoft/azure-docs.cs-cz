@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 38816b616179ec16e06e987f82b498085c34ba3f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3529361cacf0890b7c4752bbd745a9240020b4f3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327578"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217818"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
 
@@ -41,16 +41,18 @@ Tyto soubory jsou obvykle dávkově zpracovávány v cloudu pomocí nástrojů, 
 
 Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
-* **simulovaná**verze aplikace vytvořená v kurzu [posílání zpráv z cloudu na zařízení pomocí IoT Hub]. Tato aplikace nahraje soubor do úložiště pomocí identifikátoru URI SAS, který poskytuje vaše služba IoT Hub.
+* **simulovaná** verze aplikace vytvořená v kurzu [posílání zpráv z cloudu na zařízení pomocí IoT Hub]. Tato aplikace nahraje soubor do úložiště pomocí identifikátoru URI SAS, který poskytuje vaše služba IoT Hub.
 
 * **čtení-soubor-nahrávání-oznámení**, které přijímá oznámení o nahrání souborů ze služby IoT Hub.
 
 > [!NOTE]
 > IoT Hub podporuje spoustu platforem a jazyků zařízení (včetně C, .NET a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny k připojení zařízení k Azure IoT Hub najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) .
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java se Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -282,4 +284,4 @@ V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT 
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Simulace zařízení s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Simulace zařízení s IoT Edge](../iot-edge/quickstart-linux.md)

@@ -3,33 +3,32 @@ title: Av2-series
 description: Specifikace pro virtuální počítače řady Av2-Series.
 author: migerdes
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ac3f31fecd53ddf1dd8bb81229c67cb4bb60c34e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 680ffe7964104f157debc64e44ac2f004ddac86d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650634"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565508"
 ---
 # <a name="av2-series"></a>Av2-series
 
 Virtuální počítače řady Av2-Series je možné nasadit na nejrůznější typy hardwaru a procesory. Virtuální počítače řady Av2-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezená, aby poskytovala konzistentní výkon procesoru pro spuštěnou instanci bez ohledu na hardware, na kterém je nasazený. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače. Příklady případů použití zahrnují vývojové a testovací servery, webové servery s nízkým provozem, malé až střední databáze, testování konceptů a úložiště kódu.
 
-ACU: 100
+[ACU](acu.md): 100<br>
+[Premium Storage](premium-storage-performance.md): nepodporováno <br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno <br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno <br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno <br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 <br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): nepodporováno<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
+<br>
 
-Premium Storage: nepodporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
-
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet datových disků/propustnost: IOPS | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s)
+| Velikost | Virtuální jádro | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet datových disků/propustnost: IOPS | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s)
 |---|---|---|---|---|---|---|---|
 | Standard_A1_v2  | 1 | 2  | 10 | 1000/20/10  | 2/2x500   | 2 | 250  |
 | Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4/4x500   | 2 | 500  |
@@ -46,7 +45,7 @@ Aktualizace pro zachování paměti: podporováno
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

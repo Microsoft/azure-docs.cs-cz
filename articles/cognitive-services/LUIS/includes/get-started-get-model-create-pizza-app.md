@@ -2,20 +2,21 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: roy-har
-manager: diberry
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.date: 06/04/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.author: aahi
+ms.reviewer: roy-har
+ms.openlocfilehash: a021b7c5b26e1bca1e3f623ad762c2f3ee8d6020
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84466909"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820777"
 ---
 Vytvořte aplikaci Pizza.
 
@@ -48,18 +49,18 @@ Měla by se zobrazit stránka **záměry** se seznamem záměrů v aplikaci Pizz
 1. Vyberte **prostředek pro vytváření obsahu**.
 1. Vyberte **změnit prostředek pro vytváření obsahu**.
 
-Pokud máte prostředek pro vytváření obsahu, zadejte **název tenanta**, **název předplatného**a **název prostředku Luis** prostředku pro vytváření obsahu.
+Pokud máte prostředek pro vytváření obsahu, zadejte **název tenanta**, **název předplatného** a **název prostředku Luis** prostředku pro vytváření obsahu.
 
 Pokud nemáte prostředek pro vytváření obsahu:
 
 1. Vyberte **vytvořit nový prostředek**.
-1. Zadejte **název tenanta**, **název prostředku**, **název předplatného**a **název skupiny prostředků Azure**.
+1. Zadejte **název tenanta**, **název prostředku**, **název předplatného** a **název skupiny prostředků Azure**.
 
 Vaše aplikace Pizza je teď připravená k použití.
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>Poznamenejte si hodnoty pro přístup k aplikaci Pizza.
 
-Pokud chcete používat novou aplikaci Pizza, budete potřebovat ID aplikace, vytváření klíčů a koncový bod pro vytváření aplikací pro Pizza.
+Pokud chcete používat novou aplikaci Pizza, budete potřebovat ID aplikace, vytváření klíčů a koncový bod pro vytváření aplikací pro Pizza. K získání předpovědi budete potřebovat samostatný koncový bod předpovědi a klíč předpovědi.
 
 Vyhledání těchto hodnot:
 
@@ -67,5 +68,5 @@ Vyhledání těchto hodnot:
 1. Na stránce **nastavení aplikace** si poznamenejte **ID aplikace**.
 1. Vyberte **Azure Resources** (Prostředky Azure).
 1. Vyberte **prostředek pro vytváření obsahu**.
-1. Na kartě **prostředek pro vytváření** záznamů zaznamenejte **primární klíč**. Tato hodnota je váš kód pro vytváření.
+1. Na kartách prostředky pro **vytváření prostředků** a **předpovědí prostředků** zaznamenejte **primární klíč**. Tato hodnota je váš kód pro vytváření.
 1. Zaznamenejte **adresu URL koncového bodu**. Tato hodnota je vaším koncovým bodem pro vytváření obsahu.

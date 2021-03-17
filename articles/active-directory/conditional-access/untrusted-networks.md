@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7986ca441f7d274670d8fa0238e7dcfa01497b6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253167"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077672"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postupy: vyžadování MFA pro přístup z nedůvěryhodných sítí s podmíněným přístupem   
 
@@ -24,12 +24,9 @@ Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k zaří
 
 Tento článek obsahuje informace, které potřebujete ke konfiguraci zásad podmíněného přístupu, které vyžadují MFA pro přístup z nedůvěryhodných sítí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto článku se předpokládá, že máte zkušenosti s nástrojem: 
-
-- [Základní koncepty](overview.md) podmíněného přístupu Azure AD 
-- [Osvědčené postupy](best-practices.md) pro konfiguraci zásad podmíněného přístupu v Azure Portal
+V tomto článku se předpokládá, že máte zkušenosti se [základními koncepty](overview.md) podmíněného přístupu. 
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -57,16 +54,16 @@ Místo toho, abyste se pokoušeli definovat, která všechna umístění nejsou 
 
 - Zahrnout libovolné umístění 
 
-   ![Podmíněný přístup](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="Snímek obrazovky s podoknem umístění Azure a D s možností konfigurovat nastavenou na hodnotu Ano, zobrazit kartu zahrnout a vybranou možnost Libovolná poloha a zvýrazněná." border="false":::
 
 - Vyloučit všechna důvěryhodná umístění 
 
-   ![Podmíněný přístup](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Snímek obrazovky s podoknem umístění Azure a D s možností konfigurovat nastavenou na hodnotu Ano, zobrazit kartu zahrnout a vybranou možnost Libovolná poloha a zvýrazněná." border="false":::
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
-S přístupem popsaným v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodná umístění. Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v tématu [nasazení nové zásady](best-practices.md#how-should-you-deploy-a-new-policy). 
+S přístupem popsaným v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodná umístění. Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](./overview.md)

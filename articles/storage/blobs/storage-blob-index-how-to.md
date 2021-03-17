@@ -1,63 +1,72 @@
 ---
-title: Využití indexu objektů BLOB ke správě a hledání dat v úložišti objektů BLOB v Azure
-description: Podívejte se na příklady použití značek indexu objektů BLOB ke kategorizaci, správě a dotazování pro zjišťování objektů BLOB.
+title: Použití značek indexu objektů BLOB ke správě a hledání dat v Azure Blob Storage
+description: Podívejte se na příklady použití značek indexu objektů BLOB ke kategorizaci, správě a dotazování objektů BLOB.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.reviewer: hux
-ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: klaasl
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a820f7efc39af8c6ab66c883d285b507c7bc7368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500381"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563264"
 ---
-# <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v úložišti objektů BLOB v Azure
+# <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v Azure Blob Storage
 
-Rejstříky objektů BLOB kategorizují data v účtu úložiště s využitím atributů značek klíč-hodnota. Tyto značky jsou automaticky indexovány a zpřístupněny jako Queryable multidimenzionální index, který umožňuje snadno najít data. V tomto článku se dozvíte, jak pomocí značek indexu objektů BLOB nastavit, získat a najít data.
+Rejstříky objektů BLOB kategorizují data v účtu úložiště pomocí atributů značek klíč-hodnota. Tyto značky jsou automaticky indexovány a zpřístupněny jako prohledávatelný multidimenzionální index umožňující snadno najít data. V tomto článku se dozvíte, jak pomocí značek indexu objektů BLOB nastavit, získat a najít data.
 
-Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+> [!IMPORTANT]
+> Značky indexu objektů BLOB jsou momentálně ve **verzi Preview** a jsou dostupné ve všech veřejných oblastech. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
-> [!NOTE]
-> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Požadavky
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-- Předplatné je zaregistrované a schválené pro přístup k náhledu indexu objektů BLOB.
+
+- Předplatné Azure registrované a schválené pro přístup k náhledu indexu objektů BLOB ve verzi Preview
 - Přístup k [Azure Portal](https://portal.azure.com/)
 
 # <a name="net"></a>[.NET](#tab/net)
-Protože index BLOB je ve verzi Public Preview, balíček úložiště .NET je vydaný v kanálu NuGet Preview. Tato knihovna se může změnit mezi nyní a když se změní na oficiální. 
 
-1. Nastavte projekt sady Visual Studio tak, aby Začínáme s klientskou knihovnou služby Azure Blob Storage V12 pro .NET. Další informace najdete v tématu [rychlý Start pro .NET](storage-quickstart-blobs-dotnet.md) .
+Protože index objektu BLOB je ve verzi Preview, balíček úložiště .NET se uvolní v kanálu NuGet pro verzi Preview. Tato knihovna se může změnit během období Preview.
 
-2. Ve Správci balíčků NuGet Najděte balíček **Azure. Storage. BLOBs** a nainstalujte verzi **12.5.0-Preview. 6** nebo novější do svého projektu. Můžete také spustit příkaz```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
+1. Nastavte projekt sady Visual Studio, abyste mohli začít s v12ou klientské knihovny Azure Blob Storage pro .NET. Další informace najdete v tématu [rychlý Start pro .NET](storage-quickstart-blobs-dotnet.md) .
 
-   Informace o postupu najdete v tématu [vyhledání a instalace balíčku](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
+2. Ve Správci balíčků NuGet Najděte balíček **Azure. Storage. BLOBs** a nainstalujte verzi **12.7.0-Preview. 1** nebo novější do svého projektu. Můžete také spustit příkaz prostředí PowerShell: `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
+
+   Informace o postupu najdete v tématu [vyhledání a instalace balíčku](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
 3. Do horní části souboru kódu přidejte následující příkazy using.
-```csharp
-using Azure;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using Azure.Storage.Blobs.Specialized;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-```
+
+    ```csharp
+    using Azure;
+    using Azure.Storage.Blobs;
+    using Azure.Storage.Blobs.Models;
+    using Azure.Storage.Blobs.Specialized;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    ```
+
 ---
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Nahrát nový objekt BLOB se značkami indexu
+
+Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
 2. Přejděte na možnost **kontejnery** v části **BLOB Service**, vyberte svůj kontejner.
 
-3. Kliknutím na tlačítko **nahrát** otevřete okno Odeslat a vyhledejte soubor, který se má nahrát jako objekt blob bloku, a přejděte do místního systému souborů.
+3. Vyberte tlačítko **nahrát** a přejděte do místního systému souborů a vyhledejte soubor, který se má nahrát jako objekt blob bloku.
 
 4. Rozbalíte **Rozšířené** rozevírací seznam a přejdete do oddílu **značky indexu objektu BLOB** .
 
@@ -65,7 +74,7 @@ using System.Threading.Tasks;
 
 6. Kliknutím na tlačítko **nahrát** nahrajte objekt BLOB.
 
-![Nahrávání dat pomocí značek indexu objektů BLOB](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak nahrát objekt BLOB s značkami indexu.":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -85,8 +94,8 @@ static async Task BlobIndexTagsOnCreate()
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
 
-          // Blob Index tags to upload
-          CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
+          // Blob index tags to upload
+          AppendBlobCreateOptions appendOptions = new AppendBlobCreateOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
               { "Sealed", "false" },
@@ -106,13 +115,18 @@ static async Task BlobIndexTagsOnCreate()
 ---
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Získání, nastavení a aktualizace značek indexu objektů BLOB
+
+Získání značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+
+Nastavení a aktualizace značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
 2. Přejděte na možnost **kontejnery** v části **BLOB Service**, vyberte svůj kontejner.
 
-3. Vyberte požadovaný objekt BLOB ze seznamu objektů BLOB v rámci vybraného kontejneru.
+3. Výběr objektu BLOB ze seznamu objektů BLOB v rámci vybraného kontejneru
 
 4. Na kartě Přehled objektů BLOB se zobrazí vlastnosti vašeho objektu BLOB včetně všech **značek indexu objektu BLOB** .
 
@@ -120,9 +134,10 @@ static async Task BlobIndexTagsOnCreate()
 
 6. Kliknutím na tlačítko **Uložit** potvrďte všechny aktualizace svého objektu BLOB.
 
-![Získání, nastavení, aktualizace a odstranění značek indexu objektů BLOB u objektů](media/storage-blob-index-concepts/blob-index-get-set-tags.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak načíst, nastavit, aktualizovat a odstranit značky indexu u objektů BLOB.":::
 
 # <a name="net"></a>[.NET](#tab/net)
+
 ```csharp
 static async Task BlobIndexTagsExample()
    {
@@ -138,7 +153,7 @@ static async Task BlobIndexTagsExample()
           AppendBlobClient appendBlob = container.GetAppendBlobClient("myAppendBlob1.logs");
           await appendBlob.CreateAsync();
 
-          // Set or Update Blob Index tags on existing blob
+          // Set or update blob index tags on existing blob
           Dictionary<string, string> tags = new Dictionary<string, string>
           {
               { "Project", "Contoso" },
@@ -147,7 +162,7 @@ static async Task BlobIndexTagsExample()
           };
           await appendBlob.SetTagsAsync(tags);
 
-          // Get Blob Index tags
+          // Get blob index tags
           Response<IDictionary<string, string>> tagsResponse = await appendBlob.GetTagsAsync();
           Console.WriteLine(appendBlob.Name);
           foreach (KeyValuePair<string, string> tag in tagsResponse.Value)
@@ -155,7 +170,7 @@ static async Task BlobIndexTagsExample()
               Console.WriteLine($"{tag.Key}={tag.Value}");
           }
 
-          // List Blobs with all options returned including Blob Index tags
+          // List blobs with all options returned including blob index tags
           await foreach (BlobItem blobItem in container.GetBlobsAsync(BlobTraits.All))
           {
               Console.WriteLine(Environment.NewLine + blobItem.Name);
@@ -165,7 +180,7 @@ static async Task BlobIndexTagsExample()
               }
           }
 
-          // Delete existing Blob Index tags by replacing all tags
+          // Delete existing blob index tags by replacing all tags
           Dictionary<string, string> noTags = new Dictionary<string, string>();
           await appendBlob.SetTagsAsync(noTags);
 
@@ -180,9 +195,11 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Filtrování a hledání dat pomocí značek indexu objektů BLOB
 
+Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-V rámci Azure Portal filtr značek indexu objektů BLOB automaticky použije `@container` parametr k určení oboru vybraného kontejneru. Pokud chcete vyfiltrovat a vyhledávat data označená v celém účtu úložiště, použijte prosím naše REST API, sady SDK nebo nástroje.
+V rámci Azure Portal filtr značek indexu objektů BLOB automaticky použije `@container` parametr k určení oboru vybraného kontejneru. Pokud chcete filtrovat a vyhledávat data s příznakem napříč celým účtem úložiště, použijte naši REST API, sady SDK nebo nástroje.
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
@@ -194,9 +211,10 @@ V rámci Azure Portal filtr značek indexu objektů BLOB automaticky použije `@
 
 5. Vyberte tlačítko **Filtr značek indexu objektů BLOB** a přidejte další filtry značek (až 10).
 
-![Filtrování a hledání tagovaných objektů pomocí značek indexu objektů BLOB](media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Snímek obrazovky Azure Portal znázorňující filtrování a hledání tagovaných objektů BLOB pomocí značek indexů":::
 
 # <a name="net"></a>[.NET](#tab/net)
+
 ```csharp
 static async Task FindBlobsByTagsExample()
    {
@@ -204,7 +222,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
-      // Blob Index queries and selection
+      // Blob index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -226,7 +244,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
            
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -254,10 +272,10 @@ static async Task FindBlobsByTagsExample()
           // Find Blobs given a tags query
           Console.WriteLine("Find Blob by Tags query: " + queryToUse + Environment.NewLine);
 
-          List<FilterBlobItem> blobs = new List<FilterBlobItem>();
-          await foreach (FilterBlobItem filterBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
+          List<TaggedBlobItem> blobs = new List<TaggedBlobItem>();
+          await foreach (TaggedBlobItem taggedBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
           {
-              blobs.Add(filterBlobItem);
+              blobs.Add(taggedBlobItem);
           }
 
           foreach (var filteredBlob in blobs)
@@ -285,19 +303,23 @@ static async Task FindBlobsByTagsExample()
 
 3. Vyberte *Přidat pravidlo* a potom vyplňte pole formuláře sady akcí.
 
-4. Vyberte možnost sada filtrů pro přidání volitelného filtru pro porovnávání předpon a index objektů BLOB ![ Přidat filtry značek indexu objektů BLOB pro správu životního cyklu.](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Výběrem nastaveného **filtru** přidejte volitelný filtr pro porovnávání předpon a shodu indexu objektů BLOB.
 
-5. Vyberte **zkontrolovat + přidat** a zkontrolujte ![ pravidlo správy životního cyklu nastavení pravidla s příkladem filtru značek indexu objektů BLOB.](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Snímek obrazovky Azure Portal znázorňující, jak přidat rejstříkové značky pro správu životního cyklu.":::
+
+5. Pokud chcete zkontrolovat nastavení pravidla, vyberte **zkontrolovat + přidat** .
+
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Snímek obrazovky Azure Portal znázorňující pravidlo správy životního cyklu s příkladem filtru značek indexu objektů BLOB":::
 
 6. Vyberte **Přidat** a použijte nové pravidlo pro zásady správy životního cyklu.
 
 # <a name="net"></a>[.NET](#tab/net)
-Zásady [správy životního cyklu](storage-lifecycle-management-concepts.md) se aplikují pro každý účet úložiště na úrovni roviny ovládacího prvku. V případě rozhraní .NET nainstalujte [knihovnu úložiště Microsoft Azure Management verze 16.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) nebo vyšší, abyste mohli využít výhod filtru shody indexu objektů BLOB v rámci pravidla správy životního cyklu.
+
+Zásady [správy životního cyklu](storage-lifecycle-management-concepts.md) se aplikují pro každý účet úložiště na úrovni roviny ovládacího prvku. V případě rozhraní .NET nainstalujte [knihovnu úložiště Microsoft Azure Management](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) verze 16.0.0 nebo vyšší.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o indexu objektů BLOB. Přečtěte si téma [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md ) .
-
-Přečtěte si další informace o správě životního cyklu. Viz [Správa životního cyklu služby Azure Blob Storage](storage-lifecycle-management-concepts.md) .
+ - Další informace o značkách indexu objektů BLOB najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md ) .
+ - Další informace o správě životního cyklu najdete v tématu [Správa životního cyklu Azure Blob Storage](storage-lifecycle-management-concepts.md) .

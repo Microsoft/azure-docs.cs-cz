@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555731"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488388"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Kurz: integrace firemního Dropboxu pomocí Azure Active Directory
 
@@ -26,13 +26,11 @@ V tomto kurzu se dozvíte, jak integrovat obchodní Dropbox pomocí Azure Active
 * Umožněte uživatelům, aby se k Dropboxu přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné s povoleným jednotným přihlašováním (SSO).
 
 > [!NOTE]
@@ -40,32 +38,34 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-* V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Společnost **Dropbox podporuje jednotné** přihlašování v/v.
+* V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Společnost Dropboxu **podporuje jednotné** přihlašování, které iniciuje.
 
-* Společnost Dropbox podporuje [automatizované zřizování a rušení zřizování uživatelů](dropboxforbusiness-tutorial.md)
-* Jakmile nakonfigurujete Dropbox, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Společnost Dropbox podporuje [automatizované zřizování a rušení zřizování uživatelů](dropboxforbusiness-tutorial.md).
 
-## <a name="adding-dropbox-business-from-the-gallery"></a>Přidání firemního Dropboxu z Galerie
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
+## <a name="add-dropbox-business-from-the-gallery"></a>Přidání firemního Dropboxu z Galerie
 
 Pokud chcete nakonfigurovat integraci firemního Dropboxu do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat z Galerie obchodní prostředí Dropboxu.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Společnost Dropbox** .
 1. Z panelu výsledků vyberte možnost **obchodní Dropbox** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-dropbox-business"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Dropbox firmy
 
-Pomocí testovacího uživatele s názvem **Britta Simon**konfigurujte a otestujte jednotné přihlašování Azure AD pomocí Dropboxu firmy. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Dropboxu.
+Pomocí testovacího uživatele s názvem **Britta Simon** konfigurujte a otestujte jednotné přihlašování Azure AD pomocí Dropboxu firmy. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Dropboxu.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Dropboxu, vyplňte následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Dropboxu, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.    
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-1. **[Konfigurace podnikového přihlašování Dropboxu](#configure-dropbox-business-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+1. **[Nakonfigurujte jednotné přihlašování k Dropboxu](#configure-dropbox-business-sso)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
     1. **[Vytvořte si uživatele Dropboxu pro obchodní testy](#create-dropbox-business-test-user)** , abyste měli protějšek Britta Simon v rámci Dropboxu, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -73,22 +73,22 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **obchodních** aplikací pro Dropbox najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace obchodních aplikací pro **Dropbox** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.dropbox.com/sso/<id>`
-
-    b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu: `Dropbox`
-
+    
+     b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu: `Dropbox`
+    
     > [!NOTE]
-    > Hodnota předchozí přihlašovací adresy URL není reálné číslo. Tuto hodnotu aktualizujete pomocí skutečné přihlašovací adresy URL, která se vysvětluje později v tomto kurzu.
+    > **Přihlašovací jméno jednotného** přihlašování k Dropboxu najdete na webu dropboxu v > konzole pro správu > nastavení > jednotné přihlašování > přihlašovací adresa URL jednotného přihlašování.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -96,41 +96,29 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Dropboxu společnosti.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Dropboxu společnosti.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Dropbox Business**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-dropbox-business-sso"></a>Konfigurace podnikového jednotného přihlašování k Dropboxu
@@ -145,35 +133,35 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 3. Pokud chcete firemní Dropbox nastavit ručně, otevřete nové okno webového prohlížeče a Projděte si firemního tenanta Dropboxu a přihlaste se k firemnímu tenantovi Dropbox. a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/ic769509.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující stránku přihlášení k Dropboxu](./media/dropboxforbusiness-tutorial/account.png "Konfigurace jednotného přihlašování")
 
 4. Klikněte na **ikonu uživatele** a vyberte kartu **Nastavení** .
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující, že je vybraná akce ikona uživatele a nastavení.](./media/dropboxforbusiness-tutorial/configure-1.png "Konfigurace jednotného přihlašování")
 
 5. V navigačním podokně na levé straně klikněte na Konzola pro **správu**.
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující, že je vybraná Konzola pro správu](./media/dropboxforbusiness-tutorial/configure-2.png "Konfigurace jednotného přihlašování")
 
-6. V **konzole pro správu**klikněte v levém navigačním podokně na **Nastavení** .
+6. V **konzole pro správu** klikněte v levém navigačním podokně na **Nastavení** .
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky, který zobrazuje vybrané nastavení.](./media/dropboxforbusiness-tutorial/configure-3.png "Konfigurace jednotného přihlašování")
 
 7. V části **ověřování** vyberte možnost **jednotné přihlašování** .
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky, který zobrazuje oddíl ověřování s vybraným možnostmi jednotné přihlašování](./media/dropboxforbusiness-tutorial/configure-4.png "Konfigurace jednotného přihlašování")
 
 8. V části **jednotné přihlašování** proveďte následující kroky:  
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky se zobrazením nastavení konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure-5.png "Konfigurace jednotného přihlašování")
 
     a. V rozevíracím seznamu vyberte možnost **požadováno** pro **jednotné přihlašování**.
 
     b. Klikněte na **Přidat adresu URL** pro přihlášení a v poli **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu URL pro **přihlášení** , kterou jste zkopírovali z Azure Portal, a potom vyberte **Hotovo**.
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure6.png "Konfigurace jednotného přihlašování")
+    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/sso.png "Konfigurace jednotného přihlašování")
 
-    c. Klikněte na **nahrát certifikát**a potom přejděte k **souboru certifikátu kódovanému pomocí Base64** , který jste stáhli z Azure Portal.
+    c. Klikněte na **nahrát certifikát** a potom přejděte k **souboru certifikátu kódovanému pomocí Base64** , který jste stáhli z Azure Portal.
 
     d. Klikněte na **Kopírovat odkaz** a vložte zkopírované hodnoty do textového pole **Adresa URL pro přihlášení** v části **obchodní doména Dropboxu a adresy URL** v Azure Portal.
 
@@ -186,18 +174,16 @@ V této části se na firemním Dropboxu vytvoří uživatel s názvem B. Simon.
 >[!Note]
 >Pokud potřebujete ručně vytvořit uživatele, kontaktujte [tým podpory pro firemního klienta Dropbox](https://www.dropbox.com/business/contact) .
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete obchodní dlaždici Dropbox, měli byste být automaticky přihlášeni k firemnímu Dropboxu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-## <a name="additional-resources"></a>Další materiály
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Dropboxu, kde můžete spustit tok přihlášení. 
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Přejít na adresu URL pro přihlašování k Dropboxu přímo a zahájit tok přihlášení.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici pracovní Dropboxu v části Moje aplikace, přesměruje se na adresu URL pro přihlášení k Dropboxu pro obchodní přihlášení. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Další kroky
 
-- [Vyzkoušejte si službu Dropbox pro firmy pomocí Azure AD](https://aad.portal.azure.com/)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování služby Dropbox můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

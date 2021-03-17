@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021309"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591935"
 ---
 # <a name="pbr-materials"></a>Materiály PBR
 
 *Materiály PBR* jsou jedním z podporovaných [typů materiálu](../../concepts/materials.md) ve vzdáleném vykreslování Azure. Používají se pro [sítě](../../concepts/meshes.md) , které by měly přijímat reálné osvětlení.
 
-PBR představuje pro **P**hysically **B**ased **R**endering a to znamená, že materiál popisuje vizuální vlastnosti povrchu fyzicky plausible, takže reálné výsledky jsou možné v rámci všech světelných podmínek. Většina moderních herních modulů a nástrojů pro vytváření obsahu podporují PBR materiály, protože se považují za nejlepší odhad scénářů reálného světa pro vykreslování v reálném čase.
+PBR představuje pro **P** hysically **B** ased **R** endering a to znamená, že materiál popisuje vizuální vlastnosti povrchu fyzicky plausible, takže reálné výsledky jsou možné v rámci všech světelných podmínek. Většina moderních herních modulů a nástrojů pro vytváření obsahu podporují PBR materiály, protože se považují za nejlepší odhad scénářů reálného světa pro vykreslování v reálném čase.
 
 ![GlTF Vzorový model, který je vykreslený pomocí ARR](media/helmet.png)
 
@@ -26,7 +26,7 @@ Materiály PBR nejsou univerzálním řešením, i když. V závislosti na úhlu
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo * :::no-loc text="vertex "::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo *:::no-loc text="vertex "::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
   > Když je materiál PBR plně transparentní, jako dokonale čistá část skla, stále odráží prostředí. Jasné skvrny, jako je slunce, jsou pořád viditelné v reflexi. To se pro [barevné materiály](color-materials.md)liší.
@@ -41,9 +41,17 @@ Tyto vlastnosti jsou společné pro všechny materiály:
 
 * **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Pro zadní plošky se také vypočítává osvětlení materiálů PBR. Ve výchozím nastavení je tato možnost zakázána. Viz také [ :::no-loc text="Single-sided"::: vykreslování](single-sided-rendering.md).
 
+* **TransparencyWritesDepth:** Pokud je pro materiál nastaven příznak TransparencyWritesDepth a materiál je transparentní, objekty, které tento materiál používají, budou také přispívat do konečné vyrovnávací paměti. Zobrazit v další části příznak materiálu PBR *Průhledný* Povolení této funkce se doporučuje v případě, že váš případ použití potřebuje další plausibleou [fázi reprojekce](late-stage-reprojection.md) plně transparentních scén. U smíšených neprůhledných a transparentních scén může toto nastavení způsobit implausible reanalýzování nebo artefakty reprojekce. Z tohoto důvodu je výchozím a doporučeným nastavením pro obecný případ použití zakázání tohoto příznaku. Napsané hodnoty hloubky jsou pořízeny ze vrstvy hloubkového pixelu objektu, který je nejblíže kameře.
+
+* **FresnelEffect:** Tento příznak materiálu umožňuje doplňkové [Fresnelova poklesu účinky](../../overview/features/fresnel-effect.md) na příslušný materiál. Vzhled tohoto efektu závisí na dalších parametrech Fresnelova poklesu, které jsou vysvětleny v následujícím tématu. 
+
+* **FresnelEffectColor:** Barva Fresnelova poklesu použitá pro tento materiál Důležité pouze v případě, že byl pro tento materiál nastaven bit Fresnelova poklesu účinek (viz výše). Tato vlastnost řídí základní barvu Fresnelova poklesu. září (viz [efekt Fresnelova poklesu](../../overview/features/fresnel-effect.md) pro úplné vysvětlení). Momentálně jsou důležité pouze hodnoty kanálu RGB a hodnota alfa bude ignorována.
+
+* **FresnelEffectExponent:** Fresnelova poklesu exponent použitý pro tento materiál. Důležité pouze v případě, že byl pro tento materiál nastaven bit Fresnelova poklesu účinek (viz výše). Tato vlastnost řídí rozprostření Fresnelova poklesu. Minimální hodnota 0,01 způsobuje rozprostření napříč celým objektem. Maximální hodnota 10,0, která je větší, než září, aby byla viditelná pouze gracing hrany.
+
 ## <a name="pbr-material-properties"></a>Vlastnosti materiálu PBR
 
-Základní nápad, který je fyzicky založený na *vykreslování, je*použití *BaseColor*, vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
+Základní nápad, který je fyzicky založený na *vykreslování, je* použití *BaseColor*, vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
 
 * **baseColor:** V materiálech PBR se *Barva albedo* označuje jako *základní barva*. Ve vzdáleném vykreslování Azure je vlastnost *albedo Color* již přítomna prostřednictvím vlastností společných materiálů, takže neexistuje žádná další základní vlastnost Color.
 
@@ -55,7 +63,7 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
   Pokud jsou dodána hodnota kovového a mapa kovu, bude konečná hodnota součinem těchto dvou.
 
-  ![kovové a hrubosti](./media/metalness-roughness.png)
+  ![Koule vykreslené s různou hodnotou kovu a hrubosti](./media/metalness-roughness.png)
 
   Ve výše uvedeném obrázku vypadá koule v pravém dolním rohu jako materiál reálného materiálu, vlevo dole vypadá jako keramické nebo plast. Barva albedo se také mění podle fyzických vlastností. Díky zvýšení hrubé hodnoty materiál ztratí ostrost reflexe.
 
@@ -63,23 +71,30 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
 * **occlusionMap** a **aoScale:** [ambientní překrytí](https://en.wikipedia.org/wiki/Ambient_occlusion) zpřístupňuje objekty s crevicesmi mnohem realisticky přidáním stínů do zastíněna oblastí. Překrytí rozsah hodnot od `0.0` do `1.0` , kde `0.0` znamená tmavost (zastíněna) a znamená, že `1.0` Occlusions. Pokud je 2D textura k dispozici jako mapa překrytí, je efekt povolen a *aoScale* funguje jako násobitel.
 
-  ![Mapa překrytí](./media/boom-box-ao2.gif)
+  ![Objekt vykreslený pomocí a bez ambientního překrytíu](./media/boom-box-ao2.gif)
 
 * **transparentní:** U materiálů PBR existuje jenom jedno nastavení transparentnosti: je povolené nebo ne. Neprůhlednost je definována alfa kanálem albedo Color. Pokud je povoleno, je vyvolán složitější kanál vykreslování pro kreslení částečně průhledných ploch. Vzdálené vykreslování Azure implementuje true [transparentnost nezávislého řádu](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT).
 
   Transparentní geometrie je nákladné pro vykreslování. Pokud potřebujete pouze otvory na povrchu, například pro listy stromu, je vhodnější místo toho použít alfa ořez.
 
-  ![Oznámení o transparentnosti na ](./media/transparency.png) obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
+  ![Koule vykreslené s nulovým oznámením o plné transparentnosti na ](./media/transparency.png) obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
 
   > [!IMPORTANT]
   > Pokud by měl být nějaký materiál přepnut z neprůhledných na transparentní za běhu, zobrazovací jednotka musí používat [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* . Toto omezení se nevztahuje na materiály, které jsou převáděny jako průhledné materiály na začátek.
 
 ## <a name="technical-details"></a>Technické podrobnosti
 
-Vzdálené vykreslování Azure používá Torrance mikroomezující BRDF s GGX NDF, Schlick Fresnelova poklesu a GGX Smith koreluje výrazem viditelnosti s výrazem Lambert difúze. Tento model je v současnosti ve standardním odvětví. Podrobnější informace najdete v tomto článku: [vykreslování fyzicky na bázi – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Vzdálené vykreslování Azure používá Cook-Torrance mikroaspektů BRDF s GGX NDF, Schlick Fresnelova poklesu a GGX Smith koreluje výraz viditelnosti s výrazem Lambert difúze. Tento model je v současnosti ve standardním odvětví. Podrobnější informace najdete v tomto článku: [vykreslování fyzicky na bázi – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Alternativou k modelu *hrubých kovů* , který se používá při vzdáleném vykreslování Azure, je model *zrcadlové Glossiness* PBR. Tento model může představovat širší škálu materiálů. Je ale dražší a obvykle nefunguje dobře pro případy v reálném čase.
 Není vždy možné převést z *odlesk-Glossiness* na *kov –* protože existují páry hodnot *(difúze, odlesky)* , které se nedají převést na *(BaseColor, metaling)*. Převod v druhém směru je jednodušší a přesnější, protože všechny páry *(BaseColor, kov)* odpovídají dobře definovaným dvojicím *(difúzi, odleskům)* .
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# PbrMaterial](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RenderingConnection. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
+* [Třída C++ PbrMaterial](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RenderingConnection:: CreateMaterial ()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>Další kroky
 

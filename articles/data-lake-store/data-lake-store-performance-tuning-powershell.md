@@ -1,17 +1,17 @@
 ---
 title: Ladění výkonu Azure Data Lake Storage Gen1 – PowerShell
 description: Tipy, jak zvýšit výkon při použití Azure PowerShell s Azure Data Lake Storage Gen1
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/09/2018
-ms.author: stewu
-ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504691"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723792"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro použití PowerShellu s Azure Data Lake Storage Gen1
 
@@ -21,7 +21,7 @@ Tento článek popisuje vlastnosti, které můžete ladit, abyste získali lepš
 
 ## <a name="performance-related-properties"></a>Vlastnosti související s výkonem
 
-| Vlastnost            | Výchozí | Description |
+| Vlastnost            | Výchozí | Popis |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Pomocí tohoto parametru můžete zvolit počet paralelních vláken pro nahrávání nebo stahování jednotlivých souborů. Toto číslo představuje maximální počet vláken, která se dají přidělit na jeden soubor, ale v závislosti na vašem scénáři můžete dostat méně vláken (například pokud nahráváte soubor o velikosti 1 KB, dostanete jedno vlákno i v případě, že požádáte o 20 vláken).  |
 | ConcurrentFileCount | 10      | Tento parametr je určený zejména pro nahrávání nebo stahování složek. Tento parametr určuje počet souborů, které lze souběžně nahrávat nebo stahovat. Toto číslo představuje maximální počet souběžných souborů, které je možné nahrávat nebo stahovat najednou, ale v závislosti na vašem scénáři můžete dosáhnout nižší souběžnosti (například pokud nahráváte dva soubory, získáte dvě souběžná nahrávání souborů i v případě, že požádáte o 15). |

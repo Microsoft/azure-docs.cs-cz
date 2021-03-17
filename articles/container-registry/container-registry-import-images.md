@@ -2,13 +2,13 @@
 title: Import imagí kontejnerů
 description: Naimportujte image kontejneru do služby Azure Container Registry pomocí rozhraní API Azure, aniž byste museli spouštět příkazy Docker.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 01/15/2021
+ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660491"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988237"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
 
@@ -18,7 +18,7 @@ Azure Container Registry zpracovává řadu běžných scénářů pro kopírov�
 
 * Import z veřejného registru
 
-* Import z jiného služby Azure Container Registry ve stejném nebo jiném předplatném Azure
+* Import z jiného služby Azure Container Registry ve stejném nebo jiném předplatném Azure nebo tenantovi
 
 * Import z privátního registru kontejnerů mimo Azure
 
@@ -28,7 +28,7 @@ Import obrázku do služby Azure Container Registry má oproti použití příka
 
 * Při importu imagí s více architekturami (například oficiálních imagí Docker) se zkopírují image pro všechny architektury a platformy, které jsou uvedené v seznamu manifestů.
 
-* Přístup ke zdrojovým a cílovým registrům nemusí používat veřejné koncové body Registry.
+* Přístup k cílovému registru nemusí používat veřejný koncový bod registru.
 
 Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste spustili Azure CLI v Azure Cloud Shell nebo lokálně (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
@@ -36,7 +36,12 @@ Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste 
 > Pokud potřebujete distribuovat identické image kontejneru napříč několika oblastmi Azure, Azure Container Registry podporuje taky [geografickou replikaci](container-registry-geo-replication.md). Když geograficky replikuje registr (vyžaduje se úroveň Premium Service), můžete zajišťovat více oblastí s identickými názvy obrázků a značek z jednoho registru.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+> [!IMPORTANT]
+> Do ledna 2021 byly zavedeny změny importu imagí mezi dvěma Registry kontejnerů Azure:
+> * Import do nebo z registru kontejneru Azure s omezeným přístupem k síti vyžaduje, aby [**přístup důvěryhodných služeb**](allow-access-trusted-services.md) k síti mohl obejít. Ve výchozím nastavení je nastavení povoleno a povoluje import. Pokud není toto nastavení povolené v nově vytvořeném registru s privátním koncovým bodem nebo s pravidly brány firewall registru, import se nezdaří. 
+> * V existujícím omezeném síťovém registru kontejneru Azure, který se používá jako zdroj nebo cíl importu, je povolení této funkce zabezpečení sítě volitelné, ale doporučené.
+
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte službu Azure Container Registry, vytvořte registr. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
@@ -63,13 +68,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-Následující příklad importuje veřejnou image z `tensorflow` úložiště v Docker Hub:
+Pokud máte [účet Docker Hub](https://www.docker.com/pricing), doporučujeme při importu image z Docker Hub použít přihlašovací údaje. Uživatelské jméno centra Docker a heslo nebo [osobní přístupový token](https://docs.docker.com/docker-hub/access-tokens/) je třeba předat parametrům `az acr import` . Následující příklad importuje veřejnou image z `tensorflow` úložiště v Docker Hub pomocí přihlašovacích údajů Docker Hub:
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source docker.io/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Importovat z Microsoft Container Registry
@@ -83,15 +90,17 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>Import z jiného služby Azure Container Registry
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>Import z Azure Container Registry ve stejném tenantovi AD
 
-Pomocí integrovaných oprávnění Azure Active Directory můžete importovat image z jiného registru kontejneru Azure.
+Pomocí integrovaných oprávnění Azure Active Directory můžete importovat image ze služby Azure Container Registry do stejného tenanta služby AD.
 
 * Vaše identita musí mít Azure Active Directory oprávnění ke čtení ze zdrojového registru (role čtenář) a pro import do cílového registru (role přispěvatele nebo [vlastní role](container-registry-roles.md#custom-roles) , která umožňuje akci importImage).
 
 * Registr se může nacházet ve stejném nebo jiném předplatném Azure ve stejném tenantovi Active Directory.
 
 * [Veřejný přístup](container-registry-access-selected-networks.md#disable-public-network-access) ke zdrojovému registru může být zakázaný. Pokud je veřejný přístup zakázaný, místo názvu přihlašovacího serveru registru zadejte zdrojový registr podle ID prostředku.
+
+* Pokud se používá zdrojový registr nebo cílový registr privátního koncového bodu nebo pravidla brány firewall registru, ujistěte se, že registr s omezeným přístupem [umožňuje důvěryhodným službám](allow-access-trusted-services.md) přístup k síti.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Import z registru ve stejném předplatném
 
@@ -136,7 +145,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>Import z registru pomocí přihlašovacích údajů instančního objektu
 
-Pokud chcete importovat z registru, ke kterému nemáte přístup pomocí oprávnění služby Active Directory, můžete použít přihlašovací údaje instančního objektu (pokud jsou k dispozici). Zadejte appID a heslo [instančního objektu služby](container-registry-auth-service-principal.md) Active Directory, který má ACRPull přístup ke zdrojovému registru. Použití instančního objektu je užitečné pro systémy sestavení a další bezobslužné systémy, které potřebují importovat image do registru.
+Pokud chcete importovat z registru, ke kterému nemáte přístup pomocí integrovaných oprávnění služby Active Directory, můžete k zdrojovému registru použít přihlašovací údaje instančního objektu (pokud jsou k dispozici). Zadejte appID a heslo [instančního objektu služby](container-registry-auth-service-principal.md) Active Directory, který má ACRPull přístup ke zdrojovému registru. Použití instančního objektu je užitečné pro systémy sestavení a další bezobslužné systémy, které potřebují importovat image do registru.
 
 ```azurecli
 az acr import \
@@ -144,12 +153,25 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
+```
+
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Import z Azure Container Registry v jiném tenantovi AD
+
+Pokud chcete importovat z služby Azure Container Registry v jiném Azure Active Directory tenantovi, zadejte zdrojový registr podle názvu přihlašovacího serveru a zadejte přihlašovací údaje pro uživatelské jméno a heslo, které umožní přístup pro přístup k registru. Můžete například použít token a heslo v [oboru úložiště](container-registry-repository-scoped-permissions.md) nebo AppID a heslo [instančního objektu služby](container-registry-auth-service-principal.md) Active Directory, který má ACRPull přístup ke zdrojovému registru. 
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Import z privátního registru kontejnerů mimo Azure
 
-Naimportujte image z privátního registru zadáním přihlašovacích údajů, které umožní přístup pro získání přístupu do registru. Načetli byste třeba obrázek z privátního registru Docker: 
+Naimportujte image z privátního registru jiného typu než Azure tím, že zadáte přihlašovací údaje, které umožní přístup k získání přístupu do registru. Načetli byste třeba obrázek z privátního registru Docker: 
 
 ```azurecli
 az acr import \

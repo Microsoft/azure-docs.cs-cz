@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, stažení aktualizace, nejnovější, dostupná, instalace
-ms.openlocfilehash: 48cdd35a80d68a7ec0d900639c0fca3a2c66787e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 591fcba4c887e298cf667c5d95c19184bc213ffe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171784"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179625"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Stažení sady SDK pro sadu Azure Kinect snímače
 
@@ -26,33 +26,38 @@ Tato stránka obsahuje odkazy ke stažení pro jednotlivé verze sady Azure Kine
 - [Záznam služby Azure Kinect](azure-kinect-recorder.md).
 - [Nástroj pro firmware Azure Kinect](azure-kinect-firmware-tool.md).
 
-## <a name="windows-download-link"></a>Odkaz na stažení Windows
+## <a name="windows-installation-instructions"></a>Pokyny k instalaci Windows
 
-[Instalační služba](https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe)  |  společnosti Microsoft [Zdrojový kód GitHubu](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
+Podrobné informace o instalaci pro nejnovější a předchozí verze sady Azure Kinect senzor SDK a firmwaru najdete [tady](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md).
+
+Zdrojový kód můžete najít [zde](https://github.com/microsoft/Azure-Kinect-Sensor-SDK).
 
 > [!NOTE]
 > Při instalaci sady SDK si zapamatujte cestu, do které jste nainstalovali. Například "C:\Program Files\Azure Kinect SDK 1,2". Nástroje, na které se odkazuje v článcích v této cestě, najdete v článku.
-
-Předchozí verze sady SDK a firmwaru pro Azure Kinect najdete na [GitHubu](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md).
 
 ## <a name="linux-installation-instructions"></a>Pokyny k instalaci pro Linux
 
 V současné době je jedinou podporovanou distribucí Ubuntu 18,04. Chcete-li požádat o podporu pro další distribuce, přečtěte si [tuto stránku](https://aka.ms/azurekinectfeedback).
 
-Nejdřív budete muset nakonfigurovat [úložiště balíčků Microsoftu](https://packages.microsoft.com/), a to podle pokynů uvedených [tady](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software).
+Nejdřív budete muset nakonfigurovat [úložiště balíčků Microsoftu](https://packages.microsoft.com/), a to podle pokynů uvedených [tady](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
-Nyní můžete nainstalovat potřebné balíčky. `k4a-tools`Balíček zahrnuje [Azure Kinect Viewer](azure-kinect-viewer.md), [zapisovač Azure Kinect](record-sensor-streams-file.md)a [nástroj Azure Kinect firmware](azure-kinect-firmware-tool.md). Pokud ho chcete nainstalovat, spusťte
+Nyní můžete nainstalovat potřebné balíčky. `k4a-tools`Balíček zahrnuje [Azure Kinect Viewer](azure-kinect-viewer.md), [zapisovač Azure Kinect](record-sensor-streams-file.md)a [nástroj Azure Kinect firmware](azure-kinect-firmware-tool.md). Chcete-li nainstalovat balíček, spusťte příkaz:
 
- `sudo apt install k4a-tools`
+`sudo apt install k4a-tools`
+ 
+Tento příkaz nainstaluje balíčky závislostí, které jsou vyžadovány pro správné fungování nástrojů, včetně nejnovější verze nástroje `libk4a<major>.<minor>` . Pro přístup k Azure Kinect DK budete muset přidat pravidla udev, aniž by se jednat o uživatele root. Pokyny najdete v tématu [instalace zařízení se systémem Linux](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md#linux-device-setup). Alternativně můžete spustit aplikace, které zařízení používají jako kořen.
 
- `libk4a<major>.<minor>-dev`Balíček obsahuje hlavičky a soubory cmake pro sestavení `libk4a` .
-`libk4a<major>.<minor>`Balíček obsahuje sdílené objekty potřebné ke spouštění spustitelných souborů, které jsou závislé na `libk4a` .
+`libk4a<major>.<minor>-dev`Balíček obsahuje hlavičky a soubory cmake pro sestavování aplikací a spustitelných souborů `libk4a` .
 
- Základní kurzy vyžadují `libk4a<major>.<minor>-dev` balíček. Pokud ho chcete nainstalovat, spusťte
+`libk4a<major>.<minor>`Balíček obsahuje sdílené objekty potřebné ke spouštění aplikací nebo spustitelných souborů, které jsou závislé na `libk4a` .
 
- `sudo apt install libk4a1.1-dev`
+Základní kurzy vyžadují `libk4a<major>.<minor>-dev` balíček. Chcete-li nainstalovat balíček, spusťte příkaz:
+
+`sudo apt install libk4a<major>.<minor>-dev` 
 
 Pokud příkaz uspěje, sada SDK je připravena k použití.
+
+Nezapomeňte nainstalovat verzi odpovídajícího nástroje `libk4a<major>.<minor>` s nástrojem `libk4a<major>.<minor>-dev` . Pokud například nainstalujete `libk4a4.1-dev` balíček, nainstalujte odpovídající `libk4a4.1` balíček, který obsahuje odpovídající verzi souborů sdílených objektů. Nejnovější verzi nástroje najdete v `libk4a` odkazech v následující části.
 
 ## <a name="change-log-and-older-versions"></a>Změnit protokol a starší verze
 

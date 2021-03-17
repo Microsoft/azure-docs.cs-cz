@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 768e79c6a2471715b336f90748ad97ecfcc4bbc2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9c1b521a0f10da77295fd2457793566d787cb2cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682165"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89570241"
 ---
-
-![overview](../../../media/quickstarts/overview-qs4.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="../../../media/quickstarts/overview-qs4.svg" alt-text="Tok signálů":::
 
 Předchozí diagram ukazuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje kameru protokolu IP, která je hostitelem serveru RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](../../../media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru detekce pohybu](../../../media-graph-concept.md#motion-detection-processor) . Zdroj RTSP pošle stejné snímky videa do uzlu [procesoru signálu signálu](../../../media-graph-concept.md#signal-gate-processor) , který zůstane uzavřený, dokud ho událost nespustí.
 

@@ -3,24 +3,24 @@ title: Vytvoření virtuálního počítače ze specializované image
 description: Vytvořte virtuální počítač pomocí specializované image v galerii sdílených imagí.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 44fbbbdb1c36f74a4131d4e5a82de6ef058381f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b728591aeb330c7b2af8ca5dc4770147761b5b0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508745"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552282"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Vytvoření virtuálního počítače pomocí specializované image 
 
 Vytvořte virtuální počítač ze specializované verze Image uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače pomocí generalizované image](vm-generalized-image-version-powershell.md).
 
-Jakmile budete mít specializovanou verzi image, můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) . 
+Jakmile budete mít specializovanou verzi image, můžete vytvořit jeden nebo více nových virtuálních počítačů pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) . 
 
 V tomto příkladu používáme ID definice image k tomu, abyste zajistili, že váš nový virtuální počítač bude používat nejnovější verzi image. Můžete také použít konkrétní verzi pomocí ID verze image pro `Set-AzVMSourceImage -Id` . Například pro použití image verze *1.0.0* typ: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 
@@ -124,7 +124,7 @@ Add-AzVMDataDisk `
 
 
 ## <a name="next-steps"></a>Další kroky
-[Azure image Builder (Preview)](./linux/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+[Azure image Builder (Preview)](./image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
 
 Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 
@@ -133,4 +133,4 @@ Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí.
 - [Vytvoření verze image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Další informace o galeriích sdílených imagí najdete v [přehledu](./windows/shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](./windows/troubleshooting-shared-images.md).
+Další informace o galeriích sdílených imagí najdete v [přehledu](./shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).

@@ -2,20 +2,20 @@
 title: Porovnání služeb založených na službě Active Directory v Azure | Microsoft Docs
 description: V tomto přehledu porovnáte různé nabídky identit pro Active Directory Domain Services, Azure Active Directory a Azure Active Directory Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489584"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174627"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -26,7 +26,7 @@ I když tři řešení pro identitu založená na službě Active Directory sdí
 * **Active Directory Domain Services (služba AD DS)** – server LDAP (Lightweight Directory Access Protocol) připravený pro podnik, který poskytuje klíčové funkce, jako je identita a ověřování, Správa počítačových objektů, zásady skupiny a vztahy důvěryhodnosti.
     * Služba AD DS je centrální komponenta v mnoha organizacích s místním IT prostředím a poskytuje základní funkce pro ověřování a správu počítačů pomocí uživatelského účtu.
     * Další informace najdete v tématu [přehled Active Directory Domain Services v dokumentaci k Windows serveru][overview-adds].
-* **Azure Active Directory (Azure AD)** – Cloudová identita a Správa mobilních zařízení, které poskytují uživatelský účet a ověřovací služby pro prostředky, jako jsou například Office 365, aplikace Azure Portal nebo SaaS.
+* **Azure Active Directory (Azure AD)** – Cloudová identita a Správa mobilních zařízení, které poskytují uživatelský účet a ověřovací služby pro prostředky, jako jsou Microsoft 365, Azure Portal nebo aplikace SaaS.
     * Azure AD se dá synchronizovat s místním služba AD DSm prostředím a poskytovat tak jedinou identitu uživatelům, kteří pracují nativně v cloudu.
     * Další informace o Azure AD najdete v tématu [co je Azure Active Directory?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure služba AD DS)** – poskytuje spravované doménové služby s podmnožinou plně kompatibilních tradičních služba AD DS funkcí, jako je připojení k doméně, zásady skupiny, LDAP a ověřování Kerberos/NTLM.
@@ -78,7 +78,7 @@ Následující tabulka popisuje některé funkce, které možná budete potřebo
 | **Zabezpečený LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **Čtení protokolu LDAP**                                     | **&#x2713;** | **&#x2713;** |
 | **Zápis LDAP**                                    | **&#x2713;** (ve spravované doméně) | **&#x2713;** |
-| **Geograficky distribuovaná nasazení**                   | **&#x2715;** | **&#x2713;** |
+| **Geograficky distribuovaná nasazení**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure služba AD DS a Azure AD
 
@@ -114,6 +114,9 @@ U zařízení připojených k Azure služba AD DS můžou aplikace používat pr
 | Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásady skupiny                                                              |
 | Sítě                      | Funguje přes Internet                             | Musí být připojen k virtuální síti, ve které je nasazena spravovaná doména, nebo s partnerským vztahem. |
 | Skvělé pro...                    | Mobilní zařízení koncových uživatelů nebo stolních počítačů                  | Serverové virtuální počítače nasazené v Azure                                              |
+
+
+Pokud je Prem služba AD DS a služba Azure AD je nakonfigurovaná pro federované ověřování pomocí služby AD FS, není v Azure DS dostupná žádná (aktuální/platná) hodnota hash hesla. Uživatelské účty Azure AD vytvořené před implementací dodaného ověřováním můžou mít starou hodnotu hash hesla, ale pravděpodobně neodpovídají hodnotě hash hesla on-Prem. Proto Azure služba AD DS nebude moci ověřit přihlašovací údaje uživatelů
 
 ## <a name="next-steps"></a>Další kroky
 

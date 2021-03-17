@@ -8,25 +8,30 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc8d211160e757c78a8e2adafad703118628e6dc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741984"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095040"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizace informací o skupinách na portálu moje aplikace
 
-Svůj pracovní nebo školní účet můžete použít s webem **Moje aplikace** na základě webu, abyste mohli zobrazit a spustit mnoho cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilech a účtech, abyste viděli informace o **skupinách** a prováděli kontroly **přístupu** pro aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
+Svůj pracovní nebo školní účet můžete použít s webovým portálem **Moje aplikace** k zobrazení a spuštění mnoha cloudových aplikací vaší organizace, k aktualizaci některých informací o profilech a účtu, k zobrazení informací o **skupinách** a k provádění kontrol **přístupu** pro aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/index.yml).
+>
+> Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-groups-information"></a>Zobrazit informace o skupinách
 
@@ -40,17 +45,19 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com .
+2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com . Pokud se přihlašujete pomocí osobního účet Microsoft, můžete se i nadále přihlašovat pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z těchto adres URL:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. Kliknutím na dlaždici **skupiny** zobrazíte informace související se skupinami.
+3. Pokud si chcete zobrazit informace související se skupinami, vyberte si nabídku **Moje aplikace** a vyberte **Moje skupiny** .
 
-    ![Stránka skupin s vlastními a skupinami členů](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. Na základě vašich oprávnění můžete použít stránku **skupiny** k těmto akcím:
+4. Na základě vašich oprávnění můžete použít stránku **Moje skupiny** k těmto akcím:
 
     - **Zkontrolujte skupiny, které vlastníte.** Zobrazte si informace o všech skupinách, které ve vaší organizaci vlastníte, ze skupin, které **vlastníte** v oblasti. Výběrem konkrétního názvu skupiny získáte další podrobnosti o skupině, včetně typu skupiny, počtu členů, zásad spojení a seznamu aktivních členů.
 
@@ -98,7 +105,7 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
 Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace jakýchkoli stávajících informací.
 
-1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce * &lt; group_name &gt; * vyberte **Upravit podrobnosti** .
+1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce *&lt; group_name &gt;* vyberte **Upravit podrobnosti** .
 
     Zobrazí se okno **Upravit podrobnosti** , ve kterém můžete aktualizovat informace, které jste přidali při počátečním vytvoření skupiny.
 
@@ -108,7 +115,7 @@ Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace 
 
 Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
-1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** na stránce * &lt; group_name &gt; * .
+1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** na stránce *&lt; group_name &gt;* .
 
     ![Přidat člena skupiny se zvýrazněným znaménkem +](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -118,7 +125,7 @@ Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
     Novému členovi se pošle pozvánka, aby bylo možné začít přistupovat k aplikacím organizace.
 
-3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat výběrem možnosti **odebrat člena** vedle názvu člena na stránce * &lt; group_name &gt; * .
+3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat výběrem možnosti **odebrat člena** vedle názvu člena na stránce *&lt; group_name &gt;* .
 
     ![Odebrání člena s zvýrazněným odkazem na odebrání](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -138,7 +145,7 @@ Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prod
 
 Jakékoli vlastní skupiny můžete kdykoli odstranit. Pokud však odstraníte skupinu omylem, budete ji muset vytvořit a znovu přidat členy.
 
-1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce * &lt; Group_name &gt; * vyberte **Odstranit skupinu** .
+1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce *&lt; Group_name &gt;* vyberte **Odstranit skupinu** .
 
     ![Stránka <Group_name> s zvýrazněným odkazem odstranit skupinu](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -168,6 +175,6 @@ Existující skupinu můžete ze stránky **skupiny** připojit nebo opustit.
 
 - [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
+- [Změna informací o profilu](./my-account-portal-settings.md).
 
 - [Proveďte vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).

@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Diagnostika problému s filtrováním provozu sítě virtuálních počítačů – Azure CLI'
 titleSuffix: Azure Network Watcher
-description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
+description: Přečtěte si, jak pomocí Azure CLI diagnostikovat potíže s filtrováním síťových přenosů virtuálních počítačů pomocí funkce ověření toku protokolu IP v Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -15,25 +15,27 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9fcc26d17b9bb1d67d85a1775c4df191fe3524f0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 536a9e304d111b16e39c3187560a7a529d05c937
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502048"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013120"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure CLI
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Po ověření verze Azure CLI spusťte příkaz `az login` a vytvořte připojení k Azure. Příkazy rozhraní příkazového řádku Azure v tomto rychlém startu jsou naformátované tak, aby běžely v prostředí bash.
+- Tento rychlý Start vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
+
+- Příkazy rozhraní příkazového řádku Azure v tomto rychlém startu jsou naformátované tak, aby běžely v prostředí bash.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -134,7 +136,7 @@ az network nic list-effective-nsg \
 
 Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound**, které v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) umožnilo v předchozím kroku odchozí přístup k adrese www.bing.com:
 
-```
+```console
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -171,11 +173,11 @@ Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound*
 },
 ```
 
-V předchozím výstupu můžete vidět, že **předponou zdrojové adresy** (destinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200 souvisí s **Internetem**. V seznamu **expandedDestinationAddressPrefix**vidíte několik předpon adres. a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho v předchozím výstupu nejsou zobrazená žádná jiná pravidla s vyšší prioritou (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odchozí komunikaci na IP adresu odepřít, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
+V předchozím výstupu můžete vidět, že **předponou zdrojové adresy** (destinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200 souvisí s **Internetem**. V seznamu **expandedDestinationAddressPrefix** vidíte několik předpon adres. a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho v předchozím výstupu nejsou zobrazená žádná jiná pravidla s vyšší prioritou (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odchozí komunikaci na IP adresu odepřít, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
 
 Když jste spustili příkaz `az network watcher test-ip-flow`, abyste v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) otestovali odchozí komunikaci na IP adresu 172.131.0.100, výstup vás informoval, že pravidlo **DefaultOutboundDenyAll** komunikaci odepřelo. Pravidlo **DefaultOutboundDenyAll** plní stejnou funkci jako pravidlo **DenyAllOutBound** uvedené v následujícím výstupu z příkazu `az network nic list-effective-nsg`:
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +210,7 @@ Pravidlo zobrazuje **hodnotu 0.0.0.0/0** jako **destinationAddressPrefix**. Prav
 
 Když jste spustili příkaz `az network watcher test-ip-flow`, abyste v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) otestovali příchozí komunikaci z IP adresy 172.131.0.100, výstup vás informoval, že pravidlo **DefaultInboundDenyAll** komunikaci odepřelo. Pravidlo **DefaultInboundDenyAll** plní stejnou funkci jako pravidlo **DenyAllInBound** uvedené v následujícím výstupu z příkazu `az network nic list-effective-nsg`:
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -251,6 +253,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili virtuální počítač a diagnostikovali jste příchozí a odchozí filtry síťového provozu. Zjistili jste, že pravidla skupiny zabezpečení sítě umožňují nebo odepírají příchozí i odchozí provoz virtuálního počítače. Zjistěte více o [pravidlech zabezpečení](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a způsobu [jejich vytvoření](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
+V tomto rychlém startu jste vytvořili virtuální počítač a diagnostikovali jste příchozí a odchozí filtry síťového provozu. Zjistili jste, že pravidla skupiny zabezpečení sítě umožňují nebo odepírají příchozí i odchozí provoz virtuálního počítače. Zjistěte více o [pravidlech zabezpečení](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a způsobu [jejich vytvoření](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 
 Přestože budete používat správné filtry síťového provozu, komunikace s virtuálním počítačem může kvůli konfigurací směrování stejně selhat. Získejte více informací o [diagnostice potíží se směrováním sítě virtuálních počítačů](diagnose-vm-network-routing-problem-cli.md) nebo si přečtěte článek o [řešení potíží s připojením](network-watcher-connectivity-cli.md), abyste mohli diagnostikovat potíže s odchozím směrováním, latencí a filtrováním provozu.

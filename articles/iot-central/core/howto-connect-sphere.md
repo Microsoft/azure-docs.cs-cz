@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715052"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123419"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Připojení zařízení Azure Sphere k aplikaci Azure IoT Central
 
@@ -20,7 +21,7 @@ ms.locfileid: "83715052"
 
 V tomto článku se dozvíte, jak připojit zařízení Azure Sphere (DevKit) k aplikaci Azure IoT Central.
 
-Azure Sphere je zabezpečená špičková aplikační platforma s integrovanými komunikačními funkcemi a funkcemi zabezpečení pro zařízení připojená k Internetu. Zahrnuje zabezpečenou, připojenou a křížený mikrokontrolerů jednotku (MCU), vlastní operační systém Linux na bázi Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení. Další informace najdete v tématu [co je Azure sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
+Azure Sphere je zabezpečená platforma pro aplikace vysoké úrovně, která má integrované komunikační a zabezpečovací funkce pro zařízení připojená k internetu. Zahrnuje zabezpečenou, připojenou a křížený mikrokontrolerů jednotku (MCU), vlastní operační systém Linux na bázi Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení. Další informace najdete v tématu [co je Azure sphere?](/azure-sphere/product-overview/what-is-azure-sphere).
 
 [Azure sphere Development Kit](https://azure.microsoft.com/services/azure-sphere/get-started/) poskytují vše, co potřebujete ke spuštění vytváření prototypů a vývoji Azure sphere aplikací. Azure IoT Central s Azure Sphere umožňuje kompletní zásobník pro řešení IoT. Azure Sphere poskytuje podporu zařízení a IoT Central jako s nulovým kódem a spravovanou aplikační platformou IoT.
 
@@ -31,13 +32,13 @@ V tomto článku s postupem:
 - Připojte Azure Sphere DevKit k Azure IoT Central.
 - Zobrazit telemetrii ze zařízení v IoT Central.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto článku budete potřebovat následující:
 
 - Aplikace Azure IoT Central.
 - Visual Studio 2019, verze 16,4 nebo novější.
-- [Sada Azure sphere MT3620 Development Kit z sada Seeed studia](https://docs.microsoft.com/azure-sphere/hardware/mt3620-reference-board-design).
+- [Sada Azure sphere MT3620 Development Kit z sada Seeed studia](/azure-sphere/hardware/mt3620-reference-board-design).
 
 > [!NOTE]
 > Pokud nemáte fyzické zařízení, pak po prvním kroku přeskočíte na poslední oddíl a vyzkoušíte simulované zařízení.
@@ -66,7 +67,7 @@ Pokud chcete, aby se ukázka připojovala k IoT Central, musíte [nakonfigurovat
 
 Když je zařízení připojené k IoT Central, můžete zobrazit telemetrii na řídicím panelu.
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Řídicí panel pro Azure Sphere DevKit":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Šablona zařízení pro Azure Sphere DevKit":::
 
 ## <a name="create-a-simulated-device"></a>Vytvoření simulovaného zařízení
 

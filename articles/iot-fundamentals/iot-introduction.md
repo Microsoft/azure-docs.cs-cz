@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81729003"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453024"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet věcí (IoT)?
 
@@ -34,7 +34,7 @@ Existuje široká škála zařízení, která jsou k dispozici od různých výr
 
 Microsoft poskytuje sady [SDK](../iot-hub/iot-hub-devguide-sdks.md) open source, které můžete použít k sestavení aplikací, které běží na vašich zařízeních. Tyto sady [SDK zjednodušují a urychlují](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) vývoj vašich řešení IoT.
 
-## <a name="communication"></a>Communication
+## <a name="communication"></a>Komunikace
 
 Zařízení IoT obvykle odesílají telemetrii ze senzorů do back-endové služby v cloudu. Je ale možné použít i jiné typy komunikace, jako je například back-end služba odesílající příkazy do vašich zařízení. Následuje několik příkladů komunikace typu zařízení-Cloud a Cloud-zařízení:
 
@@ -74,6 +74,8 @@ Například v řešení vzdáleného monitorování pro čerpací stanice v clou
 
 Příklady použití Azure IoT v reálném čase najdete v tématu [technické studie Microsoftu pro IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
+Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](/azure/architecture/reference-architectures/iot).
+
 ## <a name="next-steps"></a>Další kroky
 
 V případě některých skutečných obchodních případů a používané architektury si přečtěte [Microsoft Azure technické případové studie IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured).
@@ -81,5 +83,3 @@ V případě některých skutečných obchodních případů a používané arch
 U některých ukázkových projektů, které si můžete vyzkoušet s IoT DevKit, přečtěte si [katalog projektu IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/). 
 
 Komplexnější vysvětlení různých služeb a způsobu jejich použití najdete v tématu [služby a technologie Azure IoT](iot-services-and-technologies.md).
-
-Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).

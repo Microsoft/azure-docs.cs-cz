@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690372"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582674"
 ---
 # <a name="monitor-server-metrics"></a>Monitorování metrik serveru
 
-Analysis Services poskytuje metriky v Azure Průzkumník metrik, bezplatný nástroj na portálu, který vám umožní monitorovat výkon a stav serverů. Například monitorujte paměť a využití procesoru, počet připojení klientů a spotřebu prostředků dotazů. Analysis Services používá stejné rozhraní monitorování jako většina ostatních služeb Azure. Další informace najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md).
+Analysis Services poskytuje metriky v Azure Průzkumník metrik, bezplatný nástroj na portálu, který vám umožní monitorovat výkon a stav serverů. Například monitorujte paměť a využití procesoru, počet připojení klientů a spotřebu prostředků dotazů. Analysis Services používá stejné rozhraní monitorování jako většina ostatních služeb Azure. Další informace najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/essentials/metrics-getting-started.md).
 
 Chcete-li provádět podrobnější diagnostiku, sledovat výkon a identifikovat trendy v rámci několika prostředků služby v rámci skupiny prostředků nebo předplatného, použijte [Azure monitor](../azure-monitor/overview.md). Azure Monitor (služba) může mít za následek Fakturovatelné služby.
 
@@ -27,7 +27,7 @@ Chcete-li provádět podrobnější diagnostiku, sledovat výkon a identifikovat
 
     ![Monitorování na webu Azure Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. V části **metrika**vyberte metriky, které chcete zahrnout do grafu. 
+2. V části **metrika** vyberte metriky, které chcete zahrnout do grafu. 
 
     ![Monitorovat graf](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -37,7 +37,7 @@ Chcete-li provádět podrobnější diagnostiku, sledovat výkon a identifikovat
 
 Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář monitorování nejvhodnější. Ve stejném grafu se dají zobrazit jenom metriky stejné jednotky.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|
+|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Délka fronty úloh fondu příkazů|Počet|Průměr|Počet úloh ve frontě fondu vláken příkazů|
 |CurrentConnections|Připojení: aktuální připojení|Počet|Průměr|Aktuální počet navázaných připojení klientů.|
@@ -89,5 +89,5 @@ Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář m
 
 ## <a name="next-steps"></a>Další kroky
 [Přehled Azure Monitor](../azure-monitor/overview.md)      
-[Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md)      
+[Začínáme s Azure Průzkumník metrik](../azure-monitor/essentials/metrics-getting-started.md)      
 [Metriky v Azure Monitor REST API](/rest/api/monitor/metrics)

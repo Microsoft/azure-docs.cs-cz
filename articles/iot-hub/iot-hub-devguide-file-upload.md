@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323022"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90019525"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů s využitím služby IoT Hub
 
@@ -28,6 +28,8 @@ Místo toho, aby se zprávy od sebe IoT Hub, IoT Hub místo toho slouží jako d
 Před nahráním souboru, který IoT Hub ze zařízení, je nutné nakonfigurovat své centrum tak, že k němu [přidružíte Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) účet.
 
 Vaše zařízení pak může [inicializovat nahrávání](iot-hub-devguide-file-upload.md#initialize-a-file-upload) a pak [informovat IoT Hub](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) po dokončení nahrávání. Pokud je v případě, že zařízení upozorňuje IoT Hub, že se nahrávání dokončí, může služba vygenerovat [zprávu s oznámením](iot-hub-devguide-file-upload.md#file-upload-notifications).
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>Kdy je použít
 

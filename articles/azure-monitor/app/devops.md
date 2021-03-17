@@ -3,12 +3,12 @@ title: Sledování výkonu webové aplikace – Azure Application Insights
 description: Jak Application Insights zapadá do cyklu devOps
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324484"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579558"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -110,7 +110,7 @@ Mapa aplikace automaticky zjišťuje topologii vaší aplikace, vyhledává info
 ![Mapa aplikace](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Analýzy Application Insights
-Pomocí [analýzy](../log-query/log-query-overview.md)můžete psát libovolné dotazy v výkonném jazyce podobném jazyku SQL.  Diagnostikování celého zásobníku aplikací je jednoduché, protože se připojí různé perspektivy a můžete klást správné otázky ke korelaci výkonu služby s obchodními metrikami a zákaznickým prostředím. 
+Pomocí [analýzy](../logs/log-query-overview.md)můžete psát libovolné dotazy v výkonném jazyce podobném jazyku SQL.  Diagnostikování celého zásobníku aplikací je jednoduché, protože se připojí různé perspektivy a můžete klást správné otázky ke korelaci výkonu služby s obchodními metrikami a zákaznickým prostředím. 
 
 Můžete zadat dotaz na veškerou instanci telemetrie a nezpracovaná data metrik uložená na portálu. Tento jazyk zahrnuje filtry, spojení, agregace a další operace. Můžete vypočítat pole a provádět statistickou analýzu. K dispozici jsou tabulkové i grafické vizualizace.
 

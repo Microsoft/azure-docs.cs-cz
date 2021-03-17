@@ -3,18 +3,20 @@ title: DateTimeToTicks v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimeToTicks funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ab81e2b6ef19e7a5dacb80186c5364a5848077f6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605145"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336329"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Převede zadaný typ DateTime na takty. Jedna značka představuje 100 nanosekund nebo 1 10 – millionth sekundy. 
 
@@ -73,4 +75,4 @@ SELECT DateTimeToTicks("2020-01-02T03:04:05Z") AS Ticks
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -1,14 +1,16 @@
 ---
 title: Migrace na verzi V3 – entita strojového učení
 description: Vytváření obsahu V3 poskytuje jeden nový typ entity, entitu strojového učení, společně s možností přidávat relace do entity strojového učení a dalších entit nebo funkcí aplikace.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684591"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324684"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrace na entitu pro vytváření obsahu V3
 
@@ -106,7 +108,7 @@ Následující tabulka ukazuje migraci:
 
 |Modely v2|Modely V3|
 |--|--|
-|Nadřazená entita součásti s názvem`Order`|Nadřazená entita-Machine-Learning s názvem`Order`|
+|Nadřazená entita součásti s názvem `Order`|Nadřazená entita-Machine-Learning s názvem `Order`|
 |DatetimeV2 sestavené jako podřízené|* Migruje předem vytvořenou entitu na novou aplikaci.<br>* Do nadřazeného objektu přidejte požadovanou funkci pro předem sestavené datetimeV2.|
 |Entita podřízeného seznamu pro toppings|* Migrujte entitu seznamu do nové aplikace.<br>* Potom pro entitu seznam přidejte požadovanou funkci pro nadřazenou položku.|
 
@@ -132,7 +134,7 @@ Následující tabulka ukazuje migraci:
 
 |Modely v2|Modely V3|
 |--|--|
-|Nadřazená entita součásti s názvem`Order`|Nadřazená entita-Machine-Learning s názvem`Order`|
+|Nadřazená entita součásti s názvem `Order`|Nadřazená entita-Machine-Learning s názvem `Order`|
 |Podřízená entita s původní a konečnou pizzaou Topping|* Do `Order` každého Topping přidejte roli.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>Omezení změn rozhraní API nahrazené požadovanou funkcí

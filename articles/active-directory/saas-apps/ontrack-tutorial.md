@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8470455f3d72ea101336e8368b420a9340aac317
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544056"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Kurz: Azure Active Directory integrace s nástrojem OnTrack
 
@@ -27,10 +27,10 @@ Integrování nástroje OnTrack s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k programu OnTrack (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s nástrojem OnTrack potřebujete následující položky:
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí nástroje OnTrack, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování pro Ontrack](#configure-ontrack-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurujte jednotné přihlašování Ontrack](#configure-ontrack-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte testovacího uživatele Ontrack](#create-ontrack-test-user)** , abyste měli protějšek Britta Simon v programu Ontrack, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,11 +93,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML proveďte následující kroky:
 
     ![Informace o jednotném přihlašování domény a adresy URL pro společnost OnTrack](common/idp-intiated.png)
 
@@ -118,13 +118,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
 5. Aplikace OnTrack očekává kontrolní výrazy SAML v konkrétním formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele s ikonou "Upravit" vybranou v pravém horním rohu.](common/edit-attribute.png)
 
 6. Kromě výše očekává aplikace OnTrack několik atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
     | Name | Zdrojový atribut|
     | -------------- | ----------------|    
-    | Role uživatele      | "42F432" |
+    | User-Role      | "42F432" |
     | Hyperion-Code  | "12345" |
 
     > [!NOTE]
@@ -132,7 +132,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno deklarace identity uživatele se zvolenými akcemi přidat nové deklarace identity a uložit.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -148,7 +148,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     například Klikněte na **Uložit**.
 
-7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+7. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -162,7 +162,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-ontrack-single-sign-on"></a>Konfigurace jednotného přihlašování OnTrack
+### <a name="configure-ontrack-single-sign-on"></a>Konfigurovat OnTrack Single Sign-On
 
 Ke konfiguraci jednotného přihlašování na straně **Ontrack** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory společnosti Ontrack](mailto:CustomerService@insigniagroup.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -189,7 +189,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -197,7 +197,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte položku **Ontrack**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte položku **Ontrack**.
 
@@ -225,13 +225,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v OnTrack. Pokud c
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici OnTrack na přístupovém panelu byste měli být automaticky přihlášení do nástroje OnTrack, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici OnTrack na přístupovém panelu byste měli být automaticky přihlášení do nástroje OnTrack, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

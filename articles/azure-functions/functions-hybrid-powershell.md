@@ -5,12 +5,12 @@ author: eamono
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
-ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e01ffd8e17fda9113c7ec0fdb2c7f436b39c810
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122112"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936902"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Správa hybridních prostředí pomocí prostředí PowerShell v Azure Functions a App Service Hybrid Connections
 
@@ -58,21 +58,21 @@ Funkce App Service Hybrid Connections je dostupná jenom v cenových plánech Ba
 
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
-    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
+    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace funkcí vytvořena. |
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
-    | **Název Function App** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `-` .  |
-    |**Publikování**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker |
+    | **Název aplikace funkcí** | Globálně jedinečný název | Název identifikující novou aplikaci funkcí. Platné znaky jsou `a-z` (bez rozlišování malých a velkých písmen), `0-9` a `-`.  |
+    |**Publikovat**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte PowerShell Core. |
     |**Verze**| Číslo verze | Vyberte verzi nainstalovaného modulu runtime.  |
-    |**Věřitel**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
+    |**Oblast**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž nebo poblíž dalších služeb, ke kterým máte přístup. |
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-basics.png" alt-text="Vytvořte základní informace o Function App." border="true":::
 
-1. Vyberte **Další: hostování**. Na stránce **hostování** zadejte následující nastavení.
+1. Vyberte **Další: Hostování**. Na stránce **hostování** zadejte následující nastavení.
 
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
-    | **[Účet úložiště](../storage/common/storage-account-create.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Účet úložiště](../storage/common/storage-account-create.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../azure-functions/storage-considerations.md#storage-account-requirements). |
     |**Operační systém**| Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
     | **[Typ plánu](../azure-functions/functions-scale.md)** | **Plán služby App Service** | Vyberte **plán služby App Service**. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../azure-functions/functions-scale.md).  |
 
@@ -82,7 +82,7 @@ Funkce App Service Hybrid Connections je dostupná jenom v cenových plánech Ba
 
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Výchozí | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení nebo výběrem možnosti **vytvořit nový**můžete změnit název Application Insights nebo zvolit jinou oblast v [geografickém umístění Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete ukládat data. |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Výchozí | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení nebo výběrem možnosti **vytvořit nový** můžete změnit název Application Insights nebo zvolit jinou oblast v [geografickém umístění Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete ukládat data. |
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Vytvořte aplikaci Function App – monitorování." border="true":::
 
@@ -157,14 +157,14 @@ Hybridní připojení jsou nakonfigurovaná v části síť aplikace Function Ap
 
     :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Nakonfigurujte heslo pro účet správce." border="true":::
 
-1. Pojmenujte nastavení **ContosoUserPassword**a zadejte heslo. Vyberte **OK**.
+1. Pojmenujte nastavení **ContosoUserPassword** a zadejte heslo. Vyberte **OK**.
 1. Vyberte **Uložit** a uložte heslo do aplikace Function.
 
     :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Heslo pro účet správce uložte." border="true":::
 
 ## <a name="create-a-function-http-trigger"></a>Vytvoření triggeru funkce HTTP
 
-1. Ve vaší aplikaci Function App vyberte **funkce**a pak vyberte **+ Přidat**.
+1. Ve vaší aplikaci Function App vyberte **funkce** a pak vyberte **+ Přidat**.
 
     :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="Vytvoří novou aktivační proceduru protokolu HTTP." border="true":::
 
@@ -217,7 +217,7 @@ Hybridní připojení jsou nakonfigurovaná v části síť aplikace Function Ap
 
     :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Změňte kód PowerShellu a uložte funkci triggeru HTTP." border="true":::
 
- 1. Vyberte **test**a potom vyberte **Spustit** pro otestování funkce. Zkontrolujte protokoly a ověřte, zda byl test úspěšný.
+ 1. Vyberte **test** a potom vyberte **Spustit** pro otestování funkce. Zkontrolujte protokoly a ověřte, zda byl test úspěšný.
 
      :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="Test funkce triggeru HTTP" border="true":::
 

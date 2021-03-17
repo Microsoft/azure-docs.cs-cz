@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f93ec39e7a2e3b5829c0d6205404c6c5c4af6189
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848952"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074314"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 [Rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [dotazy MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 

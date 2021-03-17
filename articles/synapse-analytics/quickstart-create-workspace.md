@@ -2,84 +2,73 @@
 title: 'Rychlý Start: vytvoření pracovního prostoru synapse'
 description: Pomocí kroků v této příručce vytvořte pracovní prostor synapse.
 services: synapse-analytics
-author: pimorano
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: pimorano
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.subservice: workspace
+ms.date: 09/03/2020
+ms.author: saveenr
+ms.reviewer: jrasnick
+ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693624"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
-
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
+## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
 
-## <a name="prerequisites"></a>Předpoklady
+1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
+1. Ve výsledcích hledání v části **služby** vyberte **Azure synapse Analytics**.
+1. Vyberte **Přidat** a vytvořte pracovní prostor.
+1. Na kartě **základy** dejte pracovnímu prostoru jedinečný název. V tomto dokumentu použijeme **mysworkspace** .
+1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvoření nového. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
+1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
+    1. V části **vybrat data Lake Storage Gen 2** klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
+    1. V části **vybrat data Lake Storage obecné 2** klikněte na **systém souborů** a pojmenujte ho **Uživatelé**.
+1. MOŽNOST 2 viz **Příprava pokynů účtu úložiště** v dolní části tohoto dokumentu.
+1. Váš pracovní prostor Azure synapse použije tento účet úložiště jako primární účet úložiště a kontejner pro uložení dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
+1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
-- [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> [!NOTE]
+> Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jiné akce, můžete ztratit přístup k artefaktům v tomto pracovním prostoru.
+> V současné době nemůžete v rámci předplatného [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview) vytvořit pracovní prostor analýzy synapse.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="open-synapse-studio"></a>Otevřít synapse Studio
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevřít synapse Studio:
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Vytvoření pracovního prostoru Azure synapse pomocí Azure Portal
+* Otevřete pracovní prostor synapse ve [Azure Portal](https://portal.azure.com). V horní části **přehledu** vyberte **Spustit synapse Studio**.
+* Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
 
-1. V podokně hledání Microsoft Azure zadejte **synapse Workspace** a pak vyberte tuto službu.
-![Azure Portal panel hledání pomocí pracovních prostorů Azure synapse, které jsou zadané v.](media/quickstart-create-synapse-workspace/workspace-search.png)
-2. Na stránce **pracovní prostory synapse** klikněte na **+ Přidat**.
-![Příkaz pro vytvoření nového pracovního prostoru Azure synapse je zvýrazněný.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
-3. Do formuláře **pracovního prostoru Azure synapse** zadejte následující informace:
+## <a name="prepare-an-existing-storage-account-for-use-with-azure-synapse-analytics"></a>Příprava existujícího účtu úložiště pro použití s Azure synapse Analytics
 
-    | Nastavení | Navrhovaná hodnota | Popis |
-    | :------ | :-------------- | :---------- |
-    | **Předplatné** | *Vaše předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-    | **Skupina prostředků** | *Libovolná skupina prostředků* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
-    | **Název pracovního prostoru** | mysampleworkspace | Určuje název pracovního prostoru, který se bude používat taky pro koncové body připojení.|
-    | **Oblast** | USA – východ 2 | Určuje umístění pracovního prostoru.|
-    | **Data Lake Storage Gen2** | Zohledňují`storage account name` </br> Systém souborů:`root file system to use` | Určuje název ADLS Gen2 účtu úložiště, který se má použít jako primární úložiště, a systém souborů, který se má použít.|
-    ||||
+1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Přejít na existující účet úložiště ADLSGEN2
+1. V levém podokně vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny:
+    * Přiřaďte roli **vlastníka** sami sobě.
+    * Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** .
+1. V levém podokně vyberte **kontejnery** a vytvořte kontejner.
+1. Kontejneru můžete dát libovolný název. V tomto dokumentu budeme pojmenovat **uživatele** kontejneru.
+1. Přijměte výchozí nastavení **úroveň veřejného přístupu** a pak vyberte **vytvořit**.
 
-    ![Karta základy zřizování pracovního prostoru](media/quickstart-create-synapse-workspace/create-workspace-03.png)
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>Konfigurace přístupu k účtu úložiště z vašeho pracovního prostoru
 
-    Účet úložiště se dá vybrat z těchto:
-    - Seznam ADLS Gen2 účtů dostupných v předplatném
-    - Ruční zadání pomocí názvu účtu
+Spravované identity pro váš pracovní prostor Azure synapse už můžou mít přístup k účtu úložiště. Pomocí těchto kroků se ujistěte, že:
 
-    > [!IMPORTANT]
-    > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, je navíc nutné povolit **hierarchický obor názvů** při vytváření účtu úložiště.
-    >
-    > Pod poli ADLS Gen2 výběru se zobrazí Poznámka s informací o tom, že se spravované identitě pracovního prostoru přiřadí role **Přispěvatel dat objektů BLOB úložiště** ve vybraném systému souborů Data Lake Storage Gen2 udělení úplného přístupu.
+1. Otevřete [Azure Portal](https://portal.azure.com) a primární účet úložiště, který jste zvolili pro váš pracovní prostor.
+1. V levém podokně vyberte **řízení přístupu (IAM)** .
+1. Přiřaďte následující role nebo se ujistěte, že jsou již přiřazeny. Pro identitu pracovního prostoru používáme stejný název a název pracovního prostoru.
+    * Pro roli **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště přiřaďte **MyWorkspace** jako identitu pracovního prostoru.
+    * Přiřaďte **MyWorkspace** jako název pracovního prostoru.
 
-4. Volitelné Změňte kteroukoli kartu **Předvolby zabezpečení a sítě** :
-5. Volitelné Přidejte libovolné značky na kartě **značky** .
-6. Na kartě **Souhrn** se spustí potřebná ověření, aby se zajistilo, že pracovní prostor bude možné úspěšně vytvořit. Po úspěšném ověření stiskněte tlačítko **vytvořit** ![ tok zřizování pracovního prostoru – karta potvrzení.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. Po úspěšném dokončení procesu zřizování prostředků se v seznamu pracovních prostorů synapse zobrazí položka vytvořeného pracovního prostoru. ![Seznam pracovních prostorů synapse zobrazující nově zřízený pracovní prostor.](media/quickstart-create-synapse-workspace/create-workspace-07.png)
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud chcete odstranit pracovní prostor Azure synapse, postupujte podle následujících kroků.
-> [!WARNING]
-> Při odstranění pracovního prostoru Azure synapse se odstraní analytické moduly a data uložená v databázi obsažených fondů SQL a metadat pracovního prostoru. Již nebude možné se připojit k koncovým bodům SQL, Apache Spark koncovým bodům. Všechny artefakty kódu se odstraní (dotazy, poznámkové bloky, definice úloh a kanály).
->
-> Odstranění pracovního prostoru nebude **mít vliv** na data v Data Lake Store Gen2, která jsou propojená s pracovním prostorem.
-
-Pokud chcete odstranit pracovní prostor Azure synapse, proveďte následující kroky:
-
-1. Přejděte do pracovního prostoru Azure synapse a odstraňte ho.
-1. Na panelu příkazů stiskněte klávesu **Delete** .
- ![Přehled pracovního prostoru Azure synapse – zvýrazní se příkaz pro odstranění.](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. Potvrďte odstranění a stiskněte tlačítko **Odstranit** .
- ![Azure synapse Workspace – přehled – dialogové okno pro potvrzení odstranění pracovního prostoru](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. Po úspěšném dokončení procesu již nebude pracovní prostor Azure synapse uveden v seznamu pracovních prostorů.
+1. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku můžete [vytvořit fondy SQL](quickstart-create-sql-pool-studio.md) nebo [vytvořit fondy Apache Spark](quickstart-create-apache-spark-pool-studio.md) , abyste mohli začít analyzovat a prozkoumat data.
+* [Vytvoření vyhrazeného fondu SQL](quickstart-create-sql-pool-studio.md) 
+* [Vytvoření fondu Apache Spark bez serveru](quickstart-create-apache-spark-pool-portal.md)
+* [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)

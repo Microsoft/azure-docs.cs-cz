@@ -1,195 +1,93 @@
 ---
-title: Řešení potíží s nasazením Docker
+title: Řešení potíží s nasazením vzdáleného modelu
 titleSuffix: Azure Machine Learning
-description: Naučte se řešit, řešit a řešit běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances pomocí Azure Machine Learning.
+description: Naučte se řešit, řešit a řešit některé běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: clauren42
-ms.author: clauren
-ms.reviewer: jmartens
-ms.date: 08/06/2020
-ms.topic: conceptual
-ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+author: gvashishtha
+ms.author: gopalv
+ms.date: 11/25/2020
+ms.topic: troubleshooting
+ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
+ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904373"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518259"
 ---
-# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Řešení potíží s nasazením v Docker modelů pomocí služby Azure Kubernetes a Azure Container Instances 
+# <a name="troubleshooting-remote-model-deployment"></a>Řešení potíží s nasazením vzdáleného modelu 
 
-Přečtěte si, jak řešit a řešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
+Přečtěte si, jak řešit a řešit běžné chyby, ke kterým může dojít při nasazování modelu do Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
+
+> [!NOTE]
+> Pokud model nasazujete do služby Azure Kubernetes Service (AKS), doporučujeme vám povolit [Azure monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) pro tento cluster. Pomůže vám to pochopit celkový stav clusteru a využití prostředků. Můžete taky najít užitečné následující zdroje:
+>
+> * [Kontrolovat Resource Health události, které mají vliv na váš cluster AKS](../aks/aks-resource-health.md)
+> * [Diagnostika služby Azure Kubernetes](../aks/concepts-diagnostics.md)
+>
+> Při pokusu o nasazení modelu do poškozeného nebo přetíženého clusteru se očekává, že dojde k problémům. Pokud potřebujete pomoc s řešením problémů s clustery AKS, obraťte se na podporu AKS.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
-* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* **Předplatné Azure** Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
-* Chcete-li ladit místně, je nutné mít v místním systému funkční instalaci Docker.
-
-    K ověření instalace Docker použijte příkaz `docker run hello-world` z terminálu nebo příkazového řádku. Informace o instalaci Docker nebo odstraňování potíží s chybami Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Postup pro nasazení Docker modelů strojového učení
 
-Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
+Při nasazení modelu do nemístního výpočetního prostředí v Azure Machine Learning dojde k následujícím akcím:
 
-Doporučený přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](how-to-use-environments.md) jako vstupní parametr. V tomto případě služba vytvoří během fáze nasazení základní image Docker a všechny požadované modely připojí v jednom volání. Základní úlohy nasazení:
+1. Souboru Dockerfile, který jste zadali v objektu prostředí v InferenceConfig, se odesílají do cloudu spolu s obsahem zdrojového adresáře.
+1. Pokud v registru kontejneru není k dispozici dříve vytvořená image, vytvoří se nová image Docker v cloudu a uloží se do výchozího registru kontejnerů v pracovním prostoru.
+1. Image Docker z vašeho registru kontejneru se stáhne do vašeho cíle výpočetní služby.
+1. Výchozí úložiště objektů BLOB v pracovním prostoru je připojené k vašemu cíli výpočtů a poskytuje přístup k registrovaným modelům.
+1. Váš webový server se inicializuje spuštěním funkce skriptu vašeho vstupu. `init()`
+1. Když nasazený model obdrží požadavek, `run()` funkce zpracuje tento požadavek.
 
-1. Zaregistrujte model v registru modelu pracovního prostoru.
+Hlavním rozdílem při použití místního nasazení je, že image kontejneru je postavená na místním počítači, což je důvod, proč je nutné mít k místnímu nasazení nainstalovaný Docker.
 
-2. Definovat odvozenou konfiguraci:
-    1. Vytvořte objekt [prostředí](how-to-use-environments.md) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
-    2. Vytvořte odvozenou konfiguraci (objekt InferenceConfig) na základě prostředí a hodnoticího skriptu.
+Pochopení těchto kroků na vysoké úrovni by vám mělo pomáhat pochopit, kde dochází k chybám.
 
-3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
+## <a name="get-deployment-logs"></a>Získat protokoly nasazení
 
-Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-model-management-and-deployment.md) .
+Prvním krokem při ladění chyb je získání protokolů nasazení. Nejdřív se připojte k pracovnímu prostoru podle [pokynů uvedených tady](how-to-deploy-and-where.md#connect-to-your-workspace) .
 
-## <a name="before-you-begin"></a>Než začnete
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Pokud narazíte na problém, je první věc, kterou je potřeba udělat, rozdělte úlohu nasazení (popsanou výše) do jednotlivých kroků k izolaci problému.
+Chcete-li získat protokoly z nasazené webové služby, udělejte toto:
 
-Za předpokladu, že používáte novou/doporučenou metodu nasazení prostřednictvím rozhraní API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) s objektem [prostředí](how-to-use-environments.md) jako vstupní parametr, váš kód může být rozdělen na tři hlavní kroky:
+```bash
+az ml service get-logs --verbose --workspace-name <my workspace name> --name <service name>
+```
 
-1. Zaregistrujte model. Zde je ukázkový kód:
-
-    ```python
-    from azureml.core.model import Model
-
-
-    # register a model out of a run record
-    model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
-
-    # or, you can register a file or a folder of files as a model
-    model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
-    ```
-
-2. Definovat odvozenou konfiguraci pro nasazení:
-
-    ```python
-    from azureml.core.model import InferenceConfig
-    from azureml.core.environment import Environment
+# <a name="python"></a>[Python](#tab/python)
 
 
-    # create inference configuration based on the requirements defined in the YAML
-    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-    ```
+Za předpokladu, že máte objekt typu s `azureml.core.Workspace` názvem `ws` , můžete provést následující:
 
-3. Nasaďte model pomocí konfigurace odvození vytvořeného v předchozím kroku:
+```python
+print(ws.webservices)
 
-    ```python
-    from azureml.core.webservice import AciWebservice
+# Choose the webservice you are interested in
 
+from azureml.core import Webservice
 
-    # deploy the model
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
-    aci_service = Model.deploy(workspace=ws,
-                           name='my-service',
-                           models=[model],
-                           inference_config=inference_config,
-                           deployment_config=aci_config)
-    aci_service.wait_for_deployment(show_output=True)
-    ```
+service = Webservice(ws, '<insert name of webservice>')
+print(service.get_logs())
+```
 
-Po rozlomení procesu nasazení na jednotlivé úlohy si můžeme prohlédnout některé z nejběžnějších chyb.
+---
 
 ## <a name="debug-locally"></a>Místní ladění
 
-Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste ho nasadit jako místní webovou službu. Použití místní webové služby usnadňuje řešení problémů. Image Docker obsahující model se stáhne a spustí v místním systému.
+Pokud máte problémy při nasazování modelu do ACI nebo AKS, nasaďte ho jako místní webovou službu. Použití místní webové služby usnadňuje řešení potíží. Místní řešení potíží s nasazením najdete v [článku věnovaném řešení potíží s místním prostředím](./how-to-troubleshoot-deployment-local.md).
 
-Pokud chcete prozkoumat příklad spustitelný, najdete v úložišti [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) ukázkový [Poznámkový blok místního nasazení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) .
-
-> [!WARNING]
-> Nasazení místních webových služeb se v produkčních scénářích nepodporují.
-
-Chcete-li nasadit místně, upravte kód tak, aby se použil `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v proměnné modelu) jako místní webovou službu:
-
-```python
-from azureml.core.environment import Environment
-from azureml.core.model import InferenceConfig, Model
-from azureml.core.webservice import LocalWebservice
-
-
-# Create inference configuration based on the environment definition and the entry script
-myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-# Create a local deployment, using port 8890 for the web service endpoint
-deployment_config = LocalWebservice.deploy_configuration(port=8890)
-# Deploy the service
-service = Model.deploy(
-    ws, "mymodel", [model], inference_config, deployment_config)
-# Wait for the deployment to complete
-service.wait_for_deployment(True)
-# Display the port that the web service is available on
-print(service.port)
-```
-
-Pokud definujete vlastní conda Specification YAML, je nutné jako závislost PIP vytvořit seznam AzureML-Defaults s Version >= 1.0.45. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby.
-
-V tuto chvíli můžete pracovat se službou jako normální. Například následující kód ukazuje odeslání dat do služby:
-
-```python
-import json
-
-test_sample = json.dumps({'data': [
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-]})
-
-test_sample = bytes(test_sample, encoding='utf8')
-
-prediction = service.run(input_data=test_sample)
-print(prediction)
-```
-
-Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md). 
-
-### <a name="update-the-service"></a>Aktualizace služby
-
-Během místního testování možná budete muset soubor aktualizovat, `score.py` aby se přidalo protokolování nebo pokus o vyřešení všech zjištěných problémů. Chcete-li znovu načíst změny v `score.py` souboru, použijte `reload()` . Například následující kód znovu načte skript pro službu a poté do něj pošle data. Data jsou hodnocena pomocí aktualizovaného `score.py` souboru:
-
-> [!IMPORTANT]
-> `reload`Metoda je k dispozici pouze pro místní nasazení. Informace o aktualizaci nasazení na jiný cíl výpočetní služby najdete v tématu [Postup aktualizace vaší webové služby](how-to-deploy-update-web-service.md).
-
-```python
-service.reload()
-print(service.run(input_data=test_sample))
-```
-
-> [!NOTE]
-> Skript se znovu načte z umístění zadaného `InferenceConfig` objektem, který služba používá.
-
-Chcete-li změnit model, závislosti conda nebo konfiguraci nasazení, použijte [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-). Následující příklad aktualizuje model používaný službou:
-
-```python
-service.update([different_model], inference_config, deployment_config)
-```
-
-### <a name="delete-the-service"></a>Odstranit službu
-
-Pokud chcete službu odstranit, použijte [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--).
-
-### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a>Kontrola protokolu Docker
-
-Podrobnou zprávu protokolu modulu Docker můžete vytisknout z objektu služby. Můžete zobrazit protokol pro ACI, AKS a místní nasazení. Následující příklad ukazuje, jak tisknout protokoly.
-
-```python
-# if you already have the service object handy
-print(service.get_logs())
-
-# if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices['mysvc'].get_logs())
-```
-Pokud se `Booting worker with pid: <pid>` v protokolech zobrazuje řádek vícekrát, znamená to, že ke spuštění pracovního procesu není dost paměti.
-Chybu můžete vyřešit tak, že zvýšíte hodnotu `memory_gb` v`deployment_config`
- 
 ## <a name="container-cannot-be-scheduled"></a>Kontejner nelze naplánovat.
 
-Když nasadíte službu do cíle výpočetního cíle služby Azure Kubernetes, Azure Machine Learning se pokusí naplánovat službu s požadovaným množstvím prostředků. Pokud po 5 minutách nejsou v clusteru k dispozici žádné uzly s příslušným množstvím dostupných prostředků, nasazení se nezdaří a zobrazí se zpráva `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Tuto chybu můžete vyřešit přidáním dalších uzlů, změnou SKU vašich uzlů nebo změnou požadavků na prostředky vaší služby. 
+Při nasazování služby do cílového výpočetního objektu Azure Kubernetes Service se služba Azure Machine Learning pokusí pro službu naplánovat požadované množství prostředků. Pokud v clusteru nejsou k dispozici žádné uzly s odpovídajícím množstvím prostředků po 5 minutách, nasazení se nezdaří. Zpráva o selhání je `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Tuto chybu můžete vyřešit přidáním více uzlů, změnou SKU vašich uzlů nebo změnou požadavků na prostředky vaší služby. 
 
 Chybová zpráva obvykle indikuje, který prostředek potřebujete více, pokud se zobrazí chybová zpráva oznamující `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` , že služba vyžaduje GPU a v clusteru jsou tři uzly, které nemají k dispozici GPU. To se dá řešit přidáním dalších uzlů, pokud používáte SKU GPU, přechodem na SKU s povoleným GPU, pokud nechcete nebo neměníte prostředí, aby nevyžadovalo GPU.  
 
@@ -197,11 +95,11 @@ Chybová zpráva obvykle indikuje, který prostředek potřebujete více, pokud 
 
 Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí konfigurace nasazení. V rámci procesu spuštění kontejneru `init()` je funkce ve vašem skriptu bodování vyvolána systémem. Pokud ve funkci nejsou zachycené výjimky `init()` , může se zobrazit chyba **CrashLoopBackOff** v chybové zprávě.
 
-Použijte informace v části Kontrola [protokolu Docker](#dockerlog) pro kontrolu protokolů.
+Použijte informace v článku [Kontrola protokolu Docker](how-to-troubleshoot-deployment-local.md#dockerlog) .
 
 ## <a name="function-fails-get_model_path"></a>Funkce se nezdařila: get_model_path ()
 
-Často se ve `init()` funkci skriptu bodování volá funkce [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud soubor modelu nebo složku nelze nalézt, funkce se nezdařila. Nejjednodušší způsob, jak tuto chybu ladit, je spuštění níže uvedeného kódu Pythonu v prostředí kontejneru:
+Často `init()` je ve funkci skriptu bodování volána funkce [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud se soubor modelu nebo složka modelů nenajde, funkce selže. Nejjednodušší způsob, jak tuto chybu ladit, je spuštění níže uvedeného kódu Pythonu v prostředí kontejneru:
 
 ```python
 from azureml.core.model import Model
@@ -216,7 +114,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Neúspěšná funkce: Run (input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Příklad:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Například:
 
 ```python
 def run(input_data):
@@ -239,16 +137,19 @@ Stavový kód 502 označuje, že služba vyvolala výjimku nebo došlo k chybě 
 
 ## <a name="http-status-code-503"></a>Stavový kód HTTP 503
 
-Nasazení služby Azure Kubernetes podporují automatické škálování, které umožňuje přidat repliky pro podporu dalšího zatížení. Automatické škálování je však navrženo pro zpracování **postupných** změn v zatížení. Pokud v požadavcích za sekundu obdržíte velké špičky, mohou klienti obdržet stavový kód HTTP 503.
+Nasazení služby Azure Kubernetes podporují automatické škálování, které umožňuje přidat repliky pro podporu dalšího zatížení. Automatické škálování je navrženo pro zpracování **postupných** změn v zatížení. Pokud v požadavcích za sekundu obdržíte velké špičky, mohou klienti obdržet stavový kód HTTP 503. I když automatické škálování rychle reaguje, trvá AKS značnou dobu k vytvoření dalších kontejnerů.
+
+Rozhodnutí o horizontálním navýšení/snížení kapacity vycházejí z využití aktuálních replik kontejnerů. Počet replik, které jsou zaneprázdněné (zpracování požadavku) dělený celkovým počtem aktuálních replik, je aktuální využití. Pokud tento počet překročí `autoscale_target_utilization` , vytvoří se další repliky. Pokud je nižší, jsou repliky sníženy. Rozhodnutí o přidání replik jsou Eager a rychlá (kolem 1 sekundy). Rozhodnutí o odebrání replik jsou konzervativní (přibližně 1 minutu). Ve výchozím nastavení je cílení na automatické škálování nastaveno na **70%**, což znamená, že služba dokáže zpracovávat špičky v požadavcích za sekundu (RPS) **až o 30%**.
 
 K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 503:
 
-* Změňte úroveň využití, při které automatické škálování vytvoří nové repliky.
-    
-    Ve výchozím nastavení je cílení na automatické škálování nastaveno na 70%, což znamená, že služba dokáže zpracovávat špičky v požadavcích za sekundu (RPS) až o 30%. Cíl využití můžete upravit nastavením `autoscale_target_utilization` na nižší hodnotu.
+> [!TIP]
+> Tyto dva přístupy lze použít jednotlivě nebo v kombinaci.
+
+* Změňte úroveň využití, při které automatické škálování vytvoří nové repliky. Cíl využití můžete upravit nastavením `autoscale_target_utilization` na nižší hodnotu.
 
     > [!IMPORTANT]
-    > Tato změna nezpůsobí *rychlejší*vytváření replik. Místo toho jsou vytvořeny s nižší prahovou hodnotou využití. Místo čekání na vyčerpání služby 70% se změna hodnoty na 30% způsobí, že se repliky vytvoří, když dojde k 30% využití.
+    > Tato změna nezpůsobí *rychlejší* vytváření replik. Místo toho jsou vytvořeny s nižší prahovou hodnotou využití. Místo čekání na vyčerpání služby 70% se změna hodnoty na 30% způsobí, že se repliky vytvoří, když dojde k 30% využití.
     
     Pokud už webová služba používá aktuální maximální počet replik a stále se zobrazuje stavové kódy 503, zvyšte `autoscale_max_replicas` hodnotu, aby se zvýšil maximální počet replik.
 
@@ -276,7 +177,7 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
     > [!NOTE]
     > Pokud obdržíte špičky žádostí větší, než jsou nové minimální repliky schopné zpracovat, můžete se 503s znovu dostat. Například při zvyšování provozu na službu možná budete muset zvětšit minimální repliky.
 
-Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_replicas` a `autoscale_min_replicas` pro naleznete v tématu Reference k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
+Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_replicas` a `autoscale_min_replicas` pro naleznete v tématu Reference k modulu [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) .
 
 ## <a name="http-status-code-504"></a>Stavový kód HTTP 504
 
@@ -284,9 +185,23 @@ Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí č
 
 Časový limit můžete zvýšit nebo se pokusit o urychlení služby úpravou score.py pro odebrání nepotřebných volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění souboru score.py. Kód může být v nereagující stavu nebo nekonečné smyčce.
 
+## <a name="other-error-messages"></a>Další chybové zprávy
+
+Proveďte tyto akce při následujících chybách:
+
+|Chyba  | Řešení  |
+|---------|---------|
+|Chyba při sestavování obrázku při nasazení webové služby     |  Přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte SKU pro virtuální počítače používané ve vašem nasazení na jednu, která má více paměti. |
+|Selhání FPGA     |  Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Pokud chcete požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai       |
+
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 
-V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí Visual Studio Code a debugpy můžete připojit k kódu běžícímu uvnitř kontejneru Docker. Další informace najdete [v příručce k interaktivnímu ladění v vs Code](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
+Možná budete muset interaktivně ladit kód Pythonu ve vašem nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí Visual Studio Code a debugpy můžete připojit k kódu běžícímu uvnitř kontejneru Docker.
+
+Další informace najdete [v příručce k interaktivnímu ladění v vs Code](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
+
+## <a name="model-deployment-user-forum"></a>[Fórum uživatele nasazení modelu](/answers/topics/azure-machine-learning-inference.html)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -294,3 +209,4 @@ Další informace o nasazení:
 
 * [Jak nasadit a kde](how-to-deploy-and-where.md)
 * [Kurz: výuka & nasazení modelů](tutorial-train-models-with-aml.md)
+* [Jak spustit a ladit experimenty místně](./how-to-debug-visual-studio-code.md)

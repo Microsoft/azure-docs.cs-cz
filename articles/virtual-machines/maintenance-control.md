@@ -3,16 +3,17 @@ title: Přehled řízení údržby pro virtuální počítače Azure pomocí Azu
 description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 290a1e8da4e9b3e8eff171ab2d5837bfc9c381b9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080008"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552418"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Správa aktualizací platformy pomocí řízení údržby 
 
@@ -23,12 +24,13 @@ Spravujte aktualizace platforem, které nevyžadují restart, pomocí řízení 
 Pomocí řízení údržby můžete:
 - Dávka se aktualizuje do jednoho balíčku aktualizace.
 - Počkejte až 35 dní, než se aktualizace použijí. 
-- Automatizujte aktualizace platforem pro okno údržby pomocí [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
+- Automatizujte aktualizace platforem konfigurací plánu údržby nebo pomocí [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 - Konfigurace údržby pracují v rámci předplatných a skupin prostředků. 
 
 ## <a name="limitations"></a>Omezení
 
-- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](isolation.md).
+- Virtuální počítače musí být na [vyhrazeném hostiteli](./dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](isolation.md).
+- Pokud je deklarován plán údržby, musí být nejméně 2 hodiny.
 - Po 35 dnech se automaticky použije aktualizace.
 - Uživatel musí mít přístup k **přispěvateli prostředků** .
 

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 2b28cc742bb981e0db535d39cb0c7fbf027470ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83673760"
 ---
 ### <a name="identity-tier"></a>Úroveň identity 
 
-Partnerství s Microsoftem Oracle vám umožní nastavit jednotnou identitu napříč Azure, OCI a aplikací Oracle. Pro řešení JD Edwards EnterpriseOne nebo PeopleSoft spouštěných místně se vyžaduje instance serveru Oracle HTTP (OHS) pro nastavení jednotného přihlašování mezi Azure AD a Oracle IDCS.
+Partnerství Microsoft-Oracle umožňuje nastavit jednotnou identitu napříč Azure, OCI a aplikací Oracle. Pro řešení JD Edwards EnterpriseOne nebo PeopleSoft spouštěných místně se vyžaduje instance serveru Oracle HTTP (OHS) pro nastavení jednotného přihlašování mezi Azure AD a Oracle IDCS.
 
 OHS slouží jako reverzní proxy server aplikační vrstvy, což znamená, že procházejí všechny požadavky na koncové aplikace. Webbrána správce přístupu Oracle je modul plug-in OHS webového serveru, který zachycuje každý požadavek na ukončení aplikace. Pokud je přístup k prostředkům chráněný (vyžaduje ověřenou relaci), zahájí brána OIDC ověřování pomocí cloudové služby identity prostřednictvím prohlížeče uživatele. Další informace o tocích podporovaných webbranou OpenID Connect najdete v [dokumentaci k Oracle Access Manageru](https://docs.oracle.com/cd/E52734_01/oam/AIAAG/GUID-1E927D1B-FB83-425B-8768-85DB441821A4.htm#AIAAG7327).
 

@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322729"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,12 @@ Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiš
 
       ![Skupina prostředků pro spravované disky](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Pokud kopírujete VHDX nebo dynamický nebo rozdílový virtuální pevný disk, VHDX/VHD se nahraje do přípravného účtu úložiště jako objekt blob bloku. Přejděte do svého přípravného **účtu úložiště do části Objekty blob** a vyberte odpovídající kontejner – StandardSSD, Standard HDD nebo PremiumSSD. Ve vašem přípravném účtu úložiště by se měly zobrazit VHDX/VHD jako objekty blob bloku.
+    > [!NOTE]
+    > Pokud se objekt blob stránky během kopírování úspěšně nepřevedl na spravovaný disk, zůstane v účtu úložiště a bude se vám účtovat úložiště.
+
+  -  Pokud kopírujete VHDX nebo dynamický nebo rozdílový virtuální pevný disk, VHDX/VHD se nahraje do přípravného účtu úložiště jako objekt blob bloku. Přejděte do svého přípravného **účtu úložiště do části Objekty blob** a vyberte odpovídající kontejner – StandardSSD, Standard HDD nebo PremiumSSD. Ve vašem přípravném účtu úložiště by se měly zobrazit VHDX/VHD jako objekty blob bloku.
+  
+
   
 ::: zone-end
 

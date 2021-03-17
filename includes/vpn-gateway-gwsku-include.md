@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74085229"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010812"
 ---
 Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA. Skladové jednotky brány virtuální sítě v Zóny dostupnosti Azure najdete v tématu [skladové položky brány zóny dostupnosti Azure](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
 
@@ -41,7 +41,7 @@ Nové skladové položky brány VPN zefektivňují sady funkcí nabízené na br
 
 ( \* \* ) Základní SKU se považuje za starší SKU. Základní skladová položka má určitá omezení funkcí. Nemůžete změnit velikost brány, která používá základní SKU na jednu z nových SKU brány, musíte místo toho přejít na novou SKU, která zahrnuje odstranění a opětovné vytvoření brány VPN.
 
-###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>SKU brány – provozní a vývojové a testovací úlohy
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>SKU brány – produkční a Dev-Test úlohy
 
 Vzhledem k rozdílům ve SLA a sadách funkcí doporučujeme pro produkci vs. vývoj a testování následující SKU:
 

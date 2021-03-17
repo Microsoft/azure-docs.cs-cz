@@ -8,10 +8,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80272646"
 ---
 V rámci předplatného můžete vytvořit několik služeb. Každé z nich je možné zřídit v konkrétní úrovni. Budete omezeni jenom počtem služeb povolených na jednotlivých úrovních. Můžete například vytvořit až 12 služeb na úrovni Basic a dalších 12 služeb na úrovni S1 v rámci stejného předplatného. Další informace o úrovních najdete v tématu [Výběr SKU nebo úrovně pro Azure kognitivní hledání](../articles/search/search-sku-tier.md).

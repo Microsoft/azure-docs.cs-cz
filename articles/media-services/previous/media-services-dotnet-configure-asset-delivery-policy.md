@@ -3,7 +3,7 @@ title: Konfigurace zásad doručení assetů pomocí sady .NET SDK | Microsoft D
 description: V tomto tématu se dozvíte, jak nakonfigurovat různé zásady doručování assetů pomocí Azure Media Services .NET SDK.
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 82e152f257e867dfdbf97c92b041ce57c5a1bdbc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974508"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014260"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurace zásad doručení assetů pomocí sady .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ## <a name="overview"></a>Přehled
@@ -54,7 +58,7 @@ MPEG DASH
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 * Před odstraněním AssetDeliveryPolicy byste měli odstranit všechny Lokátory streamování přidružené k assetu. V případě potřeby můžete později vytvořit nové Lokátory streamování s novým AssetDeliveryPolicy.
 * Lokátor streamování nejde vytvořit na prostředku šifrovaném úložiště, pokud není nastavená žádná zásada pro doručení prostředků.  Pokud prostředek není šifrovaný jako zašifrovaný, systém vám umožní vytvořit Lokátor a streamovat prostředek ve formě bez zásad doručení assetu.
 * K jednomu prostředku můžete mít k dispozici více zásad doručení prostředků, ale můžete zadat jenom jeden způsob, jak zpracovat daný AssetDeliveryProtocol.  To znamená, že se pokusíte propojit dvě zásady doručování, které určují protokol AssetDeliveryProtocol. SmoothStreaming, který bude mít za následek chybu, protože systém neví, který z nich chcete použít, když klient provede požadavek Smooth Streaming.

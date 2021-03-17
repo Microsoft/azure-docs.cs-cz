@@ -3,12 +3,12 @@ title: Distribuované vývojové prostředí pro Azure DevTest Labs prostředky
 description: Poskytuje osvědčené postupy pro nastavení distribuovaného prostředí pro vývoj a spolupráci pro vývoj prostředků DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483801"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550072"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Osvědčené postupy pro distribuování a spolupráci s vývojem Azure DevTest Labsch prostředků
 Distribuovaný vývoj pro spolupráci umožňuje různým týmům nebo lidem vyvíjet a udržovat základ kódu. Aby byl proces vývoje úspěšný, závisí na možnosti vytváření, sdílení a integraci informací. Tento klíčový princip vývoje lze použít v rámci Azure DevTest Labs. V rámci testovacího prostředí je několik typů prostředků, které jsou často distribuované mezi různými cvičeními v rámci podniku. Různé typy prostředků jsou zaměřené na dvě oblasti:
@@ -27,7 +27,7 @@ Můžete mít společný zdroj vlastních imagí, které jsou nasazené na cvič
 [Vzorce](devtest-lab-manage-formulas.md) jsou specifické pro testovací prostředí a nemají distribuční mechanismus. Členové testovacího prostředí mají všechny vývojové vzorce. 
 
 ## <a name="code-repository-based-resources"></a>Prostředky založené na úložišti kódu
-Existují dvě různé funkce, které jsou založeny na úložištích kódu, artefaktech a prostředích. Tento článek přechází na funkce a jak efektivně nastavit úložiště a pracovní postup, aby bylo možné přizpůsobit dostupné artefakty a prostředí na úrovni organizace nebo týmu.  Tento pracovní postup je založený na standardní [strategii pro větvení správy zdrojového kódu](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Existují dvě různé funkce, které jsou založeny na úložištích kódu, artefaktech a prostředích. Tento článek přechází na funkce a jak efektivně nastavit úložiště a pracovní postup, aby bylo možné přizpůsobit dostupné artefakty a prostředí na úrovni organizace nebo týmu.  Tento pracovní postup je založený na standardní [strategii pro větvení správy zdrojového kódu](/azure/devops/repos/tfvc/branching-strategies-with-tfvc). 
 
 ### <a name="key-concepts"></a>Klíčové koncepty
 Zdrojové informace pro artefakty zahrnují metadata, skripty. Zdrojové informace pro prostředí zahrnují šablony metadat a Správce prostředků s libovolnými podpůrnými soubory, jako jsou skripty PowerShellu, skripty DSC, soubory zip atd.  
@@ -39,7 +39,7 @@ Nejběžnější konfigurací pro řízení zdrojového kódu (SCC) je nastaven�
 - Prostředky obchodní jednotky/oddělení – celá
 - Prostředky specifické pro tým.
 
-Každá z těchto úrovní odkazuje na jiné úložiště, kde je hlavní větev nutná k produkční kvalitě. [Větve](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti by byly pro vývoj těchto specifických prostředků (artefakty nebo šablony). Tato struktura je dobře zarovnaná s DevTest Labs, protože můžete snadno propojit více úložišť a více větví současně s laboratořemi organizace. Název úložiště je obsažen v uživatelském rozhraní (UI), aby nedocházelo k záměně, pokud jsou k dispozici stejné názvy, popis a vydavatel.
+Každá z těchto úrovní odkazuje na jiné úložiště, kde musí být hlavní větev v produkční kvalitě. [Větve](/azure/devops/repos/git/git-branching-guidance) v každém úložišti by byly pro vývoj těchto specifických prostředků (artefakty nebo šablony). Tato struktura je dobře zarovnaná s DevTest Labs, protože můžete snadno propojit více úložišť a více větví současně s laboratořemi organizace. Název úložiště je obsažen v uživatelském rozhraní (UI), aby nedocházelo k záměně, pokud jsou k dispozici stejné názvy, popis a vydavatel.
      
 Následující diagram ukazuje dvě úložiště: firemní úložiště, které je udržováno oddělením IT, a prostorové úložiště, které je udržováno v rámci oddílu R&D.
 

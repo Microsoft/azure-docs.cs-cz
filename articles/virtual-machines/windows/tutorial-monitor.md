@@ -3,19 +3,19 @@ title: Kurz – monitorování virtuálních počítačů s Windows v Azure
 description: V tomto kurzu se naučíte monitorovat výkon a zjištěné součásti aplikace spuštěné na virtuálních počítačích s Windows.
 author: mgoedtel
 manager: carmonm
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8c4345d16efe296413ea9d995c2307bba62d33f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323566"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560697"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování virtuálního počítače s Windows v Azure
 
@@ -39,7 +39,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure. Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure. Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -86,18 +86,18 @@ Postup povolení monitorování virtuálního počítače Azure pomocí Azure Mo
 
 3. Na stránce **přehledy (Preview)** vyberte **vyzkoušet nyní**.
 
-    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](../../azure-monitor/vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
 
 4. Pokud máte v rámci stejného předplatného pracovní prostor Log Analytics, v rozevíracím seznamu vyberte na stránce pro **registraci Azure monitor Insights** .  
 
     Seznam předchází výchozí pracovní prostor a umístění, kde je virtuální počítač nasazený v předplatném. 
 
     >[!NOTE]
-    >Informace o vytvoření nového pracovního prostoru Log Analytics pro uložení dat monitorování z virtuálního počítače najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Pracovní prostor musí patřit do jedné z [podporovaných oblastí](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
+    >Informace o vytvoření nového pracovního prostoru Log Analytics pro uložení dat monitorování z virtuálního počítače najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/logs/quick-create-workspace.md). Pracovní prostor musí patřit do jedné z [podporovaných oblastí](../../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).
 
 Po povolení monitorování může být nutné počkat několik minut, než budete moci zobrazit metriky výkonu pro virtuální počítač.
 
-![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](../../azure-monitor/vm/media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Zobrazit metriky výkonu virtuálních počítačů
 
@@ -107,7 +107,7 @@ Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které c
 
 2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)**.
 
-3. Vyberte kartu **výkon** .
+3. Vyberte kartu **Výkon**.
 
 Tato stránka nejen zahrnuje grafy využití výkonu, ale také tabulku ukazující pro každý zjištěný logický disk, jeho kapacitu, využití a celkový průměr podle jednotlivých měr.
 

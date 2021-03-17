@@ -1,19 +1,16 @@
 ---
 title: Optimalizace clusterů pomocí Apache Ambari ve službě Azure HDInsight
 description: Ke konfiguraci a optimalizaci clusterů Azure HDInsight použijte webové uživatelské rozhraní Apache Ambari.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: 52eb1b6c89ff02cb44fe731c2463ab02c284f26c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 14268e58296554cedc9488e48b41719421797a57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086445"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933285"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace clusterů pomocí Apache Ambari ve službě Azure HDInsight
 

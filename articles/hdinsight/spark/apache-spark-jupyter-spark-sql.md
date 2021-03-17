@@ -1,23 +1,20 @@
 ---
 title: 'Rychlý Start: Vytvoření clusteru Apache Spark pomocí šablony – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků vytvořit cluster služby Apache Spark ve službě Azure HDInsight a spustit dotaz Spark SQL.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 0f6a6cbc9112959a670bdb0a9cb56ea4509413a1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1bbf3cbffe2ab51f10e86dc3b9fe4ea6040a7911
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930269"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí šablony ARM
 
-V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření clusteru [Apache Spark](./apache-spark-overview.md) ve službě Azure HDInsight. Pak vytvoříte Poznámkový blok Jupyter a použijete ho ke spouštění dotazů Spark SQL pro Apache Hive tabulek. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Rozhraní Apache Spark Framework for HDInsight umožňuje rychlé analýzy dat a výpočetní výkon clusteru pomocí zpracování v paměti. Poznámkový blok Jupyter vám umožňuje pracovat s daty, kombinovat kód s textem Markdownu a provádět jednoduché vizualizace.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření clusteru [Apache Spark](./apache-spark-overview.md) ve službě Azure HDInsight. Pak vytvoříte soubor Jupyter Notebook a použijete ho ke spouštění dotazů Spark SQL pro tabulky Apache Hive. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Rozhraní Apache Spark Framework for HDInsight umožňuje rychlé analýzy dat a výpočetní výkon clusteru pomocí zpracování v paměti. Jupyter Notebook vám umožní pracovat s daty, kombinovat kód s textem Markdownu a provádět jednoduché vizualizace.
 
 Pokud používáte více clusterů společně, budete chtít vytvořit virtuální síť a pokud používáte cluster Spark, budete také chtít použít konektor pro skladiště z podregistru. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) a [integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru](../interactive-query/apache-hive-warehouse-connector.md).
 
@@ -63,19 +60,19 @@ V šabloně jsou definované dva prostředky Azure:
 
     ![Vytvoření clusteru Spark ve službě HDInsight pomocí šablony Azure Resource Manager](./media/apache-spark-jupyter-spark-sql/resource-manager-template-spark.png "Vytvoření clusteru Spark ve službě HDInsight pomocí šablony Azure Resource Manager")
 
-1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a**pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
+1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a** pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
 
 Pokud narazíte na problém s vytvářením clusterů HDInsight, může to být tím, že nemáte správná oprávnění k tomu. Další informace najdete v tématu popisujícím [požadavky na řízení přístupu](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-Po vytvoření clusteru obdržíte oznámení o **úspěšném nasazení** s odkazem **na prostředek přejít na prostředek** . Na stránce skupiny prostředků se zobrazí seznam nového clusteru HDInsight a výchozí úložiště přidružené ke clusteru. Každý cluster má účet [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo závislost [Azure Data Lake Storageho účtu](../hdinsight-hadoop-use-data-lake-store.md) . Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
+Po vytvoření clusteru obdržíte oznámení o **úspěšném nasazení** s odkazem **na prostředek přejít na prostředek** . Na stránce skupiny prostředků se zobrazí seznam nového clusteru HDInsight a výchozí úložiště přidružené ke clusteru. Každý cluster má [Azure Storage](../hdinsight-hadoop-use-blob-storage.md), [Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)nebo [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) závislost. Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění závislosti účtu úložiště. Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
 
-## <a name="create-a-jupyter-notebook"></a>Vytvoření poznámkového bloku Jupyter
+## <a name="create-a-jupyter-notebook-file"></a>Vytvoření souboru Jupyter Notebook
 
-[Jupyter notebook](https://jupyter.org/) je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok vám umožní pracovat s daty, kombinovat kód s Markdownu textem a provádět jednoduché vizualizace.
+[Jupyter notebook](https://jupyter.org/) je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Soubor Jupyter Notebook můžete použít k interakci s daty, kombinování kódu s textem Markdownu a provádění jednoduchých vizualizací.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Clustery HDInsight** a pak vyberte cluster, který jste vytvořili.
 
@@ -87,7 +84,7 @@ Po vytvoření clusteru obdržíte oznámení o **úspěšném nasazení** s odk
 
 4. Vyberte **Nový**  >  **PySpark** a vytvořte Poznámkový blok.
 
-   ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
+   ![Vytvoření souboru Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
 
    Nový poznámkový blok se vytvoří a otevře s názvem Bez názvu (Bez názvu.pynb).
 
@@ -108,7 +105,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
     SHOW TABLES
     ```
 
-    Když použijete Jupyter Notebook s clusterem HDInsight, získáte přednastavenou `spark` relaci, kterou můžete použít ke spouštění dotazů na podregistr pomocí Spark SQL. `%%sql` říká poznámkovému bloku Jupyter, aby ke spuštění dotazu Hive použil přednastavenou relaci `spark`. Dotaz načte prvních 10 řádků z tabulky Hive (**hivesampletable**), která je ve výchozím nastavení k dispozici na všech clusterech HDInsight. Při prvním odeslání dotazu Jupyter vytvoří aplikaci Spark pro Poznámkový blok. Dokončení trvá přibližně 30 sekund. Jakmile je aplikace Spark připravená, dotaz se spustí za sekundu a vytvoří výsledky. Výstup bude vypadat následovně:
+    Když použijete Jupyter Notebook soubor s clusterem HDInsight, získáte přednastavenou `spark` relaci, kterou můžete použít ke spouštění dotazů na podregistr pomocí Spark SQL. `%%sql` říká poznámkovému bloku Jupyter, aby ke spuštění dotazu Hive použil přednastavenou relaci `spark`. Dotaz načte prvních 10 řádků z tabulky Hive (**hivesampletable**), která je ve výchozím nastavení k dispozici na všech clusterech HDInsight. Při prvním odeslání dotazu Jupyter vytvoří aplikaci Spark pro Poznámkový blok. Dokončení trvá přibližně 30 sekund. Jakmile je aplikace Spark připravená, dotaz se spustí za sekundu a vytvoří výsledky. Výstup vypadá takto:
 
     ![Apache Hive dotazování v HDInsight](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Dotaz na podregistr v HDInsight")
 

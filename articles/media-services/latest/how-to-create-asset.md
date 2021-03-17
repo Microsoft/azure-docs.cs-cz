@@ -1,5 +1,5 @@
 ---
-title: Nahrání obsahu do Azure Media Services prostředku pomocí Azure CLI
+title: Nahrání obsahu do příkazového řádku assetu
 description: Skript Azure CLI v tomto tématu znázorňuje, jak vytvořit asset služby Azure Media Services, do kterého je možné nahrát obsah.
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/18/2020
+ms.date: 02/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b40c936006fa47964ef67ffda37c80eb5732bdf0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3923394e76d5ce4001d3652ae9cbc263df08e4e2
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653872"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545611"
 ---
 # <a name="create-an-asset"></a>Vytvoření prostředku
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Tento článek ukazuje, jak vytvořit prostředek Media Services.  K uchování mediálního obsahu pro kódování a streamování použijete Asset.  Další informace o Media Services assety najdete [v článku Azure Media Services V3](assets-concept.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postupujte podle kroků v části [Vytvoření účtu Media Services](./create-account-howto.md) a vytvořte potřebný Media Services účet a skupinu prostředků pro vytvoření assetu.
 
@@ -35,10 +37,6 @@ Postupujte podle kroků v části [Vytvoření účtu Media Services](./create-a
 ## <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli/)
 
 [!INCLUDE [Create an asset with CLI](./includes/task-create-asset-cli.md)]
-
-## <a name="cli-shell"></a>[Prostředí CLI](#tab/clishell/)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Ukázkový skript
 
@@ -53,10 +51,6 @@ Postupujte podle kroků v části [Vytvoření účtu Media Services](./create-a
 ### <a name="using-curl"></a>S využitím cURL
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-asset-curl.md)]
-
-## <a name="using-postman"></a>S využitím Postmana
-
-[!INCLUDE[Create an asset with Postman](./includes/task-create-asset-postman.md)]
 
 ## <a name="net"></a>[.NET](#tab/net/)
 

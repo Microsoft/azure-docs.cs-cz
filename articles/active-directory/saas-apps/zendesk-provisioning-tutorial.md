@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c038cc309d8f1f13a04de01ed83e04afa70ba6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 620dd8fd586352ebeaf097a8f870a606f8e06c01
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546164"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359710"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zendesk pro Automatické zřizování uživatelů
 
@@ -43,7 +43,7 @@ Pokud chcete přidat Zendesk z webu Marketplace, postupujte podle těchto kroků
 
     ![Ikona Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -80,17 +80,17 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Zendesk**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Zendesk**.
 
     ![Odkaz Zendesk v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Zřizování Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Režim zřizování Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
 
@@ -102,7 +102,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
    * V poli **doména** vyplňte subdoménu klienta Zendesk. Například pro účet s adresou URL klienta `https://my-tenant.zendesk.com` je vaše subdoména **můj tenant**.
 
-6. Tajný token pro účet Zendesk se nachází v **Admin**  >  **nastavení rozhraní API**pro správu  >  **Settings**. Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
+6. Tajný token pro účet Zendesk se nachází v **Admin**  >  **nastavení rozhraní API** pro správu  >  **Settings**. Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
 
     ![Nastavení správce Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
@@ -158,16 +158,16 @@ Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v t
 
 * Zendesk podporuje používání skupin jenom pro uživatele s rolemi **agenta** . Další informace najdete v [dokumentaci k Zendesk](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups).
 
-* Při přiřazení vlastní role uživateli nebo skupině přiřadí služba Automatické zřizování uživatelů Azure AD také výchozího **agenta**rolí. Vlastní roli lze přiřadit pouze agentům. Další informace najdete v [dokumentaci k rozhraní Zendesk API](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests). 
+* Při přiřazení vlastní role uživateli nebo skupině přiřadí služba Automatické zřizování uživatelů Azure AD také výchozího **agenta** rolí. Vlastní roli lze přiřadit pouze agentům. Další informace najdete v [dokumentaci k rozhraní Zendesk API](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

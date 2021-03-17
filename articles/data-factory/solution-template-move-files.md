@@ -1,22 +1,19 @@
 ---
 title: Přesun souborů mezi úložištěm založeném na souborech
 description: Naučte se používat šablonu řešení k přesouvání souborů mezi úložištěm založeném na souborech pomocí Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522716"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361940"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Přesunout soubory pomocí Azure Data Factory
 
@@ -62,7 +59,7 @@ Tato šablona získá soubory ze zdrojového úložiště založeného na soubor
 
     ![Zobrazení kanálu](media/solution-template-move-files/move-files4.png)
 
-5. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.   Parametry jsou cesta ke složce, ze které chcete přesunout soubory, a cestu ke složce, do které chcete soubory přesunout. 
+5. Vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.   Parametry jsou cesta ke složce, ze které chcete přesunout soubory, a cestu ke složce, do které chcete soubory přesunout. 
 
     ![Spuštění kanálu](media/solution-template-move-files/move-files5.png)
 

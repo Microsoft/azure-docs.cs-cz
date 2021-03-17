@@ -1,22 +1,17 @@
 ---
 title: Použití spravované instance Azure SQL s Azure-služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 description: Naučte se používat spravovanou instanci Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 62bd5d2e70d3a66998907305fecee4dcc87cdb23
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082263"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451723"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -27,7 +22,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 - [Zřízení Azure-SSIS IR pomocí katalogu SSIS (SSISDB) hostovaného službou Azure SQL Managed instance](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Spouštění balíčků SSIS pomocí úlohy agenta Managed instance Azure SQL](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Vyčistit protokoly SSISDB pomocí úlohy agenta spravované instance Azure SQL](#clean-up-ssisdb-logs)
-- [Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance Azure SQL](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance Azure SQL](configure-bcdr-azure-ssis-integration-runtime.md)
 - [Migrace místních úloh SSIS do SSIS v ADF pomocí spravované instance Azure SQL jako cíle úloh databáze](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Zřízení Azure-SSIS IR s SSISDB hostovaným pomocí spravované instance Azure SQL
@@ -44,13 +39,13 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
             - Uvnitř stejné virtuální sítě jako spravovaná instance s **jinou podsítí**.
             - Uvnitř jiné virtuální sítě, než je spravovaná instance, prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálních partnerských vztahů) nebo připojení virtuální sítě k virtuální síti.
 
-            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Nakonfigurujte virtuální síť](#configure-virtual-network).
 
     - Přes Veřejný koncový bod
 
-        Spravované instance Azure SQL můžou poskytovat připojení přes [veřejné koncové body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure). Aby bylo možné povolit přenosy mezi spravovanou instancí SQL a Azure-SSIS IR, musí splňovat požadavky na příchozí a odchozí spojení:
+        Spravované instance Azure SQL můžou poskytovat připojení přes [veřejné koncové body](../azure-sql/managed-instance/public-endpoint-configure.md). Aby bylo možné povolit přenosy mezi spravovanou instancí SQL a Azure-SSIS IR, musí splňovat požadavky na příchozí a odchozí spojení:
 
         - Když Azure-SSIS IR není uvnitř virtuální sítě (upřednostňovaná)
 
@@ -60,7 +55,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
             |---|---|---|---|---|
             |TCP|Značka cloudové služby Azure|*|VirtualNetwork|3342|
 
-            Další informace najdete v tématu [povolení provozu veřejného koncového bodu ve skupině zabezpečení sítě](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure#allow-public-endpoint-traffic-on-the-network-security-group).
+            Další informace najdete v tématu [povolení provozu veřejného koncového bodu ve skupině zabezpečení sítě](../azure-sql/managed-instance/public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group).
 
         - při Azure-SSIS IR v rámci virtuální sítě
 
@@ -76,27 +71,27 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
                 | Transportní protokol | Zdroj | Rozsah zdrojových portů | Cíl |Rozsah cílových portů |
                 |---|---|---|---|---|
-                |TCP|VirtualNetwork|*|[IP adresa veřejného koncového bodu spravované instance SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-find-management-endpoint-ip-address)|3342|
+                |TCP|VirtualNetwork|*|[IP adresa veřejného koncového bodu spravované instance SQL](../azure-sql/managed-instance/management-endpoint-find-ip-address.md)|3342|
 
 ### <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
 
-1. **Oprávnění uživatele**. Uživatel, který vytváří Azure-SSIS IR, musí mít [přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope) aspoň u prostředku Azure Data Factory s jednou z následujících možností:
+1. **Oprávnění uživatele**. Uživatel, který vytváří Azure-SSIS IR, musí mít [přiřazení role](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) aspoň u prostředku Azure Data Factory s jednou z následujících možností:
 
     - Použijte integrovanou roli Přispěvatel sítě. Tato role se dodává s oprávněním _Microsoft. \* Network/_ , které má mnohem větší rozsah, než je nutné.
     - Vytvořte vlastní roli, která bude obsahovat jenom potřebná oprávnění _Microsoft. Network/virtualNetworks/ \* /Join/Action_ . Pokud chcete pro Azure-SSIS IR při připojení k virtuální síti Azure Resource Manager použít i vlastní veřejné IP adresy, v roli taky uveďte oprávnění _Microsoft. Network/publicIPAddresses/*/JOIN/Action_ .
 
-1. **Virtuální síť**.
+1. **Virtuální síť:**
 
     1. Ujistěte se, že skupina prostředků virtuální sítě může vytvářet a odstraňovat určité síťové prostředky Azure.
 
         Azure-SSIS IR musí vytvořit určité síťové prostředky ve stejné skupině prostředků jako virtuální síť. Mezi tyto prostředky patří:
-        - Nástroj pro vyrovnávání zatížení Azure s názvem * \<Guid> -azurebatch-cloudserviceloadbalancer*
+        - Nástroj pro vyrovnávání zatížení Azure s názvem *\<Guid> -azurebatch-cloudserviceloadbalancer*
         - Skupina zabezpečení sítě s názvem * \<Guid> -azurebatch-cloudservicenetworksecuritygroup
         - Veřejná IP adresa Azure s názvem-azurebatch-cloudservicepublicip
 
         Tyto prostředky budou vytvořeny při spuštění Azure-SSIS IR. Po zastavení Azure-SSIS IR se odstraní. Chcete-li zabránit zablokování Azure-SSIS IR zastavovat, nepoužívejte tyto síťové prostředky v jiných prostředcích.
 
-    1. Ujistěte se, že nemáte [Zámek prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) u skupiny prostředků nebo předplatného, ke kterému virtuální síť patří. Pokud nakonfigurujete zámek jen pro čtení nebo odstranění, začnete Azure-SSIS IR a zastavuje se, nebo přestane reagovat.
+    1. Ujistěte se, že nemáte [Zámek prostředků](../azure-resource-manager/management/lock-resources.md) u skupiny prostředků nebo předplatného, ke kterému virtuální síť patří. Pokud nakonfigurujete zámek jen pro čtení nebo odstranění, začnete Azure-SSIS IR a zastavuje se, nebo přestane reagovat.
 
     1. Ujistěte se, že nemáte zásadu Azure, která znemožňuje vytvoření následujících prostředků v rámci skupiny prostředků nebo předplatného, ke kterému patří virtuální síť:
         - Microsoft. Network/LoadBalancers
@@ -115,7 +110,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |Povolí odchozí provoz do spravované instance SQL. Pokud je zásada připojení nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port pro přístup ke službám Azure, jako je například Azure Storage a Azure Event Hubs. |
-        | TCP | VirtualNetwork | * | Internet | 80 | Volitelné Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port ke stažení seznamu odvolaných certifikátů z Internetu. Pokud zablokujete tento provoz, může dojít ke snížení výkonu při spuštění prostředí IR a ke ztrátě možností použití certifikátu pro kontrolu seznamu odvolaných certifikátů. Pokud chcete dále zúžit cíl na určité plně kvalifikované názvy domény, přečtěte si téma [použití Azure ExpressRoute nebo trasy definované uživatelem (udr)](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route).|
+        | TCP | VirtualNetwork | * | Internet | 80 | Volitelné Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port ke stažení seznamu odvolaných certifikátů z Internetu. Pokud zablokujete tento provoz, může dojít ke snížení výkonu při spuštění prostředí IR a ke ztrátě možností použití certifikátu pro kontrolu seznamu odvolaných certifikátů. Pokud chcete dále zúžit cíl na určité plně kvalifikované názvy domény, přečtěte si téma [použití Azure ExpressRoute nebo trasy definované uživatelem (udr)](./join-azure-ssis-integration-runtime-virtual-network.md#route).|
         | TCP | VirtualNetwork | * | Storage | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
         |||||||
 
@@ -141,7 +136,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
     Název hostitele veřejného koncového bodu se nachází ve formátu <mi_name>. Public. <dns_zone>. database.windows.net a port používaný pro připojení je 3342.  
 
-    ![Katalog – veřejný koncový bod](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![Snímek obrazovky ukazuje instalační program prostředí Integration runtime s vybraným katalogem pro vytváření s s/s a serverem katalogu databáze.](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. V případě použití vyberte ověřování Azure AD.
 
@@ -157,13 +152,13 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
     Další informace o tom, jak připojit Azure-SSIS IR k virtuální síti, najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 
-    ![připojit se k virtuální síti](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![Snímek obrazovky ukazuje upřesňující nastavení nastavení modulu runtime integrace, kde můžete vybrat virtuální síť, ke které se má modul runtime připojit.](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 Další informace o tom, jak vytvořit Azure-SSIS IR, najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime).
 
 ## <a name="clean-up-ssisdb-logs"></a>Vyčistit protokoly SSISDB
 
-Zásady uchovávání protokolů SSISDB jsou definované pomocí níže uvedených vlastností v [katalogu. catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
+Zásady uchovávání protokolů SSISDB jsou definované pomocí níže uvedených vlastností v [Catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database):
 
 - OPERATION_CLEANUP_ENABLED
 

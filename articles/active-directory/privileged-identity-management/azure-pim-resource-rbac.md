@@ -15,11 +15,11 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002489"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Zobrazení historie aktivit a auditu pro role prostředků Azure v Privileged Identity Management
 
@@ -86,11 +86,11 @@ Audit prostředků poskytuje zobrazení všech aktivit role pro určitý prostř
 
     [![Seznam auditu prostředků s filtry](media/azure-pim-resource-rbac/rbac-resource-audit.png "Seznam auditu prostředků s filtry")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
-1. Jako **typ auditu**vyberte **aktivovat (přiřazeno + aktivované)**.
+1. Jako **typ auditu** vyberte **aktivovat (přiřazeno + aktivované)**.
 
     [![Seznam auditu prostředků filtrovaný podle typu](media/azure-pim-resource-rbac/rbac-audit-activity.png "Seznam auditu prostředků filtrovaný podle aktivace")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![ aktivovat audit Seznam auditu prostředků, který je filtrovaný podle typu aktivovat audit](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
-1. V části **Akce**klikněte na **(aktivita)** pro uživatele a podívejte se na podrobnosti o aktivitách tohoto uživatele v prostředcích Azure.
+1. V části **Akce** klikněte na **(aktivita)** pro uživatele a podívejte se na podrobnosti o aktivitách tohoto uživatele v prostředcích Azure.
 
     ![Podrobnosti o aktivitě uživatele pro určitou akci](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 

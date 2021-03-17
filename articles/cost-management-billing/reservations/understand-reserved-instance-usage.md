@@ -5,19 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: e3553515e2cbae007883ad75960aa1c6991926df
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: HT
+ms.openlocfilehash: f6aad15d70157dda110fce233fbdafb7f3d896ad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254544"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055055"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití rezervací Azure u jednoho předplatného s průběžnými platbami
 
-Při vyhodnocování vašeho využití rezervací použijte hodnotu ReservationId ze [stránky Rezervace](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a soubor s informacemi o využití z [portálu účtů Azure](https://account.azure.com).
+Použijte ReservationId ze [stránky rezervace](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a soubor využití z [Azure Portal](https://portal.azure.com) k vyhodnocení využití rezervace.
 
 Pokud jste zákazník se smlouvou Enterprise, přečtěte si téma [Vysvětlení využití rezervací pro smlouvu Enterprise](understand-reserved-instance-usage-ea.md).
 
@@ -73,7 +74,7 @@ Předpokládejme, že používáte SQL Database Gen 4 v oblasti USA – východ 
 
 Nastavte filtr podle názvu měřiče **Reserved Instance Usage** (Využití rezervovaných instancí) a vyberte požadovanou hodnotu ve sloupci **Kategorie měřiče** – Azure SQL Database nebo Azure Cosmos DB. Měla by se zobrazit obrazovka podobná následujícímu snímku:
 
-![Soubor CSV pro rezervovanou kapacitu služby SQL Database](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Snímek obrazovky s položkou Kategorie měřiče](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 Řádek **Reserved Instance Usage** (Využití rezervovaných instancí) obsahuje celkový počet hodin jádra, na který se vztahuje rezervace. Částka pro tento řádek činí 0 USD, protože náklady pokrývá rezervace.
 
@@ -81,7 +82,7 @@ Nastavte filtr podle názvu měřiče **Reserved Instance Usage** (Využití rez
 
 Filtrujte sloupec **Další informace** a zadejte své **ID rezervace**. Následující snímek obrazovky ukazuje pole související s rezervací rezervované kapacity služby SQL Database.
 
-![Soubor CSV pro rezervovanou kapacitu služby SQL Database](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Snímek obrazovky s podrobnými informacemi o souboru CSV pro rezervovanou kapacitu](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. Položka **ReservationId** v poli **Další informace** odpovídá rezervaci rezervované kapacity služby SQL Database, která se uplatňuje na tento prostředek služby SQL Database.
 2. **ConsumptionMeter** je ID měřiče pro daný prostředek SQL Database.
@@ -96,7 +97,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 Další informace o rezervacích Azure najdete v následujících článcích:
 
 - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Správa rezervací Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci](../manage/understand-vm-reservation-charges.md)

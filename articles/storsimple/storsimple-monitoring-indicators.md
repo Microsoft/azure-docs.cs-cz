@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512967"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015396"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Použití indikátorů monitorování StorSimple ke správě zařízení
 
@@ -60,7 +60,7 @@ Pomocí následující tabulky Identifikujte stav vyznačený diodami LED na př
 | Green |OFF |OFF |Není k dispozici |Zapnutí, všechny funkce dobré |
 | Green |ON |Není k dispozici |Diody chyb PCM, diody chyb ventilátoru |Jakákoli chyba PCM, Chyba ventilátoru, nad nebo pod teplotou |
 | Green |ON |Není k dispozici |Vstupně-výstupní diody v modulu |Jakákoli chyba modulu Controller |
-| Green |ON |Není k dispozici |Není k dispozici |Chyba logiky skříně |
+| Green |ON |N/A |N/A |Chyba logiky skříně |
 | Green |Blikající |Není k dispozici |Indikátor stavu modulu v modulu kontroleru. Diody chyb PCM, diody chyb ventilátoru |Je nainstalovaný neznámý typ modulu kontroleru, chyba sběrnice I2C, chyba konfigurace dat modulu kontroleru |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Indikátory LED pro modul Power chlazení (PCM)
@@ -119,7 +119,7 @@ Pomocí následující tabulky můžete určit stav PCM.
 | Bez napájení z AC (do skříně) |OFF |OFF |OFF |OFF |
 | Žádný výkon střídavého napětí (jenom tento PCM) |OFF |ON |OFF |ON |
 | Zapnout modul PCM pro střídavý proud – OK |ON |OFF |OFF |OFF |
-| Chyba PCM (ventilátor selže) |OFF |OFF |ON |× |
+| Chyba PCM (ventilátor selže) |OFF |OFF |ON |X |
 | Chyba PCM (přes amp, nad napětím, nad aktuálním |OFF |ON |ON |ON |
 | PCM (ventilátor je mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní model |Blikající |OFF |OFF |OFF |
@@ -179,9 +179,9 @@ Pomocí následující tabulky můžete určit stav jednotlivých diskových jed
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Indikátory LED na diskové jednotce pro skříň EBOD
 | Status | Indikátor aktivity v pořádku (zelený) | INDIKÁTOR chyby (červená – oranžová) | Indikátor LED přidruženého panelu OPS |
 | --- | --- | --- | --- |
-| Není nainstalovaná žádná jednotka. |OFF |OFF |Žádná |
-| Jednotka je nainstalovaná a funkční. |Zapnutí nebo vypnutí blikání aktivity |× |Žádná |
-| Sada identit zařízení služby skříně SCSI (SES) |ON |Blikání 1 sekundy na/1 sekundu vypnuto |Žádná |
+| Není nainstalovaná žádná jednotka. |OFF |OFF |Žádné |
+| Jednotka je nainstalovaná a funkční. |Zapnutí nebo vypnutí blikání aktivity |X |Žádné |
+| Sada identit zařízení služby skříně SCSI (SES) |ON |Blikání 1 sekundy na/1 sekundu vypnuto |Žádné |
 | Sada bitů SES-bit pro selhání zařízení |ON |ON |Logická chyba (červená) |
 | Selhání okruhu řízení spotřeby |OFF |ON |Chyba modulu (červená) |
 
@@ -204,8 +204,8 @@ V následující tabulce jsou popsány různé stavy alarmů.
 | --- | --- | --- |
 | S0 |Normální režim: tiché |ZvukovýSignál dvakrát |
 | S1 |Chybový režim: 1 sekunda při/1 sekundách vypnuto |Přechod na S2 nebo S3 (viz poznámky) |
-| S2 |Režim připomenutí: přerušované pípnutí |Žádná |
-| S3 |Ztlumený režim: tiché |Žádná |
+| S2 |Režim připomenutí: přerušované pípnutí |Žádné |
+| S3 |Ztlumený režim: tiché |Žádné |
 | S4 |Kritický režim selhání: nepřetržitý poplach |Není k dispozici: ztlumení není aktivní. |
 
 > [!NOTE]
@@ -219,13 +219,13 @@ Zvukový poplach můžete ztlumit stisknutím tlačítka Ztlumit na panelu OPS. 
 V následující tabulce jsou popsány různé podmínky alarmu.
 
 ### <a name="alarm-conditions"></a>Podmínky alarmu
-| Status | Severity | Požární | INDIKÁTOR na panelu OPS |
+| Status | Závažnost | Požární | INDIKÁTOR na panelu OPS |
 | --- | --- | --- | --- |
 | Výstraha PCM – ztráta napájení řadiče domény z jediného PCM |Chyba – bez ztráty redundance |S1 |Chyba modulu |
 | Výstraha PCM – ztráta napájení řadiče domény z jediného PCM |Chyba – ztráta redundance |S1 |Chyba modulu |
 | Ventilátor PCM selhal |Chyba – ztráta redundance |S1 |Chyba modulu |
 | Modul SBB zjistil chybu PCM. |Indikován |S1 |Chyba modulu |
-| PCM byl odebrán |Chyba konfigurace |Žádná |Chyba modulu |
+| PCM byl odebrán |Chyba konfigurace |Žádné |Chyba modulu |
 | Chyba konfigurace skříně |Chyba – kritické |S1 |Chyba modulu |
 | Výstraha o nízké teplotě upozornění |Upozornění |S1 |Chyba modulu |
 | Výstraha vysoké teploty upozornění |Upozornění |S1 |Chyba modulu |
@@ -235,10 +235,10 @@ V následující tabulce jsou popsány různé podmínky alarmu.
 | Chyba kontroleru |Chyba – kritické |S1 |Chyba modulu |
 | Chyba modulu SBB Interface |Chyba – kritické |S1 |Chyba modulu |
 | Chyba modulu rozhraní SBB – nezbývá žádné funkční moduly. |Chyba – kritické |S4 |Chyba modulu |
-| Modul rozhraní SBB se odebral. |Upozornění |Žádná |Chyba modulu |
+| Modul rozhraní SBB se odebral. |Upozornění |Žádné |Chyba modulu |
 | Ovládání chyby řízení spotřeby |Upozornění – žádná ztráta napájení z jednotky |S1 |Chyba modulu |
 | Ovládání chyby řízení spotřeby |Chyba – kritické; Ztráta napájení jednotky |S1 |Chyba modulu |
-| Jednotka odebrána |Upozornění |Žádná |Chyba modulu |
+| Jednotka odebrána |Upozornění |Žádné |Chyba modulu |
 | Nedostatek dostupného napájení |Upozornění |žádné |Chyba modulu |
 
 ## <a name="next-steps"></a>Další kroky

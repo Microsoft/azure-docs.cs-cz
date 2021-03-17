@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500500"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537690"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak vytvořit a spravovat službu Azure cache pro Redis s využitím rozhraní příkazového řádku Azure Classic
 > [!div class="op_single_selector"]
@@ -30,19 +30,19 @@ Azure Classic CLI představuje skvělý způsob, jak spravovat infrastrukturu Az
 Pokud chcete vytvořit a spravovat službu Azure cache pro instance Redis pomocí Azure Classic CLI, musíte provést následující kroky.
 
 * Musíte mít účet Azure. Pokud ho nemáte, můžete si během chvilky vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
-* [Nainstalujte rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md).
+* [Nainstalujte rozhraní příkazového řádku Azure Classic](/cli/azure/install-classic-cli).
 * Připojte si instalaci Azure CLI pomocí osobního účtu Azure nebo pomocí pracovního nebo školního účtu Azure a přihlaste se z klasického rozhraní `azure login` příkazového řádku pomocí příkazu.
-* Před spuštěním kteréhokoli z následujících příkazů přepněte klasický příkaz CLI do režimu Správce prostředků spuštěním `azure config mode arm` příkazu. Další informace najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure Classic ke správě prostředků a skupin prostředků Azure](../xplat-cli-azure-resource-manager.md).
+* Před spuštěním kteréhokoli z následujících příkazů přepněte klasický příkaz CLI do režimu Správce prostředků spuštěním `azure config mode arm` příkazu. Další informace najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure Classic ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/management/manage-resources-cli.md).
 
 ## <a name="azure-cache-for-redis-properties"></a>Azure cache pro vlastnosti Redis
 Při vytváření a aktualizaci mezipaměti Azure pro instance Redis se používají následující vlastnosti.
 
-| Vlastnost | Přepínač | Description |
+| Vlastnost | Přepínač | Popis |
 | --- | --- | --- |
 | name |-n,--Name |Název mezipaměti Azure pro Redis. |
 | skupina prostředků |-g,--Resource-Group |Název skupiny prostředků. |
 | location |-l,--Location |Umístění pro vytvoření mezipaměti |
-| velikost |– z,--velikost |Velikost mezipaměti Azure pro Redis. Platné hodnoty: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| size |– z,--velikost |Velikost mezipaměti Azure pro Redis. Platné hodnoty: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | skladové |-x,--SKU |Skladová položka Redis. Musí mít jednu z těchto: [Basic, Standard, Premium] |
 | EnableNonSslPort |-e,--Enable-bez SSL-port |Vlastnost EnableNonSslPort mezipaměti Azure pro Redis. Přidejte tento příznak, pokud chcete pro mezipaměť povolit port bez TLS/SSL. |
 | Konfigurace Redis |-c,--Redis-konfigurace |Konfigurace Redis. Sem zadejte řetězec konfiguračních klíčů a hodnot formátu JSON. Formát: "{" ":" "," ":" "}" |
@@ -50,9 +50,9 @@ Při vytváření a aktualizaci mezipaměti Azure pro instance Redis se použív
 | Počet horizontálních oddílů |-r,--horizontálních oddílů-Count |Počet horizontálních oddílů, které se mají vytvořit v mezipaměti clusteru Premium s clusteringem |
 | Virtual Network |-v,--Virtual-Network |Při hostování mezipaměti ve virtuální síti určuje přesné ID prostředku ARM virtuální sítě, ve kterém se nasadí mezipaměť Azure pro Redis. Příklad formátu:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | typ klíče |-t,--typ klíče |Typ klíče, který se má obnovit Platné hodnoty: [primární, sekundární] |
-| StaticIP |-p,--Static-IP\<static-ip\> |Při hostování mezipaměti ve virtuální síti určuje jedinečná IP adresa v podsíti pro mezipaměť. Pokud tato možnost není k dispozici, je pro vás z podsítě zvolena jedna. |
-| Podsíť |t,--Subnet\<subnet\> |Při hostování mezipaměti ve virtuální síti Určuje název podsítě, do které se má mezipaměť nasadit. |
-| VirtualNetwork |-v,--Virtual-Network\<virtual-network\> |Při hostování mezipaměti ve virtuální síti určuje přesné ID prostředku ARM virtuální sítě, ve kterém se nasadí mezipaměť Azure pro Redis. Příklad formátu:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p,--Static-IP \<static-ip\> |Při hostování mezipaměti ve virtuální síti určuje jedinečná IP adresa v podsíti pro mezipaměť. Pokud tato možnost není k dispozici, je pro vás z podsítě zvolena jedna. |
+| Podsíť |t,--Subnet \<subnet\> |Při hostování mezipaměti ve virtuální síti Určuje název podsítě, do které se má mezipaměť nasadit. |
+| VirtualNetwork |-v,--Virtual-Network \<virtual-network\> |Při hostování mezipaměti ve virtuální síti určuje přesné ID prostředku ARM virtuální sítě, ve kterém se nasadí mezipaměť Azure pro Redis. Příklad formátu:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Předplatné |-s,--předplatné |Identifikátor předplatného. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Zobrazit všechny příkazy Azure cache pro Redis

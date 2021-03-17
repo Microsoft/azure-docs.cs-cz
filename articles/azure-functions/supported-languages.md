@@ -3,12 +3,12 @@ title: Podporované jazyky v Azure Functions
 description: Seznamte se s podporovanými jazyky (GA), které jsou ve verzi Preview, a způsoby rozšiřování vývoje funkcí do jiných jazyků.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83994897"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108547"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
 
@@ -27,9 +27,9 @@ K dispozici jsou [tři verze modulu runtime Azure Functions](functions-versions.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-## <a name="custom-handlers-preview"></a>Vlastní obslužné rutiny (Preview) 
+## <a name="custom-handlers"></a>Vlastní obslužné rutiny
 
-Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají události od hostitele Azure Functions. Libovolný jazyk, který podporuje primitivní prvky HTTP, může implementovat vlastní obslužnou rutinu. To znamená, že vlastní obslužné rutiny lze použít k vytvoření funkcí v jazycích, které nejsou oficiálně podporovány. Další informace najdete v tématu [Azure Functions vlastní obslužné rutiny (Preview)](functions-custom-handlers.md).
+Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají události od hostitele Azure Functions. Libovolný jazyk, který podporuje primitivní prvky HTTP, může implementovat vlastní obslužnou rutinu. To znamená, že vlastní obslužné rutiny lze použít k vytvoření funkcí v jazycích, které nejsou oficiálně podporovány. Další informace najdete v tématu [Azure Functions vlastní obslužné rutiny](functions-custom-handlers.md).
 
 ## <a name="language-extensibility"></a>Jazyková rozšíření
 

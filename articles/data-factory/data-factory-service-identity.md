@@ -1,21 +1,17 @@
 ---
 title: Spravovaná identita pro Data Factory
 description: Přečtěte si o spravované identitě pro Azure Data Factory.
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0d3b551265a480a700f374ddfcf89dd4d93333f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037592"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389157"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -32,16 +28,16 @@ Při vytváření datové továrny je možné vytvořit spravovanou identitu spo
 Spravovaná identita pro Data Factory přináší následující funkce:
 
 - [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). v takovém případě se pro ověřování Azure Key Vault používá spravovaná identita Data Factory.
-- Konektory, včetně služby [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)a [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
+- Konektory, včetně služby [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)a [Azure synapse Analytics](connector-azure-sql-data-warehouse.md).
 - [Webové aktivity](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Generovat spravovanou identitu
 
 Spravovaná identita pro Data Factory je generována takto:
 
-- Při vytváření datové továrny prostřednictvím **Azure Portal nebo PowerShellu**se spravovaná identita vždycky automaticky vytvoří.
-- Při vytváření datové továrny prostřednictvím **sady SDK**se spravovaná identita vytvoří jenom v případě, že při vytváření objektu factory zadáte identity = New FactoryIdentity (). Viz příklad v tématu [rychlý Start .NET – vytvoření datové továrny](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Při vytváření datové továrny prostřednictvím **REST API**se spravovaná identita vytvoří jenom v případě, že v textu žádosti zadáte část identita. Viz příklad v [rychlém startu REST – vytvořit datovou továrnu](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Při vytváření datové továrny prostřednictvím **Azure Portal nebo PowerShellu** se spravovaná identita vždycky automaticky vytvoří.
+- Při vytváření datové továrny prostřednictvím **sady SDK** se spravovaná identita vytvoří jenom v případě, že při vytváření objektu factory zadáte identity = New FactoryIdentity (). Viz příklad v tématu [rychlý Start .NET – vytvoření datové továrny](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Při vytváření datové továrny prostřednictvím **REST API** se spravovaná identita vytvoří jenom v případě, že v textu žádosti zadáte část identita. Viz příklad v [rychlém startu REST – vytvořit datovou továrnu](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
 Pokud zjistíte, že objekt pro vytváření dat nemá přidruženu spravovanou identitu po [načtení spravované instrukce identity](#retrieve-managed-identity) , můžete ji explicitně vygenerovat tak, že programově aktualizujete datovou továrnu pomocí iniciátoru identity.
 
@@ -57,7 +53,7 @@ Pokud zjistíte, že objekt pro vytváření dat nemá přidruženu spravovanou 
 
 ### <a name="generate-managed-identity-using-powershell"></a>Generování spravované identity pomocí PowerShellu
 
-Znovu spusťte příkaz **set-AzDataFactoryV2** , zobrazí se nově vygenerovaná pole identity:
+Příkaz **set-AzDataFactoryV2** , zobrazí se nově vygenerovaná pole identity:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -252,4 +248,4 @@ Podívejte se na následující témata, která obsahují informace o tom, kdy a
 - [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopírování dat z/do Azure Data Lake Store používáním spravovaných identit pro ověřování prostředků Azure](connector-azure-data-lake-store.md)
 
-V tématu [Přehled spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview) najdete další informace o spravovaných identitách pro prostředky Azure, na kterých je založena identita spravované datovou továrnou. 
+V tématu [Přehled spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) najdete další informace o spravovaných identitách pro prostředky Azure, na kterých je založena identita spravované datovou továrnou.

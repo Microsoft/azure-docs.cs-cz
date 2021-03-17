@@ -4,11 +4,11 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 02/05/2019
 ms.author: sgilley
-ms.openlocfilehash: a5f02bee95bc38fec934beda12bf9f8abb048307
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b274307f61eee8b67771f49173dd235bf282a41
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175422"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026349"
 ---
-Pokud už nepotřebujete prostředky, které jste vytvořili pomocí tohoto článku, odstraňte je, abyste se vyhnuli poplatkům. Naučte se, jak v článku [exportovat a odstranit data uživatelů v produktu](../articles/machine-learning/studio/export-delete-personal-data-dsr.md#delete).
+Pokud už nepotřebujete prostředky, které jste vytvořili pomocí tohoto článku, odstraňte je, abyste se vyhnuli poplatkům. Naučte se, jak v článku [exportovat a odstranit data uživatelů v produktu](../articles/machine-learning/classic/export-delete-personal-data-dsr.md#delete).

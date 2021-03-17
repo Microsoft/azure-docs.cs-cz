@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Stack Edge a Data Box Gateway – online přenos
-summary: Zařízení Azure Stack Edge a Azure Data Box Gateway použijte pro velké datové přenosy prostřednictvím sítě. Pokud chcete odesílat data pro cloudovou archivaci nebo zotavení po havárii nebo zpracovávat data v cloudovém měřítku, zvolte Data Box Gateway. Pokud chcete data před přenosem do Azure filtrovat, analyzovat a transformovat, použijte Azure Stack Edge. Služba Azure Data Box Edge se nedávno změnila na Azure Stack Edge.
+title: Dokumentace ke službě Azure Stack Edge
+summary: Pomocí zařízení Azure Stack Edge můžete doručovat možnosti Azure, jako jsou výpočetní funkce, úložiště, sítě a strojového učení s hardwarovou akcelerací, do libovolného hraničního umístění.
 metadata:
-  title: Dokumentace ke službě Azure Stack Edge a Data Box Gateway – online přenos
-  description: Dokumentace ke službě Data Box Gateway a Azure Stack Edge (dříve Data Box Edge) pro velké datové přenosy prostřednictvím sítě do Azure
+  title: Dokumentace ke službě Azure Stack Edge
+  description: Dokumentace ke službě Azure Stack Edge pro vysoce výkonné přenosy dat prostřednictvím sítě do Azure
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,52 +11,58 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 11/04/2019
-  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-  ms.translationtype: HT
+  ms.date: 10/27/2020
+  ms.openlocfilehash: 5ec423338b913bfab56212dcb801fa4097557d8b
+  ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562351"
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "102630312"
 landingContent:
-- title: Informace o službě Azure Stack Edge a Data Box Gateway
+- title: Informace o službě Azure Stack Edge
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je Data Box Gateway?
-      url: data-box-gateway-overview.md
-    - text: Co je Azure Stack Edge?
+    - text: Co je Azure Stack Edge Pro GPU?
+      url: azure-stack-edge-gpu-overview.md
+    - text: Co je Azure Stack Edge Pro FPGA?
       url: azure-stack-edge-overview.md
+    - text: Co je Azure Stack Edge R?
+      url: azure-stack-edge-j-series-overview.md
+    - text: Co je Azure Stack Edge Mini R?
+      url: azure-stack-edge-mini-r-overview.md
   - linkListType: architecture
     links:
     - text: Volba možností přenosu dat v Azure
-      url: /azure/storage/common/storage-choose-data-transfer-solution
+      url: ../storage/common/storage-choose-data-transfer-solution.md
     - text: Použití síťového nebo offline přenosu
-      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+      url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: Poznámky k verzi 1905
-      url: data-box-gateway-1905-release-notes.md
+    - text: zpráva k vydání verze 2101
+      url: azure-stack-edge-gpu-2101-release-notes.md
 - title: Požadavky a omezení
   linkLists:
   - linkListType: concept
     links:
-    - text: Požadavky pro službu Data Box Gateway
-      url: data-box-gateway-system-requirements.md
-    - text: Požadavky pro službu Azure Stack Edge
-      url: azure-stack-edge-system-requirements.md
-    - text: Omezení služby Data Box Gateway
-      url: data-box-gateway-limits.md
-    - text: Omezení služby Azure Stack Edge
+    - text: Požadavky pro Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Požadavky pro Azure Stack Edge Pro FPGA
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Omezení pro Azure Stack Edge Pro
       url: azure-stack-edge-limits.md
 - title: Nasazení
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Data Box Gateway
-      url: data-box-gateway-deploy-prep.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-deploy-prep.md
+    - text: Zobrazení kontrolního seznamu před nasazením
+      url: azure-stack-edge-gpu-deploy-checklist.md
+    - text: Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-deploy-prep.md
+    - text: Modul GPU přes marketplace
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: Úlohy Kubernetes přes IoT Edge
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
 - title: Vývoj
   linkLists:
   - linkListType: how-to-guide
@@ -65,31 +71,27 @@ landingContent:
       url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: Ukázky – C# pro Azure Stack Edge
-      url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
-- title: Správa
+    - text: Ukázky – C# pro Azure Stack Edge Pro GPU
+      url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+- title: Spravovat
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Sdílené složky služby Data Box Gateway
-      url: data-box-gateway-manage-shares.md
-    - text: Sdílené složky služby Azure Stack Edge
+    - text: Sdílené složky pro Azure Stack Edge Pro
       url: azure-stack-edge-manage-shares.md
     - text: Výpočetní funkce Edge
       url: azure-stack-edge-manage-compute.md
-    - text: Síť výpočetních funkcí Edge
-      url: azure-stack-edge-extend-compute-access-modules.md
+    - text: Účty úložiště Edge
+      url: azure-stack-edge-gpu-manage-storage-accounts.md
 - title: Řešení potíží
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box Gateway
-      url: data-box-gateway-troubleshoot.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-troubleshoot.md
+    - text: Azure Stack Edge GPU
+      url: azure-stack-edge-gpu-troubleshoot.md
     - text: Moduly výpočetních funkcí Edge
-      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: Vrácení nebo náhrada služby Azure Stack Edge
+      url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
+    - text: Vrácení zařízení Azure Stack Edge GPU
       url: azure-stack-edge-return-device.md
     - text: Otevření lístku podpory
       url: azure-stack-edge-contact-microsoft-support.md

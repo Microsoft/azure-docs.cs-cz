@@ -1,24 +1,19 @@
 ---
 title: Přehled virtuálních počítačů s funkcí HC-Series – Azure Virtual Machines | Microsoft Docs
 description: Přečtěte si o podpoře verze Preview pro velikost virtuálního počítače s rozhraním HC-Series v Azure.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: hpc
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689795"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666073"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Základní informace o virtuálním počítači řady HC-Series
 
@@ -45,7 +40,7 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 | Cores                            | 44 (HT-zakázáno)                 |
 | Procesor                              | Intel Xeon Platinum 8168         |
 | Frekvence procesoru (ne AVX)          | 3,7 GHz (Single core), 2.7-3.4 GHz (všechny jádra) |
-| Paměť                           | 8 GB/jádro (352 celkem)            |
+| Memory (Paměť)                           | 8 GB/jádro (352 celkem)            |
 | Místní disk                       | 700 GB SSD                       |
 | InfiniBand                       | 100 GB EDR Mellanox ConnectX-5   |
 | Síť                          | 50 GB Ethernet (40 GB použitelné) Azure Second gen SmartNIC    |
@@ -63,6 +58,6 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [architektuře Intel Xeon SP](https://bit.ly/2RCYkiE).
+- Přečtěte si další informace o [architektuře Intel Xeon SP](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html).
 - Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

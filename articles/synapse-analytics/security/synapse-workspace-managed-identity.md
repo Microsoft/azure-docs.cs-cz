@@ -5,17 +5,17 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07244f28a345bc3290762c657c2189941009faac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7790bc2895449e8ab21cbd30d7da0e5529eb0562
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077743"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670683"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Spravovaná identita v pracovním prostoru Azure synapse (Preview)
+# <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita pracovního prostoru Azure Synapse
 
 V tomto článku se dozvíte o spravované identitě v pracovním prostoru Azure synapse.
 
@@ -23,16 +23,16 @@ V tomto článku se dozvíte o spravované identitě v pracovním prostoru Azure
 
 Spravovaná identita pro prostředky Azure je funkcí Azure Active Directory. Tato funkce poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Možnost spravované identity můžete použít k ověření u libovolné služby, která podporuje ověřování Azure AD.
 
-Spravované identity pro prostředky Azure jsou novým názvem pro službu, která se dřív jmenovala jako Identita spravované služby (MSI). Další informace najdete v tématu [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Spravované identity pro prostředky Azure jsou novým názvem pro službu, která se dřív jmenovala jako Identita spravované služby (MSI). Další informace najdete v tématu [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md) .
 
-## <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita v pracovním prostoru Azure synapse
+## <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita pracovního prostoru Azure Synapse
 
-Při vytváření pracovního prostoru se vytvoří spravovaná identita přiřazená systémem pro váš pracovní prostor Azure synapse.
+Při vytvoření pracovního prostoru Azure Synapse se pro pracovní prostor vytvoří spravovaná identita přiřazená systémem.
 
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
 
-Azure synapse používá spravovanou identitu k orchestraci kanálů. Životní cyklus spravované identity je přímo vázaný na pracovní prostor Azure synapse. Pokud pracovní prostor Azure synapse odstraníte, vyčistí se i spravovaná identita.
+Azure synapse používá spravovanou identitu k integraci kanálů. Životní cyklus spravované identity je přímo vázaný na pracovní prostor Azure synapse. Pokud pracovní prostor Azure synapse odstraníte, vyčistí se i spravovaná identita.
 
 Identita spravovaná pracovním prostorem potřebuje oprávnění k provádění operací v kanálech. K vyhledání spravované identity při udělování oprávnění můžete použít ID objektu nebo název vašeho pracovního prostoru Azure synapse.
 
@@ -58,4 +58,4 @@ V dalším okně vyberte možnost **spravovaná identita** pro **metodu ověřov
 
 ## <a name="next-steps"></a>Další kroky
 
-[Udělení oprávnění spravované identitě Azure synapse Workspace](./how-to-grant-workspace-managed-identity-permissions.md)
+Další informace o [udělování oprávnění ke spravované identitě Azure synapse Workspace](./how-to-grant-workspace-managed-identity-permissions.md)

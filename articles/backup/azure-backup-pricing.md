@@ -1,181 +1,181 @@
 ---
 title: Ceny služby Azure Backup
-description: Naučte se odhadnout náklady na rozpočtování Azure Backup cen.
+description: Zjistěte, jak odhadnout náklady na službu Azure Backup, abyste mohli naplánovat rozpočet.
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654527"
 ---
 # <a name="azure-backup-pricing"></a>Ceny služby Azure Backup
 
-Další informace o cenách Azure Backup najdete na [stránce Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
+Další informace o cenách služby Azure Backup najdete na [stránce s cenami služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
-## <a name="download-detailed-estimates-for-azure-backup-pricing"></a>Stažení podrobných odhadů pro Azure Backup ceny
+## <a name="download-detailed-estimates-for-azure-backup-pricing"></a>Stažení podrobných odhadů cen služby Azure Backup
 
-Pokud chcete odhadnout náklady na rozpočtování a porovnání nákladů, Stáhněte si podrobné [Azure Backup cenové Estimator](https://aka.ms/AzureBackupCostEstimates).  
+Pokud chcete odhadnout náklady pro účely plánování rozpočtu nebo porovnání nákladů, stáhněte si podrobný [kalkulátor cen služby Azure Backup](https://aka.ms/AzureBackupCostEstimates).  
 
-### <a name="what-does-the-estimator-contain"></a>Co Estimator obsahuje?
+### <a name="what-does-the-estimator-contain"></a>Co kalkulátor obsahuje?
 
-List Azure Backup cost Estimator má možnost odhadnout všechny možné úlohy, které se snažíte zálohovat pomocí Azure Backup. Mezi tyto úlohy patří:
+Tabulka kalkulátoru nákladů na službu Azure Backup nabízí možnosti pro odhad nákladů na všechny možné úlohy, které můžete chtít zálohovat pomocí služby Azure Backup. Mezi tyto úlohy patří:
 
 - Virtuální počítače Azure
 - Místní servery
-- SQL ve virtuálních počítačích Azure
-- SAP HANA ve virtuálních počítačích Azure
-- Sdílené složky Azure Files
+- SQL na virtuálních počítačích Azure
+- SAP HANA na virtuálních počítačích Azure
+- Sdílené složky Azure
 
 ## <a name="estimate-costs-for-backing-up-azure-vms-or-on-premises-servers"></a>Odhad nákladů na zálohování virtuálních počítačů Azure nebo místních serverů
 
-Pokud chcete odhadnout náklady na zálohování virtuálních počítačů Azure nebo místních serverů pomocí Azure Backup, budete potřebovat následující parametry:
+Pokud chcete získat odhad nákladů na zálohování virtuálních počítačů Azure nebo místních serverů pomocí služby Azure Backup, budete potřebovat následující parametry:
 
 - Velikost virtuálních počítačů nebo místních serverů, které se pokoušíte zálohovat
-  - Zadejte "použitou velikost" disků nebo serverů potřebných k zálohování.
+  - Zadejte využitou velikost disků nebo serverů, které je potřeba zálohovat.
 
 - Počet serverů s touto velikostí
 
-- Jaké jsou očekávané množství změn dat na těchto serverech?<br>
-  Změny odkazují na množství změn v datech. Pokud byste například měli virtuální počítač s 200 GB dat, která se mají zálohovat, a 10 GB změn se každý den změní, denní změna je 5%.
+- Jaká je očekávaná četnost změn dat na těchto serverech?<br>
+  Četnost změn odkazuje na množství změn dat. Například pokud máte virtuální počítač s 200 GB dat, která se mají zálohovat, a každý den se změní 10 GB těchto dat, denní četnost změn je 5 %.
 
-  - Vyššími změnami bude znamenat, že zálohujete další data.
+  - Vyšší četnost změn znamená, že zálohujete více dat.
 
-  - Zvolte **Nízká** nebo **střední** pro souborové servery a **vysokou** , pokud používáte databáze.
+  - Pro souborové servery vyberte **nízkou** nebo **střední** četnost změn, a pokud používáte databáze, vyberte **vysokou** četnost změn.
 
-  - Pokud víte, že vaše změny jsou v **procentech**, můžete použít možnost **zadat vlastní%** .
+  - Pokud znáte vaši **procentní četnost změn**, můžete použít možnost **Zadat vlastní procentní hodnotu**.
 
-- Zvolit zásadu zálohování
+- Zvolte zásady zálohování.
 
-  - Jak dlouho očekáváte uchovávání každodenních záloh? (ve dnech)
+  - Jak dlouho očekáváte, že se budou uchovávat denní zálohy? (ve dnech)
 
-  - Jak dlouho očekáváte, že se mají uchovat zálohy "týdně"? (v týdnech)
+  - Jak dlouho očekáváte, že se budou uchovávat týdenní zálohy? (v týdnech)
 
-  - Jak dlouho očekáváte zachování "měsíčních" záloh? (v měsících)
+  - Jak dlouho očekáváte, že se budou uchovávat měsíční zálohy? (v měsících)
 
-  - Jak dlouho očekáváte, že se mají uchovávat roční zálohy? (v letech)
+  - Jak dlouho očekáváte, že se budou uchovávat roční zálohy? (v letech)
 
-  - Jak dlouho očekáváte, že se mají zachovat snímky pro okamžité obnovení? (1-5 dní)
+  - Jak dlouho očekáváte, že se budou uchovávat snímky pro okamžité obnovení? (1–5 dnů)
 
-    - Tato možnost umožňuje rychlé obnovení z až sedmi dnů pomocí snímků uložených na discích.
+    - Tato možnost umožňuje rychle provést obnovení pomocí snímků uložených na discích, a to až sedm dnů nazpět.
 
-- **Volitelné** – selektivní zálohování disku
+- **Volitelné** – Selektivní zálohování disků
 
-  - Pokud při zálohování virtuálních počítačů Azure používáte možnost **zálohování na disk** , vyberte možnost **vyloučit disk** a zadejte procento disků vyloučených ze zálohy s ohledem na velikost. Například pokud máte virtuální počítač připojený ke třem diskům s 200 GB, který se používá na každém disku, a pokud chcete vyloučit dva z nich z zálohování, zadejte 66,7%.
+  - Pokud při zálohování virtuálních počítačů Azure využíváte možnost **Selektivní zálohování disků**, zvolte možnost **Vyloučit disk** a zadejte procento disků vyloučených ze zálohování z hlediska velikosti. Například pokud máte virtuální počítač připojený ke třem diskům s využitou velikostí 200 GB a chcete dva z nich vyloučit ze zálohování, zadejte 66,7 %.
 
-- **Volitelné** – redundance záložního úložiště
+- **Volitelné** – Redundance úložiště zálohování
 
-  - To indikuje redundanci účtu úložiště, do kterého se data zálohují. K nejvyšší dostupnosti doporučujeme používat **GRS** . Vzhledem k tomu, že je kopie zálohovaných dat uchována v jiné oblasti, pomáhá splnit několik standardů dodržování předpisů. Pokud zálohujete vývojové nebo testovací prostředí, která nepotřebují zálohování na podnikové úrovni, změňte redundanci na **LRS** . V listu vyberte možnost **RAGRS** , pokud chcete pochopit náklady v případě, že je pro vaše zálohování povoleno [obnovení mezi oblastmi](backup-azure-arm-restore-vms.md#cross-region-restore) .
+  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS**. Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS**. Pokud chcete porozumět nákladům při povolení [obnovení záloh mezi oblastmi](backup-azure-arm-restore-vms.md#cross-region-restore), vyberte v tabulce možnost **RA-GRS**.
 
-- **Volitelné** – změňte regionální ceny nebo použijte zvýhodněné sazby.
+- **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
 
-  - Pokud chcete kontrolovat odhady pro jinou oblast nebo zlevněné sazby, vyberte u **odhadů vyzkoušet pro jinou oblast** možnost **Ano** a zadejte sazby, u kterých chcete spustit odhady.
+  - Pokud si chcete projít odhady pro jinou oblast nebo zvýhodněné sazby, u možnosti **Vyzkoušet odhady pro jinou oblast?** vyberte **Ano** a zadejte sazby, pro které chcete získat odhady.
 
-## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Odhad nákladů na zálohování SQL serverů ve virtuálních počítačích Azure
+## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Odhad nákladů na zálohování SQL Serverů na virtuálních počítačích Azure
 
-Pokud chcete odhadnout náklady na zálohování SQL serverů běžících na virtuálních počítačích Azure pomocí Azure Backup, budete potřebovat následující parametry:
+Pokud chcete získat odhad nákladů na zálohování SQL Serverů na virtuálních počítačích Azure pomocí služby Azure Backup, budete potřebovat následující parametry:
 
-- Velikost serverů SQL, na které se pokoušíte zálohovat
+- Velikost SQL Serverů, které se pokoušíte zálohovat
 
-- Počet serverů SQL s výše uvedenou velikostí
+- Počet SQL Serverů s výše uvedenou velikostí
 
-- Jaká je očekávaná komprese zálohovaných dat SQL serveru?
+- Jaká je očekávaná komprese zálohovaných dat vašich SQL Serverů?
 
-  - Většina Azure Backup zákazníkům uvidí, že data zálohy mají v porovnání s velikostí SQL serveru v době, kdy je **povolená**komprese SQL, kompresi 80%.
+  - Většina zákazníků se službou Azure Backup při **povolení** komprese SQL zaznamená 80% kompresi zálohovaných dat v porovnání s původní velikostí SQL Serveru.
 
-  - Pokud očekáváte, že se zobrazí jiná komprese, zadejte číslo do tohoto pole.
+  - Pokud očekáváte jinou úroveň komprese, zadejte do tohoto pole příslušné číslo.
 
-- Jaká je očekávaná velikost záloh protokolu?
+- Jaká je očekávaná velikost záloh protokolů?
 
-  - % Označuje denní velikost protokolu jako% velikosti SQL serveru.
+  - Tato procentní hodnota značí denní velikost protokolů jako procento velikosti SQL Serveru.
 
-- Jaké je očekávané množství každodenních změn dat na těchto serverech?
+- Jaká je očekávaná denní četnost změn dat na těchto serverech?
 
-  - Databáze obvykle mají "vysokou" četnost změn.
+  - Databáze obvykle mají vysokou četnost změn.
 
-  - Pokud víte, že vaše změny jsou v **procentech**, můžete použít možnost **zadat vlastní%** .
+  - Pokud znáte vaši **procentní četnost změn**, můžete použít možnost **Zadat vlastní procentní hodnotu**.
 
-- Zvolit zásadu zálohování
+- Zvolte zásady zálohování.
 
   - Typ zálohování
 
-    - Nejúčinnější zásady, které si můžete vybrat, jsou **denní rozdíly** s týdenním/měsíčním/ročním úplným zálohováním. Azure Backup lze obnovit z rozdílů také pomocí jediného kliknutí.
+    - Nejefektivnější zásady, které můžete vybrat, jsou **Denní rozdílové zálohování** s týdenním, měsíčním nebo ročním úplným zálohováním. Azure Backup umožňuje obnovení jedním kliknutím i z rozdílových záloh.
 
-    - Můžete se také rozhodnout, že budete mít k dispozici zásadu s úplnými zálohami denně, týdně nebo měsíčně. Tato možnost spotřebuje mírně větší úložiště než první možnost.
+    - Můžete zvolit také zásady s denním, týdenním, měsíčním nebo ročním úplným zálohováním. Tato možnost bude využívat o něco více úložiště než první možnost.
 
-  - Jak dlouho očekáváte uchovávání záloh protokolu? (ve dnech) [7-35]
+  - Jak dlouho očekáváte, že se budou uchovávat zálohy protokolů? (ve dnech) [7–35]
 
-  - Jak dlouho očekáváte uchovávání každodenních záloh? (ve dnech)
+  - Jak dlouho očekáváte, že se budou uchovávat denní zálohy? (ve dnech)
 
-  - Jak dlouho očekáváte, že se mají uchovat zálohy "týdně"? (v týdnech)
+  - Jak dlouho očekáváte, že se budou uchovávat týdenní zálohy? (v týdnech)
 
-  - Jak dlouho očekáváte zachování "měsíčních" záloh? (v měsících)
+  - Jak dlouho očekáváte, že se budou uchovávat měsíční zálohy? (v měsících)
 
-  - Jak dlouho očekáváte, že se mají uchovávat roční zálohy? (v letech)
+  - Jak dlouho očekáváte, že se budou uchovávat roční zálohy? (v letech)
 
-- **Volitelné** – redundance záložního úložiště
+- **Volitelné** – Redundance úložiště zálohování
 
-  - To indikuje redundanci účtu úložiště, do kterého se data zálohují. K nejvyšší dostupnosti doporučujeme používat **GRS** . Vzhledem k tomu, že je kopie zálohovaných dat uchována v jiné oblasti, pomáhá splnit několik standardů dodržování předpisů. Pokud zálohujete vývojové nebo testovací prostředí, která nepotřebují zálohování na podnikové úrovni, změňte redundanci na **LRS** .
+  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS**. Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS**.
 
-- **Volitelné** – změňte regionální ceny nebo použijte zvýhodněné sazby.
+- **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
 
-  - Pokud chcete kontrolovat odhady pro jinou oblast nebo zlevněné sazby, vyberte u **odhadů vyzkoušet pro jinou oblast** možnost **Ano** a zadejte sazby, u kterých chcete spustit odhady.
+  - Pokud si chcete projít odhady pro jinou oblast nebo zvýhodněné sazby, u možnosti **Vyzkoušet odhady pro jinou oblast?** vyberte **Ano** a zadejte sazby, pro které chcete získat odhady.
 
-## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Odhad nákladů na zálohování SAP HANA serverů ve virtuálních počítačích Azure
+## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Odhad nákladů na zálohování serverů SAP HANA na virtuálních počítačích Azure
 
-Pokud chcete odhadnout náklady na zálohování SAP HANA serverů běžících na virtuálních počítačích Azure pomocí Azure Backup, budete potřebovat následující parametry:
+Pokud chcete získat odhad nákladů na zálohování serverů SAP HANA na virtuálních počítačích Azure pomocí služby Azure Backup, budete potřebovat následující parametry:
 
-- Celková velikost SAP HANAch databází, které se pokoušíte zálohovat Mělo by se jednat o součet velikosti úplných záloh každé databáze, jak je uvedeno SAP HANA.
-- Počet SAP HANA serverů s výše uvedenou velikostí
-- Jaká je očekávaná velikost záloh protokolu?
+- Celková velikost databází SAP HANA, které se pokoušíte zálohovat. Mělo by se jednat o součet velikostí úplných záloh všech databází, jak uvádí SAP HANA.
+- Počet serverů SAP HANA s výše uvedenou velikostí
+- Jaká je očekávaná velikost záloh protokolů?
   
-  - % Udává průměrnou velikost denního protokolu jako% celkové velikosti SAP HANA databází, které zálohujete na SAP HANA serveru.
-- Jaké je očekávané množství každodenních změn dat na těchto serverech?
-  - % Indikuje průměrnou velikost denních změn jako% celkové velikosti SAP HANA databází, které zálohujete na SAP HANA serveru.
-  - Databáze obvykle mají "vysokou" četnost změn.
-  - Pokud víte, že vaše změny jsou v **procentech**, můžete použít možnost **zadat vlastní%** .
-- Zvolit zásadu zálohování
+  - Tato procentní hodnota značí průměrnou denní velikost protokolů jako procento celkové velikosti databází SAP HANA, které zálohujete na serveru SAP HANA.
+- Jaká je očekávaná denní četnost změn dat na těchto serverech?
+  - Tato procentní hodnota značí průměrnou denní četnost změn jako procento celkové velikosti databází SAP HANA, které zálohujete na serveru SAP HANA.
+  - Databáze obvykle mají vysokou četnost změn.
+  - Pokud znáte vaši **procentní četnost změn**, můžete použít možnost **Zadat vlastní procentní hodnotu**.
+- Zvolte zásady zálohování.
   - Typ zálohování
-    - Nejúčinnější zásady, které si můžete vybrat, jsou **denní rozdíly** s **týdenním/měsíčním/ročním** úplným zálohováním. Azure Backup lze obnovit z rozdílů také pomocí jediného kliknutí.
-    - Můžete se také rozhodnout, že budete mít k dispozici zásadu s úplnými zálohami **denně, týdně nebo měsíčně** . Tato možnost spotřebuje mírně větší úložiště než první možnost.
-  - Jak dlouho očekáváte uchovávání záloh protokolu? (ve dnech) [7-35]
-  - Jak dlouho očekáváte uchovávání každodenních záloh? (ve dnech)
-  - Jak dlouho očekáváte, že se mají uchovat zálohy "týdně"? (v týdnech)
-  - Jak dlouho očekáváte zachování "měsíčních" záloh? (v měsících)
-  - Jak dlouho očekáváte, že se mají uchovávat roční zálohy? (v letech)
-- **Volitelné** – redundance záložního úložiště
+    - Nejefektivnější zásady, které můžete vybrat, jsou **Denní rozdílové zálohování** s **týdenním, měsíčním nebo ročním** úplným zálohováním. Azure Backup umožňuje obnovení jedním kliknutím i z rozdílových záloh.
+    - Můžete zvolit také zásady s **denním, týdenním, měsíčním nebo ročním** úplným zálohováním. Tato možnost bude využívat o něco více úložiště než první možnost.
+  - Jak dlouho očekáváte, že se budou uchovávat zálohy protokolů? (ve dnech) [7–35]
+  - Jak dlouho očekáváte, že se budou uchovávat denní zálohy? (ve dnech)
+  - Jak dlouho očekáváte, že se budou uchovávat týdenní zálohy? (v týdnech)
+  - Jak dlouho očekáváte, že se budou uchovávat měsíční zálohy? (v měsících)
+  - Jak dlouho očekáváte, že se budou uchovávat roční zálohy? (v letech)
+- **Volitelné** – Redundance úložiště zálohování
   
-  - To indikuje redundanci účtu úložiště, do kterého se data zálohují. K nejvyšší dostupnosti doporučujeme používat **GRS** . Vzhledem k tomu, že je kopie zálohovaných dat uchována v jiné oblasti, pomáhá splnit několik standardů dodržování předpisů. Pokud zálohujete vývojové nebo testovací prostředí, která nepotřebují zálohování na podnikové úrovni, změňte redundanci na **LRS** .
-- **Volitelné** – změňte regionální ceny nebo použijte zvýhodněné sazby.
+  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS**. Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS**.
+- **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
   
-  - Pokud chcete kontrolovat odhady pro jinou oblast nebo zlevněné sazby, vyberte u **odhadů vyzkoušet pro jinou oblast** možnost **Ano** a zadejte sazby, u kterých chcete spustit odhady.
+  - Pokud si chcete projít odhady pro jinou oblast nebo zvýhodněné sazby, u možnosti **Vyzkoušet odhady pro jinou oblast?** vyberte **Ano** a zadejte sazby, pro které chcete získat odhady.
   
-## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Odhadované náklady na zálohování sdílených složek Azure
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Odhad nákladů na zálohování sdílených složek Azure
 
-Pokud chcete odhadnout náklady na zálohování sdílených složek Azure pomocí [řešení zálohování založeného na snímku](azure-file-share-backup-overview.md) , které nabízí Azure Backup, budete potřebovat následující parametry:
+Pokud chcete získat odhad nákladů na zálohování sdílených složek Azure pomocí [řešení zálohování založeného na snímcích](azure-file-share-backup-overview.md), které nabízí Azure Backup, budete potřebovat následující parametry:
 
-- Velikost (**v GB**) sdílených složek souborů, které chcete zálohovat.
+- Velikost (**v GB**) sdílených složek, které chcete zálohovat.
 
-- Pokud chcete zálohovat sdílené složky mezi několika účty úložiště, určete počet účtů úložiště, které hostují sdílené složky s výše uvedenou velikostí.
+- Pokud chcete zálohovat sdílené složky rozprostřené mezi několika účty úložiště, zadejte počet účtů úložiště, které jsou hostiteli sdílených složek s výše uvedenou velikostí.
 
-- U sdílených složek, které chcete zálohovat, se očekávalo množství změn dat. <br>Změny odkazují na množství změn v datech a přímo ovlivní velikost úložiště snímků. Například pokud máte sdílenou složku s 200 GB dat, která se mají zálohovat, a 10 GB změn se každý den změní, denní změna je 5%.
-  - Vyšší změna znamená, že množství změn dat v obsahu sdílené složky každý den je vysoké, takže přírůstkový snímek (zachytávání pouze změn dat) by měl být také větší.
-  - Vyberte nízká (1%), střední (3%) nebo vysoká (5%) podle vlastností a využití sdílené složky.
-  - Pokud **znáte přesnou** variantu pro sdílenou složku, můžete v rozevíracím seznamu vybrat možnost **zadat vlastní%** . Zadejte hodnoty (v%) pro denní, týdenní, měsíční a roční změny.
+- Očekávaná četnost změn dat ve sdílených složkách, které chcete zálohovat <br>Četnost změn odkazuje na množství změn dat a přímo ovlivňuje velikost úložiště snímků. Například pokud máte sdílenou složku s 200 GB dat, která se mají zálohovat, a každý den se změní 10 GB těchto dat, denní četnost změn je 5 %.
+  - Vyšší četnost změn znamená velké množství denních změn dat v obsahu sdílených složek, což způsobuje také větší velikost přírůstkových snímků (zachytávajících pouze změny dat).
+  - V závislosti na charakteristice a využití vašich sdílených složek vyberte nízkou (1 %), střední (3 %) nebo vysokou (5 %) četnost změn.
+  - Pokud znáte přesnou **procentní četnost změn** ve vaší sdílené složce, můžete v rozevírací nabídce vybrat možnost **Zadat vlastní procentní hodnotu**. Zadejte hodnoty (v procentech) denní, týdenní, měsíční a roční četnosti změn.
 
-- Zadejte účet úložiště (Standard nebo Premium) a nastavení redundance úložiště účtu úložiště hostujícího zálohovanou sdílenou složku. <br>V aktuálním řešení zálohování pro sdílené složky Azure se snímky ukládají do stejného účtu úložiště jako zálohovaná sdílená složka. Takže náklady na úložiště spojené s snímky se účtují jako součást služby soubory Azure, a to na základě cen snímků pro typ účtu a nastavení redundance účtu úložiště hostujícího zálohovanou sdílenou složku a snímky.
+- Typ účtu úložiště (Standard nebo Premium) a nastavení redundance úložiště účtu úložiště, který je hostitelem zálohované sdílené složky <br>V aktuálním řešení zálohování sdílených složek Azure se snímky ukládají ve stejném účtu úložiště jako zálohovaná sdílená složka. Proto se náklady na úložiště spojené se snímky účtují v rámci faktury za Azure Files, a to v závislosti na cenách snímků pro typ účtu a nastavení redundance účtu úložiště, který je hostitelem zálohovaných sdílených složek a snímků.
 
-- Uchovávání pro různé zálohy
-  - Jak dlouho očekáváte uchovávání každodenních záloh? (ve dnech)
-  - Jak dlouho očekáváte, že se mají uchovat zálohy "týdně"? (v týdnech)
-  - Jak dlouho očekáváte zachování "měsíčních" záloh? (v měsících)
-  - Jak dlouho očekáváte, že se mají uchovávat roční zálohy? (v letech)
+- Uchovávání různých záloh
+  - Jak dlouho očekáváte, že se budou uchovávat denní zálohy? (ve dnech)
+  - Jak dlouho očekáváte, že se budou uchovávat týdenní zálohy? (v týdnech)
+  - Jak dlouho očekáváte, že se budou uchovávat měsíční zálohy? (v měsících)
+  - Jak dlouho očekáváte, že se budou uchovávat roční zálohy? (v letech)
 
-  Maximální podporované hodnoty uchování v každé kategorii najdete v [matici podpory Azure File Share support](azure-file-share-support-matrix.md#retention-limits) .
+  Maximální hodnoty doby uchovávání v jednotlivých kategoriích najdete v [matici podpory pro sdílené složky Azure](azure-file-share-support-matrix.md#retention-limits).
 
-- **Volitelné** – změňte regionální ceny nebo použijte zvýhodněné sazby.
-  - Výchozí hodnoty nastavené pro náklady na úložiště snímků za GB a náklady na chráněnou instanci ve Estimator jsou pro oblast Východní USA. Pokud chcete kontrolovat své odhady pro jinou oblast nebo zlevněné sazby, vyberte u možnosti **vyzkoušet odhady pro jinou oblast?** možnost **Ano** a zadejte sazby, u kterých chcete odhady spustit.
+- **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
+  - Výchozí hodnoty nastavené pro náklady na úložiště snímků za GB a náklady na chráněné instance v kalkulátoru se vztahují na oblast USA – východ. Pokud si chcete projít odhady pro jinou oblast nebo zvýhodněné sazby, u možnosti **Vyzkoušet odhady pro jinou oblast?** vyberte **Ano** a zadejte sazby, pro které chcete získat odhady.
 
 ## <a name="next-steps"></a>Další kroky
 

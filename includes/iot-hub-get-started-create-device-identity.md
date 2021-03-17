@@ -7,17 +7,17 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
-ms.custom: include file
-ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: b1a863498603006e37ab98b838ffd426b962d788
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78892952"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756084"
 ---
 V této části pomocí Azure CLI vytvoříte identitu zařízení pro tento článek. V ID zařízení se rozlišují malá a velká písmena.
 
-1. Otevřete službu [Azure Cloud Shell](https://shell.azure.com/).
+1. Otevřete [Azure Cloud Shell](https://shell.azure.com/).
 
 1. V Azure Cloud Shell spusťte následující příkaz, který nainstaluje Microsoft Azure IoT rozšíření pro Azure CLI:
 

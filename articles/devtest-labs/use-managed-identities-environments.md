@@ -3,43 +3,46 @@ title: Použití spravovaných identit Azure k vytváření prostředí v DevTes
 description: Naučte se používat spravované identity v Azure k nasazení prostředí v testovacím prostředí v Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478871"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185780"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Použití spravovaných identit Azure k nasazení prostředí v testovacím prostředí 
+
 Jako vlastník testovacího prostředí můžete pomocí spravované identity nasadit prostředí v testovacím prostředí. Tato funkce je užitečná ve scénářích, kde prostředí obsahuje nebo obsahuje odkazy na prostředky Azure, jako jsou například trezory klíčů, Galerie sdílených imagí a sítě, které jsou pro skupinu prostředků tohoto prostředí externí. Umožňuje vytváření prostředí izolovaného prostoru, které není omezené na skupinu prostředků tohoto prostředí.
 
 > [!NOTE]
 > V současné době je v rámci testovacího prostředí podporována jediná uživatelsky přiřazená identita. 
 
 ## <a name="prerequisites"></a>Požadavky
+
 - [Umožňuje vytvořit, vypsat, odstranit nebo přiřadit roli k spravované identitě přiřazené uživatelem pomocí Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
+    
+    Ujistěte se, že se vaše spravovaná identita vytvořila ve stejné oblasti a předplatném jako vaše testovací prostředí. Spravovaná identita nemusí být ve stejné skupině prostředků.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
+
 V této části jako vlastník testovacího prostředí použijte Azure Portal k přidání identity spravované uživatelem do testovacího prostředí. 
 
-1. Na stránce testovací prostředí vyberte **Konfigurace a zásady**. 
-1. V části **Nastavení** vyberte **Identita** .
-1. Chcete-li přidat identitu přiřazenou uživateli, vyberte možnost **Přidat** na panelu nástrojů. 
-1. Vyberte **identitu** z předem vyplněných rozevíracího seznamu.
-1. Vyberte **OK**.
-
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Vyhledejte **DevTest Labs**.
+1. V seznamu cvičení vyberte testovací prostředí, které chcete.
+1. Vyberte **Konfigurace a zásady**  ->  **identita (Preview)**. 
+1. Chcete-li přidat identitu přiřazenou uživatelem, vyberte kartu **přiřazeno uživateli** .
+1. Stiskněte tlačítko **Přidat** .
+1. Vyberte stávajícího uživatele, kterého jste vytvořili, nebo k němu máte přístup z rozevírací nabídky.
+ 
     ![Přidat uživatelsky spravovanou identitu](./media/use-managed-identities-environments/add-user-managed-identity.png)
-2. V seznamu se zobrazí přidaná uživatelem spravovaná identita. 
+1. V horní části stránky klikněte na **Uložit** .
 
-    ![Uživatelsky spravovaná identita v seznamu](./media/use-managed-identities-environments/identity-in-list.png)
-
-Po uložení testovací prostředí použije tuto identitu při nasazení všech laboratorních prostředí. K prostředku identity v Azure můžete přistupovat taky tak, že v seznamu vyberete identitu. 
+    Po uložení testovací prostředí použije tuto identitu při nasazení všech laboratorních prostředí. K prostředku identity v Azure můžete přistupovat taky tak, že v seznamu vyberete identitu. 
 
 Vlastník testovacího prostředí nemusí během nasazování prostředí provádět žádné zvláštní informace, protože identita přidaná do testovacího prostředí má oprávnění k externím prostředkům, ke kterým prostředí potřebuje mít přístup. 
 
 Pokud chcete změnit uživatelsky spravovanou identitu přiřazenou k testovacímu prostředí, odeberte nejdřív identitu připojenou k testovacímu prostředí a potom do testovacího prostředí přidejte další. Pokud chcete odebrat identitu připojenou k testovacímu prostředí, vyberte **... (tři tečky)** a klikněte na tlačítko **Odebrat**. 
-
-![Uživatelsky spravovaná identita v seznamu](./media/use-managed-identities-environments/replace-identity.png)  
 
 ## <a name="use-api"></a>Použití rozhraní API
 

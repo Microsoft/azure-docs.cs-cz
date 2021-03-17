@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336714"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147693"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -24,7 +24,7 @@ Pro zajištění bezproblémové interoperability mezi protokoly IoT Hub definuj
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub implementuje zprávy typu zařízení-Cloud pomocí vzoru zasílání zpráv streamování. Zprávy typu zařízení-Cloud IoT Hub jsou větší, jako [Event Hubs](/azure/event-hubs/) *události* , než [Service Bus](/azure/service-bus-messaging/) *zprávy* v tom, že existuje velký objem událostí, které je možné předávat prostřednictvím služby, kterou může číst více čtenářů.
+IoT Hub implementuje zprávy typu zařízení-Cloud pomocí vzoru zasílání zpráv streamování. Zprávy typu zařízení-Cloud IoT Hub jsou větší, jako [Event Hubs](../event-hubs/index.yml) *události* , než [Service Bus](../service-bus-messaging/index.yml) *zprávy* v tom, že existuje velký objem událostí, které je možné předávat prostřednictvím služby, kterou může číst více čtenářů.
 
 IoT Hub zpráva se skládá z těchto:
 
@@ -61,8 +61,8 @@ Další informace o tom, jak zakódovat a dekódovat zprávy odeslané pomocí r
 | iothub-Connection-Module-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **moduleId** zařízení, které zprávu odeslalo. | Ne | connectionModuleId |
 | iothub-Connection-auth-Generation-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **connectionDeviceGenerationId** (podle [vlastností identity jednotlivých zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties)) zařízení, které zprávu odeslalo. | Ne |connectionDeviceGenerationId |
 | iothub připojení-auth-Method |Metoda ověřování nastavená IoT Hub na zprávy ze zařízení do cloudu. Tato vlastnost obsahuje informace o metodě ověřování, která se používá k ověření zařízení odesílajícího zprávu.| Ne | connectionAuthMethod |
-| DT-DataSchema | Tuto hodnotu nastavuje služba IoT Hub pro zprávy ze zařízení do cloudu. Obsahuje ID modelu zařízení nastavené v připojení zařízení. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). | Ne | – |
-| DT – předmět | Název součásti odesílající zprávy typu zařízení-Cloud. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). | Ano | – |
+| DT-DataSchema | Tuto hodnotu nastavuje služba IoT Hub pro zprávy ze zařízení do cloudu. Obsahuje ID modelu zařízení nastavené v připojení zařízení. | Ne | Není k dispozici |
+| DT – předmět | Název součásti odesílající zprávy typu zařízení-Cloud. | Ano | Není k dispozici |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systémové vlastnosti zpráv **C2D** IoT Hub
 
@@ -90,7 +90,7 @@ Názvy systémových vlastností se liší v závislosti na koncovém bodu, na k
 |Metoda auth připojení|iothub připojení-auth-Method|connectionAuthMethod|iothub připojení-auth-Method|iothub připojení-auth-Method|
 |Třída|typ obsahu|Třída|Třída|iothub-Content-Type|
 |contentEncoding|kódování obsahu|contentEncoding|ContentEncoding|iothub – kódování obsahu|
-|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| – |iothub – enqueuedtime|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| Není k dispozici |iothub – enqueuedtime|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 |DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|
 |DT – předmět|DT – předmět|DT – předmět|DT – předmět|DT – předmět|

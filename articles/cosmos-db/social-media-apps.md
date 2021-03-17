@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850701"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010312"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Živý ve vysoce propojené společnosti znamená, že v určitém okamžiku se stanete součástí **sociální sítě**. Pomocí sociálních sítí se budete moci spojit s přáteli, kolegy, rodinou nebo občas sdílet své zaujetí s lidmi se společnými zájmy.
 
@@ -216,9 +217,9 @@ Vzhledem k tomu, že používáte Azure Cosmos DB, můžete snadno implementovat
 
 Proč je tento proces tak snadný?
 
-Azure Kognitivní hledání implementuje, co volají [indexery](https://msdn.microsoft.com/library/azure/dn946891.aspx), procesy na pozadí, které jsou zapojené do úložišť dat, a automagic přidávají, aktualizují nebo odstraňují objekty v indexech. Podporují [Azure SQL Database indexery](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [indexery Azure BLOBs](../search/search-howto-indexing-azure-blob-storage.md) a naštěstí, [Azure Cosmos DB indexery](../search/search-howto-index-documentdb.md). Přechod informací z Cosmos DB do Azure Kognitivní hledání je jednoduchý. Obě technologie ukládají informace ve formátu JSON, takže potřebujete pouze [vytvořit index](../search/search-create-index-portal.md) a namapovat atributy z dokumentů, které chcete indexovat. A to je vše! V závislosti na velikosti dat bude k dispozici veškerý obsah, který bude prohledán během několika minut od nejlepšího řešení hledání jako služby v cloudové infrastruktuře.
+Azure Kognitivní hledání implementuje, co volají [indexery](/rest/api/searchservice/Indexer-operations), procesy na pozadí, které jsou zapojené do úložišť dat, a automagic přidávají, aktualizují nebo odstraňují objekty v indexech. Podporují [Azure SQL Database indexery](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search), [indexery Azure BLOBs](../search/search-howto-indexing-azure-blob-storage.md) a naštěstí, [Azure Cosmos DB indexery](../search/search-howto-index-cosmosdb.md). Přechod informací z Cosmos DB do Azure Kognitivní hledání je jednoduchý. Obě technologie ukládají informace ve formátu JSON, takže potřebujete pouze [vytvořit index](../search/search-what-is-an-index.md) a namapovat atributy z dokumentů, které chcete indexovat. A to je vše! V závislosti na velikosti dat bude k dispozici veškerý obsah, který bude prohledán během několika minut od nejlepšího řešení hledání jako služby v cloudové infrastruktuře.
 
-Další informace o službě Azure Kognitivní hledání najdete v [příručce hitchhiker](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/), kde můžete hledat.
+Další informace o službě Azure Kognitivní hledání najdete v [příručce hitchhiker](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search), kde můžete hledat.
 
 ## <a name="the-underlying-knowledge"></a>Základní znalostní báze
 

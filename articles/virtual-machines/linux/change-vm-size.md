@@ -2,16 +2,17 @@
 title: Postup změny velikosti virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Postup horizontálního navýšení nebo snížení kapacity virtuálního počítače se systémem Linux změnou velikosti virtuálního počítače.
 author: DavidCBerry13
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
-ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.collection: linux
+ms.openlocfilehash: 290c42cadd840e5a292201247b1555059b5b4381
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372259"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556634"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Změna velikosti virtuálního počítače s Linuxem pomocí Azure CLI 
 

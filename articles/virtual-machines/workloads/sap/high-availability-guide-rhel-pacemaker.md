@@ -8,18 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 02/03/2021
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: af8523486b42af8c0722a56bdd813d6449692c14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800258"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676889"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -59,14 +59,16 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 * [Replikace SAP HANA systému v clusteru Pacemaker](https://access.redhat.com/articles/3004101)
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – SBD a fence_sbd](https://access.redhat.com/articles/2800691)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Co je třeba zvážit při přijímání RHEL 8 – vysoké dostupnosti a clusterů](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH pomocí samostatného serveru fronty 2 (ENSA2) v Pacemaker v RHEL 7,6](https://access.redhat.com/articles/3974941)
+  * [RHEL pro nabídky SAP v Azure](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>Instalace clusteru
 
@@ -78,7 +80,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-1. **[A]** zaregistrovat
+1. **[A]** zaregistrovat. Tento krok není nutný, pokud používáte image RHEL SAP s podporou vysoké dostupnosti.  
 
    Zaregistrujte virtuální počítače a připojte je ke fondu, který obsahuje úložiště pro RHEL 7.
 
@@ -88,9 +90,9 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Všimněte si, že připojení fondu k imagi Azure Marketplace PAYG RHEL se vám bude efektivně považovat za vaše využití RHEL: jednou pro obrázek PAYG a jednou pro RHEL nárok ve fondu, který připojíte. Pro zmírnění tohoto problému Azure teď poskytuje image RHEL BYOS. Další informace jsou k dispozici [zde](../redhat/byos.md).
+   Připojením fondu k imagi Azure Marketplace PAYG RHEL se vám bude efektivně považovat za vaše využití RHEL: jednou pro PAYG image a jednou pro RHEL nárok ve fondu, který připojíte. Pro zmírnění tohoto problému Azure teď poskytuje image RHEL BYOS. Další informace najdete [tady](../redhat/byos.md).  
 
-1. **[A]** povolení RHEL pro úložišť SAP
+1. **[A]** povolte RHEL pro úložiště SAP. Tento krok není nutný, pokud používáte image RHEL SAP s podporou vysoké dostupnosti.  
 
    Aby bylo možné nainstalovat požadované balíčky, povolte následující úložiště.
 
@@ -101,16 +103,17 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-eus-rpms
    </code></pre>
 
-1. **[A]** instalace DOPLŇKU RHEL ha
+1. **[A]** instalace RHEL ha Add-On
 
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
    </code></pre>
 
    > [!IMPORTANT]
    > Doporučujeme, aby následující verze agenta Azure plot (nebo novější) mohly zákazníkům těžit z rychlejšího převzetí služeb při selhání, pokud dojde k selhání prostředku nebo pokud uzly clusteru nemůžou vzájemně komunikovat.  
-   > RHEL 7,6: plot-Agents-4.2.1-11. el7_6.8  
-   > RHEL 7,5: plot-Agents-4.0.11-86. el7_5.8  
-   > RHEL 7,4: plot-Agents-4.0.11-66. el7_4.12  
+   > RHEL 7,7 nebo novější použít nejnovější dostupnou verzi balíčku plot-agenti  
+   > RHEL 7,6: plot-Agents-4.2.1-11.el7_6.8  
+   > RHEL 7,5: plot-Agents-4.0.11-86.el7_5.8  
+   > RHEL 7,4: plot-Agents-4.0.11-66.el7_4.12  
    > Další informace najdete v článku o [virtuálním počítači Azure spuštěném jako RHELý člen clusteru s vysokou dostupností, který může být ve velkém čase, nebo když se virtuální počítač vypne, neprojde nebo](https://access.redhat.com/solutions/3408711)neuplyne.
 
    Podívejte se na verzi agenta Azure plot. V případě potřeby ho aktualizujte na verzi, která se rovná nebo je vyšší než výše uvedená.
@@ -165,15 +168,23 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[1]** vytvořit cluster Pacemaker
 
-   Spuštěním následujících příkazů ověřte uzly a vytvořte cluster. Nastavte token na 30000 pro povolení údržby paměti při zachovávání. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance].
-
+   Spuštěním následujících příkazů ověřte uzly a vytvořte cluster. Nastavte token na 30000 pro povolení údržby paměti při zachovávání. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance].  
+   
+   Pokud vytváříte cluster na **RHEL 7. x**, použijte následující příkazy:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   Pokud vytváříte cluster na **RHEL 8. X**, použijte následující příkazy:  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   Ověřte stav clusteru spuštěním následujícího příkazu:  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +199,22 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** nastavit očekávané hlasy
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** nastavte očekávané hlasy. 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > Při sestavování clusteru s více uzly, který je clusterem s více než dvěma uzly, nenastavujte hlasy na 2.    
 
 1. **[1]** povolí souběžné akce plotu.
 
@@ -211,7 +227,7 @@ Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft A
 
 1. Přejděte na <https://portal.azure.com>.
 1. Otevřete okno Azure Active Directory  
-   Přejděte na vlastnosti a zapište ID adresáře. Toto je **ID tenanta**.
+   Přejít na vlastnosti a poznamenejte si ID adresáře. Toto je **ID tenanta**.
 1. Klikněte na Registrace aplikací
 1. Klikněte na nová registrace.
 1. Zadejte název, vyberte účty pouze v tomto adresáři organizace. 
@@ -219,7 +235,7 @@ Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft A
    Přihlašovací adresa URL se nepoužívá a může to být libovolná platná adresa URL.
 1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
 1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
-1. Zapište hodnotu. Používá se jako **heslo** instančního objektu.
+1. Nastavte uzel na hodnotu. Používá se jako **heslo** instančního objektu.
 1. Vyberte Přehled. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instančního objektu.
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** vytvoření vlastní role pro agenta plotu
@@ -276,12 +292,18 @@ Po úpravě oprávnění pro virtuální počítače můžete nakonfigurovat za�
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-K nakonfigurování ochranného zařízení použijte následující příkaz.
-
 > [!NOTE]
-> Možnost ' pcmk_host_map ' je požadována pouze v příkazu, pokud názvy hostitelů RHEL a názvy uzlů Azure nejsou stejné. Přečtěte si část tučné v příkazu.
+> Možnost ' pcmk_host_map ' je požadována pouze v příkazu, pokud názvy hostitelů RHEL a názvy virtuálních počítačů Azure nejsou stejné. Zadejte mapování ve formátu název **hostitele: VM-Name**.
+> Přečtěte si část tučné v příkazu. Další informace najdete v tématu o [tom, jaký formát mám použít k určení mapování uzlů na zařízení stonith v pcmk_host_map](https://access.redhat.com/solutions/2619961)
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+Pro RHEL **7. X** použijte následující příkaz ke konfiguraci ochranného zařízení:    
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+Pro RHEL **8. X** použijte následující příkaz ke konfiguraci ochranného zařízení:  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

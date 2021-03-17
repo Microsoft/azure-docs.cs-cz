@@ -1,21 +1,15 @@
 ---
-title: Přidání, odebrání a uspořádání oblíbených položek v Azure Portal | Microsoft Docs
+title: Přidání, odebrání a uspořádání oblíbených položek v Azure Portal
 description: Přečtěte si, jak přidat nebo odebrat položky ze seznamu oblíbených položek a změnit pořadí položek.
-services: azure-portal
 keywords: Oblíbené, portál
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: how-to
-ms.service: azure-portal
-ms.custom: ''
-manager: mtillman
-ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764124"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745787"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Přidání, odebrání a změna uspořádání oblíbených položek
 

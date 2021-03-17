@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289899"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016781"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Plánování prostředí Azure Time Series Insights Gen2
 
@@ -37,7 +37,6 @@ Azure Time Series Insights využívá obchodní model s průběžnými platbami.
 
 Při zřizování prostředí Azure Time Series Insights Gen2 vytvoříte dva prostředky Azure:
 
-
 * Prostředí Azure Time Series Insights Gen2
 * Účet Azure Storage
 
@@ -46,7 +45,7 @@ V rámci procesu zřizování určíte, jestli chcete povolit teplé úložišt�
 Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský sklad účtují náklady. Je důležité porozumět vašim vzorům dotazů a odpovídajícím způsobem naplánovat konfiguraci pro svůj záložní obchod. Doporučujeme, aby se interaktivní analýzy na nejaktuálnějších datech nacházely v provozním úložišti a analýze vzorků a dlouhodobé trendy se nachází v chladu.
 
 > [!NOTE]
-> Pokud si chcete přečíst další informace o tom, jak zadávat dotazy na zahřívání, přečtěte si [referenci rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters).
+> Pokud si chcete přečíst další informace o tom, jak zadávat dotazy na zahřívání, přečtěte si [referenci rozhraní API](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters).
 
 Začněte tím, že budete potřebovat tři další položky:
 
@@ -65,20 +64,17 @@ Pokud chcete vytvořit nové prostředí Azure Time Series Insights, vyberte ID 
 > [!IMPORTANT]
 > ID časových řad *nelze později změnit*. Ověřte každý z nich před konečným výběrem a prvním použitím.
 
-Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v tématu [osvědčené postupy pro výběr ID časových řad](./time-series-insights-update-how-to-id.md) a [pravidel pro přijímání](concepts-json-flattening-escaping-rules.md).
+Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v tématu [osvědčené postupy pro výběr ID časových řad](./how-to-select-tsid.md) a [pravidel pro přijímání](concepts-json-flattening-escaping-rules.md).
 
 Vlastnost **časového razítka** je také důležitá. Tuto vlastnost můžete určit při přidávání zdrojů událostí. Každý zdroj události má volitelnou vlastnost časového razítka, která se používá ke sledování zdrojů událostí v průběhu času. Hodnoty časového razítka rozlišují velká a malá písmena a musí být formátovány na jednotlivé specifikace jednotlivých zdrojů událostí.
 
-> [!TIP]
-> Ověřte požadavky na formátování a analýzu pro zdroje událostí.
-
-Pokud je ponecháno prázdné, použije se čas zařazení do fronty události jako časové razítko události. Pokud odesíláte historická data nebo dávkové události, přizpůsobení vlastnosti časového razítka je vhodnější než výchozí doba zařazování událostí. Další informace najdete v tématu Postup [Přidání zdrojů událostí do Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Pokud je ponecháno prázdné, čas, kdy byla událost zařazena do fronty, do IoT Hub nebo centrum událostí slouží jako časové razítko události. Obecně by se uživatelé měli rozhodnout přizpůsobovat vlastnost časového razítka a použít čas, kdy senzor nebo značka vygenerovala čtení, nikoli čas centra ve frontě. Pokud chcete získat další informace a přečíst si o posunech časového pásma, přečtěte si [časové razítko zdroje událostí](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp).
 
 ## <a name="understand-the-time-series-model"></a>Pochopení modelu časové řady
 
 Nyní můžete nakonfigurovat model časové řady Azure Time Series Insightsho prostředí. Nový model usnadňuje hledání a analýzu dat IoT. Umožňuje léčební, údržbu a obohacení dat časových řad a pomáhá připravit datové sady připravené pro uživatele. Model používá ID časových řad, které se mapují na instanci, která přidruží jedinečný prostředek k proměnným, označovaným jako typy a hierarchie. Další informace najdete v článku Přehled [modelu časové řady](./concepts-model-overview.md) .
 
-Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Azure Time Series Insights. Při sestavování modelu si přečtěte část [použití modelu časové řady](/azure/time-series-insights/concepts-model-overview).
+Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Azure Time Series Insights. Při sestavování modelu si přečtěte část [použití modelu časové řady](./concepts-model-overview.md).
 
 Pro mnoho zákazníků se model časových řad mapuje na existující model assetů nebo systém ERP, který je už na svém místě. Pokud nemáte existující model, je k [dispozici](https://github.com/Microsoft/tsiclient) předem sestavené uživatelské prostředí, které vám umožní rychle začít pracovat. Chcete-li předvést, jak vám model může pomáhat, podívejte se do [ukázkového](https://insights.timeseries.azure.com/preview/demo)ukázkového prostředí.
 
@@ -91,14 +87,14 @@ Dobré pravidlo pro palec:
 * Uložte metadata v modelu časové řady.
 * Zajistěte, aby režim časové řady, pole instancí a události zahrnoval pouze potřebné informace, například ID časové řady nebo vlastnost časového razítka.
 
-Další informace najdete v tématu čtení [událostí obrazce](./time-series-insights-send-events.md#supported-json-shapes).
+Pokud potřebujete další informace a chcete pochopit, jak budou události shrnuty a uloženy, přečtěte si [pravidla pro sloučení a uvozovací znaky JSON](./concepts-json-flattening-escaping-rules.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
-- Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
-- Přečtěte si další informace o [přijímání dat](./concepts-ingestion-overview.md) v Azure Time Series Insights Gen2.
-- Přečtěte si článek o [úložišti dat](./concepts-storage.md) v Azure Time Series Insights Gen2.
-- Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.
+* Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
+* Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
+* Přečtěte si další informace o [přijímání dat](./concepts-ingestion-overview.md) v Azure Time Series Insights Gen2.
+* Přečtěte si článek o [úložišti dat](./concepts-storage.md) v Azure Time Series Insights Gen2.
+* Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.

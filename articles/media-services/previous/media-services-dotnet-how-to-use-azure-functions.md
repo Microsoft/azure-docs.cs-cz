@@ -3,7 +3,7 @@ title: Vývoj Azure Functions s využitím Media Services
 description: V tomto tématu se dozvíte, jak začít s vývojem Azure Functions pomocí Media Services pomocí Azure Portal.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 51bdcb01-1846-4e1f-bd90-70020ab471b0
@@ -12,22 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ef8e3a2e733247f713fe0240cb8ef6069803fcb7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052827"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013937"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions s využitím Media Services
 
-V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, které používají Media Services. Funkce Azure definovaná v tomto článku sleduje kontejner účtu úložiště s názvem **vstup** pro nové soubory MP4. Po přetažení souboru do kontejneru úložiště spustí aktivační událost objektu BLOB funkci. Pokud chcete zkontrolovat službu Azure Functions, přečtěte si téma [Přehled](../../azure-functions/functions-overview.md) a další témata v části **Azure Functions** .
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, které používají Media Services. Funkce Azure definovaná v tomto článku sleduje kontejner účtu úložiště s názvem **vstup** pro nové soubory MP4. Po přetažení souboru do kontejneru úložiště spustí aktivační událost objektu BLOB funkci. Pokud chcete zkontrolovat Azure Functions, přečtěte si téma  [Přehled](../../azure-functions/functions-overview.md) a další témata v části **Azure Functions** .
 
 Pokud chcete prozkoumat a nasadit existující Azure Functions, které používají Azure Media Services, podívejte se na [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají Media Services k zobrazení pracovních postupů souvisejících s ingestování obsahu přímo z úložiště objektů blob, kódování a zápisu obsahu zpátky do úložiště objektů BLOB. Obsahuje taky příklady monitorování oznámení úloh prostřednictvím webhooků a front Azure. Můžete také vyvíjet své funkce na základě příkladů v úložišti [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) . Pokud chcete tyto funkce nasadit, klikněte na tlačítko **nasadit do Azure** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Je nutné, abyste před vytvořením první funkce měli aktivní účet Azure. Pokud ještě nemáte účet Azure, [můžete použít bezplatné účty](https://azure.microsoft.com/free/).
 - Pokud budete vytvářet Azure Functions, které provádějí akce v účtu Azure Media Services (AMS) nebo naslouchat událostem odesílaným Media Services, měli byste vytvořit účet AMS, jak je popsáno [zde](media-services-portal-create-account.md).
@@ -42,7 +45,7 @@ Pokud chcete prozkoumat a nasadit existující Azure Functions, které používa
 
 ## <a name="configure-function-app-settings"></a>Konfigurovat nastavení aplikace Function App
 
-Při vývoji Media Servicesch funkcí je užitečné přidat proměnné prostředí, které budou použity v rámci svých funkcí. Pokud chcete nakonfigurovat nastavení aplikace, klikněte na odkaz konfigurovat nastavení aplikace. Další informace najdete v tématu [Konfigurace nastavení Azure Function App](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+Při vývoji Media Servicesch funkcí je užitečné přidat proměnné prostředí, které budou použity v rámci svých funkcí. Pokud chcete nakonfigurovat nastavení aplikace, klikněte na odkaz konfigurovat nastavení aplikace. Další informace najdete v tématu  [Konfigurace nastavení Azure Function App](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
 Funkce definovaná v tomto článku předpokládá, že máte v nastavení aplikace následující proměnné prostředí:
 
@@ -62,13 +65,13 @@ Po nasazení aplikace Function App ji můžete najít mezi **App Services** Azur
 
 1. Vyberte aplikaci Function App a klikněte na **Nová funkce**.
 2. Vyberte scénář jazyka **C#** a **zpracování dat** .
-3. Vyberte šablonu **BlobTrigger** . Tato funkce se aktivuje pokaždé, když se do **vstupního** kontejneru nahraje objekt BLOB. **Vstupní** název je zadán v **cestě**v dalším kroku.
+3. Vyberte šablonu **BlobTrigger** . Tato funkce se aktivuje pokaždé, když se do **vstupního** kontejneru nahraje objekt BLOB. **Vstupní** název je zadán v **cestě** v dalším kroku.
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Zvolit šablonu s vybraným BlobTrigger.](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Jakmile vyberete možnost **BlobTrigger**, zobrazí se na stránce některé další ovládací prvky.
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně název vaší funkce.](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Klikněte na **Vytvořit**. 
 
@@ -76,11 +79,11 @@ Po nasazení aplikace Function App ji můžete najít mezi **App Services** Azur
 
 Vaše funkce Azure je přidružená k souborům kódu a dalším souborům, které jsou popsány v této části. Když použijete Azure Portal k vytvoření funkce, **function.jsna** a **spusťte. csx** jsou vytvořeny za vás. Je nutné přidat nebo odeslat **project.js** do souboru. Zbytek této části poskytuje stručné vysvětlení jednotlivých souborů a ukazuje jejich definice.
 
-![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![Snímek obrazovky se zobrazí ve vašem projektu soubory JSON.](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-function.jsv souboru definuje vazby funkcí a další nastavení konfigurace. Modul runtime pomocí tohoto souboru určí události, které se mají monitorovat, a způsob předávání dat do a návratové data z provádění funkce. Další informace najdete v tématu [vazby HTTP a webhooků služby Azure Functions](../../azure-functions/functions-reference.md#function-code).
+function.jsv souboru definuje vazby funkcí a další nastavení konfigurace. Modul runtime pomocí tohoto souboru určí události, které se mají monitorovat, a způsob předávání dat do a návratové data z provádění funkce. Další informace najdete v tématu [Vazby protokolu HTTP služby Azure Functions a vazby webhooku](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
 >Nastavte vlastnost **disabled** na **hodnotu true** , chcete-li zabránit provedení této funkce. 
@@ -334,7 +337,7 @@ Chcete-li otestovat funkci, je třeba nahrát soubor MP4 do **vstupního** konte
 
 1. Vyberte účet úložiště, který jste zadali v proměnné prostředí **StorageConnection** .
 2. Klikněte na **objekty blob**.
-3. Klikněte na **+ Kontejner**. **Zadejte**název kontejneru.
+3. Klikněte na **+ Kontejner**. **Zadejte** název kontejneru.
 4. Stiskněte **nahrát** a přejděte k souboru. mp4, který chcete nahrát.
 
 >[!NOTE]

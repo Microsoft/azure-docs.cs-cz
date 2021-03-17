@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje, jak nastavovat cluster služby Azure Kubernetes pro Azure Dev Spaces funguje.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207953"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972675"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak nastavovat cluster pro Azure Dev Spaces funguje
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Jedním ze způsobů je povolit Azure Dev Spaces v clusteru AKS, abyste mohli [spouštět služby přímo v clusteru][how-it-works-up] a využívat [Další možnosti sítě a směrování][how-it-works-routing]. Tento článek popisuje, co se stane, když připravíte cluster a povolíte Azure Dev Spaces.
 

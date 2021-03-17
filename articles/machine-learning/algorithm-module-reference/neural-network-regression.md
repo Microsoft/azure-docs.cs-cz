@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: c260643d7d553e407d0758f286aac76c91ae08d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137684"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90890362"
 ---
 # <a name="neural-network-regression-module"></a>Neuronové Network regrese – modul
 
@@ -24,7 +24,7 @@ ms.locfileid: "82137684"
   
 ## <a name="module-overview"></a>Přehled modulu  
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k vytvoření regresního modelu pomocí přizpůsobitelného neuronové síťového algoritmu.
   
@@ -50,7 +50,7 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
     
     Tato možnost je nejlepší, pokud už se neuronové sítě už trochu obeznámené. K definování síťové architektury použijte jazyk NET #.  
 
-##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Vytvoření modelu sítě neuronové pomocí výchozí architektury
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a> Vytvoření modelu sítě neuronové pomocí výchozí architektury
 
 1.  Přidejte do kanálu modul **regrese sítě neuronové** v návrháři. Tento modul najdete v části **Machine Learning**, **Initialize**, v kategorii **regrese** . 
   

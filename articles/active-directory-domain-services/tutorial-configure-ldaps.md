@@ -1,20 +1,20 @@
 ---
 title: Kurz – konfigurace LDAPs pro Azure Active Directory Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte nakonfigurovat zabezpečený protokol LDAPs (Lightweight Directory Access Protocol) pro Azure Active Directory Domain Services spravovanou doménu.
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 03/04/2021
+ms.author: justinha
+ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054336"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564080"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -109,11 +109,11 @@ Aby bylo možné používat zabezpečený protokol LDAP, je síťový provoz za�
 
 * **Privátní** klíč se použije ve spravované doméně.
     * Tento privátní klíč se používá k *dešifrování* zabezpečeného provozu LDAP. Privátní klíč by měl být použit pouze pro spravovanou doménu a není široce distribuován do klientských počítačů.
-    * Certifikát, který obsahuje privátní klíč, používá *. *Formát souboru PFX.
-    * Šifrovací algoritmus pro certifikát musí být *TripleDES-SHA1*.
+    * Certifikát, který obsahuje privátní klíč, používá *.* Formát souboru PFX.
+    * Při exportování certifikátu je nutné zadat šifrovací algoritmus *TripleDES-SHA1* . To platí jenom pro soubor. pfx a nemá vliv na algoritmus používaný samotným certifikátem. Všimněte si, že možnost *TripleDES-SHA1* je k dispozici pouze od verze Windows Server 2016.
 * **Veřejný** klíč se použije pro klientské počítače.
     * Tento veřejný klíč slouží k *šifrování* zabezpečeného přenosu LDAP. Veřejný klíč lze distribuovat do klientských počítačů.
-    * Certifikáty bez privátního klíče používají *. *Formát souboru CER.
+    * Certifikáty bez privátního klíče používají *.* Formát souboru CER.
 
 Tyto dva klíče, *privátní* a *veřejné* klíče, zajistí, že mezi sebou můžou úspěšně komunikovat jenom příslušné počítače. Pokud používáte veřejnou certifikační autoritu nebo certifikační autoritu organizace, vydáváte certifikát, který obsahuje privátní klíč, a můžete ho použít pro spravovanou doménu. Veřejný klíč by již měl být známý a důvěryhodný pro klientské počítače.
 
@@ -121,13 +121,13 @@ V tomto kurzu jste vytvořili certifikát podepsaný svým držitelem s privátn
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Export certifikátu pro Azure služba AD DS
 
-Předtím, než budete moci použít digitální certifikát vytvořený v předchozím kroku se spravovanou doménou, exportujte certifikát do *. *Soubor certifikátu PFX, který obsahuje privátní klíč.
+Předtím, než budete moci použít digitální certifikát vytvořený v předchozím kroku se spravovanou doménou, exportujte certifikát do *.* Soubor certifikátu PFX, který obsahuje privátní klíč.
 
 1. Chcete-li otevřít dialogové okno *Spustit* , vyberte klíče **Windows**  +  **R** .
 1. Otevřete konzolu MMC (Microsoft Management Console) tak, že v dialogovém okně *Spustit* zadáte **MMC** a pak vyberete **OK**.
 1. Na příkazovém řádku pro **řízení uživatelských účtů** vyberte **Ano** , aby se MMC spouštěla jako správce.
 1. V nabídce **soubor** vyberte **Přidat nebo odebrat modul snap-in...**
-1. V průvodci **modulem snap-in Certifikáty** zvolte položku **účet počítače**a pak klikněte na tlačítko **Další**.
+1. V průvodci **modulem snap-in Certifikáty** zvolte položku **účet počítače** a pak klikněte na tlačítko **Další**.
 1. Na stránce **Vybrat počítač** zvolte **místní počítač: (počítač, na kterém je spuštěna tato konzola)** a pak vyberte **Dokončit**.
 1. V dialogovém okně **Přidat nebo odebrat moduly snap-in** vyberte **OK** a přidejte modul snap-in Certifikáty do konzoly MMC.
 1. V okně MMC rozbalte **kořen konzoly**. Vyberte **certifikáty (místní počítač)**, potom rozbalte **osobní** uzel a potom uzel **certifikáty** .
@@ -138,11 +138,11 @@ Předtím, než budete moci použít digitální certifikát vytvořený v před
 
     ![Exportovat certifikát v konzole Microsoft Management Console](./media/tutorial-configure-ldaps/export-cert.png)
 
-1. V **Průvodci exportem certifikátu**vyberte **Další**.
+1. V **Průvodci exportem certifikátu** vyberte **Další**.
 1. Privátní klíč certifikátu musí být exportován. Pokud privátní klíč není zahrnutý v exportovaném certifikátu, akce pro povolení zabezpečeného LDAP pro spravovanou doménu se nezdařila.
 
-    Na stránce **exportovat soukromý klíč** vyberte možnost **Ano, exportovat privátní klíč**a potom vyberte možnost **Další**.
-1. Spravované domény podporují jenom *. *Formát souboru certifikátu PFX, který obsahuje privátní klíč. Neexportujte certifikát jako *. *Formát souboru certifikátu CER bez privátního klíče.
+    Na stránce **exportovat soukromý klíč** vyberte možnost **Ano, exportovat privátní klíč** a potom vyberte možnost **Další**.
+1. Spravované domény podporují jenom *.* Formát souboru certifikátu PFX, který obsahuje privátní klíč. Neexportujte certifikát jako *.* Formát souboru certifikátu CER bez privátního klíče.
 
     Na stránce **Formát souboru pro export** vyberte **Personal Information Exchange-PKCS #12 (. PFX)** jako formát souboru pro exportovaný certifikát. Zaškrtněte políčko *Zahrnout všechny certifikáty na cestě k certifikátu, pokud je to možné*:
 
@@ -150,9 +150,14 @@ Předtím, než budete moci použít digitální certifikát vytvořený v před
 
 1. Vzhledem k tomu, že tento certifikát slouží k dešifrování dat, byste měli pečlivě řídit přístup. K ochraně použití certifikátu lze použít heslo. Bez správného hesla se certifikát nedá použít na službu.
 
-    Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *. *Soubor certifikátu PFX. Šifrovací algoritmus musí být *TripleDES-SHA1*. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu.
+    Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *.* Soubor certifikátu PFX. Šifrovací algoritmus musí být *TripleDES-SHA1*. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu.
+
+    Pokud exportujete pomocí [rutiny PowerShellu export-vybíráte](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate), je potřeba předat příznak *-CryptoAlgorithmOption* pomocí TripleDES_SHA1.
+
+    ![Snímek obrazovky s šifrováním hesla](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS.pfx*. Poznamenejte si heslo a umístění *. Soubor PFX* jako tyto informace by byl nutný v následujících krocích.
-1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *. *Soubor certifikátu PFX. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
+1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *.* Soubor certifikátu PFX. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
 1. Konzolu MMC nechte otevřenou pro použití v následující části.
 
 ### <a name="export-a-certificate-for-client-computers"></a>Export certifikátu pro klientské počítače
@@ -162,20 +167,20 @@ Klientské počítače musí důvěřovat vystaviteli certifikátu zabezpečené
 V tomto kurzu použijete certifikát podepsaný svým držitelem a vygenerujete certifikát, který obsahuje privátní klíč v předchozím kroku. Teď exportujte certifikát podepsaný svým držitelem do úložiště důvěryhodných certifikátů v klientském počítači a pak ho do něj nainstalujte sami:
 
 1. Vraťte se do konzoly MMC pro *certifikáty (místní počítač) > úložiště certifikátů osobních >* . Zobrazí se certifikát podepsaný svým držitelem, který jste vytvořili v předchozím kroku, například *aaddscontoso.com*. Vyberte tento certifikát pravým tlačítkem a pak vyberte **všechny úlohy > exportovat...**
-1. V **Průvodci exportem certifikátu**vyberte **Další**.
-1. Vzhledem k tomu, že nepotřebujete privátní klíč pro klienty, vyberte na stránce **exportovat soukromý klíč** možnost **Ne, neexportovat privátní klíč**a pak vyberte **Další**.
+1. V **Průvodci exportem certifikátu** vyberte **Další**.
+1. Vzhledem k tomu, že nepotřebujete privátní klíč pro klienty, vyberte na stránce **exportovat soukromý klíč** možnost **Ne, neexportovat privátní klíč** a pak vyberte **Další**.
 1. Na stránce **Formát souboru pro export** vyberte **X. 509 kódovaný na bázi Base-64 (. CER)** jako formát souboru pro exportovaný certifikát:
 
     ![Vyberte možnost exportu certifikátu v kódování X. 509 kódované na bázi Base-64 (. CER) – formát souboru](./media/tutorial-configure-ldaps/export-cert-to-cer-file.png)
 
 1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS-Client.cer*.
-1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *. *Soubor certifikátu CER. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
+1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *.* Soubor certifikátu CER. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
 
-Rozhraní *. *Soubor certifikátu CER se teď dá distribuovat do klientských počítačů, které potřebují důvěřovat zabezpečenému připojení LDAP ke spravované doméně. Pojďme nainstalovat certifikát do místního počítače.
+Rozhraní *.* Soubor certifikátu CER se teď dá distribuovat do klientských počítačů, které potřebují důvěřovat zabezpečenému připojení LDAP ke spravované doméně. Pojďme nainstalovat certifikát do místního počítače.
 
-1. Otevřete Průzkumníka souborů a přejděte do umístění, kam jste uložili soubor *. *Soubor certifikátu CER, například *C:\Users\accountname\azure-AD-DS-Client.cer*.
-1. Pravým tlačítkem myši vyberte *. *Soubor certifikátu CER a pak zvolte **nainstalovat certifikát**.
-1. V **Průvodci importem certifikátu**zvolte možnost Uložit certifikát do *místního počítače*a pak vyberte **Další**:
+1. Otevřete Průzkumníka souborů a přejděte do umístění, kam jste uložili soubor *.* Soubor certifikátu CER, například *C:\Users\accountname\azure-AD-DS-Client.cer*.
+1. Pravým tlačítkem myši vyberte *.* Soubor certifikátu CER a pak zvolte **nainstalovat certifikát**.
+1. V **Průvodci importem certifikátu** zvolte možnost Uložit certifikát do *místního počítače* a pak vyberte **Další**:
 
     ![Vyberte možnost importu certifikátu do úložiště místního počítače.](./media/tutorial-configure-ldaps/import-cer-file.png)
 
@@ -213,6 +218,12 @@ Povolení zabezpečeného protokolu LDAP pro spravovanou doménu trvá několik 
 
 Některé běžné důvody selhání jsou v případě, že je název domény nesprávný, šifrovací algoritmus pro daný certifikát není *TripleDES-SHA1*, nebo brzy vyprší platnost certifikátu nebo již vypršela jeho platnost. Certifikát můžete znovu vytvořit s platnými parametry a pak povolit zabezpečený protokol LDAP pomocí tohoto aktualizovaného certifikátu.
 
+## <a name="change-an-expiring-certificate"></a>Změna certifikátu s vypršenou platností
+
+1. Pomocí postupu pro [Vytvoření certifikátu protokolu Secure LDAP](#create-a-certificate-for-secure-ldap)vytvořte náhradní certifikát zabezpečeného protokolu LDAP.
+1. Pokud chcete použít náhradní certifikát pro Azure služba AD DS, v levé nabídce pro Azure služba AD DS v Azure Portal vyberte **protokol Secure LDAP** a pak vyberte **změnit certifikát**.
+1. Distribuujte certifikát pro všechny klienty, kteří se připojují pomocí zabezpečeného LDAP. 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Uzamknout zabezpečený přístup LDAP přes Internet
 
 Když povolíte zabezpečený přístup pomocí protokolu LDAP přes Internet do spravované domény, vytvoří se bezpečnostní hrozba. Spravovaná doména je dosažitelná z Internetu na portu TCP 636. Doporučuje se omezit přístup ke spravované doméně na konkrétní známé IP adresy vašeho prostředí. Pravidlo skupiny zabezpečení sítě Azure se dá použít k omezení přístupu k zabezpečenému LDAP.
@@ -222,7 +233,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
 1. V Azure Portal na levé straně navigace vyberte *skupiny prostředků* .
 1. Zvolte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte skupinu zabezpečení sítě, třeba *aaads-NSG*.
 1. Zobrazí se seznam existujících příchozích a odchozích pravidel zabezpečení. Na levé straně okna skupiny zabezpečení sítě vyberte **nastavení > příchozí pravidla zabezpečení**.
-1. Vyberte **Přidat**a pak vytvořit pravidlo, které povolí *TCP* port TCP *636*. Pro lepší zabezpečení zvolte zdroj jako *IP adresy* a pak zadejte vlastní platnou IP adresu nebo rozsah pro vaši organizaci.
+1. Vyberte **Přidat** a pak vytvořit pravidlo, které povolí  port TCP *636*. Pro lepší zabezpečení zvolte zdroj jako *IP adresy* a pak zadejte vlastní platnou IP adresu nebo rozsah pro vaši organizaci.
 
     | Nastavení                           | Hodnota        |
     |-----------------------------------|--------------|
@@ -234,7 +245,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
     | Protokol                          | TCP          |
     | Akce                            | Povolit        |
     | Priorita                          | 401          |
-    | Název                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Až budete připraveni, vyberte **Přidat** a uložte a použijte pravidlo.
 
@@ -258,15 +269,15 @@ Následující příklad položky DNS, buď s vaším externím poskytovatelem D
 
 Pokud se chcete připojit ke spravované doméně a prohledat ji přes LDAP, použijte nástroj *LDP.exe* . Tento nástroj je součástí balíčku Nástroje pro vzdálenou správu serveru (RSAT). Další informace najdete v tématu [instalace nástroje pro vzdálenou správu serveru][rsat].
 
-1. Otevřete *LDP.exe* a připojte se ke spravované doméně. Vyberte **připojení**a pak zvolte **připojit...**.
-1. Zadejte název domény DNS zabezpečeného LDAP vaší spravované domény, který jste vytvořili v předchozím kroku, například *LDAPS.aaddscontoso.com*. Chcete-li použít zabezpečený protokol LDAP, nastavte **port** na *636*a zaškrtněte políčko pro **protokol SSL**.
+1. Otevřete *LDP.exe* a připojte se ke spravované doméně. Vyberte **připojení** a pak zvolte **připojit...**.
+1. Zadejte název domény DNS zabezpečeného LDAP vaší spravované domény, který jste vytvořili v předchozím kroku, například *LDAPS.aaddscontoso.com*. Chcete-li použít zabezpečený protokol LDAP, nastavte **port** na *636* a zaškrtněte políčko pro **protokol SSL**.
 1. Vyberte **OK** a připojte se ke spravované doméně.
 
 V dalším kroku se připojte ke spravované doméně. Uživatelé (a účty služeb) nemůžou provádět jednoduché vazby LDAP, pokud jste v spravované doméně zakázali synchronizaci hodnot hash hesel protokolu NTLM. Další informace o zakázání synchronizace hodnot hash hesel protokolu NTLM najdete v tématu [zabezpečení spravované domény][secure-domain].
 
 1. Vyberte možnost nabídky **připojení** a pak zvolte **BIND...**.
 1. Zadejte přihlašovací údaje uživatelského účtu, který patří do spravované domény. Zadejte heslo uživatelského účtu a pak zadejte svoji doménu, například *aaddscontoso.com*.
-1. Pro **typ vazby**vyberte možnost *BIND s přihlašovacími údaji*.
+1. Pro **typ vazby** vyberte možnost *BIND s přihlašovacími údaji*.
 1. Vyberte **OK** , aby se navázala vaše spravovaná doména.
 
 Zobrazení objektů uložených ve spravované doméně:
@@ -286,7 +297,7 @@ Pokud jste přidali položku DNS do souboru místní hostitelé vašeho počíta
 
 1. Na místním počítači otevřete *Poznámkový blok* jako správce.
 1. Vyhledejte a otevřete soubor *C:\Windows\System32\drivers\etc\hosts*
-1. Odstraňte řádek pro záznam, který jste přidali, například`168.62.205.103    ldaps.aaddscontoso.com`
+1. Odstraňte řádek pro záznam, který jste přidali, například `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Další kroky
 

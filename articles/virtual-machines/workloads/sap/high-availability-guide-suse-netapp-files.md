@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: dd245ddfa7f6be90e37bacc0797a3af4adc8bb96
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 83e770cb7eb1aace49745253dac3c757cebb4047
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650430"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668669"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -261,13 +261,13 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
       1. Vyberte virtuální počítače v clusteru (A) SCS a jejich IP adresy.
       1. Klikněte na tlačítko Přidat.
    1. Vytvoření sond stavu
-      1. Port 620**00** pro ASCS
+      1. Port 620 **00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
-         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Vybrat TCP as Protocol, port 620 **00**, zachovat interval 5 a špatný práh 2
          1. Klikněte na OK.
-      1. Port 621**01** pro ASCS olajících
-            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
+      1. Port 621 **01** pro ASCS olajících
+            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621 **01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
       1. Vytvoření fondu back-endu pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
@@ -295,15 +295,15 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
       1. Vyberte virtuální počítače v clusteru (A) SCS.
       1. Klikněte na OK.
    1. Vytvoření sond stavu
-      1. Port 620**00** pro ASCS
+      1. Port 620 **00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
-         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Vybrat TCP as Protocol, port 620 **00**, zachovat interval 5 a špatný práh 2
          1. Klikněte na OK.
-      1. Port 621**01** pro ASCS olajících
-            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
+      1. Port 621 **01** pro ASCS olajících
+            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621 **01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
-      1. 32**00** TCP pro ASCS
+      1. 32 **00** TCP pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
          1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **kg. QAS. ASCS. 3200**)
          1. Vyberte front-end IP adresu pro ASCS, fond back-endu a test stavu, který jste vytvořili dříve (například **front-end. QAS. ASCS**)
@@ -312,15 +312,19 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
          1. Klikněte na OK.
       1. Další porty pro ASCS
-         * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
+         * Opakujte výše uvedené kroky v části "d" pro porty **36 00**,**39 00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
-         * Opakujte výše uvedené kroky v části "d" pro porty 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS olajících
+         * Opakujte výše uvedené kroky v části "d" pro porty 32 **01**, 33 **01**, 5 **01** 13, 5 **01** 14, 5 **01** 16 a TCP pro ASCS olajících
+
+      
+      > [!IMPORTANT]
+      > Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
 
       > [!Note]
       > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
       > [!IMPORTANT]
-      > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
+      > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -506,7 +510,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    > - Pro SLES 15/15 SP1 musí být verze aspoň Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
    >
    > Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
-   > V případě existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128), není nutné okamžitě přepínat na agenta prostředků Azure-9,1.
+   > U existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení azure Load-Balancer](https://www.suse.com/support/kb/doc/?id=7024128), neexistuje žádný požadavek na přepnutí přímo do agenta prostředků Azure-No.
 
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    # If using NFSv3
@@ -556,7 +560,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ASCS**00**, zkuste nastavit vlastníka a skupinu složky ASCS**00**  a zkuste to znovu. 
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ASCS **00**, zkuste nastavit vlastníka a skupinu složky ASCS **00**  a zkuste to znovu. 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
@@ -575,7 +579,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -621,7 +625,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    > [!NOTE]
    > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastaví správně oprávnění a instalace se nezdaří.
 
-   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ERS**01**, zkuste nastavit vlastníka a skupinu složky olajících**01** a zkuste to znovu.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**QAS**/ERS **01**, zkuste nastavit vlastníka a skupinu složky olajících **01** a zkuste to znovu.
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>
@@ -669,11 +673,11 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 6. **[A]** konfigurace Keep Alive
 
-   Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS a změnit nastavení systému Linux. Další informace najdete v tématu [SAP Note 1410736][1410736] .
+   Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS, pokud používáte ENSA1, a změnit nastavení systému Linux `keepalive` na všech serverech SAP pro ENSA1/ENSA2. Další informace najdete v tématu [SAP Note 1410736][1410736] .
 
    <pre><code>
    # Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    </code></pre>
 
 7. **[A]** konfigurace uživatelů SAP po instalaci

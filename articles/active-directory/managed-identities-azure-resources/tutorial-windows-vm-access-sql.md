@@ -1,9 +1,9 @@
 ---
-title: Kurz `:` použití spravované identity pro přístup k Azure SQL Database-Windows-Azure AD
+title: 'Kurz: použití spravované identity pro přístup k Azure SQL Database-Windows-Azure AD'
 description: Kurz, který vás provede procesem použití spravované identity přiřazené systémem Windows VM pro přístup k Azure SQL Database.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920378"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856508"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
 
@@ -44,7 +44,7 @@ V tomto kurzu se dozvíte, jak používat identitu přiřazenou systémem pro vi
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Pokud chcete vašemu VIRTUÁLNÍmu počítači udělit přístup k databázi v Azure SQL Database, můžete použít existující [logický SQL Server](../../azure-sql/database/logical-servers.md) nebo vytvořit nový. Pokud chcete vytvořit nový server a databázi pomocí webu Azure Portal, postupujte podle tohoto [rychlého startu k Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Rychlé starty s využitím Azure CLI a Azure PowerShellu najdete v [dokumentaci k Azure SQL](https://docs.microsoft.com/azure/sql-database/).
+Pokud chcete vašemu VIRTUÁLNÍmu počítači udělit přístup k databázi v Azure SQL Database, můžete použít existující [logický SQL Server](../../azure-sql/database/logical-servers.md) nebo vytvořit nový. Pokud chcete vytvořit nový server a databázi pomocí webu Azure Portal, postupujte podle tohoto [rychlého startu k Azure SQL](../../azure-sql/database/single-database-create-quickstart.md). Rychlé starty s využitím Azure CLI a Azure PowerShellu najdete v [dokumentaci k Azure SQL](/azure/sql-database/).
 
 Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou kroků:
 
@@ -53,7 +53,7 @@ Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou k
 
 ### <a name="enable-azure-ad-authentication"></a>Povolit ověřování Azure AD
 
-**[Konfigurace ověřování Azure AD](/azure/sql-database/sql-database-aad-authentication-configure):**
+**[Konfigurace ověřování Azure AD](../../azure-sql/database/authentication-aad-configure.md):**
 
 1. Na levém navigačním panelu na webu Azure Portal vyberte **Servery SQL**.
 2. Kliknutím na server SQL u něj povolte ověřování Azure AD.
@@ -64,10 +64,10 @@ Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou k
 
 ### <a name="create-contained-user"></a>Vytvořit obsaženého uživatele
 
-V této části se dozvíte, jak v databázi vytvořit obsaženého uživatele, který reprezentuje identitu přiřazenou systémem virtuálního počítače. Pro tento krok potřebujete [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
+V této části se dozvíte, jak v databázi vytvořit obsaženého uživatele, který reprezentuje identitu přiřazenou systémem virtuálního počítače. Pro tento krok potřebujete [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
 
-- [Univerzální ověřování pomocí SQL Database a Azure synapse Analytics (podpora SSMS pro MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo Azure synapse Analytics](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Univerzální ověřování pomocí SQL Database a Azure synapse Analytics (podpora SSMS pro MFA)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo Azure synapse Analytics](../../azure-sql/database/authentication-aad-configure.md)
 
 DATABÁZE SQL vyžaduje jedinečné zobrazované názvy AAD. V takovém případě musí být účty AAD, například uživatelé, skupiny a instanční objekty (aplikace) a názvy virtuálních počítačů povolené pro spravovanou identitu, jedinečné v AAD, které se týkají zobrazovaných názvů. SQL DB kontroluje zobrazované jméno AAD během vytváření takových uživatelů T-SQL, a pokud není jedinečné, příkaz se nepovede, aby pro daný účet zadal jedinečný zobrazovaný název AAD.
 
@@ -208,4 +208,4 @@ Výsledky dotazu zobrazíte prozkoumáním hodnoty `$DataSet.Tables[0]`.
 V tomto kurzu jste zjistili, jak používat spravovanou identitu přiřazenou systémem pro přístup k Azure SQL Database. Další informace o Azure SQL Database najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)

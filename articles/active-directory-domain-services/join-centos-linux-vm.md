@@ -2,7 +2,7 @@
 title: Připojte virtuální počítač CentOS k Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat virtuální počítač s CentOS Linux a připojit ho k Azure Active Directory Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: 9eb6a43557da43e8f792bcc3858e7123f2b6c607
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: justinha
+ms.openlocfilehash: 76fc11384b55337f581a74239d4a40b90b284f32
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005153"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619653"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače se systémem CentOS Linux k Azure Active Directory Domain Services spravované doméně
 

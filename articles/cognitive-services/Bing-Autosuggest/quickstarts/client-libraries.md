@@ -11,14 +11,20 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: aahi
-ms.openlocfilehash: ea8054c74d90253a0311d05ba63d1d1e6a6ab648
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8bc9663b54e88a8fa857f92e8d6927f720150c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887547"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352758"
 ---
 # <a name="quickstart-use-the-bing-autosuggest-client-library"></a>Rychlý Start: použití klientské knihovny Automatické návrhy Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 ::: zone pivot="programming-language-csharp"
 

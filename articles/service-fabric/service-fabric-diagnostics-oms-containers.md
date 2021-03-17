@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258697"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570210"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Monitorování kontejnerů pomocí Azure Monitorch protokolů
  
@@ -46,7 +46,7 @@ Agent umožňuje shromažďování několika protokolů specifických pro kontej
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [řešení kontejnerů pro Azure monitor protokoly](../azure-monitor/insights/containers.md).
+* Přečtěte si další informace o [řešení kontejnerů pro Azure monitor protokoly](../azure-monitor/containers/containers.md).
 * Přečtěte si další informace o orchestraci kontejnerů v Service Fabric- [Service Fabric a kontejnerech](service-fabric-containers-overview.md) .
-* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
-* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaných pravidel upozorňování](../azure-monitor/platform/alerts-overview.md) na pomoc při zjišťování a diagnostice
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/logs/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
+* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaných pravidel upozorňování](../azure-monitor/alerts/alerts-overview.md) na pomoc při zjišťování a diagnostice

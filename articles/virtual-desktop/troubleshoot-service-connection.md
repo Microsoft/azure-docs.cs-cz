@@ -1,17 +1,17 @@
 ---
 title: Poradce při potížích s virtuálním počítačem s Windows s připojením služby – Azure
-description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
+description: Jak řešit problémy při nastavování připojení služby v prostředí tenanta virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009371"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539068"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 
@@ -40,10 +40,24 @@ Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale
 
 4. Pokud je uživatel součástí skupiny uživatelů Azure Active Directory (AD), zajistěte, aby skupina uživatelů byla skupinou zabezpečení místo distribuční skupiny. Virtuální počítač s Windows nepodporuje distribuční skupiny Azure AD.
 
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>Uživatel ztratí existující kanál a nezobrazí se žádný vzdálený prostředek (bez kanálu).
+
+Tato chyba se obvykle zobrazuje poté, co uživatel přesunul své předplatné z jednoho tenanta Azure AD do jiného. V důsledku toho služba ztratí přehled o přiřazeních uživatelů, protože jsou stále vázány na starý tenant služby Azure AD.
+
+Chcete-li tento problém vyřešit, stačí, když uživatele přiřadíte ke skupinám aplikací.
+
+K tomu může dojít také v případě, že poskytovatel CSP vytvořil předplatné a pak ho přenesl na zákazníka. Pro vyřešení tohoto nového registru poskytovatele prostředků.
+
+1. Přihlaste se k portálu Azure.
+2. Klikněte na **předplatné** a pak vyberte své předplatné.
+3. V nabídce na levé straně stránky vyberte **poskytovatel prostředků**.
+4. Vyhledejte a vyberte **Microsoft. DesktopVirtualization** a pak vyberte **znovu registrovat**.
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení potíží při vytváření prostředí virtuálních počítačů s Windows a fondu hostitelů v prostředí virtuálních ploch Windows najdete v tématu [Vytvoření fondu prostředí a hostitele](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Informace o řešení potíží souvisejících s agentem virtuálního počítače s Windows nebo s připojením relace najdete v tématu [řešení běžných potíží s agentem virtuálních počítačů s Windows](troubleshoot-agent.md).
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
 - Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

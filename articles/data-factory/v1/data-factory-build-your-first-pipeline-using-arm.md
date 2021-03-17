@@ -1,22 +1,18 @@
 ---
 title: Sestavení prvního objektu pro vytváření dat (šablona Správce prostředků)
 description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 5024b1091e84c0d1583ce3e455f29e0d9b9c2fc4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: deeed3890094961b0934a6e093b9f5025990d1a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543261"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392098"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -39,7 +35,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 > 
 > Kanál v tomto kurzu má jen jednu aktivitu typu: HDInsightHive. Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [plánování a spouštění v Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -49,7 +45,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 
 ## <a name="in-this-tutorial"></a>V tomto kurzu
 
-| Entita | Popis |
+| Entita | Description |
 | --- | --- |
 | Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. Účet služby Azure Storage v této ukázce obsahuje vstupní a výstupní data pro kanál. |
 | Propojená služba HDInsightu na vyžádání |Propojí cluster HDInsight na vyžádání k datové továrně. Cluster se automaticky vytvoří, abyste mohli zpracovat data, a po dokončení zpracování se odstraní. |
@@ -143,14 +139,14 @@ Ve složce **C:\ADFGetStarted** vytvořte soubor JSON s názvem **ADFTutorialARM
             ],
             "apiVersion": "2015-10-01",
             "properties": {
-                  "type": "HDInsightOnDemand",
-                  "typeProperties": {
+                "type": "HDInsightOnDemand",
+                "typeProperties": {
                     "version": "3.5",
                     "clusterSize": 1,
                     "timeToLive": "00:05:00",
                     "osType": "Linux",
                     "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-                  }
+                }
             }
           },
           {
@@ -338,12 +334,12 @@ Vytvořte soubor JSON s názvem **ADFTutorialARM-Parameters.json**, který obsah
 3. V okně **Objekt pro vytváření dat** vašeho objektu pro vytváření dat klikněte na **Diagram**.
 
      ![Dlaždice Diagram](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
-4. V **zobrazení diagramu**uvidíte přehled kanálů a datové sady použité v tomto kurzu.
+4. V **zobrazení diagramu** uvidíte přehled kanálů a datové sady použité v tomto kurzu.
    
    ![Zobrazení diagramu](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. V zobrazení diagramu dvakrát klikněte na datovou sadu **AzureBlobOutput**. Zobrazí se řez, který se právě zpracovává.
    
-    ![Datová sada](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![Snímek obrazovky zobrazující datovou sadu AzureBlobOutput](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. Po dokončení zpracování bude řez ve stavu **Připraveno**. Vytváření clusteru HDInsight na vyžádání většinou nějakou dobu trvá (přibližně 20 minut). Proto počítejte s tím, že zpracování řezu kanálem bude trvat **přibližně 30 minut**.
    
     ![Datová sada](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
@@ -439,7 +435,7 @@ Je třeba počítat s následujícím:
 * Místo používání clusteru HDInsight na vyžádání můžete použít **vlastní cluster HDInsight** . Podrobnosti najdete v tématu [Propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 * Cluster HDInsight vytvoří **výchozí kontejner** v úložišti objektů blob, které jste zadali ve formátu JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat určitý řez, pokud neexistuje aktivní cluster (**timeToLive**), a po dokončení zpracování se zase odstraní.
   
-    Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
+    Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF **yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
 
 Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
@@ -526,37 +522,37 @@ Definujete kanál, který převádí data spuštěním skriptu Hive v clusteru A
     "properties": {
         "description": "Pipeline that transforms data using Hive script.",
         "activities": [
-        {
-            "type": "HDInsightHive",
-            "typeProperties": {
-                "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
-                "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
-                "defines": {
-                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
-                }
-            },
-            "inputs": [
             {
-                "name": "[variables('blobInputDatasetName')]"
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
+                    "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
+                    "defines": {
+                        "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                        "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "[variables('blobInputDatasetName')]"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "[variables('blobOutputDatasetName')]"
+                    }
+                ],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
             }
-            ],
-            "outputs": [
-            {
-                "name": "[variables('blobOutputDatasetName')]"
-            }
-            ],
-            "policy": {
-                "concurrency": 1,
-                "retry": 3
-            },
-            "scheduler": {
-                "frequency": "Month",
-                "interval": 1
-            },
-            "name": "RunSampleHiveActivity",
-            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
-        }
         ],
         "start": "2017-07-01T00:00:00Z",
         "end": "2017-07-02T00:00:00Z",
@@ -620,7 +616,7 @@ Tato šablona vytvoří objekt pro vytváření dat s názvem GatewayUsingArmDF,
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |

@@ -1,41 +1,155 @@
 ---
-title: Aktivovat kanál ML pro nová data
+title: Aktivace kanálů Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naučte se aktivovat spuštění kanálu ML pomocí Azure Logic Apps.
+description: Aktivované kanály umožňují automatizovat rutiny, časově náročné úlohy, jako je zpracování dat, školení a monitorování.
 services: machine-learning
-author: NilsPohlmann
-ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.date: 02/07/2020
+ms.author: laobri
+author: lobrien
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 3ecf4458b052f4fdc0eb2e6e697b0468c71ce9c2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324246"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519652"
 ---
-# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
+# <a name="trigger-machine-learning-pipelines"></a>Aktivovat kanály strojového učení
 
-Aktivovat spuštění kanálu Azure Machine Learning, když se zobrazí nová data Můžete například chtít, aby kanál aktivoval nový model při zobrazení nových dat v účtu BLOB Storage. Nastavte Trigger pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Plán můžete vytvořit na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat. Nakonec se dozvíte, jak pomocí dalších služeb Azure, aplikace Azure Logic a Azure Data Factory spustit kanály. Aplikace logiky Azure umožňuje komplexnější aktivaci logiky nebo chování. Kanály Azure Data Factory umožňují volat kanál strojového učení v rámci většího kanálu orchestrace dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
+* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
-* Koncový bod REST pro publikovaný kanál Machine Learning. [Vytvořte a publikujte svůj kanál](how-to-create-your-first-pipeline.md). Pak vyhledejte koncový bod REST vašeho PublishedPipeline s použitím ID kanálu:
-    
-     ```
-    # You can find the pipeline ID in Azure Machine Learning studio
-    
-    published_pipeline = PublishedPipeline.get(ws, id="<pipeline-id-here>")
-    published_pipeline.endpoint 
-    ```
-* [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-overview.md) pro ukládání vašich dat.
-* [Úložiště dat](how-to-access-data.md) ve vašem pracovním prostoru, které obsahuje podrobné informace o vašem účtu úložiště objektů BLOB.
+* Prostředí Pythonu, ve kterém je nainstalovaná sada Azure Machine Learning SDK pro Python. Další informace najdete v tématu [vytváření a Správa opakovaně použitelných prostředí pro školení a nasazení pomocí Azure Machine Learning.](how-to-use-environments.md)
+
+* Machine Learning pracovní prostor s publikovaným kanálem. V sadě Azure Machine Learning SDK můžete použít jeden z vestavěných [kanálů pro vytváření a spouštění strojového učení](./how-to-create-machine-learning-pipelines.md).
+
+## <a name="trigger-pipelines-with-azure-machine-learning-sdk-for-python"></a>Aktivace kanálů s Azure Machine Learning SDK pro Python
+
+K naplánování kanálu budete potřebovat odkaz na svůj pracovní prostor, identifikátor publikovaného kanálu a název experimentu, ve kterém chcete plán vytvořit. Tyto hodnoty můžete získat pomocí následujícího kódu:
+
+```Python
+import azureml.core
+from azureml.core import Workspace
+from azureml.pipeline.core import Pipeline, PublishedPipeline
+from azureml.core.experiment import Experiment
+
+ws = Workspace.from_config()
+
+experiments = Experiment.list(ws)
+for experiment in experiments:
+    print(experiment.name)
+
+published_pipelines = PublishedPipeline.list(ws)
+for published_pipeline in  published_pipelines:
+    print(f"{published_pipeline.name},'{published_pipeline.id}'")
+
+experiment_name = "MyExperiment" 
+pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" 
+```
+
+## <a name="create-a-schedule"></a>Vytvořit plán
+
+Pro opakované spuštění kanálu vytvoříte plán. `Schedule`Přidruží kanál, experiment a Trigger. Aktivační událost může být buď typu `ScheduleRecurrence` , který popisuje čekání mezi spuštěními nebo cestou úložiště dat, která určuje adresář, ve kterém se mají sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete plán vytvořit.
+
+V horní části souboru Pythonu importujte `Schedule` `ScheduleRecurrence` třídy a:
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
+
+### <a name="create-a-time-based-schedule"></a>Vytvoření plánu založeného na čase
+
+`ScheduleRecurrence`Konstruktor má povinný `frequency` argument, který musí být jeden z následujících řetězců: "Minute", "hour", "Day", "Week" nebo "Month". Také vyžaduje celočíselný `interval` argument určující, kolik `frequency` jednotek by měl uplynout mezi začátkem plánu. Volitelné argumenty vám umožní podrobnější informace o počátečních časech, jak je popsáno v [dokumentaci k sadě SDK pro ScheduleRecurrence](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence).
+
+Vytvořte `Schedule` , který začíná běžet každých 15 minut:
+
+```python
+recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
+recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule", 
+                            description="Based on time",
+                            pipeline_id=pipeline_id, 
+                            experiment_name=experiment_name, 
+                            recurrence=recurrence)
+```
+
+### <a name="create-a-change-based-schedule"></a>Vytvořit plán na základě změny
+
+Kanály aktivované změnami souborů můžou být efektivnější než plány založené na čase. Pokud chcete něco provést před změnou souboru nebo při přidání nového souboru do datového adresáře, můžete tento soubor předzpracovat. Můžete sledovat všechny změny v úložišti dat nebo změny v rámci určitého adresáře v úložišti dat. Pokud monitorete konkrétní adresář, změny v podadresářích tohoto adresáře nebudou _aktivovat běh_ .
+
+Chcete-li vytvořit soubor – reaktivní `Schedule` , musíte nastavit `datastore` parametr ve volání metody [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Chcete-li monitorovat složku, nastavte `path_on_datastore` argument.
+
+`polling_interval`Argument umožňuje zadat, v minutách četnosti změn, ve kterých je úložiště dat kontrolováno.
+
+Pokud byl kanál vytvořen pomocí [DataPath](/python/api/azureml-core/azureml.data.datapath.datapath) [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter), můžete tuto proměnnou nastavit na název změněného souboru nastavením `data_path_parameter_name` argumentu.
+
+```python
+datastore = Datastore(workspace=ws, name="workspaceblobstore")
+
+reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on input file change.",
+                            pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
+```
+
+### <a name="optional-arguments-when-creating-a-schedule"></a>Nepovinné argumenty při vytváření plánu
+
+Kromě výše popsaných argumentů můžete nastavit `status` argument na `"Disabled"` k vytvoření neaktivního plánu. Nakonec `continue_on_step_failure` vám umožní předat logickou hodnotu, která přepíše chování výchozího selhání kanálu.
+
+## <a name="view-your-scheduled-pipelines"></a>Zobrazit naplánované kanály
+
+Ve webovém prohlížeči přejděte na Azure Machine Learning. V části **koncové body** v navigačním panelu vyberte možnost **koncové body kanálu**. Tím přejdete na seznam kanálů publikovaných v pracovním prostoru.
+
+:::image type="content" source="./media/how-to-trigger-published-pipeline/scheduled-pipelines.png" alt-text="Stránka kanálů v AML":::
+
+Na této stránce si můžete prohlédnout souhrnné informace o všech kanálech v pracovním prostoru: názvy, popisy, stav a tak dále. Kliknutím na svůj kanál přejděte k podrobnostem. Na výsledné stránce jsou k dispozici další podrobnosti o vašem kanálu a můžete přejít k podrobnostem o jednotlivých spuštěních.
+
+## <a name="deactivate-the-pipeline"></a>Deaktivace kanálu
+
+Pokud máte, `Pipeline` který je publikovaný, ale není naplánovaný, můžete ho zakázat pomocí:
+
+```python
+pipeline = PublishedPipeline.get(ws, id=pipeline_id)
+pipeline.disable()
+```
+
+Pokud je tento kanál naplánovaný, musíte nejdřív zrušit plán. Načtěte identifikátor plánu z portálu nebo spuštěním:
+
+```python
+ss = Schedule.list(ws)
+for s in ss:
+    print(s)
+```
+
+Jakmile budete `schedule_id` chtít zakázat, spusťte příkaz:
+
+```python
+def stop_by_schedule_id(ws, schedule_id):
+    s = next(s for s in Schedule.list(ws) if s.id == schedule_id)
+    s.disable()
+    return s
+
+stop_by_schedule_id(ws, schedule_id)
+```
+
+Pokud pak znovu spustíte `Schedule.list(ws)` , měli byste mít prázdný seznam.
+
+## <a name="use-azure-logic-apps-for-complex-triggers"></a>Použití Azure Logic Apps pro komplexní triggery 
+
+S využitím [Aplikace logiky Azure](../logic-apps/logic-apps-overview.md)se dá vytvořit složitější pravidla triggeru nebo chování.
+
+Pokud chcete použít aplikaci logiky Azure k aktivaci kanálu Machine Learning, budete potřebovat koncový bod REST pro publikovaný Machine Learning kanál. [Vytvořte a publikujte svůj kanál](./how-to-create-machine-learning-pipelines.md). Pak vyhledejte koncový bod REST s `PublishedPipeline` použitím ID kanálu:
+
+```python
+# You can find the pipeline ID in Azure Machine Learning studio
+
+published_pipeline = PublishedPipeline.get(ws, id="<pipeline-id-here>")
+published_pipeline.endpoint 
+```
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
@@ -47,11 +161,11 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
 
 1. Přejděte do zobrazení návrháře aplikací logiky a vyberte šablonu prázdná aplikace logiky. 
     > [!div class="mx-imgBorder"]
-    > ![Prázdná šablona](media/how-to-trigger-published-pipeline/blank-template.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/blank-template.png" alt-text="Prázdná šablona":::
 
 1. V Návrháři vyhledejte **objekt BLOB**. Vyberte aktivační událost **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** a přidejte tuto aktivační událost do aplikace logiky.
     > [!div class="mx-imgBorder"]
-    > ![Přidání triggeru](media/how-to-trigger-published-pipeline/add-trigger.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/add-trigger.png" alt-text="Přidání triggeru":::
 
 1. Zadejte informace o připojení pro účet úložiště objektů blob, který chcete monitorovat pro doplňky nebo úpravy objektu BLOB. Vyberte kontejner, který chcete monitorovat. 
  
@@ -63,7 +177,7 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
 1. Přidejte akci HTTP, která se spustí při zjištění nového nebo upravovaného objektu BLOB. Vyberte **+ Nový krok**, vyhledejte a vyberte akci HTTP.
 
   > [!div class="mx-imgBorder"]
-  > ![Vyhledat akci HTTP](media/how-to-trigger-published-pipeline/search-http.png)
+  > :::image type="content" source="media/how-to-trigger-published-pipeline/search-http.png" alt-text="Vyhledat akci HTTP":::
 
   Ke konfiguraci akce použijte následující nastavení:
 
@@ -76,21 +190,45 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
 1. Nastavte svůj plán tak, aby se nastavila hodnota libovolné [PipelineParametersy DataPath](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) , kterou jste mohli mít:
 
     ```json
-    "DataPathAssignments": { 
-         "input_datapath": { 
-                            "DataStoreName": "<datastore-name>", 
-                            "RelativePath": "@triggerBody()?['Name']" 
-    } 
-    }, 
-    "ExperimentName": "MyRestPipeline", 
-    "ParameterAssignments": { 
-    "input_string": "sample_string3" 
-    },
+    {
+      "DataPathAssignments": {
+        "input_datapath": {
+          "DataStoreName": "<datastore-name>",
+          "RelativePath": "@{triggerBody()?['Name']}" 
+        }
+      },
+      "ExperimentName": "MyRestPipeline",
+      "ParameterAssignments": {
+        "input_string": "sample_string3"
+      },
+      "RunSource": "SDK"
+    }
     ```
 
     Použijte `DataStoreName` jako [součást](#prerequisites), kterou jste přidali do svého pracovního prostoru.
      
     > [!div class="mx-imgBorder"]
-    > ![Nastavení HTTP](media/how-to-trigger-published-pipeline/http-settings.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/http-settings.png" alt-text="Nastavení HTTP":::
 
 1. Vyberte **Uložit** a váš plán je teď připravený.
+
+> [!IMPORTANT]
+> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role Azure (Azure RBAC), [nastavte oprávnění pro váš scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#common-scenarios).
+
+## <a name="call-machine-learning-pipelines-from-azure-data-factory-pipelines"></a>Volání kanálů strojového učení z Azure Data Factory kanálů
+
+V kanálu Azure Data Factory spustí aktivita *Machine Learning spuštění kanálu* Azure Machine Learning kanál. Tuto aktivitu najdete na stránce pro vytváření Data Factory v kategorii *Machine Learning* :
+
+:::image type="content" source="media/how-to-trigger-published-pipeline/azure-data-factory-pipeline-activity.png" alt-text="Snímek obrazovky zobrazující aktivitu kanálu ML v prostředí pro vytváření Azure Data Factory":::
+
+## <a name="next-steps"></a>Další kroky
+
+V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn na zadaném `Datastore` nebo v adresáři v daném úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Zjistili jste, jak zakázat plán, aby kanál přestal běžet. Nakonec jste vytvořili aplikaci logiky Azure, která aktivuje kanál. 
+
+Další informace naleznete v tématu:
+
+> [!div class="nextstepaction"]
+> [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)
+
+* Další informace o [kanálech](concept-ml-pipelines.md)
+* Další informace o [prozkoumání Azure Machine Learning pomocí Jupyter](samples-notebooks.md)

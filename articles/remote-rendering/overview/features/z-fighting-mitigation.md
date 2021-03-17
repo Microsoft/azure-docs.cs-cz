@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a399565d62b20f62b72257bcb9f3beb2c910ac98
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022414"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594057"
 ---
 # <a name="z-fighting-mitigation"></a>Zmírnění Z-fightingu
 
@@ -20,16 +21,16 @@ Pokud se dva povrchy překrývají, není jasné, které z nich by měly být vy
 
 |Status                        | Výsledek                               |
 |---------------------------------|:-------------------------------------|
-|Normální z-boj               |![Z-boj](./media/zfighting-0.png)|
-|Z-boj povoleno zmírnění    |![Z-boj](./media/zfighting-1.png)|
-|Zvýrazňování šachovnice povoleno|![Z-boj](./media/zfighting-2.png)|
+|Normální z-boj               |![Žádná deterministické priorita mezi červenou a zelenou Quad](./media/zfighting-0.png)|
+|Z-boj povoleno zmírnění    |![Červená čtyřnásobná priorita](./media/zfighting-1.png)|
+|Zvýrazňování šachovnice povoleno|![Červená a zelená Čtyřjádrová předvolba v šachovnicovém vzoru](./media/zfighting-2.png)|
 
 Následující kód povoluje zmírnění omezení z boje:
 
 ```cs
-void EnableZFightingMitigation(AzureSession session, bool highlight)
+void EnableZFightingMitigation(RenderingSession session, bool highlight)
 {
-    ZFightingMitigationSettings settings = session.Actions.ZFightingMitigationSettings;
+    ZFightingMitigationSettings settings = session.Connection.ZFightingMitigationSettings;
 
     // enabling z-fighting mitigation
     settings.Enabled = true;
@@ -40,18 +41,17 @@ void EnableZFightingMitigation(AzureSession session, bool highlight)
 ```
 
 ```cpp
-void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
+void EnableZFightingMitigation(ApiHandle<RenderingSession> session, bool highlight)
 {
-    ApiHandle<ZFightingMitigationSettings> settings = *session->Actions()->ZFightingMitigationSettings();
+    ApiHandle<ZFightingMitigationSettings> settings = session->Connection()->GetZFightingMitigationSettings();
 
     // enabling z-fighting mitigation
-    settings->Enabled(true);
+    settings->SetEnabled(true);
 
     // enabling checkerboard highlighting of z-fighting potential
-    settings->Highlighting(highlight);
+    settings->SetHighlighting(highlight);
 }
 ```
-
 
 > [!NOTE]
 > Z-boje proti zmírnění je globální nastavení, které ovlivňuje všechny vygenerované sítě.
@@ -75,6 +75,11 @@ K dispozici je nejlepší úsilí z hlediska zmírnění omezení z hlediska boj
 
 * Povolením z boje proti zmírnění rizik dojde k nedostatečnému výkonu.
 * Kromě povolení překrytí z-boje platí netriviální režie výkonu, i když se může lišit v závislosti na scéně.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Vlastnost C# RenderingConnection. ZFightingMitigationSettings](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.zfightingmitigationsettings)
+* [C++ RenderingConnection:: ZFightingMitigationSettings ()](/cpp/api/remote-rendering/renderingconnection#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

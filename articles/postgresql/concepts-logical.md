@@ -1,28 +1,28 @@
 ---
 title: Logické dekódování – Azure Database for PostgreSQL – jeden server
 description: Popisuje logické dekódování a wal2json pro Change Data Capture v Azure Database for PostgreSQLm jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/09/2020
+ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213682"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938898"
 ---
 # <a name="logical-decoding"></a>Logické dekódování
- 
+
 [Logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/logicaldecoding.html) umožňuje streamovat změny dat na externí příjemce. Logické dekódování se používá v oblíbených případech pro streamování událostí a Change Data Capture.
 
-Logické dekódování používá výstupní modul plug-in pro převod protokolu Postgres (WAL) na zápis do čitelného formátu. Azure Database for PostgreSQL poskytuje výstupní moduly plug-in [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) a pgoutput. pgoutput je k dispozici prostřednictvím Postgres z Postgres verze 10 a.
+Logické dekódování používá výstupní modul plug-in pro převod protokolu Postgres (WAL) na zápis do čitelného formátu. Azure Database for PostgreSQL poskytuje výstupní moduly plug-in [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) a pgoutput. pgoutput je k dispozici prostřednictvím PostgreSQL z PostgreSQL verze 10 a.
 
 Přehled toho, jak funguje logické dekódování Postgres, [najdete na našem blogu](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421). 
 
 > [!NOTE]
-> Logické dekódování je ve verzi Public Preview na serveru Azure Database for PostgreSQL-Single.
+> Logická replikace s použitím publikace nebo předplatného PostgreSQL není u serveru Azure Database for PostgreSQL-Single podporována.
 
 
 ## <a name="set-up-your-server"></a>Nastavení serveru 
@@ -34,30 +34,33 @@ Ke konfiguraci správné úrovně protokolování použijte parametr podpory rep
 * **Replika** – přesnější podrobnější informace než **vypnuto**. Toto je minimální úroveň protokolování potřebného pro fungování [replik pro čtení](concepts-read-replicas.md) . Toto nastavení je na většině serverů výchozí.
 * **Logický** – další podrobnější informace než **replika** Toto je minimální úroveň protokolování pro logické dekódování, které funguje. V tomto nastavení fungují i repliky pro čtení.
 
-Po změně tohoto parametru je nutné restartovat server. Interně tento parametr nastaví parametry Postgres `wal_level` , `max_replication_slots` a `max_wal_senders` .
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-1. Nastavte Azure. replication_support na `logical` .
-   ```
+1. Nastavte azure.replication_support na `logical` .
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. Restartujte server, aby se změna projevila.
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. Pokud používáte Postgres 9,5 nebo 9,6 a používáte přístup k veřejné síti, přidejte pravidlo brány firewall, abyste zahrnuli veřejnou IP adresu klienta, ze které budete spouštět logickou replikaci. Název pravidla brány firewall musí zahrnovat **_replrule**. Například *test_replrule*. Chcete-li vytvořit nové pravidlo brány firewall na serveru, spusťte příkaz [AZ Postgres server firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) . 
 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
 1. Nastavte podporu replikace Azure na **logickou**. Vyberte **Uložit**.
 
-   ![Azure Database for PostgreSQL – replikace – podpora replikace Azure](./media/concepts-logical/replication-support.png)
+   :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL – replikace – podpora replikace Azure":::
 
 2. Restartujte server, aby se změna projevila, a to tak, že vyberete **Ano**.
 
-   ![Azure Database for PostgreSQL-replikace – potvrzení restartování](./media/concepts-logical/confirm-restart.png)
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replikace – potvrzení restartování":::
 
+3. Pokud používáte Postgres 9,5 nebo 9,6 a používáte přístup k veřejné síti, přidejte pravidlo brány firewall, abyste zahrnuli veřejnou IP adresu klienta, ze které budete spouštět logickou replikaci. Název pravidla brány firewall musí zahrnovat **_replrule**. Například *test_replrule*. Potom klikněte na **Uložit**.
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="Azure Database for PostgreSQL – replikace – přidání pravidla brány firewall":::
 
 ## <a name="start-logical-decoding"></a>Spustit logické dekódování
 
@@ -159,7 +162,7 @@ SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Pokud přestanete používat logické dekódování, změňte Azure. replication_support zpět na `replica` nebo `off` . Podrobnosti WAL uchované `logical` jsou podrobněji podrobnější a měly by být zakázány, pokud se logické dekódování nepoužívá. 
+> Pokud přerušíte použití logického dekódování, změňte azure.replication_support zpět na `replica` nebo `off` . Podrobnosti WAL uchované `logical` jsou podrobněji podrobnější a měly by být zakázány, pokud se logické dekódování nepoužívá. 
 
  
 ## <a name="next-steps"></a>Další kroky

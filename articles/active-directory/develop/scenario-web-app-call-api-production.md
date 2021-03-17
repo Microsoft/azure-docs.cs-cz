@@ -1,5 +1,6 @@
 ---
-title: Přechod na produkční webovou aplikaci, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Přesun do produkční webové aplikace, která volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přesunout do produkční webové aplikace, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6404d00b87b9ee745b9e3a92c646404e574417c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6252e33631fb07a61ed3c1ac2be65762b290600b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881657"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753227"
 ---
 # <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Webová aplikace, která volá webová rozhraní API: přesunout do produkčního prostředí
 
@@ -34,8 +35,7 @@ Přečtěte si kompletní postupný kurz pro ASP.NET Core Web Apps. Tento kurz:
 - Zpracovává přírůstkový souhlas.
 - Volá vaše vlastní webové rozhraní API.
 
-> [!div class="nextstepaction"]
-> [Kurz ASP.NET Core webové aplikace](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+[Kurz ASP.NET Core webové aplikace](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

@@ -5,17 +5,17 @@ services: peering-service
 author: derekolo
 ms.service: peering-service
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
-ms.date: 05/29/2020
+ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 012468ea16a9d1125bbcc93333eb8dad586aa502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da6c53675378fcf9d395debe750bb97738763a09
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872101"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059513"
 ---
 # <a name="peering-service-partners"></a>Partneři služby partnerského vztahu
 
@@ -30,18 +30,22 @@ Tabulka v tomto článku poskytuje informace o partnerech připojení služby pe
 
 | **Partneři** | **Uvádět**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |USA|
+| [Lumen – technologie](https://www.ctl.io/microsoft-azure-peering-services/) |Severní Amerika, Evropa|
 | [BBIX](https://www.bbix.net/en/service/) |Japonsko |
 | [CCL](https://concepts.co.nz/news/general-news/) |Oceánie |
-| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Evropa|
+| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Evropa, Asie|
 | [DE-CIX](https://www.de-cix.net/microsoft)|Evropa, Severní Amerika |
 | [IIJ](https://www.iij.ad.jp/en/) | Japonsko |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|Evropa  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |Oceánie  |
-| [Liquid Telecom](https://liquidcloud.africa/365-direct) | Afrika  |
+| [Liquid Telecom](https://liquidcloud.africa/keep-expanding-365-direct/) | Afrika  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | Japonsko |
 | [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |Asie |
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |Asie |
+| [Afrika architektury NAP](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |Afrika|
+| [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |Evropa|
+| [Sítě CMC](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |Afrika|
+| [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |Afrika|
 
 > [!NOTE]
 >Další informace o zařazení do partnerského programu služby peering Service získáte v části peeringservice@microsoft.com .

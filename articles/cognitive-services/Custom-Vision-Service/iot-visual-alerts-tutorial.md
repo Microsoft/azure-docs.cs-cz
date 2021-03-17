@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: c6405e2fcddef9ae3228ede76dfa57f7542164c8
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244665"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020172"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: použití Custom Vision se zařízením IoT k hlášení vizuálních stavů
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 * Budete také muset [vytvořit prostředek IoT Hub](https://ms.portal.azure.com/#create/Microsoft.IotHub) v Azure.
 * [Visual Studio 2015 nebo novější](https://www.visualstudio.com/downloads/)
 * Volitelně je zařízení IoT s Windows 10 IoT Core verze 17763 nebo vyšší. Aplikaci můžete také spustit přímo z počítače.
-   * Pro maliny pi 2 a 3 můžete nastavit Windows 10 přímo z aplikace řídicího panelu IoT. Pro jiná zařízení, jako je například DrangonBoard, je třeba ji Flash použít [metodou EMMC](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices). Pokud potřebujete pomáhat s nastavením nového zařízení, přečtěte si téma [nastavení zařízení](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) v dokumentaci k Windows IoT.
+   * Pro maliny pi 2 a 3 můžete nastavit Windows 10 přímo z aplikace řídicího panelu IoT. Pro jiná zařízení, jako je například DrangonBoard, je třeba ji Flash použít [metodou EMMC](/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices). Pokud potřebujete pomáhat s nastavením nového zařízení, přečtěte si téma [nastavení zařízení](/windows/iot-core/tutorials/quickstarter/devicesetup) v dokumentaci k Windows IoT.
 
 ## <a name="about-the-visual-alerts-app"></a>O aplikaci vizuálních výstrah
 
@@ -52,11 +52,11 @@ Aplikace pro vizuální výstrahy IoT se spouští v souvislé smyčce, přičem
 * **Čekání na vyškolený model**: v tomto stavu aplikace volá rozhraní API Custom Vision každou sekundu, aby zkontrolovala, jestli cílový projekt obsahuje proškolenou iteraci. Když ho najde, stáhne odpovídající model ONNX do místního souboru a přepne do stavu **bodování** .
 * **Bodování**: v tomto stavu aplikace používá Windows ml k vyhodnocení jednoho snímku z fotoaparátu proti místnímu ONNX modelu. Výsledná klasifikace obrázku se zobrazí na obrazovce a odešle se jako zpráva do IoT Hub. Aplikace se pak před vyhodnocením nové image do režimu spánku za jednu sekundu.
 
-## <a name="understand-the-code-structure"></a>Pochopení struktury kódu
+## <a name="examine-the-code-structure"></a>Kontrola struktury kódu
 
 Následující soubory zpracovávají hlavní funkce aplikace.
 
-| Soubor | Popis |
+| Soubor | Description |
 |-------------|-------------|
 | [MainPage. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Tento soubor definuje uživatelské rozhraní XAML. Je hostitelem ovládacího prvku webové kamery a obsahuje popisky používané pro aktualizace stavu.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Tento kód řídí chování uživatelského rozhraní XAML. Obsahuje kód pro zpracování stavového stroje.|
@@ -76,7 +76,7 @@ Pomocí těchto kroků můžete aplikaci IoT vizuální výstrahy spuštěné na
     1. Aktualizujte `targetCVSProjectGuid` proměnnou odpovídajícím ID Custom Vision projektu, který chcete použít. 
 1. Nastavte prostředek IoT Hub:
     1. V _IoTHub\IotHubWrapper.cs_ skriptu aktualizujte `s_connectionString` proměnnou pomocí správného připojovacího řetězce pro vaše zařízení. 
-    1. Na Azure Portal načtěte instanci IoT Hub, v části **Průzkumník**klikněte na **zařízení IoT** , v nabídce Nástroje vyberte cílové zařízení (nebo v případě potřeby vytvořte) a v části **primární připojovací řetězec**Najděte připojovací řetězec. Řetězec bude obsahovat váš název IoT Hub, ID zařízení a sdílený přístupový klíč. má následující formát: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
+    1. Na Azure Portal načtěte instanci IoT Hub, v části **Průzkumník** klikněte na **zařízení IoT** , v nabídce Nástroje vyberte cílové zařízení (nebo v případě potřeby vytvořte) a v části **primární připojovací řetězec** Najděte připojovací řetězec. Řetězec bude obsahovat váš název IoT Hub, ID zařízení a sdílený přístupový klíč. má následující formát: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
@@ -98,17 +98,17 @@ I když aplikace zachytí image, je nutné ji zveřejnit pro typy vizuálních s
 
 ## <a name="train-the-custom-vision-model"></a>Výuka Custom Visionho modelu
 
-Jakmile aplikace dokončí zachycení imagí, nahraje je a pak přepne na stav **čekání na vyškolený model** . V tuto chvíli potřebujete přejít na [portál Custom Vision](https://www.customvision.ai/) a vytvořit model založený na nových školicích obrázcích. Příklad tohoto procesu znázorňuje následující animace.
+Jakmile aplikace dokončí zachycení imagí, nahraje je a pak přepne na stav **čekání na vyškolený model** . V tuto chvíli potřebujete přejít na [web Custom Vision](https://www.customvision.ai/) a vytvořit model založený na nových školicích obrázcích. Příklad tohoto procesu znázorňuje následující animace.
 
 ![Animace: označení více obrázků banánů](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 Postup opakování tohoto procesu ve vlastním scénáři:
 
-1. Přihlaste se k [portálu Custom Vision](http://customvision.ai).
+1. Přihlaste se k [webu Custom Vision](http://customvision.ai).
 1. Vyhledejte cílový projekt, který by teď měl mít všechny školicí materiály, které nahrála aplikace.
 1. U každého vizuálního stavu, který chcete identifikovat, vyberte příslušné bitové kopie a ručně použijte značku.
-    * Například pokud váš cíl rozlišuje mezi prázdnou místností a místností s lidmi, doporučujeme označit pět nebo více obrázků s lidmi jako novou třídu, **lidi**a označením pěti nebo více obrázků, aniž by bylo nutné používat jako **zápornou** značku. To vám pomůže model odlišit mezi oběma stavy.
-    * Dalším příkladem je, že pokud máte v cíli přibližný způsob, jakým je plná police, můžete použít značky jako **EmptyShelf**, **PartiallyFullShelf**a **FullShelf**.
+    * Například pokud váš cíl rozlišuje mezi prázdnou místností a místností s lidmi, doporučujeme označit pět nebo více obrázků s lidmi jako novou třídu, **lidi** a označením pěti nebo více obrázků, aniž by bylo nutné používat jako **zápornou** značku. To vám pomůže model odlišit mezi oběma stavy.
+    * Dalším příkladem je, že pokud máte v cíli přibližný způsob, jakým je plná police, můžete použít značky jako **EmptyShelf**, **PartiallyFullShelf** a **FullShelf**.
 1. Až budete hotovi, vyberte tlačítko **výuka** .
 1. Po dokončení školení aplikace zjistí, že je k dispozici vyškolená iterace. Spustí proces exportu trained model, který ONNX a stáhne do zařízení.
 
@@ -142,5 +142,5 @@ V tomto kurzu nastavíte a spustíte aplikaci, která detekuje informace o vizu�
 > [IoTVisualAlerts Sample (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
 * Přidejte metodu IoT Hub pro přepínání aplikace přímo na stav čekání na **vyškolený model** . Tímto způsobem můžete model proškolit s imagemi, které nejsou zachyceny samotným zařízením, a potom vložit nový model do zařízení v příkazu.
-* Postupujte podle kurzu [vizualizace dat snímače v reálném](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) čase a vytvořte řídicí panel Power BI, který vizualizuje IoT Hub výstrahy odesílané ukázkou.
-* Postupujte podle kurzu [vzdáleného monitorování IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) a vytvořte aplikaci logiky, která reaguje na IoT Hub výstrahy při zjištění vizuálních stavů.
+* Postupujte podle kurzu [vizualizace dat snímače v reálném](../../iot-hub/iot-hub-live-data-visualization-in-power-bi.md) čase a vytvořte řídicí panel Power BI, který vizualizuje IoT Hub výstrahy odesílané ukázkou.
+* Postupujte podle kurzu [vzdáleného monitorování IoT](../../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) a vytvořte aplikaci logiky, která reaguje na IoT Hub výstrahy při zjištění vizuálních stavů.

@@ -1,34 +1,35 @@
 ---
-title: Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager – Azure RBAC
+title: Přiřazení rolí Azure pomocí šablon Azure Resource Manager – Azure RBAC
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí šablon Azure Resource Manager a řízení přístupu na základě role v Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 01/21/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556019"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
+
+## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
 Chcete-li přiřadit roli, je nutné zadat ID uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
-### <a name="user"></a>Uživatel
+### <a name="user"></a>User
 
 Pokud chcete získat ID uživatele, můžete použít příkazy [Get-AzADUser](/powershell/module/az.resources/get-azaduser) nebo [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) .
 
@@ -40,7 +41,7 @@ $objectid = (Get-AzADUser -DisplayName "{name}").id
 objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 ```
 
-### <a name="group"></a>Skupina
+### <a name="group"></a>Group (Skupina)
 
 Pokud chcete získat ID skupiny, můžete použít příkazy [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) nebo [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) .
 
@@ -50,6 +51,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 
 ```azurecli
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
+```
+
+### <a name="managed-identities"></a>Spravované identity
+
+Pokud chcete získat ID spravované identity, můžete použít příkaz [Get-AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) nebo [AZ AD SP](/cli/azure/ad/sp) .
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
 ```
 
 ### <a name="application"></a>Aplikace
@@ -64,20 +77,20 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Přidat přiřazení role
+## <a name="assign-an-azure-role"></a>Přiřazení role Azure
 
-Když v Azure RBAC udělíte přístup, přidáte přiřazení role.
+V Azure RBAC pro udělení přístupu přiřadíte roli.
 
 ### <a name="resource-group-scope-without-parameters"></a>Obor skupiny prostředků (bez parametrů)
 
-Následující šablona ukazuje základní způsob, jak přidat přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
+Následující šablona ukazuje základní způsob přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
 
 -  Přiřazení role [čtenáře](built-in-roles.md#reader) k uživateli, skupině nebo aplikaci v oboru skupiny prostředků
 
 Chcete-li použít šablonu, je nutné provést následující akce:
 
 - Vytvořit nový soubor JSON a zkopírovat šablonu
-- Nahraďte `<your-principal-id>` ID uživatele, skupiny nebo aplikace, které chcete přiřadit roli.
+- Nahraďte `<your-principal-id>` ID uživatele, skupiny, spravované identity nebo aplikace, ke které se má přiřadit role.
 
 ```json
 {
@@ -97,14 +110,14 @@ Chcete-li použít šablonu, je nutné provést následující akce:
 }
 ```
 
-Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení ve skupině prostředků s názvem example.
+Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení ve skupině prostředků s názvem example.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 Níže vidíte příklad přiřazení role čtenáře uživateli pro skupinu prostředků po nasazení šablony.
@@ -120,7 +133,7 @@ Předchozí šablona není příliš flexibilní. Následující šablona použ�
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
 
-- ID uživatele, skupiny nebo aplikace, které se má přiřadit role
+- ID uživatele, skupiny, spravované identity nebo aplikace, ke které se role přiřadí
 - Jedinečné ID, které se bude používat pro přiřazení role, nebo můžete použít výchozí ID.
 
 ```json
@@ -175,36 +188,29 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 > [!NOTE]
 > Tato šablona není idempotentní, pokud není stejná `roleNameGuid` hodnota zadána jako parametr pro každé nasazení šablony. Pokud se nezadá žádný `roleNameGuid` , ve výchozím nastavení se v každém nasazení vygeneruje nový identifikátor GUID a další nasazení se nezdaří s `Conflict: RoleAssignmentExists` chybou.
 
-Rozsah přiřazení role je určen z úrovně nasazení. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru skupiny prostředků.
+Rozsah přiřazení role je určen z úrovně nasazení. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení v oboru skupiny prostředků.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Tady jsou příklady [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) a [AZ Deployment Create](/cli/azure/deployment#az-deployment-create) Command, jak spustit nasazení v oboru předplatného a zadat umístění.
+Tady jsou příklady [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) a [AZ Deployment sub Create](/cli/azure/deployment/sub#az_deployment_sub_create) Commands, jak spustit nasazení v oboru předplatného a zadat umístění.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>Obor prostředku
 
-Pokud potřebujete přidat přiřazení role na úrovni prostředku, formát přiřazení role se liší. Zadejte obor názvů poskytovatele prostředků a typ prostředku, ke kterému chcete přiřadit roli. Do názvu přiřazení role zadáte také název prostředku.
-
-Pro typ a název přiřazení role použijte následující formát:
-
-```json
-"type": "{resource-provider-namespace}/{resource-type}/providers/roleAssignments",
-"name": "{resource-name}/Microsoft.Authorization/{role-assign-GUID}"
-```
+Pokud potřebujete přiřadit roli na úrovni prostředku, nastavte `scope` u přiřazení role vlastnost na název prostředku.
 
 Následující šablona znázorňuje:
 
@@ -214,11 +220,11 @@ Následující šablona znázorňuje:
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
 
-- ID uživatele, skupiny nebo aplikace, které se má přiřadit role
+- ID uživatele, skupiny, spravované identity nebo aplikace, ke které se role přiřadí
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -236,6 +242,13 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -262,9 +275,10 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
             "properties": {}
         },
         {
-            "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
-            "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(variables('storageName'))))]",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2020-04-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "scope": "[concat('Microsoft.Storage/storageAccounts', '/', variables('storageName'))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -277,14 +291,14 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 }
 ```
 
-K nasazení předchozí šablony použijte příkazy skupiny prostředků. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru prostředků.
+K nasazení předchozí šablony použijte příkazy skupiny prostředků. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení v oboru prostředků.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Níže vidíte příklad přiřazení role přispěvatele uživateli pro účet úložiště po nasazení šablony.
@@ -293,12 +307,14 @@ Níže vidíte příklad přiřazení role přispěvatele uživateli pro účet 
 
 ### <a name="new-service-principal"></a>Nový instanční objekt
 
-Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například vytvoříte novou spravovanou identitu a pak se pokusíte přiřadit roli k tomuto instančnímu objektu ve stejné šabloně Azure Resource Manager, přiřazení role může selhat. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Pro vyřešení tohoto scénáře byste měli nastavit `principalType` vlastnost na `ServicePrincipal` při vytváření přiřazení role.
+Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například vytvoříte novou spravovanou identitu a pak se pokusíte přiřadit roli k tomuto instančnímu objektu ve stejné šabloně Azure Resource Manager, přiřazení role může selhat. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt.
+
+Pro vyřešení tohoto scénáře byste měli nastavit `principalType` vlastnost na `ServicePrincipal` při vytváření přiřazení role. Musíte také nastavit `apiVersion` přiřazení role na `2018-09-01-preview` nebo vyšší.
 
 Následující šablona znázorňuje:
 
 - Postup vytvoření nového objektu spravované služby identity
-- Jak zadat`principalType`
+- Jak zadat `principalType`
 - Přiřazení role Přispěvatel k tomuto instančnímu objektu v oboru skupiny prostředků
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
@@ -337,7 +353,6 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
             "properties": {
                 "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
                 "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30').principalId]",
-                "scope": "[resourceGroup().id]",
                 "principalType": "ServicePrincipal"
             }
         }
@@ -345,32 +360,23 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 }
 ```
 
-Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru skupiny prostředků.
+Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení v oboru skupiny prostředků.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 Následuje příklad přiřazení role přispěvatele k novému instančnímu objektu služby spravované identity po nasazení šablony.
 
 ![Přiřazení role nového objektu spravované služby identity](./media/role-assignments-template/role-assignment-template-msi.png)
 
-## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
-
-Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete přiřazení role. Neexistuje způsob, jak odebrat přiřazení role pomocí šablony. Chcete-li odebrat přiřazení role, je nutné použít jiné nástroje, jako například:
-
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
-- [REST API](role-assignments-rest.md#remove-a-role-assignment)
-
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
+- [Rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [Vysvětlení struktury a syntaxe šablon ARM](../azure-resource-manager/templates/template-syntax.md)
 - [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -3,7 +3,7 @@ title: Indexování mediálních souborů pomocí Azure Media Indexer
 description: Azure Media Indexer umožňuje zpřístupnění obsahu mediálních souborů a vytvoření fulltextového přepisu pro skryté titulky a klíčová slova. V tomto tématu se dozvíte, jak používat Media Indexer.
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/22/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c575904d994232726cf8d0d9152b02130fd29cea
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826054"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013247"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
 
-> [!NOTE]
-> Procesor **Azure Media Indexer** médií bude vyřazen. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tento starší multimediální procesor. Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+> [!IMPORTANT]
+> Doporučujeme, aby zákazníci migrovali ze služby indexer V1 a služby indexer v2, aby používali [Základní režim Media Services V3 AudioAnalyzerPreset](../latest/analyzing-video-audio-files-concept.md). Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](./legacy-components.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
 Azure Media Indexer umožňuje zpřístupnění obsahu mediálních souborů a vytvoření fulltextového přepisu pro skryté titulky a klíčová slova. V dávce můžete zpracovat jeden mediální soubor nebo několik mediálních souborů.  
 
@@ -33,7 +36,7 @@ Při indexování obsahu se ujistěte, že používáte mediální soubory, kter
 
 Úloha indexování může generovat následující výstupy:
 
-* Soubory titulků jsou skryté v následujících formátech: **ttml**a **WebVTT**.
+* Soubory titulků jsou skryté v následujících formátech: **ttml** a **WebVTT**.
   
     Soubory skrytých titulků obsahují značku s názvem rozpoznatelné, která vyhodnotí úlohu indexování na základě toho, jak rozpoznávání řeči ve zdrojovém videu je.  Pro použitelnost můžete použít hodnotu rozpoznatelné výstupní soubory obrazovky. Nízké skóre by znamenalo špatné indexování výsledků kvůli kvalitě zvuku.
 * Soubor klíčových slov (XML).
@@ -45,7 +48,7 @@ Pro úlohy indexování můžete zadat více podrobností pomocí konfigurace ú
 
 Můžete také zpracovat více mediálních souborů najednou pomocí souboru manifestu.
 
-Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./media-services-analytics-overview.md).
+Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./legacy-components.md).
 
 ## <a name="index-an-asset"></a>Indexace prostředku
 Následující metoda nahraje mediální soubor jako Asset a vytvoří úlohu, která indexuje Asset.
@@ -147,18 +150,18 @@ Ve výchozím nastavení generuje úloha indexování následující výstupní 
 
 Pokud je k dispozici více než jeden vstupní mediální soubor, indexer vygeneruje soubor manifestu pro výstupy úlohy s názvem ' JobResult.txt '. Pro každý vstupní soubor médií jsou výsledné TTML, WebVTT a soubory klíčových slov sekvenčně očíslovány a pojmenovány pomocí aliasu.
 
-| Název souboru | Popis |
+| Název souboru | Description |
 | --- | --- |
 | **InputFileName. ttml**<br/>**InputFileName. vtt** |Soubory skrytého titulku (CC) ve formátech TTML a WebVTT<br/><br/>Je možné je použít k zpřístupnění zvukových a videosouborů lidem s postižením sluchu.<br/><br/>Soubory skrytých titulků obsahují značku s názvem <b>rozpoznatelné</b> , která vyhodnotí úlohu indexování na základě toho, jak rozpoznávání řeči ve zdrojovém videu je.  Pro použitelnost můžete použít hodnotu <b>rozpoznatelné</b> výstupní soubory obrazovky. Nízké skóre by znamenalo špatné indexování výsledků kvůli kvalitě zvuku. |
 | **InputFileName.kw.xml<br/> InputFileName.info** |Klíčové slovo a soubory informací <br/><br/>Soubor s klíčovým slovem je soubor XML, který obsahuje klíčová slova extrahovaná z obsahu řeči s informacemi o četnosti a posunu. <br/><br/>Informační soubor je textový soubor, který obsahuje podrobné informace o jednotlivých rozpoznaných termínech. První řádek je zvláštní a obsahuje skóre pro rozpoznávání. Každý další řádek je seznam oddělený tabulátorem následujících dat: čas spuštění, čas ukončení, slovo/fráze, důvěra. Časy jsou uvedené v sekundách a jistota se zadává jako číslo od 0-1. <br/><br/>Příklad řádku: "1,20 1,45 Word 0,67" <br/><br/>Tyto soubory se dají použít pro různé účely, jako je například, k provádění analýz řeči nebo k vystavení vyhledávačům, jako je Bing, Google nebo Microsoft SharePoint, aby se mediální soubory lépe zjistitelné nebo dokonce používaly k doručování dalších relevantních reklam. |
-| **JobResult.txt** |Výstupní manifest, přítomen pouze při indexování více souborů obsahujících následující informace:<br/><br/><table border="1"><tr><th>Vstupní_soubor</th><th>Alias</th><th>MediaLength</th><th>Chyba</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **JobResult.txt** |Výstupní manifest, přítomen pouze při indexování více souborů obsahujících následující informace:<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>Chyba</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 Pokud nejsou všechny vstupní mediální soubory úspěšně indexovány, úloha indexování nebude úspěšná s kódem chyby 4000. Další informace najdete v tématu [kódy chyb](#error_codes).
 
 ## <a name="index-multiple-files"></a>Indexovat více souborů
 Následující metoda nahraje více mediálních souborů jako Asset a vytvoří úlohu pro indexování všech těchto souborů v dávce.
 
-Vytvoří se soubor manifestu s příponou. lst a nahraje se do assetu. Soubor manifestu obsahuje seznam všech souborů assetů. Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./media-services-analytics-overview.md).
+Vytvoří se soubor manifestu s příponou. lst a nahraje se do assetu. Soubor manifestu obsahuje seznam všech souborů assetů. Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./legacy-components.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -240,10 +243,10 @@ Pokud nejsou všechny vstupní mediální soubory úspěšně indexovány, úloh
 
 Vygenerují se stejné výstupy (jako úlohy, které byly úspěšně dokončeny). Můžete se podívat na výstupní soubor manifestu a zjistit, které vstupní soubory se nezdařily, podle hodnot sloupce chyby. Pro vstupní soubory, které selhaly, nebudou vygenerovány výsledné TTML, WebVTT a soubory klíčových slov.
 
-### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Předvolba úlohy pro Azure Media Indexer
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Předvolba úlohy pro Azure Media Indexer
 Zpracování z Azure Media Indexer lze přizpůsobit zadáním volitelné předvolby úlohy vedle této úlohy.  Následující popis popisuje formát konfiguračního souboru XML.
 
-| Název | Vyžadovat | Popis |
+| Name | Vyžadovat | Description |
 | --- | --- | --- |
 | **vstup** |false (nepravda) |Soubory prostředků, které chcete indexovat.</p><p>Azure Media Indexer podporuje následující formáty mediálních souborů: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Můžete zadat název souboru (y) v atributu **název** nebo **seznam** **vstupního** elementu (jak je vidět níže). Pokud neurčíte, který soubor prostředků se má indexovat, je primární soubor vybrán. Pokud není nastaven žádný soubor primárního majetku, bude indexován první soubor ve vstupním prostředku.</p><p>Chcete-li explicitně zadat název souboru assetu, udělejte toto:<br/>`<input name="TestFile.wmv">`<br/><br/>Můžete také indexovat více souborů prostředků najednou (až 10 souborů). Použijte následující postup:<br/><br/><ol class="ordered"><li><p>Vytvořte textový soubor (soubor manifestu) a sdělte mu příponu. lst. </p></li><li><p>Do tohoto souboru manifestu přidejte seznam všech názvů souborů assetu ve vstupním prostředku. </p></li><li><p>Přidejte (nahrajte) soubor manifestu do assetu.  </p></li><li><p>Zadejte název souboru manifestu v atributu seznamu vstupu.<br/>`<input list="input.lst">`</li></ol><br/><br/>Poznámka: Pokud do souboru manifestu přidáte více než 10 souborů, úloha indexování se nezdaří a zobrazí se kód chyby 2006. |
 | **mezipaměť** |false (nepravda) |Metadata pro zadané soubory prostředků, které se používají pro úpravu slovníku  Slouží k přípravě indexeru k rozpoznávání slov nestandardního slovníku, jako jsou třeba řádná podstatná jména.<br/>`<metadata key="..." value="..."/>` <br/><br/>Můžete zadávat **hodnoty** pro předdefinované **klíče**. V současné době jsou podporovány následující klíče:<br/><br/>"title" a "Description" – slouží k úpravě slovníku pro úpravu jazykového modelu pro vaši úlohu a zlepšení přesnosti rozpoznávání řeči.  Hodnoty dodané k Internetu vyhledají kontextově relevantní textové dokumenty a využívají obsah k rozšíření vnitřního slovníku po dobu trvání úlohy indexování.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -252,7 +255,7 @@ Zpracování z Azure Media Indexer lze přizpůsobit zadáním volitelné předv
 ### <a name="error-codes"></a><a id="error_codes"></a>Kódy chyb
 V případě chyby by Azure Media Indexer měla nahlásit jeden z následujících kódů chyb:
 
-| Kód | Název | Možné důvody |
+| Kód | Name | Možné důvody |
 | --- | --- | --- |
 | 2000 |Neplatná konfigurace |Neplatná konfigurace |
 | 2001 |Neplatné vstupní prostředky |Chybí vstupní assety nebo prázdný Asset. |
@@ -261,9 +264,9 @@ V případě chyby by Azure Media Indexer měla nahlásit jeden z následující
 | 2004 |Nepodporovaný protokol |Protokol adresy URL média není podporován. |
 | 2005 |Nepodporovaný typ souboru |Typ vstupního mediálního souboru se nepodporuje. |
 | 2006 |Příliš mnoho vstupních souborů |Vstupní manifest obsahuje více než 10 souborů. |
-| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>– nebo –<br/> Poškozený mediální soubor <br/>– nebo –<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
+| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>nebo<br/> Poškozený mediální soubor <br/>nebo<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
 | 4000 |Dávkové indexování bylo dokončeno částečně. |Některé ze vstupních mediálních souborů se nepovedlo indexovat. Další informace najdete v tématu <a href="#output_files">výstupní soubory</a>. |
-| ostatní |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
+| other |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
 
 ## <a name="supported-languages"></a><a id="supported_languages"></a>Podporované jazyky
 V současné době jsou podporovány anglické a španělské jazyky.  
@@ -275,6 +278,6 @@ V současné době jsou podporovány anglické a španělské jazyky.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
+[Přehled analýzy Azure Media Services](./legacy-components.md)
 
-[Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md)
+[Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview](./legacy-components.md)

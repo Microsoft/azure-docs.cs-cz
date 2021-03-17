@@ -1,22 +1,18 @@
 ---
 title: Aktivita podmínky v Azure Data Factory
 description: Aktivita podmínka if umožňuje řídit tok zpracování na základě podmínky.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0dbda298cf808dd3caa7a767e0ec5e847c92108
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414602"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385519"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

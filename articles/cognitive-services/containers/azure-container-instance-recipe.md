@@ -8,39 +8,60 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 12/18/2020
 ms.author: aahi
-ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 003b4411ac791898f4a7467b9b03f29aadba2fc7
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876653"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704828"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Nasazení a spuštění kontejneru v instanci kontejneru Azure
 
-Pomocí následujících kroků můžete snadno škálovat aplikace Cognitive Services Azure v cloudu s využitím Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Containering vám pomůže soustředit se na vytváření aplikací namísto správy infrastruktury. Další informace o používání kontejnerů najdete v tématu [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits).
+Pomocí následujících kroků můžete snadno škálovat aplikace Cognitive Services Azure v cloudu s využitím Azure [Container Instances](../../container-instances/index.yml). Containering vám pomůže soustředit se na vytváření aplikací namísto správy infrastruktury. Další informace o používání kontejnerů najdete v tématu [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento recept funguje s libovolným kontejnerem Cognitive Services. Před použitím tohoto receptu musí být prostředek služby vnímání vytvořen v Azure Portal. Každá služba pro rozpoznávání, která podporuje kontejnery, má dokument "Jak nainstalovat" speciálně pro instalaci a konfiguraci služby pro kontejner. Některé služby vyžadují jako vstup pro kontejner soubor nebo sadu souborů, je důležité, abyste před použitím tohoto řešení porozuměli a úspěšně použili kontejner.
+Tento recept funguje s libovolným kontejnerem Cognitive Services. Před použitím tohoto receptu musí být vytvořen prostředek služby vnímání. Každá služba pro rozpoznávání, která podporuje kontejnery, má článek Jak nainstalovat produkt pro instalaci a konfiguraci služby pro kontejner. Některé služby vyžadují jako vstup pro kontejner soubor nebo sadu souborů, je důležité, abyste před použitím tohoto řešení porozuměli a úspěšně použili kontejner.
 
-* Prostředek služby pro rozpoznávání, vytvořený v Azure Portal.
+* Prostředek Azure pro službu pro rozpoznávání Azure, kterou používáte.
 * **Adresa URL koncového bodu** služby vnímání – zkontrolujte konkrétní službu "Jak nainstalovat" pro kontejner, abyste zjistili, kde adresa URL koncového bodu je v rámci Azure Portal a jak vypadá správný příklad adresy URL. Přesný formát se může změnit ze služby na službu.
 * **Klíč** služby pro rozpoznávání – klíče jsou na stránce **klíče** pro prostředek Azure. Potřebujete jenom jeden ze dvou klíčů. Klíč je řetězec o 32 alfanumerických znaků.
+
 * Jeden Cognitive Services kontejner na místním hostiteli (Váš počítač). Ujistěte se, že máte tyto:
-  * Vyžádat si obrázek z části `docker pull` pomocí příkazu.
+  * Vyžádat si obrázek z části pomocí `docker pull` příkazu.
   * Spusťte místní kontejner úspěšně se všemi požadovanými nastaveními konfigurace pomocí `docker run` příkazu.
   * Zavolejte koncový bod kontejneru a dostanete odpověď HTTP 2xx a odpověď JSON zpátky.
 
-Všechny proměnné v lomených závorkách, `<>`musí být nahrazeny vlastními hodnotami. Tato náhrada zahrnuje lomené závorky.
+Všechny proměnné v lomených závorkách, `<>` musí být nahrazeny vlastními hodnotami. Tato náhrada zahrnuje lomené závorky.
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
+> [!IMPORTANT]
+> Kontejner LUIS vyžaduje `.gz` soubor modelu, který je načítán za běhu. Kontejner musí být schopný získat přístup k tomuto souboru modelu prostřednictvím připojení svazku z instance kontejneru. Chcete-li nahrát soubor modelu, postupujte podle následujících kroků:
+> 1. [Vytvořte sdílenou složku Azure](../../storage/files/storage-how-to-create-file-share.md). Poznamenejte si název účtu Azure Storage, klíč a název sdílené složky, abyste je mohli později potřebovat.
+> 2. [exportujte model Luis (zabalenou aplikaci) z portálu Luis](../LUIS/luis-container-howto.md#export-packaged-app-from-luis). 
+> 3. V Azure Portal přejděte na stránku **Přehled** prostředku účtu úložiště a vyberte **sdílené složky**. 
+> 4. Vyberte název sdílené složky, který jste nedávno vytvořili, a pak vyberte **Odeslat**. Pak nahrajte zabalenou aplikaci. 
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+[!INCLUDE [Portal instructions for creating an ACI instance](includes/create-container-instances-resource.md)]
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
+
+[!INCLUDE [CLI instructions for creating an ACI instance](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
+
+---
+
 
 ## <a name="use-the-container-instance"></a>Použití instance kontejneru
 
-1. Vyberte **Přehled** a zkopírujte IP adresu. Bude to číselná IP adresa, třeba `55.55.55.55`.
-1. Otevřete novou kartu prohlížeče a použijte IP adresu, například `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+1. Vyberte **Přehled** a zkopírujte IP adresu. Bude to číselná IP adresa, třeba `55.55.55.55` .
+1. Otevřete novou kartu prohlížeče a použijte IP adresu, například `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
+
+    ![Domovská stránka kontejneru](../../../includes/media/cognitive-services-containers-api-documentation/container-webpage.png)
 
 1. Když vyberete **Popis rozhraní API služby** , zobrazí se stránka Swagger pro kontejner.
 
@@ -49,3 +70,12 @@ Všechny proměnné v lomených závorkách, `<>`musí být nahrazeny vlastními
 1. Výběrem příkazu **Spustit** odešlete požadavek do vaší instance kontejneru.
 
     Úspěšně jste vytvořili a použili kontejnery Cognitive Services ve službě Azure Container instance.
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
+
+[!INCLUDE [API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+> [!NOTE]
+> Pokud používáte Analýza textu pro kontejner stavu, odešlete dotazy pomocí následující adresy URL: `http://localhost:5000/text/analytics/v3.2-preview.1/entities/health`
+
+---

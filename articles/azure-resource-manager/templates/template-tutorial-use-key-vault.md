@@ -1,21 +1,21 @@
 ---
 title: Použití Azure Key Vault v šablonách
-description: Zjistěte, jak pomocí služby Azure Key Vault předávat hodnoty zabezpečených parametrů během nasazení šablony Resource Manageru.
+description: Naučte se, jak pomocí Azure Key Vault předat hodnoty zabezpečeného parametru během nasazování šablony Azure Resource Manager (šablona ARM).
 author: mumian
-ms.date: 04/23/2020
+ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 388996dc0054192f6d9f3c87e11ca1d15e8a85e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703881"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablony ARM
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace služby Azure Key Vault v nasazení šablony ARM
 
-Naučte se, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení šablony Azure Resource Manager (ARM). Hodnota parametru se nikdy nezveřejňuje, protože odkazuje jenom na jeho ID trezoru klíčů. Na tajný klíč trezoru klíčů můžete odkazovat pomocí statického ID nebo dynamického ID. V tomto kurzu se používá statické ID. S přístupem ke statickému ID odkazujete na Trezor klíčů v souboru parametrů šablony, nikoli v souboru šablony. Další informace o obou metodách naleznete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
+Naučte se, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení šablony Azure Resource Manager (šablona ARM). Hodnota parametru se nikdy nezveřejňuje, protože odkazuje jenom na jeho ID trezoru klíčů. Na tajný klíč trezoru klíčů můžete odkazovat pomocí statického ID nebo dynamického ID. V tomto kurzu se používá statické ID. S přístupem ke statickému ID odkazujete na Trezor klíčů v souboru parametrů šablony, nikoli v souboru šablony. Další informace o obou metodách naleznete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
 
 V kurzu [Nastavení pořadí nasazení prostředků](./template-tutorial-create-templates-with-dependent-resources.md) můžete vytvořit virtuální počítač (VM). Musíte zadat uživatelské jméno a heslo správce virtuálního počítače. Místo zadání hesla můžete heslo ukládat do trezoru klíčů Azure a pak šablonu přizpůsobit, aby se během nasazování načetlo heslo z trezoru klíčů.
 
@@ -31,18 +31,21 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+
+Pro Microsoft Learn modul, který používá zabezpečenou hodnotu z trezoru klíčů, najdete informace v tématu [Správa složitých nasazení cloudu pomocí pokročilých funkcí šablon ARM](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pokud chcete zvýšit zabezpečení, použijte vygenerované heslo pro účet správce virtuálního počítače. Tady je ukázka pro vygenerování hesla:
 
     ```console
     openssl rand -base64 32
     ```
+
     Ověřte, že vygenerovaná hesla splňují požadavky na heslo k virtuálnímu počítači. Každá služba Azure má specifické požadavky na hesla. Požadavky na heslo k virtuálnímu počítači najdete v tématu [Jaké jsou požadavky na heslo při vytváření virtuálního počítače](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Příprava trezoru klíčů
@@ -53,7 +56,7 @@ V této části vytvoříte Trezor klíčů a do něj přidáte tajný klíč, a
 * Přidá tajný klíč do trezoru klíčů. Tajný kód uchovává heslo správce virtuálního počítače.
 
 > [!NOTE]
-> Jako uživatel, který nasazuje šablonu virtuálního počítače, pokud nejste vlastníkem nebo přispěvatelem trezoru klíčů, vlastník nebo přispěvatel vám musí udělit přístup ke službě *Microsoft. webkey trezor/trezory/* k oprávněním k nasazení/akci pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
+> V případě, že uživatel, který šablonu virtuálního počítače nasazuje, nejste vlastníkem nebo přispěvatelem trezoru klíčů, musí vám vlastník nebo přispěvatel udělit přístup k `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
 
 Chcete-li spustit následující skript Azure PowerShell, vyberte možnost **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit**.
 
@@ -79,7 +82,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * Výchozí název tajného klíče je **vmAdminPassword**. Je pevně zakódované v šabloně.
 > * Pokud chcete šabloně povolit načtení tajného kódu, musíte povolit zásady přístupu **s názvem povolení přístupu k Azure Resource Manager pro nasazení šablony** pro Trezor klíčů. Tato zásada je v šabloně povolená. Další informace o zásadách přístupu najdete v tématu [nasazení trezorů klíčů a tajných](./key-vault-parameter.md#deploy-key-vaults-and-secrets)kódů.
 
-Šablona obsahuje jednu výstupní hodnotu s názvem *keyVaultId*. Pomocí tohoto ID společně s tajným názvem načtete tajnou hodnotu později v tomto kurzu. Formát ID prostředku je:
+Šablona obsahuje jednu výstupní hodnotu s názvem `keyVaultId` . Pomocí tohoto ID společně s tajným názvem načtete tajnou hodnotu později v tomto kurzu. Formát ID prostředku je:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,10 +90,17 @@ Write-Host "Press [ENTER] to continue ..."
 
 Když zkopírujete a vložíte ID, může být rozděleno na více řádků. Sloučí řádky a ořízne nadbytečné mezery.
 
-Chcete-li nasazení ověřit, spusťte následující příkaz prostředí PowerShell ve stejném podokně prostředí pro načtení tajného kódu jako nešifrovaný text. Příkaz funguje pouze ve stejné relaci prostředí, protože používá proměnnou *$keyVaultName*, která je definována v předchozím skriptu prostředí PowerShell.
+Chcete-li nasazení ověřit, spusťte následující příkaz prostředí PowerShell ve stejném podokně prostředí pro načtení tajného kódu jako nešifrovaný text. Příkaz funguje pouze ve stejné relaci prostředí, protože používá proměnnou `$keyVaultName` , která je definována v předchozím skriptu prostředí PowerShell.
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 Teď jste připravili Trezor klíčů a tajný klíč. V následujících částech se dozvíte, jak přizpůsobit existující šablonu pro načtení tajného klíče během nasazení.
@@ -119,7 +129,7 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
    Před přizpůsobením šablony je užitečné, abyste měli základní znalosti šablony.
 
-1. Vyberte **soubor**  >  **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy.jsv*.
+1. Vyberte **soubor**  >  **Uložit jako** a pak uložte kopii souboru do místního počítače s názvem *azuredeploy.jsv*.
 
 1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy.parameters.jsna*.
 
@@ -138,7 +148,7 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
     "adminPassword": {
         "reference": {
             "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+                "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
             },
             "secretName": "vmAdminPassword"
         }
@@ -146,14 +156,14 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
     ```
 
     > [!IMPORTANT]
-    > Nahraďte hodnotu pro **ID** ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu. Tajný kód je pevně zakódované jako **vmAdminPassword**.  Viz [Příprava trezoru klíčů](#prepare-a-key-vault).
+    > Nahraďte hodnotu pro `id` ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu. `secretName`Je pevně zakódované jako **vmAdminPassword**.  Viz [Příprava trezoru klíčů](#prepare-a-key-vault).
 
     ![Integrace trezoru klíčů a Správce prostředků šablonou souborů parametrů nasazení virtuálního počítače](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Aktualizujte následující hodnoty:
 
-    * **adminUsername**: název účtu správce virtuálního počítače.
-    * **dnsLabelPrefix**: pojmenujte hodnotu dnsLabelPrefix.
+    * `adminUsername`: Název účtu správce virtuálního počítače.
+    * `dnsLabelPrefix`: Pojmenujte `dnsLabelPrefix` hodnotu.
 
     Příklady názvů naleznete na předchozím obrázku.
 
@@ -167,7 +177,7 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Do Cloud Shell nahrajte jak *azuredeploy.js* , tak *azuredeploy.parameters.js* . Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Do Cloud Shell nahrajte jak *azuredeploy.js* , tak *azuredeploy.parameters.js* . Po nahrání souboru můžete pomocí `ls` příkazu a `cat` příkazu ověřit, jestli se soubor úspěšně nahrál.
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 
@@ -194,7 +204,7 @@ Po úspěšném nasazení virtuálního počítače testujte přihlašovací úd
 
 1. Vyberte **skupiny prostředků**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**.
 1. V horní části vyberte **připojit** .
-1. Vyberte **Stáhnout soubor RDP**a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
+1. Vyberte **Stáhnout soubor RDP** a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

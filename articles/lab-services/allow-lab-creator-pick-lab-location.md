@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak může správce účtu testovacího pr
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444195"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí v Azure Lab Services

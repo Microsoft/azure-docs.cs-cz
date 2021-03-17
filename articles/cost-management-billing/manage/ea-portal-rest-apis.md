@@ -3,16 +3,17 @@ title: Rozhraní Azure Enterprise REST API
 description: Tento článek popisuje rozhraní REST API, která se používají v souvislosti s registrací do Azure Enterprise.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 38662109b03caf63f72f2c1ad3132611ee91d1c3
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
-ms.translationtype: HT
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244087"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677727"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Rozhraní Azure Enterprise REST API
 
@@ -24,15 +25,15 @@ Zákazníci Microsoft Enterprise Azure mohou prostřednictvím rozhraní REST AP
 
 ### <a name="available-apis"></a>Dostupná rozhraní API
 
-**Zůstatek a souhrn:** Toto [rozhraní API](../../billing/billing-enterprise-api-balance-summary.md) poskytuje měsíční přehled informací o zůstatcích, nových nákupech, poplatcích ve službě Azure Marketplace, úpravách a poplatcích za nadlimitní využití. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Zůstatek a souhrn](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
+**Zůstatek a souhrn:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) poskytuje měsíční přehled informací o zůstatcích, nových nákupech, poplatcích ve službě Azure Marketplace, úpravách a poplatcích za nadlimitní využití. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Zůstatek a souhrn](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
 
-**Podrobnosti o využití:** Toto [rozhraní API](../../billing/billing-enterprise-api-usage-detail.md) poskytuje denní rozpis spotřebovaných prostředků a odhadované poplatky podle registrace. Výsledek obsahuje také informace o instancích, měřičích a odděleních. Na rozhraní API můžete zadávat dotazy podle fakturačního období nebo podle konkrétního počátečního a koncového data. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+**Podrobnosti o využití:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) poskytuje denní rozpis spotřebovaných prostředků a odhadované poplatky podle registrace. Výsledek obsahuje také informace o instancích, měřičích a odděleních. Na rozhraní API můžete zadávat dotazy podle fakturačního období nebo podle konkrétního počátečního a koncového data. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-**Poplatek obchodu Marketplace Store:** Toto [rozhraní API](../../billing/billing-enterprise-api-marketplace-storecharge.md) vrací poplatky vzniklé v obchodě na základě využití, v rozpisu po dnech, a to pro zadané fakturační období nebo konkrétní počáteční a koncové datum. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Poplatek obchodu Marketplace Store](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
+**Poplatek obchodu Marketplace Store:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrací poplatky vzniklé v obchodě na základě využití, v rozpisu po dnech, a to pro zadané fakturační období nebo konkrétní počáteční a koncové datum. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Poplatek obchodu Marketplace Store](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
 **Ceník:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje platnou sazbu každého měřiče pro danou registraci a fakturační období. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Ceník](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
-**Fakturační období:** Toto [rozhraní API](../../billing/billing-enterprise-api-billing-periods.md) vrací seznam fakturačních období, která obsahují data o spotřebě u dané registrace, a to v obráceném chronologickém pořadí. Každé období obsahuje vlastnost ukazující na trasu rozhraní API pro čtyři sady dat: BalanceSummary, UsageDetails, MarketplaceCharges a PriceSheet. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
+**Fakturační období:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrací seznam fakturačních období, která obsahují data o spotřebě u dané registrace, a to v obráceném chronologickém pořadí. Každé období obsahuje vlastnost ukazující na trasu rozhraní API pro čtyři sady dat: BalanceSummary, UsageDetails, MarketplaceCharges a PriceSheet. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
 ### <a name="enable-api-data-access"></a>Povolení přístupu k datům rozhraní API
 
@@ -92,17 +93,9 @@ Pokud používáte rozhraní API, budou se zobrazovat kódy stavu odpovědí. Js
 
 Data o využití a fakturační data se pro aktuální fakturační měsíc aktualizují každých 24 hodin. Může ale docházet ke zpožďování dat v rozsahu až 3 dnů. Pokud například k využití dojde v pondělí, data se v datovém souboru nemusí zobrazit až do čtvrtka.
 
-### <a name="test-enrollment-for-development"></a>Testovací registrace pro vývojáře
-
-Pokud jste partnerem nebo vývojářem bez registrace Azure Enterprise a chcete získat přístup k rozhraní API, můžete použít testovací registraci. Název registrace je _EnrollmentNumber 100_. Vyhledat a otestovat můžete informace o využití až do června 2018. Pak můžete pomocí následujícího klíče zavolat rozhraní API a zobrazit ukázková data.
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Katalog služeb Azure
 
-Všechny služby Azure se publikují do katalogu ve formátu CSV na blogu k úložišti Azure. Katalog je užitečný v případě, že potřebujete sestavit kurátorovaný seznam všech služeb Azure pro váš systém. Aktuální katalog najdete na adrese [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv).
+Všechny služby Azure se publikují do katalogu ve formátu CSV na blogu k úložišti Azure. Katalog je užitečný v případě, že potřebujete sestavit kurátorovaný seznam všech služeb Azure pro váš systém. Aktuální katalog je v [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) .
 
 ### <a name="csv-data-file-details"></a>Podrobnosti o datovém souboru CSV
 
@@ -112,7 +105,7 @@ V následující části jsou popsány vlastnosti sestav rozhraní API.
 
 Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto stejný jako souhrnný formát CSV. Název sloupce je spojený, takže byste ho při spotřebě souhrnných dat JSON měli provést deserializovat do datové tabulky.
 
-| Název sloupce CSV | Název sloupce JSON | Nový sloupec JSON | Poznámka |
+| Název sloupce CSV | Název sloupce JSON | Nový sloupec JSON | Komentář |
 | --- | --- | --- | --- |
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | Název účtu | AccountName | AccountName |   |
@@ -122,28 +115,28 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | Název předplatného | SubscriptionName | SubscriptionName |   |
 | Datum | Datum | Datum | Zobrazuje datum, kdy byla spuštěna sestava katalogu služeb. Formátem je řetězec data bez časového razítka. |
 | Month | Month | Month |   |
-| Den | Day | Den |   |
-| Rok | Rok | Year |   |
-| Produkt | BillableItemName | Produkt |   |
-| ID měření | ResourceGUID | MeterId |   |
+| Den | Den | Den |   |
+| Year | Year | Year |   |
+| Product | BillableItemName | Product |   |
+| Meter ID | ResourceGUID | MeterId |   |
 | Kategorie měření | Služba | MeterCategory | Užitečné při hledání služeb. Relevantní pro služby, které mají více položek ServiceType. Například Virtual Machines. |
-| Podkategorie měření | ServiceType | MeterSubCategory | Poskytuje druhou úroveň podrobností pro službu. Například Virtuální počítač A1 (ne Windows).  |
-| Oblast měření | ServiceRegion | MeterRegion | Třetí úroveň podrobností požadovaných pro službu. Užitečné při hledání kontextu oblasti pro ResourceGUID. |
-| Název měření | ServiceResource | MeterName | Název služby |
-| Spotřebované množství | ResourceQtyConsumed | ConsumedQuantity |   |
+| Meter Sub-Category | ServiceType | MeterSubCategory | Poskytuje druhou úroveň podrobností pro službu. Například Virtuální počítač A1 (ne Windows).  |
+| Meter Region | ServiceRegion | MeterRegion | Třetí úroveň podrobností požadovaných pro službu. Užitečné při hledání kontextu oblasti pro ResourceGUID. |
+| Meter Name | ServiceResource | MeterName | Název služby |
+| Consumed Quantity | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
-| Umístění prostředku | ServiceSubRegion | ResourceLocation |   |
-| Spotřebovaná služba | ServiceInfo | ConsumedService |   |
-| ID instance | Komponenta | InstanceId |   |
+| Resource Location | ServiceSubRegion | ResourceLocation |   |
+| Consumed Service | ServiceInfo | ConsumedService |   |
+| Instance ID | Součást | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | Značky | Značky | Značky |   |
-| Identifikátor služby úložiště   | OrderNumber | StoreServiceIdentifier   |   |
-| Název oddělení | DepartmentName | DepartmentName |   |
-| Nákladové středisko | CostCenter | CostCenter |   |
-| Jednotka měření | UnitOfMeasure | UnitOfMeasure | Příklady hodnot: hodiny, GB, události, nabízená oznámení, jednotky, hodiny za jednotku, MB, denní jednotky |
+| Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
+| Department Name | DepartmentName | DepartmentName |   |
+| Cost Center | CostCenter | CostCenter |   |
+| Jednotka měření | UnitOfMeasure | UnitOfMeasure | Příklady hodnot: hodiny, GB, události, nabízení, jednotka, Hodiny za jednotku, MB, denní jednotky |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Sestava pro Azure Marketplace
@@ -155,29 +148,29 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Název předplatného | SubscriptionName |  SubscriptionName |
-| Datum | BillingCycle |  Date (jen datový řetězec bez časového razítka)
-| Měsíc | Month |  Month |
-| Den | Day |  Den |
-| Rok | Rok |  Rok |
-| ID měření | MeterResourceId |  MeterId |
+| Date (Datum) | BillingCycle |  Date (jen datový řetězec bez časového razítka)
+| Month | Month |  Month |
+| Den | Den |  Den |
+| Year | Year |  Year |
+| Meter ID | MeterResourceId |  MeterId |
 | Název vydavatele | PublisherFriendlyName |  Název vydavatele |
 | Název nabídky | OfferFriendlyName |  OfferName |
 | Název plánu | PlanFriendlyName |  PlanName |
-| Spotřebované množství | BilledQty |  ConsumedQuantity |
+| Consumed Quantity | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Jednotka měření | UnitOfMeasure | UnitOfMeasure |
-| ID instance | InstanceId | InstanceId |
+| Instance ID | InstanceId | InstanceId |
 | Další informace | AdditionalInfo | AdditionalInfo |
 | Značky | Značky | Značky |
 | Číslo objednávky | OrderNumber | OrderNumber |
-| Název oddělení | DepartmentNames | DepartmentName |
-| Nákladové středisko | CostCenters |  CostCenter |
+| Department Name | DepartmentNames | DepartmentName |
+| Cost Center | CostCenters |  CostCenter |
 | Skupina prostředků | ResourceGroup |  ResourceGroup |
 
 #### <a name="price-sheet"></a>Ceník
 
-| Název sloupce CSV | Název sloupce JSON | Poznámka |
+| Název sloupce CSV | Název sloupce JSON | Komentář |
 | --- | --- | --- |
 | Služba | Služba |  Žádná změna ceny |
 | Jednotka měření | UnitOfMeasure |   |
@@ -210,4 +203,4 @@ Pokud pro vybraný rozsah dat nejsou k dispozici žádná aktuální data, můž
 ## <a name="next-steps"></a>Další kroky
 
 - Správci na portálu Azure EA by si měli přečíst téma [Správa portálu Azure EA](ea-portal-administration.md), kde se seznámí s běžnými úlohami správy.
-- Pokud potřebujete pomoct vyřešit potíže s portálem Azure EA, přečtěte si téma [Řešení potíží s přístupem k portálu Azure EA](ea-portal-troubleshoot.md).
+- Pokud potřebujete pomoc při řešení potíží s portálem Azure EA, přečtěte si téma [Řešení potíží s přístupem k portálu Azure EA](ea-portal-troubleshoot.md).

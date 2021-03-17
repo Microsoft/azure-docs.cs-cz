@@ -2,17 +2,18 @@
 title: Připojení spravovaného datového disku k virtuálnímu počítači s Windows – Azure
 description: Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí Azure Portal.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c64b0ff5b7a9abfa58ec17d0ebcabe05b0ed6e9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836220"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550803"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí Azure Portal
 

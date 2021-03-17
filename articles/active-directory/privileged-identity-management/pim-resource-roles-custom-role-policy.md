@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24b7845ec66a85e6ced4f1df9caec409a94016bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034095"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88782596"
 ---
 # <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Použití vlastních rolí Azure v Privileged Identity Management
 
@@ -31,7 +31,7 @@ Postupujte podle kroků uvedených v následující části a nastavte cílené 
 
 ## <a name="create-the-custom-role"></a>Vytvoření vlastní role
 
-Pokud chcete vytvořit vlastní roli pro prostředek, postupujte podle kroků popsaných v tématu [vlastní role Azure](../role-based-access-control-custom-roles.md).
+Pokud chcete vytvořit vlastní roli pro prostředek, postupujte podle kroků popsaných v tématu [vlastní role Azure](../../role-based-access-control/custom-roles.md).
 
 Když vytváříte vlastní roli, zahrňte popisný název, abyste si mohli snadno zapamatovat, která integrovaná role má být duplicitní.
 

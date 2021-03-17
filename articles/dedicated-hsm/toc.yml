@@ -10,6 +10,12 @@
       href: tutorial-deploy-hsm-cli.md
     - name: Nasazení HSM do existující virtuální sítě pomocí PowerShellu
       href: tutorial-deploy-hsm-powershell.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření služby Azure Dedicated HSM s využitím Azure PowerShellu
+      href: quickstart-create-hsm-powershell.md
+    - name: Vytvoření služby Azure Dedicated HSM s využitím Azure CLI
+      href: quickstart-hsm-azure-cli.md
 - name: Koncepty
   items:
     - name: Vysoká dostupnost
@@ -28,6 +34,10 @@
       href: deployment-architecture.md
     - name: Řešení potíží
       href: troubleshoot.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/Az.DedicatedHsm
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

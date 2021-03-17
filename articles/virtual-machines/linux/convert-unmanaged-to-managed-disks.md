@@ -2,17 +2,18 @@
 title: Převod virtuálního počítače Linux z nespravovaných disků na Managed disks
 description: Jak převést virtuální počítač Linux z nespravovaných disků na Managed disks pomocí Azure CLI.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f3b62f8c05edffa1b55bf3d8cd24494b1c918bd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654425"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558487"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače se systémem Linux z nespravovaných disků na Managed disks
 
@@ -21,7 +22,7 @@ Pokud máte existující virtuální počítače s Linuxem, které používají 
 V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azure CLI. Pokud ho potřebujete nainstalovat nebo upgradovat, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Než začnete
-* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](faq-for-disks.md#migrate-to-managed-disks).
+* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -94,7 +95,7 @@ Před převodem skupiny dostupnosti je nutné uvolnit všechny virtuální poč�
 
 Nespravované disky můžete také převést na spravované disky pomocí Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
 3. V okně pro virtuální počítač vyberte z nabídky **disky** .
 4. V horní části okna **disky** vyberte **migrovat na Managed disks**.

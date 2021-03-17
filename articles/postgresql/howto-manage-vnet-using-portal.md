@@ -1,17 +1,17 @@
 ---
 title: Použít pravidla virtuální sítě-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Vytvoření a správa koncových bodů a pravidel služby virtuální sítě Azure Database for PostgreSQL – jeden server pomocí Azure Portal
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 5682213780f6b5c1bbbc02dfa947c48a4d2707de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 377f8eba179253ca6187b10a22970d0eadcda2f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112455"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489825"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>Vytváření a správa koncových bodů služby virtuální sítě a pravidel virtuální sítě na serveru Azure Database for PostgreSQL – s využitím Azure Portal
 Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní adresní prostor Virtual Network na server Azure Database for PostgreSQL. Přehled koncových bodů služby virtuální sítě Azure Database for PostgreSQL, včetně omezení, najdete v tématu [koncové body služby virtuální sítě v Azure Database for PostgreSQL serveru](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastech pro Azure Database for PostgreSQL.
@@ -32,11 +32,11 @@ Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní
 
 3. Potom klikněte na **+ Přidat existující virtuální síť**. Pokud nemáte existující virtuální síť, můžete ji vytvořit kliknutím na **+ vytvořit novou virtuální síť** . Další informace najdete v tématu [rychlý Start: vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md)
 
-   ![Azure Portal – kliknutí na zabezpečení připojení](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/1-connection-security.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
 4. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a pak klikněte na **Povolit**. Tím se automaticky povolí koncové body služby virtuální sítě v podsíti s použitím značky služby **Microsoft. SQL** .
 
-   ![Azure Portal – konfigurace virtuální sítě](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
     Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 
@@ -44,7 +44,7 @@ Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní
     
     Aby bylo možné zabezpečit prostředky služeb Azure pro virtuální síť, musí mít uživatel pro přidávané podsítě oprávnění k Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/. Toto oprávnění je ve výchozím nastavení součástí předdefinovaných rolí správců služeb a může se upravit vytvořením vlastních rolí.
     
-    Další informace o [předdefinovaných rolích](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) a přiřazení konkrétních oprávnění k [vlastním rolím](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
+    Další informace o [předdefinovaných rolích](../role-based-access-control/built-in-roles.md) a přiřazení konkrétních oprávnění k [vlastním rolím](../role-based-access-control/custom-roles.md).
     
     Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). Zajistěte, aby oba odběry měly zaregistrovaný poskytovatel prostředků **Microsoft. SQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
 
@@ -54,7 +54,7 @@ Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní
 
 5. Po povolení klikněte na **OK** a uvidíte, že koncové body služby virtuální sítě jsou povolené spolu s pravidlem virtuální sítě.
 
-   ![Povolené koncové body služby virtuální sítě a vytvořené pravidlo virtuální sítě](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
 ## <a name="next-steps"></a>Další kroky
 - Podobně můžete skript pro [Povolení koncových bodů služby virtuální sítě a vytvoření pravidla virtuální sítě pro Azure Database for PostgreSQL pomocí Azure CLI](howto-manage-vnet-using-cli.md).

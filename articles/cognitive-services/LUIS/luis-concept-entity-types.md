@@ -1,14 +1,16 @@
 ---
 title: Typy entit – LUIS
 description: Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316558"
 ---
 # <a name="extract-data-with-entities"></a>Extrakce dat s entitami
 

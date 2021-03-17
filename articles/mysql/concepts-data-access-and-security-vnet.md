@@ -1,17 +1,17 @@
 ---
 title: Koncové body služby virtuální sítě – Azure Database for MySQL
 description: Popisuje způsob fungování koncových bodů služby VNet pro server Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 371099610da129025f6683630b1824b8466b5aff
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 364d9c20c0bfce1f31103ddf6df0c8d7b228eca2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833007"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461781"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro Azure Database for MySQL
 
@@ -19,7 +19,7 @@ ms.locfileid: "87833007"
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat [virtuální síť][vm-virtual-network-overview] (VNET) a [koncový bod služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, které se má odkazovat. Následující obrázek ukazuje, jak koncový bod služby Virtual Network funguje s Azure Database for MySQL:
 
-![Příklad fungování koncového bodu služby virtuální sítě](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="Příklad fungování koncového bodu služby virtuální sítě":::
 
 > [!NOTE]
 > Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MySQL nasazeny pro Pro obecné účely a paměťově optimalizované servery.
@@ -53,7 +53,7 @@ Pravidlo virtuální sítě přikáže serveru Azure Database for MySQL, aby př
 
 Dokud neprovedete akci, virtuální počítače v podsítích nebudou moct komunikovat se serverem Azure Database for MySQL. Jedna akce, která stanovuje komunikaci, je vytvoření pravidla virtuální sítě. Odůvodnění výběru přístupu pravidla virtuální sítě vyžaduje diskuzi o porovnání a kontrastu zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Povolit přístup ke službám Azure
+### <a name="a-allow-access-to-azure-services"></a>A. Povolení přístupu ke službám Azure
 
 Podokno zabezpečení připojení má tlačítko **pro zapnutí/vypnutí** , které je označeno jako **povolený přístup ke službám Azure**. Nastavení **on** umožňuje komunikaci ze všech IP adres Azure a všech podsítí Azure. Tyto IP adresy nebo podsítě Azure možná nevlastníte. Toto **Nastavení** je pravděpodobně více otevřené, než požadujete, aby byla databáze Azure Database for MySQL. Funkce pravidla virtuální sítě nabízí mnohem přesnější kontrolu.
 
@@ -88,7 +88,7 @@ V rámci správy koncových bodů služby Virtual Network je oddělení rolí za
 - **Správce sítě:** &nbsp; Zapněte koncový bod.
 - **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru Azure Database for MySQL.
 
-*Alternativa RBAC:*
+*Alternativa k Azure RBAC:*
 
 Role správce sítě a správce databáze mají více možností, než je nutné ke správě pravidel virtuální sítě. Je potřeba jenom podmnožina jejich schopností.
 
@@ -112,7 +112,7 @@ Pro Azure Database for MySQL funkce pravidla virtuální sítě má následujíc
 
 - Pravidla virtuální sítě se vztahují jenom na Azure Resource Manager virtuální sítě; a ne pro [model nasazení Classic][arm-deployment-model-568f] .
 
-- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for MySQL pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure SQL Data Warehouse.
+- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for MySQL pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure synapse Analytics.
 
 - Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 
@@ -130,7 +130,7 @@ Aby bylo možné Azure Database for MySQL komunikaci z okruhu, musíte vytvořit
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány firewall virtuální sítě na server bez zapnutí koncových bodů služby virtuální sítě
 
-Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve**vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
+Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve** vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
 
 Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI nebo portálu.
 
@@ -152,7 +152,7 @@ Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI n
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]: ../role-based-access-control/overview.md
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 

@@ -1,7 +1,7 @@
 ---
 title: Nainstalujte Microal Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure | Microsoft Docs
-description: Přehostování úloh sálového počítače IBM z/OS pomocí vývojového a testovacího prostředí pro Azure na virtuálních počítačích Azure (virtuální počítače).
-services: virtual-machines-linux
+description: V tomto článku se dozvíte, jak nainstalovat Micro Enterprise Server 5,0 a Enterprise Developer 5,0 na Microsoft Azure.
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 0d0a7d9060d751dbf05d39545b332c13010cbfae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245311"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553574"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure
 
@@ -42,7 +42,7 @@ Než začnete, podívejte se na tyto požadavky:
     > [!Note]
     > Pro řízení přístupu k virtuálním počítačům je k dispozici několik možností:
     > -   Osvědčeným postupem je nastavit [Azure bastionu](https://azure.microsoft.com/services/azure-bastion/).
-    > -   Tunelové propojení typu [site-to-site sítě VPN](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) .
+    > -   Tunelové propojení typu [site-to-site sítě VPN](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) .
     > -   Virtuální počítač JumpBox.
 
 ## <a name="install-enterprise-server"></a>Instalace Enterprise Serveru
@@ -73,11 +73,11 @@ Než začnete, podívejte se na tyto požadavky:
 
 9.  Spusťte instalaci dvojím kliknutím na soubor. V prvním okně vyberte umístění instalace a přijměte licenční smlouvu s koncovým uživatelem.
 
-    ![Obrazovka nastavení Micro Enterprise Server Enterprise Server](media/install-image-1.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Micro Enterprise Server, kde můžete spustit instalaci.](media/install-image-1.png)
 
     Po dokončení instalace se zobrazí následující zpráva:
 
-    ![Obrazovka nastavení Micro Enterprise Server Enterprise Server](media/install-image-2.png)
+    ![Snímek obrazovky se zobrazí zpráva o úspěchu v dialogovém okně Micro Enterprise Server – Enterprise.](media/install-image-2.png)
 
  ### <a name="check-for-updates"></a>Vyhledat aktualizace
 
@@ -87,9 +87,9 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 1.  Začněte se správou licencí na Micro-Focus.
 
-2.  Vyberte možnost **Spustit** \> **Nástroj** Správa licencí správce licencí na úrovni Micro \> **License Administration**a pak klikněte na kartu **instalovat** . Zvolte typ licenčního formátu, který se má nahrát: licenční soubor nebo kód s kódem 16 znaků. Například pro soubor v **souboru s licencí**přejděte do souboru *, který `mflic` jste předtím nahráli na virtuální počítač, a vyberte **instalovat licence**.
+2.  Vyberte možnost **Spustit** \> **Nástroj** Správa licencí správce licencí na úrovni Micro \> a pak klikněte na kartu **instalovat** . Zvolte typ licenčního formátu, který se má nahrát: licenční soubor nebo kód s kódem 16 znaků. Například pro soubor v **souboru s licencí** přejděte do souboru *, který `mflic` jste předtím nahráli na virtuální počítač, a vyberte **instalovat licence**.
 
-    ![Dialogové okno Správa licencí Micro Focus](media/install-image-3.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Správa licencí Micro box, kde můžete vybrat instalovat licence.](media/install-image-3.png)
 
 3.  Ověřte, že se na podnikovém serveru načítá. Zkuste spustit web pro správu podnikového serveru z prohlížeče pomocí této adresy URL: `http://localhost:86/` . Zobrazí se stránka pro správu podnikového serveru, jak je znázorněno na obrázku.
 
@@ -115,9 +115,9 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
     ![Zpráva o úspěšné instalaci](media/install-image-6.png)
 
-6.  Spusťte Správce licencí Micro Focus stejně jako u podnikového serveru. Vyberte možnost **Spustit** \> Nástroj Správa licencí správce licencí od **Micro Manageru** \> **License Administration**a klikněte na kartu **instalovat** .
+6.  Spusťte Správce licencí Micro Focus stejně jako u podnikového serveru. Vyberte možnost **Spustit** \> Nástroj Správa licencí správce licencí od **Micro Manageru** \> a klikněte na kartu **instalovat** .
 
-7.  Vyberte typ licenčního formátu, který se má nahrát: soubor s licencí nebo kód licenčního kódu o 16 znacích. Například pro soubor v **souboru s licencí**přejděte do souboru, který `mflic` jste nahráli na virtuální počítač, a vyberte  **instalovat licence**.
+7.  Vyberte typ licenčního formátu, který se má nahrát: soubor s licencí nebo kód licenčního kódu o 16 znacích. Například pro soubor v **souboru s licencí** přejděte do souboru, který `mflic` jste nahráli na virtuální počítač, a vyberte  **instalovat licence**.
 
     ![Dialogové okno Správa licencí Micro Focus](media/install-image-7.png)
 

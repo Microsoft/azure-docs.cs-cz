@@ -1,27 +1,22 @@
 ---
 title: Nástroj data pro přírůstkové kopírování nových a aktualizovaných souborů
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat postupně načtěte nové soubory založené na LastModifiedDate.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/18/2021
+ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740048"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu použijete Azure Portal k vytvoření datové továrny. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který přírůstkově kopíruje jenom nové a změněné soubory z Azure Blob Storage do úložiště objektů BLOB v Azure. Používá `LastModifiedDate` k určení, které soubory se mají zkopírovat.
 
@@ -52,7 +47,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **Analytics**  >  **Data Factory**analýzy:
+1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **integrační**  >  **Data Factory**:
 
    ![Vyberte Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -63,8 +58,8 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
    ![Chybová zpráva název není k dispozici](./media/doc-common-process/name-not-available-error.png)
 
    Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-3. V části **předplatné**vyberte předplatné Azure, ve kterém vytvoříte novou datovou továrnu.
-4. V části **Skupina prostředků**proveďte jeden z následujících kroků:
+3. V části **předplatné** vyberte předplatné Azure, ve kterém vytvoříte novou datovou továrnu.
+4. V části **Skupina prostředků** proveďte jeden z následujících kroků:
 
     * Vyberte **použít existující** a potom v seznamu vyberte existující skupinu prostředků.
 
@@ -88,13 +83,13 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 2. Na stránce **vlastnosti** proveďte následující kroky:
 
-    a. V části **název úlohy**zadejte **DeltaCopyFromBlobPipeline**.
+    a. V části **název úlohy** zadejte **DeltaCopyFromBlobPipeline**.
 
-    b. V části **úkol tempo nebo plán úlohy**vyberte možnost **spouštět pravidelně podle plánu**.
+    b. V části **úkol tempo nebo plán úlohy** vyberte možnost **spouštět pravidelně podle plánu**.
 
-    c. V části **typ triggeru**vyberte **okno bubnu**.
+    c. V části **typ triggeru** vyberte **okno bubnu**.
 
-    d. V části **opakování**zadejte **15 minut**.
+    d. V části **opakování** zadejte **15 minut**.
 
     e. Vyberte **Další**.
 
@@ -104,7 +99,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 3. Na stránce **zdrojové úložiště dat** proveďte tyto kroky:
 
-    a. Vyberte **vytvořit nové připojení** a přidejte připojení.
+    a. Vyberte  **vytvořit nové připojení** a přidejte připojení.
 
     b. Z Galerie vyberte **Azure Blob Storage** a pak vyberte **pokračovat**:
 
@@ -122,7 +117,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
 
-    b. V části **chování načítání souborů**vyberte **přírůstkové načtení: LastModifiedDate**.
+    b. V části **chování načítání souborů** vyberte **přírůstkové načtení: LastModifiedDate**.
 
     c. Vyberte **binární kopii** a potom vyberte **Další**:
 
@@ -164,7 +159,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     ![Vytvoření file1.txt a nahrání do zdrojového kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
-13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**a počkejte, až se znovu automaticky aktivuje stejný kanál.  
+13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu** a počkejte, až se znovu automaticky aktivuje stejný kanál.  
 
 14. Po dokončení druhého kanálu postupujte podle výše uvedených kroků a podívejte se na podrobnosti o spuštění aktivit.  
 

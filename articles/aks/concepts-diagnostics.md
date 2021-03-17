@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79126603"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183358"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Přehled služby Azure Kubernetes Service Diagnostics (Preview)
 
@@ -39,7 +39,7 @@ Po kliknutí na kategorii můžete zobrazit diagnostickou zprávu specifickou pr
 
 ## <a name="cluster-insights"></a>Přehledy clusterů
 
-V rámci služby **cluster Insights**jsou k dispozici následující diagnostické kontroly.
+V rámci služby **cluster Insights** jsou k dispozici následující diagnostické kontroly.
 
 ### <a name="cluster-node-issues"></a>Problémy s uzlem v clusteru
 
@@ -82,5 +82,7 @@ Správa identit a zabezpečení detekuje chyby ověřování a autorizace, kter�
 ## <a name="next-steps"></a>Další kroky
 
 Shromažďovat protokoly, které vám pomůžou při řešení problémů s clustery pomocí [AKS Periscope](https://aka.ms/aksperiscope).
+
+Přečtěte si [část postupy třídění](/azure/architecture/operator-guides/aks/aks-triage-practices) v provozní příručce AKS Day-2.
 
 Vystavte své dotazy nebo připomínky na webu [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) přidáním "[diag]" v názvu.

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 5b3e9c944aece3b3e22ee7a5a6144751725ddf67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729959"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Rychlý Start: vykreslení modelu pomocí Unity
 
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak spustit vzorek Unity, který vykreslí 
 
 Nebudeme se k tomu přihlédnout přímo k samotnému rozhraní API ARR nebo k nastavení nového projektu Unity. Tato témata jsou popsaná v tématu [kurz: zobrazení vzdáleně vygenerovaných modelů](../tutorials/unity/view-remote-models/view-remote-models.md).
 
-V tomto rychlém startu se dozvíte, jak:
+V tomto rychlém startu se naučíte:
 > [!div class="checklist"]
 >
 >* Nastavení místního vývojového prostředí
@@ -33,7 +33,7 @@ Musí být nainstalovaný následující software:
 
 * Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio Tools pro Mixed reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
+* [Visual Studio Tools pro Mixed reality](/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
   * **Vývoj desktopových aplikací v C++**
   * **Vývoj Univerzální platforma Windows (UWP)**
 * GIT [(Stáhnout)](https://git-scm.com/downloads)
@@ -52,6 +52,7 @@ Spusťte následující příkazy:
 mkdir ARR
 cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
+powershell azure-remote-rendering\Scripts\DownloadUnityPackages.ps1
 ```
 
 Poslední příkaz vytvoří podadresář v adresáři ARR, který obsahuje různé ukázkové projekty pro vzdálené vykreslování Azure.
@@ -68,14 +69,14 @@ Výchozí model, který vykreslíme, je [vestavěný Vzorový model](../samples/
 ### <a name="enter-your-account-info"></a>Zadejte informace o účtu.
 
 1. V prohlížeči assetů Unity přejděte do složky *scény* a otevřete scénu **rychlý Start** .
-1. Z *hierarchie*vyberte objekt **RemoteRendering** Game.
-1. V *inspektoru*zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md). Pokud ještě nemáte účet, [vytvořte ho](../how-tos/create-an-account.md).
+1. Z *hierarchie* vyberte objekt **RemoteRendering** Game.
+1. V *inspektoru* zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md). Pokud ještě nemáte účet, [vytvořte ho](../how-tos/create-an-account.md).
 
 ![Informace o účtu ARR](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure Portal zobrazí doménu vašeho účtu jenom jako *mixedreality.Azure.com*. To není pro úspěšné připojení dostatečné.
-> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md).
+> Nastavte **RemoteRenderingDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md). \
+> Nastavte **AccountDomain** na [Doména účtu](../how-tos/create-an-account.md#retrieve-the-account-information) , jak se zobrazuje na webu Azure Portal.
 
 Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzdáleného vykreslování z tohoto zařízení. Vzhledem k tomu, že jsme nemuseli na zařízení zadat přihlašovací údaje, ukázka pro rychlý Start **uloží přihlašovací údaje v rámci scény Unity**.
 
@@ -92,9 +93,7 @@ Gratulujeme! Nyní prohlížíte vzdáleně vykreslený model.
 
 ## <a name="inspecting-the-scene"></a>Kontrola scény
 
-Po spuštění připojení vzdáleného vykreslování se panel inspektor aktualizuje o další informace o stavu:
-
-![Přehrávání ukázek Unity](./media/arr-sample-configure-session-running.png)
+Jakmile je připojení vzdáleného vykreslování spuštěné, panel inspektor aktualizuje informace o dalších stavech: ![ přehrávání ukázek Unity](./media/arr-sample-configure-session-running.png)
 
 Graf scény teď můžete prozkoumat tak, že vyberete nový uzel a v inspektoru kliknete na **Zobrazit podřízené objekty** .
 
@@ -111,7 +110,7 @@ Pokud chcete transformovat transformace, klikněte buď na **synchronizovat** , 
 V dalším rychlém startu nasadíme ukázku na HoloLens a zobrazí se vzdáleně vykreslený model v původní velikosti.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: nasazení ukázky Unity do HoloLens](deploy-to-hololens.md)
+> [Rychlý start: Nasazení ukázky Unity do HoloLens](deploy-to-hololens.md)
 
 Alternativně lze ukázku také nasadit do stolního počítače.
 

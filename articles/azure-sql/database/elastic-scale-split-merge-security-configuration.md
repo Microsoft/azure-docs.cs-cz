@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829429"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793428"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,18 +32,18 @@ Certifikáty jsou konfigurovány dvěma způsoby.
 
 ## <a name="to-obtain-certificates"></a>Získání certifikátů
 
-Certifikáty lze získat z veřejných certifikačních autorit (CAs) nebo z [certifikační služby systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Jedná se o preferované metody pro získání certifikátů.
+Certifikáty lze získat z veřejných certifikačních autorit (CAs) nebo z [certifikační služby systému Windows](/windows/win32/seccrypto/certificate-services). Jedná se o preferované metody pro získání certifikátů.
 
-Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty podepsané svým držitelem**.
+Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty podepsané svým držitelem** .
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](/previous-versions/dotnet/netframework-4.0/bfsktky3(v=vs.100))
+* [pvk2pfx.exe](/windows-hardware/drivers/devtest/pvk2pfx)
 
 ### <a name="to-run-the-tools"></a>Spuštění nástrojů
 
-* Z Developer Command Prompt pro Visual studia se podívejte na [Visual Studio Command Prompt](https://msdn.microsoft.com/library/ms229859.aspx) . 
+* Z Developer Command Prompt pro Visual studia se podívejte na [Visual Studio Command Prompt](/dotnet/framework/tools/developer-command-prompt-for-vs) . 
   
     Pokud je nainstalován, přejít na:
   
@@ -59,8 +59,8 @@ K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SS
 
 ### <a name="create-a-new-self-signed-certificate"></a>Vytvoření nového certifikátu podepsaného svým držitelem
 
-1. [Vytvoření certifikátu podepsaného svým držitelem](#create-a-self-signed-certificate)
-2. [Vytvořit soubor PFX pro certifikát TLS/SSL podepsaný svým držitelem](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Vytvoření certifikátu Self-Signed](#create-a-self-signed-certificate)
+2. [Vytvořit soubor PFX pro Self-Signed certifikát TLS/SSL](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Nahrání certifikátu TLS/SSL do cloudové služby](#upload-tlsssl-certificate-to-cloud-service)
 4. [Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby](#update-tlsssl-certificate-in-service-configuration-file)
 5. [Importovat certifikační autoritu TLS/SSL](#import-tlsssl-certification-authority)
@@ -78,10 +78,10 @@ K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SS
 Aby bylo možné ověřovat požadavky na službu, jsou vyžadovány klientské certifikáty. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="turn-off-client-certificates"></a>Vypnutí klientských certifikátů
-1. [Vypnout ověřování na základě certifikátu klienta](#turn-off-client-certificate-based-authentication)
+1. [Vypnout ověřování Certificate-Based klienta](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Vystavení nových klientských certifikátů podepsaných svým držitelem
-1. [Vytvoření certifikační autority podepsané svým držitelem](#create-a-self-signed-certification-authority)
+1. [Vytvoření certifikační autority Self-Signed](#create-a-self-signed-certification-authority)
 2. [Nahrání certifikátu certifikační autority do cloudové služby](#upload-ca-certificate-to-cloud-service)
 3. [Aktualizace certifikátu certifikační autority v konfiguračním souboru služby](#update-ca-certificate-in-service-configuration-file)
 4. [Vystavení certifikátů klienta](#issue-client-certificates)
@@ -105,8 +105,8 @@ Přístup k koncovým bodům služby lze omezit na konkrétní rozsahy IP adres.
 K šifrování přihlašovacích údajů, které jsou uložené v úložišti metadat, se vyžaduje certifikát. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Použití nového certifikátu podepsaného svým držitelem
-1. [Vytvoření certifikátu podepsaného svým držitelem](#create-a-self-signed-certificate)
-2. [Vytvořit soubor PFX pro šifrovací certifikát podepsaný svým držitelem](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Vytvoření certifikátu Self-Signed](#create-a-self-signed-certificate)
+2. [Vytvořit soubor PFX pro Self-Signed šifrovací certifikát](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Nahrát šifrovací certifikát do cloudové služby](#upload-encryption-certificate-to-cloud-service)
 4. [Aktualizovat šifrovací certifikát v konfiguračním souboru služby](#update-encryption-certificate-in-service-configuration-file)
 
@@ -124,7 +124,7 @@ Výchozí konfigurace odepírá přístup ke koncovému bodu HTTP. Toto je dopor
 Výchozí konfigurace umožňuje přístup ke koncovému bodu HTTPS. Toto nastavení může být omezeno.
 
 ### <a name="changing-the-configuration"></a>Změna konfigurace
-Skupina pravidel řízení přístupu, která platí pro a koncový bod, je nakonfigurovaná v **\<EndpointAcls>** části **konfiguračního souboru služby**.
+Skupina pravidel řízení přístupu, která platí pro a koncový bod, je nakonfigurovaná v **\<EndpointAcls>** části **konfiguračního souboru služby** .
 
 ```xml
 <EndpointAcls>
@@ -193,7 +193,7 @@ Toto téma je pouze pro referenci. Postupujte podle kroků konfigurace popsanýc
 * Konfigurace certifikátu TLS/SSL
 * Konfigurace klientských certifikátů
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 Spustit
 
 ```console
@@ -441,31 +441,31 @@ Postupujte následovně:
 
 1. Spusťte mmc.exe.
 2. Soubor – > přidat nebo odebrat modul snap-in...
-3. Vyberte **certifikáty**.
-4. Klikněte na tlačítko **Add** (Přidat).
+3. Vyberte **certifikáty** .
+4. Klikněte na **Přidat** .
 5. Vyberte umístění úložiště certifikátů.
 6. Klikněte na **Finish** (Dokončit).
-7. Klikněte na **OK**.
-8. Rozbalte položku **certifikáty**.
+7. Klikněte na **OK** .
+8. Rozbalte položku **certifikáty** .
 9. Rozbalte uzel úložiště certifikátů.
 10. Rozbalte uzel podřízený certifikát.
 11. V seznamu vyberte certifikát.
 
 ## <a name="export-certificate"></a>Export certifikátu
-V **Průvodci exportem certifikátu**:
+V **Průvodci exportem certifikátu** :
 
-1. Klikněte na **Další**.
-2. Vyberte **Ano**a pak **exportujte privátní klíč**.
-3. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).
+2. Vyberte **Ano** a pak **exportujte privátní klíč** .
+3. Klikněte na **Next** (Další).
 4. Vyberte požadovaný formát výstupního souboru.
 5. Ověřte požadované možnosti.
-6. Ověřte **heslo**.
+6. Ověřte **heslo** .
 7. Zadejte silné heslo a potvrďte ho.
-8. Klikněte na **Další**.
+8. Klikněte na **Next** (Další).
 9. Zadejte nebo vyhledejte název souboru, kam se má certifikát Uložit (použijte. Přípona PFX).
-10. Klikněte na **Další**.
+10. Klikněte na **Next** (Další).
 11. Klikněte na **Finish** (Dokončit).
-12. Klikněte na **OK**.
+12. Klikněte na **OK** .
 
 ## <a name="import-certificate"></a>Import certifikátu
 V Průvodci importem certifikátu:
@@ -474,7 +474,7 @@ V Průvodci importem certifikátu:
    
    * Vyberte **aktuálního uživatele** , pokud budou ke službě přistupovat jenom procesy spuštěné v rámci aktuálního uživatele.
    * Vyberte možnost **místní počítač** , pokud budou k této službě přistupovat jiné procesy v tomto počítači.
-2. Klikněte na **Další**.
+2. Klikněte na **Next** (Další).
 3. Při importu ze souboru potvrďte cestu k souboru.
 4. Při importu. Soubor PFX:
    1. Zadejte heslo pro ochranu privátního klíče.
@@ -484,16 +484,16 @@ V Průvodci importem certifikátu:
 7. Vyberte požadované úložiště.
 8. Klikněte na **Finish** (Dokončit).
    
-   * Pokud se zvolilo úložiště Důvěryhodné kořenové certifikační autority, klikněte na **Ano**.
+   * Pokud se zvolilo úložiště Důvěryhodné kořenové certifikační autority, klikněte na **Ano** .
 9. Ve všech dialogových oknech klikněte na **OK** .
 
 ## <a name="upload-certificate"></a>Nahrání certifikátu
-Na webu [Azure Portal](https://portal.azure.com/)
+V [Azure Portal](https://portal.azure.com/)
 
-1. Vyberte **Cloud Services**.
+1. Vyberte **Cloud Services** .
 2. Vyberte cloudovou službu.
-3. V horní nabídce klikněte na **certifikáty**.
-4. Na dolním panelu klikněte na **Odeslat**.
+3. V horní nabídce klikněte na **certifikáty** .
+4. Na dolním panelu klikněte na **Odeslat** .
 5. Vyberte soubor certifikátu.
 6. Pokud se jedná o. Soubor PFX, zadejte heslo pro privátní klíč.
 7. Po dokončení zkopírujte kryptografický otisk certifikátu z nové položky v seznamu.
@@ -508,4 +508,3 @@ Nastavení TLS popsaná v tomto dokumentu šifrují komunikaci mezi službou a j
 Přihlašovací údaje uložené v této databázi jsou šifrované. Osvědčeným postupem je ale zajistit, aby byly webové i pracovní role nasazení služeb aktuální a zabezpečené, protože oba mají přístup k databázi metadat a k certifikátu používanému k šifrování a dešifrování uložených přihlašovacích údajů. 
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
-

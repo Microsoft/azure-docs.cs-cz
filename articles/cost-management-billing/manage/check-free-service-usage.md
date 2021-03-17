@@ -4,15 +4,16 @@ description: Zjistěte, jak zkontrolovat využití bezplatných služeb na webu 
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 12/04/2020
 ms.author: banders
-ms.openlocfilehash: 03efb7e4d0aa06e4c33a94f15621d58330e52e50
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: c7c28e64822a6aefa17e8baa4ef42a3b3fea8adb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461863"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589772"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Kontrola využití bezplatných služeb, které jsou součástí bezplatného účtu Azure
 
@@ -21,18 +22,13 @@ Za služby zahrnuté bezplatně v rámci bezplatného účtu Azure se neúčtuj�
 ## <a name="check-usage-in-the-azure-portal"></a>Kontrola využití na webu Azure Portal
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-
-2.  Vyhledejte **Předplatná**.
-
+1.  Vyhledejte **Předplatná**.  
     ![Snímek obrazovky, který zobrazuje hledání předplatných na portálu](./media/check-free-service-usage/billing-search-subscriptions.png)
-
-3.  Vyberte předplatné, které se vytvořilo při vaší registraci bezplatného účtu Azure.
-
-4.  Posuňte se dolů, kde najdete tabulku s využitím bezplatných služeb.
-
+1.  Vyberte předplatné, které se vytvořilo při vaší registraci bezplatného účtu Azure.
+1.  Posuňte se dolů, kde najdete tabulku s využitím bezplatných služeb.  
     ![Snímek obrazovky ukazující využití bezplatných služeb](./media/check-free-service-usage/subscription-usage-free-services.png)
 
-    Tabulka obsahuje následující sloupce:
+Tabulka obsahuje následující sloupce:
 
 * **Měřič:** Určuje měrnou jednotku spotřebovávané služby.
 * **Využití/limit:** Využití za aktuální měsíc a limit daného měřiče.

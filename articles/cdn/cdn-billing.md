@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018677"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Principy fakturace Azure CDN
 
@@ -38,7 +38,7 @@ Oblast fakturace je geografická oblast sloužící k určení, jakou sazbou se 
 
 - Zóna 5: Indie
 
-Informace o oblastech bodu přítomnosti (POP) najdete v tématu [Azure CDN umístění pop podle oblasti](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Například bod POP umístěný v Mexiku je v oblasti Severní Amerika a je proto zahrnutý v zóně 1. 
+Informace o oblastech bodu přítomnosti (POP) najdete v tématu [Azure CDN umístění pop podle oblasti](./cdn-pop-locations.md). Například bod POP umístěný v Mexiku je v oblasti Severní Amerika a je proto zahrnutý v zóně 1. 
 
 Informace o cenách Azure CDN najdete v článku [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -101,7 +101,7 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - VPN Gateway
 - Traffic Manager
 - Network Watcher
-- Brána Azure Firewall
+- Azure Firewall
 - Azure Front Door Service
 - Azure Bastion
 - Služba Azure App Service
@@ -119,4 +119,4 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Návody spravovat mé náklady efektivněji?
-Nastavte nejdelší možnou hodnotu TTL u vašeho obsahu. 
+Nastavte nejdelší možnou hodnotu TTL u vašeho obsahu.

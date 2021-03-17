@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-python
-ms.openlocfilehash: 8e0b7a81008fecbeb741b5b6e65c1eb8a1fdda29
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d0f3e3578f1fe40794ec5697291d35e3d277419
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850725"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341729"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Pythonu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu se dozvíte, jak odesílat rozhraní API Bingu pro vyhledávání obrázků žádosti o vyhledávání. Tato aplikace Python odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -152,5 +157,5 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 
 * [Co je rozhraní API Bingu pro vyhledávání obrázků?](../overview.md)  
 * [Podrobnosti o cenách pro rozhraní API pro vyhledávání Bingu](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
-* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Dokumentace k Azure Cognitive Services](../../index.yml)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -1,16 +1,16 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 05/23/2019
-ms.author: rgarcia
-ms.openlocfilehash: e0038fd5632d512f18d50c4d11577b7f5756baa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 2eb24691ab4ef4aab015f9fdb319049d8c858395
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67235292"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185268"
 ---
-V Unity otevřete projekt ve `Unity` složce. Unity se může zeptat na jinou verzi Unity mezi projektem a ten, který jste na svém počítači nainstalovali. Toto upozornění je v pořádku, pokud je vaše verze editoru Unity novější než ta, ve které byl projekt vytvořen. V takovém případě stačí kliknout na **pokračovat**. Pokud je vaše verze editoru Unity starší, než projekt potřebuje, klikněte na tlačítko **ukončit**a upgradujte svůj Editor Unity.
+V Unity otevřete projekt ve složce *Unity* . Unity vás může vyzvat k rozdílu mezi verzí v projektu a verzí, která je na vašem počítači nainstalovaná. Toto upozornění je v pořádku, pokud je vaše verze editoru Unity novější než ta, ve které byl projekt vytvořen. Pokud je vaše verze novější, vyberte **pokračovat**. Pokud je vaše verze starší než ta, kterou projekt potřebuje, vyberte možnost **ukončit** a upgradujte svůj Editor Unity.
 
-![Okno Unity](./media/spatial-anchors-unity/unity-window.png)
+![Snímek obrazovky s podoknem Unity](./media/spatial-anchors-unity/unity-window.png)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1ae9e39f5a23725b17451d7144c8304194d2a1d0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544022"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ověřováním uživatele Netskope
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat ověřování uživatelů Netskope pom
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Netskope ověřování uživatelů pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnoty přihlašovacích adres URL nejsou reálné. Aktualizujte hodnotu URL pro přihlášení pomocí skutečné přihlašovací adresy URL. Pokud chcete získat hodnotu URL pro přihlášení, obraťte se na [tým podpory klienta pro ověřování uživatelů Netskope](mailto:support@netskope.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -110,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -136,15 +136,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na kartu **Aktivní platforma** .
 
-    ![Konfigurace ověření uživatele Netskope](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí aktivní Platforma vybraná z nastavení.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Posuňte se dolů k **dopředné proxy** a vyberte **SAML**.
 
-    ![Konfigurace ověření uživatele Netskope](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![Snímek obrazovky zobrazuje SAML vybraný z aktivní platformy.](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. Na stránce **Nastavení SAML** proveďte následující kroky:
 
-    ![Konfigurace ověření uživatele Netskope](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![Snímek obrazovky ukazuje nastavení SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. Zkopírujte hodnotu **ID entity SAML** a vložte ji do textového pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal.
 
@@ -152,11 +152,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Přidat účet**.
 
-    ![Konfigurace ověření uživatele Netskope](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![Snímek obrazovky ukazuje přidat účet vybraný v podokně SAML.](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. Na stránce **Přidat účet SAML** proveďte následující kroky:
 
-    ![Konfigurace ověření uživatele Netskope](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![Snímek obrazovky ukazuje přidat účet SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. Do textového pole **název** zadejte název jako Azure AD.
 
@@ -174,36 +174,36 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém navigačním podokně klikněte na kartu **Nastavení** .
 
-    ![Vytvoření uživatele ověřování uživatele Netskope](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![Snímek obrazovky se zobrazením vybraného nastavení.](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. Klikněte na kartu **Aktivní platforma** .
 
-    ![Vytvoření uživatele ověřování uživatele Netskope](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí aktivní Platforma vybraná z nastavení.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Klikněte na kartu **Uživatelé** .
 
-    ![Vytvoření uživatele ověřování uživatele Netskope](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![Snímek obrazovky zobrazuje uživatele vybrané z aktivní platformy.](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. Klikněte na **Přidat uživatele**.
 
-    ![Vytvoření uživatele ověřování uživatele Netskope](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně uživatelé, kde můžete vybrat přidat uživatele.](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. Zadejte e-mailovou adresu uživatele, kterého chcete přidat, a klikněte na **Přidat**.
 
-    ![Vytvoření uživatele ověřování uživatele Netskope](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![Snímek obrazovky ukazuje přidat uživatele, kde můžete zadat seznam uživatelů.](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ověření uživatele Netskope, měli byste se automaticky přihlásit k ověření uživatele Netskope, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ověření uživatele Netskope, měli byste se automaticky přihlásit k ověření uživatele Netskope, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte Netskope ověřování uživatelů pomocí Azure AD](https://aad.portal.azure.com/)

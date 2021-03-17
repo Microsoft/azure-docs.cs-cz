@@ -5,76 +5,37 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-csharp
 ms.devlang: dotnet
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5da69c4bc0770c4588dce95b01386e6a5be75eec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504576"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705207"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="quickstart-use-net-core-c-to-query-a-database"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](https://www.microsoft.com/net/) a C#. Pak spustíte příkaz Transact-SQL k dotazování dat.
 
 > [!TIP]
-> Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje databáze v Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje databáze v Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databáze. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
-
-  | Akce | Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
-  |:--- |:--- |:---|:---|
-  | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md)| [Připojení z virtuálního počítače](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Připojení z místního prostředí](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) | [Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
-  > [!IMPORTANT]
-  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Pomocí spravované instance SQL je nutné buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
-
 - [Rozhraní .NET Core pro nainstalovaný operační systém](https://www.microsoft.com/net/core) .
+- Databáze, ve které můžete spustit dotaz. 
 
-> [!NOTE]
-> V tomto rychlém startu se používá databáze *mySampleDatabase* . Pokud chcete použít jinou databázi, budete muset změnit odkazy databáze a upravit `SELECT` dotaz v kódu jazyka C#.
-
-## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
-
-Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
-
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
-
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
-
-> [!NOTE]
-> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
-## <a name="get-adonet-connection-information-optional---sql-database-only"></a>Získat informace o připojení ADO.NET (jenom volitelné SQL Database)
-
-1. Přejděte na stránku **mySampleDatabase** a v části **Nastavení**vyberte **připojovací řetězce**.
-
-2. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
-
-    ![Připojovací řetězec pro ADO.NET](./media/connect-query-dotnet-core/adonet-connection-string2.png)
-
-3. Pokud ho máte v úmyslu používat, zkopírujte připojovací řetězec **ADO.NET** .
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
   
 ## <a name="create-a-new-net-core-project"></a>Vytvoření nového projektu .NET Core
 
@@ -131,12 +92,8 @@ namespace sqltest
                     Console.WriteLine("=========================================\n");
                     
                     connection.Open();       
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                    sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                    sb.Append("JOIN [SalesLT].[Product] p ");
-                    sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                    String sql = sb.ToString();
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -170,32 +127,15 @@ namespace sqltest
    dotnet run
    ```
 
-2. Ověřte, zda je vráceno prvních 20 řádků.
+2. Ověřte, zda jsou vráceny řádky.
 
    ```text
    Query data example:
    =========================================
 
-   Road Frames HL Road Frame - Black, 58
-   Road Frames HL Road Frame - Red, 58
-   Helmets Sport-100 Helmet, Red
-   Helmets Sport-100 Helmet, Black
-   Socks Mountain Bike Socks, M
-   Socks Mountain Bike Socks, L
-   Helmets Sport-100 Helmet, Blue
-   Caps AWC Logo Cap
-   Jerseys Long-Sleeve Logo Jersey, S
-   Jerseys Long-Sleeve Logo Jersey, M
-   Jerseys Long-Sleeve Logo Jersey, L
-   Jerseys Long-Sleeve Logo Jersey, XL
-   Road Frames HL Road Frame - Red, 62
-   Road Frames HL Road Frame - Red, 44
-   Road Frames HL Road Frame - Red, 48
-   Road Frames HL Road Frame - Red, 52
-   Road Frames HL Road Frame - Red, 56
-   Road Frames LL Road Frame - Black, 58
-   Road Frames LL Road Frame - Black, 60
-   Road Frames LL Road Frame - Black, 62
+   master   SQL_Latin1_General_CP1_CI_AS
+   tempdb   SQL_Latin1_General_CP1_CI_AS
+   WideWorldImporters   Latin1_General_100_CI_AS
 
    Done. Press enter.
    ```
@@ -207,4 +147,4 @@ namespace sqltest
 - [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
 - Naučte se [připojit a dotazovat Azure SQL Database nebo spravované instance Azure SQL pomocí .NET Framework a sady Visual Studio](connect-query-dotnet-visual-studio.md).  
 - Přečtěte si, jak [navrhnout první databázi pomocí SSMS](design-first-database-tutorial.md) nebo [navrhnout databázi a jak se připojit pomocí C# a ADO.NET](design-first-database-csharp-tutorial.md).
-- Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).
+- Další informace o .NET najdete v [dokumentaci rozhraní .NET](/dotnet/).

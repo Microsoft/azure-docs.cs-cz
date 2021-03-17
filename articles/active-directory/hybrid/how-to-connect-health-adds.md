@@ -3,7 +3,7 @@ title: Používání služby Azure AD Connect Health se službou AD DS | Dokumen
 description: Toto je stránka o službě Azure AD Connect Health, která popisuje monitorování služby AD DS.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7e8e3219cc2b11ed123889973c375edd22664d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0686a4dafae17bafc65a03c985a65aecba70e60c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359394"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017013"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Používání služby Azure AD Connect Health se službou AD DS
 Následující dokumentace se věnuje monitorování služby Active Directory Domain Services pomocí služby Azure AD Connect Health. Podporovány jsou verze služby AD DS nainstalované v systému Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016.
@@ -49,19 +49,18 @@ Tento řídicí panel zobrazuje stav replikace a topologii replikace pro řadič
 
 ![Stav replikace](./media/how-to-connect-health-adds/aadconnect-health-adds-replication.png)
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 Tato funkce zajišťuje grafické zobrazení trendů různých čítačů výkonu, které se průběžně shromažďují ze všech monitorovaných řadičů domény. Výkon řadiče domény můžete snadno porovnat se všemi ostatními monitorovanými řadiči domény v doménové struktuře. Kromě toho můžete různé čítače výkonu zobrazit vedle sebe, což je užitečné při řešení problémů ve vašem prostředí.
 
-![Monitorování](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
+![Sledování](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
 
 Ve výchozím nastavení jsme předem vybrali čtyři čítače výkonu. Kliknutím na příkaz filtru a výběrem nebo zrušením výběru libovolných požadovaných čítačů, můžete přidat nebo odebrat další čítače. Můžete také dvakrát kliknout na graf čítače výkonu. Tím otevřete nové okno, které obsahuje datové body každého monitorovaného řadiče domény.
 
 ## <a name="related-links"></a>Související odkazy
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)
 * [Použití Azure AD Connect Health k synchronizaci](how-to-connect-health-sync.md)
 * [Azure AD Connect Health – nejčastější dotazy](reference-connect-health-faq.md)
 * [Historie verze Azure AD Connect Health](reference-connect-health-version-history.md)
-

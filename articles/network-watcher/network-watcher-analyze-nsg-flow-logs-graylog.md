@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497110"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965540"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analýza protokolů toku skupin zabezpečení sítě v Azure pomocí Network Watcher a Graylogu
 
@@ -40,7 +40,7 @@ Protokol toků skupin zabezpečení sítě je povolený pomocí Network Watcher.
 
 ### <a name="enable-network-security-group-flow-logging"></a>Povolit protokolování toku skupin zabezpečení sítě
 
-V tomto scénáři musíte mít povolené protokolování toku skupin zabezpečení sítě ve vašem účtu aspoň v jedné skupině zabezpečení sítě. Pokyny k povolení protokolů toků skupin zabezpečení sítě najdete v následujícím článku [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+V tomto scénáři musíte mít povolené protokolování toku skupin zabezpečení sítě ve vašem účtu aspoň v jedné skupině zabezpečení sítě. Pokyny k povolení protokolů toků skupin zabezpečení sítě najdete v následujícím článku [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="setting-up-graylog"></a>Nastavení Graylogu
 
@@ -53,7 +53,7 @@ V tomto příkladu se používá minimální nastavení Graylogu (tj. jedna inst
 
 Graylogu se dá nainstalovat mnoha způsoby v závislosti na vaší platformě a preferencích. Úplný seznam možných metod instalace najdete v oficiální [dokumentaci](https://docs.graylog.org/en/2.2/pages/installation.html)k graylogu. Aplikace serveru Graylogu běží na distribucích systému Linux a má následující požadavky:
 
--  Java SE 8 nebo novější – [Azul dokumentace k Azure JDK](https://aka.ms/azure-jdks)
+-  Java SE 8 nebo novější – [Azul dokumentace k Azure JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  Elastické vyhledávání 2. x (2.1.0 nebo novější) – [dokumentace k instalaci Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2,4 nebo novější – [dokumentace k instalaci MongoDB](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -175,10 +175,10 @@ Další informace o tomto modulu plug-in najdete v [dokumentaci](https://github.
 
 Teď, když jste navázali připojení k protokolům Flow pomocí Logstash a nastavili jste server Graylogu, musíte nakonfigurovat Graylogu pro příjem příchozích souborů protokolu.
 
-1. Přejděte na webové rozhraní serveru Graylogu pomocí adresy URL, kterou jste pro něj nakonfigurovali. K rozhraní můžete přistupovat nasměrováním prohlížeče na`http://<graylog-server-ip>:9000/`
+1. Přejděte na webové rozhraní serveru Graylogu pomocí adresy URL, kterou jste pro něj nakonfigurovali. K rozhraní můžete přistupovat nasměrováním prohlížeče na `http://<graylog-server-ip>:9000/`
 
 2. Chcete-li přejít na stránku konfigurace, v horním navigačním panelu klikněte na rozevírací nabídku **systém** a potom klikněte na možnost **vstupy**.
-   Případně přejděte na`http://<graylog-server-ip>:9000/system/inputs`
+   Případně přejděte na `http://<graylog-server-ip>:9000/system/inputs`
 
    ![Začínáme](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
@@ -186,7 +186,7 @@ Teď, když jste navázali připojení k protokolům Flow pomocí Logstash a nas
 
    Ujistěte se, že vstup navážete na IP adresu, na které jste nakonfigurovali server Graylogu. IP adresa by se měla shodovat s polem **hostitel** výstupu protokolu UDP konfiguračního souboru Logstash. Výchozí port by měl být *12201*. Zajistěte, aby se port shodoval s polem **port** ve výstupu UDP určeném v konfiguračním souboru Logstash.
 
-   ![Vstupy](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Snímek obrazovky ukazuje vstupy Graylogu s možnostmi spouštění a hledání vstupů.](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Po spuštění vstupu by se měla zobrazit v části **místní vstupy** , jak je znázorněno na následujícím obrázku:
 
@@ -198,13 +198,13 @@ Teď, když jste navázali připojení k protokolům Flow pomocí Logstash a nas
 
 ### <a name="search-through-graylog-messages"></a>Hledání prostřednictvím zpráv Graylogu
 
-Když pro server Graylogu zadáte nějakou dobu, abyste mohli shromažďovat zprávy, můžete zprávy prohledávat. Pokud chcete kontrolovat zprávy odesílané vašemu Graylogu serveru, na stránce konfigurace **vstupů** klikněte na tlačítko**Zobrazit přijaté zprávy**u vstupu GELF UDP, který jste vytvořili. Budete přesměrováni na obrazovku, která bude vypadat podobně jako na následujícím obrázku: 
+Když pro server Graylogu zadáte nějakou dobu, abyste mohli shromažďovat zprávy, můžete zprávy prohledávat. Pokud chcete kontrolovat zprávy odesílané vašemu Graylogu serveru, na stránce konfigurace **vstupů** klikněte na tlačítko **Zobrazit přijaté zprávy** u vstupu GELF UDP, který jste vytvořili. Budete přesměrováni na obrazovku, která bude vypadat podobně jako na následujícím obrázku: 
 
-![Histogram](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![Snímek obrazovky ukazuje server Graylogu, který zobrazuje výsledky hledání, histogramy a zprávy.](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 Kliknutím na modrý odkaz "% {Message}" rozbalíte jednotlivé zprávy a zobrazíte parametry jednotlivých řazených kolekcí členů toku, jak je znázorněno na následujícím obrázku:
 
-![Zprávy](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![Snímek obrazovky zobrazuje podrobnosti zprávy ze serveru Graylogu.](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 Ve výchozím nastavení jsou všechna pole zpráv ve vyhledávání obsažena, pokud nevyberete konkrétní pole zprávy, které chcete vyhledat. Pokud chcete vyhledat konkrétní zprávy (tj. – počet řazených kolekcí členů toku z konkrétní zdrojové IP adresy: můžete použít jazyk vyhledávacího dotazu Graylogu, jak je [uvedeno](https://docs.graylog.org/en/2.2/pages/queries.html) níže.
 
@@ -214,11 +214,11 @@ Teď, když je spuštěný Graylogu, můžete využít některé z jeho funkcí 
 
 ### <a name="create-a-dashboard"></a>Vytvoření řídicího panelu
 
-1. V horním navigačním panelu vyberte **řídicí panely** nebo přejděte na`http://<graylog-server-ip>:9000/dashboards/`
+1. V horním navigačním panelu vyberte **řídicí panely** nebo přejděte na `http://<graylog-server-ip>:9000/dashboards/`
 
 2. Odtud klikněte na zelené tlačítko **vytvořit řídicí panel** a vyplňte krátký tvar názvem a popisem řídicího panelu. Stisknutím tlačítka **Uložit** vytvořte nový řídicí panel. Zobrazí se řídicí panel podobný následujícímu obrázku:
 
-    ![Řídicí panely](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![Snímek obrazovky ukazuje řídicí panely serveru Graylogu s možnostmi pro vytváření a úpravu řídicích panelů.](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>Přidat widgety
 
@@ -246,4 +246,4 @@ Integrací Network Watcher s Graylogu nyní máte pohodlný a centralizovaný zp
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se vizualizovat protokoly toku skupin zabezpečení sítě pomocí Power BI tím, že navštívíte seznam [toků toků skupin zabezpečení sítě s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Naučte se vizualizovat protokoly toku skupin zabezpečení sítě pomocí Power BI tím, že navštívíte seznam [toků toků skupin zabezpečení sítě s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).

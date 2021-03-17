@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7289fe2ec1f39679dcec95f1f48a6efa9ed0cdfc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545199"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460329"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Kurz: integrace iLMS s Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat iLMS s Azure Active Directory (Azure A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k iLMS svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,7 +57,7 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí iLMS pomo
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí iLMS, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte ILMS SSO](#configure-ilms-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte ILMS SSO](#configure-ilms-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření iLMS Test User](#create-ilms-test-user)** – pro Britta Simon v iLMS, který je propojený s reprezentací uživatele Azure AD.
@@ -69,7 +69,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **ILMS** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     například Klikněte na **Uložit**.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -130,29 +130,29 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 2. Klikněte na **SSO: SAML** na kartě **Nastavení** otevřete nastavení SAML a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/1.png)
+    ![Snímek obrazovky zobrazuje kartu nastavení I L M, kde můžete vybrat S S: SAML.](./media/ilms-tutorial/1.png)
 
 3. Rozbalte část **poskytovatel služeb** a zkopírujte hodnotu **identifikátor** a **koncový bod (URL)** .
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/2.png) 
+    ![Snímek obrazovky zobrazuje nastavení SAML, kde můžete získat hodnoty.](./media/ilms-tutorial/2.png) 
 
 4. V části **zprostředkovatel identity** klikněte na **importovat metadata**.
 
 5. Vyberte soubor **federačních metadat** stažený z Azure Portal v části **podpisový certifikát SAML** .
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Snímek obrazovky ukazuje nastavení SAML, kde můžete vybrat soubor metadat.](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Pokud chcete povolit zřizování JIT pro vytváření účtů iLMS pro zrušení rozpoznávání uživatelů, postupujte podle následujících kroků:
 
     a. Ověřte **Vytvoření nerozpoznaného uživatelského účtu**.
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Snímek obrazovky ukazuje možnost vytvořit nerozpoznaný uživatelský účet.](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Namapujte atributy v Azure AD pomocí atributů v iLMS. Ve sloupci atribut zadejte název atributů nebo výchozí hodnotu.
 
     c. Přejít na kartu **obchodní pravidla** a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/5.png)
+    ![Snímek obrazovky zobrazuje nastavení obchodních pravidel, kde můžete zadat informace v tomto kroku.](./media/ilms-tutorial/5.png)
 
     d. Pokud chcete vytvořit oblasti, divize a oddělení, které ještě neexistují v době jednotného přihlašování, Projděte si část **Vytvoření nerozpoznaných oblastí, divizí a oddělení** .
 
@@ -164,7 +164,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 7. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/save.png)
+    ![Snímek obrazovky ukazuje tlačítko Uložit.](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -176,7 +176,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -206,11 +206,11 @@ Pokud potřebujete ručně vytvořit uživatele, postupujte podle následující
 
 2. Kliknutím na **Registrovat uživatele** na kartě **Uživatelé** otevřete stránku **zaregistrovat uživatele** .
 
-   ![Přidat zaměstnance](./media/ilms-tutorial/3.png)
+   ![Snímek obrazovky se zobrazí na kartě nastavení I L M, kde můžete vybrat zaregistrovat uživatele.](./media/ilms-tutorial/3.png)
 
 3. Na stránce **zaregistrovat uživatele** proveďte následující kroky.
 
-    ![Přidat zaměstnance](./media/ilms-tutorial/create_testuser_add.png)
+    ![Snímek obrazovky se zobrazí stránka registrace uživatele, kde zadáte zadané informace.](./media/ilms-tutorial/create_testuser_add.png)
 
     a. Do textového pole **název** zadejte jméno, například Britta.
 
@@ -231,12 +231,12 @@ Pokud potřebujete ručně vytvořit uživatele, postupujte podle následující
 
 ### <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete dlaždici iLMS, měli byste se automaticky přihlásit k iLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici iLMS, měli byste se automaticky přihlásit k iLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421225"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200910"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -19,9 +19,9 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která
 
 V tomto článku se předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ### <a name="limitations"></a>Omezení
 
@@ -70,31 +70,34 @@ Následující příklad výstupu ukazuje, že skupina prostředků byla úspě�
 Pokud chcete spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Windows serveru, musí cluster používat zásady sítě, které používají modul plug-in [Azure CNI][azure-cni-about] (Advanced) Network. Podrobnější informace, které vám pomůžou naplánovat požadované rozsahy podsítí a požadavky na síť, najdete v tématu [Konfigurace sítě Azure CNI][use-advanced-networking]. Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS s názvem *myAKSCluster*. Tento příkaz vytvoří nezbytné síťové prostředky, pokud neexistují.
 
 * Cluster je nakonfigurovaný se dvěma uzly.
-* Parametry *Windows-Admin-Password* a *Windows-admin-username* nastavily přihlašovací údaje správce pro všechny kontejnery Windows serveru vytvořené v clusteru a musí splňovat [požadavky na heslo pro Windows Server][windows-server-password].
-* Fond uzlů používá`VirtualMachineScaleSets`
+* `--windows-admin-password`Parametry a `--windows-admin-username` nastavují přihlašovací údaje správce pro všechny kontejnery Windows serveru vytvořené v clusteru a musí splňovat [požadavky na heslo k Windows serveru][windows-server-password]. Pokud nezadáte parametr *Windows-Admin-Password* , zobrazí se výzva k zadání hodnoty.
+* Fond uzlů používá `VirtualMachineScaleSets` .
 
 > [!NOTE]
 > Aby cluster fungoval spolehlivě, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů.
 
-Zadejte vlastní zabezpečený *PASSWORD_WIN* (Nezapomeňte, že příkazy v tomto článku se zadávají do prostředí bash):
+Vytvořte uživatelské jméno, které se použije jako přihlašovací údaje správce pro kontejnery Windows serveru v clusteru. Následující příkazy zobrazí výzvu k zadání uživatelského jména a nastaví WINDOWS_USERNAME pro použití v pozdějším příkazu (Nezapomeňte, že příkazy v tomto článku jsou zadány do prostředí BASH).
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+Vytvořte cluster, který vám bude zajišťovat zadání `--windows-admin-username` parametru. Následující příklad příkazu vytvoří cluster pomocí hodnoty z *WINDOWS_USERNAME* , kterou jste nastavili v předchozím příkazu. Případně můžete místo použití *WINDOWS_USERNAME* zadat jiné uživatelské jméno přímo v parametru. Následující příkaz vás také vyzve k vytvoření hesla pro přihlašovací údaje správce pro kontejnery Windows serveru v clusteru. Alternativně můžete použít parametr *Windows-Admin-Password* a zadat vlastní hodnotu.
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> Pokud se zobrazí chyba ověřování hesla, ověřte, že parametr *Windows-Admin-Password* splňuje [požadavky na heslo pro Windows Server][windows-server-password]. Pokud vaše heslo splňuje požadavky, zkuste vytvořit skupinu prostředků v jiné oblasti. Pak zkuste cluster vytvořit s novou skupinou prostředků.
+> Pokud se zobrazí chyba ověřování hesla, ověřte, že heslo, které jste nastavili, splňuje [požadavky na heslo pro Windows Server][windows-server-password]. Pokud vaše heslo splňuje požadavky, zkuste vytvořit skupinu prostředků v jiné oblasti. Pak zkuste cluster vytvořit s novou skupinou prostředků.
 
 Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON. Může se stát, že cluster zřídí déle než několik minut. V těchto případech můžete trvat až 10 minut.
 
@@ -268,12 +271,12 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[aks-monitor]: https://aka.ms/coingfonboarding
+[aks-monitor]: ../azure-monitor/containers/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-browse]: /cli/azure/aks#az-aks-browse
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register

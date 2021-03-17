@@ -1,17 +1,17 @@
 ---
 title: Kurz vytvoření, sestavení, & nasazení inteligentních kontraktů – Azure blockchain Service
 description: Kurz týkající se použití rozšíření Azure blockchain Development Kit pro rozšíření Ethereem v Visual Studio Code k vytvoření, sestavení a nasazení inteligentních kontraktů ve službě Azure blockchain Service.
-ms.date: 04/22/2020
+ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086653"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763685"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
+# <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
 
 V tomto kurzu pomocí rozšíření Azure blockchain Development Kit pro Ethereem v Visual Studio Code vytvoříte, sestavíte a nasadíte inteligentní smlouvu na Azure blockchain Service. Pomocí vývojové sady také spustíte funkci inteligentního kontraktu prostřednictvím transakce.
 
@@ -24,20 +24,19 @@ Pomocí Azure blockchain Development Kit pro Ethereem:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure blockchain Development Kit pro rozšíření Ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x nebo vyšší](https://nodejs.org/download)
+* [Node.js 10.15. x nebo vyšší](https://nodejs.org/download)
 * [Git 2.10. x nebo vyšší](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Přidejte Python. exe do cesty. Pro Azure blockchain Development Kit se vyžaduje Python verze 2.7.15 ve vaší cestě.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Ve Windows se pro modul gyp vyžaduje nainstalovaný kompilátor C++. Můžete použít nástroje MSBuild:
 
-* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem`npm config set msvs_version 2017 -g`
+* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem `npm config set msvs_version 2017 -g`
 * Pokud je nainstalována sada Visual Studio 2019, nastavte cestu k nástrojům pro sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
 * V opačném případě nainstalujte samostatné nástroje VS Build Tools pomocí `npm install --global windows-build-tools` příkazu v příkazovém okně *Spustit jako správce* .
 
@@ -47,7 +46,7 @@ Další informace o Node-gyp najdete v části [úložiště Node-gyp na GitHubu
 
 Sada Azure blockchain Development Kit pro Ethereem používá projektové šablony a nástroje Truffle, které vám pomůžou vytvářet kontrakty pro generování a nasazení. Než začnete, dokončete potřebný [rychlý Start: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací a konfigurací sady Azure blockchain Development Kit pro Ethereem.
 
-1. Z palety příkazů VS Code vyberte **Azure blockchain: nový projekt soliding**.
+1. Z palety příkazů VS Code vyberte **blockchain: nový projekt soliding**.
 1. Vyberte **vytvořit základní projekt**.
 1. Vytvořte novou složku s názvem `HelloBlockchain` a **Vyberte možnost Nová cesta k projektu**.
 
@@ -106,7 +105,7 @@ Funkce SendRequest nastaví pole **RequestMessage** a **State** . Aktuální sta
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete prostředky odstranit tak, že `myResourceGroup` odstraníte skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
+Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
 
 Odstranění skupiny prostředků:
 

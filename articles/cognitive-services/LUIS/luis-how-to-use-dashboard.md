@@ -3,20 +3,18 @@ title: Řídicí panel – Language Understanding – LUIS
 titleSuffix: Azure Cognitive Services
 description: Opravte záměry a entity pomocí řídicího panelu vaší školené aplikace. Řídicí panel zobrazuje celkové informace o aplikaci s příklady záměrů, které by se měly opravit.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345236"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541403"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Vylepšení aplikace pomocí řídicího panelu
 
@@ -33,7 +31,7 @@ Tři problémy řešené na řídicím panelu jsou:
 |Problém|Barva grafu|Vysvětlení|
 |--|--|--|
 |Nevyrovnanost dat|-|K tomu dochází, když se množství příkladů projevy významně liší. Všechny záměry musí mít _zhruba_ stejný počet příkladů projevy – s výjimkou záměru None. Mělo by to mít jenom 10%-15% celkového počtu projevy v aplikaci.<br><br> Pokud jsou data nevyvážená, ale přesnost záměru je nad určitou prahovou hodnotou, tato nerovnováha není hlášena jako problém.<br><br>**Začněte s tímto problémem – může to být hlavní příčina dalších problémů.**|
-|Zrušit zaškrtnutí předpovědi|Orange|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
+|Zrušit zaškrtnutí předpovědi|Oranžový|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
 |Nesprávné předpovědi|Červený|K tomu dochází, když se příklad utterance nepředpokládá pro označení záměru (záměr je v rámci).|
 
 Správné předpovědi jsou reprezentovány barvou modrá.
@@ -130,11 +128,11 @@ Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádný
 
 Následující graf zobrazuje nedostatečně vyváženou aplikaci s mnoha problémy, které je potřeba opravit.
 
-![Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádnými problémy, které je potřeba opravit.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![Snímek obrazovky ukazuje předpovědi na záměr s několika nejasnými nebo nesprávně předpokládanými výsledky.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 Najeďte myší na panel jednotlivých záměrů, abyste získali informace o záměru.
 
-![Následující graf znázorňuje dobře vyváženou aplikaci s téměř žádnými problémy, které je potřeba opravit.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![Snímek obrazovky ukazuje předpovědi na záměr s podrobnostmi o nejasných nebo nesprávně předpokládaných výsledcích.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 K uspořádání záměrů podle typu problému použijte funkci **Seřadit podle** , abyste se mohli soustředit na nejvíce problematické záměry s tímto problémem.
 
@@ -154,7 +152,7 @@ Určete procentuální prahové hodnoty, které vám vyhovuje pro vaši firmu.
 
 Filtr vám umožní najít záměry s konkrétním problémem:
 
-|Filtrovat|Navrhované procento|Účel|
+|Filtrování|Navrhované procento|Účel|
 |--|--|--|
 |Nejvíce problematických záměrů|-|**Začněte tady** – oprava projevy v tomto záměru vylepšuje aplikaci více než jiné opravy.|
 |Opravit předpovědi níže|60 %|Toto je procento projevy ve vybraném záměru, které jsou správné, ale mají pod prahovou hodnotou hodnocení spolehlivosti. |

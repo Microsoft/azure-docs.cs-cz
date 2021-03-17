@@ -3,7 +3,7 @@ title: Použití PowerShellu k vytvoření aplikace Azure AD pro přístup k roz
 description: Naučte se, jak pomocí PowerShellu vytvořit aplikaci Azure Active Directory (Azure AD) a nastavit ji pro přístup k rozhraní Azure Media Services API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: a8339ed5f6b570f392a76d8e4109f015c951b9df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d16c2bbb16a19e5cb22b2b2b0378880ec9aa48b5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065607"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009653"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Použití PowerShellu k vytvoření aplikace Azure AD pro použití s rozhraním Azure Media Services API
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Naučte se používat skript prostředí PowerShell k vytvoření aplikace Azure Active Directory (Azure AD) a instančního objektu pro přístup k prostředkům Azure Media Services.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services v Azure Portal](media-services-portal-create-account.md).
@@ -61,7 +63,7 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 Další informace najdete v následujících článcích:
 
 - [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-- [Správa Access Control na základě rolí pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](../../role-based-access-control/role-assignments-powershell.md)
 - [Ruční konfigurace aplikací démona pomocí certifikátů](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
 
 ## <a name="next-steps"></a>Další kroky

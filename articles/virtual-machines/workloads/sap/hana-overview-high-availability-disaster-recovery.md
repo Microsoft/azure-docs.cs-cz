@@ -6,19 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1fd4d53a642052c55bbe5d31bf80133ae89d35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616934"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675453"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Velké instance SAP HANA vysoká dostupnost a zotavení po havárii v Azure 
 
@@ -69,7 +69,7 @@ Další informace o SAP HANA vysoké dostupnosti najdete v následujících čl�
 
 Aby bylo možné využít funkce zotavení po havárii velkých instancí HANA, je třeba navrhnout síťové připojení ke dvěma oblastem Azure. Potřebujete připojení okruhu Azure ExpressRoute z místního prostředí v hlavní oblasti Azure a další připojení okruhu z místního prostředí k vaší oblasti zotavení po havárii. Tato míra se věnuje situaci, kdy došlo k potížím v oblasti Azure, včetně umístění směrovače Microsoft Enterprise Edge (MSEE).
 
-V rámci druhé míry můžete připojit všechny virtuální sítě Azure, které se připojují k SAP HANA v Azure (velké instance) v jedné oblasti do okruhu ExpressRoute, který propojuje velké instance HANA v jiné oblasti. V rámci tohoto *vzájemného připojení*se můžou služby běžící na virtuální síti Azure v oblasti 1 připojit k jednotkám velkých instancí Hana v oblasti 2 a druhým způsobem. Tato míra adresuje případ, ve kterém se do offline režimu připojuje jenom jedno umístění MSEE, která se připojují k místnímu umístění s Azure.
+V rámci druhé míry můžete připojit všechny virtuální sítě Azure, které se připojují k SAP HANA v Azure (velké instance) v jedné oblasti do okruhu ExpressRoute, který propojuje velké instance HANA v jiné oblasti. V rámci tohoto *vzájemného připojení* se můžou služby běžící na virtuální síti Azure v oblasti 1 připojit k jednotkám velkých instancí Hana v oblasti 2 a druhým způsobem. Tato míra adresuje případ, ve kterém se do offline režimu připojuje jenom jedno umístění MSEE, která se připojují k místnímu umístění s Azure.
 
 Následující obrázek znázorňuje odolnou konfiguraci pro případy zotavení po havárii:
 

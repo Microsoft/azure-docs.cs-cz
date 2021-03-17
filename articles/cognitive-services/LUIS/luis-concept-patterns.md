@@ -3,20 +3,18 @@ title: Vzorce – předpověď pro LUIS
 titleSuffix: Azure Cognitive Services
 description: Vzor vám umožní získat větší přesnost záměru bez dalších projevy.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cda71c6e825ff27ba9b03e1306ccb287663e8613
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538050"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025955"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzorce zlepšují přesnost předpovědi
 Vzory jsou navržené tak, aby se zlepšila přesnost, když je několik projevy velmi podobné.  Vzor vám umožní získat větší přesnost záměru bez dalších projevy.
@@ -50,7 +48,7 @@ Vzor je primárně určen pro lepší předpověď záměrů a rolí. _Vzor. Ka�
 Neočekává se, že se lepší předpověď entity zobrazí, pokud sbalíte více projevy do jediného vzoru. Aby bylo možné jednoduché entity aktivovat, je nutné přidat projevy nebo použít entity seznamu jinak se váš vzor neaktivuje.
 
 ## <a name="patterns-use-entity-roles"></a>Vzory používají role entit
-Pokud jsou dvě nebo více entit ve vzorci kontextově závislé, vzory používají [role](luis-concept-roles.md) entit k extrakci kontextových informací o entitách.
+Pokud jsou dvě nebo více entit ve vzorci kontextově závislé, vzory používají [role](./luis-concept-entity-types.md) entit k extrakci kontextových informací o entitách.
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Předpověď skóre s použitím vzorů a bez nich
 LUIS by měl mít dostatečný příklad projevy, což by mohlo zvýšit důvěru v předpovědi bez vzorců. Vzorce zvyšují skóre spolehlivosti bez nutnosti poskytovat tolik projevy.

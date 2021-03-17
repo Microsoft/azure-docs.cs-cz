@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629557"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705247"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí šablony Azure
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. Co se v tomto kurzu naučíte:
@@ -25,11 +25,11 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.29 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
 
 
 ## <a name="define-an-autoscale-profile"></a>Definice profilu automatického škálování
@@ -71,10 +71,10 @@ Pro toto pravidlo se používají následující parametry:
 | *timeAggregation* | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr         |
 | *timeWindow*      | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut       |
 | *podnikatel*        | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než    |
-| *threshold*       | Hodnota, která způsobí aktivaci akce pravidlem automatického škálování.                                                      | 70 %             |
-| *direction*       | Definuje, jestli se má po použití pravidla kapacita škálovací sady horizontálně snížit nebo zvýšit.                                              | Zvýšit        |
+| *mezí*       | Hodnota, která způsobí aktivaci akce pravidlem automatického škálování.                                                      | 70 %             |
+| *směr*       | Definuje, jestli se má po použití pravidla kapacita škálovací sady horizontálně snížit nebo zvýšit.                                              | Zvýšit        |
 | *textový*            | Určuje, že se má počet instancí virtuálních počítačů změnit o určitou hodnotu.                                    | Počet změn    |
-| *osa*           | Počet instancí virtuálních počítačů, jejichž kapacita se má po použití pravidla horizontálně snížit nebo zvýšit.                                             | 3               |
+| *value*           | Počet instancí virtuálních počítačů, jejichž kapacita se má po použití pravidla horizontálně snížit nebo zvýšit.                                             | 3               |
 | *cooldown*        | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut       |
 
 Následující pravidlo se přidá do části profilu poskytovatele prostředků *Microsoft.insights/autoscalesettings* z předchozí části:
@@ -143,10 +143,10 @@ Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cl
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte své uživatelské jméno, například *azureuser*, a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
+Teď vytvořte sadu škálování virtuálního počítače pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). Po zobrazení výzvy zadejte své uživatelské jméno, například *azureuser*, a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json
 ```
@@ -180,7 +180,7 @@ Připojte se přes SSH k první instanci virtuálního počítače. Pomocí para
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Po přihlášení nainstalujte nástroj **stress**. Spusťte *10 pracovních procesů * **stress**, které vygenerují zatížení CPU. Tyto pracovní procesy budou spuštěné *420* sekund, což je dostatečná doba na to, aby pravidla automatického škálování implementovala požadovanou akci.
+Po přihlášení nainstalujte nástroj **stress**. Spusťte *10 pracovních procesů* **stress**, které vygenerují zatížení CPU. Tyto pracovní procesy budou spuštěné *420* sekund, což je dostatečná doba na to, aby pravidla automatického škálování implementovala požadovanou akci.
 
 ```console
 sudo apt-get update

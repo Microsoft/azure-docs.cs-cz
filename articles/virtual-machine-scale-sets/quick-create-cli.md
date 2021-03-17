@@ -9,21 +9,21 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 0dc98ba242d3eb5fba79605dae9f8eadc56affd7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ed6ff00e2ec9a47cec0290fa88ef3b554287607
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504428"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518154"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů pomocí Azure CLI
 Sada škálování virtuálního počítače umožňuje nasadit a spravovat sadu automatických škálování virtuálních počítačů. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí Azure CLI.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.29 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
@@ -33,7 +33,7 @@ Než vytvoříte škálovací sadu, vytvořte skupinu prostředků pomocí pří
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa*, pokud ještě neexistují. Pomocí těchto klíčů SSH se v případě potřeby můžete přihlásit k instancím virtuálních počítačů. Pokud chcete použít existující sadu klíčů SSH, použijte parametr `--ssh-key-value` a zadejte umístění svých klíčů.
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa* , pokud ještě neexistují. Pomocí těchto klíčů SSH se v případě potřeby můžete přihlásit k instancím virtuálních počítačů. Pokud chcete použít existující sadu klíčů SSH, použijte parametr `--ssh-key-value` a zadejte umístění svých klíčů.
 
 ```azurecli-interactive
 az vmss create \
@@ -65,7 +65,7 @@ az vmss extension set \
 
 
 ## <a name="allow-traffic-to-application"></a>Povolení provozu do aplikace
-Při vytvoření škálovací sady se automaticky nasadil nástroj pro vyrovnávání zatížení Azure. Nástroj pro vyrovnávání zatížení distribuuje provoz do instancí virtuálních počítačů ve škálovací sadě. Pokud chcete ukázkové webové aplikaci povolit příjem provozu, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb*:
+Při vytvoření škálovací sady se automaticky nasadil nástroj pro vyrovnávání zatížení Azure. Nástroj pro vyrovnávání zatížení distribuuje provoz do instancí virtuálních počítačů ve škálovací sadě. Pokud chcete ukázkové webové aplikaci povolit příjem provozu, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* :
 
 ```azurecli-interactive
 az network lb rule create \

@@ -1,16 +1,14 @@
 ---
 title: Konfigurace upgradu Service Fabric aplikace
 description: Naučte se konfigurovat nastavení pro upgrade Service Fabric aplikace pomocí Microsoft Visual Studio.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.author: mikhegn
-ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 11df0387db07669ebacdba2e3d850e32903da133
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256046"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573676"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v aplikaci Visual Studio
 Nástroje Visual Studio Tools for Azure Service Fabric poskytují podporu upgradu pro publikování do místních nebo vzdálených clusterů. Existují tři scénáře, ve kterých chcete aplikaci upgradovat na novější verzi místo toho, aby se aplikace nahradila při testování a ladění:
@@ -22,7 +20,7 @@ Nástroje Visual Studio Tools for Azure Service Fabric poskytují podporu upgrad
 ## <a name="parameters-needed-to-upgrade"></a>Parametry potřebné k upgradu
 Můžete si vybrat ze dvou typů nasazení: pravidelný nebo upgrade. Při běžném nasazení se vymažou všechny předchozí informace o nasazení a data v clusteru, ale nasazení upgradu ho zachová. Při upgradu aplikace Service Fabric v aplikaci Visual Studio je nutné zadat parametry upgradu aplikace a zásady kontroly stavu. Parametry upgradu aplikace vám pomůžou řídit upgrade, ale zásady kontroly stavu určují, jestli se upgrade úspěšně provedl. Další podrobnosti najdete v tématu [Service Fabric upgrade aplikace: parametry upgradu](service-fabric-application-upgrade-parameters.md) .
 
-Existují tři režimy upgradu: *Monitored*, *UnmonitoredAuto*a *UnmonitoredManual*.
+Existují tři režimy upgradu: *Monitored*, *UnmonitoredAuto* a *UnmonitoredManual*.
 
 * Monitorovaný upgrade automatizuje upgrade a kontrolu stavu aplikací.
 * Upgrade UnmonitoredAuto automatizuje upgrade, ale přeskočí kontrolu stavu aplikace.

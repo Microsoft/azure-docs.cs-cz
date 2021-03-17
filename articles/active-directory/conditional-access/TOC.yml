@@ -10,7 +10,7 @@
       href: require-tou.md
 - name: Kurzy
   items:
-    - name: Vyžadování služby Azure Multi-Factor Authentication
+    - name: Vyžadování vícefaktorového ověřování Azure AD
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: Koncepty
   expanded: false
@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: Relace
           href: concept-conditional-access-session.md
-    - name: Přehledy a generování sestav
-      href: howto-conditional-access-insights-reporting.md
     - name: Režim pouze sestav
       href: concept-conditional-access-report-only.md
     - name: Závislosti služeb
@@ -43,6 +41,8 @@
       href: location-condition.md
     - name: Nástroj What If
       href: what-if-tool.md
+    - name: Nepřetržité vyhodnocování přístupu
+      href: concept-continuous-access-evaluation.md
     - name: Vlastní ovládací prvky
       href: controls.md
     - name: Migrace klasických zásad
@@ -52,8 +52,8 @@
   items:
     - name: Plánování nasazení podmíněného přístupu
       href: plan-conditional-access.md
-    - name: Osvědčené postupy
-      href: best-practices.md
+    - name: Rozhraní API pro podmíněný přístup
+      href: howto-conditional-access-apis.md
     - name: Běžné zásady podmíněného přístupu
       items:
         - name: Blokování starší verze ověřování
@@ -78,6 +78,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
+    - name: Konfigurace režimu Pouze sestavy
+      href: howto-conditional-access-insights-reporting.md
     - name: Vyžadování klientem schválených aplikací
       href: app-based-conditional-access.md
     - name: Vyžadování zásad ochrany aplikací
@@ -88,12 +90,8 @@
       href: untrusted-networks.md
     - name: Vyžadování podmínek použití
       href: terms-of-use.md
-    - name: Konfigurace režimu pouze sestav
-      href: howto-conditional-access-report-only.md
     - name: Kontroly četnosti přihlášení a trvalosti prohlížeče
       href: howto-conditional-access-session-lifetime.md
-    - name: Migrace klasických zásad
-      href: policy-migration-mfa.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s přihlášením
@@ -102,6 +100,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: Nejčastější dotazy
           href: faqs.md
+    - name: Migrace klasických zásad
+      href: policy-migration-mfa.md
 - name: Referenční informace
   items:
     - name: Beta verze rozhraní Graph API
@@ -119,7 +119,7 @@
     - name: Fórum Azure pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizace služeb

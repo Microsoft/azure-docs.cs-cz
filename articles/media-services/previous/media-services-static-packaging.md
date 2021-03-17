@@ -3,7 +3,7 @@ title: Použití Azure Media Package k provádění statických úloh balení | 
 description: V tomto tématu se dozvíte o různých úlohách, které se dokončí pomocí Azure Media Package.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
@@ -12,19 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/15/2019
-ms.author: juliako
-ms.openlocfilehash: b53ddb9cd6f6aae25086f44e4f5a8b189293b11c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 357fe1844fabf6ec241d509651b4f0cbcffa3df3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052626"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009126"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Použití Azure Media Package k provádění statických úloh balení  
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 
 ## <a name="overview"></a>Přehled

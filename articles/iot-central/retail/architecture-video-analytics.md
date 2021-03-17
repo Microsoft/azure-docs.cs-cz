@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 087c5e5716a4c8c640faebd7470905fde85d0136
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038211"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874284"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>Video Analytics – architektura aplikace pro detekci objektů a pohybů
 
 Šablona aplikace **pro detekci video Analytics – objekt a pohyb** umožňuje sestavovat řešení IoT zahrnující funkce živé analýzy videí.
 
-:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Architektura":::
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Diagram objektu video Analytics a součásti detekce pohybu":::
 
 Mezi klíčové komponenty řešení video Analytics patří:
 
@@ -41,4 +41,4 @@ Media Graph umožňuje definovat, kam se mají média zachytit, jak je zpracovat
 
 ## <a name="next-steps"></a>Další kroky
 
-Navržený další krok se naučíte, jak [vytvořit aplikaci video Analytics v Azure IoT Central](tutorial-video-analytics-create-app.md).
+Navržený další krok se naučíte, jak [nasadit aplikaci IoT Central pomocí šablony aplikace pro video Analytics – objekt a detekce pohybu](tutorial-video-analytics-deploy.md).

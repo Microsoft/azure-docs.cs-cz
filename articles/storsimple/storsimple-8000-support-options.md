@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070340"
 ---
 # <a name="storsimple-solution-support"></a>Podpora řešení StorSimple
@@ -85,7 +85,7 @@ Podpora fakturace a problémů souvisejících se správou předplatného je dos
 | B        | Střední dopad na firmu: <ul><br> <li> Firma zákazníka má mírné ztráty nebo snížení úrovně služeb, ale práce může rozumně pokračovat v neomezeném způsobu. | Počáteční odpověď: <sup>1</sup><ul><br> <li> 2 hodiny nebo méně pro Premium <br> <li> 4 hodiny a méně pro Standard                                      | <ul><li> Přidělování vhodných prostředků pro udržení nepřetržité úsilí v pracovní době, pokud se zákazníci nežádají o výslovný souhlas. <br> <li> Přesné kontaktní informace pro vlastníka případu |
 | C        | Minimální dopad na firmu: <ul><br> <li> Podnikání zákazníka je v podstatě funkční s menšími nebo bezpřekážkou pro služby.                                 | Počáteční odpověď: <sup>1</sup><ul> <br> <li> 4 hodiny a méně pro Premium <br> <li> 8 hodin a méně pro standard.                                      | <ul><li>Přesné kontaktní informace pro vlastníka případu                                                                                                                                    |
  
-<sup>1</sup> Microsoft může snížit úroveň závažnosti v případě závažnosti případu, pokud zákazník nemůže poskytnout dostatečné prostředky nebo odpovědi, aby Microsoft mohl pokračovat v řešení problémů.
+<sup>1 </sup> Microsoft může snížit úroveň závažnosti v případě závažnosti případu, pokud zákazník nemůže poskytnout dostatečné prostředky nebo odpovědi, aby Microsoft mohl pokračovat v řešení problémů.
 
 <sup>2</sup> očekávané doby odezvy jsou založené na nepřetržité podpoře v angličtině pro závažnost a a v místní pracovní době pro závažnosti B a C a v místní pracovní době podporují ve zbývajících místních jazycích: japonština, Tchaj-in, tradiční čínština a korejština.
 
@@ -111,7 +111,7 @@ Podpora polí úložiště řady StorSimple 8000 je poskytována na základě to
 
 
 
-*<text>* Pokrytí Premium není k dispozici ve všech umístěních. \@Před nákupem podpory StorSimple Premium kontaktujte Microsoftu na adrese SSSupOps Microsoft.com pro zeměpisné pokrytí.*
+*<text> * Pokrytí Premium není k dispozici ve všech umístěních. \@Před nákupem podpory StorSimple Premium kontaktujte Microsoftu na adrese SSSupOps Microsoft.com pro zeměpisné pokrytí.*
 
 ***Zařízení StorSimple se musí nasadit v oblasti, kde se na zákazníka vztahuje podpora Premier, aby bylo možné využívat bezplatný upgrade na podporu Premium StorSimple.*
 

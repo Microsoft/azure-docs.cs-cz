@@ -2,18 +2,18 @@
 title: Změna velikosti virtuálního počítače s Windows v Azure
 description: Změňte velikost virtuálního počítače, která se používá pro virtuální počítač Azure.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7f41c0fb2bf949dd47491761fde8025a2d35155
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832242"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560646"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
 
@@ -21,11 +21,11 @@ V tomto článku se dozvíte, jak přesunout virtuální počítač na jinou [Ve
 
 Po vytvoření virtuálního počítače můžete virtuální počítač škálovat nahoru nebo dolů změnou velikosti virtuálního počítače. V některých případech je nutné nejprve zrušit přidělení virtuálního počítače. K tomu může dojít v případě, že nová velikost není k dispozici v hardwarovém clusteru, který je aktuálně hostitelem virtuálního počítače.
 
-Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4**s**_v3 namísto Standard_E4_v3.
+Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4 **s** _v3 namísto Standard_E4_v3.
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Otevřete stránku pro virtuální počítač.
 1. V nabídce vlevo vyberte **Velikost**.
 1. Ze seznamu dostupných velikostí vyberte novou velikost a pak vyberte **změnit velikost**.

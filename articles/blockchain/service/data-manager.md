@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: chroyal
 ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77209439"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Co je Blockchain Data Manager pro Azure Blockchain Service?
@@ -21,7 +21,7 @@ Blockchain Data Manager provádí tři hlavní funkce: zachytit, transformovat a
 
 ![Funkce Data Manager blockchain](./media/data-manager/functions.png)
 
-## <a name="capture"></a>Zachycování
+## <a name="capture"></a>Zachytávání
 
 Každá instance blockchain Data Manager se připojuje k jednomu uzlu členské transakce služby Azure blockchain. Připojení, které zajišťuje správné řízení přístupu k zákaznickým datům, může vytvořit pouze uživatelé s přístupem k uzlu transakce. Blockchain Data Manager instance spolehlivě zachycuje všechna nezpracovaná a nezpracovaná data transakcí z uzlu transakce a je možné ji škálovat na podporu podnikových úloh.
 

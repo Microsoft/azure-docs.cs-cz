@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975342"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842848"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Koncepce opětovného zřizování zařízení IoT Hub
 
@@ -32,7 +32,7 @@ Tato potřeba řeší opětovné zřizování podpory v rámci služby Device Pr
 
 Data o stavu zařízení se skládají z možností [zařízení a zařízení, která jsou](../iot-hub/iot-hub-devguide-device-twins.md) v pořádku. Tato data jsou uložená v instanci služby Device Provisioning a službě IoT Hub, ke které je zařízení přiřazené.
 
-![Zřizování se službou Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Diagram, který ukazuje, jak zřizování funguje se službou Device Provisioning.](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 Při počátečním zřizování zařízení s instancí služby Device Provisioning se provádí tyto kroky:
 
@@ -52,13 +52,13 @@ V závislosti na scénáři zařízení obvykle odesílá požadavek na instanci
 
 * **Opětovné zřízení a migrace dat**: Tato zásada je výchozím nastavením pro nové položky registrace. Tato zásada provede akci, když zařízení přidružená k položce registrace odesílají novou žádost (1). V závislosti na konfiguraci položky registrace se může zařízení přiřadit k jinému centru IoT. Pokud zařízení mění centra IoT, odeberou se registrace zařízení pomocí počátečního centra IoT Hub. Aktualizované informace o stavu zařízení z tohoto počátečního centra IoT budou migrovány do nového centra IoT (2). Během migrace bude stav zařízení hlášeno jako **přiřazení**.
 
-    ![Zřizování se službou Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Diagram znázorňující, že zásada provede akci, když zařízení přidružená k položce registrace odesílají novou žádost.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
 * **Opětovné zřízení a resetování na počáteční konfiguraci**: Tato zásada provede akci, když zařízení přidružená k položce registrace odesílají novou žádost o zřízení (1). V závislosti na konfiguraci položky registrace se může zařízení přiřadit k jinému centru IoT. Pokud zařízení mění centra IoT, odeberou se registrace zařízení pomocí počátečního centra IoT Hub. Počáteční konfigurační data, která instance zřizovací služby přijatá při zřízení zařízení, se poskytují nové službě IoT Hub (2). Během migrace bude stav zařízení hlášeno jako **přiřazení**.
 
     Tato zásada se často používá k obnovení továrního nastavení bez změny centra IoT.
 
-    ![Zřizování se službou Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Diagram, který ukazuje, jak zásada provede akci, když zařízení přidružená k položce registrace odesílají novou žádost o zřízení.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **Nikdy nezřizování**: zařízení se nikdy znovu nepřiřazuje k jinému centru. Tato zásada je k dispozici pro správu zpětné kompatibility.
 

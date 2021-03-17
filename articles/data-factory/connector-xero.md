@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Xero pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Xero do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529989"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366904"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -35,11 +30,8 @@ Data z Xero můžete kopírovat do libovolného podporovaného úložiště dat 
 
 Konkrétně tento konektor Xero podporuje:
 
-- Xero [privátní aplikace](https://developer.xero.com/documentation/getting-started/getting-started-guide) , ale ne veřejnou aplikaci.
+- Ověřování OAuth 2,0 a OAuth 1,0. Pro OAuth 1,0 konektor podporuje [soukromou aplikaci](https://developer.xero.com/documentation/getting-started/getting-started-guide) Xero, ale ne veřejnou aplikaci.
 - Všechny tabulky Xero (koncové body rozhraní API) s výjimkou "Reports".
-- Ověřování OAuth 1,0 a OAuth 2,0.
-
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -58,10 +50,10 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 | ***V části `connectionProperties` :*** | | |
 | Hostitel | Koncový bod serveru Xero ( `api.xero.com` ).  | Yes |
 | authenticationType | Povolené hodnoty jsou `OAuth_2.0` a `OAuth_1.0` . | Yes |
-| consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: pro **vygenerování PrivateKey. pem s numbits 1024 512** se nepodporuje `openssl genrsa -out privatekey.pem 512` . Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| consumerKey | Pro OAuth 2,0 zadejte **ID klienta** pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte uživatelský klíč přidružený k aplikaci Xero.<br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| privateKey | Pro OAuth 2,0 zadejte **tajný klíč klienta** pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte privátní klíč ze souboru. pem, který jste vygenerovali pro privátní aplikaci Xero, v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: pro **vygenerování PrivateKey. pem s numbits 1024 512** se nepodporuje `openssl genrsa -out privatekey.pem 512` . Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | tenantId | ID tenanta přidružené k vaší aplikaci Xero Platí pro ověřování OAuth 2,0.<br>Zjistěte, jak získat ID tenanta z [tématu zjištění klientů, kterým máte oprávnění k přístupu](https://developer.xero.com/documentation/oauth2/auth-flow). | Ano pro ověřování OAuth 2,0 |
-| Refreshtoken kontextového tokenu | Obnovovací token OAuth 2,0 přidružený k aplikaci Xero, který se používá k aktualizaci přístupového tokenu, když vyprší platnost přístupového tokenu. Platí pro ověřování OAuth 2,0. Přečtěte si, jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow).<br>Platnost tokenu pro aktualizaci nikdy nevypršela. Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes).<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |
+| Refreshtoken kontextového tokenu | Platí pro ověřování OAuth 2,0.<br/>Obnovovací token OAuth 2,0 je přidružen k aplikaci Xero a používá se k aktualizaci přístupového tokenu. platnost přístupového tokenu vyprší po 30 minutách. Přečtěte si, jak funguje autorizační tok Xero a jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow). Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes). <br/>Zjištění **omezení**: Poznámka Xero obnoví obnovovací token po jeho použití pro aktualizaci přístupového tokenu. Pro provozní úlohy před spuštěním každé aktivity kopírování musíte nastavit platný obnovovací token pro použití ADF.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 | useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | No |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
@@ -79,11 +71,11 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
                 "authenticationType":"OAuth_2.0", 
                 "consumerKey": {
                     "type": "SecureString",
-                    "value": "<consumer key>"
+                    "value": "<client ID>"
                 },
                 "privateKey": {
                     "type": "SecureString",
-                    "value": "<private key>"
+                    "value": "<client secret>"
                 },
                 "tenantId": "<tenant ID>", 
                 "refreshToken": {
@@ -174,9 +166,9 @@ Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Contacts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Contacts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -236,31 +228,31 @@ Následující tabulky obsahují stejné informace v rámci minimálního a úpl
 - Overpayments_Allocations 
 - Zálohy 
 - Prepayments_Allocations 
-- Účtenk 
+- Účtenky 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
 Dotazování na následující tabulky se dá zadat jenom pomocí kompletního schématu:
 
-- Dokončeno. Bank_Transaction_Line_Items 
-- Dokončeno. Bank_Transaction_Line_Item_Tracking 
-- Dokončeno. Contact_Group_Contacts 
-- Dokončeno. Contacts_Contact_ osoby 
-- Dokončeno. Credit_Note_Line_Items 
-- Dokončeno. Credit_Notes_Line_Items_Tracking 
-- Dokončené platby. Expense_Claim_ 
-- Dokončeno. Expense_Claim_Receipts 
-- Dokončeno. Invoice_Line_Items 
-- Dokončeno. Invoices_Line_Items_Tracking
-- Dokončeno. Manual_Journal_Lines 
-- Dokončeno. Manual_Journal_Line_Tracking 
-- Dokončeno. Overpayment_Line_Items 
-- Dokončeno. Overpayment_Line_Items_Tracking 
-- Dokončeno. Prepayment_Line_Items 
-- Dokončeno. Prepayment_Line_Item_Tracking 
-- Dokončeno. Receipt_Line_Items 
-- Dokončeno. Receipt_Line_Item_Tracking 
-- Dokončeno. Tracking_Category_Options
+- Complete.Bank_Transaction_Line_Items 
+- Complete.Bank_Transaction_Line_Item_Tracking 
+- Complete.Contact_Group_Contacts 
+- Complete.Contacts_Contact_ osoby 
+- Complete.Credit_Note_Line_Items 
+- Complete.Credit_Notes_Line_Items_Tracking 
+- Complete.Expense_Claim_ platby 
+- Complete.Expense_Claim_Receipts 
+- Complete.Invoice_Line_Items 
+- Complete.Invoices_Line_Items_Tracking
+- Complete.Manual_Journal_Lines 
+- Complete.Manual_Journal_Line_Tracking 
+- Complete.Overpayment_Line_Items 
+- Complete.Overpayment_Line_Items_Tracking 
+- Complete.Prepayment_Line_Items 
+- Complete.Prepayment_Line_Item_Tracking 
+- Complete.Receipt_Line_Items 
+- Complete.Receipt_Line_Item_Tracking 
+- Complete.Tracking_Category_Options
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

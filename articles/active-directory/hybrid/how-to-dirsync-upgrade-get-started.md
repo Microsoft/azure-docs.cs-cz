@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e31f5e6afb3b586cd8eb20db8d1ca34e95de86cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356793"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996521"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade z nástroje DirSync
 Azure AD Connect je nástupcem nástroje DirSync. V tomto tématu najdete popis způsobů upgradu z nástroje DirSync. Pokud upgradujete z jiné verze služby Azure AD Connect nebo ze služby Azure AD Sync, tyto kroky nefungují.
@@ -100,10 +100,10 @@ Další kroky jsou požadovány, pokud:
    * Pokud používáte systém SQL Server Express a máte méně než 50 tisíc objektů, zobrazí se následující obrazovka:  
      ![Analýza dokončena, připraveno k upgradu z nástroje DirSync](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * Pokud pro nástroj DirSync používáte plnou instalaci SQL Serveru, zobrazí se místo toho tato stránka:  
-     ![Analýza dokončena, připraveno k upgradu z nástroje DirSync](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
+     ![snímek obrazovky zobrazující existující server SQL Database, který se používá](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
      Zobrazí se informace, že DirSync používá stávající databázový server systému SQL Server. V případě potřeby proveďte příslušné změny. Kliknutím na tlačítko **Další** pokračujte v instalaci.
    * Pokud máte více než 50 000 objektů, zobrazí se místo toho tato obrazovka:  
-     ![Analýza dokončena, připraveno k upgradu z nástroje DirSync](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
+     ![Snímek obrazovky zobrazující obrazovku, která se zobrazí, když máte více než 50 000 objektů, které se mají upgradovat.](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      Pokud chcete pokračovat v místním upgradu, klikněte na zaškrtávací políčko vedle této zprávy: **Pokračovat v upgradu nástroje DirSync na tomto počítači.**
      Pokud chcete místo toho provést [paralelní nasazení](#parallel-deployment), exportujte nastavení konfigurace nástroje DirSync a přesuňte konfiguraci na nový server.
 5. Zadejte heslo pro účet, který aktuálně používáte k připojení ke službě Azure AD. Musí se jednat o účet, který DirSync aktuálně používá.  
@@ -140,7 +140,7 @@ Pokud máte méně než 50 tisíc objektů, ale přesto chcete provést paraleln
 4. Z umístění instalace služby Azure AD Connect (výchozí: C:\Program Files\Microsoft Azure Active Directory Connect) spusťte následující příkaz: `AzureADConnect.exe /ForceExport`.
 5. Klikněte na tlačítko **Exportovat nastavení**. Pokud Azure AD Connect instalujete na samostatný server, budou tato nastavení migrována z vašeho stávajícího nástroje DirSync do nové instalace služby Azure AD Connect.
 
-![Analýza dokončena](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
+![Snímek obrazovky, který zobrazuje možnost nastavení exportu pro migraci nastavení do nové instalace Azure AD Connect.](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
 Po dokončení exportu nastavení můžete na serveru nástroje DirSync ukončit průvodce služby Azure AD Connect. Pokračujte dalším krokem a nainstalujte Azure AD Connect na samostatný server.
 
@@ -152,17 +152,17 @@ Při instalaci služby Azure AD Connect na nový server bude instalační progra
 3. Otevřete příkazový řádek.
 4. Z umístění instalace služby Azure AD Connect (výchozí: C:\Program Files\Microsoft Azure Active Directory Connect) spusťte následující příkaz: `AzureADConnect.exe /migrate`.
    Spustí se průvodce instalací služby Azure AD Connect a nabídne vám následující obrazovku:  
-   ![Zadejte svoje přihlašovací údaje služby Azure AD](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
+   ![Snímek obrazovky, který ukazuje, kam se má při upgradu importovat soubor nastavení.](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
 5. Vyberte soubor s nastavením exportovaný z instalace nástroje DirSync.
 6. Nakonfigurujte rozšířené možnosti, například:
    * Vlastní umístění instalace pro Azure AD Connect.
    * Existující instance systému SQL Server (výchozí: Azure AD Connect nainstaluje systém SQL Server 2012 Express). Nepoužívejte stejnou instanci databáze jako server nástroje DirSync.
    * Účet služby, který používáte k připojení k systému SQL Server (pokud je vaše databáze v systému SQL Server vzdálená, pak tento účet musí být účtem doménové služby).
      Tyto možnosti se zobrazí na této obrazovce:  
-     ![Zadejte svoje přihlašovací údaje služby Azure AD](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
-7. Klikněte na **Další**.
+     ![Snímek obrazovky, který zobrazuje možnosti konfigurace před upgradem z DirSync.](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
+7. Klikněte na **Next** (Další).
 8. Na stránce **Připraveno ke konfiguraci** nechejte zaškrtnuté políčko **Zahájit proces synchronizace ihned po dokončení konfigurace**. Server je teď v [pracovním režimu](how-to-connect-sync-staging-server.md), takže změny se nebudou exportovat do služby Azure AD.
-9. Klikněte na **nainstalovat**.
+9. Klikněte na **Install** (Nainstalovat).
 10. Po dokončení instalace se odhlaste a znovu přihlaste do Windows. Teprve pak použijte Synchronization Service Manager, Synchronization Rule Editor, případně proveďte další změny v konfiguraci.
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Měli byste vidět následující:
 * Vyberte **Konfigurovat pracovní režim**.
 * Zrušte zaškrtnutí políčka **Pracovní režim povolen**, a vypněte tak pracovní režim.
 
-![Zadejte svoje přihlašovací údaje služby Azure AD.](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
+![Snímek obrazovky, který ukazuje možnost pro povolení pracovního režimu.](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
 
 * Klikněte na tlačítko **Další**.
 * Na potvrzovací stránce klikněte na tlačítko **Instalovat**.

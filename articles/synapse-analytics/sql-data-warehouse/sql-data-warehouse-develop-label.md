@@ -1,32 +1,30 @@
 ---
 title: Použití popisků k instrumentaci dotazů
-description: Tipy pro použití popisků k instrumentaci dotazů v synapse fondu SQL pro vývoj řešení
+description: Tipy pro použití popisků k instrumentaci dotazů na vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7958caf71658dcdcbf31bac84697931e9049452f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213427"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462743"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Použití popisků k instrumentaci dotazů v synapse fondu SQL
+# <a name="using-labels-to-instrument-queries-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Použití popisků k instrumentaci dotazů na vyhrazené fondy SQL ve službě Azure synapse Analytics
 
-V tomto článku najdete tipy pro vývoj řešení pomocí popisků pro instrumentaci dotazů ve fondu SQL.
-
-Tipy pro použití popisků k instrumentaci dotazů v Azure SQL Data Warehouse pro vývoj řešení.
+V tomto článku najdete tipy pro vývoj řešení pomocí popisků pro instrumentaci dotazů ve vyhrazených fondech SQL.
 
 ## <a name="what-are-labels"></a>Co jsou popisky?
 
-Fond SQL podporuje koncept nazvaný popisky dotazů. Než se pustíte do jakékoli hloubky, Podívejme se na příklad:
+Vyhrazený fond SQL podporuje koncept nazvaný popisky dotazů. Než se pustíte do jakékoli hloubky, Podívejme se na příklad:
 
 ```sql
 SELECT *

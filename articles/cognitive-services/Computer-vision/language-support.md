@@ -10,65 +10,113 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 43804907d68ddd58e55c7ce453e0731d0cb4b9b5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760630"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560374"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
 Některé funkce Počítačové zpracování obrazu podporují více jazyků. všechny funkce, které tady nejsou uvedené, podporují jenom angličtinu.
 
-## <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
+## <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
 Rozhraní API pro optické Počítačové zpracování obrazu podporují několik jazyků. Nevyžadují, abyste zadali kód jazyka. Další informace naleznete v tématu [optické rozpoznávání znaků (OCR)](concept-recognizing-text.md) .
 
-|Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Číst v 3.0 | Verze Public Preview pro čtení v 3.1 |
+|Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Čtení 3.0/3.1 | Přečteno v 3.2 verze Preview |
 |:-----|:----:|:-----:|:---:|:---:|
+|Afrikánština|`af`| | |✔ |
+|Albánština |`sq`| | |✔ |
 |Arabština | `ar`|✔ | | |
+|Asturština |`ast`| | |✔ |
+|Baskičtina  |`eu`| | |✔ |
+|Bislama   |`bi`| | |✔ |
+|Bretonština    |`br`| | |✔ |
+|Katalánština    |`ca`| | |✔ |
+|Cebuano    |`ceb`| | |✔ |
+|Chamorro  |`ch`| | |✔ |
 |Čínština (zjednodušená) | `zh-Hans`|✔ | |✔ |
-|Čínština (tradiční) | `zh-Hant`|✔ | | |
-|Čeština | `cs` |✔ | | |
-|Dánština | `da` |✔ | | |
+|Čínština (tradiční) | `zh-Hant`|✔ | |✔ |
+|Kornština     |`kw`| | |✔ |
+|Korsičtina      |`co`| | |✔ |
+|Crimeanská tatarština (latinka)  |`crh`| | |✔ |
+|Čeština | `cs` |✔ | |✔ |
+|Dánština | `da` |✔ | |✔ |
 |Nizozemština | `nl` |✔ |✔ |✔ |
 |Angličtina | `en` |✔ |✔ |✔ |
-|Finština | `fi` |✔ | | |
+|Estonština  |`crh`| | |✔ |
+|Fijian |`fj`| | |✔ |
+|Filipino  |`fil`| | |✔ |
+|Finština | `fi` |✔ | |✔ |
 |Francouzština | `fr` |✔ |✔ |✔ |
+|Furlanština  | `fur` | | |✔ |
+|Galicijština   | `gl` | | |✔ |
 |Němčina | `de` |✔ |✔ |✔ |
+|Gilbertese    | `gil` | | |✔ |
 |Řečtina | `el` |✔ | | |
-|Maďarština | `hu` |✔ | | |
+|Grónština   | `kl` | | |✔ |
+|Haitská kreolština  | `ht` | | |✔ |
+|Hani  | `hni` | | |✔ |
+|Hmong Macek (latinka) | `mww` | | |✔ |
+|Maďarština | `hu` |✔ | | ✔ |
+|Indonéština   | `id` | | |✔ |
+|Interlingua  | `ia` | | |✔ |
+|Inuktitutština (latinka)  | `iu` | | |✔ |
+|Irština    | `ga` | | |✔ |
 |Italština | `it` |✔ |✔ |✔ |
-|Japonština | `ja` |✔ | | |
-|Korejština | `ko` |✔ | | |
+|Japonština | `ja` |✔ | |✔ |
+|Písmo | `jv` | | |✔ |
+|Kičejština  | `quc` | | |✔ |
+|Kabuverdianu | `kea` | | |✔ |
+|Kachin (latinka) | `kac` | | |✔ |
+|Kara-Kalpak | `kaa` | | |✔ |
+|Kashubian | `csb` | | |✔ |
+|Khasi  | `kha` | | |✔ |
+|Korejština | `ko` |✔ | |✔ |
+|Kurdština (latinka) | `kur` | | |✔ |
+|Lucemburština  | `lb` | | |✔ |
+|Malajština (latinka)  | `ms` | | |✔ |
+|Manština  | `gv` | | |✔ |
+|Neapolitan   | `nap` | | |✔ |
 |Norština | `nb` |✔ | | |
-|Polština | `pl` |✔ | | |
+|Norština | `no` | | |✔ |
+|Okcitánština | `oc` | | |✔ |
+|Polština | `pl` |✔ | |✔ |
 |Portugalština | `pt` |✔ |✔ |✔ |
 |Rumunština | `ro` |✔ | | |
+|Románština  | `rm` | | |✔ |
 |Ruština | `ru` |✔ | | |
+|Scots  | `sco` | | |✔ |
+|Skotská gaelština  | `gd` | | |✔ |
 |Srbština (cyrilice) | `sr-Cyrl` |✔ | | |
 |Srbština (latinka) | `sr-Latn` |✔ | | |
 |Slovenština | `sk` |✔ | | |
+|Slovinština  | `slv` | | |✔ |
 |Španělština | `es` |✔ |✔ |✔ |
-|Švédština | `sw` |✔ | | |
-|Turečtina | `tr` |✔ | | |
+|Svahilština (latinka)  | `sw` | | |✔ |
+|Švédština | `sv` |✔ | |✔ |
+|Tatarština (latinka)  | `tat` | | |✔ |
+|Tetum    | `tet` | | |✔ |
+|Turečtina | `tr` |✔ | |✔ |
+|Velká Srbština  | `hsb` | | |✔ |
+|Uzbečtina (latinka)     | `uz` | | |✔ |
+|Volapük   | `vo` | | |✔ |
+|Walser    | `wae` | | |✔ |
+|Západní fríština | `fy` | | |✔ |
+|Yucatec Maya | `yua` | | |✔ |
+|Čuangština | `za` | | |✔ |
+|Zulština  | `zu` | | |✔ |
 
 ## <a name="image-analysis"></a>Analýza obrázků
 
-Některé akce rozhraní API [analyzovat-image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mohou vracet výsledky v jiných jazycích, které jsou zadány pomocí `language` parametru dotazu. Jiné akce vrátí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán, a jiné vyvolají výjimku pro nepodporované jazyky. Akce jsou zadány s `visualFeatures` `details` parametry dotazu a. Další informace najdete v [přehledu](home.md) o všech akcích, které můžete provádět s analýzou obrázků.
+Některé akce rozhraní API [analyzovat-image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) mohou vracet výsledky v jiných jazycích, které jsou zadány pomocí `language` parametru dotazu. Jiné akce vrátí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán, a jiné vyvolají výjimku pro nepodporované jazyky. Akce jsou zadány s `visualFeatures` `details` parametry dotazu a. Další informace najdete v [přehledu](overview.md) o všech akcích, které můžete provádět s analýzou obrázků.
 
-|Jazyk | Kód jazyka | Kategorie | Značky | Popis | Pro dospělé | Značky | Color | Tváře | ImageType | Objekty | Celebrity | Orientační body tváře |
+|Jazyk | Kód jazyka | Kategorie | Značky | Description | Pro dospělé | Značky | Barva | Tváře | ImageType | Objekty | Celebrity | Orientační body tváře |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japonština | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portugalština | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Španělština | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-
-## <a name="next-steps"></a>Další kroky
-
-Začněte využívat Počítačové zpracování obrazu funkce, které jsou uvedené v této příručce.
-
-* [Analýza místní Image (REST)](./quickstarts/csharp-analyze.md)
-* [Extrahovat vytištěný text (REST)](./quickstarts/csharp-print-text.md)

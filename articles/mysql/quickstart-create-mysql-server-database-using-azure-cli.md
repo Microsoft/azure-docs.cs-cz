@@ -1,46 +1,38 @@
 ---
 title: 'Rychlý Start: vytvoření serveru – Azure CLI – Azure Database for MySQL'
 description: Tento rychlý start popisuje, jak použít rozhraní příkazového řádku Azure k vytvoření serveru Azure Database for MySQL ve skupině prostředků Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a7d69ae15e72133e08b3e66de607aa06fefdbd32
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4f774351fc0eaaf32069687a1943c72b74b6308a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495382"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494320"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 
 > [!TIP]
 > Zvažte použití jednoduššího příkazu [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI (aktuálně ve verzi Preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
 
-V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Azure Cloud Shell](https://shell.azure.com) vytvořit Azure Database for MySQL server během pěti minut. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) v [Azure Cloud Shell](https://shell.azure.com) vytvořit Azure Database for MySQL server během pěti minut. 
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Požadavky
-Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+ - Tento rychlý Start vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure. 
+ - Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
-```azurecli-interactive
-az login
-```
-
-Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list).
-
-```azurecli
-az account set --subscription <subscription id>
-```
+   ```azurecli
+   az account set --subscription <subscription id>
+   ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [AZ Group Create](/cli/azure/group) a pak vytvořte svůj server MySQL v této skupině prostředků. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
@@ -57,12 +49,12 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver --lo
 
 Zde jsou uvedeny podrobnosti o argumentech výše: 
 
-**Nastavení** | **Ukázková hodnota** | **Description**
+**Nastavení** | **Ukázková hodnota** | **Popis**
 ---|---|---
 name | mydemoserver | Zadejte jedinečný název serveru Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
 location | westus | Lokace Azure pro server.
-admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být ** azure_superuser **, ** admin **, ** administrátor **, ** root **, ** host ** nebo ** public**.
+admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser**, **admin**, **administrátor**, **root**, **host** nebo **public**.
 admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 sku-name|GP_Gen5_2|Zadejte název cenové úrovně a konfiguraci výpočtů. Postupuje podle konvence {cenové úrovně}_{COMPUTE_} {virtuální jádra} ve zkráceném znění. Další informace najdete v [cenové úrovni](./concepts-pricing-tiers.md) .
 
@@ -143,6 +135,4 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/app-service-web-tutorial-php-mysql.md) 
-> [Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/containers/tutorial-php-mysql-app.md) 
-> [Sestavení jarní aplikace založené na jazyce Java pomocí MySQL](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/tutorial-php-mysql-app.md)

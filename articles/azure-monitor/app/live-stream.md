@@ -4,12 +4,12 @@ description: Monitorujte svou webovou aplikaci v reálném čase s vlastními me
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142209"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679462"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
 
@@ -36,6 +36,7 @@ Pro aplikace ASP.NET, ASP.NET Core, Azure Functions, Java a Node.js se aktuáln�
    * [ASP.NET Core](./asp-net-core.md)– aktivní metrika je ve výchozím nastavení povolená.
    * [.NET/.NET Core Console/pracovní proces](./worker-service.md)– živé metriky jsou ve výchozím nastavení povolené.
    * [Aplikace .NET – povolit používání kódu](#enable-livemetrics-using-code-for-any-net-application)
+    * Ve výchozím nastavení jsou metriky [Java](./java-in-process-agent.md) aktivní.
    * [Node.js](./nodejs.md#live-metrics)
 
 2. V [Azure Portal](https://portal.azure.com)otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete Live Stream.
@@ -148,7 +149,7 @@ Stejně jako u metrik můžete zadat jakákoli libovolná kritéria pro Applicat
 
 Kliknutím zobrazíte podrobnosti položky v živém kanálu. Informační kanál můžete pozastavit buď kliknutím na tlačítko **pozastavit** nebo pouhým posouváním, nebo kliknutím na položku. Živý kanál bude pokračovat, až se posunete zpět na začátek, nebo kliknutím na čítač shromážděných položek v době, kdy byl pozastaven.
 
-![Ukázka neaktivních selhání](./media/live-stream/sample-telemetry.png)
+![Snímek obrazovky znázorňující ukázkové okno telemetrie s vybranou výjimkou a podrobnosti o výjimce, které se zobrazí v dolní části okna.](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>Filtrovat podle instance serveru
 
@@ -249,7 +250,7 @@ Pokud ale znáte všechny připojené servery a důvěřujete jim, můžete si v
 
 Základní metriky zahrnují četnost požadavků, závislostí a výjimek. Metriky výkonu (čítače výkonu) obsahují paměť a procesor. Ukázková telemetrie zobrazuje datový proud s podrobnými informacemi o neúspěšných požadavcích a závislostech, výjimkách, událostech a trasováních.
 
- \*Podpora PerfCounters se mírně liší napříč verzemi .NET Core, které necílí na .NET Framework:
+ \* Podpora PerfCounters se mírně liší napříč verzemi .NET Core, které necílí na .NET Framework:
 
 - Metriky PerfCounters se podporují při použití v Azure App Service pro Windows. (AspNetCore SDK verze 2.4.1 nebo vyšší)
 - PerfCounters se podporují, když je aplikace spuštěná na LIBOVOLNÝch počítačích s Windows (virtuální počítač nebo cloudová služba nebo na Prem atd.). (AspNetCore SDK verze 2.7.1 nebo vyšší), ale pro aplikace cílené na .NET Core 2,0 nebo vyšší.

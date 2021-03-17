@@ -3,8 +3,7 @@ title: Rychlý Start pro přidání příznaků funkcí do aplikací .NET Framew
 description: Rychlý Start pro přidání příznaků funkcí do .NET Framework aplikací a jejich správu v konfiguraci aplikací Azure
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -13,32 +12,32 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 10/21/2019
-ms.author: lcozzens
-ms.openlocfilehash: 998527a8557db0b0cf271dc8b05d5771660a175c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 10/19/2020
+ms.author: alkemper
+ms.openlocfilehash: 513c826e11ff9dfe6ea94349c67620da9d1bba48
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209437"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932043"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
 
 V tomto rychlém startu zařadíte do aplikace .NET Framework aplikaci Azure App Configuration a vytvoříte ucelenou implementaci správy funkcí. Službu konfigurace aplikací můžete použít k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů. 
 
-Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET.
+Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Integrují s konfigurací aplikace prostřednictvím poskytovatele konfigurace .NET.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
+- [ .NET Framework 4.8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
+7. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
@@ -49,9 +48,9 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 1. Spusťte Visual Studio a vyberte **soubor**  >  **Nový**  >  **projekt**.
 
-1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Další**.
+1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Next** (Další).
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na možnost **Vytvořit**.
+1. V **konfiguraci nového projektu** zadejte název projektu. V části **rozhraní** vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na **Vytvořit**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -70,6 +69,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     using Microsoft.FeatureManagement;
+    using System.Threading.Tasks;
     ```
 
 1. Aktualizujte `Main` metodu pro připojení ke konfiguraci aplikace a určete `UseFeatureFlags` možnost, aby se načetly příznaky funkcí. Pokud `Beta` je příznak funkce povolený, zobrazí se zpráva.
@@ -99,6 +99,8 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
             }
 
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Press any key to continue ...");
+            Console.Read();
         }
     ```
 

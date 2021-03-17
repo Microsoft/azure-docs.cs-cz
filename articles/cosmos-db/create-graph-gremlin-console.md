@@ -1,20 +1,21 @@
 ---
 title: 'Dotazování pomocí Azure Cosmos DB Gremlin API pomocí konzoly TinkerPop Gremlin Console: kurz'
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Gremlin API služby Azure Cosmos DB.
-author: luisbosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: chrande
+ms.openlocfilehash: 20cb4cea52317022aea8a5b9e4b8280f8b88ff85
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543771"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361507"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý start: Vytváření, zadávání dotazů a procházení grafové databáze Azure Cosmos DB v konzole Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -27,13 +28,13 @@ ms.locfileid: "87543771"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
 
-V tomto rychlém startu se dozvíte, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal a pak použít [konzolu Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z [Apache TinkerPop](https://tinkerpop.apache.org) pro práci s daty rozhraní API Gremlin. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
+V tomto rychlém startu se dozvíte, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal a pak použít [konzolu Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z  [Apache TinkerPop](https://tinkerpop.apache.org) pro práci s daty rozhraní API Gremlin. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
 
 :::image type="content" source="./media/create-graph-gremlin-console/gremlin-console.png" alt-text="Služba Azure Cosmos DB z konzoly Apache Gremlin":::
 
 Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start, musíte mít předplatné Azure.
 
@@ -52,11 +53,11 @@ Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/dow
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Připojení ke službě App Service/Graph
 
 1. Než začnete používat konzolu Gremlin, vytvořte nebo upravte v adresáři `apache-tinkerpop-gremlin-console-3.2.5/conf` konfigurační soubor remote-secure.yaml.
-2. Podle následující tabulky vyplňte konfigurace *Hostitel*, *Port*, *Uživatelské jméno*, *Heslo*, *Fond připojení* a *Serializátor*:
+2. Podle následující tabulky vyplňte konfigurace *Hostitel* , *Port* , *Uživatelské jméno* , *Heslo* , *Fond připojení* a  *Serializátor* :
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    hostitelé|[*název účtu*. **Gremlin**. Cosmos.Azure.com]|Viz následující snímek obrazovky. Jedná se o hodnotu **GREMLIN URI** na stránce Přehled Azure Portal v hranatých závorkách a na konci: 443/odebrané. Poznámka: Nezapomeňte použít hodnotu Gremlin a **ne** identifikátor URI, který končí na [*account-Name*. Documents.Azure.com], což by pravděpodobně způsobilo, že "hostitel při pokusu o spuštění dotazů Gremlin na dotazech neodpověděl včas". 
+    hostitelé|[ *název účtu*. **Gremlin**. Cosmos.Azure.com]|Viz následující snímek obrazovky. Jedná se o hodnotu **GREMLIN URI** na stránce Přehled Azure Portal v hranatých závorkách a na konci: 443/odebrané. Poznámka: Nezapomeňte použít hodnotu Gremlin a **ne** identifikátor URI, který končí na [ *account-Name*. Documents.Azure.com], což by pravděpodobně způsobilo, že "hostitel při pokusu o spuštění dotazů Gremlin na dotazech neodpověděl včas". 
     port|443|Nastavte na hodnotu 443.
     username|*Vaše uživatelské jméno*|Prostředek ve formátu `/dbs/<db>/colls/<coll>`, kde `<db>` je název vaší databáze a `<coll>` je název vaší kolekce.
     heslo|*Váš primární klíč*| Viz druhý snímek obrazovky níže. Toto je váš primární klíč, který můžete získat ze stránky Klíče na webu Azure Portal v poli Primární klíč. Pomocí tlačítka pro kopírování na levé straně pole hodnotu zkopírujte.
@@ -108,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Vytváření vrcholů a okrajů
 
-Začněme přidáním pěti osob pro nastavení vrcholů: *Tomáš*, *Marie*, *Robin*, *Petr* a *Jan*.
+Začněme přidáním pěti osob pro nastavení vrcholů: *Tomáš* , *Marie* , *Robin* , *Petr* a  *Jan*.
 
 Vstup (Tomáš):
 
@@ -214,7 +215,7 @@ Výstup:
 
 ## <a name="update-a-vertex"></a>Aktualizace vrcholu
 
-Aktualizujme vrchol *Tomáš* s novým věkovým údajem *45* let.
+Aktualizujme vrchol *Tomáš* s novým věkovým údajem *45*  let.
 
 Vstup:
 ```java
@@ -309,7 +310,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Gratulujeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
+Blahopřejeme vám. Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

@@ -1,21 +1,25 @@
 ---
-title: Ukázky Azure PowerShellu pro službu Azure Cosmos DB
-description: Získání ukázek Azure PowerShell k provádění běžných úloh v Azure Cosmos DB
+title: Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Core (SQL)
+description: Získání ukázek Azure PowerShell pro provádění běžných úloh v rozhraní API pro jádro (SQL) Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/30/2020
+ms.date: 01/20/2021
 ms.author: mjbrown
-ms.openlocfilehash: 678e9490fe52a329365174e1a2283a475f3312e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ab9904127d085113ba09bf6fcd3616842dade14d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506656"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503296"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Ukázky Azure PowerShellu pro službu Azure Cosmos DB
+# <a name="azure-powershell-samples-for-azure-cosmos-db-core-sql-api"></a>Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Core (SQL)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell skripty pro Azure Cosmos DB. Pomocí odkazů na pravé straně přejděte na ukázky specifické pro rozhraní API. Běžné ukázky jsou stejné napříč všemi rozhraními API. Referenční stránky pro všechny rutiny Azure Cosmos DB PowerShellu jsou k dispozici v [Referenční příručce Azure PowerShell](/powershell/module/az.cosmosdb). Pravidelně prosím zkontrolujte aktualizace `Az.CosmosDB` . Tyto ukázky PowerShellu můžete také rozvětvit pro Cosmos DB z našeho úložiště GitHub [Cosmos DB ukázky PowerShellu na GitHubu](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
+Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell skripty pro Azure Cosmos DB. Pomocí odkazů na pravé straně přejděte na ukázky specifické pro rozhraní API. Běžné ukázky jsou stejné napříč všemi rozhraními API. Referenční stránky pro všechny rutiny Azure Cosmos DB PowerShellu jsou k dispozici v [Referenční příručce Azure PowerShell](/powershell/module/az.cosmosdb). `Az.CosmosDB`Modul je teď součástí `Az` modulu. Pokud chcete získat rutiny Azure Cosmos DB, [Stáhněte si a nainstalujte](/powershell/azure/install-az-ps) nejnovější verzi modulu AZ Module. Nejnovější verzi můžete získat také z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az/5.4.0). Tyto ukázky PowerShellu můžete také rozvětvit pro Cosmos DB z našeho úložiště GitHub [Cosmos DB ukázky PowerShellu na GitHubu](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
+
+Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShellu pro Cassandra](powershell-samples-cassandra.md), ukázky PowerShellu pro [MongoDB API](powershell-samples-mongodb.md), ukázky PowerShellu pro Gremlin, [ukázky](powershell-samples-table.md) PowerShellu pro [](powershell-samples-gremlin.md)
 
 ## <a name="common-samples"></a>Běžné ukázky
 
@@ -37,55 +41,6 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 |[Vytvoření kontejneru s velkým klíčem oddílu](scripts/powershell/sql/create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte kontejner s velkým klíčem oddílu. |
 |[Vytvoření kontejneru bez zásad indexování](scripts/powershell/sql/create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření kontejneru Azure Cosmos se zakázanými zásadami indexování.|
 |[Vypsat nebo získat databáze nebo kontejnery](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo Získá databázi nebo kontejnery. |
-|[Zjištění propustnosti](scripts/powershell/sql/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte propustnost pro databázi nebo kontejner. |
-|[Aktualizace propustnosti](scripts/powershell/sql/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje propustnost pro databázi nebo kontejner. |
+|[Operace propustnosti](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Operace propustnosti pro databázi nebo kontejner včetně získání, aktualizace a migrace mezi automatické škálování a standardní propustností. |
 |[Uzamčení prostředků před odstraněním](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků |
-|||
-
-## <a name="cassandra-api-samples"></a>Ukázky rozhraní API Cassandra
-
-|Úkol | Popis |
-|---|---|
-|[Vytvoření účtu, místa a tabulky](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, prostor a tabulku. |
-|[Vytvoření účtu, prostoru a tabulky pomocí automatického škálování](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, prostor a tabulku s AutoScale. |
-|[Vypsat nebo získat prostory a tabulky](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo získá prostor nebo tabulky. |
-|[Zjištění propustnosti](scripts/powershell/cassandra/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte propustnost pro prostor klíčů nebo tabulku. |
-|[Aktualizace propustnosti](scripts/powershell/cassandra/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje propustnost pro prostor klíčů nebo tabulku. |
-|[Uzamčení prostředků před odstraněním](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků |
-|||
-
-## <a name="mongo-db-api-samples"></a>Ukázky rozhraní API pro Mongo DB
-
-|Úkol | Popis |
-|---|---|
-|[Vytvoření účtu, databáze a kolekce](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a kolekci. |
-|[Vytvoření účtu, databáze a kolekce pomocí automatického škálování](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a kolekci s použitím automatického škálování. |
-|[Vypsat nebo získat databáze nebo kolekce](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo Získá databázi nebo kolekci. |
-|[Zjištění propustnosti](scripts/powershell/mongodb/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte propustnost pro databázi nebo kolekci. |
-|[Aktualizace propustnosti](scripts/powershell/mongodb/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje propustnost pro databázi nebo kolekci. |
-|[Uzamčení prostředků před odstraněním](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků |
-|||
-
-## <a name="gremlin-api-samples"></a>Ukázky rozhraní API pro Gremlin
-
-|Úkol | Popis |
-|---|---|
-|[Vytvoření účtu, databáze a grafu](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a graf. |
-|[Vytvoření účtu, databáze a grafu pomocí automatického škálování](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a graf s možností automatického škálování. |
-|[Vypsat nebo získat databáze nebo grafy](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo Získá databázi nebo graf. |
-|[Zjištění propustnosti](scripts/powershell/gremlin/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte propustnost pro databázi nebo graf. |
-|[Aktualizace propustnosti](scripts/powershell/gremlin/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje propustnost databáze nebo grafu. |
-|[Uzamčení prostředků před odstraněním](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků |
-|||
-
-## <a name="table-api-samples"></a>Ukázky rozhraní API pro tabulky
-
-|Úkol | Popis |
-|---|---|
-|[Vytvoření účtu a tabulky](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos a tabulku. |
-|[Vytvoření účtu a tabulky pomocí automatického škálování](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos a automatické škálování tabulky. |
-|[Vypsat nebo získat tabulky](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo získá tabulky. |
-|[Zjištění propustnosti](scripts/powershell/table/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte propustnost pro tabulku. |
-|[Aktualizace propustnosti](scripts/powershell/table/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje propustnost pro tabulku. |
-|[Uzamčení prostředků před odstraněním](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků |
 |||

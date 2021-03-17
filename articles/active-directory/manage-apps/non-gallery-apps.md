@@ -3,7 +3,7 @@ title: Používání Azure AD pro aplikace, které nejsou uvedené v galerii apl
 description: Naučte se integrovat aplikace, které nejsou uvedené v galerii Azure AD.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9721679938517e38f669f78ee0f5f9f3a80e05a7
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641139"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258265"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>Používání Azure AD pro aplikace, které nejsou uvedené v galerii aplikací
 
 V rychlém startu [Přidat aplikaci](add-application-portal.md) se dozvíte, jak přidat aplikaci do tenanta služby Azure AD.
 
-Kromě možností v [galerii aplikací Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)máte možnost Přidat **aplikaci mimo galerii**. 
+Kromě možností v [galerii aplikací Azure AD](../saas-apps/tutorial-list.md)máte možnost Přidat **aplikaci mimo galerii**. 
 
 ## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Možnosti pro aplikace, které nejsou uvedené v galerii Azure AD
 
@@ -33,9 +33,8 @@ Můžete přidat libovolnou aplikaci, která již existuje ve vaší organizaci,
 - Samoobslužné připojení aplikací, které používají [systém pro protokol SCIM (Domain Identity Management) pro zřizování uživatelů](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 - Možnost Přidat odkazy na libovolnou aplikaci ve [Spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) nebo ve [složkách moje aplikace](sso-options.md#linked-sign-on)
 
-Pokud hledáte pokyny pro vývojáře, jak integrovat vlastní aplikace do služby Azure AD, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md). Když vyvíjíte aplikaci, která používá moderní protokol, jako je [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) k ověřování uživatelů, můžete ji zaregistrovat na platformě Microsoft identity pomocí prostředí [Registrace aplikací](../develop/quickstart-register-app.md) v Azure Portal.
+Pokud hledáte pokyny pro vývojáře, jak integrovat vlastní aplikace do služby Azure AD, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-vs-authorization.md). Když vyvíjíte aplikaci, která používá moderní protokol, jako je [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) k ověřování uživatelů, můžete ji zaregistrovat na platformě Microsoft identity pomocí prostředí [Registrace aplikací](../develop/quickstart-register-app.md) v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Série rychlý Start při správě aplikací](view-applications-portal.md)
-

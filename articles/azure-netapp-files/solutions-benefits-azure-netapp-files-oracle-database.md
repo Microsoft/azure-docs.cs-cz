@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f431015caf5bb3364fe5628a599f760c6318c47
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82117042"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932494"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Výhody použití Azure NetApp Files s Oracle Database
 
@@ -62,4 +62,4 @@ Můžete zvýšit výkon Oracle dNFS pomocí služby Azure NetApp Files. Služba
 ## <a name="next-steps"></a>Další kroky
 
 - [Architektury řešení s využitím Azure NetApp Files](azure-netapp-files-solution-architectures.md)
-- [Přehled aplikací a řešení Oracle v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Přehled aplikací a řešení Oracle v Azure](../virtual-machines/workloads/oracle/oracle-overview.md)

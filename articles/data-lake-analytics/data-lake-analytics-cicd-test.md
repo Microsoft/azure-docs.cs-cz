@@ -1,21 +1,18 @@
 ---
 title: Postup testování kódu Azure Data Lake Analytics
 description: Naučte se, jak přidat testovací případy pro jazyk U-SQL a Rozšířený kód C# pro Azure Data Lake Analytics.
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129912"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015226"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
 
@@ -37,7 +34,7 @@ Nástroje Azure Data Lake pro Visual Studio umožňuje vytvořit testovací př�
 
 ### <a name="manage-the-test-data-source"></a>Správa zdroje testovacích dat
 
-Když testujete skripty U-SQL, budete potřebovat testovací vstupní soubory. Chcete-li spravovat testovací data, v **Průzkumník řešení**klikněte pravým tlačítkem na projekt U-SQL a vyberte **vlastnosti**. Do **zdroje testovacích dat**můžete zadat zdroj.
+Když testujete skripty U-SQL, budete potřebovat testovací vstupní soubory. Chcete-li spravovat testovací data, v **Průzkumník řešení** klikněte pravým tlačítkem na projekt U-SQL a vyberte **vlastnosti**. Do **zdroje testovacích dat** můžete zadat zdroj.
 
 ![Data Lake Tools for Visual Studio – konfigurace zdroje testovacích dat projektu](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
@@ -81,7 +78,7 @@ Existují dva způsoby, jak vytvořit objekt **IRowset** :
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- K vytvoření **IRowset**použijte data z kolekce dat:
+- K vytvoření **IRowset** použijte data z kolekce dat:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -112,7 +109,7 @@ Po sestavení projektu vyberte **test**  >  **Windows**  >  **Test Explorer**. T
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů v Azure Pipelines<a name="run-test-cases-in-azure-devops"></a>
 
-Projekty testů **skriptu U-SQL** a **projekty Udo v jazyce c#** dědí projekty testování částí v jazyce c#. [Úkol testu sady Visual Studio](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) v Azure Pipelines může spustit tyto testovací případy.
+Projekty testů **skriptu U-SQL** a **projekty Udo v jazyce c#** dědí projekty testování částí v jazyce c#. [Úkol testu sady Visual Studio](/azure/devops/pipelines/test/getting-started-with-continuous-testing) v Azure Pipelines může spustit tyto testovací případy.
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů U-SQL v Azure Pipelines
 
@@ -122,9 +119,9 @@ U testu U-SQL Zajistěte, aby se načetly do `CPPSDK` počítače sestavení, a 
 
 CPPSDK je balíček, který obsahuje Microsoft Visual C++ 14 a Windows SDK 10.0.10240.0. Tento balíček zahrnuje prostředí, které je potřeba pro modul runtime U-SQL. Tento balíček můžete získat v instalační složce Nástroje Azure Data Lake pro Visual Studio:
 
-- V případě sady Visual Studio 2015 je`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
-- V případě sady Visual Studio 2017 je`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
-- V případě sady Visual Studio 2019 je`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- V případě sady Visual Studio 2015 je `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
+- V případě sady Visual Studio 2017 je `C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- V případě sady Visual Studio 2019 je `C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
 #### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>Příprava CPPSDK v agentovi sestavení Azure Pipelines
 

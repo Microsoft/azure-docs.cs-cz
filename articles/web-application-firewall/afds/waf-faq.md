@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82837630"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545665"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Nejčastější dotazy k firewallu webových aplikací Azure na službě Azure front-dveří
 
@@ -55,8 +55,19 @@ Můžete nakonfigurovat seznam IP Access Control v back-endu tak, aby umožňova
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Které možnosti Azure WAF mám zvolit?
 
-Při použití zásad WAF v Azure jsou k dispozici dvě možnosti. WAF s Azure front-Dvířks je globálně distribuované řešení zabezpečení Edge. WAF s Application Gateway je místní vyhrazené řešení. Doporučujeme zvolit řešení na základě celkových požadavků na výkon a zabezpečení. Další informace najdete v tématu [Vyrovnávání zatížení s využitím sady pro doručování aplikací v Azure](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
+Při použití zásad WAF v Azure jsou k dispozici dvě možnosti. WAF s Azure front-Dvířks je globálně distribuované řešení zabezpečení Edge. WAF s Application Gateway je místní vyhrazené řešení. Doporučujeme zvolit řešení na základě celkových požadavků na výkon a zabezpečení. Další informace najdete v tématu [Vyrovnávání zatížení s využitím sady pro doručování aplikací v Azure](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md).
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>Jaký je doporučený přístup k povolení WAF na předních dveřích?
+
+Pokud WAF povolíte u existující aplikace, je běžné mít falešně pozitivní detekci, kde pravidla WAF zjišťují legitimní provoz jako hrozbu. K minimalizaci rizika dopadu na uživatele doporučujeme následující postup:
+
+* Povolte WAF v režimu [ **detekce**](./waf-front-door-create-portal.md#change-mode) , abyste zajistili, že WAF při práci s tímto procesem neblokuje požadavky.
+  > [!IMPORTANT]
+  > Tento postup popisuje, jak povolit WAF v novém nebo existujícím řešení, pokud je vaše priorita minimalizována pro uživatele vaší aplikace. V případě útoku nebo bezprostřední hrozby možná budete chtít místo toho nasadit WAF do režimu **prevence** a pomocí procesu optimalizace monitorovat a ladit WAF v průběhu času. Tím pravděpodobně dojde k zablokování některých legitimních přenosů, což je důvod, proč to doporučujeme jenom v případě, že máte hrozbu.
+* Postupujte podle našich [pokynů pro optimalizaci WAF](./waf-front-door-tuning.md). Tento proces vyžaduje, abyste povolili protokolování diagnostiky, zkontrolovali protokoly pravidelně a přidali vyloučení pravidel a další zmírnění rizik.
+* Tento celý proces zopakujte a pravidelně kontrolujte protokoly, dokud nebudete přesvědčeni, že nebude zablokovaný žádný oprávněný provoz. Celý proces může trvat několik týdnů. V ideálním případě byste měli po každé změně provedeného ladění zobrazit méně falešně pozitivních detekcí.
+* Nakonec povolte WAF v **režimu prevence**.
+* I když používáte WAF v produkčním prostředí, měli byste monitorování protokolů sledovat, abyste identifikovali jiné falešně pozitivní detekce. Pravidelné kontroly protokolů vám také pomůžou identifikovat všechny reálné pokusy o útokech, které byly zablokovány.
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Podporujete stejné funkce WAF na všech integrovaných platformách?
 
@@ -64,7 +75,7 @@ V současné době se pravidla ModSecch počítačových 2.2.9, počítačových
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>Je ochrana DDoS integrovaná s předními dvířky? 
 
-V případě globálně distribuovaných na okrajích sítě Azure můžou přední dveře Azure absorbovat a geograficky izolovat útoky na velké objemy svazků. Můžete vytvořit vlastní zásady WAF a automaticky tak blokovat a omezit útoky na požadavky HTTP (s), které mají známé signatury. Další informace můžete povolit DDoS Protection Standard ve virtuální síti, kde jsou nasazené back-endy. Zákazníci s Azure DDoS Protection Standard získají další výhody, jako je ochrana nákladů, záruka SLA a přístup k odborníkům z týmu DDoS Rapid Response pro zajištění okamžité pomoci během útoku.
+V případě globálně distribuovaných na okrajích sítě Azure můžou přední dveře Azure absorbovat a geograficky izolovat útoky na velké objemy svazků. Můžete vytvořit vlastní zásady WAF a automaticky tak blokovat a omezit útoky na požadavky HTTP (s), které mají známé signatury. Další informace můžete povolit DDoS Protection Standard ve virtuální síti, kde jsou nasazené back-endy. Zákazníci s Azure DDoS Protection Standard získají další výhody, jako je ochrana nákladů, záruka SLA a přístup k odborníkům z týmu DDoS Rapid Response pro zajištění okamžité pomoci během útoku. Další informace najdete v tématu [DDoS Protection na předních dveřích](../../frontdoor/front-door-ddos.md).
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Proč se do back-endu serveru předají další požadavky nad prahovou hodnotou nakonfigurovanou pro pravidlo pro omezení přenosové rychlosti?
 

@@ -5,16 +5,17 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021326"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445148"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
-V mnoha případech je nutné dynamicky měnit vzhled částí [modelu](../../concepts/models.md), například skrýt Podgrafy nebo přepínat části na transparentní vykreslování. Změna materiálů jednotlivých zúčastněných částí není praktická, protože vyžaduje iteraci v celém grafu scény a správu klonování a přiřazování materiálů na jednotlivých uzlech.
+V mnoha případech je nutné dynamicky měnit vzhled částí [modelu](../../concepts/models.md), například skrývání dílčích grafů nebo přepnutí částí na transparentní vykreslování. Změna materiálů jednotlivých zúčastněných částí není praktická, protože vyžaduje iteraci v celém grafu scény a správu klonování a přiřazování materiálů na jednotlivých uzlech.
 
 K dosažení tohoto případu použití s minimální možnou režií použijte `HierarchicalStateOverrideComponent` . Tato součást implementuje hierarchické aktualizace stavu na libovolných větvích grafu scény. To znamená, že stav může být definován na libovolné úrovni grafu scény a trickles hierarchii, dokud není přepsána novým stavem nebo použit pro objekt typu list.
 
@@ -27,23 +28,37 @@ Můžete například zvážit model automobilu a chcete přepnout celý automobi
 
 Pevná sada stavů, které lze přepsat, jsou následující:
 
-* **`Hidden`**: Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
-* **`Tint color`**: Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
+* **`Hidden`** : Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
+* **`Tint color`** : Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
   
-  ![Barevný nádech](./media/color-tint.png)
+  ![Barevný nádech použitý k zapnutí objektu zeleně](./media/color-tint.png)
 
-* **`See-through`**: Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
+* **`See-through`** : Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
 
-  ![Viz-through](./media/see-through.png)
+  ![Režim zobrazení, který slouží k výběru vybraných objektů jako transparentní](./media/see-through.png)
 
   > [!IMPORTANT]
   > Efekt převádění funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
-* **`Selected`**: Geometrie je vykreslena s [obrysem výběru](outlines.md).
+* **`Shell`** : Geometrie se vykresluje jako transparentní a denasycené prostředí. Tento režim umožňuje podobu nedůležitých částí scény a přitom zachovat smysl tvaru a relativního umístění. Chcete-li změnit vzhled pro vykreslování prostředí, použijte stav [ShellRenderingSettings](shell-effect.md) . Podívejte se na následující obrázek pro model auta, který je zcela vykreslený, kromě modrých pružin:
 
-  ![Obrys výběru](./media/selection-outline.png)
+  ![Režim prostředí používaný pro zeslabení specifických objektů](./media/shell.png)
 
-* **`DisableCollision`**: Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
+  > [!IMPORTANT]
+  > Efekt prostředí funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
+
+* **`Selected`** : Geometrie je vykreslena s [obrysem výběru](outlines.md).
+
+  ![Možnost obrysu, která slouží k zvýraznění vybrané části](./media/selection-outline.png)
+
+* **`DisableCollision`** : Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
+
+* **`UseCutPlaneFilterMask`** : Použijte bitovou masku pro jednotlivé filtry k řízení vyjmuté roviny výběru. Tento příznak určuje, zda má být použita nebo zděděna jednotlivá maska filtru ze své nadřazené položky. Bitová maska bitového filtru je nastavena prostřednictvím `CutPlaneFilterMask` Vlastnosti. Podrobné informace o tom, jak filtrování funguje, najdete v [odstavci selektivních vyjmutých ploch](cut-planes.md#selective-cut-planes). Podívejte se na následující příklad, kde pouze Tire a ráfk jsou vyjmuty, zatímco zbytek scény zůstává neovlivněný.
+![Selektivní vyjmuté plochy](./media/selective-cut-planes-hierarchical-override.png)
+
+
+> [!TIP]
+> Jako alternativu k vypnutí viditelnosti a prostorových dotazů pro úplný dílčí graf `enabled` lze stav herního objektu přepnout. Pokud je hierarchie zakázaná, má přednost před jakýmkoli `HierarchicalStateOverrideComponent` .
 
 ## <a name="hierarchical-overrides"></a>Hierarchická přepsání
 
@@ -51,9 +66,9 @@ Pevná sada stavů, které lze přepsat, jsou následující:
 
 Proto je možné každý stav nastavit na jednu z těchto:
 
-* `ForceOn`– stav je povolený pro všechny sítě v tomto uzlu a pod ním.
-* `ForceOff`– stav je zakázán pro všechny sítě v tomto uzlu a pod ním.
-* `InheritFromParent`– stav nemá vliv na tuto součást přepsání.
+* `ForceOn` – stav je povolený pro všechny sítě v tomto uzlu a pod ním.
+* `ForceOff` – stav je zakázán pro všechny sítě v tomto uzlu a pod ním.
+* `InheritFromParent` – stav nemá vliv na tuto součást přepsání.
 
 Stavy můžete změnit přímo nebo prostřednictvím `SetState` funkce:
 
@@ -74,9 +89,9 @@ component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollisi
 ApiHandle<HierarchicalStateOverrideComponent> component = ...;
 
 // set one state directly
-component->HiddenState(HierarchicalEnableState::ForceOn);
+component->SetHiddenState(HierarchicalEnableState::ForceOn);
 
-// set a state with the SetState function
+// or: set a state with the SetState function
 component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
 
 // set multiple states at once with the SetState function
@@ -93,7 +108,12 @@ component->SetState(
 
 Instance `HierarchicalStateOverrideComponent` sama sebe nepřidává spoustu zatížení za běhu. Je ale vždy dobrým zvykem udržet počet aktivních komponent na nízké úrovni. Například při implementaci systému výběru, který zvýrazní vydaný objekt, se doporučuje odstranit komponentu při odebrání zvýraznění. Udržování komponent kolem neutrálních funkcí se může rychle přidat.
 
-Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo*více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance).
+Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo* více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance) a pro [vykreslování prostředí](../../overview/features/shell-effect.md#performance) . 
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# HierarchicalStateOverrideComponent](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [Třída C++ HierarchicalStateOverrideComponent](/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Další kroky
 

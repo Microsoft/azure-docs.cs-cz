@@ -7,16 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/18/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1fa481911be8eb91db498350e57e2ba42e4aedb5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 02/10/2021
+ms.custom: devx-track-js
+ms.openlocfilehash: 126ece1327fa92c9b92c587922f1b8d9335d1a01
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421004"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559291"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady Node.js SDK a Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -29,7 +30,7 @@ ms.locfileid: "87421004"
 
 V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a pomocí aplikace Cassandra Node.js naklonované z GitHubu vytvoříte databázi Cassandra a kontejner. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
@@ -65,104 +66,117 @@ Nyní naklonujte rozhraní API Cassandra aplikaci z GitHubu, nastavíme připojo
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-nodejs-getting-started.git
     ```
 
+1. Pomocí npm nainstalujte závislosti Node.js.
+
+    ```bash
+    npm install
+    ```
+
 ## <a name="review-the-code"></a>Kontrola kódu
 
 Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru `uprofile.js` ve složce `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started`. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
 
-* Hodnoty uživatelského jména a hesla se nastaví pomocí stránky připojovacího řetězce na webu Azure Portal. Cesta `path\to\cert` představuje cestu k certifikátu X509. 
+* Hodnoty uživatelského jména a hesla se nastaví pomocí stránky připojovacího řetězce na webu Azure Portal. 
 
    ```javascript
-   var ssl_option = {
-        cert : fs.readFileSync("path\to\cert"),
-        rejectUnauthorized : true,
-        secureProtocol: 'TLSv1_2_method'
-        };
-   const authProviderLocalCassandra = new cassandra.auth.PlainTextAuthProvider(config.username, config.password);
+    let authProvider = new cassandra.auth.PlainTextAuthProvider(
+        config.username,
+        config.password
+    );
    ```
 
 * Inicializuje se proměnná `client` s informacemi contactPoint. Hodnota contactPoint se načte z webu Azure Portal.
 
     ```javascript
-    const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
+    let client = new cassandra.Client({
+        contactPoints: [`${config.contactPoint}:10350`],
+        authProvider: authProvider,
+        localDataCenter: config.localDataCenter,
+        sslOptions: {
+            secureProtocol: "TLSv1_2_method"
+        },
+    });
     ```
 
 * `client` se připojí k rozhraní Azure Cosmos DB Cassandra API.
 
     ```javascript
-    client.connect(next);
+    client.connect();
     ```
 
 * Vytvoří se nový prostor klíčů.
 
     ```javascript
-    function createKeyspace(next) {
-        var query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }";
-        client.execute(query, next);
-        console.log("created keyspace");    
+    var query =
+        `CREATE KEYSPACE IF NOT EXISTS ${config.keySpace} WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter' : '1' }`;
+    await client.execute(query);
   }
     ```
 
 * Vytvoří se nová tabulka.
 
    ```javascript
-   function createTable(next) {
-    var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
-        client.execute(query, next);
-        console.log("created table");
+    query =
+        `CREATE TABLE IF NOT EXISTS ${config.keySpace}.user (user_id int PRIMARY KEY, user_name text, user_bcity text)`;
+    await client.execute(query);
    },
    ```
 
 * Vloží se entity klíč-hodnota.
 
     ```javascript
-        function insert(next) {
-            console.log("\insert");
-            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
-            arr.forEach(element => {
-            client.execute(element);
-            });
-            next();
-        },
+    const arr = [
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (1, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (2, 'JiriK', 'Toronto')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (3, 'IvanH', 'Mumbai')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (4, 'IvanH', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (5, 'IvanaV', 'Belgaum')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (6, 'LiliyaB', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (7, 'JindrichH', 'Buenos Aires')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (8, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (9, 'JozefM', 'Seattle')`,
+    ];
+    for (const element of arr) {
+        await client.execute(element);
+    }
     ```
 
 * Spustí se dotaz pro získání všech hodnot klíčů.
 
     ```javascript
-        function selectAll(next) {
-            console.log("\Select ALL");
-            var query = 'SELECT * FROM uprofile.user';
-            client.execute(query, function (err, result) {
-            if (err) return next(err);
-            result.rows.forEach(function(row) {
-                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-            }, this);
-            next();
-            });
-        },
+    query = `SELECT * FROM ${config.keySpace}.user`;
+    const resultSelect = await client.execute(query);
+
+    for (const row of resultSelect.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
     ```  
-    
+
 * Spustí se dotaz pro získání páru klíč-hodnota.
 
     ```javascript
-        function selectById(next) {
-            console.log("\Getting by id");
-            var query = 'SELECT * FROM uprofile.user where user_id=1';
-            client.execute(query, function (err, result) {
-            if (err) return next(err);
-            result.rows.forEach(function(row) {
-                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-            }, this);
-            next();
-            });
-        }
+    query = `SELECT * FROM ${config.keySpace}.user where user_id=1`;
+    const resultSelectWhere = await client.execute(query);
+
+    for (const row of resultSelectWhere.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
+    ```  
+
+* Ukončete připojení. 
+
+    ```javascript
+    client.shutdown();
     ```  
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
@@ -177,63 +191,42 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. Otevřete soubor `config.js`. 
 
-1. Vložte hodnotu KONTAKTNÍ BOD z portálu místo `<FillMEIN>` na řádku 4.
+1. Vložte hodnotu kontaktní bod z portálu místo `'CONTACT-POINT` na řádku 9.
 
-    Řádek 4 by teď měl vypadat nějak takto: 
+    Řádek 9 by teď měl vypadat nějak podobně jako 
 
-    `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
+    `contactPoint: "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com",`
 
 1. Zkopírujte z portálu hodnotu UŽIVATELSKÉ JMÉNO a vložte ji místo `<FillMEIN>` na řádku 2.
 
     Řádek 2 by teď měl vypadat nějak takto: 
 
-    `config.username = 'cosmos-db-quickstart';`
-    
-1. Zkopírujte z portálu hodnotu HESLO a vložte ji místo `<FillMEIN>` na řádku 3.
+    `username: 'cosmos-db-quickstart',`
 
-    Řádek 3 by teď měl vypadat nějak takto:
+1. Zkopírujte z portálu hodnotu HESLO a vložte ji místo `USERNAME` na řádku 8.
 
-    `config.password = '2Ggkr662ifxz2Mg==';`
+    Řádek 8 by teď měl vypadat nějak takto:
+
+    `password: '2Ggkr662ifxz2Mg==',`
+
+1. Nahraďte REGION oblastí Azure, ve které jste tento prostředek vytvořili.
 
 1. Uložte soubor `config.js`.
-    
-## <a name="use-the-x509-certificate"></a>Použití certifikátu X509
 
-1. Stáhněte si kořenový certifikát Baltimore CyberTrust z umístění v místním počítači [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Přejmenujte příponu souboru na `.cer`.
-
-   Certifikát má sériové číslo `02:00:00:b9` a otisk SHA1 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
-
-2. Otevřete `uprofile.js` a změňte cestu `path\to\cert` tak, aby odkazovala na váš nový certifikát.
-
-3. Uložte `uprofile.js`.
-
-> [!NOTE]
-> Pokud dojde k chybě související s certifikátem v pozdějších krocích a běží na počítači s Windows, ujistěte se, že jste před správným převodem souboru. CRT v níže uvedeném formátu Microsoft. cer postupovali podle tohoto postupu.
-> 
-> Dvojím kliknutím na soubor. CRT ho otevřete v zobrazení certifikátu. 
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Zobrazení a ověření výstupu":::
->
-> V průvodci certifikátem klikněte na tlačítko Další. Vyberte X. 509 s kódováním Base-64 (. CER) a pak klikněte na další.
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Zobrazení a ověření výstupu":::
->
-> Vyberte Procházet (vyhledat cíl) a zadejte název souboru.
-> Vyberte další a dokončit.
->
-> Nyní byste měli mít správně formátovaný soubor. cer. Zajistěte, aby cesta v `uprofile.js` bodech k tomuto souboru byla.
 
 ## <a name="run-the-nodejs-app"></a>Spuštění aplikace Node.js
 
-1. V okně terminálu Git se ujistěte, že jste ve vzorovém adresáři, který jste naklonoval dříve:
+1. V okně terminálu se ujistěte, že jste ve vzorovém adresáři, který jste naklonoval dříve:
 
     ```bash
     cd azure-cosmos-db-cassandra-nodejs-getting-started
     ```
 
-2. Spusťte `npm install` a nainstalujte požadované moduly npm.
+1. Spusťte aplikaci uzlu:
 
-3. Spuštěním příkazu `node uprofile.js` spusťte aplikaci uzlu.
+    ```bash
+    npm start
+    ```
 
 4. Na příkazovém řádku zkontrolujte očekávané výsledky.
 

@@ -4,12 +4,12 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573737"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -57,10 +57,10 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
-  * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
+  * No. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
 * *Analyzujete všechna data shromažďovaná v Application Insights?*
   * V současné době není k dispozici. V současné době analyzujeme dobu odezvy požadavku, dobu odezvy závislosti a dobu načítání stránky. Analýza dalších metrik je na našich nevyřízených položkách, které jsou vyhledány.
 
@@ -70,13 +70,13 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 * *Můžu vytvořit vlastní pravidla detekce anomálií nebo přizpůsobit stávající pravidla?*
 
   * Ještě ne, ale můžete:
-    * [Nastavte výstrahy](../platform/alerts-log.md) , které vás upozorní, když metrika přechází do prahové hodnoty.
+    * [Nastavte výstrahy](../alerts/alerts-log.md) , které vás upozorní, když metrika přechází do prahové hodnoty.
     * [Exportujte telemetrii](./export-telemetry.md) do [databáze](./code-sample-export-sql-stream-analytics.md) nebo [Power BI](./export-power-bi.md), kde ji můžete analyzovat sami.
 * *Jak často se provádí analýza?*
 
   * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
-* *To znamená, že tyto [výstrahy metriky](../platform/alerts-log.md)nahrazují?*
-  * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
+* *To znamená, že tyto [výstrahy metriky](../alerts/alerts-log.md)nahrazují?*
+  * No.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
 * *Pokud v reakci na oznámení něco neudělám, zobrazí se vám připomenutí?*
@@ -99,7 +99,7 @@ Kde se jedná o problém? Reaguje Server pomaleji, je stránka velmi dlouhá neb
 
 Otevřete okno metrika prohlížeče. Segmentované zobrazení času načtení stránky v prohlížeči ukazuje, kde se bude zobrazovat čas. 
 
-* Pokud je **čas požadavku na odeslání** vysoký, znamená to, že server reaguje pomalu nebo se jedná o příspěvek s velkým množstvím dat. Podívejte se na [metriky výkonu](./web-monitor-performance.md#metrics) a prozkoumejte dobu odezvy.
+* Pokud je **čas požadavku na odeslání** vysoký, znamená to, že server reaguje pomalu nebo se jedná o příspěvek s velkým množstvím dat. Podívejte se na [metriky výkonu](./performance-counters.md) a prozkoumejte dobu odezvy.
 * Nastavením [sledování závislostí](./asp-net-dependencies.md) zjistíte, jestli je zpomalení způsobeno externími službami nebo databází.
 * Pokud je **příjem odpovědi** převládající, vaše stránka a její závislé součásti – JavaScript, CSS, obrázky atd. (ale ne asynchronně načtená data) jsou dlouhé. Nastavte [Test dostupnosti](./monitor-web-app-availability.md)a nezapomeňte nastavit možnost načítání závislých částí. Když dostanete nějaké výsledky, otevřete Podrobnosti výsledku a rozbalte ho, abyste viděli dobu načítání různých souborů.
 * Vysoká **Doba zpracování klienta** navrhuje spouštění skriptů pomalu. Pokud důvod není zjevný, zvažte přidání nějakého kódu časování a odeslání času v voláních trackMetric.
@@ -175,11 +175,10 @@ Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší apl
 
 * [Profiler](profiler.md) 
 * [Snapshot Debugger](./snapshot-debugger.md)
-* [Analýzy](../log-query/get-started-portal.md)
-* [Inteligentní Diagnostika Analytics](../log-query/log-query-overview.md)
+* [Analýzy](../logs/log-analytics-tutorial.md)
+* [Inteligentní Diagnostika Analytics](../logs/log-query-overview.md)
 
 Inteligentní detekce jsou zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
+* [Ručně nakonfigurované výstrahy metriky](../alerts/alerts-log.md)
 * [Testy dostupnosti webu](./monitor-web-app-availability.md)
-

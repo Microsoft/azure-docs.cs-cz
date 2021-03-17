@@ -7,14 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 05/29/2019
+ms.date: 02/23/2021
 ms.author: pafarley
-ms.openlocfilehash: 534846044770d66ec5171ad4f61de921d2d5d194
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cec466fc420e435159e2882d7b39ef6d03eeea7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169786"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733478"
 ---
 # <a name="use-the-headpose-attribute"></a>Použití atributu HeadPose
 
@@ -28,7 +29,7 @@ Ukázková aplikace [Cognitive Services obličeje WPF](https://github.com/Azure-
 
 ### <a name="explore-the-sample-code"></a>Prozkoumat vzorový kód
 
-Můžete programově otočit obdélník obličeje pomocí atributu HeadPose. Pokud při rozpoznávání ploch určíte tento atribut (viz [Jak detekovat obličeje](HowtoDetectFacesinImage.md)), budete ho moct později dotazovat. Následující metoda z aplikace [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) používá seznam objektů **DetectedFace** a vrací seznam objektů **[obličeje](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** . **Tvář** je vlastní třída, která ukládá data obličeje, včetně aktualizovaných souřadnic obdélníku. Pro **horní**, **levý**, **šířku**a **výšku**jsou vypočítány nové hodnoty a nové pole **FaceAngle** Určuje otočení.
+Můžete programově otočit obdélník obličeje pomocí atributu HeadPose. Pokud při rozpoznávání ploch určíte tento atribut (viz [Jak detekovat obličeje](HowtoDetectFacesinImage.md)), budete ho moct později dotazovat. Následující metoda z aplikace [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) používá seznam objektů **DetectedFace** a vrací seznam objektů **[obličeje](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** . **Tvář** je vlastní třída, která ukládá data obličeje, včetně aktualizovaných souřadnic obdélníku. Pro **horní**, **levý**, **šířku** a **výšku** jsou vypočítány nové hodnoty a nové pole **FaceAngle** Určuje otočení.
 
 ```csharp
 /// <summary>
@@ -127,7 +128,7 @@ Pomocí sledování změn HeadPose v reálném čase můžete detekovat gesta hl
 Detekce živých je úkol, který určuje, že subjekt je skutečná osoba, ne obrázek nebo video reprezentace. Rozpoznávání gesta hlavice může sloužit jako jeden způsob, jak zajistit živý přehled, zejména na rozdíl od reprezentace obrázku osoby.
 
 > [!CAUTION]
-> Chcete-li detekovat gesta hlav v reálném čase, je nutné volat Face API s vysokou sazbou (více než jednou za sekundu). Pokud máte předplatné F0 (Free-úrovně), nebude to možné. Pokud máte předplatné s placenou úrovní, ujistěte se, že jste vypočítali náklady na rychlé volání rozhraní API pro detekci gesta hlav.
+> Chcete-li detekovat gesta hlav v reálném čase, je nutné volat rozhraní API pro rozpoznávání tváře s vysokou sazbou (více než jednou za sekundu). Pokud máte předplatné F0 (Free-úrovně), nebude to možné. Pokud máte předplatné s placenou úrovní, ujistěte se, že jste vypočítali náklady na rychlé volání rozhraní API pro detekci gesta hlav.
 
 Pracovní příklad detekce gesta hlavice najdete na webu GitHub [Sample HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) .
 

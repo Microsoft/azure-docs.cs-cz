@@ -1,18 +1,16 @@
 ---
-title: Monitorování aplikací v Pythonu pomocí Azure Monitor (Preview) | Microsoft Docs
+title: Monitorování aplikací v Pythonu pomocí Azure Monitor | Microsoft Docs
 description: Poskytuje pokyny pro vedení OpenCensus Pythonu pomocí Azure Monitor
 ms.topic: conceptual
-author: lzchen
-ms.author: lechen
-ms.date: 10/11/2019
+ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: ac7569a48e4bab25d4db17f2fc6dd92b31afcab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704408"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -20,7 +18,7 @@ Azure Monitor podporuje distribuované trasování, shromažďování metrik a p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.
 - Vytvořte [prostředek](./create-new-resource.md)Application Insights. K vašemu prostředku budete mít přiřazený vlastní klíč instrumentace (ikey).
 
@@ -32,12 +30,10 @@ Instalace OpenCensus Azure Monitor vývozců:
 python -m pip install opencensus-ext-azure
 ```
 
-Úplný seznam balíčků a integrací najdete v tématu [OpenCensus Packages](./nuget.md#common-packages-for-python-using-opencensus).
-
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure`Příkaz předpokládá, že máte `PATH` nastavenou proměnnou prostředí pro instalaci Pythonu. Pokud jste tuto proměnnou nenakonfigurovali, musíte zadat úplnou cestu k adresáři, kde se nachází spustitelný soubor Pythonu. Výsledkem je příkaz podobný tomuto: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor. Jedná se o trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](../platform/data-platform.md). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
+Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor. Jedná se o trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](../data-platform.md). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
 
 ## <a name="telemetry-type-mappings"></a>Mapování typů telemetrie
 
@@ -225,6 +221,15 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 ### <a name="metrics"></a>Metriky
 
+OpenCensus. stats podporuje 4 agregační metody, ale poskytuje částečnou podporu pro Azure Monitor:
+
+- **Počet:** Počet bodů měření. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. 
+- **Součet:** Součet bodů měření. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. 
+- **LastValue:** Uchová poslední zaznamenanou hodnotu a všechno ostatní.
+- **Distribuce:** Rozdělení histogramu bodů měření. Tato metoda není **nástrojem Azure Exportér podporována**.
+
+### <a name="count-aggregation-example"></a>Příklad agregace Count
+
 1. Nejdřív vygenerujeme některá místní data metriky. Vytvoříme jednoduchou metriku pro sledování počtu, kolikrát uživatel vybere klíč **ENTER** .
 
     ```python
@@ -324,7 +329,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
         main()
     ```
 
-1. Exportér posílá data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se odesílají každý interval. Data můžete najít v části `customMetrics` .
+1. Exportér posílá data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se odesílají každý interval. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. Data můžete najít v části `customMetrics` , ale `customMetrics` vlastnosti ValueCount, ValueSum, ValueMin, ValueMax a valueStdDev se nepoužívají efektivně.
 
 #### <a name="performance-counters"></a>Čítače výkonu
 
@@ -442,7 +447,7 @@ Jak je znázorněno, existují tři různé Azure Monitor vývozců, kteří pod
 Každý vývozce přijímá stejné argumenty pro konfiguraci a předává je prostřednictvím konstruktorů. Podrobnosti o každé z nich můžete zobrazit tady:
 
 - `connection_string`: Připojovací řetězec, který se používá pro připojení k vašemu Azure Monitor prostředku. Má přednost před `instrumentation_key` .
-- `enable_standard_metrics`: Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](../platform/app-insights-metrics.md#performance-counters) Azure monitor. Výchozí hodnota je `True` .
+- `enable_standard_metrics`: Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](../essentials/app-insights-metrics.md#performance-counters) Azure monitor. Výchozí hodnota je `True` .
 - `export_interval`: Používá se k určení frekvence v sekundách exportu.
 - `instrumentation_key`: Klíč instrumentace, který se používá pro připojení k vašemu Azure Monitor prostředku.
 - `logging_sampling_rate`: Používá se pro `AzureLogHandler` . Poskytuje vzorkovací frekvenci [0, 1,0] pro export protokolů. Výchozí hodnota je 1,0.
@@ -462,7 +467,7 @@ V seznamu pod položkou **aktivní**:
 - U telemetrie odesílaných pomocí Azure Monitorch metriky se v části zobrazuje metrika `customMetrics` .
 - U telemetrie odesílaných pomocí nástroje Azure Monitorch protokolů se zobrazí protokoly v části `traces` . Výjimky se zobrazí v části `exceptions` .
 
-Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](../platform/data-platform-logs.md).
+Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](../logs/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Další informace o OpenCensus pro Python
 
@@ -477,11 +482,11 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 * [Sledování příchozích požadavků](./opencensus-python-dependency.md)
 * [Sledování požadavků](./opencensus-python-request.md)
 * [Mapa aplikace](./app-map.md)
-* [Monitorování výkonu na konci](../learn/tutorial-performance.md)
+* [Monitorování výkonu na konci](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>Výstrahy
 
 * [Testy dostupnosti:](./monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](./proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Výstrahy metriky](../platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Výstrahy metriky](../alerts/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 

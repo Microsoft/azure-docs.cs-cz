@@ -2,17 +2,14 @@
 title: Ladění v aplikaci Visual Studio s využitím Azure Application Insights
 description: Analýza výkonu a diagnostika webové aplikace během ladění a v produkčním prostředí.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2507dbf7bb8294c949f434d5fa96ccc0af9a7eb3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323464"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563534"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
 V sadě Visual Studio (2015 a novější) můžete analyzovat výkon a diagnostikovat problémy ve vaší webové aplikaci v ASP.NET během ladění i v produkčním prostředí pomocí telemetrie z [Azure Application Insights](./app-insights-overview.md).
@@ -21,7 +18,7 @@ Pokud jste webovou aplikaci v ASP.NET vytvořili pomocí sady Visual Studio 2017
 
 Pokud chcete monitorovat aplikaci za provozu v produkčním prostředí, telemetrii Application Insights normálně zobrazíte na webu [Azure Portal](https://portal.azure.com), kde můžete nastavit upozornění a použít výkonné monitorovací nástroje. Pro účely ladění ale můžete vyhledávat a analyzovat telemetrii také v sadě Visual Studio. Můžete použít Visual Studio k analýze telemetrie jak z produkčního webu, tak z ladění, které běží na vašem vývojovém počítači. V druhém případě můžete spuštěné ladění analyzovat, i když jste ještě nenakonfigurovali sadu SDK k odesílání telemetrie na web Azure Portal. 
 
-## <a name="debug-your-project"></a><a name="run"></a>Ladění projektu
+## <a name="debug-your-project"></a><a name="run"></a> Ladění projektu
 Spusťte webovou aplikaci v režimu místního ladění pomocí klávesy F5. Otevřete různé stránky k vygenerování nějaké telemetrie.
 
 V aplikaci Visual Studio se zobrazí počet událostí, které byly zaprotokolovány modulem Application Insights ve vašem projektu.
@@ -56,29 +53,18 @@ Sestavy výjimek se zobrazí v okně Hledání. (V některých starších typech
 
 Klikněte na výjimku a získejte trasování zásobníku. Pokud je kód aplikace otevřen v sadě Visual Studio, můžete kliknutím z trasování zásobníku přejít na příslušný řádek kódu.
 
-![Trasování zásobníku výjimky](./media/visual-studio/17.png)
+![Snímek obrazovky ukazuje objekt o objektu v trasování zásobníku.](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>Zobrazení souhrnů požadavků a výjimek v kódu
 V řádku Code Lens nad jednotlivými metodami obslužné rutiny vidíte počet požadavků a výjimek protokolovaných Application Insights za posledních 24 h.
 
-![Trasování zásobníku výjimky](./media/visual-studio/21.png)
+![Snímek obrazovky ukazuje výjimku v rámci kontextového dialogu.](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > Code Lens zobrazí data Application Insights, pouze pokud jste [nakonfigurovali aplikaci k odesílání telemetrie na portál Application Insights](./asp-net.md).
 >
 
 [Další informace o Application Insights v Code Lens](./visual-studio-codelens.md)
-
-## <a name="trends"></a>Trendy
-Trendy představují nástroj pro vizualizaci chování aplikace v čase. 
-
-Vybírejte z **Trendů zkoumání telemetrie** z tlačítka panelu nástrojů Application Insights nebo okna hledání Application Insights. Zvolte jeden z pěti běžných dotazů, abyste mohli začít. Na základě typů telemetrie, časových rozsahů a dalších vlastností můžete analyzovat různé datové sady. 
-
-Pokud chcete vyhledat anomálie v datech, vyberte jednu z možností anomálií v rozevíracím seznamu „Typ zobrazení“. Možnosti filtrování v dolní části okna usnadňují zdokonalování v konkrétních podmnožinách vaší telemetrie.
-
-![Trendy](./media/visual-studio/51.png)
-
-[Další informace o trendech](./visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Místní monitorování
 (Ze sady Visual Studio 2015 Update 2) Pokud jste nenakonfigurovali sadu SDK tak, aby odesílala telemetrii na portál Application Insights (takže v ApplicationInsights.config neexistuje žádný klíč instrumentace), zobrazí se v okně diagnostiky telemetrie z poslední ladicí relace. 
@@ -94,8 +80,6 @@ Je také užitečné, pokud máte některou [vlastní telemetrii](./api-custom-e
 
 
 ## <a name="next-steps"></a>Další kroky
-|  |  |
-| --- | --- |
-| **[Přidání dalších dat](./asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Práce s portálem Application Insights](./overview-dashboard.md)**<br/>Zobrazit řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, živou mapu závislostí vaší aplikace a exportovaná data telemetrie. |![Visual Studio](./media/visual-studio/62.png) |
+
+ * **[Práce s portálem Application Insights](./overview-dashboard.md)**. Zobrazit řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, živou mapu závislostí vaší aplikace a exportovaná data telemetrie. 
 

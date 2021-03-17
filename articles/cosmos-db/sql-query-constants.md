@@ -3,17 +3,19 @@ title: Konstanty SQL v Azure Cosmos DB
 description: Přečtěte si, jak se konstanty dotazů SQL v Azure Cosmos DB používají k vyjádření konkrétní hodnoty dat.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74873416"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339194"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Konstanta, která se označuje také jako literál nebo skalární hodnota, je symbol, který představuje konkrétní datovou hodnotu. Formát konstanty závisí na datovém typu hodnoty, kterou představuje.  
   
@@ -23,10 +25,10 @@ ms.locfileid: "74873416"
 |-|-|  
 |**Nedefinované**|Jedna hodnota: **Nedefinováno**|  
 |**Null**|Jedna hodnota: **null**|  
-|**Logická hodnota**|Hodnoty: **false**, **true**.|  
+|**Logická hodnota**|Hodnoty: **false** , **true**.|  
 |**Číselná**|Číslo s plovoucí desetinnou čárkou a dvojitou přesností, Standard IEEE 754.|  
 |**Řetězec**|Sekvence nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduchých nebo dvojitých uvozovkách.|  
-|**Pole**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
+|**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
 |**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
@@ -59,7 +61,7 @@ ms.locfileid: "74873416"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Náhodné
+##  <a name="arguments"></a><a name="bk_arguments"></a> Náhodné
   
 * `<undefined_constant>; Undefined`  
   
@@ -113,7 +115,7 @@ ms.locfileid: "74873416"
 |\f|informační kanál formuláře|U + 000C|  
 |\n|čárový kanál|U + 000A|  
 |\r|návrat na začátek řádku|U + 000D|  
-|\t|rážky|U + 0009|  
+|\t| tabulátor|U + 0009|  
 |\uXXXX|Znak Unicode definovaný 4 šestnáctkovými číslicemi.|U + XXXX|  
 
 ## <a name="next-steps"></a>Další kroky

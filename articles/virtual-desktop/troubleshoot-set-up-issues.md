@@ -3,15 +3,16 @@ title: Vytvoření fondu hostitelů prostředí virtuálních počítačů s Win
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121370"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652441"
 ---
 # <a name="host-pool-creation"></a>Vytvoření fondu hostitelů
 
@@ -26,7 +27,7 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Získání bitové kopie Windows 10 Enterprise s více relacemi
 
-Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte Začínáme**s  >  **Microsoft Windows 10** > a [Windows 10 Enterprise multi-session verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte Začínáme** s  >  **Microsoft Windows 10** > a [Windows 10 Enterprise multi-session verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>Problémy s používáním Azure Portal k vytváření fondů hostitelů
 
@@ -47,13 +48,31 @@ Pokud vaše operace překročí limit kvóty, můžete provést jednu z následu
 
 - Otevřete odkaz, který vidíte v poli statusMessage v prohlížeči, abyste odeslali žádost o zvýšení kvóty pro vaše předplatné Azure pro zadanou SKU virtuálního počítače.
 
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>Chyba: nelze zobrazit přiřazení uživatelů ve skupinách aplikací.
+
+**Příčina**: k této chybě obvykle dochází po přesunu předplatného z klienta 1 Azure Active Directory (AD) do jiného. Pokud jsou stará přiřazení stále vázaná na starý tenant služby Azure AD, Azure Portal je bude sledovat.
+
+**Oprava**: bude nutné znovu přiřadit uživatele ke skupinám aplikací.
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Při nastavování umístění pro moje objekty služby se zobrazuje jenom nám
+
+**Příčina**: Azure v tuto chvíli nepodporuje tuto oblast pro službu Virtual Desktop systému Windows. Pokud se chcete dozvědět, které geografické oblasti podporujeme, podívejte se na [umístění dat](data-locations.md). Pokud virtuální plocha Windows podporuje umístění, ale pořád se nezobrazí při pokusu o výběr umístění, znamená to, že váš poskytovatel prostředků se ještě neaktualizoval.
+
+**Oprava**: Chcete-li získat nejnovější seznam oblastí, znovu zaregistrujte poskytovatele prostředků:
+
+1. Přejít na **předplatná** a vybrat relevantní předplatné.
+2. Vyberte **poskytovatele prostředků**.
+3. Vyberte **Microsoft. DesktopVirtualization** a pak v nabídce Akce vyberte **znovu registrovat** .
+
+Když znovu zaregistrujete poskytovatele prostředků, neuvidíte žádnou konkrétní zpětnou vazbu uživatelského rozhraní nebo stav aktualizace. Proces opakované registrace také nekoliduje s vašimi stávajícími prostředími.
+
 ## <a name="azure-resource-manager-template-errors"></a>Chyby šablon Azure Resource Manager
 
 Při řešení neúspěšného nasazení Azure Resource Manager šablon a prostředí PowerShell DSC postupujte podle těchto pokynů.
 
-1. Projděte si chyby v nasazení pomocí [Zobrazení operací nasazení s Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-operations.md).
-2. Pokud v nasazení nejsou žádné chyby, zkontrolujte chyby v protokolu aktivit pomocí [zobrazení protokolů aktivit a proveďte audit akcí u prostředků](../azure-resource-manager/resource-group-audit.md).
-3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) k vyřešení problému.
+1. Projděte si chyby v nasazení pomocí [Zobrazení operací nasazení s Azure Resource Manager](../azure-resource-manager/templates/deployment-history.md).
+2. Pokud v nasazení nejsou žádné chyby, zkontrolujte chyby v protokolu aktivit pomocí [zobrazení protokolů aktivit a proveďte audit akcí u prostředků](../azure-resource-manager/management/view-activity-logs.md).
+3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md) k vyřešení problému.
 4. Odstraňte všechny prostředky vytvořené během předchozího nasazení a zkuste šablonu znovu nasadit.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname> /JoinDomain
@@ -88,7 +107,7 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 3. V pravé části obrazovky by se měla zobrazit nabídka servery DNS. V této nabídce vyberte možnost **vlastní**.
 4. Ujistěte se, že servery DNS uvedené v části vlastní odpovídají vašemu řadiči domény nebo doméně služby Active Directory. Pokud server DNS nevidíte, můžete ho přidat zadáním jeho hodnoty do pole **Přidat server DNS** .
 
-### <a name="error-your-deployment-failedunauthorized"></a>Chyba: nasazení selhalo. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Chyba: Vaše nasazení selhalo...\Neautorizováno
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -109,7 +128,7 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 **Oprava:** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: Zadané uživatelské jméno správce není povolené
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](media/failure-username.png)
@@ -127,7 +146,7 @@ Příklad nezpracované chyby:
 
 **Oprava:** Aktualizujte uživatelské jméno nebo použijte jiné uživatele.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: virtuální počítač ohlásil selhání při zpracování rozšíření
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: Virtuální počítač nahlásil chybu při zpracování rozšíření
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](media/failure-processing.png)
@@ -263,6 +282,7 @@ the VM.\\\"
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Informace o řešení potíží souvisejících s agentem virtuálního počítače s Windows nebo s připojením relace najdete v tématu [řešení běžných potíží s agentem virtuálních počítačů s Windows](troubleshoot-agent.md).
 - Informace o řešení potíží s klientskými připojeními k virtuální ploše Windows najdete v tématu [připojení ke službě Virtual Desktop systému Windows](troubleshoot-service-connection.md).
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).

@@ -4,16 +4,17 @@ description: Naučte se konfigurovat sítě Azure CNI (pokročilé) ve službě 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 0506eb6350358f7256a61c8d6f164b6594d20554
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: references_regions
+ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566110"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504248"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení používají clustery AKS [kubenet][kubenet]a pro vás vytvoří virtuální síť a podsíť. Pomocí *kubenet*uzly získají IP adresu z podsítě virtuální sítě. V uzlech se pak nakonfiguruje překlad síťových adres (NAT) a lusky obdrží IP adresu "skrytá" za IP adresou uzlu. Tento přístup snižuje počet IP adres, které je třeba vyhradit v síťovém prostoru pro použití v luskech.
+Ve výchozím nastavení používají clustery AKS [kubenet][kubenet]a pro vás vytvoří virtuální síť a podsíť. Pomocí *kubenet* uzly získají IP adresu z podsítě virtuální sítě. V uzlech se pak nakonfiguruje překlad síťových adres (NAT) a lusky obdrží IP adresu "skrytá" za IP adresou uzlu. Tento přístup snižuje počet IP adres, které je třeba vyhradit v síťovém prostoru pro použití v luskech.
 
 Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]každý z nich získá IP adresu z podsítě a dá se k nim získat přímý pøístup. Tyto IP adresy musí být v rámci vašeho síťového prostoru jedinečné a musí být plánovány předem. Každý uzel má parametr konfigurace maximálního počtu lusků, které podporuje. Pro tento uzel je pak rezervovaný i ekvivalentní počet IP adres na uzel. Tento přístup vyžaduje více plánování a často vede k vyčerpání IP adres nebo k nutnosti opětovnému sestavení clusterů ve větší podsíti, dokud vaše aplikace požaduje růst.
 
@@ -22,11 +23,10 @@ V tomto článku se dozvíte, jak pomocí sítě *Azure CNI* vytvořit a použí
 ## <a name="prerequisites"></a>Požadavky
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
-* Clustery AKS nemůžou `169.254.0.0/16` používat `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` Rozsah adres služby Kubernetes,, nebo.
-* Instanční objekt používaný clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
+* Clustery AKS nemůžou `169.254.0.0/16` používat `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` Rozsah adres služby Kubernetes pod rozsahem adres nebo rozsah adres virtuálních sítí clusteru.
+* Identita clusteru používaná clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* Místo instančního objektu můžete pro oprávnění použít spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 * Podsíť přiřazená ke fondu uzlů AKS nemůže být [delegovaná podsíť](../virtual-network/subnet-delegation-overview.md).
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Naplánování IP adres pro cluster
@@ -38,10 +38,10 @@ IP adresy pro lusky a uzly clusteru se přiřazují ze zadané podsítě v rámc
 > [!IMPORTANT]
 > Požadovaný počet IP adres by měl zahrnovat i požadavky na operace upgradu a škálování. Pokud nastavíte rozsah IP adres tak, aby podporoval pouze pevný počet uzlů, nelze upgradovat nebo škálovat cluster.
 >
-> - Při **upgradu** clusteru AKS se do clusteru nasadí nový uzel. Služby a úlohy začínají běžet na novém uzlu a z clusteru se odebere starší uzel. Tento postup upgradu vyžaduje minimálně jeden další blok IP adres, který je k dispozici. Počet uzlů je pak `n + 1` .
->   - Tato úvaha je zvláště důležitá, pokud používáte fondy uzlů Windows serveru. Uzly Windows serveru v AKS nepoužívají automatické aktualizace Windows, místo toho provedete upgrade ve fondu uzlů. Tento upgrade nasadí nové uzly pomocí nejnovější image základního uzlu Windows serveru 2019 a opravy zabezpečení. Další informace o upgradu fondu uzlů Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
+> * Při **upgradu** clusteru AKS se do clusteru nasadí nový uzel. Služby a úlohy začínají běžet na novém uzlu a z clusteru se odebere starší uzel. Tento postup upgradu vyžaduje minimálně jeden další blok IP adres, který je k dispozici. Počet uzlů je pak `n + 1` .
+>   * Tato úvaha je zvláště důležitá, pokud používáte fondy uzlů Windows serveru. Uzly Windows serveru v AKS nepoužívají automatické aktualizace Windows, místo toho provedete upgrade ve fondu uzlů. Tento upgrade nasadí nové uzly pomocí nejnovější image základního uzlu Windows serveru 2019 a opravy zabezpečení. Další informace o upgradu fondu uzlů Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 >
-> - Při **škálování** clusteru AKS se do clusteru nasadí nový uzel. Služby a úlohy začínají běžet na novém uzlu. Rozsah IP adres musí vzít v úvahu, jak můžete chtít škálovat počet uzlů a lusky, které může váš cluster podporovat. Je potřeba zahrnout i jeden další uzel pro operace upgradu. Počet uzlů je pak `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
+> * Při **škálování** clusteru AKS se do clusteru nasadí nový uzel. Služby a úlohy začínají běžet na novém uzlu. Rozsah IP adres musí vzít v úvahu, jak můžete chtít škálovat počet uzlů a lusky, které může váš cluster podporovat. Je potřeba zahrnout i jeden další uzel pro operace upgradu. Počet uzlů je pak `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
 
 Pokud očekáváte, že uzly budou spouštět maximální počet lusků, a pravidelně zničit a nasazovat lusky, měli byste také zvážit v některých dalších IP adresách na jeden uzel. Tyto další IP adresy berou v úvahu, že může trvat několik sekund, než se služba odstraní a IP adresa uvolněná pro novou službu, která se má nasadit a získat adresu.
 
@@ -52,8 +52,8 @@ Plán IP adres pro cluster AKS se skládá z virtuální sítě, minimálně jed
 | Virtuální síť | Virtuální síť Azure může být velká až/8, ale je omezená na 65 536 nakonfigurovaných IP adres. Před konfigurací adresního prostoru Zvažte všechny požadavky vaší sítě, včetně komunikace se službami v jiných virtuálních sítích. Pokud například nakonfigurujete příliš velkou část adresního prostoru, může dojít k problémům s překrývajícími se dalšími adresními prostory v rámci vaší sítě.|
 | Podsíť | Musí být dostatečně velká, aby se vešly do uzlů, lusků a všech prostředků Kubernetes a Azure, které můžou být zřízené ve vašem clusteru. Pokud například nasadíte interní Azure Load Balancer, jeho front-endové IP adresy se přidělují z podsítě clusteru, nikoli z veřejných IP adres. Velikost podsítě by měla také vzít v úvahu operace upgradu nebo budoucí požadavky na škálování.<p />Výpočet *minimální* velikosti podsítě včetně dalšího uzlu pro operace upgradu: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Příklad pro cluster uzlu 50: `(51) + (51  * 30 (default)) = 1,581` (/21 nebo větší)<p/>Příklad pro cluster uzlu 50, který obsahuje také zřizování pro horizontální navýšení kapacity dalších 10 uzlů: `(61) + (61 * 30 (default)) = 1,891` (/21 nebo větší)<p>Pokud při vytváření clusteru neurčíte maximální počet lusků na uzel, je maximální počet lusků na uzel nastaven na hodnotu *30*. Minimální požadovaný počet IP adres je založen na této hodnotě. Pokud vypočítáte minimální požadavky na IP adresu pro jinou maximální hodnotu, přečtěte si téma [jak nakonfigurovat maximální počet lusků na uzel](#configure-maximum---new-clusters) a nastavit tuto hodnotu při nasazení clusteru. |
 | Rozsah adres služby Kubernetes Service | Tento rozsah by neměl být použit žádným síťovým prvkem ani připojeným k této virtuální síti. CIDR adresy služby musí být menší než/12. Tento rozsah můžete znovu použít napříč různými AKS clustery. |
-| IP adresa služby DNS Kubernetes | IP adresa v rámci rozsahu adres služby Kubernetes, kterou bude používat služba zjišťování clusterových služeb (Kube-DNS). Nepoužívejte první IP adresu v rozsahu adres, například. 1. První adresa v rozsahu podsítě se používá pro *Kubernetes. default. svc. cluster. místní* adresa. |
-| Adresa mostu Docker | Síťová adresa mostu Docker představuje výchozí síťovou adresu mostu *docker0* přítomnou ve všech instalacích Dockeru. I když se *docker0* most nepoužívá v clusterech AKS nebo v samotných luskech, musíte tuto adresu nastavit tak, aby pokračovala v podpoře scénářů, jako je například *sestavení Docker* v rámci clusteru AKS. Je nutné vybrat CIDR pro síťovou adresu mostu Docker, protože jinak Docker vybere podsíť automaticky, která by mohla být v konfliktu s jinými CIDRs. Je nutné vybrat adresní prostor, který není v konfliktu se zbytkem CIDRs ve vašich sítích, včetně směrování služeb v clusteru a pod ním. Výchozí hodnota pro 172.17.0.1/16. Tento rozsah můžete znovu použít napříč různými AKS clustery. |
+| IP adresa služby DNS Kubernetes | IP adresa v rámci rozsahu adres služby Kubernetes, který bude používán zjišťováním Clusterové služby. Nepoužívejte první IP adresu v rozsahu adres, například. 1. První adresa v rozsahu podsítě se používá pro *Kubernetes. default. svc. cluster. místní* adresa. |
+| Adresa mostu Docker | Síťová adresa mostu Docker představuje výchozí síťovou adresu mostu *docker0* přítomnou ve všech instalacích Dockeru. I když se *docker0* most nepoužívá v clusterech AKS nebo v samotných luskech, musíte tuto adresu nastavit tak, aby pokračovala v podpoře scénářů, jako je například *sestavení Docker* v rámci clusteru AKS. Je nutné vybrat CIDR pro síťovou adresu mostu Docker, protože jinak Docker vybere podsíť automaticky, což může být v konfliktu s jinými CIDRs. Je nutné vybrat adresní prostor, který není v konfliktu se zbytkem CIDRs ve vašich sítích, včetně směrování služeb v clusteru a pod ním. Výchozí hodnota pro 172.17.0.1/16. Tento rozsah můžete znovu použít napříč různými AKS clustery. |
 
 ## <a name="maximum-pods-per-node"></a>Maximální počet lusků na uzel
 
@@ -63,7 +63,7 @@ Maximální počet lusků na uzel v clusteru AKS je 250. *Výchozí* maximální
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ano (až 250) |
 | Šablona Resource Manageru | 110 | 30 | Ano (až 250) |
-| Portál | 110 | 30 | No |
+| Portál | 110 | 110 (nakonfigurováno na kartě fondy uzlů) | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurace maximálního počtu nových clusterů
 
@@ -97,7 +97,9 @@ Při vytváření clusteru AKS se pro sítě Azure CNI dají nakonfigurovat nás
 
 **Podsíť**: podsíť ve virtuální síti, do které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro svůj cluster, vyberte *vytvořit novou* a postupujte podle kroků v části *Vytvoření podsítě* . V případě hybridního připojení by se rozsah adres neměl překrývat s ostatními virtuálními sítěmi ve vašem prostředí.
 
-**Rozsah adres služby Kubernetes**: Jedná se o sadu virtuálních IP adres, které Kubernetes přiřadí interním [službám][services] v clusteru. Můžete použít libovolný rozsah privátních adres, který splňuje následující požadavky:
+**Modul plug-in Azure Network plugin**: když se používá modul plug-in Azure Network, k interní službě Vyrovnávání zatížení s "ExternalTrafficPolicy = local" se nedá dostat z virtuálních počítačů s IP adresou v clusterCIDR, která nepatří do clusteru AKS.
+
+**Rozsah adres služby Kubernetes**: Tento parametr představuje sadu virtuálních IP adres, které Kubernetes přiřadí interním [službám][services] v clusteru. Můžete použít libovolný rozsah privátních adres, který splňuje následující požadavky:
 
 * Nesmí spadat do rozsahu IP adres virtuálních sítí vašeho clusteru.
 * Nesmí se překrývat s žádnou jinou virtuální sítí, se kterou se nacházejí partnerské uzly virtuální sítě clusteru.
@@ -143,7 +145,130 @@ az aks create \
 
 Následující snímek obrazovky z Azure Portal ukazuje příklad konfigurace těchto nastavení během vytváření clusteru AKS:
 
-![Pokročilá konfigurace sítě v Azure Portal][portal-01-networking-advanced]
+! [Rozšířená konfigurace sítě v Azure Portal] [portál-01-sítě-rozšířená]
+
+## <a name="dynamic-allocation-of-ips-and-enhanced-subnet-support-preview"></a>Dynamické přidělování IP adres a rozšířené podpory podsítí (Preview)
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+> [!NOTE] 
+> Tato funkce ve verzi Preview je aktuálně dostupná v následujících oblastech:
+>
+> * USA – středozápad
+
+Nevýhodou tradičního CNI je vyčerpání IP adres pod tím, jak cluster AKS roste, takže je potřeba znovu sestavit celý cluster ve větší podsíti. Nová schopnost dynamického přidělování IP adres ve službě Azure CNI tento problém řeší tím, že IP adresy allotting pod z podsítě jsou oddělené od podsítě, která je hostitelem clusteru AKS.  Nabízí následující výhody:
+
+* **Lepší využití IP** adres: IP adresy se dynamicky přiřazují do clusterových lusků z podsítě pod. To vede k lepšímu využití IP adres v clusteru v porovnání s tradičním řešením CNI, které provádí statické přidělování IP adres pro každý uzel.  
+
+* **Škálovatelné a flexibilní**: podsítě node a pod je možné škálovat nezávisle. Jednu podsíť pod můžete sdílet mezi několika fondy uzlů clusteru nebo mezi několika clustery AKS nasazenými ve stejné virtuální síti. Pro fond uzlů můžete také nakonfigurovat samostatnou podsíť pod.  
+
+* **Vysoký výkon**: vzhledem k tomu, že pod jsou přiřazené IP adresy virtuální sítě, mají přímé připojení k jinému clusteru pod a prostředkům ve virtuální síti. Řešení podporuje velmi velké clustery bez snížení výkonu.
+
+* **Samostatné zásady virtuální sítě pro lusky**: vzhledem k tomu, že lusky mají samostatnou podsíť, můžete pro ně nakonfigurovat samostatné zásady virtuální sítě, které se liší od zásad uzlu. To umožňuje spoustu užitečných scénářů, jako je například umožnění připojení k Internetu pro lusky a nikoli pro uzly, opravu zdrojové IP adresy pro uzel v rámci fondu uzlů pomocí síťového NAT sítě a použití skupin zabezpečení sítě k filtrování provozu mezi fondy uzlů.  
+
+* **Zásady sítě Kubernetes**: zásady sítě Azure i Calico pracují s tímto novým řešením.  
+
+### <a name="install-the-aks-preview-azure-cli"></a>Instalace rozhraní příkazového `aks-preview` řádku Azure
+
+Budete potřebovat rozšíření Azure CLI *AKS-Preview* . Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] . Nebo nainstalujte jakékoli dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] .
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="register-the-podsubnetpreview-preview-feature"></a>Registrace `PodSubnetPreview` funkce Preview
+
+Pokud chcete funkci používat, musíte `PodSubnetPreview` ve svém předplatném taky povolit příznak funkce.
+
+Příznak funkce Zaregistrujte `PodSubnetPreview` pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "PodSubnetPreview"
+```
+
+Zobrazení stavu v *registraci* trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSubnetPreview')].{Name:name,State:properties.state}"
+```
+
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="additional-prerequisites"></a>Další požadavky
+
+Požadavky, které už jsou uvedené pro Azure CNI, se pořád použijí, ale existuje několik dalších omezení:
+
+* Podporují se jenom clustery uzlu se systémem Linux a fondy uzlů.
+* AKS modul a SVÉPOMOCNÁ clustery nejsou podporovány.
+
+### <a name="planning-ip-addressing"></a>Plánování adresování IP
+
+Při použití této funkce je plánování mnohem jednodušší. Protože se uzly a lusky škálují nezávisle, jejich adresní prostory je také možné naplánovat samostatně. Vzhledem k tomu, že podsítě pod můžou být nakonfigurované na členitost fondu uzlů, můžou zákazníci při přidávání fondu uzlů vždycky přidat novou podsíť. Systémové lusky ve fondu clusterů nebo uzlů také přijímají IP adresy z podsítě pod, takže toto chování musí být k dispozici pro.
+
+Plánování IP adres pro služby K8S Services a most Docker zůstane beze změny.
+
+### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Maximální počet lusků na uzel v clusteru s dynamickým přidělením IP adres a rozšířené podpory podsítí
+
+Počet lusků na uzel při použití Azure CNI s dynamickým přidělením IP adres se mírně změnil z tradičního chování CNI:
+
+|CNI|Metoda nasazení|Výchozí|Konfigurovatelné při nasazení|
+|--|--| :--: |--|
+|Tradiční Azure CNI|Azure CLI|30|Ano (až 250)|
+|Azure CNI s dynamickým přidělením IP adres|Azure CLI|250|Ano (až 250)|
+
+Všechny ostatní doprovodné materiály týkající se konfigurace maximálního počtu uzlů na jeden uzel zůstanou stejné.
+
+### <a name="additional-deployment-parameters"></a>Další parametry nasazení
+
+Parametry nasazení popsané výše jsou stále platné, s jednou výjimkou:
+
+* Parametr **Subnet** teď odkazuje na podsíť související s uzly clusteru.
+* Další parametr **pod podsítí** se používá k určení podsítě, jejíž IP adresy budou dynamicky přiděleny do lusků.
+
+### <a name="configure-networking---cli-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Konfigurace sítě – rozhraní příkazového řádku s dynamickým přidělením IP adres a rozšířené podpory podsítí
+
+Použití dynamického přidělování IP adres a rozšířené podpory podsítí v clusteru je podobné jako výchozí metoda konfigurace clusteru Azure CNI. Následující příklad vás provede vytvořením nové virtuální sítě s podsítí pro uzly a podsíť pro lusky a vytvořením clusteru, který používá Azure CNI s dynamickým přidělením IP adres a rozšířené podpory podsítí. Nezapomeňte nahradit proměnné, jako například `$subscription` s vlastními hodnotami:
+
+Nejdřív vytvořte virtuální síť se dvěma podsítěmi:
+
+```azurecli-interactive
+$resourceGroup="myResourceGroup"
+$vnet="myVirtualNetwork"
+
+# Create our two subnet network 
+az network vnet create -g $rg --name $vnet --address-prefixes 10.0.0.0/8 -o none 
+az network vnet subnet create -g $rg --vnet-name $vnet --name nodesubnet --address-prefixes 10.240.0.0/16 -o none 
+az network vnet subnet create -g $rg --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
+```
+
+Pak vytvořte cluster s odkazem na podsíť uzlu pomocí `--vnet-subnet-id` a podsítě pod pomocí `--pod-subnet-id` :
+
+```azurecli-interactive
+$clusterName="myAKSCluster"
+$location="eastus"
+$subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
+
+az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --node-count 2 --network-plugin azure --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
+```
+
+#### <a name="adding-node-pool"></a>Přidávání fondu uzlů
+
+Při přidávání fondu uzlů, odkazujte na podsíť uzlu pomocí `--vnet-subnet-id` a podsítě pod `--pod-subnet-id` . Následující příklad vytvoří dvě nové podsítě, na které se pak odkazuje při vytváření nového fondu uzlů:
+
+```azurecli-interactive
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name node2subnet --address-prefixes 10.242.0.0/16 -o none 
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name pod2subnet --address-prefixes 10.243.0.0/16 -o none 
+
+az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepool --max-pods 250 --node-count 2 --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/node2subnet  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/pod2subnet --no-wait 
+```
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -155,7 +280,7 @@ Následující otázky a odpovědi se vztahují na konfiguraci sítě **Azure CN
 
 * *Jakou zdrojovou IP adresu externí systémy uvidí pro provoz pocházející z rozhraní pod Azure CNI-Enabled?*
 
-  Systémy ve stejné virtuální síti jako cluster AKS se jako zdrojová adresa pro všechny přenosy z pod sebou zobrazí jako IP adresa pod. Systémy mimo virtuální síť clusteru AKS se jako zdrojová adresa pro jakýkoli provoz z uzlu pod zobrazí jako IP adresa uzlu. 
+  Systémy ve stejné virtuální síti jako cluster AKS se jako zdrojová adresa pro všechny přenosy z pod sebou zobrazí jako IP adresa pod. Systémy mimo virtuální síť clusteru AKS se jako zdrojová adresa pro jakýkoli provoz z uzlu pod zobrazí jako IP adresa uzlu.
 
 * *Můžu nakonfigurovat zásady sítě vázané na základě?*
 
@@ -175,28 +300,42 @@ Následující otázky a odpovědi se vztahují na konfiguraci sítě **Azure CN
 
   Tato konfigurace se nedoporučuje, ale tato konfigurace je možná. Rozsah adres služby je sada virtuálních IP adres (VIP), které Kubernetes přiřadí interním službám v clusteru. Síť Azure nemá žádný přehled o rozsahu IP adres služby clusteru Kubernetes. Z důvodu nedostatku viditelnosti rozsahu adres služby clusteru je možné později vytvořit novou podsíť ve virtuální síti s clustery, která se překrývá s rozsahem adres služby. Pokud dojde k překrytí, může Kubernetes přiřadit službu IP, která je už používána jiným prostředkem v podsíti, což způsobí nepředvídatelné chování nebo selhání. Tím, že zajistíte používání rozsahu adres mimo virtuální síť clusteru, se můžete vyhnout tomuto překrytému riziku.
 
-## <a name="next-steps"></a>Další kroky
+### <a name="dynamic-allocation-of-ip-addresses-and-enhanced-subnet-support-faqs"></a>Dynamické přidělování IP adres a lepších otázek podpory pro podporu podsítí
 
-Další informace o sítích v AKS najdete v těchto článcích:
+Následující otázky a odpovědi se vztahují na **konfiguraci sítě Azure CNI při použití dynamického přidělování IP adres a rozšířené podpory podsítí**.
 
-- [Použití statické IP adresy se službou Azure Kubernetes Service (AKS) pro vyrovnávání zatížení](static-ip.md)
-- [Použití interního nástroje pro vyrovnávání zatížení s Azure Container Service (AKS)](internal-lb.md)
+* *Můžu k fondu clusteru nebo uzlů přiřadit víc podsítí pod?*
 
-- [Vytvoření základního kontroleru příchozího přenosu dat s připojením k externí síti][aks-ingress-basic]
-- [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
-- [Vytvoření kontroleru příchozího přenosu dat, který používá interní privátní síť a IP adresu][aks-ingress-internal]
-- [Vytvoření kontroleru příchozího přenosu dat s dynamickou veřejnou IP adresou a konfigurací šifry pro automatické generování certifikátů TLS][aks-ingress-tls]
-- [Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou a nastavení šifrování, které umožňuje automatické generování certifikátů TLS][aks-ingress-static-tls]
+  Do clusteru nebo fondu uzlů se dá přiřadit jenom jedna podsíť. Jedna podsíť ale může sdílet víc clusterů nebo fondů uzlů.
 
-### <a name="aks-engine"></a>Modul AKS
+* *Je možné přiřazovat podsítě z jiné virtuální sítě úplně pod?*
+
+  Podsíť pod by měla být ze stejné virtuální sítě jako cluster.  
+
+* *Můžou některé fondy uzlů v clusteru používat tradiční CNI, zatímco ostatní používají nové CNI?*
+
+  Celý cluster by měl používat jenom jeden typ CNI.
+
+## <a name="aks-engine"></a>Modul AKS
 
 Modul [AKS (Azure Kubernetes Service Engine)][aks-engine] je open source projekt, který generuje Azure Resource Manager šablony, které můžete použít k nasazení clusterů Kubernetes v Azure.
 
 Clustery Kubernetes vytvořené pomocí AKS Engine podporují moduly plug-in [kubenet][kubenet] a [Azure CNI][cni-networking] . V takovém případě jsou oba scénáře sítě podporované modulem AKS.
 
+## <a name="next-steps"></a>Další kroky
+
+Další informace o sítích v AKS najdete v těchto článcích:
+
+* [Použití statické IP adresy se službou Azure Kubernetes Service (AKS) pro vyrovnávání zatížení](static-ip.md)
+* [Použití interního nástroje pro vyrovnávání zatížení s Azure Container Service (AKS)](internal-lb.md)
+
+* [Vytvoření základního kontroleru příchozího přenosu dat s připojením k externí síti][aks-ingress-basic]
+* [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
+* [Vytvoření kontroleru příchozího přenosu dat, který používá interní privátní síť a IP adresu][aks-ingress-internal]
+* [Vytvoření kontroleru příchozího přenosu dat s dynamickou veřejnou IP adresou a konfigurací šifry pro automatické generování certifikátů TLS][aks-ingress-tls]
+* [Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou a nastavení šifrování, které umožňuje automatické generování certifikátů TLS][aks-ingress-static-tls]
 <!-- IMAGES -->
-[advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
-[portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
+[pokročilé-sítě-diagram-01]:./Media/Networking-Overview/advanced-networking-diagram-01.png [Portal-01-Networking-Advanced]:./Media/Networking-Overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine
@@ -206,7 +345,7 @@ Clustery Kubernetes vytvořené pomocí AKS Engine podporují moduly plug-in [ku
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 
 <!-- LINKS - Internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
 [aks-network-concepts]: concepts-network.md
@@ -215,6 +354,11 @@ Clustery Kubernetes vytvořené pomocí AKS Engine podporují moduly plug-in [ku
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models

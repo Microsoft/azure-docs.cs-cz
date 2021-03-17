@@ -7,26 +7,26 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref, devx-track-python
-ms.openlocfilehash: 95da32c6f684946bf6d394c282246f2f329b8620
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: fe987070438c689e899dee18edaf4f708555ab11
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873972"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106752"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
 >
 >
 
 V tomto článku se dozvíte, jak pomocí sady Python SDK provádět ověřování pomocí služby s Azure Data Lake Storage Gen1. Ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí Pythonu najdete v tématu [ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-end-user-authenticate-python.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Python**. Python si můžete stáhnout [tady](https://www.python.org/downloads/). Tento článek používá Python verze 3.6.2.
 
@@ -40,7 +40,7 @@ Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstal
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
 * `azure-mgmt-datalake-store`Modul, který zahrnuje operace správy účtu Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu správy Azure Data Lake Storage Gen1](/python/api/azure-mgmt-datalake-store/).
-* `azure-datalake-store`Modul, který zahrnuje operace data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* `azure-datalake-store`Modul, který zahrnuje operace data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 

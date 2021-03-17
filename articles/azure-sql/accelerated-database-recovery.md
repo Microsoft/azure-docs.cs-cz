@@ -7,21 +7,30 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=4
 ms.devlang: ''
 ms.topic: conceptual
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: carlrab
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd1b33b2f6b1b0e0bf94639b3991b6507a89f5a9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344692"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400790"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Urychlené obnovení databáze v Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL Server, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, a to tak, že přenavrhování SQL Serverho procesu obnovení databázového stroje. Pravidlo automatického nasazení je aktuálně dostupné pro Azure SQL Database, Azure SQL Managed instance, SQL Server na virtuálním počítači Azure a databází ve službě Azure synapse Analytics (aktuálně ve verzi Preview). Hlavní výhody ADR jsou:
+**Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL Server, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, a to tak, že přenavrhování SQL Serverho procesu obnovení databázového stroje. 
+
+Pravidlo automatického nasazení je aktuálně k dispozici pro Azure SQL Database, Azure SQL Managed instance, databáze ve službě Azure synapse Analytics a SQL Server na virtuálních počítačích Azure počínaje SQL Server 2019. 
+
+> [!NOTE] 
+> V Azure SQL Database a Azure SQL Managed instance je ve výchozím nastavení povolená možnost ADR a zakázání pravidla automatického nasazení pro některý z těchto produktů se nepodporuje. 
+
+## <a name="overview"></a>Přehled
+
+Hlavní výhody ADR jsou:
 
 - **Rychlá a konzistentní obnova databáze**
 

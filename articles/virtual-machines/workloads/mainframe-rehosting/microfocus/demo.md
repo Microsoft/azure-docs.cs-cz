@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508045"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733145"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavení Micro Focus CICS BankDemo pro Micro Enterprise Developer 4,0 v Azure
 
@@ -22,13 +22,13 @@ CICs představuje systém pro řízení informací o zákaznících, platformu t
 > [!NOTE]
 > Už brzy: pokyny pro nastavení [Micro Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) na virtuálních počítačích Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Virtuální počítač s [podnikovým vývojářem](set-up-micro-focus-azure.md). Mějte na paměti, že Enterprise Developer má pro účely vývoje a testování kompletní instanci podnikového serveru. Tato instance je instancí podnikového serveru, který se používá pro ukázku.
 
 - [Edice SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express). Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře. Enterprise Server vyžaduje databázi pro správu CICSch oblastí a aplikace BankDemo používá také databázi SQL Server s názvem BANKDEMO. Tato ukázka předpokládá, že používáte SQL Server Express pro obě databáze. Po instalaci vyberte základní instalaci.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS se používá ke správě databází a spuštění skriptu T-SQL. Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). SSMS se používá ke správě databází a spuštění skriptu T-SQL. Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře.
 
 - [Visual Studio 2019](https://azure.microsoft.com/downloads/) s nejnovější aktualizací Service Pack nebo [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), kterou si můžete zdarma stáhnout.
 
@@ -50,7 +50,7 @@ Po instalaci Enterprise Developer 4,0 na virtuální počítač musíte nakonfig
     - Skripty a nástroje správy služby IIS
     - Služba správy služby IIS
 
-4. Vyberte **webové služby**a podívejte se na tyto možnosti:
+4. Vyberte **webové služby** a podívejte se na tyto možnosti:
 
      Funkce pro vývoj aplikací:
     - Rozšiřitelnost rozhraní .NET
@@ -63,12 +63,12 @@ Po instalaci Enterprise Developer 4,0 na virtuální počítač musíte nakonfig
 
 5. Vyberte **Aktivační službu procesů systému Windows** a všechny její podřízené položky.
 
-6. V případě **funkcí**ověřte **rozhraní Microsoft .NET Framework 3.5.1**a podívejte se na následující možnosti:
+6. V případě **funkcí** ověřte **rozhraní Microsoft .NET Framework 3.5.1** a podívejte se na následující možnosti:
 
     - Windows Communication Foundation aktivace protokolem HTTP
     - Windows Communication Foundation aktivace jiným protokolem než HTTP
 
-7. V případě **funkcí**ověřte **rozhraní Microsoft .NET Framework 4,6**a podívejte se na následující možnosti:
+7. V případě **funkcí** ověřte **rozhraní Microsoft .NET Framework 4,6** a podívejte se na následující možnosti:
 
    - Aktivace pojmenovaného kanálu
    - Aktivace protokolem TCP
@@ -78,7 +78,7 @@ Po instalaci Enterprise Developer 4,0 na virtuální počítač musíte nakonfig
 
 8. Když vyberete všechny možnosti, nainstaluje se kliknutím na **Další** .
 
-9. Po použití funkcí Windows použijte **Ovládací panely \> \> Nástroje pro správu systému a zabezpečení**a vyberte **služby**. Posuňte se dolů a ujistěte se, že jsou spuštěné následující služby a že jsou nastavené na **Automatické**:
+9. Po použití funkcí Windows použijte **Ovládací panely \> \> Nástroje pro správu systému a zabezpečení** a vyberte **služby**. Posuňte se dolů a ujistěte se, že jsou spuštěné následující služby a že jsou nastavené na **Automatické**:
 
     - **NetTcpPortSharing**
     - **Adaptér naslouchání NET. pipe**
@@ -132,7 +132,7 @@ Dotaz by měl běžet bez chyb. Po dokončení budete mít ukázkovou databázi 
 
 1. Otevřete Visual Studio a přihlaste se.
 
-2. V nabídce **soubor** vyberte možnost **Otevřít projekt nebo řešení**, přejděte na jazyk **C: \\ Uživatelé \\ Public \\ Documents \\ Micro \\ Enterprise Developer \\ Samples \\ sálové \\ CICS \\ dotnet \\ BankDemo**a vyberte soubor **sln** .
+2. V nabídce **soubor** vyberte možnost **Otevřít projekt nebo řešení**, přejděte na jazyk **C: \\ Uživatelé \\ Public \\ Documents \\ Micro \\ Enterprise Developer \\ Samples \\ sálové \\ CICS \\ dotnet \\ BankDemo** a vyberte soubor **sln** .
 
 3. Vyhledá objekty nějakou dobu. COBOL programy se zobrazují v Průzkumník řešení s rozšířením CBL společně s CopyBooks (CPY) a JCL.
 
@@ -141,7 +141,7 @@ Dotaz by měl běžet bez chyb. Po dokončení budete mít ukázkovou databázi 
     > [!NOTE]
     > Projekt BankDemo využívá HCOSS (možnost kompatibility hostitelů pro SQL Server), která se pro tuto ukázku nepoužívá.
 
-5. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **BankDemo2** a vyberte možnost **sestavit**.
+5. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **BankDemo2** a vyberte možnost **sestavit**.
 
     > [!NOTE]
     > Při sestavování na úrovni řešení dojde k chybám, protože HCOSS není nakonfigurovaný.
@@ -177,7 +177,7 @@ Dotaz by měl běžet bez chyb. Po dokončení budete mít ukázkovou databázi 
 
 4. Vyberte **definovat oblast** pro vytvoření nové oblasti CICS s názvem **BANKDEMO**, která je hostovaná v databázi (místní).
 
-5. Zadejte instanci databázového serveru, klikněte na tlačítko **Další**a zadejte název oblasti **BANKDEMO**.
+5. Zadejte instanci databázového serveru, klikněte na tlačítko **Další** a zadejte název oblasti **BANKDEMO**.
 
      ![Dialog definovat oblast – dialogové okno](media/07-demo-cics.png)
 
@@ -189,7 +189,7 @@ Dotaz by měl běžet bez chyb. Po dokončení budete mít ukázkovou databázi 
 
 ## <a name="create-xa-resource-definitions"></a>Vytvoření definic prostředků XA
 
-1. V levém podokně uživatelského rozhraní **pro správu .NET** rozbalte **systém**a pak proveďte **definice prostředků XA**. Toto nastavení definuje, jak oblast spolupracuje s podnikovým serverem a aplikačními databázemi.
+1. V levém podokně uživatelského rozhraní **pro správu .NET** rozbalte **systém** a pak proveďte **definice prostředků XA**. Toto nastavení definuje, jak oblast spolupracuje s podnikovým serverem a aplikačními databázemi.
 
 2. Klikněte pravým tlačítkem na **definice prostředků XA** a vyberte **přidat instanci serveru**.
 
@@ -197,11 +197,11 @@ Dotaz by měl běžet bez chyb. Po dokončení budete mít ukázkovou databázi 
 
 4. Vyberte instanci z kontejneru s **definicemi prostředků XA (nazev_pocitace \\ SQLEXPRESS)** a klikněte na **Přidat**.
 
-5. Vyberte **položku definice prostředků XA databáze** a pak jako **název** a **oblast**zadejte **BANKDEMO** .
+5. Vyberte **položku definice prostředků XA databáze** a pak jako **název** a **oblast** zadejte **BANKDEMO** .
 
      ![Obrazovka definice nového prostředku XA databáze](media/09-demo-xa.png)
 
-6. Kliknutím na tři tečky (**...**) zobrazte Průvodce připojovacím řetězcem. Jako **název serveru**zadejte **(Local) \\ SQLEXPRESS**. V případě **přihlášení**vyberte **ověřování systému Windows**. Jako název databáze zadejte **BANKDEMO** .
+6. Kliknutím na tři tečky (**...**) zobrazte Průvodce připojovacím řetězcem. Jako **název serveru** zadejte **(Local) \\ SQLEXPRESS**. V případě **přihlášení** vyberte **ověřování systému Windows**. Jako název databáze zadejte **BANKDEMO** .
 
      ![Obrazovka upravit připojovací řetězec](media/10-demo-string.png)
 
@@ -212,7 +212,7 @@ Dotaz by měl běžet bez chyb. Po dokončení budete mít ukázkovou databázi 
 > [!NOTE]
 > První krok je důležitý: v oblasti musíte nastavit, aby se použila definice prostředků XA, kterou jste právě vytvořili.
 
-1. V **kontejneru oblasti**přejděte do **oblasti BANDEMO CICS** a v podokně **Akce** vyberte **Upravit spouštěcí soubor oblasti** . Posuňte se dolů k vlastnostem SQL a zadejte **bankdemo** pro **název prostředku XA**nebo použijte tři tečky k jejímu výběru.
+1. V **kontejneru oblasti** přejděte do **oblasti BANDEMO CICS** a v podokně **Akce** vyberte **Upravit spouštěcí soubor oblasti** . Posuňte se dolů k vlastnostem SQL a zadejte **bankdemo** pro **název prostředku XA** nebo použijte tři tečky k jejímu výběru.
 
 2. Kliknutím na ikonu **Uložit** uložte změny.
 
@@ -234,15 +234,15 @@ Vytvořte naslouchací proces pro relace TN3270, které přistupují k aplikaci 
 
 3. Všimněte si výše definovaných dvou oblastí (ESDEMO a JCLDEMO).
 
-4. Pokud chcete vytvořit novou oblast pro BANKDEMO, klikněte pravým tlačítkem na **oblasti**a vyberte **Přidat oblast**.
+4. Pokud chcete vytvořit novou oblast pro BANKDEMO, klikněte pravým tlačítkem na **oblasti** a vyberte **Přidat oblast**.
 
 5. Vyberte **oblast BANKDEMO**.
 
 6. Přidejte kanál TN3270 kliknutím pravým tlačítkem myši na **oblast BANKDEMO** a výběrem možnosti **Přidat kanál**.
 
-7. Jako **název**zadejte **TN3270**. Jako **port**zadejte **9024**. Aplikace ESDEMO používá port 9230, takže potřebujete použít jiný port.
+7. Jako **název** zadejte **TN3270**. Jako **port** zadejte **9024**. Aplikace ESDEMO používá port 9230, takže potřebujete použít jiný port.
 
-8. Soubor uložíte tak, že kliknete na ikonu **Uložit** nebo **File** zvolíte \> **Uložit**soubor.
+8. Soubor uložíte tak, že kliknete na ikonu **Uložit** nebo  zvolíte \> **Uložit** soubor.
 
 9. Pokud chcete spustit naslouchací proces, klikněte na ikonu **Spustit naslouchací proces** nebo vyberte **Možnosti** \> **Spustit naslouchací proces**.
 
@@ -268,7 +268,7 @@ Poslední věcí, kterou musíte udělat, je konfigurace relace 3270 pomocí Rum
 ![Úvodní obrazovka zobrazení sálového počítače v sálovém sálovém zobrazení ](media/14-demo.png)
  ![ -Rumba-subsystému](media/15-demo.png)
 
-Blahopřejeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
+Gratulujeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
 
 ## <a name="next-steps"></a>Další kroky
 

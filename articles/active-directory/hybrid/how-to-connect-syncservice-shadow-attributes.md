@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356657"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90088966"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect atributy stínové služby synchronizace
 Většina atributů je ve službě Azure AD reprezentována stejným způsobem jako v místní službě Active Directory. Některé atributy ale mají nějaké speciální zpracování a hodnota atributu ve službě Azure AD se může lišit od toho, co se Azure AD Connect synchronizuje.
@@ -32,7 +32,7 @@ Některé atributy mají ve službě Azure AD dvě reprezentace. Místní hodnot
 Pomocí Azure Portal nebo prostředí PowerShell nemůžete zobrazit atributy stínů. Ale porozumění konceptu vám pomůže vyřešit některé scénáře, kde má atribut odlišné hodnoty v místním prostředí i v cloudu.
 
 Chcete-li lépe pochopit chování, podívejte se na tento příklad ze společnosti Fabrikam:  
-![Domény](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![Snímek obrazovky s příponou hlavního názvu uživatele (UPN) služby Active Directory zobrazuje několik příkladů s odpovídající hodnotou domény služby Azure AD, která není přidaná, není ověřena a ověřena.](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Mají několik přípon UPN v místní službě Active Directory, ale ověřili jsme je jenom jednou.
 
 ### <a name="userprincipalname"></a>userPrincipalName (Hlavní název uživatele)

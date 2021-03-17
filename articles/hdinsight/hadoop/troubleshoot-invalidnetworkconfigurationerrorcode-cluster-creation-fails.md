@@ -1,18 +1,15 @@
 ---
 title: Chyba InvalidNetworkConfigurationErrorCode – Azure HDInsight
 description: Různé důvody pro neúspěšné vytváření clusterů pomocí InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 01/22/2020
-ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/12/2021
+ms.openlocfilehash: 83d4819ecb1da91bda5fb4f1cb445bbc34fd007f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82780432"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927011"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 
@@ -54,7 +51,7 @@ Popis chyby obsahuje "připojení k účtu Azure Storage se nepovedlo nebo se ne
 
 ### <a name="cause"></a>Příčina
 
-Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí připojení ke všem IP adresám, aby bylo možné získat přístup k těmto službám. Přesný postup řešení závisí na tom, jestli jste nastavili skupinu zabezpečení sítě (NSG) nebo uživatelsky definovaná pravidla (UDR). Podrobnosti o těchto konfiguracích najdete v části [řízení síťového provozu pomocí služby HDInsight se skupinami zabezpečení sítě a uživatelsky definovanými trasami](../control-network-traffic.md) .
+Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí připojení ke všem IP adresám, aby bylo možné získat přístup k těmto službám. Přesné kroky řešení závisí na tom, jestli jste nastavili skupinu zabezpečení sítě (NSG) nebo pravidla User-Defined (UDR). Podrobnosti o těchto konfiguracích najdete v části [řízení síťového provozu pomocí služby HDInsight se skupinami zabezpečení sítě a uživatelsky definovanými trasami](../control-network-traffic.md) .
 
 ### <a name="resolution"></a>Řešení
 
@@ -68,6 +65,19 @@ Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí př
 
     Pokud jsou definované trasy, ujistěte se, že existují trasy pro IP adresy v oblasti, ve které byl cluster nasazený, a **typem** pro každou trasu je **Internet**. Pro každou požadovanou IP adresu popsanou ve výše uvedeném článku by měla být definována trasa.
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Nepovedlo se navázat odchozí připojení z clusteru pro komunikaci se zprostředkovatelem prostředků HDInsight. Ujistěte se prosím, že je povolené odchozí připojení.
+
+### <a name="issue"></a>Problém
+
+Popis chyby obsahuje "selhalo navázání odchozího připojení z clusteru pro komunikaci se zprostředkovatelem prostředků HDInsight. Ujistěte se prosím, že je povolené odchozí připojení.
+
+### <a name="cause"></a>Příčina
+
+Při použití privátních propojených clusterů HDInsight musí být odchozí přístup z clusteru nakonfigurovaný tak, aby umožňoval připojení k poskytovateli prostředků HDInsight.
+
+### <a name="resolution"></a>Řešení
+
+* Pokud chcete tento problém vyřešit, přečtěte si postup nastavení privátního odkazu HDInsight při [instalaci privátního odkazu](../hdinsight-private-link.md) .
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"Konfigurace virtuální sítě není kompatibilní s požadavkem HDInsight".
@@ -101,7 +111,7 @@ Ověřte, že je 168.63.129.16 ve vlastním řetězci DNS. Servery DNS v rámci 
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    Mělo by se vám zobrazit přibližně toto:
+    Měli byste vidět přibližně toto:
 
     ```output
     nameserver 168.63.129.16
@@ -134,6 +144,13 @@ hostname -f
 nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
+### <a name="cause"></a>Příčina
+
+Další příčinou tohoto `InvalidNetworkConfigurationErrorCode` kódu chyby může být použití zastaralého parametru `EnableVmProtection` v PowerShellu nebo Runbooku Azure.
+
+### <a name="resolution"></a>Řešení
+
+Použijte platné parametry pro `Get-AzVirtualNetwork` , jak je popsáno v [sadě AZ PowerShell SDK](/powershell/module/az.network/get-azvirtualnetwork)
 
 ---
 
@@ -145,4 +162,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

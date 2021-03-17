@@ -1,128 +1,93 @@
 ---
-title: 'Kurz: Začínáme vytvořit pracovní prostor synapse'
-description: V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a fond Apache Spark.
+title: 'Rychlý Start: Začínáme – vytvoření pracovního prostoru synapse'
+description: V tomto kurzu se dozvíte, jak vytvořit pracovní prostor synapse, vyhrazený fond SQL a fond Apache Spark bez serveru.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: b4d48dcc8f09ae8e2ec3bb198f8864de1c945682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/31/2020
+ms.openlocfilehash: 94d069a283249f2880743ba911c32bf3821d28c8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101502"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171479"
 ---
-# <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru synapse
+# <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
-V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a fond Apache Spark. 
+V tomto kurzu se dozvíte, jak vytvořit pracovní prostor synapse, vyhrazený fond SQL a fond Apache Spark bez serveru. 
 
-## <a name="prepare-a-storage-account"></a>Příprava účtu úložiště
+## <a name="prerequisites"></a>Požadavky
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
-1. Vytvořte nový účet úložiště s následujícími nastaveními:
+K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
 
-    |Karta|Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|---|
-    |Základy|**Název účtu úložiště**| Vyberte libovolný název.| V tomto dokumentu použijeme název **contosolake**.|
-    |Základy|**Druh účtu**| **StorageV2** ||
-    |Základy|**Umístění**|Vyberte libovolné umístění.| Doporučujeme, aby byl váš pracovní prostor Azure synapse Analytics a účet Azure Data Lake Storage Gen2 ve stejné oblasti.|
-    |Upřesnit|**Data Lake Storage Gen2**|**Povoleno**| Azure synapse funguje jenom s účty úložiště, které mají povolené toto nastavení.|
-    |||||
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Vytvořte pracovní prostor synapse v Azure Portal
 
-1. Po vytvoření účtu úložiště v levém podokně vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny:
-    * Přiřaďte roli **vlastníka** sami sobě.
-    * Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** .
-1. V levém podokně vyberte **kontejnery** a vytvořte kontejner.
-1. Kontejneru můžete dát libovolný název. V tomto dokumentu budeme pojmenovat **uživatele**kontejneru.
-1. Přijměte výchozí nastavení **úroveň veřejného přístupu**a pak vyberte **vytvořit**.
-
-V následujícím kroku nakonfigurujete pracovní prostor Azure synapse tak, aby používal tento účet úložiště jako primární účet úložiště a kontejner pro ukládání dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
-
-## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru synapse
-
-1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
-1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
-1. Vyberte **Přidat** a vytvořte pracovní prostor pomocí těchto nastavení:
-
-    |Karta|Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|---|
-    |Základy|**Název pracovního prostoru**|Můžete si je pojmenovat.| V tomto dokumentu budeme používat **MyWorkspace**.|
-    |Základy|**Oblast**|Porovnává s oblastí účtu úložiště.|
-
-1. V části **vybrat data Lake Storage Gen 2**vyberte účet a kontejner, který jste vytvořili dříve.
+1. Otevřete [Azure Portal](https://portal.azure.com)a na panelu hledání zadejte **synapse** , aniž byste museli vstoupit.
+1. Ve výsledcích hledání v části **služby** vyberte **Azure synapse Analytics**.
+1. Vyberte **Přidat** a vytvořte pracovní prostor.
+1. Karta **základy** v části **Project Details (podrobnosti projektu**) vyplňte následující pole:
+      1. **Předplatné** – vyberte nějaké předplatné.
+      2. **Skupina prostředků** – použijte jakoukoli skupinu prostředků.
+      3. **Skupina prostředků** – ponechte toto pole prázdné.
+1. Na kartě **základy** v části **Podrobnosti o pracovním prostoru** vyplňte následující pole:
+      1. **Název pracovního prostoru** – vyberte libovolný globálně jedinečný název. V tomto kurzu použijeme **MyWorkspace**.
+      1. **Oblast** – vyberte libovolnou oblast.
+      1. **Vybrat Data Lake Storage Gen 2**
+        1. Klikněte na tlačítko **z předplatného**.
+        1. Podle **názvu účtu** klikněte na **vytvořit nový** a pojmenujte nový účet úložiště **contosolake** nebo podobný, protože tento název musí být jedinečný.
+        1. Podle **názvu systému souborů** klikněte na **vytvořit nový** a pojmenujte **uživatele** IT. Tím se vytvoří kontejner úložiště s názvem **Uživatelé**. Pracovní prostor bude používat tento účet úložiště jako primární účet úložiště pro tabulky Spark a protokoly aplikací Spark.
+        1. Zaškrtněte políčko přiřadit roli Přispěvatel dat objektů BLOB úložiště v poli Data Lake Storage Gen2 účet. 
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
-## <a name="verify-access-to-the-storage-account"></a>Ověřte přístup k účtu úložiště.
+> [!NOTE]
+> Pokud chcete povolit funkce pracovního prostoru z existujícího vyhrazeného fondu SQL (dřív SQL DW), přečtěte si, [Jak povolit pracovní prostor pro vyhrazený fond SQL (dřív SQL DW)](./sql-data-warehouse/workspace-connected-create.md).
 
-Spravované identity pro váš pracovní prostor Azure synapse už můžou mít přístup k účtu úložiště. Pomocí těchto kroků se ujistěte, že:
-
-1. Otevřete [Azure Portal](https://portal.azure.com) a primární účet úložiště, který jste zvolili pro váš pracovní prostor.
-1. V levém podokně vyberte **řízení přístupu (IAM)** .
-1. Přiřaďte následující role nebo se ujistěte, že jsou již přiřazeny. Pro identitu pracovního prostoru používáme stejný název a název pracovního prostoru.
-    * Pro roli **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště přiřaďte **MyWorkspace** jako identitu pracovního prostoru.
-    * Přiřaďte **MyWorkspace** jako název pracovního prostoru.
-
-1. Vyberte **Uložit**.
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio
 
 Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevřít synapse Studio:
 
-* Otevřete pracovní prostor synapse ve [Azure Portal](https://portal.azure.com). V horní části **přehledu** vyberte **Spustit synapse Studio**.
+* Otevřete pracovní prostor synapse v [Azure Portal](https://portal.azure.com)v části **Přehled** v pracovním prostoru synapse vyberte **otevřít** v dialogovém okně Otevřít synapse Studio.
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
 
-## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
+
+## <a name="the-built-in-serverless-sql-pool"></a>Integrovaný fond SQL bez serveru
+
+Každý pracovní prostor obsahuje předem sestavený fond SQL bez serveru s názvem **integrovaný**. Tento fond nejde odstranit. Neserverové fondy SQL umožňují používat SQL bez nutnosti rezervovat kapacitu pomocí vyhrazených fondů SQL. Na rozdíl od vyhrazených fondů SQL je fakturace pro fond SQL bez serveru založená na množství dat naskenovaných pro spuštění dotazu, nikoli na počtu kapacit přidělených do fondu.
+
+
+## <a name="create-a-dedicated-sql-pool"></a>Vytvoření vyhrazeného fondu SQL
 
 1. V synapse studiu v levém podokně vyberte **Spravovat**  >  **fondy SQL**.
-1. Vyberte **nové** a zadejte tato nastavení:
+1. Vybrat **Nový**
+1. Pro **název fondu SQL** vyberte **SQLPOOL1**
+1. Pro **úroveň výkonu** vyberte **DW100C**
+1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Vyhrazený fond SQL bude připravený během několika minut. Váš vyhrazený fond SQL je přidružený k vyhrazené databázi fondu SQL, která se také označuje jako **SQLPOOL1**.
 
-    |Nastavení | Navrhovaná hodnota | 
-    |---|---|---|
-    |**Název fondu SQL**| **SQLDB1**|
-    |**Úroveň výkonu**|**DW100C**|
-    |||
+Vyhrazený fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond můžete později pozastavit a snížit tak náklady.
 
-1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš fond SQL bude připravený během několika minut. Váš fond SQL je přidružen k databázi fondu SQL, která se také označuje jako **SQLDB1**.
+> [!NOTE] 
+> Při vytváření nového vyhrazeného fondu SQL (dříve SQL DW) ve vašem pracovním prostoru se otevře vyhrazená stránka pro zřizování fondu SQL. Zřizování bude provedeno na logickém SQL serveru.
 
-Fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond můžete později pozastavit a snížit tak náklady.
 
-## <a name="create-an-apache-spark-pool"></a>Vytvoření fondu Apache Spark
+## <a name="create-a-serverless-apache-spark-pool"></a>Vytvoření fondu Apache Spark bez serveru
 
 1. V synapse studiu v levém podokně vyberte **Spravovat**  >  **fondy Apache Spark**.
-1. Vyberte **nové** a zadejte tato nastavení:
-
-    |Nastavení | Navrhovaná hodnota | 
-    |---|---|---|
-    |**Název Apache Spark fondu**|**Spark1**
-    |**Velikost uzlu**| **Malá**|
-    |**Počet uzlů**| Nastavte minimum na 3 a maximum na 3.|
-
+1. Vybrat **Nový** 
+1. Pro **Apache Spark název fondu** zadejte **Spark1**.
+1. Jako **Velikost uzlu** zadejte **malá**.
+1. Pro **počet uzlů** nastavte Minimum na 3 a maximum na 3.
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš fond Apache Spark bude připravený během několika sekund.
 
-> [!NOTE]
-> Bez ohledu na název Apache Spark fond nevypadá jako fond SQL. Jedná se o jenom některá základní metadata, která používáte k tomu, abyste synapse pracovnímu prostoru Azure, jak pracovat s Sparkem.
+Fond Spark oznamuje, že Azure synapse, kolik prostředků Spark se má použít. Platíte jenom za prostředky, které používáte. Při aktivním zastavení fondu se prostředky automaticky vyprší a recykluje se.
 
-Vzhledem k tomu, že se jedná o metadata, nelze spustit ani zastavit fondy Spark.
-
-Při provádění aktivity Sparku v Azure synapse určíte fond Spark, který se má použít. Tento fond oznamuje službě Azure synapse, kolik prostředků Spark se má použít. Platíte jenom za prostředky, které používáte. Při aktivním zastavení fondu se prostředky automaticky vyprší a recykluje se.
-
-> [!NOTE]
-> Databáze Spark jsou nezávisle vytvořené z fondů Spark. Pracovní prostor má vždy databázi Spark s názvem **Default**. Můžete vytvořit další databáze Spark.
-
-## <a name="the-sql-on-demand-pool"></a>Fond na vyžádání SQL
-
-Každý pracovní prostor obsahuje předem sestavený fond s názvem **SQL na vyžádání**. Tento fond nejde odstranit. Fond na vyžádání SQL umožňuje pracovat s SQL bez nutnosti vytvářet nebo považovat za správu fondu SQL ve službě Azure synapse.
-
-Na rozdíl od jiných druhů fondů je fakturace za SQL na vyžádání založená na množství dat naskenovaných pro spuštění dotazu, nikoli na počtu prostředků použitých ke spuštění dotazu.
-
-* SQL na vyžádání má vlastní databáze SQL na vyžádání, které existují nezávisle na jakémkoli fondu SQL na vyžádání.
-* Pracovní prostor má vždy přesně jeden fond SQL na vyžádání s názvem **SQL na vyžádání**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Analýza pomocí fondu SQL](get-started-analyze-sql-pool.md)
+> [Analýza pomocí vyhrazeného fondu SQL](get-started-analyze-sql-pool.md)

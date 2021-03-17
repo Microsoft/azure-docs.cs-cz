@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170135"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928677"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci IDology s využitím Azure Active Directory B2C 
 
 V tomto ukázkovém kurzu poskytujeme pokyny pro integraci Azure AD B2C s [IDology](https://www.idology.com/solutions/). IDology je ověření identity a poskytovatel kontroly pravopisu s více řešeními. V této ukázce budeme pokrývat řešení ExpectID podle IDology.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -67,13 +67,13 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ### <a name="part-1---deploy-the-api"></a>Část 1 – nasazení rozhraní API
 
-Nasaďte poskytnutý kód rozhraní API do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](/visualstudio/deployment/quickstart-deploy-to-azure).
 
 Abyste mohli Azure AD nakonfigurovat pomocí požadovaných nastavení, budete potřebovat adresu URL nasazené služby.
 
 ### <a name="part-2---configure-the-api"></a>Část 2 – konfigurace rozhraní API 
 
-Nastavení aplikace je možné [nakonfigurovat v App Service v Azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). S touto metodou se dají nastavení bezpečně nakonfigurovat bez jejich kontroly do úložiště. Pro rozhraní REST API musíte zadat následující nastavení:
+Nastavení aplikace je možné [nakonfigurovat v App Service v Azure](../app-service/configure-common.md#configure-app-settings). S touto metodou se dají nastavení bezpečně nakonfigurovat bez jejich kontroly do úložiště. Pro rozhraní REST API musíte zadat následující nastavení:
 
 | Nastavení aplikace | Zdroj | Poznámky |
 | :-------- | :------------| :-----------|
@@ -119,7 +119,7 @@ Vzorová zásada používá tyto názvy klíčů:
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Otevřete Azure AD B2C tenant a v části **zásady**vyberte **toky uživatelů**.
+1. Otevřete Azure AD B2C tenant a v části **zásady** vyberte **toky uživatelů**.
 
 2. Vyberte dříve vytvořený **tok uživatele**.
 
@@ -137,7 +137,7 @@ Vzorová zásada používá tyto názvy klíčů:
 
 6. Projděte si tok přihlášení.
 
-7. Po zadání **pokračování**se zobrazí IDology skládanky.
+7. Po zadání **pokračování** se zobrazí IDology skládanky.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -145,5 +145,4 @@ Další informace najdete v následujících článcích:
 
 - [Vlastní zásady v Azure AD B2C](custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md?tabs=applications) 
-
+- [Začínáme s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md?tabs=applications)

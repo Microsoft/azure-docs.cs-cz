@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, nahrávání, senzor, SDK, přístup, Hloubka, video, fotoaparát, imu, pohyb, senzor, zvuk, mikrofon, Matroska, sada SDK pro sadu senzorů, stažení
 ms.openlocfilehash: 17c1b33120eacb5d0c6d3c02e692d1488ef474e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277167"
 ---
 # <a name="about-azure-kinect-sensor-sdk"></a>O sadě Azure Kinect snímače SDK
@@ -30,7 +30,7 @@ SADA Kinect snímače pro Azure poskytuje přístup na nízké úrovni pro datov
 - Přístup k metadatům snímku kamery pro rozlišení obrazu, časové razítko atd. 
 - Přístup k datům kalibrace zařízení 
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 - [Prohlížeč Azure Kinect](azure-kinect-viewer.md) , který umožňuje monitorovat datové proudy zařízení a konfigurovat různé režimy.
 - Rozhraní API pro nahrávání a přehrávání ve [službě Azure Kinect](azure-kinect-recorder.md) , které používá [Formát kontejneru Matroska](record-file-format.md).

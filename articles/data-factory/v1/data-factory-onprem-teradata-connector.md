@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z Teradata pomocí Azure Data Factory
 description: Informace o konektoru Teradata pro službu Data Factory, která umožňuje přesun dat z databáze Teradata
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707306"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387202"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +41,7 @@ Aby se Správa dat brána připojovala k databázi Teradata, musíte nainstalova
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -61,12 +56,12 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Teradata.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesTeradata** . |Yes |
 | server |Název serveru Teradata. |Yes |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Yes |
-| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |No |
+| username |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |No |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |No |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Teradata. |Yes |
 
@@ -294,15 +289,15 @@ Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následu
 | VarByte |Byte [] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Desetinné číslo |Desetinné číslo |
-| Double |Double |
+| Decimal |Decimal |
+| dvojité |dvojité |
 | Integer |Int32 |
-| Číslo |Double |
+| Číslo |dvojité |
 | SmallInt |Int16 |
-| Datum |DateTime |
+| Date (Datum) |Datum a čas |
 | Čas |TimeSpan |
 | Čas s časovým pásmem |Řetězec |
-| Časové razítko |DateTime |
+| Timestamp |DateTime |
 | Časové razítko s časovým pásmem |DateTimeOffset |
 | Den intervalu |TimeSpan |
 | Každý den v intervalu hodiny |TimeSpan |

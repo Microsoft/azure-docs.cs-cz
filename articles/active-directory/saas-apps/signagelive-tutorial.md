@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539721"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Kurz: Azure Active Directory integrace s Signagelive
 
@@ -27,7 +27,7 @@ Integrace Signagelive s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Signagelive (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md). Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,7 +52,7 @@ Pokud chcete přidat Signagelive z Galerie, proveďte následující kroky:
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. V části **podnikové aplikace**vyberte možnost **všechny aplikace** .
+2. V části **podnikové aplikace** vyberte možnost **všechny aplikace** .
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -105,9 +105,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Signagel
     Do pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Signagelive](mailto:support@signagelive.com) . Můžete se také podívat na vzory, které jsou uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Signagelive](mailto:support@signagelive.com). Můžete se také podívat na vzory, které jsou uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašeho požadavku. Pak ho uložte na svém počítači.
+5. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašeho požadavku. Pak ho uložte na svém počítači.
 
     ![Odkaz na stažení certifikátu](common/certificateraw.png)
 
@@ -129,7 +129,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně Signagelive, p
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -153,9 +153,9 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Signagelive.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **Signagelive**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **Signagelive**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Signagelive**.
 
@@ -177,19 +177,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-a-signagelive-test-user"></a>Vytvořit testovacího uživatele v Signagelive
 
-V této části vytvoříte uživatele s názvem Britta Simon v Signagelive. Pracujte s [týmem podpory Signagelive](mailto:support@signagelive.com) a přidejte uživatele na platformě Signagelive. Než začnete používat jednotné přihlašování, musíte uživatele vytvořit a aktivovat.
+V této části vytvoříte uživatele s názvem Britta Simon v Signagelive. Pracujte s [týmem podpory Signagelive](mailto:support@signagelive.com) a přidejte uživatele na platformě Signagelive. Než začnete používat jednotné přihlašování, musíte uživatele vytvořit a aktivovat.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu MyApp.
 
-Když vyberete dlaždici **Signagelive** na portálu Mojeapl, měli byste se automaticky přihlásit. Další informace o portálu MyApp najdete v tématu [co je to portál MyApp?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete dlaždici **Signagelive** na portálu Mojeapl, měli byste se automaticky přihlásit. Další informace o portálu MyApp najdete v tématu [co je to portál MyApp?](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

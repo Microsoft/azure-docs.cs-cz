@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008640"
 ---
 # <a name="manage-app-groups-using-powershell"></a>Správa skupin aplikací pomocí PowerShellu
@@ -76,7 +76,7 @@ Vytvoření skupiny vzdálených aplikací RemoteApp pomocí prostředí PowerSh
    Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
    ```
 
-4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias` . `AppAlias`se zobrazí, když spustíte výstup z kroku 3.
+4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias` . `AppAlias` se zobrazí, když spustíte výstup z kroku 3.
 
    ```powershell
    New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require>

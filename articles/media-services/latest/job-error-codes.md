@@ -1,7 +1,7 @@
 ---
-title: Azure Media Services úlohy (kódování a analýza) chybových kódů | Microsoft Docs
+title: Chybové kódy pro úlohy (kódování a analýza)
 description: Tento článek obsahuje odkazy na referenční kódy chyb úloh a poskytuje užitečné odkazy na související témata.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/28/2019
-ms.author: juliako
-ms.openlocfilehash: ec057d86ea39afb7eabd4e8227646eaec11c5655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: error-reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: ed57252a112aad8dd7d94dda95219867424dbb8f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023003"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954153"
 ---
 # <a name="media-services-job-error-codes"></a>Kódy chyb úlohy Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Toto téma odkazuje na referenční dokument REST, kde najdete podrobný popis kódů a zpráv o chybách [úlohy](transforms-jobs-concept.md) .
 

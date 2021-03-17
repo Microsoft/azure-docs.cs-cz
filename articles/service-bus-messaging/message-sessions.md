@@ -2,13 +2,13 @@
 title: Relace Azure Service Bus zpráv | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí relací povolit společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511292"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680749"
 ---
 # <a name="message-sessions"></a>Relace zpráv
 Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích **First in, First out (FIFO)** a **Request-response** . Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
@@ -25,7 +25,7 @@ U front a předplatných, které pracují s relacemi, se relace nacházejí v p�
 
 Obvykle však aplikace má jasný pojem, kde se spustí a končí sada souvisejících zpráv. Service Bus nenastavuje žádná konkrétní pravidla.
 
-Příkladem, jak určit sekvenci pro přenos souboru, je nastavit vlastnost **popisek** první zprávy na **Start**, pro mezilehlé zprávy na **obsah**a na **konec**poslední zprávy. Relativní umístění zpráv obsahu lze vypočítat jako aktuální rozdíl *SequenceNumber* zprávy ze *SequenceNumber* **spuštění** zprávy.
+Příkladem, jak určit sekvenci pro přenos souboru, je nastavit vlastnost **popisek** první zprávy na **Start**, pro mezilehlé zprávy na **obsah** a na **konec** poslední zprávy. Relativní umístění zpráv obsahu lze vypočítat jako aktuální rozdíl *SequenceNumber* zprávy ze *SequenceNumber* **spuštění** zprávy.
 
 Funkce Session v Service Bus umožňuje konkrétní operace Receive ve formě [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) v rozhraních API jazyka C# a Java. Tuto funkci povolíte nastavením vlastnosti [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) ve frontě nebo předplatném pomocí Azure Resource Manager nebo nastavením příznaku na portálu. Je nutné, abyste se pokusili použít související operace rozhraní API.
 
@@ -34,9 +34,9 @@ Na portálu nastavte příznak následujícím zaškrtávacím políčkem:
 ![Snímek obrazovky dialogového okna vytvořit front s vybranou možností povolit relace a popsaný červeně][2]
 
 > [!NOTE]
-> Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
+> Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace mohou ***již** ne_ odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
 
-Rozhraní API pro relace existují na klientech front a předplatných. Existuje imperativní model, který řídí, kdy jsou přijímány relace a zprávy, a model založený na obslužných rutinách, podobně jako- *Message*, který skrývá složitost správy přijímací smyčky.
+Rozhraní API pro relace existují na klientech front a předplatných. Existuje imperativní model, který řídí, kdy jsou přijímány relace a zprávy, a model založený na obslužných rutinách podobný _OnMessage *, který skrývá složitost správy přijímací smyčky.
 
 ### <a name="session-features"></a>Funkce relace
 
@@ -76,9 +76,9 @@ Stav relace uložený ve frontě nebo v předplatném se počítá s kvótou úl
 
 Definice počtu doručení na zprávu v kontextu relací se mírně liší od definice při absenci relací. Zde je souhrn tabulky při zvýšení počtu doručení.
 
-| Scénář | Zvyšuje se počet doručení zprávy |
+| Scenario | Zvyšuje se počet doručení zprávy |
 |----------|---------------------------------------------|
-| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Ano |
+| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Yes |
 | Relace je přijata, zprávy v relaci nejsou dokončeny (i v případě, že jsou uzamčené) a relace je zavřena. | No |
 | Relace je přijata, zprávy jsou dokončeny a relace je explicitně zavřena. | Není k dispozici (Jedná se o standardní tok. Z relace se odeberou tyto zprávy.) |
 

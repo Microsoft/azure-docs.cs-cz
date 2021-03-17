@@ -1,14 +1,16 @@
 ---
 title: Konfigurace chování učení
 description: V režimu učni máte jistotu, že služba přizpůsobené služby a její funkce pro strojové učení a poskytuje metriky, které služba odesílá informace, které je možné zjistit z – bez rizika ohrožení online provozu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: af38500fc439964f9928cdd08aae2380ee0d0a8a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599477"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579287"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>Konfigurace chování při učení přizpůsobení
 
@@ -35,13 +37,13 @@ Aby bylo možné přidat přizpůsobené aplikaci do aplikace, je nutné volat r
 
 1. Přidejte volání [rozhraní API řazení](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) za místo v existující aplikační logice, kde určíte seznam akcí a jejich funkce. První akce v seznamu akce musí být akce vybraná stávající logikou.
 
-1. Nakonfigurujte kód tak, aby zobrazoval akci spojenou s **ID akce odměnu**rozhraní API řazení.
+1. Nakonfigurujte kód tak, aby zobrazoval akci spojenou s **ID akce odměnu** rozhraní API řazení.
 
 ### <a name="configure-your-application-to-call-reward-api"></a>Konfigurace aplikace pro volání API pro odměnu
 
 1. Použijte stávající obchodní logiku pro výpočet **odměna** zobrazené akce. Hodnota musí být v rozsahu od 0 do 1. Tuto odměnu můžete přizpůsobovat pomocí [API pro odměnu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward). Hodnota odměňování se neočekává hned a v závislosti na obchodní logice se dá zpozdit za časové období.
 
-1. Pokud nevrátíte svou odměnu v rámci nakonfigurované **doby čekání na odměnu**, použije se místo toho výchozí měna.
+1. Pokud nevrátíte svou odměnu v rámci nakonfigurované **doby čekání na odměnu** , použije se místo toho výchozí měna.
 
 ## <a name="evaluate-apprentice-mode"></a>Vyhodnotit režim učni
 
@@ -50,14 +52,10 @@ V Azure Portal na stránce **vyhodnocení** pro váš prostředek pro přizpůso
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s přehledem chování učení v režimu učni v Azure Portal](media/settings/evaluate-apprentice-mode.png)
 
-V režimu učni jsou k dispozici následující **metriky vyhodnocení**:
-* **Směrný plán – Průměrná odměna**: Průměrná doba využívání výchozích hodnot (standardní hodnoty) aplikace
-* **Přizpůsobování – Průměrná doba odměna**: průměr z celkového počtu nedokončených akcí by byl potenciálně dosažen.
-* **Poměr stran k úspěšnosti v posledních 1000 událostech**: poměr hodnot na účaří a přizpůsobování – normalizované na posledních 1000 událostech.
-
-## <a name="evaluate-apprentice-mode-features"></a>Vyhodnotit funkce v režimu učni
-
-Vyhodnoťte funkce pomocí [offline vyhodnocení](how-to-offline-evaluation.md).
+V režimu učni jsou k dispozici následující **metriky vyhodnocení** :
+* **Směrný plán – Průměrná odměna** : Průměrná doba využívání výchozích hodnot (standardní hodnoty) aplikace
+* **Přizpůsobování – Průměrná doba odměna** : průměr z celkového počtu nedokončených akcí by byl potenciálně dosažen.
+* **Poměr stran k úspěšnosti v posledních 1000 událostech** : poměr hodnot na účaří a přizpůsobování – normalizované na posledních 1000 událostech.
 
 ## <a name="switch-behavior-to-online-mode"></a>Přepnout chování do online režimu
 

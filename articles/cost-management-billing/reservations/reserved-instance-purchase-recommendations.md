@@ -5,14 +5,15 @@ author: banders
 ms.author: banders
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 661e3bfa149718eb2893c5722ab3931a8a9f9afe
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
-ms.translationtype: HT
+ms.date: 01/27/2021
+ms.openlocfilehash: 4f6187ccb143f065fed236495128add7a2ab1ee4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797930"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928533"
 ---
 # <a name="reservation-recommendations"></a>Doporučení pro rezervace
 
@@ -24,10 +25,11 @@ Následující kroky definují, jak se vypočítávají doporučení:
 2. Na základě těchto dat o využití modul simuluje vaše náklady s rezervacemi a bez nich.
 3. Náklady se simulují pro různá množství a doporučí se množství, které zajišťuje maximální úspory.
 4. Pokud se vaše prostředky pravidelně vypínají, simulace nezjistí žádné úspory a neposkytnou se žádná doporučení k nákupu.
+5. Výpočty doporučení zahrnují jakékoli speciální slevy, které můžete mít na základě sazeb za využití na vyžádání.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Doporučení na webu Azure Portal
 
-Doporučení k nákupu rezervací se zobrazují také při nákupu na webu Azure Portal. U doporučení se zobrazuje **doporučené množství**. Nákupem množství, které Azure doporučuje, dosáhnete maximálních úspor. Přestože si můžete zakoupit libovolné množství, nákupem jiného množství nedosáhnete optimálních úspor.
+Doporučení k nákupu rezervací se zobrazují také při nákupu na webu Azure Portal. U doporučení se zobrazuje **doporučené množství**. Nákupem množství, které Azure doporučuje, dosáhnete maximálních úspor. I když si koupíte jiné množství, které si můžete koupit, a pokud si koupíte jiné množství, vaše úspory nebude optimální.
 
 Podívejme se na několik příkladů.
 
@@ -35,13 +37,13 @@ V příkladu vybraného doporučení na následujícím obrázku Azure doporuču
 
 :::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" alt-text="Příklad znázorňující doporučení k nákupu rezervací" lightbox="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" :::
 
-Další informace o doporučení se zobrazí po výběru odkazu **Zobrazit podrobnosti**. Následující obrázek ukazuje podrobnosti o doporučení. Doporučené množství se počítá pro nejvyšší možné využití na základě vašeho historického využití. Pokud máte nekonzistentní využití, vaše doporučení nemusí odpovídat 100% využití. Všimněte si, že využití v příkladu v průběhu času kolísalo. Zobrazují se náklady na rezervaci, možné úspory a procentní využití.
+Další informace o doporučení se zobrazí, když vyberete **Zobrazit podrobnosti**. Následující obrázek ukazuje podrobnosti o doporučení. Doporučené množství se počítá z hlediska nejvyššího možného využití a vychází z historických využití. Pokud máte nekonzistentní využití, vaše doporučení nemusí odpovídat 100% využití. V tomto příkladu si všimněte, že využití se v průběhu času pohybovalo. Zobrazují se náklady na rezervaci, možné úspory a procentní využití.
 
-:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="Příklad znázorňující podrobnosti o doporučení k nákupu rezervací" :::
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="Příklad zobrazení podrobností pro doporučení nákupu rezervace " :::
 
-Když doporučené množství rezervací zvýšíte nebo snížíte, graf a odhadované hodnoty se změní. Zvýšením množství rezervací se sníží vaše úspory, protože budete mít nižší využití rezervací. Jinými slovy budete platit za rezervace, které nejsou plně využité.
+Graf a odhadované hodnoty se změní při zvýšení doporučeného množství. Zvýšením počtu rezervací se sníží vaše úspory, protože skončíte se sníženým využitím rezervace. Jinými slovy budete platit za rezervace, které nejsou plně využité.
 
-Vaše úspory se sníží také v případě, že množství rezervací snížíte. Přestože budete mít vyšší využití, pravděpodobně nastanou období, kdy vaše rezervace plně nepokryjí využití. Využití nad rámec vašeho množství rezervací bude spotřebovávat dražší prostředky s průběžnými platbami. Tuto situaci znázorňuje příklad na následujícím obrázku. Ručně jsme snížili množství rezervací na 4. Využití rezervací se zvýšilo, ale kvůli nákladům na průběžné platby jsou celkové úspory nižší.
+Pokud snížíte rezervované množství, sníží se i vaše úspory. Přestože budete mít vyšší využití, pravděpodobně nastanou období, kdy vaše rezervace plně nepokryjí využití. Využití nad rámec vašeho množství rezervací bude spotřebovávat dražší prostředky s průběžnými platbami. Tuto situaci znázorňuje příklad na následujícím obrázku. Ručně jsme snížili množství rezervací na 4. Využití rezervace se zvyšuje, ale celkové úspory se sníží, protože jsou k dispozici náklady na průběžné platby.
 
 :::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details-changed.png" alt-text="Příklad znázorňující podrobnosti o změněném doporučení k nákupu rezervací" :::
 
@@ -51,11 +53,12 @@ Pokud chcete maximalizovat úspory z rezervací, zkuste zakoupit rezervace co ne
 
 Doporučení k nákupu rezervací jsou k dispozici v Azure Advisoru. Mějte na paměti následující skutečnosti:
 
-- Advisor poskytuje doporučení jenom v rámci jednotlivých předplatných.
-- Doporučení se počítají na základě trendu využití za posledních 30 dnů.
-- Pokud je to možné, doporučené množství a úspory platí pro rezervaci na 3 roky. Pokud se pro určitou službu rezervace na 3 roky neprodává, doporučení se počítá s využitím ceny rezervace na 1 rok.
-- V doporučeních se zohledňují všechny vaše případné speciální slevy na sazby využití na vyžádání.
-- Pokud si koupíte rezervaci se sdíleným rozsahem, doporučení pro nákup rezervací Advisoru může trvat až 30 dnů, než zmizí.
+- Advisor poskytuje doporučení jenom v rámci jednotlivých předplatných. Pokud chcete zobrazit doporučení pro celý obor fakturace (fakturační účet nebo Fakturační profil), pak:
+  -  V Azure Portal přejděte na **rezervace**  >  **Přidat** a potom vyberte typ, pro který chcete zobrazit doporučení.
+- Doporučení k dispozici ve službě Advisor vám podíváme na svůj uplynulý 30denní trend využití.
+- Množství a úspory doporučení jsou pro rezervaci na tři roky, pokud je k dispozici. Pokud se pro službu neprodala roční rezervace, doporučení se vypočítá pomocí ceny za jednoletou rezervaci.
+- Výpočty doporučení zahrnují jakékoli speciální slevy, které můžete mít na základě sazeb za využití na vyžádání.
+- Pokud si koupíte rezervaci sdíleného oboru, doporučení pro nákup rezervací Advisoru může trvat až pět dní, než zmizí.
 
 ## <a name="other-expected-api-behavior"></a>Další očekávané chování rozhraní API
 

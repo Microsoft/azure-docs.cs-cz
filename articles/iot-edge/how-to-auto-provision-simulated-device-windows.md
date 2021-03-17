@@ -8,16 +8,18 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11279c552cb599c24b72473d6574175450ca7ab0
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131041"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200848"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Vytvoření a zřízení simulovaného IoT Edge zařízení s virtuálním čipem TPM ve Windows
 
-Zařízení Azure IoT Edge se dají automaticky zřídit pomocí [služby Device Provisioning](../iot-dps/index.yml) , stejně jako zařízení, která nejsou povolená přes hranice. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
+Zařízení Azure IoT Edge se dají automaticky zřídit pomocí [služby Device Provisioning](../iot-dps/index.yml) , stejně jako zařízení, která nejsou povolená přes hranice. Pokud neznáte proces automatického zřizování, přečtěte si přehled [zřizování](../iot-dps/about-iot-dps.md#provisioning-process) a teprve potom pokračujte.
 
 DPS podporuje ověřování symetrického klíče pro IoT Edge zařízení v individuální registraci a registraci skupin. Pokud při registraci skupiny zjistíte, že možnost "je IoT Edge zařízení" v případě ověření symetrického klíče pravdivá, všechna zařízení, která jsou registrovaná v této skupině registrací, se označí jako IoT Edge zařízení.
 
@@ -54,14 +56,14 @@ Po spuštění služby Device Provisioning zkopírujte na stránce Přehled hodn
 
 Vytvořte simulované zařízení TPM ve vývojovém počítači s Windows. Načtěte **ID registrace** a **ověřovací klíč** pro vaše zařízení a použijte je k vytvoření jednotlivé položky registrace v DPS.
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. Ve vystavení zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. Ve vystavení zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 Vyberte jazyk sady SDK, který chcete použít k vytvoření simulovaného zařízení, a postupujte podle kroků, dokud nevytvoříte jednotlivou registraci.
 
 Když vytvoříte jednotlivou registraci, vyberte **true** , aby se deklarovalo, že simulované zařízení TPM ve vývojovém počítači s Windows je **IoT Edge zařízení**.
 
 > [!TIP]
-> V Azure CLI můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
+> V Azure CLI můžete vytvořit [registraci](/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
 
 Simulovaná zařízení a příručky pro zápis:
 
@@ -75,19 +77,18 @@ Po vytvoření jednotlivé registrace uložte hodnotu **ID registrace**. Tuto ho
 
 ## <a name="install-the-iot-edge-runtime"></a>Instalace modulu runtime IoT Edge
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních. Nainstalujte modul runtime IoT Edge na zařízení, na kterém běží simulovaný čip TPM.
 
-Při zřizování zařízení budete potřebovat následující informace:
-
-* Hodnota **rozsahu ID** DPS
-* **ID registrace** zařízení, které jste vytvořili
-
-Nainstalujte modul runtime IoT Edge na zařízení, na kterém běží simulovaný čip TPM. Nastavíte modul runtime IoT Edge pro automatické, ne ruční zřizování.
+Postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md)a pak se vraťte k tomuto článku a zřiďte zařízení.
 
 > [!TIP]
 > Nechte okno, ve kterém je spuštěný simulátor čipu TPM, otevřený během instalace a testování.
 
-Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a pokynů pro úlohy, jako je Správa kontejnerů a aktualizace IoT Edge, najdete v tématu [Instalace modulu runtime Azure IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
+## <a name="configure-the-device-with-provisioning-information"></a>Konfigurace zařízení pomocí informací o zřizování
+
+Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s informacemi, které používá pro připojení ke službě Device Provisioning a IoT Hub.
+
+1. Zjistěte svůj **Rozsah ID** DPS a **ID registrace** zařízení, které byly shromážděny v předchozích částech.
 
 1. Otevřete okno PowerShellu v režimu správce. Při instalaci IoT Edge, ne pomocí PowerShellu (x86) nezapomeňte použít relaci AMD64 prostředí PowerShell.
 
@@ -98,7 +99,7 @@ Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a
    Deploy-IoTEdge
    ```
 
-1. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Jiná zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní. Až bude zařízení připravené, spusťte PowerShell jako správce znovu.
+1. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní. Až bude zařízení připravené, spusťte PowerShell jako správce znovu.
 
 1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování pomocí kontejnerů Windows. Pomocí `-Dps` příznaku použijte službu Device Provisioning místo ručního zřizování.
 

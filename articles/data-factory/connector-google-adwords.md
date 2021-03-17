@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z Google AdWords
 description: Naučte se, jak kopírovat data z Google AdWords na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b3036f09e41b20bc3c190f06842acd817fcece6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415027"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380946"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Kopírování dat z Google AdWords pomocí Azure Data Factory
 
@@ -47,19 +43,19 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Google AdWords jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **GoogleAdWords** . | Ano |
-| clientCustomerID | ID zákazníka klienta účtu AdWords, pro který chcete načíst data sestavy.  | Ano |
-| developerToken | Token pro vývojáře přidružený k účtu manažera, který slouží k udělení přístupu k rozhraní AdWords API.  Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
-| authenticationType | Ověřovací mechanismus OAuth 2,0, který se používá k ověřování. ServiceAuthentication se dá použít jenom pro prostředí IR v místním prostředí. <br/>Povolené hodnoty jsou: **ServiceAuthentication**, **UserAuthentication** | Ano |
-| Refreshtoken kontextového tokenu | Obnovovací token získaný z Google pro autorizaci přístupu k AdWords pro UserAuthentication. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
-| clientId | ID klienta aplikace Google použité k získání obnovovacího tokenu. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
-| clientSecret | Tajný kód klienta aplikace Google, který se používá k získání obnovovacího tokenu. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
-| e-mail | ID e-mailu účtu služby, který se používá pro ServiceAuthentication a dá se použít jenom pro prostředí IR v místním prostředí.  | Ne |
-| Cesta k souboru | Úplná cesta k souboru klíče. p12, který se používá k ověření e-mailové adresy účtu služby a dá se použít jenom na místním hostiteli IR.  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **GoogleAdWords** . | Yes |
+| clientCustomerID | ID zákazníka klienta účtu AdWords, pro který chcete načíst data sestavy.  | Yes |
+| developerToken | Token pro vývojáře přidružený k účtu manažera, který slouží k udělení přístupu k rozhraní AdWords API.  Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Yes |
+| authenticationType | Ověřovací mechanismus OAuth 2,0, který se používá k ověřování. ServiceAuthentication se dá použít jenom pro prostředí IR v místním prostředí. <br/>Povolené hodnoty jsou: **ServiceAuthentication**, **UserAuthentication** | Yes |
+| Refreshtoken kontextového tokenu | Obnovovací token získaný z Google pro autorizaci přístupu k AdWords pro UserAuthentication. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | No |
+| clientId | ID klienta aplikace Google použité k získání obnovovacího tokenu. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | No |
+| clientSecret | Tajný kód klienta aplikace Google, který se používá k získání obnovovacího tokenu. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | No |
+| e-mail | ID e-mailu účtu služby, který se používá pro ServiceAuthentication a dá se použít jenom pro prostředí IR v místním prostředí.  | No |
+| Cesta k souboru | Úplná cesta k souboru klíče. p12, který se používá k ověření e-mailové adresy účtu služby a dá se použít jenom na místním hostiteli IR.  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | No |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | No |
 
 **Příklad:**
 
@@ -103,9 +99,9 @@ Pro propojenou službu Google AdWords jsou podporovány následující vlastnost
 
 Pokud chcete kopírovat data z Google AdWords, nastavte vlastnost Type datové sady na **GoogleAdWordsObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **GoogleAdWordsObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **GoogleAdWordsObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -134,10 +130,10 @@ Pokud chcete kopírovat data z Google AdWords, nastavte vlastnost Type datové s
 
 Pokud chcete kopírovat data z Google AdWords, nastavte typ zdroje v aktivitě kopírování na **GoogleAdWordsSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **GoogleAdWordsSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **GoogleAdWordsSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

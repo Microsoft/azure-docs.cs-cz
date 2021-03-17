@@ -4,13 +4,13 @@ description: Popisuje architekturu služby Azure FarmBeats
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-ummehabiba
+ms.openlocfilehash: ebc1cdc7c762117851072037624f11e9fa98b6f1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482371"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182600"
 ---
 # <a name="integration-patterns"></a>Vzory integrace
 

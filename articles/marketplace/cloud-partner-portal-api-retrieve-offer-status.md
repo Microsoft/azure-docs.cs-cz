@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272007"
 ---
 # <a name="retrieve-offer-status"></a>Načtení stavu nabídky
@@ -27,15 +27,15 @@ Načte aktuální stav nabídky.
 
 |  **Název**       |   **Popis**                            |  **Datový typ** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Identifikátor vydavatele, například`Contoso`  |     Řetězec     |
+|  publisherId    | Identifikátor vydavatele, například `Contoso`  |     Řetězec     |
 |  Hodnotami OfferId        | Identifikátor GUID, který jedinečně identifikuje nabídku      |     Řetězec     |
 |  verze-api    | Nejnovější verze rozhraní API                        |     Datum       |
 |  |  |
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 
 
-|  Název           |  Hodnota               |
+|  Name           |  Hodnota               |
 |  -------------  | -------------------  |
 |  Typ obsahu   |  `application/json`  |
 |  Autorizace  | `Bearer YOUR_TOKEN`  |
@@ -126,7 +126,7 @@ Načte aktuální stav nabídky.
 |  estimatedTimeFrame   | Odhad doby provedení tohoto kroku v popisném formátu                       |
 |  id                   | Identifikátor kroku                                                                         |
 |  Step             | Název kroku                                                                               |
-|  description          | Popis kroku                                                                        |
+|  Popis          | Popis kroku                                                                        |
 |  status               | Stav kroku. Seznam možných hodnot najdete v tématu [stav kroku](#step-status) níže.    |
 |  cloud-zařízení             | Pole zpráv souvisejících s krokem                                                          |
 |  processPercentage    | Procentuální podíl dokončení kroku                                                              |
@@ -139,9 +139,9 @@ Načte aktuální stav nabídky.
 
 | **Kód** |   **Popis**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK`-Požadavek byl úspěšně zpracován a byl vrácen aktuální stav nabídky. |
-|  400     | `Bad/Malformed request`– Tělo chybové odpovědi může obsahovat více informací.                 |
-|  404     | `Not found`-Zadaná entita neexistuje.                                                |
+|  200     |  `OK` -Požadavek byl úspěšně zpracován a byl vrácen aktuální stav nabídky. |
+|  400     | `Bad/Malformed request` – Tělo chybové odpovědi může obsahovat více informací.                 |
+|  404     | `Not found` -Zadaná entita neexistuje.                                                |
 |  |  |
 
 ### <a name="offer-status"></a>Stav nabídky
@@ -151,7 +151,7 @@ Načte aktuální stav nabídky.
 |  NeverPublished              | Nabídka nebyla nikdy publikována.                          |
 |  NotStarted                  | Nabídka je nová a není spuštěná.                            |
 |  WaitingForPublisherReview   | Nabídka čeká na schválení vydavatele.                 |
-|  Spuštěný                     | Zpracovává se odeslání nabídky.                     |
+|  Spuštěno                     | Zpracovává se odeslání nabídky.                     |
 |  Úspěšný                   | Bylo dokončeno zpracování příspěvku nabídky.               |
 |  Zrušeno                    | Odeslání nabídky se zrušilo.                           |
 |  Neúspěšný                      | Odeslání nabídky se nezdařilo.                                 |

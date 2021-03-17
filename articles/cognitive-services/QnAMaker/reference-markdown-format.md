@@ -1,14 +1,16 @@
 ---
 title: Formát Markdownu – QnA Maker
 description: Následuje seznam formátů Markdownu, které můžete použít v textu odpovědi QnA Maker.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652752"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352265"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Formát Markdownu podporovaný v textu odpovědi QnA Maker
 
@@ -20,7 +22,7 @@ Pomocí kurzu **[CommonMark](https://commonmark.org/help/tutorial/index.html)** 
 
 [S bohatou úpravou](How-To/edit-knowledge-base.md#add-an-editorial-qna-set) odpovědí můžete jako autor použít panel formátování k rychlému výběru a formátování textu.
 
-Markdownu je lepší nástroj, pokud potřebujete automaticky vygenerovat obsah a vytvořit znalostní bázi, který se má importovat jako součást kanálu CI/CD nebo pro [dávkové testování](Quickstarts/batch-testing.md).
+Markdownu je lepší nástroj, pokud potřebujete automaticky vygenerovat obsah a vytvořit znalostní bázi, který se má importovat jako součást kanálu CI/CD nebo pro [dávkové testování](./index.yml).
 
 ## <a name="supported-markdown-format"></a>Podporovaný formát Markdownu
 
@@ -35,10 +37,10 @@ Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker
 |Adresa URL odkazu|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![formát pro adresu URL (hypertextový odkaz)](./media/qnamaker-concepts-datasources/format-url.png)|
 |* Adresa URL pro veřejnou image|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![formát pro adresu URL veřejného obrázku ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |Přeškrtnutí|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![formát pro přeškrtnutí](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|Tučné a kurzívy|`***text***`|`How can I create a ***QnA Maker*** bot?`|![formát pro tučné písmo a kurzívu](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|Tučná adresa URL odkazu|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![formát pro adresu URL tučného písma](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Tučné a kurzívy|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![formát pro tučné písmo a kurzívu](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Tučná adresa URL odkazu|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![formát pro adresu URL tučného písma](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Adresa URL pro odkaz na kurzívu|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![formát pro adresu URL kurzívou](./media/qnamaker-concepts-datasources/format-url-italics.png)|
-|Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![formát pro adresu URL kurzívou](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Formát pro řídicí symboly Markdownu](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Seřazený seznam|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Předchozí příklad používá automatické číslování integrovaný do Markdownu.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Předchozí příklad používá explicitní číslování.|![formát pro uspořádaný seznam](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Neseřazený seznam|`\n * item1 \n * item2`<br>nebo<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![formát pro neuspořádaný seznam](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |Vnořené seznamy|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Můžete vnořit seřazené a neuspořádané seznamy dohromady. Karta `\t` označuje úroveň odsazení podřízeného prvku.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![formát pro vnořený seznam neuspořádaných](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![formát pro vnořený uspořádaný seznam](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|

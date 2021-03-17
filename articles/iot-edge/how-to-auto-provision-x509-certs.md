@@ -5,20 +5,23 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 04/09/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 44ea6546eb2099165071fd493ec8f890820c0688
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260042"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199838"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509
 
-Pomocí [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml)můžete automaticky zřizovat IoT Edge zařízení pomocí certifikátů X. 509. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
+Pomocí [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml)můžete automaticky zřizovat IoT Edge zařízení pomocí certifikátů X. 509. Pokud neznáte proces automatického zřizování, přečtěte si přehled [zřizování](../iot-dps/about-iot-dps.md#provisioning-process) a teprve potom pokračujte.
 
 V tomto článku se dozvíte, jak vytvořit registraci služby Device Provisioning pomocí certifikátů X. 509 na zařízení IoT Edge pomocí následujících kroků:
 
@@ -28,7 +31,7 @@ V tomto článku se dozvíte, jak vytvořit registraci služby Device Provisioni
 
 Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Obvykle jsou certifikáty X. 509 uspořádány v řetězu certifikátů důvěryhodnosti. Počínaje certifikátem podepsaným svým držitelem nebo důvěryhodným kořenovým certifikátem podepisuje každý certifikát v řetězu další nižší certifikát. Tento model vytvoří delegovaný řetěz vztahu důvěryhodnosti od kořenového certifikátu až po každý zprostředkující certifikát s konečným certifikátem "list" nainstalovaným na zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aktivní IoT Hub.
 * Fyzické nebo virtuální zařízení, které se má IoT Edge zařízení.
@@ -51,10 +54,14 @@ K nastavení automatického zřizování pomocí X. 509 potřebujete následují
 * Úplný řetězový certifikát, který by měl mít alespoň identitu zařízení a zprostředkující certifikáty. Úplný certifikát řetězu se předává modulu runtime IoT Edge.
 * Certifikát zprostředkující nebo kořenové certifikační autority z řetězu certifikátů, který je důvěryhodný. Tento certifikát se nahraje do DPS, pokud vytvoříte registraci skupiny.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 > [!NOTE]
-> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050.
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038.
 
-### <a name="use-test-certificates"></a>Použití testovacích certifikátů
+:::moniker-end
+
+### <a name="use-test-certificates-optional"></a>Použití testovacích certifikátů (volitelné)
 
 Pokud nemáte k dispozici certifikační autoritu pro vytváření nových certifikátů identit a chcete tento scénář vyzkoušet, Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vygenerování testovacích certifikátů. Tyto certifikáty jsou navržené jenom pro vývojové testování a nesmí se používat v produkčním prostředí.
 
@@ -78,16 +85,16 @@ Pomocí vygenerovaných certifikátů a klíčů můžete vytvořit jednotlivou 
 
 Pokud chcete zřídit více IoT Edge zařízení, postupujte podle kroků v následující části a [vytvořte registraci skupiny DPS](#create-a-dps-group-enrollment).
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 Další informace o registraci ve službě Device Provisioning najdete v tématu [Správa registrace zařízení](../iot-dps/how-to-manage-enrollments.md).
 
    > [!TIP]
-   > V Azure CLI můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
+   > V Azure CLI můžete vytvořit [registraci](/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **spravovat registrace**.
+1. V části **Nastavení** vyberte **spravovat registrace**.
 
 1. Vyberte **přidat jednotlivou registraci** a potom proveďte následující kroky, abyste nakonfigurovali registraci:  
 
@@ -103,7 +110,7 @@ Další informace o registraci ve službě Device Provisioning najdete v tématu
 
    * **Vyberte centra IoT, ke kterým se má toto zařízení přiřadit**: zvolte propojené centrum IoT, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno k jednomu z nich podle vybrané zásady přidělování.
 
-   * **Počáteční stav vlákna zařízení**: přidejte hodnotu značky, která se má přidat do vlákna zařízení v případě, že chcete. Pomocí značek můžete cílit na skupiny zařízení pro automatické nasazení. Příklad:
+   * **Počáteční stav vlákna zařízení**: přidejte hodnotu značky, která se má přidat do vlákna zařízení v případě, že chcete. Pomocí značek můžete cílit na skupiny zařízení pro automatické nasazení. Například:
 
       ```json
       {
@@ -126,7 +133,7 @@ Pomocí vygenerovaných certifikátů a klíčů vytvořte registraci skupiny v 
 
 Pokud místo toho chcete zřídit jedno IoT Edge zařízení, postupujte podle kroků v předchozí části a [Vytvořte si jednotlivou registraci DPS](#create-a-dps-individual-enrollment).
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 ### <a name="verify-your-root-certificate"></a>Ověření kořenového certifikátu
 
@@ -172,7 +179,7 @@ Další informace o registraci ve službě Device Provisioning najdete v tématu
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **spravovat registrace**.
+1. V části **Nastavení** vyberte **spravovat registrace**.
 
 1. Vyberte **Přidat skupinu** registrací a potom proveďte následující kroky, abyste nakonfigurovali registraci:
 
@@ -188,7 +195,7 @@ Další informace o registraci ve službě Device Provisioning najdete v tématu
 
    * **Vyberte centra IoT, ke kterým se má toto zařízení přiřadit**: zvolte propojené centrum IoT, ke kterému chcete zařízení připojit. Můžete zvolit více rozbočovačů a zařízení bude přiřazeno k jednomu z nich podle vybrané zásady přidělování.
 
-   * **Počáteční stav vlákna zařízení**: přidejte hodnotu značky, která se má přidat do vlákna zařízení v případě, že chcete. Pomocí značek můžete cílit na skupiny zařízení pro automatické nasazení. Příklad:
+   * **Počáteční stav vlákna zařízení**: přidejte hodnotu značky, která se má přidat do vlákna zařízení v případě, že chcete. Pomocí značek můžete cílit na skupiny zařízení pro automatické nasazení. Například:
 
       ```json
       {
@@ -209,77 +216,146 @@ Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime mů
 
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
 
+Postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md)a pak se vraťte k tomuto článku a zřiďte zařízení.
+
 Zřizování X. 509 s DPS se podporuje jenom v IoT Edge verze 1.0.9 nebo novější.
 
-Při zřizování zařízení budete potřebovat následující informace:
+## <a name="configure-the-device-with-provisioning-information"></a>Konfigurace zařízení pomocí informací o zřizování
+
+Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s informacemi, které používá pro připojení ke službě Device Provisioning a IoT Hub.
+
+Připravte si následující informace:
 
 * Hodnota **rozsahu ID** DPS. Tuto hodnotu můžete načíst ze stránky přehled vaší instance DPS v Azure Portal.
 * Soubor řetězu certifikátů identity zařízení v zařízení.
 * Soubor klíče identity zařízení na zařízení.
-* Nepovinná registrační ID (načtené z obecného názvu v certifikátu identity zařízení, pokud není zadaný)
+* Volitelné ID registrace. Pokud není zadaný, ID se načte ze společného názvu v certifikátu identity zařízení.
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
 
-Pomocí následujícího odkazu nainstalujete Azure IoT Edge runtime na zařízení pomocí příkazů vhodných pro architekturu vašeho zařízení. Až se dostanete k části týkající se konfigurace démona zabezpečení, nakonfigurujte modul runtime IoT Edge pro X. 509 Automatic, ne ručně, zřizování. Po dokončení předchozích částí tohoto článku byste měli mít všechny informace a soubory certifikátů, které potřebujete.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
-[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
+1. Otevřete konfigurační soubor na zařízení IoT Edge.
 
-Když přidáte certifikát X. 509 a informace o klíči do souboru config. yaml, cesty by se měly zadat jako identifikátory URI souborů. Příklad:
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-* `file:///<path>/identity_certificate_chain.pem`
-* `file:///<path>/identity_key.pem`
+1. V souboru vyhledejte část konfigurace zřizování. Odkomentujte řádky pro zřizování certifikátů DPS X. 509 a zajistěte, aby byly všechny další řádky pro zřizování zakomentovány.
 
-Oddíl konfiguračního souboru pro X. 509 Automatické zřizování vypadá takto:
+   `provisioning:`Řádek by neměl mít žádné předchozí prázdné znaky a vnořené položky by měly být odsazeny dvěma mezerami.
 
-```yaml
-# DPS X.509 provisioning configuration
-provisioning:
-  source: "dps"
-  global_endpoint: "https://global.azure-devices-provisioning.net"
-  scope_id: "<SCOPE_ID>"
-  attestation:
-    method: "x509"
-#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
-    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-```
+   ```yml
+   # DPS X.509 provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "x509"
+   #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   #  always_reprovision_on_startup: true
+   #  dynamic_reprovisioning: false
+   ```
 
-Nahraďte zástupné hodnoty pro `scope_id` , `identity_cert` `identity_pk` s ID oboru z vaší instance DPS a identifikátory URI pro řetěz certifikátů a umístění souborů klíčů na vašem zařízení. `registration_id`Pokud chcete zařízení zaregistrovat, zadejte ho pro zařízení, nebo ponechte tento řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
+1. Aktualizujte hodnoty `scope_id` , `identity_cert` a `identity_pk` pomocí informací DPS a Device.
 
-Po aktualizaci souboru config. yaml vždy restartujte proces zabezpečení.
+   Když přidáte certifikát X. 509 a informace o klíči do souboru config. yaml, cesty by se měly zadat jako identifikátory URI souborů. Například:
 
-```bash
-sudo systemctl restart iotedge
-```
+   `file:///<path>/identity_certificate_chain.pem`
+   `file:///<path>/identity_key.pem`
+
+1. Volitelně můžete zadat `registration_id` pro zařízení. V opačném případě ponechte řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
+
+1. Volitelně můžete pomocí `always_reprovision_on_startup` řádků nebo `dynamic_reprovisioning` nakonfigurovat chování při opětovném zřizování zařízení. Pokud je zařízení nastavené tak, aby se při spuštění znovu zřídilo, vždy se nejprve pokusí zřídit pomocí DPS a pak se vrátit k záložnímu zálohování, pokud se nezdaří. Pokud je zařízení nastavené tak, aby se dynamicky znovu zřídilo, IoT Edge se restartuje a znovu zřídí, pokud se zjistí událost opětovného zřízení. Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
+
+1. Soubor config. yaml uložte a zavřete.
+
+1. Restartujte modul runtime IoT Edge, aby provedl všechny změny konfigurace, které jste v zařízení provedli.
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Vytvořte konfigurační soubor pro vaše zařízení na základě souboru šablony, který je součástí instalace IoT Edge.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Otevřete konfigurační soubor na zařízení IoT Edge.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Vyhledejte oddíl **zřizování** souboru. Odkomentujte řádky pro zřizování DPS pomocí certifikátu X. 509 a zajistěte, aby byly všechny další řádky pro zřizování zakomentovány.
+
+   ```toml
+   # DPS provisioning with X.509 certificate
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "x509"
+   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+
+   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+1. Aktualizujte hodnoty `id_scope` , `identity_cert` a `identity_pk` pomocí informací DPS a Device.
+
+   Hodnota certifikátu identity může být poskytnuta jako identifikátor URI souboru nebo se může dynamicky vydávat pomocí nástroje EST nebo místní certifikační autority. Odkomentovat pouze jeden řádek, a to podle formátu, který se rozhodnete použít.
+
+   Hodnota privátního klíče identity může být poskytnuta jako identifikátor URI souboru nebo identifikátor URI PKCS # 11. Odkomentovat pouze jeden řádek, a to podle formátu, který se rozhodnete použít.
+
+   Pokud používáte jakékoli identifikátory URI PKCS # 11, vyhledejte v konfiguračním souboru oddíl **PKCS # 11** a poskytněte informace o konfiguraci PKCS # 11.
+
+1. Volitelně můžete zadat `registration_id` pro zařízení. V opačném případě ponechte řádek Zakomentovat a zaregistrujte zařízení s běžným názvem certifikátu identity.
+
+1. Uložte soubor a zavřete ho.
+
+1. Použijte změny konfigurace, které jste provedli v IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
-Nainstalujte modul runtime IoT Edge na zařízení, pro které jste vygenerovali řetěz certifikátů identit a klíč identity. Nastavíte modul runtime IoT Edge pro automatické, ne ruční zřizování.
-
-Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a pokynů pro úlohy, jako je Správa kontejnerů a aktualizace IoT Edge, najdete v tématu [Instalace modulu runtime Azure IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
-
 1. Otevřete okno PowerShellu v režimu správce. Při instalaci IoT Edge, ne pomocí PowerShellu (x86) nezapomeňte použít relaci AMD64 prostředí PowerShell.
 
-1. Příkaz **Deploy-IoTEdge** zkontroluje, jestli má počítač s Windows podporovanou verzi, zapne funkci Containers a pak stáhne modul runtime Moby a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows.
+1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz se standardně zastavuje ručním zřizováním kontejnerů Windows, takže použijte `-DpsX509` příznak pro Automatické zřizování s ověřováním pomocí certifikátu X. 509.
+
+   Nahraďte zástupné hodnoty pro `{scope_id}` , `{identity cert chain path}` a `{identity key path}` odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení.
+
+   `-RegistrationId {registration_id}`Pokud chcete ID zařízení nastavit jako jinou hodnotu než název cn certifikátu identity, přidejte ho.
+
+   Pokud používáte `-ContainerOs Linux` kontejnery Linux ve Windows, přidejte parametr.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Jiná zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní. Až bude zařízení připravené, spusťte PowerShell jako správce znovu.
-
-1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování, pokud nepoužijete `-Dps` příznak pro Automatické zřizování.
-
-   Nahraďte zástupné hodnoty pro `{scope_id}` , `{identity cert chain path}` a `{identity key path}` odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení. Chcete-li zadat ID registrace, zahrňte `-RegistrationId {registration_id}` také zástupný text nahraďte podle potřeby.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]
-   >V souboru config. yaml se uloží certifikát a informace o klíči jako identifikátory URI souborů. Příkaz Initialize-IoTEdge ale tento krok formátování zpracovává za vás, takže můžete zadat absolutní cestu k certifikátu a souborům klíčů na zařízení.
+   >Konfigurační soubor uloží certifikát a informace o klíči jako identifikátory URI souboru. Příkaz Initialize-IoTEdge ale tento krok formátování zpracovává za vás, takže můžete zadat absolutní cestu k certifikátu a souborům klíčů na zařízení.
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
@@ -290,6 +366,9 @@ Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v r
 Pomocí následujících příkazů na zařízení ověřte, že modul runtime byl úspěšně nainstalován a spuštěn.
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Zkontrolujte stav služby IoT Edge.
 
@@ -308,6 +387,29 @@ Vypíše spuštěné moduly.
 ```cmd/sh
 iotedge list
 ```
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Zkontrolujte stav služby IoT Edge.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+Projděte si protokoly služby.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Vypíše spuštěné moduly.
+
+```cmd/sh
+sudo iotedge list
+```
+:::moniker-end
 
 ### <a name="windows-device"></a>Zařízení s Windows
 

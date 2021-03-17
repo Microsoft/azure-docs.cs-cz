@@ -7,12 +7,42 @@
       href: ../azure-management.md
     - name: Skupiny pro správu
       href: ./overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Vytvoření skupiny pro správu – portál
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: Vytvoření skupiny pro správu – CLI
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: Vytvoření skupiny pro správu – Azure PowerShell
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: Vytvoření skupiny pro správu – .NET
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: Vytvoření skupiny pro správu – přejít
+      displayName: hierarchy
+      href: ./create-management-group-go.md
+    - name: Vytvoření skupiny pro správu – JavaScript
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
+    - name: Vytvoření skupiny pro správu – Python
+      displayName: hierarchy
+      href: ./create-management-group-python.md
+    - name: Vytvoření skupiny pro správu – REST
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
+- name: Kurzy
+  items:
+    - name: 'Learn: Vytvoření strategie zásad správného řízení pro předplatná'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Návody
   expanded: true
   items:
-    - name: Vytvoření skupin pro správu
-      href: ./create.md
-    - name: Správa vašich prostředků
+    - name: Správa hierarchie prostředků
       href: ./manage.md
     - name: Ochrana hierarchie prostředků
       href: ./how-to/protect-resource-hierarchy.md
@@ -24,8 +54,12 @@
       href: /powershell/module/az.resources/#resources
     - name: Sada Azure SDK pro .NET
       href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK for Go
+      href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups'
     - name: Azure SDK for JavaScript
       href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: Azure SDK pro Python
+      href: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - name: REST
       href: /rest/api/resources/managementgroups
     - name: Šablony Resource Manageru

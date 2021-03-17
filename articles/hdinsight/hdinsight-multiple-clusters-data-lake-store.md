@@ -1,24 +1,21 @@
 ---
 title: Víc clusterů HDInsight & jeden Azure Data Lake Storage účet.
 description: Naučte se používat víc než jeden cluster HDInsight s jedním Data Lake Storageovým účtem.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6e220592f53103320c3bdb586fcbd0106219bfed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939542"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem Azure Data Lake Storage
 
 Počínaje HDInsight verze 3,5 můžete vytvořit clustery HDInsight s účty Azure Data Lake Storage jako výchozí systém souborů.
-Data Lake Storage podporuje neomezené úložiště, které je ideální a nejenom pro hostování velkých objemů dat; ale taky pro hostování více clusterů HDInsight, které sdílejí jeden Data Lake Storage účet. Pokyny k vytvoření clusteru HDInsight s Data Lake Storage jako úložiště najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Storage podporuje neomezené úložiště, které je ideální a nejenom pro hostování velkých objemů dat; ale taky pro hostování více clusterů HDInsight, které sdílejí jeden Data Lake Storage účet. Pokyny k vytvoření clusteru HDInsight s Data Lake Storage jako úložiště najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
 Tento článek poskytuje doporučení pro správce Data Lake Storage pro nastavení jednoho a sdíleného Data Lake Storage účtu, který se dá použít v několika **aktivních** clusterech HDInsight. Tato doporučení platí pro hostování více než zabezpečených Apache Hadoop clusterů na sdíleném Data Lake Storagem účtu.
 
@@ -28,15 +25,15 @@ Ve zbývající části tohoto článku se předpokládá, že máte dobré znal
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Nastavení Data Lake Storage pro několik clusterů HDInsight
 
-Podíváme se na oboustrannou hierarchii složek, kde můžete vysvětlit doporučení pro používání více clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu, že máte účet Data Lake Storage se strukturou složek **/Clusters/finance**. V této struktuře můžou všechny clustery, které finanční organizace vyžaduje, používat/Clusters/finance jako umístění úložiště. Pokud je v budoucnu další organizace, což znamená marketing, chce vytvořit clustery HDInsight pomocí stejného Data Lake Storage účtu, můžou vytvořit/Clusters/marketing. Prozatím můžeme jenom **/Clusters/finance**použít.
+Podíváme se na oboustrannou hierarchii složek, kde můžete vysvětlit doporučení pro používání více clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu, že máte účet Data Lake Storage se strukturou složek **/Clusters/finance**. V této struktuře můžou všechny clustery, které finanční organizace vyžaduje, používat/Clusters/finance jako umístění úložiště. Pokud je v budoucnu další organizace, což znamená marketing, chce vytvořit clustery HDInsight pomocí stejného Data Lake Storage účtu, můžou vytvořit/Clusters/marketing. Prozatím můžeme jenom **/Clusters/finance** použít.
 
 Aby bylo možné tuto strukturu složky efektivně využívat clustery HDInsight, musí správce Data Lake Storage přiřadit příslušná oprávnění, jak je popsáno v tabulce. Oprávnění zobrazená v tabulce odpovídají přístupovým seznamům ACL a nikoli výchozím nastavením seznamů ACL.
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Pojmenovaný uživatel | Pojmenovaná uživatelská oprávnění | Pojmenovaná skupina | Pojmenovaná skupina oprávnění |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |admin |admin  |Instanční objekt |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |admin |admin |Instanční objekt |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |admin |FINGRP  |Instanční objekt |RWX  |-  |-     |
+|/ | rwxr-x--x  |správce |správce  |Instanční objekt |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |správce |správce |Instanční objekt |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |správce |FINGRP  |Instanční objekt |RWX  |-  |-     |
 
 V tabulce
 
@@ -65,7 +62,7 @@ Doporučujeme, aby se vstupní data do úlohy a výstupy z úlohy ukládaly do s
 
 Omezení počtu clusterů, které můžou sdílet jeden Data Lake Storage účet, závisí na zatížení spouštěného na těchto clusterech. Pokud máte v clusterech, které sdílejí účet úložiště, moc velký počet clusterů nebo velmi náročné úlohy, může dojít k omezení počtu vstupně-výstupních přenosů účtu úložiště.
 
-## <a name="support-for-default-acls"></a>Podpora výchozích seznamů ACL
+## <a name="support-for-default-acls"></a>Podpora Default-ACLs
 
 Při vytváření instančního objektu s přístupem k pojmenovanému uživateli (jak je znázorněno v tabulce výše) doporučujeme **Nepřidávat** pojmenovaného uživatele s výchozím seznamem ACL. Zřizování přístupu s názvem s použitím výchozích seznamů ACL vede k přiřazení oprávnění 770 pro vlastnícího uživatele, vlastnící skupinu a další. I když tato výchozí hodnota 770 nebere v úvahu oprávnění od vlastnícího uživatele (7) nebo vlastnícího skupiny (7), zabírá všechna oprávnění pro ostatní (0). Výsledkem je známý problém s jedním konkrétním případem použití, který je podrobně popsán v části [známé problémy a alternativní řešení](#known-issues-and-workarounds) .
 
@@ -91,5 +88,5 @@ Nastavte oprávnění ke čtení pro **ostatní** přes hierarchii, například 
 
 ## <a name="see-also"></a>Viz také
 
-- [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Rychlý start: Nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md)
 - [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)

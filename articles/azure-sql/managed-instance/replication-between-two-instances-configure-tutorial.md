@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920105"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690681"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Kurz: Konfigurace replikace mezi dvěma spravovanými instancemi
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
 > - Konfigurace spravované instance jako vydavatele a distributora replikace
-> - Nakonfigurujte spravovanou instanci jako distributora replikace.
+> - Nakonfigurujte spravovanou instanci jako předplatitele replikace.
 
 ![Replikace mezi dvěma spravovanými instancemi](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
@@ -48,10 +48,10 @@ Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je
 
 Konfigurace spravované instance SQL tak, aby fungovala jako Vydavatel nebo distributor, vyžaduje:
 
-- Zda je spravovaná instance vydavatele ve stejné virtuální síti jako distributor a předplatitel, nebo že [partnerský vztah virtuálních sítí](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) byl nakonfigurován mezi virtuálními sítěmi všech tří entit. 
+- Tato spravovaná instance vydavatele se nachází ve stejné virtuální síti jako distributor a předplatitel, nebo [VPN Gateway](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) byly nakonfigurovány mezi virtuálními sítěmi všech tří entit. 
 - Při připojování mezi účastníky replikace se používá ověřování SQL.
 - Sdílená složka účtu úložiště Azure pro pracovní adresář replikace.
-- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure.  Pokud dojde k chybě `failed to connect to azure storage \<storage account name> with os error 53` , bude nutné přidat odchozí pravidlo do NSG příslušné podsítě spravované instance SQL.
+- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure.  Pokud dojde k chybě `failed to connect to azure storage <storage account name> with os error 53` , bude nutné přidat odchozí pravidlo do NSG příslušné podsítě spravované instance SQL.
 
 ## <a name="1---create-a-resource-group"></a>1. Vytvoření skupiny prostředků
 
@@ -61,20 +61,20 @@ Pomocí [Azure Portal](https://portal.azure.com) vytvořte skupinu prostředků 
 
 Pomocí [Azure Portal](https://portal.azure.com) vytvořte dvě [spravované instance SQL](instance-create-quickstart.md) ve stejné virtuální síti a podsíti. Například pojmenujte dvě spravované instance:
 
-- `sql-mi-pub`(spolu s některými znaky pro náhodnost)
-- `sql-mi-sub`(spolu s některými znaky pro náhodnost)
+- `sql-mi-pub` (spolu s některými znaky pro náhodnost)
+- `sql-mi-sub` (spolu s některými znaky pro náhodnost)
 
 Pro připojení ke spravovaným instancím budete taky muset [nakonfigurovat virtuální počítač Azure](connect-vm-instance-configure.md) . 
 
 ## <a name="3---create-an-azure-storage-account"></a>3. vytvoření účtu služby Azure Storage
 
-[Vytvořte účet úložiště Azure](/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
+[Vytvořte účet úložiště Azure](../../storage/common/storage-account-create.md#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
 
-Zkopírujte cestu ke sdílené složce ve formátu:`\\storage-account-name.file.core.windows.net\file-share-name`
+Zkopírujte cestu ke sdílené složce ve formátu: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Příklad: `\\replstorage.file.core.windows.net\replshare`
 
-Zkopírujte přístupové klíče úložiště ve formátu:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Zkopírujte přístupové klíče úložiště ve formátu: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Příklad: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
@@ -326,4 +326,4 @@ Prostředky Azure můžete vyčistit [odstraněním prostředků spravované ins
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete si taky přečíst další informace o [transakční replikaci pomocí spravované instance Azure SQL](replication-transactional-overview.md) nebo se seznámit s konfigurací replikace mezi [vydavatelem nebo distributorem spravované instance SQL a SQL na předplatiteli virtuálních počítačů Azure](replication-two-instances-and-sql-server-configure-tutorial.md). 
+Můžete si taky přečíst další informace o [transakční replikaci pomocí spravované instance Azure SQL](replication-transactional-overview.md) nebo se seznámit s konfigurací replikace mezi [vydavatelem nebo distributorem spravované instance SQL a SQL na předplatiteli virtuálních počítačů Azure](replication-two-instances-and-sql-server-configure-tutorial.md).

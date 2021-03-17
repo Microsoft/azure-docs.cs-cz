@@ -1,29 +1,33 @@
 ---
-title: Použití modulu Azure Mapsch vnitřních map
+title: Použití modulu Azure Mapsch vnitřních map se službou Microsoft Creator Services (Preview)
 description: Naučte se, jak používat modul mapy Vnitřníchy Microsoft Azure map pro vykreslování map vložením knihoven JavaScript modulu.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287086"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708675"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
-Sada Azure Maps Web SDK obsahuje modul *Azure Maps interiéru* . Modul *vnitřních Azure Maps* umožňuje vykreslit vnitřní mapy vytvořené v programu Azure Maps Creator.
+> [!IMPORTANT]
+> Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Sada Azure Maps Web SDK obsahuje modul *Azure Maps interiéru* . Modul  *vnitřních Azure Maps* umožňuje vykreslovat mapy vnitřních verzí vytvořené v rámci služby Azure Maps Creator Services (Preview). 
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Vytvoření prostředku autora](how-to-manage-creator.md)
+2. [Vytvoření prostředku Creator (Preview)](how-to-manage-creator.md)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 4. Získejte `tilesetId` a a `statesetId` doplněním [kurzu vytváření vnitřních map](tutorial-creator-indoor-maps.md).
  Tyto identifikátory budete muset použít k vykreslování vnitřních map pomocí modulu Azure Mapsch vnitřních map.
@@ -35,10 +39,8 @@ Modul *vnitřního Azure Maps* můžete nainstalovat a vložit jedním ze dvou z
 Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure *Azure Maps modulu vnitřního* prostředí, odkazujte na následující odkazy na šablonu JavaScriptu a stylů v `<head>` elementu souboru HTML:
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  Nebo si můžete stáhnout Azure Maps modul *vnitřního* softwaru. Modul *vnitřních Azure Maps* obsahuje klientskou knihovnu pro přístup ke službě Azure Maps Services. Pomocí následujících kroků nainstalujete a načtete modul pro *vnitřní* prostředí do své webové aplikace.  
@@ -46,15 +48,14 @@ Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure
   1. Nainstalujte [balíček Azure-Maps-interiér](https://www.npmjs.com/package/azure-maps-indoor).
   
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
   2. Odkaz na *Azure Maps modul vnitřních* souborů a šablonu stylů v `<head>` prvku souboru HTML:
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>Vytvoření instance objektu map
@@ -66,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -80,27 +81,27 @@ const map = new atlas.Map("map-id", {
 
 ## <a name="instantiate-the-indoor-manager"></a>Vytvoření instance Správce vnitřních
 
-Chcete-li načíst vnitřní tilesets a styl mapy dlaždic, je nutné vytvořit instanci *správce vnitřních*verzí. Vytvořte instanci *správce vnitřních* objektů tak, že poskytnete *objekt map* a odpovídající `tilesetId` . Pokud chcete podporovat [styl dynamické mapy](indoor-map-dynamic-styling.md), musíte předat `statesetId` . V `statesetId` názvu proměnné se rozlišují malá a velká písmena. Váš kód by měl vypadat jako JavaScript níže.
+Chcete-li načíst vnitřní tilesets a styl mapy dlaždic, je nutné vytvořit instanci *správce vnitřních* verzí. Vytvořte instanci *správce vnitřních* objektů tak, že poskytnete *objekt map* a odpovídající `tilesetId` . Pokud chcete podporovat [styl dynamické mapy](indoor-map-dynamic-styling.md), musíte předat `statesetId` . V `statesetId` názvu proměnné se rozlišují malá a velká písmena. Váš kód by měl vypadat jako JavaScript níže.
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 Chcete-li povolit cyklické dotazování na data stavu, je nutné zadat `statesetId` volání a `indoorManager.setDynamicStyling(true)` . Data o stavu cyklického dotazování umožňují dynamicky aktualizovat stav dynamických vlastností nebo *stavů*. Například funkce, jako je například místnost, může mít zavolanou dynamickou vlastnost (*stav*) `occupancy` . Vaše aplikace se může chtít dotázat na všechny změny *stavu* , aby odrážely změnu ve vizuální mapě. Následující kód ukazuje, jak povolit cyklické dotazování stavu:
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -110,7 +111,7 @@ if (statesetId.length > 0) {
 
 ## <a name="indoor-level-picker-control"></a>Ovládací prvek Výběr úrovně vnitřníchy
 
- Ovládací prvek *pro výběr na úrovni interiéru* umožňuje změnit úroveň vykreslené mapy. Volitelnou inicializaci ovládacího prvku *pro výběr na úrovni interiéru* můžete provést pomocí *správce vnitřních*verzí. Zde je kód pro inicializaci výběru ovládacího prvku úrovně:
+ Ovládací prvek *pro výběr na úrovni interiéru* umožňuje změnit úroveň vykreslené mapy. Volitelnou inicializaci ovládacího prvku *pro výběr na úrovni interiéru* můžete provést pomocí *správce vnitřních* verzí. Zde je kód pro inicializaci výběru ovládacího prvku úrovně:
 
 ```javascript
 const levelControl = new atlas.control.LevelControl({ position: "top-right" });
@@ -119,7 +120,7 @@ indoorManager.setOptions({ levelControl });
 
 ## <a name="indoor-events"></a>Vnitřní události
 
- Modul *vnitřních Azure Maps* podporuje události *objektu map* . Naslouchací procesy událostí *objektu mapy* jsou vyvolány, když došlo ke změně úrovně nebo zařízení. Pokud chcete spustit kód po změně úrovně nebo zařízení, umístěte kód do naslouchacího procesu události. Následující kód ukazuje, jak lze do *objektu map*přidat naslouchací procesy událostí.
+ Modul *vnitřních Azure Maps* podporuje události *objektu map* . Naslouchací procesy událostí *objektu mapy* jsou vyvolány, když došlo ke změně úrovně nebo zařízení. Pokud chcete spustit kód po změně úrovně nebo zařízení, umístěte kód do naslouchacího procesu události. Následující kód ukazuje, jak lze do *objektu map* přidat naslouchací procesy událostí.
 
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
@@ -148,11 +149,11 @@ V tomto příkladu se dozvíte, jak ve webové aplikaci použít modul *vnitřn�
 3. V záhlaví HTML, odkazujte na Azure Maps a styly šablon stylů v modulu *interiéru* .
 
 4. Inicializuje *objekt mapy*. *Objekt map* podporuje následující možnosti:
-    - `Subscription key`je váš Azure Maps primární klíč předplatného.
-    - `center`definuje zeměpisnou šířku a délku pro umístění vašeho centra mapy na vnitřních místech. Zadejte hodnotu pro, `center` Pokud nechcete zadat hodnotu pro `bounds` . Formát by měl vypadat takto `center` : [-122,13315, 47,63637].
-    - `bounds`je nejmenší pravoúhlý tvar, který obklopuje data mapy TILESET. Nastavte hodnotu pro `bounds` , pokud nechcete nastavit hodnotu pro `center` . Mapu vazeb můžete najít voláním [rozhraní API pro seznam TILESET](https://docs.microsoft.com/rest/api/maps/tileset/listpreview). Rozhraní TILESET vypíše rozhraní API `bbox` , které můžete analyzovat a přiřadit k `bounds` . Formát by měl vypadat takto `bounds` : [# západ, # jih, # východ, # sever].
-    - `style`umožňuje nastavit barvu pozadí. Chcete-li zobrazit bílé pozadí, definujte `style` hodnotu "prázdné".
-    - `zoom`umožňuje zadat minimální a maximální úroveň přiblížení pro mapu.
+    - `Subscription key` je váš Azure Maps primární klíč předplatného.
+    - `center` definuje zeměpisnou šířku a délku pro umístění vašeho centra mapy na vnitřních místech. Zadejte hodnotu pro, `center` Pokud nechcete zadat hodnotu pro `bounds` . Formát by měl vypadat takto `center` : [-122,13315, 47,63637].
+    - `bounds` je nejmenší pravoúhlý tvar, který obklopuje data mapy TILESET. Nastavte hodnotu pro `bounds` , pokud nechcete nastavit hodnotu pro `center` . Mapu vazeb můžete najít voláním [rozhraní API pro seznam TILESET](/rest/api/maps/tileset/listpreview). Rozhraní TILESET vypíše rozhraní API `bbox` , které můžete analyzovat a přiřadit k `bounds` . Formát by měl vypadat takto `bounds` : [# západ, # jih, # východ, # sever].
+    - `style` umožňuje nastavit barvu pozadí. Chcete-li zobrazit bílé pozadí, definujte `style` hodnotu "prázdné".
+    - `zoom` umožňuje zadat minimální a maximální úroveň přiblížení pro mapu.
 
 5. Pak vytvořte modul *správce vnitřních* . Přiřaďte *Azure Maps interiér* `tilesetId` a volitelně přidejte `statesetId` .
 
@@ -217,9 +218,9 @@ Váš soubor by teď měl vypadat podobně jako v následujícím formátu HTML.
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +245,8 @@ Pokud chcete zobrazit mapu vnitřních souborů, načtěte ji do webového prohl
 
   ![Obrázek mapy interiéru](media/how-to-use-indoor-module/indoor-map-graphic.png)
 
+[Viz Živá ukázka](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
+
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o rozhraních API, která souvisí s modulem *Azure Maps vnitřních* :
@@ -252,7 +255,7 @@ Přečtěte si o rozhraních API, která souvisí s modulem *Azure Maps vnitřn�
 > [Požadavky balíčku pro kreslení](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [Autor pro mapy vnitřníchy](creator-indoor-maps.md)
+> [Autor (Preview) pro mapy vnitřních verzí](creator-indoor-maps.md)
 
 Další informace o tom, jak přidat další data do mapy:
 
@@ -260,4 +263,4 @@ Další informace o tom, jak přidat další data do mapy:
 > [Dynamické stylování map v interiéru](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

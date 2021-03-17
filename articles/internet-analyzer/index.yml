@@ -10,12 +10,12 @@ metadata:
   author: megan-beatty
   ms.author: mebeatty
   ms.date: 10/16/2019
-  ms.openlocfilehash: f1d8bc4bafe140a8522591e57bf2aa6665120d1f
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
-  ms.translationtype: HT
+  ms.openlocfilehash: 31e2ef7a9f3b41de18ce0989a096977b22bd9b26
+  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74896499"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102200052"
 landingContent:
 - title: Informace o službě Internet Analyzer
   linkLists:
@@ -48,4 +48,4 @@ landingContent:
     - text: Řešení potíží se službou Internet Analyzer
       url: troubleshoot.md
     - text: Referenční informace k CLI služby Internet Analyzer
-      url: https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
+      url: /cli/azure/ext/internet-analyzer/internet-analyzer

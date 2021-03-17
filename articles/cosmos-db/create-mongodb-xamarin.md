@@ -6,22 +6,24 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/16/2020
+ms.date: 10/09/2020
 ms.author: masoucou
-ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 75db62b4f8a5c6512ca5fc84d149513fe81f6019
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659172"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658227"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace Xamarin. Forms pomocí .NET SDK a rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](create-mongodb-flask.md)
+> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
@@ -88,12 +90,9 @@ Všechny následující fragmenty kódu jsou odebírány z `MongoService` tříd
 
 * Inicializuje se klient Mongo.
     ```cs
-    MongoClientSettings settings = MongoClientSettings.FromUrl(
-        new MongoUrl(APIKeys.ConnectionString)
-    );
+    MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(APIKeys.ConnectionString));
 
-    settings.SslSettings =
-        new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+    settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
 
     settings.RetryWrites = false;
 
@@ -107,7 +106,8 @@ Všechny následující fragmenty kódu jsou odebírány z `MongoService` tříd
 
     var db = mongoClient.GetDatabase(dbName);
 
-    var collectionSettings = new MongoCollectionSettings {
+    var collectionSettings = new MongoCollectionSettings 
+    {
         ReadPreference = ReadPreference.Nearest
     };
 
@@ -185,7 +185,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 2. Klikněte na **Obnovit všechny balíčky NuGet**.
 3. Klikněte pravým tlačítkem na **TaskList.Android** a vyberte **Nastavit jako spouštěný projekt**.
 4. Stisknutím klávesy F5 spusťte ladění aplikace.
-5. Pokud chcete aplikaci spustit v iOS, nejprve se váš počítač připojí k Macu (informace o [postupu](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio) najdete tady).
+5. Pokud chcete aplikaci spustit v iOS, nejprve se váš počítač připojí k Macu (informace o [postupu](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio) najdete tady).
 6. Klikněte pravým tlačítkem na **TaskList.iOS** a vyberte **Nastavit jako spouštěný projekt**.
 7. Stisknutím klávesy F5 spusťte ladění aplikace.
 
@@ -207,4 +207,4 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB a spuštění aplikace Xamarin.Forms pomocí rozhraní API pro MongoDB. Teď můžete do účtu databáze Cosmos importovat další data.
 
 > [!div class="nextstepaction"]
-> [Import dat do Azure Cosmos DB nakonfigurovaných pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-migrate.md)
+> [Import dat do Azure Cosmos DB nakonfigurovaných pomocí rozhraní API Azure Cosmos DB pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

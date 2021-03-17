@@ -1,30 +1,26 @@
 ---
 title: Nastavení HADR IBM Db2 na virtuálních počítačích Azure (virtuální počítače) | Microsoft Docs
 description: Navažte vysokou dostupnost IBM Db2 LUW na virtuálních počítačích Azure (VM).
-services: virtual-machines-linux
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: SAP
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 03/06/2020
+ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051990"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671890"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Vysoká dostupnost IBM Db2 LUW na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Pacemaker
 
 IBM Db2 pro Linux, UNIX a Windows (LUW) v [konfiguraci vysoké dostupnosti a zotavení po havárii (hadr)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) se skládá z jednoho uzlu, na kterém běží primární instance databáze, a aspoň jednoho uzlu, na kterém běží sekundární instance databáze. Změny primární instance databáze jsou replikovány do sekundární instance databáze synchronně nebo asynchronně v závislosti na konfiguraci. 
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na *Hlavní* a *podřízené* výrazy, které Microsoft už nepoužívá. Po odebrání těchto podmínek ze softwaru je odebereme z tohoto článku.
+   
 Tento článek popisuje, jak nasadit a nakonfigurovat virtuální počítače Azure, nainstalovat architekturu clusteru a nainstalovat IBM Db2 LUW s konfigurací HADR. 
 
 Tento článek nepopisuje, jak nainstalovat a nakonfigurovat IBM Db2 LUW s instalací softwaru HADR nebo SAP. Abychom vám pomohli dosáhnout těchto úkolů, poskytujeme odkazy na instalační příručky pro SAP a IBM. Tento článek se zaměřuje na části, které jsou specifické pro prostředí Azure. 
@@ -138,7 +134,7 @@ Ujistěte se, že je vybraný operační systém podporovaný IBM/SAP pro IBM Db
 
 ## <a name="create-the-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
     
-Pokud chcete pro tento server IBM Db2 vytvořit základní cluster Pacemaker, přečtěte si téma [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure][sles-pacemaker]. 
+Pokud chcete pro tento server IBM Db2 vytvořit základní cluster Pacemaker, přečtěte si téma [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure][sles-pacemaker]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Instalace prostředí IBM Db2 LUW a SAP
 
@@ -174,7 +170,7 @@ Nastavení primární instance databáze IBM Db2 LUW:
 
 Pokud chcete nastavit pohotovostní databázový server pomocí procedury pro homogenní systémovou kopii SAP, proveďte tyto kroky:
 
-1. Vyberte možnost **kopírování systému** > **cílová**  >  **Distributed**  >  **instance distribuované databáze**.
+1. Vyberte možnost **kopírování systému** > **cílová**  >    >  **instance distribuované databáze**.
 1. Jako metodu kopírování vyberte **homogenní systém** , abyste mohli obnovit zálohu na pohotovostní instanci serveru pomocí zálohování.
 1. Až se dostanete k kroku konec obnovení databáze pro homogenní systémovou kopii, ukončete instalační program. Obnovte databázi ze zálohy primárního hostitele. Všechny následné fáze instalace už jsou spuštěné na primárním databázovém serveru.
 1. Nastavte HADR pro IBM Db2.
@@ -327,7 +323,7 @@ Následující položky jsou s předponou buď:
 > - Pro SLES 15/15 SP1 musí být verze aspoň Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
 >
 > Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
-> V případě existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128), není nutné okamžitě přepínat na agenta prostředků Azure-9,1.
+> U existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení azure Load-Balancer](https://www.suse.com/support/kb/doc/?id=7024128), neexistuje žádný požadavek na přepnutí přímo do agenta prostředků Azure-No.
 
 **[1]** IBM Db2 hadr – konfigurace Pacemaker pro konkrétní:
 <pre><code># Put Pacemaker into maintenance mode
@@ -401,13 +397,16 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 > [!NOTE]
 > SKU Standard Load Balancer má omezení přístupu k veřejným IP adresám z uzlů pod Load Balancer. Článek [připojení ke veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md) popisuje způsoby, jak tyto uzly povolit přístup k veřejným IP adresám.
 
+> [!IMPORTANT]
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
+
 1. Vytvořte front-end fond IP adres:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **front-end IP fond**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **front-end IP fond** a pak vyberte **Přidat**.
 
    b. Zadejte název nového fondu front-end IP adres (například **Db2 připojení**).
 
-   c. Nastavte **přiřazení** na hodnotu **static**a zadejte na začátku IP adresu **virtuální IP** adresa.
+   c. Nastavte **přiřazení** na hodnotu **static** a zadejte na začátku IP adresu **virtuální IP** adresa.
 
    d. Vyberte **OK**.
 
@@ -415,7 +414,7 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte fond back-end:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **back-end fondy**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **back-end fondy** a pak vyberte **Přidat**.
 
    b. Zadejte název nového fondu back-end (například **Db2-back-end**).
 
@@ -429,23 +428,23 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
 1. Vytvořte sondu stavu:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **sondy stavu**a vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **sondy stavu** a vyberte **Přidat**.
 
    b. Zadejte název nové sondy stavu (například **Db2-HP**).
 
-   c. Jako protokol a port **62500**vyberte **TCP** . Hodnotu **intervalu** nastavte na **5**a v poli prahová hodnota není v **pořádku** nastavte hodnotu **2**.
+   c. Jako protokol a port **62500** vyberte **TCP** . Hodnotu **intervalu** nastavte na **5** a v poli prahová hodnota není v **pořádku** nastavte hodnotu **2**.
 
    d. Vyberte **OK**.
 
 1. Vytvořte pravidla vyrovnávání zatížení:
 
-   a. V Azure Portal otevřete Azure Load Balancer, vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
+   a. V Azure Portal otevřete Azure Load Balancer, vyberte **pravidla vyrovnávání zatížení** a pak vyberte **Přidat**.
 
    b. Zadejte název nového pravidla Load Balancer (například **Db2-SID**).
 
    c. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Db2-front-endu**).
 
-   d. Zachovejte **protokol** nastaven na **TCP**a zadejte port pro *komunikaci databáze*portů.
+   d. Zachovejte **protokol** nastaven na **TCP** a zadejte port pro *komunikaci databáze* portů.
 
    e. Zvyšte **časový limit nečinnosti** na 30 minut.
 
@@ -478,7 +477,7 @@ Pokud jste instalaci provedli předtím, než jste vytvořili konfiguraci Db2 HA
 
 Použijte konfigurační nástroj J2EE ke kontrole nebo aktualizaci adresy URL JDBC. Vzhledem k tomu, že nástroj J2EE Configuration Tool je grafický nástroj, je nutné mít nainstalovaný X Server:
  
-1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. V levém rámci vyberte **úložiště zabezpečení**.
 1. V pravém rámečku Vyberte klíč JDBC/Pool/ \<SAPSID> /URL..
 1. Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
@@ -495,7 +494,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společnou sdílenou složku NFS, do které se zapisují protokoly z obou uzlů. Sdílená složka systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace najdete tady:
+Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace naleznete v tématu:
 
 - [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)
@@ -576,8 +575,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **migrace prostředků CRM \<res_name> \<host> :** vytvoří omezení umístění a může způsobit problémy s převzetím.
-- **prostředek CRM Clear \<res_name> **: vymaže omezení umístění.
-- **Vyčištění \<res_name> prostředků CRM **: vymaže všechny chyby prostředku.
+- **prostředek CRM Clear \<res_name>**: vymaže omezení umístění.
+- **Vyčištění \<res_name> prostředků CRM**: vymaže všechny chyby prostředku.
 
 ### <a name="test-the-fencing-agent"></a>Testování agenta pro oplocení
 

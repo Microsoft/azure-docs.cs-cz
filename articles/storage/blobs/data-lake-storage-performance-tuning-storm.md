@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912786"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: zaplavení, HDInsight & Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu t
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště pro analýzu](data-lake-storage-quickstart-create-account.md).
-* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Spuštění clusteru nečinnosti v Data Lake Storage Gen2**. Další informace najdete v tématu zaplavení [v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště pro analýzu](../common/storage-account-create.md).
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
+* **Spuštění clusteru nečinnosti v Data Lake Storage Gen2**. Další informace najdete v tématu zaplavení [v HDInsight](../../hdinsight/storm/apache-storm-overview.md).
 * **Pokyny k ladění výkonu na data Lake Storage Gen2**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen2 doprovodné materiály k ladění výkonu](data-lake-storage-performance-tuning-guidance.md).   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>Vyladění paralelismu topologie
@@ -110,10 +110,10 @@ Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen2
 
 Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari**.  >  **Storm**  >  **Config**  >  **log4j konfigurace Advanced**, změňte ** &lt; kořenovou úroveň = "informace" &gt; ** na ** &lt; kořenovou úroveň = "ladění" &gt; **. Restartujte všechny uzly/služby, aby se konfigurace projevila.
+1. V **Ambari**.  >  **Storm**  >  **Config**  >  **log4j konfigurace Advanced**, změňte **&lt; kořenovou úroveň = "informace" &gt;** na **&lt; kořenovou úroveň = "ladění" &gt;**. Restartujte všechny uzly/služby, aby se konfigurace projevila.
 2. Sledujte protokoly rozplavení v uzlech pracovních procesů (pod/var/log/Storm/Worker-artifacts/em &lt; &gt; / &lt; &gt; /Worker.log portu) pro výjimky omezování Data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Další kroky
-Na [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)se dá odkazovat na další ladění výkonu pro zaplavení.
+Na [tomto blogu](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)se dá odkazovat na další ladění výkonu pro zaplavení.
 
 Další příklad ke spuštění najdete [v tomto tématu na GitHubu](https://github.com/hdinsight/storm-performance-automation).

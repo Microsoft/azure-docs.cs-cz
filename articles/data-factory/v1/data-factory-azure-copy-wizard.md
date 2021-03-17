@@ -1,26 +1,21 @@
 ---
 title: Průvodce kopírováním Data Factory Azure
 description: Přečtěte si, jak pomocí Průvodce kopírováním Azure Data Factory zkopírovat data z podporovaných zdrojů dat do jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0f95b0d62bc81a8dddc72239491a05ca78945490
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086836"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393373"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním Azure Data Factory
+
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. 
 
@@ -35,8 +30,6 @@ Tento průvodce vám umožní snadno přesunout data z nejrůznějších zdrojů
 
 > [!NOTE]
 > Podrobné pokyny k vytvoření ukázkového kanálu pro kopírování dat z objektu blob Azure do tabulky Azure SQL Database najdete v [kurzu Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
->
->
 
 Průvodce je navržen s velkými objemy dat od začátku, s podporou pro různé typy dat a objektů. Můžete vytvářet Data Factory kanály, které přesouvají stovky složek, souborů nebo tabulek. Průvodce podporuje automatickou náhled dat, zachytávání schématu a mapování a filtrování dat.
 
@@ -49,8 +42,7 @@ Můžete zobrazit náhled části dat z vybraného zdroje dat a ověřit tak, zd
 Schéma vstupních dat nemusí v některých případech odpovídat schématu výstupních dat. V tomto scénáři je nutné mapovat sloupce ze zdrojového schématu na sloupce z cílového schématu.
 
 > [!TIP]
-> Při kopírování dat z SQL Server nebo Azure SQL Database do Azure SQL Data Warehouse, pokud tabulka v cílovém úložišti neexistuje, Data Factory podpora automatického vytváření tabulek pomocí schématu zdroje. Přečtěte si další informace z [přesunu dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
->
+> Při kopírování dat z SQL Server nebo Azure SQL Database do služby Azure synapse Analytics, pokud tabulka v cílovém úložišti neexistuje, Data Factory podporovat vytvoření automatické tabulky pomocí schématu zdroje. Přečtěte si další informace z [přesunu dat do a z Azure synapse Analytics pomocí Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 
 Pomocí rozevíracího seznamu vyberte sloupec ze zdrojového schématu, který chcete namapovat na sloupec v cílovém schématu. Průvodce kopírováním se pokusí pochopit vzor pro mapování sloupců. Aplikuje stejný vzor na zbytek sloupců, takže nemusíte jednotlivě vybírat jednotlivé sloupce pro dokončení mapování schématu. Pokud chcete, můžete tato mapování přepsat pomocí rozevíracích seznamů a namapovat sloupce jeden po jedné. Vzor je přesnější při mapování více sloupců. Průvodce kopírováním průběžně aktualizuje vzor a nakonec dosáhne správného vzoru mapování sloupců, které chcete dosáhnout.     
 
@@ -80,7 +72,7 @@ Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte j
 
 ![Použití systémových proměnných](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak je znázorněno na následujícím snímku obrazovky, můžete také použít **vlastní** proměnnou a všechny [podporované formátovací řetězce](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Chcete-li vybrat složku s touto strukturou, použijte nejprve tlačítko **Procházet** . Potom hodnotu nahraďte hodnotou **{Custom}** a stisknutím klávesy **TAB** zobrazte textové pole, ve kterém můžete zadat řetězec formátu.     
+Jak je znázorněno na následujícím snímku obrazovky, můžete také použít **vlastní** proměnnou a všechny [podporované formátovací řetězce](/dotnet/standard/base-types/custom-date-and-time-format-strings). Chcete-li vybrat složku s touto strukturou, použijte nejprve tlačítko **Procházet** . Potom hodnotu nahraďte hodnotou **{Custom}** a stisknutím klávesy **TAB** zobrazte textové pole, ve kterém můžete zadat řetězec formátu.     
 
 ![Použití vlastní proměnné](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -90,6 +82,49 @@ Operaci kopírování můžete spustit jednou nebo podle plánu (každou hodinu,
 Jednorázová operace kopírování umožňuje přesun dat ze zdroje do cíle pouze jednou. Platí pro data libovolné velikosti a veškerého podporovaného formátu. Naplánované kopírování umožňuje kopírovat data po předepsaném opakování. Ke konfiguraci naplánované kopie můžete použít bohatá nastavení (například opakování, časový limit a upozornění).
 
 ![Vlastnosti plánování](./media/data-factory-copy-wizard/scheduling-properties.png)
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+V této části se prozkoumá běžné metody řešení potíží pro Průvodce kopírováním v Azure Data Factory.
+
+> [!NOTE] 
+> Tyto tipy k odstraňování potíží se vztahují na Průvodce kopírováním ve verzi 1 Data Factory. Informace o Data Factory v2 najdete v Průvodci odstraňováním potíží při [řešení potíží s Azure Data Factory](../data-factory-ux-troubleshoot-guide.md).
+
+### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Kód chyby: nejde ověřit v průvodci kopírováním.
+
+- **Příznaky**: v prvním kroku Průvodce kopírováním zjistíte zprávu s upozorněním "nelze ověřit".
+- **Příčiny**: k tomu může dojít, když jsou všechny soubory cookie třetích stran zakázané.
+- **Řešení**: 
+    - Použijte Internet Explorer nebo prohlížeč Microsoft Edge.
+    - Pokud používáte prohlížeč Chrome, postupujte podle pokynů níže a přidejte výjimku soubory cookie pro *microsoftonline.com* a *Windows.NET*.
+        1.  Otevřete prohlížeč Chrome.
+        2.  Klikněte na klíče nebo tři čáry vpravo (přizpůsobení a řízení Google Chrome).
+        3.  Klikněte na **Nastavení**.
+        4.  Prohledejte **soubory cookie** nebo v části Upřesnit nastavení otevřete **ochranu osobních údajů** .
+        5.  Vyberte **Nastavení obsahu**.    
+        6.  Soubory cookie by měly být nastavené tak, aby **umožňovaly nastavení místních dat (doporučeno)**.
+        7.  Klikněte na **Spravovat výjimky**. V části **vzor názvu hostitele** zadejte následující **a ujistěte se, že je nastavení** chování nastaveno.
+            - login.microsoftonline.com
+            - login.windows.net
+        8.  Zavřete prohlížeč a znovu ho spusťte.
+    - Pokud používáte prohlížeč Firefox, přidejte výjimku soubory cookie podle pokynů níže.
+        1. V nabídce Firefox přejděte na   >  **Možnosti** nástroje.
+        2. V části Historie **ochrany osobních údajů** se  >  může zobrazit, že aktuální nastavení **používá pro historii vlastní nastavení**.
+        3. V části **přijmout soubory cookie třetích stran** nemusí být vaše aktuální nastavení **nikdy**, potom klikněte na **výjimky** na pravé straně pro přidání následujících webů.
+            - https://login.microsoftonline.com
+            - https://login.windows.net
+        4.  Zavřete prohlížeč a znovu ho spusťte. 
+
+
+### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>Kód chyby: nejde otevřít přihlašovací stránku a zadat heslo.
+
+- **Příznaky**: Průvodce kopírováním vás přesměruje na přihlašovací stránku, ale přihlašovací stránka se nezobrazuje úspěšně.
+- **Příčiny**: k tomuto problému může dojít, pokud jste změnili síťové prostředí ze sítě Office do domácí sítě. V prohlížečích jsou několik mezipamětí. 
+- **Řešení**: 
+    1.  Zavřete prohlížeč a zkuste to znovu. Pokud problém ještě existuje, pokračujte na další krok.   
+    2.  Pokud používáte prohlížeč Internet Explorer, zkuste ho otevřít v privátním režimu (stiskněte klávesu CTRL + SHIFT "+" P "). Pokud používáte prohlížeč Chrome, zkuste ho otevřít v režimu anonymním (stiskněte kombinaci kláves CTRL + SHIFT + "N"). Pokud problém ještě existuje, pokračujte na další krok. 
+    3.  Zkuste použít jiný prohlížeč. 
+
 
 ## <a name="next-steps"></a>Další kroky
 Rychlý návod, jak pomocí Průvodce kopírováním Data Factory vytvořit kanál s aktivitou kopírování, najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).

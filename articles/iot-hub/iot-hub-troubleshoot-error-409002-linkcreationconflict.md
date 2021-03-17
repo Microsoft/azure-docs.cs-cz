@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
-ms.openlocfilehash: 20d39b1f5a11f20eb5d12f34337787b382c820f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70b9be6fdb500d9f877659a12e6fdc0e206ea964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758736"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538217"
 ---
 # <a name="409002-linkcreationconflict"></a>409002 LinkCreationConflict
 
@@ -22,7 +22,7 @@ Tento článek popisuje příčiny a řešení 409002 chyb **LinkCreationConflic
 
 ## <a name="symptoms"></a>Příznaky
 
-V diagnostických protokolech se zobrazí chyba **409002 LinkCreationConflict** , která se zaznamenala při odpojení zařízení nebo selhání zprávy z cloudu na zařízení. 
+V protokolech se zobrazí chyba **409002 LinkCreationConflict** spolu s odpojením zařízení nebo selháním zprávy z cloudu na zařízení.
 
 <!-- When using AMQP? -->
 

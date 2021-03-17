@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005112"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576151"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md).
 
-Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.md) pro monitorování a výstrahy, jako je mnoho dalších služeb Azure. To správcům umožňuje identifikovat problémy přes jediné rozhraní. Služba vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do následujících kategorií:
+Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.md) pro monitorování a výstrahy, jako je mnoho dalších služeb Azure. Správci tak mají jedno rozhraní, ve kterém můžou zjišťovat problémy. Služba vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do následujících kategorií:
 
 - Aktivity správy:
     - Můžete sledovat, jestli pokusy o změnu objektů virtuálních klientů Windows pomocí rozhraní API nebo PowerShellu jsou úspěšné. Může například někdo úspěšně vytvořit fond hostitelů pomocí PowerShellu?
@@ -39,23 +39,23 @@ Připojení, která nedosáhnou virtuálního klienta Windows, se nezobrazí ve 
 Azure Monitor umožňuje analyzovat data virtuálních klientů Windows a sledovat čítače výkonu virtuálních počítačů (VM), a to vše v rámci stejného nástroje. V tomto článku se dozvíte víc o tom, jak povolit diagnostiku pro prostředí virtuálních počítačů s Windows.
 
 >[!NOTE]
->Informace o tom, jak monitorovat virtuální počítače v Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/insights/monitor-vm-azure.md). Nezapomeňte také [zkontrolovat prahové hodnoty čítače výkonu](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) , abyste lépe pochopili uživatelské prostředí na hostiteli relace.
+>Informace o tom, jak monitorovat virtuální počítače v Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/vm/monitor-vm-azure.md). Nezapomeňte také [zkontrolovat prahové hodnoty čítače výkonu](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) , abyste lépe pochopili uživatelské prostředí na hostiteli relace.
 
 ## <a name="before-you-get-started"></a>Než začnete
 
 Než budete moct použít Log Analytics, budete muset vytvořit pracovní prostor. Provedete to podle pokynů v jednom z následujících dvou článků:
 
-- Pokud dáváte přednost použití Azure Portal, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Pokud dáváte přednost prostředí PowerShell, přečtěte si téma [vytvoření log Analyticsho pracovního prostoru pomocí prostředí PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+- Pokud dáváte přednost použití Azure Portal, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
+- Pokud dáváte přednost prostředí PowerShell, přečtěte si téma [vytvoření log Analyticsho pracovního prostoru pomocí prostředí PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
-Po vytvoření pracovního prostoru postupujte podle pokynů v tématu [připojení počítačů se systémem Windows k Azure monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) k získání následujících informací:
+Po vytvoření pracovního prostoru postupujte podle pokynů v tématu [připojení počítačů se systémem Windows k Azure monitor](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) k získání následujících informací:
 
 - ID pracovního prostoru
 - Primární klíč vašeho pracovního prostoru
 
 Tyto informace budete potřebovat později v procesu instalace.
 
-Nezapomeňte si projít správu oprávnění pro Azure Monitor, abyste povolili přístup k datům pro uživatele, kteří monitorují a udržují prostředí virtuálních počítačů s Windows. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md).
+Nezapomeňte si projít správu oprávnění pro Azure Monitor, abyste povolili přístup k datům pro uživatele, kteří monitorují a udržují prostředí virtuálních počítačů s Windows. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/roles-permissions-security.md).
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Vložení diagnostických dat do pracovního prostoru
 
@@ -73,7 +73,7 @@ Nastavení Log Analytics nového objektu:
 
     Možnosti zobrazené na stránce nastavení diagnostiky se budou lišit v závislosti na tom, jaký typ objektu upravujete.
 
-    Pokud například povolíte diagnostiku pro skupinu aplikací, zobrazí se možnosti konfigurace kontrolních bodů, chyb a správy. U pracovních prostorů tyto kategorie konfigurují informační kanál, který se bude sledovat, když se uživatelé přihlásí k odběru seznamu aplikací. Další informace o nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../azure-monitor/platform/diagnostic-settings.md).
+    Pokud například povolíte diagnostiku pro skupinu aplikací, zobrazí se možnosti konfigurace kontrolních bodů, chyb a správy. U pracovních prostorů tyto kategorie konfigurují informační kanál, který se bude sledovat, když se uživatelé přihlásí k odběru seznamu aplikací. Další informace o nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../azure-monitor/essentials/diagnostic-settings.md).
 
      >[!IMPORTANT]
      >Nezapomeňte povolit diagnostiku pro každý objekt Azure Resource Manager, který chcete monitorovat. Data budou k dispozici pro aktivity po povolení diagnostiky. Po prvním nastavení může trvat několik hodin.
@@ -83,7 +83,7 @@ Nastavení Log Analytics nového objektu:
 6. Vyberte **Uložit**.
 
 >[!NOTE]
->Log Analytics vám poskytne možnost streamovat data do [Event Hubs](../event-hubs/event-hubs-about.md) nebo archivovat v účtu úložiště. Další informace o této funkci najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) a [archivaci protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs-collect-storage.md).
+>Log Analytics vám poskytne možnost streamovat data do [Event Hubs](../event-hubs/event-hubs-about.md) nebo archivovat v účtu úložiště. Další informace o této funkci najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) a [archivaci protokolů prostředků Azure do účtu úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 ## <a name="how-to-access-log-analytics"></a>Přístup k Log Analytics
 
@@ -91,7 +91,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Přístup k Log Analytics v pracovním prostoru Log Analytics
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte **Log Analytics pracovní prostor**.
 
@@ -114,7 +114,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 5. Jste připraveni na dotaz na diagnostiku. Všechny tabulky diagnostiky mají předponu "WVD".
 
 >[!NOTE]
->Podrobnější informace o tabulkách uložených v protokolech Azure Monitor najdete v části [Azure monitor data](https://docs.microsoft.com/azure/azure-monitor/reference/). Všechny tabulky související s virtuálním počítačem s Windows jsou označené jako "WVD".
+>Podrobnější informace o tabulkách uložených v protokolech Azure Monitor najdete v části [Azure monitor data](/azure/azure-monitor/reference/). Všechny tabulky související s virtuálním počítačem s Windows jsou označené jako "WVD".
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Tempo pro odesílání diagnostických událostí
 
@@ -134,9 +134,9 @@ Přístup k ukázkovým dotazům prostřednictvím uživatelského rozhraní Azu
 1. Pokud chcete zkontrolovat dostupné dotazy, vyberte **virtuální počítač s Windows** .
 1. Zvolením **příkazu Spustit** spusťte vybraný dotaz.
 
-Přečtěte si další informace o rozhraní ukázkových dotazů v [uložených dotazech v Azure Monitor Log Analytics](../azure-monitor/log-query/saved-queries.md).
+Přečtěte si další informace o rozhraní ukázkových dotazů v [uložených dotazech v Azure Monitor Log Analytics](../azure-monitor/logs/example-queries.md).
 
-Následující seznam dotazů vám umožní zkontrolovat informace o připojení a problémy pro jednoho uživatele. Tyto dotazy můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
+Následující seznam dotazů vám umožní zkontrolovat informace o připojení a problémy pro jednoho uživatele. Tyto dotazy můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
 
 
 Vyhledání všech připojení pro jednoho uživatele:

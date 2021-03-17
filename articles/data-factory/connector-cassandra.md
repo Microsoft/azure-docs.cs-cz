@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Cassandra pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Cassandra do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3cd3c3ae28ae302e9469a71d00054152a9b5fb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417468"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383700"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -60,15 +55,15 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Cassandra jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ |Vlastnost Type musí být nastavená na: **Cassandra** . |Ano |
-| host |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **Cassandra** . |Yes |
+| Hostitel |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Yes |
 | port |Port TCP, který server Cassandra používá k naslouchání klientským připojením. |Ne (výchozí hodnota je 9042) |
-| authenticationType | Typ ověřování, který se používá pro připojení k databázi Cassandra.<br/>Povolené hodnoty jsou: **Basic**a **Anonymous**. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
+| authenticationType | Typ ověřování, který se používá pro připojení k databázi Cassandra.<br/>Povolené hodnoty jsou: **Basic** a **Anonymous**. |Yes |
+| username |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | heslo |Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano, pokud je authenticationType nastaveno na Basic. |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 >[!NOTE]
 >V současné době se připojení k Cassandra pomocí protokolu TLS nepodporuje.
@@ -103,9 +98,9 @@ Pro propojenou službu Cassandra jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Cassandra, nastavte vlastnost Type datové sady na **CassandraTable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **CassandraTable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **CassandraTable** . | Yes |
 | prostor klíčů |Název prostoru klíčů nebo schématu v databázi Cassandra. |Ne (Pokud je zadáno "dotaz" pro "CassandraSource") |
 | tableName |Název tabulky v databázi Cassandra |Ne (Pokud je zadáno "dotaz" pro "CassandraSource") |
 
@@ -138,11 +133,11 @@ Chcete-li kopírovat data z Cassandra, nastavte vlastnost Type datové sady na *
 
 Chcete-li kopírovat data z Cassandra, nastavte typ zdroje v aktivitě kopírování na **CassandraSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **CassandraSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **CassandraSource** . | Yes |
 | query |Pomocí vlastního dotazu můžete číst data. Dotaz SQL-92 nebo dotaz CQL Viz [odkaz na CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití dotazu SQL zadejte **název prostoru klíčů. název tabulky** , který bude představovat tabulku, kterou chcete dotazovat. |Ne (Pokud je zadaná datová sada "tableName" a "mezerník"). |
-| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) .<br/><br/>Povolené hodnoty jsou: **jedna**, **dvě**, **tři**, **kvora**, **vše**, **LOCAL_QUORUM**, **EACH_QUORUM**a **LOCAL_ONE**. |Ne (výchozí nastavení je `ONE` ) |
+| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) .<br/><br/>Povolené hodnoty jsou: **jedna**, **dvě**, **tři**, **kvora**, **vše**, **LOCAL_QUORUM**, **EACH_QUORUM** a **LOCAL_ONE**. |Ne (výchozí nastavení je `ONE` ) |
 
 **Příklad:**
 
@@ -186,17 +181,17 @@ Při kopírování dat z Cassandra se v datových typech Cassandra používají 
 | BIGINT |Int64 |
 | PŘÍZNAKY |Byte [] |
 | DATOVÉHO |Logická hodnota |
-| NOTACI |Desetinné číslo |
-| KLEPAT |Double |
-| Plovák |Jeden |
+| NOTACI |Decimal |
+| KLEPAT |dvojité |
+| Plovák |Jednoduché |
 | INET |Řetězec |
 | INT |Int32 |
 | TEXT |Řetězec |
-| ČASOVÉ razítko |DateTime |
+| ČASOVÉ RAZÍTKO |DateTime |
 | TIMEUUID |Identifikátor GUID |
 | IDENTIFIKÁTOR |Identifikátor GUID |
 | VARCHAR |Řetězec |
-| VARINT |Desetinné číslo |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Pro typy kolekcí (mapování, nastavení, seznam atd.) se podívejte na téma [práce s typy kolekce Cassandra pomocí virtuální tabulky](#work-with-collections-using-virtual-table) .

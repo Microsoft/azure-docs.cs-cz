@@ -9,12 +9,12 @@ author: ericgre
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 8b15b3c4444a6f26734b133f169cea7074956ae7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: f88ccd077c857826271484c9929b37f8c5d751fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88043014"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962702"
 ---
 # <a name="terraform-samples-for-azure-app-service"></a>Ukázky terraformu pro Azure App Service
 
@@ -24,5 +24,5 @@ Následující tabulka obsahuje odkazy na skripty terraformu.
 |-|-|
 |**Vytvoření aplikace**||
 | [Vytvářejte dvě aplikace a bezpečně se připojte pomocí privátního koncového bodu a integrace virtuální sítě.](./scripts/terraform-secure-backend-frontend.md )| Vytvoří dvě aplikace App Service a spojí aplikace s privátním koncovým bodem a integrací virtuální sítě. |
-| [Zřízení App Service a použití swapu slotu k nasazení](https://docs.microsoft.com/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| Zřizování infrastruktury App Service s využitím slotů pro nasazení Azure |
+| [Zřízení App Service a použití swapu slotu k nasazení](/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| Zřizování infrastruktury App Service s využitím slotů pro nasazení Azure |
 | | |

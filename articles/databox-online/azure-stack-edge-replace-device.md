@@ -1,23 +1,25 @@
 ---
-title: Výměna zařízení Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak získat náhradní Azure Stack hraniční zařízení.
+title: Výměna zařízení Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak získat náhradní zařízení Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2196c9463569dc43092b38de58e0103104efed0c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097173"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443467"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>Výměna zařízení Azure Stack Edge
+# <a name="replace-your-azure-stack-edge-pro-device"></a>Výměna zařízení Azure Stack Edge pro
 
-Tento článek popisuje, jak získat náhradní Azure Stack hraniční zařízení. Náhradní zařízení je potřeba, když dojde k selhání hardwaru v existujícím zařízení nebo pokud potřebuje upgrade. 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+
+Tento článek popisuje, jak nahradit zařízení Azure Stack Edge pro. Náhradní zařízení je potřeba, když dojde k selhání hardwaru v existujícím zařízení nebo pokud potřebuje upgrade. 
 
 
 V tomto článku získáte informace o těchto tématech:
@@ -25,38 +27,32 @@ V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
 > * Otevření lístku podpory pro hardwarový problém
-> * Vytvořit nový prostředek pro náhradní zařízení v Azure Portal
+> * Vytvořte novou objednávku pro náhradní zařízení v Azure Portal
 > * Instalace, aktivace náhradního zařízení
 > * Vrátit původní zařízení
 
 ## <a name="open-a-support-ticket"></a>Otevření lístku podpory
 
-Pokud dojde k selhání hardwaru v existujícím zařízení, otevřete lístek podpory. Podpora Microsoftu určí, že jednotka pro nahrazení pole (FRU) není pro tuto instanci k dispozici, nebo zařízení potřebuje upgradovat hardware. V obou případech bude podpora vyřídit náhradní zařízení.
+Pokud dojde k selhání hardwaru v existujícím zařízení, otevřete lístek podpory pomocí následujících kroků:
 
-1. Otevřete lístek podpory s podpora Microsoftu, který indikuje, že chcete zařízení vrátit. Vyberte typ problému jako **Hardware Azure Stack Edge**.
+1. Otevřete lístek podpory s podpora Microsoftu, který indikuje, že chcete zařízení vrátit. Vyberte typ problému **hardwaru Azure Stack Edge pro** a zvolte podtyp **problémy s hardwarem** .  
 
     ![Otevření lístku podpory](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
-2. Vás bude kontaktovat pracovník podpora Microsoftu. Zadejte podrobnosti expedice.
-<!--3. If you need a return shipping box, you can request it. Answer **Yes** to the question **Need an empty box to return**.-->
+2. Podpora Microsoftu inženýr se spojí s vámi a určí, jestli se může problém opravit (jednotka FRU) a že je k dispozici pro tuto instanci. Pokud jednotka FRU není k dispozici nebo zařízení potřebuje upgradovat hardware, bude se vám podpora pořídit, abyste naumístili nové pořadí a vrátíte původní zařízení.
 
+## <a name="create-a-new-order"></a>Vytvořit novou objednávku
 
-## <a name="create-a-resource-for-replacement-device"></a>Vytvoření prostředku pro náhradní zařízení
+Pomocí postupu v části [Vytvoření nového prostředku](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)vytvořte nový prostředek pro aktivaci náhradního zařízení.
 
-Pomocí těchto kroků vytvořte prostředek.
-
-1. Postupujte podle kroků v části [Vytvoření nového prostředku](azure-stack-edge-deploy-prep.md#create-a-new-resource) a vytvořte prostředek pro náhradní zařízení. 
-
-2. Nezapomeňte zaškrtnout políčko pro **zařízení Azure Stack Edge**. 
-
-    ![Prostředek pro náhradní zařízení](media/azure-stack-edge-replace-device/replace-resource-1.png)  
+> [!NOTE]
+> Aktivace náhradního zařízení proti stávajícímu prostředku není podporovaná. Nový prostředek se považuje za nové pořadí. Začne se účtovat 14 dní po odeslání zařízení.
 
 ## <a name="install-and-activate-the-replacement-device"></a>Instalace a aktivace náhradního zařízení
 
 Pomocí těchto kroků nainstalujete a aktivujete náhradní zařízení:
 
 1. [Nainstalujte své zařízení](azure-stack-edge-deploy-install.md).
-
 2. [Aktivujte své zařízení](azure-stack-edge-deploy-connect-setup-activate.md) s novým prostředkem, který jste vytvořili dříve.
 
 ## <a name="return-your-existing-device"></a>Vrátit existující zařízení
@@ -66,9 +62,9 @@ Pomocí všech kroků vraťte původní zařízení:
 1. [Vymaže data na zařízení](azure-stack-edge-return-device.md#erase-data-from-the-device).
 2. [Zahajte návrat zařízení](azure-stack-edge-return-device.md#initiate-device-return) pro původní zařízení.
 3. [Naplánování výdeje](azure-stack-edge-return-device.md#schedule-a-pickup).
-4. [Odstraní prostředek](azure-stack-edge-return-device.md#delete-the-resource) přidružený ke vrácenému zařízení.
+4. Jakmile se zařízení obdrží v Microsoftu, můžete [odstranit prostředek](azure-stack-edge-return-device.md#delete-the-resource) přidružený k vrácenému zařízení.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [vracet Azure Stack hraniční zařízení](azure-stack-edge-return-device.md).
+- Přečtěte si, jak [vrátit Azure Stack Edge pro zařízení](azure-stack-edge-return-device.md).

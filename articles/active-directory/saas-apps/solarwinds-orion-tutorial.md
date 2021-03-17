@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dbccf38bcb89a6e0715604567be021cc890f209b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545090"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514805"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Orionem SolarWinds
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat SolarWinds Orion s Azure Active Direct
 * Umožněte uživatelům, aby se automaticky přihlásili k SolarWinds Orion s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * SolarWinds Orion podporuje **SP a IDP** iniciované jednotné přihlašování.
-* Po nakonfigurování SolarWinds Orion můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování SolarWinds Orion můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-solarwinds-orion-from-the-gallery"></a>Přidání SolarWinds Orion z Galerie
 
@@ -120,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -144,19 +144,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přihlaste se ke službě SolarWinds Orion a vyberte **Nastavení**  ->  **všechna nastavení**.
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Snímek obrazovky se zobrazí všechna nastavení vybraná z nastavení.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. V části **uživatelské účty** vyberte **Konfigurace SAML**.
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![Snímek obrazovky: zobrazení konfigurace SAML vybrané z uživatelských účtů](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. Klikněte na **Přidat zprostředkovatele identity**.
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![Snímek obrazovky ukazuje konfiguraci SAML, kde můžete vybrat přidat poskytovatele IDENTITY.](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. Na stránce **Přidat zprostředkovatele identity** proveďte následující kroky:
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![Snímek obrazovky se zobrazí na stránce Přidat poskytovatele identity, kde můžete zadat hodnoty, které jsou popsány.](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. Přejít na kartu **Konfigurace** .
 
@@ -174,43 +174,42 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přihlaste se k webu SolarWinds Orion a vyberte **Nastavení**  ->  **všechna nastavení**.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Snímek obrazovky se zobrazí všechna nastavení vybraná z nastavení.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. V části **uživatelské účty** vyberte **Spravovat účty**.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![Snímek obrazovky s vybraným nastavením konfigurace SAML](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. Na kartě **jednotlivé účty** klikněte na **Přidat nový účet**.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![Snímek obrazovky ukazuje přidat nový účet vybraný v možnosti spravovat účty.](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. Vyberte typ účtu, který potřebujete vytvořit buď jednotlivé uživatele nebo skupiny SAML.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![Snímek obrazovky ukazuje přidat nový účet, kde můžete vybrat typ účtu.](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  Do textového pole **název ID** zadejte název, který se musí shodovat s uživatelským jménem nebo názvem skupiny přesně stejně jako ve službě Azure AD.
 
 1.  Klikněte na **Další** a potom stránku odešlete.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![Snímek obrazovky ukazuje přidat nový účet, kde můžete zadat název I D v Azure A D.](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SolarWinds Orion, měli byste být automaticky přihlášeni k SolarWinds Orion, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SolarWinds Orion, měli byste být automaticky přihlášeni k SolarWinds Orion, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si SolarWinds Orion s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit SolarWinds Orion s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Jak chránit SolarWinds Orion s pokročilou viditelností a ovládacími prvky](/cloud-app-security/proxy-intro-aad)

@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak zpracovávat data z centra událo
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85312900"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Zpracování dat z centra událostí pomocí Azure Stream Analytics 
@@ -44,7 +44,7 @@ Tady jsou klíčové výhody služby Azure Event Hubs a Integrace Azure Stream A
     - Můžete zobrazit náhled příchozích dat ve formátu tabulky nebo v nezpracovaném formátu. 
     - Pokud vaše data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události. 
 
-        Tady je příklad dat ve **formátu tabulky**: ![ výsledky ve formátu tabulky.](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Tady je příklad dat ve **formátu tabulky**:   ![ výsledky ve formátu tabulky.](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Tady je příklad dat v **nezpracovaném formátu**: 
 

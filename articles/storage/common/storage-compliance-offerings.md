@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ac37dc66c9861c974c2d5fea435a3ae6771e6c7d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724264"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage nabídky dodržování předpisů
 
 Aby bylo možné organizacím v soulad s vnitrostátními, regionálními a oborovými požadavky pro shromažďování a používání dat jednotlivců, Microsoft Azure & Azure Storage nabízet nejkomplexnější sadu certifikací a osvědčení pro libovolného poskytovatele cloudových služeb.
 
-Na Azure Storage můžete najít níže uvedené nabídky dodržování předpisů, abyste zajistili, že vaše služba bude v používání služby Azure Storage vyřízena. Vztahují se na následující nabídky Azure Storage: objekty blob, soubory, fronty, tabulky, disky, studené úložiště a Premium Storage.
+Na Azure Storage můžete najít níže uvedené nabídky dodržování předpisů, abyste zajistili, že vaše služba bude v používání služby Azure Storage vyřízena. Vztahují se na následující nabídky Azure Storage: objekty BLOB (ADLS Gen2), soubory, fronty, tabulky, disky, studené úložiště a Premium Storage.
 
 ## <a name="global"></a>Globální
 
@@ -27,7 +27,7 @@ Na Azure Storage můžete najít níže uvedené nabídky dodržování předpis
 * [CSA-hvězda-certifikace](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
 * [CSA-STAR – samo-Assessment](https://www.microsoft.com/trustcenter/compliance/csa-self-assessment)
 * [ISO 20000-1:2011](https://www.microsoft.com/TrustCenter/Compliance/ISO-20000-1)
-* [ISO 22301](https://www.microsoft.com/trustcenter/compliance/iso-22301)
+* [ISO 22301](/compliance/regulatory/offering-iso-22301)
 * [ISO 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
 * [ISO 27017](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
 * [ISO 27018](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)
@@ -58,7 +58,7 @@ Na Azure Storage můžete najít níže uvedené nabídky dodržování předpis
 * [FISC (Japonsko)](https://www.microsoft.com/trustcenter/compliance/fisc)
 * [Gramm](https://aka.ms/AzureCompliance)
 * [GxP](https://www.microsoft.com/TrustCenter/Compliance/FDA)
-* [HIPAA/HITECH](https://www.microsoft.com/trustcenter/compliance/hipaa)
+* [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)
 * [HITRUST](https://www.microsoft.com/trustcenter/Compliance/HITRUST)
 * [MARS-E](https://www.microsoft.com/trustcenter/compliance/mars-e)
 * [MAS + ABS (Singapur)](https://aka.ms/AzureCompliance)

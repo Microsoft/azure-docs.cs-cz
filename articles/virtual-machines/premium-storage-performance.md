@@ -4,15 +4,15 @@ description: Navrhněte vysoce výkonné aplikace pomocí spravovaných disků A
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0e0f6df04eda45af04659edc2010e8d68b013892
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701420"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882378"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
@@ -31,16 +31,16 @@ Tento článek vám pomůže zodpovědět následující otázky týkající se 
 Tyto pokyny poskytujeme konkrétně pro Premium Storage, protože úlohy spuštěné v Premium Storage jsou vysoce výkonná. V případě potřeby jsme zadali příklady. Některé z těchto pokynů můžete také použít pro aplikace běžící na virtuálních počítačích s IaaS se standardními disky úložiště.
 
 > [!NOTE]
-> V některých případech se může jednat o problém s výkonem disku, což je kritické místo v síti. V těchto situacích byste měli optimalizovat [výkon sítě](~/articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> V některých případech se může jednat o problém s výkonem disku, což je kritické místo v síti. V těchto situacích byste měli optimalizovat [výkon sítě](../virtual-network/virtual-network-optimize-network-bandwidth.md).
 >
 > Pokud chcete otestovat srovnávací testy disku, přečtěte si naše články o testování disku:
 >
-> * Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./linux/disks-benchmarks.md)
-> * Pro Windows: [srovnávací testy disku](./windows/disks-benchmarks.md).
+> * Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./disks-benchmarks.md)
+> * Pro Windows: [srovnávací testy disku](./disks-benchmarks.md).
 >
-> Pokud váš virtuální počítač podporuje akcelerované síťové služby, měli byste se ujistit, že je povolený. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačích v [systému Windows](~/articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](~/articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
+> Pokud váš virtuální počítač podporuje akcelerované síťové služby, měli byste se ujistit, že je povolený. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačích v [systému Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Než začnete, pokud s Premium Storage teprve začínáte, nejdříve si přečtěte téma [Výběr typu disku Azure pro virtuální počítače s IaaS](./linux/disks-types.md) a [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](~/articles/storage/blobs/scalability-targets-premium-page-blobs.md).
+Než začnete, pokud s Premium Storage teprve začínáte, nejdříve si přečtěte téma [Výběr typu disku Azure pro virtuální počítače s IaaS](disks-types.md) a [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -62,13 +62,13 @@ Když k virtuálnímu počítači s vysokým rozsahem připojíte disk služby P
 
 Existuje vztah mezi propustností a IOPS, jak je znázorněno ve vzorci níže.
 
-![Vztah IOPS a propustnosti](~/articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+![Vztah IOPS a propustnosti](linux/media/premium-storage-performance/image1.png)
 
 Proto je důležité určit optimální propustnost a hodnoty IOPS, které vaše aplikace vyžaduje. Při pokusu o optimalizaci se druhá taky ovlivní. V pozdější části, která *optimalizuje výkon aplikace*, probereme další podrobnosti o optimalizaci IOPS a propustnosti.
 
 ## <a name="latency"></a>Latence
 
-Latence je doba, kterou aplikace potřebuje k přijetí jediné žádosti, odeslání na disky úložiště a odeslání odpovědi klientovi. Toto je kritická míra výkonu aplikace kromě vstupně-výstupních operací a propustnosti. Latence disku služby Premium Storage je čas potřebný k načtení informací o požadavku a jeho předání zpět do vaší aplikace. Premium Storage poskytuje konzistentní nízkou latenci. Disky Premium jsou navržené tak, aby pro většinu vstupně-výstupních operací poskytovaly jednorázové latence milisekund. Pokud povolíte ukládání do mezipaměti hostitele jen pro čtení na disky Premium Storage, můžete získat mnohem nižší latenci čtení. V další části o *optimalizaci výkonu aplikace*probereme další podrobnosti o ukládání disku do mezipaměti.
+Latence je doba, kterou aplikace potřebuje k přijetí jediné žádosti, odeslání na disky úložiště a odeslání odpovědi klientovi. Toto je kritická míra výkonu aplikace kromě vstupně-výstupních operací a propustnosti. Latence disku služby Premium Storage je čas potřebný k načtení informací o požadavku a jeho předání zpět do vaší aplikace. Premium Storage poskytuje konzistentní nízkou latenci. Disky Premium jsou navržené tak, aby pro většinu vstupně-výstupních operací poskytovaly jednorázové latence milisekund. Pokud povolíte ukládání do mezipaměti hostitele jen pro čtení na disky Premium Storage, můžete získat mnohem nižší latenci čtení. V další části o *optimalizaci výkonu aplikace* probereme další podrobnosti o ukládání disku do mezipaměti.
 
 Při optimalizaci aplikace za účelem získání vyššího počtu vstupně-výstupních operací a propustnosti bude ovlivněna latence vaší aplikace. Po optimalizaci výkonu aplikace vždy vyhodnoťte latenci aplikace, aby nedošlo k neočekávanému chování vysoké latence.
 
@@ -104,7 +104,7 @@ Dále změřte maximální požadavky na výkon vaší aplikace během své živ
 | Průměrná latence | | | |
 | Max. Procesor | | | |
 | Průměrný procesor | | | |
-| Max. Paměť | | | |
+| Max. Memory (Paměť) | | | |
 | Průměrná paměť | | | |
 | Hloubka fronty | | | |
 
@@ -127,10 +127,10 @@ Nejlepším způsobem, jak změřit požadavky na výkon vaší aplikace, je pou
 | **Latence** |Celková doba, po kterou se má dokončit požadavek na vstupně-výstupní operace disku |Střední doba disku/čtení <br> Střední doba disku/zápis |await <br> svctm |
 | **Velikost v/v** |Velikost vstupně-výstupních požadavků vydává problémy diskům úložiště. |Průměrný počet bajtů disku/čtení <br> Průměrný počet bajtů disku/zápis |avgrq – SZ |
 | **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na disk úložiště. |Aktuální délka fronty disku |avgqu – SZ |
-| **Počet. Rezident** |Množství paměti vyžadované pro plynulé spuštění aplikace |% Používaných potvrzených bajtů |Použití vmstat |
-| **Počet. VČETNĚ** |Množství CPU vyžadované pro plynulé spuštění aplikace |% Času procesoru |% util |
+| **Maximální velikost paměti** |Množství paměti vyžadované pro plynulé spuštění aplikace |% Používaných potvrzených bajtů |Použití vmstat |
+| **Max. CPU** |Množství CPU vyžadované pro plynulé spuštění aplikace |% Času procesoru |% util |
 
-Přečtěte si další informace o [iostat](https://linux.die.net/man/1/iostat) a [perfmon](https://msdn.microsoft.com/library/aa645516.aspx).
+Přečtěte si další informace o [iostat](https://linux.die.net/man/1/iostat) a [perfmon](/windows/win32/perfctrs/performance-counters-portal).
 
 
 
@@ -144,7 +144,7 @@ V této části najdete kontrolní seznam požadavků aplikace, který jste vytv
 
 Následující tabulka shrnuje faktory výkonu a kroky potřebné k optimalizaci IOPS, propustnosti a latence. Oddíly uvedené v tomto souhrnu popisují, že každý faktor bude mnohem větší hloubka.
 
-Další informace o velikostech virtuálních počítačů a počtu vstupně-výstupních operací, propustnosti a latence dostupných pro každý typ virtuálního počítače najdete v tématu [velikosti virtuálních počítačů Linux](~/articles/virtual-machines/linux/sizes.md) nebo [velikosti virtuálních počítačů s Windows](~/articles/virtual-machines/windows/sizes.md).
+Další informace o velikostech virtuálních počítačů a počtu IOPS, propustnosti a latence dostupných pro každý typ virtuálního počítače najdete v tématu [velikosti pro virtuální počítače v Azure](sizes.md).
 
 | | **IOPS** | **Propustnost** | **Latence** |
 | --- | --- | --- | --- |
@@ -169,7 +169,7 @@ Velikost v/v je jedním z důležitějších faktorů. Velikost vstupně-výstup
 
 Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [ \_ \_ velikost bloku DB](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
 
-Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Příklad:
+Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Třeba
 
 * Aplikace OLTP generuje miliony malých a náhodných vstupně-výstupních požadavků. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu aplikace a získat vyšší IOPS.  
 * Aplikace datového skladu generuje velké a sekvenční vstupně-výstupní požadavky. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu vaší aplikace, abyste dosáhli vyšší šířky pásma nebo propustnosti.
@@ -201,12 +201,12 @@ Když začnete navrhovat aplikaci, jednou z nich, kterou je třeba udělat, je, 
 
 Virtuální počítače s vysokým rozsahem jsou k dispozici v různých velikostech s různými počty PROCESORových jader, paměti, operačním systémem a dočasné velikosti disku. Každá velikost virtuálního počítače má také maximální počet datových disků, které můžete připojit k virtuálnímu počítači. Vybraná velikost virtuálního počítače proto bude mít vliv na to, kolik je pro vaši aplikaci k dispozici zpracování, paměť a kapacita úložiště. Ovlivňuje také náklady na výpočetní prostředky a úložiště. Níže jsou uvedené například specifikace největšího počtu virtuálních počítačů v řadě DS a řady GS:
 
-| Velikost virtuálního počítače | Procesorová jádra | Paměť | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
+| Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4 000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
 
-Úplný seznam dostupných velikostí virtuálních počítačů Azure najdete v tématu velikosti virtuálních počítačů s [Windows](~/articles/virtual-machines/windows/sizes.md) nebo [velikosti virtuálních počítačů](~/articles/virtual-machines/linux/sizes.md)se systémem Linux. Vyberte velikost virtuálního počítače, která může splňovat požadavky na výkon požadované aplikace a škálovat je. Kromě toho vezměte v úvahu následující důležité informace při volbě velikostí virtuálních počítačů.
+Úplný seznam dostupných velikostí virtuálních počítačů Azure najdete [v tématu velikosti pro virtuální počítače v Azure](sizes.md) nebo. Vyberte velikost virtuálního počítače, která může splňovat požadavky na výkon požadované aplikace a škálovat je. Kromě toho vezměte v úvahu následující důležité informace při volbě velikostí virtuálních počítačů.
 
 *Omezení škálování*  
 Maximální počet IOPS na virtuální počítač a na disk se liší a nezávisle na sobě navzájem. Ujistěte se, že aplikace řídí IOPS v rámci limitů virtuálního počítače a taky připojených prémiových disků. V opačném případě výkon aplikace zaznamená omezení.
@@ -230,7 +230,7 @@ Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a
 
 *Linux distribuce*  
 
-V případě Azure Premium Storage získáte stejnou úroveň výkonu pro virtuální počítače s Windows a Linux. Podporujeme spoustu různých typů Linux distribuce a [tady](~/articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)si můžete prohlédnout úplný seznam. Je důležité si uvědomit, že různé distribuce jsou lépe vhodné pro různé typy úloh. V závislosti na distribuce, na kterém běží vaše zatížení, se zobrazí různé úrovně výkonu. Otestujte distribuce pro Linux s vaší aplikací a vyberte tu, která nejlépe funguje.
+V případě Azure Premium Storage získáte stejnou úroveň výkonu pro virtuální počítače s Windows a Linux. Podporujeme spoustu různých typů Linux distribuce a [tady](linux/endorsed-distros.md)si můžete prohlédnout úplný seznam. Je důležité si uvědomit, že různé distribuce jsou lépe vhodné pro různé typy úloh. V závislosti na distribuce, na kterém běží vaše zatížení, se zobrazí různé úrovně výkonu. Otestujte distribuce pro Linux s vaší aplikací a vyberte tu, která nejlépe funguje.
 
 Pokud používáte systém Linux se Premium Storage, přečtěte si nejnovější aktualizace požadovaných ovladačů, abyste zajistili vysoký výkon.
 
@@ -238,7 +238,7 @@ Pokud používáte systém Linux se Premium Storage, přečtěte si nejnovějš�
 
 Azure Premium Storage nabízí celou řadu velikostí, takže si můžete vybrat, který nejlépe vyhovuje vašim potřebám. Velikost každého disku má jiný limit škálování pro IOPS, šířku pásma a úložiště. Vyberte správnou Premium Storage velikost disku v závislosti na požadavcích aplikace a velikosti virtuálního počítače s vysokým rozsahem. V následující tabulce jsou uvedeny velikosti disků a jejich možnosti. Velikosti P4, P6, P15, P60, P70 a P80 se aktuálně podporují jenom pro Managed Disks.
 
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Počet disků, které zvolíte, závisí na zvolené velikosti disku. K splnění požadavku vaší aplikace můžete použít jeden disk s P50 nebo více disků P10. Při rozhodování Vezměte v úvahu níže uvedené otázky.
 
@@ -305,45 +305,11 @@ V takovém případě můžete tyto pokyny použít k SQL Server spuštění na 
 
 ## <a name="optimize-performance-on-linux-vms"></a>Optimalizace výkonu pro virtuální počítače se systémem Linux
 
-U všech disků úrovně Premium SSD nebo Ultra s mezipamětí nastavenou na **ReadOnly** nebo **žádné**je při připojování systému souborů nutné zakázat "překážky". V tomto scénáři nepotřebujete překážky, protože zápisy na disky Premium Storage jsou pro tato nastavení mezipaměti trvalé. Po úspěšném dokončení žádosti o zápis se data zapisují do trvalého úložiště. Pokud chcete zakázat "překážky", použijte jednu z následujících metod. Vyberte jednu z těchto souborů v systému souborů:
-  
-* Pro **reiserFS**zakažte překážky pomocí  `barrier=none` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier=flush` .)
-* V případě **ext3/ext4**zakažte překážky pomocí `barrier=0` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier=1` .)
-* Pro **XFS**zakažte překážky pomocí `nobarrier` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier` .)
-* U disků služby Premium Storage s mezipamětí nastavenou **na hodnotu**nepoužívat jako mezipaměť povolte překážky při zápisu.
-* Aby jmenovky svazků po restartování virtuálního počítače zůstaly zachované, je nutné aktualizovat/etc/fstab s použitím univerzálně jedinečného identifikátoru (UUID) na disky. Další informace najdete v tématu [Přidání spravovaného disku do virtuálního počítače se systémem Linux](./linux/add-disk.md).
+Pro všechny disky Premium SSD nebo Ultra můžete pro systémy souborů na disku zakázat "překážky", aby se zlepšil výkon, když je známo, že neexistují žádné mezipaměti, které by mohly přijít o data.  Pokud je ukládání do mezipaměti disku Azure nastaveno na jen pro čtení nebo žádné, můžete zakázat bariéry.  Pokud je však ukládání do mezipaměti nastaveno na jen pro čtení, musí zůstat bariéry povolené, aby se zajistila odolnost proti zápisu  Ve výchozím nastavení jsou překážky standardně povolené, ale v závislosti na typu systému souborů můžete zakázat bariéry pomocí jedné z následujících metod:
 
-Pro prémiové SSD byly ověřeny následující distribuce systému Linux. Pro zajištění lepšího výkonu a stability pomocí Premium SSD doporučujeme, abyste provedli upgrade virtuálních počítačů na některou z těchto verzí nebo novější. 
-
-Některé verze vyžadují nejnovější služby Linux Integration Services (LIS), v 4.0 pro Azure. Chcete-li stáhnout a nainstalovat distribuci, postupujte podle odkazu uvedeného v následující tabulce. Do seznamu přidáme obrázky, protože jsme dokončili ověřování. Naše ověřování ukazují, že se výkon u jednotlivých imagí liší. Výkon závisí na charakteristikách úloh a na nastaveních imagí. Různé obrázky jsou vyladěny pro různé druhy úloh.
-
-| Distribuce | Verze | Podporované jádro | Podrobnosti |
-| --- | --- | --- | --- |
-| Ubuntu | 12,04 nebo novější| 3.2.0 – 75.110 + | &nbsp; |
-| Ubuntu | 14,04 nebo novější| 3.13.0 – 44.73 +  | &nbsp; |
-| Debian | 7. x, 8. x nebo novější| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 nebo novější| 3.12.36 – 38.1 + | &nbsp; |
-| SUSE | SLES 11 SP4 nebo novější| 3.0.101 – 0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + nebo novější| 3.18.4 + | &nbsp; |
-| CentOS | 6,5, 6,6, 6,7, 7,0 nebo novější| &nbsp; | [Požadováno LIS4](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Viz Poznámka v následující části.* |
-| CentOS | 7.1 + nebo novější| 3.10.0-229.1.2. el7 + | [LIS4 Doporučené](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Viz Poznámka v následující části.* |
-| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + nebo novější | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + nebo novější | &nbsp; | UEK4 nebo RHCK |
-| Oracle | 7.0-7.1 nebo novější | &nbsp; | UEK4 nebo RHCK s[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4 – 6.7 nebo novější | &nbsp; | UEK4 nebo RHCK s[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>Ovladače LIS pro OpenLogic CentOS
-
-Pokud používáte virtuální počítače s OpenLogic CentOS, spusťte následující příkaz, který nainstaluje nejnovější ovladače:
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-V některých případech příkaz výše provede upgrade jádra i. Pokud se vyžaduje aktualizace jádra, možná budete muset po restartování znovu spustit výše uvedené příkazy, abyste mohli plně nainstalovat balíček Microsoft-Hyper-v.
-
+* Pro **reiserFS** použijte možnost připojení bariéra = None a zakažte překážky.  Chcete-li explicitně povolit bariéry, použijte bariéru = flush.
+* Pro **ext3/ext4** použijte k zakázání bariéry možnost bariéra = 0.  Chcete-li explicitně povolit bariéry, použijte bariéru = 1.
+* Pro **XFS** zakažte překážky pomocí možnosti připojit k připojení.  Chcete-li explicitně povolit bariéry, použijte bariéru.  Všimněte si, že v novějších verzích jádra systému Linux je návrh systému souborů XFS vždycky zajištěna odolnost a zákaz bariéry nemá žádný vliv.  
 
 ## <a name="disk-striping"></a>Diskové svazky
 
@@ -353,14 +319,14 @@ Ve Windows můžete pomocí prostorů úložiště prokládat disky společně. 
 
 Důležité: pomocí Správce serveru uživatelského rozhraní můžete pro prokládaný svazek nastavit celkový počet sloupců o velikosti až 8. Při připojování více než osmi disků použijte PowerShell k vytvoření svazku. Pomocí prostředí PowerShell můžete nastavit počet sloupců, které se rovnají počtu disků. Například pokud je v jedné sadě Stripe nastavený 16 disků; v parametru *NumberOfColumns* rutiny *New-VirtualDisk* prostředí PowerShell zadejte 16 sloupců.
 
-V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](~/articles/virtual-machines/linux/configure-raid.md).
+V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
 
 *Velikost pruhu*  
 Důležitou konfigurací při proložení disku je velikost pruhu. Velikost nebo velikost bloku je nejmenší datový blok, který aplikace může adresovat na prokládaný svazek. Velikost pruhu, kterou nakonfigurujete, závisí na typu aplikace a jeho vzoru požadavků. Pokud zvolíte špatnou velikost pruhu, může to vést k chybnému zarovnání v/v, což vede ke snížení výkonu aplikace.
 
 Pokud je například požadavek v/v generovaný vaší aplikací větší než velikost diskového pruhu, systém úložiště ho zapisuje přes hranice prokládaných jednotek na více než jednom disku. Pokud je čas na přístup k těmto datům, bude nutné vyhledat v rámci více jednotek Stripe, aby bylo možné požadavek dokončit. Kumulativní účinek takového chování může vést k výraznému snížení výkonu. Na druhou stranu platí, že pokud je velikost vstupně-výstupních operací menší než velikost pruhu, a pokud je náhodná, můžou požadavky na vstupně-výstupní operace přidat na stejný disk, který způsobuje kritické body, a nakonec zpomalit výkon v/v.
 
-V závislosti na typu zatížení, na kterém je aplikace spuštěná, vyberte vhodnou velikost pruhu. V případě náhodných malých vstupně-výstupních požadavků použijte menší velikost pruhu. Vzhledem k tomu, že velké sekvenční vstupně-výstupní požadavky používají větší velikost pruhu. Zjistěte doporučení pro velikost stripe pro aplikaci, kterou budete používat na Premium Storage. Pro SQL Server nakonfigurujte velikost Stripe 64 KB pro úlohy OLTP a 256 KB pro úlohy datových skladů. Další informace najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
+V závislosti na typu zatížení, na kterém je aplikace spuštěná, vyberte vhodnou velikost pruhu. V případě náhodných malých vstupně-výstupních požadavků použijte menší velikost pruhu. Vzhledem k tomu, že velké sekvenční vstupně-výstupní požadavky používají větší velikost pruhu. Zjistěte doporučení pro velikost stripe pro aplikaci, kterou budete používat na Premium Storage. Pro SQL Server nakonfigurujte velikost Stripe 64 KB pro úlohy OLTP a 256 KB pro úlohy datových skladů. Další informace najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > Na virtuálním počítači řady DS 64 a na discích úrovně Premium úložiště na VIRTUÁLNÍm počítači řady GS můžete prokládat maximálně 32 disků úložiště úrovně Premium.
@@ -377,7 +343,7 @@ Existuje nastavení konfigurace, které můžete změnit, aby se ovlivnilo toto 
 
 Řekněme například, že aplikace pomocí SQL Server spouští velký dotaz a operaci indexu ve stejnou dobu. Můžeme předpokládat, že jste chtěli, aby operace indexu byla v porovnání s velkým dotazem větší. V takovém případě můžete nastavit hodnotu MAXDOP operace indexu tak, aby byla vyšší než hodnota MAXDOP dotazu. Tímto způsobem SQL Server více procesorů, které může využít pro operaci indexu v porovnání s počtem procesorů, které může vyhradit velký dotaz. Nezapomeňte, že neřídíte počet vláken, SQL Server budou použity pro každou operaci. Můžete řídit maximální počet procesorů vyhrazených pro multithreading.
 
-Další informace o [stupních paralelismu](https://technet.microsoft.com/library/ms188611.aspx) v SQL Server. Zjistěte taková nastavení, která mají vliv na více vláken ve vaší aplikaci a jejich konfigurace pro optimalizaci výkonu.
+Další informace o [stupních paralelismu](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) v SQL Server. Zjistěte taková nastavení, která mají vliv na více vláken ve vaší aplikaci a jejich konfigurace pro optimalizaci výkonu.
 
 ## <a name="queue-depth"></a>Hloubka fronty
 
@@ -414,15 +380,15 @@ Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za 
 
 Pokud chcete otestovat srovnávací testy disku, přečtěte si naše články o testování disku:
 
-* Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./linux/disks-benchmarks.md)
-* Pro Windows: [srovnávací testy disku](./windows/disks-benchmarks.md).
+* Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./disks-benchmarks.md)
+* Pro Windows: [srovnávací testy disku](./disks-benchmarks.md).
 
 Další informace o dostupných typech disků:
 
-* Pro Linux: [Vyberte typ disku](./linux/disks-types.md) .
-* Pro Windows: [Vyberte typ disku](./windows//disks-types.md) .
+* Pro Linux: [Vyberte typ disku](disks-types.md) .
+* Pro Windows: [Vyberte typ disku](disks-types.md) .
 
 Informace o SQL Server uživatelů najdete v článcích o osvědčených postupech výkonu pro SQL Server:
 
-* [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Azure Premium Storage poskytuje nejvyšší výkon pro SQL Server na virtuálním počítači Azure.](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

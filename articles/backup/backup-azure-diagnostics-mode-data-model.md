@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539070"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500984"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -18,7 +18,8 @@ Pomocí Log Analytics datového modelu můžete vytvářet vlastní výstrahy z 
 
 > [!NOTE]
 >
-> Tento datový model se odkazuje na režim Azure Diagnostics odesílání diagnostických událostí do Log Analytics (LA). Informace o datovém modelu pro nový režim konkrétního zdroje najdete v následujícím článku: [datový model pro Azure Backup diagnostické události](./backup-azure-reports-data-model.md) .
+> * Tento datový model se odkazuje na režim Azure Diagnostics odesílání diagnostických událostí do Log Analytics (LA). Informace o datovém modelu pro nový režim konkrétního zdroje najdete v následujícím článku: [datový model pro Azure Backup diagnostické události](./backup-azure-reports-data-model.md) .
+> * Pro vytváření vlastních zobrazení sestav doporučujeme místo práce s nezpracovanými tabulkami, které jsou uvedeny níže, použít [systémové funkce v Azure monitor protokoly](backup-reports-system-functions.md) .
 
 ## <a name="using-azure-backup-data-model"></a>Použití datového modelu Azure Backup
 
@@ -45,7 +46,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | BackupItemUniqueId_s |Text |Jedinečný identifikátor zálohované položky přidružené k výstraze |
 | SchemaVersion_s |Text |Aktuální verze schématu, například **v2** |
 | State_s |Text |Aktuální stav objektu výstrahy, například aktivní, odstraněn |
-| BackupManagementType_s |Text |Typ poskytovatele pro provádění zálohování, například IaaSVM, složku, do které tato výstraha patří |
+| BackupManagementType_s |Text |Typ poskytovatele pro provádění zálohování, například IaaSVM, složku, do které patří tato výstraha |
 | OperationName |Text |Název aktuální operace, například výstraha |
 | Kategorie |Text |Kategorie dat diagnostiky nabízených do protokolů Azure Monitor Vždy AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
@@ -94,14 +95,14 @@ Tato tabulka poskytuje podrobnosti o přidružení zálohových položek s různ
 
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
-| EventName_s |Text |Toto pole představuje název této události, je vždycky AzureBackupCentralReport |  
+| EventName_s |Text |Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |Jedinečné ID zálohované položky |
-| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. je **v2** |
+| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. Je **v2** |
 | State_s |Text |Aktuální stav objektu přidružení zálohované položky, například aktivní, odstraněn |
 | BackupManagementType_s |Text |Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | BackupItemSourceSize_s |Text | Velikost front-endu pro zálohovanou položku |
 | BackupManagementServerUniqueId_s |Text | Pole k jednoznačné identifikaci záložního serveru pro správu, ve kterém je chráněná položka, pokud je k dispozici |
-| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do Log Analytics. Je AzureBackupReport |
 | OperationName |Text |Toto pole představuje název aktuální operace – BackupItemAssociation |
 | Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | ProtectedContainerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidruženého k zálohované položce (ProtectedServerUniqueId_s v V1) |
@@ -144,7 +145,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | State_s |Text |Aktuální stav objektu úlohy, například aktivní, odstraněn |
 | BackupManagementType_s |Text |Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text |Toto pole představuje název aktuální operace – úloha |
-| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
+| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor. Je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | ProtectedServerUniqueId_s |Text |Jedinečný identifikátor přidruženého serveru k úloze |
 | ProtectedContainerUniqueId_s |Text | Jedinečné ID pro identifikaci chráněného kontejneru, na kterém je úloha spuštěná |
@@ -159,7 +160,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | DataTransferredInMB_s | Číslo |Data přenesená v MB pro tuto úlohu|
 | JobUniqueId_g |Text |Jedinečné ID pro identifikaci úlohy |
 | RecoveryJobDestination_s |Text | Cíl úlohy obnovení, kde se data obnovují |
-| RecoveryJobRPDateTime_s |DateTime | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime_s |DateTime | Datum a čas vytvoření obnoveného bodu obnovení |
 | RecoveryJobRPLocation_s |Text | Umístění, kam se uložil bod obnovení, který se má obnovit|
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services|
@@ -172,14 +173,14 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
-| Pole | Typ dat | Použitelné verze | Popis |
+| Pole | Typ dat | Použitelné verze | Description |
 | --- | --- | --- | --- |
-| EventName_s |Text ||Toto pole představuje název této události, je vždycky AzureBackupCentralReport |
-| SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu. je **v2** |
+| EventName_s |Text ||Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |
+| SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu. Je **v2** |
 | State_s |Text ||Aktuální stav objektu zásad, například aktivní, odstraněn |
 | BackupManagementType_s |Text ||Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text ||Toto pole představuje název aktuální operace – zásady |
-| Kategorie |Text ||Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
+| Kategorie |Text ||Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor. Je AzureBackupReport |
 | Prostředek |Text ||Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | PolicyUniqueId_g |Text ||Jedinečné ID pro identifikaci zásad |
 | PolicyName_s |Text ||Název definované zásady |
@@ -196,7 +197,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | MonthlyRetentionTimes_s |Text ||Datum a čas, kdy se nakonfiguruje měsíční uchování |
 | MonthlyRetentionFormat_s |Text ||Typ konfigurace pro měsíční uchování, například denně pro každý den, týdně na základě týdne |
 | MonthlyRetentionDaysOfTheWeek_s |Text ||Dny v týdnu vybrané pro měsíční uchování |
-| MonthlyRetentionWeeksOfTheMonth_s |Text ||Týdny v měsíci, kdy je nastaveno měsíční uchovávání, například jako první, poslední atd. |
+| MonthlyRetentionWeeksOfTheMonth_s |Text ||Týdny v měsíci, kdy je nastaveno měsíční uchovávání, například jako první, poslední |
 | YearlyRetentionDuration_s |Desetinné číslo ||Celková doba uchování v letech pro nakonfigurovaná zálohování |
 | YearlyRetentionTimes_s |Text ||Datum a čas, kdy se nakonfiguruje roční uchování |
 | YearlyRetentionMonthsOfTheYear_s |Text ||Měsíců v roce vybraných pro roční uchování |
@@ -220,14 +221,14 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
 Tato tabulka poskytuje podrobnosti o přidružení zásad s různými entitami.
 
-| Pole | Typ dat | Použitelné verze | Popis |
+| Pole | Typ dat | Použitelné verze | Description |
 | --- | --- | --- | --- |
-| EventName_s |Text ||Toto pole představuje název této události, je vždycky AzureBackupCentralReport |
-| SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu. je **v2** |
+| EventName_s |Text ||Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |
+| SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu. Je **v2** |
 | State_s |Text ||Aktuální stav objektu zásad, například aktivní, odstraněn |
 | BackupManagementType_s |Text ||Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text ||Toto pole představuje název aktuální operace – PolicyAssociation |
-| Kategorie |Text ||Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
+| Kategorie |Text ||Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor. Je AzureBackupReport |
 | Prostředek |Text ||Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | PolicyUniqueId_g |Text ||Jedinečné ID pro identifikaci zásad |
 | VaultUniqueId_s |Text ||Jedinečné ID trezoru, ke kterému patří tato zásada |
@@ -266,12 +267,12 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 | --- | --- | --- |
 | CloudStorageInBytes_s |Desetinné číslo |Cloudové úložiště záloh používané v zálohách vypočítané na základě nejnovější hodnoty (Toto pole je určené jenom pro schéma V1)|
 | ProtectedInstances_s |Desetinné číslo |Počet chráněných instancí použitých pro výpočet front-endu úložiště ve fakturaci vypočítané na základě nejnovější hodnoty |
-| EventName_s |Text |Toto pole představuje název této události, je vždycky AzureBackupCentralReport |
-| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. je **v2** |
+| EventName_s |Text |Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |
+| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. Je **v2** |
 | State_s |Text |Aktuální stav objektu úložiště, například aktivní, odstraněn |
 | BackupManagementType_s |Text |Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
 | OperationName |Text |Toto pole představuje název aktuální operace – úložiště. |
-| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
+| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor. Je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | ProtectedServerUniqueId_s |Text |Jedinečné ID chráněného serveru, pro který se počítá úložiště |
 | VaultUniqueId_s |Text |Počítá se jedinečné ID trezoru pro úložiště. |
@@ -293,7 +294,7 @@ Tato tabulka poskytuje základní pole související s úložištěm, která pro
 | Pole | Typ dat | Popis |
 | --- | --- |  --- |
 | StorageUniqueId_s |Text |Jedinečné ID použité k identifikaci entity úložiště |
-| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. je **v2** |
+| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. Je **v2** |
 | BackupItemUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci zálohované položky související s entitou úložiště |
 | BackupManagementServerUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci management server zálohy související s entitou úložiště|
 | VaultUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci trezoru souvisejícího s entitou úložiště|
@@ -306,11 +307,11 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s trezorem.
 
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
-| EventName_s |Text |Toto pole představuje název této události, je vždycky AzureBackupCentralReport |
-| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. je **v2** |
+| EventName_s |Text |Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |
+| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu. Je **v2** |
 | State_s |Text |Aktuální stav objektu trezoru, například aktivní, odstraněn |
 | OperationName |Text |Toto pole představuje název aktuální operace – trezor |
-| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor, je AzureBackupReport. |
+| Kategorie |Text |Toto pole představuje kategorii dat diagnostiky nabízených do protokolů Azure Monitor. Je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro který se data shromažďují, zobrazuje Recovery Services název trezoru. |
 | VaultUniqueId_s |Text |Jedinečné ID trezoru |
 | VaultName_s |Text |Název trezoru |
@@ -349,7 +350,7 @@ Tato tabulka určuje úlohy, ke kterým je přiřazený svazek.
 
 Tato tabulka poskytuje základní pole související s chráněnými instancemi.
 
-| Pole | Typ dat |Použitelné verze | Popis |
+| Pole | Typ dat |Použitelné verze | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Text |v2|Jedinečné ID, které slouží k identifikaci zálohované položky pro virtuální počítače, které se zálohují pomocí DPM, MABS|
 | ProtectedContainerUniqueId_s |Text |v2|Jedinečné ID, které slouží k identifikaci chráněného kontejneru pro vše kromě virtuálních počítačů zálohovaných pomocí DPM, MABS|
@@ -461,36 +462,38 @@ Níže najdete několik ukázek, které vám pomohou při psaní dotazů na Azur
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>Schéma v1 schématu vs v2
-Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká ***schématu v1***. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a diagnostická data byla vložena do nového schématu, které se říká jako ***schéma v2***. 
 
-Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1. 
+Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká jako ***v1 schéma** _. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a data diagnostiky byla vložena do nového schématu, které je označováno jako "schéma _ *_v2_* *".  
+
+Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1.
 
 Pokud chcete zjistit, které sloupce patří pouze ke schématu V1, podívejte se do třetího sloupce "Description" v [datovém modelu](#using-azure-backup-data-model) popsaném výše.
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Úprava dotazů na použití schématu v2
+
 Vzhledem k tomu, že je schéma V1 na cestě pro vyřazení, doporučuje se použít ve všech vašich vlastních dotazech na Azure Backup diagnostických dat pouze schéma v2. Níže je uveden příklad, jak aktualizovat dotazy pro odebrání závislostí na schématu V1:
 
-1. Určete, jestli dotaz používá jakékoli pole, které se dá použít jenom pro schéma v1. Předpokládejme, že máte dotaz na výpis všech zálohovaných položek a jejich přidružených chráněných serverů následujícím způsobem:
+1. Určete, jestli dotaz používá jakékoli pole, které platí jenom pro schéma v1. Předpokládejme, že máte dotaz na výpis všech zálohovaných položek a jejich přidružených chráněných serverů následujícím způsobem:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-Výše uvedený dotaz používá pole ProtectedServerUniqueId_s, které se vztahuje pouze na schéma v1. Ekvivalent schématu v2 tohoto pole je ProtectedContainerUniqueId_s (odkazuje na tabulky výše). Pole BackupItemUniqueId_s platí i pro schéma v2 a v tomto dotazu lze použít stejné pole.
+    Výše uvedený dotaz používá pole ProtectedServerUniqueId_s, které se vztahuje pouze na schéma v1. Ekvivalent schématu v2 tohoto pole je ProtectedContainerUniqueId_s (odkazuje na tabulky výše). Pole BackupItemUniqueId_s platí i pro schéma v2 a v tomto dotazu lze použít stejné pole.
 
-2. Aktualizujte dotaz tak, aby používal názvy polí schématu v2. Doporučuje se použít filtr "Where SchemaVersion_s = =" v2 "" ve všech dotazech, takže dotaz bude analyzovat jenom záznamy odpovídající schématu v2:
+2. Aktualizujte dotaz tak, aby používal názvy polí schématu v2. Doporučuje se použít filtr, **kde SchemaVersion_s = = "v2"** ve všech dotazech, takže dotaz bude analyzovat pouze záznamy odpovídající schématu v2:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
 ## <a name="next-steps"></a>Další kroky
 
-Po kontrole datového modelu můžete začít [vytvářet vlastní dotazy](../azure-monitor/learn/tutorial-logs-dashboards.md) v protokolech Azure monitor a vytvořit si tak vlastní řídicí panel.
+Po kontrole datového modelu můžete začít [vytvářet vlastní dotazy](../azure-monitor/visualize/tutorial-logs-dashboards.md) v protokolech Azure monitor a vytvořit si tak vlastní řídicí panel.

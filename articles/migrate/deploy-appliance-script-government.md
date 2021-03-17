@@ -1,14 +1,17 @@
 ---
 title: Nastavení zařízení Azure Migrate v Azure Government
 description: Přečtěte si, jak nastavit zařízení Azure Migrate v Azure Government
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 993c25d7b2c580df47b61c836b885ed6379e8640
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6778c8e5e1e4fa83d34141fd13ba21d483ab76e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612261"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041344"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
 
@@ -19,7 +22,7 @@ Podle tohoto článku nasaďte [Azure Migrate zařízení](./migrate-appliance-a
 > Možnost nasadit zařízení pomocí šablony (pro virtuální počítače VMware a virtuální počítače Hyper-V) není v Azure Government podporovaná.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém počítači nebo VIRTUÁLNÍm počítači.
 
@@ -33,7 +36,7 @@ Pokud chcete nastavit zařízení pro VMware, Stáhněte si z Azure Portal soubo
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+1.  V Azure Migrate **cíle migrace**  >  na **servery**  >  **: vyhodnocování serveru** klikněte na **zjistit**.
 2.  V možnosti **zjišťovat počítače**  >  **jsou vaše počítače virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
@@ -51,7 +54,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
     **Algoritmus** | **Stáhnout** | **SHA256**
     --- | --- | ---
-    VMware (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+    VMware (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 ### <a name="run-the-script"></a>Spuštění skriptu
@@ -71,8 +74,10 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
-5. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
+    
+    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
+1. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Ověřit přístup
 
@@ -85,8 +90,8 @@ Pokud chcete nastavit zařízení pro Hyper-V, Stáhněte ze Azure Portal soubor
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
-2.  V rozevíracích **seznamech počítačů**  >  , ve**kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
+1.  V Azure Migrate **cíle migrace**  >  na **servery**  >  **: vyhodnocování serveru** klikněte na **zjistit**.
+2.  V rozevíracích **seznamech počítačů**  >  , ve **kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
 
@@ -103,7 +108,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
     **Scénář** | **Stáhnout** | **SHA256**
     --- | --- | ---
-    Hyper-V (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+    Hyper-V (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
 
           
 
@@ -124,8 +129,10 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
-5. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
+
+    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>.\AzureMigrateInstaller.ps1 ``` 
+1. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Ověřit přístup
 
@@ -138,7 +145,7 @@ Pokud chcete nastavit zařízení pro VMware, Stáhněte si z Azure Portal soubo
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+1.  V Azure Migrate **cíle migrace**  >  na **servery**  >  **: vyhodnocování serveru** klikněte na **zjistit**.
 2.  V rámci **zjišťování počítačů**  >  **jsou vaše počítače virtualizované?** vyberte **nevirtualizované/jiné**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
@@ -154,9 +161,9 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
-    **Scénář** | **Stáhnout*** | **Hodnota hash**
+    **Scénář** | **Stáhnout** _ | _ *Hodnota hash**
     --- | --- | ---
-    Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
+    Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
           
 
 ### <a name="run-the-script"></a>Spuštění skriptu
@@ -176,8 +183,10 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
-5. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
+
+    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+1. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Ověřit přístup
 
@@ -187,6 +196,6 @@ Ujistěte se, že se zařízení může připojit k adresám URL Azure pro [clou
 
 Po nasazení zařízení je třeba ho nakonfigurovat poprvé a zaregistrovat ho v Azure Migrate projektu.
 
-- Nastavte zařízení pro [VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance).
+- Nastavte zařízení pro [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance).
 - Nastavte zařízení pro [Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance).
 - Nastavte zařízení pro [fyzické servery](how-to-set-up-appliance-physical.md).

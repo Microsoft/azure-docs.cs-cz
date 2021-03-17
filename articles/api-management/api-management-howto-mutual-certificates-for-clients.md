@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 553b4527796db3e5d0f430afd6c5e614626187e5
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904854"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988883"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Postup zabezpečení rozhraní API s využitím ověřování pomocí klientských certifikátů ve službě API Management
 
@@ -93,9 +93,20 @@ Následující příklad ukazuje, jak kontrolovat kryptografický otisk certifik
 
 > [!TIP]
 > Problém zablokování klientského certifikátu popsaný v tomto [článku](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) se může projevit v několika ohledech, například když se požadavky zablokují, požadavky `403 Forbidden` jsou po vypršení časového limitu na stavový kód `context.Request.Certificate` `null` . Tento problém obvykle ovlivňuje `POST` a `PUT` požadavky s délkou obsahu přibližně 60KB nebo větší.
-> Aby nedošlo k tomuto problému, zapněte nastavení vyjednávat klientský certifikát pro požadované názvy hostitelů v okně vlastní domény, jak je znázorněno níže. Tato funkce není k dispozici na úrovni spotřeby.
+> Aby nedošlo k tomuto problému, zapněte v okně vlastní domény nastavení vyjednávat klientský certifikát pro požadované názvy hostitelů, jak je znázorněno na prvním obrázku tohoto dokumentu. Tato funkce není k dispozici na úrovni spotřeby.
 
-![Vyjednat klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+## <a name="certificate-validation-in-self-hosted-gateway"></a>Ověřování certifikátů v samoobslužné bráně
+
+Výchozí API Management image [samoobslužné brány](self-hosted-gateway-overview.md) nepodporuje ověřování certifikátů serveru a klientů pomocí [kořenových certifikátů certifikační autority](api-management-howto-ca-certificates.md) odeslaných do API Management instance. Klienti, kteří prezentují vlastní certifikát pro samoobslužnou bránu, můžou zacházet z pomalých odpovědí, protože ověření seznamu odvolaných certifikátů (CRL) může trvat dlouhou dobu, než se v bráně vyprší časový limit. 
+
+Alternativním řešením při používání brány je, že IP adresa PKI se dá nakonfigurovat tak, aby odkazovala na adresu místního hostitele (127.0.0.1) místo instance API Management. Tím dojde k tomu, že ověření seznamu odvolaných certifikátů selže rychle, když se brána pokusí ověřit certifikát klienta. Pokud chcete bránu nakonfigurovat, přidejte položku DNS pro instanci API Management, kterou chcete přeložit na localhost v `/etc/hosts` souboru v kontejneru. Tuto položku můžete přidat během nasazování brány:
+ 
+* Pro nasazení Docker – přidejte `--add-host <hostname>:127.0.0.1` parametr do `docker run` příkazu. Další informace najdete v tématu [Přidání položek do kontejneru soubor hostitelů](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host) .
+ 
+* Pro nasazení Kubernetes – přidejte `hostAliases` specifikaci do `myGateway.yaml` konfiguračního souboru. Další informace najdete v tématu [Přidání položek do umístění pod/etc/hosts s aliasy hostitele](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
+
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

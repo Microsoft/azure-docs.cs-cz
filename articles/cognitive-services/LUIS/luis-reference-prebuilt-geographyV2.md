@@ -3,20 +3,18 @@ title: Předdefinovaná entita geografie v2 – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje geographyV2 předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273496"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541951"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 předem vytvořenou entitu pro aplikaci LUIS
 Předem vytvořená entita geographyV2 detekuje místa. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující GeographyV2. Entita GeographyV2 je podporována v anglické [jazykové verzi](luis-reference-prebuilt-entities.md).
@@ -41,7 +39,7 @@ Pro dotaz se vrátí následující objekty entity:
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -70,11 +68,11 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 }
 ```
 
-V předchozím formátu JSON `poi` je zkratka pro **bod zájmu**.
+V předchozím `poi` formátu JSON je zkratka pro **bod zájmu**.
 
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: e5f137808bb5e4c6876206bca7950117edb85aab
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005665"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122370"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -36,11 +36,14 @@ V AKS jsou hlavní komponenty Kubernetes součástí spravované služby, kterou
 
 Ve výchozím nastavení používá server Kubernetes API veřejnou IP adresu a plně kvalifikovaný název domény (FQDN). Přístup ke koncovému bodu serveru rozhraní API můžete omezit pomocí [rozsahů povolených IP][authorized-ip-ranges]adres. Můžete také vytvořit plně [soukromý cluster][private-clusters] pro omezení přístupu serveru API k vaší virtuální síti.
 
-Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu na základě role (RBAC) a Azure Active Directory. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
+Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) a Azure RBAC. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
 
 ## <a name="node-security"></a>Zabezpečení uzlů
 
-AKS uzly jsou virtuální počítače Azure, které spravujete a udržujete. Uzly Linux spouštějí optimalizovanou distribuci Ubuntu pomocí modulu runtime kontejneru Moby. Uzly Windows serveru používají optimalizovanou verzi Windows serveru 2019 a také používají modul runtime kontejneru Moby. Při vytváření nebo navýšení kapacity clusteru AKS se uzly automaticky nasazují s nejnovějšími aktualizacemi a konfiguracemi zabezpečení operačního systému.
+AKS uzly jsou virtuální počítače Azure, které spravujete a udržujete. Uzly Linux spouštějí optimalizovanou distribuci Ubuntu pomocí `containerd` modulu runtime kontejneru nebo Moby. Uzly Windows serveru používají optimalizovanou verzi Windows serveru 2019 a také používají `containerd` modul runtime kontejneru nebo Moby. Při vytváření nebo navýšení kapacity clusteru AKS se uzly automaticky nasazují s nejnovějšími aktualizacemi a konfiguracemi zabezpečení operačního systému.
+
+> [!NOTE]
+> Clustery AKS s využitím fondů uzlů Kubernetes verze 1,19 a větším využitím `containerd` jako modul runtime kontejneru. Clustery AKS využívající Kubernetes před a v 1.19 pro fondy uzlů používají jako svůj modul runtime kontejneru [Moby](https://mobyproject.org/) (nadřazený Docker).
 
 Platforma Azure automaticky aplikuje opravy zabezpečení operačního systému na uzly se systémem Linux na noční bázi. Pokud aktualizace zabezpečení operačního systému Linux vyžaduje restart hostitele, neprovádí se automatické restartování. Uzly se systémem Linux můžete restartovat ručně, nebo běžným přístupem je použití [Kured][kured]a open-source démon pro Kubernetes. Kured běží jako [DaemonSet][aks-daemonsets] a monitoruje každý uzel pro přítomnost souboru, který indikuje, že je potřeba restartovat počítač. Restartování se v rámci clusteru spravují pomocí stejného [procesu Cordon a vyprázdnění](#cordon-and-drain) jako upgrade clusteru.
 
@@ -50,7 +53,7 @@ Uzly jsou nasazeny do podsítě privátní virtuální sítě bez přiřazených
 
 K poskytnutí úložiště používají uzly Azure Managed Disks. Pro většinu velikostí uzlů virtuálních počítačů se jedná o prémiové disky zajištěné vysokým výkonem SSD. Data uložená na spravovaných discích se v rámci platformy Azure automaticky šifrují v klidovém stavu. Kvůli vylepšení redundance jsou tyto disky také bezpečně replikovány v datovém centru Azure.
 
-Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou například *zásady zabezpečení*nebo pokročilejší řízení přístupu na základě role (RBAC) pro uzly, zneužití se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery. Další informace o způsobech izolace úloh najdete v tématu [osvědčené postupy pro izolaci clusteru v AKS][cluster-isolation].
+Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou například *zásady zabezpečení* nebo podrobnější Kubernetes řízení přístupu na základě role (Kubernetes RBAC) pro uzly, zneužití se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery. Další informace o způsobech izolace úloh najdete v tématu [osvědčené postupy pro izolaci clusteru v AKS][cluster-isolation].
 
 ### <a name="compute-isolation"></a>Izolace výpočtů
 
@@ -119,7 +122,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: ./azure-ad-integration-cli.md
+[aks-aad]: ./managed-aad.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md

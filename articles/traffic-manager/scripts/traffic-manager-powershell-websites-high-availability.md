@@ -3,7 +3,7 @@ title: Směrování provozu pro HA aplikací – Azure PowerShell-Traffic Manage
 description: Ukázka skriptu Azure PowerShell – směrování provozu pro vysokou dostupnost aplikací
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 manager: kumudD
 editor: ''
 tags: azure-infrastructure
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: rohink
-ms.openlocfilehash: 67d87549503a6ee458342ebb7c629a839f97bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 114041a6ad0b311a1e01a692b9e6c36b0a8fb900
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070142"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185372"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Směrování provozu pro vysokou dostupnost aplikací pomocí Azure PowerShell
 
@@ -60,6 +60,6 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služ
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro sítě najdete v [dokumentaci se základními informacemi k sítím Azure](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

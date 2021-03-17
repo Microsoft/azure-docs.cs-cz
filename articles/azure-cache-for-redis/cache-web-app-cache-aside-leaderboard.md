@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 71f1e2b50daf333e19bc11bce119f37cec28d146
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209201"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536840"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
-V tomto kurzu provedete aktualizaci webové aplikace *ContosoTeamStats* ASP.NET vytvořené v [rychlém startu ASP.NET pro Azure cache pro Redis](cache-web-app-howto.md), abyste zahrnuli tabulek výsledků, který používá [model](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) doplňování mezipaměti s Azure cache pro Redis. Ukázková aplikace zobrazuje seznam týmových statistik z databáze a ukazuje různé způsoby použití mezipaměti Azure pro Redis k ukládání a načítání dat z mezipaměti za účelem zvýšení výkonu. Po dokončení tohoto kurzu máte spuštěnou webovou aplikaci, která čte a zapisuje do databáze, je optimalizována pomocí Azure cache pro Redis a je hostovaná v Azure.
+V tomto kurzu provedete aktualizaci webové aplikace *ContosoTeamStats* ASP.NET vytvořené v [rychlém startu ASP.NET pro Azure cache pro Redis](cache-web-app-howto.md), abyste zahrnuli tabulek výsledků, který používá [model](/azure/architecture/patterns/cache-aside) doplňování mezipaměti s Azure cache pro Redis. Ukázková aplikace zobrazuje seznam týmových statistik z databáze a ukazuje různé způsoby použití mezipaměti Azure pro Redis k ukládání a načítání dat z mezipaměti za účelem zvýšení výkonu. Po dokončení tohoto kurzu máte spuštěnou webovou aplikaci, která čte a zapisuje do databáze, je optimalizována pomocí Azure cache pro Redis a je hostovaná v Azure.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Díky ukládání a načítání dat pomocí Azure cache pro Redis můžete zvýšit propustnost dat a snížit zatížení databáze.
@@ -45,7 +45,7 @@ V této části kurzu nakonfigurujete projekt *ContosoTeamStats* s tabulkou výs
 ### <a name="add-the-entity-framework-to-the-project"></a>Přidání sady technologií Entity Framework do projektu
 
 1. V aplikaci Visual Studio otevřete řešení *ContosoTeamStats* , které jste vytvořili v [rychlém startu ASP.NET pro Azure cache pro Redis](cache-web-app-howto.md).
-2. Klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**.
+2. Klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků** .
 3. Z okna **konzoly Správce balíčků** spusťte následující příkaz a nainstalujte sadu technologií Entity Framework:
 
     ```powershell
@@ -56,9 +56,9 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
 ### <a name="add-the-team-model"></a>Přidání modelu Team
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Modely** a vyberte **Přidat**, **Třídu**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Modely** a vyberte **Přidat** , **Třídu** .
 
-1. Jako název třídy zadejte `Team` a klikněte na **Přidat**.
+1. Jako název třídy zadejte `Team` a klikněte na **Přidat** .
 
     ![Přidání třídy modelu](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
@@ -173,17 +173,17 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
 1. V sadě Visual Studio sestavte projekt. 
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na složku **Kontrolery** a vyberte **Přidat**, **Kontroler**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na složku **Kontrolery** a vyberte **Přidat** , **Kontroler** .
 
-1. Vyberte **Kontroler MVC 5 se zobrazeními, s použitím Entity Frameworku**, a klikněte na **Přidat**. Pokud po kliknutí na **Přidat** dojde k chybě, ujistěte se, že jste nejdříve sestavili projekt.
+1. Vyberte **Kontroler MVC 5 se zobrazeními, s použitím Entity Frameworku** , a klikněte na **Přidat** . Pokud po kliknutí na **Přidat** dojde k chybě, ujistěte se, že jste nejdříve sestavili projekt.
 
     ![Přidání třídy kontroleru](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. Vyberte **Team (ContosoTeamStats.Models)** z rozevíracího seznamu **Třída modelu**. Vyberte **TeamContext (ContosoTeamStats.Models)** z rozevíracího seznamu **Třída kontextu dat**. Zadejte `TeamsController` do textového pole **Název kontroleru** (pokud není vyplněné automaticky). Kliknutím na **Přidat** vytvoříte třídu kontroleru a přidáte výchozí zobrazení.
+1. Vyberte **Team (ContosoTeamStats.Models)** z rozevíracího seznamu **Třída modelu** . Vyberte **TeamContext (ContosoTeamStats.Models)** z rozevíracího seznamu **Třída kontextu dat** . Zadejte `TeamsController` do textového pole **Název kontroleru** (pokud není vyplněné automaticky). Kliknutím na **Přidat** vytvoříte třídu kontroleru a přidáte výchozí zobrazení.
 
     ![Konfigurace kontroleru](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
-1. V **Průzkumníku řešení** rozbalte **Global.asax** a dvojím kliknutím otevřete soubor **Global.asax.cs**.
+1. V **Průzkumníku řešení** rozbalte **Global.asax** a dvojím kliknutím otevřete soubor **Global.asax.cs** .
 
     ![Soubor Global.asax.cs](./media/cache-web-app-cache-aside-leaderboard/cache-global-asax.png)
 
@@ -216,7 +216,7 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
 ### <a name="configure-the-layout-view"></a>Konfigurace zobrazení Rozložení
 
-1. V **Průzkumníku řešení** rozbalte složku **Zobrazení**, poté složku **Sdílené**, a dvakrát klikněte na soubor **_Layout.cshtml**. 
+1. V **Průzkumníku řešení** rozbalte složku **Zobrazení** , poté složku **Sdílené** , a dvakrát klikněte na soubor **_Layout.cshtml** . 
 
     ![Soubor _Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -226,7 +226,7 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. V `body` části přidejte následující nový `Html.ActionLink` příkaz pro *statistiky týmu contoso* hned pod odkazem pro *Azure cache for Redis test*.
+1. V `body` části přidejte následující nový `Html.ActionLink` příkaz pro *statistiky týmu contoso* hned pod odkazem pro *Azure cache for Redis test* .
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,7 +234,7 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
     ![Změny kódu](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Stisknutím kombinace kláves **Ctrl+F5** sestavíte a spustíte aplikaci. Tato verze aplikace načítá výsledky přímo z databáze. Všimněte si akcí **Vytvořit nový**, **Upravit**, **Podrobnosti** a **Odstranit**, které do aplikace automaticky přidalo vygenerované uživatelské rozhraní **Kontroler MVC 5 se zobrazeními, s použitím Entity Frameworku**. V další části tohoto kurzu přidáte Azure cache pro Redis k optimalizaci přístupu k datům a poskytování dalších funkcí do aplikace.
+1. Stisknutím kombinace kláves **Ctrl+F5** sestavíte a spustíte aplikaci. Tato verze aplikace načítá výsledky přímo z databáze. Všimněte si akcí **Vytvořit nový** , **Upravit** , **Podrobnosti** a **Odstranit** , které do aplikace automaticky přidalo vygenerované uživatelské rozhraní **Kontroler MVC 5 se zobrazeními, s použitím Entity Frameworku** . V další části tohoto kurzu přidáte Azure cache pro Redis k optimalizaci přístupu k datům a poskytování dalších funkcí do aplikace.
 
     ![Startovní aplikace](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -244,13 +244,13 @@ V této části kurzu nakonfigurujete ukázkovou aplikaci pro ukládání a nač
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Přidání připojení mezipaměti ke kontroleru Teams
 
-V rychlém startu jste už nainstalovali balíček klientské knihovny *StackExchange.Redis*. Také jste nakonfigurovali aplikaci *CacheConnection*, aby se používala místně a pomocí publikované služby App Service. Použijte stejnou klientskou knihovnu a informace *CacheConnection* uvedené v kontroleru *TeamsController*.
+V rychlém startu jste už nainstalovali balíček klientské knihovny *StackExchange.Redis* . Také jste nakonfigurovali aplikaci *CacheConnection* , aby se používala místně a pomocí publikované služby App Service. Použijte stejnou klientskou knihovnu a informace *CacheConnection* uvedené v kontroleru *TeamsController* .
 
-1. V **Průzkumníku řešení** rozbalte složku **Kontrolery** a dvojím kliknutím otevřete soubor **TeamsController.cs**.
+1. V **Průzkumníku řešení** rozbalte složku **Kontrolery** a dvojím kliknutím otevřete soubor **TeamsController.cs** .
 
     ![Kontroler Teams](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Do TeamsController.cs přidejte následující dva `using` příkazy **TeamsController.cs**:
+1. Do TeamsController.cs přidejte následující dva `using` příkazy **TeamsController.cs** :
 
     ```csharp
     using System.Configuration;
@@ -574,7 +574,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
 
 ### <a name="add-caching-methods-to-the-teams-index-view"></a>Přidání metod ukládání do mezipaměti do zobrazení indexu Teams
 
-1. V **Průzkumníku řešení** rozbalte složku **Zobrazení**, poté složku **Týmy**, a dvakrát klikněte na soubor **Index.cshtml**.
+1. V **Průzkumníku řešení** rozbalte složku **Zobrazení** , poté složku **Týmy** , a dvakrát klikněte na soubor **Index.cshtml** .
 
     ![Soubor Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
@@ -624,7 +624,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
 
     ![Zpráva o stavu](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
 
-1. Projekt sestavíte stisknutím klávesy **F6**.
+1. Projekt sestavíte stisknutím klávesy **F6** .
 
 ## <a name="run-the-app-locally"></a>Místní spuštění aplikace
 
@@ -646,37 +646,37 @@ Spuštění aplikace místně:
 
 V této části zřídíte novou databázi v SQL Database, aby se aplikace používala při hostování v Azure.
 
-1. V levém horním rohu portálu [Azure Portal](https://portal.azure.com/) klikněte na **Vytvořit prostředek**.
+1. V levém horním rohu portálu [Azure Portal](https://portal.azure.com/) klikněte na **Vytvořit prostředek** .
 
-1. Na stránce **Nový** klikněte na **Databases** > **SQL Database**.
+1. Na stránce **Nový** klikněte na **Databases** > **SQL Database** .
 
 1. Pro novou databázi SQL použijte následující nastavení:
 
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Název databáze** | *ContosoTeamsDatabase* | Platné názvy databází najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Název databáze** | *ContosoTeamsDatabase* | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). |
    | **Předplatné** | *Vaše předplatné*  | Vyberte stejné předplatné, které jste použili k vytvoření mezipaměti a hostování služby App Service. |
    | **Skupina prostředků**  | *TestResourceGroup* | Klikněte na **Použít existující** a použijte stejnou skupinu prostředků, do které jste umístili mezipaměť a App Service. |
    | **Zvolit zdroj** | **Prázdná databáze** | Začněte s prázdnou databází. |
 
-1. V části **Server** klikněte na **Konfigurovat požadované nastavení** > **Vytvořit nový server** a zadejte následující informace. Potom klikněte na tlačítko **Vybrat**:
+1. V části **Server** klikněte na **Konfigurovat požadované nastavení** > **Vytvořit nový server** a zadejte následující informace. Potom klikněte na tlačítko **Vybrat** :
 
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). |
    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-   | **Umístění** | *East US* | Vyberte stejnou oblast, ve které jste vytvořili mezipaměť a App Service. |
+   | **Umístění** | *USA – východ* | Vyberte stejnou oblast, ve které jste vytvořili mezipaměť a App Service. |
 
 1. Kliknutím na **Připnout na řídicí panel** a potom na **Vytvořit** vytvořte novou databázi a server.
 
-1. Po vytvoření databáze klikněte na **Zobrazit databázové připojovací řetězce** a zkopírujte připojovací řetězec **ADO.NET**.
+1. Po vytvoření databáze klikněte na **Zobrazit databázové připojovací řetězce** a zkopírujte připojovací řetězec **ADO.NET** .
 
     ![Zobrazení připojovacích řetězců](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Na portálu Azure Portal přejděte na App Service a klikněte na **Nastavení aplikace** a potom v části Připojovací řetězce na **Přidat nový připojovací řetězec**.
+1. Na portálu Azure Portal přejděte na App Service a klikněte na **Nastavení aplikace** a potom v části Připojovací řetězce na **Přidat nový připojovací řetězec** .
 
-1. Přidejte nový připojovací řetězec s názvem *TeamContext*, aby odpovídal třídě kontextu databáze sady technologií Entity Framework. Vložte připojovací řetězec nové databáze jako hodnotu. Nezapomeňte nahradit následující zástupné symboly v připojovacím řetězci a klikněte na **Uložit**:
+1. Přidejte nový připojovací řetězec s názvem *TeamContext* , aby odpovídal třídě kontextu databáze sady technologií Entity Framework. Vložte připojovací řetězec nové databáze jako hodnotu. Nezapomeňte nahradit následující zástupné symboly v připojovacím řetězci a klikněte na **Uložit** :
 
     | Zástupný symbol | Navrhovaná hodnota |
     | --- | --- |
@@ -689,11 +689,11 @@ V této části zřídíte novou databázi v SQL Database, aby se aplikace použ
 
 V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v cloudu.
 
-1. V sadě Visual Studio klikněte pravým tlačítkem na projekt **ContosoTeamStats** a vyberte **Publikovat**.
+1. V sadě Visual Studio klikněte pravým tlačítkem na projekt **ContosoTeamStats** a vyberte **Publikovat** .
 
     ![Publikovat](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. Klikněte na **Publikovat**, aby se použil stejný profil publikování, který jste vytvořili v rychlém startu.
+2. Klikněte na **Publikovat** , aby se použil stejný profil publikování, který jste vytvořili v rychlém startu.
 
 3. Po dokončení publikování Visual Studio spustí aplikaci ve výchozím webovém prohlížeči.
 
@@ -723,13 +723,13 @@ Po dokončení ukázkové aplikace můžete odstranit použité prostředky Azur
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
-2. Zadejte název vaší skupiny prostředků do textového pole **Filtrování položek...**.
-3. Klikněte na **...** napravo od skupiny prostředků a klikněte na **Odstranit skupinu prostředků**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků** .
+2. Zadejte název vaší skupiny prostředků do textového pole **Filtrování položek...** .
+3. Klikněte na **...** napravo od skupiny prostředků a klikněte na **Odstranit skupinu prostředků** .
 
     ![Odstranit](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
+4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit** .
 
     Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 

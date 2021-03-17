@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60499881"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351840"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tyto požadavky na použití a zobrazení se vztahují na veškerou implementaci obsahu a související informace z následujících rozhraní API pro vyhledávání Bingu, včetně vztahů, metadat a dalších signálů.
 
@@ -34,7 +39,7 @@ Tyto požadavky na použití a zobrazení se vztahují na veškerou implementaci
 ## <a name="definitions"></a>Definice
 
 
-|Označení  |Popis  |
+|Termín  |Popis  |
 |---------|---------|
 |Odpověď     | Odpověď vrátila kategorii výsledků. Odpověď z rozhraní API Bingu pro vyhledávání na webu například může obsahovat odpovědi v kategoriích výsledků webové stránky, obrázku, videa, vizuálu a novinkách. |
 |Odpověď     | Jakékoli a všechny odpovědi a přidružená data přijatá v reakci na jedno volání rozhraní API pro hledání. |
@@ -167,5 +172,4 @@ Předchozí části použití a zobrazení požadavků rozhraní API pro vyhled�
 
 ## <a name="gdpr-compliance"></a>Dodržování předpisů GDPR  
 
-V souvislosti se všemi osobními údaji, které jsou předmětem Obecné nařízení o ochraně osobních údajů Evropské unie (GDPR) a které se zpracovávají v souvislosti s voláními rozhraní API pro vyhledávání, rozhraní API Bingu pro kontrolu pravopisu nebo rozhraní API pro automatické návrhy Bingu, rozumíte tomu, že jste vy a Microsoft jsou na GDPR nezávislé řadiče dat. Nezávisle zodpovídáte za vaše dodržování předpisů pomocí GDPR.  
-
+V souvislosti se všemi osobními údaji, které jsou předmětem Obecné nařízení o ochraně osobních údajů Evropské unie (GDPR) a které se zpracovávají v souvislosti s voláními rozhraní API pro vyhledávání, rozhraní API Bingu pro kontrolu pravopisu nebo rozhraní API pro automatické návrhy Bingu, rozumíte tomu, že jste vy a Microsoft jsou na GDPR nezávislé řadiče dat. Nezávisle zodpovídáte za vaše dodržování předpisů pomocí GDPR.

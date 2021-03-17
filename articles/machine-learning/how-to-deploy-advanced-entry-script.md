@@ -1,21 +1,24 @@
 ---
 title: Vytvořit skript pro pokročilé scénáře
 titleSuffix: Azure Machine Learning entry script authoring
+description: Naučte se psát skripty pro zadávání Azure Machine Learning pro předběžné a následné zpracování během nasazení.
 author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/17/2020
 ms.author: gopalv
-ms.openlocfilehash: 0499cd6885454604e89ce4cadc313b2f68c45156
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: f88b6bd79e1004c108ef868f910a4e5a974cc08a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544579"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508533"
 ---
-# <a name="advanced-entry-script-authoring"></a>Vytváření pokročilých vstupních skriptů
+# <a name="advanced-entry-script-authoring"></a>Vytváření pokročilých zaváděcích skriptů
 
 Tento článek ukazuje, jak psát skripty pro zadávání pro specializované případy použití.
 
@@ -23,9 +26,12 @@ Tento článek ukazuje, jak psát skripty pro zadávání pro specializované p�
 
 V tomto článku se předpokládá, že už máte školený model strojového učení, který máte v úmyslu nasadit pomocí Azure Machine Learning. Další informace o nasazení modelu najdete v [tomto kurzu](how-to-deploy-and-where.md).
 
-## <a name="automatically-generate-a-swagger-schema"></a>Automatické generování schématu Swagger
+## <a name="automatically-generate-a-swagger-schema"></a>Automatické generování schématu Swaggeru
 
-Chcete-li automaticky vygenerovat schéma pro webovou službu, poskytněte vzorek vstupu a/nebo výstupu v konstruktoru pro jeden z definovaných objektů typu. Typ a ukázka slouží k automatickému vytvoření schématu. Azure Machine Learning pak vytvoří specifikace [openapi](https://swagger.io/docs/specification/about/) (Swagger) pro webovou službu během nasazování.
+Chcete-li automaticky vygenerovat schéma pro webovou službu, poskytněte vzorek vstupu a/nebo výstupu v konstruktoru pro jeden z definovaných objektů typu. Typ a ukázka slouží k automatickému vytvoření schématu. Azure Machine Learning pak vytvoří specifikace [openapi](https://swagger.io/docs/specification/about/) (Swagger) pro webovou službu během nasazování. 
+
+> [!WARNING]
+> Pro ukázkový vstup nebo výstup nesmíte použít citlivá ani soukromá data. Stránka Swagger pro Inferencing hostovaná v AML zpřístupňuje ukázková data. 
 
 Tyto typy jsou aktuálně podporovány:
 
@@ -34,12 +40,18 @@ Tyto typy jsou aktuálně podporovány:
 * `pyspark`
 * Standardní objekt Pythonu
 
-Chcete-li použít generování schématu, zahrňte do `inference-schema` souboru závislostí Open Source balíček. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) . Definujte vstupní a výstupní ukázkové formáty v `input_sample` `output_sample` proměnných a, které reprezentují formáty požadavků a odpovědí webové služby. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry na `run()` funkci. Následující scikit příklad používá generování schématu.
+Pokud chcete použít generování schématu, zahrňte do `inference-schema` souboru závislostí Open Source balíček verze 1.1.0 nebo novější. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) . Aby bylo možné vygenerovat vyhovující Swagger pro automatizovanou spotřebu webové služby, musí mít funkce běhu skriptu bodování () tvar rozhraní API pro:
+* První parametr typu "StandardPythonParameterType", pojmenované **vstupy** a vnořené.
+* Volitelný druhý parametr typu "StandardPythonParameterType" s názvem **GlobalParameters**.
+* Vrátí slovník typu "StandardPythonParameterType" s názvem **Results** a vnořený.
+
+Definujte vstupní a výstupní ukázkové formáty v `input_sample` `output_sample` proměnných a, které reprezentují formáty požadavků a odpovědí webové služby. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry na `run()` funkci. Následující scikit příklad používá generování schématu.
+
 
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI kompatibilní koncový bod 
 
-Následující příklad ukazuje, jak definovat vstupní data jako `<key: value>` slovník pomocí datového rámce. Tato metoda je podporována pro využívání nasazené webové služby od Power BI. (Další[informace o tom, jak využívat webovou službu z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
+Následující příklad ukazuje, jak definovat tvar rozhraní API podle pokynů výše. Tato metoda je podporována pro využívání nasazené webové služby od Power BI. (Další[informace o tom, jak využívat webovou službu z Power BI](/power-bi/service-machine-learning-integration).)
 
 ```python
 import json
@@ -48,9 +60,10 @@ import numpy as np
 import pandas as pd
 import azureml.train.automl
 from sklearn.externals import joblib
-from azureml.core.model import Model
+from sklearn.linear_model import Ridge
 
 from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
@@ -58,31 +71,41 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 def init():
     global model
     # Replace filename if needed.
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model_file.pkl')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
 
-input_sample = pd.DataFrame(data=[{
-    # This is a decimal type sample. Use the data type that reflects this column in your data.
-    "input_name_1": 5.1,
-    # This is a string type sample. Use the data type that reflects this column in your data.
-    "input_name_2": "value2",
-    # This is an integer type sample. Use the data type that reflects this column in your data.
-    "input_name_3": 3
-}])
+# providing 3 sample inputs for schema generation
+numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
+pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
+standard_sample_input = StandardPythonParameterType(0.0)
 
-# This is an integer type sample. Use the data type that reflects the expected result.
-output_sample = np.array([0])
+# This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
+sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
+                                        'input2': pandas_sample_input, 
+                                        'input3': standard_sample_input})
 
-# To indicate that we support a variable length of data input,
-# set enforce_shape=False
-@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
-@output_schema(NumpyParameterType(output_sample))
-def run(data):
+sample_global_parameters = StandardPythonParameterType(1.0) # this is optional
+sample_output = StandardPythonParameterType([1.0, 1.0])
+outputs = StandardPythonParameterType({'Results':sample_output}) # 'Results' is case sensitive
+
+@input_schema('Inputs', sample_input) 
+# 'Inputs' is case sensitive
+
+@input_schema('GlobalParameters', sample_global_parameters) 
+# this is optional, 'GlobalParameters' is case sensitive
+
+@output_schema(outputs)
+
+def run(Inputs, GlobalParameters): 
+    # the parameters here have to match those in decorator, both 'Inputs' and 
+    # 'GlobalParameters' here are case sensitive
     try:
+        data = Inputs['input1']
+        # data will be convert to target format
+        assert isinstance(data, np.ndarray)
         result = model.predict(data)
-        # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -90,7 +113,7 @@ def run(data):
 ```
 
 
-## <a name="binary-ie-image-data"></a><a id="binary-data"></a>Binární data (tj. obrázky)
+## <a name="binary-ie-image-data"></a><a id="binary-data"></a> Binární data (tj. obrázky)
 
 Pokud váš model akceptuje binární data, jako je obrázek, musíte upravit soubor, který se `score.py` používá pro vaše nasazení, aby přijímal nezpracované požadavky HTTP. K přijetí nezpracovaných dat použijte `AMLRequest` třídu ve vašem vstupním skriptu a přidejte `@rawhttp` dekoratér do `run()` funkce.
 
@@ -99,30 +122,34 @@ Tady je příklad `score.py` , který přijímá binární data:
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
+from PIL import Image
+import json
 
 
 def init():
     print("This is init()")
-
+    
 
 @rawhttp
 def run(request):
     print("This is run()")
-    print("Request: [{0}]".format(request))
+    
     if request.method == 'GET':
         # For this example, just return the URL for GETs.
         respBody = str.encode(request.full_path)
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
-        reqBody = request.get_data(False)
+        file_bytes = request.files["image"]
+        image = Image.open(file_bytes).convert('RGB')
         # For a real-world solution, you would load the data from reqBody
         # and send it to the model. Then return the response.
 
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
+        # For demonstration purposes, this example just returns the size of the image as the response..
+        return AMLResponse(json.dumps(image.size), 200)
     else:
         return AMLResponse("bad request", 500)
 ```
+
 
 > [!IMPORTANT]
 > `AMLRequest`Třída je v `azureml.contrib` oboru názvů. Entity v tomto oboru názvů se často mění při práci za účelem vylepšení služby. Cokoli v tomto oboru názvů by mělo být považováno za verzi Preview, která není plně podporovaná společností Microsoft.
@@ -137,10 +164,13 @@ def run(request):
 
 ```python
 import requests
-# Load image data
-data = open('example.jpg', 'rb').read()
-# Post raw data to scoring URI
-res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+
+uri = service.scoring_uri
+image_path = 'test.jpg'
+files = {'image': open(image_path, 'rb').read()}
+response = requests.post(url, files=files)
+
+print(response.json)
 ```
 
 <a id="cors"></a>
@@ -156,6 +186,7 @@ Následující příklad nastaví `Access-Control-Allow-Origin` hlavičku odpov�
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
+
 
 def init():
     print("This is init()")
@@ -260,18 +291,28 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Při registraci modelu zadáte název modelu, který se používá pro správu modelu v registru. Pomocí tohoto názvu s metodou [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) můžete načíst cestu souboru modelu nebo souborů v místním systému souborů. Pokud zaregistrujete složku nebo kolekci souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje tyto soubory.
+Při registraci modelu zadáte název modelu, který se používá pro správu modelu v registru. Pomocí tohoto názvu s metodou [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) můžete načíst cestu souboru modelu nebo souborů v místním systému souborů. Pokud zaregistrujete složku nebo kolekci souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje tyto soubory.
 
 Když zaregistrujete model, přiřadíte mu název. Název odpovídá umístění modelu, a to buď místně, nebo během nasazování služby.
+
+## <a name="framework-specific-examples"></a>Příklady specifické pro rozhraní
+
+Další příklady skriptu pro konkrétní případy použití ve strojovém učení najdete níže:
+
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
+* [Keras](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/keras/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)
+* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
+* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
-* [Aktualizovat webovou službu](how-to-deploy-update-web-service.md)
+* [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

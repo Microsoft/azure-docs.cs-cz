@@ -8,35 +8,38 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 02/09/2021
+ms.openlocfilehash: efb5d498c627a6731d2a90623c81eefabd0042a0
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021898"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462775"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Správa služby Azure Kognitivní hledání pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Azure CLI](search-manage-azure-cli.md)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)
 
-Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Linux nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a vytvořit a nakonfigurovat Azure kognitivní hledání. Modul **AZ. Search** rozšiřuje [Azure PowerShell](https://docs.microsoft.com/powershell/) o úplnou paritu [rozhraní REST API pro správu vyhledávání](https://docs.microsoft.com/rest/api/searchmanagement) a možnost provádět následující úlohy:
+Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Linux nebo v [Azure Cloud Shell](../cloud-shell/overview.md) a vytvořit a nakonfigurovat Azure kognitivní hledání. Modul **AZ. Search** rozšiřuje [Azure PowerShell](/powershell/) o úplnou paritu [rozhraní REST API pro správu vyhledávání](/rest/api/searchmanagement) a možnost provádět následující úlohy:
 
 > [!div class="checklist"]
 > * [Seznam služeb vyhledávání v předplatném](#list-search-services)
 > * [Vrátit informace o službě](#get-search-service-information)
 > * [Vytvoření nebo odstranění služby](#create-or-delete-a-service)
+> * [Vytvoření služby s privátním koncovým bodem](#create-a-service-with-a-private-endpoint)
 > * [Znovu vygenerovat klíče rozhraní API pro správu](#regenerate-admin-keys)
 > * [Vytvoření nebo odstranění rozhraní API pro dotazování klíčů](#create-or-delete-query-keys)
 > * [Horizontální navýšení nebo snížení kapacity díky replikám a oddílům](#scale-replicas-and-partitions)
+> * [Vytvoření sdíleného prostředku privátního propojení](#create-a-shared-private-link-resource)
 
 V některých případech se otázky týkají úkolů, které *nejsou* uvedené na seznamu výše. V současné době nemůžete použít modul **AZ. Search** ani REST API správy ke změně názvu serveru, oblasti nebo vrstvy. Vyhrazené prostředky jsou přiděleny při vytvoření služby. Například změna základního hardwaru (umístění nebo typu uzlu) vyžaduje novou službu. Podobně nejsou k dispozici žádné nástroje ani rozhraní API pro přenos obsahu, jako je například index, z jedné služby do jiné.
 
-V rámci služby je vytváření a Správa obsahu prostřednictvím [Search Service REST API](https://docs.microsoft.com/rest/api/searchservice/) nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search). I když pro obsah nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete napsat skript prostředí PowerShell, který volá rozhraní REST nebo rozhraní .NET API k vytváření a načítání indexů.
+V rámci služby je vytváření a Správa obsahu prostřednictvím [Search Service REST API](/rest/api/searchservice/) nebo [.NET SDK](/dotnet/api/overview/azure/search.documents-readme). I když pro obsah nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete napsat skript prostředí PowerShell, který volá rozhraní REST nebo rozhraní .NET API k vytváření a načítání indexů.
 
 <a name="check-versions-and-load"></a>
 
@@ -90,7 +93,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>Seznam služeb v předplatném
 
-Následující příkazy jsou z [**AZ. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
+Následující příkazy jsou z [**AZ. Resources**](/powershell/module/az.resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
 
 První příkaz vrátí všechny vyhledávací služby.
 
@@ -111,12 +114,12 @@ Name              : my-demo-searchapp
 ResourceGroupName : demo-westus
 ResourceType      : Microsoft.Search/searchServices
 Location          : westus
-ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
+ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="import-azsearch"></a>Import AZ. Search
 
-Příkazy z [**AZ. Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) nejsou k dispozici, dokud nenačtete modul.
+Příkazy z [**AZ. Search**](/powershell/module/az.search) nejsou k dispozici, dokud nenačtete modul.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
@@ -133,22 +136,36 @@ Get-Command -Module Az.Search
 Výsledky by měly vypadat podobně jako v následujícím výstupu.
 
 ```
-CommandType     Name                                Version    Source
------------     ----                                -------    ------
-Cmdlet          Get-AzSearchAdminKeyPair            0.7.1      Az.Search
-Cmdlet          Get-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          Get-AzSearchService                 0.7.1      Az.Search
-Cmdlet          New-AzSearchAdminKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchService                 0.7.1      Az.Search
-Cmdlet          Remove-AzSearchQueryKey             0.7.1      Az.Search
-Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
-Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
+CommandType     Name                                               Version    Source                                                                
+-----------     ----                                               -------    ------                                                                
+Cmdlet          Get-AzSearchAdminKeyPair                           0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateLinkResource                    0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchAdminKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchPrivateEndpointConnection           0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchQueryKey                            0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchService                             0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchSharedPrivateLinkResource           0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search   
+```
+
+Pokud máte starší verzi balíčku, aktualizujte modul, aby se získaly nejnovější funkce.
+
+```azurepowershell-interactive
+Update-Module -Name Az.Search
 ```
 
 ## <a name="get-search-service-information"></a>Získat informace o službě Search
 
-Po naimportování **AZ. Search** , který znáte skupinu prostředků obsahující vaši vyhledávací službu, spusťte příkaz [Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) , který vrátí definici služby, včetně názvu, oblasti, úrovně a počtu replik a oddílů.
+Po naimportování **AZ. Search** , který znáte skupinu prostředků obsahující vaši vyhledávací službu, spusťte příkaz [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) , který vrátí definici služby, včetně názvu, oblasti, úrovně a počtu replik a oddílů.
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -170,10 +187,10 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>Vytvoření nebo odstranění služby
 
-[**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) se používá k [Vytvoření nové vyhledávací služby](search-create-service-portal.md).
+[**New-AzSearchService**](/powershell/module/az.search/new-azsearchservice) se používá k [Vytvoření nové vyhledávací služby](search-create-service-portal.md).
 
 ```azurepowershell-interactive
-New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
+New-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3 -HostingMode Default
 ``` 
 Výsledky by měly vypadat podobně jako v následujícím výstupu.
 
@@ -189,9 +206,144 @@ HostingMode       : Default
 Tags
 ```     
 
+### <a name="create-a-service-with-ip-rules"></a>Vytvoření služby s pravidly IP
+
+V závislosti na vašich požadavcích na zabezpečení můžete chtít vytvořit vyhledávací službu s [nakonfigurovanou bránou firewall protokolu IP](service-configure-firewall.md). K tomu je třeba nejprve definovat pravidla protokolu IP a pak je předat `IPRuleList` parametru, jak je uvedeno níže.
+
+```azurepowershell-interactive
+$ipRules = @([pscustomobject]@{Value="55.5.63.73"},
+        [pscustomobject]@{Value="52.228.215.197"},
+        [pscustomobject]@{Value="101.37.221.205"})
+
+ New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IPRuleList $ipRules
+```
+
+### <a name="create-a-service-with-a-system-assigned-managed-identity"></a>Vytvoření služby se spravovanou identitou přiřazenou systémem
+
+V některých případech, například při [použití spravované identity pro připojení ke zdroji dat](search-howto-managed-identities-storage.md), budete muset zapnout [spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md). To se provádí přidáním `-IdentityType SystemAssigned` do příkazu.
+
+```azurepowershell-interactive
+New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IdentityType SystemAssigned
+```
+
+## <a name="create-a-service-with-a-private-endpoint"></a>Vytvoření služby s privátním koncovým bodem
+
+[Privátní koncové body](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňují klientovi ve virtuální síti zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního odkazu](../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z [adresního prostoru virtuální sítě](../virtual-network/private-ip-addresses.md) pro vaši vyhledávací službu. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. Další podrobnosti najdete v dokumentaci k [Vytvoření privátního koncového bodu pro Azure kognitivní hledání](service-create-private-endpoint.md)
+
+Následující příklad ukazuje, jak vytvořit vyhledávací službu s privátním koncovým bodem.
+
+Nejdřív nasaďte vyhledávací službu s `PublicNetworkAccess` nastavením na `Disabled` .
+
+```azurepowershell-interactive
+$searchService = New-AzSearchService `
+    -ResourceGroupName <resource-group-name> `
+    -Name <search-service-name> `
+    -Sku Standard `
+    -Location "West US" `
+    -PartitionCount 1 -ReplicaCount 1 `
+    -HostingMode Default `
+    -PublicNetworkAccess Disabled
+```
+
+Dále vytvořte virtuální síť, připojení k privátní síti a soukromý koncový bod.
+
+```azurepowershell-interactive
+# Create the subnet
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+    -Name <subnet-name> `
+    -AddressPrefix 10.1.0.0/24 `
+    -PrivateEndpointNetworkPolicies Disabled 
+
+# Create the virtual network
+$virtualNetwork = New-AzVirtualNetwork `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Name <virtual-network-name> `
+    -AddressPrefix 10.1.0.0/16 `
+    -Subnet $subnetConfig
+
+# Create the private network connection
+$privateLinkConnection = New-AzPrivateLinkServiceConnection `
+    -Name <private-link-name> `
+    -PrivateLinkServiceId $searchService.Id `
+    -GroupId searchService
+
+# Create the private endpoint
+$privateEndpoint = New-AzPrivateEndpoint `
+    -Name <private-endpoint-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Subnet $virtualNetwork.subnets[0] `
+    -PrivateLinkServiceConnection $privateLinkConnection
+```
+
+Nakonec vytvořte privátní zónu DNS. 
+
+```azurepowershell-interactive
+## Create private dns zone
+$zone = New-AzPrivateDnsZone `
+    -ResourceGroupName <resource-group-name> `
+    -Name "privatelink.search.windows.net"
+
+## Create dns network link
+$link = New-AzPrivateDnsVirtualNetworkLink `
+    -ResourceGroupName <resource-group-name> `
+    -ZoneName "privatelink.search.windows.net" `
+    -Name "myLink" `
+    -VirtualNetworkId $virtualNetwork.Id
+
+## Create DNS configuration 
+$config = New-AzPrivateDnsZoneConfig `
+    -Name "privatelink.search.windows.net" `
+    -PrivateDnsZoneId $zone.ResourceId
+
+## Create DNS zone group
+New-AzPrivateDnsZoneGroup `
+    -ResourceGroupName <resource-group-name> `
+    -PrivateEndpointName <private-endpoint-name> `
+    -Name 'myZoneGroup' `
+    -PrivateDnsZoneConfig $config
+```
+
+Další informace o vytváření privátních koncových bodů v PowerShellu najdete v tomto [rychlém startu privátního propojení](../private-link/create-private-endpoint-powershell.md) .
+
+### <a name="manage-private-endpoint-connections"></a>Správa připojení privátního koncového bodu
+
+Kromě vytvoření připojení privátního koncového bodu můžete také `Get` , `Set` a `Remove` připojení.
+
+[Get-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Get-AzSearchPrivateEndpointConnection) se používá k načtení připojení privátního koncového bodu a k zobrazení jeho stavu.
+
+```azurepowershell-interactive
+Get-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name>
+```
+
+K aktualizaci připojení se používá [set-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Set-AzSearchPrivateEndpointConnection) . Následující příklad nastaví připojení privátního koncového bodu na odmítnuto:
+
+```azurepowershell-interactive
+Set-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name> -Status Rejected  -Description "Rejected"
+```
+
+[Příkaz Remove-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Remove-AzSearchPrivateEndpointConnection) slouží k odstranění připojení privátního koncového bodu.
+
+```azurepowershell-interactive
+ Remove-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name>
+```
+
 ## <a name="regenerate-admin-keys"></a>Znovu vygenerovat klíče správce
 
-[**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) se používá k kumulativnímu navýšení [klíčů rozhraní API](search-security-api-keys.md)pro správu. Dva klíče správce se vytvoří s každou službou pro ověřený přístup. Klíče jsou požadovány při každém požadavku. Oba klíče správce jsou funkčně ekvivalentní, což poskytuje úplný přístup pro zápis do vyhledávací služby s možností načíst libovolné informace nebo vytvořit a odstranit libovolný objekt. Existují dva klíče, abyste je mohli použít při nahrazování druhé. 
+[**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey) se používá k kumulativnímu navýšení [klíčů rozhraní API](search-security-api-keys.md)pro správu. Dva klíče správce se vytvoří s každou službou pro ověřený přístup. Klíče jsou požadovány při každém požadavku. Oba klíče správce jsou funkčně ekvivalentní, což poskytuje úplný přístup pro zápis do vyhledávací služby s možností načíst libovolné informace nebo vytvořit a odstranit libovolný objekt. Existují dva klíče, abyste je mohli použít při nahrazování druhé. 
 
 V jednom okamžiku můžete znovu vygenerovat jenom jednu, zadanou buď jako `primary` klíč nebo `secondary` . U nepřerušované služby nezapomeňte aktualizovat veškerý kód klienta, aby používal sekundární klíč, a přitom přenášet primární klíč. Vyhněte se změnám klíčů, když jsou operace v letu.
 
@@ -213,7 +365,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Vytvoření nebo odstranění klíčů dotazů
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) se používá k vytváření [klíčů rozhraní API](search-security-api-keys.md) pro dotazování pro přístup jen pro čtení z klientských aplikací do indexu služby Azure kognitivní hledání. Klíče dotazů se používají k ověření pro konkrétní index pro účely načítání výsledků hledání. Klíče dotazů neudělují přístup jen pro čtení k ostatním položkám ve službě, jako je index, zdroj dat nebo indexer.
+[**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey) se používá k vytváření [klíčů rozhraní API](search-security-api-keys.md) pro dotazování pro přístup jen pro čtení z klientských aplikací do indexu služby Azure kognitivní hledání. Klíče dotazů se používají k ověření pro konkrétní index pro účely načítání výsledků hledání. Klíče dotazů neudělují přístup jen pro čtení k ostatním položkám ve službě, jako je index, zdroj dat nebo indexer.
 
 Nemůžete poskytnout klíč pro použití Azure Kognitivní hledání. Služba vygeneruje klíče rozhraní API.
 
@@ -223,7 +375,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>Škálování replik a oddílů
 
-[**Set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) se používá ke [zvýšení nebo snížení počtu replik a oddílů a](search-capacity-planning.md) k úpravě fakturovatelných prostředků v rámci služby. Zvýšením replik nebo oddílů se přidá do vašeho účtu, který má za pevnou i variabilní poplatky. Pokud máte dočasnou potřebu pro další výpočetní výkon, můžete zvýšit repliky a oddíly pro zpracování úloh. Oblast monitorování na stránce portálu přehledu obsahuje dlaždice pro latenci dotazů, dotazy za sekundu a omezování, které označují, jestli je aktuální kapacita adekvátní.
+[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice) se používá ke [zvýšení nebo snížení počtu replik a oddílů a](search-capacity-planning.md) k úpravě fakturovatelných prostředků v rámci služby. Zvýšením replik nebo oddílů se přidá do vašeho účtu, který má za pevnou i variabilní poplatky. Pokud máte dočasnou potřebu pro další výpočetní výkon, můžete zvýšit repliky a oddíly pro zpracování úloh. Oblast monitorování na stránce portálu přehledu obsahuje dlaždice pro latenci dotazů, dotazy za sekundu a omezování, které označují, jestli je aktuální kapacita adekvátní.
 
 Přidání nebo odebrání rezdrojového může nějakou dobu trvat. Úpravy kapacity se vyskytují na pozadí, což umožňuje, aby existující úlohy pokračovaly. Další kapacita se používá pro příchozí požadavky, jakmile je připravená, a nevyžaduje žádnou další konfiguraci. 
 
@@ -247,6 +399,46 @@ PartitionCount    : 6
 HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
+
+## <a name="create-a-shared-private-link-resource"></a>Vytvoření sdíleného prostředku privátního propojení
+
+Soukromé koncové body zabezpečených prostředků, které jsou vytvořené prostřednictvím rozhraní API služby Azure Kognitivní hledání, se označují jako *sdílené prostředky privátního propojení*. Důvodem je to, že sdílíte přístup k prostředku, třeba k účtu úložiště, který je integrovaný do [služby Azure Private Link](https://azure.microsoft.com/services/private-link/).
+
+Pokud k indexování dat v Azure Kognitivní hledání používáte indexer a váš zdroj dat je v privátní síti, můžete vytvořit připojení k odchozímu [privátnímu koncovému bodu](../private-link/private-endpoint-overview.md) pro přístup k datům.
+
+Úplný seznam prostředků Azure, pro které můžete vytvořit odchozí soukromé koncové body z Azure Kognitivní hledání najdete [tady](search-indexer-howto-access-private.md#shared-private-link-resources-management-apis) spolu s hodnotami **ID souvisejících skupin** .
+
+[New-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/New-AzSearchSharedPrivateLinkResource) se používá k vytvoření sdíleného prostředku privátního propojení. Před spuštěním tohoto příkazu Pamatujte na to, že pro zdroj dat může být potřeba některá konfigurace.
+
+```azurepowershell-interactive
+New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
+```
+
+[Get-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Get-AzSearchSharedPrivateLinkResource) umožňuje načíst sdílené prostředky privátního propojení a zobrazit jejich stav.
+
+```azurepowershell-interactive
+Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name>
+```
+
+Abyste mohli použít tento příkaz, budete muset připojení schválit pomocí následujícího příkazu.
+
+```azurepowershell-interactive
+Approve-AzPrivateEndpointConnection `
+    -Name <spl-name> `
+    -ServiceName <search-service-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Description = "Approved"
+```
+
+[Příkaz Remove-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Remove-AzSearchSharedPrivateLinkResource) slouží k odstranění sdíleného prostředku privátního propojení.
+
+```azurepowershell-interactive
+$job = Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -Force -AsJob
+
+$job | Get-Job
+```
+
+Úplné podrobnosti o nastavení sdílených prostředků privátního propojení najdete v dokumentaci k [vytváření připojení indexeru prostřednictvím privátního koncového bodu](search-indexer-howto-access-private.md).
 
 ## <a name="next-steps"></a>Další kroky
 

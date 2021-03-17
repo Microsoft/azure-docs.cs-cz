@@ -3,12 +3,12 @@ title: Řídicí panel přehled služby Azure Application Insights | Microsoft D
 description: Sledujte aplikace s využitím Azure Application Insights a přehled funkcí řídicího panelu.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322529"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504096"
 ---
 # <a name="application-insights-overview-dashboard"></a>Řídicí panel přehledu Application Insights
 
@@ -36,7 +36,7 @@ Celkový výkon se významně zvýšil. Máte přístup jedním kliknutím k obl
 
 Chcete-li získat přístup k výchozímu řídicímu panelu, vyberte _řídicí panel aplikace_ v levém horním rohu.
 
-![Zobrazení řídicího panelu](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![Snímek obrazovky znázorňující zvýrazněné tlačítko řídicího panelu aplikace](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Pokud k řídicímu panelu přistupujete poprvé, spustí se výchozí zobrazení:
 
@@ -53,11 +53,11 @@ Chcete-li přejít zpět k prostředí přehledu, stačí vybrat:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud vyberete **Konfigurovat nastavení dlaždic** a nastavíte vlastní časový rozsah přesahující 31 dní, řídicí panel se nezobrazí déle než 31 dní dat, a to ani s výchozím uchováváním dat 90 dnů. Pro toto chování není aktuálně k dispozici žádné alternativní řešení.
+Pro data zobrazená v řídicím panelu je aktuálně povolený limit 30 dní dat. Pokud vyberete filtr času delší než 30 dní, nebo pokud vyberete **Konfigurovat nastavení dlaždic** a nastavit vlastní časový rozsah přesahující 30 dní, váš řídicí panel se nezobrazí déle než 30 dní dat, a to ani s výchozím uchováním dat 90 dnů. Pro toto chování není aktuálně k dispozici žádné alternativní řešení.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Trychtýře](./usage-funnels.md)
 - [Uchovávání](./usage-retention.md)
-- [Toky uživatele](./usage-flows.md)
+- [Toky uživatelů](./usage-flows.md)
 

@@ -1,7 +1,7 @@
 ---
-title: Získat token & volání Microsoft Graph pomocí identity aplikace konzoly | Azure
+title: 'Rychlý Start: získání tokenu & volání Microsoft Graph v konzolové aplikaci | Azure'
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak získat token a volat chráněné rozhraní Microsoft Graph API z aplikace .NET Core.
+description: V tomto rychlém startu se dozvíte, jak může ukázková aplikace .NET Core používat tok přihlašovacích údajů klienta k získání tokenu a volání Microsoft Graph.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,23 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
+ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 99dcd81cd24f762a5c2b55f5f2977aaf61bc26e8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683753"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103532"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API pomocí identity konzolové aplikace
 
-V tomto rychlém startu se dozvíte, jak napsat aplikaci .NET Core, která může získat přístupový token pomocí vlastní identity aplikace a pak volat rozhraní Microsoft Graph API pro zobrazení [seznamu uživatelů](/graph/api/user-list) v adresáři. Tento scénář je vhodný pro situace, kdy je potřeba bez identity uživatele spustit bezobslužnou úlohu nebo službu systému Windows s identitou aplikace. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak může Konzolová aplikace .NET Core získat přístupový token pro volání rozhraní Microsoft Graph API a zobrazit [seznam uživatelů](/graph/api/user-list) v adresáři. Ukázka kódu také ukazuje, jak může úloha nebo služba systému Windows běžet pomocí identity aplikace namísto identity uživatele. 
 
-## <a name="prerequisites"></a>Předpoklady
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2).
+## <a name="prerequisites"></a>Požadavky
+
+Tento rychlý Start vyžaduje [.NET Core 3,1](https://www.microsoft.com/net/download/dotnet-core).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
@@ -36,7 +39,7 @@ Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/down
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) .
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -46,23 +49,23 @@ Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/down
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte registrační informace vaší aplikace.
-> 1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Daemon-console` Vyberte možnost **Registrovat** a vytvořte aplikaci.
-> 1. Po registraci vyberte nabídku **certifikáty & tajných klíčů** .
-> 1. V části **tajné klíče klienta**vyberte **+ nový tajný klíč klienta**. Zadejte název a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete ho potřebovat pro použití ve vašem kódu.
-> 1. Nyní vyberte nabídku **oprávnění rozhraní API** , vyberte **+ Přidat oprávnění** tlačítko a vyberte možnost **Microsoft Graph**.
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k </span> Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `Daemon-console` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+> 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
+> 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**, zadejte název a pak vyberte **Přidat**. Poznamenejte si tajnou hodnotu v bezpečném umístění pro použití v pozdějším kroku.
+> 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. Vyberte **Microsoft Graph**.
 > 1. Vyberte **oprávnění aplikace**.
-> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše**a pak vyberte **Přidat oprávnění** .
+> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné vytvořit tajný klíč klienta a přidat **uživatele Graph API. číst. všechna** oprávnění aplikace.
+> Aby ukázka kódu v tomto rychlém startu fungovala, vytvořte tajný klíč klienta a přidejte Graph API **uživatel. číst. všechna** oprávnění aplikace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -73,10 +76,13 @@ Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/down
 
 > [!div renderon="docs"]
 > [Stažení projektu sady Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+>
+> Poskytnutý projekt lze spustit buď v aplikaci Visual Studio, nebo v Visual Studio pro Mac.
+
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Spusťte projekt pomocí sady Visual Studio 2019.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -115,7 +121,7 @@ Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 40
 ##### <a name="global-tenant-administrator"></a>Globální správce klienta
 
 > [!div renderon="docs"]
-> Pokud jste globální správce klienta, v registraci aplikace na webu Azure Portal klikněte na stránku **oprávnění rozhraní API** (Preview) a vyberte **udělit souhlas správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
+> Pokud jste globální správce klienta, na webu Azure Portal přejděte na **podnikové aplikace** > vyberte registraci vaší aplikace > v části zabezpečení v levém navigačním podokně vyberte **oprávnění** . Vyberte velké tlačítko s popiskem **udělení souhlasu správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
 
 > [!div renderon="portal" class="sxs-lookup"]
 > Pokud jste globální správce, přejít na stránku **oprávnění rozhraní API** , vyberte **udělit souhlas správce pro Enter_the_Tenant_Name_Here**
@@ -124,7 +130,7 @@ Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 40
 
 ##### <a name="standard-user"></a>Standardní uživatel
 
-Pokud jste standardní uživatel vašeho tenanta, musíte požádat globálního správce o udělení souhlasu správce vaší aplikace. Pokud to chcete provést, poskytněte správci následující adresu URL:
+Pokud jste standardní uživatel vašeho tenanta, požádejte globálního správce, aby pro vaši aplikaci udělil souhlas správce. Pokud to chcete provést, poskytněte správci následující adresu URL:
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -144,10 +150,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>Krok 5: spuštění aplikace
 
-Pokud používáte aplikaci Visual Studio, stiskněte klávesu **F5** ke spuštění aplikace, jinak spusťte aplikaci prostřednictvím příkazového řádku nebo konzoly:
+Pokud používáte aplikaci Visual Studio nebo Visual Studio pro Mac, stiskněte klávesu **F5** ke spuštění aplikace, jinak spusťte aplikaci prostřednictvím příkazového řádku, konzoly nebo terminálu:
 
-```console
-cd {ProjectFolder}\daemon-console\1-Call-Graph
+```dotnetcli
+cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 
@@ -168,15 +174,9 @@ Jako výsledek by se měl zobrazit seznam uživatelů v adresáři služby Azure
 
 MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity. Jak je popsáno, tento rychlý Start žádá o tokeny pomocí vlastní identity aplikace namísto delegovaných oprávnění. Tok ověřování použitý v tomto případě se označuje jako *[tok OAuth přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md)*. Další informace o tom, jak používat MSAL.NET s tokem přihlašovacích údajů klienta, najdete v [tomto článku](https://aka.ms/msal-net-client-credentials).
 
- MSAL.NET můžete nainstalovat spuštěním následujícího příkazu v **konzole správce balíčků**sady Visual Studio:
+ MSAL.NET můžete nainstalovat spuštěním následujícího příkazu v **konzole správce balíčků** sady Visual Studio:
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-Případně, pokud nepoužíváte aplikaci Visual Studio, můžete spustit následující příkaz pro přidání MSAL do projektu:
-
-```console
+```dotnetcli
 dotnet add package Microsoft.Identity.Client
 ```
 
@@ -198,13 +198,13 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Kde: | Popis |
+> | Kde: | Description |
 > |---------|---------|
 > | `config.ClientSecret` | Vytvoří se tajný klíč klienta pro aplikaci na webu Azure Portal. |
 > | `config.ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 > | `config.Authority`    | Volitelné Koncový bod služby STS, který se má ověřit pro uživatele. Obvykle `https://login.microsoftonline.com/{tenant}` pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta.|
 
-Další informace najdete v [referenční dokumentaci pro `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)
+Další informace najdete v [referenční dokumentaci pro `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
@@ -215,32 +215,17 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
 
-Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
+Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o aplikacích démona najdete na cílové stránce scénáře.
+Další informace o aplikacích démona najdete v přehledu scénářů:
 
 > [!div class="nextstepaction"]
 > [Aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)
-
-Kurz pro aplikace démona najdete v těchto tématech:
-
-> [!div class="nextstepaction"]
-> [Kurz pro konzolu .NET Core s démony](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-Další informace o oprávněních a souhlasu:
-
-> [!div class="nextstepaction"]
-> [Oprávnění a souhlas](v2-permissions-and-consent.md)
-
-Další informace o toku ověřování pro tento scénář najdete v tématu tok přihlašovacích údajů klienta OAuth 2,0:
-
-> [!div class="nextstepaction"]
-> [Tok OAuth přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md)

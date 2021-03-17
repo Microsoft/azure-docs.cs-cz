@@ -1,21 +1,22 @@
 ---
 title: Nejčastější dotazy (FAQ) – LUIS
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.author: diberry
-ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054827"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612792"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -76,9 +77,9 @@ Přečtěte si další informace o [chybách importu verzí](luis-how-to-manage-
 
 ## <a name="collaborating-and-contributing"></a>Spolupráce a přispívání
 
-### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Návody dát spolupracovníkům přístup k LUIS pomocí Azure Active Directory (Azure AD) nebo řízení přístupu na základě role (RBAC)?
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-azure-role-based-access-control-azure-rbac"></a>Návody dát spolupracovníkům přístup k LUIS pomocí Azure Active Directory (Azure AD) nebo řízení přístupu na základě role Azure (RBAC)?
 
-Informace o tom, jak dát spolupracovníkům přístup, najdete v tématu [Azure Active Directory prostředky](luis-how-to-collaborate.md#azure-active-directory-resources) a [Azure Active Directory uživatele klienta](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
+Informace o tom, jak dát spolupracovníkům přístup, najdete v tématu [Azure Active Directory prostředky](luis-how-to-collaborate.md#azure-active-directory-resources)  a [Azure Active Directory uživatele klienta](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
 
 <a name="luis-endpoint"></a>
 
@@ -90,7 +91,7 @@ Stavové kódy chyb 403 a 429 získáte, když překročíte transakce za sekund
 
 Když použijete všechny tyto bezplatné dotazy na koncový bod 1000 nebo překročíte kvótu měsíčních transakcí vaší cenové úrovně, obdržíte kód stavu chyby HTTP 403.
 
-Pokud chcete tuto chybu opravit, musíte [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřadit ho k aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Pokud chcete tuto chybu opravit, musíte [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-the-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřadit ho k aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
 Mezi řešení této chyby patří:
 
@@ -105,9 +106,9 @@ Tento stavový kód se vrátí, když vaše transakce za sekundu překročí va�
 
 Mezi řešení patří:
 
-* Pokud nejste na nejvyšší úrovni, můžete [zvýšit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier).
+* Pokud nejste na nejvyšší úrovni, můžete [zvýšit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 * Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
-* Pomocí [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód.
+* Pomocí [zásady opakování](/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Dotaz na koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
 
@@ -176,7 +177,7 @@ Chyby označují, že mezi štítky a předpovědi z vašich modelů dochází k
 * Chcete-li pomoci LUIS zdokonalit diskriminaci mezi záměry, přidejte další popisky.
 * Pokud chcete LUIS rychleji, přidejte funkce seznamu frází, které zavádějí slovníky specifické pro doménu.
 
-Podívejte se na kurz [dávkového testování](luis-tutorial-batch-testing.md) .
+Podívejte se na kurz [dávkového testování](./luis-how-to-batch-test.md) .
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Po exportu aplikace se znovu naimportuje do nové aplikace (s novým ID aplikace) se výsledky předpovědi LUIS liší. Proč k tomu dochází?
 
@@ -223,7 +224,7 @@ Vytváření klíčů je k dispozici na portálu LUIS po [migraci na prostředí
 ## <a name="app-management"></a>Správa aplikací
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Návody stáhnout protokol uživatele projevy?
-Ve výchozím nastavení vaše aplikace LUIS zaznamená projevy od uživatelů. Pokud si chcete stáhnout protokol projevy, který uživatelé odesílají do vaší aplikace LUIS, pokračujte na **Moje aplikace**a vyberte aplikaci. Na panelu nástrojů kontext vyberte **exportovat protokoly koncových bodů**. Protokol je formátovaný jako textový soubor s oddělovači (CSV).
+Ve výchozím nastavení vaše aplikace LUIS zaznamená projevy od uživatelů. Pokud si chcete stáhnout protokol projevy, který uživatelé odesílají do vaší aplikace LUIS, pokračujte na **Moje aplikace** a vyberte aplikaci. Na panelu nástrojů kontext vyberte **exportovat protokoly koncových bodů**. Protokol je formátovaný jako textový soubor s oddělovači (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak můžu zakázat protokolování projevy?
 Protokolování uživatele projevy můžete vypnout nastavením `log=false` adresy URL koncového bodu, kterou klientská aplikace používá pro dotazování Luis. Vypnutí protokolování ale zakáže schopnost vaší aplikace LUIS navrhovat projevy nebo zdokonalovat výkon, který je založený na [aktivním učení](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud jste nastavili `log=false` ochranu proti soukromí dat, nemůžete stáhnout záznam o uživatelích projevy z Luis ani použít tyto projevy k vylepšení vaší aplikace.
@@ -267,7 +268,7 @@ Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mim
 #### <a name="resolve-issue-in-luis"></a>Řešení potíží v LUIS
 Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Mezi běžné chyby patří:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`– Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier).
+* `Out of call volume quota. Quota will be replenished in <time>.` – Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení potíží v Azure Bot Service
 
@@ -277,7 +278,7 @@ Pokud používáte Azure Bot Service a problém je, že se **test ve webovém ch
 1. Otevřete Editor kódu online.
 1. V horním, modrém navigačním panelu vyberte název robota (druhá položka napravo).
 1. V rozevíracím seznamu výsledek vyberte možnost **otevřít konzolu Kudu**.
-1. Vyberte **soubory protokolu**a pak vyberte **aplikace**. Zkontrolujte všechny soubory protokolu. Pokud se ve složce aplikace nezobrazuje chyba, zkontrolujte všechny soubory protokolu v **souboru**protokolu.
+1. Vyberte **soubory protokolu** a pak vyberte **aplikace**. Zkontrolujte všechny soubory protokolu. Pokud se ve složce aplikace nezobrazuje chyba, zkontrolujte všechny soubory protokolu v **souboru** protokolu.
 1. Nezapomeňte projekt znovu sestavit, pokud používáte zkompilovaný jazyk, jako je C#.
 
 > [!Tip]
@@ -285,7 +286,7 @@ Pokud používáte Azure Bot Service a problém je, že se **test ve webovém ch
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Vyřešte problém při ladění na místním počítači s rozhraním bot Framework.
 
-Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](/azure/bot-service/bot-service-debug-bot).
 
 ## <a name="integrating-luis"></a>Integrace LUIS
 
@@ -295,7 +296,7 @@ Pokud vyberete šablonu LUIS a v podokně šablona vyberete tlačítko **Vybrat*
 ![Oblast bot webové aplikace LUIS Template](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jaké oblasti LUIS podporují pro řeči pro robot Framework?
-Dočistění [řeči](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) je podporované jenom pro aplikace Luis v centrální instanci (US).
+Dočistění [řeči](/bot-framework/bot-service-manage-speech-priming) je podporované jenom pro aplikace Luis v centrální instanci (US).
 
 ## <a name="api-programming-strategies"></a>Strategie programování API
 
@@ -333,4 +334,4 @@ Videa:
 
 Další informace o LUIS najdete v následujících zdrojích informací:
 * [Stack Overflow dotazy označené pomocí LUIS](https://stackoverflow.com/questions/tagged/luis)
-* [Microsoft Q&Stránka s otázkou pro MSDN Language Understanding Intelligent Services (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [Microsoft Q&Stránka s otázkou pro MSDN Language Understanding Intelligent Services (LUIS)](/answers/topics/azure-language-understanding.html)

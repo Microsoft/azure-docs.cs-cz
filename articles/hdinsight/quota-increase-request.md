@@ -1,25 +1,22 @@
 ---
 title: Požadavek na zvýšení kvóty jádra procesoru – Azure HDInsight
 description: Naučte se, jak požádat o zvýšení počtu PROCESORových jader přidělených vašemu předplatnému.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079611"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935830"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Vyžádání zvýšení kvóty pro Azure HDInsight
 
 Základní kvóty procesoru vám pomůžou zajistit, aby využití prostředků bylo poměrně distribuované mezi všemi zákazníky v konkrétní oblasti Azure. V některých případech ale můžou vaše podnikové požadavky vyžadovat více prostředků clusteru než vaše aktuální kvóta umožní. V takových případech můžete požádat o zvýšení kvóty jádra procesoru, abyste mohli nasadit clustery, které odpovídají vašim požadavkům na zpracování dat.
 
-Při dosažení limitu kvóty nemůžete nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader na procesor, přičemž v Východní USA 2 je povolený jiný počet jader procesoru.
+Při dosažení limitu kvóty nemůžete nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader na procesor, přičemž v Východní USA je povolený jiný počet jader procesoru.
 
 ## <a name="gather-required-information"></a>Shromáždit požadované informace
 
@@ -28,13 +25,13 @@ Pokud jste obdrželi chybu s oznámením, že jste dosáhli limitu kvóty, použ
 1. Určete požadovanou velikost virtuálního počítače clusteru, škálování a typ.
 1. Ověřte aktuální limity kapacity kvót vašeho předplatného. Chcete-li zjistit dostupné jádra, proveďte následující kroky:
 
-    1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+    1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
     1. Přejděte na stránku **Přehled** pro cluster HDInsight.
     1. V nabídce vlevo vyberte **omezení kvóty**. Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
 
 Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 
     ![tlačítko pro pomoc a podporu](./media/quota-increase-request/help-support-button.png)
@@ -65,11 +62,11 @@ Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.
 
 > [!NOTE]  
-> Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o seznam povolených](https://aka.ms/canaryintwhitelist).
+> Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o schválení seznamu](https://aka.ms/canaryintwhitelist).
 
-Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Můžete [kontaktovat podporu a požádat o zvýšení kvóty](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-Existují některá pevná omezení kvót. Například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Existují některá pevná omezení kvót. Například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 

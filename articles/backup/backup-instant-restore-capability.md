@@ -4,24 +4,24 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611801"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618572"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
 > [!NOTE]
-> Na základě zpětné vazby od uživatelů přejmenováváme **zásobník záloh virtuálních počítačů v2** na **okamžité obnovení** , aby se snížila nejasnosti s funkcemi Azure Stack.
-> Všichni uživatelé Azure Backup se teď upgradují na **okamžité obnovení**.
+> Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů v2** na **okamžité obnovení** , aby se snížila nutnost Azure Stack funkcí.
+> Všichni Azure Backup uživatelé teď byli upgradováni na **okamžité obnovení**.
 
 Nový model pro okamžité obnovení nabízí následující vylepšení funkcí:
 
 * Možnost používat snímky provedené jako součást úlohy zálohování, která je k dispozici pro obnovení bez čekání na dokončení přenosu dat do trezoru. Před aktivací obnovení zkracuje dobu čekání na kopírování snímků do trezoru.
 * Omezí časy zálohování a obnovení tím, že se snímky ponechají místně, a to ve výchozím nastavení po dobu dvou dnů. Tato výchozí hodnota uchování snímku se dá nakonfigurovat na libovolnou hodnotu od 1 do 5 dní.
-* Podporuje velikosti disků až do 32 TB. Změna velikosti disků se Azure Backup nedoporučuje.
+* Podporuje velikosti disků až do 32 TB. Změny velikosti disků nedoporučuje Azure Backup.
 * Podporuje SSD úrovně Standard disky spolu s HDD úrovně Standard disky a SSD úrovně Premium disky.
 * Možnost při obnovení použít pro původní účty úložiště (na disk) nespravované virtuální počítače Tato možnost je k dispozici i v případě, že virtuální počítač obsahuje disky distribuované mezi účty úložiště. Zrychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
 * Pro zálohování virtuálních počítačů, které používají nespravované disky Premium v účtech úložiště s okamžitým obnovením, doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
@@ -61,6 +61,8 @@ Přírůstkové snímky se ukládají v účtu úložiště virtuálního počí
 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 V Azure Portal uvidíte pole přidané v podokně **zásady zálohování virtuálního počítače** v části **okamžité obnovení** . Dobu uchování snímku můžete změnit v podokně **zásady zálohování virtuálního počítače** pro všechny virtuální počítače přidružené ke konkrétním zásadám zálohování.
 
 ![Možnost okamžitého obnovení](./media/backup-azure-vms/instant-restore-capability.png)
@@ -76,7 +78,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Výchozí uchování snímku pro každou zásadu je nastavené na dva dny. Uživatel může hodnotu změnit na minimálně 1 a maximálně na pět dní. Pro týdenní zásady je uchování snímku pevně nastavené na pět dní.
+Výchozí uchování snímku pro každou zásadu je nastavené na dva dny. Hodnotu můžete změnit na minimálně 1 a maximálně na pět dní. Pro týdenní zásady je uchování snímku pevně nastavené na pět dní.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -108,11 +110,21 @@ Pokud je typ obnovení "snímke and trezor", obnoví se automaticky z místního
 
 Nový model nepovoluje odstranění bodu obnovení (2), pokud se neodstraní snímek (Tier1). Doporučujeme, abyste naplánujete dobu uchování bodu obnovení (2), která je delší než doba uchování snímku.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč je můj snímek existující i po nastavení Doba uchování v zásadách zálohování?
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Proč můj snímek ještě existuje i po nastavení Doba uchování v zásadách zálohování?
 
-Pokud má bod obnovení snímek a je to nejnovější RP dostupné, bude se uchovávat až do další úspěšné zálohy. To je v souladu se zásadami navrženými pro uvolňování paměti (GC) ještě dnes, že pro případ, že se na virtuálním počítači ještě nezdařily všechny zálohy, má vždy k dispozici alespoň jeden nejnovější RP. V normálních scénářích se RPs vyčistí po dobu jejich vypršení platnosti po dobu 24 hodin.
+Pokud má bod obnovení snímek a je to nejnovější dostupný bod obnovení, bude uložen až do další úspěšné zálohy. To je v souladu s určenými zásadami uvolňování paměti (GC). Pro případ, že se v důsledku problému na virtuálním počítači nezdařila žádná z následujících záloh, má za to, že je vždy k dispozici alespoň jeden nejnovější bod obnovení. V normálních scénářích se body obnovení vyčistí po dobu maximálně 24 hodin po vypršení platnosti. Ve výjimečných scénářích může být jeden nebo dva další snímky na základě těžšího zatížení systému uvolňování paměti (GC).
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>Proč se mi zobrazují další snímky než moje zásady uchovávání informací?
+
+V případě, že jsou zásady uchovávání informací nastaveny jako "1", můžete najít dva snímky. Tato vyhláška vyžaduje, aby alespoň jeden nejnovější bod obnovení byl vždy k dispozici v případě, že všechny následné zálohy selžou kvůli problému na virtuálním počítači. To může způsobit přítomnost dvou snímků.<br></br>Pokud je tedy zásada určena pro snímky "n", můžete v časech najít snímky "n + 1". Dále můžete vyhledat snímky "n + 1 + 2", pokud dojde ke zpoždění v uvolňování paměti. K tomu může dojít ve vzácných časech v těchto případech:
+- Vyčistíte snímky, které jsou v minulosti uchovávány.
+- Uvolňování paměti (GC) v back-endu je zatíženo velkým zatížením.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nepotřebuji funkci okamžitého obnovení. Je možné ho zakázat?
 
 Funkce okamžitého obnovení je povolená pro všechny uživatele a nedá se zakázat. Uchování snímku můžete snížit minimálně na jeden den.
+
+### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Je bezpečné restartovat virtuální počítač během procesu přenosu (což může trvat mnoho hodin)? Bude restartovat přerušení virtuálního počítače nebo zpomalit přenos?
+
+Ano, je to bezpečné a rychlost přenosu dat nijak neovlivní.
 

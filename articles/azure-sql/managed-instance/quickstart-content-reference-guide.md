@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708565"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690953"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Začínáme se službou Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,16 +44,16 @@ Jako první krok byste museli vytvořit svou první spravovanou instanci SQL pom
   > - Z místní sítě můžete také použít expresní směrování nebo připojení typu Site-to-site, ale tyto přístupy jsou z rozsahu těchto rychlých startů.
   > - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
-Jako alternativu k ručnímu vytvoření spravované instance SQL můžete použít [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell s správce prostředků šablonou](scripts/create-powershell-azure-resource-manager-template.md)nebo [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) pro vytvoření skriptu a automatizaci tohoto procesu.
+Jako alternativu k ručnímu vytvoření spravované instance SQL můžete použít [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell s správce prostředků šablonou](./create-template-quickstart.md)nebo [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) pro vytvoření skriptu a automatizaci tohoto procesu.
 
 ### <a name="migrate-your-databases"></a>Migrace databází
 
-Po vytvoření spravované instance SQL a konfiguraci přístupu můžete začít s migrací SQL Serverch databází. Pokud máte ve zdrojové databázi, kterou chcete migrovat, nepodporované funkce, může migrace selhat. Aby nedocházelo k chybám a kontrolovali kompatibilitu, můžete pomocí [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) analyzovat databáze na SQL Server a vyhledat všechny problémy, které by mohly blokovat migraci do spravované instance SQL, jako je například existence [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) nebo více souborů protokolu. Pokud tyto problémy vyřešíte, vaše databáze jsou připravené k migraci do spravované instance SQL. [Pomocník pro experimentování s databázemi](/sql/dea/database-experimentation-assistant-overview) je další užitečný nástroj, který může zaznamenat vaše zatížení na SQL Server a přehrát je na spravované instanci SQL, abyste zjistili, že při migraci na SPRAVOVANOU instanci SQL dojde k problémům s výkonem.
+Po vytvoření spravované instance SQL a konfiguraci přístupu můžete začít s migrací SQL Serverch databází. Pokud máte ve zdrojové databázi, kterou chcete migrovat, nepodporované funkce, může migrace selhat. Aby nedocházelo k chybám a kontrolovali kompatibilitu, můžete pomocí [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) analyzovat databáze na SQL Server a vyhledat všechny problémy, které by mohly blokovat migraci do spravované instance SQL, jako je například existence [FileStream](/sql/relational-databases/blob/filestream-sql-server) nebo více souborů protokolu. Pokud tyto problémy vyřešíte, vaše databáze jsou připravené k migraci do spravované instance SQL. [Pomocník pro experimentování s databázemi](/sql/dea/database-experimentation-assistant-overview) je další užitečný nástroj, který může zaznamenat vaše zatížení na SQL Server a přehrát je na spravované instanci SQL, abyste zjistili, že při migraci na SPRAVOVANOU instanci SQL dojde k problémům s výkonem.
 
 Jakmile si jste jisti, že můžete migrovat databázi do spravované instance SQL, můžete použít možnosti obnovení nativního SQL Server k obnovení databáze do spravované instance SQL ze `.bak` souboru. Tuto metodu můžete použít k migraci databází z SQL Server databázového stroje nainstalovaného místně nebo Azure Virtual Machines. Rychlý Start najdete v tématu [obnovení ze zálohy do spravované instance SQL](restore-sample-database-quickstart.md). V tomto rychlém startu obnovíte `.bak` soubor uložený v úložišti objektů BLOB v Azure pomocí `RESTORE` příkazu Transact-SQL.
 
 > [!TIP]
-> Pokud chcete použít `BACKUP` příkaz Transact-SQL k vytvoření zálohy databáze v úložišti objektů BLOB v Azure, přečtěte si téma [SQL Server zálohování na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+> Pokud chcete použít `BACKUP` příkaz Transact-SQL k vytvoření zálohy databáze v úložišti objektů BLOB v Azure, přečtěte si téma [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 Tyto rychlé starty umožňují rychle vytvářet, konfigurovat a obnovovat zálohy databáze na spravovanou instanci SQL. V některých scénářích je třeba přizpůsobit nebo automatizovat nasazení spravované instance SQL a požadovaného síťového prostředí. Tyto scénáře budou popsány níže.
 
@@ -72,7 +72,7 @@ Dříve zmíněné rychlé starty vám umožní rychle nastavit spravovanou inst
 Chcete-li však migrovat provozní databázi nebo dokonce vývoj/testovací databáze, které chcete použít pro některý test výkonnosti, je nutné zvážit použití některých dalších technik, například:
 
 - Testování výkonu – je třeba změřit metriky výkonu na zdrojovém SQL Server instanci a porovnat je s metrikami výkonu cílové spravované instance SQL, kam jste migrovali databázi. Přečtěte si další informace o [osvědčených postupech pro porovnání výkonu](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online migrace – s nativním `RESTORE` popsaným v tomto článku musíte počkat, až budou databáze obnoveny (a zkopírovány do úložiště objektů BLOB v Azure, pokud se tam ještě neuložily). To způsobí určité výpadky aplikace, zejména pro větší databáze. K přesunu provozní databáze použijte [službu migrace dat (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) k migraci databáze s minimálními prostoji. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do obnovované databáze spravované instance SQL. Tímto způsobem můžete rychle přepnout aplikaci ze zdroje do cílové databáze s minimálními výpadky.
+- Online migrace – s nativním `RESTORE` popsaným v tomto článku musíte počkat, až budou databáze obnoveny (a zkopírovány do úložiště objektů BLOB v Azure, pokud se tam ještě neuložily). To způsobí určité výpadky aplikace, zejména pro větší databáze. K přesunu provozní databáze použijte [službu migrace dat (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json) k migraci databáze s minimálními prostoji. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do obnovované databáze spravované instance SQL. Tímto způsobem můžete rychle přepnout aplikaci ze zdroje do cílové databáze s minimálními výpadky.
 
 Přečtěte si další informace o [doporučeném procesu migrace](migrate-to-instance-from-sql-server.md).
 

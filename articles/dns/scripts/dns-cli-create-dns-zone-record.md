@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1b0f08132ace5de7108702b61e89517fd28b4673
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 348b7911930711a25c88595b6360341ef6e00468
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494906"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954422"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Ukázkový skript Azure CLI: Vytvoření zóny a záznamu DNS
 
@@ -45,9 +45,8 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Vytvoří zónu Azure DNS. |
 | [az network dns record-set a add-record](/cli/azure/network/dns/record-set) | Přidá do zóny DNS záznam *A*. |
 | [az network dns record-set list](/cli/azure/network/dns/record-set) | Vypíše všechny sady záznamů *A* v zóně DNS. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
-
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).

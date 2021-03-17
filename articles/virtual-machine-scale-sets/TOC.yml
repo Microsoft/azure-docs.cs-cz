@@ -63,6 +63,8 @@
       items:
         - name: Vytvoření škálovací sady virtuálních počítačů
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: Vytvoření a Správa sady škálování virtuálních počítačů
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: Vytvoření škálovací sady z vlastní image virtuálního počítače
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: Instalace aplikací do škálovací sady
@@ -93,9 +95,6 @@
           href: ./scripts/powershell-single-av-zone-scale-set.md
         - name: Vytvoření zónově redundantní škálovací sady
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Azure Resource Manager
@@ -108,44 +107,44 @@
         - name: Dostupnost
           href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: Společné umístění
-          href: co-location.md
+          href: ../virtual-machines/co-location.md
         - name: Výkon sítě
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Správa domén selhání ve škálovacích sadách
           href: virtual-machine-scale-sets-manage-fault-domains.md
       maintainContext: true
     - name: Image
-      href: shared-image-galleries.md
+      href: ../virtual-machines/shared-image-galleries.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
     - name: Velikosti a typy virtuálních počítačů
       href: ../virtual-machines/sizes.md
       items:
         - name: Obecné účely
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: B-Series s možností zvládání výkonových špiček
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: Optimalizované z hlediska výpočetních služeb
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Optimalizované z hlediska paměti
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: Virtuální procesory s omezením
-              href: ../virtual-machines/windows/constrained-vcpu.md
+              href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: Optimalizované z hlediska úložiště
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: Optimalizované z hlediska GPU
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: Nastavení ovladačů NVIDIA GPU
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: Vysokovýkonné výpočetní prostředí
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,32 +164,37 @@
     - name: Schválené linuxové distribuce
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
+    - name: Režimy orchestrace (Preview)
+      href: virtual-machine-scale-sets-orchestration-modes.md
     - name: Údržba a aktualizace
-      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-      maintainContext: true
-    - name: Režimy orchestrace
-      href: orchestration-modes.md
+      items:
+        - name: Přehled
+          href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+          maintainContext: true
+        - name: Automatický upgrade rozšíření (Preview)
+          href: ../virtual-machines/automatic-extension-upgrade.md
+          maintainContext: true
     - name: Diskové úložiště
       items:
         - name: Spravované disky
-          href: ../virtual-machines/windows/managed-disks-overview.md
+          href: ../virtual-machines/managed-disks-overview.md
           maintainContext: true
         - name: Výběr typu disku
-          href: ../virtual-machines/windows/disks-types.md
+          href: ../virtual-machines/disks-types.md
           maintainContext: true
         - name: Šifrování
-          href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
+          href: ../virtual-machines/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: Výkon Premium Storage
-          href: ../virtual-machines/windows/premium-storage-performance.md
+          href: ../virtual-machines/premium-storage-performance.md
           maintainContext: true
         - name: Disky OS s kratší platností
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: Cíle škálovatelnosti pro disky
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: Zálohování a zotavení po havárii pro disky
-          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
           maintainContext: true
     - name: Sítě
       href: ../virtual-machines/network-overview.md
@@ -201,22 +205,23 @@
     - name: Zabezpečení
       items:
         - name: Zabezpečení a zásady
-          href: ../virtual-machines/windows/security-policy.md
+          href: ../virtual-machines/security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Standardní hodnoty zabezpečení Azure
           href: security-baseline.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: Monitorování
-      href: ../azure-monitor/insights/monitor-vm-azure.md
+      href: ../azure-monitor/vm/monitor-vm-azure.md
       maintainContext: true
     - name: Aspekty nasazování
       items:
         - name: Kvóty virtuálních procesorů
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Volání PUT pro operace vytváření nebo aktualizace
+      href: ../virtual-machines/put-calls-create-or-update.md
+      maintainContext: true
     - name: Nejčastější dotazy týkající se škálovacích sad
       href: virtual-machine-scale-sets-faq.md
 - name: Postup
@@ -277,6 +282,8 @@
             - name: Použití klíčů spravovaných zákazníkem
               displayName: 'SSE, CMK, encrypt'
               href: ../virtual-machines/image-version-encryption.md
+            - name: Registrace aplikace pro sdílení
+              href: share-images-across-tenants.md
     - name: Vytvoření šablony
       items:
         - name: Další informace o šablonách škálovacích sad
@@ -299,7 +306,7 @@
             - name: Použití webu Azure Portal
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: Pokročilé automatické škálování
-              href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              href: ../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md
               maintainContext: true
             - name: Řešení potíží s automatickým škálováním
               href: virtual-machine-scale-sets-troubleshoot.md
@@ -329,7 +336,17 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Převod šablony škálovací sady pro použití spravovaného disku
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Použití spotové instance
+        - name: Využití vyhrazených hostitelů
+          items:
+            - name: Přehled
+              href: ../virtual-machines/dedicated-hosts.md
+            - name: Rozhraní příkazového řádku
+              href: ../virtual-machines/linux/dedicated-hosts-cli.md
+            - name: PowerShell
+              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
+            - name: Portál
+              href: ../virtual-machines/dedicated-hosts-portal.md
+        - name: Virtual Machines na místě Azure
           href: use-spot.md
     - name: Spravovat
       items:
@@ -343,8 +360,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Síťové služby pro škálovací sady
           href: virtual-machine-scale-sets-networking.md
-        - name: Automatické upgrady operačního systému
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Automatické upgrady image operačního systému
+          items:
+            - name: Automatické upgrady operačního systému
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: Řízení údržby
+              items:
+                - name: Přehled (Preview)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Preview)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: Automatické opravy instancí
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Ochrana instancí
@@ -353,18 +378,6 @@
           href: virtual-machine-scale-sets-scale-in-policy.md
         - name: Ukončení oznámení při odstranění
           href: virtual-machine-scale-sets-terminate-notification.md
-        - name: Galerie sdílených imagí
-          items:
-            - name: Přehled
-              href: shared-image-galleries.md
-            - name: Rozhraní příkazového řádku
-              href: shared-images-cli.md
-            - name: PowerShell
-              href: shared-images-powershell.md
-            - name: Sdílení imagí napříč tenanty
-              href: share-images-across-tenants.md
-            - name: Řešení potíží se sdílenými imagemi
-              href: troubleshooting-shared-images.md
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
           href: proximity-placement-groups.md
         - name: Vertikální škálování ve škálovací sadě
@@ -394,6 +407,9 @@
       href: /rest/api/virtualmachinescalesets/
     - name: Šablony Azure
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

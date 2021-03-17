@@ -3,7 +3,7 @@ title: Použití sady SDK ke konfiguraci spravovaných identit na virtuálním p
 description: Podrobné pokyny pro konfiguraci a používání spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí sady Azure SDK.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/28/2017
-ms.author: markvi
+ms.date: 11/03/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9472f9fa2084a1665b4a103df359fd3b4f19d6ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41d1be35d2add24cbbc171c3da3bd4d06bce4337
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609040"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359659"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurace virtuálního počítače se spravovanými identitami pro prostředky Azure pomocí sady Azure SDK
 

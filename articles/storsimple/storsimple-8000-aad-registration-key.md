@@ -1,25 +1,25 @@
 ---
-title: Ověřování Azure AD pro StorSimple 8000 v Device Manager
+title: Ověřování Azure AD pro StorSimple 8000 v Správce zařízení
 description: Vysvětluje, jak používat ověřování na základě AAD pro vaši službu, generovat nový registrační klíč a provádět ruční registraci zařízení.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 92a9370ec866b6d2c14988871e3c742a40679885
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077796"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805036"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>Použití ověřování modul Active Directory (AD) pro StorSimple
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>Použití ověřování pomocí Azure Active Directory (AD) pro StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
 
-Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Do data Služba StorSimple Device Manager používala službu Access Control (ACS) k ověření služby na zařízení StorSimple. Mechanismus ACS bude brzy zastaralý a nahrazený ověřováním Azure Active Directory (AAD). Další informace najdete v následujících oznámeních o vyřazení služby ACS a použití ověřování AAD.
+Služba StorSimple Správce zařízení běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Do data Služba StorSimple Správce zařízení používala službu Access Control (ACS) k ověření služby na zařízení StorSimple. Mechanismus ACS bude brzy zastaralý a nahrazený ověřováním Azure Active Directory (AAD). Další informace najdete v následujících oznámeních o vyřazení služby ACS a použití ověřování AAD.
 
 - [Budoucnost služby Azure ACS je Azure Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/12/the-future-of-azure-acs-is-azure-active-directory/)
 - [Nadcházející změny v Access Control Service Microsoftu](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/)
@@ -54,7 +54,7 @@ Pokud používáte zařízení řady StorSimple 8000, pomocí následující tab
 
 | Pokud je vaše zařízení spuštěné| Proveďte následující akci                                    |
 |--------------------------|------------------------|
-| Aktualizace 5 nebo novější a zařízení je offline. <br> Zobrazí se upozornění, že adresa URL není na seznamu povolených.|1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication).<br>2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>3. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizace 5 nebo novější a zařízení je offline. <br> Zobrazí se upozornění, že adresa URL není schválená.|1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication).<br>2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>3. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizujte 5 nebo novější a zařízení online.| Nevyžaduje se žádná akce.                                       |
 | Aktualizace 4 nebo starší a zařízení je offline. |1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br>2. [Stáhněte si Update 5 přes katalogový server](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [použijte aktualizaci Update 5 prostřednictvím metody hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>5. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizace 4 nebo starší a zařízení je online. |Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br> Nainstalujte aktualizaci 5 prostřednictvím Azure Portal.              |
@@ -62,7 +62,7 @@ Pokud používáte zařízení řady StorSimple 8000, pomocí následující tab
 
 ## <a name="aad-based-registration-keys"></a>Registrační klíče založené na AAD
 
-Počínaje aktualizací 5 pro zařízení řady StorSimple 8000 se použijí nové registrační klíče založené na AAD. Pomocí registračních klíčů zaregistrujete službu StorSimple Device Manager se zařízením.
+Počínaje aktualizací 5 pro zařízení řady StorSimple 8000 se použijí nové registrační klíče založené na AAD. Pomocí registračních klíčů zaregistrujete službu StorSimple Správce zařízení se zařízením.
 
 Nové registrační klíče služby AAD nemůžete použít, pokud používáte zařízení řady StorSimple 8000 se systémem Update 4 nebo starším (zahrnuje aktuálně aktivované zařízení).
 V tomto scénáři je nutné znovu vygenerovat registrační klíč služby. Po opětovném vygenerování klíče se nový klíč použije k registraci všech dalších zařízení. Starý klíč již není platný.
@@ -75,7 +75,7 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Vygenerování registračního klíče služby AAD
 
-1. V **StorSimple Device Manager**přejít na **klíče** **pro &gt; správu** . K vyhledání _klíčů_můžete použít také panel hledání.
+1. V **StorSimple Správce zařízení** přejít na **klíče** **pro &gt; správu** . K vyhledání _klíčů_ můžete použít také panel hledání.
     
 2. Klikněte na **vygenerovat klíč**.
 
@@ -91,4 +91,3 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o tom, jak nasadit [zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md).
-

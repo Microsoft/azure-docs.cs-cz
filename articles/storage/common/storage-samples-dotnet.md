@@ -3,16 +3,16 @@ title: Ukázky Azure Storage pomocí .NET | Microsoft Docs
 description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště .NET.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 760fedd94ef682b183eede1215186de973e9a216
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010490"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359777"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 .NET
 
@@ -66,7 +66,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Objekt blob
+### <a name="blob"></a>Blob
 
 :::row:::
    :::column span="":::
@@ -147,7 +147,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 :::row:::
    :::column span="":::
       [Nahrání souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
@@ -320,7 +320,7 @@ Chcete-li zobrazit kompletní ukázkové knihovny .NET, přečtěte si:
 
 Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
 Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
 
@@ -335,5 +335,6 @@ Informace o ukázkách pro jiné jazyky:
 
 * Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
 * Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
+* JavaScript/Node.js: [ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
+* C++: [Azure Storage ukázky pomocí jazyka C++](storage-samples-c-plus-plus.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

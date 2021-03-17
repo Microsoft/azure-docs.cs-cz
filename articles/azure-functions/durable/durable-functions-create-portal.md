@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081912"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí Azure Portal
@@ -40,19 +40,12 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 
 3. V konzole Kudu vyberte **ladit Console**a pak **cmd**.
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Konzola ladění Kudu":::
-
-3. Měla by se zobrazit adresářová struktura souboru vaší aplikace Function App. Přejděte do složky `site/wwwroot`. Odtud můžete `package.json` soubor nahrát přetažením a přetažením do okna adresář souborů. Ukázka `package.json` je následující:
-
-    ```json
-    {
-      "dependencies": {
-        "durable-functions": "^1.3.1"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Funkce platformy Functions zvolit Kudu"
       }
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Nahrávání package.jsKudu":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Funkce platformy Functions zvolit Kudu":::
 
 4. Po `package.json` nahrání spusťte `npm install` příkaz z konzoly pro vzdálené spuštění Kudu.
 
@@ -64,7 +57,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 
 1. Do vyhledávacího pole na stránce **Nová funkce** zadejte `durable` a pak zvolte šablonu **Durable Functions http Starter** .
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Vybrat Durable Functions HTTP Starter":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Funkce platformy Functions zvolit Kudu":::
 
 1. Pro **nový název funkce** zadejte `HttpStart` a pak vyberte **vytvořit funkci**.
 

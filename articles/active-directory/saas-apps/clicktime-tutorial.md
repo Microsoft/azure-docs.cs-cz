@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549326"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 
@@ -27,7 +27,7 @@ Integrace ClickTime s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k ClickTime (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci ClickTime do služby Azure AD, musíte př
 
 4. Do vyhledávacího pole zadejte **ClickTime**, vyberte **ClickTime** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![ClickTime v seznamu výsledků](common/search-new-app.png)
+    ![ClickTime v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ClickTime, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování ClickTime](#configure-clicktime-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování ClickTime](#configure-clicktime-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření ClickTime Test User](#create-clicktime-test-user)** – pro Britta Simon v ClickTime, který je propojený s reprezentací uživatele Azure AD.
@@ -93,24 +93,24 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML proveďte následující kroky:
 
     ![Informace o jednotném přihlašování v doméně ClickTime a adresách URL](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL: `https://app.clicktime.com/sp/`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
     ```
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -124,29 +124,29 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-clicktime-single-sign-on"></a>Konfigurace jednotného přihlašování ClickTime
+### <a name="configure-clicktime-single-sign-on"></a>Nakonfigurovat ClickTime jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu ClickTime společnosti jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na **Předvolby**a pak klikněte na **nastavení zabezpečení**.
+1. Na panelu nástrojů v horní části klikněte na **Předvolby** a pak klikněte na **nastavení zabezpečení**.
 
-1. V části konfigurace **předvoleb jednotného přihlašování** proveďte následující kroky:
-   
+1. V části konfigurace **jednoho Sign-On předvoleb** proveďte následující kroky:
+
     ![Nastavení zabezpečení](./media/clicktime-tutorial/tic777280.png "Nastavení zabezpečení")
-   
-    a.  Vyberte možnost **Povolení** přihlášení pomocí jednotného přihlašování (SSO) s **Azure AD**.
-   
+
+    a.  Vyberte možnost **Povolení** přihlášení pomocí jednotného Sign-On (SSO) se službou **Azure AD**.
+
     b. V textovém poli **koncového bodu poskytovatele identity** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
-   
+
     c.  Otevřete v **programu Poznámkový blok** **certifikát s kódováním Base-64** stažený z Azure Portal, zkopírujte ho a vložte ho do textového pole **certifikát X. 509** .
-   
+
     d.  Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -159,21 +159,21 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ClickTime.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **ClickTime**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **ClickTime**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **ClickTime**.
 
@@ -205,38 +205,37 @@ V případě ClickTime je zřizování ručním úkolem.
 
 1. Přihlaste se ke svému tenantovi **ClickTime** .
 
-1. Na panelu nástrojů v horní části klikněte na **Společnost**a pak klikněte na **lidé**.
-   
-    ![People](./media/clicktime-tutorial/tic777282.png "People")
+1. Na panelu nástrojů v horní části klikněte na **Společnost** a pak klikněte na **lidé**.
+
+    ![Snímek obrazovky s vybraným podnikem a lidmi zobrazuje klienta ClickTime.](./media/clicktime-tutorial/tic777282.png "People")
 
 1. Klikněte na **Přidat osobu**.
-   
+
     ![Přidat osobu](./media/clicktime-tutorial/tic777283.png "Přidat osobu")
 
 1. V části nová osoba proveďte následující kroky:
-   
-    ![People](./media/clicktime-tutorial/tic777284.png "People")
-   
+
+    ![Snímek obrazovky se zobrazí část přidat osobu, kde můžete přidat informace v tomto kroku.](./media/clicktime-tutorial/tic777284.png "People")
+
     a.  Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je **Britta Simon**. 
-  
+
     b.  Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je **brittasimon \@ contoso.com**.
-       
+
     > [!NOTE]
     > Pokud chcete, můžete nastavit další vlastnosti objektu New Person.
-   
+
     c.  Klikněte na **Uložit**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ClickTime, měli byste se automaticky přihlásit k ClickTime, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ClickTime, měli byste se automaticky přihlásit k ClickTime, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

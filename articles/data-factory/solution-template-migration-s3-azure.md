@@ -1,22 +1,18 @@
 ---
 title: Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
 description: Naučte se používat šablonu řešení k migraci dat ze služby Amazon S3 pomocí tabulky externích ovládacích prvků k uložení seznamu oddílů v AWS S3 pomocí Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414764"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361979"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
 
@@ -109,23 +105,23 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
 3. Pokud chcete Azure Data Lake Storage Gen2 šablonu, přejdete na **migrace historických dat z AWS S3** . Zadejte připojení do tabulky externích ovládacích prvků, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Mějte na paměti, že externí řídicí tabulka a uložená procedura odkazují na stejné připojení.
 
-    ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Snímek obrazovky, který zobrazuje migraci historických dat z AWS S3 na šablonu Azure Data Lake Storage Gen2.](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. Vyberte **Použít tuto šablonu**.
 
-    ![Použít tuto šablonu](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko použít tuto šablonu.](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. Uvidíte, že se vytvořily dva kanály a 3 datové sady, jak je znázorněno v následujícím příkladu:
 
-    ![Kontrola kanálu](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![Snímek obrazovky zobrazující dva kanály a tři datové sady, které byly vytvořeny pomocí šablony.](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+6. Přejděte do kanálu "BulkCopyFromS3" a vyberte **ladit**, zadejte **parametry**. Pak vyberte **Finish** (Dokončit).
 
-    ![Klikněte na * * ladit * *.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat ladění a zadat parametry před výběrem dokončit.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. Zobrazí se výsledky podobné následujícímu příkladu:
 
-    ![Kontrola výsledku](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![Snímek obrazovky zobrazující vrácené výsledky](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Aby šablona zkopírovala změněné soubory pouze ze služby Amazon S3 do Azure Data Lake Storage Gen2
@@ -182,7 +178,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Kontrola kanálu](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+6.  Přejděte do kanálu "DeltaCopyFromS3" a vyberte **ladit** a zadejte **parametry**. Pak vyberte **Finish** (Dokončit).
 
     ![Klikněte na * * ladit * *.](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 
@@ -192,7 +188,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
 8. Můžete také kontrolovat výsledky z tabulky Control pomocí dotazu *"SELECT * from s3_partition_delta_control_table"*, zobrazí se výstup podobný následujícímu příkladu:
 
-    ![Kontrola výsledku](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![Snímek obrazovky, který zobrazuje výsledky z tabulky ovládacích prvků po spuštění dotazu.](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>Další kroky
 

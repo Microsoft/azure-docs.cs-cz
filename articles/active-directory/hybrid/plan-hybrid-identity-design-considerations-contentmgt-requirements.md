@@ -16,15 +16,15 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57990fda7475b95bd6582fa5a495ac8d24aa55d5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64918442"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408528"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na správu obsahu pro vaše řešení hybridní identity
-Porozumění požadavkům na správu obsahu pro vaši firmu může přímo ovlivnit vaše rozhodnutí, které řešení hybridní identity použít. Při šíření více zařízení a schopnost uživatelů přinášet si vlastní zařízení ([BYOD](https://aka.ms/byodcg)) musí společnost chránit svoje vlastní data, ale také musí zachovat ochranu osobních údajů uživatele. Když má uživatel vlastní zařízení, může mít také několik přihlašovacích údajů, které se budou střídat podle používané aplikace. Je důležité odlišit, který obsah byl vytvořen pomocí osobních přihlašovacích údajů, oproti těm vytvořeným pomocí podnikových přihlašovacích údajů. Vaše řešení identity by mělo být schopné komunikovat s Cloud Services a zajistit tak bezproblémové prostředí koncovým uživatelům a zároveň zajistit jejich soukromí a zvýšit ochranu před únikem dat. 
+Porozumění požadavkům na správu obsahu pro vaši firmu může přímo ovlivnit vaše rozhodnutí, které řešení hybridní identity použít. Při šíření více zařízení a schopnost uživatelů přinášet si vlastní zařízení ([BYOD](/mem/intune/fundamentals/byod-technology-decisions)) musí společnost chránit svoje vlastní data, ale také musí zachovat ochranu osobních údajů uživatele. Když má uživatel vlastní zařízení, může mít také několik přihlašovacích údajů, které se budou střídat podle používané aplikace. Je důležité odlišit, který obsah byl vytvořen pomocí osobních přihlašovacích údajů, oproti těm vytvořeným pomocí podnikových přihlašovacích údajů. Vaše řešení identity by mělo být schopné komunikovat s Cloud Services a zajistit tak bezproblémové prostředí koncovým uživatelům a zároveň zajistit jejich soukromí a zvýšit ochranu před únikem dat. 
 
 Vaše řešení identity budou využívat různé technické ovládací prvky, aby bylo možné poskytovat správu obsahu, jak je znázorněno na následujícím obrázku:
 
@@ -69,4 +69,3 @@ Při plánování řešení hybridní identity zajistěte, aby byly na základě
 
 ## <a name="see-also"></a>Viz také
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
-

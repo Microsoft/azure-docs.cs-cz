@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 43cafb8c5efe0581fe7c4136aa41980b3d817be2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733397"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981404"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (.NET)
 
@@ -48,6 +48,8 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET:
 > [!NOTE]
 > IoT Hub podporuje mnoho platforem a jazyků zařízení, včetně jazyků C, Java, Python a JavaScriptu, prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny k připojení zařízení k Azure IoT Hub najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) .
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 * Visual Studio
@@ -77,16 +79,15 @@ V této části upravíte aplikaci zařízení, kterou jste vytvořili v části
 1. Do třídy **program** přidejte následující metodu:
 
     ```csharp
-    private static async void SendToBlobAsync()
+    private static async Task SendToBlobAsync(string fileName)
     {
-        string fileName = "image.jpg";
         Console.WriteLine("Uploading file: {0}", fileName);
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
-        {
-            await deviceClient.UploadToBlobAsync(fileName, sourceData);
-        }
+        await deviceClient.GetFileUploadSasUriAsync(new FileUploadSasUriRequest { BlobName = fileName });
+        var blob = new CloudBlockBlob(sas.GetBlobUri());
+        await blob.UploadFromFileAsync(fileName);
+        await deviceClient.CompleteFileUploadAsync(new FileUploadCompletionNotification { CorrelationId = sas.CorrelationId, IsSuccess = true });
 
         watch.Stop();
         Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
@@ -98,7 +99,7 @@ V této části upravíte aplikaci zařízení, kterou jste vytvořili v části
 1. Do metody **Main** přidejte následující řádek, a to hned před `Console.ReadLine()` :
 
     ```csharp
-    SendToBlobAsync();
+    await SendToBlobAsync("image.jpg");
     ```
 
 > [!NOTE]
@@ -114,15 +115,15 @@ V tomto článku vytvoříte back-end službu pro příjem zpráv s oznámením 
 
 V této části napíšete konzolovou aplikaci .NET, která přijímá zprávy s oznámením o nahrávání souborů z IoT Hub.
 
-1. V aktuálním řešení sady Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V poli **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aktuálním řešení sady Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V poli **vytvořit nový projekt** vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. Pojmenujte projekt *ReadFileUploadNotification*. V části **řešení**vyberte **Přidat do řešení**. Vyberte **Vytvořit** a vytvořte projekt.
+1. Pojmenujte projekt *ReadFileUploadNotification*. V části **řešení** vyberte **Přidat do řešení**. Vyberte **Vytvořit** a vytvořte projekt.
 
     ![Konfigurace projektu ReadFileUploadNotification v aplikaci Visual Studio](./media/iot-hub-csharp-csharp-file-upload/read-file-upload-project-configure.png)
 
 1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt **ReadFileUploadNotification** a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet**. Vyhledejte a vyberte **Microsoft. Azure. Devices**a pak vyberte **nainstalovat**.
+1. V **nástroji Správce balíčků NuGet** vyberte **Procházet**. Vyhledejte a vyberte **Microsoft. Azure. Devices** a pak vyberte **nainstalovat**.
 
     Tento krok stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) v projektu **ReadFileUploadNotification** .
 
@@ -180,7 +181,7 @@ Nyní můžete spustit aplikace.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na své řešení a vyberte **nastavit projekty po spuštění**.
 
-1. V **okně běžné vlastnosti**  >  **spouštěný projekt**vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **ReadFileUploadNotification** a **SimulatedDevice**. Výběrem **OK** uložte změny.
+1. V **okně běžné vlastnosti**  >  **spouštěný projekt** vyberte **více projektů po spuštění** a pak vyberte akci **spuštění** pro **ReadFileUploadNotification** a **SimulatedDevice**. Výběrem **OK** uložte změny.
 
 1. Stiskněte klávesu **F5**. Obě aplikace by měly být spuštěny. Měli byste vidět, že nahrávání bylo dokončeno v jedné aplikaci konzoly a zpráva oznámení o odeslání obdržená jinou konzolovou aplikací. K vyhledání přítomnosti nahraného souboru ve vašem účtu Azure Storage můžete použít [Azure Portal](https://portal.azure.com/) nebo Průzkumník serveru sady Visual Studio.
 
@@ -198,4 +199,4 @@ V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT 
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/quickstart-linux.md)

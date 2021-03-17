@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954651"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079287"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Celkové náklady na vlastnictví (vlastnictví) s Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Součástí návrhu služby Azure Cosmos DB jsou podrobné zásady správného řízení víceklientské architektury a prostředků. Tento návrh umožňuje provoz služby Azure Cosmos DB s výrazně nižšími náklady a pomáhá uživatelům ušetřit. Služba Azure Cosmos DB v současné době podporuje více než 280 zákaznických úloh na jednom počítači (tato hustota se neustále zvyšuje) a tisíce zákaznických úloh v rámci jednoho clusteru. Zajišťuje vyrovnávání zatížení replik zákaznických úloh napříč různými počítači v clusteru a napříč několika clustery v rámci datacentra. Další informace najdete v tématu [Azure Cosmos DB: vložení hranice globálně distribuovaných databází](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Z důvodu zásad správného řízení prostředků, víceklientské architektury a nativní integrace se zbytkem infrastruktury Azure je Azure Cosmos DB v průměru 4 až 6 časů levnějších než MongoDB, Cassandra nebo jiná OSS NoSQL spuštěná v IaaS a až 10krát levnější než databázové moduly běžící místně. Podívejte se na dokument s [celkovými náklady na vlastnictví cloudové služby databáze NoSQL (bez nich)](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
@@ -26,7 +27,7 @@ Na rozdíl od cloudové databázové služby Azure Cosmos DB nevytvořili a sest
 
 Model zřizování Azure Cosmos DB bez serveru eliminuje nutnost nadměrného poskytování infrastruktury databáze. Azure Cosmos DB prostředky se poskytují bez nutnosti specializované konfigurace nebo licencování. V důsledku toho se Azure Cosmos DBé aplikace, které jsou v porovnání s databázemi OSS NoSQL, dají spouštět s využitím až 70 procent celkových nákladů na úspory vlastnictví. Příklady některých příkladů v reálném čase najdete v tématu [použití zákazníka – případy](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Mezi další výhody Azure Cosmos DB cenového modelu patří:
 
-* **Skvělé hodnota ceny:** Poskytovatelé trhu, zákazníci a partneři potvrdili větší hodnotu všech funkcí, které Azure Cosmos DB nabízí mnohem nižší cenu v porovnání s tím, co můžou zákazníci získat při implementaci těchto řešení na svých vlastních nebo jiných dodavatelích. Databáze funkce, jako jsou globální distribuce, víceúrovňové, jasně definované a intuitivní modely konzistence, automatické indexování výrazně zjednodušují Azure Cosmos DB bez jakýchkoli složitosti, režie nebo výpadků.
+* **Skvělé hodnota ceny:** Poskytovatelé trhu, zákazníci a partneři potvrdili větší hodnotu všech funkcí, které Azure Cosmos DB nabízí mnohem nižší cenu v porovnání s tím, co můžou zákazníci získat při implementaci těchto řešení na svých vlastních nebo jiných dodavatelích. Tato databáze zahrnuje globální distribuci, zápisy ve více oblastech, jasně definované a intuitivní modely konzistence. automatické indexování se výrazně zjednodušují s Azure Cosmos DB bez jakýchkoli složitosti, režie nebo výpadků.
 
 * **Není nutná žádná Správa NoSQL DevOps:** Když Azure Cosmos DB nikdo nepotřebuje ke správě nasazení používat DevOps, proveďte údržbu, škálování nebo opravu. Můžete spouštět všechny úlohy, které byste měli udělat s hostovaným clusterem OSS NoSQL, který je hostovaný místně nebo v cloudové infrastruktuře.
 
@@ -40,7 +41,7 @@ Model zřizování Azure Cosmos DB bez serveru eliminuje nutnost nadměrného po
 
 * **Platíte za hodinu:** U rozsáhlých úloh, které se potřebují škálovat kdykoli v čase, se účtují jenom hodiny. Zatížení aplikace se obvykle liší v době v roce a podle dat, která se dotazují. Díky Azure Cosmos DB můžete škálovat nahoru nebo dolů podle potřeby a platit jenom za to, co potřebujete. U místních nebo IaaSch systémů se nemůžete shodovat s tímto modelem, protože neexistuje způsob, jak vyřadit z provozu hardware každou hodinu. V takových případech můžete v průměru s Azure Cosmos DB ušetřit od 10 do 14 krát.
 
-* **Získáte mnoho funkcí zdarma:** V Azure Cosmos DB jsou úlohy zápisu podstatně levnější v porovnání s alternativním databázovými službami. Azure Cosmos DB navíc nabízí funkce, jako je například [automatické indexování](indexing-policies.md), [hodnota TTL (Time to Live)](time-to-live.md), [Změna kanálu](change-feed.md) a jiné bez jakýchkoli dalších poplatků, což je obvykle nákladná na jinou službu databáze.
+* **Získáte mnoho funkcí zdarma:** V Azure Cosmos DB jsou úlohy zápisu podstatně levnější v porovnání s alternativním databázovými službami. Azure Cosmos DB navíc nabízí funkce, jako je například [automatické indexování](index-policy.md), [hodnota TTL (Time to Live)](time-to-live.md), [Změna kanálu](change-feed.md) a jiné bez jakýchkoli dalších poplatků, což je obvykle nákladná na jinou službu databáze.
 
 * **Používá jednotnou měnu pro různé úlohy:** Na rozdíl od alternativních nabídek v Azure Cosmos DB nemusíte segmentovat úlohy, například na čtení a zápis. Nebo zřízení propustnosti u jednotlivých typů úloh, které jsou propustnost čtení a propustnost zápisu. V Azure Cosmos DB je zajištěná propustnost vyhrazena pomocí sjednocené a normalizované měny z hlediska jednotek požadavků nebo RU/s. Azure Cosmos DB nenutí, abyste přiřadili k vašim úlohám prioritu, prováděli plánování kapacity nebo platíte za každý typ kapacity samostatně. Takový přístup umožňuje snadno zamezit stejné RU/s mezi různými typy operací a úloh.
 
@@ -63,6 +64,6 @@ Model zřizování Azure Cosmos DB bez serveru eliminuje nutnost nadměrného po
 * Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
 * Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na dotazy](./optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na účty Cosmos s více oblastmi](optimize-cost-regions.md)
 * Přečtěte si další informace o [celkovém vlastnictví cloudové služby databáze NoSQL (bez nich)](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf) .

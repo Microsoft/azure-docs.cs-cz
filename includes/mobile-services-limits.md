@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: be87d2af698bb71573952943b5ddc3f0910a3333
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85838920"
 ---
 | Úroveň | Free | Basic | Standard |
@@ -22,7 +22,7 @@ ms.locfileid: "85838920"
 | Naplánované úlohy |Omezeně |Zahrnuje |Zahrnuje |
 | Azure SQL Database (povinné) <br/>Pro další kapacitu se použijí standardní sazby. |zahrnuto 20 MB |zahrnuto 20 MB |zahrnuto 20 MB |
 | Kapacita procesoru |60 minut za den |Unlimited |Unlimited |
-| Přenos odchozích dat |165 MB za den (denní výměna) |Zahrnuje |Zahrnuje |
+| Odchozí přenos dat |165 MB za den (denní výměna) |Zahrnuje |Zahrnuje |
 
 Další informace o limitech a cenách najdete v tématu [ceny za Azure Mobile Services](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300728"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359150"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
 
@@ -39,7 +39,7 @@ Než zřídíte vyhrazené zařízení HSM, zákazníci nejdřív budou muset vy
 
 ### <a name="subnets"></a>Podsítě
 
-Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vyhrazené HSM se nasadí do podsítě ve virtuální síti. Každé vyhrazené zařízení HSM, které je nasazeno v podsíti zákazníka, obdrží privátní IP adresu z této podsítě. Podsíť, ve které je nasazené zařízení HSM, musí být explicitně delegovaná na službu: Microsoft. HardwareSecurityModules/dedicatedHSMs. Tím je uděleno určité oprávnění ke službě HSM pro nasazení do podsítě. Delegování na vyhrazené HSM ukládá určitá omezení zásad v podsíti. Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr) aktuálně nejsou v delegovaných podsítích podporovány. V důsledku toho se po delegování podsítě na vyhrazené HSM dá použít jenom k nasazení prostředků HSM. Nasazení jakýchkoli dalších zákaznických prostředků do podsítě se nezdaří.
+Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vyhrazené HSM se nasadí do podsítě ve virtuální síti. Každé vyhrazené zařízení HSM, které je nasazeno v podsíti zákazníka, obdrží privátní IP adresu z této podsítě. Podsíť, ve které je nasazené zařízení HSM, musí být explicitně delegovaná na službu: Microsoft. HardwareSecurityModules/dedicatedHSMs. Tím je uděleno určité oprávnění ke službě HSM pro nasazení do podsítě. Delegování na vyhrazené HSM ukládá určitá omezení zásad v podsíti. V delegovaných podsítích nejsou aktuálně podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě) a trasy User-Defined (udr). V důsledku toho se po delegování podsítě na vyhrazené HSM dá použít jenom k nasazení prostředků HSM. Nasazení jakýchkoli dalších zákaznických prostředků do podsítě se nezdaří.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute bránu
@@ -54,7 +54,7 @@ Další informace o možnostech připojení najdete v tématu [VPN Gateway možn
 > [!NOTE]
 > V současné době ExpressRoute není možnost připojení k místním prostředkům. Měla by se také poznamenat, že brána ExpressRoute použitá jak je popsaná výše, není pro připojení k místní infrastruktuře.
 
-### <a name="point-to-site-vpn"></a>Point-to-site VPN
+### <a name="point-to-site-vpn"></a>SÍŤ VPN typu Point-to-site
 
 Virtuální privátní síť typu Point-to-site je nejjednodušší forma zabezpečeného připojení k jednomu koncovému bodu v místním prostředí. To může být důležité, pokud máte v úmyslu mít pro vyhrazené HSM založené na Azure jenom jednu pracovní stanici pro správu.
 
@@ -66,7 +66,7 @@ Virtuální privátní síť typu Site-to-site umožňuje zabezpečenou komunika
 
 Typická architektura nasazení pro vyhrazený modul HARDWAROVÉho zabezpečení spustí jednu virtuální síť a odpovídající podsíť, ve které se vytvoří a zřídí zařízení HSM. V rámci stejné oblasti může být pro součásti aplikací, které by používaly vyhrazený modul HARDWAROVÉho zabezpečení, také další virtuální sítě a podsítě. Pokud chcete povolit komunikaci mezi těmito sítěmi, používáme Virtual Network partnerský vztah.
 
-### <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
+### <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
 Pokud je v oblasti více virtuálních sítí, které potřebují přístup k prostředkům dalších zdrojů, můžete k vytváření zabezpečených komunikačních kanálů mezi nimi použít Virtual Network partnerský vztah.  Partnerský vztah virtuálních sítí poskytuje nejen zabezpečenou komunikaci, ale taky zajišťuje připojení s nízkou latencí a velkou šířkou pásma mezi prostředky v Azure.
 
@@ -83,7 +83,7 @@ U globálně distribuovaných aplikací nebo pro regionální scénáře převze
 > [!NOTE]
 > Globální partnerské vztahy virtuálních sítí nejsou v současné době k dispozici ve scénářích připojení pro různé oblasti s vyhrazeným HSM a měli byste místo toho použít službu VPN Gateway. 
 
-![globální virtuální síť](media/networking/global-vnet.png)
+![Diagram znázorňuje dvě oblasti, které jsou propojeny dvěma branami V P N. Každá oblast obsahuje partnerské virtuální sítě.](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>Další kroky
 

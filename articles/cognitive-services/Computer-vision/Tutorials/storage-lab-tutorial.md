@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: f350aae32909de2b9be4384d921f7507a158f6ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b51234ff121071de27ec8c91425f4a769c8d833e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243849"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96008782"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
-V tomto kurzu se dozvíte, jak integrovat službu Azure Počítačové zpracování obrazu do webové aplikace pro generování metadat pro nahrané obrázky. To je užitečné pro scénáře [správy digitálních prostředků (pro PŘEhradování)](../Home.md#computer-vision-for-digital-asset-management) , jako třeba když společnost chce rychle vygenerovat popisné titulky nebo vyhledat klíčová slova pro všechny její obrázky.
+V tomto kurzu se dozvíte, jak integrovat službu Azure Počítačové zpracování obrazu do webové aplikace pro generování metadat pro nahrané obrázky. To je užitečné pro scénáře [správy digitálních prostředků (pro PŘEhradování)](../overview.md#computer-vision-for-digital-asset-management) , jako třeba když společnost chce rychle vygenerovat popisné titulky nebo vyhledat klíčová slova pro všechny její obrázky.
 
 Úplný Průvodce aplikací najdete v [Azure Storage a Cognitive Services testovacím prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) na GitHubu a tento kurz v podstatě pokrývá cvičení 5 testovacího prostředí. Můžete chtít vytvořit úplnou aplikaci v rámci každého kroku, ale pokud chcete zjistit, jak Počítačové zpracování obrazu do existující webové aplikace, přečtěte si také téma.
 

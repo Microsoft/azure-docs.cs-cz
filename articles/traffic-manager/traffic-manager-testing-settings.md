@@ -2,20 +2,20 @@
 title: Ověření nastavení Azure Traffic Manager
 description: V tomto článku se dozvíte, jak ověřit nastavení Traffic Manager a testovat metodu směrování provozu.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.author: duau
+ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186992"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022322"
 ---
 # <a name="verify-traffic-manager-settings"></a>Ověření nastavení Traffic Manageru
 
@@ -33,7 +33,7 @@ Následující příklady vám pomůžou otestovat profil Traffic Manager.
 
 1. Otevřete příkaz nebo spusťte příkazový řádek Windows PowerShellu jako správce.
 2. Zadejte `ipconfig /flushdns` , chcete-li vyprázdnit mezipaměť překladače DNS.
-3. Zadejte příkaz `nslookup <your Traffic Manager domain name>`. Například následující příkaz zkontroluje název domény s předponou *MyApp. contoso.*
+3. Zadejte `nslookup <your Traffic Manager domain name>`. Například následující příkaz zkontroluje název domény s předponou *MyApp. contoso.*
 
     ```powershell
     nslookup myapp.contoso.trafficmanager.net

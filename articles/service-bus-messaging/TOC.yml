@@ -7,7 +7,7 @@
     - name: Porovnání služeb zasílání zpráv
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Použití služby Service Bus se službou Java Message Service (JMS) 2.0 (Preview)
+    - name: 'Použití Service Bus se službou Java Message Service (JMS) 2,0'
       href: how-to-use-java-message-service-20.md
 - name: Rychlé starty
   items:
@@ -15,7 +15,7 @@
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -26,18 +26,24 @@
               href: service-bus-resource-manager-namespace-queue.md
         - name: Odesílání a příjem zpráv
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-get-started-with-queues.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-queues.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-queues-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-queues.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-queues.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
-            - name: Python
-              href: service-bus-python-how-to-use-queues.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-queues.md
+        - name: Odesílání a příjem zpráv (staré verze/balíčky)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
     - name: Odběry a témata služby Service Bus
       items:
         - name: Vytvoření témat a odběrů
@@ -50,39 +56,66 @@
               href: service-bus-resource-manager-namespace-topic.md
         - name: Publikování a přihlášení k odběru zpráv
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-how-to-use-topics-subscriptions.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-topics-subscriptions.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-topics-subscriptions.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-topics-subscriptions.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
-            - name: Python
-              href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
+        - name: Publikování a přihlášení k odběru zpráv (starší verze/balíčky)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
 - name: Kurzy
   items:
     - name: Aktualizace inventáře
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Reakce na události prostřednictvím Event Gridu
-      href: service-bus-to-event-grid-integration-example.md
+    - name: Zpracování událostí služby Service Bus přes Event Grid
+      items:
+        - name: Azure Logic Apps
+          href: service-bus-to-event-grid-integration-example.md
+        - name: Azure Functions
+          href: service-bus-to-event-grid-integration-function.md
 - name: ukázky
   items:
     - name: Ukázky služby Service Bus
       href: service-bus-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
+    - name: 'Fronty, témata a odběry'
+      href: service-bus-queues-topics-subscriptions.md
+    - name: Akce a filtry témat
+      href: topic-filters.md
     - name: Zasílání zpráv úrovně Premium
       href: service-bus-premium-messaging.md
     - name: Srovnání front Azure a front Service Bus
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: Optimalizace výkonu
       href: service-bus-performance-improvements.md
+    - name: metadata
+      items:
+        - name: Replikace zpráv a federace mezi oblastmi
+          href: service-bus-federation-overview.md
+        - name: Úlohy a aplikace replikace zpráv
+          href: service-bus-federation-replicator-functions.md
+        - name: Vzorce úloh replikace zpráv
+          href: service-bus-federation-patterns.md
+        - name: Nakonfigurované úlohy replikace
+          href: service-bus-federation-configuration.md
+        - name: Replikace událostí mezi entitami Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: Replikace zpráv do služby Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Získávání zpráv ze služby Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: Geografické zotavení po havárii a geografická replikace
       href: service-bus-geo-dr.md
     - name: "Asynchronní zasílání zpráv a\_vysoká dostupnost"
@@ -93,6 +126,8 @@
       href: service-bus-throttling.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Ověřování a autorizace
           href: service-bus-authentication-and-authorization.md
           items:
@@ -108,27 +143,35 @@
                   href: service-bus-managed-service-identity.md
                 - name: Ověření z aplikace
                   href: authenticate-application.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: service-bus-messaging-security-controls.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Zabezpečení sítě
           href: network-security.md
+    - name: Integrace s dalšími službami
+      items:
+        - name: Integrace Azure Service Bus a Azure Event Grid
+          href: service-bus-to-event-grid-integration-concept.md
 - name: Návody
   items:
+    - name: Přesun mezi oblastmi
+      href: move-across-regions.md
     - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
       href: deprecate-service-bus-management.md
     - name: Vytvoření oboru názvů
       href: service-bus-create-namespace-portal.md
     - name: Vývoj
       items:
+        - name: Nastavení filtrů a akcí předplatného
+          href: service-bus-filter-examples.md
         - name: Zpracování zpráv
           items:
             - name: 'Fronty, témata a odběry'
               href: service-bus-queues-topics-subscriptions.md
-            - name: Entity služby Java Message Service (JMS) 2.0 (Preview)
+            - name: 'Entity služby zprávy Java (JMS) 2,0'
               href: java-message-service-20-entities.md
+            - name: JMS (Java Message Service) – guide.md pro vývojáře
+              href: jms-developer-guide.md
             - name: 'Zprávy, datové části a serializace'
               href: service-bus-messages-payloads.md
             - name: 'Přenosy zpráv, zámky a vyrovnání'
@@ -137,10 +180,6 @@
               href: message-sequencing.md
             - name: Vypršení platnosti zpráv (hodnota TTL)
               href: message-expiration.md
-            - name: Zpracování zpráv pomocí Azure Event Gridu
-              href: service-bus-to-event-grid-integration-concept.md
-        - name: Akce a filtry témat
-          href: topic-filters.md
         - name: Migrace z oborů názvů Standard na obory názvů Premium
           href: service-bus-migrate-standard-premium.md
         - name: Dělené fronty a témata
@@ -179,18 +218,20 @@
               href: service-bus-auto-forwarding.md
             - name: Zpracování transakcí
               href: service-bus-transactions.md
-        - name: Kompletní trasování a diagnostika
-          href: service-bus-end-to-end-tracing.md
         - name: Sestavení vícevrstvé aplikace Service Bus
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: Odesílání a příjem zpráv z front (starší verze azure-sb)
-          href: service-bus-nodejs-how-to-use-queues.md
-        - name: Publikování a přihlášení k odběru zpráv(starší verze azure-sb)
-          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: Migrace
       items:
         - name: Migrace z ActiveMQ do služby Azure Service Bus
           href: migrate-jms-activemq-to-servicebus.md
+    - name: Monitor
+      items:
+        - name: Kompletní trasování a diagnostika
+          href: service-bus-end-to-end-tracing.md
+        - name: Diagnostické protokoly
+          href: service-bus-diagnostic-logs.md
+        - name: Azure Monitor metriky
+          href: service-bus-metrics-azure-monitor.md
     - name: Integrace
       items:
         - name: Integrace s RabbitMQ
@@ -201,12 +242,8 @@
           href: automate-update-messaging-units.md
         - name: Použití Azure PowerShellu ke zřizování entit
           href: service-bus-manage-with-ps.md
-        - name: Monitorování služby Service Bus s využitím Azure Monitoru
-          href: service-bus-metrics-azure-monitor.md
         - name: Knihovny pro správu služby Service Bus
           href: service-bus-management-libraries.md
-        - name: Protokoly prostředků
-          href: service-bus-diagnostic-logs.md
         - name: Pozastavení a opětovná aktivace entit zasílání zpráv
           href: entity-suspend.md
         - name: Použití Service Bus Exploreru k provádění operací s daty ve službě Service Bus
@@ -242,16 +279,38 @@
   items:
     - name: .NET
       items:
-        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Migrace z Microsoft.Azure.ServiceBus na Azure.Messaging.ServiceBus
+          href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md'
+        - name: Azure.Messaging.ServiceBus (.NET Standard – nejnovější)
+          href: /dotnet/api/azure.messaging.servicebus
         - name: Microsoft.Azure.ServiceBus (.NET Standard)
           href: /dotnet/api/microsoft.azure.servicebus
+        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
+          href: /dotnet/api/microsoft.servicebus.messaging
     - name: Java
-      href: /java/api/overview/azure/servicebus
+      items:
+        - name: Migrace z azure-servicebus na azure-messaging-servicebus
+          href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
+        - name: azure-messaging-servicebus (nejnovější)
+          href: /java/api/overview/azure/servicebus?view=azure-java-preview
+        - name: azure-servicebus
+          href: /java/api/overview/azure/servicebus
     - name: Python
-      href: /python/api/overview/azure/servicebus?view=azure-python
-    - name: Node.js
-      href: /javascript/api/overview/azure/service-bus
+      items:
+        - name: Migrace z azure-servicebus verze 0.50 na verzi 7
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md'
+        - name: azure-servicebus verze 7
+          href: /python/api/overview/azure/servicebus?view=azure-python-preview
+        - name: azure-servicebus verze 0.50
+          href: /python/api/overview/azure/servicebus
+    - name: JavaScript
+      items:
+        - name: Migrace z verze 1 na verzi 7
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md'
+        - name: azure/service-bus verze 7
+          href: /javascript/api/overview/azure/service-bus?view=azure-node--preview
+        - name: azure/service-bus verze 1
+          href: /javascript/api/overview/azure/service-bus
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby
@@ -266,10 +325,13 @@
       href: /azure/templates/microsoft.servicebus/allversions
     - name: Kvóty
       href: service-bus-quotas.md
-    - name: Syntaxe SQLFilter
+    - name: Syntaxe filtrů SQL pro pravidla předplatného
       href: service-bus-messaging-sql-filter.md
-    - name: Syntaxe SQLRuleAction
+    - name: Syntaxe akcí SQL pro pravidla předplatného
       href: service-bus-messaging-sql-rule-action.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

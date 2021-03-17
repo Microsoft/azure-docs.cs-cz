@@ -1,4 +1,4 @@
-- name: Internet věcí Azure
+- name: "Dokumentace k\_Internetu věcí v Azure"
   href: index.yml
 - name: Přehled
   items:
@@ -10,6 +10,8 @@
       href: iot-services-and-technologies.md
     - name: Možnosti pomoci a podpory
       href: iot-support-help.md
+    - name: Glosář IoT
+      href: iot-glossary.md
 - name: Zabezpečení
   items:
     - name: Doporučení
@@ -22,3 +24,53 @@
       href: iot-security-architecture.md
     - name: Zabezpečené nasazení
       href: iot-security-deployment.md
+- name: Zdroje a prostředky
+  items:
+    - name: Služby Azure IoT
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: Služba IoT Hub Device Provisioning
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ./index.yml
+        - name: Akcelerátory řešení IoT
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Sady Azure IoT SDK
+      items:
+        - name: Sady SDK pro služby IoT
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: Sady SDK pro zařízení IoT
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: Ukázky Azure IoT
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: Platforma iOS
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Katalog zařízení Azure Certified for IoT
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Centrum pro vývojáře Azure IoT
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT Tools pro VS Code
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Nástroj Azure IoT Explorer
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: Nástroj iothub-diagnostics
+      href: 'https://github.com/Azure/iothub-diagnostics'

@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721247"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000993"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úkoly pro jednotlivé přispěvatele v rámci vědeckého zpracování týmových dat
 
 Toto téma popisuje úkoly, které *jednotlivé přispěvatelé* dokončí k nastavení projektu v rámci [vědeckého zpracování týmových dat](overview.md) (TDSP). Cílem je pracovat ve společném týmovém prostředí, které se bude standardizovat na TDSP. TDSP je navržený tak, aby pomohla zdokonalit spolupráci a týmovou výuku. Přehled rolí personálu a jejich přidružených úloh, které jsou zpracovávány týmem pro datové vědy, se standardizací na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
 
-Následující diagram znázorňuje úkoly, které Project jednotliví přispěvatelé (odborníci přes data) dokončí k nastavení svého týmového prostředí. Pokyny, jak spustit projekt datové vědy v rámci TDSP, najdete v tématu [provádění projektů pro datové vědy](project-execution.md). 
+Následující diagram znázorňuje úkoly, které Project jednotliví přispěvatelé (odborníci přes data) dokončí k nastavení svého týmového prostředí. Pokyny, jak spustit projekt datové vědy v rámci TDSP, najdete v tématu [provádění projektů pro datové vědy](./agile-development.md). 
 
 ![Jednotlivé úlohy přispěvatele](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
@@ -46,7 +46,7 @@ Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počít
 
 - Předplatné Azure.
 - V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
-- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
 - Informace o službě Azure File Storage pro všechny služby Azure File Storage, které potřebujete připojit k vašemu DSVM. 
@@ -55,7 +55,7 @@ Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počít
 
 Chcete-li pracovat s místními úložišti a nasdílet změny až do sdíleného týmu a úložišť projektů, nejprve zkopírujte nebo *naklonujte* úložiště do místního počítače. 
 
-1. V Azure DevOps na stránce se souhrnem projektu svého týmu na adrese *https: \/ / \<server name> / \<organization name> / \<team name> *například **https: \/ /dev.Azure.com/DataScienceUnit/myTeam**.
+1. V Azure DevOps na stránce se souhrnem projektu svého týmu na adrese *https: \/ / \<server name> / \<organization name> / \<team name>* například **https: \/ /dev.Azure.com/DataScienceUnit/myTeam**.
    
 1. V levém navigačním panelu vyberte úložiště **a v horní** části stránky vyberte úložiště, které chcete klonovat.
    
@@ -103,4 +103,3 @@ Zde jsou odkazy na podrobné popisy dalších rolí a úloh, které jsou definov
 - [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
 - [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
 - [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
-

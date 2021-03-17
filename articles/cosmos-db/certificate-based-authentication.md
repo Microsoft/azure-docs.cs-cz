@@ -3,18 +3,20 @@ title: Ověřování na základě certifikátů pomocí Azure Cosmos DB a služb
 description: Naučte se konfigurovat identitu Azure AD pro ověřování pomocí certifikátů pro přístup k klíčům z Azure Cosmos DB.
 author: voellm
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: ea8d4180a6e820e72f5ca0ce7e7acaf13348ae67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84cbc681d0974e91561daf8918dff389226fa7aa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262493"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553965"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátu pro identitu Azure AD pro přístup k klíčům z Azure Cosmos DB účtu
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ověřování pomocí certifikátů umožňuje ověřování klientské aplikace pomocí Azure Active Directory (Azure AD) a klientského certifikátu. Ověřování pomocí certifikátů můžete provádět na počítači, na kterém potřebujete identitu, jako je místní počítač nebo virtuální počítač v Azure. Vaše aplikace potom může číst Azure Cosmos DB klíčů bez použití klíčů přímo v aplikaci. Tento článek popisuje, jak vytvořit ukázkovou aplikaci Azure AD, nakonfigurovat ji pro ověřování na základě certifikátů, přihlaste se k Azure pomocí nové identity aplikace a pak načte klíče z vašeho účtu Azure Cosmos. Tento článek používá Azure PowerShell k nastavení identit a poskytuje ukázkovou aplikaci v jazyce C#, která ověřuje a přistupuje k klíčům z vašeho účtu Azure Cosmos.  
 
@@ -22,13 +24,13 @@ Ověřování pomocí certifikátů umožňuje ověřování klientské aplikace
 
 * Nainstalujte [nejnovější verzi](/powershell/azure/install-az-ps) Azure PowerShell.
 
-* Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+* Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 ## <a name="register-an-app-in-azure-ad"></a>Registrace aplikace ve službě Azure AD
 
 V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služby Azure AD. Tato aplikace se později používá ke čtení klíčů z účtu Azure Cosmos DB. K registraci aplikace použijte následující postup: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace**. 
 
@@ -63,7 +65,7 @@ V tomto kroku nainstalujete modul Azure AD PowerShell. Tento modul je nutný k z
    Set-AzContext $context 
    ```
 
-1. Instalace a import modulu [AzureAD](/powershell/module/azuread/?view=azureadps-2.0)
+1. Instalace a import modulu [AzureAD](/powershell/module/azuread/)
 
    ```powershell
    Install-Module AzureAD
@@ -72,13 +74,13 @@ V tomto kroku nainstalujete modul Azure AD PowerShell. Tento modul je nutný k z
 
 ## <a name="sign-into-your-azure-ad"></a>Přihlaste se k Azure AD
 
-Přihlaste se k Azure AD, kde jste zaregistrovali aplikaci. Pomocí příkazu Connect-AzureAD se přihlaste k účtu a v automaticky otevíraném okně zadejte svoje přihlašovací údaje k účtu Azure. 
+Přihlaste se k Azure AD, kde jste zaregistrovali aplikaci. Pomocí příkazu Connect-AzureAD se přihlaste k účtu, v místním okně zadejte svoje přihlašovací údaje účtu Azure. 
 
 ```powershell
 Connect-AzureAD 
 ```
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 Otevřete jinou instanci Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell a spusťte následující příkazy k vytvoření certifikátu podepsaného svým držitelem a přečtěte si klíč přidružený k certifikátu:
 
@@ -103,7 +105,7 @@ Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovk
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Konfigurace účtu Azure Cosmos pro použití nové identity
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte k účtu Azure Cosmos, otevřete okno **řízení přístupu (IAM)** .
 
@@ -119,13 +121,13 @@ Přihlašovací údaje založené na certifikátech můžete přidružit k klien
 
 V registraci aplikace Azure pro klientskou aplikaci:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete podokno Azure **Active Directory** , v podokně **Registrace aplikací** a otevřete ukázkovou aplikaci, kterou jste vytvořili v předchozím kroku. 
 
 1. Vyberte **certifikáty & tajných** kódů a pak **Nahrajte certifikát**. Vyhledejte soubor certifikátu, který jste vytvořili v předchozím kroku, a nahrajte ho.
 
-1. Vyberte možnost **Přidat**. Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
+1. Vyberte **Přidat**. Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
 
 ## <a name="access-the-keys-from-powershell"></a>Přístup k klíčům z PowerShellu
 
@@ -148,7 +150,7 @@ V tomto kroku se přihlásíte k Azure pomocí aplikace a vytvořeného certifik
       -Type "Keys"
    ```
 
-V předchozím příkazu se zobrazí primární a sekundární hlavní klíč vašeho účtu Azure Cosmos. Můžete zobrazit protokol aktivit účtu Azure Cosmos a ověřit, zda požadavek GET Keys byl úspěšný a událost je iniciována aplikací "dotazů".
+V předchozím příkazu se zobrazí primární a sekundární primární klíč vašeho účtu Azure Cosmos. Můžete zobrazit protokol aktivit účtu Azure Cosmos a ověřit, zda požadavek GET Keys byl úspěšný a událost je iniciována aplikací "dotazů".
 
 :::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Ověření volání Get Keys ve službě Azure AD":::
 
@@ -236,7 +238,7 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-Tento skript vytvoří výstup primárních a sekundárních hlavních klíčů, jak je znázorněno na následujícím snímku obrazovky:
+Tento skript vytvoří výstup primárních a sekundárních primárních klíčů, jak je znázorněno na následujícím snímku obrazovky:
 
 :::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="výstup aplikace CSharp":::
 

@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/30/2020
-ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 11/17/2020
+ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565310"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741803"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
 
@@ -21,9 +21,9 @@ Znalostní báze je funkce služby Azure Kognitivní hledání, která uchováv�
 
 Kanál přijímá nestrukturované textové a obrázkové obsahy, aplikuje AI s využitím Cognitive Services (například při zpracování OCR a přirozeného jazyka) a zapisuje nové struktury a informace, které dříve neexistovaly. Jedním z fyzických artefaktů vytvořených kanálem je [znalostní báze](knowledge-store-concept-intro.md), ke kterému můžete přistupovat prostřednictvím nástrojů pro účely analýzy a průzkumu obsahu.
 
-V tomto rychlém startu spojíte služby a data v cloudu Azure a vytvoříte úložiště znalostí. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** na portálu, aby se všechno načetlo dohromady. Konečným výsledkem je původní textový obsah a obsah generovaný AI, který můžete zobrazit na portálu (Průzkumník služby[Storage](knowledge-store-view-storage-explorer.md)).
+V tomto rychlém startu spojíte služby a data v cloudu Azure a vytvoříte úložiště znalostí. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** na portálu, aby se všechno načetlo dohromady. Konečným výsledkem je původní textový obsah a obsah generovaný AI, který můžete zobrazit na portálu ([Průzkumník služby Storage](knowledge-store-view-storage-explorer.md)).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -31,7 +31,7 @@ Než začnete, musíte mít následující:
 
 + Služba Azure Kognitivní hledání. [Vytvořte službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
-+ Účet Azure Storage s [úložištěm objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/).
++ Účet Azure Storage s [úložištěm objektů BLOB](../storage/blobs/index.yml).
 
 > [!NOTE]
 > V tomto rychlém startu se také pro AI používá [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) . Vzhledem k tomu, že úloha je tak malá, Cognitive Services po dobu bezplatného zpracování po dobu až 20 transakcí klepnuli na pozadí. To znamená, že můžete dokončit toto cvičení, aniž byste museli vytvořit další prostředek Cognitive Services.
@@ -42,7 +42,7 @@ V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, ab
 
 1. [Stáhněte si HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Tato data jsou data recenze pro hotely uložená v souboru CSV (pocházející z Kaggle.com) a obsahují 19 kusů zpětné vazby od zákazníků k jednomu hotelu. 
 
-1. [Vytvořte si účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) nebo v rámci aktuálního předplatného [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Použijete službu Azure Storage pro import nezpracovaného obsahu a úložiště Knowledge v konečném výsledku.
+1. [Vytvořte si účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal) nebo v rámci aktuálního předplatného [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Použijete službu Azure Storage pro import nezpracovaného obsahu a úložiště Knowledge v konečném výsledku.
 
    + Vyberte typ účtu **StorageV2 (pro obecné účely v2)** .
 
@@ -56,7 +56,7 @@ V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, ab
 
     ![Vytvoření kontejneru objektů blob Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Vytvoření kontejneru objektů blob Azure")
 
-1. Před ukončením stránek služby Blob Storage otevřete pomocí odkazu v levém navigačním podokně stránku **přístupových klíčů** . Získání připojovacího řetězce pro načtení dat z úložiště objektů BLOB Připojovací řetězec vypadá podobně jako v následujícím příkladu:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. Před ukončením stránek služby Blob Storage otevřete pomocí odkazu v levém navigačním podokně stránku **přístupových klíčů** . Získání připojovacího řetězce pro načtení dat z úložiště objektů BLOB Připojovací řetězec vypadá podobně jako v následujícím příkladu: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 Nyní jste připraveni na přesun průvodce **importem dat** .
 
@@ -70,15 +70,15 @@ Nyní jste připraveni na přesun průvodce **importem dat** .
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
-1. V části **připojit k vašim datům**vyberte **úložiště objektů BLOB v Azure**, vyberte účet a kontejner, který jste vytvořili. 
+1. V části **připojit k vašim datům** vyberte **úložiště objektů BLOB v Azure**, vyberte účet a kontejner, který jste vytvořili. 
 
-1. Jako **název**zadejte `hotel-reviews-ds` .
+1. Jako **název** zadejte `hotel-reviews-ds` .
 
-1. V části **režim analýzy**vyberte **text s oddělovači**a potom zaškrtněte políčko **první řádek obsahuje záhlaví** . Ujistěte se, že **znak oddělovače** je čárka (,).
+1. V části **režim analýzy** vyberte **text s oddělovači** a potom zaškrtněte políčko **první řádek obsahuje záhlaví** . Ujistěte se, že **znak oddělovače** je čárka (,).
 
-1. Do pole **připojovací řetězec**vložte připojovací řetězec, který jste zkopírovali ze stránky **přístupové klíče** v Azure Storage.
+1. Do pole **připojovací řetězec** vložte připojovací řetězec, který jste zkopírovali ze stránky **přístupové klíče** v Azure Storage.
 
-1. Do pole **kontejnery**zadejte název kontejneru objektů blob, který uchovává data.
+1. Do pole **kontejnery** zadejte název kontejneru objektů blob, který uchovává data.
 
     Stránka by měla vypadat podobně jako na následujícím snímku obrazovky.
 
@@ -94,11 +94,11 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
 1. Rozbalte položku **Přidat rozšíření**.
 
-1. Do **dovednosti název**zadejte `hotel-reviews-ss` .
+1. Do **dovednosti název** zadejte `hotel-reviews-ss` .
 
-1. V **poli zdrojová data**zadejte **reviews_text**.
+1. V **poli zdrojová data** zadejte **reviews_text**.
 
-1. Pro **úroveň podrobností obohacení**vyberte **stránky (5000 znaků bloků dat)** .
+1. Pro **úroveň podrobností obohacení** vyberte **stránky (5000 znaků bloků dat)** .
 
 1. Vyberte tyto dovednosti v rozpoznávání:
     + **Extrakce klíčových frází**
@@ -126,7 +126,7 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
 V tomto kroku průvodce nakonfigurujete index pro volitelné dotazy fulltextového vyhledávání. Průvodce zobrazí ukázkový zdroj dat pro odvození polí a datových typů. Stačí vybrat atributy pro požadované chování. Například **atribut, který lze** načíst, umožní službě Search vracet hodnotu pole, zatímco **vyhledávání** umožní fulltextové vyhledávání v poli.
 
-1. Jako **název indexu**zadejte `hotel-reviews-idx` .
+1. Jako **název indexu** zadejte `hotel-reviews-idx` .
 
 1. U atributů přijměte výchozí výběry: **Retrievable** načístelné a **prohledávatelné** pro nová pole, která vytváří kanál.
 
@@ -140,9 +140,9 @@ V tomto kroku průvodce nakonfigurujete index pro volitelné dotazy fulltextové
 
 V tomto kroku průvodce nakonfigurujete indexer, který se bude načítat zdrojem dat, dovednosti a indexem, který jste definovali v předchozím kroku průvodce.
 
-1. Jako **název**zadejte `hotel-reviews-idxr` .
+1. Jako **název** zadejte `hotel-reviews-idxr` .
 
-1. Pro **plán**ponechte **výchozí nastavení**.
+1. Pro **plán** ponechte **výchozí nastavení**.
 
 1. Kliknutím na **Odeslat** spusťte indexer. V tomto kroku dojde k extrakci dat, indexování a uplatnění odbornosti rozpoznávání.
 

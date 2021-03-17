@@ -1,17 +1,21 @@
 ---
-ms.openlocfilehash: 773c7827b6abda5d15c52950eb78193a91da93d8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: cabb7e263757787e74acfd576d25ccbce0dc58b4
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691758"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633399"
 ---
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+  > [!NOTE]
+  > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění. 
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+        > [!TIP]
+        > Při instalaci nástrojů Azure IoT se může zobrazit výzva k instalaci Docker. Bez obav tuto výzvu ignorujte.
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * [Python 3](https://www.python.org/downloads/) (3.6.9 nebo novější), [PIP 3](https://pip.pypa.io/en/stable/installing/) a volitelně [venv](https://docs.python.org/3/library/venv.html).
 * Pokud jste nedokončili rychlé zprovoznění [Najít pohyb a generovat události](../../../detect-motion-emit-events-quickstart.md) , nezapomeňte [nastavit prostředky Azure](../../../detect-motion-emit-events-quickstart.md#set-up-azure-resources).
 
 > [!TIP]
-> Při instalaci nástrojů Azure IoT se může zobrazit výzva k instalaci Docker. Výzvu můžete ignorovat.
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](../../../troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.

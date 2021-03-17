@@ -3,20 +3,20 @@ title: Microsoft Teams na virtuálním počítači s Windows – Azure
 description: Jak používat Microsoft Teams na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509599"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743113"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
 >[!IMPORTANT]
->Optimalizace médií pro týmy není podporovaná Microsoft 365mi státními prostředími.
+>Optimalizace médií pro týmy je podporovaná pro Microsoft 365 vládní organizace (RSZ) a GCC-High prostředí. Pro GCC-High nebo DoD není podporována optimalizace médií pro týmy.
 
 >[!NOTE]
 >Optimalizace médií pro Microsoft Teams je k dispozici pouze pro stolního klienta Windows na počítačích s Windows 10. Optimalizace médií vyžadují desktopový klient Windows verze 1.2.1026.0 nebo novější.
@@ -32,7 +32,6 @@ Než budete moct používat Microsoft Teams na virtuálním počítači s Window
 - [Připravte síť](/microsoftteams/prepare-network/) pro Microsoft Teams.
 - Nainstalujte [klienta pro stolní počítače Windows](connect-windows-7-10.md) na zařízení s Windows 10 nebo Windows 10 IoT Enterprise, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Připojte se k virtuálnímu počítači s Windows 10 nebo Windows 10 Enterprise (VM).
-- Nainstalujte desktopovou aplikaci Teams Desktop na hostitele pomocí instalace vázaná na počítač. Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
 
 ## <a name="install-the-teams-desktop-app"></a>Instalace desktopové aplikace Teams
 
@@ -42,7 +41,8 @@ V této části se dozvíte, jak nainstalovat desktopovou aplikaci Teams na Wind
 
 Pokud chcete povolit optimalizaci médií pro týmy, nastavte na hostiteli následující klíč registru:
 
-1. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
+1. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**. Pokud ještě neexistuje, vytvořte klíč Teams.
+
 2. Pro klíč Teams vytvořte následující hodnotu:
 
 | Název             | Typ   | Data/hodnota  |
@@ -51,7 +51,7 @@ Pokud chcete povolit optimalizaci médií pro týmy, nastavte na hostiteli násl
 
 ### <a name="install-the-teams-websocket-service"></a>Instalace služby WebSocket pro týmy
 
-Na image virtuálního počítače nainstalujte nejnovější [službu WebSocket](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) . Pokud dojde k chybě instalace, nainstalujte [nejnovější Microsoft Visual C++ Distribuovatelný](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a zkuste to znovu.
+Nainstalujte do image virtuálního počítače nejnovější [službu Vzdálená plocha WebRTC redirect](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) . Pokud dojde k chybě instalace, nainstalujte [nejnovější Microsoft Visual C++ Distribuovatelný](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a zkuste to znovu.
 
 #### <a name="latest-websocket-service-versions"></a>Nejnovější verze služby WebSocket
 
@@ -92,10 +92,10 @@ Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počí
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
-        Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 64 a do složky Program Files v 32 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
+        Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 32 a do složky Program Files v 64 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
 
-        K dispozici jsou dva příznaky, které mohou být nastaveny při instalaci týmů, **ALLUSER = 1** a **AllUsers = 1**. Je důležité pochopit rozdíl mezi těmito parametry. Parametr **ALLUSER = 1** se používá pouze v prostředích VDI k určení instalace pro jednotlivé počítače. Parametr **AllUsers = 1** lze použít v prostředích mimo VDI a VDI. Když nastavíte tento parametr, zobrazí se v nástroji program a funkce v Ovládacích panelech aplikace a také aplikace & funkce v nastavení systému Windows. Všichni uživatelé s přihlašovacími údaji správce na počítači můžou odinstalovat týmy. 
-       
+        K dispozici jsou dva příznaky, které mohou být nastaveny při instalaci týmů, **ALLUSER = 1** a **AllUsers = 1**. Je důležité pochopit rozdíl mezi těmito parametry. Parametr **ALLUSER = 1** se používá pouze v prostředích VDI k určení instalace pro jednotlivé počítače. Parametr **AllUsers = 1** lze použít v prostředích mimo VDI a VDI. Když nastavíte tento parametr, **teams Machine-Wide Installer** se zobrazí v programu a funkcích v Ovládacích panelech a také v aplikacích & funkcí v nastavení systému Windows. Všichni uživatelé s přihlašovacími údaji správce na počítači můžou odinstalovat týmy.
+
         > [!NOTE]
         > Uživatelé a správci nemůžou v současné době přihlášení zakázat automatické spuštění pro týmy.
 
@@ -114,14 +114,19 @@ Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počí
 
 Po instalaci služby WebSocket a desktopové aplikace Teams použijte následující postup k ověření, že se načetly optimalizace médií v Teams:
 
-1. Vyberte svůj obrázek profilu uživatele a pak vyberte **o**aplikaci.
-2. Vyberte **verzi**.
+1. Ukončete aplikaci teams a restartujte ji.
+
+2. Vyberte svůj obrázek profilu uživatele a pak vyberte **o** aplikaci.
+
+3. Vyberte **verzi**.
 
       Pokud jste načetli optimalizace médií, zobrazí se v banneru **WVD Media optimalizované pro multimédia**. Pokud se v banneru zobrazuje **WVD médium Nepřipojeno**, ukončete aplikaci teams a zkuste to znovu.
 
-3. Vyberte svůj obrázek profilu uživatele a pak vyberte **Nastavení**.
+4. Vyberte svůj obrázek profilu uživatele a pak vyberte **Nastavení**.
 
-      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazí, podívejte se na nastavení ochrany osobních údajů na místním počítači. Ujistěte se, že **Nastavení**  >  **Privacy**  >  **oprávnění aplikace** soukromí nastavení **povoluje aplikacím přístup k vašemu mikrofonu** **zapnuté**. Odpojte se od vzdálené relace a pak znovu připojte a znovu zkontrolujte zvuková zařízení a videa. Pokud chcete spojit volání a schůzky s videem, musíte taky udělit oprávnění aplikacím pro přístup k vaší kameře.
+      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazí, podívejte se na nastavení ochrany osobních údajů na místním počítači. Ujistěte se, že **Nastavení**  >    >  **oprávnění aplikace** soukromí nastavení **povoluje aplikacím přístup k vašemu mikrofonu** **zapnuté**. Odpojte se od vzdálené relace a pak znovu připojte a znovu zkontrolujte zvuková zařízení a videa. Pokud chcete spojit volání a schůzky s videem, musíte taky udělit oprávnění aplikacím pro přístup k vaší kameře.
+
+      Pokud se optimalizace nenačte, odinstalujte a znovu nainstalujte týmy a znovu zkontrolujte.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
@@ -135,12 +140,13 @@ Použití týmů ve virtualizovaném prostředí se liší od použití týmů v
 
 ### <a name="calls-and-meetings"></a>Volání a schůzky
 
-- Desktopový klient pro týmy v prostředích virtuálních ploch Windows nepodporuje živé události. Prozatím doporučujeme připojit živé události od [webového klienta Teams](https://teams.microsoft.com) ve vzdálené relaci.
+- Klient stolních počítačů v prostředích virtuálních ploch Windows nepodporuje vytváření živých událostí, ale můžete se připojit k živým událostem. Prozatím doporučujeme místo toho vytvořit živé události z [webového klienta Teams](https://teams.microsoft.com) ve vzdálené relaci.
 - Volání nebo schůzky aktuálně nepodporují sdílení aplikací. Relace plochy podporují sdílení plochy.
 - Poskytněte řízení a převzít řízení, které se v tuto chvíli nepodporují.
 - Týmy na virtuálním počítači s Windows podporují jenom jeden příchozí vstup videa. To znamená, že když se někdo pokusí sdílet svoji obrazovku, zobrazí se jejich obrazovka místo na obrazovce vedoucího ovládacího prvku schůzky.
 - V důsledku omezení WebRTC je řešení příchozího a odchozího streamování videa omezené na 720p.
 - Aplikace Teams nepodporuje tlačítka HID ani ovládací prvky diody LED s jinými zařízeními.
+- Nové prostředí pro schůzky (NME) se v prostředích VDI v současnosti nepodporuje.
 
 Pro týmy známé problémy, které nesouvisejí s virtualizovanými prostředími, najdete informace v tématu [Podpora týmů ve vaší organizaci](/microsoftteams/known-issues) .
 

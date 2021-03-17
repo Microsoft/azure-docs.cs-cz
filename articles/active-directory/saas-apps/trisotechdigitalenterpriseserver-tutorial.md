@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e8bf3d2407e2c3d0db4bb5d8591ba598aba68a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05978b7300c401a0658d6c3316f37735fcb70c20
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546436"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Kurz: Azure Active Directory integrace s Trisotech Digital Enterprise Server
 
@@ -27,10 +27,10 @@ Integrace Trisotech Digital Enterprise Server se službou Azure AD poskytuje ná
 * Můžete uživatelům povolit, aby se automaticky přihlásili k Trisotech Digital Enterprise serveru (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Trisotech Digital Enterprise Server budete potřebovat následující položky:
 
@@ -75,7 +75,7 @@ Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Trisotech Digital Enterprise serveru, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Trisotech Digital Enterprise serveru](#configure-trisotech-digital-enterprise-server-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Trisotech Digital Enterprise serveru](#configure-trisotech-digital-enterprise-server-single-sign-on)** a nakonfigurujte nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte testovacího uživatele Trisotech Digital Enterprise serveru](#create-trisotech-digital-enterprise-server-test-user)** – abyste měli protějšek Britta Simon v Trisotech Digital Enterprise serveru, který je propojený s reprezentací uživatele v Azure AD.
@@ -95,7 +95,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí serveru 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -110,25 +110,25 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí serveru 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. K získání těchto hodnot se obraťte na [tým podpory klienta podpory Trisotech Digital Enterprise Server](mailto:support@trisotech.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na Kopírovat tlačítko a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-trisotech-digital-enterprise-server-single-sign-on"></a>Konfigurace jednotného přihlašování Trisotech Digital Enterprise serveru
+### <a name="configure-trisotech-digital-enterprise-server-single-sign-on"></a>Konfigurace jednoho Sign-On Trisotech Digital Enterprise Server
 
 1. V jiném okně webového prohlížeče se přihlaste ke svému firemnímu webu Trisotech Digital Enterprise Server Configuration jako správce.
 
 2. Klikněte na **ikonu nabídky** a pak vyberte **Správa**.
 
-    ![Konfigurace jednotného přihlašování](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Snímek obrazovky ukazuje ikonu správy na serveru Microsoft Digital Enterprise Server.](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 3. Vyberte **poskytovatele uživatele**.
 
-    ![Konfigurace jednotného přihlašování](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí v nabídce vybraný poskytovatel uživatelů.](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 4. V části **Konfigurace poskytovatele uživatelských služeb** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Snímek obrazovky ukazuje konfigurace poskytovatele uživatelských služeb, kde můžete zadat hodnoty, které jsou popsány.](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. Z rozevíracího seznamu v **metodě ověřování**vyberte **zabezpečený kód kontrolního výrazu (SAML 2)** .
 
@@ -164,7 +164,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -172,7 +172,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Trisotech Digital Enterprise Server**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Trisotech Digital Enterprise Server**.
 
@@ -203,13 +203,12 @@ V této části se v Trisotech Digital Enterprise serveru vytvoří uživatel s 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Server Trisotech Digital Enterprise na přístupovém panelu byste se měli automaticky přihlášeni k serveru Trisotech Digital Enterprise, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Server Trisotech Digital Enterprise na přístupovém panelu byste se měli automaticky přihlášeni k serveru Trisotech Digital Enterprise, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: Vytvoření šablony Azure DB pro MySQL – ARM'
 description: V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for MySQL s integrací virtuální sítě pomocí Azure Resource Manager šablony.
-author: mgblythe
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c203eaea0c3fc2a39267ed78eb603c4836cd2b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 3da3b1694a16507203d7f1f1f6cb5df58dd54423
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660277"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366173"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MySQL
 
@@ -22,7 +22,7 @@ Azure Database for MySQL je spravovaná služba, pomocí které můžete spoušt
 
 Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,22 +66,22 @@ Další příklady šablon Azure Database for MySQL najdete v [galerii šablon r
 
 Vyberte následující odkaz pro nasazení šablony Azure Database for MySQL serveru do Azure Portal:
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 Na stránce **nasadit Azure Database for MySQL se sítí VNET** :
 
-1. V poli **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
+1. V poli **Skupina prostředků** vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
 
 2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
 
-3. Zadejte **název serveru**, **přihlašovací jméno správce**a **přihlašovací heslo správce**.
+3. Zadejte **název serveru**, **přihlašovací jméno správce** a **přihlašovací heslo správce**.
 
-    ![Nasazení Azure Database for MySQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal](./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Nasazení Azure Database for MySQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal":::
 
 4. Pokud chcete, změňte další výchozí nastavení:
 
     * **Předplatné**: předplatné Azure, které chcete použít pro server.
-    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32*nebo *64*.
+    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32* nebo *64*.
     * **Název SKU**: Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1*, *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
     * **Velikost SKU MB**: velikost úložiště pro Azure Database for MySQL server (standardně *5120*) v megabajtech.
     * **Úroveň SKU**: vrstva nasazení, jako je například *Basic*, *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
@@ -92,7 +92,7 @@ Na stránce **nasadit Azure Database for MySQL se sítí VNET** :
     * **Virtual Network název**: název virtuální sítě (výchozí *azure_mysql_vnet*).
     * **Název podsítě**: název podsítě (výchozí *azure_mysql_subnet*).
     * **Virtual Network název pravidla**: název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet*).
-    * **Předpona adresy virtuální**sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
+    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
     * **Předpona podsítě**: Předpona adresy pro podsíť (výchozí *10.0.0.0/16*).
 
 5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
@@ -180,6 +180,32 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>Export šablony ARM z portálu
+[Šablonu ARM můžete exportovat](../azure-resource-manager/templates/export-template-portal.md) z Azure Portal. Existují dva způsoby, jak exportovat šablonu:
+
+- [Exportujte ze skupiny prostředků nebo prostředku](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Tato možnost vygeneruje novou šablonu z existujících prostředků. Vyexportovaná šablona je "snímek" aktuálního stavu skupiny prostředků. V rámci této skupiny prostředků můžete exportovat celou skupinu prostředků nebo konkrétní prostředky.
+- [Exportujte před nasazením nebo z historie](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Tato možnost načte přesnou kopii šablony, která se používá k nasazení.
+
+Při exportování šablony ```"properties":{ }``` si všimněte, že v části prostředku serveru MySQL si všimnete, že ```administratorLogin``` a ```administratorLoginPassword``` z bezpečnostních důvodů nebudou zahrnuty. Tyto parametry **musíte** před nasazením šablony přidat do šablony, jinak se šablona nezdařila.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

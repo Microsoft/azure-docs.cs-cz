@@ -14,16 +14,16 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c72587c5486ed61215fd20c215a1dd194f4b7bc4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495620"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372408"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Role, které nemůžete spravovat v Privileged Identity Management
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umožňuje spravovat všechny [role Azure AD](../users-groups-roles/directory-assign-admin-roles.md) a všechny [role Azure](../../role-based-access-control/built-in-roles.md). Role Azure můžou zahrnovat i vaše vlastní role připojené ke skupinám pro správu, předplatným, skupinám prostředků a prostředkům. Existuje však několik rolí, které nelze spravovat. Tento článek popisuje role, které nemůžete spravovat v Privileged Identity Management.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umožňuje spravovat všechny [role Azure AD](../roles/permissions-reference.md) a všechny [role Azure](../../role-based-access-control/built-in-roles.md). Role Azure můžou zahrnovat i vaše vlastní role připojené ke skupinám pro správu, předplatným, skupinám prostředků a prostředkům. Existuje však několik rolí, které nelze spravovat. Tento článek popisuje role, které nemůžete spravovat v Privileged Identity Management.
 
 ## <a name="classic-subscription-administrator-roles"></a>Role klasického správce předplatného
 
@@ -35,9 +35,9 @@ V Privileged Identity Management nemůžete spravovat tyto klasické role správ
 
 Další informace o rolích správců klasických předplatných najdete v tématu role [správců pro klasický odběr, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Co jsou role správců Office 365?
+## <a name="what-about-microsoft-365-admin-roles"></a>Co Microsoft 365 role správců?
 
-Všechny role Office 365 podporujeme v prostředí portálu rolí a správců Azure AD, jako je například správce Exchange a správce služby SharePoint, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto službách Office 365 najdete v tématu [role správce sady office 365](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Na portálu rolí a správců Azure AD podporujeme všechny role Microsoft 365, jako je například správce Exchange a správce služby SharePoint, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto Microsoft 365ch službách najdete v tématu [Microsoft 365 role správců](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > Oprávnění uživatelé pro roli správce služby SharePoint, role Správce zařízení a všech rolí, které se pokoušejí získat přístup k centru zabezpečení a dodržování předpisů, můžou po aktivaci své role zaznamenat prodlevu až několik hodin. S těmito týmy pracujeme na řešení těchto problémů.

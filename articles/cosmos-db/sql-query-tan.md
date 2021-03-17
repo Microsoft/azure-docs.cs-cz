@@ -3,18 +3,21 @@ title: TAN v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci SQL System Function TAN v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9d7187ba116067445e835769fc33aa70677ef80b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eeff0f8a98333da4b143bef88bc7f8d5fe73fecb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78301977"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340786"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí tangens zadaného úhlu v radiánech v zadaném výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Matematické funkce Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

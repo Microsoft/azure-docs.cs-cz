@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981431"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452226"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen1
 
@@ -23,21 +23,21 @@ ms.locfileid: "85981431"
 
 V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen1. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen1. Před Data Lake Storage Gen1 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Při Data Lake Storage Gen1 se většina pevných omezení velikosti a výkonu odebere. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen1.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Azure Data Lake Storage Gen1 nabízí řízení přístupu POSIX a podrobné auditování pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a složky. Ovládací prvky přístupu lze také použít k vytvoření výchozích hodnot, které lze použít pro nové soubory nebo složky. Pokud jsou oprávnění nastavena na existující složky a podřízené objekty, musí být oprávnění šířena rekurzivně u každého objektu. Pokud existuje velký počet souborů, může rozšíření oprávnění trvat dlouhou dobu. Doba trvání může být v rozsahu od 30-50 objektů zpracovaných za sekundu. Proto Naplánujte strukturu složek a skupiny uživatelů odpovídajícím způsobem. V opačném případě může dojít k neočekávaným zpožděním a problémům při práci s daty.
 
-Předpokládejme, že máte složku s 100 000 podřízenými objekty. Pokud převezmete dolní mez 30 objektů zpracovaných za sekundu, můžete aktualizovat oprávnění pro celou složku, což může trvat hodinu. Další podrobnosti o Data Lake Storage Gen1ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Pro zlepšení výkonu při rekurzivním přiřazování seznamů ACL můžete použít nástroj příkazového řádku Azure Data Lake. Nástroj vytvoří více vláken a rekurzivní logiku navigace pro rychlé použití seznamů ACL na miliony souborů. Nástroj je k dispozici pro Linux a Windows a [dokumentaci](https://github.com/Azure/data-lake-adlstool) a [soubory ke stažení](https://aka.ms/adlstool-download) pro tento nástroj najdete na GitHubu. Tato vylepšení výkonu lze povolit pomocí vlastních nástrojů napsaných pomocí sad Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) SDK.
+Předpokládejme, že máte složku s 100 000 podřízenými objekty. Pokud převezmete dolní mez 30 objektů zpracovaných za sekundu, můžete aktualizovat oprávnění pro celou složku, což může trvat hodinu. Další podrobnosti o Data Lake Storage Gen1ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Pro zlepšení výkonu při rekurzivním přiřazování seznamů ACL můžete použít nástroj Azure Data Lake Command-Line. Nástroj vytvoří více vláken a rekurzivní logiku navigace pro rychlé použití seznamů ACL na miliony souborů. Nástroj je k dispozici pro Linux a Windows a [dokumentaci](https://github.com/Azure/data-lake-adlstool) a [soubory ke stažení](https://aka.ms/adlstool-download) pro tento nástroj najdete na GitHubu. Tato vylepšení výkonu lze povolit pomocí vlastních nástrojů napsaných pomocí sad Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) SDK.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Použití skupin zabezpečení oproti jednotlivým uživatelům
 
 Při práci s velkými objemy dat v Data Lake Storage Gen1 se pravděpodobně používá instanční objekt, který umožňuje službám, jako je Azure HDInsight, pracovat s daty. Mohou však nastat případy, kdy potřebují k datům přístup i jednotliví uživatelé. V takových případech je nutné použít Azure Active Directory [skupiny zabezpečení](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) místo přiřazování jednotlivých uživatelů ke složkám a souborům.
 
-Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebrání uživatelů ze skupiny nevyžaduje žádné aktualizace Data Lake Storage Gen1. To taky pomáhá zajistit, abyste nepřekročili limit [32 přístupu a výchozí seznamy ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) (to zahrnuje čtyři seznamy ACL ve stylu POSIX, které jsou vždycky přidružené ke všem souborům a složkám: [vlastnící uživatel](data-lake-store-access-control.md#the-owning-user), [vlastnící skupina](data-lake-store-access-control.md#the-owning-group), [Maska](data-lake-store-access-control.md#the-mask)a další).
+Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebrání uživatelů ze skupiny nevyžaduje žádné aktualizace Data Lake Storage Gen1. To taky pomáhá zajistit, abyste nepřekročili limit [32 přístupu a výchozí seznamy ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) (to zahrnuje čtyři seznamy ACL ve stylu POSIX, které jsou vždycky přidružené ke všem souborům a složkám: [vlastnící uživatel](data-lake-store-access-control.md#the-owning-user), [vlastnící skupina](data-lake-store-access-control.md#the-owning-group), [Maska](data-lake-store-access-control.md#the-mask)a další).
 
 ### <a name="security-for-groups"></a>Zabezpečení pro skupiny
 
-Jak je popsáno, když uživatelé potřebují přístup k Data Lake Storage Gen1, je nejvhodnější použít skupiny zabezpečení Azure Active Directory. Některé doporučené skupiny, které je třeba začít používat, mohou být **ReadOnlyUsers**, **WriteAccessUsers**a **FullAccessUsers** pro kořen účtu a dokonce oddělené pro klíčové podsložky. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Použití skupiny zabezpečení zajišťuje, že později nepotřebujete dlouhou dobu zpracování pro přiřazení nových oprávnění k tisícům souborů.
+Jak je popsáno, když uživatelé potřebují přístup k Data Lake Storage Gen1, je nejvhodnější použít skupiny zabezpečení Azure Active Directory. Některé doporučené skupiny, které je třeba začít používat, mohou být **ReadOnlyUsers**, **WriteAccessUsers** a **FullAccessUsers** pro kořen účtu a dokonce oddělené pro klíčové podsložky. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Použití skupiny zabezpečení zajišťuje, že později nepotřebujete dlouhou dobu zpracování pro přiřazení nových oprávnění k tisícům souborů.
 
 ### <a name="security-for-service-principals"></a>Zabezpečení instančních objektů
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 podporuje možnost zapnout bránu firewall a omezit pří
 
 ![Nastavení brány firewall v Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Nastavení brány firewall v Data Lake Storage Gen1")
 
-Po povolení brány firewall budou mít přístup k Data Lake Storage Gen1 jenom služby Azure, jako je HDInsight, Data Factory, SQL Data Warehouse atd. Kvůli překladu interních síťových adres, které používá Azure, Data Lake Storage Gen1 firewall neumožňuje omezit konkrétní služby na IP adresu a je určený jenom pro omezení koncových bodů mimo Azure, jako je místní.
+Jakmile je brána firewall povolená, budou mít přístup k Data Lake Storage Gen1 jenom služby Azure, jako je HDInsight, Data Factory, Azure synapse Analytics atd. Kvůli překladu interních síťových adres, které používá Azure, Data Lake Storage Gen1 firewall neumožňuje omezit konkrétní služby na IP adresu a je určený jenom pro omezení koncových bodů mimo Azure, jako je místní.
 
 ## <a name="performance-and-scale-considerations"></a>Požadavky na výkon a škálování
 
@@ -101,7 +101,7 @@ Níže jsou uvedené hlavní tři Doporučené možnosti pro orchestraci replika
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**Omezení škálování**     | Ohraničené uzly pracovního procesu        | Omezeno maximálními jednotkami pohybu cloudových dat        | Svázáno podle analytických jednotek        |
-|**Podporuje kopírování rozdílových souborů.**     |   Ano      | No         | No         |
+|**Podporuje kopírování rozdílových souborů.**     |   Yes      | No         | No         |
 |**Integrovaná orchestrace**     |  Ne (použití Oozieho toku nebo úloh cron)       | Yes        | Ne (použít Azure Automation nebo Windows Plánovač úloh)         |
 |**Podporované systémy souborů**     | ADL, HDFS, WASB, S3, GS, CFS        |Množství, viz [konektory](../data-factory/connector-azure-blob-storage.md).         | ADL na ADL, WASB na ADL (jenom stejná oblast)        |
 |**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | Není k dispozici          | Windows 10         |
@@ -114,7 +114,7 @@ Pro distribuované kopírování je Distcp nástroj příkazového řádku pro L
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Plánování úloh kopírování pomocí Azure Data Factory
 
-Azure Data Factory lze také použít k plánování úloh kopírování pomocí **aktivity kopírování**a je možné ji dokonce nastavit na frekvenci prostřednictvím **Průvodce kopírováním**. Mějte na paměti, že Azure Data Factory má limit DMUsch přenosů dat v cloudu, a nakonec si zajistěte, aby propustnost a výpočet pro úlohy s velkým objemem dat byly omezené. Kromě toho Azure Data Factory aktuálně nenabízí rozdílové aktualizace mezi účty Data Lake Storage Gen1, takže složky jako tabulky podregistru by vyžadovaly replikaci úplné kopie. Další informace o kopírování pomocí Data Factory najdete v [Průvodci optimalizací aktivity kopírování](../data-factory/copy-activity-performance.md) .
+Azure Data Factory lze také použít k plánování úloh kopírování pomocí **aktivity kopírování** a je možné ji dokonce nastavit na frekvenci prostřednictvím **Průvodce kopírováním**. Mějte na paměti, že Azure Data Factory má limit DMUsch přenosů dat v cloudu, a nakonec si zajistěte, aby propustnost a výpočet pro úlohy s velkým objemem dat byly omezené. Kromě toho Azure Data Factory aktuálně nenabízí rozdílové aktualizace mezi účty Data Lake Storage Gen1, takže složky jako tabulky podregistru by vyžadovaly replikaci úplné kopie. Další informace o kopírování pomocí Data Factory najdete v [Průvodci optimalizací aktivity kopírování](../data-factory/copy-activity-performance.md) .
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -138,7 +138,7 @@ Pro další upozorňování v reálném čase a lepší kontrolu nad tím, kde s
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>Zapnutí protokolování na úrovni ladění v HDInsight
 
-Pokud Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HDInsight také poskytuje způsob, jak zapnout [protokolování na straně klienta pro data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) prostřednictvím log4j. V konfiguraci **Ambari**  >  **nitě**  >  **Konfigurace**  >  **Advanced nitě-log4j**musíte nastavit následující vlastnost:
+Pokud Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HDInsight také poskytuje způsob, jak zapnout [protokolování na straně klienta pro data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) prostřednictvím log4j. V konfiguraci **Ambari**  >  **nitě**  >  **Konfigurace**  >  **Advanced nitě-log4j** musíte nastavit následující vlastnost:
 
 `log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 

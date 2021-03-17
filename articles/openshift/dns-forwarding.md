@@ -3,19 +3,19 @@ title: Konfigurace předávání DNS pro Azure Red Hat OpenShift 4
 description: Konfigurace předávání DNS pro Azure Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6784c69c049945f3bd4977ecd647d57ec59bf9f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68cc5dbee5b96472d11bdfb3a8bf35d118638dcd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232628"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633865"
 ---
 # <a name="configure-dns-forwarding-on-an-azure-red-hat-openshift-4-cluster"></a>Konfigurace předávání DNS na clusteru Azure Red Hat OpenShift 4
 
-Pokud chcete nakonfigurovat předávání DNS v clusteru Azure Red Hat OpenShift, budete muset změnit operátor DNS. Tato úprava umožní, aby vaše aplikace v luskech běžely v rámci clusteru, aby přeložily názvy hostované na privátním serveru DNS mimo cluster. Tyto kroky jsou popsané pro OpenShift 4,3 [zde](https://docs.openshift.com/container-platform/4.3/networking/dns-operator.html).
+Pokud chcete nakonfigurovat předávání DNS v clusteru Azure Red Hat OpenShift, budete muset změnit operátor DNS. Tato úprava umožní, aby vaše aplikace v luskech běžely v rámci clusteru, aby přeložily názvy hostované na privátním serveru DNS mimo cluster. Tyto kroky jsou popsané pro OpenShift 4,6 [zde](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html).
 
 Pokud například chcete přeposláním všech požadavků DNS na adresu *. example.com přeložit serverem DNS 192.168.100.10, můžete konfiguraci operátora upravit spuštěním:
  
@@ -39,4 +39,4 @@ spec:
 Uložte soubor a ukončete Editor.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o předávání DNS pro OpenShift 4,3 [najdete tady](https://docs.openshift.com/container-platform/4.3/networking/dns-operator.html).
+Další informace o předávání DNS pro OpenShift 4,6 [najdete tady](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html).

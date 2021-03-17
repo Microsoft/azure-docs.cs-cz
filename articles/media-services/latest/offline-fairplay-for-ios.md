@@ -1,6 +1,6 @@
 ---
-title: Online streamování FairPlay pro iOS s Azure Media Services V3
-description: Toto téma poskytuje přehled a ukazuje, jak použít Azure Media Services k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí nástroje Apple FairPlay v režimu offline.
+title: Media Services V3 FairPlay streaming pro iOS v režimu offline
+description: Toto téma poskytuje přehled a ukazuje, jak použít Azure Media Services V3 k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí nástroje Apple FairPlay v režimu offline.
 services: media-services
 keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
 documentationcenter: ''
@@ -12,17 +12,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/08/2019
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197176"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955224"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Online streamování FairPlay pro iOS s Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
  Azure Media Services poskytuje sadu dobře navrhovaných [služeb ochrany obsahu](https://azure.microsoft.com/services/media-services/content-protection/) , které zahrnují:
 
@@ -202,7 +205,7 @@ Tři ukázkové testy v Media Services pokrývají následující tři scénář
 Tyto ukázky najdete na [tomto ukázkovém webu](https://aka.ms/poc#22)s odpovídajícím certifikátem aplikace hostovaným ve webové aplikaci Azure.
 V případě ukázky verze 3 nebo 4 sady SDK serveru FPS je v případě, že hlavní seznam testů obsahuje alternativní zvuk, v režimu offline, který přehrává jenom zvuk. Proto je potřeba obložení alternativního zvuku. Jinými slovy, druhý a třetí vzorek uvedený dříve pracuje v režimu online a offline. Ukázka uvedená jako první hraje zvuk pouze v režimu offline, zatímco online streamování funguje správně.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 Přečtěte si [Nejčastější dotazy týkající se řešení potíží](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode).
 

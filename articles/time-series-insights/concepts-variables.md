@@ -5,19 +5,19 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.date: 01/22/2021
+ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140679"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736730"
 ---
 # <a name="time-series-model-variables"></a>Proměnné modelu časové řady
 
 Tento článek popisuje proměnné modelu časové řady, které určují vzorce a pravidla výpočtu pro události.
 
-Každá proměnná může být jeden ze tří typů: *Číselná*, *kategorií*a *Aggregate*.
+Každá proměnná může být jeden ze tří typů: *Číselná*, *kategorií* a *Aggregate*.
 
 * **Číselné** typy fungují s souvislými číselnými hodnotami.
 * **Kategorií** druhy pracují s definovanou sadou diskrétních hodnot.
@@ -29,12 +29,12 @@ V následující tabulce jsou uvedeny vlastnosti, které jsou relevantní pro je
 
 ## <a name="numeric-variables"></a>Číselné proměnné
 
-| Proměnná – vlastnost | Description |
+| Proměnná – vlastnost | Popis |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů nebo transformované pomocí výrazů Time Series. Proměnné číselného typu musí být typu *Double*.|
 | Proměnlivá interpolace | Interpolace určuje, jak rekonstruovat signál pomocí stávajících dat. Možnosti *kroku* a *lineární* interpolace jsou k dispozici pro číselné proměnné. |
-| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro číselné proměnné typy](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind). |
+| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro číselné proměnné typy](/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind). |
 
 Proměnné odpovídají následujícímu příkladu JSON:
 
@@ -59,7 +59,7 @@ Proměnné odpovídají následujícímu příkladu JSON:
 
 ## <a name="categorical-variables"></a>Proměnné kategorií
 
-| Proměnná – vlastnost | Description |
+| Proměnná – vlastnost | Popis |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů. Proměnné kategorií druhu musí být buď *Long* , nebo *String*. |
@@ -99,10 +99,10 @@ Proměnné odpovídají následujícímu příkladu JSON:
 
 ## <a name="aggregate-variables"></a>Agregační proměnné
 
-| Proměnná – vlastnost | Description |
+| Proměnná – vlastnost | Popis |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
-| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro agregované typy proměnných](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |
+| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro agregované typy proměnných](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |
 
 Proměnné odpovídají následujícímu příkladu JSON:
 

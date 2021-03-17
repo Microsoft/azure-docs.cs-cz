@@ -7,56 +7,54 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f037dddcce43a1e023982af816660bd325d57f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431607"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605089"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Podpora [kanálu změny](change-feed.md) v rozhraní Azure Cosmos DB API pro Cassandra je k dispozici prostřednictvím predikátů dotazu v CQL (Cassandra Query Language). Pomocí těchto podmínek predikátu se můžete dotazovat na rozhraní API Change feed. Aplikace mohou získat změny provedené v tabulce pomocí primárního klíče (označovaného také jako klíč oddílu), jak je požadováno v CQL. Na základě výsledků pak můžete provést další akce. Změny v řádcích v tabulce jsou zachyceny v pořadí podle doby jejich změny a pořadí řazení je zaručeno na klíč oddílu.
+Podpora [kanálu změny](change-feed.md) v rozhraní Azure Cosmos DB API pro Cassandra je k dispozici prostřednictvím predikátů dotazu v CQL (Cassandra Query Language). Pomocí těchto podmínek predikátu se můžete dotazovat na rozhraní API Change feed. Aplikace mohou získat změny provedené v tabulce pomocí primárního klíče (označovaného také jako klíč oddílu), jak je požadováno v CQL. Na základě výsledků pak můžete provést další akce. Změny v řádcích v tabulce jsou zachyceny v pořadí času změny a v pořadí řazení na klíč oddílu.
 
-Následující příklad ukazuje, jak získat kanál změn na všech řádcích v tabulce rozhraní API Cassandraho prostoru klíčů s použitím rozhraní .NET. Predikát COSMOS_CHANGEFEED_START_TIME () se používá přímo v rámci CQL k dotazování na položky v kanálu změn od zadaného počátečního času (v tomto případě aktuální datum a čas). Úplnou ukázku, pro C# [tady](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a pro Java si můžete stáhnout [tady](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
+Následující příklad ukazuje, jak získat kanál změn na všech řádcích v tabulce rozhraní API Cassandraho prostoru klíčů s použitím rozhraní .NET. Predikát COSMOS_CHANGEFEED_START_TIME () se používá přímo v rámci CQL k dotazování na položky v kanálu změn od zadaného počátečního času (v tomto případě aktuální datum a čas). Úplnou ukázku, pro C# [tady](/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a pro Java si můžete stáhnout [tady](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
 V každé iteraci pokračuje dotaz u poslední změny bodu pomocí stavu stránkování. Průběžný Stream pro nové změny v tabulce se zobrazí v prostoru. Uvidíme změny v řádcích, které jsou vložené nebo aktualizované. Sledování operací odstranění pomocí kanálu změn v rozhraní API Cassandra aktuálně není podporováno.
 
 # <a name="java"></a>[Java](#tab/java)
 
 ```java
-        Session cassandraSession = utils.getSession();
+    Session cassandraSession = utils.getSession();
 
-        try {
-              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
-               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
-                    + dtf.format(now)+ "'";
-               
-             byte[] token=null; 
-             System.out.println(query); 
-             while(true)
-             {
-                 SimpleStatement st=new  SimpleStatement(query);
-                 st.setFetchSize(100);
-                 if(token!=null)
-                     st.setPagingStateUnsafe(token);
-                 
-                 ResultSet result=cassandraSession.execute(st) ;
-                 token=result.getExecutionInfo().getPagingState().toBytes();
-                 
-                 for(Row row:result)
-                 {
-                     System.out.println(row.getString("user_name"));
-                 }
-             }
-                    
-
-        } finally {
-            utils.close();
-            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+    try {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+        String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+            + dtf.format(now)+ "'";
+        
+        byte[] token=null; 
+        System.out.println(query); 
+        while(true)
+        {
+            SimpleStatement st=new  SimpleStatement(query);
+            st.setFetchSize(100);
+            if(token!=null)
+                st.setPagingStateUnsafe(token);
+            
+            ResultSet result=cassandraSession.execute(st) ;
+            token=result.getExecutionInfo().getPagingState().toBytes();
+            
+            for(Row row:result)
+            {
+                System.out.println(row.getString("user_name"));
+            }
         }
-
+    } finally {
+        utils.close();
+        LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+    }
 ```
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -126,7 +124,7 @@ Chcete-li získat změny v jednom řádku podle primárního klíče, můžete v
 
 ```java
     String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
-                    + dtf.format(now)+ "'";
+                       + dtf.format(now)+ "'";
     SimpleStatement st=new  SimpleStatement(query);
 ```
 ---
@@ -146,4 +144,4 @@ Při použití kanálu Change v rozhraní API Cassandra jsou podporovány násle
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager](manage-cassandra-with-resource-manager.md)
+* [Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager](./templates-samples-cassandra.md)

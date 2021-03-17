@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564023"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90987103"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro 
 
 Začněte tím, [že nainstalujete nejnovější verzi PowerShellu](/powershell/azure/install-az-ps).
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Následující kroky vás provedou vytvořením trezoru Recovery Services. Recovery Services trezor se liší od trezoru záloh.
 
@@ -42,10 +42,10 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Zadejte typ redundance úložiště, který se má použít. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost **-BackupStorageRedundancy** pro *testVault* je nastavená na geograficky **redundantní**.
+4. Zadejte typ redundance úložiště, který se má použít. Můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) nebo [úložiště redundantní v zóně (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage). Následující příklad ukazuje možnost **-BackupStorageRedundancy** pro *testVault* nastavenou na geograficky **redundantní**.
 
    > [!TIP]
-   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
+   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Backup Recovery Services do proměnné.
    >
    >
 
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 K dispozici jsou tyto možnosti:
 
-| Parametr | Podrobnosti | Výchozí |
+| Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
 | /q |Tichá instalace |- |
 | /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
@@ -226,7 +226,7 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> Po nastavení ponechte informace pro heslo bezpečně a zabezpečené. Nemůžete obnovit data z Azure bez tohoto přístupového hesla.
+> Ponechte informace o heslu v bezpečí a zabezpečení po jeho nastavení. Nemůžete obnovit data z Azure bez tohoto přístupového hesla.
 >
 >
 

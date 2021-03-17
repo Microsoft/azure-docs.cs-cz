@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67672182"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233436"
 ---
 # <a name="network-monitoring-solutions"></a>Řešení monitorování sítě 
 
@@ -52,10 +52,10 @@ Sledování výkonu je součástí NPM a je monitorování sítě pro cloudová,
 Další informace najdete v následujících článcích:
 
 * [Konfigurace řešení Network Performance Monitor v protokolech Azure Monitor](../azure-monitor/insights/network-performance-monitor.md) 
-* [Případy použití](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Případy použití](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * Aktualizace produktu:
-  * [Únor 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [Srpen 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [Únor 2017](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [Srpen 2017](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>Monitorování ExpressRoute
 
@@ -65,7 +65,7 @@ NPM for ExpressRoute nabízí komplexní monitorování ExpressRoute pro privát
 * Detekce síťové topologie z místního prostředí do cloudových aplikací
 * Plánování kapacity, analýza využití šířky pásma
 * Monitorování a upozorňování na primární i sekundární cestě
-* Monitorování připojení ke službám Azure, jako je například Office 365, Dynamics 365,... přes ExpressRoute
+* Monitorování připojení ke službám Azure, jako je Microsoft 365, Dynamics 365,... přes ExpressRoute
 * Zjištění degradace připojení k virtuální sítě
 
 ![Geografické mapování znázorňující přenos napříč oblastmi](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ Díky monitorování připojení služby teď můžete testovat dostupnost aplik
 * Test dosažitelnosti aplikace z více umístění uživatelů po celém světě
 * Určení latence sítě a ztráty paketů pro vaše obchodní a SaaS aplikace
 * Určení aktivních bodů v síti, které mohou způsobovat špatný výkon aplikace
-* Pomocí integrovaných testů pro systém Microsoft Office 365, Dynamics 365, Skype pro firmy a dalších služeb Microsoftu můžete monitorovat dostupnost aplikací Office 365.
+* Monitorování dostupnosti pro Microsoft 365 aplikací pomocí integrovaných testů pro Microsoft 365, Dynamics 365, Skype pro firmy a další služby Microsoftu
 
 Další informace najdete v následujících článcích:
 
@@ -103,10 +103,10 @@ Analýza provozu je cloudové řešení, které poskytuje přehled o aktivitách
 
 Analýza provozu vám umožní získat užitečné informace, které vám pomůžou auditovat síťové aktivity vaší organizace, zabezpečit aplikace a data a optimalizovat výkon úloh a udržet si vyhovující předpisy.
 
-![Geografické mapování znázorňující přenos napříč oblastmi](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![Geografické mapování znázorňující provoz napříč oblastmi 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Související odkazy:
-* [Blogový příspěvek](https://aka.ms/trafficanalytics), [dokumentace](https://aka.ms/trafficanalyticsdocs), [Nejčastější dotazy](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [Blogový příspěvek](https://aka.ms/trafficanalytics), [dokumentace](../network-watcher/traffic-analytics.md), [Nejčastější dotazy](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS Analytics
 Toto řešení je vytvořené pro Správce DNS, shromažďuje, analyzuje a koreluje protokoly DNS za účelem poskytování zabezpečení, operací a přehledů souvisejících s výkonem.  Mezi tyto možnosti patří:
@@ -120,8 +120,8 @@ Toto řešení je vytvořené pro Správce DNS, shromažďuje, analyzuje a korel
 ![Řídicí panel DNS Analytics](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 Související odkazy:
-* [Příspěvek na blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentace](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [Příspěvek na blogu](/archive/blogs/msoms/introducing-oms-dns-analytics), [dokumentace](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>Různé
 
-* [Nové ceny](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [Nové ceny](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

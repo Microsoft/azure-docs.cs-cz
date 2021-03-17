@@ -7,17 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: management
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653337"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356701"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače SQL Serveru
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,17 +45,17 @@ Následující části popisují, jak nakonfigurovat úložiště pro nové virt
 
 Při zřizování virtuálního počítače Azure pomocí Image Galerie SQL Server vyberte **změnit konfiguraci** na kartě **nastavení SQL Server** a otevřete stránku konfigurace optimalizovaného úložiště pro výkon. Můžete buď ponechat hodnoty ve výchozím nastavení, nebo upravit typ konfigurace disku, který nejlépe vyhovuje vašim potřebám na základě vašich úloh. 
 
-![SQL Server konfigurace úložiště virtuálních počítačů během zřizování](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![Snímek obrazovky, který zvýrazní kartu nastavení SQL Server a možnost změny konfigurace.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-V části **optimalizace úložiště**vyberte typ úlohy, kterou nasazujete SQL Server. Když použijete možnost **Obecná** optimalizace, budete mít ve výchozím nastavení jeden datový disk s 5000 maximálním IOPS a tuto jednotku budete používat pro vaše data, protokol transakcí a úložiště tempdb. Když vyberete možnost **transakční zpracování** (OLTP) nebo **datové sklady** , vytvoří se samostatný disk pro data, samostatný disk pro transakční protokol a použije se místní SSD pro databázi tempdb. Neexistují žádné rozdíly v úložištích mezi **transakčním zpracováním** a **datovým skladem**, ale změní [konfiguraci Stripe a příznaky trasování](#workload-optimization-settings). Když zvolíte Storage úrovně Premium, nastavíte ukládání do mezipaměti pro *čtení* datové jednotky do mezipaměti a *žádné* pro tuto jednotku protokolu neplatí jako [osvědčené postupy pro výkon virtuálního počítače SQL Server](performance-guidelines-best-practices.md). 
+V části **optimalizace úložiště** vyberte typ úlohy, kterou nasazujete SQL Server. Když použijete možnost **Obecná** optimalizace, budete mít ve výchozím nastavení jeden datový disk s 5000 maximálním IOPS a tuto jednotku budete používat pro vaše data, protokol transakcí a úložiště tempdb. Když vyberete možnost **transakční zpracování** (OLTP) nebo **datové sklady** , vytvoří se samostatný disk pro data, samostatný disk pro transakční protokol a použije se místní SSD pro databázi tempdb. Neexistují žádné rozdíly v úložištích mezi **transakčním zpracováním** a **datovým skladem**, ale změní [konfiguraci Stripe a příznaky trasování](#workload-optimization-settings). Když zvolíte Storage úrovně Premium, nastavíte ukládání do mezipaměti pro *čtení* datové jednotky do mezipaměti a *žádné* pro tuto jednotku protokolu neplatí jako [osvědčené postupy pro výkon virtuálního počítače SQL Server](performance-guidelines-best-practices.md). 
 
 ![SQL Server konfigurace úložiště virtuálních počítačů během zřizování](./media/storage-configuration/sql-vm-storage-configuration.png)
 
-Konfigurace disku je zcela přizpůsobitelná, takže můžete nakonfigurovat topologii úložiště, typ disku a IOPs, které budete potřebovat pro úlohu SQL Server virtuálních počítačů. Máte také možnost používat UltraSSD (Preview) jako možnost pro **typ disku** , pokud je váš SQL Server virtuální počítač v některé z podporovaných oblastí (východní USA 2, jihovýchodní asie a Severní Evropa) a máte povolené [Ultra disks pro vaše předplatné](/azure/virtual-machines/windows/disks-enable-ultra-ssd).  
+Konfigurace disku je zcela přizpůsobitelná, takže můžete nakonfigurovat topologii úložiště, typ disku a IOPs, které budete potřebovat pro úlohu SQL Server virtuálních počítačů. Máte také možnost používat UltraSSD (Preview) jako možnost pro **typ disku** , pokud je váš SQL Server virtuální počítač v některé z podporovaných oblastí (východní USA 2, jihovýchodní asie a Severní Evropa) a máte povolené [Ultra disks pro vaše předplatné](../../../virtual-machines/disks-enable-ultra-ssd.md).  
 
-Kromě toho máte možnost nastavit ukládání do mezipaměti pro disky. Virtuální počítače Azure mají vícevrstvou technologii ukládání do mezipaměti s názvem [BLOB cache](/azure/virtual-machines/windows/premium-storage-performance#disk-caching) , pokud se používá na [prémiových discích](/azure/virtual-machines/windows/disks-types#premium-ssd). Mezipaměť objektů BLOB používá kombinaci paměti RAM virtuálního počítače a místní jednotky SSD pro ukládání do mezipaměti. 
+Kromě toho máte možnost nastavit ukládání do mezipaměti pro disky. Virtuální počítače Azure mají vícevrstvou technologii ukládání do mezipaměti s názvem [BLOB cache](../../../virtual-machines/premium-storage-performance.md#disk-caching) , pokud se používá na [prémiových discích](../../../virtual-machines/disks-types.md#premium-ssd). Mezipaměť objektů BLOB používá kombinaci paměti RAM virtuálního počítače a místní jednotky SSD pro ukládání do mezipaměti. 
 
-Ukládání do *mezipaměti na disku* pro SSD úrovně Premium může být *jen pro čtení, pro čtení*nebo *žádné*. 
+Ukládání do *mezipaměti na disku* pro SSD úrovně Premium může být *jen pro čtení, pro čtení* nebo *žádné*. 
 
 - Ukládání do mezipaměti *jen pro čtení* je velmi užitečné pro SQL Server datových souborů uložených v Premium Storage. Ukládání *jen pro* čtení přináší nízkou latenci čtení, vysoký počet vstupně-výstupních operací za sekundu a propustnost, jako je čtení prováděné z mezipaměti, která je v paměti virtuálního počítače a místní SSD. Tyto čtení jsou mnohem rychlejší než čtení z datového disku, který se nachází v úložišti objektů BLOB v Azure. Storage úrovně Premium nepočítá s tím, že se čtení poskytované z mezipaměti týká vstupně-výstupních operací disku a propustnosti. Díky tomu je možné dosáhnout vyššího celkového počtu vstupně-výstupních operací za sekundu a propustnosti. 
 - Pro disky hostující SQL Server log by se měla použít konfigurace *žádné* mezipaměti, protože soubor protokolu se zapisuje postupně a nemá výhodu pro ukládání do mezipaměti *jen pro čtení* . 
@@ -62,7 +63,7 @@ Ukládání do *mezipaměti na disku* pro SSD úrovně Premium může být *jen 
 
 
    > [!TIP]
-   > Ujistěte se, že vaše konfigurace úložiště odpovídá omezením podle zvolené velikosti virtuálního počítače. Pokud zvolíte parametry úložiště, které překračují limit výkonu pro velikost virtuálního počítače, dojde k chybě: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.` . Buď snižte počet vstupně-výstupních operací změnou typu disku, nebo zvyšte omezení výkonu zakončení zvýšením velikosti virtuálního počítače. 
+   > Ujistěte se, že vaše konfigurace úložiště odpovídá omezením podle zvolené velikosti virtuálního počítače. Pokud zvolíte parametry úložiště, které překračují maximální výkon velikosti virtuálního počítače, bude to mít za následek upozornění: `The desired performance might not be reached due to the maximum virtual machine disk performance cap` . Buď snižte počet vstupně-výstupních operací změnou typu disku, nebo zvyšte omezení výkonu zakončení zvýšením velikosti virtuálního počítače. Tím se nezastaví zřizování. 
 
 
 Na základě vašich voleb provede Azure po vytvoření virtuálního počítače tyto úlohy konfigurace úložiště:
@@ -103,7 +104,7 @@ U stávajících SQL Server virtuálních počítačů můžete upravit někter�
 
 Pokud chcete upravit nastavení úložiště, vyberte **Konfigurovat** v části **Nastavení**. 
 
-![Konfigurace úložiště pro existující virtuální počítač SQL Server](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
+![Snímek obrazovky, který zvýrazní možnost konfigurace a část využití úložiště.](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
 
 Můžete upravit nastavení disku pro jednotky, které byly nakonfigurované během procesu vytváření virtuálního počítače SQL Server. Když vyberete možnost **Zvětšit jednotku** , otevře se stránka pro úpravy jednotky, která umožňuje změnit typ disku a přidat další disky. 
 

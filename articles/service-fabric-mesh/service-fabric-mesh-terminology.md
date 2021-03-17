@@ -1,18 +1,23 @@
 ---
 title: Terminologie pro síť Azure Service Fabric
 description: Tento článek podrobně popisuje terminologii, kterou používá Azure Service Fabric mřížka, která vám pomůže lépe pochopit výrazy používané v dokumentaci.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: fcd17c64ac41056420a22e328d13862e52bd99bd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1fda83ec00bed0f0c67d45e1e1af61baa5de5e78
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246720"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626752"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabricch mřížek
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek podrobně popisuje terminologii, kterou používá Azure Service Fabric mřížka, která vám pomůže lépe pochopit výrazy používané v dokumentaci.
 

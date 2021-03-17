@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515139"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106616"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog
-V tomto článku se naučíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog k tomu, aby byla data zjistitelná v rámci organizace tím, že je integruje s Data Catalog. Další informace o katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Pro pochopení scénářů, ve kterých můžete použít Data Catalog, přečtěte si téma [Azure Data Catalog běžných scénářů](../data-catalog/data-catalog-common-scenarios.md).
+V tomto článku se naučíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog k tomu, aby byla data zjistitelná v rámci organizace tím, že je integruje s Data Catalog. Další informace o katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/overview.md). Pro pochopení scénářů, ve kterých můžete použít Data Catalog, přečtěte si téma [Azure Data Catalog běžných scénářů](../data-catalog/data-catalog-common-scenarios.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -52,12 +52,12 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     c. Pole **objekty k registraci** obsahují seznam souborů a složek, které chcete zaregistrovat v Azure Data Catalog.
 
-    ![Zobrazit datovou strukturu](./media/data-lake-store-with-data-catalog/view-data-structure.png "Zobrazit datovou strukturu")
+    ![Snímek obrazovky dialogového okna Microsoft Azure Data Catalog-Store Account](./media/data-lake-store-with-data-catalog/view-data-structure.png "Zobrazit datovou strukturu")
 1. V tomto kurzu byste měli zaregistrovat všechny soubory v adresáři. V takovém případě kliknutím na tlačítko (![přesunout objekty](./media/data-lake-store-with-data-catalog/move-objects.png "Přesunout objekty")) přesuňte všechny soubory do pole **objekty, které mají být registrovány** .
 
     Vzhledem k tomu, že se data budou registrovat v katalogu dat pro celé organizace, je doporučený postup pro přidání některých metadat, která můžete později použít k rychlému vyhledání dat. Můžete například přidat e-mailovou adresu vlastníka dat (například jeden, kdo odesílá data), nebo přidat značku k identifikaci dat. Následující snímek obrazovky ukazuje značku, kterou přidáte k datům.
 
-    ![Zobrazit datovou strukturu](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Zobrazit datovou strukturu")
+    ![Snímek obrazovky dialogového okna Microsoft Azure Data Catalog-Store Account se značkou, která byla přidána do dat s názvem.](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Zobrazit datovou strukturu")
 
     Klikněte na **Zaregistrovat**.
 1. Následující snímek obrazovky označuje, že data jsou úspěšně registrována v Data Catalog.

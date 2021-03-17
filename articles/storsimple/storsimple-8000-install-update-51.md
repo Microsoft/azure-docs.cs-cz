@@ -3,7 +3,7 @@ title: Instalace aktualizace 5,1 na zařízení s StorSimple 8000 series | Micro
 description: Vysvětluje, jak nainstalovat aktualizaci StorSimple 8000 Series Update 5,1 na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
-author: priestlg
+author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
-ms.author: v-grpr
-ms.openlocfilehash: fb2123bdb0e12571a58a32e414a610665935ebb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508210"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91575958"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Instalace aktualizace 5,1 na zařízení StorSimple
 
@@ -60,15 +60,15 @@ Provedením následujících kroků aktualizujte zařízení tak, aby se [aktual
 
 2. Přejděte na **nastavení zařízení**  >  **aktualizace zařízení**.
 
-    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update2.png)
+    ![Snímek obrazovky okna nastavení s možností aktualizace zařízení s názvem.](./media/storsimple-8000-install-update-51/update2.png)
 
 3. Pokud jsou k dispozici nové aktualizace, zobrazí se oznámení. Případně můžete v okně **aktualizace zařízení** kliknout na **Vyhledat aktualizace**. Vytvoří se úloha vyhledávání dostupných aktualizací. Po úspěšném dokončení úlohy se zobrazí zpráva.
 
-    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update3.png)
+    ![Snímek obrazovky s oknem nastavení s možností aktualizace zařízení s názvem a v okně aktualizace zařízení s novými pravidelnými aktualizacemi je k dispozici zpráva s názvem.](./media/storsimple-8000-install-update-51/update3.png)
 
 4. Doporučujeme, abyste si před instalací aktualizace na zařízení prošli poznámky k verzi. Chcete-li použít aktualizace, klikněte na tlačítko **instalovat aktualizace**. V okně **Potvrdit běžné aktualizace** si přečtěte předpoklady, které je potřeba provést před instalací aktualizací. Zaškrtnutím políčka označíte, že jste připraveni aktualizovat zařízení, a pak klikněte na **nainstalovat**.
 
-    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update4.png)
+    ![Snímek obrazovky s oknem aktualizace zařízení s nainstalovanou možností instalovat aktualizace a potvrdit pravidelné aktualizace s možností souhlasu a instalace s názvem.](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Spustí se sada kontrol požadavků. Mezi tyto kontroly patří:
    
@@ -80,17 +80,17 @@ Provedením následujících kroků aktualizujte zařízení tak, aby se [aktual
 
 7. Po úspěšném dokončení předkontrol se vytvoří úloha aktualizace. Po úspěšném vytvoření úlohy aktualizace se zobrazí upozornění.
    
-    ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update-51/update6.png)
+    ![Snímek obrazovky s oznámením, které říká "spouštění úlohy aktualizací softwaru"](./media/storsimple-8000-install-update-51/update6.png)
    
     Aktualizace se potom nainstaluje na vašem zařízení.
 
 9. Dokončení aktualizace trvá několik hodin. Podrobnosti o úloze můžete kdykoli zobrazit výběrem úlohy aktualizace a kliknutím na **Podrobnosti**.
 
-    ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update-51/update8.png)
+    ![Snímek obrazovky okna aktualizace zařízení s možností stáhnout a nainstalovat probíhající aktualizace softwaru, která se nazývá a nainstaluje okno instalovat aktualizace.](./media/storsimple-8000-install-update-51/update8.png)
 
      Můžete také monitorovat průběh úlohy aktualizace z **nastavení zařízení > úloh**. V okně **úlohy** vidíte průběh aktualizace.
 
-     ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update-51/update7.png)
+     ![Snímek obrazovky okna nastavení s úlohami, které se vyvolaly, a okno úlohy znázorňující průběh aktualizace.](./media/storsimple-8000-install-update-51/update7.png)
 
 10. Po dokončení úlohy přejděte do **nastavení zařízení > aktualizace zařízení**. Verze softwaru by se teď měla aktualizovat.
 

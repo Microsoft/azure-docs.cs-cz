@@ -1,47 +1,47 @@
 ---
-title: Řešení potíží s dotazy při použití Azure Cosmos DB
+title: Řešení potíží s dotazy při používání služby Azure Cosmos DB
 description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559981"
 ---
-# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako počáteční místo pro řešení potíží s pomalými nebo nákladnými dotazy v rozhraní API pro Azure Cosmos DB Core (SQL). [Diagnostické protokoly](cosmosdb-monitor-resource-logs.md) můžete použít také k identifikaci dotazů, které jsou pomalé nebo které využívají významné množství propustnosti.
+Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako výchozí bod při řešení potíží s pomalými nebo nákladnými dotazy v rozhraní Core (SQL) API služby Azure Cosmos DB. K identifikaci dotazů, které jsou pomalé nebo které spotřebovávají významnou část propustnosti, můžete použít také [diagnostické protokoly](cosmosdb-monitor-resource-logs.md). Pokud používáte rozhraní API Azure Cosmos DB pro MongoDB, měli byste použít [rozhraní Azure Cosmos DB API pro Průvodce odstraňováním potíží dotazů MongoDB](mongodb-troubleshoot-query.md) .
 
-Optimalizace dotazů můžete široce roztřídit do Azure Cosmos DB:
+Optimalizace dotazů v Azure Cosmos DB jsou v podstatě zařazené do kategorií následujícím způsobem:
 
 - Optimalizace, které omezují poplatek za jednotku žádosti (RU) na dotaz
 - Optimalizace, které pouze omezují latenci
 
-Pokud snížíte náklady na poplatek za dotaz, bude to skoro jistě snížit latenci.
+Pokud omezíte poplatek za dotaz, obvykle se sníží latence.
 
-Tento článek popisuje příklady, které můžete znovu vytvořit pomocí [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sady.
+Tento článek popisuje příklady, které můžete znovu vytvořit pomocí [nutriční datové sady](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
 ## <a name="common-sdk-issues"></a>Běžné problémy sady SDK
 
 Před čtením tohoto průvodce je užitečné vzít v úvahu běžné problémy sady SDK, které nesouvisí s dotazovacím modulem.
 
-- Nejlepšího výkonu dosáhnete pomocí těchto [tipů pro výkon](performance-tips.md).
-    > [!NOTE]
-    > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
+- Postupujte podle těchto [tipů pro výkon sady SDK](performance-tips.md).
+    - [Průvodce odstraňováním potíží sady .NET SDK](troubleshoot-dot-net-sdk.md)
+    - [Průvodce odstraňováním potíží se sadou Java SDK](troubleshoot-java-sdk-v4-sql.md)
 - Sada SDK umožňuje nastavení `MaxItemCount` pro vaše dotazy, ale nemůžete zadat minimální počet položek.
     - Kód by měl zpracovat libovolnou velikost stránky od nuly do `MaxItemCount` .
-    - Počet položek na stránce bude vždy menší nebo roven zadanému `MaxItemCount` . Je však `MaxItemCount` striktně maximálně a může to být méně výsledků než tato částka.
 - Někdy dotazy mohou mít prázdné stránky i v případě, že na budoucí stránce dojde k výsledkům. Možné příčiny:
     - Sada SDK by mohla provedla více síťových volání.
     - Načtení dokumentů může trvat dlouhou dobu.
-- Všechny dotazy mají token pro pokračování, který umožní, aby dotaz pokračoval. Nezapomeňte dotaz úplně vyprázdnit. Podívejte se na ukázky sady SDK a pomocí `while` smyčky `FeedIterator.HasMoreResults` pro vyprázdněte celý dotaz.
+- Všechny dotazy mají token pro pokračování, který umožní, aby dotaz pokračoval. Nezapomeňte dotaz úplně vyprázdnit. Další informace o [zpracování více stránek výsledků](sql-query-pagination.md#handling-multiple-pages-of-results)
 
 ## <a name="get-query-metrics"></a>Získat metriky dotazů
 
@@ -62,6 +62,8 @@ V následujících částech najdete informace o relevantních optimalizaci dota
 - [Do zásad indexování zahrňte potřebné cesty.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Zjistěte, které systémové funkce používají index.](#understand-which-system-functions-use-the-index)
+
+- [Vylepšete provádění řetězcové funkce systému.](#improve-string-system-function-execution)
 
 - [Pochopení, které agregační dotazy používají index.](#understand-which-aggregate-queries-use-the-index)
 
@@ -142,7 +144,7 @@ Vaše zásada indexování by měla zahrnovat jakékoli vlastnosti zahrnuté v `
 
 Pokud spustíte následující jednoduchý dotaz na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sadě, budete při indexování klauzule v klauzuli pozorovat mnohem nižší poplatky za ru `WHERE` :
 
-#### <a name="original"></a>Původně
+#### <a name="original"></a>Původní
 
 Dotaz:
 
@@ -192,29 +194,85 @@ Zásady indexování se aktualizovaly:
 
 **Poplatek za ru:** 2,98 ru
 
-Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na dostupnost zápisu nebo výkon. Přidáte-li do indexu novou vlastnost, budou dotazy, které používají vlastnost, okamžitě používat nový dostupný index. Dotaz použije nový index při sestavení. Takže výsledky dotazu můžou být nekonzistentní, zatímco probíhá opětovné sestavení indexu. Pokud je nová vlastnost indexována, dotazy, které používají pouze existující indexy, nebudou při opětovném sestavení indexu ovlivněny. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na zápis nebo čtení. [Průběh transformace indexu můžete sledovat](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Pochopení, které systémové funkce používají index
 
-Pokud lze výraz přeložit do rozsahu řetězcových hodnot, může použít index. V opačném případě to nemůže.
+Většina systémových funkcí používá indexy. Tady je seznam některých běžných řetězcových funkcí, které používají indexy:
 
-Zde je seznam některých běžných řetězcových funkcí, které mohou použít index:
+- StartsWith
+- Contains
+- RegexMatch
+- Left
+- Dílčí řetězec – ale pouze v případě, že první num_expr je 0
 
-- STARTSWITH (str_expr1, str_expr2, bool_expr)  
-- OBSAHUJE (str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- Substring (str_expr, num_expr, num_expr) = str_expr, ale pouze v případě, že první num_expr je 0
-
-Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají index a vyžadují načtení každého dokumentu:
+Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají index a musí při použití v klauzuli načíst každý dokument `WHERE` :
 
 | **Systémová funkce**                     | **Nápady pro optimalizaci**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| HORNÍ/DOLNÍ                             | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| Horní/dolní                         | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Vypočítá aktuální čas před provedením dotazu a použije tuto řetězcovou hodnotu v `WHERE` klauzuli. |
 | Matematické funkce (neagregace) | Pokud v dotazu potřebujete často vypočítat hodnotu, zvažte uložení hodnoty jako vlastnosti v dokumentu JSON. |
 
-------
+Tyto systémové funkce mohou používat indexy s výjimkou případů, kdy se používá v dotazech s agregacemi:
 
-Jiné části dotazu mohou i nadále používat index, i když systémové funkce ne.
+| **Systémová funkce**                     | **Nápady pro optimalizaci**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| Funkce prostorového systému                        | Uložení výsledků dotazu do materializované zobrazení v reálném čase |
+
+Při použití v `SELECT` klauzuli neefektivní systémové funkce nebudou mít vliv na to, jak dotazy mohou používat indexy.
+
+### <a name="improve-string-system-function-execution"></a>Zlepšení provádění řetězcové funkce systému
+
+U některých systémových funkcí, které používají indexy, můžete vylepšit spouštění dotazů přidáním `ORDER BY` klauzule do dotazu. 
+
+Přesněji řečeno, jakákoli systémová funkce, jejíž poplatek za RU se zvyšuje, protože mohutnost vlastnosti se zvyšuje, může být výhodné `ORDER BY` v dotazu. Tyto dotazy provedou prohledávání indexů, takže výsledkem řazení výsledků dotazu může být dotaz efektivnější.
+
+Tato optimalizace může zlepšit spuštění následujících systémových funkcí:
+
+- StartsWith (kde nerozlišuje velká a malá písmena = true)
+- StringEquals (kde nerozlišuje velká a malá písmena = true)
+- Contains
+- RegexMatch
+- EndsWith
+
+Například zvažte následující dotaz s `CONTAINS` . `CONTAINS` bude používat indexy, ale v některých případech i po přidání relevantního indexu, můžete při spuštění níže uvedeného dotazu stále sledovat velmi vysoký poplatek.
+
+Původní dotaz:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+Můžete zlepšit spouštění dotazů přidáním `ORDER BY` :
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
+
+Stejná optimalizace vám může pomáhat v dotazech s dalšími filtry. V takovém případě je nejlepší také přidat vlastnosti s filtry rovnosti do `ORDER BY` klauzule.
+
+Původní dotaz:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+Můžete zlepšit spouštění dotazů přidáním `ORDER BY` a [složeného indexu](index-policy.md#composite-indexes) pro (c.Name, c. město):
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Vysvětlení, které agregační dotazy používají index
 
@@ -277,7 +335,7 @@ Pokud máte v plánu často spouštět stejné agregované dotazy, může být e
 
 I když dotazy, které obsahují klauzuli Filter a `ORDER BY` klauzule, budou normálně používat index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. Kromě změny zásad indexování byste měli do klauzule přidat všechny vlastnosti složeného indexu `ORDER BY` . Tato změna dotazu zajistí, že se použije složený index.  Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu:
 
-#### <a name="original"></a>Původně
+#### <a name="original"></a>Původní
 
 Dotaz:
 
@@ -470,7 +528,7 @@ Tady je příslušný složený index:
 
 ## <a name="optimizations-that-reduce-query-latency"></a>Optimalizace, které snižují latenci dotazů
 
-V mnoha případech může být poplatek za RU přijatelný, pokud je latence dotazů pořád příliš vysoká. Následující části obsahují přehled tipů pro snížení latence dotazů. Pokud stejný dotaz spouštíte několikrát pro stejnou datovou sadu, bude mít každý čas stejný poplatek za RU. Latence dotazů se ale může lišit mezi provedeními dotazu.
+V mnoha případech může být poplatek za RU přijatelný, pokud je latence dotazů pořád příliš vysoká. Následující části obsahují přehled tipů pro snížení latence dotazů. Pokud stejný dotaz spouštíte několikrát pro stejnou datovou sadu, bude to mít obvykle za každou dobu stejnou částku RU. Latence dotazů se ale může lišit mezi provedeními dotazu.
 
 ### <a name="improve-proximity"></a>Zlepšení blízkosti
 
@@ -492,5 +550,6 @@ Dotazy jsou navržené tak, aby výsledky byly předem načteny, zatímco aktuá
 V následujících článcích najdete informace o tom, jak měřit ru na dotaz, získat statistiku spuštění pro optimalizaci vašich dotazů a další:
 
 * [Získat metriky spouštění dotazů SQL pomocí sady .NET SDK](profile-sql-api-query.md)
-* [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](sql-api-sql-query-metrics.md)
+* [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](./sql-api-query-metrics.md)
 * [Tipy ke zvýšení výkonu pro .NET SDK](performance-tips.md)
+* [Tipy ke zvýšení výkonu pro Java v4 SDK](performance-tips-java-sdk-v4-sql.md)

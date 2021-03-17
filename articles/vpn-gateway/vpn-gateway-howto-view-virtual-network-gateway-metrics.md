@@ -2,19 +2,19 @@
 title: Zobrazit metriky služby Azure VPN Gateway
 description: Postup zobrazení VPN Gateway metriky
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: b3a79b8101a55eaf401c20cb118be3b0796b7aca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531254"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89443173"
 ---
-# <a name="view-vpn-gateway-metrics"></a>Zobrazit VPN Gateway metriky
+# <a name="view-vpn-gateway-metrics"></a>Zobrazení metrik VPN Gateway
 
 Brány VPN Azure můžete monitorovat pomocí Azure Monitor. Tento článek popisuje metriky, které jsou k dispozici prostřednictvím portálu. Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném čase, které jsou užitečné při upozorňování a rychlé detekci problémů.
 
@@ -23,14 +23,14 @@ Brány VPN Azure můžete monitorovat pomocí Azure Monitor. Tento článek popi
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bajty/s  | 5 minut| Průměrné využití šířky pásma pro všechna připojení typu Site-to-site v bráně.     |
 |**P2SBandwidth**| Bajty/s  | 1 min.  | Průměrné využití šířky pásma všech připojení typu Point-to-site v bráně    |
-|**P2SConnectionCount**| Count  | 1 min.  | Počet připojení typu Point-to-site v bráně   |
+|**P2SConnectionCount**| Počet  | 1 min.  | Počet připojení typu Point-to-site v bráně   |
 |**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Průměrné využití šířky pásma pro tunely vytvořené v bráně |
 |**TunnelEgressBytes** | Bajty | 5 minut | Odchozí provoz na tunelech vytvořených v bráně.   |
-|**TunnelEgressPackets** | Count | 5 minut | Počet odchozích paketů v tunelech vytvořených v bráně.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Počet zrušených odchozích paketů v tunelech způsobených neshodou výběrů provozu |
+|**TunnelEgressPackets** | Počet | 5 minut | Počet odchozích paketů v tunelech vytvořených v bráně.   |
+|**TunnelEgressPacketDropTSMismatch** | Počet | 5 minut | Počet zrušených odchozích paketů v tunelech způsobených neshodou výběrů provozu |
 |**TunnelIngressBytes** | Bajty | 5 minut | Příchozí provoz na tunelech vytvořených v bráně.   |
-|**TunnelIngressPackets** | Count | 5 minut | Počet příchozích paketů v tunelech vytvořených v bráně   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Počet vynechaných příchozích paketů v tunelech způsobených neshodou v selektoru provozu |
+|**TunnelIngressPackets** | Počet | 5 minut | Počet příchozích paketů v tunelech vytvořených v bráně   |
+|**TunnelIngressPacketDropTSMismatch** | Počet | 5 minut | Počet vynechaných příchozích paketů v tunelech způsobených neshodou v selektoru provozu |
 
 ## <a name="the-following-steps-help-you-locate-and-view-metrics"></a>Následující kroky vám pomůžou najít a zobrazit metriky:
 

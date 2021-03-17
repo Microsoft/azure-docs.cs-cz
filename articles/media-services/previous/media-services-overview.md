@@ -3,7 +3,7 @@ title: Přehled služby Azure Media Services | Dokumentace Microsoftu
 description: Microsoft Azure Media Services je rozšiřitelná cloudová platforma, která vývojářům umožňuje vytvářet škálovatelné aplikace pro správu a doručování médií. Tento článek poskytuje přehled Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 78fa6b343a01e96c000b6c64a55d5fdf1f0284f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6e68e53387aa50b99bab8ed4cdba7f1e97fc48c0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084649"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008225"
 ---
-# <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
+# <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 3](../latest/media-services-overview.md)
 > * [Verze 2](media-services-overview.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Microsoft Azure Media Services (AMS) je rozšiřitelná cloudová platforma, která vývojářům umožňuje vytvářet škálovatelné aplikace pro správu a doručování médií. Služba Media Services využívá rozhraní REST API, které vám umožní bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i v živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
@@ -42,7 +44,7 @@ Před nahráním videa nebo obrázku do Media Services musíte mít všechna spr
 
 Informace o dodržování předpisů, ochraně osobních údajů a zabezpečení v Media Services najdete na webu Microsoft [Trust Center](https://www.microsoft.com/trust-center/?rtc=1). Pro závazky společnosti Microsoft, postupy pro zpracování a uchovávání dat, včetně toho, jak odstranit vaše data, přečtěte si [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky používání služeb Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Pomocí Media Services souhlasíte s tím, že DPA a prohlášením o zásadách ochrany osobních údajů.
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
@@ -84,13 +86,12 @@ Informace o konceptech Azure Media Services najdete v článku [Koncepty](media-
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Podporované scénáře a dostupnost služby Media Services v datových centrech
 
-Podrobné informace najdete v tématu [Scénáře a dostupnost funkcí a služeb AMS v datových centrech](scenarios-and-availability.md).
+Další informace o běžných scénářích Azure najdete v tématu věnovaném [scénářům AMS](scenarios-and-availability.md).
+Informace o regionální dostupnosti najdete v tématu [dostupnost služby Media Service](availability-regions-v-2.md).
 
 ## <a name="service-level-agreement-sla"></a>Smlouvy o úrovni služeb (SLA)
 
 Další informace najdete v článku [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/).
-
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](scenarios-and-availability.md#availability).
 
 ## <a name="support"></a>Podpora
 

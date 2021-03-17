@@ -3,17 +3,17 @@ title: Výběr typu disku pro virtuální počítače Azure s IaaS – spravovan
 description: Přečtěte si o dostupných typech disků Azure pro virtuální počítače, včetně Ultra disks, Premium SSD, Standard SSD a Standard HDD.
 author: roygara
 ms.author: rogarana
-ms.date: 06/03/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2b8a5cf1bd3df1405f148c5fe84701c04a4d0c0a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658043"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500763"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 
@@ -26,7 +26,7 @@ V následující tabulce najdete porovnání disků Ultra, Premium Solid-State D
 | Podrobnosti | Disky Ultra | SSD úrovně Premium | SSD úrovně Standard | HDD úrovně Standard |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
-|Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](~/articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používané podnikové aplikace a vývoj či testování   |Zálohování, úlohy, které nejsou kritické a používají se zřídka   |
+|Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používané podnikové aplikace a vývoj či testování   |Zálohování, úlohy, které nejsou kritické a používají se zřídka   |
 |Maximální velikost disku   |65 536 gibibajtů (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
 |Maximální propustnost   |2 000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Maximální počet vstupně-výstupních operací za sekundu   |160 000    |20 000   |6 000   |2 000   |
@@ -57,12 +57,14 @@ Mezi klíčové funkce Ultra diskù patří:
 |64     |19 200         |2 000         |
 |128     |38 400         |2 000         |
 |256     |76 800         |2 000         |
-|512     |80,000         |2 000         |
+|512     |153 600         |2 000         |
 |1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2 000         |
+
+Disky Ultra jsou navržené tak, aby poskytovaly latence v milisekundách a cílové IOPS a propustnost popsané v předchozí tabulce 99,99% času.
 
 ### <a name="ga-scope-and-limitations"></a>Rozsah a omezení GA
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 
 Pokud chcete začít používat disky Ultra, přečtěte si náš článek na předmětu: [použití disků Azure Ultra](disks-enable-ultra-ssd.md).
@@ -71,18 +73,18 @@ Pokud chcete začít používat disky Ultra, přečtěte si náš článek na p�
 
 Azure Premium SSD poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače a úlohy náročné na vstupně-výstupní operace (v/v). Pokud chcete využít rychlost a výkon disků služby Premium Storage, můžete migrovat stávající disky virtuálních počítačů na Premium SSD. Premium SSD jsou vhodné pro produkční aplikace kritické pro klíčové služby. Prémiová SSD se dá použít jenom u řady virtuálních počítačů, které jsou kompatibilní s Premium Storage.
 
-Další informace o typech a velikostech virtuálních počítačů v Azure pro Windows, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů s Windows](~/articles/virtual-machines/windows/sizes.md). Další informace o typech a velikostech virtuálních počítačů v Azure pro Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů se systémem Linux](~/articles/virtual-machines/linux/sizes.md). V některém z těchto článků je potřeba vyhledat v článku o jednotlivých velikostech virtuálních počítačů, abyste zjistili, jestli je služba Premium Storage kompatibilní.
+Další informace o jednotlivých typech a velikostech virtuálních počítačů v Azure pro Windows nebo Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů v Azure](sizes.md). V tomto článku je potřeba vyhledat všechny jednotlivé velikosti virtuálních počítačů, abyste zjistili, jestli je služba Premium Storage kompatibilní.
 
 ### <a name="disk-size"></a>Velikost disku
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Když zřizujete disk služby Premium Storage na rozdíl od standardního úložiště, zaručujete si kapacitu, IOPS a propustnost tohoto disku. Pokud například vytvoříte P50 disk, Azure zřídí 4 095 GB kapacity úložiště, 7 500 IOPS a propustnost 250 MB/s pro tento disk. Vaše aplikace může využívat celou kapacitu a výkon. SSD úrovně Premium disky jsou navržené tak, aby poskytovaly nízké latence v řádu milisekund a cílové IOPS a propustnost popsané v předchozí tabulce 99,9% času.
 
 ## <a name="bursting"></a>Shlukování
 
-SSD úrovně Premium velikosti menší než P30 nyní nabízí shlukování disku a může zvýšit počet IOPS za sekundu na disk až do 3 500 a jejich šířku pásma až 170 MB/s. Shlukování je automatizované a funguje na základě úvěrového systému. Kredity se automaticky shromažďují v intervalu shlukování, když se provoz na disku nachází pod stanoveným cílem výkonu a kredity se automaticky spotřebovávají při nárůstu provozu po cíli až do maximálního limitu shluku. Maximální limit shluku určuje strop & šířky pásma disku, a to i v případě, že máte k dispozici nárůst kreditů. Shlukování disků poskytuje lepší toleranci proti nepředvídatelným změnám vzorů v/v. Můžete ji nejlépe využít pro spouštění a aplikace disku s operačním systémem s nárazové přenosy.    
+SSD úrovně Premium velikosti menší než P30 nyní nabízí shlukování disku a může zvýšit počet IOPS za sekundu na disk až do 3 500 a jejich šířku pásma až do 170 MB/s. Shlukování je automatizované a funguje na základě úvěrového systému. Kredity se automaticky shromažďují v intervalu shlukování, když se provoz na disku nachází pod stanoveným cílem výkonu a kredity se automaticky spotřebovávají při nárůstu provozu po cíli až do maximálního limitu shluku. Maximální limit shluku určuje strop & šířky pásma disku, a to i v případě, že máte k dispozici nárůst kreditů. Shlukování disků poskytuje lepší toleranci proti nepředvídatelným změnám vzorů v/v. Můžete ji nejlépe využít pro spouštění a aplikace disku s operačním systémem s nárazové přenosy.    
 
-Podpora pro rozšíření disků bude ve výchozím nastavení povolená pro nová nasazení použitelných velikostí disků bez nutnosti zásahu uživatele. U stávajících disků s použitelnými velikostmi můžete povolit shlukování pomocí jedné z těchto dvou možností: odpojit a znovu připojit disk nebo zastavit a restartovat připojený virtuální počítač. Pokud je disk připojený k virtuálnímu počítači, který podporuje maximální dobu trvání ve špičce limitu 30 minut, budou se všechny velikosti disků s vyšší úrovní zatížení začínat plným objemem shlukového kreditu. Další informace o tom, jak rozpracovat na discích Azure, najdete v tématu věnovaném [SSD úrovně Premiummu roztržení](~/articles/virtual-machines/linux/disk-bursting.md). 
+Podpora pro rozšíření disků bude ve výchozím nastavení povolená pro nová nasazení použitelných velikostí disků bez nutnosti zásahu uživatele. U stávajících disků s použitelnými velikostmi můžete povolit shlukování pomocí jedné z těchto dvou možností: odpojit a znovu připojit disk nebo zastavit a restartovat připojený virtuální počítač. Pokud je disk připojený k virtuálnímu počítači, který podporuje maximální dobu trvání ve špičce limitu 30 minut, budou se všechny velikosti disků s vyšší úrovní zatížení začínat plným objemem shlukového kreditu. Další informace o tom, jak rozpracovat na discích Azure, najdete v tématu věnovaném [SSD úrovně Premiummu roztržení](./disk-bursting.md). 
 
 ### <a name="transactions"></a>Transakce
 
@@ -93,7 +95,7 @@ V případě SSD úrovně Premium je každá vstupně-výstupní operace menší
 Azure Standard SSD je cenově výhodné možnost úložiště optimalizovaná pro úlohy, které vyžadují konzistentní výkon na nižší úrovni IOPS. SSD úrovně Standard nabízí dobré prostředí vstupní úrovně pro ty, kteří chtějí přejít ke cloudu, zejména v případě, že dochází k problémům s odchylkou úloh běžících na vašich řešeních HDD na pracovišti. Ve srovnání se standardem HDD přináší úroveň Standard SSD lepší dostupnost, konzistenci, spolehlivost a latenci. Standardní SSD jsou vhodné pro webové servery, nízkoúrovňové aplikační servery s nízkými IOPS, lehce používané podnikové aplikace a vývojové a testovací úlohy. Jako standard HDD jsou na všech virtuálních počítačích Azure k dispozici standardní SSD.
 
 ### <a name="disk-size"></a>Velikost disku
-[!INCLUDE [disk-storage-standard-ssd-sizes](~/includes/disk-storage-standard-ssd-sizes.md)]
+[!INCLUDE [disk-storage-standard-ssd-sizes](../../includes/disk-storage-standard-ssd-sizes.md)]
 
 Standardní SSD jsou navržené tak, aby poskytovaly jednorázové latence milisekund a IOPS a propustnost až do limitů popsaných v předchozí tabulce 99% času. Skutečný počet vstupně-výstupních operací a propustnosti se může lišit v závislosti na vzorech přenosů. Úroveň Standard SSD zajistí jednotnější výkon, než disky HDD s nižší latencí.
 
@@ -106,7 +108,7 @@ U standardních SSD se za jednu vstupně-výstupní operaci považuje každá vs
 Azure Standard HDD zajišťuje spolehlivou podporu disků s nízkými náklady pro virtuální počítače, které mají úlohy s necitlivými na latenci. U služby Storage úrovně Standard se data ukládají na jednotky pevného disku (HDD). Latence, IOPS a propustnost HDD úrovně Standard disků se můžou výrazně lišit ve srovnání s disky na bázi SSD. HDD úrovně Standard disky jsou navržené tak, aby poskytovaly latence zápisu v rámci 10ms a latence čtení v 20ms pro většinu vstupně-výstupních operací, ale skutečný výkon se může lišit v závislosti na velikosti vstupně-výstupních operací a způsobu úlohy. Když pracujete s virtuálními počítači, můžete použít standardní disky HDD pro scénáře vývoje a testování a méně důležité úlohy. Standardní HDD jsou dostupné ve všech oblastech Azure a dají se používat se všemi virtuálními počítači Azure.
 
 ### <a name="disk-size"></a>Velikost disku
-[!INCLUDE [disk-storage-standard-hdd-sizes](~/includes/disk-storage-standard-hdd-sizes.md)]
+[!INCLUDE [disk-storage-standard-hdd-sizes](../../includes/disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>Transakce
 
@@ -139,7 +141,7 @@ Podrobné informace o cenách pro Managed Disks, včetně nákladů na transakce
 Virtuální počítače Azure mají schopnost určit, jestli jsou kompatibilní s disky Ultra. Virtuální počítač kompatibilní s Ultra disk přiděluje vyhrazenou kapacitu šířky pásma mezi instancemi výpočetního virtuálního počítače a jednotkou škálování úložiště bloku, aby se optimalizoval výkon a snížila latence. Výsledkem přidání této možnosti na virtuální počítač je poplatek za rezervaci, který je uložený jenom v případě, že jste na virtuálním počítači povolili funkci Ultra disk, aniž byste k ní připojili disk Ultra. Pokud je Ultra disk připojený k virtuálnímu počítači kompatibilnímu s Ultra diskem, tento poplatek se nepoužije. Tento poplatek je vázaný na vCPU zřízený na virtuálním počítači. 
 
 > [!Note]
-> Pro [omezené velikosti virtuálních počítačů](~/articles/virtual-machines/linux/constrained-vcpu.md)je poplatek za rezervaci založen na skutečném počtu vCPU, nikoli na omezeních jader. U Standard_E32-8s_v3 bude poplatek za rezervaci vycházet z 32 jader. 
+> Pro [omezené velikosti virtuálních počítačů](constrained-vcpu.md)je poplatek za rezervaci založen na skutečném počtu vCPU, nikoli na omezeních jader. U Standard_E32-8s_v3 bude poplatek za rezervaci vycházet z 32 jader. 
 
 Podrobnosti o cenách za Ultra disk najdete na [stránce s cenami za disky Azure](https://azure.microsoft.com/pricing/details/managed-disks/) .
 

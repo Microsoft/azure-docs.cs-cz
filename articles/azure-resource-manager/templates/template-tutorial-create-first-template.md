@@ -1,41 +1,41 @@
 ---
 title: Kurz – vytvoření šablony & nasazení
-description: Vytvořte svou první šablonu Azure Resource Manager. V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
+description: Vytvořte první šablonu Azure Resource Manager (šablonu ARM). V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 06/10/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 140eb73cdf6d5bb701c08b0dd8d5f85b6f137df6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497473"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656984"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Kurz: vytvoření a nasazení první šablony ARM
 
-V tomto kurzu se seznámíte s Azure Resource Manager (ARM) šablonou. Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
+V tomto kurzu se seznámíte s Azure Resource Manager šablonou (šablony ARM). Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
 
 Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte úvodní šablonu krok za krokem, dokud neprojdete všechny základní části šablony ARM. Tyto prvky jsou stavebními bloky pro mnohem složitější šablony. Doufáme, že na konci řady jste si jistí, že máte jistotu, že vytváříte vlastní šablony a jste připraveni automatizovat nasazení pomocí šablon.
 
-Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Azure Resource Manager šablony](overview.md).
+Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Přehled šablon ARM](overview.md). Další informace o šablonách ARM pomocí příručky sady modulů na Microsoft Learn najdete v tématu [nasazení a Správa prostředků v Azure pomocí šablon ARM](/learn/paths/deploy-manage-resource-manager-templates/).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="get-tools"></a>Získat nástroje
 
-Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete k vytváření a nasazování šablon.
+Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete k vytváření a nasazování šablon. Nainstalujte tyto nástroje na místní počítač.
 
 ### <a name="editor"></a>Editor
 
-Šablony jsou soubory JSON. K vytváření šablon potřebujete dobrý Editor JSON. Doporučujeme Visual Studio Code s rozšířením nástroje Správce prostředků Tools. Pokud potřebujete nainstalovat tyto nástroje, přečtěte si téma [rychlý Start: vytvoření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+Šablony jsou soubory JSON. K vytváření šablon potřebujete dobrý Editor JSON. Doporučujeme Visual Studio Code s rozšířením nástroje Správce prostředků Tools. Pokud potřebujete nainstalovat tyto nástroje, přečtěte si téma [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ### <a name="command-line-deployment"></a>Nasazení z příkazového řádku
 
 K nasazení šablony budete taky potřebovat buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokud používáte Azure CLI, musíte mít nejnovější verzi. Pokyny k instalaci najdete v těchto tématech:
 
-- [Nainstalovat Azure PowerShell](/powershell/azure/install-az-ps)
+- [Instalace Azure PowerShellu](/powershell/azure/install-az-ps)
 - [Instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
 - [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
 - [Instalace Azure CLI v macOS](/cli/azure/install-azure-cli-macos)
@@ -52,7 +52,7 @@ V pořádku budete připraveni začít se získáváním informací o šablonác
 1. Otevřete Visual Studio Code s nainstalovaným rozšířením nástroje Správce prostředků Tools.
 1. V nabídce **soubor** vyberte **nový soubor** a vytvořte nový soubor.
 1. V nabídce **soubor** vyberte **Uložit jako**.
-1. Pojmenujte soubor **azuredeploy** a vyberte příponu souboru **JSON** . Úplný název souboru **azuredeploy.jsv**.
+1. Pojmenujte soubor _azuredeploy_ a vyberte příponu souboru _JSON_ . Úplný název souboru je _azuredeploy.js_.
 1. Uložte soubor do pracovní stanice. Vyberte cestu, která se snadno pamatuje, protože tuto cestu zadáte později při nasazování šablony.
 1. Zkopírujte následující kód JSON a vložte ho do souboru:
 
@@ -64,25 +64,27 @@ V pořádku budete připraveni začít se získáváním informací o šablonác
     }
     ```
 
-    Toto prostředí VS Code vypadá takto:
+    Toto prostředí Visual Studio Code vypadá takto:
 
-    ![Šablona sady Visual Studio Code First Správce prostředků](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Šablona ARM Visual Studio Code první šablona](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
     Tato šablona neimplementuje žádné prostředky. Začínáme prázdnou šablonou, takže se můžete seznámit s postupem nasazení šablony, přičemž se minimalizuje pravděpodobnost, že došlo k nějakému problému.
 
     Soubor JSON má tyto prvky:
 
-    - **$Schema**: Určuje umístění souboru schématu JSON. Soubor schématu popisuje vlastnosti, které jsou k dispozici v rámci šablony. Například schéma definuje **prostředky** jako jednu z platných vlastností šablony. Nedělejte si starosti s tím, že datum schématu je 2019-04-01. Tato verze schématu je aktuální a zahrnuje všechny nejnovější funkce. Datum schématu se nezměnilo, protože od jeho úvodu nedošlo k žádným změnám.
-    - **contentversion –**: Určuje verzi šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona.
-    - **prostředky**: obsahuje prostředky, které chcete nasadit nebo aktualizovat. V současné době je prázdná, ale později přidáte prostředky.
+    - `$schema`: Určuje umístění souboru schématu JSON. Soubor schématu popisuje vlastnosti, které jsou k dispozici v rámci šablony. Schéma například definuje `resources` jednu z platných vlastností šablony. Nedělejte si starosti s tím, že datum schématu je 2019-04-01. Tato verze schématu je aktuální a zahrnuje všechny nejnovější funkce. Datum schématu se nezměnilo, protože od jeho úvodu nedošlo k žádným změnám.
+    - `contentVersion`: Určuje verzi šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona.
+    - `resources`: Obsahuje prostředky, které chcete nasadit nebo aktualizovat. V současné době je prázdná, ale později přidáte prostředky.
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 Blahopřejeme, vytvořili jste svou první šablonu.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Pokud chcete začít pracovat s Azure PowerShell/Azure CLI, přihlaste se pomocí přihlašovacích údajů Azure.
+
+Výběrem karet v následujících částech kódu si můžete vybrat mezi Azure PowerShell a Azure CLI. Příklady rozhraní příkazového řádku v tomto článku se napíší pro prostředí bash.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +100,7 @@ az login
 
 ---
 
-Pokud máte více předplatných Azure, vyberte předplatné, které chcete použít:
+Pokud máte více předplatných Azure, vyberte předplatné, které chcete použít. Nahraďte `[SubscriptionID/SubscriptionName]` a hranaté závorky `[]` informace o vašem předplatném:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -114,10 +116,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ---
 
-
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Když nasadíte šablonu, zadáte skupinu prostředků, která bude obsahovat prostředky. Před spuštěním příkazu k nasazení vytvořte skupinu prostředků buď pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. Vyberte karty v následující části kódu a vyberte si mezi Azure PowerShell a Azure CLI. Příklady rozhraní příkazového řádku v tomto článku se napíší pro prostředí bash.
+Když nasadíte šablonu, zadáte skupinu prostředků, která bude obsahovat prostředky. Před spuštěním příkazu k nasazení vytvořte skupinu prostředků. Použijte k tomu Azure CLI nebo Azure PowerShell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -139,7 +140,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná vám usnadní spouštění příkazů nasazení, protože nebudete muset znovu zadávat cestu při každém nasazování.
+K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná vám usnadní spouštění příkazů nasazení, protože nebudete muset znovu zadávat cestu při každém nasazování. Nahraďte `{provide-the-path-to-the-template-file}` a složenou závorku `{}` s cestou k souboru šablony.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,13 +179,13 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte, pokud `ProvisioningState` 
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

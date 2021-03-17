@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089647"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567436"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>Připojení Infoblox NIOS k Azure Sentinel
 
@@ -34,7 +34,7 @@ Tento článek vysvětluje, jak připojit [zařízení s operačním systémem I
 
 ## <a name="forward-infoblox-logs-to-the-syslog-agent"></a>Přeposílání protokolů Infoblox do agenta syslog  
 
-Nakonfigurujte Infoblox pro přeposílání zpráv syslog do pracovního prostoru Azure prostřednictvím agenta syslog.
+Nakonfigurujte Infoblox pro přeposílání zpráv syslog do pracovního prostoru Azure Sentinel prostřednictvím agenta syslog.
 
 1. Na portálu Sentinel Azure klikněte na **datové konektory** a vyberte konektor **Infoblox NIOS** .
 

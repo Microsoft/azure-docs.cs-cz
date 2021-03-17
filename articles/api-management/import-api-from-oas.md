@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 346156c624a4c8b1c1d6cc490fc0559f364b4b9d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 05295efec3d7651c3a77dd5ad6e2c72b57a6c5a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994680"
 ---
 # <a name="import-an-openapi-specification"></a>Import specifikace OpenAPI
 
@@ -42,7 +42,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 2. Ze seznamu **Přidat nové rozhraní API** vyberte **Specifikace OpenAPI**.
 
     ![Specifikace OpenAPI](./media/import-api-from-oas/oas-api.png)
-3. Zadejte nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+3. Zadejte nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
 4. Vyberte **Vytvořit**.
 
 > [!NOTE]

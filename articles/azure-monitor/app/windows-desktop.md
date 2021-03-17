@@ -3,16 +3,17 @@ title: Monitorování využití a výkonu desktopových aplikací pro Windows
 description: Analyzujte využití a výkon vaší desktopové aplikace Windows pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583314"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
 
-Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech výhod Application Insights. Jediným omezením je nutnost [povolení komunikace](./ip-addresses.md) se službou Application Insights. Pro monitorování aplikací pro Univerzální platformu Windows (UPW) doporučujeme používat sadu [Visual Studio App Center](../learn/mobile-center-quickstart.md).
+Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech výhod Application Insights. Jediným omezením je nutnost [povolení komunikace](./ip-addresses.md) se službou Application Insights. Pro monitorování aplikací pro Univerzální platformu Windows (UPW) doporučujeme používat sadu [Visual Studio App Center](../app/mobile-center-quickstart.md).
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Odeslání telemetrie do Application Insights z klasické aplikace pro Windows
 1. Na webu [Azure Portal](https://portal.azure.com)[vytvořte prostředek Application Insights](./create-new-resource.md). 
@@ -20,7 +21,7 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
 3. V sadě Visual Studio upravte balíčky NuGet projektu aplikace a přidejte Microsoft.ApplicationInsights.WindowsServer. (Nebo vyberte Microsoft. ApplicationInsights, pokud chcete jenom základní rozhraní API, a to bez standardních modulů kolekce telemetrie.)
 4. Nastavte klíč instrumentace, buď ve vašem kódu:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *váš klíč* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*váš klíč*`";`
    
     nebo v souboru ApplicationInsights.config (pokud jste nainstalovali jeden ze standardních balíčků telemetrie):
    
@@ -53,10 +54,8 @@ using Microsoft.ApplicationInsights;
             ...
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
         {
-            e.Cancel = true;
-
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -64,9 +63,10 @@ using Microsoft.ApplicationInsights;
                 // Allow time for flushing:
                 System.Threading.Thread.Sleep(1000);
             }
-            base.OnClosing(e);
+            base.OnFormClosing(e);
         }
-
+        
+        ...
 ```
 
 ## <a name="override-storage-of-computer-name"></a>Přepsat úložiště názvu počítače
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření řídicího panelu](./overview-dashboard.md)
 * [Diagnostické hledání](./diagnostic-search.md)
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)
 

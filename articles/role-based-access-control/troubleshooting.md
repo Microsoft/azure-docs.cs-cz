@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382572"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555889"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Problémy s přiřazením rolí Azure
 
-- Pokud nemůžete přidat přiřazení role v Azure Portal v **řízení přístupu (IAM)** , protože možnost **Přidat**  >  **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleAssignments/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
+- Pokud nemůžete přiřadit roli v Azure Portal pro **řízení přístupu (IAM)** , protože možnost **Přidat**  >  **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleAssignments/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
 - Pokud k přiřazení rolí používáte instanční objekt, může se zobrazit chyba "nedostatečná oprávnění k dokončení operace". Řekněme například, že máte instanční objekt, kterému byla přiřazena role vlastníka, a pokusíte se vytvořit následující přiřazení role jako instanční objekt pomocí Azure CLI:
 
     ```azurecli
@@ -61,13 +61,14 @@ $ras.Count
 
     Pokud se zobrazí chybová zpráva "nedostatečná oprávnění k dokončení operace", je pravděpodobně způsobeno tím, že rozhraní příkazového řádku Azure se snaží vyhledat identitu nabyvatele v Azure AD a instanční objekt ve výchozím nastavení nemůže službu Azure AD přečíst.
 
-    Existují dva způsoby, jak potenciálně vyřešit tuto chybu. Prvním způsobem je přiřazení role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) k instančnímu objektu, aby bylo možné číst data v adresáři.
+    Existují dva způsoby, jak potenciálně vyřešit tuto chybu. Prvním způsobem je přiřazení role [čtenáři adresáře](../active-directory/roles/permissions-reference.md#directory-readers) k instančnímu objektu, aby bylo možné číst data v adresáři.
 
-    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#new-service-principal).
+    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- Pokud se pokusíte odebrat přiřazení role posledního vlastníka pro předplatné, může se zobrazit chyba "nelze odstranit poslední přiřazení správce RBAC". Odebrání přiřazení role posledního vlastníka pro předplatné se nepodporuje, aby se předešlo osamocení předplatného. Pokud chcete zrušit předplatné, přečtěte si téma [zrušení předplatného Azure](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
@@ -86,7 +87,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Převod předplatného do jiného adresáře
 
-- Pokud potřebujete postup, jak přenést předplatné do jiného adresáře služby Azure AD, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md).
+- Pokud potřebujete postup, jak přenést předplatné do jiného adresáře služby Azure AD, přečtěte si téma [přenos předplatného Azure do jiného adresáře Azure AD](transfer-subscription.md).
 - Pokud přenesete předplatné do jiného adresáře služby Azure AD, všechna přiřazení rolí se **trvale** odstraní ze zdrojového adresáře služby Azure AD a nemigrují se do cílového adresáře služby Azure AD. V cílovém adresáři musíte znovu vytvořit přiřazení rolí. Je také nutné ručně znovu vytvořit spravované identity pro prostředky Azure. Další informace najdete v tématu [Nejčastější dotazy a známé problémy se spravovanými identitami](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Pokud jste globálním správcem služby Azure AD a nemáte přístup k předplatnému po jeho přenosu mezi adresáři, použijte přepínač **Správa přístupu pro prostředky Azure** a dočasně [zvyšte přístup](elevate-access-global-admin.md) k předplatnému, abyste získali přístup k předplatnému.
 
@@ -99,11 +100,17 @@ $ras.Count
 - Pokud při pokusu o vytvoření prostředku dojde k chybě oprávnění Klient s ID objektu nemá oprávnění k provedení akce v oboru (kód: AuthorizationFailed), zkontrolujte, že jste přihlášeni jako uživatel s přiřazenou rolí s oprávněním k zápisu pro prostředek ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění pro jednotlivé předdefinované role najdete v tématu [předdefinované role Azure](built-in-roles.md).
 - Pokud se zobrazí chyba oprávnění "nemáte oprávnění k vytvoření žádosti o podporu" při pokusu o vytvoření nebo aktualizaci lístku podpory, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s `Microsoft.Support/supportTickets/write` oprávněním, jako je například [Přispěvatel žádostí o podporu](built-in-roles.md#support-request-contributor).
 
+## <a name="move-resources-with-role-assignments"></a>Přesunutí prostředků s přiřazením rolí
+
+Pokud přesunete prostředek, který má přiřazenou roli Azure, přímo k prostředku (nebo podřízenému prostředku), přiřazení role se nepřesune a bude osamocené. Po přesunutí musíte znovu vytvořit přiřazení role. Nakonec se automaticky odebere přiřazení osamocené role, ale je osvědčeným postupem odebrání přiřazení role před přesunutím prostředku.
+
+Informace o tom, jak přesunout prostředky, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+
 ## <a name="role-assignments-with-identity-not-found"></a>Přiřazení rolí s identitou se nenašlo.
 
 V seznamu přiřazení rolí pro Azure Portal můžete všimnout, že je objekt zabezpečení (uživatel, skupina, instanční objekt nebo spravovaná identita) uvedený jako **Identita nenalezena** s **neznámým** typem.
 
-![Skupina prostředků webové aplikace](./media/troubleshooting/unknown-security-principal.png)
+![V seznamu přiřazení rolí Azure se nenašla identita.](./media/troubleshooting/unknown-security-principal.png)
 
 Identita se nemusí najít ze dvou důvodů:
 
@@ -144,7 +151,7 @@ Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, 
 }
 ```
 
-Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) .
+Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Odebrání přiřazení rolí Azure](role-assignments-remove.md).
 
 Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". Následující výstup ukazuje příklad chybové zprávy:
 
@@ -167,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>Změny přiřazení role se nezjišťují.
 
-Azure Resource Manager někdy ukládá do mezipaměti konfigurace a data pro zlepšení výkonu. Když přidáváte nebo odebíráte přiřazení rolí, může trvat až 30 minut, než se změny projeví. Pokud používáte Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášením a přihlášením. Pokud provádíte změny přiřazení rolí pomocí REST API volání, můžete vynutit aktualizaci pomocí aktualizace přístupového tokenu.
+Azure Resource Manager někdy ukládá do mezipaměti konfigurace a data pro zlepšení výkonu. Když přiřadíte role nebo odeberete přiřazení rolí, může trvat až 30 minut, než se změny projeví. Pokud používáte Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášením a přihlášením. Pokud provádíte změny přiřazení rolí pomocí REST API volání, můžete vynutit aktualizaci pomocí aktualizace přístupového tokenu.
 
 Pokud přidáváte nebo odebíráte přiřazení role v oboru skupiny pro správu a role má `DataActions` , nemusí být přístup k rovině dat aktualizován po dobu několika hodin. To platí jenom pro rozsah skupiny pro správu a rovinu dat.
 
@@ -205,7 +212,7 @@ Tyto položky vyžadují přístup pro **zápis** do **plánu App Service** , kt
 Tyto položky vyžadují přístup pro **zápis** do celé **skupiny prostředků** , která obsahuje váš web:  
 
 * Certifikáty a vazby TLS/SSL (certifikáty TLS/SSL se dají sdílet mezi lokalitami ve stejné skupině prostředků a geografickým umístěním)  
-* Pravidla výstrah  
+* Pravidla upozornění  
 * Nastavení automatického škálování  
 * Součásti Application Insights  
 * Webové testy  
@@ -216,18 +223,18 @@ Podobně jako u Web Apps vyžadují některé funkce v okně virtuálního poč�
 
 Virtuální počítače se týkají názvů domén, virtuálních sítí, účtů úložiště a pravidel výstrah.
 
-Tyto položky vyžadují pro **virtuální počítač**přístup pro **zápis** :
+Tyto položky vyžadují pro **virtuální počítač** přístup pro **zápis** :
 
 * Koncové body  
 * IP adresy  
 * Disky  
 * Rozšíření  
 
-Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítači**a **skupině prostředků** (spolu s názvem domény), ve kterém se nachází:  
+Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítači** a **skupině prostředků** (spolu s názvem domény), ve kterém se nachází:  
 
 * Skupina dostupnosti  
 * Sada s vyrovnáváním zatížení  
-* Pravidla výstrah  
+* Pravidla upozornění  
 
 Pokud nemůžete získat přístup k žádné z těchto dlaždic, požádejte správce, aby přístup přispěvatele k této skupině prostředků.
 
@@ -242,5 +249,5 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží pro uživatele typu Host](role-assignments-external-users.md#troubleshoot)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
 - [Zobrazení protokolů aktivit pro změny v Azure RBAC](change-history-report.md)

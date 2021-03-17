@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: vytvoření a Správa topologie Apache Storm – Azure HDInsight'
 description: V rychlém startu se dozvíte, jak vytvořit a monitorovat topologii Apache Storm v Azure HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045021"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928848"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý Start: vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
 
@@ -25,7 +22,7 @@ V tomto rychlém startu použijete příklad z projektu Apache [-Starter](https:
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-topology"></a>Vytvoření topologie
 
@@ -49,7 +46,7 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
 1. Pokud chcete zobrazit uživatelské rozhraní Storm, otevřete ve webovém prohlížeči adresu `https://CLUSTERNAME.azurehdinsight.net/stormui`. Nahraďte `CLUSTERNAME` názvem svého clusteru.
 
-2. V části **Souhrn topologie**vyberte položku **WORDCOUNT** ve sloupci **název** . Zobrazí se další informace o topologii.
+2. V části **Souhrn topologie** vyberte položku **WORDCOUNT** ve sloupci **název** . Zobrazí se další informace o topologii.
 
     ![Řídicí panel Storm s informacemi o topologii Storm Starter WordCount.](./media/apache-storm-quickstart/hdi-topology-summary.png)
 
@@ -78,7 +75,7 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
     |Vstupní statistiky (jenom šroub)|Informace o součástech, které vytváří data spotřebovaná šroubem.|
     |Statistiky výstupu|Informace o datech emitovaných tímto šroubem.|
     |Prováděcí moduly|Informace o instancích této součásti.|
-    |chyby|Chyby, které tato součást vytvořila.|
+    |Chyby|Chyby, které tato součást vytvořila.|
 
 4. Chcete-li zobrazit podrobnosti pro konkrétní instanci komponenty, při zobrazení podrobností o funkcích spout nebo bolt vyberte položku ze sloupce **Port** v oddílu **Vykonavatelé**.
 

@@ -1,20 +1,20 @@
 ---
 title: Uživatelsky definované funkce v šablonách
-description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager.
+description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84672931"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379620"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Uživatelsky definované funkce v šabloně Azure Resource Manager
+# <a name="user-defined-functions-in-arm-template"></a>Uživatelsky definované funkce v šabloně ARM
 
 V rámci šablony můžete vytvořit vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Uživatelsky definované funkce jsou oddělené od [standardních funkcí šablon](template-functions.md) , které jsou automaticky dostupné v rámci šablony. Vytvářejte vlastní funkce, pokud máte složité výrazy, které se ve vaší šabloně opakovaně používají.
 
-Tento článek popisuje, jak do šablony Azure Resource Manager přidat uživatelsky definované funkce.
+Tento článek popisuje, jak přidat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 
 ## <a name="define-the-function"></a>Definovat funkci
 
@@ -44,7 +44,7 @@ Vaše funkce vyžadují hodnotu oboru názvů, aby se zabránilo konfliktům ná
 
 ## <a name="use-the-function"></a>Použití funkce
 
-Následující příklad ukazuje šablonu, která obsahuje uživatelsky definovanou funkci. Tato funkce používá k získání jedinečného názvu pro účet úložiště. Šablona obsahuje parametr s názvem **storageNamePrefix** , který je předán jako parametr funkci.
+Následující příklad ukazuje šablonu, která obsahuje uživatelsky definovanou funkci pro získání jedinečného názvu pro účet úložiště. Šablona obsahuje parametr s názvem `storageNamePrefix` , který je předán jako parametr funkci.
 
 ```json
 {
@@ -93,6 +93,12 @@ Následující příklad ukazuje šablonu, která obsahuje uživatelsky definova
 }
 ```
 
+Během nasazování se `storageNamePrefix` Parametr předává funkci:
+
+* Šablona definuje parametr s názvem `storageNamePrefix` .
+* Funkce používá, `namePrefix` protože můžete použít pouze parametry definované ve funkci. Další informace najdete v tématu [omezení](#limitations).
+* V `resources` oddílu šablony `name` prvek používá funkci a předá `storageNamePrefix` hodnotu funkci `namePrefix` .
+
 ## <a name="limitations"></a>Omezení
 
 Při definování uživatelské funkce existují určitá omezení:
@@ -103,8 +109,7 @@ Při definování uživatelské funkce existují určitá omezení:
 * Funkce nemůže používat [odkazovou](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) .
 * Parametry pro funkci nemohou mít výchozí hodnoty.
 
-
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dostupných vlastnostech uživatelsky definovaných funkcí naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
-* Seznam dostupných funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](template-functions.md).
+* Další informace o dostupných vlastnostech uživatelsky definovaných funkcí najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Seznam dostupných funkcí šablon najdete v tématu [funkce šablon ARM](template-functions.md).

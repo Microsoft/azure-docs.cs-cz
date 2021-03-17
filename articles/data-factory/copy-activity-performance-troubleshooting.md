@@ -1,23 +1,18 @@
 ---
 title: Řešení potíží s výkonem aktivity kopírování
 description: Přečtěte si, jak řešit potíže s výkonem aktivity kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/07/2021
+ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770947"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387678"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -37,10 +32,10 @@ V současnosti obsahují tipy pro ladění výkonu návrhy pro následující p�
 
 | Kategorie              | Tipy pro ladění výkonu                                      |
 | --------------------- | ------------------------------------------------------------ |
-| Specifické úložiště dat   | Načítají se data do **Azure Synpase Analytics (dřív SQL DW)**: Pokud se nepoužívá, navrhněte použití příkazu Base nebo Copy. |
+| Specifické úložiště dat   | Načítají se data do **Azure synapse Analytics**: Pokud se nepoužívá, navrhněte použití příkazu Base nebo Copy. |
 | &nbsp;                | Kopírování dat z/do **Azure SQL Database**: Pokud je v oblasti vysokého využití DTU, navrhněte upgrade na vyšší úroveň. |
 | &nbsp;                | Kopírování dat z/do **Azure Cosmos DB**: Pokud je vysoká úroveň vysokého využití, navrhněte upgrade na větší ru. |
-|                       | Kopírování dat z **tabulky SAP**: při kopírování velkých objemů dat doporučujeme, abyste pomocí možnosti oddílu SAP Connectoru povolili paralelní načítání a zvýšili maximální počet oddílů. |
+|                       | Kopírování dat z **tabulky SAP**: při kopírování velkých objemů dat můžete využít možnost využívejte oddíl KONEKTORu SAP a povolit paralelní načítání a zvýšit maximální počet oddílů. |
 | &nbsp;                | Ingestování dat z **Amazon RedShift**: Navrhněte použití uvolnění, pokud se nepoužívá. |
 | Omezování úložiště dat | Pokud úložiště dat během kopírování omezuje počet operací čtení a zápisu, navrhněte kontrolu a zvyšte povolenou míru požadavků pro úložiště dat nebo snižte souběžnou úlohu. |
 | Prostředí Integration runtime  | Pokud používáte Integration Runtime v místním prostředí **(IR)** a aktivita kopírování čeká ve frontě dlouho, dokud procesor IR neuvolní dostupný prostředek, navrhněte možnost horizontálního navýšení kapacity a ŠKÁLOVÁNÍ na dálku. |
@@ -53,7 +48,7 @@ V současnosti obsahují tipy pro ladění výkonu návrhy pro následující p�
 
 Podrobnosti o spuštění a doby trvání v dolní části zobrazení monitorování aktivity kopírování popisují hlavní fáze, přes které aktivita kopírování prochází (viz příklad na začátku tohoto článku), což je zvláště užitečné pro řešení potíží s výkonem kopírování. Kritické místo pro váš běh kopírování je ten, který má nejdelší dobu trvání. Podívejte se na následující tabulku v definici každé fáze a Naučte se [řešit problémy s kopírováním na Azure IR](#troubleshoot-copy-activity-on-azure-ir) a [řešit potíže s aktivitami kopírování v místním prostředí IR](#troubleshoot-copy-activity-on-self-hosted-ir) s těmito informacemi.
 
-| Krok           | Description                                                  |
+| Fáze           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Fronta           | Uplynulý čas do chvíle, kdy se aktivita kopírování ve skutečnosti spustí v prostředí Integration runtime. |
 | Skript před kopírováním | Uplynulý čas mezi aktivitou kopírování začínající v rámci aktivity IR a kopírování dokončuje provádění skriptu před kopírováním v úložišti dat jímky. Použijte, když nakonfigurujete skript před kopírováním pro jímky databáze, například při zápisu dat do Azure SQL Database proveďte vyčištění před kopírováním nových dat. |
@@ -74,7 +69,7 @@ Pokud výkon aktivity kopírování nevyhovuje vaší očekávání, při řeše
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.
 
-    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3 a Azure Blob. Filtr předpon je filtr na straně serveru úložiště dat, který by měl mnohem lepší výkon.
+    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3/Azure blob/Azure File Storage a "**listAfter/listBefore**" pro adls Gen1. Tyto filtry jsou filtrem na straně serveru úložiště dat a mají mnohem lepší výkon.
 
     - Zvažte, jak rozdělit jednu velkou datovou sadu do několika menších datových sad a nechat tyto úlohy kopírování běžet souběžně, přičemž každý z nich vybere část dat. Můžete to provést pomocí Lookup/GetMetadata + ForEach + Copy. Přečtěte si téma [kopírování souborů z více kontejnerů](solution-template-copy-files-multiple-containers.md) nebo [migrace dat ze služby Amazon S3 do](solution-template-migration-s3-azure.md) šablon řešení adls Gen2 jako obecné příklad.
 
@@ -98,7 +93,7 @@ Pokud výkon aktivity kopírování nevyhovuje vaší očekávání, při řeše
 
 - **"Přenosový zápis do jímky" zjistil dlouhou pracovní dobu**:
 
-  - V případě, že platí, přijmout osvědčené postupy načítání dat pro jednotlivé konektory. Například při kopírování dat do služby [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) (dříve SQL DW) použijte příkaz Base nebo Copy. 
+  - V případě, že platí, přijmout osvědčené postupy načítání dat pro jednotlivé konektory. Například při kopírování dat do služby [Azure synapse Analytics](connector-azure-sql-data-warehouse.md)použijte příkaz Base nebo Copy. 
 
   - Ověřte, jestli se v případě vysokého využití v rámci jímky hlásí jakákoli chyba omezování, nebo jestli je úložiště dat omezené. Pokud ano, buď Snižte své zatížení v úložišti dat, nebo se pokuste kontaktovat správce úložiště dat, aby se zvýšil limit omezení nebo dostupný prostředek.
 
@@ -128,7 +123,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.
 
-    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3 a Azure Blob. Filtr předpon je filtr na straně serveru úložiště dat, který by měl mnohem lepší výkon.
+    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3/Azure blob/Azure File Storage a "**listAfter/listBefore**" pro adls Gen1. Tyto filtry jsou filtrem na straně serveru úložiště dat a mají mnohem lepší výkon.
 
     - Zvažte, jak rozdělit jednu velkou datovou sadu do několika menších datových sad a nechat tyto úlohy kopírování běžet souběžně, přičemž každý z nich vybere část dat. Můžete to provést pomocí Lookup/GetMetadata + ForEach + Copy. Přečtěte si téma [kopírování souborů z více kontejnerů](solution-template-copy-files-multiple-containers.md) nebo [migrace dat ze služby Amazon S3 do](solution-template-migration-s3-azure.md) šablon řešení adls Gen2 jako obecné příklad.
 
@@ -150,7 +145,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
     - Při kopírování dat z [Amazon RedShift](connector-amazon-redshift.md)nakonfigurujte tak, aby používala RedShift uvolnění.
 
-  - Ověřte, jestli se na zdrojovém ADF nahlásí jakákoli chyba omezování, nebo jestli je vaše úložiště dat vysoce využité. Pokud ano, buď Snižte své zatížení v úložišti dat, nebo se pokuste kontaktovat správce úložiště dat, aby se zvýšil limit omezení nebo dostupný prostředek.
+  - Ověřte, jestli se na zdrojovém ADF hlásí jakákoli chyba omezování, nebo jestli je vaše úložiště dat pod vysokým využitím. Pokud ano, buď Snižte své zatížení v úložišti dat, nebo se pokuste kontaktovat správce úložiště dat, aby se zvýšil limit omezení nebo dostupný prostředek.
 
   - Ověřte zdroj kopírování a vzor jímky: 
 
@@ -160,7 +155,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
 - **"Přenosový zápis do jímky" zjistil dlouhou pracovní dobu**:
 
-  - V případě, že platí, přijmout osvědčené postupy načítání dat pro jednotlivé konektory. Například při kopírování dat do služby [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) (dříve SQL DW) použijte příkaz Base nebo Copy. 
+  - V případě, že platí, přijmout osvědčené postupy načítání dat pro jednotlivé konektory. Například při kopírování dat do služby [Azure synapse Analytics](connector-azure-sql-data-warehouse.md)použijte příkaz Base nebo Copy. 
 
   - Ověřte, jestli je v místním počítači IR počítač s připojením k úložišti dat jímky nízká latence. Pokud je vaše jímka v Azure, můžete [Tento nástroj](http://www.azurespeed.com/Azure/Latency) použít ke kontrole latence z místního počítače IR v místním prostředí do oblasti Azure. tím menší je lepší.
 
@@ -172,23 +167,76 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
   - Zvažte možnost postupného vyladění [paralelních kopií](copy-activity-performance-features.md), Všimněte si, že příliš mnoho paralelních kopií může dokonce snížit výkon.
 
+
+## <a name="connector-and-ir-performance"></a>Výkon konektoru a IR
+
+V této části se seznámíte s některými Průvodci odstraňováním potíží s výkonem pro konkrétní typ konektoru nebo modul runtime integrace.
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>Doba provádění aktivity se liší pomocí Azure IR vs Azure VNet.
+
+Doba provádění aktivity se liší v případě, že je datová sada založená na různých Integration Runtime.
+
+- **Příznaky**: jednoduše přepínat rozevírací seznam propojených služeb v datové sadě provádí stejné aktivity kanálu, ale má drasticky různou dobu běhu. Pokud je datová sada založená na spravovaném Virtual Network Integration Runtime, trvá v průměru více než 2 minuty, aby se dokončilo spuštění, ale dokončení trvá přibližně 20 sekund, než se dokončí na základě výchozího Integration Runtime.
+
+- **Příčina**: Kontrola podrobností o spuštěních kanálu, vidíte, že pomalé kanály běží na spravované virtuální síti (Virtual Network) IR, zatímco je normální provoz spuštěný v Azure IR. V rámci návrhu se spravovaná virtuální síť VNet přestane časem zařadit do fronty, než Azure IR, protože nerezervujete jeden výpočetní uzel na datovou továrnu, takže se každá aktivita kopírování může zahřívá přibližně 2 minuty a k tomu dochází hlavně v rámci připojení VNet místo Azure IR.
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Nízký výkon při načítání dat do Azure SQL Database
+
+- **Příznaky**: kopírování dat v nástroji do Azure SQL Database se změní na pomalé.
+
+- **Příčina**: původní příčina problému se většinou aktivuje kritickým bodem Azure SQL Database strany. Níže jsou uvedené některé možné příčiny:
+
+    - Azure SQL Database vrstva není dostatečně vysoká.
+
+    - Azure SQL Database využití DTU je blízko až 100%. Můžete [monitorovat výkon](../azure-sql/database/monitor-tune-overview.md) a zvážit upgrade Azure SQL Database úrovně.
+
+    - Indexy nejsou nastaveny správně. Před načtením dat odstraňte všechny indexy a po dokončení načítání je znovu vytvořte.
+
+    - WriteBatchSize není dostatečně velká, aby odpovídala velikosti řádku schématu. Zkuste zvětšit vlastnost problému.
+
+    - Místo hromadného vsazení se používá uložená procedura, u které se očekává, že mají horší výkon. 
+
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Časový limit nebo pomalý výkon při analýze velkého souboru aplikace Excel
+
+- **Příznaky**:
+
+    - Když vytváříte datovou sadu Excelu a importujete schéma ze seznamu připojení/úložiště, náhled dat, seznamů nebo aktualizací listů, může se zobrazit chyba časového limitu v případě, že je velikost souboru aplikace Excel velká.
+
+    - Když použijete aktivitu kopírování ke kopírování dat z velkého excelového souboru (>= 100 MB) do jiného úložiště dat, může docházet ke zpomalení výkonu nebo OOM problému.
+
+- **Příčina**: 
+
+    - Pro operace, jako je import schématu, náhled dat a výpis listů v datové sadě Excelu, je časový limit 100 s a statický. U velkých souborů v Excelu se tyto operace nemusí dokončit v rámci hodnoty časového limitu.
+
+    - Aktivita kopírování ADF přečte celý excelový soubor do paměti a pak vyhledá zadaný list a buňky pro čtení dat. K tomuto chování dochází z důvodu použití základní sady SDK ADF.
+
+- **Řešení**: 
+
+    - Pro import schématu můžete vygenerovat menší ukázkový soubor, který je podmnožinou původního souboru, a místo příkazu importovat schéma z připojení nebo úložiště zvolit importovat schéma z ukázkového souboru.
+
+    - V rozevíracím seznamu list pro výpis listu můžete kliknout na Upravit a místo toho zadat název nebo index listu.
+
+    - Pokud chcete kopírovat velký excelový soubor (>100 MB) do jiného úložiště, můžete použít zdroj dat v aplikaci Excel flow, který zajišťuje čtení a lepší využívání streamování pro sport.
+    
 ## <a name="other-references"></a>Další odkazy
 
 Tady je sledování výkonu a ladění odkazů pro některá z podporovaných úložišť dat:
 
 * Azure Blob Storage: [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../storage/blobs/scalability-targets.md) a [Kontrolní seznam výkonu a škálovatelnosti pro úložiště objektů BLOB](../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: [škálovatelnost a výkonnostní cíle pro úložiště tabulek](../storage/tables/scalability-targets.md) a pro [Kontrolní seznam výkonu a škálovatelnosti pro úložiště tabulek](../storage/tables/storage-performance-checklist.md).
-* Azure SQL Database: můžete [monitorovat výkon](../sql-database/sql-database-single-database-monitor.md) a kontrolovat procento transakčních jednotek databáze (DTU).
-* Azure SQL Data Warehouse: jeho schopnost se měří v jednotkách datového skladu (DWU). Viz [Správa výpočetního výkonu v Azure SQL Data Warehouse (přehled)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure SQL Database: můžete [monitorovat výkon](../azure-sql/database/monitor-tune-overview.md) a kontrolovat procento transakčních jednotek databáze (DTU).
+* Azure synapse Analytics: jeho schopnost se měří v jednotkách datového skladu (DWU). Viz [Správa výpočetní výkon v Azure synapse Analytics (přehled)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [úrovně výkonu v Azure Cosmos DB](../cosmos-db/performance-levels.md).
-* SQL Server: [monitorování a optimalizace výkonu](https://msdn.microsoft.com/library/ms189081.aspx).
-* Místní souborový server: [optimalizace výkonu pro souborové servery](https://msdn.microsoft.com/library/dn567661.aspx).
+* SQL Server: [monitorování a optimalizace výkonu](/sql/relational-databases/performance/monitor-and-tune-for-performance).
+* Místní souborový server: [optimalizace výkonu pro souborové servery](/previous-versions//dn567661(v=vs.85)).
 
 ## <a name="next-steps"></a>Další kroky
 Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)
-- [Průvodce škálovatelností a výkonem aktivity kopírování](copy-activity-performance.md)
+- [Průvodce výkonem a škálovatelností aktivity kopírování](copy-activity-performance.md)
 - [Funkce optimalizace výkonu aktivity kopírování](copy-activity-performance-features.md)
 - [Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure](data-migration-guidance-overview.md)
 - [Migrace dat z Amazonu S3 do Azure Storage](data-migration-guidance-s3-azure-storage.md)

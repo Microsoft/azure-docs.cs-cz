@@ -3,14 +3,13 @@ title: Použití spravovaných identit ve službě Azure Kubernetes
 description: Naučte se používat spravované identity ve službě Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.author: thomasge
-ms.openlocfilehash: 8c5c4a6e5d8b2997d80c7263ba17a705d3846ed8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 12/16/2020
+ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987388"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176089"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -22,34 +21,33 @@ V současné době cluster Azure Kubernetes Service (AKS) (konkrétně poskytova
 
 Musíte mít nainstalované následující prostředky:
 
-- Rozhraní příkazového řádku Azure, verze 2.8.0 nebo novější
+- Rozhraní příkazového řádku Azure, verze 2.15.1 nebo novější
 
 ## <a name="limitations"></a>Omezení
 
-* Clustery AKS se spravovanými identitami se dají povolit jenom během vytváření clusteru.
-* Existující clustery AKS se nedají migrovat na spravované identity.
-* Během operací s **upgradem** clusteru je spravovaná identita dočasně nedostupná.
 * Klienti se přesunou/nemigrují spravované clustery s povolenou identitou nejsou podporováni.
+* Pokud je cluster `aad-pod-identity` povolený, Node-Managedí identity (NMI) lusky mění uzly softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato konfigurace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá `aad-pod-identity` . AzurePodIdentityException CRD je možné nakonfigurovat tak, aby informovala `aad-pod-identity` , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI. Systém lusky s `kubernetes.azure.com/managedby: aks` návěštím v oboru názvů _Kube-System_ by měl být vyloučený v `aad-pod-identity` konfiguraci AzurePodIdentityException CRD. Další informace najdete v tématu [zakázání identity AAD-pod-identity pro konkrétního pod nebo aplikaci](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+  Chcete-li konfigurovat výjimku, nainstalujte [YAML s výjimkou mikrofonu](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="summary-of-managed-identities"></a>Souhrn spravovaných identit
 
 AKS používá několik spravovaných identit pro předdefinované služby a doplňky.
 
-| Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
+| Identita                       | Název    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
-| Řídicí rovina | neviditelné | Používá se v AKS pro spravované síťové prostředky, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravované veřejné IP adresy. | Role přispěvatele pro skupinu prostředků uzlu | Preview
-| Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | Role čtecího modulu pro skupinu prostředků uzlu | Aktuálně se nepodporuje.
-| Doplněk | AzureNPM | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | azurepolicy | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | Calico | Není nutná žádná identita. | Není k dispozici | Ne
-| Doplněk | Řídicí panel | Není nutná žádná identita. | Není k dispozici | Ne
+| Řídicí rovina | neviditelné | Používá se součástmi ovládacího prvku AKS ke správě prostředků clusteru, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravovaných veřejných IP adres a operací automatického škálování clusteru. | Role přispěvatele pro skupinu prostředků uzlu | Podporuje se
+| Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | NEDEF (pro Kubernetes v 1.15 +) | Aktuálně se nepodporuje.
+| Doplněk | AzureNPM | Není nutná žádná identita. | NA | Ne
+| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | Ne
+| Doplněk | zásady Azure (gatekeeper) | Není nutná žádná identita. | NA | Ne
+| Doplněk | Azure – zásada | Není nutná žádná identita. | NA | Ne
+| Doplněk | Calico | Není nutná žádná identita. | NA | Ne
+| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | Ne
 | Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | Ne
 | Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | Ne
 | Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | Ne
-| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | Ne
-
+| Doplněk | Virtual-Node (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | Ne
+| Projekt OSS | AAD-pod-identity | Umožňuje aplikacím zabezpečeně přistupovat k prostředkům cloudu pomocí Azure Active Directory (AAD). | NA | Kroky pro udělení oprávnění v https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami
 
@@ -104,45 +102,44 @@ Nakonec Získejte přihlašovací údaje pro přístup ke clusteru:
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>Aktualizace clusteru AKS na spravované identity (Preview)
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>Přineste si vlastní plochu ovládacího prvku MI (Preview).
-Vlastní identita roviny ovládacího prvku umožňuje přístup k existující identitě před vytvořením clusteru. To umožňuje scénářům, jako je například použití vlastní virtuální sítě nebo outboundType UDR se spravovanou identitou.
+Teď můžete aktualizovat cluster AKS, který aktuálně pracuje s instančními objekty, aby fungoval se spravovanými identitami, a to pomocí následujících příkazů rozhraní příkazového řádku.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+Nejdřív Zaregistrujte příznak funkce pro identitu přiřazenou systémem:
 
-Musíte mít nainstalované následující zdroje:
-- Rozhraní příkazového řádku Azure, verze 2.9.0 nebo novější
-- Rozšíření AKS-Preview 0.4.57
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
 
-Omezení pro vlastní rovinu řízení MI (Preview):
+Aktualizujte identitu přiřazenou systémem:
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity
+```
+
+Zaregistrujte příznak funkce pro uživatelem přiřazenou identitu:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+Aktualizujte identitu přiřazenou uživatelem:
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
+```
+> [!NOTE]
+> Až budou identity přiřazené systémem nebo uživatelem přiřazené k spravované identitě aktualizované, proveďte `az aks nodepool upgrade --node-image-only` na svých uzlech aktualizaci spravované identity.
+
+## <a name="bring-your-own-control-plane-mi"></a>Přineste si vlastní plochu ovládacího prvku MI
+Vlastní identita roviny ovládacího prvku umožňuje přístup k existující identitě před vytvořením clusteru. Tato funkce umožňuje scénáře, jako je například použití vlastní virtuální sítě nebo outboundType UDR s předem vytvořenou spravovanou identitou.
+
+Musíte mít nainstalované rozhraní příkazového řádku Azure CLI, verze 2.15.1 nebo novější.
+
+### <a name="limitations"></a>Omezení
 * Azure Government se momentálně nepodporuje.
 * Azure Čína 21Vianet se momentálně nepodporuje.
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
-```
-
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 Pokud ještě nemáte spravovanou identitu, měli byste se k tomu vytvořit například pomocí [AZ identity CLI][az-identity-create].
 
@@ -204,9 +201,9 @@ az aks create \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [šablon Azure Resource Manager (ARM)][aks-arm-template] vytvoříte clustery s povolenou správou identit.
+* Pomocí [šablon Azure Resource Manager (ARM) ][aks-arm-template] vytvoříte clustery s povolenou správou identit.
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity#az-identity-create
+[az-identity-list]: /cli/azure/identity#az-identity-list

@@ -1,16 +1,14 @@
 ---
 title: Řešení potíží s místním nastavením clusteru Azure Service Fabric
 description: Tento článek se zabývá sadou návrhů pro řešení potíží s místním vývojovým clusterem.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20948cd1626c02d73fb6e9ef096b552bbab627fb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091602"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575903"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Řešení potíží s místním nastavením clusteru pro vývoj
 Pokud narazíte na problém při interakci s místním vývojovým clusterem Azure Service Fabric, přečtěte si následující návrhy pro potenciální řešení.
@@ -42,7 +40,7 @@ Vaše Proměnná cesty nebyla při instalaci správně nastavena. Odhlaste se z 
 
 ### <a name="cluster-connection-fails-with-object-is-closed"></a>Připojení clusteru se nepovede a dojde k chybě typu "objekt je uzavřen".
 #### <a name="problem"></a>Problém
-Volání Connect-ServiceFabricCluster se nezdařilo s chybou, například:
+Volání Connect-ServiceFabricCluster se nezdařila s chybou, například:
 
 ```output
 Connect-ServiceFabricCluster : The object is closed.
@@ -72,5 +70,5 @@ Ujistěte se, že ve vašem řešení nemáte nastavené žádné projekty služ
 
 ## <a name="next-steps"></a>Další kroky
 * [Pochopení a řešení potíží s clusterem pomocí sestav stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-* [Vizualizace clusteru pomocí nástroje Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
+* [Vizualizujte cluster pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)
 

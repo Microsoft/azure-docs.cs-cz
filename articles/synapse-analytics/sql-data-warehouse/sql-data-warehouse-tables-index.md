@@ -1,6 +1,6 @@
 ---
 title: Indexování tabulek
-description: Doporučení a příklady pro indexování tabulek v synapse fondu SQL
+description: Doporučení a příklady pro indexování tabulek ve vyhrazeném fondu SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213954"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673514"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>Indexování tabulek v synapse fondu SQL
+# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indexování vyhrazených tabulek fondu SQL ve službě Azure synapse Analytics
 
-Doporučení a příklady pro indexování tabulek v synapse fondu SQL
+Doporučení a příklady pro indexování tabulek ve vyhrazeném fondu SQL
 
 ## <a name="index-types"></a>Typy indexů
 
-Synapse fond SQL nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [clusterovaných indexů a neclusterovaných indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a možnost bez indexu, která se označuje také jako [halda](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
+Vyhrazený fond SQL nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [clusterovaných indexů a neclusterovaných indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)a možnost bez indexu, která se označuje také jako [halda](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 
-Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci [Create Table (synapse SQL fond)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci [Create Table (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="clustered-columnstore-indexes"></a>Clusterované indexy columnstore
 
-Ve výchozím nastavení synapse fond SQL vytvoří clusterovaný index columnstore, pokud nejsou v tabulce zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat i nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
+Ve výchozím nastavení vytvoří vyhrazený fond SQL clusterovaný index columnstore, pokud v tabulce nejsou zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat i nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
 
 Pokud chcete vytvořit clusterovanou tabulku columnstore, stačí v klauzuli WITH zadat CLUSTEROVANÝ INDEX COLUMNSTORE, nebo ponechte klauzuli WITH vypnuto:
 
@@ -52,7 +52,7 @@ Existuje několik scénářů, kdy clusterový columnstore nemůže být dobrou 
 
 ## <a name="heap-tables"></a>Tabulky haldy
 
-Když dočasně vydáváte data ve synapse fondu SQL, může se stát, že při použití tabulky haldy bude celý proces rychlejší. Důvodem je to, že zatížení haldami je rychlejší než indexování tabulek a v některých případech je možné provést následné čtení z mezipaměti.  Pokud načítáte data pouze do fáze před spuštěním více transformací, načítání tabulky do tabulky haldy je mnohem rychlejší než načítání dat do clusterované tabulky columnstore. Kromě toho se načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načítá rychleji než načítání tabulky do trvalého úložiště.  Po načtení dat můžete v tabulce vytvořit indexy pro rychlejší výkon dotazů.  
+Když dočasně vydáváte data ve vyhrazeném fondu SQL, může se stát, že při použití tabulky haldy bude celý proces rychlejší. Důvodem je to, že zatížení haldami je rychlejší než indexování tabulek a v některých případech je možné provést následné čtení z mezipaměti.  Pokud načítáte data pouze do fáze před spuštěním více transformací, načítání tabulky do tabulky haldy je mnohem rychlejší než načítání dat do clusterované tabulky columnstore. Kromě toho se načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načítá rychleji než načítání tabulky do trvalého úložiště.  Po načtení dat můžete v tabulce vytvořit indexy pro rychlejší výkon dotazů.  
 
 Pokud je více než 60 000 000 řádků, začne docházet k optimální kompresi v tabulkách clusteru columnstore.  V případě malých vyhledávacích tabulek, méně než 60 000 000 řádků, zvažte použití HALDy nebo clusterovaného indexu pro rychlejší dotazování na výkon. 
 
@@ -204,13 +204,13 @@ Dávkové operace aktualizace a vložení, které přesahují hromadnou prahovou
 
 ### <a name="small-or-trickle-load-operations"></a>Malé nebo trickle operace načítání
 
-Malá zatížení, která se přenášejí do synapse fondu SQL, se taky někdy označují jako trickle zátěže. Typicky představují skoro konstantní datový proud dat zpracovávaných systémem. Vzhledem k tomu, že je tento datový proud blízko nepřetržitě, není objem řádků obzvláště velký. Častěji než data jsou výrazně pod prahovou hodnotou nutnou pro přímé zatížení ve formátu columnstore.
+Malá zatížení, která se přenášejí do vyhrazeného fondu SQL, se také někdy označují jako trickle zatížení. Typicky představují skoro konstantní datový proud dat zpracovávaných systémem. Vzhledem k tomu, že je tento datový proud blízko nepřetržitě, není objem řádků obzvláště velký. Častěji než data jsou výrazně pod prahovou hodnotou nutnou pro přímé zatížení ve formátu columnstore.
 
 V těchto situacích je často lepší nakládat data jako první v úložišti objektů BLOB v Azure a nechat si je shromáždit před načtením. Tato technika se často označuje jako *mikrodávkování*.
 
 ### <a name="too-many-partitions"></a>Příliš mnoho oddílů
 
-Další věcí, kterou je potřeba vzít v úvahu, je dopad dělení na oddíly v clusterovaných tabulkách columnstore.  Synapse fond SQL už před vytvořením oddílů vydělí vaše data do databází 60.  Dělení dále rozděluje vaše data.  Při vytváření oddílů dat je potřeba vzít v úvahu, že **každý** oddíl potřebuje aspoň 1 000 000 řádků, aby bylo možné využít clusterový index columnstore.  Pokud vytváříte oddíly tabulky na oddíly 100, je potřeba, aby tabulka měla aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného indexu columnstore (60 distribuce *100 oddíly* 1 000 000 řádků). Pokud tabulka 100-partition neobsahuje 6 000 000 000 řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
+Další věcí, kterou je potřeba vzít v úvahu, je dopad dělení na oddíly v clusterovaných tabulkách columnstore.  Vyhrazený fond SQL už před vytvořením oddílů již rozděluje vaše data do databází 60.  Dělení dále rozděluje vaše data.  Při vytváření oddílů dat je potřeba vzít v úvahu, že **každý** oddíl potřebuje aspoň 1 000 000 řádků, aby bylo možné využít clusterový index columnstore.  Pokud vytváříte oddíly tabulky na oddíly 100, je potřeba, aby tabulka měla aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného indexu columnstore (60 distribuce *100 oddíly* 1 000 000 řádků). Pokud tabulka 100-partition neobsahuje 6 000 000 000 řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
 
 Po načtení tabulek s některými daty pomocí následujících kroků identifikujte a znovu sestavíte tabulky s dílčími optimálními clusterovanými indexy columnstore.
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Přihlaste se jako uživatel z kroku 1 (například LoadUser), který teď používá vyšší třídu prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER pro tabulky, ve kterých je index znovu sestaven. Tyto příklady ukazují, jak znovu sestavit celý index columnstore nebo jak znovu sestavit jeden oddíl. Ve velkých tabulkách je praktické znovu sestavovat indexy v jednom oddílu.
 
-Případně místo opakovaného sestavování indexu můžete tabulku zkopírovat do nové tabulky [pomocí CTAS](sql-data-warehouse-develop-ctas.md). Jaký je nejlepší způsob? Pro velké objemy dat je CTAS obvykle rychlejší než [Změna indexu](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Pro menší objemy dat je snazší použít příkaz ALTER INDEX a nevyžaduje, abyste tabulku vyměnili.
+Případně místo opakovaného sestavování indexu můžete tabulku zkopírovat do nové tabulky [pomocí CTAS](sql-data-warehouse-develop-ctas.md). Jaký je nejlepší způsob? Pro velké objemy dat je CTAS obvykle rychlejší než [Změna indexu](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Pro menší objemy dat je snazší použít příkaz ALTER INDEX a nevyžaduje, abyste tabulku vyměnili.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Nové sestavení indexu v synapse fondu SQL je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu [Defragmentace](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)indexů columnstore a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Nové sestavení indexu ve vyhrazeném fondu SQL je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu [Defragmentace](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)indexů columnstore a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: ověření kvality segmentu clusterovaného v clusteru
 
@@ -260,7 +260,7 @@ Znovu spusťte dotaz, který identifikoval tabulku s nízkou kvalitou segmentů,
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Opakované sestavení indexů pomocí CTAS a přepínání oddílů
 
-V tomto příkladu se používá příkaz [CREATE TABLE AS Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a přepínání oddílů pro opětovné sestavení oddílu tabulky.
+V tomto příkladu se používá příkaz [CREATE TABLE AS Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a přepínání oddílů pro opětovné sestavení oddílu tabulky.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS najdete v tématu [using partitions in synapse SQL Pool](sql-data-warehouse-tables-partition.md).
+Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS najdete v tématu [použití oddílů ve vyhrazeném fondu SQL](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Další kroky
 

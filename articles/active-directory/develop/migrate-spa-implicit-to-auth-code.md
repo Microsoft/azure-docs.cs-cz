@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev
-ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 3c11334fe1b4d77be6e64febfc1d3de6efa302c3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027083"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365936"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok kódu ověřování
 
@@ -41,9 +41,9 @@ Pokud chcete pro své aplikace nadále používat stávající registraci aplika
 
 Pro registrace aplikací, které jsou aktuálně nakonfigurované pomocí identifikátorů URI přesměrování **webové** platformy, použijte následující postup:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte svého tenanta **Azure Active Directory** .
-1. V **Registrace aplikací**vyberte svou aplikaci a pak **ověřování**.
-1. Na dlaždici **Webová** platforma v části **identifikátory URI pro přesměrování**vyberte informační zpráva s oznámením, že byste měli migrovat identifikátory URI.
+1. Přihlaste se k <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> a vyberte svého tenanta **Azure Active Directory** .
+1. V **Registrace aplikací** vyberte svou aplikaci a pak **ověřování**.
+1. Na dlaždici **Webová** platforma v části **identifikátory URI pro přesměrování** vyberte informační zpráva s oznámením, že byste měli migrovat identifikátory URI.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
 1. Vyberte *jenom* ty identifikátory URI přesměrování, jejichž aplikace budou používat MSAL.js 2. x, a pak vyberte **Konfigurovat**.
@@ -90,10 +90,10 @@ Když zrušíte kontrolu nastavení implicitního udělení v registraci aplikac
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o toku autorizačního kódu, včetně rozdílů mezi toky implicitního a ověřovacího kódu, najdete v části [Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
+Pokud se chcete dozvědět víc o toku autorizačního kódu, včetně rozdílů mezi toky implicitního a ověřovacího kódu, přečtěte si [tok autorizačního kódu Microsoft Identity Platform a OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
 Pokud byste chtěli podrobně hlubší vývoj aplikací v JavaScriptu na platformě Microsoft Identity Platform, scénář s více částmi: řada článků s [jednou stránkou](scenario-spa-overview.md) vám může pomáhat začít.
 
 <!-- LINKS - external -->
-[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html

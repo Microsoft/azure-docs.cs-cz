@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5bbcc4c07826a5093da3f51c709f49ceb231753
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749721"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596068"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Protokoly a metriky služby Azure Virtual WAN
 
-Službu Azure Virtual WAN můžete monitorovat pomocí Azure Monitor. Virtuální síť WAN je síťová služba, která přináší dohromady mnoho funkcí v síti, zabezpečení a směrování, aby poskytovaly jediné provozní rozhraní. Brány VPN pro virtuální sítě WAN, brány ExpressRoute a Azure Firewall mají k dispozici protokolování a metriky prostřednictvím Azure Monitor. Informace o Azure Firewall najdete v tématu [protokoly Azure firewall a metriky](../firewall/logs-and-metrics.md).
+Službu Azure Virtual WAN můžete monitorovat pomocí Azure Monitor. Virtuální síť WAN je síťová služba, která přináší dohromady mnoho funkcí v síti, zabezpečení a směrování, aby poskytovaly jediné provozní rozhraní. Brány VPN pro virtuální sítě WAN, brány ExpressRoute a Azure Firewall mají k dispozici protokolování a metriky prostřednictvím Azure Monitor.
 
 Tento článek popisuje metriky a diagnostiku, které jsou k dispozici prostřednictvím portálu. Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném čase, které jsou užitečné při upozorňování a rychlé detekci problémů.
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>Monitorování zabezpečeného centra (Azure Firewall) 
+
+Zabezpečený rozbočovač můžete monitorovat pomocí protokolů Azure Firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit.
+
+Pokud jste se rozhodli zabezpečit své virtuální rozbočovač pomocí Azure Firewall, jsou zde k dispozici relevantní protokoly a metriky: [Azure firewall protokoly a metriky](../firewall/logs-and-metrics.md).
 
 ## <a name="metrics"></a>Metriky
 
@@ -62,11 +68,11 @@ Následující kroky vám pomůžou najít a zobrazit metriky:
 
 3. Vyberte **Metriky**.
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="metriky":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="Snímek obrazovky zobrazuje podokno site to site V P N s zobrazením Azure Monitor vybrané.":::
 
 4. Na stránce **metriky** můžete zobrazit metriky, které vás zajímají.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Snímek obrazovky zobrazující stránku metriky se zvýrazněnými kategoriemi":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Diagnostické protokoly
 
@@ -93,13 +99,13 @@ Následující kroky vám pomůžou najít a zobrazit diagnostiku:
 
 1. Na portálu přejděte na prostředek virtuální sítě WAN. V části **Přehled** na stránce virtuální síť WAN na portálu vyberte **základy** a rozbalte zobrazení a získejte informace o skupině prostředků. Zkopírujte informace o skupině prostředků.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Snímek obrazovky, který zobrazuje část &quot;Přehled&quot; se šipkou ukazující na tlačítko Kopírovat.":::
 
-2. V části monitorování přejděte do skupiny prostředků. Vyberte **nastavení diagnostiky**a pak zadejte informace o zdroji. Toto jsou informace o prostředcích, které jste zkopírovali v kroku 2 v části [Zobrazit metriky brány](#metrics-steps) , dříve v tomto článku.
+2. V části monitorování přejděte do skupiny prostředků. Vyberte **nastavení diagnostiky** a pak zadejte informace o zdroji. Toto jsou informace o prostředcích, které jste zkopírovali v kroku 2 v části [Zobrazit metriky brány](#metrics-steps) , dříve v tomto článku.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Snímek obrazovky zobrazující část monitorování se šipkou ukazující na rozevírací seznam prostředek":::
 
-3. Na stránce výsledky vyberte **+ Přidat nastavení diagnostiky**a pak vyberte možnost. Můžete se rozhodnout, že se má Log Analytics, streamovat do centra událostí nebo jednoduše archivovat do účtu úložiště.
+3. Na stránce výsledky vyberte **+ Přidat nastavení diagnostiky** a pak vyberte možnost. Můžete se rozhodnout, že se má Log Analytics, streamovat do centra událostí nebo jednoduše archivovat do účtu úložiště.
 
    :::image type="content" source="./media/logs-metrics/5.png" alt-text="Stránka metriky":::
 
@@ -123,5 +129,5 @@ Položky **protokolu aktivit** jsou shromažďovány ve výchozím nastavení a 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak monitorovat protokoly Azure Firewall a metriky, najdete v tématu [kurz: monitorování protokolů Azure firewall](../firewall/tutorial-diagnostics.md).
-* Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md).
+* Informace o tom, jak monitorovat protokoly Azure Firewall a metriky, najdete v tématu [kurz: monitorování protokolů Azure firewall](../firewall/firewall-diagnostics.md).
+* Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/essentials/data-platform-metrics.md).

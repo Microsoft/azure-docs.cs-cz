@@ -1,93 +1,93 @@
 ---
-title: Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
-description: Naučte se, jak povolit synapse odkaz pro účty Azure Cosmos, vytvořit kontejner s povoleným analytickým úložištěm, připojit databázi Azure Cosmos k pracovnímu prostoru synapse a spustit dotazy.
+title: Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
+description: Naučte se, jak povolit synapse odkaz pro účty Azure Cosmos DB, vytvořit kontejner s povoleným analytickým úložištěm, připojit databázi Azure Cosmos k synapse pracovnímu prostoru a spustit dotazy.
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 11/30/2020
 ms.author: rosouz
-ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: references_regions
+ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653133"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222611"
 ---
-# <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
+# <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Synapse odkaz pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy prakticky v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
+[Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy téměř v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
+Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API SQL nebo pro Azure Cosmos DB API pro kolekce Mongo DB. Pomocí následujících kroků spusťte analytické dotazy s odkazem na Azure synapse pro Azure Cosmos DB:
 
-> [!IMPORTANT]
-> Pokud chcete použít Azure synapse Link, nezapomeňte zřídit účet Azure Cosmos & pracovní prostor Azure synapse Analytics v jedné z výše uvedených podporovaných oblastí. Seznam podporovaných oblastí najdete v tématu [aktualizace služby Azure](https://azure.microsoft.com/updates/). 
+* [Povolit synapse odkaz na účty Azure Cosmos DB](#enable-synapse-link)
+* [Vytvoření kontejneru Azure Cosmos DB s povoleným analytickým úložištěm](#create-analytical-ttl)
+* [Připojení databáze Azure Cosmos DB k pracovnímu prostoru synapse](#connect-to-cosmos-database)
+* [Dotaz na analytické úložiště pomocí synapse Spark](#query-analytical-store-spark)
+* [Dotaz na analytické úložiště s využitím fondu SQL bez serveru](#query-analytical-store-sql-on-demand)
+* [Použití fondu SQL bez serveru k analýze a vizualizaci dat v Power BI](#analyze-with-powerbi)
 
-Pomocí následujících kroků spusťte analytické dotazy s odkazem na synapse pro Azure Cosmos DB:
-
-* [Povolit synapse odkaz pro účty Azure Cosmos](#enable-synapse-link)
-* [Vytvoření kontejneru Azure Cosmos s povoleným analytickým úložištěm](#create-analytical-ttl)
-* [Připojení databáze Azure Cosmos k pracovnímu prostoru synapse](#connect-to-cosmos-database)
-* [Dotaz na analytické úložiště pomocí synapse Spark](#query-analytical-store)
-
-## <a name="enable-azure-synapse-link-for-azure-cosmos-accounts"></a><a id="enable-synapse-link"></a>Povolit Azure synapse Link pro účty Azure Cosmos
+## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Povolit Azure synapse Link pro účty Azure Cosmos DB
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. [Vytvořte nový účet Azure](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
+1. [Vytvořte nový účet Azure](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos DB.
 
-1. Přejděte k účtu Azure Cosmos a otevřete podokno **funkce** .
+1. Přejděte na účet Azure Cosmos DB a otevřete podokno **funkce** .
 
 1. V seznamu funkcí vyberte **odkaz synapse** .
 
-   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Najít funkci synapse Link Preview":::
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Najít funkci propojení synapse":::
 
-1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte Povolit.
+1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte **Povolit**. Dokončení tohoto procesu může trvat 1 až 5 minut.
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Povolit funkci synapse Link":::
 
 1. Váš účet teď povolil použití odkazu synapse. Další informace najdete v tématu Vytvoření kontejnerů s povoleným analytickým úložištěm pro automatické zahájení replikace provozních dat z transakčního úložiště do analytického úložiště.
 
-### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
-
-[Šablona Azure Resource Manager](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) vytvoří pro rozhraní SQL API účet Azure Cosmos s povoleným odkazem na synapse. Tato šablona vytvoří účet základního (SQL) rozhraní API v jedné oblasti s kontejnerem nakonfigurovaným s povoleným analytickým standardem TTL a možností ručního škálování nebo propustnosti. Tuto šablonu nasadíte kliknutím na **nasadit do Azure** na stránce Readme.
+> [!NOTE]
+> Zapnutím odkazu synapse se analytické úložiště automaticky nezapne. Jakmile povolíte synapse odkaz na účet Cosmos DB, povolíte při vytváření na kontejnerech analytické úložiště, abyste mohli začít replikovat data operace do analytického úložiště. 
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Vytvoření kontejneru Azure Cosmos s analytickým úložištěm
 
 Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytváření kontejneru. Můžete použít Azure Portal nebo nakonfigurovat `analyticalTTL` vlastnost během vytváření kontejneru pomocí sady Azure Cosmos DB SDK.
 
 > [!NOTE]
-> V současné době můžete pro **nové** kontejnery povolit analytické úložiště (v nových i stávajících účtech).
+> V současné době můžete pro **nové** kontejnery povolit analytické úložiště (v nových i stávajících účtech). Data z kontejnerů identita existující můžete migrovat do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB.](cosmosdb-migrationchoices.md)
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo ke [službě Azure Cosmos Explorer](https://cosmos.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo [Azure Cosmos DB Exploreru](https://cosmos.azure.com/).
 
-1. Přejděte k účtu Azure Cosmos a otevřete kartu **Průzkumník dat** .
+1. Přejděte na účet Azure Cosmos DB a otevřete kartu **Průzkumník dat** .
 
 1. Vyberte **Nový kontejner** a zadejte název své databáze, kontejneru, klíče oddílu a propustnosti. Zapněte možnost **analytické úložiště** . Po povolení analytického úložiště se vytvoří kontejner s `AnalyicalTTL` vlastností nastavenou na výchozí hodnotu-1 (nekonečné uchovávání). Toto analytické úložiště uchovává všechny historické verze záznamů.
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Zapnout službu analytické úložiště pro Azure Cosmos Container":::
 
-1. Pokud jste na tomto účtu dříve nepovolili odkaz na synapse, zobrazí se výzva k tomu, abyste to učinili, protože je to předpoklad pro vytvoření kontejneru s povoleným analytickým úložištěm. Po zobrazení výzvy vyberte **Povolit odkaz na synapse**.
+1. Pokud jste na tomto účtu dříve nepovolili odkaz na synapse, zobrazí se výzva k tomu, abyste to učinili, protože je to předpoklad pro vytvoření kontejneru s povoleným analytickým úložištěm. Po zobrazení výzvy vyberte **Povolit odkaz na synapse**. Dokončení tohoto procesu může trvat 1 až 5 minut.
 
-1. Vyberte **OK**a vytvořte kontejner Azure Cosmos s povoleným analytickým úložištěm.
+1. Vyberte **OK** a vytvořte kontejner Azure Cosmos s povoleným analytickým úložištěm.
+
+1. Po vytvoření kontejneru ověřte, že je analytické úložiště povolené, a to tak, že kliknete na **Nastavení**, vpravo pod dokumenty v Průzkumník dat a zkontrolujete, jestli je zapnutá možnost **Doba provozu analytického úložiště** .
 
 ### <a name="net-sdk"></a>.NET SDK
 
 Následující kód vytvoří kontejner s analytickým úložištěm pomocí sady .NET SDK. Nastavte vlastnost analytického TTL na požadovanou hodnotu. Seznam povolených hodnot naleznete v článku [hodnoty podporované v analytickém TTL](analytical-store-introduction.md#analytical-ttl) :
 
 ```csharp
-// Create a container with a partition key, and analytical TTL configured to  -1 (infinite retention)
-string containerId = “myContainerName”;
-int analyticalTtlInSec = -1;
-ContainerProperties cpInput = new ContainerProperties()
-            {
-Id = containerId,
-PartitionKeyPath = "/id",
-AnalyticalStorageTimeToLiveInSeconds = analyticalTtlInSec,
+// Create a container with a partition key, and analytical TTL configured to -1 (infinite retention)
+ContainerProperties properties = new ContainerProperties()
+{
+    Id = "myContainerId",
+    PartitionKeyPath = "/id",
+    AnalyticalStoreTimeToLiveInSeconds = -1,
 };
- await this. cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(cpInput);
+CosmosClient cosmosClient = new CosmosClient("myConnectionString");
+await cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(properties);
 ```
 
 ### <a name="java-v4-sdk"></a>Sada Java v4 SDK
@@ -167,9 +167,9 @@ Po povolení analytického úložiště s konkrétní hodnotou TTL můžete tuto
 
 Pokud jste vytvořili kontejner analytického úložiště s povoleným Azure Portal, obsahuje výchozí analytickou hodnotu TTL-1. Tuto hodnotu můžete aktualizovat pomocí následujících kroků:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo ke [službě Azure Cosmos Explorer](https://cosmos.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo [Azure Cosmos DB Exploreru](https://cosmos.azure.com/).
 
-1. Přejděte k účtu Azure Cosmos a otevřete kartu **Průzkumník dat** .
+1. Přejděte na účet Azure Cosmos DB a otevřete kartu **Průzkumník dat** .
 
 1. Vyberte existující kontejner s povoleným analytickým úložištěm. Rozbalte ho a upravte následující hodnoty:
 
@@ -208,13 +208,25 @@ container.replace(containerProperties).block();
 
 Použijte pokyny v tématu [připojení k Azure synapse](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md) , jak získat přístup k databázi Azure Cosmos DB z Azure synapse Analytics studia pomocí Azure synapse Link.
 
-## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> Dotazování pomocí synapse Spark
+## <a name="query-analytical-store-using-apache-spark-for-azure-synapse-analytics"></a><a id="query-analytical-store-spark"></a> Dotaz na analytické úložiště pomocí Apache Spark pro Azure synapse Analytics
 
 Postupujte podle pokynů v článku [dotaz Azure Cosmos DB analytické úložiště](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md) pro dotazování pomocí synapse Spark. Tento článek obsahuje několik příkladů, jak můžete pracovat s analytickým úložištěm z synapse gest. Tato gesta se zobrazí po kliknutí pravým tlačítkem na kontejner. Pomocí gest můžete rychle vygenerovat kód a vylepšit ho podle svých potřeb. Jsou také ideální pro zjišťování dat jediným kliknutím.
 
+## <a name="query-the-analytical-store-using-serverless-sql-pool-in-azure-synapse-analytics"></a><a id="query-analytical-store-sql-on-demand"></a> Dotazování analytického úložiště s využitím fondu SQL bez serveru ve službě Azure synapse Analytics
+
+Fond SQL bez serveru umožňuje zadávat dotazy a analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí odkazu Azure synapse. Data můžete analyzovat téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z analytického úložiště a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL. Další informace najdete v článku [analytické úložiště dotazů pomocí serveru bez serveru](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
+
+## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Použití fondu SQL bez serveru k analýze a vizualizaci dat v Power BI
+
+Pro Azure Cosmos DB můžete vytvořit databázi fondu SQL bez serveru a zobrazení přes odkaz na synapse. Později můžete zadat dotaz na kontejnery Azure Cosmos a pak vytvořit model s Power BI nad těmito zobrazeními, aby odrážely tento dotaz. Další informace najdete v článku Jak používat [fond SQL bez serveru k analýze Azure Cosmos DB dat pomocí propojení synapse](synapse-link-power-bi.md) .
+
+## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+
+[Šablona Azure Resource Manager](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) vytvoří Azure Cosmos DB účet s povoleným odkazem na synapse pro rozhraní SQL API. Tato šablona vytvoří účet základního (SQL) rozhraní API v jedné oblasti s kontejnerem nakonfigurovaným s povoleným analytickým standardem TTL a možností ručního škálování nebo propustnosti. Tuto šablonu nasadíte kliknutím na **nasadit do Azure** na stránce Readme.
+
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Začínáme s propojením Azure Synpase – ukázky
 
-Ukázky, které vám pomůžou začít s propojením Azure synapse na [GitHubu](https://aka.ms/cosmosdb-synapselink-samples), najdete v ukázkách. Tato předvádí ucelená řešení s využitím scénářů IoT a Retail.
+Ukázky, které vám pomůžou začít s propojením Azure synapse na [GitHubu](https://aka.ms/cosmosdb-synapselink-samples), najdete v ukázkách. Tato předvádí ucelená řešení s využitím scénářů IoT a Retail. Můžete také najít ukázky, které odpovídají Azure Cosmos DB rozhraní API pro MongoDB ve stejném úložišti ve složce [MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) . 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -228,4 +240,4 @@ Další informace najdete v následujících dokumentech:
 
 * [Apache Spark ve službě Azure synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md).
 
-* [SQL Server bez a na vyžádání v Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).
+* [Podpora běhového fondu SQL bez serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).

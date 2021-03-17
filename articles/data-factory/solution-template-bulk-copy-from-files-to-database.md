@@ -1,19 +1,17 @@
 ---
 title: Hromadné kopírování ze souborů do databáze
 description: Naučte se, jak pomocí šablony řešení hromadně kopírovat data z Azure Data Lake Storage Gen2 do Azure synapse Analytics/Azure SQL Database.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 468bd838237e076aacb9dee0ccacfdcc1ea940af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/09/2020
+ms.openlocfilehash: 5f68c7b33a26bc8c01f3f413943351ff8d61b380
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629112"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376117"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Hromadné kopírování ze souborů do databáze
 
@@ -55,11 +53,11 @@ V současné době tato šablona podporuje pouze kopírování dat ve formátu *
     ![Kontrola kanálu](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Pokud jste ve výše uvedeném **kroku 2** zvolili **Azure synapse Analytics (dříve SQL DW)** jako cíl dat, musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje SQL Data Warehouse báze. Jak ukazuje následující snímek obrazovky, šablona automaticky vygeneruje cestu k *úložišti* pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
+    > Pokud jste jako cíl dat v **kroku 2** zvolili **Azure synapse Analytics** , musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje základ služby Azure synapse Analytics. Jak ukazuje následující snímek obrazovky, šablona automaticky vygeneruje cestu k *úložišti* pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
         
     ![Základní nastavení](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+5. Vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.
 
     ![Klikněte na * * ladit * *.](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 

@@ -1,21 +1,23 @@
 ---
 title: Provozní kontinuita a zotavení po havárii
 services: azure-dev-spaces
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k zajištění kontinuity podnikových aplikací a příprava na zotavení po havárii.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 77425d294dcea0546259b152b793cec291940c53
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232419"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929595"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Přečtěte si pokyny pro zotavení po havárii pro službu Azure Kubernetes Service (AKS).
 
@@ -37,7 +39,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Nasazení standardních hodnot týmu do každého clusteru
 
-Při práci s vývojovým prostorem obvykle nasadíte celou aplikaci do nadřazeného vývojového prostoru v clusteru Kubernetes. Ve výchozím nastavení se `default` používá mezera. Počáteční nasazení zahrnuje všechny služby a také externí prostředky, na kterých tyto služby závisejí, jako jsou databáze nebo fronty. To se označuje jako *standardní*hodnota. Po nastavení směrného plánu v nadřazeném vývojovém prostoru můžete iterovat a ladit jednotlivé služby v podřízených vývojových prostorech.
+Při práci s vývojovým prostorem obvykle nasadíte celou aplikaci do nadřazeného vývojového prostoru v clusteru Kubernetes. Ve výchozím nastavení se `default` používá mezera. Počáteční nasazení zahrnuje všechny služby a také externí prostředky, na kterých tyto služby závisejí, jako jsou databáze nebo fronty. To se označuje jako *standardní* hodnota. Po nastavení směrného plánu v nadřazeném vývojovém prostoru můžete iterovat a ladit jednotlivé služby v podřízených vývojových prostorech.
 
 Nejnovější verze sady služeb můžete nasadit do clusterů ve více oblastech. Aktualizace standardních služeb tímto způsobem zajistí, že budete moct dál používat vývojářské prostory, pokud dojde k selhání oblasti Azure. Pokud například nasadíte svůj směrný plán prostřednictvím kanálu CI/CD, upravte kanál tak, aby se nasadil do několika clusterů v různých oblastech.
 

@@ -1,23 +1,23 @@
 ---
 title: Kurz – Přidání značek k prostředkům v šabloně
-description: Přidejte značky do prostředků, které nasadíte v šabloně Azure Resource Manager. Značky umožňují logicky organizovat prostředky.
+description: Přidejte značky do prostředků, které nasadíte v šabloně Azure Resource Manager (šablona ARM). Značky umožňují logicky organizovat prostředky.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: ce25047ae93a332b62b7e785b23da5794031a98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 625a88c0ee946b1ca67737d9cc67b638699d12f0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497507"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106999"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Kurz: Přidání značek do šablony ARM
 
-V tomto kurzu se naučíte přidávat značky do prostředků v šabloně Azure Resource Manager (ARM). [Značky](../management/tag-resources.md) vám pomůžou logicky organizovat vaše prostředky. Hodnoty značek se zobrazí v sestavách nákladů. Dokončení tohoto kurzu trvá **8 minut** .
+V tomto kurzu se naučíte přidávat značky do prostředků v šabloně Azure Resource Manager (šablona ARM). [Značky](../management/tag-resources.md) vám pomůžou logicky organizovat vaše prostředky. Hodnoty značek se zobrazí v sestavách nákladů. Dokončení tohoto kurzu trvá **8 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se šablon pro rychlý Start](template-tutorial-quickstart-template.md), ale není to nutné.
 
@@ -43,7 +43,7 @@ Následující příklad zvýrazní změny šablony. Zkopírujte celý soubor a 
 
 Je čas nasadit šablonu a prohlédnout si výsledky.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili `templateFile` proměnnou na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,13 +72,13 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vyberte jeden z prostředků, například prostředek účtu úložiště. Vidíte, že má nyní značky.

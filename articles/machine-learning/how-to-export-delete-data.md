@@ -5,22 +5,19 @@ description: Naučte se exportovat nebo odstranit svůj pracovní prostor pomoc�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fd3abdfd9b0bc0e658caa1cc5ab5c5a7edfda453
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 030e09f0bb1514e8d3828da52604d751a2a8a11a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493997"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520078"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Export nebo odstranění dat pracovního prostoru služby Machine Learning
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V Azure Machine Learning můžete data pracovního prostoru exportovat nebo odstranit buď pomocí grafického rozhraní portálu nebo sady Python SDK. Tento článek popisuje obě možnosti.
 
@@ -84,8 +81,7 @@ Následující prostředky strojového učení je možné odstranit pomocí sady
 
 | Typ | Volání funkce | Poznámky | 
 | --- | --- | --- |
-| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#delete-delete-dependent-resources-false--no-wait-false-) | Použijte `delete-dependent-resources` k kaskádové odstranění |
-| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#delete--) | | 
-| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#delete--) | |
-| `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py) | | 
-
+| `Workspace` | [`delete`](/python/api/azureml-core/azureml.core.workspace.workspace#delete-delete-dependent-resources-false--no-wait-false-) | Použijte `delete-dependent-resources` k kaskádové odstranění |
+| `Model` | [`delete`](/python/api/azureml-core/azureml.core.model%28class%29#delete--) | | 
+| `ComputeTarget` | [`delete`](/python/api/azureml-core/azureml.core.computetarget#delete--) | |
+| `WebService` | [`delete`](/python/api/azureml-core/azureml.core.webservice%28class%29) | |

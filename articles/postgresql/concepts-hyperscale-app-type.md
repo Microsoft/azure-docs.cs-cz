@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0daed8e9bba247ae3d4e320e4a02cc2b1b26dbec
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90895958"
 ---
 # <a name="determining-application-type"></a>Určení typu aplikace
 
@@ -22,7 +22,7 @@ Existují široké dva druhy aplikací, které dobře fungují na Citus (s velko
 
 ## <a name="at-a-glance"></a>Na první pohled
 
-| Víceklientské aplikace                                 | Aplikace v reálném čase                                |
+| Víceklientské aplikace                                 | Real-Time aplikací                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
 | V některých případech se ve schématu vydávají desítky nebo stovky tabulek.          | Malý počet tabulek                                |
 | Dotazy vztahující se k jednomu klientovi (společnosti/úložiště) v čase | Relativně jednoduché analytické dotazy s agregacemi |

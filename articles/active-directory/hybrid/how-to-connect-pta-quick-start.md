@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849887"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792428"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -33,7 +33,7 @@ Předávací ověřování Azure Active Directory (Azure AD) umožňuje uživate
 >Pokud provádíte migraci z AD FS (nebo jiných federačních technologií) na předávací ověřování, důrazně doporučujeme, abyste provedli náš podrobný průvodce nasazením, který jste publikovali [tady](https://aka.ms/adfstoPTADPDownload).
 
 >[!NOTE]
->Pokud provedete předávací ověřování pomocí Azure Governmentho cloudu, podívejte se na [Azure Government o hybridní identitě](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+>Pokud provedete předávací ověřování pomocí Azure Governmentho cloudu, podívejte se na [Azure Government o hybridní identitě](./reference-connect-government-cloud.md).
 
 Pomocí těchto pokynů nasaďte předávací ověřování ve vašem tenantovi:
 
@@ -42,25 +42,25 @@ Pomocí těchto pokynů nasaďte předávací ověřování ve vašem tenantovi:
 Ujistěte se, že jsou splněné následující požadavky.
 
 >[!IMPORTANT]
->Z hlediska zabezpečení by správci měli zacházet se serverem, na kterém běží agent PTA, jako by šlo o řadič domény.  Servery agenta PTA by měly být posílené na stejném řádku, jak je uvedeno v části [zabezpečení řadičů domény před útoky](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) .
+>Z hlediska zabezpečení by správci měli zacházet se serverem, na kterém běží agent PTA, jako by šlo o řadič domény.  Servery agenta PTA by měly být posílené na stejném řádku, jak je uvedeno v části [zabezpečení řadičů domény před útoky](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) .
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>V centru pro správu Azure Active Directory
 
-1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci vašeho tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
-2. Přidejte jeden nebo více [vlastních názvů domén](../active-directory-domains-add-azure-portal.md) do svého tenanta služby Azure AD. Uživatelé se můžou přihlásit pomocí některého z těchto názvů domén.
+1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci vašeho tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
+2. Přidejte jeden nebo více [vlastních názvů domén](../fundamentals/add-custom-domain.md) do svého tenanta služby Azure AD. Uživatelé se můžou přihlásit pomocí některého z těchto názvů domén.
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
-1. Identifikujte Server se systémem Windows Server 2012 R2 nebo novějším, aby bylo možné spustit Azure AD Connect. Pokud ještě není povolená, [Povolte na serveru protokol TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Přidejte server do stejné doménové struktury služby Active Directory jako uživatelé, jejichž hesla potřebujete ověřit.
+1. Identifikujte Server se systémem Windows Server 2012 R2 nebo novějším, aby bylo možné spustit Azure AD Connect. Pokud ještě není povolená, [Povolte na serveru protokol TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Přidejte server do stejné doménové struktury služby Active Directory jako uživatelé, jejichž hesla potřebujete ověřit. Je potřeba poznamenat, že instalace ověřovacího agenta Pass-Through v základních verzích Windows serveru není podporovaná. 
 2. Nainstalujte [nejnovější verzi Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na server identifikovaný v předchozím kroku. Pokud už máte Azure AD Connect spuštěnou, ujistěte se, že je verze 1.1.750.0 nebo novější.
 
     >[!NOTE]
-    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud _nehodláte_ použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
+    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud _nehodláte_ použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](./reference-connect-version-history.md).
 
 3. Identifikujte jeden nebo více dalších serverů (se systémem Windows Server 2012 R2 nebo novějším s povoleným protokolem TLS 1,2), kde můžete spouštět samostatné ověřovací agenty. Tyto další servery jsou potřebné k zajištění vysoké dostupnosti žádostí o přihlášení. Přidejte servery do stejné doménové struktury služby Active Directory jako uživatelé, jejichž hesla potřebujete ověřit.
 
     >[!IMPORTANT]
-    >V produkčních prostředích doporučujeme, abyste ve svém tenantovi spustili minimálně 3 agenty ověřování. Omezení počtu 40 ověřovacích agentů na každého tenanta je systému. A osvědčeným postupem je považovat všechny servery, na kterých běží agenti ověřování, jako systémy vrstvy 0 (viz [referenční](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)informace).
+    >V produkčních prostředích doporučujeme, abyste ve svém tenantovi spustili minimálně 3 agenty ověřování. Omezení počtu 40 ověřovacích agentů na každého tenanta je systému. A osvědčeným postupem je považovat všechny servery, na kterých běží agenti ověřování, jako systémy vrstvy 0 (viz [referenční](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)informace).
 
 4. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
    - Zajistěte, aby ověřovací agenti mohli vytvářet *odchozí* požadavky na službu Azure AD prostřednictvím následujících portů:
@@ -72,14 +72,14 @@ Ujistěte se, že jsou splněné následující požadavky.
      | **8080** (volitelné) | Agenti ověřování hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
      
      Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
-   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, přidejte připojení do souborů ** \* . msappproxy.NET** a ** \* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+   - Pokud vaše brána firewall nebo proxy server umožňuje přidat záznamy DNS do povolených, přidejte připojení do souborů **\* . msappproxy.NET** a **\* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
    - Vaše agenti ověřování potřebují pro počáteční registraci přístup k **Login.Windows.NET** a **Login.microsoftonline.com** . Otevřete taky bránu firewall pro tyto adresy URL.
-   - Pro ověření certifikátu Odblokujte následující adresy URL: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**a **www \. Microsoft.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
+    - Pro ověření certifikátu Odblokujte následující adresy URL: **crl3.DigiCert.com:80**, **crl4.DigiCert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-CA2-2009.OCSP.d-Trust.NET:80**, **CRL.Microsoft.com:80**, **oneocsp.Microsoft.com:80** a **OCSP.msocsp.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Cloudová součást Azure Government
 Před povolením předávacího ověřování prostřednictvím Azure AD Connect v kroku 2 si stáhněte nejnovější verzi agenta PTA z Azure Portal.  Musíte zajistit, aby byl váš Agent 1.5.1742.0 verze **.** nebo novější.  Postup ověření agenta najdete v tématu [Upgrade agentů ověřování](how-to-connect-pta-upgrade-preview-authentication-agents.md) .
 
-Po stažení nejnovější verze agenta pokračujte níže uvedenými pokyny ke konfiguraci předávacího ověřování prostřednictvím Azure AD Connect.
+Po stažení nejnovější verze agenta pokračujte níže uvedenými pokyny ke konfiguraci ověřování Pass-Through prostřednictvím Azure AD Connect.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: povolení funkce
 
@@ -88,7 +88,7 @@ Povolení předávacího ověřování prostřednictvím [Azure AD Connect](what
 >[!IMPORTANT]
 >Předávací ověřování můžete povolit na Azure AD Connect primárním nebo přípravném serveru. Důrazně doporučujeme povolit ho z primárního serveru. Pokud v budoucnu nastavujete Azure AD Connect přípravný Server, **musíte** pro možnost přihlášení dál zvolit předávací ověřování. Když vyberete jinou možnost, **zakážete** předávací ověřování u tenanta a přepíšete nastavení na primárním serveru.
 
-Pokud Azure AD Connect instalujete poprvé, vyberte [vlastní cestu instalace](how-to-connect-install-custom.md). Na **přihlašovací stránce uživatele** jako **způsob přihlašování**vyberte **předávací ověřování** . Po úspěšném dokončení se do stejného serveru, jako je Azure AD Connect, nainstaluje agent předávacího ověřování. Kromě toho je ve vašem tenantovi povolená funkce předávacího ověřování.
+Pokud Azure AD Connect instalujete poprvé, vyberte [vlastní cestu instalace](how-to-connect-install-custom.md). Na **přihlašovací stránce uživatele** jako **způsob přihlašování** vyberte **předávací ověřování** . Po úspěšném dokončení se do stejného serveru, jako je Azure AD Connect, nainstaluje agent předávacího ověřování. Kromě toho je ve vašem tenantovi povolená funkce předávacího ověřování.
 
 ![Azure AD Connect: přihlášení uživatele](./media/how-to-connect-pta-quick-start/sso3.png)
 
@@ -120,7 +120,7 @@ V této fázi se uživatelé ze všech spravovaných domén ve vašem tenantovi 
 Pokud plánujete nasazení předávacího ověřování v produkčním prostředí, měli byste nainstalovat další samostatné ověřovací agenty. Nainstalovat tyto ověřovací agenty na servery _jiné_ než ta, ve které běží Azure AD Connect. Tato instalace poskytuje vysokou dostupnost pro žádosti o přihlášení uživatele.
 
 >[!IMPORTANT]
->V produkčních prostředích doporučujeme, abyste ve svém tenantovi spustili minimálně 3 agenty ověřování. Omezení počtu 40 ověřovacích agentů na každého tenanta je systému. A osvědčeným postupem je považovat všechny servery, na kterých běží agenti ověřování, jako systémy vrstvy 0 (viz [referenční](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)informace).
+>V produkčních prostředích doporučujeme, abyste ve svém tenantovi spustili minimálně 3 agenty ověřování. Omezení počtu 40 ověřovacích agentů na každého tenanta je systému. A osvědčeným postupem je považovat všechny servery, na kterých běží agenti ověřování, jako systémy vrstvy 0 (viz [referenční](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)informace).
 
 Instalace více agentů předávacího ověřování zajišťuje vysokou dostupnost, ale nedeterministické vyrovnávání zatížení mezi ověřovacími agenty. Pokud chcete zjistit, kolik agentů pro ověřování potřebujete pro vašeho tenanta, vezměte v úvahu nejvyšší a průměrné zatížení žádostí o přihlášení, které očekáváte ve vašem tenantovi. Jako srovnávací test může jeden agent ověřování zpracovat 300 až 400 ověřování za sekundu na standardním procesoru se 4 jádry, 16 GB paměti RAM.
 
@@ -134,7 +134,7 @@ Chcete-li začít, postupujte podle těchto pokynů a stáhněte software ověř
 
 1. Pokud si chcete stáhnout nejnovější verzi ověřovacího agenta (verze 1.5.193.0 nebo novější), přihlaste se do [centra pro správu Azure Active Directory](https://aad.portal.azure.com) s přihlašovacími údaji globálního správce vašeho tenanta.
 2. V levém podokně vyberte **Azure Active Directory** .
-3. Vyberte **Azure AD Connect**, vyberte **předávací ověřování**a pak vyberte **Stáhnout agenta**.
+3. Vyberte **Azure AD Connect**, vyberte **předávací ověřování** a pak vyberte **Stáhnout agenta**.
 4. Vyberte tlačítko **přijmout podmínky & stáhnout** .
 
 ![Centrum pro správu Azure Active Directory: tlačítko Stáhnout ověřovacího agenta](./media/how-to-connect-pta-quick-start/pta9.png)

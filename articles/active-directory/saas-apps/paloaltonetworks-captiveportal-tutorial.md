@@ -9,28 +9,23 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1b9c9182b8ffc6e9ea2e05fd4863783f111f81dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554007"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Kurz: Integrace Azure Active Directory s Palo Alto Networks na portálu
 
 V tomto kurzu se dozvíte, jak integrovat portál Palo Alto Networks na portálu s Azure Active Directory (Azure AD).
+Integrace Palo Alto Networks na portálu s Azure AD poskytuje následující výhody:
 
-Při integraci Palo Alto Networks na portálu s Azure AD získáte následující výhody:
-
-* V Azure AD můžete řídit, kdo má přístup k portálu Palo Alto Networks.
-* Uživatele můžete automaticky přihlašovat v Palo Alto Networks na portálu (jednotné přihlašování) pomocí účtů uživatelů Azure AD.
-* Účty můžete spravovat v jednom, centrálním umístění, Azure Portal.
-
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+* Můžete řídit v Azure AD, který má přístup k portálu Palo Alto Networks.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k portálu Palo Alto Networks (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,76 +38,82 @@ Pokud chcete integrovat Azure AD s portálem Palo Alto Networks, budete potřebo
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-Palo Alto Networks s podporou portálu podporuje tyto scénáře:
+* Palo Alto Networks na portále podporuje **IDP** iniciované jednotné přihlašování.
+* Palo Alto Networks na portálu **pro poskytování časových intervalů podporuje právě** zřizování uživatelů
 
-* **Jednotné přihlašování iniciované IDP**
-* **Zřizování uživatelů za běhu**
+## <a name="adding-palo-alto-networks-captive-portal-from-the-gallery"></a>Přidávání Palo Alto Networks na portál z Galerie
 
-## <a name="add-palo-alto-networks-captive-portal-from-the-gallery"></a>Přidání portálu Palo Alto Networks z Galerie
+Pokud chcete nakonfigurovat integraci Palo Alto Networks na portálu do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Palo Alto Networks bez portálu z galerie.
 
-Začněte tím, že v galerii přidáte portál Palo Alto Networks do vašeho seznamu spravovaných aplikací SaaS:
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Palo Alto Networks na portál** .
+1. Z panelu výsledků vyberte **Palo Alto Networks** nezávisle na portálu a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí portálu Palo Alto Networks pro samoobslužné zpracování založeného na testovacím uživateli, který se nazývá **B. Simon**.
+Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Palo Alto Networks na portálu.
 
-2. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí portálu Palo Alto Networks, proveďte následující kroky:
 
-    ![Možnost podnikové aplikace v nabídce](common/enterprise-applications.png)
+1. **[Nakonfigurovat jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – povolí uživateli používat tuto funkci.
+    * **[Vytvoření testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – testování jednotného přihlašování Azure AD s uživatelem B. Simon
+    * **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – nastavte B. Simon pro použití jednotného přihlašování Azure AD.
+2. **[Konfigurace jednotného přihlašování k Palo Alto Networks na portálu](#configure-palo-alto-networks-captive-portal-sso)** – nakonfigurujte nastavení jednotného přihlašování v aplikaci.
+    * **[Vytvořte testovacího uživatele na portálu Palo Alto Networks](#create-a-palo-alto-networks-captive-portal-test-user)** , který bude mít protějšek B. Simon v Palo Alto sítě Samoobslužný portál, který je propojený s reprezentací uživatele Azure AD.
+3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Vyberte **Nová aplikace**.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Palo Alto Networks na portálu**. Ve výsledcích hledání vyberte **Palo Alto Networks-dobrovolný portál**a pak vyberte **Přidat**.
+1. V Azure Portal na stránce integrace aplikace **portálu Palo Alto Networks na portálu** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Palo Alto Networks – Samoobslužný portál v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-Pomocí portálu Palo Alto Networks pro samoobslužné zpracování na základě testovacího uživatele s názvem *Britta Simon*nakonfigurujete a otestujete jednotné přihlašování Azure AD. Aby jednotné přihlašování fungovalo, musíte vytvořit relaci mezi uživatelem služby Azure AD a stejným uživatelem v Palo Alto Networks na portálu. 
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí portálu Palo Alto Networks, proveďte následující úlohy:
-
-1. **[Nakonfigurovat jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)**: Povolte uživateli používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování Palo Alto Networks na portálu](#configure-palo-alto-networks-captive-portal-single-sign-on)**: Konfigurace nastavení jednotného přihlašování v aplikaci
-3. **[Vytvoření testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**: Vyzkoušejte jednotné přihlašování Azure AD s uživatelem *Britta Simon*.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)**: nastavte Britta Simon na používání jednotného přihlašování Azure AD.
-5. **Vytvoření testovacího uživatele na portálu Palo Alto Networks na portálu**: Vytvořte uživatele s protějškem *Britta Simon* v Palo Alto Networks na portálu, který je propojený s uživatelem služby Azure AD.
-6. **[Test jednotného přihlašování](#test-single-sign-on)**: Ověřte, že konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-Nejdřív povolte jednotné přihlašování Azure AD v Azure Portal:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **portálu Palo Alto Networks – dobrovolný portál** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V podokně **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu pro **Úpravy** tužky.
-
-    ![Ikona tužky pro úpravy](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V podokně **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Palo Alto Networks – základní konfigurační podokno SAML na portálu](common/idp-intiated.png)
+   1. V poli **identifikátor** zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP` .
 
-   1. V poli **identifikátor**zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP` .
-
-   2. V poli **Adresa URL odpovědi**zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP/ACS` .
+   2. V poli **Adresa URL odpovědi** zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP/ACS` .
 
       > [!NOTE]
       > Aktualizujte zástupné hodnoty v tomto kroku skutečným identifikátorem a adresou URL pro odpovědi. Chcete-li získat skutečné hodnoty, obraťte se na [tým podpory klienta podpory Palo Alto Networks na portálu](https://support.paloaltonetworks.com/support).
 
-5. V části **podpisový certifikát SAML** vedle **XML federačních metadat**vyberte **Stáhnout**. Uložte stažený soubor do počítače.
+5. V části **podpisový certifikát SAML** vedle **XML federačních metadat** vyberte **Stáhnout**. Uložte stažený soubor do počítače.
 
     ![Odkaz na stažení XML federačních metadat](common/metadataxml.png)
 
-### <a name="configure-palo-alto-networks-captive-portal-single-sign-on"></a>Konfigurace jednotného přihlašování v Palo Alto Networks na portálu
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k portálu Palo Alto Networks.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Palo Alto Networks na portálu**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-palo-alto-networks-captive-portal-sso"></a>Konfigurace jednotného přihlašování k Palo Alto Networks na portálu
 
 V dalším kroku nastavte jednotné přihlašování v Palo Alto Networks na samoobslužném portálu:
 
@@ -122,7 +123,7 @@ V dalším kroku nastavte jednotné přihlašování v Palo Alto Networks na sam
 
     ![Karta zařízení webu Palo Alto Networks](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. V nabídce vyberte **zprostředkovatel identity SAML**a pak vyberte **importovat**.
+3. V nabídce vyberte **zprostředkovatel identity SAML** a pak vyberte **importovat**.
 
     ![Tlačítko Import](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
 
@@ -130,61 +131,11 @@ V dalším kroku nastavte jednotné přihlašování v Palo Alto Networks na sam
 
     ![Konfigurace jednotného přihlašování sítí Palo Alto](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    1. Jako **název profilu**zadejte název, třeba **AzureAD-CaptivePortal**.
+    1. Jako **název profilu** zadejte název, třeba **AzureAD-CaptivePortal**.
     
-    2. Vedle pole **metadata zprostředkovatele identity**vyberte **Procházet**. Vyberte soubor metadata.xml, který jste stáhli v Azure Portal.
+    2. Vedle pole **metadata zprostředkovatele identity** vyberte **Procházet**. Vyberte soubor metadata.xml, který jste stáhli v Azure Portal.
     
     3. Vyberte **OK**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
-
-Dále vytvořte testovacího uživatele s názvem *Britta Simon* v Azure Portal:
-
-1. V Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. Vyberte **Nový uživatel**.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. V podokně **uživatel** proveďte následující kroky:
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    1. Jako **název**zadejte **BrittaSimon**.
-  
-    2. Jako **uživatelské jméno**zadejte **BrittaSimon \@ \<your_company_domain\> **. Například **BrittaSimon \@ contoso.com**.
-
-    3. Jako **heslo**zadejte heslo. Doporučujeme, abyste si zaznamenali záznam hesla, které zadáte. Pro zobrazení hesla můžete zaškrtnout políčko **Zobrazit heslo** .
-
-    4. Vyberte **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-Dále udělte přístup k samoobslužnému portálu Palo Alto Networks, aby Britta Simon mohl používat jednotné přihlašování Azure:
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
-
-    ![Podokno podnikové aplikace](common/enterprise-applications.png)
-
-2. V seznamu aplikace zadejte **Palo Alto Networks-dobrovolný portál**a pak vyberte aplikaci.
-
-    ![Odkaz Palo Alto Networks-dobrovolný portál v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Vyberte možnost **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V podokně **Uživatelé a skupiny** v seznamu **Uživatelé** vyberte možnost **Britta Simon**. Vyberte **Vybrat**.
-
-6. Chcete-li do kontrolního výrazu SAML přidat hodnotu role, vyberte v podokně **Vybrat roli** příslušnou roli pro uživatele. Vyberte **Vybrat**.
-
-7. V podokně **Přidat přiřazení** vyberte **přiřadit**.
 
 ### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Vytvoření testovacího uživatele na portálu Palo Alto Networks pro nedobrovolný test
 
@@ -193,15 +144,15 @@ V dalším kroku vytvořte uživatele s názvem *Britta Simon* v Palo Alto Netwo
 > [!NOTE]
 > Pokud chcete uživatele vytvořit ručně, obraťte se na [tým podpory klienta podpory Palo Alto Networks na portálu](https://support.paloaltonetworks.com/support).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-Palo Alto Networks Hosted Portal se nainstaluje za bránou firewall na virtuálním počítači s Windows. K otestování jednotného přihlašování v Palo Alto Networks Portalu se přihlaste k virtuálnímu počítači s Windows pomocí protokol RDP (Remote Desktop Protocol) (RDP). V relaci RDP otevřete prohlížeč a přejdete na libovolný web. Otevře se adresa URL jednotného přihlašování a budete vyzváni k ověření. Po dokončení ověřování máte přístup k webům.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-## <a name="additional-resources"></a>Další zdroje
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste být automaticky přihlášeni k portálu Palo Alto Networks, pro který jste nastavili jednotné přihlašování.
 
-Další informace najdete v těchto článcích:
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Palo Alto Networks na portálu v okně moje aplikace byste měli být automaticky přihlášeni k portálu Palo Alto Networks, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-- [Kurzy týkající se integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Podmíněný přístup v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování portálu Palo Alto Networks můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

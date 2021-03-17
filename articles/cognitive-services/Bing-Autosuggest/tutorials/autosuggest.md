@@ -10,15 +10,20 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: a45000c59f975a03f51aa5ee86846c772cbdfaaa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 6a2c69735c36c06cdf72efc812aa1ac4020ff00a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406465"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342222"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto kurzu vytvoříme webovou stránku, která umožňuje uživatelům zadávat dotazy do rozhraní API pro automatické návrhy Bingu.
 
@@ -28,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Vytvoření jednoduchého dotazu na rozhraní API pro automatické návrhy Bingu
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek automatické návrhy Bingu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) .
 
@@ -280,7 +285,7 @@ Přidejte značku HTML **div**, kterou používáme pro zobrazení výsledků. K
 </html>
 ```
 
-Soubor uložte.
+Uložte soubor.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 
@@ -353,4 +358,4 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na zobrazení a použití](../UseAndDisplayRequirements.md)
+> [Požadavky na zobrazení a použití](../../bing-web-search/use-display-requirements.md)

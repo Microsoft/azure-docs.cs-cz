@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708930"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Přepsání hlaviček požadavků a odpovědí HTTP pomocí Azure Application Gateway-Azure Portal
 
-Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat instanci [SKU Application Gateway v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
+Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat instanci [SKU Application Gateway v2](./application-gateway-autoscaling-zone-redundant.md) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Abyste mohli dokončit kroky v tomto článku, musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) .
+Abyste mohli dokončit kroky v tomto článku, musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](./tutorial-autoscale-ps.md) .
 
 ## <a name="create-required-objects"></a>Vytvořit požadované objekty
 
@@ -55,7 +55,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého ú
 
 V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavičky umístění v odpovědi HTTP odesílané back-endové aplikaci.
 
-1. Vyberte **všechny prostředky**a pak vyberte svoji Aplikační bránu.
+1. Vyberte **všechny prostředky** a pak vyberte svoji Aplikační bránu.
 
 2. V levém podokně vyberte **přepsat** .
 
@@ -91,15 +91,15 @@ V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavi�
 
    - V seznamu **typ hlavičky** vyberte možnost **odpověď**.
 
-   - Vzhledem k tomu, že v tomto příkladu vyhodnocujeme hlavičku Location, která je běžnou hlavičkou, vyberte v části **název záhlaví**možnost **společné záhlaví** .
+   - Vzhledem k tomu, že v tomto příkladu vyhodnocujeme hlavičku Location, která je běžnou hlavičkou, vyberte v části **název záhlaví** možnost **společné záhlaví** .
 
    - V seznamu **Common Header (společné záhlaví** ) vyberte **umístění**.
 
-   - V části rozlišovat **velikost písmen**vyberte možnost **ne**.
+   - V části rozlišovat **velikost písmen** vyberte možnost **ne**.
 
    - V seznamu **operátor** vyberte **EQUAL (=)**.
 
-   - Zadejte vzor regulárního výrazu. V tomto příkladu použijeme vzor `(https?):\/\/.*azurewebsites\.net(.*)$` .
+   - Zadejte vzor regulárního výrazu. V tomto příkladu použijeme vzor `(https?)://.*azurewebsites.net(.*)$` .
 
    - Vyberte **OK**.
 
@@ -111,7 +111,7 @@ V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavi�
 
    - V seznamu **typ hlavičky** vyberte možnost **odpověď**.
 
-   - V části **název záhlaví**vyberte **společné záhlaví**.
+   - V části **název záhlaví** vyberte **společné záhlaví**.
 
    - V seznamu **Common Header (společné záhlaví** ) vyberte **umístění**.
 
@@ -131,4 +131,4 @@ V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavi�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](./rewrite-http-headers.md).

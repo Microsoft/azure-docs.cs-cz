@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: 24f5a671076a44db382ac37e2f6532e5f0f2a3ae
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cc7d3a7ba5927730a68b704d61101a9dba447f2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930382"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493963"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Co jsou otevřené datové sady Azure a jak je můžete použít?
 
@@ -59,5 +59,5 @@ Pokud nemůžete najít požadovaná data, pošlete nám e-mail s [žádostí o 
 
 ## <a name="next-steps"></a>Další kroky
 * [Ukázkový Poznámkový blok](samples.md)
-* [Kurz: regrese modelování pomocí NY taxislužby dat](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
-* [Python SDK pro otevřené datové sady](/python/api/azureml-opendatasets/?view=azure-ml-py)
+* [Kurz: regrese modelování pomocí NY taxislužby dat](../machine-learning/tutorial-auto-train-models.md?context=azure%2fopen-datasets%2fcontext%2fopen-datasets-context)
+* [Python SDK pro otevřené datové sady](/python/api/azureml-opendatasets/)

@@ -3,12 +3,12 @@ title: Aktualizovat skupinu kontejnerů
 description: Naučte se aktualizovat spuštěné kontejnery ve vašich Azure Container Instancesch skupinách kontejnerů.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb31eeda83532c408a303e879439006bcd7d4e45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82928716"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200644"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnerů ve službě Azure Container Instances
 
@@ -42,7 +42,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Aktualizujte skupinu kontejnerů pomocí nového popisku názvu DNS, *MyApplication*a nastavte zbývající vlastnosti dříve použitými hodnotami:
+Aktualizujte skupinu kontejnerů pomocí nového popisku názvu DNS, *MyApplication* a nastavte zbývající vlastnosti dříve použitými hodnotami:
 
 ```azurecli-interactive
 # Update DNS name label (restarts container), leave other properties unchanged
@@ -89,6 +89,6 @@ V tomto článku je uvedeno několik případů, kde je **Skupina kontejnerů**.
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-create]: /cli/azure/container#az-container-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-container-export]: /cli/azure/container#az-container-export

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965292"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technické specifikace a dodržování předpisů pro zařízení StorSimple
@@ -38,7 +38,7 @@ EBOD skříň používá modul PCM 580 W a primární skříň používá 764 W 
 | Specifikace | 580 W PCM (EBOD) | 764 W PCM (primární) |
 | --- | --- | --- |
 | Maximální výstupní výkon |580 W |764 |
-| Frekvence |50/60 Hz |50/60 Hz |
+| Frequency |50/60 Hz |50/60 Hz |
 | Výběr rozsahu napětí |Automatické rozsahy: 90 – 264 V AC, 47/63 Hz |Automatické rozsahy: 90-264 V AC, 47/63 Hz |
 | Maximální inrush aktuální |20 A |20 A |
 | Oprava Power Factor |Nominální vstupní napětí >95% |Nominální vstupní napětí >95% |
@@ -95,7 +95,7 @@ V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcíc
 
 | Skříně | Milimetrech | Cm |
 | --- | --- | --- |
-| Vlastnost Height |87,9 |3,46 |
+| Height (Výška) |87,9 |3,46 |
 | Šířka mezi montážní přírubou |483 |19,02 |
 | Šířka v těle skříně |443 |17,44 |
 | Hloubka od přední přímontní příruby k okraji těla skříně |577 |22,72 |
@@ -119,7 +119,7 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně. V
 
 | Skříně | Rozsah okolních teplot | Relativní vlhkost okolí | Maximální mokrá cibule |
 | --- | --- | --- | --- |
-| Funkční |5 OC-35 OC (41 °F-95 °F) |20% až 80% nekondenzující- |28 °C (82 °F) |
+| Provoz |5 OC-35 OC (41 °F-95 °F) |20% až 80% nekondenzující- |28 °C (82 °F) |
 | Není funkční |-40 °C-70 °C (40 °F-158 °F) |5% až 100% nekondenzující |29 °C (84 °F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Provozní flow, nadmořská, náraz, vibrace, orientace, bezpečnost a EMC

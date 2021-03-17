@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836594"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784044"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Výběr řešení Azure pro přenos dat
 
@@ -71,15 +71,15 @@ Můžete také přejít na účet Azure Storage v Azure Portal a vybrat funkci p
 ## <a name="next-steps"></a>Další kroky
 
 - Seznámení [se Průzkumník služby Azure Storage](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Přečtěte si přehled AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
+- [Přečtěte si přehled AzCopy](./storage-use-azcopy-v10.md).
 - [Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu](../blobs/storage-quickstart-blobs-powershell.md)
 - [Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Projdeme si tyto možnosti:
 
-    - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](https://docs.microsoft.com/azure/databox/).
-    - [Azure Data box Gateway a Azure Stack Edge pro online přenosy](https://docs.microsoft.com/azure/databox-online/).
-- [Přečtěte si, co je Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
+    - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](../../databox/index.yml).
+    - [Azure Data box Gateway a Azure Stack Edge pro online přenosy](../../databox-online/index.yml).
+- [Přečtěte si, co je Azure Data Factory](../../data-factory/copy-activity-overview.md).
 - Použití rozhraní REST API k přenosu dat
 
-    - [V .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [V Javě](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [V .NET](/dotnet/api/overview/azure/storage)
+    - [V Javě](/java/api/overview/azure/storage)

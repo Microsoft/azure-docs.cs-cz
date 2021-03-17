@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073912"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
@@ -64,7 +64,7 @@ Spustí se proces zřizování privátního cloudu.  Zřízení privátního clo
 
 ## <a name="launch-cloudsimple-portal"></a>Spustit portál CloudSimple
 
-K portálu CloudSimple můžete přistupovat z Azure Portal.  Portál CloudSimple se spustí s přihlašovacími údaji pro přihlášení k Azure pomocí jednotného přihlašování (SSO).  Přístup k portálu CloudSimple vyžaduje autorizaci **autorizační aplikace služby CloudSimple** .  Další informace o udělení oprávnění najdete v tématu [souhlasu s aplikací autorizace služby CloudSimple](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
+K portálu CloudSimple můžete přistupovat z Azure Portal.  Portál CloudSimple se spustí s přihlašovacími údaji Azure pro přihlášení pomocí jednotného Sign-On (SSO).  Přístup k portálu CloudSimple vyžaduje autorizaci **autorizační aplikace služby CloudSimple** .  Další informace o udělení oprávnění najdete v tématu [souhlasu s aplikací autorizace služby CloudSimple](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
 1. Vyberte **Všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
@@ -101,7 +101,7 @@ Připojení VPN typu Point-to-site je nejjednodušší způsob, jak se připojit
 
     * **Automatické přidávání** možností nastaví globální zásady pro tuto bránu. Nastavení platí pro aktuální bránu. Nastavení lze přepsat v oblasti **výběru** .
     * Vyberte **Přidat sítě VLAN pro správu/podsítě privátních cloudů**.
-    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na **Přidat uživatelsky definované sítě VLAN/podsítě**.
+    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na  **Přidat uživatelsky definované sítě VLAN/podsítě**.
     * Nastavení **Vybrat** přepíše globální nastavení v části **automaticky přidat**.
 
 7. Kliknutím na **Další** zkontrolujte nastavení. Kliknutím na ikony úprav proveďte požadované změny.
@@ -159,7 +159,7 @@ Nyní se můžete přihlásit k vCenter a nastavit virtuální počítače a zá
     ![Spustit klienta vSphere](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Vyberte preferovaného klienta vSphere pro přístup k serveru vCenter a přihlaste se pomocí uživatelského jména a hesla.  Výchozí hodnoty jsou:
-    * Uživatelské jméno:`CloudOwner@cloudsimple.local`
+    * Uživatelské jméno: `CloudOwner@cloudsimple.local`
     * Heslo: `CloudSimple123!`
 
 Obrazovky vCenter v následujících postupech jsou od klienta vSphere (HTML5).

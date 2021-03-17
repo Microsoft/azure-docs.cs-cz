@@ -1,6 +1,6 @@
 ---
 title: Pomocí jazyka Java vytvořte chatovací místnost s Azure Functions a službou signalizace
-description: Rychlé zprovoznění popisující vytvoření chatovací místnosti pomocí služby Azure SignalR Service a Azure Functions.
+description: Rychlý Start pro použití služby signalizace Azure a Azure Functions k vytvoření chatovací místnosti pomocí jazyka Java.
 author: sffamily
 ms.service: signalr
 ms.devlang: java
@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: b67480f2b6de37822d74162f46caa4d7e50dc193
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 62f31d8426e86cc20e957f3a47b30109dee0a634
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321781"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185670"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití jazyka Java k vytvoření chatovací místnosti s Azure Functions a službou Signal
 
 Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reálném čase a Azure Functions je platforma bez serveru, která umožňuje spuštění kódu bez nutnosti spravovat infrastrukturu. V tomto rychlém startu pomocí jazyka Java sestavíte aplikaci chatu bez serveru, která využívá službu a funkce signalizace v reálném čase.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Editor kódu, například [Visual Studio Code](https://code.visualstudio.com/)
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -37,13 +37,21 @@ Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reáln�
 > [!NOTE]
 > Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
+
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurace a spuštění aplikace funkcí Azure
 
@@ -61,7 +69,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
-1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Soubor uložte.
+1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
 1. Hlavní soubor obsahující funkce jsou v části *Src/chat/Java/src/Main/Java/com/Function/Functions. Java*:
 
@@ -79,14 +87,20 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     ```bash
     mvn azure-functions:run
     ```
+    
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjava)prosím o tom.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili a spustili aplikaci bez serveru v reálném čase s využitím Maven. V dalším kroku se dozvíte, jak vytvořit Azure Functions Java od začátku.
 
 > [!div class="nextstepaction"]
-> [Vytvoření první funkce pomocí Java a Maven](../azure-functions/functions-create-first-java-maven.md)
+> [Vytvoření první funkce pomocí Java a Maven](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

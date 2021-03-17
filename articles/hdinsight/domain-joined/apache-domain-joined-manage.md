@@ -1,19 +1,15 @@
 ---
 title: Správa clusterů Balíček zabezpečení podniku – Azure HDInsight
 description: Naučte se spravovat clustery Azure HDInsight pomocí Balíček zabezpečení podniku.
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079730"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742207"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
 
@@ -47,11 +43,11 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 Balíček zabezpečení podniku (dříve označované jako HDInsight Premium) poskytují více uživatelům přístup ke clusteru, ve kterém je ověřování prováděno pomocí služby Active Directory a ověřování pomocí seznamů ACL pro Apache Ranger a Storage (seznamy ACL pro ADLS). Autorizace zajišťuje zabezpečené hranice mezi více uživateli a umožňuje přístup k datům na základě zásad autorizace jenom privilegovaným uživatelům.
 
-Zabezpečení a izolace uživatelů jsou důležité pro cluster HDInsight s Balíček zabezpečení podniku. Aby bylo možné tyto požadavky splnit, je blokován přístup SSH ke clusteru s Balíček zabezpečení podniku. V následující tabulce jsou uvedeny doporučené metody přístupu pro jednotlivé typy clusterů:
+Zabezpečení a izolace uživatelů jsou důležité pro cluster HDInsight s Balíček zabezpečení podniku. Aby bylo možné splnit tyto požadavky, je podporován přístup SSH ke clusteru s Balíček zabezpečení podniku pro místního uživatele, který byl vybrán při vytváření clusteru, i uživatelům, kteří jsou k dispozici v AAD-DS (tj. Kerberos). V následující tabulce jsou uvedeny doporučené metody přístupu pro jednotlivé typy clusterů:
 
-|Úloha|Scénář|Metoda přístupu|
+|Úloha|Scenario|Metoda přístupu|
 |--------|--------|-------------|
-|Apache Hadoop|Podregistr – interaktivní úlohy a dotazy  |<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Hadoop|Podregistr – interaktivní úlohy a dotazy    |<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Interaktivní úlohy/dotazy, PySpark Interactive|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin s Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Scénáře Batch – odeslání do Sparku, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Interaktivní dotaz (LLAP)|Interaktivní|<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
@@ -161,7 +157,7 @@ HDInsight Balíček zabezpečení podniku má následující role:
 
     ![Konfigurace zobrazení registru ESP Ambari pro správu v prostředí HDInsight konfigurace oprávnění](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 
-6. Vyberte **Přidat uživatele** nebo **Přidat skupinu**a pak zadejte uživatele nebo skupiny, které mohou používat zobrazení podregistru.
+6. Vyberte **Přidat uživatele** nebo **Přidat skupinu** a pak zadejte uživatele nebo skupiny, které mohou používat zobrazení podregistru.
 
 ## <a name="configure-users-for-the-roles"></a>Konfigurace uživatelů pro role
 
@@ -173,5 +169,5 @@ HDInsight Balíček zabezpečení podniku má následující role:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
+- Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](./apache-domain-joined-configure-using-azure-adds.md)protokolem ESP.
 - Informace o konfiguraci zásad podregistru a spouštění dotazů na podregistr najdete v tématu [Konfigurace zásad Apache Hive pro clustery HDInsight s](apache-domain-joined-run-hive.md)protokolem ESP.

@@ -1,35 +1,35 @@
 ---
-title: Dotazování dat v úložišti pomocí SQL na vyžádání (Preview)
-description: Tento článek popisuje, jak zadat dotaz na službu Azure Storage pomocí prostředku SQL na vyžádání (Preview) v rámci služby Azure synapse Analytics.
+title: Dotazování na úložiště dat s neserverovým fondem SQL
+description: Tento článek popisuje, jak zadat dotaz na Azure Storage pomocí prostředku fondu SQL bez serveru v rámci služby Azure synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489737"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675046"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s neserverovým fondem SQL ve službě Azure synapse Analytics
 
-SQL na vyžádání (Preview) umožňuje dotazovat data v Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
+Fond SQL bez serveru umožňuje dotazovat se na data ve službě Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
 
-- Celý [Výběr](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) oblasti plochy, včetně většiny [funkcí a operátorů SQL](overview-features.md)
+- Celý [Výběr](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) oblasti plochy, včetně většiny [funkcí a operátorů SQL](overview-features.md)
 - Možnost vytvořit externí tabulku jako SELECT ([CETAS](develop-tables-cetas.md)) vytvoří [externí tabulku](develop-tables-external-tables.md) a potom exportuje paralelně výsledky příkazu SELECT jazyka Transact-SQL pro Azure Storage.
 
-Další informace o tom, co je vs. v současné době není podporováno, najdete v článku [Přehled na vyžádání SQL](on-demand-workspace-overview.md) nebo v následujících článcích:
+Další informace o tom, co je vs. v současné době není podporováno, najdete v článku [Přehled fondu SQL bez serveru](on-demand-workspace-overview.md) nebo v následujících článcích:
 - [Vývoj přístupu k úložišti](develop-storage-files-overview.md) , kde se dozvíte, jak používat [externí tabulku](develop-tables-external-tables.md) a funkci [OpenRowset](develop-openrowset.md) ke čtení dat ze služby Storage.
 - [Řízení přístupu k úložišti](develop-storage-files-storage-access-control.md) , kde se dozvíte, jak povolit synapse SQL pro přístup k úložišti pomocí ověřování SAS nebo spravované identity pracovního prostoru.
 
 ## <a name="overview"></a>Přehled
 
-Za účelem podpory hladkého prostředí pro účely dotazování na data umístěná v Azure Storage soubory používá SQL na vyžádání funkci [OpenRowset](develop-openrowset.md) s dalšími možnostmi:
+Aby byla zajištěna podpora hladkého prostředí pro místo na místě dotazování na data umístěná v Azure Storage soubory, fond SQL bez serveru používá funkci [OpenRowset](develop-openrowset.md) s dalšími možnostmi:
 
 - [Dotazování na více souborů nebo složek](#query-multiple-files-or-folders)
 - [Formát souboru PARQUET](#query-parquet-files)
@@ -47,19 +47,19 @@ K dotazování na zdrojová data Parquet použijte FORMAT = ' PARQUET '.
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 Příklady použití najdete v článku o [souborech dotazů Parquet](query-parquet-files.md) .
 
-## <a name="query-csv-files"></a>Dotazování na soubory CSV
+## <a name="query-csv-files"></a>Dotazování souborů CSV
 
 Dotaz na zdrojová data sdíleného svazku clusteru získáte pomocí FORMAT = CSV. Schéma souboru CSV můžete zadat jako součást `OPENROWSET` funkce při dotazování na soubory CSV:
 
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 K dispozici jsou některé další možnosti, které lze použít k úpravě pravidel analýzy na vlastní formát CSv:
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 
@@ -146,7 +146,7 @@ Návratový typ dat je nvarchar (1024). Pro zajištění optimálního výkonu v
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami
 
-Aby bylo možné zapnout hladké prostředí s daty uloženými ve vnořených nebo opakovaných datových typech, jako jsou například v souborech [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) , přidávají se následující rozšíření SQL na vyžádání.
+Aby bylo možné zapnout hladké prostředí s daty uloženými ve vnořených nebo opakovaných datových typech, jako jsou například soubory [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) , přidají se následující rozšíření do fondu SQL bez serveru.
 
 #### <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakující se data projektu
 
@@ -184,21 +184,21 @@ Ve výchozím nastavení `OPENROWSET` funkce odpovídá názvu a cestě zdrojov�
 - Funkce vrací skalární hodnotu, jako je int, Decimal, a varchar, ze zadaného elementu a v zadané cestě pro všechny typy Parquet, které nejsou ve skupině vnořeného typu.
 - Pokud cesta odkazuje na element, který je vnořeného typu, funkce vrátí fragment JSON od horního prvku na zadané cestě. Fragment kódu JSON je typu varchar (8000).
 - Pokud vlastnost nebyla nalezena v zadaném column_name, funkce vrátí chybu.
-- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
+- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
 
 V případě ukázek dotazů si přečtěte část přístupové prvky z vnořených sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#read-properties-from-nested-object-columns) .
 
 #### <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakujících se sloupců
 
-Chcete-li získat přístup k prvkům z opakujícího se sloupce, jako je například prvek pole nebo mapa, použijte funkci [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) pro každý skalární prvek, který potřebujete k projektu a poskytnout:
+Chcete-li získat přístup k prvkům z opakujícího se sloupce, jako je například prvek pole nebo mapa, použijte funkci [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro každý skalární prvek, který potřebujete k projektu a poskytnout:
 
 - Vnořený nebo opakovaný sloupec jako první parametr
-- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
+- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
 
-Chcete-li získat přístup k neskalárním prvkům z opakujícího se sloupce, použijte funkci [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) pro každý neskalární prvek, který potřebujete k projektu a poskytnout:
+Chcete-li získat přístup k neskalárním prvkům z opakujícího se sloupce, použijte funkci [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro každý neskalární prvek, který potřebujete k projektu a poskytnout:
 
 - Vnořený nebo opakovaný sloupec jako první parametr
-- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
+- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
 
 Viz fragment syntaxe níže:
 
@@ -222,7 +222,7 @@ Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkov
 ### <a name="tools"></a>nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
-    - Azure synapse Studio (Preview)
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 
@@ -248,7 +248,7 @@ Ukázková data obsahují následující sady dat:
 - Ukázkové soubory Parquet s vnořenými sloupci
 - Knihy ve formátu JSON
 
-| Cesta ke složce                                                  | Description                                                  |
+| Cesta ke složce                                                  | Popis                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |
@@ -264,7 +264,7 @@ Ukázková data obsahují následující sady dat:
 
 Další informace o tom, jak zadávat dotazy na různé typy souborů a vytvářet a používat zobrazení, najdete v následujících článcích:
 
-- [Dotazování na soubory CSV](query-single-csv-file.md)
+- [Dotazování souborů CSV](query-single-csv-file.md)
 - [Dotazování souborů Parquet](query-parquet-files.md)
 - [Dotazování souborů JSON](query-json-files.md)
 - [Dotaz na vnořené hodnoty](query-parquet-nested-types.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172086"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310041"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps
 
@@ -19,7 +19,7 @@ Pokud vaše organizace neumožňuje připojení k omezeným nebo neschváleným 
 
 V tomto tématu se dozvíte, jak nastavit zásadu, která blokuje konkrétní připojení pomocí Azure Portal, ale definice zásad můžete vytvořit jinými způsoby, například prostřednictvím Azure REST API, Azure PowerShell, Azure CLI a Azure Resource Manager šablon. Další informace najdete v tématu [kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -47,7 +47,7 @@ Pokud již máte aplikaci logiky s připojením, které chcete blokovat, postupu
 
 <a name="connector-ID-portal"></a>
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com)Najděte a otevřete aplikaci logiky.
 
@@ -111,7 +111,7 @@ Pokud již máte aplikaci logiky s připojením, které chcete blokovat, postupu
 
 Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
 
    ![V Azure Portal vyhledejte a vyberte zásady.](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -121,7 +121,7 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
 
 1. V části **definice zásad**zadejte informace o definici zásady na základě vlastností popsaných v tomto příkladu:
 
-   ![Vlastnosti definice zásad](./media/block-connections-connectors/policy-definition-create-connections-1.png)
+   ![Snímek obrazovky se zobrazením vlastností "definice zásad".](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
@@ -155,7 +155,7 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
    | `mode` | `All` | Režim, který určuje typy prostředků, které zásada vyhodnocuje. <p><p>Tento scénář nastavuje `mode` `All` , který platí pro zásady skupiny prostředků Azure, odběry a všechny typy prostředků. <p><p>Další informace najdete v tématu [Struktura definice zásad – režim](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Podmínka, která určuje, kdy se má vyhovět pravidlo zásad <p><p>V tomto scénáři určuje, `{condition-to-evaluate}` zda je `api.id` hodnota shodná s hodnotou `Microsoft.Web/connections/api.id` `*managedApis/{connector-name}` , která určuje zástupnou hodnotu (*). <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `field` | `Microsoft.Web/connections/api.id` | `field`Hodnota, která se má porovnat s podmínkou <p><p>V tomto scénáři `field` používá [*alias*](../governance/policy/concepts/definition-structure.md#aliases) `Microsoft.Web/connections/api.id` k přístupu k hodnotě ve vlastnosti konektoru `api.id` . |
-   | `like` | `*managedApis/{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání `field` hodnoty <p><p>V tomto scénáři `like` operátor a zástupný znak (*) zajistí, že pravidlo funguje bez ohledu na oblast a řetězec, `*managedApis/{connector-name}` je hodnota, která má být shodná s `{connector-name}` identifikátorem ID konektoru, který chcete blokovat. <p><p>Předpokládejme například, že chcete blokovat vytváření připojení k platformám nebo databázím sociálních médií: <p><p>Službě`twitter` <br>Instagramu`instagram` <br>Přes`facebook` <br>Pinterestu`pinterest` <br>-SQL Server nebo Azure SQL:`sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
+   | `like` | `*managedApis/{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání `field` hodnoty <p><p>V tomto scénáři `like` operátor a zástupný znak (*) zajistí, že pravidlo funguje bez ohledu na oblast a řetězec, `*managedApis/{connector-name}` je hodnota, která má být shodná s `{connector-name}` identifikátorem ID konektoru, který chcete blokovat. <p><p>Předpokládejme například, že chcete blokovat vytváření připojení k platformám nebo databázím sociálních médií: <p><p>Službě `twitter` <br>Instagramu `instagram` <br>Přes `facebook` <br>Pinterestu `pinterest` <br>-SQL Server nebo Azure SQL: `sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
    | `then` | `{effect-to-apply}` | Efekt, který se má použít, pokud `if` je splněna podmínka <p><p>V tomto scénáři je potřeba `{effect-to-apply}` Blokovat a podařit požadavek nebo operaci, které nevyhovují zásadám. <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `effect` | `deny` | `effect`Je zablokování žádosti, která má vytvořit zadané připojení. <p><p>Další informace najdete v tématu [vysvětlení Azure Policy efektů – Deny](../governance/policy/concepts/effects.md#deny). |
    ||||
@@ -180,7 +180,7 @@ Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupuj
 
    Tady je způsob, jakým se zobrazuje pole **pravidlo zásad** :
 
-   ![Pravidlo pro definici zásady](./media/block-connections-connectors/policy-definition-create-connections-2.png)
+   ![Snímek obrazovky s polem pravidlo zásad s příkladem pravidla zásad](./media/block-connections-connectors/policy-definition-create-connections-2.png)
 
    V případě více konektorů můžete přidat další podmínky, například:
 
@@ -224,7 +224,7 @@ Další informace o definicích zásad Azure najdete v těchto tématech:
 
 * [Definice struktury zásad](../governance/policy/concepts/definition-structure.md)
 * [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
-* [Azure Policy předdefinované definice zásad pro Azure Logic Apps](../logic-apps/policy-samples.md)
+* [Azure Policy předdefinované definice zásad pro Azure Logic Apps](./policy-reference.md)
 
 <a name="create-policy-connector-usage"></a>
 
@@ -232,7 +232,7 @@ Další informace o definicích zásad Azure najdete v těchto tématech:
 
 Když vytvoříte připojení v aplikaci logiky, toto připojení existuje jako samostatný prostředek Azure. Pokud odstraníte jenom aplikaci logiky, připojení se automaticky neodstraní a bude i nadále existovat, dokud ji neodstraníte. Může nastat situace, kdy připojení již existuje nebo kde je nutné vytvořit připojení pro použití mimo aplikaci logiky. Můžete pořád zablokovat možnost použít existující připojení v aplikaci logiky tak, že vytvoříte zásadu, která znemožní ukládat aplikace logiky s omezeným nebo neschváleným připojením.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
 
    ![V Azure Portal vyhledejte a vyberte zásady.](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -276,7 +276,7 @@ Když vytvoříte připojení v aplikaci logiky, toto připojení existuje jako 
    | `mode` | `All` | Režim, který určuje typy prostředků, které zásada vyhodnocuje. <p><p>Tento scénář nastavuje `mode` `All` , který platí pro zásady skupiny prostředků Azure, odběry a všechny typy prostředků. <p><p>Další informace najdete v tématu [Struktura definice zásad – režim](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Podmínka, která určuje, kdy se má vyhovět pravidlo zásad <p><p>V tomto scénáři určuje, `{condition-to-evaluate}` zda výstup řetězce z `[string(field('Microsoft.Logic/workflows/parameters'))]` obsahuje řetězec, `{connector-name}` . <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `value` | `[string(field('Microsoft.Logic/workflows/parameters'))]` | Hodnota, která se má porovnat s podmínkou <p><p>V tomto scénáři `value` je výstup řetězce z `[string(field('Microsoft.Logic/workflows/parameters'))]` , který převede `$connectors` objekt uvnitř `Microsoft.Logic/workflows/parameters` objektu na řetězec. |
-   | `contains` | `{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání s `value` vlastností <p><p>V tomto scénáři `contains` operátor zajišťuje, že pravidlo funguje bez ohledu na to, kde `{connector-name}` se zobrazí, kde řetězec, `{connector-name}` je ID konektoru, který chcete omezit nebo blokovat. <p><p>Předpokládejme například, že chcete blokovat použití připojení k platformám nebo databázím sociálních médií: <p><p>Službě`twitter` <br>Instagramu`instagram` <br>Přes`facebook` <br>Pinterestu`pinterest` <br>-SQL Server nebo Azure SQL:`sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
+   | `contains` | `{connector-name}` | Logický operátor a hodnota, která se má použít pro porovnání s `value` vlastností <p><p>V tomto scénáři `contains` operátor zajišťuje, že pravidlo funguje bez ohledu na to, kde `{connector-name}` se zobrazí, kde řetězec, `{connector-name}` je ID konektoru, který chcete omezit nebo blokovat. <p><p>Předpokládejme například, že chcete blokovat použití připojení k platformám nebo databázím sociálních médií: <p><p>Službě `twitter` <br>Instagramu `instagram` <br>Přes `facebook` <br>Pinterestu `pinterest` <br>-SQL Server nebo Azure SQL: `sql` <p><p>Chcete-li najít Tato ID konektoru, viz výše v tomto tématu v části [Najít referenční ID konektoru](#connector-reference-ID) . |
    | `then` | `{effect-to-apply}` | Efekt, který se má použít, pokud `if` je splněna podmínka <p><p>V tomto scénáři je potřeba `{effect-to-apply}` Blokovat a podařit požadavek nebo operaci, které nedodržují zásady. <p><p>Další informace najdete v tématu [Struktura definice zásad – pravidlo zásad](../governance/policy/concepts/definition-structure.md#policy-rule). |
    | `effect` | `deny` | `effect`Je `deny` nebo zablokuje požadavek na uložení aplikace logiky, která používá zadané připojení. <p><p>Další informace najdete v tématu [vysvětlení Azure Policy efektů – Deny](../governance/policy/concepts/effects.md#deny). |
    ||||
@@ -311,7 +311,7 @@ Další informace o definicích zásad Azure najdete v těchto tématech:
 
 * [Definice struktury zásad](../governance/policy/concepts/definition-structure.md)
 * [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
-* [Azure Policy předdefinované definice zásad pro Azure Logic Apps](../logic-apps/policy-samples.md)
+* [Azure Policy předdefinované definice zásad pro Azure Logic Apps](./policy-reference.md)
 
 <a name="create-policy-assignment"></a>
 

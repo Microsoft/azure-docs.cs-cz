@@ -1,6 +1,6 @@
 ---
 title: Posílání nabízených oznámení do systému Android pomocí Azure Notification Hubs a sady Firebase SDK verze 0,6 | Microsoft Docs
-description: V tomto kurzu se naučíte používat Azure Notification Hubs a službu Google Firebase Cloud Messaging k odesílání nabízených oznámení do zařízení se systémem Android.
+description: V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs a služby Google Firebase Cloud Messaging odesílat nabízená oznámení na zařízení s Androidem (verze 0,6).
 services: notification-hubs
 documentationcenter: android
 keywords: nabízená oznámení, nabízené oznámení, nabízené oznámení android, fcm, firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321458"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428388"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 0,6
 
@@ -411,7 +411,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     android:id="@+id/text_hello"
     ```
 
-    ![Azure Notification Hubs – testovací odeslání](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![Snímek obrazovky zobrazující ID Androidu: ID = "@ + ID/text_hello" použité pro ovládací prvek TextView](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. Dále přidáte podtřídu pro přijímače, který jste definovali v AndroidManifest.xml. Přidejte další novou třídu do projektu s názvem `FirebaseService`.
 

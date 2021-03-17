@@ -1,19 +1,21 @@
 ---
 title: Rozšíření virtuálního počítače s Azure Key Vault pro Linux
 description: Nasaďte agenta, který provádí automatickou aktualizaci Key Vault certifikátů na virtuálních počítačích pomocí rozšíření virtuálního počítače.
-services: virtual-machines-linux
+services: virtual-machines
 author: msmbaldwin
 tags: keyvault
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a674f4a2a31fd217307ff373cba2b883a4d129f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522287"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557059"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -32,6 +34,26 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
 
 - #12 PKCS
 - PEM
+
+## <a name="prerequisities"></a>Konfigurátoru
+  - Key Vault instance s certifikátem Viz [vytvoření Key Vault](../../key-vault/general/quick-create-portal.md)
+  - Virtuální počítač/VMSS musí mít přiřazenou [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) .
+  - Zásady přístupu Key Vault musí být nastavené s tajnými klíči `get` a `list` oprávněním pro SPRAVOVANOU identitu VM/VMSS k načtení části certifikátu tajného klíče. Další informace najdete v tématu [ověření Key Vault](../../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../../key-vault/general/assign-access-policy-cli.md).
+  -  VMSS by měla mít následující nastavení identity: ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+ - Rozšíření integrace by mělo mít toto nastavení: `
+                 "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -57,7 +79,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
           "linkOnRenewal": <Not available on Linux e.g.: false>,
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
         },
         "authenticationSettings": {
                 "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
@@ -90,8 +112,8 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | certificateStoreName | Ignoruje se na Linux. | řetězec |
 | linkOnRenewal | false (nepravda) | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | řetězec |
-| requiredInitialSync | true | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
+| requireInitialSync | true | boolean |
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | pole řetězců
 | msiEndpoint | http://169.254.169.254/metadata/identity | řetězec |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | řetězec |
 
@@ -101,6 +123,10 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují aktualizaci po nasazení certifikátů. Toto rozšíření se dá nasadit na jednotlivé virtuální počítače nebo sady škálování virtuálních počítačů. Schéma a konfigurace jsou společné pro oba typy šablon. 
 
 Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená v rámci fragmentu prostředků virtuálního počítače v šabloně, konkrétně `"resources": []` objekt pro šablonu virtuálního počítače a v případě sady škálování virtuálního počítače v `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` objektu Object.
+
+ > [!NOTE]
+> Rozšíření virtuálních počítačů by vyžadovalo přiřazení spravované identity systému nebo uživatele k ověření do trezoru klíčů.  Další informace najdete v tématu [ověření Key Vault a přiřazení zásad Key Vault přístupu.](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+> 
 
 ```json
     {
@@ -128,8 +154,21 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>Řazení závislosti rozšíření
+Rozšíření virtuálního počítače Key Vault podporuje řazení rozšíření, pokud je nakonfigurováno. Ve výchozím nastavení hlásí rozšíření, že se úspěšně spustila hned po zahájení cyklického dotazování. Dá se ale nakonfigurovat tak, aby čekal na úspěšné stažení kompletního seznamu certifikátů před tím, než dohlásí úspěšné spuštění. Pokud jsou jiné přípony závislé na tom, že je před zahájením nainstalována úplná sada certifikátů, pak povolení tohoto nastavení umožní, aby tato rozšíření deklarovala závislost na rozšíření Key Vault. Tím se zabrání v zahájení těchto rozšíření, dokud nebudou nainstalovány všechny certifikáty, které jsou na nich závislé. Rozšíření zopakuje prvotní stažení po neomezenou dobu a zůstane ve `Transitioning` stavu.
+
+Pokud to chcete zapnout, nastavte následující:
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> Značte Použití této funkce není kompatibilní se šablonou ARM, která vytváří identitu přiřazenou systémem a aktualizuje zásadu přístupu Key Vault s touto identitou. Výsledkem je zablokování, protože zásady přístupu k trezoru se nedají aktualizovat, dokud se nespustila všechna rozšíření. Místo toho byste měli před nasazením použít *jednu přiřazenou IDENTITU MSI* a před nasazením vaše trezory s touto identitou.
 
 ## <a name="azure-powershell-deployment"></a>Nasazení Azure PowerShell
+> [!WARNING]
+> Klienti PowerShellu se často přidávají `\` do `"` v settings.js, na kterých bude akvvm_service selže s chybou: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního počítače do existujícího virtuálního počítače nebo sady škálování virtuálních počítačů. 
 
@@ -141,7 +180,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName =  "KeyVaultForLinux"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
@@ -161,7 +200,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName = "KeyVaultForLinux"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
@@ -187,7 +226,7 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 * Nasazení rozšíření do sady škálování virtuálních počítačů:
@@ -197,38 +236,48 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
         az vmss extension set -n "KeyVaultForLinux" `
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
-        --vm-name "<vmName>" `
-        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
+        --vmss-name "<vmssName>" `
+        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
-
 Mějte na paměti následující omezení/požadavky:
 - Omezení Key Vault:
   - Musí existovat v době nasazení. 
-  - Mustbe sada zásad přístupu Key Vault pro identitu VM/VMSS pomocí spravované identity. Viz [poskytnutí Key Vault ověřování pomocí spravované identity](../../key-vault/general/managed-identity.md)
+  - Zásady přístupu Key Vault musí být nastavené pro identitu VM/VMSS pomocí spravované identity. Další informace najdete v tématu [ověření Key Vault](../../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../../key-vault/general/assign-access-policy-cli.md).
 
+### <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
+* Existuje omezení počtu observedCertificates, která můžete nastavit?
+  Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
+
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
-### <a name="logs-and-configuration"></a>Protokoly a konfigurace
+#### <a name="logs-and-configuration"></a>Protokoly a konfigurace
 
 ```
 /var/log/waagent.log
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
+### <a name="using-symlink"></a>Použití symlink
+
+Symbolické odkazy nebo symbolických odkazů jsou v podstatě pokročilé zkratky. Abyste se vyhnuli monitorování složky a k automatickému získání nejnovějšího certifikátu, můžete použít tento symlink `([VaultName].[CertificateName])` k získání nejnovější verze certifikátu v systému Linux.
+
+### <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+* Existuje omezení počtu observedCertificates, která můžete nastavit?
+  Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
 
 ### <a name="support"></a>Podpora
 

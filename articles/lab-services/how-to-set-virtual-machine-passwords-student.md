@@ -1,16 +1,16 @@
 ---
 title: Resetování hesel pro virtuální počítače v prostředí učebny v Azure Lab Services | Microsoft Docs
-description: Naučte se resetovat hesla pro virtuální počítače v učebn Labs Azure Lab Services.
+description: Naučte se resetovat hesla pro virtuální počítače v cvičeních Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d63d14da8859c12fa797a04fa9a3c3230219adab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b0b13862ca4620da15606138c0a80adeac8056a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445334"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436806"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>Nastavení nebo resetování hesla pro virtuální počítače v učebně Labs (studenti)
+# <a name="set-or-reset-password-for-virtual-machines-in-labs-students"></a>Nastavení nebo resetování hesla pro virtuální počítače v prostředí Labs (studenti)
 V tomto článku se dozvíte, jak můžou studenti nastavit nebo resetovat heslo pro své virtuální počítače. 
 
 ## <a name="enable-resetting-of-passwords"></a>Povolit resetování hesel

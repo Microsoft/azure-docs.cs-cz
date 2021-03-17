@@ -1,6 +1,6 @@
 ---
-title: Ruční převzetí služeb při selhání služby Azure IoT hub | Microsoft Docs
-description: Naučte se, jak provést ruční převzetí služeb při selhání služby IoT Hub do jiné oblasti a potvrdit její funkčnost a pak ji vrátit do původní oblasti a znovu ji zkontrolovat.
+title: Kurz – ruční převzetí služeb při selhání služby Azure IoT Hub | Microsoft Docs
+description: Kurz – Naučte se, jak provést ruční převzetí služeb IoT Hub v jiné oblasti a potvrdit její funkčnost a pak ji vrátit do původní oblasti a znovu ji zkontrolovat.
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252568"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622909"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Kurz: provedení ručního převzetí služeb při selhání pro Centrum IoT
 
@@ -31,9 +31,11 @@ V tomto kurzu provedete následující úlohy:
 > * Navrácení služeb po obnovení, aby se provoz IoT Hubu vrátil do primárního umístění 
 > * Ověření správného chodu IoT Hubu ve správném umístění
 
+Další informace o ručním převzetí služeb při selhání a převzetí služeb při selhání iniciované Microsoftem IoT Hub najdete v tématu [zotavení po havárii mezi oblast](iot-hub-ha-dr.md#cross-region-dr)
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -45,7 +47,7 @@ V tomto kurzu provedete následující úlohy:
 
    ![Snímek obrazovky znázorňující vytváření IoT Hubu](./media/tutorial-manual-failover/create-hub-01.png)
 
-3. Vyberte kartu **základy** . vyplňte následující pole.
+3. Vyberte kartu **základy** . Vyplňte následující pole.
 
     **Předplatné:** Vyberte předplatné Azure, které chcete použít.
 
@@ -79,11 +81,11 @@ Upozorňujeme, že jedno centrum IoT Hub má limit dvou převzetí služeb při 
 
 1. V horní části podokna ruční převzetí služeb při selhání klikněte na **Spustit převzetí služeb při selhání**. 
 
-1. V podokně potvrzení zadejte název vašeho centra IoT a potvrďte, že se jedná o takové, které chcete převzetí služeb při selhání. Pak klikněte na **převzetí**služeb při selhání a spusťte převzetí služeb při selhání.
+1. V podokně potvrzení zadejte název vašeho centra IoT a potvrďte, že se jedná o takové, které chcete převzetí služeb při selhání. Pak klikněte na **převzetí** služeb při selhání a spusťte převzetí služeb při selhání.
 
    Doba trvání ručního převzetí služeb při selhání je úměrná počtu zařízení registrovaných ve vašem centru. Pokud třeba máte 100 000 zařízení, může převzetí služeb při selhání trvat 15 minut, ale pokud máte zařízení pět milionů, může trvat hodinu i delší dobu.
 
-   ![Snímek obrazovky s podoknem Ruční převzetí služeb při selhání](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![Snímek obrazovky s oknem potvrzení ručního převzetí služeb při selhání](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    Když je spuštěný proces ručního převzetí služeb při selhání, zobrazí se banner s oznámením, že probíhá ruční převzetí služeb při selhání. 
 

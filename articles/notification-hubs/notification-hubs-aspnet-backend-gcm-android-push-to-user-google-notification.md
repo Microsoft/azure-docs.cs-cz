@@ -1,6 +1,6 @@
 ---
 title: Posílání oznámení na konkrétní aplikace pro Android pomocí Azure Notification Hubs
-description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
+description: Přečtěte si, jak odesílat nabízená oznámení konkrétním uživatelům v systému Android pomocí Notification Hubs Azure.
 documentationcenter: android
 services: notification-hubs
 author: sethmanheim
@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 349f8bf5c22f1e48ad733356c0e4720f5b7cd7e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c137cbf0c2290bdbe228f7902e616e7f79cb459e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016977"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízeného oznámení konkrétním uživatelům Androidu pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
@@ -470,7 +470,7 @@ Dalším krokem je aktualizace aplikace pro Android vytvořené v [kurzu Zasíl�
 
 1. Pomocí Android Studia spusťte aplikaci na zařízení nebo v emulátoru.
 2. V aplikaci pro Android zadejte uživatelské jméno a heslo. Oba řetězce musí mít stejnou hodnotu a nesmí obsahovat mezery ani speciální znaky.
-3. V aplikaci pro Android klikněte na **Přihlásit**se. Počkejte na zprávu s oznámením **Logged in and registered** (Přihlášeno a zaregistrováno). Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
+3. V aplikaci pro Android klikněte na **Přihlásit** se. Počkejte na zprávu s oznámením **Logged in and registered** (Přihlášeno a zaregistrováno). Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
 
     ![Snímek obrazovky aplikace Informační zpráva potvrzující, že je uživatel přihlášený a registrovaný, a tlačítko pro odeslání oznámení je zapnuté.][A2]
 4. Kliknutím na přepínací tlačítko povolte všechny platformy, na kterých jste aplikaci spustili a zaregistrovali uživatele.

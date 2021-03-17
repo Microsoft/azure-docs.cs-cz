@@ -1,39 +1,40 @@
 ---
-title: Konfigurace koncových bodů Azure File Sync sítě | Microsoft Docs
-description: Přehled možností sítě pro Azure File Sync.
+title: Konfigurace koncových bodů Synchronizace souborů Azure sítě | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat Synchronizace souborů Azure koncové body sítě.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 68d2b864b0e825756fbcd8e43fee3d6289c77c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 97ccbd0858a7b85c4b5d1e460f67416d8139e49a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512864"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218600"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure
-Soubory Azure a Azure File Sync poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
+Soubory Azure a Synchronizace souborů Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
 - Veřejné koncové body, které mají veřejnou IP adresu a jsou přístupné odkudkoli na světě.
 - Privátní koncové body, které existují v rámci virtuální sítě a které mají privátní IP adresu v adresním prostoru virtuální sítě.
 
-Pro soubory a Azure File Sync Azure, účet úložiště Azure, účet úložiště a službu synchronizace úložiště, řídí veřejné i privátní koncové body. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou například kontejnery nebo fronty objektů BLOB. Služba synchronizace úložiště je konstrukce správy, která představuje registrované servery, což jsou souborové servery Windows s vytvořeným vztahem důvěryhodnosti s Azure File Sync a skupiny synchronizace, které definují topologii relace synchronizace. 
+Pro soubory a Synchronizace souborů Azure Azure, účet úložiště Azure, účet úložiště a službu synchronizace úložiště, řídí veřejné i privátní koncové body. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou například kontejnery nebo fronty objektů BLOB. Služba synchronizace úložiště je konstrukce správy, která představuje registrované servery, což jsou souborové servery Windows s vytvořeným vztahem důvěryhodnosti s Synchronizace souborů Azure a skupiny synchronizace, které definují topologii relace synchronizace. 
 
-Tento článek se zaměřuje na konfiguraci koncových bodů sítě pro soubory Azure a Azure File Sync. Další informace o tom, jak nakonfigurovat koncové body sítě pro přímý přístup ke sdíleným složkám Azure, místo ukládání do mezipaměti v místním prostředí pomocí Azure File Sync najdete v tématu [Konfigurace koncových bodů sítě Azure Files](storage-files-networking-endpoints.md).
+Tento článek se zaměřuje na konfiguraci koncových bodů sítě pro soubory Azure a Synchronizace souborů Azure. Další informace o tom, jak nakonfigurovat koncové body sítě pro přímý přístup ke sdíleným složkám Azure, místo ukládání do mezipaměti v místním prostředí pomocí Synchronizace souborů Azure najdete v tématu [Konfigurace koncových bodů sítě Azure Files](storage-files-networking-endpoints.md).
 
-Před načtením tohoto průvodce doporučujeme přečíst si [informace o Azure File Syncch sítích](storage-sync-files-networking-overview.md) .
+Před načtením tohoto průvodce doporučujeme přečíst si [informace o synchronizace souborů Azurech sítích](storage-sync-files-networking-overview.md) .
 
 ## <a name="prerequisites"></a>Požadavky 
 V tomto článku se předpokládá, že:
 - Máte předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Sdílenou složku Azure jste už vytvořili v účtu úložiště, ke kterému se chcete připojit z místního prostředí. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
-- Už jste vytvořili službu synchronizace úložiště a zaregistrovali jste souborový server s Windows. Další informace o nasazení Azure File Sync najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md).
+- Už jste vytvořili službu synchronizace úložiště a zaregistrovali jste souborový server s Windows. Další informace o nasazení Synchronizace souborů Azure najdete v tématu [nasazení synchronizace souborů Azure](storage-sync-files-deployment-guide.md).
 
 Dále:
-- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
 
 ## <a name="create-the-private-endpoints"></a>Vytvoření privátních koncových bodů
 Při vytváření privátního koncového bodu pro prostředek Azure jsou nasazené tyto prostředky:
@@ -51,13 +52,13 @@ Při vytváření privátního koncového bodu pro prostředek Azure jsou nasaze
 
 Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfigurovali předávání DNS, jak je popsáno v tématu [konfigurace předávání DNS pro soubory Azure](storage-files-networking-dns.md), můžete otestovat správné nastavení privátního koncového bodu spuštěním následujících příkazů z PowerShellu, příkazového řádku nebo terminálu (funguje pro Windows, Linux nebo MacOS). Musíte nahradit `<storage-account-name>` odpovídajícím názvem účtu úložiště:
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti (výstup zobrazený pro Windows):
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -72,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfigurovali předávání DNS, jak je popsáno v tématu [konfigurace předávání DNS pro soubory Azure](storage-files-networking-dns.md), můžete otestovat správné nastavení privátního koncového bodu s následujícími příkazy:
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -81,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti:
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -112,7 +113,7 @@ nslookup $hostName
 
 Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti:
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -124,12 +125,12 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>Vytvoření privátního koncového bodu synchronizace úložiště
+### <a name="create-the-storage-sync-service-private-endpoint"></a>Vytvoření privátního koncového bodu služby synchronizace úložiště
 > [!Important]  
-> Aby bylo možné používat privátní koncové body v prostředku služby synchronizace úložiště, je nutné použít agenta Azure File Sync verze 10,1 nebo vyšší. Verze agenta starší než 10,1 nepodporují privátní koncové body ve službě synchronizace úložiště. Všechny předchozí verze agenta podporují soukromé koncové body v prostředku účtu úložiště.
+> Aby bylo možné používat privátní koncové body v prostředku služby synchronizace úložiště, je nutné použít agenta Synchronizace souborů Azure verze 10,1 nebo vyšší. Verze agenta starší než 10,1 nepodporují privátní koncové body ve službě synchronizace úložiště. Všechny předchozí verze agenta podporují soukromé koncové body v prostředku účtu úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Přejděte do **centra pro soukromé spojení** zadáním *privátního odkazu* do panelu hledání v horní části Azure Portal. V obsahu pro centrum privátních odkazů vyberte **privátní koncové body**a potom **+ Přidat** pro vytvoření nového privátního koncového bodu.
+Přejděte do **centra pro soukromé spojení** zadáním *privátního odkazu* do panelu hledání v horní části Azure Portal. V obsahu pro centrum privátních odkazů vyberte **privátní koncové body** a potom **+ Přidat** pro vytvoření nového privátního koncového bodu.
 
 [![Snímek obrazovky se soukromým centrem odkazů](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 
@@ -139,7 +140,7 @@ V okně **základy** vyberte požadovanou skupinu prostředků, název a oblast 
 
 ![Snímek obrazovky s oddílem základy oddílu Vytvoření privátního koncového bodu](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-1.png)
 
-V okně **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku**vyberte pro typ prostředku možnost **Microsoft. StorageSync/storageSyncServices** . 
+V okně **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku** vyberte pro typ prostředku možnost **Microsoft. StorageSync/storageSyncServices** . 
 
 Okno **Konfigurace** umožňuje vybrat konkrétní virtuální síť a podsíť, do které chcete přidat privátní koncový bod. Vyberte stejnou virtuální síť jako ta, kterou jste použili pro výše uvedený účet úložiště. Okno konfigurace obsahuje také informace pro vytvoření nebo aktualizaci privátní zóny DNS.
 
@@ -167,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 Pokud vše fungovalo správně, měli byste vidět následující výstup, ve `192.168.1.4` kterém `192.168.1.5` jsou,, `192.168.1.6` a `192.168.1.7` jsou privátními IP adresami přiřazenými k privátnímu koncovému bodu:
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -243,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 Chcete-li vytvořit privátní koncový bod, je nutné vytvořit připojení služby privátního propojení se službou synchronizace úložiště. Připojení privátního propojení je vstupem pro vytvoření privátního koncového bodu.
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -266,7 +267,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
         -ErrorAction Stop
 ```
 
-Vytvoření privátní zóny DNS Azure povolí názvy hostitelů pro službu synchronizace úložiště, například `mysssmanagement.westus2.afs.azure.net` , aby se přeložily na správné privátní IP adresy služby synchronizace úložiště v rámci virtuální sítě. I když je volitelné z perspektivy vytváření privátního koncového bodu, je explicitně vyžadováno, aby agent Azure File Sync k přístupu ke službě synchronizace úložiště. 
+Vytvoření privátní zóny DNS Azure povolí názvy hostitelů pro službu synchronizace úložiště, například `mysssmanagement.westus2.afs.azure.net` , aby se přeložily na správné privátní IP adresy služby synchronizace úložiště v rámci virtuální sítě. I když je volitelné z perspektivy vytváření privátního koncového bodu, je explicitně vyžadováno, aby agent Synchronizace souborů Azure k přístupu ke službě synchronizace úložiště. 
 
 ```powershell
 # Get the desired Storage Sync Service suffix (afs.azure.net for public cloud).
@@ -324,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 Teď, když máte odkaz na privátní zónu DNS, musíte pro službu synchronizace úložiště vytvořit záznamy A.
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -415,7 +416,7 @@ privateEndpoint=$(az network private-endpoint create \
     tr -d '"')
 ```
 
-Vytvoření privátní zóny DNS Azure povolí názvy hostitelů pro službu synchronizace úložiště, například `mysssmanagement.westus2.afs.azure.net` , aby se přeložily na správné privátní IP adresy služby synchronizace úložiště v rámci virtuální sítě. I když je volitelné z perspektivy vytváření privátního koncového bodu, je explicitně vyžadováno, aby agent Azure File Sync k přístupu ke službě synchronizace úložiště. 
+Vytvoření privátní zóny DNS Azure povolí názvy hostitelů pro službu synchronizace úložiště, například `mysssmanagement.westus2.afs.azure.net` , aby se přeložily na správné privátní IP adresy služby synchronizace úložiště v rámci virtuální sítě. I když je volitelné z perspektivy vytváření privátního koncového bodu, je explicitně vyžadováno, aby agent Synchronizace souborů Azure k přístupu ke službě synchronizace úložiště. 
 
 ```bash
 # Get the desired storage account suffix (afs.azure.net for public cloud).
@@ -584,10 +585,10 @@ Když omezíte účet úložiště na konkrétní virtuální sítě, povolujete
 ---
 
 ### <a name="disable-access-to-the-storage-sync-service-public-endpoint"></a>Zakázat přístup ke veřejnému koncovému bodu služby synchronizace úložiště
-Azure File Sync umožňuje omezit přístup ke konkrétním virtuálním sítím jenom prostřednictvím privátních koncových bodů. Azure File Sync nepodporuje koncové body služby pro omezení přístupu k veřejnému koncovému bodu pro konkrétní virtuální sítě. To znamená, že jsou povolené a zakázané dva stavy pro veřejný koncový bod služby synchronizace úložiště.
+Synchronizace souborů Azure umožňuje omezit přístup ke konkrétním virtuálním sítím jenom prostřednictvím privátních koncových bodů. Synchronizace souborů Azure nepodporuje koncové body služby pro omezení přístupu k veřejnému koncovému bodu pro konkrétní virtuální sítě. To znamená, že jsou povolené a zakázané dva stavy pro veřejný koncový bod služby synchronizace úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-To není možné prostřednictvím Azure Portal. Pokud chcete získat pokyny, jak zakázat veřejný koncový bod služby synchronizace úložiště, vyberte prosím Azure PowerShell nebo Azure CLI TAB. 
+To není možné prostřednictvím Azure Portal. Pokud chcete získat pokyny, jak zakázat veřejný koncový bod služby synchronizace úložiště, vyberte prosím kartu Azure PowerShell. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Pokud chcete zakázat přístup ke veřejnému koncovému bodu služby synchronizace úložiště, nastavili jsme `incomingTrafficPolicy` vlastnost ve službě synchronizace úložiště na `AllowVirtualNetworksOnly` . Pokud chcete povolit přístup k veřejnému koncovému bodu služby synchronizace úložiště, nastavte `incomingTrafficPolicy` na `AllowAllTraffic` místo. Nezapomeňte nahradit `<storage-sync-service-resource-group>` a `<storage-sync-service>` .
@@ -596,31 +597,45 @@ Pokud chcete zakázat přístup ke veřejnému koncovému bodu služby synchroni
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Pokud chcete zakázat přístup ke veřejnému koncovému bodu služby synchronizace úložiště, nastavili jsme `incomingTrafficPolicy` vlastnost ve službě synchronizace úložiště na `AllowVirtualNetworksOnly` . Pokud chcete povolit přístup k veřejnému koncovému bodu služby synchronizace úložiště, nastavte `incomingTrafficPolicy` na `AllowAllTraffic` místo. Nezapomeňte nahradit `<storage-sync-service-resource-group>` a `<storage-sync-service>` .
+Rozhraní příkazového řádku Azure nepodporuje nastavení `incomingTrafficPolicy` vlastnosti ve službě synchronizace úložiště. Pokud chcete získat pokyny, jak zakázat veřejný koncový bod služby synchronizace úložiště, vyberte prosím kartu Azure PowerShell.
 
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
 ---
 
-## <a name="see-also"></a>Viz také:
+## <a name="azure-policy"></a>Azure Policy
+Azure Policy pomáhá vyhovět standardům organizace a hodnotit dodržování standardů ve velkém měřítku. Soubory Azure a Synchronizace souborů Azure zveřejňují několik užitečných síťových zásad pro audit a nápravu, které vám pomůžou monitorovat a automatizovat vaše nasazení.
+
+Zásady auditují vaše prostředí a upozorní vás, pokud se účty úložiště nebo služby synchronizace úložiště odchylují od definovaného chování. Pokud je například veřejný koncový bod povolený, když je vaše zásada nastavená tak, aby byly veřejné koncové body zakázané. Zásady úprav/nasazení umožňují krokování dalších kroků a proaktivně upravování prostředků (například služby synchronizace úložiště) nebo nasazení prostředků (například privátních koncových bodů), aby se tyto zásady rovnaly.
+
+Pro soubory Azure a Synchronizace souborů Azure jsou k dispozici následující předem definované zásady:
+
+| Akce | Služba | Podmínka | Název zásad |
+|-|-|-|-|
+| Auditování | Azure Files | Veřejný koncový bod účtu úložiště je povolený. Další informace najdete v tématu [Zakázání přístupu ke veřejnému koncovému bodu účtu úložiště](#disable-access-to-the-storage-account-public-endpoint) . | Účty úložiště by měly omezovat síťový přístup |
+| Auditování | Synchronizace souborů Azure | Veřejný koncový bod služby synchronizace úložiště je povolený. Další informace najdete v tématu [Zakázání přístupu ke veřejnému koncovému bodu služby synchronizace úložiště](#disable-access-to-the-storage-sync-service-public-endpoint) . | Přístup k veřejné síti by měl být pro Synchronizace souborů Azure zakázaný. |
+| Auditování | Azure Files | Účet úložiště potřebuje aspoň jeden privátní koncový bod. Další informace najdete v tématu [Vytvoření privátního koncového bodu účtu úložiště](#create-the-storage-account-private-endpoint) . | Účet úložiště by měl používat připojení privátního propojení. |
+| Auditování | Synchronizace souborů Azure | Služba synchronizace úložiště potřebuje aspoň jeden privátní koncový bod. Další informace najdete v tématu [Vytvoření privátního koncového bodu služby synchronizace úložiště](#create-the-storage-sync-service-private-endpoint) . | Synchronizace souborů Azure by měl používat privátní odkaz |
+| Modify | Synchronizace souborů Azure | Zakažte veřejný koncový bod služby synchronizace úložiště. | Úprava – konfigurace Synchronizace souborů Azure zakázání přístupu k veřejné síti |
+| Nasadit | Synchronizace souborů Azure | Nasaďte privátní koncový bod pro službu synchronizace úložiště. | Konfigurace Synchronizace souborů Azure s privátními koncovými body |
+| Nasadit | Synchronizace souborů Azure | Nasaďte záznam A pro privatelink.afs.azure.net zónu DNS. | Konfigurace Synchronizace souborů Azure pro použití privátních zón DNS |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>Nastavení zásad pro nasazení privátního koncového bodu
+Zásady pro nasazení privátního koncového bodu nastavíte tak, že přejdete na [Azure Portal](https://portal.azure.com/)a vyhledáte **zásady**. Mělo by se jednat o nejvyšší výsledek centra Azure Policy. Přejděte na   >  **definice** vytváření obsahu v obsahu centra zásad. Podokno výsledné **definice** obsahuje předdefinované zásady napříč všemi službami Azure. Chcete-li najít konkrétní zásadu, vyberte kategorii **úložiště** v filtru kategorie nebo vyhledejte **konfiguraci synchronizace souborů Azure pomocí soukromých koncových bodů**. Vyberte **...** a **přiřaďte** k vytvoření nové zásady z definice.
+
+Okno **základy** průvodce **přiřazením zásad** vám umožní nastavit obor, prostředek nebo seznam vyloučení skupiny prostředků a zadat popisný název, který vám pomůže ho odlišit. Tyto zásady nemusíte měnit, aby fungovaly, ale můžete je dělat v případě, že chcete provést úpravy. Kliknutím na tlačítko **Další** přejděte na stránku **parametry** . 
+
+V okně **parametry** vyberte **...** vedle rozevíracího seznamu **privateEndpointSubnetId** a vyberte virtuální síť a podsíť, ve které by měly být nasazené privátní koncové body pro prostředky služby synchronizace úložiště. Výsledný průvodce může trvat několik sekund, než se načtou dostupné virtuální sítě v rámci vašeho předplatného. Vyberte příslušnou virtuální síť/podsíť pro vaše prostředí a klikněte na **Vybrat**. Kliknutím na tlačítko **Další** přejdete do okna **náprava** .
+
+Aby se privátní koncový bod nasadil, když se identifikuje služba synchronizace úložiště bez privátního koncového bodu, musíte na stránce pro **nápravu** vybrat **vytvořit úlohu nápravy** . Nakonec vyberte **zkontrolovat + vytvořit** a zkontrolujte přiřazení zásady a **vytvořte** ho.
+
+Výsledné přiřazení zásad se spustí v pravidelných intervalech a po vytvoření se nemusí spustit hned.
+
+## <a name="see-also"></a>Viz také
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)

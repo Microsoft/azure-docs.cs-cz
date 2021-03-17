@@ -3,7 +3,7 @@ title: Modul plug-in Smooth Streaming pro open source rozhraní Media Framework
 description: Naučte se používat modul plug-in Azure Media Services Smooth Streaming pro rozhraní Adobe Open Source Media Framework.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6068151f-b6b0-4507-9346-f03416d3d572
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 70042a5c4c27ec5d163e5f05089ae50b92140c28
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172005"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011251"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework  
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Přehled
 Modul plug-in Microsoft Smooth Streaming pro Open Source Media Framework 2,0 (SS pro OSMF) rozšiřuje výchozí možnosti OSMF a přidá přehrávání obsahu Microsoft Smooth Streaming na nové a stávající přehrávače OSMF. Modul plug-in také přidává Smooth Streaming možnosti přehrávání do impulzu pro přehrávání médií (SMP).
 

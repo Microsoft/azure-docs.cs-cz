@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a dotazování synapse fondu SQL pomocí Azure PowerShell
-description: Rychle vytvořte synapse fond SQL s pravidlem brány firewall na úrovni serveru pomocí Azure PowerShell.
+title: 'Rychlý Start: vytvoření vyhrazeného fondu SQL (dřív SQL DW) pomocí Azure PowerShell'
+description: Pomocí Azure PowerShell je rychlé vytvoření vyhrazeného fondu SQL (dříve SQL DW) s pravidlem brány firewall na úrovni serveru.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,24 +10,24 @@ ms.subservice: sql-dw
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 21ca3968065df2575b101efa7735d56f87683938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211064"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120185"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure PowerShell
+# <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL (dřív SQL DW) pomocí Azure PowerShell
 
-Vytvořte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics pomocí Azure PowerShell.
+Vytvořte vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí Azure PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!IMPORTANT]
-> Vytvoření fondu SQL může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření vyhrazeného fondu SQL (dříve SQL DW) může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru
 
-Pomocí příkazu [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vytvořte [pravidlo brány firewall na úrovni serveru](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například SQL Server Management Studio nebo nástroj SQLCMD pro připojení ke fondu SQL prostřednictvím brány firewall služby fondu SQL.
+Pomocí příkazu [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vytvořte [pravidlo brány firewall na úrovni serveru](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například SQL Server Management Studio nebo nástroj SQLCMD, pro připojení k vyhrazenému fondu SQL (dřív SQL DW) prostřednictvím vyhrazené brány firewall služby fondu SQL.
 
 V následujícím příkladu je brána firewall otevřená pouze pro ostatní prostředky Azure. Pokud chcete povolit externí připojení, změňte IP adresu na příslušnou adresu pro vaše prostředí. Chcete-li otevřít všechny IP adresy, použijte jako počáteční IP adresu 0.0.0.0 a jako koncovou adresu 255.255.255.255.
 
@@ -107,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > Koncových bodů SQL komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nebudete se moct připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
 >
 
-## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Vytvoření vyhrazeného fondu SQL (dřív SQL DW)
 
-Následující příklad vytvoří fond SQL pomocí dříve definovaných proměnných.  Určuje cíl služby jako DW100c, což je výchozí bod pro snížení nákladů pro váš fond SQL.
+Následující příklad vytvoří vyhrazený fond SQL (dřív SQL DW) pomocí dříve definovaných proměnných.  Určuje cíl služby jako DW100c, což je výchozí bod nižší ceny pro vyhrazený fond SQL (dřív SQL DW).
 
 ```Powershell
 New-AzSqlDatabase `
@@ -125,10 +125,10 @@ New-AzSqlDatabase `
 Požadované parametry jsou:
 
 * **RequestedServiceObjectiveName**: množství [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) , které požadujete. Zvýšením této hodnoty se zvýší náklady na výpočetní výkon. Seznam podporovaných hodnot naleznete v tématu limity pro [paměť a souběžnost](memory-concurrency-limits.md).
-* **DatabaseName**: název vytvářeného fondu SQL.
+* **DatabaseName**: název vyhrazeného fondu SQL (dříve SQL DW), který vytváříte.
 * **Název_serveru**: název serveru, který používáte pro vytváření.
 * **ResourceGroupName**: Skupina prostředků, kterou používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edice**: pro vytvoření fondu SQL musí být "DataWarehouse".
+* **Edice**: musí být "DataWarehouse", aby bylo možné vytvořit vyhrazený fond SQL (dřív SQL DW).
 
 Volitelné parametry jsou:
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili fond SQL, vytvořili jste pravidlo brány firewall připojenou k vašemu fondu SQL a spustili několik dotazů. Pokud se chcete dozvědět víc, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) .
+Nyní jste vytvořili vyhrazený fond SQL (dřív SQL DW), vytvořili jste pravidlo brány firewall a připojili jste se k vyhrazenému fondu SQL. Pokud se chcete dozvědět víc, přejděte k článku [načtení dat do vyhrazeného fondu SQL](./load-data-from-azure-blob-storage-using-copy.md) .

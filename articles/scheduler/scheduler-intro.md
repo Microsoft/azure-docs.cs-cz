@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: e851da0013cf3a9ff6bb1a0fc1c073b5b796c54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66ec285554299214122a4093837d3506bf642b13
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898540"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368124"
 ---
 # <a name="what-is-azure-scheduler"></a>Co je Azure Scheduler?
 
@@ -25,7 +25,7 @@ ms.locfileid: "78898540"
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) pomáhá vytvářet [úlohy](../scheduler/scheduler-concepts-terms.md) spouštěné v cloudu tím, že umožňuje deklarativně popisovat akce. Služba pak tyto akce automaticky plánuje a spouští. Můžete například volat služby v i mimo Azure, například koncové body HTTP nebo HTTPS, a také odesílat zprávy do front služby Azure Storage a front nebo témat služby Azure Service Bus. Úlohy můžete spouštět okamžitě nebo později. Scheduler bez problémů podporuje [komplexní plánování a pokročilé opakování](../scheduler/scheduler-advanced-complexity.md). Scheduler určuje, kdy se mají úlohy spouštět, uchovává historii výsledků úloh, kterou můžete procházet, a pak předvídatelně a spolehlivě plánuje úlohy, které se mají spustit.
 
-Službu Scheduler používají na pozadí také další plánovací nástroje Azure, například [Azure WebJobs](../app-service/webjobs-create.md), což je funkce [Web Apps](https://azure.microsoft.com/services/app-service/web/) ve službě Azure App Service. Komunikaci pro tyto akce můžete spravovat pomocí [REST API Scheduleru](https://docs.microsoft.com/rest/api/scheduler/), která vám pomůže se správou komunikace pro tyto akce.
+Službu Scheduler používají na pozadí také další plánovací nástroje Azure, například [Azure WebJobs](../app-service/webjobs-create.md), což je funkce [Web Apps](https://azure.microsoft.com/services/app-service/web/) ve službě Azure App Service. Komunikaci pro tyto akce můžete spravovat pomocí [REST API Scheduleru](/rest/api/scheduler/), která vám pomůže se správou komunikace pro tyto akce.
 
 Tady je několik scénářů, ve kterých vám Scheduler může pomoct:
 
@@ -37,7 +37,7 @@ Tady je několik scénářů, ve kterých vám Scheduler může pomoct:
 
 I když můžete pomocí služby Scheduler vytvářet, spravovat a spouštět plánované úlohy, Scheduler úlohy nehostuje ani nespouští kód. Tato služba pouze *volá* služby nebo kód hostované jinde, například v Azure, v místním prostředí nebo u jiného poskytovatele. Scheduler může provádět volání přes HTTP, HTTPS, frontu úložiště, frontu služby Service Bus nebo téma služby Service Bus.
 
-Pokud chcete vytvořit, naplánovat, spravovat, aktualizovat nebo odstranit úlohy a [kolekce úloh](../scheduler/scheduler-concepts-terms.md), můžete použít kód, [REST API plánovače](https://docs.microsoft.com/rest/api/scheduler/)nebo [rutiny PowerShellu pro Azure Scheduler](scheduler-powershell-reference.md).
+Pokud chcete vytvořit, naplánovat, spravovat, aktualizovat nebo odstranit úlohy a [kolekce úloh](../scheduler/scheduler-concepts-terms.md), můžete použít kód, [REST API plánovače](/rest/api/scheduler/)nebo [rutiny PowerShellu pro Azure Scheduler](scheduler-powershell-reference.md).
 
 ## <a name="next-steps"></a>Další kroky
 

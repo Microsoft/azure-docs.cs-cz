@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ffe00c3df4abd924fca202d2bcdd0ec458dd3eb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355331"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737995"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -26,7 +26,7 @@ Tento článek poskytuje přehled o TDSP a hlavních součástech. Poskytujeme o
 
 ## <a name="key-components-of-the-tdsp"></a>Klíčové součásti TDSP
 
-TDSP hads tyto klíčové komponenty:
+TDSP má následující klíčové komponenty:
 
 - Definice **životního cyklu datové vědy**
 - **Standardizovaná struktura projektu**
@@ -51,14 +51,14 @@ Tento životní cyklus je navržený pro projekty pro datové vědy, které se d
 
 Tady je vizuální reprezentace **životního cyklu vědeckého zpracování týmových dat**. 
 
-![TDSP – Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![Diagram znázorňuje životní cyklus pro datové vědy, včetně podnikového porozumění, získávání a porozumění dat, modelování a nasazování.](./media/overview/tdsp-lifecycle2.png) 
 
 Cíle, úlohy a artefakty dokumentace pro každou fázi životního cyklu v TDSP jsou popsány v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md) . Tyto úlohy a artefakty jsou přidruženy k rolím projektu:
 
 - Architekt řešení
 - Projektový manažer
 - Datový inženýr
-- Odborník přes data
+- Datový vědec
 - Vývojář aplikace
 - Vedoucí projektu 
 
@@ -70,7 +70,7 @@ Následující diagram představuje zobrazení mřížky úloh (modrých) a arte
 
 Všechny projekty, které sdílí strukturu adresářů a používají šablony pro projektové dokumenty, usnadňují členům týmu hledání informací o jejich projektech. Veškerý kód a dokumenty jsou uloženy v systému správy verzí (VCS), jako je git, TFS nebo podverze, aby bylo možné povolit týmovou spolupráci. Sledování úloh a funkcí v systému agilního sledování projektů, jako je JIRA, rally a Azure DevOps, umožňuje blíže sledovat kód pro jednotlivé funkce. Toto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvořit samostatné úložiště pro každý projekt na VC pro správu verzí, zabezpečení informací a spolupráci. Standardizovaná struktura pro všechny projekty pomáhá sestavovat institucionální znalosti napříč organizací.
 
-Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardních umístěních. Tato struktura složky uspořádává soubory, které obsahují kód pro zkoumání dat a extrakci funkcí a které mají iterace modelu záznamu. Tyto šablony usnadňují členům týmu pochopit práci prováděnou ostatními uživateli a přidávat nové členy do týmů. Šablony dokumentů ve formátu Markdownu je snadné zobrazit a aktualizovat. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste měli jistotu, že problém je dobře definovaný a že dodávky odpovídají očekávané kvalitě. Mezi příklady patří:
+Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardních umístěních. Tato struktura složky uspořádává soubory, které obsahují kód pro zkoumání dat a extrakci funkcí a které mají iterace modelu záznamu. Tyto šablony usnadňují členům týmu pochopit práci prováděnou ostatními uživateli a přidávat nové členy do týmů. Šablony dokumentů ve formátu Markdownu je snadné zobrazit a aktualizovat. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste měli jistotu, že problém je dobře definovaný a že dodávky odpovídají očekávané kvalitě. Příklady:
 
 - Projektová Charta k dokumentaci obchodního problému a rozsahu projektu
 - sestavy dat pro dokumentaci struktury a statistiky nezpracovaných dat
@@ -87,7 +87,7 @@ Adresářová struktura může být klonována z [GitHubu](https://github.com/Az
 TDSP poskytuje doporučení pro správu sdílených analýz a infrastruktury úložiště, jako jsou:
 
 - souborové systémy v cloudu pro ukládání datových sad 
-- databáze
+- V databázích
 - clustery s velkými objemy dat (SQL nebo Spark) 
 - Služba Machine Learning 
 
@@ -100,7 +100,7 @@ Tady je příklad týmu pracujícího na více projektech a sdílení různých 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Nástroje a pomůcky pro provádění projektů
 
-Představujeme procesy ve většině organizací je náročné. Nástroje, které jsou k dispozici pro implementaci procesu a životního cyklu datové vědy, můžou snížit překážky a zvýšit konzistenci jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skriptů, které umožňují přecházet k zahájení přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úkoly v životním cyklu pro datové vědy, jako je zkoumání dat a modelování směrného plánu. K dispozici je dobře definovaná struktura pro jednotlivce, které přispívat sdíleným nástrojům a nástrojům do úložiště se sdíleným kódem svého týmu. Tyto prostředky pak mohou využívat jiné projekty v rámci týmu nebo organizace. TDSP také plánuje povolit příspěvky nástrojů a nástrojů do celé komunity. Nástroje TDSP můžou být naklonované z [GitHubu](https://github.com/Azure/Azure-TDSP-Utilities).
+Představujeme procesy ve většině organizací je náročné. Nástroje, které jsou k dispozici pro implementaci procesu a životního cyklu datové vědy, můžou snížit překážky a zvýšit konzistenci jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skriptů, které umožňují přecházet k zahájení přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úkoly v životním cyklu pro datové vědy, jako je zkoumání dat a modelování směrného plánu. K dispozici je dobře definovaná struktura pro jednotlivce, které přispívat sdíleným nástrojům a nástrojům do úložiště se sdíleným kódem svého týmu. Tyto prostředky pak mohou využívat jiné projekty v rámci týmu nebo organizace.  Společnost Microsoft poskytuje rozsáhlá nástroje v rámci [Azure Machine Learning](../index.yml) podporujících Open Source (Python, R, ONNX a běžné architektury hloubkového učení) a také vlastní nástroje společnosti Microsoft (AutoML).
 
 
 ## <a name="next-steps"></a>Další kroky

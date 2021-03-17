@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: nasazení služby Azure Functions jako modulů – Azure IoT Edge'
+title: 'Kurz: nasazení Azure Functions jako modulů – Azure IoT Edge'
 description: V tomto kurzu vyvíjíte funkci Azure Function jako modul IoT Edge a pak ho nasadíte do hraničního zařízení.
 author: kgremban
 manager: philmea
@@ -8,17 +8,19 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d9b9ba3a8092992c9ebca9b3242223213b75ad80
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439674"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464101"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
 
-Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provede vytvořením a nasazením funkce Azure, která filtruje data senzorů na simulovaném IoT Edgem zařízení. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provede vytvořením a nasazením funkce Azure, která filtruje data senzorů na simulovaném IoT Edgem zařízení. Použijete simulované IoT Edge zařízení, které jste vytvořili v rychlých startech. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -36,13 +38,13 @@ Funkce Azure, kterou vytvoříte v tomto kurzu, filtruje data o teplotě vygener
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
-* Registr kontejneru, například [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
+* Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
 
@@ -89,7 +91,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge** nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 
@@ -237,7 +239,7 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul Azure Functions s kódem k filtrování nezpracovaných dat generovaných vaším zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji Azure IoT Edge Visual Studio Code](how-to-vs-code-develop-module.md).
+V tomto kurzu jste vytvořili modul Azure Functions s kódem k filtrování nezpracovaných dat generovaných vaším zařízením IoT Edge.
 
 Pokračujte dalšími kurzy, ve kterých se seznámíte s jinými způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace na hraničním zařízení.
 

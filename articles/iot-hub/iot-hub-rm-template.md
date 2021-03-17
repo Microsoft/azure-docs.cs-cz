@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: db4b676e65d36a9476fd72b66cc8ccfa38af4d85
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75976739"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144505"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Vytvoření služby IoT Hub pomocí šablony Azure Resource Manager (.NET)
 
@@ -23,13 +24,13 @@ ms.locfileid: "75976739"
 Pomocí Azure Resource Manager můžete programově vytvářet a spravovat centra IoT Azure. V tomto kurzu se dozvíte, jak použít šablonu Azure Resource Manager k vytvoření centra IoT z programu v jazyce C#.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Azure Resource Manager a Classic](../azure-resource-manager/management/deployment-models.md).  Tento článek popisuje použití modelu nasazení Azure Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Azure Resource Manager a Classic](../azure-resource-manager/management/deployment-models.md).  Tento článek popisuje použití modelu nasazení Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete:
 
-* Visual Studio.
+* Visual Studio
 * Aktivní účet Azure. <br/>Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
 * [Účet Azure Storage][lnk-storage-account] , do kterého můžete ukládat soubory šablon Azure Resource Manager.
 * [Azure PowerShell 1,0][lnk-powershell-install] nebo novější.
@@ -221,11 +222,11 @@ Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
+[lnk-rest-api]: /rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-iotedge]: ../iot-edge/quickstart-linux.md

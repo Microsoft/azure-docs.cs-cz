@@ -1,6 +1,6 @@
 ---
 title: Použití transakcí
-description: Tipy pro implementaci transakcí ve fondu SQL (datový sklad) pro vývoj řešení
+description: Tipy pro implementaci transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics pro vývoj řešení
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500755"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116724"
 ---
-# <a name="use-transactions-in-sql-pool"></a>Použít transakce ve fondu SQL
+# <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics
 
-Tipy pro implementaci transakcí ve fondu SQL (datový sklad) pro vývoj řešení
+Tipy pro implementaci transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics pro vývoj řešení
 
 ## <a name="what-to-expect"></a>Co očekávat
 
-Jak byste očekávali, fond SQL podporuje transakce jako součást úlohy datového skladu. Pokud ale chcete mít jistotu, že se výkon fondu SQL udržuje v měřítku, některé funkce jsou v porovnání s SQL Server omezené. Tento článek popisuje rozdíly a seznam ostatních.
+Jak očekáváte, vyhrazený fond SQL podporuje transakce jako součást úlohy datového skladu. Pokud ale chcete mít jistotu, že se výkon vyhrazeného fondu SQL zachová, jsou v porovnání s SQL Server omezeny některé funkce. Tento článek popisuje rozdíly a seznam ostatních.
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
 
-Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
+Vyhrazený fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
 
-Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) .
+Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?preserve-view=true&view=azure-sqldw-latest) .
 
 ## <a name="transaction-size"></a>Velikost transakce
-Jedna transakce změny dat má omezené velikosti. Limit se aplikuje na distribuci. Z tohoto důvodu může být celkové přidělení vypočítáno vynásobením omezení počtem distribucí. 
+Jedna transakce změny dat má omezené velikosti. Limit se aplikuje na distribuci. V takovém případě lze celkové přidělení vypočítat vynásobením limitu distribucí. 
 
 K aproximaci maximálního počtu řádků v transakci rozdělte velikost distribučního čísla celkové velikosti každého řádku. U sloupců s proměnlivou délkou zvažte použití průměrné délky sloupce, a ne omezení velikosti.
 
@@ -54,12 +54,12 @@ V tabulce níže byly provedeny následující předpoklady:
 | DW1500c |11,25 |60 |675 |45 000 000 |2 700 000 000 |
 | DW2000c |15 |60 |900 |60 000 000 |3 600 000 000 |
 | DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
-| DW3000c |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
-| DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
+| DW3000c |22.5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW5000c |37.5 |60 |2 250 |150 000 000 |9 000 000 000 |
 | DW6000c |45 |60 |2 700 |180 000 000 |10 800 000 000 |
 | DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
 | DW10000c |75 |60 |4 500 |300 000 000 |18 000 000 000 |
-| DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
+| DW15000c |112.5 |60 |6 750 |450 000 000 |27 000 000 000 |
 | DW30000c |225 |60 |13 500 |900 000 000 |54 000 000 000 |
 
 ## <a name="gen1"></a>Gen1
@@ -76,12 +76,12 @@ V tabulce níže byly provedeny následující předpoklady:
 | DW1200 |9 |60 |540 |36 000 000 |2 160 000 000 |
 | DW1500 |11,25 |60 |675 |45 000 000 |2 700 000 000 |
 | DW2000 |15 |60 |900 |60 000 000 |3 600 000 000 |
-| DW3000 |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW3000 |22.5 |60 |1 350 |90 000 000 |5 400 000 000 |
 | DW6000 |45 |60 |2 700 |180 000 000 |10 800 000 000 |
 
 Limit velikosti transakce je použit na transakci nebo operaci. Není aplikováno napříč všemi souběžnými transakcemi. Proto každá transakce má povoleno zapsat toto množství dat do protokolu.
 
-Pokud chcete optimalizovat a minimalizovat množství dat zapsaných do protokolu, přečtěte si článek věnované [osvědčeným postupům pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Chcete-li optimalizovat a minimalizovat množství dat zapsaných do protokolu, přečtěte si článek věnované [osvědčeným postupům pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 > [!WARNING]
 > Maximální velikost transakce lze dosáhnout pouze pro hodnoty HASH nebo ROUND_ROBIN distribuované tabulky, kde je rozprostření dat sudé. Pokud transakce zapisuje data šikmým způsobem na rozdělení, je pravděpodobně dosaženo limitu před maximální velikostí transakce.
@@ -89,10 +89,10 @@ Pokud chcete optimalizovat a minimalizovat množství dat zapsaných do protokol
 
 ## <a name="transaction-state"></a>Stav transakce
 
-Fond SQL používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
+Vyhrazený fond SQL používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
 
 > [!NOTE]
-> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje jiné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by došlo k chybě, ale nevynucují transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. Ale fond SQL to neumožňuje. Pokud dojde k chybě uvnitř transakce fondu SQL, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Je proto důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
+> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje jiné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by došlo k chybě, ale nevynucují transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. Vyhrazený fond SQL ho ale neumožňuje. Pokud dojde k chybě uvnitř vyhrazené transakce fondu SQL, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Je proto důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
 
 Například v SQL Server se může zobrazit transakce, která vypadá takto:
 
@@ -138,7 +138,7 @@ Msg 111233, úroveň 16, stav 1, řádek 1 111233; Aktuální transakce byla př
 
 Výstup funkcí ERROR_ * se nezobrazuje.
 
-V rámci fondu SQL musí být kód mírně pozměněn:
+V vyhrazeném fondu SQL musí být kód mírně pozměněn:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,21 +181,19 @@ Všechny, které se změnily, je, že vrácení transakce se musí nacházet př
 
 ## <a name="error_line-function"></a>Error_Line () – funkce
 
-Také je třeba poznamenat, že fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tento kód ve vašem kódu, musíte ho odebrat, aby byl kompatibilní s fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další podrobnosti najdete v článku s [popisem](develop-label.md) .
+Také je třeba poznamenat, že vyhrazený fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tuto funkci v kódu, je nutné ji odebrat, aby byla kompatibilní s vyhrazeným fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další informace najdete v článku s [popisem](develop-label.md) .
 
 ## <a name="use-of-throw-and-raiserror"></a>Použití THROW a RAISERROR
 
-THROW je moderní implementace pro vyvolávání výjimek ve fondu SQL, ale je také podporována příkaz RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
+THROW je moderní implementace pro vyvolávání výjimek ve vyhrazeném fondu SQL, ale je také podporována příkaz RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
 
-* Uživatelem definované chybové zprávy nemohou být v rozsahu 100 000-150 000 pro THROW.
+* Uživatelem definované chybové zprávy nemohou být v rozsahu 100 000-150 000 pro THROW
 * Chybové zprávy RAISERROR jsou opraveny na 50 000
 * Použití sys. Messages se nepodporuje.
 
 ## <a name="limitations"></a>Omezení
 
-Fond SQL má několik dalších omezení týkajících se transakcí.
-
-Jsou to tyto:
+Vyhrazený fond SQL má několik dalších omezení, která se vztahují na transakce. Jsou to tyto:
 
 * Žádné distribuované transakce
 * Nejsou povolené žádné vnořené transakce.
@@ -206,4 +204,4 @@ Jsou to tyto:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [fond SQL](best-practices-sql-pool.md) a [SQL na vyžádání (Preview)](best-practices-sql-on-demand.md).
+Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [vyhrazený fond SQL](best-practices-sql-pool.md) a [SQL Server bez serveru](best-practices-sql-on-demand.md).

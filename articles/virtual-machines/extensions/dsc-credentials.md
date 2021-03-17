@@ -1,26 +1,19 @@
 ---
 title: Předání přihlašovacích údajů do Azure pomocí konfigurace požadovaného stavu
 description: Přečtěte si, jak bezpečně předat přihlašovací údaje virtuálním počítačům Azure pomocí konfigurace požadovaného stavu PowerShellu (DSC).
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-tags: azure-resource-manager
-keywords: našly
-ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
-ms.date: 05/02/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.collection: windows
+ms.date: 05/02/2018
+ms.openlocfilehash: 6817dd6baacd835b7d433177ff18af1238ee44a6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73748968"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560071"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Předání přihlašovacích údajů obslužné rutině Azure DSCExtension
 

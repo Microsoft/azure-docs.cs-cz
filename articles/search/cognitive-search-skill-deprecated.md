@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85f3b9862bd8155c1a4b11860dc82d92a2f9e810
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792021"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936091"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Zastaralé dovednosti při rozpoznávání v Azure Kognitivní hledání
 
@@ -38,7 +38,7 @@ Tento dokument popisuje vnímání dovedností, které se považují za zastaral
 
 Místo toho použijte [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) . Poskytuje většinu funkcí NamedEntityRecognitionSkill s vyšší kvalitou. Obsahuje také bohatší informace ve svých komplexních výstupních polích.
 
-Chcete-li provést migraci na [dovednost rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jednu nebo více následujících změn definice dovednosti. Definici dovedností můžete aktualizovat pomocí [rozhraní Update dovednosti API](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
+Chcete-li provést migraci na [dovednost rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jednu nebo více následujících změn definice dovednosti. Definici dovedností můžete aktualizovat pomocí [rozhraní Update dovednosti API](/rest/api/searchservice/update-skillset).
 
 > [!NOTE]
 > V současné době není hodnocení spolehlivosti v rámci konceptu podporováno. `minimumPrecision`Parametr existuje v `EntityRecognitionSkill` pro budoucí použití a pro zpětnou kompatibilitu.
@@ -145,7 +145,7 @@ Chcete-li provést migraci na [dovednost rozpoznávání entit](cognitive-search
         }
         ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

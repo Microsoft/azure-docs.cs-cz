@@ -2,15 +2,15 @@
 title: Použití certifikátu TLS/SSL v kódu
 description: Naučte se používat klientské certifikáty ve vašem kódu. Ověřování pomocí klientských certifikátů pomocí vzdálených prostředků, nebo s nimi spouštějte kryptografické úlohy.
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811692"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126035"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Použijte certifikát TLS/SSL v kódu v Azure App Service
 
@@ -20,18 +20,18 @@ Tento přístup k používání certifikátů v kódu využívá funkci TLS v Ap
 
 Když necháte App Service spravovat certifikáty TLS/SSL, můžete spravovat certifikáty a kód aplikace samostatně a chránit citlivá data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
-- [Vytvořit aplikaci App Service](/azure/app-service/)
+- [Vytvořit aplikaci App Service](./index.yml)
 - [Přidání certifikátu do aplikace](configure-ssl-certificate.md)
 
 ## <a name="find-the-thumbprint"></a>Najít kryptografický otisk
 
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**, pak vyberte **certifikáty privátních klíčů (. pfx)** nebo **certifikáty veřejného klíče (. cer)**.
+V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL** , pak vyberte **certifikáty privátních klíčů (. pfx)** nebo **certifikáty veřejného klíče (. cer)** .
 
 Vyhledejte certifikát, který chcete použít, a zkopírujte jeho kryptografický otisk.
 
@@ -49,10 +49,7 @@ Pro zpřístupnění všech certifikátů nastavte hodnotu na `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Načtení certifikátu v aplikacích pro Windows
 
-`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows a umístění závisí na [cenové úrovni](overview-hosting-plans.md):
-
-- **Izolovaná** vrstva – [místní Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
-- Všechny ostatní úrovně – v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
+`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
 V kódu jazyka C# získáte přístup k certifikátu pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
@@ -107,29 +104,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 Jazyky, které nepodporují nebo neposkytují nedostatečnou podporu úložiště certifikátů Windows, najdete v tématu [načtení certifikátu ze souboru](#load-certificate-from-file).
 
-## <a name="load-certificate-in-linux-apps"></a>Načíst certifikát v aplikacích pro Linux
-
-`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro hostované aplikace Linux (včetně vlastních kontejnerových aplikací) jako soubory. Soubory se nacházejí v následujících adresářích:
-
-- Privátní certifikáty – `/var/ssl/private` ( `.p12` soubory)
-- Veřejné certifikáty – `/var/ssl/certs` ( `.der` soubory)
-
-Názvy souborů certifikátů jsou kryptografické otisky certifikátů. Následující kód jazyka C# ukazuje, jak načíst veřejný certifikát v aplikaci pro Linux.
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-Pokud chcete zjistit, jak načíst certifikát TLS/SSL ze souboru v Node.js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
-
 ## <a name="load-certificate-from-file"></a>Načíst certifikát ze souboru
 
 Pokud potřebujete načíst soubor certifikátu, který nahrajete ručně, je vhodnější nahrát certifikát pomocí [FTPS](deploy-ftp.md) místo [Gitu](deploy-local-git.md), například. Měli byste chránit citlivá data, jako je soukromý certifikát, ze správy zdrojového kódu.
@@ -159,9 +133,42 @@ var cert = new X509Certificate2(bytes);
 
 Pokud chcete zjistit, jak načíst certifikát TLS/SSL ze souboru v Node.js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
 
+## <a name="load-certificate-in-linuxwindows-containers"></a>Načíst certifikát v kontejnerech systému Linux/Windows
+
+`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty vašim kontejnerovým aplikacím pro Windows nebo Linux (včetně integrovaných kontejnerů Linux) jako souborů. Soubory se nacházejí v následujících adresářích:
+
+| Platforma kontejneru | Veřejné certifikáty | Privátní certifikáty |
+| - | - | - |
+| Kontejner Windows | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Kontejner Linuxu | `/var/ssl/certs` | `/var/ssl/private` |
+
+Názvy souborů certifikátů jsou kryptografické otisky certifikátů. 
+
+> [!NOTE]
+> Cesty k certifikátům App Service vložit do kontejnerů Windows jako následující proměnné prostředí `WEBSITE_PRIVATE_CERTS_PATH` ,, `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` a `WEBSITE_ROOT_CERTS_PATH` . Je lepší odkazovat na cestu k certifikátu pomocí proměnných prostředí místo zakódujeme cesty k certifikátu pro případ, že se cesty certifikátů v budoucnu nezmění.
+>
+
+Kromě toho [základní kontejnery Windows serveru](configure-custom-container.md#supported-parent-images) načtou certifikáty do úložiště certifikátů automaticky v **úložišti LocalMachine\MY** . Pokud chcete načíst certifikáty, použijte stejný vzor jako [načíst certifikát v aplikacích pro Windows](#load-certificate-in-windows-apps). Pro kontejnery založené na Windows nano použijte cesty k souborům uvedené výše k [načtení certifikátu přímo ze souboru](#load-certificate-from-file).
+
+Následující kód jazyka C# ukazuje, jak načíst veřejný certifikát v aplikaci pro Linux.
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Pokud chcete zjistit, jak načíst certifikát TLS/SSL ze souboru v Node.js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
+
 ## <a name="more-resources"></a>Další zdroje informací
 
 * [Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md)
 * [Vynucení protokolu HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Nejčastější dotazy: App Service certifikátů](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Nejčastější dotazy: App Service certifikátů](./faq-configuration-and-management.md)

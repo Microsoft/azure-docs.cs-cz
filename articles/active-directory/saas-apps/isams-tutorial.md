@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e994e39cc916c51e3ad6b00015d710bb422cccc9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552714"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459692"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím iSAMs
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat iSAMs s Azure Active Directory (Azure 
 * Umožněte uživatelům, aby se automaticky přihlásili k iSAM pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 
 * iSAM podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
-* Jakmile nakonfigurujete iSAM, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Jakmile nakonfigurujete iSAM, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-isams-from-the-gallery"></a>Přidávání iSAM z Galerie
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,16 +132,16 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Přejděte do ovládacích panelů a otevřete modul **ověřování** .
 1. V nabídce na pravé straně vyberte **Zprostředkovatelé identity** .
 
-    ![Konfigurace](./media/isams-tutorial/click-identity-provider.png)
+    ![Snímek obrazovky se zobrazí konfigurace služby Active Directory s vybranými zprostředkovateli identity.](./media/isams-tutorial/click-identity-provider.png)
 
 1. Vybrat **Přidat poskytovatele**
 
-    ![Konfigurace](./media/isams-tutorial/add-identity-provider.png)
+    ![Snímek obrazovky se zobrazí zprostředkovatelé identity s vybranými přidat poskytovatele.](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. Na následující stránce proveďte následující kroky:
 
-    ![Konfigurace](./media/isams-tutorial/configure-isams.png)
+    ![Snímek obrazovky se zobrazí v průvodci zprostředkovateli identity, kde můžete postupovat podle pokynů.](./media/isams-tutorial/configure-isams.png)
 
     a. Do textového pole **název** zadejte platný název jako `Saml2 Azure` . Toto je název, který se zobrazí na přihlašovací stránce.
 
@@ -159,12 +159,12 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2.  Přejít na **ovládací panel Hlavní**  ->  **zabezpečení & oprávnění**uživatele  ->  **uživatelské účty**uživatelské  ->  **Možnosti & úlohy**  ->  **Upravit vlastnosti uživatele**
 
-    ![Testovací uživatel](./media/isams-tutorial/modify-user-properties.png)
+    ![Snímek obrazovky se zobrazí stránka uživatelských účtů s vybraným možnost upravit vlastnosti uživatele.](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. Ve výsledném překryvném okně vyberte kartu **Podrobnosti účtu** a změňte **autorizaci** na tohoto nově vytvořeného poskytovatele identity.
 
-    ![Testovací uživatel](./media/isams-tutorial/account-details.png)
+    ![Snímek obrazovky zobrazuje podrobnosti účtu s hodnotou pro autorizaci.](./media/isams-tutorial/account-details.png)
 
 4. Klikněte na **uložit & zavřít**.
 
@@ -172,16 +172,16 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici iSAMs na přístupovém panelu, měli byste být automaticky přihlášeni k iSAM, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici iSAMs na přístupovém panelu, měli byste být automaticky přihlášeni k iSAM, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte iSAM pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

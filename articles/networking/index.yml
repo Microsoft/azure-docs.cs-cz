@@ -11,13 +11,13 @@ metadata:
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 03/17/2020
-  ms.openlocfilehash: eba71e790c9da1978e0c9cac84b1913447972db2
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-  ms.translationtype: HT
+  ms.date: 09/28/2020
+  ms.openlocfilehash: c701f1f54955257fd60fe8d58fb703a1d26d1169
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800715"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102503393"
 highlightedContent:
   items:
   - title: Co jsou Sítě Azure?
@@ -28,13 +28,13 @@ highlightedContent:
     url: https://azure.microsoft.com/updates/?category=networking
   - title: Možnosti vyrovnávání zatížení v Azure
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview
+    url: /azure/architecture/guide/technology-choices/load-balancing-overview
   - title: Hvězdicová topologie sítě v Azure
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: Co je předvolba směrování?
+    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+  - title: Co je Azure Orbital?
     itemType: concept
-    url: ../virtual-network/routing-preference-overview.md
+    url: azure-orbital-overview.md
   - title: Práce na dálku y využitím služeb Azure
     itemType: concept
     url: working-remotely-support.md
@@ -62,7 +62,7 @@ conceptualContent:
     - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
       itemType: overview
       text: Co je Azure VPN Gateway?
-    - url: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
       itemType: tutorial
       text: Připojení typu site-to-site
     - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
@@ -113,12 +113,12 @@ conceptualContent:
     - url: ../load-balancer/load-balancer-overview.md
       itemType: overview
       text: Co je Azure Load Balancer?
+    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
+      itemType: whats-new
+      text: Novinky
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: Vyrovnávání zatížení internetového provozu do virtuálních počítačů
-    - url: ../load-balancer/tutorial-load-balancer-port-forwarding-portal.md
-      itemType: tutorial
-      text: Konfigurace přesměrování portů
     - url: ../load-balancer/load-balancer-troubleshoot.md
       itemType: how-to-guide
       text: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
@@ -150,7 +150,7 @@ conceptualContent:
     - url: ../application-gateway/quick-create-portal.md
       itemType: quickstart
       text: Směrování webového provozu s využitím portálu
-    - url: ../application-gateway/application-gateway-faq.md
+    - url: ../application-gateway/application-gateway-faq.yml
       itemType: concept
       text: Nejčastější dotazy
     - url: ../application-gateway/application-gateway-troubleshooting-502.md
@@ -159,20 +159,20 @@ conceptualContent:
     footerLink:
       url: ../application-gateway/index.yml
       text: Další informace
-  - title: Globální nástroj pro vyrovnávání zatížení
+  - title: Zabezpečený Cloud CDN a globální nástroj pro vyrovnávání zatížení
     links:
     - url: ../frontdoor/front-door-overview.md
       itemType: overview
       text: Co je Azure Front Door Service?
+    - url: ../frontdoor/standard-premium/overview.md
+      itemType: overview
+      text: Co je Azure front dveří Standard/Premium (Preview)?
     - url: ../frontdoor/front-door-custom-domain.md
       itemType: how-to-guide
       text: Přidání vlastní domény do služby Azure Front Door Service
     - url: ../frontdoor/front-door-how-to-redirect-https.md
       itemType: how-to-guide
       text: Přesměrování HTTP na HTTPS
-    - url: ../frontdoor/front-door-troubleshoot-routing.md
-      itemType: how-to-guide
-      text: Řešení potíží se směrováním
     footerLink:
       url: ../frontdoor/index.yml
       text: Další informace
@@ -209,7 +209,7 @@ conceptualContent:
     - url: ../bastion/bastion-overview.md
       itemType: overview
       text: Co je Azure Bastion?
-    - url: ../bastion/bastion-create-host-portal.md
+    - url: ../bastion/tutorial-create-host-portal.md
       itemType: how-to-guide
       text: Vytvoření hostitele služby Azure Bastion
     - url: ../bastion/troubleshoot.md
@@ -268,17 +268,17 @@ conceptualContent:
       text: Další informace
   - title: DDoS Protection
     links:
-    - url: ../virtual-network/ddos-protection-overview.md
+    - url: ../ddos-protection/ddos-protection-overview.md
       itemType: overview
       text: Co je Azure DDoS Protection na úrovni Standard?
-    - url: ../virtual-network/manage-ddos-protection.md
+    - url: ../ddos-protection/manage-ddos-protection.md
       itemType: how-to-guide
       text: Správa služby DDoS Protection
-    - url: ../virtual-network/ddos-protection-partner-onboarding.md
+    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
       itemType: concept
       text: Onboarding partnerů
     footerLink:
-      url: https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices
+      url: ../ddos-protection/index.yml
       text: Další informace
   - title: Síť pro doručování obsahu
     links:
@@ -333,10 +333,10 @@ additionalContent:
   - items:
     - title: Příkazy Azure PowerShellu pro sítě Azure
       summary: Další informace o síťových rutinách Azure
-      url: https://docs.microsoft.com/en-us/powershell/module/az.network/?view=azps-3.5.0#networking
+      url: /powershell/module/az.network/#networking
     - title: Příkazy Azure CLI pro sítě Azure
       summary: Příkazy pro sítě Azure najdete v referenčních informacích k rozhraní příkazového řádku.
-      url: https://docs.microsoft.com/en-us/cli/azure/network?view=azure-cli-latest
+      url: /cli/azure/network
     - title: Blogy k sítím Azure
       summary: Projděte si nejnovější blogy věnované sítím Azure.
       url: https://azure.microsoft.com/blog/topics/networking/

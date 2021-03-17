@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 09/30/2020
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481387"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91566818"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co jsou sestavy Azure Active Directory?
 
@@ -37,16 +37,16 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 - [Sestavy zabezpečení](#security-reports)
 - [Sestavy aktivit](#activity-reports)
 
-![Vytváření sestav](./media/overview-reports/01.png)
+![Generování sestav](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
 Sestavy zabezpečení vám pomůžou chránit identity vaší organizace. Existují dva typy sestav zabezpečení:
 
-- **Uživatelé označení příznakem rizika** – Ze [sestavy zabezpečení uživatelů označených příznakem rizika](concept-user-at-risk.md) získáte přehled o uživatelských účtech, u kterých mohlo dojít k ohrožení zabezpečení.
+- **Uživatelé označení příznakem rizika** – Ze [sestavy zabezpečení uživatelů označených příznakem rizika](../identity-protection/overview-identity-protection.md) získáte přehled o uživatelských účtech, u kterých mohlo dojít k ohrožení zabezpečení.
 
-- **Riziková přihlášení** – Se [sestavou zabezpečení rizikových přihlášení](concept-risky-sign-ins.md) získáte indikátor pokusů o přihlášení, které mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+- **Riziková přihlášení** – Se [sestavou zabezpečení rizikových přihlášení](../identity-protection/overview-identity-protection.md) získáte indikátor pokusů o přihlášení, které mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě zabezpečení?  
 
@@ -68,6 +68,12 @@ Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci
 - **Přihlášení** – Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené sestavou protokolů auditu.
 
 
+
+> [!VIDEO https://www.youtube.com/embed/ACVpH6C_NL8]
+
+
+
+
 ### <a name="audit-logs-report"></a>Sestava protokolů auditu 
 
 [Sestava protokolů auditu](concept-audit-logs.md) poskytuje záznamy systémových aktivit pro zajištění dodržování předpisů. Tato data umožňují řešit běžné scénáře tohoto typu:
@@ -81,7 +87,7 @@ Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě protokolů auditu?  
 
-Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Porovnání funkcí deatiled podle [různých typů licencí](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) se dá zobrazit na stránce s cenami za [Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). Další podrobnosti najdete v tématu [Azure Active Directory funkce a možnosti](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
+Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Porovnání funkcí deatiled podle [různých typů licencí](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) se dá zobrazit na stránce s cenami za [Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). Další podrobnosti najdete v tématu [Azure Active Directory funkce a možnosti](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Sestava přihlášení
 
@@ -101,6 +107,6 @@ Kromě uživatelského rozhraní poskytuje Azure AD také [programový přístup
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Sestava rizikových přihlášení](concept-risky-sign-ins.md)
+- [Sestava rizikových přihlášení](../identity-protection/overview-identity-protection.md)
 - [Sestava protokolů auditu](concept-audit-logs.md)
 - [Sestava protokolů přihlášení](concept-sign-ins.md)

@@ -3,18 +3,18 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587493"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733566"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
 Tento článek popisuje, jak [služba Azure Backup](./backup-overview.md) zálohuje virtuální počítače Azure (VM).
 
-Azure Backup poskytuje nezávislé a izolované zálohy, které chrání před nezamýšleným zničením dat na vašich virtuálních počítačích. Zálohy jsou uloženy v Recovery Services trezoru s integrovanou správou bodů obnovení. Konfigurace a škálování jsou jednoduché, jsou optimalizované zálohy a můžete je snadno obnovit podle potřeby.
+Azure Backup poskytuje nezávislé a izolované zálohy, které chrání před nezamýšleným zničením dat na virtuálních počítačích. Zálohy jsou uloženy v trezoru služby Recovery Services s integrovanou správou bodů obnovení. Konfigurace a škálování jsou jednoduché, zálohy jsou optimalizované a obnovení je možné provádět snadno a podle potřeby.
 
 V rámci procesu zálohování [se bere snímek](#snapshot-creation)a data se přenesou do trezoru Recovery Services bez dopadu na produkční úlohy. Snímek poskytuje různé úrovně konzistence, jak je popsáno [zde](#snapshot-consistency).
 
@@ -22,7 +22,7 @@ Azure Backup také obsahuje specializované nabídky pro databázové úlohy, ja
 
 ## <a name="backup-process"></a>Proces zálohování
 
-Tady je postup, jak Azure Backup Dokončit zálohování virtuálních počítačů Azure:
+Toto je postup, kterým Azure Backup provádí zálohování virtuálních počítačů Azure:
 
 1. Pro virtuální počítače Azure, které jsou vybrané pro zálohování, Azure Backup spustí úlohu zálohování podle zadaného plánu zálohování.
 1. Při prvním zálohování se na virtuálním počítači nainstaluje rozšíření zálohování, pokud je virtuální počítač spuštěný.
@@ -33,9 +33,9 @@ Tady je postup, jak Azure Backup Dokončit zálohování virtuálních počíta�
     - Pokud zálohování nemůže pořídit snímek konzistentní vzhledem k aplikacím, pak bude mít snímek konzistentní se souborem základního úložiště (protože při zastavení virtuálního počítače nedochází k žádným zápisům aplikací).
 1. Pro virtuální počítače se systémem Linux aplikace Backup provede zálohu konzistentní se souborem. U snímků konzistentních vzhledem k aplikacím je nutné ručně přizpůsobit skripty před/po.
 1. Po zálohování získá snímek data do trezoru.
-    - Zálohování je optimalizované tak, že se všechny disky virtuálních počítačů paralelně zálohují.
-    - U každého zálohovaného disku Azure Backup přečte bloky na disku a identifikuje a přenese pouze bloky dat, které se změnily (rozdílové) od předchozí zálohy.
-    - Data snímku se nemusí hned zkopírovat do trezoru. Může to trvat několik hodin v době špičky. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
+    - Zálohování se optimalizuje tak, že se všechny disky virtuálních počítačů zálohují paralelně.
+    - Služba Azure Backup přečte u každého zálohovaného disku bloky na disku a identifikuje a přenese pouze bloky dat, které se od předchozího zálohování změnily (rozdíl).
+    - Data snímku se nemusí do trezoru zkopírovat okamžitě. Může to trvat několik hodin v době špičky. Celková doba zálohování virtuálního počítače bude u zásad denního zálohování menší než 24 hodin.
 1. Změny provedené na virtuálním počítači s Windows po Azure Backup jsou zapnuté:
     - Microsoft Visual C++ 2013 Redistributable (x64) – na virtuálním počítači je nainstalovaná 12.0.40660.
     - Typ spuštění služby Stínová kopie svazku (VSS) se změnil na automatické z ručního.
@@ -51,7 +51,7 @@ Když zálohujete virtuální počítače Azure pomocí Azure Backup, jsou virtu
 
 **Šifrování** | **Podrobnosti** | **Podpora**
 --- | --- | ---
-**SSE** | Pomocí SSE Azure Storage poskytuje šifrování v klidovém prostředí tím, že před uložením automaticky šifruje data. Azure Storage také dešifruje data před jejich načtením. Azure Backup podporuje zálohování virtuálních počítačů se dvěma typy Šifrování služby Storage:<li> **SSE s klíči spravovanými platformou**: Toto šifrování je ve výchozím nastavení pro všechny disky ve vašich virtuálních počítačích. Další informace najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).<li> **SSE s použitím klíčů spravovaných zákazníkem**. Pomocí CMK můžete spravovat klíče používané k šifrování disků. Další informace najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys). | Azure Backup používá SSE pro šifrování virtuálních počítačů Azure v klidovém prostředí.
+**SSE** | Pomocí SSE Azure Storage poskytuje šifrování v klidovém prostředí tím, že před uložením automaticky šifruje data. Azure Storage také dešifruje data před jejich načtením. Azure Backup podporuje zálohování virtuálních počítačů se dvěma typy Šifrování služby Storage:<li> **SSE s klíči spravovanými platformou**: Toto šifrování je ve výchozím nastavení pro všechny disky ve vašich virtuálních počítačích. Další informace najdete [tady](../virtual-machines/disk-encryption.md#platform-managed-keys).<li> **SSE s použitím klíčů spravovaných zákazníkem**. Pomocí CMK můžete spravovat klíče používané k šifrování disků. Další informace najdete [tady](../virtual-machines/disk-encryption.md#customer-managed-keys). | Azure Backup používá SSE pro šifrování virtuálních počítačů Azure v klidovém prostředí.
 **Azure Disk Encryption** | Azure Disk Encryption šifruje operační systém a datové disky pro virtuální počítače Azure.<br/><br/> Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). | Azure Backup podporuje zálohování spravovaných a nespravovaných virtuálních počítačů Azure šifrovaných jenom pomocí BEKs nebo s BEKs společně s KEK.<br/><br/> BEKs i KEK se zálohují a šifrují.<br/><br/> Vzhledem k tomu, že se zálohují KEK a BEKs, můžou uživatelé s potřebnými oprávněními v případě potřeby obnovit klíče a tajné kódy zpátky do trezoru klíčů. Tito uživatelé můžou také obnovit zašifrovaný virtuální počítač.<br/><br/> Šifrované klíče a tajné kódy nejde číst neoprávněnými uživateli nebo Azure.
 
 U spravovaných a nespravovaných virtuálních počítačů Azure podporuje zálohování jak virtuální počítače zašifrované jenom s BEKs, nebo virtuální počítače zašifrované pomocí BEKs společně s KEK.
@@ -83,7 +83,7 @@ Následující tabulka vysvětluje různé typy konzistence snímků:
 **Konzistentní vzhledem k selháním** | K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování. | Spustí spouštěcí proces virtuálního počítače následovaný kontrolou disku, aby opravil chyby poškození. Veškerá data v paměti nebo operace zápisu, které nebyly přeneseny na disk před ztrátou chyby. Aplikace implementují svá vlastní ověření dat. Databázová aplikace může například použít svůj transakční protokol k ověření. Pokud transakční protokol obsahuje položky, které nejsou v databázi, software databáze zahrne transakce zpět, dokud nebudou data konzistentní. | Virtuální počítač je ve stavu vypnutí (zastaveno/zrušeno přidělení).
 
 >[!NOTE]
-> Pokud je stav zřizování **úspěšný**, Azure Backup provede zálohování konzistentní vzhledem k systému souborů. Pokud stav zřizování není **k dispozici** nebo **se nezdařil**, jsou pořízeny zálohy konzistentní vzhledem k havárii. Pokud stav zřizování **vytváříte** nebo **odstraňujete**, znamená to, že Azure Backup opakuje operace znovu.
+> Pokud je stav zřizování **úspěšný**, Azure Backup provede zálohování konzistentní vzhledem k systému souborů. Pokud stav zřizování není **k dispozici** nebo **se nezdařil**, jsou pořízeny zálohy konzistentní vzhledem k havárii. Pokud stav zřizování **vytváříte** nebo **odstraňujete**, znamená to, že Azure Backup opakuje operace.
 
 ## <a name="backup-and-restore-considerations"></a>Důležité informace o zálohování a obnovení
 
@@ -106,6 +106,13 @@ Tyto běžné scénáře mohou ovlivnit celkovou dobu zálohování:
 - Změny **disku:** Pokud chráněné disky s přírůstkovým zálohováním docházejí z provozu s více než 200 GB, zálohování může trvat dlouhou dobu (více než osm hodin), než se dokončí.
 - **Verze zálohy:** Nejnovější verze služby Backup (známá jako verze okamžitého obnovení) využívá více optimalizovaného procesu než porovnání kontrolního součtu k identifikaci změn. Pokud ale používáte rychlé obnovení a odstranili jste snímek zálohy, zálohování se přepne na porovnání kontrolního součtu. V tomto případě bude operace zálohování delší než 24 hodin (nebo selhání).
 
+### <a name="restore-performance"></a>Obnovit výkon
+
+Tyto běžné scénáře mohou ovlivnit celkovou dobu obnovení:
+
+- Celková doba obnovení závisí na vstupně-výstupních operacích za sekundu (IOPS) a propustnosti účtu úložiště.
+- Celková doba obnovení může být ovlivněna v případě, že je cílový účet úložiště načten s jinými operacemi čtení a zápisu aplikace. Pokud chcete zlepšit operaci obnovení, vyberte účet úložiště, který není načtený s ostatními aplikačními daty.
+
 ## <a name="best-practices"></a>Osvědčené postupy
 
 Při konfiguraci zálohování virtuálních počítačů doporučujeme dodržovat tyto postupy:
@@ -114,6 +121,7 @@ Při konfiguraci zálohování virtuálních počítačů doporučujeme dodržov
 - Pokud obnovujete virtuální počítače z jednoho trezoru, důrazně doporučujeme, abyste používali jiné [účty úložiště pro obecné účely v2](../storage/common/storage-account-upgrade.md) , abyste zajistili, že cílový účet úložiště nebude omezený. Každý virtuální počítač například musí mít jiný účet úložiště. Pokud se například obnoví 10 virtuálních počítačů, použijte 10 různých účtů úložiště.
 - Pro zálohování virtuálních počítačů, které používají Prémiové úložiště s okamžitým obnovením, doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
 - Omezení počtu disků na účet úložiště je relativní vzhledem k tomu, jak často k diskům přistupují aplikace, které jsou spuštěné na virtuálním počítači IaaS (infrastruktura jako služba). Obecně platí, že pokud je v jednom účtu úložiště 5 až 10 nebo více disků, měli byste vyrovnat zatížení přesunem některých disků do samostatných účtů úložiště.
+- Pokud chcete obnovit virtuální počítače se spravovanými disky pomocí prostředí PowerShell, zadejte další parametr **_TargetResourceGroupName_* _ a určete skupinu prostředků, do které se budou spravované disky obnovovat. [Další informace najdete tady](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Náklady na zálohování
 
@@ -123,7 +131,7 @@ Fakturace se nespustí, dokud se nedokončí první úspěšná záloha. V tomto
 
 Fakturace za zadaný virtuální počítač se zastaví jenom v případě, že se ochrana zastaví a všechna zálohovaná data se odstraní. Když se ochrana zastaví a nejsou k dispozici žádné aktivní úlohy zálohování, stane se velikost poslední úspěšné zálohy virtuálního počítače v rámci velikosti chráněné instance použité pro měsíční vyúčtování.
 
-Výpočet velikosti chráněné instance je založen na *skutečné* velikosti virtuálního počítače. Velikost virtuálního počítače je součtem všech dat ve virtuálním počítači, s výjimkou dočasného úložiště. Ceny jsou založené na skutečných datech uložených na datových discích, nikoli na maximální podporované velikosti pro každý datový disk, který je připojený k virtuálnímu počítači.
+Výpočet velikosti chráněných instancí vychází z _actual * velikosti virtuálního počítače. Velikost virtuálního počítače je součtem všech dat ve virtuálním počítači, s výjimkou dočasného úložiště. Ceny jsou založené na skutečných datech uložených na datových discích, nikoli na maximální podporované velikosti pro každý datový disk, který je připojený k virtuálnímu počítači.
 
 Podobně platí, že faktura za úložiště záloh je založena na množství dat uložených v Azure Backup, což je součet skutečných dat v každém bodu obnovení.
 

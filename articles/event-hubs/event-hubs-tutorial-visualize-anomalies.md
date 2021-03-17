@@ -3,12 +3,12 @@ title: Azure Event Hubs – vizualizace anomálií dat v událostech v reálném
 description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do Microsoft Azure Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315607"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623455"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -26,14 +26,12 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet][] před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Nainstalujte [Visual Studio](https://www.visualstudio.com/). 
 - K analýze výstupu z úlohy Stream Analytics potřebujete účet Power BI. [Power BI si můžete vyzkoušet zdarma](https://app.powerbi.com/signupredirect?pbi_source=web).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>Příprava prostředků
 
@@ -153,8 +151,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 Event Hubs [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) obsahují aplikaci pro detekci anomálií, která vytváří testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
 
 1. Z GitHubu si stáhněte [ukázky pro službu Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) a místně je rozbalte.
-2. Přejděte do složky **\azure-Event-Hubs-master\samples\DotNet \\ ** složky. 
-3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector \\ ** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
+2. Přejděte do složky **\azure-Event-Hubs-master\samples\DotNet \\** složky. 
+3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector \\** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
 
     Pokud chcete použít starou verzi ukázky, která používá starý balíček Microsoft. Azure. EventHubs, otevřete řešení ze složky **Microsoft. Azure. EventHubs\AnomalyDetector** . 
 3. Otevřete soubor Program.cs a nahraďte **Event Hubs connection string** připojovacím řetězcem, který jste si uložili při spuštění skriptu. 
@@ -172,7 +170,7 @@ Teď můžete streamovat data do svého centra událostí. Pokud chcete tato dat
 
    **Název úlohy:** Použijte **contosoEHjob**. Toto pole obsahuje název úlohy, který musí být globálně jedinečný.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte předplatné.
 
    **Skupina prostředků:** Použijte stejnou skupinu prostředků jako pro centrum událostí (**ContosoResourcesEH**).
 
@@ -197,7 +195,7 @@ Vstupy pro úlohu Stream Analytics jsou transakce provedené platebními kartami
 
    **Alias pro vstup:** Použijte **contosoinputs**. Toto pole obsahuje název vstupního datového proudu, který se používá při definování dotazu na data.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte předplatné.
 
    **Obor názvů služby Event Hubs:** Vyberte obor názvů vašeho centra událostí ($**eventHubNamespace**). 
 
@@ -308,11 +306,11 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    ![Snímek obrazovky se zadáváním datové sady.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Jako typ vizualizace vyberte **Karta**. V části **Pole** klikněte na **Přidat hodnotu** a vyberte **fraudulentuses**.
+9. Jako typ vizualizace vyberte **Karta**. V části **pole** klikněte na **Přidat hodnotu** a pak vyberte `fraudulentuses` .
 
    ![Snímek obrazovky se zadáváním typu vizualizace a polí.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   Klikněte na **Další**.
+   Klikněte na **Next** (Další).
 
 10. Nastavte nadpis na **Podvodná použití** a podnadpis na **Součet za posledních několik minut**. Klikněte na **Použít**. Dlaždice se uloží na váš řídicí panel.
 
@@ -322,18 +320,18 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
     > Když spustíte ukázkovou aplikaci a data streamu do centra událostí, číslo této dlaždice se rychle změní (každou sekundu). Je to proto, že Stream Analytics dotaz skutečně aktualizuje hodnotu **každou sekundu**. Aktualizujte dotaz na 3 minuty bubnového okna, abyste viděli součet za posledních několik minut. 
 11. Přidejte další vizualizaci. Zopakujte prvních několik kroků:
 
-    * Klikněte na **Přidat dlaždici**.
+    * Klikněte na **Add Tile** (Přidat dlaždici).
     * Vyberte **Vlastní streamovaná data**. 
-    * Klikněte na **Další**.
+    * Klikněte na **Next** (Další).
     * Vyberte vaši datovou sadu a klikněte na **Další**. 
 
 12. V části **Typ vizualizace** vyberte **Spojnicový graf**.
 
-13. V části **Osy** klikněte na **Přidat hodnotu** a vyberte **windowend**. 
+13. V části **osa** klikněte na **Přidat hodnotu** a vyberte `windowend` . 
 
-14. V části **Hodnoty** klikněte na **Přidat hodnotu** a vyberte **fraudulentuses**.
+14. V části **hodnoty** klikněte na **Přidat hodnotu** a vyberte `fraudulentuses` .
 
-15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na **Další**.
+15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na **Next** (Další).
 
 16. Jako nadpis zadejte **Zobrazení podvodných použití v průběhu času**, podnadpis dlaždice ponechte prázdný a klikněte na **Použít**. Vrátíte se na váš řídicí panel.
 
@@ -351,7 +349,7 @@ Přihlaste se ke svému účtu Power BI. Přejděte do části **Můj pracovní 
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -378,6 +376,6 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu článku, kde najdete další informace o službě Azure Event Hubs.
 
 > [!div class="nextstepaction"]
-> [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](get-started-dotnet-standard-send-v2.md)
+> [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
 [Vytvoření bezplatného účtu]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -1,0 +1,86 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Defenderu for IoT
+summary: Azure Defender for IoT zajišťuje komplexní detekci hrozeb pro prostředí IoT/OT s několika možnostmi nasazení, včetně plně místního, cloudového nebo hybridního.
+metadata:
+  title: Dokumentace k Azure Defenderu for IoT
+  description: Zjistěte, jak Azure Defender for IoT, služba zabezpečení cloudu založená na Azure, poskytuje komplexní ochranu zařízení IoT před hrozbami.
+  services: service
+  ms.service: defender-for-iot
+  ms.topic: landing-page
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/07/2020
+  ms.openlocfilehash: 1e7f3b151691c80861c9add3188a3d4479fac059
+  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103496095"
+landingContent:
+- title: Začínáme se Azure Defenderem for IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Defender for IoT?
+      url: overview.md
+    - text: Architektura řešení
+      url: architecture.md
+    - text: Přehled nastavení řešení
+      url: getting-started.md
+    - text: Co je nového
+      url: release-notes.md
+- title: Nastavení a zprovoznění – řešení bez agentů
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení sítě
+      url: how-to-set-up-your-network.md
+    - text: Identifikace požadovaných zařízení
+      url: how-to-identify-required-appliances.md
+    - text: Instalovat software
+      url: how-to-install-software.md
+- title: Monitorování sítě – řešení bez agenta
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zobrazení připojených zařízení
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: Zobrazení inventářů zařízení
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: Vyšetření upozornění
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: Určení, který provoz se detekuje
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Připojení k Azure Sentinelu
+      url: how-to-configure-with-sentinel.md
+- title: Azure Defender for IoT – řešení založené na agentech
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Edge Defender – IoT-Micro Agent
+      url: security-edge-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: Povolení IoT Hubu – řešení založené na agentech
+      url: quickstart-onboard-iot-hub.md
+    - text: Konfigurace řešení zabezpečení IoT
+      url: quickstart-configure-your-solution.md
+    - text: Konfigurace programu Defender – IoT-Micro-Agent pro Azure RTO
+      url: quickstart-azure-rtos-security-module.md
+    - text: Vytvoření dvojčete modulu služby Azure Defender for IoT
+      url: quickstart-create-security-twin.md
+    - text: Vytváření vlastních výstrah zabezpečení
+      url: quickstart-create-custom-alerts.md
+    - text: Prošetření výstrah zabezpečení
+      url: quickstart-investigate-security-alerts.md
+- title: Prostředky řešení Azure Defender for IoT
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Take
+      url: https://myignite.microsoft.com/sessions/973175b0-2a2d-4b41-99f8-051e42ac575a
+  - linkListType: reference
+    links:
+    - text: Nejčastější dotazy
+      url: resources-frequently-asked-questions.md

@@ -11,30 +11,35 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66390124"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380445"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Jak používat hodnocení k zobrazení výsledků rozhraní API Bingu pro vyhledávání na webu  
 
-Každá odpověď na hledání zahrnuje odpověď [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) , která určuje, jak se má zobrazit výsledky hledání. Reakce na hodnocení seskupuje výsledky podle obsahu hlavní a obsahu bočního panelu pro tradiční stránku výsledků hledání. Pokud výsledky nezobrazíte v tradičním formátu hlavní a postranního panelu, musíte poskytnout obsah hlavní větší viditelnost než obsah bočního panelu.  
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-V rámci každé skupiny (hlavní nebo postranní panel) pole [položky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí objevit. Každá položka poskytuje následující dva způsoby, jak identifikovat výsledek v odpovědi.  
+Každá odpověď na hledání zahrnuje odpověď [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) , která určuje, jak se má zobrazit výsledky hledání. Reakce na hodnocení seskupuje výsledky podle obsahu hlavní a obsahu bočního panelu pro tradiční stránku výsledků hledání. Pokud výsledky nezobrazíte v tradičním formátu hlavní a postranního panelu, musíte poskytnout obsah hlavní větší viditelnost než obsah bočního panelu.  
 
--   `answerType`a `resultIndex` – `answerType` pole identifikuje odpověď (například webovou stránku nebo novinky) a `resultIndex` identifikuje výsledek v odpovědi (například v článku News). Index je založený na nule.  
+V rámci každé skupiny (hlavní nebo postranní panel) pole [položky](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí objevit. Každá položka poskytuje následující dva způsoby, jak identifikovat výsledek v odpovědi.  
 
--   `value`– `value` Pole obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí.  
+-   `answerType` a `resultIndex` – `answerType` pole identifikuje odpověď (například webovou stránku nebo novinky) a `resultIndex` identifikuje výsledek v odpovědi (například v článku News). Index je založený na nule.  
+
+-   `value` – `value` Pole obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí.  
 
 Použití ID se zjednodušuje, protože stačí pouze porovnat ID hodnocení s ID odpovědi nebo jedním z jeho výsledků. Pokud objekt odpovědi obsahuje `id` pole, zobrazí se všechny výsledky odpovědi společně. Například pokud `News` objekt obsahuje `id` pole, zobrazí se všechny články ve zprávách dohromady. Pokud `News` objekt neobsahuje `id` pole, pak jednotlivé příspěvky obsahují `id` pole a odpověď na řazení kombinuje články s výsledky z jiných odpovědí.  
 
-Použití `answerType` a `resultIndex` je trochu složitější. Použijete `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijete `resultIndex` k indexování výsledků odpovědi a získáte tak výsledek zobrazení. ( `answerType` Hodnota je název pole v objektu [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.  
+Použití `answerType` a `resultIndex` je trochu složitější. Použijete `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijete `resultIndex` k indexování výsledků odpovědi a získáte tak výsledek zobrazení. ( `answerType` Hodnota je název pole v objektu [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.  
 
 ## <a name="ranking-response-example"></a>Příklad odpovědi na řazení
 
-Následující příklad ukazuje příklad [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Vzhledem k tomu, že webová odpověď neobsahuje `id` pole, měli byste všechny webové stránky zobrazit jednotlivě podle hodnocení (Každá webová stránka obsahuje `id` pole). A vzhledem k tomu, že obrázky, videa a související dotazy hledání obsahují `id` pole, měli byste zobrazit výsledky každé z těchto odpovědí společně na základě hodnocení.
+Následující příklad ukazuje příklad [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Vzhledem k tomu, že webová odpověď neobsahuje `id` pole, měli byste všechny webové stránky zobrazit jednotlivě podle hodnocení (Každá webová stránka obsahuje `id` pole). A vzhledem k tomu, že obrázky, videa a související dotazy hledání obsahují `id` pole, měli byste zobrazit výsledky každé z těchto odpovědí společně na základě hodnocení.
 
 ```json
 {  

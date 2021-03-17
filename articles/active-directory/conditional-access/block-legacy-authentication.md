@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f72e477d332b33b7434663fb13cb3ca4f4c2069d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032175"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892435"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -37,10 +37,7 @@ Pokud je vaše prostředí připravené k blokování starší verze ověřován
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že máte zkušenosti s nástrojem: 
-
-- [Základní koncepty](overview.md) podmíněného přístupu Azure AD 
-- [Osvědčené postupy](best-practices.md) pro konfiguraci zásad podmíněného přístupu v Azure Portal
+V tomto článku se předpokládá, že máte zkušenosti se [základními koncepty](overview.md) podmíněného přístupu Azure AD.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -63,7 +60,7 @@ V této části se dozvíte, jak nakonfigurovat zásady podmíněného přístup
 
 Následující možnosti jsou považovány za starší protokoly ověřování.
 
-- Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
+- Ověřený protokol SMTP, který používají klienti POP a IMAP k posílání e-mailových zpráv.
 - Automatická konfigurace – používá klienti Outlooku a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.
 - Protokol Exchange ActiveSync (EAS) – používá se pro připojení k poštovním schránkám v Exchangi Online.
 - Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
@@ -84,8 +81,9 @@ Další informace o těchto ověřovacích protokolech a službách najdete v t�
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
 1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
-1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace**a přidejte sloupec aplikace klienta.
-1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování. Vyberte mimo dialogové okno filtrování Blox a použijte výběr a zavřete dialogové okno.
+1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace** a přidejte sloupec aplikace klienta.
+1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování. Vyberte mimo dialogové okno filtrování a použijte výběr a zavřete dialogové okno.
+1. Pokud jste aktivovali [nové sestavy aktivit přihlašování ve verzi Preview](../reports-monitoring/concept-all-sign-ins.md), opakujte výše uvedené kroky také na kartě **přihlášení uživatele (neinteraktivní)** .
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 
@@ -120,9 +118,13 @@ Může trvat až 24 hodin, než se zásada dostanou platit.
 
 Pro podmínky **ostatních klientů** můžete vybrat všechny dostupné ovládací prvky pro udělení oprávnění. činnost koncového uživatele je ale vždycky zablokovaný přístup.
 
+### <a name="sharepoint-online-and-b2b-guest-users"></a>Uživatelé typu Host služby SharePoint Online a B2B
+
+Aby bylo možné zablokovat přístup uživatelů B2B prostřednictvím staršího ověřování na SharePoint Online, musí organizace zakázat starší ověřování na SharePointu pomocí `Set-SPOTenant` příkazu PowerShellu a nastavením `-LegacyAuthProtocolsEnabled` parametru na `$false` . Další informace o nastavení tohoto parametru najdete v referenčním dokumentu PowerShellu služby SharePoint týkajícím se rutiny [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant) .
+
 ## <a name="next-steps"></a>Další kroky
 
-- [Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
-- Pokud ještě nejste obeznámeni s konfigurací zásad podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md) pro příklad.
+- [Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-insights-reporting.md)
+- Pokud ještě nejste obeznámeni s konfigurací zásad podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../authentication/tutorial-enable-azure-mfa.md) pro příklad.
 - Další informace o podpoře moderního ověřování najdete v článku [jak moderní ověřování funguje pro klientské aplikace office 2013 a office 2016](/office365/enterprise/modern-auth-for-office-2013-and-2016) . 
-- [Jak nastavit multifunkční zařízení nebo aplikaci pro odesílání e-mailů pomocí Office 365 a Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Jak nastavit multifunkční zařízení nebo aplikaci pro odesílání e-mailů pomocí Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

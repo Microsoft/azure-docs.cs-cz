@@ -3,16 +3,17 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: a23623112b44edc0bd32f0382ed382193d999394
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243662"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598012"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -20,7 +21,7 @@ Tento článek popisuje, jak mohou smlouvy Azure EA a jejich změny ovlivnit vá
 
 ## <a name="enrollment-provisioning-status"></a>Stav zřízení registrace
 
-Počáteční datum nové zálohy na Azure vyplývá z data, kdy ji regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky zálohy na Azure prostřednictvím portálu Azure EA na se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že se nákupní objednávka zálohy na Azure zpracovávala v jiné oblasti. Začátek zálohy na Azure uvádí počáteční datum pokrytí v nákupní objednávce. Počáteční datum pokrytí představuje den, kdy se záloha na Azure zobrazí na portálu Azure EA.
+Počáteční datum nového Azure Prepaymentu (dřív označovaný jako peněžní závazek) vyplývá z data, kdy ho regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky zálohy na Azure prostřednictvím portálu Azure EA na se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že se nákupní objednávka zálohy na Azure zpracovávala v jiné oblasti. Začátek zálohy na Azure uvádí počáteční datum pokrytí v nákupní objednávce. Počáteční datum pokrytí představuje den, kdy se záloha na Azure zobrazí na portálu Azure EA.
 
 ## <a name="support-for-enterprise-customers"></a>Podpora pro podnikové zákazníky
 
@@ -59,7 +60,7 @@ Microsoft nezpřístupní a nevyužije poskytnutou přirážku a související c
 
 ### <a name="how-the-calculation-works"></a>Jak funguje výpočet
 
-Poskytovatel LSP poskytne jednu procentní hodnotu na webu EA Portal.  Všechny komerční informace na portálu se zvýší o počet procent, který tento poskytovatel LSP uvedl. Příklad:
+Poskytovatel LSP poskytne jednu procentní hodnotu na webu EA Portal.    Všechny komerční informace na portálu se zvýší o počet procent, který tento poskytovatel LSP uvedl. Příklad:
 
 - Zákazník podepíše smlouvu EA se zálohou na Azure ve výši 100 000 USD.
 - Sazba měřiče za službu A je 10 USD za hodinu.
@@ -100,13 +101,14 @@ Před publikováním cen s přirážkami pro koncového zákazníka prosím neza
 V zobrazení zákazníka v části _Usage Summary_ (Souhrn využití) zkontrolujte cenu s přirážkou pro období zálohy. V zobrazení partnera bude stále dostupná cena Microsoftu. Tato zobrazení je pro přirážku u partnera možné přepínat s využitím přepínače „lidé“ v pravé horní části.
 
 1. Zkontrolujte ceny v ceníku.
-1. Změny je možné provést před publikováním, a to volbou **Edit** (Úpravy) na kartě _View Usage Summary > Customer View_ (Zobrazit souhrn využití > Zobrazení zákazníka).  
-  Pro ceny služeb i zůstatky zálohy se použije stejná procentní přirážka. Pokud máte jiný počet procent pro peněžní zůstatek a sazby měřičů nebo různé počty procent pro různé služby, tuto funkci prosím nepoužívejte.
+1. Změny je možné provést před publikováním, a to volbou **Edit** (Úpravy) na kartě _View Usage Summary > Customer View_ (Zobrazit souhrn využití > Zobrazení zákazníka). 
+   
+Pro ceny služeb i zůstatky zálohy se použije stejná procentní přirážka. Pokud máte jiný počet procent pro peněžní zůstatek a sazby měřičů nebo různé počty procent pro různé služby, tuto funkci prosím nepoužívejte.
 
 **Krok 3: Publikování**
 
 Po kontrole a ověření cen klikněte na **Publish** (Publikovat).
-  
+  
 Ceny s přirážkou budou podnikovým správcům k dispozici hned po výběru této možnosti. Přirážku nejde měnit. Musíte ji deaktivovat a znovu začít krokem 1.
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>U kterých prováděcích smluv je přirážka aktivovaná?

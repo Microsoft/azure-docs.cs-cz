@@ -11,12 +11,12 @@ ms.author: menchi
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3cd4277603b96dd1aa07682dd01a6d0e9c61bd82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cc874b4df7052c76fa58388bc982b8ffe3acc23
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733458"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142916"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (C)
 
@@ -34,7 +34,7 @@ Na konci tohoto kurzu máte dvě aplikace C:
 > [!NOTE]
 > Informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/) vytvořit během několika minut.)
 
@@ -391,4 +391,4 @@ int main(void)
 Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
 
 * [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md)
-* [Začínáme se službou IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Začínáme se službou IoT Edge](../iot-edge/quickstart-linux.md)

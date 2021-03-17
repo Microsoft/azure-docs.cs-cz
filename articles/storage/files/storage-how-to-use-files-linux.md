@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053163"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673683"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v `/etc/fstab` .
@@ -53,13 +53,13 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte `yum` Správce balíčků:
+    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS** použijte `yum` Správce balíčků:
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    V **openSUSE**použijte `zypper` Správce balíčků:
+    V **openSUSE** použijte `zypper` Správce balíčků:
 
     ```bash
     sudo zypper install cifs-utils
@@ -67,9 +67,9 @@ uname -r
 
     V ostatních distribucích použijte příslušného správce balíčků nebo [zkompilujte ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download) .
 
-* **Nejnovější verze rozhraní příkazového řádku Azure (CLI).** Další informace o tom, jak nainstalovat rozhraní příkazového řádku Azure, najdete v tématu [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a výběr operačního systému. Pokud upřednostňujete použití modulu Azure PowerShell v prostředí PowerShell 6 +, můžete si nicméně níže uvedené pokyny předkládat Azure CLI.
+* **Nejnovější verze rozhraní příkazového řádku Azure (CLI).** Další informace o tom, jak nainstalovat rozhraní příkazového řádku Azure, najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a výběr operačního systému. Pokud upřednostňujete použití modulu Azure PowerShell v prostředí PowerShell 6 +, můžete si nicméně níže uvedené pokyny předkládat Azure CLI.
 
-* **Ujistěte se, že je otevřený port 445**: SMB komunikuje přes port TCP 445 – zkontrolujte, jestli brána firewall neblokuje porty TCP 445 z klientského počítače.  Nahraďte **<>vaší-Resource-Group** a **<účtu úložiště>**
+* **Ujistěte se, že je otevřený port 445**: SMB komunikuje přes port TCP 445 – zkontrolujte, jestli brána firewall neblokuje porty TCP 445 z klientského počítače.  Nahraďte `<your-resource-group>` a `<your-storage-account>` pak spusťte následující skript:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -87,7 +87,7 @@ uname -r
 
     Pokud bylo připojení úspěšné, měla by se zobrazit něco podobného jako u následujícího výstupu:
 
-    ```
+    ```ouput
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
@@ -98,7 +98,7 @@ Pokud chcete použít sdílenou složku Azure s distribucí systému Linux, mus�
 
 V případě potřeby můžete stejnou sdílenou složku Azure připojit k několika přípojným bodům.
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení sdílené složky Azure na vyžádání pomocí`mount`
+### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení sdílené složky Azure na vyžádání pomocí `mount`
 1. **Vytvořte složku pro přípojný bod**: Nahraďte `<your-resource-group>` , `<your-storage-account>` a `<your-file-share>` příslušnými informacemi pro vaše prostředí:
 
     ```bash
@@ -114,6 +114,7 @@ V případě potřeby můžete stejnou sdílenou složku Azure připojit k něko
 1. **Připojte sdílenou složku Azure pomocí příkazu připojit**. V následujícím příkladu má místní systém Linux oprávnění k souborům a složkám standardně 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. `uid` `gid` K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii. 
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -133,7 +134,7 @@ V případě potřeby můžete stejnou sdílenou složku Azure připojit k něko
 
 Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `sudo umount $mntPath` k odpojení sdílené složky.
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvoření trvalého přípojného bodu pro sdílenou složku Azure s`/etc/fstab`
+### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvoření trvalého přípojného bodu pro sdílenou složku Azure s `/etc/fstab`
 1. **Vytvoření složky pro přípojný bod**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Například následující příkaz vytvoří nový adresář, nahradí `<your-resource-group>` , `<your-storage-account>` a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
 
     ```bash
@@ -173,9 +174,10 @@ Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `su
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. Následující **příkaz použijte k připojení následujícího řádku k `/etc/fstab` **: v následujícím příkladu má místní soubory a složky pro linux výchozí hodnotu 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. `uid` `gid` K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
+1. Následující **příkaz použijte k připojení následujícího řádku k `/etc/fstab`**: v následujícím příkladu má místní soubory a složky pro linux výchozí hodnotu 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. `uid` `gid` K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -209,11 +211,11 @@ Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `su
     ```bash
     sudo dnf install autofs
     ```
-    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte `yum` Správce balíčků:
+    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS** použijte `yum` Správce balíčků:
     ```bash
     sudo yum install autofs 
     ```
-    V **openSUSE**použijte `zypper` Správce balíčků:
+    V **openSUSE** použijte `zypper` Správce balíčků:
     ```bash
     sudo zypper install autofs
     ```
@@ -248,22 +250,22 @@ Od verze Linux kernel 4,18 se modul jádra SMB, který se volá `cifs` z původn
 
 | Distribuce | Může zakázat protokol SMB 1. |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | Ne |
-| Ubuntu 18.04 | Ano |
-| Ubuntu 19.04 + | Ano |
-| Debian 8-9 | Ne |
-| Debian 10 + | Ano |
-| Fedora 29 + | Ano |
-| CentOS 7 | Ne | 
-| CentOS 8 + | Ano |
-| Red Hat Enterprise Linux 6. x-7. x | Ne |
-| Red Hat Enterprise Linux 8 + | Ano |
-| openSUSE, přestupné 15,0 | Ne |
-| openSUSE přestupné 15.1 + | Ano |
-| openSUSE Tumbleweed | Ano |
-| SUSE Linux Enterprise 11. x-12. x | Ne |
-| SUSE Linux Enterprise 15 | Ne |
-| SUSE Linux Enterprise 15,1 | Ne |
+| Ubuntu 14.04 – 16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE, přestupné 15,0 | No |
+| openSUSE přestupné 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15,1 | No |
 
 Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux podporuje `disable_legacy_dialects` parametr Module.
 
@@ -324,5 +326,5 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 Další informace o službě Soubory Azure najdete na těchto odkazech:
 
 * [Plánování nasazení Azure Files](storage-files-planning.md)
-* [Nejčastější dotazy](../storage-files-faq.md)
+* [Nejčastější dotazy](./storage-files-faq.md)
 * [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)

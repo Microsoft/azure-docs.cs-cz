@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136818"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026433"
 ---
 # <a name="distribute-and-modify-tables"></a>Distribuce a úprava tabulek
 
@@ -140,7 +140,7 @@ Pokud nová tabulka není v relaci s ostatními uživateli ve vaší implicitní
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-Rozdělení nesouvisejících tabulek do jejich vlastních skupin kolokace bude zlepšit [horizontálních oddílů](howto-hyperscale-scaling.md#rebalance-shards) výkon, protože horizontálních oddílů ve stejné skupině musí být přesunuty dohromady.
+Rozdělení nesouvisejících tabulek do jejich vlastních skupin kolokace bude zlepšit [horizontálních oddílů](howto-hyperscale-scale-rebalance.md) výkon, protože horizontálních oddílů ve stejné skupině musí být přesunuty dohromady.
 
 Pokud se tabulky skutečně vztahují (například když budou spojeny), může být vhodné je explicitně vyhledat. Přínosy vhodného umístění jsou důležitější než jakákoli režie na nové vyrovnávání zatížení.
 

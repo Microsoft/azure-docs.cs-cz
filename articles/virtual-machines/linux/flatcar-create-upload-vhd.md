@@ -3,17 +3,18 @@ title: Vytvoření a nahrání Flatcar virtuálního pevného disku pro kontejne
 description: Naučte se vytvořit a nahrát VHD obsahující operační systém Flatcar Container Linux.
 author: marga-kinvolk
 ms.author: danis
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 555e53899ed78a5200009d04659e974f8157057e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5d8be9493b7a312270301e3520f301f797fe2167
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268235"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565287"
 ---
 # <a name="using-a-prebuilt-flatcar-image-for-azure"></a>Použití předem sestavené image Flatcar pro Azure
 

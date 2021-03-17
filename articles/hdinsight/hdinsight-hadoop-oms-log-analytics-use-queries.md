@@ -1,19 +1,16 @@
 ---
 title: Dotazování protokolů Azure Monitor pro monitorování clusterů Azure HDInsight
 description: Naučte se spouštět dotazy na protokoly Azure Monitor pro monitorování úloh spuštěných v clusteru HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085357"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576339"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Dotazování protokolů Azure Monitor pro monitorování clusterů HDInsight
 
@@ -33,8 +30,8 @@ Musíte mít nakonfigurovaný cluster HDInsight, aby používal protokoly Azure 
 Naučte se hledat konkrétní metriky pro cluster HDInsight.
 
 1. Z Azure Portal otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight.
-1. V části **Obecné**vyberte **protokoly**.
-1. Do vyhledávacího pole zadejte následující dotaz pro vyhledání všech metrik pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**. Zkontrolujte výsledky.
+1. V části **Obecné** vyberte **Protokoly**.
+1. Do vyhledávacího pole zadejte následující dotaz pro vyhledání všech metrik pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**. Prohlédněte si výsledky.
 
     ```kusto
     search *
@@ -44,7 +41,7 @@ Naučte se hledat konkrétní metriky pro cluster HDInsight.
 
 1. V nabídce vlevo vyberte kartu **Filtr** .
 
-1. V části **typ**vyberte **prezenční signál**. Pak vyberte **použít & spustit**.
+1. V části **typ** vyberte **prezenční signál**. Pak vyberte **použít & spustit**.
 
     ![metriky specifické pro hledání v Log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Vyhledat konkrétní metriky")
 
@@ -94,7 +91,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 Prvním krokem k vytvoření výstrahy je doručení dotazu, na základě kterého se výstraha aktivuje. Můžete použít libovolný dotaz, ve kterém chcete vytvořit výstrahu.
 
 1. Z Azure Portal otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight.
-1. V části **Obecné**vyberte **protokoly**.
+1. V části **Obecné** vyberte **Protokoly**.
 1. Spusťte následující dotaz, na kterém chcete vytvořit výstrahu, a pak vyberte **Spustit**.
 
     ```kusto
@@ -115,19 +112,19 @@ Prvním krokem k vytvoření výstrahy je doručení dotazu, na základě které
 
 1. Z Azure Portal otevřete Log Analytics pracovní prostor.
 
-1. V nabídce vlevo v části **monitorování**vyberte **výstrahy**.
+1. V nabídce vlevo v části **monitorování** vyberte **výstrahy**.
 
 1. V horní části vyberte **Spravovat pravidla výstrah**.
 
 1. Vyberte výstrahu, kterou chcete upravit nebo odstranit.
 
-1. Máte následující možnosti: **Uložit**, **Zahodit**, **Zakázat**a **Odstranit**.
+1. Máte následující možnosti: **Uložit**, **Zahodit**, **Zakázat** a **Odstranit**.
 
     ![Protokoly Azure Monitor HDInsight upozornění odstranit úpravu](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../azure-monitor/platform/alerts-metric.md).
+Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="see-also"></a>Viz také
 
-* [Začínáme s dotazy protokolu v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor](../azure-monitor/platform/view-designer.md)
+* [Začínáme s dotazy protokolů v Azure Monitoru](../azure-monitor/logs/get-started-queries.md)
+* [Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor](../azure-monitor/visualize/view-designer.md)

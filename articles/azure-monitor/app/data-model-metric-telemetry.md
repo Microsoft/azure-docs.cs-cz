@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320574"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
@@ -33,7 +33,7 @@ Metrika představující systémové a procesní čítače:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhá práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Průměrná doba provádění požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhá práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | počet požadavků čekajících na zpracování ve frontě
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název metriky, kterou byste chtěli vidět na portálu Application Insights a uživatelském rozhraní. 
 
@@ -41,15 +41,15 @@ Název metriky, kterou byste chtěli vidět na portálu Application Insights a u
 
 Jedna hodnota pro měření. Součet jednotlivých měření pro agregaci.
 
-## <a name="count"></a>Count
+## <a name="count"></a>Počet
 
 Váha metriky agregované metriky. Neměl by být nastaven pro měření.
 
-## <a name="min"></a>Minimum
+## <a name="min"></a>Min
 
 Minimální hodnota agregované metriky Neměl by být nastaven pro měření.
 
-## <a name="max"></a>Maximum
+## <a name="max"></a>Max
 
 Maximální hodnota agregované metriky Neměl by být nastaven pro měření.
 

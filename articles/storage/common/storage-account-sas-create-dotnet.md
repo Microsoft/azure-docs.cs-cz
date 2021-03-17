@@ -6,24 +6,33 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/06/2019
+ms.date: 11/12/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 75f4a3c835a843e824c2ac0b437843cd91824bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512721"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092206"
 ---
 # <a name="create-an-account-sas-with-net"></a>Vytvoření SAS účtu pomocí .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak pomocí klíče účtu úložiště vytvořit SAS účtu pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+V tomto článku se dozvíte, jak pomocí klíče účtu úložiště vytvořit SAS účtu pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage).
 
 ## <a name="create-an-account-sas"></a>Vytvoření SAS účtu
+
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+Podpis SAS účtu se podepisuje pomocí přístupového klíče účtu. Použijte třídu [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) k vytvoření přihlašovacích údajů, které slouží k podepsání SAS. Dále vytvořte nový objekt [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) a zavolejte [ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) pro získání řetězce tokenu SAS.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 Chcete-li vytvořit přidružení zabezpečení účtu pro kontejner, zavolejte metodu [CloudStorageAccount. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) .
 
@@ -51,9 +60,19 @@ static string GetAccountSASToken()
 }
 ```
 
+---
+
 ## <a name="use-an-account-sas-from-a-client"></a>Použití SAS účtu z klienta
 
-Pokud chcete použít SAS účtu pro přístup k rozhraním API na úrovni služby pro Blob service, Sestavte objekt klienta Blob service pomocí SAS a koncového bodu BLOB Storage pro váš účet úložiště. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+Pokud chcete použít SAS účtu pro přístup k rozhraním API na úrovni služby pro Blob service, Sestavte objekt klienta Blob service pomocí SAS a koncového bodu BLOB Storage pro váš účet úložiště.
+
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+V tomto fragmentu kódu nahraďte `<storage-account>` zástupný symbol názvem vašeho účtu úložiště.
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -94,6 +113,8 @@ static void UseAccountSAS(string sasToken)
     Console.WriteLine(serviceProperties.HourMetrics.Version);
 }
 ```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

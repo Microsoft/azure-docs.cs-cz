@@ -1,29 +1,29 @@
 ---
 title: Přehled – Azure Database for MariaDB
 description: Přečtěte si o službě Azure Database for MariaDB, službě relačních databází v cloudu Microsoftu na základě verze MySQL Community Edition.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c365dee2b3ac32a62b38d0b3273f2f13e402936
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79535557"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662013"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
 Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Azure Database for MariaDB vychází z [MariaDB Community Edition](https://mariadb.org/download/) (k dispozici v rámci licence GPLv2) databázového stroje verze 10,2 a 10,3.
 
-Azure Database for MariaDB nabízí:
+Azure Database for MariaDB poskytuje tyto výhody:
 
-- Integrovanou vysokou dostupnost bez dalších poplatků.
-- Předvídatelný výkon a všeobecné ceny při průběžných platbách.
+- Integrovaná vysoká dostupnost bez dalších nákladů.
+- Předvídatelný výkon s využitím celkových průběžných plateb.
 - Škálování podle potřeby během několika sekund.
-- Zabezpečenou ochranu důvěrných neaktivních uložených dat i přenášených dat.
+- Zabezpečená ochrana citlivých neaktivních uložených dat i dat v pohybu.
 - Automatické zálohování a obnovení k určitému bodu v čase po dobu až 35 dnů.
 - Zabezpečení a dodržování předpisů na podnikové úrovni.
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 
-Služba Azure Database for MariaDB nabízí několik úrovní služeb: Basic, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
+Služba Azure Database for MariaDB nabízí několik úrovní služeb: Basic, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](concepts-pricing-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 

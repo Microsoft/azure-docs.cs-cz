@@ -3,26 +3,27 @@ title: Použití Azure image Builder s galerií imagí pro virtuální počíta�
 description: Vytvářejte verze imagí sdílené Galerie Azure pomocí nástroje Azure image Builder a Azure PowerShell.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
-ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
+ms.openlocfilehash: e8caf9f742217161c60ce90351989999f18adabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694083"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
 
-V tomto článku se dozvíte, jak můžete použít nástroj Azure image Builder a Azure PowerShell k vytvoření verze image v [galerii sdílených imagí](shared-image-galleries.md), a pak můžete bitovou kopii distribuovat globálně. Můžete to udělat taky pomocí [Azure CLI](../linux/image-builder-gallery.md).
+V tomto článku se dozvíte, jak můžete použít nástroj Azure image Builder a Azure PowerShell k vytvoření verze image v [galerii sdílených imagí](../shared-image-galleries.md), a pak můžete bitovou kopii distribuovat globálně. Můžete to udělat taky pomocí [Azure CLI](../linux/image-builder-gallery.md).
 
-K nakonfigurování image budeme používat šablonu. JSON. Soubor. JSON, který používáme, je tady: [armTemplateWinSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Budeme stahovat a upravovat místní verzi šablony, takže tento článek je napsaný pomocí místní relace PowerShellu.
+K nakonfigurování image budeme používat šablonu. JSON. Soubor. JSON, který používáme, je tady: [armTemplateWinSIG.js](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Budeme stahovat a upravovat místní verzi šablony, takže tento článek je napsaný pomocí místní relace PowerShellu.
 
-Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
+Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
 
-Azure image Builder automaticky spustí nástroj Sysprep a provede generalizaci bitové kopie, jedná se o obecný příkaz nástroje Sysprep, který můžete v případě potřeby [přepsat](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
+Azure image Builder automaticky spustí nástroj Sysprep a provede generalizaci bitové kopie, jedná se o obecný příkaz nástroje Sysprep, který můžete v případě potřeby [přepsat](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
 Počítejte s tím, kolikrát vlastní nastavení vrstev. Příkaz Sysprep můžete spustit až 8 krát na jedné imagi Windows. Po spuštění nástroje Sysprep 8 je nutné znovu vytvořit bitovou kopii systému Windows. Další informace najdete v tématu [omezení počtu, kolikrát můžete nástroj Sysprep spustit](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 
@@ -52,6 +53,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Forma
 Get-AzResourceProvider -ProviderNamespace Microsoft.Storage | Format-table -Property ResourceTypes,RegistrationState 
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.Network | Format-table -Property ResourceTypes,RegistrationState
 ```
 
 Pokud se nevrátí `Registered` , k registraci zprostředkovatelů použijte následující:
@@ -61,6 +63,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
+```
+
+Nainstalovat moduly PowerShellu:
+```powerShell
+'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
 ```
 
 ## <a name="create-variables"></a>Vytvoření proměnných
@@ -122,7 +130,7 @@ $identityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageR
 Tento příkaz stáhne šablonu definice role Azure a aktualizuje šablonu o parametry, které jste zadali dříve.
 
 ```powershell
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download config
@@ -189,7 +197,7 @@ Stáhněte šablonu. JSON a nakonfigurujte ji pomocí proměnných.
 $templateFilePath = "armTemplateWinSIG.json"
 
 Invoke-WebRequest `
-   -Uri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
+   -Uri "https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
    -OutFile $templateFilePath `
    -UseBasicParsing
 
@@ -219,7 +227,7 @@ Invoke-WebRequest `
 New-AzResourceGroupDeployment `
    -ResourceGroupName $imageResourceGroup `
    -TemplateFile $templateFilePath `
-   -apiversion "2019-05-01-preview" `
+   -apiversion "2020-02-14" `
    -imageTemplateName $imageTemplateName `
    -svclocation $location
 ```
@@ -231,14 +239,17 @@ Invoke-AzResourceAction `
    -ResourceName $imageTemplateName `
    -ResourceGroupName $imageResourceGroup `
    -ResourceType Microsoft.VirtualMachineImages/imageTemplates `
-   -ApiVersion "2019-05-01-preview" `
+   -ApiVersion "2020-02-14" `
    -Action Run
 ```
 
 Vytvoření image a její replikace do obou oblastí může chvíli trvat. Před přechodem k vytvoření virtuálního počítače počkejte na dokončení této části.
 
-Informace o možnostech automatizace získání stavu sestavení image najdete v [souboru Readme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) pro tuto šablonu na GitHubu.
-
+Informace o možnostech automatizace získání stavu sestavení bitové kopie naleznete v tématu [Readme].
+```powershell
+Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup |
+  Select-Object -Property Name, LastRunStatusRunState, LastRunStatusMessage, ProvisioningState
+```
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
@@ -309,7 +320,7 @@ Nejdřív odstraňte šablonu skupiny prostředků, jinak se nevyčistí pracovn
 Získat ResourceID pro šablonu obrázku 
 
 ```powerShell
-$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
+$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14"
 ```
 
 Odstranit šablonu obrázku

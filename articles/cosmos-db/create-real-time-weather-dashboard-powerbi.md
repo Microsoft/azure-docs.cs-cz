@@ -4,17 +4,19 @@ description: Naučte se, jak vytvořit živý řídicí panel počasí v Power B
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: eda3ee3e9e170469ffb0b9b0e1d7dede181fe3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262000"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657532"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje kroky potřebné k vytvoření živého řídicího panelu počasí v Power BI pomocí Azure Cosmos DB a Azure Analysis Services. Řídicí panel Power BI zobrazí grafy, ve kterých se v reálném čase zobrazí informace o teplotě a vodních srážek v oblasti.
 
@@ -23,7 +25,7 @@ Tento článek popisuje kroky potřebné k vytvoření živého řídicího pane
 Existují různé způsoby, jak nastavit řídicí panely pro vytváření sestav pro data uložená v Azure Cosmos DB. V závislosti na požadavcích na neaktuálnost a velikost dat popisuje následující tabulka nastavení vytváření sestav pro jednotlivé scénáře:
 
 
-|Scénář |Nastavení |
+|Scenario |Nastavení |
 |---------|---------|
 |1. generování sestav ad hoc (bez aktualizace)    |  [Konektor Power BI Azure Cosmos DB s režimem importu](powerbi-visualize.md)       |
 |2. generování sestav ad hoc s pravidelným obnovením   |  [Konektor Power BI Azure Cosmos DB s režimem importu (plánovaná pravidelná aktualizace)](powerbi-visualize.md)       |
@@ -46,7 +48,7 @@ Azure Analysis Services poskytuje plně spravovanou platformu jako službu, kter
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Ingestování dat počasí do Azure Cosmos DB
 
-Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset/local-weather-archive) do Azure Cosmos DB. Můžete nastavit úlohu [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) , aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
+Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) do Azure Cosmos DB. Můžete nastavit úlohu [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) , aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Připojit Power BI k Azure Cosmos DB
@@ -68,9 +70,9 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
    V závislosti na tom, který sloupec a datový typ se nachází ve zdrojové datové sadě, můžete pole RangeStart a RangeEnd změnit odpovídajícím způsobem.
 
    
-   |Vlastnost  |Datový typ  |Filtr  |
+   |Vlastnost  |Datový typ  |Filtrovat  |
    |---------|---------|---------|
-   |_ts     |   Numeric      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
+   |_ts     |   Číselný      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
    |Datum (například:-2019-08-19)     |   Řetězec      | [Document. Date] > DateTime. ToText (RangeStart, "rrrr-MM-DD") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-MM-DD")        |
    |Datum (například:-2019-08-11 12:00:00)   |  Řetězec       |  [Document. Date] > DateTime. ToText (RangeStart, "rrrr-mm-dd HH: mm: SS") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-mm-dd HH: mm: SS")       |
 
@@ -92,13 +94,13 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Ingestování dat počasí do Azure Cosmos DB 
 
-Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset/local-weather-archive) do Azure Cosmos DB. Můžete nastavit úlohu Azure Data Factory (ADF), aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
+Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) do Azure Cosmos DB. Můžete nastavit úlohu Azure Data Factory (ADF), aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Připojit Azure Analysis Services k účtu Azure Cosmos
 
 1. **Vytvořit nový cluster Azure Analysis Services**  -  [Vytvořte instanci služby Azure Analysis Services](../analysis-services/analysis-services-create-server.md) ve stejné oblasti jako účet Azure Cosmos a cluster datacihly.
 
-1. **Vytvoření nového Analysis Services tabulkového projektu v aplikaci Visual Studio**  -   [Nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
+1. **Vytvoření nového Analysis Services tabulkového projektu v aplikaci Visual Studio**  -   [Nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Vytvořit Azure Analysis Services projekt":::
 
@@ -106,11 +108,11 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Návrhář tabulkových modelů Azure Analysis Services":::
 
-1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely**Data Sources ( >  **Data Sources**  >  **nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
+1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely** Data Sources ( >    >  **nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Přidat Cosmos DB zdroj dat":::
 
-   Připojte se k Azure Cosmos DB zadáním **identifikátoru URI účtu**, **názvu databáze**a **názvu kontejneru**. Teď můžete vidět data z kontejneru Azure Cosmos, která se importují do Power BI.
+   Připojte se k Azure Cosmos DB zadáním **identifikátoru URI účtu**, **názvu databáze** a **názvu kontejneru**. Teď můžete vidět data z kontejneru Azure Cosmos, která se importují do Power BI.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Náhled Azure Cosmos DB dat":::
 
@@ -159,7 +161,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Připojte se k Azure Analysis Server pomocí konektoru Azure Analysis Services Database** – vyberte **živý režim** a připojte se k instanci Azure Analysis Services, jak je znázorněno na následujícím snímku obrazovky:
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Získat data z Azure Analysis Services":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Získání dat ze služby Azure Analysis Services":::
 
 1. **Načtěte data a generujte sestavy** – pomocí dat, která jste načetli dříve, vytvořte grafy pro hlášení teploty a vodních srážek. Vzhledem k tomu, že vytváříte živé připojení, dotazy by se měly provádět na datech v modelu Azure Analysis Services, který jste nasadili v předchozím kroku. Grafy teploty budou aktualizovány do pěti minut po načtení nových dat do Azure Cosmos DB.
 

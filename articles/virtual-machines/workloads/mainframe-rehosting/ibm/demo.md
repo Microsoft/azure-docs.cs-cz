@@ -1,8 +1,9 @@
 ---
 title: Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1 | Microsoft Docs
 description: Spusťte prostředí IBM Z vývojového a testovacího prostředí (zD&T) na Azure Virtual Machines (VM).
-services: virtual-machines-linux
-ms.service: virtual-machines-linux
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d390cca483444dadd278d783c5f93e09a1bf1ff8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052411"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549443"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
 
@@ -27,7 +28,7 @@ V tomto článku se dozvíte, jak nastavit instanci ADCD v prostředí zD&T v Az
 
 Podobně jako zD&T je ADCDs k dispozici pouze pro zákazníky a partnery IBM a slouží výhradně pro účely vývoje a testování. Nepoužívají se pro produkční prostředí. K dispozici je řada instalačních balíčků IBM ke stažení prostřednictvím [služby Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) nebo [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -52,17 +53,17 @@ Je vyžadován přístup k médiu ADCD. Níže uvedený postup předpokládá, �
 
 2. Vyberte možnost **Stažení softwaru** a **přístup k médiím**.
 
-3. Vyberte **nabídku programu a číslo smlouvy**a klikněte na **pokračovat**.
+3. Vyberte **nabídku programu a číslo smlouvy** a klikněte na **pokračovat**.
 
 4. Zadejte popis části nebo číslo součásti a klikněte na tlačítko **Finder**.
 
-5. Volitelně můžete kliknutím na seznam abecedních objednávek zobrazit a zobrazit theproduct podle názvu.
+5. Případně můžete kliknutím na seznam abecedních objednávek zobrazit a zobrazit produkt podle názvu.
 
-6. Vyberte možnost **všechny operační systémy** v **poli operační systém**a **všechny jazyky** v **poli jazyky**. Pak klikněte na tlačítko **Přejít**.
+6. Vyberte možnost **všechny operační systémy** v **poli operační systém** a **všechny jazyky** v **poli jazyky**. Pak klikněte na tlačítko **Přejít**.
 
 7. Kliknutím na **vybrat jednotlivé soubory** rozbalte seznam a zobrazte jednotlivá média ke stažení.
 
-8. Ověřte balíčky, které chcete stáhnout, vyberte **Stáhnout**a pak soubory Stáhněte do požadovaného adresáře.
+8. Ověřte balíčky, které chcete stáhnout, vyberte **Stáhnout** a pak soubory Stáhněte do požadovaného adresáře.
 
 ## <a name="upload-the-adcd-packages"></a>Nahrát ADCD balíčky
 
@@ -111,13 +112,13 @@ Dalším krokem je konfigurace zD&T, aby se používaly nahrané balíčky. Proc
 
     ![Úvodní obrazovka k IBM zD&T Enterprise Edition](media/02-welcome.png)
 
-3. Na stránce **rychlé zprovoznění** v části **Konfigurovat**vyberte **úložiště imagí**.
+3. Na stránce **rychlé zprovoznění** v části **Konfigurovat** vyberte **úložiště imagí**.
 
      ![Rychlé zprovoznění obrazovka IBM zD&T Enterprise Edition](media/03-quickstart.png)
 
 4. Na stránce **Konfigurovat úložiště imagí** vyberte **SSH Protokol FTP (File Transfer Protocol)**.
 
-5. Jako **název hostitele**zadejte **localhost** a zadejte cestu k adresáři, kam jste nahráli obrázky. Například/home/MyUserID/ZDT/adcd/nov2017/volumes.
+5. Jako **název hostitele** zadejte **localhost** a zadejte cestu k adresáři, kam jste nahráli obrázky. Například/home/MyUserID/ZDT/adcd/nov2017/volumes.
 
 6. Zadejte **ID uživatele** a **heslo** pro virtuální počítač. Nepoužívejte ID uživatele a heslo ZD&T.
 
@@ -127,13 +128,13 @@ Dalším krokem je konfigurace zD&T, aby se používaly nahrané balíčky. Proc
 
 Dalším krokem je konfigurace cílového prostředí zD&T. Toto emulované hostované prostředí je místo, kde se vaše image spouští.
 
-1. Na stránce **rychlé zprovoznění** v části **Konfigurovat**vyberte **cílová prostředí**.
+1. Na stránce **rychlé zprovoznění** v části **Konfigurovat** vyberte **cílová prostředí**.
 
 2. Na stránce **Konfigurace cílových prostředí** vyberte **Přidat cíl**.
 
 3. Vyberte **Linux**. IBM podporuje dva typy prostředí, Linux a Cloud (OpenStack), ale tato ukázka běží na Linux.
 
-4. Na stránce **Přidat cílové prostředí** pro **název hostitele**zadejte **localhost**. Nechejte **port SSH** nastavený na **22**.
+4. Na stránce **Přidat cílové prostředí** pro **název hostitele** zadejte **localhost**. Nechejte **port SSH** nastavený na **22**.
 
 5. Do pole **popisek cílového prostředí** zadejte popisek, například **MyCICS.**
 
@@ -143,7 +144,7 @@ Dalším krokem je konfigurace cílového prostředí zD&T. Toto emulované host
 
 Po dokončení předchozích kroků konfigurace je třeba nakonfigurovat zD&T pro použití balíčků a cílového prostředí. Znovu použijete proces úložiště imagí v zD&T, který umožňuje připojení a používání imagí. Může použít SSH nebo FTP.
 
-1. Na stránce **rychlé zprovoznění** v části **Konfigurovat**vyberte možnost **ADCD**. Zobrazí se sada instrukcí, která informuje o krocích, které je třeba provést před tím, než bude možné připojit balíček ADCD. Vysvětluje, proč jsme jmenovali cílový adresář jako dříve.
+1. Na stránce **rychlé zprovoznění** v části **Konfigurovat** vyberte možnost **ADCD**. Zobrazí se sada instrukcí, která informuje o krocích, které je třeba provést před tím, než bude možné připojit balíček ADCD. Vysvětluje, proč jsme jmenovali cílový adresář jako dříve.
 
 2. Za předpokladu, že všechny Image byly nahrány do správných adresářů, klikněte na odkaz **obrázek z ADCD** zobrazený v pravém dolním rohu (viz krok 7 na následujícím snímku obrazovky).
 
@@ -184,12 +185,12 @@ Image se teď může nasadit a je připravená k připojení emulátoru terminá
 > [!NOTE]
 > Pokud se zobrazí chyba s informací, že nemáte dostatek místa na disku, je třeba si uvědomit, že oblast vyžaduje 151 GB.
 
-Blahopřejeme! Nyní používáte sálové prostředí IBM v Azure.
+Gratulujeme! Nyní používáte sálové prostředí IBM v Azure.
 
 ## <a name="learn-more"></a>Další informace
 
 - [Migrace sálového počítače: mýty a fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2 pureScale v Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2 pureScale v Azure](ibm-db2-purescale-azure.md)
 - [Řešení potíží](../../../troubleshooting/index.yml)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

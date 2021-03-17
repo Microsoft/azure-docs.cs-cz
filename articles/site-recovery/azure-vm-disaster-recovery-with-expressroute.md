@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654374"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace ExpressRoute s zotavením po havárii pro virtuální počítače Azure
@@ -104,7 +104,7 @@ Podniková nasazení obvykle mají rozdělení úloh v několika virtuální sí
 
 #### <a name="spoke-to-hub"></a>Od paprsku k centru
 
-**Směr** | **Nastavení** | **Stav**
+**Směr** | **Nastavení** | **State**
 --- | --- | ---
 Od paprsku k centru | Povolení adresy virtuální sítě | Povoleno
 Od paprsku k centru | Povolení přesměrovaného provozu | Povoleno
@@ -115,7 +115,7 @@ Od paprsku k centru | Použít odebrání bran | Povoleno
 
 #### <a name="hub-to-spoke"></a>Od centra k paprsku
 
-**Směr** | **Nastavení** | **Stav**
+**Směr** | **Nastavení** | **State**
 --- | --- | ---
 Od centra k paprsku | Povolení adresy virtuální sítě | Povoleno
 Od centra k paprsku | Povolení přesměrovaného provozu | Povoleno

@@ -1,23 +1,18 @@
 ---
 title: Transformace dat pomocí skriptu U-SQL
 description: Naučte se zpracovávat nebo transformovat data spuštěním skriptů U-SQL ve službě Azure Data Lake Analytics Compute.
-services: data-factory
-documentationcenter: ''
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94b584f0bea01754a4e955d1418a7a9a2e9aeace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522410"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373908"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Zpracování dat spouštěním skriptů U-SQL na Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -38,14 +33,14 @@ Následující tabulka uvádí popisy obecných vlastností použitých v defini
 
 | Vlastnost                 | Popis                              | Povinné                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **textový**                 | Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
-| **accountName**          | Azure Data Lake Analytics název účtu.  | Ano                                      |
+| **textový**                 | Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. | Yes                                      |
+| **accountName**          | Azure Data Lake Analytics název účtu.  | Yes                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics identifikátor URI.           | No                                       |
 | **subscriptionId**       | ID předplatného Azure                    | No                                       |
 | **resourceGroupName**    | Název skupiny prostředků Azure                | No                                       |
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
-Propojená služba Azure Data Lake Analytics vyžaduje pro připojení ke službě Azure Data Lake Analytics ověřování instančního objektu. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí přístup k Data Lake Analytics i Data Lake Store, kterou používá. Podrobný postup najdete v tématu [ověřování služba-služba](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
+Propojená služba Azure Data Lake Analytics vyžaduje pro připojení ke službě Azure Data Lake Analytics ověřování instančního objektu. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí přístup k Data Lake Analytics i Data Lake Store, kterou používá. Podrobný postup najdete v tématu [ověřování služba-služba](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 
 * ID aplikace
 * Klíč aplikace 
@@ -57,9 +52,9 @@ Použijte ověřování instančního objektu zadáním následujících vlastno
 
 | Vlastnost                | Popis                              | Povinné |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Zadejte ID klienta aplikace.     | Ano      |
-| **servicePrincipalKey** | Zadejte klíč aplikace.           | Ano      |
-| **tenant**              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano      |
+| **servicePrincipalId**  | Zadejte ID klienta aplikace.     | Yes      |
+| **servicePrincipalKey** | Zadejte klíč aplikace.           | Yes      |
+| **tenant**              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Yes      |
 
 **Příklad: ověřování instančního objektu**
 ```json
@@ -119,14 +114,14 @@ Následující fragment kódu JSON definuje kanál s aktivitou Data Lake Analyti
 
 V následující tabulce jsou popsány názvy a popisy vlastností, které jsou specifické pro tuto aktivitu. 
 
-| Vlastnost            | Popis                              | Povinné |
+| Vlastnost            | Popis                              | Vyžadováno |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | Název aktivity v kanálu     | Ano      |
-| Popis         | Text popisující, co aktivita dělá.  | No       |
-| typ                | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **DataLakeAnalyticsU-SQL**. | Ano      |
-| linkedServiceName   | Propojená služba s Azure Data Lake Analytics. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  |Ano       |
-| scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. | Ano      |
-| scriptLinkedService | Propojená služba, která propojuje **Azure Data Lake Store** nebo **Azure Storage** obsahující skript do objektu pro vytváření dat | Ano      |
+| name                | Název aktivity v kanálu     | Yes      |
+| description         | Text popisující, co aktivita dělá.  | No       |
+| typ                | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity  **DataLakeAnalyticsU-SQL**. | Yes      |
+| linkedServiceName   | Propojená služba s Azure Data Lake Analytics. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  |Yes       |
+| scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. | Yes      |
+| scriptLinkedService | Propojená služba, která propojuje **Azure Data Lake Store** nebo **Azure Storage** obsahující skript do objektu pro vytváření dat | Yes      |
 | degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | No       |
 | upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | No       |
 | parameters          | Parametry, které se mají předat skriptu U-SQL.    | No       |
@@ -164,7 +159,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Ve výše uvedeném příkladu skriptu je vstup a výstup do skriptu definován v parametrech ** \@ in** a ** \@ out** . Hodnoty parametrů ** \@ in** a ** \@ out** ve skriptu U-SQL jsou dynamicky předávány Data Factory pomocí oddílu Parameters. 
+Ve výše uvedeném příkladu skriptu je vstup a výstup do skriptu definován v parametrech **\@ in** a **\@ out** . Hodnoty parametrů **\@ in** a **\@ out** ve skriptu U-SQL jsou dynamicky předávány Data Factory pomocí oddílu Parameters. 
 
 Můžete určit další vlastnosti, jako je například degreeOfParallelism a priority, i v definici kanálu pro úlohy, které jsou spouštěny ve službě Azure Data Lake Analytics.
 
@@ -198,5 +193,5 @@ Podívejte se na následující články, které vysvětlují, jak transformovat
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita spuštění Machine Learning dávky](transform-data-using-machine-learning.md)
+* [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

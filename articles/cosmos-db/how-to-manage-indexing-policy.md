@@ -3,26 +3,31 @@ title: Správa zásad indexování ve službě Azure Cosmos DB
 description: Naučte se spravovat zásady indexování, zahrnout nebo vyloučit vlastnost z indexování, jak definovat indexování pomocí různých sad Azure Cosmos DB SDK.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
-ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: de9cdaf1dcc398c5db55de78643a19179f6bfdbc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876474"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015687"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V Azure Cosmos DB jsou data indexována po [indexování zásad](index-policy.md) , které jsou definovány pro každý kontejner. Výchozí zásady indexování pro nově vytvořené kontejnery u všech řetězců a čísel vynucují indexy rozsahu. Tyto zásady je možné přepsat vlastními zásadami indexování.
+
+> [!NOTE]
+> Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core). Přečtěte si o indexování v [rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md) a [sekundární indexování v Azure Cosmos DB rozhraní API Cassandra.](cassandra-secondary-index.md)
 
 ## <a name="indexing-policy-examples"></a>Příklady zásad indexování
 
 Tady je několik příkladů indexování zásad, které jsou uvedené ve [formátu JSON](index-policy.md#include-exclude-paths), což je způsob jejich zpřístupnění na Azure Portal. Stejné parametry můžete nastavit prostřednictvím rozhraní příkazového řádku Azure nebo libovolné sady SDK.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Zásady výslovných odhlášení pro selektivní vyloučení některých cest k vlastnostem
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>Zásady výslovných odhlášení pro selektivní vyloučení některých cest k vlastnostem
 
 ```json
     {
@@ -43,7 +48,7 @@ Tady je několik příkladů indexování zásad, které jsou uvedené ve [form�
     }
 ```
 
-Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
+Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už nejsou potřebné k explicitnímu nastavení a měli byste je vynechat ze zásad indexování úplně (jak je znázorněno v předchozím příkladu).
 
 ```json
     {
@@ -97,7 +102,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
     }
 ```
 
-Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
+Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už nejsou potřebné k explicitnímu nastavení a měli byste je vynechat ze zásad indexování úplně (jak je znázorněno v předchozím příkladu).
 
 ```json
     {
@@ -139,9 +144,9 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
 ```
 
 > [!NOTE]
-> Obecně se doporučuje použít zásadu indexování pro **výslovný souhlas** , která Azure Cosmos DB proaktivní indexování všech nových vlastností, které se dají do modelu přidat.
+> Obecně se doporučuje použít zásadu indexování pro **výslovný souhlas** , která Azure Cosmos DB proaktivně indexovat každou novou vlastnost, která může být přidána do datového modelu.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Použití prostorového indexu pouze na konkrétní cestu k vlastnosti
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>Použití prostorového indexu pouze na konkrétní cestu k vlastnosti
 
 ```json
 {
@@ -171,9 +176,9 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Příklady složených indexovaných zásad
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>Příklady složených indexovaných zásad
 
-Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti můžete také zadat složený index. Chcete-li provést dotaz, který má `ORDER BY` klauzuli pro více vlastností, je nutné použít [složený index](index-policy.md#composite-indexes) těchto vlastností. Kromě toho budou mít složené indexy výkonové výhody pro dotazy, které mají filtr a mají klauzuli ORDER BY v různých vlastnostech.
+Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti můžete také zadat složený index. Chcete-li provést dotaz, který má `ORDER BY` klauzuli pro více vlastností, je nutné použít [složený index](index-policy.md#composite-indexes) těchto vlastností. Kromě toho budou mít složené indexy výkonové výhody pro dotazy, které mají více filtrů nebo filtr i klauzule ORDER BY.
 
 > [!NOTE]
 > Složené cesty mají implicitní `/?` , protože pouze skalární hodnota na této cestě je indexována. `/*`Zástupný znak není podporován ve složených cestách. Neměli byste zadat `/?` nebo `/*` v složené cestě.
@@ -310,7 +315,7 @@ Je volitelné zadat objednávku. Pokud tento parametr nezadáte, pořadí je vze
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Vyloučení všech cest k vlastnostem, ale zachování aktivního indexování
 
-Tato zásada se dá použít v situacích, kdy je aktivní [funkce TTL (Time-to-Live)](time-to-live.md) , ale není nutný žádný sekundární index (pro použití Azure Cosmos DB jako úložiště čistě klíč-hodnota).
+Tato zásada se dá použít v situacích, kdy je aktivní [funkce TTL (Time-to-Live)](time-to-live.md) , ale nejsou potřeba žádné další indexy (pro použití Azure Cosmos DB jako úložiště čistě klíč-hodnota).
 
 ```json
     {
@@ -344,7 +349,7 @@ V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli 
 [Aktualizace zásad indexování](index-policy.md#modifying-the-indexing-policy) spustí transformaci indexu. Průběh této transformace můžete také sledovat ze sad SDK.
 
 > [!NOTE]
-> Při aktualizaci zásad indexování budou zápisy do Azure Cosmos DB nepřerušeny. Další informace o [transformacích indexování](indexing-policy.md#modifying-the-indexing-policy)
+> Při aktualizaci zásad indexování budou zápisy do Azure Cosmos DB nepřerušeny. Další informace o [transformacích indexování](index-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -372,7 +377,7 @@ Pokud chcete vytvořit kontejner s vlastními zásadami indexování, přečtět
 
 Pokud chcete vytvořit kontejner s vlastními zásadami indexování, přečtěte si téma [vytvoření kontejneru s vlastní zásadou indexu pomocí PowerShellu](manage-with-powershell.md#create-container-custom-index) .
 
-## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a>Použití sady .NET SDK
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> Použití sady .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -745,6 +750,13 @@ Aktualizace kontejneru změnami
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+
+Načíst průběh transformace indexu z hlaviček odpovědi
+```python
+container_client.read(populate_quota_info = True,
+                      response_hook = lambda h,p: print(h['x-ms-documentdb-collection-index-transformation-progress']))
+```
+
 ---
 
 ## <a name="next-steps"></a>Další kroky

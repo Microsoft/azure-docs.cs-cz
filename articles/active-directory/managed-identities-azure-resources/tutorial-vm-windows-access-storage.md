@@ -3,7 +3,7 @@ title: Přístup k Azure Storage pomocí spravované identity přiřazené syst�
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75971967"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89263174"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
 
@@ -42,7 +42,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 
 
-## <a name="enable"></a>Povolení
+## <a name="enable"></a>Povolit
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -69,7 +69,7 @@ V této části vytvoříte účet úložiště.
 Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kontejner objektů blob, do kterého soubor uložíte. Potom soubor nahrajete do kontejneru objektů blob v novém účtu úložiště.
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
-2. V části **Blob Service** klikněte na **Kontejnery**.
+2. V části **BLOB Service**klikněte na **kontejnery**.
 3. Nahoře na stránce klikněte na **+ Kontejner**.
 4. V části **Nový kontejner** zadejte název kontejneru a v části **Úroveň veřejného přístupu** nechte výchozí hodnotu.
 
@@ -184,4 +184,4 @@ Odpověď bude obsahovat obsah souboru:
 V tomto kurzu jste zjistili, jak identitě přiřazené systémem na virtuálním počítači s Windows povolit přístup k Azure Storage.  Další informace o Azure Storage:
 
 > [!div class="nextstepaction"]
-> [Azure Storage](/azure/storage/common/storage-introduction)
+> [Azure Storage](../../storage/common/storage-introduction.md)

@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053282"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317612"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md) a teď podporuje další scénáře, které se dřív nepodporovaly.
@@ -43,7 +43,7 @@ Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny PowerShe
 | Dočasně blokován. |Nastaveno pouze systémem. Systém nemá v **současné době** nárok na příjem automatických upgradů. |
 | Zakázáno |Automatický upgrade je zakázán. |
 
-Můžete změnit mezi **povolenými** a **zakázanými** pomocí `Set-ADSyncAutoUpgrade` . Pouze systém by měl nastavit stav **pozastaveno**.  Před 1.1.750.0 by rutina Set-ADSyncAutoUpgrade blokovala automatický upgrade, pokud byl stav automatického upgradu nastavený na pozastaveno. Tato funkce se teď změnila, takže neblokuje autoupgrade.
+Můžete změnit mezi **povolenými** a **zakázanými** pomocí `Set-ADSyncAutoUpgrade` . Pouze systém by měl nastavit stav **pozastaveno**.  Před 1.1.750.0 by rutina Set-ADSyncAutoUpgrade zablokovala automatický upgrade, pokud byl stav automatického upgradu nastavený na pozastaveno. Tato funkce se teď změnila, takže neblokuje autoupgrade.
 
 Automatický upgrade používá Azure AD Connect Health pro infrastrukturu upgradu. Aby mohl automatický upgrade fungovat, ujistěte se, že jste otevřeli adresy URL v proxy server pro **Azure AD Connect Health** , jak je popsáno v [adresách URL Office 365 a rozsahech IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
@@ -63,15 +63,15 @@ Je také možné získat výsledek, který není UpgradeResult, tj. "AADHealthEn
 
 Pak se ujistěte, že jste na proxy serveru nebo v bráně firewall otevřeli požadované adresy URL. Automatická aktualizace používá Azure AD Connect Health, jak je popsáno v [přehledu](#overview). Pokud používáte proxy server, ujistěte se, že stav byl nakonfigurován tak, aby používal [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Také otestujte [připojení ke stavu](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) Azure AD.
 
-Po ověření připojení k Azure AD je čas na to, abyste se mohli podívat na protokol událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace** . Přidejte filtr EventLog pro zdroj **Azure AD Connect upgradujte** a rozsah id události **300-399**.  
-![Filtr protokolu událostí pro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+Po ověření připojení k Azure AD je čas na to, abyste se mohli podívat na protokol událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace** . Přidejte filtr EventLog pro zdroj **Azure AD Connect upgradujte** a rozsah ID události **300-399**.  
+![Snímek obrazovky, který zobrazuje okno "Filtrovat aktuální protokol" se "zdroji událostí" a zvýrazněným polem pro ID události zahrnutí/vyloučení.](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 Teď můžete zobrazit události související se stavem pro automatický upgrade.  
 ![Filtr protokolu událostí pro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
 
 Kód výsledku obsahuje předponu s přehledem stavu.
 
-| Předpona kódu výsledku | Popis |
+| Předpona kódu výsledku | Description |
 | --- | --- |
 | Success |Instalace byla úspěšně upgradována. |
 | UpgradeAborted |Upgrade zastavil dočasnou podmínku. Bude znovu opakován a očekává se, že bude později úspěšné. |
@@ -79,7 +79,7 @@ Kód výsledku obsahuje předponu s přehledem stavu.
 
 Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné výpisy, ale zpráva výsledku by měla být nejasná s obsahem problému.
 
-| Zpráva výsledku | Popis |
+| Zpráva výsledku | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Do registru nejde zapisovat. |

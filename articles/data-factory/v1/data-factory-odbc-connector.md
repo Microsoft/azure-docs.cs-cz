@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z úložišť dat rozhraní ODBC
 description: Přečtěte si, jak přesunout data z úložišť dat ODBC pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e847592127d19eba3370255385f5b969b87e886e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707374"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380096"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Přesun dat z úložišť dat ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -49,7 +44,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z ú
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -64,7 +59,7 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu ODBC.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesOdbc** . |Yes |
 | připojovací řetězec |Část připojovacího řetězce bez přístupu k přístupu a volitelné šifrované přihlašovací údaje. Podívejte se na příklady v následujících oddílech. <br/><br/>Můžete zadat připojovací řetězec se vzorem, jako je `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , nebo použít systémový název DSN (název zdroje dat), který jste nastavili na počítači brány s nástrojem `"DSN=<name of the DSN>;"` (pro odpovídající část přihlašovací údaje v propojené službě). |Yes |
@@ -94,7 +89,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Použití základního ověřování s šifrovanými přihlašovacími údaji
-Přihlašovací údaje můžete šifrovat pomocí rutiny [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 verze Azure PowerShell) nebo rutiny [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 nebo starší verze Azure PowerShell).
+Přihlašovací údaje můžete šifrovat pomocí rutiny [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 verze Azure PowerShell) nebo rutiny [New-AzureDataFactoryEncryptValue](/previous-versions/azure/dn834940(v=azure.100)) (0,9 nebo starší verze Azure PowerShell).
 
 ```json
 {
@@ -136,7 +131,7 @@ Přihlašovací údaje můžete šifrovat pomocí rutiny [New-AzDataFactoryEncry
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (která zahrnuje datovou sadu ODBC) má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky v úložišti dat rozhraní ODBC. |Yes |
 
@@ -346,7 +341,7 @@ Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-act
 1. Převod z nativních zdrojových typů na typ .NET
 2. Převést z typu .NET na nativní typ jímky
 
-Při přesouvání dat z úložišť dat ODBC jsou datové typy ODBC mapovány na typy .NET, jak je uvedeno v tématu [mapování datových typů ODBC](https://msdn.microsoft.com/library/cc668763.aspx) .
+Při přesouvání dat z úložišť dat ODBC jsou datové typy ODBC mapovány na typy .NET, jak je uvedeno v tématu [mapování datových typů ODBC](/dotnet/framework/data/adonet/odbc-data-type-mappings) .
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
@@ -355,7 +350,7 @@ Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v 
 Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [opakované čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="troubleshoot-connectivity-issues"></a>Řešení potíží s připojením
-Pokud chcete řešit problémy s připojením, **Diagnostics** použijte kartu Diagnostika **Správa dat brány Configuration Manager**.
+Pokud chcete řešit problémy s připojením,  použijte kartu Diagnostika **Správa dat brány Configuration Manager**.
 
 1. Spusťte **Configuration Manager Správa dat brány**. Můžete buď spustit "C:\Program Files\Microsoft Správa dat Gateway\1.0\Shared\ConfigManager.exe" přímo (nebo) vyhledat **bránu** , abyste našli odkaz na aplikaci **Microsoft Správa dat Gateway** , jak je znázorněno na následujícím obrázku.
 

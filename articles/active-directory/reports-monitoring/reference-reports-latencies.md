@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74007708"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89231057"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav v Azure Active Directory
 
@@ -54,12 +54,12 @@ Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžit�
 
 Existují dva typy sestav zabezpečení:
 
-- [Riziková přihlášení](concept-risky-sign-ins.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
-- [Uživatelé označení příznakem rizika](concept-user-at-risk.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
+- [Riziková přihlášení](../identity-protection/overview-identity-protection.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+- [Uživatelé označení příznakem rizika](../identity-protection/overview-identity-protection.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
 V následující tabulce jsou uvedeny informace o latenci pro sestavy zabezpečení.
 
-| Sestava | Minimální | Průměr | Maximum |
+| Sestava | Minimum | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Ohrožení uživatelé          | 5 minut   | 15 minut  | 2 hodiny  |
 | Riziková přihlášení         | 5 minut   | 15 minut  | 2 hodiny  |
@@ -70,7 +70,7 @@ Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky deteku
 
 V následující tabulce jsou uvedeny informace o latenci pro detekci rizik.
 
-| Sestava | Minimální | Průměr | Maximum |
+| Sestava | Minimum | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Přihlášení z anonymních IP adres |5 minut |15 minut |2 hodiny |
 | Přihlášení z neznámých míst |5 minut |15 minut |2 hodiny |
@@ -84,4 +84,4 @@ V následující tabulce jsou uvedeny informace o latenci pro detekci rizik.
 
 * [Přehled sestav Azure AD](overview-reports.md)
 * [Programový přístup k sestavám Azure AD](concept-reporting-api.md)
-* [Azure Active Directory detekce rizik](concept-risk-events.md)
+* [Azure Active Directory detekce rizik](../identity-protection/overview-identity-protection.md)

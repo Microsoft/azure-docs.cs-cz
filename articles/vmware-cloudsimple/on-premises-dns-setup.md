@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – konfigurace DNS pro privátní cloud CloudSimple
 description: Popisuje způsob nastavení překladu názvů DNS pro přístup k serveru vCenter v privátním cloudu CloudSimple z místních pracovních stanic.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63822050512421895b0cfed08fb141f77da20b03
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79246107"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899248"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
 
@@ -25,7 +25,7 @@ Pokud chcete získat přístup k serveru vCenter v privátním cloudu CloudSimpl
 
 2. Přejděte na **prostředky**  >  **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
 
-3. Na stránce **Souhrn** v privátním cloudu v části **základní informace**ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
+3. Na stránce **Souhrn** v privátním cloudu v části **základní informace** ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
 
     ![Servery DNS privátního cloudu](media/private-cloud-dns-server.png)
 
@@ -45,6 +45,9 @@ Konkrétní soubor a parametry, které je potřeba nakonfigurovat, se můžou li
 
 Například pro výchozí konfiguraci serveru BIND upravte soubor/etc/Named.conf na serveru DNS a přidejte následující informace o zóně.
 
+> [!NOTE]
+>Tento článek obsahuje odkazy na podřízený termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
 ```
 zone "az.cloudsimple.io"
 {
@@ -58,19 +61,19 @@ zone "az.cloudsimple.io"
 
 1. Klikněte pravým tlačítkem na server DNS a vyberte **Nová zóna**. 
   
-    ![Nová zóna](media/DNS01.png)
+    ![Snímek obrazovky, který zvýrazní možnost nabídky nová zóna](media/DNS01.png)
 2. Vyberte **zónu se zástupnými** procedurami a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS02.png)
+    ![Snímek obrazovky, který zvýrazní možnost zóny se zástupnými procedurami](media/DNS02.png)
 3. V závislosti na vašem prostředí vyberte příslušnou možnost a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS03.png)
+    ![Snímek obrazovky zobrazující možnosti replikace dat zóny](media/DNS03.png)
 4. Vyberte **zónu dopředného vyhledávání** a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS01.png)
+    ![Snímek obrazovky, který zvýrazní možnost zóny dopředného vyhledávání.](media/DNS01.png)
 5. Zadejte název zóny a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS05.png)
+    ![Snímek obrazovky, který ukazuje, kam zadat název zóny.](media/DNS05.png)
 6. Zadejte IP adresy serverů DNS vašeho privátního cloudu, které jste získali z portálu CloudSimple.
 
     ![Nová zóna](media/DNS06.png)

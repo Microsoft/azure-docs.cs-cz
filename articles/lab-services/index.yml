@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/26/2020
-  ms.openlocfilehash: 9101d40182f3321dbe791bd700a26a782f6c697c
-  ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+  ms.openlocfilehash: eb25361af9cac307c44000eaa8ee6ff9cb429b55
+  ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/26/2020
-  ms.locfileid: "85445113"
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96436738"
 landingContent:
 - title: Podrobný přehled
   linkLists:
@@ -25,11 +25,11 @@ landingContent:
     links:
     - text: Informace o Lab Services a DevTest Labs
       url: ../devtest-labs/lab-services-overview.md?toc=%2fazure%2fevent-grid%2fclassroom-labs%2ftoc.json
-    - text: Informace o testovacích prostředích v učebnách
+    - text: Informace o testovacích prostředích
       url: classroom-labs-overview.md
   - linkListType: concept
     links:
-    - text: Koncepce testovacích prostředí v učebnách
+    - text: Koncepce testovacích prostředí
       url: classroom-labs-concepts.md
 - title: Účty testovacího prostředí
   linkLists:
@@ -43,7 +43,7 @@ landingContent:
       url: how-to-manage-lab-accounts.md
     - text: Konfigurace účtů testovacího prostředí
       url: how-to-configure-lab-accounts.md
-- title: Nastavení testovacích prostředí v učebnách
+- title: Nastavení testovacích prostředí
   linkLists:
   - linkListType: tutorial
     links:
@@ -51,7 +51,7 @@ landingContent:
       url: tutorial-setup-classroom-lab.md
   - linkListType: how-to-guide
     links:
-    - text: Vytváření a správa testovacích prostředí v učebnách
+    - text: Vytváření a správa testovacích prostředí
       url: how-to-manage-lab-accounts.md
     - text: Nastavení, přizpůsobení a publikování šablon
       url: how-to-create-manage-template.md
@@ -61,7 +61,7 @@ landingContent:
       url: how-to-configure-student-usage.md
     - text: Vytvoření a správa plánů
       url: how-to-create-schedules.md
-- title: Použití testovacích prostředí v učebnách
+- title: Využití testovacích prostředí
   linkLists:
   - linkListType: tutorial
     links:

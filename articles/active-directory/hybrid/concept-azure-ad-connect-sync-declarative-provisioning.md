@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60246317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313616"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synchronizace: principy deklarativního zřizování
 Toto téma vysvětluje konfigurační model v Azure AD Connect. Model se nazývá deklarativní zřizování a umožňuje snadno provádět změny konfigurace. Mnoho věcí popsaných v tomto tématu je pro většinu zákaznických scénářů pokročilé a není nutné.
@@ -29,11 +29,11 @@ Toto téma vysvětluje konfigurační model v Azure AD Connect. Model se nazýv�
 ## <a name="overview"></a>Přehled
 Deklarativní zřizování je zpracování objektů přicházejících ze zdrojového připojeného adresáře a určuje, jak by měl být objekt a atributy transformovány ze zdroje do cíle. Objekt se zpracovává v synchronizačním kanálu a kanál je stejný pro příchozí a odchozí pravidla. Příchozí pravidlo pochází z prostoru konektoru do úložiště metaverse a odchozí pravidlo je z úložiště metaverse do prostoru konektoru.
 
-![Synchronizovat kanál](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![Diagram, který zobrazuje příklad synchronizačního kanálu.](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 Kanál má několik různých modulů. Každý z nich zodpovídá za jeden koncept v synchronizaci objektů.
 
-![Synchronizovat kanál](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![Diagram znázorňující moduly v kanálu.](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * Zdroj, zdrojový objekt
 * [Rozsah](#scope), najde všechna pravidla synchronizace, která jsou v oboru.
@@ -44,7 +44,7 @@ Kanál má několik různých modulů. Každý z nich zodpovídá za jeden konce
 
 ## <a name="scope"></a>Rozsah
 Modul Scope vyhodnocuje objekt a určuje pravidla, která jsou v oboru a měla by být součástí zpracování. V závislosti na hodnotách atributů objektu jsou vyhodnocena odlišná pravidla synchronizace, která jsou v oboru. Například zakázaný uživatel, který nemá poštovní schránku Exchange, má různá pravidla, než je povolený uživatel s poštovní schránkou.  
-![Rozsah](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Diagram, který zobrazuje modul oboru pro objekt.](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Obor je definován jako skupiny a klauzule. Klauzule jsou uvnitř skupiny. Logický operátor AND se používá mezi všemi klauzulemi ve skupině. Například (oddělení = IT a země = Dánsko). Logická nebo se používá mezi skupinami.
 
@@ -53,7 +53,7 @@ Obor tohoto obrázku by měl být čten jako (oddělení = IT a země = Dánsko)
 
 Modul Scope podporuje následující operace.
 
-| Operace | Popis |
+| Operace | Description |
 | --- | --- |
 | ROVNÁ SE, NOTEQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota rovna hodnotě v atributu. Pro vícehodnotové atributy viz ISIN a ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota menší než hodnota v atributu. |
@@ -78,7 +78,7 @@ Spojení se definují jako jedna nebo víc skupin. V rámci skupiny máte klauzu
 Spojení v tomto obrázku jsou zpracovávána shora dolů. Kanál synchronizace se nejprve zobrazí, pokud existuje shoda s časem. V takovém případě se druhé pravidlo uvidí, pokud se název účtu dá použít k spojování objektů. Pokud se nejedná o shodu, třetí a konečné pravidlo je více přibližné shody s použitím jména uživatele.
 
 Pokud byla vyhodnocena všechna pravidla spojení a neexistuje přesně jedna shoda, je použit **typ odkazu** na stránce **Popis** . Pokud je tato možnost nastavená na **zřizování**, vytvoří se nový objekt v cíli.  
-![Zřídit nebo připojit](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+![Snímek obrazovky zobrazující, že je otevřená rozevírací nabídka typ propojení](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 Objekt by měl mít pouze jedno pravidlo synchronizace s pravidly JOIN v oboru. Pokud existuje více pravidel synchronizace, kde je definováno spojení, dojde k chybě. Priorita se nepoužívá k vyřešení konfliktů spojení. Objekt musí mít pravidlo JOIN v oboru pro atributy, které se mají směrovat stejným směrem příchozího a odchozího směrování. Pokud potřebujete flowovat atributy příchozích i odchozích dat do stejného objektu, musíte mít pravidlo příchozí i odchozí synchronizace s připojením.
 
@@ -101,7 +101,7 @@ Zaškrtávací políčko **použít jednou** definuje, že by měl být atribut 
 ### <a name="merging-attribute-values"></a>Sloučení hodnot atributů
 V tokůch atributů je k dispozici nastavení určující, zda mají být atributy s více hodnotami sloučeny z několika různých konektorů. Výchozí hodnota je **Update**, což znamená, že se má vyhodnotit pravidlo synchronizace s nejvyšší prioritou.
 
-![Typy sloučení](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![Snímek obrazovky, který zobrazuje oddíl "Přidat transformace" s otevřenou rozevírací nabídkou "typy sloučení".](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 K dispozici jsou také **slučované** a **MergeCaseInsensitive**. Tyto možnosti umožňují sloučit hodnoty z různých zdrojů. Můžete ji například použít ke sloučení atributu member nebo proxyAddresses z několika různých doménových struktur. Při použití této možnosti musí všechna pravidla synchronizace v oboru pro objekt používat stejný typ sloučení. Nelze definovat **aktualizaci** z jednoho konektoru a **Sloučit** z jiného. Pokud se pokusíte, zobrazí se chyba.
 
@@ -120,7 +120,7 @@ Literál **AuthoritativeNull** je podobný **hodnotě null** , ale s rozdílem, 
 
 Tok atributů může také používat **IgnoreThisFlow**. Je podobné hodnotě NULL v tom smyslu, že není k dispozici žádná hodnota k přispívání. Rozdílem je, že neodebere již existující hodnotu v cíli. Vypadá to, že v takovém případě tok atributu nikdy nebyl nalezen.
 
-Zde naleznete příklad:
+Tady je příklad:
 
 Ve *službě AD-User Exchange Hybrid* se dá najít tento tok:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
@@ -146,7 +146,7 @@ Priorita může být definována mezi konektory. To umožňuje konektorům s lep
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>Více objektů ze stejného prostoru konektoru
 Pokud máte více objektů ve stejném prostoru konektoru připojeném ke stejnému objektu úložiště metaverse, je nutné změnit prioritu. Pokud je v oboru stejného pravidla synchronizace více objektů, pak modul synchronizace nebude moci určit prioritu. Je dvojznačný, který zdrojový objekt by měl přispívat do úložiště metaverse. Tato konfigurace je hlášena jako nejednoznačná, a to i v případě, že atributy ve zdroji mají stejnou hodnotu.  
-![Více objektů spojených se stejným objektem MV](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![Diagram, který zobrazuje více objektů spojených se stejným objektem MV s průhledným překrytím červeného X. ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 V tomto scénáři je nutné změnit rozsah pravidel synchronizace, aby zdrojové objekty měly v oboru jiná pravidla synchronizace. To umožňuje definovat různé priority.  
 ![Více objektů spojených se stejným objektem MV](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  

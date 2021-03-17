@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503604"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713333"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -31,7 +31,7 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 
 | Chybová zpráva      | <span style="font-weight:normal">Nepovedlo se připojit k systému HANA.</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| **Možné příčiny**    | Instance SAP HANA může být mimo provoz.<br/>Požadovaná oprávnění pro práci s databází HANA nejsou nastavená pro Azure Backup. |
+| **Možné příčiny**    | Instance SAP HANA může být mimo provoz.<br/>Požadovaná oprávnění pro Azure Backup interakci s databází HANA nejsou nastavena. |
 | **Doporučená akce** | Ověřte, zda je databáze SAP HANA. Pokud je databáze spuštěná a spuštěná, ověřte, jestli jsou nastavená všechna požadovaná oprávnění. Pokud některá z oprávnění chybí, spusťte [předregistrační skript](https://aka.ms/scriptforpermsonhana) pro přidání chybějících oprávnění. |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
@@ -45,14 +45,7 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 
 | Chybová zpráva      | <span style="font-weight:normal">Zadaná operace SAP HANA není podporovaná.</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| **Možné příčiny**    | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné v SAP HANA nativních klientech (Studio/řídicí panel/DBA). |
-| **Doporučená akce** | Další informace najdete [tady](./sap-hana-backup-support-matrix.md#scenario-support). |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| Chybová zpráva      | <span style="font-weight:normal">Tato databáze SAP HANA nepodporuje požadovaný typ zálohování.</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **Možné příčiny**    | Azure Backup nepodporuje přírůstkové zálohování a zálohování pomocí snímků. |
+| **Možné příčiny**    | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné na SAP HANA nativních klientech (Studio/řídicí panel/DBA). |
 | **Doporučená akce** | Další informace najdete [tady](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -74,7 +67,7 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 | Chybová zpráva      | <span style="font-weight:normal">Zjistila se neplatná konfigurace backint.</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **Možné příčiny**    | Parametry zálohování jsou pro Azure Backup nesprávně zadané. |
-| **Doporučená akce** | Ověřte, zda jsou nastaveny následující parametry (backint):<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: false]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
+| **Doporučená akce** | Ověřte, zda jsou nastaveny následující parametry (backint):<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -96,8 +89,8 @@ Předpokládat, že je instance SDC HANA "H21" zálohovaná. Na stránce záloho
 Je třeba počítat s následujícím:
 
 - Ve výchozím nastavení se název obnovené databáze naplní názvem zálohované položky. V tomto případě H21 (SDC).
-- Když vyberete cíl jako h11, nemění se automaticky název obnovené databáze. **Měla by být upravena na H11 (SDC)**. V souvislosti s SDCem bude obnovený název databáze ID cílové instance s malými písmeny a "sdc" přidanými v závorkách.
-- Vzhledem k tomu, že SDC může mít pouze jednu databázi, je nutné kliknout na zaškrtávací políčko, aby bylo možné přepsat existující databázová data s daty bodu obnovení.
+- Výběr cíle jako h11 nemění automaticky obnovený název databáze. **Měla by být upravena na H11 (SDC)**. V souvislosti s SDCem bude obnovený název databáze ID cílové instance s malými písmeny a "sdc" přidanými v závorkách.
+- Vzhledem k tomu, že SDC může mít pouze jednu databázi, je nutné zaškrtnout políčko, aby bylo možné přepsat existující databázová data s daty bodu obnovení.
 - Linux rozlišuje velká a malá písmena. Buďte proto opatrní při zachování případu.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Vícenásobné obnovení databáze kontejnerů (MDC)
@@ -116,7 +109,7 @@ Tento scénář může zahrnovat dva možné případy. Přečtěte si, jak zál
 
     - Rozšíření již na virtuálním počítači existuje, ale není viditelné pro žádné služby.
     - Spusťte skript před registrací
-    - Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
+    - Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
     - Již existující databáze zálohovaných (z odstraněného virtuálního počítače) by se pak měly úspěšně zálohovat.
 
 2. Nově vytvořený virtuální počítač má jednu z těchto akcí:
@@ -153,7 +146,7 @@ Upgrady na operační systém, změnu verze SDC nebo změny verze MDC, které ne
 - Ujistěte se, že [Azure Backup aktuálně podporuje](sap-hana-backup-support-matrix.md#scenario-support) nová verze operačního systému, verze SDC nebo MDC.
 - [Zastavení ochrany s uchováním dat](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) pro databázi
 - Provedení upgradu nebo aktualizace
-- Znovu spusťte skript před registrací. Proces upgradu obvykle odebere potřebné role. Spuštění předregistračního skriptu vám pomůže ověřit všechny požadované role.
+- Znovu spusťte skript před registrací. Proces upgradu často může odebrat [potřebné role](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does). Spuštění předregistračního skriptu vám pomůže ověřit všechny požadované role.
 - Znovu obnovit ochranu pro databázi
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SDC upgrade na MDC bez změny v SID
@@ -164,8 +157,8 @@ Upgrady z SDC na MDC, které nezpůsobují změnu SID, mohou být zpracovány n�
 - [Zastavení ochrany s uchováním dat](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) pro starou databázi SDC
 - Proveďte upgrade. Po dokončení se systém HANA teď MDC se systémovou databází a databáze tenanta.
 - Znovu spustit [skript před registrací](https://aka.ms/scriptforpermsonhana)
-- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
-- Klikněte na znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
+- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
+- Vyberte možnost znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
 - Starší databáze SDC bude i nadále existovat v trezoru a budou mít v souladu se zásadami zachována stará zálohovaná data.
 - Konfigurace zálohování pro tyto databáze
 
@@ -177,8 +170,8 @@ Upgrady z SDC na MDC, které způsobují změnu SID, mohou být zpracovány nás
 - **Zastavení ochrany s uchováním dat** pro starou databázi SDC
 - Proveďte upgrade. Po dokončení se systém HANA teď MDC se systémovou databází a databáze tenanta.
 - Znovu spusťte [skript před registrací](https://aka.ms/scriptforpermsonhana) se správnými podrobnostmi (nový identifikátor SID a MDC). Kvůli změně v identifikátoru SID může při úspěšném spuštění skriptu dorazit k problémům. Pokud čelíte problémům, kontaktujte podporu Azure Backup.
-- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
-- Klikněte na znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
+- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
+- Vyberte možnost znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
 - Starší databáze SDC bude i nadále existovat v trezoru a budou mít stará zálohovaná data uchovávaná podle zásad.
 - Konfigurace zálohování pro tyto databáze
 

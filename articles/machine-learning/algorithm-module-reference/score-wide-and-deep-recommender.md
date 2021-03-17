@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
-ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192745"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90905163"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Určení skóre doporučovacího systému Wide and Deep
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning (Preview) použít modul pro **hodnocení široké škály a hloubky** pro vytváření předpovědi založených na modelu doporučených doporučení, na základě široké & hloubkového učení od společnosti Google.
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul pro **velký počet a hloubku pro hodnocení a** vytváření předpovědi založených na modelu doporučených doporučení na základě široké & hloubkového učení od společnosti Google.
 
 V rámci širokého a hloubkového doporučení můžete generovat dva různé druhy předpovědi:
 

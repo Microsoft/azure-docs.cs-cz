@@ -6,14 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4cb07d9d19d85cd8dff9a52eeeb7e173b60f4d6d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556052"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080766"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Vyřazení úrovní výkonu S1, S2 a S3 z provozu
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT] 
 > Úrovně výkonu S1, S2 a S3 popsané v tomto článku jsou vyřazeny a již nejsou k dispozici pro nové účty Azure Cosmos DB.
@@ -81,7 +83,7 @@ Za předpokladu, že máte 10 kolekcí S1, 1 GB úložiště pro každý, v USA 
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Co když potřebuji víc než 20 GB úložiště?
 
-Bez ohledu na to, jestli máte kolekci s úrovní výkonu S1, S2 nebo S3 nebo pokud máte kolekci s jedním oddílem, máte k dispozici více než 20 GB úložiště, můžete použít nástroj pro migraci dat Azure Cosmos DB k migraci dat do dělené kolekce s prakticky neomezeným úložištěm. Informace o výhodách dělené kolekce najdete [v tématu dělení a škálování v Azure Cosmos DB](sql-api-partition-data.md). 
+Bez ohledu na to, jestli máte kolekci s úrovní výkonu S1, S2 nebo S3 nebo pokud máte kolekci s jedním oddílem, máte k dispozici více než 20 GB úložiště, můžete použít nástroj pro migraci dat Azure Cosmos DB k migraci dat do dělené kolekce s prakticky neomezeným úložištěm. Informace o výhodách dělené kolekce najdete [v tématu dělení a škálování v Azure Cosmos DB](partitioning-overview.md). 
 
 <a name="change-before"></a>
 
@@ -115,12 +117,12 @@ Tady je fragment kódu pro změnu propustnosti kolekce na 5 000 jednotek žádos
     await client.ReplaceOfferAsync(offer);
 ```
 
-Podívejte se na [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) , kde najdete další příklady a další informace o našich způsobech nabídky:
+Podívejte se na [MSDN](/dotnet/api/microsoft.azure.documents.client.documentclient) , kde najdete další příklady a další informace o našich způsobech nabídky:
 
-* [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
-* [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
-* [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
-* [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
+* [**ReadOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync)
+* [**ReadOffersFeedAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readoffersfeedasync)
+* [**ReplaceOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync)
+* [**CreateOfferQuery**](/previous-versions/azure/dn975114(v=azure.100))
 
 <a name="ea-customer"></a>
 
@@ -131,6 +133,6 @@ Zákazníci se smlouvou EA budou mít cenu chráněnou až do konce stávající
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete získat další informace o cenách a správě dat pomocí Azure Cosmos DB, Prozkoumejte tyto materiály:
 
-1.  [Vytváření oddílů dat v Cosmos DB](sql-api-partition-data.md). Pochopte rozdíl mezi kontejnerem s jedním oddílem a kontejnery rozdělenými na oddíly a také tipy k implementaci strategie dělení pro bezproblémové škálování.
+1.  [Vytváření oddílů dat v Cosmos DB](partitioning-overview.md). Pochopte rozdíl mezi kontejnerem s jedním oddílem a kontejnery rozdělenými na oddíly a také tipy k implementaci strategie dělení pro bezproblémové škálování.
 2.  [Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/). Seznamte se s náklady na zřizování propustnosti a spotřebou úložiště.
 3.  [Jednotky žádosti](request-units.md). Pochopte spotřebu propustnosti pro různé typy operací, například čtení, zápis a dotazování.

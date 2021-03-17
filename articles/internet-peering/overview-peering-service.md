@@ -1,21 +1,21 @@
 ---
-title: Internet peering vs. peering Service
+title: Internetový peering vs. Peering Service
 titleSuffix: Azure
-description: Internet peering vs. peering Service
+description: Internetový peering vs. Peering Service
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849378"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023441"
 ---
-# <a name="internet-peering-vs-peering-service"></a>Internet peering vs. peering Service
+# <a name="internet-peering-vs-peering-service"></a>Internetový peering vs. Peering Service
 
 Partnerský vztah mezi Internetem odkazuje na jakékoli propojení mezi globální sítí (AS8075) a dopravci nebo poskytovateli služeb společnosti Microsoft. Poskytovatel služeb se může stát partnerem služby peering Service tím, že implementuje požadavky na partnerství partnerských služeb popsané níže, aby poskytoval spolehlivé a vysoce výkonné veřejné připojení s optimálním směrováním od zákazníka k síti Microsoftu.
 
@@ -53,5 +53,5 @@ Nejčastější dotazy najdete v tématu [Služba peering Service – Nejčastě
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o výhodách zákazníků pomocí [služby peering Service](https://docs.microsoft.com/azure/peering-service/).
+* Přečtěte si další informace o výhodách zákazníků pomocí [služby peering Service](../peering-service/index.yml).
 * Přečtěte si o krocích pro povolení přímého partnerského vztahu pro službu partnerského vztahu v rámci [partnera služby peering Service](walkthrough-peering-service-all.md).

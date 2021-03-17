@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží se vstupy pro Azure Stream Analytics
 description: Tento článek popisuje techniky řešení potíží se vstupními připojeními v Azure Stream Analytics úlohách.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448873"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019903"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
@@ -25,13 +24,13 @@ Tento článek popisuje běžné problémy s Azure Stream Analytics vstupními p
 
 2.  Prověřte vstupní data.
 
-    1. Pro jednotlivé vstupy použijte tlačítko [**ukázková data**](stream-analytics-sample-data-input.md) . Stáhněte si vstupní ukázková data.
+    1. Pro jednotlivé vstupy použijte tlačítko [**ukázková data**](./stream-analytics-test-query.md) . Stáhněte si vstupní ukázková data.
         
-    1. Zkontrolujte ukázková data, abyste porozuměli schématu a [datovým typům](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Zkontrolujte ukázková data, abyste porozuměli schématu a [datovým typům](/stream-analytics-query/data-types-azure-stream-analytics).
     
     1. Zkontrolujte [metriky centra událostí](../event-hubs/event-hubs-metrics-azure-monitor.md) a ujistěte se, že jsou události odesílány. Pokud Event Hubs přijímá zprávy, musí být metrika zpráv větší než nula.
 
-3.  Ujistěte se, že jste ve vstupní verzi Preview vybrali časový rozsah. Zvolte **možnost vybrat časový rozsah**a pak před testováním dotazu zadejte dobu trvání vzorku.
+3.  Ujistěte se, že jste ve vstupní verzi Preview vybrali časový rozsah. Zvolte **možnost vybrat časový rozsah** a pak před testováním dotazu zadejte dobu trvání vzorku.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Poškozená vstupní událost způsobuje chyby deserializace 
 
@@ -71,7 +70,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Pokud chcete do instance Event Hubs přidat novou skupinu příjemců, postupujte takto:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte centrum událostí.
 
@@ -163,16 +162,16 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>Počet čtenářů na oddíl překračuje limit IoT Hub.
 
-Úlohy Stream Analytics používají integrovaný [koncový bod kompatibilní](../iot-hub/iot-hub-devguide-messages-read-builtin.md) s centrem událostí IoT Hub k připojení a čtení událostí z IoT Hub. Pokud vaše čtení na oddíl překročí limity IoT Hub, můžete ho vyřešit pomocí [řešení pro centrum událostí](#readers-per-partition-exceeds-event-hubs-limit) . Můžete vytvořit skupinu příjemců pro integrovaný koncový bod prostřednictvím relace koncového bodu portálu IoT Hub nebo prostřednictvím [sady IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
+Úlohy Stream Analytics používají integrovaný [koncový bod kompatibilní](../iot-hub/iot-hub-devguide-messages-read-builtin.md) s centrem událostí IoT Hub k připojení a čtení událostí z IoT Hub. Pokud vaše čtení na oddíl překročí limity IoT Hub, můžete ho vyřešit pomocí [řešení pro centrum událostí](#readers-per-partition-exceeds-event-hubs-limit) . Můžete vytvořit skupinu příjemců pro integrovaný koncový bod prostřednictvím relace koncového bodu portálu IoT Hub nebo prostřednictvím [sady IoT Hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
 
 ## <a name="get-help"></a>Podpora
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

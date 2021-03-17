@@ -1,17 +1,17 @@
 ---
 title: Rychlý Start – vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením úlohy Stream Analytics, konfigurací vstupů a výstupů a definicí dotazu pomocí sady Visual Studio.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337465"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012355"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 * Nainstalujte Visual Studio 2019, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
 
-* Postupujte podle [pokynů k instalaci](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) a nainstalujte Stream Analytics Tools for Visual Studio.
+* Postupujte podle [pokynů k instalaci](./stream-analytics-tools-for-visual-studio-install.md) a nainstalujte Stream Analytics Tools for Visual Studio.
 
 ## <a name="prepare-the-input-data"></a>Příprava vstupních dat
 
@@ -67,7 +67,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
 ## <a name="create-blob-storage"></a>Vytvoření úložiště objektů BLOB
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**úložiště  >  **Storage**  >  **účet**úložiště.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** úložiště  >    >  **účet** úložiště.
 
 2. V podokně **vytvořit účet úložiště** zadejte název účtu úložiště, umístění a skupinu prostředků. Vyberte stejné umístění a skupinu prostředků jako IoT Hub, který jste vytvořili. Pak klikněte na tlačítko **zkontrolovat + vytvořit** a vytvořte účet.
 

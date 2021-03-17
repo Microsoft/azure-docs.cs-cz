@@ -3,7 +3,7 @@ title: Předvolba úlohy pro Azure Media Indexer
 description: Toto téma poskytuje přehled přednastavených úloh pro Azure Media Services Media Indexer.
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 29753759af341f82429f12b6710ae9c32dcb4103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c054c0aa8c58894f63f8ce8432e8d7a9e1275639
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896028"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012220"
 ---
-# <a name="task-preset-for-azure-media-indexer"></a>Předvolba úlohy pro Azure Media Indexer 
+# <a name="task-preset-for-azure-media-indexer"></a>Předvolba úlohy pro Azure Media Indexer
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Azure Media Indexer je multimediální procesor, který používáte k provádění následujících úloh: zpřístupnění mediálních souborů a obsahu, generování skrytých titulků a klíčových slov, indexových souborů assetů, které jsou součástí vašeho assetu.
 

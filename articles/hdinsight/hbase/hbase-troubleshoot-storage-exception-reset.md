@@ -3,16 +3,13 @@ title: Výjimka úložiště po resetování připojení ve službě Azure HDIns
 description: Výjimka úložiště po resetování připojení ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82cad7fc68d650e5f525a8722d3e2f3e9865f456
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75887219"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936742"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scénář: výjimka úložiště po resetování připojení ve službě Azure HDInsight
 
@@ -32,7 +29,7 @@ I když se v úložišti nevolal žádný objekt BLOB složky `/hbase/data/defau
 
 1. V uživatelském rozhraní Apache Ambari restartujte aktivní HMaster. To umožní, aby se jeden ze dvou úspor v pohotovostním HMaster stal aktivním a nový aktivní HMaster znovu nasadí informace o tabulce metadat. Proto se `already-deleted` tabulka v uživatelském rozhraní HMaster nezobrazí.
 
-1. Osamocený soubor blob můžete najít z nástrojů uživatelského rozhraní, jako je Průzkumník cloudu nebo spuštění příkazu `hdfs dfs -ls /xxxxxx/yyyyy` . Spuštěním `hdfs dfs -rmr /xxxxx/yyyy` odstraňte tento objekt BLOB. Například, `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. Osamocený soubor blob můžete najít z nástrojů uživatelského rozhraní, jako je Průzkumník cloudu nebo spuštění příkazu `hdfs dfs -ls /xxxxxx/yyyyy` . Spuštěním `hdfs dfs -rmr /xxxxx/yyyy` odstraňte tento objekt BLOB. Například `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
 Nyní můžete vytvořit novou tabulku se stejným názvem v okně HBA.
 
@@ -44,4 +41,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

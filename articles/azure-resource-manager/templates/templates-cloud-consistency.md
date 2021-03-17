@@ -1,23 +1,23 @@
 ---
 title: Opakované použití šablon napříč cloudy
-description: Vývoj Azure Resource Manager šablon, které pracují konzistentně pro různá cloudová prostředí. Vytvořte nové nebo aktualizujte existující šablony pro Azure Stack.
+description: Vývoj šablon Azure Resource Manager (šablony ARM), které pracují konzistentně pro různá cloudová prostředí. Vytvořte nové nebo aktualizujte existující šablony pro Azure Stack.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509752"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928354"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Klíčovou výhodou Azure je konzistence. Investice do vývoje pro jedno umístění se znovu používají v jiné. Šablona Azure Resource Manager (ARM) umožňuje nasazení konzistentně a opakovaně v různých prostředích, včetně globálních cloudů Azure, Azure svrchovaného cloudu a Azure Stack. Aby bylo možné opakovaně používat šablony napříč cloudy, je třeba vzít v úvahu, že v této příručce jsou vysvětleny specifické závislosti cloudu.
+Klíčovou výhodou Azure je konzistence. Investice do vývoje pro jedno umístění se znovu používají v jiné. Šablona Azure Resource Manager (šablona ARM) umožňuje nasazení konzistentně a opakovaně v různých prostředích, včetně globálního cloudu Azure, Azure svrchovaného cloudu a Azure Stack. Aby bylo možné opakovaně používat šablony napříč cloudy, je třeba vzít v úvahu, že v této příručce jsou vysvětleny specifické závislosti cloudu.
 
 Microsoft nabízí inteligentní cloudové služby připravené pro podnikové prostředí v mnoha umístěních, včetně těchto:
 
@@ -55,7 +55,7 @@ Funkce Azure Resource Manager se vždycky do globálního Azure nasadí dřív. 
 
 1. Jakmile budete mít místní klon úložiště, připojte se k Azure Resource Manager cíle pomocí PowerShellu.
 
-1. Importujte modul psm1 a spusťte rutinu test-AzureRmTemplateFunctions:
+1. Importujte modul psm1 a spusťte rutinu Test-AzureRmTemplateFunctions:
 
    ```powershell
    # Import the module
@@ -443,8 +443,8 @@ Obory názvů koncových bodů můžete také použít ve výstupu šablony jako
 
 Obecně se vyhněte koncovým bodům pevně zakódované v šabloně. Osvědčeným postupem je použití referenční funkce šablony k dynamickému načítání koncových bodů. Například koncový bod nejčastěji pevně zakódované je obor názvů koncového bodu pro účty úložiště. Každý účet úložiště má jedinečný plně kvalifikovaný název domény, který je vytvořený zřetězením názvu účtu úložiště s oborem názvů koncového bodu. Účet Blob Storage s názvem mystorageaccount1 má za následek různé plně kvalifikované názvy domény v závislosti na cloudu:
 
-* **mystorageaccount1.blob.Core.Windows.NET** , když se vytvoří v globálním cloudu Azure.
-* **mystorageaccount1.blob.Core.chinacloudapi.cn** , když se vytvoří v cloudu Azure Čína 21Vianet.
+* `mystorageaccount1.blob.core.windows.net` Při vytvoření v globálním cloudu Azure.
+* `mystorageaccount1.blob.core.chinacloudapi.cn` Při vytvoření v cloudu Azure Čína 21Vianet.
 
 Následující referenční funkce šablony načte obor názvů koncového bodu z poskytovatele prostředků úložiště:
 
@@ -655,7 +655,7 @@ Při vytváření šablony se jedná o výzvu k udržení přehledu o všech sou
 
 Následující obrázek znázorňuje typický příklad procesu vývoje pro tým s použitím integrovaného vývojového prostředí (IDE). V různých fázích časové osy se spustí různé typy testů. Tady jsou na stejném řešení funkční dva vývojáři, ale tento scénář platí stejně pro jednoho vývojáře nebo velký tým. Každý vývojář obvykle vytváří místní kopii centrálního úložiště, takže každý z nich může pracovat na místní kopii, aniž by to mělo vliv na ostatní, kteří mohou pracovat se stejnými soubory.
 
-![Pracovní postup](./media/templates-cloud-consistency/workflow.png)
+![Diagram znázorňuje dvě sady jednotkových testů a integračních testů paralelně na místních I D E, které se sloučí do vývojového toku C I/C do testů jednotek, potom Integration Tests, test Deployment a pak nasazení.](./media/templates-cloud-consistency/workflow.png)
 
 Vezměte v úvahu následující tipy pro testování a automatizaci:
 

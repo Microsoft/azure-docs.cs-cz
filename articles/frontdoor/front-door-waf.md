@@ -1,130 +1,160 @@
 ---
-title: Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF) | Microsoft Docs
-description: Tento článek vám pomůže pochopit, jak používat Firewall webových aplikací pomocí služby rezervované front dveří.
+title: 'Kurz: škálování a ochrana webové aplikace pomocí front-dveří Azure a firewallu webových aplikací Azure (WAF)'
+description: V tomto kurzu se dozvíte, jak používat bránu firewall webových aplikací Azure se službou Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
-author: tremansdoerfer
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2020
-ms.author: rimansdo
-ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/01/2020
+ms.author: duau
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743537"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201052"
 ---
-# <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Kurz: rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
-Mnohé webové aplikace nastaly rychlým nárůstem provozu v posledních týdnech souvisejících s COVID-19. Kromě toho tyto webové aplikace také docházejí do nárůstu škodlivého provozu, včetně útoků DOS (Denial of Service). Účinný způsob, jak tyto potřeby zvládnout, horizontální navýšení kapacity pro přepětí provozu a ochranu před útoky, je nastavit přední dveře Azure pomocí Azure WAF jako akceleraci, mezipaměť a vrstvu zabezpečení před webovou aplikací. V tomto článku najdete pokyny k rychlému získání těchto front Azure pomocí instalačního programu Azure WAF pro všechny webové aplikace běžící v systému nebo mimo Azure. 
+Mnoho webových aplikací má v nedávné době rychlý nárůst provozu z důvodu COVID-19. U těchto webových aplikací dochází také ke zvýšení škodlivého provozu, včetně útoků DOS (Denial-of-Service). Existuje efektivní způsob, jak škálovat aplikaci pro přepětí provozu a chránit před útoky: nakonfigurujeme přední dveře Azure pomocí Azure WAF jako akceleraci, ukládání do mezipaměti a vrstvu zabezpečení před webovou aplikací. Tento článek poskytuje informace o tom, jak získat přední dvířka Azure s Azure WAF nakonfigurovanou pro libovolnou webovou aplikaci, která běží v nebo mimo Azure. 
 
-K nastavení WAF v tomto kurzu budeme používat rozhraní příkazového řádku Azure, ale všechny tyto kroky jsou taky plně podporované v Azure Portal, Azure PowerShell, Azure ARM a Azure REST API. 
+K nakonfigurování WAF v tomto kurzu budeme používat rozhraní příkazového řádku Azure CLI. Stejnou věc můžete dosáhnout pomocí Azure Portal, Azure PowerShell, Azure Resource Manager nebo rozhraní Azure REST API. 
+
+V tomto kurzu se naučíte:
+> [!div class="checklist"]
+> - Vytvořte si přední dveře.
+> - Vytvořte zásady Azure WAF.
+> - Nakonfigurujte sady pravidel pro zásady WAF.
+> - Přidružte zásady WAF k předním dvířkům.
+> - Nakonfigurujte vlastní doménu.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](/cli/azure/get-started-with-azure-cli) , abyste mohli začít s Azure CLI.
 
-Pokyny v tomto blogu používají rozhraní příkazového řádku Azure (CLI). Podívejte se na tento průvodce, abyste [mohli začít s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+  > [!TIP] 
+  > Snadný a rychlý způsob, jak začít pracovat s Azure CLI, je [bash v Azure Cloud Shell](../cloud-shell/quickstart.md).
 
-*Tip: snadný & rychlý způsob, jak začít pracovat s Azure CLI, je [bash v Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)*
+- Zajistěte, aby `front-door` bylo rozšíření přidané do Azure CLI:
 
-Zajistěte, aby do Azure CLI bylo přidané rozšíření front-dveří.
+   ```azurecli-interactive 
+   az extension add --name front-door
+   ```
 
-```azurecli-interactive 
-az extension add --name front-door
-```
+> [!NOTE] 
+> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](/cli/azure/ext/front-door).
 
-Poznámka: Další podrobnosti níže uvedených příkazů najdete v referenčních informacích k rozhraní příkazového [řádku Azure CLI pro přední dveře](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest).
-
-## <a name="step-1-create-an-azure-front-door-afd-resource"></a>Krok 1: vytvoření prostředku Azure front-dveří (AFD)
-
+## <a name="create-an-azure-front-door-resource"></a>Vytvoření prostředku front-dveří Azure
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-**--back-endu-adresa**: back-end adresa je název plně kvalifikovaného názvu domény (FQDN) aplikace, kterou chcete chránit. Například myapplication.contoso.com
+`--backend-address`: Plně kvalifikovaný název domény (FQDN) aplikace, kterou chcete chránit. Například, `myapplication.contoso.com`.
 
-**--Accept-Protocols**: přijaté protokoly určují, jaké všechny protokoly má AFD podporovat pro vaši webovou aplikaci. Příkladem může být--Accepted-Protocols http https.
+`--accepted-protocols`: Určuje protokoly, které má přední vrátka Azure podporovat pro vaši webovou aplikaci. Například, `--accepted-protocols Http Https`.
 
-**--Name**: zadejte název pro prostředek AFD.
+`--name`: Název prostředku front-dveří Azure.
 
-**--Resource-Group**: Skupina prostředků, ve které chcete tento prostředek AFD umístit.  Další informace o skupinách prostředků najdete v téma Správa skupin prostředků v Azure.
+`--resource-group`: Skupina prostředků, do které chcete umístit tento prostředek front-dveří Azure. Další informace o skupinách prostředků najdete v tématu [Správa skupin prostředků v Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
-V odpovědi, kterou získáte od úspěšného provedení tohoto příkazu, vyhledejte klíč "název hostitele" a poznamenejte si jeho hodnotu, která se má použít v pozdějším kroku. Název hostitele je název DNS prostředku AFD, který jste vytvořili.
+V odpovědi, která se zobrazí po spuštění tohoto příkazu, vyhledejte klíč `hostName` . Tuto hodnotu budete potřebovat v pozdějším kroku. `hostName`Je název DNS prostředku služby Azure front-dveří, který jste vytvořili.
 
-## <a name="step-2-create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Krok 2: vytvoření profilu Azure WAF pro použití s prostředky front-dveří Azure
+## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Vytvoření profilu Azure WAF pro použití s prostředky front-dveří Azure
 
 ```azurecli-interactive 
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
 ```
 
---Name – zadejte název pro zásady Azure WAF
+`--name`: Název nové zásady Azure WAF.
 
---Resource-Group skupina prostředků, do které chcete tento prostředek WAF umístit. 
+`--resource-group`: Skupina prostředků, do které chcete tento prostředek WAF umístit. 
 
-Výše uvedený kód rozhraní příkazového řádku vytvoří zásadu WAF, která je povolená a je v režimu prevence. 
+Předchozí kód rozhraní příkazového řádku vytvoří zásady WAF, které jsou povolené a které jsou v režimu prevence. 
 
-Poznámka: možná budete chtít vytvořit WAF v režimu detekce a sledovat, jak detekuje & protokolování škodlivých požadavků (a ne bez blokování) před tím, než se rozhodnete změnit režim ochrany.
+> [!NOTE] 
+> Je možné, že budete chtít vytvořit zásadu WAF v režimu detekce a sledovat, jak detekuje a protokolují škodlivé požadavky (bez blokování) před tím, než se rozhodnete použít režim ochrany.
 
-V odpovědi, kterou získáte od úspěšného provedení tohoto příkazu, vyhledejte klíč "ID" a poznamenejte si jeho hodnotu, která se má použít v pozdějším kroku. Pole ID by mělo být ve formátu
+V odpovědi, která se zobrazí po spuštění tohoto příkazu, vyhledejte klíč `ID` . Tuto hodnotu budete potřebovat v pozdějším kroku. 
+
+`ID`Pole by mělo být v tomto formátu:
 
 /Subscriptions/**ID předplatného**/ResourceGroups/**název skupiny prostředků**/Providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF název zásady**
 
-## <a name="step-3-add-managed-rulesets-to-this-waf-policy"></a>Krok 3: Přidání spravovaného rulesetsu do této zásady WAF
+## <a name="add-managed-rule-sets-to-the-waf-policy"></a>Přidání spravovaných sad pravidel do zásad WAF
 
-V zásadách WAF můžete přidat spravované rulesetsy, které jsou sadou pravidel sestavených a spravovaných Microsoftem, a zajistit ochranu před celými třídami hrozeb. V tomto příkladu přidáváme dvě takové RuleSets (1) výchozí RuleSet, které chrání před běžnými webovými hrozbami a (2) robot Protection RuleSet, který chrání před škodlivým roboty
+Spravované sady pravidel můžete přidat do zásad WAF. Spravovaná sada pravidel je sada pravidel sestavených a spravovaných Microsoftem, která pomáhá chránit před třídou hrozeb. V tomto příkladu přidáváme dvě sady pravidel:
+- Výchozí sada pravidel, která pomáhá chránit před běžnými webovými hrozbami. 
+- Sada pravidel ochrany robota, která pomáhá chránit před škodlivými roboty.
 
-(1) přidat výchozí RuleSet
+Přidat výchozí sadu pravidel:
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
+   ```
 
-(2) Přidání správce robotů RuleSet
+Přidat sadu pravidel ochrany bot:
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
+   ```
 
---Policy-Name název, který jste zadali pro svůj prostředek Azure WAF
+`--policy-name`: Název, který jste zadali pro svůj prostředek Azure WAF.
 
---Resource-Group skupina prostředků, do které jste umístili tento prostředek WAF.
+`--resource-group`: Skupina prostředků, do které jste umístili prostředek WAF.
 
-## <a name="step-4-associate-the-waf-policy-with-the-afd-resource"></a>Krok 4: přidružení zásady WAF k prostředku AFD
+## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>Přidružte zásady WAF k prostředku front-dveří Azure.
 
-V tomto kroku přidružíme zásadu WAF, kterou jsme vytvořili s prostředkem AFD, který se nachází před webovou aplikací.
+V tomto kroku přidružíme zásadu WAF, kterou jsme vytvořili u prostředku front-dveří Azure, který je před vaší webovou aplikací:
 
 ```azurecli-interactive 
 az network front-door update --name <> --resource-group <> --set frontendEndpoints[0].webApplicationFirewallPolicyLink='{"id":"<>"}'
 ```
 
-– Pojmenujte název, který jste zadali pro prostředek AFD.
+`--name`: Název, který jste zadali pro prostředek front-dveří Azure.
 
---Resource-Group skupina prostředků, do které jste umístili prostředek front-dveří Azure.
+`--resource-group`: Skupina prostředků, do které jste umístili prostředek front-dveří Azure.
 
---Nastavte tuto hodnotu, když aktualizujete atribut WebApplicationFirewallPolicyLink pro frontendEndpoint přidružený k vašemu prostředku AFD s nově vytvořenými zásadami WAF. ID zásady WAF se dá najít z odpovědi, kterou jste dostali z kroku #2 výše.
+`--set`: Je místo, kde aktualizujete `WebApplicationFirewallPolicyLink` atribut `frontendEndpoint` přidruženého k prostředku front-dveří Azure pomocí nové zásady WAF. Měli byste mít ID zásady WAF z odpovědi, kterou jste dostali při vytváření profilu WAF dříve v tomto kurzu.
 
-Poznámka: výše uvedený příklad je určen pro případ, kdy nepoužíváte vlastní doménu.
+ > [!NOTE] 
+> Předchozí příklad je použitelný, pokud nepoužíváte vlastní doménu. Pokud pro přístup k webovým aplikacím nepoužíváte žádné vlastní domény, můžete přejít k další části. V takovém případě poskytnete zákazníkům `hostName` získanou získanou, když jste vytvořili prostředek front-dveří Azure. Použijí tyto možnosti `hostName` k přechodu do vaší webové aplikace.
 
-Pokud pro přístup k webovým aplikacím nepoužíváte žádné vlastní domény, můžete přeskočit krok #5. V takovém případě budete koncovým uživatelům poskytovat název hostitele, který jste získali v kroku #1 k přechodu do vaší webové aplikace.
+## <a name="configure-the-custom-domain-for-your-web-application"></a>Konfigurace vlastní domény pro webovou aplikaci
 
-## <a name="step-5-configure-custom-domain-for-your-web-application"></a>Krok 5: konfigurace vlastní domény pro webovou aplikaci
+Vlastní název domény vaší webové aplikace je ten, který zákazníci používají k odkazování na vaši aplikaci. Například www.contoso.com. Zpočátku tento název domény odkazoval na umístění, ve kterém byl spuštěný, než zavedete přední dvířka Azure. Po přidání front-WAF a aplikací Azure do front aplikace by položka DNS, která odpovídá této vlastní doméně, odkazovala na prostředek front-dveří Azure. Tuto změnu můžete provést tak, že znovu namapujete položku na serveru DNS na přední dveře Azure `hostName` , které jste si poznamenali při vytváření prostředku front-dveří Azure.
 
-Zpočátku se vlastní název domény vaší webové aplikace (například www.contoso.com) odkazoval na místo, kde jste měli spuštěný před tím, než se zavedl AFD. Po této změně architektury přidávání AFD + WAF do popředí aplikace by teď položka DNS odpovídající této vlastní doméně měla odkazovat na tento prostředek AFD. To se dá udělat tak, že přemapujete tuto položku na serveru DNS na název hostitele AFD, který jste si poznamenali v kroku #1.
+Konkrétní kroky aktualizace záznamů DNS budou záviset na vašem poskytovateli služeb DNS. Pokud používáte Azure DNS k hostování názvu DNS, můžete si podle pokynů v dokumentaci [aktualizovat záznam DNS](../dns/dns-operations-recordsets-cli.md) a nasměrovat ho na přední dveře Azure `hostName` . 
 
-Konkrétní kroky pro aktualizaci záznamů DNS budou záviset na poskytovateli služby DNS, ale pokud používáte Azure DNS k hostování názvu DNS, můžete v dokumentaci použít postup [aktualizace záznamu DNS](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) a nasměrovat na název hostitele AFD. 
+Je důležité si uvědomit, že pokud potřebujete, aby se vaši zákazníci dostali na svůj web pomocí vrcholu zóny (například contoso.com). V takovém případě je nutné použít Azure DNS a jeho [typ záznamu alias](../dns/dns-alias.md) pro hostování názvu DNS. 
 
-Jedním z klíčových věcí k poznámení je, že pokud potřebujete, aby vaši uživatelé mohli přejít na web pomocí vrcholu zóny, pro příkladu, contoso.com je nutné použít Azure DNS a [typ záznamu aliasu](https://docs.microsoft.com/azure/dns/dns-alias) pro hostování vašeho názvu DNS. 
+Také je potřeba aktualizovat konfiguraci front-dveří pro Azure, aby se do ní [přidala vlastní doména](./front-door-custom-domain.md) , aby bylo možné toto mapování znát.
 
-Kromě toho je také potřeba aktualizovat konfiguraci AFD, aby se do ní [přidala Tato vlastní doména](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) , aby AFD toto mapování pochopilo.
+Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS. Musíte [nastavit certifikáty pro vlastní doménu v Azure front-dveří](./front-door-custom-domain-https.md). 
 
-Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS, musíte mít [certifikáty pro vlastní nastavení domény v AFD](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+## <a name="lock-down-your-web-application"></a>Uzamčení webové aplikace
 
-## <a name="step-6-lock-down-your-web-application"></a>Krok 6: uzamknutí webové aplikace
+Doporučujeme, abyste měli jistotu, že s vaší webovou aplikací můžou komunikovat jenom okraje front-end pro Azure. Tím zajistíte, že nikdo nebude moci obejít ochranu před předními dvířky Azure a přistupovat k vaší aplikaci přímo. Pokud chcete dosáhnout této uzamčené funkce, přečtěte si téma [návody uzamčení přístupu k back-endu jenom na přední dveře Azure?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
 
-Jedním z volitelných osvědčených postupů je zajistit, aby s webovou aplikací mohli komunikovat jenom AFD hrany. Tato akce zajistí, že nikdo nebude moci obejít ochranu AFD a přistupovat k aplikacím přímo. Toto uzamčení můžete provést tak, že přejdete do [části Nejčastější dotazy v AFD](https://docs.microsoft.com/azure/frontdoor/front-door-faq) a odkazujete na otázku týkající se uzamykání back-endu pro přístup pouze pomocí AFD.
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) :
+
+```azurecli-interactive
+  az group delete \
+    --name <>
+```
+`--name`: Název skupiny prostředků pro všechny prostředky použité v tomto kurzu.
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud se chcete dozvědět, jak řešit potíže s předními dveřmi, přečtěte si příručky k odstraňování potíží:
+
+> [!div class="nextstepaction"]
+> [Řešení běžných potíží se směrováním](front-door-troubleshoot-routing.md)

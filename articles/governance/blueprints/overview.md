@@ -1,14 +1,14 @@
 ---
 title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
-ms.date: 05/06/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530389"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919338"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -25,13 +25,13 @@ Služba Azure Blueprints využívá globálně distribuovanou službu [Azure Cos
 
 ## <a name="how-its-different-from-arm-templates"></a>Způsob, jakým se liší od šablon ARM
 
-Účelem této služby je pomáhat s _nastavením prostředí_. Tato instalace se často skládá ze sady skupin prostředků, zásad, přiřazení rolí a nasazení šablon ARM. Podrobný plán je balíček pro každý z těchto typů _artefaktů_ a umožňuje vytváření a verzi balíčku, včetně kanálu CI/CD. Nakonec se každý přiřadí k předplatnému v rámci jedné operace, kterou je možné auditovat a sledovat.
+Účelem této služby je pomáhat s _nastavením prostředí_. Tato instalace se často skládá ze sady skupin prostředků, zásad, přiřazení rolí a nasazení šablon ARM. Podrobný plán je balíček pro každý z těchto typů _artefaktů_ a umožňuje vytváření a verzi balíčku, včetně využití kanálu průběžné integrace a průběžného doručování (CI/CD). Nakonec se každý přiřadí k předplatnému v rámci jedné operace, kterou je možné auditovat a sledovat.
 
 Skoro všechno, co chcete zahrnout do nasazení v Azure modrotisky, se dá udělat pomocí šablony ARM. Šablona ARM je ale dokument, který v Azure neexistuje nativně – každý je uložený buď místně, nebo ve správě zdrojového kódu. Šablona se používá k nasazení jednoho nebo více prostředků Azure. Po jejich nasazení už ale neexistuje s šablonou žádné aktivní propojení ani relace.
 
 V Azure modrotisky se zachová vztah mezi definicí podrobného plánu (co _by měl být_ nasazený) a přiřazení podrobného plánu (co _se_ nasadilo). Toto propojení podporuje vylepšené sledování a auditování nasazení. Azure modrotisky můžou také upgradovat několik předplatných, která se řídí stejným plánem.
 
-Není nutné volit mezi šablonou ARM a podrobným plánem. Každý podrobný plán se může skládat z nuly nebo více _artefaktů_šablon ARM. Tato podpora znamená, že předchozí úsilí pro vývoj a údržbu knihoven šablon ARM je možné znovu použít v plánech Azure.
+Není nutné volit mezi šablonou ARM a podrobným plánem. Každý podrobný plán se může skládat z nuly nebo více _artefaktů_ šablon ARM. Tato podpora znamená, že předchozí úsilí pro vývoj a údržbu knihoven šablon ARM je možné znovu použít v plánech Azure.
 
 ## <a name="how-its-different-from-azure-policy"></a>Odlišnosti od Azure Policy
 
@@ -47,7 +47,7 @@ V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _
 
 Podrobný plán se skládá z _artefaktů_. Plány Azure v současné době podporují následující zdroje jako artefakty:
 
-|Prostředek  | Možnosti hierarchie| Description  |
+|Prostředek  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|
 |Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků umožňují organizovat prostředky přesně tak, jak chcete, aby byly strukturované a poskytovaly omezení oboru pro zahrnuté artefakty a přiřazení rolí a šablony ARM. |
 |Šablona ARM | Předplatné, skupina prostředků | Šablony, včetně vnořených a propojených šablon, slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
@@ -74,11 +74,16 @@ Při prvním vytvoření podrobného plánu se přepokládá, že je v režimu *
 
 ## <a name="blueprint-assignment"></a>Přiřazení podrobného plánu
 
-K existujícímu předplatnému se dá přiřadit každá **publikovaná** **verze** podrobného plánu (s maximální délkou 90 znaků). Na portálu bude jako výchozí **verze** podrobného plánu ta, která se **publikovala** jako poslední. Pokud existují parametry artefaktu (nebo parametry podrobného plánu), pak se parametry definují během přiřazení.
+Každá **publikovaná** **verze** podrobného plánu může být přiřazena (s maximální délkou 90 znaků) do existující skupiny pro správu nebo předplatného. Na portálu bude jako výchozí **verze** podrobného plánu ta, která se **publikovala** jako poslední. Pokud existují parametry artefaktů nebo parametry podrobného plánu, pak jsou parametry definovány během procesu přiřazení.
+
+> [!NOTE]
+> Přiřazení definice podrobného plánu ke skupině pro správu znamená, že objekt přiřazení existuje ve skupině pro správu. Nasazení artefaktů stále cílí na předplatné. Chcete-li provést přiřazení skupiny pro správu, je nutné použít [REST API vytvořit nebo aktualizovat](/rest/api/blueprints/assignments/createorupdate) a text žádosti musí obsahovat hodnotu pro `properties.scope` Definování cílového předplatného.
 
 ## <a name="permissions-in-azure-blueprints"></a>Oprávnění v Azure Blueprints
 
-Pokud chcete použít podrobné plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role](../../role-based-access-control/overview.md). Abyste mohli podrobné plány vytvářet, váš účet potřebuje tato oprávnění:
+Chcete-li použít plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Chcete-li číst nebo zobrazit podrobný plán v Azure Portal, váš účet musí mít oprávnění ke čtení oboru, ve kterém je umístěna definice podrobného plánu.
+
+Abyste mohli podrobné plány vytvářet, váš účet potřebuje tato oprávnění:
 
 - `Microsoft.Blueprint/blueprints/write` – vytvořit definici podrobného plánu
 - `Microsoft.Blueprint/blueprints/artifacts/write` – vytvořit artefakty v definici podrobného plánu
@@ -103,7 +108,7 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 
 K dispozici jsou následující předdefinované role:
 
-|Role Azure | Description |
+|Role Azure | Popis |
 |-|-|
 |[Vlastník](../../role-based-access-control/built-in-roles.md#owner) | Kromě dalších oprávnění zahrnuje všechna Azure Blueprint související oprávnění. |
 |[Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) | Kromě dalších oprávnění může vytvořit a odstranit definice podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. |

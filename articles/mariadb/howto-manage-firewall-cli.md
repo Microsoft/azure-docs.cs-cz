@@ -1,19 +1,19 @@
 ---
 title: Správa pravidel brány firewall – Azure CLI – Azure Database for MariaDB
 description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for MariaDB pravidla brány firewall pomocí příkazového řádku Azure CLI.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3edf6248d42878bb79115fad925ef38e3353c979
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4ae1f3b736f6d263b8d769e241d969d058a69f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502267"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665034"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MariaDB z konkrétní IP adresy nebo rozsahu IP adres. Pomocí pohodlných příkazů rozhraní příkazového řádku Azure můžete vytvářet, aktualizovat, odstraňovat, zobrazovat a zobrazovat pravidla brány firewall pro správu serveru. Přehled Azure Database for MariaDB bran firewall najdete v tématu [pravidla brány firewall pro Azure Database for MariaDB serveru](./concepts-firewall-rules.md).
@@ -21,7 +21,7 @@ Pravidla brány firewall na úrovni serveru se dají použít ke správě přís
 Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě koncových bodů a pravidel služby Virtual Network pomocí Azure CLI](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* [Nainstalovat rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 * [Server a databáze Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Příkazy pravidla brány firewall:

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e43c343b27dfe2dc0c364e58ed7305bdcec37215
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7ac1fc5688dad3406041f36ff858e6fd27c7272f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026062"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321871"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Ukázková data na SQL Serveru v Azure
 
@@ -30,9 +30,9 @@ Vzorkování Pythonu používá knihovnu rozhraní ODBC [pyodbc](https://code.go
 > 
 
 **Proč vzorkovat data?**
-Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Vzorkování usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejím úkolem v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) je povolit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
+Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Vzorkování usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejím úkolem v rámci [vědeckého zpracování týmových dat (TDSP)](./index.yml) je povolit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](./index.yml).
 
 ## <a name="using-sql"></a><a name="SQL"></a>Používání SQL
 Tato část popisuje několik metod, pomocí kterých SQL provádí jednoduché náhodné vzorkování s daty v databázi. Vyberte metodu na základě velikosti dat a její distribuce.
@@ -134,4 +134,4 @@ Chcete-li projít příkladem vědeckého zpracování týmových dat a pomocí 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png
 
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

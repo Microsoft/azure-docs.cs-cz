@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744419"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88797662"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
 
@@ -158,13 +158,13 @@ Pro svůj bezpečnostní klíč můžete vytvořit nový PIN klíč pro zabezpe�
 
 ## <a name="additional-security-info-methods"></a>Další metody zabezpečení
 
-Aby bylo možné zaregistrovat klíč zabezpečení, musíte mít zaregistrovanou alespoň jednu metodu dalšího ověření zabezpečení. Další informace najdete v [části Přehled](security-info-add-update-methods-overview.md) . 
+Aby bylo možné zaregistrovat klíč zabezpečení, musíte mít zaregistrovanou alespoň jednu metodu dalšího ověření zabezpečení. Další informace najdete v [části Přehled](./security-info-setup-auth-app.md) . 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o metodách ověřování bez hesla najdete v článku [Microsoft Azure AD začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md) a [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello) .
 
-- Podrobnější informace o [bezpečnostních klíčích kompatibilních se společností Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
+- Podrobnější informace o [bezpečnostních klíčích kompatibilních se společností Microsoft](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
 - Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md) .
 

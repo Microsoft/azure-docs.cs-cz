@@ -1,23 +1,18 @@
 ---
 title: Transformace dat pomocí aktivity streamování Hadoop – Azure
 description: Přečtěte si, jak můžete pomocí aktivity streamování Hadoop v Azure Data Factory transformovat data spuštěním programů pro streamování Hadoop na vyžádání nebo vlastním clusterem HDInsight.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 532ece3bcc8c62771511fb2608e824de846b54fe
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703370"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383088"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +21,8 @@ ms.locfileid: "74703370"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)

@@ -5,18 +5,18 @@ author: navits09
 ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604627"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693607"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikací Power BI
 
-Tento článek popisuje, jak vytvořit a publikovat nabídku aplikace Power BI do Microsoft [AppSource](https://appsource.microsoft.com/).
+Tento článek popisuje, jak vytvořit a publikovat nabídku aplikace Power BI k [Microsoft AppSource](https://appsource.microsoft.com/).
 
 Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
@@ -45,7 +45,7 @@ Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
-- Po zvolení možnost **vytvořit**se alias nabídky nedá změnit.
+- Po zvolení možnost **vytvořit** se alias nabídky nedá změnit.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
@@ -53,12 +53,12 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Tato stránka zobrazuje vizuální znázornění kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
-- Pokud je nabídka koncept – odstranění konceptu [nabídky](update-existing-offer.md#delete-a-draft-offer))
-- Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan).)
-- Pokud je nabídka ve verzi Preview – [Přejít na Live](publishing-status.md#publisher-approval))
-- Pokud jste nedokončili registraci vydavatele, [zrušte publikování](update-existing-offer.md#cancel-publishing).)
+- Pokud je nabídka nabídkou konceptu a odstranění konceptu
+- Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
+- Pokud je nabídka ve verzi Preview – [Přejít do provozu](../review-publish-offer.md#previewing-and-approving-your-offer)
+- Pokud jste nedokončili registraci vydavatele [, zrušte publikování.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
@@ -73,7 +73,7 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, musíte j
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](commercial-marketplace-lead-management-instructions-https.md) [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) nebo HTTPS k uložení zákaznických údajů o potenciálních zákaznících. Pak exportujte data do systému CRM.
+    > Pokud systém CRM není v tomto seznamu, použijte [koncový bod](commercial-marketplace-lead-management-instructions-https.md) [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) nebo a HTTPS k ukládání zákaznických dat. Pak exportujte data do systému CRM.
 
 2. Připojte svoji nabídku k cíli realizace při publikování v partnerském centru.
 3. Potvrďte, že je správně nakonfigurované připojení k cíli realizace. Po publikování v partnerském centru ověříme připojení a pošleme vám testovacího vedoucího. I když náhled nabídky před tím, než začne fungovat, můžete také otestovat své zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
@@ -81,10 +81,10 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, musíte j
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Přehled řízení vedoucích](commercial-marketplace-get-customer-leads.md)
-- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Běžné chyby konfigurace zájemce](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
+- [Potenciální zákazníci z nabídky komerčního marketplace](commercial-marketplace-get-customer-leads.md)
+- [Běžné otázky týkající se správy potenciálních zákazníků](../lead-management-faq.md#common-questions-about-lead-management)
+- [Řešení chyb konfigurace potenciálních zákazníků](../lead-management-faq.md#publishing-config-errors)
+- [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -109,9 +109,7 @@ Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí 
 
 #### <a name="terms-and-conditions"></a>podmínky a ujednání
 
-Pokud chcete zadat vlastní podmínky a ujednání, zadejte v poli **podmínky a ujednání** až 10 000 znaků. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte jeden webový odkaz na místo, kde se dají najít. Zobrazí se zákazníkům jako aktivní odkaz.
-
-Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
+Pokud chcete zadat vlastní podmínky a ujednání, zadejte v poli **podmínky a ujednání** až 10 000 znaků. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
 Než budete pokračovat k další části seznamu nabídek, vyberte **Uložit koncept** .
 
@@ -146,7 +144,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 10. Popis
 11. Snímky obrazovky a videa
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -202,20 +200,23 @@ Poskytněte aspoň jeden a až tři související marketingové dokumenty ve for
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz se odmítne.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje `https://upload.xboxlive.com` službu používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory PNG pro logo vaší nabídky ve dvou velikostech v pixelech:
-- **Malé** (48 x 48)
-- **Velký** (216 x 216)
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto, aby se vytvořilo **malé** logo. Volitelně můžete tuto položku nahradit jinou imagí později.
 
-Obě loga jsou povinná a používají se na různých místech v seznamu Marketplace.
+- **Velký** (od 216 x 216 do 350 × 350 px, požadováno)
+- **Malý** (48 x 48 px, volitelné)
+
+Tato loga se používají na různých místech v seznamu:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -231,7 +232,7 @@ Další informace o vytváření seznamů nabídek najdete v tématu [nabídky D
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
-Zvyšte svou aplikaci ve službě Power BI na produkční prostředí a poskytněte odkaz na instalační program aplikace Power BI, který zákazníkům umožňuje nainstalovat vaši aplikaci. Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavami v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).
+Zvyšte svou aplikaci ve službě Power BI na produkční prostředí a poskytněte odkaz na instalační program aplikace Power BI, který zákazníkům umožňuje nainstalovat vaši aplikaci. Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavami v Power BI](/power-bi/service-create-distribute-apps).
 
 ## <a name="supplemental-content"></a>Doplňkový obsah
 

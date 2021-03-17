@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684c4269f14b91ded651dadff3f0a2e0878a4f2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346153"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027947"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
 Vlastní zásady IPsec/IKE se podporují ve všech SKU Azure s výjimkou základní skladové položky (SKU).
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Kolik zásad můžu zadat pro jedno připojení?
-Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
+Pro dané připojení můžete zadat jenom ***jednu** kombinaci zásad.
 
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>Můžu pro připojení zadat částečné zásady? (například pouze algoritmy IKE, ale ne IPsec)
 Ne, musíte zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
@@ -27,11 +27,11 @@ Ne, musíte zadat všechny algoritmy a parametry pro protokol IKE (hlavní reži
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Jaké algoritmy a síly klíče jsou podporované ve vlastních zásadách?
 Následující tabulka uvádí podporované kryptografické algoritmy a síly klíče, které můžou zákazníci konfigurovat. Pro každé pole musíte vybrat jednu možnost.
 
-| **IPsec/IKEv2**  | **Možnosti**                                                                   |
+| _ *IPSec/IKEv2**  | **Možnosti**                                                                   |
 | ---              | ---                                                                           |
 | Šifrování protokolem IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
 | Integrita protokolu IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
-| Skupina DH         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Žádná |
+| Skupina DH         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Žádná  |
 | Šifrování protokolem IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Žádné      |
 | Integrita protokolu IPsec  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
 | Skupina PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Žádná                              |
@@ -100,11 +100,14 @@ Ano, vlastní zásady můžete použít pro připojení IPsec mezi různými mí
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>Je nutné zadat stejné zásady pro oba prostředky připojení typu VNet-to-VNet?
 Ano. Tunel typu VNet-to-VNet se skládá ze dvou prostředků připojení v Azure (jeden pro každý směr). Zajistěte, aby oba prostředky připojení měly stejné zásady, jinak se připojení typu VNet-to-VNet nevytvoří.
 
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>Jaká je výchozí hodnota časového limitu DPD? Můžu zadat jiný časový limit pro DPD?
+Výchozí časový limit DPD je 45 sekund. Pro každé připojení protokolem IPsec nebo VNet-to-VNet v rozmezí 9 sekund až 3600 sekund můžete zadat jinou hodnotu časového limitu DPD.
+
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Fungují zásady IPsec/IKE na připojení ExpressRoute?
 Ne. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Návody vytvářet připojení s typem protokolu IKEv1 nebo IKEv2?
-Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjimkou úrovně Basic SKU, Standard SKU a dalších [původních SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku). Při vytváření připojení můžete zadat typ protokolu připojení IKEv1 nebo IKEv2. Pokud nezadáte typ protokolu připojení, použije se IKEv2 jako výchozí možnost, pokud je to možné. Další informace najdete v dokumentaci k [rutinám PowerShellu](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) . U typů SKU a podpory IKEv1/IKEv2 najdete informace v tématu [připojení bran k zařízením VPN založeným na zásadách](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjimkou úrovně Basic SKU, Standard SKU a dalších [původních SKU](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#gwsku). Při vytváření připojení můžete zadat typ protokolu připojení IKEv1 nebo IKEv2. Pokud nezadáte typ protokolu připojení, použije se IKEv2 jako výchozí možnost, pokud je to možné. Další informace najdete v dokumentaci k [rutinám PowerShellu](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) . U typů SKU a podpory IKEv1/IKEv2 najdete informace v tématu [připojení bran k zařízením VPN založeným na zásadách](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Je přenos mezi IKEv1 a IKEv2 povolený?
 Ano. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.

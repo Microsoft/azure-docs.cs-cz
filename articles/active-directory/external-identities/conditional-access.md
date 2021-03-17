@@ -1,50 +1,89 @@
 ---
 title: Podmíněný přístup pro uživatele spolupráce B2B – Azure AD
-description: Azure Active Directory spolupráce B2B podporuje vícefaktorové ověřování (MFA) pro selektivní přístup k podnikovým aplikacím.
+description: Naučte se vymáhat zásady služby Multi-Factor Authentication pro Azure Active Directory uživatelů B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 01/21/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908700"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646278"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
-## <a name="multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication pro uživatele B2B
-Díky spolupráci Azure AD B2B můžou organizace vyhovět zásadám vícefaktorového ověřování (MFA) pro uživatele B2B. Tyto zásady je možné vyhovět na úrovni tenanta, aplikace nebo jednotlivého uživatele stejným způsobem, jako jsou povolené pro zaměstnance a členy organizace v plném čase. Zásady vícefaktorového ověřování se uplatňují v organizaci poskytující prostředky.
+Tento článek popisuje, jak můžou organizace nastavit zásady podmíněného přístupu (CA) pro uživatele typu Host B2B k přístupu ke svým prostředkům.
+>[!NOTE]
+>Tento tok ověřování nebo autorizace je trochu odlišný pro uživatele typu Host, než pro stávající uživatele tohoto zprostředkovatele identity (IdP).
 
-Příklad:
-1. Správce nebo informační pracovník ve společnosti A vyzývá uživatele od společnosti B k aplikaci *foo* v organizaci a.
-2. *Foo* aplikace v organizaci A je nakonfigurovaná tak, aby při přístupu VYŽADOVALA vícefaktorové ověřování.
-3. Když se uživatel z firmy B pokusí získat přístup k aplikaci *foo* v organizaci, zobrazí se výzva k dokončení ověřování MFA.
-4. Uživatel může nastavit MFA pomocí firmy a a vybrat možnost MFA.
-5. Tento scénář je vhodný pro jakoukoli identitu (Azure AD nebo MSA), například pokud uživatelé ve společnosti B ověřují pomocí sociálního ID).
-6. Společnost A musí mít dostatečný nárok na licence Azure AD, které podporují MFA. Uživatel z firmy B tuto licenci využívá od společnosti A.
+## <a name="authentication-flow-for-b2b-guest-users-from-an-external-directory"></a>Tok ověřování pro uživatele typu Host B2B z externího adresáře
 
-Pro uživatele z partnerské organizace je vždy zodpovědný za MFA, a to i v případě, že má partnerská organizace možnosti MFA.
+Následující diagram znázorňuje tok: ![ obrázek znázorňuje tok ověřování pro uživatele typu Host B2B z externího adresáře.](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Nastavení MFA pro uživatele spolupráce B2B
-Pokud chcete zjistit, jak snadné je nastavit MFA pro uživatele spolupráce B2B, přečtěte si článek jak v tomto videu:
+| Krok | Popis |
+|--------------|-----------------------|
+| 1. | Uživatel typu Host B2B požaduje přístup k prostředku. Prostředek přesměruje uživatele do svého tenanta prostředků, důvěryhodného IdP.|
+| 2. | Tenant prostředků identifikuje uživatele jako externí a přesměruje uživatele na IdP uživatele typu Host B2B. Uživatel provede primární ověřování v IdP.
+| 3. | Uživatel typu hosta B2B IdP vydá token uživateli. Uživatel se přesměruje zpátky na tenanta prostředků s tokenem. Tenant ověřuje token a pak vyhodnocuje uživatele proti zásadám certifikační autority. Tenant prostředků může například vyžadovat, aby uživatel prováděl Multi-Factor Authentication Azure Active Directory (AD).
+| 4. | Jakmile jsou splněné všechny zásady certifikační autority tenanta, tenant prostředku vydá svůj vlastní token a přesměruje uživatele na jeho prostředek.
+
+## <a name="authentication-flow-for-b2b-guest-users-with-one-time-passcode"></a>Tok ověřování pro uživatele typu Host B2B s jedním časovým účtem
+
+Následující diagram znázorňuje tok: ![ obrázek znázorňuje tok ověřování pro uživatele typu Host B2B s jedním časovým účtem.](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
+
+| Krok | Popis |
+|--------------|-----------------------|
+| 1. |Uživatel požaduje přístup k prostředku v jiném tenantovi. Prostředek přesměruje uživatele do svého tenanta prostředků, důvěryhodného IdP.|
+| 2. | Tenant prostředků identifikuje uživatele jako [externí e-mailové heslo (jednorázového hesla)](./one-time-passcode.md) a pošle mu E-mail s jednorázovým heslem.|
+| 3. | Uživatel načte jednorázové heslo a odešle kód. Tenant prostředků vyhodnocuje uživatele proti zásadám certifikační autority.
+| 4. | Jakmile jsou všechny zásady certifikační autority splněné, tenant prostředku vydá token a přesměruje uživatele na jeho prostředek. |
+
+>[!NOTE]
+>Pokud je uživatel z externího tenanta prostředků, není možné vyhodnotit také zásady certifikační autority IdP uživatele typu Host pro B2B. Od dnešního dne platí pro své hosty jenom zásady certifikační autority tenanta.
+
+## <a name="azure-ad-multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication Azure AD pro uživatele B2B
+
+Organizace můžou vyhovět více zásadám Azure AD Multi-Factor Authentication pro své uživatele typu Host B2B. Tyto zásady je možné vyhovět na úrovni tenanta, aplikace nebo uživatele stejným způsobem, jakým jsou povolené pro zaměstnance a členy organizace v plném čase.
+Pro uživatele, kteří jsou pro Azure AD Multi-Factor Authentication, je vždycky zodpovědný za uživatele, i když má organizace uživatele typu Host možnost Multi-Factor Authentication. Tady je příklad –
+
+1. Správce nebo informační pracovník ve společnosti s názvem Fabrikam pozve uživatele z jiné společnosti s názvem contoso, aby používal své Woodgrove aplikace.
+
+2. Aplikace Woodgrove ve společnosti Fabrikam je nakonfigurovaná tak, aby vyžadovala Azure AD Multi-Factor Authentication při přístupu.
+
+3. Když se uživatel typu Host B2B od společnosti Contoso pokusí získat přístup k Woodgrove v tenantovi Fabrikam, zobrazí se jim výzva k dokončení výzvy Azure AD Multi-Factor Authentication.
+
+4. Uživatel typu Host pak může nastavit Multi-Factor Authentication služby Azure AD pomocí společnosti Fabrikam a vybrat možnosti.
+
+5. Tento scénář je vhodný pro jakoukoli identitu – Azure AD nebo osobní účet Microsoft (MSA). Například pokud se uživatel v contoso ověřuje pomocí sociálního ID.
+
+6. Společnost Fabrikam musí mít dostatečný nárok na licence Azure AD, které podporují Multi-Factor Authentication služby Azure AD. Uživatel od společnosti Contoso pak tuto licenci spotřebuje od společnosti Fabrikam. Informace o licencích B2B najdete v tématu [Model fakturace pro externí identity Azure AD](./external-identities-pricing.md) .
+
+>[!NOTE]
+>Multi-Factor Authentication Azure AD se provádí v architektuře prostředků, aby se zajistila předvídatelnost.
+
+### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>Nastavení Multi-Factor Authentication Azure AD pro uživatele B2B
+
+Pokud chcete nastavit Multi-Factor Authentication Azure AD pro uživatele spolupráce B2B, podívejte se na toto video:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>Možnosti ověřování uživatelů B2B pro nabídku
-Podívejte se na následující animaci, abyste viděli prostředí pro uplatnění:
+### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>Uživatelé B2B Azure AD Multi-Factor Authentication pro vyplacení nabídky
+
+Pokud se chcete dozvědět víc o prostředí služby Azure AD Multi-Factor Authentication pro vyplacení, podívejte se na toto video:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-### <a name="mfa-reset-for-b2b-collaboration-users"></a>Resetování MFA pro uživatele spolupráce B2B
-Správce v současné době může vyžadovat, aby se uživatelé spolupráce B2B znovu probrali pomocí následujících rutin PowerShellu:
+### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>Resetování služby Azure AD Multi-Factor Authentication pro uživatele B2B
+
+Nyní jsou k dispozici následující rutiny PowerShellu pro kontrolu nad uživateli typu Host B2B:
 
 1. Připojení k Azure AD
 
@@ -63,52 +102,56 @@ Správce v současné době může vyžadovat, aby se uživatelé spolupráce B2
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
 
-3. Resetujte metodu MFA pro konkrétního uživatele, který bude vyžadovat, aby uživatel spolupráce B2B znovu nastavil metody pro kontrolu pravopisu. Příklad:
+3. Resetování metody Multi-Factor Authentication služby Azure AD pro konkrétního uživatele, který bude vyžadovat, aby uživatel spolupráce B2B znovu nastavil metody kontroly pravopisu. 
+   Tady je příklad:
 
    ```
    Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
    ```
 
-### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Proč provádíme vícefaktorové ověřování v architektuře prostředků?
+## <a name="conditional-access-for-b2b-users"></a>Podmíněný přístup pro uživatele B2B
 
-V aktuální verzi je MFA vždy v architektuře prostředků, z důvodu předvídatelnosti. Řekněme například, že uživatel společnosti Contoso (Sally) je pozván společnosti Fabrikam a společnost Fabrikam povolila MFA pro uživatele B2B.
+Existují různé faktory, které mají vliv na zásady certifikační autority pro uživatele typu Host B2B.
 
-Pokud má společnost Contoso povolené zásady MFA pro app1, ale ne app2, pak se v případě, že se podíváme na deklaracích identity MFA společnosti Contoso v tokenu, se může zobrazit následující problém:
+### <a name="device-based-conditional-access"></a>Podmíněný přístup založený na zařízeních
 
-* Den 1: uživatel má v contoso přístup MFA a přistupuje k app1, ve společnosti Fabrikam se nezobrazuje žádná další výzva MFA.
+V certifikační autoritě je k dispozici možnost vyžadovat, [aby zařízení uživatele vyhovovalo předpisům nebo byl připojen k hybridní službě Azure AD](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). Uživatelé typu Host B2B můžou splnit dodržování předpisů jenom v případě, že je v tenantovi prostředků možné spravovat svoje zařízení. Zařízení se nedají spravovat v jednom okamžiku více než jedné organizaci. Uživatelé typu Host B2B nemůžou splnit připojení k hybridní službě Azure AD, protože nemají místní účet služby AD. Jenom v případě, že je zařízení uživatele typu Host nespravované, může zaregistrovat nebo zaregistrovat svoje zařízení v tenantovi prostředku a pak zajistit, aby zařízení odpovídalo. Uživatel pak může splnit řízení udělení.
 
-* Den 2: uživatel získal přístup k aplikaci 2 ve společnosti Contoso, takže když teď přistupuje k společnosti Fabrikam, musí se tam zaregistrovat pro MFA.
+>[!Note]
+>Nedoporučujeme vyžadovat spravované zařízení pro externí uživatele.
 
-Tento proces může být matoucí a může vést k poklesu dokončení přihlášení.
+### <a name="mobile-application-management-policies"></a>Zásady správy mobilních aplikací
 
-Kromě toho i v případě, že společnost Contoso má možnost MFA, není vždy v případě, že společnost Fabrikam důvěřuje zásadě MFA společnosti Contoso.
+Certifikační autorita udělí ovládací prvky, jako je **třeba vyžadovat schválené klientské aplikace** a **vyžadují zásady ochrany aplikací** , musí být zařízení zaregistrované v tenantovi. Tyto ovládací prvky se dají použít jenom pro [zařízení s iOS a Androidem](../conditional-access/concept-conditional-access-conditions.md#device-platforms). Ani jeden z těchto ovládacích prvků nelze použít u uživatelů typu Host B2B, pokud je zařízení uživatele již spravováno jinou organizací. Mobilní zařízení nelze zaregistrovat ve více než jednom klientovi současně. Pokud je mobilní zařízení spravováno jinou organizací, bude uživatel zablokován. Jenom v případě, že je zařízení uživatele typu Host nespravované, může zaregistrovat svoje zařízení v tenantovi prostředků. Uživatel pak může splnit řízení udělení.  
 
-V konečném případě MFA tenanta prostředků funguje taky pro účty spravované služby a sociální ID a pro partnery organizace, kteří nemají nastavené MFA.
+>[!NOTE]
+>Nedoporučujeme vyžadovat zásady ochrany aplikací pro externí uživatele.
 
-Proto bude doporučení pro MFA pro uživatele B2B vždy vyžadovat MFA v tenantovi pozvání. Tento požadavek může v některých případech způsobit dvojnásobnou MFA, ale při každém přístupu k tomuto tenantovi je prostředí koncových uživatelů předvídatelné: Sally se musí zaregistrovat pro MFA s pozváním klienta.
+### <a name="location-based-conditional-access"></a>Podmíněný přístup na základě umístění
 
-### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Podmíněný přístup založený na zařízeních, na základě polohy a rizik pro uživatele B2B
+[Zásady založené na umístěních](../conditional-access/concept-conditional-access-conditions.md#locations) založené na ROZSAHech IP adres je možné vyhovět, pokud může organizace vytvořit rozsah důvěryhodných IP adres, který definuje své partnerské organizace.
 
-Když společnost Contoso povoluje zásady podmíněného přístupu na základě zařízení pro jejich podniková data, přístup se zabrání ze zařízení, která nespravuje společnost Contoso a která nevyhovují zásadám zařízení společnosti Contoso.
+Zásady je také možné vyhovět na základě **geografických umístění**.
 
-Pokud zařízení uživatele B2B nespravuje společnost Contoso, bude přístup uživatelů B2B od partnerských organizací blokovaný v jakémkoli kontextu, který tyto zásady vynutily. Contoso ale může vytvořit seznamy vyloučení, které obsahují konkrétní partnerské uživatele, aby je vyloučily ze zásad podmíněného přístupu na základě zařízení.
+### <a name="risk-based-conditional-access"></a>Podmíněný přístup založený na riziku
 
-#### <a name="mobile-application-management-policies-for-b2b"></a>Zásady správy mobilních aplikací pro B2B
+[Zásady rizik přihlašování](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) se vynutily, pokud uživatel typu Host B2B splní řízení grantu. Organizace může například vyžadovat Multi-Factor Authentication Azure AD pro střední nebo vysoké riziko přihlašování. Pokud se ale uživatel dřív nezaregistroval pro Multi-Factor Authentication služby Azure AD v tenantovi prostředků, uživatel se zablokuje. K tomu je potřeba zabránit uživatelům se zlými úmysly v registraci vlastních přihlašovacích údajů služby Azure AD Multi-Factor Authentication v případě, že budou ohrozit heslo legitimního uživatele.
 
-Zásady ochrany aplikací podmíněného přístupu nelze použít na uživatele B2B, protože subjekt pro pozvání k organizaci neobsahují žádné informace v domovské organizaci uživatele B2B.
+[Zásady rizik uživatelů](../conditional-access/concept-conditional-access-conditions.md#user-risk) se v tenantovi prostředků ale nedají přeložit. Pokud například požadujete změnu hesla pro vysoce rizikové uživatele typu Host, budou blokovány z důvodu nemožnostho resetování hesel v adresáři prostředků.
 
-#### <a name="location-based-conditional-access-for-b2b"></a>Podmíněný přístup založený na poloze pro B2B
+### <a name="conditional-access-client-apps-condition"></a>Podmínka pro klientské aplikace podmíněného přístupu
 
-Zásady podmíněného přístupu na základě umístění je možné vyhovět pro uživatele B2B, pokud je možné, že organizace pro pozvání vytvoří rozsah důvěryhodných IP adres, který definuje své partnerské organizace.
+[Podmínky klientských aplikací](../conditional-access/concept-conditional-access-conditions.md#client-apps) se chovají stejně pro uživatele typu Host B2B jako u jakéhokoli jiného typu uživatele. Uživatelům typu Host můžete například zabránit v používání starších ověřovacích protokolů.
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>Podmíněný přístup na základě rizik pro B2B
+### <a name="conditional-access-session-controls"></a>Ovládací prvky relace podmíněného přístupu
 
-V současné době nelze zásady přihlašování založené na rizicích použít na uživatele B2B, protože hodnocení rizika se provádí v domácí organizaci uživatele B2B.
+[Ovládací prvky relace](../conditional-access/concept-conditional-access-session.md) se chovají stejně pro uživatele typu Host B2B jako u jakéhokoli jiného typu uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si následující články o spolupráci Azure AD B2B:
+Další informace najdete v následujících článcích o spolupráci Azure AD B2B:
 
-* [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-* [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)
-* [Nejčastější dotazy týkající se spolupráce Azure Active Directory s B2B](faq.md)
+- [Co je spolupráce B2B ve službě Azure AD?](./what-is-b2b.md)
+- [Ochrana identit a uživatelé B2B](../identity-protection/concept-identity-protection-b2b.md)
+- [Externí identity – ceny](https://azure.microsoft.com/pricing/details/active-directory/)
+- [Nejčastější dotazy](./faq.md)

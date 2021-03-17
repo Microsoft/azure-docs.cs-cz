@@ -2,7 +2,7 @@
 title: Dokumentace ke srovnávacím testům zabezpečení Azure
 summary: Seznamte se s našimi osvědčenými postupy a pokyny pro zabezpečení cloudových řešení v Azure.
 metadata:
-  title: Srovnávací testy zabezpečení Azure
+  title: Srovnávací test zabezpečení Azure
   description: Srovnávací test zabezpečení Azure obsahuje doporučení, která vám pomohou vylepšit zabezpečení vašich aplikací a dat v Azure.
   services: security
   ms.service: security
@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
-  ms.translationtype: HT
+  ms.openlocfilehash: 919d1b27c408c1fdb43333401560d7c84dd04f5d
+  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213550"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102051578"
 landingContent:
 - title: Informace o srovnávacím testu zabezpečení Azure
   linkLists:
@@ -28,117 +28,167 @@ landingContent:
       url: introduction.md
     - text: Přehled zabezpečovacích mechanismů Azure
       url: overview.md
-    - text: Sdílená odpovědnost v cloudu
-      url: ../fundamentals/shared-responsibility.md
-    - text: Azure Security Center
-      url: ../../security-center/index.yml
-    - text: Základní informace o zabezpečení Azure
-      url: ../fundamentals/index.yml
-- title: Mechanismy srovnávacího testu zabezpečení Azure
+    - text: Přehled standardních hodnot zabezpečení Azure
+      url: security-baselines-overview.md
+- title: Mechanismy srovnávacího testu zabezpečení Azure V2
   linkLists:
   - linkListType: overview
     links:
     - text: Zabezpečení sítě
-      url: security-control-network-security.md
-    - text: Protokolování a monitorování
-      url: security-control-logging-monitoring.md
-    - text: Identita a řízení přístupu
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: Správa identit
+      url: security-controls-v2-identity-management.md
+    - text: Privilegovaný přístup
+      url: security-controls-v2-privileged-access.md
     - text: Ochrana dat
-      url: security-control-data-protection.md
-    - text: Správa ohrožení zabezpečení
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: Správa aktiv
+      url: security-controls-v2-asset-management.md
     - text: Další informace
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
+- title: Další prostředky zabezpečení Azure
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Základní informace o zabezpečení Azure
+      url: ../fundamentals/index.yml
+    - text: Sdílená odpovědnost v cloudu
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure Security Center
+      url: ../../security-center/index.yml
+    - text: Ukázkový plán Azure Security benchmark Foundation
+      url: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md
+- title: Standardní hodnoty zabezpečení pro AI a Machine Learning
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Databricks
+      url: /azure/databricks/scenarios/security-baseline
+    - text: Azure Machine Learning
+      url: ../../machine-learning/security-baseline.md
+    - text: Cognitive Services
+      url: ../../cognitive-services/security-baseline.md
+- title: Standardní hodnoty zabezpečení analýz
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Standardní hodnoty zabezpečení pro Azure Data Explorer
+      url: /azure/data-explorer/security-baseline
+    - text: Standardní hodnoty zabezpečení pro Azure Data Factory
+      url: ../../data-factory/security-baseline.md
+    - text: Standardní hodnoty zabezpečení pro Data Lake Analytics
+      url: ../../data-lake-analytics/security-baseline.md
+    - text: Standardní hodnoty zabezpečení pro Event Hubs
+      url: ../../event-hubs/security-baseline.md
+    - text: Standardní hodnoty zabezpečení pro HDInsight
+      url: ../../hdinsight/security-baseline.md
+    - text: Standardní hodnoty pro Stream Analytics
+      url: ../../stream-analytics/security-baseline.md
+    - text: Standardní hodnoty zabezpečení pro Azure Synapse Analytics
+      url: ../../synapse-analytics/security-baseline.md
 - title: Standardní hodnoty zabezpečení výpočetních funkcí
   linkLists:
   - linkListType: overview
     links:
-    - text: Linux Virtual Machines
-      url: ../../virtual-machines/linux/security-baseline.md
-    - text: Virtuální počítače s Windows
-      url: ../../virtual-machines/windows/security-baseline.md
-    - text: Virtual Machine Scale Sets
-      url: ../../virtual-machine-scale-sets/security-baseline.md
-    - text: Batch
-      url: ../../batch/security-baseline.md
     - text: Azure Functions
       url: ../../azure-functions/security-baseline.md
-- title: Standardní hodnoty zabezpečení kontejnerů
-  linkLists:
-  - linkListType: overview
-    links:
+    - text: Batch
+      url: ../../batch/security-baseline.md
     - text: Container Instances
       url: ../../container-instances/security-baseline.md
     - text: Container Registry
       url: ../../container-registry/security-baseline.md
     - text: Service Fabric
       url: ../../service-fabric/security-baseline.md
-- title: Standardní hodnoty zabezpečení analýz
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Data Explorer
-      url: /azure/data-explorer/security-baseline
-    - text: Data Lake Analytics
-      url: ../../data-lake-analytics/security-baseline.md
-    - text: Databricks
-      url: ../../azure-databricks/security-baseline.md
-    - text: Data Factory
-      url: ../../data-factory/security-baseline.md
-    - text: HDInsight
-      url: ../../hdinsight/security-baseline.md
+    - text: Azure Storage
+      url: ../../storage/common/security-baseline.md
+    - text: Virtual Machine Scale Sets
+      url: ../../virtual-machine-scale-sets/security-baseline.md
+    - text: Linux pro virtuální počítače
+      url: ../../virtual-machines/linux/security-baseline.md
+    - text: Windows pro virtuální počítače
+      url: ../../virtual-machines/windows/security-baseline.md
 - title: Standardní hodnoty zabezpečení databází
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Cache for Redis
       url: ../../azure-cache-for-redis/security-baseline.md
-    - text: Azure Database for MariaDB
-      url: ../../mariadb/security-baseline.md
     - text: Azure Database for MySQL
       url: ../../mysql/security-baseline.md
-    - text: Azure Database for PostgreDQL
+    - text: Azure Database for MariaDB
+      url: ../../mariadb/security-baseline.md
+    - text: Azure Database for PostgreSQL – Jeden server
       url: ../../postgresql/security-baseline.md
+    - text: Azure Database for PostgreSQL – Hyperscale
+      url: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - text: Azure SQL Database
-      url: ../../sql-database/security-baseline.md
+      url: ../../azure-sql/database/security-baseline.md
+    - text: Databáze Cosmos
+      url: ../../cosmos-db/security-baseline.md
+- title: Standardní hodnoty zabezpečení integrace
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: API Management
+      url: ../../api-management/security-baseline.md
+    - text: Event Grid
+      url: ../../event-grid/security-baseline.md
+    - text: Logic Apps
+      url: ../../logic-apps/security-baseline.md
+- title: Standardní hodnoty zabezpečení správy a zásad správného řízení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Automation
+      url: ../../automation/security-baseline.md
+    - text: Azure Backup
+      url: ../../backup/security-baseline.md
+    - text: Azure Monitor
+      url: ../../azure-monitor/security-baseline.md
+    - text: Azure Policy
+      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - text: Azure Resource Graph
+      url: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
 - title: Standardní hodnoty zabezpečení sítí
   linkLists:
   - linkListType: overview
     links:
     - text: Application Gateway
       url: ../../application-gateway/security-baseline.md
-    - text: Ochrana před útoky DDoS
-      url: ../fundamentals/ddos-protection-security-baseline.md
-    - text: Azure ExpressRoute
-      url: ../../expressroute/security-baseline.md
+    - text: Azure DNS
+      url: ../../dns/security-baseline.md
     - text: Brána Azure Firewall
       url: ../../firewall/security-baseline.md
+    - text: Azure Private Link
+      url: ../../private-link/security-baseline.md
+    - text: Veřejná IP adresa Azure
+      url: ../../virtual-network/public-ip-security-baseline.md
+    - text: Ochrana před útoky DDoS
+      url: ../fundamentals/ddos-protection-security-baseline.md
+    - text: ExpressRoute
+      url: ../../expressroute/security-baseline.md
     - text: Network Watcher
       url: ../../network-watcher/security-baseline.md
-- title: Základní nastavení zabezpečení
+- title: Standardní hodnoty služeb zabezpečení
   linkLists:
   - linkListType: overview
     links:
-    - text: Key Vault
-      url: ../../key-vault/security-baseline.md
-    - text: Security Center
-      url: ../../security-center/security-baseline.md
+    - text: Azure Sentinel
+      url: ../../sentinel/security-baseline.md
     - text: Customer Lockbox
       url: ../fundamentals/customer-lockbox-security-baseline.md
-    - text: Azure Policy
-      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-- title: Správa a integrace
+    - text: Key Vault
+      url: ../../key-vault/general/security-baseline.md
+    - text: Security Center
+      url: ../../security-center/security-baseline.md
+- title: Další standardní hodnoty zabezpečení
   linkLists:
   - linkListType: overview
     links:
-    - text: Automation
-      url: ../../automation/security-baseline.md
-    - text: Backup
-      url: ../../backup/security-baseline.md
-    - text: API Management
-      url: ../../api-management/security-baseline.md
-    - text: Event Grid
-      url: ../../event-hubs/security-baseline.md
-    - text: Logic Apps
-      url: ../../logic-apps/security-baseline.md
+    - text: Azure Data Box
+      url: ../../databox/security-baseline.md
+    - text: Azure DevTest Labs
+      url: ../../devtest-labs/security-baseline.md
+    - text: Azure IoT Hub
+      url: ../../iot-hub/security-baseline.md

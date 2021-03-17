@@ -1,19 +1,16 @@
 ---
 title: Připojení Excelu k Apache Hadoop s využitím Power Query-Azure HDInsight
 description: Naučte se využívat výhod business intelligencech komponent a používat Power Query pro Excel k přístupu k datům uloženým v Hadoop v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087805"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946702"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k Apache Hadoop pomocí Power Query
 
@@ -23,7 +20,7 @@ Jedním z klíčových funkcí řešení pro velké objemy dat společnosti Micr
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Pracovní stanice se systémem Windows 10, 7, Windows Server 2008 R2 nebo novějším operačním systémem.
-* Office 2016, Office 2013 Professional Plus, Office 365 ProPlus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
+* Microsoft 365 aplikace pro podniky, Office 2016, Office 2013 Professional Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
 
 ## <a name="install-microsoft-power-query"></a>Nainstalovat Microsoft Power Query
 
@@ -49,17 +46,17 @@ Doplněk Power Query pro Excel usnadňuje import dat z clusteru HDInsight do Exc
 
    * Excel 2013/2010
 
-     * Z Microsoft Azure HDInsight vyberte **Power Query**  >  **z Azure**  >  **From Microsoft Azure HDInsight**.
+     * Z Microsoft Azure HDInsight vyberte **Power Query**  >  **z Azure**  >  .
 
        ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
 
-       **Poznámka:** Pokud nevidíte nabídku **Power Query** , přejděte na možnosti **souborů**  >  **Options**  >  **Doplňky**a v rozevíracím seznamu **Spravovat** v dolní části stránky vyberte **Doplňky modelu COM** . Vyberte tlačítko **Přejít do...** a ověřte, že je zaškrtnuté políčko pro doplněk Power Query pro Excel.
+       **Poznámka:** Pokud nevidíte nabídku **Power Query** , přejděte na možnosti **souborů**  >    >  **Doplňky** a v rozevíracím seznamu **Spravovat** v dolní části stránky vyberte **Doplňky modelu COM** . Vyberte tlačítko **Přejít do...** a ověřte, že je zaškrtnuté políčko pro doplněk Power Query pro Excel.
 
        **Poznámka:** Power Query také umožňuje importovat data ze HDFS výběrem **z jiných zdrojů**.
 
 1. V dialogovém okně **Azure HDInsight (HDFS)** zadejte do textového pole **název účtu nebo adresa URL** název účtu úložiště objektů BLOB v Azure, který je přidružený k vašemu clusteru. Pak vyberte **OK**. Tento účet může být výchozí účet úložiště nebo propojený účet úložiště.  Formát je `https://StorageAccountName.blob.core.windows.net/` .
 
-1. V poli **klíč účtu**zadejte klíč pro účet úložiště objektů BLOB a pak vyberte **připojit**. (Musíte zadat informace o účtu jenom při prvním přístupu k tomuto úložišti.)
+1. V poli **klíč účtu** zadejte klíč pro účet úložiště objektů BLOB a pak vyberte **připojit**. (Musíte zadat informace o účtu jenom při prvním přístupu k tomuto úložišti.)
 
 1. V podokně **navigátor** na levé straně editoru dotazů poklikejte na název kontejneru úložiště objektů BLOB přidružený k vašemu clusteru. Ve výchozím nastavení má název kontejneru stejný název jako název clusteru.
 
@@ -73,7 +70,7 @@ Doplněk Power Query pro Excel usnadňuje import dat z clusteru HDInsight do Exc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak pomocí Power Query načíst data z HDInsight do Excelu. Podobně můžete data z HDInsight načíst do Azure SQL Database. Je také možné nahrávat data do HDInsight. Další informace najdete v následujících článcích:
+V tomto článku jste zjistili, jak pomocí Power Query načíst data z HDInsight do Excelu. Podobně můžete data z HDInsight načíst do Azure SQL Database. Je také možné nahrávat data do HDInsight. Další informace najdete v těchto článcích:
 
 * [Vizualizujte Apache Hive data pomocí Microsoft Power BI ve službě Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Vizualizovat data podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

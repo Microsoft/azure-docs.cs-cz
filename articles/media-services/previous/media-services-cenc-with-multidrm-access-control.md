@@ -3,7 +3,7 @@ title: Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Medi
 description: Přečtěte si informace o tom, jak licencovat sadu Microsoft Smooth Streaming pro porting pro klienta.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1a4f151b597b57b77fa6517c6ea0d586c1106986
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072013"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017133"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Media Services 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -207,7 +210,7 @@ Implementace zahrnuje následující kroky:
    * Install-Package Microsoft. Owin. Security. OpenIdConnect
    * Install-Package Microsoft. Owin. Security. cookies
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Install-Package Microsoft. IdentityModel. clients. Active
+   * Install-Package Microsoft. IdentityModel. clients. dataactive
 
 8. Vytvořte přehrávač pomocí [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Pomocí [rozhraní Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) určete, která technologie DRM se má používat na různých platformách DRM.
 
@@ -241,7 +244,7 @@ Pro pomoc s problémy s implementací použijte následující informace pro ře
 
     V [dekodéru JWT](http://jwt.calebb.net/)vidíte **AUD** a **ISS**, jak je znázorněno v tokenu JWT:
 
-    ![TOKEN](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
+    ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
 * Přidejte do aplikace ve službě Azure AD oprávnění na kartě **Konfigurace** aplikace. Pro každou aplikaci jsou vyžadována oprávnění, místní i nasazená verze.
 
@@ -346,7 +349,7 @@ Pokud chcete zaregistrovat a nakonfigurovat aplikaci ukazatelů ve službě Azur
 
 3. Aktualizujte soubor manifestu aplikace tak, aby vlastnost groupMembershipClaims měla hodnotu "groupMembershipClaims": "All".
 
-4. V aplikaci Azure AD, která odkazuje na webovou aplikaci přehrávače, v části **oprávnění k ostatním aplikacím**přidejte aplikaci prostředků, kterou jste přidali v kroku 1. V části **delegovaná oprávnění**vyberte **přístup [resource_name]**. Tato možnost dává webové aplikaci oprávnění k vytváření přístupových tokenů, které přistupují k aplikaci prostředků. Tuto postup proveďte pro místní i nasazenou verzi webové aplikace, pokud vyvíjíte pomocí sady Visual Studio a webové aplikace Azure.
+4. V aplikaci Azure AD, která odkazuje na webovou aplikaci přehrávače, v části **oprávnění k ostatním aplikacím** přidejte aplikaci prostředků, kterou jste přidali v kroku 1. V části **delegovaná oprávnění** vyberte **přístup [resource_name]**. Tato možnost dává webové aplikaci oprávnění k vytváření přístupových tokenů, které přistupují k aplikaci prostředků. Tuto postup proveďte pro místní i nasazenou verzi webové aplikace, pokud vyvíjíte pomocí sady Visual Studio a webové aplikace Azure.
 
 Token JWT vydaný službou Azure AD je přístupový token, který se používá pro přístup k prostředku ukazatele.
 
@@ -418,11 +421,11 @@ Následující snímky obrazovky zobrazují různé přihlašovací stránky pou
 
 **Vlastní účet domény tenanta Azure AD**: přizpůsobená přihlašovací stránka vlastní domény TENANTA Azure AD.
 
-![Vlastní účet domény tenanta Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Snímek obrazovky zobrazující přizpůsobenou přihlašovací stránku vlastní domény tenanta Azure A D](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Účet domény Microsoft s čipovou kartou**: přihlašovací stránka přizpůsobená MICROSOFTem IT má dvojúrovňové ověřování.
 
-![Vlastní účet domény tenanta Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Snímek obrazovky, který zobrazuje přihlašovací stránku přizpůsobenou podnikem I T s ověřováním pomocí dvou faktorů.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Účet Microsoft**: přihlašovací stránka účet Microsoft pro příjemce.
 
@@ -470,7 +473,7 @@ Následující snímek obrazovky ukazuje scénář, který používá asymetrick
 
 V obou předchozích případech zůstává ověřování uživatelů stejné. Probíhá přes Azure AD. Jediným rozdílem je, že JWTs vydávají vlastní STS místo Azure AD. Když konfigurujete dynamickou ochranu CENC Protection, omezení služby doručování licencí určuje typ JWT, buď symetrický, nebo asymetrický klíč.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tento dokument popisuje CENC s více nativními technologiemi DRM a Access Control přes ověřování tokenů, jeho návrh a implementaci pomocí Azure, Media Services a Media Player.
 

@@ -1,20 +1,32 @@
 ---
 title: Co je nového – Language Understanding (LUIS)
 description: Tento článek se pravidelně aktualizuje o novinky o Language Understanding API Azure Cognitive Services.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 06/15/2020
-ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 02/16/2021
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706737"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
 Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="january-2021"></a>Leden 2021
+
+* Prediktivní rozhraní API V3 teď podporuje [rozhraní API pro kontrolu pravopisu Bingu](luis-tutorial-bing-spellcheck.md).
+* Regionální portály (au.luis.ai a eu.luis.ai) se konsolidují do jediného portálu a adresy URL. Pokud jste používali některý z těchto portálů, budete automaticky přesměrováni na luis.ai.
+
+### <a name="december-2020"></a>Prosinec 2020
+
+* Všichni LUIS uživatelé se musí [migrovat na prostředek pro vytváření Luis](luis-migration-authoring.md) .
+* Nové [koncové body hodnocení](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) , které umožňují odesílat dávkové testy pomocí REST API a získat výsledky přesnosti pro vaše záměry a entity. K dispozici počínaje koncovým bodem verze 3.0-Preview LUIS.
 
 ### <a name="june-2020"></a>Červen 2020
 
@@ -44,7 +56,7 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
 * Nové prostředky pro vývojáře
     * [Nástroje pro kontinuální integraci](developer-reference-resource.md#continuous-integration-tools)
     * Workshop – Naučte se osvědčené postupy pro [ _přirozené Language Understanding_ (NLU) pomocí Luis](developer-reference-resource.md#workshops)
-* [Spravované klíče zákazníka](luis-encryption-of-data-at-rest.md) – Šifrujte všechna data, která používáte v Luis, pomocí vlastního klíče.
+* [Spravované klíče zákazníka](./encrypt-data-at-rest.md) – Šifrujte všechna data, která používáte v Luis, pomocí vlastního klíče.
 * [Zobrazit AI](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (video) – Podívejte se na nové funkce v Luis.
 
 

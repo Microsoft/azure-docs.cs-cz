@@ -1,19 +1,19 @@
 ---
-title: Konfigurace tunelového propojení uživatelů při trvalém připojení
+title: Konfigurace tunelového propojení uživatele Always-On VPN
 titleSuffix: Azure VPN Gateway
 description: Tento článek popisuje, jak pro vaši bránu VPN nakonfigurovat uživatelské tunelové propojení VPN typu Always On.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8cfe1d6434c0f5765196776ae9f6712fe14c52a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d21222a62ed6b27a6a1b2a73b704f4cb26457b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984130"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89435792"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>Konfigurace tunelu uživatele VPN AlwaysOn
 

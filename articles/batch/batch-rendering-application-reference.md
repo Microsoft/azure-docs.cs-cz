@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964868"
 ---
 # <a name="rendering-applications"></a>Vykreslování aplikací
@@ -29,9 +29,9 @@ Kromě vykreslovacích modulů integrovaných do aplikace 3ds Max jsou k dispozi
 
 ### <a name="task-command-line"></a>Příkazový řádek úlohy
 
-Vyvolat `3dsmaxcmdio.exe` aplikaci k provedení vykreslování příkazového řádku na uzlu fondu.  Tato aplikace se nachází na cestě při spuštění úlohy. `3dsmaxcmdio.exe`Aplikace má stejné dostupné parametry jako `3dsmaxcmd.exe` aplikace, která je popsána v dokumentaci k nástroji [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Oddíl vykreslování příkazového řádku).
+Vyvolat `3dsmaxcmdio.exe` aplikaci k provedení vykreslování příkazového řádku na uzlu fondu.  Tato aplikace se nachází na cestě při spuštění úlohy. `3dsmaxcmdio.exe`Aplikace má stejné dostupné parametry jako `3dsmaxcmd.exe` aplikace, která je popsána v dokumentaci k nástroji [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Command-Line rendering section).
 
-Příklad:
+Například:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

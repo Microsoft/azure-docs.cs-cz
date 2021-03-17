@@ -1,23 +1,23 @@
 ---
 title: Vysvětlení přímých metod Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře – k vyvolání kódu v zařízeních z aplikace služby použijte přímé metody.
-author: nberdy
+author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: rezas
+ms.author: philmea
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323056"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147791"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
@@ -38,7 +38,7 @@ Pokud jste nejistí mezi použitím požadovaných vlastností, přímých metod
 V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo více vstupů v datové části metody pro správné vytvoření instance. Pomocí identifikátoru URI () s přístupem ke službě jste vyvolali přímou metodu `{iot hub}/twins/{device id}/methods/` . Zařízení přijímá přímé metody pomocí MQTTho tématu ( `$iothub/methods/POST/{method name}/` ) nebo prostřednictvím odkazů AMQP ( `IoThub-methodname` `IoThub-status` Vlastnosti aplikace a).
 
 > [!NOTE]
-> Když na zařízení vyvoláte přímou metodu, názvy vlastností a hodnoty můžou obsahovat jen tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
+> Když na zařízení vyvoláte přímou metodu, názvy vlastností a hodnoty můžou obsahovat jen tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
 Přímé metody jsou synchronní a buď úspěšné, nebo neúspěšné, po uplynutí časového limitu (výchozí: 30 sekund, nastavitelné v rozmezí 5 až 300 sekund). Přímé metody jsou užitečné v interaktivních scénářích, kde chcete, aby zařízení fungovalo pouze v případě, že je zařízení online a přijímá příkazy. Můžete například zapnout světlo od telefonu. V těchto scénářích se chcete podívat na bezprostřední úspěch nebo neúspěch, aby cloudová služba mohla co nejdříve fungovat s výsledkem. Zařízení může vracet tělo zprávy jako výsledek metody, ale není nutné, aby to metoda provedla. Není zaručeno řazení ani žádná sémantika souběžnosti při voláních metod.
@@ -55,7 +55,7 @@ Nyní vyvolejte přímou metodu z back-endové aplikace.
 
 Přímým voláním metod v zařízení jsou volání HTTPS, která se skládají z následujících položek:
 
-* *Identifikátor URI žádosti* specifický pro zařízení společně s [verzí rozhraní API](/rest/api/iothub/service/devicemethod/invokedevicemethod):
+* *Identifikátor URI žádosti* specifický pro zařízení společně s [verzí rozhraní API](/rest/api/iothub/service/devices/invokemethod):
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

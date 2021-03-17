@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 614b3f927dc22bc534168f8fe95cc2f97031b621
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128764"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725519"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
 
@@ -305,10 +305,10 @@ Tato část zobrazuje výstup kontrol správnosti provedených v zařízení př
 
 ## <a name="ngc-prerequisite-check"></a>Kontrola požadavků služby NGC
 
-Tato část provádí předpokladech kontroly pro zřizování Windows Hello pro firmy (WHFB). 
+Tato část provádí kontroly požadovaných součástí pro zřizování Windows Hello pro firmy (WHFB). 
 
 > [!NOTE]
-> Pokud už uživatel úspěšně nakonfiguroval WHFB, v dsregcmd/status se nemusí zobrazit podrobnosti o kontrole požadavků na NGC.
+> V dsregcmd/status se nemusí zobrazit podrobnosti o kontrole požadavků služby NGC, pokud už uživatel úspěšně nakonfiguroval WHFB.
 
 - **IsDeviceJoined:** -Pokud je zařízení připojené ke službě Azure AD, nastavte na hodnotu Ano.
 - **IsUserAzureAD:** -Pokud se přihlášený uživatel nachází v Azure AD, nastavte na hodnotu Ano.

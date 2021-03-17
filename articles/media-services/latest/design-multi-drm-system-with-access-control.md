@@ -1,5 +1,5 @@
 ---
-title: Systém ochrany obsahu s více DRM – Azure Media Services V3
+title: Systém ochrany obsahu s více technologiemi DRM
 description: V tomto článku najdete podrobný popis návrhu systému ochrany obsahu s více technologiemi DRM pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -10,18 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/21/2018
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039187"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092432"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Vytvoření a vytvoření subsystému digitálního Rights Management (DRM) pro řešení OTT nebo online streamování je složitý úkol. Operátoři a online poskytovatelé videí obvykle používají jako externí tuto úlohu pro specializované poskytovatele služeb DRM. Cílem tohoto dokumentu je předložit referenční návrh a implementaci referenční implementace komplexního subsystému DRM v řešení OTT nebo online streamování.
 
@@ -64,8 +66,8 @@ Udělejte si výběr:
 * Widevine se nativně implementuje na všech zařízeních s Androidem, v Chrome a v některých dalších zařízeních. Widevine je také podporován v prohlížečích Firefox a Operau nad POMLČKou.
 * FairPlay je k dispozici v iOS, macOS a tvOS.
 
-
 ## <a name="a-reference-design"></a>Referenční návrh
+
 V této části najdete referenční návrh, který se nezávislá na technologie používané k jeho implementaci.
 
 Subsystém DRM může obsahovat následující součásti:
@@ -194,7 +196,7 @@ Implementace zahrnuje následující kroky:
    * Install-Package Microsoft. Owin. Security. OpenIdConnect
    * Install-Package Microsoft. Owin. Security. cookies
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Install-Package Microsoft. IdentityModel. clients. Active
+   * Install-Package Microsoft. IdentityModel. clients. dataactive
 
 8. Vytvořte přehrávač pomocí [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Pomocí [rozhraní Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) určete, která technologie DRM se má používat na různých platformách DRM.
 
@@ -229,7 +231,7 @@ Pro pomoc s problémy s implementací použijte následující informace pro ře
 
     V [dekodéru JWT](http://jwt.calebb.net/)vidíte **AUD** a **ISS**, jak je znázorněno v tokenu JWT:
 
-    ![TOKEN](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
+    ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
 * Přidejte do aplikace ve službě Azure AD oprávnění na kartě **Konfigurace** aplikace. Pro každou aplikaci jsou vyžadována oprávnění, místní i nasazená verze.
 

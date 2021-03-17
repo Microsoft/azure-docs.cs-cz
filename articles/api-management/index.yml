@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: a1c16e8dd2a9b00e726dd527137bde4c059edae2
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: 5a3b09c3835e09d734c1083f84893224c3fe8cfd
+  ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86243014"
+  ms.lasthandoff: 12/14/2020
+  ms.locfileid: "97399090"
 landingContent:
 - title: Informace o službě API Management
   linkLists:
@@ -29,10 +29,16 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: Azure CLI
+      url: get-started-create-service-instance-cli.md
     - text: portál Azure
       url: get-started-create-service-instance.md
     - text: Azure PowerShell
       url: powershell-create-service-instance.md
+    - text: Visual Studio Code
+      url: vscode-create-service-instance.md
+    - text: Šablona ARM
+      url: quickstart-arm-template.md
 - title: Správa API Managementu
   linkLists:
   - linkListType: tutorial
@@ -54,7 +60,9 @@ landingContent:
     - text: 8. Publikování několika verzí rozhraní API
       url: api-management-get-started-publish-versions.md
     - text: 9. Přizpůsobení stylu stránek portálu pro vývojáře
-      url: api-management-customize-styles.md
+      url: api-management-howto-developer-portal-customize.md
+    - text: 10. Správa rozhraní API v nástroji Visual Studio Code
+      url: visual-studio-code-tutorial.md
 - title: ukázky
   linkLists:
   - linkListType: sample
@@ -64,7 +72,7 @@ landingContent:
     - text: Azure PowerShell
       url: powershell-samples.md
     - text: Integrované služby Azure Policy
-      url: ./policy-samples.md
+      url: ./policy-reference.md
 - title: Architektura
   linkLists:
   - linkListType: architecture

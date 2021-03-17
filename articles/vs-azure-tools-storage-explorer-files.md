@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60456607"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488387"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
 
 Azure File Storage je služba, která nabízí sdílené složky v cloudu přes standardní protokol SMB (Server Message Block). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Službu File Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte, jak pomocí Průzkumníka služby Storage pracovat se sdílenými složkami a soubory.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 - [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com/)
 
-- [Připojení k účtu nebo službě Azure Storage](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Připojení k účtu nebo službě Azure Storage](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 
@@ -47,7 +47,7 @@ Následující postup ukazuje vytvoření sdílené složky v Průzkumníkovi sl
 
     ![Vytvoření sdílené složky](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. Pod složkou **Sdílené složky** se zobrazí textové pole. Zadejte název sdílené složky. V části popisující [pravidla pojmenování sdílených složek](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs) najdete seznam pravidel a omezení pro pojmenování sdílených složek.
+1. Pod složkou **Sdílené složky** se zobrazí textové pole. Zadejte název sdílené složky. V části popisující [pravidla pojmenování sdílených složek](./storage/blobs/storage-quickstart-blobs-dotnet.md) najdete seznam pravidel a omezení pro pojmenování sdílených složek.
 
     ![Pojmenování sdílené složky](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -73,11 +73,11 @@ Následující postup ukazuje, jak zobrazit obsah sdílené složky v Průzkumn�
 
 1. V hlavním podokně se zobrazí obsah sdílené složky.
     
-    ![Obsah sdílené složky](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Snímek obrazovky hlavního podokna pro sdílenou složku v Průzkumník služby Storage zobrazení obsahu sdílené složky.](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Odstranění sdílené složky
 
-Sdílené složky můžete podle potřeby snadno vytvářet a odstraňovat. (Chcete-li odstranit jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Sdílené složky můžete podle potřeby snadno vytvářet a odstraňovat. (Chcete-li odstranit jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi služby Storage:
 
@@ -97,7 +97,7 @@ Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi s
 
 ## <a name="copy-a-file-share"></a>Kopírování sdílené složky
 
-Průzkumník služby Storage umožňuje zkopírování sdílené složky do schránky a následné vložení této sdílené složky do jiného účtu úložiště. (Chcete-li kopírovat jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Průzkumník služby Storage umožňuje zkopírování sdílené složky do schránky a následné vložení této sdílené složky do jiného účtu úložiště. (Chcete-li kopírovat jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje kopírování sdílené složky z jednoho účtu úložiště do jiného.
 
@@ -117,7 +117,7 @@ Následující postup ukazuje kopírování sdílené složky z jednoho účtu �
 
 ## <a name="get-the-sas-for-a-file-share"></a>Získání sdíleného přístupového podpisu (SAS) pro sdílenou složku
 
-[Sdílený přístupový podpis (SAS)](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po stanovené časové období a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu.
+[Sdílený přístupový podpis (SAS)](./storage/common/storage-sas-overview.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po stanovené časové období a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu.
 
 Následující postup ukazuje vytvoření sdíleného přístupového podpisu pro sdílenou složku:
 
@@ -191,7 +191,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
 1.  V hlavním podokně se zobrazí obsah sdílené složky.
 
-    ![Obsah sdílené složky](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Snímek obrazovky hlavního podokna pro sdílenou složku myazurefileshare v Průzkumník služby Storage zobrazuje obsah sdílené složky s vybranou první složkou.](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  V hlavním podokně se zobrazí obsah sdílené složky.
 

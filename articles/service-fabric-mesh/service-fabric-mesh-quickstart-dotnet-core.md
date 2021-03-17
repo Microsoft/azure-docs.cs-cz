@@ -1,19 +1,24 @@
 ---
 title: Rychlý Start – nasazení webové aplikace do Azure Service Fabric sítě
 description: V tomto rychlém startu se dozvíte, jak vytvořit web ASP.NET Core a jak ho publikovat do Azure Service Fabric sítě pomocí sady Visual Studio.
-author: dkkapur
+author: georgewallace
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 665988f37d0afdb91bb074d8653cc3c24155966e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75459063"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627007"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rychlý start: Vytvoření webové aplikace a její nasazení do služby Azure Service Fabric Mesh
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě.
 
@@ -25,7 +30,7 @@ Budete potřebovat předplatné Azure. Pokud ho ještě nemáte, můžete si sna
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Vytvoření projektu Service Fabric Mesh
 
-Otevřete Visual Studio a vyberte **soubor** > **Nový** > **projekt...**
+Otevřete Visual Studio a vyberte **soubor**  >  **Nový**  >  **projekt...**
 
 Do pole **Hledat** v dialogovém okně **Nový projekt** v horní části zadejte `mesh`. Vyberte šablonu **Service Fabric Mesh Application** (Aplikace Service Fabric Mesh). (Pokud tuto šablonu nevidíte, ujistěte se, že jste nainstalovali sadu SDK Mesh a verzi Preview sady VS Tools podle popisu v části [Nastavení vývojového prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md). 
 
@@ -33,7 +38,7 @@ Do pole **Název** zadejte **ServiceFabricMesh1** a v poli **Umístění** nasta
 
 Ujistěte se, že je zaškrtnuté políčko **Vytvořit adresář pro řešení**, a kliknutím na **OK** vytvořte projekt Service Fabric Mesh.
 
-![Dialogové okno nového projektu Service Fabric Mesh v sadě Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![Snímek obrazovky, který ukazuje, jak vytvořit Service Fabric mřížkový projekt.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>Vytvoření služby
 
@@ -49,13 +54,13 @@ Visual Studio vytvoří projekt aplikace Service Fabric Mesh a projekt ASP.NET C
 
 ## <a name="build-and-publish-to-your-local-cluster"></a>Sestavení a publikování v místním clusteru
 
-Po načtení projektu se image Dockeru automaticky sestaví a publikuje do místního clusteru. Tento proces může chvíli trvat. Pokud chcete, můžete průběh u nástrojů Service Fabric monitorovat v podokně **Výstup** – stačí vybrat položku **Nástroje Service Fabric** v rozevíracím seznamu okna **Výstup**. Při nasazování image Dockeru můžete pokračovat v práci.
+Po načtení projektu se image Dockeru automaticky sestaví a publikuje do místního clusteru. Tento proces může nějakou dobu trvat. Pokud chcete, můžete průběh u nástrojů Service Fabric monitorovat v podokně **Výstup** – stačí vybrat položku **Nástroje Service Fabric** v rozevíracím seznamu okna **Výstup**. Při nasazování image Dockeru můžete pokračovat v práci.
 
 Po vytvoření projektu klikněte na **F5**, abyste mohli službu vyladit místně. Až se místní nasazení dokončí a Visual Studio spustí váš projekt, otevře se okno prohlížeče s ukázkovou webovou stránkou.
 
 Až procházení nasazené služby dokončíte, zastavte ladění projektu stisknutím kláves **Shift + F5** v sadě Visual Studio.
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-to-azure"></a>Publikování do Azure
 
 Pokud chcete projekt Service Fabric Mesh publikovat v Azure, klikněte v sadě Visual Studio na daný **projekt Service Fabric Mesh** pravým tlačítkem myši a vyberte **Publikovat**.
 
@@ -65,13 +70,13 @@ Zobrazí se dialogové okno **Publikovat aplikaci Service Fabricu**.
 
 ![Dialogové okno pro publikování aplikace Service Fabric Mesh v sadě Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
-Vyberte účet a předplatné Azure. Zvolte **Umístění**. Tento článek používá umístění **USA – východ**.
+Vyberte účet a předplatné Azure. Vyberte **umístění**. Tento článek používá umístění **USA – východ**.
 
-V části **Skupina prostředků** vyberte **\<Vytvořit novou skupinu prostředků...>**. Zobrazí se dialogové okno **Vytvořit skupinu prostředků**. Nastavte **název skupiny prostředků** a **umístění**.  Tento rychlý start pracuje s umístěním **USA – východ** a názvem skupiny **sfmeshTutorial1RG** (pokud vaše organizace má více lidí, kteří používají stejné předplatné, zvolte jedinečný název skupiny prostředků).  Kliknutím na **Vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
+V části **Skupina prostředků** vyberte **\<Create New Resource Group...>** . Zobrazí se dialogové okno **Vytvořit skupinu prostředků**. Nastavte **název skupiny prostředků** a **umístění**.  Tento rychlý start pracuje s umístěním **USA – východ** a názvem skupiny **sfmeshTutorial1RG** (pokud vaše organizace má více lidí, kteří používají stejné předplatné, zvolte jedinečný název skupiny prostředků).  Kliknutím na **Vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
 
-![Dialogové okno nové skupiny prostředků Service Fabric Mesh v sadě Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![Snímek obrazovky, který ukazuje, jak vytvořit novou skupinu prostředků.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-V dialogovém okně **Publikovat aplikaci Service Fabricu** vyberte v části **Azure Container Registry** možnost **\<Vytvořit nový registr kontejneru...>**. V dialogovém okně **Vytvořit registr kontejneru** použijte pro **registr kontejneru** jedinečný název. Zadejte **umístění** (tento rychlý start používá **USA – východ**). V rozevírací nabídce vyberte **skupinu prostředků**, kterou jste vytvořili v předchozím kroku, například **sfmeshTutorial1RG**. **Skladovou položku** nastavte na **Basic** a kliknutím na **Vytvořit** se vraťte do dialogu pro publikování.
+Zpátky v dialogovém okně **Service Fabric aplikace pro publikování** vyberte v části **Azure Container Registry** **\<Create New Container Registry...>** . V dialogovém okně **Vytvořit registr kontejneru** použijte pro **registr kontejneru** jedinečný název. Zadejte **umístění** (tento rychlý start používá **USA – východ**). V rozevírací nabídce vyberte **skupinu prostředků**, kterou jste vytvořili v předchozím kroku, například **sfmeshTutorial1RG**. **Skladovou položku** nastavte na **Basic** a kliknutím na **Vytvořit** se vraťte do dialogu pro publikování.
 
 ![Dialogové okno nové skupiny prostředků Service Fabric Mesh v sadě Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

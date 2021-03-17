@@ -7,31 +7,32 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: backup
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 08ede149c24d8ba4921c0e0b75f5e6eff3f2250f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669405"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358414"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](automated-backup-sql-2014.md)
-> * [SQL Server 2016/2017](automated-backup.md)
+> * [SQL Server 2016 +](automated-backup.md)
 
-Automatizované zálohování v2 automaticky konfiguruje [spravovanou zálohu na Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) pro všechny stávající a nové databáze na virtuálním počítači Azure se systémem SQL Server 2016/2017 Standard, Enterprise nebo Developer Edition. To vám umožní nakonfigurovat pravidelné zálohy databází, které využívají trvalé úložiště objektů BLOB v Azure. Automatizované zálohování v2 závisí na [rozšíření agenta SQL Server infrastruktury jako služby (IaaS)](sql-server-iaas-agent-extension-automate-management.md).
+Automatizované zálohování v2 automaticky konfiguruje [spravovanou zálohu na Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) pro všechny stávající a nové databáze na virtuálním počítači Azure s SQL Server 2016 nebo novějšími edicemi Standard, Enterprise nebo Developer. To vám umožní nakonfigurovat pravidelné zálohy databází, které využívají trvalé úložiště objektů BLOB v Azure. Automatizované zálohování v2 závisí na [rozšíření agenta SQL Server infrastruktury jako služby (IaaS)](sql-server-iaas-agent-extension-automate-management.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete používat automatizované zálohování v2, Projděte si následující požadavky:
 
 **Operační systém**:
@@ -42,24 +43,21 @@ Pokud chcete používat automatizované zálohování v2, Projděte si následuj
 
 - SQL Server 2016 nebo vyšší: Developer, Standard nebo Enterprise
 
-> [!IMPORTANT]
-> Automatizované zálohování v2 funguje s SQL Server 2016 nebo novějším. Pokud používáte SQL Server 2014, můžete k zálohování databází použít automatické zálohování v1. Další informace najdete v tématu [automatizovaná záloha pro SQL Server 2014 virtuálních počítačů Azure (VM)](automated-backup-sql-2014.md).
+> [!NOTE]
+> SQL Server 2014 najdete v tématu [automatizované zálohování pro SQL Server 2014](automated-backup-sql-2014.md).
 
 **Konfigurace databáze**:
 
-- Cílové databáze musí používat úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](https://technet.microsoft.com/library/ms190217.aspx).
-- Systémové databáze nemusejí používat úplný model obnovení. Pokud však požadujete, aby byly zálohy protokolů provedeny pro model nebo MSDB, je nutné použít úplný model obnovení.
-- Cílové databáze musí být buď ve výchozí instanci SQL Server, nebo v [správně nainstalované](frequently-asked-questions-faq.md#administration) pojmenované instanci. 
-
-> [!NOTE]
-> Automatické zálohování spoléhá na **rozšíření agenta SQL Server IaaS**. Aktuální Image Galerie virtuálních počítačů v systému SQL toto rozšíření ve výchozím nastavení přidat. Další informace najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md).
+- Cílové _uživatelské_ databáze musí používat úplný model obnovení. Systémové databáze nemusejí používat úplný model obnovení. Pokud však požadujete, aby byly zálohy protokolů provedeny pro model nebo MSDB, je nutné použít úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105)). 
+- SQL Server virtuální počítač se zaregistroval s rozšířením agenta SQL IaaS v [režimu úplné správy](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full). 
+-  Automatické zálohování spoléhá na úplné [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). V takovém případě se automatizované zálohování podporuje jenom v cílových databázích z výchozí instance nebo z jedné pojmenované instance. Pokud neexistuje žádná výchozí instance a více pojmenovaných instancí, rozšíření SQL IaaS selže a automatizované zálohování nebude fungovat. 
 
 ## <a name="settings"></a>Nastavení
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované zálohování v2. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
 
 ### <a name="basic-settings"></a>Základní nastavení
 
-| Nastavení | Rozsah (výchozí) | Description |
+| Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
 | **Automatizované zálohování** | Povolit/zakázat (zakázáno) | Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure se systémem SQL Server 2016/2017 Developer, Standard nebo Enterprise. |
 | **Doba uchování** | 1-30 dní (30 dní) | Počet dní uchovávání záloh. |
@@ -69,7 +67,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 ### <a name="advanced-settings"></a>Upřesnit nastavení
 
-| Nastavení | Rozsah (výchozí) | Description |
+| Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
 | **Zálohy systémových databází** | Povolit/zakázat (zakázáno) | Když je tato funkce povolená, zálohuje taky systémové databáze: Master, MSDB a model. Pro databáze MSDB a model ověřte, zda jsou v režimu úplného obnovení, pokud chcete provádět zálohy protokolu. Zálohy protokolů se nikdy neprovádí pro hlavní server. A pro databázi TempDB nejsou vyřízeny žádné zálohy. |
 | **Plán zálohování** | Ruční/automatizovaná (automatizovaná) | Ve výchozím nastavení se plán zálohování automaticky určí na základě nárůstu protokolu. Plán ručního zálohování umožňuje uživateli zadat časový interval pro zálohování. V takovém případě zálohy probíhají pouze v zadaném intervalu a v určeném časovém intervalu daného dne. |
@@ -120,7 +118,7 @@ Potom v úterý 10 až 6 hodin se znovu spustí úplné zálohování všech dat
 
 Použijte Azure Portal ke konfiguraci automatického zálohování v2 při vytváření nového virtuálního počítače SQL Server 2016 nebo 2017 v modelu nasazení Správce prostředků.
 
-Na kartě **nastavení SQL Server** v části **automatizovaná záloha**vyberte **Povolit** . Na následujícím Azure Portal snímku obrazovky vidíte nastavení **automatizovaného zálohování SQL** .
+Na kartě **nastavení SQL Server** v části **automatizovaná záloha** vyberte **Povolit** . Na následujícím Azure Portal snímku obrazovky vidíte nastavení **automatizovaného zálohování SQL** .
 
 ![Konfigurace automatizovaného zálohování SQL v Azure Portal](./media/automated-backup/automated-backup-blade.png)
 
@@ -170,7 +168,7 @@ Set-AzVMSqlServerExtension -VMName $vmname `
     -Version "2.0" -Location $region 
 ```
 
-### <a name="verify-current-settings"></a><a id="verifysettings"></a>Ověřit aktuální nastavení
+### <a name="verify-current-settings"></a><a id="verifysettings"></a> Ověřit aktuální nastavení
 Pokud jste během zřizování povolili automatické zálohování, můžete ke kontrole aktuální konfigurace použít PowerShell. Spusťte příkaz **Get-AzVMSqlServerExtension** a prověřte vlastnost **AutoBackupSettings** :
 
 ```powershell
@@ -218,7 +216,7 @@ If (-Not $storage)
 > [!NOTE]
 > Automatizované zálohování nepodporuje ukládání záloh do Premium Storage, ale může přebírat zálohy z disků virtuálních počítačů, které používají Premium Storage.
 
-Pak pomocí příkazu **New-AzVMSqlServerAutoBackupConfig** povolte a nakonfigurujte nastavení automatizovaného zálohování v2 pro ukládání záloh do účtu služby Azure Storage. V tomto příkladu jsou zálohy nastavené tak, aby se zachovaly po dobu 10 dnů. Zálohy systémových databází jsou povoleny. Úplné zálohování je naplánováno týdně s časovým intervalem od 20:00 do 2 hodin. Zálohy protokolu se naplánují každých 30 minut. Druhý příkaz **set-AzVMSqlServerExtension**aktualizuje zadaný virtuální počítač Azure pomocí těchto nastavení.
+Pak pomocí příkazu **New-AzVMSqlServerAutoBackupConfig** povolte a nakonfigurujte nastavení automatizovaného zálohování v2 pro ukládání záloh do účtu služby Azure Storage. V tomto příkladu jsou zálohy nastavené tak, aby se zachovaly po dobu 10 dnů. Zálohy systémových databází jsou povoleny. Úplné zálohování je naplánováno týdně s časovým intervalem od 20:00 do 2 hodin. Zálohy protokolu se naplánují každých 30 minut. Druhý příkaz **set-AzVMSqlServerExtension** aktualizuje zadaný virtuální počítač Azure pomocí těchto nastavení.
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
@@ -313,22 +311,21 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 Pokud chcete monitorovat automatizované zálohování na SQL Server 2016/2017, máte dvě hlavní možnosti. Vzhledem k tomu, že automatizované zálohování používá funkci spravovaného zálohování SQL Server, platí stejné postupy monitorování i pro obě.
 
-Nejprve můžete dotazovat stav voláním [msdb. managed_backup. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql). Nebo dotaz na funkci funkce vracející tabulku [msdb. managed_backup. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
+Nejprve můžete dotazovat stav voláním [msdb. managed_backup. sp_get_backup_diagnostics](/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql). Nebo dotaz na funkci vracející tabulku [msdb. managed_backup. fn_get_health_status](/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
 
 Další možností je využít integrované funkce Databázová pošta pro oznámení.
 
-1. Chcete-li přiřadit e-mailovou adresu parametru **SSMBackup2WANotificationEmailIds** , zavolejte uloženou proceduru [msdb. managed_backup. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) . 
+1. Zavolejte uloženou proceduru [msdb. managed_backup. sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , abyste přiřadili e-mailovou adresu parametru **SSMBackup2WANotificationEmailIds** . 
 1. Povolí [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) odesílání e-mailů z virtuálního počítače Azure.
-1. Pro konfiguraci Databázová pošta použijte server SMTP a uživatelské jméno. Databázová pošta můžete nakonfigurovat v SQL Server Management Studio nebo pomocí příkazů jazyka Transact-SQL. Další informace najdete v tématu [databázová pošta](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail).
-1. [Nakonfigurujte agenta SQL Server pro použití databázová pošta](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).
+1. Pro konfiguraci Databázová pošta použijte server SMTP a uživatelské jméno. Databázová pošta můžete nakonfigurovat v SQL Server Management Studio nebo pomocí příkazů jazyka Transact-SQL. Další informace najdete v tématu [databázová pošta](/sql/relational-databases/database-mail/database-mail).
+1. [Nakonfigurujte agenta SQL Server pro použití databázová pošta](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).
 1. Ověřte, jestli je port SMTP povolený přes místní bránu firewall virtuálního počítače a skupinu zabezpečení sítě pro virtuální počítač.
 
 ## <a name="next-steps"></a>Další kroky
-Automatizované zálohování v2 konfiguruje spravovanou zálohu na virtuálních počítačích Azure. Proto je důležité [si projít dokumentaci pro spravovanou zálohu](https://msdn.microsoft.com/library/dn449496.aspx) , abyste porozuměli chování a důsledky.
+Automatizované zálohování v2 konfiguruje spravovanou zálohu na virtuálních počítačích Azure. Proto je důležité [si projít dokumentaci pro spravovanou zálohu](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) , abyste porozuměli chování a důsledky.
 
 Další pokyny k zálohování a obnovení pro SQL Server na virtuálních počítačích Azure najdete v následujícím článku: [zálohování a obnovení pro SQL Server na virtuálních počítačích Azure](backup-restore.md).
 
 Informace o dalších dostupných úlohách automatizace najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md).
 
 Další informace o spouštění SQL Server na virtuálních počítačích Azure najdete v tématu [přehled SQL Server na virtuálních počítačích Azure](sql-server-on-azure-vm-iaas-what-is-overview.md).
-

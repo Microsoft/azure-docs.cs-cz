@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087284"
 ---
 # <a name="azure-media-player-localization"></a>Azure Media Player lokalizace #
@@ -31,12 +31,12 @@ Azure Media Player aktuálně podporuje následující jazyky s odpovídajícím
 | Angličtina {výchozí}   | en   | Chorvatština                | hod     | Rumunština                | loď           |
 | Arabština              | snížen   | Maďarština               | hu     | Slovenština                  | SM           |
 | Bulharština           | BG   | Indonéština              | id     | Slovene                 | SSL           |
-| Katalánština             | určen   | Islandština               | je     | Srbština – cyrilice      | sr-cyrl-cs   |
+| Katalánština             | určen   | Islandština               | is     | Srbština – cyrilice      | sr-cyrl-cs   |
 | Čeština               | cs   | Italština                 | její     | Srbština – latinka         | sr-latn-rs   |
 | Dánština              | &   | Japonština                | dža     | Ruština                 | ru           |
 | Němčina              | &   | Kazaština                  | kk     | Švédština                 | činí           |
 | Řečtina               | El   | Korejština                  | Ko     | Thajština                    | Kolik           |
-| Španělština             | Ano   | Litevština              | lt     | Římské                 | TL           |
+| španělština             | es   | Litevština              | lt     | Římské                 | TL           |
 | Estonština            | et   | Lotyština                 | Lotyšsko     | Turečtina                 | recenzent           |
 | Baskičtina              | Balijšitna   | Malajsii               | Arial     | Ukrajinština               | Velká Británie           |
 | Fársíjština               | položek   | Norština – BokmÃa y l     | NB     | Urdština                    | poèítaè           |

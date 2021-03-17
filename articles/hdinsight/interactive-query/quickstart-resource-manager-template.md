@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: Vytvoření clusteru interaktivních dotazů pomocí šablony – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků vytvořit interaktivní cluster dotazů ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 19bf43cfd305e74aadaf16dddc7bce318e193c84
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4872dd29442a1503e04672a7c42fd7b49a0c506c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640238"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945239"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Rychlý Start: Vytvoření clusteru interaktivních dotazů ve službě Azure HDInsight pomocí šablony ARM
 
@@ -59,13 +56,13 @@ V šabloně jsou definované dva prostředky Azure:
     |Uživatelské jméno SSH|Zadejte uživatelské jméno, výchozí hodnota je sshuser|
     |Heslo SSH|Zadejte heslo.|
 
-    ![Správce prostředků šablony HBA](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
+    ![Nasazení Správce prostředků šablon HBA](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
-1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a**pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
+1. Přečtěte si podmínky **a ujednání**. Pak vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními a** pak na **koupit**. Obdržíte oznámení, že vaše nasazení probíhá. Vytvoření clusteru trvá přibližně 20 minut.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-Po vytvoření clusteru obdržíte oznámení o **úspěšném nasazení** s odkazem **na prostředek přejít na prostředek** . Na stránce skupiny prostředků se zobrazí seznam nového clusteru HDInsight a výchozí úložiště přidružené ke clusteru. Každý cluster má účet [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo závislost [Azure Data Lake Storageho účtu](../hdinsight-hadoop-use-data-lake-store.md) . Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
+Po vytvoření clusteru obdržíte oznámení o **úspěšném nasazení** s odkazem **na prostředek přejít na prostředek** . Na stránce skupiny prostředků se zobrazí seznam nového clusteru HDInsight a výchozí úložiště přidružené ke clusteru. Každý cluster má účet [Azure Blob Storage](../hdinsight-hadoop-use-blob-storage.md) , [Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)nebo  [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) závislost. Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -73,7 +70,7 @@ Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve slu�
 
 Z Azure Portal přejděte do svého clusteru a vyberte **Odstranit**.
 
-![Správce prostředků šablony HBA](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
+[Odstranit Správce prostředků šablon HBA](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight i výchozí účet úložiště.
 

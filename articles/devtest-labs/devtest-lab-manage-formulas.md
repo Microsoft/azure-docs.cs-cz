@@ -3,12 +3,12 @@ title: Správa vzorců v Azure DevTest Labs k vytváření virtuálních počít
 description: Tento článek ukazuje, jak vytvořit vzorec buď ze základní (vlastní image, image Marketplace, nebo jiného vzorce), nebo existujícího virtuálního počítače.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480401"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91308890"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Správa vzorců Azure DevTest Labs
 
@@ -60,7 +60,7 @@ Následující kroky vás provedou procesem vytvoření vzorce z vlastní image,
     - **Datum a čas vypršení platnosti** – toto pole nemůžete upravit. 
     - **Nastavit tento počítač jako vynucený** – vytvoření počítače s nárokem na vynucené znamená, že se mu nebude přiřazovat vlastnictví v době vytvoření. Místo toho budou moci uživatelé testovacího prostředí převzít vlastnictví ("deklarace") počítače na stránce testovacího prostředí.  
 
-        ![Stránka Upřesnit nastavení](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![Snímek obrazovky s rozšířeným nastavením stránky vytvořit vzorec (opakovaně použitelný základ)](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Pokud jste jako základ vybrali Image Galerie sdílených imagí, zobrazí se také pole **verze bitové kopie** , které umožňuje vybrat verzi obrázku z Galerie, kterou chcete použít jako základ. 
 
         ![Stránka Upřesnit nastavení](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -98,7 +98,7 @@ Chcete-li upravit vzorec, postupujte podle následujících kroků:
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. Na stránce testovacího prostředí vyberte **vzorce (opakovaně použitelné báze)**.
    
-    ![Nabídka vzorce](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
+    ![Snímek obrazovky zobrazující stránku testovacího prostředí se zvolenými vzorci (opakovaně použitelnými základy)](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Na stránce **vzorce testovacího prostředí** vyberte vzorec, který chcete upravit.
 6. Na stránce **aktualizovat vzorec** proveďte požadované úpravy a vyberte **aktualizovat**.
 
@@ -113,7 +113,7 @@ Vzorec odstraníte pomocí následujících kroků:
     ![Nabídka vzorce](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Na stránce **vzorce testovacího prostředí** vyberte tři tečky vpravo od vzorce, který chcete odstranit.
    
-    ![Nabídka vzorce](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
+    ![Snímek obrazovky zobrazující stránku vzorce testovacího prostředí se třemi tečkami pro zvýrazněné možnosti vzorce](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. V kontextové nabídce vzorce vyberte **Odstranit**.
    
     ![Místní nabídka vzorce](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)

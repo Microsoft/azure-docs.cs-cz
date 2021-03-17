@@ -1,14 +1,16 @@
 ---
 title: Shromažďování dat
 description: Přečtěte si, jaká ukázková data se mají shromažďovat při vývoji vaší aplikace.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7abb3736eb9d7c73465ffa646b79e8e7dd7ae88b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c901d4024292ad03a9195ad0cbd226f473917ee4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599455"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738080"
 ---
 # <a name="data-collection-for-your-app"></a>Shromažďování dat pro vaši aplikaci
 
@@ -69,7 +71,7 @@ Pokud jste nasadili aplikaci do produkčního prostředí, [Projděte si službu
 
 ## <a name="test-data-selection-for-batch-testing"></a>Výběr testovacích dat pro dávkové testování
 
-Všechny zásady uvedené výše pro školicí projevy se vztahují na projevy, které byste měli použít pro [sadu testů](luis-concept-batch-test.md). Ujistěte se, že rozdělení mezi záměry a entitami zrcadlí skutečnou distribuci co nejpřesněji.
+Všechny zásady uvedené výše pro školicí projevy se vztahují na projevy, které byste měli použít pro [sadu testů](./luis-how-to-batch-test.md). Ujistěte se, že rozdělení mezi záměry a entitami zrcadlí skutečnou distribuci co nejpřesněji.
 
 Nepoužívejte znovu projevy ze sady školení v sadě testů. Tím dojde k nesprávnému posunutí vašich výsledků a neposkytneme vám správné informace o tom, jak bude vaše aplikace LUIS pracovat v produkčním prostředí.
 

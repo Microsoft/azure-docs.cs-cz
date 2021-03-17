@@ -1,22 +1,18 @@
 ---
 title: Transformace dat pomocí aktivity prasete systému Hadoop
 description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0f5ce9dfbf09023b57accb761b5dd85b0f3599
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849225"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375710"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity systému Hadoop pro vepřové použití v Azure Data Factory
 
@@ -65,7 +61,7 @@ Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data
 | description         | Text popisující, k čemu se aktivita používá | No       |
 | typ                | V případě aktivity podregistru je typ aktivity HDinsightPig. | Yes      |
 | linkedServiceName   | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
-| scriptLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení skriptu prasete, který se má spustit. Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | No       |
+| scriptLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení skriptu prasete, který se má spustit. Tady se podporují jenom propojené služby **[Azure Blob Storage](./connector-azure-blob-storage.md)** a **[adls Gen2](./connector-azure-data-lake-storage.md)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | No       |
 | scriptPath          | Zadejte cestu k souboru skriptu uloženému v Azure Storage, na kterou odkazuje scriptLinkedService. V názvu souboru se rozlišují malá a velká písmena. | No       |
 | GetDebugInfo –        | Určuje, kdy se soubory protokolu zkopírují do Azure Storage používaného clusterem HDInsight (nebo) zadaným pomocí scriptLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | No       |
 | náhodné           | Určuje pole argumentů pro úlohu Hadoop. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | No       |
@@ -80,5 +76,5 @@ Podívejte se na následující články, které vysvětlují, jak transformovat
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita spuštění Machine Learning dávky](transform-data-using-machine-learning.md)
+* [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

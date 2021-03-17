@@ -3,20 +3,21 @@ title: Pochopte, jak zřizování Azure AD funguje | Microsoft Docs
 description: Pochopení způsobu, jakým funguje zřizování Azure AD
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235719"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988970"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -42,9 +43,7 @@ Pokud chcete požádat o automatický konektor zřizování Azure AD pro aplikac
 
 ## <a name="authorization"></a>Autorizace
 
-Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Typy a požadavky na přihlašovací údaje pro aplikaci najdete tak, že se odkazujete na kurz aplikace. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
-
-Pokud je pro aplikaci nakonfigurovaná taky jednotné přihlašování založené na SAML, je limit úložiště interní služby Azure AD pro jednotlivé aplikace 1024 bajtů. Tento limit zahrnuje všechny certifikáty, tajné tokeny, přihlašovací údaje a související konfigurační data přidružená k jedné instanci aplikace (označované také jako záznam instančního objektu ve službě Azure AD). Pokud je nakonfigurováno jednotné přihlašování založené na SAML, certifikát použitý k podepisování tokenů SAML často spotřebovává více než 50% procent místa. Všechny další položky (tajné tokeny, identifikátory URI, e-mailové adresy, uživatelská jména a hesla), které zadáte během nastavení zřizování uživatelů, by mohly překročit limit úložiště. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů](./application-provisioning-config-problem-storage-limit.md).
+Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Pro aplikace Galerie můžete najít typy a požadavky na přihlašovací údaje pro aplikaci odkazem na kurz aplikace. Pro jiné aplikace než galerie můžete v dokumentaci k [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery) pochopit typy a požadavky přihlašovacích údajů. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
 
 ## <a name="mapping-attributes"></a>Mapování atributů
 
@@ -65,15 +64,15 @@ Pro odchozí zřizování z Azure AD do aplikace SaaS, která se spoléhá na [p
 
 * **Skupiny.** Pomocí Azure AD Premiumho licenčního plánu můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Až se pak obor zřizování nastaví na **synchronizovat jenom přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo zruší zřízení uživatelů na základě toho, jestli jsou členy skupiny, která je přiřazená k dané aplikaci. Samotný objekt skupiny není zřízený, pokud aplikace nepodporuje skupinové objekty. Zajistěte, aby skupiny přiřazené k vaší aplikaci měly vlastnost "SecurityEnabled" nastavenou na hodnotu "true".
 
-* **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřizovat uživatele v [dynamických skupinách](../users-groups-roles/groups-create-rule.md). Mějte na paměti tato upozornění a doporučení:
+* **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřizovat uživatele v [dynamických skupinách](../enterprise-users/groups-create-rule.md). Mějte na paměti tato upozornění a doporučení:
 
   * Dynamické skupiny můžou ovlivnit výkon komplexního zřizování z Azure AD až po SaaS aplikace.
 
-  * Způsob zřízení a zrušení zřizování uživatele v dynamické skupině v aplikaci SaaS závisí na tom, jak rychlá dynamická skupina dokáže vyhodnotit změny členství ve skupinách. Informace o tom, jak kontrolovat stav zpracování dynamické skupiny, najdete v tématu [Zkontrolujte stav zpracování pravidla členství](../users-groups-roles/groups-create-rule.md).
+  * Způsob zřízení a zrušení zřizování uživatele v dynamické skupině v aplikaci SaaS závisí na tom, jak rychlá dynamická skupina dokáže vyhodnotit změny členství ve skupinách. Informace o tom, jak kontrolovat stav zpracování dynamické skupiny, najdete v tématu [Zkontrolujte stav zpracování pravidla členství](../enterprise-users/groups-create-rule.md).
 
   * Když uživatel ztratí členství v dynamické skupině, považuje se za událost zrušení zřízení. Při vytváření pravidel pro dynamické skupiny Vezměte v úvahu tento scénář.
 
-* **Vnořené skupiny.** Služba zřizování uživatelů Azure AD nemůže číst ani zřizovat uživatele ve vnořených skupinách. Služba může číst a zřizovat pouze uživatele, kteří jsou bezprostředními členy explicitně přiřazené skupiny. Toto omezení "přiřazení na základě skupin na aplikace" ovlivňuje také jednotné přihlašování (viz téma [použití skupiny pro správu přístupu k aplikacím SaaS](../users-groups-roles/groups-saasapps.md)). Místo toho přímo přiřaďte nebo jinak [obor ve](define-conditional-rules-for-provisioning-user-accounts.md) skupinách, které obsahují uživatele, kteří se musí zřídit.
+* **Vnořené skupiny.** Služba zřizování uživatelů Azure AD nemůže číst ani zřizovat uživatele ve vnořených skupinách. Služba může číst a zřizovat pouze uživatele, kteří jsou bezprostředními členy explicitně přiřazené skupiny. Toto omezení "přiřazení na základě skupin na aplikace" ovlivňuje také jednotné přihlašování (viz téma [použití skupiny pro správu přístupu k aplikacím SaaS](../enterprise-users/groups-saasapps.md)). Místo toho přímo přiřaďte nebo jinak [obor ve](define-conditional-rules-for-provisioning-user-accounts.md) skupinách, které obsahují uživatele, kteří se musí zřídit.
 
 ### <a name="attribute-based-scoping"></a>Rozsah založený na atributech 
 
@@ -134,7 +133,7 @@ Po úvodním cyklu budou všechny ostatní cykly:
 10. Zachovejte nový vodoznak na konci přírůstkového cyklu, který poskytuje výchozí bod pro pozdější přírůstkové cykly.
 
 > [!NOTE]
-> Volitelně můžete zakázat operace **vytvořit**, **aktualizovat**nebo **Odstranit** pomocí **akcí cílového objektu** v sekci [mapování](customize-application-attributes.md) . Logika zakázání uživatele během aktualizace je také řízena prostřednictvím mapování atributů z pole, jako je například "accountEnabled".
+> Volitelně můžete zakázat operace **vytvořit**, **aktualizovat** nebo **Odstranit** pomocí **akcí cílového objektu** v sekci [mapování](customize-application-attributes.md) . Logika zakázání uživatele během aktualizace je také řízena prostřednictvím mapování atributů z pole, jako je například "accountEnabled".
 
 Zřizovací služba pokračuje v provádění přírůstkových cyklů back-to-back v intervalech definovaných v tomto [kurzu, které jsou specifické pro jednotlivé aplikace](../saas-apps/tutorial-list.md). Přírůstkové cykly pokračují, dokud nedojde k jedné z následujících událostí:
 
@@ -169,22 +168,46 @@ Výkon závisí na tom, jestli vaše úloha zřizování spouští počáteční
 Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v [protokolech zřizování Azure AD (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Protokoly zahrnují všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána. Informace o tom, jak číst protokoly zřizování v Azure Portal, najdete v [průvodci zřizováním sestav](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Zrušení zřizování
+Služba zřizování Azure AD udržuje zdrojový a cílový systém v synchronizaci s účty zrušení zřizování při odebrání přístupu uživatele.
 
-Služba zřizování Azure AD udržuje zdrojový a cílový systém v synchronizaci s účty zrušení zřízení, pokud k nim uživatelé neměli mít přístup. 
+Služba zřizování podporuje odstranění i zakázání (někdy označované jako obnovitelné odstraňování) uživatelů. Přesná definice zakázaného a odstranění se liší v závislosti na implementaci cílové aplikace, ale obecně se tím znamená, že se uživatel nemůže přihlásit. Odstranění indikuje, že uživatel byl z aplikace zcela odebrán. V případě aplikací SCIM je zakázán požadavek na nastavení *aktivní* vlastnosti na hodnotu false pro uživatele. 
 
-Služba zřizování Azure AD odstraní uživatele v aplikaci, když aplikace podporuje obnovitelné odstranění (žádost o aktualizaci s aktivní = false) a nastane kterákoli z následujících událostí:
+**Konfigurace aplikace pro zakázání uživatele**
 
-* Uživatelský účet se odstranil ve službě Azure AD.
-*   Uživatel není přiřazený z aplikace.
-*   Uživatel už nesplňuje filtr oborů a nepřekračuje rozsah.
-    * Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah](../app-provisioning/skip-out-of-scope-deletions.md).
-*   Vlastnost AccountEnabled je nastavena na hodnotu false.
+Ujistěte se, že jste zaškrtli políčko pro aktualizace.
 
-Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace. 
+Ujistěte se, že máte mapování pro *aktivní* pro vaši aplikaci. Pokud používáte aplikaci z Galerie aplikací, mapování může být mírně odlišné. Ujistěte se prosím, že pro aplikace Galerie použijete výchozí/vycházející mapování polí.
 
-30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Zakázat uživatele" lightbox="./media/how-provisioning-works/disable-user.png":::
 
-Pokud se ve svých mapováních atributů zobrazí atribut IsSoftDeleted, použije se k určení stavu uživatele a zda má být odeslán požadavek na aktualizaci s hodnotou aktivní = false pro obnovitelné odstranění uživatele. 
+
+**Konfigurace aplikace pro odstranění uživatele**
+
+Pomocí následujících scénářů se aktivuje operace zakázat nebo odstranit: 
+* Ve službě Azure AD se neodstranil uživatel (odesílá se do vlastnosti koš/AccountEnabled nastaven na hodnotu false).
+    30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
+* Uživatel je trvale odstraněn nebo odebrán z koše ve službě Azure AD.
+* Uživatel není přiřazený k aplikaci.
+* Uživatel přejde z oboru do rozsahu mimo rozsah (již neprojde filtr oboru).
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Odstranění uživatele" lightbox="./media/how-provisioning-works/delete-user.png":::
+
+Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah.](skip-out-of-scope-deletions.md)
+
+Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace.
+
+Pokud se ve svých mapováních atributů zobrazí atribut IsSoftDeleted, použije se k určení stavu uživatele a zda má být odeslán požadavek na aktualizaci s hodnotou aktivní = false pro obnovitelné odstranění uživatele.
+
+**Známá omezení**
+
+* Pokud uživatel, který byl dřív spravovaný službou zřizování, není přiřazený z aplikace nebo ze skupiny přiřazené k aplikaci, pošleme žádost o zákaz. Od tohoto okamžiku uživatel není spravován službou a nepošle se žádost o odstranění, když se odstraní z adresáře.
+* Zřizování uživatele, který je zakázaný ve službě Azure AD, se nepodporuje. Musí být ve službě Azure AD aktivní předtím, než se zřídí.
+* Když uživatel přejde z tichého odstranění na aktivní, služba zřizování Azure AD aktivuje uživatele v cílové aplikaci, ale neobnoví automaticky členství ve skupině. Cílová aplikace by měla udržovat členství ve skupině pro uživatele v neaktivním stavu. Pokud cílová aplikace tuto možnost nepodporuje, můžete restartovat zřizování a aktualizovat členství ve skupině. 
+
+**Doporučení**
+
+Při vývoji aplikace vždy podporují obnovitelné odstranění i pevné odstranění. Umožňuje zákazníkům obnovení, když je uživatel omylem zakázán.
+
 
 ## <a name="next-steps"></a>Další kroky
 

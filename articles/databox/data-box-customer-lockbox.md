@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 9c95760d03db976b59537adcecbe39a942b72126
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 178ad169c1b576458f38b440ca79f4bb9eb012f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209373"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124907"
 ---
 # <a name="use-customer-lockbox-for-azure-data-box-preview"></a>Použít Customer Lockbox pro Azure Data Box (Preview)
 
@@ -76,7 +76,6 @@ Po vyřešení problému bude úloha kopírování dat dokončena až do dokonč
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Customer Lockbox pro Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Customer Lockbox pro Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md)
 
 <!--- [Approve, audit support access requests to VMs using Customer Lockbox for Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/)-->
-

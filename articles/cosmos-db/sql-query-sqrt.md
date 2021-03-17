@@ -3,18 +3,21 @@ title: Odmocnina v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci systému SQL SQRT v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3d5452e5ba650b487acff03f622cdbb170275dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac504baf0f8c59408327bbbf51392428ffee43b8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303456"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335355"
 ---
 # <a name="sqrt-azure-cosmos-db"></a>SQRT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí druhou odmocninu zadané číselné hodnoty.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Matematické funkce Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722097"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89440282"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projektů pro datové vědy
 
@@ -42,7 +42,7 @@ Tady jsou definice pro typy pracovních položek:
 - **Funkce**: funkce odpovídá zapojení projektu. Různé zapojení s klientem jsou různé funkce a je vhodné zvážit různé fáze projektu jako jiné funkce. Pokud zvolíte schéma, jako je například *\<ClientName>-\<EngagementName>* pro pojmenování funkcí, můžete snadno rozpoznat kontext projektu a zapojení z názvů samotných.
   
 - **Uživatelský scénář**: uživatelské scénáře jsou pracovními položkami, které jsou potřeba k dokončení funkce na konci. Mezi příklady uživatelských scénářů patří:
-  - Získat data 
+  - Získání dat 
   - Zkoumání dat 
   - Generování funkcí
   - Sestavení modelů
@@ -51,7 +51,7 @@ Tady jsou definice pro typy pracovních položek:
   
 - **Úkol**: úkoly lze přiřadit pracovní položky, které je třeba provést, aby bylo možné dokončit konkrétní uživatelský scénář. Například úkoly v uživatelském scénáři *získají data* :
   - Získat přihlašovací údaje pro SQL Server
-  - Nahrání dat do SQL Data Warehouse
+  - Nahrání dat do služby Azure synapse Analytics
   
 - **Chyba**: Chyby jsou v existujícím kódu nebo dokumentech, které je třeba opravit, aby bylo možné dokončit úlohu. Pokud jsou chyby způsobeny chybějícími pracovními položkami, mohou být vyřešeny jako uživatelské scénáře nebo úkoly. 
 

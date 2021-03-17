@@ -1,21 +1,17 @@
 ---
 title: Konfigurace výkonu pro Azure-SSIS Integration Runtime
 description: Naučte se konfigurovat vlastnosti Azure-SSIS Integration Runtime pro vysoký výkon.
-services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: ''
-manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5d275100124660b901504b7e7f71cf93518fd077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523311"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364388"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -122,8 +118,7 @@ Osa y je počet balíčků, které dokončily provádění během jedné hodiny.
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. V případě Standard_D1_v2ch uzlů je podporována paralelní spouštění 1-4 na uzel. Pro všechny ostatní typy uzlů je podporovaná hodnota 1 – Max (2 x počet jader, 8) paralelního spouštění na uzel. Pokud chcete **AzureSSISMaxParallelExecutionsPerNode** nad rámec maximální hodnoty, kterou podporujeme, můžete otevřít lístek podpory a můžeme prodloužit maximální hodnotu pro vás a potom, co potřebujete k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**pomocí Azure PowerShellu.
-Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
+Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. Pokud chcete zvýšit maximální hodnotu, je potřeba použít Azure PowerShell k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**. Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/sizes-general.md).
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -162,7 +157,7 @@ Tady jsou pokyny pro nastavení správné hodnoty pro vlastnost **AzureSSISMaxPa
 
 -   Vyberte výkonnější databázi, jako je například S3, pokud je úroveň protokolování nastavená na Verbose. V souladu s neoficiálním testováním interních testů může cenová úroveň S3 podporovat provádění balíčků SSIS se dvěma uzly, 128 paralelních počtů a podrobné úrovně protokolování.
 
-Cenovou úroveň databáze můžete také upravit na základě informací o využití [jednotek databázové transakce](../sql-database/sql-database-what-is-a-dtu.md) (DTU) dostupných na Azure Portal.
+Cenovou úroveň databáze můžete také upravit na základě informací o využití [jednotek databázové transakce](../azure-sql/database/service-tiers-dtu.md) (DTU) dostupných na Azure Portal.
 
 ## <a name="design-for-high-performance"></a>Návrh pro vysoký výkon
 Návrh balíčku SSIS, který se má spustit v Azure, se liší od návrhu balíčku pro místní spuštění. Místo kombinace více nezávislých úloh ve stejném balíčku je můžete oddělit do několika balíčků a zefektivnit tak provádění Azure-SSIS IR. Vytvořte spuštění balíčku pro každý balíček, aby nemuseli čekat na jeho dokončení. Tento přístup přináší výhody škálovatelnosti prostředí Azure-SSIS Integration runtime a zlepšuje celkovou propustnost.

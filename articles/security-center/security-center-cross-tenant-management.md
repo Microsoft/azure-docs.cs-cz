@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782808"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099484"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Správa mezi klienty v Security Center
 
@@ -28,12 +28,10 @@ Správa mezi klienty umožňuje zobrazit a spravovat stav zabezpečení pro víc
 
 - Bezpečnostní týmy organizací s více klienty můžou zobrazit a spravovat stav zabezpečení z jednoho místa.
 
-## <a name="set-up-cross-tenant-management"></a>Nastavení správy mezi klienty
+## <a name="set-up-cross-tenant-management"></a>Nastavení správy různých tenantů
 
-Pomocí [delegované správy prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md)můžete nastavit správu mezi klienty tím, že delegujete přístup k prostředkům spravovaných klientů do vašeho vlastního tenanta.
+Správa delegovaných prostředků Azure je jednou z klíčových součástí Azure Lighthouse. Pomocí těchto pokynů z dokumentace ke službě Azure Lighthouse můžete nastavit správu mezi klienty tím, že delegujete přístup k prostředkům spravovaných klientů na svého vlastního tenanta: [Správa delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-> [!NOTE]
-> Správa delegovaných prostředků Azure je jednou z klíčových součástí Azure Lighthouse.
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Jak funguje Správa mezi klienty v Security Center
 
@@ -43,7 +41,7 @@ V horním řádku nabídek klikněte na ikonu filtru a vyberte odběry z adresá
 
   ![Filtrovat klienty](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-Zobrazení a akce jsou v podstatě stejné. Tady je pár příkladů:
+Zobrazení a akce jsou v podstatě stejné. Tady je několik příkladů:
 
 - **Správa zásad zabezpečení**: z jednoho zobrazení spravujte stav zabezpečení mnoha prostředků pomocí [zásad](tutorial-security-policy.md), provedete akce s doporučeními zabezpečení a shromáždíte a spravujete data související se zabezpečením.
 - **Vylepšení zabezpečeného skóre a stav dodržování předpisů**: Díky viditelnosti mezi klienty můžete zobrazit celkové stav zabezpečení všech vašich klientů a kde a jak nejlépe vylepšit zabezpečení [skóre](secure-score-security-controls.md) a [dodržování předpisů stav](security-center-compliance-dashboard.md) pro každé z nich.
@@ -53,8 +51,4 @@ Zobrazení a akce jsou v podstatě stejné. Tady je pár příkladů:
 - **Spravujte pokročilé funkce ochrany cloudu a další informace**: Spravujte různé služby ochrany před internetovými útoky, jako je například [přístup k virtuálnímu počítači JIT (just-in-time)](security-center-just-in-time.md), [adaptivní posílení sítě](security-center-adaptive-network-hardening.md), [Adaptivní řízení aplikací](security-center-adaptive-application.md)a další.
  
 ## <a name="next-steps"></a>Další kroky
-Tento článek vysvětluje, jak funguje Správa mezi klienty v Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
-
-* [Posílit stav zabezpečení pomocí Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Nejčastější](faq-general.md) dotazy k Azure Security Center – Přečtěte si nejčastější dotazy týkající se používání služby.
-* [Přečtěte si o Azure Lighthouse v podnikových scénářích](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) – Zjistěte, jak může Azure Lighthouse zjednodušit správu mezi klienty v rámci podniku, který používá víc TENANTŮ Azure AD.
+Tento článek vysvětluje, jak funguje Správa mezi klienty v Security Center. Pokud chcete zjistit, jak může Azure Lighthouse zjednodušit správu mezi klienty v rámci podniku, který používá víc tenantů Azure AD, přečtěte si článek [Azure Lighthouse v podnikových scénářích](../lighthouse/concepts/enterprise.md).

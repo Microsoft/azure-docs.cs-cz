@@ -1,9 +1,9 @@
 ---
-title: Nejčastější dotazy k Azure Proxy aplikací služby AD | Microsoft Docs
+title: Proxy aplikací služby Azure Active Directory nejčastějších dotazech
 description: Přečtěte si odpovědi na nejčastější dotazy k používání služby Azure Proxy aplikací služby AD k publikování interních místních aplikací pro vzdálené uživatele.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589159"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487742"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -37,6 +38,21 @@ Ujistěte se, že máte alespoň Azure AD Premium licenci P1 nebo P2 a že je na
 
 ## <a name="connector-configuration"></a>Konfigurace konektoru
 
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>Proč můj konektor stále používá starší verzi a neautomaticky upgradoval na nejnovější verzi?
+
+Důvodem může být to, že služba aktualizace nepracuje správně nebo pokud nejsou k dispozici žádné nové aktualizace, které by mohla služba nainstalovat.
+
+Služba aktualizace je v pořádku, pokud je spuštěná a v protokolu událostí nejsou zaznamenány žádné chyby (protokoly aplikací a služeb – > Microsoft-> AadApplicationProxy-> aktualizace – > správce). 
+
+> [!IMPORTANT]
+> Pro automatický upgrade jsou vydané jenom hlavní verze. Doporučujeme, abyste konektor aktualizovali ručně podle pravidelného plánu. Další informace o nových verzích, typu vydání (stažení, automatický upgrade), opravách chyb a nových funkcích najdete v tématu [Azure proxy aplikací služby AD: Historie vydání verze](application-proxy-release-version-history.md).
+
+Postup ručního upgradu konektoru:
+
+-  Stáhněte si nejnovější verzi konektoru. (Najdete ho v části proxy aplikace na webu Azure Portal. Odkaz můžete najít také v [Azure proxy aplikací služby AD: Historie vydání verze](application-proxy-release-version-history.md).
+-   Instalační program restartuje služby Azure Proxy aplikací služby AD Connectoru. V některých případech může být vyžadováno restartování serveru, pokud instalační program nemůže nahradit všechny soubory. Proto doporučujeme před zahájením upgradu zavřít všechny aplikace (tj. Prohlížeč událostí).
+-   Spusťte instalační program. Proces upgradu je rychlý a nevyžaduje zadání přihlašovacích údajů a konektor se znovu neregistruje.
+
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>Můžou služby Application proxy Connector běžet v jiném uživatelském kontextu než výchozí?
 
 Ne, tento scénář se nepodporuje. Výchozí nastavení:
@@ -48,7 +64,7 @@ Ne, tento scénář se nepodporuje. Výchozí nastavení:
 
 Ne, v současné době to není možné. Pokus o registraci se vždy provádí v domovském tenantovi uživatele.
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Moje back-endové aplikace je hostována na více webových serverech a vyžaduje trvalost uživatelských relací (vytrvalost). Jak můžu dosáhnout trvalosti relace? 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Moje back-endové aplikace je hostována na více webových serverech a vyžaduje trvalost uživatelských relací (vytrvalost). Jak můžu dosáhnout trvalosti relace? 
 
 Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací](application-proxy-high-availability-load-balancing.md).
 
@@ -57,7 +73,7 @@ Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení 
 Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu TLS (kontrola TLS/HTTPS) ruší tuto metodu ověřování a není podporovaná. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádějí ukončení protokolu TLS.  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>Vyžaduje se TLS 1,2 pro všechna připojení?
-Ano. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
+Ano. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Můžu umístit dopředné proxy zařízení mezi servery konektoru a back-end aplikační server?
 Ano, tento scénář je podporován od verze konektoru 1.5.1526.0. Podívejte [se na téma práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -79,11 +95,12 @@ K dispozici jsou čítače sledování výkonu, které jsou nainstalovány spolu
 Konektor se nemusí nacházet ve stejné podsíti. Nicméně potřebuje překlad názvů (DNS, soubor hostitelů) k prostředku a nezbytné síťové připojení (směrování do prostředku, porty otevřené v prostředku atd.). Doporučení najdete v tématu [požadavky na topologii sítě při použití proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md).
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>Jaké verze Windows serveru mohu nainstalovat konektor?
-Proxy aplikací vyžaduje systém Windows Server 2012 R2 nebo novější. V současné době existuje omezení HTTP2 pro Windows Server 2019. Aby bylo možné úspěšně použít konektor v systému Windows Server 2019, je nutné přidat následující klíč registru a restartovat server:
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
 
+Proxy aplikací vyžaduje systém Windows Server 2012 R2 nebo novější. V současné době existuje omezení HTTP2 pro Windows Server 2019. Aby bylo možné úspěšně použít konektor v systému Windows Server 2019, je nutné přidat následující klíč registru a restartovat server:
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>Konfigurace aplikací
 
@@ -100,9 +117,22 @@ Zde jsou některé tipy pro řešení této chyby:
 
 Výchozí délka je 85 sekund. Nastavení "Long" je 180 sekund. Časový limit nelze rozšířit.
 
+### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>Může instanční objekt spravovat proxy aplikace pomocí PowerShellu nebo Microsoft Graph rozhraní API?
+
+Ne, to se v tuto chvíli nepodporuje.
+
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>Co se stane, když odstraním CWAP_AuthSecret (tajný klíč klienta) v registraci aplikace?
+
+Tajný kód klienta, také označovaný jako *CWAP_AuthSecret*, je automaticky přidán do objektu aplikace (registrace aplikace) při vytvoření aplikace Azure proxy aplikací služby AD.
+
+Tajný kód klienta je platný po dobu jednoho roku. Vytvoří se nový tajný klíč klienta, který se automaticky vytvoří předtím, než vyprší platnost aktuálního platného tajného klíče klienta. Tři CWAP_AuthSecret tajné klíče klienta jsou neustále uchovávány v objektu aplikace. 
+
+> [!IMPORTANT]
+> Odstranění CWAP_AuthSecret ukončí předběžné ověřování pro Azure Proxy aplikací služby AD. Neodstraňujte CWAP_AuthSecret.
+
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Návody změnit cílovou stránku Moje aplikace se načte?
 
-Na stránce registrace aplikací můžete změnit adresu URL domovské stránky na požadovanou externí adresu URL cílové stránky. Zadaná stránka se načte při spuštění aplikace z mých aplikací nebo z portálu Office 365. Postup konfigurace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace pomocí Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-home-page)
+Na stránce registrace aplikací můžete změnit adresu URL domovské stránky na požadovanou externí adresu URL cílové stránky. Zadaná stránka se načte při spuštění aplikace z mých aplikací nebo z portálu Office 365. Postup konfigurace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace pomocí Azure proxy aplikací služby AD](./application-proxy-configure-custom-home-page.md)
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>Můžou se publikovat jenom aplikace založené na službě IIS? Jaké webové aplikace běží na webových serverech s jiným systémem než Windows? Musí být konektor nainstalovaný na serveru s nainstalovanou službou IIS?
 
@@ -125,6 +155,12 @@ Další informace najdete v dokumentu White Paper [Principy omezeného delegová
 
 Ověřování NTLM se nedá použít jako metoda předběžného ověřování nebo jednotného přihlašování. Ověřování NTLM se dá použít jenom v případě, že se dá vyjednávat přímo mezi klientem a publikovanou webovou aplikací. Použití ověřování NTLM obvykle způsobí zobrazení výzvy k přihlášení v prohlížeči.
 
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>Můžu v případě jednotného přihlašování B2B IWA použít identitu přihlášení "místní hlavní název uživatele" nebo "místní název účtu SAM"?
+
+Ne, tato činnost nebude fungovat, protože uživatel typu Host ve službě Azure AD nemá atribut požadovaný žádnou z výše uvedených přihlašovacích identit.
+
+V tomto případě bude k dispozici záložní hodnota "hlavní název uživatele". Pokud chcete získat další informace o scénáři B2B, přečtěte si téma [udělení uživatelů B2B v Azure AD přístup k vašim místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md).
+
 ## <a name="pass-through-authentication"></a>Předávací ověřování
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>Můžu pro aplikace publikované s předávacím ověřováním použít zásady podmíněného přístupu?
@@ -141,7 +177,7 @@ Ne, tento scénář se nepodporuje, protože proxy aplikace ukončí provoz TLS.
 
 Informace najdete [v tématu publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-remote-desktop-services.md).
 
-### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Můžu ve scénáři publikování Brána vzdálené plochy použít omezené delegování pomocí protokolu Kerberos (integrované ověřování Windows s jednotným přihlašováním)?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Můžu ve scénáři publikování Brána vzdálené plochy použít ověřování pomocí protokolu Kerberos omezeného delegování (Single Sign-On-Windows Integrated Authentication)?
 
 Ne, tento scénář se nepodporuje.  
 
@@ -165,21 +201,21 @@ Další informace najdete [v tématu Povolení vzdáleného přístupu ke služb
 
 ### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Můžu použít mobilní aplikaci SharePoint (iOS/Android) k přístupu k publikovanému serveru SharePoint?
 
-[Mobilní aplikace SharePoint](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) nepodporuje aktuálně Azure Active Directory předběžné ověřování.
+[Mobilní aplikace SharePoint](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) nepodporuje aktuálně Azure Active Directory předběžné ověřování.
 
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Publikování Active Directory Federation Services (AD FS) (AD FS) 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Můžu použít Azure Proxy aplikací služby AD jako proxy server AD FS (jako je proxy webových aplikací)?
 
-Ne. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracovala s Azure AD a nesplňovala požadavky, které by fungovaly jako proxy AD FS.
+No. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracovala s Azure AD a nesplňovala požadavky, které by fungovaly jako proxy AD FS.
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>Funguje podpora protokolu WebSocket pro jiné aplikace než QlikSense?
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>Funguje podpora protokolu WebSocket pro jiné aplikace než QlikSense a webový klient vzdálené plochy (HTML5)?
 
 V současné době je podpora protokolu WebSocket stále ve verzi Public Preview a nemusí fungovat pro ostatní aplikace. Někteří zákazníci mají při použití protokolu WebSocket v jiných aplikacích smíšenou úspěšnost. Při testování takových scénářů bychom rádi slyšeli vaše výsledky. Pošlete nám prosím svůj názor na aadapfeedback@microsoft.com .
 
-Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správu systému Windows (WAC) nebo webový klient vzdálené plochy (HTML5) nefungují v předběžném prostředí Azure Proxy aplikací služby AD.
+Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správu systému Windows (WAC) nefungují v předběžném prostředí Azure Proxy aplikací služby AD.
 
 ## <a name="link-translation"></a>Překlad propojení
 
@@ -187,7 +223,7 @@ Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správ
 
 Ano. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
 
-Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
+Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](./application-proxy-configure-custom-domain.md). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="wildcards"></a>Zástupné znaky
 
@@ -198,5 +234,5 @@ Tento scénář se nepodporuje přímo. Pro tento scénář máte tyto možnosti
 1. Publikujte adresy URL HTTP i HTTPS jako samostatné aplikace se zástupnými znaky, ale poskytněte každé z nich jinou vlastní doménu. Tato konfigurace bude fungovat, protože má různé externí adresy URL.
 
 2. Publikujte adresu URL HTTPS prostřednictvím aplikace se zástupnými znaky. Publikujte aplikace HTTP samostatně pomocí těchto rutin PowerShellu pro proxy aplikace:
-   - [Správa aplikací proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [Správa konektoru proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [Správa aplikací proxy aplikací](/powershell/module/azuread/#application_proxy_application_management&preserve-view=true)
+   - [Správa konektoru proxy aplikací](/powershell/module/azuread/#application_proxy_connector_management&preserve-view=true)

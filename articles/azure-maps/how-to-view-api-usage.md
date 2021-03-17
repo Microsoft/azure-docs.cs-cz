@@ -4,16 +4,16 @@ description: Naučte se zobrazovat metriky využití Azure Maps API, například
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c9b732bd25e7ef8aa084c98d5b059d422f86a4b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036483"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003510"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Zobrazení metrik využití rozhraní API služby Azure Maps
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak zobrazit metriky využití rozhraní API pro �
 
 ## <a name="view-metric-snapshot"></a>Zobrazit snímek metriky
 
-Některé běžné metriky si můžete prohlédnout na stránce **Přehled** v účtu Maps. V současné době zobrazuje *Celkový počet požadavků*, *Celkový počet chyb*a *dostupnost* v rámci selektivního časového intervalu.
+Některé běžné metriky si můžete prohlédnout na stránce **Přehled** v účtu Maps. V současné době zobrazuje *Celkový počet požadavků*, *Celkový počet chyb* a *dostupnost* v rámci selektivního časového intervalu.
 
 ![Přehled Azure Maps metriky využití](media/how-to-view-api-usage/portal-overview.png)
 
@@ -66,4 +66,4 @@ Další informace o rozhraních API Azure Maps, pro která chcete sledovat využ
 > [Azure Maps Android SDK postupy](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Azure Maps REST API](https://docs.microsoft.com/rest/api/maps)
+> [Dokumentace k Azure Maps REST API](/rest/api/maps)

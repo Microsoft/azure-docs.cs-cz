@@ -1,18 +1,18 @@
 ---
 title: Přesměrování externího provozu pomocí CLI – Azure Application Gateway
-description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje vnitřní webový provoz do příslušného fondu pomocí Azure CLI.
+description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje externí webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 838c2dc887790bb12b390261d94748595232d8b3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804674"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565853"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s externím přesměrování pomocí Azure CLI
 
@@ -20,16 +20,15 @@ Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesm�
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření naslouchacího procesu a pravidla přesměrování
-> * Vytvoření služby Application Gateway
+* Nastavit síť
+* Vytvoření naslouchacího procesu a pravidla přesměrování
+* Vytvoření brány Application Gateway
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -58,7 +57,7 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myPublicIPAddress* , které jste vytvořili dříve. 
 
@@ -124,7 +123,7 @@ az network application-gateway rule create \
   --redirect-config myredirect
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
@@ -132,8 +131,4 @@ V prohlížeči by se měla zobrazit *Bing.com* .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> * Nastavit síť
-> * Vytvoření naslouchacího procesu a pravidla přesměrování
-> * Vytvoření služby Application Gateway
+- [Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI](redirect-internal-site-cli.md)

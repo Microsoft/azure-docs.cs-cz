@@ -6,15 +6,15 @@ services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 2d2234ec333746c6f1da59346bdb74247deb616c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568403"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517684"
 ---
 # <a name="about-virtual-wan-pricing"></a>Informace o cenách virtuální sítě WAN
 
@@ -23,8 +23,7 @@ Služba Azure Virtual WAN přináší do sjednoceného rozhraní několik síťo
 Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuální síť WAN nedá navrhnout jedna cena. [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) poskytuje mechanismus pro odvození nákladů, který je založen na službách zřízených ve virtuální síti WAN. Tento článek popisuje Nejčastější dotazy týkající se cen virtuální sítě WAN.
 
 >[!NOTE]
->Aktuální informace o cenách najdete v tématu [ceny služby Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/).
->
+>Aktuální informace o cenách najdete v tématu [ceny služby Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/). Poplatky mezi centrálním centrem (centrem a centrem) se nezobrazují na stránce s cenami virtuální sítě WAN, protože se na ni vztahují poplatky za Inter-Region (v rámci/mezi kontinentální) poplatky za [přenos dat Azure](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>Běžné otázky týkající se cen
 
@@ -38,7 +37,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Co je jednotka připojení?
 
-**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. V případě sítě VPN typu Site-to-Site to znamená, že se jedná o větve. Pro uživatele VPN (Point-to-site) to implikuje vzdálené uživatele. Pro ExpressRoute to znamená připojení okruhu ExpressRoute.<br>Příklad:
+**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. Pro síť VPN typu Site-to-site implikuje tato hodnota větve. Pro uživatele VPN (Point-to-site) Tato hodnota implikuje vzdálené uživatele. Pro ExpressRoute tato hodnota implikuje připojení okruhu ExpressRoute.<br>Příklad:
 
 * Jedno připojení k síti VPN se připojuje k Azure VPN v nákladech virtuálního rozbočovače. $0,05/hod. Proto připojení větví 100, která se připojují k virtuálnímu rozbočovači Azure, by znamenala náklady na $0,05 * 100/hod.
 
@@ -50,32 +49,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 * Jakékoli přenosy přicházející do Azure se neúčtují. Provoz, který opouští Azure (přes VPN, ExpressRoute nebo připojení VPN typu Point-to-site), podléhá standardním [poplatkům za Azure Data Transfer](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-* Pro poplatky za přenos dat mezi virtuálním rozbočovačem WAN a vzdáleným virtuálním rozbočovačem WAN nebo virtuální sítí v jiné oblasti, než je zdrojové centrum, platí poplatky za přenos dat pro provoz opouštějící rozbočovač. Příklad: provoz opouštící centrum Východní USA se bude účtovat za $0,02/GB a přejde na Západní USA centrum. Za provoz vstupu do centra Západní USA se nic neúčtuje. V následujících tabulkách jsou uvedeny poplatky.
-
-Níže uvedené tabulky používají následující zkratky: {pole: Severní Amerika}, {EU: Evropa}, {MEA: střední Východová Afrika}, {OC: Oceánie a (Austrálie – střed a Austrálie – střed 2)}, {LATAM: Latinská Amerika} 
-
-**Ceny v rámci kontinentu (*)**
-
-| Uvnitř kontinentu| Cena ($/GB)|
-|---|---|
-| Do ' Nam '|0,02 USD |
-| EU až EU |0,02 USD |
-| Asie – Asie (kromě Číny)|$0,10 |
-| MEA do MEA|$0,16 |
-| LATAM-LATAM |$0,16 |
-| OC-OC|$0,12 |
-
-**Ceny za přenos mezi kontinentálními písmeny (*)**
-
-| Mezi kontinentálními| Cena ($/GB)|
-|---|---|
-| OD ze země do EU nebo EU do |$0,07 |
-| OD LATAM k libovolnému místu |$0,17 |
-| Z MEA do odkudkoli |$0,17 |
-| OD Oceánie A k libovolnému místu |$0,12 |
-| Z Asie (s výjimkou Číny) na libovolné místo |$0,12 |
-
-(*) Některé poplatky můžou platit od 1. srpna 2020.
+* Pro poplatky za přenos dat mezi virtuálním rozbočovačem WAN a vzdáleným virtuálním rozbočovačem WAN nebo virtuální sítí v jiné oblasti, než je zdrojové centrum, platí poplatky za přenos dat pro provoz opouštějící rozbočovač. Příklad: provoz opouštící centrum Východní USA se bude účtovat za $0,02/GB a přejde na Západní USA centrum. Za provoz vstupu do centra Západní USA se nic neúčtuje. Všechna centra pro provoz na rozbočovači se vztahují na Inter-Region (uvnitř/mezi kontinentální) poplatky za [přenos dat Azure](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
 ### <a name="what-is-the-difference-between-a-standard-hub-fee-and-a-standard-hub-processing-fee"></a><a name="fee"></a>Jaký je rozdíl mezi standardním poplatkem centra a standardním poplatkem za zpracování?
 

@@ -3,13 +3,13 @@ title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Function
 description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810084"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326450"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -19,7 +19,7 @@ Pokud se Azure Functions vývojářům v jazyce Java, zvažte prosím, že si ne
 
 | Začínáme | Koncepty| 
 | -- | -- |  
-| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
+| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](./create-first-function-vs-code-java.md)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](./create-first-function-cli-java.md)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Základní informace o funkcích jazyka Java
 
@@ -49,13 +49,25 @@ Pokud dáváte přednost vývoji příkazového řádku od terminálu, nejjednod
 
 Následující příkaz vytvoří nový projekt funkce jazyka Java pomocí tohoto archetype:
 
-```
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+    -DarchetypeArtifactId=azure-functions-archetype
 ```
 
-Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java). 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype
+```
+
+---
+
+Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](./create-first-function-cli-java.md).
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -134,8 +146,6 @@ Tady je vygenerovaný odpovídající modul `function.json` [Azure-Functions-Mav
 
 ## <a name="java-versions"></a>Verze Java
 
-_Podpora pro Java 11 je momentálně ve verzi Preview._
-
 Verze Java, která se používá při vytváření aplikace Function App, na které běží funkce v Azure, je určená v souboru pom.xml. Maven Archetype aktuálně generuje pom.xml pro jazyk Java 8, kterou můžete před publikováním změnit. Verze Java v pom.xml by měla odpovídat verzi, ve které jste svou aplikaci místně vyvinuli a otestovali. 
 
 ### <a name="supported-versions"></a>Podporované verze
@@ -144,14 +154,16 @@ V následující tabulce jsou uvedeny aktuální podporované verze jazyka Java 
 
 | Verze funkcí | Verze Java (Windows) | Verze Java (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (Preview)<br/>8<sup>\*</sup> | 11 (Preview)<br/>8 |
-| 2.x | 8 | Není k dispozici |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
+| 2.x | 8 | neuvedeno |
 
-<sup>\*</sup>Toto je aktuální výchozí nastavení pom.xml generovaného archetypeem Maven.
+Pokud pro nasazení nezadáte verzi Java, Maven Archetype ve výchozím nastavení je Java 8 během nasazování do Azure.
 
 ### <a name="specify-the-deployment-version"></a>Zadat verzi nasazení
 
-V současné době Maven Archetype vygeneruje pom.xml, která cílí na Java 8. Následující prvky v pom.xml je třeba aktualizovat, aby se vytvořila aplikace Function App, která spouští Java 11.
+Verzi Java, která cílí na Maven Archetype, můžete řídit pomocí `-DjavaVersion` parametru. Hodnota tohoto parametru může být buď `8` nebo `11` . 
+
+Maven Archetype vygeneruje pom.xml, která cílí na zadanou verzi Java. Následující prvky v pom.xml označují verzi jazyka Java, která se má použít:
 
 | Prvek |  Hodnota Java 8 | Hodnota Java 11 | Popis |
 | ---- | ---- | ---- | --- |
@@ -210,19 +222,40 @@ V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty na
 
 Pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) můžete nastavit `JAVA_OPTS` , jak je uvedeno v následujícím příkladu:
 
-#### <a name="consumption-plan"></a>[Plán Consumption](#tab/consumption)
+# <a name="consumption-plan"></a>[Plán Consumption](#tab/consumption/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
-"WEBSITE_USE_PLACEHOLDER=0" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    "WEBSITE_USE_PLACEHOLDER=0" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-#### <a name="dedicated-plan--premium-plan"></a>[Vyhrazený plán/plán Premium](#tab/dedicated+premium)
+
+# <a name="consumption-plan"></a>[Plán Consumption](#tab/consumption/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    "WEBSITE_USE_PLACEHOLDER=0" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
+# <a name="dedicated-plan--premium-plan"></a>[Vyhrazený plán/plán Premium](#tab/dedicated+premium/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+
+# <a name="dedicated-plan--premium-plan"></a>[Vyhrazený plán/plán Premium](#tab/dedicated+premium/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
 ---
 
 Tento příklad povolí bezobslužný režim. Nahraďte `<APP_NAME>` názvem vaší aplikace Function App a `<RESOURCE_GROUP>` skupinou prostředků. 
@@ -274,8 +307,8 @@ public class Function {
     @FunctionName("echo")
     public static String echo(
         @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
-        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
-        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData,
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData
     ) {
         testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
         return "Hello, " + inputReq + " and " + inputData.getKey() + ".";
@@ -320,7 +353,7 @@ Pokud chcete dostávat dávku vstupů, můžete vytvořit vazby na `String[]` ,,
 
 ```
 
-Tato funkce se aktivuje pokaždé, když se v nakonfigurovaném centru událostí nacházejí nová data. Vzhledem `cardinality` k tomu, že je nastavena na `MANY` , funkce dostane dávku zpráv z centra událostí. `EventData`z centra událostí se převede na `TestEventData` pro provádění funkce.
+Tato funkce se aktivuje pokaždé, když se v nakonfigurovaném centru událostí nacházejí nová data. Vzhledem `cardinality` k tomu, že je nastavena na `MANY` , funkce dostane dávku zpráv z centra událostí. `EventData` z centra událostí se převede na `TestEventData` pro provádění funkce.
 
 ### <a name="output-binding-example"></a>Příklad výstupní vazby
 
@@ -460,15 +493,36 @@ Rozhraní příkazového řádku Azure můžete použít ke streamování protok
 
 Tady je postup konfigurace aplikace Function App pro zápis protokolování aplikace pomocí rozhraní příkazového řádku Azure CLI:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+---
+
 Pokud chcete streamovat výstup protokolování pro aplikaci Function App pomocí rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, bash nebo relaci Terminálové služby a zadejte tento příkaz:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+---
+
 Příkaz [AZ WebApp log Tail](/cli/azure/webapp/log) obsahuje možnosti pro filtrování výstupu pomocí `--provider` Možnosti. 
 
 Pokud chcete soubory protokolu stáhnout jako jeden soubor ZIP pomocí rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, bash nebo relaci Terminálové služby a zadejte tento příkaz:

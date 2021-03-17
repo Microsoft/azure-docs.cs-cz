@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: beb580a02e1db80cf2d74f8167a98c9ead170810
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538752"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998664"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Kurz: Konfigurace 4me pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v 4me a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro 4me.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -45,7 +45,7 @@ Před konfigurací 4me pro Automatické zřizování uživatelů se službou Azu
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -80,21 +80,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro 4me ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **4me**.
 
     ![Odkaz 4me v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. Pokud chcete načíst **adresu URL tenanta** a **tajný token** účtu 4me, postupujte podle návodu popsaného v kroku 6.
 
@@ -116,39 +116,39 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé 4me**.
 
-    ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Snímek obrazovky se stránkou mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do FourMe." border="false":::
     
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v 4me pro operace aktualizace. Ujistěte se prosím, že [4me podporuje filtrování](https://developer.4me.com/v1/scim/users/) u odpovídajícího atributu, který jste zvolili. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Snímek obrazovky se stránkou mapování atributů. Tabulka obsahuje seznam atributů Azure Active Directory, odpovídající atributy FourMe a stav pro porovnání." border="false":::
     
 12. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do 4me**.
 
-    ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Snímek obrazovky se stránkou mapování V části název se zvýrazní synchronizace skupin Azure Active Directory FourMe." border="false":::
     
 13. Zkontrolujte atributy skupiny synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v 4me pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Mapování skupin 4me](media/4me-provisioning-tutorial/4me-group-attribute.png)
 
-14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Pokud chcete povolit službu Azure AD Provisioning pro 4me, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
 16. Definujte uživatele nebo skupiny, které chcete zřídit pro 4me, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-17. Až budete připraveni zřídit, klikněte na **Uložit**.
+17. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v 4me.
 
@@ -160,11 +160,11 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * 4me vygenerované tajné tokeny mají datum vypršení platnosti v měsíci od generace.
 * 4me nepodporuje operace **odstranění** .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

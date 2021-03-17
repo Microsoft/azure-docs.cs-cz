@@ -4,15 +4,15 @@ description: Smlouva standard pro Azure Marketplace a AppSource v partnerském c
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/20/2020
-ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121550"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488872"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
@@ -21,7 +21,7 @@ Microsoft nabízí standardní smlouvu pro komerční tržiště Microsoftu. To 
 Podmínky a ujednání pro nabídku jsou definovány při vytváření nabídky v partnerském centru. Místo poskytování vlastních podmínek a ujednání můžete zvolit, že se má používat standardní smlouva pro komerční tržiště Microsoftu.
 
 >[!Note]
->Po publikování nabídky pomocí standardní smlouvy pro komerční tržiště společnosti Microsoft nebudete moci používat vlastní podmínky a ujednání. Jedná se o scénář "nebo". Vaše řešení si buď nabídnete v rámci standardní smlouvy, *nebo* podle vašich vlastních podmínek. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
+>Po publikování nabídky s použitím standardní smlouvy pro komerční tržiště Microsoftu nebudete moct používat vlastní podmínky a ujednání. Vaše řešení si buď nabídnete v rámci standardní smlouvy, *nebo* podle vašich vlastních podmínek. Vlastní podmínky a ujednání jsou definovány na úrovni nabídky a platí pro všechny plány; na stránce **vlastností** vaší nabídky v partnerském centru napište vlastní podmínky a ujednání. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
 
 ## <a name="standard-contract-amendments"></a>Změny smlouvy Standard
 
@@ -34,7 +34,7 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 * Vlastní změny: tyto změny představují zvláštní změny standardní smlouvy, které jsou zaměřené na konkrétní zákazníky jenom prostřednictvím ID tenanta Azure. Vydavatelé můžou zvolit tenanta, na který chtějí cílit. S vlastními podmínkami změny v nákupním toku nabídky se zobrazí pouze zákazníci z tenanta.  Zákazníci musí přijmout podmínky smlouvy Standard a jejich změny, aby mohli používat vaši nabídku.
 
 >[!Note]
->Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy.
+>Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy. Změny jsou omezené na 4000 znaků včetně mezer.
 
 Standardní smlouvu pro komerční tržiště společnosti Microsoft můžete využít pro následující typy nabídek: aplikace Azure (šablony řešení a spravované aplikace), Virtual Machines a SaaS.
 

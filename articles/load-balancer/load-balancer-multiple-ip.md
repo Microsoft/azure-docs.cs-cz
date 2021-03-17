@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d28946aad263af635a0139e68d424a77a1eab25
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803638"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417820"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení u více konfigurací protokolu IP pomocí Azure Portal
 
@@ -26,7 +26,6 @@ ms.locfileid: "84803638"
 > * [Azure Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [Rozhraní příkazového řádku](load-balancer-multiple-ip-cli.md)
-
 
 V tomto článku vám ukážeme, jak používat Azure Load Balancer s více IP adresami na sekundárním řadiči síťového rozhraní (NIC). Následující diagram znázorňuje náš scénář:
 
@@ -72,7 +71,7 @@ Pro každý virtuální počítač ve vaší virtuální síti přidejte konfigu
     
     2. Vyberte **Konfigurace protokolu IP**. V dalším podokně blízko horní části vyberte **Přidat**.
 
-    3. V části **Přidat konfigurace protokolu IP**přidejte do síťové karty druhou konfiguraci IP adresy: 
+    3. V části **Přidat konfigurace protokolu IP** přidejte do síťové karty druhou konfiguraci IP adresy: 
 
         1. Zadejte název sekundární konfigurace IP adresy. (Například pro VM1 a VM2 název konfigurace protokolu IP **VM1NIC2-ipconfig2** a **VM2NIC2-ipconfig2**, v uvedeném pořadí)
 
@@ -90,11 +89,11 @@ Vytvořte Nástroj pro vyrovnávání zatížení pro konfiguraci:
 
 2. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**. V dalším kroku vyberte **vytvořit**.
 
-3. V části **vytvořit nástroj pro vyrovnávání zatížení**zadejte název nástroje pro vyrovnávání zatížení. V tomto scénáři používáme název **mylb**.
+3. V části **vytvořit nástroj pro vyrovnávání zatížení** zadejte název nástroje pro vyrovnávání zatížení. V tomto scénáři používáme název **mylb**.
 
-4. V části **Veřejná IP adresa**vytvořte novou veřejnou IP adresu s názvem **PublicIP1**.
+4. V části **Veřejná IP adresa** vytvořte novou veřejnou IP adresu s názvem **PublicIP1**.
 
-5. V části **Skupina prostředků**vyberte existující skupinu prostředků pro virtuální počítače (například **contosofabrikam**). Vyberte umístění, do kterého chcete nasadit nástroj pro vyrovnávání zatížení, a pak vyberte **OK**.
+5. V části **Skupina prostředků** vyberte existující skupinu prostředků pro virtuální počítače (například **contosofabrikam**). Vyberte umístění, do kterého chcete nasadit nástroj pro vyrovnávání zatížení, a pak vyberte **OK**.
 
 Nástroj pro vyrovnávání zatížení začne nasazovat. Úspěšné dokončení nasazení může trvat několik minut. Po dokončení nasazení se nástroj pro vyrovnávání zatížení zobrazí jako prostředek ve vaší skupině prostředků.
 
@@ -108,9 +107,9 @@ Pro každý web (contoso.com a fabrikam.com) nakonfigurujte fond front-end IP ad
 
    1. Zadejte název pro front-end IP adresu.
 
-   2. V poli **Skupina prostředků**vyberte existující skupinu prostředků pro vaše virtuální počítače (například **contosofabrikam**).
+   2. V poli **Skupina prostředků** vyberte existující skupinu prostředků pro vaše virtuální počítače (například **contosofabrikam**).
 
-   3. V poli **umístění**vyberte stejné umístění jako virtuální počítače.
+   3. V poli **umístění** vyberte stejné umístění jako virtuální počítače.
 
    4. Vyberte **OK**.
 
@@ -120,11 +119,11 @@ Pro každý web (contoso.com a fabrikam.com) nakonfigurujte fond front-end IP ad
 
 4. Vyberte nástroj pro vyrovnávání zatížení (**mylb**), do kterého chcete přidat fond front-end IP adres.
 
-5. V části **Nastavení**vyberte **Konfigurace IP adresy front-endu**. V dalším podokně blízko horní části vyberte **Přidat**.
+5. V části **Nastavení** vyberte **Konfigurace IP adresy front-endu**. V dalším podokně blízko horní části vyberte **Přidat**.
 
 6. Zadejte název pro front-end IP adresu (například **contosofe** nebo **fabrikamfe**).
 
-7. <a name="step3-7"></a>Vyberte **IP adresa**. V části **zvolit veřejnou IP adresu**vyberte IP adresy pro front-end (**PublicIP1** nebo **PublicIP2**).
+7. <a name="step3-7"></a>Vyberte **IP adresa**. V části **zvolit veřejnou IP adresu** vyberte IP adresy pro front-end (**PublicIP1** nebo **PublicIP2**).
 
 8. Vytvořte druhou front-end IP adresu opakováním <a href="#step3-3">kroku 3</a> až <a href="#step3-7">7</a> v této části.
 
@@ -138,19 +137,19 @@ Pro každý web (contoso.com a fabrikam.com) nakonfigurujte fond back-end adres 
 
 2. Vyberte nástroj pro vyrovnávání zatížení (**mylb**), do kterého chcete přidat fond back-endu.
 
-3. V části **Nastavení**vyberte **back-endové fondy**. Zadejte název pro svůj fond back-end (například **contosopool** nebo **fabrikampool**). V dalším podokně blízko horní části vyberte **Přidat**. 
+3. V části **Nastavení** vyberte **back-endové fondy**. Zadejte název pro svůj fond back-end (například **contosopool** nebo **fabrikampool**). V dalším podokně blízko horní části vyberte **Přidat**. 
 
-4. V případě **přidruženého k**vyberte **skupinu dostupnosti**.
+4. V případě **přidruženého k** vyberte **skupinu dostupnosti**.
 
-5. Jako **skupinu dostupnosti**vyberte **myAvailset**.
+5. Jako **skupinu dostupnosti** vyberte **myAvailset**.
 
 6. Přidejte cílové konfigurace sítě IP pro oba virtuální počítače: 
 
     ![Konfigurace fondů back-endu pro nástroj pro vyrovnávání zatížení](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
     
-    1. U **cílového virtuálního počítače**vyberte virtuální počítač, který chcete přidat do fondu back-end (například **VM1** nebo **VM2**).
+    1. U **cílového virtuálního počítače** vyberte virtuální počítač, který chcete přidat do fondu back-end (například **VM1** nebo **VM2**).
 
-    2. V poli **Konfigurace sítě IP**vyberte konfiguraci IP sekundární síťové karty pro virtuální počítač, který jste vybrali v předchozím kroku (například **VM1NIC2-ipconfig2** nebo **VM2NIC2-ipconfig2**).
+    2. V poli **Konfigurace sítě IP** vyberte konfiguraci IP sekundární síťové karty pro virtuální počítač, který jste vybrali v předchozím kroku (například **VM1NIC2-ipconfig2** nebo **VM2NIC2-ipconfig2**).
 
 7. Vyberte **OK**.
 
@@ -164,7 +163,7 @@ Konfigurace sondy stavu pro váš nástroj pro vyrovnávání zatížení:
 
 2. Vyberte nástroj pro vyrovnávání zatížení (**mylb**), do kterého chcete přidat sondu stavu.
 
-3. V části **Nastavení**vyberte **sonda stavu**. V dalším podokně blízko horní části vyberte **Přidat**. 
+3. V části **Nastavení** vyberte **sonda stavu**. V dalším podokně blízko horní části vyberte **Přidat**. 
 
 4. Zadejte název sondy stavu (například **http**). Vyberte **OK**.
 
@@ -172,13 +171,13 @@ Konfigurace sondy stavu pro váš nástroj pro vyrovnávání zatížení:
 
 Pro každý web (contoso.com a fabrikam.com) nakonfigurujte pravidla vyrovnávání zatížení:
     
-1. <a name="step6-1"></a>V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**. V dalším podokně blízko horní části vyberte **Přidat**. 
+1. <a name="step6-1"></a>V části **Nastavení** vyberte **pravidla vyrovnávání zatížení**. V dalším podokně blízko horní části vyberte **Přidat**. 
 
-2. Do pole **název**zadejte název pravidla vyrovnávání zatížení (například **HTTPc** pro contoso.com nebo **HTTPf** pro Fabrikam.com).
+2. Do pole **název** zadejte název pravidla vyrovnávání zatížení (například **HTTPc** pro contoso.com nebo **HTTPf** pro Fabrikam.com).
 
-3. V poli **IP adresa front-endu**vyberte front-end IP adresu, kterou jste dříve vytvořili (například **contosofe** nebo **fabrikamfe**).
+3. V poli **IP adresa front-endu** vyberte front-end IP adresu, kterou jste dříve vytvořili (například **contosofe** nebo **fabrikamfe**).
 
-4. Pro **port** a **back-end port**ponechte výchozí hodnotu **80**.
+4. Pro **port** a **back-end port** ponechte výchozí hodnotu **80**.
 
 5. V případě **plovoucí IP adresy (přímé vrácení serveru)** vyberte možnost **zakázáno**.
 

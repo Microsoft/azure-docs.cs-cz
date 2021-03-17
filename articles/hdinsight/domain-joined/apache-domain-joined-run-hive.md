@@ -1,19 +1,15 @@
 ---
 title: Zásady Apache Hive v Apache Ranger – Azure HDInsight
 description: Naučte se konfigurovat zásady Apache Ranger pro podregistr ve službě Azure HDInsight pomocí Balíček zabezpečení podniku.
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705700"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 
@@ -21,8 +17,8 @@ Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro Apache Hive. V tomt
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster HDInsight se Balíček zabezpečení podniku. Viz téma [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
-* Pracovní stanice s Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
+* Cluster HDInsight se Balíček zabezpečení podniku. Viz téma [konfigurace clusterů HDInsight s](./apache-domain-joined-configure-using-azure-adds.md)protokolem ESP.
+* Pracovní stanice s Microsoft 365 aplikacemi pro podniky, Office 2016, Office 2013 Professional Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
 **Připojení k uživatelskému rozhraní správce Ranger**
@@ -49,14 +45,14 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
 **Vytvoření zásad Ranger**
 
 1. Otevřete uživatelské rozhraní správce Ranger. Viz Připojení k uživatelskému rozhraní správce Apache Ranger.
-2. V části **podregistr**vyberte **CLUSTERNAME_Hive**. Měly by se zobrazit dvě předem nakonfigurované zásady.
-3. Vyberte **Přidat novou zásadu**a pak zadejte následující hodnoty:
+2. V části **podregistr** vyberte **CLUSTERNAME_Hive**. Měly by se zobrazit dvě předem nakonfigurované zásady.
+3. Vyberte **Přidat novou zásadu** a pak zadejte následující hodnoty:
 
     |Vlastnost |Hodnota |
     |---|---|
     |Název zásady|Read-hivesampletable – vše|
     |Databáze podregistru|default|
-    |table|hivesampletable|
+    |tabulka|hivesampletable|
     |Sloupec podregistr|*|
     |Vybrat uživatele|hiveuser1|
     |Oprávnění|vybrali|
@@ -74,7 +70,7 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
     |---|---|
     |Název zásady|Read-hivesampletable-devicemake|
     |Databáze podregistru|default|
-    |table|hivesampletable|
+    |tabulka|hivesampletable|
     |Sloupec podregistr|ClientID, devicemake|
     |Vybrat uživatele|hiveuser2|
     |Oprávnění|vybrali|
@@ -88,7 +84,7 @@ Pokyny najdete v tématu [Vytvoření zdroje dat Hive ODBC](../hadoop/apache-had
  | Název zdroje dat | Zadejte název zdroje dat. |
  | Hostitel | Zadejte CLUSTERNAME.azurehdinsight.net. Například mujHDICluster.azurehdinsight.net. |
  | Port | Použijte **443**. (Tento port se změnil z 563 na 443.) |
- | databáze | Použijte **Výchozí**. |
+ | databáze | Použijte **výchozí nastavení**. |
  | Typ serveru Hive | Vyberte **Hive Server 2**. |
  | Mechanismus | Vyberte **Služba Azure HDInsight** |
  | Cesta HTTP | Ponechte prázdné. |
@@ -113,7 +109,7 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
 1. Počkejte, než se otevře dialogové okno **Vybrat databázi a tabulku**. Může to trvat několik sekund.
 
-1. Vyberte **hivesampletable**a pak vyberte **Další**.
+1. Vyberte **hivesampletable** a pak vyberte **Další**.
 
 1. Vyberte **Dokončit**.
 
@@ -158,7 +154,7 @@ Otestování druhé zásady (Read-hivesampletable-devicemake), kterou jste vytvo
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
+* Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](./apache-domain-joined-configure-using-azure-adds.md)protokolem ESP.
 * Informace o správě clusteru HDInsight pomocí protokolu ESP najdete v tématu [Správa clusterů HDInsight pomocí protokolu ESP](apache-domain-joined-manage.md).
 * Informace o spouštění dotazů na podregistr pomocí SSH na clusterech HDInsight s protokolem ESP najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
 * Informace o připojení podregistru pomocí JDBC pro podregistr najdete v tématu [připojení k Apache Hive v Azure HDInsight pomocí ovladače JDBC pro podregistr](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) .

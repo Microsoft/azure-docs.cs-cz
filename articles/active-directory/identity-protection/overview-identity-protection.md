@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509106"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955395"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -49,16 +49,20 @@ Identity Protection identifikuje rizika v následujících klasifikacích:
 
 | Typ detekce rizika | Popis |
 | --- | --- |
-| Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
+| Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
+| Propojená IP adresa pro malware | Přihlaste se přes propojenou IP adresu malwaru. |
 | Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
-| Propojená IP adresa pro malware | Přihlášení z IP adresy propojené s malwarem |
-| Nevrácená pověření | Toto zjišťování rizik indikuje, že došlo k úniku platných přihlašovacích údajů uživatele. |
+| Nevrácená pověření | Označuje, že byly Nevráceny platné přihlašovací údaje uživatele. |
+| Sprej hesla | Označuje, že více uživatelských jmen se provádí v jednotném a hrubou silou pomocí běžných hesel. |
 | Analýza hrozeb v Azure AD | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku. |
+| Nová země | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country). |
+| Aktivita z anonymní IP adresy | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses). |
+| Podezřelé přesměrování doručené pošty | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding). |
 
 Další podrobnosti o těchto rizicích a o tom, jak se počítají, najdete v článku [co je to riziko](concept-identity-protection-risks.md).
 
-Rizikové signály můžou aktivovat úsilí k nápravě, jako je třeba vyžadování uživatelů: provádět Azure Multi-Factor Authentication, resetovat heslo pomocí samoobslužného resetování hesla nebo zablokovat, dokud správce neprovede akci.
+Rizikové signály můžou aktivovat úsilí k nápravě, jako je třeba vyžadování uživatelů: provádět Multi-Factor Authentication služby Azure AD, resetovat heslo pomocí samoobslužného resetování hesla nebo zablokovat, dokud správce neprovede akci.
 
 ## <a name="risk-investigation"></a>Vyšetřování rizik
 
@@ -95,23 +99,25 @@ Pro přístup k aplikaci Identity Protection je potřeba, aby uživatelé byli �
 
 V současné době role operátora zabezpečení nemá přístup k sestavě rizikových přihlášení.
 
-Správci podmíněného přístupu můžou taky vytvářet zásady, které přistupují k riziku přihlašování jako podmínka. Další informace najdete v článku [podmíněný přístup: podmínky](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
+Správci podmíněného přístupu můžou také vytvářet zásady, které přistupují k riziku přihlašování jako podmínka. Další informace najdete v článku [podmíněný přístup: podmínky](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Schopnost | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Aplikace Azure AD Free/Office 365 |
+| Schopnost | Podrobnosti  | Aplikace Azure AD Free/Microsoft 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | Ne | Ne |
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | Ne | Ne |
-| Sestavy zabezpečení | Přehled | Ano | Ne | Ne |
-| Sestavy zabezpečení | Rizikoví uživatelé | Full access | Omezené informace | Omezené informace |
-| Sestavy zabezpečení | Riziková přihlášení | Full access | Omezené informace | Omezené informace |
-| Sestavy zabezpečení | Detekce rizik | Full access | Omezené informace | Ne |
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | Ne | Ne |
-| Oznámení | Týdenní výtah | Ano | Ne | Ne |
-| | Zásady registrace MFA | Ano | Ne | No |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | No | No |Ano | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | No |  No |Ano |
+| Sestavy zabezpečení | Přehled |  No | No |Ano |
+| Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Full access|
+| Sestavy zabezpečení | Riziková přihlášení  | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Full access|
+| Sestavy zabezpečení | Detekce rizik   | No | Omezené informace. Žádný zásobník podrobností| Full access|
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | No | No |Ano |
+| Oznámení | Týdenní výtah| No | No | Ano | 
+| | Zásady registrace MFA | No | No | Ano |
+
+Další informace o těchto propracovaných sestavách najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 
 ## <a name="next-steps"></a>Další kroky
 

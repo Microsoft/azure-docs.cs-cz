@@ -5,19 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 10/01/2020
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419525"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255963"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
+
+> [!NOTE]
+> Přihlášení k Azure AD s e-mailem jako alternativním přihlašovacím ID je funkce Public Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Mnoho organizací chce umožnit uživatelům přihlašovat se Azure Active Directory (Azure AD) pomocí stejných přihlašovacích údajů, jako je místní prostředí adresáře. U tohoto přístupu, označovaného jako hybridní ověřování, si uživatelé musí pamatovat jenom jednu sadu přihlašovacích údajů.
 
@@ -29,8 +32,13 @@ Některé organizace se nepřesunuly do hybridního ověřování z následujíc
 
 Abyste mohli přejít na hybridní ověřování, můžete teď nakonfigurovat Azure AD tak, aby se uživatelé mohli přihlašovat pomocí e-mailu v ověřené doméně jako alternativní přihlašovací ID. Pokud se například *Contoso* přesměruje na *Fabrikam*, místo toho, abyste se mohli dál přihlašovat pomocí staršího `balas@contoso.com` hlavního názvu uživatele (UPN), se teď dá použít alternativní přihlašovací ID. Pro přístup k aplikaci nebo službám se uživatelé přihlásí k Azure AD pomocí přiřazeného e-mailu, jako je například `balas@fabrikam.com` .
 
+V tomto článku se dozvíte, jak povolit a používat e-maily jako alternativní přihlašovací ID. Tato funkce je k dispozici v edici Azure AD Free a vyšší.
+
 > [!NOTE]
-> Přihlášení k Azure AD s e-mailem jako alternativním přihlašovacím ID je funkce Public Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tato funkce je určena jenom pro uživatele Azure AD ověřené pro Cloud.
+
+> [!NOTE]
+> V současné době není tato funkce podporovaná na zařízeních s Windows 10 připojená k Azure AD pro klienty s ověřováním pomocí cloudu. Tato funkce se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Přehled přístupů ke službě Azure AD pro přihlášení
 
@@ -45,6 +53,8 @@ Obvyklým řešením tohoto problému bylo nastavení hlavního názvu uživatel
 Jiným přístupem je synchronizace Azure AD a místních UPN na stejnou hodnotu a konfigurace Azure AD tak, aby se uživatelé mohli přihlásit k Azure AD pomocí ověřeného e-mailu. Chcete-li tuto možnost poskytnout, definujte jednu nebo více e-mailových adres v atributu *proxyAddresses* uživatele v místním adresáři. *ProxyAddresses* se pak automaticky synchronizuje se službou Azure AD pomocí Azure AD Connect.
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
+
+Přihlaste se k Azure AD pomocí e-mailu jako alternativní přihlašovací ID, které je k dispozici v edici Azure AD Free a vyšší.
 
 Pokud se uživatel přihlásí pomocí e-mailu bez názvu UPN jako alternativní přihlašovací ID, platí v aktuálním stavu verze Preview tato omezení:
 
@@ -61,7 +71,7 @@ Pokud se uživatel přihlásí pomocí e-mailu bez názvu UPN jako alternativní
 
 Tradiční ověřování Active Directory Domain Services (služba AD DS) nebo Active Directory Federation Services (AD FS) (AD FS) se provádí přímo v síti a je zpracováváno vaší služba AD DS infrastrukturou. Pomocí hybridního ověřování se uživatelé můžou místo toho přihlašovat přímo do Azure AD.
 
-Pro podporu tohoto přístupu k hybridnímu ověřování synchronizujete své místní služba AD DS prostředí s Azure AD pomocí [Azure AD Connect][azure-ad-connect] a nakonfigurujte ho tak, aby používal synchronizaci hodnot hash hesel (kosmetice) nebo předávací ověřování (PTA).
+Pro podporu tohoto přístupu k hybridnímu ověřování synchronizujete své místní služba AD DS prostředí s Azure AD pomocí [Azure AD Connect][azure-ad-connect] a nakonfigurujte ho tak, aby používal synchronizaci hodnoty hash hesla (kosmetice) nebo ověřování Pass-Through (PTA).
 
 V obou možnostech konfigurace odešle uživatel své uživatelské jméno a heslo do služby Azure AD, která ověří přihlašovací údaje a vydá lístek. Když se uživatelé přihlásí ke službě Azure AD, nepotřebují, aby vaše organizace mohla hostovat a spravovat infrastrukturu AD FS.
 
@@ -103,7 +113,7 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
 1. Pomocí rutiny [Get-AzureADPolicy][Get-AzureADPolicy] ověřte, jestli zásady *HomeRealmDiscoveryPolicy* už ve vašem tenantovi existují:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. Pokud není aktuálně nakonfigurována žádná zásada, příkaz nevrátí žádnou hodnotu. Pokud se vrátí zásada, přeskočte tento krok a přejděte k dalšímu kroku, abyste aktualizovali existující zásady.
@@ -111,10 +121,22 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
     Pokud chcete do tenanta přidat zásady *HomeRealmDiscoveryPolicy* , použijte rutinu [New-AzureADPolicy][New-AzureADPolicy] a nastavte atribut *AlternateIdLogin* na *Enabled: true* , jak je znázorněno v následujícím příkladu:
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Po úspěšném vytvoření zásady vrátí příkaz ID zásady, jak je znázorněno v následujícím příkladu výstupu:
@@ -125,7 +147,7 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
     5de3afbe-4b7a-4b33-86b0-7bbe308db7f7 BasicAutoAccelerationPolicy HomeRealmDiscoveryPolicy True
     ```
 
-1. Pokud už je nakonfigurovaná zásada, ověřte, jestli *AlternateIdLogin*   je povolený atribut AlternateIdLogin, jak je znázorněné v následujícím příkladu výstupu zásady:
+1. Pokud už je nakonfigurovaná zásada, ověřte, jestli **   je povolený atribut AlternateIdLogin, jak je znázorněné v následujícím příkladu výstupu zásady:
 
     ```powershell
     Id : 5de3afbe-4b7a-4b33-86b0-7bbe308db7f7
@@ -146,17 +168,31 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
     Následující příklad přidá atribut *AlternateIdLogin* a zachová atribut *AllowCloudPasswordValidation* , který již mohl být nastaven:
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Potvrďte, že aktualizovaná zásada zobrazuje vaše změny a že je teď povolený atribut *AlternateIdLogin* :
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 Při použití těchto zásad může trvat až hodinu, než se rozšíří a uživatelé se budou moct přihlašovat pomocí svého alternativního přihlašovacího ID.
@@ -164,6 +200,77 @@ Při použití těchto zásad může trvat až hodinu, než se rozšíří a už
 ## <a name="test-user-sign-in-with-email"></a>Testování přihlášení uživatele pomocí e-mailu
 
 Pokud chcete otestovat, jestli se uživatelé můžou přihlašovat pomocí e-mailu, přejděte na [https://myprofile.microsoft.com][my-profile] adresu a přihlaste se pomocí uživatelského účtu na základě jejich e-mailové adresy, jako `balas@fabrikam.com` je například hlavní název uživatele (UPN) `balas@contoso.com` . Prostředí pro přihlašování by mělo vypadat stejně jako u přihlašovací události založené na UPN.
+
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>Povolit připravené zavedení pro testování přihlášení uživatele pomocí e-mailové adresy  
+
+[Příprava na přípravu][staged-rollout] umožňuje správcům klientů povolit funkce pro konkrétní skupiny. Doporučuje se, aby správci klientů používali připravené zavedení k testování přihlášení uživatelů pomocí e-mailové adresy. Když jsou správci připraveni nasadit tuto funkci do celého tenanta, musí použít zásady zjišťování domovské sféry.  
+
+
+K provedení následujících kroků potřebujete oprávnění *správce tenanta* :
+
+1. Otevřete relaci PowerShellu jako správce a pak nainstalujte modul *AzureADPreview* pomocí rutiny [install-Module][Install-Module] :
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    Pokud se zobrazí výzva, vyberte **Y** pro instalaci nástroje NuGet nebo pro instalaci z nedůvěryhodného úložiště.
+
+2. Přihlaste se k tenantovi Azure AD jako *správce tenanta* pomocí rutiny [Connect-AzureAD][Connect-AzureAD] :
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    Příkaz vrátí informace o vašem účtu, prostředí a ID tenanta.
+
+3. Vypíše všechny existující zásady dvoufázové implementace pomocí následující rutiny:
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. Pokud pro tuto funkci neexistují žádné zásady dvoufázového zavedení, vytvořte nové zásady dvoufázové zavedení a poznamenejte si ID zásady:
+
+   ```powershell
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
+   ```
+
+5. Najděte ID directoryObject skupiny, která se má přidat do zásady dvoufázové zavedení. Všimněte si hodnoty vrácené pro parametr *ID* , protože se použije v dalším kroku.
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. Přidejte skupinu do zásady dvoufázové zavedení, jak je znázorněno v následujícím příkladu. Hodnotu v parametru *-ID* nahraďte hodnotou vrácenou pro ID zásady v kroku 4 a nahraďte hodnotu v parametru *-RefObjectId* *číslem ID* , které jste si poznamenali v kroku 5. Může trvat až 1 hodinu, než se uživatelé ve skupině můžou pomocí svých proxy adres přihlašovat.
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+Pro nové členy přidané do skupiny může trvat až 24 hodin, než se budou moct pomocí svých proxy adres přihlašovat.
+
+### <a name="removing-groups"></a>Odebírání skupin
+
+Pokud chcete skupinu odebrat ze zásady dvoufázové zavedení, spusťte následující příkaz:
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>Odebírají se zásady
+
+Pokud chcete odebrat zásady dvoufázové zavedení, nejdřív zásadu zakažte a pak ji odeberte ze systému:
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -174,7 +281,7 @@ Pokud uživatelé mají problémy s přihlašovacími událostmi pomocí své e-
 1. Potvrďte, že zásada Azure AD *HomeRealmDiscoveryPolicy* má atribut *AlternateIdLogin* nastavený na *Enabled: true*:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -198,4 +305,5 @@ Další informace o hybridních operacích identity najdete v tématu Jak funguj
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

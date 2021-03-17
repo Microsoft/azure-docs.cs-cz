@@ -3,16 +3,16 @@ title: Chyby SKU nejsou k dispozici
 description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78942718"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737146"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb kvůli nedostupné skladové položce
 
-Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo zóně nebo v alternativní oblasti nebo zóně, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](https://aka.ms/skurestriction) do podpory Azure.
+Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo zóně nebo v alternativní oblasti nebo zóně, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](/troubleshoot/azure/general/region-access-request-process) do podpory Azure.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -79,7 +79,6 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ...
 ```
 
-
 ## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure Portal
 
 K určení, které SKU jsou k dispozici v určité oblasti, použijte [portál](https://portal.azure.com). Přihlaste se k portálu a přidejte prostředek přes rozhraní. Při nastavování hodnot se zobrazí dostupné SKU pro daný prostředek. Nemusíte dokončit nasazení.
@@ -125,4 +124,3 @@ Vrátí dostupné SKU a oblasti v následujícím formátu:
   ]
 }
 ```
-

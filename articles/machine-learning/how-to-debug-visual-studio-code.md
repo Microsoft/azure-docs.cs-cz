@@ -5,22 +5,80 @@ description: Interaktivní ladění Azure Machine Learning kódu, kanálů a nas
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
+ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 09/30/2020
+ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908390"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508635"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Přečtěte si, jak interaktivně ladit Azure Machine Learning kanály a nasazení pomocí Visual Studio Code (VS Code) a [depugpy](https://github.com/microsoft/debugpy/).
+
+Naučte se, jak interaktivně ladit Azure Machine Learning experimenty, kanály a nasazení s využitím Visual Studio Code (VS Code) a [debugpy](https://github.com/microsoft/debugpy/).
+
+## <a name="run-and-debug-experiments-locally"></a>Spustit a ladit experimenty místně
+
+Pomocí rozšíření Azure Machine Learning můžete před odesláním do cloudu ověřit, spustit a ladit experimenty ve strojovém učení.
+
+### <a name="prerequisites"></a>Požadavky
+
+* Rozšíření Azure Machine Learning VS Code (Preview). Další informace najdete v tématu [nastavení rozšíření Azure Machine Learning vs Code](tutorial-setup-vscode-extension.md).
+* [Docker](https://www.docker.com/get-started)
+  * Docker Desktop pro Mac a Windows
+  * Modul Docker pro Linux.
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> V systému Windows se ujistěte, že jste [nakonfigurovali Docker pro použití kontejnerů systému Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+> [!TIP]
+> U Windows, i když to není nutné, se důrazně doporučuje [použít Docker v subsystému Windows pro Linux (WSL) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+
+> [!IMPORTANT]
+> Před místním spuštěním experimentu se ujistěte, že je Docker spuštěný.
+
+### <a name="debug-experiment-locally"></a>Místní ladění experimentu
+
+1. V VS Code otevřete zobrazení rozšíření Azure Machine Learning.
+1. Rozbalte uzel předplatné obsahující váš pracovní prostor. Pokud ho ještě nemáte, můžete pomocí tohoto rozšíření [vytvořit pracovní prostor Azure Machine Learning](how-to-manage-resources-vscode.md#create-a-workspace) .
+1. Rozbalte uzel pracovního prostoru.
+1. Klikněte pravým tlačítkem na uzel **experimenty** a vyberte **vytvořit experiment**. Po zobrazení výzvy zadejte název experimentu.
+1. Rozbalte uzel **experimenty** , klikněte pravým tlačítkem na experiment, který chcete spustit, a vyberte možnost **Spustit experiment**.
+1. V seznamu možností pro spuštění experimentu vyberte možnost **místně**.
+1. Při **prvním použití pouze v systému Windows**. Po zobrazení výzvy k povolení sdílení souborů vyberte **Ano**. Když povolíte sdílení souborů, umožní Docker připojit adresář obsahující váš skript do kontejneru. Kromě toho umožňuje Docker ukládat protokoly a výstupy z běhu do dočasného adresáře ve vašem systému.
+1. Vyberte **Ano** , pokud chcete ladit experiment. Jinak vyberte **No** (Ne). Pokud vyberete Ne, váš experiment se spustí lokálně bez připojení k ladicímu programu.
+1. Vyberte **vytvořit novou konfiguraci spuštění** a vytvořte tak konfiguraci spuštění. Konfigurace spuštění definuje skript, který chcete spustit, závislosti a použité datové sady. Případně, pokud už nějaký máte, vyberte ho z rozevíracího seznamu.
+    1. Vyberte své prostředí. Můžete si vybrat z libovolného [Azure Machine Learning](resource-curated-environments.md) nebo si vytvořit vlastní.
+    1. Zadejte název skriptu, který chcete spustit. Cesta je relativní vzhledem k adresáři otevřenému v VS Code.
+    1. Vyberte, zda chcete použít Azure Machine Learning datovou sadu. Pomocí rozšíření můžete vytvořit [Azure Machine Learning datové sady](how-to-manage-resources-vscode.md#create-dataset) .
+    1. Debugpy se vyžaduje, aby se ladicí program připojil ke kontejneru, na kterém běží experiment. Pokud chcete přidat debugpy jako závislost, vyberte **Přidat debugpy**. V opačném případě vyberte **Přeskočit**. Nepřidání debugpy jako závislost spustí experiment bez připojení k ladicímu programu.
+    1. V editoru se otevře konfigurační soubor, který obsahuje nastavení konfigurace spuštění. Pokud jste s nastavením spokojeni, vyberte **Odeslat experiment**. Alternativně otevřete paletu příkazů (**zobrazení > paleta příkazů**) z řádku nabídek a zadejte `Azure ML: Submit experiment` příkaz do textového pole.
+1. Po odeslání experimentu se vytvoří image Docker obsahující váš skript a konfigurace zadané v konfiguraci spuštění.
+
+    Když se spustí proces sestavení image Docker, obsah `60_control_log.txt` datového proudu souboru do výstupní konzoly v vs Code.
+
+    > [!NOTE]
+    > Při prvním vytvoření image Docker může trvat několik minut.
+
+1. Po vytvoření image se zobrazí výzva ke spuštění ladicího programu. Nastavte zarážky ve skriptu a vyberte **Spustit ladicí program** , až budete připraveni začít s laděním. Tím se připojí ladicí program VS Code ke kontejneru, na kterém běží experiment. Případně můžete v rozšíření Azure Machine Learning najeďte myší na uzel aktuálního běhu a výběrem ikony Přehrát spustit ladicí program.
+
+    > [!IMPORTANT]
+    > K jednomu experimentu nemůžete mít více relací ladění. Můžete ale ladit dva nebo více experimentů pomocí více instancí VS Code.
+
+V tomto okamžiku byste měli být schopni krokovat a ladit kód pomocí VS Code.
+
+Pokud v jakémkoli okamžiku chcete zrušit spuštění, klikněte pravým tlačítkem myši na uzel spustit a vyberte možnost **zrušit spuštění**.
+
+Podobně jako u vzdálených experimentů můžete rozšířit uzel spuštění a zkontrolovat protokoly a výstupy.
+
+> [!TIP]
+> Image Docker, které používají stejné závislosti definované ve vašem prostředí, se znovu použijí mezi běhy. Pokud však spustíte experiment pomocí nového nebo jiného prostředí, vytvoří se nový obrázek. Vzhledem k tomu, že se tyto image ukládají do místního úložiště, doporučuje se odebrat staré nebo nepoužívané image Docker. K odebrání imagí ze systému použijte rozhraní [Docker CLI](https://docs.docker.com/engine/reference/commandline/rmi/) nebo [rozšíření vs Code Docker](https://code.visualstudio.com/docs/containers/overview).
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 
@@ -37,7 +95,7 @@ V některých případech možná budete muset interaktivně ladit kód Pythonu,
   * Výpočetní instance virtuálního počítače poznámkového bloku ve virtuální síti
   * Klientský počítač, který má připojení privátní sítě k virtuální síti, a to buď pomocí sítě VPN, nebo přes ExpressRoute.
 
-Další informace o použití Virtual Network Azure s Azure Machine Learning najdete v tématu [zabezpečení experimentů s Azure ml a odvozování úloh v rámci služby Azure Virtual Network](how-to-enable-virtual-network.md).
+Další informace o použití Virtual Network Azure s Azure Machine Learning najdete v tématu věnovaném [izolaci virtuální sítě a ochraně osobních údajů](how-to-network-security-overview.md).
 
 > [!TIP]
 > I když můžete pracovat s Azure Machine Learning prostředky, které nejsou za virtuální sítí, doporučuje se použít virtuální síť.
@@ -109,7 +167,7 @@ Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pyth
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-Následující příklad Pythonu ukazuje základní `train.py` soubor, který umožňuje ladění:
+Následující příklad Pythonu ukazuje jednoduchý `train.py` soubor, který umožňuje ladění:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -281,7 +339,7 @@ Uložte `ip_address` hodnotu. Používá se v další části.
 V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí VS Code a debugpy můžete připojit k kódu běžícímu uvnitř kontejneru Docker.
 
 > [!IMPORTANT]
-> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
+> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/). Všimněte si, že při práci s výpočetními instancemi je Docker již nainstalován.
 
@@ -297,9 +355,9 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 
 1. Pokud chcete nakonfigurovat VS Code ke komunikaci s imagí Docker, vytvořte novou konfiguraci ladění:
 
-    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
+    1. Z VS Code vyberte v části rozsah __spuštění__ nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
 
-    1. V __launch.jsv__ souboru vyhledejte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text:
+    1. V __launch.jsv__ souboru vyhledejte položku __"konfigurace"__ (řádek, který obsahuje `"configurations": [` ) a vložte následující text za něj. 
 
         ```json
         {
@@ -318,11 +376,44 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
             ]
         }
         ```
+        Po vložení by měl být __launch.jsv__ souboru podobný následujícímu:
+        ```json
+        {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Azure Machine Learning Deployment: Docker Debug",
+                "type": "python",
+                "request": "attach",
+                "connect": {
+                    "port": 5678,
+                    "host": "0.0.0.0"
+                    },
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/var/azureml-app"
+                    }
+                ]
+            }
+            ]
+        }
+        ```
 
         > [!IMPORTANT]
-        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
+        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku ( __,__ ) za kód, který jste vložili.
 
-        Tato část se připojuje k kontejneru Docker pomocí portu 5678.
+        Tato část se připojuje k kontejneru Docker pomocí portu __5678__.
 
     1. Uložte __launch.jsdo__ souboru.
 
@@ -375,13 +466,13 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
     package.pull()
     ```
 
-    Po vytvoření a stažení Image se zobrazí cesta k imagi (včetně úložiště, názvu a značky, která v tomto případě je také její výtah), a to podobně jako v následující zprávě:
+    Po vytvoření a stažení Image (Tento proces může trvat déle než 10 minut, proto prosím vyčkejte), cesta k imagi (včetně úložiště, názvu a značky, která v tomto případě je také výtahem), se nakonec zobrazí v následující zprávě, která bude vypadat přibližně takto:
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Pro usnadnění práce s imagí použijte následující příkaz a přidejte značku. Nahraďte `myimagepath` hodnotou umístění z předchozího kroku.
+1. Aby bylo možné snadněji pracovat s imagí v místním prostředí, můžete k přidání značky pro tuto bitovou kopii použít následující příkaz. `myimagepath`V následujícím příkazu nahraďte hodnotou umístění z předchozího kroku.
 
     ```bash
     docker tag myimagepath debug:1
@@ -399,24 +490,39 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 1. Pokud chcete spustit kontejner Docker pomocí Image, použijte následující příkaz:
 
     ```bash
-    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
     Tím se připojíte `score.py` místně k portálu v kontejneru. Proto se všechny změny provedené v editoru automaticky projeví v kontejneru.
 
-1. V rámci kontejneru spusťte následující příkaz v prostředí.
+2. Pro lepší prostředí můžete přejít do kontejneru pomocí nového rozhraní VS Code. Vyberte `Docker` Rozsah z bočního panelu vs Code, Najděte svůj místní kontejner. v této dokumentaci je to `debug:1` . Klikněte pravým tlačítkem na tento kontejner a vyberte a `"Attach Visual Studio Code"` pak se automaticky otevře nové rozhraní vs Code a toto rozhraní zobrazí uvnitř vytvořeného kontejneru.
+
+    ![Rozhraní VS Code kontejneru](./media/how-to-troubleshoot-deployment/container-interface.png)
+
+3. V rámci kontejneru spusťte následující příkaz v prostředí.
 
     ```bash
     runsvdir /var/runit
     ```
+    Pak můžete v prostředí zobrazit následující výstup v rámci svého kontejneru:
 
-1. Pokud chcete připojit VS Code k debugpy uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __nasazení Azure Machine Learning: konfigurace ladění Docker__ . Můžete také vybrat ikonu ladění z bočního panelu, __nasazení Azure Machine Learning: položku ladění Docker__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
+    ![Výstup konzoly pro spuštění kontejneru](./media/how-to-troubleshoot-deployment/container-run.png)
+
+4. Pokud chcete připojit VS Code k debugpy uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __nasazení Azure Machine Learning: konfigurace ladění Docker__ . Můžete také vybrat ikonu rozsahu __spuštění__ z bočního panelu, __nasazení Azure Machine Learning: položku ladění Docker__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
 
     ![Ikona ladění, tlačítko Spustit ladění a selektor konfigurace](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    
+    Po kliknutí na zelenou šipku a připojení ladicího programu do kontejneru VS Code rozhraní můžete zobrazit některé nové informace:
+    
+    ![Připojené informace ladicího programu kontejneru](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    
+    V hlavním VS Code rozhraní můžete také sledovat následující informace:
 
-V tomto okamžiku se VS Code připojí k debugpy uvnitř kontejneru Docker a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
+    ![VS Code zarážku v score.py](./media/how-to-troubleshoot-deployment/local-debugger.png)
 
-Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+A nyní je místní, `score.py` který je připojen ke kontejneru, již zastaven na zarážekch, kde jste nastavili. V tomto okamžiku se VS Code připojí k debugpy uvnitř kontejneru Docker a zastaví kontejner Docker na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
+
+Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://code.visualstudio.com/docs/python/debugging).
 
 ### <a name="stop-the-container"></a>Zastavení kontejneru
 
@@ -428,6 +534,12 @@ docker stop debug
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste nastavili Visual Studio Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z Visual Studio Code k interaktivnímu ladění kódu. 
+Teď, když jste nastavili VS Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z VS Code k interaktivnímu ladění kódu. 
 
-[Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.
+Další informace o řešení potíží:
+
+* [Nasazení místního modelu](how-to-troubleshoot-deployment-local.md)
+* [Nasazení vzdáleného modelu](how-to-troubleshoot-deployment.md)
+* [Kanály Machine Learningu](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

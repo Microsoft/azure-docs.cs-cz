@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75976622"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144394"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Vytvoření služby IoT Hub pomocí šablony Azure Resource Manager (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Naučte se používat šablonu Azure Resource Manager k vytvoření IoT Hub a skupiny uživatelů. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/).
+Naučte se používat šablonu Azure Resource Manager k vytvoření IoT Hub a skupiny uživatelů. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](../azure-resource-manager/index.yml).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-Šablona vytvoří službu Azure IoT Hub se třemi koncovými body (eventhub, Cloud-zařízení a zasílání zpráv) a skupinou uživatelů. Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Schéma šablon IoT Hub najdete [tady](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
+Šablona vytvoří službu Azure IoT Hub se třemi koncovými body (eventhub, Cloud-zařízení a zasílání zpráv) a skupinou uživatelů. Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Schéma šablon IoT Hub najdete  [tady](/azure/templates/microsoft.devices/iothub-allversions).
 
 Existuje několik metod pro nasazení šablony.  V tomto kurzu použijete Azure PowerShell.
 
@@ -71,11 +71,11 @@ Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
+[lnk-rest-api]: /rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/management/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-iotedge]: ../iot-edge/quickstart-linux.md

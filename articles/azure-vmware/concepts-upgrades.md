@@ -1,32 +1,66 @@
 ---
-title: Koncepty – inovace privátního cloudu
-description: Další informace o klíčových procesech upgradu a funkcích v řešení Azure VMware (AVS)
+title: Koncepty – aktualizace a upgrady v privátním cloudu
+description: Přečtěte si o klíčových procesech upgradu a funkcích v řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: c5c79625ef661f220a0ba88d6d24ab59e7228195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82740366"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634988"
 ---
-# <a name="azure-vmware-solution-avs-upgrade-concepts"></a>Koncepty upgradu řešení Azure VMware (AVS)
+# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Aktualizace a upgrady privátního cloudu řešení Azure VMware
 
-Jednou z klíčových výhod privátních cloudů Azure VMware Solution (AVS) je platforma, která je pro vás zachována. Údržba platformy zahrnuje automatizované upgrady na ověřený softwarový svazek VMware. Upgrady se provádějí pravidelně, takže budete mít vždycky k dispozici nejnovější ověřené verze softwaru.
+Jednou z výhod privátních cloudů řešení Azure VMware je platforma zachováváme za vás. Údržba zahrnuje automatizované aktualizace sady prostředků ověřovaného VMware, které vám pomůžou zajistit, abyste používali nejnovější verzi privátního cloudového softwaru řešení Azure VMware.
 
-## <a name="avs-private-cloud-software-upgrades"></a>Inovace softwaru pro privátní cloud v programu AVS
+Konkrétně privátní cloud řešení Azure VMware zahrnuje:
 
-Privátní cloudová platforma AVS zahrnuje konkrétní verze softwaru VMware vSphere, ESXi, síti vSAN a NSX-T. Sada privátních cloudových sad se ověřuje pro použití v nových instalacích privátního cloudu a pro upgrady stávajících privátních cloudů.
+- Vyhrazené holé uzly serveru zřízené pomocí VMware ESXi hypervisoru 
+- Server vCenter pro správu ESXi a síti vSAN 
+- Software definované sítě VMware NSX-T pro virtuální počítače s vSphere úlohami  
+- VMware síti vSAN DataStore pro virtuální počítače úloh vSphere  
+- HCX VMware pro mobilitu úloh  
 
-Proces upgradu správy životního cyklu nevyžaduje pro privátní cloudy výpadky. Proces upgradu zajišťuje automatické použití nejnovější verze ověřeného privátního cloudového softwaru pro funkci AVS. Upgrady se aplikují na pravidelné tempo, takže privátní cloudy nejsou nikdy víc než jedna verze v rámci nejnovější verze ověřeného softwarového balíčku. Budete upozorněni na plánované upgrady vašeho privátního cloudu. Upgrade můžete odložit, pokud je váš privátní cloud v rámci jedné verze nejnovější verze.
+Privátní cloud řešení Azure VMware zahrnuje i prostředky v Azure Underlay, které se vyžadují pro připojení a provozování privátního cloudu. Řešení Azure VMware nepřetržitě monitoruje stav obou komponent Underlay i VMware. Když řešení Azure VMware zjistí selhání, provede akci, aby opravila komponenty, které selhaly. 
 
-Důležité opravy a aktualizace se aplikují při jejich ověření. Budete upozorněni předem na požadované kritické upgrady. Tato zásada zajišťuje, že váš privátní Cloud bude okamžitě použit důležité opravy a aktualizace.
+## <a name="what-components-get-updated"></a>Které součásti se aktualizují?   
 
-Verze softwaru VMware jsou k dispozici v [článku koncepce privátních cloudů a clusterů](concepts-private-clouds-clusters.md) a v [nejčastějších dotazech](faq.md).
+Řešení Azure VMware aktualizuje následující komponenty VMware: 
+
+- vCenter Server a ESXi spuštěné na holéch uzlech serveru 
+- Síti vSAN 
+- NSX-T 
+
+Řešení Azure VMware také aktualizuje software v Underlay, jako jsou ovladače, software na síťových přepínačích a firmware na holých uzlech. 
+
+## <a name="types-of-updates"></a>Typy aktualizací
+
+Řešení Azure VMware používá následující typy aktualizací pro komponenty VMware:
+
+- Opravy: opravy zabezpečení a opravy chyb vydané VMware. 
+- Aktualizace: Aktualizace dílčí verze jedné nebo více komponent VMware. 
+- Upgrady: Aktualizace hlavní verze jedné nebo více komponent VMware.
+
+Budete upozorněni před a po použití oprav do privátních cloudů. Kromě toho budeme s vámi naplánovali časový interval pro správu a údržbu před instalací aktualizací nebo upgradů do vašeho privátního cloudu. 
+
+## <a name="vmware-appliance-backup"></a>Zálohování zařízení VMware 
+
+Řešení Azure VMware také provádí zálohu konfigurace následujících komponent VMware:
+
+- vCenter Server 
+- Správce NSX – T 
+
+V případě selhání může řešení Azure VMware tyto součásti obnovit ze zálohy konfigurace. 
+
+Další informace o verzích softwaru VMware najdete v [článku koncept privátních cloudů a clusterů](concepts-private-clouds-clusters.md) a v [nejčastějších dotazech](faq.yml).
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším krokem je [Vytvoření privátního cloudu](tutorial-create-private-cloud.md).
+Teď, když jste se seznámili s klíčovými procesy upgradu a funkcemi v řešení Azure VMware, budete možná chtít získat informace o:
+
+- [Postup vytvoření privátního cloudu](tutorial-create-private-cloud.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

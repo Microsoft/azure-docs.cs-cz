@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261935"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172751"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -37,14 +37,17 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 
 * **Instalace agenta virtuálního počítače na virtuální počítač**: Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořen z bitové kopie Azure Marketplace, je agent nainstalovaný a spuštěný. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset [agenta nainstalovat ručně](#install-the-vm-agent).
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>Úprava replikace úložiště
 
-Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md).
+Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Pokud je trezor vaším primárním zálohovacím mechanismem, doporučujeme použít GRS.
-* Pro levnější možnost můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) .
+* Pro levnější možnost můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) .
+* [Zóna – redundantní úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti.
 
 Typ replikace úložiště upravte takto:
 
@@ -89,7 +92,7 @@ Nakonfigurujte zásady zálohování pro trezor.
      ![Podokno vybrat virtuální počítače](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům. Pokud je váš virtuální počítač v tichém odstraněném stavu, nezobrazí se v tomto seznamu. Pokud potřebujete znovu nastavit ochranu virtuálního počítače, musíte počkat na vypršení platnosti nebo zrušit platnost tohoto virtuálního počítače ze seznamu odstraněných. Další informace najdete v [článku obnovitelné odstranění pro virtuální počítače](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
+    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům. Pokud je váš virtuální počítač v tichém odstraněném stavu, nebude se v tomto seznamu zobrazovat. Pokud potřebujete znovu nastavit ochranu virtuálního počítače, musíte počkat na vypršení platnosti nebo zrušit platnost tohoto virtuálního počítače ze seznamu odstraněných. Další informace najdete v [článku obnovitelné odstranění pro virtuální počítače](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. V **zálohování**vyberte **Povolit zálohování**. Tím se tyto zásady nasadí do trezoru a do virtuálních počítačů a nainstaluje se rozšíření zálohování na agenta virtuálního počítače spuštěného na virtuálním počítači Azure.
 
@@ -155,7 +158,7 @@ Dokončeno | Neúspěšný | Dokončeno s upozorněním
 Neúspěšný | Neúspěšný | Neúspěšný
 
 Díky této funkci se můžou dvě zálohy spustit paralelně, ale v obou fázích (snímky, přenos dat do trezoru) může běžet jenom jedna dílčí úloha. Takže ve scénářích, kdy skončila úloha zálohování v průběhu příštího dne, selže zálohování v příštím dni, bude tato funkce oddálení zabráněno. Zálohy v dalších dnech můžou mít hotový snímek, zatímco **přenos dat do trezoru** se přeskočí, pokud probíhá úloha zálohování staršího dne.
-Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změny z posledního bodu obnovení vytvořeného v trezoru. Na uživatele není žádný vliv na náklady.
+Přírůstkový bod obnovení vytvořený v trezoru zachytí veškerou četnost změn z posledního bodu obnovení vytvořeného v trezoru. Na uživatele není žádný vliv na náklady.
 
 ## <a name="optional-steps"></a>Volitelné kroky
 

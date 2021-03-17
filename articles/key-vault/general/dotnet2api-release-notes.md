@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013951"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – poznámky k verzi a Průvodce migrací
 Následující informace pomáhají při migraci na verzi 2,0 knihovny Azure Key Vault pro C# a .NET.  Aplikace napsané pro starší verze se musí aktualizovat, aby podporovaly nejnovější verzi.  Tyto změny jsou potřebné k plnému podpoře nových a vylepšených funkcí, jako jsou **Key Vault certifikáty**.
@@ -36,7 +36,7 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 * **.NET Framework 4.5.2** podporuje verze 2,0 knihovny Azure Key Vault .NET.
 * Verze 2,0 Azure Key Vault knihovny .NET podporuje **.NET Standard 1,4** .
 
-## <a name="namespaces"></a>Jmenné prostory
+## <a name="namespaces"></a>Obory názvů
 
 * Obor názvů pro **modely** se změnil z **Microsoft. Azure. webtrezoru** na **Microsoft. Azure. webtrezor. Models**.
 * **Microsoft. Azure. webtrezor. Internal** obor názvů je vyřazený.
@@ -49,12 +49,12 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 
 * *Tajný kód* se změnil na *SecretBundle*
 * *Slovník* byl změněn na *IDictionary*
-* *List \<T> , String []* změněno na *IList \<T> *
+* *List \<T> , String []* změněno na *IList \<T>*
 * *NextList* změněny na  *NextPageLink*
 
 ## <a name="return-types"></a>Návratové typy
 
-* **Seznam** a **SecretList** nyní vrátí *IPage \<T> * namísto *ListKeysResponseMessage*
+* **Seznam** a **SecretList** nyní vrátí *IPage \<T>* namísto *ListKeysResponseMessage*
 * Vygenerovaná **BackupKeyAsync** nyní vrátí *BackupKeyResult*, který obsahuje *hodnotu* (zálohovaný objekt BLOB). Dříve byla metoda zabalena a vrátila pouze hodnotu.
 
 ## <a name="exceptions"></a>Výjimky

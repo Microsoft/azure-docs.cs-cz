@@ -1,23 +1,18 @@
 ---
 title: Vysoká dostupnost s bránou pro správu dat v Azure Data Factory
 description: V tomto článku se dozvíte, jak můžete škálovat bránu pro správu dat tak, že přidáte další uzly a narostete jejich kapacitu zvýšením počtu souběžných úloh, které se můžou spouštět na uzlu.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80065193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391724"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána Správa dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -47,7 +42,7 @@ Následující diagram nabízí přehled architektury funkce Správa dat bránu 
 
 ![Brána Správa dat – vysoká dostupnost a škálovatelnost](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
 
-**Logická brána** je brána, kterou přidáte do objektu pro vytváření dat v Azure Portal. Dříve jste mohli přidružit pouze jeden místní počítač s Windows s bránou Správa dat nainstalovanou s logickou bránou. Tento místní počítač brány se nazývá uzel. Nyní můžete k logické bráně přidružit až **čtyři fyzické uzly** . Logická brána s více uzly se nazývá brána s **více**uzly.  
+**Logická brána** je brána, kterou přidáte do objektu pro vytváření dat v Azure Portal. Dříve jste mohli přidružit pouze jeden místní počítač s Windows s bránou Správa dat nainstalovanou s logickou bránou. Tento místní počítač brány se nazývá uzel. Nyní můžete k logické bráně přidružit až **čtyři fyzické uzly** . Logická brána s více uzly se nazývá brána s **více** uzly.  
 
 Všechny tyto uzly jsou **aktivní**. Všechny můžou zpracovávat úlohy přesunu dat a přesouvat data mezi místními a cloudovým úložištěm dat. Jeden z uzlů působí jako dispečer i pracovní proces. Další uzly ve skupinách jsou pracovní uzly. **Dispečerský** uzel vyžádá úlohy přesunu dat nebo úlohy z cloudové služby a odesílá je do pracovních uzlů (včetně sebe samé). **Pracovní** uzel spouští úlohy přesunu dat pro přesun dat mezi místními a cloudovým úložištěm dat. Všechny uzly jsou pracovní procesy. Pouze jeden uzel může být Dispatch i Worker.    
 
@@ -79,16 +74,16 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
         ![Správa dat Gateway – Expresní instalace byla úspěšná](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
     2. Pomocí následujících [pokynů](data-factory-data-management-gateway.md#configuration-manager)spusťte pro bránu Správa dat Configuration Manager. Zobrazí se název brány, název uzlu, stav atd.
 
-        ![Brána Správa dat – instalace byla úspěšná.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        ![Snímek obrazovky s informacemi o tom, kde vidíte název brány, název uzlu a stav](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 4. Pokud zvolíte možnost **Ruční instalace**:
     1. Stáhněte instalační balíček z webu Microsoft Download Center, spusťte ho a nainstalujte na svém počítači bránu.
     2. K registraci brány použijte **ověřovací klíč** ze stránky **Konfigurace** .
     
-        ![Brána Správa dat – instalace byla úspěšná.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
+        ![Snímek obrazovky, který ukazuje, kde použít ověřovací klíč](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
     3. Na stránce **nový uzel brány** můžete zadat vlastní **název** uzlu brány. Ve výchozím nastavení je název uzlu stejný jako název počítače.    
 
         ![Správa dat Brána – zadejte název.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
-    4. Na další stránce můžete zvolit, zda chcete **Povolit šifrování pro komunikaci**mezi uzly. Kliknutím na **Přeskočit** zakážete šifrování (výchozí).
+    4. Na další stránce můžete zvolit, zda chcete **Povolit šifrování pro komunikaci** mezi uzly. Kliknutím na **Přeskočit** zakážete šifrování (výchozí).
 
         ![Brána Správa dat – povolení šifrování](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
     
@@ -98,8 +93,8 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
         > Seznam požadavků na použití certifikátu TLS/SSL najdete v části [požadavky na certifikát TLS/SSL](#tlsssl-certificate-requirements) . 
     5. Po úspěšné instalaci brány klikněte na spustit Configuration Manager:
     
-        ![Ruční instalace – spuštění nástroje Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
-    6. na uzlu (místní počítač s Windows) se zobrazí Správa dat Configuration Manager brány, která zobrazuje stav připojení, **název brány**a **název uzlu**.  
+        ![Ruční instalace – spuštění nástroje Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
+    6. na uzlu (místní počítač s Windows) se zobrazí Správa dat Configuration Manager brány, která zobrazuje stav připojení, **název brány** a **název uzlu**.  
 
         ![Brána Správa dat – instalace byla úspěšná.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
@@ -108,7 +103,7 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
 6. V Azure Portal spusťte stránku **brány** : 
     1. Na domovské stránce objektu pro vytváření dat na portálu klikněte na **propojené služby**.
     
-        ![Domovská stránka objektu pro vytváření dat](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        ![Snímek obrazovky, který zvýrazní dlaždici propojených služeb.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
     2. Vyberte **bránu** , aby se zobrazila stránka **brány** :
     
         ![Domovská stránka objektu pro vytváření dat](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
@@ -164,7 +159,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Každý uzel Integration runtime musí důvěřovat tomuto certifikátu a také klientskému počítači, na kterém je spuštěná aplikace Správce přihlašovacích údajů. 
   > [!NOTE]
   > Aplikace Správce přihlašovacích údajů se používá při bezpečném nastavení přihlašovacích údajů z Průvodce kopírováním nebo na webu Azure Portal. A dá se aktivovat z libovolného počítače ve stejné síti jako místní nebo privátní úložiště dat.
-- Jsou podporovány zástupné certifikáty karet. Pokud je název plně kvalifikovaného názvu domény **node1.domain.contoso.com**, můžete jako název subjektu certifikátu použít ***. domain.contoso.com** .
+- Jsou podporovány zástupné certifikáty karet. Pokud je název plně kvalifikovaného názvu domény **node1.domain.contoso.com**, můžete jako název subjektu certifikátu použít **_. domain.contoso.com_* .
 - Certifikáty SAN se nedoporučují, protože se použijí jenom poslední položka alternativních názvů subjektu a všechny ostatní budou v důsledku současného omezení ignorovány. Například máte certifikát SAN, jehož síť SAN je **node1.domain.contoso.com** a **node2.domain.contoso.com**, můžete tento certifikát použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje jakoukoli velikost klíče podporovanou systémem Windows Server 2012 R2 pro certifikáty TLS/SSL.
 - Certifikát používající klíče CNG není podporován.
@@ -185,7 +180,7 @@ Můžete povolit **Rozšířená nastavení** na stránce **brány** a zobrazit 
 
 Vlastnost monitorování | Popis
 :------------------ | :---------- 
-Name | Název logické brány a uzlů přidružených k bráně  
+Název | Název logické brány a uzlů přidružených k bráně  
 Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) . 
 Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). 
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase. 
@@ -200,11 +195,11 @@ Role | Existují dva typy rolí – dispečer a pracovní proces. Všechny uzly 
 
 Následující tabulka uvádí možné stavy **uzlu brány**: 
 
-Status  | Komentáře a scénáře
+Status    | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
 Offline | Uzel je offline.
-Inovován | Uzel se automaticky aktualizuje.
+Upgrade | Uzel se automaticky aktualizuje.
 Omezeně | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů. 
 Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům. 
 

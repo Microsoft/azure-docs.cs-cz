@@ -4,16 +4,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/16/2020
+ms.date: 02/10/2021
 ms.author: tamram
-ms.openlocfilehash: 96d8100f2cffcfb001a693575128ce19e742225d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 483f5853c321eee4ac6d10543f0e360a0a5e54b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534124"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373742"
 ---
-Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
+Než přiřadíte roli Azure RBAC k objektu zabezpečení, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu. Role Azure RBAC definované v širším oboru jsou děděny prostředky, které jsou pod nimi.
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Azure Blob a Queue, počínaje nejužším rozsahem:
 

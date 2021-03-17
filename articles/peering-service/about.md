@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872033"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026725"
 ---
 # <a name="azure-peering-service-overview"></a>Přehled služby Azure peering
 
-Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Office 365, Dynamics 365, software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Společnost Microsoft spolupracuje s poskytovateli poskytovatelů internetových služeb (ISP), internetovými partnery (IXPs) a softwarově definovanými poskytovateli cloudových propojení (SDCI) po celém světě, aby poskytovala spolehlivé a vysoce náročné veřejné připojení s optimálním směrováním od zákazníka k síti Microsoftu.
+Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Společnost Microsoft spolupracuje s poskytovateli poskytovatelů internetových služeb (ISP), internetovými partnery (IXPs) a softwarově definovanými poskytovateli cloudových propojení (SDCI) po celém světě, aby poskytovala spolehlivé a vysoce náročné veřejné připojení s optimálním směrováním od zákazníka k síti Microsoftu.
 
 Se službou peering Service můžou zákazníci vybrat dobře připojeného poskytovatele služby partnera v dané oblasti. Veřejné připojení je optimalizované pro zajištění vysoké spolehlivosti a minimální latence z cloudových služeb až po umístění koncového uživatele.
 
@@ -45,19 +45,19 @@ Služba partnerského vztahu je:
 Peering Service není produkt privátního připojení, jako je Azure ExpressRoute nebo produkt VPN.
 
 > [!NOTE]
-> Další informace o ExpressRoute najdete v [dokumentaci k ExpressRoute](https://docs.microsoft.com/azure/expressroute/).
+> Další informace o ExpressRoute najdete v [dokumentaci k ExpressRoute](../expressroute/index.yml).
 >
 
 ## <a name="background"></a>Pozadí
 
-Office 365, Dynamics 365 a jakékoli jiné služby Microsoft SaaS Services se hostují v několika datových centrech Microsoftu a dají se k nim dostat z libovolného geografického umístění. V globální síti Microsoft se nachází umístění Microsoft Edge Point-of-prezence (PoP) po celém světě, kde se může připojit k koncovému uživateli přes jejich poskytovatelé služeb. 
+Microsoft 365, Dynamics 365 a jakékoli jiné služby Microsoft SaaS Services se hostují v několika datových centrech Microsoftu a dají se k nim dostat z libovolného zeměpisného umístění. V globální síti Microsoft se nachází umístění Microsoft Edge Point-of-prezence (PoP) po celém světě, kde se může připojit k koncovému uživateli přes jejich poskytovatelé služeb. 
 
 Poskytovatelé služeb Microsoftu a partnerů zajišťují, aby přenosy pro předpony registrované s připojením služby peering Service vstoupily do nejbližšího umístění PoP Microsoft Edge v globální síti Microsoftu a ukončili je. Microsoft zajistí, aby se provoz síťových přenosů z předpon zaregistrovaných u připojení ke službě peering Service měl nejbližších umístění PoP Microsoft Edge v globální síti Microsoftu.
 
 ![Připojení k síti a veřejné síti Microsoftu](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> Další informace o globální síti Microsoft najdete v tématu [globální síť Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+> Další informace o globální síti Microsoft najdete v tématu [globální síť Microsoft](../networking/microsoft-global-network.md).
 >
 
 ## <a name="why-use-peering-service"></a>Proč používat službu peering Service?

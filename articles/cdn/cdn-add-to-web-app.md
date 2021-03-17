@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079905"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562238"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidání Azure CDN do webové aplikace služby Azure App Service
 
@@ -38,12 +38,12 @@ Naučíte se:
 > * Spravovat verze uložené v mezipaměti pomocí řetězců dotazu.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
 - [Nainstalovat Git](https://git-scm.com/).
-- [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalace Azure CLI](/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -76,7 +76,7 @@ Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod*
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
 | **Cenová úroveň** | Akamai úrovně Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard*. |
-| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete v doméně * &lt; koncového bodu &gt; *. azureedge.NET.
+| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete v doméně *&lt; koncového bodu &gt;*. azureedge.NET.
 
 Vyberte **Vytvořit** a vytvořte profil CDN.
 
@@ -135,7 +135,7 @@ Potvrďte změnu a nasaďte ji do webové aplikace.
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 Po dokončení nasazení přejděte na adresu URL webové aplikace, abyste viděli změnu.
@@ -230,7 +230,7 @@ Otevřete soubor *index.html*, změňte *V2* na *V3* a pak změnu nasaďte.
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 V prohlížeči přejděte na adresu URL koncového bodu CDN s novým řetězcem dotazu, například `q=2`. Azure CDN získá aktuální soubor *index.html* a zobrazí *V3*. Pokud ale přejdete na koncový bod CDN s řetězcem dotazu `q=1`, uvidíte *V2*.
@@ -269,5 +269,3 @@ V následujících článcích se dozvíte, jak optimalizovat výkon sítě CDN:
 
 > [!div class="nextstepaction"]
 > [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
-
-

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716546"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Výsledky hledání Vyhledávání Bingu pomocí Azure Logic Apps
 
@@ -55,7 +55,7 @@ Nebo, pokud připojení již existuje, zadejte potřebné informace pro aktivač
    | Vyhledávací dotaz | Ano | <*Hledat slova*> | Zadejte klíčová slova pro hledání, která chcete použít. |
    | Uvádět | Ano | <*jazyka*> | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
    | Bezpečné vyhledávání | Ano | <*úroveň vyhledávání*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
-   | Count | Ne | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
+   | Počet | Ne | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
    | Posun | Ne | <*Přeskočit hodnotu*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
    |||||
 
@@ -106,7 +106,7 @@ V seznamu akce vyberte akci, kterou chcete.
    | Vyhledávací dotaz | Ano | <*výraz hledání*> | Zadejte výraz pro dotazování na výsledky triggeru. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořit výraz pomocí Tvůrce výrazů. |
    | Uvádět | Ano | <*jazyka*> | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
    | Bezpečné vyhledávání | Ano | <*úroveň vyhledávání*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
-   | Count | Ne | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
+   | Počet | Ne | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
    | Posun | Ne | <*Přeskočit hodnotu*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
    |||||
 
@@ -124,7 +124,7 @@ V seznamu akce vyberte akci, kterou chcete.
       ![Výběr funkce](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. V seznamu polí vyberte **kategorie**, která se převede na parametr. 
-   Přidejte čárku za první parametr a za čárku přidejte toto slovo:`'tech'` 
+   Přidejte čárku za první parametr a za čárku přidejte toto slovo: `'tech'` 
 
       ![Vybrat pole](./media/connectors-create-api-bing-search/expression-select-field.png)
 

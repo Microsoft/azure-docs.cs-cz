@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244986"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441288"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Kurz: Nasazení aplikace Service Fabric do clusteru v Azure
 
@@ -30,7 +30,7 @@ V této sérii kurzů se naučíte:
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavte monitorování a diagnostiku pro aplikaci](service-fabric-tutorial-monitoring-aspnet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -78,19 +78,19 @@ V **koncový bod připojení**vyberte **vytvořit nový cluster**.  Pokud nasazu
 
 Na kartě **cluster** zadejte **název clusteru** (například "mytestcluster"), vyberte své předplatné, vyberte oblast clusteru (například střed USA – jih), zadejte počet uzlů clusteru (pro testovací cluster doporučujeme tři uzly) a zadejte skupinu prostředků (například "mytestclustergroup"). Klikněte na **Next** (Další).
 
-![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![Snímek obrazovky se zobrazí v dialogovém okně vytvořit Service Fabric clusteru na kartě cluster.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 Na kartě **certifikát** zadejte heslo a výstupní cestu pro certifikát clusteru. Certifikát podepsaný svým držitelem se vytvoří jako soubor PFX a uloží se do zadané výstupní cesty.  Certifikát se používá pro zabezpečení mezi uzly i mezi klientem a uzlem.  Pro produkční clustery nepoužívejte certifikát podepsaný svým držitelem.  Tento certifikát používá Visual Studio k ověřování pomocí clusteru a nasazování aplikací. Vyberte **importovat certifikát** a nainstalujte PFX do úložiště certifikátů do currentuser\my vašeho počítače.  Klikněte na **Next** (Další).
 
-![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![Snímek obrazovky se zobrazí na kartě certifikát v dialogovém okně vytvořit cluster Service Fabric.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
 Na kartě **Podrobnosti o virtuálním počítači** zadejte **uživatelské jméno** a **heslo** pro účet správce clusteru.  Vyberte **bitovou kopii virtuálního počítače** pro uzly clusteru a **Velikost virtuálního počítače** pro každý uzel clusteru.  Klikněte na kartu **Upřesnit** .
 
-![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![Snímek obrazovky se zobrazí karta Podrobnosti V M dialogového okna vytvořit cluster Service Fabric.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 V části **porty**Zadejte koncový bod služby VotingWeb z předchozího kroku (například 8080).  Po vytvoření clusteru se tyto porty aplikace otevřou v nástroji pro vyrovnávání zatížení Azure, abyste přesměrovali provoz do clusteru.  Kliknutím na **vytvořit** vytvořte cluster, který trvá několik minut.
 
-![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![Snímek obrazovky se zobrazí na kartě Upřesnit v dialogovém okně vytvořit cluster Service Fabric.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>Publikování aplikace do clusteru
 

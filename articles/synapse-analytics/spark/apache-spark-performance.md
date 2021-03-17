@@ -1,6 +1,6 @@
 ---
 title: Optimalizace úloh Sparku pro výkon
-description: Tento článek poskytuje Úvod do Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
+description: Tento článek poskytuje Úvod do Apache Spark ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089256"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450922"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark (Preview) ve službě Azure synapse Analytics
+# <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark ve službě Azure synapse Analytics
 
-Naučte se optimalizovat [Apache Spark](https://spark.apache.org/) konfiguraci clusteru pro konkrétní zatížení.  Nejběžnější výzvou je zatížení paměti kvůli nesprávným konfiguracím (zejména kvůli nesprávně nastavené velikosti exekutorů), dlouhotrvajícím operacím a úlohám, které vedou ke kartézským operacím. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky.
+Naučte se optimalizovat konfiguraci [Apache Spark](https://spark.apache.org/) clusteru pro konkrétní zatížení.  Nejběžnější výzvou je zatížení paměti kvůli nesprávným konfiguracím (zejména kvůli nesprávně nastavené velikosti exekutorů), dlouhotrvajícím operacím a úlohám, které vedou ke kartézským operacím. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky.
 
 Následující části popisují běžné optimalizace úloh Spark a doporučení.
 
@@ -52,7 +52,7 @@ Starší verze Sparku používají RDD k abstraktním datům, Spark 1,3 a 1,6 za
 
 Spark podporuje mnoho formátů, jako je CSV, JSON, XML, Parquet, orc a Avro. Spark se dá rozšířit tak, aby podporoval mnoho dalších formátů s externími zdroji dat. Další informace najdete v tématu [Apache Spark balíčky](https://spark-packages.org).
 
-Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je výchozí hodnota ve Sparku 2. x. Parquet ukládá data ve sloupcovém formátu a je vysoce optimalizovaná ve Sparku. Kromě toho, že *Komprese přichycení* může mít za následek větší soubory, než je například komprese GZip. Vzhledem k povaze těchto souborů dojde k rychlejšímu dekomprimaci.]
+Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je výchozí hodnota ve Sparku 2. x. Parquet ukládá data ve sloupcovém formátu a je vysoce optimalizovaná ve Sparku. I když *Komprese přichycení* může mít za následek větší soubory, než říkáte kompresi gzip. Vzhledem k povaze těchto souborů se tyto soubory dekomprimuje rychleji.
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 
@@ -77,7 +77,7 @@ Apache Spark ve službě Azure synapse používá PŘÍZe [Apache HADOOP příze
 Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 
 * Projděte si přehledy DAG Management. Zmenšete ze zdrojových dat zmenšeného na straně mapy, před rozdělením na oddíly (nebo nastavit interval), maximalizujte jednotlivá místa a snižte množství odesílaných dat.
-* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey` , které poskytuje agregace, okna a další funkce, ale má Ann nevázaný limit paměti.
+* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey` , které poskytuje agregace, okna a další funkce, ale má neomezenou velikost paměti.
 * Raději `TreeReduce` , což více funguje na vykonavatelích nebo oddílech, na `Reduce` , který vše funguje na ovladači.
 * Využijte místo objektů RDD na nižší úrovni datový rámec.
 * Vytvořte ComplexTypes, které zapouzdřují akce, například "horních N", různé agregace nebo operace s okny.
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Apache Spark ladění](https://spark.apache.org/docs/latest/tuning.html)
+- [Apache Spark ladění](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [Jak ve skutečnosti ladit úlohy Apache Spark, aby fungovaly](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Serializace kryo](https://github.com/EsotericSoftware/kryo)

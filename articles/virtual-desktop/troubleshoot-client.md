@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 097c97d16cf62793d03ac42662267e0553383bc1
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134475"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539621"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Řešení potíží s klientem vzdálené plochy
 
@@ -84,10 +84,25 @@ Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, po
 4. Smažte mezipaměť prohlížeče. Další informace najdete v tématu [vymazání mezipaměti prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 5. Otevřete prohlížeč v privátním režimu.
 
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Klient Windows blokuje informační kanál virtuální plochy systému Windows (Classic)
+
+Pokud informační kanál klienta Windows nebude zobrazovat aplikace virtuální plochy Windows (Classic), postupujte podle těchto pokynů:
+
+1. Ověřte, jestli zásady podmíněného přístupu zahrnují ID aplikací přidružené k virtuální ploše Windows (Classic).
+2. Ověřte, jestli zásady podmíněného přístupu blokují veškerý přístup s výjimkou ID aplikací pro virtuální počítače s Windows (Classic). Pokud ano, budete muset přidat ID aplikace **9cdead84-a844-4324-93f2-b2e6bb768d07** k zásadě, aby klient mohl vyhledat informační kanály.
+
+Pokud v seznamu nemůžete najít ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07, bude nutné zaregistrovat poskytovatele prostředků virtuálního počítače s Windows. Registrace poskytovatele prostředků:
+
+1. Přihlaste se k portálu Azure.
+2. Klikněte na **předplatné** a pak vyberte své předplatné.
+3. V nabídce na levé straně stránky vyberte **poskytovatel prostředků**.
+4. Vyhledejte a vyberte **Microsoft. DesktopVirtualization** a pak vyberte **znovu registrovat**.
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení potíží při vytváření prostředí virtuálních počítačů s Windows a fondu hostitelů v prostředí virtuálních ploch Windows najdete v tématu [Vytvoření fondu prostředí a hostitele](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Informace o řešení potíží souvisejících s agentem virtuálního počítače s Windows nebo s připojením relace najdete v tématu [řešení běžných potíží s agentem virtuálních počítačů s Windows](troubleshoot-agent.md).
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
 - Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

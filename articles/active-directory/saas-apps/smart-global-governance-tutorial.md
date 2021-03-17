@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
-ms.openlocfilehash: d93cd2efe49f819c8adeb53674b6d4f465312e06
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527414"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí inteligentního globálního řízení
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat inteligentní řízení globálních z
 * Umožněte uživatelům, aby se automaticky přihlásili k inteligentnímu řízení globálního řízení pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Chytré globální zásady správného řízení podporují jednotné přihlašování iniciované v SP a IDP.
 
-Po konfiguraci inteligentního řízení globálních zásad správného řízení můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po konfiguraci inteligentního řízení globálních zásad správného řízení můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-smart-global-governance-from-the-gallery"></a>Přidání inteligentního řízení globálního řízení z Galerie
 
@@ -73,7 +73,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **inteligentního globálního řízení** aplikace v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
 
    ![Tlačítko tužky pro základní konfiguraci SAML](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     - `https://eu-fr-south.console.smartglobalprivacy.com/dpo`
     - `https://eu-fr-south.console.smartglobalprivacy.com/platform`
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** pro **certifikát (RAW)** a Stáhněte certifikát a uložte ho do počítače:
+1. Na stránce **nastavit jeden Sign-On s SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** pro **certifikát (RAW)** a Stáhněte certifikát a uložte ho do počítače:
 
     ![Odkaz na stažení certifikátu](common/certificateraw.png)
 
@@ -108,25 +108,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé** a pak vyberte **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. V části vlastnosti **uživatele** proveďte tyto kroky:
    1. Do pole **název** zadejte **B. Simon**.  
    1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například, `B.Simon@contoso.com`.
-   1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
 ### <a name="grant-access-to-the-test-user"></a>Udělení přístupu testovacímu uživateli
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte tomuto uživateli přístup k inteligentnímu globálnímu řízení.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **inteligentní řízení globálního řízení**.
 1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**:
 
    ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** :
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** :
 
     ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
@@ -140,24 +140,24 @@ Ke konfiguraci jednotného přihlašování na straně inteligentního globáln�
 
 ### <a name="create-a-smart-global-governance-test-user"></a>Vytvoření uživatele s automatickým automatickým testováním pro řízení
 
-Spolupracujte s [týmem podpory inteligentního řízení globálního řízení](mailto:support.tech@smartglobal.com) a přidejte uživatele s názvem B. Simon do inteligentního řízení globálního řízení. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+Spolupracujte s [týmem podpory inteligentního řízení globálního řízení](mailto:support.tech@smartglobal.com) a přidejte uživatele s názvem B. Simon do inteligentního řízení globálního řízení. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici Inteligentní zásady správného řízení, měli byste být automaticky přihlášení do globální instance zásad správného řízení, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici Inteligentní zásady správného řízení, měli byste být automaticky přihlášení do globální instance zásad správného řízení, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Kurzy k integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy k integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si inteligentní řízení globálních věcí pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Ochrana inteligentního řízení globálního řízení pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Ochrana inteligentního řízení globálního řízení pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

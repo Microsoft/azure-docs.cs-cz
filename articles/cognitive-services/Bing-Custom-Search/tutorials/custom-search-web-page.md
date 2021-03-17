@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921948"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342409"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Pokud například vlastníte web Martial umění, který poskytuje vyhledávání, můžete určit domény, podřízené weby a webové stránky, které vyhledávání Bingu. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet obecné výsledky hledání, které můžou obsahovat irelevantní obsah. 
 
@@ -45,7 +50,7 @@ Vytvoření instance vlastního vyhledávání Bingu:
   
 2. Přejděte na [portál](https://customsearch.ai) vlastního vyhledávání.  
   
-3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud nemáte MSA, klikněte na **vytvořit účet Microsoft**. Pokud na portálu používáte portál poprvé, bude požádat o oprávnění k přístupu k vašim datům. Klikněte na tlačítko **Ano**.  
+3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud nemáte MSA, klikněte na **vytvořit účet Microsoft**. Pokud na portálu používáte portál poprvé, bude požádat o oprávnění k přístupu k vašim datům. Klikněte na **Ano**.  
   
 4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název a popis typu obsahu, který hledání vrátí. Název můžete kdykoli změnit.  
   
@@ -118,7 +123,7 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
   
 5. V rozevíracím seznamu vyberte klíče svého předplatného. Případně můžete klíč předplatného zadat ručně.
   
-   ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Snímek obrazovky s klíčem předplatného hostovaného uživatelského rozhraní](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +149,7 @@ Zbývající část tohoto kurzu ilustruje **možnost 1: fragment kódu JavaScri
   
 4. V okně **Nová webová aplikace ASP.NET Core** vyberte **Webová aplikace** a klikněte na **OK**.  
   
-   ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-webapp.png)  
+   ![Snímek obrazovky s novým WebApp oknem](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Úprava souboru index.cshtml
 

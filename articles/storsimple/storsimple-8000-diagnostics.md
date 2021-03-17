@@ -1,6 +1,6 @@
 ---
 title: Nástroj pro diagnostiku k řešení potíží se zařízením s StorSimple 8000 | Microsoft Docs
-description: Popisuje režimy zařízení StorSimple a vysvětluje, jak použít Windows PowerShell pro StorSimple ke změně režimu zařízení.
+description: Tento článek obsahuje přehled nástroje pro diagnostiku a popisuje, jak lze nástroj použít se zařízením StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504453"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954065"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Řešení potíží se zařízeními 8000 series pomocí nástroje Diagnostika StorSimple
 
@@ -332,7 +332,7 @@ Tady je ukázkový výstup zařízení 8100. Můžete vidět výstup, který:
 * DATA 2-5 nejsou na portálu povolena.
 * Konfigurace serveru DNS je platná a zařízení se může připojit prostřednictvím serveru DNS.
 * Připojení k serveru NTP je také přesné.
-* Porty 80 a 443 jsou otevřené. Port 9354 je ale zablokovaný. Na základě [systémových požadavků na síť](storsimple-system-requirements.md)musíte tento port pro komunikaci se službou Service Bus otevřít.
+* Porty 80 a 443 jsou otevřené. Port 9354 je ale zablokovaný. Na základě [systémových požadavků na síť](./storsimple-8000-system-requirements.md)musíte tento port pro komunikaci se službou Service Bus otevřít.
 * Certifikát TLS/SSL je platný.
 * Zařízení se může připojit k účtu úložiště: _myss8000storageacct_.
 * Připojení k serverům aktualizací je platné.
@@ -388,7 +388,7 @@ Chcete-li použít tento nástroj, proveďte následující kroky:
 
     Pokud jsou latence čtení i zápisu hlášené nástrojem pro diagnostiku vysoké:
 
-    1. Nakonfigurujte Analýza úložiště pro služby BLOB Services a analyzujte výstup, abyste pochopili latence pro účet úložiště Azure. Podrobné pokyny najdete v tématu [povolení a konfigurace analýza úložiště](../storage/common/storage-enable-and-view-metrics.md). Pokud jsou tyto latence také vysoké a srovnatelné s čísly, která jste obdrželi z nástroje Diagnostika StorSimple, musíte do protokolu Azure Storage zaprotokolovat žádost o služby.
+    1. Nakonfigurujte Analýza úložiště pro služby BLOB Services a analyzujte výstup, abyste pochopili latence pro účet úložiště Azure. Podrobné pokyny najdete v tématu [povolení a konfigurace analýza úložiště](../storage/blobs/monitor-blob-storage.md). Pokud jsou tyto latence také vysoké a srovnatelné s čísly, která jste obdrželi z nástroje Diagnostika StorSimple, musíte do protokolu Azure Storage zaprotokolovat žádost o služby.
 
     2. Pokud je latence účtu úložiště nízká, obraťte se na správce sítě a prozkoumejte případné problémy s latencí ve vaší síti.
 
@@ -414,11 +414,11 @@ Controller0>
 
 Tady je Tabulka popisující, k jakým různým parametrům prostředí Windows PowerShell v mapě systémových informací. 
 
-| Parametr PowerShellu    | Description  |
+| Parametr PowerShellu    | Popis  |
 |-------------------------|------------------|
 | Instance ID             | Každý kontroler má jedinečný identifikátor nebo identifikátor GUID, který je k němu přidružený.|
 | Name                    | Popisný název zařízení nakonfigurovaného prostřednictvím Azure Portal během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení. |
-| Model                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
+| Modelování                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
 | SerialNumber            | Sériové číslo zařízení je přiřazeno k továrně a je 15 znaků dlouhé. Například 8600-SHX0991003G44HT označuje:<br> 8600 – je model zařízení.<br>SHX – je výrobní pracoviště.<br> 0991003 – je konkrétní produkt. <br> G44HT – při posledních 5 číslicích se zvýší a vytvoří se jedinečná sériová čísla. Nemusí se jednat o sekvenční sadu.|
 | TimeZone                | Časové pásmo zařízení nakonfigurované v Azure Portal během nasazování zařízení.|
 | CurrentController       | Kontroler, ke kterému jste připojeni přes rozhraní Windows PowerShell zařízení StorSimple.|
@@ -440,6 +440,6 @@ Tady je Tabulka popisující, k jakým různým parametrům prostředí Windows 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Seznamte se s [syntaxí rutiny Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
+* Seznamte se s [syntaxí rutiny Invoke-HcsDiagnostics](/previous-versions/windows/powershell-scripting/mt795371(v=wps.630)).
 
-* Přečtěte si další informace o [řešení potíží s nasazením](storsimple-troubleshoot-deployment.md) na zařízení StorSimple.
+* Přečtěte si další informace o [řešení potíží s nasazením](./storsimple-8000-troubleshoot-deployment.md) na zařízení StorSimple.

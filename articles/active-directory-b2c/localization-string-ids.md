@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/10/2020
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428125"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631179"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -25,36 +25,50 @@ Element **Localization** umožňuje v zásadách pro cesty uživatelů podporova
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Prvky přihlašovacích nebo přihlašovacích stránek
 
-Následující identifikátory se používají pro definici obsahu s ID `api.signuporsignin` .
+Následující identifikátory se používají pro definici obsahu s ID `api.signuporsignin` a [technickým profilem s vlastním uplatněním](self-asserted-technical-profile.md).
 
-| ID | Výchozí hodnota |
-| -- | ------------- |
-| **local_intro_email** | Přihlaste se pomocí svého existujícího účtu |
-| **logonIdentifier_email** | E-mailová adresa |
-| **requiredField_email** | Zadejte prosím svůj e-mail. |
-| **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' '*+/=? ^ _ \` { \| } ~-] + @ [a-za-Z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
-| **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. |
-| **logonIdentifier_username** | Uživatelské jméno |
-| **requiredField_username** | Zadejte prosím svoje uživatelské jméno. |
-| **heslo** | Heslo |
-| **requiredField_password** | Zadejte prosím svoje heslo. |
-| **invalid_password** | Heslo, které jste zadali, není v očekávaném formátu. |
-| **forgotpassword_link** | Forgot your password? |
-| **createaccount_intro** | Nemáte účet? |
-| **createaccount_link** | Zaregistrujte se |
-| **divider_title** | NEBO |
-| **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlášení |
-| **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
-  **remember_me** |Neodhlašovat|
-| **unknown_error** | Máme potíže s přihlášením. Zkuste to později. |
+| ID | Výchozí hodnota | Verze rozložení stránky |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | Forgot your password? | `All` |
+| **createaccount_intro** | Nemáte účet? | `All` |
+| **button_signin** | Přihlásit se | `All` |
+| **social_intro** | Přihlaste se pomocí účtu sociální sítě. | `All` |
+| **remember_me** |Zůstat přihlášeni. | `All` |
+| **unknown_error** | Máme potíže s přihlášením. Zkuste to později. | `All` |
+| **divider_title** | NEBO | `All` |
+| **local_intro_email** | Přihlaste se pomocí svého existujícího účtu | `< 2.0.0` |
+| **logonIdentifier_email** | E-mailová adresa | `< 2.0.0` |
+| **requiredField_email** | Zadejte prosím svůj e-mail. | `< 2.0.0` |
+| **invalid_email** | Zadejte prosím platnou e-mailovou adresu. | `< 2.0.0` |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' \* +/=? ^ \_ \` { \| } ~-] + @ [a-za-Z0-9-] + (?: \\ . [ a-zA-Z0-9-] +) \* $ |`< 2.0.0` |
+| **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. | `< 2.0.0` |
+| **logonIdentifier_username** | Uživatelské jméno | `< 2.0.0` |
+| **requiredField_username** | Zadejte prosím svoje uživatelské jméno. | `< 2.0.0` |
+| **heslo** | Heslo | `< 2.0.0` |
+| **requiredField_password** | Zadejte prosím svoje heslo. | `< 2.0.0` |
+| **createaccount_link** | Zaregistrujte se | `< 2.0.0` |
+| **cancel_message** | Uživatel zapomněl svoje heslo. | `< 2.0.0` |
+| **invalid_password** | Heslo, které jste zadali, není v očekávaném formátu. | `< 2.0.0` |
+| **createaccount_one_link** | Zaregistrujte se | `>= 2.0.0` |
+| **createaccount_two_links** | Zaregistrujte se pomocí {0} nebo {1} | `>= 2.0.0` |
+| **createaccount_three_links** | Zaregistrujte se pomocí {0} , {1} nebo {2} | `>= 2.0.0` |
+| **local_intro_generic** | Přihlaste se pomocí svého {0} | `>= 2.1.0` |
+| **requiredField_generic** | Zadejte prosím svoje {0} | `>= 2.1.0` |
+| **invalid_generic** | Zadejte prosím platný {0} | `>= 2.1.1` |
+| **Adresář** | Přihlásit se | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * Zástupné symboly jako {0} budou automaticky doplněny `DisplayName` hodnotou `ClaimType` . 
+> * Další informace o lokalizaci najdete `ClaimType` v tématu [registrace a přihlášení – příklad](#signupsigninexample).
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na přihlašovací stránce nebo na přihlašovací stránce:
 
-![Prvky uživatelského rozhraní pro registraci nebo přihlašovací stránku](./media/localization-string-ids/localization-susi.png)
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="Snímek obrazovky zobrazující registrační nebo přihlašovací stránku U X prvků":::
 
-ID zprostředkovatelů identity je nakonfigurováno v elementu **ClaimsExchange** na cestě uživatele. Chcete-li lokalizovat název poskytovatele identity, je typ **ElementType** nastaven na hodnotu `ClaimsProvider` , zatímco **STRINGID** je nastaven na ID `ClaimsExchange` .
+### <a name="sign-up-or-sign-in-identity-providers"></a>Poskytovatelé přihlašovacích nebo přihlašování identity
+
+ID zprostředkovatelů identity je nakonfigurováno v elementu  **ClaimsExchange** na cestě uživatele. Chcete-li lokalizovat název poskytovatele identity, je typ **ElementType** nastaven na hodnotu `ClaimsProvider` , zatímco **STRINGID** je nastaven na ID `ClaimsExchange` .
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -84,6 +98,7 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 | ID | Výchozí hodnota |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Heslo není správné. |
+| **UserMessageIfPasswordExpired**| Platnost vašeho hesla vypršela.|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Nemůžeme se zdát, že váš účet najdete. |
 | **UserMessageIfOldPasswordUsed** | Vypadá to, že jste použili staré heslo. |
 | **DefaultMessage** | Neplatné uživatelské jméno nebo heslo. |
@@ -91,9 +106,44 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 | **UserMessageIfUserAccountLocked** | Váš účet je dočasně zamčený, aby nedocházelo k neoprávněnému použití. Zkuste to později. |
 | **AADRequestsThrottled** | V tuto chvíli je moc velký počet požadavků. Chvíli prosím počkejte a zkuste to znovu. |
 
+<a name="signupsigninexample"></a>
+### <a name="sign-up-or-sign-in-example"></a>Příklad registrace nebo přihlášení
+
+```xml
+<LocalizedResources Id="api.signuporsignin.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
+    <!-- Uncomment the remember_me only if the keep me signed in is activated. 
+    <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
+    <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountDisabled">Your account has been locked. Contact your support person to unlock it, then try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountLocked">Your account is temporarily locked to prevent unauthorized use. Try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="AADRequestsThrottled">There are too many requests at this moment. Please wait for some time and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Prvky uživatelského rozhraní pro registraci a samoobslužné vyhodnocení stránek
 
-Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo libovolnou definicí obsahu, která začíná `api.selfasserted` , například `api.selfasserted.profileupdate` a `api.localaccountpasswordreset` .
+Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo libovolnou definicí obsahu, která začíná `api.selfasserted` , například `api.selfasserted.profileupdate` a a `api.localaccountpasswordreset` [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md).
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -102,13 +152,13 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
 | **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Odeslat ověřovací kód |
-| **alert_yes** | Ano |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
-| **jednolet** | Year |
+| **jednolet** | Year (Rok) |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
 | **button_cancel** | Zrušit |
 | **ver_fail_no_retry** | Provedli jste příliš mnoho nesprávných pokusů. Zkuste to později. |
-| **měsíčně** | Month |
+| **měsíčně** | Month (Měsíc) |
 | **ver_success_msg** | E-mailová adresa byla ověřena. Nyní můžete pokračovat. |
 | **months** | Leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
 | **ver_fail_server** | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu. |
@@ -120,7 +170,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
 | **ver_but_verify** | Ověřit kód |
-| **alert_no** | Ne |
+| **alert_no** | No |
 | **ver_info_msg** | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání. |
 | **dnu** | Den |
 | **ver_fail_throttled** | Existuje příliš mnoho žádostí o ověření této e-mailové adresy. Chvíli prosím počkejte a pak to zkuste znovu. |
@@ -137,11 +187,11 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | ID | Výchozí hodnota |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Uživatel se zadaným ID už existuje. Zvolte prosím jiný. |
-| **UserMessageIfClaimNotVerified** | Deklarace identity není ověřená:{0} |
-| **UserMessageIfIncorrectPattern** | Nesprávný vzor pro:{0} |
-| **UserMessageIfMissingRequiredElement** | Chybí požadovaný element:{0} |
-| **UserMessageIfValidationError** | Chyba při ověřování uživatelem:{0} |
-| **UserMessageIfInvalidInput** | {0}má neplatný vstup. |
+| **UserMessageIfClaimNotVerified** | Deklarace identity není ověřená: {0} |
+| **UserMessageIfIncorrectPattern** | Nesprávný vzor pro: {0} |
+| **UserMessageIfMissingRequiredElement** | Chybí požadovaný element: {0} |
+| **UserMessageIfValidationError** | Chyba při ověřování uživatelem: {0} |
+| **UserMessageIfInvalidInput** | {0} má neplatný vstup. |
 | **ServiceThrottled** | V tuto chvíli je moc velký počet požadavků. Chvíli prosím počkejte a zkuste to znovu. |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce pro registraci:
@@ -152,10 +202,61 @@ Následující příklad ukazuje použití některých prvků uživatelského ro
 
 ![Prvky uživatelského prostředí ověřování e-mailů pro registraci stránky](./media/localization-string-ids/localization-email-verification.png)
 
+## <a name="sign-up-and-self-asserted-pages-example"></a>Příklad stránek se zápisem a vlastním kontrolním příznakem
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Email address that can be used to contact you.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="DisplayName">New Password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="UserHelpText">Enter new password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="PatternHelpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="DisplayName">Confirm New Password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="UserHelpText">Confirm new password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="PatternHelpText">#8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="displayName" StringId="DisplayName">Display Name</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="displayName" StringId="UserHelpText">Your display name.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="surname" StringId="DisplayName">Surname</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="surname" StringId="UserHelpText">Your surname (also known as family name or last name).</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="givenName" StringId="DisplayName">Given Name</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="givenName" StringId="UserHelpText">Your given name (also known as first name).</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_continue">Create</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_fieldIncorrect">One or more fields are filled out incorrectly. Please check your entries and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_passwordEntryMismatch">The password entry fields do not match. Please enter the same password in both fields and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_requiredFieldMissing">A required field is missing. Please fill out all required fields and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="helplink_text">What is this?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please provide the following details.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="preloader_alt">Please wait</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="required_field">This information is required.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_edit">Change e-mail</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_resend">Send new code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_send">Send verification code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_verify">Verify code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_code_expired">That code is expired. Please request a new code.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_no_retry">You've made too many incorrect attempts. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_retry">That code is incorrect. Please try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_server">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_throttled">There have been too many requests to verify this email address. Please wait a while, then try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_info_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_input">Verification code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_success_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="ServiceThrottled">There are too many requests at this moment. Please wait for some time and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimNotVerified">Claim not verified: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">A user with the specified ID already exists. Please choose a different one.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfIncorrectPattern">Incorrect pattern for: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidInput">{0} has invalid input.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMissingRequiredElement">Missing required element: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfValidationError">Error in validation by: {0}</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>Prvky uživatelského rozhraní stránky pro ověřování na telefonním faktoru
 
-Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor` .
+Níže jsou uvedené identifikátory definice obsahu s ID `api.phonefactor` a [technickým profilem pro telefonní faktor](phone-factor-technical-profile.md).
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -171,7 +272,7 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor` 
 | **invalid_code** | Zadejte prosím kód o 6 číslicích, který jste dostali. |
 | **button_cancel** | Zrušit |
 | **local_number_input_placeholder_text** | Telefonní číslo |
-| **button_retry** | Retry |
+| **button_retry** | Zkusit znovu |
 | **alternative_text** | Nemám svůj telefon |
 | **intro_phone_p** | Pro vás budeme nahrávat následující čísla. Vyberte číslo, na které můžeme telefon ověřit. |
 | **intro_phone** | Pro vás budeme nahrávat následující číslo. Budeme vám telefonicky ověřit. |
@@ -190,22 +291,109 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor` 
 | **number_label** | Telefonní číslo |
 | **error_tryagain** | Telefonní číslo, které jste zadali, je zaneprázdněno nebo není k dispozici. Zkontrolujte prosím číslo a zkuste to znovu. |
 | **error_incorrect_code** | Ověřovací kód, který jste zadali, neodpovídá našim záznamům. Zkuste to prosím znovu nebo si vyžádejte nový kód. |
-| **countryList** | Podívejte [se na seznam zemí](#countries-list). |
+| **countryList** | Podívejte [se na seznam zemí](#phone-factor-authentication-page-example). |
 | **error_448** | Telefonní číslo, které jste zadali, je nedosažitelné. |
 | **error_449** | Uživatel překročil počet opakovaných pokusů. |
 | **verification_code_input_placeholder_text** | Ověřovací kód |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce pro zápis MFA:
 
-![Prvky uživatelského prostředí ověřování e-mailů pro registraci stránky](./media/localization-string-ids/localization-mfa1.png)
+![Prvky uživatelského prostředí pro zápis ověřování pro telefonní faktor](./media/localization-string-ids/localization-mfa1.png)
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce ověřování MFA:
 
-![Prvky uživatelského prostředí ověřování e-mailů pro registraci stránky](./media/localization-string-ids/localization-mfa2.png)
+![Prvky uživatelského prostředí ověřování pro telefonní faktor](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="phone-factor-authentication-page-example"></a>Příklad stránky ověřování od telefonního faktoru
+
+```xml
+<LocalizedResources Id="api.phonefactor.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="button_verify">Call Me</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="country_code_label">Country Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has canceled multi-factor authentication</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="text_button_send_second_code">Send a new code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="code_pattern">\d{6}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_mixed">We have the following number on record for you. We can send a code via SMS or phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_mixed_p">We have the following numbers on record for you. Choose a number that we can phone or send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_code">Please enter the verification code you received</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_code">Please enter the 6-digit code you received</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_number_input_placeholder_text">Phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_retry">Retry</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="alternative_text">I don't have my phone</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_phone_p">We have the following numbers on record for you. Choose a number that we can phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_phone">We have the following number on record for you. We will phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="enter_code_text_intro">Enter your verification code below, or</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_phone">Enter a number below that we can phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_sms">Enter a number below that we can send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_number">Please enter a valid phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_sms">We have the following number on record for you. We will send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_mixed">Enter a number below that we can send a code via SMS or phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="number_pattern">^\+(?:[0-9][\x20-]?){6,14}[0-9]$</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_sms_p">We have the following numbers on record for you. Choose a number that we can send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_countryCode">Please select your country code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_number">Please enter your phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="country_code_input_placeholder_text">Country or region</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="number_label">Phone Number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_tryagain">The phone number you provided is busy or unavailable. Please check the number and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_incorrect_code">The verification code you have entered does not match our records. Please try again, or request a new code.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="countryList">{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_448">The phone number you provided is unreachable.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_449">User has exceeded the number of retry attempts.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_code_input_placeholder_text">Verification code</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="strongAuthenticationPhoneNumber" StringId="DisplayName">Phone Number</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+
+```
 
 ## <a name="verification-display-control-user-interface-elements"></a>Ovládací prvky uživatelského rozhraní pro zobrazení ověření
 
-Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) .
+Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) s [verzí rozložení stránky](page-layout.md) 2.1.0 nebo vyšší.
+
+| ID | Výchozí hodnota |
+| -- | ------------- |
+|intro_msg <sup>*</sup>| Ověření je nezbytné. Klikněte prosím na tlačítko Odeslat.|
+|success_send_code_msg | Ověřovací kód byl odeslán. Zkopírujte ho prosím do následujícího pole pro zadání.|
+|failure_send_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu.|
+|success_verify_code_msg | E-mailová adresa byla ověřena. Nyní můžete pokračovat.|
+|failure_verify_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zkuste to prosím znovu.|
+|but_send_code | Odeslat ověřovací kód|
+|but_verify_code | Ověřit kód|
+|but_send_new_code | Poslat nový kód|
+|but_change_claims | Změnit e-mail|
+
+Poznámka: `intro_msg` element je skrytý a není zobrazen na stránce s vlastním kontrolním výrazem. Chcete-li jej zobrazit, použijte [Customiztion HTML](customize-ui-with-html.md) s šablony stylů CSS. Například:
+    
+```css
+.verificationInfoText div{display: block!important}
+```
+
+### <a name="verification-display-control-example"></a>Příklad ovládacího prvku zobrazení ověření
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Ovládací prvky uživatelského rozhraní pro zobrazení ověření (zastaralé)
+
+Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) s [verzí rozložení stránky](page-layout.md) 2.0.0.
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -217,7 +405,7 @@ Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřová
 |verification_control_but_verify_code |Ověřit kód |
 |verification_control_code_sent| Ověřovací kód byl odeslán. Zkopírujte ho prosím do následujícího pole pro zadání. |
 
-### <a name="example"></a>Příklad
+### <a name="verification-display-control-example-deprecated"></a>Příklad ovládacího prvku zobrazení ověření (zastaralé)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -239,13 +427,13 @@ Níže jsou uvedené identifikátory pro chybové zprávy [technického profilu 
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful. Adresa URL služby RESTful:{0} |
-|UserMessageIfCircuitOpen | {0}Adresa URL služby RESTful:{1} |
-|UserMessageIfDnsResolutionFailed | Nepovedlo se přeložit název hostitele koncového bodu služby RESTful. Adresa URL služby RESTful:{0} |
-|UserMessageIfRequestTimeout | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful během časového limitu {0} sekund. Adresa URL služby RESTful:{1} |
+|DefaultUserMessageIfRequestFailed | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful. Adresa URL služby RESTful: {0} |
+|UserMessageIfCircuitOpen | {0} Adresa URL služby RESTful: {1} |
+|UserMessageIfDnsResolutionFailed | Nepovedlo se přeložit název hostitele koncového bodu služby RESTful. Adresa URL služby RESTful: {0} |
+|UserMessageIfRequestTimeout | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful během časového limitu {0} sekund. Adresa URL služby RESTful: {1} |
 
 
-### <a name="example"></a>Příklad
+### <a name="restful-service-example"></a>Příklad služby RESTful
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -258,9 +446,9 @@ Níže jsou uvedené identifikátory pro chybové zprávy [technického profilu 
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Chybové zprávy Azure MFA
+## <a name="azure-ad-mfa-error-messages"></a>Chybové zprávy Azure AD MFA
 
-Níže jsou uvedené identifikátory pro chybové zprávy [Technical profilování Azure MFA](multi-factor-auth-technical-profile.md) :
+V této části najdete ID chybové zprávy pro [technický profil MFA Azure AD](multi-factor-auth-technical-profile.md) :
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -271,7 +459,7 @@ Níže jsou uvedené identifikátory pro chybové zprávy [Technical profilován
 |UserMessageIfThrottled | Vaše žádost byla omezená, zkuste to prosím znovu později.|
 |UserMessageIfWrongCodeEntered|Byl zadán nesprávný kód, zkuste to prosím znovu.|
 
-### <a name="example"></a>Příklad
+### <a name="azure-ad-mfa-example"></a>Příklad Azure AD MFA
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -299,7 +487,7 @@ Níže jsou uvedené identifikátory pro chybové zprávy [Technical Profile Azu
 |UserMessageIfVerificationFailedRetryAllowed | Ověření se nepovedlo, zkuste to prosím znovu.|
 
 
-### <a name="example"></a>Příklad
+### <a name="azure-ad-sspr-example"></a>Příklad Azure AD SSPR
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -325,13 +513,13 @@ Níže jsou uvedené identifikátory pro chybové zprávy s [technickým profile
 |UserMessageIfInvalidCode |Jedno časové heslo zadané pro ověření není správné. |
 |UserMessageIfVerificationFailedRetryAllowed |Kód je nesprávný. Zkuste to prosím znovu. | 
 
-### <a name="example"></a>Příklad
+### <a name="one-time-password-example"></a>Příklad hesla s jedním časem
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
@@ -349,7 +537,7 @@ Pro chybové zprávy transformace deklarací identity se používají následuj�
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | Porovnání hodnoty deklarace identity se nezdařilo: zadaný levý operand je větší než pravý operand.|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | Porovnání hodnoty deklarace identity se nezdařilo pomocí StringComparison "OrdinalIgnoreCase".|
 
-### <a name="example"></a>Příklad
+### <a name="claims-transformations-example"></a>Příklad transformací deklarací identity
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -361,17 +549,9 @@ Pro chybové zprávy transformace deklarací identity se používají následuj�
 </LocalizedResources>
 ```
 
-## <a name="countries-list"></a>Seznam zemí
-
-Níže jsou uvedené hodnoty countryList používané službou Multi-Factor Authentication.
-
-```JSON
-{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}
-```
-
 ## <a name="next-steps"></a>Další kroky
 
 Příklady lokalizace najdete v následujících článcích:
 
-- [Přizpůsobení jazyka s vlastními zásadami v Azure Active Directory B2C](custom-policy-localization.md)
-- [Přizpůsobení jazyka pomocí toků uživatelů v Azure Active Directory B2C](user-flow-language-customization.md)
+- [Přizpůsobení jazyka s vlastními zásadami v Azure Active Directory B2C](language-customization.md)
+- [Přizpůsobení jazyka pomocí toků uživatelů v Azure Active Directory B2C](language-customization.md)

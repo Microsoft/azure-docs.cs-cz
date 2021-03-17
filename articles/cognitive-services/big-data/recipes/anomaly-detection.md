@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691458"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366277"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
 
-Tento recept ukazuje, jak můžete používat Azure synapse Analytics a Cognitive Services v Sparku pro prediktivní údržbu zařízení IoT. Budeme postupovat spolu s ukázkou [odkazů CosmosDB a synapse](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) . Aby se v tomto receptu zachovaly věci jednoduché, přečtěte si data přímo ze souboru CSV, ale nebudete moct data streamovat prostřednictvím odkazu CosmosDB a synapse. Důrazně doporučujeme, abyste si prohledali ukázku odkazu na synapse.
+Tento recept ukazuje, jak můžete používat Azure synapse Analytics a Cognitive Services v Apache Spark pro prediktivní údržbu zařízení IoT. Budeme postupovat spolu s ukázkou [odkazů CosmosDB a synapse](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) . Aby se v tomto receptu zachovaly věci jednoduché, přečtěte si data přímo ze souboru CSV, ale nebudete moct data streamovat prostřednictvím odkazu CosmosDB a synapse. Důrazně doporučujeme, abyste si prohledali ukázku odkazu na synapse.
 
 ## <a name="hypothetical-scenario"></a>Hypotetický scénář
 
@@ -28,16 +28,16 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
+* [Pracovní prostor Azure synapse](../../../synapse-analytics/quickstart-create-workspace.md) nakonfigurovaný s [fondem Apache Spark bez serveru](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
 ## <a name="setup"></a>Nastavení
 
 ### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro překladatele pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli). Můžete také:
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro překladatele pomocí [Azure Portal](../../cognitive-services-apis-create-account.md) nebo [Azure CLI](../../cognitive-services-apis-create-account-cli.md). Můžete také:
 
 - Zobrazení existujícího prostředku v  [Azure Portal](https://portal.azure.com/).
 
@@ -100,9 +100,9 @@ Tato buňka by měla vracet výsledek, který vypadá takto:
 
 | časové razítko           |   value | deviceId   | Anomálie   |
 |:--------------------|--------:|:-----------|:------------|
-| 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Ne       |
-| 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Ne       |
-| 2020-05-01 18:33:53 |    2714 | vývoj – 7      | Ne       |
+| 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Nepravda       |
+| 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Nepravda       |
+| 2020-05-01 18:33:53 |    2714 | vývoj – 7      | Nepravda       |
 
 
  ## <a name="visualize-anomalies-for-one-of-the-devices"></a>Vizualizace anomálií pro jedno ze zařízení

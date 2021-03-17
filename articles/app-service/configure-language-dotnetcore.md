@@ -2,16 +2,16 @@
 title: Konfigurace aplikací ASP.NET Core
 description: Naučte se konfigurovat aplikaci ASP.NET Core v nativních instancích systému Windows nebo v předem sestaveném kontejneru Linux v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211913"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655964"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET Core pro Azure App Service
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-windows"  
 
-Nastavte cílovou architekturu v souboru projektu pro váš ASP.NET Core projekt. Další informace najdete v tématu [Výběr verze .NET Core pro použití](https://docs.microsoft.com/dotnet/core/versions/selection) v dokumentaci k .NET Core.
+Nastavte cílovou architekturu v souboru projektu pro váš ASP.NET Core projekt. Další informace najdete v tématu [Výběr verze .NET Core pro použití](/dotnet/core/versions/selection) v dokumentaci k .NET Core.
 
 ::: zone-end
 
@@ -128,7 +128,7 @@ namespace SomeNamespace
 Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v *appsettings.js*, například hodnota App Service má přednost před *appsettings.jsna* hodnotě. Místní *appsettings.js* hodnota umožňuje ladit aplikaci místně, ale hodnota App Service umožňuje spuštění aplikace v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
 
 > [!NOTE]
-> Všimněte si, že [Hierarchická konfigurační data](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) v *appsettings.js* jsou k dispozici pomocí `:` oddělovače standard pro .NET Core. Pokud chcete v App Service přepsat konkrétní hierarchické nastavení konfigurace, v klíči nastavte název nastavení aplikace na stejný formát s oddělovači. v [Cloud Shell](https://shell.azure.com)můžete spustit následující příklad:
+> Všimněte si, že [Hierarchická konfigurační data](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) v *appsettings.js* jsou k dispozici pomocí `:` oddělovače standard pro .NET Core. Pokud chcete v App Service přepsat konkrétní hierarchické nastavení konfigurace, v klíči nastavte název nastavení aplikace na stejný formát s oddělovači. v [Cloud Shell](https://shell.azure.com)můžete spustit následující příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -144,7 +144,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-ASP.NET Core poskytuje [integrovaného zprostředkovatele protokolování pro App Service](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service). V *program.cs* projektu přidejte poskytovatele do aplikace prostřednictvím `ConfigureLogging` metody rozšíření, jak je znázorněno v následujícím příkladu:
+ASP.NET Core poskytuje [integrovaného zprostředkovatele protokolování pro App Service](/aspnet/core/fundamentals/logging/#azure-app-service). V *program.cs* projektu přidejte poskytovatele do aplikace prostřednictvím `ConfigureLogging` metody rozšíření, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -159,15 +159,15 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-Pak můžete nakonfigurovat a vygenerovat protokoly se [standardním vzorem .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+Pak můžete nakonfigurovat a vygenerovat protokoly se [standardním vzorem .NET Core](/aspnet/core/fundamentals/logging).
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-Další informace o řešení potíží s ASP.NET Core aplikacemi v App Service najdete v tématu věnovaném [řešení potíží ASP.NET Core na Azure App Service a IIS](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis) .
+Další informace o řešení potíží s ASP.NET Core aplikacemi v App Service najdete v tématu věnovaném [řešení potíží ASP.NET Core na Azure App Service a IIS](/aspnet/core/test/troubleshoot-azure-iis) .
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když vaše aplikace ASP.NET Core generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** . Pokud chcete zobrazit stránku podrobností o výjimce v App Service, přidejte do `ASPNETCORE_ENVIRONMENT` aplikace nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Když vaše aplikace ASP.NET Core generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, přidejte do `ASPNETCORE_ENVIRONMENT` aplikace nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -175,11 +175,11 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>Zjistit relaci HTTPS
 
-V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zjistit, jestli jsou požadavky uživatele zašifrované, nebo ne, nakonfigurujte v *Startup.cs*middleware pro předávané hlavičky:
+V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zjistit, jestli jsou požadavky uživatele zašifrované, nebo ne, nakonfigurujte v *Startup.cs* middleware pro předávané hlavičky:
 
-- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k přeposílání `X-Forwarded-For` `X-Forwarded-Proto` hlaviček a v `Startup.ConfigureServices` .
+- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k přeposílání `X-Forwarded-For` `X-Forwarded-Proto` hlaviček a v `Startup.ConfigureServices` .
 - Přidejte do známých sítí rozsahy privátních IP adres, aby middleware mohl důvěřovat nástroji pro vyrovnávání zatížení App Service.
-- Volejte metodu [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) v v `Startup.Configure` před voláním jiného middleware.
+- Volejte metodu [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) v v `Startup.Configure` před voláním jiného middleware.
 
 Vložení všech tří prvků dohromady, váš kód vypadá jako v následujícím příkladu:
 
@@ -192,6 +192,7 @@ public void ConfigureServices(IServiceCollection services)
     {
         options.ForwardedHeaders =
             ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        // These three subnets encapsulate the applicable Azure subnets. At the moment, it's not possible to narrow it down further.
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:10.0.0.0"), 104));
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:192.168.0.0"), 112));
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:172.16.0.0"), 108));
@@ -208,11 +209,11 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Další informace najdete v tématu [konfigurace ASP.NET Core pro práci se servery proxy a nástroji pro vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+Další informace najdete v tématu [konfigurace ASP.NET Core pro práci se servery proxy a nástroji pro vyrovnávání zatížení](/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ::: zone pivot="platform-linux"
 
-## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
+## <a name="open-ssh-session-in-browser"></a>Otevření relace SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -228,7 +229,6 @@ Další informace najdete v tématu [konfigurace ASP.NET Core pro práci se serv
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy k App Service Linux](faq-app-service-linux.md)
+> [Nejčastější dotazy k App Service v Linuxu](faq-app-service-linux.md)
 
 ::: zone-end
-

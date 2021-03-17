@@ -2,17 +2,18 @@
 title: Připojení k virtuálnímu počítači s Windows serverem
 description: Zjistěte, jak se připojit a přihlásit k virtuálnímu počítači s Windows pomocí Azure Portal a modelu nasazení Správce prostředků.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: ce519bd8d2a250f6dc96e8212d6f02f96776a4f1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5d14160a47789e10f1881fa0e55afd4af122c990
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267060"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550752"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlásit k virtuálnímu počítači Azure s Windows
 Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív se připojíte k virtuálnímu počítači a potom se přihlásíte.
@@ -23,7 +24,7 @@ Pokud se chcete připojit k virtuálnímu počítači s Windows z počítače Ma
 1. Pokud se chcete připojit k virtuálnímu počítači, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **virtuální počítače**.
 2. Ze seznamu vyberte virtuální počítač.
 3. Na stránce začátek virtuálního počítače vyberte **připojit**.
-4. Na stránce **připojit k virtuálnímu počítači** vyberte **RDP**a pak vyberte příslušnou **IP adresu** a **číslo portu**. Ve většině případů by se měla používat výchozí IP adresa a port. Vyberte **Stáhnout soubor RDP**. Pokud má virtuální počítač nastavenou sadu zásad za běhu, musíte nejdřív před stažením souboru RDP vybrat tlačítko **požádat o přístup** a požádat ho o přístup. Další informace o zásadách za běhu najdete v tématu [Správa přístupu k virtuálním počítačům pomocí zásad podle časových údajů](../../security-center/security-center-just-in-time.md).
+4. Na stránce **připojit k virtuálnímu počítači** vyberte **RDP** a pak vyberte příslušnou **IP adresu** a **číslo portu**. Ve většině případů by se měla používat výchozí IP adresa a port. Vyberte **Stáhnout soubor RDP**. Pokud má virtuální počítač nastavenou sadu zásad za běhu, musíte nejdřív před stažením souboru RDP vybrat tlačítko **požádat o přístup** a požádat ho o přístup. Další informace o zásadách za běhu najdete v tématu [Správa přístupu k virtuálním počítačům pomocí zásad podle časových údajů](../../security-center/security-center-just-in-time.md).
 5. Otevřete stažený soubor RDP a po zobrazení výzvy vyberte **připojit** . Zobrazí se upozornění, že `.rdp` soubor pochází od neznámého vydavatele. To se očekává. V okně **připojení ke vzdálené ploše** pokračujte výběrem **připojit** .
    
     ![Snímek obrazovky upozornění na neznámého vydavatele](./media/connect-logon/rdp-warn.png)
@@ -40,7 +41,7 @@ Pokud se chcete připojit k virtuálnímu počítači s Windows z počítače Ma
 
 
    > [!TIP]
-   > Pokud je tlačítko **připojit** na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) , budete muset před použitím protokolu RDP vytvořit a přidružit virtuální počítač k veřejné IP adrese. Další informace najdete v tématu [veřejné IP adresy v Azure](../../virtual-network/public-ip-addresses.md).
+   > Pokud je tlačítko **připojit** na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/tutorial-site-to-site-portal.md) , budete muset před použitím protokolu RDP vytvořit a přidružit virtuální počítač k veřejné IP adrese. Další informace najdete v tématu [veřejné IP adresy v Azure](../../virtual-network/public-ip-addresses.md).
    > 
    > 
 
@@ -63,4 +64,4 @@ Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte potíže s připojením, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
+Pokud máte potíže s připojením, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json).

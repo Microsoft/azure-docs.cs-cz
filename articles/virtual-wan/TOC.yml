@@ -1,20 +1,23 @@
-- name: Dokumentace k virtuální síti WAN
+- name: Dokumentace ke službě Azure Virtual WAN
   href: index.yml
 - name: Přehled
   items:
     - name: Co je Virtual WAN?
       href: virtual-wan-about.md
-    - name: Architektura
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Šablony ARM
+      expanded: true
       items:
-        - name: Migrace na Virtual WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: Architektura globální přenosové sítě
-          href: virtual-wan-global-transit-network-architecture.md
-        - name: Architektura připojení SD-WAN
-          href: sd-wan-connectivity-architecture.md
-        - name: Propojení s Čínou
-          href: interconnect-china.md
+        - name: Jakékoli směrování
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
+        - name: Směrování na sdílené služby virtuální sítě
+          displayName: Resource Manager route to shared services VNets
+          href: quickstart-route-shared-services-vnet-template.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Vytvoření připojení typu Site-to-Site
       href: virtual-wan-site-to-site-portal.md
@@ -36,46 +39,68 @@
           href: virtual-wan-locations-partners.md
         - name: Automatizační pokyny pro partnery
           href: virtual-wan-configure-automation-providers.md
-    - name: Koncepce cen
-      href: pricing-concepts.md
-    - name: Informace o NVA ve virtuálním centru
-      href: about-nva-hub.md
+    - name: Architektura
+      items:
+        - name: Migrace na Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Architektura globální přenosové sítě
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: Architektura připojení SD-WAN
+          href: sd-wan-connectivity-architecture.md
+        - name: Propojení s Čínou
+          href: interconnect-china.md
     - name: Směrování
       items:
         - name: Informace o směrováních virtuálních center
           href: about-virtual-hub-routing.md
-        - name: Scénáře
-          items:
-            - name: Mezi libovolnými prostředky
-              href: scenario-any-to-any.md
-            - name: Izolované virtuální sítě
-              href: scenario-isolate-vnets.md
-            - name: Izolované virtuální sítě – vlastní
-              href: scenario-isolate-vnets-custom.md
-            - name: Virtuální sítě sdílených služeb
-              href: scenario-shared-services-vnet.md
-            - name: Směrování přes NVA
-              href: scenario-route-through-nva.md
-            - name: Směrování přes NVA – vlastní (Preview)
-              href: scenario-route-through-nvas-custom.md
-            - name: Azure Firewall – vlastní
-              href: scenario-route-between-vnets-firewall.md
+    - name: Scénáře směrování
+      items:
+        - name: Mezi libovolnými prostředky
+          href: scenario-any-to-any.md
+        - name: Izolování virtuálních sítí
+          href: scenario-isolate-vnets.md
+        - name: Izolování virtuálních sítí – vlastní
+          href: scenario-isolate-vnets-custom.md
+        - name: Izolace virtuálních sítí a větví
+          href: scenario-isolate-virtual-networks-branches.md
+        - name: Sdílené služby virtuální sítě
+          href: scenario-shared-services-vnet.md
+        - name: Směrování přes NVA
+          href: scenario-route-through-nva.md
+        - name: Směrování přes NVA – vlastní
+          href: scenario-route-through-nvas-custom.md
+        - name: Azure Firewall – vlastní
+          href: scenario-route-between-vnets-firewall.md
     - name: Monitorování
       items:
-        - name: Informace o Azure Monitor Insights pro Virtual WAN (Preview)
+        - name: Informace o Azure Monitor Insights pro Virtual WAN
           href: azure-monitor-insights.md
     - name: Site-to-Site
       items:
-        - name: Informace o zásadách protokolu IPsec
+        - name: Informace o zásadách protokolu S2S IPsec
           href: virtual-wan-ipsec.md
         - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
           href: path-selection-multiple-links.md
+    - name: Připojení typu point-to-site
+      items:
+        - name: Informace o zásadách IPsec P2S
+          href: point-to-site-ipsec.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+    - name: Koncepce cen
+      href: pricing-concepts.md
+    - name: Informace o NVA ve virtuálním centru
+      href: about-nva-hub.md
 - name: Návody
   items:
     - name: Upgrade SKU virtuální sítě WAN
       href: upgrade-virtual-wan.md
-    - name: Vytvoření NVA ve virtuálním centru (Preview)
+    - name: Vytvoření NVA ve virtuálním centru
       href: How-to-nva-hub.md
+    - name: Vytvoření připojení virtuální sítě napříč tenanty
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: Vytvoření připojení ExpressRoute
@@ -90,6 +115,8 @@
           href: connect-virtual-network-gateway-vwan.md
         - name: Konfigurace vlastních zásad IPsec
           href: virtual-wan-custom-ipsec-portal.md
+        - name: Konfigurovat pravidla překladu adres (NAT)
+          href: nat-rules-vpn-gateway.md
     - name: Uživatelská síť VPN (point-to-site)
       items:
         - name: Vytvoření připojení uživatelské sítě VPN
@@ -98,24 +125,34 @@
           href: certificates-point-to-site.md
         - name: Konfigurace tenanta Azure AD
           href: openvpn-azure-ad-tenant.md
-        - name: Profil klienta
-          href: about-vpn-profile-download.md
-        - name: Globální profil a profil založený na centrech
-          href: global-hub-profile.md
-        - name: Konfigurace klientů OpenVPN
-          href: howto-openvpn-clients.md?
-        - name: Konfigurace tunelu uživatele VPN AlwaysOn
-          href: howto-always-on-user-tunnel.md
-        - name: Konfigurace tunelu zařízení VPN AlwaysOn
-          href: howto-always-on-device-tunnel.md
-        - name: Povolení služby Multi-Factor Authentication (MFA)
-          href: openvpn-azure-ad-mfa.md
-        - name: Konfigurace ověřování Azure AD
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Konfigurace Klienta Azure VPN pro Windows 10
-          href: openvpn-azure-ad-client.md
-        - name: Konfigurace víceaplikačního ověřování Azure AD
-          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Profily klientů
+          items:
+            - name: Stažení globálních profilů a profilů založených na rozbočovači
+              href: global-hub-profile.md
+            - name: Extrakce a zobrazení informací o profilu
+              href: about-vpn-profile-download.md
+            - name: Nasazení profilů pomocí Intune
+              href: vpn-profile-intune.md
+        - name: Klienti VPN
+          items:
+            - name: Windows 10
+              href: openvpn-azure-ad-client.md
+            - name: OpenVPN
+              href: howto-openvpn-clients.md?
+        - name: Konfigurace tunelů Always-On
+          items:
+            - name: Tunelové propojení uživatelů
+              href: howto-always-on-user-tunnel.md
+            - name: Tunelové zařízení
+              href: howto-always-on-device-tunnel.md
+        - name: Authentication
+          items:
+            - name: Multi-Factor Authentication (MFA)
+              href: openvpn-azure-ad-mfa.md
+            - name: Ověřování Azure AD
+              href: virtual-wan-point-to-site-azure-ad.md
+            - name: Ověřování Azure AD s více aplikacemi
+              href: openvpn-azure-ad-tenant-multi-app.md
     - name: Směrování
       items:
         - name: Postup konfigurace směrování virtuálního centra
@@ -132,14 +169,14 @@
       items:
         - name: Instalace Azure Firewallu do centra
           href: howto-firewall.md
+        - name: Konfigurace možností připojení Private Linku
+          href: howto-private-link.md
+        - name: Správa přístupu k prostředkům – Spoke VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: Monitorování
       items:
         - name: Protokoly a metriky
           href: logs-metrics.md
-    - name: Private Link
-      items:
-        - name: Konfigurace možností připojení Private Linku
-          href: howto-private-link.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell
@@ -154,14 +191,16 @@
   items:
     - name: Nejčastější dotazy
       href: virtual-wan-faq.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Omezení služeb a předplatných
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Omezení služeb a předplatných
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Plány nasazení sítí
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog o sítích
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Oznámení o aktualizacích sítě
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

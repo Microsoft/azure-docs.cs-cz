@@ -1,24 +1,24 @@
 ---
-title: Kurz přenosu dat do sdílených složek pomocí Azure Stack Edge | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak přidat sdílené složky do zařízení Azure Stack Edge a připojit se k nim, aby Azure Stack Edge mohl přenášet data do Azure.
+title: Kurz přenosu dat do sdílených složek pomocí Azure Stack Edge pro | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak přidat sdílené složky na zařízení Azure Stack Edge pro a připojit se k nim, aby Azure Stack Edge pro mohl přenášet data do Azure.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: afedbe739e955499f94d00a8ced940e7a4e9c27c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926106"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898649"
 ---
-# <a name="tutorial-transfer-data-with-azure-stack-edge"></a>Kurz: přenos dat pomocí Azure Stack Edge
+# <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>Kurz: přenos dat pomocí Azure Stack Edge pro
 
-V tomto kurzu se dozvíte, jak přidat sdílené složky do zařízení Azure Stack Edge a připojit se k nim. Po přidání sdílených složek může Azure Stack Edge přenést data do Azure.
+V tomto kurzu se dozvíte, jak přidat sdílené složky a připojit se k nim na zařízení Azure Stack Edge pro. Po přidání sdílených složek může Azure Stack Edge pro přenést data do Azure.
 
 Dokončení tohoto postupu může trvat přibližně 10 minut.
 
@@ -31,18 +31,18 @@ V tomto kurzu se naučíte:
  
 ## <a name="prerequisites"></a>Požadavky
 
-Než přidáte sdílené složky do Azure Stack Edge, ujistěte se, že:
+Než přidáte sdílené složky do Azure Stack Edge pro, ujistěte se, že:
 
-- Nainstalovali jste fyzické zařízení, jak je popsáno v tématu [instalace Azure Stack Edge](azure-stack-edge-deploy-install.md).
+- Nainstalovali jste fyzické zařízení, jak je popsáno v tématu [instalace Azure Stack Edge pro](azure-stack-edge-deploy-install.md).
 
-- Aktivovali jste fyzické zařízení, jak je popsáno v tématu [připojení, nastavení a aktivace Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md).
+- Aktivovali jste fyzické zařízení, jak je popsáno v tématu [připojení, nastavení a aktivace Azure Stack Edge pro](azure-stack-edge-deploy-connect-setup-activate.md).
 
 
 ## <a name="add-a-share"></a>Přidání sdílené složky
 
 Chcete-li vytvořit sdílenou složku, proveďte následující postup:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online.
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online. Vyberte možnost **Brána cloudového úložiště**.
 
    ![Online zařízení](./media/azure-stack-edge-deploy-add-shares/device-online-1.png)
 
@@ -55,23 +55,23 @@ Chcete-li vytvořit sdílenou složku, proveďte následující postup:
     a. Do pole **název** zadejte jedinečný název pro sdílenou složku.  
     Název sdílené složky může obsahovat jenom malá písmena, číslice a spojovníky. Musí mít 3 až 63 znaků a nesmí začínat písmenem nebo číslicí. Spojovníky musí předcházet znak a následovaný písmenem nebo číslicí.
     
-    b. Vyberte **Typ** sdílené složky.  
-    Typ může být **SMB** nebo **NFS**, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu.  
+    b. Vyberte **typ** sdílené složky.  
+    Typ může být **SMB** nebo **NFS**, přičemž výchozí hodnota je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu.  
     V závislosti na tom, jestli zvolíte sdílené složky SMB nebo NFS, se ostatní možnosti mírně liší. 
 
     c. Zadejte účet úložiště, ve kterém se sdílená složka bude nacházet. 
 
     > [!IMPORTANT]
-    > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte s Azure Stack Edge nebo Data Box Gateway zařízení. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+    > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte se zařízením Azure Stack Edge pro nebo Data Box Gateway. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
-    d. V rozevíracím seznamu **služba úložiště** vyberte objekty **blob bloku**, objekty **blob stránky**nebo **soubory**.  
+    d. V rozevíracím seznamu **služba úložiště** vyberte objekty **blob bloku**, objekty **blob stránky** nebo **soubory**.  
     Typ služby, kterou zvolíte, závisí na tom, který formát má data používat v Azure. Protože v tomto příkladu chceme ukládat data jako objekty blob bloku v Azure, vybíráme **objekt blob bloku**. Pokud vyberete **objekt blob stránky**, ujistěte se, že jsou data v 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
 
-    e. Vytvořte nový kontejner objektů BLOB nebo použijte existující objekt v rozevíracím seznamu. Pokud vytváříte kontejner objektů blob, zadejte název kontejneru. Pokud kontejner ještě neexistuje, vytvoří se v účtu úložiště s nově vytvořeným názvem sdílené složky.
+    e. Vytvořte nový kontejner objektů BLOB nebo použijte existující objekt v rozevíracím seznamu. Pokud vytváříte kontejner objektů blob, zadejte název kontejneru. Pokud ještě neexistuje, v účtu úložiště se vytvoří kontejner s názvem nové sdílené složky.
    
     f. V závislosti na tom, jestli jste vytvořili sdílenou složku SMB nebo sdílenou složku NFS, proveďte jeden z následujících kroků: 
      
-    - **Sdílená složka SMB**: v části **všechny oprávnění místního uživatele**vyberte **vytvořit novou** nebo **použít existující**. Pokud vytvoříte nového místního uživatele, zadejte uživatelské jméno a heslo a potvrďte heslo. Tato akce přiřadí oprávnění místnímu uživateli. Po přiřazení oprávnění můžete k jejich úpravě použít Průzkumníka souborů.
+    - **Sdílená složka SMB**: v části **všechny oprávnění místního uživatele** vyberte **vytvořit novou** nebo **použít existující**. Pokud vytváříte nového místního uživatele, zadejte uživatelské jméno a heslo a pak heslo potvrďte. Touto akcí se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete je upravit pomocí Průzkumníka souborů.
 
         Pokud pro tato sdílená data zaškrtnete políčko **povoleno pouze čtení operací** , můžete zadat uživatele jen pro čtení.
 
@@ -92,14 +92,14 @@ Nyní se můžete připojit k jedné nebo více sdíleným složkám, které jst
 
 ### <a name="connect-to-an-smb-share"></a>Připojení ke sdílené složce SMB
 
-V klientovi Windows serveru připojeném k vašemu Azure Stack hraničnímu zařízení se připojte ke sdílené složce SMB zadáním příkazů:
+V klientovi Windows serveru připojeném k vašemu zařízení Azure Stack Edge pro se připojte ke sdílené složce SMB zadáním příkazů:
 
 
-1. V příkazovém okně zadejte:
+1. V příkazovém okně zadejte: .
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-2. Po zobrazení výzvy zadejte heslo pro sdílenou složku.  
+2. Po zobrazení výzvy zadejte heslo ke sdílené složce.  
    Tady je ukázkový výstup tohoto příkazu.
 
     ```powershell
@@ -117,7 +117,7 @@ V klientovi Windows serveru připojeném k vašemu Azure Stack hraničnímu zař
 3. Na klávesnici vyberte Windows + R.
 
 4. V okně **Spustit** zadejte a `\\<device IP address>` pak vyberte **OK**.  
-   Otevře se Průzkumník souborů. Nyní byste měli mít přehled o sdílených složkách, které jste vytvořili jako složky. V Průzkumníku souborů poklikejte na sdílenou složku (složku) a zobrazte obsah.
+   Otevře se Průzkumník souborů. Sdílené složky, které jste vytvořili, by se teď měly zobrazit jako složky. Pokud chcete zobrazit obsah sdílené složky, vyberte ji v Průzkumníku souborů a dvakrát na ni klikněte.
  
     ![Připojení ke sdílené složce SMB](./media/azure-stack-edge-deploy-add-shares/connect-to-share2.png)
 
@@ -125,15 +125,15 @@ V klientovi Windows serveru připojeném k vašemu Azure Stack hraničnímu zař
 
 ### <a name="connect-to-an-nfs-share"></a>Připojení ke sdílené složce systému souborů NFS
 
-V klientském počítači se systémem Linux připojeném k zařízení Azure Stack Edge proveďte následující postup:
+V klientském počítači se systémem Linux připojeném k zařízení Azure Stack Edge pro proveďte následující postup:
 
-1. Ujistěte se, že klient má nainstalovaného klienta názvů NFSv4. Klienta systému souborů NFS nainstalujete následujícím příkazem:
+1. Ujistěte se, že je na klientovi nainstalovaný klient NFSv4. Klienta systému souborů NFS nainstalujete následujícím příkazem:
 
    `sudo apt-get install nfs-common`
 
-    Další informace najdete v článku věnovaném [instalaci klienta NFSv4](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client).
+    Další informace najdete na webu [instalace klienta názvů NFSv4](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client).
 
-2. Po instalaci klienta NFS připojte sdílenou složku NFS, kterou jste vytvořili na zařízení Azure Stack Edge, pomocí následujícího příkazu:
+2. Po instalaci klienta NFS připojte sdílenou složku NFS, kterou jste vytvořili na zařízení Azure Stack Edge pro, pomocí následujícího příkazu:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
@@ -141,7 +141,7 @@ V klientském počítači se systémem Linux připojeném k zařízení Azure St
     > Použití `sync` Možnosti při připojování sdílených složek vylepšuje přenosové rychlosti velkých souborů.
     > Než sdílenou složku připojíte, ujistěte se, že jsou již vytvořeny adresáře, které budou fungovat jako mountpoints na místním počítači. Tyto adresáře by neměly obsahovat žádné soubory ani podsložky.
 
-    Následující příklad ukazuje, jak se připojit přes systém souborů NFS ke sdílené složce na zařízení Azure Stack Edge. IP adresa zařízení je `10.10.10.60`. Sdílená složka `mylinuxshare2` je připojená k virtuálnímu počítači ubuntuVM. Přípojný bod sdílené složky je `/home/databoxubuntuhost/edge`.
+    Následující příklad ukazuje, jak se připojit přes systém souborů NFS ke sdílené složce na zařízení Azure Stack Edge pro. IP adresa zařízení je `10.10.10.60`. Sdílená složka `mylinuxshare2` je připojená k virtuálnímu počítači ubuntuVM. Přípojný bod sdílené složky je `/home/databoxubuntuhost/edge`.
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
@@ -152,15 +152,13 @@ V klientském počítači se systémem Linux připojeném k zařízení Azure St
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s následujícími tématy Azure Stack Edge:
+V tomto kurzu jste se seznámili s následujícími tématy Azure Stack Edge pro:
 
 > [!div class="checklist"]
 > * Přidání sdílené složky
 > * Připojení ke sdílené složce
 
-Pokud se chcete dozvědět, jak transformovat data pomocí Azure Stack Edge, přejděte k dalšímu kurzu:
+Pokud se chcete dozvědět, jak transformovat data pomocí Azure Stack Edge pro, přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Transformace dat pomocí Azure Stack Edge](./azure-stack-edge-deploy-configure-compute.md)
-
-
+> [Transformace dat pomocí Azure Stack Edge pro](./azure-stack-edge-deploy-configure-compute.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2fb03721baa80e77a5fd387600a272e6b1cfc7d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593167"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013637"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API do služby pro rozpoznávání řeči
 
@@ -37,7 +37,7 @@ Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech AP
 | Více jazyků, které jsou přeloženy v jednom požadavku | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Dostupné sady SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Dostupné sady SDK najdete v [dokumentaci ke službě Speech](index.yml) .                                                                                                                                                    |
 | Připojení k objektům WebSocket                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Rozhraní API jazyků                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba rozpoznávání řeči podporuje stejný rozsah jazyků popsaných v článku [informace o jazycích překladatele](../translator-speech/languages-reference.md) . |
+| Rozhraní API jazyků                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba rozpoznávání řeči podporuje stejný rozsah jazyků popsaných v článku [informace o jazycích překladatele]() . |
 | Filtr a značka vulgárních výrazů                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | . WAV/PCM jako vstup                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Jiné typy souborů jako vstup                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -61,10 +61,10 @@ Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním p
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vyzkoušejte si službu Speech Service zdarma](get-started.md)
-* [Rychlý Start: rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [Vyzkoušejte si službu Speech Service zdarma](overview.md#try-the-speech-service-for-free)
+* [Rychlý Start: rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Viz také
 
 * [Co je služba pro rozpoznávání řeči](overview.md)
-* [Dokumentace ke službě Speech a sadě Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Dokumentace ke službě Speech a sadě Speech SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)

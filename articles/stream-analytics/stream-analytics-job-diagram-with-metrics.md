@@ -3,16 +3,15 @@ title: Ladění řízené daty v Azure Stream Analytics
 description: Tento článek popisuje, jak řešit úlohu Azure Stream Analytics pomocí diagramu úloh a metrik v Azure Portal.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d20454515088ccca87665d9b3b27c0d82c3cdf9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044477"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020396"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Ladění založené na datech s využitím diagramu úloh
 
@@ -20,7 +19,7 @@ Diagram úlohy v okně **sledování** v Azure Portal vám může pomáhat s viz
 
 ## <a name="using-the-job-diagram"></a>Používání diagramu úloh
 
-V Azure Portal v rámci úlohy Stream Analytics v části **Podpora a řešení potíží**vyberte **diagram úlohy**:
+V Azure Portal v rámci úlohy Stream Analytics v části **Podpora a řešení potíží** vyberte **diagram úlohy**:
 
 ![Diagram úloh s metrikami – umístění](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -75,15 +74,15 @@ Pokud je předchozí krok dotazu vstupní procesor, použijte vstupní metriky, 
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Zavedli jsme za čtení dat?
 
-*   **Nevyřízené události vstupu (celkem)** oznamuje, kolik dalších zpráv je potřeba přečíst pro Event Hubs a Azure IoT Hub vstupy. Pokud je toto číslo větší než 0, znamená to, že vaše úloha nemůže zpracovat data jako rychlou, jak je připravujeme v. V takovém případě možná budete muset zvýšit počet jednotek streamování a/nebo zajistit, aby se vaše úloha mohla paralelně rozrůstat. Další informace najdete na [stránce věnované paralelnímu dotazování](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
+*   **Nevyřízené události vstupu (celkem)** oznamuje, kolik dalších zpráv je potřeba přečíst pro Event Hubs a Azure IoT Hub vstupy. Pokud je toto číslo větší než 0, znamená to, že vaše úloha nemůže zpracovat data jako rychlou, jak je připravujeme v. V takovém případě možná budete muset zvýšit počet jednotek streamování a/nebo zajistit, aby se vaše úloha mohla paralelně rozrůstat. Další informace najdete na  [stránce věnované paralelnímu dotazování](./stream-analytics-parallelization.md). 
 
 
-## <a name="get-help"></a>Získání pomoci
-Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
+## <a name="get-help"></a>Podpora
+Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování úloh Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční informace o REST API správy Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Stream Analytics](/rest/api/streamanalytics/)

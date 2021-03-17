@@ -18,6 +18,14 @@ groups:
     title: cURL
   - id: url-test-tool-postman
     title: Postman
+- id: python-frameworks-01
+  title: Webová architektura
+  prompt: Volba architektury
+  pivots:
+  - id: python-framework-flask
+    title: Flask
+  - id: python-framework-django
+    title: Django
 - id: programming-languages-set-one
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -32,6 +40,22 @@ groups:
     title: JavaScript
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-cusvis
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-rest-api
+    title: REST API
 - id: programming-languages-set-two
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -124,7 +148,7 @@ groups:
     title: C++
 - id: programming-languages-text-analytics
   title: Programovací jazyky
-  prompt: Volba programovacího jazyka
+  prompt: Vyberte jeden z jazyků klientských knihoven nebo REST API.
   pivots:
   - id: programming-language-csharp
     title: C#
@@ -134,8 +158,8 @@ groups:
     title: JavaScript
   - id: programming-language-java
     title: Java
-  - id: programming-language-other
-    title: Další jazyky...
+  - id: rest-api
+    title: REST API
 - id: programming-languages-set-ten
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -148,6 +172,20 @@ groups:
     title: JavaScript
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-formre
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-rest-api
+    title: REST API
 - id: programming-languages-set-eleven
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -158,6 +196,18 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-conmod
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-rest-api
+    title: REST API
 - id: programming-languages-set-fifteen
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -166,6 +216,92 @@ groups:
     title: C#
   - id: programming-language-go
     title: Přejít
+- id: programming-languages-set-sixteen
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-ruby
+    title: Ruby
+- id: programming-languages-set-twenty-five
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka nebo CLI
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-curl
+    title: REST
+- id: programming-languages-set-twenty-three
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka nebo CLI
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-browserjs
+    title: JavaScript (prohlížeč)
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: Rozhraní příkazového řádku
+- id: programming-languages-set-twenty-four
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka nebo CLI
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: Rozhraní příkazového řádku
+- id: programming-languages-set-twenty-six
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-ansi-c
+    title: C
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
 - id: cogsvcs-text-analytics-features
   title: Funkce Analýzy textu
   prompt: Volba nabídky funkcí Analýzy textu
@@ -176,6 +312,20 @@ groups:
     title: Rozpoznávání jazyka
   - id: text-analytics-sentiment-analysis
     title: Analýza mínění
+- id: programming-languages-set-functions-lang-workers
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-powershell
+    title: PowerShell
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-functions
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -192,7 +342,35 @@ groups:
     title: Python
   - id: programming-language-typescript
     title: TypeScript
-- id: programming-languages-text-analytics
+- id: programming-languages-set-functions-full
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-powershell
+    title: PowerShell
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-typescript
+    title: TypeScript
+  - id: programming-language-other
+    title: Ostatní
+- id: development-environment-functions
+  title: Vývojové prostředí
+  prompt: Zvolit vývojové prostředí
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: Příkazový řádek
+  - id: development-environment-vs
+    title: Visual Studio
+- id: programming-languages-metrics-monitor
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
   pivots:
@@ -204,8 +382,24 @@ groups:
     title: Java
   - id: programming-language-javascript
     title: JavaScript
-  - id: programming-language-other
-    title: Další jazyky...
+  - id: programming-language-rest-api
+    title: REST API
+- id: programming-languages-computer-vision
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-rest-api
+    title: REST API
 - id: programming-languages-set-diberry-3core
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -216,6 +410,18 @@ groups:
     title: JavaScript
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-luis
+  title: Programovací jazyky
+  prompt: Provedení výběru
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: rest-api
+    title: REST API
 - id: java-build-tools-set
   title: Nástroje pro sestavení
   prompt: Volba nástroje pro sestavení
@@ -274,34 +480,6 @@ groups:
     title: Java
   - id: programming-language-more
     title: Další jazyky...
-- id: programming-languages-set-fifteen
-  title: Programovací jazyky
-  prompt: Volba programovacího jazyka
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-go
-    title: Přejít
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-more
-    title: Další jazyky...
-- id: programming-languages-set-sixteen
-  title: Programovací jazyky
-  prompt: Volba programovacího jazyka
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-cpp
-    title: C++
-  - id: programming-language-go
-    title: Přejít
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-more
-    title: Další jazyky...
 - id: programming-languages-set-seventeen
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -322,6 +500,20 @@ groups:
     title: Přejít
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-face
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-rest-api
+    title: REST API
 - id: programming-languages-set-two-with-js
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -342,20 +534,18 @@ groups:
   title: Programovací jazyky
   prompt: Volba programovacího jazyka nebo CLI
   pivots:
-  - id: programmer-tool-spx
-    title: Rozhraní příkazového řádku
   - id: programming-language-csharp
     title: C#
   - id: programming-language-cpp
     title: C++
   - id: programming-language-java
     title: Java
-  - id: programming-language-python
-    title: Python
   - id: programming-language-javascript
     title: JavaScript
-  - id: programming-language-more
-    title: Další jazyky...
+  - id: programming-language-python
+    title: Python
+  - id: programmer-tool-spx
+    title: Rozhraní příkazového řádku
 - id: programming-languages-set-two-with-js-go
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -488,22 +678,16 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
-- id: app-service-platform-windows-linux
-  title: Platforma App Service
-  prompt: Volba platformy pro hostování
+- id: programming-languages-spark-all-minus-sql
+  title: Programovací jazyky
+  prompt: Volba jazyka
   pivots:
-  - id: platform-linux
-    title: Linux
-  - id: platform-windows
-    title: Windows
-- id: app-service-containers-windows-linux
-  title: App Service s vlastními kontejnery
-  prompt: Volba vlastní kontejnerové platformy
-  pivots:
-  - id: container-linux
-    title: Kontejner Linuxu
-  - id: container-windows
-    title: Kontejner Windows
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
 - id: aml-control-methods
   title: Řídicí rovina Azure Machine Learningu
   prompt: Volba rozhraní řídicí roviny Azure Machine Learningu
@@ -522,10 +706,28 @@ groups:
     title: C++
   - id: programming-language-java
     title: Java
-  - id: programming-language-python
-    title: Python
   - id: programming-language-javascript
     title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-spx
+    title: Rozhraní příkazového řádku
+- id: speech-full-stack-objectivec-swift
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
   - id: programming-language-spx
     title: Rozhraní příkazového řádku
 - id: programming-languages-voice-assistants
@@ -540,10 +742,344 @@ groups:
     title: Java
   - id: programming-language-more
     title: Další jazyky...
+- id: ams-lva-edge-programming-languages
+  title: Programovací jazyky pro Live Video Analytics ve službě IoT Edge
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: Platforma App Service
+  prompt: Volba platformy pro hostování
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: App Service s vlastními kontejnery
+  prompt: Volba vlastní kontejnerové platformy
+  pivots:
+  - id: container-linux
+    title: Kontejner Linuxu
+  - id: container-windows
+    title: Kontejner Windows
+- id: programming-languages-spring-cloud
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
+- id: speech-full-stack-go
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-spx
+    title: Rozhraní příkazového řádku
+- id: speech-full-stack-go-objectivec-swift
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-spx
+    title: Rozhraní příkazového řádku
+- id: acs-js-csharp
+  title: Pivoty C# a JS
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-csharp
+    title: C#
+- id: acs-js-csharp-java-python
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: acs-js-csharp-java-python-swift
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-swift
+    title: Swift
+- id: acs-js-csharp-java-python-swift-android
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-swift
+    title: Swift
+  - id: programming-language-android
+    title: Android
+- id: acs-web-ios-android
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-ios
+    title: iOS
+  - id: platform-android
+    title: Android
+- id: acs-web-ios
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-ios
+    title: iOS
+- id: acs-js-csharp-ios-android-python
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java-android
+    title: Java (Android)
+  - id: programming-language-ios
+    title: iOS
+  - id: programming-language-python
+    title: Python
+- id: acs-js-csharp-ios-android
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java-android
+    title: Java (Android)
+  - id: programming-language-ios
+    title: iOS
+- id: acs-plat-web-net-ios-android
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-net
+    title: .NET
+  - id: platform-web
+    title: Web
+  - id: platform-android
+    title: Android
+  - id: platform-ios
+    title: iOS
+- id: acs-plat-web-ios-android
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-android
+    title: Android
+  - id: platform-ios
+    title: iOS
+- id: acs-plat-azp-js
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-azp
+    title: portál Azure
+  - id: platform-javascript
+    title: JavaScript
+- id: acs-plat-azp-net
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-azp
+    title: portál Azure
+  - id: platform-azcli
+    title: Azure CLI
+  - id: platform-net
+    title: .NET
+- id: acs-plat-azp-arm-net-python-go-powershell
+  title: Platforma
+  prompt: Volba platformy
+  pivots:
+  - id: platform-azp
+    title: portál Azure
+  - id: platform-arm
+    title: Azure Resource Manager
+  - id: platform-net
+    title: .NET
+  - id: platform-python
+    title: Python
+  - id: platform-go
+    title: Přejít
+  - id: platform-powershell
+    title: PowerShell
+- id: non-azure-machines
+  title: Počítače mimo Azure
+  prompt: Jak se připojit k počítači mimo Azure?
+  pivots:
+  - id: azure-arc
+    title: Azure Arc
+  - id: azure-portal
+    title: Stránky portálu centra zabezpečení
+- id: manage-asc-initiatives
+  title: Správa iniciativ Security Center
+  prompt: Jak budete spravovat Security Center iniciativy?
+  pivots:
+  - id: azure-portal
+    title: Na webu Azure Portal
+  - id: rest-api
+    title: S rozhraními REST API
+- id: client-operating-system-macos-and-linux-windows-powershell
+  title: Operační systém / konzola
+  prompt: Volba operačního systému a konzoly
+  pivots:
+  - id: client-operating-system-macos-and-linux
+    title: macOS a Linux
+  - id: client-operating-system-windows-command
+    title: Příkazové prostředí systému Windows
+  - id: client-operating-system-powershell
+    title: PowerShell
+- id: ad-quickstart-one
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: keyword-quickstart
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+- id: b2c-policy-type
+  title: Typ zásady Azure AD B2C
+  prompt: Výběr typu zásady
+  pivots:
+  - id: b2c-user-flow
+    title: Tok uživatele
+  - id: b2c-custom-policy
+    title: Vlastní zásady
+- id: anomaly-detector-quickstart
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: rest-api
+    title: REST
+- id: app-service-webjob
+  title: Typy webové úlohy
+  prompt: Zvolit typ webové úlohy
+  pivots:
+  - id: webjob-type-continuous
+    title: Průběžný
+  - id: webjob-type-scheduled
+    title: Plánované
+  - id: webjob-type-manual
+    title: Ruční
+- id: qnamaker-quickstart
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-ruby
+    title: Ruby
+  - id: rest
+    title: REST
+- id: azure-maps-android
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-java-android
+    title: Java (Android)
+  - id: programming-language-kotlin
+    title: Kotlin (Android)
+- id: immersive-reader-how-to-guides
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-javascript
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-android
+    title: Android
+  - id: programming-language-ios
+    title: iOS
 metadata:
-  ms.openlocfilehash: a51aa5fcc88269e718375ed08f0238867da7079b
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
-  ms.translationtype: HT
+  ms.openlocfilehash: b4118c81551a2808a2d72404598af2e93a19f6f2
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88225627"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102616464"

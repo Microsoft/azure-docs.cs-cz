@@ -7,18 +7,18 @@ manager: jillfra
 ms.assetid: a3a11ed8-ba7f-4193-912b-e555f5b72184
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 88c8ea458aade44f5a3d789a15369718bc38ea35
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e5e687b172b49fec5f77615e332d0a2204162c43
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134510"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545771"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -28,11 +28,11 @@ Tento článek popisuje, jak začít používat službu Azure Table Storage v ap
 
 Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
-Abyste mohli začít, musíte nejdřív vytvořit tabulku v účtu úložiště. Ukážeme vám, jak vytvořit tabulku Azure v kódu a také jak provádět základní operace s tabulkami a entitami, jako je přidání, úprava, čtení a čtení entit tabulky. Ukázky jsou napsány v \# kódu jazyka C a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Abyste mohli začít, musíte nejdřív vytvořit tabulku v účtu úložiště. Ukážeme vám, jak vytvořit tabulku Azure v kódu a také jak provádět základní operace s tabulkami a entitami, jako je přidání, úprava, čtení a čtení entit tabulky. Ukázky jsou napsány v \# kódu jazyka C a používají [Microsoft Azure Storage klientské knihovny pro .NET](/previous-versions/azure/dn261237(v=azure.100)).
 
-**Poznámka:** Některá rozhraní API, která provádějí volání do služby Azure Storage, jsou asynchronní. Další informace najdete v tématu [asynchronní programování pomocí Async a operátoru await](https://msdn.microsoft.com/library/hh191443.aspx) . Níže uvedený kód předpokládá použití asynchronních programovacích metod.
+**Poznámka:** Některá rozhraní API, která provádějí volání do služby Azure Storage, jsou asynchronní. Další informace najdete v tématu [asynchronní programování pomocí Async a operátoru await](/previous-versions/hh191443(v=vs.140)) . Níže uvedený kód předpokládá použití asynchronních programovacích metod.
 
-* Další informace o programové manipulaci s tabulkami najdete v tématu Začínáme [s Azure Table Storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md) .
+* Další informace o programové manipulaci s tabulkami najdete v tématu Začínáme [s Azure Table Storage pomocí rozhraní .NET](../cosmos-db/tutorial-develop-table-dotnet.md) .
 * Obecné informace o Azure Storage najdete v [dokumentaci k úložišti](https://azure.microsoft.com/documentation/services/storage/) .
 * Obecné informace o cloudových službách Azure najdete v [dokumentaci k Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) .
 * Další informace o programování aplikací ASP.NET naleznete v tématu [ASP.NET](https://www.asp.net) .
@@ -215,4 +215,3 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-

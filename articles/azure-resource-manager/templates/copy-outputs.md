@@ -1,22 +1,22 @@
 ---
 title: Definovat více instancí výstupní hodnoty
-description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování více časů při vracení hodnoty z nasazení.
+description: Pomocí operace kopírování v šabloně Azure Resource Manager (šablona ARM) můžete iterovat víckrát při vracení hodnoty z nasazení.
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae20ed9ec3fdb3b76adbd370f5ba22f9386d613
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583424"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905940"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Výstupní iterace v šablonách ARM
 
-V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro výstup v šabloně Azure Resource Manager (ARM). Přidáním elementu **kopírování** do části výstupy ve vaší šabloně můžete dynamicky vracet počet položek během nasazování.
+V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro výstup v šabloně Azure Resource Manager (šablona ARM). Přidáním `copy` elementu do části Outputs (výstupy) šablony můžete dynamicky vracet počet položek během nasazování.
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [proměnné](copy-variables.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Element Copy má následující obecný formát:
 
@@ -27,9 +27,9 @@ Element Copy má následující obecný formát:
 }
 ```
 
-Vlastnost **Count** určuje počet iterací, které chcete pro výstupní hodnotu.
+`count`Vlastnost určuje počet iterací, které chcete pro výstupní hodnotu.
 
-Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti **input** . Může se jednat o jedinou vlastnost (například řetězec) nebo o objekt s několika vlastnostmi.
+`input`Vlastnost určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků konstruovaných z hodnoty `input` Vlastnosti. Může se jednat o jedinou vlastnost (například řetězec) nebo o objekt s několika vlastnostmi.
 
 ## <a name="copy-limits"></a>Omezení kopírování
 
@@ -166,11 +166,10 @@ Předchozí příklad vrátí pole s následujícími hodnotami:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete projít kurz, přečtěte si [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
+* Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
 * Pro jiné použití kopie elementu viz:
   * [Iterace prostředků v šablonách ARM](copy-resources.md)
   * [Iterace vlastnosti v šablonách ARM](copy-properties.md)
   * [Iterace proměnných v šablonách ARM](copy-variables.md)
-* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření šablon ARM](template-syntax.md).
-* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace se šablonou ARM](deploy-powershell.md).
-
+* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).

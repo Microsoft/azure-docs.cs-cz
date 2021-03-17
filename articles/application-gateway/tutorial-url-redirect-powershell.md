@@ -7,24 +7,23 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9606bfe8b4719ed4ab3c51fc177f331b754f7a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806036"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397047"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Vytvoření brány Application Gateway s přesměrováním na základě cesty adresy URL pomocí Azure PowerShellu
 
-Pomocí Azure PowerShellu můžete při vytváření brány [Application Gateway](application-gateway-introduction.md) nakonfigurovat [pravidla směrování podle adres URL](application-gateway-url-route-overview.md). V tomto článku vytvoříte back-endové fondy pomocí [sady Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
+Pomocí Azure PowerShellu můžete při vytváření brány [Application Gateway](./overview.md) nakonfigurovat [pravidla směrování podle adres URL](./url-route-overview.md). V tomto článku vytvoříte back-endové fondy pomocí  [sady Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření služby Application Gateway
-> * Přidat naslouchací procesy a pravidla směrování
-> * Vytvořit pro back-endové fondy škálovací sadu virtuálních počítačů
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Přidat naslouchací procesy a pravidla směrování
+* Vytvořit pro back-endové fondy škálovací sadu virtuálních počítačů
 
 Na následujícím příkladu je vidět přesměrování webového provozu, který přichází ze dvou portů 8080 a 8081, na stejné back-endové fondy:
 
@@ -32,7 +31,7 @@ Na následujícím příkladu je vidět přesměrování webového provozu, kter
 
 Pokud budete chtít, můžete tento postup provést pomocí [Azure CLI](tutorial-url-redirect-cli.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -75,7 +74,7 @@ New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 V této části vytvoříte prostředky, které podporují bránu Application Gateway, a nakonec vytvoříte bránu samotnou. K vytvořeným prostředkům patří:
 
@@ -391,7 +390,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1* , *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -489,7 +488,7 @@ for ($i=1; $i -le 3; $i++)
 }
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://52.168.55.24` ,, `http://52.168.55.24:8080/images/test.htm` `http://52.168.55.24:8080/video/test.htm` nebo `http://52.168.55.24:8081/images/test.htm` .
 
@@ -519,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o možnostech aplikační brány](application-gateway-introduction.md)
+> [Další informace o možnostech aplikační brány](./overview.md)

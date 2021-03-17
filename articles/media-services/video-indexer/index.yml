@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
-  ms.translationtype: HT
+  ms.openlocfilehash: 0c568b6c5c6303c5add3e888dee897ccadc07edf
+  ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77485110"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102449658"
 landingContent:
 - title: Informace o Video Indexeru služby Azure Media Services
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: Nejčastější dotazy
       url: faq.md
     - text: User Voice
-      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+      url: https://aka.ms/UserVoiceVI
   - linkListType: whats-new
     links:
     - text: Co je nového ve Video Indexeru?

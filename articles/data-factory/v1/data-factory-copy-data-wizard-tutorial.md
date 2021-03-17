@@ -1,23 +1,18 @@
 ---
 title: 'Kurz: Vytvoření kanálu pomocí průvodce kopírováním '
 description: V tomto kurzu vytvoříte kanál služby Azure Data Factory s aktivitou kopírování pomocí průvodce kopírováním podporovaného službou Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 60a575fc211c512c8657bffd567c96f98cc3d69a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85248543"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377002"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí průvodce kopírováním služby Data Factory.
 > [!div class="op_single_selector"]
@@ -35,7 +30,7 @@ ms.locfileid: "85248543"
 
 V tomto kurzu se dozvíte, jak pomocí **Průvodce kopírováním** kopírovat data z úložiště objektů BLOB v Azure do Azure SQL Database. 
 
-**Průvodce kopírováním ** Azure Data Factory vám umožní rychle vytvořit datové kanály, které kopírují data z podporovaných zdrojů úložišť dat do podporovaných cílů úložišť dat. Proto doporučujeme použít průvodce jako první krok k vytvoření ukázkového kanálu pro svůj scénář pohybu dat. Seznam úložišť dat podporovaných jako zdroje a cíle najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats).  
+**Průvodce kopírováním** Azure Data Factory vám umožní rychle vytvořit datové kanály, které kopírují data z podporovaných zdrojů úložišť dat do podporovaných cílů úložišť dat. Proto doporučujeme použít průvodce jako první krok k vytvoření ukázkového kanálu pro svůj scénář pohybu dat. Seznam úložišť dat podporovaných jako zdroje a cíle najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats).  
 
 Tento návod ukazuje, jak vytvořit objekt pro vytváření dat Azure, spustit Průvodce kopírováním a projít posloupností kroků poskytnutí podrobností o vašem scénáři příjmu/pohybu dat. Po dokončení kroků v průvodci vytvoří průvodce automaticky kanál s aktivitou kopírování pro kopírování dat z úložiště objektů BLOB v Azure do Azure SQL Database. Další informace o aktivitě kopírování najdete v tématu [Aktivity pohybu dat](data-factory-data-movement-activities.md).
 
@@ -52,10 +47,10 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
 2. V okně **Nový objekt pro vytváření dat**:
    
    1. Do pole **Název** zadejte **ADFTutorialDataFactory**.
-       Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `Data factory name “ADFTutorialDataFactory” is not available`, změňte název datové továrny (třeba na váš_název_ADFTutorialDataFactoryDDMMYYYY) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.  
+       Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `Data factory name "ADFTutorialDataFactory" is not available`, změňte název datové továrny (třeba na váš_název_ADFTutorialDataFactoryDDMMYYYY) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.  
       
        ![Název objektu pro vytváření dat není k dispozici](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
-   2. Vyberte své **předplatné**Azure.
+   2. Vyberte své **předplatné** Azure.
    3. Pro skupinu prostředků proveďte jeden z následujících kroků: 
       
       - Vyberte možnost **Použít existující** a vyberte existující skupinu prostředků.
@@ -81,7 +76,7 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
    1. Jako **Název úlohy** zadejte **CopyFromBlobToAzureSql**.
    2. Zadejte **popis** (volitelné).
    3. Změňte položky **Datum a čas zahájení** a **Datum a čas ukončení** tak, aby datum ukončení bylo nastaveno na dnešek a datum zahájení bylo o pět dnů dříve.  
-   4. Klikněte na **Další**.  
+   4. Klikněte na **Next** (Další).  
       
       ![Nástroj pro kopírování – stránka Vlastnosti](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. Na stránce **Source data store** (Zdrojové úložiště dat) klikněte na dlaždici **Azure Blob Storage**. Tato stránka slouží k zadání zdrojového úložiště dat pro úlohu kopírování. 
@@ -91,7 +86,7 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
    
    1. Do pole **Název propojené služby** zadejte **AzureStorageLinkedService**.
    2. Ujistěte se, že je pro položku **Metoda výběru účtu** vybrána možnost **Z předplatných Azure**.
-   3. Vyberte své **předplatné**Azure.  
+   3. Vyberte své **předplatné** Azure.  
    4. V seznamu účtů úložiště Azure dostupných ve zvoleném předplatném vyberte požadovaný **účet úložiště Azure**. Také si můžete zvolit, že chcete zadat nastavení účtu úložiště ručně. Stačí u položky **Account selection method** (Metoda výběru účtu) vybrat možnost **Enter manually** (Zadat ručně) a potom kliknout na **Další**. 
       
       ![Nástroj pro kopírování – zadání účtu Azure Blob Storage](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
@@ -100,10 +95,10 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
    1. Klikněte dvakrát na **adftutorial** (složka).
    2. Vyberte soubor **emp.txt** a klikněte na **Vybrat**.
       
-      ![Nástroj pro kopírování – volba vstupního souboru nebo složky](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
+      ![Snímek obrazovky s možností výběru pro vstupní soubor zobrazí.](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. Na stránce **Zvolte vstupní soubor nebo složku** klikněte na **Další**. Nezaškrtávejte políčko **Binární kopie**. 
    
-    ![Nástroj pro kopírování – volba vstupního souboru nebo složky](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
+    ![Snímek obrazovky ukazuje možnost binárního kopírování pro váš vstup.](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
 7. Na stránce **Nastavení formátu souboru** jsou uvedeny oddělovače a schéma, které je automaticky zjištěno průvodcem při analýze souboru. Můžete také zadat oddělovače ručně, pokud chcete, aby Průvodce kopírováním zastavil automatické zjišťování, nebo pokud je chcete přepsat. Po zkontrolování oddělovačů a náhledu dat klikněte na **Další**. 
    
     ![Nástroj pro kopírování – nastavení formátu souboru](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
@@ -114,10 +109,10 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
    
    1. Do pole **Název připojení** zadejte hodnotu **AzureSqlLinkedService**.
    2. Ujistěte se, že je pro položku **Metoda výběru serveru/databáze** vybrána možnost **Z předplatných Azure**.
-   3. Vyberte své **předplatné**Azure.  
+   3. Vyberte své **předplatné** Azure.  
    4. Vyberte možnosti v polích **Název serveru** a **Databáze**.
    5. Zadejte **Uživatelské jméno** a **Heslo**.
-   6. Klikněte na **Další**.  
+   6. Klikněte na **Next** (Další).  
       
       ![Nástroj pro kopírování – zadejte Azure SQL Database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Na stránce **Mapování tabulek** vyberte v rozevíracím seznamu poli **Cíl** možnost **emp** a potom klikněte na **šipku dolů** (volitelné). Tím zobrazíte schéma a náhled dat.
@@ -128,10 +123,10 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
     ![Nástroj pro kopírování – mapování schématu](./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png)
 12. Na stránce **Nastavení výkonu** klikněte na **Další**. 
     
-    ![Nástroj pro kopírování – nastavení výkonu](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
+    ![Snímek obrazovky zobrazující stránku nastavení výkonu, kde můžete vybrat další.](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
 13. Na stránce **Souhrn** zkontrolujte informace a klikněte na **Dokončit**. Průvodce v objektu pro vytváření dat (ze kterého jste průvodce kopírováním spustili) vytvoří dvě propojené služby, dvě datové sady (vstupní a výstupní) a jeden kanál. 
     
-    ![Nástroj pro kopírování – nastavení výkonu](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
+    ![Snímek obrazovky se zobrazí na stránce Souhrn, kde můžete vybrat další.](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## <a name="launch-monitor-and-manage-application"></a>Spuštění aplikace pro monitorování a správu
 1. Na stránce **Nasazení** klikněte na následující odkaz: `Click here to monitor copy pipeline`.

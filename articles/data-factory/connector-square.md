@@ -1,23 +1,18 @@
 ---
 title: Kopírovat data z čtverce (Preview)
 description: Naučte se, jak kopírovat data z čtverce do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
-ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ac10e42d338e0ddd44cb3c07709645a69653808d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529360"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384788"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverce pomocí Azure Data Factory (Náhled)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +64,7 @@ Pro čtvercovou propojenou službu jsou podporovány následující vlastnosti:
 
 V Data Factory potřebuje ověřování pomocí tokenu osobních přístupových oprávnění `accessToken` , zatímco ověřování prostřednictvím OAuth vyžaduje `accessToken` a `refreshToken` . Zjistěte, jak získat přístupový token z [tohoto místa](https://developer.squareup.com/docs/build-basics/access-tokens).
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -140,9 +135,9 @@ Chcete-li kopírovat data z čtverce, nastavte typ zdroje v aktivitě kopírová
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SquareSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Business"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Business"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

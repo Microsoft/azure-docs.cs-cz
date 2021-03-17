@@ -1,19 +1,16 @@
 ---
 title: Monitorování a Správa Hadoop pomocí Ambari REST API – Azure HDInsight
 description: Naučte se používat Ambari k monitorování a správě clusterů Hadoop ve službě Azure HDInsight. V tomto dokumentu se dozvíte, jak používat REST API Ambari, která je součástí clusterů HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945572"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí REST API Apache Ambari
 
@@ -25,11 +22,11 @@ Naučte se používat REST API Apache Ambari ke správě a monitorování cluste
 
 Apache Ambari zjednodušuje správu a monitorování clusterů Hadoop tím, že poskytuje jednoduché webové uživatelské rozhraní, které je zajištěno pomocí [rozhraní REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari se ve výchozím nastavení poskytuje u clusterů HDInsight se systémem Linux.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Bash na Ubuntu ve Windows 10.  V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .  Příklady s některými drobnými úpravami mohou fungovat na příkazovém řádku systému Windows.  Případně můžete použít prostředí Windows PowerShell.
+* Bash na Ubuntu ve Windows 10.  V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .  Příklady s některými drobnými úpravami mohou fungovat na příkazovém řádku systému Windows.  Případně můžete použít prostředí Windows PowerShell.
 
 * JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
@@ -39,7 +36,7 @@ Apache Ambari zjednodušuje správu a monitorování clusterů Hadoop tím, že 
 
  Základní identifikátor URI (Uniform Resource Identifier) pro Ambari REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI () rozlišuje velká a malá písmena `CLUSTERNAME.azurehdinsight.net` , jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Použijte název účtu správce (výchozí nastavení je **admin**) a heslo, které jste zadali při vytváření clusteru.
 
@@ -87,7 +84,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>Analýza dat JSON
 
-Následující příklad používá [JQ](https://stedolan.github.io/jq/) nebo [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) k analýze dokumentu odpovědi JSON a zobrazení pouze `health_report` informací z výsledků.
+Následující příklad používá [JQ](https://stedolan.github.io/jq/) nebo [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json) k analýze dokumentu odpovědi JSON a zobrazení pouze `health_report` informací z výsledků.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -214,11 +211,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Vrácená hodnota je podobná jednomu z následujících příkladů:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Tato hodnota označuje, že cluster používá pro výchozí úložiště účet Azure Storage. `ACCOUNTNAME`Hodnota je název účtu úložiště. `CONTAINER`Část je název kontejneru objektů BLOB v účtu úložiště. Kontejner je kořenem úložiště kompatibilního se systémem HDFS pro daný cluster.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Tato hodnota označuje, že cluster používá pro výchozí úložiště účet Azure Storage. `ACCOUNTNAME`Hodnota je název účtu úložiště. `CONTAINER`Část je název kontejneru objektů BLOB v účtu úložiště. Kontejner je kořenem úložiště kompatibilního se systémem HDFS pro daný cluster.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`– Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen2 pro výchozí úložiště. `ACCOUNTNAME`Hodnoty a `CONTAINER` mají stejný význam jako Azure Storage výše zmíněné.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` – Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen2 pro výchozí úložiště. `ACCOUNTNAME`Hodnoty a `CONTAINER` mají stejný význam jako Azure Storage výše zmíněné.
 
-* `adl://home`– Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen1 pro výchozí úložiště.
+* `adl://home` – Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen1 pro výchozí úložiště.
 
     Chcete-li najít Data Lake Storage název účtu, použijte následující příklady:
 
@@ -253,7 +250,7 @@ Vrácená hodnota je podobná jednomu z následujících příkladů:
     Vrácená hodnota je podobná `/clusters/CLUSTERNAME/` . Tato hodnota je cesta v rámci Data Lake Storage účtu. Tato cesta je kořenem systému souborů kompatibilního s HDFS pro daný cluster.  
 
 > [!NOTE]  
-> Rutina [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) , kterou poskytuje [Azure PowerShell](/powershell/azure/) , vrátí taky informace o úložišti pro daný cluster.
+> Rutina [Get-AzHDInsightCluster](/powershell/module/az.hdinsight/get-azhdinsightcluster) , kterou poskytuje [Azure PowerShell](/powershell/azure/) , vrátí taky informace o úložišti pro daný cluster.
 
 ### <a name="get-all-configurations"></a>Získat všechny konfigurace
 

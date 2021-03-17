@@ -3,12 +3,13 @@ title: Čítače výkonu v Application Insights | Microsoft Docs
 description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET v Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322512"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031357"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -20,7 +21,7 @@ V podokně metriky se zobrazuje výchozí sada čítačů výkonu.
 
 ![Čítače výkonu hlášené v Application Insights](./media/performance-counters/performance-counters.png)
 
-Aktuální výchozí čítače, které jsou nakonfigurované pro shromažďování pro webové aplikace ASP.NET/ASP.NET Core, jsou:
+Aktuální výchozí čítače, které mají být shromažďovány pro webové aplikace v ASP.NET, jsou:
 - % \\ Času procesoru procesu
 - % \\ Času procesoru procesu – normalizace
 - \\Bajty dostupné paměti
@@ -32,6 +33,14 @@ Aktuální výchozí čítače, které jsou nakonfigurované pro shromažďován
 - Žádosti aplikací ASP.NET \\ ve frontě aplikací
 - Procesor (_Total) \\ % času procesoru
 
+Aktuální výchozí čítače, které jsou nakonfigurované pro ASP.NET Core webových aplikací, jsou:
+- % \\ Času procesoru procesu
+- % \\ Času procesoru procesu – normalizace
+- \\Bajty dostupné paměti
+- \\Nesdílené bajty procesu
+- \\Vstupně-výstupní operace procesu – bajty/s
+- Procesor (_Total) \\ % času procesoru
+
 ## <a name="add-counters"></a>Přidání čítačů
 
 Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete ho přidat.
@@ -40,7 +49,7 @@ Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete h
 
     `Get-Counter -ListSet *`
 
-    (Viz [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1) .)
+    (Viz [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter) .)
 2. Otevřete ApplicationInsights.config.
 
    * Pokud jste během vývoje přidali Application Insights do vaší aplikace, upravte ApplicationInsights.config v projektu a pak ji znovu nasaďte na své servery.
@@ -59,11 +68,11 @@ Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete h
 > [!NOTE]
 > Aplikace ASP.NET Core neobsahují `ApplicationInsights.config` , takže výše uvedená metoda není platná pro ASP.NET Core aplikace.
 
-Můžete zachytit standardní počítadla i ty, které jste implementovali sami. `\Objects\Processes`je příkladem standardního čítače, který je k dispozici ve všech systémech Windows. `\Sales(photo)\# Items Sold`je příkladem vlastního čítače, který může být implementován ve webové službě.
+Můžete zachytit standardní počítadla i ty, které jste implementovali sami. `\Objects\Processes` je příkladem standardního čítače, který je k dispozici ve všech systémech Windows. `\Sales(photo)\# Items Sold` je příkladem vlastního čítače, který může být implementován ve webové službě.
 
 Formát je `\Category(instance)\Counter"` nebo pro kategorie, které nemají instance, stačí `\Category\Counter` .
 
-`ReportAs`je vyžadován u názvů čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, že obsahují znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítko, pomlčka, podtržítko, mezera, tečka.
+`ReportAs` je vyžadován u názvů čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, že obsahují znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítko, pomlčka, podtržítko, mezera, tečka.
 
 Pokud zadáte instanci, bude shromažďována jako dimenze "CounterInstanceName" hlášené metriky.
 
@@ -109,7 +118,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Čítače výkonu v analýzách
-Sestavy čítače výkonu můžete vyhledávat a zobrazovat v [analýzách](../log-query/log-query-overview.md).
+Sestavy čítače výkonu můžete vyhledávat a zobrazovat v [analýzách](../logs/log-query-overview.md).
 
 Schéma **čítače výkonu** zpřístupňuje `category` , `counter` název a `instance` název každého čítače výkonu.  V telemetrii pro každou aplikaci uvidíte pouze čítače této aplikace. Například, chcete-li zjistit, jaké čítače jsou k dispozici: 
 
@@ -147,7 +156,7 @@ Podpora čítačů výkonu v ASP.NET Core je omezená:
 * Verze sady SDK 2.8.0 a novější podporují čítač procesorů a paměti v systému Linux. V systému Linux není podporován žádný jiný čítač. Doporučený způsob, jak získat systémové čítače v systémech Linux (a dalších prostředích mimo Windows), je použití [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Výstrahy
-Podobně jako u jiných metrik můžete [nastavit výstrahu](../platform/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../alerts/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 

@@ -3,16 +3,15 @@ title: Testování Azure Stream Analytics dotazů lokálně v aplikaci Visual St
 description: Tento článek popisuje, jak testovat dotazy místně pomocí Azure Stream Analyticsch nástrojů pro Visual Studio.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b856826761f355e896cae48aa4a6fb62f5947e0b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045633"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019920"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Testování Stream Analytics dotazů v místním prostředí se sadou Visual Studio
 
@@ -30,7 +29,7 @@ V projektu Azure Stream Analytics poklikejte na **script. asaql** , aby se skrip
 
 Pokud chcete dotaz ověřit u místních statických dat, klikněte pravým tlačítkem na vstup a vyberte **Přidat místní vstup**.
    
-![Přidat místní vstup](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
+![Snímek obrazovky, který zvýrazní možnost přidat místní vstupní nabídku.](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
 V automaticky otevíraném okně vyberte ze své místní cesty možnost Ukázková data a **uložte**.
    
@@ -57,7 +56,7 @@ Podívejte se na výsledky v místní složce.
 ![Výsledek místní složky](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-03.png)
    
 
-### <a name="sample-input"></a>Vzorový vstup
+### <a name="sample-input"></a>Ukázkový vstup
 Ukázková vstupní data můžete také shromažďovat ze vstupních zdrojů do místního souboru. Klikněte pravým tlačítkem na vstupní konfigurační soubor a vyberte možnost **ukázková data**. 
 
 ![Ukázková data](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
@@ -75,5 +74,4 @@ Průběh můžete zobrazit v okně **výstup** .
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
 * [Použití sady Visual Studio k zobrazení Azure Stream Analyticsch úloh](stream-analytics-vs-tools.md)
 * [Místní testování živých dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)
-* [Kurz: nasazení úlohy Azure Stream Analytics pomocí CI/CD s využitím Azure DevOps](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Průběžná integrace a vývoj s použitím nástrojů Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

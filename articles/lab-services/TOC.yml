@@ -4,6 +4,10 @@
   items:
     - name: Informace o Lab Services
       href: lab-services-overview.md
+- name: Rychlé starty
+  items:
+    - name: Začínáme
+      href: get-started-manage-labs.md
 - name: Kurzy
   items:
     - name: Nastavení účtu testovacího prostředí
@@ -16,11 +20,11 @@
       href: tutorial-track-usage.md
 - name: Koncepty
   items:
-    - name: Přehled testovacích prostředí v učebnách
+    - name: Přehled testovacích prostředí
       href: classroom-labs-overview.md
-    - name: Koncepce testovacích prostředí v učebnách
+    - name: Koncepce testovacích prostředí
       href: classroom-labs-concepts.md
-    - name: Základy architektury testovacích prostředí v učebnách
+    - name: Základy architektury testovacích prostředí
       href: classroom-labs-fundamentals.md
     - name: Omezení kapacity
       href: capacity-limits.md
@@ -32,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: Využití Lab Services pro hackathon
           href: hackathon-labs.md
-        - name: Testovací prostředí v učebnách – typy tříd
+        - name: Typy tříd testovacího prostředí
           items:
             - name: Přehled typů tříd
               href: class-types.md
@@ -42,9 +46,11 @@
               href: class-type-shell-scripting-linux.md
             - name: Etický hacking
               href: class-type-ethical-hacking.md
+            - name: Síť s GNS3
+              href: class-type-networking-gns3.md
             - name: Správa databází
               href: class-type-database-management.md
-            - name: Vývoj a správa služby Azure SQL Database
+            - name: Správa a vývoj SQL Database
               href: class-type-sql-server.md
             - name: Poznámkové bloky Jupyter a Python
               href: class-type-jupyter-notebook.md
@@ -54,6 +60,15 @@
               href: class-type-matlab.md
             - name: SolidWorks – návrh s podporou počítačů (CAD)
               href: class-type-solidworks.md
+            - name: ArcGIS
+              href: class-type-arcgis.md
+            - name: Project Lead the Way
+              href: class-type-pltw.md
+        - name: Použití Azure Lab Services v rámci Teams
+          items:
+            - name: Přehled
+              displayName: labs within Teams
+              href: lab-services-within-teams-overview.md
 - name: Návody
   items:
     - name: Příručka správce
@@ -88,9 +103,11 @@
           href: specify-marketplace-images.md
         - name: Zadání informací o podpoře (vlastník účtu testovacího prostředí).
           href: lab-account-owner-support-information.md
-    - name: Vytvoření a konfigurace testovacích prostředí v učebnách (vyučující)
+        - name: Nahrání vlastní image do Shared Image Gallery
+          href: upload-custom-image-shared-image-gallery.md
+    - name: Vytváření a konfigurace testovacích prostředí (vyučující)
       items:
-        - name: Vytváření a správa testovacích prostředí v učebnách
+        - name: Vytváření a správa testovacích prostředí
           href: how-to-manage-classroom-labs.md
         - name: Použití řídicího panelu
           href: use-dashboard.md
@@ -126,9 +143,9 @@
           href: lab-creator-support-information.md
         - name: Přístup k virtuálním počítačům studentů ze zobrazení vyučujícího
           href: instructor-access-virtual-machines.md
-    - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
+    - name: Připojení k virtuálním počítačům v testovacích prostředích (student)
       items:
-        - name: Přístup k testovacím prostředím v učebnách
+        - name: Přístup k testovacím prostředím
           href: how-to-use-classroom-lab.md
         - name: Připojení k virtuálním počítačům s Linuxem
           href: how-to-use-remote-desktop-linux-student.md
@@ -140,10 +157,24 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Zobrazení informací o podpoře (student)
           href: lab-user-support-information.md
+    - name: Použití testovacích prostředí v rámci Teams
+      items:
+        - name: Vytvoření testovacího prostředí z Teams
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: Správa seznamů uživatelů
+          href: how-to-manage-user-lists-within-teams.md
+        - name: Správa fondu virtuálních počítačů
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: Odstranění testovacích prostředí
+          href: how-to-delete-lab-within-teams.md
+        - name: Plány a nastavení
+          href: how-to-create-schedules-within-teams.md
+        - name: Přístup k virtuálnímu počítači (zobrazení studenta)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: Referenční informace
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/labservices/'
+      href: /rest/api/labservices/
     - name: Modul PowerShellu Az.LabServices (Preview)
       href: reference-powershell-module.md
 - name: Zdroje a prostředky

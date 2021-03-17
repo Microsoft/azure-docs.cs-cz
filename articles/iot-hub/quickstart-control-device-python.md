@@ -1,5 +1,5 @@
 ---
-title: Rychlý start k řízení zařízení ze služby Azure IoT Hub (Python) | Microsoft Docs
+title: Rychlý Start – řízení zařízení z Azure IoT Hub rychlý Start (Python) | Microsoft Docs
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Python. První aplikace je back-endová aplikace, která může vzdáleně řídit zařízení připojená k vašemu centru. Druhá aplikace simuluje zařízení připojené k vašemu centru, které je možné řídit vzdáleně.
 author: wesmc7777
 manager: philmea
@@ -12,13 +12,14 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-python
-ms.date: 01/09/2020
-ms.openlocfilehash: 6a93410b40926904a8429b70522eb01ab02f80a7
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+- devx-track-azurecli
+ms.date: 09/14/2020
+ms.openlocfilehash: d7e7eb80d452620cdbb0f6688d6137ad34951dbe
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876457"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070711"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -36,15 +37,7 @@ V tomto rychlém startu použijete přímou metodu k řízení simulovaného za�
 
 * Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
-
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy specifické pro IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -75,7 +68,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
@@ -89,7 +82,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string \
+    az iot hub connection-string show \
       --policy-name service \
       --name {YourIoTHubName} \
       --output table

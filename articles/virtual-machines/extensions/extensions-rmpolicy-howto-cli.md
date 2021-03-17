@@ -1,24 +1,19 @@
 ---
 title: Omezení instalace rozšíření virtuálních počítačů (Linux) pomocí Azure Policy
 description: K omezení nasazení rozšíření virtuálních počítačů použijte Azure Policy.
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 03/23/2018
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.openlocfilehash: 2129130dab58c9e1fb98878efc3ec668eeb45359
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 582f690c00ff8bdd06e4d2867724aa482bcacaf3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069771"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559966"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Omezení instalace rozšíření na virtuálních počítačích se systémem Linux pomocí Azure Policy
 
@@ -97,7 +92,7 @@ Až skončíte, stiskněte klávesu **ESC** a potom zadejte **: WQ** a soubor ul
 
 ## <a name="create-the-policy"></a>Vytvoření zásady
 
-Definice zásady je objekt, který slouží k uložení konfigurace, kterou chcete použít. Definice zásady používá soubory pravidel a parametrů k definování zásad. Pomocí [AZ Policy definition Create vytvořte](/cli/azure/role/assignment?view=azure-cli-latest)definici zásady.
+Definice zásady je objekt, který slouží k uložení konfigurace, kterou chcete použít. Definice zásady používá soubory pravidel a parametrů k definování zásad. Pomocí [AZ Policy definition Create vytvořte](/cli/azure/role/assignment)definici zásady.
 
 V tomto příkladu jsou pravidla a parametry soubory, které jste vytvořili a uložili ve službě cloud Shell jako soubory. JSON.
 
@@ -116,7 +111,7 @@ az policy definition create \
 
 Tento příklad přiřadí zásadu ke skupině prostředků pomocí [AZ Policy Assignment Create](/cli/azure/policy/assignment). Libovolný virtuální počítač vytvořený ve skupině prostředků **myResourceGroup** nebude moct nainstalovat přístup k virtuálnímu počítači Linux ani rozšíření vlastních skriptů pro Linux. Aby bylo možné zásadu přiřadit, musí existovat skupina prostředků.
 
-Pomocí [AZ Account list](/cli/azure/account?view=azure-cli-latest) můžete získat ID předplatného, které se má použít místo v příkladu.
+Pomocí [AZ Account list](/cli/azure/account) můžete získat ID předplatného, které se má použít místo v příkladu.
 
 
 ```azurecli-interactive

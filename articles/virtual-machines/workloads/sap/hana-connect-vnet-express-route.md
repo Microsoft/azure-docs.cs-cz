@@ -6,19 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 218862b2df959fc0a39baa3c2934fc05f252af32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082150"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672981"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Připojení virtuální sítě k velkým instancím HANA
 
@@ -32,7 +32,7 @@ Po vytvoření virtuální sítě Azure se tato síť dá připojit k SAP HANA v
 Pokud brána již existuje, ověřte, zda se jedná o bránu ExpressRoute. Pokud se nejedná o bránu ExpressRoute, odstraňte bránu a znovu ji vytvořte jako bránu ExpressRoute. Pokud je už brána ExpressRoute vytvořená, přečtěte si následující část tohoto článku "propojení virtuálních sítí". 
 
 - Pomocí [Azure Portal](https://portal.azure.com/) nebo PowerShellu vytvořte bránu VPN ExpressRoute připojenou k vaší virtuální síti.
-  - Pokud používáte Azure Portal, přidejte novou **bránu Virtual Network**a jako typ brány vyberte **ExpressRoute** .
+  - Pokud používáte Azure Portal, přidejte novou **bránu Virtual Network** a jako typ brány vyberte **ExpressRoute** .
   - Pokud používáte PowerShell, nejdřív si stáhněte a použijte nejnovější [sadu Azure PowerShell SDK](https://azure.microsoft.com/downloads/). 
  
 Následující příkazy vytvoří bránu ExpressRoute. Text předchází _$_ uživatelem definovaných proměnných, které by měly být aktualizovány s konkrétními informacemi.

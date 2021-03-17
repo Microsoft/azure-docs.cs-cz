@@ -1,17 +1,17 @@
 ---
 title: Seskupit počítače pro posouzení pomocí Azure Migrate | Microsoft Docs
 description: Popisuje, jak seskupit počítače před spuštěním posouzení pomocí služby Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/17/2019
-ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b5949e944a4317aa25f1f1b12545122881cec
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549898"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752103"
 ---
 # <a name="create-a-group-for-assessment"></a>Vytvořit skupinu pro posouzení
 
@@ -35,14 +35,14 @@ Můžete vytvořit skupinu ve stejné době, kdy [vytvoříte posouzení](how-to
 
 Pokud chcete vytvořit skupinu ručně mimo vytváření posouzení, udělejte toto:
 
-1. V projektu Azure Migrate > **Přehled**klikněte na možnost **zhodnotit a migrovat servery**. V **Azure Migrate: vyhodnocování serveru**, klikněte na **skupiny** .
-    - Pokud jste ještě nepřidali Azure Migrate: Nástroj pro vyhodnocení serveru, klikněte na tlačítko a přidejte ho. [Další informace](how-to-assess.md).
-    - Pokud jste ještě nevytvořili projekt Azure Migrate, [Přečtěte si další informace](how-to-add-tool-first-time.md).
+1. V projektu Azure Migrate > **Přehled** klikněte na možnost **zhodnotit a migrovat servery**. V **Azure Migrate: vyhodnocování serveru**, klikněte na **skupiny** .
+    - Pokud jste ještě nepřidali Azure Migrate: Nástroj pro vyhodnocení serveru, klikněte na tlačítko a přidejte ho. [Přečtěte si další informace](how-to-assess.md).
+    - Pokud jste ještě nevytvořili projekt Azure Migrate, [Přečtěte si další informace](./create-manage-projects.md).
 
     ![Vybrat skupiny](./media/how-to-create-a-group/select-groups.png)
 
 2. Klikněte na ikonu **skupiny** .
-3. V části **vytvořit skupinu**zadejte název skupiny a do pole **název zařízení**vyberte zařízení Azure Migrate, které používáte pro zjišťování počítačů.
+3. V části **vytvořit skupinu** zadejte název skupiny a do pole **název zařízení** vyberte zařízení Azure Migrate, které používáte pro zjišťování počítačů.
 4. V seznamu počítač vyberte počítače, které chcete přidat do skupiny > **vytvořit**.
 
     ![Vytvoření skupiny](./media/how-to-create-a-group/create-group.png)
@@ -60,13 +60,13 @@ Pokud jste už [nastavili mapování závislostí](how-to-create-group-machine-d
 
 1. Na kartě **servery** na dlaždici **Azure Migrate: vyhodnocování serveru** klikněte na **skupiny**.
 2. Klikněte na skupinu, kterou chcete upřesnit.
-    - Pokud jste ještě nenastavili mapování závislostí, zobrazí se ve sloupci **závislosti** stav **instalace vyžaduje** . Pro každý virtuální počítač, pro který chcete vizualizovat závislosti, klikněte na **vyžaduje instalaci**. Než budete moci mapovat závislosti počítačů, nainstalujte na každý virtuální počítač několik agentů. [Další informace](how-to-create-group-machine-dependencies.md).
+    - Pokud jste ještě nenastavili mapování závislostí, zobrazí se ve sloupci **závislosti** stav **instalace vyžaduje** . Pro každý virtuální počítač, pro který chcete vizualizovat závislosti, klikněte na **vyžaduje instalaci**. Než budete moci mapovat závislosti počítačů, nainstalujte na každý virtuální počítač několik agentů. [Přečtěte si další informace](how-to-create-group-machine-dependencies.md).
 
         ![Přidat mapování závislostí](./media/how-to-create-a-group/add-dependency-mapping.png)
 
     - Pokud jste již nastavili mapování závislostí, otevřete na stránce skupina kliknutím na možnost **Zobrazit závislosti** mapu závislostí skupiny.
 
-3. Po kliknutí na **Zobrazit závislosti**se v mapě závislosti skupin zobrazí následující:
+3. Po kliknutí na **Zobrazit závislosti** se v mapě závislosti skupin zobrazí následující:
 
     - Příchozí (klienti) a odchozí (servery) připojení TCP k a ze všech počítačů ve skupině, ve které jsou nainstalováni agenti závislostí.
     - Závislé počítače, které nemají nainstalované agenty závislosti, jsou seskupeny podle čísel portů.
@@ -89,4 +89,3 @@ Pokud jste už [nastavili mapování závislostí](how-to-create-group-machine-d
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se nastavit a používat [Mapování závislostí](how-to-create-group-machine-dependencies.md) k vytváření vysoce důvěryhodných skupin.
-

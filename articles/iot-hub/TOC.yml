@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě IoT Hub
+- name: Dokumentace k IoT Hub
   href: index.yml
 - name: Přehled
   items:
@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: Automatické směrování zpráv pomocí šablony ARM
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: Kurzy
   items:
     - name: Směrování zpráv
@@ -71,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: Obohacení zpráv
       href: tutorial-message-enrichments.md
-    - name: Použití metrik a diagnostických protokolů
+    - name: Použití metrik a protokolů
       href: tutorial-use-metrics-and-diags.md
     - name: Provedení ručního převzetí služeb při selhání
       href: tutorial-manual-failover.md
@@ -81,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: Testování připojení zařízení
       href: tutorial-connectivity.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Podpora TLS
@@ -137,12 +135,12 @@
                   href: iot-hub-devguide-messages-read-custom.md
                 - name: Přidání dotazů do tras zpráv
                   href: iot-hub-devguide-routing-query-syntax.md
-            - name: Reakce na události služby IoT Hub
-              href: iot-hub-event-grid.md
             - name: Odesílání zpráv z cloudu do zařízení z IoT Hubu
               href: iot-hub-devguide-messages-c2d.md
             - name: Volba komunikačního protokolu
               href: iot-hub-devguide-protocols.md
+        - name: Reakce na události IoT Hubu s využitím Event Gridu
+          href: iot-hub-event-grid.md
         - name: Odeslání souborů ze zařízení
           href: iot-hub-devguide-file-upload.md
         - name: Správa identit zařízení
@@ -169,22 +167,31 @@
           href: iot-hub-devguide-sdks.md
         - name: Podpora MQTT
           href: iot-hub-mqtt-support.md
+        - name: Podpora MQTT 5 (Preview)
+          items:
+            - name: Přehled MQTT 5
+              href: iot-hub-mqtt-5.md
+            - name: Reference k rozhraní API MQTT 5
+              href: iot-hub-mqtt-5-reference.md
         - name: Podpora AMQP
           href: iot-hub-amqp-support.md
-        - name: Glosář
-          href: iot-hub-devguide-glossary.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Doporučení
-          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/security-recommendations.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Zabezpečení od počátku
-          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-ground-up.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Osvědčené postupy zabezpečení
-          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-best-practices.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Architektura zabezpečení
-          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-architecture.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Zabezpečení nasazení IoT
-          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-deployment.md?context=%2fazure%2fiot-hub%2frc%2frc
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Zabezpečení pomocí certifikátů webu X.509
       items:
         - name: Přehled zabezpečení pomocí certifikátu webu X.509
@@ -217,10 +224,10 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: Vývoj pro platformu Android Things
               href: iot-hub-how-to-android-things.md
+        - name: Vývoj bez sady Azure IoT SDK
+          href: iot-hub-devguide-no-sdk.md
         - name: Dotazování na data Avro ze směrování Hubu
           href: iot-hub-query-avro-data.md
-        - name: Objednávka stavových událostí připojení zařízení z Event Gridu
-          href: iot-hub-how-to-order-connection-state-events.md
         - name: Odesílání zpráv z cloudu do zařízení
           items:
             - name: .NET
@@ -312,16 +319,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Použití Azure CLI
               href: iot-hub-configure-file-upload-cli.md
-        - name: Metriky na platformě Azure Monitor
-          href: iot-hub-metrics.md
-        - name: Nastavení diagnostických protokolů
-          href: iot-hub-monitor-resource-health.md
         - name: Zabezpečení vašeho centra s využitím certifikátu X.509
           href: iot-hub-security-x509-get-started.md
         - name: Upgrade IoT Hubu
           href: iot-hub-upgrade.md
-        - name: Povolení trasování zpráv
-          href: iot-hub-distributed-tracing.md
         - name: Konfigurace filtrování IP
           href: iot-hub-ip-filtering.md
         - name: Správa přístupu k veřejné síti
@@ -334,6 +335,28 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: Hromadný import a export zařízení IoT
           href: iot-hub-bulk-identity-mgmt.md
+    - name: Monitorování
+      items:
+        - name: Monitorování IoT Hubu
+          href: monitor-iot-hub.md
+        - name: Referenční informace k monitorování dat
+          href: monitor-iot-hub-reference.md
+        - name: Povolení trasování zpráv
+          href: iot-hub-distributed-tracing.md
+        - name: Stav prostředků a služeb IoT Hub
+          href: iot-hub-azure-service-health-integration.md
+        - name: Objednávka stavových událostí připojení zařízení z Event Gridu
+          href: iot-hub-how-to-order-connection-state-events.md
+    - name: Nasazení aktualizací
+      items:
+        - name: Vytvoření účtu aktualizace zařízení
+          href: ../iot-hub-device-update/create-device-update-account.md
+        - name: Importovat aktualizaci
+          href: ../iot-hub-device-update/import-update.md
+        - name: Vytvořit skupinu aktualizací
+          href: ../iot-hub-device-update/create-update-group.md
+        - name: Nasazení aktualizace
+          href: ../iot-hub-device-update/deploy-update.md
     - name: Použití skutečných zařízení
       items:
         - name: Použití online simulátoru
@@ -426,71 +449,78 @@
     - name: .NET (služba)
       href: /dotnet/api/microsoft.azure.devices
     - name: .NET (správa)
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
+      href: /dotnet/api/overview/azure/iot/management
     - name: Java (zařízení)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (služba)
       href: /java/api/com.microsoft.azure.sdk.iot.service
     - name: Node.js (zařízení)
-      href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
+      href: /javascript/api/azure-iot-device/
     - name: Node.js (služba)
-      href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+      href: /javascript/api/azure-iothub/
     - name: Node.js (správa)
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+      href: /javascript/api/overview/azure/iothub/management
     - name: Python (zařízení)
-      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+      href: /python/api/azure-iot-device
     - name: Python (služba)
-      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+      href: /python/api/azure-iot-hub
     - name: Python (správa)
-      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
+      href: /python/api/azure-mgmt-iothub
     - name: Sada SDK pro zařízení jazyka C
-      href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
+      href: /azure/iot-hub/iot-c-sdk-ref/
     - name: REST (zařízení)
-      href: 'https://docs.microsoft.com/rest/api/iothub/device'
+      href: /rest/api/iothub/device
     - name: REST (služba)
-      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
+      href: /rest/api/iothub/service/configuration
     - name: REST (prostředek IoT Hubu)
-      href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
+      href: /rest/api/iothub/iothubresource
     - name: REST (certifikáty)
-      href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
+      href: /rest/api/iothub/certificates
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Vyřazení funkcí a rozhraní API z provozu
       items:
         - name: Monitorování operací
           href: iot-hub-operations-monitoring.md
-        - name: Migrace do nastavení diagnostiky
+        - name: Migrace do Azure Monitoru
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Vyřazení TLS 1.0 a 1.1
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: Klasický filtr IP adres
+          href: iot-hub-ip-filter-classic.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ./index.yml
         - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
+          href: ../iot-edge/index.yml
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
+        - name: Akcelerátory řešení IoT
+          href: ../iot-accelerators/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Ukázky Azure IoT
       items:
         - name: C# (.NET)

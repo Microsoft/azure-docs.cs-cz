@@ -3,16 +3,16 @@ title: Seznámení s Azure Red Hat OpenShift
 description: Přečtěte si o funkcích a výhodách Microsoft Azure Red Hat OpenShift a nasaďte a spravujte aplikace založené na kontejnerech.
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: overview
-ms.date: 04/24/2020
+ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ec934a8a9907f0c0c3aff047e003c6725c5ab25f
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628516"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636216"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -28,11 +28,15 @@ Začněte tím, že dokončíte kurz [Vytvoření clusteru Azure Red Hat OpenShi
 
 ## <a name="access-security-and-monitoring"></a>Přístup, zabezpečení a sledování
 
-Pro zlepšení zabezpečení a správy vám Azure Red Hat OpenShift umožňuje integrovat s Azure Active Directory (Azure AD) a používat Kubernetes řízení přístupu na základě role (RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
+Pro zlepšení zabezpečení a správy vám Azure Red Hat OpenShift umožňuje integrovat s Azure Active Directory (Azure AD) a používat Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
 
 ## <a name="cluster-and-node"></a>Clustery a uzly
 
 Uzly Azure Red Hat OpenShift běží na virtuálních počítačích Azure. Úložiště můžete připojit k uzlům a luskům a upgradovat součásti clusteru.
+
+## <a name="service-level-agreement"></a>smlouva SLA
+
+Azure Red Hat OpenShift nabízí smlouva SLA k zajištění, že služba bude k dispozici 99,95% času. Další podrobnosti o smlouvě SLA najdete v tématu věnovaném [smlouvě SLA pro Azure Red Hat OpenShift](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,21 +1,22 @@
 ---
-title: Připojit k účtu SFTP
-description: Automatizace úloh a procesů, které sledují, vytváří, spravují, odesílají a přijímají soubory pro server SFTP prostřednictvím SSH pomocí Azure Logic Apps
+title: Připojit k účtu SFTP (zastaralé)
+description: Automatizace úloh a procesů, které sledují, vytváří, spravují, odesílají a přijímají soubory pro server SFTP pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789269"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673805"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí Azure Logic Apps
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP v Azure Logic Apps
 
 > [!IMPORTANT]
 > Použijte prosím [konektor SFTP-SSH](../connectors/connectors-sftp-ssh.md) , protože konektor SFTP je zastaralý. V návrháři aplikace logiky už nemůžete vybírat triggery a akce protokolu SFTP.
@@ -33,7 +34,7 @@ Můžete použít triggery, které sledují události na vašem serveru SFTP a z
 
 Konektor SFTP zpracovává pouze soubory, které jsou *50 MB nebo menší* , a nepodporuje vytváření [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). U větších souborů použijte [konektor SFTP-SSH](../connectors/connectors-sftp-ssh.md). Rozdíly mezi konektorem SFTP a konektorem SFTP-SSH najdete v článku [porovnání protokolu SFTP-SSH versus SFTP](../connectors/connectors-sftp-ssh.md#comparison) v článku o protokolu SFTP-SSH.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -44,10 +45,10 @@ Konektor SFTP zpracovává pouze soubory, které jsou *50 MB nebo menší* , a n
   > Konektor SFTP podporuje tyto formáty privátních klíčů: OpenSSH, ssh.com a.
   >
   > Když vytváříte aplikaci logiky a přidáte do ní aktivační událost nebo požadovanou akci SFTP, budete muset zadat informace o připojení pro váš server SFTP. 
-  > Pokud používáte privátní klíč SSH, nezapomeňte ***zkopírovat*** klíč ze souboru privátního klíče SSH a tento klíč ***Vložit*** do podrobností o připojení, ***nemusíte ručně zadávat ani upravovat klíč***, což by mohlo způsobit selhání připojení. 
+  > Pokud používáte privátní klíč SSH, ujistěte se, že jste * **zkopírovali** klíč ze souboru privátního klíče SSH, a tento klíč _*_vložíte_*_ do podrobností o připojení, _*_nemusíte ručně zadávat ani upravovat klíč_*_ , což by mohlo způsobit selhání připojení. 
   > Další informace najdete v dalších krocích v tomto článku.
 
-* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+_ Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Aplikace logiky, ke které chcete získat přístup k vašemu účtu SFTP. Pokud chcete začít s triggerem protokolu SFTP, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci SFTP, spusťte aplikaci logiky s jinou triggerovou procedurou, například Trigger **opakování** .
 
@@ -58,7 +59,7 @@ Služba SFTP spouští dotazování systému souborů SFTP a hledání všech so
 | Klient SFTP | Akce |
 |-------------|--------|
 | WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
-| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná**Časová razítka přenesených souborů**  >  **Disable** |
+| FileZilly | Přejít na **přenos** –  >  zachovat zablokovaná **Časová razítka přenesených souborů**  >  **Disable** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -73,9 +74,9 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
    -nebo-
 
-   Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. Do vyhledávacího pole zadejte "SFTP" jako filtr. V seznamu akce vyberte akci, kterou chcete.
+   Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok** . Do vyhledávacího pole zadejte "SFTP" jako filtr. V seznamu akce vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci** .
 
 1. Zadejte potřebné informace pro vaše připojení.
 
@@ -88,13 +89,13 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
    1. V textovém editoru otevřete soubor privátního klíče SSH. Tyto kroky používají jako příklad program Poznámkový blok.
 
-   1. V nabídce **Úpravy** poznámkového bloku vyberte **Vybrat vše**.
+   1. V nabídce **Úpravy** poznámkového bloku vyberte **Vybrat vše** .
 
-   1. Vyberte **Upravit**  >  **kopii**.
+   1. Vyberte **Upravit**  >  **kopii** .
 
-   1. V triggeru nebo aktivované akci SFTP vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků. ***Nezapomeňte klíč vložit*** . ***Klíč nezadejte ručně ani neupravujte***.
+   1. V triggeru nebo aktivované akci SFTP vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků. *Ujistěte se, *_že jste vložili_* klíč. _*_Klíč nezadejte ručně ani neupravujte_*_ .
 
-1. Až skončíte s zadáním podrobností o připojení, vyberte **vytvořit**.
+1. Až skončíte s zadáním podrobností o připojení, vyberte _ * vytvořit * *.
 
 1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
@@ -106,7 +107,7 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
 Tato aktivační událost spustí pracovní postup aplikace logiky při přidání nebo změně souboru na serveru SFTP. Můžete například přidat podmínku, která zkontroluje obsah souboru a získá obsah na základě toho, jestli obsah splňuje zadanou podmínku. Pak můžete přidat akci, která získá obsah souboru, a tento obsah vložit do složky na serveru SFTP.
 
-**Podnikový příklad**: tuto aktivační událost můžete použít k monitorování složky SFTP pro nové soubory, které reprezentují objednávky zákazníků. Pak můžete použít akci SFTP, například **získat obsah souboru** , abyste získali obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
+**Podnikový příklad** : tuto aktivační událost můžete použít k monitorování složky SFTP pro nové soubory, které reprezentují objednávky zákazníků. Pak můžete použít akci SFTP, například **získat obsah souboru** , abyste získali obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
 
 <a name="get-content"></a>
 
@@ -116,7 +117,7 @@ Tato akce načte obsah ze souboru na serveru SFTP. Například můžete přidat 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/sftpconnector/)konektoru.
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](../data-factory/connector-sftp.md)konektoru.
 
 ## <a name="next-steps"></a>Další kroky
 

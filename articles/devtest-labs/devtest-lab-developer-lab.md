@@ -3,12 +3,12 @@ title: Použití Azure DevTest Labs pro vývojáře | Microsoft Docs
 description: Seznamte se s Azure DevTest Labs funkcemi, které se dají použít k splnění požadavků na vývojáře a podrobných kroků, které můžete provést při nastavení testovacího prostředí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293032"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89296239"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Použití Azure DevTest Labs pro vývojáře
 Azure DevTest Labs lze použít k implementaci mnoha klíčových scénářů. Jedním z nejzákladnějších je hostování počítačů pro vývojáře. V tomto scénáři poskytuje služba DevTest Labs následující výhody:
@@ -30,7 +30,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Vytvoření testovacího prostředí v Azure DevTest Labs](devtest-lab-create-lab.md) |Naučte se, jak vytvořit testovací prostředí v Azure DevTest Labs Azure Portal. |
 2. **Vytváření virtuálních počítačů během několika minut pomocí připravených imagí a vlastních imagí z Marketplace** 
@@ -41,9 +41,9 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
   
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
-   | [Konfigurace imagí na Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Naučte se, jak můžete přizpůsobovat Azure Marketplace imagí, a zpřístupnit je pro výběr jenom těch imagí, které pro vývojáře potřebujete.|
+   | [Konfigurace imagí na Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Přečtěte si, jak můžete Azure Marketplace imagí použít a zpřístupnit pro výběr pouze imagí, které chcete pro vývojáře použít.|
    | [Vytvoření vlastní image](devtest-lab-create-template.md) |Vytvořte vlastní image předinstalací softwaru, který potřebujete, aby mohli vývojáři rychle vytvořit virtuální počítač s použitím vlastní image.|
    | [Informace o objektu pro vytváření imagí](./devtest-lab-faq.md#blog-post) |Podívejte se na video, které popisuje, jak nastavit a použít objekt pro vytváření imagí.|
 
@@ -53,7 +53,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Správa vzorců DevTest Labs pro vytváření virtuálních počítačů](devtest-lab-manage-formulas.md) |Zjistěte, jak můžete vytvořit vzorec vyzvednutím image, velikosti virtuálního počítače (kombinace CPU a paměti RAM) a virtuální sítě.|
 
@@ -69,7 +69,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
 
    Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs](devtest-lab-artifact-author.md) |Vytvořte vlastní artefakty pro virtuální počítače v testovacím prostředí.|
    | [Přidání úložiště Git pro ukládání vlastních artefaktů a šablon Azure Resource Manager pro použití v Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Naučte se ukládat vlastní artefakty ve vlastním privátním úložišti Git.|
@@ -84,7 +84,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Definice zásad testovacího prostředí](devtest-lab-set-lab-policy.md) |Řízení nákladů pomocí nastavení zásad v testovacím prostředí. |
    | [Odstranění všech virtuálních počítačů testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Až se vývoj dokončí, odstraňte všechny cvičení v jedné operaci.|
@@ -97,7 +97,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Konfigurace virtuální sítě v Azure DevTest Labs](devtest-lab-configure-vnet.md) |Naučte se konfigurovat virtuální síť v Azure DevTest Labs pomocí Azure Portal.|
 
@@ -107,7 +107,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Přidání vývojáře do testovacího prostředí v Azure DevTest Labs](devtest-lab-add-devtest-user.md) |K přidání vývojářů do testovacího prostředí použijte Azure Portal.|
    | [Přidání vývojářů do testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |K automatizaci přidávání vývojářů do testovacího prostředí použijte PowerShell. |
@@ -119,7 +119,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úkol | Co se naučíte |
+   | Úloha | Co se naučíte |
    | --- | --- |
    | [Vytvoření testovacího prostředí pomocí šablony Správce prostředků](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Pomocí šablon Správce prostředků vytvořte cvičení v Azure DevTest Labs. |
 

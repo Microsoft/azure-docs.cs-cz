@@ -1,26 +1,18 @@
 ---
 title: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním počítači Azure | Microsoft Docs
 description: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním počítači Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: cynthn
+ms.openlocfilehash: 4b739efcf2695a5385351f531efb6201bbea1cd5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616209"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671942"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA v Azure
 Tento článek popisuje, jak nasadit S/4HANA v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Pokud chcete nasadit další řešení založená na SAP HANA, jako je například ČERNOBÍLé/4HANA, postupujte podle stejných kroků.
@@ -35,7 +27,7 @@ Tento článek popisuje, jak nasadit S/4HANA v Azure pomocí knihovny cloudovýc
 
 Následující posloupnost snímků obrazovky ukazuje, jak nasadit S/4HANA v Azure pomocí SAP CAL. Tento proces funguje stejným způsobem jako u jiných řešení, jako je například ČERNOBÍLé/4HANA.
 
-Na stránce **řešení** se zobrazují některá řešení založená na SAP CAL Hana dostupná v Azure. **SAP S/4HANA 1610 FPS01, plně aktivované zařízení** je v prostředním řádku:
+Na stránce **řešení** se zobrazují některá řešení založená na SAP CAL Hana dostupná v Azure. **SAP S/4HANA 1610 FPS01, Fully-Activated zařízení** je v prostředním řádku:
 
 ![Řešení SAP CAL](./media/cal-s4h/s4h-pic-1c.png)
 
@@ -67,7 +59,7 @@ Na stránce **řešení** se zobrazují některá řešení založená na SAP CA
 
    ![Účty SAP CAL](./media/cal-s4h/s4h-pic3c.png)
 
-1. Kliknutím na **autorizovat**autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
+1. Kliknutím na **autorizovat** autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
 
    ![Přihlášení ke cloudovým službám v Internet Exploreru](./media/cal-s4h/s4h-pic4c.png)
 
@@ -113,15 +105,15 @@ Tady Ukážeme základní cestu k nasazení.
 
     a. Vyberte účet SAP CAL. (Použijte účet, který je přidružený k nasazení pomocí modelu nasazení Správce prostředků.)
 
-    b. Zadejte **název**instance.
+    b. Zadejte **název** instance.
 
-    c. Vyberte **oblast**Azure. Rozhraní SAP CAL navrhuje oblast. Pokud potřebujete jinou oblast Azure a nemáte předplatné SAP CAL, musíte si objednat předplatné CAL pomocí SAP.
+    c. Vyberte **oblast** Azure. Rozhraní SAP CAL navrhuje oblast. Pokud potřebujete jinou oblast Azure a nemáte předplatné SAP CAL, musíte si objednat předplatné CAL pomocí SAP.
 
     d. Zadejte hlavní **heslo** pro řešení o osmi nebo devíti znacích. Heslo se používá pro správce různých součástí.
 
    ![Základní režim SAP CAL: vytvořit instanci](./media/cal-s4h/s4h-pic10a.png)
 
-1. Klikněte na tlačítko **vytvořit**a v zobrazeném okně se zprávou klikněte na tlačítko **OK**.
+1. Klikněte na tlačítko **vytvořit** a v zobrazeném okně se zprávou klikněte na tlačítko **OK**.
 
    ![Podporované velikosti virtuálních počítačů SAP CAL](./media/cal-s4h/s4h-pic10b.png)
 

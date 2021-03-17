@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548862"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996623"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje předem připravená konfigurační pravidla. Dokumentuje pravidla a způsob, jakým tato pravidla ovlivňují konfiguraci. Také vás provede výchozí konfigurací Azure AD Connect synchronizace. Cílem je, aby čtenář pochopil, jak model konfigurace s názvem deklarativní zřizování funguje v reálném příkladu. V tomto článku se předpokládá, že jste už nainstalovali a nakonfigurovali Azure AD Connect synchronizaci pomocí Průvodce instalací nástroje.
@@ -160,7 +160,7 @@ Můžete také zjistit, že se toto pravidlo synchronizace používá pro synchr
 #### <a name="scoping-filter"></a>Filtr oboru
 Oddíl filtr oboru se používá ke konfiguraci, kdy se má pravidlo synchronizace vztahovat. Vzhledem k tomu, že název synchronizačního pravidla, které se chystáte, by měl být použit pouze pro povolené uživatele, je rozsah nakonfigurován tak, aby mohl uživatel **s atributem** AD bez tohoto nastavení obsahovat bit 2. Když synchronizační modul najde uživatele ve službě AD, použije toto pravidlo synchronizace, **Pokud je uživatel** nastavený na desítkovou hodnotu 512 (povoleno normálnímu uživateli). Toto pravidlo neplatí, pokud má **uživatel nastaveno na hodnotu 514** (zakázaný normální uživatel).
 
-![Karta obor v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Snímek obrazovky, který zobrazuje část "filtr oboru" v okně Upravit pravidlo příchozí synchronizace.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Filtr oboru má skupiny a klauzule, které mohou být vnořené. Aby bylo možné použít synchronizační pravidlo, musí být splněny všechny klauzule uvnitř skupiny. Pokud je definováno více skupin, musí být pro pravidlo splněna aspoň jedna skupina. To znamená, že logická nebo je vyhodnocena mezi skupinami a logickou a je vyhodnocena uvnitř skupiny. Příklad této konfigurace najdete v odchozím synchronizačním pravidle z protokolu **AAD – připojení ke skupině**. Existuje několik skupin filtru synchronizace, například jeden pro skupiny zabezpečení ( `securityEnabled EQUAL True` ) a jeden pro distribuční skupiny ( `securityEnabled EQUAL False` ).
 
@@ -186,7 +186,7 @@ Oddíl transformuje všechny toky atributů, které se vztahují na cílový obj
 
 ![Karta transformace v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
-Chcete-li tuto konfiguraci vložit v kontextu nasazení doménové struktury prostředků, je nutné najít povolený účet v doménové struktuře účtu a zakázaný účet v doménové struktuře prostředků s nastavením Exchange a Lync. Synchronizační pravidlo, které se chystáte, obsahuje atributy vyžadované pro přihlášení a tyto atributy by měly být předávány z doménové struktury, ve které je povolený účet. Všechny tyto toky atributů jsou spojeny do jednoho synchronizačního pravidla.
+Pokud chcete tuto konfiguraci vložit do kontextu, v Account-Resource nasazení doménové struktury se očekává, že se v doménové struktuře účtů a zakázaný účet v doménové struktuře prostředků v nastaveních Exchange a Lyncu najde povolený účet. Synchronizační pravidlo, které se chystáte, obsahuje atributy vyžadované pro přihlášení a tyto atributy by měly být předávány z doménové struktury, ve které je povolený účet. Všechny tyto toky atributů jsou spojeny do jednoho synchronizačního pravidla.
 
 Transformace může mít různé typy: konstanta, přímá a výraz.
 
@@ -223,7 +223,7 @@ Nyní ví, že pravidla synchronizace jsou schopná pochopit, jak konfigurace fu
 | Name | Komentář |
 |:--- |:--- |
 | Ve službě AD – připojení uživatele |Pravidlo pro spojování objektů prostoru konektoru s úložištěm Metaverse |
-| V nástroji ze služby AD – UserAccount povoleno |Atributy vyžadované pro přihlášení k Azure AD a Office 365. Chceme tyto atributy z povoleného účtu. |
+| V nástroji ze služby AD – UserAccount povoleno |Atributy vyžadované pro přihlášení k Azure AD a Microsoft 365. Chceme tyto atributy z povoleného účtu. |
 | V nástroji ze služby AD – uživatel společný ze systému Exchange |V globálním seznamu adres byly nalezeny atributy. Předpokládáme, že kvalita dat je nejlepší v doménové struktuře, ve které jsme našli poštovní schránku uživatele. |
 | V nástroji ze služby AD – společná pro uživatele |V globálním seznamu adres byly nalezeny atributy. V případě, že jsme nenašli poštovní schránku, může hodnota atributu přispívat libovolný jiný připojený objekt. |
 | V nástroji ze služby AD – uživatel Exchange |Existuje pouze v případě, že byl zjištěn server Exchange. Natéká všechny atributy výměny infrastruktury. |

@@ -1,6 +1,6 @@
 ---
 title: Optimalizace výkonu s využitím materializovaná zobrazení
-description: Doporučení a důležité informace, které byste měli znát při použití materializovaná zobrazení ke zlepšení výkonu dotazů.
+description: Přečtěte si o doporučeních a faktorech, které byste měli vědět, když používáte materializovaná zobrazení ke zlepšení výkonu dotazů.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
-ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.reviewer: nibruno; jrasnick; azure-synapse
+ms.openlocfilehash: e137611809e2d2beefecfeaea11b4295bf6ba141
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956385"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678487"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Optimalizace výkonu s využitím materializovaná zobrazení
 
-Materializovaná zobrazení v synapse fondu SQL poskytují metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
+Materializovaná zobrazení ve fondu SQL Azure synapse poskytují metodu údržby pro složité analytické dotazy pro zajištění rychlého výkonu bez nutnosti změny dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
 
 ## <a name="materialized-views-vs-standard-views"></a>Materializovaná zobrazení vs. standardní zobrazení
 
-Fond SQL podporuje standardní a materializovaná zobrazení.  Obě jsou virtuální tabulky vytvořené pomocí výrazů SELECT a prezentují se dotazům jako logické tabulky.  Zobrazení zapouzdřují složitost běžných výpočtů dat a přidávají do výpočtů změny, takže není potřeba přepisovat dotazy.  
+Fond SQL ve službě Azure synapse podporuje standardní a materializovaná zobrazení.  Obě jsou virtuální tabulky vytvořené pomocí výrazů SELECT a prezentují se dotazům jako logické tabulky.  Zobrazení zapouzdřují složitost běžných výpočtů dat a přidávají do výpočtů změny, takže není potřeba přepisovat dotazy.  
 
-Standardní zobrazení vypočítá data při každém použití zobrazení.  Na disku nejsou uložená žádná data. Lidé obvykle používají standardní zobrazení jako nástroj, který pomáhá organizovat logické objekty a dotazy v databázi.  Chcete-li použít standardní zobrazení, dotaz musí na něj vytvořit přímý odkaz.
+Standardní zobrazení vypočítá data při každém použití zobrazení.  Na disku nejsou uložená žádná data. Lidé obvykle používají standardní zobrazení jako nástroj, který pomáhá organizovat logické objekty a dotazy ve fondu SQL.  Chcete-li použít standardní zobrazení, dotaz musí na něj vytvořit přímý odkaz.
 
 Materializované zobrazení předběžně počítá, ukládá a udržuje data ve fondu SQL stejně jako tabulka.  Při použití materializované zobrazení není nutná žádná recompute.  To je důvod, proč dotazy, které používají všechny nebo podmnožiny dat v materializovaná zobrazení, mohou dosáhnout rychlejšího výkonu.  I lepší, dotazy mohou používat materializovaná zobrazení bez přímého odkazu na něj, takže není nutné měnit kód aplikace.  
 
-Většina požadavků na standardní zobrazení se stále vztahuje na materializované zobrazení. Podrobnosti o syntaxi materializované zobrazení a dalších požadavcích najdete v tématu [Vytvoření materializované zobrazení jako SELECT.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Většina požadavků na standardní zobrazení se stále vztahuje na materializované zobrazení. Podrobnosti o syntaxi materializované zobrazení a dalších požadavcích najdete v tématu [Vytvoření materializované zobrazení jako SELECT.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
-| Porovnání                     | Zobrazit                                         | Materialized View
+| Porovnání                     | Zobrazení                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Zobrazení definice                 | Uloženo ve fondu SQL.              | Uloženo ve fondu SQL.
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Během vytváření zobrazení se předem zpracoval a uloží ve fondu SQL. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
-|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalé                                         | Světl  
-|Dodatečné úložiště                   | No                                           | Ano
-|Syntax                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
+|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalá                                         | Rychlý  
+|Dodatečné úložiště                   | No                                           | Yes
+|Syntax                          | CREATE VIEW                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
 ## <a name="benefits-of-using-materialized-views"></a>Výhody použití materializovaná zobrazení
 
@@ -52,13 +52,13 @@ Správně navržené materializované zobrazení přináší následující výh
 
 Materializovaná zobrazení implementovaná ve fondu SQL poskytují také tyto další výhody:
 
-V porovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení, která jsou implementována v Azure SQL Data Warehouse, také následující další výhody:
+V porovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení implementovaná ve službě Azure synapse Analytics také tyto další výhody:
 
 - Automatická a synchronní aktualizace dat se změnami dat v základních tabulkách Není vyžadována žádná akce uživatele.
-- Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="common-scenarios"></a>Typické scénáře  
+## <a name="common-scenarios"></a>Obvyklé scénáře  
 
 Materializovaná zobrazení se obvykle používají v následujících scénářích:
 
@@ -79,7 +79,7 @@ V porovnání s dalšími možnostmi optimalizace, jako je škálování a Sprá
 
 **Pro rychlejší výkon dotazů potřebujete jinou strategii distribuce dat**
 
-Fond SQL je distribuovaný systém pro hromadné paralelní zpracování (MPP).   Data v tabulce fondů SQL jsou distribuována mezi 60 uzlů pomocí jedné ze tří [strategií distribuce](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin nebo replikovaný).  
+Azure synapse Analytics je systém pro zpracování distribuovaných dotazů.  Data v tabulce SQL jsou distribuována mezi 60 uzlů pomocí jedné ze tří [strategií distribuce](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin nebo replikovaný).   
 
 Distribuce dat je určena v okamžiku vytvoření tabulky a zůstane beze změny, dokud není tabulka vyřazena. Materializované zobrazení, které je virtuální tabulkou na disku, podporuje distribuce dat a round_robin.  Uživatelé můžou zvolit distribuci dat, která se liší od základních tabulek, ale optimální pro výkon dotazů, které používají zobrazení nejvíce.  
 
@@ -97,11 +97,11 @@ Vyhodnoťte tato doporučení s ohledem na vaše úlohy.  Ideální materializov
 
 **Mějte na paměti kompromisy mezi rychlejšími dotazy a náklady**
 
-Pro každé materializované zobrazení jsou k dispozici náklady na úložiště dat a náklady na údržbu zobrazení.  Při změně dat v základních tabulkách se zvyšuje velikost vyhodnoceného zobrazení a jeho fyzická struktura se také změní.  Aby se zabránilo snížení výkonu dotazů, jsou všechna materializovaná zobrazení udržována samostatně modulem fondu SQL.  
+Pro každé materializované zobrazení jsou k dispozici náklady na úložiště dat a náklady na údržbu zobrazení.  Při změně dat v základních tabulkách se zvyšuje velikost vyhodnoceného zobrazení a jeho fyzická struktura se také změní.  Aby se zabránilo snížení výkonu dotazů, jsou všechna materializovaná zobrazení spravovaná samostatně modulem SQL Analytics.  
 
 Úloha údržby získá vyšší hodnotu, když se zvýší počet materializovaná zobrazení a základní tabulka.   Uživatelé by měli zjistit, zda náklady vzniklé ze všech hodnocených zobrazení mohou být posunuty pomocí nárůstu výkonu dotazů.  
 
-Tento dotaz můžete spustit pro seznam materializované zobrazení v databázi:
+Tento dotaz můžete spustit pro seznam materializované zobrazení ve fondu SQL:
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -115,7 +115,7 @@ Možnosti snížení počtu materializovaná zobrazení:
 
 - Vyřadit materializovaná zobrazení, která mají nízké využití nebo již nejsou potřebná.  Zakázané zobrazení s materializací není zachováno, ale stále stojí náklady na úložiště.  
 
-- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Příklad:
+- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Například:
 
 ```sql
 
@@ -141,7 +141,7 @@ GROUP BY A, C
 
 **Ne všechny optimalizace výkonu vyžadují změnu dotazu.**
 
-Optimalizátor fondů SQL může automaticky využívat nasazená vyhodnocená zobrazení ke zlepšení výkonu dotazů.  Tato podpora se transparentně aplikuje na dotazy, které neodkazují na zobrazení a dotazy, které používají agregace nepodporované při vytváření materializovaná zobrazení.  Žádná změna dotazu není nutná. Můžete zkontrolovat předpokládaný plán spouštění dotazu a ověřit, zda je použito materializované zobrazení.  
+Optimalizátor SQL Analytics může automaticky využívat nasazená materializovaná zobrazení ke zlepšení výkonu dotazů.  Tato podpora se transparentně aplikuje na dotazy, které neodkazují na zobrazení a dotazy, které používají agregace nepodporované při vytváření materializovaná zobrazení.  Žádná změna dotazu není nutná. Můžete zkontrolovat předpokládaný plán spouštění dotazu a ověřit, zda je použito materializované zobrazení.  
 
 **Monitorování materializovaná zobrazení**
 
@@ -151,7 +151,7 @@ Aby se zabránilo snížení výkonu dotazů, je dobrým zvykem spustit [příka
 
 **Materializované zobrazení a ukládání sad výsledků do mezipaměti**
 
-Tyto dvě funkce jsou představené ve fondu SQL zhruba po stejnou dobu pro ladění výkonu dotazů.  Mezipaměť sady výsledků slouží k získání vysoké souběžnosti a rychlé odezvy z opakujících se dotazů na statická data.  
+Tyto dvě funkce jsou ve službě SQL Analytics zavedeny přibližně ve stejnou dobu jako při ladění výkonu dotazů.  Mezipaměť sady výsledků slouží k získání vysoké souběžnosti a rychlé odezvy z opakujících se dotazů na statická data.  
 
 Chcete-li použít výsledek uložený v mezipaměti, musí být ve formátu mezipaměti požadující dotaz odpovídající dotazu, který vytvořil mezipaměť.  Kromě toho musí výsledek uložený v mezipaměti platit pro celý dotaz.  
 

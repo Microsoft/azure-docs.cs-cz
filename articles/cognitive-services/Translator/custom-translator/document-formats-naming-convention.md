@@ -2,19 +2,19 @@
 title: Formáty dokumentů a konvence pojmenování – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Toto je průvodce formáty dokumentů a konvence pojmenování ve vlastním překladateli. Tento koncept pomáhá lépe spravovat názvy dokumentů a vyhnout se konfliktům názvů.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507242"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895845"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k konvenci pojmenování
 

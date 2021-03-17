@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797079"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504402"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí na portálu Azure Active Directory
 
@@ -35,9 +35,9 @@ Pro službu Azure AD je k dispozici několik plánů licencí, mezi které patř
 
 - Azure AD Premium P2
 
-Konkrétní informace o jednotlivých licenčních plánech a související informace o licencování najdete v tématu [co je potřeba](https://azure.microsoft.com/pricing/details/active-directory/). Pokud si chcete zaregistrovat licenční plány Azure AD Premium, najdete je [tady](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+Konkrétní informace o jednotlivých licenčních plánech a související informace o licencování najdete v tématu [co je potřeba](https://azure.microsoft.com/pricing/details/active-directory/). Pokud si chcete zaregistrovat licenční plány Azure AD Premium, najdete je [tady](./active-directory-get-started-premium.md).
 
-Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena ke skupině, je nutné zadat **umístění použití** pro všechny členy. Tuto hodnotu můžete nastavit v oblasti ** &gt; &gt; &gt; nastavení profilu Azure Active Directory uživatelů** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
+Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena ke skupině, je nutné zadat **umístění použití** pro všechny členy. Tuto hodnotu můžete nastavit v oblasti **&gt; &gt; &gt; nastavení profilu Azure Active Directory uživatelů** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
 ## <a name="view-license-plans-and-plan-details"></a>Zobrazení plánů licencí a podrobností plánu
 
@@ -47,13 +47,20 @@ Můžete zobrazit dostupné plány služeb, včetně jednotlivých licencí, kon
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce licencí ve vaší organizaci Azure AD.
 
-1. Vyberte **Azure Active Directory**a pak vyberte **licence**.
+1. Vyberte **Azure Active Directory** a pak vyberte **licence**.
 
-    ![Stránka licence s počtem zakoupených služeb a přiřazených licencí](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="Stránka licence s počtem zakoupených služeb a přiřazených licencí":::
 
-1. Pokud si chcete zobrazit stránku **Products** , vyberte odkaz **koupeno** a zobrazí se **jim přiřazená**, **k dispozici**a **brzo vyprší** čísla vašich licenčních plánů.
+1. Výběrem **všech produktů** zobrazíte stránku všechny produkty a zobrazíte **Celkový počet**, **přiřazené**, **dostupné** a **vypršení platnosti** vašich licenčních plánů.
 
-    ![Stránka služby s licenčními plány služby a informacemi o přidružených licencích](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="Stránka služby – s licenčními plány služby – přidružené informace o licenci":::
+
+    > [!NOTE]
+    > Čísla jsou definována jako: 
+    > - Celkem: celkový počet zakoupených licencí
+    > - Přiřazeno: počet licencí přiřazených uživatelům
+    > - K dispozici: počet licencí dostupných pro přiřazení, včetně vypršení platnosti
+    > - Brzo vyprší platnost: počet licencí brzo vyprší
 
 1. Pokud chcete zobrazit licencované uživatele a skupiny, vyberte název plánu.
 
@@ -71,7 +78,7 @@ Ujistěte se, že kdokoli, kdo potřebuje použít licencovanou službu Azure AD
 
     ![Stránka služby se zvýrazněnou možností přiřadit](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny**a pak vyhledejte a vyberte uživatele, kterému přiřadíte licenci.
+1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny** a pak vyhledejte a vyberte uživatele, kterému přiřadíte licenci.
 
     ![Stránka přiřadit licenci se zvýrazněným hledáním a vybrat možnosti](media/license-users-groups/assign-license-blade-with-highlight.png)
 
@@ -82,7 +89,7 @@ Ujistěte se, že kdokoli, kdo potřebuje použít licencovanou službu Azure AD
     Stránka **přiřadit licenci** se aktualizuje a zobrazí se informace o tom, že je uživatel vybraný a že jsou nakonfigurované přiřazení.
 
     > [!NOTE]
-    > Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena uživateli, je nutné zadat **umístění používání**. Tuto hodnotu můžete nastavit v oblasti ** &gt; &gt; &gt; nastavení profilu Azure Active Directory uživatelů** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
+    > Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena uživateli, je nutné zadat **umístění používání**. Tuto hodnotu můžete nastavit v oblasti **&gt; &gt; &gt; nastavení profilu Azure Active Directory uživatelů** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
 1. Vyberte **Přiřadit**.
 
@@ -100,13 +107,13 @@ Ujistěte se, že kdokoli, kdo potřebuje použít licencovanou službu Azure AD
 
     ![Stránka produkty s možností zvýraznění přiřazení](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny**a pak vyhledejte a vyberte skupinu, které přiřazujete licenci.
+1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny** a pak vyhledejte a vyberte skupinu, které přiřazujete licenci.
 
-    ![Stránka přiřadit licenci se zvýrazněným hledáním a vybrat možnosti](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Stránka přiřadit licenci se zvýrazněným hledáním a vyberte možnosti 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. Vyberte **možnosti přiřazení**, ujistěte se, že máte zapnuté správné možnosti licence, a pak vyberte **OK**.
 
-    ![Stránka možností licence se všemi možnostmi dostupnými v plánu licencí](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Stránka možností licence se všemi možnostmi dostupnými v rámci licenčního plánu 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
     Stránka **přiřadit licenci** se aktualizuje a zobrazí se informace o tom, že je uživatel vybraný a že jsou nakonfigurované přiřazení.
 
@@ -135,7 +142,7 @@ Licenci můžete odebrat na stránce uživatele Azure AD, ze stránky přehled s
 
 1. Vyberte **odebrat licenci**.
 
-    ![Stránka licencovaných skupin s zvýrazněnou možností odebrat licenci](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![Stránka licencovaných skupin s zvýrazněnou možností odebrat licenci 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > Pokud se místní uživatelský účet synchronizovaný do služby Azure AD nedostává do rozsahu pro synchronizaci nebo když se synchronizace odebere, uživatel se v Azure AD vymaže. V takovém případě budou licence přiřazené uživateli přímo nebo prostřednictvím licencování na základě skupin označeny jako **pozastavené** , nikoli jako **odstraněné**.
@@ -144,10 +151,10 @@ Licenci můžete odebrat na stránce uživatele Azure AD, ze stránky přehled s
 
 Po přiřazení licencí můžete provádět následující procesy:
 
-- [Identifikace a řešení problémů s přiřazením licencí](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [Identifikace a řešení problémů s přiřazením licencí](../enterprise-users/licensing-groups-resolve-problems.md)
 
-- [Přidání licencovaných uživatelů do skupiny pro licencování](../users-groups-roles/licensing-groups-migrate-users.md)
+- [Přidání licencovaných uživatelů do skupiny pro licencování](../enterprise-users/licensing-groups-migrate-users.md)
 
-- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../enterprise-users/licensing-group-advanced.md)
 
 - [Přidat nebo změnit informace o profilu](active-directory-users-profile-azure-portal.md)

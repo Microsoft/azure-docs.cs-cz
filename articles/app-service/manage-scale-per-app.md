@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74672353"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Vysoká hustota hostování na Azure App Service pomocí škálování podle aplikace
@@ -65,7 +65,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`se liší od `$newapp.MaxNumberOfWorkers` . Škálování podle aplikace používá `$newapp.SiteConfig.NumberOfWorkers` k určení charakteristik měřítka aplikace.
+> `$newapp.SiteConfig.NumberOfWorkers` se liší od `$newapp.MaxNumberOfWorkers` . Škálování podle aplikace používá `$newapp.SiteConfig.NumberOfWorkers` k určení charakteristik měřítka aplikace.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Škálování podle aplikace pomocí Azure Resource Manager
 
@@ -133,7 +133,7 @@ Pomocí těchto kroků můžete nakonfigurovat hostování s vysokou hustotou pr
 1. Nastavte `PerSiteScaling` příznak na hodnotu true v plánu App Service.
 1. Vytvoří se nové aplikace a přiřadí se k tomuto App Service plánu s vlastností **numberOfWorkers** nastavenou na hodnotu **1**.
    - Použití této konfigurace má za důsledek nejvyšší možnou hustotu.
-1. Počet pracovních procesů se dá nakonfigurovat nezávisle na aplikaci, aby bylo možné v případě potřeby udělit další prostředky. Příklad:
+1. Počet pracovních procesů se dá nakonfigurovat nezávisle na aplikaci, aby bylo možné v případě potřeby udělit další prostředky. Například:
    - Aplikace s vysokým využitím může nastavit **numberOfWorkers** na **3** , aby pro tuto aplikaci měla větší kapacitu zpracování.
    - Aplikace s nízkým použitím by nastavily **numberOfWorkers** na **1**.
 

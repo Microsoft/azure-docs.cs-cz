@@ -3,7 +3,7 @@ title: Ladit konektory proxy aplikací – Azure Active Directory | Microsoft Do
 description: Ladění problémů s konektory proxy aplikací služby Azure Active Directory (Azure AD).
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7e7a1de24e5032b2dade2f325560fd6964c892d5
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c656bfe7f9cc8923859a99f31210cd554aa66a41
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145685"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256962"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Ladění problémů s konektorem Proxy aplikací 
 
@@ -44,7 +44,7 @@ Tento vývojový diagram vás provede kroky pro ladění některých častých p
 |---------|---------|---------|
 |1 | Najít skupinu konektorů přiřazenou k aplikaci | Máte pravděpodobně nainstalovaný konektor na více serverech. v takovém případě by se měly konektory [přiřadit ke skupinám konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Další informace o skupinách konektorů najdete v tématu [publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md). |
 |2 | Instalace konektoru a přiřazení skupiny | Pokud nemáte nainstalovaný konektor, přečtěte si téma [instalace a registrace konektoru](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Pokud máte problémy s instalací konektoru, přečtěte si téma [problém instalace konektoru](application-proxy-connector-installation-problem.md).<br></br> Pokud konektor není přiřazen ke skupině, přečtěte si téma [přiřazení konektoru ke skupině](application-proxy-connector-groups.md#create-connector-groups).<br></br>Pokud aplikace není přiřazena ke skupině konektorů, přečtěte si téma [přiřazení aplikace do skupiny konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
-|3 | Spustit test portu na serveru konektoru | Na serveru konektoru spusťte test portu pomocí [protokolu Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů, abyste zkontrolovali, jestli [jsou porty 443 a 80 otevřené](application-proxy-add-on-premises-application.md#open-ports).|
+|3 | Spustit test portu na serveru konektoru | Na serveru konektoru spusťte test portu pomocí [protokolu Telnet](/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů, abyste zkontrolovali, jestli [jsou porty 443 a 80 otevřené](application-proxy-add-on-premises-application.md#open-ports).|
 |4 | Konfigurace domén a portů | [Ujistěte se, že vaše domény a porty jsou správně nakonfigurovány](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) . Aby konektor správně fungoval, existují určité porty, které musí být otevřené a adresy URL, ke kterým musí mít server přístup. |
 |5 | Zkontroluje, jestli se používá back-end proxy. | Zkontrolujte, jestli konektory používají back-end proxy servery, nebo je obejít. Podrobnosti najdete v tématu [řešení problémů proxy serveru konektoru a problémů s připojením služby](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
 |6 | Aktualizace konektoru a aktualizačního programu pro použití back-end proxy serveru | Pokud se back-end proxy používá, je vhodné se ujistit, že konektor používá stejný proxy server. Podrobnosti o řešení potíží a konfiguraci konektorů pro práci s proxy servery najdete v tématu [práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md). |

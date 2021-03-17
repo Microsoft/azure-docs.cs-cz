@@ -1,21 +1,25 @@
 ---
-title: Řízení přístupu na základě role ve službě Azure Cosmos DB
-description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databáze pomocí integrace služby Active Directory (RBAC).
+title: Řízení přístupu na základě role v Azure v Azure Cosmos DB
+description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databází pomocí integrace služby Active Directory (Azure RBAC).
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a0f0f617e45834f1f205bcb4c8bcbc884b20d22
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530567"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048094"
 ---
-# <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
+# <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role v Azure v Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
+> [!NOTE]
+> Tento článek se týká řízení přístupu na základě role pro operace roviny správy v Azure Cosmos DB. Pokud používáte operace roviny dat, přečtěte si téma [Azure Cosmos DB RBAC](how-to-setup-rbac.md) pro řízení přístupu na základě role použité pro operace roviny dat.
+
+Azure Cosmos DB poskytuje integrované řízení přístupu na základě role Azure (Azure RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
@@ -25,21 +29,25 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB.|
 |[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu.|
-|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Může odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejner.|
-|[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery Azure Cosmos, ale nemůže získat přístup k klíčům, které jsou nutné pro přístup k datům.|
+|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Může odeslat žádost o obnovení pro Azure Portal pro databázi s povoleným pravidelným zálohováním nebo pro kontejner. Může upravit interval zálohování a uchování na Azure Portal. Nelze získat přístup k žádným datům ani použít Průzkumník dat.  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | Může provést akci obnovení pro účet Azure Cosmos DB s režimem průběžné zálohování.|
+|[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery služby Azure Cosmos. Nelze získat přístup k žádným datům ani použít Průzkumník dat.|
 
 > [!IMPORTANT]
-> Podpora RBAC v Azure Cosmos DB se vztahuje pouze na operace řízení roviny. Operace roviny dat se zabezpečují pomocí hlavních klíčů nebo tokenů prostředků. Další informace najdete v tématu [zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
+> Podpora Azure RBAC v Azure Cosmos DB platí jenom pro řízení operací roviny. Operace roviny dat se zabezpečují pomocí primárních klíčů nebo tokenů prostředků. Další informace najdete v tématu [zabezpečený přístup k datům v Azure Cosmos DB](secure-access-to-data.md)
 
 ## <a name="identity-and-access-management-iam"></a>Správa identit a přístupu (IAM)
 
-Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
+Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role Azure v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (Azure RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstruje se zabezpečení databáze.":::
 
 ## <a name="custom-roles"></a>Vlastní role
 
 Kromě předdefinovaných rolí můžou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a tyto role použít pro instanční objekty ve všech předplatných v rámci svého tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí Azure s vlastní sadou operací poskytovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB najdete v tématu [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb) .
+
+> [!TIP]
+> Vlastní role, které potřebují přístup k datům uloženým v Cosmos DB nebo používají Průzkumník dat v Azure Portal musí mít `Microsoft.DocumentDB/databaseAccounts/listKeys/*` akci.
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Zabránění změnám z Azure Cosmos DB SDK
 
@@ -64,7 +72,7 @@ Toto nastavení zabrání jakýmkoli změnám prostředků Cosmos z libovolného
 
 - Úprava uložených procedur, triggerů nebo uživatelsky definovaných funkcí.
 
-Pokud vaše aplikace (nebo uživatelé prostřednictvím Azure Portal) provádějí některé z těchto akcí, bude nutné provést migraci, aby je bylo možné provádět prostřednictvím [šablon ARM](manage-sql-with-resource-manager.md), [PowerShellu](manage-with-powershell.md), rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), REST nebo [knihovny pro správu Azure](https://github.com/Azure-Samples/cosmos-management-net). Všimněte si, že Správa Azure je dostupná v [několika jazycích](https://docs.microsoft.com/azure/?product=featured#languages-and-tools).
+Pokud vaše aplikace (nebo uživatelé prostřednictvím Azure Portal) provádějí některé z těchto akcí, bude nutné provést migraci, aby je bylo možné provádět prostřednictvím [šablon ARM](./manage-with-templates.md), [PowerShellu](manage-with-powershell.md), rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), REST nebo [knihovny pro správu Azure](https://github.com/Azure-Samples/cosmos-management-net). Všimněte si, že Správa Azure je dostupná v [několika jazycích](/azure/?product=developer-tools#languages-and-tools).
 
 ### <a name="set-via-arm-template"></a>Nastavit přes šablonu ARM
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133699"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711939"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -39,11 +39,11 @@ Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
 Site Recovery můžete použít k implementaci řešení zotavení po havárii v následujících scénářích:
 * Máte systémy SAP běžící v jednom datovém centru Azure a budete je replikovat do jiného datového centra Azure (zotavení po havárii z Azure do Azure). 
-   Další informace najdete v tématu [Architektura replikace z Azure do Azure](https://aka.ms/asr-a2a-architecture).
+   Další informace najdete v tématu [Architektura replikace z Azure do Azure](./azure-to-azure-architecture.md).
 * Máte systémy SAP spuštěné v místním prostředí VMware (nebo fyzické) servery. Také provádíte replikaci systémů SAP na lokalitu pro zotavení po havárii v datacentru Azure (zotavení po havárii z VMware do Azure). 
-   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace z VMware do Azure](https://aka.ms/asr-v2a-architecture).
+   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace z VMware do Azure](./vmware-azure-architecture.md).
 * Máte systémy SAP spuštěné v místním prostředí Hyper-V. Také provádíte replikaci systémů SAP do lokality pro zotavení po havárii v datacentru Azure (zotavení po havárii z Hyper-V do Azure).
-   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace Hyper-V do Azure](https://aka.ms/asr-h2a-architecture).
+   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace Hyper-V do Azure](./hyper-v-azure-architecture.md).
 
 V tomto článku používáme scénář zotavení po havárii z **Azure do Azure** . Scénář zobrazuje možnosti zotavení po havárii SAP Site Recovery. Vzhledem k tomu, že Site Recovery replikace není specifická pro aplikaci, předpokládá se postup, který je popsán, i pro jiné scénáře.
 
@@ -119,7 +119,7 @@ Pokud chcete zahájit replikaci všech virtuálních počítačů aplikace SAP d
 
 ## <a name="networking-configuration"></a>Konfigurace sítě
 
-Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. Pokud chcete nastavit IP adresu, přečtěte **Compute and Network settings**si  >  **síťové rozhraní karta**výpočty a nastavení sítě.
+Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. Pokud chcete nastavit IP adresu, přečtěte si  >  **síťové rozhraní karta** výpočty a nastavení sítě.
 
 ![Snímek obrazovky, který ukazuje, jak nastavit privátní IP adresu v podokně Site Recovery síťového rozhraní](./media/site-recovery-sap/sap-static-ip.png)
 
@@ -141,7 +141,7 @@ Nejčastěji používané Site Recovery skripty můžete nasadit do svého účt
 [![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Přidejte skript před akcemi do skupiny 1, který převezme služby při selhání skupinou dostupnosti SQL Server. Použijte skript ASR-SQL-FailoverAG, který je publikovaný ve vzorových skriptech. Postupujte podle pokynů ve skriptu a patřičně proveďte požadované změny ve skriptu.
-1. Přidejte skript po akci, který připojí nástroj pro vyrovnávání zatížení do virtuálních počítačů s podporou převzetí služeb při selhání webové vrstvy (skupina 1). Použijte skript ASR-AddSingleLoadBalancer, který je publikovaný ve vzorových skriptech. Postupujte podle pokynů ve skriptu a podle potřeby proveďte požadované změny ve skriptu.
+1. Přidejte skript po akci, který připojí nástroj pro vyrovnávání zatížení do virtuálních počítačů s podporou převzetí služeb při selhání webové vrstvy (skupina 1). Použijte skript ASR-AddSingleLoadBalancer publikovaný ve vzorových skriptech. Postupujte podle pokynů ve skriptu a podle potřeby proveďte požadované změny ve skriptu.
 
 ![Plán obnovení SAP](./media/site-recovery-sap/sap_recovery_plan.png)
 
@@ -153,7 +153,7 @@ Nejčastěji používané Site Recovery skripty můžete nasadit do svého účt
 1. Vyberte **Testovací převzetí služeb při selhání**.
 1. Pokud chcete spustit proces testovacího převzetí služeb při selhání, vyberte bod obnovení a virtuální síť Azure.
 1. Když je sekundární prostředí nahoru, proveďte ověření.
-1. Po dokončení ověřování vyčistěte prostředí převzetí služeb při selhání výběrem možnosti **vyčistit testovací převzetí služeb**při selhání.
+1. Po dokončení ověřování vyčistěte prostředí převzetí služeb při selhání výběrem možnosti **vyčistit testovací převzetí služeb** při selhání.
 
 Další informace najdete v tématu [testování převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
@@ -167,5 +167,5 @@ Další informace najdete v tématu [testování převzetí služeb při selhán
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery. Přečtěte si dokument white paper o podpoře ke stažení v dokumentu [SAP NetWeaver: vytvoření řešení zotavení po havárii pomocí Site Recovery](https://aka.ms/asr_sap). Dokument white paper obsahuje doporučení pro různé architektury SAP. Můžete si prohlédnout podporované aplikace a typy virtuálních počítačů pro SAP v Azure. K dispozici jsou také možnosti plánu pro testování řešení zotavení po havárii.
+* Přečtěte si další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery. Přečtěte si dokument white paper o podpoře ke stažení v dokumentu [SAP NetWeaver: vytvoření řešení zotavení po havárii pomocí Site Recovery](/samples/browse/?redirectedfrom=TechNet-Gallery). Dokument white paper obsahuje doporučení pro různé architektury SAP. Můžete si prohlédnout podporované aplikace a typy virtuálních počítačů pro SAP v Azure. K dispozici jsou také možnosti plánu pro testování řešení zotavení po havárii.
 * Přečtěte si další informace o [replikaci dalších úloh](site-recovery-workload.md) pomocí Site Recovery.

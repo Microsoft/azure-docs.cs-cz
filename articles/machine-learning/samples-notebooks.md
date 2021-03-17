@@ -1,7 +1,7 @@
 ---
 title: Příklad poznámkových bloků Jupyter
 titleSuffix: Azure Machine Learning
-description: Vyhledejte a použijte příklady Jupyter poznámkových bloků pro zkoumání Azure Machine Learning Pythonu pro sadu SDK.
+description: Naučte se najít a používat poznámkové bloky Juypter navržené tak, aby vám pomohly prozkoumat sadu SDK a sloužit jako modely pro vlastní projekty machine learningu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,17 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10cf06a829b991bfe15d7b24c4fc61d0fe22eaaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 38d0c350718480506e1267c161a85505ece4b69d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653711"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452251"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning pomocí poznámkových bloků Jupyter
+
+> [!NOTE] 
+> Úložiště příkladů založené na komunitě najdete na adrese https://github.com/Azure/azureml-examples .
 
 [Ukázkové Azure Machine Learning úložiště poznámkových bloků](https://github.com/azure/machinelearningnotebooks) obsahuje nejnovější ukázky sady SDK pro Azure Machine Learning Python. Tyto poznámkové bloky Juypter jsou navržené tak, aby vám pomohly prozkoumat sadu SDK a sloužit jako modely pro vlastní projekty machine learningu.
 
@@ -44,12 +47,12 @@ Pokud chcete použít vlastní server poznámkového bloku pro místní vývoj, 
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 
-Tyto pokyny instalují základní balíčky sady SDK, které jsou nezbytné pro rychlé zprovoznění a poznámkové bloky kurzu. Další ukázkové poznámkové bloky můžou vyžadovat instalaci dalších součástí. Další informace najdete v tématu [instalace sady Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+Tyto pokyny instalují základní balíčky sady SDK, které jsou nezbytné pro rychlé zprovoznění a poznámkové bloky kurzu. Další ukázkové poznámkové bloky můžou vyžadovat instalaci dalších součástí. Další informace najdete v tématu [instalace sady Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/install).
 
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>Získání ukázek na DSVM
 
-Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního počítače vytvořená speciálně pro účely datové vědy. Pokud [vytvoříte DSVM](how-to-configure-environment.md#dsvm), nainstaluje se a nakonfiguruje server SDK a notebook. Stále ale budete muset vytvořit pracovní prostor a naklonovat ukázkové úložiště.
+Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního počítače vytvořená speciálně pro účely datových věd. Pokud [vytvoříte DSVM](how-to-configure-environment.md#dsvm), nainstaluje se a nakonfiguruje server SDK a notebook. Stále ale budete muset vytvořit pracovní prostor a naklonovat ukázkové úložiště.
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
@@ -58,6 +61,7 @@ Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního poč�
 Prozkoumejte [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks) , abyste zjistili, co Azure Machine Learning může dělat.
 
 Další ukázkové projekty GitHubu a příklady najdete v těchto úložištích:
++ [Azure/AzureML – příklady](https://github.com/Azure/azureml-examples)
 + [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 + [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 

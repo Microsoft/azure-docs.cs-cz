@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: d27bb0be6698a6b92c459143604ad2ebeb00b728
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-  ms.translationtype: HT
+  ms.date: 09/30/2020
+  ms.openlocfilehash: 0f799ecd13258b683acd112b01c5d63425dab99c
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85551883"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100094164"
 landingContent:
 - title: Informace o zásadách správného řízení Azure
   linkLists:
@@ -29,14 +29,34 @@ landingContent:
     links:
     - text: Skupiny pro správu Azure
       url: ./overview.md
-- title: Uspořádání prostředků
+- title: Začínáme
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření skupiny pro správu (portál)
+      url: ./create-management-group-portal.md
+    - text: Vytvoření skupiny pro správu (CLI)
+      url: ./create-management-group-azure-cli.md
+    - text: Vytvoření skupiny pro správu (Azure PowerShell)
+      url: ./create-management-group-powershell.md
+    - text: Vytvoření skupiny pro správu (.NET)
+      url: ./create-management-group-dotnet.md
+    - text: Vytvoření skupiny pro správu (Přejít)
+      url: ./create-management-group-go.md
+    - text: Vytvoření skupiny pro správu (JavaScript)
+      url: ./create-management-group-javascript.md
+    - text: Vytvoření skupiny pro správu (Python)
+      url: ./create-management-group-python.md
+    - text: Vytvoření skupiny pro správu (REST)
+      url: ./create-management-group-rest-api.md
+    - text: Nasazení prostředků do skupiny pro správu (šablony ARM)
+      url: ../../azure-resource-manager/templates/deploy-to-management-group.md
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření skupin pro správu
-      url: ./create.md
-    - text: Správa vašich prostředků
+    - text: Správa hierarchie prostředků
       url: ./manage.md
+    - text: Ochrana hierarchie prostředků
+      url: ./how-to/protect-resource-hierarchy.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
@@ -47,8 +67,12 @@ landingContent:
       url: /powershell/module/az.resources/#resources
     - text: Sada Azure SDK pro .NET
       url: /dotnet/api/overview/azure/managementgroups
+    - text: Azure SDK for Go
+      url: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
     - text: Azure SDK for JavaScript
       url: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - text: Azure SDK pro Python
+      url: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - text: REST
       url: /rest/api/resources/managementgroups
     - text: Šablony Resource Manageru

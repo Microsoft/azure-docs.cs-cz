@@ -1,21 +1,24 @@
 ---
-title: Monitorování cloudové služby Azure | Microsoft Docs
+title: Monitorování cloudové služby Azure (Classic) | Microsoft Docs
 description: Popisuje, co zahrnuje monitorování cloudové služby Azure a jaké jsou některé z vašich možností.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 01/29/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847253"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743368"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>Seznámení s monitorováním cloudové služby
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>Seznámení s monitorováním cloudové služby (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Můžete monitorovat klíčové metriky výkonu pro libovolnou cloudovou službu. Každá role cloudové služby shromažďuje minimální data: využití CPU, využití sítě a využití disku. Pokud má cloudová služba `Microsoft.Azure.Diagnostics` u role použité rozšíření, může tato role shromažďovat další body dat. Tento článek poskytuje Úvod do Azure Diagnostics Cloud Services.
 

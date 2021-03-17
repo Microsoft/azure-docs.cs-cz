@@ -3,18 +3,19 @@ title: Nasazení OpenShift v Azure Stack
 description: Nasaďte OpenShift do Azure Stack.
 author: haroldwongms
 manager: joraio
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 3729dbbc54d15d4641f5e514582f1437e790ef19
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: decc66d2d5abd16c084aa19443dbac54e87a9560
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374031"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667221"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Nasazení kontejnerové platformy OpenShift nebo OKD v Azure Stack
 

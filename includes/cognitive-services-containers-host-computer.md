@@ -5,11 +5,11 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 5b464ed4eaf576bc77c2c1eda17ae68b598dc2a4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67704222"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996395"
 ---
 Hostitel je počítač s procesorem x64, na kterém běží kontejner Docker. Může to být počítač v místním prostředí nebo hostská služba Docker v Azure, například:
 

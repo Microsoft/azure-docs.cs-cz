@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560400"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91355121"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Řešení běžných potíží indexerů v Azure Kognitivní hledání
 
@@ -30,7 +30,7 @@ Indexery můžou být spuštěné v množství problémů při indexování dat 
 >
 > IP adresu vaší vyhledávací služby můžete zjistit tak, že otestujete jeho plně kvalifikovaný název domény (např., `<your-search-service-name>.search.windows.net` ).
 >
-> Rozsah IP adres `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
+> Rozsah IP adres `AzureCognitiveSearch` [značky služby](../virtual-network/service-tags-overview.md#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
 ### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány firewall
 
@@ -39,19 +39,19 @@ Azure Storage, CosmosDB a Azure SQL poskytují konfigurovatelnou bránu firewall
 Existují dvě možnosti, jak povolit indexerům přístup k těmto prostředkům v takové instanci:
 
 * Bránu firewall zakažte tak, že povolíte přístup ze **všech sítí** (Pokud je to možné).
-* Případně můžete `AzureCognitiveSearch` v pravidlech brány firewall prostředku (omezení rozsahu IP adres) dovolit přístup pro IP [adresu služby Search](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) a rozsah IP adres.
+* Případně můžete `AzureCognitiveSearch` v pravidlech brány firewall prostředku (omezení rozsahu IP adres) dovolit přístup pro IP [adresu služby Search](../virtual-network/service-tags-overview.md#available-service-tags) a rozsah IP adres.
 
 Podrobnosti o konfiguraci omezení rozsahu IP adres pro každý typ zdroje dat najdete na následujících odkazech:
 
-* [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
+* [Azure Storage](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range)
 
-* [Databáze Cosmos](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
+* [Databáze Cosmos](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range)
 
-* [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+* [Azure SQL](../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)
 
 **Omezení**: jak je uvedeno v dokumentaci výše pro Azure Storage, omezení rozsahu IP adres budou fungovat jenom v případě, že vaše vyhledávací služba a váš účet úložiště jsou v různých oblastech.
 
-Funkce Azure Functions (které se dají použít jako [vlastní dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md)) podporují také [omezení IP adres](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). Seznam IP adres, které se mají konfigurovat, by představoval IP adresu vaší vyhledávací služby a rozsah IP adres `AzureCognitiveSearch` značky služby.
+Funkce Azure Functions (které se dají použít jako [vlastní dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md)) podporují také [omezení IP adres](../azure-functions/ip-addresses.md#ip-address-restrictions). Seznam IP adres, které se mají konfigurovat, by představoval IP adresu vaší vyhledávací služby a rozsah IP adres `AzureCognitiveSearch` značky služby.
 
 [Tady](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) jsou uvedené podrobnosti o přístupu k datům na SQL serveru na virtuálním počítači Azure.
 
@@ -61,13 +61,13 @@ Při přístupu k datům ve spravované instanci SQL nebo při použití virtuá
 
 V takových případech se virtuální počítač Azure nebo spravovaná instance SQL dají nakonfigurovat tak, aby se nacházely v rámci virtuální sítě. Pak se skupina zabezpečení sítě dá nakonfigurovat tak, aby se vyfiltroval typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě.
 
-`AzureCognitiveSearch`Tag služby se dá přímo použít v příchozích [pravidlech NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) , aniž byste museli hledat jeho rozsah IP adres.
+`AzureCognitiveSearch`Tag služby se dá přímo použít v příchozích [pravidlech NSG](../virtual-network/manage-network-security-group.md#work-with-security-rules) , aniž byste museli hledat jeho rozsah IP adres.
 
 Podrobnější informace o přístupu k datům ve spravované instanci SQL jsou uvedené [tady](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) .
 
 ### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "indexování" není povoleno
 
-Azure Kognitivní hledání má implicitní závislost na Cosmos DB indexování. Pokud automatické indexování v Cosmos DB vypnete, Azure Kognitivní hledání vrátí úspěšný stav, ale index obsahu kontejneru se nezdařil. Pokyny, jak kontrolovat nastavení a zapnout indexování, najdete v tématu [Správa indexování v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
+Azure Kognitivní hledání má implicitní závislost na Cosmos DB indexování. Pokud automatické indexování v Cosmos DB vypnete, Azure Kognitivní hledání vrátí úspěšný stav, ale index obsahu kontejneru se nezdařil. Pokyny, jak kontrolovat nastavení a zapnout indexování, najdete v tématu [Správa indexování v Azure Cosmos DB](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Chyby zpracování dokumentu
 
@@ -91,7 +91,7 @@ api-key: [admin key]
 Indexer objektů BLOB [vyhledá a extrahuje text z objektů BLOB v kontejneru](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Mezi problémy s extrahováním textu patří:
 
 * Dokument obsahuje pouze naskenované obrázky. Objekty blob ve formátu PDF, které obsahují netextový obsah, jako jsou například naskenované obrázky (JPGs), nepřinesí výsledky standardní kanál indexování objektů BLOB. Pokud máte obsah obrázků s textovými prvky, můžete k vyhledání a extrakci textu použít [hledání rozpoznávání](cognitive-search-concept-image-scenarios.md) .
-* Indexer objektů BLOB je nakonfigurovaný jenom na metadata indexu. Pro extrakci obsahu musí být indexer objektů BLOB nakonfigurovaný tak, aby mohl [extrahovat obsah i metadata](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
+* Indexer objektů BLOB je nakonfigurovaný jenom na metadata indexu. Pro extrakci obsahu musí být indexer objektů BLOB nakonfigurovaný tak, aby mohl [extrahovat obsah i metadata](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
@@ -108,11 +108,11 @@ api-key: [admin key]
 
 ### <a name="missing-documents"></a>Chybějící dokumenty
 
-Indexery hledají dokumenty ze [zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source). V některých případech se zdá, že v indexu chybí dokument ze zdroje dat, který by měl být indexován. K těmto chybám může dojít z několika běžných důvodů:
+Indexery hledají dokumenty ze [zdroje dat](/rest/api/searchservice/create-data-source). V některých případech se zdá, že v indexu chybí dokument ze zdroje dat, který by měl být indexován. K těmto chybám může dojít z několika běžných důvodů:
 
 * Dokument nebyl indexován. Na portálu vyhledejte úspěšné spuštění indexeru.
-* Ověřte hodnotu [sledování změn](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) . Pokud je hodnota horní meze nastavená na budoucí čas, pak se v indexeru přeskočí všechny dokumenty, které mají datum menší než toto. Stav sledování změn indexeru můžete pochopit pomocí polí ' initialTrackingState ' a ' finalTrackingState ' ve [stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result).
-* Po spuštění indexeru se dokument aktualizoval. Pokud je indexer podle [plánu](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), bude ho nakonec znovu spustit a vybrat.
+* Ověřte hodnotu [sledování změn](/rest/api/searchservice/create-data-source#data-change-detection-policies) . Pokud je hodnota horní meze nastavená na budoucí čas, pak se v indexeru přeskočí všechny dokumenty, které mají datum menší než toto. Stav sledování změn indexeru můžete pochopit pomocí polí ' initialTrackingState ' a ' finalTrackingState ' ve [stavu indexeru](/rest/api/searchservice/get-indexer-status#indexer-execution-result).
+* Po spuštění indexeru se dokument aktualizoval. Pokud je indexer podle [plánu](/rest/api/searchservice/create-indexer#indexer-schedule), bude ho nakonec znovu spustit a vybrat.
 * [Dotaz](/rest/api/searchservice/create-data-source) zadaný ve zdroji dat vylučuje dokument. Indexery nemůžou indexovat dokumenty, které nejsou součástí zdroje dat.
-* [Mapování polí](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) nebo [rozšíření AI](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) změnilo dokument a vypadá jinak, než očekáváte.
-* K vyhledání dokumentu použijte [rozhraní API pro vyhledávání v dokumentu](https://docs.microsoft.com/rest/api/searchservice/lookup-document) .
+* [Mapování polí](/rest/api/searchservice/create-indexer#fieldmappings) nebo [rozšíření AI](./cognitive-search-concept-intro.md) změnilo dokument a vypadá jinak, než očekáváte.
+* K vyhledání dokumentu použijte [rozhraní API pro vyhledávání v dokumentu](/rest/api/searchservice/lookup-document) .

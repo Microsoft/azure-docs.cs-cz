@@ -6,22 +6,22 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 65513b3cd5813d7d127ca9cbabdcd038f11beee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 029e3ba799e5f239bde0ef049316dd268ebe4c8f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588777"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>Nastavení a použití protokolů Azure Monitor s víceklientské aplikací Azure SQL Database SaaS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto kurzu nastavíte a použijete [protokoly Azure monitor](/azure/log-analytics/log-analytics-overview) k monitorování elastických fondů a databází. Tento kurz sestaví v [kurzu monitorování a správy výkonu](saas-dbpertenant-performance-monitoring.md). Ukazuje, jak používat protokoly Azure Monitor k rozšíření monitorování a upozorňování, které jsou k dispozici v Azure Portal. Protokoly Azure Monitor podporují monitorování tisíců elastických fondů a stovky tisíc databází. Protokoly Azure Monitor poskytují jedno řešení monitorování, které umožňuje integrovat monitorování různých aplikací a služeb Azure napříč několika předplatnými Azure.
+V tomto kurzu nastavíte a použijete [protokoly Azure monitor](../../azure-monitor/logs/log-query-overview.md) k monitorování elastických fondů a databází. Tento kurz sestaví v [kurzu monitorování a správy výkonu](saas-dbpertenant-performance-monitoring.md). Ukazuje, jak používat protokoly Azure Monitor k rozšíření monitorování a upozorňování, které jsou k dispozici v Azure Portal. Protokoly Azure Monitor podporují monitorování tisíců elastických fondů a stovky tisíc databází. Protokoly Azure Monitor poskytují jedno řešení monitorování, které umožňuje integrovat monitorování různých aplikací a služeb Azure napříč několika předplatnými Azure.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -33,8 +33,8 @@ Co se v tomto kurzu naučíte:
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
-* Nasadí se aplikace Wingtip Tickets SaaS Database-na tenanta. Pokud ho chcete nasadit za méně než pět minut, přečtěte si téma [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database-per-tenant](../../sql-database/saas-dbpertenant-get-started-deploy.md).
-* Je nainstalované prostředí Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Nasadí se aplikace Wingtip Tickets SaaS Database-na tenanta. Pokud ho chcete nasadit za méně než pět minut, přečtěte si téma [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database-per-tenant](./saas-dbpertenant-get-started-deploy.md).
+* Je nainstalované prostředí Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 
 Diskuzi o scénářích a vzorcích SaaS a o tom, jak ovlivňují požadavky na řešení monitorování, najdete v [kurzu monitorování a Správa výkonu](saas-dbpertenant-performance-monitoring.md) .
 
@@ -51,7 +51,7 @@ Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 1. V prostředí PowerShell ISE otevřete *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní \\ výukové moduly pro \\ sledování a správu výkonu \\Demo-PerformanceMonitoringAndManagement.ps1*. Nechejte tento skript otevřený, protože během tohoto kurzu budete chtít spustit několik scénářů generování zátěže.
 1. Pokud jste to ještě neudělali, zřiďte dávku tenantů, aby byl kontext monitorování zajímavější. Tento proces trvá několik minut.
 
-   a. Nastavte **$DemoScenario = 1**a _zřiďte dávku tenantů_.
+   a. Nastavte **$DemoScenario = 1** a _zřiďte dávku tenantů_.
 
    b. Chcete-li spustit skript a nasadit další 17 klientů, stiskněte klávesu F5.
 
@@ -135,7 +135,7 @@ V pracovním prostoru Log Analytics můžete ještě víc prozkoumat data protok
 
 Monitorování a upozorňování v protokolu Azure Monitor jsou založené na dotazech na data v pracovním prostoru, na rozdíl od upozornění definovaných u jednotlivých prostředků v Azure Portal. Když zadáte výstrahy na dotazy, můžete definovat jednu výstrahu, která se bude vycházet ze všech databází, a ne definovat jednu pro databázi. Dotazy jsou omezeny pouze daty dostupnými v pracovním prostoru.
 
-Další informace o tom, jak používat protokoly Azure Monitor k dotazování a nastavení výstrah, najdete v tématu [práce s pravidly upozornění v protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Další informace o tom, jak používat protokoly Azure Monitor k dotazování a nastavení výstrah, najdete v tématu [práce s pravidly upozornění v protokolech Azure monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 Protokoly Azure Monitor pro SQL Database poplatky na základě objemu dat v pracovním prostoru. V tomto kurzu jste vytvořili bezplatný pracovní prostor, který je omezený na 500 MB za den. Po dosažení tohoto limitu již nebudou data do pracovního prostoru přidána.
 
@@ -150,7 +150,7 @@ V tomto kurzu jste se naučili:
 
 Vyzkoušejte [kurz analýzy tenanta](saas-dbpertenant-log-analytics.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Další kurzy, které se sestavují na počátečních Lístkech Wingtip Tickets SaaS Database – nasazení pro klientské aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Protokoly Azure Monitor](../../azure-monitor/insights/azure-sql.md)
+* [Protokoly Azure Monitoru](../../azure-monitor/insights/azure-sql.md)

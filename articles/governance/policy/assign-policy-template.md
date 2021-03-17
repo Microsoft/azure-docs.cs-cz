@@ -4,12 +4,12 @@ description: V tomto rychlém startu použijete šablonu Azure Resource Manager 
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689843"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89651424"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí šablony ARM
 
@@ -20,7 +20,7 @@ Tento rychlý Start vás provede procesem použití šablony Azure Resource Mana
 
 Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro přiřazení Azure Policy k Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Tlačítko pro nasazení šablony ARM pro přiřazení Azure Policy k Azure." border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -45,11 +45,11 @@ Prostředek definovaný v šabloně je:
 
 1. Vyberte následující obrázek, přihlaste se k webu Azure Portal a otevřete šablonu:
 
-   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro přiřazení Azure Policy k Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Tlačítko pro nasazení šablony ARM pro přiřazení Azure Policy k Azure." border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Název skupiny prostředků na snímku obrazovky je _mypolicyquickstart \<Date in MMDD\> RG_. |
@@ -72,7 +72,7 @@ Některé další zdroje informací:
 
 Na levé straně stránky vyberte **dodržování předpisů** . Pak vyhledejte _auditované virtuální počítače, které nepoužívají přiřazení zásad spravovaných disků_ , které jste vytvořili.
 
-:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Stránka s přehledem dodržování zásad" border="false":::
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Tlačítko pro nasazení šablony ARM pro přiřazení Azure Policy k Azure." border="false":::
 
 Pokud nějaké existující prostředky nedodržují předpisy tohoto nového přiřazení, zobrazí se v části **nekompatibilní prostředky**.
 
@@ -86,7 +86,7 @@ K odebrání vytvořeného přiřazení použijte následující postup:
 
 1. Klikněte pravým tlačítkem na _Auditovat virtuální počítače, které nepoužívají správu zásad spravovaných disků_ , a vyberte **Odstranit přiřazení**.
 
-   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Odstranění přiřazení na stránce Přehled dodržování předpisů" border="false":::
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Tlačítko pro nasazení šablony ARM pro přiřazení Azure Policy k Azure." border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

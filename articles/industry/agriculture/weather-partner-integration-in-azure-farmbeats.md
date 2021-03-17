@@ -1,67 +1,67 @@
 ---
 title: Integrace partnerských řešení pro počasí
-description: Tento článek popisuje, jak může zprostředkovatel dat počasí integrovat s FarmBeats
+description: Přečtěte si, jak může zprostředkovatel dat počasí integrovat s FarmBeats.
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496991"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147075"
 ---
-# <a name="weather-partner-integration"></a>Integrace partnerských řešení pro počasí
+# <a name="weather-partner-integration-with-farmbeats"></a>Integrace s informacemi o počasí s FarmBeats
 
-Tento článek poskytuje informace o komponentě Docker **konektoru** služby Azure FarmBeats, kterou můžou poskytovatelé dat pro práci s FarmBeats vyvíjet, a to díky využití svých rozhraní API a posílání dat počasí do FarmBeats. Jakmile jsou data v FarmBeats k dispozici, je možné je použít pro syntézu dat a pro sestavování strojového učení nebo umělých analytických modelů.
+Tento článek poskytuje informace o komponentě Docker konektoru Azure FarmBeats. Jako poskytovatel dat počasí můžete použít Docker konektoru pro integraci s FarmBeats. Použijte jeho rozhraní API k posílání dat o počasí do FarmBeats. V FarmBeats se data dají použít pro fúze dat a vytváření modelů strojového učení nebo umělých analytických modelů.
 
  > [!NOTE]
- > Pro účely této dokumentace budeme používat referenční implementaci vytvořenou pomocí NOAA z Azure Open DataSets a je k dispozici na adrese [https://github.com/azurefarmbeats/noaa_docker](https://github.com/azurefarmbeats/noaa_docker) .
- > Odpovídající image Docker je k dispozici na adrese[https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
+ > V tomto článku používáme [referenční implementaci](https://github.com/azurefarmbeats/noaa_docker) , která byla sestavená pomocí otevřených datových sad Azure a dat počasí z národního oceán a NOAA (). Používáme také odpovídající [Image Docker](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa).
 
-Nepříznivý partner musí poskytnout Image nebo program Docker (se specifikacemi uvedenými níže) a hostovat image Docker v registru kontejneru, který je přístupný pro zákazníky. Informující partner bude muset zákazníkům poskytnout tyto informace:
+Musíte poskytnout [vhodnou Image nebo program Docker](#docker-specifications) a hostovat image Docker v registru kontejnerů, ke kterým mají uživatelé přístup. Poskytněte zákazníkům tyto informace:
 
 - Adresa URL obrázku Docker
 - Značka image Docker
-- Klíče/přihlašovací údaje pro přístup k imagi Docker
-- Klíče rozhraní API pro konkrétní zákazníky/přihlašovací údaje pro přístup k datům ze systému s nepříznivými partnery
-- Podrobnosti o SKU virtuálního počítače (partneři to můžou poskytnout pro případ, že Docker má konkrétní požadavky na virtuální počítače, jinak si zákazníci můžou vybrat z podporovaných SKU virtuálních počítačů v Azure)
+- Klíče nebo přihlašovací údaje pro přístup k imagi Docker
+- Klíče rozhraní API pro konkrétní zákazníky nebo přihlašovací údaje pro přístup k datům z vašeho systému
+- Podrobnosti o SKU virtuálního počítače (tyto podrobnosti uveďte v případě, že image Docker má konkrétní požadavky na virtuální počítače). V opačném případě můžou zákazníci vybírat z podporovaných SKU virtuálních počítačů v Azure.)
 
-Pomocí výše uvedených informací Docker si zákazník zaregistruje počasí v instanci FarmBeats. Další informace o tom, jak zákazníci můžou k ingestování dat v FarmBeats používat Docker, najdete v průvodci pro [získání dat o počasí](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner) .
+Zákazníci používají tyto informace Docker k registraci spoluklimatického partnera v instanci FarmBeats. Další informace o tom, jak můžou zákazníci používat Docker k ingestování dat v FarmBeats, najdete v tématu [získání dat od partnerů počasí](./get-weather-data-from-weather-partner.md).
 
 ## <a name="connector-docker-development"></a>Vývoj pro Docker konektoru
 
 **Integrace na základě REST API**
 
-Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o všech rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v tématu [FarmBeats Swagger](https://aka.ms/farmbeatsswagger). 
+Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Další informace o rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v [FarmBeats Swagger](https://aka.ms/farmbeatsswagger). 
 
-Pokud jste nainstalovali FarmBeats, získáte přístup k FarmBeats Swagger na adrese`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
+Pokud jste již nainstalovali FarmBeats, získáte přístup k FarmBeats Swagger na adrese `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
-Všimněte si, že rozhraní "-API" se připojuje k vašemu názvu webu FarmBeats.
-Koncový bod rozhraní API bude:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
+Všimněte si, že *rozhraní API* je připojené k názvu webu FarmBeats. Koncový bod rozhraní API je `https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>DataHub lib
 
-FarmBeats poskytne lib, kterou může použít partner pro počasí. Lib je aktuálně k dispozici jako součást implementace reference [zde](https://github.com/azurefarmbeats/noaa_docker/tree/master/datahub_lib). V budoucnu bude k dispozici jako sada SDK pro více jazyků.
+FarmBeats poskytuje lib, kterou můžete použít. Lib je aktuálně k dispozici jako [součást implementace reference](https://github.com/azurefarmbeats/noaa_docker/tree/master/datahub_lib). Později bude k dispozici jako sada SDK pro více jazyků.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 **Ověřování pomocí rozhraní FarmBeats API**
 
-FarmBeats používá ověřování pomocí nosiče a rozhraní API jsou přístupná poskytnutím přístupového tokenu v sekci hlavičky žádosti, jak je uvedeno níže:
+FarmBeats používá ověřování pomocí nosiče. Přístup k rozhraním API můžete zajistit poskytnutím přístupového tokenu v části záhlaví žádosti. Tady je příklad:
 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-Přístupový token se dá požádat z funkce Azure, která běží na instanci FarmBeats zákazníka. Adresa URL funkce Azure se poskytne programu Docker jako argument a přístupový token se dá získat tak, že na adrese URL vytvoříte požadavek GET. Odpověď z adresy URL bude obsahovat přístupový token. DataHub lib poskytuje pomocné funkce, které partnerům umožňují získat přístupový token. Další podrobnosti najdete [tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
+Přístupový token můžete požádat z aplikace Azure Functions, která je spuštěná v instanci FarmBeats zákazníka. Azure Functions adresa URL se k programu Docker poskytne jako argument. Přístupový token můžete získat tak, že na `GET` adrese URL vytvoříte žádost. Odpověď z adresy URL obsahuje přístupový token. 
 
-Přístupový token je platný jenom pár hodin a po vypršení platnosti je potřeba ho znovu požádat.
+K získání přístupového tokenu použijte pomocné funkce v knihovně DataHub lib. Další informace najdete na [stránce GitHubu pro Image Docker NOAA](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
 
-**Ověřování s využitím partnerských rozhraní API na straně partnera**
+Přístupový token je platný jenom pár hodin. Až vyprší, musíte si ji vyžádat znovu.
 
-Abychom zákazníkům umožnili ověřování pomocí rozhraní API na straně partnera během provádění Docker, musí přihlašovací údaje poskytnout během registrace partnera následujícím způsobem:
+**Ověřování pomocí rozhraní API na straně partnerů**
+
+Aby bylo možné provést ověření pomocí rozhraní API na straně partnera v době, kdy je spuštěná úloha Docker, zákazníci musí přihlašovací údaje poskytnout během registrace partnera. Tady je příklad:
 
 ```json
 {
@@ -71,9 +71,13 @@ Abychom zákazníkům umožnili ověřování pomocí rozhraní API na straně p
    }
 }
 ```
-Služba API tuto dict – zaserializace a uloží ji do [trezoru](https://docs.microsoft.com/azure/key-vault/basic-concepts)klíčů.
+Služba API tuto dict – zaserializace a uloží ji do [trezoru klíčů](../../key-vault/general/basic-concepts.md).
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) slouží k orchestraci úloh počasí a k provedení kódu Docker se vytočí prostředky. Poskytuje taky mechanismus pro zabezpečené odesílání dat do virtuálního počítače, na kterém se spouští úloha Docker. Přihlašovací údaje rozhraní API, ty, které jsou teď bezpečně uložené v trezoru klíčů, se čtou jako zabezpečené řetězce z trezoru klíčů a v pracovním adresáři kontejneru Docker jsou dostupné jako rozšířené vlastnosti, protože activity.jszapnuté (cesta k souboru je "/mnt/working_dir/activity.json"). kód Docker může číst přihlašovací údaje z tohoto souboru za běhu za účelem přístupu k rozhraním API na straně serveru jménem zákazníka. Přihlašovací údaje budou k dispozici v souboru následujícím způsobem:
+[Azure Data Factory](../../data-factory/introduction.md) slouží k orchestraci úloh počasí. Roztočí prostředky pro spuštění kódu Docker. Data Factory taky poskytuje mechanismus pro zabezpečené odesílání dat do virtuálního počítače, na kterém běží úloha Docker. Přihlašovací údaje rozhraní API se pak bezpečně ukládají do trezoru klíčů. 
+
+Přihlašovací údaje se čtou jako zabezpečené řetězce z trezoru klíčů. Poskytují se jako rozšířené vlastnosti v pracovním adresáři kontejneru Docker. Cesta k souboru je */mnt/working_dir/activity.jsna* . 
+
+Kód Docker může číst přihlašovací údaje z *activity.jsv* průběhu doby běhu pro přístup k rozhraním API na straně partnera pro zákazníka. V souboru JSON by přihlašovací údaje vypadaly například jako tento příklad kódu:
 
 ```json
 { 
@@ -83,135 +87,143 @@ Služba API tuto dict – zaserializace a uloží ji do [trezoru](https://docs.m
    } 
 }
 ```
-Všimněte si, že "partnerCredentials" bude k dispozici přesným způsobem, který poskytl zákazník během registrace partnera.
+`partnerCredentials`Přihlašovací údaje jsou k dispozici způsobem, jakým ho Zákazník poskytl během registrace partnera.
 
-FarmBeats lib poskytuje pomocné funkce, které umožní partnerům číst přihlašovací údaje z vlastností aktivity. Další podrobnosti najdete [tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
+FarmBeats lib poskytuje pomocné funkce. Pomocí těchto funkcí si můžete přečíst přihlašovací údaje z vlastností aktivity. Další informace najdete na [stránce GitHubu pro Image Docker NOAA](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
 
-Doba života souboru je pouze v průběhu provádění Docker Code a bude odstraněna po skončení běhu Docker.
+Soubor se používá jenom v případě, že je spuštěný Kód Docker. Po dokončení kódu se soubor odstraní.
 
-Další informace o tom, jak kanály a aktivity služby ADF fungují, najdete v tématu [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping) .
+Další informace o tom, jak Data Factory kanály a aktivity fungují, najdete v tématu [schéma a mapování datových typů](../../data-factory/copy-activity-schema-and-type-mapping.md).
 
 **Hlavičky požadavku HTTP**
 
-Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API do FarmBeats.
+V následující tabulce jsou uvedeny nejběžnější hlavičky požadavků, které je třeba zadat při volání rozhraní API do FarmBeats.
 
-**Hlavička** | **Popis a příklad**
+Záhlaví | Popis a příklad
 --- | ---
-Typ obsahu | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
-Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
-Přijmout | Formát odpovědi. Pro rozhraní FarmBeats DataHub API je formát JSON. Přijmout: Application/JSON
+Typ obsahu | Formát požadavku. Příklad: `Content-Type: application/<format>` <br/>Pro rozhraní FarmBeats DataHub API je formát JSON. Příklad: ` Content-Type: application/json`
+Autorizace | Přístupový token, který je vyžadován pro volání rozhraní API. Příklad: `Authorization: Bearer <Access-Token>`
+Přijmout | Formát odpovědi. Pro rozhraní FarmBeats DataHub API je formát JSON. Příklad: `Accept: application/json`
 
 ## <a name="data-format"></a>Formát dat
 
-JSON je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou textovou reprezentaci libovolných datových struktur. Další informace najdete v tématu [JSON.org](http://json.org).
+JSON je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou textovou reprezentaci libovolných datových struktur. Další informace najdete v tématu [JSON.org](https://json.org).
 
 ## <a name="docker-specifications"></a>Specifikace Docker
 
-Program Docker musí mít dvě komponenty: **bootstrap** a **úlohy**. Může existovat více než jedna úloha.
+Docker program potřebuje dvě komponenty: Bootstrap a úlohu. Program může mít více než jednu úlohu.
 
 ### <a name="bootstrap"></a>Metoda bootstrap
 
-Tato součást by se měla spustit, když zákazník zahájí registraci Docker na FarmBeats. Argumenty (arg1, arg2), které budou předány tomuto programu:
+Spouštěcí komponenta by se měla spustit, když zákazník spustí registraci Docker na FarmBeats. `arg1` `arg2` Do programu jsou předány následující argumenty (a):
 
-- Koncový bod rozhraní FarmBeats API: koncový bod rozhraní FarmBeats API pro požadavky rozhraní API: Toto je koncový bod pro volání rozhraní API do nasazení FarmBeats.
-- Adresa URL funkce Azure: Jedná se o osobní koncový bod, který vám poskytne váš přístupový token pro rozhraní API FarmBeats. Pouhým voláním metody GET na této adrese URL se v odpovědi načte přístupový token.
+- **Koncový bod rozhraní API FarmBeats** : koncový bod rozhraní FarmBeats API pro žádosti rozhraní API. Tento koncový bod zpřístupňuje volání rozhraní API FarmBeats nasazení.
+- **Adresa URL Azure Functions** : váš vlastní koncový bod. Tato adresa URL poskytuje token pro přístup k rozhraním API FarmBeats. K `GET` načtení přístupového tokenu můžete zavolat na tuto adresu URL.
 
-V rámci zavedení je nutné vytvořit metadata požadavku, aby uživatelé mohli spouštět úlohy a získávat data o počasí. Odkaz na referenční implementaci najdete [tady](https://github.com/azurefarmbeats/noaa_docker). Můžete aktualizovat bootstrap_manifest.jsv souboru podle vašich potřeb a program pro spouštění odkazů vytvoří požadovaná metadata za vás.
+Bootstrap vytvoří metadata, která uživatelé potřebují ke spouštění vašich úloh, aby mohli získat data o počasí. Další informace najdete v [referenční implementaci](https://github.com/azurefarmbeats/noaa_docker). 
 
-V rámci tohoto procesu jsou vytvořena následující metadata. 
+Pokud přizpůsobíte *bootstrap_manifest.jsv* souboru, pak program pro spuštění odkazu vytvoří požadovaná metadata za vás. Spouštěcí program vytvoří následující metadata: 
 
  > [!NOTE]
- > **Nezapomeňte prosím** , že pokud aktualizujete bootstrap_manifest.jsv souboru, jak je uvedeno v [referenční implementaci](https://github.com/azurefarmbeats/noaa_docker), nemusíte vytvářet níže uvedená metadata, protože spouštěcí rutina vytvoří stejný na základě vašeho souboru manifestu.
+ > Pokud aktualizujete *bootstrap_manifest.jspro* soubor, jak popisuje [referenční implementace](https://github.com/azurefarmbeats/noaa_docker) , nemusíte vytvářet následující metadata. Spouštěcí program použije váš soubor manifestu k vytvoření potřebných metadat.
 
-- /**WeatherDataModel**: WeatherDataModel je model reprezentující data v počasí a odpovídá různým datovým sadám poskytovaným zdrojem. DailyForecastSimpleModel může například poskytnout průměrnou teplotu, vlhkost a informace o vysrážení jednou za den, zatímco DailyForecastAdvancedModel může poskytnout mnohem více informací při hodinové členitosti. Můžete vytvořit libovolný počet WeatherDataModels.
-- /**JobType**: FarmBeats má rozšiřitelný systém správy úloh. Jako poskytovatel dat počasí budete mít různé datové sady nebo rozhraní API (například GetDailyForecasts) – můžete je povolit v FarmBeats jako JobType. Po vytvoření JobType může zákazník aktivovat úlohy tohoto typu, aby získal data o počasí pro svoje umístění nebo farmu zájmu (viz JobType a rozhraní API v [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)).
+- /**WeatherDataModel** : metadata WeatherDataModel představují data o počasí. Odpovídá datovým sadám, které poskytuje zdroj. DailyForecastSimpleModel může například poskytnout průměrnou teplotu, vlhkost a informace o vysrážení jednou denně. Naopak DailyForecastAdvancedModel může poskytovat mnohem více informací v hodinové členitosti. Můžete vytvořit libovolný počet datových modelů počasí.
+- /**JobType** : FarmBeats má rozšiřitelný systém správy úloh. Jako poskytovatel dat počasí budete mít různé datové sady a rozhraní API (například GetDailyForecasts). Tyto datové sady a rozhraní API můžete v FarmBeats povolit pomocí JobType. Po vytvoření typu úlohy může zákazník aktivovat úlohy tohoto typu, aby získal data o počasí pro svoje umístění nebo jejich farmu, které vás zajímají. Další informace najdete v tématu rozhraní API pro JobType a úlohy v [Swagger FarmBeats](https://aka.ms/farmbeatsswagger).
 
 ### <a name="jobs"></a>Úlohy
 
-Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úlohu vašeho/JobType, kterou jste vytvořili v rámci procesu Bootstrap. Příkaz Spustit jako Docker pro úlohu je definován jako součást **/JobType** , kterou jste vytvořili.
-- Úkolem úlohy bude načítat data ze zdroje a vkládat je do FarmBeats. Parametry vyžadované k získání dat by měly být definovány jako součást/JobType v procesu Bootstrap.
-- V rámci úlohy bude program muset vytvořit **/WeatherDataLocation** založenou na/WeatherDataModel, která byla vytvořena jako součást procesu Bootstrap. **/WeatherDataLocation** odpovídá umístění (lat/Long), které poskytuje uživatel jako parametr pro úlohu.
+Komponenta Jobs je vyvolána pokaždé, když uživatel FarmBeats spustí úlohu/JobType, kterou jste vytvořili jako součást procesu Bootstrap. Příkaz Spustit jako Docker pro úlohu je definován jako součást/JobType, kterou jste vytvořili.
 
-### <a name="details-of-the-objects"></a>Podrobnosti o objektech
+Úloha načte data ze zdroje a vloží je do FarmBeats. Během zaváděcího procesu by měly být parametry vyžadované k získání dat definovány jako součást/JobType..
 
-  WeatherDataModel | Popis |
-  --- | ---
-  Název  | Název datového modelu počasí |
-  Popis  | Poskytněte smysluplný popis modelu. |
-  Vlastnosti  | Další vlastnosti definované poskytovatelem dat. |
-  Název > weatherMeasures  | Název míry počasí Například humidity_max |
-  weatherMeasures > datový typ  | buď typ Double, nebo Enum. Pokud je vyžadováno Enum, measureEnumDefinition |
-  weatherMeasures > measureEnumDefinition  | Je vyžadován pouze v případě, že datový typ je Enum. Například {"prodeště": 0, "sněhu": 1, "drizzle": 2, "deště": 3} |
-  Typ > weatherMeasures  | typ dat telemetrie počasí Například "RelativeHumidity". Níže jsou uvedené typy systému: AmbientTemperature, jednotka, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, WindDirection, nominální hodnota. Další informace najdete v tématu rozhraní/ExtendedType API nebo v [části Přidání typů a jednotek](weather-partner-integration-in-azure-farmbeats.md#add-extendedtype) níže.
-  Jednotka > weatherMeasures | Jednotka počasí data telemetrie. Níže jsou uvedené jednotky definované systémem: jednotka, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, PSI, milimetr, centimetr, měřič, palce, nohy, míle, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, s VolumetricIonContent, MilliLiter, UnixTimestamp a MicroMolPerMeterSquaredPerSecond. Další informace najdete v tématu rozhraní/ExtendedType API nebo níže v [části Přidání typů a jednotek](weather-partner-integration-in-azure-farmbeats.md#add-extendedtype) .
-  weatherMeasures > AggregationType  | Buď None, Average, Max, minim, StandardDeviation, Sum, Total
-  Hloubka > weatherMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
-  Popis > weatherMeasures  | Poskytněte smysluplný popis měření. |
-  **JobType** | **Popis** |
-  Název  | název úlohy, například Get_Daily_Forecast; úloha, kterou zákazník spustí, aby získala data o počasí|
-  pipelineDetails > parametry > název  | název parametru |
-  pipelineDetails > parametry > typu | buď řetězec, int, float, bool, Array |
-  parametry > pipelineDetails > je potřeba. | datového true, pokud je parametr povinný, false, pokud ne; Výchozí hodnota je true. |
-  pipelineDetails > parametry > defaultValue | Výchozí hodnota parametru |
-  pipelineDetails > parametry > popisu | Popis parametru |
-  Vlastnosti  | Další vlastnosti od výrobce.
-  Vlastnosti > **programRunCommand** | příkaz Spustit jako Docker – tento příkaz se spustí, když zákazník spustí úlohu počasí. |
-  **WeatherDataLocation** | **Popis** |
-  weatherDataModelId  | ID odpovídající WeatherDataModel, která byla vytvořena během Bootstrap|
-  location  | představuje zeměpisnou šířku, délku a zvýšení úrovně oprávnění. |
-  Název | Název objektu |
-  Popis | Popis |
-  farmId | **volitelné** ID farmy poskytované zákazníkem jako součást parametru úlohy |
-  Vlastnosti  | Další vlastnosti od výrobce.
+V rámci úlohy musí program vytvořit/WeatherDataLocation založenou na/WeatherDataModel, která byla vytvořena během procesu Bootstrap. /WeatherDataLocation odpovídá umístění (souřadnice zeměpisné šířky a délky), které uživatel zadal jako parametr pro úlohu.
 
- Informace o jednotlivých objektech a jejich vlastnostech naleznete v [Swagger](https://aka.ms/FarmBeatsSwagger).
+### <a name="object-details"></a>Podrobnosti objektu
 
- > [!NOTE]
- > Rozhraní API vrací jedinečná ID pro každou vytvořenou instanci. Toto ID musí být zachováno překladatelem pro správu zařízení a synchronizaci metadat.
+WeatherDataModel | Popis |
+--- | ---
+Název  | Název datového modelu počasí |
+Description  | Smysluplný popis modelu |
+Vlastnosti  | Další vlastnosti definované poskytovatelem dat. |
+Název > weatherMeasures  | Název míry počasí Například humidity_max. |
+weatherMeasures > datový typ  | Buď typ Double, nebo Enum. Pokud je vyžadováno Enum, measureEnumDefinition. |
+weatherMeasures > measureEnumDefinition  | Požadováno pouze v případě, že je datový typ Enum. Například `{ "NoRain": 0, "Snow": 1, "Drizzle": 2, "Rain": 3 }`. |
+Typ > weatherMeasures  | Typ dat telemetrie počasí Například RelativeHumidity. Systémem definované typy jsou AmbientTemperature, jednotka, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, TimeDuration, UVRadiation, UVIndex, WindDirection, WindRun, WindSpeed, evapotranspiration,, a nominální hodnota. Chcete-li přidat další typy, přečtěte si část [Přidání ExtendedType](#add-extendedtype) v tomto článku.
+Jednotka > weatherMeasures | Jednotka počasí data telemetrie. Jednotky definované systémem jsou jednotky ve stupních, stupních Celsia, Fahrenheita, kelvinech, Rankine, Pascal, rtuť, PSI, milimetr, centimetr, měřič, palce, nohy, míle, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMole, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, s VolumetricIonContent, MilliLiter, UnixTimestamp a MicroMolePerMeterSquaredPerSecond. Pokud chcete přidat další jednotky, přečtěte si část [Přidání ExtendedType](#add-extendedtype) v tomto článku.
+weatherMeasures > AggregationType  | Typ agregace. Možné hodnoty jsou None, Average, Max, minim, StandardDeviation, Sum a Total.
+Hloubka > weatherMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
+Popis > weatherMeasures  | Smysluplný popis měření. 
+
+JobType | Popis |
+--- | ---
+Název  | Název úlohy Například Get_Daily_Forecast. Zákazník spustí tuto úlohu, aby získala data o počasí.|
+pipelineDetails > parametry > název  | Název parametru |
+pipelineDetails > parametry > typu | Typ parametru. Možné hodnoty zahrnují řetězec, int, float, bool a Array. |
+parametry > pipelineDetails > je potřeba. | Logická hodnota parametru. Hodnota je true, pokud je parametr požadován. V opačném případě je hodnota false. Výchozí hodnota je true. |
+pipelineDetails > parametry > defaultValue | Výchozí hodnota parametru |
+pipelineDetails > parametry > popisu | Popis parametru |
+Vlastnosti  | Další vlastnosti od výrobce.
+Vlastnosti > programRunCommand | Příkaz Docker run. Tento příkaz se spustí, když zákazník spustí úlohu počasí. |
+
+WeatherDataLocation | Description |
+--- | ---
+weatherDataModelId  | ID odpovídající WeatherDataModel, která byla vytvořena během procesu Bootstrap.|
+location  | Zeměpisná šířka, zeměpisná délka a zvýšení úrovně. |
+Name | Název objektu. |
+Description | Popis umístění dat počasí |
+farmId | Volitelné ID farmy Zákazník toto ID poskytne jako součást parametru úlohy. |
+Vlastnosti  | Další vlastnosti od výrobce.
+
+Další informace o objektech a jejich vlastnostech najdete v [FarmBeats Swagger](https://aka.ms/FarmBeatsSwagger).
+
+> [!NOTE]
+> Rozhraní API vrací jedinečná ID pro každou vytvořenou instanci. Překladatel pro správu zařízení a synchronizaci metadat musí zachovat toto ID.
 
 **Synchronizace metadat**
 
-Docker konektoru by měl mít možnost odesílat aktualizace metadat. Příklady scénářů aktualizace: přidání nových parametrů počasí do datové sady poskytovatele počasí, přidání funkcí (např. Přidání 30 dní předpovědi)
+Komponenta Docker konektoru by měla být schopna odesílat aktualizace metadat. Například by měl odesílat aktualizace, když poskytovatel počasí přidá nové parametry do datové sady nebo když jsou přidány nové funkce, jako je například nová 30denní předpověď.
 
 > [!NOTE]
-> Odstranění není pro metadata EG podporováno. datový model počasí.
+> Odstranění není podporováno pro metadata v datovém modelu počasí.
 >
-> Chcete-li aktualizovat metadata, je nutné volat/Get/{ID} na datový model počasí, aktualizovat změněné vlastnosti a pak provést/Put/{ID}, aby všechny vlastnosti nastavené uživatelem nebyly ztraceny.
+> Chcete-li aktualizovat metadata, je nutné zavolat `/Get/{ID}` na datový model počasí. Aktualizujte změněné vlastnosti a pak udělejte a uložte `/Put/{ID}` všechny vlastnosti, které uživatel nastaví.
 
 ## <a name="weather-data-telemetry-specifications"></a>Specifikace dat počasí (telemetrie)
 
-Data o počasí jsou namapována na kanonickou zprávu, která je vložena do centra událostí Azure ke zpracování. Azure EventHub je služba, která umožňuje přijímání dat v reálném čase z připojených zařízení a aplikací. K odeslání dat o počasí do FarmBeats budete muset vytvořit klienta, který odesílá zprávy do centra událostí v FarmBeats. Další informace o odesílání telemetrie najdete v tématu [odesílání telemetrie do centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send) .
+Data o počasí jsou namapována na kanonickou zprávu, která je vložena do centra událostí Azure ke zpracování. Azure Event Hubs je služba, která umožňuje přijímání dat v reálném čase z připojených zařízení a aplikací. 
 
-Tady je ukázkový kód Pythonu, který odesílá telemetrii jako klienta do zadaného centra událostí.
+Chcete-li odesílat data o počasí do FarmBeats, vytvořte klienta, který odesílá zprávy do centra událostí v FarmBeats. Další informace najdete v tématu [posílání telemetrie do centra událostí](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
+
+Následující vzorový kód Pythonu odešle telemetrii jako klienta do zadaného centra událostí.
 
 ```python
 import azure
 from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
-EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
-EVENTHUBNAME = "<EventHub Name provided by customer>"
+EVENTHUBCONNECTIONSTRING = "<EventHub connection string provided by customer>"
+EVENTHUBNAME = "<EventHub name provided by customer>"
 
 write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
 sender = write_client.add_sender(partition="0")
 write_client.run()
 for i in range(5):
-    telemetry = "<Canonical Telemetry message>"
+    telemetry = "<Canonical telemetry message>"
     print("Sending telemetry: " + telemetry)
     sender.send(EventData(telemetry))
 write_client.stop()
 
 ```
 
-Formát kanonické zprávy je následující:
+Tady je formát kanonické zprávy:
 
 ```json
 {
    "weatherstations": [
    {
-   "id": "id of the WeatherDataLocation",
+   "id": "ID of the WeatherDataLocation.",
    "weatherdata": [
    {
-     "timestamp": "timestamp of the data. For historical, this is the time for which the observations are sent. For forecast this is the time for which data is forecasted. Format is ISO 8601. Default time-zone is UTC",
-     "predictiontimestamp": "timestamp on which the forecast data is predicted i.e time of prediction. Required only for forecast data. Format is ISO 8601. Default timezone is UTC ",
+     "timestamp": "Timestamp of the data. For historical purposes, this is the time for which the observations are sent. For forecast, this is the time for which data is forecasted. Format is ISO 8601. Default time zone is UTC.",
+     "predictiontimestamp": "Timestamp on which the forecast data is predicted. I.e., the time of prediction. Required only for forecast data. Format is ISO 8601. Default time zone is UTC. ",
      "weathermeasurename1": <value>,
      "weathermeasurename2": <value>
      }
@@ -221,7 +233,7 @@ Formát kanonické zprávy je následující:
 }
 ```
 
-Tady je například zpráva telemetrie:
+Tady je příklad zprávy telemetrie:
 
 ```json
 {
@@ -245,28 +257,28 @@ Tady je například zpráva telemetrie:
 
 ## <a name="troubleshooting-and-error-management"></a>Řešení potíží a správa chyb
 
-**Protokolování chyb**
+### <a name="error-logging"></a>Protokolování chyb
 
-Vzhledem k tomu, že se úloha partnerských úloh bude spouštět v existujícím prostředí úloh – chyby se budou protokolovat stejným způsobem jako chyby pro jiné již existující úlohy v FarmBeats (například GetFarmData, SensorPlacement atd.). Aktivita ADF spuštěná v kanálu ADF se zaznamená do protokolu STDERR i STDOUT. Oba soubory jsou k dispozici v účtu úložiště "datahublogs-XXX" v rámci skupiny prostředků FarmBeats.
+Úloha partnera se spustí v existujícím rozhraní. Chyby jsou tedy protokolovány stejným způsobem jako chyby pro jiné dříve existující úlohy FarmBeats (například GetFarmData a SensorPlacement). Data Factory aktivita spuštěná v rámci kanálu Data Factory protokoluje `STDERR` a `STDOUT` . Oba soubory jsou k dispozici v `datahublogs-xxx` účtu úložiště v rámci skupiny prostředků FarmBeats.
 
-DataHub lib poskytuje pomocné funkce pro povolení protokolování v rámci celkových protokolů DataHub. Další podrobnosti najdete [tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
+DataHub lib poskytuje pomocné funkce pro povolení protokolování v rámci celkových protokolů DataHub. Další informace najdete na [stránce GitHubu pro Image Docker NOAA](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
 
-**Řešení potíží s možností nebo podporou**
+### <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-V případě, že zákazník nemůže přijímat data v počasí v zadané instanci FarmBeats, by měl partner s počasí poskytovat podporu a mechanismus pro řešení potíží se stejným.
+Pokud zákazník nemůže přijímat data v počasí v instanci FarmBeats, poskytněte podporu a mechanismus pro řešení tohoto problému.
 
 ## <a name="add-extendedtype"></a>Přidat ExtendedType
 
-FarmBeats podporuje přidávání nových typů měření senzorů a jednotek. Uvědomte si, že partnerský partner může přidat nové jednotky a typy aktualizací bootstrap_manifest.jsna soubor v referenční implementaci [zde](https://github.com/azurefarmbeats/noaa_docker) .
+FarmBeats podporuje přidávání nových typů měření senzorů a jednotek. Můžete přidat nové jednotky nebo typy aktualizací *bootstrap_manifest.js* v souboru v [referenční implementaci](https://github.com/azurefarmbeats/noaa_docker).
 
-Chcete-li přidat nový typ WeatherMeasure, například "PrecipitationDepth", postupujte podle následujících kroků.
+Pomocí následujících kroků přidejte nový typ WeatherMeasure, například PrecipitationDepth.
 
-1. Vytvoření požadavku GET v/ExtendedType pomocí filtru dotazu-Key = WeatherMeasureType
+1. Vytvořte `GET` žádost o/ExtendedType pomocí dotazu `filter - key = WeatherMeasureType` .
 2. Poznamenejte si ID vráceného objektu.
-3. Přidejte nový typ do seznamu v vráceném objektu a vytvořte na/ExtendedType{ID} požadavek PUT s následujícím novým seznamem. Vstupní datová část by měla být stejná jako odpověď přijatá výše a nová jednotka na konci seznamu hodnot byla připojena.
+3. Přidejte nový typ do seznamu v vráceném objektu. Vytvořte `PUT` v/ExtendedType{ID} požadavek pomocí následujícího nového seznamu. Vstupní datová část by měla být stejná jako odpověď, kterou jste získali dříve. Nová jednotka by měla být připojena na konci seznamu hodnot.
 
-Další informace o rozhraní/ExtendedType API najdete v tématu [Swagger](https://aka.ms/FarmBeatsSwagger).
+Další informace o rozhraní/ExtendedType API najdete v tématu [FarmBeats Swagger](https://aka.ms/FarmBeatsSwagger).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď máte k dispozici Docker konektoru, který se integruje s FarmBeats. Dál uvidíte, jak získat data o počasí pomocí Docker do FarmBeats. Viz [získat data o počasí](get-weather-data-from-weather-partner.md).
+Teď máte komponentu Docker konektoru, která se integruje s FarmBeats. V dalším kroku zjistíte, jak [získat data o počasí](get-weather-data-from-weather-partner.md) pomocí Image Docker v FarmBeats. 

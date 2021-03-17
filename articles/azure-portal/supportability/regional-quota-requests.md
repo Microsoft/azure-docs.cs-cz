@@ -5,14 +5,13 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763852"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745413"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>Standardní kvóta: zvýšení omezení podle oblasti
 
@@ -23,7 +22,7 @@ Azure Resource Manager podporuje dva typy kvót vCPU pro virtuální počítače
 
 Standardní kvóta vCPU pro průběžné platby a rezervované instance virtuálních počítačů se vynutily na dvou úrovních pro každé předplatné v každé oblasti:
 
-* První úroveň je *celkový regionální limit vCPU*ve všech řadách virtuálních počítačů.
+* První úroveň je *celkový regionální limit vCPU* ve všech řadách virtuálních počítačů.
 * Druhá úroveň je *vCPU limit řady per-VM*, jako je například vCPU řady D-Series.
 
 Když nasadíte nový virtuální počítač s přímým odkazem, nesmí celkové nové a stávající využití vCPU pro tuto řadu virtuálních počítačů překročit schválenou kvótu vCPU pro tuto řadu virtuálních počítačů. Celkový počet nových a existujících vCPU nasazených ve všech řadách virtuálních počítačů by neměl přesáhnout celkovou schválenou kvótu místní vCPU pro předplatné. Pokud dojde k překročení některé z těchto kvót, nasazení virtuálního počítače se nepovoluje.
@@ -46,27 +45,27 @@ Požadavek na zvýšení kvóty vCPU podle oblasti v **nápovědě a podpoře**:
 
    ![Odkaz Help + Support (podpora a podpora)](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
+1. V **okně pomoc a podpora** vyberte **Nová žádost o podporu**.
 
     ![Nová žádost o podporu](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)**.
+1. Jako **typ problému** vyberte **omezení služby a předplatné (kvóty)**.
 
    ![Vyberte typ problému.](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. V poli **předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
+1. V poli **předplatné** vyberte předplatné, jehož kvótu chcete zvýšit.
 
    ![Výběr předplatného](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. Jako **typ kvóty**vyberte **jiné požadavky**.
+1. Jako **typ kvóty** vyberte **jiné požadavky**.
 
    ![Vyberte typ kvóty.](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. Vyberte **Další: řešení** pro otevření **podrobností problému**. V části **Popis**zadejte následující informace:
+1. Vyberte **Další: řešení** pro otevření **podrobností problému**. V části **Popis** zadejte následující informace:
 
-    1. V případě **modelu nasazení**zadejte **Správce prostředků**.  
-    1. V **oblasti oblast**zadejte požadovanou oblast, například **východní USA 2**.  
-    1. Pro **nový limit**zadejte nový limit vCPU pro oblast. Tato hodnota by neměla překročit součet schválených kvót pro jednotlivé série SKU pro toto předplatné.
+    1. V případě **modelu nasazení** zadejte **Správce prostředků**.  
+    1. V **oblasti oblast** zadejte požadovanou oblast, například **východní USA 2**.  
+    1. Pro **nový limit** zadejte nový limit vCPU pro oblast. Tato hodnota by neměla překročit součet schválených kvót pro jednotlivé série SKU pro toto předplatné.
 
     ![Zadejte podrobnosti o žádosti o kvótu.](./media/resource-manager-core-quotas-request/regional-details.png)
 
@@ -92,15 +91,15 @@ Požadavek na zvýšení kvóty vCPU podle oblasti z **předplatných**:
 
    ![Vyberte, chcete-li zvýšit kvótu.](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. Z **typu kvóty**vyberte **jiné požadavky**.
+1. Z **typu kvóty** vyberte **jiné požadavky**.
 
    ![Vyberte typ kvóty.](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
 1. Vyberte **Další: řešení** pro otevření **podrobností problému**. V poli **Popis** zadejte následující další informace:
 
-    1. V případě **modelu nasazení**zadejte **Správce prostředků**.  
-    1. V **oblasti oblast**zadejte požadovanou oblast, například **východní USA 2**.  
-    1. Pro **nový limit**zadejte nový limit vCPU pro oblast. Tato hodnota by neměla překročit součet schválených kvót pro jednotlivé série SKU pro toto předplatné.
+    1. V případě **modelu nasazení** zadejte **Správce prostředků**.  
+    1. V **oblasti oblast** zadejte požadovanou oblast, například **východní USA 2**.  
+    1. Pro **nový limit** zadejte nový limit vCPU pro oblast. Tato hodnota by neměla překročit součet schválených kvót pro jednotlivé série SKU pro toto předplatné.
 
     ![Zadat informace v podrobnostech](./media/resource-manager-core-quotas-request/regional-details.png)
 

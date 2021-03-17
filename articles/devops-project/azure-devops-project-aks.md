@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590850"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Nasazení aplikací ASP.NET Core do služby Azure Kubernetes pomocí Azure DevOps Starter
 
@@ -24,9 +24,9 @@ DevOps Starter také:
 * Automaticky vytvoří prostředky Azure, jako je Azure Kubernetes Service (AKS).
 * Vytvoří a nakonfiguruje kanál verze ve službě Azure DevOps, který nastaví kanál sestavení a vydání pro CI/CD.
 * Vytvoří prostředek Azure Application Insights pro monitorování.
-* Povolí [Azure monitor pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) monitorovat výkon pro úlohy kontejneru v clusteru AKS.
+* Povolí [Azure monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md) monitorovat výkon pro úlohy kontejneru v clusteru AKS.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Použití DevOps Starter k nasazení aplikace ASP.NET Core do AKS
@@ -45,17 +45,17 @@ V tomto kurzu provedete následující:
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure, jako je cluster AKS, v předplatném Azure dle vašeho výběru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Vyberte **.NET**a pak vyberte **Další**.
+1. Vyberte **.NET** a pak vyberte **Další**.
 
-1. V části **zvolte Aplikační architekturu**vyberte **ASP.NET Core** a pak vyberte **Další**.
+1. V části **zvolte Aplikační architekturu** vyberte **ASP.NET Core** a pak vyberte **Další**.
 
-1. Vyberte **Služba Kubernetes**a pak vyberte **Další**. 
+1. Vyberte **Služba Kubernetes** a pak vyberte **Další**. 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatného Azure
 
@@ -99,7 +99,7 @@ DevOps Starter automaticky nakonfiguruje kanál CI/CD ve vaší organizaci Azure
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -111,7 +111,7 @@ DevOps Starter automaticky nakonfiguruje kanál CI/CD ve vaší organizaci Azure
 
 DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazení z vaší organizace Azure DevOps do svého předplatného Azure. Tyto kroky zahrnují konfiguraci připojení služby Azure pro ověřování Azure DevOps k vašemu předplatnému Azure. Automatizace také vytvoří kanál pro vydávání verzí, který poskytuje disk CD do Azure. Pokud se chcete dozvědět víc o kanálu vydávání, udělejte toto:
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
@@ -134,13 +134,13 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na web. Každá změna úložiště Git spustí sestavení ve službě Azure DevOps a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použijte jinou techniku, abyste potvrdili změny v úložišti. Úložiště Git můžete například klonovat v oblíbených nástrojích nebo v integrovaném vývojovém prostředí (IDE) a pak doručovat změny do tohoto úložiště.
 
-1. V nabídce Azure DevOps vyberte **Code**  >  **soubory**kódu a pak přejděte do svého úložiště.
+1. V nabídce Azure DevOps vyberte   >  **soubory** kódu a pak přejděte do svého úložiště.
 
 1. V adresáři *Views\Home* vyberte tři tečky (...) vedle souboru *index. cshtml* a pak vyberte **Upravit**.
 
 1. Proveďte v souboru změny, jako je například přidání textu do jedné z značek DIV. 
 
-1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte. Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Monitorujte stav buildu na řídicím panelu Starter DevOps nebo v prohlížeči pomocí vaší organizace Azure DevOps.
+1. V pravém horním rohu vyberte **Potvrdit** a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte. Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Monitorujte stav buildu na řídicím panelu Starter DevOps nebo v prohlížeči pomocí vaší organizace Azure DevOps.
 
 1. Až se vydaná verze dokončí, aktualizujte svou aplikaci, aby se ověřily vaše změny.
 
@@ -171,4 +171,4 @@ Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly pož
 Další informace o používání řídicího panelu Kubernetes najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Použití řídicího panelu Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [Použití řídicího panelu Kubernetes](../aks/kubernetes-dashboard.md)

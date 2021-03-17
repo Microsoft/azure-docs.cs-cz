@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881016"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Podpora modulu HSM vyhrazeného pro Azure
@@ -39,7 +39,7 @@ V konfiguraci zařízení HSM se používají různé softwarové komponenty:
 
 * Klientský software
 * Sada SDK
-* nástroje
+* Nástroje
 
 ### <a name="guidance"></a>Pokyny
 
@@ -47,7 +47,7 @@ Identita Gemalto zpřístupňuje k dispozici pokyny pro správu a konfiguraci pr
 
 ### <a name="support"></a>Podpora
 
-Všechny problémy s úrovní softwaru nebo otázky související s používáním HSM jako součást vyhrazené služby HSM by se měly adresovat přímo podpoře identita Gemalto. Všechny softwarové součásti uvedené výše a všechny vlastní konfigurace HSM, které jsou po zřízení, budou řešeny nástrojem identita Gemalto. Další informace najdete na [portálu zákaznická podpora identita Gemalto](https://supportportal.gemalto.com/csm/).
+Všechny problémy s úrovní softwaru nebo otázky související s používáním HSM jako součást vyhrazené služby HSM by se měly adresovat přímo podpoře identita Gemalto. Všechny softwarové součásti uvedené výše a všechny vlastní konfigurace HSM, které jsou po zřízení, budou řešeny nástrojem identita Gemalto. Další informace najdete na  [portálu zákaznická podpora identita Gemalto](https://supportportal.gemalto.com/csm/).
 
 ### <a name="consulting-services"></a>Konzultační služby
 

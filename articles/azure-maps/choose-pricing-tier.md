@@ -3,17 +3,17 @@ title: Výběr správné cenové úrovně pro mapy Microsoft Azure
 description: Přečtěte si o Azure Maps cenové úrovně. Podívejte se, které funkce jsou nabízené na úrovních a zda si chcete zobrazit klíčové důležité informace pro výběr cenové úrovně.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cb57e424642141e73588a61d026d1ff2f1a8b096
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163981"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905294"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Výběr správné cenové úrovně v Azure Maps
 
@@ -33,7 +33,7 @@ Pokud základní geoprostorové rozhraní API splňuje požadavky vaší služby
 |-----------------------------------------|:-------------------:|:--------:|
 | Vykreslování mapy                              | ✓                   | ✓       |
 | Satelitních snímků                       |                     | ✓        |
-| Hledat                                  | ✓                    | ✓        |
+| Search                                  | ✓                    | ✓        |
 | Dávkové vyhledávání                            |                     | ✓        |
 | Trasa                                   | ✓                    |✓        |
 | Směrování Batch                            |                    | ✓        |
@@ -48,6 +48,7 @@ Pokud základní geoprostorové rozhraní API splňuje požadavky vaší služby
 | Mobilita (Preview)                       |                     | ✓        |
 | Počasí (Preview)                        |✓                    |✓        |
 |  Tvůrce (Preview)                         |                   |✓        |
+|  Zvýšení úrovně oprávnění (Preview)                        |                   |✓        |
 
 Vezměte v úvahu tyto další body:
 

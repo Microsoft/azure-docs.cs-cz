@@ -1,27 +1,27 @@
 ---
 title: Konfigurace aplikací na portálu
-description: Naučte se konfigurovat společná nastavení pro App Service aplikaci v Azure Portal. Nastavení aplikace, připojovací řetězce, platforma, sada jazyků, kontejner atd.
+description: Naučte se konfigurovat společná nastavení pro App Service aplikaci v Azure Portal. Nastavení aplikace, konfigurace aplikace, připojovací řetězce, platforma, sada jazyků, kontejner atd.
 keywords: Azure App Service, Webová aplikace, nastavení aplikace, proměnné prostředí
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213572"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122353"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
-Toto téma vysvětluje, jak nakonfigurovat společná nastavení pro webové aplikace, mobilní back-end nebo aplikaci API pomocí [Azure Portal].
+Tento článek vysvětluje, jak nakonfigurovat společná nastavení pro webové aplikace, mobilní back-end nebo aplikaci API pomocí [Azure Portal].
 
 ## <a name="configure-app-settings"></a>Konfigurace nastavení aplikace
 
 V App Service jsou nastavení aplikace proměnné předány jako proměnné prostředí do kódu aplikace. U aplikací pro Linux a vlastních kontejnerů App Service předá nastavení aplikace kontejneru pomocí `--env` příznaku, který nastaví proměnnou prostředí v kontejneru.
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. 
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. 
 
 ![Hledat App Services](./media/configure-common/search-for-app-services.png)
 
@@ -29,7 +29,7 @@ V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
-V případě vývojářů ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` v *Web.config* nebo *appsettings.jsna*, ale hodnoty v App Service přepisují ty *Web.config* nebo *appsettings.jsna*. Můžete zachovat nastavení pro vývoj (například místní heslo MySQL) ve *Web.config* nebo *appsettings.jsna*, ale provozní tajemství (například heslo databáze MySQL Azure) jsou v App Service bezpečná. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
+V případě vývojářů ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` v *Web.config* nebo *appsettings.jsna*, ale hodnoty v App Service přepisují ty *Web.config* nebo *appsettings.jsna*. Můžete zachovat nastavení vývoje (například místní heslo MySQL) ve *Web.config* nebo *appsettings.jsna* a v produkčních tajných klíčích (například heslo databáze Azure MySQL) v App Service. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
 Další jazykové zásobníky také získají nastavení aplikace jako proměnné prostředí za běhu. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
@@ -37,14 +37,14 @@ Další jazykové zásobníky také získají nastavení aplikace jako proměnn�
 - [Node.js](configure-language-nodejs.md#access-environment-variables)
 - [PHP](configure-language-php.md#access-environment-variables)
 - [Python](configure-language-python.md#access-environment-variables)
-- [Java](configure-language-java.md#data-sources)
+- [Java](configure-language-java.md#configure-data-sources)
 - [Ruby](configure-language-ruby.md#access-environment-variables)
 - [Vlastní kontejnery](configure-custom-container.md#configure-environment-variables)
 
 Nastavení aplikace jsou při ukládání vždy zašifrovaná (zašifrovaná po klidové době).
 
 > [!NOTE]
-> Nastavení aplikace je také možné vyřešit z [Key Vault](/azure/key-vault/) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
+> Nastavení aplikace je také možné vyřešit z [Key Vault](../key-vault/index.yml) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Zobrazit skryté hodnoty
 
@@ -84,15 +84,44 @@ Nastavení aplikace má následující formátování JSON:
 ]
 ```
 
+### <a name="automate-app-settings-with-the-azure-cli"></a>Automatizace nastavení aplikací pomocí Azure CLI
+
+Pomocí Azure CLI můžete vytvořit a spravovat nastavení z příkazového řádku.
+
+- Přiřazení hodnoty k nastavení pomocí [AZ WebApp config App set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set):
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    Nahraďte `<setting-name>` názvem nastavení a hodnotou, která se `<value>` má přiřadit. Tento příkaz vytvoří nastavení, pokud ještě neexistuje.
+    
+- Zobrazit všechna nastavení a jejich hodnoty pomocí [AZ WebApp config appSettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list):
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- Odeberte jedno nebo víc nastavení pomocí [AZ WebApp config App Settings Delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete):
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    Nahraďte `<names>` seznamem názvů nastavení oddělených mezerami.
+
 ## <a name="configure-connection-strings"></a>Konfigurace připojovacích řetězců
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
 V případě vývojářů ASP.NET a ASP.NET Core nastavení připojovacích řetězců v App Service je třeba je nastavovat v `<connectionStrings>` v *Web.config*, ale hodnoty, které nastavíte App Service přepisují ty v *Web.config*. Nastavení vývoje (například databázový soubor) můžete zachovat v *Web.config* a v produkčních tajných klíčích (například SQL Database pověření) v App Service. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
-Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení aplikace](#configure-app-settings) , protože připojovací řetězce vyžadují pro přístup k hodnotám speciální formátování v proměnných klíčů. Tady je jedna výjimka. některé typy databází Azure se ale zálohují společně s aplikací, pokud ve své aplikaci nakonfigurujete své připojovací řetězce. Další informace najdete v tématu [co se zálohuje](manage-backup.md#what-gets-backed-up). Pokud tuto automatizovanou zálohu nepotřebujete, použijte nastavení aplikace.
+Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení aplikace](#configure-app-settings) , protože připojovací řetězce vyžadují pro přístup k hodnotám speciální formátování v proměnných klíčů. 
+
+> [!NOTE]
+> Existuje jeden případ, kdy možná budete chtít použít připojovací řetězce místo nastavení aplikace pro jazyky non-.NET: některé typy databází Azure se zálohují společně s aplikací _pouze_ v případě, že nakonfigurujete připojovací řetězec pro databázi v aplikaci App Service. Další informace najdete v tématu [co se zálohuje](manage-backup.md#what-gets-backed-up). Pokud tuto automatizovanou zálohu nepotřebujete, použijte nastavení aplikace.
 
 V době běhu jsou připojovací řetězce k dispozici jako proměnné prostředí s předponou následujících typů připojení:
 
@@ -108,14 +137,14 @@ Například připojovací řetězec MySql s názvem *ConnectionString1* je k dis
 - [Node.js](configure-language-nodejs.md#access-environment-variables)
 - [PHP](configure-language-php.md#access-environment-variables)
 - [Python](configure-language-python.md#access-environment-variables)
-- [Java](configure-language-java.md#data-sources)
+- [Java](configure-language-java.md#configure-data-sources)
 - [Ruby](configure-language-ruby.md#access-environment-variables)
 - [Vlastní kontejnery](configure-custom-container.md#configure-environment-variables)
 
 Připojovací řetězce jsou při uložení vždy zašifrované (zašifrované – při REST).
 
 > [!NOTE]
-> Připojovací řetězce je také možné přeložit z [Key Vault](/azure/key-vault/) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
+> Připojovací řetězce je také možné přeložit z [Key Vault](../key-vault/index.yml) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Zobrazit skryté hodnoty
 
@@ -158,13 +187,18 @@ Připojovací řetězce mají následující formátování JSON:
 
 ## <a name="configure-general-settings"></a>Konfigurace obecných nastavení
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
 
 ![Obecná nastavení](./media/configure-common/open-general.png)
 
 Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá nastavení vyžadují [horizontální navýšení kapacity až na vyšší cenové úrovně](manage-scale-up.md).
 
-- **Nastavení zásobníku**: softwarový zásobník pro spuštění aplikace, včetně verze jazyka a sady SDK. Pro aplikace pro Linux a vlastní kontejnerové aplikace můžete také nastavit volitelný spouštěcí příkaz nebo soubor.
+- **Nastavení zásobníku**: softwarový zásobník pro spuštění aplikace, včetně verze jazyka a sady SDK.
+
+    Pro aplikace pro Linux a vlastní kontejnerové aplikace můžete vybrat verzi jazykového modulu runtime a nastavit volitelný **spouštěcí příkaz** nebo soubor spouštěcího příkazu.
+
+    ![Obecná nastavení pro kontejnery Linux](./media/configure-common/open-general-linux.png)
+
 - **Nastavení platformy**: umožňuje konfigurovat nastavení pro hostující platformu, včetně:
     - **Bitová verze**: 32-bit nebo 64-bit.
     - **Protokol WebSocket**: pro [ASP.NET signál] nebo [Socket.IO](https://socket.io/), například.
@@ -183,7 +217,7 @@ Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá
 
 Toto nastavení platí jenom pro aplikace pro Windows.
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **výchozí dokumenty**.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **výchozí dokumenty**.
 
 ![Výchozí dokumenty](./media/configure-common/open-documents.png)
 
@@ -193,25 +227,31 @@ Pokud aplikace používá moduly, které směrují na základě adresy URL namí
 
 ## <a name="configure-path-mappings"></a>Konfigurace mapování cest
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Configuration**  >  **mapování cest**konfigurace.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte   >  **mapování cest** konfigurace.
 
 ![Mapování cest](./media/configure-common/open-path.png)
 
-Na stránce **mapování cest** se zobrazují různé věci podle typu operačního systému.
+> [!NOTE] 
+> Na kartě **mapování cest** se může zobrazit nastavení specifické pro operační systém, které se liší od uvedeného příkladu.
 
 ### <a name="windows-apps-uncontainerized"></a>Aplikace pro Windows (nekontejnerované)
 
 Pro aplikace pro Windows můžete přizpůsobit mapování obslužných rutin služby IIS a virtuální aplikace a adresáře.
 
-Mapování obslužných rutin umožňují přidat vlastní skriptové procesory, které budou zpracovávat požadavky na konkrétní přípony souborů. Chcete-li přidat vlastní obslužnou rutinu, klikněte na tlačítko **Nová obslužná rutina**. Nastavte obslužnou rutinu následujícím způsobem:
+Mapování obslužných rutin umožňují přidat vlastní skriptové procesory, které budou zpracovávat požadavky na konkrétní přípony souborů. Chcete-li přidat vlastní obslužnou rutinu, klikněte na tlačítko **nové mapování obslužných rutin**. Nastavte obslužnou rutinu následujícím způsobem:
 
-- **Přípona**. Přípona souboru, kterou chcete zpracovat, například * \* . php* nebo *obslužných rutin. fcgi*.
+- **Přípona**. Přípona souboru, kterou chcete zpracovat, například *\* . php* nebo *obslužných rutin. fcgi*.
 - **Procesor skriptů**. Absolutní cesta k procesoru skriptu. Požadavky na soubory, které odpovídají příponám souborů, zpracovává procesor skriptu. Použijte cestu `D:\home\site\wwwroot` pro odkaz na kořenový adresář vaší aplikace.
 - **Argumenty**. Volitelné argumenty příkazového řádku pro procesor skriptu.
 
-Každá aplikace má výchozí kořenovou cestu ( `/` ) namapovanou na `D:\home\site\wwwroot` , kde je váš kód nasazený ve výchozím nastavení. Pokud je kořenový adresář aplikace v jiné složce nebo pokud vaše úložiště obsahuje více než jednu aplikaci, můžete zde upravit nebo přidat virtuální aplikace a adresáře. Klikněte na **Nová virtuální aplikace nebo adresář**.
+Každá aplikace má výchozí kořenovou cestu ( `/` ) namapovanou na `D:\home\site\wwwroot` , kde je váš kód nasazený ve výchozím nastavení. Pokud je kořenový adresář aplikace v jiné složce nebo pokud vaše úložiště obsahuje více než jednu aplikaci, můžete zde upravit nebo přidat virtuální aplikace a adresáře. 
 
-Chcete-li konfigurovat virtuální aplikace a adresáře, zadejte každý virtuální adresář a jeho odpovídající fyzickou cestu vzhledem k kořenovému adresáři webu ( `D:\home` ). Volitelně můžete zaškrtnout políčko **aplikace** a označit tak virtuální adresář jako aplikaci.
+Na kartě **mapování cest** klikněte na **Nová virtuální aplikace nebo adresář**. 
+
+- Chcete-li mapovat virtuální adresář na fyzickou cestu, ponechejte zaškrtnuté políčko **adresář** . Zadejte virtuální adresář a odpovídající relativní (fyzickou) cestu k kořenovému adresáři webu ( `D:\home` ).
+- Chcete-li označit virtuální adresář jako webovou aplikaci, zrušte zaškrtnutí políčka **adresář** .
+  
+  ![Zaškrtávací políčko adresáře](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>Kontejnerové aplikace
 
@@ -231,8 +271,6 @@ Můžete [Přidat vlastní úložiště pro svou kontejnerovou aplikaci](configu
 Další informace najdete v tématu věnovaném [přístupu Azure Storage jako sdílené síťové složky z kontejneru v App Service](configure-connect-to-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Konfigurovat nastavení zásobníku jazyka
-
-Pro aplikace pro Linux se podívejte na:
 
 - [ASP.NET Core](configure-language-dotnetcore.md)
 - [Node.js](configure-language-nodejs.md)
@@ -261,7 +299,7 @@ Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro
 [Azure Portal]: https://portal.azure.com/
 [Konfigurace vlastního názvu domény v Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Nastavení přípravných prostředí ve službě Azure App Service]: ./deploy-staging-slots.md
-[How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
+[How to: Monitor web endpoint status]: ./web-sites-monitor.md
 [Základy monitorování v Azure App Service]: ./web-sites-monitor.md
 [režim kanálů]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Horizontální navýšení kapacity aplikace v Azure App Service]: ./manage-scale-up.md

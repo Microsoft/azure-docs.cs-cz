@@ -3,7 +3,7 @@ title: Začínáme s využitím Java SDK pro Azure Media Services | Dokumentace 
 description: Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa na vyžádání (Video-on-Demand) pomocí služby Azure Media Services (AMS) v jazyce Java.
 services: media-services
 documentationcenter: java
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: johndeu
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
@@ -12,20 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-java
-ms.openlocfilehash: 73dfa45361f2c111934ee7b938c44824112c6c8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5fa9f1eb4c9468c5cabaab6ee0430f165f339ed6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322682"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014906"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services  
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa pomocí služby Azure Media Services s využitím Java SDK.
 
@@ -49,7 +51,7 @@ Pokud například jako nástroj pro sestavování používáte `gradle`, přidej
 >Počínaje balíčkem `azure-media` verze `0.9.8` se v sadě SDK přidala podpora pro ověřování Azure Active Directory (AAD) a odebrala podpora pro ověřování Azure Access Control Service (ACS). Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve. Podrobné informace o migraci najdete v článku věnovaném [přístupu k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
->Zdrojový kód pro Azure Media Services Java SDK najdete v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Zkontrolujte, že jste přešli k větvi 0.9, nikoli k hlavní větvi. 
+>Zdrojový kód pro Azure Media Services Java SDK najdete v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Ujistěte se, že jste přešli na větev 0,9, a ne na hlavní větev. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Postupy: Používání Azure Media Services s Javou
 

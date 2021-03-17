@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 292c82624103fc2eae46d8aecb5e85b2181e7938
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271273"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463047"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Pomocí Azure Notebooks můžete vyvinout modul Machine Learning a nasadit ho do zařízení se systémem Linux se spuštěným Azure IoT Edge.
 Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure Machine Learning v IoT Edge najdete v [dokumentaci Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
@@ -41,7 +43,7 @@ V tomto kurzu se naučíte:
 
 Zařízení Azure IoT Edge:
 
-* Pomocí postupu v rychlém startu pro [Linux](quickstart-linux.md)můžete použít virtuální počítač Azure jako zařízení IoT Edge.
+* Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Modul Azure Machine Learning nepodporuje kontejnery Windows.
 * Modul Azure Machine Learning nepodporuje procesory ARM.
 
@@ -94,13 +96,13 @@ Ověřte, že se image kontejneru úspěšně vytvořila a uložila do služby A
 
 2. V části **Přehled** jsou uvedeny podrobnosti o pracovním prostoru spolu s přidruženými prostředky. Vyberte hodnotu **registru** , kterou by měl být název vašeho pracovního prostoru následovaný náhodnými čísly.
 
-3. V registru kontejnerů v části **služby**vyberte **úložiště**. Mělo by se zobrazit úložiště s názvem **tempanomalydetection** , které bylo vytvořeno pomocí poznámkového bloku, který jste spustili v předchozí části.
+3. V registru kontejnerů v části **služby** vyberte **úložiště**. Mělo by se zobrazit úložiště s názvem **tempanomalydetection** , které bylo vytvořeno pomocí poznámkového bloku, který jste spustili v předchozí části.
 
 4. Vyberte **tempanomalydetection**. Měli byste vidět, že úložiště má jednu značku: **1**.
 
-   Teď, když znáte název registru, název úložiště a značku, znáte úplnou cestu k bitové kopii kontejneru. Cesty k obrázkům vypadají jako ** \<registry_name\> . azurecr.IO/tempanomalydetection:1**. Cestu k imagi můžete použít k nasazení tohoto kontejneru na zařízení IoT Edge.
+   Teď, když znáte název registru, název úložiště a značku, znáte úplnou cestu k bitové kopii kontejneru. Cesty k obrázkům vypadají jako **\<registry_name\> . azurecr.IO/tempanomalydetection:1**. Cestu k imagi můžete použít k nasazení tohoto kontejneru na zařízení IoT Edge.
 
-5. V registru kontejnerů v části **Nastavení**vyberte **přístupové klíče**. Měl by se zobrazit počet přihlašovacích údajů, včetně **přihlašovacího serveru** a **uživatelského jména**a **hesla** pro uživatele s oprávněním správce.
+5. V registru kontejnerů v části **Nastavení** vyberte **přístupové klíče**. Měl by se zobrazit počet přihlašovacích údajů, včetně **přihlašovacího serveru** a **uživatelského jména** a **hesla** pro uživatele s oprávněním správce.
 
    Tyto přihlašovací údaje mohou být součástí manifestu nasazení a vaše zařízení IoT Edge by tak mohlo mít přístup k vyžádání imagí kontejneru z registru.
 

@@ -9,25 +9,25 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076413"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936703"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
 
 Tento článek vysvětluje, jak migrovat do po sobě jdoucí verze sady Azure Search .NET Management SDK, která se používá ke zřízení nebo zrušení zřízení služby Search Services, úpravě kapacity a správě klíčů rozhraní API.
 
-Sady SDK pro správu cílí na konkrétní verzi REST API správy. Další informace o konceptech a operacích najdete v tématu [Správa hledání (REST)](https://docs.microsoft.com/rest/api/searchmanagement/).
+Sady SDK pro správu cílí na konkrétní verzi REST API správy. Další informace o konceptech a operacích najdete v tématu [Správa hledání (REST)](/rest/api/searchmanagement/).
 
 ## <a name="versions"></a>Verze
 
 | SDK version (Verze sady SDK) | Odpovídající verze REST API | Přidání nebo změna chování funkce |
 |-------------|--------------------------------|-------------------------------------|
 | [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Přidá zabezpečení koncového bodu (brány firewall IP a integrace pomocí [privátního odkazu Azure](../private-link/private-endpoint-overview.md)). |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Vylepšení použitelnosti. Zásadní změna [klíčů dotazu seznamu](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) (přestává se ukončit). |
+| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Vylepšení použitelnosti. Zásadní změna [klíčů dotazu seznamu](/rest/api/searchmanagement/querykeys/listbysearchservice) (přestává se ukončit). |
 | [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | První verze |
 
 ## <a name="how-to-upgrade"></a>Postup upgradu
@@ -48,21 +48,21 @@ Verze 3,0 přidává ochranu privátních koncových bodů tím, že omezuje př
 
 | Rozhraní API | Kategorie| Podrobnosti |
 |-----|--------|------------------|
-| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | Brána firewall protokolu IP | Omezte přístup ke koncovému bodu služby na seznam povolených IP adres. Koncepty a pokyny pro portál najdete v tématu [Konfigurace brány firewall protokolu IP](service-configure-firewall.md) . |
-| [Prostředek sdíleného privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Vytvořte sdílený prostředek privátního propojení, který bude používán vyhledávací službou.  |
-| [Připojení privátního koncového bodu](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Private Link | Navázání a Správa připojení k vyhledávací službě prostřednictvím privátního koncového bodu. Koncepty a pokyny pro portál najdete v tématu [Vytvoření privátního koncového bodu](service-create-private-endpoint.md) .|
-| [Prostředky privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Private Link | Pro vyhledávací službu, která má připojení privátního koncového bodu, získejte seznam všech služeb, které se používají ve stejné virtuální síti. Pokud vaše řešení pro vyhledávání obsahuje indexery, které jsou vyžádané ze zdrojů dat Azure (Azure Storage, Cosmos DB, Azure SQL), nebo používají Cognitive Services nebo Key Vault, musí mít všechny tyto prostředky ve virtuální síti koncové body a toto rozhraní API by mělo vracet seznam. |
-| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Toto je vlastnost pro žádosti o vytvoření nebo aktualizaci služby. Když je tato zakázaná, privátní odkaz je jediným rozhraním přístupu. |
+| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | Brána firewall protokolu IP | Omezte přístup ke koncovému bodu služby na seznam povolených IP adres. Koncepty a pokyny pro portál najdete v tématu [Konfigurace brány firewall protokolu IP](service-configure-firewall.md) . |
+| [Prostředek sdíleného privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Vytvořte sdílený prostředek privátního propojení, který bude používán vyhledávací službou.  |
+| [Připojení privátního koncového bodu](/rest/api/searchmanagement/privateendpointconnections) | Private Link | Navázání a Správa připojení k vyhledávací službě prostřednictvím privátního koncového bodu. Koncepty a pokyny pro portál najdete v tématu [Vytvoření privátního koncového bodu](service-create-private-endpoint.md) .|
+| [Prostředky privátního propojení](/rest/api/searchmanagement/privatelinkresources/) | Private Link | Pro vyhledávací službu, která má připojení privátního koncového bodu, získejte seznam všech služeb, které se používají ve stejné virtuální síti. Pokud vaše řešení pro vyhledávání obsahuje indexery, které jsou vyžádané ze zdrojů dat Azure (Azure Storage, Cosmos DB, Azure SQL), nebo používají Cognitive Services nebo Key Vault, musí mít všechny tyto prostředky ve virtuální síti koncové body a toto rozhraní API by mělo vracet seznam. |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Toto je vlastnost pro žádosti o vytvoření nebo aktualizaci služby. Když je tato zakázaná, privátní odkaz je jediným rozhraním přístupu. |
 
 ### <a name="breaking-changes"></a>Změny způsobující chyby
 
-Nemůžete už použít možnost získat u žádosti o [klíč dotazu seznamu](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) . V předchozích verzích můžete použít buď GET nebo POST, v této verzi a ve všech verzích, které se přesunou nahoru, podporuje se jenom POST. 
+Nemůžete už použít možnost získat u žádosti o [klíč dotazu seznamu](/rest/api/searchmanagement/querykeys/listbysearchservice) . V předchozích verzích můžete použít buď GET nebo POST, v této verzi a ve všech verzích, které se přesunou nahoru, podporuje se jenom POST. 
 
 ## <a name="upgrade-to-20"></a>Upgradovat na 2,0
 
 Verze 2 sady Azure Search .NET Management SDK je menší upgrade, takže změna kódu by měla vyžadovat jenom minimální úsilí. Změny v sadě SDK jsou čistě změny na straně klienta, aby se zlepšila použitelnost samotné sady SDK. Mezi tyto změny patří následující:
 
-* `Services.CreateOrUpdate`a jeho asynchronní verze nyní automaticky dotazují zřizování `SearchService` a nevrátí se do dokončení zřizování služby. Tím ušetříte, abyste si tento kód cyklického dotazování sami napsali sami.
+* `Services.CreateOrUpdate` a jeho asynchronní verze nyní automaticky dotazují zřizování `SearchService` a nevrátí se do dokončení zřizování služby. Tím ušetříte, abyste si tento kód cyklického dotazování sami napsali sami.
 
 * Pokud přesto chcete, aby se zřizování služby dotazoval ručně, můžete použít novou `Services.BeginCreateOrUpdate` metodu nebo jednu z jejích asynchronních verzí.
 

@@ -3,23 +3,23 @@ title: Reference k překladateli V 3.0
 titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro překladatele V 3.0 Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.author: lajanuar
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121013"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650758"
 ---
 # <a name="translator-v30"></a>Překladatel v 3.0
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON. Zlepšuje použitelnost a výkon tím, že konsoliduje stávající funkce do menšího počtu operací a poskytuje nové funkce.
 
@@ -35,26 +35,37 @@ Microsoft Translator se obsluhuje z více umístění datových center. V souča
 
 * **Severní Amerika:** Východní USA, Střed USA – jih, Středozápadní USA a Západní USA 2 
 * **Asie a Tichomoří:** Korea – jih, Japonsko – východ, jihovýchodní Asie a Austrálie – východ
-* **Evropa:** Severní Evropa a Západní Evropa
+* **Evropa:** Severní Evropa, Západní Evropa, Švýcarsko – sever <sup>1, 2</sup>a Švýcarsko – západ <sup>1, 2</sup>
 
 Žádosti překladače Microsoftu jsou ve většině případů zpracovávány v datacentru, které je nejblíže místu, kde požadavek vznikl. V případě selhání datacentra se může žádost směrovat mimo zeměpisnou oblast Azure.
 
-Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný oblastní koncový bod:
+Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný geografický koncový bod:
 
-|Popis|Geografické Azure|Základní adresa URL|
+|Description|Geografické Azure|Základní adresa URL (zeměpisný koncový bod)|
 |:--|:--|:--|
 |Azure|Globální (mimo oblast)|   api.cognitive.microsofttranslator.com|
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Ověřování uživatelů
+<sup>1</sup> zákazník s prostředkem umístěným v Švýcarsko – sever nebo Švýcarsko – západ může zajistit, aby jejich požadavky na textové rozhraní API byly obsluhovány v rámci Švýcarska. Pokud chcete zajistit, aby se požadavky zpracovaly ve Švýcarsku, vytvořte prostředek překladatele v oblasti prostředků Švýcarsko – sever nebo Švýcarsko – západ a pak ve svých požadavcích rozhraní API použijte vlastní koncový bod prostředku. Příklad: Pokud vytvoříte prostředek překladatele v Azure Portal s názvem "oblast prostředků" jako "Švýcarsko – sever" a název prostředku je "My-ch-n", váš vlastní koncový bod je " https://my-ch-n.cognitiveservices.azure.com ". A vzorový požadavek k překladu:
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup> . Vlastní Překladatel není aktuálně k dispozici ve Švýcarsku.
+
+## <a name="authentication"></a>Authentication
 
 Přihlaste se k odběru překladatele nebo [Cognitive Services více službami](https://azure.microsoft.com/pricing/details/cognitive-services/) ve službě Azure Cognitive Services a použijte svůj klíč předplatného (dostupný v Azure Portal) k ověření. 
 
 K ověření předplatného můžete použít tři hlavičky. Tato tabulka popisuje, jak se používají jednotlivé tyto funkce:
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 |Autorizace|*Pokud předáváte ověřovací token, použijte u předplatného Cognitive Services.*<br/>Hodnota je nosným tokenem: `Bearer <token>` .|
@@ -67,7 +78,7 @@ První možností je ověřit pomocí `Ocp-Apim-Subscription-Key` hlavičky. Př
 
 Když použijete [globální prostředek překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation), je nutné zahrnout jedno záhlaví pro volání překladatele.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 
@@ -86,7 +97,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 Když použijete [prostředek místní překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation).
 Existují dvě hlavičky, které potřebujete k volání překladatele.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 |OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. |
@@ -108,7 +119,7 @@ Když použijete prostředek více služeb pro rozpoznávání služby. Díky to
 
 Když použijete tajný klíč s více službami, musíte do své žádosti zahrnout dvě ověřovací hlavičky. Existují dvě hlavičky, které potřebujete k volání překladatele.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro prostředek s více službami.|
 |OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku s více službami. |
@@ -147,16 +158,16 @@ Ověřovací token je platný po dobu 10 minut. Při provádění více volání
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě
 
-Služba Translator je teď dostupná s funkcemi Virtual Network (VNET) ve všech oblastech veřejného cloudu Azure. Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Služba Translator je teď dostupná s funkcemi Virtual Network (VNET) ve všech oblastech veřejného cloudu Azure. Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](../../cognitive-services-virtual-networks.md?tabs=portal). 
 
 Když tuto funkci zapnete, musíte pro volání překladatele použít vlastní koncový bod. Nemůžete použít globální koncový bod překladatele (api.cognitive.microsofttranslator.com) a nemůžete ho ověřit pomocí přístupového tokenu.
 
 Vlastní koncový bod můžete najít po vytvoření [prostředku překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) a povolení přístupu z vybraných sítí a soukromých koncových bodů.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
-|OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. Tato hodnota je volitelná, pokud je prostředek`global`|
+|OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. Tato hodnota je volitelná, pokud je prostředek `global`|
 
 Tady je příklad žádosti o volání překladatele pomocí vlastního koncového bodu.
 
@@ -188,7 +199,7 @@ Například zákazník s bezplatným zkušebním předplatným může po vyčerp
 ```
 Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb:
 
-| Kód | Popis |
+| Kód | Description |
 |:----|:-----|
 | 400000| Jeden ze vstupů požadavku není platný.|
 | 400001| Parametr scope je neplatný.|
@@ -230,13 +241,13 @@ Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP
 | 503000| Služba je dočasně nedostupná. Zkuste to prosím znovu. Pokud chyba přetrvává, ohlaste ji pomocí data a času chyby, identifikátor požadavku z hlavičky odpovědi X-RequestId a identifikátor klienta z hlavičky požadavku X-ClientTraceId.|
 
 ## <a name="metrics"></a>Metriky 
-Metriky umožňují zobrazit informace o využití a dostupnosti překladatele v Azure Portal v části metriky, jak je znázorněno na následujícím snímku obrazovky. Další informace najdete v tématu [metriky dat a platforem](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Metriky umožňují zobrazit informace o využití a dostupnosti překladatele v Azure Portal v části metriky, jak je znázorněno na následujícím snímku obrazovky. Další informace najdete v tématu [metriky dat a platforem](../../../azure-monitor/essentials/data-platform-metrics.md).
 
 ![Metriky translatoru](../media/translatormetrics.png)
 
 Tato tabulka uvádí dostupné metriky s popisem způsobu jejich použití pro monitorování volání rozhraní API pro překlad.
 
-| Metriky | Popis |
+| Metriky | Description |
 |:----|:-----|
 | TotalCalls| Celkový počet volání rozhraní API.|
 | TotalTokenCalls| Celkový počet volání rozhraní API prostřednictvím služby tokenu pomocí ověřovacího tokenu|

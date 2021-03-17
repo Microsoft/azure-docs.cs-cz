@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205770"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127783"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Upgrade a škálování instance služby Azure API Management  
 
@@ -33,7 +33,7 @@ Cena každé jednotky a dostupné funkce (například nasazení ve více oblaste
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
-+ Máte aktivní předplatné Azure.
++ Musíte mít aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,9 +45,9 @@ Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
 ## <a name="upgrade-and-scale"></a>Upgrade a škálování  
 
-Můžete si vybrat ze čtyř vrstev: **Developer**, **Basic**, **Standard**a **Premium**. K vyhodnocení služby by se měla použít vrstva pro **vývojáře** . neměl by se používat pro produkční prostředí. Úroveň pro **vývojáře** nemá smlouvu SLA a nelze škálovat tuto úroveň (přidat/odebrat jednotky). 
+Můžete si vybrat ze čtyř vrstev: **Developer**, **Basic**,  **Standard** a **Premium**. K vyhodnocení služby by se měla použít vrstva pro **vývojáře** . neměl by se používat pro produkční prostředí. Úroveň pro **vývojáře** nemá smlouvu SLA a nelze škálovat tuto úroveň (přidat/odebrat jednotky). 
 
-**Basic**, **Standard**a **Premium** jsou produkční úrovně, které mají smlouvu SLA a dají se škálovat. Úroveň **Basic** je úroveň nejlevnější s smlouvou SLA a je možné ji škálovat až na dvě jednotky. úroveň **Standard** se dá škálovat až na čtyři jednotky. Do úrovně **Premium** můžete přidat libovolný počet jednotek.
+**Basic**, **Standard** a **Premium** jsou produkční úrovně, které mají smlouvu SLA a dají se škálovat. Úroveň **Basic** je úroveň nejlevnější s smlouvou SLA a je možné ji škálovat až na dvě jednotky. úroveň **Standard** se dá škálovat až na čtyři jednotky. Do úrovně **Premium** můžete přidat libovolný počet jednotek.
 
 Úroveň **Premium** vám umožňuje distribuovat jednu instanci Azure API Management napříč libovolným počtem požadovaných oblastí Azure. Při počátečním vytvoření služby Azure API Management instance obsahuje jenom jednu jednotku a je umístěná v jedné oblasti Azure. Počáteční oblast je určena jako **primární** oblast. Další oblasti lze snadno přidat. Při přidávání oblasti určíte počet jednotek, které chcete přidělit. Například můžete mít jednu jednotku v **primární** oblasti a pět jednotek v některé jiné oblasti. Počet jednotek můžete přizpůsobit pro provoz, který máte v každé oblasti. Další informace najdete v tématu [nasazení instance služby Azure API Management Service do několika oblastí Azure](api-management-howto-deploy-multi-region.md).
 
@@ -79,9 +79,14 @@ Můžete upgradovat a downgradovat z libovolné úrovně a z ní. Upgrade nebo d
 ## <a name="downtime-during-scaling-up-and-down"></a>Výpadek při vertikálním navýšení a zmenšení
 Pokud provádíte škálování z nebo do úrovně Developer, dojde k výpadkům. V opačném případě nedochází k výpadkům. 
 
+## <a name="compute-isolation"></a>Izolace výpočtů
+Pokud vaše požadavky na zabezpečení zahrnují [izolaci výpočtů](../azure-government/azure-secure-isolation-guidance.md#compute-isolation), můžete použít **izolovanou** cenovou úroveň. Tato vrstva zajišťuje, aby výpočetní prostředky instance služby API Management využily celého fyzického hostitele a poskytovaly potřebnou úroveň izolace, která je nutná k podpoře, například ministerstva pro úlohy obrany obrany 5 (IL5). Pokud chcete získat přístup k izolované vrstvě, [vytvořte lístek podpory](../azure-portal/supportability/how-to-create-azure-support-request.md). 
+
+
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Postup při nasazení instance služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md)
 - [Automatické škálování instance služby Azure API Management](api-management-howto-autoscale.md)
-- [Optimalizace a ukládání na cloudové útratě](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Plánování a Správa nákladů na API Management](plan-manage-costs.md)
+- [Omezení API Management](../azure-resource-manager/management/azure-subscription-service-limits.md#api-management-limits)

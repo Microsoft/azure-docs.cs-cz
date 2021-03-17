@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5148084fa22266b1352046c7d8737b9804c5f4d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76717584"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311847"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Přesun dat do a z úložiště objektů BLOB v Azure
 
@@ -27,14 +27,14 @@ Vědecké zpracování týmových dat vyžaduje, aby data byla v jednotlivých f
 Následující články popisují, jak přesunout data do a z úložiště objektů BLOB v Azure pomocí různých technologií.
 
 * [Azure Storage – Průzkumník](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-* [Python](move-data-to-azure-blob-using-python.md)
+* [AzCopy](../../storage/common/storage-use-azcopy-v10.md)
+* [Python](../../storage/blobs/storage-quickstart-blobs-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 Které metody jsou pro vás nejvhodnější, závisí na vašem scénáři. [Scénáře pro pokročilou analýzu v Azure Machine Learning](plan-sample-scenarios.md) článku vám pomůžou určit prostředky, které potřebujete pro nejrůznější pracovní postupy pro datové vědy používané v procesu pokročilé analýzy.
 
 > [!NOTE]
-> Úplný Úvod do úložiště objektů BLOB v Azure najdete v tématu [základy Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Úplný Úvod do úložiště objektů BLOB v Azure najdete v tématu [základy Azure Blob](../../storage/blobs/storage-quickstart-blobs-dotnet.md) a [Azure Blob Service](/rest/api/storageservices/Blob-Service-Concepts).
 > 
 > 
 
@@ -49,9 +49,8 @@ Jako alternativu můžete použít [Azure Data Factory](https://azure.microsoft.
 
 Další informace najdete v tématu [vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning](../../data-factory/transform-data-using-machine-learning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte předplatné Azure, účet úložiště a odpovídající klíč úložiště pro tento účet. Před nahráním/stažením dat musíte znát název svého účtu Azure Storage a klíč účtu.
 
 * Pokud chcete nastavit předplatné Azure, přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Pokyny k vytvoření účtu úložiště a získání informací o účtu a klíči najdete v tématu [informace o Azure Storagech účtech](../../storage/common/storage-create-storage-account.md).
-
+* Pokyny k vytvoření účtu úložiště a získání informací o účtu a klíči najdete v tématu [informace o Azure Storagech účtech](../../storage/common/storage-account-create.md).

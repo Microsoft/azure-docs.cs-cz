@@ -15,10 +15,10 @@ ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065412"
 ---
 # <a name="video-indexer-failover-and-disaster-recovery"></a>Převzetí služeb při selhání a zotavení po havárii Video Indexeru
@@ -27,7 +27,7 @@ Video Indexer služby Azure Media Services nenabízí okamžité převzetí slu�
 
 Doporučujeme nakonfigurovat provozní kontinuitu a zotavení po havárii (BCDR) napříč oblastními páry, abyste mohli využívat výhody zásad izolace a dostupnosti Azure. Další informace najdete v tématu [spárované oblasti Azure](../../best-practices-availability-paired-regions.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předplatné Azure. Pokud ještě nemáte předplatné Azure, zaregistrujte si [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/free/).
 

@@ -2,16 +2,16 @@
 title: Příkazy rozhraní příkazového řádku Azure
 description: Seznamte se s některými běžnými příkazy Azure CLI, které vám pomohou začít spravovat vaše virtuální počítače v režimu Azure Resource Manager.
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2084d79ecbbc53ef9e3c75bae0664eae7de0eccb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372242"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559626"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Běžné příkazy Azure CLI pro správu prostředků
 

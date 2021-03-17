@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.openlocfilehash: debc5130824a0f661a3736b8d24d950fc789f2f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3af9b9e4f07d3d88043dcf7f6a262fdf6a3b316c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549999"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948623"
 ---
 Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí klientské knihovny Pythonu. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) . 
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Referenční dokumentace](/python/api/azure-cognitiveservices-search-visualsearch/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 ## <a name="prerequisites"></a>Požadavky
 

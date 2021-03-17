@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s využitím bonusu
 
@@ -27,7 +27,7 @@ Služba Azure AD integruje bonus s následujícími výhodami:
 * Uživatelům můžete povolit, aby se automaticky přihlásili, aby se k nim mohli přihlašovat pomocí účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí být navázán odkazový vztah m
 Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat a testovat s bonusem, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednorázově jednotné přihlašování](#configure-bonusly-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujete jednorázové jednotné přihlašování](#configure-bonusly-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte bonusně testovacího uživatele](#create-bonusly-test-user)** – abyste měli protiBrittaho Simonu, která je propojená s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -124,14 +124,14 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Konfigurace bonusového jednotného přihlašování
+### <a name="configure-bonusly-single-sign-on"></a>Konfigurace jednorázových Sign-On
 
 1. V jiném okně prohlížeče se přihlaste k vašemu **bonusovém** tenantovi.
 
 1. Na panelu nástrojů v horní části klikněte na **Nastavení** a pak vyberte **integrace a aplikace**.
 
     ![Bonusová část pro sociální sítě](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. V části **jednotné přihlašování**vyberte **SAML**.
+1. V části **jednotné přihlašování** vyberte **SAML**.
 
 1. Na stránce dialogu **SAML** proveďte následující kroky:
 
@@ -151,7 +151,7 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -169,15 +169,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k bonusům.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **bonus**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **bonus**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **bonusně**.
 
@@ -222,17 +222,17 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
 1. Klikněte na **Add User** (Přidat uživatele).
 
-    ![Přidat uživatele](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
+    ![Snímek obrazovky zobrazuje možnosti spravovat uživatele, kde můžete vybrat přidat uživatele.](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
 
 1. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat uživatele, kde můžete zadat tyto informace.](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
 
     a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
     b. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
 
-    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `brittasimon\@contoso.com` .
+    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `brittasimon@contoso.com` .
 
     d. Klikněte na **Uložit**.
 
@@ -243,12 +243,12 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici bonus na přístupovém panelu byste se měli automaticky přihlášeni k bonusu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici bonus na přístupovém panelu byste se měli automaticky přihlášeni k bonusu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

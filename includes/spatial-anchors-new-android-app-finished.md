@@ -1,17 +1,17 @@
 ---
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.date: 06/22/2020
+ms.date: 11/20/2020
 ms.topic: include
-ms.author: rgarcia
+ms.author: parkerra
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d20b7dee533dae17cfb1c6138e336b91c7e2b0c
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d57167a9a4713e268c6864f3f1b3f2b1498b4ddb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296181"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998379"
 ---
 ## <a name="putting-everything-together"></a>Vložení všech objektů dohromady
 
@@ -248,4 +248,4 @@ public class MainActivity extends AppCompatActivity {
 V tomto kurzu jste viděli, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s prostorovými kotvami Azure. Další informace o knihovně prostorových kotev Azure najdete v naší příručce k vytváření a hledání kotev.
 
 > [!div class="nextstepaction"]
-> [Vytváření a hledání kotev pomocí prostorových kotev Azure](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Vytváření a hledání kotev pomocí prostorových kotev Azure](../articles/spatial-anchors/create-locate-anchors-overview.md)

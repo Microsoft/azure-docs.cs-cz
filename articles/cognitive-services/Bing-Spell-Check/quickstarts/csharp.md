@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a C# – Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
+description: Začněte používat Kontrola pravopisu Bingu REST API a C# pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,20 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 104edff35ec4b8cad53242e5f2d5ce4449123409
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ace7a0ccaba533c9e72961536159d32af5ab8d98
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996002"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352724"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a C #
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v jazyce C# pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. 
 
@@ -26,13 +32,13 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 ## <a name="prerequisites"></a>Požadavky
 
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
-* Balíček NuGet Newtonsoft. JSON. 
+* Newtonsoft.Jsna balíčku NuGet. 
      
    Instalace tohoto balíčku v aplikaci Visual Studio:
 
-     1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor řešení.
+     1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na soubor řešení.
      1. Vyberte **Spravovat balíčky NuGet pro řešení**.
-     1. Vyhledejte *Newtonsoft. JSON* a nainstalujte balíček.
+     1. Vyhledejte *Newtonsoft.Js* a nainstalujte balíček.
 
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
@@ -199,4 +205,4 @@ Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor l
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -11,9 +11,9 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: .NET Core
+    - name: Jádro ASP.NET
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -27,17 +27,34 @@
       href: quickstart-ruby.md
     - name: Statický web v HTML
       href: quickstart-html.md
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
     - name: Vlastní kontejner
       href: quickstart-custom-container.md
     - name: Vícekontejnerová aplikace
       href: quickstart-multi-container.md
 - name: Kurzy
   items:
+    - name: Zabezpečený přístup aplikací k úložišti a Microsoft Graphu
+      items:
+        - name: Přehled
+          href: scenario-secure-app-overview.md
+        - name: Nastavení ověřování pomocí služby App Service
+          href: scenario-secure-app-authentication-app-service.md
+        - name: Zabezpečený přístup aplikací k úložišti
+          href: scenario-secure-app-access-storage.md
+        - name: Zabezpečený přístup aplikací k Microsoft Graphu jako uživatel
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: Zabezpečený přístup aplikací k Microsoft Graphu jako aplikace
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: Vyčištění prostředků
+          href: scenario-secure-app-clean-up-resources.md
     - name: Aplikace s DB
       items:
-        - name: .NET Core s SQL DB
+        - name: ASP.NET Core s SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: .NET Framework s SQL DB
+        - name: ASP.NET s SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP s MySQL
           href: tutorial-php-mysql-app.md
@@ -79,15 +96,14 @@
       href: samples-powershell.md
     - name: Šablony Resource Manageru
       href: samples-resource-manager-templates.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
     - name: Terraform
       href: samples-terraform.md
 - name: Koncepty
   items:
     - name: Plány služby App Service
       href: overview-hosting-plans.md
+    - name: Správa nákladů
+      href: overview-manage-costs.md
     - name: Funkce operačního systému
       href: operating-system-functionality.md
     - name: Osvědčené postupy pro nasazení
@@ -100,8 +116,8 @@
           href: overview-authentication-authorization.md
         - name: Opravy operačního systému a modulů runtime
           href: overview-patch-os-runtime.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: app-service-security-controls.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -147,7 +163,7 @@
           href: configure-language-java.md
         - name: Konfigurace Ruby
           href: configure-language-ruby.md
-        - name: Konfigurace vlastního linuxového kontejneru
+        - name: Konfigurace vlastního kontejneru
           href: configure-custom-container.md
         - name: Připojení k místním prostředkům
           href: web-sites-integrate-with-vnet.md
@@ -171,10 +187,6 @@
               href: deploy-ci-cd-custom-container.md
             - name: Nasazení z místního Gitu
               href: deploy-local-git.md
-            - name: Akce GitHubu
-              href: deploy-github-actions.md
-            - name: Akce GitHubu pro kontejnery
-              href: deploy-container-github-action.md
             - name: Nasazení pomocí šablony
               href: deploy-complex-application-predictably.md
         - name: Nastavení přihlašovacích údajů nasazení
@@ -209,6 +221,8 @@
               href: configure-authentication-provider-twitter.md
             - name: Ověřování pomocí poskytovatele OpenID Connect (Preview)
               href: configure-authentication-provider-openid-connect.md
+            - name: Ověřování pomocí přihlášení přes Apple (Preview)
+              href: configure-authentication-provider-apple.md
         - name: Pokročilé ověřování
           href: app-service-authentication-how-to.md
         - name: Omezení přístupu
@@ -227,10 +241,10 @@
       items:
         - name: Vertikální navýšení kapacity serveru
           href: manage-scale-up.md
-        - name: Konfigurace úrovně PremiumV2
+        - name: Konfigurace úrovně PremiumV3
           href: app-service-configure-premium-tier.md
         - name: Škálování na více instancí
-          href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+          href: ../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: Hostování s vysokou hustotou
           href: manage-scale-per-app.md
     - name: Monitorování aplikace
@@ -241,6 +255,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Získání událostí prostředků
           href: get-resource-events.md
+        - name: Kontrola stavu
+          href: monitor-instances-health-check.md
         - name: Otevření relace SSH pro linuxový kontejner
           href: configure-linux-open-ssh-session.md
     - name: Správa aplikace
@@ -285,6 +301,9 @@
       href: /rest/api/appservice/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.web/allversions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Blog služby App Service
@@ -310,7 +329,7 @@
     - name: Podrobné návody
       items:
         - name: Referenční architektury
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Skripty nasazení
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Řešení potíží

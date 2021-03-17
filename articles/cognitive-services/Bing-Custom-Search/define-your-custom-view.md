@@ -10,16 +10,21 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183201"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338635"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
-Vlastní instance vyhledávání umožňuje přizpůsobit možnosti vyhledávání tak, aby zahrnovaly obsah jenom z webů, o kterých se uživatelé setkávají. Místo provádění vyhledávání v rámci webu Bing vyhledává pouze řezy webu, které vás zajímají. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://customsearch.ai) Vlastní vyhledávání Bingu.
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Vlastní instance vyhledávání umožňuje přizpůsobit možnosti vyhledávání tak, aby zahrnovaly obsah jenom z webů, o kterých se uživatelé setkávají. Místo provádění vyhledávání v rámci webu Bing vyhledává pouze řezy webu, které vás zajímají. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://www.customsearch.ai) Vlastní vyhledávání Bingu.
 
 Portál umožňuje vytvořit instanci hledání, která určuje řezy webu: domény, podstránky a webové stránky, které má Bing Hledat, a ty, které nechcete hledat. Portál může také navrhnout obsah, který budete chtít zahrnout.
 
@@ -27,7 +32,7 @@ Při definování řezů webu použijte následující:
 
 | Název řezu | Popis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Doména     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com` , Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com` . |
+| Doména     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com` , Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com` . |
 | Podstránku    | Řez podstránky obsahuje veškerý obsah nacházející se na podstránce a v cestách pod ním. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
 | Stránku    | Řez webové stránky může obsahovat jenom tuto webovou stránku ve vlastním hledání. Volitelně můžete určit, zda chcete zahrnout podstránky.                                                                                                                                                                                  |
 
@@ -74,17 +79,17 @@ Po přidání webových řezů do **aktivního** seznamu vlastní vyhledávání
 
 ## <a name="search-for-images-and-videos"></a>Hledání obrázků a videí
 
-Obrázky a videa můžete hledat Podobně jako webový obsah pomocí [rozhraní API pro vlastní vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [vlastního rozhraní API bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Tyto výsledky můžete zobrazit pomocí [hostovaného uživatelského rozhraní](hosted-ui.md)nebo rozhraní API. 
+Obrázky a videa můžete hledat Podobně jako webový obsah pomocí [rozhraní API pro vlastní vyhledávání obrázků Bingu](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [vlastního rozhraní API bingu pro vyhledávání videí](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Tyto výsledky můžete zobrazit pomocí [hostovaného uživatelského rozhraní](hosted-ui.md)nebo rozhraní API. 
 
-Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../Bing-Video-Search/search-the-web.md) , ale hledají celý web a nevyžadují `customConfig` parametr dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
+Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../bing-video-search/overview.md) , ale hledají celý web a nevyžadují `customConfig` parametr dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>Otestování instance hledání pomocí podokna náhledu
 
 Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně portálu pro odeslání vyhledávacích dotazů a zobrazení výsledků. 
 
 1. Pod vyhledávacím polem vyberte **Moje instance**. Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing**. 
-2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web**, **Obrázek**nebo **video** , abyste získali odpovídající výsledky. 
+2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web**, **Obrázek** nebo **video** , abyste získali odpovídající výsledky. 
 
 <a name="adjustrank"></a>
 
@@ -114,7 +119,7 @@ Pro hledání obrázků a videí nejsou k dispozici zvýšení úrovně super, z
 
 ## <a name="pin-slices-to-the-top-of-search-results"></a>Připnout řezy na začátek výsledků hledání
 
-Portál také umožňuje připnout adresy URL na začátek výsledků hledání konkrétních hledaných výrazů pomocí **připnuté** karty. Zadejte adresu URL a dotaz pro určení webové stránky, která se zobrazí jako nejvyšší výsledek. Všimněte si, že můžete připnout maximálně jednu webovou stránku na vyhledávací dotaz a v hledání budou zobrazeny pouze indexované webové stránky. Výsledky připnutí nejsou k dispozici pro hledání obrázků a videí.
+Portál také umožňuje připnout adresy URL na začátek výsledků hledání konkrétních hledaných výrazů pomocí **připnutých** karet. Zadejte adresu URL a dotaz pro určení webové stránky, která se zobrazí jako nejvyšší výsledek. Všimněte si, že můžete připnout maximálně jednu webovou stránku na vyhledávací dotaz a v hledání budou zobrazeny pouze indexované webové stránky. Výsledky připnutí nejsou k dispozici pro hledání obrázků a videí.
 
 Webovou stránku můžete připnout na začátek dvěma způsoby:
 
@@ -160,4 +165,4 @@ Pokud jste se přihlásili k odběru vlastního vyhledávání na příslušné 
 - [Volání vlastního vyhledávání](./search-your-custom-view.md)
 - [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
 - [Zvýraznění textu pomocí dekoračních značek](../bing-web-search/hit-highlighting.md)
-- [Stránkování webových stránek](./page-webpages.md)
+- [Stránkování webových stránek](../bing-web-search/paging-search-results.md)

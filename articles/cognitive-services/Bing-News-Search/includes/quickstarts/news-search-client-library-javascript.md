@@ -8,24 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cc96233ea6e2d02f3c3a2036466e3934aa234f5b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 3760213c7f469dfe89599c0f01afe98168efde2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407965"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91376298"
 ---
 V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vyhledávání zpráv Bingu pro JavaScript. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Node.js](https://nodejs.org/en/)
-
-Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vyhledávání zpráv Bingu:
-1. Spusťte `npm install ms-rest-azure` ve vývojovém prostředí.
-2. Spusťte `npm install azure-cognitiveservices-newssearch` ve vývojovém prostředí.
-
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* [Sada vyhledávání zpráv Bingu SDK pro JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-newssearch)
+     *  Chcete-li nainstalovat, spusťte příkaz `npm install @azure/cognitiveservices-newssearch`
+* `CognitiveServicesCredentials`Třída z `@azure/ms-rest-azure-js` balíčku pro ověření klienta.
+     * Chcete-li nainstalovat, spusťte příkaz `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -34,7 +33,7 @@ Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vyhledáván�
 1. Vytvořte instanci `CognitiveServicesCredentials`. Vytvořte proměnné pro svůj klíč předplatného a hledaný termín.
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let search_term = 'Winter Olympics'
     ```
@@ -42,7 +41,7 @@ Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vyhledáván�
 2. vytvoření instance klienta:
     
     ```javascript
-    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    const NewsSearchAPIClient = require('@azure/cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 

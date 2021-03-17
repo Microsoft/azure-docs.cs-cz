@@ -3,13 +3,12 @@ title: Azure Service Fabric – konfigurace přihlašovacích údajů úložišt
 description: Konfigurace přihlašovacích údajů úložiště pro stahování imagí z registru kontejnerů
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c6421fed88a3909db717c13a6b3faf51c4491cd
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934980"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574815"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurace přihlašovacích údajů úložiště pro vaši aplikaci ke stažení imagí kontejneru
 
@@ -96,6 +95,9 @@ Service Fabric podporuje použití tokenů jako přihlašovacích údajů ke sta
 1. Ujistěte se, že je pro virtuální počítač povolená *spravovaná identita přiřazená systémem* .
 
     ![Azure Portal: možnost vytvořit identitu sady škálování virtuálního počítače](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> V případě uživatelsky přiřazené spravované identity tento krok přeskočte. Zbývající kroky budou fungovat stejně, pokud je sada škálování přidružená jenom k jedné spravované identitě přiřazené uživatelem.
 
 2. Udělte oprávnění k sadě škálování virtuálního počítače pro načtení a čtení imagí z registru. V okně Access Control (IAM) Azure Container Registry v Azure Portal přidejte *přiřazení role* pro virtuální počítač:
 

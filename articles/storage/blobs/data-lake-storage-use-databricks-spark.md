@@ -9,18 +9,18 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: b5f1d0712098e4fe331607860f6e0ed488d29c1c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 232e28d3cc8b0bc7427dd035d51743f623e54259
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848788"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564299"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
 V tomto kurzu se dozvíte, jak připojit cluster Azure Databricks k datům uloženým v účtu úložiště Azure, který má povolený Azure Data Lake Storage Gen2. Toto připojení umožňuje nativně spouštět dotazy a analýzy z vašeho clusteru na vašich datech.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
@@ -33,28 +33,28 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Vytvořte účet Azure Data Lake Storage Gen2.
 
-  Viz [Vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+  Přečtěte si téma [Vytvoření účtu úložiště pro použití s Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
-* Ujistěte se, že váš uživatelský účet má přiřazenou [roli Přispěvatel dat objektů BLOB úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) .
+* Ujistěte se, že váš uživatelský účet má přiřazenou [roli Přispěvatel dat objektů BLOB úložiště](../common/storage-auth-aad-rbac-portal.md) .
 
-* Nainstalujte AzCopy v10 za účelem. Viz [přenos dat pomocí AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* Nainstalujte AzCopy v10 za účelem. Viz [přenos dat pomocí AzCopy v10 za účelem](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
-  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
   > [!IMPORTANT]
   > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
 
-  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení do](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tohoto článku Vložte ID TENANTA, ID aplikace a hodnoty tajného klíče klienta do textového souboru. Budete je potřebovat brzy.
+  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení do](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) tohoto článku Vložte ID TENANTA, ID aplikace a hodnoty tajného klíče klienta do textového souboru. Budete je potřebovat brzy.
 
 ### <a name="download-the-flight-data"></a>Stažení letových údajů
 
 V tomto kurzu se k předvedení operace ETL používá letová data z statistiky předsednictví. Tato data musíte stáhnout, abyste mohli kurz dokončit.
 
-1. Přejít na [výzkum a inovativní správu technologií, statistiky dopravy](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Přejít na [výzkum a inovativní správu technologií, statistiky dopravy](https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ).
 
 2. Pokud chcete vybrat všechna datová pole, zaškrtněte políčko pro **soubor ve formátu ZIP** .
 
@@ -66,11 +66,11 @@ V tomto kurzu se k předvedení operace ETL používá letová data z statistiky
 
 V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  .
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
-2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření služby datacihly:
+2. V části **Azure Databricks služba** zadejte následující hodnoty pro vytvoření služby datacihly:
 
     |Vlastnost  |Popis  |
     |---------|---------|

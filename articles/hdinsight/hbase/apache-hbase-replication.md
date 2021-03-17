@@ -1,19 +1,16 @@
 ---
 title: HBA replikace clusteru ve virtuálních sítích – Azure HDInsight
 description: Naučte se, jak nastavit replikaci HBA z jedné verze HDInsight na jinou pro vyrovnávání zatížení, vysokou dostupnost, migraci a aktualizace s nulovými výpadky a zotavení po havárii.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085607"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946406"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
 
@@ -78,7 +75,7 @@ Některé pevně zakódované hodnoty v šabloně:
 | Název brány | vnet1gw |
 | Typ brány | Vpn |
 | Typ sítě VPN brány | RouteBased |
-| SKU brány | Základní |
+| SKU brány | Basic |
 | IP adresa brány | vnet1gwip |
 
 **Virtuální síť 2**
@@ -95,7 +92,7 @@ Některé pevně zakódované hodnoty v šabloně:
 | Název brány | vnet2gw |
 | Typ brány | Vpn |
 | Typ sítě VPN brány | RouteBased |
-| SKU brány | Základní |
+| SKU brány | Basic |
 | IP adresa brány | vnet1gwip |
 
 ## <a name="setup-dns"></a>Nastavení DNS
@@ -107,7 +104,7 @@ Aby bylo možné službu BIND nainstalovat, Yon musí najít veřejnou IP adresu
 1. Otevřete [Azure Portal](https://portal.azure.com).
 2. Otevřete virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]**.  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy virtuálních počítačů DNS jsou *vnet1DNS* a *vnet2NDS*.
 3. Výběrem **vlastnosti** otevřete stránku vlastností virtuální sítě.
-4. Zapište si **veřejnou IP adresu**a taky ověřte **privátní IP adresu**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
+4. Zapište si **veřejnou IP adresu** a taky ověřte **privátní IP adresu**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
 5. Změňte servery DNS pro obě virtuální sítě tak, aby používaly výchozí servery DNS (poskytované Azure), aby příchozí a odchozí přístup mohly stahovat balíčky pro instalaci vazby v následujících krocích.
 
 K instalaci vazby použijte následující postup:
@@ -124,7 +121,7 @@ K instalaci vazby použijte následující postup:
     > Existuje mnoho způsobů, jak tento `ssh` nástroj získat. V systému Linux, UNIX a macOS je k dispozici jako součást operačního systému. Pokud používáte systém Windows, vezměte v úvahu jednu z následujících možností:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
-    > * [Bash na Ubuntu ve Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Bash na Ubuntu ve Windows 10](/windows/wsl/about)
     > * [Githttps://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSHhttps://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
@@ -170,7 +167,7 @@ K instalaci vazby použijte následující postup:
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__a pak __Zadejte__.
+    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__ a pak __Zadejte__.
 
 4. Z relace SSH použijte následující příkaz:
 
@@ -207,7 +204,7 @@ K instalaci vazby použijte následující postup:
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__a pak __Zadejte__.
+    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__ a pak __Zadejte__.
 
 6. K zahájení vazby použijte následující příkaz:
 
@@ -246,7 +243,7 @@ Pokud chcete virtuální síť nakonfigurovat tak, aby místo rekurzivního pře
 
 1. V [Azure Portal](https://portal.azure.com)vyberte virtuální síť a pak vyberte __servery DNS__.
 
-2. Vyberte __vlastní__a zadejte __interní IP adresu__ vlastního serveru DNS. Nakonec vyberte __Uložit__.
+2. Vyberte __vlastní__ a zadejte __interní IP adresu__ vlastního serveru DNS. Nakonec vyberte __Uložit__.
 
 6. Otevřete virtuální počítač serveru DNS v vnet1 a klikněte na **restartovat**.  Aby se konfigurace služby DNS projevila, musíte restartovat všechny virtuální počítače ve virtuální síti.
 7. Opakováním kroků nakonfigurujte vlastní server DNS pro vnet2.
@@ -264,7 +261,7 @@ Vytvořte cluster [Apache HBA](https://hbase.apache.org/) v každé z těchto dv
 - **Název skupiny prostředků**: použijte stejný název skupiny prostředků jako při vytváření virtuálních sítí.
 - **Typ clusteru**: HBA
 - **Verze**: HBA – 1.1.2 (HDI 3,6)
-- **Umístění**: použijte stejné umístění jako virtuální síť.  Ve výchozím nastavení je vnet1 *západní USA*a vnet2 je *východní USA*.
+- **Umístění**: použijte stejné umístění jako virtuální síť.  Ve výchozím nastavení je vnet1 *západní USA* a vnet2 je *východní USA*.
 - **Úložiště**: vytvořte nový účet úložiště pro cluster.
 - **Virtuální síť** (z pokročilého nastavení na portálu): vyberte vnet1, který jste vytvořili v posledním postupu.
 - **Podsíť**: výchozí název, který se používá v šabloně, je **SUBNET1**.
@@ -287,7 +284,7 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
 
 **Povolení replikace HBA z Azure Portal**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Otevřete zdrojový cluster HBA.
 3. V nabídce cluster Vyberte **akce skriptu**.
 4. V horní části stránky vyberte **Odeslat novou**.
@@ -309,7 +306,7 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
 
 Požadované argumenty:
 
-|Name|Description|
+|Název|Popis|
 |----|-----------|
 |-s,--src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -318,7 +315,7 @@ Požadované argumenty:
 
 Nepovinné argumenty:
 
-|Name|Description|
+|Název|Popis|
 |----|-----------|
 |-Su,--src-Ambari-User | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
 |-du,--DST-Ambari-User | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
@@ -413,4 +410,3 @@ V tomto článku jste zjistili, jak nastavit replikaci Apache HBA v rámci virtu
 * [Začínáme s Apache HBA v HDInsight](./apache-hbase-tutorial-get-started-linux.md)
 * [Přehled adaptérů HDInsight Apache HBA](./apache-hbase-overview.md)
 * [Vytváření clusterů Apache HBA v Azure Virtual Network](./apache-hbase-provision-vnet.md)
-

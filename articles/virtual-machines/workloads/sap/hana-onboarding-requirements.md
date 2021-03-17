@@ -6,19 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16608facab27fc18924cf3a5c6da7e35db048f76
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617006"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675616"
 ---
 # <a name="onboarding-requirements"></a>Požadavky na onboarding
 
@@ -61,7 +61,7 @@ Pro matrici kompatibility operačního systému a verze firmwaru nebo ovladače 
 > Pro jednotky typu II se v tomto okamžiku podporuje pouze verze operačního systému SLES 12 SP2. 
 
 
-**Database**
+**Databáze**
 
 - Licence a součásti instalace softwaru pro SAP HANA (platforma nebo Enterprise Edition).
 
@@ -70,7 +70,7 @@ Pro matrici kompatibility operačního systému a verze firmwaru nebo ovladače 
 - Licence a součásti instalace softwaru pro jakékoli aplikace SAP, které se připojují k SAP HANA a související smlouvy SAP Support.
 - Součásti pro licence a instalace softwaru pro jakékoli aplikace bez SAP používané v prostředí SAP HANA v Azure (velké instance) a související smlouvy o podpoře.
 
-**Dovedností**
+**Dovednosti**
 
 - Využijte a znalosti Azure IaaS a jejích komponent.
 - Vyzkoušejte a Naučte se, jak nasadit úlohu SAP v Azure.

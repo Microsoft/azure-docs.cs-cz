@@ -3,7 +3,7 @@ title: Měření reálných uživatelů s webovými stránkami – Azure Traffic
 description: V tomto článku se dozvíte, jak nastavit webové stránky, aby odesílaly Měření reálných uživatelů do Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f297057549263cd62783778b363665bfb4368c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb104fd9cfc3c4ffddb82e4cf442e94c4650550
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711642"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184554"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Odeslání Měření reálných uživatelů do Azure Traffic Manager pomocí webových stránek
 
@@ -31,7 +31,7 @@ Měření, která provedete a odešlete Traffic Manager z klientské aplikace, j
 Získání klíče rumu pomocí Azure Portal:
 1. V prohlížeči se přihlaste k webu Azure Portal. Pokud ještě účet nemáte, můžete si zaregistrovat zkušební verzi na měsíc zdarma.
 2. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. V okně profil Traffic Manager klikněte v části **Nastavení**na **měření reálných uživatelů** .
+3. V okně profil Traffic Manager klikněte v části **Nastavení** na **měření reálných uživatelů** .
 4. Klikněte na **vygenerovat klíč** a vytvořte nový klíč rumu.
  
    ![Generovat klíč Měření reálných uživatelů](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
@@ -68,5 +68,4 @@ Po získání klíče rumu je dalším krokem vložení tohoto zkopírovaného J
 - Další informace o [měření reálných uživatelů](traffic-manager-rum-overview.md)
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
-- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
-
+- Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)

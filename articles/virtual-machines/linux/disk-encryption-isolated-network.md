@@ -1,19 +1,20 @@
 ---
 title: Azure Disk Encryption v izolované síti
-description: Tento článek popisuje tipy pro řešení potíží pro Microsoft Azure šifrování disku pro virtuální počítače se systémem Linux.
+description: V tomto článku se seznámíte s tipy pro řešení potíží pro Microsoft Azure šifrování disků na virtuálních počítačích se systémem Linux.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ca50d137ef7e6378d2bf8d0ab03127d49a9a88
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373585"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553047"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption v izolované síti
 
@@ -25,7 +26,7 @@ Azure Disk Encryption závisí na řadě komponent, které se obvykle instalují
 
 Tady jsou balíčky nutné pro každou distribuci. Úplný seznam podporovaných distribuce a typů svazků najdete v tématu [podporované virtuální počítače a operační systémy](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
-- **Ubuntu 14,04, 16,04, 18,04**: lsscsi, psmisc, at, cryptsetup-bin, Python – parted, Python-6, procps
+- **Ubuntu 14,04, 16,04, 18,04**: lsscsi, psmisc, at, cryptsetup-bin, Python – parted, Python-šest, procps, GRUB-PC-bin
 - **CentOS 7,2-7,7**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup, cryptsetup-reencrypter, pyparted, procps-NG, util – Linux
 - **CentOS 6,8**: lsscsi, psmisc, LVM2, UUID, at, cryptsetup-reencrypted, pyparted, Python-šest
 - **RedHat 7,2-7,7**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup, cryptsetup-reencrypt, procps-NG, util-Linux
@@ -36,14 +37,14 @@ Pokud je v Red Hat vyžadován proxy server, je nutné zajistit, aby byly správ
 
 Pokud jsou balíčky nainstalovány ručně, je nutné je také ručně upgradovat při vydání nových verzí.
 
-## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 Všechna použitá nastavení skupiny zabezpečení sítě musí stále umožňovat, aby koncový bod splňoval popsané požadavky na konfiguraci sítě pro šifrování disků.  Viz [Azure Disk Encryption: požadavky na síť](disk-encryption-overview.md#networking-requirements)
 
 ## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption s Azure AD (předchozí verze)
 
 Pokud používáte [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md), bude nutné ručně nainstalovat [knihovnu Azure Active Directory](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) pro všechny distribuce (kromě balíčků odpovídajících distribuce, jak je [uvedeno výše](#package-management)).
 
-Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
+Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování jsou uchovávány v oddílech 56 a 59 [Microsoft 365 adres URL a v dokumentaci rozsahů IP adres](/microsoft-365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 

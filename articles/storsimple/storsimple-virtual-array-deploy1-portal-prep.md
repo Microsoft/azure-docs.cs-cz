@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070329"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení StorSimple Virtual Array – Příprava Azure Portal
@@ -52,7 +52,7 @@ Kontrolní seznam konfigurace popisuje informace, které je třeba shromáždit 
 * Stáhněte si [Kontrolní seznam konfigurace souborového serveru StorSimple Virtual Array](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
 * Stáhněte si [Kontrolní seznam konfigurace serveru iSCSI Virtual Array StorSimple](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady najdete požadavky na konfiguraci pro službu StorSimple Device Manager, vaše virtuální pole StorSimple a síť datacenter.
 
@@ -127,7 +127,7 @@ Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky
 
 #### <a name="to-get-the-virtual-array-image"></a>Získání obrázku virtuálního pole
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). 
 2. V Azure Portal klikněte na **procházet > Správce zařízení StorSimple**.
 3. Vyberte existující službu StorSimple Device Manager. V okně **StorSimple Device Manager** klikněte na **rychlé zprovoznění**. 
 4. Klikněte na odkaz odpovídající imagi, kterou chcete stáhnout z webu Microsoft Download Center. Soubory imagí mají velikost přibližně 4,8 GB.

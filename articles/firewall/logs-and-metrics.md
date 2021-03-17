@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086587"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596964"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
@@ -28,7 +28,7 @@ Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném č
 
 * **Protokol pravidel aplikace**
 
-   Protokol pravidel aplikací je uložený v účtu úložiště, streamované do Center událostí nebo odeslaný do Azure Monitor protokolů jenom v případě, že jste ho povolili pro každý Azure Firewall. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
+   Protokol pravidel aplikací je uložený v účtu úložiště, streamované do Center událostí nebo odeslaný do Azure Monitor protokolů jenom v případě, že jste ho povolili pro každý Azure Firewall. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Data jsou protokolována ve formátu JSON, jak je znázorněno v následujících příkladech:
 
    ```
    Category: application rule logs.
@@ -46,6 +46,18 @@ Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném č
     "properties": {
         "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
     }
+   }
+   ```
+
+   ```json
+   {
+     "category": "AzureFirewallApplicationRule",
+     "time": "2018-04-16T23:45:04.8295030Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallApplicationRuleLog",
+     "properties": {
+         "msg": "HTTPS request from 10.11.2.4:53344 to www.bing.com:443. Action: Allow. Rule Collection: ExampleRuleCollection. Rule: ExampleRule. Web Category: SearchEnginesAndPortals"
+     }
    }
    ```
 
@@ -72,6 +84,49 @@ Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném č
    }
 
    ```
+
+* **Protokol proxy serveru DNS**
+
+   Protokol proxy serveru DNS je uložený v účtu úložiště, streamování do Center událostí nebo odeslaný do Azure Monitor protokolů jenom v případě, že jste ho povolili pro každý Azure Firewall. Tento protokol sleduje zprávy DNS na serveru DNS nakonfigurovaném pomocí proxy serveru DNS. Data jsou protokolována ve formátu JSON, jak je znázorněno v následujících příkladech:
+
+
+   ```
+   Category: DNS proxy logs.
+   Time: log timestamp.
+   Properties: currently contains the full message.
+   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
+   ```
+
+   Nástup
+   ```json
+   {
+     "category": "AzureFirewallDnsProxy",
+     "time": "2020-09-02T19:12:33.751Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallDnsProxyLog",
+     "properties": {
+         "msg": "DNS Request: 11.5.0.7:48197 – 15676 AAA IN md-l1l1pg5lcmkq.blob.core.windows.net. udp 55 false 512 NOERROR - 0 2.000301956s"
+     }
+   }
+   ```
+
+   Nepovedlo se
+
+   ```json
+   {
+     "category": "AzureFirewallDnsProxy",
+     "time": "2020-09-02T19:12:33.751Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallDnsProxyLog",
+     "properties": {
+         "msg": " Error: 2 time.windows.com.reddog.microsoft.com. A: read udp 10.0.1.5:49126->168.63.129.160:53: i/o timeout”
+     }
+   }
+   ```
+
+   Formát zprávy:
+
+   `[client’s IP address]:[client’s port] – [query ID] [type of the request] [class of the request] [name of the request] [protocol used] [request size in bytes] [EDNS0 DO (DNSSEC OK) bit set in the query] [EDNS0 buffer size advertised in the query] [response CODE] [response flags] [response size] [response duration]`
 
 Protokoly můžete ukládat třemi způsoby:
 
@@ -115,21 +170,21 @@ Pro Azure Firewall jsou k dispozici následující metriky:
   - Stav: možné hodnoty jsou *v pořádku*, *snížené*, *není v pořádku.*
   - Důvod: označuje důvod pro odpovídající stav brány firewall. 
 
-     Pokud se používají porty SNAT > 95%, považují se za vyčerpané a stav je 50% se stavem =**degradované** a důvod =**SNAT port**. Brána firewall zajišťuje zpracování provozu a stávající připojení nejsou ovlivněná. Nová připojení ale nemusí být navázána občas.
+     Pokud se používají porty SNAT > 95%, považují se za vyčerpané a stav je 50% se stavem =**degradované** a důvod =**SNAT port**. Brána firewall dál zpracovává provoz a stávající připojení nejsou ovlivněná. Občas však není možné navazovat nová připojení.
 
      Pokud se používají porty SNAT < 95%, považuje se brána firewall za v pořádku a stav se zobrazí jako 100%.
 
-     Pokud se neoznamuje žádné použití portů SNAT, stav se zobrazí jako 0%. 
+     Pokud se nehlásí žádné využití portů SNAT, zobrazí se 0% stav. 
 
 - **Využití portů SNAT** – procento portů SNAT využívaných bránou firewall.
 
     Jednotka: procenta
 
-   Když do brány firewall přidáte další veřejné IP adresy, budou k dispozici další porty SNAT, čímž se sníží využití portů SNAT. Kromě toho, když se brána firewall škáluje z různých důvodů (například CPU nebo propustnost), budou k dispozici i další porty SNAT. Vzhledem k tomu, že procento využití portů SNAT může být efektivní, aniž byste museli přidávat žádné veřejné IP adresy, a to jenom proto, že se služba škáluje. Můžete přímo řídit počet dostupných veřejných IP adres a zvýšit tak porty, které jsou k dispozici v bráně firewall. Škálování brány firewall ale nemůžete přímo ovládat. V současné době se porty SNAT přidávají jenom pro prvních pět veřejných IP adres.   
+   Když do brány firewall přidáte další veřejné IP adresy, zvýší se počet dostupných portů SNAT a sníží se jejich využití. Další porty SNAT budou k dispozici také po škálování brány firewall na více instancí z jiných důvodů (například kvůli procesoru nebo propustnosti). Vzhledem k tomu, že procento využití portů SNAT může být efektivní, aniž byste museli přidávat žádné veřejné IP adresy, a to jenom proto, že se služba škáluje. Můžete přímo řídit počet dostupných veřejných IP adres a zvýšit tak porty, které jsou k dispozici v bráně firewall. Škálování brány firewall ale nemůžete přímo ovládat.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak monitorovat protokoly Azure Firewall a metriky, najdete v tématu [kurz: monitorování protokolů Azure firewall](tutorial-diagnostics.md).
+- Informace o tom, jak monitorovat protokoly Azure Firewall a metriky, najdete v tématu [kurz: monitorování protokolů Azure firewall](./firewall-diagnostics.md).
 
-- Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md).
+- Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/essentials/data-platform-metrics.md).

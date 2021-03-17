@@ -1,25 +1,27 @@
 ---
-title: Kódování vlastní transformace pomocí Media Services V3 Azure CLI | Microsoft Docs
+title: Kódování rozhraní příkazového řádku vlastní transformace
 description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí rozhraní příkazového řádku Azure CLI.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a91123b22eaef4cbaf2e96c93200777c8a85abab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503884"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092385"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Jak kódovat pomocí vlastní transformace – Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení, a to na základě doporučených postupů v oboru, jak je znázorněno v rychlém startu [souborů streamování](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
@@ -35,8 +37,6 @@ Při vytváření vlastních přednastavení platí následující požadavky:
 [Vytvořte účet Media Services](./create-account-howto.md).
 
 Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
-
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-custom-preset"></a>Definování vlastní předvolby
 

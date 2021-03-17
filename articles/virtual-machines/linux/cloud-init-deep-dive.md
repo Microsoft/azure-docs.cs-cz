@@ -2,18 +2,18 @@
 title: Principy Cloud-init
 description: Hlubokou podrobně pro porozumění zřizování virtuálního počítače Azure pomocí Cloud-init.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042067"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559439"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Začnete hlouběji do cloudu – init
 Pokud se chcete dozvědět víc o [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) nebo je vyřešit na hlubší úrovni, potřebujete pochopit, jak to funguje. Tento dokument popisuje důležité části a vysvětluje konkrétní informace o Azure.
@@ -21,7 +21,7 @@ Pokud se chcete dozvědět víc o [Cloud-init](https://cloudinit.readthedocs.io/
 Když je Cloud-init součástí generalizované image a z této image se vytvoří virtuální počítač, zpracuje se konfigurace a spustí se během počátečního spuštění během 5 fází. Tyto fáze se zobrazí tak, jak vám ukáže, v jakém bodě Cloud-init budou aplikovány konfigurace. 
 
 
-## <a name="understand-cloud-init-configuration"></a>Principy konfigurace Cloud-init
+## <a name="understand-cloud-init-configuration"></a>Principy konfigurace Cloud-Init
 Pokud konfigurujete virtuální počítač, který se má spustit na platformě, znamená to, že Cloud-init potřebuje použít více konfigurací, jako je například příjemce obrazu, hlavní konfigurace, které budete používat, jsou `User data` (CustomData), který podporuje více formátů, jsou zde popsány [zde](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats). Máte také možnost Přidat a spustit skripty (/var/lib/Cloud/Scripts) pro další konfiguraci. níže se tento postup zabývá podrobněji.
 
 Některé konfigurace se už vloženými do Azure Marketplace imagí, které jsou součástí nástroje Cloud-init, například:
@@ -71,9 +71,9 @@ Při zřizování pomocí Cloud-init je k dispozici 5 fází spouštění, konfi
 5. [Finální fáze Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#final): v této konečné fázi se spustí moduly v `cloud_final_modules` , které jsou uvedené v/etc/Cloud/Cloud.cfg. Moduly, které je potřeba spustit pozdě v procesu spouštění, jako je instalace balíčků a spouštění skriptů atd. 
 
    -   Během této fáze můžete spouštět skripty jejich umístěním do adresářů v části `/var/lib/cloud/scripts` :
-   - `per-boot`-skripty v tomto adresáři se spouštějí při každém restartování.
-   - `per-instance`-skripty v tomto adresáři se spouštějí při prvním spuštění nové instance.
-   - `per-once`-skripty v tomto adresáři se spouští jenom jednou.
+   - `per-boot` -skripty v tomto adresáři se spouštějí při každém restartování.
+   - `per-instance` -skripty v tomto adresáři se spouštějí při prvním spuštění nové instance.
+   - `per-once` -skripty v tomto adresáři se spouští jenom jednou.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,15 +3,15 @@ title: Podporované prostředky pro Azure Red Hat OpenShift 3.11
 description: Informace o tom, které oblasti Azure a velikosti virtuálních počítačů podporuje Microsoft Azure Red Hat OpenShift
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad0837ae110b84cdff690fe76e13923a0ab60996
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203671"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635604"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Prostředky Azure Red Hat OpenShift
 

@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b73e79c2f7bbd37b640d3e83d98be68d85ed3b5e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735365"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Použití rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -25,11 +25,11 @@ HDInsight poskytuje přístup k distribuovanému kontejneru, který je místně 
 Další informace o HDFS CLI najdete v [oficiální dokumentaci](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) a v příručce k [oprávnění HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html) .
 
 >[!NOTE]
->Pokud místo HDInsight používáte Azure Databricks a chcete s daty pracovat pomocí rozhraní příkazového řádku, můžete k interakci se systémem souborů datacihly použít CLI datacihly. Viz [datacihly CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+>Pokud místo HDInsight používáte Azure Databricks a chcete s daty pracovat pomocí rozhraní příkazového řádku, můžete k interakci se systémem souborů datacihly použít CLI datacihly. Viz [datacihly CLI](/azure/databricks/dev-tools/cli/).
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Použití rozhraní příkazového řádku HDFS s clusterem HDInsight Hadoop v systému Linux
 
-Nejdřív navažte [vzdálený přístup ke službám](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). Pokud vyberete [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) , ukázkový kód PowerShellu by vypadal takto:
+Nejdřív navažte [vzdálený přístup ke službám](../../hdinsight/hdinsight-hadoop-linux-information.md#remote-access-to-services). Pokud vyberete [SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) , ukázkový kód PowerShellu by vypadal takto:
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -118,6 +118,6 @@ Viz [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-com
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití účtu s možností Azure Data Lake Storage Gen2 v Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
+* [Použití účtu s možností Azure Data Lake Storage Gen2 v Azure Databricks](./data-lake-storage-use-databricks-spark.md)
 
-* [Další informace o seznamech řízení přístupu k souborům a adresářům](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [Další informace o seznamech řízení přístupu k souborům a adresářům](./data-lake-storage-access-control.md)

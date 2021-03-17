@@ -9,12 +9,13 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 6ea03b1ff2e2a1e9b7d5256a0f1417c5ac113e0e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 21fc7e6de38a98e4f0853cf513f9f3441c7e2106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735348"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu
 
@@ -25,6 +26,8 @@ Pomocí modulu Azure PowerShell můžete vytvářet a spravovat prostředky Azur
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+Také budete potřebovat roli Přispěvatel dat objektů BLOB úložiště ke čtení, zápisu a odstraňování kontejnerů Azure Storage a objektů BLOB.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -82,7 +85,7 @@ Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
 
 Než budete pokračovat, můžete nahrát libovolné množství souborů.
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+## <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Získat seznam objektů BLOB v kontejneru pomocí [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob). Tento příklad zobrazí pouze názvy nahraných objektů blob.
 
@@ -112,7 +115,7 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Přenos dat pomocí AzCopy
 
-Nástroj příkazového řádku AzCopy nabízí vysoce výkonný a skriptový přenos dat pro Azure Storage. AzCopy můžete použít k přenosu dat do a ze služby Blob Storage a souborů Azure. Další informace o AzCopy v10 za účelem, nejnovější verzi AzCopy, najdete v tématu [Začínáme s AzCopy](../common/storage-use-azcopy-v10.md). Další informace o použití AzCopy v10 za účelem s úložištěm objektů BLOB najdete v tématu [přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md).
+Nástroj příkazového řádku AzCopy nabízí vysoce výkonný a skriptový přenos dat pro Azure Storage. AzCopy můžete použít k přenosu dat do a ze služby Blob Storage a souborů Azure. Další informace o AzCopy v10 za účelem, nejnovější verzi AzCopy, najdete v tématu [Začínáme s AzCopy](../common/storage-use-azcopy-v10.md). Další informace o použití AzCopy v10 za účelem s úložištěm objektů BLOB najdete v tématu [přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-v10.md#transfer-data).
 
 Následující příklad používá AzCopy k nahrání místního souboru do objektu BLOB. Nezapomeňte nahradit vzorové hodnoty vlastními hodnotami:
 

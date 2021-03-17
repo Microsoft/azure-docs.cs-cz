@@ -1,17 +1,17 @@
 ---
 title: Automatizace migrace počítačů migrace v Azure Migrate
 description: Popisuje, jak používat skripty k migraci velkého počtu počítačů v Azure Migrate
-author: snehaamicrosoft
-ms.service: azure-migrate
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 04/01/2019
-ms.author: snehaa
-ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109837"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754228"
 ---
 # <a name="scale-migration-of-vms"></a>Škálování migrace virtuálních počítačů 
 
@@ -25,7 +25,7 @@ Skripty Site Recovery jsou k dispozici ke stažení na [Azure PowerShell Samples
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete, musíte provést následující kroky:
 - Ujistěte se, že je ve vašem předplatném Azure vytvořený trezor Site Recovery.
 - Ujistěte se, že je konfigurační server a procesový Server nainstalovaný ve zdrojovém prostředí a že je trezor schopný zjistit prostředí.

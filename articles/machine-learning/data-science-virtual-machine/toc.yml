@@ -6,7 +6,7 @@
   items:
     - name: Co je Data Science Virtual Machine (DVSM)?
       href: overview.md
-    - name: 'Nástroje, které jsou součástí prostředí Data Science Virtual Machine'
+    - name: Nástroje v Data Science Virtual Machine
       href: tools-included.md
 - name: Rychlé starty
   expanded: true
@@ -44,20 +44,28 @@
       href: vm-do-ten-things.md
     - name: Použití prostředí Data Science Virtual Machine s Linuxem
       href: linux-dsvm-walkthrough.md
-    - name: Vytvoření fondu Data Science Virtual Machine s automatickým škálováním
-      href: dsvm-pools.md
-    - name: Integrace se službou Active Directory
-      href: dsvm-common-identity.md
-    - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
-      href: dsvm-secure-access-keys.md
+    - name: Integrace s Azure Machine Learningem
+      items:
+        - name: Sledování experimentů
+          href: how-to-track-experiments.md
+    - name: Pokyny Enterprise
+      items:
+        - name: Vytvoření fondu Data Science Virtual Machine s automatickým škálováním
+          href: dsvm-pools.md
+        - name: Integrace se službou Active Directory
+          href: dsvm-common-identity.md
+        - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
+          href: dsvm-secure-access-keys.md
+    - name: Upgrade prostředí Data Science Virtual Machine na Ubuntu 18.04
+      href: ubuntu-upgrade.md
 - name: Zdroje a prostředky
   items:
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-science-vm.html'
+      href: /answers/topics/azure-data-science-vm.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=dsvm'
     - name: Příručka pro vývojáře v R
-      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=%2fazure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: Referenční informace
   items:
     - name: Data Science Virtual Machine s Ubuntu
@@ -66,5 +74,3 @@
       href: release-notes.md
     - name: Známé problémy
       href: reference-known-issues.md
-    - name: Oznámení o vyřazení
-      href: reference-deprecation.md

@@ -7,30 +7,30 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova, jovanpop
+ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708620"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788362"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Rychlý Start: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního prostředí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Tento rychlý Start ukazuje, jak se připojit ke spravované instanci Azure SQL pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z místního klientského počítače přes připojení typu Point-to-site. Informace o připojení typu Point-to-site najdete v tématu věnovaném [síti VPN typu Point-to-site](../../vpn-gateway/point-to-site-about.md).
+Tento rychlý Start ukazuje, jak se připojit ke spravované instanci Azure SQL pomocí [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) z místního klientského počítače přes připojení typu Point-to-site. Informace o připojení typu Point-to-site najdete v tématu věnovaném [síti VPN typu Point-to-site](../../vpn-gateway/point-to-site-about.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start:
 
-- Používá prostředky vytvořené v části [Vytvoření spravované instance](instance-create-quickstart.md) jako počáteční bod.
-- Vyžaduje PowerShell 5,1 a Azure PowerShell 1.4.0 nebo novější na místním klientském počítači. V případě potřeby si přečtěte pokyny k [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module).
-- Vyžaduje nejnovější verzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) na místním klientském počítači.
+- Používá prostředky vytvořené v části  [Vytvoření spravované instance](instance-create-quickstart.md) jako počáteční bod.
+- Vyžaduje PowerShell 5,1 a Azure PowerShell 1.4.0 nebo novější na místním klientském počítači. V případě potřeby si přečtěte pokyny k [instalaci modulu Azure PowerShell](/powershell/azure/install-az-ps#install-the-azure-powershell-module).
+- Vyžaduje nejnovější verzi [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) na místním klientském počítači.
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>Připojení brány VPN k virtuální síti
 
@@ -65,40 +65,40 @@ Tento rychlý start:
 
 ## <a name="create-a-vpn-connection"></a>Vytvoření připojení VPN
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete skupinu prostředků, ve které jste vytvořili bránu virtuální sítě, a pak otevřete prostředek brány virtuální sítě.
-3. Vyberte **Konfigurace Point-to-site** a pak vyberte **stáhnout klienta VPN**.
+3. Vyberte **Konfigurace Point-to-site** a pak vyberte **stáhnout klienta VPN** .
 
     ![Stáhnout klienta VPN](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. V místním klientském počítači rozbalte soubory ze souboru zip a pak otevřete složku s extrahované soubory.
 5. Otevřete složku **WindowsAmd64** a otevřete soubor **VpnClientSetupAmd64.exe** .
-6. Pokud se zobrazí zpráva o **počítači chráněná systémem Windows** , klikněte na tlačítko **Další informace** a pak klikněte na tlačítko **Spustit**.
+6. Pokud se zobrazí zpráva o **počítači chráněná systémem Windows** , klikněte na tlačítko **Další informace** a pak klikněte na tlačítko **Spustit** .
 
     ![Nainstalovat klienta VPN](./media/point-to-site-p2s-configure/vpn-client-defender.png)
-7. V dialogovém okně Ovládání uživatelského účtu pokračujte kliknutím na **Ano**.
+7. V dialogovém okně Ovládání uživatelského účtu pokračujte kliknutím na **Ano** .
 8. V dialogovém okně odkazujícím na virtuální síť vyberte **Ano** pro instalaci klienta VPN pro virtuální síť.
 
 ## <a name="connect-to-the-vpn-connection"></a>Připojení k síti VPN
 
-1. Pokud chcete navázat připojení k této virtuální síti, klikněte na síť **VPN** v **síti & Internetu** na místním klientském počítači a vyberte svou virtuální síť spravované instance SQL. Na následujícím obrázku je virtuální síť s názvem **MyNewVNet**.
+1. Pokud chcete navázat připojení k této virtuální síti, klikněte na síť **VPN** v **síti & Internetu** na místním klientském počítači a vyberte svou virtuální síť spravované instance SQL. Na následujícím obrázku je virtuální síť s názvem **MyNewVNet** .
 
     ![Připojení VPN](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Vyberte **Připojit**.
-3. V dialogovém okně vyberte **připojit**.
+2. Vyberte **Connect** (Připojit).
+3. V dialogovém okně vyberte **připojit** .
 
-    ![Připojení VPN](./media/point-to-site-p2s-configure/vpn-connection2.png)  
-4. Když se zobrazí výzva, že správce připojení potřebuje zvýšená oprávnění pro aktualizaci směrovací tabulky, vyberte **pokračovat**.
+    ![Snímek obrazovky, který zvýrazní tlačítko připojit](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+4. Když se zobrazí výzva, že správce připojení potřebuje zvýšená oprávnění pro aktualizaci směrovací tabulky, vyberte **pokračovat** .
 5. Chcete-li pokračovat, vyberte v dialogovém okně Řízení uživatelských účtů možnost **Ano** .
 
    Navázali jste připojení VPN k virtuální síti spravované instance SQL.
 
-    ![Připojení VPN](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![Snímek obrazovky, který zvýrazní připojenou zprávu po navázání připojení.](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>Připojení přes SSMS
 
 1. V místním klientském počítači otevřete SQL Server Management Studio.
 2. V dialogovém okně **připojit k serveru** zadejte do pole **název serveru** plně kvalifikovaný **název hostitele** vaší spravované instance.
-3. Vyberte **SQL Server ověřování**, zadejte svoje uživatelské jméno a heslo a pak vyberte **připojit**.
+3. Vyberte **SQL Server ověřování** , zadejte svoje uživatelské jméno a heslo a pak vyberte **připojit** .
 
     ![SSMS připojit](./media/point-to-site-p2s-configure/ssms-connect.png)  
 

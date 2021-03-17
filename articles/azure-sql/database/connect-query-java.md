@@ -8,26 +8,26 @@ ms.service: sql-database
 ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/05/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4269ac63b7c1af219d8158953abbc0919a2256b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 06/26/2020
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833585"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972670"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Použití jazyků Java a JDBC s Azure SQL Database
 
-Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/).
+Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure SQL Database](/azure/sql-database/).
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
-- Podporovaná [sada Java Development Kit](https://aka.ms/azure-jdks), verze 8 (obsažená v Azure Cloud Shell).
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
+- Podporovaná [sada Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 (obsažená v Azure Cloud Shell).
 - Nástroj pro sestavení [Apache Maven](https://maven.apache.org/)
 
 ## <a name="prepare-the-working-environment"></a>Příprava pracovního prostředí
@@ -45,11 +45,11 @@ AZ_SQL_SERVER_PASSWORD=<YOUR_AZURE_SQL_PASSWORD>
 AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 ```
 
-Zástupné symboly nahraďte následujícími hodnotami, které se používají v celém tomto článku:
+Zástupné symboly nahraďte následujícími hodnotami, které se používají v tomto článku:
 
 - `<YOUR_DATABASE_NAME>`: Název vašeho serveru Azure SQL Database. Měl by být jedinečný v rámci Azure.
-- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. `eastus`Ve výchozím nastavení můžete použít, ale doporučujeme, abyste nakonfigurovali oblast blíže k umístění, kde žijete. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
-- `<AZ_SQL_SERVER_PASSWORD>`: Heslo serveru Azure SQL Database. Heslo by mělo mít minimálně osm znaků. Znaky by měly být ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0-9) a jiné než alfanumerické znaky (!, $, #,% a tak dále).
+- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. Standardně můžete použít `eastus`, ale doporučujeme nakonfigurovat oblast blíže k místu, kde se nacházíte. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
+- `<AZ_SQL_SERVER_PASSWORD>`: Heslo serveru Azure SQL Database. Toto heslo by mělo mít minimálně osm znaků. Znaky by měly pocházet z následujících tří kategorií: Velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % atd.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: IP adresa místního počítače, ze kterého spouštíte aplikaci Java. Jedním pohodlným způsobem, jak ho najít, je ukázat svůj prohlížeč na [whatismyip.Akamai.com](http://whatismyip.akamai.com/).
 
 Dále vytvořte skupinu prostředků pomocí následujícího příkazu:
@@ -62,14 +62,14 @@ az group create \
 ```
 
 > [!NOTE]
-> Nástroj používáme `jq` k zobrazení dat JSON a k lepší čitelnosti. Tento nástroj je ve výchozím nastavení nainstalován na [Azure Cloud Shell](https://shell.azure.com/). Pokud tento nástroj nechcete, můžete bezpečně odebrat `| jq` část všech příkazů, které budeme používat.
+> Nástroj používáme `jq` k zobrazení dat JSON a k lepší čitelnosti. Tento nástroj je ve výchozím nastavení nainstalován na [Azure Cloud Shell](https://shell.azure.com/). Pokud tento nástroj nepoužíváte, můžete ve všech příkazech, které budeme používat, klidně odebrat část `| jq`.
 
 ## <a name="create-an-azure-sql-database-instance"></a>Vytvoření instance Azure SQL Database
 
 První věc, kterou vytvoříme, je spravovaný server Azure SQL Database.
 
 > [!NOTE]
-> Podrobnější informace o vytváření Azure SQL Databasech serverů najdete v tématu [rychlý Start: vytvoření databáze Azure SQL Database s jedinou databází](/azure/sql-database/sql-database-single-database-get-started).
+> Podrobnější informace o vytváření Azure SQL Databasech serverů najdete v tématu [rychlý Start: vytvoření databáze Azure SQL Database s jedinou databází](./single-database-create-quickstart.md).
 
 V [Azure Cloud Shell](https://shell.azure.com/)spusťte následující příkaz:
 
@@ -87,7 +87,7 @@ Tento příkaz vytvoří server Azure SQL Database.
 
 ### <a name="configure-a-firewall-rule-for-your-azure-sql-database-server"></a>Konfigurace pravidla brány firewall pro Azure SQL Database Server
 
-Instance Azure SQL Database jsou ve výchozím zabezpečení zabezpečené. Mají bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
+Instance Azure SQL Database jsou ve výchozím zabezpečení zabezpečené. Obsahuje bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
 
 Vzhledem k tomu, že jste místní IP adresu nakonfigurovali na začátku tohoto článku, můžete bránu firewall serveru otevřít spuštěním následujícího příkazu:
 
@@ -137,7 +137,7 @@ Pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) vytvo�
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>8.2.2.jre8</version>
+            <version>7.4.1.jre8</version>
         </dependency>
     </dependencies>
 </project>
@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BIT);
 ```
 
-## <a name="code-the-application"></a>Kódování aplikace
+## <a name="code-the-application"></a>Vytvoření kódu aplikace
 
 ### <a name="connect-to-the-database"></a>Připojte se k databázi.
 
@@ -484,7 +484,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
 
-Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
+Gratulujeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 
@@ -498,4 +498,4 @@ az group delete \
 
 - [Návrh první databáze v Azure SQL Database](design-first-database-tutorial.md)  
 - [Ovladač Microsoft JDBC pro SQL Server](https://github.com/microsoft/mssql-jdbc)  
-- [Hlášení problémů / kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Hlášení problémů / kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)

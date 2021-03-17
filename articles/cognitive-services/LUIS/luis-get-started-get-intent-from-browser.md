@@ -1,16 +1,18 @@
 ---
-title: 'Rychlý Start: dotaz na předpověď s prohlížečem – LUIS'
-description: V tomto rychlém startu pomocí dostupné veřejné aplikace LUIS určíte záměr uživatele z konverzačního textu v prohlížeči.
+title: Dotazování na předpovědi pomocí prohlížeče – LUIS
+description: V tomto článku pomocí dostupné veřejné aplikace LUIS určíte záměr uživatele z konverzačního textu v prohlížeči.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/21/2020
-ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.date: 11/30/2020
+ms.openlocfilehash: a3bad4ab69f6950f83db9cf1f49cfa4cb7c7b5f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245991"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040120"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Rychlý Start: modul runtime předpovědi dotazu s uživatelským textem
+# <a name="how-to-query-the-prediction-runtime-with-user-text"></a>Postup dotazování prediktivního modulu runtime s uživatelským textem
 
 Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobrazte si výsledek předpovědi ve webovém prohlížeči.
 

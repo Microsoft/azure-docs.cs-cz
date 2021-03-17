@@ -1,20 +1,22 @@
 ---
 title: Otevření portů k virtuálnímu počítači pomocí Azure PowerShell
-description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač s Windows pomocí režimu nasazení Azure Resource Manager a Azure PowerShell
+description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač pomocí Azure PowerShell
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: bae6da2e299065bada3b4e8a9657f00ef07e138b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8390b5c779e6aa053e1af2754c436dd51e410b06
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075560"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550412"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Postup otevření portů a koncových bodů pro virtuální počítač v Azure pomocí PowerShellu
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>Postup otevření portů a koncových bodů k virtuálnímu počítači pomocí PowerShellu
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Rychlé příkazy
@@ -26,7 +28,7 @@ Přihlaste se ke svému účtu Azure:
 Connect-AzAccount
 ```
 
-V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNetworkSecurityGroup*a *myVnet*.
+V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNetworkSecurityGroup* a *myVnet*.
 
 Vytvořte pravidlo pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy *tcp* na portu *80*:
 
@@ -90,5 +92,5 @@ Pro webové aplikace s vysokou dostupností byste měli své virtuální počít
 V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů HTTP. Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
 
 * [Přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-* [Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
+* [Co je skupina zabezpečení sítě?](../../virtual-network/network-security-groups-overview.md)
 * [Přehled Azure Load Balancer](../../load-balancer/load-balancer-overview.md)

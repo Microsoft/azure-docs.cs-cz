@@ -1,4 +1,4 @@
-- name: Dokumentace uživatelské nápovědy
+- name: Dokumentace k nápovědě pro uživatele
   href: index.yml
 - name: Nápověda k dvoustupňovému ověřování
   items:
@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: Zálohování a obnovení vašich účtů
       href: user-help-auth-app-backup-recovery.md
+    - name: Import hesel do ověřovací aplikace
+      href: user-help-authenticator-app-import-passwords.md
     - name: Nejčastější dotazy
       href: user-help-auth-app-faq.md
 - name: Nápověda k portálu Můj účet
@@ -70,6 +72,10 @@
       href: my-account-portal-sign-ins-page.md
     - name: Změna nastavení portálu
       href: my-account-portal-settings.md
+    - name: Najít správce mého účtu
+      href: my-account-find-administrator.md
+    - name: Přepnutí organizací
+      href: cross-tenant-switcher.md
 - name: Nápověda k bezpečnostním údajům
   items:
     - name: Přidání bezpečnostních údajů během přihlašování
@@ -106,12 +112,12 @@
   items:
     - name: Přihlášení k portálu Moje aplikace a jeho používání
       href: my-apps-portal-end-user-access.md
-    - name: Aktualizace informací o profilu a účtu
-      href: my-apps-portal-end-user-update-profile.md
     - name: Aktualizace informací o skupinách
       href: my-apps-portal-end-user-groups.md
     - name: Uspořádání aplikací pomocí kolekcí
       href: my-applications-portal-workspaces.md
+    - name: Náhled kolekcí v sekci Moje aplikace
+      href: my-apps-portal-user-collections.md
     - name: Úpravy nebo odvolání oprávnění aplikace
       href: my-applications-portal-permissions-saved-accounts.md
     - name: Provedení vlastních kontrol přístupu

@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504224"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
@@ -103,7 +103,7 @@ Pokud používáte server základní technologie Hyper-V, Stáhněte instalačn�
 
     `AzureSiteRecoveryProvider.exe /x:. /q`
  
-2. Spusťte `.\setupdr.exe /i`. Výsledky jsou protokolovány do%Programdata%\ASRLogs\DRASetupWizard.log.
+2. Spusťte příkaz `.\setupdr.exe /i`. Výsledky jsou protokolovány do%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Zaregistrujte server spuštěním tohoto příkazu:
 

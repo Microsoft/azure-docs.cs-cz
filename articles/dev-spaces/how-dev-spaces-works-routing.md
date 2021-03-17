@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: V této části najdete popis procesů, které Azure Dev Spaces výkonu a způsobu fungování směrování.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2d2c6f336222b4ae0907d6579289a8cad8d73aa6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213413"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977965"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Jak funguje směrování s Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Po spuštění projektu ve vývojovém prostoru Azure Dev Spaces poskytuje další možnosti sítě a směrování pro váš projekt.
 
@@ -64,11 +66,7 @@ Při použití *azureuser*budou všechny požadavky na *službu* směrovány do 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit některé příklady, jak Azure Dev Spaces používá směrování k zajištění rychlé iterace a vývoje, přečtěte si téma [jak místní proces s Kubernetes funguje][how-it-works-local-process-kubernetes], [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging]a [Akce GitHubu & službě Azure Kubernetes][pr-flow].
+Příklad toho, jak Azure Dev Spaces používá směrování k zajištění rychlé iterace a vývoje, najdete v tématu [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging].
 
 
-[helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
-[pr-flow]: how-to/github-actions.md
-[troubleshooting]: troubleshooting.md

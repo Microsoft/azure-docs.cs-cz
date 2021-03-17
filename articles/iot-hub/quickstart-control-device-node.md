@@ -14,14 +14,15 @@ ms.custom:
 - seo-javascript-october2019
 - mqtt
 - 'Role: Cloud Development'
-- devx-track-javascript
+- devx-track-js
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 5f3064b9be35d9b9d02be3e18469ed12b33757a6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 460ac94e8e72659614eac9477fbad76ce12b16fb
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421548"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070712"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node.js k řízení zařízení připojeného ke službě Azure IoT Hub
 
@@ -29,31 +30,23 @@ ms.locfileid: "87421548"
 
 V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě Node.js aplikace: aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace a back-endové aplikace, která volá přímé metody na simulovaném zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * [Node.js 10 +](https://nodejs.org).
 
+    Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [Vzorový Node.js projekt](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip).
 
 * Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
-
-```cmd/sh
-node --version
-```
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
-
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy specifické pro IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -85,7 +78,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyNodeDevice \
       --output table
@@ -102,7 +95,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string \
+    az iot hub connection-string show \
       --policy-name service --name {YourIoTHubName} --output table
 
     ```

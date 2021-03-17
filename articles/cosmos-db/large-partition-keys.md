@@ -3,17 +3,20 @@ title: Vytvoření kontejnerů Azure Cosmos s velkým klíčem oddílu
 description: Naučte se, jak vytvořit kontejner ve Azure Cosmos DB s velkým klíčem oddílu pomocí Azure Portal a různých sad SDK.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 853d3fa79436d9af0119aada86d283f9970d4ef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262799"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339287"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Vytváření kontejnerů s velkým klíčem oddílu
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB používá schéma dělení na základě hodnoty hash k zajištění horizontálního škálování dat. Všechny kontejnery Azure Cosmos vytvořené před může 3 2019 použít funkci hash, která vypočítá hodnotu hash na základě prvních 100 bajtů klíče oddílu. Pokud existuje více klíčů oddílů, které mají stejné prvních 100 bajtů, pak se tyto logické oddíly považují za stejný logický oddíl služby. To může vést k problémům, jako je nesprávná kvóta velikosti oddílu a jedinečné indexy použité v rámci klíčů oddílu. Pro vyřešení tohoto problému jsou představeny klíče s velkými oddíly. Azure Cosmos DB teď podporuje velké klíče oddílů s hodnotami až do 2 KB.
 
@@ -82,4 +85,4 @@ V současné době nelze v nástroji Power BI a Azure Logic Apps použít kontej
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 * [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
-* [Práce s účtem Azure Cosmos](account-overview.md)
+* [Práce s účtem Azure Cosmos](./account-databases-containers-items.md)

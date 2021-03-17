@@ -3,7 +3,7 @@ title: Azure Media Services nejčastějších dotazech
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 73b24de0e66ca8fbe2097f7da39b64aaea8b1ac4
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 220aae64bd9ec493af8c8ee61901e27027dc9798
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057989"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013376"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V2
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek se zabývá nejčastějšími dotazy, které vyvolala komunita uživatelů Azure Media Services (AMS).
 

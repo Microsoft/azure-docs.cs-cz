@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f2f01e2b58c997db08ad4427de7eef1ee3760c4a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016807"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Nastavení modulu PowerShell pro virtuální plochu Windows
 
@@ -41,6 +41,13 @@ Dále spusťte následující rutinu pro připojení k Azure:
 Connect-AzAccount
 ```
 
+>[!IMPORTANT]
+>Pokud se připojujete k portálu US Gov, spusťte místo toho tuto rutinu:
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
+
 Přihlášení k účtu Azure vyžaduje kód, který se vygeneruje při spuštění rutiny Connect. Pokud se chcete přihlásit, přejděte na adresu <https://microsoft.com/devicelogin> , zadejte kód a pak se přihlaste pomocí svých přihlašovacích údajů správce Azure.
 
 ```powershell
@@ -61,7 +68,7 @@ Pokud chcete po přihlášení změnit výchozí předplatné, spusťte tuto rut
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-Můžete ho také vybrat ze seznamu pomocí rutiny out-GridView:
+Můžete ho také vybrat ze seznamu pomocí rutiny Out-GridView:
 
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription

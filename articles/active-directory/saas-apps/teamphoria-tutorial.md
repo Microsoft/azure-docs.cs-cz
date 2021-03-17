@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8cf58f49cba1bcc77c96a0da2061a037bb62bf2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542339"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504738"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Teamphoria
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Teamphoria s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Teamphoria svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -80,7 +80,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<sub-domain>.teamphoria.com/login`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Teamphoria](https://www.teamphoria.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Teamphoria](https://www.teamphoria.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -100,7 +100,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -134,15 +134,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Přejděte na možnost **Nastavení správce** na levém panelu nástrojů a na kartě konfigurovat klikněte na **jednotné přihlašování** . otevře se okno Konfigurace jednotného přihlašování.
 
-    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Snímek obrazovky ukazuje nastavení správce, kde můžete vybrat jednotné přihlašování.](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. Kliknutím na **Přidat novou možnost zprostředkovatel identity** v pravém horním rohu otevřete formulář pro přidání nastavení pro jednotné přihlašování.
 
-    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Snímek obrazovky ukazuje, kde můžete vybrat přidat nového poskytovatele IDENTITY.](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. Zadejte podrobnosti do polí, jak je popsáno níže.
 
-    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Snímek obrazovky se zobrazí stránka, kde můžete zadat hodnoty, které jsou popsány.](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **ZOBRAZOVANÝ název**: Zadejte zobrazovaný název modulu plug-in na stránce správce.
 
@@ -168,11 +168,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k Teamphoria, musí se zřídit 
 
 1. Klikněte na možnost **Ruční Pozvánka** .
 
-    ![Pozvat lidi](./media/teamphoria-tutorial/admin_manage_add_users.png)
+    ![Snímek obrazovky zobrazuje možnost RUČNÍho pozvání.](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
 1. Na této stránce proveďte následující akci.
 
-    ![Pozvat lidi](./media/teamphoria-tutorial/manual_user_invite.png)
+    ![Snímek obrazovky se zobrazí na stránce ruční pozvání uživatele, kde můžete zadat jméno a e-mailovou adresu.](./media/teamphoria-tutorial/manual_user_invite.png)
 
     a. Do textového pole **e-mailová adresa** zadejte **e-mailovou adresu** uživatele, jako je B. Simon.
 
@@ -186,15 +186,14 @@ Aby se uživatelé Azure AD mohli přihlašovat k Teamphoria, musí se zřídit 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Teamphoria, měli byste se automaticky přihlásit k Teamphoria, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Teamphoria, měli byste se automaticky přihlásit k Teamphoria, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Teamphoria s Azure AD](https://aad.portal.azure.com/)
-

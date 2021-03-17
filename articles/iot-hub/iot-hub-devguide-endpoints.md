@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323039"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152175"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -26,7 +26,7 @@ ms.locfileid: "87323039"
 
 ## <a name="iot-hub-names"></a>Názvy IoT Hub
 
-Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s **přehledem** vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net` .
+Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s  **přehledem** vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncových bodů IoT Hub
 
@@ -55,6 +55,8 @@ Následující seznam popisuje koncové body:
   * *Načte a aktualizuje vlastnosti vlákna zařízení*. Zařízení používá tento koncový bod pro přístup k vlastnostem, které jsou v [zařízení](iot-hub-devguide-device-twins.md). Protokol HTTPS není podporován.
 
   * *Přijmout požadavky přímých metod*. Zařízení používá tento koncový bod k naslouchání požadavkům [přímých metod](iot-hub-devguide-direct-methods.md). Protokol HTTPS není podporován.
+
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 * **Koncové body služby**. Každé centrum IoT Hub zpřístupňuje sadu koncových bodů pro back-end řešení ke komunikaci s vašimi zařízeními. S jednou výjimkou se tyto koncové body zveřejňují jenom pomocí protokolů WebSockets [AMQP](https://www.amqp.org/) a AMQP. Koncový bod volání přímé metody se zveřejňuje prostřednictvím protokolu HTTPS.
   
@@ -93,7 +95,7 @@ Omezení počtu koncových bodů, které můžete přidat, najdete v tématu [kv
 
 V řešení IoT je mezi zařízeními a koncovými body IoT Hub umístěná *Brána pole* . Obvykle se nachází blízko vašich zařízení. Vaše zařízení komunikují přímo s bránou pole pomocí protokolu podporovaného zařízeními. Brána Field se připojuje k IoT Hub koncovému bodu pomocí protokolu, který podporuje IoT Hub. Brána pole může být vyhrazené hardwarové zařízení nebo počítač s nízkou spotřebou, na kterém je spuštěný vlastní software brány.
 
-K implementaci brány pole můžete použít [Azure IoT Edge](/azure/iot-edge/) . IoT Edge nabízí funkce, jako je například multiplexace komunikace z více zařízení do stejného IoT Hub připojení.
+K implementaci brány pole můžete použít [Azure IoT Edge](../iot-edge/index.yml) . IoT Edge nabízí funkce, jako je například multiplexace komunikace z více zařízení do stejného IoT Hub připojení.
 
 ## <a name="next-steps"></a>Další kroky
 

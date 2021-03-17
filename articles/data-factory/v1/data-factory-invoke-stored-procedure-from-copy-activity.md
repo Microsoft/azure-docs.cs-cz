@@ -1,30 +1,25 @@
 ---
 title: Vyvolat uloženou proceduru z aktivity kopírování Azure Data Factory
 description: Naučte se vyvolat uloženou proceduru v Azure SQL Database nebo SQL Server z aktivity Azure Data Factory kopírování.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374962"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Vyvolat uloženou proceduru z aktivity kopírování v Azure Data Factory
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity uložená procedura v Data Factory](../transform-data-using-stored-procedure.md).
 
 
-Při kopírování dat do [SQL Server](data-factory-sqlserver-connector.md) nebo [Azure SQL Database](data-factory-azure-sql-connector.md)můžete nakonfigurovat **SqlSink** v aktivitě kopírování a vyvolat uloženou proceduru. Můžete chtít použít uloženou proceduru k provedení dalšího zpracování (sloučení sloupců, vyhledávání hodnot, vložení do několika tabulek atd.) před vložením dat do cílové tabulky. Tato funkce využívá parametry s [hodnotou tabulky](https://msdn.microsoft.com/library/bb675163.aspx). 
+Při kopírování dat do [SQL Server](data-factory-sqlserver-connector.md) nebo [Azure SQL Database](data-factory-azure-sql-connector.md)můžete nakonfigurovat **SqlSink** v aktivitě kopírování a vyvolat uloženou proceduru. Můžete chtít použít uloženou proceduru k provedení dalšího zpracování (sloučení sloupců, vyhledávání hodnot, vložení do několika tabulek atd.) před vložením dat do cílové tabulky. Tato funkce využívá parametry s [hodnotou tabulky](/dotnet/framework/data/adonet/sql/table-valued-parameters). 
 
 Následující příklad ukazuje, jak vyvolat uloženou proceduru v databázi SQL Server z kanálu Data Factory (aktivita kopírování):  
 

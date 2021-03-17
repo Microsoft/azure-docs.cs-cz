@@ -1,185 +1,237 @@
 ---
-title: Arkose Labs s Azure Active Directory B2C
+title: Kurz konfigurace Azure Active Directory B2C s využitím Arkose Labs
 titleSuffix: Azure AD B2C
-description: Naučte se integrovat Azure AD B2C ověřování pomocí Arkose Labs, abyste chránili proti útokům na roboty, útokům na převzetí účtů a podvodným otvírám účtů.
+description: Kurz konfigurace Azure Active Directory B2C s využitím Arkose Labs pro identifikaci rizikových a podvodných uživatelů
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: gargi-sinha
+manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
-ms.author: mimart
+ms.date: 02/18/2021
+ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170220"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500288"
 ---
-# <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Arkose Labs s Azure Active Directory B2C
+# <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Kurz: Konfigurace Arkose Labs pomocí Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak integrovat Azure AD B2C ověřování pomocí Arkose Labs. Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
+V tomto ukázkovém kurzu se dozvíte, jak integrovat Azure Active Directory (AD) B2C ověřování pomocí [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* [Tenant Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
+- Předplatné Azure. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+
+- [Tenant Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
+
+- Účet [Arkose Labs](https://www.arkoselabs.com/book-a-demo/) .
 
 ## <a name="scenario-description"></a>Popis scénáře
 
+Integrace Arkose Labs zahrnuje tyto komponenty:
+
+- **Arkose Labs** – podvod a služba zneužití pro ochranu před roboty a jiným automatizovaným zneužitím.
+
+- **Azure AD B2C uživatelských toků přihlášení** – prostředí pro registraci, které bude používat službu Arkose Labs. Bude používat vlastní konektory HTML a JavaScript a rozhraní API pro integraci se službou Arkose Labs.
+
+- Služba **Azure Functions** – koncový bod rozhraní API hostovaný vámi, který pracuje s funkcí KONEKTORy API Toto rozhraní API zodpovídá za ověřování na straně serveru pro token relace Arkose Labs.
+
 Následující diagram popisuje, jak se Arkose Labs integrují s Azure AD B2C.
 
-![Diagram architektury Arkose Labs](media/partner-arkose-labs/arkose-architecture-diagram.png)
+![Obrázek znázorňuje diagram architektury Arkose Labs.](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
-| Krok  | Popis |
+| Krok  | Description |
 |---|---|
-|1     | Uživatel se přihlásí pomocí dříve vytvořeného účtu. Když uživatel vybere odeslat, zobrazí se výzva k vynucení Arkose Labs. Jakmile uživatel tuto výzvu dokončí, pošle se do Arkose Labs stav, ve kterém se vygeneruje token.        |
-|2     |  Arkose Labs pošle token zpátky do Azure AD B2C.       |
-|3     |  Před odesláním formuláře pro přihlášení se token pošle do Arkose Labs za účelem ověření.       |
-|4     |  Arkose odešle zpět nebo neúspěšný výsledek z výzvy.       |
-|5     |  Pokud se výzva úspěšně dokončí, odešle se formulář pro přihlášení do Azure AD B2C a Azure AD B2C dokončí ověřování.       |
-|   |   |
+|1     | Uživatel se přihlásí a vytvoří účet. Když uživatel vybere odeslat, zobrazí se výzva k vynucení Arkose Labs.         |
+|2     |  Jakmile uživatel tuto výzvu dokončí, Azure AD B2C odešle stav do Arkose Labs, aby vygeneroval token. |
+|3     |  Arkose Labs vygeneruje token a pošle ho zpátky do Azure AD B2C.   |
+|4     |  Azure AD B2C volá zprostředkující webové rozhraní API, aby se předal formulář pro registraci.      |
+|5     |  Zprostředkující webové rozhraní API pošle registrační formulář Arkose testovacímu prostředí pro ověření tokenu.    |
+|6     | Arkose testovací procesy a odesílá výsledky ověření zpátky do zprostředkujícího webového rozhraní API.|
+|7     | Zprostředkující webové rozhraní API pošle výsledek úspěch nebo neúspěchu z výzvy k Azure AD B2C. |
+|8     | Pokud se výzva úspěšně dokončí, odešle se do Azure AD B2C formulář pro registraci a Azure AD B2C dokončí ověřování.|
 
 ## <a name="onboard-with-arkose-labs"></a>Zprovoznění s Arkose Labs
 
-1. Začněte kontaktováním [Arkose Labs](https://www.arkoselabs.com/book-a-demo/) a vytvořením účtu.
+1. Kontaktujte [Arkose](https://www.arkoselabs.com/book-a-demo/) a vytvořte účet.
 
-2. Po vytvoření účtu přejděte na https://dashboard.arkoselabs.com/login .
+2. Po vytvoření účtu přejděte na https://dashboard.arkoselabs.com/login  
 
-3. V řídicím panelu přejděte na nastavení lokality a vyhledejte svůj veřejný klíč a privátní klíč. Tyto informace budou potřeba později ke konfiguraci Azure AD B2C.
+3. V řídicím panelu přejděte na nastavení lokality a vyhledejte svůj veřejný klíč a privátní klíč. Tyto informace budou potřeba později ke konfiguraci Azure AD B2C. Hodnoty veřejných a privátních klíčů jsou označovány jako `ARKOSE_PUBLIC_KEY` a `ARKOSE_PRIVATE_KEY` v [ukázkovém kódu](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose).
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Integrace s Azure AD B2C
 
-### <a name="part-1--create-blob-storage-to-store-the-custom-html"></a>Část 1 – Vytvoření úložiště objektů BLOB pro uložení vlastního HTML
+### <a name="part-1--create-a-arkosesessiontoken-custom-attribute"></a>Část 1 – Vytvoření vlastního atributu ArkoseSessionToken
 
-Pokud chcete vytvořit účet úložiště, použijte následující postup:  
+Chcete-li vytvořit vlastní atribut, použijte následující postup:  
 
-1. Přihlaste se k Azure Portal.
+1. Přejít na **Azure Portal**  >  **Azure AD B2C**
 
-2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
+2. Vybrat **atributy uživatele**
 
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte  **účty úložiště**.
+3. Vyberte **Přidat**.
 
-4. Vyberte **Přidat**.
+4. Jako název atributu zadejte **ArkoseSessionToken** .
 
-5. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a pak vyberte **OK**.
+5. Vyberte **Vytvořit**.
 
-6. Zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure, mít délku 3 až 24 znaků a může obsahovat jen číslice a malá písmena.
+Přečtěte si další informace o [vlastních atributech](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow).
 
-7. Vyberte umístění účtu úložiště nebo přijměte výchozí umístění.
+### <a name="part-2---create-a-user-flow"></a>Část 2 – Vytvoření toku uživatele
 
-8. Přijměte všechny ostatní výchozí hodnoty, vyberte  **zkontrolovat & vytvořit**  >  **vytvořit**.
+Tok uživatele může být buď pro **registraci** , **přihlašování, nebo jen** k **registraci**. Tok uživatele Arkose Labs se zobrazí jenom během registrace.
 
-9. Po vytvoření účtu úložiště vyberte  **Přejít k prostředku**.
+1. Přečtěte si [pokyny](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) k vytvoření toku uživatele. Pokud používáte existující tok uživatele, musí se jednat o **doporučený typ verze (Náhled nové generace)** .
 
-#### <a name="create-a-container"></a>Vytvoření kontejneru
+2. V nastavení toku uživatele přejít na **atributy uživatele** a vyberte deklaraci identity **ArkoseSessionToken** .
 
-1. Na stránce Přehled účtu úložiště vyberte  **objekty blob**.
+![Obrázek ukazuje, jak vybrat vlastní atributy](media/partner-arkose-labs/select-custom-attribute.png)
 
-2. Vyberte  **kontejner**, zadejte název kontejneru, zvolte  **objekt BLOB** (anonymní přístup pro čtení jenom pro objekty BLOB) a pak vyberte **OK**.
+### <a name="part-3---configure-custom-html-javascript-and-page-layouts"></a>Část 3 – Konfigurace vlastních rozložení HTML, JavaScriptu a stránek
 
-#### <a name="enable-cross-origin-resource-sharing-cors"></a>Povolit sdílení prostředků mezi zdroji (CORS)
+Přejít na poskytnutý [skript HTML](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html). Soubor obsahuje šablonu HTML s `<script>` značkami jazyka JavaScript, která provede tři věci:
 
-Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. CORS povoluje vyžádání omezených prostředků na webové stránce z jiných domén.
+1. Načtěte skript Arkose Labs, který vykresluje widget Arkose Labs a provede ověření Arkose Labs na straně klienta.
 
-1. V nabídce vyberte  **CORS**.
+2. Skryjte `extension_ArkoseSessionToken` vstupní element a popisek odpovídající `ArkoseSessionToken` vlastnímu atributu z uživatelského rozhraní zobrazeného uživateli.
 
-2. V případě  **povolených zdrojů**zadejte  `https://your-tenant-name.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta Azure AD B2C. Příklad:  `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
+3. Když uživatel dokončí výzvu Arkose Labs, Arkose Labs ověří odpověď uživatele a vygeneruje token. Zpětné volání `arkoseCallback` ve vlastním JavaScriptu nastaví hodnotu `extension_ArkoseSessionToken` na hodnotu vygenerovaného tokenu. Tato hodnota se odešle do koncového bodu rozhraní API, jak je popsáno v následující části.
 
-3. U **povolených metod**vyberte **získat**, **Vložit**a **Možnosti**.
+    V [tomto článku](https://arkoselabs.atlassian.net/wiki/spaces/DG/pages/214176229/Standard+Setup) se dozvíte o ověřování na straně klienta Arkose Labs.
 
-4. U **povolených hlaviček**zadejte hvězdičku (*).
+Postupujte podle kroků uvedených v části použití vlastního HTML a JavaScriptu pro tok uživatele.
 
-5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
+1. Upravte soubor [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) tak, aby `<ARKOSE_PUBLIC_KEY>` odpovídal hodnotě, kterou jste vygenerovali pro ověřování na straně klienta, a použili jste k načtení skriptu Arkose Labs pro svůj účet.
 
-6. Do **maximálního stáří**zadejte 200.
+2. Hostovat stránku HTML na webovém koncovém bodu s povoleným sdílením prostředků mezi zdroji (CORS). [Vytvořte účet úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) a [nakonfigurujte CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
-   ![Registrace a přihlášení Arkose Labs](media/partner-arkose-labs/signup-signin-arkose.png)
+  >[!NOTE]
+  >Máte-li vlastní kód HTML, zkopírujte a vložte `<script>` prvky do stránky HTML.
 
-7. Vyberte **Uložit**.
+3. Pomocí těchto kroků nakonfigurujete rozložení stránky.
 
-### <a name="part-2--set-up-a-back-end-server"></a>Část 2 – nastavení serveru back-end
+   a. Z Azure Portal, přejít na **Azure AD B2C**
 
-Stáhněte si Git bash a postupujte podle následujících kroků:
+   b. Přejděte na **toky uživatelů** a vyberte tok uživatele.
 
-1. Postupujte podle pokynů k [Vytvoření webové aplikace](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)až do zprávy "Blahopřejeme!Nasadili jste svoji první aplikaci v PHP do App Service "zobrazí se.
+   c. Výběr **rozložení stránky**
 
-2. Otevřete místní složku a přejmenujte soubor **index. php** na **verify-token. php**.
+   d. Výběr **rozložení přihlašovací stránky místního účtu**
 
-3. Otevřete nově přejmenovaný soubor Verify-token. php a proveďte následující:
+   e. Přepnout **použití vlastního obsahu stránky** na **Ano**
 
-   a. Nahraďte obsah obsahem ze souboru Verify-token. php, který najdete v [úložišti GitHub](https://github.com/ArkoseLabs/Azure-AD-B2C).
+   f. Vložte identifikátor URI, ve kterém se používá vlastní kód HTML. **vlastní obsah stránky**
 
-   b. Nahraďte <private_key> na řádku 3 pomocí privátního klíče získaného na řídicím panelu Arkose Labs.
+   například Pokud používáte zprostředkovatele sociální identity, opakujte **Krok e** a **f** pro rozložení **stránky pro přihlášení k účtu sociální** sítě.
 
-4. V okně místního terminálu potvrďte změny v Gitu a potom odešlete změny kódu do Azure, a to tak, že v Gitu bash zadáte následující:
+   ![Obrázek znázorňující rozložení stránky](media/partner-arkose-labs/page-layouts.png)
 
-   ``git commit -am "updated output"``
+4. V toku uživatele, přejít na **vlastnosti** a vyberte **Povolit JavaScript** – vynutit rozložení stránky (Preview). Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow) .
 
-   ``git push azure master``  
+### <a name="part-4---create-and-deploy-your-api"></a>Část 4 – Vytvoření a nasazení rozhraní API
 
-### <a name="part-3---final-setup"></a>Část 3 – finální instalace
+Nainstalujte [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code.
 
-#### <a name="store-the-custom-html"></a>Uložení vlastního HTML
+>[!Note]
+>Postup uvedený v této části předpokládá, že používáte Visual Studio Code k nasazení funkce Azure Functions. K nasazení můžete také použít Azure Portal, terminál nebo příkazový řádek nebo jakýkoli jiný Editor kódu.
 
-1. Otevřete soubor index.html uložený v [úložišti GitHub](https://github.com/ArkoseLabs/Azure-AD-B2C).
+#### <a name="run-the-api-locally"></a>Místní spuštění rozhraní API
 
-2. Nahraďte všechny instance `<tenantname>` s názvem vašeho tenanta b2C (jinými slovy `<tenantname>.b2clogin.com` ). Měly by existovat čtyři instance.
+1. Přejděte na rozšíření Azure ve Visual Studio Code na levém navigačním panelu. Vyberte **místní složku projektu** reprezentující místní funkci Azure Functions.
 
-3. Nahraďte `<appname>` názvem aplikace, který jste vytvořili v části 2, kroku 1.
+2. Stiskněte klávesu **F5** nebo   >  spusťte ladicí program pomocí nabídky **Spustit ladění** a připojte se k Azure Functionsmu hostiteli. Tento příkaz automaticky používá jedinou konfiguraci ladění, kterou vytvořila funkce Azure.
 
-   ![Snímek obrazovky s rozhraním příkazového řádku Azure Arkose Labs](media/partner-arkose-labs/arkose-azure-cli.png)
+3. Rozšíření funkce Azure automaticky vygeneruje několik souborů pro místní vývoj, závislosti instalace a nainstaluje základní nástroje Functions, pokud ještě nejsou přítomné. Tyto nástroje vám pomůžou s laděním.
 
-4. `<public_key>`Na řádku 64 nahraďte veřejným klíčem, který jste získali z řídicího panelu Arkose Labs.
+4. Výstup z nástroje Core Function se zobrazí na panelu **terminálu** Visual Studio Code. Po spuštění hostitele **Alt + kliknutí na** místní adresu URL zobrazenou ve výstupu otevřete prohlížeč a spusťte funkci. V Průzkumníku Azure Functions klikněte pravým tlačítkem myši na funkci, aby se zobrazila adresa URL místně hostované funkce.
 
-5. Nahrajte soubor index.html do úložiště objektů BLOB vytvořené výše.
+K opětovnému nasazení místní instance během testování zopakujte kroky 1 až 4.
 
-6. Přejít na **Storage**  >  **Container**  >  **nahrávání**kontejneru úložiště.
+#### <a name="add-environment-variables"></a>Přidat proměnné prostředí
 
-#### <a name="set-up-azure-ad-b2c"></a>Nastavit Azure AD B2C
+Tato ukázka chrání koncový bod webového rozhraní API pomocí [ověřování HTTP Basic](https://tools.ietf.org/html/rfc7617).
 
-> [!NOTE]
-> Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
+Uživatelské jméno a heslo se ukládají jako proměnné prostředí a ne jako součást úložiště. Další informace najdete v tématu [local.settings.jsv](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) souboru.
 
-1. Na základě informací [zde](tutorial-create-user-flows.md)vytvořte tok uživatele. Zastavte se, až se dostanete k části **Testování toku uživatele**.
+1. Vytvořit local.settings.jsv souboru v kořenové složce
 
-2. Povolte JavaScript v [toku uživatele](user-flow-javascript-overview.md).
+2. Zkopírujte následující kód a vložte ho do souboru:
 
-3. Na stránce stejný tok uživatelů Povolit adresu URL vlastní stránky: Přejít na rozložení **stránky toku uživatele**  >  **page layout**  >  **použít vlastní obsah stránky**  =  **Ano**  >  **Vložit vlastní adresu URL stránky**.
-Tato vlastní adresa URL stránky se získává z umístění souboru index.html v úložišti objektů BLOB.  
+```
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "BASIC_AUTH_USERNAME": "<USERNAME>",
+    "BASIC_AUTH_PASSWORD": "<PASSWORD>",
+    "ARKOSE_PRIVATE_KEY": "<ARKOSE_PRIVATE_KEY>",
+    "B2C_EXTENSIONS_APP_ID": "<B2C_EXTENSIONS_APP_ID>"
+  }
+}
+```
+Hodnoty **BASIC_AUTH_USERNAME** a **BASIC_AUTH_PASSWORD** budou přihlašovací údaje, které se použijí k ověření volání rozhraní API vaší funkce Azure Functions. Vyberte požadované hodnoty.
 
-   ![Snímek obrazovky s adresou URL úložiště Arkose Labs](media/partner-arkose-labs/arkose-storage-url.png)
+`<ARKOSE_PRIVATE_KEY>`Je tajný kód na straně serveru, který jste vygenerovali ve službě Arkose Labs. Slouží k volání [rozhraní API ověřování na straně serveru Arkose Labs](https://arkoselabs.atlassian.net/wiki/spaces/DG/pages/266214758/Server-Side+Instructions) za účelem ověření hodnoty `ArkoseSessionToken` generované front-endu.
+
+`<B2C_EXTENSIONS_APP_ID>`Je ID aplikace aplikace, kterou používá Azure AD B2C k ukládání vlastních atributů v adresáři. Toto ID aplikace můžete najít tak, že přejdete na Registrace aplikací, vyhledáte B2C-Extensions-App a zkopírujete ID aplikace (klienta) z podokna **přehledu** . Odeberte `-` znaky.
+
+![Obrázek zobrazuje hledání podle ID aplikace](media/partner-arkose-labs/search-app-id.png)
+
+#### <a name="deploy-the-application-to-the-web"></a>Nasazení aplikace na web
+
+1. Postupujte podle kroků uvedených v [tomto](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) průvodci a nasaďte funkci Azure Functions do cloudu. Zkopírujte adresu URL webu koncového bodu vaší funkce Azure Functions.
+
+2. Po nasazení vyberte možnost **nahrávání nastavení** . Vaše proměnné prostředí nahraje do [nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) služby App Service. Tato nastavení aplikace lze také konfigurovat nebo [spravovat prostřednictvím Azure Portal.](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)
+
+Další informace o Visual Studio Code vývoji pro Azure Functions najdete v [tomto článku](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files) .
+
+#### <a name="configure-and-enable-the-api-connector"></a>Konfigurace a povolení konektoru API
+
+[Vytvořte konektor API](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) a povolte ho pro tok uživatele. Vaše konfigurace konektoru API by měla vypadat takto:
+
+![Obrázek ukazuje, jak nakonfigurovat konektor API.](media/partner-arkose-labs/configure-api-connector.png)
+
+- **Adresa URL koncového bodu** – je adresa URL funkce, kterou jste zkopírovali dříve během nasazování funkce Azure Functions.
+
+- **Uživatelské jméno a heslo** – jedná se o uživatelské jméno a heslo, které jste dříve definovali jako proměnné prostředí.
+
+Pokud chcete povolit konektor API, v nastavení **konektoru rozhraní API** pro tok uživatele vyberte konektor rozhraní API, který se má vyvolávat při **vytváření kroku uživatele** . Tím dojde k vyvolání rozhraní API, když uživatel vybere **vytvořit** v toku registrace. Rozhraní API provede ověřování na straně serveru `ArkoseSessionToken` hodnoty, které bylo nastaveno pomocí zpětného volání widgetu Arkose `arkoseCallback` .
+
+![Obrázek ukazuje povolení konektoru rozhraní API](media/partner-arkose-labs/enable-api-connector.png)
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Otevřete Azure AD B2C tenant a v části **zásady**vyberte **toky uživatelů**.
+1. Otevřete Azure AD B2C tenant a v části zásady vyberte **toky uživatelů**.
 
 2. Vyberte dříve vytvořený tok uživatele.
 
 3. Vyberte **Spustit tok uživatele** a vyberte nastavení:
 
-   a. **Aplikace** – vyberte registrovanou aplikaci (ukázka je JWT).
+   a. Aplikace: vyberte registrovanou aplikaci (ukázka je JWT).
 
-   b. **Adresa URL odpovědi** – vyberte adresu URL pro přesměrování.
+   b. Adresa URL odpovědi: vyberte adresu URL pro přesměrování.
 
    c. Vyberte **Spustit tok uživatele**.
 
 4. Projděte si tok registrace a vytvořte účet.
 
-5. Odhlaste se.
+5. Odhlásit se
 
-6. Projděte si tok přihlášení.
+6. Projděte si tok přihlášení  
 
-7. Po výběru **pokračovat**se zobrazí skládanka Arkose Labs.
+7. Po výběru **pokračovat** se zobrazí skládanka Arkose Labs.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="additional-resources"></a>Další zdroje informací
 
-Další informace najdete v následujících článcích:
+- [Ukázkové kódy](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) Azure AD B2C toku uživatelů při registraci
 
-- [Vlastní zásady v Azure AD B2C](custom-policy-overview.md)
+- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)

@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e876ca028532bb3721146e90a91d68c4c12bf79f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557632"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096072"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 V tomto kurzu najdete pokyny k importu dat pro použití s Azure Cosmos DB [rozhraní API pro tabulky](table-introduction.md). Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat do rozhraní Table API služby Azure Cosmos DB použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. 
 
@@ -26,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Import dat pomocí nástroje AzCopy
 > * Migrace z rozhraní Table API (Preview) na rozhraní Table API 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Zvýšit propustnost:** Doba trvání migrace dat závisí na množství propustnosti, kterou jste nastavili pro jednotlivé kontejnery nebo na sadu kontejnerů. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
 
@@ -66,13 +67,13 @@ Při definování služby Azure Table Storage nebo rozhraní Table API Preview j
 * **/s.Filter:** Volitelné. Řetězec filtru, který se má použít
 * **/s.projection:** Volitelné. Seznam sloupců k výběru
 
-Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na **Storage accounts**  >  **Account**  >  **přístupové klíče**účtu úložiště a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
+Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na **Storage accounts**  >  **Account**  >  **přístupové klíče** účtu úložiště a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec** .
 
-:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Snímek obrazovky s možnostmi zdroje HBase":::
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Snímek obrazovky, který zobrazuje účty úložiště > účtu > možnosti přístupových klíčů a zvýrazní tlačítko Kopírovat.":::
 
-Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB**  >  **Account**  >  **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
+Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB**  >  **Account**  >  **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec** .
 
-:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Snímek obrazovky s možnostmi zdroje HBase":::
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Snímek obrazovky, který zobrazuje účty úložiště > účtu > možnosti přístupových klíčů a zvýrazní tlačítko Kopírovat.":::
 
 [Ukázkový příkaz pro Azure Table Storage](#azure-table-storage)
 
@@ -110,7 +111,7 @@ dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=
 
 ## <a name="migrate-data-by-using-azcopy"></a>Migrace dat pomocí AzCopy
 
-Druhou možností, jak migrovat data ze služby Azure Table Storage do rozhraní Table API služby Azure Cosmos DB, je použít nástroj příkazového řádku AzCopy. Pokud chcete použít AzCopy, je potřeba nejprve data exportovat, jak je popsáno v části [Export dat ze služby Table Storage](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage), a pak data importovat do služby Azure Cosmos DB, jak je popsáno v části [Rozhraní Table API služby Azure Cosmos DB](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage).
+Druhou možností, jak migrovat data ze služby Azure Table Storage do rozhraní Table API služby Azure Cosmos DB, je použít nástroj příkazového řádku AzCopy. Pokud chcete použít AzCopy, je potřeba nejprve data exportovat, jak je popsáno v části [Export dat ze služby Table Storage](/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage), a pak data importovat do služby Azure Cosmos DB, jak je popsáno v části [Rozhraní Table API služby Azure Cosmos DB](/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage).
 
 Při provádění importu do služby Azure Cosmos DB použijte jako referenci následující ukázku. Všimněte si, že v hodnotě /Dest se používá cosmosdb, a ne core.
 

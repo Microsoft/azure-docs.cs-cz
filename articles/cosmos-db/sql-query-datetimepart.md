@@ -3,18 +3,20 @@ title: DateTimePart v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimePart funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 87663c18ddaa5da6740a0f54aa5f2812cbb06af8
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 97eaff405086190b60279ac7d5cf8bf441c8f840
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227185"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336346"
 ---
 # <a name="datetimepart-azure-cosmos-db"></a>DateTimePart (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Vrací hodnotu zadaného DateTimePart mezi zadaným datem a časem.
   
@@ -31,8 +33,8 @@ DateTimePart (<DateTimePart> , <DateTime>)
 
 | DateTimePart | zkratky        |
 | ------------ | -------------------- |
-| Year         | "Year", "rrrr", "RR" |
-| Month        | "Month", "mm", "m"   |
+| Year (Rok)         | "Year", "rrrr", "RR" |
+| Month (Měsíc)        | "Month", "mm", "m"   |
 | Den          | "Day", "dd", "d"     |
 | Hodina         | "hour", "HH"         |
 | Minuta       | "Minute", "mi", "n"  |
@@ -91,4 +93,4 @@ SELECT DateTimePart("mcs", "2020-01-02T03:04:05.6789123Z") AS MicrosecondsValue
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -1,29 +1,26 @@
 ---
-title: Bezpečnostní klíč nezabezpečeného hesla – přihlášení k místním prostředkům (Preview) – Azure Active Directory
-description: Naučte se, jak povolit klíč zabezpečení nezaloženého na heslech k místním prostředkům pomocí Azure Active Directory (Preview).
+title: Klíč zabezpečení s nezabezpečenými hesly k místním prostředkům – Azure Active Directory
+description: Naučte se, jak povolit klíč zabezpečení nezaloženého na heslech k místním prostředkům pomocí Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 02/22/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550633"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647468"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Povolení klíče zabezpečení bez hesla k místním prostředkům pomocí Azure Active Directory (Preview)
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Povolení nezabezpečeného přihlášení k místním prostředkům pomocí klíče zabezpečení bez hesla Azure Active Directory 
 
 Tento dokument se zaměřuje na povolení ověřování bez hesla u místních prostředků pro prostředí, která jsou **připojená k Azure AD** i pro zařízení s Windows 10 **připojená k Azure AD** . Tato funkce poskytuje bezproblémové jednotné přihlašování (SSO) k místním prostředkům pomocí bezpečnostních klíčů kompatibilních s Microsoftem.
-
-> [!NOTE]
-> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Jednotné přihlašování k místním prostředkům pomocí klíčů FIDO2
 
@@ -42,23 +39,23 @@ Objekt serveru Azure AD Kerberos se vytvoří v místní službě Active Directo
 
 ## <a name="requirements"></a>Požadavky
 
-Před dokončením kroků v tomto článku musí organizace provést postup, aby na [zařízeních s Windows 10 (Preview) nemuseli přihlašovat bezpečnostní klíč s heslem](howto-authentication-passwordless-security-key.md) .
+Před dokončením kroků v tomto článku musí organizace provést postup, aby na [zařízeních s Windows 10 nemuseli přihlašovat bezpečnostní klíč s heslem](howto-authentication-passwordless-security-key.md) .
 
 Organizace musí splňovat i tyto požadavky na software.
 
-- Na zařízeních musí běžet Windows 10 Insider Build 18945 nebo novější.
+- Na zařízeních musí běžet Windows 10 verze 2004 nebo novější.
 - Musíte mít verzi 1.4.32.0 nebo [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)novější.
-  - Další informace o dostupných možnostech hybridního ověřování Azure AD najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../../security/fundamentals/choose-ad-authn.md) a [Výběr typu instalace, který se má použít pro Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
+  - Další informace o dostupných možnostech hybridního ověřování Azure AD najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) a [Výběr typu instalace, který se má použít pro Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Na řadičích domény se systémem Windows Server musí být nainstalovány následující opravy:
-    - Pro Windows Server 2016 –https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Pro Windows Server 2019 –https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - Pro Windows Server 2016 – https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Pro Windows Server 2019 – https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Podporované scénáře
 
 Scénář podporuje jednotné přihlašování (SSO) v obou těchto scénářích:
 
-- Pro cloudové prostředky, jako je Office 365 a další aplikace s podporou SAML.
-- Pro místní prostředky a ověřování integrované v systému Windows pro weby. Prostředky můžou zahrnovat weby a weby SharePointu, které vyžadují ověřování IIS, a prostředky, které používají ověřování NTLM.
+- Pro cloudové prostředky, jako jsou Microsoft 365 a další aplikace podporující SAML.
+- Pro místní prostředky a Windows-Integrated ověřování pro weby. Prostředky můžou zahrnovat weby a weby SharePointu, které vyžadují ověřování IIS, a prostředky, které používají ověřování NTLM.
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -75,7 +72,7 @@ Následující scénáře nejsou podporovány:
 Správci pomocí nástrojů PowerShellu ze svého Azure AD Connect serveru vytvoří objekt serveru Azure AD Kerberos ve svém místním adresáři. V každé doméně a doménové struktuře ve vaší organizaci, která obsahuje uživatele Azure AD, spusťte následující kroky:
 
 1. Upgradujte na nejnovější verzi Azure AD Connect. Tyto pokyny předpokládají, že jste už Azure AD Connect nakonfigurovali pro podporu hybridního prostředí.
-1. Na serveru Azure AD Connect otevřete příkazový řádek prostředí PowerShell se zvýšenými oprávněními a přejděte do`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Na serveru Azure AD Connect otevřete příkazový řádek prostředí PowerShell se zvýšenými oprávněními a přejděte do `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
 1. Spusťte následující příkazy PowerShellu pro vytvoření nového objektu serveru Azure AD Kerberos v místní doméně služby Active Directory i v tenantovi Azure Active Directory.
 
 > [!NOTE]
@@ -114,7 +111,7 @@ Tento příkaz vypíše vlastnosti serveru Azure AD Kerberos. Můžete zkontrolo
 | ID | Jedinečné ID objektu služba AD DSho řadiče domény. Toto ID se někdy označuje jako "slot" nebo je "ID větve". |
 | DomainDnsName | Název domény DNS Doména služby Active Directory. |
 | ComputerAccount | Objekt účtu počítače objektu serveru Azure AD Kerberos (řadič domény). |
-| UserAccount | Zakázaný objekt uživatelského účtu, který obsahuje šifrovací klíč TGT serveru Azure AD Kerberos. Rozlišující název tohoto účtu je`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| UserAccount | Zakázaný objekt uživatelského účtu, který obsahuje šifrovací klíč TGT serveru Azure AD Kerberos. Rozlišující název tohoto účtu je `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
 | Verze | Klíčová verze šifrovacího klíče TGT serveru Azure AD Kerberos. Verze je přiřazena při vytvoření klíče. Verze se pak zvýší pokaždé, když se klíč otočí. Přírůstky jsou založené na metadatech replikace a jsou nejspíš větší než jedna. Například počáteční *verze* může být *192272*. Při prvním otočení klíče může verze přejít na *212621*. Důležitou věcí, kterou je třeba ověřit, je, že *verze* *CloudKeyVersion* pro místní objekt a objekt pro cloudový objekt jsou stejné. |
 | KeyUpdatedOn | Datum a čas, kdy se šifrovací klíč TGT serveru Azure AD Kerberos aktualizoval nebo vytvořil |
 | KeyUpdatedFrom | Řadič domény, kde se naposledy aktualizoval šifrovací klíč TGT serveru Azure AD Kerberos |
@@ -156,13 +153,13 @@ Přihlášení pomocí FIDO se zablokuje, pokud vypršela platnost hesla. Oček�
 
 ## <a name="troubleshooting-and-feedback"></a>Řešení potíží a zpětná vazba
 
-Pokud byste chtěli sdílet zpětnou vazbu nebo narazit na problémy při zobrazení náhledu této funkce, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
+Pokud chcete sdílet zpětnou vazbu nebo narazit na problémy s touto funkcí, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
 
 1. Spusťte **Centrum zpětné vazby** a ujistěte se, že jste přihlášení.
 1. Odeslat názor v rámci následující kategorizace:
    - Kategorie: zabezpečení a ochrana osobních údajů
    - Subcategory: FIDO
-1. Pokud chcete zaznamenávat protokoly, použijte možnost pro **opětovné vytvoření problému** .
+1. Chcete-li zachytit protokoly, použijte možnost k **opětovnému vytvoření problému**.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

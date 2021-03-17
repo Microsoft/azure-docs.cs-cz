@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: eb41593938c670199be38140118f276142ceed43
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077488"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453219"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Posílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -83,23 +83,23 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 `connectionstring`Pomocí následujících kroků Získejte hodnotu připojení z [Azure Portal] :
 
 1. V levém navigačním podokně klikněte na **Procházet**.
-2. Vyberte **Notification Hubs**a pak najděte rozbočovač, který chcete použít pro ukázku. Pokud potřebujete pomáhat s vytvořením nového centra oznámení, přečtěte si [kurz Windows Store Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
+2. Vyberte **Notification Hubs** a pak najděte rozbočovač, který chcete použít pro ukázku. Pokud potřebujete pomáhat s vytvořením nového centra oznámení, přečtěte si [kurz Windows Store Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 3. Vyberte **Nastavení**.
 4. Klikněte na **zásady přístupu**. Zobrazí se oba řetězce připojení Shared i Full Access.
 
 ![Azure Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Připojovací řetězec můžete také načíst pomocí rutiny **Get-AzureSbNamespace** , kterou poskytuje [Azure PowerShell](/powershell/azure/) , nebo pomocí příkazu pro **zobrazení oboru názvů Azure SB** v [rozhraní příkazového řádku Azure (Azure CLI)](/cli/azure/install-classic-cli).
+> Připojovací řetězec můžete také načíst pomocí rutiny **Get-AzureSbNamespace** , kterou poskytuje [Azure PowerShell](/powershell/azure/) , nebo pomocí příkazu pro **zobrazení oboru názvů Azure sb** s [rozhraním Azure Command-Line (Azure CLI)](/cli/azure/install-classic-cli).
 
 ## <a name="general-architecture"></a>Obecná architektura
 
 `NotificationHubService`Objekt zpřístupňuje následující instance objektů pro posílání nabízených oznámení na konkrétní zařízení a aplikace:
 
-- **Android** – použijte `GcmService` objekt, který je k dispozici na`notificationHubService.gcm`
-- **iOS** – použijte `ApnsService` objekt, který je dostupný na`notificationHubService.apns`
-- **Windows Phone** – použijte `MpnsService` objekt, který je k dispozici na`notificationHubService.mpns`
-- **Univerzální platforma Windows** – použijte `WnsService` objekt, který je k dispozici na`notificationHubService.wns`
+- **Android** – použijte `GcmService` objekt, který je k dispozici na `notificationHubService.gcm`
+- **iOS** – použijte `ApnsService` objekt, který je dostupný na `notificationHubService.apns`
+- **Windows Phone** – použijte `MpnsService` objekt, který je k dispozici na `notificationHubService.mpns`
+- **Univerzální platforma Windows** – použijte `WnsService` objekt, který je k dispozici na `notificationHubService.wns`
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Postupy: odesílání nabízených oznámení do aplikací pro Android
 
@@ -109,7 +109,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Datová část** – datová část JSON nebo nezpracovaných řetězců zprávy.
 - **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části najdete v dokumentaci k [datové části](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
+Další informace o formátu datové části najdete v dokumentaci k [datové části](https://payload.readthedocs.io/en/latest/).
 
 Následující kód používá `GcmService` instanci zveřejněnou `NotificationHubService` pro odeslání nabízeného oznámení všem registrovaným klientům.
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** – identifikátor značky. Pokud není zadaná žádná značka, pošle se oznámení všem klientům.
 - **Datová** část XML zprávy.
-- **TargetName**  -  Cílový_název `toast` pro informační zprávy. `token`pro oznámení na dlaždici.
+-   -  Cílový_název `toast` pro informační zprávy. `token` pro oznámení na dlaždici.
 - **NotificationClass** – priorita oznámení Platné hodnoty najdete v části **elementy hlavičky protokolu HTTP** v [nabízených oznámeních z dokumentu serveru](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) .
 - **Možnosti** – nepovinné hlavičky požadavku.
 - **Zpětné volání** – funkce zpětného volání.
@@ -223,9 +223,9 @@ Výše uvedené ukázkové fragmenty kódu vám umožní snadno sestavit infrast
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter_sqlexpression
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter_sqlexpression
 [Azure Service Bus Notification Hubs]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png

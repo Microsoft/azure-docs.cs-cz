@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: b613e89fbe29074160d83a96d2cd13505244994a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f0e5a153efe26640e54f386600f07c7b3d4711d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89649062"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -98,7 +98,7 @@ Je nutné, aby příchozí internetový provoz na portech TCP 65503-65534 pro SK
 
 Kromě toho se nedají zablokovat odchozí připojení k Internetu a příchozí provoz, který přichází ze značky **AzureLoadBalancer** , musí být povolený.
 
-Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
+Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-infrastructure.md#network-security-groups).
 
 ## <a name="next-steps"></a>Další kroky
 Po získání informací o Application Gateway sledování stavu můžete nakonfigurovat [vlastní sondu stavu](application-gateway-create-probe-portal.md) v Azure Portal nebo ve [vlastním testu stavu](application-gateway-create-probe-ps.md) pomocí PowerShellu a modelu nasazení Azure Resource Manager.

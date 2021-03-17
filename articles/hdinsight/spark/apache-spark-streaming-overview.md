@@ -1,19 +1,16 @@
 ---
 title: Streamování Sparku v Azure HDInsight
 description: Jak používat aplikace Apache Spark streamování v clusterech HDInsight Spark.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086190"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929507"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Spark
 
@@ -71,7 +68,7 @@ S instancí StreamingContext vytvořte vstupní DStream pro vstupní zdroj. V ta
 val lines = ssc.textFileStream("/uploads/Test/")
 ```
 
-#### <a name="apply-transformations"></a>Použít transformace
+#### <a name="apply-transformations"></a>Použití transformací
 
 Zpracování implementujete použitím transformací na DStream. Tato aplikace od souboru přijímá jeden řádek textu, každý řádek rozdělí na slova. A pak pomocí schématu pro omezení rozvržení spočítá počet, kolikrát se každé slovo zobrazí.
 

@@ -3,16 +3,13 @@ title: Apache ZooKeeper Server nemůže vytvořit kvorum ve službě Azure HDIns
 description: Apache ZooKeeper Server nemůže vytvořit kvorum ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3301d00dce6feb00edcb70ba9edfedcce2e31ec9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673356"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929203"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper Server nemůže vytvořit kvorum ve službě Azure HDInsight.
 
@@ -57,7 +54,7 @@ Message
 
 * Vyhledání serverů Zookeeper ze souboru/etc/hosts nebo z uživatelského rozhraní Ambari
 * Spusťte následující příkaz
-  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(nebo 2182)  
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181` (nebo 2182)  
   * Port 2181 je instance Apache Zookeeper
   * Port 2182 se používá v Zookeeper HDInsight (k poskytování HA pro služby, které nejsou nativně HA).
   * Pokud příkaz nezobrazuje žádný výstup, znamená to, že servery Zookeeper nejsou spuštěné.
@@ -105,12 +102,12 @@ Node count: 133212
 * Uzly Zookeeper jsou nakonfigurované tak, aby automaticky vymazaly staré snímky.
 * Ve výchozím nastavení se zachovají posledních 30 snímků.
 * Počet uchovávaných snímků je řízen konfiguračním klíčem `autopurge.snapRetainCount` . Tato vlastnost je k dispozici v následujících souborech:
-  * `/etc/zookeeper/conf/zoo.cfg`pro Hadoop Zookeeper
-  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`pro HDInsight Zookeeper
+  * `/etc/zookeeper/conf/zoo.cfg` pro Hadoop Zookeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg` pro HDInsight Zookeeper
 * Nastavte `autopurge.snapRetainCount` na hodnotu 3 a restartujte Zookeeper servery.
   * Konfiguraci Hadoop Zookeeper můžete aktualizovat a službu je možné restartovat prostřednictvím Ambari.
   * Ruční zastavení a restartování HDInsight Zookeeper
-    * `sudo lsof -i :2182`vám poskytne ID procesu, který se má ukončit.
+    * `sudo lsof -i :2182` vám poskytne ID procesu, který se má ukončit.
     * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
 * Nemazat snímky ručně – ruční odstranění snímků by mohlo způsobit ztrátu dat.
 
@@ -127,4 +124,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 - Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

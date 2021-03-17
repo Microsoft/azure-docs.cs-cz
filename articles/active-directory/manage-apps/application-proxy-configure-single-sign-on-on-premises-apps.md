@@ -4,7 +4,7 @@ description: Naučte se, jak zajistit jednotné přihlašování k místním apl
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,14 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 03c688952f37bf9fc91e9dd25e09d9c31cd980d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387264"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257064"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování SAML pro místní aplikace s proxy aplikací
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování pomocí SAML pro místní aplikace s proxy aplikací
 
 Můžete poskytnout jednotné přihlašování (SSO) k místním aplikacím, které jsou zabezpečené pomocí ověřování SAML, a poskytovat vzdálený přístup k těmto aplikacím prostřednictvím proxy aplikací. Při jednotném přihlašování SAML se Azure Active Directory (Azure AD) ověřuje v aplikaci pomocí účtu Azure AD uživatele. Azure AD komunikuje s přihlašovacími informacemi k aplikaci prostřednictvím protokolu připojení. Uživatele můžete také namapovat na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML. Povolením proxy aplikací kromě jednotného přihlašování SAML budou mít uživatelé externí přístup k aplikaci a bezproblémové možnosti jednotného přihlašování.
 
@@ -33,9 +33,9 @@ Jednotné přihlašování SAML s proxy aplikací funguje i s funkcí šifrován
 
 Níže uvedené diagramy protokolu popisují posloupnost jednotného přihlašování pro tok inicializovaný poskytovatelem služeb (iniciované v rámci SP) i pro tok iniciované poskytovatelem identity (IdP). Proxy aplikace spolupracuje se službou SAML SSO tím, že ukládá požadavek SAML a odpověď do místní aplikace do a z ní.
 
-  ![Tok SAML SP](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
+  ![Diagram znázorňuje interakce aplikace, proxy aplikace, klienta a Azure A D pro jednotné přihlašování S Iniciováným voláním P.](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
 
-  ![Tok SAML SP](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
+  ![Diagram znázorňuje interakce aplikace, proxy aplikace, klienta a Azure A D pro jednotné přihlašování, které bylo iniciováno v P/v.](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
 
 ## <a name="create-an-application-and-set-up-saml-sso"></a>Vytvoření aplikace a nastavení jednotného přihlašování SAML
 
@@ -52,7 +52,7 @@ Níže uvedené diagramy protokolu popisují posloupnost jednotného přihlašov
 6. Přidejte do aplikace alespoň jednoho uživatele a ujistěte se, že testovací účet má přístup k aplikaci. Když jste připojení k podnikové síti, použijte testovací účet a zjistěte, jestli máte k aplikaci jednotné přihlašování. 
 
    > [!NOTE]
-   > Po nastavení proxy aplikace se vrátíte zpátky a aktualizujete **adresu URL odpovědi**SAML.
+   > Po nastavení proxy aplikace se vrátíte zpátky a aktualizujete **adresu URL odpovědi** SAML.
 
 ## <a name="publish-the-on-premises-application-with-application-proxy"></a>Publikování místní aplikace pomocí proxy aplikací
 
@@ -72,7 +72,7 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
 
 1. Když je aplikace v Azure Portal stále otevřená, vyberte **jednotné přihlašování**. 
 
-2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Ujistěte se, že **externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, se naplní v polích **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL jsou vyžadovány pro správné fungování proxy aplikací. 
+2. Na stránce **nastavit jeden Sign-On se** stránkou SAML přejdete do **základního záhlaví konfigurace SAML** a vyberete jeho ikonu pro **Úpravy** (tužka). Ujistěte se, že **externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, se naplní v polích **identifikátor**, **Adresa URL odpovědi** a **Adresa URL pro odhlášení** . Tyto adresy URL jsou vyžadovány pro správné fungování proxy aplikací. 
 
 3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby byla doména dostupná na internetu prostřednictvím proxy aplikací. Pokud je například vaše **externí adresa URL** `https://contosotravel-f128.msappproxy.net` a původní **Adresa URL odpovědi** , bude `https://contosotravel.com/acs` nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs` .
 
@@ -97,5 +97,5 @@ Po dokončení všech těchto kroků by vaše aplikace měla být spuštěná. T
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Jak Azure Proxy aplikací služby AD poskytuje jednotné přihlašování?](application-proxy-single-sign-on.md)
+- [Jak Azure Proxy aplikací služby AD poskytuje jednotné přihlašování?](./what-is-single-sign-on.md)
 - [Řešení potíží s proxy aplikací](application-proxy-troubleshoot.md)

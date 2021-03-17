@@ -1,22 +1,22 @@
 ---
-title: Přehrávání pomocí Azure Media Player – Azure | Microsoft Docs
+title: Přehrávání pomocí Azure Media Player – Azure
 description: Azure Media Player je webový přehrávač, který je založený na přehrávání mediálního obsahu z Microsoft Azure Media Services na nejrůznějších prohlížečích a zařízeních.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
-ms.author: juliako
-ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: inhenkel
+ms.openlocfilehash: cf4916341a97868de757804b570212f1cc1105b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836016"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898117"
 ---
 # <a name="playback-with-azure-media-player"></a>Přehrávání pomocí Azure Media Player
 

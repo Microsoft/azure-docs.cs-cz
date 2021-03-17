@@ -1,24 +1,18 @@
 ---
 title: Adaptivní řízení aplikací v Azure Security Center
 description: Tento dokument vám pomůže použít adaptivní řízení aplikací v Azure Security Center k povolení seznamu aplikací, které běží na počítačích Azure.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2020
+ms.topic: how-to
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691475"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439574"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -44,15 +38,15 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 - Zabránění konkrétnímu softwaru, který je zakázán vaší organizací
 - Zvýšení zraku aplikací, které přistupují k citlivým datům
 
-
+V tuto chvíli nejsou k dispozici žádné možnosti vynucování. Adaptivní řízení aplikací je určeno k poskytování výstrah zabezpečení v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné.
 
 ## <a name="availability"></a>Dostupnost
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Všeobecná dostupnost|
-|Stanov|Úroveň Standard|
-|Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](https://docs.microsoft.com/azure/azure-arc/)|
+|Stav vydaných verzí:|Obecná dostupnost (GA)|
+|Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
+|Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](../azure-arc/index.yml)|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a **Čtenář** můžou zobrazovat skupiny i seznamy známých aplikací, které jsou v bezpečí.<br>Role **Přispěvatel** a **Správce zabezpečení** můžou upravovat skupiny i seznamy známých aplikací, které jsou v bezpečí.|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
@@ -65,7 +59,9 @@ Pokud Security Center identifikoval skupiny počítačů ve vašich předplatný
 
 Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde se zobrazí seznam navrhovaných aplikací a skupin počítačů, které jsou v bezpečí.
 
-1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Otevření adaptivních řízení aplikací z řídicího panelu Azure" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     Otevře se stránka **Adaptivní řízení aplikací** se skupinami virtuálních počítačů na následujících kartách:
 
@@ -76,17 +72,17 @@ Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde
     - **Doporučené** – skupiny počítačů, které konzistentně spouštějí stejné aplikace a nemají nakonfigurovaný seznam povolených aplikací. Pro tyto skupiny doporučujeme povolit Adaptivní řízení aplikací.
     
       > [!TIP]
-      > Pokud se zobrazí název skupiny s předponou "kontrolor", obsahuje počítače s částečně konzistentním seznamem aplikací. Security Center nemůže vidět vzor, ale doporučuje zkontrolovat tuto skupinu, abyste viděli, jestli můžete ručně definovat některá pravidla adaptivního řízení aplikací, jak _je_ popsáno v tématu [Úprava pravidla adaptivního řízení aplikací skupiny](#editing-a-groups-adaptive-application-controls-rule).
+      > Pokud se zobrazí název skupiny s předponou "kontrolor", obsahuje počítače s částečně konzistentním seznamem aplikací. Security Center nemůže vidět vzor, ale doporučuje zkontrolovat tuto skupinu, abyste viděli, jestli můžete ručně definovat některá pravidla adaptivního řízení aplikací, jak _je_ popsáno v tématu [Úprava pravidla adaptivního řízení aplikací skupiny](#edit-a-groups-adaptive-application-controls-rule).
       >
       > Počítače z této skupiny můžete také přesunout do jiných skupin, jak je popsáno v tématu [Přesun počítače z jedné skupiny do druhé](#move-a-machine-from-one-group-to-another).
 
     - **Žádné doporučení** – počítače bez definovaného seznamu povolených aplikací, které tuto funkci nepodporují. Počítač může být na této kartě z následujících důvodů:
       - Chybí agent Log Analytics.
       - Agent Log Analytics neodesílá události.
-      - Jedná se o počítač s Windows s již existujícími zásadami [AppLockeru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) , které jsou povolené buď pomocí objektu zásad skupiny, nebo místních zásad zabezpečení.
+      - Jedná se o počítač s Windows s již existujícími zásadami [AppLockeru](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) , které jsou povolené buď pomocí objektu zásad skupiny, nebo místních zásad zabezpečení.
 
       > [!TIP]
-      > Security Center potřebuje k definování jedinečných doporučení na skupinu počítačů aspoň dva týdny dat. Na kartě **bez doporučení** se zobrazí počítače, které byly nedávno vytvořeny nebo které patří k předplatným, která byla naposledy povolena pouze s úrovní Standard.
+      > Security Center potřebuje k definování jedinečných doporučení na skupinu počítačů aspoň dva týdny dat. Na kartě **bez doporučení** se zobrazí počítače, které byly nedávno vytvořeny nebo které patří k předplatným, která byla nedávno povolena pomocí Azure Defenderu.
 
 
 1. Otevřete kartu **Doporučené** . Zobrazí se skupiny počítačů s doporučenými seznamy povolených.
@@ -115,13 +111,13 @@ Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Úprava pravidla adaptivního řízení aplikací skupiny
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Upravit pravidlo adaptivních řízení aplikací pro skupinu
 
 Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu počítačů kvůli známým změnám ve vaší organizaci. 
 
 Úprava pravidel pro skupinu počítačů:
 
-1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Na kartě **konfigurované** vyberte skupinu s pravidlem, které chcete upravit.
 
@@ -133,7 +129,7 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
 
       ![Přidat vlastní pravidlo](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. Pokud definujete známou bezpečnou cestu, změňte **Typ pravidla** na ' path '. V cestě můžete zadat zástupné znaky.
+   1. Pokud definujete známou bezpečnou cestu, změňte **Typ pravidla** na ' path ' a zadejte jednu cestu. V cestě můžete zadat zástupné znaky.
    
       > [!TIP]
       > Některé scénáře, které mohou být užitečné pro zástupné znaky v cestě:
@@ -148,9 +144,21 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
 1. Chcete-li změny použít, vyberte možnost **Uložit**.
 
 
+## <a name="review-and-edit-a-groups-settings"></a>Kontrola a úprava nastavení skupiny
+
+1. Pokud chcete zobrazit podrobnosti a nastavení skupiny, vyberte **Nastavení skupiny** .
+
+    V tomto podokně se zobrazuje název skupiny (kterou lze upravit), typ operačního systému, umístění a další relevantní podrobnosti.
+
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Stránka nastavení skupiny pro Adaptivní řízení aplikací" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+
+1. Volitelně můžete změnit název skupiny nebo režimy ochrany typu souboru.
+
+1. Vyberte **použít** a **Uložit**.
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reakce na pravidla povolených v zásadách Adaptivní řízení aplikací by se měla aktualizovat.
+
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reagovat na pravidla povolených v zásadách adaptivního řízení aplikací, která by se měla aktualizovat: doporučení
 
 Toto doporučení se zobrazí, když Security Center Machine Learning identifikuje potenciálně legitimní chování, které dříve nebylo povoleno. Doporučení navrhuje nová pravidla pro existující definice, aby se snížil počet falešně pozitivních výstrah.
 
@@ -167,9 +175,9 @@ Náprava problémů:
 
 
 
-## <a name="auditing-alerts-and-violations"></a>Výstrahy a porušení auditu
+## <a name="audit-alerts-and-violations"></a>Výstrahy a porušení auditu
 
-1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Pokud chcete zobrazit skupiny s počítači s nedávnými výstrahami, Projděte si skupiny uvedené na stránce **konfigurovaná** karta.
 
@@ -179,11 +187,19 @@ Náprava problémů:
 
 1. Pro další podrobnosti a seznam ovlivněných počítačů vyberte výstrahu.
 
+    Na stránce Výstrahy se zobrazí podrobnější informace o výstrahách a získáte odkaz na **Akce** s doporučeními, jak tuto hrozbu zmírnit.
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Čas spuštění adaptivních ovládacích prvků aplikace je ":::
+
+    > [!NOTE]
+    > Adaptivní řízení aplikací počítá události každých 12 hodin. "Čas spuštění aktivity" zobrazený na stránce s výstrahami je čas, který Adaptivní řízení aplikací vytvořilo výstrahu, **nikoli** čas, kdy byl podezřelý proces aktivní.
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>Přesunutí počítače z jedné skupiny do druhé
 
 Když přesunete počítač z jedné skupiny do druhé, uplatní se u něj zásada řízení aplikací na nastavení skupiny, do které jste ji přesunuli. Počítač můžete také přesunout z nakonfigurované skupiny do nenakonfigurované skupiny. tím dojde k odebrání všech pravidel řízení aplikací, která byla použita pro daný počítač.
+
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Na stránce **Adaptivní řízení aplikací** vyberte z karty **nakonfigurovaná** skupinu obsahující počítač, který chcete přesunout.
 
@@ -193,17 +209,17 @@ Když přesunete počítač z jedné skupiny do druhé, uplatní se u něj zása
 
 1. Vyberte cílovou skupinu a vyberte **přesunout počítač**.
 
-1. Pokud chcete změny uložit, vyberte **Uložit**.
+1. Výběrem možnosti **Uložit** změny uložte.
 
 
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>Správa ovládacích prvků aplikace pomocí REST API 
+## <a name="manage-application-controls-via-the-rest-api"></a>Správa ovládacích prvků aplikace pomocí REST API 
 
 Pro správu adaptivních řízení aplikací programově použijte naši REST API. 
 
-Úplná dokumentace k rozhraní API [najdete tady](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols).
+Příslušná dokumentace k rozhraní API je k dispozici v [části Adaptivní řízení aplikací v dokumentaci k rozhraní api Security Center](/rest/api/securitycenter/adaptiveapplicationcontrols).
 
 Některé funkce, které jsou dostupné z REST API:
 
@@ -219,10 +235,15 @@ Některé funkce, které jsou dostupné z REST API:
    > Než použijete JSON v žádosti PUT, odeberte následující vlastnosti: recommendationStatus, configurationStatus, problémy, Location a sourceSystem.
 
 
+## <a name="faq---adaptive-application-controls"></a>Nejčastější dotazy – Adaptivní řízení aplikací
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Existují nějaké možnosti, jak vymáhat ovládací prvky aplikace?
+V tuto chvíli nejsou k dispozici žádné možnosti vynucování. Adaptivní řízení aplikací je určeno k poskytování **výstrah zabezpečení** v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné. Mají řadu výhod ([Jaké jsou výhody adaptivních řízení aplikací?](#what-are-the-benefits-of-adaptive-application-controls)) a jsou extrémně přizpůsobitelná, jak je znázorněno na této stránce.
+
+ 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k definování seznamů povolených aplikací běžících na počítačích Azure a mimo Azure. Další informace o některých dalších funkcích ochrany úloh v cloudu Security Center najdete v tématech:
 
-* [Porozumění přístupu k virtuálnímu počítači JIT (just-in-time)](just-in-time-explained.md)
-* [Zabezpečení clusterů Azure Kubernetes](azure-kubernetes-service-integration.md)
+* [Principy přístupu k virtuálním počítačům za běhu (JIT)](just-in-time-explained.md)
+* [Zabezpečení clusterů Azure Kubernetes](defender-for-kubernetes-introduction.md)

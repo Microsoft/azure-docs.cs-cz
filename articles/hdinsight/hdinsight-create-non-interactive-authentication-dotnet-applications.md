@@ -1,19 +1,16 @@
 ---
 title: Aplikace .NET bez interaktivního ověřování – Azure HDInsight
 description: Naučte se vytvářet neinteraktivní ověřování aplikací Microsoft .NET v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074783"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094924"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
 
@@ -25,17 +22,17 @@ Z aplikace bez interaktivního rozhraní .NET potřebujete:
 * ID klienta aplikace Azure Active Directory (Azure AD). Viz [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 * Tajný klíč aplikace služby Azure AD. Viz [získat klíč pro ověření aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster An HDInsight. Podívejte se na [Úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Přiřazení role k aplikaci Azure AD
 
-Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles.md)a udělte jí oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou děděna do nižších úrovní rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní. V tomto článku nastavíte obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
+Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles.md)a udělte jí oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou děděna do nižších úrovní rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní. V tomto článku nastavíte obor na úrovni skupiny prostředků. Další informace najdete v tématu [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 **Přidání role vlastníka do aplikace Azure AD**
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte do skupiny prostředků, která obsahuje cluster HDInsight, na kterém spustíte dotaz na podregistr později v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyhledat ten, který chcete.
 1. V nabídce skupina prostředků vyberte **řízení přístupu (IAM)**.
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální přiřazení rolí.

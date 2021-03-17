@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: b1a172adb54593421ef56e09c131e0ddcaee9f6e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184682"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215820"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specifikace souborového pro Azure FXT Edge
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje hardwarové specifikace pro hardwarové uzly Azure FX
 
 ## <a name="drive-specifications"></a>Specifikace jednotky
 
-Systém má deset diskových pozic, které jsou přístupné z front. Každá naplněná jednotka je označená na pravé straně s informacemi o kapacitě. 
+Systém má deset diskových pozic, které jsou přístupné z front. Každá naplněná jednotka je označená na pravé straně s informacemi o kapacitě.
 
 Čísla jednotek se tisknou na místo mezi jednotkami. Ve službě Azure FXT Edge souborového je jednotka 0 levou horní jednotkou a jednotka 1 je přímo pod ní.
 
@@ -39,10 +39,9 @@ Systém má deset diskových pozic, které jsou přístupné z front. Každá na
 | 0, 1             | Operační systém     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Data   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
-
 ## <a name="dimensions-and-weight"></a>Rozměry a váha
 
-Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "vybavení v racku a je jedním rozvaděčem vysoké jednotky (1U). 
+Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "vybavení v racku a je jedním rozvaděčem vysoké jednotky (1U).
 
 <!-- 10x2.5 inches version -->
 
@@ -84,39 +83,39 @@ Tato část poskytuje hodnocení a měření výkonu pro Azure FXT Edge souborov
 
 <!-- matches the Dell regulatory label exactly -->
 
-### <a name="power-and-thermal-measurements"></a>Výkon a tepelná měření 
+### <a name="power-and-thermal-measurements"></a>Výkon a tepelná měření
 
-Uzly Azure FXT Edge souborového používají ventilátory s proměnlivou rychlostí, takže výkon závisí na teplotě a zatížení. Maximální rychlosti ventilátoru se dají dosáhnout v určitých kombinacích vysokého zatížení a zvýšených okolních teplot. 
+Uzly Azure FXT Edge souborového používají ventilátory s proměnlivou rychlostí, takže výkon závisí na teplotě a zatížení. Maximální rychlosti ventilátoru se dají dosáhnout v určitých kombinacích vysokého zatížení a zvýšených okolních teplot.
 
-Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně používané kombinace frekvencí napětí. 
+Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně používané kombinace frekvencí napětí.
 
-| FXT 6600 napájení při pokojové teplotě <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6600 napájení při pokojové teplotě <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
-| Napětí (V) | 100 | 120 | 208 | 230 | 240 | 
+| Napětí (V) | 100 | 120 | 208 | 230 | 240 |
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Zdánlivá mocnina (VA) | 502 | 499 | 499 | 506 | 518|
-| Faktor výkonu | 0.99 | 0.99 |0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0.99 | 0.99 |0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 497 |494 | 489 | 496 | 508 |
 | Tepelné rozptyl (BTU/hr) |1696 | 1686 | 1 669 | 1692 | 1733 |
 
-| FXT 6600 napájení s maximální rychlostí ventilátoru | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6600 napájení s maximální rychlostí ventilátoru | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
-| Napětí (V) | 100 |120 | 208 | 230 | 240| 
+| Napětí (V) | 100 |120 | 208 | 230 | 240|
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Zdánlivá mocnina (VA) | 598 | 601 | 584 | 587 | 595 |
-| Faktor výkonu | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 592 | 595 | 573 | 575 | 583 |
 | Tepelné rozptyl (BTU/hr) | 2020 |2031 | 1954 | 1961 | 1990 |
 
-| FXT 6400 napájení při pokojové teplotě <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6400 napájení při pokojové teplotě <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
 | Napětí (V) | 100 | 120 | 208 | 230 | 240 |
 | Frekvence (Hz) |60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 4.63 | 3,86 | 2.24 | 2,04 | 1,94 |
 | Zdánlivá mocnina (VA) | 463 | 463 | 466 | 469 | 466 |
-| Faktor výkonu | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 | 
+| Faktor výkonu | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 458 | 459 | 457 | 460 | 456 |
 | Tepelné rozptyl (BTU/hr) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -126,7 +125,7 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Zdánlivá mocnina (VA) | 515 | 514 | 516 | 524 | 511 |
-| Faktor výkonu | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 510 | 508 | 506 | 514 | 501 |
 | Tepelné rozptyl (BTU/hr) | 1740 | 1735 | 1725 | 1753 | 1709 |
 
@@ -143,10 +142,10 @@ Tato část obsahuje specifikace pro okolní prostředí hardwaru.
 | Maximální bod Dew         | 29 °C (84 °F)                       | 33 OC (91 °F)                 |
 | Mořské                  | až 3048 měřičů (10 000 metrů) podléhajících teplotnímu rozhodnocení, které je uvedeno níže | až 12 000 měřičů (39 370 metrů) |
 
-> [!NOTE] 
+> [!NOTE]
 > **Hodnocení teploty Nadmořského:** Maximální teplota se sníží o 1 °C/300 m (1 °F/547 ft) nad 950 m (3 117 ft).
 
-### <a name="airflow-shock-and-vibration"></a>Tok, náraz a vibrace 
+### <a name="airflow-shock-and-vibration"></a>Tok, náraz a vibrace
 
 | Atribut         | Specifikace |
 |-------------------|---------------|
@@ -156,13 +155,13 @@ Tato část obsahuje specifikace pro okolní prostředí hardwaru.
 | Vibrace, provozní     | 0,26 G<sub>RMS</sub> 5 Hz až 350 Hz náhodně         |
 | Vibrace, jiné než provozní | 1,88 G<sub>RMS</sub> 10 Hz až 500 Hz po dobu 15 minut (všechny šest stran testováno)  |
 
-## <a name="safety-regulation-compliance"></a>Dodržování předpisů pro bezpečnostní předpisy 
+## <a name="safety-regulation-compliance"></a>Dodržování předpisů pro bezpečnostní předpisy
 
-Azure FXT Edge souborového odpovídá uvedeným nařízením. 
+Azure FXT Edge souborového odpovídá uvedeným nařízením.
 
-| Kategorie       | Specifikace zákonného charakteru | 
+| Kategorie       | Specifikace zákonného charakteru |
 |----------------|--------------------------|
-| Obecné zabezpečení | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
+| Obecné zabezpečení | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 |
 | SOFTWARE            | FCC A, ICES – 003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (třída D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
 | Energetický sektor         | Nařízení Komise (EU) – ne. 617/2013  |
 | RoHS           |    EN 50581:2012   |

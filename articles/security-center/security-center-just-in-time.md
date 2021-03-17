@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056308"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916146"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu za běhu
 
@@ -33,15 +33,15 @@ Tato stránka vás učí, jak do programu zabezpečení zahrnout JIT. Dozvíte s
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Všeobecná dostupnost|
-|Stanov|Úroveň Standard|
-|Podporované virtuální počítače:|![Ano ](./media/icons/yes-icon.png) virtuální počítače nasazené prostřednictvím Azure Resource Manager.<br>![Nejsou ](./media/icons/no-icon.png) nasazené žádné virtuální počítače s klasickými modely nasazení. [Přečtěte si další informace o těchto modelech nasazení](../azure-resource-manager/management/deployment-models.md).<br>![Žádné ](./media/icons/no-icon.png) virtuální počítače chráněné pomocí brány firewall Azure řízené nástrojem [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)|
+|Stav vydaných verzí:|Obecná dostupnost (GA)|
+|Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
+|Podporované virtuální počítače:|![Ano ](./media/icons/yes-icon.png) virtuální počítače nasazené prostřednictvím Azure Resource Manager.<br>![Nejsou ](./media/icons/no-icon.png) nasazené žádné virtuální počítače s klasickými modely nasazení. [Přečtěte si další informace o těchto modelech nasazení](../azure-resource-manager/management/deployment-models.md).<br>![Žádné ](./media/icons/no-icon.png) virtuální počítače chráněné pomocí brány firewall Azure řízené nástrojem [Azure firewall Manager](../firewall-manager/overview.md)|
 |Požadované role a oprávnění:|Role **Čtenář** a **SecurityReader** můžou zobrazovat stav a parametry JIT.<br>Chcete-li vytvořit vlastní role, které mohou pracovat s JIT, přečtěte si téma [jaká oprávnění jsou nutná ke konfiguraci a používání JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Chcete-li vytvořit roli s nejnižšími oprávněními pro uživatele, kteří potřebují vyžadovat přístup JIT k virtuálnímu počítači a provádět žádné jiné operace JIT, použijte [skript set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) ze stránky komunity GitHub Security Center.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
-## <a name="enable-jit-vm-access"></a>Povolit přístup k virtuálnímu počítači JIT<a name="jit-configure"></a>
+## <a name="enable-jit-vm-access"></a>Povolit přístup k virtuálnímu počítači JIT <a name="jit-configure"></a>
 
 Přístup k virtuálnímu počítači JIT můžete povolit s vlastními možnostmi pro jeden nebo více virtuálních počítačů pomocí Security Center nebo prostřednictvím kódu programu. 
 
@@ -51,13 +51,13 @@ Každá z těchto možností je vysvětlena na samostatné kartě níže.
 
 ### <a name="azure-security-center"></a>[**Azure Security Center**](#tab/jit-config-asc)
 
-### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Povolení JIT na virtuálních počítačích z Azure Security Center<a name="jit-asc"></a>
+### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Povolení JIT na virtuálních počítačích z Azure Security Center <a name="jit-asc"></a>
 
-![Konfigurace přístupu k virtuálnímu počítači JIT v Azure Security Center](./media/security-center-just-in-time/jit-config-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="Konfigurace přístupu k virtuálnímu počítači JIT v Azure Security Center":::
 
 Z Security Center můžete povolit a nakonfigurovat přístup k virtuálnímu počítači JIT.
 
-1. V nabídce Security Center vyberte možnost **přístup k virtuálním počítačům za běhu**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte možnost **přístup k virtuálním počítačům za běhu**.
 
     Otevře se stránka **přístup k virtuálnímu počítači za běhu** s vašimi virtuálními počítači na následující karty:
 
@@ -101,19 +101,19 @@ Z Security Center můžete povolit a nakonfigurovat přístup k virtuálnímu po
 
 
 
-### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>Úprava konfigurace JIT na virtuálním počítači s podporou JIT pomocí Security Center<a name="jit-modify"></a>
+### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>Úprava konfigurace JIT na virtuálním počítači s podporou JIT pomocí Security Center <a name="jit-modify"></a>
 
 Konfiguraci za běhu virtuálního počítače můžete upravit přidáním a konfigurací nového portu, který se má chránit pro daný virtuální počítač, nebo změnou jakéhokoli jiného nastavení, které se vztahuje k již chráněnému portu.
 
 Úprava stávajících pravidel JIT pro virtuální počítač:
 
-1. V nabídce Security Center vyberte možnost **přístup k virtuálním počítačům za běhu**.
+1. Otevřete řídicí panel Azure Defender a z oblasti Pokročilá ochrana vyberte **Adaptivní řízení aplikací**.
 
 1. Na kartě **konfigurované** klikněte pravým tlačítkem na virtuální počítač, ke kterému chcete přidat port, a vyberte Upravit. 
 
     ![Úprava konfigurace přístupu k virtuálnímu počítači JIT v Azure Security Center](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-1. V části **Konfigurace přístupu k virtuálním počítačům JIT**můžete upravit existující nastavení již chráněného portu nebo přidat nový vlastní port.
+1. V části **Konfigurace přístupu k virtuálním počítačům JIT** můžete upravit existující nastavení již chráněného portu nebo přidat nový vlastní port.
 
 1. Po dokončení úprav portů vyberte **Uložit**.
  
@@ -136,7 +136,7 @@ JIT můžete povolit na virtuálním počítači na stránkách Azure Portal vir
 
 1. V nabídce vyberte **Konfigurace**.
 
-1. V části **přístup za běhu**vyberte **Povolit**za běhu. 
+1. V části **přístup za běhu** vyberte **Povolit** za běhu. 
 
     To umožňuje použít k virtuálnímu počítači přístup za běhu pomocí následujících výchozích nastavení:
 
@@ -157,7 +157,7 @@ JIT můžete povolit na virtuálním počítači na stránkách Azure Portal vir
 
         ![Úprava konfigurace přístupu k virtuálnímu počítači JIT v Azure Security Center](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-    1. V části **Konfigurace přístupu k virtuálním počítačům JIT**můžete upravit existující nastavení již chráněného portu nebo přidat nový vlastní port.
+    1. V části **Konfigurace přístupu k virtuálním počítačům JIT** můžete upravit existující nastavení již chráněného portu nebo přidat nový vlastní port.
 
     1. Po dokončení úprav portů vyberte **Uložit**.
 
@@ -184,13 +184,13 @@ Následující příkazy PowerShellu vytvoří tuto konfiguraci JIT:
         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
              number=22;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"},
              @{
              number=3389;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
     ```
 
@@ -215,7 +215,7 @@ Následující příkazy PowerShellu vytvoří tuto konfiguraci JIT:
 
 Funkce přístupu k VIRTUÁLNÍm počítačům za běhu se dá použít přes rozhraní Azure Security Center API. Pomocí tohoto rozhraní API můžete získat informace o konfigurovaných virtuálních počítačích, přidat nové, požádat o přístup k virtuálnímu počítači a další. 
 
-Další informace najdete v [zásadách síťového přístupu JIT](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Další informace najdete v [zásadách síťového přístupu JIT](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 
 --- 
@@ -229,7 +229,7 @@ Další informace najdete v [zásadách síťového přístupu JIT](https://docs
 
 
 
-## <a name="request-access-to-a-jit-enabled-vm"></a>Požádat o přístup k virtuálnímu počítači s podporou JIT
+## <a name="request-access-to-a-jit-enabled-vm"></a>Žádost o přístup k virtuálnímu počítači s podporu JIT
 
 Můžete požádat o přístup k virtuálnímu počítači s podporou JIT z Azure Portal (v Security Center nebo virtuálních počítačích Azure) nebo programově.
 
@@ -241,7 +241,7 @@ Každá z těchto možností je vysvětlena na samostatné kartě níže.
 
 Pokud má virtuální počítač povolený kompilátor JIT, budete muset požádat o přístup, abyste se k němu mohli připojit. Přístup můžete vyžádat libovolným z podporovaných způsobů bez ohledu na to, jak jste povolili JIT.
 
-![Vyžadování přístupu JIT z Security Center](./media/security-center-just-in-time/jit-request-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Vyžadování přístupu JIT z Security Center":::
 
 1. Na stránce **přístup k virtuálnímu počítači za běhu** vyberte **nakonfigurovanou** kartu.
 
@@ -253,7 +253,7 @@ Pokud má virtuální počítač povolený kompilátor JIT, budete muset požád
 
 1. Vyberte **požádat o přístup**. Otevře se okno **žádosti o přístup** .
 
-1. V části **požádat o přístup**nakonfigurujte pro každý virtuální počítač porty, které chcete otevřít, a zdrojové IP adresy, na kterých je port otevřený, a časový interval, pro který bude port otevřený. Bude možné požádat jenom o přístup k nakonfigurovaným portům. Každý port má maximální povolený čas odvozený od konfigurace JIT, kterou jste vytvořili.
+1. V části **požádat o přístup** nakonfigurujte pro každý virtuální počítač porty, které chcete otevřít, a zdrojové IP adresy, na kterých je port otevřený, a časový interval, pro který bude port otevřený. Bude možné požádat jenom o přístup k nakonfigurovaným portům. Každý port má maximální povolený čas odvozený od konfigurace JIT, kterou jste vytvořili.
 
 1. Vyberte **otevřít porty**.
 
@@ -290,7 +290,7 @@ Vyžádání přístupu z virtuálních počítačů Azure:
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-request-powershell)
 
-### <a name="request-access-to-a-jit-enabled-vm-using-powershell"></a>Vyžádání přístupu k virtuálnímu počítači s podporou JIT pomocí PowerShellu
+### <a name="request-access-to-a-jit-enabled-vm-using-powershell"></a>Žádost o přístup k virtuálnímu počítači s podporu JIT pomocí PowerShellu
 
 V následujícím příkladu uvidíte požadavek na přístup k virtuálnímu počítači za běhu na konkrétní virtuální počítač, ve kterém se vyžaduje otevření portu 22 pro konkrétní IP adresu a po určitou dobu:
 
@@ -300,7 +300,7 @@ Spusťte následující příkaz v PowerShellu:
 
     ```azurepowershell
     $JitPolicyVm1 = (@{
-        id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
+        id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
            number=22;
            endTimeUtc="2020-07-15T17:00:00.3658798Z";
@@ -319,7 +319,7 @@ Spusťte následující příkaz v PowerShellu:
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
     ```
 
-Další informace najdete v [dokumentaci k rutinám prostředí PowerShell](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
+Další informace najdete v [dokumentaci k rutinám prostředí PowerShell](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
 
@@ -329,7 +329,7 @@ Další informace najdete v [dokumentaci k rutinám prostředí PowerShell](http
 
 Funkce přístupu k VIRTUÁLNÍm počítačům za běhu se dá použít přes rozhraní Azure Security Center API. Pomocí tohoto rozhraní API můžete získat informace o konfigurovaných virtuálních počítačích, přidat nové, požádat o přístup k virtuálnímu počítači a další. 
 
-Další informace najdete v [zásadách síťového přístupu JIT](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Další informace najdete v [zásadách síťového přístupu JIT](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 ---
 
@@ -344,7 +344,7 @@ Další informace najdete v [zásadách síťového přístupu JIT](https://docs
 
 Můžete získat přehled o aktivitách virtuálních počítačů pomocí prohledávání protokolů. Postup zobrazení protokolů:
 
-1. V případě **přístupu k virtuálnímu počítači za běhu**vyberte **nakonfigurovanou** kartu.
+1. V případě **přístupu k virtuálnímu počítači za běhu** vyberte **nakonfigurovanou** kartu.
 
 1. U virtuálního počítače, který chcete auditovat, otevřete v nabídce tři tečky na konci řádku.
  

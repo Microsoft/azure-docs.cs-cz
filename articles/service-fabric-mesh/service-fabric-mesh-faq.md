@@ -4,14 +4,19 @@ description: Seznamte se s nejčastějšími dotazy a odpověďmi na Azure Servi
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8e53ab0ae4cc463bea8a6a8cb6d339f94fdcac6d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260111"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626032"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
 
@@ -42,7 +47,7 @@ Ano. Kvóty pro každé předplatné jsou:
 
 V současné době jsme omezili životnost aplikace na dva dny. Je to kvůli maximalizaci používání volných jader přidělených ve verzi Preview. V důsledku toho je povoleno spouštět dané nasazení nepřetržitě po dobu 48 hodin, po uplynutí této doby bude ukončena.
 
-Pokud se to zobrazí, můžete ověřit, že systém ukončí činnost spuštěním `az mesh app show` příkazu v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli se vrátí.`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Pokud se to zobrazí, můžete ověřit, že systém ukončí činnost spuštěním `az mesh app show` příkazu v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli se vrátí. `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Příklad: 
 
@@ -127,7 +132,7 @@ Další známé problémy se službou DNS při spuštění Service Fabric vývoj
 
 NAT sítě ServiceFabric může zmizet při používání aplikace na vašem místním počítači. Chcete-li diagnostikovat, zda k tomu došlo, spusťte z příkazového řádku následující příkaz:
 
-`docker network ls`a Všimněte si, zda `servicefabric_nat` je uvedena v seznamu.  Pokud ne, spusťte následující příkaz:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` a Všimněte si, zda `servicefabric_nat` je uvedena v seznamu.  Pokud ne, spusťte následující příkaz: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Tím se problém vyřeší i v případě, že je aplikace už nasazená místně a ve stavu není v pořádku.
 
@@ -135,7 +140,7 @@ Tím se problém vyřeší i v případě, že je aplikace už nasazená místn�
 
 Můžete narazit na dostupnost procesoru a omezení, které jsou ve všech aplikacích vyřešené. Pro zmírnění:
 - Vytvořte cluster s pěti uzly.
-- Snižte využití CPU ve službách napříč nasazenou aplikací. Například v souboru Service. yaml vaší služby změňte `cpu: 1.0` na`cpu: 0.5`
+- Snižte využití CPU ve službách napříč nasazenou aplikací. Například v souboru Service. yaml vaší služby změňte `cpu: 1.0` na `cpu: 0.5`
 
 Do clusteru s jedním uzlem nelze nasadit více aplikací. Pro zmírnění:
 - Při nasazování více aplikací do místního clusteru použijte cluster s pěti uzly.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc52d1f6eec5f1aedb0db37b3945f7be6d9f62a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193118"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595628"
 ---
 # <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
 
@@ -28,15 +28,15 @@ Zajistěte, aby všechna nasazení Virtual Network podsítí měla skupinu zabez
 
 Případně, pokud máte konkrétní případ použití, požadavek může být splněn implementací Azure Firewall.
 
-- [Vysvětlení koncových bodů služby Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Vysvětlení koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-- [Principy privátního odkazu Azure](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Principy privátního odkazu Azure](../../private-link/private-link-overview.md)
 
-- [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Vytvoření Virtual Network](../../virtual-network/quick-create-portal.md)
 
-- [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Vytvoření NSG s konfigurací zabezpečení](../../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Jak nasadit a nakonfigurovat Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Jak nasadit a nakonfigurovat Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
 
@@ -46,11 +46,11 @@ Případně, pokud máte konkrétní případ použití, požadavek může být 
 
 Použijte Azure Security Center a sledujte doporučení k ochraně síťových prostředků v Azure pomocí doporučení pro ochranu sítě. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-- [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Jak povolit protokoly toku NSG](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [Postup povolení a použití Analýza provozu](../../network-watcher/traffic-analytics.md)
 
-- [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../../security-center/security-center-network-recommendations.md)
 
 ## <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
@@ -60,7 +60,7 @@ Použijte Azure Security Center a sledujte doporučení k ochraně síťových p
 
 Nasaďte Firewall webových aplikací Azure (WAF) před kritickými webovými aplikacemi pro další kontrolu příchozího provozu. Povolte nastavení diagnostiky pro protokoly WAF a ingestování do účtu úložiště, centra událostí nebo Log Analytics pracovního prostoru.
 
-- [Jak nasadit Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [Jak nasadit Azure WAF](../../web-application-firewall/ag/create-waf-policy-ag.md)
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
@@ -76,15 +76,15 @@ Použijte Azure Security Center k přístupu k síti jenom v čase, abyste mohli
 
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě doporučujeme doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
-- [Jak nakonfigurovat DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [Jak nakonfigurovat DDoS Protection](../../ddos-protection/manage-ddos-protection.md)
 
-- [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Postup nasazení Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Pochopení Azure Security Center integrované analýzy hrozeb](../../security-center/azure-defender.md)
 
-- [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../../security-center/security-center-adaptive-network-hardening.md)
 
-- [Pochopení Azure Security Center k síťovému Access Control v čase](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Pochopení Azure Security Center k síťovému Access Control v čase](../../security-center/security-center-just-in-time.md)
 
 ## <a name="15-record-network-packets"></a>1,5: zaznamenání síťových paketů
 
@@ -94,7 +94,7 @@ Pomocí Azure Security Center adaptivního posílení zabezpečení sítě dopor
 
 Povolte zachytávání paketů Network Watcher pro zkoumání aktivit neobvyklé.
 
-- [Postup povolení Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [Postup povolení Network Watcher](../../network-watcher/network-watcher-create.md)
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
@@ -102,15 +102,15 @@ Povolte zachytávání paketů Network Watcher pro zkoumání aktivit neobvyklé
 |--|--|--|
 | 1.6 | 12,6, 12,7 | Zákazník |
 
-Vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení.  Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+Vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení.  Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 Nasaďte řešení brány firewall podle svého výběru na základě hranic sítě vaší organizace za účelem detekce nebo odepření škodlivého provozu.
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Postup nasazení Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Postup konfigurace výstrah pomocí Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+- [Postup konfigurace výstrah pomocí Azure Firewall](../../firewall/threat-intel.md)
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
@@ -120,11 +120,11 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 Nasaďte Azure Application Gateway pro webové aplikace s povoleným protokolem HTTPS/TLS pro důvěryhodné certifikáty.
 
-- [Postup nasazení Application Gateway](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- [Postup nasazení Application Gateway](../../application-gateway/quick-create-portal.md)
 
-- [Postup konfigurace Application Gateway pro použití protokolu HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+- [Postup konfigurace Application Gateway pro použití protokolu HTTPS](../../application-gateway/create-ssl-portal.md)
 
-- [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](https://docs.microsoft.com/azure/application-gateway/overview)
+- [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](../../application-gateway/overview.md)
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
@@ -136,9 +136,9 @@ Pomocí značek Virtual Network služby můžete definovat řízení přístupu 
 
 Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složité konfigurace zabezpečení. Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě.
 
-- [Pochopení a použití značek služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Pochopení a použití značek služeb](../../virtual-network/service-tags-overview.md)
 
-- [Pochopení a použití skupin zabezpečení aplikací](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+- [Pochopení a použití skupin zabezpečení aplikací](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
@@ -148,13 +148,13 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 Definování a implementace standardních konfigurací zabezpečení pro síťové prostředky pomocí Azure Policy.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manageru, ovládací prvky RBAC a zásady, a to v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou šablony Azure Resource Manageru, ovládací prvky a zásady služby Azure RBAC v rámci jedné definice podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [Ukázky Azure Policy pro sítě](../../governance/policy/samples/built-in-policies.md#network)
 
-- [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Vytvoření Azure Blueprint](../../governance/blueprints/create-blueprint-portal.md)
 
 ## <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
@@ -168,23 +168,23 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
-- [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Vytvoření Virtual Network](../../virtual-network/quick-create-portal.md)
 
-- [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Vytvoření NSG s konfigurací zabezpečení](../../virtual-network/tutorial-filter-network-traffic.md)
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,11 | 11,3 | Zákazník |
+| 1,11 | 11.3 | Zákazník |
 
 Pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny vašich prostředků Azure. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 ## <a name="next-steps"></a>Další kroky
 

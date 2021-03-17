@@ -4,19 +4,19 @@ description: Připojení klientů z ADO.NET do Azure SQL Database mohou obejít 
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-dotnet
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: c5ddcd083dfae1d0d4b79cd534b6ae4d034903b9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 0d009522ea0d0986233983f8725549b618ffb537
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759304"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444882"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,9 +77,9 @@ Tato část vysvětluje monikery, které odkazují na verze produktu. Obsahuje t
 * ADO.NET 4,5 byla vydána 15. srpna 2012. Oznámení na blogu od týmu .NET je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/).
   * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/).
 
-* Microsoft ODBC Driver 17 pro SQL Serverhttps://aka.ms/downloadmsodbcsql
+* Microsoft ODBC Driver 17 pro SQL Server https://aka.ms/downloadmsodbcsql
 
-* Připojení k Azure SQL Database V12 prostřednictvím přesměrováníhttps://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
+* Připojení k Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [Seznam verzí protokolu TDS](https://www.freetds.org/)
 * [Přehled vývoje SQL Database](develop-overview.md)

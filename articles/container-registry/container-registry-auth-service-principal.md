@@ -4,10 +4,10 @@ description: Poskytněte přístup k obrázkům v soukromém registru kontejneru
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259144"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry ověřování pomocí instančních objektů
@@ -28,7 +28,7 @@ Například nakonfigurujte webovou aplikaci tak, aby používala instanční obj
 
 ## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt
 
-K poskytnutí přístupu k registru v případě neintegrovaných **scénářů**byste měli použít instanční objekt. To znamená, že všechny aplikace, služby nebo skripty, které musí nabízet nebo vyčítat image kontejnerů automatizovaným nebo jinak nedobrým způsobem. Příklad:
+K poskytnutí přístupu k registru v případě neintegrovaných **scénářů**byste měli použít instanční objekt. To znamená, že všechny aplikace, služby nebo skripty, které musí nabízet nebo vyčítat image kontejnerů automatizovaným nebo jinak nedobrým způsobem. Například:
 
   * *Pull*: nasaďte kontejnery z registru do systémů orchestrace, včetně KUBERNETES, DC/OS a Docker Swarm. Z registrů kontejnerů můžete také získat související služby Azure, jako je [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](../service-fabric/index.yml)a další.
 

@@ -5,13 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
-ms.custom: sfrev
-ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2ac4b81a284ed8c38bc9cefccd08db5afa51d600
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260244"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575937"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 
@@ -68,8 +67,8 @@ Další informace najdete v článku o [modelu aplikace](service-fabric-applicat
 
 Existují dva typy služeb:
 
-* **Bezstavová**služba: Pokud je trvalý stav služby uložený v externí službě úložiště, například Azure Storage, Azure SQL Database nebo Azure Cosmos DB, použijte bezstavovou službu. Bezstavová služba se používá v případě, že služba nemá trvalé úložiště. Například u služby kalkulačky, kde jsou hodnoty předány službě, se provede výpočet, který tyto hodnoty používá, a pak se vrátí výsledek.
-* **Stavová**služba: pokud chcete Service Fabric spravovat stav služby prostřednictvím svých spolehlivých kolekcí nebo Reliable Actors programovacích modelů, použijte stavovou službu. Při vytváření pojmenované služby určete, kolik oddílů chcete rozšířit svůj stav a škálovatelnost. Také určete, kolikrát má být stav replikace mezi uzly, aby byla spolehlivost. Každá pojmenovaná služba má jednu primární repliku a několik sekundárních replik. Stav pojmenované služby upravíte při zápisu do primární repliky. Service Fabric pak tento stav replikuje do všech sekundárních replik, aby byl váš stav synchronizovaný. Service Fabric automaticky detekuje, kdy se primární replika nezdařila, a propaguje stávající sekundární repliku na primární repliku. Service Fabric pak vytvoří novou sekundární repliku.  
+* **Bezstavová** služba: Pokud je trvalý stav služby uložený v externí službě úložiště, například Azure Storage, Azure SQL Database nebo Azure Cosmos DB, použijte bezstavovou službu. Bezstavová služba se používá v případě, že služba nemá trvalé úložiště. Například u služby kalkulačky, kde jsou hodnoty předány službě, se provede výpočet, který tyto hodnoty používá, a pak se vrátí výsledek.
+* **Stavová** služba: pokud chcete Service Fabric spravovat stav služby prostřednictvím svých spolehlivých kolekcí nebo Reliable Actors programovacích modelů, použijte stavovou službu. Při vytváření pojmenované služby určete, kolik oddílů chcete rozšířit svůj stav a škálovatelnost. Také určete, kolikrát má být stav replikace mezi uzly, aby byla spolehlivost. Každá pojmenovaná služba má jednu primární repliku a několik sekundárních replik. Stav pojmenované služby upravíte při zápisu do primární repliky. Service Fabric pak tento stav replikuje do všech sekundárních replik, aby byl váš stav synchronizovaný. Service Fabric automaticky detekuje, kdy se primární replika nezdařila, a propaguje stávající sekundární repliku na primární repliku. Service Fabric pak vytvoří novou sekundární repliku.  
 
 **Repliky nebo instance** odkazují na kód (a stav pro stavové služby) služby, která je nasazená a spuštěná. Viz [repliky a instance](service-fabric-concepts-replica-lifecycle.md).
 

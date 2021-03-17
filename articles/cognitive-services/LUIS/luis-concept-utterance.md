@@ -1,14 +1,16 @@
 ---
 title: Dobrý příklad projevy-LUIS
 description: Výrok představuje zadání od uživatele, které má aplikace interpretovat. Shromážděte fráze, které budou uživatelé zadávat. Zahrňte projevy, který je stejný jako stejný objekt, ale je vytvořen jinak v délce slova a v umístění slova.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706754"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -27,7 +29,7 @@ Shromážděte projevyy, které se domníváte, že uživatelé vstoupí v úvah
 
 ## <a name="how-to-choose-varied-utterances"></a>Jak zvolit různé projevy
 
-Když začnete s prvním zprovozněním, [přidáte příklad projevy](luis-how-to-add-example-utterances.md) do modelu Luis. tady je několik principů, které je potřeba vzít v úvahu.
+Když začnete s prvním zprovozněním, [přidáte příklad projevy](./luis-how-to-add-entities.md) do modelu Luis. tady je několik principů, které je potřeba vzít v úvahu.
 
 ### <a name="utterances-arent-always-well-formed"></a>Projevy nejsou vždycky správně vytvořené
 
@@ -52,7 +54,7 @@ Vezměte v úvahu tento příklad projevy:
 |Chci získat počítač, jak na něj mám přejít?|
 |Kdy můžu počítač dělat?|
 
-Klíčové slovo "Computer" se neliší. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
+Základní pojem, *počítač*, není proměnlivý. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
 
 ## <a name="example-utterances-in-each-intent"></a>Příklad projevy v každém záměru
 
@@ -103,7 +105,7 @@ Interpunkce je samostatný token v LUIS. Utterance, která obsahuje tečku na ko
 
 Pokud interpunkční znaménko není normalizováno, LUIS Neignoruje interpunkční znaménka ve výchozím nastavení, protože některé klientské aplikace mohou na tyto značky umístit význam. Ujistěte se, že váš příklad projevy použít interpunkční znaménka i bez interpunkce v případě, že oba styly vrátí stejné relativní skóre.
 
-Ujistěte se, že model zpracovává interpunkční znaménka buď v příkladu projevy (má a nemá interpunkci), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí:`I am applying for the {Job} position[.]`
+Ujistěte se, že model zpracovává interpunkční znaménka buď v příkladu projevy (má a nemá interpunkci), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí: `I am applying for the {Job} position[.]`
 
 Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní význam, zvažte [ignorování interpunkce](#utterance-normalization) normalizací interpunkce.
 
@@ -136,7 +138,7 @@ Pokud je volba slova nebo uspořádání slov stejná, ale neznamená to stejné
 
 Následující projevy `fair` je slovo homograf. Je pravopisné, ale má jiný význam:
 
-|Promluva|
+|Výrok|
 |--|
 |Jaký druh veletrhů se děje v oblasti Praha této léto?|
 |Je aktuální hodnocení pro Seattle na veletrzích?|
@@ -145,5 +147,4 @@ Pokud jste chtěli, aby entita události vyhledala všechna data události, ozna
 
 
 ## <a name="next-steps"></a>Další kroky
-Informace o výuce aplikace LUIS pro pochopení uživatelského projevy najdete v tématu věnovaném [Přidání ukázkového projevy](luis-how-to-add-example-utterances.md) .
-
+Informace o výuce aplikace LUIS pro pochopení uživatelského projevy najdete v tématu věnovaném [Přidání ukázkového projevy](./luis-how-to-add-entities.md) .

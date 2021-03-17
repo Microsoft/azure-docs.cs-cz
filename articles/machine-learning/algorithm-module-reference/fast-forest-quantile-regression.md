@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 5f00164e90d625c5343103290e9272f15d164cd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097326"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907950"
 ---
-# <a name="fast-forest-quantile-regression"></a>Quantile regrese rychlé doménové struktury
+# <a name="fast-forest-quantile-regression"></a>Rychlá kvantilová regrese rozhodovacích stromů
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete v kanálu vytvořit Quantile regresní model s rychlými doménovými strukturami. Quantile regrese rychlé doménové struktury je užitečná, pokud chcete lépe pochopit distribuci předpovězené hodnoty, spíše než získat jednu střední hodnotu předpovědi. Tato metoda má mnoho aplikací, včetně:  
   
@@ -32,7 +32,7 @@ Tento regresní algoritmus je metoda učení **pod dohledem** , což znamená, �
 
 ## <a name="more-about-quantile-regression"></a>Další informace o regresi Quantile
 
-Existuje mnoho různých typů regrese. V nejširším smyslu regrese znamená, že se model přizpůsobuje pro cíl vyjádřený jako číselný vektor. Nicméně statistiku vyvíjejí stále větší pokročilé metody pro regresi.
+Existuje mnoho různých typů regrese. Jednoduše řečeno, regrese znamená přizpůsobení modelu pro cíl vyjádřený jako číselný vektor. Nicméně statistiku vyvíjejí stále větší pokročilé metody pro regresi.
 
 Nejjednodušší definice *Quantile* je hodnota, která rozdělí sadu dat do skupin se stejnou velikostí; Proto hodnoty Quantile označují hranice mezi skupinami. Statisticky řečeno, quantiles jsou hodnoty, které se provádí v pravidelných intervalech, od inverzní funkce k funkci kumulativní distribuce (CDF) náhodné proměnné.
 

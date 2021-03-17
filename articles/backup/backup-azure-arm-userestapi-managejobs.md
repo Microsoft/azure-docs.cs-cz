@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak sledovat a spravovat úlohy zálo
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079311"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88890276"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí REST API
 
@@ -17,7 +17,7 @@ Služba Azure Backup Service spouští úlohy, které běží na pozadí v různ
 
 ## <a name="fetch-job-information-from-operations"></a>Načíst informace o úloze z operací
 
-Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: konečná odpověď [operace zálohování REST API Backup](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) je následující:
+Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: konečná odpověď [operace zálohování REST API Backup](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup) je následující:
 
 ```http
 {
@@ -41,11 +41,11 @@ Operace, jako je například aktivace zálohování, vždy vrátí jobID. Přík
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}`Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", sekce "extendedInfo" odhalí další podrobnosti o úloze.
+`{jobName}`Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude dokončená nebo CompletedWithWarnings, oddíl extendedInfo odhalí další podrobnosti o úloze.
 
 ### <a name="response"></a>Odpověď
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

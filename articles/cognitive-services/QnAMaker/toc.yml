@@ -8,60 +8,40 @@
       href: whats-new.md
 - name: Rychlé starty
   items:
-    - name: S využitím portálu QnA Makeru
+    - name: Vytvoření a dotazování znalostní báze
       items:
-        - name: 1. Vytvoření znalostní báze
+        - name: Portál QnA Makeru
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: 2. Přidání otázek s metadaty
-          href: Quickstarts/add-question-metadata-portal.md
-        - name: 3. Získání odpovědí s využitím nástroje Postman nebo cURL
-          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: S využitím rozhraní REST
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: S využitím sady SDK
-      href: Quickstarts/quickstart-sdk.md
+        - name: Klientské knihovny nebo REST API
+          href: Quickstarts/quickstart-sdk.md
+    - name: Dotazování znalostní báze s rozhraními REST API
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Kurzy
   items:
     - name: Integrace s Power Virtual Agents
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
-    - name: Testování s využitím dávkového souboru
-      href: Quickstarts/batch-testing.md
+    - name: Vytvoření chatbota pro nejčastější dotazy s využitím služby Azure Bot Service
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
 - name: Koncepty
   items:
     - name: Plánování znalostní báze
       href: Concepts/plan.md
-    - name: Prostředky Azure
+    - name: Plánování prostředků QnA Makeru
       href: Concepts/azure-resources.md
-    - name: Spolupráce s ostatními
-      href: Concepts/role-based-access-control.md
-    - name: Návrh znalostní báze
-      items:
-        - name: Pro jazyky
-          href: Concepts/design-language-culture.md
-        - name: Pro klientské aplikace
-          href: Concepts/integration-with-other-applications.md
     - name: Zdroje dat a obsah
-      items:
-        - name: Import ze zdrojů dat
-          href: Concepts/knowledge-base.md
-        - name: Importované typy obsahu
-          href: Concepts/content-types.md
-        - name: Dvojice otázek a odpovědí
-          href: Concepts/question-answer-set.md
-    - name: Životní cyklus znalostní báze
-      items:
-        - name: Životní cyklus vývoje
-          href: Concepts/development-lifecycle-knowledge-base.md
-          displayName: 'version control, test, index, publish, monitor usage, create'
-        - name: Vylepšení pomocí návrhů aktivního učení
-          href: Concepts/active-learning-suggestions.md
-    - name: Znalostní báze dotazů
-      items:
-        - name: Získání odpovědi
-          displayName: 'DefaultAnswer, Default answer'
-          href: Concepts/query-knowledge-base.md
-        - name: Skóre spolehlivosti
-          href: Concepts/confidence-score.md
+      href: Concepts/data-sources-and-content.md
+    - name: Řízení přístupu na základě role Azure (Azure RBAC)
+      href: Concepts/role-based-access-control.md
+    - name: Přesné zodpovězení dotazů
+      href: reference-precise-answering.md
+    - name: Aktivace aktivního učení
+      href: How-To/use-active-learning.md
+    - name: Proces nástroje pro hodnocení
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: Životní cyklus vývoje
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
     - name: Osvědčené postupy
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -69,126 +49,88 @@
       href: choose-natural-language-processing-service.md
 - name: Návody
   items:
-    - name: Správa prostředků Azure
+    - name: Správa prostředků QnA Maker
       items:
-        - name: Správa prostředků
+        - name: Nastavení QnA Makerch prostředků
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Spolupráce
-          href: How-To/collaborate-knowledge-base.md
-        - name: Aktivace aktivního učení
-          href: How-To/use-active-learning.md
-        - name: Změna výchozí odpovědi
-          href: How-To/change-default-answer.md
+        - name: Správa přístupu k prostředkům QnA Maker
+          href: How-To/manage-qna-maker-app.md
+        - name: Konfigurace prostředků QnA Maker
+          href: How-To/configure-qna-maker-resources.md
+        - name: Izolace sítě pro prostředky Azure
+          href: How-To/network-isolation.md
     - name: Správa znalostní báze
       items:
         - name: Vytvoření znalostní báze
           href: How-To/manage-knowledge-bases.md
-        - name: Výběr jazyka
-          href: How-To/language-knowledge-base.md
         - name: Přidání konverzace
           href: How-to/chit-chat-knowledge-base.md
         - name: Migrace na novou znalostní bázi
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Test
+        - name: Test znalostní báze Knowledge Base
           href: How-To/test-knowledge-base.md
     - name: Správa dvojic QnA
       items:
         - name: Úprava dvojice QnA
           href: How-To/edit-knowledge-base.md
+        - name: Přidání značek metadat
+          href: Quickstarts/add-question-metadata-portal.md
         - name: Přidání následných dotazů
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Získání navrhovaných alternativních otázek
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: Přidání zabezpečených sharepointových souborů
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Změna výchozí odpovědi
+          href: How-To/change-default-answer.md
     - name: Znalostní báze dotazů
-      href: How-To/metadata-generateanswer-usage.md
-      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+      items:
+        - name: Používání rozhraní GenerateAnswer API
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: Filtrovat QnAs podle metadat
+          href: How-To/query-knowledge-base-with-metadata.md
+    - name: Získání navrhovaných alternativních otázek prostřednictvím aktivního učení
+      href: How-to/improve-knowledge-base.md
+      displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Analýzy a telemetrie
       href: How-To/get-analytics-knowledge-base.md
-    - name: S využitím REST API
-      items:
-        - name: Vytvoření nové znalostní báze
-          items:
-            - name: C#
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Přejít
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: Publikování znalostní báze
-          items:
-            - name: C#
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Přejít
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: Získání odpovědi
-          items:
-            - name: C#
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Přejít
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Referenční informace
   items:
     - name: Podpora jazyků
       href: Overview/language-support.md
     - name: Omezení
       href: limits.md
-    - name: Řízení přístupu na základě role (RBAC)
-      href: reference-role-based-access-control.md
+    - name: Skóre spolehlivosti
+      href: Concepts/confidence-score.md
     - name: Řešení potíží
       href: troubleshooting.md
+    - name: Přidání zabezpečených sharepointových souborů
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: Konfigurace služeb
       href: reference-app-service.md
-    - name: Formáty dat a obsahu
-      items:
-        - name: Pokyny k formátu obsahu
-          href: reference-document-format-guidelines.md
-        - name: Adresy URL
-          href: reference-document-type-url.md
-        - name: Pokyny pro import a export dat
-          href: reference-data-guidelines.md
+    - name: Pokyny k formátu obsahu
+      href: reference-document-format-guidelines.md
     - name: Formát zobrazení
       href: reference-markdown-format.md
+    - name: Privátní odkazy
+      href: reference-private-endpoint.md
     - name: Formát pro dávkové testování
       href: reference-tsv-format-batch-testing.md
+    - name: Šifrování
+      href: encrypt-data-at-rest.md
     - name: Reference k rozhraní REST API
       items:
-        - name: Rozhraní API pro vytváření
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
-        - name: Rozhraní GenerateAnswer API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
-        - name: Rozhraní Train API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-    - name: ukázky
-      items:
-        - name: Pomocný robot QnA Maker
-          href: 'https://aka.ms/qnamakerhelpbotsample'
+        - name: QnA Maker 4.0
+          href: /rest/api/cognitiveservices/qnamaker4.0/alterations
+        - name: QnA Maker 5.0 Preview 1
+          href: /rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations
     - name: Sady SDK
       items:
         - name: C#
           items:
             - name: Referenční dokumentace
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
             - name: Balíček NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: ukázky
@@ -204,7 +146,7 @@
         - name: JavaScript
           items:
             - name: Referenční dokumentace
-              href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index
             - name: NPM – vytváření obsahu
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM – dotazovací modul runtime
@@ -214,7 +156,7 @@
         - name: Python
           items:
             - name: Referenční dokumentace
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
+              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
             - name: ukázky
@@ -225,22 +167,18 @@
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Dostupnost podle oblastí
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Šifrování
-      href: qna-maker-encryption-of-data-at-rest.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny a omezení
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
     - name: Search
-      href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
+      href: /search/index?search=QnAMaker
     - name: Blog
       href: 'https://blog.botframework.com/category/QnAMaker/'
 - name: Portál QnA Makeru

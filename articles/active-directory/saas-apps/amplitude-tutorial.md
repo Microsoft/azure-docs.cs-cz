@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 889fa9b026b741cef438791daf136e0da7cecc24
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545469"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318676"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s amplitudou
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat amplitudu pomocí Azure Active Directo
 * Umožněte uživatelům, aby se automaticky přihlásili k amplitudě pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -107,7 +107,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -141,15 +141,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na tlačítko **plán správce** z levého navigačního panelu.
 
-    ![Konfigurace jednotného přihlašování](./media/amplitude-tutorial/configure1.png)
+    ![Snímek obrazovky znázorňující nabídku amplituda s vybraným plánem správce.](./media/amplitude-tutorial/configure1.png)
 
 1. V **integraci jednotného přihlašování**vyberte **Microsoft Azure Active Directory metadata** .
 
-    ![Konfigurace jednotného přihlašování](./media/amplitude-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí v podokně Správce plánu s odkazem na metadata Microsoft Azure Active Directory.](./media/amplitude-tutorial/configure2.png)
 
 1. V části **nastavení jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/amplitude-tutorial/configure3.png)
+    ![Snímek obrazovky s hodnotami, které jsou popsané v tomto kroku, najdete v části nastavení jednotného přihlašování.](./media/amplitude-tutorial/configure3.png)
 
     a. Otevřete stažená **metadata XML** z Azure Portal v programu Poznámkový blok, vložte obsah do textového pole **Microsoft Azure Active Directory metadat** .
 
@@ -168,14 +168,14 @@ V této části se v amplitudě vytvoří uživatel s názvem B. Simon. Amplitud
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici amplitud na přístupovém panelu byste měli být automaticky přihlášení do amplitudy, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici amplitud na přístupovém panelu byste měli být automaticky přihlášení do amplitudy, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte amplitudu pomocí Azure AD](https://aad.portal.azure.com/)

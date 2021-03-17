@@ -7,13 +7,13 @@ ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/21/2020
+ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047095"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880907"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -21,32 +21,29 @@ Azure Media Services [video indexer v2 REST API](https://api-portal.videoindexer
 
 Abychom integraci zajistili ještě snazší, podporujeme [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   a [Power](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)automaty   , které jsou kompatibilní s naším rozhraním API. Pomocí konektorů můžete nastavit vlastní pracovní postupy, abyste mohli efektivně indexovat a extrahovat poznatky z velkého množství videosouborů a zvukových souborů, aniž byste museli psát jediný řádek kódu. Navíc pomocí konektorů pro integraci získáte lepší přehled o stavu pracovního postupu a snadném způsobu jeho ladění.  
 
-Abychom vám pomohli rychle začít s Video Indexer konektory, budeme postupovat podle ukázkové aplikace logiky a řešení Power Automate, které můžete nastavit. 
+Abychom vám pomohli rychle začít s Video Indexer konektory, budeme postupovat podle ukázkové aplikace logiky a řešení Power Automate, které můžete nastavit. V tomto kurzu se dozvíte, jak nastavit toky pomocí Logic Apps. Editory a funkce jsou ale téměř identické v obou řešeních, takže se diagramy a vysvětlení vztahují i na Logic Apps i pro automatizaci.
 
-V tomto kurzu se naučíte:
+Scénář "nahrát a indexovat video automaticky", který je popsaný v tomto kurzu, se skládá ze dvou různých toků, které vzájemně spolupracují. 
+* První tok se aktivuje při přidání nebo úpravě objektu BLOB v účtu Azure Storage. Nahraje nový soubor, aby Video Indexer s adresou URL pro zpětné volání, aby po dokončení operace indexování poslal oznámení. 
+* Druhý tok se aktivuje na základě adresy URL zpětného volání a uloží extrahované přehledy zpátky do souboru JSON v Azure Storage. Tento přístup ke dvěma tokům se používá pro zajištění efektivního nahrávání a indexování velkých souborů. 
+
+V tomto kurzu se používá aplikace logiky k tomu, abyste si ukázali, jak:
 
 > [!div class="checklist"]
-> * Automatické nahrávání a indexování videa
 > * Nastavení toku nahrávání souborů
 > * Nastavení toku extrakce JSON
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, budete také potřebovat účet Video Indexer společně s přístupem k rozhraním API prostřednictvím klíče rozhraní API. 
+* Abyste mohli začít, budete potřebovat účet Video Indexer společně s [přístupem k rozhraním API přes klíč rozhraní API](video-indexer-use-apis.md). 
+* Budete také potřebovat účet Azure Storage. Poznamenejte si přístupový klíč pro váš účet úložiště. Vytvořte dva kontejnery – jeden pro ukládání videí do a jeden pro uložení přehledů vygenerovaných Video Indexer v.  
+* V dalším kroku budete muset otevřít dva samostatné toky buď na Logic Apps nebo na automatizaci (podle toho, kterou používáte). 
 
-Budete také potřebovat účet Azure Storage. Poznamenejte si přístupový klíč pro váš účet úložiště. Vytvořte dva kontejnery – jeden pro ukládání videí do a jeden pro uložení přehledů vygenerovaných Video Indexer v.  
+## <a name="set-up-the-first-flow---file-upload"></a>Nastavení prvního nahrávání souboru Flow   
 
-V dalším kroku budete muset otevřít dva samostatné toky buď na Logic Apps nebo na automatizaci (podle toho, kterou používáte).  
-
-## <a name="upload-and-index-your-video-automatically"></a>Automatické nahrávání a indexování videa 
-
-Tento scénář se skládá ze dvou různých toků, které vzájemně spolupracují. První tok se aktivuje při přidání nebo úpravě objektu BLOB v účtu Azure Storage. Nahraje nový soubor, aby Video Indexer s adresou URL pro zpětné volání, aby po dokončení operace indexování poslal oznámení. Druhý tok se aktivuje na základě adresy URL zpětného volání a uloží extrahované přehledy zpátky do souboru JSON v Azure Storage. Tento přístup ke dvěma tokům se používá pro zajištění efektivního nahrávání a indexování velkých souborů. 
-
-### <a name="set-up-the-file-upload-flow"></a>Nastavení toku nahrávání souborů 
-
-První tok se aktivuje pokaždé, když se do kontejneru Azure Storage přidá objekt BLOB. Po aktivaci vytvoří identifikátor URI SAS, který můžete použít k nahrání a indexování videa v Video Indexer. Začněte tím, že vytvoříte následující tok. 
+První tok se aktivuje pokaždé, když se do kontejneru Azure Storage přidá objekt BLOB. Po aktivaci vytvoří identifikátor URI SAS, který můžete použít k nahrání a indexování videa v Video Indexer. V této části vytvoříte následující tok. 
 
 ![Tok nahrávání souborů](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,15 +53,22 @@ Pokud chcete nastavit první tok, budete muset zadat Video Indexer klíč rozhra
 
 ![Název připojení a klíč rozhraní API](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, přejít na Trigger "při přidání nebo úpravě objektu BLOB) a vybrat kontejner, ve kterém se budou soubory videa umísťovat. 
+> [!TIP]
+> Pokud jste dříve připojili účet Azure Storage nebo účet Video Indexer k aplikaci logiky, budou se vám podrobnosti o připojení ukládat a automaticky se připojí. <br/>Připojení můžete upravit kliknutím na **změnit připojení** v dolní části Azure Storage (okno úložiště) nebo v akci video indexer (okno přehrávače).
 
-![Kontejner](./media/logic-apps-connector-tutorial/container.png)
+Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, najděte a vyberte v **návrháři Logic Apps** Trigger "při přidání nebo úpravě objektu BLOB".
 
-Potom přejdete na akci vytvořit identifikátor URI SAS podle cesty a vyberte možnost seznam cest k souborům z možností dynamického obsahu.  
+Vyberte kontejner, ve kterém budou umístěny soubory videa. 
+
+![Snímek obrazovky zobrazuje dialogové okno při přidání nebo úpravě objektu blob, kde můžete vybrat kontejner.](./media/logic-apps-connector-tutorial/container.png)
+
+Potom vyhledejte a vyberte akci "vytvořit identifikátor URI SAS podle cesty". V dialogu pro akci vyberte možnost seznam cest souborů z možností dynamického obsahu.  
+
+Přidejte také nový parametr "Shared Access Protocol". Jako hodnotu parametru vyberte HttpsOnly.
 
 ![Identifikátor URI SAS podle cesty](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Pokud chcete získat Video Indexer token účtu, vyplňte [umístění a ID svého účtu](./video-indexer-use-apis.md#account-id)   .
+Pokud chcete získat Video Indexer token účtu, vyplňte [umístění svého účtu](regions.md) a [ID účtu](./video-indexer-use-apis.md#account-id)   .
 
 ![Získání přístupového tokenu účtu](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -76,9 +80,9 @@ Adresu URL zpětného volání teď vynecháte prázdné. Přidáte ho až po do
 
 Můžete použít výchozí hodnotu pro ostatní parametry nebo je nastavit podle vašich potřeb. 
 
-Klikněte na Save (Uložit) a pojďme se na nakonfigurovat druhý tok, aby se přehledy po nahrání a indexování dokončily. 
+Klikněte na **Uložit** a pojďme přejít na, aby se nakonfigurovali druhý tok, aby se přehledy po nahrání a indexování dokončily. 
 
-## <a name="set-up-the-json-extraction-flow"></a>Nastavení toku extrakce JSON 
+## <a name="set-up-the-second-flow---json-extraction"></a>Nastavení druhého toku – extrakce JSON  
 
 Dokončením nahrávání a indexování z prvního toku se pošle požadavek HTTP se správnou adresou URL pro zpětné volání, aby se spustil druhý tok. Pak načte přehledy vygenerované Video Indexer. V tomto příkladu uloží výstup vaší úlohy indexování do Azure Storage.  Je to ale vše, co můžete s výstupem dělat.  
 
@@ -90,7 +94,7 @@ K nastavení tohoto toku budete muset zadat Video Indexer klíč rozhraní API a
 
 U triggeru se zobrazí pole Adresa URL příspěvku HTTP. Adresa URL se nevygeneruje až po uložení toku; adresu URL ale budete potřebovat nakonec. Vrátíme se k tomu. 
 
-Pokud chcete získat Video Indexer token účtu, vyplňte [umístění a ID svého účtu](./video-indexer-use-apis.md#account-id)   .  
+Pokud chcete získat Video Indexer token účtu, vyplňte [umístění svého účtu](regions.md) a [ID účtu](./video-indexer-use-apis.md#account-id)   .  
 
 Přejdete na akci načíst index videa a vyplňte požadované parametry. Pro ID videa zadejte následující výraz: triggerOutputs () [' dotazy '] [' ID '] 
 
@@ -104,7 +108,7 @@ Přejít na akci vytvořit objekt BLOB a vybrat cestu ke složce, do které bude
 
 Tento výraz vezme výstup akce získat index videa z tohoto toku. 
 
-Klikněte na Uložit tok. 
+Klikněte na **Uložit tok**. 
 
 Po uložení toku se v triggeru vytvoří adresa URL POST protokolu HTTP. Zkopírujte adresu URL z aktivační události. 
 
@@ -116,6 +120,12 @@ Ujistěte se, že oba toky jsou uložené, a vy můžete začít!
 
 Vyzkoušejte si nově vytvořenou aplikaci logiky nebo řešení Power automat přidáním videa do kontejneru objektů blob Azure a vraťte se do několika minut později, abyste zjistili, že se přehledy zobrazí v cílové složce. 
 
+## <a name="generate-captions"></a>Generovat titulky
+
+Postup, [jak vygenerovat titulky pomocí video indexer a Logic Apps](https://techcommunity.microsoft.com/t5/azure-media-services/generating-captions-with-video-indexer-and-logic-apps/ba-p/1672198), najdete v následujícím blogu. 
+
+Článek také ukazuje, jak automaticky indexovat video tak, že ho zkopírujete na OneDrive a uložíte titulky vygenerované Video Indexer na OneDrivu.
+ 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete s tímto kurzem hotovi, můžete tuto aplikaci logiky zachovat a v případě potřeby je automatizovat a spouštět řešení. Pokud ale nechcete tuto činnost provozovat a nechcete se vám účtovat, vypněte oba toky, pokud používáte Power Automatizujte. Pokud používáte Logic Apps, zakažte oba toky. 
@@ -126,3 +136,5 @@ Tento kurz ukázal pouze jeden příklad konektoru Video Indexer. Video Indexer 
 
 > [!div class="nextstepaction"]
 > [Použití rozhraní API Video Indexeru](video-indexer-use-apis.md)
+
+Další zdroje najdete v tomto dokumentu v části [video indexer.](/connectors/videoindexer-v2/)

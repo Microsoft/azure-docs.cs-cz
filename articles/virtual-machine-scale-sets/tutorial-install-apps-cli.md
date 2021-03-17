@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 92bd5bb6e9c8a00b72ace5f81d1a1cedccfa95e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d9969cf0fa453f857de421dd10934f63f5773f6c
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503663"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516726"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí Azure CLI
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. Co se v tomto kurzu naučíte:
@@ -24,11 +24,11 @@ Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve š
 > * Použití rozšíření vlastních skriptů Azure
 > * Aktualizace spuštěné aplikace ve škálovací sadě
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.29 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Co je rozšíření vlastních skriptů Azure?
@@ -50,6 +50,9 @@ V aktuálním prostředí vytvořte soubor *customConfig.json* a vložte do něj
   "commandToExecute": "./automate_nginx.sh"
 }
 ```
+
+> [!CAUTION]
+> Pokud se rozhodnete přímo odkazovat na JSON (místo odkazování na *customConfig.jsv* souboru *), budete* možná muset Invertovat použití jednoduchých (') a dvojitých uvozovek (") v bloku JSON. 
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
@@ -75,7 +78,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 
 ## <a name="apply-the-custom-script-extension"></a>Použití rozšíření vlastních skriptů
-Použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss extension set](/cli/azure/vmss/extension). Následující příklad použije konfiguraci *customConfig.json* na instance virtuálních počítačů ve škálovací sadě *myScaleSet* a ve skupině prostředků *myResourceGroup*:
+Použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss extension set](/cli/azure/vmss/extension). Následující příklad použije konfiguraci *customConfig.json* na instance virtuálních počítačů ve škálovací sadě *myScaleSet* a ve skupině prostředků *myResourceGroup* :
 
 ```azurecli-interactive
 az vmss extension set \
@@ -91,7 +94,7 @@ Každá instance virtuálního počítače ve škálovací sadě stáhne a spust
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete webovému serveru povolit příjem provozu, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb*:
+Pokud chcete webovému serveru povolit příjem provozu, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* :
 
 ```azurecli-interactive
 az network lb rule create \

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77198288"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895813"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Typy interakcí a klávesové zkratky v modulu nástrojů pro kreslení
 
@@ -21,9 +21,9 @@ Tento článek popisuje různé způsoby vykreslování a úprav tvarů pomocí 
 
 Správce kreslení podporuje tři různé způsoby interakce s mapou, kreslení tvarů.
 
-* `click`-Souřadnice se přidávají při kliknutí myší nebo dotykem.
-* `freehand `-Souřadnice se přidávají při přetahování myši nebo dotyku na mapě.
-* `hybrid`-Souřadnice se přidávají při kliknutí nebo přetahování myši nebo dotykem.
+* `click` -Souřadnice se přidávají při kliknutí myší nebo dotykem.
+* `freehand ` -Souřadnice se přidávají při přetahování myši nebo dotyku na mapě.
+* `hybrid` -Souřadnice se přidávají při kliknutí nebo přetahování myši nebo dotykem.
 
 ## <a name="how-to-draw-shapes"></a>Kreslení tvarů
 
@@ -146,7 +146,7 @@ Nástroje pro kreslení podporují klávesové zkratky. Tyto klávesové zkratky
 Další informace o třídách v modulu nástrojů pro kreslení:
 
 > [!div class="nextstepaction"]
-> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Panel nástrojů kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

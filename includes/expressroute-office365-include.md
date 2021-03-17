@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 08/29/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12fc9da11469cd617154827232d430dc5cd4a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff9e83b9d03cfe80ae96e05201763d89956f0e39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174745"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91401055"
 ---
-Služba Office 365 byla vytvořena pro zajištění bezpečného a spolehlivého přístupu přes internet. Z tohoto důvodu pro některé scénáře doporučujeme ExpressRoute. Informace o použití ExpressRoute pro přístup ke službě Office 365 najdete v článku [Azure ExpressRoute pro Office 365](https://aka.ms/ExpressRouteOffice365).
+Microsoft 365 byl vytvořen k bezpečnému a spolehlivému použití prostřednictvím Internetu. Z tohoto důvodu pro konkrétní scénáře doporučujeme ExpressRoute. Informace o použití ExpressRoute pro přístup k Microsoft 365 najdete na webu [Azure ExpressRoute for Microsoft 365](/microsoft-365/enterprise/azure-expressroute).

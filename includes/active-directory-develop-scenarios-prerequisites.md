@@ -2,30 +2,38 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74482477"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91257061"
 ---
-Před čtením tohoto článku byste měli být obeznámeni s následujícími koncepty:
+Pokud se správou identity a přístupu (IAM) s protokolem OAuth 2,0 a OpenID Connect teprve začínáte a nebudete jenom s nástrojem IAM na platformě Microsoft identity, měla by být v seznamu pro čtení vysoká Tato sada článků.
 
-- [Přehled platformy Microsoft identity](../articles/active-directory/develop/v2-overview.md)
-- [Základy ověřování](../articles/active-directory/develop/authentication-scenarios.md)
-- [Publikum](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Aplikační a instanční objekty](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Oprávnění a souhlas](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [Tokeny ID](../articles/active-directory/develop/id-tokens.md) a [přístupové tokeny](../articles/active-directory/develop/access-tokens.md)
+I když se před dokončením prvního rychlého startu nebo kurzu nepožaduje čtení, pokrývají se témata nedílnou platformou a jejich znalost vám pomůže při sestavování složitějších scénářů v cestě.
+
+:::row:::
+    :::column:::
+        **Ověřování a autorizace**
+
+        - [Základy ověřování](../articles/active-directory/develop/authentication-vs-authorization.md)
+        - [Tokeny ID](../articles/active-directory/develop/id-tokens.md)
+        - [Přístupové tokeny](../articles/active-directory/develop/access-tokens.md)
+    :::column-end:::
+    :::column:::
+        **Microsoft Identity Platform**
+
+        - [Publikum](../articles/active-directory/develop/v2-supported-account-types.md)
+        - [Aplikace a instanční objekty](../articles/active-directory/develop/app-objects-and-service-principals.md)
+        - [Oprávnění a souhlas](../articles/active-directory/develop/v2-permissions-and-consent.md)
+    :::column-end:::
+:::row-end:::

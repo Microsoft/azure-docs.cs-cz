@@ -1,19 +1,19 @@
 ---
 title: Vytvoření chatovací místnosti s Azure Functions a službou Signal pomocí JavaScriptu
-description: Rychlé zprovoznění popisující vytvoření chatovací místnosti pomocí služby Azure SignalR Service a Azure Functions.
+description: Rychlý Start pro použití služby signalizace Azure a Azure Functions k vytvoření chatovací místnosti pomocí JavaScriptu.
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3f1051b81666a036203eb1c810875d837ef9816f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386873"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874691"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití JavaScriptu k vytvoření chatovací místnosti s Azure Functions a službou signalizace
 
@@ -32,13 +32,21 @@ Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reáln�
 > [!NOTE]
 > Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
+
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurace a spuštění aplikace funkcí Azure
 
@@ -50,13 +58,13 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Vyberte a zkopírujte primární připojovací řetězec.
 
-    ![Vytvoření služby SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![Snímek obrazovky, který zvýrazní primární připojovací řetězec.](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. V editoru kódu otevřete složku *Src/chat/JavaScript* v klonovaném úložišti.
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
-1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Soubor uložte.
+1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
 1. Funkce JavaScriptu jsou uspořádané do složek. V každé složce jsou dva soubory. Soubor *function.json* definuje vazby, které se používají ve funkci, a soubor *index.js* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 
@@ -70,10 +78,16 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     ```
 
     ![Vytvoření služby SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
+    
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsjs)prosím o tom.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -81,3 +95,4 @@ V tomto rychlém startu jste v VS Code vytvořili a spustili aplikaci bez server
 
 > [!div class="nextstepaction"]
 > [Nasazení Azure Functions přes VS Code](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+

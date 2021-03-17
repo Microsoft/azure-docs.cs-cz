@@ -4,18 +4,20 @@ description: Naučte se, jak nastavit hodnotu Time to Live pro dokumenty pomocí
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1fe5d2839650cef2d965d613d2b87459c770618c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 6ef3092c611e1eede2be1e0994ce69959a46f1d7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421956"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340919"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Vypršení platnosti dat s využitím rozhraní API služby Azure Cosmos DB pro MongoDB.
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Funkce TTL (Time to Live) umožňuje automatické vypršení platnosti dat v databázi. Rozhraní API Azure Cosmos DB pro MongoDB využívá základní možnosti TTL Cosmos DB. Podporují se dva režimy: nastavení výchozí hodnoty TTL pro celou kolekci a nastavení hodnot TTL pro každý dokument zvlášť. Logika řízení indexů TTL a hodnot TTL pro jednotlivé dokumenty v rozhraní Cosmos DB API pro MongoDB je [stejná jako v Cosmos DB](../cosmos-db/mongodb-indexing.md).
 

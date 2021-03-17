@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201515"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204044"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Kurz: Konfigurace automatického rotace certifikátů v Key Vault
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -41,13 +41,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-Vytvořte Trezor klíčů nebo vyberte existující trezor pro provádění operací (viz [Postup vytvoření trezoru klíčů](../quick-create-portal.md)). V tomto příkladu je název trezoru klíčů **příkladem trezoru**.
+Vytvořte Azure Key Vault pomocí [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md). V tomto příkladu je název trezoru klíčů **příkladem trezoru**.
 
 ![Výstup po dokončení vytvoření trezoru klíčů](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Vytvoření certifikátu v Key Vault
 
-Vytvořte certifikát nebo importujte certifikát do trezoru klíčů (viz [Postup vytvoření certifikátu v Key Vault](../quick-create-portal.md)). V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate**.
+Vytvořte certifikát nebo importujte certifikát do trezoru klíčů (viz [Postup vytvoření certifikátu v Key Vault](../secrets/quick-create-portal.md)). V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate**.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Aktualizace atributů životního cyklu certifikátu
 
@@ -95,7 +95,7 @@ Key Vault automaticky otočí certifikáty prostřednictvím zavedených partner
 1. Vyberte certifikát, který chcete aktualizovat. V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate**.
 1. V horním řádku nabídek vyberte **zásady vystavování** .
 
-   ![Vlastnosti certifikátu](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![Snímek obrazovky, který zvýrazní tlačítko Zásady vystavování.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. Na obrazovce **zásady vystavování** aktualizujte následující hodnoty:
 
@@ -134,7 +134,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-Další informace o parametrech najdete v tématu [AZ datatrezor Certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes).
+Další informace o parametrech najdete v tématu [AZ datatrezor Certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -152,5 +152,5 @@ Odstranění skupiny prostředků pomocí portálu:
 
 V tomto kurzu jste aktualizovali atributy životního cyklu certifikátu. Pokud chcete získat další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, pokračujte v následujících článcích:
 
-- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](./create-certificate-scenarios.md).
 - Přečtěte si [přehled Key Vault](../general/overview.md).

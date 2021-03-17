@@ -1,23 +1,20 @@
 ---
 title: Použití rozšířených funkcí v serveru historie Apache Spark k ladění aplikací – Azure HDInsight
 description: Pomocí rozšířených funkcí v serveru historie Apache Spark můžete ladit a diagnostikovat aplikace Spark – Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1d53d9e9ee2a7fa6588ea0993b3bebdb2a287351
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079288"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941042"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použití rozšířených funkcí serveru historie Apache Spark k ladění a diagnostice aplikací Spark
 
-V tomto článku se dozvíte, jak pomocí rozšířených funkcí serveru historie Apache Spark ladit a diagnostikovat dokončené nebo běžící aplikace Spark. Přípona obsahuje kartu **data** , kartu **grafu** a kartu **Diagnostika** . Na kartě **data** můžete kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** můžete kontrolovat tok dat a znovu spustit graf úlohy. Na kartě **Diagnostika** můžete odkazovat na funkce **analýzy překrytí** **dat**, **časové zkosení**a prováděcí modul.
+V tomto článku se dozvíte, jak pomocí rozšířených funkcí serveru historie Apache Spark ladit a diagnostikovat dokončené nebo běžící aplikace Spark. Přípona obsahuje kartu **data** , kartu **grafu** a kartu **Diagnostika** . Na kartě **data** můžete kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** můžete kontrolovat tok dat a znovu spustit graf úlohy. Na kartě **Diagnostika** můžete odkazovat na funkce **analýzy překrytí** **dat**, **časové zkosení** a prováděcí modul.
 
 ## <a name="get-access-to-the-spark-history-server"></a>Získat přístup k serveru historie Spark
 
@@ -26,7 +23,7 @@ Server historie Spark je webové uživatelské rozhraní pro kompletní a běž�
 ### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>Otevřete webové uživatelské rozhraní serveru historie Sparku z Azure Portal
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. Z **řídicích panelů clusteru**vyberte možnost **Server historie Spark**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
+2. Z **řídicích panelů clusteru** vyberte možnost  **Server historie Spark**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
     ![Z Azure Portal spusťte server historie Spark.](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Server historie Sparku")
 
@@ -42,7 +39,7 @@ Webové uživatelské rozhraní serveru historie Sparku může vypadat podobně 
 
 Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazila data.
 
-+ Výběrem jednotlivých karet zkontrolujte **vstupy**, **výstupy**a **operace s tabulkami** .
++ Výběrem jednotlivých karet zkontrolujte **vstupy**, **výstupy** a **operace s tabulkami** .
 
     ![Karty data na stránce aplikace data pro aplikaci Spark](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
@@ -97,13 +94,13 @@ Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazi
    ![Heat mapa na stránce grafu úlohy aplikace Spark &.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Barva |Description |
+    |Barva |Popis |
     |---|---|
     |Green|Úloha se úspěšně dokončila.|
     |Oranžový|Úloha se nezdařila, ale nemá vliv na konečný výsledek úlohy. Tyto úlohy mají duplicitní nebo opakované instance, které mohou být později úspěšné.|
     |Blue|Úloha je spuštěna.|
     |White|Úloha čeká na spuštění, nebo byla fáze přeskočena.|
-    |Červený|Úloha se nezdařila.|
+    |Red|Úloha se nezdařila.|
 
      ![Spuštění úlohy na stránce grafu & aplikace Spark.](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
@@ -151,9 +148,9 @@ Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazi
 
 ## <a name="use-the-diagnosis-tab-in-the-spark-history-server"></a>Použití karty Diagnostika na serveru historie Sparku
 
-Vyberte ID úlohy a potom v nabídce Nástroje vyberte možnost **diagnóza** a zobrazte tak zobrazení diagnostiky úlohy. Karta **Diagnostika** zahrnuje analýzu **dat**, **zkosení času**a **analýzy využití prováděcího modulu**.
+Vyberte ID úlohy a potom v nabídce Nástroje vyberte možnost **diagnóza** a zobrazte tak zobrazení diagnostiky úlohy. Karta **Diagnostika** zahrnuje analýzu **dat**, **zkosení času** a **analýzy využití prováděcího modulu**.
 
-+ Vybíráním karet si Projděte přehledy o překrytí **dat**, **časovém intervalu**a **analýze využití prováděcího modulu** .
++ Vybíráním karet si Projděte přehledy o překrytí **dat**, **časovém intervalu** a **analýze využití prováděcího modulu** .
 
     ![Karta pro zkosení dat v rámci karty Diagnostika](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -185,7 +182,7 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 
 V části **určení parametrů** se zobrazí parametry, které se používají k detekci asymetrie času. Výchozí pravidlo je: doba provádění úlohy je větší než třikrát Průměrná doba spuštění a doba provádění úlohy je větší než 30 sekund. Parametry můžete změnit podle svých potřeb. Graf **zkosených fází** a **zkosení** zobrazuje odpovídající informace o fázích a úlohách, stejně jako na kartě pro **zkosení dat** .
 
-Když vyberete **časovou**osu, zobrazí se filtrovaný výsledek v části **nakloněná fáze** podle parametrů nastavených v oddílu **zadat parametry** . Když vyberete jednu položku v sekci s **šikmou fází** , bude odpovídající graf v konceptu uveden ve třetí části a v pravém dolním panelu se zobrazí podrobnosti o úloze.
+Když vyberete **časovou** osu, zobrazí se filtrovaný výsledek v části **nakloněná fáze** podle parametrů nastavených v oddílu **zadat parametry** . Když vyberete jednu položku v sekci s **šikmou fází** , bude odpovídající graf v konceptu uveden ve třetí části a v pravém dolním panelu se zobrazí podrobnosti o úloze.
 
 ![Karta časové zkosení v rámci karty Diagnostika](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -193,7 +190,7 @@ Když vyberete **časovou**osu, zobrazí se filtrovaný výsledek v části **na
 
 V **grafu využití prováděcího modulu** se zobrazuje skutečným přidělením a spuštěným stavem úlohy prováděcího modulu.  
 
-Když vyberete možnost **Analýza použití prováděcího modulu**, budou se v konceptu používat čtyři různé křivky týkající se použití prováděcího modulu: **přidělené prováděcí**moduly, **spuštěné prováděcí moduly**, **nečinné moduly**a **maximální počet instancí prováděcího**modulu. Každý **prováděcí modul** nebo událost **Odebrání prováděcího modulu** povede ke zvýšení nebo snížení přidělených prováděcích modulů. Můžete si prohlédnout **časovou osu události** na kartě **úlohy** , kde najdete další porovnání.
+Když vyberete možnost **Analýza použití prováděcího modulu**, budou se v konceptu používat čtyři různé křivky týkající se použití prováděcího modulu: **přidělené prováděcí** moduly, **spuštěné prováděcí moduly**, **nečinné moduly** a **maximální počet instancí prováděcího** modulu. Každý **prováděcí modul** nebo událost **Odebrání prováděcího modulu** povede ke zvýšení nebo snížení přidělených prováděcích modulů. Můžete si prohlédnout **časovou osu události** na kartě **úlohy** , kde najdete další porovnání.
 
 ![Karta analýza využití prováděcího modulu v rámci karty Diagnostika](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -208,10 +205,10 @@ Vyberte ikonu barvy a vyberte nebo zrušte výběr odpovídajícího obsahu ve v
 Pokud se chcete vrátit k verzi komunity, proveďte následující kroky.
 
 1. Otevřete cluster v Ambari.
-1. Přejděte do **Spark2**  >  **Konfigurace**Spark2.
+1. Přejděte do   >  **Konfigurace** Spark2.
 1. Vyberte **vlastní spark2 – výchozí**.
 1. Vybrat **Přidat vlastnost...**
-1. Přidejte **Spark. UI. vylepšení. Enabled = FALSE**a pak ho uložte.
+1. Přidejte **Spark. UI. vylepšení. Enabled = FALSE** a pak ho uložte.
 1. Vlastnost nastaví na **hodnotu false** nyní.
 1. Kliknutím na **Uložit** uložte konfiguraci.
 
@@ -221,7 +218,7 @@ Pokud se chcete vrátit k verzi komunity, proveďte následující kroky.
 
     ![Souhrnné zobrazení v Apache Ambari](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-1. Chcete-li restartovat server historie Spark, vyberte tlačítko **Start** vpravo od **serveru historie Spark2**a pak v rozevírací nabídce vyberte **restartovat** .
+1. Chcete-li restartovat server historie Spark, vyberte tlačítko **Start** vpravo od **serveru historie Spark2** a pak v rozevírací nabídce vyberte **restartovat** .
 
     ![Restartujte server historie Sparku v Apache Ambari.](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 

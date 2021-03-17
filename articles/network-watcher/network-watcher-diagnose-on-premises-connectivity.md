@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738749"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016707"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
@@ -35,7 +35,7 @@ Chcete nakonfigurovat připojení typu Site-to-site mezi Azure a místním prost
 
 1. Brána Virtual Network – VPN Gateway v Azure
 1. Brána místní sítě – místní [(Fortigate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) reprezentaci v cloudu Azure
-1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
 1. [Konfigurace FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 Podrobný návod pro konfiguraci konfigurace site-to-site najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
@@ -44,7 +44,7 @@ Jedním z důležitých kroků konfigurace je konfigurace komunikačních parame
 
 ### <a name="ike-phase-1-setup"></a>Nastavení protokolu IKE fáze 1
 
-| **Vlastnost** | **PolicyBased** | **RouteBased a standardní nebo vysoce výkonná Brána VPN Gateway** |
+| **Vlastnost** | **PolicyBased** | **RouteBased a Standard nebo High-Performance VPN Gateway** |
 | --- | --- | --- |
 | Verze IKE |IKEv1 |IKEv2 |
 | Skupina Diffie-Hellman |Skupina 2 (1 024 bitů) |Skupina 2 (1 024 bitů) |
@@ -82,33 +82,33 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Yes|
-| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |No|
-| PlannedMaintenance |  V instanci brány probíhá údržba.  |No|
-| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | No |
-| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
+| NoFault | Pokud není zjištěna žádná chyba. |Ano|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
+| PlannedMaintenance |  V instanci brány probíhá údržba.  |Ne|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
 | PlatformInActive | Došlo k problému s platformou. | No|
 | ServiceNotRunning | Podkladová služba není spuštěná. | No|
 | NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| No|
-| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Yes|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Yes |
+| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Ano|
+| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Ano |
 
 ### <a name="connection"></a>Připojení
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Yes|
-| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |No|
-| PlannedMaintenance | V instanci brány probíhá údržba.  |No|
-| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | No |
+| NoFault | Pokud není zjištěna žádná chyba. |Ano|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
+| PlannedMaintenance | V instanci brány probíhá údržba.  |Ne|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
 | ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |No|
-| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
-| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
-| Authentication | Neshoda s předsdíleným klíčem. | Yes|
-| PeerReachability | Partnerská brána není dostupná. | Yes|
-| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Yes|
+| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
+| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
+| Ověřování | Neshoda s předsdíleným klíčem. | Ano|
+| PeerReachability | Partnerská brána není dostupná. | Ano|
+| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
 
 ## <a name="next-steps"></a>Další kroky

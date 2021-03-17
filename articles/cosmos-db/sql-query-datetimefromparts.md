@@ -3,18 +3,20 @@ title: DateTimeFromParts v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimeFromParts funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: aec567c642f8eb3cb421ef5a119fe58f3a5fe05a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da992715b5cf624592db72cacefd35c9513ac43f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261823"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335768"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Vrací řetězcovou hodnotu DateTime vytvořenou ze vstupních hodnot.
   
@@ -26,21 +28,21 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 ## <a name="arguments"></a>Argumenty
   
-*numberYear* Celočíselná hodnota pro rok ve formátu`YYYY`
+*numberYear* Celočíselná hodnota pro rok ve formátu `YYYY`
 
 *numberMonth*  
-   Celočíselná hodnota pro měsíc ve formátu`MM`
+   Celočíselná hodnota pro měsíc ve formátu `MM`
 
 *numberDay*  
-   Celočíselná hodnota pro den ve formátu`DD`
+   Celočíselná hodnota pro den ve formátu `DD`
 
-*numberHour* (volitelné) celočíselná hodnota pro hodinu ve formátu`hh`
+*numberHour* (volitelné) celočíselná hodnota pro hodinu ve formátu `hh`
 
-*numberMinute* (volitelné) celočíselná hodnota pro minutu ve formátu`mm`
+*numberMinute* (volitelné) celočíselná hodnota pro minutu ve formátu `mm`
 
-*numberSecond* (volitelné) celočíselná hodnota pro sekundu ve formátu`ss`
+*numberSecond* (volitelné) celočíselná hodnota pro sekundu ve formátu `ss`
 
-*numberOfFractionsOfSecond* (volitelné) celočíselná hodnota pro zlomek sekundy ve formátu`.fffffff`
+*numberOfFractionsOfSecond* (volitelné) celočíselná hodnota pro zlomek sekundy ve formátu `.fffffff`
 
 ## <a name="return-types"></a>Návratové typy
 
@@ -114,4 +116,4 @@ SELECT DateTimeFromParts(2020, 9, 4, 10, 52, 12, 3456789) AS DateTime
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

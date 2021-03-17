@@ -1,19 +1,21 @@
 ---
 title: Podpora migrace fyzického serveru v Azure Migrate
 description: Přečtěte si o podpoře migrace fyzického serveru v Azure Migrate.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
-ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770335"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703882"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
-Tento článek shrnuje nastavení podpory a omezení pro migraci fyzických serverů s [Azure Migrate: Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool) . Pokud hledáte informace o vyhodnocování fyzických serverů pro migraci do Azure, Projděte si přehled [podpory pro vyhodnocení](migrate-support-matrix-physical.md).
+Tento článek shrnuje nastavení podpory a omezení pro migraci fyzických serverů do Azure pomocí [Azure Migrate: Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool) . Pokud hledáte informace o vyhodnocování fyzických serverů pro migraci do Azure, Projděte si přehled [podpory pro vyhodnocení](migrate-support-matrix-physical.md).
 
 ## <a name="migrating-machines-as-physical"></a>Migrace počítačů jako fyzických
 
@@ -23,7 +25,7 @@ K migraci místních počítačů jako fyzických serverů můžete použít rep
 - Virtuální počítače virtualizované pomocí platforem, jako je Xen, KVM.
 - Virtuální počítače Hyper-V nebo virtuální počítače VMware z nějakého důvodu nechcete používat standardní toky [Hyper-v](tutorial-migrate-hyper-v.md) nebo [VMware](server-migrate-overview.md) .
 - Virtuální počítače běžící v privátních cloudech.
-- Virtuální počítače běžící ve veřejných cloudech, například Amazon Web Services (AWS) nebo Google Cloud Platform (GCP).
+- Virtuální počítače běžící ve veřejných cloudech, včetně Amazon Web Services (AWS) nebo Google Cloud Platform (GCP).
 
 
 ## <a name="migration-limitations"></a>Omezení migrace
@@ -43,20 +45,20 @@ Tabulka shrnuje podporu pro fyzické servery, které chcete migrovat pomocí mig
 **Síť/úložiště** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#network) a [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#storage) pro Site Recovery. Azure Migrate poskytuje identické požadavky na síť a úložiště.
 **Požadavky na Azure** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)a [výpočetní](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) prostředky Azure pro Site Recovery. Azure Migrate má stejné požadavky na migraci fyzického serveru.
 **Služba Mobility** | Na každý počítač, který chcete migrovat, musí být nainstalovaný agent služby mobility.
-**Spouštění UEFI** | Migrovaný počítač v Azure se automaticky převede na virtuální počítač s spouštěcím rozhraním systému BIOS. Podporován je pouze server se systémem Windows Server 2012 a novějším.<br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
-**Cílový disk** | Počítače se dají migrovat jenom na spravované disky (Standard HDD, Premium SSD) v Azure.
-**Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
+**Spouštění UEFI** | Podporuje se. Počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2.  <br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
+**Rozhraní UEFI – zabezpečené spouštění**         | Migrace se nepodporuje.
+**Cílový disk** | Počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
+**Velikost disku** | 2 TB disk s operačním systémem; 32 TB datových disků.
 **Omezení disku** |  Až 63 disků na počítač.
 **Šifrované disky/svazky** |  Počítače se zašifrovanými disky/svazky se pro migraci nepodporují.
-**Cluster sdíleného disku** | Není podporováno.
+**Cluster sdíleného disku** | Nepodporováno
 **Nezávislé disky** | Podporuje se.
 **Průchozí disky** | Podporuje se.
 **NFS** | Svazky NFS připojené jako svazky na počítačích se nebudou replikovat.
 **cíle iSCSI** | Počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
-**Multipath v/v** | Není podporováno.
-**VMotion úložiště** | Podporuje se
-**Seskupené síťové adaptéry** | Není podporováno.
-**IPv6** | Není podporováno.
+**Multipath v/v** | Nepodporováno
+**Seskupené síťové adaptéry** | Nepodporováno
+**IPv6** | Nepodporováno
 
 
 
@@ -79,13 +81,13 @@ Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operac
 Velikost disku s operačním systémem | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet disků s operačním systémem | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Velikost datového disku | Až 32 TB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílený virtuální pevný disk | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán.
+Sdílený virtuální pevný disk | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Nepodporováno | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md). |
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](prepare-for-migration.md). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 

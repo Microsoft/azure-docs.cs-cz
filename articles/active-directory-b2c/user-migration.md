@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383967"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010163"
 ---
-# <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů na Azure AD B2C
+# <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů do Azure AD B2C
 
-Migrace od jiného zprostředkovatele identity na Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci stávajících uživatelských účtů. Tady jsou popsané dvě metody migrace, *před migrací* a *bezproblémové migrace*. V obou případech je potřeba napsat aplikaci nebo skript, které používají [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md) k vytváření uživatelských účtů v Azure AD B2C.
+Migrace od jiného zprostředkovatele identity na Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci stávajících uživatelských účtů. Tady jsou popsané dvě metody migrace, *před migrací* a *bezproblémové migrace*. V obou případech je potřeba napsat aplikaci nebo skript, které používají [rozhraní Microsoft Graph API](microsoft-graph-operations.md) k vytváření uživatelských účtů v Azure AD B2C.
 
 ## <a name="pre-migration"></a>Předběžná migrace
 
@@ -34,7 +34,7 @@ Tok předběžné migrace použijte v některé z těchto dvou případů:
 - Máte přístup k přihlašovacím údajům uživatele ve formátu prostého textu (uživatelské jméno a heslo).
 - Přihlašovací údaje jsou šifrované, ale můžete je dešifrovat.
 
-Informace o programovém vytváření uživatelských účtů najdete v tématu [správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
+Informace o programovém vytváření uživatelských účtů najdete v tématu [správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](microsoft-graph-operations.md).
 
 ## <a name="seamless-migration"></a>Bezproblémové migrace
 
@@ -50,7 +50,7 @@ Plynulý tok migrace má tedy dvě fáze: *Předběžná migrace* a *Nastavení 
 ### <a name="phase-1-pre-migration"></a>Fáze 1: předběžná migrace
 
 1. Vaše aplikace pro migraci přečte uživatelské účty od starého zprostředkovatele identity.
-1. Aplikace pro migraci vytváří v adresáři Azure AD B2C příslušné uživatelské účty, ale *nenastavuje hesla*.
+1. Aplikace pro migraci vytvoří v adresáři Azure AD B2C odpovídající uživatelské účty, ale *Nastaví náhodná hesla* , která vygenerujete.
 
 ### <a name="phase-2-set-credentials"></a>Fáze 2: Nastavení přihlašovacích údajů
 
@@ -90,14 +90,14 @@ Ne všechny informace ze staršího zprostředkovatele identity by měly být mi
 
 Než zahájíte proces migrace, využijte možnost vyčištění adresáře.
 
-- Identifikujte sadu uživatelských atributů, které mají být uloženy v Azure AD B2C, a migrujte pouze to, co potřebujete. V případě potřeby můžete vytvořit [vlastní atributy](custom-policy-custom-attributes.md) , které budou ukládat více dat o uživateli.
+- Identifikujte sadu uživatelských atributů, které mají být uloženy v Azure AD B2C, a migrujte pouze to, co potřebujete. V případě potřeby můžete vytvořit [vlastní atributy](user-flow-custom-attributes.md) , které budou ukládat více dat o uživateli.
 - Pokud migrujete z prostředí s více zdroji ověřování (například každá aplikace má vlastní adresář uživatele), migrujte na jednotný účet v Azure AD B2C.
 - Pokud má více aplikací různá uživatelská jména, můžete je Uložit do Azure AD B2C uživatelského účtu pomocí kolekce identity. S ohledem na heslo nechte uživatele zvolit jednu a nastavit v adresáři. V případě bezproblémové migrace by například mělo být v účtu Azure AD B2C uloženo pouze zvolené heslo.
 - Před migrací odeberte nepoužívané uživatelské účty nebo Nemigrujte zastaralé účty.
 
 ### <a name="password-policy"></a>Zásady hesel
 
-Pokud mají účty, které migrujete, slabší sílu hesla, než je [bezpečná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutilá Azure AD B2C, můžete zakázat požadavek na silný heslo. Další informace najdete v tématu [vlastnost zásady hesel](manage-user-accounts-graph-api.md#password-policy-property).
+Pokud mají účty, které migrujete, slabší sílu hesla, než je [bezpečná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutilá Azure AD B2C, můžete zakázat požadavek na silný heslo. Další informace najdete v tématu [vlastnost zásady hesel](user-profile-attributes.md#password-policy-attribute).
 
 ## <a name="next-steps"></a>Další kroky
 

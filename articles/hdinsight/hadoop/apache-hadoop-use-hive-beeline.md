@@ -1,23 +1,22 @@
 ---
 title: Použití Apache Beeline s Apache Hive – Azure HDInsight
 description: Naučte se používat klienta Beeline ke spouštění dotazů na podregistr pomocí Hadoop v HDInsight. Beeline je nástroj pro práci s HiveServer2 nad JDBC.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: 3614fac027dd32ab5f5d70f5835432ac3b9b512d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 10/28/2020
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: e8b7478ba64da0f99a9b7a710222ff2953795adf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207744"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943203"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hivem
 
-Naučte se používat [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) ke spouštění dotazů Apache Hive v HDInsight.
+Tento článek popisuje, jak pomocí klienta [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) z příkazového řádku vytvářet a spouštět dotazy Apache Hive přes připojení SSH.
+
+## <a name="background"></a>Pozadí
 
 Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HDInsight. Pokud se chcete připojit ke klientovi Beeline nainstalovanému v clusteru HDInsight nebo místně nainstalovat Beeline, přečtěte si článek [připojení k Apache Beeline nebo](connect-install-beeline.md)jeho instalace. Beeline používá JDBC pro připojení k HiveServer2, službě hostované v clusteru HDInsight. Beeline můžete použít také k vzdálenému přístupu k podregistru v HDInsight přes Internet. V následujících příkladech jsou uvedeny nejběžnější připojovací řetězce používané pro připojení ke službě HDInsight z Beeline.
 
@@ -25,11 +24,9 @@ Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HD
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Všimněte si schématu identifikátoru URI pro primární úložiště vašeho clusteru. Například `wasb://` pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, je identifikátor URI `wasbs://` . Další informace najdete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* Všimněte si schématu identifikátoru URI pro primární úložiště vašeho clusteru. Například  `wasb://` pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, je identifikátor URI `wasbs://` . Další informace najdete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
-* Možnost 1: klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru.
-
-* Možnost 2: místní klient Beeline.
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru. Můžete také použít místního klienta Beeline, ale tyto kroky nejsou zahrnuty v tomto článku.
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
@@ -109,7 +106,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
     |Příkaz |Popis |
     |---|---|
-    |ODKLÁDACÍ TABULKA|Pokud tabulka existuje, je odstraněna.|
+    |DROP TABLE|Pokud tabulka existuje, je odstraněna.|
     |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|
     |FORMÁT ŘÁDKU|Způsob formátování dat. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
     |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Kde jsou data uložena a v jakém formátu souboru.|
@@ -163,7 +160,7 @@ Tento příklad je pokračování z předchozího příkladu. Pomocí následuj�
     nano query.hql
     ```
 
-1. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní **tabulku s názvem**protokolu chyb:
+1. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní **tabulku s názvem** protokolu chyb:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -181,7 +178,7 @@ Tento příklad je pokračování z předchozího příkladu. Pomocí následuj�
     > [!NOTE]  
     > Na rozdíl od externích tabulek odstraní interní tabulka také podkladová data.
 
-1. Pokud chcete soubor uložit, použijte **CTRL +** + **X**, zadejte **Y**a nakonec **ENTER**.
+1. Pokud chcete soubor uložit, použijte **CTRL +** + , zadejte **Y** a nakonec **ENTER**.
 
 1. K spuštění souboru pomocí Beeline použijte následující:
 

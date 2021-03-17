@@ -5,24 +5,34 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: d04a13dae78057dfca52ed82bed278a8b132ded1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 891276f7a37bfb2397101388f430a297bdca0a21
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375433"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445676"
 ---
+Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
+
+* Převod řeči na text
+* Překlad řeči na více cílových jazyků
+* Přímá překlady řeči na řeč
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre/translate-speech-to-text) na GitHubu.
+
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">získání sady Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> tématu _o sadě Speech SDK_ .
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">získání sady Speech SDK</a> tématu _o sadě Speech SDK_ .
 
 ## <a name="import-dependencies"></a>Importovat závislosti
 
-Chcete-li spustit příklady v tomto článku, zahrňte do `import` horní části stránky * následující příkazy *. *Soubor kódu Java.
+Chcete-li spustit příklady v tomto článku, zahrňte do `import` horní části stránky * následující příkazy *.* Soubor kódu Java.
 
 ```java
 package speech;
@@ -63,7 +73,7 @@ Existuje několik způsobů, jak můžete inicializovat [`SpeechTranslationConfi
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Pojďme se podívat, jak [`SpeechTranslationConfig`][config] se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
+Pojďme se podívat, jak [`SpeechTranslationConfig`][config] se vytvoří pomocí klíče a oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ```java
 public class App {
@@ -223,7 +233,7 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 }
 ```
 
-Další informace o převodu řeči na text najdete v tématu [základy rozpoznávání řeči](../../../speech-to-text-basics.md).
+Další informace o převodu řeči na text najdete v tématu [základy rozpoznávání řeči](../../../get-started-speech-to-text.md).
 
 ## <a name="synthesize-translations"></a>Překlady pro syntetizátory
 
@@ -328,13 +338,13 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 }
 ```
 
-Další informace o syntézě řeči najdete [v tématu Základy funkce pro syntézu řeči](../../../text-to-speech-basics.md).
+Další informace o syntézě řeči najdete [v tématu Základy funkce pro syntézu řeči](../../../get-started-text-to-speech.md).
 
-[config]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig?view=azure-java-stable
-[audioconfig]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig?view=azure-java-stable
-[recognizer]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.TranslationRecognizer?view=azure-java-stable
-[recognitionlang]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable
-[addlang]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.addtargetlanguage?view=azure-java-stable
-[translations]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations?view=azure-java-stable
-[voicename]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename?view=azure-java-stable
-[speechsynthesisvoicename]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename?view=azure-java-stable
+[config]: /java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig
+[audioconfig]: /java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig
+[recognizer]: /java/api/com.microsoft.cognitiveservices.speech.translation.TranslationRecognizer
+[recognitionlang]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage
+[addlang]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.addtargetlanguage
+[translations]: /java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations
+[voicename]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename
+[speechsynthesisvoicename]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename

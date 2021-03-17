@@ -1,17 +1,17 @@
 ---
 title: Správa koncových bodů virtuální sítě – Azure Portal-Azure Database for MySQL
 description: Vytváření a správa koncových bodů a pravidel služby VNet Azure Database for MySQL pomocí Azure Portal
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 843bb32a4b5b5e29c4ab7c1dc9ff254a8424ae86
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5273681f23f6eea54c35e5cacea487dab18793e2
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118677"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240779"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Vytváření a správa koncových bodů služby VNet Azure Database for MySQL a pravidel virtuální sítě pomocí Azure Portal
 Pravidla a koncové body služeb virtuální sítě rozšiřují privátní adresní prostor virtuální sítě na server Azure Database for MySQL. Přehled koncových bodů služby virtuální sítě Azure Database for MySQL, včetně omezení, najdete v tématu [koncové body služby virtuální sítě v Azure Database for MySQL serveru](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastech pro Azure Database for MySQL.
@@ -25,18 +25,18 @@ Pravidla a koncové body služeb virtuální sítě rozšiřují privátní adre
 
 1. Na stránce serveru MySQL klikněte v záhlaví nastavení na **zabezpečení připojení** a otevřete podokno zabezpečení připojení pro Azure Database for MySQL. 
 
-2. Zajistěte, aby byl ovládací prvek povolení přístupu ke službám Azure nastavený na **vypnuto**.
+2. Zajistěte, aby byl ovládací prvek povolení přístupu ke službám Azure nastavený na **vypnuto** .
 
 > [!Important]
 > Pokud ovládací prvek necháte nastavený na ZAPNUTo, databázový server Azure MySQL přijme komunikaci ze všech podsítí. Ponechání ovládacího prvku na ZAPNUTo může být nadměrný přístup z hlediska zabezpečení. Funkce koncového bodu služby Microsoft Azure Virtual Network, v koordinaci s funkcí pravidla virtuální sítě Azure Database for MySQL, společně může snížit oblast zabezpečení.
 
-3. Potom klikněte na **+ Přidat existující virtuální síť**. Pokud nemáte existující virtuální síť, můžete ji vytvořit kliknutím na **+ vytvořit novou virtuální síť** . Další informace najdete v tématu [rychlý Start: vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md)
+3. Potom klikněte na **+ Přidat existující virtuální síť** . Pokud nemáte existující virtuální síť, můžete ji vytvořit kliknutím na **+ vytvořit novou virtuální síť** . Další informace najdete v tématu [rychlý Start: vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md)
 
-   ![Azure Portal – kliknutí na zabezpečení připojení](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/1-connection-security.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
-4. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a pak klikněte na **Povolit**. Tím se automaticky povolí koncové body služby virtuální sítě v podsíti s použitím značky služby **Microsoft. SQL** .
+4. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a pak klikněte na **Povolit** . Tím se automaticky povolí koncové body služby virtuální sítě v podsíti s použitím značky služby **Microsoft. SQL** .
 
-   ![Azure Portal – konfigurace virtuální sítě](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
    Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 
@@ -44,17 +44,17 @@ Pravidla a koncové body služeb virtuální sítě rozšiřují privátní adre
     
    Aby bylo možné zabezpečit prostředky služeb Azure pro virtuální síť, musí mít uživatel pro přidávané podsítě oprávnění k Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/. Toto oprávnění je ve výchozím nastavení součástí předdefinovaných rolí správců služeb a může se upravit vytvořením vlastních rolí.
     
-   Další informace o [předdefinovaných rolích](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) a přiřazení konkrétních oprávnění k [vlastním rolím](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
+   Další informace o [předdefinovaných rolích](../role-based-access-control/built-in-roles.md) a přiřazení konkrétních oprávnění k [vlastním rolím](../role-based-access-control/custom-roles.md).
     
    Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). Zajistěte, aby oba odběry měly zaregistrovaný poskytovatel prostředků **Microsoft. SQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
 
    > [!IMPORTANT]
-   > Před konfigurací koncových bodů služby se důrazně doporučuje přečíst si tento článek o konfiguracích koncových bodů a požadavcích služby. **Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. Koncové body služeb virtuální sítě používají název typu služby **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby platí také pro Azure SQL Database služby Azure Database for PostgreSQL a MySQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** pro koncový bod služby virtuální sítě, nakonfiguruje se provoz koncového bodu služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL a Azure Database for MySQL serverů v podsíti. 
+   > Před konfigurací koncových bodů služby se důrazně doporučuje přečíst si tento článek o konfiguracích koncových bodů a požadavcích služby. **Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. Koncové body služeb virtuální sítě používají název typu služby **Microsoft. SQL** , který odkazuje na službu Azure s názvem SQL Database. Tato značka služby platí také pro Azure SQL Database služby Azure Database for PostgreSQL a MySQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** pro koncový bod služby virtuální sítě, nakonfiguruje se provoz koncového bodu služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL a Azure Database for MySQL serverů v podsíti. 
    > 
 
 5. Po povolení klikněte na **OK** a uvidíte, že koncové body služby virtuální sítě jsou povolené spolu s pravidlem virtuální sítě.
 
-   ![Povolené koncové body služby virtuální sítě a vytvořené pravidlo virtuální sítě](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="Azure Portal – kliknutí na zabezpečení připojení":::
 
 ## <a name="next-steps"></a>Další kroky
 - Podobně můžete skript pro [Povolení koncových bodů služby virtuální sítě a vytvoření pravidla virtuální sítě pro Azure Database for MySQL pomocí Azure CLI](howto-manage-vnet-using-cli.md).

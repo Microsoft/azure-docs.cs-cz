@@ -1,30 +1,30 @@
 ---
 title: Použití dynamického SQL
-description: Tipy pro vývojová řešení s využitím dynamického SQL ve fondu SQL synapse
+description: Tipy pro vývojová řešení s využitím dynamického SQL pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bce79b8e18b3ec6f1fd139af280086281bbdda98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 18dcdbf5a4840fda3c2689cc3c8c003470bf1c7f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213461"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679597"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dynamický SQL ve fondu synapse SQL
+# <a name="dynamic-sql-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Dynamický SQL pro vyhrazené fondy SQL ve službě Azure synapse Analytics
 
-V tomto článku najdete tipy pro vývojová řešení pomocí dynamického SQL ve fondu SQL.
+V tomto článku najdete tipy pro vývojová řešení pomocí dynamického SQL ve vyhrazených fondech SQL.
 
 ## <a name="dynamic-sql-example"></a>Příklad dynamického SQL
 
-Při vývoji kódu aplikace pro fond SQL může být nutné použít dynamický jazyk SQL k zajištění flexibilních, obecných a modulárních řešení. Fond SQL v tuto chvíli nepodporuje datové typy objektů BLOB.
+Při vývoji kódu aplikace pro vyhrazené fondy SQL může být nutné použít dynamický jazyk SQL k zajištění flexibilních, obecných a modulárních řešení. Vyhrazené fondy SQL momentálně v tuto chvíli nepodporují datové typy objektů BLOB.
 
 Datové typy objektů BLOB nepodporují velikost řetězců, protože datové typy objektů BLOB zahrnují typy varchar (max) a nvarchar (max).
 
@@ -40,7 +40,7 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Pokud je řetězec krátký, můžete použít [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jako normální.
+Pokud je řetězec krátký, můžete použít [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) jako normální.
 
 > [!NOTE]
 > Příkazy spouštěné jako dynamické SQL budou nadále platit pro všechna ověřovací pravidla T-SQL.

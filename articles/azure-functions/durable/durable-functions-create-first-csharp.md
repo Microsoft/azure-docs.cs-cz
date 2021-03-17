@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055458"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008160"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 
@@ -21,7 +21,7 @@ ms.locfileid: "88055458"
 
 V tomto článku se naučíte, jak používat Visual Studio Code k místnímu vytvoření a otestování trvalé funkce "Hello World".  Tato funkce orchestruje a zřetězí volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást [rozšíření VS Code Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 
-![Spuštění trvalé funkce v Azure](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
+![Snímek obrazovky ukazuje Visual Studio Code okno s trvalou funkcí.](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -84,13 +84,13 @@ Následující kroky používají šablonu k vytvoření trvalého kódu funkce 
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
     | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
     | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
-    | Výběr umístění | *oblast* | Vyberte oblast, kterou chcete zavřít. |
+    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
 
 Do projektu se přidá třída obsahující nové funkce. VS Code taky přidá připojovací řetězec účtu úložiště, který se má *local.settings.jsna* , a odkaz na [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) balíček NuGet na soubor projektu *. csproj* .
 
 Otevřete nový soubor *HelloOrchestration.cs* pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
 
-| Metoda | FunctionName | Popis |
+| Metoda | FunctionName | Description |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Spravuje trvalou orchestraci. V tomto případě se orchestrace spustí, vytvoří seznam a přidá výsledek tří volání funkcí do seznamu.  Po dokončení tří volání funkce vrátí seznam. |
 | **`SayHello`** | `HelloOrchestration_Hello` | Funkce vrátí Hello. Jedná se o funkci, která obsahuje orchestraci obchodní logiky. |
@@ -165,7 +165,7 @@ Použili jste Visual Studio Code k vytvoření a publikování aplikace funkce, 
 
 V tomto článku se naučíte, jak se v rámci sady Visual Studio 2019 místně vytvoří a otestuje trvalá funkce Hello World.  Tato funkce orchestruje a zřetězí volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou k dispozici v rámci úlohy vývoje Azure v aplikaci Visual Studio 2019.
 
-![Spuštění trvalé funkce v Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Snímek obrazovky ukazuje okno sady Visual Studio 2019 s trvalou funkcí.](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -189,7 +189,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 1. Zadejte **název projektu** a vyberte **OK**. Název projektu musí být platný jako obor názvů C#, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné nealfanumerické znaky.
 
-1. V části **vytvořit novou aplikaci Azure Functions**použijte nastavení zadaná v tabulce, která následuje po obrázku.
+1. V části **vytvořit novou aplikaci Azure Functions** použijte nastavení zadaná v tabulce, která následuje po obrázku.
 
     ![Vytvoření nového dialogového okna aplikace Azure Functions v aplikaci Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
@@ -217,7 +217,7 @@ Následující kroky používají šablonu k vytvoření trvalého kódu funkce 
 
 Do aplikace se přidá nová trvalá funkce.  Otevřete nový soubor. cs pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
 
-| Metoda | FunctionName | Popis |
+| Metoda | FunctionName | Description |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Spravuje trvalou orchestraci. V tomto případě se orchestrace spustí, vytvoří seznam a přidá výsledek tří volání funkcí do seznamu.  Po dokončení tří volání funkce vrátí seznam. |
 | **`SayHello`** | `<file-name>_Hello` | Funkce vrátí Hello. Jedná se o funkci, která obsahuje orchestraci obchodní logiky. |
@@ -237,7 +237,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
 3. Vložte adresu URL požadavku HTTP do adresního řádku prohlížeče a spusťte požadavek. Následuje ukázka odezvy na místní požadavek GET vrácené funkcí v prohlížeči:
 
-    ![Odezva místního hostitele funkce v prohlížeči](./media/durable-functions-create-first-csharp/functions-vs-status.png)
+    ![Snímek obrazovky se zobrazením okna prohlížeče, které statusQueryGetUri vyvolalo.](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
     Odpověď je počáteční výsledek z funkce HTTP, což nám umožňuje zjistit, že trvalá orchestrace byla úspěšně spuštěna.  Není ještě konečným výsledkem orchestrace.  Odpověď obsahuje několik užitečných adres URL.  Prozatím si vydejte dotaz na stav orchestrace.
 

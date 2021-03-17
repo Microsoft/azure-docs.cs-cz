@@ -1,17 +1,17 @@
 ---
 title: Knihovny připojení – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje několik knihoven a ovladačů, které můžete použít při kódování aplikací pro připojení a dotazování Azure Database for PostgreSQL-Single server.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704306"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Knihovny připojení pro Azure Database for PostgreSQL – jeden server
 Tento článek obsahuje seznam knihoven a ovladačů, které můžou vývojáři použít k vývoji aplikací pro připojení k Azure Database for PostgreSQL a dotazování na ně.
@@ -26,7 +26,7 @@ Většina jazykových klientských knihoven používaných pro připojení k ser
 | Node.js | [Balíček pg npm](https://www.npmjs.com/package/pg) | Čistý JavaScript bez blokování klienta | [Instalace](https://www.npmjs.com/package/pg) |
 | Java | [JDBC](https://jdbc.postgresql.org/) | Typ 4 ovladač JDBC | [Stáhnout](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [PG Gem](https://deveiate.org/code/pg/) | Rozhraní Ruby | [Stáhnout](https://rubygems.org/downloads/pg-0.20.0.gem) |
-| Přejít | [PQ balíčku](https://godoc.org/github.com/lib/pq) | Ovladač čistého přechodu na Postgres | [Instalace](https://github.com/lib/pq/blob/master/README.md) |
+| Go | [PQ balíčku](https://godoc.org/github.com/lib/pq) | Ovladač čistého přechodu na Postgres | [Instalace](https://github.com/lib/pq/blob/master/README.md) |
 | C \# /.NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Zprostředkovatel dat | [Stáhnout](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | Ovladač ODBC | [Stáhnout](https://www.postgresql.org/ftp/odbc/versions/) |
 | C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Primární rozhraní jazyka C | Zahrnuje |

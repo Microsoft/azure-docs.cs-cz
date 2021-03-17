@@ -1,15 +1,15 @@
 ---
 title: Použití Visual Studio Code k připojení ke službě Azure blockchain
 description: Připojte se k síti konsorcia služeb Azure blockchain pomocí sady Azure blockchain Development Kit pro Ethereem Extension v Visual Studio Code
-ms.date: 04/22/2020
+ms.date: 12/04/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e94d93d91f25c15743c4c467e31de49fd9da41d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084834"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763294"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Rychlý Start: použití Visual Studio Code pro připojení k síti konsorcia služeb Azure blockchain
 
@@ -17,20 +17,19 @@ V tomto rychlém startu nainstalujete a použijete pro rozšíření Ethereem Vi
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure blockchain Development Kit pro rozšíření Ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x nebo vyšší](https://nodejs.org)
+* [Node.js 10.15. x nebo vyšší](https://nodejs.org)
 * [Git 2.10. x nebo vyšší](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Přidejte Python. exe do cesty. Pro Azure blockchain Development Kit se vyžaduje 2.7.15 verze Pythonu ve vaší cestě.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Ve Windows se pro modul gyp vyžaduje nainstalovaný kompilátor C++. Můžete použít nástroje MSBuild:
 
-* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem`npm config set msvs_version 2017 -g`
+* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem `npm config set msvs_version 2017 -g`
 * Pokud je nainstalována sada Visual Studio 2019, nastavte cestu k nástrojům pro sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
 * V opačném případě nainstalujte samostatné nástroje VS Build Tools pomocí `npm install --global windows-build-tools` příkazu v příkazovém okně *Spustit jako správce* .
 
@@ -40,7 +39,7 @@ Další informace o Node-gyp najdete v části [úložiště Node-gyp na GitHubu
 
 Sada Azure blockchain Development Kit ověřuje splnění požadavků na vývojové prostředí. Ověření vašeho vývojového prostředí:
 
-Z palety příkazů VS Code vyberte možnost **Azure blockchain: Zobrazit úvodní stránku**.
+Z palety příkazů VS Code vyberte **blockchain: Zobrazit úvodní stránku**.
 
 Azure blockchain Development Kit spustí ověřovací skript, který dokončení trvá přibližně minutu. Výstup můžete zobrazit tak, že vyberete **terminál > nový terminál**. V řádku nabídek terminálu vyberte kartu **výstup** a **Azure blockchain** v rozevíracím seznamu. Úspěšné ověření vypadá jako na následujícím obrázku:
 

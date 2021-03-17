@@ -3,19 +3,16 @@ title: Transformace dat pomocí aktivity streamování Hadoop
 description: Vysvětluje, jak použít aktivitu streamování Hadoop v Azure Data Factory k transformaci dat spuštěním programů pro streamování Hadoop v clusteru Hadoop.
 author: nabhishek
 ms.author: abnarain
-manager: shwang
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2a9bc9d664ba15da3cdefa5cf28519ab703d6ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83844605"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361430"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -78,7 +75,7 @@ Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data
 | Mapper            | Určuje název spustitelného souboru mapovače. | Yes      |
 | redukce           | Určuje název spustitelného souboru nástroje pro zmenšení. | Yes      |
 | kombinační          | Určuje název spustitelného souboru kombinované aplikace. | No       |
-| fileLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení programů pro mapování, kombinování a snižování. Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | No       |
+| fileLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení programů pro mapování, kombinování a snižování. Tady se podporují jenom propojené služby **[Azure Blob Storage](./connector-azure-blob-storage.md)** a **[adls Gen2](./connector-azure-data-lake-storage.md)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | No       |
 | filePath          | Poskytněte pole cesty k programům mapovače, kombinování a snižování, které jsou uložené v Azure Storage, na kterou odkazuje fileLinkedService. V této cestě se rozlišují velká a malá písmena. | Yes      |
 | vstup             | Určuje cestu WASB ke vstupnímu souboru pro mapovač. | Yes      |
 | output            | Určuje cestu WASB k výstupnímu souboru pro tuto redukci. | Yes      |
@@ -95,5 +92,5 @@ Podívejte se na následující články, které vysvětlují, jak transformovat
 * [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita spuštění Machine Learning dávky](transform-data-using-machine-learning.md)
+* [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

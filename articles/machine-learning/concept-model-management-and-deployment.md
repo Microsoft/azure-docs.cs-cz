@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543380"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508006"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -71,6 +70,9 @@ Registrované modely se identifikují prostřednictvím názvu a verze. Vždy, k
 Registrovaný model, který se používá v aktivním nasazení, se nedá odstranit.
 Další informace naleznete v části model registru v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel).
 
+> [!IMPORTANT]
+> Když použijete možnost filtrovat podle `Tags` na stránce modely na Azure Machine Learning Studio, místo použití `TagName : TagValue` zákazníků by se měla použít `TagName=TagValue` (bez mezer).
+
 ### <a name="profile-models"></a>Modely profilů
 
 Azure Machine Learning vám může pomáhat pochopit požadavky na procesor a paměť služby, která se vytvoří při nasazení modelu. Profilace testuje službu, která spouští váš model, a vrací informace, jako je využití CPU, využití paměti a latence odezvy. Poskytuje taky doporučení pro procesor a paměť na základě využití prostředků.
@@ -106,7 +108,7 @@ Poskytujete také konfiguraci cílové platformy, na kterou model nasazujete. Na
 Do vytvořené image se dále přidají komponenty, které vyžaduje Azure Machine Learning. Může jít třeba o prostředky potřebné ke spuštění webové služby a interakci s IoT Edge.
 
 #### <a name="batch-scoring"></a>Dávkové vyhodnocování
-Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](how-to-use-parallel-run-step.md)objemy dat.
+Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](./tutorial-pipeline-batch-scoring-classification.md)objemy dat.
 
 #### <a name="real-time-web-services"></a>Webové služby v reálném čase
 
@@ -142,7 +144,7 @@ Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.
 
 ### <a name="analytics"></a>Analýzy
 
-Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](/power-bi/service-machine-learning-integration).
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Zaznamenání dat zásad správného řízení potřebných pro zachycení kompletního životního cyklu ML
 
@@ -153,12 +155,12 @@ Služba Azure ML poskytuje možnost sledovat kompletní záznam auditu všech pr
 - Možnost [Interpretace](how-to-machine-learning-interpretability.md) vám umožní vysvětlit vaše modely, dodržovat dodržování předpisů a pochopit, jak modely dorazí ve výsledku pro daný vstup.
 - Historie spuštění Azure ML ukládá snímek kódu, dat a výpočtů používaných pro výuku modelu.
 - Registr modelu Azure ML zachycuje všechna metadata přidružená k vašemu modelu (které experiment vyškole, pokud je nasazený, pokud je jeho nasazení v pořádku).
-- [Integrace s Azure](how-to-use-event-grid.md) umožňuje působit na události v průběhu životního cyklu ml. Například události registrace modelu, nasazení, posunu dat a školení (spustit).
+- [Integrace s Azure](how-to-use-event-grid.md)  umožňuje působit na události v průběhu životního cyklu ml. Například události registrace modelu, nasazení, posunu dat a školení (spustit).
 
 > [!TIP]
 > I když jsou některé informace o modelech a datových sadách automaticky zachyceny, můžete přidat další informace pomocí __značek__. Při hledání registrovaných modelů a datových sad v pracovním prostoru můžete použít značky jako filtr.
 >
-> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) Class reference.
+> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](/python/api/azureml-core/azureml.core.model%28class%29) Class reference.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozornění, automatizace a upozornění na události v životním cyklu ML
@@ -184,7 +186,7 @@ Neexistuje žádná univerzální odpověď na "Návody vědět, jestli by se m�
 - Porovnejte výstupy nového modelu s původními modely.
 - Pomocí předdefinovaných kritérií vyberte, jestli se má původní model nahradit. 
 
-Motivem výše uvedených kroků je, že vaše rekurze by měla být automatizovaná, ne ad hoc. [Kanály Azure Machine Learning](concept-ml-pipelines.md) jsou vhodnou odpovědí k vytváření pracovních postupů souvisejících s přípravou, školením, ověřováním a nasazením dat. Přečtěte si [modely převlaků pomocí návrháře Azure Machine Learning (Preview)](how-to-retrain-designer.md) a podívejte se, jak kanály a návrháře Azure Machine Learning vyhovují scénáři přeškolení. 
+Motivem výše uvedených kroků je, že vaše rekurze by měla být automatizovaná, ne ad hoc. [Kanály Azure Machine Learning](concept-ml-pipelines.md) jsou vhodnou odpovědí k vytváření pracovních postupů souvisejících s přípravou, školením, ověřováním a nasazením dat. Přečtěte si [modely přeučení pomocí návrháře Azure Machine Learning](how-to-retrain-designer.md) , abyste zjistili, jak kanály a návrháře Azure Machine Learning se vejdou do scénáře přeškolení. 
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatizace životního cyklu ML 
 

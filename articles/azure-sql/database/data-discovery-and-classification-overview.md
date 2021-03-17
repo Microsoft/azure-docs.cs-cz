@@ -11,38 +11,36 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004099"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690800"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje pokročilé možnosti pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích.
+Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje základní možnosti pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích.
 
 Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní péče nebo osobní údaje. Zjišťování a klasifikace těchto dat může hrát kontingenční roli v přístupu k ochraně informací ve vaší organizaci. Může sloužit jako infrastruktura na:
 
 - Pomoc při plnění standardů ochrany osobních údajů a požadavků na dodržování předpisů v souladu s předpisy.
-- Různé scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům.
+- Různé scénáře zabezpečení, například monitorování (auditování), přístup k citlivým datům.
 - Řízení přístupu a posílení zabezpečení databází, které obsahují vysoce citlivá data.
 
-Klasifikace & Discovery dat je součástí rozšířené nabídky [zabezpečení dat](advanced-data-security.md) , což je jednotný balíček pro pokročilé funkce zabezpečení Azure SQL. Pomocí centrálního oddílu **zabezpečení SQL Advanced data** v Azure Portal můžete používat a spravovat klasifikaci & Discovery Data.
-
 > [!NOTE]
-> Informace o SQL Server v místním prostředí najdete v tématu [klasifikace & data Discovery pro SQL](https://go.microsoft.com/fwlink/?linkid=866999).
+> Informace o SQL Server v místním prostředí najdete v tématu [klasifikace & data Discovery pro SQL](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Co je klasifikace & data Discovery?
 
-Klasifikace data Discovery & přináší sadu pokročilých služeb a nových funkcí v Azure. Tvoří nové paradigma pro ochranu informací pro SQL Database, spravovanou instanci SQL a Azure synapse, které mají za cíl chránit data a nikoli jenom databázi. Paradigma obsahuje:
+Klasifikace data Discovery & přináší sadu základních služeb a nových funkcí v Azure. Tvoří nové paradigma pro ochranu informací pro SQL Database, spravovanou instanci SQL a Azure synapse, které mají za cíl chránit data a nikoli jenom databázi. Paradigma obsahuje:
 
 - **Zjišťování a doporučení:** Klasifikační modul prohledá vaši databázi a určí sloupce, které obsahují potenciálně citlivá data. Potom vám poskytne snadný způsob, jak zkontrolovat a použít doporučenou klasifikaci prostřednictvím Azure Portal.
 
-- **Popisování:** Popisky klasifikace na základě citlivosti můžete u sloupců použít s použitím nových atributů metadat, které byly přidány do modulu SQL Server Database Engine. Tato metadata se pak dají použít k pokročilým scénářům auditování a ochrany na základě citlivosti.
+- **Popisování:** Popisky klasifikace na základě citlivosti můžete u sloupců použít s použitím nových atributů metadat, které byly přidány do modulu SQL Server Database Engine. Tato metadata se pak dají použít pro scénáře auditování a ochrany založené na citlivosti.
 
 - **Výsledek dotazu – nastavení citlivosti:** Citlivost sady výsledků dotazu je vypočítána v reálném čase pro účely auditování.
 
@@ -64,11 +62,11 @@ Klasifikace obsahuje dva atributy metadat:
 
 Klasifikace data Discovery & obsahuje integrovanou sadu popisků citlivosti a integrovanou sadu typů informací a logiku zjišťování. Tuto taxonomii si teď můžete přizpůsobit a definovat sadu klasifikačních konstruktorů (včetně hodnocení) na míru pro vaše prostředí.
 
-Na jednom centrálním místě pro celou organizaci Azure definujete a přizpůsobíte svou taxonomii klasifikace. Toto umístění je v [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)jako součást vašich zásad zabezpečení. Tuto úlohu může provést jenom osoba, která má oprávnění správce pro kořenovou skupinu pro správu organizace.
+Na jednom centrálním místě pro celou organizaci Azure definujete a přizpůsobíte svou taxonomii klasifikace. Toto umístění je v [Azure Security Center](../../security-center/security-center-introduction.md)jako součást vašich zásad zabezpečení. Tuto úlohu může provést jenom osoba, která má oprávnění správce pro kořenovou skupinu pro správu organizace.
 
 V rámci správy zásad pro ochranu informací můžete definovat vlastní popisky, seřadit je a přidružit je k vybrané sadě typů informací. Můžete také přidat vlastní typy informací a nakonfigurovat je pomocí vzorů řetězce. Do logiky zjišťování jsou přidány vzorce pro identifikaci tohoto typu dat ve vašich databázích.
 
-Další informace najdete v tématu [přizpůsobení zásad služby SQL Information Protection v Azure Security Center (Preview)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+Další informace najdete v tématu [přizpůsobení zásad služby SQL Information Protection v Azure Security Center (Preview)](../../security-center/security-center-info-protection-policy.md).
 
 Po definování zásad v rámci organizace můžete dál klasifikovat jednotlivé databáze pomocí vlastních zásad.
 
@@ -79,31 +77,27 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 
-2. V záhlaví **zabezpečení** v podokně Azure SQL Database otevřete **Rozšířené zabezpečení dat** . Vyberte **Upřesnit zabezpečení dat**a pak vyberte kartu **klasifikace & zjišťování dat** .
+1. V podokně Azure SQL Database klikněte na položku **zjišťování dat & klasifikace** pod záhlavím **zabezpečení** . Karta Přehled obsahuje souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 4](#step-4).
 
-   ![Podokno zabezpečení pokročilých dat v Azure Portal](./media/data-discovery-and-classification-overview/data_classification.png)
+    ![Přehled](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
-3. Na stránce **klasifikace & zjišťování dat** obsahuje karta **Přehled** souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 5](#step-5).
+1. Chcete-li stáhnout sestavu ve formátu aplikace Excel, v horní nabídce podokna vyberte **exportovat** .
 
-   ![Souhrn aktuálního stavu klasifikace](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Chcete-li stáhnout sestavu ve formátu aplikace Excel, v horní nabídce podokna vyberte **exportovat** .
-
-5. <a id="step-5"></a>Pokud chcete začít klasifikovat vaše data, vyberte kartu **klasifikace** na stránce **klasifikace & Discovery Data** .
+1. <a id="step-4"></a>Pokud chcete začít klasifikovat vaše data, vyberte kartu **klasifikace** na stránce **klasifikace & Discovery Data** .
 
     Klasifikační modul vyhledá v databázi sloupce obsahující potenciálně citlivá data a poskytne seznam doporučených klasifikací sloupců.
 
-6. Zobrazit a použít doporučení klasifikace:
+1. Zobrazit a použít doporučení klasifikace:
 
    - Seznam doporučených klasifikací sloupců zobrazíte tak, že v dolní části podokna vyberete panel doporučení.
 
    - Chcete-li přijmout doporučení pro určitý sloupec, zaškrtněte políčko v levém sloupci příslušného řádku. Pokud chcete všechna doporučení označit jako přijato, zaškrtněte políčko vlevo v záhlaví tabulky doporučení.
 
-       ![Kontrola a výběr ze seznamu doporučení klasifikace](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - Chcete-li použít vybraná doporučení, vyberte možnost **přijmout vybraná doporučení**.
 
-7. Sloupce můžete také klasifikovat ručně, jako alternativu nebo kromě klasifikace založené na doporučeních:
+   ![Doporučení pro klasifikaci](./media/data-discovery-and-classification-overview/recommendation.png)
+
+1. Sloupce můžete také klasifikovat ručně, jako alternativu nebo kromě klasifikace založené na doporučeních:
 
    1. V horní nabídce podokna vyberte **Přidat klasifikaci** .
 
@@ -111,9 +105,10 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
    1. V dolní části okna kontextu vyberte **Přidat klasifikaci** .
 
-      ![Vyberte sloupec, který se má klasifikovat.](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
+   ![Ruční přidání klasifikace](./media/data-discovery-and-classification-overview/manually-add-classification.png)
 
-8. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, vyberte **Uložit** v horní nabídce okna.
+
+1. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, vyberte **Uložit** na stránce **klasifikace** .
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Auditování přístupu k citlivým datům
 
@@ -137,7 +132,7 @@ Tyto předdefinované role mohou změnit klasifikaci dat databáze:
 - Přispěvatel
 - Správce zabezpečení SQL
 
-Další informace o oprávněních založených na rolích najdete v [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Další informace o oprávněních založených na rolích najdete v [Azure RBAC](../../role-based-access-control/overview.md).
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Spravovat klasifikace
 
@@ -152,45 +147,52 @@ K přidání nebo odebrání klasifikací sloupců a k načtení všech klasifik
 
 Informace o použití T-SQL pro klasifikace naleznete v následujících odkazech:
 
-- Přidání nebo aktualizace klasifikace jednoho nebo více sloupců: [Přidání klasifikace citlivosti](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Odebrání klasifikace z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Zobrazení všech klasifikací v databázi: [Sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Přidání nebo aktualizace klasifikace jednoho nebo více sloupců: [Přidání klasifikace citlivosti](/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Odebrání klasifikace z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Zobrazení všech klasifikací v databázi: [Sys.sensitivity_classifications](/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>Použití rutin PowerShell
 Spravujte klasifikace a doporučení pro Azure SQL Database a Azure SQL Managed instance pomocí prostředí PowerShell.
 
 #### <a name="powershell-cmdlets-for-azure-sql-database"></a>Rutiny PowerShellu pro Azure SQL Database
 
-- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [Enable – AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Get-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Enable – AzSqlDatabaSesensitivityRecommendation](/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 #### <a name="powershell-cmdlets-for-azure-sql-managed-instance"></a>Rutiny PowerShellu pro spravovanou instanci Azure SQL
 
-- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
-- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [Enable – AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [Enable – AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ### <a name="use-the-rest-api"></a>Použití rozhraní REST API
 
 Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publikovaný REST API podporuje následující operace:
 
-- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
-- [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): odstraní popisek citlivosti pro zadaný sloupec.
-- [Zakázat doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): zakáže doporučení citlivosti na zadaném sloupci.
-- [Povolit doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): povoluje u zadaného sloupce doporučení citlivosti. (Doporučení jsou ve výchozím nastavení povolená pro všechny sloupce.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
-- [Vypsat aktuální podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
-- [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
+- [Vytvořit nebo aktualizovat](/rest/api/sql/sensitivitylabels/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
+- [Odstranit](/rest/api/sql/sensitivitylabels/delete): odstraní popisek citlivosti pro zadaný sloupec.
+- [Zakázat doporučení](/rest/api/sql/sensitivitylabels/disablerecommendation): zakáže doporučení citlivosti na zadaném sloupci.
+- [Povolit doporučení](/rest/api/sql/sensitivitylabels/enablerecommendation): povoluje u zadaného sloupce doporučení citlivosti. (Doporučení jsou ve výchozím nastavení povolená pro všechny sloupce.)
+- [Get](/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
+- [Vypsat aktuální podle databáze](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
+- [Seznam doporučený databází](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
+
+
+## <a name="faq---advanced-classification-capabilities"></a>Nejčastější dotazy – pokročilé možnosti klasifikace
+
+**Otázka**: bude [Azure dosah](../../purview/overview.md) nahrazovat klasifikaci & Discovery data ve službě SQL nebo bude brzy vytříděna klasifikace dat SQL pro zjišťování &?
+**Odpověď**: dál podporujeme klasifikaci & Discovery data SQL a pomůžeme vám zajistit, abyste přijali [Azure dosah](../../purview/overview.md) , která nabízí bohatší možnosti pro zajištění pokročilých možností klasifikace a zásad správného řízení dat. Pokud se rozhodnete vyřadit jakékoli služby, funkce, rozhraní API nebo SKU, obdržíte oznámení s předstihem, včetně cesty migrace nebo přechodu. Další informace o zásadách životního cyklu Microsoftu najdete tady.
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [pokročilém zabezpečení dat](advanced-data-security.md).
 - Zvažte konfiguraci [auditování Azure SQL](../../azure-sql/database/auditing-overview.md) pro monitorování a auditování přístupu k utajovaným citlivým datům.
 - Prezentaci, která zahrnuje klasifikaci & Discovery data, najdete v tématu zjišťování [, klasifikace, označování & ochrany dat SQL | Zpřístupnění dat](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Informace o klasifikaci Azure SQL Database a Azure synapse Analytics pomocí popisků Azure dosah pomocí příkazů T-SQL najdete v tématu [klasifikace dat SQL Azure pomocí popisků Azure dosah](../../sql-database/scripts/sql-database-import-purview-labels.md).

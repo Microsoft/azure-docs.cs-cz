@@ -4,16 +4,17 @@ description: Naučte se auditovat operace roviny ovládacího prvku, jako je nap
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f3e408343fc75d6587d1a67a0179edf13d56e36
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023683"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658244"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Řídicí rovina v Azure Cosmos DB je služba RESTful, která umožňuje provádět různé sady operací na účtu Azure Cosmos. Zveřejňuje model veřejného prostředku (například databáze, účet) a různé operace pro koncové uživatele k provádění akcí v modelu prostředků. Operace roviny ovládacího prvku zahrnuje změny v rámci účtu nebo kontejneru Azure Cosmos. Například operace, jako je vytvoření účtu Azure Cosmos, přidání oblasti, aktualizace propustnosti, převzetí služeb při selhání, přidání virtuální sítě atd. jsou některé z operací roviny ovládacího prvku. Tento článek vysvětluje, jak auditovat operace roviny ovládacího prvku v Azure Cosmos DB. Pomocí Azure CLI nebo PowerShellu můžete spouštět operace řídicích roviny na účtech Azure Cosmos pomocí Azure CLI, PowerShellu nebo Azure Portal, zatímco kontejnery.
 
@@ -27,7 +28,7 @@ Následuje několik ukázkových scénářů, ve kterých je užitečné objedn�
 
 ## <a name="disable-key-based-metadata-write-access"></a>Zakázat přístup pro zápis metadat založených na klíčích
 
-Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli řízení přístupu na základě role (RBAC) a přihlašovací údaje. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes) . 
+Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli a přihlašovací údaje Azure. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes) . 
 
 `disableKeyBasedMetadataWriteAccess`Když je tato funkce zapnutá, klienti na bázi sady SDK spouštějí operace vytvořit nebo aktualizovat, protože se vrátí chyba *"post" na prostředku "ContainerNameorDatabaseName Azure Cosmos DB"* . Musíte zapnout přístup k takovým operacím pro váš účet nebo provádět operace vytvoření/aktualizace prostřednictvím Azure Resource Manager, Azure CLI nebo Azure PowerShell. Pokud chcete přejít zpátky, nastavte disableKeyBasedMetadataWriteAccess na **hodnotu false** pomocí rozhraní příkazového řádku Azure, jak je popsané v článku [prevence změn ze sady Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) . Nezapomeňte změnit hodnotu `disableKeyBasedMetadataWriteAccess` na false namísto true.
 
@@ -170,29 +171,60 @@ Vlastnost *ResourceDetails* obsahuje celé tělo prostředku jako datovou část
 Následuje několik příkladů, jak získat diagnostické protokoly pro operace roviny řízení:
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName startswith "SqlContainersThroughputUpdate"
+```
+
+Dotaz pro získání activityId a volajícího, který inicioval operaci odstranění kontejneru:
+
+```kusto
+(AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName == "SqlContainersDelete"
+| where TimeGenerated >= todatetime('9/3/2020, 5:30:29.300 PM')
+| summarize by activityId_g )
+| join (
+AzureActivity
+| parse HTTPRequest with * "clientRequestId\": \"" activityId_g "\"" * 
+| summarize by Caller, HTTPRequest, activityId_g)
+on activityId_g
+| project Caller, activityId_g
+```
+
+Dotaz pro získání aktualizace indexu nebo TTL. Pak můžete porovnat výstup tohoto dotazu s předchozí aktualizací, abyste viděli změnu v indexu nebo TTL.
+
+```Kusto
+AzureDiagnostics
+| where Category =="ControlPlaneRequests"
+| where  OperationName == "SqlContainersUpdate"
+| project resourceDetails_s
+```
+
+**výkonem**
+
+```json
+{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
 ## <a name="next-steps"></a>Další kroky

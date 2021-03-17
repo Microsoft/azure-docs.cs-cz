@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Vytvoření aplikace lokátoru úložiště pomocí Azure Maps | Mapy Microsoft Azure'
-description: Naučte se vytvářet webové aplikace lokátoru úložiště. Pomocí sady Azure Maps Web SDK můžete vytvořit webovou stránku, zadat dotaz na vyhledávací službu a zobrazit výsledky na mapě.
+description: Kurz týkající se vytváření webových aplikací lokátoru úložiště Pomocí sady Azure Maps Web SDK můžete vytvořit webovou stránku, zadat dotaz na vyhledávací službu a zobrazit výsledky na mapě.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121251"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625094"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
 Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložiště pomocí Azure Maps. Lokátory úložiště jsou běžné. Mnohé z konceptů, které se používají v tomto typu aplikace, platí i pro mnoho dalších typů aplikací. Nabídka lokátoru úložiště zákazníkům je potřeba pro většinu firem, které prodávají přímo zákazníkům. V tomto kurzu se naučíte:
-    
+
 > [!div class="checklist"]
 > * Vytvořte novou webovou stránku pomocí rozhraní Azure Ovládací prvek Mapa API.
 > * Načte vlastní data ze souboru a zobrazí je na mapě.
@@ -78,10 +78,10 @@ Podívejte se na snímek obrazovky s daty, můžeme udělat následující pozn�
 
 * Informace o umístění se ukládají pomocí sloupců **AddressLine**, **City**, **obec** (okres), **AdminDivision** (stát/provincie), **PostCode** (PSČ) a **Country (země** ).  
 * Sloupce **Zeměpisná šířka** a **Délka** obsahují souřadnice pro každé místo v kavárně pro kavárnu v rámci společnosti Contoso. Pokud nemáte informace o souřadnicích, můžete použít vyhledávací služby v Azure Maps k určení souřadnic umístění.
-* Některé další sloupce obsahují metadata týkající se kavárny: telefonní číslo, logické sloupce a časy počátečního a koncového skladu ve 24hodinovém formátu. Logické sloupce jsou pro přístupnost Wi-Fi a invalidního vozíku. Můžete vytvořit vlastní sloupce, které obsahují metadata, která jsou pro data o poloze relevantnější.
+* Některé další sloupce obsahují metadata týkající se kavárny: telefonní číslo, logické sloupce a časy počátečního a koncového skladu ve 24hodinovém formátu. Logické sloupce jsou pro přístup Wi-Fi a invalidního vozíku. Můžete vytvořit vlastní sloupce, které obsahují metadata, která jsou pro data o poloze relevantnější.
 
 > [!NOTE]
-> Azure Maps vykreslí data v kulové Mercator projekci "EPSG: 3857", ale přečte data v "EPSG: 4325", která používají WGS84 datum.
+> Azure Maps vykreslí data v kulové Mercator projekci "EPSG: 3857", ale přečte data v "EPSG: 4326", která používají WGS84 datum.
 
 Existuje mnoho způsobů, jak datovou sadu zpřístupnit aplikaci. Jedním z možností je načíst data do databáze a vystavit webovou službu, která dotazuje data. Pak můžete výsledky odeslat do prohlížeče uživatele. Tato možnost je ideální pro velké datové sady nebo pro datové sady, které se často aktualizují. Tato možnost ale vyžaduje více vývojových prací a má vyšší náklady.
 
@@ -97,7 +97,7 @@ Pokud otevřete textový soubor v poznámkovém bloku, vypadá to podobně jako 
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
 
-Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index.html*, *index. CSS*a *index.js*. Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte *ContosoCoffee.txt* do složky. Vytvořte další složku s názvem *Image*. V této aplikaci používáme 10 imagí pro ikony, tlačítka a značky na mapě. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
+Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index.html*, *index. CSS* a *index.js*. Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte *ContosoCoffee.txt* do složky. Vytvořte další složku s názvem *Image*. V této aplikaci používáme 10 imagí pro ikony, tlačítka a značky na mapě. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
 
 ![Snímek obrazovky složky projektu lokátoru jednoduchého úložiště](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
@@ -385,7 +385,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Přidejte kód pro *index.js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
+1. Přidejte kód pro *index.js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](/javascript/api/azure-maps-control/atlas.map#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
 
    Když uživatel vybere tlačítko hledání nebo zadá umístění do vyhledávacího pole, pak stiskne klávesu ENTER, bude zahájeno přibližné vyhledávání proti dotazu uživatele. Předejte pole hodnot ISO 2 země nebo oblasti do `countrySet` Možnosti pro omezení výsledků hledání na tyto země nebo oblasti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
   
@@ -432,7 +432,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1
@@ -924,34 +924,25 @@ Pokud změníte velikost okna prohlížeče na méně než 700 pixelů na šíř
 
 ![Snímek obrazovky s verzí na malém displeji lokátoru úložiště](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
+V tomto kurzu jste zjistili, jak vytvořit základní Lokátor úložiště pomocí Azure Maps. Lokátor úložiště, který vytvoříte v tomto kurzu, může mít všechny funkce, které potřebujete. Do lokátoru Storu můžete přidat funkce nebo využít více funkcí pro více uživatelských zkušeností: 
+
+ * Při [psaní](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) do vyhledávacího pole můžete povolit návrhy.  
+ * Přidání [podpory pro více jazyků](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization). 
+ * Umožní uživateli [filtrovat umístění podél trasy](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+ * Přidejte možnost [nastavení filtrů](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
+ * Přidejte podporu pro určení počáteční hodnoty vyhledávání pomocí řetězce dotazu. Když zahrnete tuto možnost do svého lokátoru úložiště, můžou uživatelé hledat v záložek a sdílet je. Poskytuje také snadnou metodu, jak můžete předat vyhledávání na této stránce z jiné stránky.  
+ * Nasaďte svůj Lokátor úložiště jako [Azure App Service webovou aplikaci](../app-service/quickstart-html.md). 
+ * Uložte svá data do databáze a vyhledejte umístění v okolí. Další informace najdete v tématu [Přehled typů prostorových dat SQL Server](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) a [dotazování prostorových dat pro nejbližší sousední uzel](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017).
+
+Můžete [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [zobrazit živý ukázku](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) a získat další informace o pokrytí a funkcích Azure Maps pomocí [úrovní přiblížení a mřížky dlaždic](zoom-levels-and-tile-grid.md). Můžete také [použít výrazy stylu řízené daty](data-driven-style-expressions-web-sdk.md) pro použití v obchodní logice.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
+
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu se naučíte, jak vytvořit základní Lokátor úložiště pomocí Azure Maps. Lokátor úložiště, který vytvoříte v tomto kurzu, může mít všechny funkce, které potřebujete. Do lokátoru Storu můžete přidat funkce nebo využít více funkcí pro více uživatelských zkušeností: 
-
-> [!div class="checklist"]
-> * Při [psaní](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) do vyhledávacího pole můžete povolit návrhy.  
-> * Přidání [podpory pro více jazyků](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization). 
-> * Umožní uživateli [filtrovat umístění podél trasy](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-> * Přidejte možnost [nastavení filtrů](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
-> * Přidejte podporu pro určení počáteční hodnoty vyhledávání pomocí řetězce dotazu. Když zahrnete tuto možnost do svého lokátoru úložiště, můžou uživatelé hledat v záložek a sdílet je. Poskytuje také snadnou metodu, jak můžete předat vyhledávání na této stránce z jiné stránky.  
-> * Nasaďte svůj Lokátor úložiště jako [Azure App Service webovou aplikaci](https://docs.microsoft.com/azure/app-service/quickstart-html). 
-> * Uložte svá data do databáze a vyhledejte umístění v okolí. Další informace najdete v tématu [Přehled typů prostorových dat SQL Server](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) a [dotazování prostorových dat pro nejbližší sousední uzel](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
-
-> [!div class="nextstepaction"]
-> [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-> [!div class="nextstepaction"]
-> [Zobrazit ukázku živého vysílání](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-Další informace o pokrytí a možnostech Azure Maps:
-
-> [!div class="nextstepaction"]
-> [Úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md)
 
 Další příklady kódu a prostředí pro interaktivní psaní kódu:
 
 > [!div class="nextstepaction"]
 > [Jak používat mapový ovládací prvek](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)

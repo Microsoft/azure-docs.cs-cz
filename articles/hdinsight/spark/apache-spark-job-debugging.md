@@ -1,25 +1,22 @@
 ---
 title: Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight
 description: Pro sledování a ladění úloh spuštěných v clusteru Spark v Azure HDInsight použijte uživatelské rozhraní, rozhraní Spark a server historie Sparku.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 817b8976f5d014d990945816c2df1c7e8ed729fb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f332416a10aa86cb7e0bc7ba560537955d9f2faa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084881"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930566"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight
 
 V tomto článku se dozvíte, jak sledovat a ladit Apache Spark úlohy spuštěné v clusterech HDInsight. Proveďte ladění pomocí uživatelského rozhraní Apache Hadoop nitě, uživatelského rozhraní Spark a serveru s historií Spark. Pomocí poznámkového bloku, který je k dispozici pro cluster Spark, můžete spustit úlohu Sparku, **Machine Learning: prediktivní analýza dat kontroly potravin pomocí MLLib**. Pomocí následujících kroků můžete sledovat aplikaci, kterou jste odeslali pomocí jakéhokoli jiného přístupu, například **Spark-Submit**.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,12 +26,12 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v uživatelském rozhraní PŘÍZe
 
-1. Spusťte uživatelské rozhraní PŘÍZe. V části **řídicí panely clusteru**vyberte **příze** .
+1. Spusťte uživatelské rozhraní PŘÍZe. V části **řídicí panely clusteru** vyberte **příze** .
 
     ![Azure Portal spustit rozhraní PŘÍZe](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. Pokud chcete spustit uživatelské rozhraní Ambari, vyberte **Ambari domů** v části **řídicí panely clusteru**. V uživatelském rozhraní Ambari přejděte na rychlé odkazy na **přízi**  >  **Quick Links** > aktivní Správce prostředků > **Správce prostředků uživatelském rozhraní**.
+   > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. Pokud chcete spustit uživatelské rozhraní Ambari, vyberte **Ambari domů** v části **řídicí panely clusteru**. V uživatelském rozhraní Ambari přejděte na rychlé odkazy na **přízi**  >   > aktivní Správce prostředků > **Správce prostředků uživatelském rozhraní**.
 
 2. Vzhledem k tomu, že jste spustili úlohu Sparku pomocí poznámkových bloků Jupyter, aplikace má název **remotesparkmagics** (název všech aplikací spuštěných z poznámkových bloků). Chcete-li získat další informace o úloze, vyberte ID aplikace proti názvu aplikace. Tato akce spustí zobrazení aplikace.
 
@@ -50,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 V uživatelském rozhraní Spark můžete přejít k podrobnostem úloh Spark, které vytváří aplikace, kterou jste spustili dříve.
 
-1. Chcete-li spustit uživatelské rozhraní Spark, v zobrazení aplikace vyberte odkaz na **adresu URL pro sledování**, jak je znázorněno na snímku obrazovky výše. Zobrazí se všechny úlohy Sparku spouštěné aplikací běžícími na poznámkovém bloku Jupyter.
+1. Chcete-li spustit uživatelské rozhraní Spark, v zobrazení aplikace vyberte odkaz na **adresu URL pro sledování**, jak je znázorněno na snímku obrazovky výše. Můžete zobrazit všechny úlohy Sparku, které jsou spouštěny aplikací běžícími v Jupyter Notebook.
 
     ![Karta úlohy serveru historie Sparku](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 
@@ -93,7 +90,7 @@ V uživatelském rozhraní Spark můžete přejít k podrobnostem úloh Spark, k
 
 Po dokončení úlohy jsou informace o úloze trvalé na serveru historie Sparku.
 
-1. Pokud chcete spustit server historie Sparku, na stránce **Přehled** vyberte v části **řídicí panely clusteru**možnost **Server historie Spark** .
+1. Pokud chcete spustit server historie Sparku, na stránce **Přehled** vyberte v části **řídicí panely clusteru** možnost **Server historie Spark** .
 
     ![Azure Portal spustit historii serveru Spark](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spustit historii Sparku Server1")
 

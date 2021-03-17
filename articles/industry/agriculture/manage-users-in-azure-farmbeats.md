@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak spravovat uživatele v Azure FarmBeats
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
-ms.author: v-umha
-ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-ummehabiba
+ms.openlocfilehash: de9a11cac9856417422bd72579cbca44233ab422
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502060"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179897"
 ---
 # <a name="manage-users"></a>Správa uživatelů
 
@@ -67,7 +67,7 @@ Odebrání uživatelů ze systému Azure FarmBeats:
 
 Pokud chcete přidat uživatele do Azure AD, postupujte podle pokynů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V pravém horním rohu vyberte svůj účet a pak přepněte na tenanta Azure AD, který je přidružený k FarmBeats.
 3. Vyberte **Azure Active Directory**  >  **Uživatelé**.
 
@@ -80,7 +80,7 @@ Pokud chcete přidat uživatele do Azure AD, postupujte podle pokynů:
 5. Vyberte jméno nového uživatele a pak vyplňte požadovaná pole pro daného uživatele.
 6. Vyberte **Vytvořit**.
 
-Informace o správě uživatelů Azure AD najdete v tématu [Přidání nebo odstranění uživatelů v Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/).
+Informace o správě uživatelů Azure AD najdete v tématu [Přidání nebo odstranění uživatelů v Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="next-steps"></a>Další kroky
 

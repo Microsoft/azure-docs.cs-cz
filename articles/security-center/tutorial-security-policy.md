@@ -1,52 +1,40 @@
 ---
 title: Práce se zásadami zabezpečení | Microsoft Docs
 description: Tento článek popisuje, jak pracovat se zásadami zabezpečení v Azure Security Center.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/04/2019
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519350"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101320"
 ---
-# <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
+# <a name="manage-security-policies"></a>Správa zásad zabezpečení
 
 Tento článek vysvětluje, jak se konfigurují zásady zabezpečení, a jak je zobrazit v Security Center. 
 
-## <a name="introduction-to-security-policies"></a>Úvod do zásad zabezpečení
+## <a name="who-can-edit-security-policies"></a>Kdo může upravovat zásady zabezpečení?
 
-Zásady zabezpečení definují požadovanou konfiguraci vašich úloh a pomáhají zajistit dodržování požadavků na zabezpečení vašich společností nebo regulačních orgánů.
+Zásady zabezpečení můžete upravovat prostřednictvím Azure Policyového portálu prostřednictvím REST API nebo pomocí Windows PowerShellu.
 
-Azure Security Center provedla doporučení zabezpečení založená na zvolených zásadách. Zásady Security Center jsou založené na iniciativách zásad vytvořených v Azure Policy. Pomocí [Azure Policy](../governance/policy/overview.md) můžete spravovat zásady a nastavovat zásady napříč skupinami pro správu a mezi několika předplatnými.
+Security Center používá řízení přístupu na základě role Azure (Azure RBAC), které poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel* nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
 
-Security Center nabízí následující možnosti pro práci se zásadami zabezpečení:
+- **Čtecí modul zabezpečení**: má práva k zobrazení Security Centerch položek, jako jsou doporučení, výstrahy, zásady a stav. Nelze provést změny.
+- **Správce zabezpečení**: má stejná oprávnění k zobrazení jako *čtecí modul zabezpečení*. Může také aktualizovat zásady zabezpečení a zrušit výstrahy.
 
-* **Zobrazit a upravit předdefinované výchozí zásady** – Pokud povolíte Security Center, automaticky se přiřadí předdefinovaná iniciativa "ASC default" všem Security Center registrovaným předplatným (cenové úrovně Free nebo Standard). Pokud chcete tento podnět přizpůsobit, můžete v něm povolit nebo zakázat jednotlivé zásady. V seznamu [integrovaných zásad zabezpečení](security-center-policy-definitions.md) se dozvíte, jaké možnosti jsou dostupné předem.
-
-* **Přidat vlastní zásady** – Pokud chcete přizpůsobit iniciativy zabezpečení použité pro vaše předplatné, můžete to udělat v rámci Security Center. Pak se dostanou doporučení, pokud vaše počítače nevyhovují vytvořeným zásadám. Pokyny k sestavování a přiřazování vlastních zásad najdete v tématu [použití vlastních zásad zabezpečení](custom-security-policies.md).
-
-* **Přidání zásad dodržování předpisů regulativního** úřadu – řídicí panel dodržování předpisů v Security Center zobrazuje stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení (například Azure SNS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Další informace najdete v tématu [zlepšení dodržování legislativních předpisů](security-center-compliance-dashboard.md).
-
-
-## <a name="managing-your-security-policies"></a>Správa zásad zabezpečení
+## <a name="manage-your-security-policies"></a>Správa zásad zabezpečení
 
 Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Na řídicím panelu **Security Center** vyberte **zásady zabezpečení**.
 
-    ![Okno Správa zásad](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Stránka správy zásad":::
 
    Na obrazovce **Správa zásad** můžete zobrazit počet skupin pro správu, odběry a pracovní prostory i strukturu skupiny pro správu.
 
@@ -54,22 +42,21 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Zobrazí se stránka zásady zabezpečení pro toto předplatné nebo skupinu pro správu. Zobrazuje dostupné a přiřazené zásady.
 
-   ![obrazovka zásady](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Stránka zásad zabezpečení Security Center" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > Pokud je popisek "g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
 
-
 1. Vyberte si z dostupných možností na této stránce:
 
-    1. Pokud chcete pracovat s oborem zásad, vyberte **Přidat další standardy**. Další informace najdete v tématu [aktualizace balíčků s dynamickým dodržováním předpisů](update-regulatory-compliance-packages.md).
+    1. Pokud chcete pracovat s oborovým standardem, vyberte **Přidat další standardy**. Další informace najdete v tématu [přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md).
 
-    1. Chcete-li přiřadit a spravovat vlastní iniciativy, vyberte možnost **Přidat vlastní iniciativy**. Další informace najdete v tématu [použití vlastních zásad zabezpečení](custom-security-policies.md).
+    1. Chcete-li přiřadit a spravovat vlastní iniciativy, vyberte možnost **Přidat vlastní iniciativy**. Další informace najdete v tématu [použití vlastních iniciativ a zásad zabezpečení](custom-security-policies.md).
 
-    1. Pokud chcete zobrazit a upravit výchozí zásady, vyberte **Zobrazit efektivní zásady** a pokračujte podle popisu níže. 
+    1. Chcete-li zobrazit a upravit výchozí iniciativu, vyberte možnost **Zobrazit efektivní zásadu** a pokračujte, jak je popsáno níže. 
 
-       ![obrazovka zásady](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Obrazovka efektivních zásad":::
+
        Tato obrazovka **zásad zabezpečení** odráží akci provedenou zásadami přiřazenými k předplatnému nebo skupině pro správu, kterou jste vybrali.
        
        * Pomocí odkazů v horní části otevřete **přiřazení** zásady, které platí pro předplatné nebo skupinu pro správu. Tyto odkazy vám umožní přístup k přiřazení a úpravám nebo zakázání zásad. Pokud se například zobrazí, že konkrétní přiřazení zásad efektivně odmítá službu Endpoint Protection, použijte odkaz pro úpravu nebo zakázání zásad.
@@ -82,16 +69,6 @@ Zobrazení zásad zabezpečení ve službě Security Center:
        > Když si zobrazíte přiřazené zásady, uvidíte několik přiřazení a uvidíte, jak se každé přiřazení konfiguruje sami.
 
 
-## <a name="who-can-edit-security-policies"></a>Kdo může upravovat zásady zabezpečení?
-
-Zásady zabezpečení můžete upravovat prostřednictvím Azure Policyového portálu prostřednictvím REST API nebo pomocí Windows PowerShellu.
-
-Security Center používá Access Control na základě rolí (RBAC), která poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
-
-- **Čtecí modul zabezpečení**: má práva k zobrazení Security Centerch položek, jako jsou doporučení, výstrahy, zásady a stav. Nelze provést změny.
-- **Správce zabezpečení**: má stejná oprávnění k zobrazení jako *čtecí modul zabezpečení*. Může také aktualizovat zásady zabezpečení a zrušit výstrahy.
-
-
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Zakázání zásad zabezpečení a zakázání doporučení
 
 Pokud vaše iniciativa zabezpečení spustí doporučení, které je pro vaše prostředí nedůležité, můžete se znovu vyhnout zobrazování tohoto doporučení. Chcete-li zakázat doporučení, zakažte konkrétní zásadu, která vygeneruje doporučení.
@@ -102,7 +79,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
 1. V Security Center v části **zásady & dodržování předpisů** vyberte **zásady zabezpečení**.
 
-   ![Správa zásad](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Spouští se proces správy zásad v Azure Security Center.":::
 
 2. Vyberte předplatné nebo skupinu pro správu, pro které chcete doporučení zakázat.
 
@@ -111,11 +88,11 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
 1. Vyberte **Zobrazit efektivní zásady**.
 
-   ![zakázat zásadu](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="Postup otevření efektivních zásad přiřazených k vašemu předplatnému":::
 
 1. Vyberte přiřazenou zásadu.
 
-   ![zakázat zásadu](./media/tutorial-security-policy/security-policy.png)
+   ![vybrat zásadu](./media/tutorial-security-policy/security-policy.png)
 
 1. V části **parametry** vyhledejte zásadu, která vyvolá doporučení, které chcete zakázat, a v rozevíracím seznamu vyberte možnost **zakázáno** .
 
@@ -126,13 +103,10 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
    > [!NOTE]
    > Změny zásad, které se projeví, můžou trvat až 12 hodin.
 
-
-
 ## <a name="next-steps"></a>Další kroky
-Tento článek vysvětluje zásady zabezpečení. Související informace najdete v následujících článcích:
+Tato stránka vysvětluje zásady zabezpečení. Související informace najdete na následujících stránkách:
 
-* Pokyny k nastavení zásad pomocí prostředí PowerShell najdete v tématu [rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí modulu Azure PowerShell](../governance/policy/assign-policy-powershell.md)
-
-* Pokyny k úpravám zásad zabezpečení v Azure Policy najdete v tématu [Vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
-
-* Pokyny, jak nastavit zásadu napříč předplatnými nebo ve skupinách pro správu pomocí Azure Policy, najdete v tématu [co je Azure Policy?](../governance/policy/overview.md)
+- [Naučte se nastavovat zásady pomocí PowerShellu.](../governance/policy/assign-policy-powershell.md)
+- [Naučte se, jak upravit zásady zabezpečení v Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Naučte se, jak nastavit zásadu napříč předplatnými nebo skupinami pro správu pomocí Azure Policy](../governance/policy/overview.md)
+- [Naučte se, jak povolit Security Center u všech předplatných ve skupině pro správu.](onboard-management-group.md)

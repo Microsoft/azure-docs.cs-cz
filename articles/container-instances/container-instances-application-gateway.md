@@ -3,12 +3,12 @@ title: Statická IP adresa pro skupinu kontejnerů
 description: Vytvoření skupiny kontejnerů ve virtuální síti a použití služby Azure Application Gateway k vystavení statické IP adresy front-endu pro kontejnerové webové aplikace
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260775"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035049"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
 
@@ -100,6 +100,9 @@ ACI_IP=$(az container show \
   --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv)
 ```
+
+> [!IMPORTANT]
+> Pokud je skupina kontejnerů zastavená, spuštěná nebo restartovaná, může se změnit soukromá IP adresa skupiny kontejnerů. Pokud k tomu dojde, budete muset aktualizovat konfiguraci aplikační brány.
 
 ## <a name="create-application-gateway"></a>Vytvoření služby Application Gateway
 

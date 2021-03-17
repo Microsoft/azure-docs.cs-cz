@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
-ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d73804484ea7cc72e0198b857099fd8fba46d5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73590561"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555878"
 ---
-Následující omezení platí pro počet Cognitive Servicesch prostředků na předplatné Azure. Každé z Cognitive Services může mít další omezení, další informace najdete v tématu [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
+Následující omezení platí pro počet Cognitive Servicesch prostředků na předplatné Azure. Každé z Cognitive Services může mít další omezení, další informace najdete v tématu [Azure Cognitive Services](../articles/cognitive-services/index.yml).
 
 | Typ | Omezení | Příklad |
 |------|-------|---------|

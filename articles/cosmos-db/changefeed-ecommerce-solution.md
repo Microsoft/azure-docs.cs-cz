@@ -3,19 +3,21 @@ title: Použití Azure Cosmos DB změnového kanálu k vizualizaci analýzy dat 
 description: Tento článek popisuje, jak může maloobchodní společnost využít změnu kanálu pro pochopení uživatelských vzorů, provádění analýzy a vizualizace dat v reálném čase.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319758"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606330"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnového kanálu k vizualizaci analýzy dat v reálném čase
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Kanál změny Azure Cosmos DB je mechanismus, který získá průběžné a přírůstkové kanály záznamů z kontejneru Azure Cosmos při vytváření nebo úpravách těchto záznamů. Změna kanálu podpory funguje tak, že se poslouchat jakýmkoli změnám v kontejneru. Výstupem je pak seznam změněných dokumentů v pořadí podle času úprav. Další informace o službě Change feed najdete v článku [práce s informačním kanálem změn](change-feed.md) . 
 
@@ -33,14 +35,14 @@ Následující diagram představuje tok dat a součásti zapojené do řešení:
  
 1. **Generování dat:** Simulátor dat se používá ke generování maloobchodních dat, která představují události, jako je například uživatel, který zobrazuje položku, přidání položky na košík a nákup položky. Pomocí generátoru dat můžete vygenerovat rozsáhlou sadu ukázkových dat. Vygenerovaná ukázková data obsahují dokumenty v následujícím formátu:
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos DB:** Vygenerovaná data se ukládají do kontejneru Azure Cosmos.  
 
@@ -50,11 +52,11 @@ Následující diagram představuje tok dat a součásti zapojené do řešení:
 
 5. **Centrum událostí:** Centrum událostí Azure tyto události uloží a pošle je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k provedení další analýzy.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazy, které zpracovávají události a provádějí analýzu dat v reálném čase. Tato data se pak odesílají do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazy, které zpracovávají události a provádějí analýzu dat v reálném čase. Tato data se pak odesílají do [Microsoft Power BI](/power-bi/desktop-what-is-desktop).  
 
 7. **Power BI:** Power BI slouží k vizualizaci dat odesílaných Azure Stream Analytics. Můžete vytvořit řídicí panel, abyste viděli, jak se metriky mění v reálném čase.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Microsoft .NET Framework 4.7.1 nebo novější
 
@@ -83,12 +85,12 @@ Vytvořte prostředky Azure – Azure Cosmos DB, účet úložiště, centrum ud
 
 3. Zadejte hodnoty pro cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name parametrů, které jsou uvedeny v **parameters.js** souboru. Později budete muset použít názvy, které pro každý z vašich prostředků udělíte.  
 
-4. Z **Windows PowerShellu**přejděte do složky **Azure Resource Manager** a spusťte následující příkaz:
+4. Z **Windows PowerShellu** přejděte do složky **Azure Resource Manager** a spusťte následující příkaz:
 
    ```powershell
    .\deploy.ps1
    ```
-5. Po zobrazení výzvy zadejte **ID předplatného**Azure, **changefeedlab** pro název skupiny prostředků a **Run1** pro název nasazení. Až se prostředky začnou nasazovat, může trvat až 10 minut, než se dokončí.
+5. Po zobrazení výzvy zadejte **ID předplatného** Azure, **changefeedlab** pro název skupiny prostředků a **Run1** pro název nasazení. Až se prostředky začnou nasazovat, může trvat až 10 minut, než se dokončí.
 
 ## <a name="create-a-database-and-the-collection"></a>Vytvoření databáze a kolekce
 
@@ -98,7 +100,7 @@ Nyní vytvoříte kolekci, která bude uchovávat události webu elektronického
 
 2. V podokně **Průzkumník dat** vyberte možnost **Nová kolekce** a vyplňte formulář následujícími podrobnostmi:  
 
-   * V poli **ID databáze** vyberte **vytvořit novou**a potom zadejte **changefeedlabdatabase**. Nechejte políčko **zřídit propustnost databáze** nezaškrtnuté.  
+   * V poli **ID databáze** vyberte **vytvořit novou** a potom zadejte **changefeedlabdatabase**. Nechejte políčko **zřídit propustnost databáze** nezaškrtnuté.  
    * Do pole ID **kolekce** zadejte **changefeedlabcollection**.  
    * Do pole **klíč oddílu** zadejte **/Item**. V takovém případě se rozlišují velká a malá písmena, proto je nezapomeňte zadat správně.  
    * Do pole **propustnost** zadejte **10000**.  
@@ -108,9 +110,9 @@ Nyní vytvoříte kolekci, která bude uchovávat události webu elektronického
 
 4. Vraťte se do podokna **Průzkumník dat** a vyberte **Nová kolekce** a vyplňte formulář následujícími podrobnostmi:
 
-   * V poli **ID databáze** vyberte **použít existující**a pak zadejte **changefeedlabdatabase**.  
+   * V poli **ID databáze** vyberte **použít existující** a pak zadejte **changefeedlabdatabase**.  
    * V poli **ID kolekce** zadejte **zapůjčení**.  
-   * Jako **kapacitu úložiště**vyberte **pevná**.  
+   * Jako **kapacitu úložiště** vyberte **pevná**.  
    * V poli **propustnost** nechejte nastavenou výchozí hodnotu.  
    * Vyberte tlačítko **OK**.
 
@@ -120,7 +122,7 @@ Nyní vytvoříte kolekci, která bude uchovávat události webu elektronického
 
 1. Přejít na [Azure Portal](https://portal.azure.com/) a najít **účet Azure Cosmos DB** , který byl vytvořen nasazením šablony.  
 
-2. Přejděte do podokna **klíče** , ZKOPÍRUJTE primární připojovací řetězec a zkopírujte ho do poznámkového bloku nebo jiného dokumentu, ke kterému budete mít přístup v průběhu tohoto testovacího prostředí. Měli byste označit **Cosmos DB připojovací řetězec**pro IT. Později budete muset řetězec zkopírovat do kódu, takže si poznamenejte, kam ho ukládáte.
+2. Přejděte do podokna **klíče** , ZKOPÍRUJTE primární připojovací řetězec a zkopírujte ho do poznámkového bloku nebo jiného dokumentu, ke kterému budete mít přístup v průběhu tohoto testovacího prostředí. Měli byste označit **Cosmos DB připojovací řetězec** pro IT. Později budete muset řetězec zkopírovat do kódu, takže si poznamenejte, kam ho ukládáte.
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>Získání klíče účtu úložiště a připojovacího řetězce
 
@@ -157,7 +159,7 @@ Když se vytvoří nový dokument nebo se v kontejneru Cosmos upraví aktuální
    * Sem napište text **vaší kolekce** s názvem vaší kolekce. Pokud jste postupovali podle předchozích pokynů, název vaší kolekce je changefeedlabcollection.  
    * Text **vaší kolekce zapůjčení** nahraďte názvem vaší kolekce zapůjčení. Pokud jste postupovali podle předchozích pokynů, je název vaší kolekce zapůjčení **zapůjčení**.  
    * V horní části sady Visual Studio se ujistěte, že je v poli spouštěcí projekt nalevo od zelené šipky zobrazená zpráva **ChangeFeedFunction**.  
-   * Vyberte možnost **začít** v horní části stránky a spusťte program.  
+   * Vyberte možnost **začít**  v horní části stránky a spusťte program.  
    * Můžete potvrdit, že je funkce spuštěná, když aplikace konzoly říká "hostitel úlohy je spuštěný".
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>Vložit data do Azure Cosmos DB 
@@ -247,11 +249,11 @@ Power BI je sada nástrojů pro obchodní analýzu, která umožňuje analyzovat
 
 3. V pravém horním rohu vyberte **+ Přidat dlaždici** .  
 
-4. Vyberte **vlastní streamovaná data**a pak klikněte na tlačítko **Další** .  
+4. Vyberte **vlastní streamovaná data** a pak klikněte na tlačítko **Další** .  
  
-5. V **datových sadách**vyberte **averagePrice** a pak vyberte **Další**.  
+5. V **datových sadách** vyberte **averagePrice** a pak vyberte **Další**.  
 
-6. V poli **typ vizualizace** vyberte v rozevírací nabídce **Skupinový pruhový graf** . V části **osa**přidejte akci. Přeskočit **legendu** bez přidání cokoli V další části s názvem **hodnota**přidejte **prům**. Vyberte **Další**, potom název grafu a vyberte **použít**. Na řídicím panelu by se měl zobrazit nový graf.  
+6. V poli **typ vizualizace** vyberte v rozevírací nabídce **Skupinový pruhový graf** . V části **osa** přidejte akci. Přeskočit **legendu** bez přidání cokoli V další části s názvem **hodnota** přidejte **prům**. Vyberte **Další**, potom název grafu a vyberte **použít**. Na řídicím panelu by se měl zobrazit nový graf.  
 
 7. Pokud teď chcete vizualizovat další metriky, můžete přejít zpátky na **streamjob1** a vytvořit tři další výstupy pomocí následujících polí.
 
@@ -315,13 +317,13 @@ Power BI je sada nástrojů pro obchodní analýzu, která umožňuje analyzovat
 
    Tímto způsobem vypadá vzorový řídicí panel s těmito grafy:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="vizualizace":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Snímek obrazovky ukazuje vzorový řídicí panel s grafy s názvem Průměrná cena položek podle akcí, jedinečných návštěvníků, výnosů a hlavních 5 položek koupených.":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: vizualizace pomocí webu elektronického obchodování
 
 Teď budete sledovat, jak můžete použít nový nástroj pro analýzu dat pro připojení k reálnému webu elektronického obchodování. Aby bylo možné sestavit web elektronického obchodování, použijte databázi Azure Cosmos k uložení seznamu kategorií produktů (ženy, muži, Unisex), katalogu produktů a seznamu nejoblíbenějších položek.
 
-1. Přejděte zpět do [Azure Portal](https://portal.azure.com/)a potom na **účet Cosmos DB**a pak na **Průzkumník dat**.  
+1. Přejděte zpět do [Azure Portal](https://portal.azure.com/)a potom na **účet Cosmos DB** a pak na **Průzkumník dat**.  
 
    Přidejte dvě kolekce v kategorii **changefeedlabdatabase**  -  **Products** and **Categories** s pevnou kapacitou úložiště.
 
@@ -339,14 +341,14 @@ Teď budete sledovat, jak můžete použít nový nástroj pro analýzu dat pro 
  
 5. Pokud jste přidali volitelný dotaz TOP 5 v předchozí části testovacího prostředí, přejděte k části 5a. V takovém případě pokračujte na část 5b.
 
-   5a. V **streamjob1**vyberte **Upravit dotaz** a vložte následující dotaz do Azure Stream Analytics editoru dotazů pod horním 5 dotazem, ale nad rámec dalších dotazů.
+   5a. V **streamjob1** vyberte **Upravit dotaz** a vložte následující dotaz do Azure Stream Analytics editoru dotazů pod horním 5 dotazem, ale nad rámec dalších dotazů.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. V **streamjob1**vyberte **Upravit dotaz** a vložte následující dotaz do editoru dotazů Azure Stream Analytics nad všemi ostatními dotazy.
+   5b. V **streamjob1** vyberte **Upravit dotaz** a vložte následující dotaz do editoru dotazů Azure Stream Analytics nad všemi ostatními dotazy.
 
    ```sql
    /*TOP 5*/
@@ -375,11 +377,11 @@ Teď budete sledovat, jak můžete použít nový nástroj pro analýzu dat pro 
    FROM arrayselect
    ```
 
-6. Otevřete **EcommerceWebApp. sln** a v **Průzkumník řešení**přejděte do souboru **Web.config** .  
+6. Otevřete **EcommerceWebApp. sln** a v **Průzkumník řešení** přejděte do souboru **Web.config** .  
 
 7. V rámci `<appSettings>` bloku přidejte **identifikátor URI** a **primární klíč** , který jste předtím uložili, kde uvádí **identifikátor URI tady** a **váš primární klíč**. Pak přidejte **název databáze** a **název kolekce** , jak je uvedeno níže. (Tyto názvy by měly být **changefeedlabdatabase** a **changefeedlabcollection** , pokud se nerozhodnete své pojmenovat jinak.)
 
-   Zadejte název **kolekce Products**, **název kolekce kategorií**a **název kolekce hlavních položek** , jak je uvedeno. (Tato jména by měla být **Products, categories a topItems,** Pokud se nerozhodnete, že si nebudete pojmenovat jinak.)  
+   Zadejte název **kolekce Products**, **název kolekce kategorií** a **název kolekce hlavních položek** , jak je uvedeno. (Tato jména by měla být **Products, categories a topItems,** Pokud se nerozhodnete, že si nebudete pojmenovat jinak.)  
 
 8. Přejděte do **složky pro registraci** v **EcommerceWebApp. sln** a otevřete ji. Pak otevřete soubor **Web.config** v této složce.  
 
@@ -395,4 +397,4 @@ Pokud chcete odstranit prostředky, které jste vytvořili během tohoto testova
 
 ## <a name="next-steps"></a>Další kroky 
   
-* Další informace o službě Change feed najdete [v tématu práce s podporou změny kanálu v Azure Cosmos DB](change-feed.md) 
+* Další informace o službě Change feed najdete [v tématu práce s podporou změny kanálu v Azure Cosmos DB](change-feed.md)

@@ -3,13 +3,13 @@ title: Kurz – Příprava registru kontejnerů k nasazení bitové kopie
 description: Azure Container Instances kurz 2 ze 3 – Příprava služby Azure Container registry a vložení image
 ms.topic: tutorial
 ms.date: 12/18/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252164"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746945"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Kurz: vytvoření služby Azure Container registry a vložení image kontejneru
 
@@ -24,70 +24,11 @@ Služba Azure Container Registry je vaším privátním registrem Dockeru v Azur
 
 V následujícím článku, který je posledním dílem série, nasadíte kontejner z privátního registru do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-## <a name="create-azure-container-registry"></a>Vytvoření registru kontejneru Azure
-
-Než vytvoříte registr kontejneru, budete potřebovat *skupinu prostředků*, do které ho budete moct nasadit. Skupina prostředků je logická kolekce, ve které se nasazují a spravují všech prostředky Azure.
-
-Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*:
-
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
-
-Jakmile vytvoříte skupinu prostředků, vytvořte registr kontejneru Azure pomocí příkazu [az acr create][az-acr-create]. Název registru kontejneru musí být v rámci prostředí Azure jedinečný a musí obsahovat 5 až 50 alfanumerických znaků. Nahraďte položku `<acrName>` jedinečným názvem pro svůj registr:
-
-```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
-```
-
-Zde je příklad výstupu pro nový registr kontejneru Azure s názvem *mycontainerregistry082* (zkrácené zobrazení):
-
-```output
-...
-{
-  "creationDate": "2018-03-16T21:54:47.297875+00:00",
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
-  "location": "eastus",
-  "loginServer": "mycontainerregistry082.azurecr.io",
-  "name": "mycontainerregistry082",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "status": null,
-  "storageAccount": null,
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-Zbývající část tohoto kurzu používá `<acrName>` jako zástupný text pro název registru kontejneru, který zvolíte v tomto kroku.
-
-## <a name="log-in-to-container-registry"></a>Přihlášení k registru kontejneru
-
-Před nahráváním imagí do instance služby Azure Container Registry se k ní musíte přihlásit. Dokončete operaci pomocí příkazu [az acr login][az-acr-login]. Je třeba uvést jedinečný název, který jste zvolili pro registr kontejneru při jeho vytváření.
-
-```azurecli
-az acr login --name <acrName>
-```
-
-Příklad:
-
-```azurecli
-az acr login --name mycontainerregistry082
-```
-
-Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné):
-
-```output
-Login Succeeded
-```
+[!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
 ## <a name="tag-container-image"></a>Označení image kontejneru
 
@@ -99,7 +40,7 @@ Nejprve získejte úplný název přihlašovacího serveru pro svůj registr kon
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Pokud se například váš registr jmenuje *mycontainerregistry082*, bude příkaz vypadat takto:
+Pokud se například váš registr jmenuje *mycontainerregistry082* , bude příkaz vypadat takto:
 
 ```azurecli
 az acr show --name mycontainerregistry082 --query loginServer --output table
@@ -117,7 +58,7 @@ Nyní zobrazte seznam místních imagí pomocí příkazu [docker images][docker
 docker images
 ```
 
-Kromě ostatních imagí, které máte na svém počítači, byste měli vidět image *aci-tutorial-app*, které jste vytvořili v [předchozím kurzu](container-instances-tutorial-prepare-app.md):
+Kromě ostatních imagí, které máte na svém počítači, byste měli vidět image *aci-tutorial-app* , které jste vytvořili v [předchozím kurzu](container-instances-tutorial-prepare-app.md):
 
 ```console
 $ docker images

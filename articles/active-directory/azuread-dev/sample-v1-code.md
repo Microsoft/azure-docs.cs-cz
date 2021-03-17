@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116202"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652140"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázka kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -40,10 +40,10 @@ Můžete také přispět k našim ukázkám na GitHubu. Další informace najdet
 
 V této ukázce se dozvíte, jak napsat jednostránkovou aplikaci zabezpečenou pomocí Azure AD.
 
- Platforma | Volá své vlastní rozhraní API. | Volá jiné webové rozhraní API.
- -------- |  --------------------- | ------------------ 
-![Tento obrázek ukazuje logo JavaScriptu.](media/sample-v2-code/logo-js.png) | [JavaScript – singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Tento obrázek ukazuje logo úhlového JS.](media/sample-v2-code/logo-angular.png) | [AngularJS – singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [AngularJS – singlepageapp – CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+| Platforma | Volá své vlastní rozhraní API. | Volá jiné webové rozhraní API. |
+|--|--|--|
+| ![Tento obrázek ukazuje logo JavaScriptu.](media/sample-v2-code/logo-js.png) | [JavaScript – singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+| ![Tento obrázek ukazuje logo úhlového JS.](media/sample-v2-code/logo-angular.png) | [AngularJS – singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [AngularJS – singlepageapp – CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi) |
 
 ## <a name="web-applications"></a>Webové aplikace
 
@@ -51,25 +51,25 @@ V této ukázce se dozvíte, jak napsat jednostránkovou aplikaci zabezpečenou 
 
 Následující ukázky ilustrují webové aplikace, které podepisují uživatele. Některé z těchto aplikací také volají Microsoft Graph nebo vlastní webové rozhraní API, a to jménem přihlášeného uživatele.
 
- Platforma | Pouze přihlášení uživatelé | Volání Microsoft Graph | Volá jiné webové rozhraní API ASP.NET nebo ASP.NET Core 2,0.
- -------- | ------------------- | --------------------- | -------------------------
-![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [dotnet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-WebApi-víceklientské tenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Graf AAD) | [dotnet-WebApp-WebApi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-WebApp-WebApi-OAuth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-WebApp-víceklientské openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Graf AAD) |
-![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo-python.png) | | [Python – WebApp – graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![Tento obrázek ukazuje protokol Java.](media/sample-v2-code/logo-java.png)  | | [Java-WebApp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![Tento obrázek ukazuje logo PHP.](media/sample-v2-code/logo-php.png) | | [php – graphapi – Web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+| Platforma | Pouze přihlášení uživatelé | Volání Microsoft Graph | Volá jiné webové rozhraní API ASP.NET nebo ASP.NET Core 2,0. |
+|--|--|--|--|
+| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [dotnet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-WebApi-víceklientské tenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Graf AAD) | [dotnet-WebApp-WebApi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore) |
+| ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-WebApp-WebApi-OAuth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-WebApp-víceklientské openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Graf AAD) |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo-python.png) |  | [Python – WebApp – graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |
+| ![Tento obrázek ukazuje protokol Java.](media/sample-v2-code/logo-java.png) |  | [Java-WebApp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect) |
+| ![Tento obrázek ukazuje logo PHP.](media/sample-v2-code/logo-php.png) |  | [php – graphapi – Web](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Webové aplikace, které demonstrují řízení přístupu na základě rolí (autorizace)
 
-Následující ukázky ukazují, jak implementovat řízení přístupu na základě role (RBAC). RBAC slouží k omezení oprávnění určitých funkcí ve webové aplikaci na určité uživatele. Uživatelé mají oprávnění v závislosti na tom, jestli patří do **skupiny Azure AD** nebo mají danou **roli**aplikace.
+Následující ukázky ukazují, jak implementovat řízení přístupu na základě role (RBAC). RBAC slouží k omezení oprávnění určitých funkcí ve webové aplikaci na určité uživatele. Uživatelé mají oprávnění v závislosti na tom, jestli patří do **skupiny Azure AD** nebo mají danou **roli** aplikace.
 
-Platforma | Ukázka |
- -------- | ------------------- |
-![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet – WebApp – groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet – WebApp – roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Webová aplikace .NET 4,5 MVC, která používá **role** Azure AD k autorizaci
+| Platforma | Ukázka |
+|--|--|
+| ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet – WebApp – groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet – WebApp – roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Webová aplikace .NET 4,5 MVC, která používá **role** Azure AD k autorizaci |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktopové a mobilní veřejné klientské aplikace, které volají Microsoft Graph nebo webové rozhraní API
 
-Následující ukázky ilustrují veřejné klientské aplikace (deskto/Pmobile aplikace), které přistupují k Microsoft Graph nebo webovému rozhraní API v názvu uživatele. V závislosti na zařízeních a platformách se můžou aplikace přihlašovat uživatelům různými způsoby (toky nebo granty):
+Následující ukázky ilustrují veřejné klientské aplikace (desktopové nebo mobilní aplikace), které přistupují k Microsoft Graph nebo webovému rozhraní API v jména uživatele. V závislosti na zařízeních a platformách se můžou aplikace přihlašovat uživatelům různými způsoby (toky nebo granty):
 
 - Interaktivně
 - V tichém režimu (s integrovaným ověřováním systému Windows ve Windows nebo uživatelským jménem/heslem)
@@ -92,9 +92,9 @@ Následující ukázky ukazují desktopové nebo webové aplikace, které přist
 
 Klientská aplikace | Platforma | Tok a udělení | Volá webové rozhraní API ASP.NET nebo ASP.NET Core 2,0.
 ------------------ | -------- | ---------- | -------------------- 
-Aplikace démona (konzola)          | ![Tento obrázek ukazuje logo .NET.](media/sample-v2-code/logo-netframework.png) | Pověření klienta s tajným klíčem nebo certifikátem aplikace | [dotnet – démon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-démon-certifikát-pověření](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-Aplikace démona (konzola)         | ![Tento obrázek ukazuje logo .NET.](media/sample-v2-code/logo-netcore.png) | Pověření klienta s certifikátem| [dotnetcore-démon-certifikát-pověření](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-Webová aplikace ASP.NET  | ![Tento obrázek ukazuje logo .NET.](media/sample-v2-code/logo-netframework.png) | Přihlašovací údaje klienta | [dotnet-WebApp-WebApi-OAuth2-APPIDENTITY](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Aplikace démona (konzola)          | ![Tento obrázek ukazuje logo .NET Framework.](media/sample-v2-code/logo-netframework.png) | Pověření klienta s tajným klíčem nebo certifikátem aplikace | [dotnet – démon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-démon-certifikát-pověření](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Aplikace démona (konzola)         | ![Tento obrázek ukazuje logo .NET Core](media/sample-v2-code/logo-netcore.png) | Pověření klienta s certifikátem| [dotnetcore-démon-certifikát-pověření](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+Webová aplikace ASP.NET  | ![Tento obrázek ukazuje logo .NET Framework.](media/sample-v2-code/logo-netframework.png) | Přihlašovací údaje klienta | [dotnet-WebApp-WebApi-OAuth2-APPIDENTITY](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
@@ -114,7 +114,7 @@ Následující ukázky ukazují webové rozhraní API, které volá jiné webov�
 
 | Platforma |  Volání Microsoft Graph | Volá jiné webové rozhraní API ASP.NET nebo ASP.NET Core 2,0. |
 | -------- |  --------------------- | ------------------------- |
-| ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet – WebApi – OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet – WebApi – OnBehalfOf – CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet – WebApi – OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet – WebApi – OnBehalfOf – CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
+| ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet – WebApi – OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet – WebApi – OnBehalfOf – CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet – WebApi – OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet – WebApi – OnBehalfOf – CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
 ## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graph
 

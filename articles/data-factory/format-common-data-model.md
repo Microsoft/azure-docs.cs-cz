@@ -1,28 +1,24 @@
 ---
 title: Formát Common Data Modelu
 description: Transformace dat pomocí systému metadat modelu Common data model
-author: djpmsft
+author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 02/04/2021
+ms.author: makromer
+ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905269"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387695"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Systém metadat CDM (Common data model) umožňuje, aby data a jejich význam bylo možné snadno sdílet napříč aplikacemi a obchodními procesy. Další informace najdete v tématu Přehled [modelu Common data model](https://docs.microsoft.com/common-data-model/) .
+Systém metadat CDM (Common data model) umožňuje, aby data a jejich význam bylo možné snadno sdílet napříč aplikacemi a obchodními procesy. Další informace najdete v tématu Přehled [modelu Common data model](/common-data-model/) .
 
 V Azure Data Factory můžou uživatelé transformovat data z entit CDM v model.jsna a ve formě manifestu uložené v [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (adls Gen2) pomocí mapování datových toků. Data můžete také ve formátu CDM založit pomocí odkazů na entity CDM, které budou vaše data uvádět ve formátu CSV nebo Parquet v dělených složkách. 
-
-> [!NOTE]
-> Konektor formátu CDM (Common data model) pro toky dat ADF je aktuálně k dispozici jako veřejná verze Preview.
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
@@ -37,12 +33,12 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formát | Formát musí být`cdm` | ano | `cdm` | formát |
-| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Ano | `'manifest'` nebo `'model'` | manifestType |
+| Formát | Formát musí být `cdm` | ano | `cdm` | formát |
+| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Yes | `'manifest'` nebo `'model'` | manifestType |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
-| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default.  | Ne | Řetězec | manifest |
+| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default.  | No | Řetězec | manifest |
 | Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Timestamp | modifiedAfter <br> modifiedBefore | 
 | Propojená služba schématu | Propojená služba, ve které se nachází Corpus | Ano, pokud používáte manifest | `'adlsgen2'` nebo `'github'` | corpusStore | 
 | Kontejner odkazů na entity | Corpus kontejneru je v | Ano, pokud používáte manifest a corpus v ADLS Gen2 | Řetězec | adlsgen2_fileSystem |
@@ -51,6 +47,12 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 | Corpus složka | kořenové umístění Corpus | Ano, pokud používáte manifest | Řetězec | corpusPath |
 | Corpus – entita | Cesta k odkazu na entitu | ano | Řetězec | entita |
 | Nenalezeny žádné soubory | Pokud je nastaveno na true, chyba není vyvolána, pokud nebyly nalezeny žádné soubory. | ne | `true` nebo `false` | ignoreNoFilesFound |
+
+Při výběru možnosti odkaz na entitu v transformaci zdroje i jímky můžete pro umístění odkazu na entitu vybrat z těchto tří možností:
+
+* Místní používá entitu definovanou v souboru manifestu, který už používá ADF.
+* Vlastní dotaz vás vyzve, abyste odkazovali na soubor manifestu entity, který se liší od souboru manifestu, který používá ADF.
+* Standard bude používat odkaz na entitu ze standardní knihovny CDM entit udržované v ```Github``` .
 
 ### <a name="sink-settings"></a>Nastavení jímky
 
@@ -82,7 +84,7 @@ Při mapování sloupců toku dat na vlastnosti entity v transformaci jímky kli
 2. Najděte oddíly. Location – vlastnost 
 3. Změňte "blob.core.windows.net" na "dfs.core.windows.net"
 4. Opravte jakékoli kódování "% 2F" v adrese URL na "/".
- 
+5. Při použití datových toků ADF je potřeba, aby se speciální znaky v cestě k souboru oddílu nahradily pomocí alfanumerických hodnot nebo přepnuly na toky dat synapse.
 
 ### <a name="cdm-source-data-flow-script-example"></a>Příklad skriptu zdrojového toku dat CDM
 
@@ -114,11 +116,11 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. 
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formát | Formát musí být`cdm` | ano | `cdm` | formát |
+| Formát | Formát musí být `cdm` | ano | `cdm` | formát |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
-| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default. | Ne | Řetězec | manifest |
+| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default. | No | Řetězec | manifest |
 | Propojená služba schématu | Propojená služba, ve které se nachází Corpus | ano | `'adlsgen2'` nebo `'github'` | corpusStore | 
 | Kontejner odkazů na entity | Corpus kontejneru je v | Ano, pokud se corpus v ADLS Gen2 | Řetězec | adlsgen2_fileSystem |
 | Úložiště referencí k entitám | GitHub repository name | Ano, pokud je corpus v GitHubu | Řetězec | github_repository |
@@ -127,7 +129,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. 
 | Corpus – entita | Cesta k odkazu na entitu | ano | Řetězec | entita |
 | Cesta oddílu | Umístění, kam se bude zapisovat oddíl | ne | Řetězec | partitionPath |
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
-| Typ formátu | Zvolte, pokud chcete zadat formát Parquet. | ne | `parquet`je-li zadáno | podformát |
+| Typ formátu | Zvolte, pokud chcete zadat formát Parquet. | ne | `parquet` je-li zadáno | podformát |
 | Oddělovač sloupců | Postup při zápisu do DelimitedText, jak vymezují sloupce | Ano, pokud se zapisuje do DelimitedText | Řetězec | columnDelimiter |
 | První řádek jako záhlaví | Pokud používáte DelimitedText, určuje, jestli se názvy sloupců přidávají jako záhlaví. | ne | `true` nebo `false` | columnNamesAsHeader |
 

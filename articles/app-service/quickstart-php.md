@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7dea761afb459363e9f469c808b2735ead9f25ab
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f6876d0aef0d3d87e038b623c395f8368a14e90c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085003"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561847"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Vytvoření webové aplikace v PHP v Azure App Service
 
@@ -22,7 +22,7 @@ ms.locfileid: "88085003"
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit aplikaci v PHP do služby Azure App Service v Linuxu.
 ::: zone-end  
 
-Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
+Pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
 
 ![Ukázková aplikace spuštěná v Azure](media/quickstart-php/hello-world-in-browser.png)
 
@@ -30,7 +30,7 @@ Tento postup můžete použít v případě počítačů se systémem Mac, Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -78,9 +78,9 @@ V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V Cloud Shell v `myAppServicePlan` plánu App Service pomocí příkazu vytvořte webovou aplikaci [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) . 
+V Cloud Shell v `myAppServicePlan` plánu App Service pomocí příkazu vytvořte webovou aplikaci [`az webapp create`](/cli/azure/webapp#az-webapp-create) . 
 
-V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.4`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) . 
+V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.4`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes) . 
 
 ```azurecli-interactive
 # Bash
@@ -116,7 +116,7 @@ Vytvořili jste prázdnou novou webovou aplikaci s povoleným nasazením Gitu.
 > Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
 >
 
-Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _ &lt; název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
+Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _&lt; název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -134,7 +134,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
 Total 2 (delta 1), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '25f18051e9'.
 remote: Generating deployment script.
@@ -150,7 +150,7 @@ remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
-   cc39b1e..25f1805  master -> master
+   cc39b1e..25f1805  main -> main
 </pre>
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
@@ -179,7 +179,7 @@ V místním okně terminálu potvrďte změny v Gitu a potom nasdílejte změny 
 
 ```bash
 git commit -am "updated output"
-git push azure master
+git push azure main
 ```
 
 Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a aktualizujte zobrazení stránky.
@@ -196,7 +196,7 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
     ![Přechod do aplikace Azure na portálu](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-    Zobrazí se stránka s **přehledem** vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je **procházení**, **zastavení**, **restartování**a **odstranění**.
+    Zobrazí se stránka s **přehledem** vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je **procházení**, **zastavení**, **restartování** a **odstranění**.
 
     ![Stránka služby App Service na webu Azure Portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

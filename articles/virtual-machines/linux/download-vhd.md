@@ -2,16 +2,18 @@
 title: Stažení virtuálního pevného disku se systémem Linux z Azure
 description: Stažení virtuálního pevného disku se systémem Linux pomocí rozhraní příkazového řádku Azure a Azure Portal.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b3435d1dabf604cf7a1394c14ee62d65b923714b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761044"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565933"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stažení virtuálního pevného disku se systémem Linux z Azure
 
@@ -48,5 +50,5 @@ Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného p
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nahrát a vytvořit virtuální počítač se systémem Linux z vlastního disku pomocí Azure CLI](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-- [Spravujte Azure na discích Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Přečtěte si, jak [nahrát a vytvořit virtuální počítač se systémem Linux z vlastního disku pomocí Azure CLI](upload-vhd.md). 
+- [Spravujte Azure na discích Azure CLI](tutorial-manage-disks.md).

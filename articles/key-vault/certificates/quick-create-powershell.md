@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: nastavení & zobrazení Azure Key Vault certifikátů – Azure PowerShell'
+title: Rychlý Start – Nastavení & zobrazení Azure Key Vault certifikátů pomocí Azure PowerShell
 description: Rychlý Start ukazující, jak nastavit a načíst certifikát z Azure Key Vault pomocí Azure PowerShell
 services: key-vault
 author: msmbaldwin
@@ -9,20 +9,20 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.date: 09/03/2019
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: efd73907a8ca691ceb451391477c9c8e2239c250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 587815cf9628df35f1e1efdbc6a7a3c89a27ed55
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043911"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071913"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Rychlý Start: nastavení a načtení certifikátu z Azure Key Vault pomocí Azure PowerShell
 
 V tomto rychlém startu vytvoříte Trezor klíčů v Azure Key Vault s Azure PowerShell. Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md). Azure PowerShell slouží k vytváření a správě prostředků Azure pomocí příkazů nebo skriptů. Po dokončení této akce uložíte certifikát.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -35,32 +35,11 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
-```
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
-
-Dále vytvoříte službu Key Vault. K provedení tohoto kroku potřebujete několik informací:
-
-I když jako název naší Key Vault v rámci tohoto rychlého startu používáme contoso KeyVault2, musíte použít jedinečný název.
-
-- **Název trezoru:** Contoso-Vault2
-- **Název skupiny prostředků** ContosoResourceGroup.
-- **Umístění** Východní USA.
-
-```azurepowershell-interactive
-New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
-```
-
-Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
-
-* **Název trezoru:** V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další rutiny Key Vault.
-* **Identifikátor URI trezoru:** V tomto příkladu je to https://Contoso-Vault2.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
-
-Po vytvoření trezoru bude jakékoli operace s tímto novým trezorem moct provádět pouze váš účet Azure.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
 ## <a name="add-a-certificate-to-key-vault"></a>Přidat certifikát pro Key Vault
 
@@ -70,27 +49,23 @@ Zadáním níže uvedených příkazů vytvořte certifikát podepsaný svým dr
 
 ```azurepowershell-interactive
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
-Add-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate" -CertificatePolicy $Policy
+
+Add-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-Nyní můžete odkazovat na tento certifikát, který jste přidali do Azure Key Vault pomocí jeho identifikátoru URI. Použijte **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** k získání aktuální verze. 
+Nyní můžete odkazovat na tento certifikát, který jste přidali do Azure Key Vault pomocí jeho identifikátoru URI. Pokud chcete získat aktuální verzi, použijte **https://<pro název trezoru klíčů>. Vault.Azure.NET/Certificates/ExampleCertificate.** 
 
 Postup zobrazení dříve uloženého certifikátu:
 
 ```azurepowershell-interactive
-Get-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate"
+Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate"
 ```
 
 Nyní jste vytvořili Key Vault, uložili certifikát a načetli jste ho.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Prostředky můžete odstranit následujícím způsobem:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name ContosoResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -98,4 +73,4 @@ V tomto rychlém startu jste vytvořili Key Vault a uložili do něj certifikát
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Přečtěte si referenční informace pro [rutiny Azure PowerShell Key Vault](/powershell/module/az.keyvault/)
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

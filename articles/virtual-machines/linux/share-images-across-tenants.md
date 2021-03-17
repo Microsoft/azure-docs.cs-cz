@@ -1,25 +1,25 @@
 ---
-title: Sdílení imagí Galerie napříč klienty v Azure
-description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí.
+title: Sdílení imagí Galerie mezi klienty
+description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí pomocí Azure CLI.
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4e9432a6acacf986a8e137b0b258abda5abb78
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2ef788659c871a9bcef6f519664689eacda94daa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502864"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552877"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure
+# <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure pomocí Azure CLI
 
-Galerie sdílených imagí vám umožňují sdílet Image pomocí RBAC. Ke sdílení imagí v rámci tenanta a dokonce i jednotlivcům mimo vašeho tenanta můžete použít RBAC. Další informace o této možnosti jednoduchého sdílení najdete v tématu [sdílení Galerie](./shared-images-portal.md#share-the-gallery).
+Galerie sdílených imagí vám umožní sdílet Image pomocí Azure RBAC. Pomocí služby Azure RBAC můžete sdílet image v rámci vašeho tenanta, a to i u jednotlivců mimo vašeho tenanta. Další informace o této možnosti jednoduchého sdílení najdete v tématu [sdílení Galerie](./shared-images-portal.md#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -56,4 +56,4 @@ az vm create \
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud narazíte na nějaké problémy, můžete [řešit problémy s galerií sdílených imagí](troubleshooting-shared-images.md).
+Pokud narazíte na nějaké problémy, můžete [řešit problémy s galerií sdílených imagí](../troubleshooting-shared-images.md).

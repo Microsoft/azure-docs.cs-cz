@@ -3,7 +3,7 @@ title: Začínáme s ověřováním Azure AD pomocí Azure Portal | Microsoft Do
 description: Naučte se používat Azure Portal k přístupu k ověřování Azure Active Directory (Azure AD) ke využívání rozhraní API Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 208019bbc86b22443c7d012400d4e4324679aee9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d9ad439fe3f41d9e2634fbf9a76cfd21114a5dbc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084462"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013053"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Začínáme s ověřováním Azure AD s využitím webu Azure Portal
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Naučte se používat Azure Portal k přístupu k ověřování Azure Active Directory (Azure AD) pro přístup k rozhraní API Azure Media Services.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
@@ -43,7 +45,7 @@ Tato stránka umožňuje vybrat metodu ověřování, kterou chcete použít pro
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet Media Services.
 2. Vyberte, jak se připojit k rozhraní Media Services API.
-3. V části **připojit k Media Services rozhraní API**vyberte verzi rozhraní API Media Services, ke které se chcete připojit.
+3. V části **připojit k Media Services rozhraní API** vyberte verzi rozhraní API Media Services, ke které se chcete připojit.
 
 ## <a name="service-principal-authentication--recommended"></a>Ověřování instančního objektu (doporučeno)
 

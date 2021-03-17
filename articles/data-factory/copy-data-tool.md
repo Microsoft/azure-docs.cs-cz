@@ -1,22 +1,17 @@
 ---
 title: Nástroj Kopírování dat Azure Data Factory
 description: Poskytuje informace o nástroji Kopírování dat v uživatelském rozhraní Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907499"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372990"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Nástroj Kopírování dat ve službě Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +64,7 @@ Schéma zdroje dat nesmí být stejné jako schéma cíle dat v mnoha případec
 Nástroj Kopírování dat monitoruje a učí chování při mapování sloupců mezi zdrojovými a cílovými obchody. Po výběru jednoho nebo několika sloupců ze zdrojového úložiště dat a jejich mapování na cílové schéma nástroj Kopírování dat spustí analýzu vzoru pro páry sloupců, které jste vybrali z obou stran. Pak použije stejný vzor pro zbývající sloupce. Proto vidíte, že všechny sloupce byly namapovány na cíl způsobem, který požadujete pouze po několika kliknutích.  Pokud nejste spokojeni s volbou mapování sloupců, které poskytuje nástroj Kopírování dat Tool, můžete ho ignorovat a pak pokračovat v ručním mapování sloupců. Mezitím se nástroj Kopírování dat neustále učí a aktualizuje vzor a nakonec dosáhne správného vzoru mapování sloupců, které chcete dosáhnout. 
 
 > [!NOTE]
-> Při kopírování dat z SQL Server nebo Azure SQL Database do Azure SQL Data Warehouse, pokud tabulka v cílovém úložišti neexistuje, Kopírování dat nástroj podporuje automatické vytváření tabulky pomocí zdrojového schématu. 
+> Pokud tabulka v cílovém úložišti neexistuje, kopíruje data z SQL Server nebo Azure SQL Database do služby Azure synapse Analytics, Kopírování dat nástroj podporuje automatické vytváření tabulky pomocí zdrojového schématu. 
 
 ## <a name="filter-data"></a>Filtrování dat
 Můžete filtrovat zdrojová data a vybrat pouze data, která je třeba zkopírovat do úložiště dat jímky. Filtrování omezuje objem dat, která mají být zkopírována do úložiště dat jímky, a tím zvyšuje propustnost operace kopírování. Nástroj Kopírování dat poskytuje flexibilní způsob, jak filtrovat data v relační databázi pomocí dotazovacího jazyka SQL nebo souborů ve složce objektů BLOB v Azure. 

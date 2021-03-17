@@ -3,7 +3,7 @@ title: Správa StorSimple Snapshot Manager | Microsoft Docs
 description: Obsahuje přehled a odkazy na Další informace o úlohách správy řešení StorSimple Snapshot Manager a pracovních postupech.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
-ms.author: twooley
-ms.openlocfilehash: f9a42a8f94f3e5cb63cd340b696a803d97491c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 16d782c6a25d8d2d8e1323b7cb683f41d8c99649
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512816"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90054972"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Použití Snapshot Manager StorSimple ke správě řešení StorSimple
 
@@ -55,7 +55,7 @@ Snapshot Manager StorSimple můžete použít ke sledování a správě aktuáln
 | Přidání nebo nahrazení zařízení<br>Připojení zařízení<br>Ověřit importované skupiny svazků<br>Aktualizovat připojená zařízení<br>Ověření zařízení<br>Zobrazení podrobností o zařízení<br>Odstranění konfigurace zařízení<br>Změna hesla zařízení<br>Výměna neúspěšného zařízení<br> |[Připojení a Správa zařízení StorSimple pomocí Snapshot Manager StorSimple](storsimple-snapshot-manager-manage-devices.md) |
 | Připojit svazky<br>Zobrazit informace o svazcích<br>Odstranění svazku<br>Znovu prohledat svazky<br>Konfigurace a zálohování základního svazku<br>Konfigurace a zálohování dynamického zrcadleného svazku |[Zobrazení a správa svazků pomocí Snapshot Manager StorSimple](storsimple-snapshot-manager-manage-volumes.md) |
 | Zobrazit skupiny svazků<br>Vytvoření skupiny svazků<br>Zálohování skupiny svazků<br>Úprava skupiny svazků<br>Odstranění skupiny svazků |[Použití Snapshot Manager StorSimple k vytváření a správě skupin svazků](storsimple-snapshot-manager-manage-volume-groups.md) |
-| Vytvoření zásady zálohování <br>Úprava zásady zálohování<br>Odstranění zásady zálohování |[Použití Snapshot Manager StorSimple k vytváření a správě zásad zálohování](storsimple-snapshot-manager-manage-backup-policies.md) |
+| Vytvoření zásad zálohování <br>Úprava zásady zálohování<br>Odstranění zásady zálohování |[Použití Snapshot Manager StorSimple k vytváření a správě zásad zálohování](storsimple-snapshot-manager-manage-backup-policies.md) |
 | Zobrazení a správa naplánovaných úloh zálohování<br>Umožňuje zobrazit a spravovat nedávné úlohy zálohování.<br>Zobrazení a Správa aktuálně spuštěných úloh zálohování |[Zobrazení a správa úloh zálohování pomocí Snapshot Manager StorSimple](storsimple-snapshot-manager-manage-backup-jobs.md) |
 | Obnovení svazku<br>Klonování svazku nebo skupiny svazků<br>Odstranění zálohy<br>Obnovení souboru<br>Obnovení databáze Snapshot Manager StorSimple |[Použití Snapshot Manager StorSimple ke správě katalogu záloh](storsimple-snapshot-manager-manage-backup-catalog.md) |
 

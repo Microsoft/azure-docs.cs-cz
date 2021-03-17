@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 09badebab86da8e4fd8d35307aa6648a26e91821
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119816"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232252"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Průvodce publikováním pro spravované aplikace Azure
 
-Nabídka *spravované aplikace* Azure je jedním ze způsobů, jak publikovat aplikaci azure v Azure Marketplace. Spravované aplikace jsou nabídky v jazyce Transact, které se nasazují a účtují prostřednictvím Azure Marketplace. Volání akce, které uživatel vidí, se *teď dostane*.
+Nabídka *spravované aplikace* Azure je jedním ze způsobů, jak publikovat aplikaci azure v Azure Marketplace. Spravované aplikace jsou nabídky v jazyce Transact, které se nasazují a účtují prostřednictvím Azure Marketplace. Možnost výpisu, kterou uživatel vidí, se *teď získá*.
 
 Tento článek popisuje požadavky na typ nabídky spravované aplikace.
 
@@ -33,8 +33,8 @@ Typ nabídky spravovaných aplikací použijte při těchto podmínkách:
 |Požadavky |Podrobnosti  |
 |---------|---------|
 |Předplatné Azure | Spravované aplikace musí být nasazeny do předplatného zákazníka, ale mohou být spravovány třetí stranou. |
-|Fakturace a měření    |  Prostředky jsou k dispozici v předplatném Azure zákazníka. Virtuální počítače, které používají platební model průběžných plateb, se účtují u zákazníka přes Microsoft a účtují se prostřednictvím předplatného Azure zákazníka. <br><br> V případě virtuálních počítačů využívajících vlastní licenci společnost Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, ale poplatky za licence na software se zákazníky účtují přímo.        |
-|Virtuální pevný disk kompatibilní s Azure (VHD)    |   Virtuální počítače musí být postavené na Windows nebo Linux.<br><br>Další informace o vytvoření virtuálního pevného disku se systémem Linux najdete v tématu [distribuce systému Linux schválené v Azure](../virtual-machines/linux/endorsed-distros.md).<br><br>Další informace o vytvoření virtuálního pevného disku s Windows najdete v tématu věnovaném [Vytvoření nabídky aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md). |
+|Fakturace a měření    |  Prostředky jsou k dispozici v předplatném Azure zákazníka. Prostředky Azure, které využívají platební model průběžných plateb, se účtují u zákazníka přes Microsoft a účtuje se prostřednictvím předplatného Azure zákazníka. <br><br> U prostředků Azure využívajících vlastní licenci společnost Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, ale poplatky za licencování softwaru za běhu přímo.        |
+|Balíček spravované aplikace Azure    |   Nakonfigurovaná šablona Azure Resource Manager a definice uživatelského rozhraní pro vytvoření, která se použije k nasazení aplikace do předplatného zákazníka.<br><br>Další informace o vytváření spravovaných aplikací najdete v tématu [Přehled spravované aplikace](../azure-resource-manager/managed-applications/publish-service-catalog-app.md).|
 
 ---
 
@@ -51,4 +51,4 @@ Pokud jste to ještě neudělali, přečtěte si, jak [rozšířit cloudovou fir
 Registrace a zahájení práce v partnerském centru:
 
 - [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
-- Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md) .
+- Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](./create-new-azure-apps-offer.md) .

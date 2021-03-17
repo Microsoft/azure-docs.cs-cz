@@ -3,7 +3,7 @@ title: Úlohy zálohování StorSimple Snapshot Manager | Microsoft Docs
 description: Popisuje, jak použít modul snap-in StorSimple Snapshot Manager konzoly MMC k zobrazení a správě naplánovaných, aktuálně spuštěných a dokončených úloh zálohování.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
@@ -13,18 +13,18 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: fb0d330b833c8841e65d650599d74211003843bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998188"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Zobrazení a správa úloh zálohování pomocí Snapshot Manager StorSimple
 
 ## <a name="overview"></a>Přehled
-Uzel **úlohy** v podokně **oboru** zobrazuje **naplánované**, **posledních 24 hodin**a **spuštěné** úlohy zálohování, které jste spustili interaktivně, nebo nakonfigurovanou zásadou. 
+Uzel **úlohy** v podokně **oboru** zobrazuje **naplánované**, **posledních 24 hodin** a **spuštěné** úlohy zálohování, které jste spustili interaktivně, nebo nakonfigurovanou zásadou. 
 
 V tomto kurzu se dozvíte, jak můžete pomocí uzlu **Jobs (úlohy** ) zobrazit informace o plánovaných, nedávných a aktuálně spuštěných úlohách zálohování. (Seznam úloh a odpovídající informace se zobrazí v podokně **výsledků** .) Kromě toho můžete kliknout pravým tlačítkem myši na uvedenou úlohu a zobrazit kontextovou nabídku, která obsahuje seznam dostupných akcí.
 

@@ -1,14 +1,16 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace – LUIS'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která používá předem vytvořenou doménu `HomeAutomation` pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 10/13/2020
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701272"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019156"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -21,20 +23,23 @@ V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem př
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace).
 
-1. V seznamu Moje aplikace vyberte **+ Nová aplikace pro konverzaci**a potom v seznamu možností vyberte **+ Nová aplikace pro konverzaci** znovu.
+### <a name="create-an-application"></a>Vytvoření aplikace
 
-1. Do dialogového okna zadejte název aplikace `Home Automation` .
-1. Jako jazykovou verzi vyberte **angličtinu** .
-1. Zadejte volitelný popis.
-1. Nevybírejte prostředek předpovědi, pokud jste ještě nevytvořili prostředek. Chcete-li použít koncový bod předpovědi vaší aplikace (pracovní nebo produkční), je nutné přiřadit prostředek předpovědi.
-1. Vyberte **Done** (Hotovo).
+Pokud chcete vytvořit aplikaci, klikněte na  **+ Nová aplikace**. 
 
-    LUIS vytvoří aplikaci.
+V okně, které se zobrazí, zadejte následující informace:
 
-    ![V dialogovém okně pojmenujte svou aplikaci jako domovskou automatizaci.](./media/create-new-app-details.png)
+|Název  |Popis  |
+|---------|---------|
+|AName     | Název vaší aplikace. Například "domácí automatizace".        |
+|Kultura     | Jazyk, který vaše aplikace chápe a mluví.   |
+|Popis | Popis vaší aplikace
+|Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. |
 
-    >[!NOTE]
-    >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
+Vyberte **Hotovo**.
+
+>[!NOTE]
+>Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
 
 ## <a name="add-prebuilt-domain"></a>Přidání předem připravené domény
 
@@ -49,10 +54,7 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
 ## <a name="intents-and-entities"></a>Záměry a entity
 
-1. Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** . Předem sestavené záměry domény mají například projevy.
-
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
+1. V navigační nabídce vlevo vyberte **záměry** , abyste viděli záměry domény HomeAutomation. Obsahuje příklad projevy, například `HomeAutomation.QueryState` a     `HomeAutomation.SetDevice` .
 
     > [!NOTE]
     > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
@@ -61,6 +63,10 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
     > [!div class="mx-imgBorder"]
     > [![Snímek obrazovky záměru HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "Snímek obrazovky záměru HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. Pokud chcete zobrazit entity pro aplikaci, vyberte **entity**. Pokud kliknete na jednu z entit, například **HomeAutomation. název_zařízení** , zobrazí se seznam hodnot, které jsou k němu přidružené. 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Alternativní text obrázku" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
@@ -71,11 +77,7 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
 1. Vyberte **test** z pravé horní navigační části.
 
-1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER.
-
-    ```
-    Turn off the lights
-    ```
+1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER. Například vypněte *světla*.
 
     V tomto příkladu `Turn off the lights` je správně identifikován jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff**.
 
@@ -92,7 +94,18 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+Aby bylo možné získat LUIS předpověď v robotu chatu nebo v jiné klientské aplikaci, musíte aplikaci publikovat do koncového bodu předpovědi.
+
+1. V pravém horním rohu okna vyberte **publikovat** .
+
+1. Vyberte **produkční** slot a potom vyberte **Hotovo**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s LUIS publikováním do koncového bodu](media/howto-publish/publish-app-popup.png)
+
+1. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz**.
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
@@ -210,4 +223,4 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
 Koncový bod můžete volat prostřednictvím kódu:
 
 > [!div class="nextstepaction"]
-> [Volání koncového bodu služby LUIS pomocí kódu](luis-get-started-cs-get-intent.md)
+> [Volání koncového bodu služby LUIS pomocí kódu](./luis-get-started-get-intent-from-rest.md)

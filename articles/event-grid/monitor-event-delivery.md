@@ -3,12 +3,12 @@ title: Zobrazení Azure Event Grid metrik a nastavení výstrah
 description: Tento článek popisuje, jak pomocí Azure Portal zobrazit metriky pro Azure Event Grid témata a předplatná a jak na nich vytvářet výstrahy.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f8d7e15475ce74dc1af55dc7f6116d5d8b79cc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114879"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577410"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
 Tento článek popisuje, jak pomocí portálu zobrazit metriky pro Event Grid témata a předplatná a jak na nich vytvářet výstrahy. 
@@ -38,7 +38,7 @@ V případě předplatných jsou zde uvedeny některé metriky:
 Pokud jste publikovali vlastní téma, můžete si Zobrazit metriky pro ni. 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. Do panelu hledání v tématu zadejte **Event Grid témata**a v rozevíracím seznamu vyberte **Event Grid témata** . 
+2. Do panelu hledání v tématu zadejte **Event Grid témata** a v rozevíracím seznamu vyberte **Event Grid témata** . 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 3. V seznamu témat vyberte vlastní téma. 
@@ -52,7 +52,7 @@ Grafy s podporovanými metrikami můžete vytvářet pomocí karty **metriky** n
 
 :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Téma – stránka metriky":::
 
-Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md)
+Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/essentials/data-platform-metrics.md)
 
 Podívejte se například na graf metriky pro metriku **publikovaných událostí** .
 
@@ -65,19 +65,19 @@ Podívejte se například na graf metriky pro metriku **publikovaných událost�
 
     :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Vybrat odběr události":::    
 
-    Můžete také vyhledat **Event Grid odběry** na panelu hledání v Azure Portal, vybrat **typ tématu**, **předplatné**a **umístění** a zobrazit odběr událostí. 
+    Můžete také vyhledat **Event Grid odběry** na panelu hledání v Azure Portal, vybrat **typ tématu**, **předplatné** a **umístění** a zobrazit odběr událostí. 
 
     :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Vybrat odběr události ze stránky Event Grid odběry":::        
 
     Pro vlastní témata vyberte **Event Grid témata** jako **typ tématu**. V části systémová témata vyberte typ prostředku Azure, například **účty úložiště (BLOB, GPv2)**. 
-3. Prohlédněte si metriky pro předplatné na domovské stránce pro odběr v grafu. Můžete zobrazit **Obecné**, **chyby**, **latenci**a metriky **nedoručených zpráv** pro poslední 1 hodinu, 6 hodin, 12 hodin, 1 den, 7 dní nebo 30 dní. 
+3. Prohlédněte si metriky pro předplatné na domovské stránce pro odběr v grafu. Můžete zobrazit **Obecné**, **chyby**, **latenci** a metriky **nedoručených zpráv** pro poslední 1 hodinu, 6 hodin, 12 hodin, 1 den, 7 dní nebo 30 dní. 
 
     :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metriky na domovské stránce předplatného":::    
 
 ## <a name="view-system-topic-metrics"></a>Zobrazit metriky tématu systému
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. Do panelu hledání v tématu zadejte **Event Grid systémová témata**a v rozevíracím seznamu vyberte **Event Grid systémová témata** . 
+2. Do panelu hledání v tématu zadejte **Event Grid systémová témata** a v rozevíracím seznamu vyberte **Event Grid systémová témata** . 
 
     :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Vyhledat a vybrat Event Grid systémová témata":::
 3. V seznamu témat vyberte své systémové téma. 
@@ -91,7 +91,7 @@ Grafy s podporovanými metrikami můžete vytvářet pomocí karty **metriky** n
 
 :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Systémové téma – stránka metriky":::
 
-Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md)
+Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/essentials/data-platform-metrics.md)
 
 
 ## <a name="next-steps"></a>Další kroky

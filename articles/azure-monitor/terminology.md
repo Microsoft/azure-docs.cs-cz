@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor aktualizace terminologie | Microsoft Docs
 description: Popisuje nedávné změny v terminologii provedené v Azure Monitoring Services.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fea85a85db1e555adea63f5b65b09a9285d714da
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498606"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031969"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor změny názvů a terminologie
 V nedávné době byly provedeny významné změny, které se Azure Monitor v poslední době s různými službami konsolidovány, aby se zjednodušilo monitorování pro zákazníky Azure. Tento článek popisuje nedávné změny názvů a terminologie v dokumentaci Azure Monitor.
@@ -23,12 +22,12 @@ Diagnostické protokoly se změnily na "protokoly prostředků", aby lépe odpov
 Po konsolidaci různých služeb v rámci Azure Monitor provedeme další krok úpravou terminologie v naší dokumentaci, aby lépe popsali Azure Monitor službu a její různé komponenty. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Data protokolu Azure Monitor jsou stále uložená v pracovním prostoru Log Analytics a stále se shromažďují a analyzují pomocí stejné Log Analytics služby, ale měníme tento termín _Log Analytics_ na mnoha místech až po _Azure monitor protokolů_. Tento termín lépe odráží svou roli v Azure Monitor a poskytuje lepší konzistenci se [metrikami v Azure monitor](platform/data-platform-metrics.md).
+Data protokolu Azure Monitor jsou stále uložená v pracovním prostoru Log Analytics a stále se shromažďují a analyzují pomocí stejné Log Analytics služby, ale měníme tento termín _Log Analytics_ na mnoha místech až po _Azure monitor protokolů_. Tento termín lépe odráží svou roli v Azure Monitor a poskytuje lepší konzistenci se [metrikami v Azure monitor](essentials/data-platform-metrics.md).
 
-Pojem _Log Analytics_ teď platí hlavně pro stránku v Azure Portal použitou k zápisu a spouštění dotazů a k analýze dat protokolu. Je to funkční ekvivalent [Průzkumníka metrik](platform/metrics-charts.md), což je stránka v Azure Portal používaná k analýze dat metrik.
+Pojem _Log Analytics_ teď platí hlavně pro stránku v Azure Portal použitou k zápisu a spouštění dotazů a k analýze dat protokolu. Je to funkční ekvivalent [Průzkumníka metrik](essentials/metrics-charts.md), což je stránka v Azure Portal používaná k analýze dat metrik.
 
 ### <a name="log-analytics-workspaces"></a>Pracovní prostory služby Log Analytics
-[Pracovní prostory](platform/manage-access.md) , které uchovávají data protokolu v Azure monitor jsou stále označovány jako Log Analytics pracovní prostory. Nabídka **Log Analytics** v Azure Portal byla přejmenována na **Log Analytics pracovní prostory** a je tam, kde [vytvoříte nové pracovní prostory](learn/quick-create-workspace.md) a nakonfigurujete zdroje dat. Analyzujte protokoly a další data monitorování v **Azure monitor** a nakonfigurujte svůj pracovní prostor v **pracovních prostorech Log Analytics**.
+[Pracovní prostory](logs/manage-access.md) , které uchovávají data protokolu v Azure monitor jsou stále označovány jako Log Analytics pracovní prostory. Nabídka **Log Analytics** v Azure Portal byla přejmenována na **Log Analytics pracovní prostory** a je tam, kde [vytvoříte nové pracovní prostory](logs/quick-create-workspace.md) a nakonfigurujete zdroje dat. Analyzujte protokoly a další data monitorování v **Azure monitor** a nakonfigurujte svůj pracovní prostor v **pracovních prostorech Log Analytics**.
 
 ### <a name="management-solutions"></a>Řešení pro správu
 [Řešení pro správu](insights/solutions.md) byla přejmenována na _řešení monitorování_, což lépe popisuje jejich funkce.
@@ -59,4 +58,4 @@ Operations Management Suite (OMS) je sdružením následujících služeb správ
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [přehled Azure monitor](overview.md) , který popisuje jeho různé komponenty a funkce.
-- Přečtěte si o [přechodu portálu OMS](./platform/oms-portal-transition.md).
+- Přečtěte si o [přechodu portálu OMS](./logs/oms-portal-transition.md).

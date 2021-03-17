@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 00585105350e9858bbfd649a41273def162febcb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75d95ff77b48e7b1102900bc103e6930282e21e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545773"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726212"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Zscaler tři
 
@@ -26,7 +26,6 @@ V tomto kurzu se dozvíte, jak integrovat Zscaler tři s Azure Active Directory 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscaler třem pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,18 +49,18 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Zscaler tří do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Zscaler tři z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Zscaler tři** .
 1. Z panelu výsledků vyberte **Zscaler tři** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-three"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Zscaler tři
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-three"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Zscaler tři
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s Zscaler tři pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zscaler tři.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Zscaler tří, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Zscaler tří, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -74,9 +73,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **tří aplikací Zscaler** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace **tří aplikací Zscaler** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -86,16 +85,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Vaše Zscaler tři aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky zobrazuje atributy uživatele s vybranou ikonou pro úpravy.](common/edit-attribute.png)
 
 6. Kromě toho Zscaler tři aplikace očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
-    
+
     | Name | Zdrojový atribut |
     | ---------| ------------ |
-    | memberOf     | User. assignedroles |
+    | memberOf | User. assignedroles |
 
     > [!NOTE]
-    > Chcete-li zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) .
+    > Pokud chcete zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) .
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -109,31 +108,31 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Zscaler tři.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Zscaler tři**.
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatele, jako je **Britta Simon** , a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně Uživatelé a skupiny, kde můžete vybrat uživatele.](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
 
 1. V dialogu **Vybrat roli** vyberte příslušnou roli uživatele v seznamu a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
+    ![Snímek obrazovky se zobrazí dialogové okno vybrat roli, kde můžete zvolit roli uživatele.](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
 
 1. V dialogovém okně **Přidat přiřazení** vyberte tlačítko **přiřadit** .
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat přiřazení, kde můžete vybrat přiřadit.](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
 
 ## <a name="configure-zscaler-three-sso"></a>Konfigurace Zscaler tři jednotné přihlašování
 
@@ -148,22 +147,22 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 3. Pokud chcete nastavit Zscaler tři ručně, otevřete nové okno webového prohlížeče a přihlaste se ke svému Zscaler webu společnosti jako správce a proveďte následující kroky:
 
 4. V části **správa > ověřování > nastavení ověřování** a proveďte následující kroky:
-   
-    ![Správa](./media/zscaler-three-tutorial/ic800206.png "Správa")
+
+    ![Snímek obrazovky ukazuje Zscaler jednu lokalitu podle postupu popsaného v tématu.](./media/zscaler-three-tutorial/ic800206.png "Správa")
 
     a. V části typ ověřování vyberte **SAML**.
 
     b. Klikněte na **Konfigurovat SAML**.
 
 5. V okně **Upravit SAML** proveďte následující kroky: a klikněte na Uložit.  
-            
+
     ![Správa uživatelů & ověřování](./media/zscaler-three-tutorial/ic800208.png "Správa uživatelů & ověřování")
-    
+
     a. Do textového pole **Adresa URL portálu SAML** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
 
     b. Do textového pole **atributu přihlašovací jméno** zadejte **NameId**.
 
-    c. Klikněte na **nahrát**a nahrajte podpisový certifikát Azure SAML, který jste stáhli z Azure Portal ve **veřejném certifikátu SSL**.
+    c. Klikněte na **nahrát** a nahrajte podpisový certifikát Azure SAML, který jste stáhli z Azure Portal ve **veřejném certifikátu SSL**.
 
     d. Přepněte **možnost povolit Automatické zřizování SAML**.
 
@@ -177,7 +176,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 6. Na stránce **Konfigurovat ověření uživatele** proveďte následující kroky:
 
-    ![Správa](./media/zscaler-three-tutorial/ic800207.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Konfigurovat ověření uživatele s vybraným polem aktivovat.](./media/zscaler-three-tutorial/ic800207.png)
 
     a. Najeďte myší na nabídku **Aktivace** v blízkosti levého dolního rohu.
 
@@ -189,17 +188,17 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Spusťte **aplikaci Internet Explorer**.
 
 2. V nabídce **nástroje** vyberte **Možnosti Internetu** . otevře se dialogové okno **Možnosti Internetu** .   
-    
+
      ![Možnosti Internetu](./media/zscaler-three-tutorial/ic769492.png "Možnosti Internetu")
 
 3. Klikněte na kartu **připojení** .   
-  
+
      ![Připojení](./media/zscaler-three-tutorial/ic769493.png "Připojení")
 
 4. Kliknutím na **Nastavení místní sítě** otevřete dialogové okno **nastavení sítě LAN** .
 
 5. V části proxy server proveďte následující kroky:   
-   
+
     ![Proxy server](./media/zscaler-three-tutorial/ic769494.png "Proxy server")
 
     a. Vyberte **použít proxy server pro vaši síť LAN**.
@@ -223,17 +222,15 @@ V této části je uživatel nazvaný B. Simon vytvořen v Zscaler 3. Zscaler t�
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici Zscaler, měli byste se automaticky přihlásit k Zscaler tři, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na Zscaler tři přihlašovací adresy URL, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje
+* Přejít na Zscaler tři přihlašovací adresa URL přímo a zahájit tok přihlášení.
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Zscaler tři v nabídce Moje aplikace, přesměruje se na Zscaler tři přihlašovací adresy URL. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>Další kroky
 
-- [Vyzkoušejte si Zscaler tři s Azure AD](https://aad.portal.azure.com/)
-
+Jakmile Zscaler tři konfigurace, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

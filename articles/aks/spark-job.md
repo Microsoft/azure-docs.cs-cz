@@ -5,19 +5,19 @@ author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
-ms.custom: mvc
-ms.openlocfilehash: 074e3db3234794aa891d5452b0c19060193c6d0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 74a3fe79291f3a5c7f5bbd664bf6d55a5fb77eae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243966"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181189"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
 
 [Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-kubernetes-earliest-version]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto článku budete potřebovat následující.
 
@@ -340,7 +340,7 @@ Další podrobnosti najdete v dokumentaci k Sparku.
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: https://aka.ms/azure-jdks
+[java-install]: /azure/developer/java/fundamentals/java-jdk-long-term-support
 [maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
@@ -352,5 +352,5 @@ Další podrobnosti najdete v dokumentaci k Sparku.
 [acr-aks]: cluster-container-registry-integration.md
 [acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
 [aks-quickstart]: ./index.yml
-[azure-cli]: /cli/azure/?view=azure-cli-latest
+[azure-cli]: /cli/azure/
 [storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md

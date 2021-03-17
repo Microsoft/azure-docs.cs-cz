@@ -1,6 +1,6 @@
 ---
 title: Ukázka skriptu pro směrování provozu pomocí síťové virtuální zařízení-Azure PowerShell
-description: Ukázkový skript Azure PowerShellu – Směrování provozu přes síťové virtuální zařízení brány firewall
+description: Ukázka skriptu Azure PowerShell – směrování provozu přes bránu firewall síťové virtuální zařízení.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6fb16b9839a5f4078347e51647b1f1b916941409
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f0bc7ddde7964ecdd003b951a8562a840b8b88e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068581"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223206"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Ukázkový skript pro směrování provozu přes síťové virtuální zařízení
 
@@ -62,6 +63,6 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro virtuální síť najdete v tématu [Ukázky PowerShellu pro virtuální síť](../powershell-samples.md).

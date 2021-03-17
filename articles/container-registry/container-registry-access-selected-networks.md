@@ -3,12 +3,12 @@ title: Konfigurace přístupu k veřejnému registru
 description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke službě Azure Container Registry z vybraných veřejných IP adres nebo rozsahů adres.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660921"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89488758"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
 
@@ -17,6 +17,8 @@ Služba Azure Container Registry ve výchozím nastavení přijímá připojení
 V rámci veřejného koncového bodu registru jsou nakonfigurovaná pravidla sítě IP. Pravidla sítě IP se nevztahují na privátní koncové body konfigurované pomocí [privátního propojení](container-registry-private-link.md) .
 
 Konfigurace pravidel přístupu k IP adres je dostupná na úrovni služby **Premium** Container Registry Service. Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně](container-registry-skus.md).
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="access-from-selected-public-network---cli"></a>Přístup z vybrané veřejné sítě – rozhraní příkazového řádku
 

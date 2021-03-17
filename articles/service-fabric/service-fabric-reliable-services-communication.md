@@ -1,16 +1,15 @@
 ---
 title: Přehled komunikace Reliable Services
 description: Přehled komunikačního modelu Reliable Services, včetně otevření naslouchacího procesu pro služby, překladu koncových bodů a komunikace mezi službami.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
-ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253180"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912610"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API pro komunikaci Reliable Services
 Služba Azure Service Fabric jako platforma zcela nezávislá o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné od UDP přes HTTP. Chcete-li zvolit, jak by měly služby komunikovat, je k tomu vývojář služby. Rozhraní Reliable Services Application Framework poskytuje integrované komunikační zásobníky i rozhraní API, které můžete použít k sestavení vlastních komunikačních komponent.
@@ -207,7 +206,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Pro připojení ke službám v jiném clusteru se dá ServicePartitionResolver vytvořit pomocí sady koncových bodů brány clusteru. Všimněte si, že koncové body brány jsou pouze různými koncovými body pro připojení ke stejnému clusteru. Příklad:
+Pro připojení ke službám v jiném clusteru se dá ServicePartitionResolver vytvořit pomocí sady koncových bodů brány clusteru. Všimněte si, že koncové body brány jsou pouze různými koncovými body pro připojení ke stejnému clusteru. Například:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -231,7 +230,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`je objekt, který se používá ke komunikaci s clusterem Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad tím, jak překladač oddílů služby komunikuje s clusterem. `FabricClient`provádí ukládání do mezipaměti interně a je obecně nákladné pro vytvoření, takže je důležité znovu použít `FabricClient` instance co nejvíce.
+`FabricClient` je objekt, který se používá ke komunikaci s clusterem Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad tím, jak překladač oddílů služby komunikuje s clusterem. `FabricClient` provádí ukládání do mezipaměti interně a je obecně nákladné pro vytvoření, takže je důležité znovu použít `FabricClient` instance co nejvíce.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -262,7 +261,7 @@ Kód klienta obvykle nemusí pracovat s ServicePartitionResolver přímo. Je vyt
 ### <a name="communication-clients-and-factories"></a>Komunikační klienti a továrny
 Knihovna služby Communications Factory implementuje typický způsob opakování zpracování chyb, který usnadňuje opakované pokusy o připojení k vyřešeným koncovým bodům služby. Knihovna Factory poskytuje mechanismus opakování při poskytování obslužných rutin chyb.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`definuje základní rozhraní implementované objektem pro komunikaci klienta, které vytváří klienty, kteří můžou komunikovat se službou Service Fabric. Implementace CommunicationClientFactory závisí na komunikačním zásobníku používaném službou Service Fabric, kde chce klient komunikovat. Rozhraní Reliable Services API poskytuje `CommunicationClientFactoryBase<TCommunicationClient>` . To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny komunikační balíky. (Tyto úlohy zahrnují použití ServicePartitionResolver k určení koncového bodu služby). Klienti obvykle implementují abstraktní třídu CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikační zásobník.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` definuje základní rozhraní implementované objektem pro komunikaci klienta, které vytváří klienty, kteří můžou komunikovat se službou Service Fabric. Implementace CommunicationClientFactory závisí na komunikačním zásobníku používaném službou Service Fabric, kde chce klient komunikovat. Rozhraní Reliable Services API poskytuje `CommunicationClientFactoryBase<TCommunicationClient>` . To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny komunikační balíky. (Tyto úlohy zahrnují použití ServicePartitionResolver k určení koncového bodu služby). Klienti obvykle implementují abstraktní třídu CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikační zásobník.
 
 Komunikační klient jenom obdrží adresu a použije ho pro připojení ke službě. Klient může použít libovolný protokol, který chce.
 
@@ -289,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Klientská továrna je primárně zodpovědná za vytváření komunikačních klientů. U klientů, kteří neudržují trvalé připojení, jako je například klient HTTP, potřebuje továrnu vytvořit a vrátit klienta. Jiné protokoly, které udržují trvalé připojení, například některé binární protokoly, by měly být také ověřeny továrnou, aby bylo možné určit, zda je nutné znovu vytvořit připojení.  
+Klientská továrna je primárně zodpovědná za vytváření komunikačních klientů. U klientů, kteří neudržují trvalé připojení, jako je například klient HTTP, potřebuje továrnu vytvořit a vrátit klienta. Jiné protokoly, které udržují trvalé připojení, jako jsou například některé binární protokoly, by měly být také ověřeny `ValidateClient(string endpoint, MyCommunicationClient client)` továrnou, aby bylo možné určit, zda je nutné znovu vytvořit připojení.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
@@ -332,7 +331,7 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Nakonec je zodpovědná obslužná rutina výjimky za účelem určení, jakou akci chcete provést, když dojde k výjimce. Výjimky jsou zařazeny do kategorií, **které**lze **Opakovat** a nelze je opakovat.
+Nakonec je zodpovědná obslužná rutina výjimky za účelem určení, jakou akci chcete provést, když dojde k výjimce. Výjimky jsou zařazeny do kategorií, **které** lze **Opakovat** a nelze je opakovat.
 
 * **Neopakující se výjimky jednoduše** vrátí zpět volajícímu.
 * výjimky, které lze **Opakovat** , jsou dále zařazeny do **přechodného** a **nepřechodné**.

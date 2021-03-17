@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných iniciativ zásad
 description: Seznam předdefinovaných iniciativ zásad pro Azure Policy. Kategorie zahrnují dodržování předpisů, konfiguraci hostů a další.
-ms.date: 07/10/2020
+ms.date: 03/10/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 23286e136a5b74a922c25af2e83a5019b387d64a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: a14385c491a877378d9184f3bc9872ce8ba63dee
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276835"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613775"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy předdefinované definice iniciativ
 
@@ -17,29 +17,33 @@ Tato stránka je indexem Azure Policy integrovaných definic iniciativ.
 
 Název na každém z vestavěných odkazů na zdroj definice iniciativy v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy). Předdefinované jsou seskupené podle vlastnosti **Category** v **metadatech**. Chcete-li přejít do konkrétní **kategorie**, použijte nabídku na pravé straně stránky. V opačném případě použijte k použití funkce hledání v prohlížeči <kbd>kombinaci kláves CTRL</kbd> - <kbd>F</kbd> .
 
-## <a name="cosmos-db"></a>Databáze Cosmos
+## <a name="cosmos-db"></a>Cosmos DB
 
-[!INCLUDE [azure-policy-samples-policysets-cosmos-db](../../../../includes/policy/samples/bycat/policysets-cosmos-db.md)]
+[!INCLUDE [azure-policy-reference-policysets-cosmos-db](../../../../includes/policy/reference/bycat/policysets-cosmos-db.md)]
 
 ## <a name="guest-configuration"></a>Konfigurace hosta
 
-[!INCLUDE [azure-policy-samples-policysets-guest-configuration](../../../../includes/policy/samples/bycat/policysets-guest-configuration.md)]
+[!INCLUDE [azure-policy-reference-policysets-guest-configuration](../../../../includes/policy/reference/bycat/policysets-guest-configuration.md)]
 
 ## <a name="kubernetes"></a>Kubernetes
 
-[!INCLUDE [azure-policy-samples-policysets-kubernetes](../../../../includes/policy/samples/bycat/policysets-kubernetes.md)]
+[!INCLUDE [azure-policy-reference-policysets-kubernetes](../../../../includes/policy/reference/bycat/policysets-kubernetes.md)]
 
 ## <a name="monitoring"></a>Monitorování
 
-[!INCLUDE [azure-policy-samples-policysets-monitoring](../../../../includes/policy/samples/bycat/policysets-monitoring.md)]
+[!INCLUDE [azure-policy-reference-policysets-monitoring](../../../../includes/policy/reference/bycat/policysets-monitoring.md)]
+
+## <a name="network"></a>Síť
+
+[!INCLUDE [azure-policy-reference-policysets-network](../../../../includes/policy/reference/bycat/policysets-network.md)]
 
 ## <a name="regulatory-compliance"></a>Dodržování legislativní předpisů
 
-[!INCLUDE [azure-policy-samples-policysets-regulatory-compliance](../../../../includes/policy/samples/bycat/policysets-regulatory-compliance.md)]
+[!INCLUDE [azure-policy-reference-policysets-regulatory-compliance](../../../../includes/policy/reference/bycat/policysets-regulatory-compliance.md)]
 
 ## <a name="security-center"></a>Security Center
 
-[!INCLUDE [azure-policy-samples-policysets-security-center](../../../../includes/policy/samples/bycat/policysets-security-center.md)]
+[!INCLUDE [azure-policy-reference-policysets-security-center](../../../../includes/policy/reference/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

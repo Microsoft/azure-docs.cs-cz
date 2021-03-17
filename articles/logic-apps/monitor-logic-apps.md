@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078200"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580671"
 ---
-# <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Monitorovat stav spuštění, zkontrolovat historii triggerů a nastavit výstrahy pro Azure Logic Apps
+# <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Využijte možnost monitorovat stav spuštění, zobrazit historii triggerů a nastavit upozornění pro Azure Logic Apps.
 
 Po [Vytvoření a spuštění aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)můžete kontrolovat stav spuštění aplikace logiky, [historii spuštění](#review-runs-history), [historii aktivačních událostí](#review-trigger-history)a výkon. Pokud chcete dostávat oznámení o selháních nebo jiných možných problémech, nastavte [výstrahy](#add-azure-alerts). Můžete například vytvořit výstrahu, která detekuje "Pokud více než pět běhů selže za hodinu."
 
-Pro monitorování událostí v reálném čase a bohatší ladění nastavte protokolování diagnostiky pro vaši aplikaci logiky pomocí [protokolů Azure monitor](../azure-monitor/overview.md). Tato služba Azure vám pomůže monitorovat cloudové a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pak můžete najít a zobrazit události, jako jsou události triggeru, události spuštění a události akcí. Uložením těchto informací v [protokolech Azure monitor](../azure-monitor/platform/data-platform-logs.md)můžete vytvořit [dotazy protokolu](../azure-monitor/log-query/log-query-overview.md) , které vám pomůžou najít a analyzovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs. Další informace najdete v tématu [monitorování aplikací logiky pomocí Azure monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
+Pro monitorování událostí v reálném čase a bohatší ladění nastavte protokolování diagnostiky pro vaši aplikaci logiky pomocí [protokolů Azure monitor](../azure-monitor/overview.md). Tato služba Azure vám pomůže monitorovat cloudové a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pak můžete najít a zobrazit události, jako jsou události triggeru, události spuštění a události akcí. Uložením těchto informací v [protokolech Azure monitor](../azure-monitor/logs/data-platform-logs.md)můžete vytvořit [dotazy protokolu](../azure-monitor/logs/log-query-overview.md) , které vám pomůžou najít a analyzovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs. Další informace najdete v tématu [monitorování aplikací logiky pomocí Azure monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
 
 > [!NOTE]
 > Pokud vaše aplikace logiky běží v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , které bylo vytvořeno za účelem použití [koncového bodu interního přístupu](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access), můžete zobrazit vstupy a výstupy z historie spuštění aplikace logiky *jenom v rámci vaší virtuální sítě*. Ujistěte se, že máte síťové připojení mezi soukromými koncovými body a počítačem, ze kterého chcete získat přístup k historii spuštění. Například klientský počítač může existovat uvnitř virtuální sítě ISE nebo uvnitř virtuální sítě, která je připojená k virtuální síti ISE, například prostřednictvím partnerského vztahu nebo virtuální privátní sítě. Další informace najdete v tématu [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
@@ -40,22 +40,27 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
 
 1. Vyberte svou aplikaci logiky a pak vyberte **Přehled**.
 
-   V podokně Přehled se zobrazí v části **historie spuštění**všechny poslední, aktuální a všechny čekající běhy pro vaši aplikaci logiky. Pokud se v seznamu zobrazí mnoho spuštění a nemůžete najít požadovanou položku, zkuste vyfiltrovat seznam. Pokud nenajdete očekávaná data, zkuste na panelu nástrojů vybrat možnost **aktualizovat** .
+   V podokně Přehled se zobrazí v části **historie spuštění** všechny poslední, aktuální a všechny čekající běhy pro vaši aplikaci logiky. Pokud se v seznamu zobrazí mnoho spuštění a nemůžete najít požadovanou položku, zkuste vyfiltrovat seznam.
+
+   > [!TIP]
+   > Pokud se stav spuštění nezobrazí, zkuste aktualizovat stránku Přehled výběrem možnosti **aktualizovat**. Pro aktivační událost, která se přeskočila kvůli kritériím nesplnění nebo hledáním žádných dat, neproběhne žádné spuštění.
 
    ![Přehled, historie spuštění a další informace o aplikaci logiky](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
-   Tady jsou možné stavy pro spuštění aplikace logiky:
+   Tady jsou možné stavy spuštění:
 
-   | Status | Popis |
-   |--------|-------------|
-   | **Stornován** | Pracovní postup byl spuštěn, ale přijal žádost o zrušení. |
-   | **Neúspěšný** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování selhání. |
-   | **Spuštěný** | Pracovní postup je aktuálně spuštěný. <p>Tento stav se může zobrazit také pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/monitor-logic-apps.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
-   | **Úspěšný** | Všechny akce byly úspěšné. <p>**Poznámka**: Pokud došlo k nějakým chybám v určité akci, bude tato chyba zpracována později v pracovním postupu. |
-   | **Čekající** | Pracovní postup nebyl spuštěn nebo byl pozastaven, například kvůli dřívějšímu pracovnímu postupu, který je stále spuštěn. |
+   | Stav spuštění | Description |
+   |------------|-------------|
+   | **Bylo přerušeno** | Spuštění bylo zastaveno nebo nebylo dokončeno z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
+   | **Stornován** | Běh se aktivoval a začal, ale přijal žádost o zrušení. |
+   | **Neúspěšný** | Nejméně jedna akce v běhu se nezdařila. Pro zpracování této chyby nebyly nastaveny žádné následné akce v pracovním postupu. |
+   | **Spuštěno** | Běh se aktivoval a probíhá, ale tento stav se může zobrazit i pro běh, který je omezený z důvodu [omezení akce](logic-apps-limits-and-config.md) nebo [aktuálního cenového plánu](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tip**: Pokud nastavíte [diagnostické protokolování](monitor-logic-apps-log-analytics.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
+   | **Úspěšný** | Spuštění proběhlo úspěšně. Pokud se některá akce nezdařila, došlo k selhání následné akce v pracovním postupu. |
+   | **Vypršel časový limit** | Časový limit spuštění vypršel, protože aktuální doba překročila limit doby trvání běhu, který je řízen nastavením [ **uchování historie spuštění ve dnech**](logic-apps-limits-and-config.md#run-duration-retention-limits). Doba trvání běhu se počítá pomocí počátečního času spuštění a omezení doby trvání běhu v daném počátečním čase. <p><p>**Poznámka**: Pokud doba trvání běhu překročí také aktuální *limit uchování historie spuštění*, který je také řízen [nastavením **uchování historie spuštění v rámci dnů**](logic-apps-limits-and-config.md#run-duration-retention-limits), je spuštění vymazáno z historie spuštění podle každodenní úlohy čištění. Bez ohledu na to, jestli doba běhu vyprší nebo dokončí, se doba uchovávání vždycky vypočítá pomocí času spuštění a *aktuálního* limitu uchování. Pokud tedy omezíte dobu trvání spuštění v letadle, vyprší časový limit běhu. Běh ale buď zůstane, nebo se vymaže z historie spuštění na základě toho, jestli doba trvání běhu překročila limit uchování. |
+   | **Čekající** | Běh se nezačal nebo je pozastaven, například kvůli dřívější instanci pracovního postupu, která je pořád spuštěná. |
    |||
 
-1. Chcete-li zkontrolovat postup a další informace pro konkrétní spuštění, vyberte v části **historie spuštění**možnost spustit.
+1. Chcete-li zkontrolovat postup a další informace pro konkrétní spuštění, vyberte v části **historie spuštění** možnost spustit.
 
    ![Vyberte konkrétní spuštění ke kontrole.](./media/monitor-logic-apps/select-specific-logic-app-run.png)
 
@@ -106,7 +111,7 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
 1. Vyberte svou aplikaci logiky a pak vyberte **Přehled**.
 
-1. V nabídce aplikace logiky zvolte **Přehled**. V části **Souhrn** vyberte v části **hodnocení**možnost **Zobrazit historii aktivačních událostí**.
+1. V nabídce aplikace logiky zvolte **Přehled**. V části **Souhrn** vyberte v části **hodnocení** možnost **Zobrazit historii aktivačních událostí**.
 
    ![Zobrazení historie aktivačních událostí pro vaši aplikaci logiky](./media/monitor-logic-apps/overview-pane-logic-app-details-trigger-history.png)
 
@@ -114,17 +119,17 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
    ![Více pokusů o spuštění různých položek](./media/monitor-logic-apps/logic-app-trigger-history.png)
 
-   Tady jsou možné stavy pro pokus o aktivační událost:
+   Tady je možný stav pokusu o aktivaci:
 
-   | Status | Popis |
-   |--------|-------------|
+   | Stav triggeru | Description |
+   |----------------|-------------|
    | **Neúspěšný** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. |
-   | **Přeskočeno** | Aktivační událost kontrolovala koncový bod, ale nenašla žádná data. |
-   | **Úspěšný** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může být v definici triggeru podmínka nebo `SplitOn` příkaz, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. |
+   | **Přeskočeno** | Aktivační událost kontrolovala koncový bod, ale nenašla žádná data, která by splňovala zadaná kritéria. |
+   | **Úspěšný** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav aktivace se obvykle zobrazuje **současně s tímto stavem** . V takovém případě může být v definici triggeru podmínka nebo `SplitOn` příkaz, který nebyl splněn. <p><p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. |
    |||
 
    > [!TIP]
-   > Aktivační událost se dá znovu ověřit bez čekání na další opakování. Na panelu nástrojů přehled vyberte **Spustit Trigger**a vyberte aktivační událost, která vynucuje kontrolu. Případně vyberte možnost **Spustit** na panelu nástrojů návrháře Logic Apps.
+   > Aktivační událost se dá znovu ověřit bez čekání na další opakování. Na panelu nástrojů přehled vyberte **Spustit Trigger** a vyberte aktivační událost, která vynucuje kontrolu. Případně vyberte možnost **Spustit** na panelu nástrojů návrháře Logic Apps.
 
 1. Chcete-li zobrazit informace o konkrétním pokusu o aktivační událost, vyberte v podokně Trigger tuto aktivační událost. Pokud se v seznamu zobrazí mnoho pokusů o aktivační události a nemůžete najít požadovanou položku, zkuste vyfiltrovat seznam. Pokud nenajdete očekávaná data, zkuste na panelu nástrojů vybrat možnost **aktualizovat** .
 
@@ -136,15 +141,15 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
 <a name="add-azure-alerts"></a>
 
-## <a name="set-up-monitoring-alerts"></a>Nastavení výstrah monitorování
+## <a name="set-up-monitoring-alerts"></a>Nastavení upozornění monitorování
 
-Pokud chcete dostávat upozornění na základě konkrétních metrik nebo překročení prahových hodnot pro vaši aplikaci logiky, nastavte [výstrahy v Azure monitor](../azure-monitor/platform/alerts-overview.md). Seznamte [se s metrikami v Azure](../azure-monitor/platform/data-platform.md). Pokud chcete nastavit výstrahy bez použití [Azure monitor](../azure-monitor/log-query/log-query-overview.md), postupujte podle těchto kroků.
+Pokud chcete dostávat upozornění na základě konkrétních metrik nebo překročení prahových hodnot pro vaši aplikaci logiky, nastavte [výstrahy v Azure monitor](../azure-monitor/alerts/alerts-overview.md). Seznamte [se s metrikami v Azure](../azure-monitor/data-platform.md). Pokud chcete nastavit výstrahy bez použití [Azure monitor](../azure-monitor/logs/log-query-overview.md), postupujte podle těchto kroků.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
+1. V nabídce aplikace logiky v části **monitorování** vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
 
    ![Přidání upozornění pro aplikaci logiky](./media/monitor-logic-apps/add-new-alert-rule.png)
 
-1. V podokně **vytvořit pravidlo** vyberte v části **prostředek**možnost aplikace logiky, pokud ještě není vybraná. V části **Podmínka**vyberte **Přidat** , abyste mohli definovat podmínku, která aktivuje výstrahu.
+1. V podokně **vytvořit pravidlo** vyberte v části **prostředek** možnost aplikace logiky, pokud ještě není vybraná. V části **Podmínka** vyberte **Přidat** , abyste mohli definovat podmínku, která aktivuje výstrahu.
 
    ![Přidat podmínku pro pravidlo](./media/monitor-logic-apps/add-condition-for-rule.png)
 
@@ -156,17 +161,17 @@ Pokud chcete dostávat upozornění na základě konkrétních metrik nebo přek
 
       ![Vybrat signál pro vytvoření výstrahy](./media/monitor-logic-apps/find-and-select-signal.png)
 
-   1. V podokně s informacemi, které se otevře pro vybraný signál, v části **logika výstrahy**nastavte podmínku, například:
+   1. V podokně s informacemi, které se otevře pro vybraný signál, v části **logika výstrahy** nastavte podmínku, například:
 
-   1. Jako **operátor**vyberte **větší než nebo rovno**.
+   1. Jako **operátor** vyberte **větší než nebo rovno**.
 
-   1. Jako **typ agregace**vyberte **počet**.
+   1. Jako **typ agregace** vyberte **počet**.
 
-   1. V případě **prahové hodnoty**zadejte `1` .
+   1. V případě **prahové hodnoty** zadejte `1` .
 
-   1. V části **Preview podmínka**ověřte, že se zobrazuje stav správné.
+   1. V části **Preview podmínka** ověřte, že se zobrazuje stav správné.
 
-   1. Pod položkou **vyhodnoceno na základě**nastavte interval a četnost spouštění pravidla výstrahy. Pro **členitost agregace (perioda)** vyberte období pro seskupení dat. V případě **četnosti vyhodnocení**vyberte, jak často chcete podmínku ověřit.
+   1. Pod položkou **vyhodnoceno na základě** nastavte interval a četnost spouštění pravidla výstrahy. Pro **členitost agregace (perioda)** vyberte období pro seskupení dat. V případě **četnosti vyhodnocení** vyberte, jak často chcete podmínku ověřit.
 
    1. Až budete připraveni, vyberte **Hotovo**.
 

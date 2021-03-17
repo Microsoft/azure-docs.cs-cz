@@ -4,20 +4,20 @@ description: Naučte se spravovat zřizování uživatelských účtů pro podni
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234835"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555626"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
@@ -63,7 +63,7 @@ Vyberte **Test připojení** a otestujte přihlašovací údaje tím, že se Azu
 
 Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, které se při zřizování nebo aktualizaci uživatelských účtů flowují mezi službou Azure AD a cílovou aplikací.
 
-Existuje předem nakonfigurovaná sada mapování mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace spravují jiné typy objektů, jako jsou například skupiny nebo kontakty. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde je můžete zobrazit a přizpůsobit.
+Existuje předem nakonfigurovaná sada mapování mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace také spravují objekty skupiny. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde je můžete zobrazit a přizpůsobit.
 
 ![Zobrazuje obrazovku mapování atributů.](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 

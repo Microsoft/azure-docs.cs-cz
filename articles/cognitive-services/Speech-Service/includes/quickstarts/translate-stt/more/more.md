@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
-ms.openlocfilehash: b84db9eee473b14f2ba078ed1be77f6165a5f3b9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c1c9b9a3e2f65e44e2ed0bb3855e00acbea942d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400211"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925613"
 ---
 ## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
 

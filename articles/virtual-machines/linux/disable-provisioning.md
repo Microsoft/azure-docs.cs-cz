@@ -2,19 +2,20 @@
 title: Zakázání nebo odebrání agenta zřizování
 description: Přečtěte si, jak zakázat nebo odebrat agenta zřizování na virtuálních počítačích a bitových kopiích systému Linux.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494509"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561058"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Zakázání nebo odebrání agenta pro Linux z virtuálních počítačů a imagí
 
@@ -31,9 +32,9 @@ Platforma Azure je hostitelem mnoha rozšíření, která jsou v rozsahu od konf
 
 ## <a name="disabling-extension-processing"></a>Zákaz zpracování rozšíření
 
-Existuje několik způsobů, jak zakázat zpracování rozšíření v závislosti na vašich potřebách, ale před pokračováním **musíte** odebrat všechna rozšíření nasazená na virtuální počítač, například pomocí AZ CLI, můžete [Zobrazit](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) a [Odstranit](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Existuje několik způsobů, jak zakázat zpracování rozšíření v závislosti na vašich potřebách, ale před pokračováním **musíte** odebrat všechna rozšíření nasazená na virtuální počítač, například pomocí Azure CLI, můžete [vypsat](/cli/azure/vm/extension#az-vm-extension-list) a [Odstranit](/cli/azure/vm/extension#az-vm-extension-delete):
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +44,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>Zakázat na řídicí rovině
 Pokud si nejste jistí, jestli budete potřebovat rozšíření v budoucnu, můžete nechat nainstalovaného agenta pro Linux na virtuálním počítači a pak zakázat možnost zpracování rozšíření z platformy. Tato možnost je k dispozici v `Microsoft.Compute` rozhraní API verze `2018-06-01` nebo vyšší a nemá závislost na nainstalované verzi agenta pro Linux.
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 Toto zpracování rozšíření můžete snadno znovu povolit z platformy pomocí výše uvedeného příkazu, ale nastavte na hodnotu true.
@@ -132,7 +133,7 @@ Po dokončení výše uvedeného můžete vytvořit vlastní image pomocí Azure
 
 
 **Vytvoření běžné spravované image**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +141,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **Vytvoření verze image v galerii sdílených imagí**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +158,7 @@ Když vytváříte virtuální počítač z image bez agenta pro Linux, musíte 
 
 Pokud chcete nasadit virtuální počítač s zakázanými rozšířeními, můžete použít Azure CLI s [agentem--Enable-agent](/cli/azure/vm#az-vm-create).
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \

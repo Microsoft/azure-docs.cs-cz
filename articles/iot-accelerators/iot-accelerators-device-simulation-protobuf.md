@@ -6,17 +6,15 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom:
-- mvc
-- amqp
+ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683995"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852145"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
@@ -34,7 +32,7 @@ Postup v tomto návodu vám ukáže, jak:
 1. Generovat třídy Protobuf
 1. Test lokálně
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 
@@ -42,7 +40,7 @@ Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 * .NET Core. Můžete stáhnout [.NET Core pro Mac, Linux a Windows](https://www.microsoft.com/net/download).
 * Postman. Můžete si stáhnout [pro Mac, Windows nebo Linux](https://www.getpostman.com/apps).
 * [Centrum IoT nasazené ve vašem předplatném Azure](../iot-hub/iot-hub-create-through-portal.md). K dokončení kroků v této příručce potřebujete připojovací řetězec centra IoT. Připojovací řetězec můžete získat z Azure Portal.
-* [Cosmos DB databáze nasazené do předplatného Azure](../cosmos-db/create-sql-api-dotnet.md#create-account) , které používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../cosmos-db/manage-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z Azure Portal.
+* [Cosmos DB databáze nasazené do předplatného Azure](../cosmos-db/create-sql-api-dotnet.md#create-account) , které používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../cosmos-db/how-to-manage-database-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z Azure Portal.
 * [Účet služby Azure Storage nasazený do vašeho předplatného Azure](../storage/common/storage-account-create.md). K dokončení kroků v této příručce potřebujete připojovací řetězec účtu úložiště. Připojovací řetězec můžete získat z Azure Portal.
 
 ## <a name="prepare-your-development-environment"></a>Příprava vývojového prostředí
@@ -279,4 +277,4 @@ Mnoho funkcí IoT Hub neumožňuje nativně podporovat Protobuf nebo jiné biná
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, v dalším kroku se dozvíte, jak [nasadit vlastní image do cloudu](iot-accelerators-device-simulation-deploy-image.md).
+Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, další krok je navštívit úložiště GitHub a získat další informace o [simulaci zařízení](https://github.com/Azure/device-simulation-dotnet).

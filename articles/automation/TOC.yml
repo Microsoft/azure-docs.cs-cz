@@ -6,6 +6,8 @@
       href: automation-intro.md
     - name: Nejčastější dotazy
       href: automation-faq.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Rychlé starty
   items:
     - name: Vytvoření účtu Automation
@@ -27,11 +29,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Vytvoření runbooku v Pythonu
       href: learn/automation-tutorial-runbook-textual-python2.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+    - name: Vytvoření runbooku v Pythonu 3
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: Koncepty
   items:
     - name: Přehled ověřování účtů služby Automation
@@ -44,6 +43,8 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Podrobnosti o konfiguraci sítě Automation
+      href: automation-network-configuration.md
     - name: Zabezpečení
       items:
         - name: Mechanismy zabezpečení služby Azure Policy
@@ -65,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: Vytvoření účtu Automation s využitím šablony Resource Manageru
           href: quickstart-create-automation-account-template.md
+        - name: Účet Spustit jako
+          items:
+            - name: Vytvořit účet Spustit jako
+              href: create-run-as-account.md
+            - name: Odstranění účtu Spustit jako
+              href: delete-run-as-account.md
+            - name: Spravovat účet Spustit jako
+              href: manage-runas-account.md
         - name: Konfigurace ověřování s využitím Amazon Web Services
           href: automation-config-aws-account.md
         - name: Konfigurace ověřování s využitím Azure AD
           href: automation-use-azure-ad.md
-        - name: Správa záznamu DNS využívaného službou Automation
+        - name: Správa záznamů DNS používaných Automation
           href: how-to/automation-region-dns-records.md
-        - name: Správa účtu Spustit jako služby Automation
-          href: manage-runas-account.md
         - name: Privátní připojení k účtu Automation
           href: how-to/private-link-security.md
         - name: Správa oprávnění rolí a zabezpečení
@@ -101,6 +108,8 @@
           href: shared-resources/variables.md
         - name: Správa balíčků Python 2
           href: python-packages.md
+        - name: Správa balíčků Python 3
+          href: python-3-packages.md
         - name: Řešení potíží se sdílenými prostředky
           href: troubleshoot/shared-resources.md
     - name: Automatizace procesů
@@ -133,7 +142,7 @@
               href: graphical-runbook-sdk.md
         - name: Monitorování runbooků
           items:
-            - name: Monitorování výstupu runbooků
+            - name: Konfigurace výstupu runbooků
               href: automation-runbook-output-and-messages.md
             - name: Zpracování chyb v grafických runboocích
               href: automation-runbook-graphical-error-handling.md
@@ -198,29 +207,33 @@
         - name: Change Tracking a Inventory
           items:
             - name: Přehled
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: Oblasti podpory pro propojený pracovní prostor Log Analytics
               href: how-to/region-mappings.md
             - name: Povolení
               items:
-                - name: Povolení řešení Change Tracking a Inventory z webu Azure Portal
-                  href: automation-enable-changes-from-browse.md
-                - name: Povolení řešení Change Tracking a Inventory z virtuálního počítače Azure
-                  href: automation-enable-changes-from-vm.md
-                - name: Povolení řešení Change Tracking a Inventory z účtu Automation
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: Povolení řešení Change Tracking a Inventory z runbooku
-                  href: automation-enable-changes-from-runbook.md
+                - name: Povolení z webu Azure Portal
+                  href: change-tracking/enable-from-portal.md
+                - name: Povolení z virtuálního počítače Azure
+                  href: change-tracking/enable-from-vm.md
+                - name: Povolení z účtu Automation
+                  href: change-tracking/enable-from-automation-account.md
+                - name: Povolení z runbooku
+                  href: change-tracking/enable-from-runbook.md
             - name: Správa řešení Change Tracking a Inventory
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: Správa shromažďování dat pro inventarizaci z virtuálních počítačů
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: Práce s konfiguracemi oboru
-              href: automation-scope-configurations-change-tracking.md
-            - name: Odpojení pracovního prostoru od účtu Automation
-              href: automation-unlink-workspace-change-tracking.md
-            - name: Odebrání virtuálních počítačů z řešení Change Tracking a Inventory
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: Konfigurace upozornění
+              href: change-tracking/configure-alerts.md
+            - name: Zakázat
+              items:
+                - name: Odebrání funkce Sledování změn a inventář
+                  href: change-tracking/remove-feature.md
+                - name: Odebrání virtuálních počítačů z řešení Change Tracking a Inventory
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: Řešení potíží
               items:
                 - name: Řešení problémů s nasazením funkcí
@@ -239,54 +252,56 @@
           href: automation-solution-vm-management-config.md
         - name: Protokoly dotazů z funkce Start/Stop VMs during off-hours
           href: automation-solution-vm-management-logs.md
+        - name: Odebrat Start/Stop VMs during off-hours
+          href: automation-solution-vm-management-remove.md
         - name: Řešení potíží s funkcí Stop/Start VMs during off-hours
           href: troubleshoot/start-stop-vm.md
     - name: Update Management
       items:
         - name: Přehled
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: Podporované oblasti pro propojený pracovní prostor Log Analytics
           href: how-to/region-mappings.md
         - name: Povolení
           items:
-            - name: Povolení Update Managementu s využitím šablony Azure Resource Manageru
-              href: update-management/update-mgmt-enable-template.md
-            - name: Povolení Update Managementu z webu Azure Portal
-              href: update-management/update-mgmt-enable-portal.md
-            - name: Povolení Update Managementu z virtuálního počítače Azure
-              href: update-management/update-mgmt-enable-vm.md
-            - name: Povolení Update Managementu z účtu Automation
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: Povolení Update Managementu z runbooku
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: Povolení pomocí šablony Azure Resource Manageru
+              href: update-management/enable-from-template.md
+            - name: Povolení z webu Azure Portal
+              href: update-management/enable-from-portal.md
+            - name: Povolení z virtuálního počítače Azure
+              href: update-management/enable-from-vm.md
+            - name: Povolení z účtu Automation
+              href: update-management/enable-from-automation-account.md
+            - name: Povolení z runbooku
+              href: update-management/enable-from-runbook.md
         - name: Správa aktualizací pro virtuální počítače
           items:
             - name: Začínáme
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: Posouzení dodržování předpisů
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: Nasazení aktualizací a kontrola stavu
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: Použití předzálohovacích a pozálohovacích skriptů
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: Konfigurace upozornění
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: Integrace s Configuration Managerem
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: Konfigurace klienta služby Windows Update
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: Použití dynamických skupin
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: Dotazování na protokoly Update Managementu
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: Práce s konfiguracemi oboru
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: Zakázat
           items:
             - name: Odebrání Update Managementu
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: Odebrání virtuálních počítačů z Update Managementu
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: Řešení potíží
           items:
             - name: Řešení problémů s nasazením funkcí
@@ -325,6 +340,9 @@
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Úvodní video ke službě Automation

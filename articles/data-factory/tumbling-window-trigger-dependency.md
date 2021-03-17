@@ -1,22 +1,18 @@
 ---
 title: Vytvořit závislosti aktivačních signálů pro bubnový interval
 description: Naučte se vytvořit závislost na triggeru bubnového okna v Azure Data Factory.
-services: data-factory
-ms.author: daperlov
-author: djpmsft
-manager: anandsub
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2019
-ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: f969c06a3419a8017cfc5ebc0de19caa67c8dc68
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82870033"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361464"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,9 +27,9 @@ Ukázku, jak vytvořit závislé kanály v Azure Data Factory pomocí triggeru b
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Vytvoření závislosti v uživatelském rozhraní Data Factory
 
-Pokud chcete vytvořit závislost na triggeru, vyberte **trigger > upřesnit > nový**a potom zvolte Trigger, který bude záviset na odpovídajícím posunu a velikosti. Vyberte **Dokončit** a publikujte změny objektu pro vytváření dat, aby se závislosti projevily.
+Pokud chcete vytvořit závislost na triggeru, vyberte **trigger > upřesnit > nový** a potom zvolte Trigger, který bude záviset na odpovídajícím posunu a velikosti. Vyberte **Dokončit** a publikujte změny objektu pro vytváření dat, aby se závislosti projevily.
 
-![Vytvoření závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Vytvoření závislosti")
+![Vytvoření závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Vytvoření závislosti")
 
 ## <a name="tumbling-window-dependency-properties"></a>Vlastnosti závislosti bubnového okna
 
@@ -79,11 +75,11 @@ Aktivační událost bubnového okna se závislostí má následující vlastnos
 
 Následující tabulka uvádí seznam atributů potřebných k definování závislosti bubnu okna.
 
-| **Název vlastnosti** | **Popis**  | **Typ** | **Požadováno** |
+| **Název vlastnosti** | **Popis**  | **Typ** | **Povinné** |
 |---|---|---|---|
 | typ  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Yes |
 | posun | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
-| velikost | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | No  |
+| size | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | No  |
 
 > [!NOTE]
 > Aktivační událost bubnového okna může záviset na maximálně pět dalších triggerů.
@@ -133,41 +129,53 @@ Níže najdete ilustrace scénářů a využití vlastností závislosti bubnu o
 
 ### <a name="dependency-offset"></a>Posun závislosti
 
-![Příklad posunutí](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Příklad posunutí")
+![Příklad posunutí](media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png "Příklad posunutí")
 
 ### <a name="dependency-size"></a>Velikost závislosti
 
-![Příklad velikosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Příklad velikosti")
+![Příklad velikosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png "Příklad velikosti")
 
 ### <a name="self-dependency"></a>Samostatná závislost
 
-![Samostatná závislost](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Samostatná závislost")
+![Samostatná závislost](media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png "Samostatná závislost")
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>Závislost na jiném triggeru bubnového okna
 
 Každodenní úloha zpracování telemetrie v závislosti na dalších denních úlohách, které agreguje výstup posledních sedmi dnů a vygeneruje sedm dní postupných datových proudů oken:
 
-![Příklad závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Příklad závislosti")
+![Příklad závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png "Příklad závislosti")
 
 ### <a name="dependency-on-itself"></a>Závislá na sobě
 
 Denní úloha bez mezer ve výstupních streamech úlohy:
 
-![Příklad samostatné závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Příklad samostatné závislosti")
+![Příklad samostatné závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png "Příklad samostatné závislosti")
 
 ## <a name="monitor-dependencies"></a>Monitorování závislostí
 
-Řetěz závislostí a odpovídající okna můžete monitorovat na stránce monitorování spuštění aktivační události. Přejděte na **monitorování > spuštění aktivační události**. Ve sloupci akce můžete Trigger spustit znovu nebo zobrazit jeho závislosti.
+Řetěz závislostí a odpovídající okna můžete monitorovat na stránce monitorování spuštění aktivační události. Přejděte na  **monitorování > spuštění aktivační události**. Pokud má aktivační událost u bubnového okna závislosti, bude název aktivační události opatřen hypertextovým odkazem na zobrazení monitorování závislostí.  
 
-![Monitorování spuštění aktivační události](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Monitorování spuštění aktivační události")
+![Monitorování spuštění aktivační události](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "Monitorovat spuštění aktivačních událostí – celá okna pro zobrazení závislostí na bubnu")
 
-Pokud kliknete na možnost zobrazit závislosti triggeru, uvidíte stav závislostí. Pokud se jedna z triggerů závislosti nezdaří, je nutné ji úspěšně znovu spustit, aby se spustila závislá aktivační událost. Aktivační událost bubnového okna počká na závislosti po dobu sedmi dnů, než se dokončí časový limit.
+Kliknutím na název aktivační události zobrazíte závislosti aktivačních událostí. Panel na pravé straně zobrazuje podrobné informace o spuštění aktivační události, například RunID, čas okna, stav atd.
 
-![Monitorování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Monitorování závislostí")
+![Monitorovat zobrazení seznamu závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png "Monitorovat zobrazení seznamu závislostí")
+
+Můžete zobrazit stav závislostí a okna jednotlivých závislých triggerů. Pokud jedna z triggerů závislostí neproběhne úspěšně, je nutné ji znovu spustit, aby se spustila závislá aktivační událost.
+
+Aktivační událost bubnového okna počká na závislosti po dobu _sedmi dnů_ , než se dokončí časový limit. Po sedmi dnech se spuštění triggeru nezdaří.
 
 Pokud chcete zobrazit více vizuálů pro zobrazení plánu závislosti triggeru, vyberte zobrazení Ganttova diagramu.
 
-![Monitorování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Monitorování závislostí")
+![Monitorování závislostí Ganttova diagramu](media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png "Zobrazení Ganttova diagramu závislosti monitorování")
+
+Průhledná pole zobrazují okna závislostí pro každou z těchto triggerů závislých na proudu, zatímco plná barevná pole výše ukazují, že se spouští jednotlivá okna. Zde jsou některé tipy pro interpretaci zobrazení Ganttova diagramu:
+
+* Transparentní pole kreslí modrou, když jsou závislá okna v nedokončeném nebo spuštěném stavu.
+* Po úspěšném spuštění všech oken u závislé triggeru se průhledné pole změní na zelenou.
+* Transparentní pole vykreslí červenou, když některé závislé okno selžou. Pokud chcete identifikovat spuštění okna selhání, vyhledejte pevné červené pole.
+
+Chcete-li znovu spustit okno v zobrazení Ganttova diagramu, zaškrtněte políčko plná barva okna a panel akce se zobrazí s podrobnostmi a možností opětovného spuštění
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity Platform iOS a macOS – rychlý Start | Azure
-description: Přečtěte si, jak se přihlašovat uživatelé a dotazy Microsoft Graph v aplikaci pro iOS nebo macOS.
+title: 'Rychlý Start: přidání přihlášení pomocí Microsoftu do aplikace pro iOS nebo macOS | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak se aplikace pro iOS nebo macOS může přihlašovat uživatelům, získat přístupový token z platformy Microsoft identity a volat rozhraní Microsoft Graph API.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,26 +13,29 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d2c5af6aeccfbae0851513ff575bde3c39e3ca5f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115250"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103783"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS nebo macOS
 
-Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak může nativní aplikace pro iOS nebo macOS používat Microsoft Identity Platform k přihlašování osobních, pracovních a školních účtů, získání přístupového tokenu a volání rozhraní Microsoft Graph API.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se může nativní aplikace pro iOS nebo macOS přihlašovat uživatelům a získat přístupový token pro volání rozhraní API pro Microsoft Graph.
 
-Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou potřeba jenom pro aplikace pro iOS. Tyto kroky odvolají, že jsou pouze pro iOS.
+Rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou potřeba jenom pro aplikace iOS a budou se tak uvádět jako takové.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* XCode 10 +
+* iOS 10 +
+* macOS 10.12 +
+
+## <a name="how-the-sample-works"></a>Jak ukázka funguje
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-ios/ios-intro.svg)
-
-> [!NOTE]
-> **Požadavky**
-> * XCode 10 +
-> * iOS 10 +
-> * macOS 10.12 +
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
@@ -42,7 +46,7 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>Možnost 1: registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > K registraci aplikace
-> 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) .
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -51,35 +55,36 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přejděte na stránku [Registrace aplikací](https://aka.ms/MobileAppReg) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->      - V části **název** zadejte smysluplný název aplikace, který se uživatelům aplikace zobrazí při přihlášení nebo souhlasu vaší aplikace.
->      - Přeskočit další konfigurace na této stránce.
->      - Vyberte `Register`.
-> 1. V části **Spravovat** vyberte `Authentication`  >  `Add Platform`  >  `iOS` .
->      - Zadejte ***identifikátor sady prostředků*** pro vaši aplikaci. Identifikátor sady prostředků je pouze jedinečný řetězec, který jedinečně identifikuje vaši aplikaci, například `com.<yourname>.identitysample.MSALMacOS` . Poznamenejte si hodnotu, kterou používáte.
->      - Všimněte si, že konfigurace iOS platí také pro aplikace macOS.
-> 1. `Configure`V tomto rychlém startu vyberte a uložte podrobnosti ***Konfigurace MSAL*** pro později.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.    
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. Vyberte **Zaregistrovat**.
+> 1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**  >  **iOS**.
+> 1. Zadejte **identifikátor sady prostředků** pro vaši aplikaci. Identifikátor sady prostředků je jedinečný řetězec, který jedinečně identifikuje vaši aplikaci, například `com.<yourname>.identitysample.MSALMacOS` . Poznamenejte si hodnotu, kterou používáte. Všimněte si, že konfigurace iOS platí také pro aplikace macOS.
+> 1. Vyberte **Konfigurovat** a uložte podrobnosti **Konfigurace MSAL** pro pozdější v tomto rychlém startu.
+> 1. Vyberte **Hotovo**.
+
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI pro přesměrování, který je kompatibilní s zprostředkovatelem ověřování.
+> Ukázka kódu pro tento rychlý Start funguje tak, že přidá **identifikátor URI pro přesměrování** , který je kompatibilní s zprostředkovatelem ověřování.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-ios/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>Krok 2: stažení ukázkového projektu
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [Stažení ukázky kódu pro iOS]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [Stažení ukázky kódu pro macOS]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>Krok 2: stažení ukázkového projektu
-> 
+>
 > - [Stažení ukázky kódu pro iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [Stažení ukázky kódu pro macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -173,10 +178,10 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `clientId` | ID aplikace z aplikace zaregistrované na webu *portal.azure.com* |
-> | `authority` | Koncový bod Microsoft Identity Platform. Ve většině případů to bude *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Platforma Microsoft identity Ve většině případů to bude `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Identifikátor URI přesměrování aplikace Můžete předat hodnotu Nil a použít výchozí hodnotu nebo vlastní identifikátor URI přesměrování. |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Jenom pro iOS, požadavky na další aplikace
@@ -225,7 +230,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: interaktivní získání tokenu
 
-Některé situace vyžadují, aby uživatelé mohli pracovat s platformou Microsoft identity. V těchto případech může být koncový uživatel muset vybrat svůj účet, zadat jejich přihlašovací údaje nebo vyjádřit souhlas s oprávněními vaší aplikace. Příklad:
+Některé situace vyžadují, aby uživatelé mohli pracovat s platformou Microsoft identity. V těchto případech může být koncový uživatel muset vybrat svůj účet, zadat jejich přihlašovací údaje nebo vyjádřit souhlas s oprávněními vaší aplikace. Třeba
 
 * Při prvním přihlášení uživatele k aplikaci
 * Pokud uživatel resetuje heslo, bude muset zadat své přihlašovací údaje.
@@ -237,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory (tj. `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API ( `api://<Application ID>/access_as_user` ) |
 
@@ -257,18 +262,16 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory (tj. `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API ( `api://<Application ID>/access_as_user` ) |
-> | `account` | Účet, pro který se požaduje token. Tento rychlý Start se týká aplikace s jedním účtem. Pokud chcete vytvořit aplikaci s více účty, budete muset definovat logiku pro identifikaci, který účet se má použít pro žádosti o tokeny pomocí `accountsFromDeviceForParameters:completionBlock:` a předávání správných.`accountIdentifier` |
+> | `account` | Účet, pro který se požaduje token. Tento rychlý Start se týká aplikace s jedním účtem. Pokud chcete vytvořit aplikaci s více účty, budete muset definovat logiku pro identifikaci, který účet se má použít pro žádosti o tokeny pomocí `accountsFromDeviceForParameters:completionBlock:` a předávání správných. `accountIdentifier` |
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si kurz pro iOS a macOS, kde najdete kompletní podrobný průvodce vytvářením aplikací, včetně kompletního vysvětlení tohoto rychlého startu.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Naučte se, jak vytvořit aplikaci používanou v tomto rychlém startu.
+Přejděte k podrobnému kurzu, ve kterém vytvoříte aplikaci pro iOS nebo macOS, která získá přístupový token z platformy Microsoft identity a používá ho k volání rozhraní Microsoft Graph API.
 
 > [!div class="nextstepaction"]
-> [Kurz pro volání Graph API pro iOS a macOS](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS](tutorial-v2-ios.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887692"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728191"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů představuje jednoduchou a efektivní metodu pro zlepšení rychlosti přenosu souborů a zvýšení výkonu načítání stránek tím, že se velikost souboru před odesláním ze serveru zmenší. Komprese souborů může snížit náklady na šířku pásma a zajistit pro uživatele lépe reagující prostředí.
@@ -42,7 +42,7 @@ Existují dva způsoby, jak povolit kompresi souborů:
 
 ### <a name="standard-cdn-profiles"></a>Profily Standard CDN 
 > [!NOTE]
-> Tato část se vztahuje na **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**a **Azure CDN Standard od profilů Akamai** .
+> Tato část se vztahuje na **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** .
 > 
 > 
 
@@ -53,12 +53,12 @@ Existují dva způsoby, jak povolit kompresi souborů:
     Otevře se stránka koncový bod CDN.
 2. Vyberte **Komprese**.
 
-    ![Výběr komprese CDN](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![Snímek obrazovky zobrazuje koncový bod s vybranou kompresí z nabídky portál.](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     Otevře se stránka komprese.
 3. Výběrem **zapnuto** zapnete kompresi.
 
-    ![Možnosti komprese souborů CDN](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![Snímek obrazovky ukazuje zapnutí komprese.](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Použijte výchozí typy MIME nebo upravte seznam přidáním nebo odebráním typů MIME.
 
    > [!TIP]
@@ -113,6 +113,8 @@ Pokud požadavek podporuje více než jeden typ komprese, má komprese brotli p�
 
 Když požadavek na prostředek určuje kompresi gzip a výsledkem požadavku dojde k neúspěšnému přihlášení do mezipaměti, Azure CDN provádí kompresi assetu pomocí metody gzip přímo na serveru POP. Následně bude komprimovaný soubor obsluhován z mezipaměti.
 
+Pokud zdroj pošle komprimovaná data do POP přes CDN pomocí kódování blokového přenosu (CTE), pak se nepodporuje velikosti odpovědí větší než 8MB. 
+
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN z profilů Verizon
 
 Pro **Azure CDN Standard od** profilů Verizon se z Verizon a **Azure CDN Premium** dají komprimovat jenom vhodné soubory. Aby měl soubor nárok na kompresi, musí mít následující:
@@ -139,7 +141,7 @@ Tyto profily podporují pouze kompresní kódování gzip. Když koncový bod pr
 Následující tabulky popisují Azure CDN chování komprese pro každý scénář:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Komprese je zakázaná nebo soubor nemá nárok na kompresi.
-| Formát požadovaný klientem (přes hlavičku Accept-Encoding) | Formát souboru v mezipaměti | Odpověď CDN klientovi | &nbsp; &nbsp; &nbsp; &nbsp; Poznámky &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Formát požadovaný klientem (přes Accept-Encoding záhlaví) | Formát souboru v mezipaměti | Odpověď CDN klientovi | &nbsp; &nbsp; &nbsp; &nbsp; Poznámky &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Komprimované |Komprimované |Komprimované | |
 | Komprimované |Nekomprimovaných |Nekomprimovaných | |
@@ -149,12 +151,12 @@ Následující tabulky popisují Azure CDN chování komprese pro každý scén�
 | Nekomprimovaných |Neuložený v mezipaměti |Nekomprimovaných | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Komprese je povolena a soubor je vhodný pro kompresi
-| Formát požadovaný klientem (přes hlavičku Accept-Encoding) | Formát souboru v mezipaměti | Odpověď CDN klientovi | Poznámky |
+| Formát požadovaný klientem (přes Accept-Encoding záhlaví) | Formát souboru v mezipaměti | Odpověď CDN klientovi | Poznámky |
 | --- | --- | --- | --- |
-| Komprimované |Komprimované |Komprimované |Překóduje síť CDN mezi podporovanými formáty. |
+| Komprimované |Komprimované |Komprimované |Překóduje síť CDN mezi podporovanými formáty. <br/>**Azure CDN od Microsoftu** nepodporuje překódování mezi formáty a místo toho načítá data ze zdroje, komprimuje a ukládá je do mezipaměti odděleně pro formát. |
 | Komprimované |Nekomprimovaných |Komprimované |CDN provede kompresi. |
 | Komprimované |Neuložený v mezipaměti |Komprimované |CDN provede kompresi, pokud zdroj vrátí nekomprimovaný soubor. <br/>**Azure CDN z Verizon** předá tento nekomprimovaný soubor na první požadavek a pak zkomprimuje a uloží soubor do mezipaměti pro následné požadavky. <br/>Soubory s `Cache-Control: no-cache` hlavičkou nejsou nikdy komprimovány. |
-| Nekomprimovaných |Komprimované |Nekomprimovaných |CDN provádí dekompresi. |
+| Nekomprimovaných |Komprimované |Nekomprimovaných |CDN provádí dekompresi. <br/>**Azure CDN od Microsoftu** nepodporuje dekompresi a místo toho načítá data ze zdroje a ukládá je do mezipaměti odděleně pro nekomprimované klienty. |
 | Nekomprimovaných |Nekomprimovaných |Nekomprimovaných | |
 | Nekomprimovaných |Neuložený v mezipaměti |Nekomprimovaných | |
 

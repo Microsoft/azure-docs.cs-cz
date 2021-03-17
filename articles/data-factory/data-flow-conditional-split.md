@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/21/2020
 ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83800089"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Podmíněné transformace rozdělení v toku dat mapování
@@ -47,7 +47,7 @@ Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku rozdělení. Chce
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu je podmíněná transformace rozdělení s názvem `SplitByYear` , která přijímá příchozí datový proud `CleanData` . Tato transformace má dvě podmínky rozdělení `year < 1960` a `year > 1980` . `disjoint`hodnota je false, protože data přecházejí na první podmínku porovnání. Každý řádek, který odpovídá první podmínce, přejde do výstupního proudu `moviesBefore1960` . Všechny zbývající řádky, které odpovídají druhé podmínce, přešly do výstupního datového proudu `moviesAFter1980` . Všechny ostatní řádky přecházejí přes výchozí datový proud `AllOtherMovies` .
+V následujícím příkladu je podmíněná transformace rozdělení s názvem `SplitByYear` , která přijímá příchozí datový proud `CleanData` . Tato transformace má dvě podmínky rozdělení `year < 1960` a `year > 1980` . `disjoint` hodnota je false, protože data přecházejí na první podmínku porovnání. Každý řádek, který odpovídá první podmínce, přejde do výstupního proudu `moviesBefore1960` . Všechny zbývající řádky, které odpovídají druhé podmínce, přešly do výstupního datového proudu `moviesAFter1980` . Všechny ostatní řádky přecházejí přes výchozí datový proud `AllOtherMovies` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

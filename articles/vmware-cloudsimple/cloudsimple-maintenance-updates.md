@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje proces služby CloudSimple pro plánovanou údržbu a aktualizace.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 08/20/2019
+ms.date: 03/09/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cbd708f6c1f5159655099d5d72900ab0c608147
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025023"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522304"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Údržba a aktualizace CloudSimple
 
@@ -40,7 +40,7 @@ CloudSimple také sleduje chyby v nepřetržitém důsledku:
 * Servery
 * Fans
 * Napájení
-* Přepínače
+* přepínače,
 * Porty přepínače
 
 Pokud dojde k chybě disku nebo uzlu, do ovlivněného clusteru VMware se automaticky přidá nový uzel, aby byl okamžitě vrácen do stavu.
@@ -49,7 +49,7 @@ CloudSimple zálohuje, udržuje a aktualizuje tyto prvky VMware v privátních c
 
 * ESXi
 * Služby platformy vCenter
-* Kontrolér
+* Controller
 * Síti vSAN
 * NSX
 
@@ -100,9 +100,9 @@ Mezi aktualizace softwaru patří:
 * **Aktualizace**. Dílčí verze změny komponenty zásobníku VMware.
 * **Upgrady**. Hlavní změna verze komponenty zásobníku VMware.
 
-CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z VMware. V rámci smlouvy SLA CloudSimple zavede opravu zabezpečení do prostředí privátního cloudu za týden.
+CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z VMware. 
 
-CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.
+Zdokumentováná řešení VMware se implementují místo instalace odpovídající opravy, dokud nebudou nasazené další plánované aktualizace. 
 
 ## <a name="next-steps"></a>Další kroky
 

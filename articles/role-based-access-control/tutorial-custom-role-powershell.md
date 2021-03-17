@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735585"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369238"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Aktualizace vlastní role
 > * Odstranění vlastní role
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ Přihlaste se k [Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinovanou rolí, upravit ji a pak vytvořit novou roli.
 
-1. V PowerShellu použijte k získání seznamu operací pro poskytovatele prostředků Microsoft. support příkaz [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Je užitečné znát operace, které máte k dispozici k vytváření oprávnění. Seznam všech operací najdete také v tématu [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md#microsoftsupport).
+1. V PowerShellu použijte k získání seznamu operací pro poskytovatele prostředků Microsoft. support příkaz [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Je užitečné znát operace, které máte k dispozici k vytváření oprávnění. Můžete také zobrazit seznam všech operací v [operacích poskytovatele prostředků Azure](resource-provider-operations.md#microsoftsupport).
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
@@ -221,7 +221,7 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. Chcete-li `PSRoleDefintion` použít objekt k aktualizaci vlastní role, nejprve použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) , abyste získali roli.
+1. Chcete-li použít `PSRoleDefintion` objekt k aktualizaci vlastní role, nejprve použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) , abyste získali roli.
 
     ```azurepowershell
     $role = Get-AzRoleDefinition "Reader Support Tickets"

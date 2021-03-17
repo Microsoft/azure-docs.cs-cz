@@ -5,15 +5,15 @@ description: Naučte se konfigurovat zásady firewallu webových aplikací pro j
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 01/24/2020
+ms.date: 12/09/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: how-to
+ms.openlocfilehash: ef4337b187500695d9ef1c0b896d6ae8b5663ca6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143933"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938847"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurace zásad WAF pro jednotlivé lokality pomocí Azure PowerShell
 
@@ -25,14 +25,13 @@ Použitím zásad WAF pro naslouchací proces můžete nakonfigurovat nastavení
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření zásady WAF
-> * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Použijte globálně zásadu WAF, pro jednotlivé lokality a pro identifikátor URI (Preview).
-> * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvoření účtu úložiště a konfigurace diagnostiky
-> * Otestování aplikační brány
+* Nastavit síť
+* Vytvoření zásady WAF
+* Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
+* Použití globálně WAF zásad, pro jednotlivé lokality a pro identifikátor URI 
+* Vytvoření škálovací sady virtuálních počítačů
+* Vytvoření účtu úložiště a konfigurace diagnostiky
+* Otestování aplikační brány
 
 ![Příklad firewallu webových aplikací](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
@@ -145,23 +144,23 @@ $rule = New-AzApplicationGatewayFirewallCustomRule -Name globalAllow -Priority 5
 
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
 $condition1 = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable1 -Operator Contains -MatchValue "globalBlock" 
-$rule1 = New-AzApplicationGatewayFirewallCustomRule -Name globalAllow -Priority 10 -RuleType MatchRule -MatchCondition $condition1 -Action Block
+$rule1 = New-AzApplicationGatewayFirewallCustomRule -Name globalBlock -Priority 10 -RuleType MatchRule -MatchCondition $condition1 -Action Block
 
 $variable2 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
 $condition2 = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable2 -Operator Contains -MatchValue "siteAllow" 
-$rule2 = New-AzApplicationGatewayFirewallCustomRule -Name globalAllow -Priority 5 -RuleType MatchRule -MatchCondition $condition2 -Action Allow
+$rule2 = New-AzApplicationGatewayFirewallCustomRule -Name siteAllow -Priority 5 -RuleType MatchRule -MatchCondition $condition2 -Action Allow
 
 $variable3 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
 $condition3 = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable3 -Operator Contains -MatchValue "siteBlock" 
-$rule3 = New-AzApplicationGatewayFirewallCustomRule -Name globalAllow -Priority 10 -RuleType MatchRule -MatchCondition $condition3 -Action Block
+$rule3 = New-AzApplicationGatewayFirewallCustomRule -Name siteBlock -Priority 10 -RuleType MatchRule -MatchCondition $condition3 -Action Block
 
 $variable4 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
 $condition4 = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable4 -Operator Contains -MatchValue "URIAllow" 
-$rule4 = New-AzApplicationGatewayFirewallCustomRule -Name globalAllow -Priority 5 -RuleType MatchRule -MatchCondition $condition4 -Action Allow
+$rule4 = New-AzApplicationGatewayFirewallCustomRule -Name URIAllow -Priority 5 -RuleType MatchRule -MatchCondition $condition4 -Action Allow
 
 $variable5 = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
 $condition5 = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable5 -Operator Contains -MatchValue "URIBlock" 
-$rule5 = New-AzApplicationGatewayFirewallCustomRule -Name globalAllow -Priority 10 -RuleType MatchRule -MatchCondition $condition5 -Action Block
+$rule5 = New-AzApplicationGatewayFirewallCustomRule -Name URIBlock -Priority 10 -RuleType MatchRule -MatchCondition $condition5 -Action Block
 
 $policySettingGlobal = New-AzApplicationGatewayFirewallPolicySetting `
   -Mode Prevention `
@@ -250,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a>Použití zásad pro identifikátor URI (Preview)
+### <a name="apply-a-per-uri-policy"></a>Použití zásad pro identifikátor URI
 
 Pokud chcete použít zásadu pro identifikátor URI, stačí vytvořit novou zásadu a použít ji na konfiguraci pravidla cesty. 
 
@@ -290,12 +289,14 @@ Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw `
   -Name "RequestRoutingRule" `
   -RuleType PathBasedRouting `
   -HttpListener $siteListener `
-  -UrlPathMapId $URLPathMap.Id
+  -UrlPathMap $URLPathMap
 ```
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
 V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně bude poskytovat servery pro back-endový fond. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+
+Nahraďte své vlastní hodnoty pro `-AdminUsername` a `-AdminPassword` .
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -307,12 +308,12 @@ $appgw = Get-AzApplicationGateway `
   -Name myAppGateway
 
 $backendPool = Get-AzApplicationGatewayBackendAddressPool `
-  -Name defaultPool `
+  -Name appGatewayBackendPool `
   -ApplicationGateway $appgw
 
 $ipConfig = New-AzVmssIpConfig `
   -Name myVmssIPConfig `
-  -SubnetId $vnet.Subnets[1].Id `
+  -SubnetId $vnet.Subnets[0].Id `
   -ApplicationGatewayBackendAddressPoolsId $backendPool.Id
 
 $vmssConfig = New-AzVmssConfig `
@@ -329,8 +330,8 @@ Set-AzVmssStorageProfile $vmssConfig `
   -OsDiskCreateOption FromImage
 
 Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername azureuser `
-  -AdminPassword "Azure123456!" `
+  -AdminUsername <username> `
+  -AdminPassword <password> `
   -ComputerNamePrefix myvmss
 
 Add-AzVmssNetworkInterfaceConfiguration `
@@ -398,7 +399,7 @@ $store = Get-AzStorageAccount `
 Set-AzDiagnosticSetting `
   -ResourceId $appgw.Id `
   -StorageAccountId $store.Id `
-  -Categories ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
+  -Category ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
   -Enabled $true `
   -RetentionEnabled $true `
   -RetentionInDays 30

@@ -1,6 +1,6 @@
 ---
 title: Návrh hybridní identity – strategie přijetí Azure | Microsoft Docs
-description: Při použití řízení podmíněného přístupu Azure Active Directory kontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci. Po splnění těchto podmínek bude uživatel ověřený a povolený přístup k aplikaci.
+description: Díky řízení podmíněného přístupu Azure AD kontroluje konkrétní podmínky, které vyberete při ověřování uživatele, a před povolením přístupu k aplikaci.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555381"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836185"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definice strategie přijetí hybridní identity
 V této úloze definujete strategii přijetí hybridní identity pro vaše řešení hybridní identity, která bude vyhovovat obchodním požadavkům, které byly popsané v tématu:
@@ -32,7 +32,7 @@ V této úloze definujete strategii přijetí hybridní identity pro vaše řeš
 * [Určení požadavků na službu Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>Definování strategie obchodních potřeb
-První úkol řeší obchodní potřeby organizace.  To může být velmi široké a v případě, že nebudete opatrní, může dojít k nárůstu rozsahu.  Na začátku mějte jednoduché, ale vždycky nezapomeňte naplánovat návrh, který bude přizpůsoben a v budoucnu usnadňuje změnu.  Bez ohledu na to, jestli se jedná o jednoduchý návrh nebo extrémně složitou, Azure Active Directory je platforma Microsoftu identity, která podporuje Office 365, online služby Microsoftu a aplikace pracující s cloudem.
+První úkol řeší obchodní potřeby organizace.  To může být velmi široké a v případě, že nebudete opatrní, může dojít k nárůstu rozsahu.  Na začátku mějte jednoduché, ale vždycky nezapomeňte naplánovat návrh, který bude přizpůsoben a v budoucnu usnadňuje změnu.  Bez ohledu na to, jestli se jedná o jednoduchý návrh nebo extrémně složitou, Azure Active Directory je platforma pro identity Microsoftu, která podporuje Microsoft 365, online služby Microsoftu a aplikace pracující s cloudem.
 
 ## <a name="define-an-integration-strategy"></a>Definování strategie integrace
 Společnost Microsoft má tři hlavní scénáře integrace, které jsou cloudové identity, synchronizované identity a federované identity.  Měli byste naplánovat přijetí jedné z těchto strategií integrace.  Strategie, kterou si zvolíte, se může lišit a rozhodnutí o jejich výběru může zahrnovat, jaký typ uživatelského prostředí chcete poskytnout, jak máte stávající infrastrukturu a jaké jsou náklady na maximum.  
@@ -55,7 +55,7 @@ Následující tabulka vám pomůže určit výhody a nevýhody každé z násle
 | Strategie | Výhody | Nevýhody |
 | --- | --- | --- |
 | **Cloudové identity** |Jednodušší Správa v malých organizacích. <br> Není nic k místní instalaci. Není potřeba žádný další hardware.<br>Snadno zakázané, pokud uživatel odejde ze společnosti |Uživatelé se budou muset přihlásit při přístupu k úlohám v cloudu. <br> Hesla můžou nebo nemusí být stejná pro cloudové a místní identity. |
-| **Shoda** |Místní heslo ověřuje místní i cloudové adresáře. <br>Jednodušší Správa pro malé, střední nebo velké organizace <br>Uživatelé můžou mít pro některé prostředky jednotné přihlašování (SSO). <br> Upřednostňovaná metoda pro synchronizaci Microsoftu <br> Jednodušší Správa |Někteří zákazníci se můžou zdráhají synchronizovat své adresáře s použitím zásad konkrétní společnosti v cloudu. |
+| **Shoda** |Místní heslo ověřuje místní i cloudové adresáře. <br>Jednodušší Správa pro malé, střední nebo velké organizace <br>Uživatelé můžou mít pro některé prostředky jednotné přihlašování (SSO). <br> Upřednostňovaná metoda pro synchronizaci Microsoftu <br> Jednodušší Správa |Někteří zákazníci se můžou zdráhají synchronizovat své adresáře s konkrétními podnikovými zásadami, které jsou v cloudu splatné. |
 | **Federovaní** |Uživatelé můžou mít jednotné přihlašování (SSO). <br>Pokud je uživatel ukončený nebo opustí, může být účet okamžitě zakázán a přístup odvolaný,<br> Podporuje pokročilé scénáře, které se nedají provést synchronizovaným |Další kroky k nastavení a konfiguraci <br> Vyšší údržba <br> Může vyžadovat další hardware pro infrastrukturu STS. <br> Může vyžadovat další hardware pro instalaci federačního serveru. Pokud se používá AD FS, vyžaduje se další software. <br> Vyžadovat rozsáhlou instalaci jednotného přihlašování <br> Kritický bod selhání v případě výpadku federačního serveru, uživatelé se nebudou moci ověřit |
 
 ### <a name="client-experience"></a>Možnosti klienta
@@ -82,7 +82,7 @@ Strategii, kterou použijete, se projeví při přihlašování uživatelů.  N�
 
 Pokud jste zjistili z úlohy 1, kterou máte IdP třetí strany, nebo ji použijete k zajištění federace se službou Azure AD, musíte mít na paměti následující podporované možnosti:
 
-* Ověřování ve službě Azure AD a přidružených aplikacích může podporovat libovolný poskytovatel SAML 2,0, který je kompatibilní s profilem SP-Lite.
+* Jakékoli poskytovatele SAML 2,0, který je kompatibilní s profilem SP-Lite, může podporovat ověřování u služby Azure AD a přidružených aplikací.
 * Podporuje pasivní ověřování, které usnadňuje ověřování pro aplikaci OWA, SPO atd.
 * Klienti Exchange Online se můžou podporovat přes Rozšířený profil klienta SAML 2,0 (ECP).
 
@@ -171,12 +171,12 @@ Následující možnost není podporována a neměla by být vybrána jako imple
 * Adresáře Azure AD jsou v izolovaném designu. Změna konfigurace Azure AD Connect synchronizace pro čtení dat z jiného adresáře služby Azure AD se nezdařila při pokusu o vytvoření společného a sjednoceného globálního globálního adresáře mezi adresáři. Také se nedoporučuje exportovat uživatele jako kontakty do jiné místní služby AD pomocí Azure AD Connect synchronizace.
 
 > [!NOTE]
-> Pokud vaše organizace omezuje počítače v síti tak, aby se připojovaly k Internetu, v tomto článku jsou uvedené koncové body (rozsahy názvů FQDN, IPv4 a IPv6), které byste měli zahrnout do seznamů odchozích povolení a důvěryhodných lokalit v Internet Exploreru klientských počítačů, aby bylo zajištěno, že vaše počítače budou moci úspěšně používat sadu Office 365. Další informace najdete v tématu [adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
+> Pokud vaše organizace omezuje počítače v síti tak, aby se připojovaly k Internetu, v tomto článku jsou uvedeny koncové body (plně kvalifikované názvy domén, IPv4 a rozsahy adres IPv6), které byste měli zahrnout do seznamů odchozích povolení a důvěryhodných lokalit v Internet Exploreru klientských počítačů, aby bylo zajištěno, že vaše počítače budou moci úspěšně používat Microsoft 365. Další informace najdete v tématu [adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
 > 
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>Definování strategie Multi-Factor Authentication
-V tomto úkolu definujete strategii Multi-Factor Authentication, která se bude používat.  Azure Multi-Factor Authentication se dodává ve dvou různých verzích.  Jedna je cloudová a druhá v místním prostředí založená na Azure MFA serveru.  Na základě hodnocení, které jste použili výše, můžete určit, které řešení je pro vaši strategii správné.  Pomocí následující tabulky určete, která možnost návrhu nejlépe splňuje požadavky zabezpečení vaší společnosti:
+V tomto úkolu definujete strategii Multi-Factor Authentication, která se bude používat.  Azure AD Multi-Factor Authentication se dodává ve dvou různých verzích.  Jedna je cloudová a druhá v místním prostředí založená na Azure MFA serveru.  Na základě hodnocení, které jste použili výše, můžete určit, které řešení je pro vaši strategii správné.  Pomocí následující tabulky určete, která možnost návrhu nejlépe splňuje požadavky zabezpečení vaší společnosti:
 
 Možnosti pro Multi-Factor design:
 

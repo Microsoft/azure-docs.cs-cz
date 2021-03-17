@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292165"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200749"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvoření síťových karet a použití interního serveru DNS pro překlad názvů virtuálních počítačů v Azure
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak nastavit statické interní názvy DNS pro vir
 Požadavky:
 
 * [účet Azure](https://azure.microsoft.com/pricing/free-trial/)
-* [Soubory veřejného a privátního klíče SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Soubory veřejného a privátního klíče SSH](mac-create-ssh-keys.md)
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 Pokud potřebujete úkol rychle provést, v následující části najdete podrobné informace o požadovaných příkazech. Podrobnější informace a kontext pro každý krok najdete ve zbývající části dokumentu, [začněte tady](#detailed-walkthrough). K provedení těchto kroků potřebujete mít nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
@@ -71,7 +71,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-Dalším krokem je vytvoření virtuální sítě, do které se virtuální počítače spustí. Virtuální síť obsahuje jednu podsíť pro tento návod. Další informace o virtuálních sítích Azure najdete v tématu [vytvoření virtuální sítě](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
+Dalším krokem je vytvoření virtuální sítě, do které se virtuální počítače spustí. Virtuální síť obsahuje jednu podsíť pro tento návod. Další informace o virtuálních sítích Azure najdete v tématu [vytvoření virtuální sítě](../../virtual-network/manage-virtual-network.md#create-a-virtual-network). 
 
 Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť s názvem `myVnet` a podsítí s názvem `mySubnet` :
 
@@ -85,7 +85,7 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
-Skupiny zabezpečení sítě Azure jsou ekvivalentní bráně firewall ve vrstvě sítě. Další informace o skupinách zabezpečení sítě najdete v tématu [Vytvoření skupin zabezpečení sítě v rozhraní příkazového řádku Azure](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Skupiny zabezpečení sítě Azure jsou ekvivalentní bráně firewall ve vrstvě sítě. Další informace o skupinách zabezpečení sítě najdete v tématu [Vytvoření skupin zabezpečení sítě v rozhraní příkazového řádku Azure](../../virtual-network/tutorial-filter-network-traffic-cli.md). 
 
 Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup` :
 
@@ -157,5 +157,5 @@ az vm create \
 Když použijete příznaky rozhraní příkazového řádku pro volání stávajících prostředků, podáváme Azure, aby virtuální počítač nasadil do stávající sítě. Aby se opakovala, po nasazení virtuální sítě a podsítě můžou být v rámci oblasti Azure ponechány jako statické nebo trvalé prostředky.  
 
 ## <a name="next-steps"></a>Další kroky
-* [Přímé vytvoření vlastního prostředí pro virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* [Vytvoření virtuálního počítače se systémem Linux v Azure pomocí šablon](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Přímé vytvoření vlastního prostředí pro virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI](create-cli-complete.md).
+* [Vytvoření virtuálního počítače se systémem Linux v Azure pomocí šablon](create-ssh-secured-vm-from-template.md)

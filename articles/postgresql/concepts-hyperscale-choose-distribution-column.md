@@ -1,22 +1,22 @@
 ---
 title: Výběr distribučních sloupců – Citus (Velká měřítko) – Azure Database for PostgreSQL
-description: Naučte se, jak vybrat distribuční sloupce v běžných scénářích Azure Database for PostgreSQL.
+description: Naučte se, jak vybrat distribuční sloupce v běžných scénářích Azure Database for PostgreSQL – Citus (škálování).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975665"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929332"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
 
-Volba sloupce pro distribuci jednotlivých tabulek je jedním z nejdůležitějších rozhodnutí o modelování, která provedete. Azure Database for PostgreSQL – Citus () ukládá řádky v horizontálních oddílů na základě hodnoty distribučního sloupce řádky.
+Výběr distribučního sloupce tabulky představuje jedno z nejdůležitějších rozhodnutí při modelování. Azure Database for PostgreSQL – Citus () ukládá řádky v horizontálních oddílů na základě hodnoty distribučního sloupce řádky.
 
 Správné skupiny voleb vztahující se k datům společně na stejných fyzických uzlech, které urychlují dotazy a přidávají podporu pro všechny funkce SQL. Nesprávná volba způsobí, že systém pracuje pomalu a nepodporuje všechny funkce SQL napříč uzly.
 
@@ -71,8 +71,6 @@ Nejběžnější Chyba při modelování informací o datové řadě v Citus () 
 
 -   **Nevybírejte jako distribuční sloupec časové razítko.** Vyberte jiný distribuční sloupec. V aplikaci s více klienty použijte ID tenanta nebo v aplikaci v reálném čase použijte ID entity.
 -   **Místo toho použijte dělení tabulky PostgreSQL.** Pomocí dělení tabulky můžete rozdělit velkou tabulku časově uspořádaných dat do několika zděděných tabulek s každou tabulkou, která obsahuje různé časové rozsahy. Distribuce tabulky Postgres-partition v Citus () vytvoří horizontálních oddílů pro zděděné tabulky.
-
-Příklad vytvoření tohoto typu aplikace najdete v [kurzu pro časovou řadu](https://aka.ms/hyperscale-tutorial-timeseries) .
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak společné [umístění](concepts-hyperscale-colocation.md) mezi distribuovanými daty pomáhá rychle spustit dotazy.

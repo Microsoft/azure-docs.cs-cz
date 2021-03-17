@@ -1,22 +1,20 @@
 ---
 title: Vytvoření Azure Data Factory pomocí šablony Azure Resource Manager (šablona ARM)
 description: Vytvoření ukázkového Azure Data Factory kanálu pomocí šablony Azure Resource Manager (šablona ARM).
-services: data-factory
 ms.service: data-factory
 tags: azure-resource-manager
-ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283890"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373840"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rychlý Start: vytvoření Azure Data Factory pomocí šablony ARM
 
@@ -110,7 +108,7 @@ Další příklady šablon Azure Data Factory najdete v [galerii šablon rychlý
     1. Na stránce **kontejnery** vyberte kontejner objektů blob, který jste vytvořili.
         1. Název kontejneru objektů BLOB je v objektu Format-BLOB \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Kontejner objektů BLOB":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Kontejner objektů blob":::
 
 ### <a name="upload-a-file"></a>Nahrání souboru
 
@@ -148,7 +146,7 @@ Nechejte stránku kontejneru otevřenou, protože ji můžete použít k ověře
 
     :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Trigger":::
 
-5. V pravém podokně v části **spuštění kanálu**vyberte **OK**.
+5. V pravém podokně v části **spuštění kanálu** vyberte **OK**.
 
 ### <a name="monitor-the-pipeline"></a>Monitorování kanálu
 

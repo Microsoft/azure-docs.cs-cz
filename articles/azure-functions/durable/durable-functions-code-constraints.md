@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726406"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Omezení kódu funkce nástroje Orchestrator
 
@@ -30,18 +30,19 @@ V následující tabulce jsou uvedeny příklady rozhraní API, se kterými byst
 
 | Kategorie rozhraní API | Důvod | Alternativní řešení |
 | ------------ | ------ | ---------- |
-| Data a časy  | Rozhraní API, která vrací aktuální datum nebo čas, jsou nedeterministické, protože vrácená hodnota je pro každé přehrání jiná. | Použijte `CurrentUtcDateTime` rozhraní API v rozhraní .NET nebo `currentUtcDateTime` rozhraní API v JavaScriptu, které je bezpečné pro opětovné přehrání. |
-| GUID a identifikátory UUID  | Rozhraní API, která vracejí náhodný identifikátor GUID nebo UUID, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | `NewGuid` `newGuid` K bezpečnému generování NÁHODných identifikátorů GUID použijte v rozhraní .NET nebo v JavaScriptu. |
+| Data a časy  | Rozhraní API, která vrací aktuální datum nebo čas, jsou nedeterministické, protože vrácená hodnota je pro každé přehrání jiná. | Použijte vlastnost [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) v rozhraní .NET, `currentUtcDateTime` rozhraní API v JavaScriptu nebo `current_utc_datetime` rozhraní API v Pythonu, které je bezpečné pro opětovné přehrání. |
+| GUID a identifikátory UUID  | Rozhraní API, která vracejí náhodný identifikátor GUID nebo UUID, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Pomocí [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) můžete v prostředí .NET, `newGuid` v JavaScriptu a `new_guid` v Pythonu bezpečně Generovat náhodné identifikátory GUID. |
 | Náhodná čísla | Rozhraní API, která vrací náhodná čísla, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Použijte funkci aktivity k vrácení náhodných čísel do orchestrace. Vrácené hodnoty funkcí aktivity jsou pro opětovné přehrání vždy bezpečné. |
 | Vazby | Vstupní a výstupní vazby obvykle dělají vstupně-výstupní operace a jsou nedeterministické. Funkce Orchestrator nesmí přímo používat ani [klient orchestrace](durable-functions-bindings.md#orchestration-client) a vazby [klienta entit](durable-functions-bindings.md#entity-client) . | Použijte vstupní a výstupní vazby v rámci funkcí klienta nebo aktivity. |
 | Síť | Síťová volání zahrnují externí systémy a nedeterministické. | K zajištění síťových volání použijte funkce aktivity. Pokud potřebujete provést volání HTTP z funkce Orchestrator, můžete použít také [trvalá rozhraní API http](durable-functions-http-features.md#consuming-http-apis). |
-| Blokující rozhraní API | Blokování rozhraní API jako `Thread.Sleep` v rozhraní .NET a podobných rozhraní API může způsobit problémy s výkonem a škálováním pro funkce nástroje Orchestrator a je třeba se jim vyhnout. V plánu Azure Functions spotřeby můžou dokonce vést k zbytečným poplatkům za modul runtime. | Používejte alternativy k blokování rozhraní API, když jsou k dispozici. Například použijte `CreateTimer` k zavedení zpoždění při provádění orchestrace. [Trvalá zpoždění časovače](durable-functions-timers.md) se nepočítají směrem k době provádění funkce Orchestrator. |
-| Asynchronní rozhraní API | Kód Orchestrator nesmí spustit žádnou asynchronní operaci s výjimkou použití rozhraní `IDurableOrchestrationContext` API nebo `context.df` rozhraní API objektu. Například nemůžete použít `Task.Run` , `Task.Delay` , a `HttpClient.SendAsync` v rozhraní .NET nebo `setTimeout` a `setInterval` v jazyce JavaScript. Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně. Nemůže komunikovat s jinými vlákny, které by mohly být volány jinými asynchronními rozhraními API. | Funkce Orchestrator by měla dělat jenom trvalá asynchronní volání. Funkce aktivity by měly provádět jakákoli další asynchronní volání rozhraní API. |
-| Asynchronní funkce JavaScriptu | Funkce nástroje JavaScript Orchestrator nelze deklarovat jako, `async` protože modul runtime node.js nezaručuje, že asynchronní funkce budou deterministické. | Deklarujete funkce nástroje JavaScript Orchestrator jako synchronní funkce generátoru. |
+| Blokující rozhraní API | Blokování rozhraní API jako `Thread.Sleep` v rozhraní .NET a podobných rozhraní API může způsobit problémy s výkonem a škálováním pro funkce nástroje Orchestrator a je třeba se jim vyhnout. V plánu Azure Functions spotřeby můžou dokonce vést k zbytečným poplatkům za modul runtime. | Používejte alternativy k blokování rozhraní API, když jsou k dispozici. Například použijte  `CreateTimer` k zavedení zpoždění při provádění orchestrace. [Trvalá zpoždění časovače](durable-functions-timers.md) se nepočítají směrem k době provádění funkce Orchestrator. |
+| Asynchronní rozhraní API | Kód Orchestrator nesmí spustit žádnou asynchronní operaci s výjimkou použití `IDurableOrchestrationContext` rozhraní API, `context.df` rozhraní API v JavaScriptu nebo `context` rozhraní API v Pythonu. Například nemůžete použít `Task.Run` , `Task.Delay` , a `HttpClient.SendAsync` v rozhraní .NET nebo `setTimeout` a `setInterval` v jazyce JavaScript. Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně. Nemůže komunikovat s jinými vlákny, které by mohly být volány jinými asynchronními rozhraními API. | Funkce Orchestrator by měla dělat jenom trvalá asynchronní volání. Funkce aktivity by měly provádět jakákoli další asynchronní volání rozhraní API. |
+| Asynchronní funkce JavaScriptu | Funkce nástroje JavaScript Orchestrator nelze deklarovat jako, `async` protože modul runtime node.js nezaručuje, že asynchronní funkce budou deterministické. | Deklarace funkcí nástroje JavaScript Orchestrator jako synchronních funkcí generátoru |
+| Mikrorutiny Pythonu | Funkce Python Orchestrator nelze deklarovat jako korutiny, tj. deklarujete je pomocí `async` klíčového slova, protože sémantika korutiny není zarovnána s modelem opětovného přehrání Durable Functions. | Deklarovat funkce Pythonu Orchestrator jako generátory, což znamená, že byste měli očekávat, že `context` rozhraní API bude používat `yield` místo `await` .   |
 | Rozhraní API pro dělení na vlákna | Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně a nemůže pracovat s jinými vlákny. Zavedení nových vláken do provádění orchestrace může vést k nedeterministickému spuštění nebo zablokování. | Funkce Orchestrator by téměř nikdy neměly používat rozhraní API pro dělení na vlákna. Například v rozhraní .NET Vyhněte se použití `ConfigureAwait(continueOnCapturedContext: false)` ; tím zajistíte, že budou pokračování úlohy spuštěny na původní funkci nástroje Orchestrator `SynchronizationContext` . Pokud jsou taková rozhraní API nezbytná, omezte jejich použití jenom na funkce aktivity. |
 | Statické proměnné | Nepoužívejte nekonstantní statické proměnné ve funkcích nástroje Orchestrator, protože jejich hodnoty se mohou v průběhu času měnit, což vede k nedeterministickému chování za běhu. | Použijte konstanty nebo omezte použití statických proměnných na funkce aktivity. |
 | Proměnné prostředí | Nepoužívejte proměnné prostředí ve funkcích nástroje Orchestrator. Jejich hodnoty se můžou v průběhu času měnit, což vede k nedeterministickému chování za běhu. | Na proměnné prostředí se musí odkazovat jenom v rámci funkcí klienta nebo funkcí aktivity. |
-| Nekonečné smyčky | Vyhněte se nekonečným smyčkám ve funkcích nástroje Orchestrator. Vzhledem k tomu, že architektura trvalého úlohy ukládá historii spouštění, protože funkce orchestrace pokračuje, nekonečná smyčka může způsobit nedostatek paměti z důvodu instance nástroje Orchestrator. | V případě scénářů nekonečné smyčky použijte rozhraní API jako `ContinueAsNew` v rozhraní .NET nebo `continueAsNew` v JavaScriptu k restartování funkce a k zahození předchozí historie spouštění. |
+| Nekonečné smyčky | Vyhněte se nekonečným smyčkám ve funkcích nástroje Orchestrator. Vzhledem k tomu, že architektura trvalého úlohy ukládá historii spouštění, protože funkce orchestrace pokračuje, nekonečná smyčka může způsobit nedostatek paměti z důvodu instance nástroje Orchestrator. | V případě scénářů nekonečné smyčky používejte rozhraní API jako `ContinueAsNew` v rozhraní .NET, `continueAsNew` v jazyce JavaScript nebo `continue_as_new` v Pythonu k restartování funkce a k zahození předchozí historie spouštění. |
 
 I když použití těchto omezení může být v prvé době obtížné, v praxi je budete moct snadno sledovat.
 
@@ -56,7 +57,7 @@ Trvalá orchestrace může běžet nepřetržitě pro dny, měsíce, roky nebo d
 > [!NOTE]
 > Tato část popisuje interní implementace podrobností o trvalém rozhraní úlohy. Nemusíte-li znát tyto informace, můžete použít trvalé funkce. Je určena jenom k tomu, aby vám pomohla pochopit chování při přehrávání.
 
-Úlohy, které můžou bezpečně čekat na funkce nástroje Orchestrator, se občas označují jako *odolné úkoly*. Rozhraní odolné úlohy vytváří a spravuje tyto úlohy. Příklady jsou úlohy vracené **CallActivityAsync**, **WaitForExternalEvent**a **CreateTimer** ve funkcích .NET Orchestrator.
+Úlohy, které můžou bezpečně čekat na funkce nástroje Orchestrator, se občas označují jako *odolné úkoly*. Rozhraní odolné úlohy vytváří a spravuje tyto úlohy. Příklady jsou úlohy vracené **CallActivityAsync**, **WaitForExternalEvent** a **CreateTimer** ve funkcích .NET Orchestrator.
 
 Tyto odolné úkoly jsou interně spravovány seznamem `TaskCompletionSource` objektů v rozhraní .NET. Během opakovaného přehrávání se tyto úkoly vytvoří v rámci provádění kódu Orchestrator. Jsou dokončeny, protože dispečer vytvoří výčet odpovídajících událostí historie.
 

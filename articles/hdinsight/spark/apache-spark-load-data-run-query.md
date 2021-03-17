@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: načtení dat & spouštění dotazů s využitím Apache Spark-Azure HDInsight'
 description: Kurz – Naučte se načítat data a spouštět interaktivní dotazy na clusterech Spark v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77198884"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930088"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
 
@@ -28,17 +25,17 @@ V tomto kurzu se naučíte:
 
 Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-## <a name="create-a-jupyter-notebook"></a>Vytvoření poznámkového bloku Jupyter
+## <a name="create-a-jupyter-notebook"></a>Vytvoříte poznámkový blok Jupyter Notebooks.
 
 Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s textem markdownu a provádět jednoduché vizualizace.
 
-1. Upravte adresu URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` tak, `SPARKCLUSTER` že nahradíte název vašeho clusteru Spark. Pak zadejte upravenou adresu URL do webového prohlížeče. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
+1. Upravte adresu URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` tak, že nahradíte `SPARKCLUSTER` název vašeho clusteru Spark. Pak zadejte upravenou adresu URL do webového prohlížeče. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
 
-2. Z webové stránky Jupyter vyberte **Nový** > **PySpark** a vytvořte Poznámkový blok.
+2. Z webové stránky Jupyter vyberte **Nový**  >  **PySpark** a vytvořte Poznámkový blok.
 
    ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
 
-   Vytvoří se nový Poznámkový blok a otevře se s názvem bez názvu`Untitled.ipynb`().
+   Vytvoří se nový Poznámkový blok a otevře se s názvem bez názvu ( `Untitled.ipynb` ).
 
     > [!NOTE]  
     > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
@@ -49,7 +46,7 @@ Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzd
 
 ![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
 
-1. Vložte následující kód do prázdné buňky Jupyter poznámkového bloku a stisknutím klávesy **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
+1. Vložte následující kód do prázdné buňky Jupyter Notebook a stisknutím kláves **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
 
     ```python
     from pyspark.sql import *
@@ -60,7 +57,7 @@ Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzd
 
     ![Stav interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stav interaktivního dotazu Spark SQL")
 
-1. Všimněte si vráceného ID relace. Z obrázku výše je ID relace 0. V případě potřeby můžete načíst podrobnosti o relaci tak, že přejdete `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` na místo, kde název_clusteru je název vašeho clusteru Spark a ID je číslo ID vaší relace.
+1. Všimněte si vráceného ID relace. Z obrázku výše je ID relace 0. V případě potřeby můžete načíst podrobnosti o relaci tak, že přejdete na `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` místo, kde název_clusteru je název vašeho clusteru Spark a ID je číslo ID vaší relace.
 
 1. Spuštěním následujícího kódu vytvořte datový rámec a dočasnou tabulku (**hvac**).
 
@@ -89,9 +86,9 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
     ![Plošný graf interaktivního dotazu Spark – výsledek](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf interaktivního dotazu Spark – výsledek")
 
-3. V řádku nabídek poznámkového bloku přejděte na **soubor** > **Uložit a kontrolní bod**.
+3. V řádku nabídek poznámkového bloku přejděte na **soubor**  >  **Uložit a kontrolní bod**.
 
-4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor** >  **Zavřít a**zastavte.
+4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor**  >   **Zavřít a** zastavte.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

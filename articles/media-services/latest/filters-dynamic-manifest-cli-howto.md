@@ -1,44 +1,44 @@
 ---
-title: Pomocí rozhraní příkazového řádku můžete vytvářet filtry s Azure Media Services | Microsoft Docs
+title: Pomocí rozhraní příkazového řádku můžete vytvářet filtry pomocí Azure Media Services
 description: V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku vytvořit filtry s Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 54e99c645b93bfcb3aee4e81cef3b2b5d6589d95
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023207"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211460"
 ---
-# <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
+# <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku
 
-Při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) může váš klient potřebovat větší flexibilitu než to, co je popsáno v souboru manifestu výchozího prostředku. Azure Media Services vám umožní definovat filtry účtu a filtry assetů pro váš obsah. 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) může váš klient potřebovat větší flexibilitu než to, co je popsáno v souboru manifestu výchozího prostředku. Azure Media Services vám umožní definovat filtry účtu a filtry assetů pro váš obsah.
 
 Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
 
-V tomto tématu se dozvíte, jak nakonfigurovat filtr pro Asset na vyžádání a pomocí rozhraní příkazového řádku Media Services V3 vytvořit [filtry účtu](/cli/azure/ams/account-filter?view=azure-cli-latest) a [filtry assetů](/cli/azure/ams/asset-filter?view=azure-cli-latest). 
+V tomto tématu se dozvíte, jak nakonfigurovat filtr pro Asset na vyžádání a pomocí rozhraní příkazového řádku Media Services V3 vytvořit [filtry účtu](/cli/azure/ams/account-filter) a [filtry assetů](/cli/azure/ams/asset-filter).
 
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
-
-## <a name="define-a-filter"></a>Definovat filtr 
+## <a name="define-a-filter"></a>Definovat filtr
 
 Následující příklad definuje podmínky pro výběr sledování, které jsou přidány do konečného manifestu. Tento filtr zahrnuje všechny zvukové stopy, které jsou EC-3, a všechny videosoubory, které mají přenosovou rychlost v rozsahu 0-1000000.
 
@@ -80,7 +80,7 @@ Následující příklad definuje podmínky pro výběr sledování, které jsou
 
 ## <a name="create-account-filters"></a>Vytváření filtrů účtů
 
-Následující příkaz [AZ AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) vytvoří filtr účtu s vybraným filtrem sledovat [výše definované výše](#define-a-filter). 
+Následující příkaz [AZ AMS Account-Filter](/cli/azure/ams/account-filter) vytvoří filtr účtu s vybraným filtrem sledovat [výše definované výše](#define-a-filter).
 
 Příkaz umožňuje předat volitelný `--tracks` parametr, který obsahuje JSON, reprezentující výběry sledování.  K načtení JSON ze souboru použijte @ {File}. Pokud používáte Azure CLI místně, zadejte celou cestu k souboru:
 
@@ -92,7 +92,7 @@ Podívejte se také na [Příklady JSON pro filtry](/rest/api/media/accountfilte
 
 ## <a name="create-asset-filters"></a>Vytváření filtrů assetů
 
-Následující příkaz [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) vytvoří filtr assetů s vybraným filtrem sledovat výběry, které byly [definované dříve](#define-a-filter). 
+Následující příkaz [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter) vytvoří filtr assetů s vybraným filtrem sledovat výběry, které byly [definované dříve](#define-a-filter). 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -128,8 +128,8 @@ V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
 ## <a name="next-step"></a>Další krok
 
-[Streamování videí](stream-files-tutorial-with-api.md) 
+[Streamování videí](stream-files-tutorial-with-api.md)
 
 ## <a name="see-also"></a>Viz také
 
-[Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

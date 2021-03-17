@@ -3,17 +3,18 @@ title: Vytvoření virtuálního počítače s Windows pomocí Azure image Build
 description: Vytvořte virtuální počítač s Windows pomocí modulu PowerShellu pro sestavovatele imagí Azure.
 author: cynthn
 ms.author: cynthn
-ms.date: 06/17/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693454"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder pomocí PowerShellu
 
@@ -24,7 +25,7 @@ Tento článek ukazuje, jak můžete vytvořit přizpůsobenou image Windows pom
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -65,10 +66,11 @@ Pokud ještě nejsou zaregistrované, zaregistrujte následující poskytovatele
 - Microsoft.Compute
 - Trezor Microsoft.
 - Microsoft.Storage
+- Microsoft.Network
 - Microsoft. VirtualMachineImages
 
 ```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages, Microsoft.Network |
   Where-Object RegistrationState -ne Registered |
     Register-AzResourceProvider
 ```
@@ -139,7 +141,7 @@ $identityNamePrincipalId = (Get-AzUserAssignedIdentity -ResourceGroupName $image
 Stáhněte konfigurační soubor. JSON a upravte ho podle nastavení definovaných v tomto článku.
 
 ```azurepowershell-interactive
-$myRoleImageCreationUrl = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
+$myRoleImageCreationUrl = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
 $myRoleImageCreationPath = "$env:TEMP\myRoleImageCreation.json"
 
 Invoke-WebRequest -Uri $myRoleImageCreationUrl -OutFile $myRoleImageCreationPath -UseBasicParsing
@@ -231,13 +233,25 @@ $disSharedImg = New-AzImageBuilderDistributorObject @disObjParams
 Vytvoří objekt pro přizpůsobení nástroje Azure image Builder.
 
 ```azurepowershell-interactive
-$ImgCustomParams = @{
+$ImgCustomParams01 = @{
   PowerShellCustomizer = $true
   CustomizerName = 'settingUpMgmtAgtPath'
   RunElevated = $false
-  Inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
+  Inline = @("mkdir c:\\buildActions", "mkdir c:\\buildArtifacts", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
 }
-$Customizer = New-AzImageBuilderCustomizerObject @ImgCustomParams
+$Customizer01 = New-AzImageBuilderCustomizerObject @ImgCustomParams01
+```
+
+Vytvořte druhý objekt přizpůsobení pro Azure image Builder.
+
+```azurepowershell-interactive
+$ImgCustomParams02 = @{
+  FileCustomizer = $true
+  CustomizerName = 'downloadBuildArtifacts'
+  Destination = 'c:\\buildArtifacts\\index.html'
+  SourceUri = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+}
+$Customizer02 = New-AzImageBuilderCustomizerObject @ImgCustomParams02
 ```
 
 Vytvoří šablonu Azure image Builder.
@@ -248,7 +262,7 @@ $ImgTemplateParams = @{
   ResourceGroupName = $imageResourceGroup
   Source = $srcPlatform
   Distribute = $disSharedImg
-  Customize = $Customizer
+  Customize = $Customizer01, $Customizer02
   Location = $location
   UserAssignedIdentityId = $identityNameResourceId
 }
@@ -271,7 +285,7 @@ Na pozadí tvůrce imagí také vytvoří pracovní skupinu prostředků ve vaš
 
 Pokud služba ohlásí chybu během odesílání šablony konfigurace obrázku:
 
-- Přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting).
+- Přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](../linux/image-builder-troubleshoot.md).
 - Před opakováním odstraňte šablonu pomocí následujícího příkladu.
 
 ```azurepowershell-interactive
@@ -288,7 +302,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 Počkejte, než se proces sestavení image dokončí. Tento krok může trvat až hodinu.
 
-Pokud narazíte na chyby, přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting).
+Pokud narazíte na chyby, přečtěte si téma [řešení potíží se sestavením imagí virtuálních počítačů Azure (AIB)](../linux/image-builder-troubleshoot.md).
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -306,7 +320,7 @@ $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred
 ```
 
-## <a name="verify-the-customization"></a>Ověření přizpůsobení
+## <a name="verify-the-customizations"></a>Ověřit vlastní nastavení
 
 Vytvořte připojení ke vzdálené ploše virtuálního počítače pomocí uživatelského jména a hesla, které jste nastavili při vytváření virtuálního počítače. Uvnitř virtuálního počítače otevřete PowerShell a spusťte příkaz `Get-Content` , jak je znázorněno v následujícím příkladu:
 
@@ -319,6 +333,23 @@ Měl by se zobrazit výstup na základě obsahu souboru vytvořeného během pro
 ```Output
 Azure-Image-Builder-Was-Here
 ```
+
+Ze stejné relace PowerShellu ověřte, že se druhé přizpůsobení úspěšně dokončilo, a to tak, že zkontrolujete přítomnost souboru, `c:\buildArtifacts\index.html` jak je znázorněno v následujícím příkladu:
+
+```azurepowershell-interactive
+Get-ChildItem c:\buildArtifacts\
+```
+
+Výsledek by měl být výpis adresáře zobrazující soubor stažený během procesu přizpůsobení bitové kopie.
+
+```Output
+    Directory: C:\buildArtifacts
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          29/01/2021    10:04            276 index.html
+```
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -342,4 +373,4 @@ Remove-AzResourceGroup -Name $imageResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md).

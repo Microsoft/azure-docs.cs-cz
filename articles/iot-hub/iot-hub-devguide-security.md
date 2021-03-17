@@ -14,13 +14,14 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Operations'
-- devx-track-javascript
-ms.openlocfilehash: 223ec01165922702f8f8fa17b09e530b16fa79e5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+- devx-track-csharp
+ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423469"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825118"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -42,7 +43,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
 
 [Oprávnění](#iot-hub-permissions) můžete udělit následujícími způsoby:
 
-* **Zásady sdíleného přístupu na úrovni IoT Hub**. Zásady sdíleného přístupu můžou udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [Azure Portal](https://portal.azure.com)programově pomocí [rozhraní API REST IoT Hub prostředků](/rest/api/iothub/iothubresource)nebo pomocí rozhraní příkazového řádku [AZ IoT Hub Policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) . Nově vytvořené centrum IoT má následující výchozí zásady:
+* **Zásady sdíleného přístupu na úrovni IoT Hub**. Zásady sdíleného přístupu můžou udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [Azure Portal](https://portal.azure.com)programově pomocí [rozhraní API REST IoT Hub prostředků](/rest/api/iothub/iothubresource)nebo pomocí rozhraní příkazového řádku [AZ IoT Hub Policy](/cli/azure/iot/hub/policy) . Nově vytvořené centrum IoT má následující výchozí zásady:
   
   | Zásady sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
@@ -64,7 +65,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 
@@ -79,7 +80,7 @@ Další informace o tom, jak vytvářet a používat tokeny zabezpečení, najde
 
 Každý podporovaný protokol, například MQTT, AMQP a HTTPS, přesměruje tokeny různými způsoby.
 
-Při použití MQTT má paket CONNECT deviceId jako ClientId, `{iothubhostname}/{deviceId}` v poli UserName (uživatelské jméno) a token SAS v poli heslo. `{iothubhostname}`mělo by se jednat o úplný záznam CName služby IoT Hub (například contoso.azure-devices.net).
+Při použití MQTT má paket CONNECT deviceId jako ClientId, `{iothubhostname}/{deviceId}` v poli UserName (uživatelské jméno) a token SAS v poli heslo. `{iothubhostname}` mělo by se jednat o úplný záznam CName služby IoT Hub (například contoso.azure-devices.net).
 
 Při použití [AMQP](https://www.amqp.org/)podporuje IoT Hub [SASL Plain](https://tools.ietf.org/html/rfc4616) a [AMQP a zabezpečení založené na deklaracích identity](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
@@ -87,8 +88,8 @@ Pokud používáte AMQP zabezpečení založené na deklaracích identity, Stand
 
 Pro SASL PLAIN **uživatelské jméno** může být:
 
-* `{policyName}@sas.root.{iothubName}`Pokud používáte tokeny na úrovni IoT Hub.
-* `{deviceId}@sas.{iothubname}`Pokud používáte tokeny v oboru zařízení.
+* `{policyName}@sas.root.{iothubName}` Pokud používáte tokeny na úrovni IoT Hub.
+* `{deviceId}@sas.{iothubname}` Pokud používáte tokeny v oboru zařízení.
 
 V obou případech pole heslo obsahuje token, jak je popsáno v [IoT Hub tokeny zabezpečení](iot-hub-devguide-security.md#security-tokens).
 
@@ -96,9 +97,9 @@ Protokol HTTPS implementuje ověřování zahrnutím platného tokenu do hlavič
 
 #### <a name="example"></a>Příklad
 
-Username (DeviceId rozlišuje velká a malá písmena):`iothubname.azure-devices.net/DeviceId`
+Username (DeviceId rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
-Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
+Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -187,7 +188,7 @@ from hmac import HMAC
 def generate_sas_token(uri, key, policy_name, expiry=3600):
     ttl = time() + expiry
     sign_key = "%s\n%d" % ((parse.quote_plus(uri)), int(ttl))
-    print sign_key
+    print(sign_key)
     signature = b64encode(HMAC(b64decode(key), sign_key.encode('utf-8'), sha256).digest())
 
     rawtoken = {
@@ -231,8 +232,32 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
     return token;
 }
-
 ```
+
+Pro Java:
+```java
+    public static String generateSasToken(String resourceUri, String key) throws Exception {
+        // Token will expire in one hour
+        var expiry = Instant.now().getEpochSecond() + 3600;
+
+        String stringToSign = URLEncoder.encode(resourceUri, StandardCharsets.UTF_8) + "\n" + expiry;
+        byte[] decodedKey = Base64.getDecoder().decode(key);
+
+        Mac sha256HMAC = Mac.getInstance("HmacSHA256");
+        SecretKeySpec secretKey = new SecretKeySpec(decodedKey, "HmacSHA256");
+        sha256HMAC.init(secretKey);
+        Base64.Encoder encoder = Base64.getEncoder();
+
+        String signature = new String(encoder.encode(
+            sha256HMAC.doFinal(stringToSign.getBytes(StandardCharsets.UTF_8))), StandardCharsets.UTF_8);
+
+        String token = "SharedAccessSignature sr=" + URLEncoder.encode(resourceUri, StandardCharsets.UTF_8)
+                + "&sig=" + URLEncoder.encode(signature, StandardCharsets.UTF_8.name()) + "&se=" + expiry;
+            
+        return token;
+    }
+```
+
 
 > [!NOTE]
 > Vzhledem k tomu, že je doba platnosti tokenu ověřená na IoT Hubch počítačích, musí být posun na hodinách počítače, který generuje token, minimální.
@@ -278,7 +303,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro zařízení1, by byl:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vygenerovat token SAS pomocí příkazu CLI rozšíření [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+> Je možné vygenerovat token SAS pomocí příkazu CLI rozšíření [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 ### <a name="use-a-shared-access-policy"></a>Použití zásad sdíleného přístupu
 
@@ -356,17 +381,22 @@ Mezi podporované certifikáty patří:
 
 * **Certifikát X. 509 podepsaný certifikační autoritou**. Pokud chcete identifikovat zařízení a ověřit ho pomocí IoT Hub, můžete použít certifikát X. 509 generovaný a podepsaný certifikační autoritou (CA). Funguje buď s kryptografickým otiskem, nebo s ověřováním CA.
 
-* **Samostatně generovaný certifikát X-509 podepsaný svým držitelem**. Výrobce zařízení nebo interní nástroj pro nasazení může tyto certifikáty vygenerovat a uložit odpovídající privátní klíč (a certifikát) na zařízení. K tomuto účelu můžete použít nástroje, jako je [OpenSSL](https://www.openssl.org/) a nástroj [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Utility. Funguje pouze s ověřováním pomocí kryptografického otisku. 
+* **Samostatně generovaný certifikát X-509 podepsaný svým držitelem**. Výrobce zařízení nebo interní nástroj pro nasazení může tyto certifikáty vygenerovat a uložit odpovídající privátní klíč (a certifikát) na zařízení. K tomuto účelu můžete použít nástroje, jako je [OpenSSL](https://www.openssl.org/) a nástroj [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Utility. Funguje pouze s ověřováním pomocí kryptografického otisku.
 
-Zařízení může buď použít certifikát X. 509, nebo token zabezpečení pro ověřování, ale ne obojí.
+Zařízení může buď použít certifikát X. 509, nebo token zabezpečení pro ověřování, ale ne obojí. Při ověřování pomocí certifikátu X. 509 se ujistěte, že máte zavedenou strategii pro zpracování změny certifikátu, když vyprší platnost existujícího certifikátu.
 
-Další informace o ověřování pomocí certifikační autority najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](iot-hub-x509ca-overview.md).
+Pro zařízení, která používají ověřování CA X. 509, se nepodporuje následující funkce:
+
+* Protokol HTTPS, MQTT přes objekty WebSockets a AMQP přes protokoly WebSockets.
+* Nahrávání souborů (všechny protokoly).
+
+Další informace o ověřování pomocí certifikační autority najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](iot-hub-x509ca-overview.md). Informace o tom, jak nahrát a ověřit certifikační autoritu ve službě IoT Hub, najdete v tématu [nastavení zabezpečení X. 509 ve službě Azure IoT Hub](iot-hub-security-x509-get-started.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrace certifikátu X. 509 pro zařízení
 
 [Sada Azure IoT Service SDK pro C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (verze 1.0.8 +) podporuje registraci zařízení, které pro ověřování používá certifikát X. 509. Další rozhraní API, jako je například import a export zařízení, podporují také certifikáty X. 509.
 
-Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) ke konfiguraci certifikátů X. 509 pro zařízení.
+Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ke konfiguraci certifikátů X. 509 pro zařízení.
 
 ### <a name="c-support"></a>Podpora jazyka C \#
 
@@ -424,7 +454,7 @@ Tady jsou hlavní kroky vzoru služby tokenu:
 4. Zařízení/modul používá token přímo ve službě IoT Hub.
 
 > [!NOTE]
-> K vytvoření tokenu ve službě tokenů můžete použít třídu .NET [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) nebo [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) třídy Java.
+> K vytvoření tokenu ve službě tokenů můžete použít třídu .NET [SharedAccessSignatureBuilder](/dotnet/api/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder) nebo [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) třídy Java.
 
 Služba tokenů může nastavit vypršení platnosti tokenu podle potřeby. Po vypršení platnosti tokenu Server IoT Hub naruší připojení zařízení nebo modulu. Zařízení/modul pak musí od služby tokenu požádat o nový token. Krátká doba vypršení platnosti zvyšuje zatížení zařízení i modulu i služby tokenů.
 

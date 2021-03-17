@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
 ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383730"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Došlo k chybě při zpracování osvědčených postupů pro klienty knihovny Azure Active Directory Authentication Library (ADAL).
@@ -51,7 +51,7 @@ K dispozici je sada chyb generovaných operačním systémem, které mohou vyža
 
 V podstatě existují dva případy AcquireTokenSilent chyb:
 
-| Obchodní případ | Description |
+| Obchodní případ | Popis |
 |------|-------------|
 | **Případ 1**: Chyba je možné přeložit pomocí interaktivního přihlašování. | V případě chyb způsobených chybějícími platnými tokeny je nutný interaktivní požadavek. Hledání v mezipaměti a neplatný/vypršení obnovovací token vyžaduje, aby AcquireToken volání vyřešilo.<br><br>V těchto případech musí být koncový uživatel vyzván, aby se přihlásil. Aplikace se může rozhodnout provést interaktivní požadavek okamžitě po interakci koncového uživatele (například při stisknutí tlačítka pro přihlášení) nebo později. Volba závisí na požadovaném chování aplikace.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují.|
 | **Případ 2**: Chyba nejde přeložit pomocí interaktivního přihlášení. | V případě sítě a přechodných/dočasných chyb nebo jiných selhání nevyřeší interaktivní žádost AcquireToken problém. Nepotřebné interaktivní výzvy pro přihlášení mohou také frustrovat koncové uživatele. ADAL se automaticky pokusí o jeden pokus o většinu chyb při selhání AcquireTokenSilent.<br><br>Klientská aplikace se také může pokusit o opakování později v pozdějším okamžiku, ale kdy a jak závisí na chování aplikace a na požadovaném prostředí pro koncové uživatele. Aplikace může například provést AcquireTokenSilent opakování po několika minutách nebo v reakci na akci koncového uživatele. Okamžité opakování bude mít za následek omezení aplikace a nemělo by se proto zkoušet.<br><br>Následné opakování se stejnou chybou neznamená, že klient provede interaktivní požadavek pomocí AcquireToken, protože nevyřešil chybu.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují. |
@@ -545,7 +545,7 @@ Pro zkoumání konkrétních chyb ADAL se jedná o nejlepší odkaz na zdrojový
 
 chyby iOS můžou vzniknout během přihlašování, když uživatelé používají Webová zobrazení, a povaha ověřování. To může být způsobeno podmínkami, jako jsou chyby TLS, vypršení časového limitu nebo chyby sítě:
 
-- V případě sdílení oprávnění nejsou přihlášení trvalá a mezipaměť se zobrazí jako prázdná. Můžete vyřešit přidáním následujícího řádku kódu do řetězce klíčů:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- V případě sdílení oprávnění nejsou přihlášení trvalá a mezipaměť se zobrazí jako prázdná. Můžete vyřešit přidáním následujícího řádku kódu do řetězce klíčů: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - V případě NsUrlDomain sady chyb se akce mění v závislosti na logice aplikace. Konkrétní instance, které je možné zpracovat, najdete v [referenční dokumentaci k NSURLErrorDomain](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) .
 - V tématu běžné problémy s modulem [ADAL obj. c](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) najdete seznam běžných chyb udržovaných týmem s přístupem ADAL v rámci objektivu.
 

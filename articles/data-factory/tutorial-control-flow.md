@@ -1,22 +1,19 @@
 ---
 title: Větvení v kanálu Azure Data Factory
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
-services: data-factory
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513320"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386012"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -26,7 +23,7 @@ V tomto kurzu vytvoříte kanál Data Factory, který prezentuje některé funkc
 
 Tento obrázek nabízí přehled scénáře:
 
-![Přehled](media/tutorial-control-flow/overview.png)
+![Diagram zobrazuje Azure Blob Storage, což je cíl kopie, která při úspěšném odeslání pošle e-mail s podrobnostmi, nebo při selhání pošle e-mail s podrobnostmi o chybě.](media/tutorial-control-flow/overview.png)
 
 V tomto kurzu se dozvíte, jak provádět následující úlohy:
 
@@ -40,16 +37,16 @@ V tomto kurzu se dozvíte, jak provádět následující úlohy:
 > * Spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
-Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](/azure/data-factory/quickstart-create-data-factory-portal).
+Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](./quickstart-create-data-factory-portal.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
-* Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
-* Visual Studio. Tento článek používá Visual Studio 2019.
+* Azure SQL Database Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
+* Visual Studio Tento článek používá Visual Studio 2019.
 * Sada Azure .NET SDK. Stáhněte a nainstalujte si [sadu Azure .NET SDK](https://azure.microsoft.com/downloads/).
 
 Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat a výpočetní prostředky můžou být v jiných oblastech. Mezi obchody patří Azure Storage a Azure SQL Database. K výpočtům patří HDInsight, který Data Factory používá.
@@ -65,7 +62,7 @@ Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active
    Tamika|Walsh
    ```
 
-1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Klikněte pravým tlačítkem na **kontejnery objektů BLOB** a vyberte **vytvořit kontejner objektů BLOB**.
+1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Pravým tlačítkem klikněte na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**.
 1. Pojmenujte nový kontejner *adfv2branch* a vyberte **nahrát** a přidejte soubor *input.txt* do kontejneru.
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio<a name="create-visual-studio-project"></a>
@@ -73,14 +70,14 @@ Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active
 Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 1. Spusťte aplikaci Visual Studio a vyberte možnost **vytvořit nový projekt**.
-1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
 1. Pojmenujte projekt *ADFv2BranchTutorial*.
 1. Vyberte **.NET verze 4.5.2** nebo vyšší a pak vyberte **vytvořit**.
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
-1. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
+1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
+1. V **konzole správce balíčků** spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -236,7 +233,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
 
-Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer`je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
+Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
 

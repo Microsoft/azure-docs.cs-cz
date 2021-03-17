@@ -3,7 +3,7 @@ title: Konfigurace spravovaných identit na virtuálním počítači Azure pomoc
 description: Podrobné pokyny pro konfiguraci systémových a uživatelem přiřazených identit na virtuálním počítači Azure pomocí technologie KUDRLINKOU k provádění REST API volání.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/25/2018
-ms.author: markvi
+ms.date: 12/15/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9db22c6876294c9ffba33eab3d27900bf294e886
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f70229fabe4331adb7740cf09cf2bf8f3e3e4617
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873836"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587515"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -33,15 +33,13 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 - Povolení a zakázání spravované identity přiřazené systémem na virtuálním počítači Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem na virtuálním počítači Azure
 
-## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
-- Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo systém pro [distribuci Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` účtu, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
+## <a name="prerequisites"></a>Předpoklady
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
@@ -49,7 +47,7 @@ V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřa
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Povolit spravovanou identitu přiřazenou systémem během vytváření virtuálního počítače Azure
 
-Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou identitou přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou identitou přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Pomocí příkazu [az group create](/cli/azure/group/#az-group-create) vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
@@ -57,7 +55,7 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Vytvoření [síťového rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
+2. Vytvoření [síťového rozhraní](/cli/azure/network/nic#az-network-nic-create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -69,7 +67,7 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
    az account get-access-token
    ``` 
 
-4. Vytvořte virtuální počítač pomocí metody KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST. Následující příklad vytvoří virtuální počítač s názvem *myVM* se spravovanou identitou přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+4. Pomocí Azure Cloud Shell vytvořte virtuální počítač pomocí metody KUDRLINKOU pro volání koncového bodu Azure Resource Manager REST. Následující příklad vytvoří virtuální počítač s názvem *myVM* se spravovanou identitou přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -148,7 +146,7 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
 
 ### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Povolení identity přiřazené systémem na stávajícím virtuálním počítači Azure
 
-Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
@@ -258,7 +256,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázat spravovanou identitu přiřazenou systémem z virtuálního počítače Azure
 
-Aby se na virtuálním počítači zakázala spravovaná identita přiřazená systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Aby se na virtuálním počítači zakázala spravovaná identita přiřazená systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
@@ -303,7 +301,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživatelem během vytváření virtuálního počítače Azure
 
-K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
@@ -311,7 +309,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    az account get-access-token
    ```
 
-2. Vytvoření [síťového rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
+2. Vytvoření [síťového rozhraní](/cli/azure/network/nic#az-network-nic-create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -490,7 +488,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Přiřazení spravované identity přiřazené uživateli k existujícímu virtuálnímu počítači Azure
 
-K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
@@ -660,7 +658,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače Azure
 
-K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyžaduje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
+K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyžaduje váš účet přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .
 
 1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 

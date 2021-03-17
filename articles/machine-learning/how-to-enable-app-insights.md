@@ -1,74 +1,53 @@
 ---
 title: Monitorování a shromažďování dat z Machine Learning koncových bodů webové služby
 titleSuffix: Azure Machine Learning
-description: Monitorování webových služeb nasazených pomocí Azure Machine Learning pomocí Azure Application Insights
+description: Naučte se shromažďovat data z modelů nasazených do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 07/23/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ae66447e128b07ce942b8c2fcc66347a31cfe83f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 2740a86c5ff68e851d592533b48dc8ee60d817ee
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848855"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070797"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes (AKS) nebo v Azure Container Instances (ACI) pomocí dotazů na protokoly a povolením Azure Application Insights prostřednictvím 
-* [Azure Machine Learning Python SDK](#python)
-* [Azure Machine Learning Studio](#studio) vhttps://ml.azure.com
 
-Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete sledovat:
-
+V tomto článku se dozvíte, jak shromažďovat data z modelů nasazených do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI). Pomocí služby [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) shromážděte následující data z koncového bodu:
+* Výstupní data
+* Odpovědi
 * Sazby požadavků, doba odezvy a frekvence selhání
 * Sazby závislosti, doba odezvy a frekvence selhání
 * Výjimky
 
-[Přečtěte si další informace o Azure Application Insights](../azure-monitor/app/app-insights-overview.md). 
-
-
+Poznámkový blok [Enable-App-Insights-in-produkční-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ukazuje koncepty v tomto článku.
+ 
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+ 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure – Vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Azure Machine Learning pracovní prostor, místní adresář, který obsahuje vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Informace o tom, jak tyto požadavky získat, najdete v tématu [Jak konfigurovat vývojové prostředí](how-to-configure-environment.md) .
+* Azure Machine Learning pracovní prostor, místní adresář, který obsahuje vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Další informace najdete v tématu [jak nakonfigurovat vývojové prostředí](how-to-configure-environment.md).
 
-* Školený model strojového učení, který se má nasadit do služby Azure Kubernetes (AKS) nebo Azure Container instance (ACI). Pokud ho nemáte, přečtěte si kurz pro [model klasifikace imagí v výukovém](tutorial-train-models-with-aml.md) programu.
-
-## <a name="query-logs-for-deployed-models"></a>Protokoly dotazů pro nasazené modely
-
-Chcete-li načíst protokoly z dříve nasazené webové služby, načtěte službu a použijte ji `get_logs()` . Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
-
-```python
-from azureml.core.webservice import Webservice
-
-# load existing web service
-service = Webservice(name="service-name", workspace=ws)
-logs = service.get_logs()
-```
-
-## <a name="web-service-metadata-and-response-data"></a>Metadata a data odpovědi webové služby
-
-> [!IMPORTANT]
-> Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, může dojít k chybám, jako je například nedostatek paměti, nebo nemůžete zaznamenat žádné informace.
-
-Chcete-li protokolovat informace o požadavku na webovou službu, přidejte `print` do souboru Score.py příkazy. Každý `print` příkaz má za následek jednu položku v tabulce trasování v Application Insights v rámci zprávy `STDOUT` . Obsah `print` příkazu bude obsažen v části `customDimensions` a potom `Contents` v tabulce trasování. Pokud vytisknete řetězec JSON, vytvoří hierarchickou strukturu dat ve výstupu trasování v části `Contents` .
-
-Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají použít v Azure Machine Learning k nastavení označování, rekurze, vyjasnění, analýze dat nebo jiné použití. 
-
+* Školený model strojového učení. Další informace najdete v kurzu [model klasifikace imagí v výukovém](tutorial-train-models-with-aml.md) programu.
 
 <a name="python"></a>
 
-## <a name="use-python-sdk-to-configure"></a>Použití sady Python SDK ke konfiguraci 
+## <a name="configure-logging-with-the-python-sdk"></a>Konfigurace protokolování pomocí Python SDK
+
+V této části se dozvíte, jak povolit protokolování Application Insight pomocí sady Python SDK. 
 
 ### <a name="update-a-deployed-service"></a>Aktualizace nasazené služby
+
+K aktualizaci existující webové služby použijte následující postup:
 
 1. Identifikujte službu ve vašem pracovním prostoru. Hodnota pro `ws` je název vašeho pracovního prostoru.
 
@@ -84,12 +63,17 @@ Můžete se dotázat na Azure Application Insights přímo pro přístup k těmt
 
 ### <a name="log-custom-traces-in-your-service"></a>Protokolovat vlastní trasování ve službě
 
-Pokud chcete protokolovat vlastní trasování, postupujte podle standardního procesu nasazení pro AKS nebo ACI v tématu [postup nasazení a umístění](how-to-deploy-and-where.md) dokumentu. Pak použijte následující postup:
+> [!IMPORTANT]
+> Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, může se zobrazit chyba, například nedostatek paměti, nebo nemusí být protokolovány žádné informace. Pokud jsou data, která chcete protokolovat, větší než 64 KB, měli byste ji místo toho ukládat do úložiště objektů BLOB pomocí informací v části [shromažďování dat pro modely v produkčním](how-to-enable-data-collection.md)prostředí.
+>
+> U složitějších situací, jako je sledování modelů v rámci nasazení AKS, doporučujeme použít knihovnu třetí strany, jako je [OpenCensus](https://opencensus.io).
 
-1. Chcete-li odesílat data do Application Insights při odvozování, aktualizujte soubor bodování přidáním příkazů Print. Chcete-li protokolovat složitější informace, jako jsou například data žádosti a odpověď, strukturu JSON. Následující příklad souboru score.py protokoluje čas inicializace modelu, vstup a výstup během odvození a čas výskytu chyby:
+Pokud chcete protokolovat vlastní trasování, postupujte podle standardního procesu nasazení pro AKS nebo ACI v tématu [Jak nasadit a kde](how-to-deploy-and-where.md) dokument. Pak použijte následující postup:
 
-    > [!IMPORTANT]
-    > Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, může se zobrazit chyba, například nedostatek paměti, nebo nemusí být protokolovány žádné informace. Pokud jsou data, která chcete protokolovat, větší než 64 KB, měli byste ji místo toho ukládat do úložiště objektů BLOB pomocí informací v části [shromažďování dat pro modely v produkčním](how-to-enable-data-collection.md)prostředí.
+1. Aktualizujte soubor bodování přidáním příkazů Print k odeslání dat do Application Insights při odvozování. Pro složitější informace, jako jsou například data žádosti a odpověď, použijte strukturu JSON. 
+
+    Následující příklady `score.py` souborů protokolu, pokud byl model inicializován, vstup a výstup během odvození a čas výskytu chyby.
+
     
     ```python
     import pickle
@@ -133,15 +117,14 @@ Pokud chcete protokolovat vlastní trasování, postupujte podle standardního p
             return error
     ```
 
-2. Aktualizace konfigurace služby
+2. Aktualizujte konfiguraci služby a ujistěte se, že jste povolili Application Insights.
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Sestavte image a nasaďte ji na [AKS nebo ACI](how-to-deploy-and-where.md).
+3. Sestavte image a nasaďte ji na AKS nebo ACI. Další informace naleznete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
 
-Další informace o protokolování a shromažďování dat najdete v tématu [Povolení přihlášení Azure Machine Learning](how-to-enable-logging.md) a [shromažďování dat z modelů v produkčním](how-to-enable-data-collection.md)prostředí.
 
 ### <a name="disable-tracking-in-python"></a>Zakázat sledování v Pythonu
 
@@ -154,34 +137,57 @@ Pokud chcete zakázat službu Azure Application Insights, použijte následujíc
 
 <a name="studio"></a>
 
-## <a name="use-azure-machine-learning-studio-to-configure"></a>Použití Azure Machine Learning studia ke konfiguraci
+## <a name="configure-logging-with-azure-machine-learning-studio"></a>Konfigurace protokolování pomocí Azure Machine Learning studia
 
-Pokud jste připraveni nasadit model pomocí těchto kroků, můžete Azure Application Insights taky povolit z Azure Machine Learning studia.
+Službu Azure Application Insights můžete taky povolit z Azure Machine Learning studia. Až budete připraveni nasadit svůj model jako webovou službu, pomocí následujícího postupu povolte Application Insights:
 
-1. Přihlaste se k pracovnímu prostoru na adresehttps://ml.azure.com/
-1. Přejít na **modely** a vybrat model, který chcete nasadit
-1. Vybrat **+ nasadit**
-1. Naplnění formuláře **nasazení modelu**
+1. Přihlaste se k studiu na adrese https://ml.azure.com .
+1. Přejít na **modely** a vybrat model, který chcete nasadit.
+1. Vyberte  **+ nasadit**.
+1. Naplňte formulář **nasazení modelu** .
 1. Rozbalte nabídku **Upřesnit** .
 
     ![Formulář nasazení](./media/how-to-enable-app-insights/deploy-form.png)
-1. Vyberte **Povolit diagnostiku Application Insights a shromažďování dat** .
+1. Vyberte **Povolit diagnostiku Application Insights a shromažďování dat**.
 
     ![Povolit App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 
 ## <a name="view-metrics-and-logs"></a>Zobrazit metriky a protokoly
 
-Data vaší služby se ukládají do účtu Azure Application Insights v rámci stejné skupiny prostředků jako Azure Machine Learning.
-Zobrazení:
+### <a name="query-logs-for-deployed-models"></a>Protokoly dotazů pro nasazené modely
+
+Protokoly koncových bodů v reálném čase jsou zákaznická data. Funkci můžete použít `get_logs()` k načtení protokolů z dříve nasazené webové služby. Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
+Pokud máte více tenantů, možná budete muset přidat následující ověřovací kód před `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
+```
+
+### <a name="view-logs-in-the-studio"></a>Zobrazit protokoly v studiu
+
+Azure Application Insights ukládá vaše protokoly služby ve stejné skupině prostředků jako pracovní prostor Azure Machine Learning. Pomocí následujících kroků zobrazíte data s využitím studia:
 
 1. V [studiu](https://ml.azure.com/)přejdete do svého pracovního prostoru Azure Machine Learning.
 1. Vyberte **koncové body**.
 1. Vyberte nasazenou službu.
-1. Posuňte se dolů a vyhledejte **adresu url Application Insights** a vyberte odkaz.
+1. Vyberte odkaz **Application Insights URL** .
 
     [![Najít adresu URL Application Insights](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. V Application Insights na kartě **Přehled** nebo v části __monitorování__ v levém seznamu vyberte __protokoly__.
+1. V Application Insights na kartě **Přehled** nebo v části __monitorování__ vyberte __protokoly__.
 
     [![Karta Přehled monitorování](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -197,25 +203,29 @@ Zobrazení:
 
 Další informace o tom, jak používat Azure Application Insights, najdete v tématu [co je Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
-## <a name="export-data-for-further-processing-and-longer-retention"></a>Exportovat data pro další zpracování a delší dobu uchování
+## <a name="web-service-metadata-and-response-data"></a>Metadata a data odpovědi webové služby
+
+> [!IMPORTANT]
+> Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, může dojít k chybám, jako je například nedostatek paměti, nebo nemůžete zaznamenat žádné informace.
+
+Pokud chcete protokolovat informace o žádosti webové služby, přidejte `print` do souboru Score.py příkazy. Každý `print` příkaz má za následek jednu položku v tabulce trasování Application Insights v rámci zprávy `STDOUT` . Application Insights ukládá `print` výstupy příkazů do  `customDimensions` a v `Contents` tabulce trasování. Tisk řetězců JSON vytvoří hierarchickou strukturu dat ve výstupu trasování v části `Contents` .
+
+## <a name="export-data-for-retention-and-processing"></a>Exportovat data pro uchovávání a zpracování
 
 >[!Important]
-> Azure Application Insights podporuje jenom exporty do úložiště objektů BLOB. Další omezení této možnosti exportu jsou uvedená v části [Export telemetrie z App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Azure Application Insights podporuje jenom exporty do úložiště objektů BLOB. Další informace o omezeních této implementace najdete v tématu [Export telemetrie z App Insights](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration).
 
-Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) v Azure Application Insights k posílání zpráv do podporovaného účtu úložiště, kde je možné nastavit delší dobu uchování. Data jsou uložena ve formátu JSON a lze je snadno analyzovat pro extrakci dat modelu. 
-
-Azure Data Factory, kanály Azure ML nebo jiné nástroje pro zpracování dat se dají použít k transformaci dat podle potřeby. Po transformaci dat je můžete zaregistrovat v pracovním prostoru Azure Machine Learning jako datovou sadu. Postup najdete v tématu [jak vytvořit a zaregistrovat datové sady](how-to-create-register-datasets.md).
+Pokud chcete exportovat data do účtu úložiště BLOB, kde můžete definovat nastavení uchovávání, použijte Application Insights [průběžný export](../azure-monitor/app/export-telemetry.md) . Application Insights exportuje data ve formátu JSON. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Průběžný export":::
 
-
-## <a name="example-notebook"></a>Příklad poznámkového bloku
-
-Poznámkový blok [Enable-App-Insights-in-produkční-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ukazuje koncepty v tomto článku. 
- 
-[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
-
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte [se, jak nasadit model do clusteru služby Azure Kubernetes](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) nebo [Jak nasadit model, Azure Container Instances aby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance) se nasadily vaše modely do koncových bodů webové služby, a umožněte službě Azure Application Insights využívat shromažďování dat a monitorování koncových bodů.
-* Další informace o využití dat shromážděných z modelů v produkčním prostředí najdete v tématu [MLOps: Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) . Tato data vám můžou pomoci při neustálém vylepšování procesu strojového učení.
+V tomto článku jste zjistili, jak povolit protokolování a zobrazit protokoly pro koncové body webové služby. Další kroky si můžete vyzkoušet v těchto článcích:
+
+
+* [Postup nasazení modelu do clusteru AKS](./how-to-deploy-azure-kubernetes-service.md)
+
+* [Postup nasazení modelu pro Azure Container Instances](./how-to-deploy-azure-container-instance.md)
+
+* [MLOps: můžete spravovat, nasazovat a monitorovat modely pomocí Azure Machine Learning](./concept-model-management-and-deployment.md) a získat další informace o využití dat shromážděných z modelů v produkčním prostředí. Tato data vám můžou pomoci při neustálém vylepšování procesu strojového učení.

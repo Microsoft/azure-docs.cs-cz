@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 463f5d5360e19fdd7f49139aea4c6dc65baf903c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081185"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939900"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD pro Custom Speech
 
 Implementací automatizovaného školení, testování a správy vydaných verzí umožníte průběžné vylepšování Custom Speech modelů při použití aktualizací pro školení a testování dat. Díky efektivní implementaci pracovních postupů CI/CD můžete zajistit, aby byl koncový bod pro nejlepší Custom Speech model vždy k dispozici.
 
-[Průběžná integrace](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) je technickým postupem, který často potvrzování aktualizací ve sdíleném úložišti a provádí automatizované sestavení. Pracovní postupy CI pro Custom Speech provedou nový model z jeho zdrojů dat a provádějí automatizované testování nového modelu, aby bylo zajištěno lepší zlepšení než předchozí model.
+[Průběžná integrace](/azure/devops/learn/what-is-continuous-integration) (CI) je technickým postupem, který často potvrzování aktualizací ve sdíleném úložišti a provádí automatizované sestavení. Pracovní postupy CI pro Custom Speech provedou nový model z jeho zdrojů dat a provádějí automatizované testování nového modelu, aby bylo zajištěno lepší zlepšení než předchozí model.
 
-[Průběžné doručování](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) přebírá modely z procesu ci a vytvoří koncový bod pro každý vylepšený model Custom Speech. Díky CD jsou koncové body snadno dostupné pro integraci do řešení.
+[Průběžné doručování](/azure/devops/learn/what-is-continuous-delivery) (CD) přebírá modely z procesu ci a vytvoří koncový bod pro každý vylepšený model Custom Speech. Díky CD jsou koncové body snadno dostupné pro integraci do řešení.
 
 Vlastní řešení CI/CD jsou možná, ale pro robustní předem připravené řešení použijte [úložiště šablon pro rozpoznávání řeči DevOps](https://github.com/Azure-Samples/Speech-Service-DevOps-Template), které spouští pracovní postupy CI/CD pomocí akcí GitHubu.
 
@@ -37,7 +37,7 @@ Pracovní postupy by pak měly pojmenovat a ukládat data, testy, soubory testů
 
 ### <a name="ci-workflow-for-testing-data-updates"></a>Pracovní postup CI pro testování aktualizací dat
 
-Hlavním účelem pracovních postupů CI/CD je vytvořit nový model pomocí školicích dat a otestovat tento model pomocí testovacích dat, aby se zjistilo, jestli se v porovnání s předchozím modelem nejlepšího provádění ("srovnávací model") zlepšila [míra chyb slov](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER). Pokud nový model využije lepší, stává se novým modelem srovnávacího testu, proti kterému jsou porovnávány budoucí modely.
+Hlavním účelem pracovních postupů CI/CD je vytvořit nový model pomocí školicích dat a otestovat tento model pomocí testovacích dat, aby se zjistilo, jestli se v porovnání s předchozím modelem nejlepšího provádění ("srovnávací model") zlepšila [míra chyb slov](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER). Pokud nový model využije lepší, stává se novým modelem srovnávacího testu, proti kterému jsou porovnávány budoucí modely.
 
 Pracovní postup CI pro testování aktualizací dat by měl znovu otestovat aktuální srovnávací model s aktualizovanými testovacími daty za účelem výpočtu revidované služby WER. Tím je zajištěno, že když se WER nového modelu porovná se zákrokem srovnávacího testu, oba modely byly testovány proti stejným testovacím datům a porovnáváte se podobně jako.
 
@@ -73,8 +73,8 @@ Většina týmů vyžaduje ruční kontrolu a proces schvalování pro nasazení
 
 K dispozici jsou následující nástroje pro postupy CI/CD Automation pro Custom Speech:
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) pro vytvoření ověřování instančního objektu Azure, dotazování předplatných Azure a uložení výsledků testů v objektu blob Azure.
-- [Azure Speech CLI](https://github.com/msimecek/Azure-Speech-CLI) pro interakci se službou Speech z příkazového řádku nebo automatizovaného pracovního postupu.
+- [Azure CLI](/cli/azure/) pro vytvoření ověřování instančního objektu Azure, dotazování předplatných Azure a uložení výsledků testů v objektu blob Azure.
+- [Azure Speech CLI](spx-overview.md) pro interakci se službou Speech z příkazového řádku nebo automatizovaného pracovního postupu.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>Řešení DevOps pro Custom Speech s využitím akcí GitHubu
 
@@ -83,9 +83,9 @@ Pro už implementované řešení DevOps pro Custom Speech se můžete dostat do
 [Úložiště šablon pro rozpoznávání řeči DevOps](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) poskytuje infrastrukturu a podrobné pokyny k těmto akcím:
 
 - Zkopírujte úložiště šablon do svého účtu GitHubu a pak vytvořte prostředky Azure a [instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) pro pracovní postupy CI/CD akcí GitHubu.
-- Projděte si "[vnitřní smyčka pro vývoj](https://mitchdenny.com/the-inner-loop/)". Aktualizace školení a testování dat z větve funkcí, testování změn pomocí dočasného vývojového modelu a získání žádosti o přijetí změn pro návrh a kontrolu změn.
-- V případě, že jsou školicí data aktualizována v rámci žádosti o přijetí změn na *Hlavní*, výukové modely s pracovním postupem akce GitHubu.
-- Proveďte automatizované testování přesnosti, aby se navázala [míra chyb ve wordovém](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) modelu (WER). Výsledky testů uložte do objektu blob Azure.
+- Projděte si "[vnitřní smyčka pro vývoj](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)". Aktualizace školení a testování dat z větve funkcí, testování změn pomocí dočasného vývojového modelu a získání žádosti o přijetí změn pro návrh a kontrolu změn.
+- V případě, že se školicí data v žádosti o přijetí změn aktualizují na *Hlavní*, provedou se modely s pracovními postupy pro akce GitHubu.
+- Proveďte automatizované testování přesnosti, aby se navázala [míra chyb ve wordovém](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) modelu (WER). Výsledky testů uložte do objektu blob Azure.
 - Spusťte pracovní postup CD pro vytvoření koncového bodu, když se služba WER vylepšuje.
 
 ## <a name="next-steps"></a>Další kroky

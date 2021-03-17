@@ -1,24 +1,24 @@
 ---
-title: Dotazování na soubory CSV pomocí SQL na vyžádání (Preview)
-description: V tomto článku se dozvíte, jak zadávat dotazy na samostatné soubory CSV s různými formáty souborů pomocí SQL na vyžádání (Preview).
+title: Dotazování na soubory CSV pomocí SQL fondu bez serveru
+description: V tomto článku se dozvíte, jak zadávat dotazy na samostatné soubory CSV s různými formáty souborů pomocí fondu SQL bez serveru.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489703"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462595"
 ---
-# <a name="query-csv-files"></a>Dotazování na soubory CSV
+# <a name="query-csv-files"></a>Dotazování souborů CSV
 
-V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics. Soubory CSV můžou mít různé formáty: 
+V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí neserverového fondu SQL ve službě Azure synapse Analytics. Soubory CSV můžou mít různé formáty: 
 
 - S a bez řádku záhlaví
 - Hodnoty oddělené čárkami a tabulátory
@@ -29,7 +29,7 @@ Všechny výše uvedené variace budou uvedené níže.
 
 ## <a name="quickstart-example"></a>Příklad rychlého startu
 
-`OPENROWSET`funkce umožňuje číst obsah souboru CSV zadáním adresy URL souboru.
+`OPENROWSET` funkce umožňuje číst obsah souboru CSV zadáním adresy URL souboru.
 
 ### <a name="read-a-csv-file"></a>Čtení souboru CSV
 
@@ -45,6 +45,11 @@ from openrowset(
 ```
 
 Možnost `firstrow` slouží k přeskočení prvního řádku v souboru CSV, který představuje hlavičku v tomto případě. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný klíčem SAS nebo vlastní identitou, bude potřeba nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+> [!IMPORTANT]
+> Pokud soubor CSV obsahuje znaky znakové sady UTF-8, ujistěte se, že používáte kolaci databáze UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ).
+> Neshoda mezi kódováním textu v souboru a kolací může způsobit neočekávané chyby při konverzi.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Využití zdroje dat
 
@@ -72,7 +77,7 @@ Pokud je zdroj dat chráněný pomocí klíče SAS nebo vlastní identity, můž
 
 ### <a name="explicitly-specify-schema"></a>Explicitně zadat schéma
 
-`OPENROWSET`umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
+`OPENROWSET` umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
 
 ```sql
 select top 10 *
@@ -91,9 +96,15 @@ from openrowset(
 
 Čísla po datovém typu v `WITH` klauzuli reprezentují index sloupce v souboru CSV.
 
+> [!IMPORTANT]
+> Pokud Váš soubor CSV obsahuje znaky znakové sady UTF-8, ujistěte se, že jste explicilty určení některé kolace UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ) pro všechny sloupce v `WITH` klauzuli nebo nastavte určitou kolaci UTF-8 na úrovni databáze.
+> Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby při konverzi.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Kolaci pro typy slo můžete snadno nastavit pomocí následující definice: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8 8`
+
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů CSV.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** , ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
@@ -131,7 +142,7 @@ Následující dotaz ukazuje, jak číst soubor bez řádku záhlaví, s novým 
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV bez řádku záhlaví a s novým řádkem ve stylu UNIX](./media/query-single-csv-file/population-unix.png)
+![Prvních 10 řádků souboru CSV bez řádku záhlaví a Unix-Style nový řádek](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -159,7 +170,7 @@ Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s novým �
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem ve stylu UNIX.](./media/query-single-csv-file/population-unix-hdr.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -187,7 +198,7 @@ Následující dotaz ukazuje, jak přečíst soubor s řádkem záhlaví s nový
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s hodnotami nového řádku a v uvozovkách ve stylu systému UNIX.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek a hodnoty v uvozovkách.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -220,7 +231,7 @@ Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým ř
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem a řídicím znakem ve stylu systému UNIX, který se používá pro oddělovač polí.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek a řídicí znak, který se používá pro oddělovač polí.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -283,7 +294,7 @@ Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s novým �
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a se systémem UNIX – nový řádek a oddělovač tabulátoru](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek a oddělovač tabulátoru.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *

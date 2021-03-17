@@ -1,14 +1,14 @@
 ---
-title: Co je nového? Poznámky k verzi – Azure Event Grid
+title: Co je nového Poznámky k verzi – Azure Event Grid
 description: Přečtěte si, co je nového v Azure Event Grid, jako jsou například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 1edfa3e2bc4c8adae113b2215b7fb0483fba4c02
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172778"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350003"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Co je nového v Azure Event Grid?
 
@@ -40,7 +40,7 @@ Azure Event Grid průběžně přijímá vylepšení. V tomto článku najdete i
 - Tato verze zahrnuje další opravy chyb, které zvyšují kvalitu.
 - Verze 5.3.1 – Preview odpovídá verzi rozhraní API 2020-04-01-Preview, která zahrnuje následující nové funkce: 
     - [Podpora filtrování IP adres při publikování událostí do domén a témat](configure-firewall.md)
-    - [Témata pro partnery](partner-topics-overview.md)
+    - [Témata pro partnery](./partner-events-overview.md)
     - [Systémová témata jako sledované prostředky v Azure Portal](system-topics.md)
     - [Doručování událostí s identitou spravované služby](managed-service-identity.md) 
     - [Podpora služby privátního propojení](configure-private-endpoints.md)
@@ -49,7 +49,7 @@ Azure Event Grid průběžně přijímá vylepšení. V tomto článku najdete i
 - Tato verze zahrnuje různé opravy chyb, které zvyšují kvalitu.
 - Verze 5.3.0 verze Preview odpovídá verzi rozhraní API 2020-04-01-Preview, která zahrnuje následující nové funkce: 
     - [Podpora filtrování IP adres při publikování událostí do domén a témat](configure-firewall.md)
-    - [Témata pro partnery](partner-topics-overview.md)
+    - [Témata pro partnery](./partner-events-overview.md)
     - [Systémová témata jako sledované prostředky v Azure Portal](system-topics.md)
     - [Doručování událostí s identitou spravované služby](managed-service-identity.md) 
     - [Podpora služby privátního propojení](configure-private-endpoints.md)
@@ -59,7 +59,7 @@ Azure Event Grid průběžně přijímá vylepšení. V tomto článku najdete i
 - Verze 5.2.0 verze Preview odpovídá verzi rozhraní API 2020-04-01-Preview.
 - Přidává podporu k těmto novým funkcím: 
     - [Podpora filtrování IP adres při publikování událostí do domén a témat](configure-firewall.md)
-    - [Témata pro partnery](partner-topics-overview.md)
+    - [Témata pro partnery](./partner-events-overview.md)
     - [Systémová témata jako sledované prostředky v Azure Portal](system-topics.md)
     - [Doručování událostí s identitou spravované služby](managed-service-identity.md) 
     - [Podpora služby privátního propojení](configure-private-endpoints.md)

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 3c0b0f9f39620996245614b53c7ec274ec965d5b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921194"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216644"
 ---
-# <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Zásady koncového bodu služby virtuální sítě pro Azure Storage
+# <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Zásady koncového bodu služby pro virtuální síť pro službu Azure Storage
 
 Zásady koncového bodu služby Virtual Network (VNet) umožňují filtrovat odchozí přenosy virtuální sítě na účty Azure Storage prostřednictvím koncového bodu služby a exfiltraceovat data pouze na konkrétní Azure Storage účty. Zásady koncového bodu poskytují podrobné řízení přístupu pro provoz virtuální sítě Azure Storage při připojování přes koncový bod služby.
 
@@ -32,7 +32,7 @@ Zásady koncových bodů služby pro virtuální síť nabízejí následující
 
 - __Vylepšené zabezpečení Virtual Network provozu do Azure Storage__
 
-  [Značky služeb Azure pro skupiny zabezpečení sítě](https://aka.ms/servicetags) umožňují omezit odchozí přenosy virtuální sítě do konkrétních oblastí Azure Storage. To však umožňuje provoz do libovolného účtu v rámci vybrané Azure Storage oblasti.
+  [Značky služeb Azure pro skupiny zabezpečení sítě](./network-security-groups-overview.md) umožňují omezit odchozí přenosy virtuální sítě do konkrétních oblastí Azure Storage. To však umožňuje provoz do libovolného účtu v rámci vybrané Azure Storage oblasti.
   
   Zásady koncového bodu umožňují zadat Azure Storage účty, kterým je povolen odchozí přístup k virtuální síti, a omezit přístup ke všem ostatním účtům úložiště. To poskytuje mnohem podrobnější kontrolu zabezpečení pro ochranu datových exfiltrace z vaší virtuální sítě.
 
@@ -122,7 +122,7 @@ Virtuální sítě a účty Azure Storage můžou být ve stejném nebo různýc
 - Virtuální sítě musí být ve stejné oblasti jako zásada koncového bodu služby.
 - Zásadu koncového bodu služby můžete v podsíti použít, jen když jsou koncové body služby nakonfigurované pro služby Azure uvedené v zásadě.
 - Zásady koncových bodů služeb nemůžete použít pro přenosy dat z místní sítě do služeb Azure.
-- Spravované služby Azure v současné době nepodporují zásady koncového bodu. To zahrnuje spravované služby nasazené do sdílených podsítí (např. *Azure HDInsight, Azure Batch, Azure přidává, Azure APplication Gateway, Azure VPN Gateway, Azure firewall*) nebo do vyhrazených podsítí (např. *Azure App Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasických spravovaných služeb*.
+- Spravované služby Azure v současné době nepodporují zásady koncového bodu. To zahrnuje spravované služby nasazené do sdílených podsítí (např. *Azure Batch, Azure, azure Application Gateway, azure VPN Gateway, Azure firewall*) nebo do vyhrazených podsítí (např. *Azure App Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasických spravovaných služeb*).
 
  > [!WARNING]
  > Služby Azure nasazené ve vaší virtuální síti, jako je Azure HDInsight, přistupují k jiným službám Azure, jako je Azure Storage, kvůli požadavkům na infrastrukturu. Pokud zásadou koncového bodu omezíte přístup jenom k určitým prostředkům, můžete u služeb Azure nasazených ve své virtuální síti rozdělit přístup k těmto prostředkům infrastruktury.

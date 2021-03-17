@@ -2,23 +2,23 @@
 title: Pokyny pro zotavení po havárii pro nástroj pro rozpoznávání formulářů Azure
 titleSuffix: Azure Cognitive Services
 description: Naučte se používat rozhraní API pro kopírování modelů k zálohování prostředků nástroje pro rozpoznávání formulářů.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903336"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466911"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
-Když vytvoříte prostředek pro rozpoznávání formulářů v Azure Portal, zadáte oblast. Od tohoto dne se váš prostředek a všechny jeho operace budou přidružit k této konkrétní oblasti serveru Azure. Je zřídka, ale není nemožné, k navýšení problému v síti, který je v celé oblasti. Pokud vaše řešení potřebuje vždycky k dispozici, měli byste ho navrhnout tak, aby převzala služby při selhání do jiné oblasti, nebo rozdělit zatížení mezi dvě nebo víc oblastí. Oba přístupy vyžadují aspoň dva prostředky pro rozpoznávání formulářů v různých oblastech a možnost Synchronizovat [vlastní modely](./quickstarts/curl-train-extract.md) napříč oblastmi.
+Když vytvoříte prostředek pro rozpoznávání formulářů v Azure Portal, zadáte oblast. Od tohoto dne se váš prostředek a všechny jeho operace budou přidružit k této konkrétní oblasti serveru Azure. Je zřídka, ale není nemožné, k navýšení problému v síti, který je v celé oblasti. Pokud vaše řešení potřebuje vždycky k dispozici, měli byste ho navrhnout tak, aby převzala služby při selhání do jiné oblasti, nebo rozdělit zatížení mezi dvě nebo víc oblastí. Oba přístupy vyžadují aspoň dva prostředky pro rozpoznávání formulářů v různých oblastech a možnost Synchronizovat vlastní modely napříč oblastmi.
 
 Rozhraní API pro kopírování umožňuje tomuto scénáři kopírovat vlastní modely z jednoho nebo jiných účtů pro rozpoznávání formulářů, které mohou existovat v libovolné podporované geografické oblasti. V této příručce se dozvíte, jak použít REST API kopírování s kudrlinkou. K vystavování požadavků můžete použít také službu požadavku HTTP, jako je například post.
 
@@ -28,7 +28,7 @@ Pokud vaše aplikace nebo firma závisí na použití vlastního modelu rozpozn�
 
 ##  <a name="prerequisites"></a>Požadavky
 
-1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů </a> .
 1. Klíč předplatného, adresa URL koncového bodu a ID předplatného prostředku pro rozpoznávání formulářů Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.
 
 
@@ -66,7 +66,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID prostředku a název oblasti cílového prostředku. Budete také potřebovat ID modelu, přístupový token a hodnotu vypršení platnosti, kterou jste zkopírovali z předchozího kroku.
+Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID prostředku a název oblasti cílového prostředku. ID prostředku můžete najít na kartě **vlastnosti** prostředku v Azure Portal a název oblasti můžete najít na kartě **klíče a koncový bod** . Budete také potřebovat ID modelu, přístupový token a hodnotu vypršení platnosti, kterou jste zkopírovali z předchozího kroku.
 
 ```json
 {
@@ -79,7 +79,7 @@ Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID 
 > [!NOTE]
 > Rozhraní API pro kopírování transparentně podporuje funkci [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) . To nevyžaduje žádné zvláštní zacházení, ale Všimněte si, že pokud kopírujete mezi nešifrovaným prostředkem do šifrovaného prostředku, je nutné zahrnout hlavičku požadavku `x-ms-forms-copy-degrade: true` . Pokud tato hlavička není zahrnutá, operace kopírování selže a vrátí `DataProtectionTransformServiceError` .
 
-Dostanete `202\Accepted` odpověď s hlavičkou umístění operace. Tato hodnota je adresa URL, kterou použijete ke sledování průběhu operace. Zkopírujte ho do dočasného umístění pro další krok.
+Dostanete `202\Accepted` odpověď s hlavičkou Operation-Location. Tato hodnota je adresa URL, kterou použijete ke sledování průběhu operace. Zkopírujte ho do dočasného umístění pro další krok.
 
 ```
 HTTP/1.1 202 Accepted
@@ -90,7 +90,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |Chyba|Řešení|
 |:--|:--|
-| 400/Chybný požadavek s`"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
+| 400/Chybný požadavek s `"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
 |
 
 ## <a name="track-copy-progress"></a>Sledovat průběh kopírování
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Další kroky
 
 V této příručce jste zjistili, jak používat rozhraní API pro kopírování k zálohování vlastních modelů do sekundárního prostředku pro rozpoznávání formulářů. Dále si Prozkoumejte referenční materiály k rozhraní API a podívejte se, co můžete dělat s nástrojem pro rozpoznávání formulářů.
-* [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [Referenční dokumentace REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

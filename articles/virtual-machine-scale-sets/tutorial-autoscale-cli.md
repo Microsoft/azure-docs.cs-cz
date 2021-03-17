@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 5e1cc5512eeaec058a9ce3030517391a54a7707f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 68f311a949d6c7663c5602c444d1b7b9af09dcad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016722"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI
 
@@ -26,11 +26,11 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.32 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.32 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
@@ -123,9 +123,10 @@ Připojte se přes SSH k první instanci virtuálního počítače. Pomocí para
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Po přihlášení nainstalujte nástroj **stress**. Spusťte *10 pracovních procesů * **stress**, které vygenerují zatížení CPU. Tyto pracovní procesy budou spuštěné *420* sekund, což je dostatečná doba na to, aby pravidla automatického škálování implementovala požadovanou akci.
+Po přihlášení nainstalujte nástroj **stress**. Spusťte *10 pracovních procesů* **stress**, které vygenerují zatížení CPU. Tyto pracovní procesy budou spuštěné *420* sekund, což je dostatečná doba na to, aby pravidla automatického škálování implementovala požadovanou akci.
 
 ```console
+sudo apt-get update
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```

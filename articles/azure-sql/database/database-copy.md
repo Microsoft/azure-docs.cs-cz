@@ -4,19 +4,19 @@ description: Vytvořte v Azure SQL Database na stejném serveru nebo na jiném s
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
-ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.reviewer: wiassaf
+ms.date: 03/10/2021
+ms.openlocfilehash: 1a86522975ffb7b5b2bd514402dd97a76aa2506e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225729"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014600"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -26,7 +26,10 @@ Azure SQL Database poskytuje několik metod pro vytvoření kopie existující [
 
 ## <a name="overview"></a>Přehled
 
-Kopie databáze je nekonzistentně konzistentní snímek zdrojové databáze k určitému bodu v čase po zahájení žádosti o zkopírování. Pro kopii můžete vybrat stejný server nebo jiný server. Také se můžete rozhodnout zachovat úroveň služby a výpočetní velikost zdrojové databáze nebo použít jinou výpočetní velikost v rámci stejné nebo jiné úrovně služby. Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. Přihlašovací jména, uživatele a oprávnění ve zkopírované databázi jsou spravovány nezávisle na zdrojové databázi. Kopie se vytvoří pomocí technologie geografické replikace. Po dokončení počátečního dokončování repliky se připojení geografické replikace automaticky ukončí. Všechny požadavky na použití geografické replikace se vztahují na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
+Kopie databáze je nekonzistentně konzistentní snímek zdrojové databáze k určitému bodu v čase po zahájení žádosti o zkopírování. Pro kopii můžete vybrat stejný server nebo jiný server. Také si můžete zvolit, že chcete zachovat redundanci záloh, úroveň služby a výpočetní velikost zdrojové databáze, nebo použít jinou zálohu úložiště záloh nebo výpočetní velikost v rámci stejné nebo jiné úrovně služby. Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. Přihlašovací jména, uživatele a oprávnění ve zkopírované databázi jsou spravovány nezávisle na zdrojové databázi. Kopie se vytvoří pomocí technologie geografické replikace. Po dokončení počáteční repliky se připojení geografické replikace automaticky ukončí. Všechny požadavky pro používání geografické replikace se vztahují i na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
+
+> [!NOTE]
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je teď dostupná ve verzi Public Preview v oblasti Brazílie – jih a obecně dostupná jenom v oblasti jihovýchodní Asie – Azure. Pokud je ve verzi Preview vytvořená místně redundantní nebo redundance záložního úložiště záloh zóny, kopie databáze na server v jiné oblasti Azure není podporovaná. 
 
 ## <a name="logins-in-the-database-copy"></a>Přihlašovací údaje v kopii databáze
 
@@ -36,7 +39,7 @@ Při kopírování databáze na jiný server se objekt zabezpečení, který ini
 
 Bez ohledu na cílový server se všechny uživatele databáze, jejich oprávnění a identifikátory zabezpečení (SID) zkopírují do kopie databáze. Použití [uživatelů databáze s omezením](logins-create-manage.md) pro přístup k datům zajišťuje, že zkopírovaná databáze má stejné přihlašovací údaje uživatele, takže po dokončení kopie můžete k ní hned přistupovat pomocí stejných přihlašovacích údajů.
 
-Pokud používáte přihlášení na úrovni serveru pro přístup k datům a kopírujete databázi na jiný server, nemusí přístup založený na přihlášení fungovat. K tomu může dojít, protože přihlášení na cílovém serveru neexistují nebo se liší jejich hesla a identifikátory zabezpečení (SID). Další informace o správě přihlášení po zkopírování databáze na jiný server najdete v tématu [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md). Po úspěšném dokončení operace kopírování na jiném serveru a před přemapováním dalších uživatelů se může do zkopírované databáze přihlásit pouze přihlášení přidružené k vlastníkovi databáze nebo správce serveru. Chcete-li vyřešit přihlášení a vytvořit přístup k datům po dokončení operace kopírování, přečtěte si téma [řešení přihlášení](#resolve-logins).
+Pokud používáte pro přístup k datům přihlášení na úrovni serveru a kopírujete databázi na jiný server, nemusí přístup založený na přihlášení fungovat. K tomu může dojít, protože přihlašovací údaje na cílovém serveru neexistují nebo se jejich hesla a identifikátory zabezpečení (SID) liší. Další informace o správě přihlášení po zkopírování databáze na jiný server najdete v tématu [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md). Po úspěšném dokončení operace kopírování na jiném serveru a před přemapováním dalších uživatelů se může do zkopírované databáze přihlásit pouze přihlášení přidružené k vlastníkovi databáze nebo správce serveru. Chcete-li vyřešit přihlášení a vytvořit přístup k datům po dokončení operace kopírování, přečtěte si téma [řešení přihlášení](#resolve-logins).
 
 ## <a name="copy-using-the-azure-portal"></a>Kopírování s použitím webu Azure Portal
 
@@ -79,11 +82,14 @@ Kopie databáze je asynchronní operace, ale cílová databáze je vytvořena ih
 
 Přihlaste se k hlavní databázi pomocí přihlašovacích údajů správce serveru nebo přihlašovacích údajů, které vytvořila databázi, kterou chcete zkopírovat. Aby bylo kopírování databáze úspěšné, přihlášení, která nejsou správcem serveru, musí být členy této `dbmanager` role. Další informace o přihlášeních a připojení k serveru najdete v tématu [Správa přihlášení](logins-create-manage.md).
 
-Spustit kopírování zdrojové databáze pomocí databáze pro [vytvoření... JAKO kopie](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) příkazu. Příkaz T-SQL pokračuje v běhu, dokud se nedokončí operace kopírování databáze.
+Spustit kopírování zdrojové databáze pomocí databáze pro [vytvoření... JAKO kopie](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) příkazu. Příkaz T-SQL pokračuje v běhu, dokud se nedokončí operace kopírování databáze.
 
 > [!NOTE]
 > Ukončení příkazu T-SQL neukončí operaci kopírování databáze. Chcete-li operaci ukončit, vyřaďte cílovou databázi.
 >
+
+> [!IMPORTANT]
+> Výběr redundance záložního úložiště při použití databáze CREATE jazyka T-SQL... PROTOŽE kopírování příkazu ještě není podporováno. 
 
 ### <a name="copy-to-the-same-server"></a>Kopírovat na stejný server
 
@@ -92,8 +98,23 @@ Přihlaste se k hlavní databázi pomocí přihlašovacích údajů správce ser
 Tento příkaz zkopíruje Databáze1 do nové databáze s názvem databáze 2 na stejném serveru. V závislosti na velikosti databáze může dokončení operace kopírování nějakou dobu trvat.
 
    ```sql
-   -- execute on the master database to start copying
+   -- Execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
+
+### <a name="copy-to-an-elastic-pool"></a>Kopírovat do elastického fondu
+
+Přihlaste se k hlavní databázi pomocí přihlašovacích údajů správce serveru nebo přihlašovacích údajů, které vytvořila databázi, kterou chcete zkopírovat. Aby kopírování databáze bylo úspěšné, přihlášení, která nejsou správcem serveru, musí být členy této `dbmanager` role.
+
+Tento příkaz zkopíruje Databáze1 do nové databáze s názvem databáze 2 v elastickém fondu s názvem Pool1. V závislosti na velikosti databáze může dokončení operace kopírování nějakou dobu trvat.
+
+Databáze1 může být jedna nebo ve fondu databáze. Kopírování mezi různými fondy vrstev je podporováno, ale některé kopie mezivrstev nebudou úspěšné. Můžete například zkopírovat jednu nebo elastickou databázi Standard do fondu pro obecné účely, ale standardní elastickou databázi nemůžete zkopírovat do fondu Premium. 
+
+   ```sql
+   -- Execute on the master database to start copying
+   CREATE DATABASE "Database2"
+   AS COPY OF "Database1"
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) );
    ```
 
 ### <a name="copy-to-a-different-server"></a>Kopírovat na jiný server
@@ -114,6 +135,48 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 Pomocí postupu v části [kopírování SQL Database do jiného serveru](#copy-to-a-different-server) můžete zkopírovat databázi na server v jiném předplatném pomocí jazyka T-SQL. Ujistěte se, že používáte přihlášení, které má stejné jméno a heslo jako vlastník databáze zdrojové databáze. Kromě toho musí být přihlašovací jméno členem `dbmanager` role nebo správce serveru na zdrojovém i cílovém serveru.
 
+```sql
+--Step# 1
+--Create login and user in the master database of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx'
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE dbmanager ADD MEMBER loginname;
+GO
+
+--Step# 2
+--Create the user in the source database and grant dbowner permission to the database.
+
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE db_owner ADD MEMBER loginname;
+GO
+
+--Step# 3
+--Capture the SID of the user "loginname" from master database
+
+SELECT [sid] FROM sysusers WHERE [name] = 'loginname';
+
+--Step# 4
+--Connect to Destination server.
+--Create login and user in the master database, same as of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server];
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE dbmanager ADD MEMBER loginname;
+GO
+
+--Step# 5
+--Execute the copy of database script from the destination server using the credentials created
+
+CREATE DATABASE new_database_name
+AS COPY OF source_server_name.source_database_name;
+```
+
 > [!NOTE]
 > [Azure Portal](https://portal.azure.com), PowerShell a rozhraní příkazového řádku Azure CLI nepodporují kopírování databáze do jiného předplatného.
 
@@ -122,18 +185,18 @@ Pomocí postupu v části [kopírování SQL Database do jiného serveru](#copy-
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Sledování průběhu operace kopírování
 
-Pomocí dotazu na zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [Sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)a [Sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) monitorujte proces kopírování. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování**.
+Pomocí dotazu na zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [Sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)a [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) monitorujte proces kopírování. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování**.
 
 * Pokud kopírování neproběhne úspěšně, je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na hodnotu **podezřelý**. Spusťte příkaz DROP v nové databázi a opakujte akci později.
 * Pokud je kopírování úspěšné, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na hodnotu **online**. Kopírování je dokončeno a nová databáze je běžná databáze, kterou lze změnit nezávisle na zdrojové databázi.
 
 > [!NOTE]
-> Pokud se rozhodnete zrušit kopírování během procesu, spusťte příkaz [drop Database](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) v nové databázi.
+> Pokud se rozhodnete zrušit kopírování během procesu, spusťte příkaz [drop Database](/sql/t-sql/statements/drop-database-transact-sql) v nové databázi.
 
 > [!IMPORTANT]
-> Pokud potřebujete vytvořit kopii s podstatně menším cílem služby, než má zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání aplikace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení Azure SQL Database pomocí záloh databáze](recovery-using-backups.md#geo-restore) .
+> Pokud potřebujete vytvořit kopii s podstatně menším cílem služby, než má zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání operace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení Azure SQL Database pomocí záloh databáze](recovery-using-backups.md#geo-restore) .
 
-## <a name="azure-roles-to-manage-database-copy"></a>Role Azure pro správu kopie databáze
+## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>Role a oprávnění Azure RBAC pro správu kopie databáze
 
 Chcete-li vytvořit kopii databáze, budete muset být v následujících rolích.
 
@@ -161,7 +224,7 @@ Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na por
 
 ## <a name="resolve-logins"></a>Vyřešit přihlášení
 
-Jakmile je nová databáze na cílovém serveru online, pomocí příkazu [ALTER User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) přemapujte uživatele z nové databáze na přihlašovací údaje na cílovém serveru. Pokud chcete vyřešit osamocené uživatele, přečtěte si téma [řešení potíží s osamocenými](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)uživateli. Viz také [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md).
+Jakmile je nová databáze na cílovém serveru online, pomocí příkazu [ALTER User](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) přemapujte uživatele z nové databáze na přihlašovací údaje na cílovém serveru. Pokud chcete vyřešit osamocené uživatele, přečtěte si téma [řešení potíží s osamocenými](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)uživateli. Viz také [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md).
 
 Všichni uživatelé v nové databázi si uchovávají oprávnění, která měla ve zdrojové databázi. Uživatel, který inicioval kopii databáze, se stal vlastníkem databáze nové databáze. Po úspěšném dokončení kopírování a před přemapováním dalších uživatelů se může k nové databázi přihlásit pouze vlastník databáze.
 

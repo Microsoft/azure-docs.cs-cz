@@ -1,25 +1,25 @@
 ---
 title: Zálohování a obnovení – Azure Database for MariaDB
 description: Přečtěte si o automatických zálohách a obnovení serveru Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: fee1285cfb5faefbcb8f7151186d42725d34af0a
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 1d5fc158d2e37223e048c4106206ddba4602fabb
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224505"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659933"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení v Azure Database for MariaDB
 
-Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou základní součástí jakékoli strategie kontinuity podnikových procesů, protože chrání data před náhodným poškozením nebo odstraněním.
 
 ## <a name="backups"></a>Zálohování
 
-Azure Database for MariaDB zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+Azure Database for MariaDB zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
 Tyto záložní soubory nejsou vystavené uživateli a nelze je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MariaDB. Pomocí [mysqldump](howto-migrate-dump-restore.md) můžete zkopírovat databázi.
 
@@ -27,14 +27,14 @@ Tyto záložní soubory nejsou vystavené uživateli a nelze je exportovat. Tyto
 
 #### <a name="servers-with-up-to-4-tb-storage"></a>Servery s úložištěm až 4 TB
 
-Pro servery, které podporují až 4 TB maximálního úložiště, se k úplným zálohám dochází každý týden. Rozdílové zálohy se vyskytují dvakrát denně. K zálohování protokolu transakcí dochází každých pět minut.
+Pro servery, které podporují až 4 TB maximálního úložiště, se k úplným zálohám dochází každý týden. Rozdílové zálohy se vyskytují dvakrát denně. Zálohování transakčních protokolů probíhá každých pět minut.
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Servery s až 16 TB úložiště
-V podmnožině [oblastí Azure](concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímku je naplánováno ihned po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Následné zálohy snímků jsou jenom rozdílové zálohy. 
+V podmnožině [oblastí Azure](concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové. 
 
-Rozdílové zálohování snímků se vyskytuje alespoň jednou denně. Rozdílové zálohování snímků se nevyskytuje u pevného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MariaDB) překračuje 50 GB od poslední rozdílové zálohy. Za den je povolený maximálně šest rozdílových snímků. 
+Rozdílové zálohování snímků se provádí alespoň jednou denně. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MariaDB) překračuje 50 GB od poslední rozdílové zálohy. Každý den je možné provést rozdílové zálohování snímků maximálně šestkrát. 
 
-K zálohování protokolu transakcí dochází každých pět minut. 
+Zálohování transakčních protokolů probíhá každých pět minut. 
 
 ### <a name="backup-retention"></a>Uchování záloh
 
@@ -44,18 +44,21 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 - Servery s úložištěm až 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
 -   Servery s až 16 TB úložiště uchovávají úplný snímek databáze, všechny rozdílové snímky a zálohy protokolů transakcí za posledních 8 dní.
 
+#### <a name="long-term-retention-of-backups"></a>Dlouhodobé uchovávání záloh
+Dlouhodobá doba uchovávání záloh přesahujících 35 dnů zatím není službou nativně podporována. Máte možnost použít mysqldump k vytvoření zálohy a jejich uložení na dlouhodobé uchovávání. Náš tým podpory blogged [krok za](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) krokem ke sdílení toho, jak ho můžete dosáhnout. 
+
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
-Azure Database for MariaDB poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
+Azure Database for MariaDB poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
 
-> [!IMPORTANT]
-> Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Přechod z místně redundantní do geograficky redundantního úložiště zálohování
+Místně redundantní nebo geograficky redundantní úložiště zálohování je možné nakonfigurovat pouze při vytváření serveru. Po zřízení serveru není možné změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, je jedinou podporovanou možností vytvoření nového serveru a migrace dat pomocí [výpisu paměti a obnovení](howto-migrate-dump-restore.md) .
 
 ### <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 
 Azure Database for MariaDB poskytuje úložiště zřízeného serveru jako úložiště pro zálohování až 100%, a to bez dalších nákladů. Jakékoli další využité úložiště záloh se účtuje za GB za měsíc. Pokud jste například zřídili Server s 250 GB úložiště, máte k dispozici 250 GB dalšího úložiště pro zálohy serveru bez dalších poplatků. Úložiště spotřebované za zálohy větší než 250 GB se účtuje podle [cenového modelu](https://azure.microsoft.com/pricing/details/mariadb/). 
 
-K monitorování úložiště záloh spotřebovaného serverem můžete použít metriku [použitou pro úložiště zálohování](concepts-monitoring.md) v Azure monitor k dispozici prostřednictvím Azure Portal. Metrika využitého úložiště záloh představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou a byla vysvětlena dříve. Těžká transakční aktivita na serveru může způsobit zvýšení využití úložiště zálohování bez ohledu na celkovou velikost databáze. V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště. 
+K monitorování úložiště záloh spotřebovaného serverem můžete použít metriku [použitou pro úložiště zálohování](concepts-monitoring.md) v Azure monitor k dispozici prostřednictvím Azure Portal. Metrika využitého úložiště záloh představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou a byla vysvětlena dříve. Náročné transakční aktivity na serveru můžou způsobit zvýšení využití úložiště zálohování bez ohledu na celkovou velikost databází. V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště. 
 
 Hlavním prostředkem řízení nákladů na úložiště zálohování je nastavení vhodné doby uchovávání záloh a výběr správné možnosti redundance zálohování, která bude vyhovovat požadovaným cílům obnovení. Můžete vybrat dobu uchování z rozsahu 7 až 35 dní. Pro obecné účely a paměťově optimalizované servery se můžou rozhodnout pro zálohování geograficky redundantního úložiště.
 
@@ -71,7 +74,7 @@ K dispozici jsou dva typy obnovení:
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
 > [!IMPORTANT]
-> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
@@ -87,7 +90,12 @@ Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, poku
 
 Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Geografické obnovení využívá nejnovější zálohu serveru. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
 
+> [!IMPORTANT]
+>Pokud se u nově vytvořeného serveru provede geografické obnovení, může počáteční synchronizace zálohování trvat více než 24 hodin v závislosti na velikosti dat, protože počáteční kopie úplného zálohování snímku je mnohem vyšší. Následné zálohy snímků jsou přírůstkové kopírování, takže obnovení jsou rychlejší po 24 hodinách vytváření serveru. Pokud vyhodnocujete geografické obnovení, abyste definovali RTO, doporučujeme, abyste počkali a vyhodnotili geografické obnovení **jenom po 24 hodinách** vytváření serveru pro lepší odhady.
+
 Během geografického obnovení můžou konfigurace serveru, které je možné změnit, zahrnovat výpočetní generování, vCore, dobu uchování záloh a možnosti redundance zálohování. Změna cenové úrovně (Basic, Pro obecné účely nebo paměťově optimalizovaná) nebo velikosti úložiště během geografického obnovení není podporovaná.
+
+Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
 ### <a name="perform-post-restore-tasks"></a>Provádění úloh po obnovení
 

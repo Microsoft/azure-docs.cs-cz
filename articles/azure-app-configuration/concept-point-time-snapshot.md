@@ -3,17 +3,17 @@ title: Načtení párů klíč-hodnota z určitého bodu v čase
 titleSuffix: Azure App Configuration
 description: Načte staré páry klíč-hodnota pomocí snímků v čase v konfiguraci aplikace Azure, které udržují záznam změn klíčových hodnot.
 services: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/05/2020
+ms.openlocfilehash: fa2dbb11b3b8b9afd90c7f6fe3ffe77e2e57c4e6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586558"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929893"
 ---
 # <a name="point-in-time-snapshot"></a>Snímek k určitému časovému okamžiku
 
@@ -23,31 +23,29 @@ Konfigurace aplikace Azure udržuje záznam změn provedených u klíčových ho
 
 Pomocí Azure Portal nebo CLI můžete načíst minulé hodnoty klíč-hodnota. V Azure CLI použijte `az appconfig revision list` a přidejte vhodné parametry pro načtení požadovaných hodnot.  Zadáním názvu úložiště ( `--name <app-config-store-name>` ) nebo pomocí připojovacího řetězce () zadejte instanci Azure App Configuration `--connection-string <your-connection-string>` . Omezte výstup zadáním určitého bodu v čase ( `--datetime` ) a zadáním maximálního počtu položek, které se mají vrátit ( `--top` ).
 
-Pokud nemáte rozhraní příkazového řádku Azure v místním počítači nainstalováno, můžete volitelně použít Azure Cloud Shell.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Pokud nemáte rozhraní příkazového řádku Azure v místním počítači nainstalováno, můžete volitelně použít [Azure Cloud Shell](../cloud-shell/overview.md).
 
 Načte všechny zaznamenané změny hodnot vašich klíčů.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 Načte všechny zaznamenané změny pro klíč `environment` a popisky `test` a `prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 Načte všechny zaznamenané změny v hierarchickém klíčovém prostoru `environment:prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 Načte všechny zaznamenané změny pro klíč v `color` určitém časovém okamžiku.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 
@@ -60,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)

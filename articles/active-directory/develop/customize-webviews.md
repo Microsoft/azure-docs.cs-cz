@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85478123"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postupy: přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
@@ -36,7 +36,7 @@ Pro iOS a macOS:
 - [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MSAL pro macOS podporuje jenom `WKWebView` starší verze operačního systému. `ASWebAuthenticationSession`je podporován pouze v macOS 10,15 a vyšších. 
+MSAL pro macOS podporuje jenom `WKWebView` starší verze operačního systému. `ASWebAuthenticationSession` je podporován pouze v macOS 10,15 a vyšších. 
 
 ## <a name="system-browsers"></a>Systémové prohlížeče
 
@@ -61,8 +61,8 @@ Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený
 
 Vývojáři můžou také vybrat jiný systémový prohlížeč pro aplikace MSAL:
 
-- `SFAuthenticationSession`je verze iOS 11 systému `ASWebAuthenticationSession` .
-- `SFSafariViewController`je obecnější a poskytuje rozhraní pro procházení webu a dá se použít i pro účely přihlášení. V systému iOS 9 a 10 se soubory cookie a další webová data sdílí s Safari, ale ne v iOS 11 a novějších.
+- `SFAuthenticationSession` je verze iOS 11 systému `ASWebAuthenticationSession` .
+- `SFSafariViewController` je obecnější a poskytuje rozhraní pro procházení webu a dá se použít i pro účely přihlášení. V systému iOS 9 a 10 se soubory cookie a další webová data sdílí s Safari, ale ne v iOS 11 a novějších.
 
 ## <a name="in-app-browser"></a>Prohlížeč v aplikaci
 
@@ -96,7 +96,7 @@ Každý požadavek lze nakonfigurovat tak, aby potlačil výchozí prohlížeč 
 
 Kromě toho MSAL podporuje předávání vlastní nastavením `WKWebView` `MSALInteractiveTokenParameters.webviewParameters.customWebView` Vlastnosti.
 
-Příklad:
+Například:
 
 Objective-C
 ```objc

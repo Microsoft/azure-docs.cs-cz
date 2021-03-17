@@ -4,10 +4,10 @@ description: Naučte se, jak do Azure DevTest Labs přidat úložiště GitHubu 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483138"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro uložení vlastních artefaktů a šablon Správce prostředků
@@ -67,7 +67,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Na stránce druhá **úložiště** zadejte následující informace:
-   1. **Název**. Zadejte název úložiště.
+   1. **Název:** Zadejte název úložiště.
    2. **Adresa Url git clone** Zadejte adresu URL klonu Git HTTPS, kterou jste zkopírovali dříve z GitHubu nebo z Azure DevOps Services.
    3. **Větev**. Pokud chcete získat definice, zadejte větev.
    4. **Osobní přístupový token** Zadejte osobní přístupový token, který jste už dříve získali z GitHubu nebo Azure DevOps Services.

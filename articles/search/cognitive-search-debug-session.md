@@ -3,17 +3,17 @@ title: Koncepty relací ladění (Preview)
 titleSuffix: Azure Cognitive Search
 description: Relace ladění, ke kterým se dostanete prostřednictvím Azure Portal, poskytuje rozhraní IDE, jako je prostředí, ve kterém můžete identifikovat a opravovat chyby, ověřovat změny a doručovat změny do dovednosti v kanálu pro rozšíření AI. Relace ladění jsou ve verzi Preview.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/05/2020
+ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560370"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057616"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Ladění relací v Azure Kognitivní hledání
 
@@ -35,8 +35,7 @@ Pokud kanál pro obohacení neobsahuje žádné chyby, ladicí relaci lze použ�
 
 Chcete-li spustit ladicí relaci, je nutné mít existující kanál rozšíření AI, včetně; zdroj dat, dovednosti, indexer a index. Chcete-li nakonfigurovat relaci ladění, je nutné pojmenovat relaci a zadat účet úložiště pro obecné účely, který bude použit k ukládání dovedností do mezipaměti během spuštění indexeru. Bude také nutné vybrat indexer, který bude spuštěn. Indexer má odkazy uložené ve zdroji dat, dovednosti a indexu. Relace ladění bude ve výchozím nastavení použita na první dokument ve zdroji dat, nebo můžete do tohoto zdroje zadat dokument, který chcete procházet.
 
-> [!div class="mx-imgBorder"]
-> ![Vytvoření relace ladění](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Vytvoření relace ladění":::
 
 ## <a name="debug-session-features"></a>Ladění funkcí relace
 
@@ -52,8 +51,7 @@ Zobrazení **grafu dovedností** poskytuje hierarchickou a vizuální reprezenta
 
 Výběr dovednosti v grafu zvýrazní dovednosti, které jsou k ní připojené, uzly, které vytvářejí jeho vstupy, a uzly, které přijímají jeho výstupy. Každý uzel dovedností zobrazuje jeho typ, chyby, varování a počty spuštění. **Graf dovedností** je místo, kde vyberete, která dovednost se má ladit nebo vylepšit. Když vyberete dovednost, zobrazí se v podokně Podrobnosti dovednosti napravo od grafu.
 
-> [!div class="mx-imgBorder"]
-> ![Graf dovedností](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Vytvoření relace ladění":::
 
 ## <a name="skill-details"></a>Podrobnosti dovednosti
 
@@ -75,8 +73,7 @@ Při sestavování vlastní dovednosti nebo ladění chyby s vlastní dovednost�
 
 Podokno **obohacení struktury dat** zobrazuje obohacení dokumentu prostřednictvím dovednosti, podrobně popisuje kontext pro každé rozšíření a původní dovednost. **Vyhodnocovací filtr výrazů** lze také použít k zobrazení obsahu pro každé obohacení.
 
-> [!div class="mx-imgBorder"]
-> ![Obohacená datová struktura](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Vytvoření relace ladění":::
 
 ## <a name="expression-evaluator"></a>Vyhodnocení výrazu
 
@@ -95,4 +92,4 @@ Ladění sesisons práce s využitím všech všeobecně dostupných zdrojů dat
 Teď, když rozumíte prvkům ladicích relací, vyzkoušejte si kurz pro praktické prostředí.
 
 > [!div class="nextstepaction"]
-> [Kurz k procházení funkcí cvičení ladění](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)
+> [Kurz k procházení funkcí cvičení ladění](./cognitive-search-tutorial-debug-sessions.md)

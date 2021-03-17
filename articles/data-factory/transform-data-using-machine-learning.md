@@ -3,19 +3,16 @@ title: Vytváření prediktivních datových kanálů
 description: Naučte se vytvořit prediktivní kanál pomocí Azure Machine Learning Studio (Classic) – aktivita spuštění dávky v Azure Data Factory.
 author: nabhishek
 ms.author: abnarain
-manager: shwang
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
-ms.openlocfilehash: dabb7b8cd8023fe88a8c8d6dc507a09623bd11dd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 37a31891c3c1d812b396548036c4b59cc6523c2d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537676"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375659"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Vytvoření prediktivního kanálu pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory
 
@@ -126,12 +123,12 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky Azure Ma
 }
 ```
 
-| Vlastnost          | Popis                              | Povinné |
+| Vlastnost          | Popis                              | Vyžadováno |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | Název aktivity v kanálu     | Ano      |
-| Popis       | Text popisující, co aktivita dělá.  | No       |
-| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Ano      |
-| linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning Studio (Classic). Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
+| name              | Název aktivity v kanálu     | Yes      |
+| description       | Text popisující, co aktivita dělá.  | No       |
+| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Yes      |
+| linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning Studio (Classic). Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | webServiceInputs  | Páry klíč-hodnota, mapování názvů vstupů webové služby Azure Machine Learning Studio (Classic). Klíč musí odpovídat vstupním parametrům definovaným v publikované webové službě Azure Machine Learning Studio (Classic). Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění vstupních objektů BLOB. | No       |
 | webServiceOutputs | Páry klíč-hodnota, mapování názvů Azure Machine Learning Studio (klasických) výstupů webové služby. Klíč musí odpovídat výstupním parametrům definovaným v publikované webové službě Azure Machine Learning Studio (Classic). Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění výstupního objektu BLOB. | No       |
 | globalParameters  | Páry klíč-hodnota, které mají být předány do koncového bodu služby Azure Machine Learning Studio (Classic) Batch. Klíče musí odpovídat názvům parametrů webové služby, které jsou definovány v publikované webové službě Azure Machine Learning Studio (Classic). Hodnoty se předávají do Azure Machine Learning Studio vlastnosti GlobalParameters (Classic) žádosti o spuštění dávky. | No       |
@@ -190,7 +187,7 @@ V tomto scénáři předpovědi webová služba Azure Machine Learning Studio (C
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář 2: experimenty pomocí modulů pro čtení a zápis, které odkazují na data v různých úložištích
-Dalším běžným scénářem při vytváření Azure Machine Learning Studio (klasických) experimentů je použít Import dat a výstupní datové moduly. Modul Import dat slouží k načtení dat do experimentu a modulu výstupních dat je uložit data z experimentů. Podrobnosti o importu dat a modulech výstupních dat najdete v tématech [Import dat](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [výstupní data](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN.
+Dalším běžným scénářem při vytváření Azure Machine Learning Studio (klasických) experimentů je použít Import dat a výstupní datové moduly. Modul Import dat slouží k načtení dat do experimentu a modulu výstupních dat je uložit data z experimentů. Podrobnosti o importu dat a modulech výstupních dat najdete v tématech [Import dat](/azure/machine-learning/studio-module-reference/import-data) a [výstupní data](/azure/machine-learning/studio-module-reference/export-data) v knihovně MSDN.
 
 Při použití modulů importovat data a Output data je vhodné použít parametr webové služby pro každou vlastnost těchto modulů. Tyto webové parametry umožňují konfigurovat hodnoty za běhu. Můžete například vytvořit experiment s modulem importu dat, který používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby budete chtít povolit uživatelům webové služby, aby určili jiný logický SQL Server s názvem `YYY.database.windows.net` . Tuto hodnotu můžete nakonfigurovat pomocí parametru webové služby.
 

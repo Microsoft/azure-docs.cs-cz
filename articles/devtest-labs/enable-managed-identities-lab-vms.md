@@ -3,12 +3,12 @@ title: Povolení spravovaných identit na virtuálních počítačích v testova
 description: Tento článek ukazuje, jak vlastník testovacího prostředí může povolit uživatelsky přiřazené identity na virtuálních počítačích testovacího prostředí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475998"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88717624"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Povolte uživatelem přiřazené spravované identity na virtuálních počítačích testovacího prostředí v Azure DevTest Labs
 Jako vlastník testovacího prostředí můžete povolit uživatelsky přiřazené spravované identity na virtuálních počítačích testovacího prostředí v Azure DevTest Labs.
@@ -25,14 +25,16 @@ Pokud chcete přidat spravovanou identitu přiřazenou uživatelem pro virtuáln
 
 1. [Vytvoření spravované identity přiřazené uživatelem v předplatném](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 1. Přejděte na stránku **Konfigurace a zásady** pro testovací prostředí.
-2. V nabídce vlevo vyberte **identita (Preview)** .
-3. Vyberte kartu **virtuální počítač** .
-4. Vyberte možnost **Přidat** a vyberte existující identitu z předem vyplněných rozevíracích seznamů. 
+1. V nabídce vlevo vyberte **identita (Preview)** .
+1. Vyberte kartu **virtuální počítač** .
+1. Vyberte možnost **Přidat** a vyberte existující identitu z předem vyplněných rozevíracích seznamů. 
 
-    ![Tlačítko Přidat identitu](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. Z rozevíracího seznamu vyberte existující **identitu spravovanou uživatelem** a vyberte **OK**. 
+    > [!div class="mx-imgBorder"]
+    > ![Tlačítko Přidat identitu](./media/enable-managed-identities-lab-vms/add-identity-button.png)
+1. Z rozevíracího seznamu vyberte existující **identitu spravovanou uživatelem** a vyberte **OK**. 
 
-    ![Přidat identitu](./media/enable-managed-identities-lab-vms/add-identity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Přidat identitu](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>Použití rozhraní API
 

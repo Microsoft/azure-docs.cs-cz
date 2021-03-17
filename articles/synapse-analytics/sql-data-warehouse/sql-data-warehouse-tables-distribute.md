@@ -1,6 +1,6 @@
 ---
 title: Doprovodné materiály k návrhu distribuovaných tabulek
-description: Doporučení pro návrh distribuovaných tabulek distribuovaných algoritmem hash a kruhové dotazování v synapse fondu SQL.
+description: Doporučení pro návrh distribuovaných tabulek distribuovaných pomocí algoritmu hash a kruhové dotazování pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214005"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673565"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Pokyny pro návrh distribuovaných tabulek ve fondu SQL synapse
+# <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Pokyny pro návrh distribuovaných tabulek pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-Doporučení pro návrh distribuovaných tabulek distribuovaných algoritmem hash a kruhové dotazování v synapse fondech SQL.
+Doporučení pro návrh distribuovaných tabulek distribuovaných algoritmem hash a kruhové dotazování ve vyhrazených fondech SQL
 
-V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat v synapse fondu SQL.Další informace najdete v tématu [Architektura služby MPP (synapse analyticsd Parallel Processing) Azure](massively-parallel-processing-mpp-architecture.md).
+Tento článek předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat ve vyhrazeném fondu SQL.  Další informace najdete v tématu [Architektura Azure synapse Analytics](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Co je distribuovaná tabulka?
 
@@ -32,11 +32,11 @@ Distribuovaná tabulka se zobrazí jako jediná tabulka, ale tyto řádky jsou v
 
 Další možností úložiště tabulek je replikace malé tabulky ve všech výpočetních uzlech. Další informace najdete v tématu [pokyny k návrhu replikovaných tabulek](design-guidance-for-replicated-tables.md). Pokud si chcete rychle vybrat ze tří možností, přečtěte si téma distribuované tabulky v tématu [Přehled tabulek](sql-data-warehouse-tables-overview.md).
 
-Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování na data.Zvažte například tyto otázky:
+Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování na data.  Zvažte například tyto otázky:
 
 - Jak velká je tabulka?
 - Jak často je tabulka aktualizována?
-- Mám tabulky faktů a dimenzí v synapse fondu SQL?
+- Mám tabulky faktů a dimenzí ve vyhrazeném fondu SQL?
 
 ### <a name="hash-distributed"></a>Hodnota hash distribuována
 
@@ -44,7 +44,7 @@ Tabulka distribuovaná algoritmem hash distribuuje řádky tabulky napříč vý
 
 ![Distribuovaná tabulka](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Distribuovaná tabulka")  
 
-Vzhledem k tomu, že identické hodnoty vždycky vycházejí z hodnoty hash na stejnou distribuci, má datový sklad integrované znalosti o umístěních řádků. V synapse fondu SQL se tato znalost používá k minimalizaci přesunu dat během dotazů, což zvyšuje výkon dotazů.
+Vzhledem k tomu, že identické hodnoty vždycky vycházejí z hodnoty hash na stejnou distribuci, SQL Analytics má integrované znalosti o umístěních řádků. Ve vyhrazeném fondu SQL se tato znalost používá k minimalizaci přesunu dat během dotazů, což zvyšuje výkon dotazů.
 
 Tabulky distribuované pomocí algoritmu hash fungují dobře u velkých tabulek faktů ve schématu hvězdičky. Mohou mít velmi velký počet řádků a stále dosahovat vysokého výkonu. K dispozici jsou samozřejmě některé faktory návrhu, které vám pomohou získat výkon, který je distribuován distribuovaným systémům. Výběr dobrého distribučního sloupce je jedním z těchto aspektů, které jsou popsány v tomto článku.
 
@@ -68,7 +68,7 @@ V následujících scénářích zvažte použití distribuce kruhového dotazov
 - Pokud je spojení méně významné než jiné spojení v dotazu
 - Když je tabulka dočasná pracovní tabulka
 
-Kurz [načtení dat New York taxislužby města](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načtení dat do pracovní tabulky kruhového dotazování.
+Kurz [načtení dat New York taxislužby města](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse) poskytuje příklad načtení dat do pracovní tabulky kruhového dotazování.
 
 ## <a name="choosing-a-distribution-column"></a>Výběr distribučního sloupce
 
@@ -96,7 +96,7 @@ Data uložená v distribučním sloupci lze aktualizovat. Aktualizace dat ve slo
 
 Výběr distribučního sloupce je důležité rozhodnutí o návrhu, protože hodnoty v tomto sloupci určují, jak jsou řádky distribuovány. Nejlepší volba závisí na několika faktorech a obvykle zahrnuje kompromisy. Po výběru distribučního sloupce jej nelze změnit.  
 
-Pokud jste nevybrali nejlepší sloupec poprvé, můžete pomocí [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) znovu vytvořit tabulku s jiným distribučním sloupcem.
+Pokud jste nevybrali nejlepší sloupec poprvé, můžete pomocí [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) znovu vytvořit tabulku s jiným distribučním sloupcem.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Volba distribučního sloupce s daty, která se rovnoměrně distribuuje
 
@@ -113,7 +113,7 @@ Pro vyrovnávání paralelního zpracování vyberte distribuční sloupec, kter
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Výběr distribučního sloupce, který minimalizuje pohyb dat
 
-Chcete-li získat správné dotazy na výsledky dotazu, může přesunout data z jednoho výpočetního uzlu do jiného. K přesunu dat často dochází, když dotazy mají spojení a agregace v distribuovaných tabulkách. Výběr distribučního sloupce, který pomáhá minimalizovat pohyb dat, je jedním z nejdůležitějších strategií pro optimalizaci výkonu synapse fondu SQL.
+Chcete-li získat správné dotazy na výsledky dotazu, může přesunout data z jednoho výpočetního uzlu do jiného. K přesunu dat často dochází, když dotazy mají spojení a agregace v distribuovaných tabulkách. Výběr distribučního sloupce, který pomáhá minimalizovat pohyb dat, je jedním z nejdůležitějších strategií pro optimalizaci výkonu vyhrazeného fondu SQL.
 
 Chcete-li snížit pohyb dat, vyberte distribuční sloupec:
 
@@ -133,7 +133,7 @@ Po načtení dat do tabulky distribuované pomocí algoritmu hash zkontrolujte, 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Určení, jestli má tabulka zešikmení dat
 
-Rychlý způsob, jak zjistit, zda je možné data zkosit, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Následující kód SQL vrátí počet řádků tabulky, které jsou uloženy v každé z distribucí 60. U vyváženého výkonu by se měly řádky v distribuované tabulce rovnoměrně rozložit napříč všemi distribucí.
+Rychlý způsob, jak zjistit, zda je možné data zkosit, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Následující kód SQL vrátí počet řádků tabulky, které jsou uloženy v každé z distribucí 60. U vyváženého výkonu by se měly řádky v distribuované tabulce rovnoměrně rozložit napříč všemi distribucí.
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ Vzhledem k tomu, že nemůžete změnit distribuční sloupec v existující tab
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>Opětovné vytvoření tabulky s novým distribučním sloupcem
 
-V tomto příkladu se používá [Create Table jako vybrat](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k opětovnému vytvoření tabulky s jiným sloupcem pro distribuci algoritmem hash.
+V tomto příkladu se používá [Create Table jako vybrat](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) k opětovnému vytvoření tabulky s jiným sloupcem pro distribuci algoritmem hash.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Chcete-li vytvořit distribuovanou tabulku, použijte jeden z následujících příkazů:
 
-- [CREATE TABLE (Synapseový fond SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE jako SELECT (synapse SQL fond)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE jako SELECT (vyhrazený fond SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

@@ -1,17 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Database for MariaDB
 description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8485907eba75f80c8f0ed4fd0cc7368c6147b9fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98eacad1b8a10be175846401eaa733c888f765e1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532174"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661615"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB Rozšířená ochrana před internetovými útoky
 
@@ -42,6 +42,6 @@ Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
 * Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) . 
-* Konfigurace [Azure Database for MariaDB rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal  
+* Konfigurace [Azure Database for MariaDB rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal

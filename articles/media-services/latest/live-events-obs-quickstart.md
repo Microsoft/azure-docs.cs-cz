@@ -1,20 +1,22 @@
 ---
-title: Vytvoření živého datového proudu Azure Media Services pomocí OBS studia
+title: Vytvoření živého datového proudu pomocí OBS studia
 description: Naučte se vytvářet Azure Media Services živý datový proud pomocí portálu a OBS Studio.
 services: media-services
 ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 04/16/2020
-ms.openlocfilehash: 671609fc1db7325823e8ac40b2b8153682596588
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 08/31/2020
+ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147813"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956068"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Vytvoření živého datového proudu Azure Media Services pomocí OBS
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento rychlý Start vám pomůže vytvořit Azure Media Services živý datový proud pomocí Azure Portal a otevřít OBS (Open pro vysílání studia). Předpokládá, že máte předplatné Azure a máte vytvořený účet Media Services.
 
@@ -28,7 +30,7 @@ V tomto rychlém startu pokryjeme:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

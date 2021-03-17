@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: bb7ebee67d65ab37dc037437b7c35d8c19c53096
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137021"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375352"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit regresní model založený na kompletu rozhodovacích stromů.
 
@@ -38,19 +38,19 @@ Stromy pro rozhodování mají tyto výhody:
 
 Tento regresní model se skládá ze kompletu rozhodovacích stromů. U každého stromu v doménové struktuře regrese se jako předpověď vytvoří Gaussovské distribuce. Agregace se provádí přes kompletování stromů, aby bylo možné najít Gaussovské rozdělení, které je nejblíže kombinované distribuci pro všechny stromy v modelu.
 
-Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [rozhodovací doménové struktury: jednotná architektura pro klasifikaci, regresi, odhad hustoty, učení kurzů a vzdělávání s částečně kontrolovaným učením](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#) .
+Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [doménové struktury pro rozhodování: jednotné rozhraní pro klasifikaci, regresi, odhad hustoty, výukové učení a Semi-Supervised učení.](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat regresní model doménové struktury
 
-1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v návrháři v části **Machine Learning**, **inicializovat model**a **regresi**.
+1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v návrháři v části **Machine Learning** , **inicializovat model** a **regresi**.
 
-2. Otevřete vlastnosti modulu a pro **metodu převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.
+2. Otevřete vlastnosti modulu a pro **metodu převzorkování** vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.
 
-    - Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. Každý strom v doménové struktuře regrese má za následek Gaussovské rozdělení způsobem předpovědi. Agregace je najít Gaussovské, jehož první dvě momenty odpovídá momentu kombinace Gaussovské distribuce, která je dána kombinací všech distribucí vrácených jednotlivými stromy.
+    - Zaznamenání **do zavazadla** se také označuje jako *agregace Bootstrap*. Každý strom v doménové struktuře regrese má za následek Gaussovské rozdělení způsobem předpovědi. Agregace je najít Gaussovské, jehož první dvě momenty odpovídá momentu kombinace Gaussovské distribuce, která je dána kombinací všech distribucí vrácených jednotlivými stromy.
 
          Další informace najdete v tématu Wikipedii pro [agregaci Bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
-    - **Replikace: v**rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.
+    - **Replikace: v** rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.
 
          Další informace o procesu školení s možností **replikace** najdete v tématu [rozhodovací doménové struktury pro počítačové zpracování obrazu a analýzu lékařských imagí. Criminisi a J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/)..
 
@@ -60,29 +60,29 @@ Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci 
 
       Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty. Tyto hodnoty jste pravděpodobně dozvěděli experimentováním nebo je přijali jako doprovodné materiály.
 
-    - **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků. 
+    - **Rozsah parametrů** : tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků. 
 
 
 
-4. Pro **počet rozhodovacích stromů**určete celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se zvýší.
+4. Pro **počet rozhodovacích stromů** určete celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se zvýší.
 
     > [!TIP]
-    > Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, můžete hodnotu nastavit na 1. to však znamená, že bude vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a žádné další iterace nebudou provedeny.
+    > Pokud nastavíte hodnotu 1; to však znamená, že bude vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a žádné další iterace nebudou provedeny.
 
-5. Pro **maximální hloubku rozhodovacích stromů**zadejte číslo, abyste omezili maximální hloubku rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
+5. Pro **maximální hloubku rozhodovacích stromů** zadejte číslo, abyste omezili maximální hloubku rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
 
-6. Pro **počet náhodných rozdělení na uzel**zadejte počet rozdělení, který se má použít při sestavování jednotlivých uzlů stromu. *Rozdělení* znamená, že funkce v každé úrovni stromu (uzlu) jsou náhodně děleny.
+6. Pro **počet náhodných rozdělení na uzel** zadejte počet rozdělení, který se má použít při sestavování jednotlivých uzlů stromu. *Rozdělení* znamená, že funkce v každé úrovni stromu (uzlu) jsou náhodně děleny.
 
-7. Pro **minimální počet vzorků na uzel listu**Určete minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.
+7. Pro **minimální počet vzorků na uzel listu** Určete minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.
 
      Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.
 
 
 9. Výukové modely:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

@@ -3,17 +3,16 @@ title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Microsoft 
 description: Tento článek poskytuje informace o tom, jak připojit Apache Flink k centru událostí Azure.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d382270248e95b1b973f57f67ebf81160f03a16
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320134"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369501"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink se službou Azure Event Hubs pro Apache Kafka
-V tomto kurzu se dozvíte, jak připojit Apache Flink k centru událostí beze změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)..
+V tomto kurzu se dozvíte, jak připojit Apache Flink k centru událostí beze změny klientů protokolu nebo spuštění vlastních clusterů. Další informace o podpoře Event Hubs "pro Apache Kafka příjemce protokolu najdete v tématu [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md).
 
-Jednou z klíčových výhod používání Apache Kafka je ekosystém rozhraní, ke kterému se může připojit. Event Hubs kombinuje flexibilitu Kafka se škálovatelností, konzistencí a podporou ekosystému Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -25,13 +24,13 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 * Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7 +](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 * [Stažení](https://maven.apache.org/download.cgi) a [instalace](https://maven.apache.org/install.html) binárního archivu Maven
@@ -72,6 +71,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 ### <a name="run-producer-from-the-command-line"></a>Spustit producenta z příkazového řádku
 
 Pokud chcete spustit producenta z příkazového řádku, vygenerujte JAR a pak ho spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním nezbytných Kafka JAR do cesty k cestě):
@@ -103,6 +105,10 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ### <a name="run-consumer-from-the-command-line"></a>Spustit příjemce z příkazového řádku
 
 Pokud chcete spustit příjemce z příkazového řádku, vygenerujte JAR a pak spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním potřebných Kafka JAR do cesty pro cestu):
@@ -123,5 +129,5 @@ Další informace o Event Hubs pro Kafka najdete v následujících článcích:
 - [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
 - [Integrace Kafka Connect do centra událostí](event-hubs-kafka-connect-tutorial.md)
 - [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Připojení datových proudů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
+- [Připojení Akka Streams k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
 - [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md)

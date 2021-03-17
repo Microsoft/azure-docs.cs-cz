@@ -1,18 +1,16 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí Azure Portal
 description: Tento článek popisuje, jak použít Azure Portal ke správě účtů Data Lake Analytics, zdrojů dat, uživatelů a & úloh.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531205"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218421"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,7 +25,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 ### <a name="create-an-account"></a>Vytvoření účtu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Klikněte na **vytvořit prostředek**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
    1. **Název**: název účtu Data Lake Analytics.
@@ -91,9 +89,9 @@ Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například
 7. Zkontrolujte všechny vybrané změny a pak klikněte na **Spustit**.
 8. Po dokončení průvodce klikněte na **Hotovo**.
 
-## <a name="manage-role-based-access-control"></a>Správa Access Control na základě rolí
+## <a name="manage-azure-role-based-access-control"></a>Správa řízení přístupu na základě role v Azure
 
-Stejně jako jiné služby Azure můžete použít Access Control na základě rolí (RBAC) k řízení interakce uživatelů se službou.
+Stejně jako jiné služby Azure můžete použít řízení přístupu na základě role Azure (Azure RBAC) k řízení interakce uživatelů se službou.
 
 Standardní role Azure mají tyto možnosti:
 * **Vlastník**: může odesílat úlohy, monitorovat úlohy, rušit úlohy od libovolného uživatele a nakonfigurovat účet.

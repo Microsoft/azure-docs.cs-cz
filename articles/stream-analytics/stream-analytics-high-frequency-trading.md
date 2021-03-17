@@ -1,19 +1,18 @@
 ---
 title: Vysoká frekvence obchodování pomocí Azure Stream Analytics
 description: Provádění trénování a vyhodnocování modelu lineární regrese v úloze Azure Stream Analytics
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 2196fe825570c371f4590868e994780b16a9c552
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040941"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020413"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Simulace vysokofrekvenčního obchodování pomocí Stream Analytics
 Kombinace jazyka SQL s uživatelem definovanými funkcemi (UDF) a uživatelem definovanými agregacemi (UDA) JavaScriptu v Azure Stream Analytics umožňuje uživatelům provádět pokročilé analýzy. Mezi pokročilé analýzy může patřit online trénování a vyhodnocování machine learningu a také simulace stavových procesů. Tento článek popisuje, jak provádět lineární regresi v úloze Azure Stream Analytics, která provádí průběžné trénování a vyhodnocování ve scénáři vysokofrekvenčního obchodování.
@@ -455,7 +454,7 @@ FROM simulation /* output trade simulation to PBI */
 ![Vizuál grafu Power BI PNL](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Realistický model vysokofrekvenčního obchodování můžeme implementovat pomocí mírně složitého dotazu v Azure Stream Analytics. Vzhledem k chybějící integrované funkci lineární regrese musíme model zjednodušit a místo pěti vstupních proměnných použít dvě. Odhodlaný uživatel však možná dokáže jako UDA JavaScriptu implementovat i sofistikovanější algoritmy vyšších dimenzí. 
 
 Za zmínku stojí, že většinu dotazu, kromě UDA JavaScriptu, je možné testovat a ladit v sadě Visual Studio prostřednictvím [nástrojů Azure Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Od napsání počátečního dotazu strávil autor testováním a laděním dotazu v sadě Visual Studio méně než 30 minut. 

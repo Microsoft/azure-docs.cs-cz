@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420001"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708479"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -29,7 +29,7 @@ Správce privilegovaných rolí může přizpůsobovat Privileged Identity Manag
 
 Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktualizuje na novou verzi, která se shoduje s prostředími pro role prostředků Azure. Tím se vytvoří další funkce a také [změny stávajícího rozhraní API](azure-ad-roles-features.md#api-changes). I když je nová verze zahrnuta, postupy, které provedete v tomto článku, závisí na verzi Privileged Identity Management, kterou máte v současnosti k dispozici. Podle pokynů v této části určete, kterou verzi Privileged Identity Management máte. Po zjištění vaší verze Privileged Identity Management můžete vybrat postupy v tomto článku, které odpovídají této verzi.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../roles/permissions-reference.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
   [![Vyberte Azure AD > Privileged Identity Management.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -42,9 +42,9 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro ro
 
 Pomocí těchto kroků otevřete nastavení role Azure AD.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
-gt
-1. Otevřete **Azure AD Privileged Identity Management** &gt; Nastavení role **role Azure AD** &gt; **Role settings**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../roles/permissions-reference.md#privileged-role-administrator) .
+
+1. Otevřete **Azure AD Privileged Identity Management** &gt; Nastavení role **role Azure AD** &gt; .
 
     ![Stránka nastavení role se seznamem rolí Azure AD](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -81,7 +81,7 @@ A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazen�
 
 ## <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure AD pro dva různé scénáře.
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat Multi-Factor Authentication aktivnímu přiřazení
 
@@ -91,7 +91,7 @@ Aby se zajistilo, že správce naplní přiřazení, říká, že jsou k němu p
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
 
-Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
+Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, kdo používají Multi-Factor Authentication Azure AD, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
 
 Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** na kartě přiřazení v **nastavení upravit roli**.
 
@@ -123,7 +123,7 @@ Pokud nastavíte více schvalovatelů, schválení se dokončí, jakmile jeden z
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
-## <a name="open-role-settings"></a>Otevřít nastavení role
+## <a name="open-role-settings-previous-version"></a>Otevřít nastavení role (předchozí verze)
 
 Pomocí těchto kroků otevřete nastavení role Azure AD.
 
@@ -167,8 +167,8 @@ Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávn
 
 Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 
-- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.com ale ne vždycky), se nemůžou zaregistrovat pro Azure Multi-Factor Authentication. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
-- Nemůžete zakázat Azure Multi-Factor Authentication pro role s vysokou úrovní oprávnění pro Azure AD a Office 365. Tato bezpečnostní funkce pomáhá chránit následující role:  
+- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.com ale ne vždycky), se nemůžou zaregistrovat pro Multi-Factor Authentication Azure AD. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
+- Nemůžete zakázat Multi-Factor Authentication Azure AD pro role s vysokou úrovní oprávnění pro Azure AD a Microsoft 365. Tato bezpečnostní funkce pomáhá chránit následující role:  
   
   - Správce Azure Information Protection
   - Správce fakturace
@@ -196,7 +196,7 @@ Pokud chcete delegovat požadované schválení pro aktivaci role, postupujte po
 
 1. Nastavte přepínač **vyžadovat schválení** na **povoleno**. Podokno se rozbalí s možnostmi pro výběr schvalovatelů.
 
-    ![Role Azure AD – nastavení-vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Snímek obrazovky, který zobrazuje přepínač "vyžadovat schválení" s vybranou možnost povolit](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     Pokud nezadáte žádné schvalovatele, bude správce privilegovaných rolí výchozím schvalovatelem a pak bude vyžadován ke schválení všech žádostí o aktivaci této role.
 

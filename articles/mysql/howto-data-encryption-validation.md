@@ -1,17 +1,17 @@
 ---
 title: Jak zajistit ověřování Azure Database for MySQLho šifrování dat
 description: Naučte se, jak ověřit šifrování Azure Database for MySQLho šifrování dat pomocí klíče spravovaného zákazníky.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 9cd1db0365cdc4f834516fd4efb0d80dacc75eca
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1f47b3d5679b70461eaba64b5815770162cb6fda
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118524"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241068"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>Ověřování šifrování dat pro Azure Database for MySQL
 
@@ -19,25 +19,25 @@ Tento článek vám pomůže ověřit, že šifrování dat pomocí spravovanéh
 
 ## <a name="check-the-encryption-status"></a>Ověřte stav šifrování.
 
-### <a name="from-portal"></a>Z portálu
+### <a name="from-portal"></a>Na portálu
 
 1. Pokud chcete ověřit, jestli se klíč zákazníka používá k šifrování, postupujte podle těchto kroků:
 
     * V Azure Portal přejděte na **Azure Key Vault**  ->  **klíče** Azure Key Vault
     * Vyberte klíč, který se používá pro šifrování serveru.
-    * Nastavte stav **povoleného** klíče na **ne**.
+    * Nastavte stav **povoleného** klíče na **ne** .
   
-       Po určité době (**~ 15 min**) by měl být **stav** serveru Azure Database for MySQL **nepřístupný**. Jakékoli vstupně-výstupní operace provedené na serveru selžou, což Ověří, jestli je server skutečně zašifrovaný s klíčem Customers a klíč není aktuálně platný.
+       Po určité době ( **~ 15 min** ) by měl být **stav** serveru Azure Database for MySQL **nepřístupný** . Jakékoli vstupně-výstupní operace provedené na serveru selžou, což Ověří, jestli je server skutečně zašifrovaný s klíčem Customers a klíč není aktuálně platný.
     
        Aby byl server **dostupný** pro, můžete klíč znovu ověřit. 
     
-    * Nastavte stav klíče v Key Vault na **Ano**.
-    * V **šifrování dat**serveru vyberte znovu **Ověřit klíč**.
-    * Po úspěšném ověření klíče se **stav** serveru změní na **k dispozici**.
+    * Nastavte stav klíče v Key Vault na **Ano** .
+    * V **šifrování dat** serveru vyberte znovu **Ověřit klíč** .
+    * Po úspěšném ověření klíče se **stav** serveru změní na **k dispozici** .
 
 2. Pokud se v Azure Portal můžete ujistit, že je šifrovací klíč nastavený, data se šifrují pomocí klíče Customers používaného v Azure Portal.
 
-  ![Přehled zásad přístupu](media/concepts-data-access-and-security-data-encryption/byok-validate.png)
+  :::image type="content" source="media/concepts-data-access-and-security-data-encryption/byok-validate.png" alt-text="Přehled zásad přístupu":::
 
 ### <a name="from-cli"></a>Z CLI
 

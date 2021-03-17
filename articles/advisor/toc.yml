@@ -13,6 +13,10 @@
         - name: Šablona ARM
           displayName: Resource Manager
           href: advisor-alerts-arm.md
+- name: Koncepty
+  items:
+    - name: Standardní hodnoty zabezpečení
+      href: security-baseline.md
 - name: Kurzy
   items:
     - name: Začínáme se službou Advisor
@@ -41,6 +45,8 @@
       href: advisor-quick-fix.md
     - name: Data Advisoru v Azure Resource Graphu
       href: advisor-azure-resource-graph.md
+    - name: Využití skóre Advisoru
+      href: azure-advisor-score.md
 - name: Referenční informace
   items:
     - name: Security Center
@@ -52,9 +58,9 @@
     - name: REST API
       href: /rest/api/advisor/
     - name: Azure CLI
-      href: /cli/azure/advisor?view=azure-cli-latest
+      href: /cli/azure/advisor
     - name: PowerShell
-      href: /powershell/module/az.advisor/?view=azps-1.2.0
+      href: /powershell/module/az.advisor/
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

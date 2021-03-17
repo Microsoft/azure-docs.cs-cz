@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1601c9fc750df1f8e18bdaa072ede1b5ee164329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743809"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Dokončení kontroly přístupu pro role prostředků Azure v Privileged Identity Management
@@ -30,7 +30,7 @@ Po uplynutí doby kontroly přístupu nebo po skončení vlastního přezkoumán
 
 ## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
-1. Přejít na [Azure Portal](https://portal.azure.com/). Na řídicím panelu vyberte službu **prostředků Azure** .
+1. Přejděte na web [Azure Portal](https://portal.azure.com/). Na řídicím panelu vyberte službu **prostředků Azure** .
 
 2. Vyberte prostředek.
 
@@ -66,7 +66,7 @@ Na stránce **výsledky** zobrazte seznam výsledků kontroly a Stáhněte si ho
 
 ![Stránka výsledků výpis uživatelů, výsledek, důvod, revize, uplatněno a výsledek použití](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
-## <a name="reviewers"></a>Recenzenti
+## <a name="reviewers"></a>Revidující
 
 Zobrazení a přidání revidujících ke stávající kontrole přístupu. Připomenout kontrolorům, aby dokončili své recenze.
 

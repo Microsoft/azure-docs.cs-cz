@@ -1,0 +1,112 @@
+- name: Dokumentace k rolím Azure AD
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure AD RBAC?
+      href: custom-overview.md
+- name: Rychlé starty
+  items:
+    - name: Přiřazení rolí uživatelům
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Koncepty
+  items:
+    - name: Seznámení s rolemi Azure AD
+      href: concept-understand-roles.md
+    - name: Porovnání rolí
+      items:
+        - name: Porovnání rolí Azure a Azure AD
+          href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Role Microsoft 365
+          href: m365-workload-docs.md
+    - name: Přiřazení rolí na základě skupin
+      href: groups-concept.md
+    - name: Jednotky pro správu
+      href: administrative-units.md
+    - name: Zabezpečení
+      items:
+        - name: Plánování zabezpečení rolí
+          href: security-planning.md
+        - name: Vytvoření nouzových účtů
+          href: security-emergency-access.md
+- name: Návody
+  items:
+    - name: Zobrazení seznamu definic rolí
+      href: role-definitions-list.md
+    - name: Zobrazení seznamu přiřazení rolí
+      items:
+        - name: Zobrazení seznamu přiřazení rolí
+          href: view-assignments.md
+        - name: Seznam přiřazení rolí pro skupiny
+          href: groups-view-assignments.md
+    - name: Přiřazení rolí
+      items:
+        - name: Přiřazení rolí uživatelům
+          href: manage-roles-portal.md
+        - name: Vytvoření skupiny s možností přiřazení rolí
+          href: groups-create-eligible.md
+        - name: Přiřazení rolí ke skupinám
+          href: groups-assign-role.md
+        - name: Zajištění možnosti přiřazení role v PIM pro skupinu
+          href: groups-pim-eligible.md
+        - name: Přiřazení rolí k oboru pomocí prostředí PowerShell
+          href: custom-assign-powershell.md
+        - name: Přiřazení rolí s využitím Graph API
+          href: custom-assign-graph.md
+    - name: Odebrání přiřazení rolí
+      items:
+        - name: Odebrat přiřazení rolí ze skupin
+          href: groups-remove-assignment.md
+    - name: Vytváření vlastních rolí
+      items:
+        - name: Vytvoření vlastní role
+          href: custom-create.md
+        - name: Vytváření vlastních rolí pro podnikové aplikace
+          href: custom-enterprise-apps.md
+        - name: Vytvoření neomezené registrace aplikací
+          href: quickstart-app-registration-limits.md
+    - name: Jednotky pro správu
+      items:
+        - name: Přidávání a správa
+          href: admin-units-manage.md
+        - name: Přidávání a správa uživatelů
+          href: admin-units-add-manage-users.md
+        - name: Přidávání a správa skupin
+          href: admin-units-add-manage-groups.md
+        - name: Přiřazení role s rozsahem
+          href: admin-units-assign-roles.md
+    - name: Delegát
+      items:
+        - name: Delegování rolí správce aplikace
+          href: delegate-app-roles.md
+        - name: Delegování na portálu Moji zaměstnanci
+          href: my-staff-configure.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s rolemi přiřazenými ke skupinám
+          href: groups-faq-troubleshooting.md
+        - name: Řešení potíží s jednotkami pro správu
+          href: admin-units-faq-troubleshoot.md
+        - name: Získání podpory pro Azure AD
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Referenční informace
+  items:
+    - name: Vestavěné role
+      href: permissions-reference.md
+    - name: Role s nejnižšími oprávněními podle úkolu
+      href: delegate-by-task.md
+    - name: Výchozí uživatelská oprávnění
+      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Vlastní role/oprávnění
+      items:
+        - name: Oprávnění registrace aplikací
+          href: custom-available-permissions.md
+        - name: Oprávnění podnikových aplikací
+          href: custom-enterprise-app-permissions.md
+        - name: Oprávnění souhlasu pro aplikace
+          href: custom-consent-permissions.md
+    - name: Omezení služby Azure AD
+      href: ../enterprise-users/directory-service-limits-restrictions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure AD PowerShell
+      href: /powershell/azure/active-directory/overview
+    - name: Graph API
+      href: /graph/api/overview

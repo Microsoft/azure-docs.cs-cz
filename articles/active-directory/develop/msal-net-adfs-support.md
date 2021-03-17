@@ -1,7 +1,7 @@
 ---
 title: Podpora AD FS v MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library pro .NET (MSAL.NET).
+description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library for .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4107b0785ef4635e0e5e745a35b605d2634a220d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: a146b310e6056954ac2655ff2fd99e1e3d7c694f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166224"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063633"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Podpora Active Directory Federation Services (AD FS) v MSAL.NET
 Active Directory Federation Services (AD FS) (AD FS) ve Windows serveru vám umožní přidat ověřování a autorizaci na základě protokolu OAuth 2,0 a povolit aplikace, které vyvíjíte. Tyto aplikace můžou a pak ověřovat uživatele přímo proti AD FS. Další informace najdete v [AD FS scénářích pro vývojáře](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).

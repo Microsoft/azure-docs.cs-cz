@@ -4,10 +4,10 @@ description: Odkaz na soubor YAML podporovaný nástrojem Azure Container Instan
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084756"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>Odkaz na YAML: Azure Container Instances
@@ -184,7 +184,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  ---- | ---- | ---- | ---- |
 |  containers | array | Yes | Kontejnery v rámci skupiny kontejnerů. - [Objekt kontejneru](#container-object) |
 |  imageRegistryCredentials | array | No | Přihlašovací údaje registru bitové kopie, ze kterých se vytvoří skupina kontejnerů. - [Objekt ImageRegistryCredential](#imageregistrycredential-object) |
-|  restartPolicy | enum | No | Restartujte zásady pro všechny kontejnery v rámci skupiny kontejnerů. - `Always`Vždy restartovat a restartovat `OnFailure` při selhání – `Never` Nikdy nerestartovat – Vždycky, chyba, nikdy |
+|  restartPolicy | enum | No | Restartujte zásady pro všechny kontejnery v rámci skupiny kontejnerů. - `Always` Vždy restartovat a restartovat `OnFailure` při selhání – `Never` Nikdy nerestartovat – Vždycky, chyba, nikdy |
 |  Adresa | object | No | Typ IP adresy skupiny kontejnerů. - [IpAddress – objekt](#ipaddress-object) |
 |  osType | enum | Yes | Typ operačního systému vyžadovaný kontejnery ve skupině kontejnerů. – Windows nebo Linux |
 |  volumes | array | No | Seznam svazků, které mohou být připojeny kontejnery v této skupině kontejnerů. - [Volume – objekt](#volume-object) |
@@ -308,7 +308,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Název | Typ | Vyžadováno | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  protokol | enum | No | Protokol přidružený k portu – TCP nebo UDP |
-|  port | celé číslo | Yes | Číslo portu |
+|  port | integer | Yes | Číslo portu |
 
 
 
@@ -359,7 +359,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Název | Typ | Vyžadováno | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  protokol | enum | No | Protokol přidružený k portu – TCP nebo UDP |
-|  port | celé číslo | Yes | Číslo portu, které je zveřejněné ve skupině kontejnerů. |
+|  port | integer | Yes | Číslo portu, které je zveřejněné ve skupině kontejnerů. |
 
 
 
@@ -369,7 +369,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Název | Typ | Vyžadováno | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  name | řetězec | Yes | Název proměnné prostředí |
-|  Hodnota | řetězec | No | Hodnota proměnné prostředí. |
+|  value | řetězec | No | Hodnota proměnné prostředí. |
 |  secureValue | řetězec | No | Hodnota proměnné prostředí zabezpečení |
 
 
@@ -402,11 +402,11 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  ---- | ---- | ---- | ---- |
 |  Průměrná | object | No | Příkaz pro spuštění testu – [objekt ContainerExec](#containerexec-object) |
 |  httpGet | object | No | Nastavení HTTP GET pro test- [ContainerHttpGet objekt](#containerhttpget-object) |
-|  initialDelaySeconds | celé číslo | No | Počáteční zpoždění sekund. |
-|  periodSeconds | celé číslo | No | Doba v sekundách. |
-|  failureThreshold | celé číslo | No | Prahová hodnota selhání. |
-|  successThreshold | celé číslo | No | Prahová hodnota úspěšnosti. |
-|  timeoutSeconds | celé číslo | No | Časový limit v sekundách |
+|  initialDelaySeconds | integer | No | Počáteční zpoždění sekund. |
+|  periodSeconds | integer | No | Doba v sekundách. |
+|  failureThreshold | integer | No | Prahová hodnota selhání. |
+|  successThreshold | integer | No | Prahová hodnota úspěšnosti. |
+|  timeoutSeconds | integer | No | Časový limit v sekundách |
 
 
 
@@ -447,7 +447,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Název | Typ | Vyžadováno | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  program | řetězec | No | Cesta k testu |
-|  port | celé číslo | Yes | Číslo portu k testování. |
+|  port | integer | Yes | Číslo portu k testování. |
 |  scheme | enum | No | Schéma. – http nebo https |
 
 
@@ -457,7 +457,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Název | Typ | Vyžadováno | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  count | celé číslo | Yes | Počet prostředků GPU |
+|  count | integer | Yes | Počet prostředků GPU |
 |  skladové | enum | Yes | SKU zdroje GPU. – K80, P100, V100 |
 
 

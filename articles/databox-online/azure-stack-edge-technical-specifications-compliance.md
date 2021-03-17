@@ -1,6 +1,6 @@
 ---
-title: Technické specifikace a dodržování předpisů pro Microsoft Azure Stack Edge | Microsoft Docs
-description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro Azure Stack Edge.
+title: Technické specifikace a dodržování předpisů pro Microsoft Azure Stack Edge pro | Microsoft Docs
+description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro Azure Stack Edge pro
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,37 +8,37 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652049"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460292"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Technické specifikace Azure Stack Edge
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Technické specifikace Azure Stack Edge pro
 
-Hardwarové součásti Microsoft Azure Stack hraničního zařízení vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
+Hardwarové součásti zařízení Microsoft Azure Stack Edge pro vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
 
 ## <a name="compute-memory-specifications"></a>Výpočetní prostředí, specifikace paměti
 
-Azure Stack hraniční zařízení má následující specifikace pro výpočetní výkon a paměť:
+Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní výkon a paměť:
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| Procesor    | PROCESOR 2 X 10 Core                     |
-| Memory (Paměť)              | 128 GB RAM                  |
+| Procesor    | 2 X 10 jader procesor Intel Xeon stříbrné 4114 2.2 G                    |
+| Paměť              | 128 GB RAM (8rychlostní 16GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
-Pole programovatelné brány (FPGA) je součástí každého Azure Stack hraničního zařízení, které umožňuje použití scénářů Machine Learning (ML).
+Pole programovatelné brány (FPGA) je součástí každého zařízení Azure Stack Edge pro, které umožňuje použití scénářů Machine Learning (ML).
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
+| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
-Hraniční zařízení Azure Stack má dvě 100-240 V jednotkách napájení (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
+Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs) s vysoce výkonnými ventilátory. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
 
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -47,26 +47,35 @@ Hraniční zařízení Azure Stack má dvě 100-240 V jednotkách napájení (PS
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
 | Horká, připojitelná           | Yes                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu na hraničních zařízeních podle oblasti
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu pro Edge podle oblasti
 
-Vaše zařízení Azure Stack Edge potřebuje napájecí kabel, který se liší v závislosti na vaší oblasti Azure.
-Technické specifikace všech podporovaných napájecích kabelů najdete v článku [Specifikace napájecího kabelu Azure Stack Edge podle oblasti](azure-stack-edge-technical-specifications-power-cords-regional.md).
+Vaše zařízení Azure Stack Edge pro potřebuje napájecí kabel, který se liší v závislosti na vaší oblasti Azure.
+Technické specifikace všech podporovaných napájecích kabelů najdete v článku [specifikace napájecích kabelů Azure Stack Edge pro podle oblasti](azure-stack-edge-technical-specifications-power-cords-regional.md).
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
-Vaše zařízení Azure Stack Edge má 6 síťových rozhraní PORT1-PORT6.
+Vaše zařízení Azure Stack Edge pro má 6 síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Description                 |
+| Specifikace           | Popis                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
 
+Používají se síťové adaptéry: 
+
+| Specifikace           | Popis                 |
+|-------------------------|----------------------------|
+|Karta dceřiné sítě (rNDC) |Adaptér QLogic FastLinQ 41264 Dual Port 25GbE SFP +, Dual Port 10 GbE LOM, rNDC|
+|Síťový adaptér PCI |Adaptér 41262 FastLinQ Zwei porty 25Gbit/s SFP28|
+
+Přečtěte si prosím seznam kompatibilního hardwaru z Intel QLogic pro kompatibilní převodník gigabitových rozhraní (GBIC). Převaděč gigabitového rozhraní (GBIC) není zahrnutý v doručování Azure Stack hraničních zařízení. 
+
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-Zařízení Azure Stack Edge mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,6 TB. Z těchto SSD je 1 disk operačního systému a ostatní 8 jsou datové disky. Celková použitelná kapacita pro zařízení je zhruba 12,5 TB. Následující tabulka obsahuje podrobné informace o kapacitě úložiště zařízení.
+Zařízení Azure Stack Edge pro mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,6 TB. Z těchto SSD je 1 disk operačního systému a ostatní 8 jsou datové disky. Celková použitelná kapacita pro zařízení je zhruba 12,5 TB. Následující tabulka obsahuje podrobné informace o kapacitě úložiště zařízení.
 
 |     Specifikace                          |     Hodnota             |
 |--------------------------------------------|-----------------------|
@@ -87,16 +96,16 @@ V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcíc
 
 |     Skříně     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Vlastnost Height         |    44,45            |    1,75 "          |
-|    impulzu          |    434,1           |    17,09 "          |
+|    Height (Výška)         |    44,45            |    1,75 "          |
+|    Width (Šířka)          |    434,1           |    17,09 "          |
 |    Délka          |    740,4           |    29,15 "          |
 
 V následující tabulce jsou uvedeny rozměry balíčku pro expedici v milimetrech a palcích.
 
 |     Balíček     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Vlastnost Height         |    311,2            |    12,25 "          |
-|    impulzu          |    642,8          |    25,31 "          |
+|    Height (Výška)         |    311,2            |    12,25 "          |
+|    Width (Šířka)          |    642,8          |    25,31 "          |
 |    Délka          |   1 051,1          |    41,38 "          |
 
 ### <a name="enclosure-weight"></a>Váha skříně
@@ -116,7 +125,7 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 |     Skříně         |     Rozsah okolních teplot     |     Relativní vlhkost okolí     |     Maximální bod Dew     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Funkční        |    10 °C-35 OC (50 °F-86 °F)         |    10% až 80% nekondenzující.         |    29 °C (84 °F)            |
+|    Provoz        |    10 °C-35 OC (50 °F-86 °F)         |    10% až 80% nekondenzující.         |    29 °C (84 °F)            |
 |    Není funkční    |    -40 oC až 65 oC (-40 °F-149 °F)     |    5% až 95% nekondenzující.          |    33 OC (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Provozní flow, nadmořská, náraz, vibrace, orientace, bezpečnost a EMC
@@ -146,4 +155,4 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení Azure Stack Edge](azure-stack-edge-deploy-prep.md)
+- [Nasazení Azure Stack Edge pro](azure-stack-edge-deploy-prep.md)

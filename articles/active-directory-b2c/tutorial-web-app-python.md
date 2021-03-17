@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555682"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování ve webové aplikaci Pythonu pomocí Azure AD B2C
 
@@ -49,7 +49,7 @@ V místním vývojovém prostředí budete navíc potřebovat následující:
 
 V druhém kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkami kódu v tomto kurzu, přidejte do registrace aplikace adresu URL odpovědi (označuje se taky jako identifikátor URI přesměrování).
 
-Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -57,8 +57,8 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
-1. V části **Spravovat**vyberte **ověřování**.
-1. V části **Web**vyberte odkaz **Přidat identifikátor URI** a potom `http://localhost:5000/getAToken` do textového pole zadejte.
+1. V části **Spravovat** vyberte **ověřování**.
+1. V části **Web** vyberte odkaz **Přidat identifikátor URI** a potom `http://localhost:5000/getAToken` do textového pole zadejte.
 1. Vyberte **Uložit**.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
@@ -67,7 +67,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte aplikaci *WebApp1* .
-1. V části **Adresa URL odpovědi**přidejte `http://localhost:5000/getAToken` .
+1. V části **Adresa URL odpovědi** přidejte `http://localhost:5000/getAToken` .
 1. Vyberte **Uložit**.
 * * *
 
@@ -185,4 +185,4 @@ V tomto kurzu jste nakonfigurovali webovou aplikaci Pythonu pro práci s uživat
 V dalším kroku se dozvíte, jak přizpůsobit uživatelské rozhraní stránek toku uživatele zobrazených uživatelům Azure AD B2C:
 
 > [!div class="nextstepaction"]
-> [Kurz: přizpůsobení rozhraní uživatelského prostředí v Azure AD B2C >](tutorial-customize-ui.md)
+> [Přizpůsobení rozhraní uživatelského prostředí v Azure AD B2C >](customize-ui.md)

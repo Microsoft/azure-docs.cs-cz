@@ -4,19 +4,19 @@ description: K horizontálnímu škálování elastického fondu v Azure SQL Dat
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 01ccf7117cd17118941a00cc0480216bc436bc40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 30d462dec8c65252afbde0c4d2eee171891a64ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514760"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747309"
 ---
 # <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití rozhraní příkazového řádku Azure k horizontálnímu navýšení kapacity elastického fondu v Azure SQL Database
 

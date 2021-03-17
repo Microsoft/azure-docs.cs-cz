@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175063"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554828"
 ---
 ### <a name="to-configure-and-register-the-device"></a>Konfigurace a registrace zařízení
 1. V konzole sériového portu zařízení StorSimple spusťte rozhraní Windows PowerShell. Další informace najdete v článku [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console). **Postup proveďte přesně, jinak ke konzole nezískáte přístup.**
@@ -32,7 +32,7 @@ ms.locfileid: "67175063"
    3. Zobrazí se průvodce instalací, který vám pomůže konfigurovat nastavení sítě pro zařízení. Zadejte následující informace:
       
       * IP adresa pro síťové rozhraní DATA 0
-      * maska podsítě
+      * Maska podsítě
       * brána
       * IP adresa primárního serveru DNS
       * IP adresa primárního serveru NTP
@@ -43,7 +43,7 @@ ms.locfileid: "67175063"
    4. Volitelně můžete nakonfigurovat web proxy server.
       
       > [!IMPORTANT]
-      > Konfigurace proxy serveru je volitelná, ale můžete ji provést jenom v tomto kroku. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](../articles/storsimple/storsimple-configure-web-proxy.md).
+      > Konfigurace proxy serveru je volitelná, ale můžete ji provést jenom v tomto kroku. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](../articles/storsimple/storsimple-8000-configure-web-proxy.md).
      
 6. Stisknutím kombinace kláves CTRL + C Průvodce instalací ukončete.
 8. Spusťte následující rutinu, která zařízení nasměruje na portál Microsoft Azure Government (protože ve výchozím nastavení odkazuje na veřejný portál Azure Classic). Tato akce restartuje oba řadiče. Doporučujeme, abyste pro souběžné připojení k oběma řadičům používali dvě relace na výstupu, abyste viděli, kdy se každý kontroler restartuje.
@@ -86,4 +86,3 @@ ms.locfileid: "67175063"
         Pokud je zařízení i po uplynutí několika minut stále v režimu Offline, je nutné zkontrolovat, jestli je brána firewall nastavená způsobem popsaným v článku o [požadavcích zařízení StorSimple na síťe](../articles/storsimple/storsimple-8000-system-requirements.md).
        
         Zkontrolujte, jestli je port 9354 otevřený pro odchozí komunikaci, protože ho používá sběrnice služby pro komunikaci služby Správce zařízení StorSimple se zařízením.
-

@@ -2,15 +2,17 @@
 title: Šifrování obsahu pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak nakonfigurovat šifrování obsahu pomocí Azure Media Services v Azure Portal.
 ms.topic: quickstart
-ms.date: 06/08/2020
-ms.openlocfilehash: 6ff3c14039f9199053d3d43c6ce4488c2692b336
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.date: 08/31/2020
+ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988939"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89263633"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Rychlý Start: použití portálu k šifrování obsahu
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. 
  
@@ -19,7 +21,7 @@ Pokud chcete v datovém proudu určit možnosti šifrování (pokud existují), 
 > [!NOTE]
 > Zásady klíče obsahu není potřeba pro vymazání streamování nebo stahování.
 
-Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování obsahu pomocí nezašifrovaného klíče AES nebo šifrování DRM. Aby se datový proud dešifroval, přehrávač požádá o klíč od Media Services služby doručování klíčů nebo služby pro doručování klíčů, kterou jste zadali. Pokud chcete zjistit, jestli má uživatel autorizaci získat klíč, služba vyhodnotí **zásadu klíče obsahu** , kterou jste zadali pro tento klíč.
+Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování obsahu pomocí nezašifrovaného klíče AES nebo šifrování DRM. Aby se datový proud dešifroval, přehrávač požádá o klíč od Media Services služby doručování klíčů nebo služby pro doručování klíčů, kterou jste zadali. Pokud chcete zjistit, jestli má uživatel autorizaci získat klíč, služba vyhodnotí  **zásadu klíče obsahu** , kterou jste zadali pro tento klíč.
 
 V tomto rychlém startu se dozvíte, jak vytvořit zásadu klíče obsahu, kde můžete určit, jaké šifrování se má u prostředku při streamování použít. V tomto rychlém startu se také dozvíte, jak nastavit nakonfigurované šifrování prostředku.
 
@@ -30,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit zásadu klíče obsahu, kde m
 * [Zásady streamování](streaming-policy-concept.md)
 * [Zásady symetrických klíčů](content-key-policy-concept.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nahrajte a zpracujte svůj obsah, jak je popsáno v tématu [Správa prostředků v Azure Portal](manage-assets-quickstart.md)
 

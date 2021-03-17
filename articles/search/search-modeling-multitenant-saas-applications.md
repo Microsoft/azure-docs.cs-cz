@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230753"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397364"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Kognitivní hledání
 
@@ -41,7 +41,7 @@ Přidávání a odebírání oddílů a replik v nástroji umožní, aby služba
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Omezení služby a indexu v Azure Kognitivní hledání
 V Azure Kognitivní hledání existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) , každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některá z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Základní | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | **Maximální počet replik na službu** |3 |12 |12 |12 |12 |
 | **Maximální počet oddílů na službu** |1 |12 |12 |12 |3 |
@@ -76,7 +76,8 @@ V případě víceklientské scénáře používá vývojář aplikace jednu neb
 3. *Kombinace obou:* Větším, více aktivním klientům se přiřazují vyhrazené služby, zatímco v rámci sdílených služeb jsou v menších klientech přiřazeny jednotlivé indexy.
 
 ## <a name="1-index-per-tenant"></a>1. index na tenanta
-![Portrayal modelu indexu na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Portrayal modelu indexu na tenanta" border="false":::
 
 V modelu indexu založeném na tenantovi nabízí více tenantů jednu službu Azure Kognitivní hledání, kde má každý tenant svůj vlastní index.
 
@@ -93,7 +94,8 @@ Azure Kognitivní hledání umožňuje škálovat jednotlivé indexy a celkový 
 Pokud celkový počet indexů roste pro jednu službu příliš velký, je nutné zřídit jinou službu, která bude vyhovovat novým klientům. Pokud je potřeba přesunout indexy mezi vyhledávacími službami, když se přidají nové služby, data z indexu je potřeba ručně zkopírovat z jednoho indexu do druhého, protože Azure Kognitivní hledání nepovoluje přesun indexu.
 
 ## <a name="2-service-per-tenant"></a>2. služba na tenanta
-![Portrayal modelu služby – na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Portrayal modelu indexu na tenanta" border="false":::
 
 V architektuře pro jednotlivé klienty má každý tenant vlastní vyhledávací službu.
 
@@ -119,7 +121,7 @@ Výše uvedené vzory návrhu pro modelování víceklientské scénáře v Azur
 
 Pokud modely služeb pro klienty a klienti nejsou dostatečně malé, je možné modelovat index, abyste dosáhli ještě jemnější úrovně členitosti.
 
-Chcete-li, aby se jeden index choval odlišně pro různé koncové body klienta, lze do indexu přidat pole, které určuje určitou hodnotu pro každého možného klienta. Pokaždé, když klient zavolá Azure Kognitivní hledání, aby se dotazoval nebo změnil index, kód z klientské aplikace určuje odpovídající hodnotu pro toto pole pomocí funkce [filtru](https://msdn.microsoft.com/library/azure/dn798921.aspx) Azure kognitivní hledání v době dotazu.
+Chcete-li, aby se jeden index choval odlišně pro různé koncové body klienta, lze do indexu přidat pole, které určuje určitou hodnotu pro každého možného klienta. Pokaždé, když klient zavolá Azure Kognitivní hledání, aby se dotazoval nebo změnil index, kód z klientské aplikace určuje odpovídající hodnotu pro toto pole pomocí funkce [filtru](./query-odata-filter-orderby-syntax.md) Azure kognitivní hledání v době dotazu.
 
 Tato metoda se dá použít k dosažení funkcí samostatných uživatelských účtů, samostatných úrovní oprávnění a dokonce i zcela samostatných aplikací.
 
@@ -132,4 +134,3 @@ Tato metoda se dá použít k dosažení funkcí samostatných uživatelských �
 Azure Kognitivní hledání je přesvědčivou volbou pro mnoho aplikací. Při vyhodnocování různých vzorů návrhu pro víceklientské aplikace Vezměte v úvahu [různé cenové úrovně](https://azure.microsoft.com/pricing/details/search/) a příslušné [omezení služby](search-limits-quotas-capacity.md) , aby služba Azure kognitivní hledání nejlépe vyhovovala úlohám a architekturám aplikací všech velikostí.
 
 Jakékoli otázky týkající se Azure Kognitivní hledání a víceklientské scénáře lze směrovat na azuresearch_contact@microsoft.com .
-

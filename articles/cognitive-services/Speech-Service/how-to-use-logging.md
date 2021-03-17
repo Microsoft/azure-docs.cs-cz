@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 21f4494bedd824cef373a391c5635e35ec2600d0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406873"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026518"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Povolení protokolování v sadě Speech SDK
 
@@ -68,7 +68,7 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-Další informace o oprávněních pro přístup k souborům pro aplikace UWP jsou k dispozici [zde](https://docs.microsoft.com/windows/uwp/files/file-access-permissions).
+Další informace o oprávněních pro přístup k souborům pro aplikace UWP jsou k dispozici [zde](/windows/uwp/files/file-access-permissions).
 
 ### <a name="android"></a>Android
 

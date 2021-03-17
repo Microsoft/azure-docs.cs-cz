@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6dda20487caf6fe3ba49578cfdc0b65434a8dfa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88524545"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Splashtop
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Splashtop s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Splashtop svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Splashtop podporuje jednotné přihlašování iniciované v **SP**
 
-* Po nakonfigurování Splashtop můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování Splashtop můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-splashtop-from-the-gallery"></a>Přidání Splashtop z Galerie
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Splashtop aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, zatímco **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace TicketManager očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky zobrazuje atributy uživatele s vybranou ikonou pro úpravy.](common/edit-attribute.png)
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -104,7 +104,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -129,15 +129,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 V této části budete muset požádat o novou metodu jednotného přihlašování z [webového portálu Splashtop](https://my.splashtop.com/login).
 1. Na webovém portálu Splashtop přejděte na kartu tým **informace o účtu**  /  **Team** , přejděte dolů k části Vyhledání **jednotného přihlašování** . Pak klikněte na **použít u nové metody jednotného přihlašování**.
 
-    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![Snímek obrazovky se zobrazí na stránce jednotného přihlašování, kde můžete vybrat použít pro nové metody S S-O.](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
 1. V okně pro použití zadejte **jméno jednotného přihlašování**. Například nový Azure, vyberte **Azure** jako typ IDP a vložte **přihlašovací adresu URL** a **identifikátor Azure AD** zkopírovaný z aplikace Splashtop na Azure Portal.
 
-    ![image](media/splashtop-tutorial/azure-sso-1.png)
+    ![Snímek obrazovky se zobrazí na stránce použít pro s S/O metoda, kde můžete zadat název a další informace.](media/splashtop-tutorial/azure-sso-1.png)
 
 1. V části informace o certifikátu klikněte pravým tlačítkem na soubor certifikátu stažený z aplikace Splashtop na Azure Portal, upravte ho pomocí poznámkového bloku a pak zkopírujte obsah a vložte ho do pole **Stáhnout certifikát (Base64)** .
 
-    ![obrázek ](media/splashtop-tutorial/cert-1.png) obrázku ![ obrázku ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
+    ![Snímek obrazovky zobrazující výběr souboru certifikátu a jeho otevření v poznámkovém bloku](media/splashtop-tutorial/cert-1.png)
+    ![Snímek obrazovky zobrazuje obsah souboru certifikátu.](media/splashtop-tutorial/cert-2.png)
+    ![Snímek obrazovky se zobrazí v textovém poli stáhnout certifikát.](media/splashtop-tutorial/azure-sso-2.png)
 
 1. A to je vše! Klikněte na **Uložit** a Splashtop ověřovací tým jednotného přihlašování vám pošle informace o ověření a pak aktivuje metodu jednotného přihlašování.
 
@@ -145,11 +147,11 @@ V této části budete muset požádat o novou metodu jednotného přihlašován
 
 1. Po aktivaci metody SSO zkontrolujte nově vytvořenou metodu jednotného přihlašování a povolte ji v části **jednotné přihlašování** .
 
-    ![image](media/splashtop-tutorial/enable.png)
+    ![Snímek obrazovky se zobrazí na stránce jednotného přihlašování, kde můžete novou metodu povolit.](media/splashtop-tutorial/enable.png)
 
 1. Pozvěte testovacího uživatele například `B.Simon@contoso.com` k vašemu týmu Splashtop s nově vytvořenou metodou jednotného přihlašování.
 
-    ![image](media/splashtop-tutorial/invite.png)
+    ![Snímek obrazovky se zobrazí stránka pozvat uživatele, kde můžete vybrat novou metodu.](media/splashtop-tutorial/invite.png)
 
 1. Existující účet Splashtop můžete také změnit na účet jednotného přihlašování, viz [pokyny](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 
@@ -159,18 +161,18 @@ V této části budete muset požádat o novou metodu jednotného přihlašován
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Splashtop, měli byste se automaticky přihlásit k Splashtop, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Splashtop, měli byste se automaticky přihlásit k Splashtop, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Splashtop s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Splashtop pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Splashtop pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

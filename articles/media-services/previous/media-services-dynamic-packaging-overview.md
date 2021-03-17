@@ -1,7 +1,7 @@
 ---
 title: Přehled dynamického balení Azure Media Services | Microsoft Docs
 description: Tyto články poskytují přehled o Microsoft Azure Media Services dynamickém balení.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,23 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
-ms.author: juliako
-ms.openlocfilehash: 2c4654ce175e64c375c96164aed274bf8078d196
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d2394cba157a7049e3b63b09fda9e018f0a0b32f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060127"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013614"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 3](../latest/dynamic-packaging-overview.md)
 > * [Verze 2](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Microsoft Azure Media Services lze použít k doručování mnoha mediálních formátů zdrojového souboru, formátů datových proudů médií a formátů ochrany obsahu na nejrůznější technologie klienta (například iOS, XBOX, Silverlight, Windows 8). Tito klienti rozumí různým protokolům, například iOS vyžaduje formát HTTP Live Streaming (HLS) v4 a Silverlight a Xbox vyžadují Smooth Streaming. Pokud máte sadu adaptivních přenosů (s více přenosovými rychlostmi) souborů MP4 (ISO Base Media 14496-12) nebo sadu adaptivní přenosové rychlosti Smooth Streaming soubory, které chcete sloužit klientům, kteří porozuměli formátu MPEG, HLS nebo Smooth Streaming, měli byste využít Media Services dynamické balení.
 

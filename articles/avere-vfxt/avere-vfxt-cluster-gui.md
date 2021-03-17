@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505609"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342429"
 ---
 # <a name="access-the-vfxt-cluster"></a>Přístup ke clusteru vFXT
 
@@ -27,7 +27,7 @@ Existují dva základní kroky:
 > [!NOTE]
 > V tomto článku se předpokládá, že jste nastavili veřejnou IP adresu na řadiči clusteru nebo na jiném VIRTUÁLNÍm počítači uvnitř virtuální sítě vašeho clusteru. Tento článek popisuje, jak tento virtuální počítač používat jako hostitele pro přístup ke clusteru. Pokud pro přístup k virtuální síti používáte síť VPN nebo ExpressRoute, přejděte k [části připojení k ovládacímu panelu avere](#connect-to-the-avere-control-panel-in-a-browser).
 
-Před připojením se ujistěte, že je v místním počítači nainstalovaný pár veřejného a privátního klíče SSH, který jste použili při vytváření řadiče clusteru. Pokud potřebujete nápovědu, přečtěte si dokumentaci k klíčům SSH pro [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) nebo pro [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) . Pokud jste místo veřejného klíče použili heslo, budete vyzváni k jeho zadání, až se připojíte.
+Před připojením se ujistěte, že je v místním počítači nainstalovaný pár veřejného a privátního klíče SSH, který jste použili při vytváření řadiče clusteru. Pokud potřebujete nápovědu, přečtěte si dokumentaci k klíčům SSH pro [Windows](../virtual-machines/linux/ssh-from-windows.md) nebo pro [Linux](../virtual-machines/linux/mac-create-ssh-keys.md) . Pokud jste místo veřejného klíče použili heslo, budete vyzváni k jeho zadání, až se připojíte.
 
 ## <a name="create-an-ssh-tunnel"></a>Vytvoření tunelu SSH
 

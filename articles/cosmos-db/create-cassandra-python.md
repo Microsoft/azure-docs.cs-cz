@@ -9,14 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f376a1f3601c976ff1efdaee1da6181510a9cf64
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8a76a37de64733ba3e0126c7885d8690d2d83c1b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234937"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099714"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady Python SDK a Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -29,7 +30,7 @@ ms.locfileid: "88234937"
 
 V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a pomocí aplikace Python Cassandra, která je klonována z GitHubu, vytvoříte databázi Cassandra a kontejner. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 - [Python 2.7.14 + nebo 3.4 +](https://www.python.org/downloads/).
@@ -96,7 +97,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází.
 
-1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec** . 
 
 1. Pomocí :::image type="icon" source="./media/create-cassandra-python/copy.png"::: tlačítka na pravé straně obrazovky zkopírujte horní hodnotu a kontaktní bod. 
 
@@ -126,13 +127,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     
 ## <a name="use-the-x509-certificate"></a>Použití certifikátu X509
 
-1. Stáhněte si kořenový certifikát Baltimore CyberTrust z umístění v místním počítači [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Přejmenujte soubor pomocí přípony souboru *. cer*.
+1. Stáhněte si kořenový certifikát Baltimore CyberTrust z umístění v místním počítači [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Přejmenujte soubor pomocí přípony souboru *. cer* .
 
-   Certifikát má sériové číslo `02:00:00:b9` a otisk SHA1 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
+   Certifikát má sériové číslo `02:00:00:b9` a otisk SHA1 `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
 2. Otevřete *pyquickstart.py* a změňte směr tak, aby `path\to\cert` odkazoval na nový certifikát.
 
-3. Uložte *pyquickstart.py*.
+3. Uložte *pyquickstart.py* .
 
 ## <a name="run-the-python-app"></a>Spuštění aplikace v Pythonu
 
@@ -157,11 +158,11 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     Stisknutím kombinace kláves CTRL + C ukončete provádění programu a zavřete okno konzoly. 
 
-    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Zobrazení a ověření výstupu":::
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Zobrazení a zkopírování přístupového uživatelského jména, hesla a kontaktního bodu na webu Azure Portal v okně připojovacího řetězce":::
     
-4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
+4. Na portálu Azure Portal otevřete **Data Explorer** , abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Zobrazení dat v Průzkumníku dat":::
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Zobrazení a zkopírování přístupového uživatelského jména, hesla a kontaktního bodu na webu Azure Portal v okně připojovacího řetězce":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

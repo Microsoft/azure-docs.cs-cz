@@ -3,18 +3,20 @@ title: Používejte integrované příkazy a funkce poznámkového bloku v Azure
 description: Naučte se používat integrované příkazy a funkce k provádění běžných operací pomocí integrovaných poznámkových bloků jazyka C# Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.custom: devx-track-python
-ms.openlocfilehash: 6c095083f88c00f706d19d1c652e19da007c6542
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876423"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340470"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB poznámkových blocích C# (Preview).
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak používat integrované příkazy a funkce poznámkového bloku k provádění běžných operací v poznámkových blocích C#.
 
@@ -39,7 +41,7 @@ Verze 3 sady [Azure Cosmos DB .NET SDK pro SQL API](https://github.com/Azure/azu
 
 Vytvořte instanci ``CosmosClient`` pro spuštění jakékoli operace sady SDK. 
 
-Příklad:
+Například:
 
 ```csharp
 // Include usings
@@ -59,7 +61,7 @@ Další informace najdete v [ukázkách sady .NET V3 SDK](https://github.com/Azu
 > [!IMPORTANT]
 > Integrovaná sada Azure Cosmos DB .NET SDK je podporována pouze pro účty rozhraní SQL (Core) API. U jiných rozhraní API budete muset [nainstalovat příslušný ovladač .NET](#install-a-new-nuget-package) , který odpovídá rozhraní API. 
 
-## <a name="set-custom-options-using-cosmosclientoptions"></a>Nastavení vlastních možností pomocí``CosmosClientOptions``
+## <a name="set-custom-options-using-cosmosclientoptions"></a>Nastavení vlastních možností pomocí ``CosmosClientOptions``
 Pro větší flexibilitu můžete nastavit vlastní ``CosmosClientOptions`` vlastnost a předat ji do své ``CosmosClient`` instance. Tuto vlastnost můžete použít k těmto akcím:
 
 - Nastavte název aplikace v příponě User-Agent tak, aby se zahrnula do každého požadavku.
@@ -96,7 +98,7 @@ var endpoint = Cosmos.Endpoint;
 ## <a name="print-console-output-in-c-code"></a>Výstup tiskové konzoly v kódu jazyka C#
 V kódu jazyka C# můžete použít syntaxi Display. AsMarkdown () s [interpolací řetězce](/dotnet/csharp/language-reference/tokens/interpolated) k tisku výstupu konzoly, která se zobrazí při spuštění buňky. 
 
-Příklad: 
+Například: 
 
 ```csharp
 // Print text in the output
@@ -134,7 +136,7 @@ Pomocí ``%%upload`` příkazu Magic můžete nahrávat data ze souboru JSON do 
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Azure Cosmos. 
 - Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Tento soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
 
-Příklad:
+Například:
 
 ```csharp
 %%upload --database databaseName --container containerName --url 

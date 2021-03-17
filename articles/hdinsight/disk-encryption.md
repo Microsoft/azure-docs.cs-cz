@@ -1,43 +1,53 @@
 ---
-title: Klíčové šifrování disku spravované zákazníkem pro Azure HDInsight
-description: Tento článek popisuje, jak použít vlastní šifrovací klíč z Azure Key Vault k šifrování dat uložených na spravovaných discích v clusterech Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
+title: Dvojité šifrování dat v klidovém umístění
+titleSuffix: Azure HDInsight
+description: Tento článek popisuje dvě vrstvy šifrování, které jsou k dispozici pro neaktivní data v clusterech Azure HDInsight.
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/10/2020
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387842"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988615"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Šifrování disků s využitím klíčů spravovaných zákazníky
+# <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
-Azure HDInsight podporuje šifrování klíčů spravované zákazníkem pro data na spravovaných discích a discích prostředků připojených k virtuálním počítačům s clustery HDInsight. Tato funkce umožňuje použít Azure Key Vault ke správě šifrovacích klíčů, které chrání neaktivní data v clusterech HDInsight.
+Tento článek popisuje metody šifrování neaktivních dat v clusterech Azure HDInsight. Šifrování dat v klidovém umístění odkazuje na šifrování na spravovaných discích (datové disky, disky s operačním systémem a dočasné disky) připojené k virtuálním počítačům clusteru HDInsight. 
 
-Všechny spravované disky v HDInsight jsou chráněné pomocí šifrování služby Azure Storage (SSE). Ve výchozím nastavení se data na těchto discích šifrují pomocí klíčů spravovaných Microsoftem. Pokud povolíte klíče spravované zákazníkem pro HDInsight, poskytnete šifrovací klíče pro HDInsight k použití a správě těchto klíčů pomocí Azure Key Vault.
-
-Tento dokument neřeší data uložená ve vašem účtu Azure Storage. Další informace o šifrování Azure Storage najdete v části [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data. Clustery můžou mít jeden nebo více připojených účtů Azure Storage, kde by mohly být šifrovací klíče taky spravované Microsoftem nebo spravované zákazníkem, ale šifrovací služba se liší.
+Tento dokument neřeší data uložená ve vašem účtu Azure Storage. Clustery můžou mít jeden nebo více připojených účtů Azure Storage, kde by mohly být šifrovací klíče taky spravované Microsoftem nebo spravované zákazníkem, ale šifrovací služba se liší. Další informace o šifrování Azure Storage najdete v části [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
 
 ## <a name="introduction"></a>Úvod
 
-Šifrování klíče spravovaného zákazníkem je proces, který se během vytváření clusteru zpracovává bez dalších poplatků. Vše, co potřebujete udělat, je zaregistrovat HDInsight jako spravovanou identitu s Azure Key Vault a přidat šifrovací klíč při vytváření clusteru.
+V Azure existují tři hlavní role spravovaných disků: datový disk, disk s operačním systémem a dočasný disk. Další informace o různých typech spravovaných disků najdete v tématu [Úvod do služby Azure Managed disks](../virtual-machines/managed-disks-overview.md). 
 
-Disk prostředků i spravované disky v každém uzlu clusteru jsou šifrované pomocí symetrického šifrovacího klíče (klíč DEK). KLÍČ DEK je chráněný pomocí klíčového šifrovacího klíče (KEK) z vašeho trezoru klíčů. Procesy šifrování a dešifrování jsou zpracovávány výhradně službou Azure HDInsight.
+HDInsight podporuje více typů šifrování ve dvou různých vrstvách:
+
+- Šifrování na straně serveru (SSE) – služba úložiště provádí SSE. Ve službě HDInsight se SSE používá k šifrování disků s operačním systémem a datových disků. Ve výchozím nastavení je povolený. SSE je služba šifrování vrstvy 1.
+- Šifrování u hostitele pomocí klíče spravovaného platformou, který se podobá SSE, je tento typ šifrování prováděn službou úložiště. Je ale jenom pro dočasné disky a ve výchozím nastavení není povolený. Šifrování na hostiteli je také šifrovací služba vrstvy 1.
+- Šifrování v klidovém formátu pomocí spravovaného klíče zákazníka – tento typ šifrování se dá použít na datech a na dočasných discích. Ve výchozím nastavení není povolený a vyžaduje, aby zákazník poskytoval svůj vlastní klíč prostřednictvím trezoru klíčů Azure. Šifrování v klidovém umístění je šifrovací služba vrstvy 2.
+
+Tyto typy jsou shrnuty v následující tabulce.
+
+|Typ clusteru |Disk s operačním systémem (spravovaný disk) |Datový disk (spravovaný disk) |Dočasný datový disk (místní SSD) |
+|---|---|---|---|
+|Kafka, HBA s akcelerovanými zápisy|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení layer2: volitelné šifrování v klidovém stavu s VYUŽITÍm CMK|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
+|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|–|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
+
+Šifrování klíče spravovaného zákazníkem je proces, který se během vytváření clusteru zpracovává bez dalších poplatků. K tomu, abyste mohli autorizovat spravovanou identitu pomocí Azure Key Vault, musíte přidat šifrovací klíč a při vytváření clusteru ho přidat.
+
+Datové disky a dočasné disky v každém uzlu clusteru jsou šifrovány pomocí symetrického šifrovacího klíče (klíč DEK). KLÍČ DEK je chráněný pomocí klíčového šifrovacího klíče (KEK) z vašeho trezoru klíčů. Procesy šifrování a dešifrování jsou zpracovávány výhradně službou Azure HDInsight.
+
+Pro disky s operačním systémem připojené k virtuálním počítačům clusteru je k dispozici pouze jedna vrstva šifrování (PMK). Doporučujeme, aby zákazníci nemuseli kopírovat citlivá data na disky s operačním systémem, pokud se pro jejich scénáře vyžaduje šifrování CMK.
 
 Pokud je povolená brána firewall trezoru klíčů v trezoru klíčů, kde je uložený šifrovací klíč disku, musí se do konfigurace brány firewall trezoru klíčů přidat IP adresy poskytovatele prostředků služby HDInsight pro oblast, kde se cluster bude nasazovat. To je nezbytné, protože HDInsight není důvěryhodná služba trezoru klíčů Azure.
 
 K bezpečnému střídání klíčů v trezoru klíčů můžete použít Azure Portal nebo Azure CLI. Když se klíč otáčí, cluster HDInsight začne používat nový klíč během několika minut. Povolte funkce ochrany před únikem [klíčů, které se budou chránit](../key-vault/general/soft-delete-overview.md) před ransomwaremmi scénáři a náhodným odstraněním. Trezory klíčů bez této funkce ochrany se nepodporují.
 
-|Typ clusteru |Disk s operačním systémem (spravovaný disk) |Datový disk (spravovaný disk) |Dočasný datový disk (místní SSD) |
-|---|---|---|---|
-|Kafka, HBA s akcelerovanými zápisy|[Šifrování SSE](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Šifrování SSE + volitelné šifrování CMK|Volitelné šifrování CMK|
-|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|Šifrování SSE|–|Volitelné šifrování CMK|
-
-## <a name="get-started-with-customer-managed-keys"></a>Začínáme s klíčem spravovaným zákazníkem
+### <a name="get-started-with-customer-managed-keys"></a>Začínáme s klíčem spravovaným zákazníkem
 
 Pokud chcete vytvořit cluster HDInsight s povoleným klíčem, Projděte si následující kroky:
 
@@ -48,19 +58,21 @@ Pokud chcete vytvořit cluster HDInsight s povoleným klíčem, Projděte si ná
 1. Vytvoření clusteru HDInsight s povoleným klíčem spravovaným zákazníkem
 1. Otočení šifrovacího klíče
 
-## <a name="create-managed-identities-for-azure-resources"></a>Vytvoření spravovaných identit pro prostředky Azure
+Jednotlivé kroky jsou podrobně vysvětleny v jedné z následujících částí.
+
+### <a name="create-managed-identities-for-azure-resources"></a>Vytvoření spravovaných identit pro prostředky Azure
 
 Vytvoření spravované identity přiřazené uživatelem pro ověření Key Vault.
 
 Konkrétní kroky najdete v tématu [Vytvoření spravované identity přiřazené uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) . Další informace o tom, jak spravované identity fungují ve službě Azure HDInsight, najdete v tématu [spravované identity ve službě Azure HDInsight](hdinsight-managed-identities.md). Nezapomeňte uložit ID spravovaného prostředku identity, pokud ho přidáte do zásad přístupu Key Vault.
 
-## <a name="create-azure-key-vault"></a>Vytvořit Azure Key Vault
+### <a name="create-azure-key-vault"></a>Vytvořit Azure Key Vault
 
-Vytvořte trezor klíčů. Konkrétní postup najdete v tématu věnovaném [vytvoření Azure Key Vault](../key-vault/secrets/quick-create-portal.md) .
+Vytvořte trezor klíčů. Konkrétní postup najdete v tématu věnovaném [vytvoření Azure Key Vault](../key-vault/general/quick-create-portal.md) .
 
-HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů, můžete klíče importovat do Azure Key Vault. Nezapomeňte, že Trezor klíčů musí mít povolené **obnovitelné odstranění** . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
+HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů, můžete klíče importovat do Azure Key Vault. Nezapomeňte, že Trezor klíčů musí mít povolené **obnovitelné odstranění** . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
 
-## <a name="create-key"></a>Vytvořit klíč
+### <a name="create-key"></a>Vytvořit klíč
 
 1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat**.
 
@@ -78,7 +90,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     ![získat identifikátor klíče](./media/disk-encryption/get-key-identifier.png)
 
-## <a name="create-access-policy"></a>Vytvořit zásady přístupu
+### <a name="create-access-policy"></a>Vytvořit zásady přístupu
 
 1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu**.
 
@@ -88,31 +100,40 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     |Vlastnost |Popis|
     |---|---|
-    |Klíčová oprávnění|Vyberte **získat**, **Rozbalit klíč**a **zalomit klíč**.|
-    |Tajná oprávnění|Vyberte **získat**, **nastavit**a **Odstranit**.|
+    |Klíčová oprávnění|Vyberte **získat**, **Rozbalit klíč** a **zalomit klíč**.|
+    |Oprávnění pro tajné kódy|Vyberte **získat**, **nastavit** a **Odstranit**.|
     |Vybrat objekt zabezpečení|Vyberte uživatelem přiřazenou spravovanou identitu, kterou jste vytvořili dříve.|
 
     ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 1. Vyberte **Uložit**.
 
     ![Uložit zásady přístupu Azure Key Vault](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
-## <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Vytvoření clusteru s použitím šifrování klíčového disku spravovaného zákazníkem
+### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Vytvoření clusteru s použitím šifrování klíčového disku spravovaného zákazníkem
 
-Nyní jste připraveni vytvořit nový cluster HDInsight. Klíč spravovaný zákazníkem se dá použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z klíčových clusterů spravovaných zákazníkem a klíč spravovaný zákazníkem se nedá přidat k existujícím clusterům.
+Nyní jste připraveni vytvořit nový cluster HDInsight. Klíče spravované zákazníkem se dají použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z klíčových clusterů spravovaných zákazníkem a klíče spravované zákazníkem se nedají přidat do existujících clusterů.
 
-### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+Od verze z listopadu 2020 podporuje HDInsight vytváření clusterů pomocí identifikátorů URI klíčů bez verzí. Pokud vytvoříte cluster s identifikátorem URI klíče bez verze, pokusí se cluster HDInsight při aktualizaci klíče v Azure Key Vault provést automatické střídání klíče. Pokud vytvoříte cluster s identifikátorem URI klíče se správou verzí, budete muset provést ruční střídání klíče, jak je popsáno v tématu [otočení šifrovacího klíče](#rotating-the-encryption-key).
 
-Během vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
+V případě clusterů vytvořených před vydáním verze z listopadu 2020 bude nutné ručně provést střídání klíčů pomocí identifikátoru URI klíče s verzí.
+
+#### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+Během vytváření clusteru můžete buď použít klíč s verzí, nebo klíč bez verze následujícím způsobem:
+
+- **Verze** – při vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- Bez **verzí** – při vytváření clusteru zadejte jenom **identifikátor klíče**. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+
+Musíte také přiřadit spravovanou identitu ke clusteru.
 
 ![Vytvořit nový cluster](./media/disk-encryption/create-cluster-portal.png)
 
-### <a name="using-azure-cli"></a>Použití Azure CLI
+#### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure vytvořit nový cluster Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [Azure CLI AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
+Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure vytvořit nový cluster Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create). Parametr `encryption-key-version` je nepovinný.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -124,9 +145,9 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 --assign-identity MyMSI
 ```
 
-### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
+#### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 
-Následující příklad ukazuje, jak použít šablonu Azure Resource Manager k vytvoření nového clusteru Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [co jsou šablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+Následující příklad ukazuje, jak použít šablonu Azure Resource Manager k vytvoření nového clusteru Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [co jsou šablony ARM](../azure-resource-manager/templates/overview.md). Vlastnost šablony Resource Manageru `diskEncryptionKeyVersion` je volitelná.
 
 V tomto příkladu se k volání šablony používá PowerShell.
 
@@ -338,19 +359,19 @@ Obsah šablony správy prostředků `azuredeploy.json` :
 }
 ```
 
-## <a name="rotating-the-encryption-key"></a>Otočení šifrovacího klíče
+### <a name="rotating-the-encryption-key"></a>Otočení šifrovacího klíče
 
-Můžou nastat situace, kdy budete možná chtít změnit šifrovací klíče používané clusterem HDInsight po jeho vytvoření. To může být snadné prostřednictvím portálu. Pro tuto operaci musí mít cluster přístup k aktuálnímu klíči i k zamýšlenému novému klíči. v opačném případě se operace otočení klíče nezdaří.
+Šifrovací klíče používané ve spuštěném clusteru můžete změnit pomocí Azure Portal nebo Azure CLI. Pro tuto operaci musí mít cluster přístup k aktuálnímu klíči i k zamýšlenému novému klíči. v opačném případě se operace otočení klíče nezdaří. Pro clustery vytvořené po vydání verze z listopadu 2020 můžete zvolit, jestli chcete, aby nový klíč měl verzi nebo ne. Pro clustery vytvořené před vydáním verze z listopadu 2020 je nutné při střídání šifrovacího klíče použít klíč se správou verzí.
 
-### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+#### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 K otočení klíče potřebujete identifikátor URI trezoru základního klíče. Až to uděláte, přejděte do části vlastnosti clusteru HDInsight na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku**. Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
 
 ![otočit šifrovací klíč disku](./media/disk-encryption/change-key.png)
 
-### <a name="using-azure-cli"></a>Použití Azure CLI
+#### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Následující příklad ukazuje, jak otočit šifrovací klíč disku pro existující cluster HDInsight. Další informace najdete v tématu [Azure CLI AZ HDInsight otočit-Disk-Encryption-Key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key).
+Následující příklad ukazuje, jak otočit šifrovací klíč disku pro existující cluster HDInsight. Další informace najdete v tématu [Azure CLI AZ HDInsight otočit-Disk-Encryption-Key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key).
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -383,19 +404,74 @@ Pokud cluster ztratí přístup k tomuto klíči, zobrazí se na portálu Apache
 
 **Jak mohu obnovit cluster, pokud jsou klíče odstraněny?**
 
-Vzhledem k tomu, že se podporují jenom klíče s povoleným obnovitelném odstraněním, měl by cluster znovu získat přístup k klíčům, pokud se klíče obnoví v trezoru klíčů. Pokud chcete obnovit Azure Key Vault klíč, přečtěte si téma [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) nebo [AZ-klíčů trezor-Key-Recovery](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
+Vzhledem k tomu, že se podporují jenom klíče s povoleným obnovitelném odstraněním, měl by cluster znovu získat přístup k klíčům, pokud se klíče obnoví v trezoru klíčů. Pokud chcete obnovit Azure Key Vault klíč, přečtěte si téma [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) nebo [AZ-klíčů trezor-Key-Recovery](/cli/azure/keyvault/key#az-keyvault-key-recover).
 
-**Které typy disků jsou zašifrované? Šifrují se i disky s operačním systémem nebo disky prostředků?**
-
-Disky prostředků a data/spravované disky jsou zašifrované. Disky s operačním systémem nejsou šifrované.
 
 **Pokud je cluster škálovatelný, budou nové uzly bezproblémově podporovat klíče spravované zákazníky?**
 
-Yes. Cluster potřebuje během horizontálního navýšení kapacity přístup k klíči v trezoru klíčů. Stejný klíč se používá k šifrování spravovaných disků i disků prostředků v clusteru.
+Ano. Cluster potřebuje během horizontálního navýšení kapacity přístup k klíči v trezoru klíčů. Stejný klíč se používá k šifrování spravovaných disků i disků prostředků v clusteru.
 
 **Jsou v mém umístění dostupné klíče spravované zákazníky?**
 
 Klíče spravované zákazníkem HDInsight jsou k dispozici ve všech veřejných cloudech a národních cloudech.
+
+## <a name="encryption-at-host-using-platform-managed-keys"></a>Šifrování na hostiteli pomocí klíčů spravovaných platformou
+
+### <a name="enable-in-the-azure-portal"></a>Povolit v Azure Portal
+
+Šifrování na hostiteli lze povolit během vytváření clusteru v Azure Portal.
+
+> [!Note]
+> Když je povolené šifrování na hostiteli, nemůžete do svého clusteru HDInsight přidávat aplikace z Azure Marketplace.
+
+:::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="Povolte šifrování na hostiteli.":::
+
+Tato možnost povoluje [šifrování na hostiteli](../virtual-machines/disks-enable-host-based-encryption-portal.md) pro virtuální počítače HDInsight s použitím klíče PMK. Šifrování na hostiteli se [podporuje jenom u některých SKU virtuálních počítačů v omezených oblastech](../virtual-machines/disks-enable-host-based-encryption-portal.md) a HDInsight podporuje [následující konfiguraci uzlů a SKU](./hdinsight-supported-node-configuration.md).
+
+Pro pochopení správné velikosti virtuálního počítače pro cluster HDInsight si přečtěte téma [Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight](hdinsight-selecting-vm-size.md). Výchozí SKU virtuálního počítače pro uzel Zookeeper, pokud je povolené šifrování na hostiteli, bude DS2V2.
+
+### <a name="enable-using-powershell"></a>Povolení s využitím PowerShellu
+
+Následující fragment kódu ukazuje, jak můžete vytvořit nový cluster Azure HDInsight s povoleným šifrováním na hostiteli pomocí PowerShellu. `-EncryptionAtHost $true`K povolení této funkce používá parametr.
+
+```powershell
+$storageAccountResourceGroupName = "Group"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = Get-AzStorageAccountKey `
+    -ResourceGroupName $storageAccountResourceGroupName `
+    -Name $storageAccountName | %{ $_.Key1 }
+$storageContainer = "container002"
+# Cluster configuration info
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 4 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -HttpCredential $clusterCreds `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainer $storageContainer `
+    -SshCredential $clusterCreds `
+    -EncryptionAtHost $true `
+```
+
+### <a name="enable-using-azure-cli"></a>Povolení pomocí Azure CLI
+
+Následující fragment kódu ukazuje, jak můžete vytvořit nový cluster Azure HDInsight s povoleným šifrováním na hostiteli pomocí Azure CLI. `--encryption-at-host true`K povolení této funkce používá parametr.
+
+```azurecli
+az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
+-p "yourpass" \\
+--storage-account MyStorageAccount --encryption-at-host true
+```
 
 ## <a name="next-steps"></a>Další kroky
 

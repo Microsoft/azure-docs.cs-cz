@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 57efca87aefad346fda175b073409868d21564ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245500"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
@@ -19,7 +19,7 @@ Získat a odstranit prostředky svazku.
 
 |Příkaz|Popis|
 | --- | --- |
-| odstranění | Odstraní prostředek Volume. |
+| delete | Odstraní prostředek Volume. |
 | list | Zobrazí seznam všech prostředků svazku. |
 | show | Získá prostředek svazku s daným názvem. |
 
@@ -28,15 +28,15 @@ Odstraní prostředek Volume.
 
 Odstraní prostředek svazku identifikovaný názvem.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název svazku. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -51,7 +51,7 @@ Načte informace o všech svazcích prostředků v dané skupině prostředků. 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -64,15 +64,15 @@ Získá prostředek svazku s daným názvem.
 
 Načte informace o prostředku svazku s daným názvem. Tyto informace zahrnují popis a další vlastnosti svazku.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název svazku. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

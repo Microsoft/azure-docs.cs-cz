@@ -2,7 +2,7 @@
 title: Integrace místních aplikací s Cloud App Security – Azure AD
 description: Nakonfigurujte místní aplikaci v Azure Active Directory tak, aby fungovala s Microsoft Cloud App Security (MCAS). Pomocí Řízení podmíněného přístupu k aplikacím MCAS můžete monitorovat a řídit relace v reálném čase na základě zásad podmíněného přístupu. Tyto zásady můžete použít u místních aplikací, které používají proxy aplikace v Azure Active Directory (Azure AD).
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.date: 12/19/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 139f347a3d1bce7a8f841cd1c39cd250b9a2182d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764566"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259351"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurace monitorování přístupu aplikace v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory
 Nakonfigurujte místní aplikaci v Azure Active Directory (Azure AD), aby používala Microsoft Cloud App Security (MCAS) pro sledování v reálném čase. MCAS používá Řízení podmíněného přístupu k aplikacím k monitorování a řízení relací v reálném čase na základě zásad podmíněného přístupu. Tyto zásady můžete použít u místních aplikací, které používají proxy aplikace v Azure Active Directory (Azure AD).

@@ -1,17 +1,17 @@
 ---
 title: Optimalizace výkonu – vyplavení pomocí Azure Data Lake Storage Gen1
 description: Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu topologie Azure, včetně řešení běžných problémů.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: twooley
+ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192803"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725033"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen1
 
@@ -22,8 +22,8 @@ Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu t
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Spuštění clusteru nečinnosti v Data Lake Storage Gen1**. Další informace najdete v tématu zaplavení [v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
-* **Pokyny k ladění výkonu na data Lake Storage Gen1**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 doprovodné materiály k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
+* **Spuštění clusteru nečinnosti v Data Lake Storage Gen1**. Další informace najdete v tématu zaplavení [v HDInsight](../hdinsight/storm/apache-storm-overview.md).
+* **Pokyny k ladění výkonu na data Lake Storage Gen1**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 doprovodné materiály k ladění výkonu](./data-lake-store-performance-tuning-guidance.md).  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>Vyladění paralelismu topologie
 
@@ -89,7 +89,7 @@ V případě topologií náročných na vstupně-výstupní operace je vhodné, 
 
 V systému se Spout nachází v řazené kolekci členů, dokud není explicitně potvrzeno šroubem. Pokud je v rámci pole řazená kolekce členů, ale ještě nebyla potvrzena, Spout nemusí být trvale Data Lake Storage Gen1 back-endu. Po potvrzení řazené kolekce členů může Spout zaručit trvalost a pak může odstranit zdrojová data z jakéhokoli zdroje, ze kterého čte.  
 
-Pro nejlepší výkon na Data Lake Storage Gen1 mít vyrovnávací paměť šroubů 4 MB dat řazené kolekce členů. Pak zapište do Data Lake Storage Gen1 back-endu jako jeden zápis o velikosti 4 MB. Po úspěšném zapsání dat do úložiště (voláním hflush ()) může šroub potvrdit data zpět do Spout. To je to, co tady je uvedený příklad. Je také přijatelné, aby obsahoval větší počet řazených kolekcí členů před provedením volání hflush () a potvrzenými řazenými kolekcemi členů. To ale zvyšuje počet řazených kolekcí členů v letu, že Spout potřebuje držet, a zvyšuje tak množství paměti vyžadované na JVM.
+Pro nejlepší výkon na Data Lake Storage Gen1 mít vyrovnávací paměť šroubů 4 MB dat řazené kolekce členů. Pak zapište do Data Lake Storage Gen1 back-endu jako zápis 1 4 MB. Po úspěšném zapsání dat do úložiště (voláním hflush ()) může šroub potvrdit data zpět do Spout. To je to, co tady je uvedený příklad. Je také přijatelné, aby obsahoval větší počet řazených kolekcí členů před provedením volání hflush () a potvrzenými řazenými kolekcemi členů. To ale zvyšuje počet řazených kolekcí členů v letu, že Spout potřebuje držet, a zvyšuje tak množství paměti vyžadované na JVM.
 
 > [!NOTE]
 > Aplikace mohou mít požadavek na potvrzení řazených kolekcí členů častěji (u velikostí dat menších než 4 MB) pro jiné účely bez výkonu. To však může ovlivnit propustnost vstupně-výstupních operací do back-endu úložiště. Pečlivě navážíte tyto kompromisy proti vstupně-výstupnímu výkonu šroubů.
@@ -98,7 +98,7 @@ Pokud příchozí míra řazených kolekcí členů není vysoká, takže vyrovn
 * Snížení počtu šroubů, aby bylo možné vyplnit méně vyrovnávacích pamětí.
 * Se zásadami založenými na čase nebo na základě počtu, kde se hflush () aktivuje při každém vyprázdnění x nebo každých y milisekund, a řazené kolekce členů se potvrzují zpátky.
 
-Propustnost v tomto případě je nižší, ale s pomalou mírou událostí, maximální propustnost není největším cílem. Tato omezení pomáhají snížit celkovou dobu, kterou bude trvat, než se řazená kolekce členů dotéká do obchodu. Tato situace může nastat, pokud chcete, aby kanál v reálném čase byl i s nízkou rychlostí událostí. Všimněte si také, že pokud je vaše příchozí míra řazené kolekce členů nízká, měli byste upravit parametr Topology. Message. timeout_secs, aby řazené kolekce členů nevypršel časový limit při získávání nebo zpracování vyrovnávací paměti.
+Propustnost v tomto případě je nižší, ale s pomalou mírou událostí, maximální propustnost není největším cílem. Tato omezení pomáhají snížit celkovou dobu, kterou bude trvat, než se řazená kolekce členů dotéká do obchodu. Tato situace může nastat, pokud chcete, aby kanál v reálném čase byl i s nízkou rychlostí událostí. Všimněte si také, že pokud je vaše příchozí míra řazené kolekce členů nízká, měli byste upravit parametr topology.message.timeout_secs, aby nedošlo k vypršení časového limitu řazených kolekcí členů do vyrovnávací paměti nebo zpracování.
 
 ## <a name="monitor-your-topology-in-storm"></a>Monitorování topologie v prostředí s více podsady  
 I když je vaše topologie spuštěná, můžete ji monitorovat v uživatelském rozhraní. Tady jsou hlavní parametry, které se mají najít:
@@ -126,10 +126,10 @@ Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen1
 
 Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari**.  >  **Storm**  >  **Config**  >  **log4j konfigurace Advanced**, změňte ** &lt; kořenovou úroveň = "informace" &gt; ** na ** &lt; kořenovou úroveň = "ladění" &gt; **. Restartujte všechny uzly/služby, aby se konfigurace projevila.
+1. V **Ambari**.  >    >    >  **log4j konfigurace Advanced**, změňte **&lt; kořenovou úroveň = "informace" &gt;** na **&lt; kořenovou úroveň = "ladění" &gt;**. Restartujte všechny uzly/služby, aby se konfigurace projevila.
 2. Sledujte protokoly rozplavení v uzlech pracovních procesů (pod/var/log/Storm/Worker-artifacts/em &lt; &gt; / &lt; &gt; /Worker.log portu) pro výjimky omezování Data Lake Storage Gen1.
 
 ## <a name="next-steps"></a>Další kroky
-Na [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)se dá odkazovat na další ladění výkonu pro zaplavení.
+Na [tomto blogu](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)se dá odkazovat na další ladění výkonu pro zaplavení.
 
 Další příklad ke spuštění najdete [v tomto tématu na GitHubu](https://github.com/hdinsight/storm-performance-automation).

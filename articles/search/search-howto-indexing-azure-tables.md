@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91275179"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indexování tabulek z Azure Table Storage pomocí Azure Kognitivní hledání
 
@@ -25,8 +25,8 @@ Tento článek popisuje, jak pomocí služby Azure Kognitivní hledání indexov
 Indexer služby Azure Table Storage můžete nastavit pomocí těchto prostředků:
 
 * [Azure Portal](https://ms.portal.azure.com)
-* [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) kognitivní hledání Azure
-* Sada Azure Kognitivní hledání [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* [REST API](/rest/api/searchservice/Indexer-operations) kognitivní hledání Azure
+* Sada Azure Kognitivní hledání [.NET SDK](/dotnet/api/overview/azure/search)
 
 V tomto příkladu předvádíme tok pomocí REST API. 
 
@@ -62,18 +62,19 @@ Vytvoření zdroje dat:
     }   
 ```
 
-Další informace o rozhraní API Create DataSource najdete v tématu [Create DataSource](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
+Další informace o rozhraní API Create DataSource najdete v tématu [Create DataSource](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>Způsoby zadání přihlašovacích údajů ####
 
 Přihlašovací údaje pro tabulku můžete zadat jedním z těchto způsobů: 
 
+- **Připojovací řetězec spravované identity**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Tento připojovací řetězec nevyžaduje klíč účtu, ale musíte postupovat podle pokynů pro [nastavení připojení k účtu Azure Storage pomocí spravované identity](search-howto-managed-identities-storage.md).
 - **Úplný přístup k účtu úložiště s úplným přístupem**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` připojovací řetězec můžete z Azure Portal získat tak, že v okně nastavení **účtu úložiště**zadáte  >  **Settings**  >  **klíče** pro účty úložiště (pro účty Classic) nebo **Settings**  >  **přístupové klíče** nastavení (pro účty Azure Resource Manager úložiště).
 - **Připojovací řetězec sdíleného přístupového podpisu účtu úložiště**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` sdílený přístupový podpis by měl mít oprávnění list a číst na kontejnerech (v tomto případě tabulky) a objekty (řádky tabulky).
 -  **Sdílený přístupový podpis tabulky**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` sdílený přístupový podpis by měl mít v tabulce oprávnění Query (čtení).
 
-Další informace o sdílených přístupových podpisech úložiště najdete v tématu [použití sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Další informace o sdílených přístupových podpisech úložiště najdete v tématu [použití sdílených přístupových podpisů](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
 > Pokud používáte přihlašovací údaje sdíleného přístupového podpisu, budete muset pravidelně aktualizovat přihlašovací údaje zdroje dat pomocí obnovených signatur, aby se předešlo jejich vypršení platnosti. Pokud platnost přihlašovacích údajů pro sdílený přístupový podpis vyprší, indexer se nezdařil s chybovou zprávou podobnou "přihlašovací údaje zadané v připojovacím řetězci jsou neplatné nebo vypršely."  
@@ -97,7 +98,7 @@ Vytvoření indexu:
     }
 ```
 
-Další informace o vytváření indexů najdete v tématu [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Další informace o vytváření indexů najdete v tématu [vytvoření indexu](/rest/api/searchservice/create-index).
 
 ### <a name="step-3-create-an-indexer"></a>Krok 3: vytvoření indexeru
 Indexer připojuje zdroj dat k cílovému vyhledávacímu indexu a poskytuje plán pro automatizaci aktualizace dat. 
@@ -119,7 +120,7 @@ Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
 
 Tento indexer se spustí každé dvě hodiny. (Interval plánu je nastaven na "PT2H".) Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je pět minut. Plán je nepovinný. je-li tento parametr vynechán, bude indexer spuštěn pouze jednou při jeho vytvoření. Indexer ale můžete kdykoli spustit na vyžádání.   
 
-Další informace o rozhraní API pro vytváření indexerů najdete v tématu [Create indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Další informace o rozhraní API pro vytváření indexerů najdete v tématu [Create indexer](/rest/api/searchservice/create-indexer).
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
@@ -170,7 +171,7 @@ Tady jsou dva možné přístupy pro zlepšení výkonu indexování tabulek. Ob
 
 - Pokud jsou vaše data rozdělená podle času (například nový oddíl vytvoříte každý den nebo týden), vezměte v úvahu následující postup: 
     - Použijte dotaz na formulář: `(PartitionKey ge <TimeStamp>) and (other filters)` . 
-    - Sledovat průběh indexeru pomocí [rozhraní Get API stavu pro indexer](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)a pravidelně aktualizovat `<TimeStamp>` podmínku dotazu na základě nejnovější úspěšné hodnoty vysokého množství. 
+    - Sledovat průběh indexeru pomocí [rozhraní Get API stavu pro indexer](/rest/api/searchservice/get-indexer-status)a pravidelně aktualizovat `<TimeStamp>` podmínku dotazu na základě nejnovější úspěšné hodnoty vysokého množství. 
     - Pokud potřebujete s tímto přístupem aktivovat kompletní Reindexování, je potřeba resetovat dotaz DataSource a obnovit indexer. 
 
 

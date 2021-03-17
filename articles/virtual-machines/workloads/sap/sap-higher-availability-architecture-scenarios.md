@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a107453e040c1b4e31b833fedca0d2017e983740
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134526"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672984"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Využití restartování virtuálních počítačů infrastruktury Azure k dosažení "vyšší dostupnosti" systému SAP
 
@@ -210,7 +210,7 @@ ms.locfileid: "86134526"
 
 > Tato část se týká:
 >
-> ![Windows][Logo_Windows] Okna a ![Linux][Logo_Linux] Linux
+> ![Logo Windows][Logo_Windows] Okna a ![Logo Linux.][Logo_Linux] Linux
 >
 
 Pokud se rozhodnete, že nebudete používat funkce, jako je Windows Server Failover Clustering (WSFC) nebo Pacemaker v systému Linux (aktuálně se podporuje jenom pro SUSE Linux Enterprise Server [SLES] 12 a novější), využije se restart virtuálního počítače Azure. Chrání systémy SAP proti plánovanému a neplánovanému výpadku infrastruktury fyzického serveru Azure a celkové základní platformy Azure.
@@ -228,7 +228,7 @@ Služby Azure Managed disks se automaticky umístí do domény selhání virtuá
 
 Ukázková architektura systému SAP NetWeaver, který používá vysokou dostupnost infrastruktury Azure a účty úložiště, může vypadat takto:
 
-![Využijte vysokou dostupnost infrastruktury Azure pro zajištění vyšší dostupnosti aplikace SAP][planning-guide-figure-2900]
+![Diagram znázorňující architekturu systému SAP NetWeaver, která využívá vysokou dostupnost infrastruktury Azure a účty úložiště.][planning-guide-figure-2900]
 
 Ukázková architektura systému SAP NetWeaver, který používá vysokou dostupnost infrastruktury Azure a spravované disky, může vypadat takto:
 

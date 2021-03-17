@@ -7,23 +7,23 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711684"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Přepsání hlaviček požadavků a odpovědí HTTP pomocí Azure Application Gateway-Azure PowerShell
 
-Tento článek popisuje, jak pomocí Azure PowerShell nakonfigurovat instanci [SKU Application Gateway v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
+Tento článek popisuje, jak pomocí Azure PowerShell nakonfigurovat instanci [SKU Application Gateway v2](./application-gateway-autoscaling-zone-redundant.md) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Abyste mohli dokončit kroky v tomto článku, musíte spustit Azure PowerShell místně. Musíte také mít nainstalované AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` Určete verzi, kterou jste nainstalovali. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
-- Musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) .
+- Abyste mohli dokončit kroky v tomto článku, musíte spustit Azure PowerShell místně. Musíte také mít nainstalované AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` Určete verzi, kterou jste nainstalovali. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+- Musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](./tutorial-autoscale-ps.md) .
 
 ## <a name="create-required-objects"></a>Vytvořit požadované objekty
 
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Zadejte konfiguraci pravidla přepisu hlaviček protokolu HTTP.
 
-V tomto příkladu změníme adresu URL přesměrování tak, že přepíšeme hlavičku umístění v odpovědi HTTP vždy, když hlavička Location obsahuje odkaz na azurewebsites.net. K tomu přidáme podmínku pro vyhodnocení, zda hlavička umístění v odpovědi obsahuje azurewebsites.net. Použijeme tento vzor `(https?):\/\/.*azurewebsites\.net(.*)$` . A použijeme `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu hlavičky. Tato hodnota nahradí *azurewebsites.NET* hodnotou *contoso.com* v hlavičce umístění.
+V tomto příkladu změníme adresu URL přesměrování tak, že přepíšeme hlavičku umístění v odpovědi HTTP vždy, když hlavička Location obsahuje odkaz na azurewebsites.net. K tomu přidáme podmínku pro vyhodnocení, zda hlavička umístění v odpovědi obsahuje azurewebsites.net. Použijeme tento vzor `(https?)://.*azurewebsites.net(.*)$` . A použijeme `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu hlavičky. Tato hodnota nahradí *azurewebsites.NET* hodnotou *contoso.com* v hlavičce umístění.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
@@ -104,4 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](./rewrite-http-headers.md).

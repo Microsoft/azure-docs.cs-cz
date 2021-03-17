@@ -1,7 +1,7 @@
 ---
-title: Přehled šablon licencí Azure Media Services V3 with Widevine
-description: Toto téma poskytuje přehled šablony licencí Widevine, která se používá ke konfiguraci licencí Widevine.
-author: juliako
+title: Přehled šablon licencí Media Services V3 Widevine
+description: Přečtěte si o Azure Media Services se šablonou licencí Widevine a o tom, jak se používá ke konfiguraci licencí Widevine.
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,24 +10,26 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2020
-ms.author: juliako
-ms.openlocfilehash: 35816c693589c5a45d51e5bd093d908b68f9c0d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9ef45e804b593f36171907395c564c8c6058c286
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043266"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453729"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Přehled šablon licencí Media Services V3 with Widevine
 
 Azure Media Services vám umožní šifrovat obsah pomocí **Google Widevine**. Media Services taky poskytuje službu pro doručování licencí Widevine. K nakonfigurování licencí Widevine můžete použít rozhraní API pro Azure Media Services. Když se hráč pokusí přehrát obsah chráněný Widevine, pošle se mu žádost o získání licence. Pokud licenční služba žádost schválí, služba vydá licenci. Odesílá se klientovi a používá se k dešifrování a přehrávání zadaného obsahu.
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 Žádost o licenci Widevine je naformátovaná jako zpráva JSON.  
 
->[!NOTE]
-> Můžete vytvořit prázdnou zprávu bez hodnot, stačí " {} ." Pak se vytvoří šablona licence s výchozími hodnotami. Výchozí hodnota funguje ve většině případů. Scénáře pro doručování licencí založené na Microsoftu by měly vždycky používat výchozí hodnoty. Pokud potřebujete nastavit hodnoty "Provider" a "content_id", poskytovatel musí odpovídat přihlašovacím údajům Widevine.
+
 
 ```json
 {  
@@ -60,12 +62,15 @@ Azure Media Services vám umožní šifrovat obsah pomocí **Google Widevine**. 
 }
 ```
 
+>[!NOTE]
+> Můžete vytvořit prázdnou zprávu bez hodnot, stačí " {} ." Pak se vytvoří šablona licence s výchozími hodnotami. Výchozí hodnota funguje ve většině případů. Scénáře pro doručování licencí založené na Microsoftu by měly vždycky používat výchozí hodnoty. Pokud potřebujete nastavit hodnoty "Provider" a "content_id", poskytovatel musí odpovídat přihlašovacím údajům Widevine.
+
 ## <a name="json-message"></a>Zpráva JSON
 
 | Název | Hodnota | Popis |
 | --- | --- | --- |
 | payload |Řetězec s kódováním base64 |Žádost o licenci odeslanou klientem |
-| content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type |
+| content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type. |
 | Zprostředkovatel |řetězec |Slouží k vyhledání klíčů obsahu a zásad. Pokud se pro doručování licencí Widevine používá doručování klíčů Microsoft, tento parametr se ignoruje. |
 | policy_name |řetězec |Název dřív registrovaných zásad. Nepovinný parametr. |
 | allowed_track_types |enum |SD_ONLY nebo SD_HD. Určuje, které klíče obsahu jsou zahrnuty v licenci. |
@@ -86,7 +91,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | content_key_specs  <br/> security_level |UInt32 |Definuje požadavky na odolnost klienta pro přehrávání. <br/> – Vyžaduje se softwarově vycházející kryptografický modul s prázdným polem. <br/> – Vyžaduje se softwarová kryptografie a zakódováný dekodér. <br/> – Operace klíčového materiálu a kryptografie se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním. <br/> – Kryptografie a dekódování obsahu se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním.  <br/> – Kryptografie, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) se musí zpracovat v rámci důvěryhodného spouštěcího prostředí pro hardware. |
 | content_key_specs <br/> required_output_protection. HDC |String, jedna z HDCP_NONE, HDCP_V1, HDCP_V2 |Určuje, jestli je nutná HDCP. |
 | content_key_specs <br/>key |Base<br/>kódovaný řetězec |Klíč obsahu, který se má použít pro tuto stopu Je-li tento parametr zadán, je požadován track_type nebo key_id. Poskytovatel obsahu může tuto možnost použít k vložení klíče obsahu pro tuto stopu místo toho, aby mohl licenční server Widevine vygenerovat nebo vyhledat klíč. |
-| content_key_specs. key_id |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
+| content_key_specs content_key_specs.Key_ID |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
 
 ## <a name="policy-overrides"></a>Přepsání zásad
 | Název | Hodnota | Popis |
@@ -112,7 +117,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 
 ## <a name="configure-your-widevine-license-with-net"></a>Konfigurace licence Widevine pomocí .NET 
 
-Media Services poskytuje třídu, která vám umožní nakonfigurovat licenci Widevine. Pokud chcete sestavit licenci, předejte JSON do [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate).
+Media Services poskytuje třídu, která vám umožní nakonfigurovat licenci Widevine. Pokud chcete sestavit licenci, předejte JSON do [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate).
 
 Chcete-li nakonfigurovat šablonu, můžete:
 
@@ -127,7 +132,7 @@ ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration =
 };
 ```
 
-### <a name="define-needed-classes-and-serialize-to-json"></a><a id="classes"></a>Definování potřebných tříd a serializace na JSON
+### <a name="define-needed-classes-and-serialize-to-json"></a><a id="classes"></a> Definování potřebných tříd a serializace na JSON
 
 #### <a name="define-classes"></a>Definovat třídy
 
@@ -258,7 +263,7 @@ public class WidevineTemplate
 
 #### <a name="configure-the-license"></a>Konfigurace licence
 
-Použijte třídy definované v předchozí části k vytvoření formátu JSON, který se používá ke konfiguraci [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate):
+Použijte třídy definované v předchozí části k vytvoření formátu JSON, který se používá ke konfiguraci [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate):
 
 ```csharp
 private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTempate()

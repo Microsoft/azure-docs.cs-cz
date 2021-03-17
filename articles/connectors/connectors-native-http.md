@@ -3,30 +3,34 @@ title: Volání koncových bodů služby pomocí protokolu HTTP nebo HTTPS
 description: Odesílat odchozí požadavky HTTP nebo HTTPS do koncových bodů služby z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 02/18/2021
 tags: connectors
-ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286627"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719436"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované triggeru nebo akce http můžete vytvářet automatizované úlohy a pracovní postupy, které odesílají požadavky do koncových bodů služby přes protokol HTTP nebo HTTPS. Například můžete monitorovat koncový bod služby pro svůj web tak, že zkontrolujete jeho koncový bod podle konkrétního plánu. Když v tomto koncovém bodu dojde k zadané události, jako je například váš web vypíná, událost aktivuje pracovní postup vaší aplikace logiky a spustí akce v tomto pracovním postupu. Pokud místo toho chcete přijmout příchozí volání HTTPS a reagovat na ně, použijte integrovaný [Trigger žádosti nebo akci reakce](../connectors/connectors-native-reqres.md).
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované triggeru nebo akce http můžete vytvářet automatizované úlohy a pracovní postupy, které mohou odesílat odchozí požadavky do koncových bodů v jiných službách a systémech přes protokol HTTP nebo HTTPS. Pokud místo toho chcete přijmout příchozí volání HTTPS a reagovat na ně, použijte vestavěnou [aktivační událost a akci reakce](../connectors/connectors-native-reqres.md).
+
+Například můžete monitorovat koncový bod služby pro svůj web tak, že zkontrolujete jeho koncový bod podle konkrétního plánu. Když v tomto koncovém bodu dojde k zadané události, jako je například váš web vypíná, událost aktivuje pracovní postup vaší aplikace logiky a spustí akce v tomto pracovním postupu.
 
 * Pokud chcete zjistit nebo zadat *dotaz* na koncový bod podle opakovaného plánu, [přidejte Trigger http](#http-trigger) jako první krok pracovního postupu. Pokaždé, když Trigger zkontroluje koncový bod, Trigger zavolá nebo odešle *požadavek* na koncový bod. Odpověď koncového bodu Určuje, jestli je Workflow vaší aplikace logiky spuštěn. Aktivační událost předá do akcí ve vaší aplikaci logiky veškerý obsah z odpovědi koncového bodu.
 
 * Pokud chcete zavolat koncový bod odkudkoli jinde ve vašem pracovním postupu, [přidejte akci HTTP](#http-action). Odpověď koncového bodu Určuje, jak se spustí zbývající akce pracovního postupu.
 
-Tento článek ukazuje, jak přidat Trigger nebo akci HTTP do pracovního postupu aplikace logiky.
+V tomto článku se dozvíte, jak použít Trigger HTTP a akci HTTP, aby vaše aplikace logiky mohla odesílat odchozí volání do jiných služeb a systémů.
+
+Informace o šifrování, zabezpečení a autorizaci pro odchozí volání z vaší aplikace logiky, jako je například [TLS (Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), certifikáty podepsané svým držitelem nebo [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), najdete v tématu [zabezpečený přístup a přístup k datům pro odchozí volání do jiných služeb a systémů](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Adresa URL cílového koncového bodu, který chcete volat
 
@@ -44,7 +48,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 1. V poli hledání návrháře vyberte možnost **předdefinované**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **triggery** vyberte Trigger **http** .
 
-   ![Vyberte Aktivační událost HTTP.](./media/connectors-native-http/select-http-trigger.png)
+   ![Vybrat Trigger HTTP](./media/connectors-native-http/select-http-trigger.png)
 
    V tomto příkladu se aktivační událost přejmenuje na Trigger HTTP, aby měl krok výstižnější název. Dále tento příklad přidá akci HTTP a oba názvy musí být jedinečné.
 
@@ -77,7 +81,7 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **Akce** vyberte akci **http** .
+1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **Akce** vyberte akci **http** .
 
    ![Vybrat akci HTTP](./media/connectors-native-http/select-http-action.png)
 
@@ -96,21 +100,27 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
 1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-<a name="tls-support"></a>
+## <a name="trigger-and-action-outputs"></a>Výstupy triggeru a akce
 
-## <a name="transport-layer-security-tls"></a>Protokol TLS (Transport Layer Security)
+Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
 
-Odchozí volání na základě schopnosti cílového koncového bodu podporují protokol TLS (Transport Layer Security), který byl dříve SSL (Secure Sockets Layer) (SSL), verze 1,0, 1,1 a 1,2. Logic Apps vyjednávat s koncovým bodem pomocí nejvyšší možné podporované verze.
+| Vlastnost | Typ | Popis |
+|----------|------|-------------|
+| `headers` | Objekt JSON | Hlavičky z požadavku |
+| `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
+| `status code` | Integer | Stavový kód z požadavku |
+|||
 
-Například pokud koncový bod podporuje 1,2, konektor HTTP nejprve používá 1,2. V opačném případě konektor používá další nejvyšší podporovanou verzi.
-
-<a name="self-signed"></a>
-
-## <a name="self-signed-certificates"></a>Certifikáty podepsané svým držitelem
-
-* Pro Logic Apps v globálním prostředí Azure s více klienty nepovoluje konektor HTTP konektor protokolu TLS/SSL podepsaný svým držitelem. Pokud vaše aplikace logiky provede volání HTTP na server a uvede certifikát podepsaný svým držitelem (TLS/SSL), volání HTTP se nezdařila s `TrustFailure` chybou.
-
-* Pro Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)umožňuje konektor http certifikáty podepsané svým držitelem pro ověřování TLS/SSL. Je však třeba nejprve [Povolit podporu certifikátu podepsaného svým držitelem](../logic-apps/create-integration-service-environment-rest-api.md#request-body) pro stávající ISE nebo nový ISE pomocí REST API Logic Apps a nainstalovat veřejný certifikát do `TrustedRoot` umístění.
+| Stavový kód | Description |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Přijato |
+| 400 | Chybný požadavek |
+| 401 | Neautorizováno |
+| 403 | Forbidden |
+| 404 | Nenalezeno |
+| 500 | Vnitřní chyba serveru. Došlo k neznámé chybě. |
+|||
 
 ## <a name="content-with-multipartform-data-type"></a>Obsah s datovým typem multipart/form-
 
@@ -157,6 +167,14 @@ Tady je stejný příklad, který ukazuje definici JSON akce HTTP v základní d
    "type": "Http"
 }
 ```
+
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Obsah s typem application/x-www-form-urlencoded
+
+Chcete-li zadat urlencoded data v těle požadavku HTTP, je nutné určit, že data mají `application/x-www-form-urlencoded` typ obsahu. Do triggeru nebo akce HTTP přidejte `content-type` hlavičku. Nastavte hodnotu hlavičky na `application/x-www-form-urlencoded` .
+
+Předpokládejme například, že máte aplikaci logiky, která odesílá požadavek HTTP POST na web, který podporuje daný `application/x-www-form-urlencoded` typ. Tady je postup, jak by tato akce mohla vypadat:
+
+![Snímek obrazovky, který zobrazuje požadavek HTTP s hlavičkou Content-Type nastavenou na Application/x-www-form-urlencoded](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -229,10 +247,10 @@ Některé koncové body, služby, systémy nebo rozhraní API vrátí odpověď 
 
 Pokud aktivační událost nebo akce HTTP obsahují tyto hlavičky, Logic Apps odebere tato záhlaví z vygenerované zprávy požadavku bez zobrazení upozornění nebo chyby:
 
-* `Accept-*`
+* `Accept-*` hlavičky s výjimkou `Accept-version`
 * `Allow`
-* `Content-*`s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a`Content-Type`
-* `Cookie`
+* `Content-*` hlavičky s výjimkou `Content-Disposition` , `Content-Encoding` a `Content-Type` , které jsou dodrženy při použití operací post a PUT. Logic Apps však při použití operace GET tyto hlavičky přestanou.
+* `Cookie` záhlaví, ale Logic Apps se dodrží jakákoli hodnota, kterou zadáte, pomocí vlastnosti **cookie** .
 * `Expires`
 * `Host`
 * `Last-Modified`
@@ -249,29 +267,7 @@ Další informace o parametrech Trigger a Action najdete v těchto částech:
 * [Parametry triggeru HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [Parametry akce HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
-### <a name="output-details"></a>Podrobnosti výstupu
-
-Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
-
-| Vlastnost | Typ | Popis |
-|----------|------|-------------|
-| `headers` | Objekt JSON | Hlavičky z požadavku |
-| `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
-| `status code` | Celé číslo | Stavový kód z požadavku |
-|||
-
-| Stavový kód | Popis |
-|-------------|-------------|
-| 200 | OK |
-| 202 | Přijato |
-| 400 | Chybný požadavek |
-| 401 | Neautorizováno |
-| 403 | Forbidden |
-| 404 | Nenalezeno |
-| 500 | Vnitřní chyba serveru. Došlo k neznámé chybě. |
-|||
-
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-
+* [Zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
+* [Konektory pro Logic Apps](../connectors/apis-list.md)

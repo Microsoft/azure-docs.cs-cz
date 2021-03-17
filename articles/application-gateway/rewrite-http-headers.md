@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248669"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575649"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Přepsat hlavičky HTTP pomocí Application Gateway
 
@@ -22,7 +22,7 @@ Hlavičky protokolu HTTP umožňují klientovi a serveru předat další informa
 
 Když se pakety požadavků a odpovědí pohybují mezi klientem a back-endovými fondy, služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlavičky požadavků a odpovědí HTTP. Umožňuje také přidat určité podmínky, které zajistí, že se zadané hlavičky přepíší pouze při splnění těchto podmínek.
 
-Application Gateway také podporuje několik [proměnných serveru](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) , které vám pomůžou ukládat Další informace o žádostech a odpovědích. To usnadňuje vytváření výkonných pravidel pro přepis.
+Application Gateway také podporuje několik [proměnných serveru](#server-variables) , které vám pomůžou ukládat Další informace o žádostech a odpovědích. To usnadňuje vytváření výkonných pravidel pro přepis.
 
 > [!NOTE]
 >
@@ -48,15 +48,15 @@ Podmínku můžete použít k vyhodnocení, zda je zadaná proměnná přítomna
 
 Akce přepisu slouží k zadání hlaviček žádosti a odpovědi, které chcete přepsat, a nové hodnoty hlaviček. Můžete buď vytvořit novou hlavičku, upravit hodnotu existující hlavičky nebo odstranit existující hlavičku. Hodnota nového záhlaví nebo existující záhlaví lze nastavit na tyto typy hodnot:
 
-- Textové.
-- Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_*header*}.
-- Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_*header*}.
-- Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_*serverVariable*}.
+- Text.
+- Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_ *header*}.
+- Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_ *header*}.
+- Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_ *serverVariable*}.
 - Kombinace textu, hlavičky požadavku, hlavičky odpovědi a serverové proměnné.
 
 ## <a name="server-variables"></a>Serverové proměnné
 
-Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_*serverVariable*}.
+Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_ *serverVariable*}.
 
 Application Gateway podporuje tyto proměnné serveru:
 
@@ -69,21 +69,21 @@ Application Gateway podporuje tyto proměnné serveru:
 | client_port                | Port klienta.                                                  |
 | client_tcp_rtt             | Informace o připojení TCP klienta. K dispozici v systémech, které podporují možnost soketu TCP_INFO. |
 | client_user                | Když se použije ověřování protokolem HTTP, uživatelské jméno zadané pro ověřování. |
-| host                       | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota host bude v požadavku *contoso.com* |
+| Hostitel                       | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` hodnota host bude v požadavku *contoso.com* |
 | *název* cookie_              | *Název* souboru cookie.                                            |
 | http_method                | Metoda použitá pro vytvoření žádosti adresy URL Například GET nebo POST. |
 | http_status                | Stav relace. Například 200, 400 nebo 403.                       |
 | http_version               | Protokol žádosti. Obvykle HTTP/1.0, HTTP/1.1 nebo HTTP/2.0. |
-| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
+| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
 | received_bytes             | Délka požadavku (včetně řádku žádosti, hlavičky a textu žádosti) |
 | request_query              | Argumenty na řádku požadavku.                                |
 | request_scheme             | Schéma žádosti: http nebo HTTPS.                            |
-| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam*   |
+| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam*   |
 | sent_bytes                 | Počet bajtů odeslaných klientovi.                             |
 | server_port                | Port serveru, který přijal požadavek.                 |
 | ssl_connection_protocol    | Protokol vytvořeného připojení TLS.        |
 | ssl_enabled                | "On", pokud připojení funguje v režimu TLS. V opačném případě prázdný řetězec. |
-| uri_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota uri_path */article.aspx*  |
+| uri_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` hodnota uri_path */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>Přepsat konfiguraci
 
@@ -109,7 +109,7 @@ Chcete-li nakonfigurovat přepsání hlaviček protokolu HTTP, je nutné provés
 
 Můžete vytvořit více sad pro přepsání hlaviček protokolu HTTP a použít každou sadu přepsání na více posluchačů. Můžete ale použít jenom jednu sadu přepsaného zápisu na konkrétní naslouchací proces.
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 
 Tady je několik běžných scénářů použití přepisu hlaviček.
 
@@ -156,7 +156,7 @@ Pro přítomnost záhlaví nebo serverové proměnné můžete vyhodnotit hlavi�
 
 ## <a name="limitations"></a>Omezení
 
-- Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. Tato situace může obvykle nastat s hlavičkou Set-cookie, protože v odpovědi můžete mít více než jednu hlavičku Set-cookie souborů cookie. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky sady souborů cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a druhý pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Přepsání jedné z hlaviček Set-cookie v tomto scénáři může mít za následek odebrání druhého záhlaví souboru cookie s nastavením z odpovědi.
+- Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. K tomu obvykle dochází v Set-Cookie hlavičce, protože odpověď může obsahovat více než jednu Set-Cookie hlavičku. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky Set-Cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a další pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Přepsání jedné z hlaviček Set-Cookie v tomto scénáři může mít za následek odebrání druhé hlavičky Set-Cookie z odpovědi.
 
 - Přepsání nejsou podporována, pokud je brána Application Gateway nakonfigurována pro přesměrování požadavků nebo zobrazení vlastní chybové stránky.
 
@@ -168,5 +168,5 @@ Pro přítomnost záhlaví nebo serverové proměnné můžete vyhodnotit hlavi�
 
 Informace o tom, jak přepsat hlavičky HTTP, najdete tady:
 
-- [Přepsat hlavičky HTTP pomocí Azure Portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Přepsání hlaviček HTTP s využitím webu Azure Portal](./rewrite-http-headers-portal.md)
 - [Přepsat hlavičky HTTP pomocí Azure PowerShell](add-http-header-rewrite-rule-powershell.md)

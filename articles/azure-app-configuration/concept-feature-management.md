@@ -1,31 +1,31 @@
 ---
 title: Principy správy funkcí pomocí Azure App Configuration
 description: Zapnutí a vypnutí funkcí pomocí konfigurace aplikace Azure
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b77f0063b37adbfaecaff68387e858d0077561b3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: cfd676092bcaede58909a3ec1eefeabb4c80f86b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212656"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930224"
 ---
 # <a name="feature-management-overview"></a>Přehled správy funkcí
 
 Při obnově nové funkce aplikace se obvykle vyžaduje úplné opětovné nasazení aplikace. Testování funkce často vyžaduje více nasazení aplikace.  Každé nasazení může změnit funkci nebo zveřejnit tuto funkci různým zákazníkům pro účely testování.  
 
-Správa funkcí je moderní postup vývoje softwaru, který odděluje vydání funkce od nasazení kódu a umožňuje rychlé změny dostupnosti funkcí na vyžádání. Používá techniku nazvanou *příznaky funkcí* (označované také jako *přepínání funkcí*, *přepínače funkcí*atd.) k dynamické správě životního cyklu funkce.
+Správa funkcí je moderní postup vývoje softwaru, který odděluje vydání funkce od nasazení kódu a umožňuje rychlé změny dostupnosti funkcí na vyžádání. Používá techniku nazvanou *příznaky funkcí* (označované také jako *přepínání funkcí*, *přepínače funkcí* atd.) k dynamické správě životního cyklu funkce.
 
 Správa funkcí pomáhá vývojářům řešit následující problémy:
 
-* **Správa větví kódu**: použijte příznaky funkcí k zabalení nových funkcí aplikace, které jsou aktuálně ve vývoji. Tato funkce je ve výchozím nastavení skrytá. Tuto funkci můžete bezpečně dodávat, i když je nedokončená a zůstane neaktivní v produkčním prostředí. Pomocí tohoto přístupu s názvem *tmavě nasazené*můžete uvolnit veškerý kód na konci každého vývojového cyklu. Již nemusíte spravovat větve kódu napříč několika vývojovými cykly, protože daná funkce vyžaduje více než jeden cyklus.
-* **Testování v produkčním**prostředí: pomocí příznaků funkcí udělíte včas přístup k novým funkcím v produkčním prostředí. Můžete například omezit přístup k členům týmu nebo interním testerům beta verzí. Tito uživatelé budou mít v testovacím prostředí místo simulovaného nebo částečného prostředí prostředí s možností celé přesnosti.
+* **Správa větví kódu**: použijte příznaky funkcí k zabalení nových funkcí aplikace, které jsou aktuálně ve vývoji. Tato funkce je ve výchozím nastavení skrytá. Tuto funkci můžete bezpečně dodávat, i když je nedokončená a zůstane neaktivní v produkčním prostředí. Pomocí tohoto přístupu s názvem *tmavě nasazené* můžete uvolnit veškerý kód na konci každého vývojového cyklu. Již nemusíte spravovat větve kódu napříč několika vývojovými cykly, protože daná funkce vyžaduje více než jeden cyklus.
+* **Testování v produkčním** prostředí: pomocí příznaků funkcí udělíte včas přístup k novým funkcím v produkčním prostředí. Můžete například omezit přístup k členům týmu nebo interním testerům beta verzí. Tito uživatelé budou mít v testovacím prostředí místo simulovaného nebo částečného prostředí prostředí s možností celé přesnosti.
 * **Let**: použití příznaků funkcí k přírůstkové zavedení nových funkcí koncovým uživatelům. Nejprve můžete cílit na malé procento naplnění uživatelského jména a zvýšit toto procento postupně v průběhu času.
-* **Přepínač okamžitého**ukončení: příznaky funkcí poskytují vlastní síť pro bezpečnost pro vydávání nových funkcí. Funkce aplikace můžete zapnout a vypnout bez nutnosti opětovného nasazení jakéhokoli kódu. V případě potřeby můžete funkci rychle zakázat bez nutnosti opětovného sestavování a opětovného nasazení aplikace.
+* **Přepínač okamžitého** ukončení: příznaky funkcí poskytují vlastní síť pro bezpečnost pro vydávání nových funkcí. Funkce aplikace můžete zapnout a vypnout bez nutnosti opětovného nasazení jakéhokoli kódu. V případě potřeby můžete funkci rychle zakázat bez nutnosti opětovného sestavování a opětovného nasazení aplikace.
 * **Selektivní aktivace**: pomocí příznaků funkcí můžete segmentovat uživatele a dodat konkrétní sadu funkcí pro každou skupinu. Můžete mít funkci, která funguje pouze v určitém webovém prohlížeči. Můžete definovat příznak funkce, aby se funkce mohla zobrazit a používat jenom uživatelé tohoto prohlížeče. S tímto přístupem můžete seznam podporovaných prohlížečů snadno rozšířit později, aniž byste museli dělat změny kódu.
 
 ## <a name="basic-concepts"></a>Základní koncepty

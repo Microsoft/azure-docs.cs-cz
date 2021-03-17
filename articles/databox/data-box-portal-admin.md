@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 2fc869448bac8303acee902b5d8819fdd3f26138
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258510"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678648"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
 
@@ -21,41 +21,35 @@ Tento článek se týká Azure Data Box i Azure Data Box Heavy. Tento článek p
 
 Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Pomocí Azure Portal můžete spravovat objednávky, spravovat Data Box zařízení a sledovat stav objednávky v průběhu jejich dokončení.
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-
 ## <a name="cancel-an-order"></a>Zrušení objednávky
 
-Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. 
+Po umístění může být potřeba objednávku zrušit z různých důvodů.
 
-U objednávek importu i exportu můžete objednávku zrušit jenom před zpracováním objednávky. Po zpracování objednávky a přípravné Data Box zařízení není možné objednávku zrušit.
+Pro import i export objednávek můžete objednávku zrušit jenom před jejím zpracováním. Po zpracování objednávky a přípravné Data Box zařízení nemůžete tuto objednávku zrušit.
 
 Když chcete zrušit objednávku, postupujte následovně.
 
 1.  Přejděte na **Přehled > Zrušit**.
 
-    ![Zrušení objednávky 1](media/data-box-portal-admin/cancel-order1.png)
+    ![Příkaz Cancel na kartě Přehled pro objednávku](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  Zadejte důvod zrušení objednávky.  
 
-    ![Zrušení objednávky 2](media/data-box-portal-admin/cancel-order2.png)
+    ![Zrušit objednávku – dialogové okno](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
 3.  Po zrušení objednávky se na portálu aktualizuje její stav na **Zrušeno**.
 
 ## <a name="clone-an-order"></a>Klonování objednávky
 
-V některých situacích může být užitečné klonování. Uživatel například používá Data Box k přenosu dat. Když se generují víc dat, potřebuje další Data Box zařízení pro přenos těchto dat do Azure. V takovém případě se dá stejná objednávka jednoduše naklonovat.
-
-> [!IMPORTANT]
-> Pro exportní objednávky není klonování k dispozici. Můžete klonovat pouze importované objednávky.
+V některých situacích může být užitečné klonování. Například jste použili Data Box k přenosu některých dat. Při generování dalších dat je potřeba k přenosu těchto dat do Azure použít jiné Data Box zařízení. V takovém případě můžete pouze klonovat stejné pořadí.
 
 Provedením následujících kroků naklonujte pořadí importu.
 
 1.  Přejděte na **Přehled > Klonovat**. 
 
-    ![Klonování objednávky 1](media/data-box-portal-admin/clone-order1.png)
+    ![Příkaz Clone na kartě Přehled pro objednávku](media/data-box-portal-admin/portal-admin-clone-command.png)
 
-2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Create** (Vytvořit).
+2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Vytvořit**.
 
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
@@ -70,23 +64,23 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
 2. Klikněte na objednávku, kterou chcete odstranit, a přejděte na **Přehled**. Na panelu příkazů klikněte na **Odstranit**.
 
-    ![Odstranění první objednávky Data Boxu](media/data-box-portal-admin/delete-order1.png)
+    ![Příkaz Odstranit na kartě Přehled pro objednávku](media/data-box-portal-admin/portal-admin-delete-command.png)
 
 3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
 
 ## <a name="download-shipping-label"></a>Stažení expedičního štítku
 
-Pokud displej E-ink vašeho Data Boxu nefunguje a nezobrazuje zpětný expediční štítek, budete možná muset expediční štítek stáhnout. Na Data Box Heavy se nezobrazuje žádný displej s tiskem, takže tento pracovní postup neplatí pro Data Box Heavy.
+Je možné, že budete muset stáhnout štítek pro expedici, pokud zobrazení Data Box E-rukou nefunguje a nezobrazí popisek pro návratovou expedici. Na Data Box Heavy není žádný displej s inkoustem, takže se tento pracovní postup nevztahuje na Data Box Heavy.
 
 Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
 1.  Přejděte na **Přehled > Stáhnout expediční štítek**. Tato možnost je dostupná teprve po odeslání zařízení. 
 
-    ![Stažení expedičního štítku](media/data-box-portal-admin/download-shipping-label.png)
+    ![Stažení expedičního štítku](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  Tato akce stáhne následující zpětný expediční štítek. Uložte popisek a vytiskněte ho. Skládání a vložení popisku do prostého rukávu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
 
-    ![Ukázkový expediční štítek](media/data-box-portal-admin/example-shipping-label.png)
+    ![Ukázkový expediční štítek](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Úprava dodací adresy
 
@@ -96,25 +90,25 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
 1. Přejděte na **Podrobnosti objednávky > Upravit dodací adresu**.
 
-    ![Úprava dodací adresy 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![Upravit dodací adresu – příkaz v pořadí podrobností](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. Upravte a zkontrolujte dodací adresu a pak uložte změny.
 
-    ![Úprava dodací adresy 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![Dialogové okno Upravit dodací adresu](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
-Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Po dokončení kopírování dat může být potřeba informovat jiného uživatele, aby před jeho odstraněním ze zdroje mohl ověřit data v účtu služby Azure Storage. V takových případech můžete upravit podrobnosti o oznámení.
+Možná budete muset změnit uživatele, kteří obdrží e-maily o stavu objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Po dokončení kopírování dat může být potřeba informovat jiného uživatele, aby před jeho odstraněním ze zdroje mohl ověřit data v účtu služby Azure Storage. V takových případech můžete upravit podrobnosti o oznámení.
 
 Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
 1. Přejděte na **Podrobnosti objednávky > Upravit podrobnosti o oznámení**.
 
-    ![Úprava podrobností o oznámení 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![Upravit podrobnosti oznámení příkazu v podrobnostech objednávky](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. Teď můžete upravit podrobnosti o oznámení a uložit změny.
  
-    ![Úprava podrobností o oznámení 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![Dialogové okno Upravit podrobnosti oznámení](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>Stažení historie objednávky
@@ -125,12 +119,12 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
 1. Ve vaší objednávce Data Boxu přejděte do části **Přehled**. Ujistěte se, že je objednávka dokončená. Pokud je objednávka dokončená a zařízení vyčištěné, přejděte do části **Podrobnosti objednávky**. Máte k dispozici možnost **Stáhnout historii objednávky**.
 
-    ![Stažení historie objednávky](media/data-box-portal-admin/download-order-history-1.png)
+    ![Stažení historie objednávky](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
-2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Budou existovat dvě sady protokolů odpovídající dvěma uzlům na Data Box Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
+2. Klikněte na **Stáhnout historii objednávky**. Stažená historie obsahuje záznam protokolů sledování nosné frekvence. Existují dvě sady protokolů odpovídající dvěma uzlům na zařízení Data Box Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     
-   - **Kopírovat protokoly** – seznam souborů, které byly při kopírování dat z data box do vašeho účtu úložiště Azure (pořadí importu), a *naopak* (export objednávek)
-   - **Protokoly auditu** – obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na data box, pokud se nachází mimo datové centrum Azure.
+   - **Kopírovat protokoly** – seznam souborů, které byly při kopírování dat z data box do vašeho účtu úložiště Azure (pořadí importu), nebo z vašeho účtu úložiště do data box (pořadí exportu).
+   - **Protokoly auditu** – obsahují informace o tom, jak zapnout data box a přistupovat ke sdíleným složkám, když je data box mimo datové centrum Azure.
    - **Soubory kusovníku v pořadí importu** – mají seznam souborů (označovaný také jako manifest souboru), které si můžete stáhnout během **Příprava k odeslání** a mají názvy souborů, velikosti souborů a kontrolní součty souborů.
    - **Podrobné protokoly v pořadí exportu** – mají seznam souborů s názvy souborů, velikostí souborů a výpočetem kontrolního součtu, když se data zkopírují z Azure Storage účtů do data box.
 
@@ -198,15 +192,15 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
     Potom můžete přejít ke svému účtu úložiště a zobrazit protokoly kopírování.
 
-![Protokoly v účtech úložiště](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![Protokoly kopírování pro účet úložiště](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-Můžete také zobrazit řetězec protokolů opatrovnictví, mezi které patří protokoly auditu a soubory BOM.
+   Můžete si také prohlédnout řetěz protokolů pro úschovu, které zahrnují protokoly auditu a soubory KUSOVNÍKŮ.
 
-![Protokoly v účtech úložiště](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![Řetěz protokolů úschovy pro účet úložiště](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>Zobrazení stavu objednávky
 
-Když se stav zařízení na portálu změní, dostanete upozornění prostřednictvím e-mailu.
+Po změně stavu zařízení na portálu budete upozorněni prostřednictvím e-mailu.
 
 ### <a name="statuses-for-import-order"></a>Stavy pro pořadí importu
 
@@ -214,7 +208,7 @@ Zde jsou stavy pro pořadí importu.
 
 |Stav objednávky |Popis |
 |---------|---------|
-|Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
+|Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není k dispozici okamžitě, bude zpracováno, jakmile bude zařízení k dispozici. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud pořadí nelze splnit do 90 dnů, objednávka se zruší a vy budete upozorněni.         |
 |Zpracováno     | Proběhlo zpracování objednávky. Zařízení je připravené k odeslání v datovém centru podle objednávky.         |
 |Odesláno     | Došlo k odeslání objednávky. Zásilku můžete sledovat pomocí ID pro sledování, které je uvedené ve vaší objednávce na portálu.        |
 |Doručeno     | Zásilka byla doručena na adresu uvedenou v objednávce.        |
@@ -222,9 +216,9 @@ Zde jsou stavy pro pořadí importu.
 |Přijato     | Zařízení bylo přijato a naskenováno v datovém centru Azure. <br> Po kontrole zásilky začne nahrávání dat ze zařízení.      |
 |Kopírování dat     | Probíhá kopírování dat. Sledujte průběh kopírování u vaší objednávky na portálu Azure Portal. <br> Počkejte, dokud se kopírování dat nedokončí. |
 |Dokončeno       |Objednávka se úspěšně dokončila.<br> Než odstraníte data z místních serverů, zkontrolujte, jestli se data objevila v Azure.         |
-|Dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Dokončeno s upozorněními| Kopírování dat se dokončilo, ale data se změnila. Data obsahovala nekritické chyby objektů BLOB nebo souborů, které byly opraveny změnou názvu souboru nebo objektu BLOB. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si úpravy vašich dat. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
-|Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste objednávku zrušili, nebo došlo k chybě a objednávku zrušila služba. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
+|Dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s chybami](./data-box-logs.md#upload-completed-with-errors).   |
+|Dokončeno s upozorněními| Kopírování dat se dokončilo, ale data se změnila. Data obsahovala nekritické chyby objektů BLOB nebo souborů, které byly opraveny změnou názvu souboru nebo objektu BLOB. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si úpravy vašich dat. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s upozorněními](./data-box-logs.md#upload-completed-with-warnings).   |
+|Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste zrušili objednávku, nebo služba zrušila pořadí po výskytu chyby. Pokud pořadí nelze splnit během 90 dnů, je objednávka také zrušena a vy budete upozorněni.     |
 |Vyčištění | Vymažou se data na discích zařízení. Vyčištění zařízení se považuje za dokončené, jakmile je na webu Azure Portal k dispozici ke stažení historie objednávky.|
 
 ### <a name="statuses-for-export-order"></a>Stavy pro export objednávky
@@ -237,10 +231,10 @@ Zde jsou stavy pro export objednávky.
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste zrušili objednávku (můžete zrušit pouze před zpracováním objednávky), nebo došlo k chybě a služba zrušila pořadí. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
 |Zpracováno     | Proběhlo zpracování objednávky. Podle vaší objednávky se zařízení připravuje na kopírování dat v datovém centru. Sdílené složky zařízení se vytvářejí.         |
 |Probíhá kopírování dat     | Probíhá kopírování dat ze zadaných účtů Azure Storage do zařízení. Sledujte průběh kopírování u vaší objednávky na portálu Azure Portal. <br> Počkejte, dokud se kopírování dat nedokončí. |
-|Kopírování dokončeno     | Kopírování dat ze zadaných účtů Azure Storage do zařízení bylo dokončeno. Podrobný soubor protokolu (Pokud byla v pořadí povolená možnost) a v účtu úložiště se vytvoří protokol kopírování. Podrobný protokol obsahuje informace o všech souborech (název, cesta, výpočetního kontrolního součtu), které se zkopírují do zařízení. Protokol kopírování obsahuje souhrn procesu kopírování včetně seznamu souborů, které nebylo možné zkopírovat z důvodu chyb.<br> Data účtu úložiště zůstanou tak, jak jsou. |
-|Kopírování dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení stahování s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Kopírování dokončeno s upozorněními| Kopírování dat z účtu Azure Storage bylo dokončeno, ale data obsahovala méně závažné chyby. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si méně závažné chyby. Podívejte [se na příklady kopírování protokolů po dokončení stahování s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
-|Kopírování se nezdařilo s chybami| Kopírování dat z účtu Azure Storage se nezdařilo a pořadí je ukončeno. Zařízení nebude dodány.<br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte se [na příklady kopírování protokolů po stažení se nezdařilo s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Kopírování dokončeno     | Kopírování dat ze zadaných účtů Azure Storage do zařízení bylo dokončeno. Podrobný soubor protokolu (Pokud byla v pořadí povolená možnost) a v účtu úložiště se vytvoří protokol kopírování. Podrobný protokol obsahuje informace o všech souborech (název, cesta, výpočetního kontrolního součtu), které se zkopírují do zařízení. Protokol kopírování obsahuje souhrn procesu kopírování, včetně seznamu souborů, které se nedaly zkopírovat kvůli chybám. <br> Data účtu úložiště zůstanou tak, jak jsou. |
+|Kopírování dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení stahování s chybami](./data-box-logs.md#upload-completed-with-errors).   |
+|Kopírování dokončeno s upozorněními| Kopírování dat z účtu Azure Storage bylo dokončeno, ale data obsahovala méně závažné chyby. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si méně závažné chyby. Podívejte [se na příklady kopírování protokolů po dokončení stahování s upozorněními](./data-box-logs.md#upload-completed-with-warnings).   |
+|Kopírování se nezdařilo s chybami| Kopírování dat z účtu Azure Storage se nezdařilo a pořadí je ukončeno. Zařízení nebude dodány. <br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte se [na příklady kopírování protokolů po stažení se nezdařilo s chybami](./data-box-logs.md#upload-completed-with-errors).   |
 |Odesláno     |Došlo k odeslání objednávky. Zásilku můžete sledovat pomocí ID pro sledování, které je uvedené ve vaší objednávce na portálu.        |
 |Doručeno     |Zásilka byla doručena na adresu uvedenou v objednávce.        |
 |Vyzvednuto     |Zpáteční zásilka byla vyzvednuta a naskenována dopravcem.         |
@@ -252,14 +246,14 @@ Zde jsou stavy pro export objednávky.
 > Pokud je úloha kopírování k exportu dat z Azure Storage účtů do Data Box dokončena s chybami nebo upozorněními, zařízení je stále dodáváno. V případě selhání kopírování se pořadí ukončí a zařízení se nedodá.
 
 
-Pokud používáte samoobslužné doručování, pak po dokončení kopírování a před přijetím zařízení se zobrazí následující stavy (místo těch, které jsou uvedené v předchozí tabulce):
+Pokud používáte samoobslužné expedici, po dokončení kopírování a před přijetím zařízení se zobrazí následující stavy (místo těch, které jsou uvedené v předchozí tabulce):
 
 |Stav objednávky |Popis |
 |---------|---------|
 |Připraveno k vyzvednutí v datacentru Azure      |Zařízení je připravené k vyzvednutí v datacentru Azure.        |
 |Vyzvednuto    |Zařízení jste si vybrali.         |
 |Připraveno k přijetí v datacentru Azure     |Zařízení je připravené k přijetí v datacentru Azure.        |
-|Přijato     |Zařízení se přijímá v datacentru Azure.      |
+|Přijato     |Zařízení se dostalo v datacentru Azure.      |
 
 
 

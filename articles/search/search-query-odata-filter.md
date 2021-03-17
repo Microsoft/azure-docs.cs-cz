@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201552"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934850"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Syntaxe $filter OData v Azure Kognitivní hledání
 
@@ -32,7 +32,7 @@ Azure Kognitivní hledání používá [výrazy filtru OData](query-odata-filter
 
 ## <a name="syntax"></a>Syntax
 
-Filtr v jazyce OData je logický výraz, který může být jedním z několika typů výrazů, jak je znázorněno na následujícím EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
+Filtr v jazyce OData je logický výraz, který může být jedním z několika typů výrazů, jak ukazuje následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -67,7 +67,7 @@ Mezi typy logických výrazů patří:
 - Volání logických funkcí, včetně:
   - `geo.intersects`, který testuje, zda je daný bod v rámci daného mnohoúhelníku. Další informace najdete v tématu [funkce geografického prostoru OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
   - `search.in`, který porovnává pole nebo proměnnou rozsahu s každou hodnotou v seznamu hodnot. Další informace najdete v tématu [ `search.in` funkce OData v Azure kognitivní hledání](search-query-odata-search-in-function.md).
-  - `search.ismatch`a `search.ismatchscoring` , které provádějí operace fulltextového vyhledávání v kontextu filtru. Další informace najdete v tématu [funkce fulltextového vyhledávání OData v Azure kognitivní hledání](search-query-odata-full-text-search-functions.md).
+  - `search.ismatch` a `search.ismatchscoring` , které provádějí operace fulltextového vyhledávání v kontextu filtru. Další informace najdete v tématu [funkce fulltextového vyhledávání OData v Azure kognitivní hledání](search-query-odata-full-text-search-functions.md).
 - Cesty pole nebo proměnné `Edm.Boolean` rozsahu typu Například pokud má váš index pole Boolean s názvem a chcete `IsEnabled` vrátit všechny dokumenty, kde je toto pole `true` , váš výraz filtru může být pouze název `IsEnabled` .
 - Logické výrazy v závorkách. Použití závorek vám může pomoci explicitně určit pořadí operací ve filtru. Další informace o výchozí prioritě operátorů OData najdete v další části.
 
@@ -75,7 +75,7 @@ Mezi typy logických výrazů patří:
 
 Pokud napíšete výraz filtru bez závorek kolem jeho dílčích výrazů, Azure Kognitivní hledání ho vyhodnotí podle sady pravidel priority operátorů. Tato pravidla jsou založena na operátorech, které slouží ke kombinování dílčích výrazů. V následující tabulce jsou uvedeny skupiny operátorů v pořadí od nejvyšší po nejnižší prioritu:
 
-| Skupina | Operátor (y) |
+| Group (Skupina) | Operátor (y) |
 | --- | --- |
 | Logické operátory | `not` |
 | Relační operátory | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
@@ -142,7 +142,7 @@ Vyhledejte všechny hotely, které mají zabalení a kde jsou všechny místnost
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 ```
 
- \-Ani  
+ \- Ani  
 
 ```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
@@ -178,7 +178,7 @@ Najde všechny hotely v průběhu 10 km od daného referenčního bodu (kde `Loc
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-Najde všechny hotely v daném zobrazení, které jsou popsány jako mnohoúhelník (kde `Location` je pole typu EDM. GeographyPoint). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body musí být také uvedeny v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Najde všechny hotely v daném zobrazení, které jsou popsány jako mnohoúhelník (kde `Location` je pole typu EDM. GeographyPoint). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body musí být také uvedeny v pořadí zprava doleva](/rest/api/searchservice/supported-data-types#Anchor_1).
 
 ```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -214,7 +214,7 @@ Najde shodu u frází v rámci kolekce, jako jsou například "zahřívaná rack
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 ```
 
-Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront` .
+Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](/rest/api/searchservice/search-documents) s `search=waterfront` .
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
@@ -249,4 +249,4 @@ Najděte si hotely, kde jsou termíny "Hotel" a "letiště" více než pět slov
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a C# – Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
+description: Naučte se nahrát obrázek pomocí rozhraní API pro vizuální vyhledávání Bingu a C# a získat přehled o imagi.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,24 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b64a3e9d3e6f5393fb47c41ad34a9f1ed78cb44a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 83e4e2b1c1eb10f7a4cd0f2fb4f87b280801eed0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872761"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487112"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a C #
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a zobrazit přehledy, které vrátí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * [Rozhraní JSON.NET](https://www.newtonsoft.com/json), které je k dispozici jako balíček NuGet.
@@ -75,7 +81,7 @@ Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuáln�
     --boundary_1234-abcd
     Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     
-    ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+    ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
     
     --boundary_1234-abcd--
     ```

@@ -8,28 +8,28 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1333a135f3e123757e268513f73e8329537e630b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688904"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538200"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Vnitřní chyby
 
-Tento článek popisuje příčiny a řešení pro **vnitřní chyby 500xxx**.
+Tento článek popisuje příčiny a řešení pro **vnitřní chyby 500xxx** .
 
 ## <a name="symptoms"></a>Příznaky
 
 Vaše žádost o IoT Hub se nezdařila s chybou začínající 500 a/nebo určitým řazením "Chyba serveru". Některé možnosti jsou:
 
-* **500001 ServerError**: IoT Hub došlo k problému na straně serveru.
+* **500001 ServerError** : IoT Hub došlo k problému na straně serveru.
 
-* **500008 GenericTimeout**: IoT Hub nemohl dokončit požadavek na připojení před vypršením časového limitu.
+* **500008 GenericTimeout** : IoT Hub nemohl dokončit požadavek na připojení před vypršením časového limitu.
 
-* **ServiceUnavailable (žádný kód chyby)**: došlo k vnitřní chybě IoT Hub.
+* **ServiceUnavailable (žádný kód chyby)** : došlo k vnitřní chybě IoT Hub.
 
-* **Nenalezeno (žádný kód chyby)**: došlo k vnitřní chybě IoT Hub.
+* **Nenalezeno (žádný kód chyby)** : došlo k vnitřní chybě IoT Hub.
 
 ## <a name="cause"></a>Příčina
 
@@ -37,4 +37,4 @@ Může to být počet příčin odezvy 500xxx chyby. Ve všech případech je pr
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete zmírnit 500xxx chyby, vydejte na zařízení Opakovaný pokus. Pokud chcete [automaticky spravovat opakované pokusy](./iot-hub-reliability-features-in-sdks.md#connection-and-retry), ujistěte se, že používáte nejnovější verzi [sad SDK služby Azure IoT](./iot-hub-devguide-sdks.md). Osvědčené postupy při zpracování přechodných chyb a opakování najdete v tématu [zpracování přechodných chyb](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults).  Pokud se problém opakuje, zkontrolujte [Resource Health](./iot-hub-monitor-resource-health.md#use-azure-resource-health) a [Azure status](https://status.azure.com/) a zjistěte, jestli IoT Hub má známý problém. Můžete také použít [funkci ručního převzetí služeb při selhání](./tutorial-manual-failover.md). Pokud neexistují žádné známé problémy a problém přetrvává, obraťte se na [podporu a požádejte](https://azure.microsoft.com/support/options/) o další šetření.
+Pokud chcete zmírnit 500xxx chyby, vydejte na zařízení Opakovaný pokus. Pokud chcete [automaticky spravovat opakované pokusy](./iot-hub-reliability-features-in-sdks.md#connection-and-retry), ujistěte se, že používáte nejnovější verzi [sad SDK služby Azure IoT](./iot-hub-devguide-sdks.md). Osvědčené postupy při zpracování přechodných chyb a opakování najdete v tématu [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).  Pokud se problém opakuje, zkontrolujte [Resource Health](./iot-hub-azure-service-health-integration.md#check-health-of-an-iot-hub-with-azure-resource-health) a [Azure status](https://status.azure.com/) a zjistěte, jestli IoT Hub má známý problém. Můžete také použít [funkci ručního převzetí služeb při selhání](./tutorial-manual-failover.md). Pokud neexistují žádné známé problémy a problém přetrvává, obraťte se na [podporu a požádejte](https://azure.microsoft.com/support/options/) o další šetření.

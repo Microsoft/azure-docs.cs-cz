@@ -1,25 +1,22 @@
 ---
 title: 'Rychlý Start: Apache Hive ve službě Azure HDInsight s Apache Zeppelin'
 description: V tomto rychlém startu se dozvíte, jak používat Apache Zeppelin ke spouštění dotazů Apache Hive.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367920"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941059"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Rychlý Start: spuštění dotazů Apache Hive ve službě Azure HDInsight s Apache Zeppelin
 
 V tomto rychlém startu se naučíte používat Apache Zeppelin ke spouštění dotazů [Apache Hive](https://hive.apache.org/) ve službě Azure HDInsight. Clustery HDInsight s interaktivním dotazem obsahují notebooky [Apache Zeppelin](https://zeppelin.apache.org/) , které můžete použít ke spouštění interaktivních dotazů na podregistry.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +24,7 @@ An HDInsight clusteru interaktivních dotazů. V tématu [Vytvoření clusteru](
 
 ## <a name="create-an-apache-zeppelin-note"></a>Vytvoření poznámky Apache Zeppelin
 
-1. Nahraďte `CLUSTERNAME` názvem vašeho clusteru v následující adrese URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`. Pak zadejte adresu URL do webového prohlížeče.
+1. Nahraďte `CLUSTERNAME` názvem vašeho clusteru v následující adrese URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Pak zadejte adresu URL do webového prohlížeče.
 
 2. Zadejte své uživatelské jméno a heslo pro přihlášení ke clusteru. Na stránce Zeppelin můžete buď vytvořit novou poznámku, nebo otevřít existující poznámky. **HiveSample** obsahuje několik ukázkových dotazů na podregistr.  
 

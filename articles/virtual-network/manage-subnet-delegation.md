@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703879"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943678"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Přidání nebo odebrání delegování podsítě
 
@@ -34,14 +34,14 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 V této části vytvoříte virtuální síť a podsíť, které později delegujete na službu Azure.
 
 1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit virtuální síť** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.0.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK**. |
     | Umístění | Vyberte **EastUS**.|
     | Název podsítě | Zadejte *mySubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.0.0.0/24*. |
@@ -60,24 +60,26 @@ V této části delegujete podsíť, kterou jste vytvořili v předchozí část
 
 1. Na panelu hledání na portálu zadejte *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
 2. Ve výsledcích hledání vyberte *myVirtualNetwork*.
-3. V části **Nastavení**vyberte **podsítě**a pak vyberte **mySubnet**.
+3. V části **Nastavení** vyberte **podsítě** a pak vyberte **mySubnet**.
 4. Na stránce *mySubnet* vyberte v seznamu **delegování podsítě** ze služeb uvedených v části **delegovat podsíť na službu** (například **Microsoft. DBforPostgreSQL/serversv2**).  
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Odebrání delegování podsítě ze služby Azure
 
 1. Na panelu hledání na portálu zadejte *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
 2. Ve výsledcích hledání vyberte *myVirtualNetwork*.
-3. V části **Nastavení**vyberte **podsítě**a pak vyberte **mySubnet**.
+3. V části **Nastavení** vyberte **podsítě** a pak vyberte **mySubnet**.
 4. Na stránce *mySubnet* v seznamu **delegování podsítě** vyberte možnost **žádné** ze služeb uvedených v části **delegovat podsíť na službu**. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků s názvem **myResourceGroup** v umístění **eastus** :
 
@@ -90,7 +92,7 @@ Následující příklad vytvoří skupinu prostředků s názvem **myResourceGr
 ```
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť **myVnet** s podsítí **mySubnet** ve skupině prostředků **myResourceGroup**.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť **myVnet** s podsítí **mySubnet** ve skupině prostředků **myResourceGroup**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -111,7 +113,7 @@ Integrovaná role [přispěvatele sítě](../role-based-access-control/built-in-
 
 V této části delegujete podsíť, kterou jste vytvořili v předchozí části, do služby Azure. 
 
-Pomocí [AZ Network VNet Subnet Update aktualizujte](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) podsíť s názvem **mySubnet** s delegováním na službu Azure.  V tomto příkladu se pro příklad delegování používá **Microsoft. DBforPostgreSQL/serversv2** :
+Pomocí [AZ Network VNet Subnet Update aktualizujte](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) podsíť s názvem **mySubnet** s delegováním na službu Azure.  V tomto příkladu se pro příklad delegování používá **Microsoft. DBforPostgreSQL/serversv2** :
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -121,7 +123,7 @@ Pomocí [AZ Network VNet Subnet Update aktualizujte](https://docs.microsoft.com/
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-K ověření použití delegování použijte [AZ Network VNet Subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ověřte, zda je služba delegována do podsítě pod vlastností **ServiceName**:
+K ověření použití delegování použijte [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Ověřte, zda je služba delegována do podsítě pod vlastností **ServiceName**:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -150,7 +152,7 @@ K ověření použití delegování použijte [AZ Network VNet Subnet show](http
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Odebrání delegování podsítě ze služby Azure
 
-Pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) odeberte delegování z podsítě s názvem **mySubnet**:
+Pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) odeberte delegování z podsítě s názvem **mySubnet**:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -159,7 +161,7 @@ Pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/net
   --vnet-name myVnet \
   --remove delegations
 ```
-K ověření odebrání delegace použijte [AZ Network VNet Subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ověřte, že je služba z podsítě odebraná v rámci vlastnosti **ServiceName**:
+K ověření odebrání delegace použijte [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Ověřte, že je služba z podsítě odebraná v rámci vlastnosti **ServiceName**:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -184,7 +186,7 @@ Výstup příkazu je znaková závorka, která je null:
 ```
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
@@ -193,7 +195,7 @@ Následující příklad vytvoří skupinu prostředků s názvem *myResourceGro
 ```
 ### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť s názvem **myVnet** s podsítí s názvem **mySubnet** pomocí [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) v **myResourceGroup** pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). Adresní prostor IP adres pro virtuální síť je **10.0.0.0/16**. Podsíť ve virtuální síti je **10.0.0.0/24**.  
+Vytvořte virtuální síť s názvem **myVnet** s podsítí s názvem **mySubnet** pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) v **myResourceGroup** pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Adresní prostor IP adres pro virtuální síť je **10.0.0.0/16**. Podsíť ve virtuální síti je **10.0.0.0/24**.  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -210,7 +212,7 @@ Integrovaná role [přispěvatele sítě](../role-based-access-control/built-in-
 
 V této části delegujete podsíť, kterou jste vytvořili v předchozí části, do služby Azure. 
 
-Pomocí [Add-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest) aktualizujte podsíť s názvem **mySubnet** s delegováním **myDelegation** do služby Azure.  V tomto příkladu se pro příklad delegování používá **Microsoft. DBforPostgreSQL/serversv2** :
+Pomocí [Add-AzDelegation](/powershell/module/az.network/add-azdelegation) aktualizujte podsíť s názvem **mySubnet** s delegováním **myDelegation** do služby Azure.  V tomto příkladu se pro příklad delegování používá **Microsoft. DBforPostgreSQL/serversv2** :
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -218,7 +220,7 @@ Pomocí [Add-AzDelegation](https://docs.microsoft.com/powershell/module/az.netwo
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-K ověření delegování použijte [příkaz Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) :
+K ověření delegování použijte [příkaz Get-AzDelegation](/powershell/module/az.network/get-azdelegation) :
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -234,7 +236,7 @@ K ověření delegování použijte [příkaz Get-AzDelegation](https://docs.mic
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Odebrání delegování podsítě ze služby Azure
 
-Pomocí [Remove-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) odeberte delegování z podsítě s názvem **mySubnet**:
+Pomocí [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation) odeberte delegování z podsítě s názvem **mySubnet**:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -242,7 +244,7 @@ Pomocí [Remove-AzDelegation](https://docs.microsoft.com/powershell/module/az.ne
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-K ověření odebrání delegování použijte [příkaz Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) :
+K ověření odebrání delegování použijte [příkaz Get-AzDelegation](/powershell/module/az.network/get-azdelegation) :
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"

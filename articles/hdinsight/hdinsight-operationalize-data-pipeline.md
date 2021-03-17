@@ -1,19 +1,16 @@
 ---
 title: Zprovoznění kanálu data Analytics – Azure
 description: Nastavte a spusťte Ukázkový datový kanál, který se aktivuje novými daty a vytváří stručné výsledky.
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082790"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939518"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -39,7 +36,7 @@ Příklad kanálu znázorňuje následující diagram.
 
 Tento kanál používá Apache Oozie běžící na clusteru HDInsight Hadoop.
 
-Oozie popisuje jeho kanály z pohledu *akcí*, *pracovních postupů*a *koordinátorů*. Akce určují skutečnou práci, která má být provedena, například spuštění dotazu na podregistr. Pracovní postupy definují posloupnost akcí. Koordinátoři definují plán, kdy se pracovní postup spustí. Koordinátoři můžou také před spuštěním instance pracovního postupu počkat na dostupnost nových dat.
+Oozie popisuje jeho kanály z pohledu *akcí*, *pracovních postupů* a *koordinátorů*. Akce určují skutečnou práci, která má být provedena, například spuštění dotazu na podregistr. Pracovní postupy definují posloupnost akcí. Koordinátoři definují plán, kdy se pracovní postup spustí. Koordinátoři můžou také před spuštěním instance pracovního postupu počkat na dostupnost nových dat.
 
 Následující diagram znázorňuje návrh vysoké úrovně v tomto ukázkovém kanálu Oozie.
 
@@ -53,7 +50,7 @@ Tento kanál vyžaduje, aby ve stejném umístění byl cluster Hadoop Azure SQL
 
 1. Vytvořte Azure SQL Database. Přečtěte si téma [vytvoření Azure SQL Database v Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Aby se zajistilo, že cluster HDInsight bude mít přístup k připojeným Azure SQL Database, nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost můžete povolit v Azure Portal výběrem možnosti **nastavit bránu firewall serveru**a výběrem možnosti **v** části **Povolit službám a prostředkům Azure přístup k tomuto serveru** za účelem Azure SQL Database. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+1. Aby se zajistilo, že cluster HDInsight bude mít přístup k připojeným Azure SQL Database, nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost můžete povolit v Azure Portal výběrem možnosti **nastavit bránu firewall serveru** a výběrem možnosti **v** části **Povolit službám a prostředkům Azure přístup k tomuto serveru** za účelem Azure SQL Database. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
 1. Pomocí [Editoru dotazů](../azure-sql/database/single-database-create-quickstart.md#query-the-database) spusťte následující příkazy SQL pro vytvoření `dailyflights` tabulky, která bude ukládat souhrnná data z každého spuštění kanálu.
 
@@ -78,7 +75,7 @@ Vaše Azure SQL Database je teď připravená.
 
 ### <a name="provision-an-apache-hadoop-cluster"></a>Zřízení clusteru Apache Hadoop
 
-Vytvořte cluster Apache Hadoop s vlastním metastore. Během vytváření clusteru z portálu na kartě **úložiště** ověřte, že jste v **Nastavení Metastore**vybrali svůj SQL Database. Další informace o výběru metastore najdete v tématu [Výběr vlastního metastore během vytváření clusteru](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation). Další informace o vytváření clusterů najdete v tématu [Začínáme se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+Vytvořte cluster Apache Hadoop s vlastním metastore. Během vytváření clusteru z portálu na kartě **úložiště** ověřte, že jste v **Nastavení Metastore** vybrali svůj SQL Database. Další informace o výběru metastore najdete v tématu [Výběr vlastního metastore během vytváření clusteru](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation). Další informace o vytváření clusterů najdete v tématu [Začínáme se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="verify-ssh-tunneling-set-up"></a>Ověření nastavení tunelu SSH
 
@@ -126,7 +123,7 @@ Pokud chcete pomocí webové konzoly Oozie zobrazit stav koordinátora a instanc
         hdfs dfs -put ./2017-01-FlightData.csv /example/data/flights/2017-01-FlightData.csv
         ```
 
-### <a name="create-tables"></a>Vytvoření tabulek
+### <a name="create-tables"></a>Vytváření tabulek
 
 Ukázková data jsou nyní k dispozici. Kanál ale vyžaduje ke zpracování dvě tabulky podregistru, jednu pro příchozí data ( `rawFlights` ) a jednu pro sumarizovaná data ( `flights` ). Vytvořte tyto tabulky v Ambari následujícím způsobem.
 
@@ -234,7 +231,7 @@ Pak aktualizujte hodnoty pro konkrétní prostředí. Tabulka pod textem shrnuje
     | --- | --- |
     | nameNode | Úplná cesta k kontejneru Azure Storage připojenému ke clusteru HDInsight. |
     | jobTracker | Interní název hostitele pro hlavní uzel PŘÍZe clusteru. Na domovské stránce Ambari v seznamu služeb vyberte možnost PŘÍZe a pak zvolte možnost aktivní Správce prostředků. Identifikátor URI názvu hostitele se zobrazí v horní části stránky. Připojit port 8050. |
-    | Proměnné QueueName | Název fronty PŘÍZe použité při plánování akcí podregistru Nechejte jako výchozí. |
+    | Proměnné QueueName | Název fronty PŘÍZe použité při plánování akcí podregistru Ponechte jako výchozí. |
     | oozie.use.system. LIBPATH | Nechejte jako true. |
     | appBase | Cesta k podsložce v Azure Storage, do které nasadíte pracovní postup Oozie a podpůrné soubory. |
     | Oozie. WF. Application. Path | Umístění pracovního postupu Oozie, `workflow.xml` který se má spustit. |
@@ -416,11 +413,11 @@ Pomocí spojovacího bodu služby z relace bash Nasaďte svůj pracovní postup 
     oozie job -config job.properties -run
     ```
 
-1. Sledujte stav pomocí webové konzoly Oozie. V rámci Ambari vyberte možnost **Oozie**, **Rychlé odkazy**a pak **Oozie webové konzole**. Na kartě **úlohy pracovního postupu** vyberte **všechny úlohy**.
+1. Sledujte stav pomocí webové konzoly Oozie. V rámci Ambari vyberte možnost **Oozie**, **Rychlé odkazy** a pak **Oozie webové konzole**. Na kartě **úlohy pracovního postupu** vyberte **všechny úlohy**.
 
     ![pracovní postupy webové konzoly HDI Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. Po ÚSPĚŠNÉm provedení dotazu do tabulky SQL Database můžete zobrazit vložené řádky. Pomocí Azure Portal přejděte do podokna pro SQL Database, vyberte **nástroje**a otevřete **Editor dotazů**.
+1. Po ÚSPĚŠNÉm provedení dotazu do tabulky SQL Database můžete zobrazit vložené řádky. Pomocí Azure Portal přejděte do podokna pro SQL Database, vyberte **nástroje** a otevřete **Editor dotazů**.
 
     ```sql
     SELECT * FROM dailyflights
@@ -594,7 +591,7 @@ Pokud chcete kanál spustit se koordinátorem, pokračujte podobným způsobem j
     oozie job -config job.properties -run
     ```
 
-5. Ověřte stav pomocí webové konzoly Oozie, tentokrát vyberte kartu **úlohy koordinátora** a pak klikněte na **všechny úlohy**.
+5. Ověřte stav pomocí webové konzoly Oozie, tentokrát vyberte kartu **úlohy koordinátora** a pak klikněte na  **všechny úlohy**.
 
     ![Oozie úlohy koordinátora webové konzoly](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

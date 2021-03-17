@@ -3,12 +3,12 @@ title: Automatizace přidávání uživatele testovacího prostředí v Azure De
 description: V tomto článku se dozvíte, jak automatizovat přidávání uživatelů do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového řádku.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483818"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519397"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
 Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro vývoj a testování pomocí Azure Portal. Pokud ale máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožňují vytvářet laboratoře, testovací virtuální počítače, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se zaměřuje především na přidávání uživatelů do instance DevTest Labs.
@@ -17,7 +17,7 @@ Pokud chcete přidat uživatele do testovacího prostředí, přidejte uživatel
 
 - Šablony Azure Resource Manageru
 - Rutiny Azure PowerShellu 
-- Rozhraní příkazového řádku Azure
+- Azure CLI
 
 ## <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 Následující vzorová Správce prostředků šablona určuje uživatele, který má být přidán do role **uživatele DevTest Labs** v testovacím prostředí. 
@@ -100,7 +100,7 @@ ID definice role je identifikátor řetězce pro existující definici role. ID 
 
 ID předplatného se získává pomocí `subscription().subscriptionId` funkce šablony.  
 
-Musíte získat definici role pro `DevTest Labs User` předdefinovanou roli. K získání identifikátoru GUID pro roli [uživatele DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) můžete použít [přiřazení rolí REST API](/rest/api/authorization/roleassignments) nebo rutinu [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) .
+Musíte získat definici role pro `DevTest Labs User` předdefinovanou roli. K získání identifikátoru GUID pro roli [uživatele DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) můžete použít [přiřazení rolí REST API](/rest/api/authorization/roleassignments) nebo rutinu [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) .
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
@@ -123,7 +123,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 Můžete také použít rutiny prostředí PowerShell pro Azure Active Directory, které zahrnují rutiny [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)a [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 Obor Určuje prostředek nebo skupinu prostředků, pro které by se mělo přiřazení role použít. V případě prostředků je rozsah ve formátu: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}` . Šablona používá `subscription().subscriptionId` funkci k vyplnění `subscription-id` části a `resourceGroup().name` funkci šablony, která se má vyplnit `resource-group-name` . Pomocí těchto funkcí se znamená, že testovací prostředí, ke kterému přiřadíte roli, musí existovat v aktuálním předplatném a stejnou skupinu prostředků, ve které se nasazování šablony provádí. Poslední část `resource-name` je název testovacího prostředí. Tato hodnota je přijímána prostřednictvím parametru šablony v tomto příkladu. 
 
 Rozsah rolí v šabloně: 
@@ -161,7 +161,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 
 Je důležité si uvědomit, že název nasazení skupiny a identifikátor GUID přiřazení role musí být jedinečné. Pokud se pokusíte nasadit přiřazení prostředku s nejedinečným identifikátorem GUID, zobrazí se `RoleAssignmentUpdateNotPermitted` Chyba.
 
-Pokud plánujete používat šablonu několikrát pro přidání několika objektů služby Active Directory do role uživatele DevTest Labs pro testovací prostředí, zvažte použití dynamických objektů v příkazu PowerShellu. Následující příklad používá rutinu [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) k dynamickému určení názvu nasazení skupiny prostředků a identifikátoru GUID přiřazení role.
+Pokud plánujete používat šablonu několikrát pro přidání několika objektů služby Active Directory do role uživatele DevTest Labs pro testovací prostředí, zvažte použití dynamických objektů v příkazu PowerShellu. Následující příklad používá rutinu [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid) k dynamickému určení názvu nasazení skupiny prostředků a identifikátoru GUID přiřazení role.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
@@ -179,7 +179,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 Chcete-li určit prostředek, pro který mají být udělena oprávnění, lze zadat kombinací `ResourceName` , `ResourceType` `ResourceGroup` nebo pomocí `scope` parametru. Bez ohledu na to, jakou kombinaci parametrů použijete, poskytněte rutině dostatek informací, aby jednoznačně identifikovala objekt služby Active Directory (uživatel, skupinu nebo instanční objekt), obor (skupinu prostředků nebo prostředek) a definici role.
 
 ## <a name="use-azure-command-line-interface-cli"></a>Použití rozhraní příkazového řádku Azure (CLI)
-V Azure CLI se do testovacího prostředí přidá uživatel Labs pomocí `az role assignment create` příkazu. Další informace o rutinách Azure CLI najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+V Azure CLI se do testovacího prostředí přidá uživatel Labs pomocí `az role assignment create` příkazu. Další informace o rutinách Azure CLI najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md).
 
 Objekt, kterému je udělen přístup, lze určit pomocí `objectId` `signInName` parametrů,, `spn` . Testovacímu prostředí, ke kterému má být objekt udělen přístup, lze identifikovat pomocí `scope` adresy URL nebo kombinace `resource-name` `resource-type` parametrů, a `resource-group` .
 

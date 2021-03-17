@@ -3,12 +3,12 @@ title: Co je Azure Relay? | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled služby Azure Relay, která umožňuje vyvíjet cloudové aplikace využívající místní služby spuštěné v podnikové síti, a to bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny síťové infrastruktury.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322654"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955378"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Můžete to udělat bez otevření portu v bráně firewall nebo provedení rušivých změn v infrastruktuře podnikové sítě. 
@@ -17,7 +17,7 @@ Služba Relay podporuje následující scénáře mezi místními službami a ap
 
 - Tradiční jednosměrná komunikace, komunikace typu požadavek/odpověď a komunikace peer-to-peer 
 - Distribuce událostí na úrovni internetu, která umožňuje scénáře typu publikování/odběr 
-- Obousměrná soketová komunikace bez vyrovnávací paměti přes hranice sítí
+- Obousměrná a nebufferovaná komunikace soketů přes hranice sítě
 
 Azure Relay se liší od integračních technologií na úrovni sítě, jako je například síť VPN. Službu Azure Relay je možné omezit na jediný koncový bod aplikace na jednom počítači. Technologie sítě VPN se spoléhá na upravování síťového prostředí a mnohem víc do něj zasahuje. 
 

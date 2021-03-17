@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322750"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142768"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Připojení zařízení IoT k Azure: IoT Hub a Event Hubs
 
@@ -26,7 +26,7 @@ Azure poskytuje služby speciálně vyvinuté pro nejrůznější typy připojen
 
 Azure IoT Hub je cloudová brána, která připojuje zařízení IoT ke shromažďování dat a zajištění služby Business Insights a automatizace. Kromě toho IoT Hub zahrnuje funkce, které rozšiřují vztah mezi vašimi zařízeními a back-end systémy. Možnosti obousměrné komunikace znamenají, že když přijímáte data ze zařízení, můžete také příkazy a zásady poslat zpátky do zařízení. Pomocí zasílání zpráv z cloudu na zařízení můžete například aktualizovat vlastnosti nebo vyvolat akce správy zařízení. Komunikace z cloudu na zařízení také umožňuje posílání cloudových informací do hraničních zařízení pomocí Azure IoT Edge. Jedinečná identita na úrovni zařízení, kterou poskytuje IoT Hub, pomáhá lépe zabezpečit vaše řešení IoT před potenciálními útoky. 
 
-[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) je služba pro streamování velkých objemů dat v Azure. Je navržená pro situace streamování dat s vysokou propustností, kde můžou zákazníci posílat miliardy požadavků denně. Event Hubs využívá model příjemců rozdělený do oddílů, který umožňuje horizontálně navýšit kapacitu streamu a je integrovaný do služeb Azure pro velké objemy dat a analýzy, mimo jiné Databricks, Stream Analytics, ADLS a HDInsight. Tato služba je navržená tak, aby podporovala vaše aplikace a řešení pro velké objemy dat a nabízí funkce, jako je Event Hubs zachytávání a automatické neploché. Kromě toho IoT Hub používá Event Hubs pro svou cestu toku telemetrie, takže vaše řešení IoT také přináší výhody obrovské síly Event Hubs.
+[Azure Event Hubs](../event-hubs/event-hubs-about.md) je služba pro streamování velkých objemů dat v Azure. Je navržená pro situace streamování dat s vysokou propustností, kde můžou zákazníci posílat miliardy požadavků denně. Event Hubs využívá model příjemců rozdělený do oddílů, který umožňuje horizontálně navýšit kapacitu streamu a je integrovaný do služeb Azure pro velké objemy dat a analýzy, mimo jiné Databricks, Stream Analytics, ADLS a HDInsight. Tato služba je navržená tak, aby podporovala vaše aplikace a řešení pro velké objemy dat a nabízí funkce, jako je Event Hubs zachytávání a automatické neploché. Kromě toho IoT Hub používá Event Hubs pro svou cestu toku telemetrie, takže vaše řešení IoT také přináší výhody obrovské síly Event Hubs.
 
 Pro shrnutí je obě řešení navržena pro příjem dat v obrovském měřítku. Jenom IoT Hub poskytují bohatě náročné funkce specifické pro IoT, které jsou navržené tak, aby maximalizovaly obchodní hodnotu propojení vašich zařízení IoT s cloudem Azure.  Pokud se právě začíná vaše cesta k IoT, počínaje IoT Hub k podpoře scénářů příjmu dat se zajistí, že budete mít okamžitý přístup k plnohodnotným funkcím IoT až po jejich podnikání a technických potřebách.
 

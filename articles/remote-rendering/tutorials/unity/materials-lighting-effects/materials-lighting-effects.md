@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 400f5de5326ce7700b627999ade312484055a4e7
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207346"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574437"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Kurz: rafinace materiálů, osvětlení a efektů
 
@@ -23,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Vytváření řezů prostřednictvím modelů s vyjmutými rovinami
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento kurz sestaví [kurz: manipulace s modely](..\manipulate-models\manipulate-models.md).
 
@@ -31,11 +32,11 @@ V tomto kurzu se naučíte:
 
 Poskytnutí vizuální zpětné vazby uživateli je důležitou součástí uživatelského prostředí v libovolné aplikaci. Vzdálené vykreslování Azure poskytuje mechanismy vizuálního zpětné vazby prostřednictvím [potlačení hierarchických stavů](../../../overview/features/override-hierarchical-state.md). Přepsání hierarchických stavů jsou implementována s komponentami připojenými k místním instancím modelů. Zjistili jsme, jak vytvořit tyto místní instance v [synchronizaci grafu vzdáleného objektu s hierarchií Unity](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy).
 
-Nejprve vytvoříme obálku kolem komponenty [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) . **HierarchicalStateOverrideComponent** je místní skript, který řídí přepsání na vzdálené entitě. [**Výukové materiály**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) obsahují abstraktní základní třídu s názvem **BaseEntityOverrideController**, kterou rozšiřujeme a vytvoříme obálku.
+Nejprve vytvoříme obálku kolem komponenty [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) . **HierarchicalStateOverrideComponent** je místní skript, který řídí přepsání na vzdálené entitě. [**Výukové materiály**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) obsahují abstraktní základní třídu s názvem **BaseEntityOverrideController**, kterou rozšiřujeme a vytvoříme obálku.
 
 1. Vytvořte nový skript s názvem **EntityOverrideController** a nahraďte jeho obsah následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -153,7 +154,7 @@ Nejprve vytvoříme obálku kolem komponenty [**HierarchicalStateOverrideCompone
     }
     ```
 
-Hlavní úlohou **LocalOverride**je vytvořit propojení mezi sebou samým a jeho `RemoteComponent` . **LocalOverride** pak umožní nastavit příznaky stavu místní komponenty, které jsou svázané se vzdálenou entitou. Přepsání a jejich stavy jsou popsány na stránce [přepsání hierarchického stavu](../../../overview/features/override-hierarchical-state.md) . 
+Hlavní úlohou **LocalOverride** je vytvořit propojení mezi sebou samým a jeho `RemoteComponent` . **LocalOverride** pak umožní nastavit příznaky stavu místní komponenty, které jsou svázané se vzdálenou entitou. Přepsání a jejich stavy jsou popsány na stránce [přepsání hierarchického stavu](../../../overview/features/override-hierarchical-state.md) . 
 
 Tato implementace jednoduše přepíná jenom jeden stav. Je však zcela možné zkombinovat více přepsání u jednotlivých entit a vytvořit kombinace na různých úrovních v hierarchii. Například kombinování `Selected` a `SeeThrough` na jedné komponentě mu poskytne obrys a zároveň je průhledný. Nebo je nastavení přepsat kořenovou entitou `Hidden` na, aby `ForceOn` bylo možné přepsání podřízené entity `Hidden` `ForceOff` Skrýt vše kromě podřízeného objektu s přepsáním.
 
@@ -161,13 +162,13 @@ Pro použití států u entit můžeme upravit **RemoteEntityHelper** vytvořen�
 
 1. Upravte třídu **RemoteEntityHelper** k implementaci abstraktní třídy **BaseRemoteEntityHelper** . Tato úprava umožní použití kontroleru zobrazení, který je součástí **prostředků kurzu**. Měl by vypadat nějak takto:
 
-    ```csharp
+    ```cs
     public class RemoteEntityHelper : BaseRemoteEntityHelper
     ```
 
 2. Přepište abstraktní metody pomocí následujícího kódu:
 
-    ```csharp
+    ```cs
     public override BaseEntityOverrideController EnsureOverrideComponent(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -248,7 +249,7 @@ Vytvoříme skript, který automaticky vytvoří vzdálenou entitu, přidá komp
 
 1. Vytvořte nový skript s názvem **RemoteCutPlane** a nahraďte jeho kód následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -261,7 +262,7 @@ Vytvoříme skript, který automaticky vytvoří vzdálenou entitu, přidá komp
     {
         public Color SliceColor = new Color(0.5f, 0f, 0f, .5f);
         public float FadeLength = 0.01f;
-        public Axis SliceNormal = Axis.Y_Neg;
+        public Axis SliceNormal = Axis.NegativeY;
 
         public bool AutomaticallyCreate = true;
 
@@ -321,14 +322,14 @@ Vytvoříme skript, který automaticky vytvoří vzdálenou entitu, přidá komp
 
 2. Nahraďte `CreateCutPlane()` metodu pomocí dokončené verze níže:
 
-    ```csharp
+    ```cs
     public override void CreateCutPlane()
     {
         if (remoteCutPlaneComponent != null)
             return; //Nothing to do!
 
         //Create a root object for the cut plane
-        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
         //Bind the remote entity to this game object
         cutEntity.BindToUnityGameObject(this.gameObject);
@@ -338,7 +339,7 @@ Vytvoříme skript, který automaticky vytvoří vzdálenou entitu, přidá komp
         syncComponent.SyncEveryFrame = true;
 
         //Add a cut plane to the entity
-        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
+        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
 
         //Configure the cut plane
         remoteCutPlaneComponent.Normal = SliceNormal;
@@ -352,7 +353,7 @@ Vytvoříme skript, který automaticky vytvoří vzdálenou entitu, přidá komp
 
 3. Nahraďte `DestroyCutPlane()` metodu pomocí dokončené verze níže:
 
-    ```csharp
+    ```cs
     public override void DestroyCutPlane()
     {
         if (remoteCutPlaneComponent == null)
@@ -390,7 +391,7 @@ Vytvoříme skript **RemoteSky** , který obsahuje seznam integrovaných dostupn
 
 1. Vytvořte nový skript s názvem **RemoteSky** a nahraďte jeho celý obsah následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -401,7 +402,7 @@ Vytvoříme skript **RemoteSky** , který obsahuje seznam integrovaných dostupn
 
     public class RemoteSky : BaseRemoteSky
     {
-        public override Dictionary<string, LoadTextureFromSASParams> AvailableCubemaps => builtInTextures;
+        public override Dictionary<string, LoadTextureFromSasOptions> AvailableCubemaps => builtInTextures;
 
         private bool canSetSky;
         public override bool CanSetSky
@@ -425,22 +426,22 @@ Vytvoříme skript **RemoteSky** , který obsahuje seznam integrovaných dostupn
             }
         }
 
-        private Dictionary<string, LoadTextureFromSASParams> builtInTextures = new Dictionary<string, LoadTextureFromSASParams>()
+        private Dictionary<string, LoadTextureFromSasOptions> builtInTextures = new Dictionary<string, LoadTextureFromSasOptions>()
         {
-            {"Autoshop",new LoadTextureFromSASParams("builtin://Autoshop", TextureType.CubeMap)},
-            {"BoilerRoom",new LoadTextureFromSASParams("builtin://BoilerRoom", TextureType.CubeMap)},
-            {"ColorfulStudio",new LoadTextureFromSASParams("builtin://ColorfulStudio", TextureType.CubeMap)},
-            {"Hangar",new LoadTextureFromSASParams("builtin://Hangar", TextureType.CubeMap)},
-            {"IndustrialPipeAndValve",new LoadTextureFromSASParams("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
-            {"Lebombo",new LoadTextureFromSASParams("builtin://Lebombo", TextureType.CubeMap)},
-            {"SataraNight",new LoadTextureFromSASParams("builtin://SataraNight", TextureType.CubeMap)},
-            {"SunnyVondelpark",new LoadTextureFromSASParams("builtin://SunnyVondelpark", TextureType.CubeMap)},
-            {"Syferfontein",new LoadTextureFromSASParams("builtin://Syferfontein", TextureType.CubeMap)},
-            {"TearsOfSteelBridge",new LoadTextureFromSASParams("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
-            {"VeniceSunset",new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap)},
-            {"WhippleCreekRegionalPark",new LoadTextureFromSASParams("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
-            {"WinterRiver",new LoadTextureFromSASParams("builtin://WinterRiver", TextureType.CubeMap)},
-            {"DefaultSky",new LoadTextureFromSASParams("builtin://DefaultSky", TextureType.CubeMap)}
+            {"Autoshop",new LoadTextureFromSasOptions("builtin://Autoshop", TextureType.CubeMap)},
+            {"BoilerRoom",new LoadTextureFromSasOptions("builtin://BoilerRoom", TextureType.CubeMap)},
+            {"ColorfulStudio",new LoadTextureFromSasOptions("builtin://ColorfulStudio", TextureType.CubeMap)},
+            {"Hangar",new LoadTextureFromSasOptions("builtin://Hangar", TextureType.CubeMap)},
+            {"IndustrialPipeAndValve",new LoadTextureFromSasOptions("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
+            {"Lebombo",new LoadTextureFromSasOptions("builtin://Lebombo", TextureType.CubeMap)},
+            {"SataraNight",new LoadTextureFromSasOptions("builtin://SataraNight", TextureType.CubeMap)},
+            {"SunnyVondelpark",new LoadTextureFromSasOptions("builtin://SunnyVondelpark", TextureType.CubeMap)},
+            {"Syferfontein",new LoadTextureFromSasOptions("builtin://Syferfontein", TextureType.CubeMap)},
+            {"TearsOfSteelBridge",new LoadTextureFromSasOptions("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
+            {"VeniceSunset",new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap)},
+            {"WhippleCreekRegionalPark",new LoadTextureFromSasOptions("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
+            {"WinterRiver",new LoadTextureFromSasOptions("builtin://WinterRiver", TextureType.CubeMap)},
+            {"DefaultSky",new LoadTextureFromSasOptions("builtin://DefaultSky", TextureType.CubeMap)}
         };
 
         public UnityBoolEvent OnCanSetSkyChanged;
@@ -484,10 +485,10 @@ Vytvoříme skript **RemoteSky** , který obsahuje seznam integrovaných dostupn
             {
                 Debug.Log("Setting sky to " + skyKey);
                 //Load the texture into the session
-                var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+                var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
                 //Apply the texture to the SkyReflectionSettings
-                RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+                RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
                 SkyChanged?.Invoke(skyKey);
             }
             else
@@ -500,12 +501,12 @@ Vytvoříme skript **RemoteSky** , který obsahuje seznam integrovaných dostupn
 
     Nejdůležitější část tohoto kódu je pouze pár řádků:
 
-    ```csharp
+    ```cs
     //Load the texture into the session
-    var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+    var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
     //Apply the texture to the SkyReflectionSettings
-    RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+    RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
     ```
 
     Tady získáte odkaz na texturu, která se použije, když ji načteme do relace z integrovaného úložiště objektů BLOB. Pak je potřeba tuto texturu přiřadit jenom k tomu, aby `SkyReflectionTexture` ji bylo možné použít.
@@ -514,7 +515,7 @@ Vytvoříme skript **RemoteSky** , který obsahuje seznam integrovaných dostupn
 
 1. Přidejte skript **RemoteSky** do **světlíku** GameObject.
 
-    Přepínání mezi nebey nebe lze provést voláním `SetSky` pomocí jednoho z řetězcových klíčů definovaných v `AvailableCubemaps` . Kontroler zobrazení integrovaný do **AppMenu** automaticky vytvoří tlačítka a zapojte jejich události pro volání `SetSky` s příslušným klíčem.
+    Přepínání mezi nebey nebe lze provést voláním `SetSky` pomocí jednoho z řetězcových klíčů definovaných v `AvailableCubemaps` . Kontroler zobrazení integrovaný do  **AppMenu** automaticky vytvoří tlačítka a zapojte jejich události pro volání `SetSky` s příslušným klíčem.
 1. Stiskněte Přehrát v editoru Unity a autorizujte připojení.
 1. Po připojení místního modulu runtime ke vzdálené relaci přejděte na **AppMenu-> Session Tools – > Remote nebe** a prozkoumejte různé možnosti nebe a podívejte se, jak ovlivňují **TestModel**.
 
@@ -524,7 +525,7 @@ Mezi vzdálené Indikátory scény patří: Point, bodový a směrový. Podobně
 
 1. Vytvořte nový skript s názvem **RemoteLight** a nahraďte jeho kód následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -617,7 +618,7 @@ Mezi vzdálené Indikátory scény patří: Point, bodový a směrový. Podobně
 
             //Create a root object for the light
             if(lightEntity == null)
-                lightEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+                lightEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
             //Bind the remote entity to this game object
             lightEntity.BindToUnityGameObject(this.gameObject);
@@ -630,13 +631,13 @@ Mezi vzdálené Indikátory scény patří: Point, bodový a směrový. Podobně
             switch (RemoteLightType)
             {
                 case ObjectType.DirectionalLightComponent:
-                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
+                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
                     //No additional properties
                     remoteLightComponent = remoteDirectional;
                     break;
 
                 case ObjectType.PointLightComponent:
-                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
+                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
                     remotePoint.Radius = 0;
                     remotePoint.Length = localLight.range;
                     //remotePoint.AttenuationCutoff = //No direct analog in Unity legacy lights
@@ -725,7 +726,7 @@ Z materiálu máme přístup k běžným hodnotám, jako je albedo. Nejprve je t
 
 1. Vytvořte skript s názvem **EntityMaterialController** a nahraďte jeho obsah následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -889,7 +890,7 @@ Z materiálu máme přístup k běžným hodnotám, jako je albedo. Nejprve je t
 
 `OverrideMaterialProperty`Typ by měl být dostatečně flexibilní, aby bylo možné změnit několik dalších hodnot materiálu, pokud je to požadováno. `OverrideMaterialProperty`Typ sleduje stav přepsání, udržuje starou a novou hodnotu a k nastavení přepsání používá delegáta. Podívejte se například na `ColorOverride` :
 
-```csharp
+```cs
 ColorOverride = new OverrideMaterialProperty<Color>(
     GetMaterialColor(targetMaterial), //The original value
     targetMaterial, //The target material
@@ -900,7 +901,7 @@ Vytvoří se nový `OverrideMaterialProperty` , kde přepsání zabalí typ `Col
 
 `ColorOverride`Používá `ApplyMaterialColor` metodu ke své práci:
 
-```csharp
+```cs
 private void ApplyMaterialColor(ARRMaterial material, Color color)
 {
     if (material.MaterialSubType == MaterialType.Color)

@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a n
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260356"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326333"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
 
@@ -31,7 +31,7 @@ V této sérii kurzů se naučíte:
 > * Nakonfigurovat CI/CD s využitím služby Azure Pipelines
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -65,11 +65,11 @@ Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Sourc
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
-![Nasdílení úložiště Git][push-git-repo]
+![Snímek obrazovky okna Team Explorer-synchronizace v aplikaci Visual Studio. Tlačítko publikovat na úložiště Git je v části push do Azure DevOps zvýrazněné.][push-git-repo]
 
 Ověřte svůj e-mail a v rozevíracím seznamu **Doména Azure DevOps** vyberte svůj účet. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
-![Nasdílení úložiště Git][publish-code]
+![Snímek obrazovky s nastavením nabídky pro vložení do Azure DevOps pomocí zvýrazněného tlačítka pro E-mail, účet, název úložiště a publikování][publish-code]
 
 Publikováním úložiště se ve vašem účtu vytvoří nový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
@@ -139,7 +139,7 @@ Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clust
 
 Ověřte fungování kanálu kontinuální integrace tím, že do Azure DevOps vrátíte se změnami nějaký kód.
 
-Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající][pending]) na stavovém řádku v pravém dolním rohu.
+Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Ikona probíhajících změn zobrazuje tužku a číslo.][pending]) na stavovém řádku v pravém dolním rohu.
 
 V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktualizace a potvrďte provedené změny.
 
@@ -155,7 +155,7 @@ Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
-![Service Fabric Explorer][sfx1]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer spuštěném v okně prohlížeče Verze aplikace "1.0.0.20170815.3" je zvýrazněna.][sfx1]
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
@@ -163,11 +163,11 @@ Proveďte v aplikaci změny kódu.  Podle předchozích kroků změny uložte a 
 
 Jakmile začne upgrade aplikace, můžete průběh upgradu sledovat v Service Fabric Exploreru:
 
-![Service Fabric Explorer][sfx2]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer Tím se zvýrazní zpráva o stavu upgrade a probíhá upgrade.][sfx2]
 
 Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplikace používat další verzi.  V tomto příkladu verzi 1.0.0.20170815.4.
 
-![Service Fabric Explorer][sfx3]
+![Snímek obrazovky hlasovací aplikace v Service Fabric Explorer spuštěném v okně prohlížeče Je zvýrazněna aktualizovaná verze aplikace "1.0.0.20170815.4".][sfx3]
 
 ## <a name="next-steps"></a>Další kroky
 

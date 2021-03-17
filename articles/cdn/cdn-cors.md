@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018643"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Použití Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -36,7 +36,7 @@ Existují dva typy požadavků CORS, *jednoduchých požadavků* a *složitých 
 
 2. Server může reagovat s některým z následujících způsobů:
 
-   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Příklad:
+   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Například:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
@@ -72,10 +72,10 @@ Na Azure CDN Standard od Microsoftu můžete vytvořit pravidlo v [modulu Standa
 > Do pravidla můžete přidat další akce, které upraví další hlavičky odpovědí, jako je například **Access-Control-Allow-Methods**.
 > 
 
-V **Azure CDN Standard od Akamai**je jediným mechanismem, který umožňuje více míst původu bez použití zástupného znaku, použít [ukládání řetězců dotazu do mezipaměti](cdn-query-string.md). Povolte nastavení řetězce dotazu pro koncový bod CDN a pak pro žádosti z každé povolené domény použijte jedinečný řetězec dotazu. Výsledkem je, že CDN ukládá do mezipaměti samostatný objekt pro každý řetězec jedinečného dotazu. Tento přístup není ideální, ale v takovém případě bude výsledkem více kopií stejného souboru v mezipaměti CDN.  
+V **Azure CDN Standard od Akamai** je jediným mechanismem, který umožňuje více míst původu bez použití zástupného znaku, použít [ukládání řetězců dotazu do mezipaměti](cdn-query-string.md). Povolte nastavení řetězce dotazu pro koncový bod CDN a pak pro žádosti z každé povolené domény použijte jedinečný řetězec dotazu. Výsledkem je, že CDN ukládá do mezipaměti samostatný objekt pro každý řetězec jedinečného dotazu. Tento přístup není ideální, ale v takovém případě bude výsledkem více kopií stejného souboru v mezipaměti CDN.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium z Verizon
-Pomocí modulu pravidel Verizon Premium budete muset [vytvořit pravidlo](cdn-rules-engine.md) pro kontrolu **počáteční** hlavičky v žádosti.  Pokud se jedná o platný zdroj, vaše pravidlo nastaví hlavičku **Access-Control-Allow-Origin** s počátkem uvedeným v žádosti.  Pokud se počátek zadaný v záhlaví **původu** nepovoluje, vaše pravidlo by mělo vynechat hlavičku **Access-Control-Allow-Origin** , která způsobí odmítnutí žádosti v prohlížeči. 
+Pomocí modulu pravidel Verizon Premium budete muset [vytvořit pravidlo](./cdn-verizon-premium-rules-engine.md) pro kontrolu **počáteční** hlavičky v žádosti.  Pokud se jedná o platný zdroj, vaše pravidlo nastaví hlavičku **Access-Control-Allow-Origin** s počátkem uvedeným v žádosti.  Pokud se počátek zadaný v záhlaví **původu** nepovoluje, vaše pravidlo by mělo vynechat hlavičku **Access-Control-Allow-Origin** , která způsobí odmítnutí žádosti v prohlížeči. 
 
 Existují dva způsoby, jak to provést s modulem pravidel Premium. V obou případech se hlavička **Access-Control-Allow-Origin** ze zdrojového serveru souboru ignoruje a modul pravidel pro CDN plně spravuje povolené zdroje CORS.
 
@@ -103,7 +103,4 @@ Místo regulárních výrazů můžete místo toho vytvořit samostatné pravidl
 > [!TIP]
 > V předchozím příkladu použití zástupného znaku * instruuje modul pravidel, aby odpovídal HTTP i HTTPS.
 > 
-> 
-
-
-
+>

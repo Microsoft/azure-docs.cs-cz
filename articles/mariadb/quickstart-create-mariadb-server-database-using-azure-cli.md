@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření serveru – Azure CLI – Azure Database for MariaDB'
 description: Tento rychlý start popisuje, jak použít Azure CLI k vytvoření serveru Azure Database for MariaDB ve skupině prostředků Azure.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7fe68e7b1a56c22e8c0d9638408982518105888e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 2242b0842bda9587915fc949046b8fa7effb725c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185141"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662156"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
@@ -21,9 +21,9 @@ Pomocí Azure CLI můžete vytvářet a spravovat prostředky Azure z příkazov
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud používáte místní instalaci rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 Pokud máte více předplatných, zvolte předplatné, které obsahuje prostředek nebo ve kterém se vám prostředek účtuje. Pokud chcete vybrat ID konkrétního předplatného ve vašem účtu, použijte příkaz [az account set](/cli/azure/account#az-account-set):
 
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
 
 Následující příklad vytvoří skupinu prostředků `myresourcegroup` v umístění `westus`:
 
@@ -45,11 +45,11 @@ az group create --name myresourcegroup --location westus
 
 Server Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create). Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Nastavení | Ukázková hodnota | Popis
+Nastavení | Ukázková hodnota | Description
 ---|---|---
 name | **mydemoserver** | Zadejte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
 resource-group | **myresourcegroup** | Zadejte název skupiny prostředků Azure.
-sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle *pricing tier*konvence \_ *COMPUTE COMPUTE pro výpočet* \_ *virtuální jádra* ve zkrácené úrovni. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
+sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle konvence \_ *COMPUTE COMPUTE pro výpočet* \_ *virtuální jádra* ve zkrácené úrovni. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
 backup-retention | **7** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
 geo-redundant-backup | **Zakázáno** | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
 location | **westus** | Lokace Azure pro server.
@@ -60,7 +60,7 @@ admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Par
 admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
++ `--sku-name B_Gen5_1` mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -213,7 +213,7 @@ Připojení k serveru pomocí nástroje pro příkazový řádek mysql:
    | Nastavení | Navrhovaná hodnota | Popis |
    |---|---|---|
    | Název připojení | **Ukázkové připojení** | Zadejte popisek tohoto připojení (název připojení může být libovolný). |
-   | Způsob připojení | **Standard (TCP/IP)** | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
+   | Způsob připojení | **Standardní (TCP/IP)** | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
    | Název hostitele | **mydemoserver.mariadb.database.azure.com** | Název serveru, který jste si poznamenali dříve. |
    | Port | **3306** | Výchozí port pro Azure Database for MariaDB. |
    | Uživatelské jméno | **myadmin \@ mydemoserver** | Přihlašovací jméno správce serveru, které jste si poznamenali dříve. |
@@ -240,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Návrh databáze MariaDB pomocí Azure CLI](./tutorial-design-database-cli.md)
+> [Návrh databáze MariaDB pomocí Azure CLI](tutorial-design-database-cli.md)

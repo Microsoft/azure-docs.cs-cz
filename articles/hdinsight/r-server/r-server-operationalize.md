@@ -1,19 +1,16 @@
 ---
 title: Služby zprovoznění ML ve službě HDInsight – Azure
 description: Naučte se, jak zprovoznění datový model a vytvořit předpovědi se službami ML ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087686"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944012"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Cluster služeb zprovoznění ML ve službě Azure HDInsight
 
@@ -28,7 +25,7 @@ Po použití clusteru ML Services ve službě HDInsight k dokončení modelován
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Cluster služeb zprovoznění ML s jedním polem konfigurace
 
 > [!NOTE]  
-> Následující postup se týká R Server 9,0 a ML Server 9,1. Informace o ML Server 9,3 najdete v tématu [Správa konfigurace provozu pomocí nástroje pro správu](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+> Následující postup se týká R Server 9,0 a ML Server 9,1. Informace o ML Server 9,3 najdete v tématu [Správa konfigurace provozu pomocí nástroje pro správu](/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Připojte se přes SSH k hraničnímu uzlu.
 
@@ -103,7 +100,7 @@ chmod 777 /var/RevoShare/rserve2
 rxSparkConnect(reset = TRUE)
 ```
 
-V této fázi je konfigurace operacionalizace dokončena. Nyní můžete použít `mrsdeploy` balíček na klientovi rclient pro připojení k provozu na hraničním uzlu a začít používat jeho funkce, jako je [vzdálené spuštění](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) a [webové služby](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH. Následující části vysvětlují, jak tento tunel nastavit.
+V této fázi je konfigurace operacionalizace dokončena. Nyní můžete použít `mrsdeploy` balíček na klientovi rclient pro připojení k provozu na hraničním uzlu a začít používat jeho funkce, jako je [vzdálené spuštění](/machine-learning-server/r/how-to-execute-code-remotely) a [webové služby](/machine-learning-server/operationalize/concept-what-are-web-services). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH. Následující části vysvětlují, jak tento tunel nastavit.
 
 ### <a name="ml-services-cluster-on-virtual-network"></a>Cluster služeb ML ve virtuální síti
 

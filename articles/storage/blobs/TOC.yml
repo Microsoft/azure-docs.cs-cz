@@ -1,5 +1,5 @@
 - name: Dokumentace službě Azure Blob Storage
-  href: /azure/storage/blobs/
+  href: ./index.yml
 - name: Přehled
   items:
     - name: Co je Azure Blob Storage?
@@ -53,6 +53,8 @@
                   href: quickstart-blobs-javascript-browser.md
                 - name: JavaScript (v10 SDK pro prohlížeč)
                   href: storage-quickstart-blobs-javascript-client-libraries-legacy.md
+            - name: C++ (v12 SDK)
+              href: quickstart-blobs-c-plus-plus.md
             - name: Přejít
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -105,15 +107,14 @@
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: JavaScript
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: C++
+          href: ../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Další jazyky
           href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
-        - name: Integrované služby Azure Policy
-          displayName: 'samples, policies, definitions'
-          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Koncepty
       items:
         - name: Účty úložiště
@@ -140,36 +141,38 @@
             - name: Šifrování neaktivních uložených dat ve službě Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
-                - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
-                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Klíče poskytované zákazníkem na vyžádání
-                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Neměnné objekty blob
-              href: storage-blob-immutable-storage.md
-            - name: Rozšířená ochrana před internetovými útoky
-              href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Integrované ovládací prvky zabezpečení
-              href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Šifrování s využitím klíčů spravovaných zákazníkem
+                  href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Šifrování na vyžádání s využitím klíčů poskytnutých zákazníkem
+                  href: encryption-customer-provided-keys.md
+                - name: Obory šifrování
+                  href: encryption-scope-overview.md
             - name: Použití privátních koncových bodů Azure
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Konfigurace předvolby směrování sítě
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Data redundancy
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ochrana dat
           items:
+            - name: Obnovitelné odstranění pro kontejnery
+              href: soft-delete-container-overview.md
             - name: Správa verzí
               href: versioning-overview.md
             - name: Obnovitelné odstranění pro objekty blob
               href: soft-delete-blob-overview.md
-            - name: Obnovitelné odstranění pro kontejnery
-              href: soft-delete-container-overview.md
+            - name: Obnovení k určitému bodu v čase
+              href: point-in-time-restore-overview.md
             - name: Snímky
               href: snapshots-overview.md
             - name: Změna kanálu
               href: storage-blob-change-feed.md
-            - name: Obnovení k určitému bodu v čase
-              href: point-in-time-restore-overview.md
+            - name: Neměnné objekty blob
+              href: storage-blob-immutable-storage.md
+        - name: Redundance a zotavení po havárii
+          items:
+            - name: Data redundancy
+              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Převzetí služeb při selhání pro zotavení po havárii spravované zákazníkem
+              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Replikace objektů
           href: object-replication-overview.md
         - name: Úrovně výkonu a přístupu
@@ -180,10 +183,8 @@
               href: storage-blob-rehydration.md
             - name: Úrovně výkonu
               href: storage-blob-performance-tiers.md
-            - name: Správa životního cyklu úložiště objektů blob v Azure
+            - name: Automatizace životního cyklu úrovní přístupu
               href: storage-lifecycle-management-concepts.md
-        - name: Zotavení po havárii a převzetí služeb při selhání
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Optimalizace výkonu, škálování a nákladů'
           items:
             - name: Kontrolní seznam pro výkon a škálovatelnost
@@ -206,16 +207,16 @@
                   href: scalability-targets-premium-page-blobs.md
                 - name: Poskytovatel prostředků úložiště
                   href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Souběžnost
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hledání a vysvětlení dat objektů blob
           items:
-            - name: Použití indexu objektů blob ke správě a hledání dat objektů blob
+            - name: Použití značek indexu objektů blob ke správě a hledání dat objektů blob
               href: storage-manage-find-blobs.md
             - name: Použití AI k pochopení dat objektů blob
               href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Fulltextové vyhledávání pro data objektů blob
               href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Použití inventáře objektů blob ke správě dat objektů blob
+              href: blob-inventory.md
         - name: Migrace dat
           items:
             - name: Porovnání řešení přenosu dat
@@ -229,43 +230,10 @@
                   href: ../common/storage-solution-small-dataset-low-moderate-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Pravidelné přenosy dat
                   href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Import/export dat
-              href: ../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: Kontrola požadavků
-                  href: ../common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Import dat do objektů blob
-                  href: ../common/storage-import-export-data-to-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Import dat do souborů
-                  href: ../common/storage-import-export-data-to-files.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Export dat z objektů blob
-                  href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Postupy
-                  items:
-                    - name: Použití klíče spravovaného zákazníkem
-                      href: ../common/storage-import-export-encryption-key-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Zobrazení stavu jednotky
-                      href: ../common/storage-import-export-view-drive-status.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Kontrola stavu úlohy
-                      href: ../common/storage-import-export-tool-reviewing-job-status-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Oprava úlohy importu
-                      href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Oprava úlohy exportu
-                      href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Nejčastější dotazy
-                  href: ../common/storage-import-export-service-faq.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: REST API
-                  href: /rest/api/storageimportexport/jobs
-                - name: Kontaktování podpory
-                  href: ../common/storage-import-export-contact-microsoft-support.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Archiv
-                  items:
-                    - name: Příprava jednotek pro import (v1)
-                    - name: Příprava jednotek pro import (v2)
         - name: Monitorování
           items:
-            - name: Monitorování účtu úložiště
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Monitorování úložiště objektů blob
+              href: monitor-blob-storage.md
             - name: Přechod z klasických metrik
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Monitorování (klasické prostředí)
@@ -278,14 +246,18 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Monitorování, diagnostika a řešení potíží'
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Podpora protokolu NFS 3.0
+          items:
+            - name: Přehled
+              href: network-file-system-protocol-support.md
+            - name: Otázky výkonu
+              href: network-file-system-protocol-support-performance.md
         - name: Zpracování událostí
           href: storage-blob-event-overview.md
         - name: Funkce objektů blob stránky
           href: storage-blob-pageblob-overview.md
         - name: Statické weby
           href: storage-blob-static-website.md
-        - name: Podpora protokolu NFS 3.0
-          href: network-file-system-protocol-support.md
     - name: Postup
       items:
         - name: Vytvoření a správa účtů úložiště
@@ -297,8 +269,12 @@
               href: storage-blob-create-account-block-blob.md
             - name: Upgrade účtu úložiště
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Obnovení odstraněného účtu úložiště
+              href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Získání typu účtu a názvu SKU (.NET)
               href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Správa výchozí úrovně přístupu pro účet úložiště
+              href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Vytvoření a správa kontejnerů
           items:
             - name: Vytvoření nebo odstranění kontejneru (.NET)
@@ -313,19 +289,25 @@
               href: storage-blobs-list.md
             - name: Správa metadat a vlastností objektů blob (.NET)
               href: storage-blob-properties-metadata.md
-            - name: Kopírování objektu blob (.NET)
+            - name: Správa úrovně přístupu objektu blob
+              href: manage-access-tier.md
+            - name: Kopírování objektu blob (SDK)
               href: storage-blob-copy.md
+            - name: Použití značek indexu objektů blob
+              href: storage-blob-index-how-to.md
+            - name: Vypočítat počet objektů BLOB a celkovou velikost
+              href: calculate-blob-count-size.md
         - name: Autorizace přístupu k datům objektu blob
           items:
             - name: Možnosti autorizace pro uživatele
               items:
                 - name: Portál
-                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  href: authorize-data-operations-portal.md
                 - name: PowerShell
-                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  href: authorize-data-operations-powershell.md
                 - name: Azure CLI
-                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Správa přístupových práv pomocí RBAC
+                  href: authorize-data-operations-cli.md
+            - name: Správa přístupových práv pomocí Azure RBAC
               items:
                 - name: Portál
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -347,6 +329,8 @@
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Použití rozhraní REST API služby Azure Storage
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Zabránění v autorizaci pomocí sdíleného klíče
+                  href: ../common/shared-key-authorization-prevent.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Delegování přístupu s využitím sdílených přístupových podpisů (SAS)
               items:
                 - name: Vytvoření SAS delegování uživatele
@@ -357,8 +341,8 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: Vytvoření SAS služby (.NET)
-                  href: storage-blob-service-sas-create-dotnet.md
+                - name: Vytvoření SAS služby
+                  href: sas-service-create.md
                 - name: Vytvoření SAS účtu (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Definování uložených zásad přístupu
@@ -381,19 +365,17 @@
                   items:
                     - name: Kontrola modelu šifrovacího klíče pro účet
                       href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Konfigurace šifrovacích klíčů spravovaných zákazníkem
+                    - name: Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
                       items:
-                        - name: Portál
-                          href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: PowerShell
-                          href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure CLI
-                          href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Uložení klíčů spravovaných zákazníkem v trezoru klíčů
+                          href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Uložení klíčů spravovaných zákazníkem ve službě Managed HSM
+                          href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Poskytnutí šifrovacího klíče v rámci požadavku
                   href: storage-blob-customer-provided-key.md
                 - name: Správa oborů šifrování
                   href: encryption-scope-manage.md
-                - name: Povolení šifrování infrastruktury pro účet úložiště
+                - name: Povolení šifrování infrastruktury pro účet
                   href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Konfigurace šifrování na straně klienta
               items:
@@ -415,36 +397,42 @@
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Konfigurace verze TLS pro klientskou aplikaci
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Konfigurace předvolby směrování sítě
+                  href: ../common/configure-network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Konfigurace Azure Defenderu pro ochranu před hrozbami
+              href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Ochrana dat objektů BLOB
+          items:
+            - name: Uzamknutí účtu úložiště
+              href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Povolení obnovitelného odstranění pro kontejnery
+              href: soft-delete-container-enable.md
+            - name: Povolení správy verzí objektů blob
+              href: versioning-enable.md
+            - name: Povolení obnovitelného odstranění pro objekty blob
+              href: soft-delete-blob-enable.md
+            - name: Povolení obnovení k určitému bodu v čase
+              href: point-in-time-restore-manage.md
+            - name: Vytváření snímků (.NET)
+              href: snapshots-manage-dotnet.md
+            - name: Zpracování protokolů kanálu změn
+              href: storage-blob-change-feed-how-to.md
             - name: Nastavení a správa zásad neměnnosti
               href: storage-blob-immutability-policies-manage.md
-        - name: Správa redundance dat
+        - name: Správa redundance a převzetí služeb při selhání
           items:
             - name: Změna konfigurace redundance
               href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Návrh aplikací s vysokou dostupností
               href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Ochrana dat
-          items:
-            - name: Povolení správy verzí objektů blob
-              href: versioning-enable.md
-            - name: Povolení obnovitelného odstranění pro objekty blob
-              href: soft-delete-blob-enable.md
-            - name: Povolení obnovitelného odstranění pro kontejnery
-              href: soft-delete-container-enable.md
-            - name: Vytváření snímků (.NET)
-              href: snapshots-manage-dotnet.md
-            - name: Zpracování protokolů kanálu změn
-              href: storage-blob-change-feed-how-to.md
-            - name: Povolení obnovení k určitému bodu v čase
-              href: point-in-time-restore-manage.md
-        - name: Konfigurace replikace objektů
-          href: object-replication-configure.md
-        - name: Správa zotavení po havárii
-          items:
             - name: Kontrola vlastnosti Čas poslední synchronizace
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Zahájení převzetí služeb při selhání účtu
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Konfigurace replikace objektů
+          href: object-replication-configure.md
+        - name: Správa souběžnosti
+          href: concurrency-manage.md
         - name: Použití emulátoru úložiště
           items:
             - name: Použití opensourcového emulátoru Azurite
@@ -457,22 +445,32 @@
               href: storage-blob-static-website-how-to.md
             - name: Integrace s Azure CDN
               href: static-website-content-delivery-network.md
+            - name: Použití GitHub Actions k nasazení statického webu do Azure Storage
+              href: storage-blobs-static-site-github-actions.md
         - name: Použití vlastní domény
           href: storage-custom-domain-name.md
         - name: Směrování událostí na vlastní koncový bod
           href: storage-blob-event-quickstart.md
-        - name: Využití indexu objektů blob
-          href: storage-blob-index-how-to.md
         - name: Přenos dat
           items:
             - name: AzCopy
               items:
                 - name: Začínáme
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Použití s objekty blob
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Použití s kbelíky Amazon S3
+                - name: Autorizace s využitím Azure AD
+                  href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Odeslat'
+                  href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Stáhnout'
+                  href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Synchronizace'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Kopírování mezi účty'
+                  href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Kbelíky Amazon S3'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: bloky úložiště Google Cloud'
+                  href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Konfigurace, optimalizace, řešení potíží'
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
@@ -497,8 +495,10 @@
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Monitorování (klasické prostředí)
           items:
-            - name: Monitorování na webu Azure Portal (klasické prostředí)
-              href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Povolit a spravovat metriky (klasické)
+              href: ../common/manage-storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Povolit a spravovat protokoly (klasické)
+              href: ../common/manage-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Řešení potíží
           items:
             - name: Problémy s latencí
@@ -551,7 +551,10 @@
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
         - name: Data monitorování
-          href: ../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: monitor-blob-storage-reference.md
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Zdroje a prostředky
       items:
         - name: Aktualizace Azure
@@ -566,18 +569,24 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: Řešení potíží se Storage Explorerem
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Možnosti příkazového řádku Průzkumník služby Storage
+              href: ../common/storage-explorer-command-line-options.md
             - name: Zabezpečení Průzkumníka služby Storage
               href: ../common/storage-explorer-security.md
+            - name: Správa verzí objektů blob Průzkumníka služby Storage
+              href: ../common/storage-explorer-blob-versioning.md
             - name: Zásady a životní cyklus podpory Průzkumníka služby Storage
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Dostupnost Storage Exploreru
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Fórum Azure Storage
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
-        - name: Azure Storage na webu Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Ceny služby Blob Storage
+        - name: Blob Storage na webu Microsoft Q&A
+          href: /answers/topics/azure-blob-storage.html
+        - name: Blob Storage na webu Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-blob-storage'
+        - name: Ceny pro objekty blob bloku
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: Ceny pro objekty blob stránky
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Cenová kalkulačka Azure
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Videa
@@ -635,25 +644,21 @@
 - name: Data Lake Storage Gen2
   items:
     - name: Dokumentace k přechodu na Data Lake Storage Gen1
-      href: /azure/data-lake-store/
+      href: ../../data-lake-store/index.yml
     - name: Přehled
       items:
         - name: Úvodní informace ke službě Data Lake Store
           href: data-lake-storage-introduction.md
-    - name: Rychlé starty
-      items:
-        - name: Analýza dat s využitím Databricks
-          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: Kurzy
       items:
-        - name: 'Extrakce, transformace a načítání dat pomocí Azure Databricks'
-          href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Přístup k datům Data Lake Storage se službou Databricks s využitím Sparku
+        - name: Použití s datacihlami a Sparkem
           href: data-lake-storage-use-databricks-spark.md
-        - name: 'Extrakce, transformace a načítání dat s využitím Apache Hivu ve službě Azure HDInsight'
+        - name: Použití s Apache Hive a HDInsight
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Vložení dat do rozdílových tabulek Databricks pomocí Event Gridu
+        - name: Použití s rozdílem datacihly a Event Grid
           href: data-lake-storage-events.md
+        - name: Použití s ostatními službami Azure
+          href: data-lake-storage-integrate-with-services-tutorials.md
     - name: Koncepty
       items:
         - name: Zpracování velkých objemů dat
@@ -662,6 +667,8 @@
           href: data-lake-storage-best-practices.md
         - name: Akcelerace dotazů
           href: data-lake-storage-query-acceleration.md
+        - name: Úroveň Premium pro Data Lake Storage
+          href: premium-tier-for-data-lake-storage.md
         - name: Architektura
           items:
             - name: Ovladač systému souborů Azure Blob pro Hadoop
@@ -674,11 +681,10 @@
           items:
             - name: Doporučení zabezpečení
               href: security-recommendations.md
-            - name: Řízení přístupu (adresáře a soubory)
+            - name: Model řízení přístupu
+              href: data-lake-storage-access-control-model.md
+            - name: Seznamy řízení přístupu
               href: data-lake-storage-access-control.md
-            - name: Mechanismy zabezpečení služby Azure Policy
-              displayName: 'regulatory, compliance, standards, domains'
-              href: ./security-controls-policy.md
         - name: Kompatibilita
           items:
             - name: Přístup s více protokoly
@@ -691,8 +697,8 @@
               href: data-lake-storage-supported-open-source-platforms.md
         - name: Monitorování
           items:
-            - name: Monitorování účtu úložiště
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Monitorování úložiště objektů blob
+              href: ./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Přechod z klasických metrik
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Monitorování (klasické prostředí)
@@ -707,20 +713,64 @@
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Postup
       items:
-        - name: Vytvořit
-          items:
-            - name: Vytvoření účtu úložiště (pro obecné účely v2)
-              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Vytvoření účtu úložiště (objekt blob bloku)
-              href: storage-blob-create-account-block-blob.md
-        - name: Migrace
+        - name: vytvořit účet úložiště
+          href: create-data-lake-storage-account.md
+        - name: Migrace účtů a úložišť dat
           items:
             - name: Migrace ze služby Data Lake Storage Gen1
               href: data-lake-storage-migrate-gen1-to-gen2.md
-            - name: Migrace místního úložiště HDFS
+            - name: Migrace úložiště HDFS offline
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
-        - name: Spravovat
+            - name: Migrace úložiště HDFS online
+              href: migrate-gen2-wandisco-live-data-platform.md
+        - name: Přenos dat
           items:
+            - name: AzCopy
+              items:
+                - name: Začínáme
+                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Odeslat'
+                  href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Stáhnout'
+                  href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Synchronizace'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Kopírování mezi účty'
+                  href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Příklady: Kbelíky Amazon S3'
+                  href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Konfigurace, optimalizace a řešení potíží'
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure Data Factory
+              href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Přenos dat pomocí nástroje DistCp
+              href: data-lake-storage-use-distcp.md
+            - name: Přenos dat s využitím knihovny pro přesun dat
+              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Správa řízení přístupu
+          items:
+            - name: Storage Explorer
+              href: data-lake-storage-explorer-acl.md
+            - name: PowerShell
+              href: data-lake-storage-acl-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: data-lake-storage-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-acl-java.md
+            - name: Python
+              href: data-lake-storage-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-acl-javascript.md
+        - name: Práce s daty
+          items:
+            - name: Storage Explorer
+              href: data-lake-storage-explorer.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: data-lake-storage-directory-file-acl-cli.md
             - name: .NET
               href: data-lake-storage-directory-file-acl-dotnet.md
             - name: Java
@@ -729,37 +779,15 @@
               href: data-lake-storage-directory-file-acl-python.md
             - name: JavaScript
               href: data-lake-storage-directory-file-acl-javascript.md
-            - name: PowerShell
-              href: data-lake-storage-directory-file-acl-powershell.md
-            - name: Rozhraní příkazového řádku
-              href: data-lake-storage-directory-file-acl-cli.md
-            - name: Storage Explorer
-              href: data-lake-storage-explorer.md
+            - name: Akcelerace dotazů
+              href: data-lake-storage-query-acceleration-how-to.md
             - name: Rozhraní příkazového řádku systému souborů Hadoop
               href: data-lake-storage-use-hdfs-data-lake-storage.md
-        - name: Dotaz
+        - name: Použití se službami Azure
+          href: data-lake-storage-integrate-with-services-tutorials.md
+        - name: Optimalizace výkonu
           items:
-            - name: Filtrování dat s využitím akcelerace dotazů
-              href: data-lake-storage-query-acceleration-how-to.md
-        - name: Přenos
-          items:
-            - name: AzCopy
-              items:
-                - name: Začínáme
-                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Použití se službou Data Lake Storage
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurace, optimalizace, řešení potíží'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Data Factory
-              href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Přenos dat pomocí nástroje DistCp
-              href: data-lake-storage-use-distcp.md
-            - name: Přenos dat s využitím knihovny pro přesun dat
-              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Optimalizace
-          items:
-            - name: Optimalizace výkonu
+            - name: Přehled optimalizace výkonu
               href: data-lake-storage-performance-tuning-guidance.md
             - name: Optimalizace Sparku v HDInsightu
               href: data-lake-storage-performance-tuning-spark.md
@@ -822,6 +850,9 @@
         - name: Šablona Resource Manageru
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Zdroje a prostředky
       items:
         - name: Známé problémy
@@ -844,12 +875,14 @@
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Zabezpečení Průzkumníka služby Storage
               href: ../common/storage-explorer-security.md
+            - name: Správa verzí objektů blob Průzkumníka služby Storage
+              href: ../common/storage-explorer-blob-versioning.md
             - name: Zásady a životní cyklus podpory Průzkumníka služby Storage
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Dostupnost Storage Exploreru
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Azure Storage na webu Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: Ceny
@@ -864,3 +897,5 @@
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: Videa
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+        - name: Partneři
+          href: ../solution-integration/

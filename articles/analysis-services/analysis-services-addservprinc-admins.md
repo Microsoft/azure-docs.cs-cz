@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100724"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -33,14 +33,14 @@ Před dokončením této úlohy musíte mít v Azure Active Directory zaregistro
 Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (SSMS). K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis-services-server-admins.md) na serveru Azure as. 
 
 1. V SSMS se připojte k Azure AS serveru.
-2. V nabídce zabezpečení **vlastností serveru**  >  **Security**klikněte na **Přidat**.
-3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
+2. V nabídce zabezpečení **vlastností serveru**  >  **Security** klikněte na **Přidat** .
+3. V nabídce **Vyberte uživatele nebo skupinu** vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat** .
 
     ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Ověřte ID účtu zabezpečení služby a pak klikněte na **OK**.
+4. Ověřte ID účtu zabezpečení služby a pak klikněte na **OK** .
     
-    ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Snímek obrazovky, který zobrazuje ID hlavního účtu služby a zvýrazní tlačítko OK.](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Použití šablony Resource Manageru
 
@@ -117,5 +117,5 @@ Pak můžete pomocí tohoto ID klienta v kombinaci s ID tenanta přidat spravova
 
 ## <a name="related-information"></a>Související informace
 
-* [Stáhnout SQL Server modul PowerShellu](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [Stáhnout SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [Stáhnout SQL Server modul PowerShellu](/sql/ssms/download-sql-server-ps-module)   
+* [Stáhnout SSMS](/sql/ssms/download-sql-server-management-studio-ssms)

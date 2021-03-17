@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: windows
 ms.date: 11/30/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: c5bcc1f2de379eb9a8a49a2259533bcea33328d1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: b3853ddc71d1a9be26b2492764a9b341446e0eeb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265190"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078737"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace ve Windows pomocí Azure PowerShell
 Sada škálování virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů v sadě škálování můžete škálovat ručně. Můžete také definovat pravidla pro automatické škálování na základě využití prostředků, jako je například CPU, nároky na paměť nebo síťový provoz. V tomto kurzu nasadíte sadu škálování virtuálního počítače v Azure a naučíte se:

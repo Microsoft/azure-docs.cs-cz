@@ -8,18 +8,18 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604775"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530735"
 ---
 # <a name="examine-the-video-indexer-output"></a>Kontrola výstupu Video Indexer
 
-Když je video indexované, Video Indexer poduces obsah JSON, který obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují: přepisy, OCRs, obličeje, témata, bloky atd. Každý typ Insight zahrnuje instance časových rozsahů, které ukazují, kdy se ve videu zobrazí přehled. 
+Když je video indexované, Video Indexer vytvoří obsah JSON, který obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují: přepisy, OCRs, obličeje, témata, bloky atd. Každý typ Insight zahrnuje instance časových rozsahů, které ukazují, kdy se ve videu zobrazí přehled. 
 
 Přehledné přehledy videa můžete vizuálně prohlédnout kliknutím na tlačítko **Přehrát** na videu na webu [video indexer](https://www.videoindexer.ai/) . 
 
@@ -27,7 +27,7 @@ Rozhraní API můžete použít i tak, že zavoláte rozhraní **Get video index
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-Tento článek prověřuje výstup Video Indexer (obsah JSON). Informace o tom, jaké funkce a přehledy jsou k dispozici, najdete v tématu [video indexer Insights](video-indexer-overview.md#video-insights).
+Tento článek prověřuje výstup Video Indexer (obsah JSON). <br/>Informace o tom, jaké funkce a přehledy jsou k dispozici, najdete v tématu [video indexer Insights](video-indexer-overview.md#video-insights).
 
 > [!NOTE]
 > Vypršení platnosti všech přístupových tokenů v Video Indexer je jedna hodina.
@@ -104,7 +104,7 @@ V této části se zobrazuje souhrn přehledů.
 |plošky/animatedCharacters|Může obsahovat nula nebo více plošek. Podrobnější informace najdete v tématu [plošky/animatedCharacters](#facesanimatedcharacters).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Podrobnější informace najdete v tématu [klíčová slova](#keywords).|
 |zabarvení|Může obsahovat nula nebo více zabarvení. Podrobnější informace najdete v tématu [zabarvení](#sentiments).|
-|audioEffects| Může obsahovat nula nebo více audioEffects. Podrobnější informace najdete v tématu [audioEffects](#audioeffects).|
+|audioEffects| Může obsahovat nula nebo více audioEffects. Podrobnější informace najdete v tématu [audioEffects](#audioeffects-public-preview).|
 |popisky| Může obsahovat nula nebo více popisků. Podrobnější informace najdete v tématu [Labels](#labels).|
 |značky| Může obsahovat nula nebo více značek. Podrobnější informace najdete v tématu [značky](#brands).|
 |týkají | Podrobnější informace najdete v tématu [Statistika](#statistics).|
@@ -181,12 +181,13 @@ Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočas
 |popisky|Přehled [štítků](#labels)|
 |řizování|Přehled [snímků](#shots) .|
 |značky|Přehled [značek](#brands) .|
-|audioEffects|Přehled [audioEffects](#audioeffects)|
+|audioEffects|Přehled [audioEffects](#audioeffects-public-preview)|
 |zabarvení|Přehled [zabarvení](#sentiments)|
 |visualContentModeration|Přehled [visualContentModeration](#visualcontentmoderation)|
 |textualContentModeration|Přehled [textualContentModeration](#textualcontentmoderation)|
 |emoce| Přehled [emoce](#emotions)|
 |popisující|[Témata](#topics) přehled.|
+|mluvčích|Přehled [mluvčích](#speakers) .|
 
 Příklad:
 
@@ -222,36 +223,45 @@ instance|Seznam časových rozsahů tohoto bloku|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
+|spolehlivost|Spolehlivost přesnosti přepisu.|
+|speakerId|ID mluvčího.|
 |language|Jazyk přepisu. Má sloužit k podpoře přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterých se zobrazil tento řádek Pokud je instance přepisu, bude mít pouze jednu instanci.|
 
 Příklad:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>OCR
@@ -324,7 +334,7 @@ Příklad:
 
 `animatedCharacters` element nahrazuje prvek `faces` pro případ, že bylo video indexováno pomocí animovaného modelu znaků. To se provádí pomocí vlastního modelu v Custom Vision, Video Indexer ho spouští na klíčových snímcích.
 
-Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá Face API na všech snímcích videa k detekci plošek a celebrit.
+Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá rozhraní API pro rozpoznávání tváře na všech snímcích videa k detekci plošek a celebrit.
 
 |Název|Popis|
 |---|---|
@@ -580,26 +590,28 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |SpeakerLongestMonolog|Nejdelší monolog mluvčího. Pokud mluvčí obsahuje tiché v monolog, je součástí. Odstraní se tiché na začátku a na konci monolog.| 
 |SpeakerTalkToListenRatio|Výpočet vychází z doby strávené monologem mluvčího (bez ticha v mezi) dělený celkovým časem videa. Čas se zaokrouhluje na třetí desetinnou čárku.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (Public Preview)
 
-|Název|Popis|
+|Název|Popis
 |---|---|
 |id|ID zvukového efektu|
-|typ|Typ zvukového efektu (například Clapping, řeč, tichá).|
-|instance|Seznam časových rozsahů, ve kterých se tento zvukový efekt objevil.|
+|typ|Typ zvukového efektu|
+|instance|Seznam časových rozsahů, ve kterých se tento zvukový efekt objevil. Každá instance má pole s jistotou.|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]
@@ -827,6 +839,42 @@ Video Indexer vytváří odvození hlavních témat z přepisů. Pokud je to mo�
 . . .
 ```
 
+#### <a name="speakers"></a>mluvčích
+
+|Název|Popis|
+|---|---|
+|id|ID mluvčího.|
+|name|Název mluvčího ve formě "mluvčího", *<number>* například: "mluvčí #1".|
+|instance |Seznam časových rozsahů, ve kterých se tento mluvčí objevil.|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>Další kroky
 
 [Portál pro vývojáře Video Indexer](https://api-portal.videoindexer.ai)

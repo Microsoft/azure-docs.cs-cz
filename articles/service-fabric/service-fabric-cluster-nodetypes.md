@@ -4,17 +4,16 @@ description: Přečtěte si, jak se typy uzlů Azure Service Fabric vztahují k 
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261099"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095249"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
 
-Služby [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastavuje přesně jednu sadu škálování: více typů uzlů nejde zálohovat stejnou sadou škálování a jeden typ uzlu by neměl (ve většině případů) být zálohovaný pomocí více sad škálování. Výjimkou je situace, kdy je v některých případech [vertikální škálování](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) typu uzlu, když dočasně máte dvě sady škálování se stejnou `nodeTypeRef` hodnotou, zatímco repliky se migrují z originálu do upgradované sady škálování.
+Služby [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastavuje přesně jednu skupinu škálování: více typů uzlů nejde zálohovat stejnou sadou škálování a jeden typ uzlu by neměl být zálohovaný pomocí více sad škálování.
 
 Modul runtime Service Fabric se instaluje na každý virtuální počítač ve škále nastaveném rozšířením virtuálního počítače *Microsoft. Azure. ServiceFabric* . Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity.
 
@@ -32,7 +31,7 @@ Při horizontálním navýšení kapacity se vytvoří nová instance. Nový ná
 
 Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **s &lt; názvem &gt; typu**, který je mimo uzel. Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
-![Zdroje a prostředky][Resources]
+![Snímek obrazovky zobrazuje skupinu prostředků se dvěma zvýrazněnými nástroji pro vyrovnávání zatížení.][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozšíření virtuálního počítače
 
@@ -85,7 +84,7 @@ Níže jsou uvedeny popisy vlastností:
 | nicPrefixOverride | řetězec | Předpona podsítě jako 10.0.0.0/24 |
 | commonNames | řetězec [] | Běžné názvy instalovaných certifikátů clusteru |
 | x509StoreName | řetězec | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
-| typeHandlerVersion | 1.1 | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
+| typeHandlerVersion | 1,1 | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
 | Cesta k DataPath | řetězec | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací.
 
 ## <a name="next-steps"></a>Další kroky

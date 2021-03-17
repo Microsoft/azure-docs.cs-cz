@@ -1,17 +1,17 @@
 ---
 title: Omezení – Azure Database for MySQL
 description: Tento článek popisuje omezení Azure Database for MySQL, například počet připojení a možnosti modulu úložiště.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 24a214d63fd01fc4353be6563d18f9e28b820c6f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/1/2020
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036517"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721013"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení Azure Database for MySQL
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě. Viz také [Obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) platná pro databázový stroj MySQL.
@@ -25,7 +25,11 @@ Azure Database for MySQL podporuje optimalizaci hodnot parametrů serveru. Minim
 
 Při počátečním nasazení zahrnuje server Azure for MySQL systémové tabulky pro informace o časovém pásmu, ale tyto tabulky nejsou naplněny. Tabulky časových pásem lze naplnit voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je například příkazový řádek MySQL nebo MySQL Workbench. Informace o tom, jak volat uloženou proceduru a nastavit globální časová pásma na úrovni relace, najdete v článcích [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) nebo [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) .
 
-## <a name="storage-engine-support"></a>Podpora modulu úložiště
+Moduly plug-in pro heslo, jako je například "validate_password" a "caching_sha2_password", nejsou službou podporovány.
+
+## <a name="storage-engines"></a>Moduly úložiště
+
+MySQL podporuje mnoho úložných strojů. V Azure Database for MySQL jsou podporované a nepodporované následující úložiště:
 
 ### <a name="supported"></a>Podporováno
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -37,21 +41,24 @@ Při počátečním nasazení zahrnuje server Azure for MySQL systémové tabulk
 - [ZÁLOHOVAT](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [FEDEROVANÉ](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
-## <a name="privilege-support"></a>Podpora oprávnění
+## <a name="privileges--data-manipulation-support"></a>Oprávnění & podpoře manipulace s daty
+
+Mnoho parametrů serveru a nastavení může nechtěně snížit výkon serveru nebo vlastnosti s nezápornou KYSELINou serveru MySQL. Za účelem zachování integrity služby a smlouvy SLA na úrovni produktu nezveřejňuje tato služba více rolí. 
+
+Služba MySQL nepovoluje přímý přístup k základnímu systému souborů. Některé příkazy pro manipulaci s daty nejsou podporovány. 
 
 ### <a name="unsupported"></a>Nepodporované
-- Role DBA: mnoho parametrů serveru a nastavení může nechtěně snížit výkon serveru nebo vlastnosti s nezápornou KYSELINou systému DBMS. Za účelem zachování integrity služby a smlouvy SLA na úrovni produktu Tato služba nevystavuje roli DBA. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje tomuto uživateli provádět většinu příkazů DDL a DML v instanci spravované databáze. 
-- Superuživatele (SUPER Privileged Privilege) je taky omezené [oprávnění Super](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) .
-- DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte `CREATE DEFINER` příkazy ručně nebo pomocí `--skip-definer` příkazu při provádění mysqldump.
-- Systémové databáze: v Azure Database for MySQL je [databáze systému MySQL](https://dev.mysql.com/doc/refman/8.0/en/system-schema.html) určena jen pro čtení, protože slouží k podpoře různých funkcí služby PaaS. Všimněte si, že nemůžete změnit žádnou z `mysql` systémových databází.
 
-## <a name="data-manipulation-statement-support"></a>Podpora příkazů manipulace s daty
+Následující nejsou podporovány:
+- Role DBA: omezeno. Alternativně můžete použít uživatele správce (vytvořený během vytváření nového serveru), což umožňuje provádět většinu příkazů DDL a DML. 
+- Oprávnění SUPER: podobně, [oprávnění Super](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) je omezené.
+- DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte `CREATE DEFINER` příkazy ručně nebo pomocí `--skip-definer` příkazu při provádění mysqldump.
+- Systémové databáze: [Systémová databáze MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) je určena jen pro čtení a používá se k podpoře různých funkcí PaaS. Nelze provádět změny `mysql` systémové databáze.
+- `SELECT ... INTO OUTFILE`: Nepodporováno ve službě.
+- `LOAD_FILE(file_name)`: Nepodporováno ve službě.
 
 ### <a name="supported"></a>Podporováno
-- `LOAD DATA INFILE`je podporováno, ale `[LOCAL]` musí být zadán parametr a směrován na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
-
-### <a name="unsupported"></a>Nepodporované
-- `SELECT ... INTO OUTFILE`
+- `LOAD DATA INFILE` je podporováno, ale `[LOCAL]` musí být zadán parametr a směrován na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
 
 ## <a name="functional-limitations"></a>Funkční omezení
 

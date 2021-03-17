@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797538"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371796"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Přidat nebo odebrat skupinu z jiné skupiny pomocí Azure Active Directory
 Tento článek vám pomůže přidat a odebrat skupinu z jiné skupiny pomocí Azure Active Directory.
@@ -30,7 +30,7 @@ Tento článek vám pomůže přidat a odebrat skupinu z jiné skupiny pomocí A
 Existující skupinu zabezpečení můžete přidat do jiné existující skupiny zabezpečení (označované také jako vnořené skupiny), vytvořením skupiny členů (podskupiny) a nadřazené skupiny. Skupina členů zdědí atributy a vlastnosti nadřazené skupiny a šetří čas konfigurace.
 
 >[!Important]
->Momentálně nepodporujeme:<ul><li>Přidání skupin do skupiny synchronizované s místní službou Active Directory.</li><li>Přidání skupin zabezpečení do skupin Office 365.</li><li>Přidávání skupin Office 365 do skupin zabezpečení nebo jiných skupin Office 365.</li><li>Přiřazují se aplikace do vnořených skupin.</li><li>Použití licencí pro vnořené skupiny.</li><li>Přidávání distribučních skupin ve scénářích vnořování.</li></ul>
+>Momentálně nepodporujeme:<ul><li>Přidání skupin do skupiny synchronizované s místní službou Active Directory.</li><li>Přidávání skupin zabezpečení do skupin Microsoft 365.</li><li>Přidávání skupin Microsoft 365 do skupin zabezpečení nebo jiných skupin Microsoft 365.</li><li>Přiřazují se aplikace do vnořených skupin.</li><li>Použití licencí pro vnořené skupiny.</li><li>Přidávání distribučních skupin ve scénářích vnořování.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Přidání skupiny jako člena jiné skupiny
 
@@ -78,6 +78,6 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 - [Úprava nastavení skupiny](active-directory-groups-settings-azure-portal.md)
 
-- [Použití skupiny ke správě přístupu k aplikacím SaaS](../users-groups-roles/groups-saasapps.md)
+- [Použití skupiny ke správě přístupu k aplikacím SaaS](../enterprise-users/groups-saasapps.md)
 
-- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

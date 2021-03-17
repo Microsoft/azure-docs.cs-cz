@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927109"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125333"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,7 @@ Před kopírováním dat na disky si projděte následující důležité inform
 
 Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, proveďte následující kroky.
 
-1. Zobrazte obsah odemknuté jednotky. Seznam předem vytvořených složek a podsložek v jednotce se liší v závislosti na vybraných možnostech při vytváření objednávky Data Box Disku.
+1. Zobrazte obsah odemknuté jednotky. Seznam předem vytvořených složek a podsložek v jednotce se liší v závislosti na vybraných možnostech při vytváření objednávky Data Box Disku. Pokud předem vytvořená složka neexistuje, nevytvářejte ji, protože data zkopírovaná do složky vytvořené uživatelem se nepovede nahrát do Azure.
 
     |Vybraný cíl úložiště  |Typ účtu úložiště|Typ přípravného účtu úložiště |Složky a podsložky  |
     |---------|---------|---------|------------------|
@@ -212,15 +212,15 @@ Tento volitelný postup můžete použít v případě, že používáte více d
 3. Identifikujte zdrojová data, která se mají zkopírovat. Například v tomto případě:
     - Identifikovala se následující data objektu blob bloku.
 
-         ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![Rozdělení kopírování dat 2](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - Identifikovala se následující data objektu blob stránky.
 
-         ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![Rozdělení kopírování dat 3](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. Přejděte do složky s extrahovaným softwarem. V této složce vyhledejte soubor `SampleConfig.json`. Jedná se o soubor jen pro čtení, který můžete upravit a uložit.
 
-   ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![Rozdělení kopírování dat 4](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. Upravte soubor `SampleConfig.json`.
  
@@ -229,11 +229,11 @@ Tento volitelný postup můžete použít v případě, že používáte více d
    - Zadejte písmena jednotek odpovídající cílovým diskům. Data se načtou ze zdrojové cesty a zkopírují se mezi několik disků.
    - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení se odesílají do aktuálního adresáře, ve kterém se nachází soubor `.exe`.
 
-     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![Rozdělení kopírování dat 5](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. Pokud chcete zkontrolovat formát souboru, přejděte do nástroje `JSONlint`. Uložte soubor jako `ConfigFile.json`. 
 
-     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![Rozdělení kopírování dat 6](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Otevřete okno příkazového řádku. 
 
@@ -241,24 +241,24 @@ Tento volitelný postup můžete použít v případě, že používáte více d
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![Rozdělení kopírování dat 7](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Stiskněte Enter a pokračujte v provádění skriptu.
 
-    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![Rozdělení kopírování dat 8](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. Jakmile se datová sada rozdělí a zkopíruje, zobrazí se souhrn nástroje Split Copy pro relaci kopírování. Ukázkový výstup najdete níž.
 
-    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![Rozdělení kopírování dat 9](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. Ověřte, že se data rozdělila mezi cílové disky. 
  
-    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Rozdělení kopírování dat 10](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![Rozdělení kopírování dat 11](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
     Když blíže prozkoumáte obsah jednotky `n:`, uvidíte, že se vytvořily dvě podsložky odpovídající datům ve formátu objektu blob bloku a objektu blob stránky.
     
-     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![Rozdělení kopírování dat 12](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. Pokud operace kopírování selže, použijte k obnovení a pokračování následující příkaz:
 
@@ -273,7 +273,7 @@ Po dokončení kopírování dat můžete přejít k jejich ověření. Pokud js
 
 Pokud jste ke kopírování dat nepoužili nástroj Split Copy, budete svá data muset ověřit. Data ověříte následujícím postupem.
 
-1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. Tato možnost je k dispozici jenom pro prostředí Windows. Uživatelé Linuxu musí ověřit, že zdrojová data, která se kopírují na disk, splňují příslušné [požadavky](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
+1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. Tato možnost je k dispozici jenom pro prostředí Windows. Uživatelé Linuxu musí ověřit, že zdrojová data, která se kopírují na disk, splňují příslušné [požadavky](./data-box-disk-limits.md).
     
     ![Výstup ověřovacího nástroje Data Box Disku](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ Při ověřování dat postupujte následovně.
 1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
 2. Pomocí možnosti 2 ověřte soubory a vygenerujte kontrolní součty. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Pokud během ověřování a generování kontrolního součtu došlo k chybě, budete na to upozorněni a obdržíte odkaz na protokoly chyb.
 
-    Další informace o ověřování dat najdete v tématu věnovaném [ověřování dat](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Pokud při ověřování dojde k chybám, přečtěte si téma věnované [řešení potíží s chybami ověření](data-box-disk-troubleshoot.md).
+    Další informace o ověřování dat najdete v tématu věnovaném [ověřování dat](#validate-data). Pokud při ověřování dojde k chybám, přečtěte si téma věnované [řešení potíží s chybami ověření](data-box-disk-troubleshoot.md).
 
 ::: zone-end

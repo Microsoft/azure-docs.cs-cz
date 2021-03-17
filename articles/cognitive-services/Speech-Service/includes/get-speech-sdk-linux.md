@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2466b9b9b812ae9fb590a6678d840661c74f47bd
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673046"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103439321"
 ---
 :::row:::
     :::column span="3":::
-        Sada Speech SDK podporuje pouze **Ubuntu 16.04/18.04**, **Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**a **CentOS 7/8** při použití se systémem Linux pro následující cílové architektury:
+        Sada Speech SDK podporuje pouze **Ubuntu 16.04/18.04/20.04**, **Debian 9/10**, **Red Hat Enterprise Linux (RHEL) 7/8** a **CentOS 7/8** pro následující cílové architektury při použití se systémem Linux:
     :::column-end:::
     :::column:::
         <br>
@@ -31,6 +31,9 @@ ms.locfileid: "83673046"
 > [!IMPORTANT]
 > Pro C# v systému Linux ARM64 se vyžaduje balíček .NET Core 3. x (dotnet-SDK-3. x).
 
+> [!NOTE]
+> Chcete-li použít sadu Speech SDK v systému Alpine Linux, vytvořte prostředí Debian chroot, jak je popsáno v Alpine Linux wiki na portálu [https://wiki.alpinelinux.org/wiki/Running_glibc_programs](running glibc programs) , a potom postupujte podle pokynů Debian.
+
 ### <a name="system-requirements"></a>Požadavky na systém
 
 Pro nativní aplikaci závisí sada Speech SDK na `libMicrosoft.CognitiveServices.Speech.core.so` . Ujistěte se, že cílová architektura (x86, x64) odpovídá aplikaci. V závislosti na verzi pro Linux můžou být potřeba další závislosti.
@@ -39,19 +42,25 @@ Pro nativní aplikaci závisí sada Speech SDK na `libMicrosoft.CognitiveService
 - Knihovna OpenSSL ( `libssl.so.1.0.0` nebo `libssl.so.1.0.2` )
 - Sdílená knihovna pro aplikace ALSA ( `libasound.so.2` )
 
-# <a name="ubuntu-16041804"></a>[Ubuntu 16.04/18.04](#tab/ubuntu)
+# <a name="ubuntu-160418042004"></a>[Ubuntu 16.04/18.04/20.04](#tab/ubuntu)
 
 ```Bash
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2
 ```
 
-# <a name="debian-9"></a>[Debian 9](#tab/debian)
+> [!NOTE]
+> Pokud libssl 1.0. x není k dispozici, nainstalujte místo toho libssl 1.1.
+
+# <a name="debian-910"></a>[Debian 9/10](#tab/debian)
 
 ```Bash
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
+
+> [!NOTE]
+> Pokud libssl 1.0. x není k dispozici, nainstalujte místo toho libssl 1.1.
 
 # <a name="rhel-78-and-centos-78"></a>[RHEL 7/8 a CentOS 7/8](#tab/rhel-centos)
 

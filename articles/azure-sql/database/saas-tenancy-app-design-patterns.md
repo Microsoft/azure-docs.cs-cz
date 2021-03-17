@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250687"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793224"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Modely tenantů SaaS Database pro více tenantů
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -135,13 +135,13 @@ Obecně platí, že databáze s více klienty mají nejnižší náklady na tena
 
 V následující části jsou popsány dvě varianty modelu databáze s více klienty, přičemž model horizontálně dělené multi-tenant je nejpružnější a škálovatelný.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>FJ. Aplikace pro více tenantů s jedinou databází s více klienty
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikace pro více tenantů s jedinou databází s více klienty
 
 Nejjednodušší model víceklientské databáze používá jedinou databázi pro hostování dat pro všechny klienty.  Po přidání dalších tenantů se databáze škáluje s větším úložištěm a výpočetními prostředky.  Toto horizontální navýšení kapacity může být nezbytné, i když je vždy limit maximálního měřítka.  Nicméně dlouho před dosažením tohoto limitu se databáze bude nepraktický spravovat.
 
 Operace správy, které jsou zaměřené na jednotlivé klienty, jsou složitější pro implementaci ve více tenantů databázích.  A ve velkém měřítku tyto operace se mohou stát nepřijatelně pomalu.  Jedním z příkladů je obnovení dat k určitému bodu v čase pouze pro jednoho tenanta.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>Věcn. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
 
 Většina aplikací SaaS přistupuje pouze k datům v jednom klientovi.  Tento vzor přístupu umožňuje distribuci dat tenanta napříč více databázemi nebo horizontálních oddílů, kde všechna data pro každého tenanta jsou obsažená v jednom horizontálních oddílů.  V kombinaci se vzorem víceklientské databáze umožňuje model horizontálně dělené skoro neomezené škálování.
 
@@ -186,7 +186,7 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 | Měření | Samostatná aplikace | Databáze – na tenanta | Horizontálně dělené více tenantů |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Měřítko | Střední<br />1 – 100 | Velmi vysoké<br />1 – 100, tisících | Unlimited<br />1 – 1, 000, tisících |
-| Izolace tenanta | Velmi vysoké | Vysoká | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
+| Izolace tenanta | Velmi vysoké | Vysoké | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
 | Náklady na databázi na tenanta | Maximální má velikost pro špičky. | Slab používané fondy. | Nejnižší pro malé klienty v MT databáze. |
 | Sledování a Správa výkonu | Jenom pro tenanta | Agregovaná + pro každého tenanta | Souhrnné i když je jeden tenant jenom pro jednoduchou. |
 | Složitost vývoje | Nízká | Nízká | Úrovně kvůli horizontálního dělení. |
@@ -204,7 +204,7 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 
 [http-visual-studio-devops-485m]: https://www.visualstudio.com/devops/
 
-[docu-sql-svr-db-row-level-security-947w]: https://docs.microsoft.com/sql/relational-databases/security/row-level-security
+[docu-sql-svr-db-row-level-security-947w]: /sql/relational-databases/security/row-level-security
 
 [docu-elastic-db-client-library-536r]:elastic-database-client-library.md
 [docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]: saas-dbpertenant-get-started-deploy.md
@@ -221,4 +221,3 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 [image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "Návrh aplikace s více klienty pomocí databáze-na tenanta pomocí elastického fondu."
 
 [image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "Návrh aplikace s více klienty s horizontálně dělené databázemi s více klienty."
-

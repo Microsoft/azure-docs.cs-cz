@@ -8,17 +8,17 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
-ms.author: johndaw
-ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.author: mbaldwin
+ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257421"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108581"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – nasazení HSM do existující virtuální sítě pomocí prostředí PowerShell
 
@@ -233,7 +233,7 @@ Když jste se připojili k zařízení HSM pomocí SSH, spusťte následující 
 
 Výstup by měl vypadat jako obrázek uvedený níže:
 
-![stav zřizování](media/tutorial-deploy-hsm-powershell/output.png)
+![Snímek obrazovky, který zobrazuje výstup z příkazu HSM show.](media/tutorial-deploy-hsm-powershell/output.png)
 
 V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v tématu Identita Gemalto Luna Network HSM 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z identita Gemalto ke stažení, jakmile se zaregistrujete na portálu zákaznické podpory identita Gemalto a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
 
@@ -262,5 +262,5 @@ Po dokončení kroků v tomto kurzu jsou vyhrazené prostředky HSM zřízené a
 * [Vysoká dostupnost](high-availability.md)
 * [Fyzické zabezpečení](physical-security.md)
 * [Sítě](networking.md)
-* [Monitorování](monitoring.md)
+* [Sledovaný](monitoring.md)
 * [Možnosti podpory](supportability.md)

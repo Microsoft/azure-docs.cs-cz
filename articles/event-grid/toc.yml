@@ -40,6 +40,10 @@
       href: custom-event-to-eventhub.md
     - name: Události služby Container Registry
       href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Zpracování událostí Azure Communication Services
+      href: ../communication-services/quickstarts/telephony-sms/handle-sms-events.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Mezipaměť Azure pro události Redis
+      href: ../azure-cache-for-redis/cache-event-grid-quickstart-portal.md?toc=%2fazure%2fevent-grid%2ftoc.json
 - name: Kurzy
   items:
     - name: E-mail při změně virtuálního počítače
@@ -48,10 +52,14 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Aktivace runbooku Automation
       href: ensure-tags-exists-on-new-virtual-machines.md
-    - name: E-mail při přidání zařízení IoT Hub
+    - name: E-mail při odpojení zařízení IoT Hub
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Reakce na události služby Service Bus
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Zpracování událostí služby Service Bus přes Event Grid
+      items:
+        - name: Azure Logic Apps
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure Functions
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-function.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Streamování dat z Event Hubs
       href: event-grid-event-hubs-integration.md
     - name: Směrování událostí Media Services
@@ -94,8 +102,6 @@
       href: template-samples.md
     - name: Ukázky kódů
       href: /samples/browse/?term=Event+Grid
-    - name: Integrované služby Azure Policy
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Terminologie služby Event Grid
@@ -106,7 +112,7 @@
       items:
         - name: Přehled systémových témat
           href: system-topics.md
-        - name: Zdroje událostí
+        - name: Zdroje událostí (vydavatelé)
           items:
             - name: Azure App Configuration
               href: event-schema-app-configuration.md
@@ -114,6 +120,8 @@
               href: event-schema-app-service.md
             - name: Azure Blob Storage
               href: event-schema-blob-storage.md
+            - name: Azure Communication Services
+              href: event-schema-communication-services.md
             - name: Azure Container Registry
               href: event-schema-container-registry.md
             - name: Azure Event Hubs
@@ -136,13 +144,17 @@
               href: event-schema-azure-signalr.md
             - name: Předplatná Azure
               href: event-schema-subscriptions.md
-    - name: Témata pro partnery
+            - name: Azure Cache for Redis
+              href: event-schema-azure-cache.md
+    - name: Partnerské akce
       items:
-        - name: Přehled témat pro partnery
-          href: partner-topics-overview.md
-        - name: Auth0
-          href: auth0-overview.md
-        - name: Jak se stát partnerem pro Event Grid
+        - name: Přehled partnerských akcí
+          href: partner-events-overview.md
+        - name: Zdroje událostí (vydavatelé)
+          items:
+            - name: Auth0
+              href: auth0-overview.md
+        - name: Přehled onboardingu partnerů
           href: partner-onboarding-overview.md
     - name: Domény událostí
       href: event-domains.md
@@ -182,6 +194,10 @@
           href: geo-disaster-recovery.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
         - name: Ověřování doručování událostí do obslužných rutin událostí
           href: security-authentication.md
         - name: Ověřování klientů publikování
@@ -196,6 +212,10 @@
           href: diagnostic-logs.md
         - name: Metriky
           href: metrics.md
+    - name: Případy použití
+      items:
+        - name: Případy použití pro domény
+          href: event-domains-use-cases.md
 - name: Návody
   items:
     - name: 'Vytvoření, zobrazení a správa systémových témat'
@@ -206,15 +226,19 @@
           href: create-view-manage-system-topics-cli.md
         - name: Šablona Azure Resource Manageru
           href: create-view-manage-system-topics-arm.md
+    - name: Partnerské akce
+      items:
+        - name: Onboarding partnera
+          href: onboard-partner.md
+        - name: Přihlášení k odběru událostí Auth0
+          href: auth0-how-to.md
     - name: Získání přístupových klíčů pro témata nebo domény
       href: get-access-keys.md
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
-    - name: Přihlášení k odběru událostí Auth0
-      href: auth0-how-to.md
     - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
-    - name: Nedoručené zprávy a opakovaný pokus
+    - name: Nastavení umístění pro nedoručené zprávy a zásady opakování
       href: manage-event-delivery.md
     - name: Události filtru
       href: how-to-filter-events.md
@@ -232,18 +256,32 @@
       href: custom-disaster-recovery.md
     - name: Sledování asynchronních operací REST
       href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Přesunout
+      items:
+        - name: Přesun systémových témat napříč oblastmi
+          href: move-system-topics-across-regions.md
+        - name: Přesun vlastních témat napříč oblastmi
+          href: move-custom-topics-across-regions.md
+        - name: Přesun domén napříč oblastmi
+          href: move-domains-across-regions.md
+        - name: Přesun partnerských oborů názvů napříč oblastmi
+          href: move-partner-namespaces-across-regions.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace privátních koncových bodů
+        - name: Zabezpečené publikování událostí prostřednictvím privátního propojení
           href: configure-private-endpoints.md
+        - name: Doručení událostí pomocí spravované identity
+          href: managed-service-identity.md
+        - name: Zabezpečené doručování událostí prostřednictvím privátního odkazu
+          href: consume-private-endpoints.md
         - name: Konfigurace brány firewall protokolu P
           href: configure-firewall.md
-        - name: Zabezpečený webhook s AAD
+        - name: Zabezpečený webhook s využitím Azure Active Directory
           href: secure-webhook-delivery.md
-        - name: Doručování událostí s využitím spravované identity
-          href: managed-service-identity.md
     - name: Řešení potíží
       items:
+        - name: Řešení potíží s Event Grid
+          href: troubleshoot-issues.md
         - name: Povolení diagnostických protokolů
           href: enable-diagnostic-logs-topic.md
         - name: Řešení chyb
@@ -284,6 +322,9 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: Sady SDK
       href: sdk-overview.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

@@ -4,19 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 63fc699cfd2f02a322f71324519b2f0b5b22234b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400686"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926403"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku Azure Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku Azure Speech <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
@@ -93,8 +94,8 @@ namespace Speech.Recognition
 
 Teď jste připraveni znovu sestavit aplikaci a otestovat funkci rozpoznávání řeči pomocí služby Speech.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** > **řešení**sestavení.
-2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu <kbd>F5</kbd>.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení**  >  **řešení**sestavení.
+2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění**  >  **Spustit ladění** nebo stiskněte klávesu <kbd>F5</kbd>.
 3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 
 ## <a name="next-steps"></a>Další kroky

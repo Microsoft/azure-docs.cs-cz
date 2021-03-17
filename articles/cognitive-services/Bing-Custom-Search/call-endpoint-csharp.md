@@ -10,14 +10,20 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: e1084c1962db3c04b951245361da80bee098329a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b892194a0e716aa3de218bc6edb6c38cdc898935
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199823"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338652"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka C # 
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu se dozvíte, jak vyžádat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v jazyce C#, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
@@ -30,8 +36,8 @@ V tomto rychlém startu se dozvíte, jak vyžádat výsledky hledání z vaší 
 - Balíček NuGet [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) . 
 
    Instalace tohoto balíčku v aplikaci Visual Studio: 
-     1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a pak vyberte **Spravovat balíčky NuGet**. 
-     2. Vyhledejte a vyberte *Microsoft. Azure. cognitiveservices Account. Search. CustomSearch*a pak balíček nainstalujte.
+     1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a pak vyberte **Spravovat balíčky NuGet**. 
+     2. Vyhledejte a vyberte *Microsoft. Azure. cognitiveservices Account. Search. CustomSearch* a pak balíček nainstalujte.
 
    Při instalaci balíčku Vlastní vyhledávání Bingu NuGet nainstaluje Visual Studio také tyto balíčky:
      - **Microsoft.Rest.ClientRuntime**

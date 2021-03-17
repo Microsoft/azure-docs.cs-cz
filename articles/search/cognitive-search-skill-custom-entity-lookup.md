@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987467"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844931"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit (Preview)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84987467"
 
 Dovednost **vyhledávání vlastních entit** hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné.  
 
-Tato dovednost není vázaná na rozhraní Cognitive Services API a je možné ji v období Preview použít zdarma. K přepsání denního limitu pro obohacení byste ale měli stále [připojit Cognitive Services prostředek](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services). Denní limit se vztahuje na bezplatný přístup k Cognitive Services při přístupu prostřednictvím Azure Kognitivní hledání.
+Tato dovednost není vázaná na rozhraní Cognitive Services API a je možné ji v období Preview použít zdarma. K přepsání denního limitu pro obohacení byste ale měli stále [připojit Cognitive Services prostředek](./cognitive-search-attach-cognitive-services.md). Denní limit se vztahuje na bezplatný přístup k Cognitive Services při přístupu prostřednictvím Azure Kognitivní hledání.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. dovednosti. text. CustomEntityLookupSkill 
@@ -41,11 +41,13 @@ U parametrů se rozlišují malá a velká písmena.
 | `entitiesDefinitionUri`    | Cesta k souboru JSON nebo CSV obsahujícímu veškerý cílový text, ke kterému se má shoda. Tato definice entity je čtena na začátku spuštění indexeru; žádné aktualizace tohoto souboru v polovině spuštění nebudou až do následného spuštění. Tato konfigurace musí být přístupná přes protokol HTTPS. Očekávané schéma CSV nebo JSON najdete níže v části formát [definice vlastní entity](#custom-entity-definition-format) .|
 |`inlineEntitiesDefinition` | Vložené definice entit JSON Tento parametr nahrazuje parametr entitiesDefinitionUri, pokud je k dispozici. Vloženému programu nelze poskytnout více než 10 KB konfigurace. Očekávané schéma JSON najdete v části [definice vlastní entity](#custom-entity-definition-format) níže. |
 |`defaultLanguageCode` |    Volitelné Kód jazyka vstupního textu, který slouží k tokenizovat a vymezení vstupního textu. Podporují se tyto jazyky: `da, de, en, es, fi, fr, it, ko, pt` . Výchozí hodnota je English ( `en` ). Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.  |
-
+|`globalDefaultCaseSensitive` | Volitelné Výchozí hodnota pro velká a malá písmena pro dovednost Pokud není `defaultCaseSensitive` zadaná hodnota entity, stane se tato hodnota `defaultCaseSensitive` hodnotou pro tuto entitu. |
+|`globalDefaultAccentSensitive` | Volitelné Výchozí hodnota pro rozlišení pro dovednost Pokud není `defaultAccentSensitive` zadaná hodnota entity, stane se tato hodnota `defaultAccentSensitive` hodnotou pro tuto entitu. |
+|`globalDefaultFuzzyEditDistance` | Volitelné Výchozí přibližná hodnota vzdálenosti úprav pro dovednost Pokud není `defaultFuzzyEditDistance` zadaná hodnota entity, stane se tato hodnota `defaultFuzzyEditDistance` hodnotou pro tuto entitu. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Description                   |
+| Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | `text`          | Text, který se má analyzovat          |
 | `languageCode`    | Nepovinný parametr. Výchozí je `"en"`.  |
@@ -54,7 +56,7 @@ U parametrů se rozlišují malá a velká písmena.
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 
-| Název výstupu      | Description                   |
+| Název výstupu      | Popis                   |
 |---------------|-------------------------------|
 | `entities` | Pole objektů, které obsahují informace o nalezených shodách a související metadata. Každá z identifikovaných entit může obsahovat následující pole:  <ul> <li> *Name*: identifikovaná entita nejvyšší úrovně. Entita představuje "normalizovaný" tvar. </li> <li> *ID*: jedinečný identifikátor entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *Popis*: Popis entity definovaný uživatelem ve formátu definice vlastní entity. </li> <li> *zadejte:* Typ entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *podtyp:* Podtyp entity definovaný uživatelem ve formátu definice vlastní entity</li>  <li> *shody*: kolekce, která popisuje všechny shody pro danou entitu ve zdrojovém textu. Každá shoda bude mít následující členy: </li> <ul> <li> *text*: nezpracovaný text se shoduje se zdrojovým dokumentem. </li> <li> *offset*: umístění, kde se shoda našla v textu. </li> <li> *Length*: délka spárovaného textu. </li> <li> *matchDistance*: počet znaků, které jsou v této shodě odlišné, byly z názvu původní entity nebo aliasu.  </li> </ul> </ul>
   |
@@ -69,7 +71,7 @@ Pokud je definice poskytnuta jako vložená, měla by být uvedena jako vložen�
 
 ### <a name="csv-format"></a>Formát CSV
 
-Zadáním cesty k souboru a jeho nastavením v parametru *entitiesDefinitionUri* dovednosti můžete zadat definici vlastních entit, které se mají hledat v souboru s hodnotami oddělenými čárkou (CSV). Cesta by měla být v umístění https. Definiční soubor může mít velikost až 10 MB.
+Můžete zadat definici vlastních entit pro hledání v souboru Comma-Separated hodnoty (CSV) zadáním cesty k souboru a jeho nastavením v parametru *entitiesDefinitionUri*  dovednosti. Cesta by měla být v umístění https. Definiční soubor může mít velikost až 10 MB.
 
 Formát CSV je jednoduchý. Každý řádek představuje jedinečnou entitu, jak je znázorněno níže:
 
@@ -143,7 +145,7 @@ Složitější příklad definice JSON může volitelně poskytnout ID, popis, t
 
 Následující tabulky popisují další podrobnosti o různých parametrech konfigurace, které můžete nastavit při definování entit tak, aby odpovídaly:
 
-|  Název pole  |        Description  |
+|  Název pole  |        Popis  |
 |--------------|----------------------|
 | `name` | Popisovač entity nejvyšší úrovně. Shody ve výstupu dovedností se budou seskupovat podle tohoto názvu a měly by představovat "normalizovaný" tvar textu, který se nachází.  |
 | `description`  | Volitelné Toto pole se dá použít jako průchozí pro vlastní metadata o odpovídajících textech. Hodnota tohoto pole se zobrazí s každou shodou své entity ve výstupu dovedností. |
@@ -151,15 +153,18 @@ Následující tabulky popisují další podrobnosti o různých parametrech kon
 | `subtype` | Volitelné Toto pole se dá použít jako průchozí pro vlastní metadata o odpovídajících textech. Hodnota tohoto pole se zobrazí s každou shodou své entity ve výstupu dovedností. |
 | `id` | Volitelné Toto pole se dá použít jako průchozí pro vlastní metadata o odpovídajících textech. Hodnota tohoto pole se zobrazí s každou shodou své entity ve výstupu dovedností. |
 | `caseSensitive` | Volitelné Výchozí hodnota je false. Logická hodnota, která označuje, zda má být porovnání s názvem entity citlivé na znaky velikosti písmen. Nerozlišování velkých a malých písmen od společnosti Microsoft může být: Microsoft, microSoft, MICROSOFT |
+| `accentSensitive` | Volitelné Výchozí hodnota je false. Logická hodnota, která označuje, zda jsou písmena s diakritikou a nezvýrazněnými písmeny, například "é" a "e", shodná. |
 | `fuzzyEditDistance` | Volitelné Výchozí hodnota je 0. Maximální hodnota je 5. Označuje přijatelný počet odlišných znaků, které by přesto představovaly shodu s názvem entity. Je vrácena nejmenší možná tomu pro danou shodu.  Pokud je například vzdálenost úprav nastavená na hodnotu 3, "Windows 10" by pořád odpovídala "Windows", "Windows10" a "Windows 7". <br/> Pokud je rozlišování velkých a malých písmen nastaveno na hodnotu false, rozdíly v různých velikostech se nepočítají směrem k tomu toleranci, ale jinak. |
-| `defaultCaseSensitive` | Volitelné Změní výchozí hodnotu rozlišování velikosti písmen pro tuto entitu. Slouží ke změně výchozí hodnoty všechny aliasy hodnoty caseSensitive. |
+| `defaultCaseSensitive` | Volitelné Změní výchozí hodnotu rozlišování velikosti písmen pro tuto entitu. Dá se použít ke změně výchozí hodnoty všechny aliasy hodnoty caseSensitive. |
+| `defaultAccentSensitive` | Volitelné Změní výchozí hodnotu citlivosti zvýraznění pro tuto entitu. Dá se použít ke změně výchozí hodnoty všechny aliasy accentSensitive hodnoty.|
 | `defaultFuzzyEditDistance` | Volitelné Změní výchozí hodnotu přibližné úpravy hodnoty vzdálenosti pro tuto entitu. Dá se použít ke změně výchozí hodnoty všechny aliasy fuzzyEditDistance hodnoty. |
 | `aliases` | Volitelné Pole komplexních objektů, které lze použít k určení alternativních pravopisů nebo synonym pro název kořenové entity. |
 
-| Vlastnosti aliasu | Description |
+| Vlastnosti aliasu | Popis |
 |------------------|-------------|
 | `text`  | Alternativní pravopis nebo reprezentace některých názvů cílových entit  |
 | `caseSensitive` | Volitelné Funguje stejně jako parametr kořenové entity "caseSensitive" výše, ale vztahuje se pouze na tento alias. |
+| `accentSensitive` | Volitelné Funguje stejně jako parametr accentSensitive pro kořenovou entitu, ale vztahuje se jenom na tento alias. |
 | `fuzzyEditDistance` | Volitelné Funguje stejně jako parametr fuzzyEditDistance pro kořenovou entitu, ale vztahuje se jenom na tento alias. |
 
 
@@ -231,7 +236,7 @@ Případně, pokud se rozhodnete poskytnout ukazatel na definiční soubor entit
 
 ```
 
-##    <a name="sample-input"></a>Vzorový vstup
+##    <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {

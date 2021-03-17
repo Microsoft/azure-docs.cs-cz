@@ -9,33 +9,33 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/20/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
-metadata ms.custom: contperfq1
-ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661433"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033978"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvojúrovňovým ověřováním a pracovním nebo školním účtem
 
-Vaše organizace Azure Active Directory (Azure AD) může zapnout dvojúrovňové ověřování (2FV). K dispozici jsou některé běžné problémy s 2FV, které by mohly nastat častěji než u nás. V tomto článku jsme popsali opravy pro nejběžnější problémy.
+Existují některé běžné problémy se dvěma faktory ověřování, které se zdají nastat častěji než u nás. V tomto článku jsme popsali opravy pro nejběžnější problémy.
 
-Pokud je zapnutá 2FV, vyžaduje přihlášení k účtu kombinaci následujících dat:
+Vaše organizace Azure Active Directory (Azure AD) může u svého účtu zapnout dvojúrovňové ověřování. Pokud je zapnuté dvojúrovňové ověřování, vyžaduje přihlášení k účtu kombinaci těchto dat:
 
 - Vaše uživatelské jméno
 - Vaše heslo
 - Mobilní zařízení nebo telefon
 
-2FV je bezpečnější než heslo, protože 2FV vyžaduje něco, co _víte_ a co _máte_. Žádný hacker nemá váš fyzický telefon.
+Dvojúrovňové ověřování je bezpečnější než heslo, protože dvojúrovňové ověřování vyžaduje něco, co _víte_ a co _máte_. Žádný hacker nemá váš fyzický telefon.
 
 >[!Important]
->Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure AD v [dokumentaci k Azure AD](https://docs.microsoft.com/azure/active-directory).
+>Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure AD v [dokumentaci k Azure AD](../index.yml).
 
-Tento obsah je určený k tomu, aby vám pomohl váš pracovní nebo školní účet, což je účet, který vám poskytla vaše organizace (například dritan@contoso.com ). Pokud máte problémy se dvojúrovňovém ověřováním na osobním účet Microsoft, což je účet, který jste si nastavili pro sebe (například danielle@outlook.com ), přečtěte si téma [Zapnutí nebo vypnutí dvojúrovňové ověřování pro vaši účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+Tento obsah vám může přispět k pracovnímu nebo školnímu účtu, což je účet, který vám poskytla vaše organizace (například dritan@contoso.com ). Pokud máte problémy se dvojúrovňovém ověřováním na osobním účet Microsoft, což je účet, který jste si nastavili pro sebe (například danielle@outlook.com ), přečtěte si téma [Zapnutí nebo vypnutí dvojúrovňové ověřování pro vaši účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Nemám mi své mobilní zařízení
 
@@ -51,7 +51,15 @@ Dojde k tomu. Mobilní zařízení jste opustili doma a teď nemůžete použít
 
 2. Vyberte metodu alternativního ověřování a pokračujte v procesu dvojúrovňového ověřování.
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Ztratil jsem své mobilní zařízení nebo bylo odcizeno.
+## <a name="i-cant-turn-two-factor-verification-off"></a>Nejde mi zapnout dvojúrovňové ověřování po dvou faktorech
+
+- Pokud používáte dvojúrovňové ověřování s osobním účtem služby společnosti Microsoft, například alain@outlook.com , můžete [funkci zapnout nebo vypnout](https://account.live.com/proofs/Manage).
+
+- Pokud používáte dvojúrovňové ověřování u svého pracovního nebo školního účtu, pravděpodobně to znamená, že vaše organizace se rozhodla použít tuto přidanou funkci zabezpečení. Neexistuje žádný způsob, jak ho individuálně vypnout.
+
+Pokud nemůžete zapnout dvojúrovňové ověřování, může to být také kvůli výchozím hodnotám zabezpečení, které byly použity na úrovni organizace. Další informace o výchozím nastavení zabezpečení najdete v tématu [co jsou výchozí nastavení zabezpečení?](../fundamentals/concept-fundamentals-security-defaults.md)
+
+## <a name="my-device-was-lost-or-stolen"></a>Moje zařízení bylo ztraceno nebo odcizeno.
 
 Pokud jste ztratili nebo máte odcizené mobilní zařízení, můžete provést jednu z následujících akcí:
 
@@ -64,22 +72,23 @@ Důrazně doporučujeme poznat oddělení technické podpory vaší organizace, 
 
 Nepříjem ověřovacího kódu je běžný problém. K tomuto problému obvykle dochází v souvislosti s vaším mobilním zařízením a jeho nastavením. Tady jsou některé akce, které můžete vyzkoušet.
 
-Zkuste to | Informace o doprovodnéch materiálech
+Vyzkoušejte toto | Informace o doprovodnéch materiálech
 --------- | ------------
+Použití ověřovacích kódů aplikace Microsoft Authenticator | Získáváte "úspěšnost při volání ověřování" nebo "při přihlašování jste dosáhli limitu ověřovacích kódů textu". <br/><br/>Společnost Microsoft může v krátké době omezit opakované pokusy o ověření prováděné stejným uživatelem. Toto omezení se nevztahuje na Microsoft Authenticator nebo ověřovací kód. Pokud jste dosáhli těchto omezení, můžete použít ověřovací aplikaci, ověřovací kód nebo se pokusit znovu přihlásit za několik minut. <br/><br/> Dostanete zprávu "je nám líto, ale během přihlašování došlo k potížím s ověřováním vašeho účtu. <br/><br/> Společnost Microsoft může omezit nebo zablokovat pokusy o ověření hlasu nebo serveru SMS prováděné stejným uživatelem, telefonním číslem nebo organizací z důvodu vysokého počtu nezdařených pokusů o ověření hlasu nebo serveru SMS. Pokud se zobrazí tato chyba, můžete vyzkoušet jinou metodu, například ověřovací aplikaci nebo ověřovací kód, nebo se obrátit na správce a získat podporu.
 Restartujte mobilní zařízení. | Někdy vaše zařízení potřebuje jenom aktualizaci. Po restartování zařízení skončí všechny procesy na pozadí a služby. Restartování také vypne základní součásti vašeho zařízení. Po restartování zařízení se aktualizují všechny služby nebo komponenty.
 Ověřte správnost bezpečnostních údajů | Ujistěte se, že informace o metodě ověření zabezpečení jsou přesné, zejména vaše telefonní čísla. Pokud vložíte špatné telefonní číslo, všechny výstrahy budou přecházet na toto nesprávné číslo. Naštěstí nebude moct tento uživatel dělat cokoli s výstrahami, ale neumožňuje vám taky přihlásit se ke svému účtu. Chcete-li se ujistit, že jsou vaše informace správné, přečtěte si pokyny v článku věnovaném [Nastavení metod pro správu dvou faktorů ověřování](multi-factor-authentication-end-user-manage-settings.md) .
 Ověřte, že jsou vaše oznámení zapnutá. | Ujistěte se, že vaše mobilní zařízení má zapnutá oznámení. Ujistěte se, že jsou povolené následující režimy oznámení: <br/><br/> &bull; Telefonní hovory <br/> &bull; Vaše aplikace pro ověřování <br/> &bull; Vaše aplikace pro zasílání zpráv SMS <br/><br/> Zajistěte, aby tyto režimy vytvořily výstrahu, která se _zobrazí_ na vašem zařízení.
 Ujistěte se, že máte signál zařízení a připojení k Internetu | Ujistěte se, že vaše telefonní hovory a textové zprávy se připravují do mobilního zařízení. Požádejte přítele a pošle vám textovou zprávu, abyste se ujistili, že dostanete. Pokud neobdržíte hovor nebo text, nejdřív zkontrolujte, že je vaše mobilní zařízení zapnuté. Pokud je zařízení zapnuté, ale stále nepřijímáte volání nebo text, pravděpodobně došlo k potížím se sítí. Budete se muset spojit s poskytovatelem. Pokud často máte problémy související s signály, doporučujeme nainstalovat a používat [aplikaci Microsoft Authenticator](user-help-auth-app-download-install.md) na svém mobilním zařízení. Aplikace ověřovatele může vygenerovat náhodné kódy zabezpečení pro přihlášení, aniž by museli mít žádný signál v buňce nebo připojení k Internetu.
 Vypnout Nerušit | Ujistěte se, že jste neaktivovali funkci **Nerušit** pro vaše mobilní zařízení. Když je tato funkce zapnutá, oznámení na vašem mobilním zařízení nemůžou upozorňovat. Pokyny, jak tuto funkci vypnout, najdete v příručce k vašemu mobilnímu zařízení.
 Odblokovat telefonní čísla | V USA hlasové hovory od Microsoftu pocházely z následujících čísel: + 1 (866) 539 4191, + 1 (855) 330 8653 a + 1 (877) 668 6536.
-Ověřit nastavení týkající se baterie | Zdá se, že na povrchu je trochu lichý. Ale pokud jste nastavili optimalizaci baterie, aby nedošlo ke zbývajícímu aktivnímu používání aplikací na pozadí, váš systém oznámení má pravděpodobně vliv na největší dopad. Pokud se chcete pokusit tento problém vyřešit, vypněte optimalizaci baterie pro aplikaci pro ověřování a aplikaci pro zasílání zpráv. Pak se znovu pokuste přihlásit ke svému účtu.
-Zakázat aplikace zabezpečení třetích stran | Některé aplikace pro zabezpečení telefonů blokují textové zprávy a telefonní hovory od neznámých neznámých volajících. Takové aplikace můžou zabránit vašemu telefonu v přijímání ověřovacího kódu. Zkuste zakázat jakékoli aplikace zabezpečení třetích stran na telefonu a potom požádat o odeslání dalšího ověřovacího kódu.
+Ověřit nastavení týkající se baterie | Pokud jste nastavili optimalizaci baterie, aby nedošlo ke zbývajícímu aktivnímu používání aplikací na pozadí, je pravděpodobné, že váš systém oznámení byl ovlivněn. Zkuste vypnout optimalizaci baterie pro vaši aplikaci pro ověřování a aplikaci pro zasílání zpráv. Pak se znovu pokuste přihlásit ke svému účtu.
+Zakázat aplikace zabezpečení třetích stran | Některé aplikace pro zabezpečení telefonů blokují textové zprávy a telefonní hovory od neznámých neznámých volajících. Aplikace zabezpečení může vašemu telefonu zabránit v příjmu ověřovacího kódu. Zkuste zakázat jakékoli aplikace zabezpečení třetích stran na telefonu a potom požádat o odeslání dalšího ověřovacího kódu.
 
 ## <a name="im-not-being-prompted-for-my-second-verification-information"></a>Nezobrazuje se mi výzva k zadání informací o druhé kontrole
 
 Přihlašujete se ke svému pracovnímu nebo školnímu účtu pomocí svého uživatelského jména a hesla. Dál byste měli být vyzváni k zadání dalších informací o ověření zabezpečení. Pokud se vám nezobrazí výzva, možná jste ještě nevytvořili své zařízení. Mobilní zařízení musí být nastavené tak, aby fungovalo s konkrétní další metodou ověřování zabezpečení.
 
-Pokud chcete zajistit, aby bylo vaše mobilní zařízení zapnuté a dostupné, přečtěte si článek [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md) . Pokud víte, že jste zařízení nebo účet nevytvořili, můžete to udělat hned podle kroků v článku [Nastavení účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
+Možná jste ještě nevytvořili vaše zařízení. Mobilní zařízení musí být nastavené tak, aby fungovalo s konkrétní další metodou ověřování zabezpečení. Postup, jak nastavit, aby vaše mobilní zařízení bylo k dispozici pro vaši metodu ověřování, najdete v tématu [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md). Pokud víte, že jste ještě nenastavili vaše zařízení nebo účet, můžete postupovat podle kroků v článku [Nastavení účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
 ## <a name="i-have-a-new-phone-number-and-i-want-to-add-it"></a>Mám nové telefonní číslo a chci ho přidat
 
@@ -95,13 +104,13 @@ Pokud máte nové mobilní zařízení, budete ho muset nastavit na práci se dv
 
 Volitelné kroky:
 
-- Nainstalujte aplikaci Microsoft Authenticator a nastavte ji na svém mobilním zařízení. Nainstalujte podle kroků uvedených v článku [Stažení a instalace aplikace Microsoft Authenticator](user-help-auth-app-download-install.md) .
+- Nainstalujte aplikaci Microsoft Authenticator na mobilní zařízení podle kroků v článku [Stažení a instalace Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
 
-- Pro důvěryhodná zařízení zapněte dvojúrovňové ověřování (2FV). Zapněte 2FV podle postupu v části **Zapnutí dvou dotazů ověřování v části důvěryhodné zařízení v** článku [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
+- Pro důvěryhodná zařízení zapněte dvojúrovňové ověřování pomocí postupu v části **Zapnutí dvojúrovňového ověřování v části důvěryhodné zařízení v** článku [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Mám problémy s přihlášením na mobilním zařízení během cestování
 
-V rámci mezinárodního umístění může být obtížnější použít metodu ověřování související s mobilním zařízením, jako je textové zasílání zpráv. Je také možné, že vaše mobilní zařízení vám může způsobit poplatky za roaming. Pro tuto situaci doporučujeme používat aplikaci Microsoft Authenticator s možností připojení k Wi-Fi hotspotu. Další informace o tom, jak nastavit Microsoft Authenticator aplikaci na mobilním zařízení, najdete v článku o [Stažení a instalaci Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
+V rámci mezinárodního umístění může být obtížnější použít metodu ověřování související s mobilním zařízením, jako je textové zasílání zpráv. Je také možné, že vaše mobilní zařízení vám může způsobit poplatky za roaming. Pro tuto situaci doporučujeme, abyste používali aplikaci Microsoft Authenticator s možností připojení k Wi-Fi aktivnímu bodu. Další informace o tom, jak nastavit Microsoft Authenticator aplikaci na mobilním zařízení, najdete v článku o [Stažení a instalaci Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Nejde mi získat hesla k aplikacím
 

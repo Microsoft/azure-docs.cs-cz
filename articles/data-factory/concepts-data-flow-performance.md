@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 03/15/2021
+ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212029"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561681"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -53,7 +53,7 @@ Po zjištění kritického bodu toku dat můžete zvýšit výkon pomocí níže
 
 Karta **optimalizace** obsahuje nastavení pro konfiguraci schématu dělení clusteru Spark. Tato karta existuje v každé transformaci toku dat a určuje, zda chcete znovu rozdělit data **po** dokončení transformace. Úpravy dělení poskytují kontrolu nad distribucí vašich dat mezi výpočetními uzly a optimalizací dat, které mohou mít jak pozitivní, tak negativní dopad na celkový výkon toku dat.
 
-![Optimalizace](media/data-flow/optimize.png "Optimalizace")
+![Snímek obrazovky zobrazuje kartu optimalizace, která zahrnuje možnost oddílu, typ oddílu a počet oddílů.](media/data-flow/optimize.png)
 
 Ve výchozím nastavení je vybrána *možnost použít aktuální rozdělení do oddílů* , která určuje, Azure Data Factory zachovat aktuální výstupní oddíl transformace. Při změně rozdělení dat do oddílů se ve většině scénářů doporučuje *použít aktuální dělení* . Scénáře, ve kterých můžete chtít znovu rozdělit data, patří po agregacích a spojeních, které významně zkosí vaše data nebo využívají zdrojové oddíly databáze SQL.
 
@@ -86,6 +86,12 @@ Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření o
 
 > [!TIP]
 > Ruční nastavení schématu dělení přesadí data a může kompenzovat výhody Optimalizátoru Sparku. Osvědčeným postupem je nenastavit oddíly ručně, pokud nepotřebujete.
+
+## <a name="logging-level"></a>Úroveň protokolování
+
+Pokud nepotřebujete, aby každé spuštění kanálu pro aktivity toku dat plně protokoloval všechny protokoly telemetrie, můžete nastavit úroveň protokolování na "Basic" nebo "none". Při provádění datových toků v režimu "Verbose" (výchozí) požadujete při transformaci dat na úrovni služby ADF úplný protokol aktivity na jednotlivých úrovních jednotlivých oddílů. To může být náročná operace, takže jenom při řešení potíží můžete zlepšit celkový tok dat a výkon kanálu. Režim "základní" bude pouze dobu trvání transformace protokolu, zatímco možnost None bude obsahovat pouze souhrn dob trvání.
+
+![Úroveň protokolování](media/data-flow/logging.png "Nastavit úroveň protokolování")
 
 ## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> Optimalizace Azure Integration Runtime
 
@@ -126,7 +132,7 @@ Ceny datových toků se účtují za Vcore, což znamená, že do této funkce p
 
 ### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
 
-Ve výchozím nastavení každá aktivita toku dat natočí nový cluster na základě konfigurace IR. Doba spuštění clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude znovu použit stávající cluster a čas spuštění bude v sekundách, nikoli v minutách. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
+Ve výchozím nastavení každá aktivita toku dat natočí nový cluster na základě konfigurace IR. Doba spuštění clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude se výrazně snižovat i po opětovném spuštění stávajícího clusteru. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
 
 V jednom clusteru může běžet jenom jedna úloha. Pokud je k dispozici cluster, ale dva toky dat se spustí, použije se živý cluster jenom s jedním. Druhá úloha si vytočí svůj vlastní izolovaný cluster.
 
@@ -155,7 +161,7 @@ Azure SQL Database má jedinečnou možnost dělení s názvem source partitioni
 
 #### <a name="isolation-level"></a>Úroveň izolace
 
-Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
+Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](/sql/connect/jdbc/understanding-isolation-levels).
 
 #### <a name="read-using-query"></a>Číst pomocí dotazu
 
@@ -163,7 +169,7 @@ Můžete číst z Azure SQL Database pomocí tabulky nebo dotazu SQL. Pokud spou
 
 ### <a name="azure-synapse-analytics-sources"></a>Zdroje analýzy Azure synapse
 
-Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse s využitím [základny](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15), která významně zlepšuje výkon při čtení. Při povolení podkladu je potřeba zadat Blob Storage služby Azure nebo Azure Data Lake Storage Gen2 pracovní umístění v nastavení aktivity toku dat.
+Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse pomocí ```Staging``` , což významně zvyšuje výkon při čtení. Povolení ```Staging``` vyžaduje, abyste v nastavení aktivity toku dat zadali BLOB Storage služby Azure nebo pracovní umístění Azure Data Lake Storage Gen2.
 
 ![Zapnout pracovní režim](media/data-flow/enable-staging.png "Zapnout pracovní režim")
 
@@ -173,15 +179,19 @@ Zatímco datové toky podporují různé typy souborů, Azure Data Factory dopor
 
 Pokud používáte stejný tok dat v sadě souborů, doporučujeme číst ze složky, pomocí zástupných cest nebo číst ze seznamu souborů. Spuštění jedné aktivity toku dat může zpracovat všechny vaše soubory ve službě Batch. Další informace o tom, jak tato nastavení nastavit, najdete v dokumentaci konektoru, jako je například [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
 
-Pokud je to možné, vyhněte se použití aktivity for-each ke spouštění datových toků v sadě souborů. Tím dojde k tomu, že každá iterace pro každý z nich provede vlastní cluster Spark, který není často nutný a může být nákladný. 
+Pokud je to možné, vyhněte se použití aktivity For-Each ke spouštění toků dat v sadě souborů. Tím dojde k tomu, že každá iterace pro každý z nich provede vlastní cluster Spark, který není často nutný a může být nákladný. 
 
-## <a name="optimizing-sinks"></a>Optimalizace jímky
+## <a name="optimizing-sinks"></a>Optimalizace jímek
 
 Při zapisování toků dat do jímky dojde k jakémukoli vlastnímu dělení hned před zápisem. Podobně jako u zdroje se ve většině případů doporučuje používat jako možnost vybraný oddíl **aktuální dělení na oddíly** . Dělená data budou zapisovat významně rychlejší než nedělená data, i když vaše cíle není rozdělené do oddílů. Níže jsou uvedeny jednotlivé předpoklady pro různé typy jímky. 
 
 ### <a name="azure-sql-database-sinks"></a>Azure SQL Database jímky
 
 Při použití Azure SQL Database by výchozí dělení mělo fungovat ve většině případů. Je pravděpodobné, že vaše jímka může mít příliš mnoho oddílů pro zpracování vaší databáze SQL. Pokud k tomu dojde, snižte počet oddílů vydaných jímkou SQL Database.
+
+#### <a name="impact-of-error-row-handling-to-performance"></a>Dopad zpracování chybových řádků na výkon
+
+Pokud povolíte zpracování řádků chyb ("pokračovat při chybě") v transformaci jímky, ADF před zápisem kompatibilních řádků do cílové tabulky provede další krok. Tento další krok bude mít malý vliv na výkon, který může být v rozsahu 5% přidaného pro tento krok s dodatečným zvýšením výkonu, pokud nastavíte možnost na také nekompatibilní řádky do souboru protokolu.
 
 #### <a name="disabling-indexes-using-a-sql-script"></a>Zakázání indexů pomocí skriptu SQL
 
@@ -198,7 +208,7 @@ Je možné je nativně provádět pomocí skriptů před a po SQL v rámci služ
 ![Zakázat indexy](media/data-flow/disable-indexes-sql.png "Zakázat indexy")
 
 > [!WARNING]
-> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) .
+> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](/sql/relational-databases/indexes/disable-indexes-and-constraints) .
 
 #### <a name="scaling-up-your-database"></a>Škálování databáze
 
@@ -206,9 +216,9 @@ Naplánujte změnu velikosti zdroje a jímky Azure SQL DB a DW před spuštění
 
 ### <a name="azure-synapse-analytics-sinks"></a>Jímky Azure synapse Analytics
 
-Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. Díky tomu může ADF zapisovat pomocí [základu](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) , který efektivně načte data do hromadného zatížení. Když použijete základnu, budete muset odkazovat na Azure Data Lake Storage Gen2 nebo účet Azure Blob Storage pro přípravu dat.
+Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. To umožňuje ADF zapisovat pomocí [příkazu SQL Copy](/sql/t-sql/statements/copy-into-transact-sql) , který efektivně načítá data hromadně. Při použití přípravy budete muset pro přípravu dat na účet Azure Data Lake Storage Gen2 nebo Azure Blob Storage.
 
-Kromě základu se stejné osvědčené postupy vztahují i na Azure synapse Analytics jako Azure SQL Database.
+Kromě přípravy se stejné osvědčené postupy vztahují i na Azure synapse Analytics jako Azure SQL Database.
 
 ### <a name="file-based-sinks"></a>Jímky založené na souborech 
 
@@ -234,12 +244,11 @@ Pokud sloupec odpovídá způsobu, jakým chcete data výstupovat, můžete vybr
 
 Při psaní do CosmosDB může změna propustnosti a velikosti dávek během provádění toku dat zvýšit výkon. Tyto změny se projeví pouze během spuštění aktivity toku dat a po uzavření se vrátí k původnímu nastavení kolekce. 
 
-**Velikost dávky:** Vypočítá přibližnou velikost řádků dat a ujistěte se, že velikost řádku * velikost dávky je menší než 2 000 000. Pokud je, zvyšte velikost dávky, abyste získali lepší propustnost.
+**Velikost dávky:** Obvykle je výchozí velikost dávky od postačující. Chcete-li tuto hodnotu dále vyladit, vypočítejte hrubou velikost objektu vašich dat a ujistěte se, že velikost objektu * velikost dávky je menší než 2 MB. Pokud je to, můžete zvýšit velikost dávky, abyste získali lepší propustnost.
 
 **Propustnost:** Nastavením vyšší propustnosti zadáte rychlejší zápis dokumentů do CosmosDB. Na základě nastavení vysoké propustnosti mějte na paměti vyšší náklady na RU.
 
 **Rozpočet propustnosti zápisu:** Použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
-
 
 ## <a name="optimizing-transformations"></a>Optimalizace transformací
 
@@ -251,6 +260,8 @@ V spojeních, vyhledávání a existují transformace, pokud je jeden nebo oba d
 
 Pokud je velikost všesměrového data pro uzel Spark příliš velká, může dojít k chybě z důvodu nedostatku paměti. Aby nedošlo k chybám, používejte **paměťově optimalizované** clustery. Pokud při provádění toku dat dojde k vypršení časového limitu všesměrového vysílání, můžete vypnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat.
 
+Při práci se zdroji dat, které mohou trvat delší dobu dotazování, jako jsou velké databázové dotazy, se doporučuje vypnout všesměrové vysílání pro spojení. Zdroj s dlouhými časy dotazů může při pokusu clusteru o všesměrové vysílání do výpočetních uzlů způsobit vypršení časových limitů Sparku. Další dobrou volbou pro vypnutí všesměrového vysílání je, že pokud máte datový proud ve vašem toku dat, který je agregací hodnot pro použití v transformaci vyhledávání později. Tento model může Zaměňujte Optimalizátor Spark a způsobit vypršení časových limitů.
+
 ![Optimalizace transformace JOIN](media/data-flow/joinoptimize.png "Spojit optimalizaci")
 
 #### <a name="cross-joins"></a>Vzájemné spojení
@@ -260,6 +271,10 @@ Pokud ve svých podmínkách připojení používáte literálové hodnoty nebo 
 #### <a name="sorting-before-joins"></a>Řazení před spojením
 
 Na rozdíl od sloučení slučovacích nástrojů v nástrojích, jako je SSIS, transformace spojení není povinná operace sloučení spojení. Klíče JOIN nevyžadují řazení před transformací. Tým Azure Data Factory v mapování toků dat nedoporučuje používat transformace řazení.
+
+### <a name="window-transformation-performance"></a>Výkon transformace okna
+
+[Okno transformuje](data-flow-window.md) data podle hodnoty ve sloupcích, které jste vybrali jako součást ```over()``` klauzule v nastavení transformace. K dispozici je řada velmi oblíbených agregačních a analytických funkcí, které jsou k dispozici v transformačním programu Windows. Pokud má ale váš případ použití pro účely hodnocení nebo čísla řádku generovat okno pro celou datovou sadu ```rank()``` ```rowNumber()``` , doporučuje se místo toho použít [transformaci pořadí](data-flow-rank.md) a [transformaci náhradního klíče](data-flow-surrogate-key.md). Tyto transformace budou pomocí těchto funkcí lépe opakovat úplné operace s datovou sadou.
 
 ### <a name="repartitioning-skewed-data"></a>Přerozdělení zkosených dat
 
@@ -296,6 +311,14 @@ Spuštění úloh postupně bude trvat delší dobu, než se provede celý konec
 ### <a name="overloading-a-single-data-flow"></a>Přetížení jednoho toku dat
 
 Pokud vložíte veškerou logiku do jediného toku dat, ADF spustí v rámci jedné instance Spark celou úlohu. I když se to může zdát jako způsob, jak snížit náklady, kombinuje dohromady různé logické toky a může být obtížné monitorovat a ladit. V případě selhání jedné součásti dojde také k selhání všech ostatních částí úlohy. Tým Azure Data Factory doporučuje organizovat toky dat nezávisle na obchodní logice. Pokud se tok dat příliš rozsáhlý, rozdělí se na samostatné komponenty a zjednoduší se monitorování a ladění. I když neexistují žádné pevné omezení počtu transformací v toku dat, což má příliš mnoho, bude úloha složitá.
+
+### <a name="execute-sinks-in-parallel"></a>Paralelní spouštění jímky
+
+Výchozím chováním jímky toku dat je spuštění každé jímky postupně, sériového způsobu a selhání toku dat, když dojde k chybě v jímky. Kromě toho jsou všechny jímky nastavené na stejnou skupinu, pokud nepřejdete do vlastností toku dat a nakonfigurujete jiné priority pro jímky.
+
+Datové toky umožňují seskupovat jímky do skupin z karty vlastnosti toku dat v Návrháři uživatelského rozhraní. Můžete nastavovat pořadí spouštění vašich umyvadel i seskupovat jímky pomocí stejného čísla skupiny. Aby bylo možné spravovat skupiny, můžete položit automatickým ADF, aby spouštěla jímky ve stejné skupině, aby běžela paralelně.
+
+Na aktivitě spustit tok dat v kanálu v části vlastnosti jímky je možnost zapnout paralelní načítání jímky. Pokud povolíte možnost spustit paralelně, dáváte jim pokyn k zápisu toků dat do propojených umyvadel současně, nikoli sekvenčním způsobem. Aby bylo možné využít paralelní možnost, musí být jímky seskupeny dohromady a připojeny ke stejnému datovému proudu prostřednictvím nové větve nebo podmíněného rozdělení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,19 +10,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 709efa3fb4f85ab5d0c3d345fd9a5ceada274459
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f89bdbfd144fb327c1daae020a1e371c00045859
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376386"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../overview.md#try-the-speech-service-for-free)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 

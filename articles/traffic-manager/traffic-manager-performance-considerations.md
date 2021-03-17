@@ -3,20 +3,20 @@ title: Požadavky na výkon pro Azure Traffic Manager | Microsoft Docs
 description: Vysvětlení výkonu při Traffic Manager a testování výkonu webu při použití Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5a0de772598877029649f8a985c79e28f5264535
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938538"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186171"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
@@ -50,7 +50,7 @@ Nástroje na těchto webech měří latence DNS a zobrazují přeložené IP adr
 
     Jedním z nejjednodušších nástrojů je WebSitePulse. Zadejte adresu URL pro zobrazení doby překladu DNS, prvního bajtu, posledního bajtu a dalších statistik výkonu. Můžete vybrat ze tří různých testovacích umístění. V tomto příkladu vidíte, že první spuštění ukazuje, že vyhledávání DNS trvá 0,204 s.
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![Snímek obrazovky, který zobrazuje nástroj "WebSitePulse" se zvýrazněným výsledkem hledání "DNS".](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     Vzhledem k tomu, že se výsledky ukládají do mezipaměti, druhý test stejného Traffic Manager koncového bodu, který vyhledávání DNS trvá 0,002 s.
 
@@ -80,7 +80,6 @@ Nástroje na těchto webech měří latence DNS a zobrazují přeložené IP adr
 
 [Test nastavení Traffic Manageru](traffic-manager-testing-settings.md)
 
-[Operace v Traffic Manageru (referenční informace k rozhraní API REST)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Operace v Traffic Manageru (referenční informace k rozhraní API REST)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
-[Rutiny Azure Traffic Manager](https://docs.microsoft.com/powershell/module/az.trafficmanager)
-
+[Rutiny Azure Traffic Manager](/powershell/module/az.trafficmanager)

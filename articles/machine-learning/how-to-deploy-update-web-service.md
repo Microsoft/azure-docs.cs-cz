@@ -1,32 +1,37 @@
 ---
-title: Aktualizace nasazené webové služby
-author: gvashishtha
+title: Aktualizovat webové služby
+titleSuffix: Azure Machine Learning
+description: Naučte se aktualizovat webovou službu, která je už nasazená v Azure Machine Learning. Můžete aktualizovat nastavení, jako je model, prostředí a vstupní skript.
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.reviewer: larryfr
 ms.author: gopalv
-ms.openlocfilehash: 66c53c7485041ec9abaf72396efcfa3325a13732
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+author: gvashishtha
+ms.date: 07/31/2020
+ms.custom: deploy
+ms.openlocfilehash: da018f212844e1587ad0e434902e49765f72e521
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799902"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520092"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualizace nasazené webové služby
 
-V tomto článku se dozvíte, jak nasadit webovou službu nasazenou s Azure Machine Learning.
+V tomto článku se dozvíte, jak aktualizovat webovou službu nasazenou pomocí Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste už nasadili webovou službu pomocí Azure Machine Learning. Pokud potřebujete zjistit, jak nasadit webovou službu, [postupujte podle těchto kroků](how-to-deploy-and-where.md).
 
 ## <a name="update-web-service"></a>Aktualizace webové služby
 
-K aktualizaci webové služby použijte `update` metodu. Webovou službu můžete aktualizovat tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace najdete v dokumentaci ke službě [WebService. Update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
+K aktualizaci webové služby použijte `update` metodu. Webovou službu můžete aktualizovat tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace najdete v dokumentaci ke službě [WebService. Update](/python/api/azureml-core/azureml.core.webservice.webservice.webservice#update--args-).
 
-Viz [Metoda aktualizace služby AKS.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#update-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
+Viz [Metoda aktualizace služby AKS.](/python/api/azureml-core/azureml.core.webservice.akswebservice#update-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
 
-Viz [Metoda aktualizace služby ACI.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#update-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
+Viz [Metoda aktualizace služby ACI.](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice#update-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
 
 > [!IMPORTANT]
 > Když vytváříte novou verzi modelu, je nutné ručně aktualizovat každou službu, kterou chcete použít.
@@ -62,6 +67,7 @@ service = Webservice(name=service_name, workspace=ws)
 
 # Update to new model(s).
 service.update(models=[new_model], inference_config=inference_config)
+service.wait_for_deployment(show_output=True)
 print(service.state)
 print(service.get_logs())
 ```
@@ -78,9 +84,9 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > V tomto příkladu se k předání informací o modelu z příkazu k registraci do příkazu Update používá dokument JSON.
 >
-> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej s `ic` parametrem.
+> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](./reference-azure-machine-learning-cli.md#inference-configuration-schema) a zadejte jej s `ic` parametrem.
 
-Další informace najdete v dokumentaci [AZ ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) .
+Další informace najdete v dokumentaci [AZ ml Service Update](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-update) .
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -88,7 +94,7 @@ Další informace najdete v dokumentaci [AZ ml Service Update](https://docs.micr
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

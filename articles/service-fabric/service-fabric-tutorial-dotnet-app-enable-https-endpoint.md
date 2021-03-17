@@ -3,13 +3,13 @@ title: Přidání koncového bodu HTTPS pomocí Kestrel
 description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET Core využívající Kestrel přidat koncový bod HTTPS a nasadit tuto aplikaci do clusteru.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: b9e1800d07d418ff385f2c5e7af112b170e3fd44
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780194"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326231"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -36,7 +36,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -152,8 +152,8 @@ serviceContext =>
 
 Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  
 
-Pokud jste&lt;vytvořili&gt;certifikát podepsaný svým držitelem pomocí předchozího příkazu prostředí PowerShell, nahraďte "your_CN_value" pomocí "mytestcert", nebo použijte CN certifikátu.
-Pamatujte na to, že v případě místního nasazení `localhost` je vhodnější použít "CN = localhost", aby nedocházelo k výjimkám ověřování.
+&lt; &gt; Pokud jste vytvořili certifikát podepsaný svým držitelem pomocí předchozího příkazu prostředí PowerShell, nahraďte "your_CN_value" pomocí "mytestcert", nebo použijte CN certifikátu.
+Pamatujte na to, že v případě místního nasazení je `localhost` vhodnější použít "CN = localhost", aby nedocházelo k výjimkám ověřování.
 
 ```csharp
 private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
@@ -238,7 +238,7 @@ V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifes
 
 Pokud chcete spustit PowerShell z bodu **SetupEntryPoint**, můžete spustit PowerShell.exe v dávkovém souboru odkazujícím na soubor PowerShellu. Nejprve do projektu služby přidejte dávkový soubor.  V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb**, vyberte **Přidat**->**Nová položka** a přidejte nový soubor Setup.bat.  Upravte soubor *Setup.bat* a přidejte následující příkaz:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
@@ -348,19 +348,19 @@ Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **
 </ApplicationManifest>
 ```
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-the-application-locally"></a>Aplikaci spustíte místně.
 
-V Průzkumník řešení vyberte **hlasovací** aplikaci a nastavte vlastnost **Adresa URL aplikace** na https:\//localhost: 443.
+V Průzkumník řešení vyberte **hlasovací** aplikaci a nastavte vlastnost **Adresa URL aplikace** na https: \/ /localhost: 443.
 
-Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se webový prohlížeč otevře v protokolu https:\//localhost: 443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
+Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se webový prohlížeč otevře v protokolu https: \/ /localhost: 443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
-![Hlasovací aplikace][image2]
+![Snímek obrazovky ukázkové aplikace Service Fabric hlasovacího programu běžící v okně prohlížeče https://localhost/ s adresou URL][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Instalace certifikátu na uzlech clusteru
 
 Před nasazením aplikace do Azure nainstalujte certifikát do `Cert:\LocalMachine\My` úložiště všech uzlů vzdáleného clusteru.  Služby se můžou přesunout do různých uzlů clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
 
-Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci Certlm. msc a přejděte k **osobním**>**certifikátům**.  Klikněte pravým tlačítkem na certifikát *mytestcert* a vyberte **všechny úkoly**>**exportovat**.
+Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci Certlm. msc a přejděte k **osobním** > **certifikátům**.  Klikněte pravým tlačítkem na certifikát *mytestcert* a vyberte **všechny úkoly** > **exportovat**.
 
 ![Export certifikátu][image4]
 
@@ -371,7 +371,7 @@ V dalším kroku nainstalujte certifikát na vzdálený cluster pomocí [těchto
 > [!Warning]
 > Certifikát podepsaný svým držitelem je dostačující pro vývoj a testování aplikací. Pro produkční aplikace místo certifikátu podepsaného svým držitelem používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority).
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Otevřete port 443 ve službě Azure Load Balancer a virtuální síť.
 
 Pokud ještě není otevřený, otevřete port 443 v nástroji pro vyrovnávání zatížení.
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
+Proveďte stejnou pro přidruženou virtuální síť.
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
+## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace do Azure
 
 Uložte všechny soubory, přepněte z režimu Ladění do Vydání a stisknutím klávesy F6 znovu spusťte sestavení.  V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Vyberte koncový bod připojení clusteru vytvořeného v tématu [Nasazení aplikace do clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md) nebo vyberte jiný cluster.  Kliknutím na **Publikovat** publikujte aplikaci do vzdáleného clusteru.
 
 Po nasazení aplikace otevřete webový prohlížeč a přejděte na adresu `https://mycluster.region.cloudapp.azure.com:443` (v adrese URL aktualizujte koncový bod připojení pro váš cluster). Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
-![Hlasovací aplikace][image3]
+![Snímek obrazovky ukázkové aplikace Service Fabric hlasovacího programu běžící v okně prohlížeče https://mycluster.region.cloudapp.azure.com:443 s adresou URL][image3]
 
 ## <a name="next-steps"></a>Další kroky
 

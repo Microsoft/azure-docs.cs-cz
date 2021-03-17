@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 914858471432979e5516a1f075ed4fcbb8061a5d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543835"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181845"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Kurz: Integrujte konzolu cloudové infrastruktury Oracle pomocí Azure Active Directory
 
@@ -26,9 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat konzolu cloudové infrastruktury Oracl
 * Umožněte uživatelům, aby se automaticky přihlásili ke konzole cloudové infrastruktury Oracle pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,24 +38,23 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Konzola cloudové infrastruktury Oracle **podporuje jednotné** přihlašování.
-* Po nakonfigurování konzoly cloudové infrastruktury Oracle můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Přidání konzoly cloudové infrastruktury Oracle z Galerie
 
 Pokud chcete nakonfigurovat integraci konzoly cloudové infrastruktury Oracle do služby Azure AD, musíte přidat konzolu cloudové infrastruktury Oracle z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Oracle Cloud infrastruktura konzola** .
 1. Vyberte z panelu výsledků položku **Konzola cloudová infrastruktura Oracle** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí konzoly pro cloudovou infrastrukturu Oracle pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v konzole pro cloudovou infrastrukturu Oracle.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí konzoly cloudové infrastruktury Oracle, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí konzoly cloudové infrastruktury Oracle, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -70,9 +67,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **konzoly cloudová infrastruktura Oracle** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikace **konzoly cloudová infrastruktura Oracle** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -93,15 +90,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
       Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
-      > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory pro klienta podpory Oracle Cloud Infrastructure](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+      > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. Pokud chcete získat hodnotu, obraťte se na [tým podpory pro klienta podpory Oracle Cloud Infrastructure](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. Aplikace konzoly cloudové infrastruktury Oracle očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-   ![image](common/edit-attribute.png)
+   ![image1](common/edit-attribute.png)
 
 1. Kromě toho očekává aplikace konzoly cloudové infrastruktury Oracle u odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
@@ -111,9 +108,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
  
    1. Klikněte na **Uložit**.
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![image2](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![image3](./media/oracle-cloud-tutorial/config11.png)
 
    1. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
@@ -129,42 +126,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    1. Klikněte na **Uložit**.
 
-      ![image](./media/oracle-cloud-tutorial/config08.png)
+      ![image4](./media/oracle-cloud-tutorial/config08.png)
 
 1. V části **nastavení konzoly cloudové infrastruktury Oracle** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B. Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B. Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup ke konzole cloudové infrastruktury Oracle.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **Oracle Cloud infrastruktura konzoly**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-   ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-oracle-cloud-infrastructure-console"></a>Konfigurace konzoly pro cloudovou infrastrukturu Oracle
@@ -173,29 +162,29 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Klikněte na levou stranu nabídky, klikněte na **Identita** a pak přejděte na **federace**.
 
-   ![Konfigurace](./media/oracle-cloud-tutorial/config01.png)
+   ![Configuration1](./media/oracle-cloud-tutorial/config01.png)
 
 1. Uložte **soubor metadat poskytovatele služby** kliknutím na odkaz **stáhnout tento dokument** a nahrajte ho do části **základní konfigurace SAML** v Azure Portal a pak klikněte na **Přidat zprostředkovatele identity**.
 
-   ![Konfigurace](./media/oracle-cloud-tutorial/config02.png)
+   ![Configuration2](./media/oracle-cloud-tutorial/config02.png)
 
 1. V místní nabídce **Přidat zprostředkovatele identity** proveďte následující kroky:
 
-   ![Konfigurace](./media/oracle-cloud-tutorial/config03.png)
+   ![Configuration3](./media/oracle-cloud-tutorial/config03.png)
 
    1. Do textového pole **název** zadejte své jméno.
 
    1. Do textového pole **Popis** zadejte svůj popis.
 
-   1. Jako **typ**vyberte **poskytovatele identity služby AD FS (Active Directory Federation Service) nebo SAML 2,0** .
+   1. Jako **typ** vyberte **poskytovatele identity služby AD FS (Active Directory Federation Service) nebo SAML 2,0** .
 
    1. Klikněte na tlačítko **Procházet** a nahrajte XML federačních metadat, které jste stáhli z Azure Portal.
 
    1. Klikněte na **pokračovat** a v části **Upravit zprostředkovatele identity** proveďte následující kroky:
 
-      ![Konfigurace](./media/oracle-cloud-tutorial/config09.png)
+      ![Configuration4](./media/oracle-cloud-tutorial/configure-09.png)
 
-   1. **Skupina zprostředkovatelů identity** by měla být vybraná jako vlastní skupina. ID skupiny by mělo být identifikátor GUID skupiny z Azure Active Directory. Skupina musí být namapována s odpovídající skupinou v poli **skupiny rozhraní OCI** .
+   1. **Skupina zprostředkovatelů identity** by měla být vybraná jako ID objektu skupiny Azure AD. ID skupiny by mělo být identifikátor GUID skupiny z Azure Active Directory. Skupina musí být namapována s odpovídající skupinou v poli **skupiny rozhraní OCI** .
 
    1. Můžete mapovat více skupin podle vašich nastavení v Azure Portal a potřebnou organizaci. Kliknutím na **+ Přidat mapování** přidejte libovolný počet skupin, kolik potřebujete.
 
@@ -207,16 +196,10 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ### <a name="test-sso"></a>Test SSO
 
-Když vyberete dlaždici konzoly cloudové infrastruktury Oracle na přístupovém panelu, budete přesměrováni na přihlašovací stránku ke konzole cloudové infrastruktury Oracle. V rozevírací nabídce vyberte **poskytovatele identity** a přihlaste se kliknutím na tlačítko **pokračovat** , jak je uvedeno níže. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete dlaždici konzoly cloudové infrastruktury Oracle na přístupovém panelu, budete přesměrováni na přihlašovací stránku ke konzole cloudové infrastruktury Oracle. V rozevírací nabídce vyberte **poskytovatele identity** a přihlaste se kliknutím na tlačítko **pokračovat** , jak je uvedeno níže. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ![Konfigurace](./media/oracle-cloud-tutorial/config10.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="next-steps"></a>Další kroky
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Jak chránit konzolu cloudové infrastruktury Oracle s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování konzoly cloudové infrastruktury Oracle můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

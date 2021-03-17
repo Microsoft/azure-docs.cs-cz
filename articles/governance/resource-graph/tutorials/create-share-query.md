@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
-ms.date: 06/29/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005186"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916675"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
@@ -46,7 +46,7 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
 
    Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os).
 
-1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz**a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
+1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz** a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
 
 1. Přesuňte se z Průzkumníka grafu prostředků Azure do Azure Portal a vraťte se k němu. Všimněte si, že uložený dotaz již není zobrazen a karta **dotazu 1** vrátila hodnotu.
 
@@ -60,8 +60,7 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
 
 ## <a name="create-a-shared-query"></a>Vytvořit sdílený dotaz
 
-Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uloží do skupiny prostředků, dá se spravovat a řídit pomocí Azure RBAC a může být i chráněný pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění.
-Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
+Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uloží do skupiny prostředků, dá se spravovat a řídit pomocí Azure RBAC a může být i chráněný pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění. Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
 
 1. V nabídce portálu vyberte **všechny služby**, nebo pomocí pole Azure Search v horní části všech stránek vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
@@ -83,7 +82,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
 
 1. V podokně **Uložit dotaz** zadejte **počet virtuálních počítačů podle operačního systému** pro název.
 
-1. Změňte typ na **Shared Query**, nastavte popis na **počet virtuálních počítačů podle typu operačního systému**a nastavte **předplatné** tak, aby určovalo vytvoření prostředku dotazu.
+1. Změňte typ na **Shared Query**, nastavte popis na **počet virtuálních počítačů podle typu operačního systému** a nastavte **předplatné** tak, aby určovalo vytvoření prostředku dotazu.
 
 1. Nechejte zaškrtnuté políčko **publikovat do skupiny prostředků dotazy Resource-Graph-** a **umístění skupiny prostředků** nastavené na **(US) středozápadní USA**.
 
@@ -107,7 +106,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
 
 Vzhledem k tomu, že sdílený dotaz je prostředek Správce prostředků, existuje několik způsobů, jak ho najít:
 
-- V Průzkumníku grafu prostředků vyberte **Otevřít dotaz** a nastavte typ na **Shared Query**.
+- Z Průzkumníka grafu prostředků. Vyberte **Otevřít dotaz** a nastavte typ na **Shared Query**.
 - Na stránce portálu dotazy grafu prostředků.
 - Ze skupiny prostředků, do které byl uložen sdílený dotaz.
 - Pomocí dotazu do grafu prostředků.

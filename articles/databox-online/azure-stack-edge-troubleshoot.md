@@ -1,23 +1,23 @@
 ---
-title: Použití Azure Portal k řešení potíží s Azure Stack Edge | Microsoft Docs
-description: Naučte se řešit problémy s Azure Stack hraničními počítači. Můžete spustit diagnostiku, shromažďovat informace pro podporu a k řešení potíží používat protokoly.
+title: Použijte Azure Portal k řešení potíží s Azure Stack Edge pro | Microsoft Docs
+description: Naučte se řešit problémy s Azure Stack Edge pro. Můžete spustit diagnostiku, shromažďovat informace pro podporu a k řešení potíží používat protokoly.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ff6d1f46299875354a72a6a93a828df7960169ad
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134560"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831534"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Řešení potíží s Azure Stack Edge
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Řešení potíží s Azure Stack Edge pro
 
-Tento článek popisuje, jak řešit problémy na Azure Stack hraničních zařízeních. 
+Tento článek popisuje, jak řešit problémy s Azure Stack Edge pro. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -26,6 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Spuštění diagnostiky
 > * Shromáždění balíčku pro podporu
 > * Použití protokolů k řešení potíží
+> * Řešení chyb IoT Edge
 
 ## <a name="run-diagnostics"></a>Spuštění diagnostiky
 
@@ -55,7 +56,7 @@ Pokud chcete balíček pro podporu vyzvednout, proveďte následující kroky.
 
 2. Po vytvoření balíčku pro podporu vyberte **Stáhnout balíček pro podporu**. Komprimovaný balíček se stáhne do vámi vybrané cesty. Balíček můžete rozbalit a zobrazit soubory systémového protokolu.
 
-    ![Přidání uživatele kliknutím](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
+    ![Klikněte na Přidat uživatele 2.](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Použití protokolů k řešení potíží
 
@@ -65,7 +66,7 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 
       ![Připojení a zobrazení obsahu sdílení](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Vyberte _složku Microsoft Azure Stack Edge_. Tato složka obsahuje dvě podsložky:
+2. Vyberte _složku Microsoft Azure Stack Edge pro_. Tato složka obsahuje dvě podsložky:
 
     * Složku nahrávání, která obsahuje soubory protokolů s chybami nahrávání.
     * Složku aktualizací s chybami, ke kterým došlo během aktualizace.
@@ -82,6 +83,10 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
+## <a name="troubleshoot-iot-edge-errors"></a>Řešení chyb IoT Edge
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [známých potížích v této verzi](data-box-gateway-release-notes.md).
+* Další informace o [známých potížích v této verzi](../databox-gateway/data-box-gateway-release-notes.md).

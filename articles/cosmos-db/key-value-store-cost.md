@@ -3,20 +3,22 @@ title: Poplatky za jednotky žádosti pro Azure Cosmos DB jako úložiště hodn
 description: Přečtěte si o nákladech jednotky žádosti Azure Cosmos DB pro jednoduché operace zápisu a čtení, když se používají jako úložiště klíč/hodnota.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9354ae0a22ef2e8ab4ee6a57563d3f3c4c8e4547
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262816"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339294"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB jako úložiště hodnot klíčů – přehled nákladů
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů, která umožňuje snadnou tvorbu vysoce dostupných a rozsáhlých aplikací ve velkém měřítku. Ve výchozím nastavení Azure Cosmos DB automaticky a efektivně indexovat všechna data, která ingestují. To umožňuje rychlé a konzistentní dotazy [SQL](how-to-sql-query.md) (a [JavaScript](stored-procedures-triggers-udfs.md)) na data. 
+Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů, která umožňuje snadnou tvorbu vysoce dostupných a rozsáhlých aplikací ve velkém měřítku. Ve výchozím nastavení Azure Cosmos DB automaticky a efektivně indexovat všechna data, která ingestují. To umožňuje rychlé a konzistentní dotazy [SQL](./sql-query-getting-started.md) (a [JavaScript](stored-procedures-triggers-udfs.md)) na data. 
 
 Tento článek popisuje náklady na Azure Cosmos DB pro jednoduché operace zápisu a čtení, když se používají jako úložiště klíčů a hodnot. Mezi operace zápisu patří vložení, nahrazení, odstranění a upsertuje datových položek. Kromě zaručení smlouvy SLA 99,999% dostupnosti pro všechny účty ve více oblastech Azure Cosmos DB nabízí zaručenou <ou latenci pro čtení a zápisy (indexovaných) na 99 percentil. 
 
@@ -48,4 +50,3 @@ Většina základního objektu BLOB nebo objekt ukládá služby poplatek $0,40 
 ## <a name="next-steps"></a>Další kroky
 
 * K odhadu propustnosti vašich úloh použijte [kalkulačku ru](https://cosmos.azure.com/capacitycalculator/) .
-

@@ -3,21 +3,23 @@ title: Škálování Azure Cosmos DB podle plánu pomocí Azure Functions časov
 description: Naučte se škálovat změny v propustnosti v Azure Cosmos DB pomocí PowerShellu a Azure Functions.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c60f3fc6b4ce4a1aead273fedb81e39de697f576
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923651"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339253"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Škálování Azure Cosmos DB propustnosti pomocí triggeru časovače Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Výkon účtu Azure Cosmos vychází z množství zřízené propustnosti vyjádřené v jednotkách žádosti za sekundu (RU/s). Zřizování je druhé členitosti a účtuje se na základě nejvyšších RU/s za hodinu. Tento model zřízené kapacity umožňuje službě poskytovat předvídatelné a konzistentní propustnost, zaručenou nízkou latenci a vysokou dostupnost. Většina produkčních úloh tyto funkce. Ve vývojových a testovacích prostředích, kde se Azure Cosmos DB používá jenom během pracovní doby, si ale můžete horizontální navýšení kapacity škálovat a až do hodin večer po pracovní době škálovat zpátky.
 
-Propustnost můžete nastavit prostřednictvím [šablon Azure Resource Manager](resource-manager-samples.md), [Azure CLI](cli-samples.md)a [PowerShellu](powershell-samples.md)pro Core (SQL) účty rozhraní API nebo pomocí sad SDK pro Azure Cosmos DB konkrétní jazyk. Výhodou použití šablon Správce prostředků, Azure CLI nebo PowerShellu je to, že podporují všechna rozhraní API Azure Cosmos DB modelů.
+Propustnost můžete nastavit prostřednictvím [šablon Azure Resource Manager](./templates-samples-sql.md), [Azure CLI](cli-samples.md)a [PowerShellu](powershell-samples.md)pro Core (SQL) účty rozhraní API nebo pomocí sad SDK pro Azure Cosmos DB konkrétní jazyk. Výhodou použití šablon Správce prostředků, Azure CLI nebo PowerShellu je to, že podporují všechna rozhraní API Azure Cosmos DB modelů.
 
 ## <a name="throughput-scheduler-sample-project"></a>Ukázkový projekt plánovače propustnosti
 

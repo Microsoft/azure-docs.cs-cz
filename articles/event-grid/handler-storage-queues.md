@@ -4,11 +4,11 @@ description: Popisuje, jak můžete používat fronty úložiště Azure jako ob
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105638"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "91270181"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Fronta úložiště jako obslužná rutina události pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovávala události a **Azure Queue Storage** je jednou z nich. 

@@ -3,19 +3,19 @@ title: Podporované verze Kubernetes ve službě Azure Kubernetes Service
 description: Principy zásad podpory a životního cyklu clusterů ve službě Azure Kubernetes (AKS) verze Kubernetes
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475188"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493658"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
-Komunita Kubernetes vydává dílčí verze zhruba každé tři měsíce. Tyto verze obsahují nové funkce a vylepšení. Verze oprav jsou častěji časté (někdy týdně) a jsou určeny pouze pro kritické opravy chyb v dílčí verzi. Tyto verze oprav obsahují opravy chyb zabezpečení nebo hlavní chyby.
+Komunita Kubernetes vydává dílčí verze zhruba každé tři měsíce. Nedávno komunita Kubernetes [zvýšila okno podpory pro každou verzi z 9 měsíců na 12 měsíců](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)počínaje verzí 1,19. Tyto verze obsahují nové funkce a vylepšení. Verze oprav jsou častěji časté (někdy týdně) a jsou určené pro kritické opravy chyb v rámci dílčí verze. Tyto verze oprav obsahují opravy chyb zabezpečení nebo hlavní chyby.
 
 ## <a name="kubernetes-versions"></a>Verze Kubernetes
 
@@ -41,8 +41,8 @@ Uživatelé by se měli snažit spustit nejnovější verzi opravy podverze, kte
 
 AKS definuje obecně dostupnou verzi jako verzi, která je povolená ve všech měřeních SLO nebo SLA, a když je dostupná ve všech oblastech. AKS podporuje tři vedlejší verze GA pro Kubernetes:
 
-* Nejnovější podverze GA vydaná v AKS (na kterou odkazujeme jako N). 
-* Dvě předchozí vedlejší verze. 
+* Nejnovější podverze GA vydaná v AKS (na kterou odkazujeme jako N).
+* Dvě předchozí vedlejší verze.
 * Každá podporovaná dílčí verze také podporuje maximálně dvě (2) stabilní opravy.
 * AKS může podporovat i verze Preview, které jsou explicitně označené a podléhají podmínkám [a ujednáním ve verzi Preview][preview-terms].
 
@@ -106,6 +106,9 @@ V kalendáři vydaných verzí [AKS Kubernetes](#aks-kubernetes-release-calendar
 Pro nové **menší** verze Kubernetes
 1. AKS publikuje před odebráním předem oznámení s plánovaným datem vydání nové verze a vyřazením původní verze v [poznámkách k verzi AKS](https://aka.ms/aks/releasenotes) nejméně 30 dní před odebráním.
 2. AKS zveřejňuje [oznámení o stavu služby](../service-health/service-health-overview.md) dostupné všem uživatelům s přístupem k AKS a portálu a pošle jim e-mail správcům předplatného s plánovanými datem odebrání verze.
+````
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
+````
 3. Odebráním verze na podporu v případě, že uživatelé budou moci pokračovat v poskytování podpory, mají **30 dnů** od odebrání verze k upgradu na podporovanou verzi
 
 Pro nové verze **patch** Kubernetes
@@ -121,7 +124,7 @@ Konkrétní vydané verze oprav se můžou přeskočit nebo se zrychlí v závis
 
 ## <a name="azure-portal-and-cli-versions"></a>Verze Azure Portal a CLI
 
-Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se nastaví jako výchozí v podverzi N-1 a nejnovější oprava. Například pokud AKS podporuje *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e*a *1.15. f*, vybraná výchozí verze je *1.16. c*.
+Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se nastaví jako výchozí v podverzi N-1 a nejnovější oprava. Například pokud AKS podporuje *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e* a *1.15. f*, vybraná výchozí verze je *1.16. c*.
 
 Pokud chcete zjistit, jaké verze jsou aktuálně k dispozici pro vaše předplatné a oblast, použijte příkaz [AZ AKS get-versions][az-aks-get-versions] . Následující příklad uvádí dostupné verze Kubernetes pro oblast *EastUS* :
 
@@ -131,22 +134,28 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes – kalendář vydání
 
-Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kubernetes#History).
+Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
 |  Verze K8s | Verze nadřazeného softwaru  | AKS ve verzi Preview  | AKS GA  | Konec života |
 |--------------|-------------------|--------------|---------|-------------|
-| 1,17  | Dec-09-19  | 19. ledna   | Července 20  | 1,20 GA | 
-| 1,18  | Březen – 23-20  | 20. května   | 20. srpna  | 1,21 GA | 
-| 1,19  | Srpna 04-20  | 20. srpna   | 20. listopadu  | 1,22 GA | 
-| 1.20  | * Listopadu 20    | * Prosinec 20   | * Jan 21  | 1,23 GA | 
+| 1,17  | Dec-09-19  | Leden 2019   | Července 2020  | 1,20 GA | 
+| 1,18  | Březen – 23-20  | Květen 2020   | Srpna 2020  | 1,21 GA | 
+| 1,19  | Srpna 04-20  | SEP 2020   | Listopadu 2020  | 1,22 GA | 
+| 1.20  | DEC-08-20  | Leden 2021   | Březen 2021  | 1,23 GA |
+| 1,21  | Duben – 08-21 * | Květen 2021   | Červen 2021  | 1,24 GA |
 
-\*Čeká na nedokončené odesílání data vydání.
+\* Verze Kubernetes 1,21 pro odesílání nadřazených verzí se může změnit jako nadřazený kalendář, který se ještě dokončuje.
+
 
 ## <a name="faq"></a>Nejčastější dotazy
 
+**Jak často mám očekávat, že upgradují verze Kubernetes, aby zůstaly v podpoře?**
+
+Od Kubernetes 1,19 [vystavila komunita Open Source rozšířenou podporu na 1 rok](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS potvrzení, aby se povolily opravy a podpora s minimálním počtem nadřazených závazků. To znamená, že se od AKS clusterů v 1,19 bude možné upgradovat minimálně jednou ročně, aby zůstala v podporované verzi. U verzí v 1,18 nebo níže je okno podpora ponecháno v 9 měsících, který vyžaduje upgrade jednou za 9 měsíců, aby zůstala v podporované verzi. Důrazně doporučujeme pravidelně testovat nové verze a připravit se na upgrade na novější verze, abyste mohli zachytit nejnovější stabilní vylepšení v rámci Kubernetes.
+
 **Co se stane, když uživatel upgraduje cluster Kubernetes s menší verzí, která se nepodporuje?**
 
-Pokud používáte verzi *n-3* nebo starší, znamená to, že nejste mimo rámec podpory, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze n-3 na n-2 se vrátíte do našich zásad podpory. Příklad:
+Pokud používáte verzi *n-3* nebo starší, znamená to, že nejste mimo rámec podpory, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze n-3 na n-2 se vrátíte do našich zásad podpory. Například:
 
 - Pokud je nejstarší podporovaná verze AKS *1.15.* a a jste na *1.14. b* nebo starší, nejste mimo podporu.
 - Po úspěšném dokončení upgradu z aplikace *1.14. b* na *1.15. a* nebo vyšší se vrátíte do našich zásad podpory.
@@ -173,7 +182,7 @@ Rovina ovládacího prvku musí být v rámci okna verzí ze všech fondů uzlů
 
 Pokud upgradujete podporovaný cluster AKS, nelze podverze Kubernetes vynechat. Například upgrady mezi *1.12. x*  ->  *1.13. x* nebo *1.13. x*  ->  *1.14. x* jsou povoleny, ale *1.12. x*  ->  *1.14. x* není.
 
-Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x*a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
+Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x* a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
 
 Přeskočení více verzí lze provést pouze při upgradu z nepodporované verze zpět do podporované verze. Například upgradujte z nepodporovaného prvku *1.10. x* --> podporovanou *1.15. x* je možné dokončit.
 

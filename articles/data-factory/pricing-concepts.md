@@ -1,21 +1,18 @@
 ---
 title: Seznámení se Azure Data Factory cenami prostřednictvím příkladů
 description: Tento článek vysvětluje a předvádí Azure Data Factory cenový model s podrobnými příklady
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: b9f163a7632ca59d4f97aef21d8d62157610ba73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414946"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372803"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení s cenami služby Data Factory prostřednictvím příkladů
 
@@ -38,9 +35,9 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 
 3. Aktivační událost plánovače, která každou hodinu spustí kanál.
 
-   ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![Diagram znázorňuje kanál s triggerem plánovače. V kanálu aktivity kopírování přechází do vstupní datové sady, která přechází do propojené služby a W S S3 propojená služba a aktivita kopírování také vede do výstupní datové sady, která se přetéká na Azure Storage propojenou službu.](media/pricing-concepts/scenario1.png)
 
-| **Provoz** | **Typy a jednotky** |
+| **Operace** | **Typy a jednotky** |
 | --- | --- |
 | Vytvořit propojenou službu | 2 entita pro čtení a zápis  |
 | Vytvoření datových sad | 4 entity pro čtení a zápis (2 pro vytvoření datové sady, 2 pro odkazované odkazy na službu) |
@@ -48,7 +45,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 2 spuštění aktivit (1 pro spuštění triggeru, 1 pro spuštění aktivit) |
 | Předpoklad Kopírování dat: doba provádění = 10 min | 10 \* 4 Azure Integration runtime (výchozí nastavení diú = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 načetly se záznamy spuštění monitorování (1 pro spuštění kanálu, 1 pro spuštění aktivit). |
 
 **Ceny za celkový scénář: $0,16811**
 
@@ -69,9 +66,9 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 2. Jedna aktivita Azure Databricks pro transformaci dat.
 3. Jedna aktivační událost plánovače každou hodinu spustí kanál.
 
-![Scenario2](media/pricing-concepts/scenario2.png)
+![Diagram znázorňuje kanál s triggerem plánovače. V kanálu aktivity kopírování toků do vstupní datové sady, výstupní datové sady a aktivity datacihly, které běží na Azure Databricks. Vstupní datová sada vede k propojeným službám A W S S3. Výstupní datová sada vede toky do propojené služby Azure Storage.](media/pricing-concepts/scenario2.png)
 
-| **Provoz** | **Typy a jednotky** |
+| **Operace** | **Typy a jednotky** |
 | --- | --- |
 | Vytvořit propojenou službu | 3 entita pro čtení a zápis  |
 | Vytvoření datových sad | 4 entity pro čtení a zápis (2 pro vytvoření datové sady, 2 pro odkazované odkazy na službu) |
@@ -79,7 +76,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 3 spuštění aktivit (1 pro spuštění triggeru, 2 pro spuštění aktivit) |
 | Předpoklad Kopírování dat: doba provádění = 10 min | 10 \* 4 Azure Integration runtime (výchozí nastavení diú = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 3 záznamy o spuštění sledování se opakovaly (1 pro spuštění kanálu, 2 pro spuštění aktivit). |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 3 načtené záznamy běhu monitorování (1 pro běh kanálu, 2 pro spuštění aktivit) |
 | Předpoklad aktivity datacihly: doba provádění = 10 min | 10 minut provádění externí aktivity kanálu |
 
 **Ceny za celkový scénář: $0,16916**
@@ -103,9 +100,9 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 3. Jedna aktivita Azure Databricks pro transformaci dat.
 4. Jedna aktivační událost plánovače každou hodinu spustí kanál.
 
-![Scenario3](media/pricing-concepts/scenario3.png)
+![Diagram znázorňuje kanál s triggerem plánovače. V kanálu aktivity kopírování natéká do vstupní datové sady, výstupní datové sady a aktivity vyhledávání, které se přetokůují do aktivity datacihly, která běží na Azure Databricks. Vstupní datová sada vede k propojeným službám A W S S3. Výstupní datová sada vede toky do propojené služby Azure Storage.](media/pricing-concepts/scenario3.png)
 
-| **Provoz** | **Typy a jednotky** |
+| **Operace** | **Typy a jednotky** |
 | --- | --- |
 | Vytvořit propojenou službu | 3 entita pro čtení a zápis  |
 | Vytvoření datových sad | 4 entity pro čtení a zápis (2 pro vytvoření datové sady, 2 pro odkazované odkazy na službu) |
@@ -113,7 +110,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 4 spuštění aktivit (1 pro spuštění triggeru, 3 pro spuštění aktivit) |
 | Předpoklad Kopírování dat: doba provádění = 10 min | 10 \* 4 Azure Integration runtime (výchozí nastavení diú = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 4 pokus o sledování záznamů o spuštění (1 pro běh kanálu, 3 pro spuštění aktivit) |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 4 načtené záznamy běhu monitorování (1 pro běh kanálu, 3 pro spuštění aktivit) |
 | Spustit předpoklad aktivity vyhledávání: doba provádění = 1 min. | 1 minimální spuštění aktivity kanálu |
 | Předpoklad aktivity datacihly: doba provádění = 10 min | 10 minut provádění externí aktivity kanálu |
 
@@ -130,9 +127,13 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Použití mapování toku dat pro normální pracovní den
 
-Jako inženýr dat zodpovídáte za návrh, sestavování a testování toků dat mapování každý den. Přihlásíte se k uživatelskému rozhraní ADF v ráno a povolíte režim ladění pro toky dat. Výchozí hodnota TTL pro relace ladění je 60 minut. Po dobu 8 hodin budete pracovat v průběhu dne, takže relace ladění nikdy nevyprší. Proto poplatek za den bude:
+Jako inženýr dat zodpovídá Sam za návrh, sestavování a testování toků dat mapování každý den. Protokol Sam se v ráno přihlásí do uživatelského rozhraní ADF a povolí režim ladění pro toky dat. Výchozí hodnota TTL pro relace ladění je 60 minut. Sam funguje během dne po dobu 8 hodin, aby relace ladění nikdy nevypršela. Proto budou poplatky za tento den v Sam:
 
 **8 (hodiny) × 8 (jader optimalizované pro výpočty) × $0,193 = $12,35**
+
+Zároveň se k uživatelskému rozhraní prohlížeče ADF pro profilaci dat a práci s návrhem ETL přihlásí zároveň pracovníka s jiným datovým inženýrem. Chris nefunguje v ADF celý den jako Sam. Pracovník Novák potřebuje použít ladicí program toku dat 1 hodinu během stejné doby a stejný den jako Sam výše. Tyto poplatky se účtují za použití ladění:
+
+**1 (hodina) × 8 (jádra pro obecné účely) × $0,274 = $2,19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformace dat v úložišti objektů BLOB s využitím toků mapování dat
 
@@ -148,7 +149,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 
 4. Aktivační událost plánovače, která každou hodinu spustí kanál.
 
-| **Provoz** | **Typy a jednotky** |
+| **Operace** | **Typy a jednotky** |
 | --- | --- |
 | Vytvořit propojenou službu | 2 entita pro čtení a zápis  |
 | Vytvoření datových sad | 4 entity pro čtení a zápis (2 pro vytvoření datové sady, 2 pro odkazované odkazy na službu) |
@@ -156,7 +157,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 2 spuštění aktivit (1 pro spuštění triggeru, 1 pro spuštění aktivit) |
 | Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 až 10 \* jader obecného výpočetních prostředků s hodnotou TTL z 10 |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 načetly se záznamy spuštění monitorování (1 pro spuštění kanálu, 1 pro spuštění aktivit). |
 
 **Ceny za celkový scénář: $1,4631**
 
@@ -166,6 +167,46 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 - Spuštění orchestrace kanálu &amp; = **$1,463**
   - Spuštění aktivit = 001 \* 2 = 0,002 [1 Run = $1/1000 = 0,001]
   - Aktivity toku dat = $1,461 poměrná hodnota po dobu 20 minut (10 minut doba provádění + 10 minut TTL). $0.274 za hodinu v Azure Integration Runtime se základními výpočetními jádry 16 jader
+
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Integrace dat ve Azure Data Factory spravovaná virtuální síť
+V tomto scénáři chcete odstranit původní soubory na Azure Blob Storage a kopírovat data z Azure SQL Database do Azure Blob Storage. Toto spuštění provedete dvakrát na různých kanálech. Doba provádění těchto dvou kanálů se překrývá.
+![Scenario4 ](media/pricing-concepts/scenario-4.png) Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit dva kanály s následujícími položkami:
+  - Aktivita kanálu – odstranit aktivitu.
+  - Aktivita kopírování se vstupní datovou sadou pro data, která se mají zkopírovat z úložiště objektů BLOB v Azure
+  - Výstupní datová sada pro data v Azure SQL Database.
+  - Časový Trigger pro spuštění kanálu.
+
+
+| **Operace** | **Typy a jednotky** |
+| --- | --- |
+| Vytvořit propojenou službu | 4 entita pro čtení a zápis |
+| Vytvoření datových sad | 8 entit pro čtení a zápis (4 pro vytvoření datové sady, 4 pro odkazy na propojené služby) |
+| Vytvořit kanál | 6 entit pro čtení/zápis (2 pro vytvoření kanálu, 4 pro odkazy na datovou sadu) |
+| Získat kanál | 2 entita pro čtení a zápis |
+| Spustit kanál | 6 spuštění aktivit (2 pro spuštění triggeru, 4 pro spuštění aktivit) |
+| Provést odstranění aktivity: každou dobu běhu = 5 min. Spuštění aktivity odstranit v prvním kanálu je od 10:00 do 10:05 UTC. Provedení aktivity odstranit v druhém kanálu je od 10:02 do 10:07 UTC.|Celkem 7 minut spuštění aktivity kanálu ve spravované virtuální síti Aktivita kanálu podporuje ve spravované virtuální síti až 50 souběžnosti. |
+| Předpoklad Kopírování dat: každá doba provádění = 10 min. Provedení kopírování v prvním kanálu je od 10:06 do 10:15 UTC. Provedení aktivity odstranit v druhém kanálu je od 10:08 do 10:17 UTC. | 10 * 4 Azure Integration Runtime (výchozí nastavení DIÚ = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
+| Předpokládá se sledování kanálu: narazilo se jenom na 2 běhy. | 6 načtených záznamů sledovacích běhů (2 pro běh kanálu, 4 pro spuštění aktivit) |
+
+
+**Ceny za celkový scénář: $0,45523**
+
+- Operace Data Factory = $0,00023
+  - Čtení/zápis = 20 * 00001 = $0,0002 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorování = 6 * 000005 = $0,00003 [1 monitorování = $0,25/50000 = 0,000005]
+- Orchestrace kanálu & provádění = $0,455
+  - Spuštění aktivit = 0,001 * 6 = 0,006 [1 Run = $1/1000 = 0,001]
+  - Aktivity přesunu dat = $0,333 (poměr po 10 minutách doby spuštění. měsíčně za hodinu v Azure Integration Runtime)
+  - Aktivita kanálu = $0,116 (poměr po 7 minutách doby spuštění. za hodinu v Azure Integration Runtime. 1/hod.)
+
+> [!NOTE]
+> Tyto ceny slouží pouze jako příklad pro účely.
+
+**Nejčastější dotazy**
+
+Otázka: Pokud chci spustit více než 50 aktivit kanálu, mohou být tyto aktivity spouštěny současně?
+
+Odpověď: maximální 50 souběžných aktivit kanálu bude povolen.  Aktivita kanálu 51th se zařadí do fronty, dokud se neotevře "volné místo". Stejné pro externí aktivitu. Maximální počet 800 souběžných externích aktivit bude povolen.
 
 ## <a name="next-steps"></a>Další kroky
 

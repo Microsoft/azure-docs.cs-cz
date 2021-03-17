@@ -3,12 +3,12 @@ title: Export do Power BI z Azure Application Insights | Microsoft Docs
 description: Analytické dotazy se dají zobrazit v Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324365"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584317"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
 [Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](./app-insights-overview.md).
@@ -31,12 +31,12 @@ Pokud chcete importovat Application Insights dotaz, použijte desktopovou verzi 
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export analytického dotazu
-1. [Otevřete Analytics a napište dotaz](../log-query/get-started-portal.md).
+1. [Otevřete Analytics a napište dotaz](../logs/log-analytics-tutorial.md).
 2. Otestujte a zužte dotaz, dokud nebudete spokojeni s výsledky. Před exportem se ujistěte, že dotaz běží v analýze správně.
 3. V nabídce **Export** vyberte možnost **Power BI (M)**. Uložte textový soubor.
    
     ![Snímek obrazovky s analýzou se zvýrazněnou nabídkou export](./media/export-power-bi/analytics-export-power-bi.png)
-4. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
+4. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení** vyberte **Rozšířený editor**.
 
     Vložte exportovaný skript jazyka M do Rozšířený editor.
 
@@ -61,17 +61,17 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky s tlačítkem Power BI](./media/export-power-bi/button.png)
 
-3. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
+3. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení** vyberte **Rozšířený editor**.
 
    ![Snímek obrazovky Power BI Desktop s zvýrazněným tlačítkem pro prázdné dotazy](./media/export-power-bi/blankquery.png)
 
    Vložte exportovaný skript jazyka M do Rozšířený editor. 
 
-   ![Snímek obrazovky Power BI Desktop se zvýrazněnou Rozšířený editor](./media/export-power-bi/advancedquery.png)
+   ![Snímek obrazovky zobrazující Power BI Desktop se zvýrazněnou Rozšířený editor](./media/export-power-bi/advancedquery.png)
 
 4. Vyberte položky z dotazu a vyberte vizualizaci trychtýře.
 
-   ![Snímek obrazovky s možnostmi vizualizace Power BI Desktop](./media/export-power-bi/selectsequence.png)
+   ![Snímek obrazovky s Power BI Desktop možností vizualizace trychtýřového grafu](./media/export-power-bi/selectsequence.png)
 
 5. Změňte název tak, aby byl smysluplný, a publikujte sestavu do svého pracovního prostoru Power BI cloudu. 
 
@@ -86,7 +86,7 @@ K tomu může dojít, pokud obnovovací token nebyl aktualizován. Vyzkoušejte 
 
 1. Přihlaste se k Azure Portal a ujistěte se, že máte k tomuto prostředku přístup.
 2. Pokuste se aktualizovat přihlašovací údaje pro řídicí panel.
-3. Zkuste vymazat mezipaměť z desktopu PowerBI.
+3. Zkuste vymazat mezipaměť z Power BI Desktop.
 
 
    Pokud máte přístup a aktualizace přihlašovacích údajů nefunguje, otevřete prosím lístek podpory.
@@ -121,14 +121,14 @@ Tato metoda vytvoří úplný řídicí panel telemetrie za vás. Počáteční 
 1. Přihlaste se k [Power BI](https://app.powerbi.com/).
 2. Otevřete snímek obrazovky **získat data** ![ ikony GetData v levém dolním ](./media/export-power-bi/001.png) rohu **služby**.
 
-    ![Snímky obrazovky získat z Application Insights zdroji dat](./media/export-power-bi/002.png)
+    ![Snímky obrazovky zobrazí tlačítko získat v okně služby.](./media/export-power-bi/002.png)
 
 3. Vyberte možnost **získat nyní** v části Application Insights.
 
    ![Snímky obrazovky získat z Application Insights zdroji dat](./media/export-power-bi/003.png)
 4. Zadejte podrobnosti prostředku Application Insights a potom se **přihlaste**.
 
-    ![Snímek obrazovky získat z Application Insights zdroje dat](./media/export-power-bi/005.png)
+    ![Snímek obrazovky se zobrazí okno připojit k Application Insights.](./media/export-power-bi/005.png)
 
      Tyto informace najdete v podokně s přehledem Application Insights:
 
@@ -146,5 +146,4 @@ Po počátečním importu se řídicí panel a sestavy budou dál aktualizovat d
 
 ## <a name="next-steps"></a>Další kroky
 * [Power BI – informace](https://www.powerbi.com/learning/)
-* [Kurz analýzy](../log-query/get-started-portal.md)
-
+* [Kurz analýzy](../logs/log-analytics-tutorial.md)

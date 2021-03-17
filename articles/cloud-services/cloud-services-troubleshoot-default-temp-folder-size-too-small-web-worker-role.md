@@ -1,27 +1,25 @@
 ---
 title: Výchozí velikost složky TEMP je pro roli příliš malá. Microsoft Docs
 description: Role cloudové služby má omezené množství místa pro dočasnou složku. Tento článek poskytuje některé návrhy, jak zabránit nedostatku místa.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: bea9e163e9dde6c42de87048379d663222cb56e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1b7bfb47168c31f9e2e1b7e40764439118c00805
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82734616"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743198"
 ---
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je pro web nebo roli pracovního procesu cloudové služby moc malá.
+# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-classic-webworker-role"></a>Výchozí velikost složky TEMP je příliš malá v rámci webové služby nebo role pracovního procesu cloudové služby (Classic).
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Výchozí dočasný adresář pracovního procesu cloudové služby nebo webové role má maximální velikost 100 MB, která může být v určitém okamžiku plná. Tento článek popisuje, jak se vyhnout nedostatku místa pro dočasný adresář.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -70,8 +68,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder).
 
-Podívejte se na další články týkající se [řešení potíží](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) pro Cloud Services.
+Podívejte se na další články týkající se [řešení potíží](/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) pro Cloud Services.
 
-Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

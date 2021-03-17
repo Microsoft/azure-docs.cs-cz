@@ -1,23 +1,27 @@
 ---
-title: Skript PowerShellu pro změnu priority převzetí služeb při selhání pro jeden hlavní účet Azure Cosmos
-description: Ukázkový skript Azure PowerShell – Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb při selhání pro účet Azure Cosmos DB Single-Master
+title: Skript PowerShellu pro změnu priority převzetí služeb při selhání pro účet Azure Cosmos s jednou oblastí zápisu
+description: Ukázkový skript Azure PowerShell – Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb při selhání pro účet Azure Cosmos s jednou oblastí zápisu
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ef9b16ae56c560d033cb18de6a3ccf3b87fbc25a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506794"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684336"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb při selhání pro účet Azure Cosmos DB s jedním hlavním serverem pomocí PowerShell
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb při selhání pro účet Azure Cosmos s jednou oblastí zápisu pomocí PowerShellu
+[!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+Tato ukázka vyžaduje Azure PowerShell az 5.4.0 nebo novější. Spusťte `Get-Module -ListAvailable Az` , chcete-li zjistit, které verze jsou nainstalovány.
+Pokud potřebujete instalaci, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+
+Spusťte [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a přihlaste se k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -43,14 +47,12 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
-| [Update – AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Aktualizujte pořadí priority převzetí služeb při selhání v oblastech Cosmos DB účtu. |
+| [Get-AzCosmosDBAccount](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
+| [Update – AzCosmosDBAccountFailoverPriority](/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Aktualizujte pořadí priority převzetí služeb při selhání v oblastech Cosmos DB účtu. |
 |**Skupiny prostředků Azure**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
-
-Další ukázkové skripty PowerShellu pro službu Azure Cosmos DB najdete ve [skriptech PowerShellu pro službu Azure Cosmos DB](../../../powershell-samples.md).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).

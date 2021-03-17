@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z webu AWS Marketplace
 description: Naučte se, jak kopírovat data z webové služby Amazon Marketplace do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c25bdac0b52af425557464f17350fb8a46244f2f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418265"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364342"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopírování dat z webové služby Amazon Marketplace pomocí Azure Data Factory
 
@@ -45,18 +41,18 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu webové služby Amazon Marketplace jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **AmazonMWS** . | Ano |
-| endpoint | Koncový bod serveru Amazon MWS (tj. mws.amazonservices.com)  | Ano |
-| marketplaceID | ID služby Amazon Marketplace, ze kterého chcete načíst data. Pokud chcete načíst data z více ID Marketplace, oddělte je čárkou ( `,` ). (tj. A2EUQ1WTGCTBG2)  | Ano |
-| sellerID | ID prodejce Amazon  | Ano |
-| mwsAuthToken | Ověřovací token Amazon MWS Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessKeyId | ID přístupového klíče používaného pro přístup k datům.  | Ano |
-| secretKey | Tajný klíč, který se používá pro přístup k datům. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **AmazonMWS** . | Yes |
+| endpoint | Koncový bod serveru Amazon MWS (tj. mws.amazonservices.com)  | Yes |
+| marketplaceID | ID služby Amazon Marketplace, ze kterého chcete načíst data. Pokud chcete načíst data z více ID Marketplace, oddělte je čárkou ( `,` ). (tj. A2EUQ1WTGCTBG2)  | Yes |
+| sellerID | ID prodejce Amazon  | Yes |
+| mwsAuthToken | Ověřovací token Amazon MWS Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| accessKeyId | ID přístupového klíče používaného pro přístup k datům.  | Yes |
+| secretKey | Tajný klíč, který se používá pro přístup k datům. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -89,9 +85,9 @@ Pro propojenou službu webové služby Amazon Marketplace jsou podporovány nás
 
 Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte vlastnost Type datové sady na **AmazonMWSObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **AmazonMWSObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **AmazonMWSObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -120,10 +116,10 @@ Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte vlas
 
 Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte typ zdroje v aktivitě kopírování na **AmazonMWSSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonMWSSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonMWSSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

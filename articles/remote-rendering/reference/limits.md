@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566042"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530242"
 ---
 # <a name="limitations"></a>Omezení
 
@@ -18,29 +18,32 @@ Množství funkcí má velikost, počet nebo jiná omezení.
 
 ## <a name="azure-frontend"></a>Azure front-end
 
-* Celkový počet instancí AzureFrontend na proces: 16.
-* Celkový počet instancí AzureSession na AzureFrontend: 16.
+Následující omezení se vztahují na front-endové rozhraní API (C++ a C#):
+* Celkový počet instancí [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient) na proces: 16.
+* Celkový počet instancí [RenderingSession](/dotnet/api/microsoft.azure.remoterendering.renderingsession) na [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient): 16.
 
 ## <a name="objects"></a>Objekty
 
-* Celkem přípustných objektů jednoho typu (entita, CutPlaneComponent atd.): 16 777 215.
+* Celkem přípustných objektů jednoho typu ([entita](../concepts/entities.md), [CutPlaneComponent](../overview/features/cut-planes.md)atd.): 16 777 215.
 * Celkový povolený počet aktivních vyjmutých ploch: 8.
 
 ## <a name="geometry"></a>Geometrie
 
-* Celkový počet povolených materiálů v prostředku: 65 535.
-* Maximální rozměr jedné textury: 16 384 × 16 384. Větší zdrojové textury se škálují podle procesu převodu.
+* **Animace:** Animace jsou omezené na animace jednotlivých transformací [herních objektů](../concepts/entities.md). Animace základní s animacemi s použitím změny vzhledu a vrcholu se nepodporují. Animační běhy ze zdrojového souboru prostředků se nezachovají. Místo toho musí být animace transformace objektů řízeny klientským kódem.
+* **Vlastní shadery:** Vytváření vlastních shaderů se nepodporuje. Je možné použít pouze předdefinované [barevné materiály](../overview/features/color-materials.md) nebo [materiály PBR](../overview/features/pbr-materials.md) .
+* **Maximální počet různých materiálů** v prostředku: 65 535. Další informace o automatickém snížení počtu materiálu najdete v kapitole [de-duplikace materiálu](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) .
+* **Maximální rozměr jedné textury**: 16 384 × 16 384. V rámci procesu převodu se velikost větších textur od velkých zdrojů zmenší.
 
-## <a name="overall-number-of-polygons"></a>Celkový počet mnohoúhelníků
+### <a name="overall-number-of-polygons"></a>Celkový počet mnohoúhelníků
 
-Povolený počet mnohoúhelníků pro všechny načtené modely závisí na velikosti virtuálního počítače, který je předaný do [REST API správy relace](../how-tos/session-rest-api.md#create-a-session):
+Povolený počet mnohoúhelníků pro všechny načtené modely závisí na velikosti virtuálního počítače, který je předaný do [REST API správy relace](../how-tos/session-rest-api.md):
 
 | Velikost serveru | Maximální počet mnohoúhelníků |
 |:--------|:------------------|
 |standardní| 20 000 000 |
 |nárok| bez omezení |
 
-Podrobnější informace o tomto omezení najdete v části [velikost serveru](../reference/vm-sizes.md) .
+Podrobné informace o tomto omezení najdete v kapitole [velikost serveru](../reference/vm-sizes.md) .
 
 ## <a name="platform-limitations"></a>Omezení platformy
 
@@ -50,4 +53,4 @@ Podrobnější informace o tomto omezení najdete v části [velikost serveru](.
 
 **HoloLens 2**
 
-* Funkce [vykreslování z PV fotoaparátu](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) není podporována.
+* Funkce [vykreslování z PV fotoaparátu](/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) není podporována.

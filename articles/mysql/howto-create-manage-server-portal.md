@@ -1,25 +1,32 @@
 ---
 title: Správa serveru-Azure Portal-Azure Database for MySQL
 description: Naučte se spravovat Azure Database for MySQL server z Azure Portal.
-author: ajlam
-ms.author: andrela
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 3/18/2020
-ms.openlocfilehash: d2fba3666e4e35c4f8492b0017f859c0bb80a160
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 1/26/2021
+ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120598"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897981"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Správa serveru Azure Database for MySQL pomocí Azure Portal
+
 V tomto článku se dozvíte, jak spravovat servery Azure Database for MySQL. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+>
+
 ## <a name="sign-in"></a>Přihlásit se
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Vytvoření serveru
+
 Další informace o tom, jak vytvořit a začít s Azure Database for MySQL serverem, najdete v [rychlém](quickstart-create-mysql-server-database-using-azure-portal.md) startu.
 
 ## <a name="scale-compute-and-storage"></a>Škálování výpočetních prostředků a úložiště
@@ -28,19 +35,18 @@ Po vytvoření serveru můžete škálovat mezi Pro obecné účely a paměťov�
 
 ### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Škálování mezi Pro obecné účelymi a paměťově optimalizovanými úrovněmi
 
-Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopak. Změna na úroveň Basic až po vytvoření serveru není podporovaná. 
+Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopak. Změna na úroveň Basic až po vytvoření serveru není podporovaná.
 
 1. V Azure Portal vyberte svůj server. Vyberte **cenovou úroveň**, která se nachází v části **Nastavení** .
 
-2. Vyberte **optimalizované** **pro obecné účely** nebo paměť v závislosti na tom, na co se škáluje. 
+2. Vyberte **optimalizované** **pro obecné účely** nebo paměť v závislosti na tom, na co se škáluje.
 
-    ![Změna – cenová úroveň](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Snímek obrazovky Azure Portal pro výběr úrovně optimalizované pro paměť na úrovni Basic, Pro obecné účely nebo paměť v Azure Database for MySQL":::
 
-    > [!NOTE]
-    > Změna úrovní způsobí restart serveru.
+   > [!NOTE]
+   > Změna úrovní způsobí restart serveru.
 
-4. Kliknutím na **tlačítko OK** uložte změny.
-
+3. Kliknutím na **tlačítko OK** uložte změny.
 
 ### <a name="scale-vcores-up-or-down"></a>Škálování virtuální jádra nahoru nebo dolů
 
@@ -48,13 +54,12 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 2. Změňte nastavení **Vcore** přesunutím posuvníku na požadovanou hodnotu.
 
-    ![škálování – COMPUTE](./media/howto-create-manage-server-portal/scaling-compute.png)
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Snímek obrazovky Azure Portal pro výběr možnosti vCore v Azure Database for MySQL":::
 
     > [!NOTE]
     > Škálování virtuální jádra způsobí restartování serveru.
 
 3. Kliknutím na **tlačítko OK** uložte změny.
-
 
 ### <a name="scale-storage-up"></a>Škálování úložiště nahoru
 
@@ -62,46 +67,52 @@ Můžete škálovat z Pro obecné účely na paměťově optimalizované a naopa
 
 2. Změňte nastavení **úložiště** přesunutím posuvníku na požadovanou hodnotu.
 
-    ![škálování – úložiště](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Snímek obrazovky Azure Portal pro výběr škálování úložiště v Azure Database for MySQL":::
 
-    > [!NOTE]
-    > Velikost úložiště nejde škálovat.
+   > [!NOTE]
+   > Velikost úložiště nejde škálovat.
 
 3. Kliknutím na **tlačítko OK** uložte změny.
 
-
 ## <a name="update-admin-password"></a>Aktualizovat heslo správce
+
 Můžete změnit heslo role správce pomocí Azure Portal.
 
 1. V Azure Portal vyberte svůj server. V okně **Přehled** vyberte **resetovat heslo**.
 
-   ![overview](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Snímek obrazovky Azure Portal pro resetování hesla v Azure Database for MySQL":::
 
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
-   ![resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Snímek obrazovky Azure Portal pro resetování hesla a jeho uložení do Azure Database for MySQL":::
 
 3. Kliknutím na **tlačítko OK** uložte nové heslo.
+ 
 
+> [!IMPORTANT]
+> Při obnovení hesla správce serveru se automaticky resetují oprávnění správce serveru na výchozí. Pokud jste omylem odvolali jedno nebo více oprávnění správce serveru, zvažte možnost resetování hesla správce serveru.
+   
+> [!NOTE]
+> Uživatel správce serveru má ve výchozím nastavení následující oprávnění: vybrat, vložit, aktualizovat, odstranit, vytvořit, vyřadit, znovu načíst, zpracovat, odkazy, INDEXovat, změnit, Zobrazit databáze, vytvořit dočasné tabulky, zamknout tabulky, spustit, PODŘÍZENou položku, klient replikace, vytvořit zobrazení, zobrazit, vytvořit RUTINu, změnit RUTINu, vytvořit uživatele, událost, aktivační událost.
 
 ## <a name="delete-a-server"></a>Odstranění serveru
 
-Server můžete odstranit, pokud ho už nepotřebujete. 
+Server můžete odstranit, pokud ho už nepotřebujete.
 
 1. V Azure Portal vyberte svůj server. V okně **Přehled** vyberte **Odstranit**.
 
-    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Snímek obrazovky Azure Portal, ze kterého se má server odstranit Azure Database for MySQL":::
 
 2. Zadáním názvu serveru do vstupního pole potvrďte, že se jedná o server, který chcete odstranit.
 
-    ![Potvrdit odstranění](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Snímek obrazovky Azure Portal pro potvrzení odstranění serveru v Azure Database for MySQL":::
 
-    > [!NOTE]
-    > Odstranění serveru je nevratné.
+   > [!NOTE]
+   > Odstranění serveru je nevratné.
 
 3. Vyberte **Odstranit**.
 
-
 ## <a name="next-steps"></a>Další kroky
+
 - Další informace o [zálohování a obnovení serveru](howto-restore-server-portal.md)
 - Seznamte [se s možnostmi ladění a monitorování v Azure Database for MySQL](concepts-monitoring.md)

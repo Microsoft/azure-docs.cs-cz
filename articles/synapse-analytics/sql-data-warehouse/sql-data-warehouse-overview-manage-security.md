@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení databáze
-description: Tipy pro zabezpečení databáze a vývoj řešení v prostředku fondu synapse SQL
+title: Zabezpečení vyhrazeného fondu SQL (dřív SQL DW)
+description: Tipy pro zabezpečení vyhrazeného fondu SQL (dříve SQL DW) a vývoj řešení ve službě Azure synapse Analytics.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad19c976cceab76d6eb0dbfbea5840d9764bffec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200966"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092947"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Zabezpečení databáze v Azure synapse
+# <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Zabezpečení vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
 > [!div class="op_single_selector"]
 >
@@ -27,23 +27,23 @@ ms.locfileid: "85200966"
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Tento článek vás provede základy zabezpečení synapse fondu SQL. Tento článek vám konkrétně pomůže začít s prostředky pro omezení přístupu, ochranou dat a monitorováním aktivit v databázi zřízené pomocí fondu SQL.
+Tento článek vás provede základy zabezpečení vyhrazeného fondu SQL (dříve SQL DW). Tento článek vám konkrétně pomůže začít s prostředky pro omezení přístupu, ochranu dat a monitorování aktivit pomocí vyhrazeného fondu SQL (dřív SQL DW).
 
 ## <a name="connection-security"></a>Zabezpečení připojení
 
 Zabezpečení připojení spočívá v použití pravidel brány firewall a šifrovaného připojení k omezení a zabezpečení připojení k databázi.
 
-Pravidla firewallu používá [logický server SQL](../../azure-sql/database/logical-servers.md) i jeho databáze k zamítnutí pokusů o připojení z IP adres, které nejsou explicitně na seznamu povolených. Aby bylo možné připojení z vaší aplikace nebo veřejné IP adresy klientského počítače, je třeba nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí Azure Portal, REST API nebo PowerShellu.
+Pravidla brány firewall jsou používána [logickým serverem SQL](../../azure-sql/database/logical-servers.md) i jeho databázemi k zamítnutí pokusů o připojení z IP adres, které nebyly explicitně schváleny. Aby bylo možné připojení z vaší aplikace nebo veřejné IP adresy klientského počítače, je třeba nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí Azure Portal, REST API nebo PowerShellu.
 
-V souladu s osvědčeným postupem byste měli omezit rozsahy IP adres povolené přes bránu firewall na úrovni serveru co nejvíce.  Pokud chcete získat přístup k fondu SQL z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňovala odchozí komunikaci na portu TCP 1433.  
+V souladu s osvědčeným postupem byste měli omezit rozsahy IP adres povolené přes bránu firewall na úrovni serveru co nejvíce.  Pokud chcete získat přístup k vašemu rezervovanému fondu SQL (dřív SQL DW) z místního počítače, ujistěte se, že brána firewall v síti a místní počítač umožňují odchozí komunikaci na portu TCP 1433.  
 
-Azure synapse Analytics používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu věnovaném [Azure SQL Database pravidlům brány firewall](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
+Vyhrazený fond SQL (dřív SQL DW) používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu věnovaném [Azure SQL Database pravidlům brány firewall](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
-Připojení k vašemu fondu SQL jsou ve výchozím nastavení zašifrována.  Změna nastavení připojení pro zákaz šifrování je ignorována.
+Ve výchozím nastavení jsou připojení k vašemu vyhrazenému fondu SQL (dříve SQL DW) zašifrovaná.  Změna nastavení připojení pro zákaz šifrování je ignorována.
 
 ## <a name="authentication"></a>Authentication
 
-Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Fond SQL aktuálně podporuje SQL Server ověřování s uživatelským jménem a heslem a s Azure Active Directory.
+Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Vyhrazený fond SQL (dřív SQL DW) aktuálně podporuje SQL Server ověřování s uživatelským jménem a heslem a s Azure Active Directory.
 
 Při vytváření serveru pro vaši databázi jste zadali přihlašovací jméno správce serveru pomocí uživatelského jména a hesla. Pomocí těchto přihlašovacích údajů se můžete na tomto serveru ověřit jako vlastník databáze nebo "dbo" prostřednictvím SQL Server ověřování.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Pak se připojte k **databázi fondu SQL** pomocí přihlašovacích údajů správce serveru a vytvořte uživatele databáze na základě přihlášení k serveru, které jste vytvořili.
+Pak se připojte k vašemu rezervovanému **fondu SQL (dříve SQL DW)** pomocí přihlašovacích údajů správce serveru a vytvořte uživatele databáze na základě přihlášení k serveru, které jste vytvořili.
 
 ```sql
 -- Connect to the database and create a database user
@@ -81,9 +81,9 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Existují způsoby, jak dále omezit to, co může uživatel v rámci databáze provádět:
 
-* Přesnější [oprávnění](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) umožňují řídit, které operace můžete provádět na jednotlivých sloupcích, tabulkách, zobrazeních, schématech, postupech a dalších objektech v databázi. K nejvyšší kontrole a udělení minimálních potřebných oprávnění použijte přesnější oprávnění.
-* [Role databáze](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jiné než db_datareader a db_datawriter lze použít k vytvoření výkonnějších uživatelských účtů aplikace nebo méně výkonných účtů pro správu. Předdefinované pevné databázové role poskytují snadný způsob, jak udělit oprávnění, ale mohou mít za následek udělení více oprávnění, než je nutné.
-* K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+* Přesnější [oprávnění](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) umožňují řídit, které operace můžete provádět na jednotlivých sloupcích, tabulkách, zobrazeních, schématech, postupech a dalších objektech v databázi. K nejvyšší kontrole a udělení minimálních potřebných oprávnění použijte přesnější oprávnění.
+* [Role databáze](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) jiné než db_datareader a db_datawriter lze použít k vytvoření výkonnějších uživatelských účtů aplikace nebo méně výkonných účtů pro správu. Předdefinované pevné databázové role poskytují snadný způsob, jak udělit oprávnění, ale mohou mít za následek udělení více oprávnění, než je nutné.
+* K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Následující příklad udělí přístup pro čtení uživatelsky definovanému schématu.
 
@@ -92,16 +92,16 @@ Následující příklad udělí přístup pro čtení uživatelsky definovaném
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Správa databází a serverů z Azure Portal nebo používání rozhraní API Azure Resource Manager je řízena přiřazeními rolí uživatelského účtu portálu. Další informace najdete v tématu [řízení přístupu na základě role v Azure Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Správa databází a serverů z Azure Portal nebo používání rozhraní API Azure Resource Manager je řízena přiřazeními rolí uživatelského účtu portálu. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Šifrování
 
 Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit tím, že šifruje a dešifruje vaše data v klidovém prostředí. Když šifrujete databázi, přidružené zálohy a soubory protokolů transakcí jsou šifrovány, aniž by to vyžadovalo změny vašich aplikací. Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče nazývaného šifrovací klíč databáze.
 
-V SQL Database je šifrovací klíč databáze chráněn integrovaným certifikátem serveru. Integrovaný certifikát serveru je pro každý server jedinečný. Microsoft tyto certifikáty automaticky přetočí nejméně každých 90 dnů. Použitý šifrovací algoritmus je AES-256. Obecný popis TDE naleznete v tématu [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+V SQL Database je šifrovací klíč databáze chráněn integrovaným certifikátem serveru. Integrovaný certifikát serveru je pro každý server jedinečný. Microsoft tyto certifikáty automaticky přetočí nejméně každých 90 dnů. Použitý šifrovací algoritmus je AES-256. Obecný popis TDE naleznete v tématu [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Databázi můžete šifrovat pomocí [Azure Portal](sql-data-warehouse-encryption-tde.md) nebo [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnosti a příklady připojení k vašemu skladu pomocí různých protokolů najdete v tématu [připojení k fondu SQL](../sql/connect-overview.md).
+Podrobnosti a příklady připojení k vašemu skladu pomocí různých protokolů najdete v tématu [připojení k vyhrazenému fondu SQL (dřív SQL DW)](sql-data-warehouse-connect-overview.md).

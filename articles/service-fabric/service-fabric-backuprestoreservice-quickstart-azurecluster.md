@@ -1,16 +1,14 @@
 ---
 title: Pravidelné zálohování a obnovení v Azure Service Fabric
 description: Použijte funkci periodického zálohování a obnovení Service Fabric k povolení pravidelného zálohování dat aplikací.
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261264"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198716"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodické zálohování a obnovení v clusteru Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -45,16 +43,21 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 - Dočasné pozastavení zálohování
 - Správa uchovávání záloh (nadcházející)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Service Fabric cluster se službou Fabric verze 6,4 nebo vyšší. Postup vytvoření Service Fabricho clusteru pomocí šablony prostředků Azure najdete v tomto [článku](service-fabric-cluster-creation-via-arm.md) .
 * X. 509 certifikát pro šifrování tajných kódů potřebných pro připojení k úložišti pro ukládání záloh. V [článku](service-fabric-cluster-creation-via-arm.md) najdete informace o tom, jak získat nebo vytvořit certifikát X. 509.
 * Service Fabric Reliable stavová aplikace vytvořená pomocí sady Service Fabric SDK verze 3,0 nebo vyšší. Pro aplikace cílené na .NET Core 2,0 by měla být aplikace sestavená pomocí sady SDK Service Fabric verze 3,1 nebo vyšší.
 * Vytvořte Azure Storage účet pro ukládání záloh aplikací.
-* Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http [v Preview] pro provedení konfiguračních volání.
+* Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http (Preview) pro provedení konfiguračních volání.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Pokud je verze PowerShellGet menší než 1.6.0, bude nutné aktualizovat, aby se přidala podpora pro příznak *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
 
@@ -212,6 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ``` 
 
 #### <a name="using-service-fabric-explorer"></a>Použití Service Fabric Explorer
+Ujistěte se, že je povolen [Rozšířený režim](service-fabric-visualizing-your-cluster.md#backup-and-restore) pro Service Fabric Explorer. 
 
 1. Vyberte aplikaci a pokračujte na akci. Klikněte na povolit nebo aktualizovat zálohu aplikace.
 

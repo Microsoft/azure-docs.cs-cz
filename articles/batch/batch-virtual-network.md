@@ -2,14 +2,14 @@
 title: Zřízení fondu ve virtuální síti
 description: Vytvoření fondu služby Batch ve službě Azure Virtual Network, aby výpočetní uzly mohly bezpečně komunikovat s jinými virtuálními počítači v síti, jako je třeba souborový server.
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142759"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561905"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -25,7 +25,7 @@ Pokud chcete, aby výpočetní uzly komunikovaly zabezpečeně s ostatními virt
 
 - **Ověřování**. Pokud chcete použít virtuální síť Azure klientské rozhraní API služby Batch musí používat ověřování pomocí Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 
-- **Virtuální síť Azure**. V následující části najdete informace o požadavcích a konfiguraci virtuální sítě. Pokud chcete připravit virtuální síť s jednou nebo více podsítěmi předem, můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure (CLI) nebo jiné metody.
+- **Virtuální síť Azure**. V následující části najdete informace o požadavcích a konfiguraci virtuální sítě. Pokud chcete předem připravit virtuální síť s jednou nebo více podsítěmi, můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku (CLI) Azure Command-Line nebo jiné metody.
   - Pokud chcete vytvořit virtuální síť založenou na Azure Resource Manager, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Pro nová nasazení se doporučuje použít virtuální síť založená na Správce prostředků a je podporovaná jenom u fondů, které používají konfiguraci virtuálních počítačů.
   - Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma [vytvoření virtuální sítě (klasické) s několika podsítěmi](/previous-versions/azure/virtual-network/create-virtual-network-classic). Klasická virtuální síť je podporovaná jenom u fondů, které používají konfiguraci Cloud Services.
 
@@ -35,15 +35,15 @@ Pokud chcete, aby výpočetní uzly komunikovaly zabezpečeně s ostatními virt
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>Vytvoření fondu pomocí virtuální sítě v Azure Portal
 
-Jakmile vytvoříte virtuální síť a přiřadíte k ní podsíť, můžete vytvořit fond služby Batch s touto virtuální sítí. Pomocí těchto kroků vytvořte fond z Azure Portal: 
+Jakmile vytvoříte virtuální síť a přiřadíte k ní podsíť, můžete vytvořit fond služby Batch s touto virtuální sítí. Pomocí těchto kroků vytvořte fond z Azure Portal: 
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch. Tento účet musí být ve stejném předplatném a oblasti jako skupina prostředků obsahující virtuální síť, kterou hodláte použít.
 2. V okně **Nastavení** na levé straně vyberte položku nabídky **fondy** .
 3. V okně **fondy** vyberte **Přidat**.
 4. V okně **Přidat fond** vyberte v rozevíracím seznamu **typ obrázku** možnost, kterou hodláte použít.
 5. Vyberte pro vlastní image správného **vydavatele/nabídku/SKU** .
-6. Zadejte zbývající požadovaná nastavení, včetně **velikosti uzlu**, **cílových vyhrazených uzlů**a uzlů s **nízkou prioritou**, a také všech požadovaných volitelných nastavení.
-7. V **Virtual Network**vyberte virtuální síť a podsíť, které chcete použít.
+6. Zadejte zbývající požadovaná nastavení, včetně **velikosti uzlu**, **cílových vyhrazených uzlů** a uzlů s **nízkou prioritou**, a také všech požadovaných volitelných nastavení.
+7. V **Virtual Network** vyberte virtuální síť a podsíť, které chcete použít.
 
    ![Přidat fond do virtuální sítě](./media/batch-virtual-network/add-vnet-pool.png)
 

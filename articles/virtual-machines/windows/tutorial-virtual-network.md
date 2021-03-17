@@ -2,20 +2,21 @@
 title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu vytvářet a spravovat virtuální sítě Azure pro virtuální počítače s Windows.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: networking
+ms.collection: windows
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 84da38fe71446c54f17c4d4329c7294c5e5176d2
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4e7f08e3c9869eae76f6c2e0127cfdab8f770d04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800190"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562176"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure PowerShellu
 
@@ -127,7 +128,7 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1). Tyto přihlašovací údaje použijete k připojení k virtuálnímu počítači v dalších krocích:
+Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential). Tyto přihlašovací údaje použijete k připojení k virtuálnímu počítači v dalších krocích:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -280,7 +281,4 @@ V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezp
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-V dalším kurzu se seznámíte s monitorováním zabezpečení dat na virtuálních počítačích pomocí služby Azure Backup.
-
-> [!div class="nextstepaction"]
-> [Zálohování virtuálních počítačů s Windows v Azure](./tutorial-backup-vms.md)
+Další informace o ochraně disků virtuálních počítačů najdete v tématu [zálohování a zotavení po havárii pro disky](../backup-and-disaster-recovery-for-azure-iaas-disks.md).

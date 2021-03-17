@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak nasadit a nakonfigurovat Azure Fi
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 12/03/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 50d870590fa6b8351838af9cb91b7be39b8d30db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc36d45e226cffafb51cf7aa09ea6f0d528ee016
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610655"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051373"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Nasazení a konfigurace Azure Firewall pomocí Azure PowerShell
 
@@ -25,31 +25,31 @@ Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsí
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi podsítěmi pro snadné nasazení. V produkčních nasazeních se doporučuje [model hvězdicové a Paprskové](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) služby, kde brána firewall patří do vlastní virtuální sítě. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
+V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi podsítěmi pro snadné nasazení. V produkčních nasazeních se doporučuje [model hvězdicové a Paprskové](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) služby, kde brána firewall patří do vlastní virtuální sítě. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
-* **Jump-SN** – v této podsíti bude „jump“ server. Jump server má veřejnou IP adresu, ke které se můžete připojit pomocí vzdálené plochy. Odtud se pak můžete připojit k serveru úloh (pomocí další vzdálené plochy).
+* **AzureBastionSubnet** – podsíť používaná pro Azure bastionu, která se používá pro připojení k serveru úloh. Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](../bastion/bastion-overview.md) .
 
-![Kurz síťové infrastruktury](media/tutorial-firewall-rules-portal/Tutorial_network.png)
+![Kurz síťové infrastruktury](media/deploy-ps/tutorial-network.png)
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit testovací síťové prostředí
-> * Nasadit bránu firewall
-> * Vytvoření výchozí trasy
-> * Konfigurace pravidla použití pro povolení přístupu k www.google.com
-> * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
-> * Testování brány firewall
+
+* Nastavit testovací síťové prostředí
+* Nasadit bránu firewall
+* Vytvoření výchozí trasy
+* Konfigurace pravidla použití pro povolení přístupu k www.google.com
+* Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
+* Testování brány firewall
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure Portal](tutorial-firewall-deploy-portal.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento postup vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Connect-AzAccount`, abyste vytvořili připojení k Azure.
+Tento postup vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Connect-AzAccount`, abyste vytvořili připojení k Azure.
 
 ## <a name="set-up-the-network"></a>Nastavit síť
 
@@ -63,56 +63,55 @@ Skupina prostředků obsahuje všechny prostředky pro nasazení.
 New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 ```
 
-### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Vytvoření virtuální sítě a hostitele Azure bastionu
 
 Tato virtuální síť má tři podsítě:
 
 > [!NOTE]
-> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 ```azurepowershell
+$Bastionsub = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.0.0/27
 $FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
-$Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
 Teď vytvořte virtuální síť:
 
 ```azurepowershell
 $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG `
--Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $FWsub, $Worksub, $Jumpsub
+-Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $Bastionsub, $FWsub, $Worksub
 ```
-
-### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
-
-Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
-Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
-
-Vytvořte virtuální počítač s odkazem na SRV.
+### <a name="create-public-ip-address-for-azure-bastion-host"></a>Vytvoření veřejné IP adresy pro hostitele Azure bastionu
 
 ```azurepowershell
-New-AzVm `
-    -ResourceGroupName Test-FW-RG `
-    -Name "Srv-Jump" `
-    -Location "East US" `
-    -VirtualNetworkName Test-FW-VN `
-    -SubnetName Jump-SN `
-    -OpenPorts 3389 `
-    -Size "Standard_DS2"
+$publicip = New-AzPublicIpAddress -ResourceGroupName Test-FW-RG -Location "East US" `
+   -Name Bastion-pip -AllocationMethod static -Sku standard
 ```
 
-Vytvořte virtuální počítač úlohy bez veřejné IP adresy.
+### <a name="create-azure-bastion-host"></a>Vytvořit hostitele Azure bastionu
+
+```azurepowershell
+New-AzBastion -ResourceGroupName Test-FW-RG -Name Bastion-01 -PublicIpAddress $publicip -VirtualNetwork $testVnet
+```
+### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+
+Nyní vytvořte virtuální počítač úlohy a umístěte jej do příslušné podsítě.
+Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
+
+
+Vytvořte virtuální počítač úlohy.
 Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
 
 ```azurepowershell
 #Create the NIC
-$NIC = New-AzNetworkInterface -Name Srv-work -ResourceGroupName Test-FW-RG `
- -Location "East US" -Subnetid $testVnet.Subnets[1].Id 
+$wsn = Get-AzVirtualNetworkSubnetConfig -Name  Workload-SN -VirtualNetwork $testvnet
+$NIC01 = New-AzNetworkInterface -Name Srv-Work -ResourceGroupName Test-FW-RG -Location "East us" -Subnet $wsn
 
 #Define the virtual machine
 $VirtualMachine = New-AzVMConfig -VMName Srv-Work -VMSize "Standard_DS2"
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName Srv-Work -ProvisionVMAgent -EnableAutoUpdate
-$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2016-Datacenter' -Version latest
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC01.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
 
 #Create the virtual machine
 New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -Verbose
@@ -127,7 +126,7 @@ Teď nasaďte bránu firewall do virtuální sítě.
 $FWpip = New-AzPublicIpAddress -Name "fw-pip" -ResourceGroupName Test-FW-RG `
   -Location "East US" -AllocationMethod Static -Sku Standard
 # Create the firewall
-$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetworkName Test-FW-VN -PublicIpName fw-pip
+$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetwork $testVnet -PublicIpAddress $FWpip
 
 #Save the firewall private IP address for future use
 
@@ -205,24 +204,20 @@ Set-AzFirewall -AzureFirewall $Azfw
 Pro účely testování v tomto postupu nakonfigurujte primární a sekundární adresy DNS serveru. Nejedná se o obecný požadavek Azure Firewall.
 
 ```azurepowershell
-$NIC.DnsSettings.DnsServers.Add("209.244.0.3")
-$NIC.DnsSettings.DnsServers.Add("209.244.0.4")
-$NIC | Set-AzNetworkInterface
+$NIC01.DnsSettings.DnsServers.Add("209.244.0.3")
+$NIC01.DnsSettings.DnsServers.Add("209.244.0.4")
+$NIC01 | Set-AzNetworkInterface
 ```
 
 ## <a name="test-the-firewall"></a>Testování brány firewall
 
 Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
-1. Poznamenejte si privátní IP adresu pro virtuální počítač s **prací SRV** :
+1. Připojte se k virtuálnímu počítači **SRV – Work** pomocí bastionu a přihlaste se. 
 
-   ```
-   $NIC.IpConfigurations.PrivateIpAddress
-   ```
+   :::image type="content" source="media/deploy-ps/bastion.png" alt-text="Připojte se pomocí bastionu.":::
 
-1. Připojte vzdálenou plochu k virtuálnímu počítači s **odkazem na SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše k privátní IP adrese **SRV** a přihlaste se.
-
-3. V nabídce **SRV – práci**otevřete okno PowerShellu a spusťte následující příkazy:
+3. V nabídce **SRV – práci** otevřete okno PowerShellu a spusťte následující příkazy:
 
    ```
    nslookup www.google.com
@@ -258,4 +253,4 @@ Remove-AzResourceGroup -Name Test-FW-RG
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů brány Azure Firewall](./firewall-diagnostics.md)

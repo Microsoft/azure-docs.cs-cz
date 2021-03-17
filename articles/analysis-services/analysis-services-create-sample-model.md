@@ -1,18 +1,18 @@
 ---
 title: Kurz – přidání ukázkového modelu – Azure Analysis Services | Microsoft Docs
-description: V této lekci kurzu zjistíte, jak přidat ukázkový model do služby Azure Analysis Services.
+description: V tomto kurzu se dozvíte, jak přidat Vzorový model do Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697516"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013606"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -22,15 +22,15 @@ V tomto kurzu přidáte na server ukázkovou tabulkovou modelovou databázi Adve
 > * Přidání dokončeného ukázkového tabulkového datového modelu na server 
 > * Propojení modelu s SQL Server Management Studiem
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 - Server Azure Analysis Services. Další informace najdete v článku [Vytvoření serveru – portál](analysis-services-create-server.md).
 - Oprávnění ke správě serveru
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
@@ -45,7 +45,7 @@ Přihlaste se k [portálu](https://portal.azure.com/).
 
 2. V části **Nový model**  >  **Zvolte zdroj dat**, ověřte, že je vybraná možnost **ukázková data** , a pak klikněte na **Přidat**.
 
-    ![Výběr ukázkových dat](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Vybrat nový model](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. Na stránce **Přehled** ověřte, že je přidaný ukázkový model `adventureworks`.
 
@@ -62,7 +62,7 @@ Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Manageme
 
 2. Do pole **Připojit k serveru** vložte název serveru, v poli **Ověření** zvolte **Active Directory – univerzální s podporou vícefaktorového ověřování**, zadejte své uživatelské jméno a klikněte na **Připojit**.
 
-    ![Přihlášení](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Přihlásit se](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. V **Průzkumníku objektů** klikněte pravým tlačítkem na ukázkovou databázi `adventureworks` a pak klikněte na **Odstranit**.
 
@@ -74,5 +74,3 @@ V tomto kurzu jste se naučili, jak na server přidat základní ukázkový mode
 
 > [!div class="nextstepaction"]
 > [Kurz: Konfigurace správce serveru a uživatelských rolí](tutorials/analysis-services-tutorial-roles.md)
-
-

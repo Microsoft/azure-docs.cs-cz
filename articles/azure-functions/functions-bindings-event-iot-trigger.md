@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 25396da3fb9a4293633308bf2e9d3c6b3d07265d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c9309834b407ee56d29e38afd965ac947fc8a4f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041646"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612282"
 ---
 # <a name="azure-iot-hub-trigger-for-azure-functions"></a>Aktivační událost služby Azure IoT Hub pro Azure Functions
 
@@ -22,6 +22,10 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 > I když následující ukázky kódu používají rozhraní API centra událostí, je daná syntaxe platná pro funkce IoT Hub.
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs-trigger.md)]
+
+## <a name="hostjson-properties"></a>host.jsvlastností
+
+[host.jsv](functions-host-json.md#eventhub) souboru obsahuje nastavení, která řídí chování triggeru centra událostí. Podrobnosti o dostupných nastaveních najdete v části [host.jsv nastavení](functions-bindings-event-iot.md#hostjson-settings) .
 
 ## <a name="next-steps"></a>Další kroky
 

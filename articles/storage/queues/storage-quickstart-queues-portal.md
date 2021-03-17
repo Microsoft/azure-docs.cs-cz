@@ -3,17 +3,17 @@ title: 'Rychlý Start: Vytvoření front Azure Storage na portálu'
 description: Vytvořte frontu pomocí Azure Portal. Pak použijte Azure Portal k přidání zprávy, zobrazení vlastností zprávy a vyřazení zprávy do fronty.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/13/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213475"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585543"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý Start: vytvoření fronty a přidání zprávy s Azure Portal
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak pomocí [Azure Portal](https://portal.a
 Pokud chcete vytvořit frontu v Azure Portal, postupujte podle těchto kroků:
 
 1. Na webu Azure Portal přejděte k novému účtu úložiště.
-2. V levé nabídce účtu úložiště přejděte do části **Služba front** a pak vyberte **fronty**.
+2. V levé nabídce účtu úložiště přejděte do části **Queue Storage** a pak vyberte **fronty**.
 3. Klikněte na tlačítko **+ fronta** .
 4. Zadejte název nové fronty. Název fronty musí být malými písmeny, musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a spojovníky (-).
 6. Vyberte **OK** a vytvořte frontu.
@@ -55,9 +55,9 @@ Po přidání zprávy Azure Portal zobrazí seznam všech zpráv ve frontě. Mů
 
 ## <a name="dequeue-a-message"></a>Odstranění zprávy z fronty
 
-Z Azure Portal můžete vyřadit zprávu z fronty před frontou. Když vyřadíte zprávu z fronty, zpráva se odstraní. 
+Z Azure Portal můžete vyřadit zprávu z fronty před frontou. Když vyřadíte zprávu z fronty, zpráva se odstraní.
 
-Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve frontě. 
+Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve frontě.
 
 ![Snímek obrazovky ukazující, jak vyřadit z fronty zprávu z portálu](media/storage-quickstart-queues-portal/dequeue-message.png)
 
@@ -66,4 +66,4 @@ Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve fron
 V tomto rychlém startu jste zjistili, jak vytvořit frontu, přidat zprávu, zobrazit vlastnosti zprávy a odstranit zprávu ve frontě Azure Portal.
 
 > [!div class="nextstepaction"]
-> [Co jsou fronty Azure?](storage-queues-introduction.md)
+> [Co je Azure Queue Storage?](storage-queues-introduction.md)

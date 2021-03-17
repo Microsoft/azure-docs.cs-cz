@@ -1,5 +1,5 @@
 ---
-title: Metriky protokolu v Návrháři (Preview)
+title: Metriky protokolu v Návrháři
 titleSuffix: Azure Machine Learning
 description: Sledujte experimenty návrháře Azure ML. Povolte protokolování pomocí modulu spuštění skriptu Pythonu a podívejte se do protokolovaných výsledků v studiu.
 services: machine-learning
@@ -8,18 +8,18 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/30/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 0d8d9f598da41b2bd39369e063200f5445ba740a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: designer
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554778"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065248"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Povolit protokolování v kanálech návrháře Azure Machine Learning (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Povolit protokolování v Azure Machine Learningch kanálech návrháře
+
 
 V tomto článku se dozvíte, jak přidat kód protokolování do kanálů návrháře. Naučíte se také, jak tyto protokoly zobrazit pomocí webového portálu Azure Machine Learning Studio.
 
@@ -27,7 +27,7 @@ Další informace o protokolování metrik pomocí prostředí SDK pro vytváře
 
 ## <a name="enable-logging-with-execute-python-script"></a>Povolit protokolování pomocí skriptu Pythonu pro spuštění
 
-K povolení protokolování v kanálech návrháře použijte modul __spouštění skriptu Pythonu__ . I když pomocí tohoto pracovního postupu můžete protokolovat libovolnou hodnotu, je zvláště užitečné protokolovat metriky z modulu __vyhodnocení modelu__ ke sledování výkonu modelu v průběhu spuštění.
+K povolení protokolování v kanálech návrháře použijte modul [spouštění skriptu Pythonu](./algorithm-module-reference/execute-python-script.md) . I když pomocí tohoto pracovního postupu můžete protokolovat libovolnou hodnotu, je zvláště užitečné protokolovat metriky z modulu __vyhodnocení modelu__ ke sledování výkonu modelu v průběhu spuštění.
 
 Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškolených modelů pomocí vyhodnocení modelu a spouštění modulů skriptu Pythonu.
 
@@ -49,17 +49,17 @@ Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškole
         # Log the mean absolute error to the parent run to see the metric in the run details page.
         # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
         # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
-
+        parent_run = Run.get_context().parent
+        
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
-        run.parent.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
+        parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
+        parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
-        # Log right output port result of Evaluate Model.
-        run.parent.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
-    
         return dataframe1,
     ```
     
-Tento kód používá sadu SDK Azure Machine Learning Python k protokolování hodnot. Pomocí rutiny run. get_context () Získá kontext aktuálního spuštění. Poté zaznamená hodnoty do tohoto kontextu pomocí metody Run. Parent. log (). Používá `parent` se k protokolování hodnot do nadřazeného spuštění kanálu namísto spuštění modulu.
+Tento kód používá sadu SDK Azure Machine Learning Python k protokolování hodnot. K získání kontextu aktuálního běhu používá Run.get_context (). Poté zaznamená hodnoty do tohoto kontextu pomocí metody Run. Parent. log (). Používá `parent` se k protokolování hodnot do nadřazeného spuštění kanálu namísto spuštění modulu.
 
 Další informace o tom, jak použít sadu Python SDK k protokolování hodnot, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).
 
@@ -78,5 +78,7 @@ Po dokončení kanálu můžete na stránce experimenty zobrazit *Mean_Absolute_
 
 V tomto článku jste zjistili, jak používat protokoly v návrháři. Další postup najdete v těchto souvisejících článcích:
 
-* Přečtěte si, jak řešit potíže s kanály návrháře, najdete v tématu [ladění & řešení potíží s kanály](how-to-debug-pipelines.md#azure-machine-learning-designer-preview).
+
+* Přečtěte si, jak řešit potíže s kanály návrháře, najdete v tématu [ladění & řešení potíží s kanály](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * Přečtěte si, jak pomocí sady Python SDK protokolovat metriky v prostředí pro vytváření obsahu SDK, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).
+* Naučte se používat [skript spustit](./algorithm-module-reference/execute-python-script.md) v jazyce Python v návrháři.

@@ -2,18 +2,19 @@
 title: Kurz – instalace aplikací na virtuální počítač s Windows v Azure
 description: V tomto kurzu zjistíte, jak používat rozšíření vlastních skriptů ke spouštění skriptů a nasazení aplikací na virtuálních počítačích s Windows v Azure
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c7c0fc8aaa3779390060ae283f1427f4955ed421
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065281"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555971"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Kurz nasazení aplikací na virtuální počítač s Windows v Azure pomocí rozšíření vlastních skriptů
 
@@ -39,7 +40,7 @@ Rozšíření vlastních skriptů můžete použít s virtuálními počítači 
 
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Nastavte uživatelské jméno a heslo správce virtuálního počítače pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
+Nastavte uživatelské jméno a heslo správce virtuálního počítače pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential

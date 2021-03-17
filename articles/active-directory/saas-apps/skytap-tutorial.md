@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 8d34ca8ed01144ee282f6411640894807a09ef08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527855"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním pro Skytap
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování pro Skytap 
 * Umožněte uživatelům, aby se automaticky přihlásili k jednotnému přihlašování pro Skytap s účty Azure AD.
 * Spravujte své účty na jednom centrálním místě, Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Jednotné přihlašování pro Skytap podporuje aktualizace SP a IDP iniciované jednotného přihlašování.
-* Po nakonfigurování jednotného přihlašování pro Skytap můžete vynutili řízení relace. Tím se chrání exfiltrace a infiltrace citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování jednotného přihlašování pro Skytap můžete vynutili řízení relace. Tím se chrání exfiltrace a infiltrace citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-single-sign-on-for-skytap-from-the-gallery"></a>Přidání jednotného přihlašování pro Skytap z Galerie
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
-1. Vyberte **nastavit další adresy URL**a proveďte následující kroky, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
+1. Volitelně můžete vybrat **nastavit další adresy URL** a provedením následujících kroků nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
@@ -111,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -135,7 +135,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-single-sign-on-for-skytap-sso"></a>Konfigurace jednotného přihlašování pro jednotné přihlašování Skytap
 
-Ke konfiguraci jednotného přihlašování na straně jednotného přihlašování pro Skytap je potřeba odeslat stažená **federační metadata XML**a příslušné zkopírované adresy url z Azure Portal do [jednotného přihlašování pro tým podpory Skytap klientů](mailto:support@skytap.com). Nakonfigurují toto nastavení tak, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně jednotného přihlašování pro Skytap je potřeba odeslat stažená **federační metadata XML** a příslušné zkopírované adresy url z Azure Portal do [jednotného přihlašování pro tým podpory Skytap klientů](mailto:support@skytap.com). Nakonfigurují toto nastavení tak, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 
 ### <a name="create-single-sign-on-for-skytap-test-user"></a>Vytvoření jednotného přihlašování pro Skytap testovacího uživatele
@@ -146,15 +146,14 @@ V této části vytvoříte uživatele s názvem B. Simon v rámci jednotného p
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici jednotného přihlašování pro Skytap, měli byste se automaticky přihlásit k jednotnému přihlašování pro Skytap, pro které jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici jednotného přihlašování pro Skytap, měli byste se automaticky přihlásit k jednotnému přihlašování pro Skytap, pro které jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si časovou rezervu pomocí Azure AD](https://aad.portal.azure.com/)
-

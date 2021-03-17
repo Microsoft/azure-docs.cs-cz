@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eeea7b1fed0c2a1f805e21b4dec9ec3cad7fc976
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673284"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996800"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurace aplikace pro přístup k Azure Storage
 Existují dva způsoby, jak aplikaci ověřit pro přístup ke službám úložiště:
@@ -49,5 +49,4 @@ Následující příklad ukazuje, jak použít Průzkumník služby Microsoft Az
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Jak vidíte, při použití SAS nezveřejňujete klíč účtu ve vaší aplikaci. Další informace o SAS a osvědčených postupech pro použití SAS získáte, když rezervujete [sdílené přístupové podpisy: Principy modelu SAS](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
-
+Jak vidíte, při použití SAS nezveřejňujete klíč účtu ve vaší aplikaci. Další informace o SAS a osvědčených postupech pro použití SAS získáte, když rezervujete [sdílené přístupové podpisy: Principy modelu SAS](../articles/storage/common/storage-sas-overview.md).

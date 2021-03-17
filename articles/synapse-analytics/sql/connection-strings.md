@@ -1,26 +1,27 @@
 ---
-title: Připojovací řetězce pro synapse SQL (Preview)
-description: Připojovací řetězce pro synapse SQL (Preview)
+title: Připojovací řetězce pro synapse SQL
+description: Připojovací řetězce pro synapse SQL
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8c1f13449c8ee5152e4e5b48af87f41004e599dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5ce411f3a2f3be162f9af16422d20b3e8b536fee
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424556"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120916"
 ---
-# <a name="connection-strings-for-synapse-sql-preview"></a>Připojovací řetězce pro synapse SQL (Preview)
+# <a name="connection-strings-for-synapse-sql"></a>Připojovací řetězce pro synapse SQL
 
-K synapse SQL (Preview) se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou, [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Níže jsou uvedeny příklady řetězců připojení pro každý protokol. 
+K synapse SQL se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou, [ADO.NET](/dotnet/framework/data/adonet/), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Níže jsou uvedeny příklady řetězců připojení pro každý protokol. 
 
-Můžete také použít Azure Portal k sestavení připojovacího řetězce.  Pokud chcete vytvořit připojovací řetězec pomocí Azure Portal, přejděte v okně databáze v části *základy* klikněte na *Zobrazit databázové připojovací řetězce*.
+Můžete také použít Azure Portal k sestavení připojovacího řetězce.  Chcete-li vytvořit připojovací řetězec pomocí Azure Portal, přejděte v části *základy* na možnost *Zobrazit databázové připojovací řetězce*.
 
 ## <a name="sample-adonet-connection-string"></a>Ukázkový připojovací řetězec ADO.NET
 
@@ -51,7 +52,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 
 ## <a name="recommendations"></a>Doporučení
 
-Pro spouštění dotazů **na vyžádání SQL** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
+Pro spouštění dotazů na **fond SQL bez serveru** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
 
 ## <a name="next-steps"></a>Další kroky
 

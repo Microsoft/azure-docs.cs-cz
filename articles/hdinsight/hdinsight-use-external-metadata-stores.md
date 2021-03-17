@@ -1,19 +1,16 @@
 ---
 title: Použití externích úložišť metadat – Azure HDInsight
 description: Používejte externí úložiště metadat s clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873088"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931363"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -63,11 +60,11 @@ HDInsight podporuje také vlastní metaúložiště, které se doporučují pro 
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Vytvoření a konfigurace Azure SQL Database pro vlastní metastore
 
-Vytvořte nebo existující Azure SQL Database před nastavením vlastního metastore Hive pro cluster HDInsight.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+Vytvořte nebo existující Azure SQL Database před nastavením vlastního metastore Hive pro cluster HDInsight.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
 
-Při vytváření clusteru se musí služba HDInsight připojit k externímu metastore a ověřit vaše přihlašovací údaje. Nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost povolte v Azure Portal výběrem možnosti **nastavit bránu firewall serveru**. Pak vyberte **žádné** **pod položkou** **Odepřít přístup k veřejné síti**a v části **Povolit přístup k tomuto serveru pro Azure SQL Database pomocí služeb a prostředků Azure** . Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
+Při vytváření clusteru se musí služba HDInsight připojit k externímu metastore a ověřit vaše přihlašovací údaje. Nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost povolte v Azure Portal výběrem možnosti **nastavit bránu firewall serveru**. Pak vyberte **žádné** **pod položkou** **Odepřít přístup k veřejné síti** a v části **Povolit přístup k tomuto serveru pro Azure SQL Database pomocí služeb a prostředků Azure** . Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
 
-Privátní koncové body pro úložiště SQL nejsou podporovány.
+Privátní koncové body pro úložiště SQL se podporují jenom v clusterech vytvořených pomocí `outbound` ResourceProviderConnection. Další informace najdete v této [dokumentaci](./hdinsight-private-link.md).
 
 ![tlačítko nastavit bránu firewall serveru](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

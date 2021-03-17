@@ -1,41 +1,37 @@
 ---
 title: Rozšíření Log Analytics pro virtuální počítače pro Windows
 description: Nasaďte agenta Log Analytics na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
-services: virtual-machines-windows
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 06/26/2020
-ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7757bd765bcb02782b6199f71c4a6e460b7b8143
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494662"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559014"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Rozšíření Log Analytics pro virtuální počítače pro Windows
 
 Protokoly Azure Monitor poskytují možnosti monitorování v cloudových i místních prostředcích. Rozšíření virtuálního počítače Log Analytics agenta pro Windows je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Log Analytics virtuálních počítačů pro Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Podrobnosti o podporovaných operačních systémech Windows najdete v článku [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) .
+Podrobnosti o podporovaných operačních systémech Windows najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka poskytuje mapování verze rozšíření virtuálního počítače s Windows Log Analytics a sady Log Analytics agenta pro každou verzi. 
 
-| Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Zpráva k vydání verze |
+| Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Poznámky k verzi |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | Říjen 2020   | <ul><li>Poradce při potížích s novým agentem</li><li>Aktualizuje způsob, jakým Agent zpracovává změny certifikátů ve službách Azure.</li></ul> |
+| 10.20.18040 | 1.0.18040.2 | Srpen 2020   | <ul><li>Vyřeší problém v Arc Azure</li></ul> |
 | 10.20.18038 | 1.0.18038 | Duben 2020   | <ul><li>Umožňuje připojení prostřednictvím privátního propojení pomocí Azure Monitor oborů privátních odkazů.</li><li>Přidá omezování příjmu, aby nedocházelo k náhlému a náhodnému výpadku v ingestování do pracovního prostoru.</li><li>Přidá podporu pro další Azure Government cloudy a oblasti.</li><li>Vyřeší chybu, ve které došlo k chybě HealthService.exe</li></ul> |
 | 10.20.18029 | 1.0.18029 | Březen 2020   | <ul><li>Přidání podpory podepisování kódu SHA-2</li><li>Vylepšuje instalaci a správu rozšíření virtuálních počítačů.</li><li>Vyřeší chybu v integraci služby Azure ARC pro servery</li><li>Přidá integrovaný nástroj pro řešení potíží pro zákaznickou podporu.</li><li>Přidá podporu pro další Azure Government oblasti.</li> |
 | 10.20.18018 | 1.0.18018 | Říjen 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li></ul> |
@@ -86,7 +82,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 ```
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
@@ -95,17 +91,17 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 | ID pracovního prostoru (např.) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
-\*ID pracovního prostoru se nazývá consumerId v rozhraní Log Analytics API.
+\* ID pracovního prostoru se nazývá consumerId v rozhraní Log Analytics API.
 
 > [!NOTE]
-> Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](../../azure-monitor/platform/agent-windows.md).
+> Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](../../azure-monitor/agents/agent-windows.md).
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření agenta Log Analytics během nasazování šablony Azure Resource Manager. Ukázková šablona, která obsahuje rozšíření virtuálního počítače agenta Log Analytics, se dá najít v [galerii Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 >[!NOTE]
->Šablona nepodporuje zadání více než jednoho ID pracovního prostoru a klíč pracovního prostoru, pokud chcete nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů. Chcete-li nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů, přečtěte si téma [Přidání nebo odebrání pracovního prostoru](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
+>Šablona nepodporuje zadání více než jednoho ID pracovního prostoru a klíč pracovního prostoru, pokud chcete nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů. Chcete-li nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů, přečtěte si téma [Přidání nebo odebrání pracovního prostoru](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace).  
 
 JSON pro rozšíření virtuálního počítače se dá vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
@@ -162,7 +158,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 }
 ```
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 `Set-AzVMExtension`Příkaz lze použít k nasazení rozšíření Log Analytics agenta virtuálního počítače do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu. 
 
@@ -183,7 +179,7 @@ Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell.
 

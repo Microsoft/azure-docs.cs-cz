@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76902702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000347"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb v aplikacích logiky
 
@@ -90,7 +90,7 @@ Používáme aktivační událost **požadavku** , jak je znázorněno v násled
 ```
 
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics CRM Online.
 
@@ -103,22 +103,22 @@ Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics 
 
    **Vložit položku protokolu**
 
-   ![Vložit položku protokolu](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Snímek obrazovky z návrháře aplikace logiky ukazující nastavení konfigurace pro InsertLogEntry.](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Vložit položku chyby**
 
-   ![Vložit položku protokolu](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Snímek obrazovky z návrháře aplikace logiky ukazující nastavení konfigurace pro CreateErrorRecord.](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **Vyhledat selhání při vytváření záznamu**
 
-   ![Podmínka](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Snímek obrazovky CreateErrorRecord v návrháři aplikace logiky zobrazující pole pro vytvoření položky chyby](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Zdrojový kód aplikace logiky
 
 > [!NOTE]
 > Následující příklady jsou pouze ukázky. Vzhledem k tomu, že je tento kurz založený na implementaci nyní v produkčním prostředí, hodnota **zdrojového uzlu** nemusí zobrazovat vlastnosti související s plánováním schůzky. > 
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Následující ukázka kódu aplikace logiky ukazuje, jak zpracovat protokolování.
 
@@ -396,7 +396,7 @@ Naše řešení přidalo možnosti s [Azure Cosmos DB](https://azure.microsoft.c
 
 ### <a name="error-management-portal"></a>Portál pro správu chyb
 
-Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC k zobrazení záznamů o chybách z Cosmos DB. Aktuální verze obsahuje operace **seznamu**, **podrobností**, **Úpravy**a **odstranění** .
+Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC k zobrazení záznamů o chybách z Cosmos DB. Aktuální verze obsahuje operace **seznamu**, **podrobností**, **Úpravy** a **odstranění** .
 
 > [!NOTE]
 > Upravit operaci: Cosmos DB nahradí celý dokument. Záznamy zobrazené v zobrazení **seznam** a **Podrobnosti** jsou pouze ukázky. Nejedná se o skutečné záznamy událostí pacienta.

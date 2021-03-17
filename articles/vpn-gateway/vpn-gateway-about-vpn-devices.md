@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4c6bd62e96d85305036626a8672c39ff1b9f6b26
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367721"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201089"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -46,7 +46,7 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Cisco |ASR |PolicyBased: iOS 15.1<br>RouteBased: iOS 15.2 |Podporováno |Podporováno |
 | Cisco | MANAŽER | RouteBased: IOS – XE 16,10 | (netestováno) | [Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased: iOS 15.0<br>RouteBased*: iOS 15.1 |Podporováno |Podporováno |
-| Cisco |Meraki |– |Není kompatibilní |Není kompatibilní |
+| Cisco |Meraki (MX) | MX v 15.12 |Není kompatibilní | [Průvodce konfigurací](https://documentation.meraki.com/MX/Site-to-site_VPN/Configuring_Site_to_Site_VPN_tunnels_to_Azure_VPN_Gateway) |
 | Cisco | vEdge (Viptela OS) | 18.4.0 (aktivní/pasivní režim)<br><br>19,2 (aktivní/aktivní režim) | Není kompatibilní |  [Ruční konfigurace (aktivní/pasivní)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Konfigurace cloudu OnRamp (aktivní/aktivní)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 a vyšší |[Průvodce konfigurací](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Není kompatibilní |
 | F5 |Řada BIG-IP |12.0 |[Průvodce konfigurací](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Průvodce konfigurací](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -58,16 +58,16 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Juniper |ISG |ScreenOS 6.3 |Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |SSG |ScreenOS 6.2 |Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
-| Partnerský vztah Microsoftu |Služba Směrování a vzdálený přístup |Windows Server 2012 |Není kompatibilní |Podporováno |
-| Open Systems AG |Mission Control Security Gateway |– |[Průvodce konfigurací](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Není kompatibilní |
+| Microsoft |Služba Směrování a vzdálený přístup |Windows Server 2012 |Není kompatibilní |Podporováno |
+| Open Systems AG |Mission Control Security Gateway |Není k dispozici |[Průvodce konfigurací](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Není kompatibilní |
 | Palo Alto Networks |Všechna zařízení se systémem PAN-OS |PAN-OS<br>PolicyBased: 6.1.5 nebo novější<br>RouteBased: 7.1.4 |Podporováno |[Průvodce konfigurací](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
-| Sentrium (vývojář) | VyOS | VyOS 1.2.2 | (netestováno) | [Průvodce konfigurací](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
+| Sentrium (vývojář) | VyOS | VyOS 1.2.2 | (netestováno) | [Průvodce konfigurací ](https://docs.vyos.io/en/latest/configexamples/azure-vpn-bgp.html)|
 | ShareTech | UTM příští generace (řada NU) | 9.0.1.3 | Není kompatibilní | [Průvodce konfigurací](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |Řada TZ, řada NSA<br>Řada SuperMassive<br>Řada E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Není kompatibilní |[Průvodce konfigurací](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | (netestováno) | [Průvodce konfigurací](https://community.sophos.com/kb/127546)<br><br>[Průvodce konfigurací – vícenásobné SAs](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2.0 | (netestováno) | [Průvodce konfigurací](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v 1.10 | (netestováno) | [BGP přes IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI přes IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347) |
-| Extrémně | 3E – 636L3 | 5.2.0. T3 – sestavení – 13  | (netestováno) | [Průvodce konfigurací](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
+| Ultra | 3E – 636L3 | 5.2.0. T3 – sestavení – 13  | (netestováno) | Průvodce konfigurací |
 | WatchGuard |Vše |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG Series<br>Série ATP ZyWALL<br>ZyWALL Series VPN | ZLD v 4.32 + | (netestováno) | [VTI přes IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br><br>[BGP přes IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
@@ -112,13 +112,11 @@ Po stažení ukázky konfigurace zařízení VPN budete muset nahradit některé
 | &lt;SP_AzureGatewayIpAddress&gt; |Tato informace je specifická pro vaši virtuální síť a najdete ji v Portálu pro správu jako **IP adresa brány**. |
 | &lt;SP_PresharedKey&gt; |Tato informace je specifická pro vaši virtuální síť a najdete ji v Portálu pro správu jako Správa klíče. |
 
-## <a name="ipsecike-parameters"></a><a name="ipsec"></a>Parametry protokolu IPsec/IKE
+## <a name="default-ipsecike-parameters"></a><a name="ipsec"></a>Výchozí parametry protokolu IPsec/IKE
 
-> [!IMPORTANT]
-> 1. Následující tabulky obsahují kombinaci algoritmů a parametrů, které služba Azure VPN Gateway používá ve výchozí konfiguraci. Pro brány sítě VPN založené na trasách a vytvořené pomocí modelu nasazení správy prostředků Azure můžete zadat vlastní zásadu pro každé jednotlivé připojení. Podrobné pokyny najdete v tématu [Konfigurace zásad IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md).
->
-> 2. Kromě toho musíte uchytit **MSS** protokolu TCP na **1350**. Pokud vaše zařízení nepodporuje uchycení MSS, můžete místo toho nastavit **MTU** na rozhraní tunelu na **1400** bajtů.
->
+Níže uvedené tabulky obsahují kombinace algoritmů a parametrů, které Azure VPN Gateway používá ve výchozí konfiguraci (**výchozí zásady**). Pro brány sítě VPN založené na trasách a vytvořené pomocí modelu nasazení správy prostředků Azure můžete zadat vlastní zásadu pro každé jednotlivé připojení. Podrobné pokyny najdete v tématu [Konfigurace zásad IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md).
+
+Kromě toho je potřeba, abyste v **1350** zasvorki TCP **MSS** . Pokud vaše zařízení nepodporuje uchycení MSS, můžete místo toho nastavit **MTU** na rozhraní tunelu na **1400** bajtů.
 
 V následujících tabulkách:
 
@@ -144,7 +142,7 @@ V následujících tabulkách:
 | Algoritmy šifrování a hash |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Životnost SA (čas)            |3 600 sekund  |27 000 sekund                               |
 | Životnost SA (bajty)           |102 400 000 kB |102 400 000 kB                               |
-| Metoda Perfect Forward Secrecy (PFS) |Ne             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
+| Metoda Perfect Forward Secrecy (PFS) |No             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Detekce mrtvých partnerských zařízení (DPD)     |Nepodporováno  |Podporováno                                    |
 
 

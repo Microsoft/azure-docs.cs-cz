@@ -6,38 +6,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file, devx-track-javascript
-ms.date: 07/30/2020
-ms.openlocfilehash: ba7885859adc1d9899c66917204306c8a0d0092f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/27/2020
+ms.openlocfilehash: b3e80612cb83d13f674b9f0e7710e59a7c27696a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246227"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444572"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)  | [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-personalizer/)  | [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org) a npm.
+* Jakmile budete mít předplatné Azure, vytvořte prostředek přizpůsobeného přizpůsobeného <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title=" "  target="_blank"> prostředku </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k rozhraní API pro přizpůsobení budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="using-this-quickstart"></a>V tomto rychlém startu
-
-
-V tomto rychlém startu se používá několik kroků:
-
-* V Azure Portal vytvořte prostředek pro přizpůsobení.
-* V Azure Portal u prostředku přizpůsobeného nástroji změňte na stránce **Konfigurace** četnost aktualizace modelu na velmi krátký interval.
-* V editoru kódu vytvořte soubor kódu a upravte soubor s kódem.
-* V příkazovém řádku nebo terminálu nainstalujte sadu SDK z příkazového řádku.
-* V příkazovém řádku nebo terminálu spusťte soubor kódu.
-
-[!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
+## <a name="setting-up"></a>Nastavení
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-## <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
+### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
 V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj.
 
@@ -51,7 +43,25 @@ Spuštěním `npm init -y` příkazu vytvořte `package.json` soubor.
 npm init -y
 ```
 
-## <a name="install-the-nodejs-library-for-personalizer"></a>Instalace knihovny Node.js pro přizpůsobování
+Vytvořte novou aplikaci Node.js v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE) `sample.js` a vytvořte proměnné pro koncový bod prostředku a klíč předplatného. 
+
+[!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
+
+```javascript
+const uuidv1 = require('uuid/v1');
+const Personalizer = require('@azure/cognitiveservices-personalizer');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const readline = require('readline-sync');
+
+// The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
+const serviceKey = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>";
+
+// The endpoint specific to your personalization service instance; 
+// e.g. https://<your-resource-name>.cognitiveservices.azure.com
+const baseUri = "https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com";
+```
+
+### <a name="install-the-nodejs-library-for-personalizer"></a>Instalace knihovny Node.js pro přizpůsobování
 
 Nainstalujte klientskou knihovnu pro přizpůsobování pro Node.js pomocí následujícího příkazu:
 
@@ -67,11 +77,11 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="object-model"></a>Objektový model
 
-Klient pro přizpůsobování je objekt [PersonalizerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
+Klient pro přizpůsobování je objekt [PersonalizerClient](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
 
-Pokud chcete požádat o jednu nejlepší položku obsahu, vytvořte [RankRequest](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/rankrequest?view=azure-node-latest)a pak ji předejte [klientovi. Rank](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest#rank-rankrequest--msrest-requestoptionsbase-) – metoda Metoda Rank vrátí RankResponse.
+Pokud chcete požádat o jednu nejlepší položku obsahu, vytvořte [RankRequest](/javascript/api/@azure/cognitiveservices-personalizer/rankrequest)a pak ji předejte [klientovi. Rank](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient#rank-rankrequest--msrest-requestoptionsbase-) – metoda Metoda Rank vrátí RankResponse.
 
-Chcete-li odeslat odměnu do přizpůsobeného modulu, vytvořte [RewardRequest](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest?view=azure-node-latest)a předejte ji do metody [odměňování](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/events?view=azure-node-latest#reward-string--rewardrequest--servicecallback-void--) pro třídu Events.
+Chcete-li odeslat odměnu do přizpůsobeného modulu, vytvořte [RewardRequest](/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest)a předejte ji do metody [odměňování](/javascript/api/@azure/cognitiveservices-personalizer/events#reward-string--rewardrequest--servicecallback-void--) pro třídu Events.
 
 Stanovení odměňování je v tomto rychlém startu triviální. V produkčním systému se určení toho, co ovlivňuje [skóre záměna](../concept-rewards.md) a kolik může být složitý proces, se může stát, že se v průběhu času rozhodnete změnit. To by mělo být jedno z primárních rozhodnutí o návrhu v architektuře pro přizpůsobování.
 
@@ -79,39 +89,111 @@ Stanovení odměňování je v tomto rychlém startu triviální. V produkčním
 
 Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientské knihovny pro přizpůsobování pro Node.js:
 
-* [Vytvoření klienta přizpůsobeného pro přizpůsobování](#create-a-personalizer-client)
+* [Vytvoření klienta přizpůsobeného pro přizpůsobování](#authenticate-the-client)
 * [Rozhraní API pro řazení](#request-the-best-action)
 * [API pro odměnu](#send-a-reward)
 
-## <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
+## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte novou aplikaci Node.js v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE) s názvem `sample.js` .
+Vytvořte instanci `PersonalizerClient` s a, `serviceKey` kterou `baseUri` jste vytvořili dříve.
 
-## <a name="add-the-dependencies"></a>Přidat závislosti
+```javascript
+const credentials = new CognitiveServicesCredentials(serviceKey);
 
-Otevřete soubor **sample.js** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `requires` pro přidání balíčků npm:
-
-[!code-javascript[Add module dependencies](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=Dependencies)]
-
-## <a name="add-personalizer-resource-information"></a>Přidat informace o prostředku pro přizpůsobení
-
-Upravte klíč a proměnné koncového bodu směrem k hornímu okraji souboru kódu pro klíč a koncový bod prostředku Azure. 
-
-[!code-javascript[Add Personalizer resource information](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=AuthorizationVariables)]
-
-## <a name="create-a-personalizer-client"></a>Vytvoření klienta přizpůsobeného pro přizpůsobování
-
-Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey je `PERSONALIZER_RESOURCE_KEY` .
-
-[!code-javascript[Create a Personalizer client](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=Client)]
+// Initialize Personalization client.
+const personalizerClient = new Personalizer.PersonalizerClient(credentials, baseUri);
+```
 
 ## <a name="get-content-choices-represented-as-actions"></a>Získat možnosti obsahu reprezentované jako akce
 
 Akce reprezentují volby obsahu, ze kterých chcete přizpůsobovat výběr nejlepší položky obsahu. Do třídy program přidejte následující metody, které reprezentují sadu akcí a jejich funkcí.
 
-[!code-javascript[Create user features](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=createUserFeatureTimeOfDay)]
+```javascript
+function getContextFeaturesList() {
+  const timeOfDayFeatures = ['morning', 'afternoon', 'evening', 'night'];
+  const tasteFeatures = ['salty', 'sweet'];
 
-[!code-javascript[Create actions](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=getActions)]
+  let answer = readline.question("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night\n");
+  let selection = parseInt(answer);
+  const timeOfDay = selection >= 1 && selection <= 4 ? timeOfDayFeatures[selection - 1] : timeOfDayFeatures[0];
+
+  answer = readline.question("\nWhat type of food would you prefer (enter number)? 1. salty 2. sweet\n");
+  selection = parseInt(answer);
+  const taste = selection >= 1 && selection <= 2 ? tasteFeatures[selection - 1] : tasteFeatures[0];
+
+  console.log("Selected features:\n");
+  console.log("Time of day: " + timeOfDay + "\n");
+  console.log("Taste: " + taste + "\n");
+
+  return [
+    {
+      "time": timeOfDay
+    },
+    {
+      "taste": taste
+    }
+  ];
+}
+```
+
+```javascript
+function getActionsList() {
+  return [
+    {
+      "id": "pasta",
+      "features": [
+        {
+          "taste": "salty",
+          "spiceLevel": "medium"
+        },
+        {
+          "nutritionLevel": 5,
+          "cuisine": "italian"
+        }
+      ]
+    },
+    {
+      "id": "ice cream",
+      "features": [
+        {
+          "taste": "sweet",
+          "spiceLevel": "none"
+        },
+        {
+          "nutritionalLevel": 2
+        }
+      ]
+    },
+    {
+      "id": "juice",
+      "features": [
+        {
+          "taste": "sweet",
+          "spiceLevel": "none"
+        },
+        {
+          "nutritionLevel": 5
+        },
+        {
+          "drink": true
+        }
+      ]
+    },
+    {
+      "id": "salad",
+      "features": [
+        {
+          "taste": "salty",
+          "spiceLevel": "low"
+        },
+        {
+          "nutritionLevel": 8
+        }
+      ]
+    }
+  ];
+}
+```
 
 ## <a name="create-the-learning-loop"></a>Vytvoření výukové smyčky
 
@@ -119,7 +201,53 @@ Výuková smyčka pro přizpůsobování je cyklem volání [pořadí](#request-
 
 Následující smyčka kódu projde cyklem, který uživateli požádá o jejich Předvolby na příkazovém řádku, aby si vybrali nejlepší akci, která prezentuje výběr zákazníkovi, který si zvolí ze seznamu, a pak pošle do přizpůsobené signalizaci, jak dobře služba vybrala.
 
-[!code-javascript[Create the learning loop](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=mainLoop)]
+```javascript
+let runLoop = true;
+
+do {
+
+  let rankRequest = {}
+
+  // Generate an ID to associate with the request.
+  rankRequest.eventId = uuidv1();
+
+  // Get context information from the user.
+  rankRequest.contextFeatures = getContextFeaturesList();
+
+  // Get the actions list to choose from personalization with their features.
+  rankRequest.actions = getActionsList();
+
+  // Exclude an action for personalization ranking. This action will be held at its current position.
+  rankRequest.excludedActions = getExcludedActionsList();
+
+  rankRequest.deferActivation = false;
+
+  // Rank the actions
+  const rankResponse = await personalizerClient.rank(rankRequest);
+
+  console.log("\nPersonalization service thinks you would like to have:\n")
+  console.log(rankResponse.rewardActionId);
+
+  // Display top choice to user, user agrees or disagrees with top choice
+  const reward = getReward();
+
+  console.log("\nPersonalization service ranked the actions with the probabilities as below:\n");
+  for (let i = 0; i < rankResponse.ranking.length; i++) {
+    console.log(JSON.stringify(rankResponse.ranking[i]) + "\n");
+  }
+
+  // Send the reward for the action based on user response.
+
+  const rewardRequest = {
+    value: reward
+  }
+
+  await personalizerClient.events.reward(rankRequest.eventId, rewardRequest);
+
+  runLoop = continueLoop();
+
+} while (runLoop);
+```
 
 Podívá se podrobněji na volání pořadí a odměny v následujících oddílech.
 
@@ -134,16 +262,40 @@ Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživ
 
 Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](../concept-feature-evaluation.md) [akcí a funkcí](../concepts-features.md) netriviální.
 
-[!code-javascript[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=rank)]
+```javascript
+let rankRequest = {}
+
+// Generate an ID to associate with the request.
+rankRequest.eventId = uuidv1();
+
+// Get context information from the user.
+rankRequest.contextFeatures = getContextFeaturesList();
+
+// Get the actions list to choose from personalization with their features.
+rankRequest.actions = getActionsList();
+
+// Exclude an action for personalization ranking. This action will be held at its current position.
+rankRequest.excludedActions = getExcludedActionsList();
+
+rankRequest.deferActivation = false;
+
+// Rank the actions
+const rankResponse = await personalizerClient.rank(rankRequest);
+```
 
 ## <a name="send-a-reward"></a>Poslat odměnu
-
 
 Chcete-li získat skóre odměňování v žádosti o odměnu, program získá výběr uživatele z příkazového řádku, přiřadí číselnou hodnotu výběru a pak odešle jedinečné ID události a skóre odměňování jako číselnou hodnotu pro rozhraní API pro odměnu.
 
 V tomto rychlém startu se přiřadí jednoduché číslo jako skóre odměňování, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má být odesláno volání [odměna](../concept-rewards.md) , v závislosti na konkrétních potřebách netriviální povahy.
 
-[!code-javascript[The Personalizer learning loop sends a reward.](~/cognitive-services-quickstart-code/javascript/Personalizer/sample.js?name=reward)]
+```javascript
+const rewardRequest = {
+  value: reward
+}
+
+await personalizerClient.events.reward(rankRequest.eventId, rewardRequest);
+```
 
 ## <a name="run-the-program"></a>Spuštění programu
 

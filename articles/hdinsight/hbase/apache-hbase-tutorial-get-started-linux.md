@@ -1,19 +1,16 @@
 ---
 title: Kurz – použití Apache HBA v Azure HDInsight
 description: Postupujte podle tohoto kurzu Apache HBA a začněte používat Hadoop ve službě HDInsight. Vytvářejte tabulky z prostředí HBase a dotazujte je pomocí Hive.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 01/22/2021
+ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958357"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705666"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
@@ -30,9 +27,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. Příklady v tomto článku používají pro příkazy oblé prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .  Příklady složených s některými drobnými úpravami mohou pracovat na příkazovém řádku systému Windows.  Nebo můžete použít rutinu Windows PowerShellu [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod).
+* Bash. Příklady v tomto článku používají pro příkazy oblé prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .  Příklady složených s některými drobnými úpravami mohou pracovat na příkazovém řádku systému Windows.  Nebo můžete použít rutinu Windows PowerShellu [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod).
 
 ## <a name="create-apache-hbase-cluster"></a>Vytvoření clusteru Apache HBA
 
@@ -57,7 +54,7 @@ Následující postup používá šablonu Azure Resource Manager k vytvoření c
 
     Každý cluster obsahuje závislost účtu Azure Storage. Po odstranění clusteru zůstanou tato data v účtu úložiště. Výchozí název účtu úložiště clusteru je název clusteru s připojenou příponou „úložiště“. Je pevně zakódované v části proměnné šablony.
 
-3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**a pak vyberte **koupit**. Vytvoření clusteru trvá přibližně 20 minut.
+3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **koupit**. Vytvoření clusteru trvá přibližně 20 minut.
 
 Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
 
@@ -136,7 +133,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
 
 HBase obsahuje několik metod načítání dat do tabulek.  Další informace naleznete v tématu [Hromadné načítání](https://hbase.apache.org/book.html#arch.bulk.load).
 
-Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt`.  Obsah datového souboru je:
+Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: `wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt`.  Obsah datového souboru je:
 
 `8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
 
@@ -207,9 +204,51 @@ Pomocí [Apache Hive](https://hive.apache.org/)můžete zadávat dotazy na data 
 
 1. K ukončení připojení SSH použijte `exit` .
 
+### <a name="separate-hive-and-hbase-clusters"></a>Samostatné clustery podregistru a HBA
+
+Dotaz na podregistr pro přístup k datům HBA nemusíte spouštět z clusteru HBA. Každý cluster, který je součástí podregistru (včetně Sparku, Hadoop, HBA nebo interaktivního dotazu), se dá použít k dotazování na data HBA za předpokladu, že jsou splněné následující kroky:
+
+1. Oba clustery musí být připojeny ke stejnému Virtual Network a podsíti
+2. Kopírování `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` z clusteru HBA hlavních do podregistru clusteru hlavních
+
+### <a name="secure-clusters"></a>Zabezpečené clustery
+
+Data HBA je také možné dotazovat z podregistru pomocí adaptérů HBA s povoleným protokolem ESP: 
+
+1. Pokud budete postupovat podle vzoru více clusterů, musí být oba clustery povolené ESP. 
+2. Pokud chcete, aby se v podregistru mohly dotazovat data HBA, ujistěte se, že `hive` uživatel má udělená oprávnění pro přístup k datům HBA přes modul plug-in HBA Ranger.
+3. Při použití samostatných clusterů s povoleným protokolem ESP se `/etc/hosts` musí obsah z clusteru HBA hlavních připojit k `/etc/hosts` podregistru clusteru hlavních. 
+> [!NOTE]
+> Po škálování obou clusterů se `/etc/hosts` musí znovu připojit.
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>Použití rozhraní REST API HBase pomocí Curl
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
+
+1. Pokud chcete povolit rozhraní REST API v clusteru HDInsight, přidejte do oddílu **akce skriptu** následující vlastní spouštěcí skript. Spouštěcí skript můžete přidat po vytvoření clusteru nebo po jeho vytvoření. V poli **typ uzlu** vyberte **servery oblastí** , aby se zajistilo, že se skript spustí jenom v adaptérech HBA na serverech oblasti.
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. Nastavte proměnnou prostředí pro snadné použití. Níže uvedené příkazy upravte tak, že nahradíte `MYPASSWORD` heslo pro přihlášení ke clusteru. Nahraďte `MYCLUSTERNAME` názvem vašeho clusteru HBA. Pak zadejte příkazy.
 
@@ -298,23 +337,29 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
    - oblastní servery
    - zálohování hlavních serverů
-   - tabulky
+   - V tabulkách
    - úlohy
    - atributy softwaru
 
+## <a name="cluster-recreation"></a>Rekreace clusteru
+
+Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby ale nedocházelo k nekonzistencím, doporučujeme před odstraněním clusteru zakázat tabulky HBA. 
+
+Můžete použít příkaz HBA `disable 'Contacts'` . 
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBA `disable 'Contacts'` . Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
+Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
-1. V části **služby**vyberte **clustery HDInsight** .
+1. V části **služby** vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
-1. Klikněte na **Odstranit**. Klikněte na tlačítko **Ano**.
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBA. A vytváření tabulek a zobrazení dat v těchto tabulkách z prostředí HBA. Zjistili jste také, jak použít dotaz na podregistr na data v rámci tabulek HBA. A použití rozhraní REST API pro adaptéry C# k vytvoření tabulky HBA a načtení dat z tabulky. Další informace naleznete v tématu:
+V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBA. A vytváření tabulek a zobrazení dat v těchto tabulkách z prostředí HBA. Zjistili jste také, jak použít dotaz na podregistr na data v rámci tabulek HBA. A použití rozhraní REST API pro adaptéry C# k vytvoření tabulky HBA a načtení dat z tabulky. Další informace najdete v následujících tématech:
 
 > [!div class="nextstepaction"]
 > [Přehled HBA v HDInsight](./apache-hbase-overview.md)

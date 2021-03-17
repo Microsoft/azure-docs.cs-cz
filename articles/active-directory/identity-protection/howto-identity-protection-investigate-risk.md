@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463939"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95251089"
 ---
 # <a name="how-to-investigate-risk"></a>Postup: Šetření rizik
 
-Identity Protection poskytuje organizacím se třemi sestavami, které mohou používat k prozkoumání rizik identity ve svém prostředí. Tyto sestavy jsou **rizikové uživatele**, **rizikové přihlášení**a **detekce rizik**. Zkoumání událostí je klíč pro lepší porozumění a identifikaci slabých bodů ve vaší strategii zabezpečení.
+Identity Protection poskytuje organizacím se třemi sestavami, které mohou používat k prozkoumání rizik identity ve svém prostředí. Tyto sestavy jsou **rizikové uživatele**, **rizikové přihlášení** a **detekce rizik**. Zkoumání událostí je klíč pro lepší porozumění a identifikaci slabých bodů ve vaší strategii zabezpečení.
 
 Všechny tři sestavy umožňují stažení událostí v nástroji. Formát CSV pro další analýzu mimo Azure Portal. Sestavy rizikových uživatelů a rizikových přihlášení umožňují stahovat nejnovější položky 2500, zatímco sestava detekce rizik umožňuje stáhnout nejnovější záznamy 5000.
 
@@ -38,7 +38,7 @@ Výběr jednotlivých položek rozbalí okno podrobností pod detekci. Zobrazen�
 
 ![Ukázková sestava Identity Protection ukazující rizikové přihlašovací údaje a podrobnosti](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Rizikové uživatele
+## <a name="risky-users"></a>Rizikoví uživatelé
 
 Pomocí informací uvedených v sestavě rizikové uživatele můžou správci najít:
 
@@ -90,6 +90,10 @@ Pomocí informací poskytnutých sestavou zjišťování rizik můžou správci 
 - Odkaz na Další informace z Microsoft Cloud App Security (MCAS).
 
 Správci se pak mohou rozhodnout, že se vrátí do sestavy rizika nebo přihlášení uživatele, aby mohli provádět akce založené na shromažďovaných informacích.
+
+> [!NOTE] 
+> Náš systém může zjistit, že riziková událost, která přispěla k rizikovým skóre rizikového uživatele, byla falešně pozitivní nebo riziko uživatele opravené pomocí vynucení zásad, jako je například dokončení výzvy MFA nebo zabezpečená Změna hesla. Proto náš systém zruší stav rizika a zobrazí se podrobnosti o riziku "AI potvrzující bezpečnost", takže už nebude přispívat k riziku uživatele. 
+
 
 ## <a name="next-steps"></a>Další kroky
 

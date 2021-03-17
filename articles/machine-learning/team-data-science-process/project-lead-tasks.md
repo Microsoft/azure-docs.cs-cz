@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76714413"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000976"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Úkoly vedoucího projektu v rámci vědeckého zpracování týmových dat
 
@@ -49,7 +49,7 @@ Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počít
 
 - Předplatné Azure.
 - V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
-- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
 
@@ -63,7 +63,7 @@ Vytvoření úložiště projektu v projektu **myTeam** vašeho týmu:
    
    ![Vybrat nové úložiště](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. V dialogovém okně **vytvořit nové úložiště** se ujistěte, že je v části **typ**zaškrtnuté políčko **Git** . Do **pole název úložiště**zadejte *DSProject1* a pak vyberte **vytvořit**.
+1. V dialogovém okně **vytvořit nové úložiště** se ujistěte, že je v části **typ** zaškrtnuté políčko **Git** . Do **pole název úložiště** zadejte *DSProject1* a pak vyberte **vytvořit**.
    
    ![Vytvořit úložiště](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
@@ -83,7 +83,7 @@ Chcete-li naplnit úložiště projektu obsahem vašeho úložiště šablony t�
    
    ![Vybrat Import](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a do pole **Adresa URL klonu**zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https: \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name> *. Příklad: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje** vyberte **Git** a do pole **Adresa URL klonu** zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https: \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name>*. Příklad: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
    
 1. Vyberte **Importovat**. Obsah vašeho úložiště šablony týmu se importuje do vašeho úložiště projektu. 
    

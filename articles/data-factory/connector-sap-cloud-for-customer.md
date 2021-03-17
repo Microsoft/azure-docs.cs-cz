@@ -1,25 +1,21 @@
 ---
 title: Kopírování dat z cloudu z/do SAP pro zákazníky
 description: Naučte se, jak kopírovat data z SAP cloudu pro zákazníky na podporovaná úložiště dat jímky (nebo) z podporovaných zdrojových úložišť dat do cloudu SAP pro zákazníky pomocí Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 02/02/2021
+ms.openlocfilehash: 4590129b8d0d7a63ef4291a023ea4d980c89368c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529615"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386641"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z SAP cloudu pro zákazníky (C4C) pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z/do SAP cloudu pro zákazníka (C4C). Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
@@ -54,12 +50,9 @@ Pro propojenou službu SAP Cloud pro zákazníka jsou podporovány následujíc�
 | url | Adresa URL služby SAP C4C OData | Yes |
 | username | Zadejte uživatelské jméno pro připojení k SAP C4C. | Yes |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No |
 
->[!IMPORTANT]
->Pokud chcete zkopírovat data do služby SAP Cloud pro zákazníka, explicitně [vytvořte Azure IR](create-azure-integration-runtime.md#create-azure-ir) s umístěním poblíž vašeho cloudu SAP pro zákazníka a přidružte se k propojené službě jako v následujícím příkladu:
-
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -93,7 +86,7 @@ Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte vlastnost T
 | typ | Vlastnost Type datové sady musí být nastavená na: **SapCloudForCustomerResource** . |Yes |
 | program | Zadejte cestu k entitě SAP C4C OData. |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -126,9 +119,9 @@ Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte typ zdroje 
 | query | Zadejte vlastní dotaz OData pro čtení dat. | No |
 | httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | No |
 
-Vzorový dotaz pro získání dat pro určitý den:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Vzorový dotaz pro získání dat pro určitý den: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -167,10 +160,10 @@ Pokud chcete zkopírovat data do SAP cloudu pro zákazníka, nastavte typ jímky
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink** .  | Yes |
-| writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | Ne. Výchozí hodnota "Insert". |
-| writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | Ne. Výchozí hodnota 10. |
+| writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | No. Výchozí hodnota "Insert". |
+| writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | No. Výchozí hodnota 10. |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -215,14 +208,14 @@ Při kopírování dat z cloudu SAP pro zákazníka se z cloudu SAP pro typy zá
 
 | Datový typ OData C4C SAP | Typ dat interim Data Factory |
 |:--- |:--- |
-| EDM. Binary | Byte [] |
+| EDM. Binary | Byte [] |
 | Edm.Boolean | Logická hodnota |
-| EDM. Byte | Byte [] |
+| EDM. Byte | Byte [] |
 | EDM. DateTime | DateTime |
-| EDM. Decimal | Desetinné číslo |
+| EDM. Decimal | Decimal |
 | Edm.Double | dvojité |
-| EDM. Single | Jeden |
-| EDM. GUID | Identifikátor GUID |
+| EDM. Single | Jednoduché |
+| EDM. GUID | Identifikátor GUID |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |

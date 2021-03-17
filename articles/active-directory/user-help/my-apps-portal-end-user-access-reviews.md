@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34885e2a364778a2f81f4920aa26aa3bb5f40320
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741926"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095014"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Provedení kontroly přístupu z portálu moje aplikace
 
@@ -28,7 +28,12 @@ Pokud nemáte přístup k portálu **Moje aplikace** , obraťte se na helpdesk, 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/index.yml).
+>
+> Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
@@ -41,24 +46,24 @@ Pokud vám správce udělil oprávnění k provádění vlastních kontrol pří
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com .
+1. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com .
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-home.png)
 
-3. Kliknutím na dlaždici kontroly **přístupu** zobrazíte seznam kontrol přístupu čekajících na vaše schválení.
+1. Kliknutím na dlaždici kontroly **přístupu** zobrazíte seznam kontrol přístupu čekajících na vaše schválení.
 
     ![Stránka kontroly přístupu s nevyřízenými recenzemi přístupu pro organizaci](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Vyberte možnost **zahájit revizi** a spusťte tak kontrolu přístupu.
+1. Vyberte možnost **zahájit revizi** a spusťte tak kontrolu přístupu.
 
 5. Zkontrolujte svůj přístup a určete, zda je stále nutné.
 
     ![Stránka pro kontrolu přístupu se zobrazenými podrobnostmi o kontrole](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Pokud jste správce a máte povolený kontrolu přístupu vaší organizace ke skupinám a aplikacím, zobrazí se jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím v rámci kontrol přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Pokud jste správce a máte povolený kontrolu přístupu vaší organizace ke skupinám a aplikacím, zobrazí se jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím v rámci kontrol přístupu Azure AD](../governance/perform-access-review.md).
 
 6. Vyberte **Ano** , pokud chcete zachovat přístup nebo **ne** pro odebrání přístupu.
 
@@ -76,5 +81,5 @@ Pokud vám správce udělil oprávnění k provádění vlastních kontrol pří
 ## <a name="next-steps"></a>Další kroky
 
 - [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
-- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md)
+- [Změna informací o profilu](./my-account-portal-settings.md)
 - [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md)

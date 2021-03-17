@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244291"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996117"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití nástroje Docker Compose k nasazení několika kontejnerů
 
@@ -35,24 +35,17 @@ Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spus
   * **Počítačové zpracování obrazu** prostředek s pouze cenovou úrovní F0 nebo Standard.
   * Prostředek **pro rozpoznávání formulářů** s cenovou úrovní F0 nebo Standard.
   * **Cognitive Services** prostředku pomocí cenové úrovně S0
-
-## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
-
-Dokončete a odešlete [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/). 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+* Pokud používáte kontejner ověřovaného náhledu, budete muset vyplnit [formulář žádosti online](https://aka.ms/csgate/) , abyste ho mohli použít.
 
 ## <a name="docker-compose-file"></a>Soubor Docker Compose
 
-Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají na buď `DockerFile` nebo existující image kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako *Docker-tváře. yaml*. Zadejte v souboru příslušné hodnoty **apikey**, **fakturace**a **hodnot endpointuri** .
+Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají na buď `DockerFile` nebo existující image kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako *Docker-tváře. yaml*. Zadejte v souboru příslušné hodnoty **apikey**, **fakturace** a **hodnot endpointuri** .
 
 ```yaml
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -98,8 +91,8 @@ docker-compose up
 První Docker spustí příkaz **Docker-sestavit** pomocí této konfigurace, načte image nakonfigurované v uzlu **služby** a pak je stáhne a připojí:
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,8 +159,8 @@ Tady je příklad výstupu:
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>Kontejnery testů

@@ -7,18 +7,18 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192831"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92146320"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 
 Řada podniků využívá analýzu velkých objemů dat pro Business Insights, která jim usnadňuje rozhodování. Organizace může mít komplexní a regulované prostředí s rostoucím počtem různých uživatelů. Podnik má jistotu, že kritická podniková data se ukládají bezpečněji, se správnou úrovní přístupu uděleným pro jednotlivé uživatele. Azure Data Lake Storage Gen1 je navržena tak, aby pomohla splnit tyto požadavky na zabezpečení. V tomto článku se dozvíte o možnostech zabezpečení Data Lake Storage Gen1, včetně těchto:
 
-* Authentication
+* Ověřování
 * Autorizace
 * Izolace sítě
 * Ochrana dat
@@ -31,7 +31,7 @@ Ověřování je proces, při kterém je identita uživatele ověřena při inte
 Každé předplatné Azure je možné přidružit k instanci Azure Active Directory. K účtu Data Lake Storage Gen1 můžou přistupovat jenom identity uživatelů a služeb, které jsou definované ve službě Azure Active Directory, pomocí nástrojů pro Azure Portal, nástrojů příkazového řádku nebo prostřednictvím klientských aplikací, které vaše organizace sestaví pomocí sady Data Lake Storage Gen1 SDK. Mezi klíčové výhody použití Azure Active Directory jako centralizovaného mechanismu řízení přístupu patří:
 
 * Zjednodušená správa životního cyklu identit. Identitu uživatele nebo služby (identitu instančního objektu) můžete rychle vytvořit a rychle odvolat pouhým odstraněním nebo zakázáním účtu v adresáři.
-* Multi-Factor Authentication. [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro přihlášení a transakce uživatelů.
+* Multi-Factor Authentication. [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) poskytuje další úroveň zabezpečení pro přihlášení a transakce uživatelů.
 * Ověřování od libovolného klienta prostřednictvím standardního otevřeného protokolu, jako je například OAuth nebo OpenID.
 * Federace s podnikovými adresářovými službami a poskytovateli cloudových identit.
 
@@ -42,7 +42,7 @@ Po Azure Active Directory ověří uživatele, aby uživatel měl přístup k Da
 * [Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) pro správu účtů
 * Seznam ACL POSIX pro přístup k datům v úložišti
 
-### <a name="rbac-for-account-management"></a>RBAC pro správu účtů
+### <a name="azure-rbac-for-account-management"></a>Azure RBAC pro správu účtů
 
 Ve výchozím nastavení jsou definovány čtyři základní role Data Lake Storage Gen1. Role povolují různé operace s účtem Data Lake Storage Gen1 prostřednictvím Azure Portal, rutin prostředí PowerShell a rozhraní REST API. Role vlastníka a přispěvatele můžou na účtu provádět různé funkce správy. Roli Čtenář můžete přiřadit uživatelům, kteří zobrazují jenom data správy účtů.
 
@@ -111,7 +111,7 @@ Můžete povolit auditování přístupu k datům a diagnostické protokolován�
 
 Další informace o práci s diagnostickými protokoly pomocí Data Lake Storage Gen1 najdete v tématu [přístup k diagnostickým protokolům pro data Lake Storage Gen1](data-lake-store-diagnostic-logs.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Podnikoví zákazníci požadují cloudovou platformu pro analýzu dat, která je zabezpečená a snadno použitelná. Data Lake Storage Gen1 je navržená tak, aby vám pomohla vyřešit tyto požadavky prostřednictvím správy identit a ověřování prostřednictvím Azure Active Directory integrace, ověřování na základě seznamů ACL, izolace sítě, šifrování dat při přenosu a v klidovém provozu a auditování.
 

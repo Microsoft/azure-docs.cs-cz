@@ -4,15 +4,15 @@ description: Průvodce odstraňováním potíží pro jarní cloud Azure
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c4dbeae0cfb76063fdca70b3ad1d264b59f9ace
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083680"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634239"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -41,27 +41,32 @@ Tuto chybu opravíte tak, že přejdete na `server parameters` instanci MySQL a 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Aplikace se chybově ukončí nebo vyvolá neočekávanou chybu
 
-Při ladění selhání aplikace Začněte kontrolou stavu spuštění a stavu zjišťování aplikace. Provedete to tak, že přejdete do _správy aplikací_ v Azure Portal a zajistěte, aby byly _spuštěné_ a _aktuální_stavy všech aplikací.
+Při ladění selhání aplikace Začněte kontrolou stavu spuštění a stavu zjišťování aplikace. Provedete to tak, že přejdete do _správy aplikací_ v Azure Portal a zajistěte, aby byly _spuštěné_ a _aktuální_ stavy všech aplikací.
 
-* Pokud je stav _spuštěný_ _, ale stav zjišťování není_zapnutý, můžete přejít do části [Moje aplikace se nedá zaregistrovat](#my-application-cant-be-registered) .
+* Pokud je stav _spuštěný_ _, ale stav zjišťování není_ zapnutý, můžete přejít do části [Moje aplikace se nedá zaregistrovat](#my-application-cant-be-registered) .
 
-* Pokud je stav _zjišťování zapnutý, můžete_přejít na metriky a ověřit stav aplikace. Zkontrolujte následující metriky:
+* Pokud je stav _zjišťování zapnutý, můžete_ přejít na metriky a ověřit stav aplikace. Zkontrolujte následující metriky:
 
 
-  - `TomcatErrorCount`(_Tomcat. Global. Error_): zde se počítají všechny výjimky aplikace pružiny. Pokud je toto číslo velké, vyhledejte v protokolech aplikací Azure Log Analytics.
+  - `TomcatErrorCount` (_Tomcat. Global. Error_): zde se počítají všechny výjimky aplikace pružiny. Pokud je toto číslo velké, vyhledejte v protokolech aplikací Azure Log Analytics.
 
-  - `AppMemoryMax`(_JVM. Memory. Max_): maximální množství paměti, které aplikace je k dispozici. Velikost může být nedefinovaná nebo se může v průběhu času změnit, pokud je definována. Pokud je tato hodnota definována, je velikost použité a potvrzené paměti vždy menší než nebo rovna hodnotě max. Přidělení paměti může ale selhat se `OutOfMemoryError` zprávou, pokud se přidělení pokusy o zvýšení využité paměti, jako je například využívané *> potvrzené*, i když *použití <= Max* stále platí. V takové situaci zkuste zvýšit maximální velikost haldy pomocí `-Xmx` parametru.
+  - `AppMemoryMax` (_JVM. Memory. Max_): maximální množství paměti, které aplikace je k dispozici. Velikost může být nedefinovaná nebo se může v průběhu času změnit, pokud je definována. Pokud je tato hodnota definována, je velikost použité a potvrzené paměti vždy menší než nebo rovna hodnotě max. Přidělení paměti může ale selhat se `OutOfMemoryError` zprávou, pokud se přidělení pokusy o zvýšení využité paměti, jako je například využívané *> potvrzené*, i když *použití <= Max* stále platí. V takové situaci zkuste zvýšit maximální velikost haldy pomocí `-Xmx` parametru.
 
-  - `AppMemoryUsed`(_JVM. Memory .Ed_): množství paměti v bajtech, které aplikace aktuálně používá. V případě normálního zatížení aplikace v jazyce Java Tato metrika tvoří model *vede pilovému efektu* , ve kterém se využití paměti neustále zvětšuje a klesá v malých přírůstcích a náhle se neuvolní a pak se vzor opakuje. Tato řada metrik je způsobena uvolňováním paměti uvnitř virtuálního počítače Java, kde akce shromažďování reprezentují vede pilovému efektu vzor.
+  - `AppMemoryUsed` (_JVM. Memory .Ed_): množství paměti v bajtech, které aplikace aktuálně používá. V případě normálního zatížení aplikace v jazyce Java Tato metrika tvoří model *vede pilovému efektu* , ve kterém se využití paměti neustále zvětšuje a klesá v malých přírůstcích a náhle se neuvolní a pak se vzor opakuje. Tato řada metrik je způsobena uvolňováním paměti uvnitř virtuálního počítače Java, kde akce shromažďování reprezentují vede pilovému efektu vzor.
     
     Tato metrika je důležitá k identifikaci potíží s pamětí, například:
     * Nárůst paměti na začátku.
     * Přidělení paměti přepětí pro konkrétní logickou cestu.
     * Postupný únik paměti.
-
   Další informace najdete v tématu [metriky](spring-cloud-concept-metrics.md).
+  
+* Pokud se aplikace nespustí, ověřte, zda má aplikace platné parametry JVM. Pokud je paměť JVM nastavena příliš vysoká, může se v protokolech zobrazit následující chybová zpráva:
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+  >"požadovaná paměť 2728741K je větší než 2000M k dispozici pro přidělení"
+
+
+
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>V aplikaci dochází k vysokému využití procesoru nebo paměti
 
@@ -71,7 +76,7 @@ Pokud vaše aplikace pracuje s vysokým využitím procesoru nebo paměti, je sp
 
 Chcete-li zjistit, jaké situace platí, postupujte následovně:
 
-1. Přejít na **metriky**a pak vyberte buď **procento využití procesoru služby** , nebo **využitá paměť služby**.
+1. Přejít na **metriky** a pak vyberte buď **procento využití procesoru služby** , nebo **využitá paměť služby**.
 2. Přidáním aplikace **=** filtr určete, kterou aplikaci chcete monitorovat.
 3. Rozdělte metriky podle **instance**.
 
@@ -83,7 +88,7 @@ Další informace najdete v tématu [metriky pro jarní cloud Azure](spring-clou
 
 Pokud jsou všechny instance v provozu, můžete přejít na Azure Log Analytics a dotazovat se na protokoly aplikací a zkontrolovat logiku kódu. To vám pomůže zjistit, jestli některý z nich může ovlivnit dělení stupnice. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md).
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](https://docs.microsoft.com/azure/kusto/query/)
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Kontrolní seznam pro nasazení aplikace pružiny do jarního cloudu Azure
 
@@ -103,22 +108,30 @@ Před zprovozněním aplikace se ujistěte, že splňuje následující kritéri
 
 Při nastavování instance služby jarní cloudu Azure pomocí Azure Portal provede vám ověření za vás Azure jaře Cloud.
 
-Ale pokud se pokusíte nastavit instanci služby jarní cloudovou službu Azure pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) nebo [šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/), ověřte, že:
+Ale pokud se pokusíte nastavit instanci služby jarní cloudovou službu Azure pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli) nebo [šablony Azure Resource Manager](../azure-resource-manager/index.yml), ověřte, že:
 
 * Předplatné je aktivní.
 * Toto umístění [podporuje](spring-cloud-faq.md) služba Azure jaře Cloud.
 * Skupina prostředků pro instanci je už vytvořená.
 * Název prostředku odpovídá pravidlu pojmenování. Musí obsahovat jenom malá písmena, číslice a spojovníky. Prvním znakem musí být písmeno. Posledním znakem musí být písmeno nebo číslo. Hodnota musí být v rozmezí 2 až 32 znaků.
 
-Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí šablony Správce prostředků, nejdřív se seznamte s [pochopením struktury a syntaxe šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
+Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí šablony Správce prostředků, nejdřív se seznamte s [pochopením struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md).
 
 Název instance služby jarní cloudová služba Azure se použije pro vyžádání názvu subdomény v rámci `azureapps.io` , takže pokud je název v konfliktu s existujícím názvem, instalace selže. Další podrobnosti najdete v protokolech aktivit.
+
+### <a name="i-cant-deploy-a-net-core-app"></a>Nemůžu nasadit aplikaci .NET Core
+
+Soubor *. zip* pro aplikaci .NET Core Steeltoe nemůžete nahrát pomocí Azure Portal nebo šablony Správce prostředků.
+
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+
+Ujistěte se, že je vaše aplikace zabalená ve správném formátu *. zip* . Pokud není zabalen správně, proces přestane reagovat nebo se zobrazí chybová zpráva.
 
 ### <a name="i-cant-deploy-a-jar-package"></a>Nemůžu nasadit balíček JAR
 
 Balíček/source archivu Java (JAR) nemůžete nahrát pomocí šablony Azure Portal nebo Správce prostředků.
 
-Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
 
 Pokud dojde k přerušení dotazování, stále můžete načíst protokoly nasazení pomocí následujícího příkazu:
 
@@ -132,13 +145,13 @@ Ujistěte se, že je vaše aplikace zabalená ve správném [spustitelném form�
 
 Nejde nahrát balíček JAR/source pomocí Azure Portal nebo šablony Správce prostředků.
 
-Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
 
 Pokud dojde k přerušení dotazování, stále můžete načíst protokoly sestavení a nasazení pomocí následujícího příkazu:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Upozorňujeme však, že jedna instance služby jarní cloudová služba Azure může najednou aktivovat pouze jednu úlohu sestavení pro jeden zdrojový balíček. Další informace najdete v tématu [nasazení aplikace](spring-cloud-quickstart-launch-app-portal.md) a [Nastavení přípravného prostředí ve jarním cloudu Azure](spring-cloud-howto-staging-environment.md).
+Upozorňujeme však, že jedna instance služby jarní cloudová služba Azure může najednou aktivovat pouze jednu úlohu sestavení pro jeden zdrojový balíček. Další informace najdete v tématu [nasazení aplikace](spring-cloud-quickstart.md) a [Nastavení přípravného prostředí ve jarním cloudu Azure](spring-cloud-howto-staging-environment.md).
 
 ### <a name="my-application-cant-be-registered"></a>Moje aplikace se nedá zaregistrovat.
 
@@ -150,7 +163,7 @@ Pokud migrujete existující jarní cloudové řešení do Azure, ujistěte se, 
 
 Můžete také ověřit protokoly klienta _registru služby_ v Azure Log Analytics. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md) .
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](https://docs.microsoft.com/azure/kusto/query/)
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Chci zkontrolovat proměnné prostředí moje aplikace
 
@@ -193,13 +206,13 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
 Vyhledejte podřízený uzel s názvem `systemEnvironment` .  Tento uzel obsahuje proměnné prostředí vaší aplikace.
 
 > [!IMPORTANT]
-> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, vyhledat stránku konfigurace aplikace a odstranit tuto proměnnou `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` prostředí:
+> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, vyhledat stránku konfigurace aplikace a odstranit tuto proměnnou  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` prostředí:
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nemůžu najít metriky nebo protokoly pro moji aplikaci
 
 Pokud chcete zajistit, aby byly stavy aplikace _spuštěné_ a _aktuální_, otevřete **správu aplikací** .
 
-Zkontrolujte, jestli je v balíčku aplikace povolená možnost počasí _JMX_ . Tato funkce se dá povolit s vlastností konfigurace `spring.jmx.enabled=true` .  
+Zkontrolujte, jestli je v balíčku aplikace povolený _JMX_ . Tato funkce se dá povolit s vlastností konfigurace `spring.jmx.enabled=true` .  
 
 Zkontrolujte `spring-boot-actuator` , zda je závislost povolena v balíčku aplikace a zda je úspěšně spuštěná.
 
@@ -210,4 +223,8 @@ Zkontrolujte `spring-boot-actuator` , zda je závislost povolena v balíčku apl
 </dependency>
 ```
 
-Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](../azure-monitor/logs/quick-create-workspace.md). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+
+## <a name="next-steps"></a>Další kroky
+
+* [Jak provést samočinnou diagnostiku a řešení problémů v Azure jaře cloudu](spring-cloud-howto-self-diagnose-solve.md)

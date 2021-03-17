@@ -1,371 +1,235 @@
 ---
-title: Posílání a přijímání událostí z Azure Event Hubs pomocí .NET (staré)
-description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core, která odesílá a přijímá události do a z Azure Event Hubs pomocí starého balíčku Microsoft. Azure. EventHubs.
-ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: bd8476c89fea94a9d1b4a101841c11137d4dd5be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+title: Posílání nebo přijímání událostí z Azure Event Hubs pomocí rozhraní .NET (nejnovější)
+description: Tento článek popisuje postup vytvoření aplikace .NET Core, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure. Messaging. EventHubs.
+ms.topic: quickstart
+ms.date: 09/25/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320784"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504606"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Core (Microsoft. Azure. EventHubs)
-V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny **Microsoft. Azure. EventHubs** .NET Core.
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
+V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
 
-> [!WARNING]
-> V tomto rychlém startu se používá starý balíček **Microsoft. Azure. EventHubs** . Pro rychlý Start, který používá nejnovější knihovnu **Azure. Messaging. EventHubs** , najdete informace v tématu [posílání a přijímání událostí pomocí knihovny Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md). Pokud chcete aplikaci přesunout z používání staré knihovny na novou, přečtěte si [příručku k migraci z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
+> [!IMPORTANT]
+> V tomto rychlém startu se používá nová knihovna **Azure. Messaging. EventHubs** . Pro rychlý Start, který používá starou knihovnu **Microsoft. Azure. EventHubs** , najdete informace v tématu [posílání a přijímání událostí pomocí Microsoft. Azure. EventHubs Library](event-hubs-dotnet-standard-get-started-send-legacy.md). 
 
-## <a name="prerequisites"></a>Požadavky
+
+
+## <a name="prerequisites"></a>Předpoklady
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
 - **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- [Microsoft Visual Studio 2019](https://www.visualstudio.com).
-- [Nástroje .NET Core pro sadu Visual Studio 2015 nebo 2017](https://www.microsoft.com/net/core). 
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
+- **Microsoft Visual Studio 2019**. Klientská knihovna Azure Event Hubs využívá nové funkce, které byly představeny v C# 8,0.  Knihovnu můžete dál používat s předchozími jazykovými verzemi jazyka C#, ale nová syntaxe nebude k dispozici. Chcete-li použít úplnou syntaxi, je doporučeno kompilovat s [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0 nebo vyšší a [jazykové verze](/dotnet/csharp/language-reference/configure-language-version#override-a-default) nastavenou na `latest` . Pokud používáte Visual Studio, verze před sadou Visual Studio 2019 nejsou kompatibilní s nástroji potřebnými pro sestavení projektů v jazyce C# 8,0. Do [této](https://visualstudio.microsoft.com/vs/)části si můžete stáhnout Visual Studio 2019, včetně bezplatné edice Community.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ## <a name="send-events"></a>Odesílání událostí 
 V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro odesílání událostí do centra událostí. 
 
-> [!NOTE]
-> Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Případně můžete postupovat podle kroků v tomto rychlém startu a vytvořit si vlastní.
-
-
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
-Spusťte Visual Studio. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**. Vytvořte konzolovou aplikaci .NET Core.
+1. Spusťte Visual Studio 2019. 
+1. Vyberte **vytvořit nový projekt**. 
+1. V dialogovém okně **vytvořit nový projekt** proveďte následující kroky: Pokud toto dialogové okno nevidíte, vyberte v nabídce **soubor** , vyberte možnost **Nový** a pak vyberte možnost **projekt**. 
+    1. Pro programovací jazyk vyberte **C#** .
+    1. Jako typ aplikace vyberte **Konzola** . 
+    1. V seznamu výsledků vyberte **Konzolová aplikace (.NET Core)** . 
+    1. Pak vyberte **Další**. 
 
-![Nový projekt](./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png)
+        ![Dialogové okno Nový projekt](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
+1. Jako název projektu zadejte **EventHubsSender** , **EventHubsQuickStart** pro název řešení a pak kliknutím na **OK** vytvořte projekt. 
+
+    ![Konzolová aplikace > C#](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
-[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)Pomocí následujících kroků přidejte do projektu balíček NuGet knihovny .NET Core: 
+1. V nabídce vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** . 
+1. Spuštěním následujícího příkazu nainstalujte balíček NuGet **Azure. Messaging. EventHubs** :
 
-1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-2. Klikněte na kartu **Procházet**, vyhledejte Microsoft.Azure.EventHubs a pak vyberte balíček **Microsoft.Azure.EventHubs**. Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.
+    ```cmd
+    Install-Package Azure.Messaging.EventHubs
+    ```
+
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-1. Na začátek souboru Program.cs přidejte následující příkazy `using`:
+1. `using`Do horní části souboru **program.cs** přidejte následující příkazy:
 
     ```csharp
-    using Microsoft.Azure.EventHubs;
+    using System;
     using System.Text;
     using System.Threading.Tasks;
+    using Azure.Messaging.EventHubs;
+    using Azure.Messaging.EventHubs.Producer;
     ```
 
-2. Do třídy `Program` přidejte konstanty pro připojovací řetězec služby Event Hubs a cestu k entitě (název konkrétního centra událostí). Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Ujistěte se, že `{Event Hubs connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí. 
+2. Do třídy přidejte konstanty `Program` pro připojovací řetězec Event Hubs a název centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Ujistěte se, že `{Event Hubs namespace connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí. 
 
     ```csharp
-    private static EventHubClient eventHubClient;
-    private const string EventHubConnectionString = "{Event Hubs connection string}";
-    private const string EventHubName = "{Event Hub path/name}";
+    private const string connectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
+    private const string eventHubName = "<EVENT HUB NAME>";
     ```
 
-3. Do třídy `Program` přidejte následujícím způsobem novou metodu `MainAsync`:
+3. Nahraďte `Main` metodu následující `async Main` metodou. Podrobnosti najdete v komentářích ke kódu. 
 
     ```csharp
-    private static async Task MainAsync(string[] args)
-    {
-        // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-        // Typically, the connection string should have the entity path in it, but this simple scenario
-        // uses the connection string from the namespace.
-        var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
+        static async Task Main()
         {
-            EntityPath = EventHubName
-        };
-
-        eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
-
-        await SendMessagesToEventHub(100);
-
-        await eventHubClient.CloseAsync();
-
-        Console.WriteLine("Press ENTER to exit.");
-        Console.ReadLine();
-    }
-    ```
-
-4. Do třídy `Program` přidejte následujícím způsobem novou metodu `SendMessagesToEventHub`:
-
-    ```csharp
-    // Uses the event hub client to send 100 messages to the event hub.
-    private static async Task SendMessagesToEventHub(int numMessagesToSend)
-    {
-        for (var i = 0; i < numMessagesToSend; i++)
-        {
-            try
+            // Create a producer client that you can use to send events to an event hub
+            await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
             {
-                var message = $"Message {i}";
-                Console.WriteLine($"Sending message: {message}");
-                await eventHubClient.SendAsync(new EventData(Encoding.UTF8.GetBytes(message)));
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine($"{DateTime.Now} > Exception: {exception.Message}");
-            }
+                // Create a batch of events 
+                using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
 
-            await Task.Delay(10);
-        }
+                // Add events to the batch. An event is a represented by a collection of bytes and metadata. 
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First event")));
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second event")));
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Third event")));
 
-        Console.WriteLine($"{numMessagesToSend} messages sent.");
-    }
-    ```
-
-5. Do metody `Main` ve třídě `Program` přidejte následující kód:
-
-    ```csharp
-    MainAsync(args).GetAwaiter().GetResult();
-    ```
-
-   Soubor Program.cs by měl vypadat takhle.
-
-    ```csharp
-    namespace SampleSender
-    {
-        using System;
-        using System.Text;
-        using System.Threading.Tasks;
-        using Microsoft.Azure.EventHubs;
-
-        public class Program
-        {
-            private static EventHubClient eventHubClient;
-            private const string EventHubConnectionString = "{Event Hubs connection string}";
-            private const string EventHubName = "{Event Hub path/name}";
-
-            public static void Main(string[] args)
-            {
-                MainAsync(args).GetAwaiter().GetResult();
-            }
-
-            private static async Task MainAsync(string[] args)
-            {
-                // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-                // we are using the connection string from the namespace.
-                var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
-                {
-                    EntityPath = EventHubName
-                };
-
-                eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
-
-                await SendMessagesToEventHub(100);
-
-                await eventHubClient.CloseAsync();
-
-                Console.WriteLine("Press ENTER to exit.");
-                Console.ReadLine();
-            }
-
-            // Uses the event hub client to send 100 messages to the event hub.
-            private static async Task SendMessagesToEventHub(int numMessagesToSend)
-            {
-                for (var i = 0; i < numMessagesToSend; i++)
-                {
-                    try
-                    {
-                        var message = $"Message {i}";
-                        Console.WriteLine($"Sending message: {message}");
-                        await eventHubClient.SendAsync(new EventData(Encoding.UTF8.GetBytes(message)));
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine($"{DateTime.Now} > Exception: {exception.Message}");
-                    }
-
-                    await Task.Delay(10);
-                }
-
-                Console.WriteLine($"{numMessagesToSend} messages sent.");
+                // Use the producer client to send the batch of events to the event hub
+                await producerClient.SendAsync(eventBatch);
+                Console.WriteLine("A batch of 3 events has been published.");
             }
         }
-    }
     ```
+5. Sestavte projekt a ujistěte se, že nejsou k dispozici žádné chyby.
+6. Spusťte program a počkejte na potvrzovací zprávu. 
+7. V Azure Portal můžete ověřit, že centrum událostí přijalo zprávy. Přepněte do zobrazení **zprávy** v části **metriky** . Aktualizujte stránku, aby se graf aktualizoval. Může trvat několik sekund, než se zobrazí zpráva, že byly přijaty zprávy. 
 
-6. Spusťte program a zkontrolujte, že nejsou žádné chyby.
+    [![Ověřte, že centrum událostí přijalo zprávy.](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
+
+    > [!NOTE]
+    > Úplný zdrojový kód s dalšími informativními komentáři najdete v [tomto souboru na GitHubu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample04_PublishingEvents.md) .
 
 ## <a name="receive-events"></a>Příjem událostí
-V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí třídy [Event Processor Host](event-hubs-event-processor-host.md). [Procesor událostí Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z Center událostí tím, že spravuje trvalé kontrolní body a paralelní příjem z těchto Center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce.
-> [!NOTE]
-> Tento rychlý Start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), nahradit,, a `EventHubConnectionString` `EventHubName` `StorageAccountName` `StorageAccountKey` `StorageContainerName` řetězce s hodnotami centra událostí a spustit ho. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
+V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí procesoru událostí. Procesor událostí zjednodušuje přijímání událostí z Center událostí tím, že spravuje trvalé kontrolní body a paralelní příjemy z těchto Center událostí. Procesor událostí je přidružený ke konkrétnímu centru událostí a skupině uživatelů. Přijímá události z více oddílů v centru událostí a předá je delegátovi obslužné rutiny pro zpracování pomocí kódu, který poskytnete. 
 
-[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
-### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
+> [!WARNING]
+> Pokud spustíte tento kód v Azure Stackovém centru, dojde k chybám za běhu, pokud necílíte na konkrétní verzi rozhraní API úložiště. Důvodem je, že sada Event Hubs SDK používá nejnovější dostupné rozhraní API Azure Storage dostupné v Azure, které nemusí být k dispozici na vaší platformě služby Azure Stack hub. Centrum Azure Stack může podporovat jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou běžně dostupná v Azure. Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu, podívejte se na [podporovanou verzi rozhraní API Azure Storage pro sestavení centra pro Azure Stack](/azure-stack/user/azure-stack-acs-differences?#api-version) a cílení na verzi v kódu. 
+>
+> Pokud například používáte v Azure Stack centra verze 2005, nejvyšší dostupná verze služby úložiště je verze 2019-02-02. Ve výchozím nastavení používá Klientská knihovna Event Hubs SDK nejvyšší dostupnou verzi v Azure (2019-07-07 v době vydání sady SDK). V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2019-02-02. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v [této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
+ 
 
-Spusťte Visual Studio. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**. Vytvořte konzolovou aplikaci .NET Core.
+### <a name="create-an-azure-storage-and-a-blob-container"></a>Vytvoření Azure Storage a kontejneru objektů BLOB
+V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního bodu. Pomocí těchto kroků vytvořte účet Azure Storage. 
 
-![Nový projekt](./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png)
+1. [Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)
+2. [Vytvoření kontejneru objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
+
+    Poznamenejte si připojovací řetězec a název kontejneru. Budete je používat v kódu příjmu. 
+
+
+### <a name="create-a-project-for-the-receiver"></a>Vytvořit projekt pro příjemce
+
+1. V okně Průzkumník řešení klikněte pravým tlačítkem na řešení **EventHubQuickStart** , přejděte na **Přidat** a vyberte **Nový projekt**. 
+1. Vyberte **aplikace konzoly (.NET Core)** a pak vyberte **Další**. 
+1. Jako **název projektu** zadejte **EventHubsReceiver** a vyberte **vytvořit**. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
-Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet knihoven .NET Standard [**Microsoft.Azure.EventHubs**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) a [**Microsoft.Azure.EventHubs.Processor**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/): 
+1. V nabídce vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** . 
+1. Spuštěním následujícího příkazu nainstalujte balíček NuGet **Azure. Messaging. EventHubs** :
 
-1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-2. Klikněte na kartu **Procházet**, vyhledejte **Microsoft.Azure.EventHubs** a pak vyberte balíček **Microsoft.Azure.EventHubs**. Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.
-3. Zopakujte kroky 1 a 2 a nainstalujte balíček **Microsoft.Azure.EventHubs.Processor**.
+    ```cmd
+    Install-Package Azure.Messaging.EventHubs
+    ```
+1. Spuštěním následujícího příkazu nainstalujte balíček NuGet **Azure. Messaging. EventHubs. Processor** :
 
-### <a name="implement-the-ieventprocessor-interface"></a>Implementace rozhraní IEventProcessor
+    ```cmd
+    Install-Package Azure.Messaging.EventHubs.Processor
+    ```    
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt, klikněte na **Přidat** a pak klikněte na **Třída**. Pojmenujte novou třídu **SimpleEventProcessor**.
+### <a name="update-the-main-method"></a>Aktualizace metody Main 
 
-2. Otevřete soubor SimpleEventProcessor.cs a přidejte na jeho začátek následující příkazy `using`.
+1. Do `using` horní části souboru **program.cs** přidejte následující příkazy.
 
     ```csharp
-    using Microsoft.Azure.EventHubs;
-    using Microsoft.Azure.EventHubs.Processor;
+    using System;
+    using System.Text;
     using System.Threading.Tasks;
+    using Azure.Storage.Blobs;
+    using Azure.Messaging.EventHubs;
+    using Azure.Messaging.EventHubs.Consumer;
+    using Azure.Messaging.EventHubs.Processor;
     ```
-
-3. Implementujte rozhraní `IEventProcessor`. Celý obsah třídy `SimpleEventProcessor` nahraďte následujícím kódem:
+1. Do třídy přidejte konstanty `Program` pro připojovací řetězec Event Hubs a název centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí a účtu úložiště (přístupové klíče – primární připojovací řetězec). Ujistěte se, že `{Event Hubs namespace connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí.
 
     ```csharp
-    public class SimpleEventProcessor : IEventProcessor
-    {
-        public Task CloseAsync(PartitionContext context, CloseReason reason)
+        private const string ehubNamespaceConnectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
+        private const string eventHubName = "<EVENT HUB NAME>";
+        private const string blobStorageConnectionString = "<AZURE STORAGE CONNECTION STRING>";
+        private const string blobContainerName = "<BLOB CONTAINER NAME>";
+    ```
+3. Nahraďte `Main` metodu následující `async Main` metodou. Podrobnosti najdete v komentářích ke kódu. 
+
+    ```csharp
+        static async Task Main()
         {
-            Console.WriteLine($"Processor Shutting Down. Partition '{context.PartitionId}', Reason: '{reason}'.");
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }    
+    ```
+1. Nyní do třídy přidejte následující metody obslužné rutiny události a chyby. 
+
+    ```csharp
+        static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            // Write the body of the event to the console window
+            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+
+            // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
+            await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            // Write details about the error to the console window
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
             return Task.CompletedTask;
-        }
-
-        public Task OpenAsync(PartitionContext context)
-        {
-            Console.WriteLine($"SimpleEventProcessor initialized. Partition: '{context.PartitionId}'");
-            return Task.CompletedTask;
-        }
-
-        public Task ProcessErrorAsync(PartitionContext context, Exception error)
-        {
-            Console.WriteLine($"Error on Partition: {context.PartitionId}, Error: {error.Message}");
-            return Task.CompletedTask;
-        }
-
-        public Task ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
-        {
-            foreach (var eventData in messages)
-            {
-                var data = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
-                Console.WriteLine($"Message received. Partition: '{context.PartitionId}', Data: '{data}'");
-            }
-
-            return context.CheckpointAsync();
-        }
-    }
+        }    
     ```
+1. Sestavte projekt a ujistěte se, že nejsou k dispozici žádné chyby.
 
-### <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Aktualizace metody Main pro použití třídy SimpleEventProcessor
+    > [!NOTE]
+    > Úplný zdrojový kód s dalšími informativními komentáři najdete v [tomto souboru na GitHubu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.md).
+6. Spusťte aplikaci příjemce. 
+1. Měla by se zobrazit zpráva, že byla událost přijata. 
 
-1. Do horní části souboru Program.cs přidejte následující příkazy `using`.
+    ![Přijatá událost](./media/getstarted-dotnet-standard-send-v2/event-received.png)
 
-    ```csharp
-    using Microsoft.Azure.EventHubs;
-    using Microsoft.Azure.EventHubs.Processor;
-    using System.Threading.Tasks;
-    ```
-
-2. Do třídy `Program` přidejte konstanty pro připojovací řetězec centra událostí, název centra událostí, název kontejneru účtu úložiště, název účtu úložiště a klíč účtu úložiště. Přidejte následující kód a zástupné texty nahraďte odpovídajícími hodnotami:
-
-    ```csharp
-    private const string EventHubConnectionString = "{Event Hubs connection string}";
-    private const string EventHubName = "{Event Hub path/name}";
-    private const string StorageContainerName = "{Storage account container name}";
-    private const string StorageAccountName = "{Storage account name}";
-    private const string StorageAccountKey = "{Storage account key}";
-
-    private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
-    ```   
-
-3. Do třídy `Program` přidejte následujícím způsobem novou metodu `MainAsync`:
-
-    ```csharp
-    private static async Task MainAsync(string[] args)
-    {
-        Console.WriteLine("Registering EventProcessor...");
-
-        var eventProcessorHost = new EventProcessorHost(
-            EventHubName,
-            PartitionReceiver.DefaultConsumerGroupName,
-            EventHubConnectionString,
-            StorageConnectionString,
-            StorageContainerName);
-
-        // Registers the Event Processor Host and starts receiving messages
-        await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
-
-        Console.WriteLine("Receiving. Press ENTER to stop worker.");
-        Console.ReadLine();
-
-        // Disposes of the Event Processor Host
-        await eventProcessorHost.UnregisterEventProcessorAsync();
-    }
-    ```
-
-3. Do metody `Main` přidejte následující řádek kódu:
-
-    ```csharp
-    MainAsync(args).GetAwaiter().GetResult();
-    ```
-
-    Soubor Program.cs by měl vypadat takhle:
-
-    ```csharp
-    namespace SampleEphReceiver
-    {
-
-        public class Program
-        {
-            private const string EventHubConnectionString = "{Event Hubs connection string}";
-            private const string EventHubName = "{Event Hub path/name}";
-            private const string StorageContainerName = "{Storage account container name}";
-            private const string StorageAccountName = "{Storage account name}";
-            private const string StorageAccountKey = "{Storage account key}";
-
-            private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
-
-            public static void Main(string[] args)
-            {
-                MainAsync(args).GetAwaiter().GetResult();
-            }
-
-            private static async Task MainAsync(string[] args)
-            {
-                Console.WriteLine("Registering EventProcessor...");
-
-                var eventProcessorHost = new EventProcessorHost(
-                    EventHubName,
-                    PartitionReceiver.DefaultConsumerGroupName,
-                    EventHubConnectionString,
-                    StorageConnectionString,
-                    StorageContainerName);
-
-                // Registers the Event Processor Host and starts receiving messages
-                await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
-
-                Console.WriteLine("Receiving. Press ENTER to stop worker.");
-                Console.ReadLine();
-
-                // Disposes of the Event Processor Host
-                await eventProcessorHost.UnregisterEventProcessorAsync();
-            }
-        }
-    }
-    ```
-
-4. Spusťte program a zkontrolujte, že nejsou žádné chyby.
+    Tyto události jsou tři události, které jste předtím odeslali do centra událostí, spuštěním programu Sender. 
 
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si následující články:
+Podívejte se na ukázky na GitHubu. 
 
-- [Ukázky řízení přístupu na základě role (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
-    
-    Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
-- [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
-- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
-
-
+- [Ukázky Event Hubs na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [Ukázky procesoru událostí na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
+- [Ukázka řízení přístupu na základě role v Azure (Azure RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

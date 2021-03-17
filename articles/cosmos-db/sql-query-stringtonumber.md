@@ -3,18 +3,21 @@ title: StringToNumber v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o StringToNumber funkcí SQL systému v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2622958a2315458ccd01da4aea7c6b75941e755
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78296418"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339559"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí výraz přeložený na číslo. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -91,4 +94,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

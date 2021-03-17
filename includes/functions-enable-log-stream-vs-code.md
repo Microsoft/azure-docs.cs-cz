@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: glenga
 ms.openlocfilehash: 437b4ab62cc8c4903af88ca2f9632e89b953c798
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68669582"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010449"
 ---
 Postup zapnutí protokolů streamování aplikace funkcí v Azure:
 

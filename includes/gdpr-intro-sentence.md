@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: b049b3651f12b1a73a3511d030bbdbbfaceb2480
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 1f451db9ab06ff376e1a6ca4d503d21b48d19789
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67174727"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109209"
 ---
->[!Note] 
-> Tento článek obsahuje postup pro odstranění osobních údajů ze zařízení nebo služby a je možné ho využít jako podporu vašich závazků v rámci GDPR. Pokud hledáte obecné informace o GDPR, přečtěte si [část věnovanou GDPR na portálu Service Trust](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> Tento článek popisuje postup odstranění osobních údajů ze zařízení nebo služby a jeho použití k podpoře svých závazků v rámci GDPR. Obecné informace o GDPR najdete v [části GDPR na webu Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/gdpr-overview) a v [části GDPR portálu pro důvěryhodnost služby](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

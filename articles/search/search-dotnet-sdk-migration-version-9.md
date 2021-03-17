@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562342"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002704"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
 
-Pokud používáte verzi 7,0-Preview nebo starší [sadu Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 9.
+Pokud používáte verzi 7,0-Preview nebo starší [sadu Azure Search .NET SDK](/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 9.
 
 > [!NOTE]
 > Pokud chcete použít verzi 8,0-Preview k vyhodnocení funkcí, které nejsou všeobecně dostupné, můžete postupovat podle pokynů v tomto článku a upgradovat na 8,0-Preview z předchozích verzí.
@@ -106,12 +107,12 @@ Konstruktor bez parametrů `Field` byl proveden `internal` . Od `Field` této ch
 
 Ve verzi 7,0-Preview a dříve byly různé třídy, které zapouzdřují skupiny dokumentů, strukturované do paralelních hierarchií tříd:
 
-  -  `DocumentSearchResult`a `DocumentSearchResult<T>` Zděděno od`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`a `DocumentSuggestResult<T>` Zděděno od`DocumentSuggestResultBase`
-  -  `IndexAction`a `IndexAction<T>` Zděděno od`IndexActionBase`
-  -  `IndexBatch`a `IndexBatch<T>` Zděděno od`IndexBatchBase`
-  -  `SearchResult`a `SearchResult<T>` Zděděno od`SearchResultBase`
-  -  `SuggestResult`a `SuggestResult<T>` Zděděno od`SuggestResultBase`
+  -  `DocumentSearchResult` a `DocumentSearchResult<T>` Zděděno od `DocumentSearchResultBase`
+  -  `DocumentSuggestResult` a `DocumentSuggestResult<T>` Zděděno od `DocumentSuggestResultBase`
+  -  `IndexAction` a `IndexAction<T>` Zděděno od `IndexActionBase`
+  -  `IndexBatch` a `IndexBatch<T>` Zděděno od `IndexBatchBase`
+  -  `SearchResult` a `SearchResult<T>` Zděděno od `SearchResultBase`
+  -  `SuggestResult` a `SuggestResult<T>` Zděděno od `SuggestResultBase`
 
 Odvozené typy bez parametru obecného typu by se měly používat ve scénářích s dynamickým zadáním a s předpokládaným využitím tohoto `Document` typu.
 
@@ -151,7 +152,7 @@ Vlastnosti, které drží volitelné hodnoty těchto typů, jsou nyní explicitn
 
 ### <a name="removed-facetresults-and-hithighlights"></a>Odebrané FacetResults a HitHighlights
 
-`FacetResults`Třídy a byly `HitHighlights` odebrány. Výsledky omezující vlastnosti se teď zadávají jako `IDictionary<string, IList<FacetResult>>` a zvýrazní se `IDictionary<string, IList<string>>` . Rychlý způsob, jak vyřešit chyby sestavení zavedené touto změnou, je přidat `using` aliasy v horní části každého souboru, který používá odebrané typy. Příklad:
+`FacetResults`Třídy a byly `HitHighlights` odebrány. Výsledky omezující vlastnosti se teď zadávají jako `IDictionary<string, IList<FacetResult>>` a zvýrazní se `IDictionary<string, IList<string>>` . Rychlý způsob, jak vyřešit chyby sestavení zavedené touto změnou, je přidat `using` aliasy v horní části každého souboru, který používá odebrané typy. Například:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;

@@ -6,40 +6,41 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 96640e55d1ad71bc0e448976b2c9f1fa85b2ab62
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586124"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216594"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní SQL API, která podporuje synchronní operace.
 
 > [!IMPORTANT]  
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) pro váš projekt. Chcete-li provést upgrade, postupujte podle pokynů v příručce [k migraci na Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) a v příručce pro předaný [objekt actor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) . 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) pro váš projekt. Chcete-li provést upgrade, postupujte podle pokynů v příručce [k migraci na Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) a v příručce pro předaný [objekt actor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) . 
 >
 
 | |  |
@@ -47,14 +48,20 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
 |**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
+|**Začínáme**|[Začínáme se sadou Java SDK](./create-sql-api-java.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
+|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* Opravili jsme chybu při zpracování dotazu prostřednictvím interoperability služby.
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* Přidali jsme podporu pro dotazování na kanál změn z bodu v čase.
+
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* Opravuje problém mezipaměti hlavního oddílu v dotazucollection dokumentu.
+* Opravuje problém v mezipaměti primárního oddílu pro dotazcollection dokumentu.
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * Byla přidána podpora pro 449 opakování vlastní konfigurace.
@@ -88,7 +95,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 ### <a name="223"></a><a name="2.2.3"></a>2.2.3
 * Spotřebovává se chybová zpráva s hodnotou null ze služby a vyprodukuje se výjimka klienta dokumentu.
 
-### <a name="222"></a><a name="2.2.2"></a>bodě
+### <a name="222"></a><a name="2.2.2"></a>2.2.2
 * Vylepšení připojení soketu, přidání výchozí hodnoty true SoKeepAlive
 
 ### <a name="220"></a><a name="2.2.0"></a>2.2.0
@@ -174,7 +181,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 * Opravili jsme několik chyb v kontejneru relací, které můžou způsobit výjimku "prostředek nenalezen" pro požadavky hned po vytvoření kolekce.
 
 ### <a name="195"></a><a name="1.9.5"></a>1.9.5
-* Přidání podpory agregačních dotazů (COUNT, MIN, MAX, SUM a AVG). Viz [Podpora agregace](sql-query-aggregates.md).
+* Přidání podpory agregačních dotazů (COUNT, MIN, MAX, SUM a AVG). Viz [Podpora agregace](sql-query-aggregate-functions.md).
 * Přidání podpory pro kanál změn
 * Přidala se podpora pro informace o kvótě kolekce prostřednictvím RequestOptions. setPopulateQuotaInfo.
 * Přidání podpory pro protokolování skriptu uložených procedur přes RequestOptions. setScriptLoggingEnabled.
@@ -232,7 +239,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 * Byla přidána podpora TTL (Time to Live) pro dokumenty.
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* Implementované [dělené kolekce](partition-data.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
+* Implementované [dělené kolekce](partitioning-overview.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
 
 ### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Opravili jsme chybu v HashPartitionResolver a generovali hodnoty hash v Little-endian, aby byly konzistentní s jinými sadami SDK.
@@ -256,20 +263,22 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 * Implementuje zásadu indexování v2.
 
 ### <a name="100"></a><a name="1.0.0"></a>1.0.0
-* GA SDK
+* Sada GA SDK
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
 
-Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** . Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože je to proto, že doporučujeme vždy co nejdříve upgradovat na nejnovější verzi sady SDK.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože je to proto, že doporučujeme vždy co nejdříve upgradovat na nejnovější verzi sady SDK.
 
 > [!WARNING]
-> Po 30. května 2020 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x sady Azure Cosmos DB Java SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
+> Po 30. května 2020 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x sady Azure Cosmos DB Java SDK pro SQL API. Pokud nechcete provést upgrade, služba Azure Cosmos DB bude dál zpracovávat požadavky odeslané z verze 1.x sady SDK.
 >
 > Po 29. února 2016 již Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytují podporu pro verze 0. x sady Azure Cosmos DB Java SDK pro rozhraní SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 0. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |Dec 17, 2020 |--- |
+| [2.6.0](#2.6.0) |16. července 2020 |--- |
 | [2.5.1](#2.5.1) |03. června 2020 |--- |
 | [2.5.0](#2.5.0) |12. května 2020 |--- |
 | [2.4.7](#2.4.7) |20. února 2020 |--- |
@@ -281,7 +290,7 @@ Microsoft bude před vyřazením sady SDK do novější nebo podporované verze 
 | [2.4.0](#2.4.0) |4. května 2019 |--- |
 | [2.3.0](#2.3.0) |Duben 24, 2019 |--- |
 | [2.2.3](#2.2.3) |16. dubna 2019 |--- |
-| [bodě](#2.2.2) |Duben 05, 2019 |--- |
+| [2.2.2](#2.2.2) |Duben 05, 2019 |--- |
 | [2.2.0](#2.2.0) |27. března 2019 |--- |
 | [2.1.3](#2.1.3) |13. března 2019 |--- |
 | [2.1.2](#2.1.2) |9. března 2019 |--- |
@@ -326,9 +335,8 @@ Microsoft bude před vyřazením sady SDK do novější nebo podporované verze 
 | 0.9.1 – zapůjčení |19. prosince 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |10. prosince 2014 |29. února 2016 |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
-
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

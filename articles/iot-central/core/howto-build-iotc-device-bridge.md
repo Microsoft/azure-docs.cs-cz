@@ -8,18 +8,19 @@ ms.author: viviali
 ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
-ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: fc8ea41e804344735cfa2400d5d763622d8811c8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158414"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026246"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Sestavení mostu IoT Central zařízení pro připojení dalších cloudů IoT k IoT Central
 
 *Toto téma se týká správců.*
 
-Most IoT Central zařízení je open source řešení, které spojuje vaše Sigfox, částice, síť a další cloudy do vaší IoT Central aplikace. Bez ohledu na to, jestli používáte zařízení pro sledování prostředků připojená k síti s nízkou spotřebou (Sigfox), nebo pomocí zařízení pro monitorování kvality ovzduší v cloudu zařízení (částic) nebo pomocí zařízení pro monitorování vlhkosti v půdě TTN, můžete přímo využít sílu IoT Central pomocí mostu zařízení IoT Central. Most zařízení spojuje další cloudy IoT s IoT Central tím, že předává data, která vaše zařízení odesílají do ostatních cloudů, prostřednictvím aplikace IoT Central. Ve vaší aplikaci IoT Central můžete vytvářet pravidla a spouštět analýzy těchto dat, vytvářet pracovní postupy v Microsoft Flow a Azure Logic Apps, exportovat tato data a spoustu dalšího. Získání [mostu IoT Central zařízení](https://aka.ms/iotcentralgithubdevicebridge) z GitHubu
+Most IoT Central zařízení je open source řešení, které spojuje vaše Sigfox, částice, síť a další cloudy do vaší IoT Central aplikace. Bez ohledu na to, jestli používáte zařízení pro sledování prostředků připojená k síti s nízkou spotřebou (Sigfox), nebo pomocí zařízení pro monitorování kvality ovzduší v cloudu zařízení (částic) nebo pomocí zařízení pro monitorování vlhkosti v půdě TTN, můžete přímo využít sílu IoT Central pomocí mostu zařízení IoT Central. Most zařízení spojuje další cloudy IoT s IoT Central tím, že předává data, která vaše zařízení odesílají do ostatních cloudů, prostřednictvím aplikace IoT Central. Ve vaší aplikaci IoT Central můžete vytvářet pravidla a spouštět analýzy těchto dat, vytvářet pracovní postupy v Power automatu a Azure Logic Apps, exportovat tato data a spoustu dalšího. Získání [mostu IoT Central zařízení](https://aka.ms/iotcentralgithubdevicebridge) z GitHubu
 
 ## <a name="what-is-it-and-how-does-it-work"></a>Co to je a jak to funguje?
 Most zařízení IoT Central je open source řešení na GitHubu. Můžete přejít pomocí tlačítka "nasadit do Azure", které nasadí vlastní šablonu Azure Resource Manager s několika prostředky Azure do vašeho předplatného Azure. Mezi prostředky patří:

@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží s Azure Stream Analytics dotazy
 description: Tento článek popisuje techniky řešení potíží s dotazy v úlohách Azure Stream Analytics.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337802"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015126"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
@@ -32,24 +31,26 @@ Tento článek popisuje běžné problémy s vývojem Azure Stream Analyticsch d
 
     ![Výsledek náhledu diagramu úlohy](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
-3.  Pokud používáte [**časové razítko**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](stream-analytics-out-of-order-and-late-events.md).
+3.  Pokud používáte [**časové razítko**](/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](./stream-analytics-time-handling.md).
 
 4.  Odstraňte běžné nástrah, například:
-    - Klauzule [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) v dotazu vyfiltroval všechny události, což znemožňuje vygenerování všech výstupů.
-    - Funkce [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy. Chcete-li se vyhnout chybám přetypování typů, použijte místo toho [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) .
+    - Klauzule [**WHERE**](/stream-analytics-query/where-azure-stream-analytics) v dotazu vyfiltroval všechny události, což znemožňuje vygenerování všech výstupů.
+    - Funkce [**cast**](/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy. Chcete-li se vyhnout chybám přetypování typů, použijte místo toho [**TRY_CAST**](/stream-analytics-query/try-cast-azure-stream-analytics) .
     - Při použití funkcí okna počkejte na celou dobu trvání okna, aby se zobrazil výstup dotazu.
     - Časové razítko pro události předchází času zahájení úlohy a události jsou vyřazeny.
-    - Podmínky [**spojení**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) se neshodují. Pokud se žádné shody neshodují, bude nulový výstup.
+    - Podmínky [**spojení**](/stream-analytics-query/join-azure-stream-analytics) se neshodují. Pokud se žádné shody neshodují, bude nulový výstup.
 
-5.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít na **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
+5.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít na **Nastavení** a vybrat [**řazení událostí**](./stream-analytics-time-handling.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
 
 6. Ladění pomocí protokolů aktivit a prostředků:
-    - Použijte [protokoly aktivit](../azure-resource-manager/resource-group-audit.md)a filtrujte k identifikaci a ladění chyb.
+    - Použijte [protokoly aktivit](../azure-resource-manager/management/view-activity-logs.md)a filtrujte k identifikaci a ladění chyb.
     - K identifikaci a ladění chyb použijte [protokoly prostředků úloh](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="resource-utilization-is-high"></a>Využití prostředků je vysoké.
 
 Zajistěte, abyste využili výhod paralelního využívání Azure Stream Analytics. Můžete se dozvědět, jak [škálovat pomocí paralelního zpracování dotazů](stream-analytics-parallelization.md) Stream Analytics úloh, a to konfigurací vstupních oddílů a optimalizací definice analytického dotazu.
+
+Pokud je využití prostředků konzistentně více než 80%, prodleva meze roste a počet nevyřízených událostí roste, zvažte zvýšení počtu jednotek streamování. Vysoké využití indikuje, že úloha používá blízko maximálního počtu přidělených prostředků.
 
 ## <a name="debug-queries-progressively"></a>Postupné ladění dotazů
 
@@ -103,12 +104,12 @@ Tentokrát se data ve výstupu naformátují a vyplní podle očekávání.
 
 ## <a name="get-help"></a>Podpora
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

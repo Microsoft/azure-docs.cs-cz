@@ -4,14 +4,15 @@ description: Přehled postupu nastavení více instancí služby signalizace pro
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 1bf8191b0a76ad442ac5d2b286c214f6ee9da822
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504848"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90976498"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Odolnost a zotavení po havárii ve službě Azure Signal
 
@@ -41,7 +42,7 @@ Pokud je však klient připojen, je vždy směrován do aplikačního serveru ve
 
 Níže je diagram, který znázorňuje takovou topologii:
 
-![topologie](media/signalr-concept-disaster-recovery/topology.png)
+![Diagram zobrazuje dvě oblasti každý pomocí aplikačního serveru a služby signalizace, kde je každý server přidružený ke službě signalizace ve své oblasti jako primární a ke službě v jiné oblasti jako sekundární.](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurace aplikačních serverů s více instancemi služby signalizace
 

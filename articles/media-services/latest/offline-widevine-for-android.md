@@ -1,6 +1,6 @@
 ---
-title: Streamování Widevine pro Android offline s Azure Media Services V3
-description: V tomto tématu se dozvíte, jak nakonfigurovat účet Azure Media Services pro offline streamování chráněného obsahu Widevine.
+title: Online streamování Widevine pro Android
+description: V tomto tématu se dozvíte, jak nakonfigurovat účet Azure Media Services V3 pro offline streamování chráněného obsahu Widevine.
 services: media-services
 keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
 documentationcenter: ''
@@ -11,22 +11,27 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/07/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80887193"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955203"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Online streamování Widevine pro Android s Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Kromě ochrany obsahu pro online streamování, předplatné mediálního obsahu a služby pronájmu nabízí obsah ke stažení, který funguje, když nejste připojení k Internetu. Je možné, že budete muset stáhnout obsah na telefon nebo tablet pro přehrávání v režimu v letadle, když se dolétající z sítě. Další scénáře, ve kterých byste mohli chtít stáhnout obsah:
 
 - Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM mimo hranici země nebo oblasti. Pokud chce uživatel sledovat obsah během cestování v cizině, je nutné offline stahování.
 - V některých zemích nebo oblastech je dostupnost Internetu a/nebo šířka pásma omezená. Uživatelé si můžou stáhnout obsah, abyste si ho mohli prohlédnout dostatečně dostatečně jako v dostatečném rozlišení.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem. Technologie DRM v režimu offline vám umožňuje poskytovat pro svůj obsah modely předplatného, pronájmu a nákupu a umožnit tak zákazníkům služeb, aby při odpojení od internetu mohli obsah snadno přebírat.
 
@@ -119,9 +124,9 @@ Vývojáři by měli v průběhu vývoje aplikace odkazovat na [příručku pro 
 
 ### <a name="working-with-older-android-devices"></a>Práce se staršími zařízeními s Androidem
 
-U některých starších zařízení s Androidem je potřeba nastavit hodnoty pro následující vlastnosti **policy_overrides** (definované v [šabloně licence Widevine](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**a **license_duration_seconds**. Případně je můžete nastavit na hodnotu nula, což znamená nekonečné nebo neomezené trvání.  
+U některých starších zařízení s Androidem je potřeba nastavit hodnoty pro následující vlastnosti **policy_overrides** (definované v [šabloně licence Widevine](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds** a **license_duration_seconds**. Případně je můžete nastavit na hodnotu nula, což znamená nekonečné nebo neomezené trvání.  
 
-Hodnoty musí být nastaveny, aby nedocházelo k chybě přetečení celého čísla. Další vysvětlení tohoto problému naleznete v tématu https://github.com/google/ExoPlayer/issues/3150 a https://github.com/google/ExoPlayer/issues/3112 . <br/>Pokud hodnoty explicitně nenastavíte, budou přiřazeny velmi velké hodnoty pro **PlaybackDurationRemaining** a **LicenseDurationRemaining** (například 9223372036854775807, což je maximální kladná hodnota pro 64 celé číslo). V důsledku toho se zdá, že licence Widevine vypršela, a proto se k dešifrování nestane. 
+Hodnoty musí být nastaveny, aby nedocházelo k chybě přetečení celého čísla. Další vysvětlení tohoto problému naleznete v tématu https://github.com/google/ExoPlayer/issues/3150 a https://github.com/google/ExoPlayer/issues/3112 . <br/>Pokud hodnoty explicitně nenastavíte, budou přiřazeny velmi velké hodnoty pro  **PlaybackDurationRemaining** a **LicenseDurationRemaining** (například 9223372036854775807, což je maximální kladná hodnota pro 64 celé číslo). V důsledku toho se zdá, že licence Widevine vypršela, a proto se k dešifrování nestane. 
 
 K tomuto problému nedochází na Androidu 5,0, nebo novějším, protože Android 5,0 je první verze Androidu, která je navržená tak, aby plně podporovala ARMv8 ([Advanced RISC počítač](https://en.wikipedia.org/wiki/ARM_architecture)) a 64-bitové platformy, zatímco Android 4,4 KitKat byl původně navržený tak, aby podporoval ARMv7 a 32 platformy jako jiné starší verze Androidu.
 
@@ -147,9 +152,9 @@ Pokud upgradujete mobilní prohlížeč Chrome na v62 (nebo vyšší) na telefon
 
 Výše uvedená Open Source aplikace PWA je vytvořená v Node.js. Pokud chcete hostovat svou vlastní verzi na serveru Ubuntu, pamatujte na následující běžné problémy, které můžou bránit přehrávání:
 
-1. Problém CORS: ukázkové video v ukázkové aplikaci je hostované v https://storage.googleapis.com/biograf-video-files/videos/ . Google nastavila CORS pro všechny testovací vzorky hostované v sadě Google Cloud Storage. Jsou obsluhovány pomocí hlaviček CORS a explicitně specifikují položku CORS: `https://biograf-155113.appspot.com` (doména, ve které hostuje vaše ukázka) znemožňuje přístup jakýmkoli jiným webům. Pokud se pokusíte, zobrazí se následující chyba protokolu HTTP:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. Problém CORS: ukázkové video v ukázkové aplikaci je hostované v https://storage.googleapis.com/biograf-video-files/videos/ . Google nastavila CORS pro všechny testovací vzorky hostované v sadě Google Cloud Storage. Jsou obsluhovány pomocí hlaviček CORS a explicitně specifikují položku CORS: `https://biograf-155113.appspot.com` (doména, ve které hostuje vaše ukázka) znemožňuje přístup jakýmkoli jiným webům. Pokud se pokusíte, zobrazí se následující chyba protokolu HTTP: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Problém s certifikátem: od verze Chrome v 58 EME pro Widevine vyžaduje protokol HTTPS. Proto je třeba hostovat ukázkovou aplikaci přes protokol HTTPS s certifikátem x509. Běžný testovací certifikát nefunguje v důsledku následujících požadavků: potřebujete získat certifikát splňující následující minimální požadavky:
-    - Chrome a Firefox vyžadují, aby v certifikátu existovalo nastavení alternativního názvu subjektu sítě SAN.
+    - Chrome a Firefox vyžadují, aby v certifikátu existovalo nastavení alternativního názvu SAN-Subject.
     - Certifikát musí mít důvěryhodnou certifikační autoritu a vývojový certifikát podepsaný svým držitelem nefunguje.
     - Certifikát musí obsahovat CN, který odpovídá názvu DNS webového serveru nebo brány.
 

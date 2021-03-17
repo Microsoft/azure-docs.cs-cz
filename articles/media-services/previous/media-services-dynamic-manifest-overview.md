@@ -3,7 +3,7 @@ title: Filtry a dynamické manifesty | Microsoft Docs
 description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro archivaci tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ff102765-8cee-4c08-a6da-b603db9e2054
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: d86cca609f0a494bb012d3393facc14ec23dbbe2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 002a7c61d6760decf65016870739ab62b15d5c72
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054691"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013682"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtry a dynamické manifesty
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 2](media-services-dynamic-manifest-overview.md)
@@ -75,22 +77,22 @@ Tady je příklad souboru manifestu:
 ```
 
 ### <a name="dynamic-manifests"></a>Dynamické manifesty
-V případě, že váš klient potřebuje větší flexibilitu než to, co je popsáno v souboru manifestu výchozího prostředku, existují [scénáře](media-services-dynamic-manifest-overview.md#scenarios) . Příklad:
+V případě, že váš klient potřebuje větší flexibilitu než to, co je popsáno v souboru manifestu výchozího prostředku, existují [scénáře](media-services-dynamic-manifest-overview.md#scenarios) . Například:
 
 * Specifické pro zařízení: doručovat pouze zadané verze a/nebo zadané stopy jazyka podporované zařízením, které se používá k přehrání obsahu ("filtrování verzí"). 
 * Snižte manifest pro zobrazení dílčího klipu živé události ("filtrování dílčích klipů").
 * Ořízne začátek videa ("ořezávání videa").
 * Upravte okno prezentace (DVR), aby se v přehrávači zajistila omezená délka okna DVR ("Úprava okna prezentace").
 
-Pro dosažení této flexibility Media Services nabízí **dynamické manifesty** založené na předem definovaných [filtrech](media-services-dynamic-manifest-overview.md#filters).  Po definování filtrů je můžou klienti používat ke streamování konkrétní verze nebo dílčích klipů vašeho videa. Budou určovat filtry v adrese URL streamování. Filtry mohou být aplikovány na protokoly streamování s adaptivní přenosovou rychlostí podporovanou [dynamickým balením](media-services-dynamic-packaging-overview.md): HLS, MPEG-spojovník a Smooth Streaming. Příklad:
+Pro dosažení této flexibility Media Services nabízí **dynamické manifesty** založené na předem definovaných [filtrech](media-services-dynamic-manifest-overview.md#filters).  Po definování filtrů je můžou klienti používat ke streamování konkrétní verze nebo dílčích klipů vašeho videa. Budou určovat filtry v adrese URL streamování. Filtry mohou být aplikovány na protokoly streamování s adaptivní přenosovou rychlostí podporovanou [dynamickým balením](media-services-dynamic-packaging-overview.md): HLS, MPEG-spojovník a Smooth Streaming. Například:
 
 Adresa URL POMLČKy MPEG s filtrem
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 Adresa URL Smooth Streaming s filtrem
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 Další informace o tom, jak doručovat svůj obsah a vytvořit adresy URL streamování, najdete v tématu [doručování obsahu – přehled](media-services-deliver-content-overview.md).
@@ -108,8 +110,8 @@ Existují dva typy filtrů assetů:
 
 Typy globálních a místních filtrů mají stejné vlastnosti. Hlavní rozdíl mezi těmito dvěma hodnotami je, pro které scénáře, jaký typ souborového je vhodnější. Globální filtry jsou obvykle vhodné pro profily zařízení (filtrování verzí), kde se k oříznutí konkrétního prostředku dají použít místní filtry.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Typické scénáře
-Jak bylo zmíněno dříve, při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách. Kromě toho mohou být k dispozici další požadavky, které zahrnují filtrování prostředků a používání **dynamického manifestu**s. Následující části poskytují stručný přehled různých scénářů filtrování.
+## <a name="common-scenarios"></a><a id="scenarios"></a>Obvyklé scénáře
+Jak bylo zmíněno dříve, při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách. Kromě toho mohou být k dispozici další požadavky, které zahrnují filtrování prostředků a používání **dynamického manifestu** s. Následující části poskytují stručný přehled různých scénářů filtrování.
 
 * Zadejte jenom podmnožinu zvukových a video verzí, které některá zařízení můžou zpracovat (místo všech verzí, které jsou k assetu přidružené). 
 * Přehrávání pouze části videa (místo přehrávání celého videa).

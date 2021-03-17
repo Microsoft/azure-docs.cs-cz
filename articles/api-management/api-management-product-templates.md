@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249899"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
@@ -37,7 +37,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="product-list"></a><a name="ProductList"></a>Seznam produktů  
+##  <a name="product-list"></a><a name="ProductList"></a> Seznam produktů  
  Šablona **seznam produktů** vám umožní přizpůsobit tělo stránky seznam produktů na portálu pro vývojáře.  
   
  ![Seznam produktů](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -79,7 +79,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |Stránkování|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce Products|  
 |Filtrování|Entita [filtrování](api-management-template-data-model-reference.md#Filtering)|Informace o filtrování pro stránku seznam produktů.|  
@@ -123,7 +123,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-##  <a name="product"></a><a name="Product"></a>Produktu  
+##  <a name="product"></a><a name="Product"></a> Produktu  
  Šablona **produktu** vám umožní přizpůsobit text stránky produktu na portálu pro vývojáře.  
   
  ![Stránka produktu portál pro vývojáře](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -204,19 +204,19 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
-|Součin|[Product](api-management-template-data-model-reference.md#Product) (Produkt)|Zadaný produkt.|  
-|IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
-|SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended`– předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active`– předplatné je aktivní.<br />-   `2 - expired`– předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádost o odběr byla vytvořena vývojářem, ale ještě nebyla schválena nebo odmítnuta.<br />-   `4 - rejected`– žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled`– předplatné zrušila vývojář nebo správce.|  
-|Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  
-|DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](./api-management-howto-setup-delegation.md) .|  
+|Produkt|[Product](api-management-template-data-model-reference.md#Product) (Produkt)|Zadaný produkt.|  
+|IsDeveloperSubscribed|boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
+|SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active` – předplatné je aktivní.<br />-   `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted` – žádost o odběr byla vytvořena vývojářem, ale ještě nebyla schválena nebo odmítnuta.<br />-   `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
+|Omezení|array|Tato vlastnost je zastaralá a neměla by se používat.|  
+|DelegatedSubscriptionEnabled|boolean|Zda je pro toto předplatné povoleno [delegování](./api-management-howto-setup-delegation.md) .|  
 |DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
-|Souhlasí|Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
+|Souhlasí|boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
 |Předplatná|Kolekce [souhrnných entit předplatného](api-management-template-data-model-reference.md#SubscriptionSummary)|Odběry produktu.|  
 |Třídy|Kolekce entit [rozhraní API](api-management-template-data-model-reference.md#API) .|Rozhraní API v tomto produktu.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

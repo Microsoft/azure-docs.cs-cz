@@ -1,16 +1,14 @@
 ---
 title: Správa aplikací pro víc prostředí
 description: Aplikace Azure Service Fabric lze spouštět v clusterech, které jsou v rozsahu od jednoho počítače po tisíce počítačů. V některých případech budete chtít nakonfigurovat aplikaci odlišně pro tato různá prostředí. Tento článek popisuje, jak definovat různé parametry aplikace pro každé prostředí.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257483"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787973"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Správa aplikací pro víc prostředí
 
@@ -40,7 +38,7 @@ Konfiguraci, kterou zadáte, můžete rozdělit do dvou kategorií:
 
 Při vytváření pojmenovaných instancí aplikace v Service Fabric máte možnost předávat parametry. Způsob, jakým to provedete, závisí na tom, jak vytváříte instanci aplikace.
 
-  - Rutina v prostředí PowerShell [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) přebírá parametry aplikace jako zatřiďovací tabulku.
+  - Rutina v prostředí PowerShell [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication) přebírá parametry aplikace jako zatřiďovací tabulku.
   - Pomocí sfctl [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) příkaz přebírá parametry jako řetězec JSON. Skript install.sh používá sfctl.
   - Sada Visual Studio poskytuje sadu souborů parametrů ve složce Parameters v projektu aplikace. Tyto soubory parametrů jsou používány při publikování ze sady Visual Studio pomocí Azure DevOps Services nebo Azure DevOps Server. V aplikaci Visual Studio jsou soubory parametrů předávány do skriptu Deploy-FabricApplication.ps1.
 

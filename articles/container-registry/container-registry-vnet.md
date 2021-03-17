@@ -3,12 +3,12 @@ title: Omezení přístupu pomocí koncového bodu služby
 description: Omezte přístup ke službě Azure Container Registry pomocí koncového bodu služby ve službě Azure Virtual Network. Přístup ke koncovému bodu služby je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371426"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026220"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Omezení přístupu k registru kontejneru pomocí koncového bodu služby ve službě Azure Virtual Network
 
@@ -29,13 +29,15 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 * Každý registr podporuje maximálně 100 pravidel přístupu k síti.
 * Koncové body služby pro Azure Container Registry nejsou podporované v cloudu Azure USA nebo v cloudu Azure Čína.
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
+
+## <a name="prerequisites"></a>Předpoklady
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.0.58 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 * Pokud ještě nemáte registr kontejnerů, vytvořte ho (je potřeba Premium úrovně) a nahrajte do něj ukázkovou image, jako je například `hello-world` Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
-* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Například:
+* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -47,13 +49,11 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 
 ## <a name="configure-network-access-for-registry"></a>Konfigurace přístupu k síti pro registr
 
-V této části nakonfigurujete registr kontejneru tak, aby povoloval přístup z podsítě ve službě Azure Virtual Network. K dispozici jsou ekvivalentní kroky pomocí Azure CLI a Azure Portal.
+V této části nakonfigurujete registr kontejneru tak, aby povoloval přístup z podsítě ve službě Azure Virtual Network. Kroky jsou k dispozici pomocí Azure CLI.
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>Povolení přístupu z virtuální sítě – rozhraní příkazového řádku
+### <a name="add-a-service-endpoint-to-a-subnet"></a>Přidání koncového bodu služby do podsítě
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>Přidání koncového bodu služby do podsítě
-
-Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založený na názvu virtuálního počítače. Například pokud pojmenujete virtuální počítač *myDockerVM*, výchozí název virtuální sítě je *myDockerVMVNET*s podsítí s názvem *myDockerVMSubnet*. Ověřte to ve Azure Portal nebo pomocí příkazu [AZ Network VNet list][az-network-vnet-list] :
+Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založený na názvu virtuálního počítače. Například pokud pojmenujete virtuální počítač *myDockerVM* , výchozí název virtuální sítě je *myDockerVMVNET* s podsítí s názvem *myDockerVMSubnet* . Ověřte to pomocí příkazu [AZ Network VNet list][az-network-vnet-list] :
 
 ```azurecli
 az network vnet list \
@@ -99,7 +99,7 @@ Výstup:
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>Změna výchozího přístupu k síti do registru
+### <a name="change-default-network-access-to-registry"></a>Změna výchozího přístupu k síti do registru
 
 Ve výchozím nastavení umožňuje služba Azure Container Registry připojení z hostitelů v libovolné síti. Chcete-li omezit přístup k vybrané síti, změňte výchozí akci na odepřít přístup. Název registru nahraďte následujícím příkazem [AZ ACR Update][az-acr-update] :
 
@@ -107,7 +107,7 @@ Ve výchozím nastavení umožňuje služba Azure Container Registry připojení
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>Přidat síťové pravidlo do registru
+### <a name="add-network-rule-to-registry"></a>Přidat síťové pravidlo do registru
 
 Pomocí příkazu [AZ ACR Network-Rule Add][az-acr-network-rule-add] přidejte do registru síťové pravidlo, které umožňuje přístup z podsítě virtuálního počítače. V následujícím příkazu nahraďte název registru kontejneru a ID prostředku podsítě: 
 
@@ -141,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>Obnovit výchozí přístup k registru
 
-Pokud chcete obnovit registr tak, aby byl ve výchozím nastavení povolený přístup, odeberte všechna nakonfigurovaná Síťová pravidla. Pak nastavte výchozí akci na povolený přístup. K dispozici jsou ekvivalentní kroky pomocí Azure CLI a Azure Portal.
+Pokud chcete obnovit registr tak, aby byl ve výchozím nastavení povolený přístup, odeberte všechna nakonfigurovaná Síťová pravidla. Pak nastavte výchozí akci na povolený přístup. 
 
-### <a name="restore-default-registry-access---cli"></a>Obnovit výchozí přístup k registru – rozhraní příkazového řádku
-
-#### <a name="remove-network-rules"></a>Odebrat Síťová pravidla
+### <a name="remove-network-rules"></a>Odebrat Síťová pravidla
 
 Chcete-li zobrazit seznam síťových pravidel nakonfigurovaných pro váš registr, spusťte následující příkaz [AZ ACR Network-Rule list][az-acr-network-rule-list] :
 
@@ -153,7 +151,7 @@ Chcete-li zobrazit seznam síťových pravidel nakonfigurovaných pro váš regi
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Například:
+Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Příklad:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -164,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>Allow access
+### <a name="allow-access"></a>Allow access
 
 Název registru nahraďte následujícím příkazem [AZ ACR Update][az-acr-update] :
 ```azurecli
@@ -179,8 +177,6 @@ Pokud jste vytvořili všechny prostředky Azure ve stejné skupině prostředk�
 az group delete --name myResourceGroup
 ```
 
-Pokud chcete prostředky vyčistit na portálu, přejděte do skupiny prostředků myResourceGroup. Po načtení skupiny prostředků klikněte na **Odstranit skupinu prostředků** a odeberte skupinu prostředků a prostředky, které jsou tam uložené.
-
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete omezit přístup k registru pomocí privátního koncového bodu ve virtuální síti, přečtěte si téma [konfigurace privátního odkazu Azure pro službu Azure Container Registry](container-registry-private-link.md).
@@ -193,7 +189,6 @@ Pokud chcete prostředky vyčistit na portálu, přejděte do skupiny prostředk
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

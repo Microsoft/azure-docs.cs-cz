@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75429158"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151662"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
 
@@ -385,7 +385,7 @@ Portál teď ověří vaši šablonu a nasadí naklonované centrum. Pokud máte
 
 Teď, když máte naklonování a používání, musíte zkopírovat všechna zařízení z původního rozbočovače do klonu. 
 
-To lze provést několika způsoby. Buď jste původně použili [službu Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)k zřízení zařízení, nebo jste to neudělali. Pokud jste to provedli, není to obtížné. Pokud jste to nepoužili, může to být velmi složité. 
+To lze provést několika způsoby. Buď jste původně použili [službu Device Provisioning Service (DPS)](../iot-dps/about-iot-dps.md)k zřízení zařízení, nebo jste to neudělali. Pokud jste to provedli, není to obtížné. Pokud jste to nepoužili, může to být velmi složité. 
 
 Pokud jste nepoužívali DPS ke zřízení zařízení, můžete přeskočit další část a začít [příkazem import/export přesunout zařízení do nového centra](#using-import-export-to-move-the-devices-to-the-new-hub).
 
@@ -407,7 +407,7 @@ Pokud chcete vrátit změny zpět, znovu zajistěte zařízení z nového rozbo�
 
 Nyní jste dokončili migraci vašeho centra a jeho zařízení. Můžete přeskočit na [Vyčištění](#clean-up).
 
-## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Přesunutí zařízení do nového centra pomocí importu a exportu
+## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Přesun zařízení do nového centra pomocí Import-Export
 
 Aplikace cílí na .NET Core, takže ji můžete spustit buď v systému Windows nebo Linux. Můžete si stáhnout ukázku, načíst připojovací řetězce, nastavit příznaky, pro které chcete spustit službu BITS, a spustit ji. To můžete provést bez předchozího otevření kódu.
 
@@ -601,4 +601,4 @@ Další informace o IoT Hub a vývoji pro centrum najdete v následujících čl
 
 * [Přehled správy zařízení IoT Hub](iot-hub-device-management-overview.md)
 
-* Pokud chcete nasadit ukázkovou aplikaci, přečtěte si prosím [nasazení aplikace .NET Core](https://docs.microsoft.com/dotnet/core/deploying/index).
+* Pokud chcete nasadit ukázkovou aplikaci, přečtěte si prosím [nasazení aplikace .NET Core](/dotnet/core/deploying/index).

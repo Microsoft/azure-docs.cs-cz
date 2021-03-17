@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166429"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574803"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
-Pomocí MSAL.NET [(Azure AD B2C)](https://aka.ms/aadb2c)se můžete přihlásit k uživatelům pomocí sociálních Azure Active Directory B2C identit. Azure AD B2C je vybudována kolem pojmu zásad. V MSAL.NET určení zásady se překládá na poskytování autority.
+Pomocí MSAL.NET [(Azure AD B2C)](../../active-directory-b2c/overview.md)se můžete přihlásit k uživatelům pomocí sociálních Azure Active Directory B2C identit. Azure AD B2C je vybudována kolem pojmu zásad. V MSAL.NET určení zásady se překládá na poskytování autority.
 
-- Při vytváření instance veřejné klientské aplikace je třeba zadat zásadu v rámci autority.
+- Při vytváření instance veřejné klientské aplikace určete zásadu v rámci autority.
 - Pokud chcete použít zásadu, zavolejte přepsání `AcquireTokenInteractive` , které přijímá `authority` parametr.
 
 Tento článek se týká MSAL.NET 3. x. Pro MSAL.NET 2. x si přečtěte část [Azure AD B2C specifické v MSAL 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) na wikiwebu MSAL.NET na GitHubu.
@@ -67,31 +67,27 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 Získání tokenu pro rozhraní API chráněného Azure AD B2C ve veřejné klientské aplikaci vyžaduje použití přepsání se autoritou:
 
 ```csharp
-IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
-                                           .WithAccount(GetAccountByPolicy(accounts, policy))
-                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                           .ExecuteAsync();
+AuthenticationResult authResult = null;
+IEnumerable<IAccount> accounts = await application.GetAccountsAsync(policy);
+IAccount account = accounts.FirstOrDefault();
+try
+{
+    authResult = await application.AcquireTokenSilent(scopes, account)
+                      .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex)
+{
+    authResult = await application.AcquireTokenInteractive(scopes)
+                        .WithAccount(account)
+                        .WithParentActivityOrWindow(ParentActivityOrWindow)
+                        .ExecuteAsync();
+}  
 ```
 
 V předchozím fragmentu kódu:
 
 - `policy` je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow` vyžaduje se pro Android (aktivita) a je volitelný pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v Microsoft Windows a UIViewController v iOS. Další informace o dialogovém okně uživatelského rozhraní najdete v tématu [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) na wikiwebu MSAL.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Například:
-
-  ```csharp
-  private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
-  {
-      foreach (var account in accounts)
-      {
-          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-          if (userIdentifier.EndsWith(policy.ToLower()))
-              return account;
-      }
-      return null;
-  }
-  ```
 
 Použití toku uživatele nebo vlastní zásady (například umožnění úprav svého profilu nebo resetování hesla uživatelem) se právě provádí voláním `AcquireTokenInteractive` . U těchto dvou zásad nepoužíváte vrácený výsledek tokenu/ověřování.
 
@@ -104,16 +100,16 @@ Uděláte to tak, že zavoláte `AcquireTokenInteractive` se autoritou pro tuto 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
-    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    IEnumerable<IAccount> accounts = await application.GetAccountsAsync(PolicyEditProfile);
+    IAccount account = accounts.FirstOrDefault();
     try
     {
-        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+        var authResult = await application.AcquireTokenInteractive(scopes)
                             .WithPrompt(Prompt.NoPrompt),
-                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .WithAccount(account)
+                            .WithB2CAuthority(AuthorityEditProfile)
                             .ExecuteAsync();
-        DisplayBasicTokenInfo(authResult);
-    }
+     }
     catch
     {
     }
@@ -134,7 +130,7 @@ Pomocí uživatelského jména a hesla v toku ROPC jste si zarovnali několik v�
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Konfigurace toku ROPC v Azure AD B2C
 
-V tenantovi Azure AD B2C vytvořte nový tok uživatelů a vyberte možnost přihlásit se **pomocí ROPC** a povolte ROPC toku uživatele. Další informace najdete v tématu [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku](../../active-directory-b2c/configure-ropc.md).
+V tenantovi Azure AD B2C vytvořte nový tok uživatelů a vyberte možnost přihlásit se **pomocí ROPC** a povolte ROPC toku uživatele. Další informace najdete v tématu [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku](../../active-directory-b2c/add-ropc-policy.md).
 
 `IPublicClientApplication` obsahuje `AcquireTokenByUsernamePassword` metodu:
 
@@ -165,7 +161,7 @@ Pokud se něco změní, poskytneme vám aktualizaci tohoto [problému](https://g
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Známý problém s Azure AD B2C
 
-MSAL.NET podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Klíč mezipaměti tokenu je založen na deklaracích vrácených zprostředkovatelem identity (IdP).
+MSAL.NET podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.tokencache). Klíč mezipaměti tokenu je založen na deklaracích vrácených zprostředkovatelem identity (IdP).
 
 V současné době MSAL.NET potřebuje ke sestavení klíče mezipaměti tokenu dvě deklarace identity:
 

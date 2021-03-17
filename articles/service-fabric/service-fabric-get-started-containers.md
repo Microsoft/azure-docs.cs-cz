@@ -4,12 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Windows na plat
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844435"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533770"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -25,7 +25,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač s:
   * Visual Studio 2015 nebo Visual Studio 2019.
@@ -36,20 +36,15 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
   V tomto článku se verze (sestavení) Windows serveru s kontejnery běžícími na uzlech clusteru musí shodovat s tím, že se nachází na vašem vývojovém počítači. Důvodem je to, že na svém vývojovém počítači sestavíte image Docker a že existují omezení kompatibility mezi verzemi operačního systému kontejneru a hostitelského operačního systému, na kterém je nasazený. Další informace najdete v tématu [věnovaném systému Windows Server Container OS a kompatibility s hostitelským operačním systémem](#windows-server-container-os-and-host-os-compatibility). 
   
-Pokud chcete zjistit verzi Windows serveru s kontejnery, které potřebujete pro svůj cluster, spusťte `ver` příkaz z příkazového řádku Windows na vašem vývojovém počítači:
-
-* Pokud verze obsahuje *x. x. 14323. x*, vyberte pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md) *windowsserver 2016 – Datacenter-with-Containers* .
-  * Pokud verze obsahuje *x. x. 16299. x*, vyberte *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md).
+    Pokud chcete zjistit verzi Windows serveru s kontejnery, které potřebujete pro svůj cluster, spusťte `ver` příkaz z příkazového řádku Windows na vašem vývojovém počítači. Před [vytvořením clusteru](service-fabric-cluster-creation-via-portal.md)se podívejte na [systém Windows Server Container OS a kompatibilitu s operačním systémem](#windows-server-container-os-and-host-os-compatibility) .
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure.
 
 > [!NOTE]
 > Nasazení kontejnerů do clusteru Service Fabric se systémem Windows 10 je podporováno.  V [tomto článku](service-fabric-how-to-debug-windows-containers.md) najdete informace o tom, jak nakonfigurovat Windows 10 pro spouštění kontejnerů Windows.
->   
 
 > [!NOTE]
-> Service Fabric verze 6,2 a novější podporují nasazení kontejnerů do clusterů se systémem Windows Server verze 1709.  
-> 
+> Service Fabric verze 6,2 a novější podporují nasazení kontejnerů do clusterů se systémem Windows Server verze 1709.
 
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru
 
@@ -109,10 +104,18 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>Sestavení image
-Spuštěním příkazu `docker build` vytvořte image spouštějící vaši webovou aplikaci. Otevřete okno PowerShellu a přejděte do adresáře, který obsahuje soubor Dockerfile. Spusťte následující příkaz:
+
+## <a name="login-to-docker-and-build-the-image"></a>Přihlaste se k Docker a sestavte image.
+
+V dalším kroku vytvoříme image, která spustí vaši webovou aplikaci. Při nastavování veřejných imagí z Docker (jako `python:2.7-windowsservercore` v našem souboru Dockerfile) je osvědčeným postupem ověřit si účet Docker Hub namísto vytvoření anonymní žádosti o získání dat.
+
+> [!NOTE]
+> Při provádění častých anonymních žádostí o přijetí změn se může zobrazit chyba Docker, která je podobná `ERROR: toomanyrequests: Too Many Requests.` nebo `You have reached your pull rate limit.` ověřena z dokovacího centra, aby tyto chyby nedocházelo. Další informace najdete v tématu [Správa veřejného obsahu pomocí Azure Container Registry](../container-registry/buffer-gate-public-content.md) .
+
+Otevřete okno PowerShellu a přejděte do adresáře, který obsahuje soubor Dockerfile. Potom spusťte následující příkazy:
 
 ```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -290,7 +293,7 @@ Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se 
 
 Instrukce **HEALTHCHECK** ukazující na skutečnou kontrolu prováděnou pro monitorování stavu kontejneru musí být přítomna v souboru Dockerfile použitém při generování image kontejneru.
 
-![HealthCheckHealthy][3]
+![Snímek obrazovky zobrazuje podrobnosti o nasazeném balíčku služby NodeServicePackage.][3]
 
 ![HealthCheckUnhealthyApp][4]
 
@@ -310,7 +313,7 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
+Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false** a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
 
 Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
@@ -534,7 +537,7 @@ Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepouží
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

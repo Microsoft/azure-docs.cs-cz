@@ -2,18 +2,19 @@
 title: 'Rychlý Start: použití šablony Správce prostředků k vytvoření virtuálního počítače s Ubuntu Linux'
 description: V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků vytvořit virtuální počítač se systémem Linux.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649767"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549613"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s Ubuntu Linux pomocí šablony ARM
 

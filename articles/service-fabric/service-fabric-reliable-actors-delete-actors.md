@@ -1,16 +1,15 @@
 ---
 title: Odstranit Azure Service Fabric Actors
 description: Přečtěte si, jak ručně a úplně odstranit Reliable Actors a jejich stav v aplikaci Azure Service Fabric.
-author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: amanbha
-ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16d4ab6a3c155f897cf9212fb1cd6c34d977b9ec
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253537"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574016"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Odstranění objektů Reliable Actors a jejich stavu
 Uvolňování paměti deaktivovaných aktérů vyčistí jenom objekt actor, ale neodebere data uložená ve Správci stavu objektu actor. Po opětovné aktivaci objektu actor se data znovu zpřístupní prostřednictvím Správce stavu. V případech, kdy objekty actor ukládají data do Správce stavů a deaktivují se, ale nikdy se neaktivují, může být nutné vyčistit svá data.

@@ -11,35 +11,35 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e757c8047bf6d634ab6d7cbc8963087c0eccc46a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212951"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677364"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý Start: vytvoření klasifikátoru úloh pomocí T-SQL
 
 V tomto rychlém startu budete rychle vytvářet třídění úloh s vysokou důležitostí pro generálního ředitele vaší organizace. Tento klasifikátor pracovního vytížení umožní, aby dotazy generální ŘEDITELe měly přednost před jinými dotazy s nižší důležitostí ve frontě.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!NOTE]
-> Vytvoření instance synapse fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření vyhrazené instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu se předpokládá, že již máte SQL Data Warehouse a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
+V tomto rychlém startu se předpokládá, že jste ve službě Azure synapse Analytics již zřídili vyhrazený fond SQL a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, použijte [Vytvoření a připojení – portál](create-data-warehouse-portal.md) pro vytvoření vyhrazeného fondu SQL s názvem **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Vytvoření přihlašovacích údajů pro TheCEO
 
-Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí příkazu [Create Login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) for ' TheCEO '.
+Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí příkazu [Create Login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) for ' TheCEO '.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Vytvořit uživatele
 
-[Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "TheCEO", v mySampleDataWarehouse
+[Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), "TheCEO", v mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -63,7 +63,7 @@ END
 
 ## <a name="create-a-workload-classifier"></a>Vytvoření klasifikátoru úloh
 
-Vytvořte [klasifikátor úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro "TheCEO" s vysokou důležitostí.
+Vytvořte [klasifikátor úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pro "TheCEO" s vysokou důležitostí.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -87,27 +87,23 @@ DROP USER [TheCEO]
 ;
 ```
 
-Účtují se vám poplatky za jednotky datového skladu a data uložená v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
+Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem vyhrazeném fondu SQL. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
-- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Až budete připraveni pracovat s daty, obnovte výpočetní výkon.
-- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit.
+- Pokud chcete uchovávat data v úložišti, můžete pozastavit výpočetní prostředky, když nepoužíváte vyhrazený fond SQL. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Až budete připraveni pracovat s daty, obnovte výpočetní výkon.
+- Pokud chcete odebrat budoucí poplatky, můžete odstranit vyhrazený fond SQL.
 
 Pomocí těchto kroků vyčistěte prostředky.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte svůj datový sklad.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte vyhrazený fond SQL.
 
     ![Vyčištění prostředků](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
+2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je vyhrazený fond SQL pozastaven, zobrazí se tlačítko **Start** .  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
 
-3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
-
-4. Pokud chcete odebrat vytvořený SQL Server, vyberte na předchozím obrázku **MyNewServer-20180430.Database.Windows.NET** a pak vyberte **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
-
-5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
+3. Pokud chcete odebrat vyhrazený fond SQL, abyste vám neúčtovali výpočetní výkon nebo úložiště, vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nyní jste vytvořili klasifikátor úloh. Spusťte několik dotazů jako TheCEO, abyste viděli, jak fungují. V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete zobrazit dotazy a přiřazené důležitost.
-- Další informace o správě úloh synapse SQL najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md) a [klasifikace úloh](sql-data-warehouse-workload-classification.md).
+- Nyní jste vytvořili klasifikátor úloh. Spusťte několik dotazů jako TheCEO, abyste viděli, jak fungují. V tématu [Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) můžete zobrazit dotazy a přiřazená důležitost.
+- Další informace o správě úloh vyhrazeného fondu SQL najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md) a [klasifikace úloh](sql-data-warehouse-workload-classification.md).
 - V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

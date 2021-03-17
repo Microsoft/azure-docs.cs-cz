@@ -4,15 +4,15 @@ description: Přečtěte si o osvědčených postupech pro uvedení na trh pro v
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607392"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492085"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -48,20 +48,21 @@ Kategorie a odvětví pro jiný online obchod budou platit pro různé typy nab�
 
 ### <a name="categories"></a>Kategorie
 
-Microsoft AppSource a Azure Marketplace jsou dva různé online obchody, které slouží jako jedinečné požadavky zákazníků. Azure Marketplace se zaměřuje na odborníky na IT a vývojáře, kteří vytvářejí řešení v Azure.  Microsoft AppSource cílení firemních uživatelů, kteří hledají obchodní a/nebo SaaS aplikace, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
+Microsoft AppSource a Azure Marketplace jsou online obchody, které nabízejí různé typy řešení. Azure Marketplace nabízí řešení IT založená na systému nebo pro Azure.  Microsoft AppSource nabízí podniková řešení, jako jsou SaaS aplikace pro odvětví, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
 
-Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
+Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu řešení. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
 
-Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou a zamýšlenou cílovou skupinou. Můžete vybrat:
+Vyberte kategorie a podkategorie, které nejlépe odpovídají vašemu typu řešení. Můžete vybrat:
 
-* Až dvě (2) kategorie, včetně primární a sekundární kategorie (volitelné).
-* Až dvě (2) podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, nabídne se vám nabídka jenom pro vybranou kategorii.
+* Až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
+* Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, nabídne se vám nabídka jenom pro vybranou kategorii.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-**Důležité: SaaS nabídky a doplňky pro Microsoft 365**
+#### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>Důležité: SaaS nabídky a doplňky pro Microsoft 365
 
-Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobrazení a nákup zákazníků z webu Marketplace, najdete v [příručce podle typu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) . V případě nabídek SaaS se funkce transakce nabídky a výběr kategorie určí online obchod, ve kterém se vaše nabídka publikuje:
+Konkrétní informace o tom, jak možnosti Transact můžou ovlivnit, jak můžou zákazníci na webu Marketplace zobrazit a koupit, najdete v tématu věnovaném [transakcím na komerčním webu Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md) . V případě nabídek SaaS se funkce transakce nabídky a výběr kategorie určí online obchod, kde bude vaše nabídka publikovaná.
+
 
 | Nabídka SaaS    | Nabídka SaaS   | Nabídka SaaS  | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS    | Příslušný online obchod| Příslušný online obchod |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
@@ -120,17 +121,17 @@ Klíčová slova můžou zákazníkům pomáhat při hledání vaší nabídky. 
 ## <a name="online-store-marketing-details"></a>Podrobnosti marketingu online obchodu
 | Nastavení | Osvědčený postup |
 |:--- |:--- |  
-| Logo nabídky (formát PNG, 48 &nbsp; &times; &nbsp; 48): stránka hledání | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku vyhledávání vaší nabídky. |
-| Logo nabídky (formát PNG, 216 &nbsp; &times; &nbsp; 216): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. |
-| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků: <ul> <li> dokumenty White Paper, </li> <li> brožury, </li> <li> kontrolní seznamy nebo </li> <li> Prezentace aplikace PowerPoint.</li> </ul>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim. <br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
+| Logo nabídky (formát PNG, od 216 × 216 do 350 × 350 px): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. Partnerské centrum změní velikost na požadované velikosti loga. |
+| Logo nabídky (formát PNG, 48 × 48 pixelů): stránka hledání | Partnerské centrum vygeneruje toto logo z velkého loga, které jste nahráli. Volitelně můžete tuto položku nahradit jinou imagí později. |
+| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků:<ul><li>dokumenty White Paper</li><li> brožury</li><li>kontrolní seznamy nebo</li><li> Prezentace aplikace PowerPoint</li></ul><br>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim.<br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
 | Videa: AppSource, konzultační služby a SaaS nabídky | Nejsilnější videa sdělují hodnotu vaší nabídky ve formě mluveného komentáře:<ul> <li> Udělejte zákazníka, ne firmu, Hero příběh. </li> <li> Vaše video by mělo řešit hlavní výzvy a cíle vašeho cílového zákazníka. </li> <li> Doporučená délka: 60-90 sekund.</li> <li> Zahrňte klíčová slova pro hledání, která používají název videí. </li> <li> Zvažte přidání dalších videí, jako jsou postupy, začátky nebo zákaznické reference. </li> </ul> |
 | Snímky obrazovky (1280 &nbsp; &times; &nbsp; 720) | Přidat až pět snímků obrazovky:<br>Do názvů souborů zahrňte klíčová slova pro hledání klíčů. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Odkaz na stránku nabídky z webu
 
 Když propojíte AppSource nebo Azure Marketplace BADGE na vašem webu s vaším výpisem na komerčním webu Marketplace, můžete podporovat silné analýzy a vytváření sestav, a to tak, že na konci adresy URL zadáte následující parametry dotazu:
-* **Src**: zahrnuje zdroj, ze kterého je směrován provoz do AppSource (například web, LinkedIn nebo Facebook).
-* **mktcmpid**: vaše ID marketingové kampaně, které může obsahovat až 16 znaků v libovolné kombinaci písmen, číslic, podtržítka a spojovníků (například *blogpost_12*).
+* **Src** : zahrnuje zdroj, ze kterého je směrován provoz do AppSource (například web, LinkedIn nebo Facebook).
+* **mktcmpid** : vaše ID marketingové kampaně, které může obsahovat až 16 znaků v libovolné kombinaci písmen, číslic, podtržítka a spojovníků (například *blogpost_12* ).
 
 Následující příklad adresy URL obsahuje oba předchozí parametry dotazu: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
@@ -141,4 +142,3 @@ Přidáním parametrů k AppSource adrese URL si můžete prohlédnout efektivit
 Přečtěte si další informace o [výhodách komerčního tržiště](./gtm-your-marketplace-benefits.md).
 
 Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) , abyste mohli vytvořit a nakonfigurovat vaši nabídku.
-

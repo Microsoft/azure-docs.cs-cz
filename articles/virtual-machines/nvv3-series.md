@@ -2,18 +2,18 @@
 title: NVv3-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady NVv3-Series.
 services: virtual-machines
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7fcc8d89df6ac346a44e0356a4416e4168933fd8
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 276afba62a26a53fe32f7aa9d47f42ada251d6b5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543907"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613047"
 ---
 # <a name="nvv3-series"></a>Řada NVv3
 
@@ -21,11 +21,14 @@ Virtuální počítače řady NVv3-Series využívají technologii [NVIDIA Tesla
 
 Každý grafický procesor v NVv3 instancích obsahuje licenci na MŘÍŽKu. Tato licence vám poskytne flexibilitu pro použití instance NV jako virtuální pracovní stanice pro jednoho uživatele nebo 25 souběžných uživatelů se může připojit k virtuálnímu počítači pro scénář virtuální aplikace.
 
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) | Virtuální pracovní stanice | Virtuální aplikace |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -34,8 +37,6 @@ Aktualizace pro zachování paměti: nepodporováno
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 / 24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = jedna polovina M60 karta.
-
-<sup>2</sup> v tomto okamžiku se v této rodině virtuálních počítačů nepodporuje urychlení sítě, takže skutečný výkon sítě může být nižší než špičková teoretická čísla zachycená.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -52,7 +53,7 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

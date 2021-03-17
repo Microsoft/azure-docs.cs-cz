@@ -3,12 +3,12 @@ title: Vytvoření testovacího prostředí ve službě Azure DevTest Labs | Mic
 description: V tomto kurzu vytvoříte v Azure DevTest Labs testovací prostředí pomocí Azure Portal. Správce testovacího prostředí nastaví testovací prostředí, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476559"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324276"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Kurz: Nastavení testovacího prostředí ve službě Azure DevTest Labs
 V tomto kurzu vytvoříte testovací prostředí na webu Azure Portal. Správce testovacího prostředí nastaví testovací prostředí v organizaci, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady. Uživatelé testovacího prostředí (například vývojář a testeři) nárokují virtuální počítače v testovacím prostředí, připojují se k nim a používají je. 
@@ -20,12 +20,12 @@ V tomto kurzu provedete následující akce:
 > * Přidání virtuálních počítačů do testovacího prostředí
 > * Přidání uživatele do role uživatele testovacího prostředí
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-lab"></a>Vytvoření testovacího prostředí
 Následující kroky ukazují postup vytvoření testovacího prostředí ve službě Azure DevTest Labs pomocí webu Azure Portal. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V hlavní nabídce na levé straně vyberte **Vytvořit prostředek** (v horní části seznamu), přejděte na **Vývojářské nástroje** a klikněte na **DevTest Labs**. 
 
     ![Nová nabídka DevTest Lab](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)
@@ -40,7 +40,7 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
         ![Vytvoření části testovacího prostředí služby DevTest Labs](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
 2. Prohlédněte si oznámení a ověřte, že se testovací prostředí vytvořilo úspěšně. Vyberte **Přejít k prostředku**.  
 
-    ![Oznámení](./media/tutorial-create-custom-lab/creation-notification.png)
+    ![Notification (Oznámení)](./media/tutorial-create-custom-lab/creation-notification.png)
 3. Potvrďte, že se na stránce testovacího prostředí zobrazí stránka **DevTest Lab** . 
 
     ![Domovská stránka pro testovací prostředí](./media/tutorial-create-custom-lab/lab-home-page.png)
@@ -56,7 +56,7 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
     2. V části **User name** (Uživatelské jméno) zadejte jméno uživatele, který může k virtuálnímu počítači přistupovat. 
     3. Jako **Heslo** zadejte heslo pro tohoto uživatele. 
 
-        ![Výběr základní image](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![Snímek obrazovky znázorňující základní nastavení stránky vytvořit prostředek testovacího prostředí](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. Vyberte kartu **Upřesnit nastavení** .
     1. V části **Make this machine claimable** (Nastavit tento počítač jako nárokovatelný) vyberte **Yes** (Ano).
     2. Ujistěte se, že je **počet instancí** nastavený na **1**. Pokud je nastavený na **2**, vytvoří se 2 virtuální počítače s názvy: `<base image name>00' and <base image name>01`. Například: `win10vm00` a `win10vm01`     
@@ -84,7 +84,7 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
     2. Vyberte **uživatele**, kterého chcete přidat. 
     3. Vyberte **Uložit**.
 
-        ![Přidání uživatele](./media/tutorial-create-custom-lab/add-user.png)
+        ![Přidat uživatele](./media/tutorial-create-custom-lab/add-user.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Další kurz vám ukáže, jak může uživatel testovacího prostředí nárokovat virtuální počítač a připojit se k němu v testovacím prostředí. Pokud nechcete tento kurz procházet a nechcete vyčistit prostředky vytvořené v tomto kurzu, postupujte takto: 
@@ -96,7 +96,7 @@ Další kurz vám ukáže, jak může uživatel testovacího prostředí nároko
 1. Na panelu nástrojů vyberte **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků se odstraní všechny prostředky ve skupině, včetně testovacího prostředí. 
 
     ![Skupina prostředků testovacího prostředí](./media/tutorial-create-custom-lab/lab-resource-group.png)
-1. Tento postup opakujte k odstranění další skupiny prostředků vytvořené pro vás s názvem `<your resource group name><random numbers>`. Příklad: `splab3988722144001`. Virtuální počítače se vytvoří v této skupině prostředků, nikoli ve skupině prostředků, ve které existuje testovací prostředí. 
+1. Tento postup opakujte k odstranění další skupiny prostředků vytvořené pro vás s názvem `<your resource group name><random numbers>`. Například: `splab3988722144001`. Virtuální počítače se vytvoří v této skupině prostředků, nikoli ve skupině prostředků, ve které existuje testovací prostředí. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili testovací prostředí s virtuálním počítačem a nastavili jste do něj uživateli přístup. Pokud chcete získat informace o tom, jak k testovacímu prostředí přistupovat jako uživatel testovacího prostředí, přejděte k dalšímu kurzu:

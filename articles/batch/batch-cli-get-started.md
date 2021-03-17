@@ -4,12 +4,12 @@ description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádk
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531673"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144746"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -28,7 +28,7 @@ Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](.
 
 ## <a name="command-help"></a>Nápověda k příkazům
 
-Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Příklad:
+Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Například:
 
 * Pokud chcete zobrazit nápovědu pro příkaz `az`, zadejte: `az -h`
 * Pokud chcete vypsat seznam všech příkazů Batch v rámci rozhraní příkazového řádku, zadejte: `az batch -h`
@@ -79,7 +79,7 @@ Máte dvě možnosti ověření proti účtu Batch:
     
     Při interaktivním přihlášení k Azure, které je popsáno v předchozí části, jsou vaše přihlašovací údaje uloženy v mezipaměti, takže rozhraní příkazového řádku Azure CLI vás může přihlásit k účtu Batch pomocí stejných přihlašovacích údajů. Pokud se k Azure přihlásíte pomocí instančního objektu, použijí se tyto přihlašovací údaje také k přihlášení k účtu Batch.
 
-    Výhoda služby Azure AD je, že nabízí řízení přístupu na základě role (RBAC). Při řízení přístupu na základě role (RBAC) závisí přístup uživatelů na jejich přiřazené roli, a ne na tom, jestli mají nebo nemají klíče účtu. Místo správy klíčů účtu můžete spravovat role Azure a nechat Azure AD zpracovat přístup a ověřování.  
+    Výhodou Azure AD je, že nabízí řízení přístupu na základě role Azure (Azure RBAC). V případě Azure RBAC závisí přístup uživatelů na jejich přiřazené roli, a ne na tom, jestli mají klíče účtu nebo ne. Místo správy klíčů účtu můžete spravovat role Azure a nechat Azure AD zpracovat přístup a ověřování.  
 
      Pokud se chcete přihlásit k účtu Batch pomocí služby Azure AD, použijte volání příkazu [az batch account login](/cli/azure/batch/account#az-batch-account-login): 
 
@@ -107,11 +107,11 @@ Pokud nainstalujete rozšíření rozhraní příkazového řádku služby Azure
 
 ## <a name="script-examples"></a>Příklady skriptu
 
-Viz [příklady skriptu CLI](cli-samples.md) pro službu Batch k provedení běžných úloh. Tyto příklady pokrývají mnoho příkazů dostupných ve službě Azure Batch pomocí příkazového řádku Azure CLI pro vytvoření a správu účtů, fondů, úloh a úkolů. 
+Viz [příklady skriptu CLI](./scripts/batch-cli-sample-create-account.md) pro službu Batch k provedení běžných úloh. Tyto příklady pokrývají mnoho příkazů dostupných ve službě Azure Batch pomocí příkazového řádku Azure CLI pro vytvoření a správu účtů, fondů, úloh a úkolů.
 
 ## <a name="json-files-for-resource-creation"></a>Soubory JSON pro vytváření prostředků
 
-Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Příklad:
+Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Například:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -141,7 +141,7 @@ Při dotazování služby Batch pomocí operace `list` můžete určit klauzuli 
 
 Následující tabulka popisuje klauzule OData podporované službou Batch:
 
-| Klauzule | Description |
+| Klauzule | Popis |
 |---|---|
 | `--select-clause [select-clause]` | Vrátí podmnožinu vlastností pro každou entitu. |
 | `--filter-clause [filter-clause]` | Vrátí pouze ty entity, které odpovídají zadanému výrazu OData. |

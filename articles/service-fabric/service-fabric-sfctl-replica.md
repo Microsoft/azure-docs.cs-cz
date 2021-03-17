@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 3ed1ecca686471e052f07e945738ad1a49e68464
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260304"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
@@ -33,9 +33,9 @@ Získá podrobnosti o replice nasazené na uzlu Service Fabric.
 
 Získá podrobnosti o replice nasazené na uzlu Service Fabric. Tyto informace zahrnují druh služby, název služby, aktuální operaci služby, aktuální datum a čas zahájení operace služby, ID oddílu, repliku/ID instance, hlášené zatížení a další informace.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -44,7 +44,7 @@ Získá podrobnosti o replice nasazené na uzlu Service Fabric. Tyto informace z
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -57,9 +57,9 @@ Získá seznam replik nasazených na uzlu Service Fabric.
 
 Získá seznam obsahující informace o replikách nasazených na uzlu Service Fabric. Tyto informace zahrnují ID oddílu, ID repliky, stav repliky, název služby, název typu služby a další informace. Parametry dotazu PartitionId nebo ServiceManifestName použijte k vrácení informací o nasazených replikách, které odpovídají zadaným hodnotám pro tyto parametry.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Node-Name [povinné] | Název uzlu |
@@ -69,7 +69,7 @@ Získá seznam obsahující informace o replikách nasazených na uzlu Service F
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -82,9 +82,9 @@ Získá stav repliky stavové služby Service Fabric nebo instance bezstavové s
 
 Získá stav repliky Service Fabric. Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených v replice na základě stavu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Replica-ID [povinné] | Identifikátor repliky |
@@ -93,7 +93,7 @@ Získá stav repliky Service Fabric. Pomocí EventsHealthStateFilter můžete fi
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -106,9 +106,9 @@ Získá informace o replice Service Fabricho oddílu.
 
 Odpověď zahrnuje ID, roli, stav, stav, název uzlu, dobu provozu a další podrobnosti o replice.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Replica-ID [povinné] | Identifikátor repliky |
@@ -116,7 +116,7 @@ Odpověď zahrnuje ID, roli, stav, stav, název uzlu, dobu provozu a další pod
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -129,9 +129,9 @@ Získá informace o replikách oddílu Service Fabric služby.
 
 Koncový bod getreplicaes vrátí informace o replikách zadaného oddílu. Odpověď zahrnuje ID, roli, stav, stav, název uzlu, dobu provozu a další podrobnosti o replice.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
@@ -139,7 +139,7 @@ Koncový bod getreplicaes vrátí informace o replikách zadaného oddílu. Odpo
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -152,9 +152,9 @@ Odebere repliku služby běžící na uzlu.
 
 Toto rozhraní API simuluje selhání repliky Service Fabric odebráním repliky z clusteru Service Fabric. Odstraněním se zavře replika, převede repliku na roli None a pak z clusteru odebere všechny informace o stavu repliky. Toto rozhraní API testuje cestu pro odebrání stavu repliky a simuluje nestálou cestu chyby prostřednictvím klientských rozhraní API. Upozornění – při použití tohoto rozhraní API se neprovádí žádné kontroly zabezpečení. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat pro stavové služby. Kromě toho příznak forceRemove ovlivňuje všechny ostatní repliky hostované v rámci stejného procesu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -164,7 +164,7 @@ Toto rozhraní API simuluje selhání repliky Service Fabric odebráním repliky
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -177,9 +177,9 @@ Odešle zprávu o stavu repliky Service Fabric.
 
 Hlásí stav zadané repliky Service Fabric. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Zpráva se odešle do repliky Service Fabric brány, která se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Pokud chcete zjistit, jestli se sestava použila v Health Store, spusťte příkaz získat stav repliky a zkontrolujte, jestli se sestava zobrazuje v části HealthEvents.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
 | --Health-State [povinné] | Možné hodnoty zahrnují \: "Invalid", "OK", "Warning", "Error", "unknown". |
@@ -196,7 +196,7 @@ Hlásí stav zadané repliky Service Fabric. Sestava musí obsahovat informace o
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -209,9 +209,9 @@ Restartuje repliku služby trvalé služby spuštěné na uzlu.
 
 Restartuje repliku služby trvalé služby spuštěné na uzlu. Upozornění – při použití tohoto rozhraní API se neprovádí žádné kontroly zabezpečení. Nesprávné použití tohoto rozhraní API může vést ke ztrátě dostupnosti pro stavové služby.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -220,7 +220,7 @@ Restartuje repliku služby trvalé služby spuštěné na uzlu. Upozornění –
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

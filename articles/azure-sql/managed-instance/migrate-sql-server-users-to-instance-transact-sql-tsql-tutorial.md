@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708645"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: Migrace uživatelů a skupin systému Windows v instanci SQL Server do spravované instance Azure SQL pomocí syntaxe jazyka T-SQL DDL
@@ -47,7 +47,7 @@ K dokončení tohoto kurzu platí následující předpoklady:
   - `sysadmin`K vytvoření přihlašovacích údajů Azure AD se musí použít ve spravované instanci SQL.
 - [Vytvořte správce Azure AD pro spravovanou instanci SQL](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 - V rámci vaší sítě se můžete připojit ke spravované instanci SQL. Další informace najdete v následujících článcích:
-  - [Připojení aplikace ke spravované instanci Azure SQL](connect-application-instance.md)
+  - [Připojení aplikace ke službě Azure SQL Managed Instance](connect-application-instance.md)
   - [Rychlý Start: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního prostředí](point-to-site-p2s-configure.md)
   - [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md)
 
@@ -63,7 +63,7 @@ ALTER USER [domainName\userName] WITH LOGIN = [loginName@domainName.com];
 ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 ```
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 _domainName_</br>
 Určuje název domény uživatele.
@@ -314,7 +314,7 @@ Provedením příkazu ALTER USER dokončíte proces migrace na spravované insta
 
 Otestujte ověřování ve spravované instanci SQL pomocí dříve namapovaného uživatele na přihlašovací údaje Azure AD pomocí syntaxe ALTER USER.
 
-1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako`aadsqlmi\testUser1`
+1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako `aadsqlmi\testUser1`
 1. Pomocí SQL Server Management Studio (SSMS) se přihlaste ke spravované instanci SQL pomocí **integrovaného ověřování služby Active Directory** a připojte se k databázi `migration` .
     1. Můžete se také přihlásit pomocí testUser1@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance SQL nebudete muset použít federovaný virtuální počítač.
 1. V rámci **výběru**člena role můžete vybrat z `test` tabulky.
@@ -325,8 +325,8 @@ Otestujte ověřování ve spravované instanci SQL pomocí dříve namapovanéh
 
 Otestujte ověřování u spravované instance SQL pomocí členu skupiny systému Windows `migration` . `aadsqlmi\testGroupUser`Před migrací by uživatel měl být přidán do skupiny `migration` .
 
-1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako`aadsqlmi\testGroupUser`
-1. Pomocí SSMS s **integrovaným ověřováním Active Directory** se připojte k serveru Azure SQL Managed instance a databázi.`migration`
+1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako `aadsqlmi\testGroupUser`
+1. Pomocí SSMS s **integrovaným ověřováním Active Directory** se připojte k serveru Azure SQL Managed instance a databázi. `migration`
     1. Můžete se také přihlásit pomocí testGroupUser@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance SQL nebudete muset použít federovaný virtuální počítač.
 1. V rámci `db_owner` role můžete vytvořit novou tabulku.
 

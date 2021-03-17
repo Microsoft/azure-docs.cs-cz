@@ -1,14 +1,14 @@
 ---
 title: Přehled šablon
-description: V této části najdete popis výhod používání šablon Azure Resource Manager pro nasazení prostředků.
+description: V této části najdete popis výhod používání Azure Resource Manager šablon (šablon ARM) pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119357"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419979"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -16,7 +16,13 @@ Díky přesunu do cloudu mnoho týmů přijalo agilní metody vývoje. Tyto tým
 
 Aby bylo možné tyto výzvy splnit, můžete automatizovat nasazení a používat postupy infrastruktury jako kód. V kódu definujete infrastrukturu, která musí být nasazena. Kód infrastruktury se stal součástí vašeho projektu. Stejně jako kód aplikace ukládáte kód infrastruktury do zdrojového úložiště a jeho verzi. Libovolný tým v týmu může spustit kód a nasadit podobná prostředí.
 
-K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (šablony ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+
+Představili jsme nový jazyk pro vývoj šablon ARM. Jazyk má název bicep a je nyní ve verzi Preview. Šablony bicep a JSON nabízejí stejné možnosti. Můžete převádět šablonu mezi oběma jazyky. Bicep poskytuje syntaxi, kterou je snazší použít pro vytváření šablon. Další informace najdete v tématu [co je bicep (Preview)?](bicep-overview.md).
+
+Další informace o tom, jak můžete začít s šablonami ARM, najdete v následujícím videu.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>Proč zvolit šablony ARM?
 
@@ -38,7 +44,7 @@ Pokud se snažíte rozhodnout mezi používáním šablon ARM a jedné z další
 
 * **Testování**: pro šablonu se můžete ujistit, že jsou doporučené pokyny, a to tak, že je otestujete pomocí sady nástrojů šablon ARM (ARM-TTK). Tato testovací sada je skript PowerShellu, který si můžete stáhnout z [GitHubu](https://github.com/Azure/arm-ttk). Sada nástrojů usnadňuje vývoj odborných znalostí pomocí jazyka šablon.
 
-* **Náhled změn**: k zobrazení náhledu změn před nasazením šablony můžete použít [operaci citlivostní zpracování](template-deploy-what-if.md) . Díky čemu vidíte, které prostředky se mají vytvořit, aktualizovat nebo odstranit, a všechny vlastnosti prostředků, které se změní. Operace citlivosti kontroluje aktuální stav vašeho prostředí a eliminuje nutnost spravovat stav.
+* **Náhled změn**: k zobrazení náhledu změn před nasazením šablony můžete použít [operaci citlivostní zpracování](template-deploy-what-if.md) . V případě, že zjistíte, které prostředky budou vytvořeny, aktualizovány nebo odstraněny, a jakékoli vlastnosti prostředku, které budou změněny. Operace citlivosti kontroluje aktuální stav vašeho prostředí a eliminuje nutnost spravovat stav.
 
 * **Integrované ověřování**: šablona se nasadí až po úspěšném ověření. Správce prostředků před zahájením nasazení zkontroluje šablonu, aby se zajistilo, že bude nasazení úspěšné. Vaše nasazení je méně pravděpodobným zastavením v částečně dokončeném stavu.
 
@@ -54,7 +60,7 @@ Pokud se snažíte rozhodnout mezi používáním šablon ARM a jedné z další
 
 * **Exportovatelné kódy**: šablonu pro stávající skupinu prostředků můžete získat buď tak, že exportujete aktuální stav skupiny prostředků, nebo si prohlížíte šablonu používanou pro konkrétní nasazení. Zobrazení [vyexportované šablony](export-template-portal.md) vám pomůže blíže se seznámit se syntaxí šablony.
 
-* **Nástroje pro tvorbu**: můžete vytvářet šablony pomocí [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) a rozšíření nástroje šablony. Získáte IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka. Kromě sady Visual Studio Code můžete také použít [Visual Studio](create-visual-studio-deployment-project.md).
+* **Nástroje pro tvorbu**: můžete vytvářet šablony pomocí [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) a rozšíření nástroje šablony. Získáte IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka. Kromě Visual Studio Code můžete také použít [Visual Studio](create-visual-studio-deployment-project.md).
 
 ## <a name="template-file"></a>Soubor šablony
 
@@ -68,7 +74,7 @@ V rámci šablony můžete napsat [výrazy šablony](template-expressions.md) , 
 
 * [Uživatelsky definované funkce](template-user-defined-functions.md) – vytváření přizpůsobených funkcí, které zjednodušují vaši šablonu.
 
-* [Prostředky](template-syntax.md#resources) – zadejte prostředky, které chcete nasadit.
+* [Prostředky](resource-declaration.md) – zadejte prostředky, které chcete nasadit.
 
 * [Výstupy](template-outputs.md) – vrací hodnoty z nasazených prostředků.
 
@@ -80,13 +86,13 @@ Když nasadíte šablonu, Správce prostředků převede šablonu na operace RES
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2016-01-01",
+    "apiVersion": "2019-04-01",
     "name": "mystorageaccount",
     "location": "westus",
     "sku": {
       "name": "Standard_LRS"
     },
-    "kind": "Storage",
+    "kind": "StorageV2",
     "properties": {}
   }
 ]
@@ -96,17 +102,28 @@ Převede definici na následující operaci rozhraní REST API, která se odešl
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
 REQUEST BODY
 {
   "location": "westus",
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage",
+  "kind": "StorageV2",
   "properties": {}
 }
 ```
+
+Všimněte si, že **apiVersion** , který jste nastavili v šabloně pro prostředek, se používá jako verze rozhraní API pro operaci REST. Šablonu můžete opakovaně nasadit a mít jistotu, že bude fungovat i nadále. Pomocí stejné verze rozhraní API se nemusíte starat o zásadní změny, které by mohly být představené v novějších verzích.
+
+K nasazení šablony použijte některou z následujících možností:
+
+* [Azure Portal](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST API](deploy-rest.md)
+* [Tlačítko v úložišti GitHub](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>Návrh šablony
 
@@ -114,7 +131,7 @@ Záleží pouze na vás, jak definujete šablony a skupiny prostředků a jak ch
 
 ![třívrstvá šablona](./media/overview/3-tier-template.png)
 
-Není však nutné definovat celou infrastrukturu v jediné šabloně. Často má smysl rozdělit požadavky nasazení do několika cílených šablon, které jsou zaměřené na konkrétní účel. Tyto šablony můžete snadno opakovaně použít pro různá řešení. Chcete-li nasadit konkrétní řešení, vytvoříte hlavní šablonu, která propojí všechny požadované šablony. Následující obrázek znázorňuje způsob nasazení třívrstvého řešení prostřednictvím nadřazené šablony, která obsahuje tři vnořené šablony.
+Není však nutné definovat celou infrastrukturu v jediné šabloně. Často má smysl rozdělit požadavky nasazení do několika cílených šablon, které jsou zaměřené na konkrétní účel. Tyto šablony můžete snadno opakovaně použít pro různá řešení. Chcete-li nasadit konkrétní řešení, vytvořte hlavní šablonu, která propojí všechny požadované šablony. Následující obrázek znázorňuje způsob nasazení třívrstvého řešení prostřednictvím nadřazené šablony, která obsahuje tři vnořené šablony.
 
 ![šablona vnořených vrstev](./media/overview/nested-tiers-template.png)
 
@@ -124,9 +141,16 @@ Pokud si představíte, že vaše vrstvy mají tři samostatné životní cykly,
 
 Informace o vnořených šablonách najdete v tématu [Použití propojených šablon s Azure Resource Managerem](linked-templates.md).
 
+## <a name="share-templates"></a>Sdílení šablon
+
+Po vytvoření šablony ji můžete chtít sdílet s ostatními uživateli ve vaší organizaci. [Specifikace šablon](template-specs.md) umožňují uložit šablonu jako typ prostředku. Řízení přístupu na základě rolí se používá ke správě přístupu ke specifikaci šablony. Uživatelé s přístupem pro čtení do specifikace šablony ji mohou nasadit, ale nemění šablonu.
+
+Tento přístup znamená, že můžete bezpečně sdílet šablony, které vyhovují standardům vaší organizace.
+
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v tématu [kurz: vytvoření a nasazení první šablony ARM](template-tutorial-create-first-template.md).
+* Další informace o šablonách ARM pomocí příručky sady modulů na Microsoft Learn najdete v tématu [nasazení a Správa prostředků v Azure pomocí šablon ARM](/learn/paths/deploy-manage-resource-manager-templates/).
 * Informace o vlastnostech v souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Další informace o exportu šablon najdete v tématu [rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal](quickstart-create-templates-use-the-portal.md).
 * Odpovědi na běžné otázky najdete v tématu [Nejčastější dotazy k šablonám ARM](frequently-asked-questions.md).

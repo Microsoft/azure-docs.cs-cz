@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 9758cdf07d1ad56e6300e89eed2aa0b1da29e081
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76694549"
 ---
 ## <a name="create-a-cloud-spatial-anchor"></a>Vytvořit prostorovou kotvu cloudu

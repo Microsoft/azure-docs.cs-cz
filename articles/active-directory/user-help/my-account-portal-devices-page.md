@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422470"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096204"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Správa připojených zařízení ze stránky zařízení
 
@@ -27,7 +27,12 @@ Stránka **zařízení** na portálu **můj účet** vám pomůže se správou z
 - Zakažte všechna zařízení, která už nevlastníte, ztratila nebo která byla odcizena.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o zařízení připojených k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě zařízení pro vaše zaměstnance a další použití, přečtěte si [dokumentaci identity zařízení](https://docs.microsoft.com/azure/active-directory/devices/index).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o zařízení připojených k pracovnímu nebo školnímu účtu. Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Pokud jste správcem a hledáte informace o správě zařízení pro vaše zaměstnance a další použití, přečtěte si [dokumentaci identity zařízení](../devices/index.yml).
 
 ## <a name="view-your-connected-devices"></a>Zobrazit připojená zařízení
 
@@ -68,7 +73,7 @@ Pokud jste se odhlásili ze zařízení nebo máte závažnou chybu, můžete p�
 
 Po zobrazení připojených zařízení můžete:
 
-- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat své [bezpečnostní údaje](user-help-security-info-overview.md).
+- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat své [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit a spravovat vaše [organizace](my-account-portal-organizations-page.md).
 

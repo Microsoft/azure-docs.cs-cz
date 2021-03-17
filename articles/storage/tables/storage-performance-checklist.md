@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
-ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236382"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004700"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
@@ -152,7 +153,7 @@ Před otevřením připojení nastavte limit připojení.
 
 Další programovací jazyky najdete v dokumentaci k příslušnému jazyku, kde zjistíte, jak nastavit limit připojení.  
 
-Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
 
@@ -170,7 +171,7 @@ I když paralelismus může být ideální pro výkon, buďte opatrní v použí
 
 ## <a name="client-libraries-and-tools"></a>Klientské knihovny a nástroje
 
-Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu. Další informace najdete v [dokumentaci Azure Storage reference](/azure/storage/#reference).
+Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu.
 
 ## <a name="handle-service-errors"></a>Zpracování chyb služby
 
@@ -196,7 +197,7 @@ V této části jsou uvedena několik nastavení rychlých konfigurací, která 
 
 Počínaje službou Storage verze 2013-08-15 podporuje Table service pro přenos dat tabulky místo formátu AtomPub založeného na jazyce XML použití JSON. Použití formátu JSON může snížit velikost datových vytížení až o 75% a může významně zlepšit výkon aplikace.
 
-Další informace najdete v [tabulkách post Microsoft Azure: Úvod](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) do formátu JSON a [datové části pro operace služby Table Service](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Další informace najdete v [tabulkách post Microsoft Azure: Úvod](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) do formátu JSON a [datové části pro operace služby Table Service](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations).
 
 ### <a name="disable-nagle"></a>Zakázat Nagle
 

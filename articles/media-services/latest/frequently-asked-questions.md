@@ -1,38 +1,48 @@
 ---
-title: Nejčastější dotazy k Azure Media Services V3 | Microsoft Docs
+title: Nejčastější dotazy k Azure Media Services V3
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/07/2020
-ms.author: juliako
-ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011681"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505762"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services V3.
 
 ## <a name="general"></a>Obecné
 
+### <a name="does-media-services-store-any-customer-data-outside-of-the-service-region"></a>Ukládá Media Services data o zákaznících mimo oblast služby?
+
+- Zákazníci připojovat ke svému Azure Media Services účtu své vlastní účty úložiště.  Všechna data prostředků se ukládají do těchto přidružených účtů úložiště a zákazník kontroluje umístění a typ replikace tohoto úložiště.
+- Další data, která jsou přidružená k účtu Media Services (včetně šifrovacích klíčů obsahu, klíčů pro ověření tokenu, JobInputHttp adres URL a dalších metadat entit), se ukládají do úložiště vlastněných společností Microsoft v oblasti vybrané pro Media Services účet.
+    - Z důvodu [požadavků](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) na umístění dat v oblasti Brazílie – jih a jihovýchodní Asie se data dalších účtů ukládají v rámci redundantní zóny a jsou obsažena v jedné oblasti. V jihovýchodní Asie se všechna data dalších účtů ukládají v Singapuru a v oblasti Brazílie – jih jsou data uložená v Brazílii.
+    - V oblastech jiných než Brazílie – jih a jihovýchodní Asie můžou být data dalších účtů uložená také v úložišti vlastněných společností Microsoft v [spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+- Azure Media Services je místní služba a neposkytuje [vysokou dostupnost](media-services-high-availability-encoding.md) nebo replikaci dat. Zákazníci, kteří potřebují tyto funkce, jsou vysoce doporučováni při vytváření řešení pomocí Media Services účtů v několika oblastech.  Ukázka ukazující, jak vytvořit řešení pro vysokou dostupnost s Media Services video na vyžádání je dostupné jako průvodce.
+
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Jaká jsou omezení Azure Portal Media Services V3?
 
-[Azure Portal](https://portal.azure.com/) můžete použít ke správě událostí V3 Live, zobrazení zdrojů a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. <br/>Pro všechny ostatní úlohy správy (například ke správě transformací a úloh nebo analýze obsahu V3) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+[Azure Portal](https://portal.azure.com/) můžete použít ke správě událostí V3 Live, zobrazení zdrojů a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. <br/>Pro všechny ostatní úlohy správy (například ke správě transformací a úloh nebo analýze obsahu V3) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
-Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza**ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.  
+Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza** ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jaké role Azure můžou provádět akce s Azure Media Services prostředky? 
 
-Přečtěte si téma [řízení přístupu na základě role (RBAC) pro účty Media Services](rbac-overview.md).
+Přečtěte si téma [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](rbac-overview.md).
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Návody Stream do zařízení Apple iOS?
 
@@ -58,7 +68,7 @@ Při použití stránkování byste měli vždy použít další odkaz k zobraze
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jaké funkce ještě nejsou v Azure Media Services V3 k dispozici?
 
-Podrobnosti najdete v tématu [mezery funkcí v souvislosti s rozhraními API v2](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Podrobnosti najdete [v Průvodci migrací](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaký je proces přesunutí účtu Media Services mezi předplatnými?  
 
@@ -119,7 +129,7 @@ Správným přístupem je použití služby Secure token Service. V závislosti 
 
 Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování licencí/klíčů a šifrování prostředků (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
 - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
@@ -161,13 +171,13 @@ V současné době můžete použít [Azure Portal](https://portal.azure.com/) k
 * Umožňuje zobrazit (Nespravovat) [prostředky](assets-concept.md)v3. 
 * [Získejte informace o přístupu k rozhraním API](./access-api-howto.md). 
 
-Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/), [Azure CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/), [Azure CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Je v v3 koncept AssetFile?
 
 `AssetFile`Koncept se odebral z rozhraní Media Services API a odděluje Media Services od závislosti sady SDK úložiště. Nyní Azure Storage, nikoli Media Services, uchovává informace, které patří do sady Storage SDK. 
 
-Další informace najdete v tématu [migrace na Media Services V3](media-services-v2-vs-v3.md).
+Další informace najdete v tématu [migrace na Media Services V3](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Kde se nacházelo šifrování úložiště na straně klienta?
 
@@ -189,7 +199,7 @@ V závislosti na návrhu klíče mezipaměti pro Content Delivery Network se mů
 
 #### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>Podporuje se kromě iOS 10 offline režim přechodu do režimu FPS v iOS 11?
 
-Yes. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
+Ano. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
 
 #### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Proč v sadě SDK serveru pro FPS nejde najít dokument "offline přehrávání pomocí FairPlay streaming a HTTP Live Streaming"?
 

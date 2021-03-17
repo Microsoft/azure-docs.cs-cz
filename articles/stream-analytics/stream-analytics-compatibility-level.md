@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics úrovně kompatibility
 description: Naučte se nastavit úroveň kompatibility pro úlohu Azure Stream Analytics a významné změny v nejnovější úrovni kompatibility.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056512"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094075"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -33,7 +33,7 @@ Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak
 
 ## <a name="set-the-compatibility-level"></a>Nastavení úrovně kompatibility
 
-Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](/rest/api/streamanalytics/stream-analytics-job).
+Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel).
 
 Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 
@@ -43,7 +43,7 @@ Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 4. Vyberte hodnotu úrovně kompatibility, kterou chcete.
 5. V dolní části stránky vyberte **Save (Uložit** ).
 
-![Úroveň kompatibility Stream Analytics v Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Úroveň kompatibility Stream Analytics v Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 Při aktualizaci úrovně kompatibility T-Compiler ověří úlohu se syntaxí, která odpovídá vybrané úrovni kompatibility.
 
@@ -77,13 +77,13 @@ Další informace najdete v tématu [aktualizace geoprostorových funkcí v Azur
 
 **Předchozí úrovně:** Chování Upsert bylo *vloženo nebo sloučeno*.
 
-**úroveň 1,2:** Nativní integrace rozhraní API s využitím výstupu CosmosDB maximalizuje propustnost a efektivně zpracovává požadavky na omezování. Další informace najdete [na stránce Azure Stream Analytics výstup do Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
+**úroveň 1,2:** Nativní integrace rozhraní API s využitím výstupu CosmosDB maximalizuje propustnost a efektivně zpracovává požadavky na omezování. Další informace najdete [na stránce Azure Stream Analytics výstup do Azure Cosmos DB](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12).
 
 Chování Upsert je *vloženo nebo nahrazeno*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset při zápisu do výstupu SQL
 
-**Předchozí úrovně:** typy [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) byly upraveny na čas UTC.
+**Předchozí úrovně:** typy [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql) byly upraveny na čas UTC.
 
 **úroveň 1,2:** DateTimeOffset již není upravován.
 
@@ -151,4 +151,4 @@ V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
 ## <a name="next-steps"></a>Další kroky
 
 * [Řešení potíží s Azure Stream Analytics vstupy](stream-analytics-troubleshoot-input.md)
-* [Stav prostředku Stream Analytics](stream-analytics-resource-health.md)
+* [Stav prostředku Stream Analytics](./stream-analytics-troubleshoot-query.md)

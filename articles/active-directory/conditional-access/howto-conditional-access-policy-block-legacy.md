@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032080"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877284"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
 
@@ -24,22 +24,22 @@ V důsledku zvýšeného rizika spojeného se staršími protokoly pro ověřov�
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které blokují požadavky na starší verzi ověřování. Tato zásada je nastavena do [režimu pouze](howto-conditional-access-report-only.md) pro spuštění sestav, takže správci mohou určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost, že se zásady použijí podle svých záměrů, **můžou na nasazení přepnout do nebo připravit** přidáním konkrétních skupin a vyloučením dalších.
+Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které blokují požadavky na starší verzi ověřování. Tato zásada je nastavena do [režimu pouze](howto-conditional-access-insights-reporting.md) pro spuštění sestav, takže správci mohou určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost, že se zásady použijí podle svých záměrů, **můžou na nasazení přepnout do nebo připravit** přidáním konkrétních skupin a vyloučením dalších.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte všechny účty, které musí udržovat možnost používat starší verze ověřování. Vyloučením alespoň jednoho účtu zabráníte jeho uzamknutí. Pokud nevylučujete žádný účet, nebudete moct vytvořit tuto zásadu.
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **Všichni uživatelé**.
+   1. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte všechny účty, které musí udržovat možnost používat starší verze ověřování. Vyloučením alespoň jednoho účtu zabráníte jeho uzamknutí. Pokud nevylučujete žádný účet, nebudete moct vytvořit tuto zásadu.
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**vyberte **všechny cloudové aplikace**.
+1. V části **cloudové aplikace nebo akce** vyberte **všechny cloudové aplikace**.
    1. Vyberte **Hotovo**.
-1. V části **podmínky**  >  **klientských aplikací**nastavte **Konfigurovat** na **Ano**.
+1. V části **podmínky**  >  **klientských aplikací** nastavte **Konfigurovat** na **Ano**.
    1. Zaškrtněte pouze políčka **klienti Exchange ActiveSync** a **Další klienti**.
    1. Vyberte **Hotovo**.
-1. V části **řízení přístupu**  >  **udělit**vyberte **blokovat přístup**.
+1. V části **řízení přístupu**  >  **udělit** vyberte **blokovat přístup**.
    1. Vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
@@ -48,8 +48,8 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
-[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-insights-reporting.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
-[Jak nastavit multifunkční zařízení nebo aplikaci pro odesílání e-mailů pomocí Office 365 a Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+[Jak nastavit multifunkční zařízení nebo aplikaci pro odesílání e-mailů pomocí Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

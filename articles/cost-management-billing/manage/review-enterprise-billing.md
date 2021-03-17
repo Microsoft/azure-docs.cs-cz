@@ -3,15 +3,16 @@ title: Kontrola fakturačních dat smlouvy Azure Enterprise s využitím rozhran
 description: Zjistěte, jak pomocí rozhraní Azure REST API zkontrolovat fakturační údaje smlouvy Enterprise.
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: article
-ms.date: 02/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d42a9cfa15b532a98b632331f592d7e51bc09f0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202858"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132410"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Kontrola fakturace smlouvy Enterprise pomocí rozhraní REST API
 
@@ -36,9 +37,9 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte platný [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) `Bearer`. |  
+|*Authorization:*|Povinná hodnota. Nastavte platný [klíč rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) `Bearer`. |  
 
-Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační období. Z důvodu zajištění lepšího výkonu synchronní volání vrací informace za poslední měsíc.  Můžete využít také [asynchronní volání rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based), které vrátí data za 36 měsíců.
+Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační období. Z důvodu zajištění lepšího výkonu synchronní volání vrací informace za poslední měsíc.  Můžete využít také [asynchronní volání rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based), které vrátí data za 36 měsíců.
 
 
 ## <a name="response"></a>Odpověď  
@@ -89,9 +90,9 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte platný [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) `Bearer`. |  
+|*Authorization:*|Povinná hodnota. Nastavte platný [klíč rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) `Bearer`. |  
 
-Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační období. Z důvodu zajištění lepšího výkonu synchronní volání vrací informace za poslední měsíc.  Můžete využít také [asynchronní volání rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based), které vrátí data za 36 měsíců.
+Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační období. Z důvodu zajištění lepšího výkonu synchronní volání vrací informace za poslední měsíc.  Můžete využít také [asynchronní volání rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based), které vrátí data za 36 měsíců.
 
 ### <a name="response"></a>Odpověď  
 
@@ -133,7 +134,7 @@ Tento příklad je zkrácený, úplný popis jednotlivých polí odpovědi a zp�
 Získejte agregované podrobnosti o využití registračního účtu.
 
 ```http
-GET GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
+GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
 Content-Type: application/json   
 Authorization: Bearer
 ```
@@ -145,9 +146,9 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte platný [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) `Bearer`. |  
+|*Authorization:*|Povinná hodnota. Nastavte platný [klíč rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) `Bearer`. |  
 
-Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační období. Z důvodu zajištění lepšího výkonu synchronní volání vrací informace za poslední měsíc.  Můžete využít také [asynchronní volání rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based), které vrátí data za 36 měsíců.
+Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační období. Z důvodu zajištění lepšího výkonu synchronní volání vrací informace za poslední měsíc.  Můžete využít také [asynchronní volání rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based), které vrátí data za 36 měsíců.
 
 ### <a name="response"></a>Odpověď  
 
@@ -182,6 +183,6 @@ Následující příklad ukazuje výstup rozhraní REST API pro smlouvu Enterpri
 Tento příklad je zkrácený, úplný popis jednotlivých polí odpovědi a způsobu zpracování chyb najdete v části věnované [získání podrobností o využití pro registrační účet](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy).
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte si [Přehled služby Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api).
-- Prozkoumejte [Rozhraní REST API podnikové fakturace](https://docs.microsoft.com/rest/api/billing/).   
-- [Začínáme s Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
+- Projděte si [Přehled služby Enterprise Reporting](./enterprise-api.md).
+- Prozkoumejte [Rozhraní REST API podnikové fakturace](/rest/api/billing/).   
+- [Začínáme s Azure REST API](/rest/api/azure/)

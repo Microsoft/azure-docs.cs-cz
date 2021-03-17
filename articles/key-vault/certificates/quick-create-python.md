@@ -3,203 +3,102 @@ title: Rychlý Start – Azure Key Vault knihovna klienta Pythonu – Správa ce
 description: Naučte se vytvářet, načítat a odstraňovat certifikáty z trezoru klíčů Azure pomocí klientské knihovny Pythonu.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 3/30/2020
+ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: 86ce2b95cce82bd6d6877f83c3bc0b0496804c83
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 6ae20c55a16b12f7543af3f08d96400a8e5f20c9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875332"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934913"
 ---
-# <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Azure Key Vault certifikáty pro Python
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Python
 
-Začněte s knihovnou klienta Azure Key Vault pro Python. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
+Začněte s klientskou knihovnou certifikátů Azure Key Vault pro Python. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Když použijete Key Vault k ukládání certifikátů, vyhnete se ukládání certifikátů v kódu, což zvyšuje zabezpečení vaší aplikace.
 
-Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Použití klientské knihovny Key Vault pro Python pro:
-
-- Zvyšte zabezpečení a kontrolu nad klíči a hesly.
-- Vytvářejte a importujte šifrovací klíče během několika minut.
-- Snižte latenci díky škálování cloudu a globální redundanci.
-- Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
-- Použijte ověřený HSM úrovně 2 FIPS 140-2.
-
-[Referenční dokumentace k](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
+[Referenční dokumentace k](/python/api/overview/azure/keyvault-certificates-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-certificates)
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Python 2,7, 3.5.3 nebo novější
-- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/)
+- [Python 2.7 + nebo 3.5.3 +](/azure/developer/python/configure-local-development-environment)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) v okně terminálu Linux.
+V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) v okně terminálu Linux.
 
-## <a name="setting-up"></a>Nastavení
+## <a name="set-up-your-local-environment"></a>Nastavení místního prostředí
 
-### <a name="install-the-package"></a>Instalace balíčku
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](/java/api/overview/azure/identity-readme) .
 
-V okně konzoly nainstalujte Azure Key Vault knihovna certifikátů pro Python.
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-```console
-pip install azure-keyvault-certificates
-```
+1. Spusťte příkaz `login`.
 
-Pro tento rychlý Start budete muset nainstalovat taky balíček Azure. identity:
+    ```azurecli-interactive
+    az login
+    ```
 
-```console
-pip install azure.identity
-```
+    Pokud rozhraní příkazového řádku může otevřít výchozí prohlížeč, bude to mít za následek a načíst přihlašovací stránku Azure.
+
+    V opačném případě otevřete stránku prohlížeče na adrese [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadejte autorizační kód zobrazený v terminálu.
+
+2. Přihlaste se pomocí přihlašovacích údajů vašeho účtu v prohlížeči.
+
+### <a name="install-the-packages"></a>Nainstalovat balíčky
+
+1. V terminálu nebo na příkazovém řádku vytvořte vhodnou složku projektu a pak vytvořte a aktivujte virtuální prostředí Pythonu, jak je popsáno v tématu [použití virtuálních prostředí Python](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments) .
+
+1. Nainstalujte Azure Active Directory knihovnu identit:
+
+    ```terminal
+    pip install azure.identity
+    ```
+
+
+1. Instalace klientské knihovny Key Vault certifikátů:
+
+    ```terminal
+    pip install azure-keyvault-certificates
+    ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
 
-V tomto rychlém startu se používá předem vytvořený Trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v [rychlém startu Azure CLI](quick-create-cli.md), [Azure PowerShell rychlý Start](quick-create-powershell.md)nebo v [rychlém startu Azure Portal](quick-create-portal.md). Případně můžete spustit příkazy rozhraní příkazového řádku Azure CLI níže.
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-> [!Important]
-> Každý Trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte <název trezoru klíčů jedinečných> s názvem vašeho trezoru klíčů.
+### <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
 
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
-```
-
-### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
-
-Nejjednodušší způsob, jak ověřit cloudovou aplikaci .NET, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) .
-
-V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Váš instanční objekt vyžaduje jedinečný název ve formátu "http:// &lt; My-Unique-Service-Principal-Name &gt; ".
-
-Vytvořte instanční objekt pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
-
-```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
-```
-
-Tato operace vrátí řadu párů klíč/hodnota. 
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění certifikátu vašemu uživatelskému účtu.
 
 ```console
-{
-  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-  "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-  "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
-}
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create
 ```
 
-Poznamenejte si clientId a clientSecret, jak je budeme používat v níže uvedeném kroku [nastavení proměnné prostředí](#set-environmental-variables) .
+#### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Udělte instančnímu objektu přístup k vašemu trezoru klíčů.
+Tato aplikace používá název trezoru klíčů jako proměnnou prostředí s názvem `KEY_VAULT_NAME` .
 
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění vašemu instančnímu objektu předáním příkazu [AZ klíčového trezoru set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Udělte instančnímu objektu oprávnění získat, vypsat a vytvořit pro certifikáty.
-
-```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --certificate-permissions delete get list create 
-```
-
-#### <a name="set-environmental-variables"></a>Nastavení proměnných prostředí
-
-Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` a `AZURE_TENANT_ID` . Nastavte tyto proměnné na hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) pomocí `export VARNAME=VALUE` formátu. (Tato metoda nastavuje jenom proměnné pro vaše aktuální prostředí a procesy vytvořené z prostředí. Pokud chcete tyto proměnné do svého prostředí přidat trvale, upravte `/etc/environment ` soubor.) 
-
-Název trezoru klíčů si taky budete muset uložit jako proměnnou prostředí s názvem `KEY_VAULT_NAME` .
-
-```console
-export AZURE_CLIENT_ID=<your-clientID>
-
-export AZURE_CLIENT_SECRET=<your-clientSecret>
-
-export AZURE_TENANT_ID=<your-tenantId>
-
-export KEY_VAULT_NAME=<your-key-vault-name>
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
 ````
-
-## <a name="object-model"></a>Objektový model
-
-Klientská knihovna Azure Key Vault pro Python umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázky kódu vám ukážou, jak vytvořit klienta, vytvořit certifikát, načíst certifikát a odstranit certifikát.
-
-## <a name="code-examples"></a>Příklady kódu
-
-### <a name="add-directives"></a>Přidat direktivy
-
-Do horní části kódu přidejte následující direktivy:
-
-```python
-import os
-from azure.keyvault.certificates import CertificateClient, CertificatePolicy,CertificateContentType, WellKnownIssuerNames 
-from azure.identity import DefaultAzureCredential
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
-
-Ověřování pro váš Trezor klíčů a vytvoření klienta trezoru klíčů závisí na proměnných prostředí v kroku [nastavit proměnné prostředí](#set-environmental-variables) výše. Název trezoru klíčů se rozšíří na identifikátor URI trezoru klíčů ve formátu "https://<your-key-trezor-Name>. vault.azure.net".
-
-```python
-credential = DefaultAzureCredential()
-
-client = CertificateClient(vault_url=KVUri, credential=credential)
+macOS nebo Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-### <a name="save-a-certificate"></a>Uložení certifikátu
+## <a name="create-the-sample-code"></a>Vytvoření ukázkového kódu
 
-Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit certifikát podepsaný svým držitelem. 
+Klientská knihovna certifikátů Azure Key Vault pro Python umožňuje správu certifikátů. Následující příklad kódu ukazuje, jak vytvořit klienta, nastavit certifikát, načíst certifikát a odstranit certifikát.
 
-```python
-certificate_operation_poller = client.begin_create_certificate(
-    certificate_name=certificateName, policy=CertificatePolicy.get_default()
-)
-certificate = certificate_operation_poller.result()
-```
-
-Můžete ověřit, že se certifikát nastavil pomocí příkazu [AZ datatrezor Certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) :
-
-```azurecli
-az keyvault certificate show --vault-name <your-unique-keyvault-name> --name myCertificate
-```
-
-### <a name="retrieve-a-certificate"></a>Načtení certifikátu
-
-Teď si můžete načíst dřív vytvořený certifikát.
-
-```python
-retrieved_certificate = client.get_certificate(certificateName)
- ```
-
-Certifikát je teď uložený jako `retrieved_certificate` .
-
-### <a name="delete-a-certificate"></a>Odstranit certifikát
-
-Nakonec odstraňte certifikát z vašeho trezoru klíčů.
-
-```python
-client.delete_certificate(certificateName)
-```
-
-Můžete ověřit, že certifikát je pryč pomocí příkazu [AZ datatrezor Certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) :
-
-```azurecli
-az keyvault certifcate show --vault-name <your-unique-keyvault-name> --name myCertificate
-```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už je nepotřebujete, můžete k odebrání trezoru klíčů a odpovídající skupiny prostředků použít Azure CLI nebo Azure PowerShell.
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
-
-## <a name="sample-code"></a>Ukázka kódu
+Vytvořte soubor s názvem *kv_certificates. py* , který obsahuje tento kód.
 
 ```python
 import os
@@ -212,33 +111,109 @@ KVUri = "https://" + keyVaultName + ".vault.azure.net"
 credential = DefaultAzureCredential()
 client = CertificateClient(vault_url=KVUri, credential=credential)
 
-certificateName = "myCertificate"
+certificateName = input("Input a name for your certificate > ")
 
-print("Creating a certificate in " + keyVaultName + " called '" + certificateName  + "` ...")
+print(f"Creating a certificate in {keyVaultName} called '{certificateName}' ...")
 
-certificate_operation_poller = client.begin_create_certificate(
-    certificate_name=certificateName, policy=CertificatePolicy.get_default()
-
-certificate = certificate_operation_poller.result()
+policy = CertificatePolicy.get_default()
+poller = client.begin_create_certificate(certificate_name=certificateName, policy=policy)
+certificate = poller.result()
 
 print(" done.")
 
-print("Retrieving your certificate from " + keyVaultName + ".")
+print(f"Retrieving your certificate from {keyVaultName}.")
 
 retrieved_certificate = client.get_certificate(certificateName)
 
-print("Certificate with name '{0}' was found'.".format(retrieved_certificate.name))
-print("Deleting your certificate from " + keyVaultName + " ...")
+print(f"Certificate with name '{retrieved_certificate.name}' was found'.")
+print(f"Deleting your certificate from {keyVaultName} ...")
 
-client.delete_certificate(certificateName)
+poller = client.begin_delete_certificate(certificateName)
+deleted_certificate = poller.result()
 
 print(" done.")
 ```
 
+## <a name="run-the-code"></a>Spuštění kódu
+
+Ujistěte se, že kód v předchozí části je v souboru s názvem *kv_certificates. py*. Pak spusťte kód pomocí následujícího příkazu:
+
+```terminal
+python kv_certificates.py
+```
+
+- Pokud dojde k chybám oprávnění, ujistěte se, že jste spustili [ `az keyvault set-policy` příkaz](#grant-access-to-your-key-vault).
+- Opětovné spuštění kódu se stejným názvem klíče může způsobit chybu. certifikát "(konflikt) <name> je momentálně v odstraněném stavu, ale obnovený stav." Použijte jiný název klíče.
+
+## <a name="code-details"></a>Podrobnosti o kódu
+
+### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
+
+V tomto rychlém startu se přihlášený uživatel používá k ověření v trezoru klíčů, což je upřednostňovaná metoda pro místní vývoj. Pro aplikace nasazené do Azure by se měla App Service nebo virtuální počítač přiřadit spravovaná identita. Další informace najdete v tématu [Přehled spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+
+V níže uvedeném příkladu je název trezoru klíčů rozbalený do identifikátoru URI trezoru klíčů ve formátu "https:// \<your-key-vault-name\> . Vault.Azure.NET". Tento příklad používá třídu  [' DefaultAzureCredential () '](/python/api/azure-identity/azure.identity.defaultazurecredential) , která umožňuje použít stejný kód v různých prostředích s různými možnostmi k poskytnutí identity. Další informace najdete v tématu [výchozí ověřování pověření Azure](https://docs.microsoft.com/python/api/overview/azure/identity-readme). 
+
+```python
+credential = DefaultAzureCredential()
+client = CertificateClient(vault_url=KVUri, credential=credential)
+```
+
+### <a name="save-a-certificate"></a>Uložení certifikátu
+
+Po získání objektu klienta pro Trezor klíčů můžete vytvořit certifikát pomocí metody [begin_create_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-create-certificate-certificate-name--policy----kwargs-) : 
+
+```python
+policy = CertificatePolicy.get_default()
+poller = client.begin_create_certificate(certificate_name=certificateName, policy=policy)
+certificate = poller.result()
+```
+
+V tomto případě certifikát vyžaduje zásadu získanou pomocí metody [CertificatePolicy.get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?#get-default--) .
+
+Volání `begin_create_certificate` metody generuje asynchronní volání do Azure REST API pro Trezor klíčů. Asynchronní volání vrátí objekt cyklického dotazování. Chcete-li počkat na výsledek operace, zavolejte metodu pro hlasování `result` .
+
+Při zpracování žádosti Azure ověřuje identitu volajícího (instanční objekt) pomocí objektu přihlašovacích údajů, který jste zadali klientovi.
+
+
+### <a name="retrieve-a-certificate"></a>Načtení certifikátu
+
+Chcete-li číst certifikát z Key Vault, použijte metodu [get_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) :
+
+```python
+retrieved_certificate = client.get_certificate(certificateName)
+ ```
+
+Můžete také ověřit, že se certifikát nastavil pomocí příkazu Azure CLI AZ klíčů [trezor Certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show).
+
+### <a name="delete-a-certificate"></a>Odstranit certifikát
+
+Chcete-li odstranit certifikát, použijte metodu [begin_delete_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-delete-certificate-certificate-name----kwargs-) :
+
+```python
+poller = client.begin_delete_certificate(certificateName)
+deleted_certificate = poller.result()
+```
+
+`begin_delete_certificate`Metoda je asynchronní a vrací objekt cyklického dotazování. Volání metody cyklického dotazování `result` čeká na jeho dokončení.
+
+Můžete ověřit, že se certifikát odstranil pomocí příkazu Azure CLI AZ klíčů [trezor Certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show).
+
+Po odstranění zůstane certifikát uložený v odstraněném stavu, ale po dobu nepůjde obnovit. Pokud kód znovu spustíte, použijte jiný název certifikátu.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete také experimentovat s [tajnými](../secrets/quick-create-python.md) [kódy a klíči](../keys/quick-create-python.md), můžete znovu použít Key Vault vytvořená v tomto článku.
+
+V opačném případě, až budete hotovi s prostředky vytvořenými v tomto článku, odstraňte skupinu prostředků a všechny její obsažené prostředky pomocí následujícího příkazu:
+
+```azurecli
+az group delete --resource-group KeyVault-PythonQS-rg
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů, uložili certifikát a načetli jste tento certifikát. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
-
-- Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- [Přehled Azure Key Vault](../general/overview.md)
+- [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
+- [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
+- [Přehled zabezpečení Key Vault](../general/security-overview.md)
+- [Ověřování pomocí Key Vault](../general/authentication.md)

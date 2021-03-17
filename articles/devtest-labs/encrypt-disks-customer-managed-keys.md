@@ -2,19 +2,18 @@
 title: Šifrování disků s operačním systémem pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs
 description: Naučte se šifrovat disky operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs.
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 09/01/2020
+ms.openlocfilehash: 26ef4ff1529483da9956c6dcc43807af0ffd6463
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566195"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341203"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Šifrování disků operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs
-Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích v Azure (s operačním systémem a datovými disky) ve výchozím nastavení, když je trvale ukládá do cloudu. Přečtěte si další informace o [šifrování disků](../virtual-machines/windows/disk-encryption.md) v Azure. 
+Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích v Azure (s operačním systémem a datovými disky) ve výchozím nastavení, když je trvale ukládá do cloudu. Přečtěte si další informace o [šifrování disků](../virtual-machines/disk-encryption.md) v Azure. 
 
-V rámci DevTest Labs se všechny disky s operačním systémem a datové disky vytvořené jako součást testovacího prostředí šifrují pomocí klíčů spravovaných platformou. Jako vlastník testovacího prostředí se ale můžete rozhodnout pro šifrování disků s operačním systémem virtuálního počítače testovacího prostředí pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat **klíč spravovaný zákazníkem** , který se použije k šifrování dat v testovacích discích s operačním systémem. Další informace o šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem a dalších typů šifrování spravovaného disku najdete v tématu [klíče spravované zákazníkem](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Viz také [omezení s použitím klíčů spravovaných zákazníkem](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
-
+V rámci DevTest Labs se všechny disky s operačním systémem a datové disky vytvořené jako součást testovacího prostředí šifrují pomocí klíčů spravovaných platformou. Jako vlastník testovacího prostředí se ale můžete rozhodnout pro šifrování disků s operačním systémem virtuálního počítače testovacího prostředí pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat **klíč spravovaný zákazníkem** , který se použije k šifrování dat v testovacích discích s operačním systémem. Další informace o šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem a dalších typů šifrování spravovaného disku najdete v tématu [klíče spravované zákazníkem](../virtual-machines/disk-encryption.md#customer-managed-keys). Viz také [omezení s použitím klíčů spravovaných zákazníkem](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 > [!NOTE]
 > - Aktuálně se šifrování disku s klíčem spravovaným zákazníkem podporuje jenom pro disky s operačním systémem v DevTest Labs. 
@@ -25,12 +24,15 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
 
 ## <a name="pre-requisites"></a>Požadavky
 
-1. Pokud nemáte sadu šifrování disku nastavenou, postupujte podle pokynů v tomto článku [a nastavte Key Vault a sadu šifrování disku](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Všimněte si následujících požadavků pro sadu Disk Encryption: 
+1. Pokud nemáte sadu šifrování disku nastavenou, postupujte podle pokynů v tomto článku [a nastavte Key Vault a sadu šifrování disku](../virtual-machines/disks-enable-customer-managed-keys-portal.md). Všimněte si následujících požadavků pro sadu Disk Encryption: 
 
     - Sada Encryption disk musí být **ve stejné oblasti a předplatném jako vaše testovací prostředí**. 
     - Ujistěte se, že (vlastník testovacího prostředí) má alespoň **přístup na úrovni čtenáře** ke sadě Encryption disk, která bude použita k šifrování disků testovacího prostředí. 
-2. Pro laboratoře vytvořené před 8/1/2020 se vlastník testovacího prostředí bude muset ujistit, že je povolená identita přiřazená testovacímu systému. Pokud to chcete udělat, může vlastník testovacího prostředí přejít ke své laboratoři, kliknout na **Konfigurace a zásady**, kliknout na okno **identita (Preview)** , změnit **stav** identity přiřazené systémem na **zapnuto** a kliknout na **Uložit**. Pro novou laboratoř vytvořenou po identitě přiřazenou systémem 8/1/2020 testovacího prostředí bude ve výchozím nastavení povolená. 
-3. Aby testovací prostředí mohlo zpracovávat šifrování pro všechny disky s operačním systémem, musí vlastník testovacího prostředí explicitně udělit roli pro správce identit v testovacím **systému** v sadě šifrování disku a také roli Přispěvatel virtuálních počítačů na základním předplatném Azure. Vlastník testovacího prostředí to může udělat provedením následujících kroků:
+1. Pro laboratoře vytvořené před 8/1/2020 se vlastník testovacího prostředí bude muset ujistit, že je povolená identita přiřazená testovacímu systému. Pokud to chcete udělat, může vlastník testovacího prostředí přejít ke své laboratoři, kliknout na **Konfigurace a zásady**, kliknout na okno **identita (Preview)** , změnit **stav** identity přiřazené systémem na **zapnuto** a kliknout na **Uložit**. Pro novou laboratoř vytvořenou po identitě přiřazenou systémem 8/1/2020 testovacího prostředí bude ve výchozím nastavení povolená. 
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/managed-keys.png" alt-text="Spravované klíče":::
+1. Aby testovací prostředí mohlo zpracovávat šifrování pro všechny disky s operačním systémem, musí vlastník testovacího prostředí explicitně udělit roli pro správce identit v testovacím **systému** v sadě šifrování disku a také roli Přispěvatel virtuálních počítačů na základním předplatném Azure. Vlastník testovacího prostředí to může udělat provedením následujících kroků:
 
    
     1. Ujistěte se, že jste členem [role správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) na úrovni předplatného Azure, abyste mohli spravovat přístup uživatelů k prostředkům Azure. 
@@ -63,17 +65,33 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
 1. Na stránce **Konfigurace a zásady** vyberte v části **šifrování** možnost **disky (Preview)** . Ve výchozím nastavení je **typ šifrování** nastavený na místní **šifrování pomocí klíče spravovaného platformou**.
 
     :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Karta disky stránky konfigurace a zásady":::
-1. V části **typ šifrování**vyberte v rozevíracím seznamu možnost místní **šifrování pomocí spravovaného klíče zákazníka** . 
-1. V části **nastavení šifrování disku**vyberte sadu šifrování disku, kterou jste vytvořili dříve. Je to stejná sada pro šifrování disků, ke které má přístup k systémové identitě přiřazena systémová identita testovacího prostředí.
+1. V části **typ šifrování** vyberte v rozevíracím seznamu možnost místní **šifrování pomocí spravovaného klíče zákazníka** . 
+1. V části **nastavení šifrování disku** vyberte sadu šifrování disku, kterou jste vytvořili dříve. Je to stejná sada pro šifrování disků, ke které má přístup k systémové identitě přiřazena systémová identita testovacího prostředí.
 1. Na panelu nástrojů vyberte **Uložit**. 
 
     :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Povolení šifrování pomocí klíče spravovaného zákazníkem":::
 1. V okně se zprávou s následujícím textem: *Toto nastavení se použije u nově vytvořených počítačů v testovacím prostředí. Starý disk s operačním systémem zůstane zašifrovaný se starou sadou Disk Encryption*, vyberte **OK**. 
 
     Po nakonfigurování se disky s operačním systémem testovacího prostředí zašifrují pomocí klíče spravovaného zákazníkem, který je k dispozici pomocí sady šifrování disku. 
+   
+## <a name="how-to-validate-if-disks-are-being-encrypted"></a>Jak ověřit, jestli jsou disky šifrované
 
+1. Přejít na virtuální počítač testovacího prostředí vytvořený po povolení šifrování disku pomocí spravovaného klíče zákazníka v testovacím prostředí.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Virtuální počítač s povoleným šifrováním disku":::
+1. Klikněte na skupinu prostředků virtuálního počítače a pak klikněte na disk s operačním systémem.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Skupina prostředků virtuálního počítače":::
+1. V části šifrování a ověřit, jestli je šifrování nastavené na spravovaný klíč zákazníka se sadou pro šifrování disku, kterou jste vybrali.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Ověřit šifrování":::
+  
 ## <a name="next-steps"></a>Další kroky
+
 Viz následující články: 
 
-- [Azure Disk Encryption](../virtual-machines/windows/disk-encryption.md). 
-- [Klíče spravované zákazníkem](../virtual-machines/windows/disk-encryption.md#customer-managed-keys) 
+- [Azure Disk Encryption](../virtual-machines/disk-encryption.md). 
+- [Klíče spravované zákazníkem](../virtual-machines/disk-encryption.md#customer-managed-keys)

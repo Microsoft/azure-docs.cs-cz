@@ -2,19 +2,19 @@
 title: Aktivita monitorování privátního cloudu
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje informace, které jsou k dispozici v aktivitě v řešení Azure VMware podle CloudSimple prostředí, včetně výstrah, událostí, úloh a auditu.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019668"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899299"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitorování aktivity řešení VMware podle CloudSimple
 
@@ -46,11 +46,11 @@ Pokud chcete výstrahy potvrdit a odebrat je ze seznamu, vyberte jednu nebo víc
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | Typ výstrahy | Kategorie výstrahy|
 | Čas | Čas, kdy došlo k upozornění. |
-| Severity | Význam výstrahy.|
+| Závažnost | Význam výstrahy.|
 | Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
 | ID prostředku | Identifikátor prostředku |
@@ -63,11 +63,11 @@ Události zobrazují aktivitu uživatelů a systémů na portálu CloudSimple. N
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | Čas | Datum a čas, kdy došlo k události. |
 | Event Type | Číselný kód identifikující událost. |
-| Severity | Závažnost události.|
+| Závažnost | Závažnost události.|
 | Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
 | Description | Popis, který výstrahu aktivoval. |
@@ -78,7 +78,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | ID úlohy | Jedinečný identifikátor úkolu |
 | Operace | Akce, kterou úkol provede. |
@@ -98,7 +98,7 @@ Protokoly auditu udržují přehled o aktivitě uživatelů. Protokoly auditová
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | Čas | Čas položky auditu |
 | Operace | Akce, kterou úkol provede. |

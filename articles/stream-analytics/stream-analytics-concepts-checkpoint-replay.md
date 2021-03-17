@@ -1,25 +1,24 @@
 ---
 title: Vytváření kontrolních bodů a opětovného přehrání konceptů v Azure Stream Analytics
 description: Tento článek popisuje koncepty a opětovné přehrání konceptů obnovení úloh v Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df31f8538bb9eabeca37fe4c52c4443fd447e415
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020604"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015314"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Koncepty kontrolního bodu a přehrání v úlohách Azure Stream Analytics
 Tento článek popisuje interní body kontrolního bodu a přehrání v Azure Stream Analytics a dopad na obnovení úlohy. Při každém spuštění úlohy Stream Analytics se informace o stavu udržují interně. Tyto informace o stavu se pravidelně ukládají do kontrolního bodu. V některých scénářích se pro obnovení úlohy použijí informace kontrolního bodu, pokud dojde k selhání nebo upgradu úlohy. V jiných případech se kontrolní bod nedá použít k obnovení a je potřeba ho přehrát znovu.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Logika stavových dotazů v dočasnách prvcích
-Jednou z jedinečných možností Azure Stream Analytics úlohy je provádět stavové zpracování, jako jsou například agregovaná okna, dočasná spojení a dočasné analytické funkce. Každý z těchto operátorů uchovává informace o stavu při spuštění úlohy.Maximální velikost okna pro tyto prvky dotazu je sedm dní. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Logika stavových dotazů v dočasnách prvcích
+Jednou z jedinečných možností Azure Stream Analytics úlohy je provádět stavové zpracování, jako jsou například agregovaná okna, dočasná spojení a dočasné analytické funkce. Každý z těchto operátorů uchovává informace o stavu při spuštění úlohy. Maximální velikost okna pro tyto prvky dotazu je sedm dní. 
 
 Koncept dočasného okna se zobrazí v několika Stream Analyticsch prvcích dotazu:
 1. Okna agregace (seskupení podle bubnu, skákající a posuvných oken)

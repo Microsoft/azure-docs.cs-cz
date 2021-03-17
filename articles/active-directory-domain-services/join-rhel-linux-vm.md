@@ -2,7 +2,7 @@
 title: Připojte virtuální počítač RHEL k Azure AD Domain Services | Microsoft Docs
 description: Naučte se konfigurovat virtuální počítač Red Hat Enterprise Linux a připojit se k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: justinha
+ms.openlocfilehash: 285a972936bfdf4b173e2a20223143883cd8b7d3
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005085"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619551"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s Red Hat Enterprise Linux k spravované doméně Azure Active Directory Domain Services
 
@@ -225,7 +225,7 @@ Successfully enrolled machine in realm
 
 Pokud váš virtuální počítač nemůže úspěšně dokončit proces připojení k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu.
 
-Nyní ověřte, zda se můžete dotazovat na informace o uživateli, pomocí`getent`
+Nyní ověřte, zda se můžete dotazovat na informace o uživateli, pomocí `getent`
 
 ```console
 sudo getent passwd contosoadmin

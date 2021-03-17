@@ -3,19 +3,19 @@ title: Doporučený uživatelem generovaný obsah pro rozhraní API detektoru an
 titleSuffix: Azure Cognitive Services
 description: Najděte si doporučený obsah a zjistěte, jak si jiní lidé myslí a používají rozhraní API detektoru anomálií.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.author: aahi
-ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 01/22/2021
+ms.author: mbullwin
+ms.openlocfilehash: fcd4f73a9cea75877360b2b537776bf59fb22363
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74012030"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704452"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Doporučený uživatelem generovaný obsah pro rozhraní API detektoru anomálií
 
@@ -27,7 +27,7 @@ V tomto článku zjistíte, jak si jiní zákazníci myslí o a používání ro
 
 ## <a name="open-source-projects"></a>Open-source projekty
 
-* [Jupyter notebook, který demonstruje detekci anomálií a streamování Power BI](https://github.com/marvinbuss/MS-AnomalyFinder)
+* [Jupyter notebook, který demonstruje detekci anomálií a streamování Power BI](https://github.com/marvinbuss/MS-AnomalyDetector)
 
 Pokud chcete určit název prostředku, vyplňte [krátký tvar](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxSkyhztUNZCtaivu8nmhd1UMENTMEJWTkRORkRGQUtGQzlWQ1dSV1JLTS4u).
-Pokud AnomalyDetector@microsoft.com chcete, abychom mohli obsah odebrat, kontaktujte nebo vyvolejte problém na GitHubu.
+Pokud chcete, AnomalyDetector@microsoft.com abychom mohli obsah odebrat, kontaktujte nebo vyvolejte problém na GitHubu.

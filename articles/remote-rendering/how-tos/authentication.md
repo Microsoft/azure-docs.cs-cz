@@ -1,32 +1,35 @@
 ---
-title: Authentication
+title: Ověřování
 description: Vysvětluje, jak ověřování funguje.
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565845"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724869"
 ---
 # <a name="configure-authentication"></a>Konfigurace ověřování
 
-Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako [prostorové kotvy Azure (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp). Klienti musí nastavit *jednu* z následujících možností, aby úspěšně volala rozhraní REST API:
+Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako [prostorové kotvy Azure (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp). Klienti musí nastavit *jednu* z následujících možností, aby úspěšně volala rozhraní REST API:
 
 * **AccountKey**: lze získat na kartě Keys (klíče) pro účet vzdáleného vykreslování na Azure Portal. Klíče účtu doporučujeme jenom pro vývoj a vytváření prototypů.
     ![Account ID](./media/azure-account-primary-key.png)
 
-* **AuthenticationToken**: je token Azure AD, který se dá získat pomocí [knihovny MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-overview). K dispozici je více různých toků pro příjem přihlašovacích údajů uživatele a používání těchto pověření k získání přístupového tokenu.
+* **AccountDomain**: lze získat na kartě Přehled pro účet vzdáleného vykreslování na Azure Portal.
+    ![Doména účtu](./media/azure-account-domain.png)
 
-* **MRAccessToken**: je token Mr, který se dá získat ze služby STS (Azure Mixed reality Security token). Načteno z `https://sts.mixedreality.azure.com` koncového bodu pomocí volání REST podobného následujícímu volání:
+* **AuthenticationToken**: je token Azure AD, který se dá získat pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). K dispozici je více různých toků pro příjem přihlašovacích údajů uživatele a používání těchto pověření k získání přístupového tokenu.
+
+* **MRAccessToken**: je token Mr, který se dá získat ze služby STS (Azure Mixed reality Security token). Načteno z `https://sts.<accountDomain>` koncového bodu pomocí volání REST, které je podobné následujícímu:
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK
@@ -44,11 +47,11 @@ Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako
 
 Klíče účtu se doporučují pro rychlé vytváření prototypů při vývoji. Doporučujeme, abyste aplikaci nedodali do produkčního prostředí pomocí vloženého klíče účtu. Doporučený postup je použití přístupu k ověřování Azure AD založeného na uživateli nebo službě.
 
- Ověřování Azure AD je popsané v části [ověřování uživatelů Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) ve službě [Azure prostorové kotvy (ASA)](https://docs.microsoft.com/azure/spatial-anchors/) .
+ Ověřování Azure AD je popsané v části [ověřování uživatelů Azure AD](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) ve službě [Azure prostorové kotvy (ASA)](../../spatial-anchors/index.yml) .
 
  Další informace najdete v tomto [kurzu: zabezpečení vzdáleného vykreslování Azure a modelu úložiště – Azure Active Directory ověřování](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
 Pokud chcete zajistit řízení úrovně přístupu k vaší službě, použijte při udělování přístupu založeného na rolích následující role:
 

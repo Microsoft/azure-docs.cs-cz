@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb9c776061407669f27f61ac4bc536b859d04b66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b20d47962bf5467b9a5d69327e7fc152215edaa7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550611"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445024"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s helpshift
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat helpshift s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k helpshift svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,7 +108,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -134,11 +134,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete **řídicí panel** helpshift a klikněte na **ikonu nastavení**.
 
-    ![Konfigurace helpshift](./media/helpshift-tutorial/configuration01.png)
+    ![Snímek obrazovky zobrazující ikonu nastavení helpshift](./media/helpshift-tutorial/configuration01.png)
 
 1. Klikněte na kartu **integrace** a proveďte následující kroky:
 
-    ![Konfigurace helpshift](./media/helpshift-tutorial/configuration02.png)
+    ![Snímek obrazovky se zobrazí karta integrace, kde můžete provést popsané kroky.](./media/helpshift-tutorial/configuration02.png)
 
     a. Zapněte **jednotné přihlašování (SAML – SSO)**.
 
@@ -154,20 +154,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-helpshift-test-user"></a>Vytvořit testovacího uživatele helpshift
 
-V této části vytvoříte uživatele s názvem B. Simon v helpshift. Pokud chcete přidat uživatele na platformě helpshift, pracujte s [týmem podpory klienta helpshift](mailto:support@helpshift.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v helpshift. Pokud chcete přidat uživatele na platformě helpshift, pracujte s [týmem podpory klienta helpshift](mailto:support@helpshift.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici helpshift, měli byste se automaticky přihlásit k helpshift, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici helpshift, měli byste se automaticky přihlásit k helpshift, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si helpshift s Azure AD](https://aad.portal.azure.com/)

@@ -4,12 +4,13 @@ description: Kurz .NET, který vám pomůže vytvořit vícevrstvou aplikaci v A
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029891"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Vícevrstvá aplikace .NET, která používá fronty Azure Service Bus
 
@@ -51,7 +52,7 @@ V následující části se probírá kód, který tuto architekturu implementuj
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů
 
-Prvním krokem je vytvoření *oboru názvů*a získání klíče [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) pro tento obor názvů. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace názvu oboru názvů a klíče SAS poskytuje přihlašovací údaje, pomocí kterých služba Service Bus ověří přístup k aplikaci.
+Prvním krokem je vytvoření *oboru názvů* a získání klíče [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) pro tento obor názvů. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu Service Bus. Systém vygeneruje klíč SAS při vytvoření oboru názvů. Kombinace názvu oboru názvů a klíče SAS poskytuje přihlašovací údaje, pomocí kterých služba Service Bus ověří přístup k aplikaci.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -62,7 +63,7 @@ Potom přidáte kód, který odesílá položky do fronty Service Bus a zobrazí
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-1. Jako správce spusťte Visual Studio: klikněte pravým tlačítkem na ikonu programu **Visual Studio** a vyberete možnost **Spustit jako správce**. Emulátor výpočtů v Azure, který se bude probírat později v tomto článku, potřebuje, aby bylo Visual Studio spuštěné s právy správce.
+1. Jako správce spusťte Visual Studio: klikněte pravým tlačítkem na ikonu programu **Visual Studio** a vyberete možnost **Spustit jako správce**. Emulátor služby COMPUTE Azure, který je popsán dále v tomto článku, vyžaduje, aby byla aplikace Visual Studio spuštěna s oprávněními správce.
    
    V sadě Visual Studio v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
 2. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Cloud** a pak na **Cloudová služba Azure**. Jako název projektu zadejte **MultiTierApp**. Pak klikněte na **OK**.

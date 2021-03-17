@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202009"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934833"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání – `geo.distance` a`geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání – `geo.distance` a `geo.intersects`
 
 Azure Kognitivní hledání podporuje geografické prostorové dotazy ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `geo.distance` `geo.intersects` funkcí a. `geo.distance`Funkce vrátí vzdálenost v kilometrech mezi dvěma body, jedno je pole nebo proměnná rozsahu a jedna se jako součást filtru předává jako součást. `geo.intersects`Funkce vrátí `true` , zda je daný bod v rámci daného mnohoúhelníku, kde je bod pole nebo proměnná rozsahu a mnohoúhelník je zadán jako součást filtru jako konstanta.
 
@@ -35,9 +35,9 @@ Azure Kognitivní hledání podporuje geografické prostorové dotazy ve [výraz
 > [!NOTE]
 > Při použití `geo.distance` v parametru **$OrderBy** musí pole, které předáte funkci, obsahovat pouze jeden geografický bod. Jinými slovy, musí být typu `Edm.GeographyPoint` a ne `Collection(Edm.GeographyPoint)` . Pro pole kolekce v Azure Kognitivní hledání není možné řadit.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` `geo.intersects` funkcí a i geografické hodnoty, na kterých pracují:
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` funkcí a a `geo.intersects` také geografické hodnoty, na kterých pracují:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -84,7 +84,7 @@ Konstanta geografického bodu je ve tvaru `geography'POINT(<longitude> <latitude
 
 `geo.intersects`Funkce přebírá proměnnou typu `Edm.GeographyPoint` a konstanta `Edm.GeographyPolygon` a vrátí `Edm.Boolean`  --  `true` , pokud je bod uvnitř hranice mnohoúhelníku, `false` jinak.
 
-Mnohoúhelník je dvourozměrná plocha uložená jako sekvence bodů definujících ohraničující prstenec (viz [Příklady](#examples) níže). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body v mnohoúhelníku musí být v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Mnohoúhelník je dvourozměrná plocha uložená jako sekvence bodů definujících ohraničující prstenec (viz [Příklady](#examples) níže). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body v mnohoúhelníku musí být v pořadí zprava doleva](/rest/api/searchservice/supported-data-types#Anchor_1).
 
 ### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geografické prostorové dotazy a mnohoúhelníky, které pokrývá 180th poledníku
 
@@ -92,7 +92,7 @@ V mnoha geograficky integrovaných knihovnách dotazů je vyjednaný dotaz, kter
 
 V Azure Kognitivní hledání budou geografické prostorové dotazy, které zahrnují 180, fungovat podle očekávání, pokud je obrazec dotazu obdélníkový a vaše souřadnice se rovnají k rozložení mřížky podél zeměpisné délky a zeměpisné šířky (například `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'` ). V opačném případě u nepravoúhlých nebo nezarovnanéch tvarů zvažte přístup k rozdělenému mnohoúhelníku.  
 
-### <a name="geo-spatial-functions-and-null"></a>Geografické funkce a`null`
+### <a name="geo-spatial-functions-and-null"></a>Geografické funkce a `null`
 
 Stejně jako všechna ostatní pole, která nejsou v kolekci v Azure Kognitivní hledání, `Edm.GeographyPoint` mohou pole typu obsahovat `null` hodnoty. Když Azure Kognitivní hledání vyhodnocuje `geo.intersects` pro pole, které je `null` , bude výsledek vždycky `false` . Chování `geo.distance` v tomto případě závisí na kontextu:
 
@@ -109,7 +109,7 @@ Najde všechny hotely v průběhu 10 km od daného referenčního bodu (kde umí
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-Najde všechny hotely v daném zobrazení, které jsou popsány jako mnohoúhelník (umístění je pole typu `Edm.GeographyPoint` ). Všimněte si, že mnohoúhelník je uzavřený (nastavení prvního a posledního bodu musí být stejné) a [body musí být uvedené v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Najde všechny hotely v daném zobrazení, které jsou popsány jako mnohoúhelník (umístění je pole typu `Edm.GeographyPoint` ). Všimněte si, že mnohoúhelník je uzavřený (nastavení prvního a posledního bodu musí být stejné) a [body musí být uvedené v pořadí zprava doleva](/rest/api/searchservice/supported-data-types#Anchor_1).
 
 ```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -134,4 +134,4 @@ Seřadit hotely v sestupném pořadí podle `search.score` a a `rating` potom ve
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

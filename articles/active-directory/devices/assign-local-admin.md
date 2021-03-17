@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419814"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107357"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -32,14 +32,13 @@ Když připojíte zařízení s Windows ke službě Azure AD pomocí služby Azu
 - Role Správce zařízení Azure AD 
 - Uživatel, který provádí službu Azure AD JOIN   
 
-Když do místní skupiny Administrators přidáte role Azure AD, můžete aktualizovat uživatele, kteří můžou spravovat zařízení kdykoli ve službě Azure AD, aniž by to mělo na zařízení žádné změny. V současné době nemůžete přiřadit skupiny k roli správce.
-Azure AD taky přidá roli Správce zařízení Azure AD do místní skupiny Administrators, aby podporovala princip nejnižších oprávnění (PoLP). Kromě globálních správců můžete také povolit uživatelům, kterým byla přiřazena *pouze* role Správce zařízení ke správě zařízení. 
+Když do místní skupiny Administrators přidáte role Azure AD, můžete aktualizovat uživatele, kteří můžou spravovat zařízení kdykoli ve službě Azure AD, aniž by to mělo na zařízení žádné změny. Azure AD taky přidá roli Správce zařízení Azure AD do místní skupiny Administrators, aby podporovala princip nejnižších oprávnění (PoLP). Kromě globálních správců můžete také povolit uživatelům, kterým byla přiřazena *pouze* role Správce zařízení ke správě zařízení. 
 
 ## <a name="manage-the-global-administrators-role"></a>Správa role globální správci
 
 Chcete-li zobrazit a aktualizovat členství v roli globálního správce, přečtěte si téma:
 
-- [Zobrazit všechny členy role správce v Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Zobrazit všechny členy role správce v Azure Active Directory](../roles/manage-roles-portal.md)
 - [Přiřazení uživatele k rolím správce v Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
@@ -72,14 +71,19 @@ Správci zařízení mají přiřazená všechna zařízení připojená k Azure
 >[!NOTE]
 > Tato funkce je aktuálně ve verzi Preview.
 
+
 Počínaje aktualizací Windows 10 2004 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad [skupiny s omezeným přístupem](/windows/client-management/mdm/policy-csp-restrictedgroups) (MDM). Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
 
-V současné době není v Intune žádné uživatelské rozhraní pro správu této zásady a je potřeba je nakonfigurovat pomocí [vlastního nastavení OMA-URI](/mem/intune/configuration/custom-settings-windows-10). Několik důležitých informací pro tyto zásady: 
+>[!NOTE]
+> Spouští se aktualizace Windows 10 20H2, doporučujeme místo zásad skupin s omezenými oprávněními používat zásady [místních uživatelů a skupin](/windows/client-management/mdm/policy-csp-localusersandgroups) .
 
-- Přidání skupin Azure AD prostřednictvím zásad vyžaduje identifikátor SID skupiny, který se dá získat spuštěním rozhraní API skupin. Identifikátor SID je definován vlastností `securityIdentifier` v rozhraní API skupin.
-- Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. 
-- Tyto zásady platí jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
-- Správa místních správců pomocí zásad omezených skupin není platná pro připojené k hybridní službě Azure AD nebo k zařízením registrovaným v Azure AD.
+
+V současné době není v Intune žádné uživatelské rozhraní pro správu těchto zásad a je potřeba je nakonfigurovat pomocí [vlastního nastavení OMA-URI](/mem/intune/configuration/custom-settings-windows-10). Několik důležitých informací pro použití některé z těchto zásad: 
+
+- Přidání skupin Azure AD prostřednictvím zásad vyžaduje, aby bylo možné získat identifikátor SID skupiny spuštěním [rozhraní Microsoft Graph API pro skupiny](/graph/api/resources/group?view=graph-rest-beta). Identifikátor SID je definován vlastností `securityIdentifier` v odpovědi rozhraní API.
+- Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. Toto omezení se řeší, pokud používáte zásady místních uživatelů a skupin, které umožňují přírůstkové aktualizace členství ve skupinách.
+- Oprávnění správce pomocí obou zásad se vyhodnocují jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
+- Správa místních správců pomocí skupin Azure AD není platná pro připojení k hybridní službě Azure AD nebo zařízením registrovaným v Azure AD.
 - Zásady skupin s omezeným přístupem existovaly před aktualizací Windows 10 2004, ale nepodporují skupiny Azure AD jako členy místní skupiny správců zařízení. 
 
 ## <a name="manage-regular-users"></a>Správa běžných uživatelů
@@ -98,7 +102,7 @@ Od verze **Windows 10 1709** můžete tuto úlohu provést z **Nastavení-> úč
 Kromě toho můžete přidat uživatele také pomocí příkazového řádku:
 
 - Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"` .
-- Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte`net localgroup administrators /add "AzureAD\UserUpn"`
+- Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte `net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Požadavky 
 

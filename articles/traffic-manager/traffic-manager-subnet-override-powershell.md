@@ -3,17 +3,17 @@ title: Přepsání podsítě Azure Traffic Manager pomocí Azure PowerShell | Mi
 description: Tento článek vám pomůže porozumět tomu, jak se Traffic Manager přepsání podsítě používá k přepsání metody směrování Traffic Manager profilu pro směrování provozu do koncového bodu na základě IP adresy koncového uživatele prostřednictvím předdefinovaného rozsahu IP adres pro mapování koncových bodů pomocí Azure PowerShell.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: rohink
-ms.openlocfilehash: 3b58a0aef4df71649e657c04b44c31b6bbfe019c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689567"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504775"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Přepsání podsítě Traffic Manager pomocí Azure PowerShellu
 
@@ -43,7 +43,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
 
 1. **Načíst koncový bod Traffic Manager:**
 
-    Pokud chcete povolit přepsání podsítě, načtěte koncový bod, do kterého chcete přepsání přidat, a uložte ho do proměnné pomocí [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
+    Pokud chcete povolit přepsání podsítě, načtěte koncový bod, do kterého chcete přepsání přidat, a uložte ho do proměnné pomocí [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint).
 
     Nahraďte název, název souboru a ResourceGroupName hodnotami koncového bodu, který se chystáte měnit.
 
@@ -54,7 +54,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
     ```
 2. **Přidejte do koncového bodu rozsah IP adres:**
     
-    Pokud chcete přidat rozsah IP adres ke koncovému bodu, použijte k přidání rozsahu [příkaz Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) .
+    Pokud chcete přidat rozsah IP adres ke koncovému bodu, použijte k přidání rozsahu [příkaz Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange) .
 
     ```powershell
 
@@ -68,18 +68,18 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    Po přidání rozsahů aktualizujte koncový bod pomocí [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) .
+    Po přidání rozsahů aktualizujte koncový bod pomocí [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) .
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-Odebrání rozsahu IP adres se dá dokončit pomocí [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0).
+Odebrání rozsahu IP adres se dá dokončit pomocí [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange).
 
 1.  **Načíst koncový bod Traffic Manager:**
 
-    Pokud chcete povolit přepsání podsítě, načtěte koncový bod, do kterého chcete přepsání přidat, a uložte ho do proměnné pomocí [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
+    Pokud chcete povolit přepsání podsítě, načtěte koncový bod, do kterého chcete přepsání přidat, a uložte ho do proměnné pomocí [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint).
 
     Nahraďte název, název souboru a ResourceGroupName hodnotami koncového bodu, který se chystáte měnit.
 
@@ -102,7 +102,7 @@ Odebrání rozsahu IP adres se dá dokončit pomocí [Remove-AzTrafficManagerIpA
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     Po odebrání rozsahů aktualizujte koncový bod pomocí [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) .
+     Po odebrání rozsahů aktualizujte koncový bod pomocí [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) .
 
     ```powershell
 
@@ -113,4 +113,4 @@ Odebrání rozsahu IP adres se dá dokončit pomocí [Remove-AzTrafficManagerIpA
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [metodách směrování provozu](traffic-manager-routing-methods.md)Traffic Manager.
 
-Přečtěte si o [způsobu směrování provozu podsítě](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Přečtěte si o [způsobu směrování provozu podsítě](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

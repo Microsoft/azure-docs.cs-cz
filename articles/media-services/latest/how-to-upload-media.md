@@ -1,25 +1,14 @@
 ---
-title: Nahrát multimédia
-titleSuffix: Azure Media Services
-description: Naučte se nahrávat multimédia pro streamování nebo kódování.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/11/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3da313803aa546c2399e3c8c18858bee5cfa2ea1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684367"
+title: nahrání multimédií: Azure Media Services popis: Naučte se nahrávat multimédia pro streamování nebo kódování.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: How-to MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>Nahrání média pro streamování nebo kódování
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 V Media Services nahrajete digitální soubory (Media) do kontejneru objektů BLOB přidruženého k assetu. Entita [assetu](/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů do kontejneru assetu se váš obsah bezpečně uloží do cloudu pro další zpracování a streamování.
 
 Než začnete, budete muset shromáždit několik hodnot nebo si je představit.
@@ -36,19 +25,38 @@ Než začnete, budete muset shromáždit několik hodnot nebo si je představit.
 
 ## <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli/)
 
-[!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli.md)]
+[!INCLUDE [Upload files with the CLI](./includes/task-upload-file-to-asset-cli.md)]
 
-## <a name="cli-shell"></a>[Prostředí CLI](#tab/clishell/)
+## <a name="python"></a>[Python](#tab/python)
 
-[!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli-shell.md)]
+Za předpokladu, že váš kód již navázal ověřování a již jste vytvořili vstupní Asset, můžete k odeslání místních souborů do tohoto prostředku (in_container) použít následující fragment kódu.
 
-## <a name="rest"></a>[REST](#tab/rest/)
+```python
+#The storage objects
+from azure.storage.blob import BlobServiceClient, BlobClient
 
-Po [Vytvoření assetu pomocí metody post nebo jiné metody Rest a obdržení adresy URL SAS pro daný Asset](how-to-create-asset.md?tabs=rest)použijte Azure Storage rozhraní API nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sada .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
+#Establish storage variables
+storage_account_name = '<your storage account name'
+storage_account_key = '<your storage account key'
+storage_blob_url = 'https://<your storage account name>.blob.core.windows.net/'
+
+in_container = 'asset-' + inputAsset.asset_id
+
+#The file path of local file you want to upload
+source_file = "ignite.mp4"
+
+# Use the Storage SDK to upload the video
+blob_service_client = BlobServiceClient(account_url=storage_blob_url, credential=storage_account_key)
+blob_client = blob_service_client.get_blob_client(in_container,source_file)
+
+# Upload the video to storage as a block blob
+with open(source_file, "rb") as data:
+    blob_client.upload_blob(data, blob_type="BlockBlob")
+```
 
 ---
 <!-- add these to the tabs when available -->
-Další metody naleznete v [dokumentaci Azure Storage](https://docs.microsoft.com/azure/storage/blobs/) pro práci s objekty BLOB v [jazycích .NET](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet), [Java](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-java), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)a [JavaScript (Node.js)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs).
+Další metody naleznete v [dokumentaci Azure Storage](../../storage/blobs/index.yml) pro práci s objekty BLOB v [jazycích .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md), [Java](../../storage/blobs/storage-quickstart-blobs-java.md), [Python](../../storage/blobs/storage-quickstart-blobs-python.md)a [JavaScript (Node.js)](../../storage/blobs/storage-quickstart-blobs-nodejs.md).
 
 ## <a name="next-steps"></a>Další kroky
 

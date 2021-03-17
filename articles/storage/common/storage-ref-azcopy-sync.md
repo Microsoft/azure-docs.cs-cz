@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285199"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878303"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -38,11 +38,11 @@ Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírov
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-### <a name="advanced"></a>Upřesnit
+### <a name="advanced"></a>Pokročilý
 
 Pokud nezadáte příponu souboru, AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -78,7 +78,7 @@ Synchronizovat celý adresář včetně jeho podadresářů (Všimněte si, že 
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-– nebo –
+nebo
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -143,7 +143,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Příklad: `*.jpg;*.pdf;exactName`
 
-**–** Help Help pro synchronizaci.
+**–**    Help Help pro synchronizaci.
 
 **--include-Attributes** řetězec (pouze Windows) zahrnuje pouze soubory, jejichž atributy odpovídají seznamu atributů. Příklad: `A;S;R`
 
@@ -151,11 +151,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--řetězec na úrovni protokolu** definuje podrobnost protokolu pro soubor protokolu, dostupné úrovně: `INFO` (všechny požadavky a odpovědi) `WARNING` (pomalé odezvy), `ERROR` (pouze neúspěšné žádosti) a `NONE` (žádné protokoly výstupu). (výchozí `INFO` ). 
 
+**--Preserve-SMB-info**   Výchozí hodnota je false. Zachovává informace o vlastnostech protokolu SMB (čas posledního zápisu, čas vytvoření, bity atributů) mezi prostředky pracujícími s protokolem SMB (soubory Windows a Azure). Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (například include-Pattern). Informace přenesené pro složky jsou stejné jako u souborů, s výjimkou času posledního zápisu, který není pro složky zachované.
+
+**--Preserve-SMB-Permissions**   Výchozí hodnota je false. Zachovává seznamy řízení přístupu SMB mezi prostředky, které podporují (soubory Windows a Azure). Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (například `include-pattern` ).
+
 **--Put-MD5**     Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
 
 **--rekurzivní** `True` ve výchozím nastavení se při synchronizaci mezi adresáři vyhledávají rekurzivně v podadresářích.     (výchozí `True` ). 
 
-**--S2S-Preserve-úroveň přístupu**  Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí `true` ). 
+**--S2S-Preserve-úroveň přístupu**  Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
@@ -165,6 +169,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 |--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

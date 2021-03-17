@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: d144960972f5a1b45e88cc3a0ea015925cae3b91
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288148"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Správa zpráv v Twilio pomocí Azure Logic Apps
@@ -67,7 +67,7 @@ Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované 
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/twilio/)konektoru.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).

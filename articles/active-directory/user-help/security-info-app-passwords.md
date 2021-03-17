@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: e5ad882f172007e2563f832ec8eb61145cd0b36a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744510"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537000"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Vytvoření hesel aplikací ze stránky informace o zabezpečení (Preview)
 
@@ -59,7 +59,7 @@ Pokud používáte dvoustupňové ověřování u svého pracovního nebo školn
 
 4. Zadejte název aplikace, která vyžaduje heslo aplikace, a pak vyberte **Další**.
 
-    ![Stránka s heslem aplikace s názvem aplikace](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Snímek obrazovky zobrazující stránku heslo aplikace s názvem zadané aplikace](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. Zkopírujte text z pole **heslo** , vložte ho do oblasti hesla aplikace (v tomto příkladu je to pro Outlook 2010) a potom vyberte **Hotovo**.
 
@@ -84,4 +84,4 @@ Pokud už nepotřebujete používat aplikaci, která vyžaduje heslo aplikace, m
 
 ## <a name="for-more-information"></a>Další informace
 
-- Další informace o stránce **informace o zabezpečení** a o tom, jak je nastavit, najdete v tématu [Přehled informací o zabezpečení](user-help-security-info-overview.md) .
+- Další informace o stránce **informace o zabezpečení** a o tom, jak je nastavit, najdete v tématu [Přehled informací o zabezpečení](./security-info-setup-signin.md) .

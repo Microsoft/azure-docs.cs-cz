@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254686"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108394"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Použití Azure API Management s mikroslužbami nasazenými ve službě Azure Kubernetes
 
@@ -39,7 +39,7 @@ V clusteru Kubernetes se kontejnery nasazují v [luskech](https://kubernetes.io/
 
 Pro vyřešení tohoto problému Kubernetes představil koncept [služeb](https://kubernetes.io/docs/concepts/services-networking/service/). Služba Kubernetes je abstraktní vrstva, která definuje logickou skupinu lusků a umožňuje externí expozici provozu, Vyrovnávání zatížení a zjišťování služeb pro tyto lusky. 
 
-Až budeme připraveni publikovat mikroslužby jako rozhraní API prostřednictvím API Management, musíme si představit, jak namapovat naše služby v Kubernetes na rozhraní API v API Management. Neexistují žádná pravidla pro nastavení. Záleží na tom, jak jste navrhli a rozdělili své obchodní možnosti nebo domény na mikroslužby na začátku. Pokud je například lusky za službu zodpovědná za všechny operace na daném prostředku (např. zákazník), služba může být namapována na jedno rozhraní API. Pokud jsou operace s prostředkem rozdělené do několika mikroslužeb (např. GetOrder, PlaceOrder), může být víc služeb logicky agregované do jednoho jediného rozhraní API ve službě API Management (viz obrázek. 1). 
+Až budeme připraveni publikovat mikroslužby jako rozhraní API prostřednictvím API Management, musíme si představit, jak namapovat naše služby v Kubernetes na rozhraní API v API Management. Neexistují žádná pravidla pro nastavení. Záleží na tom, jak jste navrhli a rozdělili své obchodní možnosti nebo domény na mikroslužby na začátku. Pokud jsou například lusky za službu zodpovědné za všechny operace na daném prostředku (např. zákazník), služba může být namapována na jedno rozhraní API. Pokud jsou operace s prostředkem rozdělené do několika mikroslužeb (např. GetOrder, PlaceOrder), může být víc služeb logicky agregované do jednoho jediného rozhraní API ve službě API Management (viz obrázek. 1). 
 
 Mapování je také možné vyvíjet. Vzhledem k tomu, že API Management vytvoří fasádu před mikroslužby, umožňuje nám Refaktorovat a napravovat velikost našich mikroslužeb v průběhu času. 
 
@@ -99,7 +99,7 @@ V některých případech mohou zákazníci, kteří mají regulativní omezení
 
 Existují dva způsoby [nasazení API Management do virtuální](./api-management-using-with-vnet.md) sítě – externí a interní. 
 
-Pokud se uživatelé rozhraní API nenacházejí ve virtuální síti clusteru, je třeba použít externí režim (obrázek. 4). V tomto režimu je API Management brána vložená do virtuální sítě clusteru, ale přístupná z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Pomůže zcela skrýt cluster a zároveň umožňuje externím klientům využívat mikroslužby. Kromě toho můžete k omezení síťového provozu použít možnosti sítě Azure, jako jsou třeba skupiny zabezpečení sítě (NSG).
+Pokud se uživatelé rozhraní API nenacházejí ve virtuální síti clusteru, je třeba použít externí režim (obrázek. 4). V tomto režimu je API Management brána vložená do virtuální sítě clusteru, ale přístupná z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Pomáhá plně skrývat cluster, a přitom umožňuje externím klientům využívat mikroslužby. Kromě toho můžete k omezení síťového provozu použít možnosti sítě Azure, jako jsou třeba skupiny zabezpečení sítě (NSG).
 
 ![Režim externí virtuální sítě](./media/api-management-aks/vnet-external.png)
 

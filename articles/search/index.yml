@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 02/25/2020
-  ms.openlocfilehash: f5acb693e758d3a574b799b2999e6d956aaf883c
-  ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
-  ms.translationtype: HT
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f514b33bb39db2732053102bd69cb853477f67f1
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/05/2020
-  ms.locfileid: "85954498"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101677814"
 landingContent:
 - title: Informace o kognitivním hledání
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Co je Azure Cognitive Search
       url: search-what-is-azure-search.md
+    - text: Co je sémantické vyhledávání
+      url: semantic-search-overview.md
     - text: Co je rozšiřování AI
       url: cognitive-search-concept-intro.md
     - text: Co je indexer
@@ -69,9 +71,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: Vytvoření indexu (REST)
-      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+      url: /rest/api/searchservice/create-index
     - text: Vytvoření indexeru (REST)
-      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+      url: /rest/api/searchservice/create-indexer
 - title: Rozšíření s využitím AI
   linkLists:
   - linkListType: concept
@@ -107,7 +109,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Vytvoření jednoduchého dotazu
-      url: search-query-simple-examples.md
+      url: search-query-create.md
     - text: Použití úplné syntaxe
       url: search-query-lucene-examples.md
   - linkListType: reference
@@ -115,7 +117,7 @@ landingContent:
     - text: Referenční informace k jazyku OData
       url: query-odata-filter-orderby-syntax.md
     - text: Hledání v dokumentech (REST)
-      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+      url: /rest/api/searchservice/search-documents
 - title: Nápověda a zpětná vazba
   linkLists:
   - linkListType: reference

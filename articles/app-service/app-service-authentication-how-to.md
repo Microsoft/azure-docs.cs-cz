@@ -3,13 +3,13 @@ title: Rozšířené použití AuthN/AuthZ
 description: Naučte se přizpůsobit funkci ověřování a autorizace v App Service pro různé scénáře a získat deklarace identity uživatelů a různé tokeny.
 ms.topic: article
 ms.date: 07/08/2020
-ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272310"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180866"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -24,6 +24,7 @@ Pokud chcete rychle začít, přečtěte si jedno z následujících kurzů:
 * [Konfigurace aplikace pro použití přihlášení k účtu Microsoft](configure-authentication-provider-microsoft.md)
 * [Konfigurace aplikace pro použití přihlášení k Twitteru](configure-authentication-provider-twitter.md)
 * [Jak nakonfigurovat aplikaci pro přihlášení pomocí poskytovatele OpenID Connect (Preview)](configure-authentication-provider-openid-connect.md)
+* [Jak nakonfigurovat aplikaci pro přihlášení pomocí přihlášení pomocí Apple (Preview)](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Použití více poskytovatelů přihlašování
 
@@ -33,7 +34,7 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)**.
 
-Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Příklad:
+Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Například:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -41,6 +42,7 @@ Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném um
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
+<a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
 Když uživatel klikne na jeden z odkazů, otevře se příslušná přihlašovací stránka pro přihlášení uživatele.
@@ -55,7 +57,7 @@ Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, 
 
 V přihlašování klienta se aplikace přihlásí k poskytovateli ručně a poté odešle ověřovací token k App Service k ověření (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření sama o sobě neuděluje přístup k požadovaným prostředkům aplikace, ale úspěšné ověření vám poskytne token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
-Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Příklad: 
+Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Například: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +88,7 @@ V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API
 }
 ```
 
-Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Příklad: 
+Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Například: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +109,7 @@ Tady je jednoduchý odkaz na odhlášení z webové stránky:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Příklad:
+Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Například:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -146,7 +148,7 @@ App Service předá do vaší aplikace deklarace identity uživatelů pomocí sp
 
 Kód, který je napsán v libovolném jazyce nebo v rozhraní, může získat informace, které potřebuje z těchto hlaviček. Pro aplikace ASP.NET 4,6 se **ClaimsPrincipal** automaticky nastaví s příslušnými hodnotami. ASP.NET Core ale neposkytuje middleware ověřování, který se integruje s deklaracemi identity uživatelů App Service. Alternativní řešení najdete v tématu [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Pokud je [úložiště tokenů](overview-authentication-authorization.md#token-store) pro vaši aplikaci povoleno, můžete také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Pokud je [úložiště tokenů](overview-authentication-authorization.md#token-store) pro vaši aplikaci povoleno, můžete také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Načtení tokenů v kódu aplikace
 
@@ -172,11 +174,11 @@ Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace]
 
 - **Google**: připojí `access_type=offline` k `/.auth/login/google` volání rozhraní API parametr řetězce dotazu. Pokud používáte sadu Mobile Apps SDK, můžete do jednoho z přetížení přidat parametr `LogicAsync` (viz [aktualizace tokenů Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: neposkytuje aktualizační tokeny. Do vypršení platnosti tokenů po dobu 60 dnů (viz [doba ukončení a rozšíření přístupových tokenů Facebook](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: přístupové tokeny neprošly (viz [Nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Twitter**: přístupové tokeny neprošly (viz [Nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/authentication/faq)).
 - **Účet Microsoft**: při [konfiguraci nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md)vyberte `wl.offline_access` obor.
 - **Azure Active Directory**: v nástroji [https://resources.azure.com](https://resources.azure.com) proveďte následující kroky:
     1. V horní části stránky vyberte možnost **čtení/zápis**.
-    2. V levém prohlížeči přejděte na **odběry** > * *_ \<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
+    2. V levém prohlížeči přejděte na **odběry** > * *_\<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
     3. Klikněte na **Upravit**.
     4. Upravte následující vlastnost. Nahraďte _\<app\_id>_ Azure Active Directory ID aplikace služby, ke které chcete získat přístup.
 
@@ -221,9 +223,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Omezení domény přihlašovacích účtů
 
-Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure AD povoluje pro přihlašovací účty libovolný počet vlastních domén. Můžete ale chtít zrychlit uživatele přímo na přihlašovací stránku služby Azure AD, která je označená značkou (například `contoso.com` ). Chcete-li navrhnout název domény přihlašovacích účtů, postupujte podle těchto kroků.
+Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_ a _hotmail.com_ . Azure AD povoluje pro přihlašovací účty libovolný počet vlastních domén. Můžete ale chtít zrychlit uživatele přímo na přihlašovací stránku služby Azure AD, která je označená značkou (například `contoso.com` ). Chcete-li navrhnout název domény přihlašovacích účtů, postupujte podle těchto kroků.
 
-V [https://resources.azure.com](https://resources.azure.com) přejděte na **odběry** > * *_ \<subscription\_name_** > **resourceGroups** > * *_* \<resource\_group\_name> _* > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
+V [https://resources.azure.com](https://resources.azure.com) přejděte na **odběry** > * *_\<subscription\_name_** > **resourceGroups** > * *_* \<resource\_group\_name> _* > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
 
 Klikněte na tlačítko **Upravit**, upravte následující vlastnost a pak klikněte na tlačítko **Vložit**. Nezapomeňte nahradit _\<domain\_name>_ doménou, kterou chcete.
 
@@ -269,7 +271,7 @@ V případě jakékoli aplikace pro Windows můžete definovat chování webové
 
 ### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
 
-Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Například:
 
 - Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -277,6 +279,150 @@ Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. 
 ### <a name="application-level"></a>Úroveň aplikace
 
 Pokud žádná z ostatních úrovní neposkytne autorizaci, kterou potřebujete, nebo pokud vaše platforma nebo zprostředkovatel identity není podporována, musíte napsat vlastní kód, který autorizuje uživatele na základě [deklarací identity uživatele](#access-user-claims).
+
+## <a name="updating-the-configuration-version-preview"></a>Aktualizuje se verze konfigurace (Preview).
+
+Pro funkci ověřování/autorizace existují dvě verze rozhraní API pro správu. Pro prostředí "ověřování (Preview)" v Azure Portal se vyžaduje verze Preview v2. Aplikace, která už používá rozhraní API V1, může po provedení několika změn upgradovat na verzi v2. Konkrétně musí být konfigurace tajného klíče přesunuta do nastavení aplikace slot-rychlé. Konfigurace poskytovatele účtů Microsoft není ve verzi v2 předposílána i dál.
+
+> [!WARNING]
+> Migrace do verze V2 Preview zakáže správu funkce App Service ověřování/autorizace pro vaši aplikaci prostřednictvím některých klientů, jako je jejich existující prostředí v Azure Portal, Azure CLI a Azure PowerShell. Toto nelze vrátit zpět. Během období Preview není Migrace produkčních úloh doporučována ani podporována. Pro testovací aplikace byste měli postupovat pouze podle kroků v této části.
+
+### <a name="moving-secrets-to-application-settings"></a>Přesun tajných kódů do nastavení aplikace
+
+1. Získejte existující konfiguraci pomocí rozhraní v1 API:
+
+   ```azurecli
+   # For Web Apps
+   az webapp auth show -g <group_name> -n <site_name>
+
+   # For Azure Functions
+   az functionapp auth show -g <group_name> -n <site_name>
+   ```
+
+   Ve výsledné datové části JSON si poznamenejte tajnou hodnotu použitou pro každého poskytovatele, kterého jste nakonfigurovali:
+
+   * POPLAŠNÉ `clientSecret`
+   * Internetového `googleClientSecret`
+   * Přes `facebookAppSecret`
+   * Službě `twitterConsumerSecret`
+   * Účet Microsoft: `microsoftAccountClientSecret`
+
+   > [!IMPORTANT]
+   > Tajné hodnoty jsou důležité bezpečnostní údaje, které by měly být zpracovávány pečlivě. Tyto hodnoty nesdílejte ani je zachovejte na místním počítači.
+
+1. Vytvořit nastavení aplikace pro každou tajnou hodnotu – vždy. Můžete zvolit název každého nastavení aplikace. Hodnota by se měla shodovat s tím, co jste získali v předchozím kroku, nebo [odkazovat na Key Vault tajný klíč](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) , který jste vytvořili s touto hodnotou.
+
+   Chcete-li vytvořit nastavení, můžete použít Azure Portal nebo pro každého poskytovatele spustit variaci následujících akcí:
+
+   ```azurecli
+   # For Web Apps, Google example    
+   az webapp config appsettings set -g <group_name> -n <site_name> --slot-settings GOOGLE_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+
+   # For Azure Functions, Twitter example
+   az functionapp config appsettings set -g <group_name> -n <site_name> --slot-settings TWITTER_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+   ```
+
+   > [!NOTE]
+   > Nastavení aplikace pro tuto konfiguraci by se mělo označit jako rychlé – to znamená, že se mezi prostředími nepřesunou během [operace swapu slotu](./deploy-staging-slots.md). Důvodem je to, že vaše vlastní konfigurace ověřování je svázána s prostředím. 
+
+1. Vytvořte nový soubor JSON s názvem `authsettings.json` . Pořizovat dříve přijatý výstup a z něj odebrat každou tajnou hodnotu. Zapište zbývající výstup do souboru a ujistěte se, že není zahrnutý žádný tajný klíč. V některých případech může konfigurace obsahovat pole obsahující prázdné řetězce. Ujistěte se, že `microsoftAccountOAuthScopes` není, a pokud je, přepněte tuto hodnotu na `null` .
+
+1. Přidejte vlastnost, `authsettings.json` která odkazuje na název nastavení aplikace, který jste vytvořili dříve pro každého poskytovatele:
+ 
+   * POPLAŠNÉ `clientSecretSettingName`
+   * Internetového `googleClientSecretSettingName`
+   * Přes `facebookAppSecretSettingName`
+   * Službě `twitterConsumerSecretSettingName`
+   * Účet Microsoft: `microsoftAccountClientSecretSettingName`
+
+   Ukázkový soubor po této operaci může vypadat podobně jako v následujícím příkladu, a to v tomto případě jenom pro AAD:
+
+   ```json
+   {
+       "id": "/subscriptions/00d563f8-5b89-4c6a-bcec-c1b9f6d607e0/resourceGroups/myresourcegroup/providers/Microsoft.Web/sites/mywebapp/config/authsettings",
+       "name": "authsettings",
+       "type": "Microsoft.Web/sites/config",
+       "location": "Central US",
+       "properties": {
+           "enabled": true,
+           "runtimeVersion": "~1",
+           "unauthenticatedClientAction": "AllowAnonymous",
+           "tokenStoreEnabled": true,
+           "allowedExternalRedirectUrls": null,
+           "defaultProvider": "AzureActiveDirectory",
+           "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
+           "clientSecret": null,
+           "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
+           "clientSecretCertificateThumbprint": null,
+           "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
+           "allowedAudiences": [
+               "https://mywebapp.azurewebsites.net"
+           ],
+           "additionalLoginParams": null,
+           "isAadAutoProvisioned": true,
+           "aadClaimsAuthorization": null,
+           "googleClientId": null,
+           "googleClientSecret": null,
+           "googleClientSecretSettingName": null,
+           "googleOAuthScopes": null,
+           "facebookAppId": null,
+           "facebookAppSecret": null,
+           "facebookAppSecretSettingName": null,
+           "facebookOAuthScopes": null,
+           "gitHubClientId": null,
+           "gitHubClientSecret": null,
+           "gitHubClientSecretSettingName": null,
+           "gitHubOAuthScopes": null,
+           "twitterConsumerKey": null,
+           "twitterConsumerSecret": null,
+           "twitterConsumerSecretSettingName": null,
+           "microsoftAccountClientId": null,
+           "microsoftAccountClientSecret": null,
+           "microsoftAccountClientSecretSettingName": null,
+           "microsoftAccountOAuthScopes": null,
+           "isAuthFromFile": "false"
+       }   
+   }
+   ```
+
+1. Odeslat tento soubor jako novou konfiguraci ověřování/autorizace pro vaši aplikaci:
+
+   ```azurecli
+   az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
+   ```
+
+1. Ověřte, že aplikace po tomto gestu stále pracuje podle očekávání.
+
+1. Odstraňte soubor použitý v předchozích krocích.
+
+Nyní jste migrovali aplikaci pro ukládání tajných klíčů zprostředkovatele identity jako nastavení aplikace.
+
+### <a name="support-for-microsoft-account-registrations"></a>Podpora pro registrace účet Microsoft
+
+Rozhraní v2 API aktuálně nepodporuje účet Microsoft jako odlišného poskytovatele. Místo toho využívá sblíženou [platformu Microsoft Identity](../active-directory/develop/v2-overview.md) k přihlašování uživatelů pomocí osobních účtů Microsoft. Při přepnutí na rozhraní API v2 se ke konfiguraci poskytovatele Microsoft Identity Platform Provider používá Azure Active Directory konfigurace v1.
+
+Pokud vaše existující konfigurace obsahuje poskytovatele účtu Microsoft a neobsahuje poskytovatele Azure Active Directory, můžete přepnout konfiguraci na poskytovatele Azure Active Directory a pak provést migraci. Použijte následující postup:
+
+1. V Azure Portal Najděte [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a vyhledejte registraci přidruženou ke svému poskytovateli účtu Microsoft. Může se jednat o záhlaví "aplikace z osobního účtu".
+1. Přejděte na stránku ověřování pro registraci. V části "identifikátory URI pro přesměrování by se měla zobrazit položka končící na `/.auth/login/microsoftaccount/callback` . Zkopírujte tento identifikátor URI.
+1. Přidejte nový identifikátor URI, který odpovídá vašemu, který jste právě zkopírovali, s výjimkou toho, že by měl končit `/.auth/login/aad/callback` . Tím umožníte, aby se registrace použila v App Service ověřování/konfigurace autorizace.
+1. Přejděte k App Service konfiguraci ověřování/konfigurace autorizace pro vaši aplikaci.
+1. Shromažďování konfigurace pro poskytovatele účtu Microsoft
+1. Nakonfigurujte poskytovatele Azure Active Directory pomocí režimu správy rozšířené, zadejte ID klienta a hodnoty tajného klíče klienta, které jste shromáždili v předchozím kroku. Pro adresu URL vystavitele použijte možnost použít `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte *\<authentication-endpoint>* [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoftonline.com " pro globální Azure ") nahraďte *\<tenant-id>* **ID vašeho adresáře (tenant)**.
+1. Po uložení konfigurace otestujte tok přihlášení, a to tak, že v prohlížeči přejdete do `/.auth/login/aad` koncového bodu na webu a dokončíte přihlašovací tok.
+1. V tuto chvíli jste úspěšně zkopírovali konfiguraci, ale stávající konfigurace poskytovatele účtů Microsoft zůstane. Než ho odeberete, ujistěte se, že všechny části vaší aplikace odkazují na poskytovatele Azure Active Directory prostřednictvím přihlašovacích odkazů atd. Ověřte, že všechny části aplikace fungují podle očekávání.
+1. Po ověření toho, že věci budou fungovat na poskytovateli AAD Azure Active Directory, můžete odebrat konfiguraci poskytovatele účtů Microsoft.
+
+Některé aplikace už můžou mít samostatné registrace pro Azure Active Directory a účet Microsoft. Tyto aplikace nejdou v tuto chvíli migrovat. 
+
+> [!WARNING]
+> Tyto dvě registrace je možné konvergovat úpravou [podporovaných typů účtů](../active-directory/develop/supported-accounts-validation.md) pro registraci aplikace AAD. To však vynutí novou výzvu k zadání souhlasu pro uživatele účtu Microsoft a deklarace identity těchto uživatelů se mohou lišit ve struktuře, `sub` zejména změnit hodnoty, protože se používá nové ID aplikace. Tento přístup se nedoporučuje, pokud se důkladně nerozumí. Místo toho byste měli počkat na podporu těchto dvou registrací na povrchu rozhraní API v2.
+
+### <a name="switching-to-v2"></a>Přepínání na v2
+
+Po provedení výše uvedených kroků přejděte do aplikace v Azure Portal. Vyberte část "ověřování (Preview)". 
+
+Alternativně můžete vytvořit požadavek PUT proti `config/authsettingsv2` prostředku v rámci prostředku lokality. Schéma pro datovou část je stejné jako zaznamenané v oddílu [Konfigurace použití souboru](#config-file) .
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Konfigurace pomocí souboru (Preview)
 
@@ -315,13 +461,52 @@ Následující vyčerpání možných možností konfigurace v souboru:
         "enabled": <true|false>
     },
     "globalValidation": {
-        "requireAuthentication": <true|false>,
         "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
             "/path1",
             "/path2"
         ]
+    },
+    "httpSettings": {
+        "requireHttps": <true|false>,
+        "routes": {
+            "apiPrefix": "<api prefix>"
+        },
+        "forwardProxy": {
+            "convention": "NoProxy|Standard|Custom",
+            "customHostHeaderName": "<host header value>",
+            "customProtoHeaderName": "<proto header value>"
+        }
+    },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
+        },
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
+            },
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+            }
+        },
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUrls": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
+        }
     },
     "identityProviders": {
         "azureActiveDirectory": {
@@ -353,7 +538,7 @@ Následující vyčerpání možných možností konfigurace v souboru:
             "graphApiVersion": "v3.3",
             "login": {
                 "scopes": [
-                    "profile",
+                    "public_profile",
                     "email"
                 ]
             },
@@ -397,13 +582,26 @@ Následující vyčerpání možných možností konfigurace v souboru:
                 "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
             }
         },
+        "apple": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
         "openIdConnectProviders": {
-            "provider name": {
+            "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
                     "clientCredential": {
-                        "secretSettingName": "<name of app setting containing client secret>"
+                        "clientSecretSettingName": "<name of app setting containing client secret>"
                     },
                     "openIdConnectConfiguration": {
                         "authorizationEndpoint": "<url specifying authorization endpoint>",
@@ -415,7 +613,7 @@ Následující vyčerpání možných možností konfigurace v souboru:
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "scope": [
+                    "scopes": [
                         "openid",
                         "profile",
                         "email"
@@ -427,45 +625,6 @@ Následující vyčerpání možných možností konfigurace v souboru:
                 }
             },
             //...
-        },
-        "login": {
-            "routes": {
-                "logoutEndpoint": "<logout endpoint>"
-            },
-            "tokenStore": {
-                "enabled": <true|false>,
-                "tokenRefreshExtensionHours": "<double>",
-                "fileSystem": {
-                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
-                },
-                "azureBlobStorage": {
-                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-                }
-            },
-            "preserveUrlFragmentsForLogins": <true|false>,
-            "allowedExternalRedirectUrls": [
-                "https://uri1.azurewebsites.net/",
-                "https://uri2.azurewebsites.net/"
-            ],
-            "cookieExpiration": {
-                "convention": "FixedTime|IdentityProviderDerived",
-                "timeToExpiration": "<timespan>"
-            },
-            "nonce": {
-                "validateNonce": <true|false>,
-                "nonceExpirationInterval": "<timespan>"
-            }
-        },
-        "httpSettings": {
-            "requireHttps": <true|false>,
-            "routes": {
-                "apiPrefix": "<api prefix>"
-            },
-            "forwardProxy": {
-                "convention": "NoProxy|Standard|Custom",
-                "customHostHeaderName": "<host header value>",
-                "customProtoHeaderName": "<proto header value>"
-            }
         }
     }
 }
@@ -485,11 +644,11 @@ Můžete změnit verzi modulu runtime, kterou používá vaše aplikace. Nová v
 
 #### <a name="view-the-current-runtime-version"></a>Zobrazit aktuální verzi modulu runtime
 
-Aktuální verzi middlewaru pro ověření platformy můžete zobrazit buď pomocí Azure CLI, nebo přes jeden z koncových bodů HTTP verze built0 ve vaší aplikaci.
+Aktuální verzi middlewaru pro ověření platformy můžete zobrazit buď pomocí rozhraní příkazového řádku Azure nebo prostřednictvím jednoho z vestavěných koncových bodů HTTP ve vaší aplikaci.
 
 ##### <a name="from-the-azure-cli"></a>Z Azure CLI
 
-Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
+Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) .
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +679,7 @@ K zobrazení aktuální verze middlewaru, na které je aplikace spuštěná, mů
 
 #### <a name="update-the-current-runtime-version"></a>Aktualizace aktuální verze modulu runtime
 
-Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
+Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) .
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,7 +689,7 @@ az webapp auth update --name <my_app_name> \
 
 Nahraďte `<my_app_name>` názvem vaší aplikace. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace. Nahraďte také `<version>` platnou verzí modulu runtime 1. x nebo `~1` nejnovější verzí. Poznámky k verzi najdete v různých verzích modulu runtime [zde] (aby bylo možné https://github.com/Azure/app-service-announcements) určit verzi, ke které se má připnout).
 
-Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) pro přihlášení.
+Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 

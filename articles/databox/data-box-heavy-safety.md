@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021533"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Bezpečné instalace a provozování Azure Data Box Heavy
 
@@ -27,7 +27,7 @@ Než použijete Azure Data Box Heavy, přečtěte si všechny bezpečnostní inf
 ## <a name="safety-icon-conventions"></a>Bezpečnostní konvence ikon
 Tady jsou ikony, které najdete, když provedete kontrolu bezpečnostních opatření, která se mají pozorovat při nastavování a spouštění Data Box.
 
-| Ikona | Popis |
+| Ikona | Description |
 |:--- |:--- |
 | ![](./media/data-box-heavy-safety/warning-icon.png) **Nebezpečí** ikony nebezpečí |Označuje nebezpečnou situaci, která, pokud se nevyhne, má za následek smrt nebo vážnou škodu. Toto slovo signálu se bude omezovat na nejvíce extrémních situací. |
 | ![Upozornění na ikonu upozornění ](./media/data-box-heavy-safety/warning-icon.png) **!** |Označuje nebezpečnou situaci, že pokud se nevyhnete, může dojít k úmrtí nebo závažné újmě. |
@@ -156,7 +156,7 @@ Toto zařízení je v souladu s částí 15 pravidel FCC a s výjimkou standardu
 - Toto zařízení nemůže způsobit škodlivé rušení.
 - Toto zařízení musí přijmout jakékoli rušivé rušení, včetně rušení, které by mohlo způsobit nepožadovanou činnost zařízení.
 
-![Kanada](./media/data-box-heavy-safety/canada.png)
+![Snímek obrazovky se zobrazí oznámení požadované pro Kanadu.](./media/data-box-heavy-safety/canada.png)
 
 MŮŽE být ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 USA: (800) 426-9400 Kanada: (800) 933-4750

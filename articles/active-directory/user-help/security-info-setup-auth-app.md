@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744483"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197477"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Nastavení aplikace Microsoft Authenticator jako metody ověřování
 
@@ -46,13 +46,18 @@ Metody bezpečnostních údajů se používají pro ověřování dvou faktorů 
 
 V závislosti na nastaveních vaší organizace možná budete moct použít ověřovací aplikaci jako jednu z vašich metod bezpečnostních údajů. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavování můžete zvolit jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
 
+> [!IMPORTANT]
+> Pokud jste nastavili Microsoft Authenticator aplikaci na pět různých zařízení nebo pokud jste použili pět hardwarových tokenů, nebudete moct nastavit šestou a může se zobrazit tato chybová zpráva:
+> 
+> **Nemůžete nastavit Microsoft Authenticator, protože už máte pět ověřovacích aplikací nebo hardwarových tokenů. Pokud chcete odstranit jednu z vašich ověřovacích aplikací nebo hardwarových tokenů, kontaktujte prosím správce.**
+
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Nastavení aplikace Microsoft Authenticator
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
 
     ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
+2. V nabídce vlevo vyberte **informace o zabezpečení** nebo použijte odkaz v podokně **bezpečnostní údaje** . Pokud jste už zaregistrovali, budete vyzváni k ověření dvou faktorů. Pak v podokně **bezpečnostní údaje** vyberte **Přidat metodu** .
 
     ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
@@ -117,7 +122,7 @@ Pokud už nechcete, aby se aplikace ověřovatele používala jako metoda bezpe�
 
 2. Pokud chcete ověřovací aplikaci odstranit, vyberte v potvrzovacím poli možnost **Ano** . Po odstranění ověřovací aplikace se odstraní z bezpečnostních údajů a zmizí ze stránky **bezpečnostní údaje** . Pokud je aplikace ověřovatele výchozí metodou, výchozí nastavení se změní na jinou dostupnou metodu.
 
-3. Otevřete ověřovací aplikaci na mobilním zařízení, vyberte **Upravit účty**a pak z ověřovací aplikace odstraňte svůj pracovní nebo školní účet.
+3. Otevřete ověřovací aplikaci na mobilním zařízení, vyberte **Upravit účty** a pak z ověřovací aplikace odstraňte svůj pracovní nebo školní účet.
 
     Váš účet je zcela odebrán z ověřovací aplikace pro dvojúrovňové ověřování a žádosti o resetování hesla.
 

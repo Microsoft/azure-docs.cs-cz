@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5424b776b977d8a6939bbb28c5d4c9c428cac444
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82981217"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179608"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Jak používat spravované identity pro konfiguraci aplikací Azure
 
@@ -33,7 +33,7 @@ Pokud chcete nastavit spravovanou identitu pomocí Azure CLI, použijte příkaz
 
 - Použijte [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu níže.
-- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 nebo novější).
+- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli) (2,1 nebo novější).
 
 Následující kroky vás provedou vytvořením úložiště konfigurace aplikace a přiřazením identity pomocí rozhraní příkazového řádku:
 
@@ -66,7 +66,7 @@ Pokud chcete nastavit spravovanou identitu pomocí Azure CLI, použijte příkaz
 
 - Použijte [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu níže.
-- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější).
+- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli) (2.0.31 nebo novější).
 
 Následující kroky vás provedou vytvořením identity přiřazené uživatelem a úložištěm konfigurace aplikace a přiřazením identity do úložiště pomocí rozhraní příkazového řádku:
 
@@ -99,12 +99,12 @@ Následující kroky vás provedou vytvořením identity přiřazené uživatele
 
 ## <a name="removing-an-identity"></a>Odebrání identity
 
-Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomocí příkazu [AZ appconfig identity Remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) v rozhraní příkazového řádku Azure CLI. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z AAD. Identity přiřazené systémem se při odstranění prostředku aplikace taky automaticky odeberou z AAD.
+Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomocí příkazu [AZ appconfig identity Remove](/cli/azure/appconfig/identity#az-appconfig-identity-remove) v rozhraní příkazového řádku Azure CLI. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z AAD. Identity přiřazené systémem se při odstranění prostředku aplikace taky automaticky odeberou z AAD.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure](quickstart-aspnet-core-app.md)
 
-[AZ appconfig identity Assign]: /cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-assign
+[AZ appconfig identity Assign]: /cli/azure/appconfig/identity#az-appconfig-identity-assign
 [az login]: /cli/azure/reference-index#az-login

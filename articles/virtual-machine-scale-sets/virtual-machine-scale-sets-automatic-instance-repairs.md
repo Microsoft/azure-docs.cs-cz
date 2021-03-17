@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: ff67ac4be32142848a12185199d63db5a14e6c34
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527417"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501851"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatické opravy instancí pro škálovací sady virtuálních počítačů Azure
 
@@ -36,9 +36,9 @@ Předtím, než povolíte zásady automatických oprav instancí, zajistěte, ab
 
 U instancí označených jako "není v pořádku" jsou automatické opravy aktivovány sadou škálování. Než povolíte zásady automatických oprav, ujistěte se, že je koncový bod aplikace správně nakonfigurovaný, aby nedocházelo k nezamýšleným opravám instancí, zatímco koncový bod se nakonfiguruje.
 
-**Povolit jednu skupinu umístění**
+**Maximální počet instancí v sadě škálování**
 
-Tato funkce je aktuálně dostupná jenom pro sady škálování nasazené jako jediná skupina umístění. Vlastnost *singlePlacementGroup* by měla být nastavená na *hodnotu true* , aby vaše sada škálování používala funkci automatických oprav instancí. Přečtěte si další informace o [skupinách umístění](./virtual-machine-scale-sets-placement-groups.md#placement-groups).
+Tato funkce je aktuálně dostupná jenom pro sady škálování, které mají maximálně 200 instancí. Sada škálování se dá nasadit buď jako jediná skupina umístění, nebo do skupiny s více umístěními, ale počet instancí nemůže být vyšší než 200, pokud je pro sadu škálování povolená Automatická oprava instancí.
 
 **Verze rozhraní API**
 
@@ -102,7 +102,7 @@ Následující kroky umožňují při vytváření nové sady škálování povo
 1. Vyhledejte část **stav** .
 1. Povolte možnost **monitorovat stav aplikace** .
 1. Vyhledejte oddíl **zásady automatických oprav** .
-1. Zapněte možnost **automatických oprav** . **On**
+1. Zapněte možnost **automatických oprav** . 
 1. V části lhůta **odkladu (min)** zadejte dobu odkladu v minutách, povolené hodnoty jsou mezi 30 a 90 minutami. 
 1. Až budete hotovi s vytvářením nové sady škálování, vyberte tlačítko **zkontrolovat + vytvořit** .
 
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následující příklad povoluje zásadu automatické opravy při vytváření nové sady škálování pomocí funkce *[AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)*. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování s automatickými opravami doba odkladu, která je nastavená na 30 minut.
+Následující příklad povoluje zásadu automatické opravy při vytváření nové sady škálování pomocí funkce *[AZ VMSS Create](/cli/azure/vmss#az-vmss-create)*. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování s automatickými opravami doba odkladu, která je nastavená na 30 minut.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -172,7 +172,7 @@ Zásady automatických oprav existující sady škálování můžete upravit po
 1. V nabídce **Nastavení** vlevo vyberte **stav a opravit**.
 1. Povolte možnost **monitorovat stav aplikace** .
 1. Vyhledejte oddíl **zásady automatických oprav** .
-1. Zapněte možnost **automatických oprav** . **On**
+1. Zapněte možnost **automatických oprav** . 
 1. V části lhůta **odkladu (min)** zadejte dobu odkladu v minutách, povolené hodnoty jsou mezi 30 a 90 minutami. 
 1. Po dokončení vyberte **Uložit**. 
 
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následuje příklad aktualizace zásad automatických oprav instancí existující sady škálování pomocí funkce *[AZ VMSS Update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)*.
+Následuje příklad aktualizace zásad automatických oprav instancí existující sady škálování pomocí funkce *[AZ VMSS Update](/cli/azure/vmss#az-vmss-update)*.
 
 ```azurecli-interactive
 az vmss update \  
@@ -259,7 +259,7 @@ Pro nastavení stavu automatických oprav použijte rozhraní API *setOrchestrat
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-Pomocí rutiny [Get-instance-View](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) zobrazte *serviceState* pro automatické opravy instancí. 
+Pomocí rutiny [Get-instance-View](/cli/azure/vmss#az-vmss-get-instance-view) zobrazte *serviceState* pro automatické opravy instancí. 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-Pomocí rutiny [set-Orchestration-Service-State](/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state) aktualizujte *serviceState* pro automatické opravy instancí. Až se sada škálování přiřadí do funkce Automatické opravy, můžete tuto rutinu použít k pozastavení nebo obnovení automatických oprav pro sadu škálování. 
+Pomocí rutiny [set-Orchestration-Service-State](/cli/azure/vmss#az-vmss-set-orchestration-service-state) aktualizujte *serviceState* pro automatické opravy instancí. Až se sada škálování přiřadí do funkce Automatické opravy, můžete tuto rutinu použít k pozastavení nebo obnovení automatických oprav pro sadu škálování. 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \
@@ -278,7 +278,7 @@ az vmss set-orchestration-service-state \
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) s parametrem *InstanceView* můžete zobrazit *servicestate* pro automatické opravy instancí.
+Pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) s parametrem *InstanceView* můžete zobrazit *servicestate* pro automatické opravy instancí.
 
 ```azurepowershell-interactive
 Get-AzVmss `
@@ -297,7 +297,7 @@ Set-AzVmssOrchestrationServiceState `
     -Action "Suspend"
 ```
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 **Nepovedlo se povolit zásady automatických oprav.**
 

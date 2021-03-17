@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050447"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563282"
 ---
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
@@ -101,7 +101,7 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    * `HcsSoftwareVersion: 6.3.9600.17820`
    
-     Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-contact-microsoft-support.md).
+     Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-8000-contact-microsoft-support.md).
      
      > [!IMPORTANT]
      > Před použitím další aktualizace musíte restartovat aktivní kontroler prostřednictvím `Restart-HcsController` rutiny.
@@ -169,7 +169,7 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
     ```
 
 3. Průběh instalace můžete sledovat pomocí příkazu `Get-HcsUpdateStatus`. Když se `RunInProgress` změní na `False`, aktualizace je dokončena.
-4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **Přihlaste se s úplným přístupem**a ověřte verzi firmwaru disku. Zadejte:
+4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **Přihlaste se s úplným přístupem** a ověřte verzi firmwaru disku. Zadejte:
    
    `Get-HcsFirmwareVersion`
    
@@ -267,4 +267,3 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
    `Exit-HcsMaintenanceMode`
 
 5. Kontrolery se restartují, jakmile ukončíte režim údržby. Po úspěšné instalaci aktualizací firmwaru disku a ukončení režimu údržby na zařízení se vraťte na portál Azure Classic. Poznámka: Informace o instalaci aktualizací režimu údržby se na portálu může zobrazit až po 24 hodinách.
-

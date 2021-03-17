@@ -5,19 +5,18 @@ author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: mamccrea
-ms.custom: mvc, devx-track-javascript
-ms.date: 06/16/2020
-ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: mvc, devx-track-js
+ms.date: 12/15/2020
+ms.openlocfilehash: 70015ef24039694789ce96a6c4853221fe2377c3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056903"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020379"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
-Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. S bohatou sadou metod **řetězců**, **RegExp**, **Math**, **Array**a **Date** , které poskytuje jazyk JavaScript, je snazší vytvořit složitou transformaci dat s Stream Analytics úlohami.
+Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. S bohatou sadou metod **řetězců**, **RegExp**, **Math**, **Array** a **Date** , které poskytuje jazyk JavaScript, je snazší vytvořit složitou transformaci dat s Stream Analytics úlohami.
 
 ## <a name="overview"></a>Přehled
 
@@ -34,14 +33,14 @@ Tady je několik věcí, které se uživatelsky definovanou funkcí jazyka JavaS
 * Provádění vlastní serializace nebo deserializace formátu událostí u vstupů nebo výstupů
 * Vytváření vlastních agregací
 
-I když funkce jako **Date. GETDATE ()** nebo **Math. Random ()** nejsou v definici Functions blokované, neměli byste je používat. Tyto funkce **don't** nevrátí stejný výsledek pokaždé, když je zavoláte, a služba Azure Stream Analytics neudržuje deník vyvolání funkcí a vrácené výsledky. Vrátí-li funkce jiný výsledek pro stejné události, není zaručena opakovatelnost při restartování úlohy vámi nebo službou Stream Analytics.
+I když funkce jako **Date. GETDATE ()** nebo **Math. Random ()** nejsou v definici Functions blokované, neměli byste je používat. Tyto funkce  nevrátí stejný výsledek pokaždé, když je zavoláte, a služba Azure Stream Analytics neudržuje deník vyvolání funkcí a vrácené výsledky. Vrátí-li funkce jiný výsledek pro stejné události, není zaručena opakovatelnost při restartování úlohy vámi nebo službou Stream Analytics.
 
 ## <a name="add-a-javascript-user-defined-function-to-your-job"></a>Přidání uživatelem definované funkce jazyka JavaScript do úlohy
 
 > [!NOTE]
 > Tyto kroky fungují na úlohách Stream Analytics nakonfigurovaných pro spouštění v cloudu. Pokud je vaše úloha Stream Analytics nakonfigurovaná tak, aby běžela na Azure IoT Edge, místo toho použijte Visual Studio a [zapište uživatelsky definovanou funkci pomocí jazyka C#](stream-analytics-edge-csharp-udf.md).
 
-Pokud chcete vytvořit uživatelsky definovanou funkci JavaScriptu v úloze Stream Analytics, vyberte v části **topologie úlohy**možnost **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **JavaScript UDF** . 
+Pokud chcete vytvořit uživatelsky definovanou funkci JavaScriptu v úloze Stream Analytics, vyberte v části **topologie úlohy** možnost **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **JavaScript UDF** . 
 
 ![Přidat JavaScript UDF](./media/javascript/stream-analytics-jsudf-add.png)
 
@@ -55,7 +54,7 @@ Pak je nutné zadat následující vlastnosti a vybrat **Uložit**.
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>Testování a řešení potíží s JavaScript UDF 
 
-Logiku JavaScriptu pro systém souborů JavaScript můžete testovat a ladit v jakémkoli prohlížeči. Ladění a testování logiky těchto uživatelsky definovaných funkcí se v současnosti na portálu Stream Analytics nepodporuje. Jakmile funkce funguje podle očekávání, můžete ji přidat do Stream Analytics úlohy, jak je uvedeno výše, a pak ji vyvolat přímo z dotazu. Logiku dotazu můžete testovat pomocí JavaScriptu UDF pomocí [Stream Analyticsch nástrojů pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
+Logiku JavaScriptu pro systém souborů JavaScript můžete testovat a ladit v jakémkoli prohlížeči. Ladění a testování logiky těchto uživatelsky definovaných funkcí se v současnosti na portálu Stream Analytics nepodporuje. Jakmile funkce funguje podle očekávání, můžete ji přidat do Stream Analytics úlohy, jak je uvedeno výše, a pak ji vyvolat přímo z dotazu. Logiku dotazu můžete testovat pomocí JavaScriptu UDF pomocí [Stream Analyticsch nástrojů pro Visual Studio](./stream-analytics-tools-for-visual-studio-install.md).
 
 Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit**.
 
@@ -186,7 +185,44 @@ FROM
     input A
 ```
 
+### <a name="tolocalestring"></a>toLocaleString – ()
+Metoda **toLocaleString –** v jazyce JavaScript může být použita k vrácení řetězce citlivého na jazyk, který představuje data pro datum a čas, kdy je tato metoda volána.
+I když Azure Stream analýzy přijímá pouze datum a čas UTC jako systémové časové razítko, tato metoda se dá použít k přetajnení systémového časového razítka do jiného národního prostředí a časového pásma.
+Tato metoda odpovídá stejnému chování implementace jako ta, která je k dispozici v aplikaci Internet Explorer.
+
+**Definice uživatelem definované funkce jazyka JavaScript:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**Vzorový dotaz: předání hodnoty DateTime jako vstupní hodnoty**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+Výstupem tohoto dotazu bude vstupní hodnota DateTime v **de-de** s poskytnutými možnostmi.
+```
+Samstag, 28. Dezember 2019
+```
+
+## <a name="user-logging"></a>Protokolování uživatele
+Mechanismus protokolování umožňuje zachytit vlastní informace, když je úloha spuštěná. Data protokolu můžete použít k ladění nebo vyhodnocení správnosti vlastního kódu v reálném čase. Tento mechanismus je k dispozici prostřednictvím metody Console. log ().
+
+```javascript
+console.log('my error message');
+```
+
+Ke zprávám protokolu můžete přistupovat prostřednictvím [diagnostických protokolů](data-errors.md).
 ## <a name="next-steps"></a>Další kroky
 
-* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [Uživatelsky definovaná funkce v C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [Machine Learning UDF](./machine-learning-udf.md)
+* [Uživatelsky definovaná funkce v C#](./stream-analytics-edge-csharp-udf-methods.md)

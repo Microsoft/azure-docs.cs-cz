@@ -8,24 +8,25 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.collection: linux
+ms.openlocfilehash: 8e81c204c1f05b7fc6bdf1efc7060e2094c648e5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503034"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630618"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření spravované image virtuálního počítače nebo virtuálního pevného disku
 
 Pokud chcete vytvořit více kopií virtuálního počítače pro použití v Azure pro vývoj a testování, Zachyťte spravovanou bitovou kopii virtuálního počítače nebo virtuálního pevného disku s operačním systémem. Pokud chcete vytvářet, ukládat a sdílet image ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](../shared-images-cli.md).
 
-Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při pokusu o vytvoření více než 20 virtuálních počítačů současně ze stejné spravované image může docházet k vypršení časového limitu zřizování z důvodu omezení výkonu úložiště u jednoho virtuálního pevného disku. Pokud chcete vytvořit více než 20 virtuálních počítačů současně, použijte image [Galerie sdílených imagí](shared-image-galleries.md) nakonfigurovanou s 1 replikou pro každé 20 souběžných nasazení virtuálních počítačů.
+Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při pokusu o vytvoření více než 20 virtuálních počítačů současně ze stejné spravované image může docházet k vypršení časového limitu zřizování z důvodu omezení výkonu úložiště u jednoho virtuálního pevného disku. Pokud chcete vytvořit více než 20 virtuálních počítačů současně, použijte image [Galerie sdílených imagí](../shared-image-galleries.md) nakonfigurovanou s 1 replikou pro každé 20 souběžných nasazení virtuálních počítačů.
 
 Chcete-li vytvořit spravovanou bitovou kopii, bude nutné odebrat informace o osobním účtu. V následujících krocích zrušíte zřízení existujícího virtuálního počítače, zrušíte jeho přidělení a vytvoříte image. Tuto image můžete použít k vytvoření virtuálních počítačů napříč všemi skupinami prostředků v rámci vašeho předplatného.
 
 Pokud chcete vytvořit kopii stávajícího virtuálního počítače se systémem Linux pro zálohování nebo ladění nebo nahrát specializovaný virtuální pevný disk se systémem Linux z místního virtuálního počítače, přečtěte si téma [nahrání a vytvoření virtuálního počítače se systémem Linux z vlastní image disku](upload-vhd.md).  
 
-Pomocí služby **Azure VM Image Builder (Public Preview)** můžete vytvořit vlastní image, nemusíte se učit žádné nástroje ani nastavovat kanály sestavení, jednoduše poskytnout konfiguraci image a tvůrce imagí vytvoří image. Další informace najdete v tématu [Začínáme s nástrojem Azure VM Image Builder](./image-builder-overview.md).
+Pomocí služby **Azure VM Image Builder (Public Preview)** můžete vytvořit vlastní image, nemusíte se učit žádné nástroje ani nastavovat kanály sestavení, jednoduše poskytnout konfiguraci image a tvůrce imagí vytvoří image. Další informace najdete v tématu [Začínáme s nástrojem Azure VM Image Builder](../image-builder-overview.md).
 
 Před vytvořením image budete potřebovat tyto položky:
 
@@ -39,7 +40,7 @@ Pro zjednodušenou verzi tohoto článku a pro testování, hodnocení nebo uče
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: zrušení zřízení virtuálního počítače
-Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na ZDROJovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
+Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na ZDROJovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md). Tento proces nelze vrátit zpět.
 
 1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
 2. V okně SSH zadejte následující příkaz:
@@ -54,14 +55,14 @@ Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuáln�
 4. Po dokončení příkazu zadejte **Exit** a zavřete tak klienta ssh.  Virtuální počítač bude v tuto chvíli i nadále spuštěn.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: vytvoření image virtuálního počítače
-Pomocí rozhraní příkazového řádku Azure můžete označit virtuální počítač jako zobecněný a zachytit image. V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
+Pomocí rozhraní příkazového řádku Azure můžete označit virtuální počítač jako zobecněný a zachytit image. V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet* a *myVM*.
 
 1. Zrušte přidělení virtuálního počítače, který jste zrušili pomocí [AZ VM disallocate](/cli/azure/vm). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.  
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     Počkejte, až se virtuální počítač kompletně uvolní, než se přesunete na. Dokončení tohoto může trvat několik minut.  Virtuální počítač je vypnutý během navracení.
@@ -70,8 +71,8 @@ Pomocí rozhraní příkazového řádku Azure můžete označit virtuální po�
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     Virtuální počítač, který je zobecněn, již nelze restartovat.
@@ -80,8 +81,8 @@ Pomocí rozhraní příkazového řádku Azure můžete označit virtuální po�
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]

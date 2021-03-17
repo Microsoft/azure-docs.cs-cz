@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 3399ace71d3a28ea903991e0439f1c9ddcc939d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565401"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935343"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Materiály k dokumentaci pro rozšíření AI v Azure Kognitivní hledání
 
@@ -92,12 +92,12 @@ Následuje konsolidovaný seznam dokumentace pro rozšíření AI.
 
 ## <a name="apis"></a>Rozhraní API
 
-+ [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Create dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Vytvoření indexeru (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [REST API](/rest/api/searchservice/)
+  + [Create dovednosti (rozhraní API-Version = 2020-06-30)](/rest/api/searchservice/create-skillset)
+  + [Vytvoření indexeru (rozhraní API-Version = 2020-06-30)](/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Viz také
 
-+ [Rozhraní REST API služby Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/)
++ [Rozhraní REST API služby Azure Cognitive Search](/rest/api/searchservice/)
 + [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
 + [Co je Azure Kognitivní hledání?](search-what-is-azure-search.md)

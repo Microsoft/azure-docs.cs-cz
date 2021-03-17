@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2be9b5e6fd489b331982d31693bf810d488d92b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484143"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946286"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS pomocí koncových bodů služby virtuální sítě pomocí Azure CLI
 
@@ -35,11 +35,11 @@ Koncové body služby pro virtuální síť umožňují omezení síťového př
 * Ověření přístupu k prostředku z podsítě
 * Ověření odepření přístupu k prostředku z podsítě a internetu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Každá skupina zabezpečení sítě obsahuje několik [výchozích pravidel zabezpečení](security-overview.md#default-security-rules). Následující pravidlo přepisuje výchozí pravidlo zabezpečení, které umožňuje odchozí přístup ke všem veřejným IP adresám. Tato `destination-address-prefix "Internet"` možnost zakazuje odchozí přístup ke všem veřejným IP adresám. Předchozí pravidlo přepisuje toto pravidlo z důvodu vyšší priority, což umožňuje přístup k veřejným IP adresám Azure Storage.
+Každá skupina zabezpečení sítě obsahuje několik [výchozích pravidel zabezpečení](./network-security-groups-overview.md#default-security-rules). Následující pravidlo přepisuje výchozí pravidlo zabezpečení, které umožňuje odchozí přístup ke všem veřejným IP adresám. Tato `destination-address-prefix "Internet"` možnost zakazuje odchozí přístup ke všem veřejným IP adresám. Předchozí pravidlo přepisuje toto pravidlo z důvodu vyšší priority, což umožňuje přístup k veřejným IP adresám Azure Storage.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -158,7 +158,7 @@ az network nsg rule create \
 
 Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto článku obsahuje kroky pro omezení síťového přístupu pro účet Azure Storage jako příklad.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Vytvořte účet úložiště Azure pomocí [AZ Storage Account Create](/cli/azure/storage/account). Nahraďte `<replace-with-your-unique-storage-account-name>` názvem, který je jedinečný v rámci všech umístění Azure, mezi 3-24 znaků a číslicí a malými písmeny.
 
@@ -326,7 +326,7 @@ Přístup je odepřený a zobrazí se `mount error(13): Permission denied` Chyba
 
 Ukončete relaci SSH na virtuálním počítači s *myVmPublic* .
 
-Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share?view=azure-cli-latest). Nahraďte `<account-name>` a `<account-key>` názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
+Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share). Nahraďte `<account-name>` a `<account-key>` názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

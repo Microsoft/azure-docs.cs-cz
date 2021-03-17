@@ -10,8 +10,6 @@
   items:
     - name: Technické možnosti zabezpečení
       href: technical-capabilities.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: security-controls.md
 - name: Platforma a infrastruktura Azure
   items:
     - name: Zabezpečení infrastruktury
@@ -38,6 +36,21 @@
           href: infrastructure-integrity.md
         - name: Ochrana dat
           href: protection-customer-data.md
+    - name: Zabezpečení a integrita platformy
+      href: platform.md
+      items:
+        - name: Zabezpečení firmwaru
+          href: firmware.md
+        - name: Zabezpečené spouštění
+          href: secure-boot.md
+        - name: Ověřované spouštění a ověření identity hostitele
+          href: measured-boot-host-attestation.md
+        - name: Project Cerberus
+          href: project-cerberus.md
+        - name: Šifrování neaktivních uložených dat
+          href: encryption-atrest.md
+        - name: Zabezpečení hypervisoru
+          href: hypervisor.md
     - name: Izolace v cloudu Azure
       href: isolation-choices.md
 - name: Správa identit
@@ -49,25 +62,27 @@
     - name: Kontrolní seznam zabezpečení
       href: steps-secure-identity.md
     - name: Volba bez hesla
-      href: ad-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md
 - name: Zabezpečení sítě
   items:
     - name: Přehled zabezpečení
       href: network-overview.md
     - name: Osvědčené postupy
       href: network-best-practices.md
-    - name: DDoS Protection
-      href: ddos-best-practices.md
+    - name: Osvědčené postupy služby DDoS Protection
+      href: ../../ddos-protection/fundamental-best-practices.md
     - name: Standardní hodnoty zabezpečení pro DDoS Protection
       href: ddos-protection-security-baseline.md
     - name: Visící záznam DNS a převzetí subdomény
       href: subdomain-takeover.md
     - name: Zabezpečení hybridní síťové architektury
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
 - name: Zabezpečení IaaS
   items:
     - name: Antimalware od Microsoftu
       href: antimalware.md
+    - name: Ukázky kódu pro Microsoft Antimalware
+      href: antimalware-code-samples.md
     - name: Přehled zabezpečení virtuálních počítačů
       href: virtual-machines-overview.md
     - name: Osvědčené postupy – úlohy IaaS
@@ -80,6 +95,8 @@
       href: encryption-overview.md
     - name: Dvojité šifrování
       href: double-encryption.md
+    - name: Změny certifikátů TLS
+      href: tls-certificate-changes.md
     - name: Šifrování disku
       items:
         - name: Osvědčené postupy
@@ -93,13 +110,13 @@
     - name: Zabezpečení databází
       items:
         - name: Přehled
-          href: ../../sql-database/sql-database-security-overview.md
+          href: ../../azure-sql/database/security-overview.md
         - name: Osvědčené postupy
-          href: ../../sql-database/sql-database-security-best-practice.md
+          href: ../../azure-sql/database/security-best-practice.md
         - name: Kontrolní seznam zabezpečení
           href: database-security-checklist.md
     - name: Příručka zabezpečení úložiště
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
     - name: Customer Lockbox
       href: customer-lockbox-overview.md
     - name: Standardní hodnoty zabezpečení pro Customer Lockbox
@@ -119,7 +136,7 @@
       href: service-fabric-best-practices.md
 - name: 'Monitorování, auditování a provoz'
   items:
-    - name: Rozšířená ochrana před internetovými útoky
+    - name: Ochrana před hrozbami
       href: threat-detection.md
     - name: Protokolování a auditování Azure
       href: log-audit.md

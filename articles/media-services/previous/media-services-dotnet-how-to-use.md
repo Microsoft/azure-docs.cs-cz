@@ -3,7 +3,7 @@ title: Jak nastavit počítač pro vývoj Media Services pomocí .NET
 description: Přečtěte si o požadavcích pro Media Services používání sady Media Services SDK pro .NET. Naučíte se také, jak vytvořit aplikaci Visual Studio.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ec2804c7-c656-4fbf-b3e4-3f0f78599a7f
@@ -12,25 +12,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 3e4d56698ed14ec260838f3ecbec91d58945e4ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a2a9ecbcafa89b4981fe403d116ac0288e60b6b6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042940"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013886"
 ---
-# <a name="media-services-development-with-net"></a>Media Services vývoj pomocí .NET 
+# <a name="media-services-development-with-net"></a>Media Services vývoj pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento článek popisuje, jak začít s vývojem Media Services aplikací pomocí rozhraní .NET.
 
 Knihovna **Azure Media Services .NET SDK** umožňuje programovat v rámci Media Services pomocí .NET. Aby bylo možné ještě snazší vývoj pomocí rozhraní .NET, je k dispozici knihovna **rozšíření Azure Media Services .NET SDK** . Tato knihovna obsahuje sadu rozšiřujících metod a pomocných funkcí, které zjednodušují kód .NET. Obě knihovny jsou k dispozici prostřednictvím **NuGet** a **GitHubu**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Účet Media Services v novém nebo existujícím předplatném Azure. Přečtěte si článek [jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Operační systémy: Windows 10, Windows 7, Windows 2008 R2 nebo Windows 8.
 * .NET Framework 4,5 nebo novější.
@@ -43,7 +46,7 @@ V této části se dozvíte, jak pomocí **NuGet** přidat Media Services rozš�
 
 Alternativně můžete získat nejnovější Media Services sady .NET SDK z GitHubu ([GitHub.com/Azure/Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services) nebo [GitHub.com/Azure/Azure-SDK-for-Media-Services-Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), sestavit řešení a přidat odkazy na klientský projekt. Všechny nezbytné závislosti se stáhnou a automaticky extrahují.
 
-1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte **název**, **umístění**a **název řešení**a potom klikněte na tlačítko OK.
+1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte **název**, **umístění** a **název řešení** a potom klikněte na tlačítko OK.
 2. Sestavte řešení.
 3. Použijte **NuGet** k instalaci a přidání **rozšíření Azure Media Services .NET SDK** (**windowsazure. MediaServices. Extensions**). Při instalaci tohoto balíčku se nainstaluje také **sada SDK služby Media Services pro .NET** a přidá všechny ostatní požadované závislosti.
    
@@ -59,7 +62,7 @@ Alternativně můžete získat nejnovější Media Services sady .NET SDK z GitH
 4. Pokud chcete zvýšit úroveň čisticího vývojového prostředí, zvažte možnost povolit obnovení balíčku NuGet. Další informace najdete v tématu [obnovení balíčku NuGet](https://docs.nuget.org/consume/package-restore).
 5. Přidejte odkaz na **System.Configuration** sestavení. Toto sestavení obsahuje System.Configuration. Třída **ConfigurationManager** , která se používá pro přístup ke konfiguračním souborům (například App.config).
    
-    1. Chcete-li přidat odkazy pomocí dialogu spravovat odkazy, klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení. Pak klikněte na **Přidat**a pak na **odkaz...**.
+    1. Chcete-li přidat odkazy pomocí dialogu spravovat odkazy, klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení. Pak klikněte na **Přidat** a pak na **odkaz...**.
    
     2. Zobrazí se dialogové okno spravovat odkazy.
     3. V části sestavení rozhraní .NET Framework vyhledejte a vyberte System.Configuration sestavení a stiskněte **OK**.

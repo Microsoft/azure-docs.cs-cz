@@ -1,23 +1,18 @@
 ---
 title: Kopírovat data do/z Azure SQL Database
 description: Naučte se, jak kopírovat data do a z Azure SQL Database pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 484f735b-8464-40ba-a9fc-820e6553159e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 738b875a273faddd20a67be0f6feb90825f66c9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254867"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370508"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +41,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -62,13 +57,13 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Odkazy propojené služby Azure SQL Azure SQL Database do vaší datové továrny. Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Azure SQL.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **AzureSqlDatabase** . |Yes |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Yes |
 
 > [!IMPORTANT]
-> Nakonfigurujte [Azure SQL Database brány firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) databázového serveru, aby měly [služby Azure přístup k serveru](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Pokud navíc kopírujete data Azure SQL Database mimo Azure, včetně z místních zdrojů dat pomocí brány služby Data Factory, nakonfigurujte odpovídající rozsah IP adres pro počítač, který odesílá data do Azure SQL Database.
+> Nakonfigurujte [Azure SQL Database brány firewall](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure) databázového serveru, aby měly [služby Azure přístup k serveru](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure). Pokud navíc kopírujete data Azure SQL Database mimo Azure, včetně z místních zdrojů dat pomocí brány služby Data Factory, nakonfigurujte odpovídající rozsah IP adres pro počítač, který odesílá data do Azure SQL Database.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Chcete-li určit datovou sadu, která bude představovat vstupní nebo výstupní data v Azure SQL Database, nastavte vlastnost Type datové sady na: **AzureSqlTable**. Nastavte vlastnost **linkedServiceName** datové sady na název propojené služby Azure SQL.
@@ -77,7 +72,7 @@ Chcete-li určit datovou sadu, která bude představovat vstupní nebo výstupn�
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro sadu dat typu **AzureSqlTable** má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky nebo zobrazení v instanci Azure SQL Database, na kterou odkazuje propojená služba. |Yes |
 
@@ -105,7 +100,7 @@ Pokud je pro SqlSource určena **sqlReaderQuery** , aktivita kopírování spust
 Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu ( `select column1, column2 from mytable` ) ke spuštění na Azure SQL Database. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 
 > [!NOTE]
-> Při použití **sqlReaderStoredProcedureName**je stále nutné zadat hodnotu pro vlastnost **TableName** v datové sadě JSON. V této tabulce neexistují žádná ověření, která by byla provedena.
+> Při použití **sqlReaderStoredProcedureName** je stále nutné zadat hodnotu pro vlastnost **TableName** v datové sadě JSON. V této tabulce neexistují žádná ověření, která by byla provedena.
 >
 >
 
@@ -362,7 +357,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 ```
 V příkladu je **sqlReaderQuery** určena pro SqlSource. Aktivita kopírování spustí tento dotaz proti zdroji Azure SQL Database, aby získala data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přijímá parametry).
 
-Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu pro spuštění proti Azure SQL Database. Například: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
+Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu pro spuštění proti Azure SQL Database. Příklad: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 
 Seznam vlastností podporovaných SqlSource a BlobSink najdete v části [zdroje SQL](#sqlsource) a v [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) .
 
@@ -644,21 +639,21 @@ Při přesunu dat do a z Azure SQL Database se z typu SQL do typu .NET použijí
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
-| Desetinné číslo |Desetinné číslo |
+| Decimal |Decimal |
 | Atribut FILESTREAM (varbinary (max)) |Byte [] |
-| Float |Double |
+| Float |dvojité |
 | image |Byte [] |
 | int |Int32 |
-| papír |Desetinné číslo |
+| papír |Decimal |
 | nchar |Řetězec, znak [] |
 | ntext |Řetězec, znak [] |
-| numerické |Desetinné číslo |
+| numerické |Decimal |
 | nvarchar |Řetězec, znak [] |
-| real |Jeden |
+| real |Jednoduché |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Desetinné číslo |
+| smallmoney |Decimal |
 | sql_variant |Předmětů |
 | text |Řetězec, znak [] |
 | time |TimeSpan |

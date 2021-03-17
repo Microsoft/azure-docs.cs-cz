@@ -7,10 +7,10 @@ ms.date: 11/27/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324620"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Klientská rozhraní API pro Azure Service Fabric Java
@@ -40,7 +40,7 @@ Použijte následující postup, chcete-li vygenerovat Service Fabric kód klien
     npm install -g autorest
     ```
 
-3. Rozvětvení a klonování úložiště [specifikací Azure-REST-API](https://github.com/Azure/azure-rest-api-specs) v místním počítači a přechod do klonovaného umístění z terminálu počítače.
+3. Rozvětvení a klonování úložiště [specifikací Azure-REST-API](https://github.com/Azure/azure-rest-api-specs)  v místním počítači a přechod do klonovaného umístění z terminálu počítače.
 
 
 4. Přejít do umístění uvedeného níže v klonovaném úložišti.
@@ -63,7 +63,7 @@ Použijte následující postup, chcete-li vygenerovat Service Fabric kód klien
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Následující příkaz přebírá ``servicefabric.json`` soubor specifikace jako vstup a generuje kód klienta Java ve ``java-rest-api-     code`` složce a uzavře kód v ``servicefabricrest`` oboru názvů. Po provedení tohoto kroku najdete dvě složky a ``models`` ``implementation`` dva soubory ``ServiceFabricClientAPIs.java`` a ``package-info.java`` vygenerované ve ``java-rest-api-code`` složce.
+   Následující příkaz přebírá ``servicefabric.json`` soubor specifikace jako vstup a generuje kód klienta Java ve ``java-rest-api-     code`` složce a uzavře kód v  ``servicefabricrest`` oboru názvů. Po provedení tohoto kroku najdete dvě složky a ``models`` ``implementation`` dva soubory ``ServiceFabricClientAPIs.java`` a ``package-info.java`` vygenerované ve ``java-rest-api-code`` složce.
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>Zahrnutí a použití vygenerovaného klienta v projektu

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924576"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654945"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí s více tenantůmi pomocí programu Cloud Solution Provider (CSP)
 
-[Program CSP](https://partner.microsoft.com/cloud-solution-provider) podporuje lepší scénáře pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. U CSP vznikne klient s koncovými vztahy se zákazníky a stane se primárním kontaktním bodem vztahu. Partneři můžou nasazovat předplatná Azure pro zákazníky a kombinovat předplatná s vlastními přidanými nabídkami přizpůsobených hodnot.
+[Program CSP](https://partner.microsoft.com/cloud-solution-provider) podporuje lepší scénáře pro cloudové služby Microsoftu, včetně Microsoft 365, Enterprise Mobility Suite a Microsoft Azure. U CSP vznikne klient s koncovými vztahy se zákazníky a stane se primárním kontaktním bodem vztahu. Partneři můžou nasazovat předplatná Azure pro zákazníky a kombinovat předplatná s vlastními přidanými nabídkami přizpůsobených hodnot.
 
 S [Azure Site Recovery](site-recovery-overview.md)můžou jako partneři spravovat zotavení po havárii pro zákazníky přímo prostřednictvím CSP. Alternativně můžete použít CSP k nastavení Site Recovery prostředí a zákazníkům umožnit správu vlastních potřeb pro zotavení po havárii v samoobslužné službě. V obou scénářích jsou partneři spojení mezi Site Recovery a jejich zákazníky. Partneři vyplní vztah zákazníka a účtují zákazníky za využití Site Recovery.
 
@@ -65,22 +65,22 @@ Nyní můžete provádět a spravovat všechny operace Site Recovery pro tenanta
 ## <a name="assign-tenant-access-to-the-subscription"></a>Přiřazení přístupu tenanta k předplatnému
 
 1. Ujistěte se, že je nastavená infrastruktura zotavení po havárii. Partneři přistupují k předplatným tenanta prostřednictvím portálu CSP bez ohledu na to, jestli je zotavení po havárii spravované nebo samoobslužné. Nastavte trezor a zaregistrujte infrastrukturu pro odběry klientů.
-2. Poskytněte klientovi [účet, který jste vytvořili](#create-a-tenant-account).
-3. Do předplatného klienta můžete přidat nového uživatele prostřednictvím portálu CSP následujícím způsobem:
+1. Poskytněte klientovi [účet, který jste vytvořili](#create-a-tenant-account).
+1. Do předplatného klienta můžete přidat nového uživatele prostřednictvím portálu CSP následujícím způsobem:
 
-    a) přejít na stránku předplatného CSP tenanta a pak vyberte možnost **Uživatelé a licence** .
+    1. Přejít na stránku předplatného CSP tenanta a pak vyberte možnost **Uživatelé a licence** .
 
-      ![Stránka předplatného zprostředkovatele CSP klienta](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![Stránka předplatného zprostředkovatele CSP klienta](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) nyní vytvořte nového uživatele tak, že zadáte příslušné podrobnosti a vyberete oprávnění, nebo nahrajte seznam uživatelů v souboru CSV.
-    
-    c) Po vytvoření nového uživatele se vraťte na Azure Portal. Na stránce **předplatné** vyberte příslušné předplatné.
+    1. Nyní vytvořte nového uživatele tak, že zadáte příslušné podrobnosti a vyberete oprávnění, nebo nahrajte seznam uživatelů v souboru CSV.
 
-    d) vyberte **řízení přístupu (IAM)** a pak klikněte na **přiřazení rolí**.
+    1. Po vytvoření nového uživatele se vraťte na Azure Portal. Na stránce **předplatné** vyberte příslušné předplatné.
 
-    e) kliknutím na **Přidat přiřazení role** přidejte uživatele s příslušnou úrovní přístupu. Uživatelé, kteří byli vytvořeni prostřednictvím portálu CSP, se zobrazí na kartě přiřazení rolí.
+    1. Vyberte **řízení přístupu (IAM)** a pak klikněte na **přiřazení rolí**.
 
-      ![Přidání uživatele](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. Kliknutím na **Přidat přiřazení role** přidáte uživatele s příslušnou úrovní přístupu. Uživatelé, kteří byli vytvořeni prostřednictvím portálu CSP, se zobrazí na kartě přiřazení rolí.
+
+        ![Přidání uživatele](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
 - Pro většinu operací správy je role *Přispěvatel* dostačující. Uživatelé s touto úrovní přístupu můžou dělat všechno v předplatném, s výjimkou změn úrovní přístupu (ke kterým se vyžaduje přístup na úrovni *vlastníka*).
 - Site Recovery má také tři [předdefinované role uživatele](site-recovery-role-based-linked-access-control.md), které lze použít k dalšímu omezení úrovní přístupu podle potřeby.

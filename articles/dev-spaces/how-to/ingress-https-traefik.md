@@ -5,19 +5,21 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru traefik příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3938209e80eb211afc332997b5b241c12a0f6eb9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 036725f3c1eb909407e157d33ece05b1f55213ce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212445"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204095"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru traefik příchozího přenosu dat a konfigurace HTTPS
 
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
+
 V tomto článku se dozvíte, jak nakonfigurovat Azure Dev Spaces, aby používaly vlastní kontroler příchozího přenosu dat (traefik). Tento článek také ukazuje, jak nakonfigurovat tento vlastní kontroler příchozích dat na používání protokolu HTTPS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet][azure-account-create].
 * [Nainstalované rozhraní Azure CLI][az-cli]
@@ -45,13 +47,13 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 Přidejte [oficiální stabilní úložiště Helm][helm-stable-repo], které obsahuje graf Helm řadiče traefik pro příchozí přenosy.
 
 ```console
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable
 ```
 
 Vytvořte Kubernetes obor názvů pro kontroler traefik pro příchozí přenos dat a nainstalujte ho pomocí `helm` .
 
 > [!NOTE]
-> Pokud v clusteru AKS není povolena funkce RBAC, odeberte parametr *--set RBAC. Enabled = true* .
+> Pokud v clusteru AKS není povolená Kubernetes RBAC, odeberte parametr *--set RBAC. Enabled = true* .
 
 ```console
 kubectl create ns traefik
@@ -101,7 +103,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 
 Otevřete [hodnoty. yaml][values-yaml] a proveďte následující aktualizace:
 * Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *traefik. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. 
-* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: traefik # Custom*příchozí příchozí přenos dat. 
+* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: traefik # Custom* příchozí příchozí přenos dat. 
 
 Níže je příklad aktualizovaného `values.yaml` souboru:
 
@@ -218,10 +220,10 @@ Použijte `kubectl` k použití `letsencrypt-clusterissuer.yaml` .
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Odeberte předchozí *traefik* *ClusterRole* a *ClusterRoleBinding*a potom upgradujte TRAEFIK, aby bylo možné používat protokol HTTPS pomocí `helm` .
+Odeberte předchozí *traefik* *ClusterRole* a *ClusterRoleBinding* a potom upgradujte TRAEFIK, aby bylo možné používat protokol HTTPS pomocí `helm` .
 
 > [!NOTE]
-> Pokud v clusteru AKS není povolena funkce RBAC, odeberte parametr *--set RBAC. Enabled = true* .
+> Pokud v clusteru AKS není povolená Kubernetes RBAC, odeberte parametr *--set RBAC. Enabled = true* .
 
 ```console
 kubectl delete ClusterRole traefik
@@ -369,11 +371,11 @@ Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 > [Jak Azure Dev Spaces funguje](../how-dev-spaces-works.md)
 
 
-[az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-remove-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[az-cli]: /cli/azure/install-azure-cli
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-remove-record
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

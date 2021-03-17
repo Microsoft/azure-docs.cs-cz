@@ -1,7 +1,7 @@
 ---
-title: Azure Media Services chyby balení a původu | Microsoft Docs
+title: Azure Media Services balení a chyby původu
 description: V tomto tématu jsou popsány chyby, které se mohou vysílat ze služby Azure Media Services (orgin) pro streaming Endpoint.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091976"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894979"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Chyby koncového bodu streamování (zdroj) 
+# <a name="streaming-endpoint-origin-errors"></a>Chyby koncového bodu streamování (zdroj)
 
 V tomto tématu jsou popsány chyby, které se mohou vysílat ze [služby Azure Media Services streaming Endpoint](streaming-endpoint-concept.md).
 

@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548440"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
-V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
+V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
 
 V tomto článku jsou uvedené tyto fáze SDL:
 
@@ -34,7 +34,7 @@ Předpokládejme, že se vaše aplikace bude používat způsobem, který jste n
 
 ### <a name="perform-code-reviews"></a>Provést revize kódu
 
-Před vrácením kódu se změnami proveďte [Revize kódu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) ke správě procesu revize kódu.
+Před vrácením kódu se změnami proveďte [Revize kódu](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) ke správě procesu revize kódu.
 
 ### <a name="perform-static-code-analysis"></a>Provedení analýzy statického kódu
 
@@ -48,15 +48,15 @@ Zacházet se všemi vstupy jako nedůvěryhodnými k ochraně aplikace před nej
 
 Ověřte vstup na začátku v toku dat, abyste zajistili, že pracovní postup bude do pracovního postupu zajišťovat pouze správně vytvořená data. Nechcete, aby ve vaší databázi trvaly poškozená data, nebo aby se v součásti pro příjem dat aktivovala selhání.
 
-Zakázané a povolené přidávání jsou dva obecné přístupy k provádění ověřování zadáním syntaxe:
+Blocklisting a allowlisting jsou dva obecné přístupy k provádění ověřování zadáním syntaxe:
 
-  - Zakázané pokusy o kontrolu, že zadaný uživatelský vstup neobsahuje "známý jako škodlivý" obsah.
+  - Blocklisting se pokusí ověřit, že zadaný uživatelský vstup neobsahuje "známý jako škodlivý" obsah.
 
-  - Seznam povolených pokusů o kontrolu, že daný vstup uživatele odpovídá sadě "známých dobrých" vstupů. Přidávání na základě znaků je forma seznamu povolených, kde aplikace kontroluje, jestli vstup uživatele obsahuje jenom "známé" znaky, nebo že tento vstup odpovídá známému formátu.
+  - Allowlisting se pokusí ověřit, jestli daný vstup uživatele odpovídá sadě "známých dobrých" vstupů. Znaková allowlisting je forma allowlisting, kde aplikace kontroluje, zda vstup uživatele obsahuje pouze "známé" znaky, nebo že vstup odpovídá známému formátu.
     To může zahrnovat například kontrolu, že uživatelské jméno obsahuje pouze alfanumerické znaky nebo že obsahuje přesně dvě čísla.
 
-Seznam povolených je upřednostňovaným přístupem k sestavování zabezpečeného softwaru.
-Zakázané je náchylné k chybě, protože není možné považovat úplný seznam potenciálně špatného vstupu.
+Allowlisting je upřednostňovaným přístupem k sestavování zabezpečeného softwaru.
+Blocklisting je náchylná k chybě, protože není možné považovat úplný seznam potenciálně špatného vstupu.
 
 Proveďte tuto činnost na serveru, nikoli na straně klienta (nebo na straně serveru a na straně klienta).
 
@@ -99,7 +99,7 @@ Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovan�
 
 Pokud vaše aplikace umožňuje [nahrávání souborů](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), zvažte opatření, která můžete pro tuto rizikové aktivity provést. Prvním krokem v mnoha útokech je získání škodlivého kódu do systému, který je napadený. K tomu může útočník využít nahrávání souboru. OWASP nabízí řešení pro ověřování souboru, aby se zajistilo, že soubor, který odesíláte, je bezpečný.
 
-Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoft Partner Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
+Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoft Partner Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pomocí [Azure Security Center](../../security-center/security-center-partner-integration.md) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 
@@ -140,7 +140,7 @@ V případě neočekávaného [testování](https://cloudblogs.microsoft.com/mic
 
 Kontrola prostoru pro útoky po dokončení kódu pomáhá zajistit, že byly zváženy všechny změny návrhu nebo implementace v aplikaci nebo systému. Pomáhá zajistit, že všechny nové vektory útoku, které byly vytvořeny v důsledku změn, včetně modelů hrozeb, byly zkontrolovány a omezeny.
 
-Pomocí prohledávání aplikace můžete vytvořit obrázek prostoru pro útoky. Microsoft nabízí analytický nástroj pro útoky, který se nazývá [analyzátor Surface útoků](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních nástrojů pro kontrolu a testování ohrožení zabezpečení, včetně [projektu proxy útoku OWASP zovaný](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)a [w3af](http://w3af.sourceforge.net/). Tyto skenovací nástroje procházejí vaši aplikaci a mapují části aplikace, které jsou přístupné přes web. Můžete také Hledat v Azure Marketplace podobných [vývojářských nástrojů](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Pomocí prohledávání aplikace můžete vytvořit obrázek prostoru pro útoky. Microsoft nabízí analytický nástroj pro útoky, který se nazývá [analyzátor Surface útoků](https://www.microsoft.com/download/details.aspx?id=58105). Můžete si vybrat z mnoha komerčních nástrojů pro kontrolu a testování ohrožení zabezpečení, včetně [projektu proxy útoku OWASP zovaný](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)a [w3af](http://w3af.sourceforge.net/). Tyto skenovací nástroje procházejí vaši aplikaci a mapují části aplikace, které jsou přístupné přes web. Můžete také Hledat v Azure Marketplace podobných [vývojářských nástrojů](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Provádění testování průniku zabezpečení
 

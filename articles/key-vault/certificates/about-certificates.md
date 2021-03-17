@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604909"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507207"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
@@ -44,7 +44,17 @@ Když se vytvoří certifikát Key Vault, dá se načíst z adresního tajemstv�
 
 Adresovatelný klíč se bude důležitější s neexportovatelnými certifikáty KV. Operace s adresovatelnými klávesami se mapují z pole *použití* zásad certifikátu KV, které slouží k vytvoření certifikátu kV.  
 
-Podporovány jsou dva typy klíčů – modul *hardwarového* zabezpečení *RSA* nebo RSA s certifikáty. Exportovatelné je povolené jenom s šifrováním RSA, které nepodporuje modul HARDWAROVÉho zabezpečení RSA.  
+Typ páru klíčů, který se má pro certifikáty podporovat
+
+ - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [zde](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)uvedené) exportovatelné je povolené jenom pro RSA, ES. Klíče HSM by nebyly exportovatelné.
+
+|Typ klíče|Informace|Zabezpečení|
+|--|--|--|
+|**RSA**| Klíč RSA chráněný softwarem|FIPS 140-2 úrovně 1|
+|**RSA – HSM**| Klíč RSA chráněný HSM (jenom SKU úrovně Premium)|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|
+|**EC**| Klíč eliptické křivky "chráněný softwarem"|FIPS 140-2 úrovně 1|
+|**EC – HSM**| Klávesa s eliptickou křivkou chráněná HSM (jenom SKU úrovně Premium)|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>Atributy a značky certifikátů
 
@@ -56,7 +66,7 @@ Atributy certifikátu se zrcadlí do atributů adresovatelného klíče a tajné
 
 Key Vault certifikát má následující atributy:  
 
--   *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp*a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
+-   *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp* a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
 
 V odpovědi jsou k dispozici další atributy jen pro čtení, které jsou k dispozici:
 
@@ -81,11 +91,11 @@ Zásady certifikátu obsahují informace o tom, jak vytvořit a spravovat život
 
 Když se od začátku vytvoří certifikát Key Vault, musí se zadat zásada. Zásada určuje, jak se má vytvořit tato Key Vault verze certifikátu nebo další verze certifikátu Key Vault. Jakmile je zásada navázána, nepožaduje se u následných operací vytvoření budoucích verzí. Pro všechny verze Key Vaultho certifikátu existuje jenom jedna instance zásady.  
 
-Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
+Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)):  
 
 -   Vlastnosti certifikátu x509: obsahuje název subjektu, alternativní názvy subjektu a další vlastnosti používané k vytvoření žádosti o certifikát x509.  
 -   Klíčové vlastnosti: obsahuje typ klíče, délku klíče, exportovatelné a ReuseKeyOnRenewal pole. Tato pole instruují Trezor klíčů, jak vygenerovat klíč. 
-     - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [tady](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)se uvádí) 
+     - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [tady](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)se uvádí) 
 -   Vlastnosti tajného klíče: obsahuje tajné vlastnosti, jako je typ obsahu adresovatelných tajných klíčů, aby se vygenerovala tajná hodnota pro načtení certifikátu jako tajného klíče.  
 -   Akce životního cyklu: obsahuje akce životního cyklu pro certifikát KV. Každá akce životnosti obsahuje:  
 
@@ -117,7 +127,7 @@ Objekt certifikátu Key Vault obsahuje konfiguraci, která se používá ke komu
 
 -   Key Vault partneři s následujícími poskytovateli vystavitelů certifikátů pro certifikáty TLS/SSL
 
-|**Název zprostředkovatele**|**Umístění**|
+|**Název poskytovatele**|**Umístění**|
 |----------|--------|
 |DigiCert|Podporuje se ve všech umístěních služby trezoru klíčů ve veřejném cloudu a Azure Government|
 |GlobalSign|Podporuje se ve všech umístěních služby trezoru klíčů ve veřejném cloudu a Azure Government|
@@ -132,7 +142,7 @@ Předtím, než je možné vytvořit vystavitele certifikátu v Key Vault, je nu
 
     -   Poskytuje konfiguraci, která se má použít k vytvoření objektu vystavitele zprostředkovatele v trezoru klíčů.  
 
-Další informace o vytváření objektů vystavitele z portálu Certificates najdete na [blogu Key Vault Certificates](https://aka.ms/kvcertsblog) .  
+Další informace o vytváření objektů vystavitele z portálu Certificates najdete na [blogu Key Vault Certificates](/archive/blogs/kv/manage-certificates-via-azure-key-vault) .  
 
 Key Vault umožňuje vytvoření více objektů vystavitele s jinou konfigurací zprostředkovatele vystavitele. Po vytvoření objektu vystavitele se na jeho název dá odkazovat v jedné nebo několika zásadách certifikátu. Odkazování na objekt vystavitele instruuje Key Vault pro použití konfigurace, jak je uvedeno v objektu vystavitele při vyžádání certifikátu x509 od poskytovatele CA během vytváření a obnovování certifikátu.  
 
@@ -140,42 +150,11 @@ Objekty vystavitele se vytvoří v trezoru a dají se použít jenom u certifik�
 
 ## <a name="certificate-contacts"></a>Kontakty certifikátu
 
-Kontakty certifikátu obsahují kontaktní informace pro odesílání oznámení aktivovaných událostmi životnosti certifikátu. Informace o kontaktech jsou sdíleny pomocí všech certifikátů v trezoru klíčů. Oznámení se pošle všem zadaným kontaktům pro událost pro libovolný certifikát v trezoru klíčů.  
-
-Pokud je zásada certifikátu nastavená na automatické obnovení, pošle se na následující události oznámení.  
-
-- Před obnovením certifikátu
-- Po obnovení certifikátu uveďte, jestli se certifikát úspěšně obnovil, nebo jestli došlo k chybě, která vyžaduje ruční obnovení certifikátu.  
-
-  Když se zásada certifikátu, která je nastavená na ruční obnovení (jenom e-mailem), pošle, pošle se oznámení, když se certifikát obnoví.  
+Kontakty certifikátu obsahují kontaktní informace pro odesílání oznámení aktivovaných událostmi životnosti certifikátu. Informace o kontaktech jsou sdíleny pomocí všech certifikátů v trezoru klíčů. Oznámení se pošle všem zadaným kontaktům pro událost pro libovolný certifikát v trezoru klíčů. Informace o tom, jak nastavit kontakt s certifikátem, najdete [tady](overview-renew-certificate.md#steps-to-set-certificate-notifications) .  
 
 ## <a name="certificate-access-control"></a>Access Control certifikátu
 
- Řízení přístupu k certifikátům zajišťuje služba Key Vault, ve které se certifikáty nacházejí. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  
-
- Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, v položce řízení přístupu tajných klíčů v trezoru klíčů a pozorně zrcadlí operace povolené u tajného objektu:  
-
-- Oprávnění pro operace správy certifikátů
-  - *získání*: získání aktuální verze certifikátu nebo libovolné verze certifikátu 
-  - *seznam*: vypíše aktuální certifikáty nebo verze certifikátu.  
-  - *aktualizace*: aktualizace certifikátu
-  - *vytvořit*: vytvoření certifikátu Key Vault
-  - *Import*: Import materiálu certifikátů do certifikátu Key Vault
-  - *Odstranit*: odstranit certifikát, jeho zásadu a všechny jeho verze  
-  - *obnovení*: obnovit odstraněný certifikát
-  - *zálohování*: zálohování certifikátu v trezoru klíčů
-  - *obnovení*: obnovení zálohovaného certifikátu do trezoru klíčů
-  - *managecontacts*: Správa kontaktů certifikátů Key Vault  
-  - *manageissuers*: Správa certifikačních autorit/vystavitelů Key Vault
-  - *getissuer*: získání autority nebo vystavitelů certifikátu
-  - *listissuers*: výpis autorit/vystavitelů certifikátů  
-  - *setissuers*: vytvoření nebo aktualizace autorit/vystavitelů certifikátu Key Vault  
-  - *deleteissuers*: odstranění autorit/vystavitelů certifikátu Key Vault  
- 
-- Oprávnění pro privilegované operace
-  - *vyprázdnit*: vyprázdnit (trvale odstranit) odstraněný certifikát
-
-Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
+ Řízení přístupu k certifikátům zajišťuje služba Key Vault, ve které se certifikáty nacházejí. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  Další informace o řízení přístupu k certifikátu najdete [tady](certificate-access-control.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

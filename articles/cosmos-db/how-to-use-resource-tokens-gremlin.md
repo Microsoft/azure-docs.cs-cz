@@ -1,20 +1,22 @@
 ---
 title: Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
 description: Naučte se vytvářet tokeny prostředků a používat je pro přístup k databázi grafu.
-author: luisbosquez
-ms.author: lbosq
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87919952"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361689"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Tento článek vysvětluje, jak používat [tokeny prostředků Azure Cosmos DB](secure-access-to-data.md) pro přístup k databázi grafu prostřednictvím sady SDK pro Gremlin.
 
@@ -36,7 +38,7 @@ Token prostředku používá následující formát: `"type=resource&ver=1&sig=<
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
 DocumentClient client = new DocumentClient(
   new Uri("https://contoso.documents.azure.com:443/"), 
-  "<master key>", 
+  "<primary key>", 
   new ConnectionPolicy 
   {
     EnableEndpointDiscovery = false, 
@@ -62,7 +64,7 @@ Tokeny prostředků můžete použít přímo jako vlastnost "Password" při vyt
 // You can obtain the token for a given permission by using the Azure Cosmos DB SDK, or you can pass it into the application as a command line argument or configuration value.
 string resourceToken = GetResourceToken();
 
-// Configure the Gremlin server to use a resource token rather than a master key.
+// Configure the Gremlin server to use a resource token rather than a primary key.
 GremlinServer server = new GremlinServer(
   "contoso.gremlin.cosmosdb.azure.com",
   port: 443,
@@ -99,7 +101,7 @@ S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průbě
 
 ## <a name="permission"></a>Oprávnění
 
-Častá chyba, kterou aplikace, ke kterým dochází, když používají tokeny prostředků, jsou v autorizační hlavičce pro odpovídající požadavek nedostatečná oprávnění. Zkuste to prosím znovu s jinou autorizační hlavičkou. " Tato chyba se vrátí, když se Gremlin přecházení pokusí zapsat Edge nebo vrchol, ale token prostředku uděluje pouze oprávnění *ke čtení* . Zkontrolujte svůj průchod, abyste viděli, zda obsahuje některý z následujících kroků: *. addV ()*, *. addE ()*, *. drop ()* nebo *. Property ()*.
+Častá chyba, kterou aplikace, ke kterým dochází, když používají tokeny prostředků, jsou v autorizační hlavičce pro odpovídající požadavek nedostatečná oprávnění. Zkuste to prosím znovu s jinou autorizační hlavičkou. " Tato chyba se vrátí, když se Gremlin přecházení pokusí zapsat Edge nebo vrchol, ale token prostředku uděluje pouze oprávnění *ke čtení* . Zkontrolujte svůj průchod, abyste viděli, zda obsahuje některý z následujících kroků: *. addV ()* , *. addE ()* , *. drop ()* nebo *. Property ()*.
 
 ## <a name="next-steps"></a>Další kroky
 * [Řízení přístupu na základě role v Azure (Azure RBAC)](role-based-access-control.md) v Azure Cosmos DB

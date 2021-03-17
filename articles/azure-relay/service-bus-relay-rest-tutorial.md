@@ -2,13 +2,14 @@
 title: 'Kurz: kurz REST s využitím Azure Relay'
 description: 'Kurz: Sestavte hostitelskou aplikaci Azure Relay, která zpřístupňuje rozhraní založené na REST.'
 ms.topic: tutorial
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316636"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88922323"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Kurz: kurz pro Azure WCF Relay REST
 
@@ -32,7 +33,7 @@ V tomto kurzu provedete následující úlohy:
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá Visual Studio 2019.
+* [Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá Visual Studio 2019.
 * Sada Azure SDK pro .NET Nainstalujte ji ze [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
 ## <a name="create-a-relay-namespace"></a>Vytvoření oboru názvů Relay

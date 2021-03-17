@@ -9,11 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
-ms.openlocfilehash: b71f94a6a05eb372025430cde21c668b47ac36b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 537c0d7fbf484a61a8bc3219022a6ca6d8bd9bdc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102566"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187515"
 ---
 Všechny [ukázky sady Speech SDK C#](https://aka.ms/speech/github-csharp) můžete zobrazit nebo stáhnout na GitHubu. 

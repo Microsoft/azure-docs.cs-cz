@@ -1,23 +1,25 @@
 ---
-title: Použití Azure Portal k řešení problémů s objednáním Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak řešit problémy s Azure Stackmi hraničními objednáními.
+title: Použití Azure Portal k řešení problémů s pořadím pro Azure Stack Edge pro | Microsoft Docs
+description: Popisuje řešení potíží s pořadím Azure Stack Edge pro.
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
-ms.author: v-grpr
-ms.openlocfilehash: d403fb0da27e3f91e00f3fd8a2fbea77e915898b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 02/22/2021
+ms.author: alkohli
+ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136764"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443399"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Řešení potíží s pořadím Azure Stack Edge
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Řešení potíží s pořadím Azure Stack Edge pro
 
-Tento článek popisuje, jak řešit problémy s Azure Stackmi okraji Edge.
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+
+Tento článek popisuje, jak řešit problémy s pořadím Azure Stack Edge pro.
 
 V tomto kurzu se naučíte:
 
@@ -33,7 +35,7 @@ V tomto kurzu se naučíte:
 
 ![Nepodporované předplatné nebo oblast](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**Navrhované řešení:**  Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují. Další informace najdete v tématu [Azure Stack požadavky na prostředky Edge](azure-stack-edge-deploy-prep.md#prerequisites).
+**Navrhované řešení:**  Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují. Další informace najdete v tématu [Azure Stack požadavky na prostředky Edge](azure-stack-edge-deploy-prep.md#prerequisites).
 
 Je možné, že Microsoft může v jednotlivých případech umožnit upgrade typu předplatného. Obraťte se na [podporu Microsoftu](https://azure.microsoft.com/support/options/) , aby mohli pochopit vaše potřeby a patřičně upravit tato omezení.
 
@@ -53,15 +55,15 @@ Je možné, že Microsoft může v jednotlivých případech umožnit upgrade ty
 
     ![Registrace poskytovatele prostředků](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-02.png)
 
-Pokud nemáte oprávnění vlastníka nebo přispěvatele k registraci poskytovatele prostředků, zobrazí se následující chyba: * &lt; název předplatného předplatného nemá &gt; oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
+Pokud nemáte oprávnění vlastníka nebo přispěvatele k registraci poskytovatele prostředků, zobrazí se následující chyba: *&lt; název předplatného předplatného nemá &gt; oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
 
 Další informace najdete v tématu [registrace poskytovatelů prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft. DataBoxEdge není zaregistrovaný pro předplatné.
 
-**Chyba:** V Azure Portal vyberte předplatné, které se má použít pro Azure Stack Edge nebo Data Box Gateway, a zobrazí se následující chyba:
+**Chyba:** V Azure Portal vyberte předplatné, které se má použít pro Azure Stack Edge pro nebo Data Box Gateway, a zobrazí se následující chyba:
 
-*Poskytovatelé prostředků: Microsoft. DataBoxEdge není registrovaný pro název předplatného předplatného &lt; &gt; a nemáte oprávnění registrovat poskytovatele prostředků pro &lt; název &gt; *předplatného předplatného.
+*Poskytovatelé prostředků: Microsoft. DataBoxEdge není registrovaný pro název předplatného předplatného &lt; &gt; a nemáte oprávnění registrovat poskytovatele prostředků pro &lt; název &gt;* předplatného předplatného.
 
 **Navrhované řešení:** Zvyšte přístup k předplatnému nebo vyhledejte někoho s oprávněním vlastníka nebo přispěvatele k registraci poskytovatele prostředků.
 
@@ -75,4 +77,4 @@ Další informace najdete v tématu [registrace poskytovatelů prostředků](azu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [řešení problémů s Azure Stack hranami](azure-stack-edge-troubleshoot.md).
+* Přečtěte si další informace o [řešení problémů s Azure Stack Edge pro](azure-stack-edge-troubleshoot.md).

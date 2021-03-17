@@ -3,17 +3,18 @@ title: Použití Azure image Builder pro virtuální počítače se systémem Li
 description: Vytvoření imagí virtuálních počítačů se systémem Linux pomocí Azure image Builder, který umožňuje přístup k existující virtuální síti Azure
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 500ddec9b84f9d73db45ddb4b7f5a8486a48d3e5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068142"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565304"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Použití Azure image Builder pro virtuální počítače se systémem Linux umožňující přístup k existující virtuální síti Azure
 
@@ -23,7 +24,7 @@ V tomto článku se dozvíte, jak můžete pomocí nástroje Azure image Builder
 > Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="register-the-features"></a>Registrace funkcí
 
@@ -75,7 +76,7 @@ Vytvořte skupinu prostředků.
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="configure-networking"></a>Konfigurace sítí
+## <a name="configure-networking"></a>Konfigurace sítě
 
 Pokud nemáte existující VNET\Subnet\NSG, vytvořte ho pomocí následujícího skriptu.
 
@@ -139,9 +140,9 @@ Další informace o sítích tvůrce imagí najdete v tématu [Možnosti sítě 
 ```bash
 # download the example and configure it with your vars
 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Linux_Image_on_Existing_VNET/existingVNETLinux.json -o existingVNETLinux.json
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Linux_Image_on_Existing_VNET/existingVNETLinux.json -o existingVNETLinux.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" existingVNETLinux.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" existingVNETLinux.json
@@ -163,7 +164,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>Nastavení oprávnění pro skupinu prostředků
 
-Nástroj image Builder použije poskytnutou [identitu uživatele](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) k vložení image do galerie sdílených imagí Azure (SIG). V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image do SIG. Definice role se pak přiřadí identitě User-identity.
+Nástroj image Builder použije poskytnutou [identitu uživatele](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) k vložení image do galerie sdílených imagí Azure (SIG). V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image do SIG. Definice role se pak přiřadí identitě User-identity.
 
 ```bash
 # create user assigned identity for image builder
@@ -316,4 +317,4 @@ Pokud jste pro tento rychlý Start vytvořili virtuální síť, můžete virtu�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [galeriích sdílených imagí Azure](shared-image-galleries.md).
+Přečtěte si další informace o [galeriích sdílených imagí Azure](../shared-image-galleries.md).

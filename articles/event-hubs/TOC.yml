@@ -10,6 +10,8 @@
       href: event-hubs-capture-overview.md
     - name: Event Hubs úrovně Dedicated
       href: event-hubs-dedicated-overview.md
+    - name: Registr schémat Azure v Event Hubs (Preview)
+      href: schema-registry-overview.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -27,29 +29,25 @@
     - name: Odesílání a příjem událostí
       items:
         - name: .NET Core (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
-        - name: Python (azure-eventhub verze 5)
-          href: get-started-python-send-v2.md
-        - name: JavaScript (azure/event-hubs verze 5)
-          href: get-started-node-send-v2.md
+          href: event-hubs-java-get-started-send.md
+        - name: Python (azure-eventhub)
+          href: event-hubs-python-get-started-send.md
+        - name: JavaScript (azure/event-hubs)
+          href: event-hubs-node-get-started-send.md
         - name: Přejít
           href: event-hubs-go-get-started-send.md
         - name: C (jenom odesílání)
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (jenom příjem)
           href: event-hubs-storm-getstarted-receive.md
-    - name: Odesílání a příjem událostí (staré verze/balíčky)
+    - name: Odesílání a příjem událostí (staré balíčky)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub verze 1)
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript (azure/event-hubs verze 2)
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Zachycení událostí
@@ -58,9 +56,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: Použití šablony Resource Manageru k povolení funkce Event Hubs Capture
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Čtení zachycených dat pomocí Pythonu (azure-eventhub verze 5)
-          href: get-started-capture-python-v2.md
-        - name: Čtení zachycených dat pomocí Pythonu (azure-eventhub verze 1)
+        - name: Čtení zachycených dat pomocí Pythonu
           href: event-hubs-capture-python.md
     - name: Streamování do služby Event Hubs pro Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
@@ -70,7 +66,7 @@
   items:
     - name: Vizualizace datových anomálií v datových streamech Event Hubs
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: Uložení zachycených dat ve službě SQL Data Warehouse
+    - name: Ukládání zachycených dat ve službě Azure Synapse Analytics
       href: store-captured-data-data-warehouse.md
     - name: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
       href: event-hubs-kafka-stream-analytics.md
@@ -81,9 +77,6 @@
   items:
     - name: Ukázky kódů
       href: event-hubs-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Terminologie Event Hubs
@@ -96,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: Škálovatelnost
       href: event-hubs-scalability.md
+    - name: metadata
+      items:
+        - name: Federace více lokalit a více oblastí
+          href: event-hubs-federation-overview.md
+        - name: Úlohy a aplikace replikace událostí
+          href: event-hubs-federation-replicator-functions.md
+        - name: Vzorce úloh replikace událostí
+          href: event-hubs-federation-patterns.md
+        - name: Nakonfigurované úlohy replikace
+          href: event-hubs-federation-configuration.md
+        - name: Replikace událostí mezi službami Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Odeslání událostí do služby Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Získávání událostí ze služby Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: Geografické zotavení po havárii
       items:
         - name: Geografické zotavení po havárii a geografická replikace
@@ -122,20 +131,28 @@
               href: authenticate-shared-access-signature.md
         - name: Zabezpečení sítě
           href: network-security.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: event-hubs-security-controls.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-    - name: Průvodce protokolem AMQP 1.0
-      href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
-      maintainContext: true
+    - name: AMQP
+      items:
+        - name: Průvodce protokolem AMQP 1.0
+          href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
+          maintainContext: true
+        - name: Chyby AMQP
+          href: event-hubs-amqp-troubleshoot.md
 - name: Návody
   items:
-    - name: Přesun mezi oblastmi
-      href: move-across-regions.md
+    - name: Vytvoření registru schémat
+      href: create-schema-registry.md
+    - name: Přesunout
+      items:
+        - name: Přesun oboru názvů do jiné oblasti
+          href: move-across-regions.md
+        - name: Přesun vyhrazeného clusteru do jiné oblasti
+          href: move-cluster-across-regions.md
     - name: Dynamické přidávání oddílů
       href: dynamically-add-partitions.md
     - name: Použití služby Blob Storage jako úložiště kontrolních bodů v Azure Stack Hubu
@@ -154,9 +171,9 @@
               href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/README.md'
             - name: Java (azure-messaging-eventhubs)
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
-            - name: Python (azure-eventhub verze 5)
+            - name: Python (azure-eventhub)
               href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
-            - name: JavaScript (azure/event-hubs verze 5)
+            - name: JavaScript (azure/event-hubs)
               href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/README.md'
             - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
@@ -186,9 +203,9 @@
           href: event-hubs-kafka-spark-tutorial.md
         - name: Připojení Apache Flinku k centru událostí
           href: event-hubs-kafka-flink-tutorial.md
-        - name: Integrace nástroje Apache Kafka Connect s centrem (Preview)
+        - name: Integrace nástroje Apache Kafka Connect
           href: event-hubs-kafka-connect-tutorial.md
-        - name: Integrace nástroje Apache Kafka Connect (Preview) s Debeziem
+        - name: Integrace nástroje Apache Kafka Connect s Debeziem
           href: event-hubs-kafka-connect-debezium.md
         - name: Připojení Akka Streams k centru událostí
           href: event-hubs-kafka-akka-streams-tutorial.md
@@ -201,7 +218,7 @@
         - name: Nastavení diagnostických protokolů
           href: event-hubs-diagnostic-logs.md
         - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
-          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
+          href: ../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md
         - name: Automatické škálování jednotek propustnosti
           href: event-hubs-auto-inflate.md
         - name: Knihovny pro správu Event Hubs
@@ -224,6 +241,8 @@
           href: troubleshoot-authentication-authorization.md
         - name: Průvodce odstraňováním potíží pro Kafka s využitím Event Hubs
           href: apache-kafka-troubleshooting-guide.md
+        - name: EventHubsException
+          href: exceptions-dotnet.md
         - name: Výjimky .NET
           href: event-hubs-messaging-exceptions.md
         - name: Výjimky Resource Manageru
@@ -253,35 +272,23 @@
             - name: Migrace z azure-eventhubs na azure-messaging-eventhubs
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
             - name: azure-messaging-eventhubs (nejnovější)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-eventhubs/5.0.0-beta.6/index.html'
+              href: /java/api/overview/azure/messaging-eventhubs-readme
             - name: azure-eventhubs (starší verze)
-              href: /java/api/overview/azure/eventhubs/client?view=azure-java-stable
+              href: /java/api/overview/azure/eventhubs/client?view=azure-java-legacy
         - name: Knihovna správy
-          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.eventhub
     - name: Python
       items:
-        - name: Migrace z azure-eventhub verze 1 na verzi 5
-          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
         - name: Klientská knihovna
-          items:
-            - name: azure-eventhub verze 5
-              href: /python/api/azure-eventhub/?view=azure-python
-            - name: azure-eventhub verze 1
-              href: /python/api/azure-eventhub/?view=azure-python-previous
+          href: /python/api/overview/azure/eventhub-readme
         - name: Knihovna správy
-          href: /python/api/overview/azure/event-hub?view=azure-python
+          href: /python/api/overview/azure/event-hub
     - name: JavaScript
       items:
-        - name: Migrace z azure/eventhubs verze 2 na verzi 5
-          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
         - name: Klientská knihovna
-          items:
-            - name: azure/eventhubs verze 5
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
-            - name: azure/eventhubs verze 2
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
+          href: /javascript/api/overview/azure/event-hubs-readme
         - name: Knihovna správy
-          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+          href: /javascript/api/@azure/arm-eventhub/
     - name: Přejít
       items:
         - name: Klientská knihovna
@@ -296,6 +303,9 @@
       href: event-hubs-quotas.md
     - name: Konfigurace Apache Kafka
       href: apache-kafka-configurations.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

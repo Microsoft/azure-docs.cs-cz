@@ -1,14 +1,17 @@
 ---
 title: Použití aplikace Web App-personalizovat
 description: Přizpůsobení webové aplikace v jazyce C# .NET pomocí smyčky vlastního nastavení pro poskytnutí správného obsahu uživateli na základě akcí (s funkcemi) a funkcí kontextu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446370"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363914"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Kurz: Přidání přizpůsobení do webové aplikace .NET
 
@@ -152,10 +155,10 @@ private string GetUsersTastePreference()
 ## <a name="how-does-the-web-app-use-personalizer"></a>Jak Web App používá přizpůsobování?
 
 Webová aplikace používá přidaný nástroj k výběru nejlepší akce ze seznamu možností potravinové služby. Odešle následující informace s každým voláním rozhraní API řazení:
-* **Akce** s jejich funkcemi, jako jsou `taste` a`spiceLevel`
+* **Akce** s jejich funkcemi, jako jsou `taste` a `spiceLevel`
 * **kontextové** funkce, jako jsou například uživatelské `time` `taste` Předvolby a informace o uživatelském agentovi prohlížeče a funkce kontextu
 * **akce, které se mají vyloučit** , jako je například šťáva
-* **ID události**, která se liší pro každé volání rozhraní API řazení.
+* **ID události** , která se liší pro každé volání rozhraní API řazení.
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Funkce modelu přizpůsobení ve webové aplikaci
 
@@ -213,7 +216,7 @@ Nainstalujte následující software:
 
 * [.NET core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1) – ukázkový back-end Server používá .NET Core
 * [Node.js](https://nodejs.org/) – klient/front-end závisí na této aplikaci.
-* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)nebo [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/) – pro sestavení a spuštění aplikace použijte vývojové prostředí sady visual Studio 2019 nebo .NET Core CLI.
+* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)nebo [.NET Core CLI](/dotnet/core/tools/) – pro sestavení a spuštění aplikace použijte vývojové prostředí sady visual Studio 2019 nebo .NET Core CLI.
 
 ### <a name="set-up-the-sample"></a>Nastavení ukázky
 1. Naklonujte úložiště ukázek pro Azure pro přizpůsobení.
@@ -231,8 +234,8 @@ Nainstalujte následující software:
 1. [Vytvořte prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) přizpůsobeného v Azure Portal.
 
 1. V Azure Portal vyhledejte na `Endpoint` `Key1` `Key2` kartě **klíče a koncové body** a buď nebo (jak budou fungovat). Jsou to vaše `PersonalizerServiceEndpoint` a vaše `PersonalizerApiKey` .
-1. Vyplňte `PersonalizerServiceEndpoint` **appsettings.js**v části.
-1. Nakonfigurujte `PersonalizerApiKey` jako [tajné klíče aplikace](https://docs.microsoft.com/aspnet/core/security/app-secrets) jedním z následujících způsobů:
+1. Vyplňte `PersonalizerServiceEndpoint` **appsettings.js** v části.
+1. Nakonfigurujte `PersonalizerApiKey` jako [tajné klíče aplikace](/aspnet/core/security/app-secrets) jedním z následujících způsobů:
 
     * Pokud používáte .NET Core CLI, můžete použít `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` příkaz.
     * Pokud používáte aplikaci Visual Studio, můžete kliknout pravým tlačítkem myši na projekt a vybrat možnost **spravovat tajné klíče uživatele** pro konfiguraci klíčů přizpůsobeného nástroji. Tím se v aplikaci Visual Studio otevře soubor, `secrets.json` kde můžete klíče přidat následujícím způsobem:
@@ -248,12 +251,12 @@ Nainstalujte následující software:
 Sestavte a spusťte HttpRequestFeaturesExample pomocí jedné z následujících metod:
 
 * Visual Studio 2019: stiskněte klávesu **F5**
-* .NET Core CLI: `dotnet build` pak`dotnet run`
+* .NET Core CLI: `dotnet build` pak `dotnet run`
 
 Přes webový prohlížeč můžete odeslat žádost o zařazení a žádost o odměnu, zobrazit jejich odpovědi a také funkce žádosti HTTP extrahované z vašeho prostředí.
 
 > [!div class="mx-imgBorder"]
-> ![Sestavte a spusťte projekt HTTPRequestFeaturesExample. Otevře se okno prohlížeče, ve kterém se zobrazí jedna stránková aplikace.](./media/tutorial-web-app/web-app-single-page.png)
+> ![Snímek obrazovky ukazuje příklad funkce požadavku HTTP ve webovém prohlížeči.](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>Ukázka smyčky přizpůsobeného přizpůsobování
 
@@ -266,7 +269,7 @@ Přes webový prohlížeč můžete odeslat žádost o zařazení a žádost o o
 1. Nastavte hodnotu odměňování a pak vyberte tlačítko pro **odeslání žádosti o Nemotivaci** . Pokud hodnotu neměníte, klientská aplikace vždy pošle hodnotu do přizpůsobeného `1` .
 
     > [!div class="mx-imgBorder"]
-    > ![Sestavte a spusťte projekt HTTPRequestFeaturesExample. Otevře se okno prohlížeče, ve kterém se zobrazí jedna stránková aplikace.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Snímek obrazovky se zobrazí v oddílu žádosti o odměnu.](./media/tutorial-web-app/reward-score-api-call.png)
 
     Pro vaši vlastní budoucí aplikaci může generování skóre odměňování nastat po shromáždění informací z chování uživatele v klientovi, spolu s obchodní logikou na serveru.
 
@@ -280,7 +283,7 @@ V následujících částech se vysvětlují části serveru a klienta, které v
 
 ## <a name="rank-api-client-application-sends-context-to-server"></a>Rozhraní API pro řazení: klientská aplikace odesílá kontext na server.
 
-Klientská aplikace shromažďuje _uživatelský agent_prohlížeče uživatele.
+Klientská aplikace shromažďuje _uživatelský agent_ prohlížeče uživatele.
 
 > [!div class="mx-imgBorder"]
 > ![Sestavte a spusťte projekt HTTPRequestFeaturesExample. Otevře se okno prohlížeče, ve kterém se zobrazí jedna stránková aplikace.](./media/tutorial-web-app/user-agent.png)
@@ -291,7 +294,7 @@ Toto je typická webová aplikace .NET s klientskou aplikací, takže většina 
 
 ### <a name="create-personalizer-client"></a>Vytvořit klienta přizpůsobeného pro přizpůsobování
 
-V **Startup.cs**serveru se pomocí koncového bodu a klíče přizpůsobeného objektu vytvoří klient přizpůsobeného pro přizpůsobení. Klientská aplikace nemusí v této aplikaci komunikovat s přizpůsobením, místo toho, aby tato volání sady SDK spoléhala na server.
+V **Startup.cs** serveru se pomocí koncového bodu a klíče přizpůsobeného objektu vytvoří klient přizpůsobeného pro přizpůsobení. Klientská aplikace nemusí v této aplikaci komunikovat s přizpůsobením, místo toho, aby tato volání sady SDK spoléhala na server.
 
 Spouštěcí kód pro .NET webového serveru je:
 
@@ -337,7 +340,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>Vybrat nejlepší akci
 
-V **PersonalizerController.cs**serveru rozhraní API serveru **GenerateRank** shrnuje přípravu pro volání rozhraní API Rank.
+V **PersonalizerController.cs** serveru rozhraní API serveru **GenerateRank** shrnuje přípravu pro volání rozhraní API Rank.
 
 * Vytvořit nový `eventId` pro volání pořadí
 * Získá seznam akcí.

@@ -8,9 +8,19 @@
   expanded: true
   items:
     - name: Sestavení první statické webové aplikace
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: portál Azure
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: Koncepty
   items:
+    - name: Konfigurace
+      href: configuration.md
+      displayName: Routing
     - name: Podpora rozhraní API s využitím Azure Functions
       href: apis.md
     - name: Trasy
@@ -35,6 +45,8 @@
       href: application-settings.md
     - name: Konfigurace front-endových architektur a knihoven
       href: front-end-frameworks.md
+    - name: Resetovat tokeny nasazení
+      href: deployment-token-management.md
 - name: Kurzy
   items:
     - name: Publikování z generátoru statických webů
@@ -49,6 +61,8 @@
           href: publish-jekyll.md
     - name: Nasazení z architektury
       items:
+        - name: Blazor
+          href: deploy-blazor.md
         - name: Next.js
           href: deploy-nextjs.md
         - name: Nuxt.js
@@ -57,9 +71,13 @@
   items:
     - name: Získávání dovedností pomocí Microsoft Learn
       items:
-        - name: 'Publikování rozhraní API a javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue'
+        - name: 'Publikování javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue'
           href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Publikování rozhraní API
+          href: /learn/modules/publish-static-web-app-api-preview-url
         - name: Vytvoření a publikování statické webové aplikace s využitím Gatsby
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+        - name: Vytvoření a publikování statické webové aplikace s využitím Blazoru
+          href: /learn/modules/publish-app-service-static-web-app-api-dotnet
     - name: Kvóty
       href: quotas.md

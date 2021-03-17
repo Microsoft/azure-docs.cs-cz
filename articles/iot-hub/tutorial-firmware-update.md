@@ -1,6 +1,6 @@
 ---
-title: Aktualizace firmwaru zařízení přes službu Azure IoT Hub | Microsoft Docs
-description: Naučte se implementovat proces aktualizace firmwaru zařízení, který se dá aktivovat z back-endové aplikace připojené ke službě IoT Hub.
+title: Kurz – aktualizace firmwaru zařízení prostřednictvím Azure IoT Hub | Microsoft Docs
+description: Kurz – Naučte se implementovat proces aktualizace firmwaru zařízení, který se dá aktivovat z back-endové aplikace připojené ke službě IoT Hub.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -13,19 +13,20 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
-ms.openlocfilehash: 2e2d66e113c855830f841761cb11a70e4f26c19d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+- devx-track-azurecli
+ms.openlocfilehash: 3fc257ff192ccb1bb05b233c6ac802696ece0054
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415070"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575717"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
 U zařízení připojených k centru IoT možná budete potřebovat aktualizovat firmware. Například můžete do firmwaru chtít přidat nové funkce nebo implementovat opravy zabezpečení. V řadě scénářů IoT je nepraktické být fyzicky u zařízení a pak na ně ručně instalovat aktualizace firmwaru. Tento kurz ukazuje, jak můžete začít a vzdáleně monitorovat proces aktualizace firmwaru prostřednictvím back-endové aplikace připojené k centru.
 
-Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. IoT Hub [Automatická správa zařízení](iot-hub-auto-device-config.md) používá tuto konfiguraci k aktualizaci sady zařízení, které jsou na všech zařízeních s chladicími zařízeními typu _vlákna_ . Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
+Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. IoT Hub [Automatická správa zařízení](./iot-hub-automatic-device-management.md) používá tuto konfiguraci k aktualizaci sady zařízení, které jsou na všech zařízeních s chladicími zařízeními typu _vlákna_ . Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
 
 ![Proces aktualizace firmwaru](media/tutorial-firmware-update/Process.png)
 
@@ -37,11 +38,9 @@ V tomto kurzu provedete následující úlohy:
 > * Simulace procesu aktualizace firmwaru na zařízení
 > * Příjem aktualizací stavu ze zařízení v průběhu aktualizace firmwaru
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node.js v10 za účelem. x. x nebo novější.
 
@@ -73,11 +72,11 @@ az extension add --name azure-iot
 # Create a resource group
 az group create --name tutorial-iot-hub-rg --location $location
 
-# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription
-az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
+# Create a free-tier IoT Hub. You can have only one free IoT Hub per subscription. Free tier hubs can have only 2 partitions.
+az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --partition-count 2 --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname --policy-name service -o table
+az iot hub connection-string show --name $hubname --policy-name service -o table
 
 ```
 
@@ -91,10 +90,10 @@ hubname=tutorial-iot-hub
 az iot hub device-identity create --device-id MyFirmwareUpdateDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg
 
 # Add a device type tag
-az iot hub device-twin update --device-id MyFirmwareUpdateDevice --hub-name $hubname --set tags='{"devicetype":"chiller"}'
+az iot hub device-twin update --device-id MyFirmwareUpdateDevice --hub-name $hubname --set tags='{"device type":"chiller"}'
 
 # Retrieve the device connection string, you need this later
-az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
+az iot hub device-identity connection-string show --device-id MyFirmwareUpdateDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
 
 ```
 
@@ -103,7 +102,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>Spuštění aktualizace firmwaru
 
-V back-endové aplikaci vytvoříte [automatickou konfiguraci správy zařízení](iot-hub-automatic-device-management.md#create-a-configuration) pro zahájení procesu aktualizace firmwaru na všech zařízeních označených **DeviceType** chladem. V této části najdete postup následujících úloh:
+V back-endové aplikaci vytvoříte [automatickou konfiguraci správy zařízení](iot-hub-automatic-device-management.md#create-a-configuration) pro zahájení procesu aktualizace firmwaru na všech zařízeních označených typem chladicího **zařízení** . V této části najdete postup následujících úloh:
 
 * Vytvoření konfigurace z back-endové aplikace
 * Monitorování úlohy až do konce
@@ -184,7 +183,7 @@ Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zaří
 
 Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na něm zvýrazněno vytvoření konfigurace pro aktualizaci požadovaných vlastností firmwaru:
 
-![Back-endová aplikace](./media/tutorial-firmware-update/BackEnd1.png)
+![Snímek obrazovky, který zobrazuje výstup z back-endové aplikace.](./media/tutorial-firmware-update/BackEnd1.png)
 
 Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na něm zvýrazněno monitorování metrik aktualizace firmwaru ze simulovaného zařízení:
 

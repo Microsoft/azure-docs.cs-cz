@@ -2,19 +2,17 @@
 title: Migrovat cluster na novější verzi
 titleSuffix: Azure HDInsight
 description: Přečtěte si pokyny pro migraci clusteru Azure HDInsight na novější verzi.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 04da5d668515fe96d50d4e6a7d0f5ff1c4c48c27
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085884"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931383"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrace clusteru HDInsight na novější verzi
 

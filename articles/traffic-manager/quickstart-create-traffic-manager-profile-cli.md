@@ -1,24 +1,24 @@
 ---
 title: 'Rychlý Start: vytvoření profilu pro HA aplikací – Azure CLI – Azure Traffic Manager'
-description: Tento článek rychlý Start popisuje, jak vytvořit profil Traffic Manager pro sestavení webové aplikace s vysokou dostupností.
+description: Tento článek rychlý Start popisuje, jak vytvořit profil Traffic Manager pro sestavení webové aplikace s vysokou dostupností pomocí Azure CLI.
 services: traffic-manager
-author: rohinkoul
-mnager: twooley
+author: duongau
+mnager: kumud
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
-ms.author: rohink
+ms.date: 10/09/2020
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1de651d5321fa3a0dea4da33c5d41839e67ad9dc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9a19e9c66967f36c3bdc4124fb9e60f7b7d2b36d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491183"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213432"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Rychlý Start: vytvoření profilu Traffic Manager pro webovou aplikaci s vysokou dostupností pomocí Azure CLI
 
@@ -26,14 +26,14 @@ V tomto rychlém startu se dozvíte, jak vytvořit profil Traffic Manager, kter�
 
 V tomto rychlém startu vytvoříte dvě instance webové aplikace. Každý z nich je spuštěný v jiné oblasti Azure. Vytvoříte profil Traffic Manager na základě [priority koncového bodu](traffic-manager-routing-methods.md#priority-traffic-routing-method). Profil směruje uživatelský provoz do primární lokality, na které běží webová aplikace. Traffic Manager nepřetržitě monitoruje webovou aplikaci. Pokud primární lokalita není k dispozici, poskytuje automatické převzetí služeb při selhání pro záložní lokalitu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
@@ -47,7 +47,7 @@ Následující příklad vytvoří skupinu prostředků s názvem *myResourceGro
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
-Vytvořte profil Traffic Manager pomocí [AZ Network Traffic-Manager Profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) , který přesměruje přenosy uživatelů na základě priority koncových bodů.
+Vytvořte profil Traffic Manager pomocí [AZ Network Traffic-Manager Profile Create](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) , který přesměruje přenosy uživatelů na základě priority koncových bodů.
 
 V následujícím příkladu nahraďte **<profile_name>** jedinečným názvem Traffic Manager profilu.
 
@@ -70,7 +70,7 @@ az network traffic-manager profile create \
 Pro účely tohoto rychlého startu budete potřebovat dvě instance webové aplikace nasazené ve dvou různých oblastech Azure (*východní USA* a *západní Evropa*). Každý bude sloužit jako primární koncová body a koncové body převzetí služeb při selhání pro Traffic Manager
 
 ### <a name="create-web-app-service-plans"></a>Vytvoření plánů služby Web App Service
-Vytvořte plány služby Web App Service pomocí [AZ AppService Plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) pro dvě instance webové aplikace, kterou nasadíte ve dvou různých oblastech Azure.
+Vytvořte plány služby Web App Service pomocí [AZ AppService Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create) pro dvě instance webové aplikace, kterou nasadíte ve dvou různých oblastech Azure.
 
 V následujícím příkladu nahraďte **<appspname_eastus>** a **<appspname_westeurope>** s jedinečným názvem plánu App Service
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ```
 
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Vytvoření webové aplikace v plánu služby App Service
-Vytvořte dvě instance webové aplikace pomocí [AZ WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) ve App Servicech plánech *východní USA* a *západní Evropa* oblastech Azure.
+Vytvořte dvě instance webové aplikace pomocí [AZ WebApp Create](/cli/azure/webapp#az-webapp-create) ve App Servicech plánech *východní USA* a *západní Evropa* oblastech Azure.
 
 V následujícím příkladu nahraďte **<app1name_eastus>** a **<app2name_westeurope>** jedinečným názvem aplikace, a nahradíte **<** appspname_eastus>a **<** appspname_westeurope>s názvem použitým k vytvoření plánů App Service v předchozí části.
 
@@ -110,14 +110,14 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
-Přidejte dva Web Apps jako koncové body Traffic Manager pomocí příkazu [AZ Network Traffic-Manager Endpoint Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) do profilu Traffic Manager následujícím způsobem:
+Přidejte dva Web Apps jako koncové body Traffic Manager pomocí příkazu [AZ Network Traffic-Manager Endpoint Create](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) do profilu Traffic Manager následujícím způsobem:
 
 - Určete ID webové aplikace a přidejte webovou aplikaci umístěnou v *východní USA* oblasti Azure jako primární koncový bod pro směrování všech uživatelských přenosů. 
 - Určete ID webové aplikace a přidejte webovou aplikaci, která se nachází v *západní Evropa* oblasti Azure jako koncový bod převzetí služeb při selhání. 
 
 Když je primární koncový bod nedostupný, provoz se automaticky směruje na koncový bod převzetí služeb při selhání.
 
-V následujícím příkladu nahraďte **<app1name_eastus>** a **<App2name_westeurope**>s názvy aplikací vytvořenými pro jednotlivé oblasti v předchozí části, nahraďte **<appspname_eastus>** a **<** appspname_westeurope>s názvem použitým k vytvoření App Service plánů v předchozí části a nahraďte **<** profile_name>s názvem profilu použitým v předchozí části. 
+V následujícím příkladu nahraďte **<app1name_eastus>** a **<App2name_westeurope>** s názvy aplikací vytvořenými pro jednotlivé oblasti v předchozí části. Potom nahraďte **<profile_name>** názvem profilu použitým v předchozí části. 
 
 **Východní USA koncový bod**
 
@@ -174,11 +174,11 @@ az network traffic-manager endpoint create \
 
 V této části zkontrolujete název domény vašeho profilu Traffic Manager. Také nakonfigurujete primární koncový bod jako nedostupný. Nakonec se zobrazí, že je webová aplikace stále k dispozici. Je to proto, že Traffic Manager odesílá provoz do koncového bodu převzetí služeb při selhání.
 
-V následujícím příkladu nahraďte **<app1name_eastus>** a **<App2name_westeurope**>s názvy aplikací vytvořenými pro jednotlivé oblasti v předchozí části, nahraďte **<appspname_eastus>** a **<** appspname_westeurope>s názvem použitým k vytvoření App Service plánů v předchozí části a nahraďte **<** profile_name>s názvem profilu použitým v předchozí části.
+V následujícím příkladu nahraďte **<app1name_eastus>** a **<App2name_westeurope>** s názvy aplikací vytvořenými pro jednotlivé oblasti v předchozí části. Potom nahraďte **<profile_name>** názvem profilu použitým v předchozí části.
 
 ### <a name="determine-the-dns-name"></a>Určení názvu DNS
 
-Pomocí [AZ Network Traffic-Manager Profile show](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show)určete název DNS profilu Traffic Manager.
+Pomocí [AZ Network Traffic-Manager Profile show](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show)určete název DNS profilu Traffic Manager.
 
 ```azurecli-interactive
 
@@ -196,7 +196,7 @@ Zkopírujte hodnotu **RelativeDnsName** . Název DNS vašeho profilu Traffic Man
 
     > [!NOTE]
     > V tomto scénáři rychlého startu všechny požadavky směrují do primárního koncového bodu. Je nastavená na **priority 1**.
-2. Pokud chcete zobrazit Traffic Manager převzetí služeb při selhání v akci, zakažte primární lokalitu pomocí [AZ Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
+2. Pokud chcete zobrazit Traffic Manager převzetí služeb při selhání v akci, zakažte primární lokalitu pomocí [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update).
 
    ```azurecli-interactive
 
@@ -214,7 +214,7 @@ Zkopírujte hodnotu **RelativeDnsName** . Název DNS vašeho profilu Traffic Man
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky pomocí [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Až budete hotovi, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky pomocí [AZ Group Delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive
 

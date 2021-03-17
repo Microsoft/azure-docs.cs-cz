@@ -4,39 +4,63 @@ description: Použít zařízení Azure IoT Edge jako transparentní bránu, kte
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/12/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f7f05fb84ff6cbe320e8f479912bdcdefdc41021
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167398"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201657"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
 Tento článek poskytuje podrobné pokyny ke konfiguraci IoT Edge zařízení pro fungování jako transparentní brány pro jiná zařízení, která budou komunikovat s IoT Hub. V tomto článku se používá pojem *IoT Edge brána* , která odkazuje na IoT Edge zařízení nakonfigurované jako transparentní bránu. Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](./iot-edge-as-gateway.md).
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 >[!NOTE]
->Aktuálně
+>V IoT Edge verzích 1,1 a starších se IoT Edge zařízení nemůže nacházet IoT Edge bráně.
 >
-> * Zařízení s podporou Edge se nemůžou připojit k IoT Edge branám.
-> * Podřízená zařízení nemůžou používat nahrávání souborů.
+>Podřízená zařízení nemůžou používat nahrávání souborů.
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Podřízená zařízení nemůžou používat nahrávání souborů.
+
+::: moniker-end
 
 Existují tři obecné kroky k nastavení úspěšného transparentního připojení brány. Tento článek popisuje první krok:
 
 1. **Nakonfigurujte zařízení brány jako server tak, aby se k nim mohli připojit podřízená zařízení bezpečně. Nastavte bránu tak, aby přijímala zprávy ze zařízení pro příjem dat, a směrovat je do správného umístění.**
-2. Vytvořte identitu zařízení pro zařízení pro příjem dat, aby se mohla ověřit pomocí IoT Hub. Nakonfigurujte zařízení pro příjem zpráv, aby odesílala zprávy přes zařízení brány. Další informace najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. Připojte zařízení pro příjem dat k zařízení brány a začněte odesílat zprávy. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
+2. Vytvořte identitu zařízení pro zařízení pro příjem dat, aby se mohla ověřit pomocí IoT Hub. Nakonfigurujte zařízení pro příjem zpráv, aby odesílala zprávy přes zařízení brány. Postup najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. Připojte zařízení pro příjem dat k zařízení brány a začněte odesílat zprávy. Postup najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
 
 Aby zařízení fungovalo jako brána, musí se bezpečně připojit ke svým podřízeným zařízením. Azure IoT Edge umožňuje použít infrastrukturu veřejných klíčů (PKI) k nastavení zabezpečených připojení mezi zařízeními. V tomto případě umožníme, aby se pro zařízení s IoT Edge připojila k zařízení, které funguje jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení brány. Tato kontrolu identity zabraňuje zařízením v připojení k potenciálně škodlivým branám.
 
-Pro zařízení pro příjem dat může být libovolná aplikace nebo platforma, která má vytvořenou identitu pomocí cloudové služby [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) . Tyto aplikace často používají [sadu SDK pro zařízení Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Navazující zařízení by mohlo být i aplikace běžící na samotném zařízení IoT Edge brány. IoT Edge zařízení ale nemůže být podřízená bráně IoT Edge.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Pro zařízení pro příjem dat může být libovolná aplikace nebo platforma, která má vytvořenou identitu pomocí cloudové služby [Azure IoT Hub](../iot-hub/index.yml) . Tyto aplikace často používají [sadu SDK pro zařízení Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Navazující zařízení by mohlo být i aplikace běžící na samotném zařízení IoT Edge brány. IoT Edge zařízení ale nemůže být podřízená bráně IoT Edge.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Pro zařízení pro příjem dat může být libovolná aplikace nebo platforma, která má vytvořenou identitu pomocí cloudové služby [Azure IoT Hub](../iot-hub/index.yml) . Tyto aplikace často používají [sadu SDK pro zařízení Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Navazující zařízení by mohlo být i aplikace běžící na samotném zařízení IoT Edge brány.
+:::moniker-end
+<!-- end 1.2 -->
 
 Můžete vytvořit jakoukoli infrastrukturu certifikátů, která umožňuje důvěryhodnost potřebnou pro topologii zařízení a brány. V tomto článku se předpokládáme, že použijete stejné nastavení certifikátu, které byste použili k povolení [zabezpečení CA x. 509](../iot-hub/iot-hub-x509ca-overview.md) v IoT Hub, což zahrnuje certifikát CA x. 509, který je přidružený ke konkrétnímu centru IoT (KOŘENová CA služby IoT Hub), sérii certifikátů podepsaných touto certifikační autoritou a certifikační autoritou pro IoT Edge zařízení.
 
@@ -45,9 +69,11 @@ Můžete vytvořit jakoukoli infrastrukturu certifikátů, která umožňuje dů
 
 Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. K vygenerování certifikátů můžete použít libovolný počítač a pak je zkopírovat do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Zařízení se systémem Linux nebo Windows s nainstalovaným IoT Edge.
+
+Pokud zařízení nemáte připravené, můžete ho vytvořit na virtuálním počítači Azure. Postupujte podle kroků v části [nasazení prvního IoT Edge modulu do virtuálního počítače se systémem Linux](quickstart-linux.md) a vytvořte IoT Hub, vytvořte virtuální počítač a nakonfigurujte modul runtime IoT Edge.
 
 ## <a name="set-up-the-device-ca-certificate"></a>Nastavení certifikátu certifikační autority zařízení
 
@@ -55,7 +81,7 @@ Všechny IoT Edge brány potřebují nainstalovaný certifikát pro certifikačn
 
 ![Nastavení certifikátu brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Certifikát kořenové certifikační autority a certifikát certifikační autority zařízení (s jeho privátním klíčem) se musí nacházet na zařízení IoT Edge brány a nakonfigurované v souboru IoT Edge config. yaml. Pamatujte, že v tomto případě *kořenový certifikát certifikační autority* znamená nejvyšší certifikační autoritu pro tento scénář IoT Edge. Certifikát certifikační autority zařízení brány a certifikáty zařízení pro příjem dat musí být zahrnuté do stejného kořenového certifikátu certifikační autority.
+Certifikát kořenové certifikační autority a certifikát certifikační autority zařízení (s jeho privátním klíčem) se musí nacházet na zařízení IoT Edge brány a nakonfigurované v konfiguračním souboru IoT Edge. Pamatujte, že v tomto případě *kořenový certifikát certifikační autority* znamená nejvyšší certifikační autoritu pro tento scénář IoT Edge. Certifikát certifikační autority zařízení brány a certifikáty zařízení pro příjem dat musí být zahrnuté do stejného kořenového certifikátu certifikační autority.
 
 >[!TIP]
 >Postup instalace certifikátu kořenové certifikační autority a certifikátu certifikační autority zařízení do zařízení IoT Edge je podrobněji vysvětlen v tématu [Správa certifikátů v IoT Edgem zařízení](how-to-manage-device-certificates.md).
@@ -68,30 +94,64 @@ Připravte si následující soubory:
 
 V produkčních scénářích byste tyto soubory měli vytvořit s vlastní certifikační autoritou. Pro vývojové a testovací scénáře můžete použít ukázkové certifikáty.
 
-1. Pokud používáte ukázkové certifikáty, použijte k vytvoření souborů následující sadu kroků:
-   1. [Vytvořte certifikát kořenové certifikační autority](how-to-create-test-certificates.md#create-root-ca-certificate). Na konci těchto pokynů budete mít soubor certifikátu kořenové certifikační autority:
-      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+Pokud nemáte vlastní certifikační autoritu a chcete použít ukázkové certifikáty, použijte pokyny v tématu [Vytvoření ukázkových certifikátů k otestování IoT Edge funkcí zařízení](how-to-create-test-certificates.md) k vytvoření souborů. Na této stránce je třeba provést následující kroky:
 
-   2. [Vytvořte certifikát certifikační autority IoT Edge zařízení](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Na konci těchto pokynů budete mít dva soubory, certifikát certifikační autority zařízení a jeho privátní klíč:
+   1. Začněte tím, že nastavíte skripty pro generování certifikátů na vašem zařízení.
+   2. Vytvořte certifikát kořenové certifikační autority. Na konci těchto pokynů budete mít soubor certifikátu kořenové certifikační autority:
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+   3. Vytvoření certifikátů certifikační autority IoT Edge zařízení. Na konci těchto pokynů budete mít certifikát certifikační autority zařízení a jeho privátní klíč:
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` ani
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. Pokud jste tyto soubory vytvořili na jiném počítači, zkopírujte je do zařízení IoT Edge.
+Pokud jste certifikáty vytvořili na jiném počítači, zkopírujte je do zařízení IoT Edge a pak pokračujte dalšími kroky.
 
-3. Na zařízení IoT Edge otevřete konfigurační soubor démona zabezpečení.
-   * Systému `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
-4. V souboru vyhledejte část **certifikáty** a zadejte identifikátory URI souborů pro tyto tři soubory jako hodnoty pro následující vlastnosti:
+1. Na zařízení IoT Edge otevřete konfigurační soubor démona zabezpečení.
+
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
+
+1. V souboru vyhledejte část **nastavení certifikátu** . Odkomentujte čtyři řádky začínající **certifikáty:** a zadejte identifikátory URI souborů pro tyto tři soubory jako hodnoty pro následující vlastnosti:
    * **device_ca_cert**: certifikát certifikační autority zařízení
    * **device_ca_pk**: privátní klíč certifikační autority zařízení
    * **trusted_ca_certs**: certifikát kořenové certifikační autority
 
-5. Uložte soubor a zavřete ho.
+   Ujistěte se, že v **certifikátech** nejsou žádné předchozí prázdné znaky a že ostatní řádky jsou odsazené o dva mezery.
 
-6. Restartujte IoT Edge.
-   * Systému `Restart-Service iotedge`
-   * Linux `sudo systemctl restart iotedge`
+1. Uložte soubor a zavřete ho.
+
+1. Restartujte IoT Edge.
+   * Windows: `Restart-Service iotedge`
+   * Linux: `sudo systemctl restart iotedge`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!--1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Na zařízení IoT Edge otevřete konfigurační soubor: `/etc/aziot/config.toml`
+
+   >[!TIP]
+   >Pokud konfigurační soubor ještě v zařízení neexistuje, `/etc/aziot/config.toml.edge.template` vytvořte ho pomocí jako šablonu.
+
+1. Najděte `trust_bundle_cert` parametr. Odkomentujte tento řádek a zadejte identifikátor URI souboru certifikátu kořenové certifikační autority na vašem zařízení.
+
+1. Vyhledejte `[edge_ca]` část souboru. Odkomentujte tři řádky v této části a zadejte identifikátory URI souborů k certifikátu a klíčovým souborům jako hodnoty pro následující vlastnosti:
+   * **certifikát: certifikát** certifikační autority zařízení
+   * **PK**: privátní klíč certifikační autority zařízení
+
+1. Uložte soubor a zavřete ho.
+
+1. Provedené změny použijte.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="deploy-edgehub-and-route-messages"></a>Nasazení edgeHub a směrování zpráv
 
@@ -146,14 +206,6 @@ Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných pro
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="enable-extended-offline-operation"></a>Povolit rozšířenou offline operaci
-
-Od [verze 1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) modulu runtime IoT Edge se zařízení brány a zařízení, která se k němu připojují, dají nakonfigurovat pro rozšířené operace offline.
-
-Díky této funkci se můžou místní moduly nebo zařízení se systémem pro příjem dat podle potřeby znovu ověřit u IoT Edge zařízení a vzájemně komunikovat pomocí zpráv a metod, i když se odpojíte od služby IoT Hub. Další informace najdete v tématu [vysvětlení rozšířených funkcí offline pro IoT Edge zařízení, moduly a podřízená zařízení](offline-capabilities.md).
-
-Chcete-li povolit rozšířené možnosti offline, navažte vztah mezi nadřazenými a podřízenými zařízeními mezi zařízením IoT Edge brány a zařízeními pro příjem dat, která se k němu připojí. Tyto kroky jsou podrobněji vysvětleny v dalším článku této série a [ověřují zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>Další kroky
 

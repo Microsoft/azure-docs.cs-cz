@@ -1,5 +1,5 @@
 ---
-title: Jak generovat miniatury pomocí Azure Media Services kodéru Standard s REST
+title: Generovat miniatury pomocí Media Encoder Standard REST
 description: Tento článek ukazuje, jak použít REST ke kódování assetu a k vygenerování miniatur ve stejnou dobu pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 635c1bb500f563da3c0eef8698cad8ab9fa5c810
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068137"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955830"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Postup generování miniatur pomocí kodéru Standard s REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Pomocí Media Encoder Standard můžete vygenerovat jednu nebo více miniatur ze vstupního videa ve formátech [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)nebo [bmp](https://en.wikipedia.org/wiki/BMP_file_format) .
 
@@ -208,7 +210,7 @@ I když všechny výše uvedené příklady obsahují informace o tom, jak můž
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
-Informace o schématu najdete v [tomto](/azure/media-services/previous/media-services-mes-schema) článku.
+Informace o schématu najdete v [tomto](../previous/media-services-mes-schema.md) článku.
 
 ```json
 {

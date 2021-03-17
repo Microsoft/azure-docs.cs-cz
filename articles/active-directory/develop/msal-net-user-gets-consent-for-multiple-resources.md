@@ -13,15 +13,15 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6333d935e1a902ba173017f8149c098f44398955
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d22b4109cdcdc965b1b2e03aba592022c58f773b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165868"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583786"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Uživatel získá souhlas s několika prostředky pomocí MSAL.NET.
-Koncový bod platformy Microsoft Identity vám neumožňuje získat token pro několik prostředků najednou. Pokud používáte Microsoft Authentication Library for .NET (MSAL.NET), parametr scopes v metodě získat token by měl obsahovat jenom obory pro jeden prostředek. Nicméně můžete předem udělit souhlas několika prostředkům a zadat další rozsahy pomocí `.WithExtraScopeToConsent` metody Tvůrce.
+Platforma Microsoft Identity vám neumožňuje získat token pro několik prostředků najednou. Pokud používáte Microsoft Authentication Library for .NET (MSAL.NET), parametr scopes v metodě získat token by měl obsahovat jenom obory pro jeden prostředek. Nicméně můžete předem udělit souhlas několika prostředkům a zadat další rozsahy pomocí `.WithExtraScopeToConsent` metody Tvůrce.
 
 > [!NOTE]
 > Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure AD B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
@@ -52,7 +52,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-Tím získáte přístupový token pro první webové rozhraní API. Když pak budete potřebovat přístup k druhému webovému rozhraní API, můžete z mezipaměti tokenů tiše získat token:
+Tím získáte přístupový token pro první webové rozhraní API. Přístup k druhému webovému rozhraní API pak můžete v tichém získání tokenu z mezipaměti tokenů:
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

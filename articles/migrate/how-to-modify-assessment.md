@@ -1,17 +1,17 @@
 ---
 title: Přizpůsobení hodnocení pro Azure Migrate Server Assessment | Microsoft Docs
 description: Popisuje, jak přizpůsobit hodnocení vytvořená pomocí posouzení serveru Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/15/2019
-ms.author: raynew
-ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de90cffe8760a55aafebf079678d139c6f6f99e1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109718"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751100"
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
@@ -27,15 +27,15 @@ Posouzení, která vytvoříte pomocí posouzení serveru, jsou snímkem dat k u
 
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
-**Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. (concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. (concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete posoudit vhodnost místních [virtuálních počítačů VMware](how-to-set-up-appliance-vmware.md) k migraci do služby Azure VMware Solution (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Posouzení virtuálního počítače Azure v posouzení serveru poskytuje dvě možnosti pro kritéria změny velikosti:
 
-**Kritéria změny velikosti** | **Podrobnosti** | **Data**
+**Kritéria stanovení velikosti** | **Podrobnosti** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | **Posouzení virtuálního počítače Azure**: doporučení velikosti virtuálního počítače vychází z dat využití procesoru a paměti.<br/><br/> Doporučení pro typ disku (standardní disková jednotka/SSD nebo Premium – spravované disky) vychází z IOPS a propustnosti místních disků.<br/><br/> **Posouzení řešení Azure VMware (AVS)**: doporučení pro služby AVS jsou založená na datech využití procesoru a paměti.
-**V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení. | **Posouzení virtuálního počítače Azure**: doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na tom, co jste vybrali v nastavení typ úložiště pro posouzení.<br/><br/> **Posouzení řešení Azure VMware (AVS)**: doporučení pro služby AVS jsou založená na velikosti místního virtuálního počítače.
+**Na základě výkonu** | Posouzení, která poskytují doporučení na základě shromážděných údajů o výkonu | **Posouzení virtuálních počítačů Azure:** Doporučení velikosti virtuálních počítačů vychází z dat o využití procesoru a paměti.<br/><br/> Doporučení typu disků (disky HDD nebo SSD úrovně Standard nebo spravované disky úrovně Premium) vychází z IOPS a propustnosti místních disků.<br/><br/> **Posouzení služby Azure VMware Solution (AVS):** Doporučení uzlů AVS vychází z dat o využití procesoru a paměti.
+**Jako v místním prostředí** | Posouzení, která k poskytování doporučení nepoužívají údaje o výkonu. | **Posouzení virtuálních počítačů Azure:** Doporučení velikosti virtuálních počítačů vychází z velikosti místních virtuálních počítačů.<br/><br> Doporučení typu disků vychází z výběru nastavení typu úložiště pro posouzení.<br/><br/> **Posouzení služby Azure VMware Solution (AVS):** Doporučení uzlů AVS vychází z velikosti místních virtuálních počítačů.
 
 
 ## <a name="how-is-an-assessment-done"></a>Jak se provádí posouzení?
@@ -49,7 +49,7 @@ Posouzení provedené v Azure Migrate posouzení serveru má tři fáze. Posouze
 **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/> Posouzení serveru aktuálně podporuje tyto cílové oblasti: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, Východní USA, východní USA 2, Německo – střed, Německo – západ, Japonsko – východ, Japonsko – západ, Jižní Asie, Střed USA – sever, Severní Evropa, Střed USA – jih, Jižní Indie , US Gov – Texas, US Gov – Virginie, Středozápadní USA, Západní Evropa, Západní Indie, Západní USA a západní USA 2.
 **Typ úložiště** | Tato vlastnost slouží k určení typu disků, na které chcete přejít v Azure.<br/><br/> Pro určení velikosti v místním prostředí můžete zadat cílový typ úložiště buď jako disky spravované na úrovni Premium, SSD úrovně Standard spravované disky nebo HDD úrovně Standardy spravované disky. Pro určení velikosti na základě výkonu můžete určit typ cílového disku buď jako automatické disky spravované na úrovni Premium, HDD úrovně Standard disky spravované systémem nebo pro SSD úrovně Standard spravované disky.<br/><br/> Když zadáte typ úložiště jako automatický, doporučení na disku se provede na základě údajů o výkonu disků (IOPS a propustnost). Pokud zadáte typ úložiště jako Premium/Standard, vyhodnocování bude doporučit SKU disku v rámci vybraného typu úložiště. Pokud chcete dosáhnout smlouvy SLA pro virtuální počítače s jednou instancí 99,9%, můžete zadat typ úložiště jako disky spravované na úrovni Premium. Tím se zajistí, že se všechny disky v posouzení doporučují jako disky spravované na úrovni Premium. Azure
 **Rezervované instance (RI)** | Tato vlastnost vám pomůže určit, jestli máte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) v Azure, odhad nákladů v posouzení se pak provede s využitím slev vyhrazené na rezervované instance. Rezervované instance se momentálně podporují jenom pro nabídky s průběžnými platbami v Azure Migrate.
-**Kritérium určení velikosti** | Kritérium, které se má použít ke správné velikosti virtuálních počítačů pro Azure. Virtuální počítače můžete buď měnit podle *výkonu* , nebo měnit jejich velikost *jako v*místním prostředí, aniž byste museli zvážit historii výkonu.
+**Kritérium určení velikosti** | Kritérium, které se má použít ke správné velikosti virtuálních počítačů pro Azure. Virtuální počítače můžete buď měnit podle *výkonu* , nebo měnit jejich velikost *jako v* místním prostředí, aniž byste museli zvážit historii výkonu.
 **Historie výkonu** | Doba, kterou je třeba zvážit při vyhodnocování dat výkonu počítačů. Tato vlastnost je k dispozici pouze v případě, že kritérium velikosti je *založeno na výkonu*.
 **Percentilové využití** | Hodnota percentilu sady vzorků výkonu, která se má zohlednit při určování správné velikosti. Tato vlastnost je k dispozici pouze v případě, že je nastavena velikost *na základě výkonu*.
 **Řada virtuálních počítačů** |     Můžete zadat řadu virtuálních počítačů, pro kterou chcete zvážit nastavení správné velikosti. Pokud máte například produkční prostředí, které neplánujete migrovat na virtuální počítače řady A-Series v Azure, můžete vyloučit řady-Series ze seznamu nebo řady a správná velikost se provádí pouze ve vybraných řadách.
@@ -87,8 +87,8 @@ Co je je součástí posouzení služby AVS při vyhodnocování serveru:
 Chcete-li upravit vlastnosti posouzení po vytvoření posouzení, postupujte následovně:
 
 1. V projektu Azure Migrate klikněte na možnost **servery**.
-2. V **Azure Migrate: vyhodnocování serveru**klikněte na čítač posouzení.
-3. V části **posouzení**klikněte na příslušné vyhodnocení > **Upravit vlastnosti**.
+2. V **Azure Migrate: vyhodnocování serveru** klikněte na čítač posouzení.
+3. V části **posouzení** klikněte na příslušné vyhodnocení > **Upravit vlastnosti**.
 5. Upravte vlastnosti posouzení podle výše uvedených tabulek.
 6. Kliknutím na **Uložit** aktualizujte posouzení.
 

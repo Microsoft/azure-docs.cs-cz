@@ -2,14 +2,14 @@
 title: Spouštění úloh v rámci uživatelských účtů
 description: Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142678"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88719355"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
@@ -49,18 +49,13 @@ Další informace o přístupu k souborům a adresářům z úlohy najdete v té
 
 ## <a name="auto-user-accounts"></a>Účty automatických uživatelů
 
-Ve výchozím nastavení se úlohy spouštějí v dávce pod účtem automatických uživatelů, jako standardní uživatel bez zvýšeného přístupu a s oborem úkolu. Pokud je specifikace automatického uživatele nakonfigurovaná pro obor úlohy, vytvoří služba Batch účet automatického uživatele jenom pro tuto úlohu.
+Ve výchozím nastavení se úlohy spouštějí v dávce pod účtem automatických uživatelů, jako standardní uživatel bez zvýšeného přístupu a s rozsahem fondu. Rozsah fondu znamená, že se úloha spouští pod účtem automatického uživatele, který je k dispozici pro libovolný úkol ve fondu. Další informace o rozsahu fondu najdete v tématu [spuštění úlohy jako automatický uživatel s rozsahem fondu](#run-a-task-as-an-auto-user-with-pool-scope).
 
-Alternativa k oboru úlohy je rozsah fondu. Pokud je specifikace automatického uživatele pro úlohu konfigurovaná pro rozsah fondu, úloha se spustí pod účtem automatického uživatele, který je k dispozici pro libovolný úkol ve fondu. Další informace o rozsahu fondu najdete v tématu [spuštění úlohy jako automatický uživatel s rozsahem fondu](#run-a-task-as-an-auto-user-with-pool-scope).
-
-Výchozí obor se liší v uzlech Windows a Linux:
-
-- Ve výchozím nastavení jsou v uzlech systému Windows spouštěny úlohy v oboru úloh.
-- Uzly Linux se vždycky spouštějí v oboru fondu.
+Alternativou rozsahu fondu je rozsah úlohy. Pokud je specifikace automatického uživatele nakonfigurovaná pro obor úlohy, vytvoří služba Batch účet automatického uživatele jenom pro tuto úlohu.
 
 Existují čtyři možné konfigurace pro specifikaci automatického uživatele, z nichž každý odpovídá jedinečnému účtu automatického uživatele:
 
-- Přístup bez oprávnění správce s oborem úlohy (výchozí specifikace automatického uživatele)
+- Přístup bez oprávnění správce s oborem úkolu
 - Přístup správce (se zvýšenými oprávněními) s oborem úkolu
 - Přístup bez oprávnění správce s oborem fondu
 - Přístup správce k oboru fondu
@@ -75,7 +70,7 @@ Pokud potřebujete spustit úlohu s vyšším přístupem, můžete nakonfigurov
 > [!NOTE]
 > V případě potřeby použijte vyšší úroveň přístupu. Osvědčené postupy doporučuje udělit minimální oprávnění nezbytnou k dosažení požadovaného výsledku. Například pokud spouštěcí úkol nainstaluje software pro aktuálního uživatele místo pro všechny uživatele, můžete se vyhnout udělení vyššího přístupu k úkolům. Pro všechny úlohy, které musí běžet pod stejným účtem, včetně spouštěcího úkolu, můžete nakonfigurovat specifikaci automatického uživatele pro rozsah fondu a přístup bez oprávnění správce.
 
-Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah na `Task` . Výchozím nastavením je obor úkolu, který je zde uveden v tomto příkladu.
+Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah na `Task` .
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>Batch Python
@@ -113,7 +108,7 @@ Když se zřídí uzel, vytvoří se na každém uzlu ve fondu dva účty automa
 
 Když pro automatického uživatele určíte rozsah fondu, všechny úlohy, které se spustí s přístupem správce, se spustí v rámci stejného účtu automatických uživatelských účtů pro celý fond. Podobně úlohy, které se spouštějí bez oprávnění správce, se spouštějí také v rámci jednoho účtu automatického uživatele v rámci fondu.
 
-> [!NOTE] 
+> [!NOTE]
 > Účty automatických uživatelských účtů v rámci fondu jsou samostatné účty. Úlohy spuštěné pod účtem správce fondu nemůžou sdílet data s úlohami, které běží na standardním účtu, a naopak.
 
 Výhodou spuštění pod stejným účtem automatického uživatele je, že úkoly můžou sdílet data s ostatními úlohami běžícími na stejném uzlu.
@@ -291,7 +286,7 @@ Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastn
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`Neurčeno | Není nutná žádná aktualizace.                                                                                               |
+| `CloudTask.RunElevated` Neurčeno | Není nutná žádná aktualizace.                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -299,7 +294,7 @@ Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastn
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`Neurčeno | Není nutná žádná aktualizace.                                                                                                                     |
+| `CloudTask.withRunElevated` Neurčeno | Není nutná žádná aktualizace.                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -307,7 +302,7 @@ Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastn
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
 | `run_elevated=False`                      | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
-| `run_elevated`Neurčeno | Není nutná žádná aktualizace.                                                                                                                                  |
+| `run_elevated` Neurčeno | Není nutná žádná aktualizace.                                                                                                                                  |
 
 ## <a name="next-steps"></a>Další kroky
 

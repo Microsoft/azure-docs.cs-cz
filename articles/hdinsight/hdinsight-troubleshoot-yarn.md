@@ -1,18 +1,15 @@
 ---
 title: Řešení potíží s VLÁKNy v Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hadoopmi NITĚmi a Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272198"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931404"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
 
@@ -28,9 +25,9 @@ V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) z
 
 | Fronta | Kapacita | Maximální kapacita |
 | --- | --- | --- |
-| default | 25 % | 50 % |
-| thrftsvr | 25 % | 50 % |
-| Spark | 50 % | 50 % |
+| default | 25% | 50% |
+| thrftsvr | 25% | 50% |
+| Spark | 50% | 50% |
 
 1. Vyberte ikonu **zobrazení Ambari** a pak vyberte vzor mřížky. V dalším kroku vyberte možnost **správce front příz**.
 
@@ -58,7 +55,7 @@ V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) z
 
 Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače PŘÍZe.
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Apache Hadoop CapacityScheduler PŘÍZe](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
@@ -129,17 +126,11 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
 
     Tento příkaz vytvoří soubor protokolu s názvem containerlogs.txt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další čtení
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další materiály ke čtení
 
-- [Připojení k HDInsight (Apache Hadoop) pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Připojení k HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop koncepce a aplikace PŘÍZe](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-- Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

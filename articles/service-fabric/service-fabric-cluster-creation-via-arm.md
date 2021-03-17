@@ -3,12 +3,12 @@ title: Vytvoření clusteru Azure Service Fabric
 description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Resource Manager.  Cluster můžete vytvořit pomocí výchozí šablony nebo pomocí vlastní šablony clusteru.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258757"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791807"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Pokud vytváříte provozní cluster pro spouštění produkčních úloh, dopor
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 V tomto článku nasadíte cluster pomocí modulu Service Fabric RM PowerShell nebo Azure CLI:
 
 * [Azure PowerShell 4,1 a vyšší][azure-powershell]
@@ -34,7 +34,7 @@ V tomto článku nasadíte cluster pomocí modulu Service Fabric RM PowerShell n
 
 Referenční dokumentaci k modulům Service Fabric najdete tady:
 * [Az.ServiceFabric](/powershell/module/az.servicefabric)
-* [AZ SF CLI Module](/cli/azure/sf?view=azure-cli-latest)
+* [AZ SF CLI Module](/cli/azure/sf)
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -285,6 +285,6 @@ Informace o syntaxi a vlastnostech JSON pro použití šablony naleznete v téma
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

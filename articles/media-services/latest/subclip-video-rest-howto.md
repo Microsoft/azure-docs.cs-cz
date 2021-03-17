@@ -1,24 +1,24 @@
 ---
-title: Rozříznout video při kódování pomocí Azure Media Services REST
+title: Rozříznout video při kódování pomocí Media Services REST
 description: Toto téma popisuje, jak rozříznout video při kódování pomocí Azure Media Services pomocí REST.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2019
-ms.author: juliako
-ms.openlocfilehash: b112b3844ddb3758b79a086b624a227127e65ce2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: 6c287e168289082b2bd717a2706dd011c7115691
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091874"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955662"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Rozstřihnout video při kódování pomocí Media Services-REST
 
@@ -26,7 +26,7 @@ Video můžete při kódování pomocí [úlohy](/rest/api/media/jobs)oříznout
 
 V příkladu v tomto tématu se vytvoří úloha, která ořízne video při odesílání úlohy kódování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
@@ -49,7 +49,7 @@ K dokončení kroků popsaných v tomto tématu je třeba provést následujíc�
 1. Aktualizujte hodnotu proměnné prostředí "transformovat" s názvem transformace. 
 1. Vyberte kartu **tělo** a aktualizujte "myOutputAsset" s názvem výstupního prostředku.
 
-    ```
+    ```json
     {
       "properties": {
         "description": "A Job with transform cb9599fb-03b3-40eb-a2ff-7ea909f53735 and single clip.",
@@ -58,8 +58,8 @@ K dokončení kroků popsaných v tomto tématu je třeba provést následujíc�
           "@odata.type": "#Microsoft.Media.JobInputHttp",
           "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
           "files": [
-                "Ignite-short.mp4"
-            ],
+            "Ignite-short.mp4"
+          ],
           "start": {
             "@odata.type": "#Microsoft.Media.AbsoluteClipTime",
             "time": "PT10S"

@@ -1,6 +1,6 @@
 ---
 title: Konfigurace aplikací SaaS pro spolupráci B2B – Azure AD
-description: Kód a ukázky PowerShellu pro spolupráci B2B služby Azure Active Directory
+description: Naučte se konfigurovat aplikace SaaS pro spolupráci Azure Active Directory B2B a zobrazit další dostupné prostředky.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90705506"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -105,5 +105,5 @@ Přečtěte si následující články o spolupráci Azure AD B2B:
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 - [Dynamické skupiny a spolupráce B2B](use-dynamic-groups.md)
 - [Mapování deklarací identity uživatelů spolupráce B2B](claims-mapping.md)
-- [Externí sdílení Office 365](o365-external-user.md)
+- [Microsoft 365 externí sdílení](o365-external-user.md)
 

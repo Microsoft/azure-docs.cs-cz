@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509502"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013917"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -32,7 +32,7 @@ Pokud chcete zaregistrovat server se službou synchronizace úložiště, musít
     
     ![Správce serveru uživatelské rozhraní s zvýrazněnou konfigurací rozšířeného zabezpečení IE](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Ujistěte se, že je na vašem serveru nainstalovaný modul Azure PowerShell. Pokud je váš server členem clusteru s podporou převzetí služeb při selhání, bude každý uzel v clusteru vyžadovat modul AZ Module. Další podrobnosti o tom, jak nainstalovat modul AZ Module, najdete v tématu [install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Ujistěte se, že je na vašem serveru nainstalovaný modul Azure PowerShell. Pokud je váš server členem clusteru s podporou převzetí služeb při selhání, bude každý uzel v clusteru vyžadovat modul AZ Module. Další podrobnosti o tom, jak nainstalovat modul AZ Module, najdete v tématu [install and configure Azure PowerShell](/powershell/azure/install-Az-ps).
 
     > [!Note]  
     > K registraci nebo zrušení registrace serveru doporučujeme použít nejnovější verzi modulu AZ PowerShell. Pokud je na tomto serveru dřív nainstalovaná sada AZ Package (a verze PowerShellu na tomto serveru je 5. * nebo vyšší), můžete `Update-Module` k aktualizaci tohoto balíčku použít rutinu. 
@@ -58,7 +58,7 @@ Pokud chcete zaregistrovat server se službou synchronizace úložiště, musít
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>Registrace serveru se službou synchronizace úložiště
-Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině synchronizace*Azure File Sync, musí být zaregistrovaný ve *službě synchronizace úložiště*. Server lze registrovat současně pouze s jednou službou synchronizace úložiště.
+Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině synchronizace* Azure File Sync, musí být zaregistrovaný ve *službě synchronizace úložiště*. Server lze registrovat současně pouze s jednou službou synchronizace úložiště.
 
 #### <a name="install-the-azure-file-sync-agent"></a>Instalace agenta Synchronizace souborů Azure
 1. [Stáhněte agenta Azure File Sync](https://go.microsoft.com/fwlink/?linkid=858257).
@@ -180,10 +180,10 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ```
 
 ### <a name="use-windows-server-storage-qos"></a>Použití technologie QoS pro úložiště Windows serveru 
-Pokud je Azure File Sync hostovaný na virtuálním počítači, který běží na hostiteli virtualizace Windows serveru, můžete použít QoS úložiště (kvalitu služby úložiště) a regulovat spotřebu v/v úložiště. Zásadu QoS úložiště je možné nastavit buď jako maximální (nebo jako limit, jako je StorageSyncNetwork limit), nebo jako minimum (nebo rezervace). Nastavení minimální hodnoty, než je maximum, umožňuje Azure File Sync nárůstu využití dostupné šířky pásma úložiště, pokud jiné úlohy je nepoužívají. Další informace najdete v tématu [kvalita služby úložiště](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
+Pokud je Azure File Sync hostovaný na virtuálním počítači, který běží na hostiteli virtualizace Windows serveru, můžete použít QoS úložiště (kvalitu služby úložiště) a regulovat spotřebu v/v úložiště. Zásadu QoS úložiště je možné nastavit buď jako maximální (nebo jako limit, jako je StorageSyncNetwork limit), nebo jako minimum (nebo rezervace). Nastavení minimální hodnoty, než je maximum, umožňuje Azure File Sync nárůstu využití dostupné šířky pásma úložiště, pokud jiné úlohy je nepoužívají. Další informace najdete v tématu [kvalita služby úložiště](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Viz také
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 - [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
-- [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+- [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

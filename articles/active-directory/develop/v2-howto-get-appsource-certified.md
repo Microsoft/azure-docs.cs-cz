@@ -1,6 +1,6 @@
 ---
 title: Získat AppSource certifikaci pro Azure Active Directory | Microsoft Docs
-description: Podrobnosti o tom, jak získat AppSource certifikaci aplikace pro Azure Active Directory.
+description: Přečtěte si podrobnosti o tom, jak získat AppSource certifikaci aplikace pro Azure Active Directory.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 08acaf4f0171e586ff2cc3f52134395fb5925df7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118803"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647502"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Získání AppSource certifikace pro Azure Active Directory
 
@@ -104,9 +104,9 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 
 ## <a name="get-support"></a>Získání podpory
 
-Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
+Pro integraci služby Azure AD používáme pro poskytování podpory [Microsoft Q&A](/answers/topics/azure-active-directory.html) společně s komunitou.
 
-Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny pomocí [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme, abyste si položili své dotazy na [Microsoft Q&](/answers/topics/azure-active-directory.html) a Projděte si stávající problémy, abyste zjistili, jestli se někdo na vaši otázku předá dotaz. Ujistěte se, že jsou vaše dotazy nebo komentáře označené pomocí [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) .
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 

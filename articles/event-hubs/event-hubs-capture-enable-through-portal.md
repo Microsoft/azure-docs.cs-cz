@@ -1,14 +1,14 @@
 ---
 title: Event Hubs – zachycení událostí streamování pomocí Azure Portal
 description: Tento článek popisuje, jak povolit zachycování událostí streamování prostřednictvím Azure Event Hubs pomocí Azure Portal.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315735"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653947"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolení zachytávání událostí streamování prostřednictvím Azure Event Hubs
 
@@ -17,6 +17,9 @@ Služba Azure [Event Hubs Capture][capture-overview] vám umožní automaticky d
 Ke konfiguraci funkce Capture v době vytvoření centra událostí můžete použít [Azure Portal](https://portal.azure.com). Můžete buď zachytit data do kontejneru [úložiště objektů BLOB](https://azure.microsoft.com/services/storage/blobs/) v Azure, nebo na účet [Azure Data Lake Storage Gen 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) .
 
 Další informace najdete v tématu [Přehled funkce Event Hubs Capture][capture-overview].
+
+> [!IMPORTANT]
+> Cílový účet úložiště (Azure Storage nebo Azure Data Lake Storage) musí být ve stejném předplatném jako centrum událostí.
 
 ## <a name="capture-data-to-azure-storage"></a>Zaznamenání dat do Azure Storage
 
@@ -34,7 +37,7 @@ Výchozí časový interval je 5 minut. Minimální hodnota je 1, maximální ho
 1. Podle článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) vytvořte účet Azure Storage. Nastavte **hierarchický obor názvů** **na kartu** **Upřesnit** , abyste si ho vytvořili Azure Data Lake Storage účet Gen 2.
 2. Při vytváření centra událostí proveďte následující kroky: 
 
-    1. Pro **zachytávání**vyberte **zapnuto** . 
+    1. Pro **zachytávání** vyberte **zapnuto** . 
     2. Jako poskytovatele Capture vyberte **Azure Storage** . Možnost **Azure Data Lake Store** , kterou vidíte pro **poskytovatele služby Capture** , je určena pro 1. generace Azure Data Lake Storage. Chcete-li použít Gen 2 Azure Data Lake Storage, vyberte **Azure Storage**.
     2. Vyberte tlačítko **Vybrat kontejner** . 
 

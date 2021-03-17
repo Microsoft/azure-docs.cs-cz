@@ -1,6 +1,6 @@
 ---
-title: Konfigurace offline PlayReady streamování s Azure Media Services V3
-description: Tento článek ukazuje, jak nakonfigurovat účet Azure Media Services pro streamování PlayReady pro Windows 10 v režimu offline.
+title: Konfigurace offline PlayReady streamování
+description: V tomto článku se dozvíte, jak nakonfigurovat účet Azure Media Services V3 pro streamování PlayReady pro Windows 10 v režimu offline.
 services: media-services
 keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
 documentationcenter: ''
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/01/2019
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060591"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955222"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Online streamování PlayReady pro Windows 10 s Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services podporuje stahování a přehrávání offline s ochranou DRM. Tento článek popisuje offline podporu Azure Media Services pro klienty s Windows 10 a PlayReady. Informace o podpoře offline režimu pro zařízení s iOS/FairPlay a Androidem/Widevine najdete v následujících článcích:
 
@@ -35,7 +38,7 @@ Azure Media Services podporuje stahování a přehrávání offline s ochranou D
 
 Tato část poskytuje některé pozadí při přehrávání offline režimu, zejména proč:
 
-* V některých zemích a oblastech je dostupnost Internetu a/nebo šířka pásma stále omezená.Uživatelé si můžou nejdřív stáhnout, aby mohli sledovat obsah s dostatečně vysokým rozlišením, aby se mohlo zobrazit uspokojivý zážitek. V takovém případě častěji problém není síťová dostupnost, ale je omezená šířka pásma sítě. Poskytovatelé OTT/OVP žádají o podporu offline režimu.
+* V některých zemích a oblastech je dostupnost Internetu a/nebo šířka pásma stále omezená. Uživatelé si můžou nejdřív stáhnout, aby mohli sledovat obsah s dostatečně vysokým rozlišením, aby se mohlo zobrazit uspokojivý zážitek. V takovém případě častěji problém není síťová dostupnost, ale je omezená šířka pásma sítě. Poskytovatelé OTT/OVP žádají o podporu offline režimu.
 * Jak jsme zavřeli na konferenci Netflix 2016 Q3 akcionář, stažení obsahu je funkce, kterou požadujeme, a my na ni jsme na ni otevřeli Reed Hastings, Netflix pro generálního ředitele.
 * Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM mimo hranici země nebo oblasti. Pokud uživatel potřebuje cestovat do zahraničí a pořád chce sledovat obsah, je potřeba stáhnout offline.
  
@@ -60,13 +63,13 @@ Níže jsou uvedeny dvě sady testovacích prostředků, první z nich pomocí d
 
 #1 assetu:
 
-* Adresa URL postupného stahování:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* LA_URL PlayReady (AMS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
+* Adresa URL postupného stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* LA_URL PlayReady (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 #2 assetu:
 
-* Adresa URL postupného stahování:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* LA_URL PlayReady (místní):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
+* Adresa URL postupného stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* LA_URL PlayReady (místní): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 V případě testování přehrávání jsme použili univerzální aplikaci pro Windows ve Windows 10. V [univerzálních ukázkách Windows 10](https://github.com/Microsoft/Windows-universal-samples)je k dispozici základní ukázka přehrávače označované jako [Ukázka adaptivního streamování](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Musíme to udělat tak, že před přidáním kódu pro nás vybíráte stažené video a použijete ho jako zdroj namísto adaptivního zdroje streamování. Změny jsou v obslužné rutině události kliknutí na tlačítko:
 

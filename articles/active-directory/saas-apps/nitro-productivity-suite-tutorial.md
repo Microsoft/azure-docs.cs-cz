@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2020
+ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: b67e280824c5e2336aa79e14d3e09d3a670118a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3280c97e735e68aa36f018a8de59964ade9567b7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554324"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se sadou nitro produktivity
 
@@ -26,9 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat nitro produktivní sadu s Azure Active
 * Umožněte uživatelům, aby se automaticky přihlásili k nitro produktivní sadě pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Na začátek budete potřebovat:
 
@@ -41,15 +39,14 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * NITRO produktivní sada podporuje **aktualizace SP** a **IDP** , které iniciovaly jednotné přihlašování.
 * Sada nitro produktivity podporuje **jenom při** zřizování uživatelů.
-* Po konfiguraci sady nitro produktivity můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>Přidání sady produktivity nitro z Galerie
 
 Pokud chcete nakonfigurovat integraci sady nitro produktivity do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat nitro sadu produktivity z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém podokně vyberte **Azure Active Directory**.
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **nitro produktivní sada** .
 1. Z výsledků vyberte **nitro produktivní sada** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
@@ -62,17 +59,19 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD se sadou nitro pr
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí sady nitro produktivity, dokončete následující stavební bloky:
 
 1. [NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso) , aby vaši uživatelé mohli používat tuto funkci.
-    1. [Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user) pro testování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, [přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user) .
-1. Nakonfigurujte jednotné přihlašování [nitro produktivní sady](#configure-nitro-productivity-suite-sso) pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. [Vytvořte testovacího uživatele nitro produktivní sady](#create-a-nitro-productivity-suite-test-user) , abyste měli protějšek B. Simon v sadě nitro produktivity, která je propojená s reprezentací uživatele v Azure AD.
+
+    a. [Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user) pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+    
+    b. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, [přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user) .
+    
+2. [Vytvořte testovacího uživatele nitro produktivní sady](#create-a-nitro-productivity-suite-test-user) , abyste měli protějšek B. Simon v sadě nitro produktivity, která je propojená s reprezentací uživatele v Azure AD.
 1. [Otestujte jednotné přihlašování](#test-sso) a ověřte, jestli konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **nitro produktivní sada** najděte část **Správa** . Vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikace **nitro produktivní sada** najděte část **Správa** . Vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. V části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -93,9 +92,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     d. Vyberte **Povolit jednotné přihlašování**.
 
 
-1. Vraťte se na [Azure Portal](https://portal.azure.com/). Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
+1. Vraťte se na [Azure Portal](https://portal.azure.com/). Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Snímek obrazovky nastavení jednotného přihlašování pomocí stránky SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
+   ![Snímek obrazovky nastavení jednoho Sign-On se stránkou SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
@@ -103,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **Adresa URL odpovědi** zkopírujte a vložte pole **Adresa URL služby ACS** z portálu pro [správu nitro](https://admin.gonitro.com/). Měl by mít následující vzor: `https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
-1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
+1. Vyberte **nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://sso.gonitro.com/login`
 
@@ -115,7 +114,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě předchozích atributů očekává aplikace nitro produktivní sada několik dalších atributů, které se vrátí zpět v odpovědi SAML. Tyto atributy jsou předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Name  |  Zdrojový atribut|
+    | Název  |  Zdrojový atribut|
     | ---------------| --------------- |
     | employeeNumber |  User. objectID |
 
@@ -139,20 +138,10 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte **nitro produktivní sada**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Snímek obrazovky oddílu Správa se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
-
 1. Vyberte možnost **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
-
-    ![Snímek stránky uživatelů a skupin se zvýrazněným možností přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **B. Simon** . Pak zvolte **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Pak zvolte **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
-
-## <a name="configure-nitro-productivity-suite-sso"></a>Konfigurace jednotného přihlašování nitro produktivní sady
-
-Pokud chcete nakonfigurovat jednotné přihlašování na straně nitro produktivní sada, odešlete stažený **certifikát (Base64)** a příslušné zkopírované adresy url z Azure Portal do [týmu podpory nitro pro sadu produktivity](https://www.gonitro.com/support). Tým podpory zajišťuje správné nastavení připojení SAML SSO na obou stranách.
 
 ### <a name="create-a-nitro-productivity-suite-test-user"></a>Vytvoření testovacího uživatele nitro produktivní sady
 
@@ -160,21 +149,21 @@ NITRO produktivní sada podporuje zřizování uživatelů za běhu, což je ve 
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici nitro produktivní sada, automaticky jste se přihlásili do sady nitro produktivity, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další zdroje
+1. Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL nitro sady pro zvýšení produktivity, kde můžete spustit tok přihlášení.  
 
-- [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+2. Přejít na adresu URL pro přihlašování k nitro produktivní sadě přímo a zahájit tok přihlášení.
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k sadě produktivity nitro, pro kterou jste nastavili jednotné přihlašování. 
 
-- [Vyzkoušejte si nitro produktivní sadu pomocí Azure AD](https://aad.portal.azure.com/)
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici nitro produktivní sada na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k sadě nitro produktivity, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Chraňte nitro produktivní sadu pomocí pokročilých funkcí a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Další kroky
 
+Jakmile nakonfigurujete sadu produktivity nitro, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

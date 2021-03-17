@@ -1,19 +1,16 @@
 ---
 title: Plánování virtuální sítě pro Azure HDInsight
 description: Naučte se, jak naplánovat nasazení služby Azure Virtual Network pro připojení HDInsight k jiným cloudovým prostředkům nebo prostředkům ve vašem datovém centru.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/12/2021
+ms.openlocfilehash: fe974a96b7f349c9d525d0cd0bb01a83ace57a4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82786610"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939287"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -51,7 +48,8 @@ V následující části najdete otázky, které je potřeba zodpovědět při p
 Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do existující Virtual Network Azure.
 
 > [!NOTE]  
-> Existující cluster HDInsight nemůžete přidat do virtuální sítě.
+> - Existující cluster HDInsight nemůžete přidat do virtuální sítě.
+> - Virtuální síť a cluster, který se má vytvořit, musí být ve stejném předplatném.
 
 1. Používáte pro virtuální síť model nasazení Classic nebo Správce prostředků?
 
@@ -84,7 +82,7 @@ Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do
         Další informace najdete v dokumentu [Poradce při potížích se skupinami zabezpečení sítě](../virtual-network/diagnose-network-traffic-filter-problem.md) .
 
         > [!IMPORTANT]  
-        > Pravidla skupiny zabezpečení sítě se aplikují v pořadí podle priority pravidla. Použije se první pravidlo, které odpovídá vzoru provozu, a pro tento provoz se neuplatní žádné další. Seřazení pravidel z nejvyšší moci až po nejméně povolující. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) .
+        > Pravidla skupiny zabezpečení sítě se aplikují v pořadí podle priority pravidla. Použije se první pravidlo, které odpovídá vzoru provozu, a pro tento provoz se neuplatní žádné další. Seřazení pravidel z nejvyšší moci až po nejméně povolující. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) .
 
     * Trasy definované uživatelem
 
@@ -210,6 +208,6 @@ Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnáván
 * Ukázky kódu a příklady vytváření virtuálních sítí Azure najdete v tématu [Vytvoření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md).
 * Ucelený příklad konfigurace služby HDInsight pro připojení k místní síti najdete v tématu [připojení HDInsight k místní síti](./connect-on-premises-network.md).
 * Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
-* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
+* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 * Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
-* Další informace o řízení provozu najdete v tématu [řízení síťového provozu](./control-network-traffic.md).
+* Další informace o řízení provozu, včetně integrace brány firewall, najdete v tématu [řízení síťového provozu](./control-network-traffic.md).

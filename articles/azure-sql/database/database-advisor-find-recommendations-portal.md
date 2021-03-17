@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921210"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500882"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat spr
 
 Pomocí následujících kroků můžete najít doporučení týkající se výkonu Azure Portal:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
-2. Přejít na **všechny služby**  >  **databáze SQL**a vyberte svou databázi.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+2. Přejít na **všechny služby**  >  **databáze SQL** a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
 Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na následujícím obrázku:
 
-![Doporučení](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![Snímek obrazovky ukazuje doporučení týkající se výkonu v tabulce s popisem akce a doporučení.](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
@@ -103,7 +103,7 @@ Databázi můžete nastavit tak, aby automaticky implementovala doporučení. Ja
    ![Nastavení Poradce](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Vyberte akce, které chcete automatizovat:
 
-   ![Doporučené indexy](./media/database-advisor-find-recommendations-portal/server.png)
+   ![Snímek obrazovky, který ukazuje, kde vybrat akce k automatizaci](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > Upozorňujeme, že možnost **DROP_INDEX** aktuálně není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu.
@@ -114,11 +114,11 @@ Po výběru požadované konfigurace klikněte na použít.
 
 Vyberte libovolné doporučení a pak klikněte na **Zobrazit skript**. Spusťte tento skript pro vaši databázi, abyste mohli doporučení použít ručně.
 
-*Ručně prováděné indexy nejsou monitorovány a ověřovány pro dopad na výkon služby* , takže je navrženo, že tyto indexy po vytvoření sledujete a v případě potřeby je upravíte nebo odstraníte. Podrobnosti o vytváření indexů najdete v tématu [Create index (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql). Ručně použitá doporučení budou navíc aktivní a budou se zobrazovat v seznamu doporučení 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli doporučení odebrat dřív, můžete ho ručně zahodit.
+*Ručně prováděné indexy nejsou monitorovány a ověřovány pro dopad na výkon služby* , takže je navrženo, že tyto indexy po vytvoření sledujete a v případě potřeby je upravíte nebo odstraníte. Podrobnosti o vytváření indexů najdete v tématu [Create index (Transact-SQL)](/sql/t-sql/statements/create-index-transact-sql). Ručně použitá doporučení budou navíc aktivní a budou se zobrazovat v seznamu doporučení 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli doporučení odebrat dřív, můžete ho ručně zahodit.
 
 ### <a name="canceling-recommendations"></a>Rušení doporučení
 
-Doporučení, která jsou ve stavu **čekání**, **ověřování**nebo **úspěch** , lze zrušit. Doporučení se stavem **provádění** nelze zrušit.
+Doporučení, která jsou ve stavu **čekání**, **ověřování** nebo **úspěch** , lze zrušit. Doporučení se stavem **provádění** nelze zrušit.
 
 1. Vyberte doporučení v oblasti **Historie ladění** a otevřete stránku s **podrobnostmi o doporučení** .
 2. Kliknutím na tlačítko **Storno** přerušte proces použití doporučení.
@@ -139,7 +139,7 @@ Použití doporučení nemusí okamžitě probíhat. Portál poskytuje podrobné
 
 Kliknutím na místní doporučení ze seznamu zobrazíte další informace:
 
-![Doporučené indexy](./media/database-advisor-find-recommendations-portal/operations.png)
+![Snímek obrazovky, který zobrazuje seznam doporučených postupů.](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Vrácení doporučení zpět
 
@@ -156,7 +156,7 @@ Po úspěšném dokončení implementace doporučení (v současné době platí
 
 ![Sledovat dopad na výkon](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu databáze. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 
@@ -168,8 +168,8 @@ Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výk
 * Přehled Azure SQL Databasech doporučení týkajících se výkonu najdete v tématu [doporučení pro výkon](database-advisor-implement-performance-recommendations.md) .
 * V tématu [Přehled výkonu dotazů](query-performance-insight-use.md) najdete informace o tom, jak zobrazit dopad vašich dotazů na výkon.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-* [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md)
+* [Úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
+* [CREATE INDEX](/sql/t-sql/statements/create-index-transact-sql)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md)

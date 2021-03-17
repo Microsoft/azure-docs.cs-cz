@@ -10,18 +10,18 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: c0c62cf28c9e9368e80982fa7c5badeb79d40ae4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3d200cd9bccecf03f5313058189e134082a1a357
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087726"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742615"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL přes Vzdálenou plochu pomocí DMS
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z instance služby RDS MySQL do [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) , zatímco zdrojová databáze zůstane během migrace online. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi **zaměstnanci** z instance služby RDS MySQL do Azure Database for MySQL pomocí online aktivity migrace v Azure Database Migration Service.
+Pomocí Azure Database Migration Service můžete migrovat databáze z instance služby RDS MySQL do [Azure Database for MySQL](../mysql/index.yml) , zatímco zdrojová databáze zůstane během migrace online. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi **zaměstnanci** z instance služby RDS MySQL do Azure Database for MySQL pomocí online aktivity migrace v Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z instance služby RDS MySQL do Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -52,13 +52,13 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     SELECT @@version;
     ```
 
-    Další informace najdete v článku [podporovaném Azure Database for MySQL verzích](https://docs.microsoft.com/azure/mysql/concepts-supported-versions).
+    Další informace najdete v článku [podporovaném Azure Database for MySQL verzích](../mysql/concepts-supported-versions.md).
 
-* Stáhněte a nainstalujte [ukázkovou databázi MySQL **Employees** ](https://dev.mysql.com/doc/employee/en/employees-installation.html).
-* Vytvořte instanci [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal).
-* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
-* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445 a 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
-* Nakonfigurujte [bránu Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (nebo bránu firewall pro Linux) tak, aby umožňovala přístup k databázovému stroji. Pro MySQL server povolte připojení port 3306.
+* Stáhněte a nainstalujte [ukázkovou databázi MySQL **Employees**](https://dev.mysql.com/doc/employee/en/employees-installation.html).
+* Vytvořte instanci [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md).
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](../virtual-network/index.yml)a zejména v článcích rychlý Start s podrobnými údaji.
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala odchozí port 443 ServiceTag pro ServiceBus, Storage a AzureMonitor. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Nakonfigurujte [bránu Windows Firewall](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (nebo bránu firewall pro Linux) tak, aby umožňovala přístup k databázovému stroji. Pro MySQL server povolte připojení port 3306.
 
 > [!NOTE]
 > Azure Database for MySQL podporuje pouze tabulky InnoDB. Chcete-li převést tabulky MyISAM na InnoDB, přečtěte si článek [Převod tabulek z MyISAM na InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html) .
@@ -72,6 +72,10 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     * binlog_checksum = žádné
 3. Uložte novou skupinu parametrů.
 4. Přidružte novou skupinu parametrů k instanci služby RDS MySQL. Může být nutné restartovat počítač.
+5. Jakmile je skupina parametrů zavedena, připojte se k instanci MySQL a [nastavte uchování binlog](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql_rds_set_configuration.html#mysql_rds_set_configuration-usage-notes.binlog-retention-hours) aspoň na 5 dní.
+```
+call mysql.rds_set_configuration('binlog retention hours', 120);
+```
 
 ## <a name="migrate-the-schema"></a>Migrace schématu
 
@@ -125,7 +129,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 > [!NOTE]
 > Azure DMS nepodporuje referenční akci CASCADE, která pomáhá automaticky odstranit nebo aktualizovat shodný řádek v podřízené tabulce při odstranění nebo aktualizaci řádku v nadřazené tabulce. Další informace najdete v části referenční akce článku [omezení cizího klíče](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)v dokumentaci k MySQL.
-> Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) . 
+> Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](../mysql/concepts-migrate-dump-restore.md) . 
 
 5. Pokud jste v datech triggery (vložení nebo aktualizace triggeru), vynutili integritu dat v cíli před replikací dat ze zdroje. Doporučením je zakázat aktivační události ve všech tabulkách *v cíli* během migrace a poté povolit triggery po dokončení migrace.
 
@@ -170,7 +174,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
     Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojové instanci MySQL a cílové instanci Azure Database for MySQL.
 
-    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](https://aka.ms/DMSVnet).
+    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md).
 
 6. Vyberte cenovou úroveň; v případě této online migrace nezapomeňte vybrat cenovou úroveň Premium: 4vCores.
 
@@ -191,7 +195,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
      ![Vyhledání instance služby Azure Database Migration Service](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-instance-search.png)
 
 3. Vyberte **+ Nový projekt migrace**.
-4. Na obrazovce **Nový projekt migrace** zadejte název projektu, do textového pole **typ zdrojového serveru** vyberte **MySQL**a potom do textového pole **typ cílového serveru** vyberte **AzureDbForMySQL**.
+4. Na obrazovce **Nový projekt migrace** zadejte název projektu, do textového pole **typ zdrojového serveru** vyberte **MySQL** a potom do textového pole **typ cílového serveru** vyberte **AzureDbForMySQL**.
 5. V části **Zvolte typ aktivity** vyberte možnost **migrace online dat**.
 
     > [!IMPORTANT]
@@ -217,7 +221,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
-1. Vyberte **Uložit**a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for MySQL server, který je předem zřízený a má schéma **zaměstnanci** nasazené pomocí MySQLDump.
+1. Vyberte **Uložit** a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for MySQL server, který je předem zřízený a má schéma **zaměstnanci** nasazené pomocí MySQLDump.
 
     ![Výběr cíle](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-select-target5.png)
 
@@ -243,7 +247,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
     ![Stav aktivity – spuštěno](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-activity-status4.png)
 
-2. V části **název databáze**vyberte konkrétní databázi, abyste získali stav migrace pro operace **úplného načtení dat** a **přírůstkové synchronizace dat** .
+2. V části **název databáze** vyberte konkrétní databázi, abyste získali stav migrace pro operace **úplného načtení dat** a **přírůstkové synchronizace dat** .
 
     **Úplné načtení dat** znázorňuje počáteční stav migrace zatížení, zatímco **přírůstkové synchronizace dat** zobrazuje stav Change Data Capture (CDC).
 
@@ -267,6 +271,6 @@ Vaše online migrace místní instance MySQL do Azure Database for MySQL je teď
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informace o Azure Database for MySQL najdete v článku [co je Azure Database for MySQL?](https://docs.microsoft.com/azure/mysql/overview).
+* Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](./dms-overview.md).
+* Informace o Azure Database for MySQL najdete v článku [co je Azure Database for MySQL?](../mysql/overview.md).
 * Další otázky získáte v e-mailu s názvem požádat o alias [migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com) .

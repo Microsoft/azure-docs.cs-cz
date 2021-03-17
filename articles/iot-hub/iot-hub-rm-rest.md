@@ -8,28 +8,29 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75429162"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144433"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Vytvoření služby IoT Hub pomocí REST API poskytovatele prostředků (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Pomocí [poskytovatele prostředků IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) můžete programově vytvářet a spravovat centra IoT Azure. V tomto kurzu se dozvíte, jak používat IoT Hub poskytovatele prostředků REST API k vytvoření centra IoT z programu v jazyce C#.
+Pomocí [poskytovatele prostředků IoT Hub REST API](/rest/api/iothub/iothubresource) můžete programově vytvářet a spravovat centra IoT Azure. V tomto kurzu se dozvíte, jak používat IoT Hub poskytovatele prostředků REST API k vytvoření centra IoT z programu v jazyce C#.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete:
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-* [Azure PowerShell 1,0](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo novější.
+* [Azure PowerShell 1,0](/powershell/azure/install-Az-ps) nebo novější.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -77,7 +78,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Vytvoření centra IoT pomocí REST API poskytovatele prostředků
 
-[REST API poskytovatele prostředků IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) použijte k vytvoření centra IoT ve vaší skupině prostředků. K provedení změn v existující službě IoT Hub můžete také použít REST API poskytovatele prostředků.
+[REST API poskytovatele prostředků IoT Hub](/rest/api/iothub/iothubresource) použijte k vytvoření centra IoT ve vaší skupině prostředků. K provedení změn v existující službě IoT Hub můžete také použít REST API poskytovatele prostředků.
 
 1. Přidejte následující metodu do Program.cs:
 
@@ -174,7 +175,7 @@ Nyní můžete aplikaci dokončit voláním metody **CreateIoTHub** před sestav
 
 Nyní jste nasadili IoT Hub pomocí REST API poskytovatele prostředků, možná budete chtít prozkoumat další:
 
-* Přečtěte si o možnostech [REST API IoT Hub poskytovatele prostředků](https://docs.microsoft.com/rest/api/iothub/iothubresource).
+* Přečtěte si o možnostech [REST API IoT Hub poskytovatele prostředků](/rest/api/iothub/iothubresource).
 
 * Přečtěte si [Azure Resource Manager přehled](../azure-resource-manager/management/overview.md) , kde najdete další informace o možnostech Azure Resource Manager.
 
@@ -186,4 +187,4 @@ Další informace o vývoji pro IoT Hub najdete v následujících článcích:
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/quickstart-linux.md)

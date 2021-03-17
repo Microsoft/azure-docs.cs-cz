@@ -3,24 +3,26 @@ title: Definování jedinečných klíčů pro kontejner Azure Cosmos
 description: Naučte se definovat jedinečné klíče pro kontejner Azure Cosmos pomocí Azure Portal, PowerShellu, .NET, Java a různých dalších sad SDK.
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 8a87f9c9b2db2c6118134d76cefc7c2813f5a864
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 55fc5222c1c245c56ba0a26caa816c5c845147c1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876661"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336618"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek nabízí různé způsoby definování [jedinečných klíčů](unique-keys.md) při vytváření kontejneru Azure Cosmos. Tuto operaci je teď možné provést buď pomocí Azure Portal nebo prostřednictvím jedné ze sad SDK.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) nebo vyberte nějaký existující.
 
@@ -36,7 +38,7 @@ Tento článek nabízí různé způsoby definování [jedinečných klíčů](u
 
     :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Snímek obrazovky s jedinečnou položkou omezení klíčů v Azure Portal":::
 
-## <a name="use-powershell"></a>Použití PowerShellu
+## <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Vytvoření kontejneru s jedinečnými klíči najdete v tématu [vytvoření kontejneru Azure Cosmos s jedinečným klíčem a hodnotou TTL](manage-with-powershell.md#create-container-unique-key-ttl) .
 
@@ -119,7 +121,7 @@ client.createCollection(String.format("/dbs/%s", "database"), container, null);
 
 ## <a name="use-the-nodejs-sdk"></a>Použití sady Node.js SDK
 
-Při vytváření nového kontejneru pomocí [sadyNode.js SDK](https://www.npmjs.com/package/@azure/cosmos)se `UniqueKeyPolicy` dá objekt použít k definování jedinečných omezení klíčů.
+Při vytváření nového kontejneru pomocí [ sadyNode.js SDK](https://www.npmjs.com/package/@azure/cosmos)se `UniqueKeyPolicy` dá objekt použít k definování jedinečných omezení klíčů.
 
 ```javascript
 client.database('database').containers.create({
@@ -151,5 +153,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [dělení](partition-data.md)
+- Další informace o [dělení](partitioning-overview.md)
 - Prozkoumejte, [Jak funguje indexování](index-overview.md)

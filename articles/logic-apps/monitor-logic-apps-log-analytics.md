@@ -5,25 +5,25 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721255"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
 
-Pokud chcete získat bohatší ladicí informace o aplikacích logiky během běhu, můžete nastavit a použít [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) k zaznamenávání a ukládání informací o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). [Azure monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete vytvářet [dotazy protokolů](../azure-monitor/log-query/log-query-overview.md) , které vám pomůžou shromáždit a zkontrolovat tyto informace. [Tato diagnostická data můžete také použít s jinými službami Azure](#extend-data), například Azure Storage a Azure Event Hubs.
+Pokud chcete získat bohatší ladicí informace o aplikacích logiky během běhu, můžete nastavit a použít [protokoly Azure monitor](../azure-monitor/logs/data-platform-logs.md) k zaznamenávání a ukládání informací o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). [Azure monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete vytvářet [dotazy protokolů](../azure-monitor/logs/log-query-overview.md) , které vám pomůžou shromáždit a zkontrolovat tyto informace. [Tato diagnostická data můžete také použít s jinými službami Azure](#extend-data), například Azure Storage a Azure Event Hubs.
 
 Pokud chcete nastavit protokolování pro aplikaci logiky, můžete [povolit Log Analytics při vytváření aplikace logiky](#logging-for-new-logic-apps)nebo můžete [řešení pro správu Logic Apps nainstalovat](#install-management-solution) do svého pracovního prostoru Log Analytics pro existující aplikace logiky. Toto řešení poskytuje agregované informace pro vaše spuštění aplikace logiky a zahrnuje konkrétní podrobnosti, jako je stav, doba provádění, stav opětovného odeslání a ID korelace. Pokud pak chcete povolit protokolování a vytváření dotazů pro tyto informace, [nastavte protokoly Azure monitor](#set-up-resource-logs).
 
-Tento článek popisuje, jak povolit Log Analytics, když vytváříte aplikace logiky, jak nainstalovat a nastavit řešení pro správu Logic Apps a jak nastavit a vytvářet dotazy na protokoly Azure Monitor.
+Tento článek ukazuje, jak povolit Log Analytics pro nové Logic Apps a stávající aplikace logiky, jak nainstalovat a nastavit řešení pro správu Logic Apps a jak nastavit a vytvářet dotazy na protokoly Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, potřebujete [Log Analytics pracovní prostor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Pokud nemáte pracovní prostor, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+Než začnete, potřebujete [Log Analytics pracovní prostor](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Pokud nemáte pracovní prostor, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md).
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -33,7 +33,7 @@ Log Analytics můžete zapnout, když vytvoříte aplikaci logiky.
 
 1. V [Azure Portal](https://portal.azure.com)v podokně, kde poskytnete informace k vytvoření vaší aplikace logiky, postupujte takto:
 
-   1. V části **Log Analytics**vyberte **zapnuto**.
+   1. V části **Log Analytics** vyberte **zapnuto**.
 
    1. V seznamu **pracovní prostor Log Analytics** vyberte pracovní prostor, ve kterém chcete poslat data z vaší aplikace logiky.
 
@@ -55,15 +55,15 @@ Pokud jste při vytváření aplikace logiky zapnuli Log Analytics, přeskočte 
 
    ![Vyberte Log Analytics pracovní prostory.](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
-1. V části **Log Analytics pracovní prostory**vyberte svůj pracovní prostor.
+1. V části **Log Analytics pracovní prostory** vyberte svůj pracovní prostor.
 
    ![Vyberte svůj pracovní prostor Log Analytics](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
-1. V podokně **Přehled** v části Začínáme **s Log Analytics**  >  **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
+1. V podokně **Přehled** v části Začínáme **s Log Analytics**  >  **Konfigurace řešení monitorování** vyberte **Zobrazit řešení**.
 
    ![V podokně s přehledem vyberte možnost Zobrazit řešení.](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
-1. V části **Přehled**vyberte **Přidat**.
+1. V části **Přehled** vyberte **Přidat**.
 
    ![V podokně s přehledem přidejte nové řešení.](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
@@ -87,11 +87,14 @@ Pokud jste při vytváření aplikace logiky zapnuli Log Analytics, přeskočte 
 
 ## <a name="set-up-azure-monitor-logs"></a>Nastavení protokolů Azure Monitor
 
-Když ukládáte informace o událostech a datech modulu runtime v [protokolech Azure monitor](../azure-monitor/platform/data-platform-logs.md), můžete vytvořit [dotazy protokolu](../azure-monitor/log-query/log-query-overview.md) , které vám pomůžou najít a zkontrolovat tyto informace.
+Když ukládáte informace o událostech a datech modulu runtime v [protokolech Azure monitor](../azure-monitor/logs/data-platform-logs.md), můžete vytvořit [dotazy protokolu](../azure-monitor/logs/log-query-overview.md) , které vám pomůžou najít a zkontrolovat tyto informace.
+
+> [!NOTE]
+> Po povolení nastavení diagnostiky můžou data diagnostiky po dobu až 30 minut přecházet do protokolů v zadaném cíli, jako je Log Analytics, centrum událostí nebo účet úložiště. Tato prodleva znamená, že diagnostická data z tohoto časového období nemusí pro kontrolu existovat. Dokončené události a [sledované vlastnosti](#extend-data) se nemusí zobrazit v pracovním prostoru Log Analytics po dobu 10-15 minut.
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte svou aplikaci logiky.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
+1. V nabídce aplikace logiky v části **monitorování** vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
    ![V části monitorování vyberte nastavení diagnostiky > přidat nastavení diagnostiky.](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -101,17 +104,17 @@ Když ukládáte informace o událostech a datech modulu runtime v [protokolech 
 
    1. Vyberte **odeslat Log Analytics**.
 
-   1. V poli **předplatné**vyberte předplatné Azure, které je přidružené k vašemu pracovnímu prostoru Log Analytics.
+   1. V poli **předplatné** vyberte předplatné Azure, které je přidružené k vašemu pracovnímu prostoru Log Analytics.
 
-   1. V části **pracovní prostor Log Analytics**vyberte pracovní prostor, který chcete použít.
+   1. V části **pracovní prostor Log Analytics** vyberte pracovní prostor, který chcete použít.
 
-   1. V části **protokol**vyberte kategorii **aktivity typu WorkflowRuntime** , která určuje kategorii událostí, kterou chcete zaznamenat.
+   1. V části **protokol** vyberte kategorii **aktivity typu WorkflowRuntime** , která určuje kategorii událostí, kterou chcete zaznamenat.
 
-   1. Pokud chcete vybrat všechny metriky, vyberte v části **metrika**možnost **AllMetrics**.
+   1. Pokud chcete vybrat všechny metriky, vyberte v části **metrika** možnost **AllMetrics**.
 
    1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
-   Příklad:
+   Například:
 
    ![Vyberte Log Analytics pracovní prostor a data pro protokolování](./media/monitor-logic-apps-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -144,10 +147,6 @@ Po spuštění aplikace logiky můžete zobrazit data o těchto spuštěních v 
 
    ![Zobrazení sledovaných vlastností aplikace logiky](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
 
-   > [!NOTE]
-   > Sledované vlastnosti nebo události, které jsou dokončené, můžou během Log Analytics pracovního prostoru nastat v 10-15 minutách.
-   > Možnost opětovného **odeslání** na této stránce je také momentálně nedostupná.
-
 1. Pokud chcete filtrovat výsledky, můžete provést filtrování na straně klienta i na straně serveru.
 
    * **Filtr na straně klienta**: u každého sloupce vyberte filtry, které chcete, například:
@@ -176,10 +175,10 @@ Po spuštění aplikace logiky můžete zobrazit data o těchto spuštěních v 
 
 Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplikace logiky navzájem využít jiné služby Azure, například:
 
-* [Archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-* [Streamování protokolů platformy Azure do Azure Event Hubs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
+* [Archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+* [Streamování protokolů platformy Azure do Azure Event Hubs](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/visualize/powerbi.md). Například:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -192,7 +191,7 @@ Na základě umístění, kam chcete poslat diagnostická data, se ujistěte, ž
 
 ## <a name="azure-monitor-diagnostics-events"></a>Události diagnostiky Azure Monitor
 
-Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o tom, že událost je například stav, čas spuštění, čas ukončení a tak dále. Chcete-li programově nastavit monitorování, sledování a protokolování, můžete tyto informace použít spolu s [REST API pro Azure Logic Apps](/rest/api/logic) a [REST API pro Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows). Můžete také použít `clientTrackingId` `trackedProperties` vlastnosti a, které se zobrazí v 
+Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o tom, že událost je například stav, čas spuštění, čas ukončení a tak dále. Chcete-li programově nastavit monitorování, sledování a protokolování, můžete tyto informace použít spolu s [REST API pro Azure Logic Apps](/rest/api/logic) a [REST API pro Azure monitor](../azure-monitor/essentials/metrics-supported.md#microsoftlogicworkflows). Můžete také použít `clientTrackingId` `trackedProperties` vlastnosti a, které se zobrazí v 
 
 * `clientTrackingId`: Pokud není zadaný, Azure automaticky vygeneruje toto ID a koreluje události v rámci spuštění aplikace logiky, včetně všech vnořených pracovních postupů, které se volají z aplikace logiky. Toto ID můžete zadat ručně v triggeru tak, že `x-ms-client-tracking-id` v žádosti triggeru předáte hlavičku s hodnotou vlastního ID. Můžete použít Trigger žádosti, Trigger HTTP nebo Trigger Webhooku.
 

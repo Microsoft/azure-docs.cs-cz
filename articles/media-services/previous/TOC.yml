@@ -3,8 +3,10 @@
 - name: Přehled
   href: media-services-overview.md
   items:
-    - name: Scénáře a dostupnost
+    - name: Obvyklé scénáře
       href: scenarios-and-availability.md
+    - name: Regionální dostupnost
+      href: availability-regions-v-2.md
     - name: Koncepty
       href: media-services-concepts.md
 - name: Začínáme
@@ -115,8 +117,6 @@
     - name: Kódování obsahu
       href: media-services-encode-asset.md
       items:
-        - name: Porovnání kodérů
-          href: media-services-compare-encoders.md
         - name: Správa rychlosti a souběžného zpracování vašeho kódování
           href: media-services-manage-encoding-speed.md
         - name: Media Encoder Standard (MES)
@@ -205,20 +205,6 @@
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
                 - name: H264 Single Bitrate Low Quality SD for Android
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-        - name: Pracovní postup kodéru Media Encoder Premium
-          items:
-            - name: 'Pracovní postup, formáty a kodeky kodéru Media Encoder Premium'
-              href: media-services-premium-workflow-encoder-formats.md
-            - name: Kódování pomocí pracovního postupu kodéru Media Encoder Premium
-              items:
-                - name: Pracovní postup kodéru Media Encoder Premium
-                  href: media-services-encode-with-premium-workflow.md
-                - name: Výukové kurzy k pracovním postupům kodéru Media Encoder Premium
-                  href: media-services-media-encoder-premium-workflow-tutorials.md
-                - name: Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
-                  href: media-services-workflow-designer.md
-                - name: Pracovní postup Premium s více vstupy
-                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: 'Vytvoření úlohy, která generuje bloky fMP4'
           href: media-services-generate-fmp4-chunks.md
         - name: Procesory médií
@@ -318,33 +304,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: Referenční návrh s více variantami DRM
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: Analýza
-      href: media-services-analytics-overview.md
+    - name: Analýza obsahu
       items:
-        - name: Analýza médií s využitím webu Azure Portal
-          href: media-services-portal-analyze.md
-        - name: Zpracování pomocí Indexeru 2
-          href: media-services-process-content-with-indexer2.md
         - name: Zpracování pomocí Indexeru
           href: media-services-index-content.md
-          items:
-            - name: Předvolby úloh
-              href: indexer-task-preset.md
-        - name: Zpracování pomocí Face Detectoru
-          href: media-services-face-and-emotion-detection.md
-        - name: Zpracování pomocí Motion Detectoru
-          href: media-services-motion-detection.md
+        - name: Předvolby úloh
+          href: indexer-task-preset.md
         - name: Zpracování pomocí Face Redactoru
           href: media-services-face-redaction.md
-          items:
-            - name: Názorný postup práce s Face Redactorem
-              href: media-services-redactor-walkthrough.md
-        - name: Zpracování pomocí Video Thumbnails
-          href: media-services-video-summarization.md
-        - name: Zpracování pomocí technologie OCR
-          href: media-services-video-optical-character-recognition.md
-        - name: Zpracování pomocí Content Moderatoru
-          href: media-services-content-moderation.md
+        - name: Názorný postup práce s Face Redactorem
+          href: media-services-redactor-walkthrough.md
     - name: Konfigurace telemetrie
       href: media-services-telemetry-overview.md
       items:
@@ -445,7 +414,7 @@
     - name: Azure PowerShell (Resource Manager)
       href: /powershell/module/az.media
     - name: Azure PowerShell
-      href: /powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0
+      href: /powershell/module/servicemanagement/azure.service/
     - name: .NET
       href: /dotnet/api/microsoft.windowsazure.mediaservices.client
     - name: REST

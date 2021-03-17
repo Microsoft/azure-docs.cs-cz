@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715033"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které je možné používat s virtuálními počítači.
@@ -51,11 +51,11 @@ Přečtěte si další informace o [programu Microsoft Antimalware pro Azure](an
 Přečtěte si další informace o antimalwarovém softwaru, které vám pomůžou ochránit vaše virtuální počítače:
 
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows](/azure/virtual-machines/windows/classic/install-trend)
-* [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows](/azure/virtual-machines/windows/classic/install-symantec)
+* [Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows](/previous-versions/azure/virtual-machines/extensions/trend)
+* [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows](../../virtual-machines/extensions/symantec.md)
 * [Řešení zabezpečení v Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
-V případě ještě výkonnější ochrany zvažte použití [rozšířené ochrany před internetovými útoky v programu Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). V rámci ochrany ATP v programu Windows Defender získáte:
+V případě ještě výkonnější ochrany zvažte použití [rozšířené ochrany před internetovými útoky v programu Windows Defender](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). V rámci ochrany ATP v programu Windows Defender získáte:
 
 * [Omezení možností útoku](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Ochrana nové generace](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -75,22 +75,22 @@ Další informace:
 
 Vylepšení zabezpečení klíčů může zlepšit ochranu šifrování a ověřování. Můžete zjednodušit správu a zabezpečení důležitých tajných kódů a klíčů jejich uložením do Azure Key Vault.
 
-Key Vault poskytuje možnost ukládat klíče v modulech hardwarového zabezpečení (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Šifrovací klíče SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) je možné ukládat do Key Vault pomocí jakýchkoli klíčů a tajných kódů z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Key Vault poskytuje možnost ukládat klíče v modulech hardwarového zabezpečení (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Šifrovací klíče SQL Server pro zálohování nebo [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption) je možné ukládat do Key Vault pomocí jakýchkoli klíčů a tajných kódů z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 Další informace:
 
-* [Co je Azure Key Vault?](/azure/key-vault/key-vault-overview)
-* [Blog Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
+* [Co je Azure Key Vault?](../../key-vault/general/overview.md)
+* [Blog Azure Key Vault](/archive/blogs/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Šifrování disku virtuálního počítače
 
-Azure Disk Encryption je nová možnost pro šifrování disků virtuálních počítačů se systémem Windows a Linux. Azure Disk Encryption používá standardní funkci [nástroje BitLocker](https://technet.microsoft.com/library/cc732774.aspx) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky.
+Azure Disk Encryption je nová možnost pro šifrování disků virtuálních počítačů se systémem Windows a Linux. Azure Disk Encryption používá standardní funkci [nástroje BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky.
 
 Řešení je integrované s Azure Key Vault, které vám pomůžou řídit a spravovat klíče a tajné klíče pro šifrování disků v předplatném trezoru klíčů. Zajišťuje, aby všechna data v discích virtuálních počítačů byla v klidovém stavu zašifrovaná v Azure Storage.
 
 Další informace:
 
-* [Azure Disk Encryption pro virtuální počítače s IaaS](/azure/security/azure-security-disk-encryption-overview)
+* [Azure Disk Encryption pro virtuální počítače s IaaS](./azure-disk-encryption-vms-vmss.md)
 * [Rychlý start: Šifrování virtuálního počítače IaaS s Windows pomocí Azure PowerShellu](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Záloha virtuálního počítače
@@ -99,8 +99,8 @@ Azure Backup je škálovatelné řešení, které pomáhá chránit data vaší 
 
 Další informace:
 
-* [Co je Azure Backup?](/azure/backup/backup-introduction-to-azure-backup)
-* [Nejčastější dotazy k Azure Backup službě](/azure/backup/backup-azure-backup-faq)
+* [Co je Azure Backup?](../../backup/backup-overview.md)
+* [Nejčastější dotazy k Azure Backup službě](../../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -116,9 +116,9 @@ Site Recovery:
 
 Další informace:
 
-* [Co je Azure Site Recovery?](/azure/site-recovery/site-recovery-overview)
-* [Jak funguje Azure Site Recovery?](/azure/site-recovery/site-recovery-components)
-* [Jaké úlohy jsou chráněny pomocí Azure Site Recovery?](/azure/site-recovery/site-recovery-workload)
+* [Co je Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
+* [Jak funguje Azure Site Recovery?](../../site-recovery/azure-to-azure-architecture.md)
+* [Jaké úlohy jsou chráněny pomocí Azure Site Recovery?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuální síť
 
@@ -128,8 +128,8 @@ Virtuální síť Azure je logická konstrukce, která je postavená na fyzický
 
 Další informace:
 
-* [Přehled zabezpečení sítě Azure](network-overview.md)
-* [Přehled služby Virtual Network](/azure/virtual-network/virtual-networks-overview)
+* [Přehled zabezpečení sítě v Azure](network-overview.md)
+* [Přehled Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [Síťové funkce a partnerství pro podnikové scénáře](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Správa zásad zabezpečení a vytváření sestav
@@ -138,14 +138,14 @@ Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat 
 
 Security Center vám pomůže optimalizovat a monitorovat zabezpečení virtuálních počítačů pomocí:
 
-* Poskytnutí [doporučení zabezpečení](/azure/security-center/security-center-recommendations) pro virtuální počítače. Příklad doporučení: použít aktualizace systému, konfigurovat koncové body seznamů ACL, povolit antimalware, povolit skupiny zabezpečení sítě a použít šifrování disku.
+* Poskytnutí [doporučení zabezpečení](../../security-center/security-center-recommendations.md) pro virtuální počítače. Příklad doporučení: použít aktualizace systému, konfigurovat koncové body seznamů ACL, povolit antimalware, povolit skupiny zabezpečení sítě a použít šifrování disku.
 * Monitorování stavu virtuálních počítačů.
 
 Další informace:
 
-* [Úvod do Azure Security Center](/azure/security-center/security-center-intro)
-* [Azure Security Center nejčastějších dotazech](/azure/security-center/security-center-faq)
-* [Azure Security Center plánování a provozu](/azure/security-center/security-center-planning-and-operations-guide)
+* [Úvod do Azure Security Center](../../security-center/security-center-introduction.md)
+* [Azure Security Center nejčastějších dotazech](../../security-center/faq-general.md)
+* [Azure Security Center plánování a provozu](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Dodržování předpisů
 
@@ -160,7 +160,7 @@ Další informace:
 
 I když důvěrné výpočetní operace není technicky součástí zabezpečení virtuálních počítačů, téma zabezpečení virtuálních počítačů patří do předmětu vyšší úrovně zabezpečení Compute. Důvěrné výpočetní prostředky patří do kategorie zabezpečení Compute.
 
-Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném formátu", který je vyžadován pro efektivní zpracování, data jsou chráněna v prostředí s důvěryhodným spouštěním https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
+Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném formátu", který je vyžadován pro efektivní zpracování, data jsou chráněna v prostředí s důvěryhodným spouštěním  https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
 
 TEEs zajistěte, aby neexistoval žádný způsob, jak zobrazit data ani operace uvnitř vně, ani pomocí ladicího programu. Ještě zajistí, že přístup k datům je povolen pouze autorizovaným kódem. Pokud dojde ke změně nebo poškození kódu, operace jsou zamítnuté a prostředí je zakázané. TEE vynutila tyto ochrany v průběhu provádění kódu v rámci IT.
 

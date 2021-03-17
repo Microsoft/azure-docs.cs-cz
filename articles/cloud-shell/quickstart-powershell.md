@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512975"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89469452"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý Start pro PowerShell v Azure Cloud Shell
 
@@ -29,7 +29,7 @@ Tento dokument popisuje, jak používat PowerShell v Cloud Shell v [Azure Portal
 
    ![Snímek obrazovky znázorňující, jak začít Azure Cloud Shell z Azure Portal](media/quickstart-powershell/shell-icon.png)
 
-2. V rozevíracím seznamu vyberte prostředí PowerShell a budete na jednotce Azure.`(Azure:)`
+2. V rozevíracím seznamu vyberte prostředí PowerShell a budete na jednotce Azure. `(Azure:)`
 
    ![Snímek obrazovky znázorňující, jak vybrat prostředí PowerShell pro Azure Cloud Shell.](media/quickstart-powershell/environment-ps.png)
 
@@ -61,7 +61,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd`do preferovaného předplatného
+ 2. `cd` do preferovaného předplatného
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -261,7 +261,7 @@ Chcete-li provést ověření na serverech nebo virtuálních počítačích pom
 
 ### <a name="using-ssh"></a>Použití SSH
 
-Pokud chcete vytvořit novou konfiguraci virtuálního počítače pomocí rutin [Azure PowerShell, postupujte](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) podle pokynů.
+Pokud chcete vytvořit novou konfiguraci virtuálního počítače pomocí rutin [Azure PowerShell, postupujte](../virtual-machines/linux/quick-create-powershell.md) podle pokynů.
 Než zahájíte volání do `New-AzVM` nasazení, přidejte do konfigurace virtuálního počítače veřejný klíč SSH.
 Nově vytvořený virtuální počítač bude obsahovat veřejný klíč v `~\.ssh\authorized_keys` umístění, čímž se k virtuálnímu počítači zapíná relace SSH bez přihlašovacích údajů.
 
@@ -292,7 +292,7 @@ Případně můžete k `Get-Command *az* -Module Az.*` Získání dostupných p�
 
 Můžete spustit `Install-Module` pro instalaci modulů z [Galerie prostředí PowerShell][gallery].
 
-## <a name="get-help"></a>Získat nápovědu
+## <a name="get-help"></a>Get-Help
 
 Zadejte `Get-Help` , chcete-li získat informace o PowerShellu v Azure Cloud Shell.
 
@@ -345,6 +345,6 @@ Zadejte `exit` , chcete-li ukončit relaci.
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/
 [customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
-[profile]: https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles
-[azmount]: https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows
+[profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
+[azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

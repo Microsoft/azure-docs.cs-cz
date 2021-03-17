@@ -3,17 +3,19 @@ title: Operátory dotazů SQL pro Azure Cosmos DB
 description: Přečtěte si o operátorech SQL, jako jsou rovnost, porovnání a logické operátory podporované Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498833"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335431"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek podrobně popisuje různé operátory podporované nástrojem Azure Cosmos DB.
 
@@ -54,7 +56,7 @@ Vrátí `true` , pokud je jedna z podmínek `true` .
 |  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
 | **True** |Ano |Ano |Ano |
-| **False** |Ano |Ne |Nedefinované |
+| **False** |Ano |Nepravda |Nedefinované |
 | **Nedefinované** |Ano |Nedefinované |Nedefinované |
 
 **AND – operátor**
@@ -63,17 +65,17 @@ Vrátí `true` , pokud jsou oba výrazy `true` .
 
 |  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **True** |Ano |Ne |Nedefinované |
-| **False** |Ne |Ne |Ne |
-| **Nedefinované** |Nedefinované |Ne |Nedefinované |
+| **True** |Ano |Nepravda |Nedefinované |
+| **False** |Nepravda |Nepravda |Nepravda |
+| **Nedefinované** |Nedefinované |Nepravda |Nedefinované |
 
 **NOT – operátor**
 
 Obrátí hodnotu libovolného logického výrazu.
 
-|  | **MĚNÍ** |
+|  | **NOT** |
 | --- | --- |
-| **True** |Ne |
+| **True** |Nepravda |
 | **False** |Ano |
 | **Nedefinované** |Nedefinované |
 
@@ -83,13 +85,13 @@ Logické operátory `OR` , `AND` a `NOT` mají úroveň priority zobrazenou ní�
 
 | **Operátor** | **Priorita** |
 | --- | --- |
-| **MĚNÍ** |1 |
-| **ANI** |2 |
-| **ANI** |3 |
+| **NOT** |1 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>* – operátor
 
-Speciální operátor * projektuje celou položku tak, jak je. Při použití musí být jediným projektovým polem. Dotaz, jako `SELECT * FROM Families f` je platný, ale je neplatný `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` .
+Speciální operátor * projektuje celou položku tak, jak je. Při použití musí být jediným projektovým polem. Dotaz, jako `SELECT * FROM Families f` je platný, ale je neplatný `SELECT VALUE * FROM Families f`  `SELECT *, f.id FROM Families f` .
 
 ## <a name="-and--operators"></a>? a?? operátory
 

@@ -1,18 +1,17 @@
 ---
-title: Přímá kvóta virtuálních počítačů – Azure
+title: Přímá kvóta virtuálních počítačů
 description: Zvyšte maximální kvótu pro virtuální počítače, které poskytují model využití Azure, který vám umožní v Exchangi snížit náklady na to, aby se virtuální počítače v Azure odebraly podle potřeby.
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8b9a2251d7923fe1919b7b934f6c97877cd5b37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763869"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745481"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>Kvóta na místě: Zvyšte limity pro všechny řady virtuálních počítačů.
 
@@ -44,19 +43,19 @@ Vyžádání zvýšení kvóty omezení pro všechny řady virtuálních počít
 
    ![Odkaz Help + support](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
+1. V **okně pomoc a podpora** vyberte **Nová žádost o podporu**.
 
     ![Vytvořit novou žádost o podporu](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)**.
+1. Jako **typ problému** vyberte **omezení služby a předplatné (kvóty)**.
 
    ![Vyberte typ problému.](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. V poli **předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
+1. V poli **předplatné** vyberte předplatné, jehož kvótu chcete zvýšit.
 
    ![Vyberte předplatné pro zvýšenou kvótu.](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. V části **typ kvóty**vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
+1. V části **typ kvóty** vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
 
    ![Vyberte typ kvóty.](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -64,17 +63,17 @@ Vyžádání zvýšení kvóty omezení pro všechny řady virtuálních počít
 
    ![Odkaz "poskytnout podrobnosti"](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-1. V části **Podrobnosti kvóty**proveďte následující kroky:
+1. V části **Podrobnosti kvóty** proveďte následující kroky:
 
-   1. V části **model nasazení**vyberte příslušný model a pro **umístění**vyberte umístění.
+   1. V části **model nasazení** vyberte příslušný model a pro **umístění** vyberte umístění.
 
       ![Poskytnout podrobnosti o dodatečné kvótě](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
-   1. Pro vybrané umístění v části **typy**v **možnosti vybrat typ**zvolte možnost **bod**.
+   1. Pro vybrané umístění v části **typy** v **možnosti vybrat typ** zvolte možnost **bod**.
 
       ![Vybrat typ bodu](./media/resource-manager-core-quotas-request/select-spot-type.png)
 
-       V části **typy**můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory vícenásobného výběru.
+       V části **typy** můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory vícenásobného výběru.
 
        Další informace najdete v tématu [standardní kvóta: zvýšení limitů podle řady virtuálních počítačů](per-vm-quota-requests.md).
 
@@ -82,7 +81,7 @@ Vyžádání zvýšení kvóty omezení pro všechny řady virtuálních počít
 
       ![Vybrat novou kvótu pro virtuální počítač na místě](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
 
-1. Pokud chcete požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění**a potom vyberte vhodný typ virtuálního počítače. Pak můžete zadat limit, který platí pro další umístění.
+1. Pokud chcete požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění** a potom vyberte vhodný typ virtuálního počítače. Pak můžete zadat limit, který platí pro další umístění.
 
    ![Zadat další umístění v podrobnostech o kvótě](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
@@ -111,17 +110,17 @@ Požadavek na zvýšení kvóty omezení pro všechny řady virtuálních počí
 
    ![Vyberte, chcete-li zvýšit kvótu.](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. V části **typ kvóty**vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
+1. V části **typ kvóty** vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
 
    ![Vyberte typ kvóty.](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. Vyberte **Další: řešení** pro otevření **podrobností problému**. Pokud chcete zadat další informace, vyberte **zadat podrobnosti** . V části **Podrobnosti o kvótě**zadejte následující informace:
+1. Vyberte **Další: řešení** pro otevření **podrobností problému**. Pokud chcete zadat další informace, vyberte **zadat podrobnosti** . V části **Podrobnosti o kvótě** zadejte následující informace:
 
-   1. V části **model nasazení**vyberte příslušný model a pro **umístění**vyberte umístění.
+   1. V části **model nasazení** vyberte příslušný model a pro **umístění** vyberte umístění.
 
       ![Poskytnutí podrobností o kvótě](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
-   1. Pro vybrané umístění v části **typy**v **možnosti vybrat typ**zvolte možnost **bod**.
+   1. Pro vybrané umístění v části **typy** v **možnosti vybrat typ** zvolte možnost **bod**.
 
       ![Vybrat typ bodu](./media/resource-manager-core-quotas-request/select-spot-type.png)
 
@@ -131,7 +130,7 @@ Požadavek na zvýšení kvóty omezení pro všechny řady virtuálních počí
 
       ![Zadejte novou hodnotu pro vCPU limit.](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
 
-1. Pokud chcete požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění**a potom vyberte vhodný typ virtuálního počítače. Pak můžete zadat limit, který platí pro další umístění.
+1. Pokud chcete požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění** a potom vyberte vhodný typ virtuálního počítače. Pak můžete zadat limit, který platí pro další umístění.
 
    ![Vybrat další umístění v podrobnostech o kvótě](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Node.js-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
+description: Začněte používat REST API Kontrola pravopisu Bingu a Node.js kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,21 +10,26 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: aaaa571928556a6972d3136ef4cacaa3bd4cb798
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 182ccc972fce40adc88ed66b01c92e778f6479a9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405003"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352690"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node.js
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace JavaScriptu pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. 
 
 I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější.
 
@@ -164,4 +169,4 @@ req.end ();
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -1,22 +1,18 @@
 ---
 title: Programové sledování v Azure Data Factory
 description: Naučte se monitorovat kanál v datové továrně pomocí různých sad SDK (Software Development Kit).
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
+author: dcstwh
+ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 8c13e0e3f1cb8809a126b11409becd2211864c32
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740432"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové sledování v Azure Data Factory
 
@@ -28,12 +24,23 @@ Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí růz
 
 ## <a name="data-range"></a>Rozsah dat
 
-Data Factory ukládá pouze data spuštění kanálu po dobu 45 dnů. Při dotazování programově na data týkající se Data Factory běhu kanálu – například pomocí příkazu PowerShellu `Get-AzDataFactoryV2PipelineRun` nejsou k dispozici žádná maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Pokud se ale dotaz na data za minulý rok nevrátí, například dotaz nevrátí chybu, ale vrátí jenom data spuštění kanálu za posledních 45 dní.
+Data Factory ukládá pouze data spuštění kanálu po dobu 45 dnů. Při dotazování programově na data týkající se Data Factory běhu kanálu – například pomocí příkazu PowerShellu `Get-AzDataFactoryV2PipelineRun` nejsou k dispozici žádná maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Pokud ale při dotazování na data za minulý rok nedostanete například chybu, ale jenom data o spuštění kanálu za posledních 45 dní.
 
-Pokud chcete zachovat data běhu kanálu po dobu více než 45 dnů, nastavte své vlastní diagnostické protokolování pomocí [Azure monitor](monitor-using-azure-monitor.md).
+Pokud chcete zachovat data o běhu kanálu po dobu více než 45 dnů, nastavte vlastní diagnostické protokolování pomocí [Azure monitor](monitor-using-azure-monitor.md).
+
+## <a name="pipeline-run-information"></a>Informace o spuštění kanálu
+
+Vlastnosti spuštění kanálu najdete v [referenčních informacích k rozhraní PipelineRun API](/rest/api/datafactory/pipelineruns/get#pipelinerun). Spuštění kanálu má během svého životního cyklu jiný stav. možné hodnoty stavu spuštění jsou uvedené níže:
+
+* Ve frontě
+* InProgress
+* Úspěšný
+* Neúspěšný
+* Probíhá zrušení
+* Zrušeno
 
 ## <a name="net"></a>.NET
-Úplný návod k vytvoření a monitorování kanálu pomocí sady .NET SDK najdete v tématu [Vytvoření datové továrny a kanálu pomocí .NET](quickstart-create-data-factory-dot-net.md).
+Kompletní návod, jak vytvořit a monitorovat kanál pomocí sady .NET SDK, najdete v tématu [Vytvoření datové továrny a kanálu pomocí .NET](quickstart-create-data-factory-dot-net.md).
 
 1. Přidejte následující kód, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud nedokončí kopírování dat.
 
@@ -45,7 +52,7 @@ Pokud chcete zachovat data běhu kanálu po dobu více než 45 dnů, nastavte sv
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -68,10 +75,10 @@ Pokud chcete zachovat data běhu kanálu po dobu více než 45 dnů, nastavte sv
     Console.ReadKey();
     ```
 
-Úplnou dokumentaci k sadě .NET SDK naleznete v tématu [Data Factory .NET SDK Reference](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
+Úplnou dokumentaci k sadě .NET SDK naleznete v tématu [Data Factory .NET SDK Reference](/dotnet/api/microsoft.azure.management.datafactory).
 
 ## <a name="python"></a>Python
-Úplný návod k vytvoření a monitorování kanálu pomocí Python SDK najdete v tématu [Vytvoření datové továrny a kanálu pomocí Pythonu](quickstart-create-data-factory-python.md).
+Kompletní návod, jak vytvořit a monitorovat kanál pomocí Python SDK, najdete v tématu [Vytvoření datové továrny a kanálu pomocí Pythonu](quickstart-create-data-factory-python.md).
 
 Pokud chcete monitorovat spuštění kanálu, přidejte následující kód:
 
@@ -86,10 +93,10 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informace k [sadě SDK](/python/api/overview/azure/datafactory?view=azure-python)pro Python Data Factory.
+Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informace k [sadě SDK](/python/api/overview/azure/datafactory)pro Python Data Factory.
 
 ## <a name="rest-api"></a>REST API
-Úplný návod k vytváření a monitorování kanálu pomocí REST API najdete v tématu [Vytvoření datové továrny a kanálu pomocí REST API](quickstart-create-data-factory-rest-api.md).
+Kompletní návod, jak vytvořit a monitorovat kanál pomocí REST API, najdete v tématu [Vytvoření datové továrny a kanálu pomocí REST API](quickstart-create-data-factory-rest-api.md).
  
 1. Spusťte následující skript, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud nedokončí kopírování dat.
 
@@ -99,7 +106,7 @@ Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informa
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -119,7 +126,7 @@ Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informa
 Úplnou dokumentaci k REST API najdete v [referenčních informacích Data Factory REST API](/rest/api/datafactory/).
 
 ## <a name="powershell"></a>PowerShell
-Úplný návod k vytváření a monitorování kanálu pomocí PowerShellu najdete v tématu [Vytvoření datové továrny a kanálu pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
+Kompletní návod k vytváření a monitorování kanálu pomocí PowerShellu najdete v tématu [Vytvoření datové továrny a kanálu pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
 
 1. Spusťte následující skript, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud nedokončí kopírování dat.
 
@@ -128,12 +135,12 @@ Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informa
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30
@@ -156,5 +163,4 @@ Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informa
 Úplnou dokumentaci k rutinám PowerShellu najdete v tématu [Data Factory powershellové Reference k rutinám](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Další kroky
-V tématu [monitorování kanálů pomocí Azure monitor](monitor-using-azure-monitor.md) článku se dozvíte, jak pomocí Azure monitor monitorovat Data Factory kanály. 
-
+V tématu [monitorování kanálů pomocí Azure monitor](monitor-using-azure-monitor.md) článku se dozvíte, jak pomocí Azure monitor monitorovat Data Factory kanály.

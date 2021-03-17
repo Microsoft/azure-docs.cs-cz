@@ -12,16 +12,17 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: ab0057f55ddb5bf76f6fa74b0211b5ea5af24288
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117766"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608210"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
-Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům sestavovat aplikace, které přihlásí uživatele, získat tokeny pro volání rozhraní API, například Microsoft Graph nebo rozhraní API, které vývojáři sestavili. Skládá se ze služby ověřování, open source knihoven, registrace aplikací a konfigurace (prostřednictvím portálu pro vývojáře a rozhraní API aplikace), úplné dokumentace pro vývojáře, ukázek pro rychlý Start, ukázek kódu, kurzů, návody a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
+[Platforma Microsoft Identity](../develop/index.yml) je vývojem vývojářské platformy Azure Active Directory (Azure AD). Umožňuje vývojářům sestavovat aplikace, které přihlásí uživatele, získat tokeny pro volání rozhraní API, například Microsoft Graph nebo rozhraní API, které vývojáři sestavili. Skládá se ze služby ověřování, open source knihoven, registrace aplikací a konfigurace (prostřednictvím portálu pro vývojáře a rozhraní API aplikace), úplné dokumentace pro vývojáře, ukázek pro rychlý Start, ukázek kódu, kurzů, návody a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 
 Spousta vývojářů už dřív pracovala s platformou Azure AD v 1.0 k ověřování pracovních a školních účtů (zřízené službou Azure AD) tím, že požaduje tokeny z koncového bodu Azure AD v 1.0 pomocí služby Azure AD Authentication Library (ADAL), Azure Portal pro registraci a konfiguraci aplikací a rozhraní Microsoft Graph API pro konfiguraci programových aplikací.
 
@@ -49,7 +50,7 @@ Prostředí Azure Portal **[Registrace aplikací](https://go.microsoft.com/fwlin
 
 Pro integraci s Azure AD B2C (při ověřování sociálních nebo místních identit) budete muset aplikaci zaregistrovat v tenantovi Azure AD B2C. Toto prostředí je také součástí Azure Portal.
 
-Pomocí [rozhraní API pro aplikace](/graph/api/resources/application?view=graph-rest-1.0) můžete programově nakonfigurovat aplikace integrované s platformou Microsoft identity pro ověřování jakékoli identity Microsoftu.
+Pomocí [rozhraní API pro aplikace](/graph/api/resources/application) můžete programově nakonfigurovat aplikace integrované s platformou Microsoft identity pro ověřování jakékoli identity Microsoftu.
 
 ### <a name="msal-libraries"></a>Knihovny MSAL
 
@@ -57,15 +58,10 @@ Pomocí knihovny MSAL můžete sestavovat aplikace, které ověřují všechny i
 
 Pomocí knihoven MSAL můžete také integrovat aplikaci s Azure AD B2C.
 
-Jsou všeobecně dostupné knihovny na straně serveru pro vytváření webových aplikací a webových rozhraní API: [ASP.NET](/aspnet/overview) a [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
-
 ### <a name="microsoft-identity-platform-endpoint"></a>Koncový bod platformy Microsoft identity
 
-Koncový bod Microsoft Identity Platform (v 2.0) je teď OIDC certifikovaný. Funguje s knihovnami Microsoft Authentication Library (MSAL) nebo jinými knihovnami kompatibilními s normami. V souladu s oborovým standardem implementuje lidské čitelné rozsahy.
+Koncový bod Microsoft Identity Platform (v 2.0) je OIDC certifikovaný. Funguje s knihovnami Microsoft Authentication Library (MSAL) nebo jinými knihovnami kompatibilními s normami. V souladu s oborovým standardem implementuje lidské čitelné rozsahy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o verzích v1.0 a v2.0.
-
-* [Microsoft Identity Platform (v 2.0)](../develop/v2-overview.md) – přehled
-* Přehled [Azure Active Directory pro vývojáře (v 1.0)](v1-overview.md)
+Další informace najdete v [dokumentaci k platformě Microsoft Identity Platform](../develop/index.yml).

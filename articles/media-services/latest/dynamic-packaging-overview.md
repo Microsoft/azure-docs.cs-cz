@@ -1,8 +1,7 @@
 ---
 title: Dynamické balení v Azure Media Services V3
-titleSuffix: Azure Media Services
 description: Tento článek obsahuje přehled dynamického balení v Azure Media Services.
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -11,24 +10,23 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
-ms.date: 08/18/2020
+ms.topic: conceptual
+ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604580"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633049"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Microsoft Azure Media Services lze použít ke kódování mnoha mediálních formátů souborů. Dodává je prostřednictvím různých protokolů streamování s ochranou obsahu nebo bez nich, aby se dosáhlo všech hlavních zařízení (jako jsou zařízení s iOS a Androidem). Tito klienti rozumí různým protokolům. Například iOS vyžaduje doručení datových proudů ve formátu HTTP Live Streaming (HLS) a zařízení s Androidem podporují HLS a také formát MPEG POMLČKy.
 
-V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování (Standard nebo Premium).
-
-> [!NOTE]
-> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování.
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Příprava zdrojových souborů na doručení
 
@@ -54,6 +52,9 @@ Váš klient streamování může určit následující formáty HLS:
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> V předchozích pokynech od společnosti Apple se doporučuje, aby záloha pro sítě s malou šířkou pásma poskytovala datový proud, který je jen pro zvuk.  V současné době Media Services kodér automaticky vygeneruje zvuk, který se jenom sleduje.  Pokyny pro Apple nyní obsahují informace o tom, *že by nemělo být* zahrnuté zvukové stopy, zejména pro distribuci Apple TV.  Chcete-li zabránit přehrávači ve výchozím nastavení zvukového zvuku, doporučujeme použít značku "pouze zvuk = false" v adrese URL, která odebere pouze zvukovou verzi v HLS, nebo jednoduše použít HLS-v3. Například, `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>Protokol MPEG-SPOJOVNÍK
 
@@ -83,7 +84,7 @@ Následující kroky ukazují běžný pracovní postup streamování Media Serv
 1. [Nahrajte vstupní soubor](job-input-from-http-how-to.md) , jako je MP4, QuickTime nebo MOV, nebo jiný podporovaný formát souboru. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
 1. [Zakódovat](#encode-to-adaptive-bitrate-mp4s) soubor Mezzanine do sady H. 264/AAC MP4 s adaptivní přenosovou rychlostí.
 
-    Pokud již máte kódované soubory a chcete soubory pouze zkopírovat a streamovat, použijte rozhraní API: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) a [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) . V důsledku toho se vytvoří nový soubor MP4 s manifestem streamování (soubor. ISM).
+    Pokud již máte kódované soubory a chcete soubory pouze zkopírovat a streamovat, použijte rozhraní API: [CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) a [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) . V důsledku toho se vytvoří nový soubor MP4 s manifestem streamování (soubor. ISM).
 1. Publikujte výstupní Asset, který obsahuje sadu MP4 s adaptivní přenosovou rychlostí. Publikujete vytvořením [lokátoru streamování](streaming-locators-concept.md).
 1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). *Koncový bod streamování* by postaral o poskytování správného manifestu a požadavků pro všechny tyto různé formáty.
     
@@ -130,7 +131,7 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 Dynamické balení podporuje videosoubory, které jsou ve formátu souboru kontejneru MP4, a obsahuje video, které je kódované pomocí [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
-> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*. [Kodér úrovně Premium](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
+> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Zvukové kodeky podporované dynamickým balením
 
@@ -172,7 +173,7 @@ Media Services dynamické balení v současné době nepodporuje soubory, které
 
 ## <a name="manifests"></a>Manifesty
 
-V Media Services *dynamického balení*se dynamicky generují manifesty klienta streamování pro HLS, MPEG-pomlčky a Smooth Streaming na základě selektoru formátu v adrese URL.  
+V Media Services *dynamického balení* se dynamicky generují manifesty klienta streamování pro HLS, MPEG-pomlčky a Smooth Streaming na základě selektoru formátu v adrese URL.  
 
 Soubor manifestu obsahuje streamovaná metadata, jako je například typ stopy (zvuk, video nebo text), název stopy, počáteční a koncový čas, rychlost (kvality), sledovací jazyky, okno prezentace (posuvné okno pevné doby trvání) a kodek videa (FourCC). Také instruuje přehrávač, aby načetl další fragment poskytnutím informací o dalších dostupných fragmentech videa a jejich umístění. Fragmenty (nebo segmenty) jsou skutečnými "bloky obsahu videa.
 

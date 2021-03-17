@@ -3,19 +3,19 @@ title: Správa záloh sdílených složek Azure pomocí PowerShellu
 description: Naučte se používat PowerShell ke správě a monitorování sdílených složek Azure zálohovaných službou Azure Backup.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2f07e56fb9a8715b1b53165ab5f4b45b4e20ccb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89000222"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Správa záloh sdílených složek Azure pomocí PowerShellu
 
 Tento článek popisuje, jak pomocí Azure PowerShell spravovat a monitorovat sdílené složky Azure, které jsou zálohované službou Azure Backup.
 
 > [!WARNING]
-> Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. Další podrobnosti najdete [v části](backup-azure-afs-automation.md#important-notice-backup-item-identification) popisující požadavek na tuto změnu.
+> Ujistěte se, že je verze prostředí PowerShell upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. Další podrobnosti najdete [v části](backup-azure-afs-automation.md#important-notice-backup-item-identification) popisující požadavek na tuto změnu.
 
 ## <a name="modify-the-protection-policy"></a>Upravit zásady ochrany
 
@@ -87,7 +87,7 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-Atribut ID úlohy ve výstupu odpovídá ID úlohy, která je vytvořena službou zálohování pro operaci zastavení ochrany. Ke sledování stavu úlohy použijte rutinu [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) .
+Atribut ID úlohy ve výstupu odpovídá ID úlohy, kterou vytvořila služba zálohování pro operaci zastavení ochrany. Ke sledování stavu úlohy použijte rutinu [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) .
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>Zastavit ochranu bez zachování bodů obnovení
 

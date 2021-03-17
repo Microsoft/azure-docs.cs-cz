@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372072"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556939"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Vypsání přiřazení rolí Azure pomocí Azure PowerShell
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí Azure PowerShell.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "87372072"
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [PowerShell v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
+- [PowerShell v Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-role-assignments-for-the-current-subscription"></a>Seznam přiřazení rolí pro aktuální předplatné
 
@@ -188,4 +188,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)
+- [Přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)

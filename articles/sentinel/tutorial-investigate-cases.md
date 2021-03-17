@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566331"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790982"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
 > [!IMPORTANT]
-> Graf šetření je aktuálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+> Graf šetření je nyní **obecně dostupný**. 
 
 Tento kurz vám pomůže prozkoumat incidenty pomocí služby Azure Sentinel. Po připojení zdrojů dat ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám umožní vytvářet Pokročilá pravidla výstrah, která generují incidenty, které můžete přiřadit a prozkoumat.
 
@@ -42,11 +39,11 @@ Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantn�
 ## <a name="prerequisites"></a>Požadavky
 - Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
 
-- Pokud máte uživatele typu Host, který potřebuje přiřadit incidenty, musí být uživateli přiřazena role [čtečky adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) v TENANTOVI Azure AD. Ve výchozím nastavení mají tuto roli přiřazený běžný uživatel (bez hosta).
+- Pokud máte uživatele typu Host, který potřebuje přiřadit incidenty, musí být uživateli přiřazena role [čtečky adresáře](../active-directory/roles/permissions-reference.md#directory-readers) v TENANTOVI Azure AD. Ve výchozím nastavení mají tuto roli přiřazený běžný uživatel (bez hosta).
 
 ## <a name="how-to-investigate-incidents"></a>Postup při vyšetřování incidentů
 
-1. Vyberte **incidenty**. Na stránce **incidenty** se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu**a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, jaké incidenty se mají zpracovat jako první.
+1. Vyberte **incidenty**. Na stránce **incidenty** se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu** a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, jaké incidenty se mají zpracovat jako první.
 
     ![Zobrazit závažnost incidentu](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -83,7 +80,9 @@ Použití grafu šetření:
 1. Vyberte incident a pak vyberte **prozkoumat**. Tím přejdete do grafu šetření. Graf poskytuje ilustrativní mapu entit přímo připojených k výstraze a dalších prostředků, které jsou propojeny.
 
    > [!IMPORTANT] 
-   > Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+   > - Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+   >
+   > - Služba Azure Sentinel aktuálně podporuje vyšetřování **incidentů, které jsou staré až 30 dnů**.
 
    ![Zobrazení mapy](media/tutorial-investigate-cases/map1.png)
 
@@ -113,17 +112,17 @@ Použití grafu šetření:
 
 Po vyřešení konkrétního incidentu (například když vaše šetření dosáhlo svého uzavření) byste měli nastavit stav incidentu na **Uzavřeno**. Když to uděláte, budete požádáni o klasifikaci incidentu tím, že zadáte důvod, který ho zavíráte. Tento krok je povinný. Klikněte na **Vybrat klasifikaci** a v rozevíracím seznamu vyberte jednu z následujících možností:
 
-- Pravdivá pozitivní podezřelá aktivita
-- Neškodné kladné podezřelé, ale očekávané
-- Falešně pozitivní – nekorektní logika výstrahy
+- Pravdivě pozitivní – podezřelá aktivita
+- Neškodně pozitivní – podezřelé, ale očekávané
+- Falešně pozitivní – nesprávná logika výstrahy
 - Falešně pozitivní – nesprávná data
-- Neurčené
+- Neurčeno
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{ALT-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Snímek obrazovky, který zvýrazní klasifikace dostupné v seznamu vybrat klasifikace.":::
 
 Po zvolení příslušné klasifikace přidejte do pole **Komentář** nějaký popisný text. To bude užitečné v případě, že se potřebujete vrátit k tomuto incidentu. Až budete hotovi, klikněte na **použít** a incident se uzavře.
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{ALT-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak začít s vyšetřováním incidentů pomocí služby Azure Sentinel. Přejděte k kurzu, [jak reagovat na hrozby pomocí automatizovaného playbooky](tutorial-respond-threats-playbook.md).

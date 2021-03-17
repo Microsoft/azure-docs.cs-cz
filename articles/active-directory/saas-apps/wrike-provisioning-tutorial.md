@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: e3ec25504decca0747c8a853bb88ab3e7a10966a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546317"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95988089"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Kurz: Konfigurace Wrike pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které provedete v Wrike a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a rušení zřizování uživatelů nebo skupin do Wrike.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -72,7 +72,7 @@ Než nakonfigurujete Wrike pro Automatické zřizování uživatelů pomocí Azu
 
     ![Wrike vytvořit token](media/Wrike-provisioning-tutorial/password.png)
 
-6.  Zkopírujte **tajný token**a vložte ho do Azure AD. Výběrem **Uložit** dokončete nastavení zřizování na Wrike.
+6.  Zkopírujte **tajný token** a vložte ho do Azure AD. Výběrem **Uložit** dokončete nastavení zřizování na Wrike.
 
     ![Trvalý přístupový token](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
@@ -87,7 +87,7 @@ Pokud chcete přidat Wrike z Galerie aplikací Azure AD, postupujte podle těcht
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -109,7 +109,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Wrike ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Všechny aplikace](common/enterprise-applications.png)
 
@@ -117,15 +117,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Odkaz Wrike v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Režim zřizování nastavený na automatické](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte **základní adresu URL** a hodnoty **trvalého přístupového tokenu** , které byly dříve načteny v **adrese URL tenanta** a **tajném tokenu**v uvedeném pořadí. Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k Wrike. Pokud se připojení nepovede, ujistěte se, že má váš účet Wrike oprávnění správce, a zkuste to znovu.
+5. V části přihlašovací údaje správce zadejte **základní adresu URL** a hodnoty **trvalého přístupového tokenu** , které byly dříve načteny v **adrese URL tenanta** a **tajném tokenu** v uvedeném pořadí. Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k Wrike. Pokud se připojení nepovede, ujistěte se, že má váš účet Wrike oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -161,11 +161,11 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Wrike. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

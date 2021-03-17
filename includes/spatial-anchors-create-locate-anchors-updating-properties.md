@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 8ebb10f955be8f3004fdbdc595ea0fefc0d2b7ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174720"
 ---
 ## <a name="update-properties"></a>Aktualizovat vlastnosti

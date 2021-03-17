@@ -4,7 +4,7 @@ description: Popisuje, jak provést bezobslužnou instalaci konektoru služby Az
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0ac442e895850de04bedf7673ffe267ac8697d26
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054830"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258146"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor Azure Proxy aplikací služby AD
 
@@ -39,13 +39,13 @@ Aby [konektor proxy aplikací](application-proxy-connectors.md) fungoval, musí 
 Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor. Za druhé Zaregistrujte konektor u služby Azure AD.
 
 > [!IMPORTANT]
-> Pokud instalujete konektor pro Azure Government Cloud zkontrolujte [požadavky](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [kroky instalace](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). K tomu je potřeba povolit přístup k jiné sadě adres URL a další parametr ke spuštění instalace.
+> Pokud instalujete konektor pro Azure Government Cloud zkontrolujte [požadavky](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) a [kroky instalace](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud). K tomu je potřeba povolit přístup k jiné sadě adres URL a další parametr ke spuštění instalace.
 
 ## <a name="install-the-connector"></a>Instalace konektoru
 K instalaci konektoru bez jeho registrace použijte následující postup:
 
 1. Otevřete příkazový řádek.
-2. Spusťte následující příkaz, ve kterém parametr/q znamená tichou instalaci. Tichá instalace vás nevyzve, abyste přijali Licenční smlouvu s koncovým uživatelem.
+2. Spusťte následující příkaz, ve kterém parametr/q znamená tichou instalaci. Po tiché instalaci se zobrazí výzva, abyste přijali Licenční smlouvu End-User.
 
    ```
    AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q

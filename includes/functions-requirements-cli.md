@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 3f5c7021461b407e90d61ed045c112aab3c1c4e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f102a5dd5b7dccba6643176d06d17a2a65171c90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056009"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904060"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
@@ -17,15 +17,15 @@ Než začnete, musíte mít následující:
 
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
-+ Verze [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 nebo novější verze 2. x.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java,programming-language-other"  
++ Verze [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 nebo novější.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + Verze Azure Functions Core Tools, která odpovídá nainstalované verzi Pythonu:
 
-   | Verze Pythonu | Verze základních nástrojů |
+   | Python version (Verze Pythonu) | Verze základních nástrojů |
    | -------------- | ------------------ |
-   | Python 3,8     | [verze 3. x](../articles/azure-functions/functions-run-local.md#v2) |
+   | Python 3.8     | [verze 3. x](../articles/azure-functions/functions-run-local.md#v2) |
    | Python 3,6<br/>Python 3.7 | [Verze 2.7.1846 nebo novější](../articles/azure-functions/functions-run-local.md#v2) |
   
 ::: zone-end
@@ -39,17 +39,14 @@ Než začnete, musíte mít následující:
 + [Python 3,8 (64)](https://www.python.org/downloads/release/python-382/), [python 3,7 (64-bit)](https://www.python.org/downloads/release/python-375/), [Python 3,6 (64-bit)](https://www.python.org/downloads/release/python-368/), které jsou podporovány nástrojem Azure Functions. 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
-
-+ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
++ [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8. 
-
-    > [!IMPORTANT]
-    > + Podpora funkcí pro Java 11 je momentálně ve verzi Preview a Maven Archetype ve výchozím nastavení vytvoří nasazení Java 8. Chcete-li místo toho spustit aplikaci Function App na Java 11, je nutné ručně aktualizovat soubor pom.xml s hodnotami jazyka Java 11. Další informace najdete v tématu [verze Java](../articles/azure-functions/functions-reference-java.md#java-versions). 
-    > + `JAVA_HOME`Aby se tento rychlý Start dokončil, musí být proměnná prostředí nastavená na umístění instalace správné verze JDK.
++ [Sada Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 nebo 11. 
 
 + [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 
+::: zone-end
+::: zone pivot="programming-language-other"
++ Vývojové nástroje pro jazyk, který používáte. V tomto kurzu se jako příklad používá [programovací jazyk R](https://www.r-project.org/) .
 ::: zone-end

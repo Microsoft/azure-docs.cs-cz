@@ -10,15 +10,20 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cc73dcf6376dc5a222b1b68d67e4f02090258807
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: bcb82ffcf4c4ad861c6523f507c816c666a71772
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407859"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351380"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Bingu pro vyhledávání obrázků umožňuje hledat na webu vysoce kvalitní relevantní obrázky. V tomto kurzu vytvoříte jednostránkovou webovou aplikaci, která může odesílat vyhledávací dotazy do rozhraní API a zobrazovat výsledky v rámci webové stránky. Tento kurz je podobný [odpovídajícímu kurzu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) pro rozhraní API Bingu pro vyhledávání na webu.
 
@@ -32,7 +37,7 @@ Ukázková aplikace předvádí, jak:
 
 Úplný zdrojový kód k tomuto kurzu je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/)
 * Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme pro GitHub.
@@ -117,7 +122,7 @@ Ve výchozím nastavení obslužná rutina `onsubmit` vrátí `false`, což zabr
 
 ![[Formulář Bingu pro vyhledávání obrázků]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
+Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
 
 | Možnost | Popis |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -411,6 +416,6 @@ Při používání ukázkové aplikace nechte příkazové okno otevřené. Zav�
 > [!div class="nextstepaction"]
 > [Extrahování podrobností o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků](tutorial-image-post.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

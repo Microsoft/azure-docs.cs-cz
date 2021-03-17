@@ -1,7 +1,7 @@
 ---
-title: Šablona licence Microsoft PlayReady pro Azure Media Services V3
-description: Toto téma poskytuje přehled šablony licencí PlayReady, která se používá ke konfiguraci licencí PlayReady.
-author: juliako
+title: Media Services šablonu licence Microsoft PlayReady
+description: Přečtěte si o Azure Media Services V3 pomocí šablony licence PlayReady a o tom, jak nakonfigurovat licence PlayReady.
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/16/2018
-ms.author: juliako
-ms.openlocfilehash: ba4b8de4b8cf1d1d1b8124185a8006eb7695b21e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 23b0f92a4beca6e1c986993a42cc8ac66e619177
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074512"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455429"
 ---
-# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 se šablonou licence PlayReady 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 se šablonou licence PlayReady
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services vám umožní šifrovat obsah pomocí **Microsoft PlayReady**. Media Services také poskytuje službu pro doručování licencí PlayReady. K nakonfigurování licencí PlayReady můžete použít rozhraní Media Services API. Když se hráč pokusí přehrát obsah chráněný pomocí PlayReady, pošle se mu požadavek na doručení licence. Pokud licenční služba žádost schválí, vydá licenci, která je odeslána klientovi a slouží k dešifrování a přehrání zadaného obsahu.
 
@@ -62,7 +65,7 @@ XML odpovídá schématu XML šablony licence PlayReady definované v oddílu [s
 
 Media Services poskytuje typy, které můžete použít ke konfiguraci šablony licencí PlayReady. 
 
-Následující fragment kódu používá Media Services třídy .NET ke konfiguraci šablony licence PlayReady. Třídy jsou definovány v oboru názvů [Microsoft. Azure. Management. Media. Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) . Fragment kódu konfiguruje PlayRight licence PlayReady. PlayRight uděluje uživateli možnost přehrávání obsahu v závislosti na všech omezeních nakonfigurovaných v licenci a na PlayRight samotného (pro zásady specifické pro přehrávání). Většina zásad na PlayRight se týká omezení výstupu, které řídí typy výstupů, přes které lze obsah přehrát. Zahrnuje také omezení, která musí být zavedena při použití daného výstupu. Pokud je například povoleno DigitalVideoOnlyContentRestriction, modul runtime DRM umožňuje zobrazit pouze video přes digitální výstupy. (Výstupy analogového videa neumožňují předání obsahu.)
+Následující fragment kódu používá Media Services třídy .NET ke konfiguraci šablony licence PlayReady. Třídy jsou definovány v oboru názvů [Microsoft. Azure. Management. Media. Models](/dotnet/api/microsoft.azure.management.media.models) . Fragment kódu konfiguruje PlayRight licence PlayReady. PlayRight uděluje uživateli možnost přehrávání obsahu v závislosti na všech omezeních nakonfigurovaných v licenci a na PlayRight samotného (pro zásady specifické pro přehrávání). Většina zásad na PlayRight se týká omezení výstupu, které řídí typy výstupů, přes které lze obsah přehrát. Zahrnuje také omezení, která musí být zavedena při použití daného výstupu. Pokud je například povoleno DigitalVideoOnlyContentRestriction, modul runtime DRM umožňuje zobrazit pouze video přes digitální výstupy. (Výstupy analogového videa neumožňují předání obsahu.)
 
 > [!IMPORTANT]
 > Licence PlayReady má efektivní omezení. Pokud jsou ochrana výstupu příliš omezující, může být obsah pro některé klienty nezobrazitelný. Další informace najdete v článku [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/).

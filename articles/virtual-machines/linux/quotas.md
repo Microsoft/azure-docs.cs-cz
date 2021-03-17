@@ -3,20 +3,24 @@ title: Kvóty virtuálních procesorů
 description: Přečtěte si o kvótách vCPU pro Azure.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: quota
 ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1b9c0d50754d582ca7ada5d0b46c6f998b59d3ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292315"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549562"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
+# <a name="check-vcpu-quotas-using-the-azure-cli"></a>Ověření vCPU kvót pomocí Azure CLI
 
 Kvóty vCPU pro virtuální počítače a sady škálování virtuálních počítačů jsou seřazené do dvou vrstev pro každé předplatné v každé oblasti. První z nich je celková oblast vCPU a druhá úroveň je různými jádry velikosti virtuálních počítačů, jako je vCPU řady D-Series. Kdykoliv je nasazený nový virtuální počítač, vCPU pro virtuální počítač nesmí překročit kvótu vCPU pro rodinu velikosti virtuálního počítače nebo celkovou kvótu vCPU v oblasti regionálního provozu. Pokud dojde k překročení některé z těchto kvót, nasazení virtuálního počítače se nepovolí. K dispozici je také kvóta pro celkový počet virtuálních počítačů v dané oblasti. Podrobnosti o každé z těchto kvót najdete v části **využití a kvóty** stránky **předplatné** v [Azure Portal](https://portal.azure.com), nebo můžete zadat dotaz na hodnoty pomocí Azure CLI.
+
+> [!NOTE]
+> Kvóta se počítá na základě celkového počtu jader používaných i přidělených. Pokud potřebujete další jádra, [požádejte o zvýšení kvóty](../../azure-portal/supportability/resource-manager-core-quotas-request.md) nebo odstraňte virtuální počítače, které už nepotřebujete. 
 
 
 ## <a name="check-usage"></a>Kontrola využití

@@ -1,11 +1,20 @@
 ---
-ms.openlocfilehash: 93c88f34e32e2057efd3eae25b1f41f58b948575
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c99d2489efe7c46b8d50b08861fcbbcd6f8a1966
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682206"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531796"
 ---
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. Spusťte ladicí relaci, a to tak, že vyberete klávesu F5. Okno **terminálu** vytiskne některé zprávy.
 1. *operations.jsv* kódu volá přímé metody `GraphTopologyList` a `GraphInstanceList` . Pokud jste vyčistili prostředky po předchozích rychlých startech, pak tento proces vrátí prázdné seznamy a potom se pozastaví. Vyberte klávesu Enter.
     
@@ -14,7 +23,7 @@ ms.locfileid: "88682206"
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -32,7 +41,7 @@ ms.locfileid: "88682206"
   
   ```
   {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "Sample-Graph",
     "properties": {
       "topologyName": "EVRToFilesOnMotionDetection",

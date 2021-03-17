@@ -8,18 +8,19 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286491"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531555"
 ---
 # <a name="symmetric-key-attestation"></a>Osvědčení symetrického klíče
 
 Tento článek popisuje proces ověření identity při použití symetrických klíčů se službou Device Provisioning. 
 
-Symetrický ověření identity je jednoduchý přístup k ověřování zařízení pomocí instance služby Device Provisioning. Tato metoda ověření identity představuje prostředí "Hello World" pro vývojáře, kteří jsou noví v zřizování zařízení, nebo nemají přísné požadavky na zabezpečení. Ověření zařízení pomocí [čipu TPM](concepts-tpm-attestation.md) nebo [certifikátu X. 509](concepts-security.md#x509-certificates) je bezpečnější a mělo by se používat pro přísnější požadavky na zabezpečení.
+Symetrický ověření identity je jednoduchý přístup k ověřování zařízení pomocí instance služby Device Provisioning. Tato metoda ověření identity představuje prostředí "Hello World" pro vývojáře, kteří jsou noví v zřizování zařízení, nebo nemají přísné požadavky na zabezpečení. Ověření zařízení pomocí [čipu TPM](concepts-tpm-attestation.md) nebo [certifikátu X. 509](concepts-x509-attestation.md) je bezpečnější a mělo by se používat pro přísnější požadavky na zabezpečení.
 
 Zápisy symetrického klíče také poskytují skvělý způsob, jak používat starší verze zařízení s omezeným zabezpečením, pro spouštění do cloudu prostřednictvím Azure IoT. Další informace o ověření symetrického klíče pomocí starších zařízení najdete v tématu [použití symetrických klíčů se staršími zařízeními](how-to-legacy-device-symm-key.md).
 
@@ -108,12 +109,12 @@ Vezměte v úvahu následující diagram, který zobrazuje tabulku klíčů zař
 
 Identita každého zařízení je reprezentovaná ID registrace a odvozeným klíčem zařízení, který je nainstalovaný v továrně. Klíč zařízení se nikdy nekopíruje do jiného umístění a klíč skupiny se na zařízení nikdy neukládá.
 
-Pokud v továrně nejsou nainstalované klíče zařízení, musí se k bezpečnému uložení identity zařízení použít modul hardwarového [zabezpečení HSM](concepts-security.md#hardware-security-module) .
+Pokud v továrně nejsou nainstalované klíče zařízení, musí se k bezpečnému uložení identity zařízení použít modul hardwarového [zabezpečení HSM](concepts-service.md#hardware-security-module) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste obeznámeni s ověřením symetrického klíče, Projděte si následující články, kde najdete další informace:
 
 * [Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči](quick-create-simulated-device-symm-key.md)
-* [Přečtěte si o konceptech při automatickém zřizování](./concepts-auto-provisioning.md)
+* [Přečtěte si o konceptech zřizování](about-iot-dps.md#provisioning-process)
 * [Začínáme s automatickým zřizováním](./quick-setup-auto-provision.md) 

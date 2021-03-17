@@ -1,19 +1,16 @@
 ---
 title: Replikace zálohování & pro Apache HBA, Phoenix – Azure HDInsight
 description: Nastavení zálohování a replikace pro Apache HBA a Apache Phoenix ve službě Azure HDInsight
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 1d5bcf9c04ad02eaf297f8971aa0f4ff599888c7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705720"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942989"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikace pro Apache HBA a Apache Phoenix v HDInsight
 
@@ -52,7 +49,7 @@ Po odstranění clusteru můžete ponechat data na místě nebo zkopírovat data
 
 * Vytvořte novou instanci HDInsight ukazující na aktuální umístění úložiště. Vytvoří se nová instance se všemi existujícími daty.
 
-* Zkopírujte `hbase` složku do jiného Azure Storage kontejneru objektů BLOB nebo umístění Data Lake Storage a pak spusťte nový cluster s těmito daty. Pro Azure Storage použijte [AzCopy](../../storage/common/storage-use-azcopy.md)a pro data Lake Storage použijte [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* Zkopírujte `hbase` složku do jiného Azure Storage kontejneru objektů BLOB nebo umístění Data Lake Storage a pak spusťte nový cluster s těmito daty. Pro Azure Storage použijte [AzCopy](../../storage/common/storage-use-azcopy-v10.md)a pro data Lake Storage použijte [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
 ## <a name="export-then-import"></a>Exportovat a pak importovat
 
@@ -219,6 +216,12 @@ Pokud ke zdrojovému clusteru nemáte připojený sekundární Azure Storage ú�
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
+Pokud je cílový cluster clusterem ADLS Gen 2, změňte předchozí příkaz tak, aby se nastavily konfigurace používané službou ADLS Gen 2:
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<account_name>.dfs.core.windows.net=<key> -Dfs.azure.account.auth.type.<account_name>.dfs.core.windows.net=SharedKey -Dfs.azure.always.use.https.<account_name>.dfs.core.windows.net=false -Dfs.azure.account.keyprovider.<account_name>.dfs.core.windows.net=org.apache.hadoop.fs.azurebfs.services.SimpleKeyProvider -snapshot 'Snapshot1' -copy-to 'abfs://<container>@<account_name>.dfs.core.windows.net/hbase'
+```
+
 Po exportu snímku, SSH do hlavního uzlu cílového clusteru a obnovte snímek pomocí `restore_snapshot` příkazu, jak je popsáno výše.
 
 Snímky poskytují úplnou zálohu tabulky v okamžiku `snapshot` příkazu. Snímky neposkytují možnost provádět přírůstkové snímky ve Windows čase, ani Neurčovat podmnožiny sloupců, které se mají zahrnout do snímku.
@@ -245,4 +248,4 @@ Pokud chcete povolit replikaci ve službě HDInsight, použijte pro spuštěný 
 ## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace replikace Apache HBA](apache-hbase-replication.md)
-* [Práce s nástrojem pro import a export adaptérů HBA](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [Práce s nástrojem pro import a export adaptérů HBA](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

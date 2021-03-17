@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e598f16c6b441cf986c7ac82d67c037f75be8982
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080035"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547437"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání pojmenovaných entit
 
@@ -32,7 +32,7 @@ Dovednost pro **rozpoznávání pojmenovaných entit** extrahuje pojmenované en
 Microsoft. dovednosti. text. NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -41,7 +41,7 @@ U parametrů se rozlišují malá a velká písmena.
 | Název parametru     | Description |
 |--------------------|-------------|
 | categories    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"` , `"Location"` , `"Organization"` . Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu Podporují se tyto jazyky:`de, en, es, fr, it`|
+|defaultLanguageCode |  Kód jazyka vstupního textu Podporují se tyto jazyky: `de, en, es, fr, it`|
 | minimumPrecision  | Číslo mezi 0 a 1. Pokud je přesnost nižší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0.|
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
@@ -81,7 +81,7 @@ U parametrů se rozlišují malá a velká písmena.
     ]
   }
 ```
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -150,8 +150,8 @@ U parametrů se rozlišují malá a velká písmena.
 ```
 
 
-## <a name="error-cases"></a>Chybové případy
-Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
+## <a name="warning-cases"></a>Případy upozornění
+Pokud kód jazyka pro dokument není podporován, je vrácena upozornění a extrahovány žádné entity.
 
 ## <a name="see-also"></a>Viz také
 

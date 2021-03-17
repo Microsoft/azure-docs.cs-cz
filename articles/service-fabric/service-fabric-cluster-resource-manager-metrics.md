@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75452001"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173003"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a načítání v Service Fabric se metrikami
 *Metriky* jsou prostředky, o kterých se vaše služby týkají a které jsou poskytovány uzly v clusteru. Metrika je cokoli, co chcete spravovat, aby bylo možné zlepšit nebo sledovat výkon služeb. Můžete například sledovat spotřebu paměti a zjistit, jestli je vaše služba přetížená. Dalším použitím je zjistit, zda se může služba přesunout jinam, kde je paměť méně omezená, aby bylo možné dosáhnout vyššího výkonu.
@@ -26,7 +27,7 @@ Příklady metrik se týkají například paměti, disku a využití procesoru. 
 
 | Metrika | Bezstavová zátěžová instance | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Vysoká |
+| PrimaryCount |0 |0 |1 |Vysoké |
 | ReplicaCount |0 |1 |1 |Střední |
 | Počet |1 |1 |1 |Nízká |
 
@@ -134,15 +135,16 @@ Jako připomenutí: Pokud chcete používat jenom výchozí metriky, nemusíte s
 
 Teď projdeme každé z těchto nastavení podrobněji a podíváme se na chování, které ovlivňuje.
 
-## <a name="load"></a>Načtení
-Celý bod definující metriky představuje určité zatížení. *Zatížení* je způsob, jakým je velká část dané metriky spotřebovaná určitou instancí služby nebo replikou na daném uzlu. Zatížení je možné nakonfigurovat prakticky v jakémkoli bodě. Příklad:
+## <a name="load"></a>Načítání
+Celý bod definující metriky představuje určité zatížení. *Zatížení* je způsob, jakým je velká část dané metriky spotřebovaná určitou instancí služby nebo replikou na daném uzlu. Zatížení je možné nakonfigurovat prakticky v jakémkoli bodě. Například:
 
-  - Zatížení lze definovat při vytvoření služby. Nazývá se to _výchozí zatížení_.
-  - Informace o metrikách, včetně výchozích zatížení, se pro službu můžou po vytvoření služby aktualizovat. To se označuje jako _aktualizace služby_. 
-  - Načtení pro daný oddíl lze obnovit na výchozí hodnoty pro danou službu. Označuje se jako _resetování zatížení oddílu_.
-  - Zatížení se dá v závislosti na instančních objektech dynamicky nahlásit za běhu. Označuje se jako _načítání sestav_. 
-  
-Všechny tyto strategie lze použít ve stejné službě v průběhu své životnosti. 
+  - Zatížení lze definovat při vytvoření služby. Tento typ konfigurace zatížení se nazývá _výchozí zatížení_.
+  - Informace o metrikách, včetně výchozích zatížení, lze pro službu aktualizovat po vytvoření služby. Tato aktualizace metriky se provádí _aktualizací služby_.
+  - Načtení pro daný oddíl lze obnovit na výchozí hodnoty pro danou službu. Tato aktualizace metriky se nazývá _resetování zatížení oddílu_.
+  - Zatížení je možné nahlásit na základě objektu na jednotlivé služby, a to dynamicky během doby běhu. Tato aktualizace metriky se nazývá _načítání sestav_.
+  - Zatížení pro repliky nebo instance oddílu lze také aktualizovat pomocí hodnot zatížení vytváření sestav prostřednictvím volání rozhraní API prostředků infrastruktury. Tato aktualizace metriky se označuje jako _načítání sestav pro oddíl_.
+
+Všechny tyto strategie lze použít ve stejné službě v průběhu své životnosti.
 
 ## <a name="default-load"></a>Výchozí zatížení
 *Výchozí zatížení* je množství metriky jednotlivých objektů služby (Bezstavová instance nebo stavová replika) této služby. Cluster Správce prostředků používá toto číslo pro zatížení objektu služby, dokud neobdrží jiné informace, jako je například sestava dynamického načtení. Pro jednodušší služby je výchozí zatížení Statická definice. Výchozí zatížení se nikdy neaktualizovalo a používá se pro dobu života služby. Výchozí zátěž funguje skvěle pro jednoduché scénáře plánování kapacity, kdy určité množství prostředků je vyhrazeno pro různé úlohy a nemění se.
@@ -174,6 +176,67 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 ```
 
 Služba může vykazovat jakoukoli metriku, která je pro ni definována v okamžiku vytvoření. Pokud služba hlásí metriku, že není nakonfigurovaná k použití, Service Fabric tuto sestavu ignoruje. Pokud jsou hlášeny jiné metriky v platném okamžiku, jsou tyto zprávy přijaty. Kód služby může měřit a hlásit všechny metriky, které ví, jak a můžou určit konfiguraci metriky, která se má použít, aniž byste museli měnit kód služby. 
+
+## <a name="reporting-load-for-a-partition"></a>Načítání sestav pro oddíl
+Předchozí část popisuje, jak se repliky služby nebo instance načítají sami. Existuje další možnost, jak dynamicky nahlásit zatížení pomocí FabricClient. Při načítání sestav pro oddíl můžete hlásit více oddílů najednou.
+
+Tyto sestavy budou použity stejným způsobem jako sestavy načtení, které pocházejí z replik nebo samotných instancí. Hlášené hodnoty budou platné, dokud nebudou hlášeny nové hodnoty načtení, buď replikou, nebo instancí, nebo zasláním nové hodnoty zatížení pro oddíl.
+
+V tomto rozhraní API existuje několik způsobů, jak v clusteru aktualizovat zátěž:
+
+  - Oddíl stavové služby může aktualizovat své primární replikační zatížení.
+  - Bezstavové a stavové služby mohou aktualizovat zatížení všech sekundárních replik nebo instancí.
+  - Bezstavové a stavové služby mohou aktualizovat zatížení konkrétní repliky nebo instance v uzlu.
+
+Také je možné kombinovat jakékoli aktualizace na oddíl ve stejnou dobu.
+
+Aktualizace zatížení pro více oddílů je možné provést s jedním voláním rozhraní API. v takovém případě bude výstup obsahovat odpověď na oddíl. V případě, že aktualizace oddílu případu není z jakéhokoli důvodu úspěšná, aktualizace pro tento oddíl se přeskočí a bude k dispozici odpovídající kód chyby pro cílový oddíl:
+
+  - PartitionNotFound – zadané ID oddílu neexistuje.
+  - ReconfigurationPending – probíhá změna konfigurace oddílu.
+  - InvalidForStatelessServices – byl proveden pokus o změnu zatížení primární repliky pro oddíl patřící do bezstavové služby.
+  - ReplicaDoesNotExist-v zadaném uzlu neexistuje sekundární replika nebo instance.
+  - InvalidOperation – může nastat ve dvou případech: aktualizace zatížení oddílu, který patří do systémové aplikace nebo aktualizace předpokládaného zatížení, není povolená.
+
+Pokud se vrátí některé z těchto chyb, můžete aktualizovat vstup pro určitý oddíl a zopakovat aktualizaci pro konkrétní oddíl.
+
+Kód:
+
+```csharp
+Guid partitionId = Guid.Parse("53df3d7f-5471-403b-b736-bde6ad584f42");
+string metricName0 = "CustomMetricName0";
+List<MetricLoadDescription> newPrimaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 100)
+};
+
+string nodeName0 = "NodeName0";
+List<MetricLoadDescription> newSpecificSecondaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 200)
+};
+
+OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
+    await this.FabricClient.UpdatePartitionLoadAsync(
+        new UpdatePartitionLoadQueryDescription
+        {
+            PartitionMetricLoadDescriptionList = new List<PartitionMetricLoadDescription>()
+            {
+                new PartitionMetricLoadDescription(
+                    partitionId,
+                    newPrimaryReplicaLoads,
+                    new List<MetricLoadDescription>(),
+                    new List<ReplicaMetricLoadDescription>()
+                    {
+                        new ReplicaMetricLoadDescription(nodeName0, newSpecificSecondaryReplicaLoads)
+                    })
+            }
+        },
+        this.Timeout,
+        cancellationToken);
+```
+
+V tomto příkladu provedete aktualizaci posledního nahlášeného zatížení oddílu _53df3d7f-5471-403b-B736-bde6ad584f42_. Zatížení primární repliky pro metriku _CustomMetricName0_ se aktualizuje hodnotou 100. Současně se zatížení pro stejnou metriku pro konkrétní sekundární repliku, která se nachází na uzlu _NodeName0_, aktualizuje s hodnotou 200.
 
 ### <a name="updating-a-services-metric-configuration"></a>Aktualizuje se konfigurace metriky služby.
 Seznam metrik přidružených ke službě a vlastnosti těchto metrik se dají dynamicky aktualizovat, pokud je služba živá. To umožňuje experimenty a flexibilitu. Některé příklady, kdy je to užitečné:

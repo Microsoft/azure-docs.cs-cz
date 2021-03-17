@@ -3,7 +3,7 @@ title: Stažení Media Services prostředků do počítače – Azure | Microsof
 description: Přečtěte si o stažení prostředků do svého počítače. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 60f91e97a9bce1427b4ed8d251fe297d9eb7d969
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61465656"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016657"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Postupy: doručení assetu stažením  
+# <a name="how-to-deliver-an-asset-by-download"></a>Postupy: doručení assetu stažením
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Tento článek popisuje možnosti pro doručování mediálních prostředků odeslaných do Media Services. Obsah Media Services můžete doručovat v mnoha scénářích aplikací. Po kódování Stáhněte vygenerované mediální prostředky nebo k nim přihlaste pomocí lokátoru streamování. Pro zlepšení výkonu a škálovatelnosti můžete obsah doručovat také pomocí Content Delivery Network (CDN).
 
 Tento příklad ukazuje, jak stáhnout mediální prostředky z Media Services do místního počítače. Kód dotazuje úlohy přidružené k účtu Media Services podle ID úlohy a přistupuje ke své kolekci **OutputMediaAssets** (což je sada jednoho nebo více výstupních prostředků médií, které jsou výsledkem spuštění úlohy). Tento příklad ukazuje, jak stáhnout výstupní mediální prostředky z úlohy, ale můžete použít stejný přístup ke stažení jiných prostředků.

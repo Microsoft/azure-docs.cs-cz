@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0018e952516e08d6d01e2e79fea038745acadf62
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 5a481e7ef37e36578b7f71a7afe70dcad737de89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084451"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217461"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java jarní Boot pomocí Azure App Service v systému Linux a Azure Cosmos DB
 
-Tento kurz vás provede procesem sestavení, konfigurace, nasazení a škálování webových aplikací v jazyce Java v Azure. Až budete hotovi, budete mít aplikaci pro [spouštění pružiny](https://projects.spring.io/spring-boot/) , která ukládá data v [Azure Cosmos DB](/azure/cosmos-db) spuštěná na [Azure App Service v systému Linux](overview.md).
+Tento kurz vás provede procesem sestavení, konfigurace, nasazení a škálování webových aplikací v jazyce Java v Azure. Až budete hotovi, budete mít aplikaci pro [spouštění pružiny](https://projects.spring.io/spring-boot/) , která ukládá data v [Azure Cosmos DB](../cosmos-db/index.yml) spuštěná na [Azure App Service v systému Linux](overview.md).
 
 ![Aplikace pro spouštění pružiny, která ukládá data do Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
@@ -33,14 +33,14 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/overview), které je nainstalované na vašem počítači. 
+* Rozhraní příkazového [řádku Azure](/cli/azure/overview), které je nainstalované na vašem počítači. 
 * [Git](https://git-scm.com/)
-* [Java JDK](https://aka.ms/azure-jdks)
+* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>Naklonování ukázkové aplikace TODO a příprava úložiště
 
-V tomto kurzu se používá ukázková aplikace seznamu úkolů s webovým uživatelským rozhraním, které volá pružinovou REST APIovou [Azure Cosmos DBovou datovou pružinu](https://github.com/Microsoft/spring-data-cosmosdb). Kód aplikace je k dispozici [na GitHubu](https://github.com/Microsoft/spring-todo-app). Další informace o psaní aplikací v jazyce Java pomocí pružiny a Cosmos DB najdete v tématu o [jaře Boot Starter pomocí Azure Cosmos DB SQL API](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db ) a na [jarních datech Azure Cosmos DB rychlém startu](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
+V tomto kurzu se používá ukázková aplikace seznamu úkolů s webovým uživatelským rozhraním, které volá pružinovou REST APIovou [Azure Cosmos DBovou datovou pružinu](https://github.com/Microsoft/spring-data-cosmosdb). Kód aplikace je k dispozici [na GitHubu](https://github.com/Microsoft/spring-todo-app). Další informace o psaní aplikací v jazyce Java pomocí pružiny a Cosmos DB najdete v tématu o [jaře Boot Starter pomocí Azure Cosmos DB SQL API](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) a na [jarních datech Azure Cosmos DB rychlém startu](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
 
 
 Spuštěním následujících příkazů v terminálu naklonujte ukázkové úložiště a nastavte prostředí ukázkové aplikace.
@@ -55,23 +55,23 @@ yes | cp -rf .prep/* .
 
 Pomocí těchto kroků vytvořte v předplatném Azure Cosmos DBovou databázi. Aplikace seznamu úkolů se připojí k této databázi a uloží její data při spuštění a zůstane beze stavu aplikace bez ohledu na to, kde aplikaci spustíte.
 
-1. Přihlaste se k rozhraní příkazového řádku Azure a případně nastavte předplatné, pokud máte více než jedno připojení k přihlašovacím údajům.
+1. Přihlaste se k rozhraní příkazového řádku Azure a volitelně můžete nastavit předplatné, pokud máte více než jedno připojení k přihlašovacím údajům.
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Vytvořte skupinu prostředků Azure, která označuje název skupiny prostředků.
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. Vytvořte Azure Cosmos DB s `GlobalDocumentDB` typem. Název Cosmos DB musí obsahovat jenom malá písmena. Poznamenejte si `documentEndpoint` pole v odpovědi z příkazu.
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ Pomocí těchto kroků vytvořte v předplatném Azure Cosmos DBovou databázi. 
 
 4. Získejte Azure Cosmos DB klíč pro připojení k aplikaci. `primaryMasterKey` `documentEndpoint` V dalším kroku nechte v nejbližším případě, že je budete potřebovat.
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 Výstup by měl vypadat nějak takto.
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -173,7 +173,7 @@ Pokud se zobrazí výjimky místo zprávy "spuštění TodoApplication", zkontro
 
 ## <a name="configure-azure-deployment"></a>Konfigurace nasazení Azure
 
-Otevřete `pom.xml` soubor v `initial/spring-boot-todo` adresáři a přidejte následující [modul plug-in webové aplikace Azure pro konfiguraci Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) .
+Otevřete `pom.xml` soubor v `initial/spring-boot-todo` adresáři a přidejte následující  [modul plug-in webové aplikace Azure pro konfiguraci Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) .
 
 ```xml    
 <plugins> 
@@ -185,7 +185,7 @@ Otevřete `pom.xml` soubor v `initial/spring-boot-todo` adresáři a přidejte n
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.9.1</version>
+        <version>1.11.0</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -238,7 +238,7 @@ Otevřete `pom.xml` soubor v `initial/spring-boot-todo` adresáři a přidejte n
 
 ## <a name="deploy-to-app-service-on-linux"></a>Nasazení na App Service v systému Linux
 
-Použijte `azure-webapp:deploy` cíl Maven k nasazení aplikace TODO pro Azure App Service v systému Linux.
+Použijte `mvn azure-webapp:deploy` cíl Maven k nasazení aplikace TODO pro Azure App Service v systému Linux.
 
 ```bash
 
@@ -250,7 +250,7 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.9.1:deploy (default-cli) @ spring-todo-app ---
+[INFO] --- azure-webapp-maven-plugin:1.11.0:deploy (default-cli) @ spring-todo-app ---
 [INFO] Auth Type : AZURE_CLI, Auth Files : [C:\Users\testuser\.azure\azureProfile.json, C:\Users\testuser\.azure\accessTokens.json]
 [INFO] Subscription : xxxxxxxxx
 [INFO] Target Web App doesn't exist. Creating a new one...
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 Výstup obsahuje adresu URL vaší nasazené aplikace (v tomto příkladu `https://spring-todo-app.azurewebsites.net` ). Tuto adresu URL můžete zkopírovat do webového prohlížeče nebo spuštěním následujícího příkazu v okně terminálu načíst svou aplikaci.
 
 ```bash
-open https://spring-todo-app.azurewebsites.net
+curl https://spring-todo-app.azurewebsites.net
 ```
 
 Na adresním řádku by se měla zobrazit aplikace spuštěná se vzdálenou adresou URL:
@@ -291,7 +291,7 @@ Na adresním řádku by se měla zobrazit aplikace spuštěná se vzdálenou adr
 
 Horizontální navýšení kapacity aplikace přidáním dalšího pracovního procesu:
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -299,9 +299,9 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
-  
-```bash
+Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
+  
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 
@@ -310,7 +310,7 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>Další kroky
 
 [Azure pro vývojáře](/java/azure/) 
- v jazyce Java [Jarní spouštění](https://spring.io/projects/spring-boot), [pružinová data pro Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) a [App Service Linux](overview.md).
+ v jazyce Java [Jarní spouštění](https://spring.io/projects/spring-boot), [pružinová data pro Cosmos DB](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db), [Azure Cosmos DB](../cosmos-db/introduction.md) a [App Service Linux](overview.md).
 
 Přečtěte si další informace o spouštění aplikací Java v App Service v systému Linux v příručce pro vývojáře.
 

@@ -3,26 +3,25 @@ title: Konfigurace brány firewall protokolu IP pro službu Azure Kognitivní hl
 titleSuffix: Azure Cognitive Search
 description: Nakonfigurujte zásady řízení IP adres, abyste omezili přístup ke službě Azure Kognitivní hledání.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/16/2021
+ms.openlocfilehash: de34c2921c7829cb6d7e7354a1ebcff44271efd3
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125574"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545543"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurace brány firewall protokolu IP pro Azure Kognitivní hledání
 
 Azure Kognitivní hledání podporuje pravidla protokolu IP pro podporu příchozích bran firewall. Tento model poskytuje další úroveň zabezpečení pro vaši vyhledávací službu podobně jako pravidla protokolu IP, která najdete ve skupině zabezpečení virtuální sítě Azure. Pomocí těchto pravidel IP adres můžete nakonfigurovat vyhledávací službu tak, aby byla dostupná jenom ze schválené sady počítačů a/nebo cloudových služeb. Přístup k datům uloženým ve službě vyhledávání z těchto schválených sad počítačů a služeb bude nadále vyžadovat, aby volající předložil platný autorizační token.
 
-> [!Important]
-> Pravidla protokolu IP ve službě Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/).
+Můžete nastavit pravidla protokolu IP v Azure Portal, jak je popsáno v tomto článku. Alternativně můžete použít [REST API správy verze 2020-03-13](/rest/api/searchmanagement/), [Azure POWERSHELL](/powershell/module/az.search)nebo [Azure CLI](/cli/azure/search).
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a>Konfigurace brány firewall protokolu IP pomocí Azure Portal
+## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurace brány firewall protokolu IP pomocí Azure Portal
 
 Pokud chcete nastavit zásadu řízení přístupu k IP adresám v Azure Portal, přejděte na stránku služby Azure Kognitivní hledání a v navigační nabídce vyberte **síť** . Připojení k síti koncového bodu musí být **veřejné**. Pokud je vaše připojení nastaveno na **Private**, můžete ke službě vyhledávání přistupovat jenom přes privátní koncový bod.
 
@@ -31,7 +30,7 @@ Pokud chcete nastavit zásadu řízení přístupu k IP adresám v Azure Portal,
 Azure Portal poskytuje možnost zadat IP adresy a rozsahy IP adres ve formátu CIDR. Příkladem zápisu CIDR je 8.8.8.0/24, který představuje IP adresy, které jsou v rozsahu od 8.8.8.0 do 8.8.8.255.
 
 > [!NOTE]
-> Po povolení zásad řízení přístupu IP pro službu Azure Kognitivní hledání se odmítnou všechny požadavky na rovinu dat z počítačů mimo povolený Seznam rozsahů IP adres. Při konfiguraci pravidel protokolu IP jsou některé funkce Azure Portal zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
+> Po povolení zásad řízení přístupu IP pro službu Azure Kognitivní hledání se odmítnou všechny požadavky na rovinu dat z počítačů mimo povolený Seznam rozsahů IP adres. Při konfiguraci pravidel protokolu IP jsou některé funkce Azure Portal zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený. Jako alternativu k portálu můžete použít [rozšíření vs Code](https://aka.ms/vscode-search) k interakci s různými komponentami ve službě.
 
 ### <a name="requests-from-your-current-ip"></a>Požadavky z vaší aktuální IP adresy
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514322"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Instalace aktualizace Update 4 na zařízení StorSimple
@@ -76,10 +76,10 @@ Je nutné stáhnout a nainstalovat následující opravy hotfix v předepsaném 
 
 | Objednání | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |Aktualizace softwaru |Regular <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
-| 2a. |KB4011841 <br> KB4011842 |Ovladače LSI a aktualizace firmwaru <br> Aktualizace firmwaru USM (verze 3,38) |Regular <br></br>Bez přerušení |~ 3 hodiny <br> (zahrnuje 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2b. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Balíček aktualizace zabezpečení operačního systému <br> Stáhnout Windows Server 2012 R2 |Regular <br></br>Bez přerušení |- |SecondOrderUpdate|
-| 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhnout Windows Server 2012 R2 |Regular <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 1. |KB4011839 |Aktualizace softwaru |Pravidelný <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
+| 2a. |KB4011841 <br> KB4011842 |Ovladače LSI a aktualizace firmwaru <br> Aktualizace firmwaru USM (verze 3,38) |Pravidelný <br></br>Bez přerušení |~ 3 hodiny <br> (zahrnuje 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2b. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Balíček aktualizace zabezpečení operačního systému <br> Stáhnout Windows Server 2012 R2 |Pravidelný <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhnout Windows Server 2012 R2 |Pravidelný <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 Je také možné, že budete muset nainstalovat aktualizace firmwaru disku nad všemi aktualizacemi, které jsou uvedeny v předchozích tabulkách. Spuštěním rutiny můžete ověřit, zda potřebujete aktualizace firmwaru disku `Get-HcsFirmwareVersion` . Pokud používáte tyto verze firmwaru: `XMGJ` , `XGEG` , `KZ50` , `F6C2` , `VR08` , `N002` , `0106` , pak tyto aktualizace nemusíte instalovat.
 

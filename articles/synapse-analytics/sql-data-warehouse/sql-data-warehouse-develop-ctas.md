@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68bab754142538fc6067cf2593ae6244a03a48d1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213478"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734810"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE JAKO SELECT (CTAS)
 
@@ -24,11 +24,11 @@ Tento článek vysvětluje CREATE TABLE jako příkaz SELECT (CTAS) T-SQL v syna
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-Příkaz [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) je jednou z nejdůležitějších funkcí T-SQL, které jsou k dispozici. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky jediným příkazem.
+Příkaz [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) je jednou z nejdůležitějších funkcí T-SQL, které jsou k dispozici. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky jediným příkazem.
 
 ## <a name="selectinto-vs-ctas"></a>VYBRAT... DO vs. CTAS
 
-CTAS je přizpůsobitelná verze [výběru... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) příkazu.
+CTAS je přizpůsobitelná verze [výběru... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) příkazu.
 
 Následuje příklad jednoduchého výběru... USKLADNĚN
 
@@ -206,62 +206,29 @@ AND     CTAS_acs.[CalendarYear]  = AnnualCategorySales.[CalendarYear] ;
 DROP TABLE CTAS_acs;
 ```
 
-## <a name="ansi-join-replacement-for-delete-statements"></a>Nahrazení spojení ANSI pro příkazy DELETE
+## <a name="ansi-join-replacement-for-merge"></a>Nahrazení spojení ANSI pro sloučení 
 
-Někdy nejlepší přístup k odstranění dat je použití CTAS, zejména pro `DELETE` příkazy, které používají syntaxi spojení ANSI. Důvodem je to, že synapse SQL nepodporuje spojení ANSI v `FROM` klauzuli `DELETE` příkazu. Místo odstranění dat vyberte data, která chcete zachovat.
-
-Následuje příklad převedený `DELETE` příkaz:
+Ve službě Azure synapse Analytics, [sloučení](/sql/t-sql/statements/merge-transact-sql?view=azure-sqldw-latest&preserve-view=true) (Preview) se neshodou podle TARGETu vyžaduje, aby cílem byla distribuovaná tabulka hash.  Uživatelé mohou použít připojení ke standardu ANSI s [aktualizací Update](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest&preserve-view=true) nebo [Delete](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest&preserve-view=true) jako alternativní řešení pro úpravu dat cílové tabulky na základě výsledku spojení s jinou tabulkou.  Zde je příklad.
 
 ```sql
-CREATE TABLE dbo.DimProduct_upsert
-WITH
-(   Distribution=HASH(ProductKey)
-,   CLUSTERED INDEX (ProductKey)
-)
-AS -- Select Data you want to keep
-SELECT p.ProductKey
-, p.EnglishProductName
-,  p.Color
-FROM  dbo.DimProduct p
-RIGHT JOIN dbo.stg_DimProduct s
-ON p.ProductKey = s.ProductKey;
+CREATE TABLE dbo.Table1   
+    (ColA INT NOT NULL, ColB DECIMAL(10,3) NOT NULL);  
+GO  
+CREATE TABLE dbo.Table2   
+    (ColA INT NOT NULL, ColB DECIMAL(10,3) NOT NULL);  
+GO  
+INSERT INTO dbo.Table1 VALUES(1, 10.0);  
+INSERT INTO dbo.Table2 VALUES(1, 0.0);  
+GO  
+UPDATE dbo.Table2   
+SET dbo.Table2.ColB = dbo.Table2.ColB + dbo.Table1.ColB  
+FROM dbo.Table2   
+    INNER JOIN dbo.Table1   
+    ON (dbo.Table2.ColA = dbo.Table1.ColA);  
+GO  
+SELECT ColA, ColB   
+FROM dbo.Table2;
 
-RENAME OBJECT dbo.DimProduct TO DimProduct_old;
-RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
-```
-
-## <a name="replace-merge-statements"></a>Nahradit příkazy sloučení
-
-Slučovací příkazy můžete nahradit alespoň částečně pomocí CTAS. Můžete zkombinovat `INSERT` a `UPDATE` do jediného příkazu. Všechny odstraněné záznamy by se měly omezit z `SELECT` příkazu, aby se vynechal z výsledků.
-
-Následující příklad je pro `UPSERT` :
-
-```sql
-CREATE TABLE dbo.[DimProduct_upsert]
-WITH
-(   DISTRIBUTION = HASH([ProductKey])
-,   CLUSTERED INDEX ([ProductKey])
-)
-AS
--- New rows and new versions of rows
-SELECT s.[ProductKey]
-, s.[EnglishProductName]
-, s.[Color]
-FROM      dbo.[stg_DimProduct] AS s
-UNION ALL  
--- Keep rows that are not being touched
-SELECT      p.[ProductKey]
-, p.[EnglishProductName]
-, p.[Color]
-FROM      dbo.[DimProduct] AS p
-WHERE NOT EXISTS
-(   SELECT  *
-    FROM    [dbo].[stg_DimProduct] s
-    WHERE   s.[ProductKey] = p.[ProductKey]
-);
-
-RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
-RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
 ```
 
 ## <a name="explicitly-state-data-type-and-nullability-of-output"></a>Explicitní stavový datový typ a hodnota null výstupu
@@ -330,7 +297,7 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-Je třeba počítat s následujícím:
+Všimněte si, že:
 
 * Můžete použít přetypování nebo převod.
 * Pro vynucení hodnoty NULL použijte ISNULL, not COALESCE. Podívejte se na následující poznámku.
@@ -412,7 +379,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Můžete vidět, že konzistence typů a udržování vlastností s hodnotou null na CTAS je osvědčeným postupem. Pomáhá zachovat integritu ve výpočtech a také zajišťuje, že je možné přepínat oddíly.
 
-CTAS je jedním z nejdůležitějších příkazů v synapse SQL. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+CTAS je jedním z nejdůležitějších příkazů v synapse SQL. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="next-steps"></a>Další kroky
 

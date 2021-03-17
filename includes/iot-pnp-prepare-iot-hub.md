@@ -4,17 +4,17 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/17/2020
-ms.custom: references_regions
-ms.openlocfilehash: adc621f932462422202d9f16fd539f5ecc7c3d8e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: ea5d4ef26fb14e22b871bb4bfa1054cb749d38e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336888"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673017"
 ---
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
-Abyste mohli dokončit kroky v tomto článku, potřebujete ve svém předplatném Azure službu Azure IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Abyste mohli dokončit kroky v tomto článku, potřebujete ve svém předplatném Azure službu Azure IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Pokud používáte Azure CLI místně, přihlaste se ke svému předplatnému Azure pomocí `az login` . Pokud tyto příkazy spouštíte v Azure Cloud Shell, jste přihlášeni automaticky.
 
@@ -34,9 +34,6 @@ az group create --name my-pnp-resourcegroup \
 az iot hub create --name <YourIoTHubName> \
     --resource-group my-pnp-resourcegroup --sku F1
 ```
-
-> [!NOTE]
-> Služba IoT technologie Plug and Play je aktuálně dostupná ve službě IoT Hub vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko. Podpora IoT technologie Plug and Play není součástí centra IoT na úrovni Basic.
 
 Spuštěním následujícího příkazu vytvořte identitu zařízení ve službě IoT Hub. `<YourIoTHubName>`Zástupné symboly a nahraďte `<YourDeviceID>` vlastním _názvem IoT Hub_ a _ID zařízení_ podle vašeho výběru.
 

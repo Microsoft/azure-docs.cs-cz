@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: eab1304408f896f5c9d736488997c1246ae167f2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458978"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Kurz: integrace znalostí odkudkoli do LMS pomocí Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat znalostní bázi LMS odkudkoli s Azure
 * Umožněte uživatelům, aby se k vašim účtům Azure AD automaticky přihlásili do znalostí odkudkoli.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,7 +69,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce **znalostní báze** aplikace pro hledání na úrovni Standard pro LMS najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory pro klienty ve znalostní bázi LMS](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -111,19 +111,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Vyberte na kartě **Web** .
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí na kartě webu.](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. Vyberte na kartě **Nastavení SAML** .
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![Snímek obrazovky s vybraným nastavením SAML zobrazuje stránku s vědomím](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. Klikněte na **Přidat nový**.
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí tlačítko Přidat nový v nastavení poskytovatele služeb.](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. Na stránce **Přidat nebo aktualizovat nastavení SAML** proveďte následující kroky:
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat nebo aktualizovat nastavení SAML, kde můžete udělat změny popsané tady.](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. Zadejte název IDP podle vaší organizace. Pro např.: `Azure` .
 
@@ -153,7 +153,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B. Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -179,12 +179,12 @@ V této části se ve znalostní bázi LMS odkudkoli vytvoří uživatel s názv
 
 ### <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu kliknete na dlaždici s informacemi o znalostech a/s, měli byste se automaticky přihlásili ke znalostnímu prostoru, ve kterém jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici s informacemi o znalostech a/s, měli byste se automaticky přihlásili ke znalostnímu prostoru, ve kterém jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

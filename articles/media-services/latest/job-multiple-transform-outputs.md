@@ -1,27 +1,29 @@
 ---
-title: Vytvoření úlohy Azure Media Services s více transformačními výstupy
+title: Vytvoření úlohy s více transformačními výstupy
 description: Toto téma ukazuje, jak vytvořit úlohu Azure Media Services s více transformačními výstupy.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/17/2020
-ms.author: juliako
-ms.openlocfilehash: 7c39b133773cbe35d78e04c4e40de9d62c4eba18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001107"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635837"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Vytvoření úlohy s více transformačními výstupy
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Toto téma ukazuje, jak vytvořit transformaci pomocí dvou transformačních výstupů. První z nich volá, aby byl vstup kódovaný pro streamování s adaptivní přenosovou rychlostí s předdefinovaným přednastaveným [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) . Druhé jedno volání zvukového signálu ve vstupním videu se zpracuje pomocí [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). Po vytvoření transformace můžete odeslat úlohu, která zpracuje vaše video odpovídajícím způsobem. Vzhledem k tomu, že v tomto příkladu zadáváme dva transformační výstupy, je nutné zadat dva výstupy úloh. Můžete zvolit, aby se výstupy úloh nasměrovaly do stejného Assetu (jak je vidět níže), nebo můžete mít do samostatných assetů zápis výsledků.
- 
 
 > [!TIP]
 > Než začnete s vývojem, přečtěte si téma [vývoj s Media Services V3 API](media-services-apis-overview.md) (obsahuje informace o přístupu k rozhraním API, konvencím pojmenování atd.
@@ -65,6 +67,7 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
+
 ## <a name="submit-a-job"></a>Odeslat úlohu
 
 Vytvoří úlohu s zadáním adresy URL HTTPS a se dvěma výstupy úloh.

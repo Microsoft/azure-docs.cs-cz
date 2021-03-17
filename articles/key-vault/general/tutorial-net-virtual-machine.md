@@ -1,6 +1,6 @@
 ---
 title: Kurz – použití Azure Key Vault s virtuálním počítačem v .NET | Microsoft Docs
-description: V tomto kurzu nakonfigurujete aplikaci ASP.NET Core pro čtení tajného klíče z vašeho trezoru klíčů.
+description: V tomto kurzu nakonfigurujete virtuální počítač tak, aby ASP.NET základní aplikace pro čtení tajného klíče z vašeho trezoru klíčů.
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513107"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455640"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v .NET
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
   * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-  * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest)
+  * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 
 ## <a name="create-resources-and-assign-permissions"></a>Vytváření prostředků a přiřazování oprávnění
 
@@ -74,7 +74,7 @@ Vytvořte virtuální počítač se systémem Windows nebo Linux pomocí jedné 
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
-Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
+Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ Poznamenejte si identitu přiřazenou systémem, která se zobrazí v následuj�
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>Přiřazení oprávnění k identitě virtuálního počítače
-Přiřaďte dříve vytvořená oprávnění identity k trezoru klíčů pomocí příkazu [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) :
+Přiřaďte dříve vytvořená oprávnění identity k trezoru klíčů pomocí příkazu [AZ Key trezor set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) :
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -140,11 +140,12 @@ Otevřete soubor *program.cs* a přidejte tyto balíčky:
 
 ```csharp
 using System;
+using Azure.Core;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
 
-Přidejte tyto řádky a aktualizujte identifikátor URI tak, aby odrážely `vaultUri` váš Trezor klíčů. Pod kódem používá [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) pro ověřování do trezoru klíčů, který používá token ze spravované identity aplikace k ověření. Používá se také exponenciální omezení rychlosti pro opakované pokusy v případě omezení trezoru klíčů.
+Přidejte tyto řádky a aktualizujte identifikátor URI tak, aby odrážely `vaultUri` váš Trezor klíčů. Pod kódem používá  [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential) pro ověřování do trezoru klíčů, který používá token ze spravované identity aplikace k ověření. Používá se také exponenciální omezení rychlosti pro opakované pokusy v případě omezení trezoru klíčů.
 
 ```csharp
   class Program
@@ -204,4 +205,4 @@ Pokud už je nepotřebujete, odstraňte virtuální počítač a trezor klíčů
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Key Vault REST API](/rest/api/keyvault/)

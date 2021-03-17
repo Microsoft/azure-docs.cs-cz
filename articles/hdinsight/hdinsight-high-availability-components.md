@@ -1,29 +1,22 @@
 ---
 title: Komponenty vysoké dostupnosti ve službě Azure HDInsight
 description: Přehled různých komponent vysoké dostupnosti používaných clustery HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609161"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945302"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
- Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
- 
-> [!NOTE]
-> Komunikace bez posunu
->
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
->
+Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="high-availability-infrastructure"></a>Infrastruktura vysoké dostupnosti
 
@@ -43,7 +36,7 @@ Tato infrastruktura se skládá z řady služeb a softwarových komponent, kter�
 
 ![infrastruktura vysoké dostupnosti](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-K dispozici jsou i další služby vysoké dostupnosti, které podporuje Open Source součásti pro spolehlivost Apache. Tyto součásti jsou také k dispozici v clusterech HDInsight:
+K dispozici jsou také další služby vysoké dostupnosti, které jsou podporovány v části Open Source součásti pro spolehlivost Apache. Tyto součásti jsou také k dispozici v clusterech HDInsight:
 
 - Systém souborů Hadoop (HDFS) NameNode
 - Správce prostředků PŘÍZe
@@ -63,13 +56,13 @@ Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následují
 | Apache Livy | Aktivní hlavnímu uzlu | Spark | Umožňuje snadnou interakci s clusterem Spark přes rozhraní REST. |
 
 >[!Note]
-> Clustery HDInsight Balíček zabezpečení podniku (ESP) aktuálně poskytují pouze vysokou dostupnost serveru Ambari.
+> Clustery HDInsight Balíček zabezpečení podniku (ESP) aktuálně poskytují pouze vysokou dostupnost serveru Ambari. Časová osa aplikace Server, server historie úloh a Livy jsou spuštěné jenom na headnode0 a předají se převzetí služeb při selhání headnode1 při Ambari failsover. Databáze časové osy aplikace je také na headnode0 a ne na Ambari SQL serveru.
 
 ### <a name="architecture"></a>Architektura
 
 Každý cluster HDInsight má dva hlavních v aktivním a pohotovostním režimu. Služby HDInsight HA běží jenom na hlavních. Tyto služby by měly být vždy spuštěné na aktivním hlavnímu uzlu a zastaveny a přepnuty do režimu údržby v pohotovostním hlavnímu uzlu.
 
-Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service*a *podřízený-ha-Service*.
+Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service* a *podřízený-ha-Service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
@@ -100,7 +93,7 @@ Hlavní-ha-Service se spouští jenom na aktivním hlavnímu uzlu, zastaví slu�
 
 ![proces převzetí služeb při selhání](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Monitor stavu běží na každém hlavnímu uzlu spolu s hlavním řadičem pro převzetí služeb při selhání, aby odesílal hearbeat oznámení do kvora Zookeeper. Hlavnímu uzlu se v tomto scénáři považuje za službu HA. Monitor stavu zkontroluje, jestli je každá služba vysoké dostupnosti v pořádku a jestli je připravená k zapojení do volby vedoucího vedení. Pokud ano, bude tento hlavnímu uzlu konkurovat ve volbách. Pokud ne, ukončí volbu, dokud nebude znovu připravena.
+Monitor stavu běží na každém hlavnímu uzlu spolu s hlavním řadičem pro převzetí služeb při selhání pro odesílání oznámení prezenčního signálu do kvora Zookeeper. Hlavnímu uzlu se v tomto scénáři považuje za službu HA. Monitor stavu zkontroluje, jestli je každá služba vysoké dostupnosti v pořádku a jestli je připravená k zapojení do volby vedoucího vedení. Pokud ano, bude tento hlavnímu uzlu konkurovat ve volbách. Pokud ne, ukončí volbu, dokud nebude znovu připravena.
 
 Pokud se v pohotovostním režimu hlavnímu uzlu kdykoli dosáhne vedoucího a bude aktivní (například v případě selhání s předchozím aktivním uzlem), zahájí hlavní řadič pro převzetí služeb při selhání všechny služby HDInsight HA. Hlavní kontroler převzetí služeb při selhání také zastaví tyto služby na ostatních hlavnímu uzlu.
 
@@ -140,5 +133,5 @@ Clustery HDInsight HBA podporují HBase Master vysoké dostupnosti. Na rozdíl o
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)
+- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](./hdinsight-business-continuity.md)
 - [Architektura virtuální sítě Azure HDInsight](hdinsight-virtual-network-architecture.md)

@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: 82bcc61d06ac519447307c1e92784f33794d5817
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ae816d2be592ab774500d1cfe8f2f6a7b7905b91
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258021"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196550"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Odeslání e-mailu pomocí SendGrid s Azure
 ## <a name="overview"></a>Přehled
@@ -52,7 +53,7 @@ Pokud chcete do aplikace nainstalovat balíček NuGet SendGrid, udělejte toto:
 1. Klikněte na **Nový projekt** a vyberte **šablonu**.
 
    ![Vytvoření nového projektu][create-new-project]
-2. V **Průzkumník řešení**klikněte pravým tlačítkem na **odkazy**a pak klikněte na **Spravovat balíčky NuGet**.
+2. V **Průzkumník řešení** klikněte pravým tlačítkem na **odkazy** a pak klikněte na **Spravovat balíčky NuGet**.
 
    ![Balíček NuGet SendGrid][SendGrid-NuGet-package]
 3. Vyhledejte **SendGrid** a v seznamu výsledků vyberte položku **SendGrid** .
@@ -106,7 +107,7 @@ Odesílání e-mailů vyžaduje zadání klíče rozhraní API SendGrid. Pokud p
 
 Tyto přihlašovací údaje můžete uložit prostřednictvím Azure Portal kliknutím na nastavení aplikace a přidáním párů klíč/hodnota do nastavení aplikace.
 
- ![Nastavení aplikace Azure][azure_app_settings]
+![Nastavení aplikace Azure][azure_app_settings]
 
 Pak k nim můžete přistupovat následujícím způsobem:
 
@@ -158,17 +159,17 @@ V tomto příkladu byl klíč rozhraní API uložený v souboru, `appsettings.js
 
 Obsah `appsettings.json` souboru by měl vypadat nějak takto:
 
-```csharp
+```json
 {
-   "Logging": {
-   "IncludeScopes": false,
-   "LogLevel": {
-   "Default": "Debug",
-   "System": "Information",
-   "Microsoft": "Information"
-     }
-   },
- "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
 
@@ -207,8 +208,8 @@ namespace SendgridMailApp.Controllers
        public NotificationController(IConfiguration configuration)
        {
          _configuration = configuration;
-       }      
-    
+       }
+
        [Route("SendNotification")]
        public async Task PostMessage()
        {
@@ -221,7 +222,7 @@ namespace SendgridMailApp.Controllers
               new EmailAddress("test3@example.com", "Example User 3"),
               new EmailAddress("test4@example.com","Example User 4")
           };
-        
+
           var subject = "Hello world email from Sendgrid ";
           var htmlContent = "<strong>Hello world with HTML content</strong>";
           var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
@@ -257,10 +258,10 @@ Následující příklady znázorňují zápatí a klikněte na sledovací filtr
 ### <a name="footer-settings"></a>Nastavení zápatí
 
 ```csharp
-msg.SetFooterSetting(
-                     true,
-                     "Some Footer HTML",
-                     "<strong>Some Footer Text</strong>");
+    msg.SetFooterSetting(
+        true,
+        "Some Footer HTML",
+        "<strong>Some Footer Text</strong>");
 ```
 
 ### <a name="click-tracking"></a>Klikněte na sledování.
@@ -276,7 +277,7 @@ SendGrid nabízí několik rozhraní API a webhooků, které můžete použít k
 Teď, když jste se seznámili se základy e-mailové služby SendGrid, získáte další informace na následujících odkazech.
 
 * \#Úložiště knihovny C SendGrid: [SendGrid-CSharp][sendgrid-csharp]
-* Dokumentace k rozhraní SendGrid API:<https://sendgrid.com/docs>
+* Dokumentace k rozhraní SendGrid API: <https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
 [What is the SendGrid Email Service?]: #whatis
@@ -295,7 +296,7 @@ Teď, když jste se seznámili se základy e-mailové služby SendGrid, získát
 [sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
 [SMTP vs. Web API]: https://sendgrid.com/docs/Integrate/index.html
 [App Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
-[SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/api_v3.html
+[SendGrid API documentation]: https://sendgrid.com/docs/api-reference/
 [NET-library]: https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html#-Using-NETs-Builtin-SMTP-Library
 [documentation]: https://sendgrid.com/docs/Classroom/Send/api_keys.html
 [settings-documentation]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html

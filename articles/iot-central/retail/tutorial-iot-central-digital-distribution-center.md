@@ -5,24 +5,24 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 40b0d7eeb77f165c50c5470e1b5869e240d36534
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000585"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702687"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
-
-
 
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **digital Distribution Center** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
 V tomto kurzu se naučíte, 
-* Vytvořit aplikaci digital Distribution Center 
-* Procházení aplikací 
+
+> [!div class="checklist"]
+> * Vytvořit aplikaci digital Distribution Center 
+> * Procházení aplikací 
 
 ## <a name="prerequisites"></a>Požadavky
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
@@ -34,22 +34,18 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-    > [!div class="mx-imgBorder"]
-    > ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="Šablona aplikace digitálního distribučního centra":::
+1. Vyberte kartu **maloobchod** a v části **aplikace Digital Distribution Center** vyberte **vytvořit aplikaci** .
 
-2. Vyberte kartu **maloobchod** a v části **aplikace Digital Distribution Center** vyberte **vytvořit aplikaci** .
-
-3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
+1. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
    **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
    **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
    **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-    > [!div class="mx-imgBorder"]
-    > ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony aplikace digitálního distribučního centra":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Informace o fakturaci digitálního distribuce](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace":::
 
 ## <a name="walk-through-the-application-dashboard"></a>Procházení řídicím panelem aplikace 
 
@@ -62,31 +58,31 @@ V tomto řídicím panelu se zobrazí jedna brána a jedna kamera, která funguj
    * Spravujte všechny fotoaparáty, které jsou součástí řešení. 
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![Snímek obrazovky s řídicím panelem digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>Šablona zařízení
 
 Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. Model schopností je strukturovaný kolem dvou různých rozhraní **kamery** a **brány digitální distribuce** .
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Snímek obrazovky s šablonou zařízení brány digitální distribuce v aplikaci](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **Kamera** – toto rozhraní uspořádá všechny možnosti příkazu specifické pro fotoaparát. 
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Snímek obrazovky zobrazující rozhraní kamery v šabloně zařízení brány digitální distribuce](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **Brána digitální distribuce** – toto rozhraní představuje veškerou telemetrii, která přichází z kamery, využívané vlastnosti cloudového zařízení a informace o bráně.
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Snímek obrazovky s rozhraním brány digitální distribuce brány v šabloně zařízení brány digitální distribuce](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>Příkazy brány
 Toto rozhraní uspořádá všechny možnosti příkazů brány.
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Snímek obrazovky s rozhraním příkazů brány v šabloně zařízení brány digitální distribuce](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>Pravidla
 Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existují v této šabloně aplikace. Tato pravidla jsou nakonfigurovaná tak, aby se pro další šetření použila e-mailová oznámení pro operátory.
@@ -96,7 +92,7 @@ Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existuj�
 **Velký balíček** – toto pravidlo se aktivuje, pokud fotoaparát detekuje velký balíček, u kterého se nedá zkontrolovat kvalita. 
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![Snímek obrazovky zobrazující seznam pravidel v aplikaci digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>Úlohy
 Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako součást této šablony aplikace: funkce úloh můžete využít k provádění operací v rámci řešení. V rámci úlohy digitálního distribučního centra používají příkazy zařízení & zdvojené schopnosti provádět úlohy, jako například,
@@ -105,15 +101,17 @@ Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako
    * Úprava intervalu telemetrie pro správu nahrávání dat
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![Snímek obrazovky zobrazující seznam úloh v aplikaci digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce**nastavení aplikace** **pro správu** > a klikněte na **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce   >  **nastavení aplikace** pro správu a klikněte na **Odstranit**.
 
 > [!div class="mx-imgBorder"]
-> ![Centrum digitální distribuce](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![Snímek obrazovky ukazující, jak aplikaci odstranit, když s ní jste hotovi](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [konceptu služby](./architecture-digital-distribution-center.md) digital Distribution Center pro digitální distribuci
-* Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .
+
+Další informace o architektuře řešení Digital Distribution Center:
+
+> [!div class="nextstepaction"]
+> [koncept centra digitálního distribuce](./architecture-digital-distribution-center.md)

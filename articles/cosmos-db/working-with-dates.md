@@ -2,18 +2,21 @@
 title: Práce s daty v Azure Cosmos DB
 description: Naučte se ukládat, indexovat a dotazovat objekty DataTime v Azure Cosmos DB
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412545"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359519"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB zajišťuje flexibilitu schématu a bohatou indexaci prostřednictvím nativního datového modelu [JSON](https://www.json.org) . Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumentů a uložených procedur, jsou modelovány a uloženy jako dokumenty JSON. Jako požadavek na přenos, JSON (a Azure Cosmos DB) podporuje jenom malou sadu základních typů: String, Number, Boolean, Array, Object a null. JSON je však flexibilní a umožňuje vývojářům a architekturám znázornit komplexnější typy pomocí těchto primitiv a jejich sestavování jako objektů nebo polí.
 
@@ -65,7 +68,7 @@ Tento dokument je uložený v Azure Cosmos DB následujícím způsobem:
     }
 ```  
 
-Případně můžete ukládat hodnoty DateTime jako časová razítka systému UNIX, tj. číslo představující počet uplynulých sekund od 1. ledna 1970. `_ts`Tento přístup se řídí vnitřní vlastností Timestamp () Azure Cosmos DB. Můžete použít třídu [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) k serializaci hodnot DateTime jako čísel.
+Případně můžete ukládat hodnoty DateTime jako časová razítka systému UNIX, tj. číslo představující počet uplynulých sekund od 1. ledna 1970. `_ts`Tento přístup se řídí vnitřní vlastností Timestamp () Azure Cosmos DB. Můžete použít třídu [UnixDateTimeConverter](/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) k serializaci hodnot DateTime jako čísel.
 
 ## <a name="querying-datetimes-in-linq"></a>Dotazování na hodnoty DateTime v LINQ
 
@@ -91,6 +94,6 @@ Další informace o konfiguraci zásad indexování najdete v tématu [Azure Cos
 
 ## <a name="next-steps"></a>Další kroky
 
-* Stažení a spuštění [ukázek kódu na GitHubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* Stažení a spuštění [ukázek kódu na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples)
 * Další informace o [dotazech SQL](sql-query-getting-started.md)
 * Další informace o [Azure Cosmos DB zásadách indexování](index-policy.md)

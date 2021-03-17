@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513502"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95400203"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -26,7 +26,7 @@ Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesíl
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 
-V nabídce Úloha zálohování se zobrazí pouze úlohy zálohování ad-hoc. V případě naplánovaných úloh použijte [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
+V nabídce Úloha zálohování se zobrazí pouze úlohy zálohování na vyžádání. V případě naplánovaných úloh použijte [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>Budou se automaticky zálohovat i budoucí databáze?
 
@@ -39,7 +39,7 @@ Správný způsob, jak zastavit ochranu této databáze, je provést **zastaven�
 
 ### <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-the-behavior-be"></a>Když změním název databáze po jejím ochraně, jaká chování budou?
 
-Přejmenovaná databáze je považována za novou databázi. Proto se služba bude považovat za tuto situaci, jako kdyby nebyla nalezena databáze a selhala zálohování. Přejmenovaná databáze se zobrazí jako nová databáze a je nutné ji nakonfigurovat pro ochranu.
+Přejmenovaná databáze je považována za novou databázi. Proto se služba bude považovat za tuto situaci, jako kdyby nebyla nalezena databáze a zálohování bude úspěšné. Přejmenovaná databáze se zobrazí jako nová databáze a je nutné ji nakonfigurovat pro ochranu.
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Jaké jsou požadavky pro zálohování SAP HANA databází na virtuálním počítači Azure?
 
@@ -53,6 +53,10 @@ Spuštění předregistračního skriptu nastaví požadovaná oprávnění, kte
 
 Informace najdete v [této části](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) Průvodce odstraňováním potíží.
 
+### <a name="what-should-be-done-while-upgrading-within-the-same-version"></a>Co je potřeba provést během upgradu ve stejné verzi?
+
+Informace najdete v [této části](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) v Průvodci odstraňováním potíží.
+
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Je možné vytvořit zálohu v Azure HANA proti virtuální IP adrese (Nástroj pro vyrovnávání zatížení) a ne virtuálnímu počítači?
 
 V současné době není k dispozici možnost k nastavení řešení pouze pro virtuální IP adresu. K provedení řešení potřebujeme virtuální počítač.
@@ -62,13 +66,13 @@ V současné době není k dispozici možnost k nastavení řešení pouze pro v
 1. Počkejte, než se aktuálně spuštěné zálohování dokončí v požadované databázi (pro dokončení proveďte kontrolu od studia).
 1. Zakažte zálohy protokolů a nastavte zálohu katalogu na **systém souborů** pro požadovanou databázi pomocí následujících kroků:
 1. Dvakrát klikněte na **SYSTEMDB**  ->  **Konfigurace**  ->  **vybrat databázový**  ->  **filtr (protokol)** .
-    1. Nastavit enable_auto_log_backup na **ne**
-    1. Nastavit catalog_backup_using_backint na **hodnotu false**
+    1. Nastavte enable_auto_log_backup na **ne**.
+    1. Nastavte catalog_backup_using_backint na **false**.
 1. V požadované databázi proveďte zálohování na vyžádání (úplné/rozdílové/přírůstkové) a počkejte, než se dokončí zálohování a zálohování katalogu.
-1. Pokud chcete také přesunout zálohy protokolu do systému souborů, nastavte enable_auto_log_backup na **Ano** .
+1. Pokud chcete také přesunout zálohy protokolu do systému souborů, nastavte enable_auto_log_backup na **Ano**.
 1. Vraťte se k předchozímu nastavení, aby bylo možné zálohy do trezoru Azure přesměrovat:
-    1. Nastavit enable_auto_log_backup na **Ano**
-    1. Nastavit catalog_backup_using_backint na **hodnotu true**
+    1. Nastavte enable_auto_log_backup na **Ano**.
+    1. Nastavte catalog_backup_using_backint na **hodnotu true**.
 
 >[!NOTE]
 >Přesunutí záloh do místního systému souborů a opětovné přepnutí zpátky do trezoru Azure může způsobit přerušení řetězů protokolů v trezoru. Tím se aktivuje úplná záloha, která po úspěšném dokončení spustí zálohování protokolů.
@@ -85,7 +89,7 @@ Chcete-li provést **ochranu tohoto přepínače**, postupujte podle těchto kro
 - Spuštění [předregistračního skriptu](https://aka.ms/scriptforpermsonhana) na sekundárním uzlu
 - [Zjistit databáze](tutorial-backup-sap-hana-db.md#discover-the-databases) na sekundárním uzlu a nakonfigurovat na nich [zálohy](tutorial-backup-sap-hana-db.md#configure-backup)
 
-Tyto kroky je třeba provést ručně po každém převzetí služeb při selhání. Tyto kroky můžete provést prostřednictvím příkazového řádku nebo protokolu HTTP REST kromě Azure Portal. K automatizaci těchto kroků můžete použít Runbook Azure.
+Tyto kroky je nutné provést ručně po každém převzetí služeb při selhání. Tyto kroky můžete provést prostřednictvím příkazového řádku nebo protokolu HTTP REST kromě Azure Portal. K automatizaci těchto kroků můžete použít Runbook Azure.
 
 Tady je podrobný příklad toho, jak se musí provést **Ochrana přepínače** :
 
@@ -124,6 +128,43 @@ Informace o tom, jaké typy obnovení se aktuálně podporují, najdete v SAP HA
 ### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>Můžu k obnovení do systému RHEL HANA použít zálohu databáze běžící na SLES nebo naopak?
 
 Ano, zálohy streamování aktivované v databázi HANA běžící na SLES můžete použít k obnovení do systému RHEL HANA a naopak. To znamená, že při zálohování přes streamování je možné provést obnovení mezi různými operačními systémy. Budete ale muset zajistit, aby systém HANA, do kterého chcete obnovit, a systém HANA, který se používá k obnovení, byly kompatibilní pro obnovení podle SAP. Chcete-li zjistit, které typy obnovení jsou kompatibilní, přečtěte si SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
+
+## <a name="policy"></a>Zásada
+
+### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>Během vytváření nové zásady pro SAP HANA Backup jsou dostupné různé možnosti.
+
+Před vytvořením zásady byste měli být jasné, jaké jsou požadavky na RPO a RTO a jejich relevantní náklady.
+
+RPO (bod obnovení-cíl) indikuje, kolik dat je pro uživatele/zákazníka přijatelné. To závisí na četnosti zálohování protokolu. Častější zálohování protokolů indikuje nižší RPO a minimální hodnota podporovaná službou Azure Backup je 15 minut. Proto může být frekvence zálohování protokolu 15 minut nebo vyšší.
+
+RTO (doba obnovení-cíl) indikuje, jak rychle mají být data obnovena do posledního dostupného bodu v čase po skončení ztráty dat. To závisí na strategii obnovení používané v HANA, která je obvykle závislá na tom, kolik souborů je potřeba k obnovení. To má vliv na náklady i na následující tabulku, která by měla pomáhat při porozumění všem scénářům a jejich dopadům.
+
+|Zásady zálohování  |RTO  |Cost  |
+|---------|---------|---------|
+|Denní plný + protokol     |   Nejrychlejší, vzhledem k tomu, že potřebujeme jenom jednu úplnou kopii + požadované protokoly pro obnovení k bodu v čase      |    Možnost Costliest, protože úplné kopírování se provádí denně, takže se v back-endu nashromáždí více a další data, dokud doba uchování nedosáhne   |
+|Týdenní úplná + denní rozdílová + protokoly     |   Pomalejší než výše uvedená možnost, ale rychlejší než další možnost, protože pro obnovení k časovému okamžiku vyžadujeme jednu úplnou kopii a jednu rozdílnou kopii + protokoly.      |    Levnější možnost, protože denní rozdíl je obvykle menší než úplný a úplné kopírování je prováděno pouze jednou za týden.      |
+|Týdenní úplná + denní přírůstková + protokoly     |  Nejpomalejší, protože pro obnovení k bodu v čase potřebujeme jedno úplné kopírování + ' n '.       |     Nejméně náročná možnost od denního přírůstku bude menší než rozdílová a celá kopie bude pocházet jenom týdně.    |
+
+> [!NOTE]
+> Výše uvedené možnosti jsou nejběžnější, ale ne jediné možnosti. Například můžete mít týdenní úplnou zálohu + rozdíly dvakrát v týdnu a protokolech.
+
+Proto můžete vybrat variantu zásad na základě cílů RPO a RTO a nákladů.
+
+### <a name="impact-of-modifying-a-policy"></a>Dopad změny zásady
+
+Při určování dopadu přepínání zásad zálohovaných položek ze zásad 1 (P1) na zásadu 2 (P2) nebo pro úpravu zásady 1 (P1) byste měli mít na paměti několik zásad.
+
+- Všechny změny se také aplikují zpětně. Nejnovější zásady zálohování se uplatní i pro body obnovení, které byly dříve odebrány. Předpokládejme například, že denní úplné uchovávání je 30 dní a 10 bodů obnovení bylo pořízeno v závislosti na aktuálně aktivní zásadě. Pokud se denní doba uchovávání změní na 10 dní, pak se čas vypršení platnosti předchozího bodu také přepočítá jako čas zahájení + 10 dnů a v případě vypršení platnosti se odstraní.
+- Rozsah změny zahrnuje také den zálohování, typ zálohy spolu s uchováním. Příklad: Pokud se zásada změní z denního intervalu na každý týden plný v neděli, všechna předchozí plná, která nejsou v neděli, se označí k odstranění.
+- Nadřazený objekt nebude odstraněn, dokud není aktivní nebo nevypršela platnost podřízeného objektu. Každý typ zálohy má čas vypršení platnosti podle aktuálně aktivních zásad. Ale typ úplné zálohy se považuje za nadřazený pro následné "diferenciály", "přírůstky" a "logs". Klíčové slovo Differential a log nejsou rodičem pro kohokoli jiného. "Přírůstková" může být nadřazeným objektem následného "přírůstkového". I když je nadřazený objekt označený k odstranění, není ve skutečnosti odstraněný, pokud nevypršela platnost podřízených rozdílových objektů nebo protokolů. Pokud se například zásada změní z denního intervalu na týdně, všechny předchozí plné verze, které nejsou v neděli, budou označené k odstranění. Ale nejsou vlastněné, dokud platnost protokolů, které uplynuly dříve, neprošly. Jinými slovy se uchovávají v závislosti na nejnovější době trvání protokolu. Jakmile vyprší platnost protokolů, odeberou se oba protokoly i všechny.
+
+Pomocí těchto principů si můžete přečíst následující tabulku a pochopit důsledky změny zásad.
+
+|Stará zásada/nové zásady  |Denní úplný objem a protokoly  | Týdenní úplné a denní rozdíly + protokoly  |Týdenní úplné a denní přírůstky + protokoly  |
+|---------|---------|---------|---------|
+|Denní úplný objem a protokoly     |   -      |    Předchozí plná data, která nejsou na stejný den v týdnu, jsou označena k odstranění, ale budou uchována až po dobu uchování protokolu.     |    Předchozí plná data, která nejsou na stejný den v týdnu, jsou označena k odstranění, ale budou uchována až po dobu uchování protokolu.     |
+|Týdenní úplné a denní rozdíly + protokoly     |   Předchozí týdenní úplné uchovávání se přepočítá podle nejnovějších zásad. Předchozí rozdíly jsou okamžitě odstraněny.      |    -     |    Předchozí rozdíly jsou okamžitě odstraněny.     |
+|Týdenní úplné a denní přírůstky + protokoly     |     Předchozí týdenní úplné uchovávání se přepočítá podle nejnovějších zásad. Předchozí přírůstky jsou okamžitě odstraněny    |     Předchozí přírůstky jsou okamžitě odstraněny    |    -     |
 
 ## <a name="next-steps"></a>Další kroky
 

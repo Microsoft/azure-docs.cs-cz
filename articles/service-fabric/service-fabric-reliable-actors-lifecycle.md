@@ -1,16 +1,15 @@
 ---
 title: Přehled životního cyklu objektu actor pro Azure Service Fabric
 description: Vysvětluje Service Fabric životní cyklus spolehlivého objektu actor, uvolňování paměti a ruční odstraňování objektů actor a jejich stavu.
-author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.author: amanbha
-ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 88db4bb2376cbc418d6954e274a18a6c18a280d1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260437"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576039"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční odstranění
 Objekt actor se aktivuje při prvním volání jakékoli z jeho metod. Objekt actor se deaktivuje (uvolňování paměti modulem Actors), pokud se nepoužívá pro konfigurovatelnou dobu. Objekt actor a jeho stav lze také kdykoli odstranit ručně.
@@ -40,7 +39,7 @@ Když je objekt actor deaktivován, jsou uvolněny odkazy na objekt actor a v no
 Co se počítá jako "používá se" pro účely deaktivace a uvolňování paměti?
 
 * Přijetí volání
-* `IRemindable.ReceiveReminderAsync`vyvolaná metoda (platí pouze v případě, že objekt actor používá připomenutí)
+* `IRemindable.ReceiveReminderAsync` vyvolaná metoda (platí pouze v případě, že objekt actor používá připomenutí)
 
 > [!NOTE]
 > Pokud objekt actor používá časovače a je vyvolána jeho zpětné volání časovače, **nepočítá se** jako "používaný".

@@ -3,15 +3,16 @@ title: Slevy rezervačních plánů pro Red Hat – Azure
 description: Zjistěte, jak se na software Red Hat na virtuálních počítačích uplatňují slevy za plán Red Hat.
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 46a1fd9be35abb19d920e2a3bd34f88c557f40b1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8e735d623cc991d2e3720e0ec418eee77aa8c46c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735111"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350853"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení způsobu uplatňování slevy za plán rezervace softwaru Red Hat Linux Enterprise v Azure
 
@@ -52,8 +53,8 @@ Názvy z Marketplace na webu Azure Portal:
 Další informace o rezervacích najdete v následujících článcích:
 
 - [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
-- [Předplacení plánů softwaru Red Hat pomocí rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení plánů softwaru Red Hat pomocí rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Správa rezervací v Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)

@@ -1,22 +1,22 @@
 ---
 title: Azure Firewall konfigurace analýzy hrozeb
-description: Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén.
+description: Přečtěte si, jak nakonfigurovat filtrování na základě logiky hrozeb pro zásady Azure Firewall pro upozornění a zamítnutí provozu z a do známých škodlivých IP adres a domén.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568413"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651713"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall konfigurace analýzy hrozeb
 
-Filtrování na základě logiky hrozeb lze nakonfigurovat pro zásady Azure Firewall pro upozornění a zamítnutí provozu z a do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
+Filtrování na základě logiky hrozeb lze nakonfigurovat pro zásady Azure Firewall pro upozornění a zamítnutí provozu z a do známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
 
 Pokud jste nakonfigurovali filtrování na základě logiky hrozeb, přidružená pravidla se zpracují před všemi pravidly NAT, síťovými pravidly nebo pravidly aplikací.
 
@@ -24,21 +24,33 @@ Pokud jste nakonfigurovali filtrování na základě logiky hrozeb, přidružen�
 
 ## <a name="threat-intelligence-mode"></a>Režim analýzy hrozeb
 
-Můžete se rozhodnout, že chcete protokolovat pouze výstrahu, když je pravidlo aktivováno, nebo můžete zvolit možnost výstraha a odepřít režim.
+V jednom ze tří režimů, které jsou popsány v následující tabulce, můžete nakonfigurovat analýzu hrozeb. V režimu výstrahy je ve výchozím nastavení povolené filtrování na základě logiky hrozeb.
 
-V režimu výstrahy je ve výchozím nastavení povolené filtrování na základě logiky hrozeb.
+|Režim |Description  |
+|---------|---------|
+|`Off`     | Funkce Analýza hrozeb není pro bránu firewall povolená. |
+|`Alert only`     | Budete dostávat vysoce spolehlivé výstrahy pro provoz procházející bránou firewall nebo ze známých škodlivých IP adres a domén. |
+|`Alert and deny`     | Provoz se zablokuje a při zjištění, že se při pokusu o přechod přes bránu firewall do nebo ze známých škodlivých IP adres a domén dojde k detekci výstrah, budete dostávat vysoce spolehlivá upozornění. |
 
-## <a name="allowed-list-addresses"></a>Povolené adresy seznamu
+> [!NOTE]
+> Režim analýzy hrozeb je zděděný od nadřazených zásad k podřízeným zásadám. Podřízená zásada musí být nakonfigurovaná se stejným nebo přísnějším režimem než nadřazená zásada.
 
-Můžete nakonfigurovat seznam povolených IP adres, aby Analýza hrozeb nefiltroval žádné z adres, rozsahů ani podsítí, které zadáte.
+## <a name="allowlist-addresses"></a>Povolených adresy
 
+Analýza hrozeb může aktivovat falešně pozitivní a zablokovat provoz, který je ve skutečnosti platný. Můžete nakonfigurovat seznam povolených IP adres, aby Analýza hrozeb nefiltroval žádné z adres, rozsahů ani podsítí, které zadáte.  
 
+![Povolených adresy](media/threat-intelligence-settings/allow-list.png)
+
+Povolených můžete aktualizovat pomocí několika záznamů najednou tak, že nahrajete soubor CSV. Soubor CSV může obsahovat jenom IP adresy a rozsahy. Soubor nemůže obsahovat záhlaví.
+
+> [!NOTE]
+> Adresy povolených Intelligence pro analýzu hrozeb se dědí z nadřazených zásad do podřízených zásad. Všechny IP adresy nebo rozsahy přidané do nadřazených zásad se uplatní i pro všechny podřízené zásady.
 
 ## <a name="logs"></a>Protokoly
 
-Následující výpis protokolu ukazuje aktivované pravidlo:
+Následující výpis protokolu ukazuje aktivované pravidlo pro odchozí provoz na škodlivý web:
 
-```
+```json
 {
     "category": "AzureFirewallNetworkRule",
     "time": "2018-04-16T23:45:04.8295030Z",

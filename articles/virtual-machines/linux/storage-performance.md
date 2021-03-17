@@ -1,21 +1,22 @@
 ---
 title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – úložiště
-description: Přečtěte si, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2-Series.
+description: Naučte se, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích Lsv2-Series pomocí příkladu pro Linux.
 services: virtual-machines-linux
 author: laurenhughes
-ms.service: virtual-machines-linux
-ms-subservice: sizes
+ms.service: virtual-machines
+ms-subservice: vm-sizes-storage
+ms.collection: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654765"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552758"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích s Lsv2-Series Linux
 
@@ -97,7 +98,7 @@ Další informace o možnostech zálohování dat v místním úložišti najdet
    Nastavení rq_affinity je menší úprava při použití absolutních maximálních vstupně-výstupních operací za sekundu (IOPS). Jakmile všechno ostatní funguje dobře, zkuste nastavit rq_affinity na 0, abyste viděli, jestli se jedná o rozdíl.
 
 * **Potřebuji změnit nastavení blk_mq?**  
-   RHEL/CentOS 7. x automaticky používá BLK-MQ pro zařízení NVMe. Nejsou nutné žádné změny konfigurace ani nastavení. Nastavení scsi_mod. use_blk_mq je jenom pro SCSI a používá se během Lsv2 Preview, protože zařízení NVMe se na virtuálních počítačích hosta zobrazila jako zařízení SCSI. V současné době se zařízení NVMe zobrazují jako zařízení NVMe, takže nastavení SCSI BLK-MQ není důležité.
+   RHEL/CentOS 7. x automaticky používá BLK-MQ pro zařízení NVMe. Nejsou nutné žádné změny konfigurace ani nastavení. Nastavení scsi_mod. use _blk_mq je pouze pro SCSI a bylo použito během Lsv2 Preview, protože zařízení NVMe byla na virtuálních počítačích hosta zobrazena jako zařízení SCSI. V současné době se zařízení NVMe zobrazují jako zařízení NVMe, takže nastavení SCSI BLK-MQ není důležité.
 
 * **Potřebuji změnit "Fio"?**  
    Pokud chcete získat maximální IOPS s nástrojem pro měření výkonu, jako je FIO ve velikosti virtuálního počítače L64v2 a L80v2, nastavte u každého zařízení NVMe hodnotu rq_affinity na 0.  Tento příkazový řádek například nastaví "rq_affinity" na nulu pro všechna 10 zařízení NVMe ve virtuálním počítači s L80v2:

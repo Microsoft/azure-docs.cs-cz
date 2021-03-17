@@ -3,19 +3,19 @@ title: Soubory kontejnerů profilů FSLogix virtuálních počítačů s Windows
 description: Tento článek popisuje kontejnery profilů FSLogix v rámci virtuálních počítačů s Windows a souborů Azure.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0b977944f3a531365487b9655820e5d8f85e13d0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002399"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225911"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
-Služba Virtual Desktop systému Windows doporučuje kontejnery profilů FSLogix jako řešení uživatelského profilu. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Kompletní profily uživatelů ukládá do jednotlivých kontejnerů. Při přihlášení se tento kontejner dynamicky připojí k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele. Tento článek popisuje, jak se ve virtuálním počítači s Windows používají kontejnery profilu FSLogix se soubory Azure.
+Služba Virtual Desktop systému Windows doporučuje kontejnery profilů FSLogix jako řešení uživatelského profilu. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Kompletní profily uživatelů ukládá do jednotlivých kontejnerů. Při přihlášení se tento kontejner dynamicky připojí k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned k dispozici a objeví se v systému úplně stejně jako nativní profil uživatele. Tento článek popisuje, jak se ve virtuálním počítači s Windows používají kontejnery profilu FSLogix se soubory Azure.
 
 >[!NOTE]
 >Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
@@ -55,7 +55,7 @@ V následující tabulce jsou uvedeny výhody a omezení pro předchozí technol
 
 #### <a name="performance"></a>Výkon
 
-UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván. UPD s S2D je řešení, které doporučujeme pro virtuální počítače s Windows.
+UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván.
 
 #### <a name="cost"></a>Náklady
 
@@ -70,7 +70,7 @@ Clustery S2D vyžadují operační systém, který se opraví, aktualizuje a udr
 19. listopadu 2018 [Společnost Microsoft získala FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší mnoho výzev k kontejneru profilů. Mezi ně patří klíč:
 
 - **Výkon:** [Kontejnery profilu FSLogix](/fslogix/configure-profile-container-tutorial/) mají vysoký výkon a řeší problémy s výkonem, které mají historicky blokovaný režim výměny do mezipaměti.
-- **OneDrive:** OneDrive pro firmy se bez kontejnerů profilů FSLogix nepodporuje v prostředích netrvalých virtuálních počítačů a virtuálních klientských počítačů (VDI). [Nejlepší postupy pro OneDrive pro firmy a FSLogix](/fslogix/overview/) popisují jejich interakci. Další informace najdete v tématu [použití synchronizačního klienta na virtuálních plochách](/deployoffice/rds-onedrive-business-vdi/).
+- **OneDrive:** OneDrive pro firmy se bez kontejnerů profilů FSLogix nepodporuje v prostředích netrvalých virtuálních počítačů a virtuálních klientských počítačů (VDI). [Stránka podpory ONEDRIVE VDI](/onedrive/sync-vdi-support) vám sdělí, jak budou pracovat. Další informace najdete v tématu [použití synchronizačního klienta na virtuálních plochách](/deployoffice/rds-onedrive-business-vdi/).
 - **Další složky:** FSLogix poskytuje možnost rozšiřování uživatelských profilů, aby zahrnovaly další složky.
 
 Od pořízení společnost Microsoft začala nahrazovat existující řešení uživatelských profilů, jako je UPD, pomocí kontejnerů profilů FSLogix.
@@ -87,7 +87,7 @@ Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje
 
 - Účet úložiště Azure Files musí být ve stejné oblasti jako virtuální počítače hostitele relace.
 - Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](/fslogix/fslogix-storage-config-ht).
-- Každý fond hostitelů musí být sestaven se stejným typem a velikostí virtuálního počítače na základě stejné hlavní bitové kopie.
+- Každý virtuální počítač fondu hostitelů musí být založený na stejném typu a velikosti virtuálního počítače na základě stejné hlavní bitové kopie.
 - Každý virtuální počítač fondu hostitelů musí být ve stejné skupině prostředků, aby se mohla spravovat podpora, škálování a aktualizace.
 - Pro zajištění optimálního výkonu by se řešení úložiště a kontejner profilu FSLogix měly nacházet ve stejném umístění datového centra.
 - Účet úložiště, který obsahuje hlavní bitovou kopii, musí být ve stejné oblasti a předplatném, ve kterém jsou virtuální počítače zřízené.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4fe4b99f9635ff254f1a75e03f13d7e6ffcb3c49
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366513"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnit Azure CDN koncový bod
 ## <a name="overview"></a>Přehled
@@ -69,11 +69,11 @@ Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncov�
     ![Tlačítko vyčistit](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Žádosti o vyprázdnění trvat přibližně 10 minut, než se **Azure CDN od Microsoftu**, přibližně 2 minuty s **Azure CDN z Verizon** (Standard a Premium) a přibližně 10 sekund **Azure CDN z Akamai**.  Azure CDN v daném okamžiku na úrovni profilu dosáhl limitu 50 souběžných žádostí o vyprázdnění. 
+> Žádosti o vyprázdnění trvat přibližně 10 minut, než se **Azure CDN od Microsoftu**, přibližně 2 minuty s **Azure CDN z Verizon** (Standard a Premium) a přibližně 10 sekund **Azure CDN z Akamai**.  Azure CDN v daném okamžiku na úrovni profilu dosáhl limitu 100 souběžných žádostí o vyprázdnění. 
 > 
 > 
 
 ## <a name="see-also"></a>Viz také
 * [Předběžné načtení prostředků v koncovém bodu Azure CDN](cdn-preload-endpoint.md)
-* [Odkaz na Azure CDN REST API – vymazání nebo přednačtení koncového bodu](/rest/api/cdn/endpoints)
+* [Odkaz na Azure CDN REST API – vymazání nebo přednačtení koncového bodu](/rest/api/cdn/cdn/endpoints)
 

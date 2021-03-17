@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: Převod na hodnoty indikátoru
       href: convert-to-indicator-values.md
-    - name: Vyčištění chybějících dat
-      href: clean-missing-data.md
     - name: Úpravy metadat
       href: edit-metadata.md
     - name: Seskupení dat do přihrádek
@@ -92,6 +90,8 @@
           href: multiclass-neural-network.md
         - name: One vs. All Multiclass
           href: one-vs-all-multiclass.md
+        - name: One vs. One Multiclass
+          href: one-vs-one-multiclass.md
         - name: Zprůměrovaný perceptron se dvěma třídami
           href: two-class-averaged-perceptron.md
         - name: Posílený rozhodovací strom se dvěma třídami
@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: Chyby modulů a řešení potíží
   href: designer-error-codes.md
+- name: Syntaxe dotazů prohledávání grafů
+  href: graph-search-syntax.md

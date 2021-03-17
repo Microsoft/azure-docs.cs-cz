@@ -1,34 +1,32 @@
 ---
 title: Přímá federace se zprostředkovatelem identity pro B2B – Azure AD
-description: Přímo se federovat se zprostředkovatelem identity SAML nebo WS-dodaným, aby se hosté mohli přihlásit k aplikacím Azure AD.
+description: Přímo se federovat se zprostředkovatelem identity SAML nebo WS-Fed, aby se hosté mohli přihlásit k aplikacím Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908682"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687239"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
 > [!NOTE]
 >  Přímá federace je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-Tento článek popisuje, jak nastavit přímou federaci s jinou organizací pro spolupráci B2B. Můžete nastavit přímou federaci s jakoukoli organizací, jejíž poskytovatel identity (IdP) podporuje protokol SAML 2,0 nebo WS-dodávání.
+Tento článek popisuje, jak nastavit přímou federaci s jinou organizací pro spolupráci B2B. Můžete nastavit přímou federaci s jakoukoli organizací, jejíž poskytovatel identity (IdP) podporuje protokol SAML 2,0 nebo WS-Fed.
 Když nastavíte přímou federaci s IdPem partnera, můžou noví uživatelé typu host z této domény používat vlastní účet organizace spravovaný IdP pro přihlášení k vašemu tenantovi Azure AD a začít spolupracovat s vámi. Není potřeba, aby uživatel typu Host vytvořil samostatný účet služby Azure AD.
-> [!NOTE]
-> Uživatelé typu host s přímým přístupem se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo nebo `https://portal.azure.com/<tenant id>` v případě ověřené domény `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé s přímými federace se momentálně nemůžou přihlásit pomocí běžných koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com` , `https://portal.azure.com` , nebo `https://teams.microsoft.com` způsobí chybu.
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Kdy je uživatel typu Host ověřený pomocí přímé federace?
 Po nastavení přímé federace s organizací budou všichni noví uživatelé typu Host, kteří pozvánku nastavili, ověřeni pomocí přímé federace. Je důležité si uvědomit, že nastavení přímé federace nemění metodu ověřování pro uživatele typu Host, kteří už od vás požádali o pozvání. Tady je několik příkladů:
  - Pokud uživatelé typu host už z vaší organizace překládali pozvánky a následně jste nastavili přímo federaci s jejich organizací, budou tito uživatelé typu Host dál používat stejnou metodu ověřování, kterou používali před nastavením přímé federace.
@@ -41,6 +39,18 @@ Přímá federace je vázaná na obory názvů domény, jako jsou contoso.com a 
 
 ## <a name="end-user-experience"></a>Prostředí koncového uživatele 
 Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenantovi Azure AD pomocí vlastního účtu organizace. Když přistupují ke sdíleným prostředkům a zobrazí se výzva k přihlášení, uživatelé s přímými federace se přesměrují na své IdP. Po úspěšném přihlášení se vrátí službě Azure AD, která bude mít přístup k prostředkům. Obnovovací tokeny pro uživatele s přímým přístupem jsou platné po dobu 12 hodin, což je [výchozí délka tokenu předávací aktualizace](../develop/active-directory-configurable-token-lifetimes.md#exceptions) ve službě Azure AD. Pokud má federované IdP jednotné přihlašování (SSO), uživatel bude mít přístup k JEDNOTNÉmu přihlašování a po počátečním ověření se nezobrazí žádné výzvy k přihlášení.
+
+## <a name="sign-in-endpoints"></a>Koncové body přihlášení
+
+Uživatelé typu host s přímým přístupem se teď můžou ke svým klientům nebo aplikacím Microsoftu přihlašovat pomocí [společného koncového bodu](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (jinými slovy Obecná adresa URL aplikace, která neobsahuje váš kontext tenanta). Během procesu přihlašování uživatel typu Host zvolí **Možnosti přihlášení** a pak vybere možnost **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace a pokračuje v přihlašování pomocí vlastních přihlašovacích údajů.
+
+Uživatelé typu host s přímým přístupem můžou také používat koncové body aplikací, které obsahují informace o vašem tenantovi, například:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Přímým odkazům na aplikaci nebo prostředek můžete také dát přímým odkazům na konkrétní uživatele, včetně informací o vašem tenantovi, například `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
 
 ## <a name="limitations"></a>Omezení
 
@@ -60,34 +70,35 @@ Přímá federace je povolená jenom pro zásady, ve kterých se doména URL ov�
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Například při nastavování přímé federace pro **fabrikam.com**se ověřování předá ověřovací adresou URL `https://fabrikam.com/adfs` . Například hostitel ve stejné doméně bude také předávat `https://sts.fabrikam.com/adfs` . Adresa URL `https://fabrikamconglomerate.com/adfs` pro ověření nebo `https://fabrikam.com.uk/adfs` stejná doména ale nebude úspěšné.
+Například při nastavování přímé federace pro **fabrikam.com** se ověřování předá ověřovací adresou URL `https://fabrikam.com/adfs` . Například hostitel ve stejné doméně bude také předávat `https://sts.fabrikam.com/adfs` . Adresa URL `https://fabrikamconglomerate.com/adfs` pro ověření nebo `https://fabrikam.com.uk/adfs` stejná doména ale nebude úspěšné.
 
 ### <a name="signing-certificate-renewal"></a>Podpisové obnovení certifikátu
 Pokud v nastavení zprostředkovatele identity zadáte adresu URL metadat, služba Azure AD automaticky obnoví podpisový certifikát, jakmile vyprší jeho platnost. Pokud se ale certifikát z jakéhokoli důvodu před časem vypršení platnosti neposkytne, nebo pokud nezadáte adresu URL metadat, Azure AD ho nebude moct obnovit. V takovém případě budete muset podpisový certifikát aktualizovat ručně.
 
 ### <a name="limit-on-federation-relationships"></a>Omezení federačních vztahů
-V současné době je podporováno maximálně 1 000 federačních vztahů. Toto omezení zahrnuje i [interní federace](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) i přímé federace.
+V současné době je podporováno maximálně 1 000 federačních vztahů. Toto omezení zahrnuje i [interní federace](/powershell/module/msonline/set-msoldomainfederationsettings) i přímé federace.
 
 ### <a name="limit-on-multiple-domains"></a>Omezení ve více doménách
 V současné době nepodporujeme přímou federaci s více doménami ze stejného tenanta.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Můžu nastavit přímou federaci s doménou, pro kterou existuje nespravovaný tenant (e-mail ověřený)? 
-Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
+Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../enterprise-users/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Pokud je povolená přímá federace a e-mailová ověřování jednorázového hesla, která metoda má přednost?
 Pokud je v partnerské organizaci vytvořená přímá federace, má přednost před ověřováním jednorázovým heslem e-mailu pro nové uživatele typu host z této organizace. Pokud uživatel typu Host znovu nastavil pozvánku pomocí jednorázového ověřování hesla před nastavením přímé federace, bude používat jednorázové ověřování pomocí hesla. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Jsou problémy s přihlašováním přímo v rámci federačních adres způsobeny částečně synchronizovanými tenantů?
 Ne, v tomto scénáři by měla být použita funkce pro [jednorázové heslo e-mailu](one-time-passcode.md) . "Částečně synchronizovaná tenant" odkazuje na partnera Azure AD, u kterého nejsou místní identity uživatelů plně synchronizovány do cloudu. Host, jehož identita ještě v cloudu neexistuje, ale pokud se pokusí uplatnit uplatnění pozvánky B2B, nebude se moct přihlásit. Funkce jednorázového hesla umožní tomuto hostovi přihlašovat se. Funkce přímé federace adresuje scénáře, kde má host svůj vlastní účet organizace spravovaný IdP, ale organizace nemá žádnou přítomnost Azure AD vůbec.
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Po nakonfigurování přímé federace s organizací musí každý host Odeslat a uplatnit individuální pozvánku?
+Nastavením přímé federace se nemění metoda ověřování pro uživatele typu Host, kteří už od vás pozvánku vypovažovali. Metodu ověřování uživatele typu Host můžete aktualizovat tak, že z adresáře odstraníte uživatelský účet hosta a znovu je zadáte.
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Krok 1: Konfigurace zprostředkovatele identity partnerské organizace
 Nejdřív vaše partnerská organizace potřebuje nakonfigurovat poskytovatele identity o požadované deklarace identity a vztahy důvěryhodnosti předávající strany. 
 
 > [!NOTE]
-> K ilustraci, jak nakonfigurovat poskytovatele identity pro přímou federaci, použijeme jako příklad Active Directory Federation Services (AD FS) (AD FS). Přečtěte si článek [Konfigurace přímé federace s AD FS](direct-federation-adfs.md), který poskytuje příklady, jak nakonfigurovat AD FS jako zprostředkovatele identity SAML 2,0 nebo WS-dodaného v rámci přípravy na přímou federaci.
+> K ilustraci, jak nakonfigurovat poskytovatele identity pro přímou federaci, použijeme jako příklad Active Directory Federation Services (AD FS) (AD FS). Přečtěte si článek [Konfigurace přímé federace s AD FS](direct-federation-adfs.md), který obsahuje příklady konfigurace AD FS jako zprostředkovatele identity SAML 2,0 nebo WS-Fed poskytovatele identity v přípravě na přímou federaci.
 
 ### <a name="saml-20-configuration"></a>Konfigurace SAML 2,0
 
-Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
+Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu  [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](../hybrid/how-to-connect-fed-saml-idp.md).  
 
 > [!NOTE]
 > Cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně, nebo musí být doménou povoleného zprostředkovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 
@@ -101,7 +112,7 @@ Požadované atributy pro odpověď SAML 2,0 z IdP:
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
-|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 Požadované deklarace pro token SAML 2,0 vydaný IdPem:
@@ -111,25 +122,25 @@ Požadované deklarace pro token SAML 2,0 vydaný IdPem:
 |Formát NameID     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-### <a name="ws-fed-configuration"></a>Konfigurace protokolu WS-nakrmená 
-Azure AD B2B je možné nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol WS-dodávání s některými konkrétními požadavky, jak je uvedeno níže. V současné době byly dva poskytovatelé WS-dodány testováni kvůli kompatibilitě s Azure AD zahrnutí AD FS a Shibboleth. Další informace o tom, jak vytvořit vztah důvěryhodnosti předávající strany mezi poskytovatelem dodržování předpisů WS-zavedeným pomocí služby Azure AD, najdete v dokumentu věnovaném integraci služby STS pomocí protokolu WS, který je k dispozici v dokumentech pro [kompatibilitu zprostředkovatele identit Azure AD](https://www.microsoft.com/download/details.aspx?id=56843).
+### <a name="ws-fed-configuration"></a>Konfigurace WS-Fed 
+Azure AD B2B je možné nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol WS-Fed s některými konkrétními požadavky, jak je uvedeno níže. V současné době byly u těchto dvou zprostředkovatelů WS-Fed testovány kompatibility s Azure AD zahrnutí AD FS a Shibboleth. Další informace o tom, jak vytvořit vztah důvěryhodnosti předávající strany mezi poskytovatelem WS-Fed kompatibilním s Azure AD, najdete v dokumentu věnovaném integraci služby STS pomocí protokolů WS, který je k dispozici v dokumentech pro [kompatibilitu zprostředkovatele identity Azure AD](https://www.microsoft.com/download/details.aspx?id=56843).
 
 > [!NOTE]
 > Cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně nebo doméně povoleného poskytovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 
 
-#### <a name="required-ws-fed-attributes-and-claims"></a>Požadované atributy a deklarace protokolu WS-dodávání
+#### <a name="required-ws-fed-attributes-and-claims"></a>Povinné atributy WS-Fed a deklarace identity
 
-V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a deklarace identity, které je třeba nakonfigurovat u poskytovatele identity služby WS-dodány třetí strany. Chcete-li nastavit přímou federaci, je nutné ve zprávě od poskytovatele identity přijmout následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně.
+V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a deklarace identity, které je třeba nakonfigurovat u poskytovatele identity WS-Fed třetí strany. Chcete-li nastavit přímou federaci, musí být v WS-Fed zprávě od poskytovatele identity přijaty následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně.
 
-Požadované atributy zprávy WS-dodané z IdP:
+Požadované atributy v WS-Fed zprávě z IdP:
  
 |Atribut  |Hodnota  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
-|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-Požadované deklarace pro token WS-dodaný vydaný IdP:
+Požadované deklarace identity pro token WS-Fed vydané IdPem:
 
 |Atribut  |Hodnota  |
 |---------|---------|
@@ -144,15 +155,15 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Konfigurace přímé federace na portálu Azure AD
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**  >  **všichni zprostředkovatelé identity**.
-3. Vyberte a pak vyberte **Nový SAML/WS-IDP**.
+3. Vyberte **Nový IDP SAML/WS-** dodávání.
 
-    ![Snímek obrazovky zobrazující tlačítko pro přidání nového typu SAML nebo WS-IdP](media/direct-federation/new-saml-wsfed-idp.png)
+    ![Snímek obrazovky zobrazující tlačítko pro přidání nového SAML nebo WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp.png)
 
-4. Na **nové stránce IDP s podporou SAML/WS** vyberte v části **protokol poskytovatele identity**možnost **SAML** nebo **WS**.
+4. Na **nové stránce IDP s podporou SAML/WS** vyberte v části **protokol poskytovatele identity** možnost **SAML** nebo **WS**.
 
-    ![Snímek obrazovky zobrazující tlačítko pro analýzu na stránce SAML nebo WS-IdPed](media/direct-federation/new-saml-wsfed-idp-parse.png)
+    ![Snímek obrazovky zobrazující tlačítko pro analýzu na stránce SAML nebo WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
 5. Zadejte název domény partnerské organizace, který bude cílovým názvem domény pro přímou federaci.
 6. Můžete nahrát soubor metadat, který vyplní podrobnosti metadat. Pokud se rozhodnete zadat metadata ručně, zadejte následující informace:
@@ -192,10 +203,10 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Návody upravit přímý vztah federace?
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**.
 3. Vybrat **všechny zprostředkovatele identity**
-4. V části **Zprostředkovatelé identit SAML/WS**vyberte poskytovatele.
+4. V části **Zprostředkovatelé identit SAML/WS** vyberte poskytovatele.
 5. V podokně podrobností zprostředkovatele identity aktualizujte hodnoty.
 6. Vyberte **Uložit**.
 
@@ -203,7 +214,7 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
 ## <a name="how-do-i-remove-direct-federation"></a>Návody odebrat přímo federaci?
 Můžete odebrat nastavení přímé federace. Pokud tak učiníte, přesměrujete uživatele typu Host, kteří už provedli své pozvánky, se nebudou moct přihlásit. Můžete jim ale udělit přístup k prostředkům tím, že je odstraníte z adresáře a znovu je dodáte. Postup odebrání přímé federace se zprostředkovatelem identity na portálu Azure AD:
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**.
 3. Vyberte **všechny zprostředkovatele identity**.
 4. Vyberte poskytovatele identity a pak vyberte **Odstranit**. 

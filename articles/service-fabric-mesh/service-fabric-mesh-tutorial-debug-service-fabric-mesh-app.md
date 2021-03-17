@@ -1,19 +1,24 @@
 ---
 title: Ladění webové aplikace sítě v Azure Service Fabric spuštěné místně
 description: V tomto kurzu se dozvíte, jak ladit aplikaci Azure Service Fabric Mesh, která je spuštěná v místním clusteru.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 10/31/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261310"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625445"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 V tomto kurzu, který je druhou částí série, se dozvíte, jak sestavit a ladit aplikaci Azure Service Fabric Mesh v místním vývojovém clusteru.
 

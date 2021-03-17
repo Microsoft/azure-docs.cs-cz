@@ -3,12 +3,12 @@ title: Dodržování legislativních předpisů v definicích iniciativ
 description: Popisuje způsob použití definice iniciativ k seskupení zásad podle regulativní domény, jako je Access Control, Správa konfigurace a další.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544617"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89645519"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Dodržování předpisů v Azure Policy
 
@@ -33,18 +33,18 @@ Po vytvoření definice iniciativy se [skupinami](./initiative-definition-struct
 
 Nové kartě jsou **ovládací prvky** přidány na stránku. Filtrování je dostupné v případě, že jsou definice v doméně a zásadách **dodržování předpisů** seskupené podle `title` pole z objektu **policyMetadata** . Každý řádek představuje **ovládací prvek** , který zobrazuje stav dodržování předpisů, **doména dodržování předpisů** je součástí, informace o zodpovědnosti a počet nekompatibilních a nekompatibilních definic zásad, které se **řídí**.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Ukázka přehledu dodržování legislativních předpisů pro předdefinovanou definici NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Snímek obrazovky s přehledem dodržování legislativních předpisů pro NIST SP 800-53 R4 předdefinovaná definice zobrazující kompatibilní a nekompatibilní ovládací prvky.":::
 
 Výběrem **ovládacího prvku** se otevře stránka s podrobnostmi o tomto ovládacím prvku. **Přehled** obsahuje informace z `description` a `requirements` . Na kartě **zásady** jsou všechny definice jednotlivých zásad v iniciativě, které přispívají k tomuto **ovládacímu prvku**. Karta **Kompatibilita prostředků** poskytuje podrobné zobrazení jednotlivých prostředků, které jsou vyhodnocovány pomocí zásad členů aktuálně zobrazeného **ovládacího prvku**.
 
 > [!NOTE]
 > Typ hodnocení **spravovaný společností Microsoft** je pro definici [statické](./definition-structure.md#type) zásady `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Ukázka definic zásad dodržování předpisů v rámci kontroly nad hranicí domény systému a ochrany v doméně pro ochranu komunikace v rámci předdefinované definice NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Snímek obrazovky s přehledem dodržování legislativních předpisů pro NIST SP 800-53 R4 předdefinovaná definice zobrazující kompatibilní a nekompatibilní ovládací prvky.":::
 
 Na stejné stránce **ovládacího prvku** se změna na kartu **Kompatibilita prostředků** zobrazí všechny prostředky, které tyto definice zásad tohoto **ovládacího prvku**obsahují. Filtry jsou k dispozici pro název nebo ID, stav dodržování předpisů, typ prostředku a umístění.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Ukázka prostředků dodržování předpisů, které jsou ovlivněné definicemi zásad v rámci kontroly nad rámec ochrany v doméně systému a komunikace v doméně ochrany NIST SP 800-53 R4 předdefinovaná definice.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Snímek obrazovky s přehledem dodržování legislativních předpisů pro NIST SP 800-53 R4 předdefinovaná definice zobrazující kompatibilní a nekompatibilní ovládací prvky.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Dodržování předpisů v sadě SDK
 

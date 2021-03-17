@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647407"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653231"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s rozhraním API pro vytváření sestav Azure Active Directory
 
@@ -32,7 +32,7 @@ Pomocí rozhraní Microsoft Graph API pro sestavy služby Azure AD můžete zís
 
 Tento článek obsahuje přehled rozhraní API pro vytváření sestav, včetně způsobů přístupu k němu.
 
-Pokud narazíte na problémy, přečtěte si téma [Jak získat podporu pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
+Pokud narazíte na problémy, přečtěte si téma [Jak získat podporu pro Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,15 +47,17 @@ Podrobné pokyny najdete v tématu [požadavky pro přístup k rozhraní API pro
 
 ## <a name="api-endpoints"></a>Koncové body rozhraní API 
 
-Koncový bod rozhraní API Microsoft Graph pro protokoly auditu je `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` a koncovým bodem rozhraní Microsoft Graph API pro přihlášení je `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Další informace najdete v referenční příručce rozhraní API pro [audit](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit) a Reference k [rozhraní API pro přihlašování](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn).
+Koncový bod rozhraní API Microsoft Graph pro protokoly auditu je `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` a koncovým bodem rozhraní Microsoft Graph API pro přihlášení je `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Další informace najdete v referenční příručce rozhraní API pro [audit](/graph/api/resources/directoryaudit) a Reference k [rozhraní API pro přihlašování](/graph/api/resources/signIn).
 
-Kromě toho můžete pomocí [rozhraní API detekce rizik ochrany identity](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
+Pomocí [rozhraní API detekce rizik v rámci Identity Protection](/graph/api/resources/identityriskevent?view=graph-rest-beta) můžete získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
   
+K získání přístupových práv k zřizování událostí ve vašem tenantovi můžete použít taky [rozhraní API pro zřizování protokolů](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) . 
+
 ## <a name="apis-with-microsoft-graph-explorer"></a>Rozhraní API s Microsoft Graph Explorer
 
 K ověření přihlašovacích údajů a auditování dat rozhraní API můžete použít [průzkumníka Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) . Přihlaste se ke svému účtu pomocí obou přihlašovacích tlačítek v uživatelském rozhraní Průzkumníka graphu a nastavte **AuditLog. Read. All** a **Directory. Read. All** oprávnění pro vašeho tenanta, jak je znázorněno na následujícím obrázku.   
 
-![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
+![Průzkumník grafů](./media/concept-reporting-api/graph-explorer.png)
 
 ![Upravit uživatelské rozhraní oprávnění](./media/concept-reporting-api/modify-permissions.png)
 
@@ -70,5 +72,3 @@ Podrobné pokyny najdete v tématu [získání dat pomocí rozhraní API pro vyt
  * [Požadavky pro přístup k rozhraní API pro vytváření sestav](howto-configure-prerequisites-for-reporting-api.md) 
  * [Získání dat pomocí rozhraní API pro generování sestav Azure AD s certifikáty](tutorial-access-api-with-certificates.md)
  * [Řešení chyb v rozhraní API pro vytváření sestav Azure AD](troubleshoot-graph-api.md)
-
-

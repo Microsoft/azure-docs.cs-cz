@@ -1,22 +1,22 @@
 ---
-title: Kurz – vysoká dostupnost pro virtuální počítače s Windows v Azure
-description: V tomto kurzu zjistíte, jak používat Azure PowerShell k nasazení vysoce dostupných virtuálních počítačů ve skupinách dostupnosti
-services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+title: Nasazení virtuálních počítačů ve skupině dostupnosti pomocí Azure PowerShell
+description: Naučte se používat Azure PowerShell k nasazení virtuálních počítačů s vysokou dostupností do skupin dostupnosti.
+services: virtual-machines
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065257"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555903"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů v Azure PowerShellu
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Vytvoření a nasazení virtuálních počítačů ve skupině dostupnosti pomocí Azure PowerShell
 
 V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost vašich Virtual Machines (virtuálních počítačů) pomocí skupin dostupnosti. Skupiny dostupnosti zajišťují, že virtuální počítače, které nasazujete v Azure, jsou distribuované napříč několika izolovanými hardwarovými uzly v clusteru. 
 
@@ -28,14 +28,6 @@ V tomto kurzu se naučíte:
 > * Kontrola dostupných velikostí virtuálních počítačů
 > * Kontrola Azure Advisoru
 
-
-## <a name="availability-set-overview"></a>Přehled skupiny dostupnosti
-
-Skupina dostupnosti je logická možnost seskupení pro izolaci prostředků virtuálních počítačů při jejich nasazení. Azure zajišťuje, aby virtuální počítače, které umístíte do skupiny dostupnosti, běžely na několika fyzických serverech, výpočetních skříních, jednotkách úložiště a síťových přepínačích. Pokud dojde k selhání hardwaru nebo softwaru, bude ovlivněna pouze podmnožina virtuálních počítačů a vaše celkové řešení zůstane v provozu. Skupiny dostupnosti jsou zásadní pro vytváření spolehlivých cloudových řešení.
-
-Představte si běžné řešení založené na virtuálních počítačích, ve kterém máte čtyři front-endové webové servery a dva back-endové virtuální počítače. S Azure budete chtít před nasazením virtuálních počítačů definovat dvě skupiny dostupnosti: jednu pro webovou vrstvu a jednu pro úroveň back. Když vytváříte nový virtuální počítač, zadáváte skupinu dostupnosti jako parametr. Azure zajišťuje izolaci virtuálních počítačů napříč několika fyzickými hardwarovými prostředky. Pokud má fyzický hardware, na kterém je spuštěný některý z vašich serverů, víte, že ostatní instance vašich serverů budou pořád spuštěné, protože jsou na jiném hardwaru.
-
-Skupiny dostupnosti použijte v případě, že chcete v Azure nasadit spolehlivá řešení založená na virtuálních počítačích.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -75,7 +67,7 @@ Virtuální počítače musí být vytvořené v rámci skupiny dostupnosti, aby
 
 Když vytvoříte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm), použijete `-AvailabilitySetName` parametr k zadání názvu skupiny dostupnosti.
 
-Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -135,4 +127,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, kde se seznámíte se škálovacími sadami virtuálních počítačů.
 
 > [!div class="nextstepaction"]
-> [Vytvoření sady škálování virtuálního počítače](tutorial-create-vmss.md)
+> [Vytvoření škálovací sady virtuálních počítačů](tutorial-create-vmss.md)

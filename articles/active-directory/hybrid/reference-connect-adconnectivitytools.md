@@ -10,18 +10,19 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5e06d0a6f7693ca9cc69f05f6b2318d6b60b5e3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66473784"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89070798"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADConnectivityTools
 
 Následující dokumentace obsahuje referenční informace pro modul ADConnectivityTools. psm1 PowerShell, který je součástí nástroje Azure AD Connect.
 
-## <a name="confirm-dnsconnectivity"></a>Potvrdit – DnsConnectivity
+## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -108,7 +109,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-forestexists"></a>Potvrdit – ForestExists
+## <a name="confirm-forestexists"></a>Confirm-ForestExists
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -155,7 +156,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-functionallevel"></a>Potvrdit – FunctionalLevel
+## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -256,7 +257,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-networkconnectivity"></a>Potvrdit – NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -310,7 +311,7 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Pokud uživatel nepoužívá služby DNS poskytované lokalitou nebo přihlašovacím řadičem domény služby Active Directory, může chtít přeskočit kontrolu portu 53.
-Uživatel musí být stále schopný přeložit _. LDAP. _tcp.\<forestfqdn\>
+Uživatel musí být stále schopný vyřešit _.ldap._tcp.\<forestfqdn\>
 aby byla konfigurace konektoru služby Active Directory úspěšná.
 
 ```yml
@@ -347,7 +348,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-targetsarereachable"></a>Potvrdit – TargetsAreReachable
+## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -416,7 +417,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-validdomains"></a>Potvrdit – ValidDomains
+## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -516,7 +517,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Potvrdit – ValidEnterpriseAdminCredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -729,7 +730,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="start-connectivityvalidation"></a>Spustit – ConnectivityValidation
+## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -811,7 +812,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="start-networkconnectivitydiagnosistools"></a>Spustit – NetworkConnectivityDiagnosisTools
+## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
 ### <a name="synopsis"></a>SYNOPSE
 

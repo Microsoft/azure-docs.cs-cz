@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad s REST API'
 description: V tomto rychlém startu použijete REST API k vytvoření přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 08/10/2020
+ms.date: 01/29/2021
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136516"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219973"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí REST API
 
@@ -23,7 +23,7 @@ REST API slouží k vytváření a správě prostředků Azure. Tato příručka
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-- Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který odesílá požadavky HTTP na Azure Resource Manager rozhraní REST API. Alternativně můžete použít funkci vyzkoušet v dokumentaci nebo nástrojů, jako je například rutina [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) v PowerShellu nebo [publikování](https://www.postman.com).
+- Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který odesílá požadavky HTTP na Azure Resource Manager rozhraní REST API. Pomocí funkce vyzkoušet si ji můžete také použít v dokumentaci nebo nástrojích, jako je rutina [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) nebo [post](https://www.postman.com)prostředí PowerShell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -47,6 +47,11 @@ Spuštěním následujícího příkazu vytvořte přiřazení zásady:
          "displayName": "Audit VMs without managed disks Assignment",
          "description": "Shows all virtual machines not using managed disks",
          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+         "nonComplianceMessages": [
+             {
+                 "message": "Virtual machines should use a managed disk"
+             }
+         ]
        }
      }
      ```
@@ -55,16 +60,17 @@ Předchozí koncový bod a tělo požadavku používají následující informac
 
 REST API IDENTIFIKÁTOR URI:
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může být v rozsahu od skupiny pro správu k individuálnímu prostředku. Nezapomeňte nahradit `{scope}` jedním z následujících způsobů:
-  - Skupina pro správu:`/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Formě`/subscriptions/{subscriptionId}`
+  - Skupina pro správu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
+  - Předplatné: `/subscriptions/{subscriptionId}`
   - Skupina prostředků: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Partner`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
+  - Partner `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
 - **Name** – skutečný název přiřazení. V tomto příkladu je použitý název _audit-vm-manageddisks_.
 
 Text žádosti:
 - **DisplayName** – zobrazovaný název přiřazení zásady. V takovém případě použijete _přiřazení audit virtuálních počítačů bez spravovaných disků_.
 - **Popis** – podrobnější vysvětlení toho, co zásada dělá nebo proč je přiřazena tomuto oboru.
 - **policyDefinitionId** – ID definice zásady, na základě kterého používáte k vytvoření přiřazení. V tomto případě se jedná o ID _virtuálních počítačů auditu definice zásad, které nepoužívají spravované disky_.
+- **nonComplianceMessages** – nastaví zprávu, která se zobrazí, když je prostředek zamítnutý kvůli nedodržení předpisů nebo vyhodnocení, že nedodržuje předpisy. Další informace najdete v tématu [zprávy o neshodě přiřazení](./concepts/assignment-structure.md#non-compliance-messages).
 
 ## <a name="identify-non-compliant-resources"></a>Zjištění nevyhovujících prostředků
 

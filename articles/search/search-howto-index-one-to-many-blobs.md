@@ -5,34 +5,38 @@ description: Procházejte objekty blob Azure pro textový obsah pomocí indexeru
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6606391d7fd5c2419714531e1220d97fb29aea4d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 02/01/2021
+ms.openlocfilehash: ea22b3cff8a0303c4e6698db4090df0f5ed2153a
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529586"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430976"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indexování objektů BLOB pro vytváření více dokumentů hledání
-Ve výchozím nastavení bude indexer objektů BLOB zacházet s obsahem objektu BLOB jako s jedním vyhledávacím dokumentem. Některé hodnoty **parsingMode** podporují scénáře, kdy jednotlivý objekt BLOB může mít za následek více dokumentů pro hledání. Různé typy **parsingMode** , které umožňují indexeru extrahovat více než jeden dokument hledání z objektu BLOB:
-+ `delimitedText`
-+ `jsonArray`
-+ `jsonLines`
+
+Ve výchozím nastavení bude indexer objektů BLOB zacházet s obsahem objektu BLOB jako s jedním vyhledávacím dokumentem. Pokud chcete v indexu vyhledávání podrobnější reprezentace objektu blob, můžete nastavit hodnoty **parsingMode** pro vytvoření více dokumentů hledání z jednoho objektu BLOB. K **parsingMode** hodnotám, které vyplývají z mnoha dokumentů `delimitedText` pro hledání, patří (pro [CSV](search-howto-index-csv-blobs.md)) a `jsonArray` nebo `jsonLines` (pro [JSON](search-howto-index-json-blobs.md)).
+
+Když použijete některý z těchto režimů analýzy, nové vyhledávané dokumenty musí mít jedinečné klíče dokumentů a při určování, odkud pochází tato hodnota, dojde k problému. Nadřazený objekt BLOB má alespoň jednu jedinečnou hodnotu ve formátu `metadata_storage_path property` , ale pokud tuto hodnotu přispívá do více než jednoho vyhledávacího dokumentu, klíč již není v indexu jedinečný.
+
+Pro vyřešení tohoto problému indexer objektů BLOB vytvoří `AzureSearch_DocumentKey` jedinečnou identifikaci každého podřízeného vyhledávacího dokumentu vytvořeného z jednoho nadřazeného objektu BLOB. Tento článek vysvětluje, jak tato funkce funguje.
 
 ## <a name="one-to-many-document-key"></a>Klíč dokumentu 1: n
+
 Každý dokument, který se zobrazuje v indexu služby Azure Kognitivní hledání, je jednoznačně identifikovaný klíčem dokumentu. 
 
-Pokud není zadaný žádný režim analýzy a pokud pro klíčové pole v indexu není k dispozici žádné explicitní mapování, Kognitivní hledání se vlastnost [maps](search-indexer-field-mappings.md) automaticky mapuje `metadata_storage_path` jako klíč. Toto mapování zajišťuje, že se každý objekt BLOB zobrazí jako odlišný vyhledávací dokument.
+Pokud není zadaný žádný režim analýzy a v definici indexeru pro klíč dokumentu hledání není žádné [explicitní mapování polí](search-indexer-field-mappings.md) , indexer objektů BLOB se automaticky mapuje `metadata_storage_path property` jako klíč dokumentu. Toto mapování zajistí, že se každý objekt BLOB zobrazí jako odlišný vyhledávací dokument, a uloží vás krok potřebného vytvořit toto mapování polí sami (obvykle se mapují automaticky jenom pole se stejnými názvy a typy).
 
-Při použití některého z výše uvedených režimů analýzy jeden objekt BLOB namapuje na "mnoho" vyhledávacích dokumentů, takže klíč dokumentu je výhradně založený na metadatech objektu BLOB nevhodný. K překonání tohoto omezení Azure Kognitivní hledání umožňuje vygenerovat klíč dokumentu "1: n" pro každou jednotlivou entitu extrahovanou z objektu BLOB. Tato vlastnost je pojmenována `AzureSearch_DocumentKey` a přidána do každé z nich vyjmuté z objektu BLOB. Hodnota této vlastnosti zaručuje, že pro každou jednotlivou entitu _napříč objekty blob_ je jedinečná a entity se zobrazí jako samostatné dokumenty hledání.
+Při použití některého z výše uvedených režimů analýzy jeden objekt BLOB namapuje na "mnoho" vyhledávacích dokumentů, takže klíč dokumentu je výhradně založený na metadatech objektu BLOB nevhodný. K překonání tohoto omezení Azure Kognitivní hledání umožňuje vygenerovat klíč dokumentu "1: n" pro každou jednotlivou entitu extrahovanou z objektu BLOB. Tato vlastnost má název AzureSearch_DocumentKey a je přidána do každé z nich extrahované z objektu BLOB. Hodnota této vlastnosti zaručuje, že pro každou jednotlivou entitu napříč objekty BLOB je jedinečná a entity se zobrazí jako samostatné dokumenty hledání.
 
 Ve výchozím nastavení, pokud nejsou zadána explicitní mapování polí pro pole index klíče, `AzureSearch_DocumentKey` je k němu namapováno pomocí `base64Encode` funkce mapování pole.
 
 ## <a name="example"></a>Příklad
+
 Předpokládejme, že máte definici indexu s následujícími poli:
+
 + `id`
 + `temperature`
 + `pressure`
@@ -43,66 +47,66 @@ A váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturo
 _Blob1.jsna_
 
 ```json
-    { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
-    { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
+{ "temperature": 100, "pressure": 100, "timestamp": "2020-02-13T00:00:00Z" }
+{ "temperature" : 33, "pressure" : 30, "timestamp": "2020-02-14T00:00:00Z" }
 ```
 
 _Blob2.jsna_
 
 ```json
-    { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
-    { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
+{ "temperature": 1, "pressure": 1, "timestamp": "2019-01-12T00:00:00Z" }
+{ "temperature" : 120, "pressure" : 3, "timestamp": "2017-05-11T00:00:00Z" }
 ```
 
 Když vytvoříte indexer a nastavíte **parsingMode** na `jsonLines` -bez zadání explicitních mapování polí pro klíčové pole, použije se implicitně následující mapování.
 
 ```http
-    {
-        "sourceFieldName" : "AzureSearch_DocumentKey",
-        "targetFieldName": "id",
-        "mappingFunction": { "name" : "base64Encode" }
-    }
+{
+    "sourceFieldName" : "AzureSearch_DocumentKey",
+    "targetFieldName": "id",
+    "mappingFunction": { "name" : "base64Encode" }
+}
 ```
 
-Výsledkem tohoto nastavení je index služby Azure Kognitivní hledání obsahující následující informace (pro zkrácení se zkrátilo ID kódované v kódování Base64).
+Výsledkem tohoto nastavení je nejednoznačný klíč dokumentu podobný následujícímu obrázku (ID kódované v kódování Base64 se zkracuje pro zkrácení).
 
-| id | teplota | tlak | časové razítko |
+| ID | teplota | tlak | časové razítko |
 |----|-------------|----------|-----------|
-| aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
-| aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0 ... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
-| aHR0 ... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
+| aHR0 ... YjEuanNvbjsx | 100 | 100 | 2020-02-13T00:00:00Z |
+| aHR0 ... YjEuanNvbjsy | 33 | 30 | 2020-02-14T00:00:00Z |
+| aHR0 ... YjIuanNvbjsx | 1 | 1 | 2019-01-12T00:00:00Z |
+| aHR0 ... YjIuanNvbjsy | 120 | 3 | 2017-05-11T00:00:00Z |
 
 ## <a name="custom-field-mapping-for-index-key-field"></a>Mapování vlastních polí pro pole indexového klíče
 
-Za předpokladu, že v předchozím příkladu je stejná definice indexu, řekněme, že váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturou:
+Za předpokladu, že je jako předchozí příklad definice indexu, Předpokládejme, že váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturou:
 
 _Blob1.jsna_
 
 ```json
-    recordid, temperature, pressure, timestamp
-    1, 100, 100,"2019-02-13T00:00:00Z" 
-    2, 33, 30,"2019-02-14T00:00:00Z" 
+recordid, temperature, pressure, timestamp
+1, 100, 100,"2019-02-13T00:00:00Z" 
+2, 33, 30,"2019-02-14T00:00:00Z" 
 ```
 
 _Blob2.jsna_
 
 ```json
-    recordid, temperature, pressure, timestamp
-    1, 1, 1,"2018-01-12T00:00:00Z" 
-    2, 120, 3,"2013-05-11T00:00:00Z" 
+recordid, temperature, pressure, timestamp
+1, 1, 1,"2018-01-12T00:00:00Z" 
+2, 120, 3,"2013-05-11T00:00:00Z" 
 ```
 
-Při vytváření indexeru pomocí `delimitedText` **parsingMode**může být přirozené nastavit funkci mapování polí na klíčové pole následujícím způsobem:
+Při vytváření indexeru pomocí `delimitedText` **parsingMode** může být přirozené nastavit funkci mapování polí na klíčové pole následujícím způsobem:
 
 ```http
-    {
-        "sourceFieldName" : "recordid",
-        "targetFieldName": "id"
-    }
+{
+    "sourceFieldName" : "recordid",
+    "targetFieldName": "id"
+}
 ```
 
-Toto mapování ale _nevede k tomu,_ aby se v indexu zobrazovaly 4 dokumenty, protože pole není v objektech `recordid` _BLOB_jedinečné. Proto doporučujeme použít implicitní mapování polí použité z `AzureSearch_DocumentKey` vlastnosti na pole index klíče pro režimy analýzy "1: n".
+Toto mapování ale _nevede k tomu,_ aby se v indexu zobrazovaly 4 dokumenty, protože pole není v objektech `recordid` _BLOB_ jedinečné. Proto doporučujeme použít implicitní mapování polí použité z `AzureSearch_DocumentKey` vlastnosti na pole index klíče pro režimy analýzy "1: n".
 
 Pokud chcete nastavit explicitní mapování polí, ujistěte se, že je _sourceField_ jedinečný pro každou jednotlivou entitu **napříč všemi objekty blob**.
 

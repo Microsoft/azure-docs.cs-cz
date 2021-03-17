@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9afe34097d005daeedf46fbaf30b37e53a8e3658
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474539"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132036"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Principy sestav Cloudyn Cost Management
 
@@ -204,5 +205,5 @@ Během prohlížení libovolné sestavy klikněte na **Actions** (Akce) a potom 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o sestavách, které jsou součástí služby Cloudyn, v tématu [Použití sestav Cloudyn](../../cost-management/use-reports.md).
-- Přečtěte si, jak pomocí sestav vytvořit [řídicí panely](../../cost-management/dashboards.md).
+- Přečtěte si o sestavách, které jsou součástí služby Cloudyn, v tématu [Použití sestav Cloudyn](./use-reports.md).
+- Přečtěte si, jak pomocí sestav vytvořit [řídicí panely](./dashboards.md).

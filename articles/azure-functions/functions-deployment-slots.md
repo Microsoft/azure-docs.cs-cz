@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055431"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172405"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -29,8 +29,8 @@ Následující informace odrážejí, jak jsou funkce ovlivněné odkládacími 
 Pro použití slotů nasazení existuje několik výhod. Následující scénáře popisují běžné použití pro Sloty:
 
 - **Různá prostředí pro různé účely**: pomocí různých slotů získáte možnost odlišit instance aplikací před odchodem do produkčního nebo přípravného slotu.
-- Průběžné nasazování **: nasazení**do slotu místo přímo do produkčního prostředí umožňuje, aby se aplikace před živým zprovozněním zahřívá. Kromě toho se pomocí slotů omezuje latence pro úlohy aktivované protokolem HTTP. Instance jsou před nasazením zavedeny, což snižuje studenou dobu spouštění nově nasazených funkcí.
-- **Snadné nouzové**akce: po prohození s produkčním prostředím má teď pozice s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neshodují, můžete okamžitě vrátit swap a získat tak zpátky "Poslední známá dobrá instance".
+- Průběžné nasazování **: nasazení** do slotu místo přímo do produkčního prostředí umožňuje, aby se aplikace před živým zprovozněním zahřívá. Kromě toho se pomocí slotů omezuje latence pro úlohy aktivované protokolem HTTP. Instance jsou před nasazením zavedeny, což snižuje studenou dobu spouštění nově nasazených funkcí.
+- **Snadné nouzové** akce: po prohození s produkčním prostředím má teď pozice s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neshodují, můžete okamžitě vrátit swap a získat tak zpátky "Poslední známá dobrá instance".
 
 ## <a name="swap-operations"></a>Operace prohození
 
@@ -53,11 +53,42 @@ Mějte na paměti následující skutečnosti:
 
 - Pokud chcete vyměnit pracovní slot s produkčním slotem, ujistěte se, že produkční slot je *vždycky* cílový slot. Tato operace přepnutí nijak neovlivní vaši produkční aplikaci.
 
-- Nastavení související se zdroji událostí a vazbami musí být *před zahájením swapu*nakonfigurovaná jako [nastavení slotu nasazení](#manage-settings) . Pokud je označíte jako "vždy", zajistíte tím, že události a výstupy budou směrovány do správné instance.
+- Nastavení související se zdroji událostí a vazbami musí být *před zahájením swapu* nakonfigurovaná jako [nastavení slotu nasazení](#manage-settings) . Pokud je označíte jako "vždy", zajistíte tím, že události a výstupy budou směrovány do správné instance.
 
 ## <a name="manage-settings"></a>Správa nastavení
 
-[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
+Některá nastavení konfigurace jsou specifická pro slot. Následující seznamy obsahují informace o tom, která nastavení se při prohození slotů mění a která zůstávají stejná.
+
+**Nastavení specifická pro slot**:
+
+* Publikování koncových bodů
+* Vlastní názvy domén
+* Neveřejné certifikáty a nastavení TLS/SSL
+* Nastavení škálování
+* Plánovače WebJobs
+* Omezení IP adresy
+* Vždy zapnuto
+* Nastavení diagnostiky
+* Sdílení prostředků mezi zdroji (CORS)
+
+**Nastavení, která nejsou specifická pro slot**:
+
+* Obecná nastavení, například verze architektury, 32 nebo 64 bitů, webové sokety
+* Nastavení aplikace (může být nakonfigurováno na slot)
+* Připojovací řetězce (můžou být nakonfigurované tak, aby se nastavily na slot)
+* Mapování obslužných rutin
+* Veřejné certifikáty
+* Obsah webových úloh
+* Hybridní připojení *
+* Integrace virtuální sítě *
+* Koncové body služby *
+* Content Delivery Network Azure *
+
+Funkce označené hvězdičkou (*) jsou plánovány jako neswapé. 
+
+> [!NOTE]
+> Některá nastavení aplikace, která platí pro nezaměnitelné nastavení, se také nemění. Například vzhledem k tomu, že nastavení diagnostiky nejsou zaměněna, související nastavení aplikace, například `WEBSITE_HTTPLOGGING_RETENTION_DAYS` a `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` , se nemění ani v případě, že se nezobrazují jako nastavení slotu.
+>
 
 ### <a name="create-a-deployment-setting"></a>Vytvoření nastavení nasazení
 
@@ -71,11 +102,11 @@ Chcete-li vytvořit nastavení nasazení, použijte následující postup:
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
-1. Vyberte **Konfigurace**a pak vyberte název nastavení, který chcete s aktuálním slotem vyznačit.
+1. Vyberte **Konfigurace** a pak vyberte název nastavení, který chcete s aktuálním slotem vyznačit.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Nakonfigurujte nastavení aplikace pro slot ve Azure Portal." border="true":::
 
-1. Vyberte **nastavení slotu nasazení**a pak vyberte **OK**.
+1. Vyberte **nastavení slotu nasazení** a pak vyberte **OK**.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Nakonfigurujte nastavení slotu nasazení." border="true":::
 
@@ -96,11 +127,11 @@ Všechny sloty se škálují na stejný počet pracovních procesů jako produk�
 
 ## <a name="add-a-slot"></a>Přidat slot
 
-Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
+Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
 
 1. Přejděte do aplikace Function App.
 
-1. Vyberte možnost **sloty nasazení**a pak vyberte **+ Přidat slot**.
+1. Vyberte možnost **sloty nasazení** a pak vyberte **+ Přidat slot**.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Přidejte Azure Functions slot nasazení." border="true":::
 
@@ -110,12 +141,12 @@ Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/
 
 ## <a name="swap-slots"></a>Prohození slotů
 
-Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
+Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
 
 1. Přejděte do aplikace Function App.
-1. Vyberte možnost **sloty nasazení**a pak vyberte **swap**.
+1. Vyberte možnost **sloty nasazení** a pak vyberte **swap**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Zahodí slot nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Snímek obrazovky zobrazující stránku slot nasazení se zvolenou akcí přidat slot" border="true":::
 
 1. Ověřte nastavení konfigurace pro svůj swap a vyberte **prohození** .
     
@@ -129,7 +160,7 @@ Pokud dojde k chybě zahození nebo pokud chcete jednoduše vrátit zpět změny
 
 ## <a name="remove-a-slot"></a>Odebrat slot
 
-Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
+Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
 
 1. V aplikaci Function App přejděte na **sloty nasazení** a potom vyberte název slotu.
 
@@ -137,7 +168,7 @@ Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functi
 
 1. Vyberte **Odstranit**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Odstraňte slot nasazení v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Snímek obrazovky zobrazující stránku Přehled s vybranou akcí odstranit" border="true":::
 
 1. Zadejte název slotu nasazení, který chcete odstranit, a pak vyberte **Odstranit**.
 
@@ -149,13 +180,13 @@ Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functi
 
 ## <a name="automate-slot-management"></a>Automatizace správy slotů
 
-Pomocí [Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)můžete pro slot automatizovat následující akce:
+Pomocí [Azure CLI](/cli/azure/functionapp/deployment/slot)můžete pro slot automatizovat následující akce:
 
-- [vytvořeny](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [adresu](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [Automatické prohození](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [vytvořeny](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
+- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
+- [adresu](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
+- [Automatické prohození](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Změnit plán App Service
 
@@ -170,7 +201,7 @@ Pomocí následujících kroků můžete změnit plán App Service přihrádky:
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
-1. V části **plán App Service**vyberte **změnit plán App Service**.
+1. V části **plán App Service** vyberte **změnit plán App Service**.
 
 1. Vyberte plán, na který chcete upgradovat, nebo vytvořte nový plán.
 

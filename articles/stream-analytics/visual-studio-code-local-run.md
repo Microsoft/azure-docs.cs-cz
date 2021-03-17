@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044358"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708445"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code
 
@@ -21,7 +21,7 @@ Pomocí Azure Stream Analytics nástrojů pro Visual Studio Code můžete testov
 
 * Nainstalujte [sadu .NET Core SDK](https://dotnet.microsoft.com/download) a restartujte Visual Studio Code.
 
-* V tomto [rychlém](quick-create-vs-code.md) startu se dozvíte, jak pomocí Visual Studio Code vytvořit úlohu Stream Analytics.
+* V tomto [rychlém](quick-create-visual-studio-code.md) startu se dozvíte, jak pomocí Visual Studio Code vytvořit úlohu Stream Analytics.
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
@@ -31,25 +31,25 @@ Nejprve musíte připravit ukázkové vstupní datové soubory. Pokud již máte
 
 2. Po zobrazení dat klikněte na **Uložit jako** a uložte data do místního souboru.
 
- ![Náhled živého vstupu](./media/quick-create-vs-code/preview-live-input.png)
+ ![Náhled živého vstupu](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>Definování místního vstupu
 
 1. Klikněte na **input.jsv** části vstupní složka v projektu Stream Analytics. Pak na horním řádku vyberte **Přidat místní vstup** .
 
-    ![Přidat místní vstup z projektu](./media/quick-create-vs-code/add-input-from-project.png)
+    ![Přidat místní vstup z projektu](./media/quick-create-visual-studio-code/add-input-from-project.png)
 
     K otevření palety příkazů můžete použít také **kombinaci kláves CTRL + SHIFT + P** a zadat **ASA: přidat vstup**.
 
-   ![Přidat vstup Stream Analytics v VS Code](./media/quick-create-vs-code/add-input.png)
+   ![Přidat vstup Stream Analytics v VS Code](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Vyberte **místní vstup**.
 
-    ![Přidání místního vstupu do programu ASA v nástroji Visual Studio Code](./media/vscode-local-run/add-local-input.png)
+    ![Přidat místní vstup na ASA v Visual Studio Code](./media/vscode-local-run/add-local-input.png)
 
 3. Vyberte **+ nový místní vstup**.
 
-    ![Přidání nového místního vstupu do programu ASA v nástroji Visual Studio Code](./media/vscode-local-run/add-new-local-input.png)
+    ![Přidat nový místní vstup na ASA v Visual Studio Code](./media/vscode-local-run/add-new-local-input.png)
 
 4. Zadejte stejný alias vstupu, který jste použili v dotazu.
 

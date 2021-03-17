@@ -2,7 +2,6 @@
 title: Testování aplikace v LUIS
 titleSuffix: Azure Cognitive Services
 description: Testování je proces poskytování vzorových projevyů LUIS a získání odpovědi na LUISy a entity, které byly rozpoznány.
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.custom: seodec18
@@ -10,19 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73486676"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787549"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Příklad testu projevy v LUIS
 
 Testování je proces poskytování vzorových projevyů LUIS a získání odpovědi na LUISy a entity, které byly rozpoznány. 
 
-LUIS můžete testovat interaktivně, jeden utterance v jednom okamžiku nebo poskytnout projevy. Při testování můžete porovnat odpověď předpovědi aktuálního aktivního modelu s odezvou předpovědi publikovaného modelu. 
+LUIS můžete testovat interaktivně, jeden utterance v jednom okamžiku nebo poskytnout sadu projevy. Při testování můžete porovnat odpověď předpovědi aktuálního aktivního modelu s odezvou předpovědi publikovaného modelu. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
@@ -35,7 +33,7 @@ Další informace o skóre předpovědi najdete v tématu Koncepty [skóre před
 Interaktivní testování se provádí na panelu **test** na portálu Luis. Můžete zadat utterance a podívat se, jak se identifikují záměry a entity a jejich skóre. Pokud LUIS nepředpověď záměrů a entit podle očekávání na utterance na panelu testování, zkopírujte ji na stránku **záměru** jako novou utterance. Pak označte části tohoto utterance entit a LUIS. 
 
 ## <a name="batch-testing"></a>Dávkové testování
-Pokud testujete více než jeden utterance najednou, podívejte se na [dávkové testování](luis-concept-batch-test.md) .
+Pokud testujete více než jeden utterance najednou, podívejte se na [dávkové testování](./luis-how-to-batch-test.md) .
 
 ## <a name="endpoint-testing"></a>Testování koncových bodů
 Pomocí [koncového bodu](luis-glossary.md#endpoint) můžete testovat maximálně dvě verze vaší aplikace. V rámci vaší hlavní nebo živé verze vaší aplikace jako **produkčního** koncového bodu přidejte druhou verzi do **pracovního** koncového bodu. Tento přístup poskytuje tři verze utterance: aktuální model v podokně Test webu [Luis](luis-reference-regions.md) a dvě verze na dvou různých koncových bodech. 

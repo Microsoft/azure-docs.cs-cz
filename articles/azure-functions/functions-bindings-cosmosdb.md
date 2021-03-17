@@ -1,17 +1,17 @@
 ---
 title: Vazby Azure Cosmos DB pro funkce 1. x
-description: Naučte se používat Azure Cosmos DB triggery a vazby v Azure Functions.
+description: Vysvětlení použití aktivačních událostí a vazeb Azure Cosmos DB v Azure Functions 1. x.
 author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214152"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002102"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB vazby pro Azure Functions 1. x
 
@@ -178,11 +178,11 @@ Atributy nejsou podporovány jazykem JavaScript.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDBTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
-|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
+|**textový** | neuvedeno | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
+|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec, který se používá pro připojení k monitorovanému účtu Azure Cosmos DB. |
 |**Databáze**|**DatabaseName**  | Název databáze Azure Cosmos DB s monitorovanou kolekcí. |
 |**collectionName** |**Název kolekce** | Název monitorované kolekce. |
@@ -214,6 +214,8 @@ Aktivační událost neindikuje, jestli se dokument aktualizoval nebo vložil, j
 ## <a name="input"></a>Vstup
 
 Vstupní vazba služby Azure Cosmos DB načítá pomocí rozhraní SQL API jeden nebo více dokumentů Azure Cosmos DB a předává je do vstupního parametru funkce. Parametry ID dokumentu nebo dotaz se dají určit podle aktivační události, která funkci volá.
+
+## <a name="input---example"></a>Vstupní příklad
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1113,11 +1115,11 @@ Atributy nejsou podporovány jazykem JavaScript.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `DocumentDB` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**     | Není k dispozici | Musí být nastaven na hodnotu `documentdb` .        |
-|**směr**     | Není k dispozici | Musí být nastaven na hodnotu `in` .         |
-|**Jméno**     | Není k dispozici | Název parametru vazby, který představuje dokument ve funkci.  |
+|**textový**     | neuvedeno | Musí být nastaven na hodnotu `documentdb` .        |
+|**směr**     | neuvedeno | Musí být nastaven na hodnotu `in` .         |
+|**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** |**DatabaseName** |Databáze obsahující dokument.        |
 |**collectionName** |**Název kolekce** | Název kolekce, která obsahuje dokument. |
 |**id**    | **Účet** | ID dokumentu, který se má načíst Tato vlastnost podporuje [výrazy vazby](./functions-bindings-expressions-patterns.md). Nenastavte vlastnosti **ID** i **sqlQuery** . Pokud nenastavíte žádné nastavení, načte se celá kolekce. |
@@ -1146,6 +1148,8 @@ Aktualizace nejsou automaticky provedeny při ukončení funkce. Místo toho pou
 ## <a name="output"></a>Výstup
 
 Azure Cosmos DB výstupní vazba umožňuje napsat nový dokument do databáze Azure Cosmos DB pomocí rozhraní SQL API.
+
+## <a name="output---example"></a>Výstup – příklad
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1452,11 +1456,11 @@ Atributy nejsou podporovány jazykem JavaScript.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `DocumentDB` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**     | Není k dispozici | Musí být nastaven na hodnotu `documentdb` .        |
-|**směr**     | Není k dispozici | Musí být nastaven na hodnotu `out` .         |
-|**Jméno**     | Není k dispozici | Název parametru vazby, který představuje dokument ve funkci.  |
+|**textový**     | neuvedeno | Musí být nastaven na hodnotu `documentdb` .        |
+|**směr**     | neuvedeno | Musí být nastaven na hodnotu `out` .         |
+|**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** | **DatabaseName**|Databáze obsahující kolekci, ve které je dokument vytvořen.     |
 |**collectionName** |**Název kolekce**  | Název kolekce, ve které je dokument vytvořen. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Logická hodnota určující, zda je kolekce vytvořena, pokud neexistuje. Výchozí hodnota je *false* , protože nové kolekce jsou vytvořeny s rezervovanou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/documentdb/).  |
@@ -1475,7 +1479,7 @@ Ve výchozím nastavení platí, že při zápisu do výstupního parametru ve f
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Reference |
 |---|---|
 | CosmosDB | [Kódy chyb CosmosDB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 

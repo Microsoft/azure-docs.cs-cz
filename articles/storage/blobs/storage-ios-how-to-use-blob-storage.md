@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fc1b2638c2ab17c4cd58ca8d4508d2e6d244cfa
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465486"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996799"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak používat úložiště objektů BLOB ze systému iOS
 
@@ -62,7 +62,7 @@ K použití této knihovny potřebujete následující:
 Dalším způsobem, jak použít knihovnu, je sestavit rozhraní ručně:
 
 1. Nejdřív si stáhněte nebo naklonujte [úložiště Azure-Storage-iOS](https://github.com/azure/azure-storage-ios).
-2. Přejít do knihovny *Azure-Storage-iOS*  ->  *lib*  ->  *Azure Storage klientské knihovny*a otevřít `AZSClient.xcodeproj` v Xcode.
+2. Přejít do knihovny *Azure-Storage-iOS*  ->  *lib*  ->  *Azure Storage klientské knihovny* a otevřít `AZSClient.xcodeproj` v Xcode.
 3. V levém horním rohu Xcode Změňte aktivní schéma z "Azure Storage Klientská knihovna" na "Framework".
 4. Sestavte projekt (⌘ + B). Tím se vytvoří `AZSClient.framework` soubor na ploše.
 
@@ -70,7 +70,7 @@ Pak můžete soubor architektury importovat do aplikace pomocí následujícího
 
 1. Vytvořte nový projekt nebo otevřete existující projekt v Xcode.
 2. Přetáhněte `AZSClient.framework` do navigátoru projektu Xcode.
-3. V *případě potřeby vyberte Kopírovat položky*a klikněte na *Dokončit*.
+3. V *případě potřeby vyberte Kopírovat položky* a klikněte na *Dokončit*.
 4. V levém navigačním panelu klikněte na projekt a klikněte na kartu *Obecné* v horní části editoru projektu.
 5. V části *propojené architektury a knihovny* klikněte na tlačítko Přidat (+).
 6. V seznamu již poskytnutých knihoven vyhledejte `libxml2.2.tbd` a přidejte ho do projektu.
@@ -86,7 +86,7 @@ Pokud používáte SWIFT, budete muset vytvořit hlavičku přemostění a naimp
 
 1. Vytvořte hlavičkový soubor `Bridging-Header.h` a přidejte výše uvedený příkaz import.
 2. Přejdete na kartu *nastavení sestavení* a vyhledejte *záhlaví cíl-C přemostění*.
-3. Poklikejte na pole *hlavičky přemostění v cíli C* a přidejte cestu k souboru hlaviček:`ProjectName/Bridging-Header.h`
+3. Poklikejte na pole *hlavičky přemostění v cíli C* a přidejte cestu k souboru hlaviček: `ProjectName/Bridging-Header.h`
 4. Sestavte projekt (⌘ + B), abyste ověřili, že se hlavička přemostění vybrala prostřednictvím Xcode.
 5. Začněte používat knihovnu přímo v jakémkoli souboru SWIFT, není nutné importovat příkazy.
 
@@ -99,7 +99,7 @@ Pokud používáte SWIFT, budete muset vytvořit hlavičku přemostění a naimp
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Každý objekt BLOB v Azure Storage musí být umístěn v kontejneru. Následující příklad ukazuje, jak vytvořit kontejner s názvem *newcontainer*v účtu úložiště, pokud ještě neexistuje. Při volbě názvu pro svůj kontejner nezapomeňte na pravidla pojmenování uvedená výše.
+Každý objekt BLOB v Azure Storage musí být umístěn v kontejneru. Následující příklad ukazuje, jak vytvořit kontejner s názvem *newcontainer* v účtu úložiště, pokud ještě neexistuje. Při volbě názvu pro svůj kontejner nezapomeňte na pravidla pojmenování uvedená výše.
 
 ```objc
 -(void)createContainer{
@@ -208,7 +208,7 @@ Následující příklad ukazuje, jak nahrát objekt blob bloku z NSString. Poku
 }
 ```
 
-To můžete ověřit tak, že se podíváte na [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) a ověříte, že kontejner *containerpublic*obsahuje objekt BLOB *sampleblob*. V této ukázce jsme použili veřejný kontejner, takže můžete také ověřit, že se tato aplikace pracovala, a to tak, že se vrátí k identifikátoru URI objektů BLOB:
+To můžete ověřit tak, že se podíváte na [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) a ověříte, že kontejner *containerpublic* obsahuje objekt BLOB *sampleblob*. V této ukázce jsme použili veřejný kontejner, takže můžete také ověřit, že se tato aplikace pracovala, a to tak, že se vrátí k identifikátoru URI objektů BLOB:
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
@@ -216,7 +216,7 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 
 Kromě nahrávání objektu blob bloku z NSString existují podobné metody pro NSData, NSInputStream nebo místní soubor.
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+## <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Následující příklad ukazuje, jak zobrazit seznam všech objektů BLOB v kontejneru. Při provádění této operace je potřeba mít na vědomí následující parametry:
 
@@ -391,8 +391,8 @@ Teď, když jste se naučili, jak používat Blob Storage v iOS, použijte násl
 
 - [Klientská knihovna Azure Storage pro iOS](https://github.com/azure/azure-storage-ios)
 - [Referenční dokumentace k Azure Storage iOS](https://azure.github.io/azure-storage-ios/)
-- [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Blog týmu Azure Storage](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
+- [REST API služby Azure Storage](/rest/api/storageservices/)
+- [Blog týmu Azure Storage](/archive/blogs/windowsazurestorage/)
 
-Pokud máte dotazy týkající se této knihovny, můžete se vystavit na našem [webu Microsoft Q&stránku s dotazy](https://docs.microsoft.com/answers/topics/azure-blob-storage.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Pokud máte dotazy týkající se této knihovny, můžete se vystavit na našem [webu Microsoft Q&stránku s dotazy](/answers/topics/azure-blob-storage.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Pokud máte návrhy na funkce pro Azure Storage, odešlete příspěvek [Azure Storage zpětnou vazbu](https://feedback.azure.com/forums/217298-storage/).

@@ -1,20 +1,20 @@
 ---
-title: Komponenty Application Gateway
+title: Komponenty aplikační brány
 description: Tento článek poskytuje informace o různých součástech v aplikační bráně.
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.author: absha
-ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.author: surmb
+ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088083"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88723312"
 ---
-# <a name="application-gateway-components"></a>Komponenty Application Gateway
+# <a name="application-gateway-components"></a>Komponenty aplikační brány
 
  Aplikační brána slouží jako jeden kontaktní bod pro klienty. Distribuuje příchozí aplikační provoz do několika back-end fondů, mezi které patří virtuální počítače Azure, sady škálování virtuálních počítačů, Azure App Service a místní/externí servery. Pro distribuci provozu používá Aplikační brána několik součástí popsaných v tomto článku.
 
@@ -69,15 +69,15 @@ Existují dva typy naslouchacího procesu:
 
 - **Basic**. Tento typ naslouchacího procesu naslouchá pro jednu doménovou lokalitu, kde má jedno mapování DNS na IP adresu služby Application Gateway. Tato konfigurace naslouchacího procesu se vyžaduje, když hostete jednu lokalitu za aplikační bránou.
 
-- **Více lokalit**. Tato konfigurace naslouchacího procesu se vyžaduje v případě, že chcete nakonfigurovat směrování na základě názvu hostitele nebo názvu domény pro více než jednu webovou aplikaci na stejné aplikační bráně. Umožňuje pro nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři domény, contoso.com, fabrikam.com a adatum.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři [naslouchací procesy pro více webů](multiple-site-overview.md) a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu. 
+- **Více lokalit**. Tato konfigurace naslouchacího procesu se vyžaduje v případě, že chcete nakonfigurovat směrování na základě názvu hostitele nebo názvu domény pro více než jednu webovou aplikaci na stejné aplikační bráně. Díky možnosti přidat do jedné služby Application Gateway více než 100 webů můžete nakonfigurovat efektivnější topologii vašich nasazení. Každou stránku lze přesměrovat na vlastní back-endový fond. Příklad: na IP adresu služby Application Gateway odkazují tři domény – contoso.com, fabrikam.com a adatum.com. Vytvořili jste tři [naslouchací procesy pro více webů](multiple-site-overview.md) a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu. 
 
-    Můžete také definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky ve službě Listener (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
+    V naslouchacím procesu pro více webů můžete také definovat názvy hostitelů se zástupnými znaky a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky ve službě Listener (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
     Další informace o tom, jak nakonfigurovat naslouchací proces pro více webů, najdete v tématu [hostování více webů v Application Gateway pomocí Azure Portal](create-multiple-sites-portal.md).
 
 Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak má být žádost o naslouchací službě směrována do back-endu. Pravidlo směrování požadavků taky obsahuje back-end fond, který se má směrovat, a nastavení HTTP, kde se zmiňuje port back-endu, protokol atd.
 
-## <a name="request-routing-rules"></a>Pravidla směrování žádostí
+## <a name="request-routing-rules"></a>Vyžádání pravidel směrování
 
 Pravidlo směrování požadavků je klíčovou součástí služby Application Gateway, protože určuje, jak směrovat provoz na naslouchací proces. Pravidlo váže naslouchací proces, fond back-end serverů a nastavení HTTP back-endu.
 
@@ -99,7 +99,7 @@ Můžete zvolit cíl přesměrování tak, aby byl jiný naslouchací proces (co
 
 Další informace najdete v tématu [přesměrování provozu ve službě Application Gateway](redirect-overview.md).
 
-### <a name="rewrite-http-headers-and-url"></a>Přepsat hlavičky a adresu URL protokolu HTTP
+### <a name="rewrite-http-headers-and-url"></a>Přepsání hlaviček HTTP a adres URL
 
 Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí HTTP (S) a také cestu URL a parametry řetězce dotazu, protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu přes Aplikační bránu.
 
@@ -152,6 +152,6 @@ Další informace najdete v tématu [monitorování stavu služby Application Ga
 
 Vytvoření aplikační brány:
 
-* [V Azure Portal](quick-create-portal.md)
+* [Na webu Azure Portal](quick-create-portal.md)
 * [Pomocí Azure PowerShell](quick-create-powershell.md)
 * [Pomocí Azure CLI](quick-create-cli.md)

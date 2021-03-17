@@ -1,5 +1,6 @@
 ---
-title: Získání tokenu pro volání webového rozhraní API (jednostránkové aplikace) – Microsoft Identity Platform | Azure
+title: Získání tokenu pro volání webového rozhraní API (jednostránkové aplikace) | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet jednostránkové aplikace (získat token pro volání rozhraní API).
 services: active-directory
 author: negoe
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83896b2599f03961b2dcaf34ea9b55fe16c13b9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882314"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756445"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránkové aplikace: získání tokenu pro volání rozhraní API
 
@@ -24,8 +25,8 @@ Vzor pro získání tokenů pro rozhraní API s MSAL.js je prvním pokusem o po�
 
 Požadavky na tiché tokeny do služby Azure AD mohou selhat z důvodů, jako je například relace Azure AD s vypršenou platností nebo změna hesla. V takovém případě můžete vyvolat jednu z interaktivních metod (s výzvou uživateli) získat tokeny:
 
-* [Automaticky otevírané okno](#acquire-a-token-with-a-pop-up-window)pomocí`acquireTokenPopup`
-* [Přesměrování](#acquire-a-token-with-a-redirect)pomocí`acquireTokenRedirect`
+* [Automaticky otevírané okno](#acquire-a-token-with-a-pop-up-window)pomocí `acquireTokenPopup`
+* [Přesměrování](#acquire-a-token-with-a-redirect)pomocí `acquireTokenRedirect`
 
 ## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Volba mezi prostředím pro místní nebo přesměrování
 
@@ -70,7 +71,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 MSAL úhlová obálka poskytuje zachytávací protokolem HTTP, která automaticky získá přístupové tokeny a připojí je k požadavkům HTTP na rozhraní API.
 
-V možnosti konfigurace můžete zadat obory pro rozhraní API `protectedResourceMap` . `MsalInterceptor`vyžádá si tyto obory při automatickém získávání tokenů.
+V možnosti konfigurace můžete zadat obory pro rozhraní API `protectedResourceMap` . `MsalInterceptor` vyžádá si tyto obory při automatickém získávání tokenů.
 
 ```javascript
 // app.module.ts
@@ -198,5 +199,4 @@ Tento kód je stejný, jak je popsáno výše.
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Volání webového rozhraní API](scenario-spa-call-api.md)
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](scenario-spa-call-api.md).

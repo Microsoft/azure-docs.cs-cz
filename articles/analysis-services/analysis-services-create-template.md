@@ -6,14 +6,14 @@ ms.author: owend
 tags: azure-resource-manager
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641904"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89230768"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Rychlý Start: Vytvoření šablony serveru – ARM
 
@@ -105,6 +105,5 @@ Write-Host "Press [ENTER] to continue..."
 
 V tomto rychlém startu jste použili šablonu ARM k vytvoření nové skupiny prostředků a prostředku serveru Azure Analysis Services. Po vytvoření prostředku serveru pomocí šablony Vezměte v úvahu následující skutečnosti:
 
-- [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)
-- [Přidání ukázkového modelu z portálu](analysis-services-create-sample-model.md)
-- [Konfigurace správce serveru a uživatelských rolí](tutorials/analysis-services-tutorial-roles.md)
+> [!div class="nextstepaction"]
+> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   

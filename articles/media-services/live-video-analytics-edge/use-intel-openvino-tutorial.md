@@ -2,24 +2,29 @@
 title: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel
 description: V tomto kurzu použijete server modelů AI, který poskytuje Intel, k analýze živého kanálu videa z (simulované) kamery IP.
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 2268300f711a939ed808d1f39bbde1653e8832c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702211"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
-V tomto kurzu se dozvíte, jak používat rozšíření OpenVINO™ model Server – AI od společnosti Intel k analýze živého kanálu videa z (simulované) kamery IP. Uvidíte, jak tento server odvození poskytuje přístup k modelům pro detekci objektů (osoba, vozidlo nebo kolo) a modelu pro klasifikaci vozidel. Do tohoto odvozeného serveru se pošle podmnožina snímků v živém obrazovém kanálu a výsledky se odešlou do centra IoT Edge. 
+V tomto kurzu se dozvíte, jak používat rozšíření OpenVINO™ model Server – AI od společnosti Intel k analýze živého kanálu videa z (simulované) kamery IP. Uvidíte, jak tento server odvození poskytuje přístup k modelům pro detekci objektů (osoba, vozidlo nebo kolo) a modelu pro klasifikaci vozidel. Do tohoto odvozeného serveru se pošle podmnožina snímků v živém obrazovém kanálu a výsledky se odešlou do centra IoT Edge.
 
-Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) . 
+Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Tento kurz vyžaduje použití počítače s platformou X86-64 jako hraničního zařízení.
+
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+  > [!NOTE]
+  > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění. 
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
@@ -30,30 +35,35 @@ Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a p
 > Při instalaci nástrojů Azure IoT se může zobrazit výzva k instalaci Docker. Výzvu můžete ignorovat.
 
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
+
 Při nastavování prostředků Azure se krátké video dávky za parkování zkopíruje do virtuálního počítače Linux v Azure, který používáte jako zařízení IoT Edge. V tomto rychlém startu se k simulaci živého streamu používá videosoubor.
 
 Otevřete aplikaci, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na [video](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) a začněte přehrávání. Uvidíte záběry vozidel v sérii parkovacích míst, většinu z nich zaparkované a jeden přesun.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 V tomto rychlém startu budete používat Live video Analytics na IoT Edge spolu s rozšířením serverového™ OpenVINO – AI od společnosti Intel ke zjištění objektů, jako jsou například vozidla nebo jejich klasifikace. Výsledné odvozené události publikujete do centra IoT Edge.
 
 ## <a name="overview"></a>Přehled
 
-![Přehled](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Přehled":::
 
-Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje kmitočet snímků streamu videa, který se dorazí na uzel [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) . 
+Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) . 
 
-Uzel rozšíření HTTP hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští modely AI za koncovým bodem HTTP. V tomto příkladu je to modul Edge OpenVINO™ model Server – AI rozšíření od společnosti Intel. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Uzel rozšíření HTTP hraje roli proxy serveru. Slouží k tomu, že vypíše příchozí snímky videa nastavené vámi `samplingOptions` a také převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští modely AI za koncovým bodem HTTP. V tomto příkladu je to modul Edge OpenVINO™ model Server – AI rozšíření od společnosti Intel. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
-1. Vytvoření a nasazení Media graphu, úprava 
+1. Vytvořte a nasaďte mediální graf a změňte ho.
 1. Interpretujte výsledky.
 1. Vyčistěte prostředky.
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>O OpenVINO™ modelovém serveru – rozšíření AI od společnosti Intel
+
 Intel® distribuce sady [nástrojů OpenVINO™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual neuronovéing a optimalizace sítě) je bezplatná softwarová sada, která vývojářům a odborníkům přes data zrychlí úlohy počítačového zpracování obrazu, zjednodušuje rozmístění a nasazení hloubkového učení a umožňuje snadné a heterogenní spouštění napříč platformami Intel® od Edge až po Cloud. Obsahuje sadu nástrojů pro nasazení Intel® pro hloubkové učení s modulem pro optimalizaci a odvozování modelů a [otevřený model](https://github.com/openvinotoolkit/open_model_zoo) úložiště ve více než 40 optimalizovaných předem vyškolených modelů.
 
-Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření OpenVINO™ model Server – AI od společnosti Intel](https://aka.ms/lva-intel-ovms), což je modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. Tento modul serveru odvození obsahuje OpenVINO™ model Server (OVMS), odvozený Server, který využívá sadu OpenVINO™ Toolkit, která je vysoce optimalizovaná pro úlohy počítačové vize a vyvinutá pro architektury Intel. Rozšíření bylo přidáno do OVMS pro snadné výměny snímků videa a odvození výsledků mezi odvozeným serverem a živým analýzou videa v IoT Edgem, takže vám umožní spustit libovolný OpenVINO podporovaný model (objekt odvození serveru můžete přizpůsobit úpravou [kódu)](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper). Můžete dále vybírat z nejrůznějších mechanismů akcelerace poskytovaných hardwarem Intel. Mezi ně patří procesory (Atom, Core, Xeon), FPGA, VPUs.
+Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření OpenVINO™ model Server – AI od společnosti Intel](https://aka.ms/lva-intel-ovms), což je modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. Tento modul serveru odvození obsahuje OpenVINO™ model Server (OVMS), odvozený Server, který využívá sadu OpenVINO™ Toolkit, která je vysoce optimalizovaná pro úlohy počítačové vize a vyvinutá pro architektury Intel®. Do OVMS bylo přidáno rozšíření pro snadné výměny snímků videa a odvození výsledků mezi odvozeným serverem a živým analýzou videí v IoT Edge modul, takže vám umožní spustit libovolný model podporovaný OpenVINO™ Toolkit (můžete přizpůsobit modul odvození serveru úpravou [kódu](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)). Můžete dál vybírat z nejrůznějších mechanismů akcelerace, které poskytuje Intel® hardware. Mezi ně patří procesory (Atom, Core, Xeon), FPGA, VPUs.
 
 V počáteční verzi tohoto odvozeného serveru máte přístup k následujícím [modelům](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models):
 
@@ -91,7 +101,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Upravit *operations.jsv* souboru:
     * Změňte odkaz na topologii grafu:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/2.0/topology.json"`
 
     * V části `GraphInstanceSet` upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
 
@@ -107,13 +117,19 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
     ![Generovat manifest nasazení IoT Edge](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    *deployment.yolov3.amd64.js* v souboru manifestu se vytvoří ve složce *Src/Edge/config* .
+    *deployment.openvino.amd64.js* v souboru manifestu se vytvoří ve složce *Src/Edge/config* .
 
 1. Pokud jste dokončili rychlé zprovoznění [Najít pohyb a generovat události](detect-motion-emit-events-quickstart.md) , tento krok přeskočte. 
 
     V opačném případě v levém dolním rohu poblíž podokna **Azure IoT Hub** vyberte ikonu **Další akce** a pak vyberte **nastavit IoT Hub připojovací řetězec**. Můžete zkopírovat řetězec z *appsettings.jsv* souboru. Nebo pokud chcete mít jistotu, že jste nakonfigurovali správné centrum IoT v rámci Visual Studio Code, použijte [příkaz vybrat IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
     
     ![Nastavit připojovací řetězec IoT Hub](./media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 1. Klikněte pravým tlačítkem na *Src/Edge/config/deployment.openvino.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**. 
 
@@ -135,6 +151,15 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
 ### <a name="run-the-sample-program-to-detect-vehicles"></a>Spuštění ukázkového programu pro detekci vozidel
 Pokud otevřete [topologii grafu](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json) pro tento kurz v prohlížeči, uvidíte, že hodnota `inferencingUrl` byla nastavena na `http://openvino:4000/vehicleDetection` , což znamená, že odvozený server vrátí výsledky po zjištění vozidel, pokud jsou v živém videu.
 
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. Chcete-li spustit relaci ladění, vyberte klávesu F5. V okně **terminálu** se zobrazí zprávy tištěné.
 1. *operations.js* kódu začíná s voláními přímých metod `GraphTopologyList` a `GraphInstanceList` . Pokud jste vyčistili prostředky po dokončení předchozích rychlých startů, pak tento proces vrátí prázdné seznamy a potom se pozastaví. Chcete-li pokračovat, vyberte klávesu ENTER.
 
@@ -145,7 +170,7 @@ Pokud otevřete [topologii grafu](https://raw.githubusercontent.com/Azure/live-v
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithOpenVINO",
@@ -188,7 +213,7 @@ V následujících zprávách modul Live video Analytics definuje vlastnosti apl
 
 ### <a name="mediasessionestablished-event"></a>Událost MediaSessionEstablished
 
-Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP, který běží na kontejneru rtspsim-live555. Pokud je připojení úspěšné, bude vytištěna následující událost. Typ události je `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP, který běží na kontejneru rtspsim-live555. Pokud je připojení úspěšné, bude vytištěna následující událost. Typ události je **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
@@ -377,4 +402,4 @@ Pokud máte v úmyslu vyzkoušet další rychlé starty nebo kurzy, ponechte pro
 Přečtěte si další výzvy pro pokročilé uživatele:
 
 * Místo používání simulátoru RTSP použijte [kameru IP](https://en.wikipedia.org/wiki/IP_camera) , která má podporu pro RTSP. Můžete vyhledat kamery protokolu IP, které podporují protokol RTSP na stránce ONVIF, která je v [souladu](https://www.onvif.org/conformant-products/) s těmito produkty. Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
-* Místo virtuálního počítače Azure Linux použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Pak zařízení Zaregistrujte v Azure IoT Hub podle pokynů v tématu [nasazení prvního modulu IoT Edge na zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md).
+* Místo virtuálního počítače Azure Linux použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge.md). Pak zařízení Zaregistrujte v Azure IoT Hub podle pokynů v tématu [nasazení prvního modulu IoT Edge na zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md).

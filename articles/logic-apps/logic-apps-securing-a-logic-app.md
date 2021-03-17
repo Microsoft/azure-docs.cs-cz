@@ -3,15 +3,15 @@ title: Zabezpečení přístupu a dat
 description: Zabezpečený přístup ke vstupům, výstupům, aktivačním událostem založeným na požadavcích, historii spuštění, úlohám správy a přístupu k dalším prostředkům v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: rarayudu, logicappspm
+ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: a53ac9387664aafc218f13834e0499fde417d87d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 03/09/2021
+ms.openlocfilehash: 7b082c226b38633d6c34ee2fe4d5227252b2bfcb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566076"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556379"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -19,11 +19,11 @@ Azure Logic Apps spoléhá na [Azure Storage](../storage/index.yml) ukládání 
 
 K řízení přístupu a ochraně citlivých dat v Azure Logic Apps můžete nastavit další zabezpečení v těchto oblastech:
 
-* [Přístup k aktivačním událostem založeným na žádostech](#secure-triggers)
+* [Přístup pro příchozí volání aktivačních událostí na základě požadavků](#secure-inbound-requests)
 * [Přístup k operacím aplikace logiky](#secure-operations)
 * [Přístup ke vstupům a výstupům historie spouštění](#secure-run-history)
 * [Přístup ke vstupům parametrů](#secure-action-parameters)
-* [Přístup ke službám a systémům, které se nazývají aplikace logiky](#secure-outbound-requests)
+* [Přístup pro odchozí hovory na jiné služby a systémy](#secure-outbound-requests)
 * [Blokovat vytváření připojení pro konkrétní konektory](#block-connections)
 * [Pokyny k izolaci pro Logic Apps](#isolation-logic-apps)
 * [Základní hodnoty zabezpečení Azure pro Azure Logic Apps](../logic-apps/security-baseline.md)
@@ -34,18 +34,29 @@ Další informace o zabezpečení v Azure najdete v těchto tématech:
 * [Šifrování dat Azure – v klidovém případě](../security/fundamentals/encryption-atrest.md)
 * [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
 
-<a name="secure-triggers"></a>
+<a name="secure-inbound-requests"></a>
 
-## <a name="access-to-request-based-triggers"></a>Přístup k aktivačním událostem založeným na žádostech
+## <a name="access-for-inbound-calls-to-request-based-triggers"></a>Přístup pro příchozí volání aktivačních událostí na základě požadavků
 
-Pokud vaše aplikace logiky používá Trigger založený na požadavku, který přijímá příchozí volání nebo požadavky, jako je [požadavek](../connectors/connectors-native-reqres.md) nebo Trigger [Webhooku](../connectors/connectors-native-webhook.md) , můžete omezit přístup tak, aby vaše aplikace logiky mohli volat jenom autorizovaní klienti. Všechny požadavky přijaté aplikací logiky jsou šifrované a zabezpečené pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL).
+Příchozí volání, která aplikace logiky přijímá prostřednictvím triggeru založeného na žádostech, jako je Trigger [žádosti](../connectors/connectors-native-reqres.md) nebo Trigger [Webhooku protokolu HTTP](../connectors/connectors-native-webhook.md) , podporují šifrování a jsou zabezpečeny pomocí protokolu [TLS (Transport Layer Security) 1,2](https://en.wikipedia.org/wiki/Transport_Layer_Security)minimálně, dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Logic Apps vynutila tuto verzi při přijetí příchozího volání triggeru požadavku nebo zpětného volání do triggeru nebo akce Webhooku protokolu HTTP. Pokud se zobrazí chyby handshake TLS, ujistěte se, že používáte TLS 1,2. Další informace najdete v tématu [řešení problému s protokolem TLS 1,0](/security/solving-tls1-problem).
 
-Tady jsou možnosti, které vám pomůžou zabezpečit přístup k tomuto typu triggeru:
+Příchozí volání podporují tyto šifrovací sady:
 
-* [Generování sdílených přístupových podpisů](#sas)
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+Tady jsou další způsoby, jak omezit přístup k aktivačním událostem, které přijímají příchozí volání do vaší aplikace logiky, aby mohli volat aplikaci logiky jenom autorizovaní klienti:
+
+* [Generování sdílených přístupových podpisů (SAS)](#sas)
 * [Povolit Azure Active Directory Open Authentication (Azure AD OAuth)](#enable-oauth)
+* [Vystavení aplikace logiky pomocí Azure API Management](#azure-api-management)
 * [Omezit příchozí IP adresy](#restrict-inbound-ip-addresses)
-* [Přidání Azure Active Directory Open Authentication (Azure AD OAuth) nebo jiného zabezpečení](#add-authentication)
 
 <a name="sas"></a>
 
@@ -64,6 +75,8 @@ Každá adresa URL obsahuje `sp` `sv` parametr dotazu, a, `sig` jak je popsáno 
 | `sig` | Určuje podpis, který se má použít pro ověřování přístupu k triggeru. Tento podpis se vygeneruje pomocí algoritmu SHA256 s tajným přístupovým klíčem na všech cestách a vlastnostech adresy URL. Tento klíč zůstane zašifrovaný a uložený v aplikaci logiky, který není přístupný nebo publikovaný. Vaše aplikace logiky autorizuje jenom ty triggery, které obsahují platný podpis vytvořený s tajným klíčem. |
 |||
 
+Příchozí volání koncového bodu požadavku můžou použít jenom jedno schéma autorizace, buď SAS, nebo [Azure Active Directory otevřít ověřování](#enable-oauth). I když použití jednoho schématu nezakáže jiné schéma, při použití obou schémat zároveň dojde k chybě, protože služba neví, které schéma zvolit.
+
 Další informace o zabezpečení přístupu pomocí SAS najdete v těchto oddílech v tomto tématu:
 
 * [Znovu vygenerovat přístupové klíče](#access-keys)
@@ -78,7 +91,7 @@ Pokud chcete vygenerovat nový klíč pro přístup k zabezpečení, použijte A
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky, která má klíč, který chcete znovu vygenerovat.
 
-1. V nabídce aplikace logiky v části **Nastavení**vyberte **přístupové klíče**.
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **přístupové klíče**.
 
 1. Vyberte klíč, který chcete znovu vygenerovat a dokončit proces.
 
@@ -108,100 +121,126 @@ V těle zahrňte `KeyType` vlastnost buď `Primary` nebo `Secondary` . Tato vlas
 
 <a name="enable-oauth"></a>
 
-### <a name="enable-azure-active-directory-oauth"></a>Povolit Azure Active Directory OAuth
+### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Povolit Azure Active Directory Open Authentication (Azure AD OAuth)
 
-Pokud vaše aplikace logiky začíná [triggerem žádosti](../connectors/connectors-native-reqres.md), můžete povolit [Azure Active Directory otevřené ověřování](../active-directory/develop/index.yml) (Azure AD OAuth) tak, že definujete nebo přidáte zásady autorizace pro příchozí volání do triggeru žádosti. Když aplikace logiky obdrží příchozí požadavek, který obsahuje ověřovací token, Azure Logic Apps porovnává deklarace identity tokenu vůči deklaracím v každé zásadě autorizace. Pokud existuje shoda mezi deklaracemi tokenu a všemi deklaracemi v alespoň jedné zásadě, autorizace pro příchozí požadavek bude úspěšná. Token může mít více deklarací identity než číslo zadané v zásadách autorizace.
+Pro příchozí volání koncového bodu, který je vytvořený triggerem založeným na žádostech, můžete povolit [službu Azure AD OAuth](../active-directory/develop/index.yml) tím, že definujete nebo přidáte zásady autorizace pro vaši aplikaci logiky. Tímto způsobem příchozí volání využívají [přístupové tokeny](../active-directory/develop/access-tokens.md) OAuth pro autorizaci.
 
-Předpokládejme například, že vaše aplikace logiky má zásady autorizace, které vyžadují dva typy deklarací identity, **Vystavitel** a **cílovou skupinu**. Tento ukázkový dekódování [přístupového tokenu](../active-directory/develop/access-tokens.md) zahrnuje tyto typy deklarací identity:
+Když aplikace logiky obdrží příchozí požadavek, který obsahuje přístupový token OAuth, služba Azure Logic Apps porovnává deklarace identity tokenů s deklaracemi, které jsou zadané jednotlivými zásadami autorizace. Pokud existuje shoda mezi deklaracemi tokenu a všemi deklaracemi v alespoň jedné zásadě, autorizace pro příchozí požadavek bude úspěšná. Token může mít více deklarací identity než číslo zadané v zásadách autorizace.
 
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+#### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Předpoklady před povolením služby OAuth pro Azure AD
 
-#### <a name="considerations-for-enabling-azure-oauth"></a>Předpoklady pro povolení Azure OAuth
+* Příchozí volání koncového bodu může používat jenom jedno schéma autorizace, buď Azure AD OAuth, nebo [sdílený přístupový podpis (SAS)](#sas). I když použití jednoho schématu nezakáže jiné schéma, při použití obou schémat zároveň dojde k chybě, protože služba Logic Apps neví, jaké schéma zvolit.
 
-Než povolíte toto ověřování, přečtěte si tyto požadavky:
-
-* Příchozí volání vaší aplikace logiky může používat pouze jedno schéma autorizace, buď Azure AD OAuth nebo [signatury sdíleného přístupu (SAS)](#sas). Použití jednoho schématu nezakáže druhé, ale při použití obou současně dojde k chybě, protože služba neví, které schéma zvolit. Pro tokeny OAuth jsou podporovány pouze schémata autorizace [typu nosiče](../active-directory/develop/active-directory-v2-protocols.md#tokens) , která jsou podporována pouze pro aktivační událost žádosti.
+* Pro přístupové tokeny Azure AD OAuth se podporují jenom schémata autorizace [typu nosiče](../active-directory/develop/active-directory-v2-protocols.md#tokens) , což znamená, že `Authorization` Hlavička pro přístupový token musí určovat `Bearer` typ.
 
 * Aplikace logiky je omezená na maximální počet zásad autorizace. Každá zásada autorizace má také maximální počet [deklarací identity](../active-directory/develop/developer-glossary.md#claim). Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
 
-* Zásady autorizace musí zahrnovat aspoň deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` (OAuth v2) jako ID vystavitele Azure AD. Další informace o přístupových tokenech najdete v tématu [Microsoft Identity Platform Access tokens](../active-directory/develop/access-tokens.md).
+* Zásady autorizace musí zahrnovat aspoň deklaraci identity **vystavitele** , která má hodnotu začínající buď `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` (OAuth v2) jako ID vystavitele Azure AD.
+
+  Předpokládejme například, že vaše aplikace logiky má zásady autorizace, které vyžadují dva typy deklarací identity, **cílovou skupinu** a **Vystavitel**. Tento vzorový [oddíl](../active-directory/develop/access-tokens.md#payload-claims) pro dekódování přístupového tokenu obsahuje oba typy deklarací, kde `aud` je hodnota **cílové skupiny** a `iss` je hodnotou **vystavitele** :
+
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
+
+#### <a name="enable-azure-ad-oauth-for-your-logic-app"></a>Povolení služby Azure AD OAuth pro vaši aplikaci logiky
+
+Použijte následující postup pro Azure Portal nebo šablonu Azure Resource Manager:
 
 <a name="define-authorization-policy-portal"></a>
 
-#### <a name="define-authorization-policy-in-azure-portal"></a>Definování zásad autorizace v Azure Portal
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Pokud chcete povolit službu Azure AD OAuth pro vaši aplikaci logiky v Azure Portal, postupujte podle těchto kroků a přidejte do své aplikace logiky jednu nebo více zásad autorizace:
+V [Azure Portal](https://portal.azure.com)přidejte do aplikace logiky jednu nebo více zásad autorizace:
 
 1. V [Azure Portal](https://portal.microsoft.com)vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky v části **Nastavení**vyberte **autorizace**. Po otevření podokna autorizace vyberte **Přidat zásadu**.
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **autorizace**. Po otevření podokna autorizace vyberte **Přidat zásadu**.
 
    ![Vyberte Authorization > přidat zásadu.](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. Zadejte informace o zásadách autorizace zadáním typů a hodnot [deklarací identity](../active-directory/develop/developer-glossary.md#claim) , které vaše aplikace logiky očekává v ověřovacím tokenu, který prezentuje každé příchozí volání triggeru požadavku:
+1. Zadejte informace o zásadách autorizace zadáním typů a hodnot [deklarací identity](../active-directory/develop/developer-glossary.md#claim) , které vaše aplikace logiky očekává v přístupovém tokenu, který prezentuje každé příchozí volání triggeru požadavku:
 
    ![Zadání informací pro zásady autorizace](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název zásady** | Yes | Název, který chcete použít pro zásady autorizace |
-   | **Žádosti** | Yes | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (ID JSON web token) <p><p>Minimální seznam **deklarací identity** musí zahrnovat deklaraci identity **vystavitele** , která má hodnotu, která začíná na `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
+   | **Název zásad** | Yes | Název, který chcete použít pro zásady autorizace |
+   | **Žádosti** | Yes | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Hodnota deklarace identity je omezená na [maximální počet znaků](logic-apps-limits-and-config.md#authentication-limits). Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (JSON web token identifikátor) <p><p>Seznam **deklarací** musí obsahovat minimálně deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
    |||
 
 1. Pokud chcete přidat další deklaraci identity, vyberte si z těchto možností:
 
    * Pokud chcete přidat další typ deklarace identity, vyberte **Přidat standardní deklaraci identity**, vyberte typ deklarace a zadejte hodnotu deklarace identity.
 
-   * Pokud chcete přidat vlastní deklaraci identity, vyberte **Přidat vlastní deklaraci identity**a zadejte hodnotu vlastní deklarace identity.
+   * Pokud chcete přidat vlastní deklaraci identity, vyberte **Přidat vlastní deklaraci identity**. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci](../active-directory/develop/active-directory-optional-claims.md). Vaše vlastní deklarace identity se pak uloží jako součást ID JWT; například `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"` . 
 
 1. Pokud chcete přidat další zásady autorizace, vyberte **Přidat zásadu**. Zopakováním předchozích kroků zásadu nastavte.
 
 1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
+1. Chcete-li zahrnout `Authorization` hlavičku z přístupového tokenu v výstupech triggerů na základě požadavků, přečtěte si část [zahrnutí "autorizace" v výstupech triggeru žádosti](#include-auth-header).
+
+
+Vlastnosti pracovního postupu, jako jsou zásady, se nezobrazují v zobrazení kódu vaší aplikace logiky v Azure Portal. Chcete-li získat přístup k zásadám prostřednictvím kódu programu, zavolejte následující rozhraní API prostřednictvím Azure Resource Manager (ARM): `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820` . Ujistěte se, že nahradíte zástupné hodnoty pro ID předplatného Azure, název skupiny prostředků a název pracovního postupu.
+
+
 <a name="define-authorization-policy-template"></a>
 
-#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Definování zásad autorizace v šabloně Azure Resource Manager
+#### <a name="resource-manager-template"></a>[Šablona Správce prostředků](#tab/azure-resource-manager)
 
-Pokud chcete povolit službu Azure AD OAuth v šabloně ARM pro nasazení aplikace logiky, v `properties` části pro [definici prostředků vaší aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)přidejte `accessControl` objekt, pokud žádný neexistuje, který obsahuje `triggers` objekt. V `triggers` objektu přidejte `openAuthenticationPolicies` objekt, kde definujete jednu nebo více autorizačních zásad, pomocí této syntaxe:
+V šabloně ARM Definujte zásadu autorizace podle těchto kroků a syntaxe níže:
+
+1. V `properties` části pro [definici prostředků vaší aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)přidejte `accessControl` objekt, pokud žádný neexistuje, který obsahuje `triggers` objekt.
+
+   Další informace o objektu najdete v `accessControl` tématu věnovaném [omezení rozsahů příchozích IP adres v šablonách Azure Resource Manager](#restrict-inbound-ip-template) a [odkazech na šablonu Microsoft. Logic](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+1. Do `triggers` objektu přidejte `openAuthenticationPolicies` objekt, který obsahuje `policies` objekt, ve kterém definujete jednu nebo více zásad autorizace.
+
+1. Zadejte název zásady autorizace, nastavte typ zásady na `AAD` a přidejte `claims` pole, ve kterém zadáte jeden nebo více typů deklarací identity.
+
+   `claims`Pole musí obsahovat minimálně typ deklarace vystavitele, u kterého nastavíte `name` vlastnost deklarace na `iss` a nastavíte, aby byla `value` začínat `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity.
+
+1. Chcete-li zahrnout `Authorization` hlavičku z přístupového tokenu v výstupech triggerů na základě požadavků, přečtěte si část [zahrnutí "autorizace" v výstupech triggeru žádosti](#include-auth-header).
+
+Tady je syntaxe, která se má provést:
 
 ```json
 "resources": [
@@ -220,7 +259,7 @@ Pokud chcete povolit službu Azure AD OAuth v šabloně ARM pro nasazení aplika
                         "claims": [
                            {
                               "name": "<claim-name>",
-                              "values": "<claim-value>"
+                              "value": "<claim-value>"
                            }
                         ]
                      }
@@ -240,7 +279,38 @@ Pokud chcete povolit službu Azure AD OAuth v šabloně ARM pro nasazení aplika
 ],
 ```
 
-Další informace o této `accessControl` části najdete v tématu věnovaném [omezení rozsahů příchozích IP adres v šablonách Azure Resource Manager](#restrict-inbound-ip-template) a [odkazech na šablonu Microsoft. Logic](/azure/templates/microsoft.logic/2019-05-01/workflows).
+---
+
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>Zahrnout do výstupů triggerů žádosti hlavičku Authorization
+
+Pro Logic Apps, které [umožňují Azure Active Directory Open Authentication (Azure AD OAuth)](#enable-oauth) pro autorizaci příchozích volání s přístupem k aktivačním událostem založeným na žádostech, můžete povolit aktivační události triggeru požadavku nebo aktivační události Webhooku protokolu HTTP, které budou zahrnovat `Authorization` hlavičku z přístupového tokenu OAuth. V základní definici JSON triggeru přidejte a nastavte `operationOptions` vlastnost na `IncludeAuthorizationHeadersInOutputs` . Tady je příklad triggeru žádosti:
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+Další informace najdete v těchto tématech:
+
+* [Referenční dokumentace schématu pro aktivační události a typy akcí – Trigger žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [Referenční dokumentace schématu pro typy triggerů a akcí – Trigger Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Referenční dokumentace schématu pro triggery a typy akcí – možnosti operací](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
+
+<a name="azure-api-management"></a>
+
+### <a name="expose-your-logic-app-with-azure-api-management"></a>Vystavení aplikace logiky pomocí Azure API Management
+
+Pokud chcete do aplikace logiky přidat další [ověřovací protokoly](../active-directory/develop/authentication-vs-authorization.md) , zvažte použití služby [Azure API Management](../api-management/api-management-key-concepts.md) . Tato služba vám pomůže vystavit aplikaci logiky jako rozhraní API a nabízí rozšířené monitorování, zabezpečení, zásady a dokumentaci pro libovolný koncový bod. API Management může vystavit veřejný nebo privátní koncový bod pro vaši aplikaci logiky. Pokud chcete autorizovat přístup k tomuto koncovému bodu, můžete k autorizaci přístupu k tomuto koncovému bodu použít Azure AD OAuth, [klientský certifikát](#client-certificate-authentication)nebo jiné standardy zabezpečení. Když API Management obdrží požadavek, služba pošle požadavek do vaší aplikace logiky, což také vede k potřebným transformacím nebo omezením na cestě. Chcete-li povolit pouze API Management volání aplikace logiky, můžete [omezit příchozí IP adresy vaší aplikace logiky](#restrict-inbound-ip).
 
 <a name="restrict-inbound-ip"></a>
 
@@ -248,28 +318,89 @@ Další informace o této `accessControl` části najdete v tématu věnovaném 
 
 Spolu se sdíleným přístupovým podpisem (SAS) můžete chtít konkrétně omezit klienty, kteří můžou zavolat aplikaci logiky. Pokud například spravujete koncový bod žádosti pomocí [Azure API Management](../api-management/api-management-key-concepts.md), můžete aplikaci logiky omezit tak, aby přijímala požadavky pouze z IP adresy pro [instanci služby API Management, kterou vytvoříte](../api-management/get-started-create-service-instance.md).
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Omezit rozsahy příchozích IP adres v Azure Portal
+Bez ohledu na IP adresy, které zadáte, můžete pořád spustit aplikaci logiky, která má aktivační událost na základě požadavků, a to pomocí [Logic Apps REST API: triggery pracovního postupu – spustit](/rest/api/logic/workflowtriggers/run) požadavek nebo pomocí API Management. Tento scénář ale pořád vyžaduje [ověřování](../active-directory/develop/authentication-vs-authorization.md) proti REST API Azure. Všechny události se zobrazí v protokolu auditu Azure. Ujistěte se, že jste nastavili zásady řízení přístupu odpovídajícím způsobem.
+
+Pokud chcete omezit příchozí IP adresy pro vaši aplikaci logiky, použijte následující postup pro Azure Portal nebo šablonu Azure Resource Manager:
+
+<a name="restrict-inbound-ip-portal"></a>
+
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+V [Azure Portal](https://portal.azure.com)má tento filtr vliv na triggery *a* akce v rozporu s popisem na portálu v části **povolené příchozí IP adresy**. Chcete-li tento filtr nastavit samostatně pro aktivační události a pro akce, použijte `accessControl` objekt v šabloně Azure Resource Manager pro vaši aplikaci logiky nebo [Logic Apps REST API: pracovní postup – operace vytvořit nebo aktualizovat](/rest/api/logic/workflows/createorupdate).
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky v části **Nastavení**vyberte **Nastavení pracovního postupu**.
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **Nastavení pracovního postupu**.
 
-1. V části **Konfigurace řízení přístupu**  >  **povolená příchozí IP adresa**vyberte **konkrétní rozsahy IP**adres.
+1. V části **Konfigurace řízení přístupu** v části **povolené příchozí IP adresy** vyberte cestu k vašemu scénáři:
 
-1. V části **rozsahy IP pro aktivační události**zadejte rozsahy IP adres, které aktivační událost akceptuje.
+   * Aby se aplikace logiky mohla volat jenom jako vnořená aplikace logiky pomocí předdefinované [Azure Logic Apps akce](../logic-apps/logic-apps-http-endpoint.md), vyberte **jenom další Logic Apps**, která funguje *jenom* v případě, že použijete akci **Azure Logic Apps** k volání vnořené aplikace logiky.
 
-   Platný rozsah IP adres používá tyto formáty: *x. x. x. x/x* nebo *x. x. x. x-x. x.* x. x.
+     Tato možnost zapíše prázdné pole do prostředku aplikace logiky a vyžaduje, aby se vnořená aplikace logiky spustila jenom volání z nadřazených aplikací logiky, které používají vestavěnou **Azure Logic Apps** akci.
 
-Pokud chcete, aby se aplikace logiky spouštěla jenom jako vnořená aplikace logiky, vyberte ze seznamu **povolené IP adresy** **jenom další Logic Apps**. Tato možnost zapíše prázdné pole do prostředku aplikace logiky. Tímto způsobem mohou spustit vnořenou aplikaci logiky pouze volání ze služby Logic Apps (nadřazené aplikace logiky).
+   * Pokud chcete aplikaci logiky volat jenom jako vnořenou aplikaci pomocí akce HTTP, vyberte **konkrétní rozsahy IP adres**, *ne* **jenom jiné Logic Apps**. Po zobrazení pole **rozsahy IP adres pro triggery** zadejte [odchozí IP adresy](../logic-apps/logic-apps-limits-and-config.md#outbound)nadřazené aplikace logiky. Platný rozsah IP adres používá tyto formáty: *x. x. x. x/x* nebo *x. x. x. x-x. x.* x. x.
 
-> [!NOTE]
-> Bez ohledu na IP adresu můžete přesto spustit aplikaci logiky, která má aktivační událost na základě požadavků, a to pomocí [Logic Apps REST API: triggery pracovního postupu – spustit](/rest/api/logic/workflowtriggers/run) požadavek nebo pomocí API Management. Tento scénář ale pořád vyžaduje [ověřování](../active-directory/develop/authentication-vs-authorization.md) proti REST API Azure. Všechny události se zobrazí v protokolu auditu Azure. Ujistěte se, že jste nastavili zásady řízení přístupu odpovídajícím způsobem.
+     > [!NOTE]
+     > Použijete-li **jedinou jinou možnost Logic Apps** a akci HTTP pro volání vnořené aplikace logiky, volání je blokováno a zobrazí se chyba "401 Neautorizováno".
+
+   * U scénářů, ve kterých chcete omezit příchozí volání z jiných IP adres, když se zobrazí okno **rozsahy IP adres pro triggery** , zadejte rozsahy IP adres, které aktivační událost akceptuje. Platný rozsah IP adres používá tyto formáty: *x. x. x. x/x* nebo *x. x. x. x-x. x.* x. x.
+
+1. Volitelně můžete v části **omezit volání na získat vstupní a výstupní zprávy z historie spouštění na zadané IP adresy** zadat rozsahy IP adres pro příchozí volání, která budou mít přístup k vstupním a výstupním zprávám v historii spuštění.
 
 <a name="restrict-inbound-ip-template"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Omezení rozsahů příchozích IP adres v šabloně Azure Resource Manager
+#### <a name="resource-manager-template"></a>[Šablona Správce prostředků](#tab/azure-resource-manager)
 
-Pokud [automatizujete nasazení Logic Apps pomocí Správce prostředků šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete určit rozsahy IP adres ve formátu *x. x. x. x/x* nebo *x. x. x. x-x* . x. x. x pomocí `accessControl` oddílu a zahrnutím `triggers` `actions` oddílů a do definice prostředků vaší aplikace logiky, například:
+V šabloně ARM určete povolené rozsahy příchozích IP adres v definici prostředků vaší aplikace logiky pomocí `accessControl` části. V této části použijte případně `triggers` `actions` volitelné `contents` oddíly, včetně `allowedCallerIpAddresses` oddílu s `addressRange` vlastností a nastavte hodnotu vlastnosti na povolený rozsah IP adres ve formátu *x. x. x* . x. x. x. x. x *. x. x-x. x* . x. x.
+
+* Pokud vaše vnořená aplikace logiky používá **jedinou možnost Logic Apps** , která umožňuje příchozí volání jenom z jiných Logic Apps, které používají vestavěnou Azure Logic Apps akci, nastavte `allowedCallerIpAddresses` vlastnost na prázdné pole (**[]**) a *vynechejte* `addressRange` vlastnost.
+
+* Pokud vaše vnořená aplikace logiky používá pro jiná příchozí volání možnost **konkrétní rozsahy IP** adres, jako jsou například jiné aplikace logiky, které používají akci HTTP, zahrňte `allowedCallerIpAddresses` část a nastavte `addressRange` vlastnost na povolený rozsah IP adres.
+
+Tento příklad ukazuje definici prostředků pro vnořenou aplikaci logiky, která umožňuje příchozí volání pouze z aplikací logiky, které používají vestavěnou Azure Logic Apps akci:
+
+```json
+{
+   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {},
+   "variables": {},
+   "resources": [
+      {
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               <workflow-definition>
+            },
+            "parameters": {
+            },
+            "accessControl": {
+               "triggers": {
+                  "allowedCallerIpAddresses": []
+               },
+               "actions": {
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
+               }
+            },
+            "endpointsConfiguration": {}
+         }
+      }
+   ],
+   "outputs": {}
+}
+```
+
+Tento příklad ukazuje definici prostředků pro vnořenou aplikaci logiky, která umožňuje příchozí volání z aplikací logiky, které používají akci HTTP:
 
 ```json
 {
@@ -301,7 +432,11 @@ Pokud [automatizujete nasazení Logic Apps pomocí Správce prostředků šablon
                   ]
                },
                "actions": {
-                  "allowedCallerIpAddresses": []
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": "192.168.12.0/23"
+                     }
+                  ]
                }
             },
             "endpointsConfiguration": {}
@@ -312,11 +447,7 @@ Pokud [automatizujete nasazení Logic Apps pomocí Správce prostředků šablon
 }
 ```
 
-<a name="add-authentication"></a>
-
-### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>Přidat Azure Active Directory otevřené ověřování nebo jiné zabezpečení
-
-Pokud chcete do aplikace logiky přidat další [ověřovací](../active-directory/develop/authentication-vs-authorization.md) protokoly, zvažte použití služby [Azure API Management](../api-management/api-management-key-concepts.md) . Tato služba vám pomůže vystavit aplikaci logiky jako rozhraní API a nabízí rozšířené monitorování, zabezpečení, zásady a dokumentaci pro libovolný koncový bod. API Management může vystavit veřejný nebo privátní koncový bod pro vaši aplikaci logiky. K autorizaci přístupu k tomuto koncovému bodu můžete použít [Azure Active Directory otevřít ověřování](#azure-active-directory-oauth-authentication) (Azure AD OAuth), [klientský certifikát](#client-certificate-authentication)nebo jiné standardy zabezpečení pro autorizaci přístupu k tomuto koncovému bodu. Když API Management obdrží požadavek, služba pošle požadavek do vaší aplikace logiky, což také vede k potřebným transformacím nebo omezením na cestě. Pokud chcete povolit jenom API Management aktivovat aplikaci logiky, můžete použít nastavení příchozího rozsahu IP adres vaší aplikace logiky.
+---
 
 <a name="secure-operations"></a>
 
@@ -352,23 +483,27 @@ K řízení přístupu k vstupům a výstupům v historii spuštění aplikace l
 
 ### <a name="restrict-access-by-ip-address-range"></a>Omezení přístupu podle rozsahu IP adres
 
-V historii spuštění aplikace logiky můžete omezit přístup k vstupům a výstupům, aby se tato data mohla zobrazit jenom z konkrétních rozsahů IP adres. Chcete-li například zablokovat komukoli přístup k vstupům a výstupům, zadejte rozsah IP adres, například `0.0.0.0-0.0.0.0` . Pouze osoba s oprávněními správce může toto omezení odebrat, což umožňuje "za běhu" přístup k datům aplikace logiky. Rozsahy IP adres, které se mají omezit, můžete zadat pomocí Azure Portal nebo v šabloně Azure Resource Manager, kterou používáte pro nasazení aplikace logiky.
+V historii spuštění aplikace logiky můžete omezit přístup k vstupům a výstupům, aby se tato data mohla zobrazit jenom z konkrétních rozsahů IP adres.
 
-#### <a name="restrict-ip-ranges-in-azure-portal"></a>Omezení rozsahů IP adres v Azure Portal
+Chcete-li například zablokovat komukoli přístup k vstupům a výstupům, zadejte rozsah IP adres, například `0.0.0.0-0.0.0.0` . Pouze osoba s oprávněními správce může toto omezení odebrat, což umožňuje "za běhu" přístup k datům aplikace logiky.
 
-1. V Azure Portal otevřete aplikaci logiky v návrháři aplikace logiky.
+Pokud chcete určit rozsahy povolených IP adres, použijte následující postup pro Azure Portal nebo šablonu Azure Resource Manager:
 
-1. V nabídce aplikace logiky v části **Nastavení**vyberte **Nastavení pracovního postupu**.
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V části **Konfigurace řízení přístupu**  >  **povolená příchozí IP adresa**vyberte **konkrétní rozsahy IP**adres.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V části **rozsahy IP adres pro obsah**zadejte rozsahy IP adres, které budou mít přístup k obsahu ze vstupů a výstupů.
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **Nastavení pracovního postupu**.
+
+1. V části **Konfigurace řízení přístupu**  >  **povolená příchozí IP adresa** vyberte **konkrétní rozsahy IP** adres.
+
+1. V části **rozsahy IP adres pro obsah** zadejte rozsahy IP adres, které budou mít přístup k obsahu ze vstupů a výstupů.
 
    Platný rozsah IP adres používá tyto formáty: *x. x. x. x/x* nebo *x. x. x. x-x. x.* x. x.
 
-#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Omezení rozsahů IP adres v šabloně Azure Resource Manager
+#### <a name="resource-manager-template"></a>[Šablona Správce prostředků](#tab/azure-resource-manager)
 
-Pokud [automatizujete nasazení Logic Apps pomocí Správce prostředků šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete rozsahy IP adres zadat pomocí `accessControl` oddílu s `contents` oddílem v definici prostředků vaší aplikace logiky, například:
+V šabloně ARM určete rozsahy IP adres pomocí `accessControl` oddílu s `contents` oddílem v definici prostředků vaší aplikace logiky, například:
 
 ``` json
 {
@@ -407,11 +542,41 @@ Pokud [automatizujete nasazení Logic Apps pomocí Správce prostředků šablon
 }
 ```
 
+---
+
 <a name="obfuscate"></a>
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>Zabezpečení dat v historii spouštění pomocí zmatení
 
-Mnoho triggerů a akcí má nastavení pro zabezpečení vstupů, výstupů nebo obojího z historie spuštění aplikace logiky. Než použijete tato nastavení, která vám pomůžou zabezpečit tato data, [Přečtěte si tyto informace](#obfuscation-considerations).
+Mnoho triggerů a akcí má nastavení pro zabezpečení vstupů, výstupů nebo obojího z historie spuštění aplikace logiky. Než použijete tato nastavení, která vám pomůžou zabezpečit tato data, přečtěte si tyto informace:
+
+* Když na Trigger nebo akci skryjete vstupy nebo výstupy, Logic Apps neodesílají zabezpečená data do Azure Log Analytics. Do této aktivační události nebo akce pro monitorování nemůžete také přidat [sledované vlastnosti](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) .
+
+* [Rozhraní Logic Apps API pro zpracování historie pracovního postupu](/rest/api/logic/) nevrací zabezpečené výstupy.
+
+* Aby bylo možné zabezpečit výstupy z akce, která zakrývá vstupy nebo explicitně překrývá výstupy, ručně zapněte v této akci **zabezpečené výstupy** .
+
+* Ujistěte se, že jste zapnuli **zabezpečené vstupy** nebo **zabezpečené výstupy** v rámci navazujících akcí, u kterých očekáváte, že historie spouštění bude tato data skrývat.
+
+  **Nastavení zabezpečených výstupů**
+
+  Když ručně zapnete **zabezpečené výstupy** v aktivační události nebo akci, Logic Apps tyto výstupy skryje v historii spuštění. Pokud akce pro příjem dat explicitně používá tyto zabezpečené výstupy jako vstupy, Logic Apps skrývá vstupy této akce v historii spuštění, ale *nepovolí* nastavení **zabezpečených vstupů** akce.
+
+  ![Zabezpečené výstupy jako vstupy a přínosy při většině akcí](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  Akce vytvořit, analyzovat JSON a odpověď mají pouze nastavení **zabezpečené vstupy** . Když je tato možnost zapnutá, tato nastavení také skryje výstupy těchto akcí. Pokud tyto akce explicitně používají výstupy proti nadřazenému objektu jako vstupy, Logic Apps skrývá vstupy a výstupy těchto akcí, ale *nepovoluje* nastavení **zabezpečených vstupů** těchto akcí. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
+
+  ![Zabezpečené výstupy jako vstupy s vlivem na konkrétní akce na základě dat](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  **Nastavení zabezpečených vstupů**
+
+  Když ručně zapnete **zabezpečené vstupy** v triggeru nebo akci, Logic Apps tyto vstupy v historii spuštění skrýt. Pokud akce pro příjem dat explicitně používá viditelné výstupy z této triggeru nebo akce jako vstupy, Logic Apps skrývá tyto vstupy v historii spuštění, ale *nepovoluje* v této akci **zabezpečené vstupy** a neskrývá výstupy této akce.
+
+  ![Zabezpečené vstupy a důsledky pro všechny akce](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
+
+  Pokud akce vytvořit, analyzovat JSON a odpověď explicitně použijí viditelné výstupy z triggeru nebo akce, která má zabezpečené vstupy, Logic Apps skryje tyto vstupy a výstupy těchto akcí, ale *nepovolí* nastavení **zabezpečených vstupů** těchto akcí. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
+
+  ![Zabezpečené vstupy a důsledky pro konkrétní akce](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>Zabezpečení vstupů a výstupů v Návrháři
 
@@ -454,8 +619,6 @@ V podkladové aktivační události nebo definici akce přidejte nebo aktualizuj
 * `"inputs"`: Zabezpečuje vstupy v historii spuštění.
 * `"outputs"`: Zabezpečuje výstupy v historii spuštění.
 
-Tady je několik [důležitých informací, které](#obfuscation-considerations) je potřeba zkontrolovat, když použijete tato nastavení, abyste mohli tato data zabezpečit.
-
 ```json
 "<trigger-or-action-name>": {
    "type": "<trigger-or-action-type>",
@@ -473,38 +636,6 @@ Tady je několik [důležitých informací, které](#obfuscation-considerations)
    <other-attributes>
 }
 ```
-
-<a name="obfuscation-considerations"></a>
-
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Doporučení při zabezpečení vstupů a výstupů
-
-* Když na Trigger nebo akci skryjete vstupy nebo výstupy, Logic Apps neodesílají zabezpečená data do Azure Log Analytics. Do této aktivační události nebo akce pro monitorování nemůžete také přidat [sledované vlastnosti](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) .
-
-* [Rozhraní Logic Apps API pro zpracování historie pracovního postupu](/rest/api/logic/) nevrací zabezpečené výstupy.
-
-* Aby bylo možné zabezpečit výstupy z akce, která zakrývá vstupy nebo explicitně překrývá výstupy, ručně zapněte v této akci **zabezpečené výstupy** .
-
-* Ujistěte se, že jste zapnuli **zabezpečené vstupy** nebo **zabezpečené výstupy** v rámci navazujících akcí, u kterých očekáváte, že historie spouštění bude tato data skrývat.
-
-  **Nastavení zabezpečených výstupů**
-
-  Když ručně zapnete **zabezpečené výstupy** v aktivační události nebo akci, Logic Apps tyto výstupy skryje v historii spuštění. Pokud akce pro příjem dat explicitně používá tyto zabezpečené výstupy jako vstupy, Logic Apps skrývá vstupy této akce v historii spuštění, ale *nepovolí* nastavení **zabezpečených vstupů** akce.
-
-  ![Zabezpečené výstupy jako vstupy a přínosy při většině akcí](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
-
-  Akce vytvořit, analyzovat JSON a odpověď mají pouze nastavení **zabezpečené vstupy** . Když je tato možnost zapnutá, tato nastavení také skryje výstupy těchto akcí. Pokud tyto akce explicitně používají výstupy proti nadřazenému objektu jako vstupy, Logic Apps skrývá vstupy a výstupy těchto akcí, ale *nepovoluje* nastavení **zabezpečených vstupů** těchto akcí. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
-
-  ![Zabezpečené výstupy jako vstupy s vlivem na konkrétní akce na základě dat](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
-
-  **Nastavení zabezpečených vstupů**
-
-  Když ručně zapnete **zabezpečené vstupy** v triggeru nebo akci, Logic Apps tyto vstupy v historii spuštění skrýt. Pokud akce pro příjem dat explicitně používá viditelné výstupy z této triggeru nebo akce jako vstupy, Logic Apps skrývá tyto vstupy v historii spuštění, ale *nepovoluje* v této akci **zabezpečené vstupy** a neskrývá výstupy této akce.
-
-  ![Zabezpečené vstupy a důsledky pro všechny akce](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
-
-  Pokud akce vytvořit, analyzovat JSON a odpověď explicitně použijí viditelné výstupy z triggeru nebo akce, která má zabezpečené vstupy, Logic Apps skryje tyto vstupy a výstupy těchto akcí, ale *nepovolí* nastavení **zabezpečených vstupů** těchto akcí. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
-
-  ![Zabezpečené vstupy a důsledky pro konkrétní akce](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 <a name="secure-action-parameters"></a>
 
@@ -592,7 +723,7 @@ Zde jsou další informace o těchto `parameters` oddílech:
 
 Tento příklad šablony s více zabezpečenými definicemi parametrů, které používají `securestring` Typ:
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |----------------|-------------|
 | `TemplatePasswordParam` | Parametr šablony, který přijímá heslo, které je pak předáno parametru definice pracovního postupu `basicAuthPasswordParam` |
 | `TemplateUsernameParam` | Parametr šablony, který přijímá uživatelské jméno, které je pak předáno parametru definice pracovního postupu `basicAuthUserNameParam` |
@@ -719,13 +850,21 @@ Tento příklad šablony s více zabezpečenými definicemi parametrů, které p
 
 <a name="secure-outbound-requests"></a>
 
-## <a name="access-to-services-and-systems-called-from-logic-apps"></a>Přístup ke službám a systémům, které se nazývají aplikace logiky
+## <a name="access-for-outbound-calls-to-other-services-and-systems"></a>Přístup pro odchozí hovory na jiné služby a systémy
 
-Tady je několik způsobů, jak můžete zvýšit zabezpečení koncových bodů, které přijímají volání nebo požadavky z vaší aplikace logiky:
+V závislosti na schopnosti cílového koncového bodu odchozí hovory odesílané [triggerem http nebo akcí http](../connectors/connectors-native-http.md)podporují šifrování a jsou zabezpečené pomocí protokolu [TLS (Transport Layer Security) 1,0, 1,1 nebo 1,2](https://en.wikipedia.org/wiki/Transport_Layer_Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Logic Apps vyjednávat s cílovým koncovým bodem pomocí nejvyšší možné verze, která je podporována. Pokud například cílový koncový bod podporuje 1,2, aktivační událost HTTP nebo akce nejprve používá 1,2. V opačném případě konektor používá další nejvyšší podporovanou verzi.
 
-* Přidání ověřování do odchozích požadavků.
+Tady jsou informace o certifikátech podepsaných držitelem TLS/SSL:
 
-  Když pracujete s triggerem založeným na protokolu HTTP nebo akcí, která umožňuje odchozí volání, jako je HTTP, HTTP + Swagger nebo Webhook, můžete do žádosti, kterou odesílá aplikace logiky, přidat ověřování. Můžete například vybrat tyto typy ověřování:
+* Pro Logic Apps v globálním prostředí Azure s více klienty nepovoluje konektor HTTP konektor protokolu TLS/SSL podepsaný svým držitelem. Pokud vaše aplikace logiky provede volání HTTP na server a uvede certifikát podepsaný svým držitelem (TLS/SSL), volání HTTP se nezdařila s `TrustFailure` chybou.
+
+* Pro Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)umožňuje konektor http certifikáty podepsané svým držitelem pro ověřování TLS/SSL. Je však třeba nejprve [Povolit podporu certifikátu podepsaného svým držitelem](../logic-apps/create-integration-service-environment-rest-api.md#request-body) pro stávající ISE nebo nový ISE pomocí REST API Logic Apps a nainstalovat veřejný certifikát do `TrustedRoot` umístění.
+
+Tady jsou další způsoby, jak můžete zabezpečit koncové body, které zpracovávají volání odesílaná z vaší aplikace logiky:
+
+* [Přidání ověřování do odchozích požadavků](#add-authentication-outbound).
+
+  Když použijete Trigger HTTP nebo akci k odeslání odchozích volání, můžete do žádosti přidat ověřování, které odesílá aplikace logiky. Můžete například vybrat tyto typy ověřování:
 
   * [Základní ověřování](#basic-authentication)
 
@@ -735,11 +874,9 @@ Tady je několik způsobů, jak můžete zvýšit zabezpečení koncových bodů
 
   * [Ověřování spravovaných identit](#managed-identity-authentication)
 
-  Další informace najdete v části [Přidání ověřování do odchozích volání](#add-authentication-outbound) dále v tomto tématu.
-
 * Omezte přístup z IP adres aplikace logiky.
 
-  Všechna volání koncových bodů z aplikací logiky pocházejí z konkrétních určených IP adres, které jsou založeny na oblastech vaší Logic Apps. Můžete přidat filtrování, které přijímá požadavky pouze z těchto IP adres. Pokud chcete získat tyto IP adresy, přečtěte si téma [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md#configuration).
+  Všechna volání koncových bodů z aplikací logiky pocházejí z konkrétních určených IP adres, které jsou založeny na oblastech vaší Logic Apps. Můžete přidat filtrování, které přijímá požadavky pouze z těchto IP adres. Pokud chcete získat tyto IP adresy, přečtěte si téma [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md#firewall-ip-configuration).
 
 * Zvyšte zabezpečení připojení k místním systémům.
 
@@ -776,13 +913,17 @@ Tady je několik způsobů, jak můžete zvýšit zabezpečení koncových bodů
 
 <a name="add-authentication-outbound"></a>
 
-## <a name="add-authentication-to-outbound-calls"></a>Přidání ověřování do odchozích volání
+### <a name="add-authentication-to-outbound-calls"></a>Přidání ověřování do odchozích volání
 
 Koncové body HTTP a HTTPS podporují různé druhy ověřování. U některých triggerů a akcí, které používáte pro odeslání odchozích volání nebo požadavků do těchto koncových bodů, můžete zadat typ ověřování. V návrháři aplikace logiky triggery a akce, které podporují výběr typu ověřování, mají vlastnost **ověřování** . Tato vlastnost se však nemusí vždy zobrazit ve výchozím nastavení. V těchto případech v aktivační události nebo akci otevřete seznam **Přidat nový parametr** a vyberte **ověřování**.
 
 > [!IMPORTANT]
 > K ochraně citlivých informací, které vaše aplikace logiky zpracovává, používejte v případě potřeby zabezpečené parametry a zakódovat data.
 > Další informace o použití a zabezpečení parametrů naleznete v tématu [přístup ke vstupům parametrů](#secure-action-parameters).
+
+<a name="authentication-types-supported-triggers-actions"></a>
+
+#### <a name="authentication-types-for-triggers-and-actions-that-support-authentication"></a>Typy ověřování pro aktivační události a akce, které podporují ověřování
 
 Tato tabulka uvádí typy ověřování, které jsou k dispozici na triggerech a akcích, kde můžete vybrat typ ověřování:
 
@@ -792,18 +933,18 @@ Tato tabulka uvádí typy ověřování, které jsou k dispozici na triggerech a
 | [Certifikát klienta](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, Webhook HTTP |
 | [Protokol OAuth pro Active Directory](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, Webhook HTTP |
 | [Žádný](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, Webhook HTTP |
-| [Spravovaná identita](#managed-identity-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, Webhook HTTP |
+| [Spravovaná identita](#managed-identity-authentication) | **Předdefinované triggery a akce** <p><p>Azure API Management, Azure App Services, Azure Functions, HTTP, Webhook HTTP <p><p>**Spravované konektory** <p><p>Azure AD Identity Protection, Azure Automation, Azure Container instance, Azure Průzkumník dat, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central v3, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP s Azure AD <p><p>**Poznámka**: podpora pro spravované konektory je momentálně ve verzi Preview. |
 |||
 
 <a name="basic-authentication"></a>
 
-### <a name="basic-authentication"></a>Základní ověřování
+#### <a name="basic-authentication"></a>Základní ověřování
 
 Pokud je k dispozici možnost [základní](../active-directory-b2c/secure-rest-api.md) , zadejte tyto hodnoty vlastností:
 
 | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentication** | `type` | Yes | Základní | Typ ověřování, který se má použít |
+| **Authentication** | `type` | Yes | Basic | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Yes | <*uživatelské jméno*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
 | **Heslo** | `password` | Yes | <*zadáno*> | Heslo pro ověřování přístupu k cílovému koncovému bodu služby |
 ||||||
@@ -828,14 +969,14 @@ Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpraco
 
 <a name="client-certificate-authentication"></a>
 
-### <a name="client-certificate-authentication"></a>Ověřování certifikátu klienta
+#### <a name="client-certificate-authentication"></a>Ověřování certifikátu klienta
 
 Pokud je k dispozici možnost [certifikát klienta](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) , zadejte tyto hodnoty vlastností:
 
 | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Yes | **Certifikát klienta** <br>nebo <br>`ClientCertificate` | Typ ověřování, který se má použít. Certifikáty můžete spravovat pomocí [API Management Azure](../api-management/api-management-howto-mutual-certificates.md). <p></p>**Poznámka**: vlastní konektory nepodporují ověřování na základě certifikátů pro příchozí i odchozí volání. |
-| **PFX** | `pfx` | Yes | <*Encoded – obsah-souboru PFX*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) <p><p>Chcete-li převést soubor PFX na formát s kódováním base64, můžete použít PowerShell pomocí následujících kroků: <p>1. Uložte obsah certifikátu do proměnné: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. převeďte obsah certifikátu pomocí `ToBase64String()` funkce a uložte tento obsah do textového souboru: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **PFX** | `pfx` | Yes | <*Encoded – obsah-souboru PFX*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) <p><p>Chcete-li převést soubor PFX na formát s kódováním base64, můžete použít PowerShell pomocí následujících kroků: <p>1. Uložte obsah certifikátu do proměnné: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. převeďte obsah certifikátu pomocí `ToBase64String()` funkce a uložte tento obsah do textového souboru: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**Řešení potíží**: Pokud použijete `cert mmc/PowerShell` příkaz, může se zobrazit tato chyba: <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>Chcete-li tuto chybu vyřešit, zkuste převést soubor PFX na soubor PEM a znovu ho pomocí `openssl` příkazu: <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>Když následně získáte řetězec zakódovaný ve formátu base64 pro nově převedený soubor PFX certifikátu, řetězec teď funguje v Azure Logic Apps. |
 | **Heslo** | `password`| No | <*heslo-pro-PFX – soubor*> | Heslo pro přístup k souboru PFX |
 |||||
 
@@ -863,18 +1004,18 @@ Další informace o zabezpečení služeb pomocí ověřování klientského cer
 * [Zvýšení zabezpečení pro back-endové služby pomocí ověřování klientského certifikátu v Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
 * [Zvýšení zabezpečení služby RESTfuL pomocí klientských certifikátů](../active-directory-b2c/secure-rest-api.md)
 * [Přihlašovací údaje certifikátu pro ověřování aplikací](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Použijte certifikát TLS/SSL v kódu v Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
+* [Použití certifikátu TLS nebo SSL v kódu ve službě Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
-### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory otevření ověřování
+#### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory otevření ověřování
 
-Na triggerech žádosti můžete pomocí [Azure Active Directory otevřít ověřování](../active-directory/develop/index.yml) (Azure AD OAuth) ověřit příchozí volání po [nastavení zásad autorizace Azure AD](#enable-oauth) pro vaši aplikaci logiky. Pro všechny ostatní triggery a akce, které poskytují typ ověřování **služby Active Directory OAuth** pro výběr, zadejte tyto hodnoty vlastností:
+Na triggerech žádosti můžete pomocí [Azure Active Directory otevřít ověřování (Azure AD OAuth)](../active-directory/develop/index.yml)ověřit příchozí volání po [nastavení zásad autorizace Azure AD](#enable-oauth) pro vaši aplikaci logiky. Pro všechny ostatní triggery a akce, které poskytují typ ověřování **služby Active Directory OAuth** pro výběr, zadejte tyto hodnoty vlastností:
 
 | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Yes | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
-| **Autorita** | `authority` | No | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
+| **Autorita** | `authority` | No | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje přístupový token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
 | **Tenant** | `tenant` | Yes | <*ID tenanta*> | ID tenanta pro tenanta Azure AD |
 | **Cílová skupina** | `audience` | Yes | <*prostředek k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
 | **ID klienta** | `clientId` | Yes | <*ID klienta*> | ID klienta pro aplikaci požadující autorizaci |
@@ -907,7 +1048,7 @@ Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpraco
 
 <a name="raw-authentication"></a>
 
-### <a name="raw-authentication"></a>Nezpracované ověřování
+#### <a name="raw-authentication"></a>Nezpracované ověřování
 
 Pokud je k dispozici možnost **raw** , můžete tento typ ověřování použít, když budete muset použít [schémata ověřování](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml) , která nedodržují [protokol OAuth 2,0](https://oauth.net/2/). Pomocí tohoto typu ručně vytvoříte hodnotu hlavičky autorizace, kterou odešlete s odchozím požadavkem, a v aktivační události nebo akci zadejte tuto hodnotu záhlaví.
 
@@ -950,15 +1091,17 @@ Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpraco
 
 <a name="managed-identity-authentication"></a>
 
-### <a name="managed-identity-authentication"></a>Ověřování spravovaných identit
+#### <a name="managed-identity-authentication"></a>Ověřování spravovaných identit
 
-Pokud je možnost [spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md) dostupná u [konkrétní triggeru nebo akce](#add-authentication-outbound), může vaše aplikace logiky používat identitu přiřazenou systémem nebo *jedinou* ručně vytvořenou identitu uživatele pro ověřování přístupu k jiným prostředkům chráněným pomocí služby Azure Active Directory (Azure AD) bez přihlášení. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné kódy. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Když je možnost [spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md) dostupná na [triggeru nebo akci, která podporuje ověřování spravované identity](#add-authentication-outbound), může vaše aplikace logiky používat identitu přiřazenou systémem nebo *jedinou* ručně vytvořenou identitu, která je chráněná pomocí služby Azure Active Directory (Azure AD), a ne přihlašovací údaje, tajné klíče nebo tokeny Azure AD. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemáte oprávnění ke správě nebo přímo používat tokeny Azure AD. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Aby mohla aplikace logiky používat spravovanou identitu, postupujte podle kroků v části [ověření přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](../logic-apps/create-managed-service-identity.md). Tyto kroky povolí spravovanou identitu ve vaší aplikaci logiky a nastaví přístup této identity k cílovému prostředku Azure.
 
-1. Než může Azure Function používat spravovanou identitu, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+1. Než může Azure Function používat spravovanou identitu, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
-1. V aktivační události nebo akci, kde chcete použít spravovanou identitu, zadejte tyto hodnoty vlastností:
+1. V aktivační události nebo akci, která podporuje použití spravované identity, zadejte tyto informace:
+
+   **Předdefinované triggery a akce**
 
    | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
    |---------------------|-----------------|----------|-------|-------------|
@@ -967,7 +1110,7 @@ Pokud je možnost [spravovaná identita](../active-directory/managed-identities-
    | **Cílová skupina** | `audience` | Yes | <*cíl-Resource-ID*> | ID prostředku pro cílový prostředek, ke kterému chcete získat přístup. <p>Například `https://storage.azure.com/` zpřístupní [přístupové tokeny](../active-directory/develop/access-tokens.md) pro ověřování platné pro všechny účty úložiště. Můžete ale taky zadat adresu URL kořenové služby, například `https://fabrikamstorageaccount.blob.core.windows.net` pro konkrétní účet úložiště. <p>**Poznámka**: vlastnost **cílové skupiny** může být v některých triggerech nebo akcích skrytá. Chcete-li tuto vlastnost zviditelnit, otevřete v aktivační události nebo akci seznam **Přidat nový parametr** a vyberte možnost **cílová skupina**. <p><p>**Důležité**: Ujistěte se, že toto ID cílového prostředku *přesně odpovídá* hodnotě, kterou očekává služba Azure AD, včetně všech požadovaných koncových lomítek. `https://storage.azure.com/`ID prostředku pro všechny účty Azure Blob Storage vyžaduje koncové lomítko. ID prostředku pro konkrétní účet úložiště ale nevyžaduje koncové lomítko. Tato ID prostředků najdete v tématu [služby Azure, které podporují Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
-   Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpracování a zabezpečení citlivých informací, například v [šabloně Azure Resource Manager pro automatizaci nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete použít výrazy pro přístup k těmto hodnotám parametrů za běhu. Tato ukázka definice akce HTTP Určuje ověřování `type` jako `ManagedServiceIdentity` a používá [funkci Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) k získání hodnot parametrů:
+   Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpracování a zabezpečení citlivých informací, například v [šabloně Azure Resource Manager pro automatizaci nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete použít výrazy pro přístup k těmto hodnotám parametrů za běhu. Například tato definice akce HTTP Určuje ověřování `type` jako `ManagedServiceIdentity` a používá [funkci Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) k získání hodnot parametrů:
 
    ```json
    "HTTP": {
@@ -985,6 +1128,15 @@ Pokud je možnost [spravovaná identita](../active-directory/managed-identities-
    }
    ```
 
+   **Aktivační události a akce spravovaného konektoru**
+
+   | Property – vlastnost (Designer) | Vyžadováno | Hodnota | Popis |
+   |---------------------|----------|-------|-------------|
+   | **Název připojení** | Yes | <*název připojení*> ||
+   | **Spravovaná identita** | Yes | **Spravovaná identita přiřazená systémem** <br>nebo <br> <*uživatelsky přiřazené-spravované-identity-Name*> | Typ ověřování, který se má použít |
+   |||||
+
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>Blokovat vytváření připojení
@@ -999,13 +1151,13 @@ Můžete použít Azure Logic Apps v [Azure Government](../azure-government/docu
 
 * Chcete-li spustit vlastní kód nebo provést transformaci XML, [vytvořte a zavolejte funkci Azure Functions](../logic-apps/logic-apps-azure-functions.md)namísto použití [funkce vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md) nebo poskytněte [sestavení pro použití jako mapy](../logic-apps/logic-apps-enterprise-integration-maps.md)v uvedeném pořadí. Také nastavte hostující prostředí pro vaši aplikaci Function App tak, aby vyhovovalo vašim požadavkům na izolaci.
 
-  Například pro splnění požadavků na úrovni 5 můžete vytvořit aplikaci Function App s [plánem App Service](../azure-functions/functions-scale.md#app-service-plan) s využitím [ **izolované** cenové úrovně](../app-service/overview-hosting-plans.md) spolu s [App Service Environment (pomocným mechanismem)](../app-service/environment/intro.md) , který používá také **izolovanou** cenovou úroveň. V tomto prostředí fungují aplikace Function App na vyhrazených virtuálních počítačích Azure a vyhrazených virtuálních sítích Azure, které zajišťují izolaci sítě nad výpočetní izolací vašich aplikací a maximum možností škálování na více instancí. Další informace najdete v tématu [pokyny k izolaci Azure Government úrovně dopadu 5 – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
+  Například pro splnění požadavků na úrovni 5 můžete vytvořit aplikaci Function App s [plánem App Service](../azure-functions/dedicated-plan.md) s využitím [ **izolované** cenové úrovně](../app-service/overview-hosting-plans.md) spolu s [App Service Environment (pomocným mechanismem)](../app-service/environment/intro.md) , který používá také **izolovanou** cenovou úroveň. V tomto prostředí fungují aplikace Function App na vyhrazených virtuálních počítačích Azure a vyhrazených virtuálních sítích Azure, které zajišťují izolaci sítě nad výpočetní izolací vašich aplikací a maximum možností škálování na více instancí. Další informace najdete v tématu [pokyny k izolaci Azure Government úrovně dopadu 5 – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
 
   Další informace najdete v těchto tématech:<p>
 
   * [Plány Azure App Service](../app-service/overview-hosting-plans.md)
   * [Možnosti sítí Azure Functions](../azure-functions/functions-networking-options.md)
-  * [Vyhrazení hostitelé Azure pro virtuální počítače](../virtual-machines/windows/dedicated-hosts.md)
+  * [Vyhrazení hostitelé Azure pro virtuální počítače](../virtual-machines/dedicated-hosts.md)
   * [Izolace virtuálních počítačů v Azure](../virtual-machines/isolation.md)
   * [Nasazení vyhrazených služeb Azure do virtuálních sítí](../virtual-network/virtual-network-for-azure-services.md)
 

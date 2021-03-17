@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790207"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369170"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure PowerShell
 
@@ -34,7 +34,7 @@ Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoře
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytvoření vlastních rolí budete potřebovat:
 
@@ -63,7 +63,7 @@ API Management Service Contributor                   False
 Následující příklad vypíše pouze vlastní role, které jsou k dispozici pro přiřazení ve vybraném předplatném.
 
 ```azurepowershell
-Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+Get-AzRoleDefinition -Custom | FT Name, IsCustom
 ```
 
 ```Example
@@ -163,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 Když použijete PowerShell k vytvoření vlastní role, můžete jako výchozí bod použít jednu z [předdefinovaných rolí](built-in-roles.md) nebo můžete začít od začátku. První příklad v této části začíná integrovanou rolí a pak ji přizpůsobuje s více oprávněními. Upravte atributy pro přidání `Actions` , nebo, `NotActions` `AssignableScopes` které chcete, a pak změny uložte jako novou roli.
 
-V následujícím příkladu se spustí předdefinovaná role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) , aby se vytvořila vlastní role s názvem *operátor virtuálního počítače*. Nová role uděluje přístup ke všem operacím čtení poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage*a *Microsoft. Network* a uděluje přístup ke spouštění, restartování a monitorování virtuálních počítačů. Vlastní roli lze použít ve dvou předplatných.
+V následujícím příkladu se spustí předdefinovaná role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) , aby se vytvořila vlastní role s názvem *operátor virtuálního počítače*. Nová role uděluje přístup ke všem operacím čtení poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage* a *Microsoft. Network* a uděluje přístup ke spouštění, restartování a monitorování virtuálních počítačů. Vlastní roli lze použít ve dvou předplatných.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -403,4 +403,4 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 - [Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Vlastní role Azure](custom-roles.md)
-- [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)
+- [Operace poskytovatele prostředků Azure](resource-provider-operations.md)

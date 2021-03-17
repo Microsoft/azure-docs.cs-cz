@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548307"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033859"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -92,10 +92,10 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
 
    - Partner `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Skupina prostředků – `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Formě `/subscriptions/{subId}/`
+   - Formě `/subscriptions/{subId}`
    - Skupina pro správu – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).
+Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policy).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Vytvoření a přiřazení definice zásady pomocí ARMClient
 
@@ -203,7 +203,7 @@ Pokud chcete vytvořit definici zásady, použijte následující postup:
    ```
 
    Příkaz vytvoří definici zásady s názvem _audit účty úložiště otevřená ve veřejných sítích_.
-   Další informace o dalších parametrech, které můžete použít, najdete v tématu [AZ Policy definition Create](/cli/azure/policy/definition#az-policy-definition-create).
+   Další informace o dalších parametrech, které můžete použít, najdete v tématu [AZ Policy definition Create](/cli/azure/policy/definition#az_policy_definition_create).
 
    Když se volá bez parametrů umístění, `az policy definition creation` ve výchozím nastavení se uloží definice zásady ve vybraném předplatném kontextu relace. Definici uložíte do jiného umístění pomocí následujících parametrů:
 
@@ -235,14 +235,14 @@ ID definice zásad, které jste vytvořili, by mělo vypadat jako v následujíc
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Další informace o tom, jak můžete spravovat zásady prostředků pomocí Azure CLI, najdete v tématu [zásady prostředků Azure CLI](/cli/azure/policy?view=azure-cli-latest).
+Další informace o tom, jak můžete spravovat zásady prostředků pomocí Azure CLI, najdete v tématu [zásady prostředků Azure CLI](/cli/azure/policy).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o příkazech a dotazech v tomto článku najdete v následujících článcích.
 
 - [Prostředky Azure REST API](/rest/api/resources/)
-- [Moduly Azure PowerShell](/powershell/module/az.resources/#policies)
-- [Příkazy zásad Azure CLI](/cli/azure/policy?view=azure-cli-latest)
+- [Moduly Azure PowerShell](/powershell/module/az.resources/#policy)
+- [Příkazy zásad Azure CLI](/cli/azure/policy)
 - [Referenční informace o REST API poskytovatele prostředků Azure Policy Insights](/rest/api/policy-insights)
 - [Uspořádání prostředků s využitím skupin pro správu Azure.](../../management-groups/overview.md)

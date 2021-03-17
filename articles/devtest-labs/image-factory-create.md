@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak nastavit vlastní objekt pro vytv
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482067"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvoření vlastní továrny imagí v Azure DevTest Labs
@@ -18,7 +18,7 @@ Objekt pro vytváření imagí je řešení pro konfiguraci, které vytváří a
 
 Významný akcelerátor, jak získat Desktop pro vývojáře do připraveného stavu v DevTest Labs, používá vlastní image. Nevýhodou vlastních imagí je ještě něco dalšího, co je potřeba v testovacím prostředí udržovat. Například zkušební verze produktů, jejichž platnost vyprší v čase (nebo nově vydané aktualizace zabezpečení, se nepoužijí, což nám vynutí pravidelnou aktualizaci vlastní image). S objektem pro vytváření imagí máte definici image vrácenou se správou zdrojového kódu a máte automatizovaný proces, který vytváří vlastní image na základě definice.
 
-Řešení umožňuje zrychlit vytváření virtuálních počítačů z vlastních imagí a zároveň eliminovat náklady na další probíhající údržbu. Pomocí tohoto řešení můžete automaticky vytvářet vlastní image, distribuovat je do jiných DevTest Labs a vyřadit staré image. V následujícím videu se dozvíte o továrně imagí a způsobu jejich implementace pomocí DevTest Labs.  Všechny skripty Azure PowerShellu jsou volně dostupné a nacházejí se tady: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
+Řešení umožňuje zrychlit vytváření virtuálních počítačů z vlastních imagí a zároveň eliminovat náklady na další probíhající údržbu. Pomocí tohoto řešení můžete automaticky vytvářet vlastní image, distribuovat je do jiných DevTest Labs a vyřadit staré image. V následujícím videu se dozvíte o továrně imagí a způsobu jejich implementace pomocí DevTest Labs.  Všechny skripty Azure PowerShellu jsou volně dostupné a nacházejí se tady:  [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
 
 <br/>
 

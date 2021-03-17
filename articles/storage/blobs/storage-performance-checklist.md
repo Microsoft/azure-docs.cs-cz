@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 40814ca54d31ff1fff6e3bd773564748392bf5b3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654068"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544747"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -42,7 +43,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty blob nejúčinnějším způsobem?](#blob-copy-apis) |
@@ -58,14 +59,14 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 
 Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 (zaneprázdněný serverem) nebo 500 (časový limit operace). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
 
-Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](../queues/scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
 Pokud se přiblížíte k maximálnímu počtu účtů úložiště povolených pro určitou kombinaci předplatného nebo oblasti, vyhodnoťte svůj scénář a určete, jestli platí některá z následujících podmínek:
 
 - Používáte účty úložiště k ukládání nespravovaných disků a přidávání těchto disků do virtuálních počítačů (VM)? V tomto scénáři Microsoft doporučuje používat spravované disky. Spravované disky se škálují automaticky a bez nutnosti vytvářet a spravovat jednotlivé účty úložiště. Další informace najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md) .
-- Používáte pro účely izolace dat jeden účet úložiště pro každého zákazníka? V tomto scénáři Microsoft doporučuje použít pro každého zákazníka kontejner objektů BLOB namísto celého účtu úložiště. Azure Storage teď umožňuje přiřadit role Azure na základě jednotlivých kontejnerů. Další informace najdete v tématu [udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](../common/storage-auth-aad-rbac-portal.md).
+- Používáte pro účely izolace dat jeden účet úložiště pro každého zákazníka? V tomto scénáři Microsoft doporučuje použít pro každého zákazníka kontejner objektů BLOB namísto celého účtu úložiště. Azure Storage teď umožňuje přiřadit role Azure na základě jednotlivých kontejnerů. Další informace najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../common/storage-auth-aad-rbac-portal.md).
 - Používáte k horizontálních oddílů více účtů úložiště k navýšení příchozích, odchozích a vstupně-výstupních operací za sekundu (IOPS) nebo kapacity? V tomto scénáři Microsoft doporučuje, abyste využili vyšší omezení pro účty úložiště, abyste snížili počet účtů úložiště potřebných pro vaše zatížení, pokud je to možné. Kontaktujte [podporu Azure](https://azure.microsoft.com/support/options/) a požádejte o zvýšená omezení pro váš účet úložiště. Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Cíle kapacity a transakce
@@ -99,7 +100,7 @@ Porozumět způsobu, jakým Azure Storage oddíly dat objektů BLOB jsou užite�
 
 Úložiště objektů BLOB používá schéma dělení na základě rozsahu pro škálování a vyrovnávání zatížení. Každý objekt BLOB má klíč oddílu tvořený úplným názvem objektu BLOB (Account + Container + BLOB). Klíč oddílu se používá k rozdělení dat objektů blob do rozsahů. Rozsahy se pak vyrovnávají zatížením napříč úložištěm objektů BLOB.
 
-Dělení na základě rozsahu znamená, že konvence pojmenování, které používají lexikální řazení (například *mypayroll*, *myperformance*, *myemployees*atd.) nebo časová razítka (*log20160101*, *log20160102*, *log20160102*atd.), jsou pravděpodobnější v tom, že se oddíly společně nacházejí na stejném serveru oddílu. , dokud zvýšené zatížení nevyžaduje, aby byly rozděleny do menších rozsahů. Společné umísťování objektů blob na stejném oddílu serveru vylepšuje výkon, takže důležitou součástí zvýšení výkonu je, že se objekty blob pojmenují způsobem, který je bude efektivně organizovat.
+Dělení na základě rozsahu znamená, že konvence pojmenování, které používají lexikální řazení (například *mypayroll*, *myperformance*, *myemployees* atd.) nebo časová razítka (*log20160101*, *log20160102*, *log20160102* atd.), jsou pravděpodobnější v tom, že se oddíly společně nacházejí na stejném serveru oddílu. , dokud zvýšené zatížení nevyžaduje, aby byly rozděleny do menších rozsahů. Společné umísťování objektů blob na stejném oddílu serveru vylepšuje výkon, takže důležitou součástí zvýšení výkonu je, že se objekty blob pojmenují způsobem, který je bude efektivně organizovat.
 
 Například všechny objekty BLOB v kontejneru může obsluhovat jeden server, dokud zatížení těchto objektů BLOB nevyžaduje další nové vyrovnávání rozsahů oddílů. Podobně skupina lehce načtených účtů, jejichž názvy jsou uspořádány v lexikálním pořadí, mohou být obsluhovány jediným serverem, dokud zatížení jednoho nebo všech těchto účtů nevyžaduje, aby byly rozděleny mezi servery s více oddíly.
 
@@ -194,7 +195,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 Další programovací jazyky najdete v dokumentaci k určení, jak nastavit limit připojení.  
 
-Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
 
@@ -212,7 +213,7 @@ I když paralelismus může být ideální pro výkon, buďte opatrní v použí
 
 ## <a name="client-libraries-and-tools"></a>Klientské knihovny a nástroje
 
-Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu. Další informace najdete v [dokumentaci Azure Storage reference](/azure/storage/#reference).
+Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu.
 
 ## <a name="handle-service-errors"></a>Zpracování chyb služby
 
@@ -242,11 +243,11 @@ Pokud chcete kopírovat data v rámci stejného účtu úložiště, použijte o
 
 ### <a name="use-azcopy"></a>Použití AzCopy
 
-Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá `Put Block From URL` operaci ke kopírování dat objektů BLOB napříč účty úložiště. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](/azure/storage/common/storage-use-azcopy-v10).  
+Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá `Put Block From URL` operaci ke kopírování dat objektů BLOB napříč účty úložiště. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](../common/storage-use-azcopy-v10.md).  
 
 ### <a name="use-azure-data-box"></a>Použít Azure Data Box
 
-Pokud chcete importovat velké objemy dat do úložiště objektů blob, zvažte použití řady Azure Data Box pro offline přenosy. Zařízení Data Box poskytnutá společností Microsoft jsou vhodnou volbou pro přesun velkých objemů dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Další informace najdete v dokumentaci ke [službě Azure Databox](/azure/databox/).
+Pokud chcete importovat velké objemy dat do úložiště objektů blob, zvažte použití řady Azure Data Box pro offline přenosy. Zařízení Data Box poskytnutá společností Microsoft jsou vhodnou volbou pro přesun velkých objemů dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Další informace najdete v dokumentaci ke [službě Azure Databox](../../databox/index.yml).
 
 ## <a name="content-distribution"></a>Distribuce obsahu
 

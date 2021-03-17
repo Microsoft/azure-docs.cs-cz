@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5fe070bc1abe0592b3082c597c1812781335448a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537902"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673177"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s AcquireIO
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat AcquireIO s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k AcquireIO svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
@@ -94,25 +94,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k AcquireIO.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **AcquireIO**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -134,15 +134,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levé části nabídky klikněte na **obchod s aplikacemi**.
 
-     ![Konfigurace AcquireIO](./media/acquireio-tutorial/config01.png)
+    ![Snímek obrazovky, který zvýrazňuje App Store.](./media/acquireio-tutorial/config01.png)
 
 1. Přejděte dolů na **Active Directory** a klikněte na **nainstalovat**.
 
-    ![Konfigurace AcquireIO](./media/acquireio-tutorial/config02.png)
+    ![Snímek obrazovky, který zvýrazní oddíl služby Active Directory a tlačítko nainstalovat.](./media/acquireio-tutorial/config02.png)
 
 1. V místní nabídce služby Active Directory proveďte následující kroky:
 
-    ![Konfigurace AcquireIO](./media/acquireio-tutorial/config03.png)
+    ![ScrenShot, která zobrazuje obrazovku služby Active Directory.](./media/acquireio-tutorial/config03.png)
 
     a. Kliknutím na **Kopírovat** zkopírujte adresu URL odpovědi pro vaši instanci a vložte ji do textového pole **Adresa URL odpovědi** v **základní části Konfigurace SAML** na Azure Portal.
 
@@ -162,7 +162,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k AcquireIO, musí se zřídit v
 
 1. V levé části nabídky klikněte na **profily** a přejděte na **Přidat profil**.
 
-     ![Konfigurace AcquireIO](./media/acquireio-tutorial/config04.png)
+    ![Snímek obrazovky, který zvýrazní profily v nabídce na levé straně obrazovky a také možnost Přidat profil](./media/acquireio-tutorial/config04.png)
 
 1. V automaticky otevíraném okně **Přidat zákazníka** proveďte následující kroky:
 
@@ -178,14 +178,14 @@ Aby se uživatelé Azure AD mohli přihlašovat k AcquireIO, musí se zřídit v
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici AcquireIO, měli byste se automaticky přihlásit k AcquireIO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici AcquireIO, měli byste se automaticky přihlásit k AcquireIO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si AcquireIO s Azure AD](https://aad.portal.azure.com/)

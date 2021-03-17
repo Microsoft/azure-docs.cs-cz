@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113067"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371949"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfiguračním serverem
 
@@ -28,8 +28,8 @@ Zdrojový počítač se registruje s konfiguračním serverem při instalaci age
    1. Ověřte, jestli je požadované ID hostitele stejné jako ID hostitele zdrojového počítače.
    2. Ověřte, zda má zdrojový počítač alespoň jednu IP adresu přiřazenou fyzické síťové kartě. Aby byla registrace agenta u konfiguračního serveru úspěšná, musí mít zdrojový počítač alespoň jednu platnou IP adresu, která je přiřazená k fyzické síťové kartě.
    3. Na zdrojovém počítači spusťte jeden z následujících příkazů, abyste získali všechny IP adresy zdrojového počítače:
-      - Pro Windows:`> ipconfig /all`
-      - Pro Linux:`# ifconfig -a`
+      - Pro Windows: `> ipconfig /all`
+      - Pro Linux: `# ifconfig -a`
 
 3. Pokud není nalezen řetězec **žádná platná IP adresa** , vyhledejte řetězec **důvod =>null**. K této chybě dochází, pokud zdrojový počítač používá k registraci na konfiguračním serveru prázdného hostitele. Pokud se řetězec najde:
     - Po vyřešení těchto potíží postupujte podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) a opakujte registraci ručně.
@@ -63,7 +63,7 @@ K této chybě dojde, když služba nemůže číst data z přenosového připoj
 
 Pokud chcete vyřešit selhání zjišťování vCenter, přidejte Server vCenter do nastavení proxy serveru pro obejití seznamu. 
 
-- Stáhněte si [sem](https://aka.ms/PsExec) nástroj PsExec pro přístup k systémovému obsahu uživatele.
+- Stáhněte si [sem](/sysinternals/downloads/psexec) nástroj PsExec pro přístup k systémovému obsahu uživatele.
 - Spusťte aplikaci Internet Explorer v uživatelském obsahu systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
 - Přidejte nastavení proxy serveru v IE a restartujte službu tmanssvc.
 - Pokud chcete nakonfigurovat nastavení proxy serveru DRA, spusťte CD C:\Program Files\Microsoft Azure Site Recovery Provider.
@@ -163,16 +163,16 @@ Upgrade konfiguračního serveru se nezdařil, pokud se některé služby nezast
 Chcete-li identifikovat problém, přejděte na C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile na konfiguračním serveru. Pokud zjistíte následující chyby, vyřešte problém pomocí následujících kroků: 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 Řešení tohoto problému:
@@ -194,7 +194,7 @@ Nemáte dostatečná oprávnění k vytvoření aplikace v Azure Active Director
 
 Chcete-li tento problém vyřešit, přihlaste se k Azure Portal a proveďte jednu z následujících akcí:
 
-- Vyžádejte si roli vývojáře aplikace v AAD. Další informace o roli vývojář aplikace najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+- Vyžádejte si roli vývojáře aplikace v AAD. Další informace o roli vývojář aplikace najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/roles/permissions-reference.md).
 - Ověřte, jestli je **možnost uživatel může vytvořit příznak aplikace** nastavená na *hodnotu true* v AAD. Další informace najdete v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Procesový Server nebo hlavní cíl nemůžou komunikovat s konfiguračním serverem. 
@@ -234,7 +234,7 @@ K této chybě může dojít, pokud je v databázi více položek identifikátor
 
 Řešení tohoto problému:
 
-1. Odeberte zastaralý virtuální počítač CS z vCenter. Další informace najdete v tématu [odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
+1. Odeberte zastaralý virtuální počítač CS z vCenter. Další informace najdete v tématu  [odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
 2. Přihlaste se k virtuálnímu počítači konfiguračního serveru a připojte se k databázi MySQL svsdb1. 
 3. Spusťte následující dotaz:
 
@@ -258,4 +258,3 @@ K tomuto problému může dojít v případě, že systémový čas není správ
 Řešení tohoto problému:
 
 Nastavte na počítači správný čas a znovu se přihlaste. 
- 

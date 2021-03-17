@@ -1,0 +1,94 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Database for PostgreSQL – Hyperscale (Citus)
+summary: Azure Database for PostgreSQL je plně spravovaná databáze jako služba založená na opensourcovém relačním databázovém stroji Postgres. Možnost nasazení Hyperscale (Citus) škáluje dotazy napříč několika počítači s využitím horizontálního dělení a obsluhuje aplikace, které vyžadují větší škálování a výkon.
+metadata:
+  description: Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje PostgreSQL.
+  author: jonels-msft
+  ms.author: jonels
+  ms.date: 09/27/2020
+  ms.service: postgresql
+  ms.subservice: hyperscale-citus
+  ms.topic: landing-page
+  ms.openlocfilehash: e2734332e6ec99c19b5cb45256a5c96fb03258d0
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95025119"
+landingContent:
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření skupiny serverů s využitím webu Azure Portal
+      url: ../quickstart-create-hyperscale-portal.md
+  - linkListType: concept
+    links:
+    - text: Uzly a tabulky skupiny serverů
+      url: ../concepts-hyperscale-nodes.md
+  - linkListType: tutorial
+    links:
+    - text: Návrh víceklientské databáze
+      url: ../tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Návrh analytického řídicího panelu v reálném čase
+      url: ../tutorial-design-database-hyperscale-realtime.md
+- title: Připojení a dotazování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vysvětlení brány firewall
+      url: ../concepts-hyperscale-firewall-rules.md
+    - text: Konfigurace TLS
+      url: ../concepts-hyperscale-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Pravidla brány firewall
+      url: ../howto-hyperscale-manage-firewall-using-portal.md
+    - text: Řešení potíží s připojením
+      url: ../howto-hyperscale-troubleshoot-common-connection-issues.md
+- title: Měřítko
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Uzly a tabulky
+      url: ../concepts-hyperscale-nodes.md
+    - text: Volba distribučních sloupců
+      url: ../concepts-hyperscale-choose-distribution-column.md
+  - linkListType: how-to-guide
+    links:
+    - text: Škálování skupiny serverů
+      url: ../howto-hyperscale-scale-grow.md
+    - text: Distribuce tabulek
+      url: ../howto-hyperscale-modify-distributed-tables.md
+    - text: Vytváření upozornění na metriky
+      url: ../howto-hyperscale-alert-on-metric.md
+- title: Správa
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zálohování a obnovení
+      url: ../concepts-hyperscale-backup.md
+    - text: Monitorování a ladění
+      url: ../concepts-hyperscale-monitoring.md
+    - text: Vysoká dostupnost
+      url: ../concepts-hyperscale-high-availability.md
+    - text: Rezervovaná kapacita
+      url: ../concepts-hyperscale-reserved-pricing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření uživatelů databáze
+      url: ../howto-hyperscale-create-users.md
+    - text: Nakonfigurování vysoké dostupnosti
+      url: ../howto-hyperscale-high-availability.md
+    - text: Přístup k protokolům databáze
+      url: ../howto-hyperscale-logging.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Funkce SQL API
+      url: ../reference-hyperscale-functions.md
+    - text: Parametry serveru
+      url: ../reference-hyperscale-parameters.md
+    - text: Systémové tabulky
+      url: ../reference-hyperscale-metadata.md

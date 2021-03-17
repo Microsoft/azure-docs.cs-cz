@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – připojení privátního cloudu k síti Azure pomocí ExpressRoute
 description: Popisuje postup připojení privátního cloudového prostředí CloudSimple k virtuální síti Azure pomocí ExpressRoute.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9bb68ec68f4de646239477ceeaac50a7a33989fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98eec6b48d2b02c6eb7f6faea38994a9176bcf87
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77015231"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895984"
 ---
 # <a name="connect-your-cloudsimple-private-cloud-environment-to-the-azure-virtual-network-using-expressroute"></a>Připojení prostředí privátního cloudu CloudSimple k virtuální síti Azure pomocí ExpressRoute
 
@@ -44,7 +44,7 @@ Pokud chcete nastavit připojení k virtuální síti k privátnímu cloudu, bud
 
 ## <a name="test-the-virtual-network-connection"></a>Test připojení k virtuální síti
 
-Po vytvoření připojení můžete stav připojení ověřit tak, že v části **Nastavení**vyberete **vlastnosti** .  Stav a stav zřizování by se měl zobrazit jako **úspěšný**.
+Po vytvoření připojení můžete stav připojení ověřit tak, že v části **Nastavení** vyberete **vlastnosti** .  Stav a stav zřizování by se měl zobrazit jako **úspěšný**.
 
 ![Stav připojení](media/azure-expressroute-connection.png)
 

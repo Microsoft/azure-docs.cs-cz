@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b5c78ffec736f29a481aa95426ff663199613b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585972"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595659"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Správa uživatelských dat ve službě Azure Security Center
 Tento článek poskytuje informace o tom, jak můžete spravovat data uživatelů v Azure Security Center. Správa uživatelských dat zahrnuje možnost přístupu, odstranění a exportu dat.
@@ -87,7 +87,7 @@ Správce účtu může exportovat podrobnosti výstrahy podle těchto údajů:
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](https://msdn.microsoft.com/library/mt704050.aspx).
+Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](/previous-versions/azure/reference/mt704050(v=azure.100)).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Omezení používání osobních údajů pro profilaci nebo marketing bez souhlasu
 Uživatel Security Center se může rozhodnout, že se má odhlásit a odstranit [data kontaktů zabezpečení](security-center-provide-security-contact-details.md).
@@ -97,4 +97,4 @@ Uživatel Security Center se může rozhodnout, že se má odhlásit a odstranit
 [Data výstrah](security-center-managing-and-responding-alerts.md) se považují za bezpečnostní data a uchovávají se po dobu dvou let.
 
 ## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
-Protokoly auditu v [protokolech aktivit Azure](../azure-monitor/platform/platform-logs-overview.md)se uchovávají v protokolech auditování zabezpečení, za běhu a výstrahy.
+Protokoly auditu v [protokolech aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md)se uchovávají v protokolech auditování zabezpečení, za běhu a výstrahy.

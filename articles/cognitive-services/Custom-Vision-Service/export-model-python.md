@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875434"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736421"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
-V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
+V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](./export-your-model.md) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
 
 > [!NOTE]
 > Tento kurz se týká pouze modelů exportovaných z projektů klasifikace obrázků.
@@ -34,7 +34,7 @@ Pro tento kurz budete muset:
 
 V dalším kroku budete muset nainstalovat tyto balíčky:
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -43,7 +43,7 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>Načtení modelu a značek
 
-Stažený soubor ZIP obsahuje soubory model.pb a labels.txt. Tyto soubory představují natrénovaný model a popisky klasifikace. Prvním krokem je načíst model do projektu.
+Stažený soubor. zip obsahuje _model. pb_ a soubor _labels.txt_ . Tyto soubory představují natrénovaný model a popisky klasifikace. Prvním krokem je načíst model do projektu. Do nového skriptu Pythonu přidejte následující kód.
 
 ```Python
 import tensorflow as tf
@@ -126,6 +126,8 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
+### <a name="add-helper-functions"></a>Přidat pomocné funkce
+
 Ve výše uvedených krocích se používají následující pomocné funkce:
 
 ```Python
@@ -191,7 +193,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>Zobrazení výsledků
+## <a name="display-the-results"></a>Zobrazit výsledky
 
 Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpět na popisky.
 

@@ -5,22 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032964"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145089"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlášením s využitím podmíněného přístupu
 
 Informace v tomto článku se dají použít k řešení neočekávaných přihlašovacích údajů souvisejících s podmíněným přístupem, které využívají chybové zprávy a protokol přihlášení k Azure AD.
+
+## <a name="select-all-consequences"></a>Výběr všech důsledků
+
+Rozhraní podmíněného přístupu poskytuje skvělou flexibilitu konfigurace. Ale skvělá flexibilita také znamená, že před vydáním byste měli pečlivě zkontrolovat všechny zásady konfigurace, aby nedocházelo k nežádoucím výsledkům. V tomto kontextu byste měli věnovat zvláštní pozornost přiřazením, které mají vliv na kompletní sady, například na **všechny uživatele/skupiny/cloudové aplikace**.
+
+Organizace by se měli vyhnout následujícím konfiguracím:
+
+**Pro všechny uživatele Cloud Apps:**
+
+- **Blokovat přístup** – Tato konfigurace zablokuje celou organizaci.
+- **Vyžadovat, aby zařízení byla označená jako kompatibilní** – pro uživatele, kteří ještě nezaregistrovali svá zařízení, tato zásada blokuje veškerý přístup, včetně přístupu k portálu Intune. Pokud jste správcem bez zaregistrovaného zařízení, tato zásada vás zablokuje, abyste se znovu přihlásili k Azure Portal ke změně zásad.
+- **Vyžadovat zařízení připojené k doméně Azure AD** – tento blok zásad má také možnost blokovat přístup všem uživatelům ve vaší organizaci, pokud nemají zařízení připojené k hybridní službě Azure AD.
+- **Vyžadovat zásady ochrany aplikací** – tato zásada blokuje přístup i pro všechny uživatele ve vaší organizaci, pokud nemáte zásady Intune. Pokud jste správce bez klientské aplikace, která má zásady ochrany aplikací Intune, bude vám tato zásada Blokovat návrat do portálů, jako je Intune a Azure.
+
+**Pro všechny uživatele, všechny cloudové aplikace, všechny platformy zařízení:**
+
+- **Blokovat přístup** – Tato konfigurace zablokuje celou organizaci.
 
 ## <a name="conditional-access-sign-in-interrupt"></a>Přerušení přihlášení k podmíněnému přístupu
 
@@ -82,8 +99,14 @@ Při odesílání incidentu zadejte ID žádosti a čas a datum z události při
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>Co dělat v případě, že jste se odhlásili z Azure Portal?
+
+Pokud jste se odhlásili z Azure Portal z důvodu nesprávného nastavení v zásadách podmíněného přístupu:
+
+- Ověřte, že ve vaší organizaci jsou jiní správci, kteří nejsou ještě blokovaný. Správce s přístupem k Azure Portal může zakázat zásadu, která má vliv na vaše přihlášení. 
+- Pokud žádný z správců ve vaší organizaci nemůže zásady aktualizovat, odešlete žádost o podporu. Podpora Microsoftu může zkontrolovat a po potvrzení aktualizovat zásady podmíněného přístupu, které brání v přístupu.
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Sestavy aktivit přihlašování na portálu Azure Active Directory](../reports-monitoring/concept-sign-ins.md)
 - [Řešení potíží s podmíněným přístupem pomocí nástroje What If](troubleshoot-conditional-access-what-if.md)
-- Osvědčené postupy pro [podmíněný přístup v Azure Active Directory](best-practices.md)

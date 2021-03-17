@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 490d3305abcbcd906a0f727d736db8cab7e4287e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456017"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90905221"
 ---
 # <a name="remove-duplicate-rows-module"></a>Odebrat modul duplicitních řádků
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete z datové sady odebrat možné duplicity.
 

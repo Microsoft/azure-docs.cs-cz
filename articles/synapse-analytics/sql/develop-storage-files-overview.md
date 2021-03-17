@@ -1,24 +1,24 @@
 ---
-title: Přístup k souborům v úložišti na vyžádání SQL (Preview)
-description: Popisuje dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v rámci synapse SQL.
+title: Přístup k souborům v úložišti v SQL fondu bez serveru
+description: Popisuje dotazování souborů úložiště pomocí neserverového fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986946"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199987"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-Tento dokument popisuje, jak může uživatel číst data ze souborů uložených na Azure Storage v synapse SQL (na vyžádání). Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
+Tento článek popisuje, jak můžou uživatelé číst data ze souborů uložených na Azure Storage ve fondu SQL bez serveru. Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
 - Funkce [OpenRowset](develop-openrowset.md) , která umožňuje provádět dotazy ad-hoc přes soubory v Azure Storage.
 - [Externí tabulka](develop-tables-external-tables.md) , která je předdefinovanou datovou strukturou založenou na sadě externích souborů.
@@ -27,7 +27,7 @@ Uživatel může použít [jiné metody ověřování](develop-storage-files-sto
 
 ## <a name="query-files-using-openrowset"></a>Dotazování souborů pomocí OPENROWSET
 
-OPENROWSET umožňuje uživatelům dotazovat se na externí soubory ve službě Azure Storage, pokud mají přístup k úložišti. Uživatel, který je připojený k Synapsemu koncovému bodu SQL na vyžádání, by měl použít následující dotaz ke čtení obsahu souborů v Azure Storage:
+OPENROWSET umožňuje uživatelům dotazovat se na externí soubory ve službě Azure Storage, pokud mají přístup k úložišti. Uživatel, který je připojený k fondu SQL bez serveru, by měl použít následující dotaz ke čtení obsahu souborů v Azure Storage:
 
 ```sql
 SELECT * FROM
@@ -49,15 +49,15 @@ EXECUTE AS somepoweruser
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
 
-GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
+GRANT REFERENCES ON CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-Pokud není k dispozici žádné přihlašovací údaje na úrovni serveru, které by odpovídaly adrese URL nebo uživatel SQL nemá oprávnění pro přístup k tomuto pověření, bude vrácena chyba. Objekty zabezpečení SQL se nemůžou zosobnit pomocí nějaké identity Azure AD.
+Pokud není žádné přihlašovací údaje na úrovni serveru, které by odpovídaly adrese URL, nebo uživatel SQL nemá oprávnění pro přístup k tomuto přihlašovacímu údaji, vrátí se tato chyba. Objekty zabezpečení SQL se nemůžou zosobnit pomocí nějaké identity Azure AD.
 
 ### <a name="direct-access"></a>[Přímý přístup](#tab/direct-access)
 
 K tomu, aby uživatelé Azure AD mohli přistupovat k souborům pomocí svých identit, není potřeba žádné další nastavení.
-Každý uživatel má přístup ke službě Azure Storage s povoleným anonymním přístupem (další nastavení není nutné).
+Každý uživatel má přístup k úložišti Azure, které umožňuje anonymní přístup (další nastavení není potřeba).
 
 ---
 
@@ -75,11 +75,11 @@ SELECT * FROM
  FORMAT= 'parquet') as rows
 ```
 
-Uživatel, který tento dotaz spustí, musí mít přístup k souborům. Pokud uživatelé nemají přístup k souborům pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity) nebo [anonymního přístupu](develop-storage-files-storage-access-control.md?tabs=public-access), musí být zosobněni pomocí [tokenu SAS](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) nebo [spravované identity pracovního prostoru](develop-storage-files-storage-access-control.md?tabs=managed-identity) .
+Uživatel, který tento dotaz spustí, musí mít přístup k souborům. Aby uživatelé nemohli získat přímý přístup k souborům pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity) nebo [anonymního přístupu](develop-storage-files-storage-access-control.md?tabs=public-access), musí být zosobněni pomocí [tokenu SAS](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) nebo [spravované identity pracovního prostoru](develop-storage-files-storage-access-control.md?tabs=managed-identity) .
 
 ### <a name="impersonation"></a>[Zosobnění](#tab/impersonation)
 
-`DATABASE SCOPED CREDENTIAL`Určuje, jak přistupovat k souborům na odkazovaném zdroji dat (aktuálně SAS a spravovanou identitu). Uživatel s `CONTROL DATABASE` oprávněním k přístupu musí vytvořit `DATABASE SCOPED CREDENTIAL` , který se bude používat pro přístup k úložišti a `EXTERNAL DATA SOURCE` který určí adresu URL zdroje dat a přihlašovacích údajů, které by se měly použít:
+`DATABASE SCOPED CREDENTIAL` Určuje, jak přistupovat k souborům na odkazovaném zdroji dat (aktuálně SAS a spravovanou identitu). Uživatel s `CONTROL DATABASE` oprávněním k přístupu musí vytvořit `DATABASE SCOPED CREDENTIAL` , který se bude používat pro přístup k úložišti a `EXTERNAL DATA SOURCE` který určí adresu URL zdroje dat a přihlašovacích údajů, které by se měly použít:
 
 ```sql
 EXECUTE AS somepoweruser;
@@ -99,9 +99,9 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 Volající musí mít jedno z následujících oprávnění ke spuštění funkce OPENROWSET:
 
 - Jedno z oprávnění ke spuštění OPENROWSET:
-  - `ADMINISTER BULK OPERATIONS`povolí přihlášení k provedení funkce OPENROWSET.
-  - `ADMINISTER DATABASE BULK OPERATIONS`umožňuje, aby uživatel s oborem databáze spustil funkci OPENROWSET.
-- `REFERENCES DATABASE SCOPED CREDENTIAL`na přihlašovací údaje, na které se odkazuje `EXTERNAL DATA SOURCE` .
+  - `ADMINISTER BULK OPERATIONS` povolí přihlášení k provedení funkce OPENROWSET.
+  - `ADMINISTER DATABASE BULK OPERATIONS` umožňuje, aby uživatel s oborem databáze spustil funkci OPENROWSET.
+- `REFERENCES DATABASE SCOPED CREDENTIAL` na přihlašovací údaje, na které se odkazuje `EXTERNAL DATA SOURCE` .
 
 ### <a name="direct-access"></a>[Přímý přístup](#tab/direct-access)
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Uživatel s oprávněními ke čtení tabulky může získat přístup k externím souborům pomocí externí tabulky vytvořené na základě sady Azure Storage složek a souborů.
 
-Uživatel, který má [oprávnění k vytvoření externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (například CREATE TABLE a změnu PŘIHLAŠOVACÍch údajů s rozsahem databáze), může pomocí následujícího skriptu vytvořit tabulku nad Azure Storage zdroj dat:
+Uživatel, který má [oprávnění k vytvoření externí tabulky](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions) (například CREATE TABLE a změnu PŘIHLAŠOVACÍch údajů s rozsahem databáze), může pomocí následujícího skriptu vytvořit tabulku nad Azure Storage zdroj dat:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
@@ -171,8 +171,8 @@ FROM dbo.DimProductsExternal
 ```
 
 Volající musí mít následující oprávnění pro čtení dat:
-- `SELECT`oprávnění pro externí tabulku
-- `REFERENCES DATABASE SCOPED CREDENTIAL`oprávnění, pokud `DATA SOURCE` má`CREDENTIAL`
+- `SELECT` oprávnění pro externí tabulku
+- `REFERENCES DATABASE SCOPED CREDENTIAL` oprávnění, pokud `DATA SOURCE` má `CREDENTIAL`
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -181,10 +181,10 @@ V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvede
 | Dotaz | Požadovaná oprávnění|
 | --- | --- |
 | OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK OPERATIONS``ADMINISTER DATABASE BULK OPERATIONS`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
-| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK OPERATIONS`nebo `ADMINISTER DATABASE BULK OPERATIONS` , |
-| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | `REFERENCES DATABASE SCOPED CREDENTIAL`a jedna z `ADMINISTER BULK OPERATIONS` nebo`ADMINISTER DATABASE BULK OPERATIONS` |
+| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK OPERATIONS` nebo `ADMINISTER DATABASE BULK OPERATIONS` , |
+| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | `REFERENCES DATABASE SCOPED CREDENTIAL` a jedna z `ADMINISTER BULK OPERATIONS` nebo `ADMINISTER DATABASE BULK OPERATIONS` |
 | VYTVOŘIT EXTERNÍ ZDROJ DAT | `ALTER ANY EXTERNAL DATA SOURCE` a `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| VYTVOŘIT EXTERNÍ TABULKU | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` a`ALTER ANY EXTERNAL DATA SOURCE` |
+| VYTVOŘIT EXTERNÍ TABULKU | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` a `ALTER ANY EXTERNAL DATA SOURCE` |
 | VYBRAT Z EXTERNÍ TABULKY | `SELECT TABLE` a `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Vytvoření tabulky- `CREATE TABLE` , `ALTER ANY SCHEMA` , a `ALTER ANY DATA SOURCE` `ALTER ANY EXTERNAL FILE FORMAT` . Čtení dat: `ADMINISTER BULK OPERATIONS` nebo `REFERENCES CREDENTIAL` nebo pro `SELECT TABLE` jednotlivé tabulky, zobrazení nebo funkce v dotazech + R/W v úložišti |
 
@@ -204,6 +204,6 @@ Nyní jste připraveni pokračovat s následujícím článkem:
 
 - [Použití funkcí dělení a metadat](query-specific-files.md)
 
-- [Vnořené typy dotazů](query-parquet-nested-types.md)
+- [Dotazování vnořených typů](query-parquet-nested-types.md)
 
 - [Vytváření a používání zobrazení](create-use-views.md)

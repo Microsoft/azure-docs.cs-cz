@@ -1,8 +1,9 @@
 ---
 title: Instalace IBM zD&T vývoj/test prostředí v Azure | Microsoft Docs
 description: Nasazení vývojového a testovacího prostředí IBM Z (zD&T) na infrastruktuře virtuálních počítačů Azure jako službu (IaaS).
-services: virtual-machines-linux
-ms.service: virtual-machines-linux
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abcaff5979aed38ce47df08cc953829f3003f7b0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499915"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561547"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD&T dev/test Environment v Azure
 
@@ -39,7 +40,7 @@ Další informace najdete v [přehledu zD&T](https://www.ibm.com/support/knowled
 
 V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prostředí Z verze (zD&T) Enterprise Edition. Pak můžete použít webový server zD&T Enterprise Edition k vytváření a správě prostředí Z na platformě Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]
 > IBM umožňuje instalovat zD&T Enterprise Edition pouze do prostředí pro vývoj a testování,*nikoli* v produkčních prostředích.
@@ -62,7 +63,7 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 
 3. Pomocí tlačítka **připojit** získáte přihlašovací údaje SSH zobrazené v okně **Přehled** virtuálního počítače. Vyberte kartu **SSH** a zkopírujte přihlašovací příkaz SSH do schránky.
 
-4. Přihlaste se k [prostředí bash](../../../../cloud-shell/quickstart.md) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\> **. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
+4. Přihlaste se k [prostředí bash](../../../../cloud-shell/quickstart.md) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\>**. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server.
 
@@ -95,12 +96,13 @@ Instalační soubor pro webový server je **ZDT \_ install \_ EE \_ v 12.0.0.1. 
 
     ```
     cd ZDT
-    chmod 755 ZDT\_Install\_EE\_V12.0.0.0.tgz
+    tar zxvf ZDT\_Install\_EE\_V12.0.0.0.tgz
     ```
 
 2. Spusťte instalační program:
 
     ```
+    chmod 755 ZDT\_Install\_EE\_V12.0.0.0.x86_64
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
@@ -108,7 +110,7 @@ Instalační soubor pro webový server je **ZDT \_ install \_ EE \_ v 12.0.0.1. 
 
 4. Stiskněte klávesu **ENTER** a pečlivě si přečtěte licenční smlouvy. Na konci licence Pokračujte zadáním **Ano** .
 
-5. Po zobrazení výzvy ke změně hesla pro nově vytvořeného uživatele **ibmsys1**použijte příkaz **sudo passwd ibmsys1** a zadejte nové heslo.
+5. Po zobrazení výzvy ke změně hesla pro nově vytvořeného uživatele **ibmsys1** použijte příkaz **sudo passwd ibmsys1** a zadejte nové heslo.
 
 6. Chcete-li ověřit, zda byla instalace úspěšná, zadejte
 

@@ -1,27 +1,27 @@
 ---
-title: Zřizování starších zařízení pomocí symetrických klíčů – Azure IoT Hub Device Provisioning Service
-description: Jak pomocí symetrických klíčů zřídit starší verze zařízení s instancí služby Device Provisioning Service (DPS)
+title: Zřízení zařízení pomocí symetrických klíčů – Azure IoT Hub Device Provisioning Service
+description: Použití symetrických klíčů ke zřízení zařízení s instancí služby Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: lizross
+ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434713"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051105"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Jak zřídit zařízení pomocí skupin pro zápis symetrických klíčů
 
-Běžný problém s mnoha staršími zařízeními je, že často mají identitu, která se skládá z jedné části informací. Tato informace o identitě je obvykle adresa MAC nebo sériové číslo. Starší zařízení nemusí obsahovat certifikát, čip TPM ani žádnou jinou funkci zabezpečení, která se dá použít k bezpečné identifikaci zařízení. Služba Device Provisioning pro službu IoT Hub zahrnuje ověření symetrického klíče. Ověření identity symetrického klíče se dá použít k identifikaci zařízení na základě informací, jako je adresa MAC nebo sériové číslo.
+Tento článek ukazuje, jak bezpečně zřídit několik zařízení symetrických klíčů k jednomu IoT Hub pomocí skupiny pro registraci.
 
-Pokud můžete snadno nainstalovat [modul hardwarového zabezpečení (HSM)](concepts-security.md#hardware-security-module) a certifikát, může to být lepší přístup k identifikaci a zřizování vašich zařízení. Vzhledem k tomu, že tento přístup vám může dovolit obejít aktualizaci kódu nasazeného na všechna vaše zařízení a nebudete mít v imagi zařízení vložený tajný klíč.
+Některá zařízení nemusí mít certifikát, čip TPM ani žádnou jinou funkci zabezpečení, která se dá použít k bezpečné identifikaci zařízení. Služba Device Provisioning zahrnuje [ověření symetrického klíče](concepts-symmetric-key-attestation.md). Ověření identity symetrického klíče se dá použít k identifikaci zařízení na základě jedinečných informací, jako je adresa MAC nebo sériové číslo.
 
-V tomto článku se předpokládá, že ani modul HARDWAROVÉho zabezpečení nebo certifikát není možnost životaschopnosti. Předpokládá se ale, že máte nějakou metodu aktualizace kódu zařízení, abyste mohli tato zařízení zřídit pomocí služby Device Provisioning. 
+Pokud můžete snadno nainstalovat [modul hardwarového zabezpečení (HSM)](concepts-service.md#hardware-security-module) a certifikát, může to být lepší přístup k identifikaci a zřizování vašich zařízení. Použití modulu hardwarového zabezpečení (HSM) vám umožní obejít aktualizaci kódu nasazeného na všechna vaše zařízení a v obrázcích zařízení byste neměli vkládat tajný klíč. V tomto článku se předpokládá, že ani modul HARDWAROVÉho zabezpečení nebo certifikát není možnost životaschopnosti. Předpokládá se ale, že máte nějakou metodu aktualizace kódu zařízení, abyste mohli tato zařízení zřídit pomocí služby Device Provisioning. 
 
 Tento článek také předpokládá, že se aktualizace zařízení provádí v zabezpečeném prostředí, aby se zabránilo neoprávněnému přístupu k klíči hlavní skupiny nebo odvozenému klíči zařízení.
 
@@ -47,7 +47,7 @@ Kód zařízení, který je znázorněn v tomto článku, bude postupovat stejn�
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
 
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
@@ -73,7 +73,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
+4. Vytvořte `cmake` podadresář v kořenovém adresáři úložiště Git a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -86,7 +86,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
-    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -111,7 +111,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
 2. Vyberte kartu **spravovat registrace** a pak klikněte na tlačítko **Přidat skupinu** registrací v horní části stránky. 
 
-3. Do pole **Přidat skupinu**registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
+3. Do pole **Přidat skupinu** registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
 
    - **Název skupiny**: zadejte **mylegacydevices**.
 
@@ -119,7 +119,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
    - **Automaticky vygenerovat klíče**: Toto políčko zaškrtněte.
 
-   - **Vyberte, jak chcete přiřadit zařízení k**centrům: vyberte **statická konfigurace** , abyste se mohli přiřadit k určitému centru.
+   - **Vyberte, jak chcete přiřadit zařízení k** centrům: vyberte **statická konfigurace** , abyste se mohli přiřadit k určitému centru.
 
    - **Vyberte centra IoT, do kterých se dá tato skupina přiřadit**: vyberte jednu z vašich Center.
 
@@ -140,38 +140,18 @@ V tomto příkladu používáme kombinaci adresy MAC a sériového čísla, kter
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Vytvořte jedinečné ID registrace pro vaše zařízení. Platné znaky jsou malé alfanumerické znaky a spojovníky (-).
+Vytváření jedinečných registračních ID pro každé zařízení. Platné znaky jsou malé alfanumerické znaky a spojovníky (-).
 
 
 ## <a name="derive-a-device-key"></a>Odvodit klíč zařízení 
 
-Pokud chcete vygenerovat klíč zařízení, použijte hlavní klíč skupiny k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného ID registrace zařízení a výsledek převeďte na Formát Base64.
+Pokud chcete vygenerovat klíče zařízení, použijte hlavní klíč skupiny registrací k výpočtu identifikátoru ID registrace pro každé zařízení ve formátu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) . Výsledek se pak převede na Formát Base64 pro každé zařízení.
 
-Nezahrnujte hlavní klíč skupiny do kódu zařízení.
-
-
-#### <a name="linux-workstations"></a>Pracovní stanice Linux
-
-Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
-
-Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
-
-Hodnotu **REG_ID** nahraďte ID registrace.
-
-```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
-```
+> [!WARNING]
+> Váš kód zařízení pro každé zařízení by měl obsahovat jenom odpovídající odvozený klíč zařízení pro toto zařízení. Nezahrnujte hlavní klíč skupiny do kódu zařízení. Ohrožený hlavní klíč má potenciál narušit zabezpečení všech zařízení, která se s ním ověřují.
 
 
-#### <a name="windows-based-workstations"></a>Pracovní stanice založené na systému Windows
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Pokud používáte pracovní stanici se systémem Windows, můžete použít PowerShell k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
 
@@ -194,8 +174,29 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
+# <a name="linux"></a>[Linux](#tab/linux)
 
-Zařízení použije odvozený klíč zařízení s jedinečným ID registrace a provede ověření symetrického klíče pomocí skupiny registrací během zřizování.
+Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
+
+Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
+
+Hodnotu **REG_ID** nahraďte ID registrace.
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+---
+
+Každé zařízení používá svůj odvozený klíč zařízení a jedinečné ID registrace k provádění ověření symetrického klíče pomocí skupiny registrací během zřizování.
 
 
 
@@ -203,7 +204,7 @@ Zařízení použije odvozený klíč zařízení s jedinečným ID registrace a
 
 V této části budete aktualizovat ukázku zřizování s názvem **prov \_ dev \_ Client \_ Sample** v sadě Azure IoT C SDK, kterou jste si nastavili dříve. 
 
-Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí ke službě IoT Hub, kterou jste nakonfigurovali ve skupině pro registraci.
+Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí ke službě IoT Hub, kterou jste nakonfigurovali ve skupině pro registraci. To se dokončilo pro každé zařízení, které by bylo zřízené pomocí skupiny pro registraci.
 
 1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_**.
 
@@ -246,7 +247,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
     ```
    
-    Uložte soubor.
+    Soubor uložte.
 
 7. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
 
@@ -277,25 +278,11 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
 ## <a name="security-concerns"></a>Problematika zabezpečení
 
-Mějte na paměti, že to nechá odvozený klíč zařízení zahrnutý jako součást obrázku, což není doporučený postup z hlediska zabezpečení. Toto je jeden z důvodů, proč zabezpečení a snadné použití jsou kompromisy. 
-
-
-
+Mějte na paměti, že při tom zůstane odvozený klíč zařízení zahrnutý jako součást bitové kopie pro každé zařízení, což není doporučený postup z hlediska zabezpečení. Toto je jeden z důvodů, proč je zabezpečení a snadné použití často kompromisům. Na základě vašich vlastních požadavků musíte plně kontrolovat zabezpečení vašich zařízení.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
 * [Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči](quick-create-simulated-device-symm-key.md)
-* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
-
-
-
-
-
-
-
-
-
-
-
+* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) .

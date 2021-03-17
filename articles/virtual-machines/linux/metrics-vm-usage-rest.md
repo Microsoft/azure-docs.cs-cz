@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 925246eb2adae59ca74e363c4d4a6952f11c3744
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7237bfc82a932b774b4b6ef293c242a84fd75af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292330"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591206"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálních počítačů pomocí REST API
 
@@ -23,7 +23,7 @@ Kompletní Referenční dokumentace a další ukázky pro REST API jsou k dispoz
 
 ## <a name="build-the-request"></a>Sestavení požadavku
 
-Pomocí následující žádosti GET Shromážděte [procento metriky procesoru](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) z virtuálního počítače.
+Pomocí následující žádosti GET Shromážděte [procento metriky procesoru](../../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) z virtuálního počítače.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -36,16 +36,16 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
+|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Název | Popis |
+| Název | Description |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli). |
 | resourceGroupName | Název skupiny prostředků Azure přidružené k prostředku. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
 | VMName | Název virtuálního počítače Azure. |
-| metricnames | Čárkami oddělený seznam platných [metrik Load Balancer](../../load-balancer/load-balancer-standard-diagnostics.md). |
+| metricnames | Čárkami oddělený seznam platných  [metrik Load Balancer](../../load-balancer/load-balancer-standard-diagnostics.md). |
 | verze-api | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje verzi rozhraní API `2018-01-01` , která je součástí výše uvedené adresy URL.  |
 | timespan | Řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO` , který definuje časový rozsah vrácených metrik. Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
 | &nbsp; | &nbsp; |

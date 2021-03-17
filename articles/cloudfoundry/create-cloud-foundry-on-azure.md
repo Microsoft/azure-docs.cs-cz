@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3444d6c62b5e36b7e68cfaf6da1ec534e2ea4ec6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161775"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551449"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Vytvoření Cloud Foundryho clusteru s Pivotem v Azure
 
@@ -36,55 +36,69 @@ Existuje několik způsobů, jak vygenerovat klíč SSH (Secure Shell) pomocí s
 ssh-keygen -t rsa -b 2048
 ```
 
-Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]
 >
-> K vytvoření instančního objektu potřebujete oprávnění k účtu vlastníka. Můžete také napsat skript pro automatizaci vytváření instančního objektu. Můžete například použít Azure CLI [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
+> K vytvoření instančního objektu potřebujete oprávnění k účtu vlastníka. Můžete také napsat skript pro automatizaci vytváření instančního objektu. Můžete například použít Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp).
 
 1. Přihlaste se ke svému účtu Azure.
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Přihlášení Azure CLI](media/deploy/az-login-output.png )
  
-    Zkopírujte hodnotu ID jako **ID vašeho předplatného**a zkopírujte hodnotu "tenantId", která se použije později.
+    Zkopírujte hodnotu ID jako **ID vašeho předplatného** a zkopírujte hodnotu "tenantId", která se použije později.
 
 2. Nastavte své výchozí předplatné pro tuto konfiguraci.
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. Vytvořte aplikaci Azure Active Directory pro PCF. Zadejte jedinečné alfanumerické heslo. Uložte heslo jako **clientSecret** pro pozdější použití.
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     Zkopírujte hodnotu appId ve výstupu jako své **clientID** pro pozdější použití.
 
     > [!NOTE]
     >
-    > Vyberte svou vlastní domovskou stránku aplikace a identifikátor URI identifikátoru, například\:http\.//www contoso.com.
+    > Vyberte svou vlastní domovskou stránku aplikace a identifikátor URI identifikátoru, například http \: //www \. contoso.com.
 
 4. Vytvořte instanční objekt s novým ID aplikace.
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. Nastavte oprávnění vašeho instančního objektu na roli Přispěvatel.
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     Nebo můžete také použít
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![Přiřazení role objektu služby](media/deploy/svc-princ.png )
 
 6. Ověřte, že se můžete úspěšně přihlásit k instančnímu objektu pomocí ID aplikace, hesla a ID tenanta.
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. Vytvořte soubor. JSON v následujícím formátu. Použijte hodnoty **ID předplatného**, **tenantID**, **clientID**a **clientSecret** , které jste zkopírovali dříve. Uložte soubor.
+7. Vytvořte soubor. JSON v následujícím formátu. Použijte hodnoty **ID předplatného**, **tenantID**, **clientID** a **clientSecret** , které jste zkopírovali dříve. Soubor uložte.
 
     ```json
     {
@@ -128,4 +142,3 @@ Zadejte parametry a vytvořte cluster PCF.
 5. Správce OPS PCF zobrazí nasazené instance Azure. Nyní můžete nasazovat a spravovat aplikace zde.
                
     ![Nasadila se instance Azure v pivotu.](media/deploy/ops-mgr.png )
- 

@@ -3,19 +3,19 @@ title: Co je pracovní prostor a projekt? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Tento článek vysvětluje rozdíly mezi pracovním prostorem a projektem a také kategorie a popisky projektu pro vlastní službu Translator.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0abda0307e3cdbd0e73e131bee072172375198eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510738"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898049"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co je vlastní pracovní prostor překladatele?
 
@@ -25,7 +25,7 @@ Pracovní prostor je pro vás soukromý a osoby, které do svého pracovního pr
 
 ## <a name="what-is-a-custom-translator-project"></a>Co je vlastní projekt překladatele?
 
-Projekt je obálka pro model, dokumenty a testy. Každý projekt automaticky obsahuje všechny dokumenty, které jsou odeslány do daného pracovního prostoru, které mají správnou dvojici jazyků. Například pokud máte projekt z angličtiny do španělštiny i pro španělštinu do projektu v angličtině, budou stejné dokumenty zahrnuty v obou projektech. Ke každému projektu je přidruženo KódKategorie, které se používá při dotazování [rozhraní V3 API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) na překlady. KódKategorie je parametr, který se používá k získání překladu z přizpůsobeného systému vytvořeného pomocí vlastního překladatele.
+Projekt je obálka pro model, dokumenty a testy. Každý projekt automaticky obsahuje všechny dokumenty, které jsou odeslány do daného pracovního prostoru, které mají správnou dvojici jazyků. Například pokud máte projekt z angličtiny do španělštiny i pro španělštinu do projektu v angličtině, budou stejné dokumenty zahrnuty v obou projektech. Ke každému projektu je přidruženo KódKategorie, které se používá při dotazování [rozhraní V3 API](../reference/v3-0-translate.md?tabs=curl) na překlady. KódKategorie je parametr, který se používá k získání překladu z přizpůsobeného systému vytvořeného pomocí vlastního překladatele.
 
 ## <a name="project-categories"></a>Kategorie projektu
 

@@ -1,24 +1,24 @@
 ---
-title: Migrace spravované image do galerie sdílených imagí
-description: Naučte se používat Azure PowerShell k migraci spravované image do verze image v galerii sdílených imagí.
+title: Klonování spravované image do galerie sdílených imagí
+description: Naučte se, jak pomocí Azure PowerShell naklonovat spravovanou image do verze image v galerii sdílených imagí.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: cec4f258cfaa0584c24f2cfc92ec1a536f6277cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225533"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556976"
 ---
-# <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrace ze spravované image do image galerie sdílených imagí
+# <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Naklonování spravované image do image galerie sdílených imagí
 
-Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli migrovat do sdílené Galerie imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [Azure CLI](image-version-managed-image-cli.md).
+Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli klonovat a přesunout do galerie sdílených imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [Azure CLI](image-version-managed-image-cli.md).
 
 Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto příkladu:
 - **Definice obrázku** obsahuje informace o imagi a požadavcích na jejich použití. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, specializované nebo zobecněné, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. 
@@ -54,9 +54,9 @@ Definice obrázků vytvoří logické seskupení obrázků. Používají se ke s
 
 Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Vzhledem k tomu, že se spravované image vždycky zobecněny, měli byste nastavit `-OsState generalized` . 
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./windows/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
-Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition*a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
+Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition* a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -102,7 +102,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $imageDefinition.ResourceGroupName `
    -Location $imageDefinition.Location `
    -TargetRegion $targetRegions  `
-   -Source $managedImage.Id.ToString() `
+   -SourceImageId $managedImage.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-31' `
    -asJob 
 ```

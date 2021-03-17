@@ -1,26 +1,25 @@
 ---
 title: Rozhraní API pro spolupráci B2B a přizpůsobení – Azure Active Directory
-description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše vztahy s ostatními společnostmi tím, že vašim obchodním partnerům umožní selektivní přístup ke podnikovým aplikacím
+description: Azure Active Directory spolupráce B2B podporuje vztahy mezi společnostmi tím, že umožňuje obchodním partnerům selektivní přístup k podnikovým aplikacím.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908677"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548657"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory rozhraní API pro spolupráci B2B a přizpůsobení
 
-Spousta zákazníků nám informovala, že chce přizpůsobit proces pozvánky způsobem, který nejlépe vyhovuje jejich organizacím. Pomocí našeho rozhraní API můžete provést pouze to. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Spousta zákazníků nám informovala, že chce přizpůsobit proces pozvánky způsobem, který nejlépe vyhovuje jejich organizacím. Pomocí našeho rozhraní API můžete provést pouze to. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>Schopnosti rozhraní API pro pozvánky
 
@@ -67,6 +66,16 @@ Rozhraní API nabízí následující možnosti:
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>Určení, zda byl uživatel již pozván do vašeho adresáře
+
+Rozhraní API pro pozvánky můžete použít k určení, jestli už uživatel ve vašem tenantovi prostředků existuje. To může být užitečné, když vyvíjíte aplikaci, která používá rozhraní API pro pozvání k pozvání uživatele. Pokud uživatel ve vašem adresáři prostředků už existuje, neobdrží pozvánku, takže můžete nejdřív spustit dotaz, abyste zjistili, jestli už e-mail existuje jako hlavní název uživatele (UPN) nebo jiné přihlašovací vlastnost.
+
+1. Ujistěte se, že e-mailová doména uživatele není součástí ověřené domény vašeho tenanta prostředků.
+2. V tenantovi prostředků použijte následující příkaz získat dotaz uživatele, kde {0} je e-mailová adresa, kterou zvete:
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>Autorizační model
 
@@ -80,7 +89,7 @@ V tomto režimu musí, kdo používá rozhraní API, mít oprávnění k vytvá�
 
 V kontextu pouze aplikace potřebuje aplikace uživatele. pozve. All, aby bylo pozvání úspěšné.
 
-Další informace najdete v tématu:https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+Další informace najdete v tématu: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
@@ -100,12 +109,12 @@ Můžete použít následující možnosti:
 
 ### <a name="invitation-status"></a>Stav pozvánky
 
-Po odeslání pozvánky externímu uživateli můžete pomocí rutiny **Get-AzureADUser** zjistit, jestli je přijal. Když se externímu uživateli pošle pozvánka, naplní se následující vlastnosti Get-AzureADUser:
+Po odeslání pozvánky externímu uživateli můžete pomocí rutiny **Get-AzureADUser** zjistit, jestli je přijal. Když externímu uživateli pošle pozvánku, naplní se následující vlastnosti Get-AzureADUser:
 
 * **UserState** označuje, zda je pozvánka **PendingAcceptance** nebo **přijata**.
 * **UserStateChangedOn** zobrazuje časové razítko pro poslední změnu vlastnosti **userState** .
 
-K filtrování výsledků podle **userState**můžete použít možnost **Filter** . Následující příklad ukazuje, jak filtrovat výsledky, aby se zobrazily pouze uživatelé, kteří mají nevyřízenou pozvánku. Tento příklad také ukazuje možnost **formátovat seznam** , která umožňuje určit vlastnosti, které se mají zobrazit. 
+K filtrování výsledků podle **userState** můžete použít možnost **Filter** . Následující příklad ukazuje, jak filtrovat výsledky, aby se zobrazily pouze uživatelé, kteří mají nevyřízenou pozvánku. Tento příklad také ukazuje možnost **formátovat seznam** , která umožňuje určit vlastnosti, které se mají zobrazit. 
  
 
 ```powershell
@@ -117,7 +126,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 ## <a name="see-also"></a>Viz také
 
-Podívejte se na reference k rozhraní API pozvánky v [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) .
+Podívejte se na reference k rozhraní API pozvánky v [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation) .
 
 ## <a name="next-steps"></a>Další kroky
 

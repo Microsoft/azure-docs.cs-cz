@@ -1,27 +1,27 @@
 ---
-title: Přihlášení uživatelů v úhlových aplikacích s jednou stránkou – Azure
+title: 'Rychlý Start: přihlášení uživatelů v úhlových aplikacích s jednou stránkou – Azure'
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak může úhlová aplikace volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft identity.
+description: V tomto rychlém startu se dozvíte, jak může úhlová aplikace volat rozhraní API, které vyžaduje přístupové tokeny vydané platformou Microsoft identity.
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115233"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225043"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
-V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplikaci (SPA) může přihlašovat uživatel, který má osobní účty Microsoft, pracovní účty nebo školní účty. K volání rozhraní API Microsoft Graph nebo jakéhokoli webového rozhraní API může získat přístupový token.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstruje, jak se může aplikace s úhlovou stránkou (SPA) přihlašovat uživatelům a volat Microsoft Graph. Ukázka kódu ukazuje, jak získat přístupový token pro volání rozhraní Microsoft Graph API nebo jakéhokoli webového rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,9 +35,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-> 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
-> 1. Otevřete nové podokno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) v Azure Portal.
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
 > 1. Přejít do podokna pro rychlý Start a zobrazit úhlový rychlý Start. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
@@ -45,15 +43,15 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-> 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](./scenario-spa-app-registration.md) v Azure Portal.
 > 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .
-> 1. V tomto rychlém startu se používá [implicitní tok udělení](v2-oauth2-implicit-grant-flow.md). Vyberte nastavení **implicitního udělení** pro **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože se tato aplikace přihlásí uživatelům a volá rozhraní API.
+> 1. V tomto rychlém startu se používá [implicitní tok udělení](v2-oauth2-implicit-grant-flow.md). V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože se tato aplikace přihlásí uživatelům a volá rozhraní API.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI přesměrování jako **http://localhost:4200/** a povolit **implicitní udělení**.
+> Aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat identifikátor URI přesměrování jako **http://localhost:4200/** a povolit **implicitní udělení**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -96,7 +94,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > Nahraďte tyto hodnoty:
 >
->|Název hodnoty|Popis|
+>|Název hodnoty|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Na stránce **Přehled** registrace vaší aplikace se jedná o hodnotu ID vaší **aplikace (klienta)** . |
 >|Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com** . Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](./authentication-national-cloud.md).|
@@ -104,8 +102,8 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >|Enter_the_Redirect_Uri_Here|Nahraďte parametrem **http://localhost:4200** .|
 >|cacheLocation  | Volitelné Nastavte úložiště prohlížeče pro stav ověřování. Výchozí hodnota je **SessionStorage**.   |
 >|storeAuthStateInCookie  | Volitelné Identifikujte knihovnu, ve které je uložený stav žádosti o ověření. Tento stav je nutný k ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro Internet Explorer a Edge tak, aby se vešel na tyto dva prohlížeče. Další podrobnosti najdete v tématu [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
-> > [!TIP]
-> > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
+>
+> Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
 Další informace o dostupných konfigurovatelných možnostech najdete v tématu [inicializace klientských aplikací](msal-js-initializing-client-applications.md).
 
@@ -127,10 +125,10 @@ Pokud používáte Node.js:
    ```
 
 1. Přejděte na **http://localhost:4200/**.
-1. Vyberte **Přihlásit**se.
+1. Vyberte **Přihlásit** se.
 1. Vyberte **profil** , který chcete volat Microsoft Graph.
 
-Poté, co prohlížeč načte aplikaci, vyberte **Přihlásit**. Při prvním přihlášení se zobrazí výzva k zadání vašeho souhlasu, který aplikaci umožní získat přístup k vašemu profilu a přihlásit se. Po úspěšném přihlášení vyberte **profil**a na stránce se zobrazí informace o vašem profilu uživatele.
+Poté, co prohlížeč načte aplikaci, vyberte **Přihlásit**. Při prvním přihlášení se zobrazí výzva k zadání vašeho souhlasu, který aplikaci umožní získat přístup k vašemu profilu a přihlásit se. Po úspěšném přihlášení vyberte **profil** a na stránce se zobrazí informace o vašem profilu uživatele.
 
 ## <a name="how-the-sample-works"></a>Jak ukázka funguje
 

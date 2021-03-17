@@ -1,36 +1,158 @@
 ### YamlMime:Landing
-title: Dokumentace k řešení Azure VMware Solution (AVS)
-summary: Další informace o využití řešení Azure VMware Solution (AVS) k nasazení privátního cloudu VMware do Azure
+title: Dokumentace ke službě Azure VMware Solution
+summary: Další informace o využití řešení Azure VMware Solution k nasazení privátního cloudu VMware do Azure
 metadata:
-  title: Dokumentace k řešení Azure VMware Solution (AVS)
-  description: Další informace o využití řešení Azure VMware Solution (AVS) k nasazení privátního cloudu VMware do Azure
+  title: Dokumentace ke službě Azure VMware Solution
+  description: Další informace o využití řešení Azure VMware Solution k nasazení privátního cloudu VMware do Azure
   ms.service: azure-vmware
   ms.topic: landing-page
-  author: dikamath
-  ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: 2ae8f6bc5257dc4d7383516201912c504c4d6038
-  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-  ms.translationtype: HT
+  author: shortpatti
+  ms.author: v-patsho
+  ms.date: 03/12/2021
+  ms.openlocfilehash: edf9adfa316407eb0bf1270bae93d7cfa273d50f
+  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/04/2020
-  ms.locfileid: "82739446"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103490086"
 landingContent:
-- title: Informace o řešení Azure VMware Solution (AVS)
+- title: Informace o službě Azure VMware Solution
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je Azure VMware Solution (AVS)?
+    - text: Co je Azure VMware Solution?
       url: introduction.md
-  - linkListType: get-started
+    - text: Aktualizace platformy
+      url: azure-vmware-solution-platform-updates.md
+  - linkListType: concept
     links:
-    - text: Kontrolní seznam sítě
-      url: tutorial-network-checklist.md
+    - text: Privátní cloud a clustery
+      url: concepts-private-clouds-clusters.md
+    - text: Sítě a vzájemné propojení privátních cloudů
+      url: concepts-networking.md
+    - text: Úložiště v privátních cloudech
+      url: concepts-storage.md
+    - text: Přístup a identita pro privátní cloud
+      url: concepts-identity.md
+    - text: Řízení přístupu na základě role ve vSphere
+      url: concepts-role-based-access-control.md
+    - text: Monitorování a oprava privátních cloudů
+      url: concepts-monitor-repair-private-cloud.md
+    - text: Upgrady privátních cloudů
+      url: concepts-upgrades.md
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 0. Naplánování nasazení
+      url: production-ready-deployment-steps.md
+    - text: 1. Nasazení služby Azure VMware Solution
+      url: deploy-azure-vmware-solution.md
+    - text: 2. Připojení k místnímu prostředí
+      url: azure-vmware-solution-on-premises.md
+    - text: 3. Nasazení a konfigurace HCX
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: Vytvoření privátního cloudu AVS
+    - text: Kontrolní seznam pro plánování sítí
+      url: tutorial-network-checklist.md
+    - text: Vytvoření privátního cloudu
       url: tutorial-create-private-cloud.md
-    - text: Konfigurace sítí
-      url: tutorial-configure-networking.md
     - text: Přístup k privátnímu cloudu
       url: tutorial-access-private-cloud.md
+    - text: Konfigurace sítí
+      url: tutorial-configure-networking.md
+    - text: Vytvoření segmentu sítě NSX-T
+      url: tutorial-nsx-t-network-segment.md
+    - text: Peering místního prostředí k privátnímu cloudu
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: Škálování privátního cloudu
+      url: tutorial-scale-private-cloud.md
+    - text: Odstranění privátního cloudu
+      url: tutorial-delete-private-cloud.md
+- title: Rozšiřování služby Azure VMware Solution
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa DHCP
+      url: manage-dhcp.md
+    - text: Konfigurace síťových součástí NSX
+      url: configure-nsx-network-components-azure-portal.md
+    - text: Nasazení zotavení po havárii pro virtuální počítače
+      url: disaster-recovery-for-virtual-machines.md
+    - text: Nasazení virtuálního počítače přes knihovnu obsahu
+      url: ./deploy-vm-content-library.md
+    - text: Nastavení serveru GitHub Enterprise
+      url: github-enterprise-server.md
+    - text: Využití veřejných IP adres
+      url: public-ip-usage.md
+    - text: Vytvoření tunelu IPSec
+      url: create-ipsec-tunnel.md
+  - linkListType: reference
+    links:
+    - text: Žádost o kvótu hostitele řešení Azure VMware
+      url: enable-azure-vmware-solution.md
+    - text: Přesunout předplatná EA a CSP
+      url: move-ea-csp-subscriptions.md
+    - text: Úspora nákladů s využitím rezervované instance
+      url: reserved-instance.md
+    - text: Posouzení migrace
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+- title: Nativní integrace Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: API Management
+      url: concepts-api-management.md
+    - text: Hvězdicová architektura
+      url: concepts-hub-and-spoke.md
+    - text: Azure Security Center
+      url: azure-security-integration.md
+    - text: Server Azure Backup
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: Správa životního cyklu na virtuálních počítačích
+      url: lifecycle-management-of-azure-vmware-solution-vms.md
+    - text: Application Gateway
+      url: protect-azure-vmware-solution-with-application-gateway.md
+    - text: Traffic Manager
+      url: deploy-traffic-manager-balance-workloads.md
+- title: Řešení VMware
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení vRealize Operations
+      url: vrealize-operations-for-azure-vmware-solution.md
+    - text: Nasazení VMware Horizonu
+      url: azure-vmware-solution-horizon.md
+- title: Ekosystém VMware
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Řešení zálohování pro virtuální počítače
+      url: ecosystem-back-up-vms.md
+- title: Zdroje a prostředky
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/ext/vmware/vmware
+    - text: Azure PowerShell
+      url: /powershell/module/az.vmware
+    - text: Nejčastější dotazy
+      url: faq.yml
+  - linkListType: video
+    links:
+    - text: Postupně
+      url: https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin
+    - text: Integrace se službou Azure
+      url: https://youtu.be/m26iLu6DHbU
+    - text: Integrace s Azure Application Gateway
+      url: https://youtu.be/BoQYvqzb6Y8
+    - text: Plánování migrace a kapacity
+      url: https://youtu.be/NoNG-hkksrA
+- title: Řešení potíží
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Otevření žádosti o podporu pro selhání nasazení
+      url: fix-deployment-provisioning-failures.md

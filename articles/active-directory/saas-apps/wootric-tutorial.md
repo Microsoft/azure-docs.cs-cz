@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: e96cdaf6b8d1d3127753c1f186fa8c0c227f6bde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a959dd3615c9498411b141356420939ad7026189
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541344"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wootric"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Wootric
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Wootric s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Wootric svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Wootric podporuje jednotné přihlašování **IDP** .
 * Wootric podporuje zřizování uživatelů **jenom v čase** .
-* Po nakonfigurování Wootric můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování Wootric můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-wootric-from-the-gallery"></a>Přidání Wootric z Galerie
 
@@ -49,15 +49,15 @@ Pokud chcete nakonfigurovat integraci Wootric do služby Azure AD, musíte přid
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Wootric** .
 1. Na panelu výsledků vyberte **Wootric** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-wootric"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Wootric
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Wootric pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wootric.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Wootric pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wootric.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wootric, dokončete následující stavební bloky:
 
@@ -72,8 +72,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wootric** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wootric** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Wootric několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name |  Zdrojový atribut |
+    | Název |  Zdrojový atribut |
     | -------------- | --------- |
     | id | User. objectID |
 
@@ -103,25 +103,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Wootric.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **Wootric**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **Wootric** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -135,18 +135,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V horní nabídce klikněte na **ikona nastavení** .
 
-    ![Konfigurace ](./media/wootric-tutorial/configure-1.PNG)
+    ![Snímek obrazovky se zobrazí ikona nastavení vybraná z webu Wootric.](./media/wootric-tutorial/configure-1.PNG)
 
-1. V části **integrace**vyberte v nabídce na levé straně **ověřování** a klikněte na **povolit jednotné přihlašování pomocí Azure Active Directory**.
+1. V části **integrace** vyberte v nabídce na levé straně **ověřování** a klikněte na **povolit jednotné přihlašování pomocí Azure Active Directory** .
 
-    ![Konfigurace ](./media/wootric-tutorial/configure-2.PNG)
+    ![Snímek obrazovky ukazuje povolení jednotného přihlašování s Azure Active Directory připojenou v položce ověřování.](./media/wootric-tutorial/configure-2.PNG)
 
 1. Na následující stránce proveďte následující kroky:
 
-    ![Konfigurace ](./media/wootric-tutorial/configure-3.PNG)
+    ![Snímek obrazovky se zobrazí stránka nastavení, kde můžete zadat hodnoty, které jsou popsány.](./media/wootric-tutorial/configure-3.PNG)
 
-
-    a. V poli **Adresa URL jednotného přihlašování zprostředkovatele identity** vložte hodnotu URL pro **přihlášení** , kterou jste zkopírovali z Azure Portal.
+    a. Do textového pole **URL s jedním Sign-On URL poskytovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
     b. Do textového pole **vystavitele zprostředkovatele identity** vložte hodnotu **ID entity** , kterou jste zkopírovali z Azure Portal.
 
@@ -154,7 +153,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Zaškrtněte políčko **automaticky udělit přístup k novým uživatelům** .
     
-    e. Klikněte na **Uložit**.
+    e. Klikněte na **Uložit** .
 
 ### <a name="create-wootric-test-user"></a>Vytvořit testovacího uživatele Wootric
 
@@ -164,18 +163,18 @@ V této části se v Wootric vytvoří uživatel s názvem B. Simon. Wootric pod
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Wootric, měli byste se automaticky přihlásit k Wootric, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Wootric, měli byste se automaticky přihlásit k Wootric, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Wootric s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Wootric pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Wootric pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

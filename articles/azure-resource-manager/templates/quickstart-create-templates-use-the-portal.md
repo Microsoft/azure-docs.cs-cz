@@ -1,26 +1,26 @@
 ---
 title: Nasadit šablonu – Azure Portal
-description: Přečtěte si, jak si můžete na portálu Azure Portal vytvořit první šablonu Azure Resource Manageru a jak ji nasadit.
+description: Naučte se, jak vytvořit první šablonu Azure Resource Manager (šablonu ARM) pomocí Azure Portal a jak ji nasadit.
 author: mumian
-ms.date: 06/29/2020
+ms.date: 03/09/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 20b1bf47ae2fd63e91a11c8cccd1f03cf3464899
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557341"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548121"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal
 
-Naučte se generovat šablonu Azure Resource Manager (ARM) pomocí Azure Portal a proces úpravy a nasazení šablony z portálu. Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [Přehled nasazení šablon](overview.md).
+Naučte se generovat šablonu Azure Resource Manager (šablonu ARM) pomocí Azure Portal a proces úpravy a nasazení šablony z portálu. Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [Přehled nasazení šablon](overview.md).
 
 ![Diagram portálu pro rychlé zprovoznění šablon Správce prostředků](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné použít k nasazení dalších prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="generate-a-template-using-the-portal"></a>Vygenerování šablony na portálu
 
@@ -33,15 +33,17 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
 
     ![V nabídce Azure Portal vyberte vytvořit prostředek.](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. Vyberte **úložiště**  >  **účet**úložiště.
+1. Do vyhledávacího pole zadejte **účet úložiště** a potom stiskněte **[ENTER]**.
+1. Vyberte šipku dolů vedle tlačítka **vytvořit** a pak vyberte **účet úložiště**.
 
     ![Vytvoření účtu úložiště Azure](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+
 1. Zadejte následující informace:
 
     |Name|Hodnota|
     |----|----|
-    |**Skupina prostředků**|Vyberte **vytvořit novou**a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupina prostředků usnadňuje správu prostředků Azure. |
-    |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva s názvem "název účtu úložiště" mystorage1016 se už používá ", zkuste použít ** &lt; své jméno>&lt; dnešní datum v>MMDD **, například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
+    |**Skupina prostředků**|Vyberte **vytvořit novou** a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupina prostředků usnadňuje správu prostředků Azure. |
+    |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva s názvem "název účtu úložiště" mystorage1016 se už používá ", zkuste použít **&lt; své jméno>&lt; dnešní datum v>MMDD**, například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
 
     Pro zbývající vlastnosti můžete použít výchozí hodnoty.
 
@@ -57,14 +59,14 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
 
     Šablona se zobrazí v hlavním podokně. Jedná se o soubor JSON se šesti elementy nejvyšší úrovně,,,,, `schema` `contentVersion` `parameters` `variables` `resources` a `output` . Další informace najdete v tématu [pochopení struktury a syntaxe šablon ARM](./template-syntax.md) .
 
-    Je definováno osm parametrů. Jeden z nich má název **storageAccountName**. Druhá zvýrazněná část na předchozím snímku obrazovky ukazuje, jak odkazovat na tento parametr v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
+    Je definováno devět parametrů. Jeden z nich má název **storageAccountName**. Druhá zvýrazněná část na předchozím snímku obrazovky ukazuje, jak odkazovat na tento parametr v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
 
     Šablona obsahuje jeden definovaný prostředek Azure. Typ je `Microsoft.Storage/storageAccounts` . Podívejte se, jak je definován prostředek, a strukturu definice.
 1. V horní části obrazovky vyberte **Stáhnout** .
 1. Otevřete stažený soubor zip a uložte **template.js** do svého počítače. V další části šablonu upravíte pomocí nástroje Template deployment.
 1. Vyberte kartu **Parametr** a zobrazte zadané hodnoty parametrů. Tyto hodnoty si poznamenejte, protože je budete potřebovat v další části k nasazení šablony.
 
-    ![Vygenerování šablony na portálu](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
+    ![Snímek obrazovky, který zvýrazní kartu parametru zobrazující hodnoty, které jste zadali.](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
     Pomocí souboru šablony i souboru parametrů můžete vytvořit prostředek v tomto kurzu účet úložiště Azure.
 
@@ -77,7 +79,7 @@ Na webu Azure Portal je možné provádět několik základních úprav šablon.
 
 Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení může selhat, pokud jste zadali název účtu úložiště, který už existuje. Chcete-li se tomuto problému vyhnout, upravte šablonu tak, aby používala volání funkce šablony `uniquestring()` k vygenerování jedinečného názvu účtu úložiště.
 
-1. Z nabídky Azure Portal do vyhledávacího pole zadejte **Deploy**a pak vyberte **nasadit vlastní šablonu**.
+1. Z nabídky Azure Portal do vyhledávacího pole zadejte **Deploy** a pak vyberte **nasadit vlastní šablonu**.
 
     ![Knihovna šablon Azure Resource Manageru](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
 
@@ -90,80 +92,84 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
    - Odeberte parametr **storageAccountName** , jak je znázorněno na předchozím snímku obrazovky.
    - Přidejte jednu proměnnou s názvem **storageAccountName** , jak je znázorněno na předchozím snímku obrazovky:
 
-       ```json
-       "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
-       ```
+      ```json
+      "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+      ```
 
-       Tady se používají dvě funkce šablony: `concat()` a `uniqueString()` .
+      Tady se používají dvě funkce šablony: `concat()` a `uniqueString()` .
    - Aktualizujte element name prostředku **Microsoft.Storage/storageAccounts** tak, aby se místo parametru použila nově definovaná proměnná:
 
-       ```json
-       "name": "[variables('storageAccountName')]",
-       ```
+      ```json
+      "name": "[variables('storageAccountName')]",
+      ```
 
-     Výsledná šablona by měla vypadat takto:
+      Výsledná šablona by měla vypadat takto:
 
-     ```json
-     {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-         "location": {
-           "type": "string"
-         },
-         "accountType": {
-           "type": "string"
-         },
-         "kind": {
-           "type": "string"
-         },
-         "accessTier": {
-           "type": "string"
-         },
-         "minimumTlsVersion": {
-           "type": "string"
-         },
-         "supportsHttpsTrafficOnly": {
-          "type": "bool"
-         },
-         "allowBlobPublicAccess": {
-           "type": "bool"
-         }
-       },
-       "variables": {
-         "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
-       },
-       "resources": [
-         {
-           "name": "[variables('storageAccountName')]",
-           "type": "Microsoft.Storage/storageAccounts",
-           "apiVersion": "2019-06-01",
-           "location": "[parameters('location')]",
-           "properties": {
-             "accessTier": "[parameters('accessTier')]",
-             "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
-             "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
-             "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]"
-           },
-           "dependsOn": [],
-           "sku": {
-             "name": "[parameters('accountType')]"
-           },
-           "kind": "[parameters('kind')]",
-           "tags": {}
-         }
-       ],
-       "outputs": {}
-     }
-     ```
+      ```json
+      {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "location": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "accessTier": {
+            "type": "string"
+          },
+          "minimumTlsVersion": {
+            "type": "string"
+          },
+          "supportsHttpsTrafficOnly": {
+            "type": "bool"
+          },
+          "allowBlobPublicAccess": {
+            "type": "bool"
+          },
+          "allowSharedKeyAccess": {
+            "type": "bool"
+          }
+        },
+        "variables": {
+          "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+        },
+        "resources": [
+          {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "[parameters('location')]",
+            "properties": {
+              "accessTier": "[parameters('accessTier')]",
+              "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
+              "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+              "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]",
+              "allowSharedKeyAccess": "[parameters('allowSharedKeyAccess')]"
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "[parameters('accountType')]"
+            },
+            "kind": "[parameters('kind')]",
+            "tags": {}
+          }
+        ],
+        "outputs": {}
+      }
+      ```
 
 1. Vyberte **Uložit**.
-1. Zadejte následující hodnoty:
+1. Zadejte tyto hodnoty:
 
     |Name|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte název skupiny prostředků, který jste vytvořili v poslední části. |
-    |**Věřitel**|Vyberte umístění skupiny prostředků. Například **USA – střed**. |
+    |**Oblast**|Vyberte umístění skupiny prostředků. Například **USA – střed**. |
     |**Umístění**|Vyberte umístění pro účet úložiště. Například **USA – střed**. |
     |**Typ účtu**|Zadejte **Standard_LRS** pro tento rychlý Start. |
     |**Druh**|Pro tento rychlý Start zadejte **StorageV2** . |
@@ -171,6 +177,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
     |**Minimální verze protokolu TLS**|Zadejte **TLS1_0**. |
     |**Podporuje jenom přenosy https.**| V tomto rychlém startu vyberte **true**. |
     |**Povolení veřejného přístupu objektu BLOB**| V tomto rychlém startu vyberte **false**. |
+    |**Povolení přístupu ke sdíleným klíčům**| V tomto rychlém startu vyberte **true**. |
 
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. Vyberte **Vytvořit**.

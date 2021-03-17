@@ -5,12 +5,12 @@ ms.subservice: cloud-provisioning
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
-ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d95e40623f17a39145778a2fc067dccc68fd872
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79504382"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555641"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Postup povolení jednotného přihlašování
 Zřizování cloudu funguje s jednotným přihlašováním.  V současné době není k dispozici možnost Povolit jednotné přihlašování při instalaci agenta. k povolení jednotného přihlašování (SSO) ale můžete použít následující postup. 
@@ -18,12 +18,12 @@ Zřizování cloudu funguje s jednotným přihlašováním.  V současné době 
 ### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>Krok 1: stažení a extrakce Azure AD Connectch souborů
 1.  Nejdřív Stáhněte nejnovější verzi [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2.  Otevřete příkazový řádek pomocí oprávnění správce a přejděte k souboru MSI, který jste právě stáhli.
-3.  Spusťte následující příkaz:`msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
+3.  Spusťte následující příkaz:  `msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
 4. Změňte FilePath a extractfolder tak, aby odpovídaly vaší cestě k souboru a názvu složky pro extrakci.  Obsah by měl být nyní ve složce pro extrakci.
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>Krok 2: import bezproblémového modulu pro jednotné přihlašování do PowerShellu
 
-1. Stáhněte si a nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Stáhněte si a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
 2. Přejděte do `%programfiles%\Microsoft Azure Active Directory Connect` složky.
 3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
 

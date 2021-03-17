@@ -1,19 +1,16 @@
 ---
 title: Použití MapReduce a PowerShellu s Apache Hadoop – Azure HDInsight
 description: Naučte se, jak pomocí PowerShellu vzdáleně spouštět úlohy MapReduce s Apache Hadoop v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c6c5e317591b70c3a1300453093fc715e213fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006598"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939677"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí PowerShellu
 
@@ -21,11 +18,11 @@ ms.locfileid: "87006598"
 
 Tento dokument poskytuje příklad použití Azure PowerShell ke spuštění úlohy MapReduce v clusteru Hadoop v HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
+* Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 
 ## <a name="run-a-mapreduce-job"></a>Spuštění úlohy MapReduce
 
@@ -35,10 +32,10 @@ Při spouštění úloh MapReduce ve vzdáleném clusteru HDInsight se používa
 
 |Rutina | Popis |
 |---|---|
-|Connect – AzAccount|Ověří Azure PowerShell předplatného Azure.|
+|Connect-AzAccount|Ověří Azure PowerShell předplatného Azure.|
 |New-AzHDInsightMapReduceJobDefinition|Vytvoří novou *definici úlohy* pomocí zadaných informací MapReduce.|
-|Spustit – AzHDInsightJob|Odešle definici úlohy do HDInsight a spustí úlohu. Vrátí se objekt *úlohy* .|
-|Čekání – AzHDInsightJob|Pomocí objektu úlohy zkontroluje stav úlohy. Čeká na dokončení úlohy nebo překročení doby čekání.|
+|Start-AzHDInsightJob|Odešle definici úlohy do HDInsight a spustí úlohu. Vrátí se objekt *úlohy* .|
+|Wait-AzHDInsightJob|Pomocí objektu úlohy zkontroluje stav úlohy. Čeká na dokončení úlohy nebo překročení doby čekání.|
 |Get-AzHDInsightJobOutput|Slouží k načtení výstupu úlohy.|
 
 Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v clusteru HDInsight.
@@ -83,7 +80,7 @@ Chcete-li zobrazit slova a počty vytvářené úlohou, otevřete soubor **outpu
 > [!NOTE]  
 > Výstupní soubory úlohy MapReduce jsou neměnné. Takže pokud tuto ukázku znovu spustíte, musíte změnit název výstupního souboru.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se po dokončení úlohy nevrátí žádné informace, zobrazte chyby úlohy. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec souboru **mapreducejob.ps1** následující příkaz. Pak soubor uložte a znovu spusťte skript.
 

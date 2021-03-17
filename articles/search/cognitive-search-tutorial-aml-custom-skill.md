@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: vytvoření a nasazení vlastní dovednosti pomocí Azure Machine Learning'
+title: 'Příklad: vytvoření a nasazení vlastní dovednosti pomocí Azure Machine Learning'
 titleSuffix: Azure Cognitive Search
-description: V tomto kurzu se dozvíte, jak pomocí Azure Machine Learning vytvořit a nasadit vlastní dovednost pro kanál rozšíření AI pro Azure Kognitivní hledání.
+description: Tento příklad ukazuje, jak použít Azure Machine Learning k sestavení a nasazení vlastní dovednosti pro kanál rozšíření AI pro Azure Kognitivní hledání.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.topic: conceptual
+ms.date: 09/25/2020
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245326"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745630"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Kurz: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Příklad: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
 
-V tomto kurzu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
+V tomto příkladu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](./cognitive-search-aml-skill.md) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
 
 Pro výuku modelu mínění založeného na aspektech v Azure Machine Learning budete používat [úložiště recepty NLP](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Model se pak nasadí jako koncový bod v clusteru Azure Kubernetes. Po nasazení se koncový bod přidá do kanálu pro rozšíření jako AML dovednost pro použití službou Kognitivní hledání.
 
@@ -36,10 +36,10 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – Získejte [bezplatné předplatné](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Služba Kognitivní hledání](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [Prostředek Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Pracovní prostor služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [Služba Kognitivní hledání](./search-get-started-arm.md)
+* [Prostředek Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Účet služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Pracovní prostor služby Azure Machine Learning](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Nastavení
 
@@ -47,9 +47,9 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 * Extrahuje obsah, pokud je stahování souborem zip. Ujistěte se, že jsou soubory pro čtení i zápis.
 * Při nastavování účtů a služeb Azure zkopírujte názvy a klíče do snadno dostupného textového souboru. Názvy a klíče budou přidány do první buňky v poznámkovém bloku, kde jsou definovány proměnné pro přístup ke službám Azure.
 * Pokud nejste obeznámeni s Azure Machine Learning a jejími požadavky, budete si chtít tyto dokumenty před začátkem začít:
- * [Konfigurace vývojového prostředí pro Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * Při konfiguraci vývojového prostředí pro Azure Machine Learning zvažte použití [cloudové výpočetní instance](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance) pro rychlost a usnadnění práce v části Začínáme.
+ * [Konfigurace vývojového prostředí pro Azure Machine Learning](../machine-learning/how-to-configure-environment.md)
+ * [Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal](../machine-learning/how-to-manage-workspace.md)
+ * Při konfiguraci vývojového prostředí pro Azure Machine Learning zvažte použití [cloudové výpočetní instance](../machine-learning/how-to-configure-environment.md#compute-instance) pro rychlost a usnadnění práce v části Začínáme.
 * Nahrajte soubor DataSet do kontejneru v účtu úložiště. Větší soubor je nutný, pokud chcete provést krok školení v poznámkovém bloku. Pokud budete chtít přeskočit krok školení, je doporučeno zmenšit soubor.
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>Otevřete Poznámkový blok a připojte se ke službám Azure.
@@ -68,9 +68,9 @@ Oddíl 2 obsahuje šest buněk, které stáhnou soubor vkládání šetrnější
 
 Část 3 poznámkového bloku bude vytvářet modely vytvořené v části 2, registrovat tyto modely a nasazovat je jako koncový bod v clusteru Azure Kubernetes. Pokud nejste obeznámeni s Azure Kubernetes, důrazně doporučujeme před pokusem o vytvoření clusteru odvození zkontrolovat následující články:
 
-* [Přehled služby Azure Kubernetes](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Přehled služby Azure Kubernetes](../aks/intro-kubernetes.md)
+* [Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)](../aks/concepts-clusters-workloads.md)
+* [Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)](../aks/quotas-skus-regions.md)
 
 Vytvoření a nasazení clusteru odvození může trvat až 30 minut. Při testování webové služby před přechodem k posledním krokům se doporučuje aktualizovat dovednosti a spustit indexer.
 
@@ -82,8 +82,7 @@ Oddíl 4 v poznámkovém bloku obsahuje čtyři buňky, které aktualizují dove
 
 Na portálu přejít na dovednosti a vyberte odkaz definice dovednosti (JSON). Portál zobrazí kód JSON vašeho dovednosti, který byl vytvořen v první buňce poznámkového bloku. Napravo od zobrazení je rozevírací nabídka, ve které můžete vybrat šablonu definice dovednosti. Vyberte šablonu Azure Machine Learning (AML). Zadejte název pracovního prostoru Azure ML a koncový bod modelu nasazeného do odvozeného clusteru. Šablona bude aktualizována pomocí identifikátoru URI a klíče koncového bodu.
 
-> [!div class="mx-imgBorder"]
-> ![Šablona definice dovednosti](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Šablona definice dovednosti":::
 
 Zkopírujte šablonu dovednosti z okna a vložte ji do definice dovednosti na levé straně. Upravte šablonu, aby poskytovala chybějící hodnoty pro:
 
@@ -108,5 +107,5 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kontrola webového rozhraní API](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api) 
->  pro vlastní dovednosti [Další informace o přidání vlastních dovedností do kanálu pro obohacení](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [Kontrola webového rozhraní API](./cognitive-search-custom-skill-web-api.md) 
+>  pro vlastní dovednosti [Další informace o přidání vlastních dovedností do kanálu pro obohacení](./cognitive-search-custom-skill-interface.md)

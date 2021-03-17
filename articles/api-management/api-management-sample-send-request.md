@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210348"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742399"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou dostupné ve službě Azure API Management, můžou provádět nejrůznější práci založenou čistě na příchozím požadavku, odchozí odpovědi a základní informace o konfiguraci. Je ale možné pracovat s externími službami ze zásad API Management otevírá mnoho dalších příležitostí.
@@ -65,7 +65,7 @@ Následující příklad ukazuje, jak odeslat zprávu do chatovací místnosti s
 ### <a name="is-fire-and-forget-good-enough"></a>Je požár a zapomenout dostatečně dobrý?
 Při použití stylu požáru a zapomenutí žádosti se používají určité kompromisy. Pokud z nějakého důvodu požadavek selže, nebude chyba hlášena. V této konkrétní situaci není zaručena složitá náročnost systému generování sestav sekundárního selhání a dodatečné náklady na výkon při čekání na odpověď. V případě scénářů, kde je důležité pro kontrolu odpovědi, je lepší volbou zásada [Odeslat požadavek](./api-management-advanced-policies.md#SendRequest) .
 
-## <a name="send-request"></a>Odeslat požadavek
+## <a name="send-request"></a>Send-Request
 Tato `send-request` zásada umožňuje použití externí služby k provádění složitých funkcí zpracování a vrácení dat do služby API Management, která se dá použít k dalšímu zpracování zásad.
 
 ### <a name="authorizing-reference-tokens"></a>Autorizace tokenů reference
@@ -123,7 +123,7 @@ Pomocí `<choose>` zásad můžete zjistit, jestli je token neplatný, a pokud a
 </choose>
 ```
 
-V závislosti na [specifikaci RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , která popisuje `bearer` , jak se mají tokeny používat, API Management také vrátí `WWW-Authenticate` hlavičku s odpovědí 401. Ověřování na straně klienta je určeno k tomu, aby bylo klientovi pokyn, jak vytvořit řádně autorizovaný požadavek. Vzhledem k široké škále dostupných přístupů s OAuth2 Framework je obtížné sdělit všechny potřebné informace. Naštěstí je snaha pomáhat klientům, [kteří zjistí, jak správně autorizovat požadavky na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+V závislosti na [specifikaci RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , která popisuje `bearer` , jak se mají tokeny používat, API Management také vrátí `WWW-Authenticate` hlavičku s odpovědí 401. WWW-Authenticate má dát klientovi pokyn, jak vytvořit řádně autorizovaný požadavek. Vzhledem k široké škále dostupných přístupů s OAuth2 Framework je obtížné sdělit všechny potřebné informace. Naštěstí je snaha pomáhat klientům, [kteří zjistí, jak správně autorizovat požadavky na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Konečné řešení
 Na konci získáte následující zásady:
@@ -178,7 +178,7 @@ Prvním krokem při sestavování prostředku řídicího panelu je konfigurace 
 ### <a name="making-the-requests"></a>Vytváření žádostí
 Po vytvoření operace můžete nakonfigurovat zásadu specifickou pro tuto operaci. 
 
-![Operace řídicího panelu](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Snímek obrazovky zobrazující obrazovku oboru zásad](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 Prvním krokem je extrakce parametrů dotazů z příchozího požadavku, abyste je mohli přeslat do back-endu. V tomto příkladu řídicí panel zobrazuje informace na základě časové prodlevy, a proto má `fromDate` `toDate` parametr a. Tuto zásadu můžete použít `set-variable` k extrakci informací z adresy URL požadavku.
 
@@ -286,5 +286,5 @@ Kompletní zásada vypadá následovně:
 
 V konfiguraci operace zástupných znaků můžete nakonfigurovat prostředek řídicího panelu tak, aby se ukládal do mezipaměti alespoň po dobu 1 hodiny. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Služba Azure API Management poskytuje flexibilní zásady, které je možné selektivně použít pro přenosy HTTP, a umožňuje složení back-end služeb. Bez ohledu na to, jestli chcete bránu API vylepšit pomocí funkcí upozorňování, ověřování, možností ověřování nebo vytvářet nové složené prostředky založené na více službách back-end, se v `send-request` souvisejících zásadách otevře celosvětový svět možností.

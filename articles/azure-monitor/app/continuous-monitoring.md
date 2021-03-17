@@ -4,10 +4,10 @@ description: Poskytuje pokyny pro rychlé nastavení nepřetržitého monitorov�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517123"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí

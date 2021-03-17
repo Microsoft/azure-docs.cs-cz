@@ -8,19 +8,21 @@ ms.topic: sample
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.custom: devx-track-javascript
-ms.openlocfilehash: deb0ca935cd01a0d86eea007711f65e439d4da00
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421973"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098208"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Sestavení aplikace pomocí Node.js a rozhraní API Azure Cosmos DB pro MongoDB 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Java](sql-api-java-get-started.md)
+> * [.NET Core](./sql-api-get-started.md)
+> * [Java](./create-sql-api-java.md)
 > * [Node.js pro MongoDB](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
@@ -116,7 +118,7 @@ Chcete-li použít tento příklad, musíte:
     });
     ```
     
-    **Volitelné:** Pokud používáte **ovladač MongoDB Node.js 2.2**, nahraďte následující fragment kódu:
+    **Volitelné:** Pokud používáte **ovladač MongoDB Node.js 2.2** , nahraďte následující fragment kódu:
 
     Původní:
 
@@ -158,7 +160,7 @@ Chcete-li použít tento příklad, musíte:
     > [!IMPORTANT]
     > **Ovladač MongoDB Node.js 3.0** vyžaduje kódování speciálních znaků v hesle Cosmos DB. Zajistěte, aby byly znaky „=“ kódované jako %3D.
     >
-    > Příklad: Heslo *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* se kóduje na *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*.
+    > Příklad: Heslo *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* se kóduje na *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D* .
     >
     > **Ovladač MongoDB Node.js 2.2** nevyžaduje kódování speciálních znaků v hesle Cosmos DB.
     >
@@ -168,7 +170,7 @@ Chcete-li použít tento příklad, musíte:
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. Otevřete svůj oblíbený terminál, spusťte příkaz **npm install mongodb --save** a pak spusťte aplikaci se souborem **node app.js**.
+3. Otevřete svůj oblíbený terminál, spusťte příkaz **npm install mongodb --save** a pak spusťte aplikaci se souborem **node app.js** .
 
 ## <a name="next-steps"></a>Další kroky
 

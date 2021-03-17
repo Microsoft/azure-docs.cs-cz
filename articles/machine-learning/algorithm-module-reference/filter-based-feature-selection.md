@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477591"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945698"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
 
-Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning (Preview). Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
+Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning. Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
 
 Obecně platí, že *Výběr funkcí* odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. Modul výběru funkcí založený na filtrech poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát. 
 
@@ -36,7 +36,7 @@ Obvykle používáte pouze sloupce s nejlepším skóre k sestavení prediktivn�
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>Volba metriky výběru funkcí
 
-Modul výběru funkcí založený na filtrech poskytuje celou řadu metrik pro vyhodnocení hodnoty informací v jednotlivých sloupcích. V této části najdete obecný popis jednotlivých metrik a jejich použití. Další požadavky na používání každé metriky najdete v [technických poznámkách](#technical-notes) a v [pokynech](#how-to-configure-filter-based-feature-selection) ke konfiguraci jednotlivých modulů.
+Modul výběru funkcí Filter-Based poskytuje celou řadu metrik pro vyhodnocení hodnoty informací v jednotlivých sloupcích. V této části najdete obecný popis jednotlivých metrik a jejich použití. Další požadavky na používání každé metriky najdete v [technických poznámkách](#technical-notes) a v [pokynech](#how-to-configure-filter-based-feature-selection) ke konfiguraci jednotlivých modulů.
 
 -   **Korelace Pearsonova**  
 
@@ -52,11 +52,11 @@ Modul výběru funkcí založený na filtrech poskytuje celou řadu metrik pro v
 > [!TIP]
 > Pokud pro metodu výběru vlastní funkce potřebujete jinou možnost, použijte modul [spuštění skriptu jazyka R](execute-r-script.md) . 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Postup konfigurace výběru funkcí založených na filtrech
+## <a name="how-to-configure-filter-based-feature-selection"></a>Jak nakonfigurovat výběr funkcí Filter-Based
 
 Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvojicí sloupců: sloupec popisku a sloupec funkce.
 
-1.  Přidejte do svého kanálu modul výběru funkcí založený na filtrech. Můžete ji najít v kategorii **výběru funkcí** v návrháři.
+1.  Přidejte modul výběru funkcí Filter-Based k vašemu kanálu. Můžete ji najít v kategorii **výběru funkcí** v návrháři.
 
 2. Připojte vstupní datovou sadu, která obsahuje alespoň dva sloupce, které jsou potenciálními funkcemi.  
 
@@ -90,8 +90,14 @@ Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvoji
 
     - Pokud zadáte méně sloupců výsledků, než jsou sloupce funkce, jsou tyto funkce seřazené podle sestupného skóre. Vrátí se jenom ty hlavní funkce. 
 
-7.  Odešlete kanál nebo vyberte modul Výběr funkce založený na filtrech a pak vyberte **Spustit vybrané**.
+7.  Odešlete kanál.
 
+> [!IMPORTANT]
+> Pokud budete používat **Výběr funkcí založených na filtrech** v odvození, je nutné použít [transformaci Select Columns](./select-columns-transform.md) k uložení vybrané funkce a [použít transformaci](./apply-transformation.md) , která použije funkci vybranou transformace na datovou sadu bodování.
+>
+> Chcete-li zajistit, aby výběry sloupců byly pro proces bodování stejné, přečtěte si následující snímek obrazovky.
+> [!div class="mx-imgBorder"]
+> ![Vzorový kanál](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Výsledky
 

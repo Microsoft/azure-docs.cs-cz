@@ -1,22 +1,31 @@
 ---
-title: Funkce Azure Functions jako obslužná rutina události pro Azure Event Grid události
-description: Popisuje, jak můžete používat Azure Functions jako obslužné rutiny událostí pro Event Grid události.
+title: Použití funkce v Azure jako obslužné rutiny události pro Azure Event Grid události
+description: Popisuje, jak můžete používat funkce vytvořené v a hostované Azure Functions jako obslužné rutiny událostí pro Event Grid události.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105757"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496537"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Funkce Azure Functions jako obslužná rutina události pro Event Grid události
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Použití funkce jako obslužné rutiny události pro Event Grid události
 
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede akci zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Functions** je jednou z nich. 
 
-Pokud chcete reagovat na události z Event Grid, použijte **Azure Functions** v architektuře bez serveru. Při použití funkce Azure jako obslužné rutiny použijte Trigger Event Grid namísto obecného triggeru HTTP. Event Grid automaticky ověří aktivační události Event Grid. S obecnými aktivačními událostmi HTTP musíte implementovat [odpověď ověření](webhook-event-delivery.md) sami.
 
-Další informace najdete v tématu [Event Grid trigger Azure Functions](../azure-functions/functions-bindings-event-grid.md) pro přehled použití triggeru Event Grid ve funkcích Functions.
+Pokud chcete používat funkci v Azure jako obslužnou rutinu pro události, postupujte podle jednoho z těchto přístupů: 
+
+-   Použijte [aktivační událost Event Grid](../azure-functions/functions-bindings-event-grid-trigger.md).  Jako **Typ koncového bodu** zadejte **funkci Azure** . Pak zadejte aplikaci funkcí a funkci, která bude zpracovávat události. 
+-   Použijte [Trigger http](../azure-functions/functions-bindings-http-webhook.md).  Jako **Typ koncového bodu** zadejte **Webhook** . Pak zadejte adresu URL pro funkci, která bude zpracovávat události. 
+
+Doporučujeme použít první přístup (Event Grid Trigger), protože má následující výhody oproti druhému přístupu:
+-   Event Grid automaticky ověří aktivační události Event Grid. S obecnými aktivačními událostmi HTTP musíte implementovat [odpověď ověření](webhook-event-delivery.md) sami.
+-   Event Grid automaticky upraví rychlost doručení událostí do funkce aktivované událostí Event Grid na základě pozorované míry, při které funkce může zpracovávat události. Tato funkce se shoduje s tím, že se chyby doručení, které vyplývají z neschopnosti funkce zpracovávat události, neschopnost zpracování událostí, protože počet zpracovaných událostí funkce se může v průběhu času měnit. Pro zvýšení efektivity při vysoké propustnosti povolte dávkování pro odběr událostí. Další informace najdete v tématu [Povolení dávkového](#enable-batching)zpracování.
+
+    > [!NOTE]
+    > V současné době nemůžete použít Trigger Event Grid pro aplikaci Function App, pokud je událost doručena ve schématu **CloudEvents** . Místo toho použijte Trigger HTTP.
 
 ## <a name="tutorials"></a>Kurzy
 
@@ -39,8 +48,8 @@ Další informace najdete v tématu [Event Grid trigger Azure Functions](../azur
             "properties": 
             {
                 "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Web/sites/<FUNCTION APP NAME>/functions/<FUNCTION NAME>",
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64
+                "maxEventsPerBatch": 10,
+                "preferredBatchSizeInKilobytes": 6400
             }
         },
         "eventDeliverySchema": "EventGridSchema"
@@ -48,5 +57,31 @@ Další informace najdete v tématu [Event Grid trigger Azure Functions](../azur
 }
 ```
 
+## <a name="enable-batching"></a>Povolit dávkování
+Pro zajištění vyšší propustnosti povolte dávkování u předplatného. Pokud používáte Azure Portal, můžete nastavit maximální počet událostí na dávku a preferovanou velikost dávky v kilobajtech v době vytváření předplatného nebo po jeho vytvoření. 
+
+Nastavení dávky můžete nakonfigurovat pomocí šablony Azure Portal, PowerShellu, rozhraní příkazového řádku nebo Správce prostředků. 
+
+### <a name="azure-portal"></a>portál Azure
+Při vytváření odběru v uživatelském rozhraní na stránce **vytvořit odběr události** přepněte na kartu **Pokročilé funkce** a nastavte hodnoty **maximálního počtu událostí na dávku** a **upřednostňovanou velikost dávky v kilobajtech**. 
+    
+:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Povolit dávkování v době vytváření předplatného":::
+
+Tyto hodnoty pro existující předplatné můžete aktualizovat na kartě **funkce** na stránce **Event Grid tématu** . 
+
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Povolit dávkování po vytvoření":::
+
+### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+V šabloně Azure Resource Manager můžete nastavit **maxEventsPerBatch** a **preferredBatchSizeInKilobytes** . Další informace najdete v referenčních informacích k [šabloně Microsoft. EventGrid eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions).
+
+### <a name="azure-cli"></a>Azure CLI
+Pomocí příkazu [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create&preserve-view=true) nebo [AZ eventgrid Event-Subscription Update](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update&preserve-view=true) můžete nakonfigurovat nastavení související s dávkou pomocí následujících parametrů: `--max-events-per-batch` nebo `--preferred-batch-size-in-kilobytes` .
+
+### <a name="azure-powershell"></a>Azure PowerShell
+Pomocí rutiny [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) nebo [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) můžete nakonfigurovat nastavení související s Batch pomocí následujících parametrů: `-MaxEventsPerBatch` nebo `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> Když použijete aktivační událost Event Grid, Služba Event Grid načte tajný klíč klienta pro cílovou funkci Azure a použije ho k doručování událostí do funkce Azure Functions. Pokud službu Azure Functions chráníte pomocí Azure Active Directory aplikace, musíte vzít obecný přístup k webovému zavěšení a použít Trigger HTTP.
+
 ## <a name="next-steps"></a>Další kroky
-Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 
+Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) .

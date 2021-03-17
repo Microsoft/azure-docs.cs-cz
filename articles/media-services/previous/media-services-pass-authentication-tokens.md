@@ -4,7 +4,7 @@ description: Přečtěte si, jak odesílat ověřovací tokeny z klienta do slu�
 services: media-services
 keywords: Ochrana obsahu, DRM, ověřování tokenů
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
@@ -13,16 +13,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba4daec8ef5f2cc1da3a211113e7236dfd22803d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73684936"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008232"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Přečtěte si, jak klienti přecházejí tokeny službě doručování klíčů Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Zákazníci se často dotazují, jak může hráč předat tokeny službě doručování klíčů Azure Media Services k ověření, aby tento klíč mohl získat hráč. Media Services podporuje formáty jednoduchých webových tokenů (SWT) a JSON Web Token (JWT). Ověřování tokenu se aplikuje na libovolný typ klíče bez ohledu na to, jestli v systému používáte společné šifrování nebo šifrování obálek s standard AES (Advanced Encryption Standard) (AES).
 
  V závislosti na přehrávači a platformě, na kterou cílíte, můžete token předat pomocí přehrávače následujícími způsoby:
@@ -51,8 +55,6 @@ Tato možnost se používá jenom pro získání licence PlayReady, a to prostř
     </CustomData>
     ```
     Do elementu tokenu vložte svůj ověřovací token.
-
-- Pomocí alternativního seznamu testů HTTP Live Streaming (HLS). Pokud potřebujete nakonfigurovat ověřování pomocí tokenu pro AES + HLS přehrávání v iOS/Safari, neexistuje způsob, jakým můžete přímo odeslat token. Další informace o tom, jak alternativní seznam testů povolit pro tento scénář, najdete v tomto [blogovém příspěvku](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Další kroky
 

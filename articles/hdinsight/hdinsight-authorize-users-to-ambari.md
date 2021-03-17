@@ -1,19 +1,16 @@
 ---
 title: Autorizace uživatelů pro zobrazení Ambari – Azure HDInsight
 description: Jak spravovat oprávnění uživatelů a skupin Ambari pro clustery HDInsight s povoleným ESP.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: fc10d385df1dffed07e771d622d9bf9d8bedee39
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b6d4dacf43d80f371a2a4d286af1972198c3be3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086530"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942715"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
@@ -24,7 +21,7 @@ Uživatelé služby Active Directory se můžou přihlásit k uzlům clusteru po
 > [!WARNING]  
 > Neměňte heslo sledovacího zařízení Ambari (hdinsightwatchdog) v clusteru HDInsight se systémem Linux. Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
 
-Pokud jste to ještě neudělali, postupujte podle [těchto pokynů](./domain-joined/apache-domain-joined-configure.md) a zřiďte nový cluster ESP.
+Pokud jste to ještě neudělali, postupujte podle [těchto pokynů](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) a zřiďte nový cluster ESP.
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
@@ -32,7 +29,7 @@ Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelské
 
 ![Správa řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
-## <a name="add-users"></a>Přidávání uživatelů
+## <a name="add-users"></a>Přidání uživatelů
 
 ### <a name="add-users-through-the-portal"></a>Přidávání uživatelů prostřednictvím portálu
 
@@ -224,7 +221,7 @@ Pro uživatele a skupiny existuje pět rolí zabezpečení, které jsou uvedené
 * Operátor služby
 * Uživatel clusteru
 
-Pokud chcete spravovat role, přejděte na **stránku Správa Ambari**a pak vyberte odkaz **role** v rámci skupiny nabídky *clustery* na levé straně.
+Pokud chcete spravovat role, přejděte na **stránku Správa Ambari** a pak vyberte odkaz **role** v rámci skupiny nabídky *clustery* na levé straně.
 
 ![Odkazy nabídky rolí Apache Ambari](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 

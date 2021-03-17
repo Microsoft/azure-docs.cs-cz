@@ -12,21 +12,21 @@ author: David-Engel
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: e9a6c769451385f09706731fcb15de4197ecc063
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231654"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91327540"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití golang k dotazování databáze v Azure SQL Database nebo spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu použijete programovací jazyk [golang](https://godoc.org/github.com/denisenkom/go-mssqldb) pro připojení k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance. Potom spustíte příkazy jazyka Transact-SQL k dotazování a úpravě dat. [Golang](https://golang.org/) je open source programovací jazyk, který usnadňuje sestavování jednoduchého, spolehlivého a efektivního softwaru.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Databáze v Azure SQL Database nebo spravované instanci Azure SQL. K vytvoření databáze můžete použít jeden z těchto rychlých startů:
@@ -54,9 +54,9 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
@@ -200,7 +200,10 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
            return -1, err
        }
 
-       tsql := "INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location); select convert(bigint, SCOPE_IDENTITY());"
+       tsql := `
+         INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location);
+         select isNull(SCOPE_IDENTITY(), -1);
+       `
 
        stmt, err := db.Prepare(tsql)
        if err != nil {

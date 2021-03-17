@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260284"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
@@ -20,7 +20,7 @@ Dotazování a posílání příkazů do služby správce oprav.
 |Příkaz|Popis|
 | --- | --- |
 | schválit – vynutit | Vynutí schválení dané úlohy opravy. |
-| odstranění | Odstraní dokončenou úlohu opravy. |
+| delete | Odstraní dokončenou úlohu opravy. |
 | list | Načte seznam úloh opravy, které odpovídají daným filtrům. |
 
 ## <a name="sfctl-rpm-approve-force"></a>schválení sfctl ot./min. – Force
@@ -28,16 +28,16 @@ Vynutí schválení dané úlohy opravy.
 
 Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použití přímo v kódu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Task-ID [povinné] | ID úlohy opravy |
 | --verze | Aktuální číslo verze úlohy opravy. Pokud je hodnota nenulová, požadavek bude úspěšný pouze v případě, že tato hodnota odpovídá skutečné aktuální verzi úlohy opravy. Pokud je nula, není provedena žádná kontrolní verze. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -50,16 +50,16 @@ Odstraní dokončenou úlohu opravy.
 
 Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použití přímo v kódu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Task-ID [povinné] | ID dokončené úlohy opravy, která se má odstranit |
 | --verze | Aktuální číslo verze úlohy opravy. Pokud je hodnota nenulová, požadavek bude úspěšný pouze v případě, že tato hodnota odpovídá skutečné aktuální verzi úlohy opravy. Pokud je nula, není provedena žádná kontrolní verze. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -72,9 +72,9 @@ Načte seznam úloh opravy, které odpovídají daným filtrům.
 
 Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použití přímo v kódu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --prováděcí modul – filtr | Název prováděcího modulu, jehož deklarované úkoly by měly být uvedeny v seznamu. |
 | --State-Filter | Bitové nebo následující hodnoty určující, které stavy úloh by měly být zahrnuty v seznamu výsledků. <ul><li>1 – vytvořeno</li><li>2 – tvrzeno</li><li>4 – Příprava</li><li>8 – schváleno</li><li>16 provedení</li><li>32 – obnovování</li><li>64 – dokončeno</li></ul>
@@ -82,7 +82,7 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

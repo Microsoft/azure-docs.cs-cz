@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632935"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218362"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
 
@@ -159,7 +160,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Moduly s dvojitými dotazy
 
-Dotazování na vlákna modulu je podobné jako dotazování na vlákna zařízení, ale použití jiné kolekce nebo oboru názvů. místo ze **zařízení**se můžete dotazovat ze **zařízení. moduly**:
+Dotazování na vlákna modulu je podobné jako dotazování na vlákna zařízení, ale použití jiné kolekce nebo oboru názvů. místo ze **zařízení** se můžete dotazovat ze **zařízení. moduly**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -233,7 +234,7 @@ Objekt dotazu zpřístupňuje více **dalších** hodnot v závislosti na možno
 ### <a name="limitations"></a>Omezení
 
 > [!IMPORTANT]
-> Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 V současné době jsou porovnání podporovány pouze mezi primitivními typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporována pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
 
@@ -315,7 +316,7 @@ V současné době dotazy na **Devices.Jobs** nepodporují:
 
 ## <a name="basics-of-an-iot-hub-query"></a>Základy dotazu IoT Hub
 
-Každý IoT Hub dotaz se skládá z klauzulí SELECT a FROM s volitelnými klauzulemi WHERE a GROUP BY. Každý dotaz se spouští na kolekci dokumentů JSON, například na vlákna zařízení. Klauzule FROM označuje kolekci dokumentů, na které se má iterovat (**zařízení**, **zařízení. moduly**nebo **Devices.Jobs**). Pak je použit filtr v klauzuli WHERE. U agregací jsou výsledky tohoto kroku seskupené podle zadání v klauzuli GROUP BY. Pro každou skupinu se vygeneruje řádek, jak je uvedeno v klauzuli SELECT.
+Každý IoT Hub dotaz se skládá z klauzulí SELECT a FROM s volitelnými klauzulemi WHERE a GROUP BY. Každý dotaz se spouští na kolekci dokumentů JSON, například na vlákna zařízení. Klauzule FROM označuje kolekci dokumentů, na které se má iterovat (**zařízení**, **zařízení. moduly** nebo **Devices.Jobs**). Pak je použit filtr v klauzuli WHERE. U agregací jsou výsledky tohoto kroku seskupené podle zadání v klauzuli GROUP BY. Pro každou skupinu se vygeneruje řádek, jak je uvedeno v klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
@@ -449,9 +450,9 @@ Podporovány jsou následující operátory:
 
 | Rodina | Operátory |
 | --- | --- |
-| Průměr |+, -, *, /, % |
+| Aritmetické |+, -, *, /, % |
 | Logické |A, NEBO, NOT |
-| Porovnání |=,! =, <, >, <=, >=,  <> |
+| Porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 
@@ -478,7 +479,7 @@ V podmínkách směrování jsou podporovány následující funkce kontroly a p
 
 | Funkce | Popis |
 | -------- | ----------- |
-| AS_NUMBER | Převede vstupní řetězec na číslo. `noop`Pokud je vstup číslo, `Undefined`Pokud řetězec nepředstavuje číslo.|
+| AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud je vstup číslo, `Undefined` Pokud řetězec nepředstavuje číslo.|
 | IS_ARRAY | Vrací logickou hodnotu označující, zda je typ zadaného výrazu pole Array. |
 | IS_BOOL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu logická hodnota. |
 | IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |

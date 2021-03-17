@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Firewall a skupin IP – šablona Správce prostředků'
-description: Naučte se používat šablonu Azure Resource Manager (šablonu ARM) k vytvoření Azure Firewall a skupin IP adres.
+description: V tomto rychlém startu se naučíte používat šablonu Azure Resource Manager (šablonu ARM) k vytvoření Azure Firewall a skupin IP adres.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/06/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 97d1c14a61e98f98e45e25668841cee1ad9ce0d1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705465"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89079128"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Rychlý Start: vytvoření Azure Firewall a skupin IP – šablona ARM
 
@@ -76,7 +76,7 @@ V Azure Portal zkontrolujte nasazené prostředky, zejména pravidla brány fire
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="Skupiny IP adres.":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Síťová pravidla.":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Skupiny IP adres.":::
 
 Další informace o syntaxi a vlastnostech JSON pro bránu firewall v šabloně najdete v referenčních informacích k [šabloně Microsoft. Network azureFirewalls](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls).
 

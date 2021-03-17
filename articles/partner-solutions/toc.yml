@@ -1,0 +1,26 @@
+- name: Dokumentace k partnerským řešením v Azure
+  href: overview.md
+- name: Partnerská řešení
+  items:
+    - name: Apache Kafka v prostředí Confluent Cloud
+      items:
+        - name: Přehled
+          displayName: 'Apache, Kafka, Confluent'
+          href: ./apache-kafka-confluent-cloud/overview.md
+        - name: Vytvořit
+          href: ./apache-kafka-confluent-cloud/create.md
+        - name: Spravovat
+          href: ./apache-kafka-confluent-cloud/manage.md
+        - name: Řešení potíží
+          href: ./apache-kafka-confluent-cloud/troubleshoot.md
+    - name: Datadog
+      items:
+        - name: Přehled
+          displayName: 'Datadog, Monitoring'
+          href: ./datadog/overview.md
+        - name: Vytvořit
+          href: ./datadog/create.md
+        - name: Spravovat
+          href: ./datadog/manage.md
+        - name: Řešení potíží
+          href: ./datadog/troubleshoot.md

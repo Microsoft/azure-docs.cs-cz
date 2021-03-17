@@ -2,19 +2,19 @@
 title: Kurz – monitorování hybridního počítače s Azure Monitor pro virtuální počítače
 description: Naučte se shromažďovat a analyzovat data z hybridního počítače v Azure Monitor.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 76df7d403fdce6fc3ac77c0b24849aedffb57ce0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: 409ad0976e02e42e385e22a103cfc06af5a4f3f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213159"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587687"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Kurz: monitorování hybridního počítače pomocí Azure Monitor pro virtuální počítače
 
-[Azure monitor](../overview.md) může shromažďovat data přímo z hybridních virtuálních počítačů do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Obvykle by to mělo za následek instalaci [agenta Log Analytics](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) na počítači pomocí skriptu, ručně nebo automatizované metody podle standardů správy konfigurace. Servery s podporou ARC (Preview) nedávno zavedly podporu pro instalaci rozšíření Log Analytics a [virtuálních počítačů](../manage-vm-extensions.md) agenta závislostí pro Windows a Linux, což umožňuje Azure monitor shromažďovat data z virtuálních počítačů mimo Azure.
+[Azure monitor](../overview.md) může shromažďovat data přímo z hybridních počítačů do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Obvykle by to mělo za následek instalaci [agenta Log Analytics](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent) na počítači pomocí skriptu, ručně nebo automatizované metody podle standardů správy konfigurace. Servery s podporou ARC nedávno zavedly podporu pro instalaci rozšíření Log Analytics a [virtuálních počítačů](../manage-vm-extensions.md) agenta závislostí pro Windows a Linux, což umožňuje Azure monitor shromažďovat data z virtuálních počítačů mimo Azure.
 
-V tomto kurzu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuálních počítačů se systémem Linux nebo Windows tím, že povolíte Azure Monitor pro virtuální počítače následující zjednodušené kroky, což zjednodušuje prostředí a trvá kratší dobu.  
+V tomto kurzu se dozvíte, jak nakonfigurovat a shromažďovat data z počítačů se systémem Linux nebo Windows tím, že povolíte Azure Monitor pro virtuální počítače následující zjednodušené kroky, což zjednodušuje prostředí a trvá kratší dobu.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -22,17 +22,17 @@ V tomto kurzu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuáln�
 
 * Funkce rozšíření virtuálních počítačů jsou k dispozici pouze v seznamu [podporovaných oblastí](../overview.md#supported-regions).
 
-* V části [podporované operační systémy](../../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je operační systém, který chcete povolit, podporovaný Azure monitor pro virtuální počítače.
+* V části [podporované operační systémy](../../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je operační systém, který chcete povolit, podporovaný Azure monitor pro virtuální počítače.
 
-* Projděte si požadavky na bránu firewall pro agenta Log Analytics poskytovaného v článku [Přehled agenta Log Analytics](../../../azure-monitor/platform/log-analytics-agent.md#network-requirements). Agent závislostí Azure Monitor pro virtuální počítače neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů.
+* Projděte si požadavky na bránu firewall pro agenta Log Analytics poskytovaného v článku [Přehled agenta Log Analytics](../../../azure-monitor/agents/log-analytics-agent.md#network-requirements). Agent závislostí Azure Monitor pro virtuální počítače neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů.
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-azure-monitor-for-vms"></a>Povolit Azure Monitor pro virtuální počítače
 
-1. Spusťte službu Azure ARC v Azure Portal kliknutím na **všechny služby**a pak vyhledáte a vyberete **počítače – Azure ARC**.
+1. Spusťte službu Azure ARC v Azure Portal kliknutím na **všechny služby** a pak vyhledáte a vyberete **počítače – Azure ARC**.
 
     :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
@@ -54,17 +54,17 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="view-data-collected"></a>Zobrazení shromážděných dat
 
-Po dokončení nasazení a konfigurace vyberte **přehledy**a pak vyberte kartu **výkon** . Na kartě výkon se zobrazuje vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému virtuálního počítače. Posuňte se dolů, abyste zobrazili další čítače a přesunuli jste ukazatel myši na graf a zobrazili průměr a percentily od doby, kdy byla na počítač nainstalovaná rozšíření Log Analytics virtuálního počítače.
+Po dokončení nasazení a konfigurace vyberte **přehledy** a pak vyberte kartu **výkon** . Na kartě výkon se zobrazuje vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému vašeho počítače. Posuňte se dolů, abyste zobrazili další čítače a přesunuli jste ukazatel myši na graf a zobrazili průměr a percentily od doby, kdy byla na počítač nainstalovaná rozšíření Log Analytics virtuálního počítače.
 
 :::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="Azure Monitor pro virtuální počítače grafy výkonu pro vybraný počítač" border="false":::
 
-Vyberte **Mapa** a otevřete funkci Maps, která zobrazuje procesy běžící na virtuálním počítači a jejich závislosti. Výběrem **vlastnosti** otevřete podokno vlastností, pokud již není otevřeno.
+Vyberte **Mapa** , chcete-li otevřít funkci Maps, která zobrazuje procesy běžící v počítači a jejich závislosti. Výběrem **vlastnosti** otevřete podokno vlastností, pokud již není otevřeno.
 
 :::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Azure Monitor pro virtuální počítače mapa pro vybraný počítač" border="false":::
 
-Rozbalíte procesy pro svůj virtuální počítač. Výběrem jednoho z procesů zobrazíte jeho podrobnosti a zvýrazníte jeho závislosti.
+Rozbalí procesy pro váš počítač. Výběrem jednoho z procesů zobrazíte jeho podrobnosti a zvýrazníte jeho závislosti.
 
-Vyberte virtuální počítač znovu a pak vyberte **události protokolu**. Zobrazí se seznam tabulek, které jsou uložené v pracovním prostoru Log Analytics pro virtuální počítač. Tento seznam se liší v závislosti na tom, zda používáte virtuální počítač se systémem Windows nebo Linux. Vyberte tabulku **událostí** . Tabulka **událostí** obsahuje všechny události z protokolu událostí systému Windows. Log Analytics se otevře s jednoduchým dotazem, který načte shromážděné položky protokolu událostí.
+Vyberte svůj počítač znovu a pak vyberte **události protokolu**. Zobrazí se seznam tabulek, které jsou uložené v pracovním prostoru Log Analytics pro daný počítač. Tento seznam se liší v závislosti na tom, zda používáte počítač se systémem Windows nebo Linux. Vyberte tabulku **událostí** . Tabulka **událostí** obsahuje všechny události z protokolu událostí systému Windows. Log Analytics se otevře s jednoduchým dotazem, který načte shromážděné položky protokolu událostí.
 
 ## <a name="next-steps"></a>Další kroky
 

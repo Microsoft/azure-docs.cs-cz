@@ -1,19 +1,16 @@
 ---
 title: Analýza & procesu JSON pomocí Apache Hive – Azure HDInsight
 description: Naučte se používat dokumenty JSON a analyzovat je pomocí Apache Hive ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 31fc6fe02559c356f072761c024308f158ae4d9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085442"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943060"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive ve službě Azure HDInsight
 
@@ -154,11 +151,11 @@ SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje 
 
 ## <a name="summary"></a>Souhrn
 
-Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object**podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple**. U vnořených dokumentů použijte **SerDe JSON**.
+Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object** podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple**. U vnořených dokumentů použijte **SerDe JSON**.
 
 ## <a name="next-steps"></a>Další kroky
 
 Související články najdete v tématech:
 
-* [Analýza ukázkového souboru Apache log4j pomocí Apache Hive a HiveQL s Apache Hadoop v HDInsight](../hdinsight-use-hive.md)
+* [Analýza ukázkového souboru Apache log4j pomocí Apache Hive a HiveQL s Apache Hadoop v HDInsight](./hdinsight-use-hive.md)
 * [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

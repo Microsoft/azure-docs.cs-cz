@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics vlastní dělení výstupu objektů BLOB
 description: Tento článek popisuje vlastní vzorce cesty DateTime a funkce vlastního pole nebo atributů pro výstup služby Blob Storage z Azure Stream Analytics úloh.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747637"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014032"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
 
@@ -25,11 +24,17 @@ Vlastní pole nebo vstupní atributy zlepšují pracovní postupy pro zpracován
 
 ### <a name="partition-key-options"></a>Možnosti klíče oddílu
 
-Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX).
+Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, může obsahovat libovolný znak, který je přijatý pro [názvy objektů BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata). Vnořené pole nejde použít jako klíč oddílu, pokud se nepoužívá ve spojení s aliasy, ale můžete použít určité znaky k vytvoření hierarchie souborů. Pomocí následujícího dotazu můžete například vytvořit sloupec, který kombinuje data ze dvou dalších sloupců, a vytvořit tak jedinečný klíč oddílu.
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+Klíč oddílu musí být NVARCHAR (MAX), BIGINT, FLOAT nebo BIT (úroveň kompatibility 1,2 nebo vyšší). Typy DateTime, Array a Record nejsou podporovány, ale lze je použít jako klíče oddílu, pokud jsou převedeny na řetězce. Další informace najdete v tématu [Azure Stream Analytics datových typů](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Příklad
 
-Předpokládejme, že úloha přebírá vstupní data z živých uživatelských relací připojených ke službě externí videohry, kde ingestovaná data obsahují sloupec **client_id** k identifikaci relací. Při vytváření oddílů dat **client_id**nastavte pole vzor cesty objektů BLOB tak, aby zahrnovalo token oddílu **{client_id}** v výstupních vlastnostech objektu BLOB při vytváření úlohy. Jelikož data s různými **client_idmi** hodnotami přecházejí prostřednictvím úlohy Stream Analytics, výstupní data se ukládají do samostatných složek na základě jedné **client_id** hodnoty na složku.
+Předpokládejme, že úloha přebírá vstupní data z živých uživatelských relací připojených ke službě externí videohry, kde ingestovaná data obsahují sloupec **client_id** k identifikaci relací. Při vytváření oddílů dat **client_id** nastavte pole vzor cesty objektů BLOB tak, aby zahrnovalo token oddílu **{client_id}** v výstupních vlastnostech objektu BLOB při vytváření úlohy. Jelikož data s různými **client_idmi** hodnotami přecházejí prostřednictvím úlohy Stream Analytics, výstupní data se ukládají do samostatných složek na základě jedné **client_id** hodnoty na složku.
 
 ![Vzor cesty s ID klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
@@ -44,7 +49,7 @@ Po spuštění úlohy může kontejner *klienti* vypadat takto:
 
 ![Kontejner klientů](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Každá složka může obsahovat několik objektů blob, kde každý objekt BLOB obsahuje jeden nebo víc záznamů. V předchozím příkladu je ve složce označené jako "06000000" jeden objekt BLOB s následujícím obsahem:
+Každá složka může obsahovat několik objektů blob, kde každý objekt BLOB obsahuje jeden nebo víc záznamů. V předchozím příkladu je ve složce s názvem "06000000" jeden objekt BLOB s následujícím obsahem:
 
 ![Obsah objektu BLOB](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
@@ -63,15 +68,17 @@ Všimněte si, že každý záznam v objektu BLOB má **client_id** sloupec odpo
 
 3. Když vstupní datový proud sestává z záznamů s mohutnosti klíče oddílu v 8000, záznamy se připojí k existujícím objektům blob a v případě potřeby vytvoří jenom nové objekty blob. Pokud mohutnost překračuje 8000, nebudou se do nich zapisovat existující objekty BLOB a nevytvoří se nové objekty blob pro libovolný počet záznamů se stejným klíčem oddílu.
 
+4. Pokud je výstup objektu BLOB [nakonfigurován jako neměnný](../storage/blobs/storage-blob-immutable-storage.md), Stream Analytics vytvoří nový objekt BLOB při každém odeslání dat.
+
 ## <a name="custom-datetime-path-patterns"></a>Vlastní vzory cesty DateTime
 
-Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který bude odpovídat konvencím pro streamování, což dává Azure Stream Analytics schopnost odesílat data do služby Azure HDInsight a Azure Databricks pro zpracování pro příjem dat. Vlastní vzorce cesty DateTime se snadno implementují pomocí `datetime` klíčového slova v poli Předpona cesty pro výstup objektu BLOB spolu s specifikátorem formátu. Například, `{datetime:yyyy}`.
+Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který bude odpovídat konvencím pro streamování, což dává Azure Stream Analytics schopnost odesílat data do služby Azure HDInsight a Azure Databricks pro zpracování pro příjem dat. Vlastní vzorce cesty DateTime se snadno implementují pomocí `datetime` klíčového slova v poli Předpona cesty pro výstup objektu BLOB spolu s specifikátorem formátu. Například `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Podporované tokeny
 
 Následující tokeny specifikátoru formátu lze použít samostatně nebo v kombinaci k dosažení vlastních formátů data a času:
 
-|Specifikátor formátu   |Description   |Výsledky pro příklad času 2018-01-02T10:06:08|
+|Specifikátor formátu   |Popis   |Výsledky pro příklad času 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: rrrr}|Rok jako čtyřmístné číslo|2018|
 |{DateTime: MM}|Měsíc od 01 do 12|01|
@@ -103,7 +110,7 @@ V předponě cesty můžete několikrát použít stejný specifikátor formátu
 
 Vlastní vzory cest pro úložiště objektů BLOB lze použít s konvencí pro streamování podregistru, která očekává, že složky budou označeny `column=` v názvu složky.
 
-Například, `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
+Například `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 
 Vlastní výstup eliminuje nepříjemnosti při změnách tabulek a Ruční přidávání oddílů do dat portů mezi Azure Stream Analytics a podregistru. Místo toho je možné automaticky přidat mnoho složek pomocí:
 
@@ -113,7 +120,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Příklad
 
-Vytvořte účet úložiště, skupinu prostředků, úlohu Stream Analytics a vstupní zdroj podle Azure Stream Analytics Průvodce rychlým startem pro [Azure Portal](stream-analytics-quick-create-portal.md) . Použijte stejná vzorová data, která se používají v průvodci rychlým startem, k dispozici také na [GitHubu](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
+Vytvořte účet úložiště, skupinu prostředků, úlohu Stream Analytics a vstupní zdroj podle příručky Průvodce rychlým startem pro [Azure Stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) . Použijte stejná vzorová data, která se používají v průvodci rychlým startem, k dispozici také na [GitHubu](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
 
 Vytvořte výstupní jímku objektu BLOB s následující konfigurací:
 

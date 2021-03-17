@@ -2,22 +2,22 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: container-service
-author: dlepow
+author: mlearned
 ms.service: container-service
 ms.topic: include
 ms.date: 11/22/2019
-ms.author: danlep
+ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 6b4678b381e769993b01bbedd1cb4c0aeefc0cc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42bba1b6524825aa571e4c18319b61b97829792
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334747"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584611"
 ---
 | Prostředek | Omezení |
 | --- | :--- |
-| Maximální počet clusterů na předplatné | 100 |
+| Maximální počet clusterů na předplatné | 1000 |
 | Maximální počet uzlů na cluster se skupinami dostupnosti virtuálních počítačů a základní Load Balancer SKU  | 100 |
 | Maximální počet uzlů na cluster s Virtual Machine Scale Sets a [Standard Load BALANCER SKU][standard-load-balancer] | 1000 (100 uzlů na [fond uzlů][node-pool]) |
 | Maximální počet lusků na uzel: [základní sítě][basic-networking] s Kubenet | 110 |
@@ -28,7 +28,7 @@ ms.locfileid: "80334747"
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking
 [advanced-networking]: ../articles/aks/concepts-network.md#azure-cni-advanced-networking
-[standard-load-balancer]: ../articles/load-balancer/load-balancer-standard-overview.md
+[standard-load-balancer]: ../articles/load-balancer/load-balancer-overview.md
 [node-pool]: ../articles/aks/use-multiple-node-pools.md
 
 <!-- LINKS - External -->

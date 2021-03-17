@@ -1,25 +1,26 @@
 ---
 title: Kurz – vytváření a správa virtuálních počítačů se systémem Linux pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvářet a spravovat virtuální počítače s Linuxem v Azure.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 77213fe83a56a33f4d10658f85465349949be792
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263091"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555597"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -251,7 +252,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení. Tento 
 
 ### <a name="power-states"></a>Stavy napájení
 
-| Stav napájení | Popis
+| Stav napájení | Description
 |----|----|
 | Spouštění | Označuje, že virtuální počítač se právě spouští. |
 | Spuštěno | Označuje, že virtuální počítač běží (je spuštěný). |
@@ -280,7 +281,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
+Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
 
 ## <a name="management-tasks"></a>Úlohy správy
 

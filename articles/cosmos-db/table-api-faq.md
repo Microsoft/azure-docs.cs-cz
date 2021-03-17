@@ -3,17 +3,19 @@ title: Nejčastější dotazy týkající se rozhraní API pro tabulky v Azure C
 description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API pro tabulky v Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c5404c026385f9ebf06c4f0289a4db0bf944d172
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167585"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341228"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API pro tabulky v Azure Cosmos DB
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Rozhraní API pro tabulky Azure Cosmos DB je k dispozici v [Azure Portal](https://portal.azure.com) nejprve musíte se zaregistrovat k předplatnému Azure. Po registraci můžete do svého předplatného Azure přidat účet Azure Cosmos DB rozhraní API pro tabulky a pak do svého účtu přidat tabulky. Podporované jazyky a související rychlé starty najdete v [úvodu k Azure Cosmos DB rozhraní API pro tabulky](table-introduction.md).
 
@@ -97,7 +99,7 @@ K procházení dat můžete použít Azure Portal. Můžete také použít kód 
 
 ### <a name="which-tools-work-with-the-table-api"></a>Které nástroje pracují s rozhraní API pro tabulky?
 
-Můžete použít [Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Můžete použít [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Nástroje s flexibilitou pro povýšení připojovacího řetězce ve výše zadaném formátu mohou podporovat nové rozhraní API pro tabulky. Seznam nástrojů tabulky je k dispozici na stránce [Azure Storage klientských nástrojů](../storage/common/storage-explorers.md) .
 
@@ -115,7 +117,7 @@ Ano, můžete se připojit tak, že vytvoříte dvě samostatné instance Cloudt
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Návody migrovat existující aplikaci Azure Table Storage do této nabídky?
 
-[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) a [Nástroj pro migraci dat Azure Cosmos DB](import-data.md) jsou podporované.
+[AzCopy](../storage/common/storage-use-azcopy-v10.md) a [Nástroj pro migraci dat Azure Cosmos DB](import-data.md) jsou podporované.
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Jak funguje rozšíření velikosti úložiště pro tuto službu, pokud například začínáte *n* GB dat a data se v průběhu času zvětší na 1 TB?
 
@@ -195,7 +197,7 @@ Ano, Azure Cosmos DB rozhraní API pro tabulky poskytuje automatické indexován
 
 Ano, zásady indexování můžete změnit zadáním definice indexu. Musíte správně zakódovat a napřed nastavit řídicí.
 
-V případě sad non-.NET SDK se dá zásada indexování nastavit jenom na portálu na **Průzkumník dat**, přejděte na konkrétní tabulku, kterou chcete změnit, a potom přejděte do části **škálování & nastavení**– >zásadu indexování, proveďte požadovanou změnu a pak ji **uložte**.
+V případě sad non-.NET SDK se dá zásada indexování nastavit jenom na portálu na **Průzkumník dat** , přejděte na konkrétní tabulku, kterou chcete změnit, a potom přejděte do části **škálování & nastavení** – >zásadu indexování, proveďte požadovanou změnu a pak ji **uložte**.
 
 Ze sady .NET SDK je možné odeslat soubor app.config:
 
@@ -231,7 +233,7 @@ Ze sady .NET SDK je možné odeslat soubor app.config:
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB jako platforma se jeví mít spoustu možností, jako je řazení, agregace, hierarchie a další funkce. Budete tyto možnosti přidávat do rozhraní API pro tabulky?
 
-Rozhraní API pro tabulky poskytuje stejné funkce dotazů jako úložiště tabulek Azure. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další informace najdete v tématu [SQL dotazy](how-to-sql-query.md).
+Rozhraní API pro tabulky poskytuje stejné funkce dotazů jako úložiště tabulek Azure. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další informace najdete v tématu [SQL dotazy](./sql-query-getting-started.md).
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Kdy bych měl změnit TableThroughput rozhraní API pro tabulky?
 
@@ -293,7 +295,7 @@ Azure Cosmos DB je systém založený na smlouvě SLA, který poskytuje latenci,
 Svůj názor můžete sdílet některým z následujících způsobů:
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Stránka s otázkou Microsoft Q&](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
 ## <a name="next-steps"></a>Další kroky

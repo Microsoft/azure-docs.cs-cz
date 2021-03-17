@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792534"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89179840"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Zpracování dokumentů EDIFACT s segmenty UNH 2.5 v Azure Logic Apps
 
@@ -56,8 +56,6 @@ Pokud chcete zakódovat příchozí zprávu, nakonfigurujte schéma ve smlouvě 
 1. Přidejte schéma do účtu pro integraci.
 
 1. Nakonfigurujte schéma v nastaveních odeslání EDIFACT smlouvy.
-
-1. Vyberte smlouvu EDIFACT a klikněte na **Upravit jako JSON**.  Přidat hodnotu UNH 2.5 do **schemaReferences** pro odeslání smlouvy
 
 1. Vyberte smlouvu EDIFACT a vyberte **Upravit jako JSON**. Do části odeslání smlouvy přidejte hodnotu UNH 2.5 `schemaReferences` :
 

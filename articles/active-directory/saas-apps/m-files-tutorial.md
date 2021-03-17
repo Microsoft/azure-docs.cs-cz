@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 552e5c2411889ee7f07265eb1cc35d98aed4d7c1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554819"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Kurz: Azure Active Directory integrace s M-Files
 
@@ -27,7 +27,7 @@ Integrace M-Files s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili do souborů M-Files (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, je potřeba vytvořit odkaz na propoje
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí souborů M-Files, je nutné dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace M-Files jednotného přihlašování](#configure-m-files-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Konfigurace M-Files jednotného přihlašování](#configure-m-files-single-sign-on)** – pro konfiguraci nastavení jednoho Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření testovacího uživatele M-Files](#create-m-files-test-user)** – Pokud chcete mít protějšek Britta Simon v M-Files, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Kontaktujte [M-soubory tým podpory klienta](mailto:support@m-files.com) , aby získali tyto hodnoty. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -122,34 +122,34 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-m-files-single-sign-on"></a>Konfigurace M-souborů jednotného přihlašování
+### <a name="configure-m-files-single-sign-on"></a>Konfigurovat M-soubory Single Sign-On
 
 1. Pokud chcete pro vaši aplikaci nakonfigurovat jednotné přihlašování (SSO), kontaktujte [tým podpory souborů M-Files](mailto:support@m-files.com) a poskytněte jim stažená metadata.
    
     >[!NOTE]
     >Pokud chcete nakonfigurovat jednotné přihlašování pro desktopovou aplikaci M-File, postupujte podle následujících kroků. Pokud chcete nakonfigurovat jednotné přihlašování jenom pro web M-Files, nejsou potřeba žádné další kroky.  
 
-1. Postupujte podle dalších kroků a nakonfigurujte desktopovou aplikaci M-File pro povolení jednotného přihlašování s Azure AD. Chcete-li stáhnout soubory M-Files, přejít na stránku pro [Stažení souborů m-Files](https://www.m-files.com/en/download-latest-version) .
+1. Postupujte podle dalších kroků a nakonfigurujte desktopovou aplikaci M-File pro povolení jednotného přihlašování s Azure AD. Chcete-li stáhnout soubory M-Files, přejít na stránku pro [Stažení souborů m-Files](https://www.m-files.com/customers/product-downloads/download-update-links/) .
 
 1. Otevřete okno **nastavení počítače M-Files** . Pak klikněte na tlačítko **Přidat**.
    
-    ![Konfigurace jednotného přihlašování](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Snímek obrazovky zobrazuje M-Files nastavení plochy, kde můžete vybrat přidat.](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. V okně **Vlastnosti připojení trezoru dokumentů** proveďte následující kroky:
    
-    ![Konfigurace jednotného přihlašování](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Snímek obrazovky zobrazuje vlastnosti připojení trezoru dokumentů, kde můžete zadat hodnoty, které jsou popsány.](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     V části typ oddílu Server hodnoty zadejte následující hodnoty:  
 
-    a. Jako **název**zadejte `<tenant-name>.cloudvault.m-files.com` . 
+    a. Jako **název** zadejte `<tenant-name>.cloudvault.m-files.com` . 
  
-    b. Jako **číslo portu**zadejte **4466**. 
+    b. Jako **číslo portu** zadejte **4466**. 
 
-    c. V případě **protokolu**vyberte **https**. 
+    c. V případě **protokolu** vyberte **https**. 
 
     d. V poli **ověřování** vyberte **konkrétní uživatel systému Windows**. Pak se zobrazí výzva s podpisovou stránkou. Vložte přihlašovací údaje služby Azure AD. 
 
-    e. Pro **trezor na serveru**vyberte odpovídající trezor na serveru.
+    e. Pro **trezor na serveru** vyberte odpovídající trezor na serveru.
  
     f. Klikněte na **OK**.
 
@@ -157,7 +157,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -176,15 +176,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k souborům M.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **M-Files**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **M-Files**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **M-Files**.
 
@@ -212,13 +212,12 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v M-Files. P
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici soubory M-Files na přístupovém panelu, měli byste se automaticky přihlásit k souborům M, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici soubory M-Files na přístupovém panelu, měli byste se automaticky přihlásit k souborům M, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

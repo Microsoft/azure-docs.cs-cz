@@ -1,17 +1,18 @@
 ---
 title: Principy slev za rezervaci – izolovaný server Azure Database for PostgreSQL
 description: Projděte si způsob uplatňování slev za rezervaci na izolované servery Azure Database for PostgreSQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: e01b35bc540045bc272484159380f8a11e5a6c48
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ace362872f0b7ba8e2f3d0302c887e2465c62982
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509393"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240337"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Způsob uplatňování slev za rezervaci na izolovaný server Azure Database for PostgreSQL
 
@@ -19,7 +20,7 @@ Když si zakoupíte rezervovanou kapacitu izolovaného serveru Azure Database fo
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
-Nevyužitá sleva za rezervaci se ***nenahrazuje***. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.</br>
+Nevyužitá sleva za rezervaci se * **nenahrazuje** _. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.</br>
 
 Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny přijdete.
 
@@ -29,7 +30,7 @@ Sleva za rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQ
 
 Následující příklady ukazují, jak se sleva za rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL uplatňuje v závislosti na počtu zakoupených jader a na tom, kdy jsou tato jádra spuštěná.
 
-* **Příklad 1:** Zakoupíte si rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL pro 8 virtuálních jader. Pokud používáte izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry, který vyhovuje ostatním atributům rezervace, za využití výpočetních prostředků pro 8 virtuálních jader izolovaného serveru PostgreSQL se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití výpočetních prostředků pro izolovaný server PostgreSQL s 8 virtuálními jádry získáte slevu za rezervaci.</br>
+_ **Příklad 1** : Zakoupíte si rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL pro 8 virtuálních jader. Pokud používáte izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry, který vyhovuje ostatním atributům rezervace, za využití výpočetních prostředků pro 8 virtuálních jader izolovaného serveru PostgreSQL se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití výpočetních prostředků pro izolovaný server PostgreSQL s 8 virtuálními jádry získáte slevu za rezervaci.</br>
 
 U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL pro 16 virtuálních jader a ostatní atributy rezervace odpovídají spuštěným izolovaným serverům PostgreSQL.
 
@@ -39,7 +40,7 @@ U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapaci
 
 * **Příklad 4:** Od 13:00 do 13:45 spustíte jeden izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry. Od 13:30 do 14:00 spustíte jiný izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry. Za 15 minut, kdy se doba chodu obou databází překrývá, zaplatíte průběžnou platbu. Po zbytek doby se na využití výpočetních prostředků uplatňuje sleva za rezervaci.
 
-Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
+Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Další kroky
 

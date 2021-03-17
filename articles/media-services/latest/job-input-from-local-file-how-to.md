@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vstupu Azure Media Services úlohy z místního souboru | Microsoft Docs
+title: Vytvoření vstupu úlohy z místního souboru
 description: Tento článek ukazuje, jak vytvořit vstup Azure Media Services úlohy z místního souboru.
 services: media-services
 documentationcenter: ''
@@ -8,21 +8,23 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 08/18/2020
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 466c609b21d115340a919ab32bd9dcf9c8d3a7ca
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607234"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092283"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Vytvoření vstupu úlohy z místního souboru
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Vstupní video se může ukládat jako Asset služby Media Service. v takovém případě vytvoříte vstupní Asset založený na souboru (uložený místně nebo v úložišti objektů BLOB v Azure). V tomto tématu se dozvíte, jak vytvořit vstup úlohy z místního souboru. Úplný příklad najdete v této [ukázce GitHubu](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvořte účet Media Services](./create-account-howto.md).
 

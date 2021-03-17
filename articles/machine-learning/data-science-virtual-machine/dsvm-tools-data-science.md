@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Seznamte se s nástroji pro strojové učení a architekturami, které jsou předinstalované na Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012402"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519554"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure Data věda Virtual Machines (DSVMs) mají bohatou sadu nástrojů a knihoven pro strojové učení, které jsou dostupné v oblíbených jazycích, jako je Python, R nebo Helena.
@@ -24,7 +23,7 @@ Tady jsou některé z nástrojů pro strojové učení a knihovny v DSVMs.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Sada Azure Machine Learning SDK pro Python
 
-Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](../overview-what-is-azure-ml.md).
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
@@ -89,7 +88,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Co to je?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy mohou být buď aplikovány přímo na sadu dat, nebo volány z vlastního kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clusteringu, pravidla přidružení a vizualizaci. |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecný nástroj pro strojové učení     |
-| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace**  >  **vývoj**aplikací  >  **weka**. |
+| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace**  >  **vývoj** aplikací  >  **weka**. |
 | Odkaz na ukázky      | [Ukázky weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Související nástroje      |LightGBM, Rattle, XGBoost   |
 
@@ -113,5 +112,3 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Typická použití      |  Pro průzkum místních dat bez nutnosti extrakce, transformace, načítání (ETL). Dotazování různých zdrojů dat a formátů, včetně sdílených svazků clusteru, formátu JSON, relačních tabulek a Hadoop.     |
 | Jak použít a spustit      | Zástupce na ploše  <br/> [Začínáme s procházením za 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Související nástroje na DSVM      |   Rattle, weka, SQL Server Management Studio      |
-
-

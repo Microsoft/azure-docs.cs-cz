@@ -5,20 +5,18 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 01/08/2021
+ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608743"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570998"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB bez serveru je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouva SLA a nedoporučuje se pro produkční úlohy. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
-Azure Cosmos DB bez serveru vám umožní používat účet Azure Cosmos na základě spotřeby, kde se účtují jenom ty jednotky žádosti spotřebované vaší databázovou operací a úložiště spotřebované Vašimi daty. Při použití Azure Cosmos DB v režimu bez serveru se neúčtují žádné minimální poplatky.
+Azure Cosmos DB bez serveru vám umožní používat účet Azure Cosmos na základě spotřeby, kde se účtují jenom ty jednotky žádosti spotřebované vaší databázovou operací a úložiště spotřebované Vašimi daty. Kontejnery bez serveru můžou obsluhovat tisíce požadavků za sekundu bez minimálního nabití a nevyžadují se žádné plánování kapacity.
 
 > [!IMPORTANT] 
 > Máte jakoukoli zpětnou vazbu týkající se bez serveru? Chceme si vyzkoušet! Nehodí se k vyřazení zprávy na Azure Cosmos DB týmu bez serveru: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) .
@@ -30,28 +28,20 @@ Při použití Azure Cosmos DB má každá databázová operace náklady vyjád�
 
 ## <a name="use-cases"></a>Případy použití
 
-Azure Cosmos DB nejlépe vyhovuje scénářům, kde očekáváte:
+Azure Cosmos DB nejlépe vyhovuje vašim scénářům, kdy očekáváte **přerušované a nepředvídatelné přenosy** s dlouhou dobou nečinnosti. Vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může se jednat o náklady, Azure Cosmos DB serveru by se mělo zvážit v následujících případech použití:
 
-- **Lehký provoz**: vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může být nákladově zakazují
-- **Střední úroveň shlukování**: protože kontejnery bez serveru můžou doručovat až 5 000 jednotek žádostí za sekundu.
-- **Střední výkon**: vzhledem k tomu, že kontejnery bez serveru mají [specifické charakteristiky výkonu](#performance)
-
-Z těchto důvodů je Azure Cosmos DB bez serveru zvážit pro následující typy úloh:
-
-- Vývoj
-- Testování
-- Prototyping
-- Testování konceptu
-- Nekritická aplikace s lehkým provozem
+- Začínáme s Azure Cosmos DB
+- Běžící aplikace s
+    - shluky, přerušované provozy, které jsou obtížné vypovědět, nebo
+    - nízká (<10%) poměr přenosů z průměru na špičku
+- Vývoj, testování, vytváření prototypů a spouštění v produkčních nových aplikacích, kde je vzorek provozu neznámý
+- Integrace s výpočetními službami bez serveru, jako je [Azure Functions](../azure-functions/functions-overview.md)
 
 Další informace o tom, jak vybrat nabídku, která nejlépe odpovídá vašemu použití, najdete v článku [jak si vybrat mezi zřízenou propustností a bez serveru](throughput-serverless.md) .
 
 ## <a name="using-serverless-resources"></a>Používání prostředků bez serveru
 
 Bez serveru je nový typ účtu Azure Cosmos, což znamená, že při vytváření nového účtu musíte zvolit mezi **zřízenou propustností** a bez **serveru** . Abyste mohli začít pracovat bez serveru, musíte vytvořit nový účet bez serveru. V rámci verze Preview je jediným podporovaným způsobem, jak vytvořit nový účet bez serveru, [použití Azure Portal](create-cosmosdb-resources-portal.md). Migrace existujících účtů do nebo z režimu bez serveru se v tuto chvíli nepodporuje.
-
-> [!NOTE]
-> V současné době se podporuje jenom na serveru rozhraní API pro Azure Cosmos DB Core (SQL).
 
 Jakýkoli kontejner, který je vytvořený v účtu bez serveru, je kontejner bez serveru. Kontejnery bez serveru zpřístupňují stejné možnosti jako kontejnery vytvořené v režimu zřízené propustnosti, takže můžete data číst, zapisovat a dotazovat přesně stejným způsobem. Účty a kontejnery bez serveru ale mají také specifické vlastnosti:
 
@@ -64,7 +54,6 @@ Jakýkoli kontejner, který je vytvořený v účtu bez serveru, je kontejner be
     - Při vytváření kontejneru bez serveru nemůžete předat žádnou propustnost a v takovém případě vrátí chybu.
     - Nemůžete číst ani aktualizovat propustnost na kontejneru bez serveru a v takovém případě vrátí chybu.
     - Nelze vytvořit sdílenou databázi propustnosti v účtu bez serveru a v takovém případě vrátí chybu.
-- Kontejnery bez serveru můžou poskytovat maximální prostupnost propustnosti 5 000 jednotek žádostí za sekundu.
 - Kontejnery bez serveru můžou ukládat maximálně 50 GB dat a indexů.
 
 ## <a name="monitoring-your-consumption"></a>Monitorování vaší spotřeby
@@ -75,23 +64,16 @@ Při procházení podokna **metrik** vašeho účtu najdete graf s názvem **jed
 
 :::image type="content" source="./media/serverless/request-units-consumed.png" alt-text="Graf znázorňující spotřebované jednotky žádostí" border="false":::
 
-Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde](monitor-request-unit-usage.md). Všimněte si, že Azure Monitor vám umožní nastavit [Upozornění](../azure-monitor/platform/alerts-metric-overview.md), která se můžou použít k upozornění, když spotřeba jednotky žádosti předala určitou prahovou hodnotu.
+Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde](monitor-request-unit-usage.md). Všimněte si, že Azure Monitor vám umožní nastavit [Upozornění](../azure-monitor/alerts/alerts-metric-overview.md), která se můžou použít k upozornění, když spotřeba jednotky žádosti předala určitou prahovou hodnotu.
 
 ## <a name="performance"></a><a id="performance"></a>Výkon
 
-Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytovaných prostředků propustnosti:
-
-- **Dostupnost**: až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
-- **Latence**: po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládají z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
-- Prostupnost **: po**zpřístupnění nabídky bez serveru bude dostupná i v případě, že dojde k obecné dostupnosti nabídek bez serveru, bude se vztahovat na úroveň služeb (SLO) 95%. To znamená, že maximální navýšení zatížení je možné dosáhnout minimálně 95% času.
-
-> [!NOTE]
-> Jako jakákoli verze Azure Preview se Azure Cosmos DB bez serveru vylučuje ze smluv o úrovni služeb (SLA). Výše uvedené charakteristiky výkonu se poskytují jako náhled toho, co tato nabídka dodá, když je všeobecně dostupná.
+Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytování prostředků propustnosti. Až bude nabídka bez serveru všeobecně dostupná, latence u kontejnerů bez serveru se pokryje s cílem na úrovni služby (SLO) a 10 milisekundy pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Začněte používat bez serveru s následujícími články:
 
 - [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
-- [Volba mezi zřízenou propustností a bez serveru](throughput-serverless.md)
+- [Volba mezi zřízenou propustností a bezserverovým využitím](throughput-serverless.md)
 - [Cenový model ve službě Azure Cosmos DB](how-pricing-works.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191404"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104032"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů v rámci virtuální sítě Azure
 Azure Data Lake Storage Gen1 je služba PaaS, která běží na veřejných internetových IP adresách. Libovolný server, který se může připojit k veřejnému Internetu, se obvykle může připojit k Azure Data Lake Storage Gen1 koncovým bodům. Ve výchozím nastavení mají všechny virtuální počítače v Azure virtuální sítě přístup k Internetu, takže mají přístup k Azure Data Lake Storage Gen1. Je ale možné nakonfigurovat virtuální počítače ve virtuální síti, které nemají přístup k Internetu. Pro tyto virtuální počítače je také omezen přístup k Azure Data Lake Storage Gen1. Blokování veřejného přístupu k Internetu pro virtuální počítače v Azure virtuální sítě se dá udělat pomocí některého z následujících přístupů:
@@ -46,7 +46,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Povolení připojení z virtuálních počítačů, které jsou omezené pomocí NSG
-Pokud se k zablokování přístupu k Internetu použije pravidlo NSG, můžete vytvořit další NSG, které umožní přístup k Data Lake Storage Gen1 IP adrese. Další informace o pravidlech NSG najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md). Pokyny, jak vytvořit skupin zabezpečení sítě, najdete v tématu [jak vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md).
+Pokud se k zablokování přístupu k Internetu použije pravidlo NSG, můžete vytvořit další NSG, které umožní přístup k Data Lake Storage Gen1 IP adrese. Další informace o pravidlech NSG najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md). Pokyny, jak vytvořit skupin zabezpečení sítě, najdete v tématu [jak vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Povolení připojení z virtuálních počítačů, které jsou omezené pomocí UDR nebo ExpressRoute
 Když se k zablokování přístupu k Internetu používají trasy udr nebo protokolu BGP, je nutné nakonfigurovat speciální trasu, aby virtuální počítače v těchto podsítích měly přístup k Data Lake Storage Gen1 koncovým bodům. Další informace najdete v tématu [Přehled uživatelsky definovaných tras](../virtual-network/virtual-networks-udr-overview.md). Pokyny k vytváření udr najdete v tématu [vytvoření udr v Správce prostředků](../virtual-network/tutorial-create-route-table-powershell.md).
@@ -57,4 +57,3 @@ Když je nakonfigurovaný okruh ExpressRoute, můžou místní servery získat p
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)
-

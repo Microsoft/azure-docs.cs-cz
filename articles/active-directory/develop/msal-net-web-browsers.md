@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165817"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583735"
 ---
 # <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
 
@@ -41,19 +41,19 @@ Je důležité si uvědomit, že při interaktivním získání tokenu se obsah 
 
 MSAL.NET je knihovna s více architekturami a má kód specifický pro rozhraní, který je hostitelem prohlížeče v ovládacím prvku uživatelského rozhraní (například v klasickém rozhraní .NET používá WinForms, v Xamarin používá nativní mobilní ovládací prvky atd.). Tento ovládací prvek se nazývá `embedded` webové uživatelské rozhraní. Alternativně je MSAL.NET také možné aktivovat prohlížeč operačního systému.
 
-Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte`WithUseEmbeddedWebView(bool)`
+Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Chcete-li toto chování změnit, použijte `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Na první pohled
+### <a name="at-a-glance"></a>Ve zkratce
 
 | Rozhraní .NET Framework        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Yes | Ano ^ | Vložené |
-| .NET Core     | Ne | Ano ^ | Systém |
-| .NET Standard | Ne | Ano ^ | Systém |
-| UPW | Ano | Ne | Vložené |
-| Xamarin.Android | Ano | Ano  | Systém |
-| Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin.Mac| Ano | Ne | Vložené |
+| .NET Core     | No | Ano ^ | Systém |
+| .NET Standard | No | Ano ^ | Systém |
+| UWP | Yes | No | Vložené |
+| Xamarin.Android | Yes | Yes  | Systém |
+| Xamarin.iOS | Yes | Yes  | Systém |
+| Xamarin.Mac| Yes | No | Vložené |
 
 ^ Vyžaduje " http://localhost " identifikátor URI přesměrování
 
@@ -141,7 +141,7 @@ Můžete také povolit vložená webzobrazení v aplikacích Xamarin. iOS a Xama
 
 Jako vývojář, který používá MSAL.NET cílené na Xamarin, se můžete rozhodnout použít buď vložená webzobrazení, nebo systémové prohlížeče. Podle vašeho výběru záleží na uživatelském prostředí a na zabezpečení, které chcete cílit.
 
-V současné době MSAL.NET ještě nepodporuje zprostředkovatele pro Android a iOS. Pokud tedy potřebujete zadat jednotné přihlašování (SSO), je možné, že je prohlížeč systému stále lepší volbou. Podpora zprostředkovatelů s integrovaným webovým prohlížečem je na MSAL.NET nevyřízených položek.
+V současné době MSAL.NET ještě nepodporuje zprostředkovatele pro Android a iOS. Aby bylo možné zajistit jednotné přihlašování (SSO), je možné, že je prohlížeč systému stále lepší volbou. Podpora zprostředkovatelů s integrovaným webovým prohlížečem je na MSAL.NET nevyřízených položek.
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>Rozdíly mezi vloženým webovým zobrazením a systémovým prohlížečem
 Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET jsou rozdíly v různých vizuálních rozdílech.

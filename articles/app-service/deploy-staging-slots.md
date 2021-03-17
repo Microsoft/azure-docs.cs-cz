@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236739"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594235"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
 
-Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete na úrovni plánu **Standard**, **Premium**nebo **Isolated** App Service. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
+Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](./overview.md), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete na úrovni plánu **Standard**, **Premium** nebo **Isolated** App Service. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
 
 Nasazení aplikace do neprodukčního slotu má následující výhody:
 
@@ -30,7 +30,7 @@ Pokud chcete aplikaci škálovat na jinou úroveň, ujistěte se, že cílová v
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Přidat slot
-Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná v úrovni **Standard**, **Premium**nebo **izolovaná** .
+Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná v úrovni **Standard**, **Premium** nebo **izolovaná** .
 
 
 1. v [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte **App Services** a vyberte svou aplikaci. 
@@ -43,7 +43,7 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
     ![Přidání nového slotu nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
+   > Pokud aplikace ještě není v úrovni **Standard**, **Premium** nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
    > 
 
 3. V dialogovém okně **Přidat slot** zadejte název slotu a vyberte, jestli se má naklonovat konfigurace aplikace z jiného slotu nasazení. Pokračujte výběrem **Přidat** .
@@ -62,7 +62,7 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
 
 6. Vyberte adresu URL aplikace na stránce prostředku slotu. Slot nasazení má svůj vlastní název hostitele a zároveň je to živá aplikace. Pokud chcete omezit veřejný přístup k slotu nasazení, přečtěte si téma [Azure App Service omezení IP adres](app-service-ip-restrictions.md).
 
-Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](app-service-deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště.
+Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](./deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště.
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ Když provedete prohozením dvou slotů (obvykle z přípravného slotu do produ
 
 1. Pokud je povolena [místní mezipaměť](overview-local-cache.md) , spusťte inicializaci místní mezipaměti tím, že na každou instanci zdrojové patice nastavíte požadavek HTTP na kořen aplikace ("/"). Počkejte, dokud každá instance nevrátí žádnou odpověď HTTP. Inicializace místní mezipaměti způsobí další restartování každé instance.
 
-1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
+1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
 
     Pokud `applicationInitialization` není zadaný, spusťte požadavek HTTP do kořenového adresáře aplikace zdrojové patice každé instance. 
     
@@ -183,9 +183,9 @@ Automatické prohození zjednodušuje scénáře Azure DevOps, ve kterých chcet
 
 Konfigurace automatického prohození:
 
-1. Přejít na stránku prostředků vaší aplikace. Vyberte **Konfigurace slotů pro nasazení**  >  *\<desired source slot>*  >  **Configuration**  >  **Obecné nastavení**.
+1. Přejít na stránku prostředků vaší aplikace. Vyberte **Konfigurace slotů pro nasazení**  >  *\<desired source slot>*  >    >  **Obecné nastavení**.
    
-2. Pro **Automatické prohození**vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození**a na panelu příkazů vyberte **Uložit** . 
+2. Pro **Automatické prohození** vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození** a na panelu příkazů vyberte **Uložit** . 
    
     ![Výběry pro konfiguraci automatického prohození](./media/web-sites-staged-publishing/AutoSwap02.png)
 
@@ -222,7 +222,7 @@ Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zah
 
 ## <a name="monitor-a-swap"></a>Monitorování swapu
 
-Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../azure-monitor/essentials/platform-logs-overview.md).
 
 Na stránce prostředků vaší aplikace na portálu v levém podokně vyberte **Protokol aktivit**.
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Automatizace pomocí šablon Správce prostředků
 
-[Šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) jsou DEKLARATIVNÍ soubory JSON používané k automatizaci nasazení a konfigurace prostředků Azure. K prohození slotů pomocí Správce prostředků šablon nastavíte dvě vlastnosti na prostředky *Microsoft. Web/Sites/sloty* a *Microsoft. Web/Web* :
+[Šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) jsou DEKLARATIVNÍ soubory JSON používané k automatizaci nasazení a konfigurace prostředků Azure. K prohození slotů pomocí Správce prostředků šablon nastavíte dvě vlastnosti na prostředky *Microsoft. Web/Sites/sloty* a *Microsoft. Web/Web* :
 
 - `buildVersion`: Jedná se o řetězcovou vlastnost, která představuje aktuální verzi aplikace nasazené ve slotu. Například: "v1", "1.0.0.1" nebo "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: Jedná se o řetězcovou vlastnost, která určuje, co `buildVersion` má slot mít. Pokud se targetBuildVersion neshoduje s aktuálním `buildVersion` , aktivuje se operace přepnutí tím, že najde pozici zadané patice `buildVersion` .

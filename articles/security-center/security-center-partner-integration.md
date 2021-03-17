@@ -2,23 +2,18 @@
 title: Integrace řešení zabezpečení v Azure Security Center | Dokumentace Microsoftu
 description: Zjistěte, jak Azure Security Center umožňuje integrací s partnerskými řešeními zvýšit celkové zabezpečení vašich prostředků Azure.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/19/2020
+ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519215"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099246"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -30,20 +25,17 @@ Security Center umožňuje snadné povolení integrovaných řešení zabezpeče
 - **Integrované detekce**: události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují jako součást Security Center výstrah a incidentů. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
 - **Sjednocená správa a monitorování stavu:** Zákazníci můžou využít integrované události týkající se stavu k monitorování všech partnerských řešení na první pohled. Je dostupná základní správa se snadným přístupem k pokročilému nastavení s použitím partnerského řešení.
 
-Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohrožení zabezpečení [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a firewall webových aplikací Microsoft Application Gateway.
+Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohrožení zabezpečení [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a [Microsoft Azure Firewall webových aplikací v Azure Application Gateway](../web-application-firewall/ag/ag-overview.md).
 
 > [!NOTE]
 > Security Center neinstaluje agenta Log Analytics na partnerských virtuálních zařízeních, protože většina dodavatelů zabezpečení brání externím agentům běžícím na jejich zařízeních.
 
-Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky úrovně Standard, najdete v těchto tématech: 
-
-- [Integrovaná chyba pro prohledávání virtuálních počítačů](built-in-vulnerability-assessment.md).
-- [Nasazení řešení pro kontrolu ohrožení zabezpečení partnera](partner-vulnerability-assessment.md).
+Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky v Azure Defenderu, najdete v tématu [posouzení ohrožení zabezpečení pro azure Virtual Machines](deploy-vulnerability-assessment-vm.md).
 
 Security Center taky nabízí analýzu ohrožení zabezpečení pro vaše:
 
-* Databáze SQL – Přečtěte si téma [zkoumání sestav posouzení ohrožení zabezpečení na řídicím panelu posouzení ohrožení zabezpečení](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports) .
-* Azure Container Registry imagí – viz [integrace Azure Container Registry s Security Center (Preview)](azure-container-registry-integration.md)
+* Databáze SQL – Přečtěte si téma [zkoumání sestav posouzení ohrožení zabezpečení na řídicím panelu posouzení ohrožení zabezpečení](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports) .
+* Azure Container Registry imagí – viz [použití Azure Defenderu pro Registry kontejnerů pro kontrolu ohrožení zabezpečení v imagí](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
 Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete taky připojit další zdroje dat zabezpečení, včetně počítačů, které jsou spuštěné místně nebo v jiných cloudech.
@@ -88,11 +80,10 @@ Vyberte **zobrazení** pro další informace a možnosti, jako například:
 
 ### <a name="discovered-solutions"></a>Zjištěná řešení
 
-Security Center automaticky vyhledá řešení zabezpečení běžící v Azure, ale nepřipojená k Security Center a zobrazí řešení v části **zjištěná řešení** . Mezi tato řešení patří řešení Azure, jako jsou [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)a partnerská řešení.
+Security Center automaticky vyhledá řešení zabezpečení běžící v Azure, ale nepřipojená k Security Center a zobrazí řešení v části **zjištěná řešení** . Mezi tato řešení patří řešení Azure, jako jsou [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)a partnerská řešení.
 
 > [!NOTE]
-> Úroveň Standard Security Center se vyžaduje na úrovni předplatného funkce zjištěná řešení. Další informace o cenových úrovních najdete v tématu [ceny](security-center-pricing.md) .
->
+> Pro funkci zjištěná řešení povolte v **Azure Defenderu** na úrovni předplatného. Další informace najdete v [rychlém startu: povolení Azure Defenderu](enable-azure-defender.md).
 
 Vyberte **připojit** v rámci řešení, které chcete integrovat s Security Center a upozorňovat na výstrahy zabezpečení.
 
@@ -106,7 +97,4 @@ Vyberte **připojit** v rámci řešení, které chcete integrovat s Security Ce
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Související informace najdete v následujících článcích:
-
-* [Exportujte výstrahy a doporučení zabezpečení](continuous-export.md). Přečtěte si, jak nastavit integraci s Sentinel Azure nebo jakoukoli jinou SIEM.
-* [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
+V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Další informace o tom, jak nastavit integraci s Sentinel-Sentinel Azure nebo s ostatními SIEM, najdete v tématu [průběžné exportování dat Security Center](continuous-export.md).

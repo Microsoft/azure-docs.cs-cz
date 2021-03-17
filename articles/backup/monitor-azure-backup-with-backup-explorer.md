@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak pomocí Průzkumníka služby Backup p
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092792"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88824408"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Monitorování záloh pomocí Průzkumníka zálohování
 
@@ -28,7 +28,7 @@ Tyto možnosti jsou poskytovány předem pomocí nativní integrace s Azure Reso
 > * Průzkumník zálohování je momentálně dostupný jenom pro data virtuálních počítačů Azure.
 > * Průzkumník služby Backup má být provozní řídicí panel pro zobrazení informací o zálohách za posledních 7 dní (maximum).
 > * Průzkumník zálohování se v současné době nepodporuje v národních cloudech.
-> * V současné době se přizpůsobení šablony Průzkumníka zálohování nepodporuje.
+> * V současné době se nepodporují přizpůsobení šablony Průzkumníka zálohování.
 > * Nedoporučujeme psát vlastní automatizaci do dat grafu prostředků Azure.
 > * Průzkumník zálohování v současné době umožňuje monitorovat zálohy na maximum 1000 předplatných (mezi klienty).
 
@@ -78,7 +78,7 @@ Výběrem karty **zásady** můžete zobrazit klíčové informace o všech zás
 
 ### <a name="the-backup-not-enabled-tab"></a>Karta nepovolenou zálohu
 
-Zálohování by mělo být povolené pro všechny počítače, které vyžadují ochranu. Pomocí Průzkumníka zálohování můžou správci zálohování rychle určit, které počítače v organizaci ještě nejsou chráněny pomocí zálohování. Chcete-li zobrazit tyto informace, vyberte kartu **zálohování není povoleno** .
+Zálohování by mělo být povolené pro všechny počítače, které vyžadují ochranu. Pomocí Průzkumníka zálohování můžou správci zálohování rychle určit, které počítače v organizaci ještě nejsou chráněné pomocí zálohování. Chcete-li zobrazit tyto informace, vyberte kartu **zálohování není povoleno** .
 
 V podokně **zálohování není povoleno** je zobrazena tabulka se seznamem nechráněných počítačů. Vaše organizace může přiřazovat různé značky do produkčních počítačů a testovacích počítačů nebo do počítačů, které slouží k nejrůznějším funkcím. Vzhledem k tomu, že každá třída počítačů potřebuje samostatnou zásadu zálohování, filtrování podle značek vám pomůže zobrazit informace, které jsou specifické pro každý z nich. Když vyberete název libovolného počítače, budete přesměrováni do podokna **Konfigurace zálohování** tohoto počítače, kde se můžete rozhodnout použít příslušné zásady zálohování.
 

@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610621"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653160"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
 
 Azure Firewall můžete integrovat do virtuální sítě s využitím Azure Standard Load Balancer (veřejné nebo interní). 
 
-Upřednostňovaným návrhem je integrace interního nástroje pro vyrovnávání zatížení s bránou firewall Azure, protože to je mnohem jednodušší návrh. Veřejný Nástroj pro vyrovnávání zatížení můžete použít, pokud už máte nasazený a chcete ho ponechat na svém místě. Je však třeba mít na paměti, že se jedná o problém s asymetrickým směrováním, který může přerušit funkčnost ve scénáři veřejného nástroje pro vyrovnávání zatížení.
+Při návrhu se dává přednost integraci interního nástroje pro vyrovnávání zatížení se službou Azure Firewall, protože tento návrh je mnohem jednodušší. Pokud už máte nasazený veřejný nástroj pro vyrovnávání zatížení, který chcete zachovat, můžete použít i ten. Musíte však vědět o problému s asymetrickým směrováním, který může narušit fungování ve scénáři s veřejným nástrojem pro vyrovnávání zatížení.
 
 Další informace o Azure Load Balancer najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
@@ -65,6 +65,10 @@ V tomto scénáři neexistuje žádný problém s asymetrickým směrováním. P
 
 Proto můžete tento scénář nasadit podobně jako veřejný scénář nástroje pro vyrovnávání zatížení, ale bez nutnosti trasy hostitele veřejné IP adresy brány firewall.
 
+>[!NOTE]
+>Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v těchto tématech: </br> **[Odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí](../load-balancer/egress-only.md)** </br> [**Co je Virtual Network NAT?**](../virtual-network/nat-overview.md)
+
+
 ## <a name="additional-security"></a>Dodatečné zabezpečení
 
 Chcete-li dále zvýšit zabezpečení vašeho scénáře s vyrovnáváním zatížení, můžete použít skupiny zabezpečení sítě (skupin zabezpečení sítě).
@@ -73,7 +77,7 @@ Můžete například vytvořit NSG v podsíti back-endu, kde jsou umístěné vi
 
 ![Skupina zabezpečení sítě](media/integrate-lb/nsg-01.png)
 
-Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení](../virtual-network/security-overview.md).
+Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

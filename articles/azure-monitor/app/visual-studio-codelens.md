@@ -2,17 +2,14 @@
 title: Telemetrie Application Insights ve Visual Studio CodeLens | Dokumentace Microsoftu
 description: Přistupujte rychle k požadavkům Application Insights a telemetrii výjimek pomocí CodeLens v sadě Visual Studio.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323481"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538491"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetrie Application Insights ve Visual Studio CodeLens
 Metody v kódu vaší webové aplikace mohou být opatřeny poznámkami s telemetrií o výjimkách za běhu a časech odezvy na požadavky. Pokud ve své aplikaci nainstalujete [Azure Application Insights](./app-insights-overview.md), telemetrie se zobrazí ve Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) s poznámkami v horní části každé funkce, kde jste zvyklí vídat užitečné informace, jako například počet míst, ze kterých se na funkci odkazuje, nebo jméno poslední osoby, která ji upravila.
@@ -33,7 +30,7 @@ V indikátorech CodeLens veřejných metod žádostí vaší webové aplikace vy
 > 
 
 ## <a name="exceptions-in-codelens"></a>Výjimky v CodeLens
-![Bude doplněno](./media/visual-studio-codelens/codelens-exceptions.png)
+![Snímek obrazovky zobrazuje výjimky 47 zobrazené v CodeLens.](./media/visual-studio-codelens/codelens-exceptions.png)
 
 Indikátor výjimek CodeLens ukazuje počet výskytů výjimek pro 15 nejčastěji se vyskytujících výjimek ve vaší aplikaci v posledních 24 hodinách během zpracování požadavku, který metoda obsluhuje.
 
@@ -55,7 +52,7 @@ Chcete-li zobrazit podrobnosti, klikněte na indikátor výjimek CodeLens:
 > 
 
 ## <a name="requests-in-codelens"></a>Požadavky v CodeLens
-![Bude doplněno](./media/visual-studio-codelens/codelens-requests.png)
+![Snímek obrazovky zobrazuje podrobnosti o požadavcích 684, včetně 7% selhání.](./media/visual-studio-codelens/codelens-requests.png)
 
 Indikátor požadavků CodeLens ukazuje počet požadavků HTTP, které metoda obsloužila během posledních 24 hodin, a procentuální podíl neúspěšných požadavků.
 
@@ -68,9 +65,6 @@ Chcete-li zobrazit podrobnosti, klikněte na indikátor požadavků CodeLens:
 * Chcete-li změnit, který prostředek je zdrojem dat pro CodeLens, v levém horním rohu zobrazení podrobností CodeLens zvolte název prostředku Application Insights.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
-|  |  |
-| --- | --- |
-| **[Práce s Application Insights v sadě Visual Studio](./visual-studio.md)**<br/>Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. |![Klikněte pravým tlačítkem myši na projekt a vyberte Application Insights, Vyhledávání](./media/visual-studio-codelens/34.png) |
-| **[Přidání dalších dat](./asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/visual-studio-codelens/64.png) |
-| **[Práce s portálem Application Insights](./overview-dashboard.md)**<br/>Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. |![Visual Studio](./media/visual-studio-codelens/62.png) |
+* **[Práce s Application Insights v aplikaci Visual Studio](./visual-studio.md)**. Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. 
+* **[Práce s portálem Application Insights](./overview-dashboard.md)**. Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. 
 

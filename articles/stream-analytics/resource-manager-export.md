@@ -2,17 +2,17 @@
 title: Export šablony Azure Stream Analytics úlohy Azure Resource Manager
 description: Tento článek popisuje, jak exportovat šablonu Azure Resource Manager pro úlohu Azure Stream Analytics.
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043525"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015415"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Export šablony Azure Stream Analytics úlohy Azure Resource Manager
 
@@ -28,7 +28,7 @@ Chcete-li exportovat úlohu do místního projektu, vyhledejte úlohu, kterou ch
 
 ![Otevřít úlohu Stream Analytics v Visual Studio Code](./media/resource-manager-export/open-job-vs-code.png)
 
-Další informace o použití Visual Studio Code ke správě úloh Stream Analytics najdete v tématu [rychlý Start pro Visual Studio Code](quick-create-vs-code.md).
+Další informace o použití Visual Studio Code ke správě úloh Stream Analytics najdete v tématu [rychlý Start pro Visual Studio Code](quick-create-visual-studio-code.md).
 
 ## <a name="compile-the-script"></a>Zkompilujte skript 
 
@@ -58,9 +58,9 @@ Potom dokončete soubor parametrů šablony správy prostředků Azure.
 
 Jste připraveni nasadit úlohu Azure Stream Analytics pomocí šablon Azure Resource Manager, které jste vygenerovali v předchozí části.
 
-V okně PowerShellu spusťte následující příkaz. Ujistěte se, že jste reaplce *ResourceGroupName*, *TemplateFile*a *TemplateParameterFile* s vaším skutečným názvem skupiny prostředků a kompletními cestami k souboru *JobTemplate.jszapnuté* a *JobTemplate.parameters.js* se soubory ve **složce Deploy (nasadit** ) pracovního prostoru úlohy.
+V okně PowerShellu spusťte následující příkaz. Ujistěte se, že jste reaplce *ResourceGroupName*, *TemplateFile* a *TemplateParameterFile* s vaším skutečným názvem skupiny prostředků a kompletními cestami k souboru *JobTemplate.jszapnuté* a *JobTemplate.parameters.js* se soubory ve **složce Deploy (nasadit** ) pracovního prostoru úlohy.
 
-Pokud nemáte Azure PowerShell nakonfigurovaná, postupujte podle pokynů v části [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Pokud nemáte Azure PowerShell nakonfigurovaná, postupujte podle pokynů v části [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

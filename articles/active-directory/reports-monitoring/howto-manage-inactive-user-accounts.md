@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/07/2020
+ms.date: 01/21/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608139"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660660"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postupy: Správa neaktivních uživatelských účtů v Azure AD
 
@@ -34,7 +34,7 @@ Tento článek vysvětluje způsob zpracování zastaralých uživatelských ú�
 
 Neaktivní účty jsou uživatelské účty, které už členové vaší organizace nevyžadují k získání přístupu k vašim prostředkům. Jeden identifikátor klíče pro neaktivní účty znamená, že se *při* přihlášení k vašemu prostředí zatím nepoužívaly. Vzhledem k tomu, že neaktivní účty jsou svázané s aktivitou přihlašování, můžete použít časové razítko posledního přihlášení, které bylo úspěšně rozpoznáno. 
 
-Výzvou k této metodě je definování toho, co *pro chvíli* znamená v případě vašeho prostředí. Například uživatelé se nemusí k prostředí *během chvilky*přihlašovat, protože jsou na dovolené. Při definování rozdílů pro neaktivní uživatelské účty musíte zvážit všechny oprávněné důvody, proč se přihlašujete k vašemu prostředí. V mnoha organizacích je rozdíl mezi neaktivními uživatelskými účty mezi 90 a 180 dny. 
+Výzvou k této metodě je definování toho, co *pro chvíli* znamená v případě vašeho prostředí. Například uživatelé se nemusí k prostředí *během chvilky* přihlašovat, protože jsou na dovolené. Při definování rozdílů pro neaktivní uživatelské účty musíte zvážit všechny oprávněné důvody, proč se přihlašujete k vašemu prostředí. V mnoha organizacích je rozdíl mezi neaktivními uživatelskými účty mezi 90 a 180 dny. 
 
 Poslední úspěšné přihlášení nabízí potenciálním přehledům, které uživatel potřebuje k přístupu k prostředkům.  Může pomáhat s určením, jestli je členství ve skupině nebo aplikace stále potřeba, nebo odebrat. Pro správu externích uživatelů můžete pochopit, jestli je externí uživatel pořád aktivní v rámci tenanta, nebo by se měl vyčistit. 
 
@@ -43,9 +43,9 @@ Poslední úspěšné přihlášení nabízí potenciálním přehledům, které
 
 Neaktivní účty zjistíte tak, že vyhodnocujete vlastnost **lastSignInDateTime** zveřejněnou typem prostředku **signInActivity** rozhraní API pro **Microsoft Graph** . Pomocí této vlastnosti můžete implementovat řešení pro následující scénáře:
 
-- **Uživatelé podle jména**: v tomto scénáři vyhledáte konkrétního uživatele podle názvu, který vám umožní vyhodnotit lastSignInDateTime:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Uživatelé podle jména**: v tomto scénáři vyhledáte konkrétního uživatele podle názvu, který vám umožní vyhodnotit lastSignInDateTime: `https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Uživatelé podle data**: v tomto scénáři si vyžádáte seznam uživatelů s lastSignInDateTime před zadaným datem:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Uživatelé podle data**: v tomto scénáři si vyžádáte seznam uživatelů s lastSignInDateTime před zadaným datem: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -58,11 +58,11 @@ V této části jsou uvedeny informace o tom, co potřebujete znát o vlastnosti
 
 ### <a name="how-can-i-access-this-property"></a>Jak se dá získat přístup k této vlastnosti?
 
-Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) [REST API Microsoft Graph](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
+Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta) [REST API Microsoft Graph](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Je k dispozici vlastnost lastSignInDateTime prostřednictvím rutiny Get-AzureAdUser?
 
-Ne.
+No.
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Jakou edici služby Azure AD potřebuji pro přístup k této vlastnosti?
 
@@ -85,11 +85,11 @@ Každé interaktivní přihlášení, které bylo úspěšné, má za následek 
 
 Pokud chcete vygenerovat lastSignInDateTime časové razítko, budete potřebovat úspěšné přihlášení. Vzhledem k tomu, že vlastnost lastSignInDateTime je nová funkce, hodnota vlastnosti lastSignInDateTime může být prázdná, pokud:
 
-- Poslední úspěšné přihlášení uživatele proběhlo před vydáním této funkce (1. prosince 2019).
+- Poslední úspěšné přihlášení uživatele proběhlo před dubna 2020.
 - Ovlivněný uživatelský účet nebyl nikdy použit k úspěšnému přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty](tutorial-access-api-with-certificates.md)
-* [Reference k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Reference k rozhraní API sestav aktivit přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)

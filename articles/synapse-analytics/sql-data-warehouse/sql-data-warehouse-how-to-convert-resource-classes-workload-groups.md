@@ -1,6 +1,6 @@
 ---
 title: Převést třídu prostředků na skupinu úloh
-description: Naučte se, jak vytvořit skupinu úloh, která je podobná třídě prostředků v Azure SQL Data Warehouse.
+description: Naučte se, jak vytvořit skupinu úloh, která je podobná třídě prostředků ve vyhrazeném fondu SQL.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192323"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728552"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Převod tříd prostředků na skupiny úloh
 
@@ -27,7 +27,7 @@ Skupiny úloh poskytují mechanismus pro izolaci a zahrnutí systémových prost
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Porozumění existující konfiguraci třídy prostředků
 
-Skupiny úloh vyžadují parametr s názvem `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , který určuje procentuální hodnotu celkových systémových prostředků přidělených na požadavek.  Přidělení prostředků se provádí pro [třídy prostředků](resource-classes-for-workload-management.md#what-are-resource-classes) přidělením slotů souběžnosti.  K určení hodnoty, kterou chcete zadat `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , použijte sys. dm_workload_management_workload_groups_stats <link tbd> DMV.  Například následující dotaz dotazu vrátí hodnotu, kterou lze použít pro `REQUEST_MIN_RESOURCE_GRANT_PERCENT` parametr k vytvoření skupiny úloh, podobně jako staticrc40.
+Skupiny úloh vyžadují parametr s názvem `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , který určuje procentuální hodnotu celkových systémových prostředků přidělených na požadavek.  Přidělení prostředků se provádí pro [třídy prostředků](resource-classes-for-workload-management.md#what-are-resource-classes) přidělením slotů souběžnosti.  K určení hodnoty, kterou chcete zadat `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , použijte sys.dm_workload_management_workload_groups_stats <link tbd> DMV.  Například následující dotaz dotazu vrátí hodnotu, kterou lze použít pro `REQUEST_MIN_RESOURCE_GRANT_PERCENT` parametr k vytvoření skupiny úloh, podobně jako staticrc40.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Vytvoření klasifikátoru
 
-Dříve bylo mapování dotazů na třídy prostředků provedeno pomocí [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Chcete-li dosáhnout stejných funkcí a požadavků na mapování na skupiny úloh, použijte syntaxi [vytvořit třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Použití sp_addrolemember povoluje mapování prostředků na požadavek na základě přihlášení.  Klasifikátor nabízí další možnosti kromě přihlášení, například:
+Dříve bylo mapování dotazů na třídy prostředků provedeno pomocí [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Chcete-li dosáhnout stejných funkcí a požadavků na mapování na skupiny úloh, použijte syntaxi [vytvořit třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .  Použití sp_addrolemember povoluje mapování prostředků na požadavek na základě přihlášení.  Klasifikátor nabízí další možnosti kromě přihlášení, například:
     - label
     - relace
     - čas, kdy níže uvedený příklad přiřadí dotazy z `AdfLogin` přihlášení, které mají také [popisek možnost](sql-data-warehouse-develop-label.md)  nastavený na `factloads` skupinu úloh `wgDataLoads` vytvořenou výše.
@@ -90,5 +90,5 @@ SELECT request_id, [label], classifier_name, group_name, command
 
 - [Izolace úloh](sql-data-warehouse-workload-isolation.md)
 - [Postup vytvoření skupiny úloh](quickstart-configure-workload-isolation-tsql.md)
-- [Vytvoření KLASIFIKÁTORu úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [Vytvoření skupiny úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [Vytvoření KLASIFIKÁTORu úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql??view=azure-sqldw-latest&preserve-view=true)
+- [Vytvoření skupiny úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

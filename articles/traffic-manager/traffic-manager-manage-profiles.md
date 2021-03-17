@@ -3,7 +3,7 @@ title: Správa profilů Azure Traffic Manageru | Dokumentace Microsoftu
 description: Tento článek vám pomůže vytvořit, zakázat, povolit a odstranit profil Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: rohink
-ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a39120b1305022739aaef3407aa6c2621a97e842
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711574"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184149"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Správa profilu Azure Traffic Manageru
 
@@ -70,7 +70,7 @@ Existující profil můžete zakázat, aby Traffic Manager neodkazoval požadavk
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přidání koncového bodu](traffic-manager-endpoints.md)
+* [Přidání koncového bodu](./traffic-manager-manage-endpoints.md)
 * [Konfigurace metody prioritního směrování](traffic-manager-configure-priority-routing-method.md)
 * [Konfigurace metody geografického směrování](traffic-manager-configure-geographic-routing-method.md) 
 * [Konfigurace metody váženého směrování](traffic-manager-configure-weighted-routing-method.md)

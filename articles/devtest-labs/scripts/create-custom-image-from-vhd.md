@@ -5,11 +5,11 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
 ms.openlocfilehash: d22e6e1d226e826bf114a0fdb378879b828d9b4a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136180"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022230"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Použití PowerShellu k vytvoření vlastní image ze souboru VHD v Azure Lab Services
 

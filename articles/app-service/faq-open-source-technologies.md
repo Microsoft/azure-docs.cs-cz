@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 89c317e6623a868fd75b09274c726720e726e470
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848634"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831835"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se technologie Open source pro Web Apps v Azure
 
@@ -33,7 +33,7 @@ Zapnutí protokolování PHP:
 5. Vyberte **+** ikonu a pak vyberte **nový soubor**.
 6. Nastavte název souboru na **.user.ini**.
 7. Vyberte ikonu tužky vedle **.user.ini**.
-8. Do souboru přidejte tento kód:`log_errors=on`
+8. Do souboru přidejte tento kód: `log_errors=on`
 9. Vyberte **Uložit**.
 10. Vyberte ikonu tužky vedle **wp-config. php**.
 11. Změňte text na následující kód:
@@ -43,7 +43,7 @@ Zapnutí protokolování PHP:
     ```
 12. V Azure Portal v nabídce webové aplikace restartujte svou webovou aplikaci.
 
-Další informace najdete v tématu [Povolení protokolů chyb služby WordPress](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Další informace najdete v tématu [Povolení protokolů chyb služby WordPress](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Návody protokolovat chyby aplikace Python v aplikacích, které jsou hostovány v App Service?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -55,7 +55,7 @@ Chcete-li změnit verzi aplikace Node.js, můžete použít jednu z následujíc
 * V Azure Portal použijte **nastavení aplikace**.
   1. V Azure Portal přejdete do své webové aplikace.
   2. V okně **Nastavení** vyberte **nastavení aplikace**.
-  3. Do **nastavení aplikace**můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíč a Node.js, kterou chcete jako hodnotu.
+  3. Do **nastavení aplikace** můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíč a Node.js, kterou chcete jako hodnotu.
   4. Přejít na **konzolu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
   5. Chcete-li zjistit verzi Node.js, zadejte následující příkaz:  
      ```
@@ -72,7 +72,7 @@ Chcete-li změnit verzi aplikace Node.js, můžete použít jednu z následujíc
   Proces nasazení správy zdrojových kódů Azure zahrnuje následující kroky:
   1. Přesune obsah do webové aplikace Azure.
   2. Vytvoří výchozí skript nasazení, pokud v kořenové složce webové aplikace není jeden (nasadit soubory. cmd,. nasazení).
-  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete Node.js verzi v modulu package.jssouboru >.`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete Node.js verzi v modulu package.jssouboru >. `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Soubor iisnode. yml má následující řádek kódu:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -80,7 +80,7 @@ Chcete-li změnit verzi aplikace Node.js, můžete použít jednu z následujíc
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>V aplikaci WordPress se zobrazí zpráva "Chyba při navazování připojení k databázi", která je hostovaná v App Service. Návody problém vyřešit?
 
-Pokud se tato chyba zobrazí v aplikaci Azure WordPress a povolí php_errors. log a Debug. log, dokončete postup popsaný v tématu [Povolení protokolů chyb WordPress](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Pokud se tato chyba zobrazí v aplikaci Azure WordPress a povolí php_errors. log a Debug. log, dokončete postup popsaný v tématu [Povolení protokolů chyb WordPress](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 Když jsou protokoly povolené, reprodukuje chybu a pak zkontrolujte protokoly, abyste zjistili, jestli nedochází k připojení:
 ```
@@ -97,11 +97,11 @@ Pokud se tato chyba zobrazuje v souborech Debug. log nebo php_errors. log, vaše
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Návody nainstalovat nativní moduly Pythonu do webové aplikace App Service nebo do aplikace API?
 
-Některé balíčky se nemusí nainstalovat pomocí PIP v Azure. Balíček nemusí být k dispozici v indexu balíčku Pythonu, nebo může být vyžadován kompilátor (kompilátor není k dispozici v počítači, na kterém běží webová aplikace v App Service). Informace o instalaci nativních modulů v App Service Web Apps a API Apps najdete v tématu [Instalace modulů Pythonu v App Service](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/).
+Některé balíčky se nemusí nainstalovat pomocí PIP v Azure. Balíček nemusí být k dispozici v indexu balíčku Pythonu, nebo může být vyžadován kompilátor (kompilátor není k dispozici v počítači, na kterém běží webová aplikace v App Service). Informace o instalaci nativních modulů v App Service Web Apps a API Apps najdete v tématu [Instalace modulů Pythonu v App Service](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps).
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Návody nasadit aplikaci Django pro App Service pomocí Gitu a nové verze Pythonu?
 
-Informace o instalaci Django najdete v tématu [nasazení aplikace Django pro App Service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/).
+Informace o instalaci Django najdete v tématu [nasazení aplikace Django pro App Service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python).
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Kde se nacházejí soubory protokolu Tomcat?
 
@@ -138,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. Odstraňte soubor Sqljdbc*. jar ze složky App/lib.
 2. Pokud používáte vlastní webový server Tomcat nebo Azure Marketplace Tomcat, zkopírujte tento soubor. jar do složky Tomcat lib.
-3. Pokud povolíte Java z Azure Portal (vyberte Tomcat server **Java 1,8**  >  **Tomcat server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru web.config:
+3. Pokud povolíte Java z Azure Portal (vyberte Tomcat server **Java 1,8**  >  ), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru web.config:
 
     ```xml
     <httpPlatform>
@@ -169,9 +169,9 @@ Dalším řešením je psaní webové úlohy, která běží podle plánu, a kop
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Kde najdu soubory protokolů pro Jetty?
 
-Pro Marketplace a vlastní nasazení se soubor protokolu nachází ve složce D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs. Všimněte si, že umístění složky závisí na verzi Jetty, kterou používáte. Zde uvedená cesta je například určena pro Jetty 9.1.2. Vyhledejte jetty_*YYYY_MM_DD*. stderr. log.
+Pro Marketplace a vlastní nasazení se soubor protokolu nachází ve složce D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs. Všimněte si, že umístění složky závisí na verzi Jetty, kterou používáte. Zde uvedená cesta je například určena pro Jetty 9.1.2. Vyhledejte jetty_ *YYYY_MM_DD*. stderr. log.
 
-V případě nasazení portálových aplikací je soubor protokolu v D:\home\LogFiles.. Hledat jetty_*YYYY_MM_DD*. stderr. log
+V případě nasazení portálových aplikací je soubor protokolu v D:\home\LogFiles.. Hledat jetty_ *YYYY_MM_DD*. stderr. log
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Můžu poslat e-mail z webové aplikace Azure?
 
@@ -181,28 +181,28 @@ App Service nemá vestavěnou e-mailovou funkci. Některé dobré alternativy pr
 
 Pokud jste v poslední době migrovali do Azure, WordPress se může přesměrovat na starou adresu URL domény. To je způsobeno nastavením v databázi MySQL.
 
-WordPress kamarád + je rozšířením webu Azure, které můžete použít k aktualizaci adresy URL pro přesměrování přímo v databázi. Další informace o používání programu WordPress kamarád + najdete v tématu věnovaném [nástrojům WordPress a migraci MySQL pomocí programu WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+WordPress kamarád + je rozšířením webu Azure, které můžete použít k aktualizaci adresy URL pro přesměrování přímo v databázi. Další informace o používání programu WordPress kamarád + najdete v tématu věnovaném [nástrojům WordPress a migraci MySQL pomocí programu WordPress kamarád +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
-Případně, pokud upřednostňujete ruční aktualizaci adresy URL pro přesměrování pomocí dotazů SQL nebo PHPMyAdmin, podívejte se na článek [WordPress: přesměrování na špatnou adresu URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Případně, pokud upřednostňujete ruční aktualizaci adresy URL pro přesměrování pomocí dotazů SQL nebo PHPMyAdmin, podívejte se na článek [WordPress: přesměrování na špatnou adresu URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Návody změnit přihlašovací heslo pro WordPress?
 
-Pokud jste zapomněli heslo pro přihlášení ke službě WordPress, můžete ho aktualizovat pomocí služby WordPress kamarád +. Pokud chcete resetovat heslo, nainstalujte rozšíření WordPress kamarád + Azure a pak dokončete postup popsaný v tématu [nástroje a migrace MySQL pomocí programu WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Pokud jste zapomněli heslo pro přihlášení ke službě WordPress, můžete ho aktualizovat pomocí služby WordPress kamarád +. Pokud chcete resetovat heslo, nainstalujte rozšíření WordPress kamarád + Azure a pak dokončete postup popsaný v tématu [nástroje a migrace MySQL pomocí programu WordPress kamarád +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nemůžu se přihlásit k WordPress. Jak to můžu vyřešit?
 
-Pokud se po poslední instalaci modulu plug-in v programu WordPress nacházíte uzamčeno, může být možné, že máte vadný modul plug-in. WordPress kamarád + je rozšířením webu Azure, které vám může pomáhat s zakázáním modulů plug-in v WordPress. Další informace najdete v tématech [nástroje WordPress a migrace MySQL pomocí programu WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Pokud se po poslední instalaci modulu plug-in v programu WordPress nacházíte uzamčeno, může být možné, že máte vadný modul plug-in. WordPress kamarád + je rozšířením webu Azure, které vám může pomáhat s zakázáním modulů plug-in v WordPress. Další informace najdete v tématech [nástroje WordPress a migrace MySQL pomocí programu WordPress kamarád +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Návody migrovat databázi WordPress?
 
 K migraci databáze MySQL, která je připojená k webu WordPress, máte několik možností:
 
-* Vývojáři: použijte [příkazový řádek nebo phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Nevývojáři: použití [WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
+* Vývojáři: použijte [příkazový řádek nebo phpMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service)
+* Nevývojáři: použití [WordPress kamarád +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Návody pomůžete WordPress lépe zabezpečit?
 
-Další informace o osvědčených postupech zabezpečení pro WordPress najdete v tématu [osvědčené postupy pro zabezpečení WordPress v Azure](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/).
+Další informace o osvědčených postupech zabezpečení pro WordPress najdete v tématu [osvědčené postupy pro zabezpečení WordPress v Azure](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure).
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Snažím se používat PHPMyAdmin a zobrazí se zpráva "přístup byl odepřen". Jak to můžu vyřešit?
 

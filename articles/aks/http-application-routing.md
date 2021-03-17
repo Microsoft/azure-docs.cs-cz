@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495144"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172796"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -26,7 +26,7 @@ Když je doplněk povolený, vytvoří v předplatném zónu DNS. Další inform
 
 Doplněk nasazuje dvě součásti: [kontroler][ingress] příchozího přenosu dat Kubernetes a externí řadič [DNS][external-dns] .
 
-- **Adaptér**příchozího přenosu dat: kontroler příchozího přenosu dat je přístupný pro Internet pomocí služby Kubernetes typu Vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [Kubernetes příchozí prostředky][ingress-resource], které vytváří trasy k koncovým bodům aplikace.
+- **Adaptér** příchozího přenosu dat: kontroler příchozího přenosu dat je přístupný pro Internet pomocí služby Kubernetes typu Vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [Kubernetes příchozí prostředky][ingress-resource], které vytváří trasy k koncovým bodům aplikace.
 - **Externí kontroler DNS**: sleduje Kubernetes prostředky příchozího přenosu dat a vytváří záznamy DNS v zóně DNS specifické pro clustery.
 
 ## <a name="deploy-http-routing-cli"></a>Nasazení směrování HTTP: rozhraní příkazového řádku
@@ -112,7 +112,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-Otevřete webový prohlížeč a *Akste Hello. \<CLUSTER_SPECIFIC_DNS_ZONE\> *například *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.IO* a ověřte, že vidíte ukázkovou aplikaci. Zobrazení aplikace může trvat několik minut.
+Otevřete webový prohlížeč a *Akste Hello. \<CLUSTER_SPECIFIC_DNS_ZONE\>* například *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.IO* a ověřte, že vidíte ukázkovou aplikaci. Zobrazení aplikace může trvat několik minut.
 
 ## <a name="remove-http-routing"></a>Odebrat směrování protokolu HTTP
 
@@ -173,7 +173,7 @@ Otevřete webový prohlížeč a *Akste Hello. \<CLUSTER_SPECIFIC_DNS_ZONE\> *na
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-Když je doplněk pro směrování aplikace HTTP zakázaný, některé prostředky Kubernetes můžou v clusteru zůstat. Tyto prostředky zahrnují *configMaps* a *tajné klíče*a vytvářejí se v oboru názvů *Kube-System* . Pokud chcete zachovat čistý cluster, možná budete chtít tyto prostředky odebrat.
+Když je doplněk pro směrování aplikace HTTP zakázaný, některé prostředky Kubernetes můžou v clusteru zůstat. Tyto prostředky zahrnují *configMaps* a *tajné klíče* a vytvářejí se v oboru názvů *Kube-System* . Pokud chcete zachovat čistý cluster, možná budete chtít tyto prostředky odebrat.
 
 Vyhledejte prostředky *addon-http-Application-Routing* pomocí následujících příkazů [Get kubectl][kubectl-get] :
 
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 Informace o tom, jak nainstalovat řadič příchozího přenosu HTTPS v AKS, najdete v tématu https informing [on Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

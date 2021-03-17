@@ -1,22 +1,18 @@
 ---
 title: Monitorování a Správa kanálů pomocí Azure Portal a PowerShellu
 description: Naučte se, jak pomocí Azure Portal a Azure PowerShell monitorovat a spravovat datové továrny Azure a kanály, které jste vytvořili.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73666966"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576378"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
 > [!div class="op_single_selector"]
@@ -32,7 +28,7 @@ Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí Azur
 > Aplikace monitoring & Management poskytuje lepší podporu pro monitorování a správu datových kanálů a řešení problémů. Podrobnosti o používání aplikace najdete v tématu [monitorování a Správa kanálů Data Factory pomocí aplikace pro monitorování a správu](data-factory-monitor-manage-app.md). 
 
 > [!IMPORTANT]
-> Azure Data Factory verze 1 nyní používá novou [infrastrukturu upozorňování Azure monitor](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Stará infrastruktura upozorňování je zastaralá. V důsledku toho už nebudou existující výstrahy nakonfigurované pro datové továrny verze 1 fungovat. Vaše stávající výstrahy pro datové továrny V1 se nemigrují automaticky. Tyto výstrahy je nutné znovu vytvořit na nové infrastruktuře upozorňování. Přihlaste se k Azure Portal a vyberte **monitorování** a vytvořte nové výstrahy týkající se metriky (například neúspěšné spuštění nebo úspěšné spuštění) pro datové továrny verze 1.
+> Azure Data Factory verze 1 nyní používá novou [infrastrukturu upozorňování Azure monitor](../../azure-monitor/alerts/alerts-metric.md). Stará infrastruktura upozorňování je zastaralá. V důsledku toho už nebudou existující výstrahy nakonfigurované pro datové továrny verze 1 fungovat. Vaše stávající výstrahy pro datové továrny V1 se nemigrují automaticky. Tyto výstrahy je nutné znovu vytvořit na nové infrastruktuře upozorňování. Přihlaste se k Azure Portal a vyberte **monitorování** a vytvořte nové výstrahy týkající se metriky (například neúspěšné spuštění nebo úspěšné spuštění) pro datové továrny verze 1.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +42,7 @@ Pomocí Azure Portal můžete:
 Tato část také popisuje, jak se řez datové sady přechází z jednoho stavu do jiného.   
 
 ### <a name="navigate-to-your-data-factory"></a>Přejděte do objektu pro vytváření dat.
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce na levé straně klikněte na **Datové továrny** . Pokud ho nevidíte, klikněte na **Další služby >** a potom klikněte na **Datové továrny** v kategorii **Intelligence + Analytics** .
 
    ![Procházet všechny > datové továrny](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -79,7 +75,7 @@ Můžete ho přiblížit, oddálit, přiblížit, zvětšit a zmenšit na 100%, 
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>Zobrazení stavu každé aktivity v kanálu
 Aktuální stav aktivity můžete zobrazit zobrazením stavu kterékoli z datových sad, které jsou vytvořeny aktivitou.
 
-Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit všechny řezy, které jsou vytvářeny různými aktivitami v kanálu. Můžete vidět, že aktivita kopírování proběhla úspěšně za posledních osm hodin a vytvořila řezy ve stavu **připraveno** .  
+Dvojitým kliknutím na **OutputBlobTable** v **diagramu** můžete zobrazit všechny řezy, které jsou vytvářeny různými aktivitami v kanálu. Můžete vidět, že aktivita kopírování proběhla úspěšně za posledních osm hodin a vytvořila řezy ve stavu **připraveno** .  
 
 ![Stav kanálu](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
@@ -87,10 +83,10 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Description</th>
+    <th align="left">State</th><th align="left">Podstav</th><th align="left">Description</th>
 </tr>
 <tr>
-    <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
+    <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>Nadřazené závislosti nejsou připravené.</td>
@@ -121,7 +117,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
+<td rowspan="4">Neúspěšný</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez byl zrušen akcí uživatele.</td>
@@ -135,10 +131,10 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>Připraveno</td><td>-</td><td>Řez je připravený na spotřebu.</td>
 </tr>
 <tr>
-<td>Přeskočeno</td><td>Žádná</td><td>Řez se nezpracovává.</td>
+<td>Přeskočeno</td><td>Žádné</td><td>Řez se nezpracovává.</td>
 </tr>
 <tr>
-<td>Žádná</td><td>-</td><td>Řez použitý k existenci s jiným stavem, ale byl obnoven.</td>
+<td>Žádné</td><td>-</td><td>Řez použitý k existenci s jiným stavem, ale byl obnoven.</td>
 </tr>
 </table>
 
@@ -288,7 +284,7 @@ V případě neúspěšného ověření řezu v důsledku selhání zásady (nap
 ![Opravte chyby a ověřte](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Použití Azure Powershell
-Selhání můžete znovu spustit pomocí rutiny **set-AzDataFactorySliceStatus** . Syntaxe a další podrobnosti o rutině najdete v tématu [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) .
+Selhání můžete znovu spustit pomocí rutiny **set-AzDataFactorySliceStatus** . Syntaxe a další podrobnosti o rutině najdete v tématu [set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) .
 
 **Příklad:**
 

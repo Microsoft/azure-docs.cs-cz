@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543006"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515689"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informace o analýze kódu zabezpečení společnosti Microsoft
 
@@ -39,7 +39,7 @@ Přidávání nástrojů pro analýzu kódu Microsoft Security do vašeho kanál
 
 ### <a name="clean-builds"></a>Vyčistit sestavení
 
-Po vyřešení počátečních problémů hlášených nástroji můžete nakonfigurovat rozšíření pro přerušení sestavení při nových problémech.Nastavení průběžné integrace na každé žádosti o přijetí změn je snadné.
+Po vyřešení počátečních problémů hlášených nástroji můžete nakonfigurovat rozšíření pro přerušení sestavení při nových problémech. Nastavení průběžné integrace na každé žádosti o přijetí změn je snadné.
 
 ### <a name="set-it-and-forget-it"></a>Nastavit a zapomenout
 
@@ -73,7 +73,7 @@ Hesla a další tajné kódy uložené ve zdrojovém kódu jsou významné probl
 
 ### <a name="roslyn-analyzers"></a>Analyzátory Roslyn
 
-Analyzátory Roslyn jsou nástrojem integrovaným kompilátorem Microsoftu pro statickou analýzu spravovaného kódu C# a Visual Basic. Další informace najdete v tématu [analyzátory založené na Roslyn](https://docs.microsoft.com/dotnet/standard/analyzers/).
+Analyzátory Roslyn jsou nástrojem integrovaným kompilátorem Microsoftu pro statickou analýzu spravovaného kódu C# a Visual Basic. Další informace najdete v tématu [analyzátory založené na Roslyn](/dotnet/fundamentals/code-analysis/quality-rules/security-warnings).
 
 ### <a name="tslint"></a>TSLint
 

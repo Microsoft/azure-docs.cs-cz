@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070588"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>Nasazení virtuálního pole StorSimple – zřizování v Hyper-V
@@ -168,11 +168,11 @@ Provedením následujících kroků spustíte virtuální pole a připojíte se 
    ![Snímek obrazovky s kartou konzoly klienta vSphere, která v přihlašovacím poli zobrazuje neurčité znaky](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Z bezpečnostních důvodů platnost hesla správce zařízení vyprší po prvním přihlášení. Zobrazí se výzva ke změně hesla.
 
-   ![Snímek obrazovky karty konzoly klienta vSphere. text na stránce uvádí, že je nutné změnit heslo.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
+   ![Snímek obrazovky s kartou konzoly klienta vSphere Text na stránce uvádí, že je nutné změnit heslo.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
 
    Zadejte heslo, které obsahuje minimálně 8 znaků. Heslo musí splňovat alespoň 3 z následujících 4 požadavků: velká písmena, malá písmena, číslice a speciální znaky. Znovu zadejte heslo, abyste ho potvrdili. Zobrazí se oznámení o změně hesla.
 
-   ![Snímek obrazovky karty konzoly klienta vSphere. text na stránce uvádí, že se změnilo heslo.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
+   ![Snímek obrazovky s kartou konzoly klienta vSphere Text na stránce uvádí, že se změnilo heslo.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
 5. Po úspěšném dokončení změny hesla se virtuální pole může restartovat. Počkejte, až se zařízení spustí.
 
    ![Snímek obrazovky hlavní stránky StorSimpleAdmin Text na stránce vyzve uživatele, aby čekal na službu oznamování systémových událostí.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)
@@ -187,12 +187,12 @@ Provedením následujících kroků spustíte virtuální pole a připojíte se 
     Dále nakonfigurujte síť.
 7. Pomocí `Get-HcsIpAddress` příkazu můžete zobrazit seznam síťových rozhraní povolených ve virtuálním poli. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
-   ![Snímek obrazovky s výstupem příkazu Get-HcsIpAddress, který zobrazuje okno konzoly "Síť Ethernet" je uvedena jako název zařízení.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
+   ![Snímek obrazovky znázorňující okno konzoly s výstupem příkazu Get-HcsIpAddress. "Síť Ethernet" je uvedena jako název zařízení.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Prohlédněte si následující příklad:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Snímek obrazovky s oknem konzoly s výstupem příkazu Get-Help Set-HcsIpAddress a správného použití příkazu set-HcsIpAddress](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
+    ![Snímek obrazovky s oknem konzoly s výstupem příkazu Get-Help Set-HcsIpAddress a správného použití příkazu Set-HcsIpAddress](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
 9. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojte k webovému uživatelskému rozhraní virtuálního pole a dokončete místní nastavení a registraci.
 
    ![Snímek obrazovky znázorňující okno konzoly s textem banneru zařízení Tento text obsahuje IP adresu zařízení a adresu URL.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)

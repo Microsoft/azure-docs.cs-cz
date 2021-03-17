@@ -10,23 +10,23 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6bb6b373482a937819984cea7d1dc264d4f08a74
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 6797c32ded5c12bbac3fafa1eabd1e6f74d28e07
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846832"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519244"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto článku se naučíte, jak použít Azure Machine Learning k nasazení modelu s povoleným grafickým procesorem jako webové služby. Informace v tomto článku jsou založené na nasazení modelu ve službě Azure Kubernetes Service (AKS). Cluster AKS poskytuje prostředek GPU, který používá model pro odvození.
 
 Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model použit k provedení předpovědi. Použití GPU místo CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
 
 > [!IMPORTANT]
-> Pro nasazení webových služeb je odvození GPU podporováno pouze ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__se GPU podporují jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML najdete v tématu [spuštění dávkového předpovědi](how-to-use-parallel-run-step.md). 
+> Pro nasazení webových služeb je odvození GPU podporováno pouze ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__ se GPU podporují jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML najdete v tématu [kurz: sestavení kanálu Azure Machine Learning pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md). 
 
 > [!TIP]
 > I když fragmenty kódu v tomto článku používají model TensorFlow, můžete tyto informace použít pro jakékoli rozhraní Machine Learning, které podporuje GPU.
@@ -38,7 +38,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).  
 
 * Registrovaný model, který používá GPU.
 
@@ -152,8 +152,8 @@ dependencies:
 - pip:
   # You must list azureml-defaults as a pip dependency
   - azureml-defaults>=1.0.45
-- numpy
-- tensorflow-gpu=1.12
+  - numpy
+  - tensorflow-gpu=1.12
 channels:
 - conda-forge
 ```
@@ -176,7 +176,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-Další informace najdete v referenční dokumentaci k [AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
+Další informace najdete v referenční dokumentaci k [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
 
 ## <a name="define-the-inference-configuration"></a>Definovat odvozenou konfiguraci
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
-Další informace najdete v referenční dokumentaci k [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py).
+Další informace najdete v referenční dokumentaci k [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig).
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-Další informace najdete v referenční dokumentaci k [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+Další informace najdete v referenční dokumentaci k [modelu](/python/api/azureml-core/azureml.core.model.model).
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Vydat vzorový dotaz do vaší služby
 

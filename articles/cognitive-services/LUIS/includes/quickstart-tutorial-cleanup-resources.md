@@ -1,22 +1,16 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: cognitive-services
-author: diberry
-manager: nitinme
 ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 4d6bc91345e8b46a234f4fa7ca0f4277dd8cac42
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f9749c9e283a9b0c3c726856d51c49d2efc6743f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374991"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91545361"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v levé horní nabídce vyberete **Moje aplikace** . Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.

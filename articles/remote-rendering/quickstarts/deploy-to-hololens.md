@@ -1,66 +1,66 @@
 ---
 title: Nasazení ukázky Unity do HoloLens
-description: Rychlý Start, který ukazuje, jak získat ukázku Unity na HoloLens
+description: Průvodce Rychlý start, který ukazuje, jak získat ukázku Unity na zařízení HoloLens.
 author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a5a44b9d27901fcd00f8813096de6bbae5f2310d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557046"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179941"
 ---
-# <a name="quickstart-deploy-unity-sample-to-hololens"></a>Rychlý Start: nasazení ukázky Unity do HoloLens
+# <a name="quickstart-deploy-unity-sample-to-hololens"></a>Rychlý start: Nasazení ukázky Unity do HoloLens
 
-V tomto rychlém startu se dozvíte, jak nasadit a spustit ukázkovou aplikaci rychlého startu pro Unity na HoloLens 2.
+V tomto průvodci Rychlý start se dozvíte, jak na zařízení HoloLens 2 nasadit a spustit ukázkovou aplikaci Unity pro rychlé zprovoznění.
 
-V tomto rychlém startu se dozvíte, jak:
+V tomto rychlém startu se naučíte:
 
 > [!div class="checklist"]
 >
->* Vytvoření ukázkové aplikace pro rychlé zprovoznění pro HoloLens
->* Nasaďte ukázku do zařízení.
->* Spuštění ukázky na zařízení
+>* Sestavit ukázkovou aplikaci pro rychlé zprovoznění pro HoloLens
+>* Nasadit ukázku do zařízení
+>* Spustit ukázku v zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto rychlém startu nasadíme ukázkový projekt z [rychlého startu: vykreslení modelu pomocí Unity](render-model.md).
+V tomto rychlém startu nasadíme ukázkový projekt z článku [Rychlý start: Vykreslení modelu s využitím Unity](render-model.md).
 
-Ujistěte se, že vaše přihlašovací údaje jsou ve scéně správně uložené a Vy se můžete připojit k relaci z editoru Unity.
+Ujistěte se, že máte řádně uložené přihlašovací údaje do scény a že se můžete z editoru Unity připojit k relaci.
 
 ## <a name="build-the-sample-project"></a>Sestavení ukázkového projektu
 
-1. Otevřete *soubor > nastavení sestavení*.
-1. Změnit *platformu* na **Univerzální platforma Windows**
-1. Nastavit *cílové zařízení* na **HoloLens**
-1. Nastavit *architekturu* na **ARM64**
-1. Nastavení *typu sestavení* na **projekt D3D**\
+1. Otevřete nabídku *File (Soubor) -> Build Settings (Nastavení sestavení)* .
+1. U položky *Platform* (Platforma) změňte nastavení na hodnotu **Universal Windows Platform** (Univerzální platforma Windows).
+1. U položky *Target Device* (Cílové zařízení) nastavte **HoloLens**.
+1. U položky *Architecture* (Architektura) nastavte **ARM64**.
+1. U položky *Build Type* (Typ sestavení) nastavte **D3D Project** (Projekt D3D).\
     ![Nastavení sestavení](./media/unity-build-settings.png)
-1. Vybrat **přepínač na platformu**
-1. Při stisknutí tlačítka **sestavit** (nebo ' sestavit a spustit ') budete požádáni o výběr některé složky, do které má být řešení uloženo.
-1. Otevřete vygenerovaný **rychlý Start. sln** pomocí sady Visual Studio
-1. Změna konfigurace na **release** a **ARM64**
-1. Přepnout režim ladicího programu na **vzdálený počítač**\
+1. Vyberte **Switch to Platform** (Přepnout na platformu).
+1. Když stisknete položku **Build** (Sestavit) nebo Build And Run (Sestavit a spustit), zobrazí se výzva k výběru složky, do které se má řešení uložit.
+1. Otevřete vygenerovaný soubor **Quickstart.sln** ve Visual Studiu.
+1. Změňte konfiguraci na možnosti **Vydaná verze** a **ARM64**.
+1. Přepněte režim ladicího programu na **Vzdálený počítač**.\
     ![Konfigurace řešení](media/unity-deploy-config.png)
-1. Sestavení řešení (F7)
-1. Pro projekt ' Start ', přejít na *vlastnosti > ladění*
-    1. Ujistěte se, že je *verze* konfigurace aktivní.
-    1. Nastavit *ladicí program ke spuštění* na **vzdáleném počítači**
-    1. Změnit *název počítače* na **IP adresu vašeho HoleLensu**
+1. Sestavení řešení
+1. U projektu Rychlý start přejděte na položky *Vlastnosti > Ladění*.
+    1. Ujistěte se, že je aktivní konfigurace *Vydaná verze*.
+    1. U položky *Spustit ladicí program* vyberte **Vzdálený počítač**.
+    1. Změňte *název počítače* na **IP adresu HoloLens** .
 
-## <a name="launch-the-sample-project"></a>Spustit vzorový projekt
+## <a name="launch-the-sample-project"></a>Spuštění ukázkového projektu
 
 1. Připojte HoloLens k počítači pomocí kabelu USB.
-1. Spusťte ladicí program v aplikaci Visual Studio (F5). Aplikace se automaticky nasadí do zařízení.
+1. Ve Visual Studiu spusťte ladicí program (F5). Ten automaticky nasadí aplikaci do zařízení.
 
-Ukázková aplikace by se měla spustit a pak začít novou relaci. Po chvíli je relace připravena a na začátku se zobrazí vzdálený vykreslený model.
-Pokud chcete ukázku spustit později později, můžete ji také najít v nabídce Start HoloLens.
+Ukázková aplikace by se měla spustit a zahájit novou relaci. Po chvíli bude relace připravená a před vámi se zobrazí vzdáleně vykreslený model.
+Pokud budete chtít ukázku později spustit podruhé, už ji najdete v nabídce Start zařízení HoloLens.
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším rychlém startu se podíváme na převod vlastního modelu.
+V následujícím rychlém startu se podíváme na převod vlastního modelu.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: převod modelu pro vykreslování](convert-model.md)
+> [Rychlý start: Převod modelu pro vykreslování](convert-model.md)

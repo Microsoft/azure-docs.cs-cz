@@ -1,6 +1,6 @@
 ---
-title: Synchronizace stavu zařízení ze služby Azure IoT Hub | Microsoft Docs
-description: Naučte se používat vlákna zařízení ke konfiguraci vašich zařízení z cloudu a získávat data o stavu a dodržování předpisů z vašich zařízení.
+title: Kurz – synchronizace stavu zařízení z Azure IoT Hub | Microsoft Docs
+description: Kurz – Naučte se používat vlákna zařízení ke konfiguraci vašich zařízení z cloudu a získávat data o stavu a dodržování předpisů z vašich zařízení.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -13,13 +13,14 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
-ms.openlocfilehash: f3dad81a5cba9dd817e0d4e75590d374fe059358
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+- devx-track-azurecli
+ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424099"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733296"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -38,11 +39,9 @@ V tomto kurzu provedete následující úlohy:
 > * Použití požadovaných vlastností k odeslání informací o stavu do simulovaného zařízení.
 > * Použití ohlášených vlastností k přijetí informací o stavu ze simulovaného zařízení
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node.js v10 za účelem. x. x nebo novější.
 
@@ -74,11 +73,11 @@ az extension add --name azure-iot
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
 
-# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription:
-az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
+# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription.
+az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --partition-count 2 --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname --policy-name service -o table
+az iot hub connection-string show --name $hubname --policy-name service -o table
 
 ```
 
@@ -92,7 +91,7 @@ hubname=tutorial-iot-hub
 az iot hub device-identity create --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg
 
 # Retrieve the device connection string, you need this later:
-az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
+az iot hub device-identity connection-string show --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
 
 ```
 
@@ -119,7 +118,7 @@ Následující kód získá z klientského objektu dvojče:
 
 ### <a name="sample-desired-properties"></a>Ukázka požadovaných vlastností
 
-U požadovaných vlastnosti můžete použít jakoukoli strukturu, která vyhovuje potřebám vaší aplikace. V tomto příkladu používáme jednu vlastnost nejvyšší úrovně s názvem **fanOn** a ostatní vlastnosti seskupené do samostatných **součástí**. Následující fragment kódu JSON ukazuje strukturu požadovaných vlastností použitou v tomto kurzu:
+U požadovaných vlastnosti můžete použít jakoukoli strukturu, která vyhovuje potřebám vaší aplikace. V tomto příkladu používáme jednu vlastnost nejvyšší úrovně s názvem **fanOn** a ostatní vlastnosti seskupené do samostatných **součástí**. Následující fragment kódu JSON ukazuje strukturu požadovaných vlastností, které tento kurz používá. Formát JSON je v souboru desired.js.
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 
@@ -191,11 +190,11 @@ node ServiceClient.js "{your service connection string}"
 
 Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zařízení, je na něm zvýrazněno zpracování aktualizace požadované vlastnosti **maxTemperature**. Vidíte zde, jak se spouští obslužná rutina nejvyšší úrovně a obslužná rutina součásti climate:
 
-![Simulované zařízení](./media/tutorial-device-twins/SimulatedDevice1.png)
+![Snímek obrazovky, který ukazuje, jak je spuštěná obslužná rutina nejvyšší úrovně a obslužné rutiny komponenty klimatického procesu.](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 Následující snímek obrazovky ukazuje výstup z back-endové aplikace, je na něm zvýrazněno odeslání aktualizace požadované vlastnosti **maxTemperature**:
 
-![Back-endová aplikace](./media/tutorial-device-twins/BackEnd1.png)
+![Snímek obrazovky, který zobrazuje výstup z back-endové aplikace a zvýrazní, jak pošle aktualizaci.](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>Příjem informací o stavu
 

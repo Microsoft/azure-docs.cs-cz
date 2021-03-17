@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: include
-ms.date: 07/25/2019
-ms.author: cherylmc
+ms.date: 01/12/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8ed3381f056238bdbb24fe52c5f859afef7d03
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335109"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147664"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -28,7 +28,7 @@ ms.locfileid: "80335109"
 | Maximální počet okruhů ExpressRoute propojených se stejnou virtuální sítí v různých umístěních partnerských vztahů |4 |
 | Počet povolených propojení virtuálních sítí na okruh ExpressRoute |Podívejte se na [počet virtuálních sítí na jednu tabulku okruhů ExpressRoute](#vnetpercircuit) .  |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>Počet virtuálních sítí na okruh ExpressRoute
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a> Počet virtuálních sítí na okruh ExpressRoute
 | **Velikost okruhu** | **Počet odkazů virtuální sítě pro Standard** | **Počet propojení virtuálních sítí pomocí doplňku Premium** |
 | --- | --- | --- |
 | 50 Mb/s |10 |20 |

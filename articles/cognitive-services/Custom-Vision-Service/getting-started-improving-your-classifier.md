@@ -1,27 +1,28 @@
 ---
-title: Zlepšení klasifikátoru – Custom Vision Service
+title: Zlepšení modelu – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak množství, kvalita a různá data mohou zlepšit kvalitu třídění ve službě Custom Vision.
+description: V tomto článku se dozvíte, jak množství, kvalita a různá data mohou zlepšit kvalitu modelu ve službě Custom Vision.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 02/09/2021
 ms.author: pafarley
-ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731081"
 ---
-# <a name="how-to-improve-your-classifier"></a>Jak vylepšit třídění
+# <a name="how-to-improve-your-custom-vision-model"></a>Jak vylepšit model Custom Vision
 
-V této příručce se dozvíte, jak vylepšit kvalitu Custom Vision Service třídění. Kvalita vašeho klasifikátoru závisí na množství, kvalitě a nejrůznějších datech, která zadáte, a na tom, jak vyrovnávat celou datovou sadu. Dobrý klasifikátor má datovou sadu s vyrovnáváním školení, která je zavedená o to, co bude do klasifikátoru odesláno. Proces sestavování takového klasifikátoru je iterativní; pro dosažení očekávaných výsledků je běžné, že vybereme několik zaokrouhlení školení.
+V této příručce se dozvíte, jak vylepšit kvalitu Custom Vision Serviceho modelu. Kvalita [klasifikátoru](./getting-started-build-a-classifier.md) nebo [objektu pro rozpoznávání objektů](./get-started-build-detector.md) závisí na množství, kvalitě a množství dat, která zadáte, a na tom, jak jsou vyrovnávány celé datové sady. Dobrý model obsahuje datovou sadu s vyrovnáváním školení, která je zavedená na základě toho, co se do ní bude odesílat. Proces sestavování takového modelu je iterativní; pro dosažení očekávaných výsledků je běžné, že vybereme několik zaokrouhlení školení.
 
-Následuje obecný vzor, který vám pomůže sestavovat přesnější klasifikátor:
+Níže je obecný vzor, který vám pomůže naučit přesnější model:
 
 1. První a kulaté školení
 1. Přidat další obrázky a vyrovnávat data; Přeučování
@@ -31,15 +32,15 @@ Následuje obecný vzor, který vám pomůže sestavovat přesnější klasifik�
 
 ## <a name="prevent-overfitting"></a>Zabránit přebudování
 
-V některých případech se klasifikátor naučí, aby předpovědi na základě libovolných vlastností, které mají vaše image společné. Například pokud vytváříte klasifikátor pro jablka vs. Citrus a jste použili obrázky jablek v rukou a v citrusech na bílých plátech, třídění může mít nepatřičný význam pro ruce vs. pláty, nikoli pro jablka a citrusy.
+V některých případech se model naučí, aby předpovědi na základě libovolných vlastností, které mají vaše image společné. Například pokud vytváříte klasifikátor pro jablka vs. Citrus a jste použili obrázky jablek v rukou a v citrusech na bílých plátech, třídění může mít nepatřičný význam pro ruce vs. pláty, nikoli pro jablka a citrusy.
 
 ![Obrázek neočekávané klasifikace](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Chcete-li tento problém vyřešit, použijte následující pokyny pro školení s více různými různými obrázky: Zadejte obrázky s různými úhly, pozadí, velikostí objektů, skupinami a dalšími variacemi.
+Chcete-li tento problém vyřešit, poskytněte obrázky s různými úhly, pozadím, velikostí objektu, skupinami a dalšími variacemi. Následující části se rozbalí na těchto konceptech.
 
 ## <a name="data-quantity"></a>Množství dat
 
-Počet školicích imagí je nejdůležitějším faktorem. Jako výchozí bod doporučujeme použít minimálně 50 imagí na popisek. S menším počtem imagí je lepším rizikem přebudování a zatímco vaše čísla výkonu mohou nabídnout dobrou kvalitu, váš model se může bojovat s daty ze skutečného světa. 
+Počet školicích imagí je nejdůležitějším faktorem pro vaši datovou sadu. Jako výchozí bod doporučujeme použít minimálně 50 imagí na popisek. S menším počtem imagí je lepším rizikem přebudování a zatímco vaše čísla výkonu mohou nabídnout dobrou kvalitu, váš model se může bojovat s daty ze skutečného světa. 
 
 ## <a name="data-balance"></a>Zůstatek dat
 
@@ -47,11 +48,11 @@ Je také důležité vzít v úvahu relativní množství vašich školicích da
 
 ## <a name="data-variety"></a>Odrůda dat
 
-Nezapomeňte použít obrázky, které jsou v rámci normálního použití odesílány do třídění. V opačném případě by se vám klasifikátor mohl naučit, aby předpovědi na základě libovolných vlastností, které mají vaše image společné. Například pokud vytváříte klasifikátor pro jablka vs. Citrus a jste použili obrázky jablek v rukou a v citrusech na bílých plátech, třídění může mít nepatřičný význam pro ruce vs. pláty, nikoli pro jablka a citrusy.
+Nezapomeňte použít obrázky, které jsou v rámci normálního použití odesílány do třídění. V opačném případě by se váš model mohl naučit vytvořit předpovědi na základě libovolných vlastností, které mají vaše image společné. Například pokud vytváříte klasifikátor pro jablka vs. Citrus a jste použili obrázky jablek v rukou a v citrusech na bílých plátech, třídění může mít nepatřičný význam pro ruce vs. pláty, nikoli pro jablka a citrusy.
 
 ![Obrázek neočekávané klasifikace](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Chcete-li tento problém vyřešit, zahrňte celou řadu imagí, abyste měli jistotu, že se třídění může zobecnit správně. Tady je několik způsobů, jak můžete nastavit, aby se vaše školicí sada lépe rozvedla:
+Pokud chcete tento problém vyřešit, zahrňte celou řadu imagí, abyste měli jistotu, že váš model dokáže správně zobecnit. Tady je několik způsobů, jak můžete nastavit, aby se vaše školicí sada lépe rozvedla:
 
 * __Pozadí:__ Poskytněte obrázky objektu před různými pozadími. Fotografie v přirozených kontextech jsou lepší než fotky před neutrálními pozadí, protože poskytují více informací pro třídění.
 
@@ -65,7 +66,7 @@ Chcete-li tento problém vyřešit, zahrňte celou řadu imagí, abyste měli ji
 
     ![Obrázek s ukázkami velikosti](./media/getting-started-improving-your-classifier/size.png)
 
-* __Úhel kamery:__ Poskytněte obrázky, které se vyberou v různých úhlech kamery. Případně, pokud se všechny vaše fotky musí pokládat s pevnými fotoaparáty (jako jsou například kamery pro sledování), nezapomeňte přiřadit jiný popisek každému často vyskytujícímu objektu, abyste se vyhnuli&mdash;přeložení nesouvisejících objektů (například lampposts) jako klíčové funkce.
+* __Úhel kamery:__ Poskytněte obrázky, které se vyberou v různých úhlech kamery. Případně, pokud se všechny vaše fotky musí pokládat s pevnými fotoaparáty (jako jsou například kamery pro sledování), nezapomeňte přiřadit jiný popisek každému často vyskytujícímu objektu, abyste se vyhnuli přeložení &mdash; nesouvisejících objektů (například lampposts) jako klíčové funkce.
 
     ![Obrázek ukázek úhlů](./media/getting-started-improving-your-classifier/angle.png)
 
@@ -73,30 +74,39 @@ Chcete-li tento problém vyřešit, zahrňte celou řadu imagí, abyste měli ji
 
     ![Obrázek ukázek stylu](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>Negativní obrázky
+## <a name="negative-images-classifiers-only"></a>Negativní obrázky (jenom klasifikátory)
 
-V určitém okamžiku projektu může být nutné přidat _negativní vzorky_ , aby bylo možné přesnější třídění. Záporné vzorky jsou ty, které neodpovídají žádné z ostatních značek. Při nahrávání těchto imagí použijte pro ně speciální **negativní** popisek.
+Pokud používáte klasifikátor obrázků, možná budete muset přidat _negativní vzorky_ , aby bylo možné lépe zpřesnit třídění. Záporné vzorky jsou obrázky, které neodpovídají žádné z ostatních značek. Při nahrávání těchto imagí použijte pro ně speciální **negativní** popisek.
+
+Detektory objektů zpracovávají záporné vzorky automaticky, protože všechny oblasti obrázků mimo vykreslená ohraničovací pole jsou považovány za záporné.
 
 > [!NOTE]
 > Custom Vision Service podporuje některé automatické negativní zpracování obrazu. Pokud například vytváříte klasifikátor v hroznovém moštu vs. a odešlete obrázek botu k předpovědi, měl by klasifikátor určit, že obrázek je blízko 0% pro hrozny i banány.
 > 
 > Na druhé straně, v případech, kdy jsou negativní obrázky jenom variací imagí používaných při výuce, je pravděpodobný, že model klasifikuje negativní image jako třídu s popiskem z důvodu skvělých podobností. Pokud například máte klasifikátor a třídění grapefruitu a zadáváte ho v obrazci Clementine, může být Clementine jako oranžová, protože mnoho funkcí Clementine se podobá těm pomerančům. Pokud jsou tyto negativní image z této povahy, doporučujeme vytvořit jednu nebo více dalších značek (například **jiné**) a označit negativní obrázky pomocí této značky během školení, aby model lépe rozlišil mezi těmito třídami.
 
+## <a name="consider-occlusion-and-truncation-object-detectors-only"></a>Zvažte překrytí a zkrácení (jenom pro detektory objektů).
+
+Pokud chcete, aby rozpoznávání objektů rozpoznalo oříznuté objekty (objekt je částečně vyjmut z obrázku) nebo jsou objekty zastíněna (objekt je částečně blokován jiným objektem v imagi), budete muset zahrnout školicí obrázky, které se na tyto případy vztahují.
+
+> [!NOTE]
+> Problémy s objekty, které jsou zastíněna jinými objekty, se Nezaměňujte s **prahovou hodnotou překrytí**, což je parametr pro hodnocení výkonu modelu. Posuvník **prahová hodnota překrytí** na [Custom Vision webu](https://customvision.ai) se zabývá tím, jak velký ohraničovací rámeček se musí překrývat s skutečným ohraničujícím polem, aby se dalo považovat za správný.
+
 ## <a name="use-prediction-images-for-further-training"></a>Použití předpovědí k dalšímu školení
 
-Když použijete nebo otestujete třídění imagí odesláním imagí do koncového bodu předpovědi, služba Custom Vision tyto image uloží. Pak je můžete použít ke zlepšení modelu.
+Když použijete nebo otestujete model odesláním imagí do koncového bodu předpovědi, služba Custom Vision ukládá tyto bitové kopie. Pak je můžete použít ke zlepšení modelu.
 
-1. Chcete-li zobrazit obrázky odeslané do klasifikátoru, otevřete [Custom Vision webové stránky](https://customvision.ai), přejít do projektu a vyberte kartu __předpovědi__ . Výchozí zobrazení zobrazuje obrázky z aktuální iterace. Pomocí rozevírací nabídky __iterace__ můžete zobrazit obrázky odeslané během předchozích iterací.
+1. Chcete-li zobrazit obrázky odeslané do modelu, otevřete [webovou stránku Custom Vision](https://customvision.ai), pokračujte na projekt a vyberte kartu __předpovědi__ . Výchozí zobrazení zobrazuje obrázky z aktuální iterace. Pomocí rozevírací nabídky __iterace__ můžete zobrazit obrázky odeslané během předchozích iterací.
 
     ![snímek obrazovky s kartou předpovědi se zobrazením obrázků](./media/getting-started-improving-your-classifier/predictions.png)
 
-2. Najeďte ukazatelem myši na obrázek a zobrazí se značky, které třídění vypoví. Obrázky jsou seřazené tak, aby se v horní části zobrazovaly ty, které můžou do klasifikátoru přinášet nejvíc vylepšení. Chcete-li použít jinou metodu řazení, proveďte výběr v oddílu __řazení__ . 
+2. Najeďte myší na obrázek, abyste viděli značky, které model předpovídá. Obrázky jsou seřazené tak, aby se v horní části zobrazovaly ty, které můžou do modelu dostat nejvíc vylepšení. Chcete-li použít jinou metodu řazení, proveďte výběr v oddílu __řazení__ . 
 
     Chcete-li přidat obrázek do stávajících školicích dat, vyberte obrázek, nastavte správné značky a klikněte na tlačítko __Uložit a zavřít__. Bitová kopie bude odebrána z __předpovědi__ a přidána do sady školicích imagí. Můžete ji zobrazit výběrem karty __školicích imagí__ .
 
     ![Obrázek stránky označování](./media/getting-started-improving-your-classifier/tag.png)
 
-3. Pak použijte tlačítko __výuka__ k přeučení třídění.
+3. Pak použijte tlačítko __výuka__ pro přeučení modelu.
 
 ## <a name="visually-inspect-predictions"></a>Vizuálně kontrolovat předpovědi
 
@@ -108,7 +118,7 @@ V některých případech vizuální kontrola může identifikovat vzory, které
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste se seznámili s několika technikami, které vám pomohou zajistit přesnější model klasifikace vlastních imagí. Dále se naučíte, jak testovat image programově jejich odesláním do prediktivního rozhraní API.
+V této příručce jste se seznámili s několika technikami, které umožňují přesnější model klasifikace vlastních imagí nebo model detektoru objektu. Dále se naučíte, jak testovat image programově jejich odesláním do prediktivního rozhraní API.
 
 > [!div class="nextstepaction"]
 > [Použití prediktivního rozhraní API](use-prediction-api.md)

@@ -8,27 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/07/2020
+ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85202564"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095761"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Správa [relací jednotného přihlašování (SSO)](session-overview.md) používá stejnou sémantiku jako jakýkoliv jiný technický profil v rámci vlastních zásad. Při spuštění kroku orchestrace se pro referenci zobrazí dotaz na technický profil přidružený k tomuto kroku `UseTechnicalProfileForSessionManagement` . Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
+Správa [relací jednotného přihlašování (SSO)](session-behavior.md) používá stejnou sémantiku jako jakýkoliv jiný technický profil v rámci vlastních zásad. Při spuštění kroku orchestrace se pro referenci zobrazí dotaz na technický profil přidružený k tomuto kroku `UseTechnicalProfileForSessionManagement` . Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
 
 Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlašování, které se dají použít:
 
-|Zprostředkovatel relací  |Rozsah  |
+|Zprostředkovatel relací  |Obor  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Žádná       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Žádné       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C interního správce relací.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mezi poskytovatelem identity Azure AD B2C a OAuth1, OAuth2 nebo OpenId Connect.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Mezi aplikací předávající strany OAuth2 nebo OpenId Connect a Azure AD B2C.        |        
@@ -110,9 +110,6 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  <Metadata>
-    <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
-  </Metadata>
   <PersistedClaims>
     <PersistedClaim ClaimTypeReferenceId="AlternativeSecurityId" />
   </PersistedClaims>
@@ -123,7 +120,7 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | No | Aktuálně se nepoužívá, může být ignorováno. |
+| AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -138,7 +135,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2Cch relací mezi OA
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na `false` . `SM-Saml-idp` [Technický profil zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md)používá následující technický profil.
+Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na `false` . `SM-Saml-idp` [Zprostředkovatel identity SAML](identity-provider-generic-saml.md)používá následující technický profil.
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -152,7 +149,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi
 
 Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServiceProviders` musí být nastavená na `true` . Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
 
-`SM-Saml-issuer` [Technický profil vystavitele SAML](saml-issuer-technical-profile.md) používá následující technický profil
+`SM-Saml-issuer` [Technický profil vystavitele SAML](saml-service-provider.md) používá následující technický profil
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">
@@ -165,11 +162,10 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| IncludeSessionIndex | No | Aktuálně se nepoužívá, může být ignorováno.|
-| RegisterServiceProviders | No | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
+| IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
+| RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Azure AD B2C relaci](session-overview.md).
-- Naučte se [Konfigurovat chování relace ve vlastních zásadách](session-behavior-custom-policy.md).
+Naučte se [Konfigurovat chování relace](session-behavior.md).

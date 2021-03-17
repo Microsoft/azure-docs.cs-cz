@@ -1,7 +1,7 @@
 ---
-title: Přihlaste se uživatelům v aplikacích JavaScript Single-Page (SPA) s ověřovacím kódem | Azure
+title: 'Rychlý Start: přihlášení uživatelů v aplikacích v JavaScriptu Single-Page (SPA) s ověřovacím kódem | Azure'
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak může aplikace JavaScriptu volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft Identity Platform.
+description: V tomto rychlém startu se dozvíte, jak se jednostránkové aplikace v JavaScriptu (SPA) může přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů pomocí toku autorizačního kódu.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: dcb82e6cc50a2ff3291d5a900ec9367d69dcdde6
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115182"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224907"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování s PKCE 
 
-V tomto rychlém startu spustíte ukázku kódu, která předvádí, jak se jednostránkové aplikace v JavaScriptu (SPA) může přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů pomocí toku autorizačního kódu. Ukázka kódu také ukazuje získání přístupového tokenu pro volání webového rozhraní API, v tomto případě rozhraní Microsoft Graph API. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se může aplikace v JavaScriptu (SPA) přihlašovat uživatelům a volat Microsoft Graph pomocí toku autorizačního kódu s klíčem ověření pro výměnu kódu (PKCE). Ukázka kódu ukazuje, jak získat přístupový token pro volání rozhraní Microsoft Graph API nebo jakéhokoli webového rozhraní API. 
+
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobného rychlému startu, který používá MSAL.js 1,0 s implicitním tokem, najdete v tématu [rychlý Start: přihlášení uživatelů v aplikacích JavaScript Single-Page](./quickstart-v2-javascript.md).
-
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,11 +39,9 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
-> 1. Vyberte [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
+> 1. Přejít na <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Registrace aplikací Azure Portal</a>.
 > 1. Zadejte název své aplikace.
-> 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+> 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**.
 > 1. Přejděte do podokna pro rychlé zprovoznění a podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
@@ -51,21 +49,21 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
-> 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
-> 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
-> 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. V levém podokně registrované aplikace vyberte **ověřování**.
-> 1. V části **konfigurace platformy**vyberte **Přidat platformu**. V podokně, které se otevře, vyberte **jednostránkovou aplikaci**.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. V části **konfigurace platformy** vyberte **Přidat platformu**. V podokně, které se otevře, vyberte **jednostránkovou aplikaci**.
 > 1. Nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` .
 > 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Chcete-li, aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat `redirectUri` jako `http://localhost:3000/` .
+> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI přesměrování** `http://localhost:3000/` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -111,13 +109,19 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 >
 > Upravte hodnoty v `msalConfig` části, jak je popsáno zde:
 >
-> - `Enter_the_Application_Id_Here`je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
-> - `Enter_the_Cloud_Instance_Id_Here`je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte `https://login.microsoftonline.com/` . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](authentication-national-cloud.md).
-> - `Enter_the_Tenant_info_here`je nastaveno na jednu z následujících možností:
+> - `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
+>
+>    Pokud chcete zjistit hodnotu **ID aplikace (klienta)**, na stránce s přehledem registrace aplikace se podívejte na stránku Azure Portal s **přehledem** registrace aplikace.
+> - `Enter_the_Cloud_Instance_Id_Here` je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte `https://login.microsoftonline.com/` . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here` je nastaveno na jednu z následujících možností:
 >   - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například, `contoso.microsoft.com`.
+>
+>    Pokud chcete zjistit hodnotu **ID adresáře (tenanta)**, na stránce s **přehledem** registrace aplikace se podívejte do Azure Portal.
 >   - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` .
->   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` . **Pro tento rychlý Start**použijte `common` .
+>   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` . **Pro tento rychlý Start** použijte `common` .
 >   - Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` .
+>
+>    Pokud chcete najít hodnotu **podporovaných typů účtů**, v Azure Portal na stránce **Přehled** registrace aplikace.
 > - `Enter_the_Redirect_Uri_Here` je `http://localhost:3000/`.
 >
 > `authority`Pokud používáte hlavní (globální) cloud Azure, měla by být hodnota v *authConfig.js* podobná následující:
@@ -126,9 +130,7 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 > authority: "https://login.microsoftonline.com/common",
 > ```
 >
-> > [!TIP]
-> > Pokud chcete najít hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **podporované typy účtů**, na stránce s **přehledem** registrace aplikace se podívejte do Azure Portal.
->
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
 > Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace.
@@ -152,7 +154,7 @@ Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobn
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here`je koncový bod, na který se bude volat volání rozhraní API. U hlavní (globální) Microsoft Graph služby API zadejte `https://graph.microsoft.com/` (včetně koncového lomítka). Další informace o Microsoft Graph v národních cloudech najdete v tématu věnovaném [národním cloudovým nasazením](/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here` je koncový bod, na který se bude volat volání rozhraní API. U hlavní (globální) Microsoft Graph služby API zadejte `https://graph.microsoft.com/` (včetně koncového lomítka). Další informace o Microsoft Graph v národních cloudech najdete v tématu věnovaném [národním cloudovým nasazením](/graph/deployments).
 >
 > `graphMeEndpoint`Hodnoty a `graphMailEndpoint` v souboru *graphConfig.js* by měly být podobné následujícímu, pokud používáte hlavní (globální) Microsoft Graph službu API:
 >
@@ -202,4 +204,4 @@ npm install @azure/msal-browser
 Podrobnější návod k sestavování aplikace použité v tomto rychlém startu najdete v následujícím kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz pro přihlášení a volání v MS Graph >](./tutorial-v2-javascript-auth-code.md)
+> [Kurz pro přihlášení a volání MS graphu](./tutorial-v2-javascript-auth-code.md)

@@ -1,6 +1,6 @@
 ---
 title: Správa a monitorování – přehled
-description: Přehled monitorování a správy pro využití prostředků, aktivity protokolů, doporučení a ochrany dat (zálohování a obnovení) s Synapsem fondem SQL.
+description: Přehled monitorování a správy pro využití prostředků, aktivity protokolů, doporučení a ochrany dat (zálohování a obnovení) s vyhrazeným fondem SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 19b2b4aecedbaa66c258b9076c517b02034a46fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4792842eddac3e8082be2d3a67736824a02dfebd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317501"
 ---
-# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Správa a monitorování pomocí synapse fondu SQL
+# <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Správa a monitorování pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-Synapse SQL umožňuje zřídit datový sklad prostřednictvím fondu SQL. Následující články vám pomůžou se správou a monitorováním datového skladu. Naučíte se také, jak optimalizovat využití a výkon datového skladu.
+Synapse SQL umožňuje zřídit datový sklad prostřednictvím vyhrazeného fondu SQL. Následující články vám pomůžou se správou a monitorováním datového skladu. Naučíte se také, jak optimalizovat využití a výkon datového skladu.
 
 ## <a name="overview"></a>Přehled
 
@@ -33,4 +33,4 @@ Synapse SQL umožňuje zřídit datový sklad prostřednictvím fondu SQL. Násl
 
 
 ## <a name="next-steps"></a>Další kroky
-Návody najdete v tématu [monitorování a optimalizace fondu SQL](sql-data-warehouse-manage-monitor.md).
+Návody najdete v tématu [monitorování a optimalizace vyhrazeného fondu SQL](sql-data-warehouse-manage-monitor.md).

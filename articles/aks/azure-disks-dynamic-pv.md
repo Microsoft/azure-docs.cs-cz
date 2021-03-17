@@ -4,20 +4,20 @@ titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak dynamicky vytvořit trvalý svazek s disky Azure ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/21/2020
+ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683602"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021635"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
 Trvalý svazek představuje část úložiště, která byla zřízena pro použití s Kubernetes lusky. Trvalý svazek lze použít v jednom nebo mnoha luskech a lze jej dynamicky nebo staticky zřídit. V tomto článku se dozvíte, jak dynamicky vytvářet trvalé svazky s disky Azure, které používá jeden z nich v clusteru Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Disk Azure se dá připojit jenom k typu *režimu přístupu* *ReadWriteOnce*, který je dostupný jenom pro jedno pod pod AKS. Pokud potřebujete sdílet trvalý svazek mezi více lusky, použijte [soubory Azure][azure-files-pvc].
+> Disk Azure se dá připojit jenom k typu *režimu přístupu* *ReadWriteOnce*, který je dostupný pro jeden uzel v AKS. Pokud potřebujete sdílet trvalý svazek mezi více uzly, použijte [soubory Azure][azure-files-pvc].
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
@@ -25,7 +25,7 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Předdefinované třídy úložiště
 
@@ -102,7 +102,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -189,7 +189,7 @@ V závislosti na množství dat na disku může trvat několik minut, než se sn
 
 ## <a name="restore-and-use-a-snapshot"></a>Obnovení a použití snímku
 
-Pokud chcete disk obnovit a použít ho s Kubernetes pod, při vytváření disku pomocí [AZ disk Create][az-disk-create]použijte snímek jako zdroj. Tato operace zachová původní prostředek, pokud budete potřebovat přístup k původnímu snímku dat. Následující příklad vytvoří z snímku s názvem *pvcSnapshot*disk s názvem *pvcRestored* :
+Pokud chcete disk obnovit a použít ho s Kubernetes pod, při vytváření disku pomocí [AZ disk Create][az-disk-create]použijte snímek jako zdroj. Tato operace zachová původní prostředek, pokud budete potřebovat přístup k původnímu snímku dat. Následující příklad vytvoří z snímku s názvem *pvcSnapshot* disk s názvem *pvcRestored* :
 
 ```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
@@ -211,7 +211,7 @@ metadata:
 spec:
   containers:
   - name: mypodrestored
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

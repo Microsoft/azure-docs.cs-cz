@@ -4,12 +4,12 @@ description: Naučte se implementovat scénář s ventilátorem na více instanc
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562186"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027638"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Scénář ventilátoru/ventilátoru – ve scénáři v Durable Functions-cloudové zálohování – příklad
 
@@ -51,7 +51,7 @@ Zde je kód, který implementuje funkci Orchestrator:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
 
-Všimněte si `await Task.WhenAll(tasks);` řádku. Žádná jednotlivá volání `E2_CopyFileToBlob` funkce nebyla očekávána, *not* což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `Task.WhenAll` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s úlohou Parallel Library (TPL) v rozhraní .NET, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
+Všimněte si `await Task.WhenAll(tasks);` řádku. Žádná jednotlivá volání `E2_CopyFileToBlob` funkce nebyla očekávána,  což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `Task.WhenAll` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s úlohou Parallel Library (TPL) v rozhraní .NET, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
 
 Po očekávání od `Task.WhenAll` nás víme, že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` funkce vrátí počet odeslaných bajtů, takže výpočet celkového počtu bajtů je v důsledku přidávání všech vrácených hodnot dohromady.
 
@@ -65,12 +65,29 @@ Zde je kód, který implementuje funkci Orchestrator:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Všimněte si `yield context.df.Task.all(tasks);` řádku. Všechna jednotlivá volání `E2_CopyFileToBlob` funkce nebyla získána, *not* což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `context.df.Task.all` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) jazykem JavaScript, pak to není novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
+Všimněte si `yield context.df.Task.all(tasks);` řádku. Všechna jednotlivá volání `E2_CopyFileToBlob` funkce nebyla získána,  což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `context.df.Task.all` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) jazykem JavaScript, pak to není novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
 
 > [!NOTE]
 > Přestože jsou úkoly koncepčně podobné příslibů JavaScriptu, měly by funkce Orchestrator používat `context.df.Task.all` a `context.df.Task.any` místo `Promise.all` a `Promise.race` Spravovat paralelní zpracování úkolů.
 
 Po získání od společnosti víme `context.df.Task.all` , že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` funkce vrátí počet odeslaných bajtů, takže výpočet celkového počtu bajtů je v důsledku přidávání všech vrácených hodnot dohromady.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Funkce používá standardní *function.js* pro funkce nástroje Orchestrator.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/function.json)]
+
+Zde je kód, který implementuje funkci Orchestrator:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/\_\_init\_\_.py)]
+
+Všimněte si `yield context.task_all(tasks);` řádku. Všechna jednotlivá volání `E2_CopyFileToBlob` funkce nebyla získána,  což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `context.task_all` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) v Pythonu, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
+
+> [!NOTE]
+> Přestože jsou úkoly koncepčně podobné awaitables Pythonu, měly by funkce Orchestrator používat i `yield` `context.task_all` `context.task_any` rozhraní API a ke správě paralelního zpracování úkolů.
+
+Po získání od společnosti víme `context.task_all` , že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` vrátí počet odeslaných bajtů, takže můžeme vypočítat celkový počet bajtů celkem přidáním všech vrácených hodnot dohromady.
 
 ---
 
@@ -95,6 +112,16 @@ A zde je implementace:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
 Funkce používá `readdirp` modul (verze 2. x) k rekurzivnímu čtení adresářové struktury.
+
+# <a name="python"></a>[Python](#tab/python)
+
+*function.jsv* souboru, aby `E2_GetFileList` vypadala takto:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/function.json)]
+
+A zde je implementace:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/\_\_init\_\_.py)]
 
 ---
 
@@ -122,6 +149,16 @@ Implementace JavaScriptu používá [Azure Storage SDK pro uzel](https://github.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+*function.jsv* souboru pro `E2_CopyFileToBlob` je podobně jednoduchá:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/function.json)]
+
+Implementace Pythonu používá [sadu SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python) k nahrání souborů do Azure Blob Storage.
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/\_\_init\_\_.py)]
+
 ---
 
 Implementace načte soubor z disku a asynchronně streamuje obsah do objektu BLOB se stejným názvem v kontejneru "zálohy". Vrácená hodnota je počet bajtů zkopírovaných do úložiště, který je pak použit funkcí Orchestrator k výpočtu agregačního součtu.
@@ -131,7 +168,7 @@ Implementace načte soubor z disku a asynchronně streamuje obsah do objektu BLO
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Orchestraci můžete zahájit odesláním následující žádosti HTTP POST.
+Orchestraci můžete spustit ve Windows tak, že odešlete následující požadavek HTTP POST.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -139,6 +176,16 @@ Content-Type: application/json
 Content-Length: 20
 
 "D:\\home\\LogFiles"
+```
+
+Alternativně můžete v Function App pro Linux (Python momentálně spustit pouze na Linux pro App Service), například:
+
+```
+POST http://{host}/orchestrators/E2_BackupSiteContent
+Content-Type: application/json
+Content-Length: 20
+
+"/home/site/wwwroot"
 ```
 
 > [!NOTE]

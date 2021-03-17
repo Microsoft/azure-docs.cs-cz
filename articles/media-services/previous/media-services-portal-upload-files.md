@@ -3,7 +3,7 @@ title: Nahrání souborů do účtu Media Services na webu Azure Portal | Dokume
 description: Tento kurz vás provede postupem nahrání souborů do účtu Media Services na webu Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 73e92fa505a994cc5cc2fdb3a297dfd653a596a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c2dc193d65ff1c85837477c0a8fd345f11d59bcd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071814"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009740"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Nahrání souborů do účtu Media Services na webu Azure Portal 
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Nahrání souborů do účtu Media Services na webu Azure Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-upload-files.md)
@@ -30,7 +32,7 @@ ms.locfileid: "87071814"
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. Aktuální soubory pro nahrávání pomocí portálu najdete v tématu [použití portálu k nahrávání, kódování a streamování obsahu](../latest/manage-assets-quickstart.md).<br/>Podívejte se také na: [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. Aktuální soubory pro nahrávání pomocí portálu najdete v tématu [použití portálu k nahrávání, kódování a streamování obsahu](../latest/manage-assets-quickstart.md).<br/>Podívejte se také na: [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Ve službě Azure Media Services nahráváte digitální soubory do prostředku. Prostředek může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů bude váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 

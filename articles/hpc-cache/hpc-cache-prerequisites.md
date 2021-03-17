@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5ac0f0677be6b641d496a941c5a8e1343fd017bc
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097073"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562554"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -37,9 +37,6 @@ V části tohoto článku najdete konkrétní doporučení.
 
 Doporučuje se placené předplatné.
 
-> [!NOTE]
-> Tým Azure HPC cache musí přidat vaše předplatné do seznamu přístupu, aby ho bylo možné použít k vytvoření instance mezipaměti. Tento postup pomáhá zajistit, že každý zákazník získá vysoce kvalitní odezvu z mezipamětí. Vyplňte [Tento formulář](https://aka.ms/onboard-hpc-cache) a požádejte o přístup.
-
 ## <a name="network-infrastructure"></a>Síťová infrastruktura
 
 Předtím, než budete moci použít mezipaměť, by měly být nastavené dvě požadavky týkající se sítě:
@@ -62,13 +59,26 @@ Osvědčeným postupem je vytvořit novou podsíť pro každou mezipaměť. V r�
 Mezipaměť potřebuje DNS pro přístup k prostředkům mimo svou virtuální síť. V závislosti na tom, jaké prostředky používáte, možná budete muset nastavit vlastní server DNS a nakonfigurovat přesměrování mezi tímto serverem a Azure DNS servery:
 
 * Pro přístup k koncovým bodům služby Azure Blob Storage a dalším interním prostředkům budete potřebovat server DNS založený na Azure.
-* Pokud chcete získat přístup k místnímu úložišti, musíte nakonfigurovat vlastní server DNS, který dokáže přeložit názvy hostitelů úložiště.
+* Pokud chcete získat přístup k místnímu úložišti, musíte nakonfigurovat vlastní server DNS, který dokáže přeložit názvy hostitelů úložiště. Tuto možnost je nutné provést **před** vytvořením mezipaměti.
 
-Pokud potřebujete jenom přístup k úložišti objektů blob, můžete pro svou mezipaměť použít výchozí server DNS určený pro Azure. Pokud ale potřebujete přístup k jiným prostředkům, měli byste vytvořit vlastní server DNS a nakonfigurovat ho tak, aby přenesl všechny požadavky na rozlišení specifické pro Azure na Azure DNS Server.
+Pokud používáte jenom úložiště objektů blob, můžete pro svou mezipaměť použít výchozí server DNS určený pro Azure. Pokud ale potřebujete přístup k úložišti nebo jiným prostředkům mimo Azure, měli byste vytvořit vlastní server DNS a nakonfigurovat ho tak, aby přenesl všechny požadavky na rozlišení specifické pro Azure na Azure DNS Server.
+
+Chcete-li použít vlastní server DNS, musíte provést tyto kroky instalace před vytvořením mezipaměti:
+
+* Vytvořte virtuální síť, která bude hostovat mezipaměť prostředí Azure HPC.
+* Vytvořte server DNS.
+* Přidejte server DNS do virtuální sítě mezipaměti.
+
+  Pomocí těchto kroků přidejte server DNS do virtuální sítě v Azure Portal:
+
+  1. Otevřete virtuální síť v Azure Portal.
+  1. V nabídce **Nastavení** na bočním panelu vyberte **servery DNS** .
+  1. Vybrat **vlastní**
+  1. Do pole zadejte IP adresu serveru DNS.
 
 K vyrovnávání zatížení připojení klientů mezi všemi dostupnými přípojnými body mezipaměti se dá použít taky jednoduchý server DNS.
 
-Přečtěte si další informace o virtuálních sítích Azure a konfiguracích serverů DNS v [překladu názvů pro prostředky v Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
+Přečtěte si další informace o virtuálních sítích Azure a konfiguracích serverů DNS v [překladu názvů pro prostředky v Azure Virtual Networks](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -76,19 +86,23 @@ Než začnete vytvářet mezipaměť, ověřte tyto požadavky týkající se op
 
 * Instance mezipaměti musí být schopná vytvářet rozhraní virtuální sítě (nic). Uživatel, který vytváří mezipaměť, musí mít v předplatném dostatečná oprávnění pro vytváření síťových adaptérů.
 
-* Pokud používáte službu BLOB Storage, mezipaměť prostředí Azure HPC potřebuje autorizaci pro přístup k vašemu účtu úložiště. Pomocí řízení přístupu na základě role (RBAC) udělte mezipaměti přístup k úložišti objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště.
+* Pokud používáte službu BLOB Storage, mezipaměť prostředí Azure HPC potřebuje autorizaci pro přístup k vašemu účtu úložiště. Pomocí řízení přístupu na základě role Azure (Azure RBAC) udělte mezipaměti přístup k úložišti objektů BLOB. Jsou vyžadovány dvě role: Přispěvatel účtu úložiště a přispěvatel dat objektu BLOB úložiště.
 
   Pokud chcete přidat role, postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) .
 
 ## <a name="storage-infrastructure"></a>Infrastruktura úložiště
+<!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-Mezipaměť podporuje exporty do kontejnerů objektů blob Azure nebo pro hardwarové úložiště NFS. Po vytvoření mezipaměti přidejte cíle úložiště.
+Mezipaměť podporuje kontejnery objektů blob Azure, exporty hardwarového úložiště NFS a kontejnery objektů BLOB ADLS připojené k systému souborů NFS (aktuálně ve verzi Preview). Po vytvoření mezipaměti přidejte cíle úložiště.
 
 Každý typ úložiště má specifické požadavky.
 
 ### <a name="blob-storage-requirements"></a>Požadavky na úložiště objektů BLOB
 
 Pokud chcete používat úložiště objektů BLOB v Azure s mezipamětí, potřebujete kompatibilní účet úložiště a prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu mezipaměti HPC Azure, jak je popsáno v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
+
+> [!NOTE]
+> Jiné požadavky platí pro úložiště objektů BLOB připojené k systému souborů NFS. Podrobnosti najdete v článku [požadavky na úložiště adls-NFS](#nfs-mounted-blob-adls-nfs-storage-requirements-preview) .
 
 Vytvořte účet před tím, než se pokusíte přidat cíl úložiště. Když přidáte cíl, můžete vytvořit nový kontejner.
 
@@ -113,7 +127,7 @@ Pokud používáte úložný systém NFS (například místní hardwarový syst�
 
 Další informace najdete v tématu [řešení problémů s cílovým úložištěm a konfigurací serveru pro systém souborů NFS](troubleshoot-nas.md).
 
-* **Připojení k síti:** Mezipaměť prostředí Azure HPC vyžaduje síťový přístup s vysokou šířkou pásma mezi podsítí mezipaměti a datovým centrem systému souborů NFS. Doporučuje se [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) nebo podobný přístup. Pokud používáte síť VPN, může být potřeba ji nakonfigurovat tak, aby se zablokovala TCP MSS v 1350, aby se zajistilo, že nebudou zablokované Velké pakety. Další pomoc při řešení potíží s nastavením sítě VPN najdete v tématu [omezení velikosti paketů sítě VPN](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) .
+* **Připojení k síti:** Mezipaměť prostředí Azure HPC vyžaduje síťový přístup s vysokou šířkou pásma mezi podsítí mezipaměti a datovým centrem systému souborů NFS. Doporučuje se [ExpressRoute](../expressroute/index.yml) nebo podobný přístup. Pokud používáte síť VPN, může být potřeba ji nakonfigurovat tak, aby se zablokovala TCP MSS v 1350, aby se zajistilo, že nebudou zablokované Velké pakety. Další pomoc při řešení potíží s nastavením sítě VPN najdete v tématu [omezení velikosti paketů sítě VPN](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) .
 
 * **Přístup k portu:** Mezipaměť potřebuje přístup ke konkrétním portům TCP/UDP v systému úložiště. Různé typy úložiště mají různé požadavky na porty.
 
@@ -146,7 +160,7 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
 * **Přístup k adresáři:** Povolte `showmount` příkaz v systému úložiště. Azure HPC Cache používá tento příkaz ke kontrole, zda konfigurace cíle úložiště odkazuje na platný export, a také k tomu, aby se zajistilo, že více připojení nemá přístup ke stejným podadresářům (riziko kolizí souborů).
 
   > [!NOTE]
-  > Pokud váš systém úložiště NFS používá operační systém ONTAP 9,2 NetApp, **nepovolujte `showmount` **ho. Pro pomoc [se obraťte na službu a podporu společnosti Microsoft](hpc-cache-support-ticket.md) .
+  > Pokud váš systém úložiště NFS používá operační systém ONTAP 9,2 NetApp, **nepovolujte `showmount`** ho. Pro pomoc [se obraťte na službu a podporu společnosti Microsoft](hpc-cache-support-ticket.md) .
 
   Další informace o přístupu k výpisu adresářů najdete v [článku věnovaném řešení potíží s](troubleshoot-nas.md#enable-export-listing)cílovým úložištěm NFS.
 
@@ -159,6 +173,37 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
   * Pokud má vaše úložiště nějaké exporty, které jsou podadresáři jiného exportu, ujistěte se, že má mezipaměť kořenový přístup k nejnižšímu segmentu cesty. Podrobnosti najdete v článku věnovaném [přístupu ke kořenu na cestách k adresáři](troubleshoot-nas.md#allow-root-access-on-directory-paths) v tématu řešení potíží s cílovým ÚLOŽIŠTĚm NFS
 
 * Back-end úložiště NFS musí být kompatibilní hardwarová a softwarová platforma. Podrobnosti získáte od týmu Azure HPC cache.
+
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>Požadavky na úložiště namontovaného objektu BLOB (ADLS-NFS) NFS (verze PREVIEW)
+
+Mezipaměť HPC Azure taky může použít kontejner objektů BLOB připojený k protokolu NFS jako cíl úložiště.
+
+> [!NOTE]
+> Podpora protokolu NFS 3,0 pro Azure Blob Storage je ve verzi Public Preview. Dostupnost je omezená a funkce se můžou v současnosti měnit a když je funkce všeobecně dostupná. V produkčních systémech Nepoužívejte technologii verze Preview.
+>
+> Přečtěte si další informace o této funkci ve verzi Preview v tématu [Podpora protokolů NFS 3,0 ve službě Azure Blob Storage](../storage/blobs/network-file-system-protocol-support.md).
+
+Požadavky na účet úložiště se liší pro cíl úložiště objektů BLOB ADLS-NFS a pro standardní cíl úložiště BLOB. Pokud chcete vytvořit a nakonfigurovat účet úložiště s povoleným systémem souborů NFS, postupujte podle pokynů v části [připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0](../storage/blobs/network-file-system-protocol-support-how-to.md) .
+
+Toto je obecný přehled kroků. Tyto kroky se můžou změnit, takže vždycky si přečtěte informace o aktuálních podrobnostech [adls-NFS](../storage/blobs/network-file-system-protocol-support-how-to.md) .
+
+1. Ujistěte se, že funkce, které potřebujete, jsou k dispozici v oblastech, kde plánujete pracovat.
+
+1. Povolte funkci protokolu NFS pro vaše předplatné. Provedete to *ještě před* vytvořením účtu úložiště.
+
+1. Vytvořte zabezpečenou virtuální síť (VNet) pro účet úložiště. Pro účet úložiště s povoleným systémem souborů NFS a pro mezipaměť HPC Azure byste měli použít stejnou virtuální síť. (Nepoužívejte stejnou podsíť jako mezipaměť.)
+
+1. Vytvořte účet úložiště.
+
+   * Místo použití nastavení účtu úložiště pro standardní účet úložiště BLOB postupujte podle pokynů v [dokumentu s postupy](../storage/blobs/network-file-system-protocol-support-how-to.md). Typ podporovaného účtu úložiště se může lišit podle oblasti Azure.
+
+   * V části **sítě** vyberte privátní koncový bod v zabezpečené virtuální síti, kterou jste vytvořili (doporučeno), nebo vyberte veřejný koncový bod s omezeným přístupem z zabezpečené virtuální sítě.
+
+   * Nezapomeňte dokončit oddíl **Upřesnit** , kde povolíte přístup k systému souborů NFS.
+
+   * Poskytněte aplikaci cache přístup k vašemu účtu služby Azure Storage, jak je uvedeno v [oprávněních](#permissions)výše. Můžete to udělat při prvním vytvoření cíle úložiště. Postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) a poskytněte mezipaměti požadované role přístupu.
+
+     Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
 
 ## <a name="set-up-azure-cli-access-optional"></a>Nastavení přístupu přes rozhraní příkazového řádku Azure (volitelné)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6a6c8b49582b34c2603e0ddf78b76736f97c183
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445575"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat pomocí Azure Active Directory (Azure 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -104,7 +104,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -138,15 +138,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V pravém horním rohu stránky klikněte na **Continuous Security**  >  **Access Management**  >  **nastavení ověřování**pro správu nepřetržitého přístupu zabezpečení.
 
-    ![Konfigurace svazku](./media/harness-tutorial/configure01.png)
+    ![Snímek obrazovky, který zobrazuje nabídku "průběžné zabezpečení" s vybraným nastavením "Správa přístupu" a "nastavení ověřování".](./media/harness-tutorial/configure01.png)
 
 5. V části **Zprostředkovatelé jednotného přihlašování** klikněte na **+ Přidat poskytovatele jednotného přihlašování**  >  **SAML**.
 
-    ![Konfigurace svazku](./media/harness-tutorial/configure03.png)
+    ![Snímek obrazovky, který zobrazuje poskytovatele "S S" s "+ Add-s" Providers-S je vybraný A M L.](./media/harness-tutorial/configure03.png)
 
 6. V automaticky otevíraném okně **zprostředkovatele SAML** proveďte následující kroky:
 
-    ![Konfigurace svazku](./media/harness-tutorial/configure02.png)
+    ![Snímek obrazovky s vybranými poli "U R L" a "zobrazovaného názvu", které obsahuje zvýrazněná pole "U R L" a "zobrazovaný název" a výběr tlačítek "vybrat soubor" a "Odeslat".](./media/harness-tutorial/configure02.png)
 
     a. Zkopírujte **do svého poskytovatele jednotného přihlašování, povolte prosím přihlašovací jméno založené na SAML a pak zadejte následující instanci adresy URL** a vložte ji do textového pole Adresa URL odpovědi v tématu **základní konfigurace SAML** na Azure Portal.
 
@@ -166,11 +166,11 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
 1. V pravém horním rohu stránky klikněte na **nepřetržitý**  >  Uživatel**pro správu zabezpečení přístupu**  >  **Users**.
 
-    ![Konfigurace svazku](./media/harness-tutorial/configure04.png)
+    ![Snímek obrazovky, který zobrazuje nabídku průběžného zabezpečení se zvolenými možnostmi Správa přístupu a uživatelé.](./media/harness-tutorial/configure04.png)
 
 1. Na pravé straně stránky klikněte na **+ Přidat uživatele**.
 
-    ![Konfigurace svazku](./media/harness-tutorial/configure05.png)
+    ![Snímek obrazovky zobrazující stránku Uživatelé s vybranou akcí + přidat uživatele](./media/harness-tutorial/configure05.png)
 
 1. V automaticky otevíraném okně **Přidat uživatele** proveďte následující kroky:
 
@@ -186,15 +186,14 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici se předepsanou na přístupovém panelu byste měli být automaticky přihlášení ke svazku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici se předepsanou na přístupovém panelu byste měli být automaticky přihlášení ke svazku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si pomocí Azure AD](https://aad.portal.azure.com/)
-

@@ -12,16 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078950"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184317"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Dynamická změna úrovně služeb svazku
+
+> [!IMPORTANT] 
+> Dynamická Změna úrovně služby cílového svazku replikace se v tuto chvíli nepodporuje.
 
 Úroveň služby existujícího svazku můžete změnit přesunutím svazku do jiného fondu kapacity, který využívá požadovanou [úroveň služby](azure-netapp-files-service-levels.md) pro daný svazek. Tato místní změna na úrovni služby pro svazek nevyžaduje migraci dat. Nemá to vliv na přístup ke svazku.  
 
@@ -37,7 +40,7 @@ Fond kapacit, na který chcete přesunout svazek, již existuje. Fond kapacit m�
 
 ## <a name="register-the-feature"></a>Zaregistrujte funkci.
 
-Funkce pro přesunutí svazku do jiného fondu kapacity je momentálně ve verzi Preview. Pokud tuto funkci používáte poprvé, budete ji muset nejdřív zaregistrovat.
+Funkce pro přesunutí svazku do jiného fondu kapacity je momentálně ve verzi Preview. Pokud tuto funkci používáte poprvé, musíte ji nejprve zaregistrovat.
 
 1. Zaregistrujte funkci: 
 
@@ -53,7 +56,8 @@ Funkce pro přesunutí svazku do jiného fondu kapacity je momentálně ve verzi
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-
+Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+ 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>Přesunout svazek do jiného fondu kapacity
 
 1.  Na stránce svazky klikněte pravým tlačítkem na svazek, jehož úroveň služby se má změnit. Vyberte **změnit fond**.
@@ -71,3 +75,4 @@ Funkce pro přesunutí svazku do jiného fondu kapacity je momentálně ve verzi
 
 * [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
+* [Řešení potíží se změnou fondu kapacity svazku](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)

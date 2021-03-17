@@ -1,33 +1,44 @@
 ---
 title: Vytvoření nového prostředku založeného na pracovním prostoru Azure Monitor Application Insights | Microsoft Docs
 description: Přečtěte si o krocích požadovaných k povolení nových Azure Monitorch Application Insightsch prostředků založených na pracovních prostorech.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 10/06/2020
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824983"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578344"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>Prostředky Application Insights založené na pracovním prostoru (Preview)
+# <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
 Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Nyní se můžete rozhodnout pro odeslání telemetrie Application Insights do společného pracovního prostoru Log Analytics, který vám umožní úplný přístup ke všem funkcím Log Analytics a zároveň udržuje protokoly aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
-To také umožňuje běžné Access Control na základě rolí (RBAC) napříč vašimi prostředky a eliminuje nutnost dotazů mezi aplikacemi a pracovními prostory.
+To umožňuje také společné řízení přístupu na základě role Azure (Azure RBAC) napříč vašimi prostředky a eliminuje nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 > [!NOTE]
 > Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
 
-Pokud chcete vyzkoušet nové prostředí, přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek Application Insights:
+## <a name="new-capabilities"></a>Nové funkce
 
-![Prostředek Application Insights založený na pracovním prostoru](./media/create-workspace-resource/create-workspace-based.png)
+Application Insights na základě pracovního prostoru vám umožní využít výhod nejnovějších možností Azure Monitor a Log Analytics, včetně:
 
-Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../learn/quick-create-workspace.md).
+* [Klíče spravované zákazníkem (CMK)](../logs/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
+* [Privátní odkaz Azure](../logs/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
+* [Přineste si vlastní úložiště (BYOS) pro Profiler a Snapshot Debugger](./profiler-bring-your-own-storage.md) vám poskytne plnou kontrolu nad zásadami šifrování, zásadami správy životnosti a přístupem k síti pro všechna data přidružená k Application Insights Profiler a Snapshot Debugger. 
+* [Úrovně rezervace kapacity](../logs/manage-cost-storage.md#pricing-model) umožňují v porovnání s průběžnými platbami ušetřit až 25%. 
+* Rychlejší příjem dat prostřednictvím Log Analytics příjmu streamování.
 
-Pro **prostředky založené na pracovním prostoru verze Public Preview jsou aktuálně omezeny na západní USA 2, východní USA a střed USA – jih.**
+## <a name="create-workspace-based-resource"></a>Vytvoření prostředku založeného na pracovních prostorech
+
+Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek Application Insights:
+
+> [!div class="mx-imgBorder"]
+> ![Prostředek Application Insights založený na pracovním prostoru](./media/create-workspace-resource/create-workspace-based.png)
+
+Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../logs/quick-create-workspace.md).
+
+**Prostředky založené na pracovním prostoru jsou aktuálně k dispozici ve všech komerčních oblastech a Azure Government**
 
 Po vytvoření prostředku se v podokně **přehledu** zobrazí příslušné informace o pracovním prostoru:
 
@@ -36,7 +47,7 @@ Po vytvoření prostředku se v podokně **přehledu** zobrazí příslušné in
 Kliknutím na modrý text přejdete k přidruženému pracovnímu prostoru Log Analytics, kde můžete využít nové sjednocené prostředí dotazů na pracovní prostor.
 
 > [!NOTE]
-> Pořád zajišťujeme úplnou zpětnou kompatibilitu pro vaše Application Insights dotazy na prostředky, sešity a výstrahy založené na protokolu v rámci Application Insights prostředí. Chcete-li se dotazovat/zobrazit proti [nové struktuře nebo schématu tabulky založené na pracovním prostoru](apm-tables.md) , musíte nejprve přejít do svého pracovního prostoru Log Analytics. V rámci verze Preview vám výběr **protokolů** z podoken Application Insights umožní přístup k prostředí klasických Application Insights dotazů.
+> Pořád zajišťujeme úplnou zpětnou kompatibilitu pro vaše Application Insights dotazy na prostředky, sešity a výstrahy založené na protokolu v rámci Application Insights prostředí. Chcete-li se dotazovat/zobrazit proti [nové struktuře nebo schématu tabulky založené na pracovním prostoru](apm-tables.md) , musíte nejprve přejít do svého pracovního prostoru Log Analytics. Výběr **protokolů (analýz)** z podoken Application Insights vám poskytne přístup k prostředí Classic Application Insights dotazů.
 
 ## <a name="copy-the-connection-string"></a>Zkopírování připojovacího řetězce
 
@@ -53,10 +64,10 @@ Pro monitorování aplikací založených na kódu stačí nainstalovat příslu
 Podrobnou dokumentaci k nastavení Application Insights SDK pro monitorování založené na kódu najdete v dokumentaci ke konkrétnímu jazyku nebo rozhraní:
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core](./asp-net-core.md)
+- [ASP.NET Core ](./asp-net-core.md)
 - [Úlohy na pozadí & moderních konzolových aplikací (.NET/.NET Core)](./worker-service.md)
 - [Klasické konzolové aplikace (.NET)](./console.md) 
-- [Kompilátor](./java-get-started.md?tabs=maven)
+- [Kompilátor ](./java-get-started.md?tabs=maven)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -79,7 +90,7 @@ Abyste měli přístup k verzi Preview Application Insights příkazy rozhraní 
  az extension add -n application-insights
 ```
 
-Pokud tento příkaz nespustíte `az extension add` , zobrazí se chybová zpráva s oznámením:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Pokud tento příkaz nespustíte `az extension add` , zobrazí se chybová zpráva s oznámením: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Nyní můžete spustit následující a vytvořit prostředek Application Insights:
 
@@ -102,7 +113,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Úplnou dokumentaci k Azure CLI pro tento příkaz najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Úplnou dokumentaci k Azure CLI pro tento příkaz najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -195,12 +206,11 @@ V podokně Application Insights prostředku vyberte **vlastnosti**  >  **změnit
 
 Funkce starší verze průběžného exportu není u prostředků založených na pracovních prostorech podporována. Místo toho vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky** v rámci vašeho prostředku Application Insights. Můžete vybrat všechny tabulky nebo podmnožinu tabulek k archivaci do účtu úložiště nebo streamovat do centra událostí Azure.
 
+> [!NOTE]
+> Pro export telemetrie se momentálně neúčtují žádné další poplatky. Informace o cenách této funkce budou k dispozici na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).  Před zahájením fakturace budou odeslána oznámení. Pokud se rozhodnete i nadále používat <feature name> po období oznámení, bude se vám účtovat příslušná sazba. 
+ 
+
 ## <a name="next-steps"></a>Další kroky
 
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)

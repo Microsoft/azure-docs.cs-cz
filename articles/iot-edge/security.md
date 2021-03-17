@@ -8,14 +8,16 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3212493963805de3c8845ec494d87fc92d72998a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ff154eee6c6174a8f1a3aa7bea37ef62273bb1a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76760109"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489498"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Standardy zabezpečení pro Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge řeší rizika spojená s přesunem dat a analýzou na inteligentní hranici. IoT Edge standardy zabezpečení vyrovnává flexibilitu u různých scénářů nasazení s ochranou, kterou očekáváte ze všech služeb Azure.
 
@@ -48,7 +50,7 @@ Principem nejnižší úrovně oprávnění je, že uživatelé a součásti sys
 
 Mezi další autorizační schémata patří oprávnění k podepisování certifikátů a řízení přístupu na základě role (RBAC).
 
-## <a name="attestation"></a>Ověření
+## <a name="attestation"></a>Attestation
 
 Ověřování identity zajišťuje integritu softwarových bitů, což je důležité pro detekci a zabránění malwaru. Rozhraní Azure IoT Edge Security Framework klasifikuje ověřování v rámci tří hlavních kategorií:
 

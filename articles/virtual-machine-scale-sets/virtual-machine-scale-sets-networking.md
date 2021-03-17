@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 9ad761f289805d15d316fc6f528a0049adb36b30
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837155"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722313"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -23,7 +23,7 @@ Když nasadíte škálovací sadu virtuálních počítačů Azure prostřednict
 Všechny funkce popsané v tomto článku můžete nakonfigurovat pomocí šablon Azure Resource Manageru. Pro vybrané funkce jsou zahrnuté také příklady Azure CLI a PowerShellu.
 
 ## <a name="accelerated-networking"></a>Akcelerované síťové služby
-Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true**. Příklad:
+Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true**. Například:
 
 ```json
 "networkProfile": {
@@ -43,28 +43,7 @@ Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virt
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure Virtual Machine Scale Sets s Azure Load Balancer
-
-Při práci se službou Virtual Machine Scale Sets a nástrojem pro vyrovnávání zatížení je třeba vzít v úvahu následující položky:
-
-* **Více sad Virtual Machine Scale Sets nemůže používat stejný nástroj pro vyrovnávání zatížení**.
-* **Pravidla předávání portů a příchozí NAT**:
-  * Každá sada škálování virtuálního počítače musí mít pravidlo příchozího překladu adres (NAT).
-  * Po vytvoření sady škálování se port back-endu nedá změnit pro pravidlo vyrovnávání zatížení používané sondou stavu nástroje pro vyrovnávání zatížení. Pokud chcete změnit port, můžete odstranit sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače Azure, aktualizujete port a pak znovu nakonfigurujete test stavu.
-  * Při použití sady škálování virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidla příchozího překladu adres (NAT).
-* **Příchozí fond NAT**:
-  * Příchozí fond NAT je kolekcí pravidel příchozího překladu adres (NAT). Jeden příchozí fond NAT nemůže podporovat víc sad Virtual Machine Scale Sets.
-* **Pravidla vyrovnávání zatížení**:
-  * Při použití sady škálování virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidlo vyrovnávání zatížení.
-* **Odchozí pravidla**:
-  *  Pokud chcete vytvořit odchozí pravidlo pro back-end fond, na který se už odkazuje pravidlo vyrovnávání zatížení, musíte **nejdřív na portálu** označit **možnost vytvořit implicitní odchozí pravidla** , když se vytvoří pravidlo vyrovnávání zatížení.
-
-  :::image type="content" source="./media/vmsslb.png" alt-text="Vytvoření pravidla vyrovnávání zatížení" border="true":::
-
-K nasazení sady škálování virtuálního počítače s existujícím nástrojem pro vyrovnávání zatížení Azure můžete použít následující metody.
-
-* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure Portal](../load-balancer/configure-vm-scale-set-portal.md).
-* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure PowerShell](../load-balancer/configure-vm-scale-set-powershell.md).
-* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure CLI](../load-balancer/configure-vm-scale-set-cli.md).
+Další informace o tom, jak nakonfigurovat Standard Load Balancer s Virtual Machine Scale Sets na základě vašeho scénáře, najdete v tématu [Azure Load Balancer a Virtual Machine Scale Sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) .
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Vytvoření škálovací sady, která odkazuje na aplikační bránu
 Pokud chcete vytvořit škálovací sadu, která používá aplikační bránu, odkažte v sekci ipConfigurations této škálovací sady na fond adres back-endu aplikační brány jako v této konfiguraci šablony ARM:
@@ -90,13 +69,13 @@ Pokud chcete vytvořit škálovací sadu, která používá aplikační bránu, 
 Ve výchozím nastavení škálovací sady přebírají konkrétní nastavení DNS virtuální sítě a podsítě, ve kterých byly vytvořeny. Nastavení DNS pro škálovací sadu ale můžete nakonfigurovat i přímo.
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Vytvoření škálovací sady s konfigurovatelnými servery DNS
-Pokud chcete vytvořit škálovací sadu s vlastní konfigurací DNS pomocí Azure CLI, přidejte do příkazu **vmss create** argument **--dns-servers** následovaný mezerami oddělenými IP adresami serverů. Příklad:
+Pokud chcete vytvořit škálovací sadu s vlastní konfigurací DNS pomocí Azure CLI, přidejte do příkazu **vmss create** argument **--dns-servers** následovaný mezerami oddělenými IP adresami serverů. Například:
 
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
 
-Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do části networkInterfaceConfigurations škálovací sady vlastnost dnsSettings. Příklad:
+Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do části networkInterfaceConfigurations škálovací sady vlastnost dnsSettings. Například:
 
 ```json
 "dnsSettings":{
@@ -107,7 +86,7 @@ Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Vytvoření škálovací sady s konfigurovatelnými názvy domén virtuálních počítačů
 Pokud chcete vytvořit škálovací sadu s vlastním názvem DNS pro virtuální počítače pomocí rozhraní příkazového řádku, přidejte do příkazu **virtual machine scale set create** argument **--vm-domain-name** následovaný řetězcem představujícím název domény.
 
-Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **networkInterfaceConfigurations** sady škálování vlastnost **dnsSettings** . Příklad:
+Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **networkInterfaceConfigurations** sady škálování vlastnost **dnsSettings** . Například:
 
 ```json
 "networkProfile": {
@@ -153,7 +132,7 @@ Některé scénáře však vyžadují, aby virtuální počítače ve škálovac
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Vytvoření škálovací sady s veřejnou IP adresou na virtuální počítač
 Pokud chcete pomocí rozhraní příkazového řádku vytvořit škálovací sadu, která každému virtuálnímu počítači přiřadí veřejnou IP adresu, přidejte do příkazu **vmss create** parametr **--public-ip-per-vm**. 
 
-Pokud chcete vytvořit sadu škálování pomocí šablony Azure, ujistěte se, že je verze API prostředku Microsoft. COMPUTE/virtualMachineScaleSets aspoň **2017-03-30**, a přidejte do oddílu IPConfiguration sady škálování **publicIpAddressConfiguration** vlastnost JSON. Příklad:
+Pokud chcete vytvořit sadu škálování pomocí šablony Azure, ujistěte se, že je verze API prostředku Microsoft. COMPUTE/virtualMachineScaleSets aspoň **2017-03-30**, a přidejte do oddílu IPConfiguration sady škálování **publicIpAddressConfiguration** vlastnost JSON. Například:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -169,13 +148,13 @@ Ukázková šablona: [201-vmss-public-ip-linux](https://github.com/Azure/azure-q
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Dotazování veřejných IP adres virtuálních počítačů ve škálovací sadě
 Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním počítačům ve škálovací sadě pomocí rozhraní příkazového řádku, použijte příkaz **az vmss list-instance-public-ips**.
 
-Pokud chcete zobrazit seznam veřejných IP adres sady škálování pomocí PowerShellu, použijte příkaz _Get-AzPublicIpAddress_ . Příklad:
+Pokud chcete zobrazit seznam veřejných IP adres sady škálování pomocí PowerShellu, použijte příkaz _Get-AzPublicIpAddress_ . Například:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-Veřejné IP adresy můžete také zjistit přímo z ID prostředku nakonfigurované veřejné IP adresy. Příklad:
+Veřejné IP adresy můžete také zjistit přímo z ID prostředku nakonfigurované veřejné IP adresy. Například:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
@@ -190,7 +169,7 @@ Dotazování [Azure Resource Exploreru:](https://resources.azure.com)
 1. Rozbalte své předplatné.
 1. Rozbalte svou skupinu prostředků.
 1. Rozbalte *providers* (Poskytovatelé).
-1. Rozbalte *Microsoft.Compute*.
+1. Rozbalte položku *Microsoft. COMPUTE*.
 1. Rozbalte *virtualMachineScaleSets*.
 1. Rozbalte svou škálovací sadu.
 1. Klikněte na *publicipaddresses*.
@@ -320,13 +299,13 @@ V následujícím příkladu je profil sítě škálovací sady ukazující něk
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>Skupiny zabezpečení sítě a aplikace na škálovací sadu
-[Skupiny zabezpečení sítě](../virtual-network/security-overview.md) umožňují filtrovat provoz do a z prostředků Azure ve virtuální síti Azure pomocí pravidel zabezpečení. [Skupiny zabezpečení aplikací](../virtual-network/security-overview.md#application-security-groups) umožňují správu zabezpečení sítě u prostředků Azure a jejich seskupování jako rozšíření struktury aplikace.
+[Skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md) umožňují filtrovat provoz do a z prostředků Azure ve virtuální síti Azure pomocí pravidel zabezpečení. [Skupiny zabezpečení aplikací](../virtual-network/network-security-groups-overview.md#application-security-groups) umožňují správu zabezpečení sítě u prostředků Azure a jejich seskupování jako rozšíření struktury aplikace.
 
 Skupiny zabezpečení sítě se můžou použít přímo na škálovací sadu přidáním odkazu do části konfigurace síťového rozhraní ve vlastnostech virtuálního počítače ve škálovací sadě.
 
 Skupiny zabezpečení aplikace se můžou použít přímo na škálovací sadu přidáním odkazu do části konfigurace IP adresy síťového rozhraní ve vlastnostech virtuálního počítače ve škálovací sadě.
 
-Příklad:
+Například:
 
 ```json
 "networkProfile": {
@@ -402,6 +381,140 @@ az vmss show \
   ]
 ]
 ```
+
+## <a name="make-networking-updates-to-specific-instances"></a>Proveďte aktualizace sítě pro konkrétní instance.
+
+U konkrétních instancí sady škálování virtuálních počítačů můžete vytvářet síťové aktualizace. 
+
+V případě `PUT` instance můžete aktualizovat konfiguraci sítě. Dá se použít k provádění akcí, jako je přidání nebo odebrání síťových rozhraní (nic), nebo odebrání instance z back-endu fondu.
+
+```
+PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
+```
+
+Následující příklad ukazuje, jak přidat další konfiguraci IP adresy do síťového adaptéru.
+
+1. `GET` Podrobnosti konkrétní instance sady škálování virtuálních počítačů.
+    
+    ``` 
+    GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
+    ```
+
+    *V následujícím příkladu se zjednodušilo zobrazení pouze parametrů sítě pro tento příklad.*
+
+    ```json
+    {
+      ...
+      "properties": {
+        ...
+        "networkProfileConfiguration": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmssnic-vnet-nic01",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/123a1a12-a123-1ab1-12a1-12a1a1234ab1/resourceGroups/vmssnic/providers/Microsoft.Network/networkSecurityGroups/basicNsgvmssnic-vnet-nic01"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "vmssnic-vnet-nic01-defaultIpConfiguration",
+                    "properties": {
+                      "publicIPAddressConfiguration": {
+                        "name": "publicIp-vmssnic-vnet-nic01",
+                        "properties": {
+                          "idleTimeoutInMinutes": 15,
+                          "ipTags": [],
+                          "publicIPAddressVersion": "IPv4"
+                        }
+                      },
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/123a1a12-a123-1ab1-12a1-12a1a1234ab1/resourceGroups/vmssnic/providers/Microsoft.Network/virtualNetworks/vmssnic-vnet/subnets/default"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        ...
+      }
+    }
+    ```
+ 
+2. `PUT` v případě instance aktualizuje a přidá další konfiguraci IP adresy. To je podobné pro přidání dalších `networkInterfaceConfiguration` .
+
+    
+    ```
+    PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
+    ```
+
+    *V následujícím příkladu se zjednodušilo zobrazení pouze parametrů sítě pro tento příklad.*
+
+    ```json
+      {
+      ...
+      "properties": {
+        ...
+        "networkProfileConfiguration": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmssnic-vnet-nic01",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/123a1a12-a123-1ab1-12a1-12a1a1234ab1/resourceGroups/vmssnic/providers/Microsoft.Network/networkSecurityGroups/basicNsgvmssnic-vnet-nic01"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "vmssnic-vnet-nic01-defaultIpConfiguration",
+                    "properties": {
+                      "publicIPAddressConfiguration": {
+                        "name": "publicIp-vmssnic-vnet-nic01",
+                        "properties": {
+                          "idleTimeoutInMinutes": 15,
+                          "ipTags": [],
+                          "publicIPAddressVersion": "IPv4"
+                        }
+                      },
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/123a1a12-a123-1ab1-12a1-12a1a1234ab1/resourceGroups/vmssnic/providers/Microsoft.Network/virtualNetworks/vmssnic-vnet/subnets/default"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  },
+                  {
+                    "name": "my-second-config",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/123a1a12-a123-1ab1-12a1-12a1a1234ab1/resourceGroups/vmssnic/providers/Microsoft.Network/virtualNetworks/vmssnic-vnet/subnets/default"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        ...
+      }
+    }
+    ```
 
 
 

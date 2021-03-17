@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608921"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308941"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -40,11 +40,11 @@ V sestavě uživatelů označených příznakem rizika můžete pro každého u�
 - Vyžádat, aby si uživatel při příštím přihlášení bezpečně resetoval heslo
 - Zavřít riziko uživatele bez provedení nápravné akce
 
-Další informace najdete v tématu [o sestavě zabezpečení pro uživatele označené příznakem rizika](concept-user-at-risk.md).
+Další informace najdete v tématu [o sestavě zabezpečení pro uživatele označené příznakem rizika](../identity-protection/overview-identity-protection.md).
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Předplatné služby Azure AD pro zákazníky Office 365
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Předplatné Azure AD pro zákazníky Microsoft 365
 
-Pro přístup k **centru pro správu Azure**můžete použít také přihlašovací údaje sady Office 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
+Pro přístup k **centru pro správu Azure**můžete použít také přihlašovací údaje Microsoft 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
 
 Přístup k sestavám **uživatelů označeným příznakem rizika** v centru pro správu Microsoft 365:
 
@@ -60,7 +60,7 @@ Přístup k sestavám **uživatelů označeným příznakem rizika** v centru pr
 Provedení následujících akcí vám pomůže napravit ovlivněné účty a zabezpečit vaše prostředí:
 
 1.  [Ověřte správné informace](https://aka.ms/MFAValid) pro Multi-Factor Authentication a Samoobslužné resetování hesla. 
-2.  [Povolte službu Multi-Factor Authentication](https://aka.ms/MFAuth) pro všechny uživatele. 
+2.  [Povolte službu Multi-Factor Authentication](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) pro všechny uživatele. 
 3.  Tento [skript](https://aka.ms/remediate) pro napravení použijte pro každý ovlivněný účet a automaticky proveďte následující kroky: 
 
     a. Resetujte heslo pro zabezpečení účtu a ukončete aktivní relace.
@@ -79,17 +79,17 @@ Provedení následujících akcí vám pomůže napravit ovlivněné účty a za
 
     h. Vytvořte protokol auditu, který správce může zkontrolovat.
 
-4. Prozkoumejte svého tenanta Office 365 a další IT infrastrukturu, včetně kontroly případných úprav všech nastavení tenanta, uživatelských účtů a nastavení konfigurace jednotlivých uživatelů. Zkontrolujte indikátory metod trvalosti a také indikátory, že útočník mohl k získání přihlašovacích údajů sítě VPN nebo přístupu k jiným prostředkům organizace využít počáteční základnu. 
+4. Prozkoumejte klienta Microsoft 365 a další IT infrastrukturu, včetně kontroly všech nastavení klienta, uživatelských účtů a nastavení konfigurace jednotlivých uživatelů pro možné úpravy. Zkontrolujte indikátory metod trvalosti a také indikátory, že útočník mohl k získání přihlašovacích údajů sítě VPN nebo přístupu k jiným prostředkům organizace využít počáteční základnu. 
 
 5.  V rámci šetření zvažte, zda byste měli informovat státní úřady, včetně vynucování zákonů.
 
 Kromě toho byste měli provést následující:
 
-- Přečtěte si a implementujte tyto [pokyny k adresování neobvyklých aktivit](https://aka.ms/fixaccount). 
-- [Povolte kanálu auditu](https://aka.ms/improvesecurity) , který vám umožní analyzovat aktivitu ve vašem tenantovi. Po dokončení se vaše úložiště auditu začne naplňovat pomocí protokolů aktivit. V tomto okamžiku můžete také využít [prostředek pro hledání a vyšetřování centra zabezpečení a dodržování předpisů](https://aka.ms/sccsearch). 
+- Přečtěte si a implementujte tyto [pokyny k adresování neobvyklých aktivit](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account). 
+- [Povolte kanálu auditu](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability) , který vám umožní analyzovat aktivitu ve vašem tenantovi. Po dokončení se vaše úložiště auditu začne naplňovat pomocí protokolů aktivit. V tomto okamžiku můžete také využít [prostředek pro hledání a vyšetřování centra zabezpečení a dodržování předpisů](https://aka.ms/sccsearch). 
 - Zkontrolovat oprávnění delegáta a pravidla předávání e-mailů pro všechny vaše poštovní schránky. Tuto úlohu můžete provést pomocí tohoto [skriptu PowerShellu](https://aka.ms/delegateforwardrules). 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [Uživatelé označení příznakem rizika](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [Uživatelé označení příznakem rizika](../identity-protection/overview-identity-protection.md)

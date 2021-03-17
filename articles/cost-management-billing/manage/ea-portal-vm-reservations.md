@@ -3,16 +3,17 @@ title: Rezervované instance virtuálních počítačů Azure EA
 description: Tento článek shrnuje, jak vám rezervace Azure umožní ušetřit peníze za rezervované instance virtuálních počítačů v rámci smlouvy Enterprise.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 0d707d098eee91136d9e66a826705003e15c6f2a
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244070"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597959"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Rezervované instance virtuálních počítačů Azure EA
 
@@ -21,6 +22,12 @@ Tento článek shrnuje, jak vám rezervace Azure umožní ušetřit peníze za r
 ## <a name="reservation-exchanges-and-refunds"></a>Výměny rezervací a vrácení peněz
 
 Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Rezervaci je také možné refundovat, pokud už ji nepotřebujete, a to až do 50 000 USD za rok. Výměnu nebo refundaci rezervace je možné provést na webu Azure Portal. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../reservations/exchange-and-refund-azure-reservations.md).
+
+### <a name="partial-refunds"></a>Částečné refundace
+
+Částečné refundace vydáváme, když zákazníci EA vrací rezervace zakoupené prostřednictvím nadlimitního využití, nikoli Azure Prepaymentu (dřív označovaný jako peněžní závazek).
+
+Refundace se zobrazí na portálu EA jako záporné vyrovnání v předchozím měsíci a kladné vyrovnání v aktuálním měsíci. Bude vypadat podobně jako výměna rezervací. V dobropisu bude uvedené číslo původní faktury. Proto pokud chcete odsouhlasit původní nákup s dobropisem, použijte číslo původní faktury.
 
 ## <a name="reservation-costs-and-usage"></a>Náklady na rezervace a jejich využití
 
@@ -58,7 +65,7 @@ Rezervované instance mohou oproti průběžným platbám snížit náklady na v
 
 Pokud si chcete zakoupit rezervovanou instanci virtuálního počítače Azure, podnikový správce registrace v Azure musí povolit možnost nákupu _Rezervované instance_. Tuto možnost najdete v části _Podrobnosti registrace_ na kartě _Registrace_ na [portálu Azure EA](https://ea.azure.com/).
 
-Po povolení přidávání rezervovaných instancí v registraci EA může jakýkoli vlastník účtu s aktivním předplatným přidruženým k dané registraci EA zakoupit rezervované instance virtuálních počítačů na webu [Azure Portal](https://aka.ms/reservations). Další informace najdete v tématu [Předplacení virtuálních počítačů a úspory s využitím rezervovaných instancí virtuálních počítačů](https://go.microsoft.com/fwlink/?linkid=861721).
+Po povolení přidávání rezervovaných instancí v registraci EA může jakýkoli vlastník účtu s aktivním předplatným přidruženým k dané registraci EA zakoupit rezervované instance virtuálních počítačů na webu [Azure Portal](https://aka.ms/reservations). Další informace najdete v tématu [Předplacení virtuálních počítačů a úspory s využitím rezervovaných instancí virtuálních počítačů](../../virtual-machines/prepay-reserved-vm-instances.md).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Zobrazení podrobností o nákupu rezervovaných instancí
 

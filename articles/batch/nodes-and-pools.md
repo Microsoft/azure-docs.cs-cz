@@ -2,13 +2,13 @@
 title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 03/11/2021
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385751"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563891"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -26,7 +26,7 @@ Součástí všech výpočetních uzlů ve službě Batch také jsou:
 
 - Standardní [struktura složek](files-and-directories.md) a přidružené [proměnné prostředí](jobs-and-tasks.md), které jsou úkolu k dispozici.
 - Nastavení **brány firewall**, která jsou nakonfigurována pro řízení přístupu.
-- [Vzdálený přístup](error-handling.md#connect-to-compute-nodes) k uzlům Windows (Remote Desktop Protocol (RDP)) i Linux (Secure Shell (SSH)).
+- [Vzdálený přístup](error-handling.md#connect-to-compute-nodes) k uzlům Windows (protokol RDP (Remote Desktop Protocol) (RDP)) i Linux (Secure Shell (SSH)) (Pokud [nevytvoříte fond se zakázaným vzdáleným přístupem](pool-endpoint-configuration.md)).
 
 Ve výchozím nastavení můžou uzly vzájemně komunikovat, ale nemůžou komunikovat s virtuálními počítači, které nejsou součástí stejného fondu. Pokud chcete, aby uzly komunikovaly bezpečně s ostatními virtuálními počítači nebo v místní síti, můžete fond zřídit [v podsíti virtuální sítě Azure (VNET)](batch-virtual-network.md). Když to uděláte, k vašim uzlům můžete přistup prostřednictvím veřejných IP adres. Tyto veřejné IP adresy vytvoří služba Batch a můžou se měnit po dobu života fondu. Můžete také [vytvořit fond se statickými veřejnými IP adresami](create-pool-public-ip.md) , které řídíte, což zajistí, že se neočekávaně nezmění.
 
@@ -40,7 +40,7 @@ Každému uzlu, který je přidán do fondu, je přiřazen jedinečný název a 
 
 Fond může být používán pouze účtem Batch, ve kterém byl vytvořen. Účet Batch může vytvořit více fondů pro splnění požadavků na prostředky aplikací, které spustí.
 
-Fond lze vytvořit ručně nebo automaticky pomocí služby Batch při zadání práce, která má být provedena. Při vytváření fondu můžete zadat následující atributy:
+Fond lze vytvořit ručně nebo [automaticky pomocí služby Batch](#autopools) při zadání práce, která má být provedena. Při vytváření fondu můžete zadat následující atributy:
 
 - [Operační systém a verze uzlu](#operating-system-and-version)
 - [Typ uzlu a cílový počet uzlů](#node-type-and-target)
@@ -64,19 +64,25 @@ Při vytváření fondu služby Batch zadáte konfiguraci virtuálního počíta
 
 Ve Batch jsou k dispozici dva typy konfigurací fondů.
 
+> [!IMPORTANT]
+> I když nyní můžete vytvořit fondy pomocí konfigurace, je potřeba nakonfigurovat nové fondy pomocí konfigurace virtuálního počítače a neCloud Services konfigurace. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' CloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů.
+
 ### <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
 
 **Konfigurace virtuálního počítače** určuje, že se fond skládá z virtuálních počítačů Azure. Tyto virtuální počítače mohou být vytvořené na základě image Linuxu nebo Windows.
 
-Při vytváření fondu založeného na konfiguraci virtuálního počítače je nutné zadat nejen velikost uzlů a zdroj imagí použitých pro jejich vytvoření, ale také **referenční image virtuálního počítače** a **SKU agenta uzlu** služby Batch, které se budou na uzly instalovat. Další informace o zadávání těchto vlastností fondů najdete v článku [Zřízení linuxových výpočetních uzlů ve fondech Azure Batch](batch-linux-nodes.md) Volitelně můžete k virtuálním počítačům ve fondu vytvořeným z imagí z webu Marketplace připojit jeden nebo více prázdných datových disků nebo datové disky zahrnout do vlastních imagí používaných k vytvoření virtuálních počítačů. Při zahrnutí datových disků je potřeba připojit a naformátovat disky z virtuálního počítače, aby je bylo možné použít.
+[Agent uzlu služby Batch](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Existují různé implementace agenta uzlu, označované jako SKU, pro různé operační systémy. Při vytváření fondu založeného na konfiguraci virtuálního počítače je nutné zadat nejen velikost uzlů a zdroj imagí použitých pro jejich vytvoření, ale také **referenční image virtuálního počítače** a **SKU agenta uzlu** služby Batch, které se budou na uzly instalovat. Další informace o zadávání těchto vlastností fondů najdete v článku [Zřízení linuxových výpočetních uzlů ve fondech Azure Batch](batch-linux-nodes.md) Volitelně můžete k virtuálním počítačům ve fondu vytvořeným z imagí z webu Marketplace připojit jeden nebo více prázdných datových disků nebo datové disky zahrnout do vlastních imagí používaných k vytvoření virtuálních počítačů. Při zahrnutí datových disků je potřeba připojit a naformátovat disky z virtuálního počítače, aby je bylo možné použít.
 
 ### <a name="cloud-services-configuration"></a>Konfigurace Cloud Services
 
-**Konfigurace Cloud Services** určuje, že se fond skládá z uzlů Azure Cloud Services. Cloud Services poskytuje *jenom*výpočetní uzly Windows.
+> [!WARNING]
+> Fondy konfigurací Cloud Services jsou [zastaralé](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Místo toho prosím použijte fondy konfigurací virtuálních počítačů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
-Operační systémy, které jsou k dispozici pro fondy konfigurace služby Cloud Services, jsou uvedeny v [matici kompatibility verzí hostovaného operačního systému Azure a sad SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Při vytváření fondu, který obsahuje uzly Cloud Services, je nutné zadat velikost uzlu a jeho *rodinu operačních systémů* (což určuje, které verze rozhraní .NET jsou nainstalovány s operačním systémem). Cloud Services se do Azure nasadí rychleji než virtuální počítače s Windows. Pokud chcete fondy výpočetních uzlů Windows, můžete zjistit, že služba Cloud Services představuje výhodu z hlediska času nasazení.
+**Konfigurace Cloud Services** určuje, že se fond skládá z uzlů Azure Cloud Services. Cloud Services poskytuje jenom výpočetní uzly Windows.
 
-Podobně jako u rolí pracovního procesu v rámci služby Cloud Services můžete zadat *verzi operačního systému* (další informace o rolích pracovního procesu najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md)). Doporučujeme, abyste `Latest (*)` pro *verzi operačního systému* určili, že se uzly automaticky upgradují a že se pro nové vydané verze nevyžadovala žádná práce. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření bude možné aktualizovat *verzi operačního systému* pro fond a nainstalovat novou bitovou kopii operačního systému. Všechny spuštěné úlohy budou přerušeny a znovu zařazeny do fronty.
+Dostupné operační systémy pro fondy konfigurací Cloud Services jsou uvedené v části [verze hostovaného operačního systému Azure a v matici kompatibility SDK](../cloud-services/cloud-services-guestos-update-matrix.md)a dostupné velikosti výpočetních uzlů jsou uvedené v seznamu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Při vytváření fondu, který obsahuje uzly Cloud Services, zadáváte velikost uzlu a jeho *rodinu operačních systémů* (což určuje, které verze rozhraní .NET jsou nainstalovány s operačním systémem). Cloud Services se do Azure nasadí rychleji než virtuální počítače s Windows. Pokud chcete fondy výpočetních uzlů Windows, můžete zjistit, že služba Cloud Services představuje výhodu z hlediska času nasazení.
+
+Stejně jako u rolí pracovního procesu v rámci Cloud Services můžete zadat *verzi operačního systému*. Doporučujeme, abyste `Latest (*)` pro *verzi operačního systému* určili, že se uzly automaticky upgradují a že se pro nové vydané verze nevyžadovala žádná práce. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření bude možné aktualizovat *verzi operačního systému* pro fond a nainstalovat novou bitovou kopii operačního systému. Všechny spuštěné úlohy budou přerušeny a znovu zařazeny do fronty.
 
 ### <a name="node-agent-skus"></a>SKU agenta uzlu
 
@@ -101,7 +107,7 @@ Při vytváření fondu můžete určit typy uzlů, které chcete, a cílové č
 - **Vyhrazené uzly.** Vyhrazené výpočetní uzly jsou rezervované pro vaše úlohy. Jsou dražší než uzly s nízkou prioritou, ale nabízejí záruku toho, že nikdy nedojde k jejich zrušení.
 - **Uzly s nízkou prioritou.** Uzly s nízkou prioritou mají tu výhodu, že ke spouštění úloh služby Batch využívají nadbytečnou kapacitu v Azure. Uzly s nízkou prioritou jsou méně nákladné za hodinu než vyhrazené uzly a umožňují úlohy, které vyžadují významný výpočetní výkon. Další informace najdete v tématu [Použití virtuálních počítačů s nízkou prioritou ve službě Batch](batch-low-pri-vms.md).
 
-Uzly s nízkou prioritou se můžou zacházet, pokud Azure nemá dostatek nadbytečné kapacity. Pokud dojde ke zrušení uzlu během spouštění úloh, tyto úlohy se znovu zařadí do fronty, a jakmile bude uzel zase dostupný, znovu se spustí. Uzly s nízkou prioritou jsou dobrou volbou pro úlohy s flexibilním časem dokončení a pro úkony distribuované mezi velký počet uzlů. Než se rozhodnete používat pro svůj scénář uzly s nízkou prioritou, ujistěte se, že všechny práce ztracené v důsledku ztracený budou minimální a dají se snadno vytvořit znovu.
+Uzly s nízkou prioritou se můžou zacházet, pokud Azure nemá dostatek nadbytečné kapacity. Pokud dojde ke zrušení uzlu během spouštění úloh, tyto úlohy se znovu zařadí do fronty, a jakmile bude uzel zase dostupný, znovu se spustí. Uzly s nízkou prioritou jsou dobrou volbou pro úlohy s flexibilním časem dokončení a pro úkony distribuované mezi velký počet uzlů. Než se rozhodnete použít pro svůj scénář uzly s nízkou prioritou, ujistěte se, že ztráta práce z důvodu přerušení bude minimální a bude ji snadné vytvořit znovu.
 
 Ve stejném fondu můžete mít výpočetní uzly s nízkou prioritou i vyhrazené uzly. Každý typ uzlu má své vlastní nastavení cíle, pro které můžete zadat požadovaný počet uzlů.
 
@@ -111,7 +117,7 @@ Informace o cenách pro uzly s nízkou a vyhrazenou prioritou najdete v tématu 
 
 ## <a name="node-size"></a>Velikost uzlu
 
-Při vytváření fondu Azure Batch máte na výběr téměř ze všech řad a velikostí virtuálních počítačů, které jsou v Azure k dispozici. Azure nabízí řadu velikostí virtuálních počítačů pro různé úlohy, včetně specializovaných velikostí s podporou [prostředí HPC](../virtual-machines/sizes-hpc.md) nebo [grafického procesoru](../virtual-machines/sizes-gpu.md). 
+Při vytváření fondu Azure Batch máte na výběr téměř ze všech řad a velikostí virtuálních počítačů, které jsou v Azure k dispozici. Azure nabízí řadu velikostí virtuálních počítačů pro různé úlohy, včetně specializovaných velikostí s podporou [prostředí HPC](../virtual-machines/sizes-hpc.md) nebo [grafického procesoru](../virtual-machines/sizes-gpu.md). Všimněte si, že velikosti uzlů lze zvolit pouze v době, kdy je fond vytvořen. Jinými slovy, pokud je vytvořen fond, jeho velikost uzlu nelze změnit.
 
 Další informace najdete v tématu [Výběr velikosti virtuálních počítačů pro výpočetní uzly ve fondu Azure Batch](batch-pool-vm-sizes.md).
 
@@ -185,6 +191,10 @@ Na druhém konci spektra, pokud je nejvyšší prioritou okamžité spuštění 
 
 Kombinovaný přístup se obvykle používá ke zpracování proměnné, ale průběžné načítání. Můžete mít fond, ve kterém je odesláno více úloh, a může škálovat počet uzlů nahoru nebo dolů podle zatížení úlohy. Toto přizpůsobování kapacity můžete provádět reaktivně, na základě aktuálního zatížení, nebo proaktivně, pokud lze zatížení předpovídat. Další informace najdete v tématu [zásady automatického škálování](#automatic-scaling-policy).
 
+## <a name="autopools"></a>Autopools
+
+[Autofond](/rest/api/batchservice/job/add#autopoolspecification) je fond, který je vytvořen službou Batch při odeslání úlohy, a ne před tím, než se vytvoří před úlohami, které se ve fondu spustí. Služba Batch bude spravovat životnost autopoolu podle zadaných charakteristik. Nejčastěji se tyto fondy také nastaví tak, aby se automaticky odstranily po dokončení jejich úloh.
+
 ## <a name="security-with-certificates"></a>Zabezpečení pomocí certifikátů
 
 Při šifrování nebo dešifrování citlivých informací pro úkoly, jako je klíč pro [účet Azure Storage](accounts.md#azure-storage-accounts), je obvykle třeba použít certifikáty. Z toho důvodu můžete na uzly nainstalovat certifikáty. Šifrované tajné klíče jsou předány na úkoly prostřednictvím parametrů příkazového řádku nebo vložené v jednom prostředků úkolu a nainstalované certifikáty lze použít pro jejich dešifrování.
@@ -198,3 +208,4 @@ Pokud přidáváte certifikát do existujícího fondu, musíte restartovat jeho
 ## <a name="next-steps"></a>Další kroky
 
 - Seznamte [se s úlohami a](jobs-and-tasks.md)úlohami.
+- Naučte se [detekovat a vyhnout se chybám při operacích na pozadí fondu a uzlů ](batch-pool-node-error-checking.md).

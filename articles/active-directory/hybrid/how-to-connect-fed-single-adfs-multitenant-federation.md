@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d0e8301fe5443e548dd35a6b6058e8c7a409d0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 956428b6f197912e2ab7c3a94133ed9d59f37749
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849898"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279920"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
 
@@ -42,7 +42,7 @@ Předpokládejme, že doména contoso.com ve službě Azure Active Directory con
 
 ## <a name="step-1-establish-a-two-way-trust"></a>Krok 1: Vytvoření obousměrného vztahu důvěryhodnosti
  
-Aby služba AD FS v doméně contoso.com mohla ověřovat uživatele v doméně fabrikam.com, je potřebný obousměrný vztah důvěryhodnosti mezi doménami contoso.com a fabrikam.com. Při vytváření obousměrného vztahu důvěryhodnosti postupujte podle pokynů v tomto [článku](https://technet.microsoft.com/library/cc816590.aspx).
+Aby služba AD FS v doméně contoso.com mohla ověřovat uživatele v doméně fabrikam.com, je potřebný obousměrný vztah důvěryhodnosti mezi doménami contoso.com a fabrikam.com. Při vytváření obousměrného vztahu důvěryhodnosti postupujte podle pokynů v tomto [článku](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc816590(v=ws.10)).
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Krok 2: Úprava nastavení federace contoso.com 
  

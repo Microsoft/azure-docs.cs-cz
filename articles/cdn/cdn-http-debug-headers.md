@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343016"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC – ladění hlaviček protokolu HTTP pro modul pravidel Azure CDN
@@ -70,7 +70,7 @@ Hlavička X-EC-Debug hlásí informace o stavovém kódu mezipaměti v následuj
 Výrazy použité ve výše uvedené syntaxi hlaviček odpovědí jsou definovány takto:
 - StatusCode: udává, jak byl požadovaný obsah zpracován přes CDN, který je reprezentován kódem stavu mezipaměti.
     
-    Stavový kód TCP_DENIED může být hlášen jako žádný, pokud je neautorizovaný požadavek odepřen z důvodu ověřování založeného na tokenech. Stavový kód NONE se ale bude dál používat při prohlížení zpráv o stavu mezipaměti nebo nezpracovaná data protokolu.
+    Stavový kód TCP_DENIED může být hlášen jako žádný, pokud je odmítnut neautorizovaný požadavek z důvodu Token-Basedho ověřování. Stavový kód NONE se ale bude dál používat při prohlížení zpráv o stavu mezipaměti nebo nezpracovaná data protokolu.
 
 - Platforma: Určuje platformu, na které byl obsah požadován. Pro toto pole jsou platné následující kódy:
 
@@ -103,10 +103,10 @@ Tato hlavička odpovědi neoznačuje, zda došlo k ukládání do mezipaměti. M
 
 Termín použitý ve výše uvedené syntaxi hlavičky odpovědi je definován následujícím způsobem:
 
-Hodnota  | Description
+Hodnota  | Popis
 -------| --------
 ANO    | Indikuje, že požadovaný obsah byl způsobilý pro ukládání do mezipaměti.
-NO     | Indikuje, že požadovaný obsah nebyl pro ukládání do mezipaměti způsobilý. K tomuto stavu může dojít z některého z následujících důvodů: <br /> -Konfigurace specifická pro zákazníka: konfigurace specifická pro váš účet může zabránit ukládání assetu do mezipaměti u serverů POP. Například modul pravidel může zabránit ukládání prostředku do mezipaměti tím, že povolí funkci vynechat mezipaměť pro opravňující požadavky.<br /> – Hlavičky odpovědí mezipaměti: požadované hlavičky a hlavičky pro řízení mezipaměti a vypršení platnosti prostředku můžou zabránit tomu, aby ji servery POP mohli ukládat do mezipaměti.
+NO     | Indikuje, že požadovaný obsah nebyl pro ukládání do mezipaměti způsobilý. K tomuto stavu může dojít z některého z následujících důvodů: <br /> -Customer-Specific konfiguraci: konfigurace specifická pro váš účet může zabránit serverům pop v ukládání assetu do mezipaměti. Například modul pravidel může zabránit ukládání prostředku do mezipaměti tím, že povolí funkci vynechat mezipaměť pro opravňující požadavky.<br /> – Hlavičky odpovědi mezipaměti: Cache-Control a hlavičky vypršení platnosti vyžádaného assetu můžou zabránit ukládání do mezipaměti serverem POP.
 Neznámý | Indikuje, že servery nedokázaly vyhodnotit, jestli je požadovaný prostředek v mezipaměti. K tomuto stavu obvykle dochází v případě, že je žádost zamítnuta z důvodu ověřování založeného na tokenech.
 
 ### <a name="sample-response-header"></a>Hlavička ukázkové odpovědi
@@ -115,7 +115,7 @@ Následující hlavička odpovědi obsahuje informaci o tom, zda byl požadovan�
 
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
-## <a name="cache-key-response-header"></a>Hlavička odpovědi na klíč mezipaměti
+## <a name="cache-key-response-header"></a>Hlavička odpovědi Cache-Key
 `X-EC-Debug: x-ec-cache-key`Hlavička odpovědi indikuje fyzický meziklíčovou mezipaměť přidruženou k požadovanému obsahu. Klíč fyzické mezipaměti se skládá z cesty, která identifikuje prostředek pro účely ukládání do mezipaměti. Jinými slovy, servery budou kontrolovat verzi assetu v mezipaměti podle jeho cesty, jak je definováno jeho meziklíčovou mezipamětí.
 
 Tento klíč fyzické mezipaměti začíná dvojitým lomítkem (//) následovaný protokolem, který se používá k vyžádání obsahu (HTTP nebo HTTPS). Tento protokol je následován relativní cestou k požadovanému prostředku, který začíná přístupovým bodem obsahu (například _/000001/_).
@@ -147,7 +147,7 @@ V následujícím ukázkovém záhlaví odpovědi se označuje klíč fyzické m
 
 Výrazy použité ve výše uvedené syntaxi hlaviček odpovědí jsou definovány takto:
 
-- MASeconds: Určuje maximální stáří (v sekundách), jak je definováno hlavičkou řízení mezipaměti pro ovládací prvky požadovaného obsahu.
+- MASeconds: Určuje maximální stáří (v sekundách) definované hlavičkou Cache-Control požadovaného obsahu.
 
 - MATimePeriod: Převede hodnotu maximálního stáří (tj. MASeconds) na přibližný ekvivalent větší jednotky (například dny). 
 

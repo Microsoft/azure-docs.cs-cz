@@ -1,35 +1,34 @@
 ---
 title: 'Rychlý Start: směrování webového provozu pomocí rozhraní příkazového řádku'
 titleSuffix: Azure Application Gateway
-description: Naučte se používat Azure CLI k vytvoření Application Gateway Azure, která směruje webový provoz do virtuálních počítačů v back-endu fondu.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit Application Gateway Azure, která směruje webový provoz do virtuálních počítačů v back-endovém fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 01/19/2021
 ms.author: victorh
-ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 1a691d8ab212dd436b0dc9f7aafbc19a406b12b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499122"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601780"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI
 
 V tomto rychlém startu pomocí Azure CLI vytvoříte Aplikační bránu. Pak ho otestujete, abyste se ujistili, že funguje správně. 
 
-Aplikační brána směruje webový provoz aplikace do konkrétních prostředků ve fondu back-end. Posluchačům přiřadíte porty, vytvoříte pravidla a přidáte prostředky do back-endového fondu. V zájmu zjednodušení Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces, který hostuje jednu lokalitu v aplikační bráně, pravidlo základního směrování požadavku a dva virtuální počítače ve fondu back-end.
+Aplikační brána směruje webový provoz aplikace do konkrétních prostředků ve fondu back-end. Posluchačům přiřadíte porty, vytvoříte pravidla a přidáte prostředky do back-endového fondu. V zájmu zjednodušení Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces pro hostování jedné lokality na aplikační bráně, pravidla základního směrování požadavku a dva virtuální počítače ve fondu back-end.
 
 Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-create-powershell.md) nebo [Azure Portal](quick-create-portal.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure CLI verze 2.0.4 nebo novější](/cli/azure/install-azure-cli) (Pokud spouštíte rozhraní příkazového řádku Azure v místním prostředí).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -69,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-the-backend-servers"></a>Vytvoření back-end serverů
 
-Back-end může obsahovat síťové adaptéry, sady škálování virtuálních počítačů, veřejné IP adresy, interní IP adresy, plně kvalifikované názvy domény (FQDN) a back-endy s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte dva virtuální počítače, které budou sloužit jako servery back-end pro aplikační bránu. Nainstalujete také službu IIS na virtuální počítače a otestujete tak Aplikační bránu.
+Back-end může obsahovat síťové adaptéry, sady škálování virtuálních počítačů, veřejné IP adresy, interní IP adresy, plně kvalifikované názvy domény (FQDN) a back-endy víceklientské architektury, jako je Azure App Service. V tomto příkladu vytvoříte dva virtuální počítače, které budou sloužit jako servery back-end pro aplikační bránu. Nainstalujete také službu IIS na virtuální počítače a otestujete tak Aplikační bránu.
 
 #### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 

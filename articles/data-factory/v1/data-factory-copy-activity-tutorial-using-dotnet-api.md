@@ -1,23 +1,18 @@
 ---
 title: 'Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API '
 description: V tomto kurzu vytvoříte kanál Azure Data Factory s aktivitou kopírování pomocí rozhraní .NET API.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 8c2baf4da4e7893b650e1f885fb66be835c4b736
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254850"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377070"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API
 > [!div class="op_single_selector"]
@@ -39,7 +34,7 @@ V tomto kurzu vytvoříte kanál s jednou aktivitou: aktivita kopírování. A
 Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace naleznete, když přejdete na [více aktivit v kanálu](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 > [!NOTE] 
-> Úplnou dokumentaci k rozhraní .NET API pro datovou továrnu najdete v [referencích k rozhraní .NET API služby Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
+> Úplnou dokumentaci k rozhraní .NET API pro datovou továrnu najdete v [referencích k rozhraní .NET API služby Data Factory](/dotnet/api/overview/azure/data-factory).
 > 
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
@@ -66,7 +61,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
     ```powershell
     Get-AzSubscription
     ```
-4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
+4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **&lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -108,7 +103,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 9. Získejte ID aplikace.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     Poznamenejte si ID aplikace (applicationID) ve výstupu.
 
@@ -128,13 +123,13 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
    5. Jako název zadejte **DataFactoryAPITestApp**.
    6. Jako umístění vyberte **C:\ADFGetStarted**.
    7. Kliknutím na tlačítko **OK** vytvořte projekt.
-2. Klikněte na **nástroje**, přejděte na **Správce balíčků NuGet**a klikněte na **Konzola správce balíčků**.
+2. Klikněte na **nástroje**, přejděte na **Správce balíčků NuGet** a klikněte na **Konzola správce balíčků**.
 3. V **Konzole Správce balíčků** postupujte takto:
    1. Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Do souboru **App.config** přidejte následující část **appSetttings**. Tyto nastavení používá pomocná metoda: **GetAuthorizationHeader**.
 
-    Hodnoty pro ** &lt; ID &gt; aplikace**, ** &lt; heslo &gt; **, ** &lt; ID &gt; předplatného**a ** &lt; ID &gt; tenanta** nahraďte vlastními hodnotami.
+    Hodnoty pro **&lt; ID &gt; aplikace**, **&lt; heslo &gt;**, **&lt; ID &gt; předplatného** a **&lt; ID &gt; tenanta** nahraďte vlastními hodnotami.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -240,7 +235,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 9. Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure SQL**.
 
    > [!IMPORTANT]
-   > Položku **servername**, **DatabaseName**, **username**a **Password** nahraďte názvem serveru, databáze, uživatele a heslem.
+   > Položku **servername**, **DatabaseName**, **username** a **Password** nahraďte názvem serveru, databáze, uživatele a heslem.
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -519,7 +514,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 20. Ověřte, že se dva záznamy zaměstnanců vytvářejí v tabulce **EMP** v zadané databázi.
 
 ## <a name="next-steps"></a>Další kroky
-Úplnou dokumentaci k rozhraní .NET API pro datovou továrnu najdete v [referencích k rozhraní .NET API služby Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
+Úplnou dokumentaci k rozhraní .NET API pro datovou továrnu najdete v [referencích k rozhraní .NET API služby Data Factory](/dotnet/api/overview/azure/data-factory).
 
 V tomto kurzu jste jako zdrojové úložiště dat použili službu Azure Blob Storage a v rámci operace kopírování Azure SQL Database jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
 

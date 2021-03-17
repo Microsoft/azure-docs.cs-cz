@@ -1,19 +1,21 @@
 ---
 title: Azure VMware Solution by CloudSimple
 description: Seznamte se se službou Azure VMware Solutions by CloudSimple, včetně přehledu, rychlých zprovoznění, kurzů a praktických průvodců.
-author: sharaths-cs
-ms.author: b-mashar
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ea962469d9f1dafb51cf047306d99758c3cc118
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: seo-azure-migrate
+keywords: vms support, azure vmware solution by cloudsimple, cloudsimple azure, vms tools, vmware documentation
+ms.openlocfilehash: a3514a011f940b82702984737d0a93c5da402b55
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140696"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108377"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 

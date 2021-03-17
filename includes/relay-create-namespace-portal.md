@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76020840"
 ---
-1. Přihlaste se k [portálu Azure Portal][Azure portal].
+1. Přihlaste se k webu [Azure Portal][Azure portal].
 1. Vyberte **Vytvořit prostředek**. Pak vyberte možnost **integrační**  >  **přenos**. Pokud se v seznamu **Přenos** nezobrazuje, vyberte v pravém horním rohu **Zobrazit vše**.
 1. Vyberte **vytvořit**a do pole **název** zadejte název oboru názvů. Azure Portal zkontroluje, jestli je název k dispozici.
 1. Vyberte předplatné Azure, ve kterém chcete vytvořit obor názvů.

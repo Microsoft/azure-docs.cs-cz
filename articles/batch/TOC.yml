@@ -3,36 +3,39 @@
 - name: Přehled
   items:
     - name: Co je Azure Batch?
+      displayName: overview
       href: batch-technical-overview.md
 - name: Rychlé starty
   expanded: true
   items:
     - name: Spuštění dávkové úlohy – CLI
+      displayName: 'quickstart, first, create'
       href: quick-create-cli.md
     - name: Spuštění dávkové úlohy – portál
+      displayName: 'quickstart, first, create'
       href: quick-create-portal.md
     - name: Spuštění dávkové úlohy – .NET
+      displayName: 'quickstart, first, create, c#, csharp'
       href: quick-run-dotnet.md
     - name: Spuštění dávkové úlohy – Python
+      displayName: 'quickstart, first, create'
       href: quick-run-python.md
     - name: Vytvoření účtu Batch – šablona ARM
       href: quick-create-template.md
-      displayName: Resource Manager
+      displayName: 'Resource Manager, quickstart, first, create'
 - name: Kurzy
   items:
     - name: Paralelní zpracování souborů – .NET
+      displayName: 'tutorial, hpc, high-performance, large, c#, csharp'
       href: tutorial-parallel-dotnet.md
     - name: Paralelní zpracování souborů – Python
+      displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Vykreslování scén s využitím Arnoldu
-      href: tutorial-rendering-cli.md
-    - name: Vykreslování scén s využitím Batch Exploreru
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: Paralelní simulace R
-      href: tutorial-r-doazureparallel.md
     - name: OCR se službami Batch a Functions
+      displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
     - name: Skripty Pythonu s Data Factory
+      displayName: tutorial
       href: tutorial-run-python-batch-azure-data-factory.md
 - name: ukázky
   items:
@@ -43,10 +46,19 @@
         - name: Úložiště ukázek služby Batch
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+      items:
+        - name: Vytvoření účtu Batch v režimu služby Batch
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: Vytvoření účtu Batch v režimu předplatného uživatele
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: Přidání aplikace do účtu Azure Batch
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: Vytvoření a správa fondu s Linuxem
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: Vytvoření a správa fondu s Windows
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: Spuštění úlohy a úkolů
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: Koncepty
   items:
     - name: Zabezpečení
@@ -56,21 +68,23 @@
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+        - name: Osvědčené postupy zabezpečení
+          href: security-best-practices.md
     - name: Prostředky a pracovní postup služby Batch
-      displayName: developer features
+      displayName: 'developer features, core, component, overview'
       href: batch-service-workflow-features.md
       items:
         - name: Účty služby Batch
           displayName: storage account
           href: accounts.md
         - name: Uzly a fondy
-          displayName: 'compute node, application package, scaling, schedule, os'
+          displayName: 'compute node, application package, scaling, schedule, os, configuration'
           href: nodes-and-pools.md
         - name: Úlohy a úkoly
-          displayName: Batch job
+          displayName: 'Batch job, start task, environment'
           href: jobs-and-tasks.md
         - name: Soubory a adresáře
-          displayName: Batch file
+          displayName: 'Batch file, working directory'
           href: files-and-directories.md
     - name: Rozhraní API a nástroje
       href: batch-apis-tools.md
@@ -90,13 +104,11 @@
   items:
     - name: Správa účtů služby Batch
       items:
-        - name: Správa vašeho účtu
-          href: batch-manage-account-basics.md
-        - name: Správa účtů služby Batch pomocí portálu
+        - name: Správa účtů Batch v Azure Portal
           href: batch-account-create-portal.md
         - name: Správa účtů služby Batch pomocí rozhraní Batch Management .NET
           href: batch-management-dotnet.md
-        - name: Analýza nákladů a rozpočty
+        - name: Získání analýzy nákladů a nastavení rozpočtů
           href: budget.md
         - name: Použití privátních koncových bodů s účty Batch
           href: private-connectivity.md
@@ -109,11 +121,8 @@
         - name: Azure AD se službou Batch Management
           href: batch-aad-auth-management.md
         - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+          displayName: 'credential, certificate'
           href: credential-access-key-vault.md
-        - name: Použití certifikátů se službou Batch
-          href: batch-certificates.md
-    - name: Použití balíčků aplikací
-      href: batch-application-packages.md
     - name: Kopírování souborů a aplikací do uzlů fondu
       items:
         - name: Kopírování aplikací a dat do uzlů fondu
@@ -125,21 +134,35 @@
     - name: Vytváření a správa fondů
       items:
         - name: Automatické škálování výpočetních uzlů
+          displayName: 'scaling, dynamic, formula'
           href: batch-automatic-scaling.md
         - name: Výběr velikosti virtuálního počítače pro výpočetní uzly
           href: batch-pool-vm-sizes.md
+        - name: Přechod z cloudové služby na fondy virtuálních počítačů
+          displayName: migrate
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Konfigurace přístupu k výpočetním uzlům
+          displayName: 'rdp, ssh, network, remote'
           href: pool-endpoint-configuration.md
         - name: Vytvoření fondu s využitím Shared Image Gallery
+          displayName: 'managed image, sig'
           href: batch-sig-images.md
         - name: Vytvoření fondu s využitím prostředku spravované image
           href: batch-custom-images.md
+        - name: Vytvoření fondu s povoleným šifrováním disků
+          href: disk-encryption.md
         - name: Vytvoření fondu ve virtuální síti
+          displayName: vNet
           href: batch-virtual-network.md
         - name: Vytvoření fondu s veřejnými IP adresami
+          displayName: static
           href: create-pool-public-ip.md
         - name: Vytvoření fondu bez veřejných IP adres
+          displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: Konfigurace spravovaných identit
+          displayName: user-assigned
+          href: managed-identity-pools.md
         - name: Připojení virtuálního systému souborů
           href: virtual-file-mount.md
         - name: Připojení sdílené složky Azure
@@ -149,16 +172,21 @@
         - name: Použití výpočetních uzlů s Linuxem
           href: batch-linux-nodes.md
         - name: Použití virtuálních počítačů s nízkou prioritou
+          displayName: 'preempted, surplus, capacity'
           href: batch-low-pri-vms.md
         - name: Kontrola chyb uzlů a fondů
+          displayName: 'troubleshoot, failure'
           href: batch-pool-node-error-checking.md
     - name: Vytvoření kanálu CI/CD pro službu Batch
+      displayName: 'Azure DevOps, devops, continuous'
       href: batch-ci-cd.md
     - name: Správa úloh a úkolů
       items:
         - name: Příprava úlohy a dokončovací úkoly
+          displayName: 'release, job release'
           href: batch-job-prep-release.md
         - name: Souběžné úlohy uzlu
+          displayName: 'variable, maximize'
           href: batch-parallel-node-tasks.md
         - name: Závislosti úkolů
           href: batch-task-dependencies.md
@@ -169,6 +197,7 @@
         - name: Plánování úloh pro zajištění efektivity
           href: batch-job-schedule.md
         - name: Kontrola chyb úlohy a úkolů
+          displayName: 'failure, troubleshoot'
           href: batch-job-task-error-checking.md
     - name: Trvalý výstup úloh a funkcí
       href: batch-task-output.md
@@ -181,45 +210,52 @@
       href: monitoring-overview.md
       items:
         - name: Použití metrik a diagnostických protokolů
+          displayName: 'alert, monitor'
           href: batch-diagnostics.md
         - name: Monitorování pomocí Application Insights
+          displayName: debug
           href: monitor-application-insights.md
         - name: Počet prostředků podle stavu
           href: batch-get-resource-counts.md
         - name: Efektivní dotazy na prostředky
+          displayName: 'monitor, queries'
           href: batch-efficient-list-queries.md
     - name: Použití skriptovacích nástrojů
       items:
         - name: Použití Azure Powershell
+          displayName: 'ps, scripting, cmdlet'
           href: batch-powershell-cmdlets-get-started.md
         - name: Použití Azure CLI
+          displayName: command line
           href: batch-cli-get-started.md
-          items:
-            - name: Použití šablon rozhraní příkazového řádku služby Batch
-              href: batch-cli-templates.md
+        - name: Použití šablon rozhraní příkazového řádku služby Batch
+          diplayName: extension
+          href: batch-cli-templates.md
     - name: Použití Batch Node.js SDK
+      displayName: json
       href: batch-nodejs-get-started.md
     - name: Spouštění úloh
       items:
-        - name: Úlohy MPI
+        - name: MPI
+          displayName: 'multi-instance, message passing interface'
           href: batch-mpi.md
         - name: Úlohy kontejneru
+          displayName: docker
           href: batch-docker-container-workloads.md
         - name: Vykreslování
           items:
             - name: Vykreslování s využitím Azure
               href: batch-rendering-service.md
-            - name: Image virtuálních počítačů pro vykreslování
+            - name: Dávkové vykreslování imagí virtuálních počítačů
               href: batch-rendering-applications.md
             - name: Možnosti vykreslování služby Batch
               href: batch-rendering-functionality.md
             - name: Použití vykreslování služby Batch
               href: batch-rendering-using.md
-            - name: Použití manažerů vykreslování
-              href: batch-rendering-render-managers.md
             - name: Reference k aplikacím pro vykreslování
               href: batch-rendering-application-reference.md
             - name: Úložiště a přesun dat
+              displayName: 'rendering, assets'
               href: batch-rendering-storage-data-movement.md
             - name: Architektury vykreslování
               href: batch-rendering-architectures.md
@@ -260,28 +296,37 @@
           href: batch-pool-resize-start-event.md
         - name: Událost dokončení změny velikosti fondu
           href: batch-pool-resize-complete-event.md
+        - name: Událost automatického škálování fondu
+          href: batch-pool-autoscale-event.md
         - name: Událost zahájení úlohy
           href: batch-task-start-event.md
         - name: Událost dokončení úlohy
           href: batch-task-complete-event.md
         - name: Událost selhání úlohy
           href: batch-task-fail-event.md
+        - name: Událost selhání plánu úloh
+          href: batch-task-schedule-fail-event.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/'
     - name: Komunita služby Batch
       href: 'https://github.com/Azure/Batch'
+    - name: Batch Explorer
+      href: 'https://azure.github.io/BatchExplorer/'
     - name: Názory na službu Batch
       href: 'https://feedback.azure.com/forums/269742-batch'
-    - name: Stránka s dotazy ohledně služby Batch na Microsoft Q&A
-      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog
       href: /archive/blogs/windowshpc/
     - name: Prostředí HPC v Azure
       href: /azure/architecture/topics/high-performance-computing/
+    - name: Stránka s dotazy ohledně služby Batch na Microsoft Q&A
+      href: /answers/topics/azure-batch.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: Cenová kalkulačka

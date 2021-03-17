@@ -1,25 +1,25 @@
 ---
-title: Nastavení připojení ke zdroji dat pomocí spravované identity (Preview)
+title: Nastavení připojení ke zdroji dat pomocí spravované identity
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak nastavit připojení indexeru ke zdroji dat pomocí spravované identity (Preview).
+description: Naučte se, jak nastavit připojení indexeru ke zdroji dat pomocí spravované identity.
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/22/2020
+ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553160"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519584"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Nastavení připojení indexeru ke zdroji dat pomocí spravované identity (Preview)
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Nastavení připojení indexeru ke zdroji dat pomocí spravované identity
 
 > [!IMPORTANT] 
-> Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+> Nastavení připojení ke zdroji dat pomocí spravované identity není podporované na úrovni bezplatného Kognitivní hledání Azure.
 
 [Indexer](search-indexer-overview.md) v Azure kognitivní hledání je prohledávací modul, který poskytuje způsob, jak načíst data ze zdroje dat do Azure kognitivní hledání. Indexer získá připojení ke zdroji dat z objektu zdroje dat, který vytvoříte. Objekt zdroje dat obvykle obsahuje přihlašovací údaje pro cílový zdroj dat. Objekt zdroje dat může například zahrnovat klíč účtu Azure Storage, pokud chcete indexovat data z kontejneru úložiště objektů BLOB.
 
@@ -31,7 +31,7 @@ Tyto otázky je možné vyřešit nastavením připojení pomocí spravované id
 
 ## <a name="using-managed-identities"></a>Použití spravovaných identit
 
-[Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) jsou funkce, která poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí této funkce v Azure Kognitivní hledání můžete vytvořit objekt zdroje dat s připojovacím řetězcem, který neobsahuje žádné přihlašovací údaje. Místo toho bude službě Search udělen přístup ke zdroji dat prostřednictvím řízení přístupu na základě role (RBAC).
+[Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) jsou funkce, která poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí této funkce v Azure Kognitivní hledání můžete vytvořit objekt zdroje dat s připojovacím řetězcem, který neobsahuje žádné přihlašovací údaje. Místo toho bude službě Search udělen přístup ke zdroji dat prostřednictvím řízení přístupu na základě role Azure (RBAC).
 
 Při nastavování zdroje dat pomocí spravované identity můžete změnit přihlašovací údaje ke zdroji dat a indexery se pořád budou moct připojit ke zdroji dat. Můžete také vytvořit objekty zdroje dat ve vašem kódu, aniž byste museli zahrnout klíč účtu, nebo použít Key Vault k načtení klíče účtu.
 

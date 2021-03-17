@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a1af48d89fbf5d303c2a6b8ef85ca3117debd5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864073"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320088"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Návody spouštějící vědecké zpracování týmových dat
 
@@ -32,7 +32,7 @@ Tady je stručný popis toho, co poskytují příklady návodů na jejich přís
 - [Návody k HDInsight Hadoop pomocí podregistru](walkthroughs-hdinsight-hadoop.md) Tyto návody používají pro prediktivní analýzu podregistr s clusterem HDInsight Hadoop.
 - [Azure Data Lake návody pomocí U-SQL](walkthroughs-azure-data-lake.md) Tyto návody využívají U-SQL s Azure Data Lake k provádění prediktivní analýzy.
 - [SQL Server](walkthroughs-sql-server.md) Tyto návody používají SQL Server, SQL Server R Services a SQL Server služeb Python k provádění prediktivní analýzy.
-- [SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) Tyto návody používají SQL Data Warehouse k provádění prediktivní analýzy. 
+- [Azure synapse Analytics](walkthroughs-sql-data-warehouse.md) Tyto návody využívají Azure synapse Analytics k provádění prediktivních analýz. 
 
 
 
@@ -42,5 +42,4 @@ Diskuzi o klíčových součástech, které se skládají z vědeckého zpracov�
 
 Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
 
-Přehled najdete v tématu věnovaném [vědeckému zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
-
+Přehled najdete v tématu věnovaném [vědeckému zpracování dat](./index.yml).

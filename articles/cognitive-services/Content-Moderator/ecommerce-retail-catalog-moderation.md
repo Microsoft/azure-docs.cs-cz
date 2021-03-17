@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: ff56a3e9c15d6f4bf04765c30084a9ca68df0e73
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 211f58e26ec89c393bf9f91cc3a05044c6b1e802
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544753"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221274"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
-V tomto kurzu se naučíte, jak používat Azure Cognitive Services, včetně Content Moderator, ke klasifikaci a mírnému používání imagí produktu pro scénář elektronického obchodování. Pomocí Počítačové zpracování obrazu a Custom Vision použijete značky (štítky) na obrázky a pak vytvoříte tým, který kombinuje Content Moderator technologie založené na strojovém učení s týmy pro personálního přezkoumání, aby poskytovala inteligentní systém moderování.
+V tomto kurzu se naučíte, jak používat Azure Cognitive Services, včetně Content Moderator, ke klasifikaci a mírnému používání imagí produktu pro scénář elektronického obchodování. Použijete Počítačové zpracování obrazu a Custom Vision k aplikování značek (popisků) na obrázky a potom vytvoříte tým, který kombinuje Content Moderator technologie založené na strojovém učení s týmy pro personálního přezkoumání, aby poskytovala inteligentní systém moderování.
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -36,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
+- Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](../cognitive-services-apis-create-account.md) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - Počítačové zpracování obrazu klíč předplatného (stejné pokyny jako výše).
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 - Sada imagí pro každý popisek, který bude Custom Vision klasifikátoru používat (v tomto případě se jedná o hračky, pera a značky v angličtině).
@@ -47,14 +48,14 @@ Pokyny, jak se zaregistrovat do [Nástroje pro kontrolu Content moderator](https
 
 ## <a name="create-custom-moderation-tags"></a>Vytváření vlastních značek moderování
 
-Dále vytvořte vlastní značky v nástroji pro revizi (viz článek [značky](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) , pokud potřebujete s tímto procesem pomáhat). V tomto případě přidáme následující značky: **celebrit**, **USA**, **příznak**, **hračky**a **pero**. Ne všechny značky musí být zjistitelné kategorie v Počítačové zpracování obrazu (například **celebrit**); vlastní značky můžete přidat, pokud Custom Vision třídění, abyste je mohli později zjistit.
+Dále vytvořte vlastní značky v nástroji pro revizi (viz článek [značky](./review-tool-user-guide/configure.md#tags) , pokud potřebujete s tímto procesem pomáhat). V tomto případě přidáme následující značky: **celebrit**, **USA**, **příznak**, **hračky** a **pero**. Ne všechny značky musí být zjistitelné kategorie v Počítačové zpracování obrazu (například **celebrit**); vlastní značky můžete přidat, pokud Custom Vision třídění, abyste je mohli později zjistit.
 
 ![Konfigurace vlastních značek](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované**a pak **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)**.
-1. Pojmenujte aplikaci **EcommerceModeration**a pak klikněte na **OK**.
+1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované** a pak **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)**.
+1. Pojmenujte aplikaci **EcommerceModeration** a pak vyberte **OK**.
 1. Pokud přidáváte tento projekt do existujícího řešení, vyberte tento projekt jako jeden spouštěný projekt.
 
 V tomto kurzu se zvýrazní kód, který je centrální pro projekt, ale nepokrývá každý řádek kódu. Zkopírujte celý obsah _program.cs_ z ukázkového projektu ([Samples elektronického obchodování pro moderování katalogu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) do souboru _program.cs_ vašeho nového projektu. Potom si Projděte následující části, kde se dozvíte, jak projekt funguje a jak ho použít sami.
@@ -89,11 +90,11 @@ Další metoda přebírá adresu URL obrázku a informace o Počítačové zprac
 
 ## <a name="evaluatecustomvisiontags-method"></a>Metoda EvaluateCustomVisionTags
 
-Dále si prohlédněte metodu **EvaluateCustomVisionTags** , která klasifikuje skutečné produkty &mdash; v tomto případě příznaky, hračky a pera. Postupujte podle pokynů v tématu [Postup vytvoření klasifikátoru](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) pro sestavování vlastního klasifikátoru imagí a rozpoznávání příznaků, hraček a per (nebo bez ohledu na to, co jste zvolili jako vlastní značky) na obrázcích. K rychlému učení některých kategorií v tomto příkladu můžete použít image ve složce **Sample-images** v [úložišti GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) .
+Dále si prohlédněte metodu **EvaluateCustomVisionTags** , která klasifikuje skutečné produkty &mdash; v tomto případě příznaky, hračky a pera. Postupujte podle pokynů v tématu [Postup vytvoření klasifikátoru](../custom-vision-service/getting-started-build-a-classifier.md) pro sestavování vlastního klasifikátoru imagí a rozpoznávání příznaků, hraček a per (nebo bez ohledu na to, co jste zvolili jako vlastní značky) na obrázcích. K rychlému učení některých kategorií v tomto příkladu můžete použít image ve složce **Sample-images** v [úložišti GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) .
 
 ![Custom Vision webové stránky s školicími snímky pro pera, hračky a příznaky](images/tutorial-ecommerce-custom-vision.PNG)
 
-Jakmile provedete klasifikátor, Získejte adresu URL koncového bodu a předpovědi předpovědi (viz [získat adresu URL a klíč předpovědi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , pokud potřebujete pomoc s jejich načtením) a přiřadit tyto hodnoty k `CustomVisionKey` polím a v `CustomVisionUri` uvedeném pořadí. Metoda používá tyto hodnoty k dotazování klasifikátoru. Pokud klasifikátor najde jednu nebo více vlastních značek v obrázku, tato metoda nastaví odpovídající hodnoty v poli **ReviewTags** na **hodnotu true**.
+Jakmile provedete klasifikátor, Získejte adresu URL koncového bodu a předpovědi předpovědi (viz [získat adresu URL a klíč předpovědi](../custom-vision-service/use-prediction-api.md#get-the-url-and-prediction-key) , pokud potřebujete pomoc s jejich načtením) a přiřadit tyto hodnoty k `CustomVisionKey` polím a v `CustomVisionUri` uvedeném pořadí. Metoda používá tyto hodnoty k dotazování klasifikátoru. Pokud klasifikátor najde jednu nebo více vlastních značek v obrázku, tato metoda nastaví odpovídající hodnoty v poli **ReviewTags** na **hodnotu true**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

@@ -2,20 +2,20 @@
 title: Připojte virtuální počítač SLE k Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat a připojit virtuální počítač s SUSE Linux Enterprise k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: iainfou
-ms.openlocfilehash: 9f50be95e456802c6ad403acd6a2f539780e53a2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88251164"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619602"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s SUSE Linux Enterprise k Azure Active Directory Domain Services spravované doméně
 
@@ -23,7 +23,7 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač s SUSE Linux Enterprise (SLE) ke spravované doméně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -89,7 +89,7 @@ Pokud se chcete připojit ke spravované doméně pomocí **SSSD** a modulu *pro
 
     V YaST vyberte **nastavení systémové > sítě**.
 
-1. Vyberte kartu *název hostitele/DNS* a potom do textového pole *názvového serveru*zadejte IP adresu (ES) spravované domény. Tyto IP adresy se zobrazí v okně *vlastnosti* v Azure Portal vaší spravované domény, jako je například *10.0.2.4* a *10.0.2.5*.
+1. Vyberte kartu *název hostitele/DNS* a potom do textového pole *názvového serveru* zadejte IP adresu (ES) spravované domény. Tyto IP adresy se zobrazí v okně *vlastnosti* v Azure Portal vaší spravované domény, jako je například *10.0.2.4* a *10.0.2.5*.
 
     Přidejte vlastní IP adresy spravované domény a pak vyberte **OK**.
 
@@ -133,17 +133,17 @@ Jakmile je virtuální počítač zaregistrovaný ve spravované doméně, nakon
 
 1. Pokud chcete přihlašovat pomocí dat poskytovaných spravovanou doménou, zaškrtněte políčko pro možnost *Povolení přihlášení uživatele domény*.
 
-1. Volitelně můžete v části *Povolit zdroj dat domény*kontrolovat další zdroje dat, které jsou potřeba pro vaše prostředí. Tyto možnosti zahrnují, kteří uživatelé smějí používat **sudo** nebo které síťové jednotky jsou k dispozici.
+1. Volitelně můžete v části *Povolit zdroj dat domény* kontrolovat další zdroje dat, které jsou potřeba pro vaše prostředí. Tyto možnosti zahrnují, kteří uživatelé smějí používat **sudo** nebo které síťové jednotky jsou k dispozici.
 
 1. Pokud chcete uživatelům ve spravované doméně dovolit, aby měli domovské adresáře na virtuálním počítači, zaškrtněte políčko *vytvořit domovské adresáře*.
 
-1. Na bočním panelu vyberte **Možnosti služby › název přepínače**a pak *Rozšířené možnosti*. Z tohoto okna vyberte buď *fallback_homedir* , nebo *override_homedir*a pak vyberte **Přidat**.
+1. Na bočním panelu vyberte **Možnosti služby › název přepínače** a pak *Rozšířené možnosti*. Z tohoto okna vyberte buď *fallback_homedir* , nebo *override_homedir* a pak vyberte **Přidat**.
 
-1. Zadejte hodnotu umístění domovského adresáře. Chcete-li mít domovské adresáře, postupujte podle formátu */home/user_name*použijte */Home/%u*. Další informace o možných proměnných naleznete na stránce SSSD. conf Man ( `man 5 sssd.conf` ), část *override_homedir*.
+1. Zadejte hodnotu umístění domovského adresáře. Chcete-li mít domovské adresáře, postupujte podle formátu */home/user_name* použijte */Home/%u*. Další informace o možných proměnných naleznete na stránce SSSD. conf Man ( `man 5 sssd.conf` ), část *override_homedir*.
 
 1. Vyberte **OK**.
 
-1. Pokud chcete změny uložit, vyberte **OK**. Pak se ujistěte, že jsou hodnoty zobrazené nyní správné. Pokud chcete dialogové okno opustit, vyberte **Zrušit**.
+1. Vyberte **OK**, aby se změny uložily. Pak se ujistěte, že jsou hodnoty zobrazené nyní správné. Pokud chcete dialogové okno opustit, vyberte **Zrušit**.
 
 1. Pokud máte v úmyslu spouštět SSSD a winbind současně (například při připojení prostřednictvím SSSD, ale na serveru se systémem souborů Samba), měla by být *Metoda protokolu Kerberos* možnosti serveru Samba nastavená na *tajné klíče a keytab* v SMB. conf. Možnost SSSD *ad_update_samba_machine_account_password* by měla být také nastavena na *hodnotu true* v SSSD. conf. Tyto možnosti zabrání tomu, aby systém keytab ze synchronizace.
 
@@ -165,7 +165,7 @@ Pokud se chcete připojit ke spravované doméně pomocí **winbind** a modulu *
 
 1. Pokud chcete změnit rozsahy UID a GID pro uživatele a skupiny služby Samba, vyberte možnost *Expertní nastavení*.
 
-1. Výběrem *Konfigurace NTP*nakonfigurujte synchronizaci času NTP pro spravovanou doménu. Zadejte IP adresy spravované domény. Tyto IP adresy se zobrazí v okně *vlastnosti* v Azure Portal vaší spravované domény, jako je například *10.0.2.4* a *10.0.2.5*.
+1. Nakonfigurujte synchronizaci času NTP (Network Time Protocol) pro spravovanou doménu výběrem *Konfigurace NTP*. Zadejte IP adresy spravované domény. Tyto IP adresy se zobrazí v okně *vlastnosti* v Azure Portal vaší spravované domény, jako je například *10.0.2.4* a *10.0.2.5*.
 
 1. Po zobrazení výzvy vyberte **OK** a potvrďte připojení k doméně.
 
@@ -174,6 +174,127 @@ Pokud se chcete připojit ke spravované doméně pomocí **winbind** a modulu *
     ![Ukázkový snímek obrazovky s výzvou k ověření při připojení virtuálního počítače s SLE ke spravované doméně](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
 Až se připojíte ke spravované doméně, můžete se k ní přihlásit z pracovní stanice pomocí Správce zobrazení plochy nebo konzoly.
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>Připojení virtuálního počítače ke spravované doméně pomocí winbind z rozhraní příkazového řádku YaST
+
+Připojení ke spravované doméně pomocí **winbind** a *rozhraní příkazového řádku YaST*:
+
+* Připojit k doméně:
+
+  ```console
+  sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
+  ```
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Připojení virtuálního počítače ke spravované doméně pomocí winbind z terminálu
+
+Připojení ke spravované doméně pomocí **winbind** a *`samba net` příkazu*:
+
+1. Instalace klienta Kerberos a systému SAMBA – winbind:
+
+   ```console
+   sudo zypper in krb5-client samba-winbind
+   ```
+
+2. Upravte konfigurační soubory:
+
+   * /etc/samba/smb.conf
+   
+     ```ini
+     [global]
+         workgroup = AADDSCONTOSO
+         usershare allow guests = NO #disallow guests from sharing
+         idmap config * : backend = tdb
+         idmap config * : range = 1000000-1999999
+         idmap config AADDSCONTOSO : backend = rid
+         idmap config AADDSCONTOSO : range = 5000000-5999999
+         kerberos method = secrets and keytab
+         realm = AADDSCONTOSO.COM
+         security = ADS
+         template homedir = /home/%D/%U
+         template shell = /bin/bash
+         winbind offline logon = yes
+         winbind refresh tickets = yes
+     ```
+
+   * /etc/krb5.conf
+   
+     ```ini
+     [libdefaults]
+         default_realm = AADDSCONTOSO.COM
+         clockskew = 300
+     [realms]
+         AADDSCONTOSO.COM = {
+             kdc = PDC.AADDSCONTOSO.COM
+             default_domain = AADDSCONTOSO.COM
+             admin_server = PDC.AADDSCONTOSO.COM
+         }
+     [domain_realm]
+         .aaddscontoso.com = AADDSCONTOSO.COM
+     [appdefaults]
+         pam = {
+             ticket_lifetime = 1d
+             renew_lifetime = 1d
+             forwardable = true
+             proxiable = false
+             minimum_uid = 1
+         }
+     ```
+
+   * /etc/Security/pam_winbind. conf
+   
+     ```ini
+     [global]
+         cached_login = yes
+         krb5_auth = yes
+         krb5_ccache_type = FILE
+         warn_pwd_expire = 14
+     ```
+
+   * /etc/nsswitch.conf
+   
+     ```ini
+     passwd: compat winbind
+     group: compat winbind
+     ```
+
+3. Ověřte, že je datum a čas v Azure AD a Linux synchronizovaný. To můžete provést přidáním serveru Azure AD ke službě NTP:
+   
+   1. Přidejte následující řádek do/etc/NTP.conf:
+     
+      ```console
+      server aaddscontoso.com
+      ```
+
+   1. Restartujte službu NTP:
+     
+      ```console
+      sudo systemctl restart ntpd
+      ```
+
+4. Připojit k doméně:
+
+   ```console
+   sudo net ads join -U Administrator%Mypassword
+   ```
+
+5. Povolte winbind jako zdroj přihlášení v modulech PAM (připojitelných Authentication Module) pro Linux:
+
+   ```console
+   pam-config --add --winbind
+   ```
+
+6. Povolí automatické vytváření domovských adresářů, aby se uživatelé mohli přihlásit:
+
+   ```console
+   pam-config -a --mkhomedir
+   ```
+
+7. Spusťte a povolte službu winbind:
+
+   ```console
+   sudo systemctl enable winbind
+   sudo systemctl start winbind
+   ```
 
 ## <a name="allow-password-authentication-for-ssh"></a>Povolení ověřování hesla pro SSH
 

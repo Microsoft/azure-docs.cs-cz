@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1626d6f86dcfefd094f325f1f10296d01d4bad93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5e25473214ccc9090038430642232735aaaf61
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73522550"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92479553"
 ---
 Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway Resource Manageru otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
 
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **všechny prostředky** nebo vyhledejte a vyberte **všechny prostředky** z libovolné stránky. 
-2. Vyberte svou bránu virtuální sítě.
-3. V okně vaší brány virtuální sítě klikněte na **Připojení**. Můžete zobrazit stav každého připojení.
-4. Kliknutím na název připojení, které chcete ověřit, otevřete **Základní údaje**. V části Základní údaje můžete zobrazit další informace o připojení. **Stav** bude „Úspěšně dokončeno“ a „Připojeno“ po provedení úspěšného připojení.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **všechny prostředky** nebo vyhledejte a vyberte **všechny prostředky** z libovolné stránky.
+1. Vyberte svou bránu virtuální sítě.
+1. V okně vaší brány virtuální sítě klikněte na **Připojení**. Můžete zobrazit stav každého připojení.
+1. Kliknutím na název připojení, které chcete ověřit, otevřete **Základní údaje**. V části Základní údaje můžete zobrazit další informace o připojení. **Stav** bude „Úspěšně dokončeno“ a „Připojeno“ po provedení úspěšného připojení.
 
-   ![Ověření připojení ke službě VPN Gateway pomocí webu Azure Portal](./media/vpn-gateway-verify-connection-portal-include/connection-succeeded.png)
+   :::image type="content" source="./media/vpn-gateway-verify-connection-portal-include/status.png" alt-text="Ověření připojení ke službě VPN Gateway pomocí webu Azure Portal":::

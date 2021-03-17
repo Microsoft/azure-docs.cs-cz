@@ -2,13 +2,13 @@
 title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/08/2021
+ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040757"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563109"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -22,6 +22,8 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
+* edgeSubscriptions
+* linkedSubscriptions
 * rozpoznávání
 * registrace/customerSubscriptions
 * registrace/produkty
@@ -38,6 +40,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * Galerie/image/verze
 * images
 * snímky
+* virtualMachineScaleSets – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -55,24 +58,29 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * Registry/úlohy
 * Registry a Webhooky
 
+## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
+
+* instance
+
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 * servery
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
+* flexibleServers
 * servery
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
+* flexibleServers
 * serverGroups
 * servery
 * serversv2
-* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* plány – ve výchozím nastavení omezeny na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+* časových
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
@@ -96,6 +104,11 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * softwareUpdateProfile
 * softwareUpdates
 
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
+
+* počítače – podporuje až 5 000 instancí.
+* rozšíření – podporuje neomezený počet instancí rozšíření virtuálních počítačů.
+
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 
 * metricalerts
@@ -104,6 +117,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * integrationAccounts
 * Zpracovávaný
+
+## <a name="microsoftmedia"></a>Microsoft. Media
+
+* MediaServices/liveEvents
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -160,6 +177,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * workspaceCollections – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
+## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
+
+* kapacity – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 * obsažené
@@ -172,18 +193,21 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * obsažené
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+## <a name="microsoftsingularity"></a>Microsoft. jednotného
 
-* aplikace
-* containerGroups
-* brány
-* sítí
-* záleží
-* volumes
+* accounts
+* účty/accountQuotaPolicies
+* účty/groupPolicies
+* účty/úlohy
+* účty/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* servery/databáze
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 

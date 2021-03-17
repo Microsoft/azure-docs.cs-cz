@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183643"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015532"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Zahájení transformace dat s využitím sady .NET SDK
 
@@ -26,17 +26,17 @@ Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámc
  
   Tento článek podrobně popisuje, jak vytvořit ukázkovou konzolovou aplikaci .NET pro zahájení úlohy transformace dat a pak ji sledovat pro dokončení. Další informace o tom, jak iniciovat transformaci dat pomocí automatizace, najdete v tématu [použití Azure Automation Runbook k aktivaci úloh transformace dat](storsimple-data-manager-job-using-automation.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 *   Počítač se systémem:
 
     - Visual Studio 2012, 2013, 2015 nebo 2017.
 
-    - Prostředí Azure PowerShell. [Stáhněte si Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+    - Prostředí Azure PowerShell. [Stáhněte si Azure PowerShell](/powershell/azure/).
 *   Správně nakonfigurovaná definice úlohy v StorSimple Data Manager v rámci skupiny prostředků.
 *   Všechny požadované knihovny DLL. Stáhněte si tyto knihovny DLL z [úložiště GitHub](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)skript z úložiště GitHubu.
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) skript z úložiště GitHubu.
 
 ## <a name="step-by-step-procedure"></a>Podrobný postup
 
@@ -66,8 +66,8 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
 
         ![Vytvořit projekt 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
     2. Vyberte **nainstalované > šablony > Visual C# > Konzolová aplikace**.
-    3. Jako **název**zadejte **DataTransformationApp** .
-    4. Jako **umístění**vyberte **C:\DataTransformation** .
+    3. Jako **název** zadejte **DataTransformationApp** .
+    4. Jako **umístění** vyberte **C:\DataTransformation** .
     6. Kliknutím na tlačítko **OK** vytvořte projekt.
 
         ![Vytvoření projektu 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
@@ -79,7 +79,7 @@ Provedením následujících kroků spusťte úlohu transformace dat pomocí roz
     
        ![Přidat knihovny DLL 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. Přejděte do umístění složky balíčky, vyberte všechny knihovny DLL a klikněte na tlačítko **Přidat**a poté klikněte na tlačítko **OK**.
+   3. Přejděte do umístění složky balíčky, vyberte všechny knihovny DLL a klikněte na tlačítko **Přidat** a poté klikněte na tlačítko **OK**.
 
        ![Přidat knihovny DLL 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 

@@ -1,27 +1,31 @@
 ---
 title: 'Azure Virtual WAN: Vytvoření síťového virtuálního zařízení (síťové virtuální zařízení) v centru'
-description: V tomto kurzu se dozvíte, jak nasadit síťové virtuální zařízení ve virtuálním centru sítě WAN.
+description: Přečtěte si, jak nasadit síťové virtuální zařízení ve virtuálním centru sítě WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: c5f120d6d9d80db4eaa9cf6f68e8dd27d45c8aea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f02edf8e192f4d32f8bd2583d46bbb17c86d2049
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097121"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454800"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Postup vytvoření síťového virtuálního zařízení ve službě Azure Virtual WAN hub (Preview)
 
-V tomto kurzu se dozvíte, jak pomocí virtuální sítě WAN se připojit k prostředkům v Azure prostřednictvím **síťového virtuálního zařízení** (síťové virtuální zařízení) v Azure. Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
+V tomto článku se dozvíte, jak pomocí virtuální sítě WAN se připojit k prostředkům v Azure prostřednictvím **síťového virtuálního zařízení** (síťové virtuální zařízení) v Azure. Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o virtuální síti WAN najdete v tématu [co je virtuální síť WAN?](virtual-wan-about.md).
 
 Kroky v tomto článku vám pomůžou vytvořit virtuální síťové zařízení **Barracuda CLOUDGEN WAN** ve virtuálním centru sítě WAN. K dokončení tohoto cvičení musíte mít Barracuda cloudové místní zařízení (CPE) a licenci pro zařízení Barracuda CloudGen WAN, které nasadíte do centra před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+Dokumentaci k nasazení **Cisco SD-WAN** v Azure Virtual WAN najdete v článku [Cisco Cloud OnRamp pro multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). 
+
+Dokumentaci k nasazení **VMware SD-WAN** v rámci Azure Virtual WAN najdete v [Průvodci nasazením pro VMware SD-WAN ve virtuálním centru sítě WAN](https://kb.vmware.com/s/article/82746) .
+
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -65,7 +69,7 @@ V tomto kroku vytvoříte síťové virtuální zařízení v centru. Postup pro
 
    :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Virtuální rozbočovač":::
 1. Vyhledejte dlaždici síťová virtuální zařízení a vyberte odkaz **vytvořit** .
-1. V okně **virtuální síťové zařízení** vyberte **Barracuda CloudGen WAN**a pak klikněte na tlačítko **vytvořit** .
+1. V okně **virtuální síťové zařízení** vyberte **Barracuda CloudGen WAN** a pak klikněte na tlačítko **vytvořit** .
 
    :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Vybrat síťové virtuální zařízení":::
 1. Tím přejdete na nabídku Azure Marketplace pro bránu Barracuda CloudGen WAN. Přečtěte si tyto informace a po dokončení klikněte na tlačítko **vytvořit** .
@@ -87,7 +91,7 @@ V tomto kroku vytvoříte síťové virtuální zařízení v centru. Postup pro
    * **Jednotky infrastruktury síťové virtuální zařízení** – určete počet jednotek infrastruktury síťové virtuální zařízení, s kterými chcete nasadit tuto síťové virtuální zařízení. Vyberte velikost agregované kapacity šířky pásma, kterou chcete poskytnout napříč všemi pobočkami, které se budou připojovat k tomuto centru prostřednictvím tohoto síťové virtuální zařízení.
    * **Token** -Barracuda vyžaduje, abyste v tomto případě zadali ověřovací token, který se identifikuje jako registrovaný uživatel tohoto produktu. Budete ho muset získat z Barracuda.
 1. Pokračujte výběrem tlačítka **zkontrolovat a vytvořit** .
-1. Na této stránce se zobrazí výzva, abyste přijali podmínky smlouvy pro přístup spolusprávce. To je standard u spravovaných aplikací, kde bude mít Vydavatel přístup k některým prostředkům v tomto nasazení. Zaškrtněte políčko **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **vytvořit**.
+1. Na této stránce se zobrazí výzva, abyste přijali podmínky smlouvy o přístupu k Co-Admin. To je standard u spravovaných aplikací, kde bude mít Vydavatel přístup k některým prostředkům v tomto nasazení. Zaškrtněte políčko **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **vytvořit**.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>Připojení virtuální sítě k centru
 
@@ -95,5 +99,5 @@ V tomto kroku vytvoříte síťové virtuální zařízení v centru. Postup pro
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md).
+* Další informace o virtuální síti WAN najdete na stránce [co je Virtual WAN?](virtual-wan-about.md) .
 * Další informace o síťová virtuální zařízení ve virtuálním rozbočovači WAN najdete v tématu [informace o síťovém virtuálním zařízení ve virtuální síti WAN (Preview)](about-nva-hub.md).

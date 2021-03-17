@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ea8fa6933052374721d8d205d5b07386c807ae2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252245"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784592"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Přehled životního cyklu Reliable Services
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Existují podrobnosti kolem přesného pořadí těchto událostí. Pořadí ud�
 
 1. Služba je vytvořena.
 2. Pak dojde k paralelnímu zpracování dvou věcí:
-    - `StatelessService.CreateServiceInstanceListeners()`je vyvolána a jsou otevřeny všechny vracené naslouchací procesy. `ICommunicationListener.OpenAsync()`je volána u každého naslouchacího procesu.
+    - `StatelessService.CreateServiceInstanceListeners()` je vyvolána a jsou otevřeny všechny vracené naslouchací procesy. `ICommunicationListener.OpenAsync()` je volána u každého naslouchacího procesu.
     - `StatelessService.RunAsync()`Volá se metoda služby.
 3. Je-li k dispozici, `StatelessService.OnOpenAsync()` je volána metoda služby. Toto volání je Neběžné přepsání, ale je k dispozici. V tuto chvíli můžete spustit inicializační úlohy rozšířené služby.
 
@@ -53,7 +53,7 @@ Pamatujte, že neexistuje žádné řazení mezi voláními pro vytváření a o
 Pokud chcete vypnout bezstavovou službu, je stejný vzor následovaný stejným způsobem jako v opačném případě:
 
 1. Paralelně:
-    - Všechny otevřené naslouchací procesy jsou uzavřeny. `ICommunicationListener.CloseAsync()`je volána u každého naslouchacího procesu.
+    - Všechny otevřené naslouchací procesy jsou uzavřeny. `ICommunicationListener.CloseAsync()` je volána u každého naslouchacího procesu.
     - Token zrušení předaný do `RunAsync()` je zrušen. Ověření vlastnosti token zrušení `IsCancellationRequested` vrátí hodnotu true a pokud je volána, metoda tokenu `ThrowIfCancellationRequested` vyvolá výjimku `OperationCanceledException` .
 2. Po `CloseAsync()` dokončení každého naslouchacího procesu a `RunAsync()` také dokončení `StatelessService.OnCloseAsync()` je metoda služby volána, je-li k dispozici.  OnCloseAsync se volá, když se Bezstavová instance služby bude řádně vypnout. K tomu může dojít při upgradu kódu služby, instance služby se přesouvá z důvodu vyrovnávání zatížení, nebo je zjištěna přechodná chyba. Není běžné ho přepsat `StatelessService.OnCloseAsync()` , ale je možné ho použít k bezpečnému zavírání prostředků, zastavení zpracování na pozadí, dokončení ukládání externího stavu nebo zavření stávajících připojení.
 3. Po `StatelessService.OnCloseAsync()` dokončení dojde k destrukturování objektu služby.
@@ -62,10 +62,10 @@ Pokud chcete vypnout bezstavovou službu, je stejný vzor následovaný stejným
 Stavové služby mají podobný model bezstavových služeb s několika změnami. Pro spuštění stavové služby je pořadí událostí následující:
 
 1. Služba je vytvořena.
-2. `StatefulServiceBase.OnOpenAsync()`je volána. Toto volání není ve službě obvykle přepsáno.
+2. `StatefulServiceBase.OnOpenAsync()` je volána. Toto volání není ve službě obvykle přepsáno.
 3. Paralelně probíhají následující akce:
-    - `StatefulServiceBase.CreateServiceReplicaListeners()`je vyvolána. 
-      - Pokud je služba primární službou, otevřou se všechny vrácené naslouchací procesy. `ICommunicationListener.OpenAsync()`je volána u každého naslouchacího procesu.
+    - `StatefulServiceBase.CreateServiceReplicaListeners()` je vyvolána. 
+      - Pokud je služba primární službou, otevřou se všechny vrácené naslouchací procesy. `ICommunicationListener.OpenAsync()` je volána u každého naslouchacího procesu.
       - Pokud je služba Sekundární službou, otevírají se jenom ty naslouchací procesy označené jako `ListenOnSecondary = true` . Naslouchací procesy, které jsou otevřeny na sekundárních počítačích, jsou méně běžné.
     - Pokud je služba aktuálně primární, `StatefulServiceBase.RunAsync()` je volána metoda služby.
 4. Po dokončení volání a volání všech volání naslouchacího procesu repliky se zavolá `OpenAsync()` `RunAsync()` `StatefulServiceBase.OnChangeRoleAsync()` . Toto volání není ve službě obvykle přepsáno.
@@ -79,7 +79,7 @@ Podobně jako u bezstavových služeb neexistuje žádná koordinace mezi pořad
 Stejně jako bezstavové služby jsou události životního cyklu během vypnutí stejné jako při spuštění, ale stornovány. Při vypnutí stavové služby dojde k následujícím událostem:
 
 1. Paralelně:
-    - Všechny otevřené naslouchací procesy jsou uzavřeny. `ICommunicationListener.CloseAsync()`je volána u každého naslouchacího procesu.
+    - Všechny otevřené naslouchací procesy jsou uzavřeny. `ICommunicationListener.CloseAsync()` je volána u každého naslouchacího procesu.
     - Token zrušení předaný do `RunAsync()` je zrušen. Ověření vlastnosti token zrušení `IsCancellationRequested` vrátí hodnotu true a pokud je volána, metoda tokenu `ThrowIfCancellationRequested` vyvolá výjimku `OperationCanceledException` .
 2. Po `CloseAsync()` dokončení každého naslouchacího procesu a `RunAsync()` také dokončí službu, `StatefulServiceBase.OnChangeRoleAsync()` se zavolá. Toto volání není ve službě obvykle přepsáno.
 
@@ -96,7 +96,7 @@ Když je spuštěná stavová služba, mají otevřené naslouchací procesy kom
 U primární repliky, u které se sníží úroveň, Service Fabric potřebuje, aby tato replika zastavila zpracování zpráv a ukončila činnost na pozadí, kterou dělá. V důsledku toho tento krok vypadá jako při vypnutí služby. Jednou z nich je, že služba není destrukturovaná ani uzavřená, protože zůstává jako sekundární. Jsou volána následující rozhraní API:
 
 1. Paralelně:
-    - Všechny otevřené naslouchací procesy jsou uzavřeny. `ICommunicationListener.CloseAsync()`je volána u každého naslouchacího procesu.
+    - Všechny otevřené naslouchací procesy jsou uzavřeny. `ICommunicationListener.CloseAsync()` je volána u každého naslouchacího procesu.
     - Token zrušení předaný do `RunAsync()` je zrušen. Ověření vlastnosti token zrušení `IsCancellationRequested` vrátí hodnotu true a pokud je volána, metoda tokenu `ThrowIfCancellationRequested` vyvolá výjimku `OperationCanceledException` .
 2. Po `CloseAsync()` dokončení každého naslouchacího procesu a `RunAsync()` také dokončí službu, `StatefulServiceBase.OnChangeRoleAsync()` se zavolá. Toto volání není ve službě obvykle přepsáno.
 
@@ -104,7 +104,7 @@ U primární repliky, u které se sníží úroveň, Service Fabric potřebuje, 
 Podobně Service Fabric potřebuje sekundární repliku, která je povýšená tak, aby začala naslouchat zprávám na lince a spustit všechny úlohy na pozadí, které musí dokončit. V důsledku toho tento proces vypadá stejně jako při vytvoření služby, s tím rozdílem, že replika již existuje. Jsou volána následující rozhraní API:
 
 1. Paralelně:
-    - `StatefulServiceBase.CreateServiceReplicaListeners()`je vyvolána a jsou otevřeny všechny vracené naslouchací procesy. `ICommunicationListener.OpenAsync()`je volána u každého naslouchacího procesu.
+    - `StatefulServiceBase.CreateServiceReplicaListeners()` je vyvolána a jsou otevřeny všechny vracené naslouchací procesy. `ICommunicationListener.OpenAsync()` je volána u každého naslouchacího procesu.
     - `StatefulServiceBase.RunAsync()`Volá se metoda služby.
 2. Po dokončení volání a volání všech volání naslouchacího procesu repliky se zavolá `OpenAsync()` `RunAsync()` `StatefulServiceBase.OnChangeRoleAsync()` . Toto volání není ve službě obvykle přepsáno.
 
@@ -113,7 +113,7 @@ Service Fabric mění primární stavovou službu z nejrůznějších důvodů. 
 
 Služby, které nezpracovávají zrušení čistě, můžou vyskytnout několik problémů. Tyto operace jsou pomalé, protože Service Fabric čeká na řádné zastavení služeb. To může mít za následek neúspěšné upgrady, které vyprší a vrátí se zpět. Nedodržení tokenu zrušení může také způsobit nevyvážené clustery. Clustery se stanou nevyvážené, protože uzly fungují jako aktivní, ale služby se nedají znovu vyrovnávat, protože je nebudete moct přesunout jinam. 
 
-Vzhledem k tomu, že služby jsou stavové, je také pravděpodobně používána [spolehlivými kolekcemi](service-fabric-reliable-services-reliable-collections.md). V Service Fabric, když dojde ke snížení úrovně primárního primárního obsahu, nastane jedna z prvních věcí, ke kterým dojde, aby byl přístup pro zápis do základního stavu odvolán. To vede k druhé sadě problémů, které mohou ovlivnit životní cyklus služby. Kolekce vrací výjimky založené na časování a na tom, zda je replika přesunuta nebo vypnuta. Tyto výjimky by měly být zpracovány správně. Výjimky vyvolané Service Fabric spadají do trvalých [( `FabricException` )](/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) a přechodných [( `FabricTransientException` )](/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategorií. Trvalé výjimky by měly být protokolovány a vyvolány, zatímco přechodné výjimky lze opakovat na základě některé logiky opakování.
+Vzhledem k tomu, že služby jsou stavové, je také pravděpodobně používána [spolehlivými kolekcemi](service-fabric-reliable-services-reliable-collections.md). V Service Fabric, když dojde ke snížení úrovně primárního primárního obsahu, nastane jedna z prvních věcí, ke kterým dojde, aby byl přístup pro zápis do základního stavu odvolán. To vede k druhé sadě problémů, které mohou ovlivnit životní cyklus služby. Kolekce vrací výjimky založené na časování a na tom, zda je replika přesunuta nebo vypnuta. Tyto výjimky by měly být zpracovány správně. Výjimky vyvolané Service Fabric spadají do trvalých [( `FabricException` )](/dotnet/api/system.fabric.fabricexception) a přechodných [( `FabricTransientException` )](/dotnet/api/system.fabric.fabrictransientexception) kategorií. Trvalé výjimky by měly být protokolovány a vyvolány, zatímco přechodné výjimky lze opakovat na základě některé logiky opakování.
 
 Zpracování výjimek, které pocházejí z použití `ReliableCollections` ve spojení s událostmi životního cyklu služby, je důležitou součástí testování a ověřování spolehlivé služby. Před nasazením do produkčního prostředí doporučujeme, abyste při provádění upgradů a [testování chaos](service-fabric-controlled-chaos.md) vždy spouštěli službu při zatížení. Tyto základní kroky vám pomůžou zajistit správnou implementaci vaší služby a správné zpracování událostí životního cyklu.
 
@@ -124,7 +124,7 @@ Zpracování výjimek, které pocházejí z použití `ReliableCollections` ve s
   - Pokud se služba ukončí od `RunAsync()` vyvolání neočekávané výjimky, jedná se o chybu. Objekt služby je vypnutý a nahlásila se chyba stavu.
   - I když při návratu z těchto metod nedochází k žádným časovým limitům, okamžitě ztratíte možnost zapisovat do spolehlivých kolekcí, a proto nemůžete dokončit žádnou skutečnou práci. Po přijetí žádosti o zrušení doporučujeme co nejrychleji vracet co nejrychleji. Pokud vaše služba nereaguje na tato volání rozhraní API v rozumné době, Service Fabric může vynuceně ukončit vaši službu. K tomu obvykle dochází pouze během upgradu aplikace nebo při odstraňování služby. Ve výchozím nastavení je tento časový limit 15 minut.
   - Selhání ve `OnCloseAsync()` výsledku cesty `OnAbort()` , což je nejvyšší možná nejlepší příležitost pro službu k vyčištění a uvolnění všech prostředků, které požadoval. Tato operace se obecně volá, když se v uzlu zjistí trvalá chyba, nebo když Service Fabric nemůže spolehlivě spravovat životní cyklus instance služby z důvodu interního selhání.
-  - `OnChangeRoleAsync()`se volá, když replika stavové služby mění roli (například primární nebo sekundární). Primárním replikám je dán stav zápisu (můžou vytvářet a zapisovat do spolehlivých kolekcí). Sekundárním replikám je předaný stav čtení (dá se číst jenom z existujících spolehlivých kolekcí). Většina práce ve stavové službě se provádí v primární replice. Sekundární repliky můžou provádět ověřování jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.
+  - `OnChangeRoleAsync()` se volá, když replika stavové služby mění roli (například primární nebo sekundární). Primárním replikám je dán stav zápisu (můžou vytvářet a zapisovat do spolehlivých kolekcí). Sekundárním replikám je předaný stav čtení (dá se číst jenom z existujících spolehlivých kolekcí). Většina práce ve stavové službě se provádí v primární replice. Sekundární repliky můžou provádět ověřování jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.
 
 ## <a name="next-steps"></a>Další kroky
 - [Úvod do Reliable Services](service-fabric-reliable-services-introduction.md)

@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3ff268ca77fc855853b6506141a25c761341b451
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3820e7bf00f99a846dd2be0edeaf4248e0dfd8ad
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495501"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006074"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>Integrace App Service s Application Gateway pomocí rozhraní příkazového řádku
 
@@ -29,9 +29,9 @@ Tento ukázkový skript vytvoří Azure App Service webovou aplikaci, Virtual Ne
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, potřebujete Azure CLI verze 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.74 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -45,19 +45,19 @@ Tento skript k vytvoření skupiny prostředků, App Service aplikace, Cosmos DB
 
 | Příkaz | Poznámky |
 |---|---|
-| [`az group create`](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [`az network vnet create`](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) | Vytvoří virtuální síť. |
-| [`az network public-ip create`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | Vytvoří veřejnou IP adresu. |
-| [`az network public-ip show`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | Zobrazí podrobnosti veřejné IP adresy. |
-| [`az appservice plan create`](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří App Service webovou aplikaci. |
-| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | Zobrazí podrobnosti o App Service webové aplikaci. |
-| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | Přidá omezení přístupu do webové aplikace App Service. |
-| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Vytvoří Application Gateway. |
-| [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | Aktualizuje nastavení protokolu HTTP Application Gateway. |
+| [`az group create`](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | Vytvoří virtuální síť. |
+| [`az network public-ip create`](/cli/azure/network/public-ip#az-network-public-ip-create) | Vytvoří veřejnou IP adresu. |
+| [`az network public-ip show`](/cli/azure/network/public-ip#az-network-public-ip-show) | Zobrazí podrobnosti veřejné IP adresy. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Vytvoří plán služby App Service. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Vytvoří App Service webovou aplikaci. |
+| [`az webapp show`](/cli/azure/webapp#az-webapp-show) | Zobrazí podrobnosti o App Service webové aplikaci. |
+| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az-webapp-config-access-restriction-add) | Přidá omezení přístupu do webové aplikace App Service. |
+| [`az network application-gateway create`](/cli/azure/network/application-gateway#az-network-application-gateway-create) | Vytvoří Application Gateway. |
+| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az-network-application-gateway-http-settings-update) | Aktualizuje nastavení protokolu HTTP Application Gateway. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro službu App Service najdete v [dokumentaci ke službě Azure App Service](../samples-cli.md).

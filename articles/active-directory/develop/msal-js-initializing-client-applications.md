@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: a6d7b760ffd1931fa5dcdb3a67dd02f2798957a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027032"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365833"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL.js
 
@@ -28,7 +28,7 @@ Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klients
 
 Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v tématu [veřejné a důvěrné klientské aplikace v MSAL](msal-client-applications.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před inicializací aplikace je nejprve nutné [ji zaregistrovat s Azure Portal](scenario-spa-app-registration.md)a vytvořit tak vztah důvěryhodnosti mezi vaší aplikací a platformou Microsoft identity.
 
@@ -107,9 +107,9 @@ Vyvolá [handleRedirectPromise][msal-js-handleredirectpromise] , když vaše apl
 
 Promise nabízí tři možné výsledky:
 
-- `.then`je vyvolána a `tokenResponse` je pravdy: aplikace vrací z operace přesměrování, která byla úspěšná.
-- `.then`je vyvolána a `tokenResponse` je false ( `null` ): aplikace se nevrací z operace přesměrování.
-- `.catch`je vyvoláno: aplikace vrací z operace přesměrování a došlo k chybě.
+- `.then` je vyvolána a `tokenResponse` je pravdy: aplikace vrací z operace přesměrování, která byla úspěšná.
+- `.then` je vyvolána a `tokenResponse` je NEPRAVDA ( `null` ): aplikace se nevrací z operace přesměrování.
+- `.catch` je vyvoláno: aplikace vrací z operace přesměrování a došlo k chybě.
 
 ## <a name="initialize-msaljs-1x-apps"></a>Inicializovat aplikace MSAL.js 1. x
 
@@ -153,9 +153,9 @@ Tato MSAL.js 2. x ukázka kódu na GitHubu ukazuje vytváření instancí [Publi
 <!-- LINKS - External -->
 [msal-browser]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/
 [msal-core]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/
-[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/classes/_useragentapplication_.useragentapplication.html#acquiretokenredirect
-[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_configuration_.html
-[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html#handleredirectpromise
-[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/classes/_useragentapplication_.useragentapplication.html#loginredirect
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
-[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
+[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#acquiretokenredirect
+[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal.html#configuration
+[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html#handleredirectpromise
+[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#loginredirect
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html

@@ -1,23 +1,20 @@
 ---
 title: Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru Azure HDInsight
 description: Diagnostika a řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eae5b5e1430f4e9bf1db62a4413e3b7abe3744cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75895318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699313"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalou úlohou na clusteru HDInsight nebo jejím selháním
 
-Pokud aplikace zpracovávající data v clusteru HDInsight běží pomalu nebo selhává s kódem chyby, máte několik možností pro odstraňování potíží. Pokud vaše úlohy trvá déle, než se očekávalo, nebo pokud vidíte pomalé odezvy obecně, může dojít k chybám, které jsou v clusteru v provozu, jako jsou například služby, na kterých cluster běží. Nejběžnější příčinou těchto zpomalování je ale nedostatečné škálování. Když vytváříte nový cluster HDInsight, vyberte odpovídající [velikosti virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
+Pokud aplikace zpracovávající data v clusteru HDInsight běží pomalu nebo selhává s kódem chyby, máte několik možností pro odstraňování potíží. Pokud vaše úlohy trvá déle, než se očekávalo, nebo pokud vidíte pomalé odezvy obecně, může dojít k chybám, které jsou v clusteru v provozu, jako jsou například služby, na kterých cluster běží. Nejběžnější příčinou těchto zpomalování je ale nedostatečné škálování. Když vytváříte nový cluster HDInsight, vyberte odpovídající [velikosti virtuálních počítačů](hdinsight-supported-node-configuration.md).
 
 Pro diagnostiku pomalého nebo neúspěšného clusteru Shromážděte informace o všech aspektech prostředí, jako jsou přidružené služby Azure, konfigurace clusteru a informace o spuštění úloh. Užitečnou diagnostikou je pokus o reprodukování chybového stavu na jiném clusteru.
 
@@ -56,14 +53,14 @@ Azure Portal může poskytnout tyto informace:
 
 ![Informace o Azure Portal HDInsight](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-Můžete použít také rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+Můžete použít také rozhraní příkazového [řádku Azure](/cli/azure/):
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Další možností je použití prostředí PowerShell. Další informace najdete v tématu [správa Apache Hadoop clusterů ve službě HDInsight s Azure PowerShell](hdinsight-administer-use-powershell.md).
+Další možností je použití prostředí PowerShell. Další informace najdete v tématu  [správa Apache Hadoop clusterů ve službě HDInsight s Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Krok 2: ověření prostředí clusteru HDInsight
 
@@ -90,8 +87,8 @@ HDInsight spoléhá na několik služeb Azure. Spouští virtuální servery v A
 
 #### <a name="check-azure-service-usage-limits"></a>Ověřit omezení využití služeb Azure
 
-Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-Můžete požádat o to, aby Microsoft zvýšil počet dostupných prostředků služby HDInsight (například jader virtuálních počítačů a instancí virtuálních počítačů) s [žádostí o zvýšení kvóty správce prostředků jádra](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Můžete požádat o to, aby Microsoft zvýšil počet dostupných prostředků služby HDInsight (například jader virtuálních počítačů a instancí virtuálních počítačů) s [žádostí o zvýšení kvóty správce prostředků jádra](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 #### <a name="check-the-release-version"></a>Ověřit verzi pro vydání
 
@@ -148,7 +145,7 @@ Následující části popisují některé možné příčiny WebHCat časových
 
 ##### <a name="webhcat-level-timeout"></a>Časový limit úrovně WebHCat
 
-Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z nich, použijte `netstat` aktuální aktivní hlavnímu uzlu:
+Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z nich, použijte `netstat`  aktuální aktivní hlavnímu uzlu:
 
 ```bash
 netstat | grep 30111
@@ -202,11 +199,11 @@ Diagnostikujte tyto problémy:
 
     Můžou nastat případy, kdy interakce s WebHCat jsou úspěšné, ale úlohy selžou.
 
-    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir` , což je často užitečné při řešení potíží. `stderr`obsahuje identifikátor aplikace nitě aktuálního dotazu.
+    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir` , což je často užitečné při řešení potíží. `stderr` obsahuje identifikátor aplikace nitě aktuálního dotazu.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Kontrola zásobníku prostředí a verzí
 
-Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
+Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte  **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
 
 ![Stack a verze Apache Ambari](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
@@ -262,7 +259,7 @@ Aby bylo možné diagnostikovat zdroj chyby clusteru, spusťte nový cluster se 
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Analýza protokolů HDInsight](hdinsight-debug-jobs.md)
+* [Analýza protokolů HDInsight](./hdinsight-troubleshoot-guide.md)
 * [Přístup k Apache Hadoop PŘÍZ aplikace v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Známé problémy pro cluster Apache Spark v HDInsight](hdinsight-apache-spark-known-issues.md)
+* [Známé problémy pro cluster Apache Spark v HDInsight](./spark/apache-spark-known-issues.md)

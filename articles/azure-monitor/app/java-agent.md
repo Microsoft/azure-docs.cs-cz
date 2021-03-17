@@ -3,18 +3,24 @@ title: Monitorování výkonu webových aplikací Java – Azure Application Ins
 description: Rozšířené monitorování výkonu a využití vašeho webu Java pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 01/10/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.author: jgol
+ms.openlocfilehash: c753e4e254890f9198da9bc913b29bdaae335b78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371358"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573838"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
 
+> [!IMPORTANT]
+> Přístup popsaný v tomto dokumentu se už nedoporučuje.
+>
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
 
-Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application Insights][java], můžete použít agenta Java k získání hlubších přehledů, aniž byste museli měnit kód:
+Pokud jste si nastavili [webovou aplikaci v jazyce Java pomocí Application Insights SDK][java], můžete k získání hlubších přehledů použít agenta Java, aniž byste museli měnit kód:
 
 * **Závislosti:** Data o voláních, která vaše aplikace vytváří na jiné komponenty, včetně:
   * Budou zachycena **odchozí volání http** prostřednictvím Apache HttpClient, OkHttp a `java.net.HttpURLConnection` .
@@ -33,7 +39,7 @@ Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application
 Chcete-li použít agenta Java, nainstalujte jej na server. Webové aplikace musí být instrumentované pomocí [Application Insights Java SDK][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Instalace agenta Application Insights pro jazyk Java
-1. Na počítači s vaším serverem Java si [stáhněte agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Nezapomeňte si stáhnout stejnou verzi agenta Java, jako je verze základních a webových balíčků sady Application Insights Java SDK.
+1. V počítači, na kterém běží Java Server, [Stáhněte agenta 2. x](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2). Ujistěte se, že verze agenta 2. x, který používáte, odpovídá verzi 2. x Application Insights Java SDK, kterou používáte.
 2. Upravte spouštěcí skript aplikačního serveru a přidejte následující argument JVM:
    
     `-javaagent:<full path to the agent JAR file>`
@@ -85,10 +91,7 @@ V případě služby Azure App Services postupujte následovně:
 * Klikněte na Nastavení > Nastavení aplikace.
 * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
 
-Klíč: `JAVA_OPTS` hodnota:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
-
-Nejnovější verzi agenta Java najdete [tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
-). 
+Klíč: `JAVA_OPTS` hodnota: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
 Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Můžete potvrdit, že je váš agent ve správném adresáři App Service, a to tak, že kliknete na **vývojové nástroje**  >  **Pokročilé nástroje**  >  **ladit konzolu** a prozkoumáte obsah adresáře webu.    
 
@@ -136,5 +139,5 @@ Chcete-li vyhledat jednotlivé instance sestav závislostí, výjimek a metod, o
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 

@@ -7,26 +7,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
-ms.openlocfilehash: 08aa887025908b50c9de9a4bb92012c9f0b4e934
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 10/15/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 65ceca7ee0a6482e489ca768b9b33981d313c3db
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650312"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658025"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření webové aplikace .NET pomocí rozhraní API služby Azure Cosmos DB pro MongoDB 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](create-mongodb-flask.md)
+> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB. 
+Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhraními API pro jakékoli škálování. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB. 
 
 Tento rychlý Start ukazuje, jak vytvořit účet Cosmos s [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md). Pak sestavíte a nasadíte webovou aplikaci seznamu úkolů vytvořenou pomocí [ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
@@ -52,7 +54,7 @@ Nejdřív Stáhněte ukázkovou aplikaci z GitHubu.
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
@@ -130,7 +132,7 @@ Vytvoření úlohy a její vložení do kolekce
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. V [Azure Portal](https://portal.azure.com/)v účtu Cosmos v levém navigačním panelu klikněte na **připojovací řetězec**a pak klikněte na **klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky uživatelské jméno, heslo a hostitele do souboru Dal.cs.
+1. V [Azure Portal](https://portal.azure.com/)v účtu Cosmos v levém navigačním panelu klikněte na **připojovací řetězec** a pak klikněte na **klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky uživatelské jméno, heslo a hostitele do souboru Dal.cs.
 
 2. Otevřete soubor **Dal.cs** v adresáři **DAL**. 
 
@@ -142,7 +144,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 Nyní jste aktualizovali aplikaci o všechny informace, které potřebuje ke komunikaci s Cosmos DB. 
     
-## <a name="run-the-web-app"></a>Spuštění webové aplikace
+## <a name="run-the-web-app"></a>Spusťte webovou aplikaci
 
 1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
 
@@ -167,4 +169,4 @@ Nyní jste aktualizovali aplikaci o všechny informace, které potřebuje ke kom
 V tomto rychlém startu jste se naučili, jak vytvořit účet Cosmos, vytvořit kolekci a spustit konzolovou aplikaci. Nyní můžete importovat další data do databáze Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
+> [Importování dat MongoDB do databáze Azure Cosmos](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

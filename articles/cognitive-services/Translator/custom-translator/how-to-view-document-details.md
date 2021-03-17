@@ -2,19 +2,19 @@
 title: Podrobnosti o dokumentu – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Stránka seznam dokumentů zobrazuje prvních 10 dokumentů ve vašem pracovním prostoru. U každého dokumentu se zobrazí název, párování, typ, jazyk, časové razítko nahrávání a e-mailová adresa uživatele, který dokument odeslal.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 56093204516e156d670097c22b4edab42db54bde
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509554"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895607"
 ---
 # <a name="view-document-details"></a>Zobrazení podrobností o dokumentu
 
@@ -34,7 +34,7 @@ Aby bylo možné dokument odstranit, musí být uživatel vlastníkem pracovníh
 1. Přejít na stránku dokumentu
 2. Najeďte myší na libovolný záznam dokumentu a klikněte na ikonu koše.
 
-    ![Odstranění dokumentu](media/how-to/how-to-delete-document-1.png)
+    ![Odstranit dokument](media/how-to/how-to-delete-document-1.png)
 
 3. Potvrďte odstranění.
 

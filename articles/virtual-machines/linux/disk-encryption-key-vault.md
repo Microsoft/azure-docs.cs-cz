@@ -1,18 +1,20 @@
 ---
 title: Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption
-description: Tento článek popisuje kroky pro vytvoření a konfiguraci trezoru klíčů pro použití s Azure Disk Encryption
-ms.service: virtual-machines-linux
+description: Tento článek popisuje kroky pro vytvoření a konfiguraci trezoru klíčů pro použití s Azure Disk Encryption na virtuálním počítači se systémem Linux.
+ms.service: virtual-machines
+ms.collection: linux
+ms.subservice: disks
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d163ee552d95322a45acd571966a22e99aa1512e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372684"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562601"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption
 
@@ -45,7 +47,7 @@ I když je portál přístupný prostřednictvím prohlížeče, Azure CLI a Azu
 
 ### <a name="connect-to-your-azure-account"></a>Připojení k účtu Azure
 
-Než začnete používat rozhraní příkazového řádku Azure CLI nebo Azure PowerShell, musíte se nejdřív připojit k předplatnému Azure. Provedete to tak, že [se přihlásíte pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [přihlásíte se pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps?view=azps-2.5.0)nebo po zobrazení výzvy dodáte přihlašovací údaje do Azure Portal.
+Než začnete používat rozhraní příkazového řádku Azure CLI nebo Azure PowerShell, musíte se nejdřív připojit k předplatnému Azure. Provedete to tak, že [se přihlásíte pomocí Azure CLI](/cli/azure/authenticate-azure-cli), [přihlásíte se pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps)nebo po zobrazení výzvy dodáte přihlašovací údaje do Azure Portal.
 
 ```azurecli-interactive
 az login

@@ -3,7 +3,7 @@ title: Známé problémy se systémem pro správu identit mezi doménami (SCIM) 
 description: Řešení běžných problémů s kompatibilitou protokolů při přidávání aplikace mimo galerii, která podporuje SCIM 2,0 do Azure AD
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065484"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256894"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
@@ -50,7 +50,7 @@ Pomocí příznaků níže v adrese URL klienta aplikace můžete změnit výcho
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM příznaky na pozdější chování.":::
 
-* Pomocí následující adresy URL aktualizujte chování opravy a zajistěte, aby SCIM dodržování předpisů (třeba aktivní jako logická a správná odebrání členství ve skupině). Toto chování je nyní k dispozici pouze při použití příznaku, ale během několika následujících měsíců se stane výchozím chováním.
+* Pomocí následující adresy URL aktualizujte chování opravy a zajistěte, aby SCIM dodržování předpisů (třeba aktivní jako logická a správná odebrání členství ve skupině). Toto chování je nyní k dispozici pouze při použití příznaku, ale během několika následujících měsíců se stane výchozím chováním. Poznámka: Tento příznak Preview aktuálně nefunguje se zřizováním na vyžádání. 
   * **Adresa URL (kompatibilní s SCIM):** AzureAdScimPatch062020
   * **Odkazy na dokumenty RFC SCIM:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

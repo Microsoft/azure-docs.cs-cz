@@ -2,30 +2,26 @@
 title: Azure PowerShell – povolit dvojité šifrování na discích spravovaných v klidovém umístění
 description: Pro data spravovaného disku pomocí Azure PowerShell zapněte dvojité šifrování v klidovém formátu.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5e70d434fcb297ff39b32a83b89a86e85fe9564f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cfef3925152c0b94a59c662443cf202724dadc0a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088440"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549545"
 ---
-# <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell – na spravovaných discích povolit dvojité šifrování v klidovém prostředí
+# <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Použití modulu Azure PowerShell k povolení dvojitého šifrování v klidovém umístění pro spravované disky
 
-Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro spravované disky. Koncepční informace o šifrovaném šifrování v klidovém umístění a dalších typech šifrování spravovaného disku naleznete v části [dvojité šifrování v klidovém oddílu v](disk-encryption.md#double-encryption-at-rest) článku o šifrování disku.
+Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro spravované disky. Koncepční informace o šifrovaném šifrování v klidovém umístění a dalších typech šifrování spravovaného disku naleznete v části [dvojité šifrování v klidovém oddílu v](../disk-encryption.md#double-encryption-at-rest) článku o šifrování disku.
 
-## <a name="supported-regions"></a>Podporované oblasti
+## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
-
-## <a name="prerequisites"></a>Předpoklady
-
-Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az-ps)a přihlaste se k účtu Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
+Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az-ps)a přihlaste se k účtu Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 ## <a name="getting-started"></a>Začínáme
 

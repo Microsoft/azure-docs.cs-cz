@@ -3,7 +3,7 @@ title: Co je StorSimple Snapshot Manager? | Dokumentace Microsoftu
 description: Popisuje Snapshot Manager StorSimple, její architekturu a její funkce.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cc37dde7ed6930d476ed2325ad5a86f2f5cd083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2214f085c30419cefb3f6f84139d5592873173f7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506221"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017980"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Úvod do StorSimple Snapshot Manager
 
@@ -79,7 +79,7 @@ Pomocí StorSimple Snapshot Manager vytvoříte svazky a pak je nakonfigurujete 
 
 StorSimple Snapshot Manager používá skupiny svazků k vytváření záložních kopií, které jsou konzistentní vzhledem k aplikacím. Konzistence aplikace existuje, když se synchronizují všechny související soubory a databáze a představuje skutečný stav aplikace v určitém bodě v čase. Skupiny svazků (které se také označují jako *skupiny konzistence*) tvoří základ úlohy zálohování nebo obnovení.
 
-Skupiny svazků nejsou stejné jako kontejnery svazků. Kontejner svazků obsahuje jeden nebo víc svazků, které sdílejí účet cloudového úložiště a další atributy, jako je třeba šifrování a využití šířky pásma. Jeden kontejner svazků může obsahovat až 256 dynamicky zajištěných StorSimple svazků. Další informace o kontejnerech svazků najdete v [poznámkách ke správě kontejnerů svazků](storsimple-manage-volume-containers.md). Skupiny svazků jsou kolekce svazků, které nakonfigurujete pro usnadnění operací zálohování. Pokud vyberete dva svazky, které patří do různých kontejnerů svazků, umístěte je do jedné skupiny svazků a pak vytvoříte zásadu zálohování pro tuto skupinu svazků, bude každý svazek zálohovaný v příslušném kontejneru svazků pomocí příslušného účtu úložiště.
+Skupiny svazků nejsou stejné jako kontejnery svazků. Kontejner svazků obsahuje jeden nebo víc svazků, které sdílejí účet cloudového úložiště a další atributy, jako je třeba šifrování a využití šířky pásma. Jeden kontejner svazků může obsahovat až 256 dynamicky zajištěných StorSimple svazků. Další informace o kontejnerech svazků najdete v [poznámkách ke správě kontejnerů svazků](./storsimple-8000-manage-volume-containers.md). Skupiny svazků jsou kolekce svazků, které nakonfigurujete pro usnadnění operací zálohování. Pokud vyberete dva svazky, které patří do různých kontejnerů svazků, umístěte je do jedné skupiny svazků a pak vytvoříte zásadu zálohování pro tuto skupinu svazků, bude každý svazek zálohovaný v příslušném kontejneru svazků pomocí příslušného účtu úložiště.
 
 > [!NOTE]
 > Všechny svazky ve skupině svazků musí pocházet od jednoho poskytovatele cloudové služby.
@@ -140,4 +140,3 @@ Informace o sledování úloh zálohování získáte tak, že přejdete na [pou
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [použití Snapshot Manager StorSimple ke správě řešení StorSimple](storsimple-snapshot-manager-admin.md).
 * Stáhněte [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
-

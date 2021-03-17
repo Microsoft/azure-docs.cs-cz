@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: d7cfcffda19931027367e266cf41f2a0ab37a87e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021251"
 ---
 ## <a name="get-the-sample-images"></a>Získání ukázkových obrázků
 

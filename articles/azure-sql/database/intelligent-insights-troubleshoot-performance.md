@@ -6,22 +6,22 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
-ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.reviewer: wiassaf, sstein
+ms.date: 1/14/2021
+ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986371"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589333"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Řešení potíží s Azure SQL Database a problémy s výkonem spravované instance Azure SQL pomocí Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Tato stránka poskytuje informace o Azure SQL Database a potížích s výkonem spravované instance Azure SQL, které byly zjištěny prostřednictvím protokolu [Intelligent Insights](intelligent-insights-overview.md) prostředků. Metriky a protokoly prostředků se dají streamovat do [Azure monitor protokolů](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
+Tato stránka poskytuje informace o Azure SQL Database a potížích s výkonem spravované instance Azure SQL, které byly zjištěny prostřednictvím protokolu [Intelligent Insights](intelligent-insights-overview.md) prostředků. Metriky a protokoly prostředků se dají streamovat do [Azure monitor protokolů](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
 
 > [!NOTE]
 > Průvodce odstraňováním potíží s rychlým výkonem pomocí Intelligent Insights najdete v tématu [doporučený vývojový diagram postupu řešení potíží](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) v tomto dokumentu.
@@ -36,7 +36,7 @@ Intelligent Insights automaticky detekuje problémy s výkonem na základě ček
 | :------------------- | ------------------- | ------------------- |
 | [Dosažení limitů prostředků](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Vaše omezení prostředků dosáhly spotřeby dostupných prostředků (DTU), pracovních vláken databáze nebo relací přihlášení k databázi dostupným u monitorovaného předplatného. To má vliv na výkon. | Spotřeba prostředků procesoru dosáhne svých omezení prostředků. To má vliv na výkon databáze. |
 | [Zvýšení zatížení](intelligent-insights-troubleshoot-performance.md#workload-increase) | Zjistilo se zvýšení zátěže nebo nepřetržité akumulace úloh v databázi. To má vliv na výkon. | Bylo zjištěno zvýšení zátěže. To má vliv na výkon databáze. |
-| [Tlak paměti](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Zaměstnanci, kteří vyžadují nároky na paměť, musí čekat na přidělení paměti pro statisticky významné množství času nebo zvýšené akumulace pracovníků, kteří vyžádali nároky na paměť. To má vliv na výkon. | Zaměstnanci, kteří požadují nároky na paměť, čekají na přidělení paměti ve statistickém významném časovém intervalu. To má vliv na výkon databáze. |
+| [Přetížení paměti](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Zaměstnanci, kteří vyžadují nároky na paměť, musí čekat na přidělení paměti pro statisticky významné množství času nebo zvýšené akumulace pracovníků, kteří vyžádali nároky na paměť. To má vliv na výkon. | Zaměstnanci, kteří požadují nároky na paměť, čekají na přidělení paměti ve statistickém významném časovém intervalu. To má vliv na výkon databáze. |
 | [Uzamčení](intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
 | [Zvýšená MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon. | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon. |
 | [PAGELATCH spory](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon. | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon databáze. |
@@ -74,7 +74,7 @@ Diagnostický protokol obsahuje výstupy dotazů na hodnoty hash dotazů, které
 
 Pokud jste dosáhli dostupných omezení relací, můžete optimalizovat aplikace tím, že omezíte počet přihlášení provedených v databázi. Pokud nemůžete snížit počet přihlášení z vašich aplikací do databáze, zvažte zvýšení cenové úrovně vašeho odběru databáze. Nebo můžete databázi rozdělit a přesunout do více databází, abyste mohli pružně rozloženou distribuci úloh.
 
-Další návrhy na řešení omezení relací najdete v tématu [jak se zabývat omezeními maximálního počtu přihlášení](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Informace o omezeních na úrovni serveru a předplatného najdete v tématu [Přehled omezení prostředků na serveru](resource-limits-logical-server.md) .
+Další návrhy na řešení omezení relací najdete v tématu [jak se zabývat omezeními maximálního počtu přihlášení](/archive/blogs/latam/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins). Informace o omezeních na úrovni serveru a předplatného najdete v tématu [Přehled omezení prostředků na serveru](resource-limits-logical-server.md) .
 
 ## <a name="workload-increase"></a>Zvýšení zatížení
 
@@ -118,7 +118,7 @@ Další návrhy pro řešení potíží najdete v tématu [paměť udělující 
 
 Tento vzor výkonu indikuje snížení výkonu aktuální databáze, ve kterém se v porovnání s minulým 7 denním stupněm výkonu detekuje nadměrné uzamykání databáze.
 
-V moderních RDBMS jsou zámky zásadní pro implementaci vícevláknových systémů, ve kterých se výkon maximalizuje tím, že spustí víc souběžných pracovních procesů a paralelních transakcí databáze tam, kde je to možné. Uzamykání v tomto kontextu odkazuje na vestavěný přístupový mechanismus, ve kterém má výhradní přístup k řádkům, stránkám, tabulkám a souborům, které jsou povinné a které nesoutěží s jinou transakcí pro prostředky, jenom jedna transakce. Při použití transakce, která uzamkl prostředky k použití, se u těchto prostředků uvolní zámek, který umožňuje ostatním transakcím přístup k požadovaným prostředkům. Další informace o uzamykání najdete v tématu [zámek v databázovém stroji](https://msdn.microsoft.com/library/ms190615.aspx).
+V moderních RDBMS jsou zámky zásadní pro implementaci vícevláknových systémů, ve kterých se výkon maximalizuje tím, že spustí víc souběžných pracovních procesů a paralelních transakcí databáze tam, kde je to možné. Uzamykání v tomto kontextu odkazuje na vestavěný přístupový mechanismus, ve kterém má výhradní přístup k řádkům, stránkám, tabulkám a souborům, které jsou povinné a které nesoutěží s jinou transakcí pro prostředky, jenom jedna transakce. Při použití transakce, která uzamkl prostředky k použití, se u těchto prostředků uvolní zámek, který umožňuje ostatním transakcím přístup k požadovaným prostředkům. Další informace o uzamykání najdete v tématu [zámek v databázovém stroji](/previous-versions/sql/sql-server-2008-r2/ms190615(v=sql.105)).
 
 Pokud transakce prováděné nástrojem SQL Engine čekají na získání přístupu k prostředkům uzamčeným pro použití, tato čekací doba způsobí zpomalení výkonu při provádění úloh.
 
@@ -128,7 +128,9 @@ Diagnostický protokol výstupuje informace o zamykání, které můžete použ�
 
 Nejjednodušší a nejbezpečnější způsob, jak tento problém zmírnit, je udržet krátké transakce a snížit nároky na nejbezpečnější počet nejdražších dotazů. Velkou dávku operací můžete rozdělit do menších operací. Dobrým postupem je snížit nároky na zámek dotazů tím, že dotaz vyměníte tak, aby co nejefektivnější bylo. Snižte Velká prověřování, protože zvyšují pravděpodobnost zablokování a nepříznivě ovlivní celkový výkon databáze. U identifikovaných dotazů, které způsobují uzamykání, můžete vytvořit nové indexy nebo přidat sloupce do existujícího indexu, abyste se vyhnuli prohledávání tabulky.
 
-Další návrhy najdete v tématu řešení [potíží blokujících problémy, které jsou způsobeny eskalací zámku v SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+Další návrhy najdete v těchto tématech:
+- [Pochopení a řešení problémů s blokováním Azure SQL](understand-resolve-blocking.md)
+- [Řešení potíží blokujících problémy, které jsou způsobeny eskalací zámku v SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>Zvýšená MAXDOP
 
@@ -144,7 +146,7 @@ Možnost konfigurace serveru MAXDOP slouží k řízení toho, kolik PROCESORov�
 
 Diagnostické protokoly výstupy dotazují hodnoty hash týkající se dotazů, u kterých se doba spuštění zvýšila, protože byla větší než v nich. Protokol také výstupy CXP čekací doby. Tento čas představuje čas jednoho nebo více vláken (vlákno 0) čekajících na dokončení všech ostatních vláken před sloučením výsledků a přesunutím dopředu. Kromě toho diagnostický protokol vypíše dobu čekání, kterou nekvalitní dotazy čekaly na celkovém spuštění. Tyto informace můžete použít jako základ pro řešení potíží.
 
-Nejprve Optimalizujte nebo Zjednodušte složité dotazy. Dobrým postupem je rozdělení dlouhých dávkových úloh na menší. Kromě toho se ujistěte, že jste vytvořili indexy pro podporu vašich dotazů. Můžete také ručně vyhovět maximálnímu stupni paralelismu (MAXDOP) pro dotaz, který byl označen jako nekvalitní provádění. Pokud chcete tuto operaci nakonfigurovat pomocí T-SQL, přečtěte si téma [Konfigurace možnosti konfigurace serveru MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
+Nejprve Optimalizujte nebo Zjednodušte složité dotazy. Dobrým postupem je rozdělení dlouhých dávkových úloh na menší. Kromě toho se ujistěte, že jste vytvořili indexy pro podporu vašich dotazů. Můžete také ručně vyhovět maximálnímu stupni paralelismu (MAXDOP) pro dotaz, který byl označen jako nekvalitní provádění. Pokud chcete tuto operaci nakonfigurovat pomocí T-SQL, přečtěte si téma [Konfigurace možnosti konfigurace serveru MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
 
 Nastavení možnosti konfigurace serveru MAXDOP na hodnotu nula (0) jako výchozí hodnota znamená, že databáze může použít všechny dostupné jádra procesoru k paralelizovat vláknům pro spuštění jednoho dotazu. Nastavení MAXDOP na jednu (1) značí, že k jednomu spuštění dotazu lze použít pouze jednu jader. V praktických případech to znamená, že paralelismus je vypnutý. V závislosti na jednotlivých případech, dostupných jádrech databáze a diagnostickém protokolu můžete ladit možnost MAXDOP na počet jader používaných pro paralelní zpracování dotazů, které by mohly problém vyřešit.
 
@@ -168,7 +170,7 @@ Vzhledem k tomu, že PAGELATCH je mechanismus interního řízení, určuje auto
 
 Jednou z metod pro zpracování kolizí zámků je nahrazení sekvenčního klíče indexu pomocí nesekvenčního klíče, aby bylo možné rovnoměrně distribuovat vložení do rozsahu indexu. První sloupec v indexu obvykle distribuuje úlohu poměrně. Další metodou, kterou je třeba zvážit, je vytváření oddílů tabulky. Vytvoření schématu vytváření oddílů hash s vypočítaným sloupcem v dělené tabulce je běžným přístupem pro zmírnění nadměrného kolizí zámků. V případě kolize PAGELATCH v/v, zavedení indexů pomáhá zmírnit tento problém s výkonem.
 
-Další informace najdete v tématu [Diagnostika a řešení kolizí na západce při SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (stažení PDF).
+Další informace najdete v tématu [Diagnostika a řešení kolizí na západce při SQL Server](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf) (stažení PDF).
 
 ## <a name="missing-index"></a>Chybějící index
 
@@ -196,7 +198,7 @@ Diagnostické protokoly výstupy dotazů pro dotazy, které byly identifikovány
 
 Tento vzor výkonu indikuje, že se zjistil nový dotaz, který je špatně prováděný a ovlivňuje výkon úloh v porovnání s denním směrným plánem výkonu.
 
-Psaní vhodného dotazu někdy může být náročný úkol. Další informace o zápisu dotazů naleznete v tématu [zápis SQL dotazů](https://msdn.microsoft.com/library/bb264565.aspx). Pokud chcete optimalizovat stávající výkon dotazů, přečtěte si téma [ladění dotazů](https://msdn.microsoft.com/library/ms176005.aspx).
+Psaní vhodného dotazu někdy může být náročný úkol. Další informace o zápisu dotazů naleznete v tématu [zápis SQL dotazů](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90)). Pokud chcete optimalizovat stávající výkon dotazů, přečtěte si téma [ladění dotazů](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105)).
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -218,7 +220,7 @@ Diagnostický protokol výstupuje informace o zvýšené době čekání a hodno
 
 Vzhledem k tomu, že systém nemohl úspěšně identifikovat hlavní příčinu nekvalitních dotazů, jsou diagnostické informace dobrým výchozím bodem pro ruční odstraňování potíží. Můžete optimalizovat výkon těchto dotazů. Dobrým postupem je načíst jenom data, která potřebujete použít, a zjednodušit a rozdělte složité dotazy na menší.
 
-Další informace o optimalizaci výkonu dotazů najdete v tématu [optimalizace dotazů](https://msdn.microsoft.com/library/ms176005.aspx).
+Další informace o optimalizaci výkonu dotazů najdete v tématu [optimalizace dotazů](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105)).
 
 ## <a name="tempdb-contention"></a>Obsah databáze TempDB
 
@@ -230,7 +232,7 @@ Tento zjistitelný vzor výkonu indikuje stav výkonu databáze, ve kterém exis
 
 Diagnostické protokoly mají výstupy podrobností o kolize obsahu tempDB. Tyto informace můžete použít jako výchozí bod pro řešení potíží. Existují dvě věci, které můžete využít k zmírnění tohoto typu sporů a zvýšení propustnosti celkové zátěže: dočasné tabulky můžete přestat používat. Můžete také použít paměťově optimalizované tabulky.
 
-Další informace najdete v tématu [Úvod do paměťově optimalizovaných tabulek](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables).
+Další informace najdete v tématu [Úvod do paměťově optimalizovaných tabulek](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables).
 
 ## <a name="elastic-pool-dtu-shortage"></a>Nedostatek DTU elastického fondu
 
@@ -260,7 +262,7 @@ Tento zjistitelný vzor výkonu kombinuje tři různé případy regrese: nový 
 
 Podmínka nový plán regrese odkazuje na stav, ve kterém databázový stroj spustí spuštění nového plánu provádění dotazů, který není tak efektivní jako původní plán. Podmínka regrese starého plánu odkazuje na stav, když databázový stroj přepne z použití nového, účinnějšího plánu do starého plánu, který není tak efektivní jako nový plán. Stávající plány změnily regresní úlohy, které se týkají stavu, ve kterém se stará a nové plány průběžně střídavě vztahují k tomuto zůstatmu plánu.
 
-Další informace o plánování regresí najdete v tématu [co je plánování regresí v SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/).
+Další informace o plánování regresí najdete v tématu [co je plánování regresí v SQL Server?](/archive/blogs/sqlserverstorageengine/what-is-plan-regression-in-sql-server).
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -268,7 +270,7 @@ Diagnostický protokol vypíše hodnoty hash dotazů, dobrý identifikátor ID, 
 
 Můžete analyzovat, který plán je lepší pro konkrétní dotazy, které můžete identifikovat pomocí zadaných hodnot hash dotazů. Až zjistíte, který plán pro vaše dotazy funguje lépe, můžete ho ručně vynutit.
 
-Další informace najdete v tématu [informace o tom, jak SQL Server brání v plánování regresí](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+Další informace najdete v tématu [informace o tom, jak SQL Server brání v plánování regresí](/archive/blogs/sqlserverstorageengine/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions).
 
 > [!TIP]
 > Věděli jste, že integrovaná funkce inteligentních funkcí dokáže automaticky spravovat nejlepší plány provádění dotazů pro vaše databáze?
@@ -287,7 +289,7 @@ Změny konfigurace v rámci databáze lze nastavit pro každou jednotlivou datab
 
 Diagnostický protokol má za následek změny konfigurace v rozsahu databáze, které byly nedávno způsobeny snížením výkonu v porovnání s předchozím 7 denním chováním úloh. Změny konfigurace můžete vrátit zpět na předchozí hodnoty. Můžete také ladit hodnotu podle hodnoty, dokud nebude dosaženo požadované úrovně výkonu. Hodnoty konfigurace pro rozsah databáze můžete kopírovat z podobné databáze s uspokojivým výkonem. Pokud se vám nedaří vyřešit výkon, vraťte se k výchozím hodnotám a pokuste se vyladit od tohoto směrného plánu.
 
-Další informace o optimalizaci konfigurace s rozsahem databáze a syntaxi T-SQL při změně konfigurace najdete v tématu [Změna konfigurace v oboru databáze (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
+Další informace o optimalizaci konfigurace s rozsahem databáze a syntaxi T-SQL při změně konfigurace najdete v tématu [Změna konfigurace v oboru databáze (Transact-SQL)](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 
 ## <a name="slow-client"></a>Pomalý klient
 
@@ -326,11 +328,11 @@ Přejděte na Azure SQL Analytics, abyste měli přístup Intelligent Insights p
 > [!TIP]
 > Vyberte vývojový diagram, ve kterém chcete stáhnout verzi PDF.
 
-Intelligent Insights obvykle potřebuje jednu hodinu, než se provede analýza hlavní příčiny problému s výkonem. Pokud nemůžete najít problém v Intelligent Insights a je pro vás velmi důležité, použijte úložiště dotazů k ruční identifikaci hlavní příčiny potíží s výkonem. (Tyto problémy jsou obvykle méně než jedna hodina stará.) Další informace najdete v tématu [monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
+Intelligent Insights obvykle potřebuje jednu hodinu, než se provede analýza hlavní příčiny problému s výkonem. Pokud nemůžete najít problém v Intelligent Insights a je pro vás velmi důležité, použijte úložiště dotazů k ruční identifikaci hlavní příčiny potíží s výkonem. (Tyto problémy jsou obvykle méně než jedna hodina stará.) Další informace najdete v tématu [monitorování výkonu pomocí úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se [Intelligent Insights](intelligent-insights-overview.md) koncepty.
 - Použijte [protokol Intelligent Insightsho diagnostiky výkonu](intelligent-insights-use-diagnostics-log.md).
-- Monitorování pomocí [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md).
+- Monitorování pomocí [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).
+- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/essentials/platform-logs-overview.md).

@@ -1,21 +1,24 @@
 ---
-title: Jak nakonfigurovat cloudovou službu (portál) | Microsoft Docs
+title: Jak nakonfigurovat cloudovou službu (Classic) – portál | Microsoft Docs
 description: Naučte se konfigurovat cloudové služby v Azure. Naučte se aktualizovat konfiguraci cloudové služby a nakonfigurovat vzdálený přístup k instancím rolí. V těchto příkladech se používá Azure Portal.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/07/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223733"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743419"
 ---
-# <a name="how-to-configure-cloud-services"></a>Jak konfigurovat Cloud Services
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>Jak nakonfigurovat cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 V Azure Portal můžete nakonfigurovat nejčastěji používaná nastavení pro cloudovou službu. Nebo pokud chcete aktualizovat konfigurační soubory přímo, Stáhněte si konfigurační soubor služby, který chcete aktualizovat, a potom aktualizovaný soubor nahrajte a aktualizujte cloudovou službu pomocí změn konfigurace. V obou případech jsou aktualizace konfigurace vloženy do všech instancí role.
 
@@ -29,7 +32,7 @@ Po otevření [Azure Portal](https://portal.azure.com/)přejděte do své cloudo
 
 ![Stránka nastavení](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-Odkaz **Nastavení** nebo **všechna nastavení** otevřou **Nastavení** , kde můžete změnit **vlastnosti**, změnit **konfiguraci**, spravovat **certifikáty**, nastavit **pravidla upozornění**a spravovat **uživatele** , kteří mají k této cloudové službě přístup.
+Odkaz **Nastavení** nebo **všechna nastavení** otevřou **Nastavení** , kde můžete změnit **vlastnosti**, změnit **konfiguraci**, spravovat **certifikáty**, nastavit **pravidla upozornění** a spravovat **uživatele** , kteří mají k této cloudové službě přístup.
 
 ![Nastavení cloudové služby Azure](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -44,7 +47,7 @@ Pokud potřebujete cílit na konkrétní verzi operačního systému, můžete j
 >[!IMPORTANT]
 > Výběr konkrétní verze operačního systému zakáže automatické aktualizace operačního systému a provede opravu vaší zodpovědnosti. Musíte zajistit, aby vaše instance role přijímaly aktualizace, nebo můžete svou aplikaci vystavit chybám zabezpečení.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Do své cloudové služby můžete přidat výstrahy. Klikněte na **Nastavení**  >  **pravidla výstrahy**  >  **Přidat výstrahu**.
 
@@ -62,7 +65,7 @@ Tady můžete nastavit výstrahu. Pomocí rozevíracího seznamu **metrika** mů
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurace monitorování z dlaždice metriky
 
-Místo používání **Nastavení**  >  **pravidla upozornění**můžete kliknout na jeden z dlaždic metriky v části **monitorování** v cloudové službě.
+Místo používání **Nastavení**  >  **pravidla upozornění** můžete kliknout na jeden z dlaždic metriky v části **monitorování** v cloudové službě.
 
 ![Monitorování cloudové služby](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 

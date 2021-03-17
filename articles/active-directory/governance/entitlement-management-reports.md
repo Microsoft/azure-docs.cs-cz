@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078126"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746622"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Zobrazení sestav a protokolů v Azure AD – Správa nároků
 
@@ -111,4 +111,4 @@ Když platnost přiřazení balíčku přístupu uživatele vyprší, zruší ho
 
 - [Archivace sestav a protokolů](entitlement-management-logs-and-reporting.md)
 - [Řešení potíží se správou nároků Azure AD](entitlement-management-troubleshoot.md)
-- [Typické scénáře](entitlement-management-scenarios.md)
+- [Obvyklé scénáře](entitlement-management-scenarios.md)

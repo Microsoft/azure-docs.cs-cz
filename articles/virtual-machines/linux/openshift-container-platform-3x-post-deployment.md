@@ -3,19 +3,20 @@ title: OpenShift kontejnerová platforma 3,11 v úlohách po nasazení Azure
 description: Další úlohy pro po nasazení clusteru OpenShift Container Platform 3,11
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.custom: devx-track-ansible
-ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-ansible, devx-track-azurecli
+ms.openlocfilehash: c3f9aaa15a697202aa76c563ed62bf37443d69ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373568"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669385"
 ---
 # <a name="post-deployment-tasks"></a>Úkoly po nasazení
 
@@ -73,8 +74,8 @@ Na webu Azure Portal:
 1. Vyberte **Azure Active Directory**  >  **registraci aplikace**.
 2. Vyhledejte registraci vaší aplikace (například OCPAzureAD).
 3. Ve výsledcích klikněte na registrace aplikace.
-4. V části **Nastavení**vyberte **požadovaná oprávnění**.
-5. V části **požadovaná oprávnění**vyberte **Přidat**.
+4. V části **Nastavení** vyberte **požadovaná oprávnění**.
+5. V části **požadovaná oprávnění** vyberte **Přidat**.
 
    ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
 
@@ -82,7 +83,7 @@ Na webu Azure Portal:
 
    ![Registrace aplikace – výběr rozhraní API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. V kroku 2: vyberte oprávnění vyberte možnost **Přihlásit se a číst profil uživatele** v části **delegovaná oprávnění**a pak klikněte na **Vybrat**.
+7. V kroku 2: vyberte oprávnění vyberte možnost **Přihlásit se a číst profil uživatele** v části **delegovaná oprávnění** a pak klikněte na **Vybrat**.
 
    ![Přístup k registraci aplikace](media/openshift-post-deployment/app-registration-access.png)
 
@@ -142,7 +143,7 @@ Vložte následující řádky hned za předchozí řádky:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Ujistěte se, že text je v identityProviders správně zarovnán. Pomocí následujícího příkazu rozhraní příkazového řádku Najděte ID tenanta:```az account show```
+Ujistěte se, že text je v identityProviders správně zarovnán. Pomocí následujícího příkazu rozhraní příkazového řádku Najděte ID tenanta: ```az account show```
 
 Restartujte hlavní služby OpenShift ve všech hlavních uzlech:
 
@@ -160,7 +161,7 @@ Existují tři způsoby, jak přidat agenta Log Analytics do OpenShift.
 - Povolit rozšíření Azure Monitor VM na každém uzlu OpenShift
 - Instalace agenta Log Analytics jako sady OpenShift démona
 
-Další podrobnosti si můžete přečíst v části úplné [pokyny](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) .
+Další podrobnosti si můžete přečíst v části úplné [pokyny](../../azure-monitor/containers/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) .
 
 ## <a name="configure-metrics-and-logging"></a>Konfigurace metrik a protokolování
 

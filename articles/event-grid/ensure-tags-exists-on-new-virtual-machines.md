@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
 ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461999"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace Azure Automation s Event Grid a Microsoft Teams
@@ -27,9 +27,9 @@ V tomto kurzu se naučíte:
 > * Vytvoří odběr Event Gridu.
 > * Vytvořit virtuální počítač, který spustí runbook
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 

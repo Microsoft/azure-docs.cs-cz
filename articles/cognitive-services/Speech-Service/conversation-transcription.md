@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402519"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024989"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Co je přepis konverzace na schůzkách (Preview)?
 
@@ -34,9 +34,11 @@ Přepis konverzace je řešení převodu [řeči na text](speech-to-text.md) , k
 > [!NOTE]
 > I když přepis konverzace neomezuje počet mluvčích v místnosti, je optimalizován pro 2-10 mluvčích na relaci.
 
-## <a name="use-cases"></a>Případy použití
+## <a name="get-started"></a>Začínáme
 
-### <a name="inclusive-meetings"></a>Uzavřené schůzky
+Začněte tím, že v reálném čase začnete s [rychlým startem](how-to-use-conversation-transcription.md) v reálném čase.
+
+## <a name="use-cases"></a>Případy použití
 
 Chcete-li vytvořit schůzky, které jsou pro všechny, jako jsou neslyšící a sluchové slyšení, je důležité mít v reálném čase přepis. Přepis konverzace v režimu v reálném čase přijímá zvuk a určuje, kdo říká, co říkají, aby všichni účastníci schůzky mohli postupovat podle přepisu a zúčastnit se schůzky bez prodlení.
 
@@ -52,8 +54,12 @@ Toto je podrobný přehled toho, jak funguje přepis konverzace.
 
 ## <a name="expected-inputs"></a>Očekávané vstupy
 
-- **Audio stream s více kanály** – pro specifikace a podrobné informace o návrhu najdete informace v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](https://aka.ms/cts/microphone). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](https://aka.ms/cts/getsdk).
+- **Audio stream s více kanály** – pro specifikace a podrobné informace o návrhu najdete informace v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](./speech-devices-sdk-microphone.md). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](./get-speech-devices-sdk.md).
 - **Ukázky uživatelských hlasu** – přepis konverzace potřebuje profily uživatelů před konverzací. Budete potřebovat shromažďovat zvukové nahrávky od každého uživatele a pak je odeslat do [služby pro generování podpisů](https://aka.ms/cts/signaturegenservice) , abyste ověřili zvuk a vygenerovali profily uživatelů.
+
+> [!NOTE]
+> Ukázky hlasu uživatele jsou volitelné. Bez tohoto vstupu se přepis zobrazí v různých mluvčích, ale zobrazuje se jako "Speaker1", "Speaker2" atd. místo toho se nerozpozná jako předem zaregistrované konkrétní názvy mluvčích.
+
 
 ## <a name="real-time-vs-asynchronous"></a>Vs. asynchronní v reálném čase
 
@@ -73,9 +79,9 @@ Zvuková data se zpracovávají živě, aby se vracel identifikátor mluvčího 
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Přepis konverzace v současné době podporuje "en-US" a "zh-CN" v následujících oblastech: *centralus* a *eastasia*. Pokud požadujete další podporu národního prostředí, obraťte se na pracovníka funkce v rámci [konverzace](mailto:CTSFeatureCrew@microsoft.com).
+Přepis konverzace v současné době podporuje [všechny jazyky pro převod řeči na text](language-support.md#speech-to-text) v následujících oblastech:  `centralus` , `eastasia` , `eastus` , `westeurope` . Pokud požadujete další podporu národního prostředí, obraťte se na pracovníka funkce v rámci [konverzace](mailto:CTSFeatureCrew@microsoft.com).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přepisovat konverzací v reálném čase](how-to-use-conversation-transcription-service.md)
+> [Přepisovat konverzací v reálném čase](how-to-use-conversation-transcription.md)

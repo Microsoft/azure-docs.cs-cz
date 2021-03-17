@@ -44,6 +44,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: Postup
   items:
+    - name: Přesun mezi oblastmi
+      href: move-across-regions.md
     - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Plánování a návrh
@@ -63,9 +65,9 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace brány firewall protokolu IP (Preview)
+        - name: Konfigurace brány firewall protokolu P
           href: ip-firewall-virtual-networks.md
-        - name: Konfigurace privátních koncových bodů (Preview)
+        - name: Konfigurace privátních koncových bodů
           href: private-link-service.md
     - name: Správa a monitorování
       items:

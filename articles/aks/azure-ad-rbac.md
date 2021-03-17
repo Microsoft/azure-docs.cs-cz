@@ -1,20 +1,20 @@
 ---
-title: Použití Azure AD a RBAC pro clustery
+title: Použití služby Azure AD a Kubernetes RBAC pro clustery
 titleSuffix: Azure Kubernetes Service
-description: Naučte se používat členství ve skupině Azure Active Directory k omezení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS).
+description: Naučte se používat členství ve skupině Azure Active Directory k omezení přístupu k prostředkům clusteru pomocí řízení přístupu založeného na rolích (Kubernetes RBAC) ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 585e51f5131bf20d39cf43ab2e843774d61a708f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178231"
 ---
-# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role a Azure Active Directory identit ve službě Azure Kubernetes
+# <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role Kubernetes a identit Azure Active Directory ve službě Azure Kubernetes
 
-Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se přihlašujete ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Můžete taky nakonfigurovat Kubernetes řízení přístupu na základě role (RBAC) a omezit tak přístup k prostředkům clusteru, které jsou založené na identitě nebo členství uživatele ve skupině.
+Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se přihlašujete ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Můžete taky nakonfigurovat Kubernetes řízení přístupu na základě role (Kubernetes RBAC) a omezit tak přístup k prostředkům clusteru, které jsou založené na identitě nebo členství uživatele ve skupině.
 
 Tento článek popisuje, jak pomocí členství ve skupině Azure AD řídit přístup k oborům názvů a prostředkům clusteru pomocí Kubernetes RBAC v clusteru AKS. Ukázkové skupiny a uživatelé se vytvářejí ve službě Azure AD a pak se v clusteru AKS vytvoří role a RoleBindings, které jim udělí příslušná oprávnění k vytváření a zobrazování prostředků.
 
@@ -79,7 +79,7 @@ az role assignment create \
 
 ## <a name="create-demo-users-in-azure-ad"></a>Vytváření ukázkových uživatelů v Azure AD
 
-Pomocí dvou ukázkových skupin vytvořených ve službě Azure AD pro naše vývojáře aplikací a SREs teď umožňuje vytvořit dva ukázkové uživatele. Chcete-li otestovat integraci RBAC na konci článku, přihlaste se k AKS clusteru pomocí těchto účtů.
+Pomocí dvou ukázkových skupin vytvořených ve službě Azure AD pro naše vývojáře aplikací a SREs teď umožňuje vytvořit dva ukázkové uživatele. Pokud chcete otestovat integraci Kubernetes RBAC na konci článku, přihlaste se pomocí těchto účtů ke clusteru AKS.
 
 Vytvořte první uživatelský účet ve službě Azure AD pomocí příkazu [AZ AD User Create][az-ad-user-create] .
 
@@ -129,7 +129,7 @@ Pomocí příkazu [kubectl Create Namespace][kubectl-create] vytvořte v cluster
 kubectl create namespace dev
 ```
 
-V Kubernetes *role* definují oprávnění pro udělení a *RoleBindings* je použijí pro požadované uživatele nebo skupiny. Tato přiřazení lze použít na daný obor názvů nebo v celém clusteru. Další informace najdete v tématu [použití autorizace RBAC][rbac-authorization].
+V Kubernetes *role* definují oprávnění pro udělení a *RoleBindings* je použijí pro požadované uživatele nebo skupiny. Tato přiřazení lze použít na daný obor názvů nebo v celém clusteru. Další informace najdete v tématu [použití autorizace KUBERNETES RBAC][rbac-authorization].
 
 Nejprve vytvořte roli pro obor názvů pro *vývoj* . Tato role uděluje úplný přístup k oboru názvů. V produkčních prostředích můžete zadat podrobnější oprávnění pro různé uživatele nebo skupiny.
 
@@ -164,7 +164,7 @@ V dalším kroku Získejte ID prostředku pro skupinu *appdev* pomocí příkazu
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-Nyní vytvořte RoleBinding pro skupinu *appdev* a použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-dev-namespace.yaml` a vložte následující manifest YAML. Na posledním řádku nahraďte *groupObjectId* číslem ID objektu skupiny z předchozího příkazu:
+Nyní vytvořte RoleBinding pro skupinu *appdev* a použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-dev-namespace.yaml` a vložte následující manifest YAML. Na posledním řádku nahraďte *groupObjectId*  číslem ID objektu skupiny z předchozího příkazu:
 
 ```yaml
 kind: RoleBinding
@@ -229,7 +229,7 @@ ID prostředku pro skupinu *opssre* získáte pomocí příkazu [AZ AD Group sho
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-Vytvořte RoleBinding pro skupinu *opssre* a použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-sre-namespace.yaml` a vložte následující manifest YAML. Na posledním řádku nahraďte *groupObjectId* číslem ID objektu skupiny z předchozího příkazu:
+Vytvořte RoleBinding pro skupinu *opssre* a použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-sre-namespace.yaml` a vložte následující manifest YAML. Na posledním řádku nahraďte *groupObjectId*  číslem ID objektu skupiny z předchozího příkazu:
 
 ```yaml
 kind: RoleBinding
@@ -401,7 +401,7 @@ Osvědčené postupy týkající se identit a řízení prostředků najdete v t
 [kubectl-run]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run
 
 <!-- LINKS - internal -->
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-ad-aks-cli]: azure-ad-integration-cli.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
@@ -410,5 +410,5 @@ Osvědčené postupy týkající se identit a řízení prostředků najdete v t
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

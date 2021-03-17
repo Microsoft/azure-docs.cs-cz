@@ -4,48 +4,44 @@ description: Řešení potíží s webovými testy v Azure Application Insights.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/28/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318143"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728922"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
 Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
-## <a name="ssltls-errors"></a>Chyby SSL/TLS
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>Řešení potíží s kroky sestav pro testy příkazů pro testování
 
-|Příznak/chybová zpráva| Možné příčiny|
-|--------|------|
-|Nejde vytvořit zabezpečený kanál SSL/TLS.  | Verze SSL. Podporují se jenom TLS 1,0, 1,1 a 1,2. **Protokolu SSLv3 se nepodporuje.**
-|Vrstva záznamu TLSv 1.2: výstraha (úroveň: závažná, popis: chybný záznam v počítači MAC)| [Další informace](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)najdete v tématu věnovaném vláknu stackexchange.
-|Neúspěšná adresa URL je CDN (Content Delivery Network) | To může být způsobeno chybnou konfigurací v síti CDN. |  
+Sestava Poradce při potížích umožňuje snadno diagnostikovat běžné problémy, které způsobují selhání **testů testu** .
 
-### <a name="possible-workaround"></a>Možná alternativní řešení
+![Animace navigace na kartě dostupnosti výběrem chyby v podrobnostech o chybě pro koncovou transakci zobrazíte zprávu o řešení potíží.](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* Pokud jsou adresy URL, u kterých dochází k problému, vždy závislé prostředky, doporučuje se zakázat **zpracování závislých požadavků** pro webový test.
-
-## <a name="test-fails-only-from-certain-locations"></a>Test se nezdařil pouze z určitých umístění
-
-|Příznak/chybová zpráva| Možné příčiny|
-|----|---------|
-|Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně.  | Testovací agenti v určitých umístěních jsou blokovány bránou firewall.|
-|    |K opětovnému směrování určitých IP adres dochází prostřednictvím (nástroje pro vyrovnávání zatížení, správci geografického provozu a Azure Express Route). 
-|    |Pokud používáte Azure ExpressRoute, existují scénáře, kdy se pakety můžou vyřadit v případech, kdy [dojde k asymetrickému směrování](../../expressroute/expressroute-asymmetric-routing.md).|
-
-## <a name="test-failure-with-a-protocol-violation-error"></a>Selhání testu s chybou porušení protokolu
-
-|Příznak/chybová zpráva| Možné příčiny| Možná řešení |
-|----|---------|-----|
-|Server potvrdil narušení protokolu. Oddíl = ResponseHeader detail = CR musí být následován znakem LF. | K tomu dochází, když jsou zjištěna chybná záhlaví. Konkrétně některá záhlaví nemusí používat znaky CRLF k označení konce řádku, což porušuje specifikaci protokolu HTTP. Application Insights vynucuje tuto specifikaci HTTP a neúspěšné odpovědi s nesprávně vytvořenými záhlavími.| a. Pokud chcete opravit chybné servery, obraťte se na poskytovatele hostitele webu nebo poskytovatele CDN. <br> b. V případě, že neúspěšné požadavky jsou prostředky (například soubory stylu, obrázky, skripty), můžete zvážit zakázání analýzy závislých požadavků. Mějte na paměti, že pokud to uděláte, ztratíte možnost sledovat dostupnost těchto souborů.
+1. Na kartě Dostupnost prostředku Application Insights vyberte celkový nebo jeden z testů dostupnosti.
+2. Vyberte **neúspěšné** a potom test pod položkou "přejít k" na levé straně nebo vyberte jeden z bodů v bodovém grafu.
+3. Na stránce s podrobnostmi o transakci na konci vyberte událost v části "souhrn sestavy řešení potíží" vyberte **[přejít ke kroku]** . zobrazí se zpráva o odstraňování potíží.
 
 > [!NOTE]
-> Adresa URL nemusí selhat v prohlížečích, které mají odlehčené ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+>  Pokud je k dispozici krok opětovného použití připojení, nebude k dispozici postup překladu DNS, vytváření připojení a přenos TLS.
 
+|Krok | Chybová zpráva | Možná příčina |
+|-----|---------------|----------------|
+| Opakované použití připojení | Není k dispozici | Obvykle závisí na dřív navázaném připojení, což znamená, že je krok webového testu závislý. Proto by nebyl nutný žádný krok DNS, připojení nebo SSL. |
+| Překlad DNS | Vzdálený název se nedal přeložit: "vaše adresa URL" | Proces překladu DNS se nezdařil, pravděpodobně v důsledku nesprávně konfigurovaných záznamů DNS nebo dočasných selhání serveru DNS. |
+| Vytváření připojení | Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně. | Obecně to znamená, že váš server neodpovídá na požadavek HTTP. Běžným řešením je, že naše testovací agenti jsou na serveru zablokované bránou firewall. Pokud byste chtěli testovat v rámci Virtual Network Azure, měli byste do svého prostředí přidat značku služby dostupnosti.|
+| Přenos TLS  | Klient a server nemohou komunikovat, protože nemají společný algoritmus.| Podporují se jenom TLS 1,0, 1,1 a 1,2. Protokol SSL není podporován. Tento krok neověřuje certifikáty SSL a vytváří jenom zabezpečené připojení. Tento krok se zobrazí jenom v případě, že dojde k chybě. |
+| Příjem hlavičky odpovědi | Nelze načíst data z přenosového připojení. Připojení bylo ukončeno. | Server potvrdil chybu protokolu v hlavičce odpovědi. Například připojení zavřené serverem, když odpověď není úplná. |
+| Přijímání textu odpovědi | Nelze načíst data z přenosového připojení: připojení bylo ukončeno. | Server potvrdil chybu protokolu v těle odpovědi. Například připojení zavřené serverem, když odpověď není plně přečtená nebo je velikost bloku dat v těle odpovědi v bloku chybná. |
+| Ověření limitu přesměrování | Tato webová stránka má příliš mnoho přesměrování. Tato smyčka se tady ukončí, protože tento požadavek překročil limit pro automatické přesměrování. | U každého testu je omezení 10 přesměrování. |
+| Ověření kódu stavu | `200 - OK` neodpovídá očekávanému stavu `400 - BadRequest` . | Vrácený stavový kód, který se počítá jako úspěch. 200 je kód, který označuje, že byla vrácena normální webová stránka. |
+| Ověření obsahu | Povinný text Hello se v odpovědi neobjevil. | Řetězec není v odpovědi přesně rozlišovat velká a malá písmena, například řetězec "Welcome!". Musí se jednat o prostý řetězec bez zástupných znaků (například hvězdička). Pokud se změní obsah stránky, možná budete muset řetězec aktualizovat. Shoda obsahu podporuje pouze anglické znaky. |
+  
 ## <a name="common-troubleshooting-questions"></a>Běžné otázky k odstraňování potíží
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Web vypadá v pořádku, ale vidím selhání testu Proč mi Application Insights upozorňování?
@@ -54,7 +50,7 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 
    * Pokud chcete snížit lichá hluku z přechodné síťové výkyvů atd., zkontrolujte, že je zaškrtnuté políčko Povolit opakování pro konfiguraci selhání testu. Můžete také testovat z více umístění a spravovat prahovou hodnotu pravidla výstrahy, aby se zabránilo problémům specifickým pro konkrétní umístění, což způsobuje neoprávněné výstrahy.
 
-   * Kliknutím na kteroukoli z těchto červených teček v možnosti dostupnosti nebo jakékoli chybě dostupnosti z Průzkumníka služby Search zobrazíte podrobnosti o tom, proč jsme chybu nahlásili. Výsledek testu, společně s korelační telemetrie na straně serveru (Pokud je povolen), by měl pomáhat pochopit, proč se test nezdařil. Běžné příčiny přechodných problémů jsou problémy se sítí nebo připojením.
+   * Kliknutím na kteroukoli z těchto červených teček z prostředí bodového sezobrazení bodového grafu dostupnosti nebo jakékoli chybě dostupnosti z Průzkumníka služby Search zobrazíte podrobnosti o tom, proč jsme chybu nahlásili. Výsledek testu, společně s korelační telemetrie na straně serveru (Pokud je povolen), by měl pomáhat pochopit, proč se test nezdařil. Běžné příčiny přechodných problémů jsou problémy se sítí nebo připojením.
 
    * Vypršel časový limit testu? Testy jsme přerušili po 2 minutách. Pokud váš test příkazů nebo testování více kroků trvá déle než 2 minuty, pošleme vám zprávu jako chybu. Zvažte rozdělení testu na násobky, které mohou být dokončeny v kratší dobu.
 
@@ -62,11 +58,11 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nedostali jsme mi e-mail, když se aktivuje výstraha, nebo se vyřešilo?
 
-Zkontrolujte konfiguraci klasických výstrah a potvrďte, že je váš e-mail přímo uveden, nebo distribuční seznam, na který jste v systému nakonfigurované, aby přijímal oznámení. Pokud je, zkontrolujte konfiguraci distribučního seznamu a potvrďte, že může přijímat externí e-maily. Také se podívejte, jestli správce pošty může mít nakonfigurované nějaké zásady, které by mohly způsobovat tento problém.
+Zkontrolujte konfiguraci skupiny akcí výstrahy a potvrďte, že je váš e-mail přímo uveden, nebo distribuční seznam, na který jste v systému nakonfigurované, aby přijímal oznámení. Pokud je, zkontrolujte konfiguraci distribučního seznamu a potvrďte, že může přijímat externí e-maily. Také se podívejte, jestli správce pošty může mít nakonfigurované nějaké zásady, které by mohly způsobovat tento problém.
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Nedostali jsme oznámení Webhooku?
 
-Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](../platform/alerts-log-webhook.md) tématu.
+Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](../alerts/alerts-log-webhook.md) tématu.
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Zobrazují se chyby 403 zakázáno, co to znamená?
 
@@ -85,7 +81,7 @@ Pokud máte pro aplikaci na straně serveru nastavenou službu Application Insig
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Mohu volat kód z mého webového testu?
 
-Ne. Kroky testu musí být v souboru .webtest. A nemůžete volat jiné webové testy nebo používat smyčky. Existují různé zásuvné moduly, které se vám můžou hodit.
+No. Kroky testu musí být v souboru .webtest. A nemůžete volat jiné webové testy nebo používat smyčky. Existují různé zásuvné moduly, které se vám můžou hodit.
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>Existuje rozdíl mezi "webovými testy" a "testy dostupnosti"?
@@ -115,23 +111,7 @@ Existuje limit 100 požadavků na test. Test se také zastaví, pokud běží d�
 
 To se v tuto chvíli nepodporuje.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Kdo obdrží oznámení o výstrahách (Classic)?
-
-Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat oznámení o výstrahách, abyste zajistili, že oznámení budou dostávat jenom vaši dožádaný příjemce. Pokud chcete získat další informace o rozdílu mezi [klasickými výstrahami](../platform/alerts-classic.overview.md)a s novým prostředím výstrah, přečtěte si [článek Přehled výstrah](../platform/alerts-overview.md). Pro řízení upozornění na upozornění v novém prostředí výstrahy použijte [skupiny akcí](../platform/action-groups.md).
-
-* Pro klasická oznámení o výstrahách doporučujeme používat konkrétní příjemce.
-
-* Pro výstrahy týkající se selhání z umístění X z umístění Y, pokud je tato možnost zapnutá, posílá uživatelům s rolemi správce/spolusprávce možnost **Hromadná a skupinová** zaškrtávací políčka.  Oznámení budou dostávat v podstatě _Všichni_ správci _předplatného_ .
-
-* U upozornění na metriky dostupnosti je možnost **Hromadná a skupinová** zaškrtávací políčko, pokud je povolena, odesílá uživatelům s rolemi vlastník, přispěvatel nebo čtenář v předplatném. V důsledku toho budou mít _Všichni_ uživatelé s přístupem k předplatnému Application Insights prostředek v oboru a budou dostávat oznámení. 
-
-> [!NOTE]
-> Pokud v tuto chvíli používáte možnost **hromadného a skupinového** zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
-
-Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
-
 ## <a name="next-steps"></a>Další kroky
 
 * [Testování webu ve více krocích](availability-multistep.md)
 * [Testy adresy URL pro příkazy URL](monitor-web-app-availability.md)
-

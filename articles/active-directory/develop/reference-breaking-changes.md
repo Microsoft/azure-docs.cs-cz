@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115029"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647417"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
 
@@ -35,7 +35,28 @@ Systém ověřování mění a přidává funkce průběžně pro zlepšení dod
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 
-V tuto chvíli není naplánováno žádné.  Níže najdete informace o změnách, které se nacházejí v produktu nebo přicházejí do produkčního prostředí.
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Podmíněný přístup se spustí jenom pro explicitně požadované obory.
+
+**Datum účinnosti**: březen 2021
+
+**Ovlivněné koncové body**: v 2.0
+
+**Ovlivněný protokol**: všechny toky pomocí [dynamického souhlasu](v2-permissions-and-consent.md#requesting-individual-user-consent)
+
+Aplikacím, které používají k dynamickému souhlasu dnes, jsou uvedena všechna oprávnění, pro která mají souhlas, a to i v případě, že v `scope` parametru podle názvu nejsou požadovány.  To může způsobit, že aplikace požaduje, například `user.read` , ale s výslovným souhlasem `files.read` , aby bylo vynuceno předat podmíněný přístup přiřazený k tomuto `files.read` oprávnění. 
+
+Azure AD mění způsob, jakým jsou nevyžádaný obory k dispozici, aby bylo možné omezit počet nevyžádaných výzev pro podmíněný přístup, aby mohli pouze explicitně vyžádané obory aktivovat podmíněný přístup. Tato změna může způsobit, že se aplikace chovají na předchozí chování služby Azure AD (konkrétně poskytnutí všech oprávnění i v případě, že se nepožadovaly), protože u tokenů, které vyžádají, chybí oprávnění.
+
+Aplikace teď budou dostávat přístupové tokeny se kombinací oprávnění v těchto případech a také s uživateli, kteří mají souhlas, že nevyžadují výzvy podmíněného přístupu.  Obory přístupového tokenu se projeví v parametru odpovědi tokenu `scope` . 
+
+**Příklady**
+
+Aplikace má souhlas pro `user.read` , `files.readwrite` a `tasks.read` . `files.readwrite` má na něj použité zásady podmíněného přístupu, zatímco druhé dva ne. Pokud aplikace vytvoří požadavek na token `scope=user.read` a aktuálně přihlášený uživatel neprošl žádnými zásadami podmíněného přístupu, pak výsledný token bude pro `user.read` `tasks.read` oprávnění a. `tasks.read` je zahrnuto, protože aplikace má pro ni souhlas a nevyžaduje vynucení zásad podmíněného přístupu. 
+
+Pokud aplikace požaduje `scope=files.readwrite` , podmíněný přístup vyžadovaný klientem se aktivuje a aplikace vynutí zobrazení výzvy interaktivního ověřování, kde je možné splnit zásady podmíněného přístupu.  Vrácený token bude mít všechny tři obory. 
+
+Pokud aplikace potom vytvoří jednu poslední žádost o některý ze tří oborů (například `scope=tasks.read` ), Azure AD uvidí, že uživatel už dokončil zásady podmíněného přístupu potřebné pro `files.readwrite` , a znovu vydá token se všemi třemi oprávněními. 
+
 
 ## <a name="may-2020"></a>Květen 2020
 
@@ -69,7 +90,7 @@ Uživatelé s heslem delšími než 256 znaků, které se přihlásí přímo do
 
 Chyba v protokolech přihlášení bude AADSTS 50052: InvalidPasswordExceedsMaxLength
 
-Zpráva`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+Zpráva `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
 
 Nápravy
 
@@ -127,7 +148,7 @@ Pokud chcete tento problém vyřešit, použijte prostředí pro vyjádření so
 
 #### <a name="example-request"></a>Příklad požadavku
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která je volána `gateway.contoso.com/api` pro tenanta contoso, a klientská aplikace je `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která je volána `gateway.contoso.com/api` pro tenanta contoso, a klientská aplikace je `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.
 
 Pokud se ale jednalo o aplikaci pro více tenantů, bude mít žádost i nadále bez ohledu na klientskou aplikaci, která má instanční objekt v rámci služby Contoso.com.
 

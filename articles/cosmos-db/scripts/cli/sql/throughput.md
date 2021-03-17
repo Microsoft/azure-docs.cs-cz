@@ -1,30 +1,31 @@
 ---
-title: Aktualizace RU/s pro databázi a kontejner rozhraní API SQL (Core) pro Azure Cosmos DB
-description: Aktualizace RU/s pro databázi a kontejner rozhraní API SQL (Core) pro Azure Cosmos DB
+title: Operace skriptů Azure CLI pro propustnost (RU/s) pro prostředky rozhraní API pro Azure Cosmos DB Core (SQL)
+description: Operace skriptů Azure CLI pro propustnost (RU/s) pro prostředky rozhraní API pro Azure Cosmos DB Core (SQL)
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 23b18d903bfd4e9d723524924e6c31db45c14d62
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 8310de5ce8fd3f90e422555a5111569fadcca982
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429901"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566382"
 ---
-# <a name="update-rus-for-a-sql-core-api-database-and-container-for-azure-cosmos-db-using-azure-cli"></a>Aktualizace RU/s pro databázi a kontejner rozhraní API SQL (Core) pro Azure Cosmos DB pomocí Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Operace propustnosti (RU/s) pomocí Azure CLI pro databázi nebo kontejner pro rozhraní API pro Azure Cosmos DB Core (SQL)
+[!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří databázi rozhraní SQL (Core) API se sdílenou propustností a kontejnerem rozhraní API SQL (Core) s vyhrazenou propustností a pak aktualizuje propustnost pro databázi i pro kontejner.
+Tento skript vytvoří databázi rozhraní API Core (SQL) se sdílenou propustností a kontejnerem rozhraní API Core (SQL) s vyhrazenou propustností a pak aktualizuje propustnost pro databázi i pro kontejner. Skript pak migruje z úrovně Standard na propustnost automatického škálování a potom po migraci přečte hodnotu propustnosti automatického škálování.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Update RU/s for a SQL database and container.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Throughput operations for a SQL database and container.")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -42,10 +43,12 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
-| [AZ cosmosdb SQL Database Create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | Vytvoří databázi SQL Azure Cosmos (jádro). |
-| [AZ cosmosdb SQL Container Create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Vytvoří kontejner SQL Cosmos (jádro) Azure. |
-| [AZ cosmosdb SQL Database propustnost Update](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | Aktualizace RU/s pro databázi Azure Cosmos SQL (jádro) |
-| [AZ cosmosdb SQL Container propustnost Update](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | Aktualizujte RU/s pro kontejner Azure Cosmos SQL (jádro). |
+| [AZ cosmosdb SQL Database Create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | Vytvoří databázi Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Container Create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Vytvoří kontejner Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Database propustnost Update](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | Aktualizujte propustnost databáze Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Container propustnost Update](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | Aktualizujte propustnost kontejneru Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Database propustnost migrace](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-migrate) | Migruje propustnost databáze Azure Cosmos Core (SQL). |
+| [AZ cosmosdb SQL Container propustnost migrace](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-migrate) | Migrace propustnosti pro kontejner Azure Cosmos Core (SQL) |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,28 +1,24 @@
 ---
 title: Přírůstkové kopírování tabulky pomocí prostředí PowerShell
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data z databáze Azure SQL do úložiště Azure Blob Storage.
-services: data-factory
+description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data ze služby Azure SQL Database do úložiště objektů BLOB v Azure.
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 02/18/2021
+ms.openlocfilehash: f4cb4807e6f2620bb76649fc7c7dcce7363cf4a4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254442"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740983"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí PowerShellu
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
+V tomto kurzu použijete Azure Data Factory k vytvoření kanálu, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
 
 V tomto kurzu provedete následující kroky:
 
@@ -57,18 +53,18 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     * Vytvořte aktivitu uložené procedury StoredProcedure, která aktualizuje hodnotu meze pro příští spuštění kanálu.
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření dataqbase v tématu Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro jeho vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 * **Azure Storage**. Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
-* **Azure PowerShell**. Postupujte podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
+* **Azure PowerShell.** Postupujte podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Vytvoření tabulky zdroje dat v databázi SQL
-1. Otevřete SQL Server Management Studio. V **Průzkumník serveru**klikněte pravým tlačítkem na databázi a vyberte **Nový dotaz**.
+1. Otevřete sadu SQL Server Management Studio. V **Průzkumník serveru** klikněte pravým tlačítkem na databázi a vyberte **Nový dotaz**.
 
 2. Spuštěním následujícího příkazu SQL na vaší databázi SQL vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat:
 
@@ -141,8 +137,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -222,7 +218,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -253,7 +249,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -327,7 +323,7 @@ V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímk
     ```
 
     > [!IMPORTANT]
-    > Tento fragment kódu předpokládá, že ve svém úložišti objektů blob máte kontejner objektů blob s názvem adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Výstupní složka `incrementalcopy` se v kontejneru vytvoří automaticky, pokud ještě neexistuje. V tomto kurzu se název souboru generuje dynamicky pomocí výrazu `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
+    > Tento fragment kódu předpokládá, že máte kontejner objektů BLOB s názvem `adftutorial` ve vašem úložišti objektů BLOB. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Výstupní složka `incrementalcopy` se v kontejneru vytvoří automaticky, pokud ještě neexistuje. V tomto kurzu se název souboru generuje dynamicky pomocí výrazu `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
 
 2. Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu SinkDataset.
 
@@ -505,7 +501,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
    Zde je ukázkový výstup:
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -528,7 +524,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity
@@ -648,7 +644,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity

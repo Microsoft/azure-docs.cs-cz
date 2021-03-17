@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 51d7c1e433e72a393178cf429759b5e9a6479e88
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76697604"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648675"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Rozpoznání rozdílů mezi delegovanými a aplikačními oprávněními
 
@@ -27,4 +28,4 @@ ms.locfileid: "76697604"
 - Další podrobnosti najdete v tématu Jak aplikace prostředků zveřejňují [obory](developer-glossary.md#scopes) a [aplikační role](developer-glossary.md#roles) klientským aplikacím, které se v Azure Portal manifestují jako delegovaná a oprávnění aplikace. 
 
 ## <a name="next-steps"></a>Další kroky
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

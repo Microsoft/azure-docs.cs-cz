@@ -3,15 +3,14 @@ title: Monitorování Azure Data Lake Analytics – Azure Portal
 description: Tento článek popisuje, jak použít Azure Portal k řešení potíží s úlohami Azure Data Lake Analytics.
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: troubleshooting
 ms.date: 12/05/2016
-ms.openlocfilehash: 5445ad61295be3637005ead734cc31126c88a440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132071"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220274"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Monitorování úloh v Azure Data Lake Analytics pomocí webu Azure Portal
 
@@ -42,7 +41,7 @@ ms.locfileid: "87132071"
 
 6. Klikněte na **Duplikovat skript**.
 
-7. Aktualizujte cestu **z** cesty na:`/Samples/Data/SearchLog.tsv`
+7. Aktualizujte cestu **z** cesty na: `/Samples/Data/SearchLog.tsv`
 
 8. Klikněte na **Odeslat úlohu**.
 

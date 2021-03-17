@@ -12,14 +12,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 10154f496d76ce6b9eb19d610fdff8d7a4023c2d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386040"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565950"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
 S Azure Virtual Networks může Azure API Management spravovat rozhraní API, která nejsou přístupná na internetu. K vytvoření připojení je k dispozici řada technologií sítě VPN. API Management lze nasadit ve dvou hlavních režimech v rámci virtuální sítě:
@@ -39,7 +39,7 @@ Pomocí API Management v interním režimu můžete dosáhnout těchto scénář
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -51,7 +51,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 + Když je ve virtuální síti nasazená služba API Management, použije se [seznam portů](./api-management-using-with-vnet.md#required-ports) , který je potřeba otevřít. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální síti
-Služba API Management v interní virtuální síti je hostovaná za [interním nástrojem pro vyrovnávání zatížení (Classic)](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
+Služba API Management v interní virtuální síti je hostovaná za [interním nástrojem pro vyrovnávání zatížení (Classic)](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolení připojení k virtuální síti pomocí Azure Portal
 
@@ -70,9 +70,11 @@ Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** v
 > [!NOTE]
 > Konzola testu dostupná na portálu Azure Portal nebude fungovat pro **interní** nasazenou službu virtuální sítě, protože adresa URL brány není zaregistrovaná na veřejném serveru DNS. Místo toho byste měli použít konzolu test, která je k dispozici na **portálu pro vývojáře**.
 
-### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Povolení připojení k virtuální síti pomocí rutin prostředí PowerShell
+### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>Nasazení API Management do Virtual Network
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 Připojení k virtuální síti můžete taky povolit pomocí rutin PowerShellu.
 
@@ -81,7 +83,7 @@ Připojení k virtuální síti můžete taky povolit pomocí rutin PowerShellu.
 * Aktualizace stávajícího nasazení API Management služby ve virtuální síti: pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující službu API Management v rámci virtuální sítě a nakonfigurovat ji tak, aby používala interní typ virtuální sítě.
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>Konfigurace DNS
-Když je API Management v režimu externí virtuální sítě, služba DNS se spravuje pomocí Azure. V případě režimu interní virtuální sítě musíte spravovat vlastní DNS.
+Když je API Management v režimu externí virtuální sítě, služba DNS se spravuje pomocí Azure. V případě režimu interní virtuální sítě musíte spravovat vlastní DNS. Doporučuje se nakonfigurovat Azure DNS privátní zóna a jejím propojením s API Management službou Virtual Network.  Kliknutím [sem](../dns/private-dns-getstarted-portal.md) se dozvíte, jak nastavit privátní zónu v Azure DNS.
 
 > [!NOTE]
 > Služba API Management neposlouchá požadavky přicházející z IP adres. Reaguje jenom na žádosti na název hostitele nakonfigurované na svých koncových bodech služby. Mezi tyto koncové body patří brána, Azure Portal a portál pro vývojáře, přímý koncový bod správy a git.
@@ -122,7 +124,7 @@ Pokud ve virtuální síti používáte vlastní server DNS, můžete také vytv
 
 2. Pak můžete vytvořit záznamy na serveru DNS pro přístup k koncovým bodům, které jsou přístupné jenom z vaší virtuální sítě.
 
-## <a name="routing"></a><a name="routing"> </a> Směrování
+## <a name="routing"></a><a name="routing"></a> Směrování
 
 * *Privátní* virtuální IP adresa s vyrovnáváním zatížení z rozsahu podsítě bude vyhrazená a bude se používat pro přístup k koncovým bodům služby API Management v rámci virtuální sítě. Tuto *privátní* IP adresu najdete v okně Přehled pro službu v Azure Portal. Tato adresa musí být zaregistrovaná u serverů DNS, které používá virtuální síť.
 * *Veřejná* IP adresa (VIP) s vyrovnáváním zatížení bude také vyhrazena pro poskytování přístupu ke koncovému bodu služby správy přes port 3443. Tuto *veřejnou* IP adresu najdete v okně Přehled pro službu v Azure Portal. *Veřejná* IP adresa se používá jenom pro provoz řídicích rovin na `management` koncový bod přes port 3443 a může být zamčená na [ApiManagement][ServiceTags] servicetag.
@@ -131,7 +133,7 @@ Pokud ve virtuální síti používáte vlastní server DNS, můžete také vytv
 * IP adresy přiřazené veřejnému a privátnímu přístupu se mohou změnit, pokud je služba odebrána z a následně přidána zpátky do virtuální sítě. Pokud k tomu dojde, může být nutné aktualizovat registrace DNS, pravidla směrování a seznamy omezení IP adres v rámci virtuální sítě.
 
 ## <a name="related-content"></a><a name="related-content"> </a>Související obsah
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 * [Běžné problémy s konfigurací sítě při nastavování Azure API Management ve virtuální síti][Common network configuration problems]
 * [Nejčastější dotazy k virtuálním sítím](../virtual-network/virtual-networks-faq.md)
 * [Vytvoření záznamu v DNS](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))
@@ -143,4 +145,4 @@ Další informace najdete v následujících článcích:
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

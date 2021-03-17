@@ -5,21 +5,23 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 01/19/2021
+ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605769"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611028"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
+
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek obsahuje přehled výchozích kvót nabízených pro různé prostředky ve službě Azure Cosmos DB.
 
 ## <a name="storage-and-database-operations"></a>Operace úložiště a databáze
 
-Po vytvoření účtu Azure Cosmos v rámci svého předplatného můžete spravovat data v účtu [vytvořením databází, kontejnerů a položek](databases-containers-items.md).
+Po vytvoření účtu Azure Cosmos v rámci svého předplatného můžete spravovat data v účtu [vytvořením databází, kontejnerů a položek](account-databases-containers-items.md).
 
 ### <a name="provisioned-throughput"></a>Zřízená propustnost
 
@@ -27,39 +29,61 @@ Propustnost můžete zřídit na úrovni kontejneru nebo databáze na úrovni je
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
-| Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
+| Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) . |
+| Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) . |
 | Maximální počet ru na (logický) oddíl | 10 000 |
 | Maximální velikost úložiště napříč všemi položkami na (logický) oddíl | 20 GB |
 | Maximální počet různých (logických) klíčů oddílu | Unlimited |
 | Maximální velikost úložiště na kontejner | Unlimited |
 | Maximální velikost úložiště na databázi | Unlimited |
 | Maximální velikost přílohy na účet (funkce přílohy se už nepoužívá) | 2 GB |
-| Minimální ru vyžadovaná za 1 GB | 10 RU/s |
+| Vyžaduje se minimální RU/s za 1 GB. | 10 RU/s<br>**Poznámka:** Toto minimum se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program) . |
 
 > [!NOTE]
 > Další informace o osvědčených postupech pro správu úloh, které mají klíče oddílů vyžadující vyšší limity pro úložiště nebo propustnost, najdete v tématu [Vytvoření syntetického klíče oddílu](synthetic-partition-keys.md).
 
-Cosmos kontejner (nebo sdílená databáze propustnosti) musí mít minimální propustnost 400 RU/s. Při zvětšování kontejneru závisí minimální podporovaná propustnost i na následujících faktorech:
+### <a name="minimum-throughput-limits"></a>Minimální limity propustnosti
 
-* Maximální propustnost, která byla v kontejneru trvale zřízena. Pokud se například propustnost zvýšila na 50 000 RU/s, pak nejnižší možná zajištěná propustnost bude 500 RU/s.
-* Aktuální úložiště v GB v kontejneru. Pokud má váš kontejner například 100 GB úložiště, bude nejnižší možná zajištěná propustnost 1000 RU/s.
-* Minimální propustnost ve sdílené databázi propustnosti také závisí na celkovém počtu kontejnerů, které jste dříve vytvořili ve sdílené databázi propustnosti, měřeno v 100 RU/s na jeden kontejner. Pokud jste například vytvořili pět kontejnerů v rámci sdílené databáze propustnosti, musí být propustnost alespoň 500 RU/s.
+Cosmos kontejner (nebo sdílená databáze propustnosti) musí mít minimální propustnost 400 RU/s. Při zvětšování kontejneru Cosmos DB vyžaduje minimální propustnost, aby bylo zajištěno, že databáze nebo kontejner mají dostatek prostředků na jeho provoz.
 
 Aktuální a minimální propustnost kontejneru nebo databáze lze načíst z Azure Portal nebo sad SDK. Další informace najdete v tématu [zřízení propustnosti u kontejnerů a databází](set-throughput.md). 
 
-> [!NOTE]
-> V některých případech může být možné snížit propustnost na méně než 10%. Použijte rozhraní API k získání přesného minima ru na kontejner.
+Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku. 
+
+#### <a name="minimum-throughput-on-container"></a>Minimální propustnost na kontejneru 
+
+Pokud chcete odhadnout minimální propustnost vyžadovanou kontejnerem s ruční propustností, najděte maximum z těchto hodnot:
+
+* 400 RU/s 
+* Aktuální úložiště v GB × 10 RU/s
+* Nejvyšší RU/s zřízené na kontejneru/100
+
+Příklad: Předpokládejme, že máte zřízen kontejner s 400 RU/s a úložištěm 0 GB. Zvýšíte propustnost na 50 000 RU/s a naimportujete 20 GB dat. Minimální RU/s je teď `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/s. V průběhu času se úložiště zvětšuje na 200 GB. Minimální RU/s je teď `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/s. 
+
+**Poznámka:** minimální propustnost 10 ru/s za GB úložiště se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program).
+
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimální propustnost u sdílené databáze propustnosti 
+Pokud chcete odhadnout minimální propustnost vyžadovanou pro sdílenou databázi propustnosti s ruční propustností, najděte maximum z těchto hodnot:
+
+* 400 RU/s 
+* Aktuální úložiště v GB × 10 RU/s
+* Nejvyšší RU/s zřízené v databázi/100
+* 400 + MAX (počet kontejnerů: 25, 0) × 100 RU/s
+
+Příklad: Předpokládejme, že máte zřízenou databázi s 400 RU/s, 15 GB úložiště a 10 kontejnery. Minimální RU/s je `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Pokud v databázi existovalo 30 kontejnerů, minimální RU/s by byla `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
+
+**Poznámka:** minimální propustnost 10 ru/s za GB úložiště se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program).
 
 V části Souhrn jsou zde uvedená minimální omezení pro podávání RU. 
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Minimální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimální počet ru na kontejner v rámci sdílené databáze propustnosti | 100 |
+| Minimální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimální počet ru na databázi ([zřízený režim sdílené propustnosti](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s pro prvních 25 kontejnerů. Další 100 RU/s pro každý kontejner následně. |
 
-Cosmos DB podporuje Elastické škálování propustnosti (ru) na kontejner nebo databázi prostřednictvím sad SDK nebo portálu. Každý kontejner se může synchronně a hned škálovat v rozmezí od 10 do 100 časů mezi minimální a maximální hodnotou. Pokud je požadovaná hodnota propustnosti mimo rozsah, škálování se provádí asynchronně. Asynchronní škálování může trvat několik minut, než se dokončí v závislosti na požadované propustnosti a velikosti úložiště dat v kontejneru.  
+Cosmos DB podporuje programové škálování propustnosti (RU/s) na kontejner nebo databázi prostřednictvím sad SDK nebo portálu.    
+
+V závislosti na aktuálních nastaveních a prostředcích s plánem RU/s se může každý prostředek škálovat synchronně a hned za minimálních RU/s až po minimální RU/s. Pokud je požadovaná hodnota propustnosti mimo rozsah, škálování se provádí asynchronně. Asynchronní škálování může trvat několik minut, než se dokončí v závislosti na požadované propustnosti a velikosti úložiště dat v kontejneru.  
 
 ### <a name="serverless"></a>Bez serveru
 
@@ -67,7 +91,6 @@ Bez [serveru](serverless.md) můžete používat prostředky Azure Cosmos DB v z
 
 | Prostředek | Omezení |
 | --- | --- |
-| Maximální počet RU/s na kontejner | 5 000 |
 | Maximální počet RU/s na (logický) oddíl | 5 000 |
 | Maximální velikost úložiště napříč všemi položkami na (logický) oddíl | 20 GB |
 | Maximální počet různých (logických) klíčů oddílu | Unlimited |
@@ -79,8 +102,8 @@ Bez [serveru](serverless.md) můžete používat prostředky Azure Cosmos DB v z
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální počet účtů databáze na předplatné | 50 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
-| Maximální počet regionálních převzetí služeb při selhání | ve výchozím nastavení 1 hodina. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
+| Maximální počet účtů databáze na předplatné | 50 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
+| Maximální počet regionálních převzetí služeb při selhání | ve výchozím nastavení 1 hodina. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
 
 > [!NOTE]
 > Regionální převzetí služeb při selhání platí jenom pro jeden region zápis účtů. Účty pro zápis ve více oblastech nevyžadují nebo nemají omezení pro změnu oblasti zápisu.
@@ -118,8 +141,9 @@ V závislosti na tom, jaké rozhraní API používáte, může kontejner Azure C
 | Maximální počet cest v zásadách indexování| 100 <sup>*</sup>|
 | Maximální počet jedinečných klíčů na kontejner|10pruhový <sup>*</sup>|
 | Maximální počet cest na jedinečné omezení klíče|16bitovém <sup>*</sup>|
+| Maximální hodnota TTL |2147483647|
 
-<sup>*</sup> Můžete zvýšit množství těchto omezení na kontejner tím, že se obrátíte na podporu Azure.
+<sup>*</sup> Můžete zvýšit libovolný z těchto limitů pro kontejner vytvořením [support Request Azure](create-support-request-quota-increase.md).
 
 ## <a name="per-item-limits"></a>Omezení podle položek
 
@@ -131,17 +155,18 @@ V závislosti na tom, jaké rozhraní API používáte, může položka Azure Co
 | Maximální délka hodnoty klíče oddílu | 2048 bajtů |
 | Maximální délka hodnoty ID | 1023 bajtů |
 | Maximální počet vlastností na položku | Žádné praktické omezení |
-| Maximální hloubka vnořování | Žádné praktické omezení |
 | Maximální délka názvu vlastnosti | Žádné praktické omezení |
 | Maximální délka hodnoty vlastnosti | Žádné praktické omezení |
 | Maximální délka hodnoty řetězcové vlastnosti | Žádné praktické omezení |
 | Maximální délka číselné hodnoty vlastnosti | IEEE754 s dvojitou přesností 64-bit |
+| Maximální úroveň vnoření pro vložené objekty/pole | 128 |
+| Maximální hodnota TTL |2147483647|
 
 Neexistují žádná omezení na datové části položky, jako je počet vlastností a hloubka vnořování, s výjimkou omezení délky pro klíče oddílu a hodnoty ID a omezení celkové velikosti 2 MB. Možná budete muset nakonfigurovat zásady indexování pro kontejnery s velkými nebo složitými strukturami položek a snížit tak spotřebu RU. V tématu [modelování položek v Cosmos DB](how-to-model-partition-example.md) najdete příklad reálného světa a vzory pro správu velkých položek.
 
 ## <a name="per-request-limits"></a>Omezení podle požadavků
 
-Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
+Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
@@ -152,16 +177,26 @@ Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u 
 
 Jakmile operace jako dotaz dosáhne časového limitu spuštění nebo omezení velikosti odpovědi, vrátí klientovi stránku výsledků a token pro pokračování, aby bylo možné pokračovat v provádění. Neexistuje žádné praktické omezení pro dobu, po kterou může jeden dotaz běžet na stránkách nebo v pokračování.
 
-Cosmos DB používá pro autorizaci HMAC. K prostředkům, jako jsou kontejnery, klíče oddílů nebo položky, můžete použít buď hlavní klíč, nebo [tokeny prostředků](secure-access-to-data.md) pro jemně odstupňované řízení přístupu. Následující tabulka uvádí omezení autorizačních tokenů v Cosmos DB.
+Cosmos DB používá pro autorizaci HMAC. Pro podrobné řízení přístupu k prostředkům, jako jsou kontejnery, klíče oddílů nebo položky, můžete použít buď primární klíč, nebo [tokeny prostředků](secure-access-to-data.md) . Následující tabulka uvádí omezení autorizačních tokenů v Cosmos DB.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální doba vypršení platnosti hlavního tokenu | 15 min  |
+| Maximální doba vypršení platnosti primárního tokenu | 15 min  |
 | Minimální čas vypršení platnosti tokenu prostředku | 10 min  |
-| Maximální doba vypršení platnosti tokenu prostředku | ve výchozím nastavení je 24 h. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
+| Maximální doba vypršení platnosti tokenu prostředku | ve výchozím nastavení je 24 h. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
 | Maximální časové zkosení pro autorizaci tokenů| 15 min |
 
-Cosmos DB podporuje provádění triggerů během zápisu. Služba podporuje maximálně jednu aktivační událost a jednu operaci post-Trigger na operaci zápisu. 
+Cosmos DB podporuje provádění triggerů během zápisu. Služba podporuje maximálně jednu aktivační událost a jednu operaci post-Trigger na operaci zápisu.
+
+## <a name="metadata-request-limits"></a>Omezení požadavků na metadata
+
+Azure Cosmos DB udržuje systémová metadata pro každý účet. Tato metadata vám umožní vytvořit výčet kolekcí, databází, dalších Azure Cosmos DBch prostředků a jejich konfigurací zdarma.
+
+| Prostředek | Výchozí omezení |
+| --- | --- |
+|Maximální počet vytvoření kolekce za minutu|    100|
+|Maximální počet vytvoření databáze za minutu|    100|
+|Maximální zajištěná četnost aktualizací propustnosti za minutu|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Omezení pro zřízenou propustnost automatického škálování
 
@@ -178,7 +213,7 @@ Podrobnější vysvětlení propustnosti a omezení úložiště s využitím au
 
 ## <a name="sql-query-limits"></a>Omezení dotazu SQL
 
-Cosmos DB podporuje dotazování na položky pomocí [jazyka SQL](how-to-sql-query.md). V následující tabulce jsou popsána omezení v příkazech dotazu, například v podmínkách počtu klauzulí nebo délka dotazu.
+Cosmos DB podporuje dotazování na položky pomocí [jazyka SQL](./sql-query-getting-started.md). V následující tabulce jsou popsána omezení v příkazech dotazu, například v podmínkách počtu klauzulí nebo délka dotazu.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
@@ -190,7 +225,7 @@ Cosmos DB podporuje dotazování na položky pomocí [jazyka SQL](how-to-sql-que
 | Maximální počet vyloučených cest na kontejner| 500 |
 | Maximální vlastnosti ve složeném indexu| 8 |
 
-<sup>*</sup> Tyto limity dotazu SQL můžete zvýšit kontaktováním podpory Azure.
+<sup>*</sup> Můžete zvýšit libovolné z těchto omezení SQL dotazu vytvořením [support Request Azure](create-support-request-quota-increase.md).
 
 ## <a name="mongodb-api-specific-limits"></a>Omezení specifická pro rozhraní API MongoDB
 
@@ -201,10 +236,11 @@ V následující tabulce jsou uvedeny limity, které jsou specifické pro podpor
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Maximální velikost paměti pro dotaz na MongoDB (Toto omezení je jenom pro 3,2 verze serveru). | 40 MB |
-| Maximální doba provádění operací MongoDB| 30 s |
+|Maximální doba provádění operací MongoDB (verze serveru 3,2)| 15 sekund|
+|Maximální doba provádění operací MongoDB (verze serveru 3,6)| 60 sekund|
 | Časový limit nečinného připojení pro uzavření připojení na straně serveru * | 30 minut |
 
-\* Doporučujeme, aby klientské aplikace nastavily časový limit nečinného připojení v nastavení ovladače na 2-3 minut, protože [výchozí časový limit pro vyrovnávání zatížení Azure je 4 minuty](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Tento časový limit zajistí, aby nečinné připojení neuzavřelo zprostředkující Nástroj pro vyrovnávání zatížení mezi klientským počítačem a Azure Cosmos DB.
+\* Doporučujeme, aby klientské aplikace nastavily časový limit nečinného připojení v nastavení ovladače na 2-3 minut, protože [výchozí časový limit pro vyrovnávání zatížení Azure je 4 minuty](../load-balancer/load-balancer-tcp-idle-timeout.md).  Tento časový limit zajistí, aby nečinné připojení neuzavřelo zprostředkující Nástroj pro vyrovnávání zatížení mezi klientským počítačem a Azure Cosmos DB.
 
 ## <a name="try-cosmos-db-free-limits"></a>Vyzkoušet Cosmos DB omezení Free
 
@@ -221,7 +257,8 @@ V následující tabulce jsou uvedeny limity pro [testovací Azure Cosmos DB pro
 
 Zkuste Cosmos DB podporuje globální distribuci jenom v oblastech Střed USA, Severní Evropa a jihovýchodní Asie. Lístky podpory Azure nelze vytvořit pro účty try Azure Cosmos DB. Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
 
-## <a name="free-tier-account-limits"></a>Limity účtů úrovně Free
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Omezení účtu bezplatné úrovně Azure Cosmos DB
+
 V následující tabulce jsou uvedeny limity [Azure Cosmos DB účtů úrovně Free.](optimize-dev-test.md#azure-cosmos-db-free-tier)
 
 | Prostředek | Výchozí omezení |
@@ -233,7 +270,10 @@ V následující tabulce jsou uvedeny limity [Azure Cosmos DB účtů úrovně F
 | Maximální počet sdílených databází propustnosti | 5 |
 | Maximální počet kontejnerů ve sdílené databázi propustnosti | 25 <br>V účtech bezplatné úrovně je minimální RU/s pro sdílenou databázi propustnosti s až 25 kontejnery 400 RU/s. |
 
-  Kromě výše uvedeného platí [omezení podle účtů](#per-account-limits) i pro účty bezplatné úrovně.
+Kromě výše uvedeného platí [omezení podle účtů](#per-account-limits) i pro účty bezplatné úrovně.
+
+> [!NOTE]
+> Úroveň Free Azure Cosmos DB se liší od bezplatného účtu Azure. Bezplatný účet Azure nabízí po určitou dobu kredity a prostředky Azure zdarma. Při použití Azure Cosmos DB jako součást tohoto bezplatného účtu získáte 25 GB úložiště a 400 RU/s zřízené propustnost po dobu 12 měsíců.
 
 ## <a name="next-steps"></a>Další kroky
 

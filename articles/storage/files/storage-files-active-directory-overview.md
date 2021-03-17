@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447250"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519788"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,15 +26,15 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
 -   **Ověřování protokolu Kerberos**
 
-    Kerberos je ověřovací protokol, který se používá k ověření identity uživatele nebo hostitele. Další informace o protokolu Kerberos najdete v tématu [Přehled ověřování protokolu Kerberos](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
+    Kerberos je ověřovací protokol, který se používá k ověření identity uživatele nebo hostitele. Další informace o protokolu Kerberos najdete v tématu [Přehled ověřování protokolu Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview).
 
 -  **Protokol SMB (Server Message Block)**
 
-    SMB je standardní protokol pro sdílení souborů v síti. SMB se označuje také jako Common Internet File System nebo CIFS. Další informace o protokolu SMB najdete v tématu [Přehled protokolu SMB a protokolu CIFS](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
+    SMB je standardní protokol pro sdílení souborů v síti. SMB se označuje také jako Common Internet File System nebo CIFS. Další informace o protokolu SMB najdete v tématu [Přehled protokolu SMB a protokolu CIFS](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) je víceklientské cloudové služby Microsoftu a služba pro správu identit založené na víceklientské architektuře. Azure AD kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identit do jediného řešení. Virtuální počítače s Windows připojené k Azure AD mají přístup ke sdíleným složkám Azure pomocí vašich přihlašovacích údajů Azure AD. Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory (Azure AD) je víceklientské cloudové služby Microsoftu a služba pro správu identit založené na víceklientské architektuře. Azure AD kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identit do jediného řešení. Virtuální počítače s Windows připojené ke službě Azure AD nemůžou přistupovat ke sdíleným složkám Azure pomocí vašich přihlašovacích údajů Azure AD. Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory Domain Services (Azure služba AD DS)**
 
@@ -42,11 +42,11 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
 - **Místní Active Directory Domain Services (služba AD DS)**
 
-    Integrace s místními Active Directory Domain Services (služba AD DS) se službou Azure Files poskytuje metody pro ukládání dat adresáře a jejich zpřístupnění uživatelům a správcům sítě. Zabezpečení je integrováno do služba AD DS prostřednictvím ověřování přihlášení a řízení přístupu k objektům v adresáři. Pomocí jediného přihlášení k síti můžou správci spravovat data adresáře a organizaci v celé své síti a autorizovaní uživatelé sítě mají přístup k prostředkům kdekoli v síti. Služba AD DS obvykle přijímá podniky v místních prostředích a služba AD DS přihlašovací údaje se používají jako identita pro řízení přístupu. Další informace najdete v tématu [přehled Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+    Integrace s místními Active Directory Domain Services (služba AD DS) se službou Azure Files poskytuje metody pro ukládání dat adresáře a jejich zpřístupnění uživatelům a správcům sítě. Zabezpečení je integrováno do služba AD DS prostřednictvím ověřování přihlášení a řízení přístupu k objektům v adresáři. Pomocí jediného přihlášení k síti můžou správci spravovat data adresáře a organizaci v celé své síti a autorizovaní uživatelé sítě mají přístup k prostředkům kdekoli v síti. Služba AD DS obvykle přijímá podniky v místních prostředích a služba AD DS přihlašovací údaje se používají jako identita pro řízení přístupu. Další informace najdete v tématu [přehled Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
--   **Řízení přístupu na základě role v Azure (Azure RBAC)**
+-   **Řízení přístupu na základě role Azure (Azure RBAC)**
 
-    Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC) v Azure?](../../role-based-access-control/overview.md).
+    Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí Azure RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o službě Azure RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Běžné případy použití
 
@@ -78,6 +78,7 @@ Následující tabulka shrnuje podporované scénáře ověřování sdílených
 - Ověřování Azure služba AD DS a místní služba AD DS nepodporují ověřování u účtů počítačů. Místo toho můžete použít účet přihlášení služby.
 - U zařízení připojených k Azure AD nebo zařízení registrovaných v Azure AD se nepodporuje ověřování pomocí Azure služba AD DS ani místní ověřování služba AD DS.
 - Sdílené složky Azure podporují ověřování na základě identity jenom v jedné z následujících služeb domény, a to buď [Azure Active Directory Domain Services (Azure služba AD DS)](#azure-ad-ds) , nebo [místní Active Directory Domain Services (služba AD DS)](#ad-ds).
+- V systému souborů NFS (Network File System), který je ve verzi Preview, není podporována metoda ověřování na základě identity.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Výhody ověřování na základě identity
 Ověřování na základě identity pro soubory Azure nabízí oproti použití ověřování pomocí sdíleného klíče několik výhod:
@@ -103,7 +104,7 @@ Pro místní ověřování služba AD DS musíte nastavit řadiče domény AD a 
 
 Následující diagram znázorňuje místní služba AD DS ověřování sdílených složek Azure pomocí protokolu SMB. Služba AD DS Prem musí být synchronizované s Azure AD pomocí Azure AD Connect synchronizace. Pro přístup ke sdílené složce Azure můžete ověřovat a autorizovat jenom hybridní uživatelé, kteří existují v místních služba AD DS i v Azure AD. Důvodem je to, že oprávnění na úrovni sdílené složky jsou nakonfigurovaná proti identitě reprezentované ve službě Azure AD, kde se oprávnění na úrovni adresáře nebo souboru vynutilo v služba AD DS. Ujistěte se, že jste správně nakonfigurovali oprávnění proti stejnému hybridnímu uživateli.
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram, který znázorňuje místní ověřování služba AD DS pro sdílené složky Azure přes protokol SMB.":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -113,7 +114,7 @@ Následující diagram představuje pracovní postup pro ověřování Azure slu
 
 - Nejdřív nemusíte vytvářet identitu ve službě Azure služba AD DS, která by představovala účet úložiště. To se provádí v procesu povolení na pozadí.
 
-- Za druhé, všichni uživatelé existují v Azure AD, můžou být ověřeni a autorizováni. Uživatel může být pouze Cloud nebo hybridní. Synchronizace z Azure AD do Azure služba AD DS spravovaná platformou bez nutnosti konfigurace uživatele. Klient musí být ale připojený k doméně Azure služba AD DS, ale nemůže být připojený k Azure AD ani zaregistrován. 
+- Za druhé, všichni uživatelé, kteří existují v Azure AD, můžou být ověřeni a autorizováni. Uživatel může být pouze Cloud nebo hybridní. Synchronizace z Azure AD do Azure služba AD DS spravovaná platformou bez nutnosti konfigurace uživatele. Klient musí být ale připojený k doméně Azure služba AD DS, ale nemůže být připojený k Azure AD ani zaregistrován. 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram":::
 
@@ -127,7 +128,7 @@ Jakmile povolíte Azure služba AD DS nebo místní služba AD DS ověřování,
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Konfigurace oprávnění adresářů nebo souborů pro soubory Azure
 
-Sdílené složky Azure vynutila standardní oprávnění souborů Windows v adresáři i na úrovni souborů, včetně kořenového adresáře. Konfigurace oprávnění na úrovni adresáře nebo souborů se podporuje přes protokol SMB i REST. Připojte cílovou sdílenou složku z virtuálního počítače a nakonfigurujte oprávnění pomocí Průzkumníka souborů Windows, Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)nebo příkazu [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) .
+Sdílené složky Azure vynutila standardní oprávnění souborů Windows v adresáři i na úrovni souborů, včetně kořenového adresáře. Konfigurace oprávnění na úrovni adresáře nebo souborů se podporuje přes protokol SMB i REST. Připojte cílovou sdílenou složku z virtuálního počítače a nakonfigurujte oprávnění pomocí Průzkumníka souborů Windows, Windows [Icacls](/windows-server/administration/windows-commands/icacls)nebo příkazu [set-ACL](/powershell/module/microsoft.powershell.security/get-acl) .
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Použijte klíč účtu úložiště pro oprávnění naduživatelem.
 
@@ -138,7 +139,7 @@ Uživatel s klíčem účtu úložiště má přístup ke sdíleným složkám A
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Zachování seznamů ACL adresářů a souborů při importu dat do sdílených složek Azure
 
-Azure Files podporuje zachovávání seznamů ACL na úrovni adresáře nebo souborů při kopírování dat do sdílených složek Azure. Seznamy řízení přístupu můžete zkopírovat do složky nebo souboru do sdílených složek Azure pomocí Azure File Sync nebo běžných nástrojů pro přesun souborů. Pomocí příkazu [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) s `/copy:s` příznakem můžete například kopírovat data i seznamy ACL do sdílené složky Azure. Seznamy řízení přístupu (ACL) jsou ve výchozím nastavení zachované, nemusíte u svého účtu úložiště povolit ověřování na základě identity, abyste zachovali seznamy ACL.
+Azure Files podporuje zachovávání seznamů ACL na úrovni adresáře nebo souborů při kopírování dat do sdílených složek Azure. Seznamy řízení přístupu můžete zkopírovat do složky nebo souboru do sdílených složek Azure pomocí Synchronizace souborů Azure nebo běžných nástrojů pro přesun souborů. Pomocí příkazu [Robocopy](/windows-server/administration/windows-commands/robocopy) s `/copy:s` příznakem můžete například kopírovat data i seznamy ACL do sdílené složky Azure. Seznamy řízení přístupu (ACL) jsou ve výchozím nastavení zachované, nemusíte u svého účtu úložiště povolit ověřování na základě identity, abyste zachovali seznamy ACL.
 
 ## <a name="pricing"></a>Ceny
 Pro povolení ověřování na základě identity přes protokol SMB v účtu úložiště není k dispozici žádný další poplatek za službu. Další informace o cenách najdete v tématu ceny za [Azure Files](https://azure.microsoft.com/pricing/details/storage/files/) a [ceny Azure AD Domain Services](https://azure.microsoft.com/pricing/details/active-directory-ds/).

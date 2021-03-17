@@ -3,7 +3,7 @@ title: Použití běžného dynamického šifrování PlayReady nebo Widevine | 
 description: Službu Azure Media Services můžete použít k doručování datových proudů MPEG-DASH, Smooth Streaming a HTTP Live Streaming (HLS) chráněných technologií Microsoft PlayReady DRM. Umožňuje také doručovat datové proudy DASH šifrované pomocí Widevine DRM. Toto téma ukazuje, jak dynamicky šifrovat pomocí PlayReady DRM nebo Widevine DRM.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
@@ -12,19 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5f7a9f87c73e4c5aa5f905def18534b04688a0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a0e8a513023c093157a3f14a64de9f87de543ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000529"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009449"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Použití běžného dynamického šifrování PlayReady nebo Widevine
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 >   
 
 ## <a name="overview"></a>Přehled

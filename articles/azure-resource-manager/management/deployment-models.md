@@ -3,12 +3,12 @@ title: Resource Manager a klasické nasazení
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511401"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185840"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Nasazení Azure Resource Manager vs. Classic: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -113,7 +113,7 @@ Následující tabulka popisuje změny v interakci poskytovatelů výpočetních
 | Vyhrazená IP adresa |IP adresu můžete v Azure vyhradit a přidružit ji ke cloudové službě, abyste zajistili, že IP adresa zůstane dynamická. |Veřejnou IP adresu můžete vytvořit ve statickém režimu a bude nabízet stejné funkce jako vyhrazená IP adresa. |
 | Veřejná IP adresa (PIP) na virtuální počítač |Veřejné IP adresy se dají k virtuálnímu počítači přiřadit i přímo. |Veřejná IP adresa je prostředek vystavený poskytovatelem Microsoft.Network. Veřejná IP adresa může být statická (vyhrazená) nebo dynamická. |
 | Koncové body |Vstupní koncové body je třeba konfigurovat na virtuálním počítači, aby se pro určité porty staly otevřeným připojením. Jeden z běžných režimů připojení k virtuálním počítačům se provádí nastavením vstupní koncových bodů. |Příchozí pravidla NAT můžete konfigurovat na nástrojích pro vyrovnávání zatížení, abyste dosáhli stejné možnosti povolování koncových bodů na konkrétních portech za účelem připojení k virtuálním počítačům. |
-| Název DNS |Cloudová služba by získala implicitní, globálně jedinečný název DNS. Například: `mycoffeeshop.cloudapp.net`. |Názvy DNS jsou volitelné parametry, které můžete nastavit na prostředku veřejné IP adresy. Plně kvalifikovaný název je v následujícím formátu – `<domainlabel>.<region>.cloudapp.azure.com`. |
+| Název DNS |Cloudová služba by získala implicitní, globálně jedinečný název DNS. Příklad: `mycoffeeshop.cloudapp.net`. |Názvy DNS jsou volitelné parametry, které můžete nastavit na prostředku veřejné IP adresy. Plně kvalifikovaný název je v následujícím formátu – `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Síťová rozhraní |Primární a sekundární síťové rozhraní a jeho vlastnosti byly definované jako síťová konfigurace virtuálního počítače. |Síťové rozhraní je prostředek vystavený poskytovatelem Microsoft.Network. Životní cyklus síťového rozhraní není svázaný s virtuálním počítačem. Odkazuje na přiřazenou IP adresu virtuálního počítače (povinné), podsíť virtuální sítě pro daný virtuální počítač (povinné) a skupinu zabezpečení sítě (volitelné). |
 
 Informace o připojení virtuálních sítí z různých modelů nasazení najdete v článku [Připojení virtuálních sítí z různých modelů nasazení na portálu](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
@@ -123,9 +123,9 @@ Informace o připojení virtuálních sítí z různých modelů nasazení najde
 Pokud jste připraveni migrovat prostředky z klasického nasazení do nasazení Správce prostředků, přečtěte si téma:
 
 1. [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
-2. [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-3. [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShellu](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku Azure](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
+2. [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/migration-classic-resource-manager-overview.md)
+3. [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShellu](../../virtual-machines/migration-classic-resource-manager-ps.md)
+4. [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku Azure](../../virtual-machines/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

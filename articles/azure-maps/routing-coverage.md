@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030890"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896170"
 ---
 # <a name="azure-maps-routing-coverage"></a>Pokrytí směrování Azure Maps
 
@@ -162,7 +162,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 | Bělorusko                        |        ✓       |                      |             |
 | Belgie                        |        ✓       |         ✓            |     ✓      | 
 | Bolívie                        |        ✓       |                      |             |
-| Bosna a Hercegovina             |        ✓       |                      |             |
+| Bosnia-Herzegovina             |        ✓       |                      |             |
 | Bulharsko                       |        ✓       |         ✓            |     ✓      | 
 | Chorvatsko                        |        ✓       |         ✓            |     ✓      |
 | Kypr                         |        ✓       |                      |             |
@@ -245,4 +245,4 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o směrování Azure Maps najdete na referenčních stránkách [Směrování](https://docs.microsoft.com/rest/api/maps/route) .
+Další informace o směrování Azure Maps najdete na referenčních stránkách [Směrování](/rest/api/maps/route) .

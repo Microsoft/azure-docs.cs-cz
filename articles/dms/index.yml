@@ -9,13 +9,13 @@ metadata:
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.custom: azure-migrate-seo
-  ms.openlocfilehash: e2cee85efd6c4aea51f41d2cd8a7c41f4c881114
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-  ms.translationtype: HT
+  ms.custom: seo-azure-migrate
+  ms.openlocfilehash: a154a3a6579ff3414502b16dcfe6d60748840a6c
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87090718"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102183296"
 landingContent:
 - title: Informace o službě Azure Database Migration Service
   linkLists:
@@ -57,29 +57,25 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Migrace do izolované databáze SQL DB – online
-      url: tutorial-sql-server-azure-sql-online.md
-    - text: Migrace do izolované databáze SQL DB – offline
+    - text: Migrace do Azure SQL Database
       url: tutorial-sql-server-to-azure-sql.md
-    - text: Migrace do spravované instance SQL DB – online
+    - text: Migrace do spravované instance Azure SQL (online)
       url: tutorial-sql-server-managed-instance-online.md
-    - text: Migrace do spravované instance SQL DB – offline
+    - text: Migrace do spravované instance SQL (offline)
       url: tutorial-sql-server-to-managed-instance.md
-    - text: Migrace RDS SQL Serveru do izolované databáze / spravované instance SQL DB – online
-      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: Známé problémy – online migrace do izolované databáze SQL DB
+    - text: Známé problémy – online migrace do SQL Database
       url: known-issues-azure-sql-online.md
-    - text: Známé problémy – online migrace do spravované instance SQL DB
+    - text: Známé problémy – migrace online do spravované instance SQL
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: Síťové topologie pro migrace spravované instance SQL DB
+    - text: Síťové topologie pro migrace spravované instance SQL
       url: resource-network-topologies.md
-    - text: Vlastní role pro online migrace z SQL Serveru do spravované instance SQL DB
+    - text: Vlastní role pro online migrace z SQL Server do spravované instance SQL
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: Migrace SQL Serveru 2008 do spravované instance SQL DB
+    - text: Migrace SQL Server 2008 do spravované instance SQL
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: Migrace opensourcových databází do Azure
   linkLists:
@@ -124,11 +120,11 @@ landingContent:
     - text: Průvodce migrací databází
       url: https://datamigration.microsoft.com/
     - text: Data Migration Assistant
-      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview?view=sql-server-2017
     - text: Pomocník s migrací SQL Serveru
-      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
     - text: Pomocník pro experimentování s databázemi
-      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
     - text: Data Access Migration Toolkit
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: Migrace Oraclu do Azure

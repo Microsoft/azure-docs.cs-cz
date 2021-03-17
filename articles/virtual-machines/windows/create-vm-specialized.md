@@ -2,23 +2,23 @@
 title: Vytvoření virtuálního počítače s Windows ze specializovaného virtuálního pevného disku v Azure
 description: Vytvořte nový virtuální počítač s Windows připojením specializovaného spravovaného disku jako disku s operačním systémem pomocí modelu nasazení Správce prostředků.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 642a28d5eea6a89de31247ed715c0b352b9ff7d1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266890"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552214"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí PowerShellu
 
 Vytvořte nový virtuální počítač připojením specializovaného spravovaného disku jako disku s operačním systémem. Specializovaný disk je kopií virtuálního pevného disku (VHD) ze stávajícího virtuálního počítače, který obsahuje uživatelské účty, aplikace a další údaje o stavu z původního virtuálního počítače. 
-
-Při použití specializovaného virtuálního pevného disku k vytvoření nového virtuálního počítače si nový virtuální počítač zachová název počítače původního virtuálního počítače. Další informace specifické pro počítač jsou také uchovávány, a v některých případech mohou tyto duplicitní informace způsobovat problémy. Při kopírování virtuálního počítače si pamatujte na typy informací specifických pro konkrétní počítač, na kterých aplikace závisí.
 
 Máte několik možností:
 * [Použijte existující spravovaný disk](#option-1-use-an-existing-disk). Tato možnost je užitečná, pokud máte virtuální počítač, který nefunguje správně. Pokud chcete vytvořit nový virtuální počítač, můžete virtuální počítač odstranit a pak znovu použít spravovaný disk. 
@@ -27,7 +27,12 @@ Máte několik možností:
 
 Pomocí Azure Portal můžete také [vytvořit nový virtuální počítač ze specializovaného virtuálního pevného disku](create-vm-specialized-portal.md).
 
-V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, přečtěte si téma [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště](sa-create-vm-specialized.md).
+V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, přečtěte si téma [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized).
+
+> [!IMPORTANT]
+> 
+> Při použití specializovaného disku k vytvoření nového virtuálního počítače si nový virtuální počítač zachová název počítače původního virtuálního počítače. Další informace specifické pro počítač (např. CMID) jsou také uchovávány, a v některých případech mohou tyto duplicitní informace způsobovat problémy. Při kopírování virtuálního počítače si pamatujte na typy informací specifických pro konkrétní počítač, na kterých aplikace závisí.  
+> Proto nepoužívejte specializovaný disk, pokud chcete vytvořit více virtuálních počítačů. Místo toho můžete pro rozsáhlejší nasazení [vytvořit image](capture-image-resource.md) a pak [pomocí této image vytvořit víc virtuálních počítačů](create-vm-generalized-managed.md).
 
 Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jednoho virtuálního pevného disku nebo snímku. 
 
@@ -51,7 +56,7 @@ Virtuální pevný disk můžete nahrát z specializovaného virtuálního poč�
 ### <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 Použijte virtuální pevný disk tak, jak je, k vytvoření nového virtuálního počítače. 
   
-  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Neprovádějte generalizaci** virtuálního počítače pomocí nástroje Sysprep.
+  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md). **Neprovádějte generalizaci** virtuálního počítače pomocí nástroje Sysprep.
   * Odeberte všechny virtualizační nástroje a agenty hosta, které jsou nainstalované na virtuálním počítači (například nástroje VMware).
   * Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby získal IP adresu a nastavení DNS z protokolu DHCP. Tím se zajistí, že při spuštění serveru získá IP adresu v rámci virtuální sítě. 
 
@@ -150,7 +155,7 @@ Vytvořte sítě a další prostředky virtuálních počítačů, které má no
 
 Vytvořte [virtuální síť](../../virtual-network/virtual-networks-overview.md) a podsíť pro virtuální počítač.
 
-1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem *mySubNet*ve skupině prostředků *myDestinationResourceGroup*a nastaví předponu adresy podsítě na *10.0.0.0/24*.
+1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem *mySubNet* ve skupině prostředků *myDestinationResourceGroup* a nastaví předponu adresy podsítě na *10.0.0.0/24*.
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -190,7 +195,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-Další informace o koncových bodech a pravidlech NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o koncových bodech a pravidlech NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Vytvoření veřejné IP adresy a síťové karty
 Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou IP adresu](../../virtual-network/public-ip-addresses.md) a síťové rozhraní.

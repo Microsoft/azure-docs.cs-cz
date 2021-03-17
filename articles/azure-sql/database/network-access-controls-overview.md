@@ -1,7 +1,7 @@
 ---
 title: Řízení přístupu k síti
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics (dřív Azure SQL Data Warehouse).
+description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085459"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460014"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti
 
@@ -42,7 +42,7 @@ V níže uvedeném videu najdete nejdůležitější vysvětlení těchto ovlád
 
 ## <a name="allow-azure-services"></a>Povolení služeb Azure
 
-Během vytváření nového logického serveru SQL Server [z Azure Portal](single-database-create-quickstart.md)je toto nastavení ponecháno nezaškrtnuté.
+Ve výchozím nastavení se při vytváření nového logického SQL serveru [z Azure Portal](single-database-create-quickstart.md)toto nastavení nastaví na **vypnuto**. Toto nastavení se zobrazí, pokud je povoleno připojení pomocí koncového bodu veřejné služby.
 
 Toto nastavení můžete také změnit přes podokno brány firewall po vytvoření logického SQL serveru následujícím způsobem.
   
@@ -56,11 +56,11 @@ To ale má vliv na následující funkce, které běží na virtuálních počí
 
 ### <a name="import-export-service"></a>Import služby export
 
-Služba import exportu nefunguje **, když**je **povolený přístup ke službám Azure** . Problém ale můžete obejít [tak, že ručně spustíte sqlpackage.exe z virtuálního počítače Azure nebo exportujete](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo do kódu pomocí rozhraní API DACFx.
+Služba import exportu nefunguje **, když** je **povolený přístup ke službám Azure** . Problém ale můžete obejít [tak, že ručně spustíte sqlpackage.exe z virtuálního počítače Azure nebo exportujete](./database-import-export-azure-services-off.md) přímo do kódu pomocí rozhraní API DACFx.
 
 ### <a name="data-sync"></a>Synchronizace dat
 
-Chcete-li použít funkci synchronizace dat s nastavením zakázat **přístup ke službám Azure** **, je**třeba vytvořit jednotlivé položky pravidla brány firewall a [Přidat IP adresy](firewall-create-server-level-portal-quickstart.md) ze **značky služby SQL** pro oblast hostující databázi **centra** .
+Chcete-li použít funkci synchronizace dat s nastavením zakázat **přístup ke službám Azure** **, je** třeba vytvořit jednotlivé položky pravidla brány firewall a [Přidat IP adresy](firewall-create-server-level-portal-quickstart.md) ze **značky služby SQL** pro oblast hostující databázi **centra** .
 Přidejte tato pravidla brány firewall na úrovni serveru na servery hostující databázi **centrálních** i **členských** databází (které mohou být v různých oblastech).
 
 Pomocí následujícího skriptu PowerShellu vygenerujte IP adresy odpovídající značce služby SQL pro Západní USA oblast.
@@ -102,7 +102,7 @@ start          end
 13.86.216.192  13.86.216.223
 ```
 
-Nyní je můžete přidat jako jedinečná pravidla brány firewall a potom nastavit možnost **Povolení služeb Azure přístup k serveru** na off.
+Nyní je můžete přidat jako jedinečná pravidla brány firewall a potom nastavit možnost **Povolení služeb Azure přístup k serveru**  na off.
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 
@@ -138,7 +138,7 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 > [!NOTE]
 > V podsíti ještě nemůžete mít SQL Database. Pokud byl váš server uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat s vaším SQL Database. V takovém případě můžou vaše virtuální počítače komunikovat s SQL Database bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
 
-## <a name="private-link"></a>Privátní propojení
+## <a name="private-link"></a>Private Link
 
 Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privátního koncového bodu**. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
 
@@ -148,7 +148,7 @@ Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privá
 
 - Rychlý Start týkající se vytvoření pravidla brány firewall virtuální sítě na úrovni serveru najdete v tématu [Virtual Network koncové body služby a pravidla pro Azure SQL Database](vnet-service-endpoint-rule-overview.md).
 
-- Nápovědu k připojení k databázi v SQL Database z otevřených zdrojů nebo aplikací třetích stran najdete v tématu [ukázky kódu pro rychlý Start klienta k SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- Nápovědu k připojení k databázi v SQL Database z otevřených zdrojů nebo aplikací třetích stran najdete v tématu [ukázky kódu pro rychlý Start klienta k SQL Database](/previous-versions/azure/ee336282(v=azure.100)).
 
 - Informace o dalších portech, které možná budete muset otevřít, najdete v části **SQL Database: mimo rámec a v** části [porty nad 1433 pro ADO.NET 4,5 a SQL Database](adonet-v12-develop-direct-route-ports.md)
 
@@ -159,4 +159,3 @@ Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privá
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
- 

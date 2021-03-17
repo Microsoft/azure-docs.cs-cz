@@ -8,29 +8,25 @@ manager: mtillman
 ms.service: virtual-network
 Customer intent: As an Azure customer, I want to learn more about routing choices for my internet egress traffic.
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 56fd9898065dd55b9a56547a775f7f2aa4a56156
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693726"
 ---
-# <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
+# <a name="what-is-routing-preference"></a>Co je předvolba směrování?
 
 Předvolby směrování Azure vám umožní zvolit způsob přenosu tras mezi Azure a internetem. Provoz můžete směrovat buď přes síť Microsoft, nebo prostřednictvím sítě poskytovatele internetových služeb (veřejný Internet). Tyto možnosti se také označují jako *Směrování studených brambor* a *horké směrování brambor* . Cena za odchozí přenosy dat se liší v závislosti na výběru směrování. Při vytváření veřejné IP adresy můžete zvolit možnost směrování. Veřejná IP adresa může být přidružená k prostředkům, jako jsou virtuální počítače, sady škálování virtuálních počítačů, internetový nástroj pro vyrovnávání zatížení atd. Můžete také nastavit předvolby směrování pro prostředky služby Azure Storage, jako jsou objekty blob, soubory, webové služby a Azure datalake. Ve výchozím nastavení jsou přenosy směrovány prostřednictvím globální sítě Microsoft pro všechny služby Azure.
 
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="routing-via-microsoft-global-network"></a>Směrování prostřednictvím globální sítě Microsoft
 
-Při směrování provozu přes *globální síť Microsoftu*se provoz doručuje přes jednu z největších sítí na celém světě, která pokrývá více než 160 000 mil na vláknu s více než 165 body přítomnosti (pop). Síť je dobře zřízena s několika redundantními vlákny a zajišťuje tak mimořádně vysokou spolehlivost a dostupnost. Technologie provozu je spravovaná softwarem, který je definovaný pro síťový adaptér WAN, který zajišťuje výběr cest s nízkou latencí pro provoz a nabízí špičkový výkon sítě.
+Při směrování provozu přes *globální síť Microsoftu* se provoz doručuje přes jednu z největších sítí na celém světě, která pokrývá více než 160 000 mil na vláknu s více než 165 body přítomnosti (pop). Síť je dobře zřízena s několika redundantními vlákny a zajišťuje tak mimořádně vysokou spolehlivost a dostupnost. Technologie provozu je spravovaná softwarem, který je definovaný pro síťový adaptér WAN, který zajišťuje výběr cest s nízkou latencí pro provoz a nabízí špičkový výkon sítě.
 
 ![Směrování prostřednictvím globální sítě Microsoft](media/routing-preference-overview/route-via-microsoft-global-network.png)
 
@@ -70,30 +66,13 @@ Pro úložiště primární koncové body vždy používají **globální síť 
 * Azure DataLake
 
 ## <a name="pricing"></a>Ceny
-Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) . Směrování přes **veřejný Internet** je levnější, jak je uvedeno v následující tabulce:
+Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) .
 
-| Zdrojová oblast pro výstup | 0-5 GB/měsíc | 5 GB – 10 TB/měsíc | 10-50 TB/měsíc | 50-150 TB/měsíc | 150-500 TB/měsíc |
-| --- | --- | --- | --- | --- | --- |
-| Zóna 1 | $0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
-| Zóna 2 | $0/GB | $0,11/GB | $0.075/GB | $0,07/GB | $0.06/GB  |
-
-[Kontaktujte nás](https://azure.microsoft.com/overview/sales-number/) pro měsíční objemy přes 500 TB.
-* Zóna 1 – střední Austrálie, Austrálie – střed 2, Kanada – střed, Kanada – východ, Severní Evropa, Západní Evropa, Francie – střed, Francie – jih, Německo – sever (Public), Německo – středozápad (veřejný), Norsko – východ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – jih, Velká Británie – západ, střed USA, východní USA, východní USA 2, Střed USA – sever, Střed USA – jih, Západní USA, západní USA 2, středozápadní USA, a.
-
-* Zóna 2 – Východní Asie, jihovýchodní Asie, Austrálie – východ, Austrálie – jihovýchod, Střed Indie, Jižní Indie, Západní Indie, Japonsko – východ, Japonsko – západ, Korea – střed a Jižní Korea.
-
-* Zóna 3 – Brazílie – jih, Jižní Afrika – sever, Jižní Afrika – západ, Spojené arabské emiráty střed a Spojené arabské emiráty sever.
-
-## <a name="availability"></a>Dostupnost
-
-Podpora předvoleb směrování je dostupná v následujících oblastech pro služby, jako je virtuální počítač a internetový nástroj pro vyrovnávání zatížení, který používá veřejnou IP adresu pro internetovou odchozí Severní Evropa, Západní Evropa, Francii jih, Velká Británie – jih, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA, Středozápadní USA, jihovýchodní Asie, Německo – středozápad, Švýcarsko – západ, Japonsko – východ a Japonsko – západ.
-
-Podpora předvoleb směrování pro účet úložiště je k dispozici v následujících oblastech Azure – Střed USA – sever, Středozápadní USA, Střed USA – jih Východní USA, Západní USA, Severní Evropa, Francie – jih, Německo – středozápad, Švýcarsko – západ, Jižní Východní Asie, Japonsko – východ a Japonsko – západ.
 ## <a name="limitations"></a>Omezení
 
-* Preference směrování je kompatibilní jenom se standardní SKU veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.
+
+* Preference směrování je kompatibilní jenom se standardní SKU zóny s redundantními verzemi veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.
 * Preference směrování aktuálně podporuje jenom veřejné IP adresy IPv4. Veřejné IP adresy protokolu IPv6 nejsou podporovány.
-* Virtuální počítače s několika síťovými kartami můžou mít jenom jeden typ předvolby směrování.
 
 
 ## <a name="next-steps"></a>Další kroky

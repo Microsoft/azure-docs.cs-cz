@@ -3,25 +3,27 @@ title: Připojení k Azure Media Services V3 API – Python
 description: Tento článek ukazuje, jak se připojit k rozhraní Media Services V3 API pomocí Pythonu.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: juliako
+ms.topic: how-to
+ms.date: 11/18/2020
+ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 834d87f607ca65a9d9e0ebee12d2772f5baf7949
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849637"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916742"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Připojení k Media Services V3 API – Python
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Python SDK pomocí metody přihlašování instančního objektu.
 
@@ -42,11 +44,13 @@ Pokud chcete pracovat s Azure Media Services pomocí Pythonu, musíte tyto modul
 * `azure-mgmt-resource`Modul, který zahrnuje moduly Azure pro Active Directory.
 * `azure-mgmt-media`Modul, který obsahuje entity Media Services.
 
+    Nezapomeňte získat [nejnovější verzi sady Media Services SDK pro Python](https://pypi.org/project/azure-mgmt-media/).
+
 Otevřete nástroj příkazového řádku a pomocí následujících příkazů nainstalujte moduly.
 
 ```
 pip3 install azure-mgmt-resource
-pip3 install azure-mgmt-media==1.1.1
+pip3 install azure-mgmt-media==3.0.0
 ```
 
 ## <a name="connect-to-the-python-client"></a>Připojení k klientovi Python
@@ -105,4 +109,4 @@ pip3 install azure-mgmt-media==1.1.1
 ## <a name="next-steps"></a>Další kroky
 
 - Použijte [Python SDK](https://aka.ms/ams-v3-python-sdk).
-- Přečtěte si referenční dokumentaci k Media Services [Pythonu](https://aka.ms/ams-v3-python-ref) .
+- Přečtěte si referenční dokumentaci k Media Services [Pythonu](/python/api/overview/azure/mediaservices/management) .

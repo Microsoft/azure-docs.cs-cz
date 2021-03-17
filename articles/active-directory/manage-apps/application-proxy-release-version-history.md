@@ -1,35 +1,36 @@
 ---
-title: 'Azure Proxy aplikací služby AD: Historie verzí'
-description: V tomto článku jsou uvedené všechny verze Azure Proxy aplikací služby AD a popisuje nové funkce a opravené problémy.
+title: 'Proxy aplikací služby Azure Active Directory: Historie vydání verze'
+description: Tento článek obsahuje seznam všech verzí Proxy aplikací služby Azure Active Directory a popisuje nové funkce a opravené problémy.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/17/2021
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.reviewer: japere
+ms.openlocfilehash: 0244e0ca66f452649d3136eb122d1c2666182ae2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210858"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200972"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure Proxy aplikací služby AD: Historie verzí
 V tomto článku jsou uvedeny verze a funkce služby Azure Active Directory (Azure AD) proxy aplikací, které byly vydány. Tým Azure AD pravidelně aktualizuje proxy aplikace s novými funkcemi a funkcemi. Konektory proxy aplikací se aktualizují automaticky, když se uvolní nová verze. 
 
-Doporučujeme, abyste se ujistili, že pro vaše konektory jsou povolené automatické aktualizace, abyste měli jistotu, že máte nejnovější funkce a opravy chyb. Společnost Microsoft poskytuje přímou podporu pro poslední verzi konektoru a jednu verzi.
+Doporučujeme, abyste se ujistili, že pro vaše konektory jsou povolené automatické aktualizace, abyste měli jistotu, že máte nejnovější funkce a opravy chyb. Společnost Microsoft poskytuje přímou podporu pro nejnovější verzi konektoru a jednu verzi.
 
 Tady je seznam souvisejících prostředků:
 
-Prostředek |  Podrobnosti
---------- | --------- |
-Jak povolit proxy aplikace | V tomto [kurzu](application-proxy-add-on-premises-application.md)jsou popsány předpoklady pro povolení proxy aplikací a instalace a registrace konektoru.
-Vysvětlení konektorů Azure Proxy aplikací služby AD | Přečtěte si další informace o [správě konektorů](application-proxy-connectors.md) a o tom, jak konektory [automaticky upgradují](application-proxy-connectors.md#automatic-updates).
-Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si nejnovější konektor](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+| Prostředek                                         | Podrobnosti                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Jak povolit proxy aplikace                  | V tomto [kurzu](application-proxy-add-on-premises-application.md)jsou popsány předpoklady pro povolení proxy aplikací a instalace a registrace konektoru. |
+| Vysvětlení konektorů Azure Proxy aplikací služby AD | Přečtěte si další informace o [správě konektorů](application-proxy-connectors.md) a o tom, jak konektory [automaticky upgradují](application-proxy-connectors.md#automatic-updates). |
+| Stažení konektoru služby Azure Proxy aplikací služby AD    | [Stáhněte si nejnovější konektor](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download). |
 
 ## <a name="1519750"></a>1.5.1975.0
 
@@ -38,13 +39,14 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 22. července 2020: vydáno ke stažení Tato verze je k dispozici pouze pro instalaci prostřednictvím stránky pro stažení. Vydání této verze se automaticky aktualizuje na pozdější dobu.
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
--   Vylepšená podpora pro Azure Government cloudová prostředí. Postup, jak správně nainstalovat konektor pro Azure Government Cloud, najdete v části [požadavky](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [kroky instalace](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud).
+-   Vylepšená podpora pro Azure Government cloudová prostředí. Postup, jak správně nainstalovat konektor pro Azure Government Cloud, najdete v části [požadavky](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) a [kroky instalace](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
 - Podpora používání webového klienta služby Vzdálená plocha s proxy aplikací. Další podrobnosti najdete v tématu věnovaném [publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-remote-desktop-services.md) .
 - Vylepšená vyjednávání rozšíření protokolu WebSocket. 
+- Podpora optimalizovaného směrování mezi skupinami konektorů a cloudovou službou aplikačního proxy serveru na základě oblasti. Další podrobnosti najdete v tématu věnovaném [optimalizaci toku provozu pomocí proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md) . 
 
 ### <a name="fixed-issues"></a>Opravené problémy
 - Opravili jsme problém protokolu WebSocket, který vynutil řetězce v malých písmenech.
-- Opravili jsme problém, který způsobil, že konektory occassionally nereagující.
+- Opravili jsme problém, který způsobuje, že konektory občas nereagují.
 
 ## <a name="1516260"></a>1.5.1626.0
 
@@ -60,7 +62,7 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 
 ### <a name="release-status"></a>Stav verze
 
-7. dubna 2020: vydáno ke stažení
+7. dubna 2020: vydáno ke stažení Tato verze je k dispozici pouze pro instalaci prostřednictvím stránky pro stažení. Vydání této verze se automaticky aktualizuje na pozdější dobu.
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 -   Konektory používají pouze TLS 1,2 pro všechna připojení. Další podrobnosti najdete v tématu [požadavky konektoru](application-proxy-add-on-premises-application.md#prerequisites) .
@@ -83,7 +85,7 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 - Přidání podpory protokolu WebSocket pro aplikaci QlikSense Další informace o tom, jak integrovat QlikSense s proxy aplikací, najdete v tomto [návodu](application-proxy-qlik.md). 
 - Vylepšený průvodce instalací, který usnadňuje konfiguraci odchozího proxy serveru. 
 - Jako výchozí protokol pro konektory nastavte TLS 1,2. 
-- Přidala se nová licenční smlouva s koncovým uživatelem (EULA).  
+- Přidání nové licenční smlouvy End-User (EULA).  
 
 ### <a name="fixed-issues"></a>Opravené problémy
 

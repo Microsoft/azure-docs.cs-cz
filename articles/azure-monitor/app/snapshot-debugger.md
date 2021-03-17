@@ -2,19 +2,22 @@
 title: Azure Application Insights Snapshot Debugger pro aplikace .NET
 description: Snímky ladění se automaticky shromažďují, pokud jsou výjimky vyvolané v produkčních aplikacích .NET.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
+author: cweining
+ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325640"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217393"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](./app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](./asp-net-exceptions.md) na portálu Application Insights.
 
-Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat výkonnější možnosti ladění pomocí zdrojového kódu, otevřete snímky v aplikaci Visual Studio 2019 Enterprise. V sadě Visual Studio můžete také [nastavit snímkovací body pro interaktivní pořizování snímků](https://aka.ms/snappoint) bez čekání na výjimku.
+Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat výkonnější možnosti ladění pomocí zdrojového kódu, otevřete snímky v aplikaci Visual Studio 2019 Enterprise. V sadě Visual Studio můžete také [nastavit snímkovací body pro interaktivní pořizování snímků](/visualstudio/debugger/debug-live-azure-applications) bez čekání na výjimku.
 
 Snímky ladění se ukládají po dobu 15 dnů. Tyto zásady uchovávání informací se nastavují na základě jednotlivých aplikací. Pokud potřebujete tuto hodnotu zvýšit, můžete požádat o zvýšení otevřením případu podpory v Azure Portal.
 
@@ -26,6 +29,7 @@ Kolekce snímků je k dispozici pro:
 Podporují se následující prostředí:
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
+* [Funkce Azure Functions](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) s operačním systémem 4 nebo novějším.
 * [Služby Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) spuštěné v systému Windows Server 2012 R2 nebo novějším
 * [Azure Virtual Machines a sada škálování virtuálních počítačů](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) s Windows Serverem 2012 R2 nebo novějším
@@ -38,7 +42,7 @@ Pokud jste povolili Snapshot Debugger, ale nevidíte snímky, podívejte se na n
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Přístup ke snímkům je chráněný řízením přístupu na základě role (RBAC). Abyste mohli prozkoumat snímek, vlastník předplatného vás nejprve musí přidat do potřebné role.
+Přístup k snímkům je chráněn řízením přístupu na základě role Azure (Azure RBAC). Abyste mohli prozkoumat snímek, vlastník předplatného vás nejprve musí přidat do potřebné role.
 
 > [!NOTE]
 > Vlastníci a přispěvatelé tuto roli automaticky nemají. Pokud chtějí snímky zobrazit, musí se do této role přidat sami.
@@ -131,6 +135,7 @@ V Azure App Services však Snapshot Collector může deoptimalizovat vyvolání 
 Povolit pro aplikaci Application Insights Snapshot Debugger:
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
+* [Funkce Azure Functions](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Služby Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines a Virtual Machine Scale Sets](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -141,4 +146,3 @@ Nad Application Insights Snapshot Debugger:
 * [Nastavte snímkovací body v kódu](/visualstudio/debugger/debug-live-azure-applications) pro získání snímků bez čekání na výjimku.
 * [Diagnostika výjimek ve vašich webových aplikacích](./asp-net-exceptions.md) vysvětluje, jak je možné Application Insights zobrazit další výjimky.
 * [Inteligentní zjišťování](./proactive-diagnostics.md) automaticky zjišťuje anomálie výkonu.
-

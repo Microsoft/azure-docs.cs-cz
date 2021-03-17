@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Relay | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé z nejčastějších dotazů týkajících se služby Azure Relay.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317020"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250043"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -50,7 +50,6 @@ Tady jsou tři příklady scénářů fakturace pro Hybrid Connections:
     *   V průběhu tohoto měsíce odesíláte 6 GB dat napříč připojením B.
     *   Vaše celková cena je $10,50. To je $5 pro připojení A + $5 pro připojení B + $0,50 (za šest GB u připojení B).
 
-Všimněte si, že ceny použité v příkladech platí jenom během období Hybrid Connections Preview. Ceny se mohou po obecné dostupnosti Hybrid Connections změnit.
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Jak se počítají hodiny pro přenos?
 
@@ -69,9 +68,9 @@ Odeslání zprávy do Azure Relay je považováno za "úplného" odesílané nas
 Přenosy, které jsou otevřeny pomocí vazby WCF **netTCPRelay** , považují zprávy za jednotlivé zprávy, ale jako proud dat přenášených systémem. Použijete-li tuto vazbu, pouze odesílatel a naslouchací proces budou mít přehled o rámcích jednotlivých odeslaných a přijímaných zpráv. U přenosů, které používají vazbu **netTCPRelay** , se všechna data považují za datový proud pro výpočet fakturovatelných zpráv. V takovém případě Service Bus vypočítá celkové množství dat odesílaných nebo přijatých prostřednictvím každého jednotlivého přenosu po dobu 5 minut. Pak rozdělí celkový objem dat o 64 KB, aby bylo možné určit počet fakturovaných zpráv pro tento přenos během daného časového období.
 
 ## <a name="quotas"></a>Kvóty
-| Název kvóty | Rozsah |  Poznámky | Hodnota |
+| Název kvóty | Obor |  Poznámky | Hodnota |
 | --- | --- | --- | --- |
-| Souběžné naslouchací procesy na Relay |Entita |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |25 |
+| Souběžné naslouchací procesy na Relay |Entita (hybridní připojení nebo WCF Relay) |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |25 |
 | Souběžná připojení přenosu na všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5 000 |
 | Koncové body Relay na obor názvů služby |Obor názvů |- |10 000 |
 | Velikost zprávy pro předávání [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Obor názvů |Příchozí zprávy, které překračují tyto kvóty, se odmítnou a volající kód obdrží výjimku. |64 kB |
@@ -93,7 +92,7 @@ Název oboru názvů přenosu musí mít délku 6 až 50 znaků.
 
 Pokud chcete přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, můžete použít [Azure Portal](https://portal.azure.com) nebo použít příkazy PowerShellu. Chcete-li přesunout obor názvů do jiného předplatného, obor názvů již musí být aktivní. Uživatel, který spouští příkazy, musí být uživatel s oprávněním správce na zdrojovém i cílovém předplatném.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure Portal
 
 Pokud chcete použít Azure Portal k migraci Azure Relay oborů názvů z jednoho předplatného do jiného předplatného, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
@@ -119,8 +118,8 @@ Popis běžných výjimek a navrhovaných akcí, které můžete provést, najde
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co je sdílený přístupový podpis a které jazyky můžu použít k vygenerování podpisu?
 Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node.js, PHP, Pythonu, Java, C a C#, najdete v tématu [ověřování Service Bus pomocí sdílených přístupových podpisů][Shared Access Signatures].
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Je možné do seznamu povolených koncových bodů přenosu povolit?
-Ano. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam povolených DNS.
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Je možné umožnit pouze některé koncové body přenosu?
+Yes. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam schválení DNS.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření oboru názvů](relay-create-namespace-portal.md)

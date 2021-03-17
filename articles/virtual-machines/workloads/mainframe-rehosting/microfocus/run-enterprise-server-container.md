@@ -1,7 +1,7 @@
 ---
 title: Provozování Micro Enterprise serveru 5,0 v kontejneru Docker v Azure | Microsoft Docs
-description: Přehostování úloh sálového počítače IBM z/OS pomocí vývojového a testovacího prostředí pro Azure na virtuálních počítačích Azure (virtuální počítače).
-services: virtual-machines-linux
+description: V tomto článku se dozvíte, jak spustit Micro Enterprise Server 5,0 v kontejneru Docker na Microsoft Azure.
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c436eae53b16c980e9725cfef0573367d144842
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083459"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548372"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Provozování Micro Enterprise serveru 5,0 v kontejneru Docker v Azure
 
@@ -27,7 +27,7 @@ Docker přidá do aplikací přenositelnost a izolaci. Můžete například expo
 
 V tomto kurzu se do **Windows 2016 Datacenter** nainstaluje virtuální počítač s kontejnery z Azure Marketplace. Tento virtuální počítač obsahuje **Docker 18.09.0**. Následující postup ukazuje, jak nasadit kontejner, spustit ho a pak se k němu připojit pomocí emulátoru 3270.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, podívejte se na tyto požadavky:
 
@@ -54,9 +54,9 @@ Než začnete, podívejte se na tyto požadavky:
 
     2.  Vyberte **oblast** a **skupinu prostředků** , do které chcete nasadit.
 
-    3.  Pro **Možnosti dostupnosti**použijte výchozí nastavení.
+    3.  Pro **Možnosti dostupnosti** použijte výchozí nastavení.
 
-    4.  Jako **uživatelské jméno**zadejte účet správce, který chcete použít, a heslo.
+    4.  Jako **uživatelské jméno** zadejte účet správce, který chcete použít, a heslo.
 
     5.  Ujistěte se, že je **port 3389 RDP** otevřený. Pouze tento port musí být veřejně vystavený, takže se můžete přihlásit k virtuálnímu počítači. Pak přijměte všechny výchozí hodnoty a klikněte na tlačítko **zkontrolovat + vytvořit**.
 
@@ -75,7 +75,7 @@ Než začnete, podívejte se na tyto požadavky:
     > [!Note]    
     > Nepoužívejte své podnikové přihlašovací údaje pro přihlášení. (Klient RDP předpokládá, že je budete chtít použít. Nebudete.)
 
-9.  Vyberte **Další volby**a pak vyberte přihlašovací údaje k virtuálnímu počítači.
+9.  Vyberte **Další volby** a pak vyberte přihlašovací údaje k virtuálnímu počítači.
 
 V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP. Jste přihlášení a připraveni k dalšímu kroku.
 
@@ -83,9 +83,9 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
 1.  Na virtuálním počítači vytvořte adresář, do kterého můžete nahrát ukázku a licenční soubory. Například **C: \\ Sandbox**.
 
-2.  Nahrajte ** \_ \_ fázemi \_ 5,0 \_windows.zip** a soubor **ES-Docker-prod-xxxxxxxx. mflic** do adresáře, který jste vytvořili.
+2.  Nahrajte **\_ \_ fázemi \_ 5,0 \_windows.zip** a soubor **ES-Docker-prod-xxxxxxxx. mflic** do adresáře, který jste vytvořili.
 
-3.  Extrahujte obsah souboru zip do adresáře ** \_ \_ fázemi \_ 5,0 \_ systému Windows** vytvořeného procesem extrakce. Tento adresář obsahuje soubor Readme (jako soubor. html a. txt) a dva podadresáře, **EnterpriseServer** a **Příklady**.
+3.  Extrahujte obsah souboru zip do adresáře **\_ \_ fázemi \_ 5,0 \_ systému Windows** vytvořeného procesem extrakce. Tento adresář obsahuje soubor Readme (jako soubor. html a. txt) a dva podadresáře, **EnterpriseServer** a **Příklady**.
 
 4.  Zkopírujte **ES-Docker-prod-xxxxxxxx. mflic** do C: \\ izolovaného prostoru (sandbox) \\ \_ \_ fázemi \_ 5,0 \_ Windows \\ EnterpriseServer a c: \\ izolovaný Server izolovaného \\ \_ serveru \_ fázemi \_ 5,0 \_ Windows \\ Příklady \\ CICS adresářů.  
       
@@ -109,7 +109,7 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
     ![okno Příkaz zobrazování imagí](./media/run-image-3.png)
 
-5.  Pokud chcete vytvořit finální image pro ukázku CICS, přepněte do adresáře CICS zadáním fázemi ** \\ sandboxu pro \\ \_ \_ \_ Windows 5,0 \_ Windows \\ Examples \\ CICS**.
+5.  Pokud chcete vytvořit finální image pro ukázku CICS, přepněte do adresáře CICS zadáním fázemi **\\ sandboxu pro \\ \_ \_ \_ Windows 5,0 \_ Windows \\ Examples \\ CICS**.
 
 6.  Chcete-li vytvořit bitovou kopii, zadejte **bld.bat x64**. Počkejte několik minut, než se proces spustí, a zobrazí se zpráva oznamující, že se image vytvořila.
 
@@ -121,27 +121,27 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
 1.  Pokud chcete spustit podnikový server 5,0 a aplikaci acctdemo, zadejte na příkazovém řádku tento příkaz:
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  Nainstalujte emulátor terminálu 3270, například [x3270](http://x3270.bgp.nu/) , a použijte ho k připojení přes port 9040 k imagi, která je spuštěná.
 
 2.  Získejte IP adresu kontejneru acctdemo, takže Docker může fungovat jako server DHCP (Dynamic Host Configuration Protocol) pro kontejnery, které spravuje:
 
-    1.  Získá ID běžícího kontejneru. Do příkazového řádku zadejte **Docker PS** a poznamenejte si ID (v tomto příkladu**22a0fe3159d0** ). Uložte si ho pro další krok.
+    1.  Získá ID běžícího kontejneru. Do příkazového řádku zadejte **Docker PS** a poznamenejte si ID (v tomto příkladu **22a0fe3159d0** ). Uložte si ho pro další krok.
 
     2.  K získání IP adresy pro kontejner acctdemo použijte ID kontejneru z předchozího kroku následujícím způsobem:
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
-    Příklad:
+    Například:
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. Poznamenejte si IP adresu pro obrázek acctdemo. Například adresa v následujícím výstupu je 172.19.202.52.
 
@@ -157,11 +157,11 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
 8. Chcete-li spustit aplikaci acctdemo, zadejte **Acct**. Zobrazí se úvodní obrazovka aplikace.
 
-     ![Snímek obrazovky s ukázkou účtu](./media/run-image-7.png)
+     ![Snímek obrazovky zobrazující okno konzoly, ve kterém se aplikace zobrazuje.](./media/run-image-7.png)
 
 9. Experimentujte s typy účtů zobrazení. Například zadejte **D** pro požadavek a **11111** pro **účet**. Další čísla účtů k vyzkoušení jsou 22222, 33333 a tak dále.
 
-    ![Snímek obrazovky s ukázkou účtu](./media/run-image-8.png)
+    ![Snímek obrazovky ukazuje úpravy různých hodnot v aplikaci.](./media/run-image-8.png)
 
 10. Pokud chcete zobrazit konzolu pro správu podnikového serveru, otevřete příkazový řádek a zadejte příkaz **Start http: 172.19.202.52:86**.
 

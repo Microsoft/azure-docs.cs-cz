@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050365"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999423"
 ---
-Tato funkce se snadno nastavuje, ale to neznamená, že vaše prostředí bude mít problém zdarma. Pokud narazíte na problémy s přístupem k požadovanému koncovému bodu, můžete použít k otestování připojení z konzoly aplikace některé nástroje. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, navštivte **Nástroj nástroje**  >  **Kudu**. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu **ladit konzolu** . Pokud se chcete dostat do konzoly hostované pro Azure Portal z vaší aplikace, pokračujte **Tools**v  >  **konzole**nástroje.
+Tato funkce se snadno nastavuje, ale to neznamená, že vaše prostředí bude mít problém zdarma. Pokud narazíte na problémy s přístupem k požadovanému koncovému bodu, můžete použít k otestování připojení z konzoly aplikace některé nástroje. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, navštivte **Nástroj nástroje**  >  **Kudu**. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu **ladit konzolu** . Pokud se chcete dostat do konzoly hostované pro Azure Portal z vaší aplikace, pokračujte **Tools** v  >  **konzole** nástroje.
 
 #### <a name="tools"></a>nástroje
-Nástroje **příkazového testu**, **nslookup**a **tracert** nefungují prostřednictvím konzoly z důvodu omezení zabezpečení. K vyplnění void se přidají dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem **nameresolver.exe**. Syntaxe je:
+V nativních aplikacích pro Windows nebudou nástroje **příkazového testu, příkazy** **nslookup** a **tracert** fungovat prostřednictvím konzoly z důvodu omezení zabezpečení (pracují ve [vlastních kontejnerech Windows](../articles/app-service/quickstart-custom-container.md)). K vyplnění void se přidají dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem **nameresolver.exe**. Syntaxe je:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 Nameresolver můžete použít ke kontrole názvů hostitelů, na kterých vaše aplikace závisí. Tímto způsobem můžete testovat, jestli máte nějaké nesprávně nakonfigurované služby DNS nebo možná nemáte přístup k vašemu serveru DNS. Server DNS, který vaše aplikace používá, můžete zobrazit v konzole nástroje tak, že prohlížíte proměnné prostředí WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER.
+
+> [!NOTE]
+> nameresolver.exe v současnosti nefungují v vlastních kontejnerech Windows.
+>
 
 K otestování připojení TCP k hostitelskému a kombinaci portů můžete použít další nástroj. Tento nástroj se nazývá **tcpping** a syntaxe je:
 
@@ -42,7 +46,7 @@ Pokud tyto položky neodpovídají na vaše problémy, podívejte se na první v
 * Je vaše cílové místo na RFC1918 adrese a nemáte WEBSITE_VNET_ROUTE_ALL nastavené na 1?
 * Existuje NSG blokující výstup z podsítě integrace?
 * Pokud pracujete v rámci Azure ExpressRoute nebo VPN, je místní brána nakonfigurovaná tak, aby směrovala provoz zpět do Azure? Pokud máte přístup k koncovým bodům ve vaší virtuální síti, ale ne v místním prostředí, Projděte si své trasy.
-* Máte dostatečná oprávnění k nastavení delegování v podsíti Integration? Během konfigurace integrace místní virtuální sítě je vaše podsíť integrace delegována na Microsoft. Web. Uživatelské rozhraní integrace virtuální sítě deleguje podsíť na Microsoft. Web automaticky. Pokud váš účet nemá dostatečná síťová oprávnění k nastavení delegování, budete potřebovat někoho, kdo může nastavit atributy v podsíti Integration pro delegování podsítě. Pokud chcete integrační podsíť manuálně delegovat, vyhledejte v uživatelském rozhraní podsítě Azure Virtual Network a nastavte delegování pro Microsoft. Web.
+* Máte dostatečná oprávnění k nastavení delegování v podsíti Integration? Během konfigurace integrace místní virtuální sítě je vaše podsíť integrace delegovaná na Microsoft. Web/serverových farem. Rozhraní Integration UI virtuální sítě deleguje podsíť do Microsoftu. Web/serverových farem automaticky. Pokud váš účet nemá dostatečná síťová oprávnění k nastavení delegování, budete potřebovat někoho, kdo může nastavit atributy v podsíti Integration pro delegování podsítě. Pokud chcete integrační podsíť manuálně delegovat, vyhledejte v uživatelském rozhraní podsítě Azure Virtual Network a nastavte delegování pro Microsoft. Web/serverových farem.
 
 **Brána – požadovaná integrace virtuální sítě**
 * Je rozsah adres Point-to-site v rozsahu RFC 1918 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?

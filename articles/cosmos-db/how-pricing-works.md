@@ -6,20 +6,21 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 573fc4fac413ceed50246bc6fb8df1d9db021c94
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605254"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247450"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Cenový model služby Azure Cosmos DB zjednodušuje správu a plánování nákladů. S Azure Cosmos DB platíte za operace, které v databázi provedete, a pro úložiště spotřebované Vašimi daty.
 
 - **Databázové operace**: způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
 
-  - **Zajištěná propustnost**: [zajištěná](set-throughput.md) propustnost (označovaná také jako rezervovaná propustnost) zaručuje vysoký výkon v jakémkoli měřítku. Zadáte propustnost, kterou potřebujete v [jednotkách žádosti](request-units.md) za sekundu (ru/s), a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Propustnost můžete [zřídit buď pro databázi, nebo pro kontejner](set-throughput.md). V závislosti na potřebách úloh můžete kdykoli škálovat propustnost nahoru nebo dolů nebo použít [Automatické škálování](provision-throughput-autoscale.md) (i když je v databázi nebo kontejneru zajištěná minimální propustnost, která zaručuje SLA). Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
+  - **Zajištěná propustnost**: [zajištěná](set-throughput.md) propustnost (označovaná také jako rezervovaná propustnost) poskytuje vysoký výkon v jakémkoli měřítku. Zadáte propustnost, kterou potřebujete v [jednotkách žádosti](request-units.md) za sekundu (ru/s), a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Propustnost můžete [zřídit buď pro databázi, nebo pro kontejner](set-throughput.md). V závislosti na potřebách úloh můžete kdykoli škálovat propustnost nahoru nebo dolů nebo použít [Automatické škálování](provision-throughput-autoscale.md) (i když je v databázi nebo kontejneru zajištěná minimální propustnost, která zaručuje SLA). Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
 
    > [!NOTE]
    > Vzhledem k tomu, že model zřízené propustnosti vyhradí prostředky pro váš kontejner nebo databázi, bude se vám účtovat propustnost, kterou jste zřídili, i když nespustíte žádné úlohy.
@@ -36,9 +37,9 @@ Pokud účet Azure Cosmos DB nasadíte do oblasti mimo státní správu v USA, j
 
 Azure Cosmos DB nabízí zdarma mnoho možností pro vývojáře. K těmto možnostem patří:
 
-* **Azure Cosmos DB úroveň Free**: Azure Cosmos dB úrovně Free usnadňuje začátek, vývoj a testování aplikací nebo dokonce i spouštění malých produkčních úloh zdarma. Pokud je na účtu povolená úroveň Free, získáte po dobu životnosti účtu prvních 400 RU/s a 5 GB úložiště v účtu Free. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](manage-sql-with-resource-manager.md#free-tier).
+* **Azure Cosmos DB úroveň Free**: Azure Cosmos dB úrovně Free usnadňuje začátek, vývoj a testování aplikací nebo dokonce i spouštění malých produkčních úloh zdarma. Pokud je na účtu povolená úroveň Free, získáte po dobu životnosti účtu prvních 400 RU/s a 5 GB úložiště v účtu Free. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](./manage-with-templates.md#free-tier).
 
-* **Bezplatný účet Azure**: Azure nabízí [bezplatnou úroveň](https://azure.microsoft.com/free/) , která vám poskytne $200 kredity Azure během prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Další informace najdete na stránce [bezplatného účtu Azure](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB je součástí bezplatného účtu Azure. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 5 GB úložiště a 400 RU/s zřízené propustnost po celý rok.
+* **Bezplatný účet Azure**: Azure nabízí [bezplatnou úroveň](https://azure.microsoft.com/free/) , která vám poskytne $200 kredity Azure během prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Další informace najdete na stránce [bezplatného účtu Azure](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB je součástí bezplatného účtu Azure. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 25 GB úložiště a 400 RU/s zřízené propustnost po celý rok.
 
 * **Vyzkoušejte si Azure Cosmos DB zdarma**: Azure Cosmos DB nabízí časově omezené prostředí pomocí funkce vyzkoušet Azure Cosmos DB pro bezplatné účty. Můžete vytvořit účet Azure Cosmos DB, vytvořit databázi a kolekce a spustit ukázkovou aplikaci pomocí rychlých startů a kurzů. Ukázkovou aplikaci můžete spustit bez přihlášení k odběru účtu Azure nebo pomocí platební karty. [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) nabízených nabídek Azure Cosmos DB po dobu jednoho měsíce, s možností obnovit účet několikrát.
 
@@ -59,7 +60,7 @@ Další informace o optimalizaci nákladů na prostředky Azure Cosmos DB najdet
 * Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
 * Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na dotazy](./optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na účty Cosmos s více oblastmi](optimize-cost-regions.md)
 * Další informace o [Azure Cosmos DB rezervované kapacity](cosmos-db-reserved-capacity.md)
 * Další informace o [emulátoru Azure Cosmos DB](local-emulator.md)

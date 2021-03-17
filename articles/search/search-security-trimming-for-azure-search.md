@@ -1,19 +1,19 @@
 ---
 title: Filtry zabezpečení pro oříznutí výsledků
 titleSuffix: Azure Cognitive Search
-description: Oprávnění zabezpečení na úrovni dokumentu pro Azure Kognitivní hledání výsledky hledání pomocí filtrů zabezpečení a identit uživatelů.
+description: Naučte se implementovat oprávnění zabezpečení na úrovni dokumentu pro Azure Kognitivní hledání výsledky hledání pomocí filtrů zabezpečení a identit uživatelů.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 12/16/2020
+ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496413"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631799"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Filtry zabezpečení pro oříznutí výsledků v Azure Kognitivní hledání
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak provést filtrování zabezpečení pomocí n�
 >[!NOTE]
 > V tomto dokumentu se nezabývá proces načítání hlavních identifikátorů. Měli byste ho získat od poskytovatele služby identity.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F),[službu Azure kognitivní hledání](search-create-service-portal.md)a [index](search-what-is-an-index.md).  
 
@@ -62,7 +62,7 @@ Dokumenty musí obsahovat pole určující, které skupiny mají přístup. Tyto
   
 Vydejte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. Tělo požadavku HTTP je objekt JSON, který obsahuje dokumenty, které se mají přidat:
 
-```
+```http
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
@@ -109,18 +109,19 @@ Pokud potřebujete aktualizovat existující dokument se seznamem skupin, může
 }
 ```
 
-Pokud chcete zobrazit úplné podrobnosti o přidávání nebo aktualizaci dokumentů, můžete si přečíst [dokument upravit](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
-   
+Pokud chcete zobrazit úplné podrobnosti o přidávání nebo aktualizaci dokumentů, můžete si přečíst [dokument upravit](/rest/api/searchservice/addupdate-or-delete-documents).
+
 ## <a name="apply-the-security-filter"></a>Použít filtr zabezpečení
 
 Aby bylo možné oříznout dokumenty na základě `group_ids` přístupu, měli byste vydávat vyhledávací dotaz s `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtrem, kde ' group_id1, group_id2,... ' jsou skupiny, do kterých patří Vydavatel žádosti o vyhledávání.
+
 Tento filtr odpovídá všem dokumentům, pro které `group_ids` pole obsahuje jeden z daných identifikátorů.
-Úplné informace o prohledávání dokumentů pomocí Azure Kognitivní hledání najdete v [dokumentu pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Úplné informace o prohledávání dokumentů pomocí Azure Kognitivní hledání najdete v [dokumentu pro hledání](/rest/api/searchservice/search-documents).
 Všimněte si, že v této ukázce se dozvíte, jak vyhledávat dokumenty pomocí žádosti POST.
 
 Vydejte požadavek HTTP POST:
 
-```
+```http
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
@@ -152,12 +153,12 @@ Dokumenty byste měli získat zpátky tam, kde `group_ids` obsahuje buď "group_
  ]
 }
 ```
-## <a name="conclusion"></a>Závěr
 
-To je způsob, jak můžete filtrovat výsledky na základě identity uživatelů a funkce Azure Kognitivní hledání `search.in()` . Pomocí této funkce můžete předat základní identifikátory pro žádajícího uživatele, aby odpovídaly identifikátorům zabezpečení, které jsou přidruženy k jednotlivým cílovým dokumentům. Když je zpracován požadavek hledání, `search.in` funkce vyfiltruje výsledky hledání, pro které žádný z objektů zabezpečení uživatele nemá oprávnění ke čtení. Hlavní identifikátory můžou představovat například skupiny zabezpečení, role nebo dokonce vlastní identitu uživatele.
- 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-+ [Řízení přístupu na základě identity ve službě Active Directory s využitím filtrů Azure Kognitivní hledání](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filtry v Azure Kognitivní hledání](search-filters.md)
-+ [Zabezpečení a řízení přístupu k datům v Azure Kognitivní hledáních operacích](search-security-overview.md)
+Tento článek popisuje vzor pro filtrování výsledků na základě identity uživatele a `search.in()` funkce. Pomocí této funkce můžete předat základní identifikátory pro žádajícího uživatele, aby odpovídaly identifikátorům zabezpečení, které jsou přidruženy k jednotlivým cílovým dokumentům. Když je zpracován požadavek hledání, `search.in` funkce vyfiltruje výsledky hledání, pro které žádný z objektů zabezpečení uživatele nemá oprávnění ke čtení. Hlavní identifikátory můžou představovat například skupiny zabezpečení, role nebo dokonce vlastní identitu uživatele.
+
+Alternativní vzor založený na službě Active Directory nebo další funkce zabezpečení najdete na následujících odkazech.
+
+* [Filtry zabezpečení pro oříznutí výsledků pomocí identit služby Active Directory](search-security-trimming-for-azure-search-with-aad.md)
+* [Zabezpečení v Azure Kognitivní hledání](search-security-overview.md)

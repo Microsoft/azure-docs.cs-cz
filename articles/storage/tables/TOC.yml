@@ -1,12 +1,12 @@
 - name: Dokumentace ke službě Azure Table Storage
-  href: /azure/storage/tables/
+  href: ./index.yml
 - name: Přehled
   expanded: true
   items:
     - name: Přehled služby Azure Table Storage
       href: table-storage-overview.md
     - name: Volba Table Storage nebo Table API
-      href: /azure/cosmos-db/table-support
+      href: ../../cosmos-db/table-support.md
       maintainContext: true
 - name: Rychlé starty
   items:
@@ -15,31 +15,31 @@
 - name: ukázky
   items:
     - name: .NET
-      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      href: ../../cosmos-db/tutorial-develop-table-dotnet.md
       maintainContext: true
     - name: F#
-      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
       maintainContext: true
     - name: Java
-      href: /azure/cosmos-db/table-storage-how-to-use-java
+      href: ../../cosmos-db/table-storage-how-to-use-java.md
       maintainContext: true
     - name: Node.js
-      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      href: ../../cosmos-db/table-storage-how-to-use-nodejs.md
       maintainContext: true
     - name: C++
-      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      href: ../../cosmos-db/table-storage-how-to-use-c-plus.md
       maintainContext: true
     - name: PHP
-      href: /azure/cosmos-db/table-storage-how-to-use-php
+      href: ../../cosmos-db/table-storage-how-to-use-php.md
       maintainContext: true
     - name: Python
-      href: /azure/cosmos-db/table-storage-how-to-use-python
+      href: ../../cosmos-db/table-storage-how-to-use-python.md
       maintainContext: true
     - name: Ruby
-      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      href: ../../cosmos-db/table-storage-how-to-use-ruby.md
       maintainContext: true
     - name: PowerShell
-      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      href: ./table-storage-how-to-use-powershell.md
       maintainContext: true
 - name: Koncepty
   items:
@@ -47,13 +47,16 @@
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Zabezpečení
       items:
-        - name: Standardní hodnoty zabezpečení
-          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Šifrování neaktivních uložených dat ve službě Azure Storage
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
           items:
-            - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
-              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Šifrování s využitím klíčů spravovaných zákazníkem
+              href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../common/security-controls-policy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Standardní hodnoty zabezpečení
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Data redundancy
       href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Zotavení po havárii a převzetí služeb při selhání
@@ -76,6 +79,8 @@
       href: table-storage-design-modeling.md
     - name: Způsoby návrhu tabulek
       href: table-storage-design-patterns.md
+    - name: Monitorování úložiště tabulek
+      href: monitor-table-storage.md
 - name: Postupy
   items:
     - name: vytvořit účet úložiště
@@ -84,8 +89,10 @@
       maintainContext: true
     - name: Upgrade účtu úložiště
       href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Obnovení odstraněného účtu úložiště
+      href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Použití emulátoru úložiště
-      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
     - name: Zabezpečení dat tabulek
       items:
@@ -101,17 +108,15 @@
           items:
             - name: 'Vytvoření účtu, který podporuje klíče spravované zákazníkem'
               href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Konfigurace klíčů spravovaných zákazníkem
+            - name: Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
               items:
-                - name: Portál
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: Uložení klíčů spravovaných zákazníkem v trezoru klíčů
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: Uložení klíčů spravovaných zákazníkem ve službě Managed HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: Kontrola modelu šifrovacího klíče pro účet
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Povolení šifrování infrastruktury pro účet úložiště
+            - name: Povolení šifrování infrastruktury pro účet
               href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Konfigurace šifrování na straně klienta
           items:
@@ -133,6 +138,8 @@
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
                 - name: Konfigurace verze TLS pro klientskou aplikaci
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Konfigurace Azure Defenderu pro ochranu před hrozbami
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Správa redundance dat
       items:
         - name: Změna způsobu replikace dat
@@ -148,15 +155,29 @@
     - name: Přenos dat
       items:
         - name: AzCopy ve Windows (v8)
-          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
+          href: /previous-versions/azure/storage/storage-use-azcopy
         - name: AzCopy v Linuxu (v8)
-          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
+          href: /previous-versions/azure/storage/storage-use-azcopy-linux
     - name: Řešení potíží
       items:
         - name: Problémy s latencí
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+- name: Zdroje a prostředky
+  items:
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: Table Storage na webu Microsoft Q&A
+      href: /answers/topics/azure-table-storage.html
+    - name: Table Storage na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
+    - name: Ceny služby Table Storage
+      href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
+    - name: Cenová kalkulačka Azure
+      href: 'https://azure.microsoft.com/pricing/calculator/'
 - name: Referenční informace
   items:
+    - name: Referenční informace k monitorování služby Azure Table Storage
+      href: monitor-table-storage-reference.md
     - name: Škálovatelnost a cíle výkonnosti
       items:
         - name: Úložiště Table
@@ -166,5 +187,5 @@
         - name: Poskytovatel prostředků úložiště
           href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Rozhraní REST API služby Table Storage
-      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      href: /rest/api/storageservices/table-service-rest-api
       maintainContext: true

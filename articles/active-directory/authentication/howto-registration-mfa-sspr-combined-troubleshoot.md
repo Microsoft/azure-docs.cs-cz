@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 04/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 01/19/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450934"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610776"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Řešení potíží s kombinovanou registrací informací o zabezpečení
 
@@ -24,22 +24,22 @@ Informace v tomto článku se týkají správců, kteří řeší problémy nahl
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Události protokolované pro kombinovanou registraci jsou v kategorii metody ověřování v protokolech auditu Azure AD.
+Události protokolu pro kombinovanou registraci jsou ve službě metody ověřování v protokolech auditu Azure AD.
 
 ![Rozhraní protokolů auditu Azure AD zobrazující události registrace](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 V následující tabulce jsou uvedeny všechny události auditu generované kombinovanou registrací:
 
-| Aktivita | Status | Důvod | Popis |
+| Aktivita | Status | Důvod | Description |
 | --- | --- | --- | --- |
-| Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Úspěch | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
+| Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Success | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dojde, když uživatel zruší registraci z režimu přerušení.|
-| Uživatel zaregistroval informace o zabezpečení | Úspěch | *Metoda*registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
-| Uživatel zkontroloval bezpečnostní informace. | Úspěch | Uživatel úspěšně zkontroloval informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** .|
+| Uživatel zaregistroval informace o zabezpečení | Success | *Metoda* registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
+| Uživatel zkontroloval bezpečnostní informace. | Success | Uživatel úspěšně zkontroloval informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** .|
 | Uživatel zkontroloval bezpečnostní informace. | Selhání | Uživateli se nepodařilo zkontrolovat informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** , ale v back-endu dojde k nějakému problému.|
-| Uživatel odstranil informace o zabezpečení. | Úspěch | Uživatel odstranil *metodu*. | Tato událost nastane, když uživatel odstraní jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
+| Uživatel odstranil informace o zabezpečení. | Success | Uživatel odstranil *metodu*. | Tato událost nastane, když uživatel odstraní jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
 | Uživatel odstranil informace o zabezpečení. | Selhání | Uživateli se nepovedlo odstranit *metodu*. | K této události dojde, když se uživatel pokusí odstranit metodu, ale pokus z nějakého důvodu se nezdařil. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
-| Uživatel změnil výchozí bezpečnostní údaje. | Úspěch | Uživatel změnil výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když uživatel změní výchozí metodu. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
+| Uživatel změnil výchozí bezpečnostní údaje. | Success | Uživatel změnil výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když uživatel změní výchozí metodu. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
 | Uživatel změnil výchozí bezpečnostní údaje. | Selhání | Uživateli se nepodařilo změnit výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když se uživatel pokusí změnit výchozí metodu, ale pokus z nějakého důvodu se nezdaří. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Řešení potíží s režimem přerušení
@@ -139,7 +139,7 @@ Následující kroky vám pomůžou vrátit uživatele nebo skupinu uživatelů.
    }
    ```
 
-#### <a name="rollback"></a>Návrat
+#### <a name="rollback"></a>Vrácení zpět
 
 V okně PowerShellu spusťte následující příkaz, který zadává skript a umístění souborů uživatele. Po zobrazení výzvy zadejte přihlašovací údaje globálního správce. Skript vypíše výstup každé operace aktualizace uživatele.
 
@@ -151,10 +151,10 @@ Chcete-li zakázat aktualizované možnosti pro uživatele, proveďte tyto kroky
 
 1. Přihlaste se k Azure Portal jako správce uživatele.
 2. Přejděte na **Azure Active Directory**  >  **uživatelské nastavení**  >  **Spravovat nastavení pro přístupové panely funkce verze Preview**.
-3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě bezpečnostních údajů**, nastavit selektor na **žádný**a pak vybrat **Uložit**.
+3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě bezpečnostních údajů**, nastavit selektor na **žádný** a pak vybrat **Uložit**.
 
 Uživatelé již nebudou vyzváni k registraci pomocí aktualizovaného prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o kombinované registraci pro Samoobslužné resetování hesla a Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Další informace o kombinované registraci pro Samoobslužné resetování hesla a službu Azure AD Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

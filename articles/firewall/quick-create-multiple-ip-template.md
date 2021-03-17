@@ -1,23 +1,23 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Firewall s více veřejnými IP adresami – šablona Správce prostředků'
-description: Naučte se používat šablonu Azure Resource Manager (šablonu ARM) k vytvoření Azure Firewall s více veřejnými IP adresami.
+description: V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager (šablony ARM) vytvořit Azure Firewall s více veřejnými IP adresami.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/14/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705431"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057973"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Rychlý Start: vytvoření Azure Firewall s více veřejnými IP adresami – šablona ARM
 
-V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k nasazení Azure Firewall s více veřejnými IP adresami. Nasazená brána firewall má pravidla shromažďování pravidel NAT, která umožňují připojení RDP ke dvěma virtuálním počítačům s Windows serverem 2019.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k nasazení Azure Firewall s více veřejnými IP adresami z předpony veřejných IP adres. Nasazená brána firewall má pravidla shromažďování pravidel NAT, která umožňují připojení RDP ke dvěma virtuálním počítačům s Windows serverem 2019.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -42,6 +42,7 @@ Tato šablona vytvoří Azure Firewall se dvěma veřejnými IP adresami, včetn
 V šabloně je definováno víc prostředků Azure:
 
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
 - [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)

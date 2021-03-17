@@ -3,12 +3,12 @@ title: Kurz – nasazení skupiny více kontejnerů – YAML
 description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí souboru YAML pomocí Azure CLI.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 2673f1066db705e4d2e850230c5f96dc2690a85c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259563"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605157"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: nasazení skupiny s více kontejnery pomocí souboru YAML
 
@@ -29,9 +29,9 @@ V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigu
 > [!NOTE]
 > Skupiny více kontejnerů jsou aktuálně omezené na kontejnery Linux.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="configure-a-yaml-file"></a>Konfigurace souboru YAML
 
@@ -76,7 +76,7 @@ properties:
       port: 80
     - protocol: tcp
       port: 8080
-tags: null
+tags: {exampleTag: tutorial}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
@@ -115,7 +115,7 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 
 Pokud chcete zobrazit spuštěnou aplikaci, přejděte v prohlížeči na jeho IP adresu. Například IP adresa je `52.168.26.124` v tomto příkladu výstupu:
 
-```bash
+```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
@@ -178,7 +178,6 @@ V tomto kurzu jste použili soubor YAML k nasazení skupiny více kontejnerů v 
 Skupinu s více kontejnery můžete zadat také pomocí [šablony Správce prostředků](container-instances-multi-container-group.md). Šablonu Správce prostředků lze snadno přizpůsobit pro scénáře, pokud potřebujete nasadit další prostředky služby Azure ve skupině kontejnerů.
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

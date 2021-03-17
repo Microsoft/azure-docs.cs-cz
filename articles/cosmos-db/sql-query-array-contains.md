@@ -3,18 +3,21 @@ title: ARRAY_CONTAINS v dotazovacím jazyce Azure Cosmos DB
 description: Přečtěte si, jak pole obsahuje funkci systému SQL v Azure Cosmos DB vrátí logickou hodnotu, která označuje, zda pole obsahuje zadanou hodnotu.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff88d66ee6d1ceee4f1cf4e7b6501ab323dbc79e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303473"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332657"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Vrátí logickou hodnotu, která označuje, zda pole obsahuje zadanou hodnotu. Můžete kontrolovat částečnou nebo úplnou shodu objektu pomocí logického výrazu v rámci příkazu. 
 
 ## <a name="syntax"></a>Syntaxe
@@ -81,4 +84,4 @@ Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#
 
 - [Funkce pole Azure Cosmos DB](sql-query-array-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

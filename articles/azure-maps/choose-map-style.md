@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036789"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680027"
 ---
 # <a name="change-the-style-of-the-map"></a>Změna stylu mapy
 
-Mapový ovládací prvek podporuje několik různých [možností stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) mapy a [základní styly mapy](supported-map-styles.md). Všechny styly lze nastavit při inicializaci mapového ovládacího prvku. Nebo můžete nastavit styly pomocí funkce mapového ovládacího prvku `setStyle` . V tomto článku se dozvíte, jak pomocí těchto možností stylu přizpůsobit vzhled mapy. Naučíte se také, jak implementovat ovládací prvek výběru stylu na mapě. Ovládací prvek pro výběr stylu umožňuje uživateli přepínat mezi různými základními styly.
+Mapový ovládací prvek podporuje několik různých [možností stylu](/javascript/api/azure-maps-control/atlas.styleoptions) mapy a [základní styly mapy](supported-map-styles.md). Všechny styly lze nastavit při inicializaci mapového ovládacího prvku. Nebo můžete nastavit styly pomocí funkce mapového ovládacího prvku `setStyle` . V tomto článku se dozvíte, jak pomocí těchto možností stylu přizpůsobit vzhled mapy. Naučíte se také, jak implementovat ovládací prvek výběru stylu na mapě. Ovládací prvek pro výběr stylu umožňuje uživateli přepínat mezi různými základními styly.
 
 ## <a name="set-map-style-options"></a>Nastavení možností stylu mapy
 
-Možnosti stylu lze nastavit při inicializaci webového ovládacího prvku. Nebo můžete aktualizovat možnosti stylu voláním funkce mapového ovládacího prvku `setStyle` . Chcete-li zobrazit všechny dostupné možnosti stylu, přečtěte si téma [Možnosti stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions).
+Možnosti stylu lze nastavit při inicializaci webového ovládacího prvku. Nebo můžete aktualizovat možnosti stylu voláním funkce mapového ovládacího prvku `setStyle` . Chcete-li zobrazit všechny dostupné možnosti stylu, přečtěte si téma [Možnosti stylu](/javascript/api/azure-maps-control/atlas.styleoptions).
 
 ```javascript
 //Set the style options when creating the map.
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -82,7 +82,7 @@ Základní styl mapy lze aktualizovat pomocí `setStyle` funkce a nastavením `s
 map.setStyle({ style: 'satellite' });
 ```
 
-V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `grayscale_dark` na k `satellite` použití funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) .
+V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `grayscale_dark` na k `satellite` použití funkce [setStyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
 
 <br/>
 
@@ -93,18 +93,18 @@ V následujícím kódu po načtení instance mapy je styl mapy aktualizován z 
 
 Ovládací prvek pro výběr stylu poskytuje snadné použití tlačítka s panelem s plovoucím panelem, který může koncový uživatel použít k přepínání mezi základními styly.
 
-Výběr stylu má dvě různé možnosti rozložení: `icon` a `list` . Výběr stylu také umožňuje zvolit dvě různé možnosti ovládacího prvku pro výběr stylu `style` : `light` a `dark` . V tomto příkladu výběr stylu používá `icon` rozložení a v podobě ikon zobrazuje seznam stylů základní mapy. Výběr ovládacího prvku stylu obsahuje následující základní sadu stylů: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Další informace o možnostech ovládacího prvku Výběr stylu naleznete v tématu [možnosti ovládacího prvku stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions).
+Výběr stylu má dvě různé možnosti rozložení: `icon` a `list` . Výběr stylu také umožňuje zvolit dvě různé možnosti ovládacího prvku pro výběr stylu `style` : `light` a `dark` . V tomto příkladu výběr stylu používá `icon` rozložení a v podobě ikon zobrazuje seznam stylů základní mapy. Výběr ovládacího prvku stylu obsahuje následující základní sadu stylů: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Další informace o možnostech ovládacího prvku Výběr stylu naleznete v tématu [možnosti ovládacího prvku stylu](/javascript/api/azure-maps-control/atlas.stylecontroloptions).
 
 Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v `icon` rozložení.
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Rozložení seznamu výběru stylu":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Rozložení ikony výběru stylu":::
 
 Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v `list` rozložení.
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Rozložení seznamu výběru stylu":::
 
 > [!IMPORTANT]
->Ve výchozím nastavení ovládací prvek pro výběr stylu vypíše všechny styly, které jsou k dispozici v rámci cenové úrovně S0 Azure Maps. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do `mapStyle` Možnosti výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnost výběru stylu na `"all"` .
+> Ve výchozím nastavení ovládací prvek pro výběr stylu vypíše všechny styly, které jsou k dispozici v rámci cenové úrovně S0 Azure Maps. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do `mapStyle` Možnosti výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnost výběru stylu na `"all"` .
 
 Následující kód ukazuje, jak přepsat výchozí `mapStyles` seznam základních stylů. V tomto příkladu nastavujeme `mapStyles` možnost zobrazení seznamu základních stylů, které chceme zobrazit pomocí ovládacího prvku pro výběr stylu.
 
@@ -118,21 +118,24 @@ Následující kód ukazuje, jak přepsat výchozí `mapStyles` seznam základn�
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-Přidejte ovládací prvky do svých map:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Přidání mapových ovládacích prvků](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Přidání špendlíku](map-add-pin.md)
+> [Přidání vrstvy symbolů](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Přidání vrstvy bublin](map-add-bubble-layer.md)

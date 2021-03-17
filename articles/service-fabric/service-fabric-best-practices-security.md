@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257603"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784659"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -56,7 +56,7 @@ K nasazení certifikátů z společně umístěného trezoru klíčů do sady š
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Použití seznamu Access Control (ACL) pro váš certifikát pro Service Fabric cluster
 
-Rozšíření Microsoft. Azure. ServiceFabric, která slouží ke konfiguraci zabezpečení uzlů, se používá pro [rozšíření sady škálování virtuálního počítače](/cli/azure/vmss/extension?view=azure-cli-latest) .
+Rozšíření Microsoft. Azure. ServiceFabric, která slouží ke konfiguraci zabezpečení uzlů, se používá pro [rozšíření sady škálování virtuálního počítače](/cli/azure/vmss/extension) .
 Pokud chcete použít seznam řízení přístupu pro vaše certifikáty pro procesy Service Fabric clusteru, použijte následující vlastnosti šablony Správce prostředků:
 
 ```json
@@ -171,7 +171,7 @@ Pokud chcete povolit spravovanou identitu přiřazenou systémem během vytvář
 ```
 Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss.md#system-assigned-managed-identity) .
 
-Pokud jste vytvořili [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity), deklarujete v šabloně následující prostředek, který mu přiřadí sadu škálování virtuálního počítače. Nahraďte `\<USERASSIGNEDIDENTITYNAME\>` názvem uživatelsky přiřazené spravované identity, kterou jste vytvořili:
+Pokud jste vytvořili  [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity), deklarujete v šabloně následující prostředek, který mu přiřadí sadu škálování virtuálního počítače. Nahraďte `\<USERASSIGNEDIDENTITYNAME\>` názvem uživatelsky přiřazené spravované identity, kterou jste vytvořili:
 
 ```json
 "identity": {

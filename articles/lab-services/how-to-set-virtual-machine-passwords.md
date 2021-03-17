@@ -1,14 +1,14 @@
 ---
 title: Nastavte hesla pro virtuální počítače v Azure Lab Services | Microsoft Docs
-description: Naučte se, jak nastavit a resetovat hesla pro virtuální počítače v učebných laboratořích Azure Lab Services.
+description: Naučte se, jak nastavit a resetovat hesla pro virtuální počítače v testovacích prostředích Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443770"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434222"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a správa fondu virtuálních počítačů 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -24,7 +24,7 @@ Chcete-li zvýšit nebo snížit kapacitu testovacího prostředí (počet virtu
 2. Zadejte nový **počet virtuálních počítačů** , které chcete v testovacím prostředí. Tento počet musí být větší nebo roven počtu uživatelů registrovaných v testovacím prostředí. 
 3. Pak vyberte **Uložit**. 
 
-    ![Tlačítko spustit vše](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![Snímek obrazovky, který zobrazuje okno kapacity testovacího prostředí s vybraným tlačítkem "maximum počítačů v testovacím prostředí" a "Uložit".](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Pokud jste zvýšili kapacitu, uvidíte virtuální počítač nebo virtuální počítače, které jsou vytvářeny. Pokud v seznamu nevidíte nový virtuální počítač, aktualizujte stránku. 
 
     ![Vytvářený virtuální počítač](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)
@@ -53,6 +53,7 @@ Podobně můžete zastavit jeden nebo více virtuálních počítačů přepnut�
 > Když Educator zapnete virtuální počítač studenta, neovlivní kvóta pro studenta. Kvóta pro uživatele určuje počet hodin testovacího prostředí uživatele mimo plánovaný čas třídy. Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="reset-vms"></a>Resetování virtuálních počítačů
+
 Pokud chcete resetovat jeden nebo víc virtuálních počítačů, vyberte je v seznamu a pak na panelu nástrojů vyberte **obnovit** . 
 
 ![Resetovat vybrané virtuální počítače](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
@@ -60,8 +61,6 @@ Pokud chcete resetovat jeden nebo víc virtuálních počítačů, vyberte je v 
 V dialogovém okně **resetovat virtuální počítače** vyberte **resetovat**. 
 
 ![Dialogové okno resetovat virtuální počítač](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
-
-
 
 ## <a name="set-password-for-vms"></a>Nastavení hesla pro virtuální počítače
 Vlastník testovacího prostředí (Educator) může nastavit nebo resetovat heslo pro virtuální počítače v době vytvoření testovacího prostředí (Průvodce vytvořením testovacího prostředí) nebo po vytvoření testovacího prostředí na stránce **šablony** . 
@@ -103,4 +102,4 @@ Tvůrce testovacího prostředí (Educator) se může připojit k virtuálnímu 
 ## <a name="next-steps"></a>Další kroky
 Další informace o možnostech využití studenta (jako vlastník testovacího prostředí) můžete nakonfigurovat v následujícím článku: [Konfigurace využití studenta](how-to-configure-student-usage.md).
 
-Další informace o tom, jak studenti můžou resetovat hesla pro své virtuální počítače, najdete v tématu [nastavení nebo resetování hesla pro virtuální počítače v učebně Labs (studenti)](how-to-set-virtual-machine-passwords-student.md).
+Další informace o tom, jak studenti můžou resetovat hesla pro své virtuální počítače, najdete v tématu [nastavení nebo resetování hesla pro virtuální počítače v prostředí Labs (studenti)](how-to-set-virtual-machine-passwords-student.md).

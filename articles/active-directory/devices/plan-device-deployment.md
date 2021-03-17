@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541868"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936443"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -44,17 +44,17 @@ Klíčové výhody poskytování identity Azure AD pro vaše zařízení:
 
 * Zvyšte produktivitu – pomocí Azure AD můžou vaši uživatelé dělat [bezproblémové přihlašování (SSO)](./azuread-join-sso.md) k místním i cloudovým prostředkům, což jim umožní zajistit jejich produktivitu bez ohledu na to, kde jsou.
 
-* Zvýšení zabezpečení – zařízení Azure AD umožňují použít [zásady podmíněného přístupu (CA)](../conditional-access/require-managed-devices.md) na prostředky na základě identity zařízení nebo uživatele. Zásady certifikační autority mohou nabídnout dodatečnou ochranu pomocí [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Předpokladem pro zvýšení zabezpečení pomocí strategie [ověřování bez hesla](../authentication/concept-authentication-passwordless.md) je připojení zařízení k Azure AD.
+* Zvýšení zabezpečení – zařízení Azure AD umožňují použít [zásady podmíněného přístupu](../conditional-access/require-managed-devices.md) na prostředky na základě identity zařízení nebo uživatele. Zásady podmíněného přístupu mohou nabídnout dodatečnou ochranu pomocí [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Předpokladem pro zvýšení zabezpečení pomocí strategie [ověřování bez hesla](../authentication/concept-authentication-passwordless.md) je připojení zařízení k Azure AD.
 
 * Zlepšení uživatelského prostředí – pomocí identit zařízení ve službě Azure AD můžete svým uživatelům poskytnout snadný přístup k cloudovým prostředkům vaší organizace z osobních i firemních zařízení. Správci můžou povolit [Enterprise State Roaming](enterprise-state-roaming-overview.md) pro jednotné prostředí napříč všemi zařízeními s Windows.
 
-* Zjednodušení nasazení a správy – Správa identit zařízení zjednodušuje proces zavedení zařízení do Azure AD s využitím automatického [pilotního projektu Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot), [hromadného zřizování](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)a [samoobslužné služby: funkce OOBE](../user-help/user-help-join-device-on-network.md). Tato zařízení můžete spravovat pomocí nástrojů pro správu mobilních zařízení (MDM), jako je [Microsoft Intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune), a jejich identit v [Azure Portal](https://portal.azure.com/).
+* Zjednodušení nasazení a správy – Správa identit zařízení zjednodušuje proces zavedení zařízení do Azure AD s využitím automatického [pilotního projektu Windows](/windows/deployment/windows-autopilot/windows-10-autopilot), [hromadného zřizování](/mem/intune/enrollment/windows-bulk-enroll)a [samoobslužné služby: funkce OOBE](../user-help/user-help-join-device-on-network.md). Tato zařízení můžete spravovat pomocí nástrojů pro správu mobilních zařízení (MDM), jako je [Microsoft Intune](/mem/intune/fundamentals/what-is-intune), a jejich identit v [Azure Portal](https://portal.azure.com/).
 
 ### <a name="training-resources"></a>Školicí materiály
 
-Video: [podmíněný přístup s ovládacími prvky zařízení](https://youtu.be/NcONUf-jeS4)
+Video:  [podmíněný přístup s ovládacími prvky zařízení](https://youtu.be/NcONUf-jeS4)
 
-Nejčastější dotazy: [Nejčastější dotazy k správě zařízení Azure AD](faq.md) a [nastavení a roaming dat](enterprise-state-roaming-faqs.md) 
+Nejčastější dotazy: [Nejčastější dotazy k správě zařízení Azure AD](faq.md)  a [nastavení a roaming dat](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Plánování projektu nasazení
 
@@ -62,7 +62,7 @@ Při určování strategie pro toto nasazení v prostředí zvažte potřeby va�
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Pokud se chcete těmto nástrah vyhnout, ujistěte se, že jste si [jisti, že jste připravují správné zúčastněné strany](https://aka.ms/deploymentplans) a že role účastníků v projektu jsou dobře pochopitelné. 
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Pokud se chcete těmto nástrah vyhnout, ujistěte se, že jste si [jisti, že jste připravují správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md) a že role účastníků v projektu jsou dobře pochopitelné. 
 
 Pro tento plán přidejte do svého seznamu následující účastníky:
 
@@ -105,43 +105,43 @@ zařízení s iOS a Androidem můžou být jenom registrovaná v Azure AD. Násl
 | Aspekty | Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD |
 | - | - | - | - |
 | **Klientské operační systémy**| | |  |
-| Zařízení s Windows 10| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Zařízení se škálováním na nižší úrovni Windows (Windows 8.1 nebo Windows 7)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Zařízení s Windows 10| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Zařízení se škálováním na nižší úrovni Windows (Windows 8.1 nebo Windows 7)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
 |**Možnosti přihlášení**| | |  |
-| Místní přihlašovací údaje pro koncové uživatele| ![zaškrtnutí](./media/plan-device-deployment/check.png)| |  |
-| Heslo| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| PIN kód zařízení| ![zaškrtnutí](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![zaškrtnutí](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello pro firmy| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Bezpečnostní klíče FIDO 2,0| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Aplikace Microsoft Authenticator (s heslem)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Místní přihlašovací údaje pro koncové uživatele| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| |  |
+| Heslo| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| PIN kód zařízení| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello pro firmy| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Bezpečnostní klíče FIDO 2,0| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Aplikace Microsoft Authenticator (s heslem)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
 |**Klíčové funkce**| | |  |
-| Jednotné přihlašování ke cloudovým prostředkům| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Jednotné přihlašování k místním prostředkům| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Podmíněný přístup <br> (Vyžadovat, aby zařízení byla označená jako vyhovující) <br> (Musí se spravovat přes MDM)| ![zaškrtnutí](./media/plan-device-deployment/check.png) | ![zaškrtnutí](./media/plan-device-deployment/check.png)|![zaškrtnutí](./media/plan-device-deployment/check.png) |
-Podmíněný přístup <br>(Vyžadovat zařízení připojená k hybridní službě Azure AD)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png)
-| Samoobslužné resetování hesla z přihlašovací obrazovky Windows| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Resetování PIN kódu Windows Hello| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Roaming podnikového stavu napříč zařízeními| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Jednotné přihlašování ke cloudovým prostředkům| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Jednotné přihlašování k místním prostředkům| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Podmíněný přístup <br> (Vyžadovat, aby zařízení byla označená jako vyhovující) <br> (Musí se spravovat přes MDM)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+Podmíněný přístup <br>(Vyžadovat zařízení připojená k hybridní službě Azure AD)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)
+| Samoobslužné resetování hesla z přihlašovací obrazovky Windows| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Resetování PIN kódu Windows Hello| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
+| Roaming podnikového stavu napříč zařízeními| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Registrace Azure AD 
 
-Registrovaná zařízení se často spravují pomocí [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment). Zařízení se registrují v Intune mnoha různými způsoby v závislosti na operačním systému. 
+Registrovaná zařízení se často spravují pomocí [Microsoft Intune](/mem/intune/enrollment/device-enrollment). Zařízení se registrují v Intune mnoha různými způsoby v závislosti na operačním systému. 
 
-Zařízení registrovaná v Azure AD poskytují podporu pro vlastní zařízení (BYOD) a zařízení vlastněná podnikem pro jednotné přihlašování ke cloudovým prostředkům. Přístup k prostředkům je založen na [zásadách certifikační autority](../conditional-access/require-managed-devices.md) Azure AD, které se vztahují na zařízení a uživatele.
+Zařízení registrovaná v Azure AD poskytují podporu pro vlastní zařízení (BYOD) a zařízení vlastněná podnikem pro jednotné přihlašování ke cloudovým prostředkům. Přístup k prostředkům je založen na [zásadách podmíněného přístupu](../conditional-access/require-managed-devices.md) Azure AD, které se používají pro zařízení a uživatele.
 
 ### <a name="registering-devices"></a>Registrace zařízení
 
-Registrovaná zařízení se často spravují pomocí [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment). Zařízení se registrují v Intune mnoha různými způsoby v závislosti na operačním systému. 
+Registrovaná zařízení se často spravují pomocí [Microsoft Intune](/mem/intune/enrollment/device-enrollment). Zařízení se registrují v Intune mnoha různými způsoby v závislosti na operačním systému. 
 
 Mobilní zařízení BYOD a vlastněná podnikem jsou registrována uživateli, kteří si instalují aplikaci Portál společnosti.
 
-* [iOS](https://docs.microsoft.com/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
+* [iOS](/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
 
-* [Android](https://docs.microsoft.com/mem/intune/user-help/enroll-device-android-company-portal)
+* [Android](/mem/intune/user-help/enroll-device-android-company-portal)
 
-* [Windows 10](https://docs.microsoft.com/mem/intune/user-help/enroll-windows-10-device)
+* [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
 
 Pokud je registrace zařízení nejlepší volbou pro vaši organizaci, podívejte se na následující zdroje informací:
 
@@ -171,9 +171,9 @@ Pokud máte na zařízení nainstalovaný systém Windows 10 Professional nebo W
 
 * [Rozhraní Windows mimo box (OOBE) nebo nastavení systému Windows](../user-help/user-help-join-device-on-network.md)
 
-* [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)
+* [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)
 
-* [Hromadná registrace](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)
+* [Hromadná registrace](/mem/intune/enrollment/windows-bulk-enroll)
 
 Po pečlivém [porovnání těchto přístupů](azureadjoin-plan.md)vyberte svůj postup nasazení.
 
@@ -216,7 +216,7 @@ Můžete určit, že je pro zařízení nejlepší řešení Azure AD JOIN a že
 | Aktuální stav zařízení| Požadovaný stav zařízení| Postupy |
 | - | - | - |
 | Připojení k místní doméně| Připojení k hybridní službě Azure AD| Použití Azure AD Connect nebo AD FS pro připojení k Azure |
-| Místní pracovní skupina je připojená nebo nová.| Připojení k hybridní službě Azure AD| Podporováno při [autopilotu Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot). Jinak musí být zařízení připojená k místní doméně před připojením k hybridní službě Azure AD. |
+| Místní pracovní skupina je připojená nebo nová.| Připojení k hybridní službě Azure AD| Podporováno při [autopilotu Windows](/windows/deployment/windows-autopilot/windows-autopilot). Jinak musí být zařízení připojená k místní doméně před připojením k hybridní službě Azure AD. |
 | Připojené k Azure AD| Připojení k hybridní službě Azure AD| Odpojte se od Azure AD, který ho vloží do místní pracovní skupiny nebo nového stavu. |
 | Registrované v Azure AD| Připojení k hybridní službě Azure AD| Závisí na verzi Windows. [Podívejte se na tyto informace](hybrid-azuread-join-plan.md). |
 
@@ -239,13 +239,13 @@ Zkontrolujte podporované a nepodporované platformy pro integrovaná zařízen�
 
 | Nástroje pro správu zařízení| Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD|
 | - | - | - | - |
-| [Správa mobilních zařízení (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Příklad: Microsoft Intune| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)|  |
-| [Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 a novější)| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)|  |
-| [Zásady skupiny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Jenom Windows)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png)|  |
+| [Správa mobilních zařízení (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Příklad: Microsoft Intune| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
+| [Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 a novější)| | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)| ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
+| [Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Jenom Windows)| | | ![Zaškrtnutí těchto hodnot.](./media/plan-device-deployment/check.png)|  |
 
 
 
- Doporučujeme, abyste při správě zařízení se systémem iOS nebo Android zvážili [Microsoft Intune správu mobilních aplikací (MAM)](https://docs.microsoft.com/mem/intune/apps/app-management) se systémem nebo bez ní.
+ Doporučujeme, abyste při správě zařízení se systémem iOS nebo Android zvážili [Microsoft Intune správu mobilních aplikací (MAM)](/mem/intune/apps/app-management) se systémem nebo bez ní.
 
  Správci mohou také [nasadit platformy infrastruktury virtuálních klientských počítačů (VDI)](howto-device-identity-virtual-desktop-infrastructure.md) hostujících operační systémy Windows ve svých organizacích a zjednodušit tak správu a snížit náklady prostřednictvím konsolidace a centralizovaného využívání prostředků. 
 

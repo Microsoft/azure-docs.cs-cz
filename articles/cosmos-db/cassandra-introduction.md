@@ -7,19 +7,23 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 05/21/2019
-ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/25/2020
+ms.openlocfilehash: 2a778c2e9a44bda148fd40112776858943cffe4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81687639"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188611"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Úvod do rozhraní API Cassandra v Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Rozhraní API Cassandra v Azure Cosmos DB je možné použít jako úložiště dat pro aplikace napsané pro [Apache Cassandra](https://cassandra.apache.org). To znamená, že s použitím stávajících [ovladačů Apache](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver), které jsou kompatibilní s CQLv4, teď může vaše existující aplikace pro Cassandru komunikovat s rozhraním API Cassandra v Azure Cosmos DB. V mnoha případech se můžete přepínat z použití Apache Cassandra k použití rozhraní API Cassandra Azure Cosmos DB, a to pouhým změnou připojovacího řetězce. 
 
 Rozhraní API Cassandra vám umožní pracovat s daty uloženými v Azure Cosmos DB pomocí CQL (Cassandra Query Language), nástrojů založených na Cassandra (jako je cqlsh) a Cassandra klientských ovladačů, které jste už obeznámeni s.
+
+> [!NOTE]
+> [Režim kapacity bez serveru](serverless.md) je teď k dispozici v rozhraní API Cassandra Azure Cosmos DB.
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Jaké jsou výhody používání rozhraní rozhraní API pro Apache Cassandra pro Azure Cosmos DB?
 
@@ -31,7 +35,7 @@ Rozhraní API Cassandra vám umožní pracovat s daty uloženými v Azure Cosmos
 
 **Možnost využívat stávající kód a nástroje**: Azure Cosmos DB poskytuje kompatibilitu na úrovni přenosového protokolu se stávajícími sadami SDK a nástroji Cassandra. Tato kompatibilita zajišťuje, že můžete použít stávající základ kódu s rozhraním API Cassandra v Azure Cosmos DB s nepatrnými změnami.
 
-**Propustnost a pružnost úložiště**: Azure Cosmos DB poskytuje ve všech oblastech zaručenou propustnost a zřízenou propustnost může škálovat pomocí webu Azure Portal, PowerShellu nebo operací rozhraní příkazového řádku. V případě potřeby můžete [elasticky škálovat](manage-scale-cassandra.md) úložiště a propustnost pro tabulky, a to s předvídatelným výkonem.
+**Pružnost propustnosti a úložiště**: Azure Cosmos DB poskytuje propustnost napříč všemi oblastmi a může škálovat zřízenou propustnost pomocí operací Azure Portal, PowerShellu nebo CLI. V případě potřeby můžete [elasticky škálovat](manage-scale-cassandra.md) úložiště a propustnost pro tabulky, a to s předvídatelným výkonem.
 
 **Globální distribuce a dostupnost**: Azure Cosmos DB poskytuje schopnost globálně distribuovat data napříč všemi oblastmi Azure a obsluhovat data místně a přitom zajišťovat přístup k datům s nízkou latencí a vysokou dostupnost. Azure Cosmos DB zajišťuje vysokou dostupnost 99,99 % v rámci oblasti a dostupnost čtení a zapisování 99,999 % ve více oblastech při nulové režii provozu. Další informace najdete v článku o [globální distribuci dat](distribute-data-globally.md). 
 

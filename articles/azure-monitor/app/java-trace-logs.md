@@ -3,15 +3,23 @@ title: Prozkoumejte protokoly trasování Java v Azure Application Insights
 description: Prohledat Log4J nebo Logback trasování v Application Insights
 ms.topic: conceptual
 ms.date: 05/18/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.author: jgol
+ms.openlocfilehash: 4013b60a5718de6c196e806f894503f63ec9dafd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374265"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593671"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování Java v Application Insights
+
+> [!IMPORTANT]
+> Přístup popsaný v tomto dokumentu se už nedoporučuje.
+>
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
+
 Pokud pro trasování používáte Logback nebo Log4J (v 1.2 nebo v 2.0), můžete mít k dispozici automatické odesílání protokolů trasování, které Application Insights, kde je můžete prozkoumat a vyhledat.
 
 > [!TIP]

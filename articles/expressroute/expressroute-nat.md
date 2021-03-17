@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: požadavky na překlad adres (NAT) pro okruhy'
 description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu překladu adres (NAT) pro okruhy ExpressRoute.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: 62effa04fd6130c35d3e2e64a401c124fe383200
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: a2c322c765d39a3afe4974ed88bf4dc18fd467a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521917"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89569641"
 ---
 # <a name="expressroute-nat-requirements"></a>Požadavky na překlad adres (NAT) služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat překlady adres (NAT). Někteří poskytovatelé připojení nabízejí nastavení a správu NAT jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit požadavky popsané dál. 
@@ -20,7 +20,7 @@ Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby Exp
 Přehled různých domén směrování získáte na stránce [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md). Pokud chcete splnit požadavky na veřejné IP adresy pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu, doporučujeme mezi vaší sítí a Microsoftem zřídit překlad adres NAT. Tato část poskytuje podrobný popis infrastruktury NAT, kterou je potřeba nastavit.
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Požadavky NAT pro partnerský vztah Microsoftu
-Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu, které nejsou podporované prostřednictvím cesty veřejného partnerského vztahu Azure. Seznam služeb zahrnuje služby Office 365, jako je Exchange Online, SharePoint Online a Skype pro firmy. Microsoft v partnerském vztahu Microsoftu očekává podporu obousměrného připojení. Přenosy určené cloudovým službám Microsoftu musí být před jejich vstupem do sítě Microsoftu platné IPv4 adresy přeložené pomocí překladu SNAT. Přenosy určené do vaší sítě z cloudových služeb Microsoftu musí být před vstupem do vaší sítě z internetu přeložené pomocí překladu SNAT, aby se zabránilo [asymetrickému směrování](expressroute-asymmetric-routing.md). Následující obrázek poskytuje podrobný přehled toho, jak by se měl nastavit NAT pro partnerský vztah Microsoftu.
+Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu, které nejsou podporované prostřednictvím cesty veřejného partnerského vztahu Azure. Seznam služeb zahrnuje Microsoft 365 služby, jako je Exchange Online, SharePoint Online a Skype pro firmy. Microsoft v partnerském vztahu Microsoftu očekává podporu obousměrného připojení. Přenosy určené cloudovým službám Microsoftu musí být před jejich vstupem do sítě Microsoftu platné IPv4 adresy přeložené pomocí překladu SNAT. Přenosy určené do vaší sítě z cloudových služeb Microsoftu musí být před vstupem do vaší sítě z internetu přeložené pomocí překladu SNAT, aby se zabránilo [asymetrickému směrování](expressroute-asymmetric-routing.md). Následující obrázek poskytuje podrobný přehled toho, jak by se měl nastavit NAT pro partnerský vztah Microsoftu.
 
 ![Diagram vysoké úrovně, jak by se měl nastavit překlad adres (NAT) pro partnerský vztah Microsoftu](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -34,7 +34,7 @@ Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým s
   > 
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Přenosy pocházející z Microsoftu určené do vaší sítě
-* Některé scénáře vyžadují, aby Microsoft zahájil připojení ke koncovým bodům služby hostovaným v rámci vaší sítě. Typickým příkladem takového scénáře je připojení k serverům služby AD FS hostovaným ve vaší síti ze služeb Office 365. V takových případech musíte nechat uniknout příslušné předpony z vaší sítě do partnerského vztahu Microsoftu. 
+* Některé scénáře vyžadují, aby Microsoft zahájil připojení ke koncovým bodům služby hostovaným v rámci vaší sítě. Typický příklad tohoto scénáře by byl připojením k serverům ADFS hostovaným ve vaší síti z Microsoft 365. V takových případech musíte nechat uniknout příslušné předpony z vaší sítě do partnerského vztahu Microsoftu. 
 * Přenosy z Microsoftu je nutné před vstupem z internetu do koncových bodů služby v rámci vaší sítě přeložit pomocí překladu SNAT, aby se zabránilo [asymetrickému směrování](expressroute-asymmetric-routing.md). Požadavky **a odpovědi** s cílovou IP adresou, která odpovídá trase obdržené prostřednictvím ExpressRoute, se vždy odešlou přes ExpressRoute. K asymetrickému směrování dochází v případě, že je požadavek obdržen přes internet a odpověď odeslaná přes ExpressRoute. Překlad příchozích přenosů z Microsoftu před vstupem z internetu do vaší sítě pomocí překladu SNAT tento problém řeší tím, že vynutí odeslání přenosu s odpovědí zpět do internetu.
 
 ![Asymetrické směrování s ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)

@@ -5,21 +5,21 @@ description: V tomto článku se dozvíte, jak pomocí skriptu R s Azure SQL Dat
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: python
 ms.topic: quickstart
 author: garyericson
 ms.author: garye
-ms.reviewer: davidph, carlrab
+ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2e32a4abeae78aa7105f21ecffbb18c2eae841a4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042505"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185619"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Rychlý Start: použití R s Azure SQL Database Machine Learning Services (Preview) k dotazování databáze 
 
@@ -29,11 +29,11 @@ V tomto rychlém startu použijete R se Azure SQL Database Machine Learning Serv
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL Database](single-database-create-quickstart.md)
-- [Machine Learning Services](machine-learning-services-overview.md) s povoleným R.
+- [Machine Learning Services](../managed-instance/machine-learning-services-overview.md) s povoleným R.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
@@ -45,9 +45,9 @@ Machine Learning Services s R je funkce Azure SQL Database používaná ke spou�
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle pole **název serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaný název serveru vedle **hostitele** pro SPRAVOVANOU instanci ve spravované instanci Azure SQL. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
@@ -57,7 +57,7 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
    Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze v Azure SQL Database](connect-query-ssms.md).
 
-1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
    Skript se předává přes `@script` argument. Vše uvnitř `@script` argumentu musí být platný kód R.
    
@@ -76,12 +76,12 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Spusťte uloženou proceduru [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Spusťte uloženou proceduru [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
 1. Ověřte, zda je v okně **zprávy** vráceno prvních 20 řádků kategorie/produktu.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Návrh první databáze v Azure SQL Database](design-first-database-tutorial.md)
-- [Azure SQL Database Machine Learning Services (s R)](machine-learning-services-overview.md)
-- [Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)](r-script-create-quickstart.md)
+- [Azure SQL Database Machine Learning Services (s R)](../managed-instance/machine-learning-services-overview.md)
+- [Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context)

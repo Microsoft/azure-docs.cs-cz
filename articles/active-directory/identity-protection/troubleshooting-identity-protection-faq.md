@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6117b1ac78faf84d73f5a78202709aec7a1f84d9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443578"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492582"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
@@ -28,23 +28,18 @@ Zrušení **rizika uživatele** v ochraně identity nastaví objekt actor v hist
 
 Existuje aktuální známý problém, který způsobil latenci v toku neúspěšných rizik uživatele. Pokud máte zásady rizik uživatelů, tato zásada se přestane používat pro uživatele v řádu minut po kliknutí na Zavřít riziko uživatele. Existují však známé prodlevy při aktualizaci uživatelského prostředí pro neúspěšné uživatele. Alternativním řešením je aktualizovat stránku na úrovni prohlížeče, aby se zobrazil nejnovější stav "rizika" uživatele.
 
-## <a name="risky-users-report-known-issues"></a>Rizikové uživatele hlásí známé problémy
-
-Dotaz na pole **username** rozlišuje velká a malá písmena, zatímco dotazy v poli **název** jsou Case-nezávislá.
-
-Přepnutí **zobrazení dat jako** SKRYJE sloupec **Poslední aktualizace rizika** . Pro čtení sloupce klikněte v horní části okna rizikové uživatele na **sloupce** .
-
-**Zavřít všechny události** v klasickém zabezpečení identity nastaví stav detekce rizik na **Uzavřeno (vyřešeno)**.
-
-## <a name="risky-sign-ins-report-known-issues"></a>Zpráva o rizikových přihlášeních sestav známých problémů
-
-**Řešení** při detekci rizik nastaví stav na **uživatele, kteří prošli MFA řízenými zásadami na základě rizika**.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="why-is-a-user-is-at-risk"></a>Proč je uživatel ohrožen?
+### <a name="why-is-a-user-at-risk"></a>Proč je uživatel ohrožen?
 
 Pokud jste zákazník Azure AD Identity Protection, přejděte do zobrazení [rizikové uživatelé](howto-identity-protection-investigate-risk.md#risky-users) a klikněte na uživatele s riziky. V zásuvce v dolní části se na kartě Historie rizik zobrazí všechny události, které vedly ke změně rizika uživatele. Pokud chcete zobrazit všechna riziková přihlášení pro uživatele, klikněte na rizikové přihlašování uživatele. Chcete-li zobrazit všechna zjištění rizik pro tohoto uživatele, klikněte na možnost detekce rizik uživatele.
+
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Proč bylo moje přihlášení blokované, ale ochrana identity negenerovala detekci rizika?
+Přihlášení mohou být blokována z několika důvodů. Je důležité si uvědomit, že ochrana identity generuje jenom detekci rizik, pokud se v žádosti o ověření používají správné přihlašovací údaje. Pokud uživatel používá nesprávné přihlašovací údaje, nebude označen ochranou identity, protože nehrozí riziko ohrožení zabezpečení přihlašovacích údajů, pokud nesprávný objekt actor nepoužívá správné přihlašovací údaje. Některé důvody, proč může být uživatel zablokován z podepisování, které negeneruje detekci Identity Protection, zahrnují:
+* IP adresu je **možné zablokovat** z důvodu škodlivé aktivity z IP adresy. Zpráva blokovaná protokolem IP nerozlišuje, zda byly pověření správné nebo nikoli. Pokud je IP adresa blokovaná a správné přihlašovací údaje se nepoužijí, vygeneruje se detekce Identity Protection.
+* **[Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md)** může účtu zabránit v přihlášení po několika neúspěšných pokusech.
+* Je možné vyhovět **zásadám podmíněného přístupu** , které používají jiné podmínky než úroveň rizika k blokování žádosti o ověření.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Jak získám sestavu zjištění určitého typu?
 
@@ -52,7 +47,7 @@ Přejít na zobrazení detekce rizik a filtrovat podle typu detekce. Tuto sestav
 
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Proč nejde nastavit vlastní úrovně rizika pro každé zjišťování rizik?
 
-Úrovně rizika v ochraně identity jsou založené na přesnosti detekce a využívají se v našem strojovém učení. Pokud chcete přizpůsobit, jaké zkušenosti uživatelé prezentují, může správce zahrnout nebo vyloučit určité uživatele nebo skupiny z rizika uživatele a rizikových zásad přihlašování.
+Úrovně rizika v ochraně identity jsou založené na přesnosti detekce a využívají se v našem strojovém učení. Aby bylo možné přizpůsobit možnosti uživatelům, může správce zahrnout nebo vyloučit určité uživatele nebo skupiny z rizik uživatelů a rizikových zásad Sign-In.
 
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Proč se umístění přihlášení neshoduje s tím, kde se uživatel skutečně přihlásil?
 
@@ -87,15 +82,21 @@ Všechna zjišťování rizik jsou popsána v článku [co je to riziko](concept
 
 - Po přijetí této zpětné vazby přesuneme nerizikový stav přihlášení (nikoli uživatele) na **potvrzené zabezpečení** a úroveň rizika pro **-** .
 
-- Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik.
+- Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik. 
 
     > [!NOTE]
+    >V dnešní době se zaškrtnutím políčka potvrdit zabezpečení při přihlášení nezabrání tomu, aby se budoucí přihlášení se stejnými vlastnostmi zobrazovala jako riziková. Nejlepším způsobem, jak zajistit, aby se systém dozvěděl o vlastnostech uživatele, je použití zásady rizikového přihlášení s MFA. Po zobrazení výzvy k zadání rizikového přihlášení a uživatel úspěšně odpoví na žádost, přihlášení může být úspěšné a může přispět k tomu, aby systém mohl v případě legitimního uživatele zvýšit jeho činnost.
+    >
     > Pokud se domníváte, že uživatel není ohrožen, použijte na úrovni uživatele **Zrušit riziko pro uživatele** , místo použití **potvrzení** na úrovni přihlášení na úrovni zabezpečení. Zrušením **rizika uživatele** na úrovni uživatele se zavřou riziko uživatele a veškerá dřívější riziková přihlášení a detekce rizik.
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Proč se mi zobrazuje uživatel s nízkým (nebo výše) rizikovým skórem, i když se v rámci Identity Protection nezobrazuje žádné rizikové přihlašování nebo zjišťování rizik?
 
-Vzhledem k kumulativnímu riziku uživatele je souhrnná povaha a nevyprší platnost, uživatel může mít riziko nízké nebo vyšší, a to i v případě, že nejsou k dispozici žádná nedávný riziková přihlášení nebo detekce rizik zobrazená v nástroji Identity Protection. K této situaci může dojít, pokud uživatel nastavil jedinou škodlivou aktivitu uživatele nad rámec, pro který ukládáme podrobné údaje o rizikových přihlášeních a detekcích rizik. Nevypršení rizika uživatele nekončí, protože v prostředí zákazníků byly známy chybné aktéry před 140 dny za napadenou identitou před tím, než dojde k jejich útokům. Zákazníci si můžou prohlédnout časovou osu uživatelů a pochopit, proč hrozí riziko uživatele tím, že se vrátí:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+Vzhledem k kumulativnímu riziku uživatele je souhrnná povaha a nevyprší platnost, uživatel může mít riziko nízké nebo vyšší, a to i v případě, že nejsou k dispozici žádná nedávný riziková přihlášení nebo detekce rizik zobrazená v nástroji Identity Protection. K této situaci může dojít, pokud uživatel nastavil jedinou škodlivou aktivitu uživatele nad rámec, pro který ukládáme podrobné údaje o rizikových přihlášeních a detekcích rizik. Nevypršení rizika uživatele nekončí, protože v prostředí zákazníků byly známy chybné aktéry před 140 dny za napadenou identitou před tím, než dojde k jejich útokům. Zákazníci si můžou prohlédnout časovou osu uživatelů a pochopit, proč hrozí riziko uživatele tím, že se vrátí: `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Proč má přihlášení "riziko při přihlašování" (agregované) "vysoké skóre", pokud jsou k němu přidružená zjištění nízká nebo střední rizikovost?
 
-Vysoké agregované riziko by mohlo být založené na dalších funkcích přihlášení nebo na skutečnost, že pro toto přihlášení bylo vyvoláno více zjišťování. A naopak, přihlášení může mít riziko přihlašování (agregované) na střední úrovni, i když zjišťování spojená s přihlašováním jsou vysoké riziko. 
+Vysoké agregované riziko by mohlo být založené na dalších funkcích přihlášení nebo na skutečnost, že pro toto přihlášení bylo vyvoláno více zjišťování. A naopak, přihlášení může mít riziko přihlašování (agregované) na střední úrovni, i když zjišťování spojená s přihlašováním jsou vysoké riziko.
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>Jaký je rozdíl mezi detekci aktivita z anonymní IP adresy a anonymní IP adresy?
+
+Zdroj zjišťování "anonymní IP adresa" je Azure AD Identity Protection, zatímco detekce "aktivita z anonymní IP adresy" je integrovaná z MCAS (Microsoft Cloud App Security). I když mají velmi podobné názvy a je možné, že se v těchto signálech může zobrazit překryv, mají odlišné detekce back-endu.

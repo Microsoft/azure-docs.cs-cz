@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 02/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042475"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362416"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -34,7 +34,7 @@ Pro zákazníky s přístupem k [Identity Protection](../identity-protection/ove
 
 ## <a name="user-risk"></a>Riziko uživatele 
 
-Pro zákazníky, kteří mají přístup k [Identity Protection](../identity-protection/overview-identity-protection.md), se dá vyhodnotit riziko uživatele v rámci zásad podmíněného přístupu. Riziko uživatele představuje pravděpodobnost, že dojde k ohrožení zabezpečení dané identity nebo účtu. Další informace o rizikech uživatelů najdete v článcích, [co je to riziko](../identity-protection/concept-identity-protection-risks.md#user-risk) a [Postupy: konfigurace a povolení zásad rizik](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+Pro zákazníky, kteří mají přístup k [Identity Protection](../identity-protection/overview-identity-protection.md), se dá vyhodnotit riziko uživatele v rámci zásad podmíněného přístupu. Riziko uživatele představuje pravděpodobnost zneužití dané identity nebo účtu. Další informace o rizikech uživatelů najdete v článcích, [co je to riziko](../identity-protection/concept-identity-protection-risks.md#user-risk) a [Postupy: konfigurace a povolení zásad rizik](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="device-platforms"></a>Platformy zařízení
 
@@ -50,11 +50,14 @@ Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 
 Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů** , můžete také nastavit podmínku pro platformu zařízení.
 
+> [!IMPORTANT]
+> Microsoft doporučuje, abyste měli zásady podmíněného přístupu pro nepodporované platformy zařízení. Pokud například chcete blokovat přístup k podnikovým prostředkům ze systému Linux nebo jiných nepodporovaných klientů, měli byste nakonfigurovat zásadu s podmínkou pro platformy zařízení, která zahrnuje jakékoli zařízení a vyloučí podporované platformy zařízení a udělí sadě řízení přístup k blokování přístupu.
+
 ## <a name="locations"></a>Umístění
 
 Při konfiguraci umístění jako podmínky se můžou organizace rozhodnout zahrnout nebo vyloučit umístění. Tato pojmenovaná umístění můžou zahrnovat informace o veřejné síti IPv4, zemi nebo oblasti nebo dokonce neznámé oblasti, které nejsou namapované na konkrétní země nebo oblasti. Pouze rozsahy IP adres lze označit jako důvěryhodné umístění.
 
-Při zahrnutí **libovolného umístění**Tato možnost zahrnuje jakoukoli IP adresu na internetu, která není právě nakonfigurovaná pojmenovaná umístění. Když vyberete **libovolné umístění**, správci se můžou rozhodnout vyloučit **všechna důvěryhodná** nebo **Vybraná umístění**.
+Při zahrnutí **libovolného umístění** Tato možnost zahrnuje jakoukoli IP adresu na internetu, která není právě nakonfigurovaná pojmenovaná umístění. Když vyberete **libovolné umístění**, správci se můžou rozhodnout vyloučit **všechna důvěryhodná** nebo **Vybraná umístění**.
 
 Některé organizace například mohou zvolit, že nevyžadují vícefaktorové ověřování, když jsou jejich uživatelé připojeni k síti v důvěryhodném umístění, jako je jejich fyzické ústředí. Správci mohou vytvořit zásadu, která zahrnuje libovolné umístění, ale vyloučí vybraná umístění pro své sítě centrály.
 
@@ -116,6 +119,9 @@ Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zás
 | Windows Server 2008 R2 | Internet Explorer |
 | macOS | Chrome, Safari |
 
+> [!NOTE]
+> Edge 85 + vyžaduje, aby byl uživatel přihlášený k prohlížeči, aby správně předával identitu zařízení. V opačném případě se chová jako Chrome bez rozšíření účtů. Toto přihlášení se nemusí automaticky vyskytnout v rámci scénáře připojení k hybridní službě Azure AD. 
+
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Proč se v prohlížeči zobrazí výzva k zadání certifikátu
 
 V systému Windows 7, iOS, Android a macOS Azure AD identifikuje zařízení pomocí klientského certifikátu, který se zřídí při registraci zařízení ve službě Azure AD.  Když se uživatel poprvé přihlásí prostřednictvím prohlížeče, zobrazí se uživateli výzva k výběru certifikátu. Uživatel musí před použitím prohlížeče tento certifikát vybrat.
@@ -126,14 +132,14 @@ V případě podpory pro Chrome ve **Windows 10 Creators Update (verze 1703)** n
 
 Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vytvořte následující klíč registru:
 
-- Cesta HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist cesty
 - Název 1
 - Typ REG_SZ (String)
 - Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/Service/Update2/CRX
 
-V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
+V případě podpory Chrome v **Windows 8.1 a 7** vytvořte následující klíč registru:
 
-- Cesta HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls cesty
 - Název 1
 - Typ REG_SZ (String)
 - Data {"vzor": " https://device.login.microsoftonline.com ", "Filter": {"Issuer": {"CN": "MS-Organization-Access"}}}
@@ -149,27 +155,27 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Klientské aplikace | Cílová služba | Platforma |
 | --- | --- | --- |
 | Aplikace Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS a Android |
-| Aplikace Pošta/kalendář/lidé, Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
+| Aplikace Pošta/kalendář/lidé, Outlook 2016, Outlook 2013 (s moderním ověřováním)| Exchange Online | Windows 10 |
 | Zásady vícefaktorového ověřování a umístění pro aplikace Zásady založené na zařízení se nepodporují.| Všechny moje aplikace App Service | Android a iOS |
 | Microsoft Team Services – řídí všechny služby, které podporují Microsoft teams a všechny jeho klientské aplikace – desktopové aplikace pro Windows, iOS, Android, WP a webový klient. | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
-| Aplikace Office 2016, Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Aplikace Office 2016, univerzální aplikace Office, sada Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (jenom Word, Excel, PowerPoint, OneNote) | Office 365 SharePoint Online | macOS |
-| Sada Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
-| Mobilní aplikace Office | Office 365 SharePoint Online | Android, iOS |
-| Aplikace Office Yammer | Office 365 Yammer | Windows 10, iOS, Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (Office pro macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
-| Mobilní aplikace Outlook | Office 365 Exchange Online | Android, iOS |
+| Aplikace Office 2016, Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1, Windows 7 |
+| Aplikace Office 2016, univerzální aplikace Office, sada Office 2013 (s moderním ověřováním), [synchronizační klient OneDrivu](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (jenom Word, Excel, PowerPoint, OneNote) | SharePoint | macOS |
+| Sada Office 2019| SharePoint | Windows 10, macOS |
+| Mobilní aplikace Office | SharePoint | Android, iOS |
+| Aplikace Office Yammer | Yammer | Windows 10, iOS, Android |
+| Outlook 2019 | SharePoint | Windows 10, macOS |
+| Outlook 2016 (Office pro macOS) | Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Exchange Online | Windows 8.1, Windows 7 |
+| Mobilní aplikace Outlook | Exchange Online | Android, iOS |
 | Aplikace Power BI | Služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
-| Skype pro firmy | Office 365 Exchange Online| Android, iOS |
+| Skype pro firmy | Exchange Online| Android, iOS |
 | Aplikace Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
 
 ### <a name="exchange-activesync-clients"></a>Klienti Exchange ActiveSync
 
-- Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni host a externí uživatelé**nebo **role adresáře** způsobí, že všichni uživatelé budou zablokovaný.
-- Při vytváření zásad přiřazených klientům Exchange ActiveSync by měla být **Sada Office 365 Exchange Online** jedinou cloudovou aplikací přiřazenou zásadám. 
+- Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni host a externí uživatelé** nebo **role adresáře** způsobí, že všichni uživatelé budou zablokovaný.
+- Při vytváření zásad přiřazených klientům Exchange ActiveSync by měla být **Exchange Online** jedinou cloudovou aplikací přiřazenou zásadám. 
 - Organizace můžou zúžit rozsah těchto zásad na konkrétní platformy pomocí podmínky pro **platformy zařízení** .
 
 Pokud řízení přístupu přiřazené k zásadám **vyžaduje schválení klientské aplikace**, uživatel se přesměruje na instalaci a používání mobilního klienta Outlooku. V případě, že je vyžadováno **ověřování Multi-Factor Authentication** , jsou ovlivněni uživatelé zablokováni, protože základní ověřování nepodporuje službu Multi-Factor Authentication.
@@ -181,14 +187,14 @@ Další informace najdete v následujících článcích:
 
 ### <a name="other-clients"></a>Ostatní klienti
 
-Výběrem **jiných klientů**můžete určit podmínku, která bude mít vliv na aplikace, které používají základní ověřování, s poštovními protokoly, jako jsou IMAP, MAPI, pop, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.
+Výběrem **jiných klientů** můžete určit podmínku, která bude mít vliv na aplikace, které používají základní ověřování, s poštovními protokoly, jako jsou IMAP, MAPI, pop, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.
 
 ## <a name="device-state-preview"></a>Stav zařízení (Preview)
 
 Stav zařízení se dá použít k vyloučení zařízení, která jsou připojená k hybridní službě Azure AD nebo zařízení označená jako vyhovující zásadám dodržování předpisů pro zásady podmíněného přístupu organizace v Microsoft Intune.
 
 Například *Všichni uživatelé, kteří* přistupují ke cloudové aplikaci *pro správu Microsoft Azure* , včetně **všech stavů zařízení** , včetně **zařízení připojených k hybridní službě Azure AD** a **zařízení označená jako kompatibilní** a pro *řízení přístupu*, **blokuje**. 
-   - Tento příklad vytvoří zásadu, která umožňuje přístup ke správě Microsoft Azure jenom ze zařízení, která jsou připojená k hybridní službě Azure AD nebo zařízení označená jako vyhovující předpisům.
+   - Tento příklad vytvoří zásadu, která umožňuje přístup ke správě Microsoft Azure jenom ze zařízení, která jsou buď připojená k hybridní službě Azure AD, nebo zařízení označená jako vyhovující předpisům.
 
 ## <a name="next-steps"></a>Další kroky
 

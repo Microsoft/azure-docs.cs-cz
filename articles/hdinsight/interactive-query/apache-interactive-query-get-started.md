@@ -1,19 +1,16 @@
 ---
 title: Co je interaktivní dotaz ve službě Azure HDInsight?
 description: Úvod do interaktivního dotazu, označovaného taky Apache Hive LLAP, ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2813554700e015c0ac34e47d632d16d97c948c4e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78271953"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941085"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co je interaktivní dotaz ve službě Azure HDInsight
 
@@ -47,7 +44,7 @@ K provedení dotazů na podregistr máte následující možnosti:
 
 Vyhledání připojovacího řetězce připojení k databázi Java (JDBC):
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 1. Pokud chcete zkopírovat adresu URL, vyberte ikonu schránky:
 
    ![Interaktivní dotaz Hadoop pro HDInsight LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)

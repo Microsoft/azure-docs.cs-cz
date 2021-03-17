@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008028"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219195"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -21,11 +21,11 @@ Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartován
 ## <a name="reboot"></a>Restartování
 Okno **restartování** vám umožní restartovat jeden nebo několik uzlů mezipaměti. Tato schopnost restartování umožňuje testovat aplikaci, aby byla odolná proti chybám, pokud dojde k selhání uzlu mezipaměti.
 
-![Restartování](./media/cache-administration/redis-cache-administration-reboot.png)
+![Snímek obrazovky, který zvýrazní možnost nabídky restartovat.](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Vyberte uzly, které chcete restartovat, a klikněte na **restartovat**.
 
-![Restartování](./media/cache-administration/redis-cache-reboot.png)
+![Snímek obrazovky, který zobrazuje uzly, které můžete restartovat.](./media/cache-administration/redis-cache-reboot.png)
 
 Pokud máte mezipaměť Premium s povoleným clusteringem, můžete vybrat, které horizontálních oddílů mezipaměti se mají restartovat.
 
@@ -57,6 +57,8 @@ Ano, Pokud restartujete mezipaměť, všechna připojení klientů budou vymazá
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Ztratím během restartování data z mezipaměti?
 Pokud restartujete **Hlavní** uzel i uzel **repliky** , může dojít ke ztrátě všech dat v mezipaměti (nebo v tomto horizontálních oddílů, pokud používáte mezipaměť Premium s povoleným clusteringem), ale není zaručena žádná z nich. Pokud jste nakonfigurovali [Trvalost dat](cache-how-to-premium-persistence.md), obnoví se poslední záloha, jakmile se mezipaměť vrátí zpět do režimu online, ale všechny zápisy do mezipaměti, ke kterým došlo po provedení zálohování, budou ztraceny.
 
@@ -69,8 +71,9 @@ Ano, pokyny k prostředí PowerShell najdete v tématu [restart mezipaměti Azur
 Okno **naplánovat aktualizace** umožňuje určit časové období údržby pro instanci mezipaměti. Časové období údržby vám umožňuje řídit dny a dobu v týdnu, během kterých lze virtuální počítače hostující vaši mezipaměť aktualizovat. Azure cache pro Redis vám umožní začít a dokončit aktualizaci softwaru Redis serveru v zadaném časovém intervalu, který definujete.
 
 > [!NOTE] 
-> Časové období údržby se vztahuje jenom na aktualizace serveru Redis a ne na aktualizace nebo aktualizace Azure v operačním systému virtuálních počítačů, které hostují mezipaměť.
+> Časové období údržby se vztahuje na aktualizace serveru Redis a aktualizace operačního systému virtuálních počítačů, které hostují mezipaměť. Časové období údržby se nevztahuje na aktualizace operačního systému hostitele na hostitele hostujících virtuální počítače mezipaměti nebo jiné síťové součásti Azure. Ve výjimečných případech, kde jsou mezipaměti hostované na starších modelech (můžete zjistit, jestli je vaše mezipaměť na starším modelu, pokud se název DNS mezipaměti překládá na příponu "cloudapp.net", "chinacloudapp.cn", "usgovcloudapi.net" nebo "cloudapi.de"), časové období údržby se neuplatní ani na aktualizace operačního systému hosta.
 >
+
 
 ![Plán aktualizací](./media/cache-administration/redis-schedule-updates.png)
 

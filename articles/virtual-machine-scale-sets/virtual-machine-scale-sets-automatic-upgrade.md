@@ -8,15 +8,15 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: f6de05e0ad5e4294b801a8b349663d92db448de6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424286"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684606"
 ---
-# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
+# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady imagí operačních systémů škálovacích sad virtuálních počítačů
 
 Povolení automatických upgradů bitových kopií operačního systému v sadě škálování pomáhá zjednodušit správu aktualizací tím, že bezpečně a automaticky upgraduje disk s operačním systémem pro všechny instance v sadě škálování.
 
@@ -45,8 +45,11 @@ Proces upgradu funguje takto:
 
 Nástroj Orchestrator pro upgrade operačního systému nástroje pro škálování před upgradem každé dávky kontroluje celkový stav sady škálování. Při upgradu dávky mohou existovat i jiné souběžné plánované nebo neplánované aktivity údržby, které by mohly ovlivnit stav instancí sady škálování. V takových případech, pokud se více než 20% instancí sady škálování stane špatným, se upgrade sady škálování zastaví na konci aktuální dávky.
 
+> [!NOTE]
+>Automatický upgrade operačního systému neupgraduje SKU referenčních imagí v sadě škálování. Chcete-li změnit skladovou položku (například Ubuntu 16,04-LTS na 18,04-LTS), je nutné aktualizovat [model sady škálování](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) přímo s požadovanou SKU image. Vydavatele a nabídku obrázků nelze změnit pro existující sadu škálování.  
+
 ## <a name="supported-os-images"></a>Podporované image operačních systémů
-V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image [se podporují](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) , pokud sada škálování používá vlastní image pomocí [Galerie sdílených imagí](shared-image-galleries.md).
+V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image [se podporují](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) , pokud sada škálování používá vlastní image pomocí [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md).
 
 V současné době se podporují následující SKU platforem (a pravidelně se přidávají další):
 
@@ -54,16 +57,15 @@ V současné době se podporují následující SKU platforem (a pravidelně se 
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04 – LTS          |
-| Neautorizovaný Wave (OpenLogic)  | CentOS        | 7,5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
+| OpenLogic               | CentOS        | 7,5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter – Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter – Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Požadavky na konfiguraci automatického upgradu imagí operačního systému
@@ -87,11 +89,11 @@ Zajistěte, aby se nastavení odolnosti neshodovalo s Service Fabric clusterem a
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatický upgrade bitové kopie operačního systému pro vlastní image
 
-Automatický upgrade image operačního systému se podporuje pro vlastní image nasazené pomocí [Galerie sdílených imagí](shared-image-galleries.md). Další vlastní image nejsou podporované pro automatické upgrady imagí operačního systému.
+Automatický upgrade image operačního systému se podporuje pro vlastní image nasazené pomocí [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md). Další vlastní image nejsou podporované pro automatické upgrady imagí operačního systému.
 
 ### <a name="additional-requirements-for-custom-images"></a>Další požadavky na vlastní image
 - Proces instalace a konfigurace automatického upgradu image operačního systému je stejný pro všechny sady škálování, jak je popsáno v [části Konfigurace](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) této stránky.
-- Instance sad škálování nakonfigurované pro automatické upgrady imagí operačního systému se budou upgradovat na nejnovější verzi Image Galerie sdílených imagí, když se publikuje nová verze image a [replikuje](shared-image-galleries.md#replication) se do oblasti této sady škálování. Pokud se nová bitová kopie nereplikuje do oblasti, ve které je rozšíření nasazeno, instance sady škálování nebudou upgradovány na nejnovější verzi. Replikace místních imagí vám umožní řídit zavedení nového obrázku pro sady škálování.
+- Instance sad škálování nakonfigurované pro automatické upgrady imagí operačního systému se budou upgradovat na nejnovější verzi Image Galerie sdílených imagí, když se publikuje nová verze image a [replikuje](../virtual-machines/shared-image-galleries.md#replication) se do oblasti této sady škálování. Pokud se nová bitová kopie nereplikuje do oblasti, ve které je rozšíření nasazeno, instance sady škálování nebudou upgradovány na nejnovější verzi. Replikace místních imagí vám umožní řídit zavedení nového obrázku pro sady škálování.
 - Nová verze Image by se neměla z poslední verze této image galerie vyloučit. Verze imagí vyloučené z poslední verze image galerie se nepočítají do sady škálování prostřednictvím automatického upgradu image operačního systému.
 
 > [!NOTE]
@@ -128,7 +130,7 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Slouží `[az vmss update](/cli/azure/vmss#az-vmss-update)` ke konfiguraci automatických upgradů bitových kopií operačního systému pro sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+K nakonfigurování automatických upgradů bitových kopií operačního systému pro sadu škálování použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -289,7 +291,7 @@ Pokud chcete zjistit historii upgradu operačního systému pro vaši sadu šká
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
 ```
 
-## <a name="deploy-with-a-template"></a>Nasazení pomocí šablony
+## <a name="deploy-with-a-template"></a>Nasazení s využitím šablony
 
 Pomocí šablon můžete nasadit sadu škálování s automatickými upgrady operačního systému pro podporované image, jako je například [Ubuntu 16,04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json).
 

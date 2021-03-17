@@ -7,15 +7,14 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770634"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631134"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
- 
 ## <a name="overview"></a>Přehled ##
 
 Azure App Service Environment je funkce služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service ve velkém měřítku. Tato funkce umožňuje hostovat vaše:
@@ -32,7 +31,7 @@ Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které 
 * Izolace a bezpečný přístup k síti
 * Využití velkého množství paměti
 
-Zákazníci můžou vytvořit víc služeb ASE v jedné oblasti Azure nebo v několika oblastech Azure. Díky této flexibilitě jsou služby ASE ideální pro horizontální škálování nestavových aplikačních vrstev s podporou náročných úloh RPS.
+Zákazníci můžou vytvořit víc služeb ASE v jedné oblasti Azure nebo v několika oblastech Azure. Díky této flexibilitě je služby ASE ideální pro horizontální škálování bezstavových aplikačních vrstev v rámci podpory úloh vysoké požadavků za sekundu (RPS).
 
 Služby ASE hostitelské aplikace jenom od jednoho zákazníka a tak učinit v jednom ze svých virtuální sítě. Zákazníci mají podrobnou kontrolu nad příchozími i odchozími přenosy v síti aplikací. Aplikace můžou prostřednictvím sítí VPN vytvářet vysokorychlostní zabezpečená připojení k místním firemním prostředkům.
 
@@ -61,13 +60,13 @@ Za službu ASE se účtuje pevný měsíční poplatek za infrastrukturu, který
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě ##
 
-Funkce pomocného mechanismu je nasazení Azure App Service přímo do Azure Resource Manager virtuální sítě zákazníka. Další informace o virtuálních sítí Azure najdete v článku [Virtuální sítě Azure – nejčastější dotazy](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Služba ASE vždycky existuje ve virtuální síti, přesněji řečeno v určité podsíti virtuální sítě. Pomocí funkcí zabezpečení virtuálních sítí můžete řídit příchozí a odchozí síťovou komunikaci svých aplikací.
+Funkce pomocného mechanismu je nasazení Azure App Service přímo do Azure Resource Manager virtuální sítě zákazníka. Další informace o virtuálních sítí Azure najdete v článku [Virtuální sítě Azure – nejčastější dotazy](../../virtual-network/virtual-networks-faq.md). Služba ASE vždycky existuje ve virtuální síti, přesněji řečeno v určité podsíti virtuální sítě. Pomocí funkcí zabezpečení virtuálních sítí můžete řídit příchozí a odchozí síťovou komunikaci svých aplikací.
 
 Služba ASE může být obrácená buď na internet a mít veřejnou IP adresu, nebo do interního prostředí a mít jenom adresu interního nástroje pro vyrovnávání zatížení Azure.
 
 [Skupiny zabezpečení sítě][NSGs] omezují příchozí síťovou komunikaci na podsíť, ve které se nachází služba ASE. Pomocí skupin zabezpečení sítě můžete spouštět aplikace za upstreamovými zařízeními a službami, jako jsou brány WAF a síťoví poskytovatelé SaaS.
 
-Aplikace také často potřebují přístup k firemním prostředkům, jako jsou třeba interní databáze a webové služby. Pokud nasadíte službu ASE ve virtuální síti, která má připojení VPN k místní síti, aplikace v této službě ASE můžou získat přístup k místním prostředkům. Tato možnost platí bez ohledu na to, jestli se jedná o síť VPN typu [site-to-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), nebo o síť VPN [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+Aplikace také často potřebují přístup k firemním prostředkům, jako jsou třeba interní databáze a webové služby. Pokud nasadíte službu ASE ve virtuální síti, která má připojení VPN k místní síti, aplikace v této službě ASE můžou získat přístup k místním prostředkům. Tato možnost platí bez ohledu na to, jestli se jedná o síť VPN typu [site-to-site](../../vpn-gateway/vpn-gateway-multi-site.md), nebo o síť VPN [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 Další informace o tom, jak služby ASE fungují s virtuálními sítěmi a místními sítěmi, najdete v článku [Aspekty sítí služby App Service Environment][ASENetwork].
 
@@ -91,16 +90,16 @@ Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se p
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/waf-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

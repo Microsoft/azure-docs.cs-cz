@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77149945"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager 
@@ -42,16 +42,16 @@ Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastn�
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-TM**.
-3. Vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+3. Vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 4. Vytvořte virtuální síť **VNet-Servers**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-TM** a podsíť pojmenujte **SN-Web**.
 
 ## <a name="create-two-web-server-virtual-machines"></a>Vytvoření dvou virtuálních počítačů s webovým serverem
-1. Vyberte **vytvořit prostředek** > **virtuální počítač s Windows serverem 2016**.
+1. Vyberte **vytvořit prostředek**  >  **virtuální počítač s Windows serverem 2016**.
 2. Jako název zadejte **Web-01** a umístěte virtuální počítač do skupiny prostředků **RG-DNS-Alias-TM**. Zadejte uživatelské jméno a heslo a vyberte **OK**.
 3. Jako **Velikost** vyberte skladovou položku s 8 GB paměti RAM.
 4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**.
 5. Vyberte **Veřejná IP adresa**. V části **Přiřazení** vyberte **Statické** a pak vyberte **OK**.
-6. Pro veřejné příchozí porty vyberte **http** > **https** > **RDP (3389)** a pak vyberte **OK**.
+6. Pro veřejné příchozí porty vyberte **http**  >  **https**  >  **RDP (3389)** a pak vyberte **OK**.
 7. Na stránce **Souhrn** vyberte **Vytvořit**. Dokončení tohoto postupu trvá několik minut.
 
 Celý postup zopakujte a vytvořte další virtuální počítač **Web-02**.
@@ -83,7 +83,7 @@ Celý postup zopakujte a nainstalujte službu IIS na virtuální počítač **We
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
 1. Otevřete skupinu prostředků **RG-DNS-Alias-TM** a vyberte veřejnou IP adresu **Web-01-ip**. Poznamenejte si IP adresu pro pozdější použití. Zopakujte tento krok pro veřejnou IP adresu **Web-02-ip**.
-1. Vyberte **vytvořit prostředek** > **síťové** > **Traffic Manager profil**.
+1. Vyberte **vytvořit prostředek**  >  **síťové**  >  **Traffic Manager profil**.
 2. Jako název zadejte **TM-alias-test**. Umístěte ho do skupiny prostředků **RG-DNS-Alias-TM**.
 3. Vyberte **Vytvořit**.
 4. Po dokončení nasazení vyberte **Přejít k prostředku**.

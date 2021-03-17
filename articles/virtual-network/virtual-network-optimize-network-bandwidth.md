@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265139"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216797"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimalizace propustnosti sítě pro virtuální počítače Azure
 
@@ -56,12 +56,12 @@ Ve výchozím nastavení je na virtuálním počítači Azure Linux vždy povole
 
 ### <a name="ubuntu-for-new-deployments"></a>Ubuntu pro nová nasazení
 
-Jádro Azure Ubuntu poskytuje nejlepší výkon sítě v Azure a je výchozím jádrem od 21. září 2017. Chcete-li získat toto jádro, nejprve nainstalujte nejnovější podporovanou verzi 16,04-LTS, a to následujícím způsobem:
+Ubuntu Azure kernel je nejlépe optimalizovaná pro výkon sítě v Azure. Chcete-li získat nejnovější optimalizace, nejprve nainstalujte nejnovější podporovanou verzi 18,04-LTS, a to následujícím způsobem:
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu upgrade jádra Azure pro existující virtuální počítače
 
-Významný výkon propustnosti je možné dosáhnout upgradem na jádro Azure Linux. Pokud chcete ověřit, jestli máte toto jádro, zkontrolujte verzi jádra.
+Významný výkon propustnosti je možné dosáhnout upgradem na jádro Azure Linux. Pokud chcete ověřit, jestli máte toto jádro, zkontrolujte verzi jádra. Mělo by to být stejné nebo pozdější než v příkladu.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ Aby bylo možné získat nejnovější optimalizace, je nejlepší vytvořit vir
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -152,6 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 Další informace o integračních službách Linux verze 4,2 pro Hyper-V najdete na [stránce pro stažení](https://www.microsoft.com/download/details.aspx?id=55106).
 
 ## <a name="next-steps"></a>Další kroky
+* Nasazení virtuálních počítačů blízko sebe navzájem pro nízkou latenci se [skupinou umístění blízkosti](../virtual-machines/co-location.md)
 * Podívejte se na optimalizovaný výsledek s [testováním šířky pásma a propustnosti virtuálního počítače Azure](virtual-network-bandwidth-testing.md) pro váš scénář.
 * Přečtěte si o tom [, jak je šířka pásma přidělena virtuálním počítačům](virtual-machine-network-throughput.md) .
 * Další informace o [nejčastějších dotazech k Azure Virtual Network (FAQ)](virtual-networks-faq.md)

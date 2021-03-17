@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852612"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576021"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Kurz: převod experimentů ML na produkční kód v Pythonu
 
@@ -68,7 +68,7 @@ args = {
 }
 
 reg_model = Ridge(**args)
-reg.fit(data["train"]["X"], data["train"]["y"])
+reg_model.fit(data["train"]["X"], data["train"]["y"])
 
 preds = reg_model.predict(data["test"]["X"])
 mse = mean_squared_error(preds, y_test)
@@ -354,7 +354,7 @@ Třetí, související funkce musí být sloučeny do souborů Pythonu, aby lép
 Převeďte svůj Poznámkový blok na spustitelný skript spuštěním následujícího příkazu na příkazovém řádku, který používá `nbconvert` balíček a cestu k `experimentation/Diabetes Ridge Regression Training.ipynb` :
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
+jupyter nbconvert "Diabetes Ridge Regression Training.ipynb" --to script --output train
 ```
 
 Po převedení poznámkového bloku na `train.py` odeberte všechny nežádoucí komentáře. Nahraďte volání na `main()` konci souboru pomocí podmíněného vyvolání jako v následujícím kódu:
@@ -432,7 +432,7 @@ if __name__ == '__main__':
     main()
 ```
 
-`train.py`lze nyní vyvolat z terminálu spuštěním `python train.py` .
+`train.py` lze nyní vyvolat z terminálu spuštěním `python train.py` .
 Funkce z `train.py` lze také volat z jiných souborů.
 
 Soubor, který se `train_aml.py` nachází v `diabetes_regression/training` adresáři úložiště MLOpsPython, volá funkce definované v `train.py` v kontextu Azure Machine Learning experimentu spustíte. Funkce lze také volat v testování částí popsaných dále v této příručce.
@@ -442,7 +442,7 @@ Soubor, který se `train_aml.py` nachází v `diabetes_regression/training` adre
 Přetajně Poznámkový blok na spustitelný skript spuštěním následujícího příkazu na příkazovém řádku, který používá `nbconvert` balíček a cestu k `experimentation/Diabetes Ridge Regression Scoring.ipynb` :
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
+jupyter nbconvert "Diabetes Ridge Regression Scoring.ipynb" --to script --output score
 ```
 
 Po převedení poznámkového bloku na `score.py` odeberte všechny nežádoucí komentáře. Váš `score.py` soubor by měl vypadat jako v následujícím kódu:
@@ -494,7 +494,7 @@ def init():
 
 Čtvrtě vytvořte testy jednotek pro funkce Pythonu. Testování částí chrání kód před funkční regresí a usnadňuje údržbu. V této části budete vytvářet testy jednotek pro funkce v `train.py` .
 
-`train.py`obsahuje více funkcí, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro `train_model` funkci pomocí rozhraní Pytest Framework. Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
+`train.py` obsahuje více funkcí, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro `train_model` funkci pomocí rozhraní Pytest Framework. Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
 
 Test jednotek obvykle obsahuje tři hlavní akce:
 
@@ -528,5 +528,5 @@ def test_train_model():
 Teď, když jste se seznámili s postupem převodu z experimentu do produkčního kódu, si přečtěte následující odkazy, kde najdete další informace a další kroky:
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): vytvoření kanálu CI/CD pro výuku, vyhodnocení a nasazení vlastního modelu pomocí Azure Pipelines a Azure Machine Learning
-+ [Monitorování běhů a metriky Azure ML](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [Monitorování a shromažďování dat z koncových bodů webové služby ML](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [Monitorování běhů a metriky Azure ML](./how-to-track-experiments.md)
++ [Monitorování a shromažďování dat z koncových bodů webové služby ML](./how-to-enable-app-insights.md)

@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11b0260eb6c1f5edfb246dcf97a43bdd874bf337
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689312"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217273"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Přesuňte skupinu zabezpečení sítě Azure (NSG) do jiné oblasti pomocí Azure Portal
 
 Existují různé scénáře, ve kterých byste chtěli přesunout stávající skupin zabezpečení sítě z jedné oblasti do druhé. Například může být vhodné vytvořit NSG se stejnou konfigurací a pravidly zabezpečení pro testování. V rámci plánování zotavení po havárii možná budete chtít přesunout NSG do jiné oblasti.
 
-Skupiny zabezpečení Azure nejde přesunout z jedné oblasti do druhé. K exportu existující konfigurace a pravidel zabezpečení NSG ale můžete použít šablonu Azure Resource Manager.  Pak můžete vytvořit prostředek v jiné oblasti tak, že NSG exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Skupiny zabezpečení Azure není možné přesunout z jedné oblasti do jiné. K exportu existující konfigurace a pravidel zabezpečení NSG ale můžete použít šablonu Azure Resource Manager.  Pak můžete vytvořit prostředek v jiné oblasti tak, že NSG exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -32,7 +32,7 @@ Skupiny zabezpečení Azure nejde přesunout z jedné oblasti do druhé. K expor
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet skupin zabezpečení sítě v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání skupin zabezpečení sítě pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání skupin zabezpečení sítě pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
@@ -41,7 +41,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Export šablony a nasazení z portálu
 
-1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků**Azure Portal.
+1. Přihlaste [](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
 2. Vyhledejte skupinu prostředků obsahující zdrojové NSG a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
@@ -178,5 +178,5 @@ Pokud chcete potvrdit změny a dokončit přesun NSG, odstraňte zdrojový NSG n
 V tomto kurzu jste přesunuli skupinu zabezpečení sítě Azure z jedné oblasti na jinou a vyčistili jste zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Přesun virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Přesun virtuálních počítačů Azure do jiné oblasti](../site-recovery/azure-to-azure-tutorial-migrate.md)

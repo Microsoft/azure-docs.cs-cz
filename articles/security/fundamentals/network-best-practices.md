@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757819"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735722"
 ---
-# <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy pro Azure pro zabezpečení sítě
+# <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy Azure pro zabezpečení sítě
 Tento článek popisuje shromažďování osvědčených postupů Azure pro vylepšení zabezpečení sítě. Tyto osvědčené postupy se odvozují z našich zkušeností s používáním sítí Azure a zkušeností zákazníků, jako je sami.
 
 U každého osvědčeného postupu Tento článek vysvětluje:
@@ -56,7 +56,7 @@ Mezi osvědčené postupy pro logické segmentování podsítí patří:
 **Podrobnosti**: vytvoření podsítí pomocí principů podsítí založených na [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
 **Osvědčený postup**: vytvoření řízení přístupu k síti mezi podsítěmi. Směrování mezi podsítěmi proběhne automaticky a nemusíte konfigurovat směrovací tabulky ručně. Ve výchozím nastavení neexistují žádná řízení přístupu k síti mezi podsítěmi, které vytvoříte ve službě Azure Virtual Network.   
-**Podrobnosti**: k ochraně před nevyžádaným provozem do podsítí Azure použijte [skupinu zabezpečení sítě](/azure/virtual-network/virtual-networks-nsg) . Skupiny zabezpečení sítě jsou jednoduchá a stavová zařízení pro kontrolu paketů, která používají přístup 5-Tuple (zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol vrstvy 4) k vytvoření pravidel povolení a odepření provozu v síti. Povolíte nebo zakážete provoz do a z jedné IP adresy, do a z několika IP adres nebo do a z celých podsítí.
+**Podrobnosti**: k ochraně před nevyžádaným provozem do podsítí Azure použijte [skupinu zabezpečení sítě](../../virtual-network/virtual-network-vnet-plan-design-arm.md) . Skupiny zabezpečení sítě jsou jednoduchá a stavová zařízení pro kontrolu paketů, která používají přístup 5-Tuple (zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol vrstvy 4) k vytvoření pravidel povolení a odepření provozu v síti. Povolíte nebo zakážete provoz do a z jedné IP adresy, do a z několika IP adres nebo do a z celých podsítí.
 
 Pokud používáte skupiny zabezpečení sítě pro řízení přístupu k síti mezi podsítěmi, můžete do jejich vlastních podsítí umístit prostředky, které patří do stejné zóny nebo role zabezpečení.
 
@@ -114,7 +114,7 @@ Zařízení zabezpečení sítě Azure můžou poskytovat lepší zabezpečení,
 K vyhledání dostupných zařízení zabezpečení virtuální sítě Azure použijte [Azure Marketplace](https://azure.microsoft.com/marketplace/) a vyhledejte "zabezpečení" a "zabezpečení sítě".
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Nasazení hraničních sítí pro zóny zabezpečení
-[Hraniční síť](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (označovaná také jako DMZ) je fyzický nebo logický segment sítě, který poskytuje další vrstvu zabezpečení mezi prostředky a internetem. Specializovaná zařízení pro řízení přístupu k síti na hraniční síti hraniční sítě umožňují pouze požadovaný provoz do vaší virtuální sítě.
+[Hraniční síť](/azure/architecture/vdc/networking-virtual-datacenter) (označovaná také jako DMZ) je fyzický nebo logický segment sítě, který poskytuje další vrstvu zabezpečení mezi prostředky a internetem. Specializovaná zařízení pro řízení přístupu k síti na hraniční síti hraniční sítě umožňují pouze požadovaný provoz do vaší virtuální sítě.
 
 Hraniční sítě jsou užitečné, protože můžete zaměřit správu řízení přístupu k síti, monitorování, protokolování a vytváření sestav na zařízeních na hranici vaší virtuální sítě Azure. Hraniční síť je místo, kde obvykle povolíte možnost prevence distribuovaného odepření služeb (DDoS), zjišťování vniknutí/systémy prevence vniknutí (ID/IP adresy), pravidla a zásady brány firewall, filtrování webu, antimalwarový software a další. Zařízení zabezpečení sítě sedí mezi Internetem a vaší virtuální sítí Azure a mají rozhraní v obou sítích.
 
@@ -122,7 +122,7 @@ I když se jedná o základní návrh hraniční sítě, existuje mnoho různýc
 
 Na základě výše zmíněného konceptu s nulovým vztahem důvěryhodnosti doporučujeme zvážit použití hraniční sítě pro všechna nasazení s vysokým zabezpečením a zvýšit úroveň zabezpečení sítě a řízení přístupu pro vaše prostředky Azure. K zajištění další úrovně zabezpečení mezi prostředky a internetem můžete použít Azure nebo řešení třetí strany:
 
-- Nativní ovládací prvky Azure [Azure firewall](/azure/firewall/overview) a [Firewall webových aplikací v Application Gateway](../../application-gateway/features.md#web-application-firewall) nabízejí základní zabezpečení s plně stavovou bránou firewall jako službu, integrovanou vysokou dostupnost, neomezenou škálovatelnost cloudu, filtrování plně kvalifikovaného názvu domény, podporu pro základní sady pravidel OWASP a jednoduché nastavení a konfiguraci.
+- Nativní ovládací prvky Azure [Azure firewall](../../firewall/overview.md) a [Firewall webových aplikací v Application Gateway](../../application-gateway/features.md#web-application-firewall) nabízejí základní zabezpečení s plně stavovou bránou firewall jako službu, integrovanou vysokou dostupnost, neomezenou škálovatelnost cloudu, filtrování plně kvalifikovaného názvu domény, podporu pro základní sady pravidel OWASP a jednoduché nastavení a konfiguraci.
 - Nabídky třetích stran. Vyhledejte [Azure Marketplace](https://azuremarketplace.microsoft.com/) firewallu nové generace (NGFW) a další nabídky třetích stran, které poskytují známé nástroje zabezpečení a výrazně vylepšené úrovně zabezpečení sítě. Konfigurace může být složitější, ale nabídka třetí strany vám může umožnit používání stávajících možností a dovednosti.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Vyhněte se expozici Internetu pomocí vyhrazených propojení WAN
@@ -131,7 +131,7 @@ Na základě výše zmíněného konceptu s nulovým vztahem důvěryhodnosti do
 Ve scénáři hybridního IT je obvykle nějaký typ připojení mezi různými místy. Připojení mezi místními sítěmi umožňuje společnosti připojit své místní sítě k virtuálním sítím Azure. K dispozici jsou dvě řešení pro připojení mezi různými místy:
 
 * Síť [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Jedná se o důvěryhodnou, spolehlivou a navázanou technologii, ale připojení probíhá přes Internet. Šířka pásma je omezená na maximum přibližně 1,25 GB/s. SÍŤ Site-to-Site VPN je v některých případech žádoucí volbou.
-* **ExpressRoute Azure**. Pro připojení mezi místními sítěmi doporučujeme použít [ExpressRoute](../../expressroute/expressroute-introduction.md) . ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako je Azure, Office 365 a Dynamics 365. ExpressRoute je vyhrazené propojení WAN mezi vaším místním umístěním nebo poskytovatelem hostingu Microsoft Exchange. Vzhledem k tomu, že se jedná o připojení výpovědi, vaše data necestují přes Internet, takže se nezveřejňují potenciální rizika internetové komunikace.
+* **ExpressRoute Azure**. Pro připojení mezi místními sítěmi doporučujeme použít [ExpressRoute](../../expressroute/expressroute-introduction.md) . ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako je Azure, Microsoft 365 a Dynamics 365. ExpressRoute je vyhrazené propojení WAN mezi vaším místním umístěním nebo poskytovatelem hostingu Microsoft Exchange. Vzhledem k tomu, že se jedná o připojení výpovědi, vaše data necestují přes Internet, takže se nezveřejňují potenciální rizika internetové komunikace.
 
 Umístění připojení ExpressRoute může ovlivnit viditelnost kapacity, škálovatelnosti, spolehlivosti a síťového provozu v bráně firewall. Budete muset určit, kde ukončit ExpressRoute v existujících sítích (místních). Další možnosti:
 
@@ -153,7 +153,7 @@ Vyrovnávání zatížení doporučujeme využívat, kdykoli budete a podle pot�
 - Přijímá jenom zabezpečené připojení, takže nešifrovaná komunikace na server není přijatelnou možností.
 - Vyžaduje směrování nebo vyrovnávání zatížení pro různé back-endové servery několika požadavky HTTP na stejné dlouhotrvající připojení TCP.
 
-**Možnost Vyrovnávání zatížení**: použijte [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), nástroj pro vyrovnávání zatížení webového provozu http. Application Gateway podporuje komplexní šifrování TLS a [ukončení protokolu TLS](/azure/application-gateway/application-gateway-introduction) v bráně. Webové servery pak můžou být nenáročné ze zátěže šifrování a dešifrování a přenos dat do back-endové servery je nešifrovaný.
+**Možnost Vyrovnávání zatížení**: použijte [Azure Application Gateway](../../application-gateway/overview.md), nástroj pro vyrovnávání zatížení webového provozu http. Application Gateway podporuje komplexní šifrování TLS a [ukončení protokolu TLS](../../application-gateway/overview.md) v bráně. Webové servery pak můžou být nenáročné ze zátěže šifrování a dešifrování a přenos dat do back-endové servery je nešifrovaný.
 
 **Scénář**: musíte vyrovnávat zatížení příchozích připojení z Internetu mezi servery nacházející se ve službě Azure Virtual Network. Scénáře jsou případy, kdy:
 
@@ -182,12 +182,12 @@ Potenciální potíže se zabezpečením pomocí těchto protokolů přes Intern
 Doporučujeme zakázat přímý přístup protokolu RDP a SSH k virtuálním počítačům Azure z Internetu. Po zakázání přímého přístupu RDP a SSH z internetu máte k dispozici další možnosti, které můžete použít pro přístup k těmto virtuálním počítačům pro vzdálenou správu.
 
 **Scénář**: umožňuje jednomu uživateli připojit se k virtuální síti Azure přes Internet.   
-**Možnost**: [síť VPN typu Point-to-site](/azure/vpn-gateway/vpn-gateway-point-to-site-create) je dalším termínem pro připojení klienta nebo serveru VPN pro vzdálený přístup. Po navázání připojení typu Point-to-site se uživatel může pomocí protokolu RDP nebo SSH připojit k jakýmkoli virtuálním počítačům umístěným ve virtuální síti Azure, ke které se uživatel připojil přes síť VPN typu Point-to-site. Tím se předpokládá, že uživatel má oprávnění k přístupu k těmto virtuálním počítačům.
+**Možnost**: [síť VPN typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) je dalším termínem pro připojení klienta nebo serveru VPN pro vzdálený přístup. Po navázání připojení typu Point-to-site se uživatel může pomocí protokolu RDP nebo SSH připojit k jakýmkoli virtuálním počítačům umístěným ve virtuální síti Azure, ke které se uživatel připojil přes síť VPN typu Point-to-site. Tím se předpokládá, že uživatel má oprávnění k přístupu k těmto virtuálním počítačům.
 
 SÍŤ VPN typu Point-to-site je bezpečnější než přímé připojení RDP nebo SSH, protože před připojením k virtuálnímu počítači musí uživatel ověřit dvakrát. Nejdřív musí uživatel ověřit (a být autorizován), aby navázal připojení VPN typu Point-to-site. Za druhé musí uživatel ověřit (a být autorizován) vytvořit relaci RDP nebo SSH.
 
 **Scénář**: Umožněte uživatelům ve vaší místní síti připojení k virtuálním počítačům ve službě Azure Virtual Network.   
-**Možnost**: síť [site-to-Site VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) připojuje celou síť k jiné síti přes Internet. K připojení místní sítě k virtuální síti Azure můžete použít síť VPN typu Site-to-site. Uživatelé na místní síti se připojují pomocí protokolu RDP nebo SSH přes připojení VPN typu Site-to-site. Nemusíte umožňovat přímý přístup přes protokol RDP nebo SSH přes Internet.
+**Možnost**: síť [site-to-Site VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) připojuje celou síť k jiné síti přes Internet. K připojení místní sítě k virtuální síti Azure můžete použít síť VPN typu Site-to-site. Uživatelé na místní síti se připojují pomocí protokolu RDP nebo SSH přes připojení VPN typu Site-to-site. Nemusíte umožňovat přímý přístup přes protokol RDP nebo SSH přes Internet.
 
 **Scénář**: použijte vyhrazené propojení WAN k poskytnutí podobných funkcí jako síť VPN typu Site-to-site.   
 **Možnost**: použijte [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). Poskytuje funkce podobné síti VPN typu Site-to-site. Hlavními rozdíly jsou:
@@ -196,18 +196,18 @@ SÍŤ VPN typu Point-to-site je bezpečnější než přímé připojení RDP ne
 - Vyhrazená propojení WAN jsou obvykle spolehlivější a fungují lépe.
 
 ## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>Zabezpečení důležitých prostředků služby Azure jenom na vaše virtuální sítě
-Pomocí koncových bodů služby virtuální sítě můžete v rámci přímého připojení zvětšit privátní adresní prostor virtuální sítě a identitu vaší virtuální sítě do služeb Azure. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Provoz z vaší virtuální sítě do služby Azure vždycky zůstane v síti Microsoft Azure páteřní sítě.
+Použití privátního odkazu Azure k přístupu ke službám Azure PaaS (například Azure Storage a SQL Database) prostřednictvím privátního koncového bodu ve vaší virtuální síti. Soukromé koncové body umožňují zabezpečit vaše důležité prostředky služeb Azure jenom na vaše virtuální sítě. Provoz z vaší virtuální sítě do služby Azure vždycky zůstane v síti Microsoft Azure páteřní sítě. Vystavení virtuální sítě pro veřejný Internet již není nutné pro využívání služeb Azure PaaS. 
 
-Koncové body služby poskytují následující výhody:
+Privátní propojení Azure přináší následující výhody:
+- **Vylepšené zabezpečení pro vaše prostředky služeb Azure**: s privátním odkazem na Azure je možné zabezpečit virtuální síť pomocí privátního koncového bodu prostřednictvím služby Azure. Zabezpečení prostředků služby na soukromý koncový bod ve virtuální síti přináší lepší zabezpečení díky úplnému odebrání veřejného internetového přístupu k prostředkům a povolení provozu pouze z privátního koncového bodu ve vaší virtuální síti.
+- **Privátní přístup k prostředkům služeb Azure na platformě Azure**: Připojte svoji virtuální síť ke službám v Azure pomocí privátních koncových bodů. Není potřeba žádná veřejná IP adresa. Platforma privátního propojení bude zpracovávat připojení mezi příjemcem a službami přes páteřní síť Azure.
+- **Přístup z místních a partnerských sítí**: přístup ke službám běžícím v Azure prostřednictvím privátního partnerského vztahu ExpressRoute, tunelových propojení VPN a partnerských virtuálních sítí s využitím privátních koncových bodů. Pro přístup k této službě není nutné konfigurovat ExpressRoute partnerský vztah Microsoftu ani procházet internetem. Privátní odkaz poskytuje zabezpečený způsob migrace úloh do Azure.
+- **Ochrana před únikem dat**: privátní koncový bod je namapován na instanci prostředku PaaS namísto celé služby. Příjemci se můžou připojit jenom ke konkrétnímu prostředku. Přístup k jakémukoli jinému prostředku ve službě je blokovaný. Tento mechanismus zajišťuje ochranu před riziky úniku dat.
+- **Globální dosah**: Připojte soukromě ke službám běžícím v jiných oblastech. Virtuální síť příjemce může být v oblasti a a může se připojit ke službám v oblasti B.
+- **Jednoduché nastavení a Správa**: ve virtuálních sítích už nepotřebujete vyhrazené veřejné IP adresy pro zabezpečení prostředků Azure prostřednictvím brány firewall protokolu IP. Pro nastavení privátních koncových bodů nejsou potřeba žádná zařízení NAT nebo brány. Soukromé koncové body jsou konfigurovány prostřednictvím jednoduchého pracovního postupu. Na straně služby můžete také snadno spravovat požadavky na připojení v prostředku služby Azure. Privátní propojení Azure funguje i pro zákazníky a služby patřící do různých klientů Azure Active Directory. 
+    
+Další informace o privátních koncových bodech a službách a oblastech Azure, které jsou pro privátní koncové body dostupné, najdete v tématu věnovaném [privátním odkazům Azure](../../private-link/private-link-overview.md).
 
-- **Zlepšení zabezpečení prostředků služeb Azure:** Pomocí koncových bodů služby je možné svázat prostředky služeb Azure s vaší virtuální sítí. Svázání prostředků služeb s virtuální sítí poskytuje lepší zabezpečení, protože zcela eliminuje přístup k prostředkům z veřejného internetu a povoluje jen provoz z vaší virtuální sítě.
-- **Optimální směrování provozu služeb Azure z vaší virtuální sítě**: jakékoli trasy ve vaší virtuální síti, která vynucuje internetový provoz na místních nebo virtuálních zařízeních, označovaná jako vynucené tunelování, taky vynutit, aby provoz služeb Azure převzal stejnou trasu jako internetový provoz. Koncové body služby poskytují optimální směrování provozu Azure.
-
-  Koncové body vždy přebírají provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Azure. Provoz v páteřní síti Azure vám umožní pokračovat v auditování a monitorování odchozího internetového provozu z vašich virtuálních sítí prostřednictvím vynuceného tunelování, aniž by to ovlivnilo provoz služeb. Přečtěte si další informace o [trasách definovaných uživatelem a vynuceném tunelování](../../virtual-network/virtual-networks-udr-overview.md).
-
-- **Jednoduché nastavení s nižšími nároky na správu**: ve virtuálních sítích už nepotřebujete vyhrazené veřejné IP adresy pro zabezpečení prostředků Azure prostřednictvím brány firewall protokolu IP. K nastavení koncových bodů služby se nevyžaduje překlad adres ani zařízení brány. Koncové body služby se konfigurují pouhým kliknutím na podsíť. Neexistují žádné další nároky na údržbu koncových bodů.
-
-Další informace o koncových bodech služby a službách a oblastech Azure, které jsou pro koncové body služby k dispozici pro, najdete v tématu [koncové body služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.

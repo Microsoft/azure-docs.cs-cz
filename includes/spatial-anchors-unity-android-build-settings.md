@@ -1,21 +1,21 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: c3bc542ffaabdb307ebcecdb02ce29a5d8acfbdc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 6e7b14db50b5ea068935effdf9e1d760ec6da9f1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68562436"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185288"
 ---
-Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
+Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení** souboru.
 
-V části **platforma** vyberte **Android**. Vyberte **přepínač platforma** pro změnu platformy na **Android**. V Unity se může zobrazit výzva k instalaci komponent podpory Androidu, pokud chybí.
+V části **platforma** vyberte **Android** a pak vyberte **Switch Platform (přepnout platformu** ) pro změnu platformy na **Android**. V Unity se může zobrazit výzva k instalaci komponent podpory Androidu, pokud chybí.  
 
-![Okno nastavení sestavení Unity](./media/spatial-anchors-unity/unity-android-build-settings.png)
+   ![Snímek obrazovky s podoknem nastavení sestavení Unity – Android](./media/spatial-anchors-unity/unity-android-build-settings.png)  
 
 Zavřete okno **nastavení sestavení** .
 

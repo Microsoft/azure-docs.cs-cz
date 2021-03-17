@@ -1,17 +1,17 @@
 ---
 title: Konfigurace sady škálování virtuálních počítačů pomocí existující Azure Load Balancer-Azure Portal
-description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer.
+description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure Portal.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91439515"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Konfigurace sady škálování virtuálních počítačů pomocí existující Azure Load Balancer pomocí Azure Portal
 
@@ -46,14 +46,14 @@ V této části vytvoříte v Azure Portal sadu škálování virtuálního poč
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
     | **Podrobnosti o projektu**            |                                                                                                       |
     | Předplatné                   | Vyberte své předplatné Azure.                                                                        |
-    | Skupina prostředků                 | Vyberte vytvořit novou, zadejte **myResourceGroup**, vyberte OK nebo vyberte existující skupinu prostředků. |
+    | Resource Group                 | Vyberte vytvořit novou, zadejte **myResourceGroup**, vyberte OK nebo vyberte existující skupinu prostředků. |
     | **Podrobnosti o škále sady**          |                                                                                                       |
     | Název škálovací sady virtuálních počítačů | Zadejte **myVMSS**                                                                                      |
     | Oblast                         | Vyberte **východní USA 2**                                                                                    |
     | Zóna dostupnosti              | Vybrat **žádné**                                                                                       |
-    | **Podrobnosti instance**           |                                                                                                       |
+    | **Podrobnosti o instancích**           |                                                                                                       |
     | Image                          | Vyberte **Ubuntu Server 18,04 LTS**                                                                    |
-    | Instance bodu Azure            | Vybrat **ne**                                                                                         |
+    | Instance Azure Spot            | Vybrat **ne**                                                                                         |
     | Velikost                           | Ponechat ve výchozím nastavení                                                                                      |
     | **Účet správce**      |                                                                                                       |
     | Typ ověřování            | Vybrat **heslo**                                                                                   |
@@ -62,7 +62,7 @@ V této části vytvoříte v Azure Portal sadu škálování virtuálního poč
     | Potvrzení hesla               | Zadejte znovu heslo správce. |
 
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="Vytvořte sadu škálování virtuálního počítače." border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="Snímek obrazovky se zobrazí na kartě vytvořit základy pro sadu škálování virtuálního počítače." border="true":::
 
 4. Vyberte kartu **síť** .
 
@@ -73,13 +73,13 @@ V této části vytvoříte v Azure Portal sadu škálování virtuálního poč
     | **Konfigurace Virtual Network** |                                                          |
     | Virtuální síť                   | Vyberte **myVNet** nebo existující virtuální síť.      |
     | **Vyrovnávání zatížení**                |                                                          |
-    | Použití nástroje pro vyrovnávání zatížení               | Vyberte **Ano**                                           |
+    | Použití nástroje pro vyrovnávání zatížení               | Vyberte **Ano**.                                           |
     | **Nastavení vyrovnávání zatížení**       |                                                          |
     | Možnosti vyrovnávání zatížení            | Výběr **služby Azure Load Balancer**                           |
     | Vyberte nástroj pro vyrovnávání zatížení.            | Vyberte **myLoadBalancer** nebo existující Nástroj pro vyrovnávání zatížení. |
     | Vybrat back-end fond             | Vyberte **myBackendPool** nebo svůj stávající back-end fond.  |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Vytvořte sadu škálování virtuálního počítače." border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Snímek obrazovky se zobrazí na kartě vytvořit základy pro sadu škálování virtuálního počítače." border="true":::
 
 6. Vyberte kartu **Správa** .
 

@@ -3,25 +3,25 @@ title: Odeslání e-mailu z Azure Automation Runbooku
 description: V tomto článku se dozvíte, jak odeslat e-mail z Runbooku.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 915a0d75622a98b33f647041f3c3b622cb5236b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185853"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053716"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Odeslání e-mailu z runbooku
 
 Pomocí prostředí PowerShell můžete odeslat e-mail z Runbooku pomocí [SendGrid](https://sendgrid.com/solutions) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ho ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ho ještě nemáte, můžete si  [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
 * [Účet Automation](./index.yml) pomocí **AZ** Modules.
-* [Účet Spustit jako](./manage-runas-account.md) pro uložení a spuštění Runbooku.
+* [Účet Spustit jako](./automation-security-overview.md#run-as-accounts) pro uložení a spuštění Runbooku.
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
 
@@ -67,17 +67,17 @@ Další způsoby vytvoření Azure Key Vault a uložení tajného klíče najdet
 
 Pokud chcete použít Azure Key Vault v rámci sady Runbook, musíte do svého účtu Automation importovat následující moduly:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Pokyny najdete v tématu [Import AZ modules](shared-resources/modules.md#import-az-modules).
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Vytvoření Runbooku k odeslání e-mailu
 
-Po vytvoření Key Vault a uložení `SendGrid` klíče rozhraní API je čas vytvořit Runbook, který načte klíč rozhraní API a pošle e-mail. Pojďme použít sadu Runbook, která používá `AzureRunAsConnection` jako [účet Spustit jako](./manage-runas-account.md) k ověření pomocí Azure pro načtení tajného kódu z Azure Key Vault. Zavoláme Runbook **Send-GridMailMessage**. Můžete upravit skript prostředí PowerShell, který se používá pro ukázkové účely, a znovu ho použít pro různé scénáře.
+Po vytvoření Key Vault a uložení `SendGrid` klíče rozhraní API je čas vytvořit Runbook, který načte klíč rozhraní API a pošle e-mail. Pojďme použít sadu Runbook, která používá `AzureRunAsConnection` jako [účet Spustit jako](./automation-security-overview.md#run-as-accounts) k ověření pomocí Azure pro načtení tajného kódu z Azure Key Vault. Zavoláme Runbook **Send-GridMailMessage**. Můžete upravit skript prostředí PowerShell, který se používá pro ukázkové účely, a znovu ho použít pro různé scénáře.
 
 1. Přejít na účet Azure Automation.
-2. V části **Automatizace procesu**vyberte **Runbooky**.
+2. V části **Automatizace procesu** vyberte **Runbooky**.
 3. V horní části seznamu sad Runbook vyberte **+ vytvořit Runbook**.
 4. Na stránce Přidat sadu Runbook zadejte do pole název sady Runbook **odeslání-GridMailMessage** . Jako typ Runbooku vyberte **PowerShell**. Potom vyberte **Vytvořit**.
    ![Vytvořit Runbook](./media/automation-send-email/automation-send-email-runbook.png)
@@ -100,7 +100,7 @@ Po vytvoření Key Vault a uložení `SendGrid` klíče rozhraní API je čas vy
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
     $VaultName = "<Enter your vault name>"
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValueText
+    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValue
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")
@@ -142,7 +142,7 @@ Pokud se vám na zkušebním e-mailu nezobrazuje e-mail, zkontrolujte složky **
 
 1. Pokud již sada Runbook není potřebná, vyberte ji v seznamu sady Runbook a klikněte na tlačítko **Odstranit**.
 
-2. Odstraňte Key Vault pomocí rutiny [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) .
+2. Odstraňte Key Vault pomocí rutiny [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) .
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

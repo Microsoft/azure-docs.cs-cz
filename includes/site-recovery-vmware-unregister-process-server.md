@@ -4,19 +4,19 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175535"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019176"
 ---
 Použijte postup podle svých konkrétních okolností.
 
 ### <a name="unregister-a-connected-process-server"></a>Zrušení registrace připojeného procesového serveru
 
 1. Navažte vzdálené připojení k procesu serveru jako správce.
-2. V **Ovládacích panelech**otevřete **programy > odinstalovat program**.
+2. V **Ovládacích panelech** otevřete **programy > odinstalovat program**.
 3. Odinstalujte program **Microsoft Azure Site Recovery služby mobility nebo hlavního cílového serveru**.
 4. Odinstalujte program **Microsoft Azure Site Recovery konfiguračním nebo procesovém serveru**.
 5. Po odinstalování programů v krocích 3 a 4 odinstalujte **Microsoft Azure Site Recovery konfigurace a procesový Server závislosti**.
@@ -35,7 +35,7 @@ Tyto kroky použijte pouze v případě, že není k dispozici žádný způsob,
     - USA: Ne: sériové číslo procesového serveru.
     - IP/název: IP adresa a název počítače, na kterém běží procesový Server.
     - Prezenční signál: poslední prezenční signál z počítače procesového serveru.
-    ![Zrušit registraci – cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ! [Snímek obrazovky zobrazuje nešifrované zobrazení informací o procesových serverech a textu. Zvolte prosím jeden z výše uvedených serverů pro zrušení registrace. (Media/Site-Recovery-VMware-Unregister-Process-Server/Unregister-cmd.PNG)
 
 4. Zadejte sériové číslo procesového serveru, který chcete zrušit.
 5. Zrušení registrace procesového serveru odebere ze systému všechny jeho podrobnosti a zobrazí zprávu: **úspěšně odregistrované servery – název> (Server-IP-Address)**

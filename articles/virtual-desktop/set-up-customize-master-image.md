@@ -3,19 +3,22 @@ title: Příprava a přizpůsobení image hlavního virtuálního pevného disku
 description: Postup přípravy, přizpůsobení a nahrání hlavní image virtuálního počítače s Windows do Azure
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/14/2019
+ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca92e6e888ead6bbd79c7a8d524516ee95e8c45d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009507"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092932"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
 V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure, včetně postupu při vytváření virtuálních počítačů a instalaci softwaru na tyto počítače. Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
+
+>[!IMPORTANT]
+>Doporučujeme použít image z Galerie imagí Azure. Pokud ale potřebujete použít přizpůsobenou image, ujistěte se, že na svém VIRTUÁLNÍm počítači ještě není nainstalovaný agent virtuálních počítačů s Windows. Použití vlastní image s agentem virtuálních klientů Windows může způsobit problémy s imagí, jako je blokování registrace a prevence připojení uživatelské relace.  
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -93,7 +96,7 @@ Zakázání automatických aktualizací prostřednictvím místních Zásady sku
 
 Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
@@ -101,7 +104,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 
 Spusťte tento příkaz a určete tak počáteční rozložení počítačů s Windows 10.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
@@ -114,12 +117,12 @@ Postup přesměrování časových pásem:
 1. Na serveru služby Active Directory otevřete **Konzola pro správu zásad skupiny**.
 2. Rozbalíte své domény a Zásady skupiny objekty.
 3. Klikněte pravým tlačítkem myši na **objekt Zásady skupiny** , který jste vytvořili pro nastavení zásad skupiny, a vyberte **Upravit**.
-4. V **Editor pro správu zásad skupiny**přejděte na zásady **Konfigurace počítače**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **zařízení a přesměrování prostředků**.
+4. V **Editor pro správu zásad skupiny** přejděte na zásady **Konfigurace počítače**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **zařízení a přesměrování prostředků**.
 5. Povolte nastavení **Povolit přesměrování časového pásma** .
 
 Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
@@ -132,7 +135,7 @@ Pro hostitele relací virtuálních počítačů s Windows, kteří používají
 
 Nastavení registru můžete změnit také spuštěním následujícího příkazu:
 
-```batch
+```cmd
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
@@ -153,19 +156,19 @@ Tato část se zabývá konfigurací aplikace a operačního systému. Veškerá
 
 Pro shromažďování dat v centru Feedback v rámci více relací Windows 10 Enterprise můžete spustit tento příkaz:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 Spusťte následující příkaz, který vyřeší chyby programu Watson:
 
-```batch
+```cmd
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
 Zadáním následujících příkazů do editoru registru opravíte podporu řešení 5k. Aby bylo možné povolit souběžný zásobník, je nutné spustit tyto příkazy.
 
-```batch
+```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f
@@ -189,7 +192,7 @@ V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do ú
 
 1. Pokud jste to ještě neudělali, převeďte image virtuálního počítače (VHD) na pevnou. Pokud bitovou kopii nepřevedete na pevnou, nemůžete tuto image úspěšně vytvořit.
 
-2. Nahrajte virtuální pevný disk do kontejneru objektů BLOB v účtu úložiště. Pomocí [nástroje Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)můžete rychle nahrávat. Další informace o nástroji pro Průzkumník služby Storage najdete v [tomto článku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+2. Nahrajte virtuální pevný disk do kontejneru objektů BLOB v účtu úložiště. Pomocí [nástroje Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)můžete rychle nahrávat. Další informace o nástroji pro Průzkumník služby Storage najdete v [tomto článku](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows).
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky okna hledání nástroje pro Průzkumník služby Microsoft Azure Storage Zaškrtávací políčko nahrát soubory. VHD nebo VHDX jako objekty blob stránky (doporučeno) je zaškrtnuté.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
@@ -213,3 +216,5 @@ Teď, když máte image, můžete vytvořit nebo aktualizovat fondy hostitelů. 
 - [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md)
 - [Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky](create-host-pools-user-profile.md)
 - [Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+
+Pokud jste narazili na problém s připojením po přípravě nebo přizpůsobení image VHD, Projděte si nápovědu [Průvodce odstraňováním potíží](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) .

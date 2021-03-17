@@ -3,12 +3,13 @@ title: Nasazení Azure Service Fabric pomocí FabricClient
 description: Pomocí rozhraní FabricClient API můžete nasazovat a odebírat aplikace v Service Fabric.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75376966"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785545"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
 > [!div class="op_single_selector"]
@@ -46,7 +47,7 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="upload-the-application-package"></a>Nahrání balíčku aplikace
 Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio. Ve výchozím nastavení je název typu aplikace uvedený v ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *C:\Users \& lt; UserName &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*.
 
-Nahráním balíčku aplikace se umístí do umístění, které je přístupné pro interní Service Fabric komponenty. Service Fabric ověří balíček aplikace při registraci balíčku aplikace. Pokud však chcete ověřit balíček aplikace místně (tj. před odesláním), použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
+Nahráním balíčku aplikace se umístí do umístění, které je přístupné pro interní Service Fabric komponenty. Service Fabric ověří balíček aplikace při registraci balíčku aplikace. Pokud však chcete ověřit balíček aplikace místně (tj. před odesláním), použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) .
 
 Rozhraní API [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) odesílá balíček aplikace do úložiště imagí clusteru. 
 
@@ -89,9 +90,9 @@ Pokud už instanci aplikace nepotřebujete, můžete ji trvale odebrat pomocí r
 ## <a name="unregister-an-application-type"></a>Zrušení registrace typu aplikace
 Pokud již určitou verzi typu aplikace nepotřebujete, měli byste zrušit registraci konkrétní verze typu aplikace pomocí rozhraní API pro [zrušení registrace](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) . Rušení registrace nepoužívaných verzí typů aplikací uvolní prostor úložiště používaný úložištěm imagí. U verze typu aplikace se může zrušit registrace, pokud se nevytváří instance žádné aplikace proti této verzi typu aplikace. Také typ aplikace nemůže mít žádné probíhající upgrady aplikace, na které se odkazuje na verzi typu aplikace.
 
-## <a name="troubleshooting"></a>Řešení potíží
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage žádá o ImageStoreConnectionString
-Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest:
+## <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage požádá o ImageStoreConnectionString
+Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) a Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
@@ -122,7 +123,7 @@ Další informace o úložišti imagí a připojovacím řetězci pro úložišt
 
 ### <a name="deploy-large-application-package"></a>Nasadit balíček velkých aplikací
 Problém: vyprší časový limit rozhraní [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API pro velký balíček aplikace (v řádu GB).
-Zkuste
+Vyzkoušejte:
 - Zadejte větší časový limit pro metodu [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) s `timeout` parametrem. Ve výchozím nastavení je časový limit 30 minut.
 - Ověřte síťové připojení mezi zdrojovým počítačem a clusterem. Pokud je připojení pomalé, zvažte použití počítače s lepším připojením k síti.
 Pokud je klientský počítač v jiné oblasti než cluster, zvažte použití klientského počítače v bližší nebo stejné oblasti jako cluster.
@@ -135,7 +136,7 @@ Komprese zmenšuje velikost a počet souborů. tím se snižuje objem provozu a 
 
 ### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s mnoha soubory
 Problém: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) časový limit pro balíček aplikace s mnoha soubory (pořadí tisíců).
-Zkuste
+Vyzkoušejte:
 - Před kopírováním do úložiště imagí [balíček Zkomprimujte](service-fabric-package-apps.md#compress-a-package) . Komprese snižuje počet souborů.
 - Zadejte větší časový limit pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) s `timeout` parametrem.
 

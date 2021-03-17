@@ -3,7 +3,7 @@ title: Aktualizovat Media Services po navracení přístupových klíčů k úlo
 description: V tomto článku najdete pokyny, jak aktualizovat Media Services po zavedení přístupových klíčů k úložišti.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12732171f774e6ce010f722cde4a27bb298275b9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000121"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007919"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti 
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se také výzva k výběru účtu Azure Storage, který se používá k uložení mediálního obsahu. K vašemu Media Services účtu můžete přidat více účtů úložiště. Tento článek ukazuje, jak otočit klíče úložiště. Také ukazuje, jak přidat účty úložiště k účtu média. 
 
@@ -45,7 +47,7 @@ Media Services závisí na klíči úložiště, který je mu k dispozici. Konkr
 ## <a name="steps-to-rotate-storage-keys"></a>Postup pro otočení klíčů úložiště 
  
  1. Pomocí rutiny PowerShellu nebo webu [Azure](https://portal.azure.com/) Portal změňte primární klíč účtu úložiště.
- 2. Volejte rutinu Sync-AzMediaServiceStorageKeys s příslušnými parami k vynucení účtu média pro výběr klíčů účtu úložiště.
+ 2. Volejte Sync-AzMediaServiceStorageKeys rutinu s příslušnými parametry pro vynucení účtu média pro vyzvednutí klíčů účtu úložiště.
  
     Následující příklad ukazuje, jak synchronizovat klíče s účty úložiště.
   
@@ -53,7 +55,7 @@ Media Services závisí na klíči úložiště, který je mu k dispozici. Konkr
   
  3. Počkejte hodinu nebo. Ověřte, jestli fungují scénáře streamování.
  4. Pomocí rutiny PowerShellu nebo Azure Portal změňte sekundární klíč účtu úložiště.
- 5. Volání Sync-AzMediaServiceStorageKeys PowerShell s příslušnými parami k vynucení účtu média pro výběr nových klíčů účtu úložiště. 
+ 5. Pokud chcete vynutit, aby si účet média vybral nové klíče účtu úložiště, zavolejte Sync-AzMediaServiceStorageKeys PowerShell s příslušnými parametry. 
  6. Počkejte hodinu nebo. Ověřte, jestli fungují scénáře streamování.
  
 ### <a name="a-powershell-cmdlet-example"></a>Příklad rutiny PowerShellu 

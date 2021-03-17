@@ -1,14 +1,17 @@
 ---
 title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cb5a1a51a7d622c1b0a605d155ade2f08022ab67
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640119"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592481"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -31,11 +34,21 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt Azure Migrate a přidej
 
 ## <a name="physical-server-requirements"></a>Požadavky na fyzický server
 
-| **Podpora**                | **Podrobnosti**               
-| :-------------------       | :------------------- |
-| **Nasazení fyzického serveru**       | Fyzický server může být samostatný nebo nasazený v clusteru. |
-| **Oprávnění**           | **Windows:** Použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. <br/> Případně se ujistěte, že jsou požadované možnosti nastaveny pomocí následujících příkazů. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (Pokud není k dispozici/usr/sbin/Fdisk) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r –/sys/Class/DMI/ID/product_uuid
-| **Operační systém** | Pro migraci se dají posoudit všechny operační systémy s výjimkou systémů Windows Server 2003 a SUSE Linux. |
+**Nasazení fyzického serveru:** Fyzický server může být samostatný nebo nasazený v clusteru.
+
+**Operační systém:** Pro všechny operační systémy Windows a Linux se dá zhodnotit migrace.
+
+**Nastaven**
+- Pro Windows servery použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Remote Management Users, Performance Monitor Users a Performance Log Users.
+- V případě serverů s Linuxem musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele. Alternativně můžete nastavit nekořenový účet s požadovanými funkcemi pomocí následujících příkazů:
+
+**Příkaz** | **Účel**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br></br> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk _(Pokud není k dispozici/usr/sbin/Fdisk)_ | Shromažďování dat konfigurace disku
+setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid,<br>cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin<br>cap_sys_resource, cap_audit_control, cap_setfcap = + EIP "/sbin/LVM | Shromažďování dat o výkonu disku
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode | Shromáždění sériového čísla systému BIOS
+chmod a + r –/sys/Class/DMI/ID/product_uuid | Shromažďování identifikátorů GUID systému BIOS
+
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
@@ -54,7 +67,7 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 **Zařízení** | **Připojení**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
-**Fyzické servery** | **Windows:** Příchozí připojení na portu WinRM 5985 (HTTP) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/><br/> **Linux:**  Příchozí připojení na portu 22 (TCP) k vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
+**Fyzické servery** | **Windows:** Příchozí připojení na portu WinRM 5985 (HTTP) nebo 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/><br/> **Linux:**  Příchozí připojení na portu 22 (TCP) k vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů
 
@@ -64,14 +77,14 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 --- | --- 
 **Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjištění vašich místních počítačů.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> Naučte se, jak nastavit zařízení Azure Migrate pro posouzení [technologie Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)nebo fyzických serverů.
 **Azure Government** | Vizualizace závislostí není v Azure Government k dispozici.
-**Log Analytics** | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí.<br/><br/> K projektu Azure Migrate přidružíte nový nebo existující Log Analytics pracovní prostor. Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).<br/><br/> V Log Analytics je pracovní prostor přidružený k Azure Migrate označený klíčem projektu migrace a názvem projektu.
-**Vyžadovaná agenti** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md).<br/> [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Pokud nejsou místní počítače připojené k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.<br/><br/> Přečtěte si další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
-**Pracovní prostor Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).<br/><br/> Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
+**Log Analytics** | Azure Migrate používá řešení [Service map](../azure-monitor/vm/service-map.md) v [protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md) pro vizualizaci závislostí.<br/><br/> K projektu Azure Migrate přidružíte nový nebo existující Log Analytics pracovní prostor. Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).<br/><br/> V Log Analytics je pracovní prostor přidružený k Azure Migrate označený klíčem projektu migrace a názvem projektu.
+**Vyžadovaná agenti** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md).<br/> [Agent závislostí](../azure-monitor/agents/agents-overview.md#dependency-agent).<br/><br/> Pokud nejsou místní počítače připojené k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.<br/><br/> Přečtěte si další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
+**Pracovní prostor Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).<br/><br/> Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
 **Náklady** | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od dne, kdy přidružíte pracovní prostor Log Analytics k projektu Azure Migrate)/<br/><br/> Po uplynutí 180 dnů se začnou účtovat standardní poplatky za Log Analytics.<br/><br/> Použití jiného řešení než Service Map v přidruženém pracovním prostoru Log Analytics bude účtovat [standardní poplatky](https://azure.microsoft.com/pricing/details/log-analytics/) za Log Analytics.<br/><br/> Když se projekt Azure Migrate odstraní, pracovní prostor se spolu s ním neodstraní. Po odstranění projektu Service Map využití není volné a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru/<br/><br/>Pokud máte projekty, které jste vytvořili před Azure Migrate všeobecné dostupnosti (GA-28 února 2018), mohly by vám být účtovány další Service Map poplatky. Aby se zajistila platba jenom po 180 dnech, doporučujeme vytvořit nový projekt, protože stávající pracovní prostory před GAm jsou stále Fakturovatelné.
-**správy** | Při registraci agentů do pracovního prostoru použijete ID a klíč poskytnutý Azure Migrate projektem.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený Azure Migrate projekt, pracovní prostor se automaticky neodstraní. [Odstraňte ji ručně](../azure-monitor/platform/manage-access.md).<br/><br/> Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
+**správy** | Při registraci agentů do pracovního prostoru použijete ID a klíč poskytnutý Azure Migrate projektem.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený Azure Migrate projekt, pracovní prostor se automaticky neodstraní. [Odstraňte ji ručně](../azure-monitor/logs/manage-access.md).<br/><br/> Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
 **Připojení k internetu** | Pokud nejsou počítače připojené k Internetu, musíte na ně nainstalovat bránu Log Analytics.
 **Azure Government** | Analýza závislostí založená na agentech není podporována.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příprava na posouzení fyzického serveru](tutorial-prepare-physical.md).
+[Příprava na posouzení fyzického serveru](./tutorial-discover-physical.md).

@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76838254"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419587"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
 
@@ -42,7 +43,7 @@ Nastavte parametr **parsingMode** na `json` (Chcete-li indexovat každý objekt 
 
 Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). [Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) podporuje maximální šířku a výšku 4200 pro jiné než anglické jazyky a 10000 pro angličtinu.  Pokud zvýšíte maximální limity, zpracování na větších obrázcích může selhat v závislosti na definici dovednosti a jazyku dokumentů. 
 
-ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) zadáte následujícím způsobem:
+ImageAction v [definici indexeru](/rest/api/searchservice/create-indexer) zadáte následujícím způsobem:
 
 ```json
 {
@@ -64,7 +65,7 @@ Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normali
 |--------------------|-----------------------------------------|
 | data               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
 | šířka              | Šířka normalizované image v pixelech |
-| height             | Výška normalizované image v pixelech |
+| výška             | Výška normalizované image v pixelech |
 | originalWidth      | Původní šířka obrázku před normalizací |
 | originalHeight      | Původní výška obrázku před normalizací |
 | rotationFromOriginal |  Rotace proti směru hodinových ručiček ve stupních, ve kterých došlo k vytvoření normalizované bitové kopie. Hodnota v rozmezí 0 stupňů až 360 stupňů. Tento krok přečte metadata z image, která je vygenerovaná fotoaparátem nebo skenerem. Obvykle násobek 90 stupňů. |
@@ -87,7 +88,7 @@ Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normali
 ]
 ```
 
-## <a name="image-related-skills"></a>Dovednosti související s obrázky
+## <a name="image-related-skills"></a>Dovednosti související s obrázkem
 
 K dispozici jsou dva integrované příhlasné dovednosti, které přijímají obrázky jako vstup: analýza [OCR](cognitive-search-skill-ocr.md) a [obrázku](cognitive-search-skill-image-analysis.md). 
 
@@ -212,11 +213,83 @@ Pokud potřebujete transformovat normalizované souřadnice na původní souřad
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>Předávání imagí vlastním dovednostím
+
+Pro scénáře, kdy potřebujete vlastní dovednost pro práci na obrázcích, můžete předat obrázky vlastní dovednosti a nechat ji vracet text nebo obrázky. Pracovní postup, který zpracovává ukázkovou bitovou kopii [Pythonu](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) . Následující dovednosti je z ukázky.
+
+Následující dovednosti přebírá normalizovanou bitovou kopii (získanou během odhalující dokumentu) a produkuje výstupy řezů obrázku.
+
+#### <a name="sample-skillset"></a>Ukázka dovednosti
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>Vlastní dovednost
+
+Vlastní dovednosti jsou pro dovednosti vnější. V tomto případě se jedná o kód Pythonu, který první smyčka důkladně prochází dávkou záznamů žádostí ve formátu vlastní dovednosti a pak převede řetězec kódovaný ve formátu base64 na obrázek.
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+Podobně jako vrácení obrázku vrátí řetězec kódovaný v kódování Base64 v rámci objektu JSON s `$type` vlastností `file` .
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>Viz také
-+ [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Vytvořit indexer (REST)](/rest/api/searchservice/create-indexer)
 + [Dovednost analýzy obrázků](cognitive-search-skill-image-analysis.md)
 + [Dovednost OCR](cognitive-search-skill-ocr.md)
 + [Dovednost sloučení textu](cognitive-search-skill-textmerger.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)
++ [Postup předávání imagí vlastním dovednostím](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

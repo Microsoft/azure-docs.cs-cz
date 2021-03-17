@@ -3,7 +3,7 @@ title: Řešení potíží se správou oprávnění – Azure AD
 description: Přečtěte si o některých položkách, které byste měli ověřit, abyste vám pomohli vyřešit Azure Active Directory správu nároků.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
-ms.author: barclayn
+ms.date: 12/23/2020
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 5b01321c2cbb15be5526bbe9ed04f52238390574
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516885"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -33,7 +33,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud se při vytváření nebo zobrazování balíčků pro přístup zobrazí zpráva o odepření přístupu a jste členem skupiny Creator Creator, musíte [vytvořit katalog](entitlement-management-catalog-create.md) před vytvořením prvního přístupového balíčku.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje informací
 
 * Role pro aplikace definují samotné aplikace a spravují se v Azure AD. Pokud aplikace nemá žádné role prostředků, Správa nároků přiřadí uživatelům **výchozí roli přístupu** .
 
@@ -45,9 +45,8 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud jsou k prostředku, který chcete spravovat pomocí přístupového balíčku, již přiřazení uživatelé, ujistěte se, že jsou tito uživatelé přiřazení k přístupovému balíčku pomocí odpovídajících zásad. Do přístupového balíčku byste například měli zahrnout skupiny, které již obsahují některé uživatele. Pokud tito uživatelé ve skupině vyžadují nepřetržitý přístup, musí mít odpovídající zásady pro přístupové balíčky, aby neztratili přístup ke skupině. Přístupový balíček můžete přiřadit tak, že požádáte uživatele, aby si vyžádali přístupový balíček obsahující příslušný prostředek, nebo že uživatele přiřadíte k přístupovému balíčku přímo. Další informace najdete v tématu [Nastavení žádostí o změnu a schvalování balíčku pro přístup](entitlement-management-access-package-request-policy.md).
 
-* Když odeberete člena týmu, odeberou se také z Microsoft 365 skupiny. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Když odeberete člena týmu, odeberou se také z Microsoft 365 skupiny. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](/microsoftteams/office-365-groups#group-membership).
 
-* Ujistěte se, že váš adresář není nakonfigurovaný pro více geografických umístění. Správa nároků v současné době nepodporuje více geografických umístění pro SharePoint Online. Weby SharePointu Online musí být ve výchozím geografickém umístění, aby se mohly řídit pomocí správy nároků. Další informace najdete v tématu [s více geografickými možnostmi na OneDrivu a SharePointu Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Přístupové balíčky
 
@@ -69,13 +68,13 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud se uživatel, který ještě není ve vašem adresáři, přihlašuje k portálu Můj přístup, aby požádal o přístupový balíček, ujistěte se, že k ověření používá svůj účet organizace. Účtem organizace může být účet v adresáři prostředků nebo v adresáři, který je v některé ze zásad přístupového balíčku. Pokud účet uživatele není účet organizace nebo pokud adresář, ve kterém se ověřuje, není v zásadách, přístupový balíček se uživateli nezobrazí. Další informace najdete v tématu [vyžádání přístupu k balíčku přístupu](entitlement-management-request-access.md).
 
-* Pokud má uživatel zablokované přihlašování k adresáři prostředků, nemůže na portálu Můj přístup požádat o přístup. Aby uživatel mohl požádat o přístup, musíte z jeho profilu odebrat blokování přihlašování. Chcete-li odebrat blok přihlášení, klikněte v Azure Portal na **Azure Active Directory**, klikněte na **Uživatelé**, klikněte na uživatele a pak klikněte na **profil**. Upravte oddíl **Nastavení** a změňte **zablokovat přihlášení** na **ne**. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Můžete taky zjistit, jestli se uživatel zablokoval kvůli [zásadám ochrany identity](../identity-protection/howto-unblock-user.md).
+* Pokud má uživatel zablokované přihlašování k adresáři prostředků, nemůže na portálu Můj přístup požádat o přístup. Aby uživatel mohl požádat o přístup, musíte z jeho profilu odebrat blokování přihlašování. Chcete-li odebrat blok přihlášení, klikněte v Azure Portal na **Azure Active Directory**, klikněte na **Uživatelé**, klikněte na uživatele a pak klikněte na **profil**. Upravte oddíl **Nastavení** a změňte **zablokovat přihlášení** na **ne**. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Můžete taky zjistit, jestli se uživatel zablokoval kvůli [zásadám ochrany identity](../identity-protection/howto-identity-protection-remediate-unblock.md).
 
 * Pokud je uživatel v portálu pro přístup žadatelem i schvalovatelem, nezobrazí se na stránce **schválení** žádost o přístup k balíčku pro přístup. Toto chování je záměrné – uživatel nemůže schválit vlastní žádost. Ujistěte se, že přístupový balíček, o který žádá, má v zásadách nakonfigurované další schvalovatele. Další informace najdete v tématu [Nastavení žádostí o změnu a schvalování balíčku pro přístup](entitlement-management-access-package-request-policy.md).
 
 ### <a name="view-a-requests-delivery-errors"></a>Zobrazit chyby doručení žádosti
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu, přístup správce balíčků nebo správce přiřazení balíčku pro přístup
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -103,7 +102,7 @@ Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo 
 
 - Pokud nebyla chyba opravena během okna zkušební verze, může se stát, že se stav žádosti **nezdařil** nebo bylo **doručeno částečně**. Pak můžete použít tlačítko znovu **zpracovat** . Budete mít sedm dní na rezpracování žádosti.
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu, přístup správce balíčků nebo správce přiřazení balíčku pro přístup
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -121,7 +120,7 @@ Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo 
 
 Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, nebo jejíž doručení se nezdařilo. Tlačítko **Zrušit** bude v opačném případě šedé.
 
-**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu, přístup správce balíčků nebo správce přiřazení balíčku pro přístup
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -146,7 +145,7 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, 
     | P1 | Konkrétní uživatelé a skupiny v adresáři nebo konkrétní připojené organizace |
     | P2 | Všichni členové adresáře (kromě hostů) |
     | P3 | Všichni uživatelé v adresáři (včetně hostů) nebo konkrétní spojené organizace |
-    | P4 | Všechny připojené organizace nebo všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé) |
+    | P4 | Všechny nakonfigurované připojené organizace nebo všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé) |
     
     Pokud je některá zásada v kategorii s vyšší prioritou, kategorie s nižší prioritou se ignorují. Příklad toho, jak se v žadateli zobrazují různé zásady se stejnou prioritou, najdete v tématu [Výběr zásady](entitlement-management-request-access.md#select-a-policy).
 

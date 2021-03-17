@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211fc85f97069fcf3251048a074d625e777f8e7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260606"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100469"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny Bulk Executor pro službu Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
  
 Azure Cosmos DB je rychlá, flexibilní a globálně distribuovaná databázová služba navržená tak, aby elasticky škálovala na více instancí za účelem podpory následujících scénářů: 
 
@@ -25,6 +26,9 @@ Knihovna Bulk Executor vám pomůže využít tuto obrovskou propustnost a úlo�
 
 > [!NOTE] 
 > Knihovna hromadných prováděcích modulů v současné době podporuje operace importu a aktualizace a tato knihovna je podporována pouze pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin.
+
+> [!IMPORTANT]
+> Knihovna hromadného prováděcího modulu není aktuálně podporovaná na účtech bez [serveru](serverless.md) . V rozhraní .NET se doporučuje používat [hromadnou podporu](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/) dostupnou ve verzi V3 sady SDK.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Klíčové funkce knihovny hromadného prováděcího modulu  
  

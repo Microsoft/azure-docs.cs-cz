@@ -5,16 +5,15 @@ description: Naučte se indexovat obsah a metadata v Azure Data Lake Storage Gen
 manager: nitinme
 author: markheff
 ms.author: maheff
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 51c32501015a16819ba9316272ed0d522e1083d7
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760307"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545560"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indexování dokumentů v Azure Data Lake Storage Gen2
 
@@ -22,7 +21,7 @@ ms.locfileid: "87760307"
 > Podpora Azure Data Lake Storage Gen2 je v současnosti ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview)můžete požádat o přístup k náhledům. Tuto funkci poskytuje [REST API verze 2020-06-30-Preview](search-api-preview.md) a na portálu. V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
 
-Při nastavování účtu úložiště Azure máte možnost povolit [hierarchický obor názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace). Díky tomu může být kolekce obsahu v účtu uspořádána do hierarchie adresářů a vnořených podadresářů. Povolením hierarchického oboru názvů povolíte [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+Při nastavování účtu úložiště Azure máte možnost povolit [hierarchický obor názvů](../storage/blobs/data-lake-storage-namespace.md). Díky tomu může být kolekce obsahu v účtu uspořádána do hierarchie adresářů a vnořených podadresářů. Povolením hierarchického oboru názvů povolíte [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 Tento článek popisuje, jak začít s indexováním dokumentů, které jsou v Azure Data Lake Storage Gen2.
 
@@ -44,9 +43,9 @@ Indexování obsahu v Data Lake Storage Gen2 je stejné jako indexování obsahu
 
 ## <a name="access-control"></a>Řízení přístupu
 
-Azure Data Lake Storage Gen2 implementuje [model řízení přístupu](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) , který podporuje řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Při indexování obsahu z Data Lake Storage Gen2 Azure Kognitivní hledání z obsahu neextrahuje informace o RBAC a seznamu ACL. V důsledku toho tyto informace nebudou zahrnuty do indexu služby Azure Kognitivní hledání.
+Azure Data Lake Storage Gen2 implementuje [model řízení přístupu](../storage/blobs/data-lake-storage-access-control.md) , který podporuje řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Při indexování obsahu z Data Lake Storage Gen2 Azure Kognitivní hledání z obsahu neextrahuje informace o službě Azure RBAC a seznamu ACL. V důsledku toho tyto informace nebudou zahrnuty do indexu služby Azure Kognitivní hledání.
 
-Je-li udržování řízení přístupu u každého dokumentu v indexu důležité, je k implementaci [oříznutí zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)k dispozici vývojář aplikace.
+Je-li udržování řízení přístupu u každého dokumentu v indexu důležité, je k implementaci [oříznutí zabezpečení](./search-security-trimming-for-azure-search.md)k dispozici vývojář aplikace.
 
 ## <a name="change-detection"></a>Zjišťování změn
 

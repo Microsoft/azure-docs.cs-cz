@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-python
-ms.openlocfilehash: 1adb273cfedd2342a1429f0d21cd00e9a5e602a8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5a9eff1ef012e66f661ee99852a8d82f117a45c4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851167"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350513"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Pythonu k volání rozhraní API Bingu pro vyhledávání na webu  
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Python odešle požadavek na hledání do rozhraní API a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -57,7 +62,7 @@ Tento příklad je spuštěný jako poznámkový blok Jupyter na [MyBinder](http
 
 Tento kód používá `requests` knihovnu k volání rozhraní API Bingu pro vyhledávání na webu a vrátí výsledky jako objekt JSON. Klíč k rozhraní API bude předán slovníku `headers` a hledaný výraz a parametry dotazu budou předány slovníku `params`. 
 
-Úplný seznam možností a parametrů naleznete v tématu [rozhraní API Bingu pro vyhledávání na webu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).
+Úplný seznam možností a parametrů naleznete v tématu [rozhraní API Bingu pro vyhledávání na webu v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).
 
 ```python
 import requests

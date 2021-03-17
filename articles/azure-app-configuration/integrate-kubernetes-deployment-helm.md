@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4e38366ddcee07f38ca390acf9d580b8764c1c00
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725665"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979823"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrace s nasazením Kubernetes pomocí Helm
 
@@ -23,17 +23,17 @@ Během procesu vydávání Helm sloučí graf se správnou konfigurací pro spu�
 
 Hodnoty uložené v *hodnotách. yaml* můžete přepsat tak, že na příkazovém řádku zadáte další konfigurační soubory založené na YAML při spuštění Helm. Konfigurace aplikace Azure podporuje export hodnot konfigurace do souborů YAML. Integrací této možnosti exportu do nasazení umožníte aplikacím Kubernetes využívat konfigurační hodnoty uložené v konfiguraci aplikace.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Při nasazování aplikace do Kubernetes pomocí Helm používejte hodnoty z konfigurace aplikace.
 > * Vytvoření tajného klíče Kubernetes na základě odkazu na Key Vault v konfiguraci aplikace.
 
-V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí Helm. Přečtěte si další informace o instalaci aplikací pomocí Helm ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-helm).
+V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí Helm. Přečtěte si další informace o instalaci aplikací pomocí Helm ve [službě Azure Kubernetes](../aks/kubernetes-helm.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (verze 2.4.0 nebo novější)
+- Instalace rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) (verze 2.4.0 nebo novější)
 - Nainstalovat [Helm](https://helm.sh/docs/intro/install/) (verze 2.14.0 nebo novější)
 - Cluster Kubernetes.
 
@@ -41,7 +41,7 @@ V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí He
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurace**  >  **vytvořit** a přidejte následující páry klíč-hodnota:
+7. Vyberte **Průzkumník konfigurace**  >  **vytvořit** a přidejte následující páry klíč-hodnota:
 
     | Klíč | Hodnota |
     |---|---|
@@ -51,15 +51,15 @@ V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí He
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přidejte tajný klíč do [Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) s názvem **heslo** a **hodnotou.** 
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přidejte tajný klíč do [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) s názvem **heslo** a **hodnotou.** 
 2. Vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v předchozí části.
 
 3. Vyberte **Průzkumník konfigurace**.
 
-4. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+4. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů** a pak zadejte následující hodnoty:
     - **Klíč**: vyberte **tajné klíče. Password**.
     - **Popisek**: Nechte tuto hodnotu prázdnou.
-    - **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozím kroku.
+    - **Předplatné**, **Skupina prostředků** a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozím kroku.
     - **Tajný kód**: vyberte tajný kód s názvem **heslo** , které jste vytvořili v předchozí části.
 
 ## <a name="create-helm-chart"></a>Vytvořit graf Helm ##
@@ -185,7 +185,7 @@ settings:
 Nejdřív Stáhněte konfiguraci z konfigurace aplikace do souboru *myConfig. yaml* . Pomocí klíčového filtru Stáhněte pouze ty klíče, které začínají na **nastavení.**. Pokud v takovém případě filtr klíčů není dostačující pro vyloučení klíčů Key Vault odkazů, můžete k jejich vyloučení použít argument **--Skip-a trezor** . 
 
 > [!TIP]
-> Přečtěte si další informace o [příkazu Export](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
+> Přečtěte si další informace o [příkazu Export](/cli/azure/appconfig/kv#az-appconfig-kv-export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -225,13 +225,13 @@ else{
 
 ```
 
-Přístup k [řídicímu panelu Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)ověřte, že se konfigurace a tajné kódy úspěšně nastavily. Uvidíte, že **barvy** a hodnoty **zpráv** z konfigurace aplikace byly naplněny do proměnných prostředí kontejneru.
+Přístup k [řídicímu panelu Kubernetes](../aks/kubernetes-dashboard.md)ověřte, že se konfigurace a tajné kódy úspěšně nastavily. Uvidíte, že **barvy** a hodnoty **zpráv** z konfigurace aplikace byly naplněny do proměnných prostředí kontejneru.
 
 ![Spuštění aplikace pro rychlý Start – místní](./media/kubernetes-dashboard-env-variables.png)
 
 V konfiguraci aplikace se do Kubernetes tajných klíčů Přidal také jeden tajný kód a **heslo**, které obsahuje odkaz na Key Vault. 
 
-![Spuštění aplikace pro rychlý Start – místní](./media/kubernetes-dashboard-secrets.png)
+![Snímek obrazovky, který zvýrazní heslo v části data](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -242,4 +242,4 @@ V konfiguraci aplikace se do Kubernetes tajných klíčů Přidal také jeden ta
 V tomto kurzu jste exportovali data konfigurace aplikace Azure, která se mají používat v nasazení Kubernetes s Helm. Další informace o tom, jak používat konfiguraci aplikací, najdete v ukázkách Azure CLI.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

@@ -2,25 +2,26 @@
 title: Kopírování virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Naučte se vytvořit kopii virtuálního počítače Azure Linux pomocí Azure CLI a Managed Disks.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.custom: legacy
-ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: legacy, devx-track-azurecli
+ms.openlocfilehash: 05b45745565dface6b29f5a05cb1b557f4a49f6e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654408"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558388"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoření kopie virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure a Managed Disks
 
 V tomto článku se dozvíte, jak vytvořit kopii virtuálního počítače Azure s operačním systémem Linux pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete kopírovat, vytvářet, ukládat a sdílet image virtuálních počítačů ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](../shared-images-cli.md).
 
-[Virtuální počítač můžete také nahrát a vytvořit z virtuálního pevného disku](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+[Virtuální počítač můžete také nahrát a vytvořit z virtuálního pevného disku](upload-vhd.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-az-cli2).
 

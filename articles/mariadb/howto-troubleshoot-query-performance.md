@@ -1,17 +1,17 @@
 ---
 title: Řešení potíží s výkonem dotazů – Azure Database for MariaDB
 description: Naučte se používat vysvětlení pro řešení potíží s výkonem dotazů v Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c996520a77a107017aecad30c221da9ec69137c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834301"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664711"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MariaDB
 **Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.
@@ -54,10 +54,10 @@ possible_keys: id
 ```
 
 Nový VYSVĚTLUJE, že MariaDB nyní používá index k omezení počtu řádků na 1, což výrazně zkracuje dobu hledání.
- 
+ 
 ## <a name="covering-index"></a>Index pokrytí
 Index pokrývání se skládá ze všech sloupců dotazu v indexu, aby se snížilo načítání hodnot z tabulek dat. Tady je ilustrace v následujícím příkazu **Group by** .
- 
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -76,10 +76,10 @@ possible_keys: NULL
 ```
 
 Jak je vidět ve výstupu, MariaDB nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů*, což znamená, že MariaDB vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
- 
+ 
 Vytvoření indexu na samostatném sloupci **C2** nijak neumožňuje žádný rozdíl a MariaDB ještě potřebuje vytvořit dočasnou tabulku:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -97,9 +97,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-V tomto případě je možné vytvořit **zahrnutý index** v **C1** i **C2** , přičemž při přidání hodnoty **C2**přímo v indexu se eliminuje další vyhledávání dat.
+V tomto případě je možné vytvořit **zahrnutý index** v **C1** i **C2** , přičemž při přidání hodnoty **C2** přímo v indexu se eliminuje další vyhledávání dat.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,7 +120,7 @@ possible_keys: covered
 Jak je VYSVĚTLENo výše, MariaDB nyní používá zahrnutý index a vyhněte se vytváření dočasné tabulky. 
 
 ## <a name="combined-index"></a>Kombinovaný index
-Kombinovaný index obsahuje hodnoty z více sloupců a lze jej považovat za pole řádků, které jsou seřazeny podle zřetězení hodnot indexovaných sloupců.Tato metoda může být užitečná v příkazu **Group by** .
+Kombinovaný index obsahuje hodnoty z více sloupců a lze jej považovat za pole řádků, které jsou seřazeny podle zřetězení hodnot indexovaných sloupců. Tato metoda může být užitečná v příkazu **Group by** .
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -141,7 +141,7 @@ possible_keys: NULL
 
 MariaDB provádí operaci *řazení souborů* , která je poměrně pomalá, zejména v případě, že je potřeba seřadit mnoho řádků. Pro optimalizaci tohoto dotazu lze vytvořit kombinovaný index v obou sloupcích, které jsou seřazeny.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -160,10 +160,10 @@ possible_keys: NULL
 ```
 
 VYSVĚTLUJE nyní ukazuje, že MariaDB může použít kombinovaný index, aby se zabránilo dalšímu řazení, protože index je již seřazen.
- 
+ 
 ## <a name="conclusion"></a>Závěr
- 
+ 
 Použití vysvětlení a různých typů indexů může výrazně zvýšit výkon. Index v tabulce nemusí nutně znamenat, že by MariaDB mohl použít pro vaše dotazy. Vysvětlete a Optimalizujte své dotazy pomocí indexů.
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, přejděte na [stránku Microsoft Q&na stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, přejděte na [stránku Microsoft Q&na stránku s otázkou](/answers/topics/azure-database-mariadb.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

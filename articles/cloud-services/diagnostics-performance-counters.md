@@ -1,21 +1,24 @@
 ---
-title: Shromažďování informací o čítačích výkonu v Azure Cloud Services | Microsoft Docs
+title: Shromažďování informací o čítačích výkonu v Azure Cloud Services (Classic) | Microsoft Docs
 description: Naučte se zjišťovat, používat a vytvářet čítače výkonu v Cloud Services s Azure Diagnostics a Application Insights.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77469523"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585504"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Čítače výkonu poskytují způsob, jak sledovat, jak dobře aplikace a hostitel provádí. Windows Server poskytuje mnoho různých čítačů výkonu souvisejících s hardwarem, aplikacemi, operačním systémem a dalšími. Shromažďováním a odesíláním čítačů výkonu do Azure můžete analyzovat tyto informace, které vám pomohou lépe rozhodovat. 
 
@@ -70,7 +73,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní používaného vaší cloudovou službou. Další informace o tom, jak je vytvořena cesta k čítači výkonu, najdete v tématu [Určení cesty čítače](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85)).
+Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní používaného vaší cloudovou službou. Další informace o tom, jak je vytvořena cesta k čítači výkonu, najdete v tématu [Určení cesty čítače](/windows/win32/perfctrs/specifying-a-counter-path).
 
 ## <a name="collect-a-performance-counter"></a>Shromáždění čítače výkonu
 
@@ -80,7 +83,7 @@ Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní p
 
 Azure Application Insights pro Cloud Services umožňuje určit čítače výkonu, které chcete shromáždit. Po [přidání Application Insights do projektu](../azure-monitor/app/cloudservices.md#sdk)se do projektu aplikace Visual Studio přidá konfigurační soubor s názvem **ApplicationInsights.config** . Tento konfigurační soubor definuje, jaký typ informací Application Insights shromažďuje a odesílá do Azure.
 
-Otevřete soubor **ApplicationInsights.config** a vyhledejte prvek TelemetryModules **ApplicationInsights**  >  **TelemetryModules** . Každý `<Add>` podřízený prvek definuje typ telemetrie ke shromáždění spolu se svou konfigurací. Typ modulu telemetrie čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector` . Pokud je tento prvek již definován, nepřidávejte jej podruhé. Každý čítač výkonu, který se má shromáždit, je definovaný v uzlu s názvem `<Counters>` . Tady je příklad, který shromažďuje čítače výkonu jednotky:
+Otevřete soubor **ApplicationInsights.config** a vyhledejte prvek TelemetryModules **ApplicationInsights**  >   . Každý `<Add>` podřízený prvek definuje typ telemetrie ke shromáždění spolu se svou konfigurací. Typ modulu telemetrie čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector` . Pokud je tento prvek již definován, nepřidávejte jej podruhé. Každý čítač výkonu, který se má shromáždit, je definovaný v uzlu s názvem `<Counters>` . Tady je příklad, který shromažďuje čítače výkonu jednotky:
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -121,7 +124,7 @@ Azure Diagnostics rozšíření pro Cloud Services umožňuje určit čítače v
 
 Čítače výkonu, které chcete shromáždit, jsou definovány v souboru **Diagnostics. wadcfgx** . Otevřete tento soubor (je definován pro jednu roli) v aplikaci Visual Studio a vyhledejte prvek **DiagnosticsConfiguration**  >  **PublicConfig**  >  **WadCfg**  >  **DiagnosticMonitorConfiguration**  >  **čítače výkonu** . Přidejte nový element **PerformanceCounterConfiguration** jako podřízenou položku. Tento element má dva atributy: `counterSpecifier` a `sampleRate` . `counterSpecifier`Atribut definuje sadu čítačů výkonu systému (popsaný v předchozí části), která má být shromažďována. `sampleRate`Hodnota určuje, jak často se tato hodnota dotazuje. Jako celek se všechny čítače výkonu přenesou do Azure podle `PerformanceCounters` `scheduledTransferPeriod` hodnoty atributu nadřazeného elementu.
 
-Další informace o `PerformanceCounters` elementu schématu naleznete v tématu [Azure Diagnostics Schema](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element).
+Další informace o `PerformanceCounters` elementu schématu naleznete v tématu [Azure Diagnostics Schema](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element).
 
 Období definované `sampleRate` atributem používá datový typ doba trvání XML k určení, jak často se má čítač výkonu dotazovat. V následujícím příkladu je sazba nastavená na `PT3M` , což znamená, že `[P]eriod[T]ime[3][M]inutes` každé tři minuty je:
 
@@ -290,8 +293,5 @@ Jak je uvedeno výše, čítače výkonu, které chcete shromáždit, jsou defin
 
 - [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Čítače výkonu systému v Application Insights](../azure-monitor/app/performance-counters.md)
-- [Zadání cesty k čítači](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure Diagnostics schématu – čítače výkonu](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-
-
-
+- [Zadání cesty k čítači](/windows/win32/perfctrs/specifying-a-counter-path)
+- [Azure Diagnostics schématu – čítače výkonu](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)

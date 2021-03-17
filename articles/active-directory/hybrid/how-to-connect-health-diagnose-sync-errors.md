@@ -3,7 +3,7 @@ title: Azure AD Connect Health-Diagnostika chyb synchronizace duplicitních atri
 description: Tento dokument popisuje proces diagnostiky chyb synchronizace duplicitních atributů a potenciální opravu scénářů osamoceného objektu přímo z Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359088"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728233"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
 
@@ -58,7 +58,7 @@ Funkce diagnostiky podporuje uživatelské objekty s následujícími duplicitn�
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> Aby bylo možné získat přístup k této funkci, je nutné mít oprávnění **globálního správce** nebo oprávnění **Přispěvatel** z nastavení RBAC.
+> Pro přístup k této funkci se vyžaduje oprávnění **globálního správce** nebo oprávnění **Přispěvatel** z Azure RBAC.
 >
 
 Postupujte podle kroků z Azure Portal pro zúžení podrobností o chybách synchronizace a poskytněte konkrétnější řešení:
@@ -97,11 +97,11 @@ Tato otázka se pokusí identifikovat zdrojový objekt stávajícího uživatele
    - Pokud se objekt nenajde, odpovězte **Ano**.
 
 V těchto příkladech se dotaz pokusí zjistit, zda **Jana Jacksonův diagram** stále existuje v místní službě Active Directory.
-V případě **běžných scénářů**se v místní službě Active Directory nacházejí oba uživatelé **Jana Johnsonem** a **Jan Jacksonův diagram** . Objekty v karanténě jsou dva různí uživatelé.
+V případě **běžných scénářů** se v místní službě Active Directory nacházejí oba uživatelé **Jana Johnsonem** a **Jan Jacksonův diagram** . Objekty v karanténě jsou dva různí uživatelé.
 
 ![Běžný scénář diagnostiky chyby synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-V **případě scénáře osamoceného objektu**je v místní službě Active Directory k dispozici pouze jeden uživatel **Jana Johnsonem** :
+V **případě scénáře osamoceného objektu** je v místní službě Active Directory k dispozici pouze jeden uživatel **Jana Johnsonem** :
 
 ![Diagnostika chyby synchronizace osamocený objekt * uživatel existuje * scénář](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
@@ -133,10 +133,13 @@ Po předchozích krocích může uživatel získat přístup k původnímu prost
 
 ## <a name="failures-and-error-messages"></a>Chyby a chybové zprávy
 **Uživatel s konfliktním atributem je v Azure Active Directory měkký. Před opakováním zajistěte, aby byl uživatel pevným smazán.**  
-Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předtím, než můžete použít opravu. Podívejte se, [jak trvale odstranit uživatele ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) , než zkusíte tuto opravu zkusit znovu. Uživatel se taky automaticky odstraní trvale po 30 dnech v tichém odstraněných stavech. 
+Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předtím, než můžete použít opravu. Podívejte se, [jak trvale odstranit uživatele ve službě Azure AD](../fundamentals/active-directory-users-restore.md) , než zkusíte tuto opravu zkusit znovu. Uživatel se taky automaticky odstraní trvale po 30 dnech v tichém odstraněných stavech. 
 
 **Aktualizace zdrojového kotvy na cloudový uživatel ve vašem tenantovi není podporovaná.**  
 Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového kotvy není v tomto případě podporována. V místním prostředí se vyžaduje ruční Oprava. 
+
+**Procesu opravy se nepodařilo aktualizovat hodnoty.**
+Konkrétní nastavení, jako je například [UserWriteback v Azure AD Connect](./how-to-connect-preview.md#user-writeback) , se nepodporuje. Zakažte prosím nastavení. 
 
 ## <a name="faq"></a>Nejčastější dotazy
 **Č.** Co se stane, když dojde k chybě při **použití opravy** ?  
@@ -148,7 +151,7 @@ Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Akt
 
 
 **Č.** Jaké oprávnění uživatel potřebuje k použití opravy?  
-**Určitého.** **Globální správce**nebo **Přispěvatel** z nastavení RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
+**Určitého.** **Globální správce** nebo **Přispěvatel** z Azure RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
 
 
 **Č.** Je nutné nakonfigurovat Azure AD Connect nebo aktualizovat agenta Azure AD Connect Health pro tuto funkci?  

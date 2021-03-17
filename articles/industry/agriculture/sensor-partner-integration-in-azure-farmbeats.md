@@ -4,13 +4,13 @@ description: Tento článek popisuje integraci partnera pro senzory.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: v-ummehabiba
+ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078925"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179744"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
@@ -44,11 +44,11 @@ Data telemetrie se mapují na kanonickou zprávu, která je publikovaná na Azur
 
 Rozhraní API obsahují technickou dokumentaci k Swagger. Další informace o rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v tématu [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-**Ověřování**
+**Authentication**
 
 FarmBeats používá ověřování Microsoft Azure Active Directory.Azure App Service poskytuje integrovanou podporu ověřování a autorizace.
 
-Další informace najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
+Další informace najdete v tématu [Azure Active Directory](../../app-service/overview-authentication-authorization.md).
 
 FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje:
    - ID klienta
@@ -96,7 +96,7 @@ Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při 
 **Hlavička** | **Popis a příklad**
 --- | ---
 Typ obsahu | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
-Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
+Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosič <Access-Token>
 Přijmout | Formát odpovědi. Pro rozhraní FarmBeats DataHub API je formát JSON. Přijmout: Application/JSON
 
 **Požadavky rozhraní API**
@@ -201,7 +201,7 @@ Data telemetrie se mapují na kanonickou zprávu, která je publikovaná na Azur
 
 ## <a name="send-telemetry-data-to-farmbeats"></a>Posílání dat telemetrie do FarmBeats
 
-Chcete-li odesílat data telemetrie do FarmBeats, vytvořte klienta, který odesílá zprávy do centra událostí v FarmBeats. Další informace o datech telemetrie najdete v tématu [posílání telemetrie do centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send).
+Chcete-li odesílat data telemetrie do FarmBeats, vytvořte klienta, který odesílá zprávy do centra událostí v FarmBeats. Další informace o datech telemetrie najdete v tématu [posílání telemetrie do centra událostí](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 Tady je ukázkový kód Pythonu, který odesílá telemetrii jako klienta do zadaného centra událostí.
 

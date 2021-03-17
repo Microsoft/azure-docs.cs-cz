@@ -4,15 +4,15 @@ description: Naučte se používat Power automat a koncový bod HTTPS ke správ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120361"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247178"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Použití koncového bodu HTTPS ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 
     ![Přihlášení mých toků](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. V části **+ Nový**vyberte **+ rychlá – od prázdná**.
+1. V části **+ Nový** vyberte **+ rychlá – od prázdná**.
 
     ![Moje toky + automatizovaná – od prázdná](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
@@ -43,7 +43,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 
     ![Rozbalí krok Flow.](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-1. Ke konfiguraci **schématu JSON těla žádosti**použijte jednu z následujících metod:
+1. Ke konfiguraci **schématu JSON těla žádosti** použijte jednu z následujících metod:
 
     - Zkopírujte schéma JSON do textového pole **schématu JSON textu žádosti** .
     - Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. Do textového pole **Zadejte nebo vložte ukázkovou datovou část JSON** vložte do příkladu JSON. Vyberte **Hotovo** a vytvořte schéma.
@@ -66,6 +66,10 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -152,7 +156,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 ### <a name="set-up-email-notification"></a>Nastavení e-mailového oznámení
 
 1. Teď, když jste dokončili schéma JSON, vyberte **+ Nový krok**.
-1. V části **zvolit akci**vyberte **Akce**.
+1. V části **zvolit akci** vyberte **Akce**.
 1. Na kartě **Akce** vyberte **Odeslat e-mail (Office 365 Outlook)**.
 
     >[!NOTE]
@@ -173,7 +177,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
    - **Tělo**: ze seznamu pro výběr dynamického obsahu přidejte do textu e-mailu požadované informace. Použijte například LastName, FirstName, E-mail a společnost. Až budete s nastavením e-mailového oznámení hotovi, vypadá to jako na příkladu na následující obrazovce.
 
 
-       ![Příklad e-mailových oznámení](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Příklad e-mailového oznámení](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
 1. Kliknutím na **Uložit** dokončete tok. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně **při přijetí požadavku HTTP** . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který je umístěn napravo od adresy URL HTTP POST. Použití tohoto ovládacího prvku je důležité, takže nemůžete přijít o žádnou část celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat při konfiguraci správy potenciálních zákazníků na portálu pro publikování.
 
@@ -202,7 +206,7 @@ Konfiguraci můžete otestovat pomocí [post](https://app.getpostman.com/app/dow
 1. Vraťte se k [Power](https://flow.microsoft.com/)automatu. V řádku nabídek Power Automate můžete vyhledat tok, který jste vytvořili pro odesílání zájemců, a to tak, že kliknete na **Moje toky** . Vyberte tři tečky vedle názvu toku a zobrazte další možnosti a vyberte **Upravit**.
 
 
-1. V pravém horním rohu vyberte **test** , vyberte možnost **provede akci aktivace**a pak vyberte **test**. V horní části obrazovky uvidíte indikaci, že byl test spuštěn.
+1. V pravém horním rohu vyberte **test** , vyberte možnost **provede akci aktivace** a pak vyberte **test**. V horní části obrazovky uvidíte indikaci, že byl test spuštěn.
 
    ![Provedem možnost Akce triggeru](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
@@ -219,7 +223,7 @@ Konfiguraci můžete otestovat pomocí [post](https://app.getpostman.com/app/dow
     >[!NOTE] 
     >Pokud nevidíte e-mail od testu, zkontrolujte nevyžádanou poštu a složky Nevyžádaná pošta. Na následující obrazovce si všimnete pouze popisků polí, které jste přidali při konfiguraci e-mailového oznámení. Pokud se jednalo o skutečného zájemce vygenerovaného vaší nabídkou, zobrazí se vám také aktuální informace z kontaktu zájemce v textu a na řádku předmětu.
 
-   ![E-mail přijat](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
+   ![Doručený e-mail](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurace nabídky pro odeslání zájemců do koncového bodu HTTPS
 
@@ -236,7 +240,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce** **koncový bod HTTPS** . Vložte adresu URL POST protokolu HTTP z toku, který jste vytvořili, pomocí předchozích kroků do pole **Adresa URL koncového bodu https** .
     ![Kontaktní e-mail s podrobnostmi připojení](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 
-1. V části **kontaktní e-mail**zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
+1. V části **kontaktní e-mail** zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
 
 1. Vyberte **OK**.
 

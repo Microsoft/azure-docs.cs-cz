@@ -1,17 +1,17 @@
 ---
 title: Konfigurace upozornění na metriku – Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k výstrahám metrik pro Azure Database for MariaDB z Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 689e830d2486420be8d551d1f88dccba8d982428
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120071"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593062"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Pomocí Azure Portal můžete nastavit výstrahy pro metriky pro Azure Database for MariaDB
 
@@ -25,11 +25,11 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 * Volání webhooku
 
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
+* [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric"></a>Vytvoření pravidla výstrahy na metrikě
+## <a name="create-an-alert-rule-on-a-metric"></a>Vytvoření pravidla upozornění na metriku
 1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for MariaDB, který chcete monitorovat.
 
 2. V části **monitorování** na bočním panelu vyberte **výstrahy** , jak je znázorněno níže:
@@ -52,7 +52,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
    Po dokončení vyberte **Hotovo** .
 
-   ![Vybrat metriku](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Vybrat metriku 2](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
@@ -70,7 +70,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
 11. Zadejte název, popis a závažnost pravidla výstrahy.
 
-    ![Skupina akcí](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Skupina akcí 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
@@ -85,5 +85,5 @@ Jakmile vytvoříte výstrahu, můžete ji vybrat a provést následující akce
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
-* Získejte [Přehled o kolekci metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/alerts/alerts-webhooks.md).
+* Získejte [Přehled o kolekci metrik](../azure-monitor/data-platform.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

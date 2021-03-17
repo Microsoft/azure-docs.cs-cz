@@ -3,7 +3,7 @@ title: Implementace streamování převzetí služeb při selhání s Azure Medi
 description: Tento článek ukazuje, jak implementovat scénář streamování převzetí služeb při selhání pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78939215"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011931"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementace streamování převzetí služeb při selhání s Media Services V2
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento návod ukazuje, jak kopírovat obsah (objekty BLOB) z jednoho prostředku do jiného za účelem zpracování redundance streamování na vyžádání. Tento scénář je vhodný, pokud chcete nastavit Azure Content Delivery Network pro převzetí služeb při selhání mezi dvěma datacentry v případě výpadku v jednom datovém centru. Tento návod používá sadu Azure Media Services SDK, Azure Media Services REST API a sadu SDK Azure Storage k předvedení následujících úloh:
 
@@ -63,7 +66,7 @@ V této části vytvoříte a nastavíte projekt konzolové aplikace v jazyce C#
 
 1. Pomocí sady Visual Studio vytvořte nové řešení, které obsahuje projekt konzolové aplikace jazyka C#. Jako název zadejte **HandleRedundancyForOnDemandStreaming** a pak klikněte na **OK**.
 2. Vytvořte složku **SupportFiles** na stejné úrovni jako soubor projektu **HandleRedundancyForOnDemandStreaming. csproj** . Ve složce **SupportFiles** vytvořte složky **OutputFiles** a **MP4Files** . Zkopírujte soubor. mp4 do složky **MP4Files** . (V tomto příkladu se používá soubor **ignite.mp4** .) 
-3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio**vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices**a stiskněte klávesu ENTER.
+3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio** vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices** a stiskněte klávesu ENTER.
 4. Přidejte další odkazy, které jsou požadovány pro tento projekt: System. Runtime. Serialization a System. Web.
 5. Nahraďte **pomocí** příkazy, které byly přidány do souboru **Programs.cs** ve výchozím nastavení, následující:
 

@@ -6,17 +6,17 @@ documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: conceptual
+ms.topic: overview
 ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41b74ed713485679576fdf7f4f0df54803b56caa
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: c394fe2aa7639d32e5d79bcb22a01151f7666f5b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192108"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324614"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,10 @@ ms.locfileid: "88192108"
 
 SQL Server v Azure Virtual Machines umožňují používat v cloudu úplné verze SQL Server, aniž byste museli spravovat jakýkoli místní hardware. Pokud platíte průběžně, pro virtuální počítače s SQL Serverem se také zjednoduší náklady na licencování.
 
-Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../../../virtual-machines/windows/sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru. 
+Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../../../virtual-machines/sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru. 
+
+Pokud s Azure SQL začínáte, podívejte se na video s *přehledem SQL Server na virtuálním počítači Azure* z naší podrobné [série videí SQL Azure](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> Začínáme s SQL Servermi virtuálními počítači
 
@@ -52,11 +55,11 @@ Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s poža
 
 Při konfiguraci SQL Server on Linux nainstalujete balíček databázového stroje a pak několik volitelných balíčků v závislosti na vašich požadavcích. Image virtuálních počítačů s Linuxem pro SQL Server automaticky nainstalují většinu balíčků za vás. Následující tabulka uvádí, které balíčky se nainstalují pro jednotlivé distribuce.
 
-| Distribuce | [Databázový stroj](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Nástroje](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [Agent SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Fulltextové vyhledávání](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [Doplněk pro vysokou dostupnost](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Distribuce | [Databázový stroj](/sql/linux/sql-server-linux-setup) | [Nástroje](/sql/linux/sql-server-linux-setup-tools) | [Agent SQL Server](/sql/linux/sql-server-linux-setup-sql-agent) | [Fulltextové vyhledávání](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [Doplněk pro vysokou dostupnost](/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
-| SLES | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ne](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
-| Ubuntu | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ano](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| RHEL | ![RHEL a databázový stroj](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a nástroje](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a Agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a fulltextové vyhledávání](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Doplněk RHEL a HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| SLES | ![SLES a databázový stroj](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a nástroje](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a Agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a fulltextové vyhledávání](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![Doplněk SLES a HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
+| Ubuntu | ![Ubuntu a databázový stroj](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu a nástroje](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu a Agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu a fulltextové vyhledávání](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu a SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Doplněk Ubuntu a HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>Související produkty a služby
 
@@ -70,13 +73,13 @@ Při konfiguraci SQL Server on Linux nainstalujete balíček databázového stro
 
 ### <a name="networking"></a>Sítě
 
-* [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
+* [Přehled Virtual Network](../../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../../virtual-network/public-ip-addresses.md)
-* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../../../virtual-machines/windows/portal-create-fqdn.md)
+* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 
-* [Dokumentace k SQL Server on Linux](https://docs.microsoft.com/sql/linux)
+* [Dokumentace k SQL Server on Linux](/sql/linux)
 * [Porovnání Azure SQL Database](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Další kroky

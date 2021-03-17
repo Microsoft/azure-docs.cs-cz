@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 1255d8c0456101bb9059de834c871812d5c5bceb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 929c447d1a19b85ab8e12b45198508e5f5747c12
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533601"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>Kurz: Azure Active Directory integrace s SumTotalCentral
 
@@ -27,10 +27,10 @@ Integrace SumTotalCentral s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SumTotalCentral (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s SumTotalCentral potřebujete následující položky:
 
@@ -43,59 +43,45 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * SumTotalCentral podporuje jednotné přihlašování iniciované v **SP**
 
+* Po nakonfigurování SumTotalCentral můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+    
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-sumtotalcentral-from-the-gallery"></a>Přidání SumTotalCentral z Galerie
 
 Pokud chcete nakonfigurovat integraci SumTotalCentral do služby Azure AD, musíte přidat SumTotalCentral z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat SumTotalCentral z Galerie, proveďte následující kroky:**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **SumTotalCentral** .
+1. Na panelu výsledků vyberte **SumTotalCentral** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
-
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
-
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **SumTotalCentral**, vyberte **SumTotalCentral** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
-
-     ![SumTotalCentral v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SumTotalCentral na základě testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SumTotalCentral.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SumTotalCentral, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování SumTotalCentral](#configure-sumtotalcentral-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření SumTotalCentral Test User](#create-sumtotalcentral-test-user)** – pro Britta Simon v SumTotalCentral, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+2. **[Nakonfigurujte SUMTOTALCENTRAL SSO](#configure-sumtotalcentral-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
+    * **[Vytvoření SumTotalCentral Test User](#create-sumtotalcentral-test-user)** – pro Britta Simon v SumTotalCentral, který je propojený s reprezentací uživatele Azure AD.
+3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SumTotalCentral, proveďte následující kroky:
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SumTotalCentral** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SumTotalCentral** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
 
@@ -105,10 +91,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SumTotal
 
     b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu: `SumTotalFederationGateway`
 
-    > [!NOTE]
-    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta SumTotalCentral](http://www.sumtotalsystems.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:    
+    `https://<subdomain>.sumtotalsystems.com/Broker/Token/CUSTOM_URL`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+    > [!NOTE]
+    > Tyto hodnoty nejsou reálné. Aktualizujte hodnotu skutečnou adresou URL Sign-On a adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta SumTotalCentral](http://www.sumtotalsystems.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -122,75 +111,54 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SumTotal
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-sumtotalcentral-single-sign-on"></a>Konfigurace jednotného přihlašování SumTotalCentral
-
-Ke konfiguraci jednotného přihlašování na straně **SumTotalCentral** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory SumTotalCentral](http://www.sumtotalsystems.com/support/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel**.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **název** zadejte **B. Simon**.  
+   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>` . Například: `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
+   1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k SumTotalCentral.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k SumTotalCentral.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **SumTotalCentral**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **SumTotalCentral**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-2. V seznamu aplikace vyberte **SumTotalCentral**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz SumTotalCentral v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+## <a name="configure-sumtotalcentral-sso"></a>Konfigurace jednotného přihlašování SumTotalCentral
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Ke konfiguraci jednotného přihlašování na straně **SumTotalCentral** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory SumTotalCentral](http://www.sumtotalsystems.com/support/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-sumtotalcentral-test-user"></a>Vytvořit testovacího uživatele SumTotalCentral
 
-V této části vytvoříte uživatele s názvem Britta Simon v SumTotalCentral. Pokud chcete přidat uživatele na platformě SumTotalCentral, pracujte s [týmem podpory SumTotalCentral](http://www.sumtotalsystems.com/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v SumTotalCentral. Pokud chcete přidat uživatele na platformě SumTotalCentral, pracujte s [týmem podpory SumTotalCentral](http://www.sumtotalsystems.com/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SumTotalCentral, měli byste se automaticky přihlásit k SumTotalCentral, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SumTotalCentral, měli byste se automaticky přihlásit k SumTotalCentral, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

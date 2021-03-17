@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e028ba057ad57f3d600bc59bf7595c0b1d354c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547592"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456563"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CakeHR
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat CakeHR s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k CakeHR svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<yourcakedomain>.cake.hr/services/saml/consume`
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta CakeHR](mailto:info@cake.hr) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečnou adresou URL Sign-On a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta CakeHR](mailto:info@cake.hr) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
 
@@ -108,7 +108,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -142,11 +142,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení**.
 
-    ![Konfigurace CakeHR](./media/cakehr-tutorial/config01.png)
+    ![Snímek obrazovky zobrazuje profil s vybraným nastavením.](./media/cakehr-tutorial/config01.png)
 
 1. Na levé straně řádku nabídek klikněte na integrace s protokolem **INTEGRATIONS**  >  **SAML SSO** a proveďte následující kroky:
 
-    ![Konfigurace CakeHR](./media/cakehr-tutorial/config02.png)
+    ![Snímek obrazovky se zobrazí v podokně nastavení, ve kterém provedete tyto kroky.](./media/cakehr-tutorial/config02.png)
 
     a. Do textového pole **ID entity** zadejte `cake.hr` .
 
@@ -168,11 +168,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k CakeHR, musí se zřídit v Ca
 
 2. Na levé straně řádku nabídek klikněte na Přidat do **společnosti**  >  **ADD**.
 
-    ![Konfigurace CakeHR](./media/cakehr-tutorial/config03.png)
+    ![Snímek obrazovky ukazuje CakeHR s FIRMou a vybranou možnost Přidat.](./media/cakehr-tutorial/config03.png)
 
 3. V automaticky otevíraném okně **Přidat nový zaměstnanec** proveďte následující kroky:
 
-     ![Konfigurace CakeHR](./media/cakehr-tutorial/config04.png)
+     ![Snímek obrazovky ukazuje přidat nového zaměstnance, na kterém provedete tyto kroky.](./media/cakehr-tutorial/config04.png)
 
     a. Do textového pole jméno a **příjmení** zadejte jméno uživatele jako B. Simon.
 
@@ -184,14 +184,14 @@ Aby se uživatelé Azure AD mohli přihlašovat k CakeHR, musí se zřídit v Ca
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici CakeHR, měli byste se automaticky přihlásit k CakeHR, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici CakeHR, měli byste se automaticky přihlásit k CakeHR, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si CakeHR s Azure AD](https://aad.portal.azure.com/)

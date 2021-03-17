@@ -1,16 +1,15 @@
 ---
 title: Přehled Service Fabric Reliable Actors
 description: Seznámení s programovacím modelem Service Fabric Reliable Actors na základě vzoru virtuálního objektu actor.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
-ms.openlocfilehash: c534ba54ccea78759628f554707271934ddc9a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258486"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576379"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Úvod do Service Fabric Reliable Actors
 Reliable Actors je Service Fabric aplikační architektury založené na vzoru [virtuálního objektu actor](https://research.microsoft.com/en-us/projects/orleans/) . Rozhraní Reliable Actors API nabízí model programování s jedním vláknem sestavený na základě škálovatelnosti a záruk spolehlivosti poskytovaných Service Fabric.
@@ -123,8 +122,8 @@ Tento diagram dodržuje tyto konvence:
 
 Mezi důležité body, které je potřeba vzít v úvahu:
 
-* Zatímco *– metoda1* je prováděna jménem *ActorId2* v reakci na požadavek klienta *xyz789*, dorazí jiný požadavek na klienta (*abc123*), který také vyžaduje, aby *– metoda1* spustil *ActorId2.* Nicméně druhé spuštění *– metoda1* se nezačne, dokud se nedokončí předchozí spuštění. Podobně je připomenutí zaregistrované v *ActorId2* aktivována během provádění *– metoda1* v reakci na žádost klienta *xyz789*. Zpětné volání připomenutí je provedeno až po dokončení obou spuštění *– metoda1* . To vše je způsobeno tím, že se pro *ActorId2*vynutila souběžnost založená na funkci.
-* Podobně je souběžnost založená na zapínání také pro *ActorId1*, jak je znázorněno prováděním *– metoda1*, *Method2*a zpětného volání časovače jménem *ActorId1* probíhají v sériové podobě.
+* Zatímco *– metoda1* je prováděna jménem *ActorId2* v reakci na požadavek klienta *xyz789*, dorazí jiný požadavek na klienta (*abc123*), který také vyžaduje, aby *– metoda1* spustil *ActorId2.* Nicméně druhé spuštění *– metoda1* se nezačne, dokud se nedokončí předchozí spuštění. Podobně je připomenutí zaregistrované v *ActorId2* aktivována během provádění *– metoda1* v reakci na žádost klienta *xyz789*. Zpětné volání připomenutí je provedeno až po dokončení obou spuštění *– metoda1* . To vše je způsobeno tím, že se pro *ActorId2* vynutila souběžnost založená na funkci.
+* Podobně je souběžnost založená na zapínání také pro *ActorId1*, jak je znázorněno prováděním *– metoda1*, *Method2* a zpětného volání časovače jménem *ActorId1* probíhají v sériové podobě.
 * Provádění *– metoda1* jménem *ActorId1* se překrývá s jeho prováděním jménem *ActorId2*. Důvodem je to, že souběžnost založená na funkci je vynutila pouze v rámci objektu actor a nikoli přes objekty Actors.
 * V některých způsobech volání metody nebo zpětného volání se `Task` metoda (C#)/ `CompletableFuture` (Java) vrácená metodou nebo zpětným voláním dokončí po návratu metody. V některých dalších se asynchronní operace již dokončila v době, kdy se metoda nebo zpětné volání vrátí. V obou případech je zámek za objekt actor uvolněn pouze poté, co metoda nebo zpětné volání vrátí metodu a je dokončena asynchronní operace.
 

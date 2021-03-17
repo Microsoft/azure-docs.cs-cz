@@ -3,28 +3,28 @@ title: Možnosti jednotného přihlašování v Azure AD
 description: Přečtěte si o dostupných možnostech jednotného přihlašování (SSO) v Azure Active Directory.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: c380642cd4297a753b113bdbfdfb46060656269e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 2bf84a22a384e6079c2d85c833b34ba37eecaa46
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642091"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252351"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Možnosti jednotného přihlašování v Azure AD
 
 Jednotné přihlašování poskytuje mnoho výhod oproti tradičním metodám přihlašování.
 
-- **S jednotným přihlašováním**se uživatelé přihlásí jednou z účtu pro přístup k zařízením připojeným k doméně, prostředkům společnosti, aplikacím SaaS (software jako služba) a webovým aplikacím. Po přihlášení může uživatel spouštět aplikace z portálu Office 365 nebo z mých aplikací. Správci mohou centralizovat správu uživatelských účtů a automaticky přidávat nebo odebírat přístup uživatelů k aplikacím na základě členství ve skupinách.
+- **S jednotným přihlašováním** se uživatelé přihlásí jednou z účtu pro přístup k zařízením připojeným k doméně, prostředkům společnosti, aplikacím SaaS (software jako služba) a webovým aplikacím. Po přihlášení může uživatel spouštět aplikace z portálu Office 365 nebo z mých aplikací. Správci mohou centralizovat správu uživatelských účtů a automaticky přidávat nebo odebírat přístup uživatelů k aplikacím na základě členství ve skupinách.
 
-- **Bez jednotného přihlašování**si uživatelé musí pamatovat hesla pro konkrétní aplikace a přihlašovat se ke každé aplikaci. Pracovníci IT potřebují vytvořit a aktualizovat uživatelské účty pro každou aplikaci, například Office 365, box a Salesforce. Uživatelé si musí pamatovat hesla a zasílat čas na přihlášení ke každé aplikaci.
+- **Bez jednotného přihlašování** si uživatelé musí pamatovat hesla pro konkrétní aplikace a přihlašovat se ke každé aplikaci. Pracovníci IT potřebují vytvořit a aktualizovat uživatelské účty pro každou aplikaci, například Microsoft 365, box nebo Salesforce. Uživatelé si musí pamatovat hesla a zasílat čas na přihlášení ke každé aplikaci.
 
 Další informace o jednotném přihlašování najdete v tématu [co je jednotné přihlašování?](what-is-single-sign-on.md).
 
@@ -49,21 +49,21 @@ Následující tabulka shrnuje metody jednotného přihlašování a odkazy na d
 | [Spojeného](#linked-sign-on) | Cloud a místní | Vyberte možnost propojené přihlašování, pokud je aplikace nakonfigurována pro jednotné přihlašování v jiné službě zprostředkovatele identity. Tato možnost nepřidá do aplikace jednotné přihlašování. Aplikace však může již mít jednotné přihlašování implementované pomocí jiné služby, například Active Directory Federation Services (AD FS).|
 | [Zakázáno](#disabled-sso) | Cloud a místní | Vyberte zakázané jednotné přihlašování, když aplikace není připravená na konfiguraci jednotného přihlašování. Tento režim je při vytváření aplikace výchozí.|
 | [Integrované ověřování systému Windows (IWA)](#integrated-windows-authentication-iwa-sso) | pouze místní | Pro aplikace, které používají [integrované ověřování systému Windows (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)nebo aplikace pracující s deklaracemi, vyberte IWA jednotné přihlašování. Pro IWA konektory proxy aplikací používají k ověřování uživatelů v aplikaci omezené delegování (KCD) protokolu Kerberos. |
-| [Na základě hlaviček](#header-based-sso) | pouze místní | Použijte jednotné přihlašování založené na hlavičkách, když aplikace používá hlavičky pro ověřování. Jednotné přihlašování založené na hlavičkách vyžaduje PingAccess pro Azure AD. Proxy aplikací používá k ověření uživatele službu Azure AD a předává přenos prostřednictvím služby konektoru.  |
+| [Na základě hlaviček](#header-based-sso) | pouze místní | Použijte jednotné přihlašování založené na hlavičkách, když aplikace používá hlavičky pro ověřování. Proxy aplikací používá k ověření uživatele službu Azure AD a předává přenos prostřednictvím služby konektoru.  |
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect a OAuth
 
 Při vývoji nových aplikací použijte moderní protokoly jako OpenID Connect a OAuth, abyste dosáhli nejlepšího jednotného přihlašování pro vaši aplikaci napříč různými platformami zařízení. OAuth umožňuje uživatelům nebo správcům [udělit souhlas](configure-user-consent.md) s chráněnými prostředky, jako je [Microsoft Graph](/graph/overview). Nabízíme snadnou přípravu [sad SDK](../develop/reference-v2-libraries.md) pro vaši aplikaci a navíc je vaše aplikace připravená k použití [Microsoft Graph](/graph/overview).
 
-Další informace:
+Další informace naleznete v tématu:
 
-- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
+- [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
-- [Příručka pro vývojáře Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+- [Příručka pro vývojáře Microsoft Identity Platform](../develop/index.yml).
 
 ## <a name="saml-sso"></a>SAML SSO
 
-Pomocí **jednotného přihlašování SAML**Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele. Azure AD komunikuje s přihlašovacími informacemi k aplikaci prostřednictvím protokolu připojení. Pomocí jednotného přihlašování založené na SAML můžete mapovat uživatele na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML.
+Pomocí **jednotného přihlašování SAML** Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele. Azure AD komunikuje s přihlašovacími informacemi k aplikaci prostřednictvím protokolu připojení. Pomocí jednotného přihlašování založené na SAML můžete mapovat uživatele na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML.
 
 Vyberte jednotné přihlašování založené na SAML, když je aplikace podporuje.
 
@@ -74,7 +74,7 @@ Jednotné přihlašování založené na SAML je podporované u aplikací, kter�
 
 Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](configure-saml-single-sign-on.md). Mnoho aplikací SaaS (software jako služba) navíc obsahuje [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
 
-Pokud chcete nakonfigurovat aplikaci pro WS-Federation, postupujte podle stejných pokynů ke konfiguraci aplikace pro jednotné přihlašování založené na SAML. V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro koncový bod WS-Federation `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
+Pokud chcete nakonfigurovat aplikaci pro WS-Federation, postupujte podle stejných pokynů ke konfiguraci aplikace pro jednotné přihlašování založené na SAML. V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL služby Azure AD pro WS-Federation koncový bod `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 Pokud chcete nakonfigurovat místní aplikaci pro jednotné přihlašování založené na SAML, přečtěte si téma [jednotné přihlašování SAML pro místní aplikace s proxy aplikací](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -137,7 +137,7 @@ Díky připojenému přihlašování může Azure AD poskytovat jednotné přihl
 
 ### <a name="linked-sign-on-for-application-migration"></a>Propojené přihlašování pro migraci aplikace
 
-Díky připojenému přihlašování můžete zajistit konzistentní uživatelské prostředí při migraci aplikací v časovém intervalu. Pokud migrujete aplikace na Azure Active Directory, můžete k rychlému publikování odkazů na všechny aplikace, které máte v úmyslu migrovat, použít propojené přihlašování.  Uživatelé můžou najít všechny odkazy na [portálu MyApp](../user-help/active-directory-saas-access-panel-introduction.md) nebo ve [spouštěči aplikací Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou znát přístup k propojené aplikaci nebo migrované aplikaci.  
+Díky připojenému přihlašování můžete zajistit konzistentní uživatelské prostředí při migraci aplikací v časovém intervalu. Pokud migrujete aplikace na Azure Active Directory, můžete k rychlému publikování odkazů na všechny aplikace, které máte v úmyslu migrovat, použít propojené přihlašování.  Uživatelé můžou najít všechny odkazy na [portálu MyApp](../user-help/my-apps-portal-end-user-access.md) nebo ve [Spouštěči aplikací Microsoft 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou znát přístup k propojené aplikaci nebo migrované aplikaci.  
 
 Jakmile se uživatel s propojenou aplikací ověří, musí se vytvořit záznam účtu, aby byl koncovým uživatelům poskytnutý přístup s jednotným přihlašováním. K tomu, aby se tento záznam účtu mohl vyskytnout automaticky, nebo ho může vyskytnout správce ručně.
 
@@ -180,24 +180,14 @@ Tento diagram vysvětluje tok, když uživatel přistupuje k místní aplikaci, 
 
 ## <a name="header-based-sso"></a>Jednotné přihlašování založené na hlavičkách
 
-Jednotné přihlašování založené na hlavičkách funguje pro aplikace, které k ověřování používají hlavičky protokolu HTTP. Tato metoda přihlašování používá službu ověřování třetí strany s názvem PingAccess. Uživatel se musí pouze ověřit ve službě Azure AD.
+Jednotné přihlašování založené na hlavičkách funguje pro aplikace, které k ověřování používají hlavičky protokolu HTTP.
 
-V případě, že je pro aplikaci nakonfigurován proxy aplikace a PingAccess, vyberte jednotné přihlašování založené na hlavičkách.
+Vyberte jednotné přihlašování založené na hlavičkách, když je proxy aplikace nakonfigurované pro místní aplikaci.
 
-Pokud chcete nakonfigurovat ověřování na základě hlaviček, přečtěte si téma [ověřování na základě hlaviček pro jednotné přihlašování s proxy aplikací](application-proxy-configure-single-sign-on-with-ping-access.md).
+Další informace o ověřování na základě hlaviček najdete v tématu [jednotné přihlašování na základě](application-proxy-configure-single-sign-on-with-headers.md)hlaviček.
 
-### <a name="what-is-pingaccess-for-azure-ad"></a>Co je PingAccess pro Azure AD?
-
-Uživatelé můžou pomocí PingAccess pro Azure AD získat přístup k aplikacím, které k ověřování používají hlavičky, a jejich jednotné přihlašování. Proxy aplikace tyto aplikace považují za jiné, a to pomocí Azure AD k ověřování přístupu a následnému předávání provozu prostřednictvím služby konektoru. Po ověření dojde v PingAccess službě k přenosu tokenu služby Azure AD Access do formátu hlaviček, který je odeslán do aplikace.
-
-Pokud se přihlásíte k používání podnikových aplikací, nebudou si uživatelé moci všimnout žádné jiné. Můžou pořád pracovat odkudkoli na jakémkoli zařízení. Konektor proxy aplikací směruje vzdálený provoz do všech aplikací a bude pokračovat ve vyrovnávání zatížení automaticky.
-
-### <a name="how-do-i-get-a-license-for-pingaccess"></a>Návody získat licenci pro PingAccess?
-
-Vzhledem k tomu, že tento scénář je nabízený prostřednictvím partnerství mezi Azure AD a PingAccess, potřebujete licence pro obě služby. Azure AD Premium předplatných ale zahrnuje základní licenci PingAccess, která zahrnuje až 20 aplikací. Pokud potřebujete publikovat více než 20 aplikací založených na hlavičkách, můžete získat další licenci od PingAccess.
-
-Další informace najdete v tématu [Azure Active Directory edice](../fundamentals/active-directory-whatis.md).
 
 ## <a name="next-steps"></a>Další kroky
 * [Série rychlý Start při správě aplikací](view-applications-portal.md)
 * [Plánování nasazení jednotného přihlašování](plan-sso-deployment.md)
+* [Jednotné přihlašování s místními aplikacemi](application-proxy-config-sso-how-to.md)

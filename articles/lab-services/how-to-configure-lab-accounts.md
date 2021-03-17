@@ -3,22 +3,22 @@ title: Konfigurace automatického vypnutí virtuálních počítačů v Azure La
 description: Tento článek popisuje, jak nakonfigurovat automatické vypínání virtuálních počítačů v účtu testovacího prostředí.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603888"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91650030"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Konfigurace automatického vypnutí virtuálních počítačů pro účet testovacího prostředí
 
 Můžete povolit několik funkcí řízení nákladů na automatické vypnutí, aby bylo možné aktivně zabránit dalším nákladům, když se virtuální počítače aktivně nepoužívají. Kombinace následujících tří funkcí automatického vypnutí a odpojení zachytává většinu případů, kdy uživatelé omylem odejdou z virtuálních počítačů, na kterých běží:
  
-- Automaticky odpojí uživatele z virtuálních počítačů, které operační systém považuje za nečinné (pouze Windows).
-- Automaticky vypne virtuální počítače, když se uživatelé odpojí (Windows & Linux).
+- Automaticky odpojí uživatele z virtuálních počítačů, které operační systém považuje za nečinné.
+- Automaticky vypne virtuální počítače, když se uživatelé odpojí.
 - Automaticky vypne virtuální počítače, které jsou spuštěné, ale uživatelé se nepřipojí.
 
-Přečtěte si další podrobnosti o funkcích automatického vypnutí v části [maximalizovat řízení nákladů pomocí nastavení automatického vypnutí](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) .
+Přečtěte si další podrobnosti o funkcích automatického vypnutí v části [maximalizovat řízení nákladů pomocí nastavení automatického vypnutí](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) .
 
 ## <a name="enable-automatic-shutdown"></a>Povolit automatické vypnutí
 

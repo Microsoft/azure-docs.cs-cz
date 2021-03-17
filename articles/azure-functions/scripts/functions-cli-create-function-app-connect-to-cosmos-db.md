@@ -4,12 +4,12 @@ description: Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 440767159ec1321d9b157f53408dbff8f9706eec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ec4d3cb9d47608aa98075ba98aacfde51f341cd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498561"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934420"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Vytvoření funkce Azure, která se připojuje ke službě Azure Cosmos DB
 
@@ -17,9 +17,9 @@ Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí a připojí f
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud používáte rozhraní příkazového řádku místně, ujistěte se, že máte Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -36,8 +36,8 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | vytvořit účet úložiště |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan)bez serveru. |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../consumption-plan.md)bez serveru. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet databáze Azure Cosmos DB. |
 | [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Získá připojení k databázovému účtu. |
 | [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Získá klíče pro databázi. |

@@ -8,15 +8,15 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.topic: landing-page
-  author: PatrickFarley
-  ms.author: pafarley
+  author: laujan
+  ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: 51613a2233eaa643e8c846cccce7ca27effd6f7f
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-  ms.translationtype: HT
+  ms.openlocfilehash: 955de3dc1510d86ac0f1d3aa80dc4fb208d914f7
+  ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87090820"
+  ms.lasthandoff: 03/15/2021
+  ms.locfileid: "103467149"
 landingContent:
 - title: Informace o službě Rozpoznávání formulářů
   linkLists:
@@ -45,7 +45,11 @@ landingContent:
     - text: Používání sady JavaScript SDK
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: S využitím REST API (cURL)
-      url: quickstarts/curl-train-extract.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: tutorial
+    links:
+    - text: Hromadná extrakce dat formuláře
+      url: tutorial-bulk-processing.md
 - title: Vytvoření trénovací sady dat
   linkLists:
   - linkListType: how-to-guide
@@ -62,8 +66,6 @@ landingContent:
     links:
     - text: Trénování s využitím ukázkového nástroje pro popisování
       url: quickstarts/label-tool.md
-    - text: Trénování s popisky s využitím REST API a Pythonu
-      url: quickstarts/python-labeled-data.md
 - title: Extrakce dat z dokladů
   linkLists:
   - linkListType: quickstart
@@ -77,10 +79,12 @@ landingContent:
     - text: Používání sady JavaScript SDK
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: S využitím REST API (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: S využitím REST API (cURL)
-      url: quickstarts/curl-receipts.md
-- title: Získání informací o rozložení textu
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: concept
+    links:
+    - text: Principy účtenek
+      url: concept-receipts.md?
+- title: Extrakce dat z vizitek
   linkLists:
   - linkListType: quickstart
     links:
@@ -93,9 +97,29 @@ landingContent:
     - text: Používání sady JavaScript SDK
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: S využitím REST API (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: S využitím REST API (Python)
-      url: quickstarts/python-layout.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+  - linkListType: concept
+    links:
+    - text: Principy vizitek
+      url: concept-business-cards.md?
+- title: Získání informací o rozložení textu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Koncepty rozložení
+      url: concept-layout.md?
+  - linkListType: quickstart
+    links:
+    - text: S využitím .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Používání sady Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Používání sady Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Používání sady JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: S využitím REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: Použití kontejnerů
   linkLists:
   - linkListType: get-started
@@ -109,24 +133,28 @@ landingContent:
   - linkListType: deploy
     links:
     - text: Použití instancí kontejneru
-      url: deploy-form-recognizer-on-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
     links:
-    - text: Rozhraní API služby Rozpoznávání formulářů v2.0
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
+    - text: Rozhraní API pro rozpoznávání formulářů v 2.1 Preview. 3
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer
+      url: /dotnet/api/overview/azure/ai.formrecognizer-readme
+    - text: Python SDK
+      url: /python/api/azure-ai-formrecognizer/
+    - text: Java SDK
+      url: /java/api/overview/azure/ai-formrecognizer-readme
+    - text: JavaScript SDK
+      url: /javascript/api/overview/azure/ai-form-recognizer-readme
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: Nápověda a zpětná vazba
   linkLists:
   - linkListType: reference
     links:
-    - text: UserVoice
-      url: https://go.microsoft.com/fwlink/?linkid=2090535
-    - text: Stack Overflow
-      url: https://go.microsoft.com/fwlink/?linkid=2087186
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context

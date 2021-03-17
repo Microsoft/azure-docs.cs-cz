@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733375"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142458"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Úlohy plánování a vysílání (.NET)
 
@@ -50,9 +50,9 @@ Na konci tohoto kurzu máte dvě konzolové aplikace .NET (C#):
 
 * **ScheduleJob**. Tato aplikace používá úlohy pro volání přímé metody **LockDoor** a aktualizaci požadovaných vlastností zařízení na více zařízeních.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -70,7 +70,7 @@ Na konci tohoto kurzu máte dvě konzolové aplikace .NET (C#):
 
 V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou metodu volanou back-endu řešení.
 
-1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Pokračujte výběrem tlačítka **Next** (Další).
+1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Pokračujte výběrem tlačítka **Další**.
 
 1. V části **Konfigurovat nový projekt**pojmenujte projekt *SimulateDeviceMethods*a pak vyberte **vytvořit**.
 
@@ -261,7 +261,7 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí jazyka C#), která
     ```
 
     > [!NOTE]
-    > Další informace o syntaxi dotazů naleznete v tématu [IoT Hub dotazovací jazyk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
+    > Další informace o syntaxi dotazů naleznete v tématu [IoT Hub dotazovací jazyk](./iot-hub-devguide-query-language.md).
     >
 
 1. Nakonec přidejte do metody **Main** následující řádky:
@@ -311,4 +311,4 @@ V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízen
 
 * Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace firmwaru Air, přečtěte si [kurz: jak provést aktualizaci firmwaru](tutorial-firmware-update.md).
 
-* Další informace o nasazování AI do hraničních zařízení pomocí Azure IoT Edge najdete v tématu [Začínáme s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+* Další informace o nasazování AI do hraničních zařízení pomocí Azure IoT Edge najdete v tématu [Začínáme s IoT Edge](../iot-edge/quickstart-linux.md).

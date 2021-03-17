@@ -1,23 +1,23 @@
 ---
-title: Microsoft Azure Stack technické specifikace napájení na hraničních zařízeních na základě umístění | Microsoft Docs
-description: Seznamte se s technickými specifikacemi pro napájecí šňůry Azure Stack hraničních zařízeních.
+title: Microsoft Azure Stack technické specifikace pro Power šňůru na hraničních zařízeních na základě umístění | Microsoft Docs
+description: Seznamte se s technickými specifikacemi pro napájecí šňůry Azure Stack Edge pro.
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: v-grpr
-ms.openlocfilehash: 2fb28bcb1edb9a18b4d1628e211f87f2c772ef80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664652"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446459"
 ---
-# <a name="azure-stack-edge-power-cord-specifications"></a>Specifikace napájecí šňůry Azure Stack Edge
+# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Specifikace napájecí šňůry Azure Stack Edge pro
 
-Vaše zařízení Azure Stack Edge bude potřebovat napájecí kabel, který se bude lišit v závislosti na vaší oblasti Azure.
+Vaše zařízení Azure Stack Edge pro bude potřebovat napájecí kabel, který se bude lišit v závislosti na vaší oblasti Azure.
 
 ## <a name="supported-power-cords"></a>Podporované napájecí šňůry
 
@@ -158,4 +158,4 @@ Pomocí následující tabulky můžete najít správné specifikace kabelů pro
 
 ## <a name="next-steps"></a>Další kroky
 
-[Technické specifikace Azure Stack Edge](data-box-edge-technical-specifications-compliance.md)
+[Technické specifikace Azure Stack Edge pro](./azure-stack-edge-technical-specifications-compliance.md)

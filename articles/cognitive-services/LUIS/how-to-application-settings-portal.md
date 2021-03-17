@@ -1,14 +1,16 @@
 ---
 title: Nastavení aplikace
 description: Nakonfigurujte nastavení aplikace a verze na portálu LUIS, jako je například normalizace utterance a ochrana osobních údajů aplikací.
-ms.topic: quickstart
-ms.date: 05/17/2020
-ms.openlocfilehash: c1d5572c3eeb71ec0631a03444d08da46d0a0106
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.service: cognitive-services
+ms.subservice: language-understanding
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653209"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436636"
 ---
 # <a name="application-and-version-settings"></a>Nastavení aplikace a verze
 

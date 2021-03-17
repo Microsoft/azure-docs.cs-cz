@@ -3,7 +3,7 @@ title: Azure Media Services kódy chyb kódování | Microsoft Docs
 description: Toto téma obsahuje seznam chybových kódů, které by mohly být vráceny v případě, že při provádění úlohy kódování došlo k chybě..
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ce4e939f-5aee-41f9-859d-e4429815e9f2
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 7e6848fb49dd63fa67a639d09754a28dd5953a32
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042872"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013478"
 ---
 # <a name="encoding-error-codes"></a>Kódy chyb kódování
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 V následující tabulce jsou uvedeny kódy chyb, které by mohly být vráceny v případě, že došlo k chybě při provádění úlohy kódování.  Chcete-li získat podrobnosti o chybě v kódu .NET, použijte třídu [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) . Pokud chcete získat podrobnosti o chybě v kódu REST, použijte REST API [ErrorDetail](/rest/api/media/operations/errordetail) .
 

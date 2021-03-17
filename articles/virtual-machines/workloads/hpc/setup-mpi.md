@@ -1,24 +1,19 @@
 ---
 title: Nastavení rozhraní pro předávání zpráv pro HPC – Azure Virtual Machines | Microsoft Docs
 description: Přečtěte si, jak nastavit MPI pro HPC v Azure.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: hpc
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9804ed23da4cb9ccbb7515cec03fcc9b4147f749
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926514"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673272"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Nastavení rozhraní pro předávání zpráv pro HPC
 

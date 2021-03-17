@@ -1,9 +1,9 @@
 ---
-title: Streamování videosouborů pomocí služby Azure Media Services – .NET | Microsoft Docs
-description: Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
+title: Streamování videosouborů pomocí Azure Media Services – .NET
+description: Postupujte podle kroků v tomto kurzu a pomocí .NET vytvořte nový účet Azure Media Services, zakódovat soubor a Streamujte ho do Azure Media Player.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, stream
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0ba272d76cade53529b198876f0ad06c4ae79649
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074516"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898185"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto kurzu se dozvíte, jak snadné je zakódovat a spustit streamování videí na nejrůznějších prohlížečích a zařízeních pomocí Azure Media Services. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
@@ -31,7 +33,7 @@ Na konci kurzu budete moct streamovat video.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Vytvořte účet Media Services](./create-account-howto.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
@@ -52,7 +54,7 @@ Ve staženém projektu otevřete [appsettings.js](https://github.com/Azure-Sampl
 Tato ukázka provede následující akce:
 
 1. Vytvoří **transformaci** (nejprve zkontroluje, zda zadaná transformace existuje). 
-2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy**kódování.
+2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy** kódování.
 3. Vytvoří vstup **úlohy**, který je založen na adrese URL https.
 4. Odešle **úlohu** kódování pomocí vstupu a výstupu, který byl vytvořen dříve.
 5. Zkontroluje stav úlohy.
@@ -68,7 +70,7 @@ Když spustíte aplikaci, zobrazí se adresy URL, které můžete použít k př
 1. Stisknutím kombinace kláves Ctrl+F5 spusťte aplikaci *EncodeAndStreamFiles*.
 2. Vyberte protokol **HLS** společnosti Apple (končí řetězcem *manifest(format=m3u8-aapl)*) a zkopírujte adresu URL streamování z konzoly.
 
-![Výstup](./media/stream-files-tutorial-with-api/output.png)
+![Snímek obrazovky s výstupem z aplikace EncodeAndStreamFiles v aplikaci Visual Studio zobrazující tři adresy URL streamování pro použití v Azure Media Player.](./media/stream-files-tutorial-with-api/output.png)
 
 Ve [zdrojovém kódu](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) ukázky můžete vidět, jak je adresa URL tvořená. Pokud ji chcete vytvořit, musíte zřetězit název hostitele koncového bodu hostování a cestu lokátoru streamování.  
 

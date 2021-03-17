@@ -1,18 +1,17 @@
 ---
 title: Řešení potíží s vizualizací a vizualizací závislostí v Azure Migrate
-description: Získejte pomoc s řešením potíží a vizualizace závislostí v Azure Migrate.
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+description: Získejte pomoc s vizualizací a vizualizací závislostí v Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685404"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581796"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -26,11 +25,11 @@ Opravte problémy připravenosti vyhodnocování následujícím způsobem:
 **Chybu** | **Oprava**
 --- | ---
 Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K obsluze migrace takových virtuálních počítačů můžete použít migraci Azure Migrate serveru. Při migraci převede typ spouštění virtuálního počítače na systém BIOS.
-Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](https://aka.ms/WSosstatement)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat.
-Nepodporovaný operační systém Windows | Azure podporuje jenom [vybrané verze operačního systému Windows](https://aka.ms/WSosstatement). Před migrací do Azure zvažte možnost upgradovat počítač.
-Podmíněně schválené operační systémy Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). Před migrací do Azure zvažte možnost upgradovat počítač. Další informace najdete také [tady](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) .
+Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](/troubleshoot/azure/virtual-machines/server-software-support)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat. [Přečtěte si]() informace o [přípravě počítačů s Windows serverem 2003](prepare-windows-server-2003-migration.md) pro migraci do Azure.
+Nepodporovaný operační systém Windows | Azure podporuje jenom [vybrané verze operačního systému Windows](/troubleshoot/azure/virtual-machines/server-software-support). Před migrací do Azure zvažte možnost upgradovat počítač.
+Podmíněně schválené operační systémy Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). Před migrací do Azure zvažte možnost upgradovat počítač. Další informace najdete také [tady](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) .
 Neschválený operační systém Linux | Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. Před migrací do Azure zvažte možnost upgradovat na [schválenou verzi systému Linux](../virtual-machines/linux/endorsed-distros.md) .
-Neznámý operační systém | Operační systém virtuálního počítače byl ve vCenter Server zadán jako jiný. Toto chování blokuje Azure Migrate Ověření připravenosti na Azure pro virtuální počítač. Než počítač migrujete, ujistěte se, že Azure [podporuje](https://aka.ms/azureoslist) operační systém.
+Neznámý operační systém | Operační systém virtuálního počítače byl ve vCenter Server zadán jako jiný. Toto chování blokuje Azure Migrate Ověření připravenosti na Azure pro virtuální počítač. Než počítač migrujete, ujistěte se, že Azure [podporuje](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements) operační systém.
 Nepodporovaná bitová verze | Virtuální počítače s 32 operačním systémem se můžou spouštět v Azure, ale před migrací do Azure doporučujeme upgradovat na 64.
 Vyžaduje předplatné Microsoft Visual Studio. | Počítač používá klientský operační systém Windows, který je podporovaný jenom prostřednictvím předplatného sady Visual Studio.
 Pro požadovaný výkon úložiště se nenašel virtuální počítač. | Výkon úložiště (vstupně-výstupní operace za sekundu [IOPS] a propustnost) požadovaná pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
@@ -48,11 +47,11 @@ Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. 
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Nenašla se žádná velikost virtuálního počítače pro rezervované instance nabídky Currency. | Počítač je označený jako nevhodný, protože velikost virtuálního počítače se nenašla pro vybranou kombinaci rezervované instance, nabídky a měny. Upravte vlastnosti posouzení pro výběr platných kombinací a přepočítejte hodnocení. 
-Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řešení Azure VMware (AVS). Služba AVS nepodporuje faktor internetových adres IPv6.Pokud je váš počítač zjištěn s protokolem IPv6, obraťte se na tým služby AVS, kde najdete pokyny k nápravě.
+Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řešení Azure VMware (AVS). Služba AVS nepodporuje faktor internetových adres IPv6. Pokud je váš počítač zjištěn s protokolem IPv6, obraťte se na tým služby AVS, kde najdete pokyny k nápravě.
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Navrhovaný Nástroj pro migraci v hodnocení AVS založeném na importu, který je označený jako neznámý
 
-U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMware Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
+U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMware Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/tutorial-deploy-vmware-hcx.md)
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Virtuální počítače se systémem Linux jsou podmíněně připravené ve službě Azure VM Assessment
 
@@ -61,7 +60,7 @@ V případě virtuálních počítačů VMware a Hyper-V vyznačuje vyhodnocová
 - Tato mezera brání tomu, aby zjistila podverzi operačního systému Linux nainstalovaného na místních virtuálních počítačích.
 - Například pro RHEL 6,10 aktuálně vyhodnocování serveru detekuje jako verzi operačního systému pouze RHEL 6. Důvodem je to, že vCenter Server ar hostitele Hyper-V neposkytuje verzi jádra pro operační systémy Linux virtuálních počítačů.
 -  Vzhledem k tomu, že Azure schválí pouze konkrétní verze systému Linux, jsou virtuální počítače se systémem Linux v současnosti označeny jako podmíněně připravené v rámci posouzení serveru.
-- Můžete zjistit, jestli operační systém Linux běžící na místním virtuálním počítači je v Azure schválený, a to kontrolou [podpory Azure Linux](https://aka.ms/migrate/selfhost/azureendorseddistros).
+- Můžete zjistit, jestli operační systém Linux běžící na místním virtuálním počítači je v Azure schválený, a to kontrolou [podpory Azure Linux](../virtual-machines/linux/endorsed-distros.md).
 -  Po ověření schválené distribuce můžete toto upozornění ignorovat.
 
 Tuto mezeru můžete vyřešit povolením [zjišťování aplikací](./how-to-discover-applications.md) na virtuálních počítačích VMware. Nástroj Hodnocení serverů ke zjištění operačního systému na virtuálním počítači používá zadané přihlašovací údaje hosta. Tato data operačního systému identifikují správné informace o operačním systému v případě virtuálních počítačů se systémem Windows i Linux.
@@ -75,8 +74,8 @@ Pro fyzické servery by měly být k dispozici informace o dílčí verzi opera�
 Posouzení serveru Azure Migrate může doporučit skladové položky Azure s více jádry a pamětí než aktuální místní přidělení na základě typu posouzení:
 
 - Doporučení SKU virtuálního počítače závisí na vlastnostech posouzení.
-- To je ovlivněno typem posouzení, které provádíte při posuzování serveru: na *základě výkonu*nebo *jako v*místním prostředí.
-- U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Přináší také faktor komfortu při určování efektivního využití.
+- To je ovlivněno typem posouzení, které provádíte při posuzování serveru: na *základě výkonu* nebo *jako v* místním prostředí.
+- V případě hodnocení na základě výkonu nástroj Hodnocení serverů při určování správné cílové skladové položky virtuálního počítače pro vaše místní virtuální počítače zohledňuje data o využití místních virtuálních počítačů (využití procesoru, paměti, disků a sítě). Přináší také faktor komfortu při určování efektivního využití.
 - Pro místní velikost se data o výkonu neberou v úvahu a cílová skladová jednotka se doporučuje na základě místního přidělení.
 
 Pokud chcete vidět, jak to může ovlivnit doporučení, Podívejme se na příklad:
@@ -91,8 +90,8 @@ Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% vy
 
 Posouzení serveru Azure Migrate může doporučit větší disk na základě typu posouzení.
 - Velikost disku v posuzování serveru závisí na dvou vlastnostech posouzení: kritéria změny velikosti a typ úložiště.
-- Pokud jsou kritéria změny velikosti **založená na výkonu**a typ úložiště je nastaven na hodnotu **automaticky**, při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se bere v úvahu hodnota vstupně-výstupních operací a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
-- Pokud jsou kritéria změny velikosti v **závislosti na výkonu**a typ úložiště je **Premium**, doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard**, **SSD úrovně Standard**nebo **Premium**.
+- Pokud jsou kritéria změny velikosti **založená na výkonu** a typ úložiště je nastaven na hodnotu **automaticky**, při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se bere v úvahu hodnota vstupně-výstupních operací a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
+- Pokud jsou kritéria změny velikosti v **závislosti na výkonu** a typ úložiště je **Premium**, doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard**, **SSD úrovně Standard** nebo **Premium**.
 
 Příklad: Pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, vyhodnocování serveru doporučuje prémiový disk (kvůli vyššímu počtu požadavků IOPS) a potom doporučuje SKU disku, které může podporovat požadované vstupně-výstupní operace a velikost. Nejbližší shodou by v tomto případě byla skladová položka P15 (256 GB, 1 100 IOPS). I když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje větší disk kvůli vysokému počtu požadavků na požadavky na místní disk.
 
@@ -107,7 +106,7 @@ Poznámka: Pokud jakýkoli čítač výkonu chybí, nástroj Azure Migrate: Hodn
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Proč je míra spolehlivosti mého hodnocení nízká?
 
-Míra spolehlivosti posouzení na základě výkonu se počítá na základě procentuální hodnoty [dostupných datových bodů](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) potřebných k výpočtu posouzení. Níže jsou uvedené důvody, proč k hodnocení může být přidělená nízká míra spolehlivosti:
+Míra spolehlivosti posouzení na základě výkonu se počítá na základě procentuální hodnoty [dostupných datových bodů](./concepts-assessment-calculation.md#ratings) potřebných k výpočtu posouzení. Níže jsou uvedené důvody, proč k hodnocení může být přidělená nízká míra spolehlivosti:
 
 - Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte posouzení s dobou výkonu nastavenou na jeden týden, budete muset počkat alespoň jeden týden po spuštění zjišťování, aby se shromáždily všechny datové body. Pokud tuto dobu nemůžete počkat, snižte dobu výkonu a přepočítejte posouzení.
  
@@ -115,7 +114,7 @@ Míra spolehlivosti posouzení na základě výkonu se počítá na základě pr
 
 - Po zahájení zjišťování v nástroji Hodnocení serverů se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takovém případě nebudou k dispozici data o výkonu nových virtuálních počítačů za celou dobu trvání a míra spolehlivosti bude nízká.
 
-[Další informace](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) o míře spolehlivosti
+[Další informace](./concepts-assessment-calculation.md#confidence-ratings-performance-based) o míře spolehlivosti
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Je licence k operačnímu systému zahrnutá v posouzení virtuálního počítače Azure?
 
@@ -126,7 +125,7 @@ Posouzení Azure Migrate serveru v současné době zohledňuje náklady na lice
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatnou kombinací rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
-Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
+Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](./concepts-assessment-calculation.md#whats-an-assessment).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
 
@@ -147,7 +146,8 @@ K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. N
 
 ## <a name="dependency-visualization-in-azure-government"></a>Vizualizace závislostí v Azure Government
 
-Azure Migrate závisí na Service Map funkce Vizualizace závislostí. Protože Service Map v tuto chvíli není v Azure Government k dispozici, tato funkce není v Azure Government dostupná.
+Analýza závislostí založená na agentech není v Azure Government podporovaná. Použijte prosím analýzu závislostí bez agenta.
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>Po instalaci agenta se nezobrazují závislosti
 
@@ -160,12 +160,12 @@ Pro virtuální počítače s Windows:
 
     ![Stav MMA](./media/troubleshoot-assessment/mma-properties.png)
 
-Pro virtuální počítače se systémem Linux se ujistěte, že instalační příkazy pro MMA a agenta závislostí byly úspěšné.
+Pro virtuální počítače se systémem Linux se ujistěte, že instalační příkazy pro MMA a agenta závislostí byly úspěšné. Další pokyny k odstraňování potíží najdete [tady](../azure-monitor/vm/service-map.md#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)a [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
-- **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
+- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
+- **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) .
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
 
@@ -181,7 +181,6 @@ V Azure Migrate posouzení serveru s analýzou závislostí založenou na agente
 ## <a name="machines-show-install-agent"></a>Počítače zobrazují "instalovat agenta"
 
 Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžou počítače místo příkazu "Zobrazit závislosti" Zobrazit akce "instalovat agenta", a to kvůli následujícímu chování:
-
 
 - Po migraci do Azure jsou místní počítače vypnuté a s ekvivalentními virtuálními počítači se prosazuje v Azure. Tyto počítače získají jinou adresu MAC.
 - Počítače mohou mít také jinou IP adresu, a to na základě toho, zda jste zachovali místní IP adresu nebo ne.
@@ -199,7 +198,7 @@ Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS 
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí  **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

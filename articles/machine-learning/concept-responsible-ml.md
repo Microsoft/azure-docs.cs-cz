@@ -1,20 +1,21 @@
 ---
 title: Co je zodpovědné Machine Learning (Preview)
 titleSuffix: Azure Machine Learning
-description: Seznamte se s tím, co zodpovídá počítač Learning a jak ho používat v Azure Machine Learning
+description: Přečtěte si, co je odpovědný strojové učení a jak ho používat s Azure Machine Learning k pochopení modelů, ochraně dat a řízení životního cyklu modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 02/25/2021
+ms.custom: responsible-ml
+ms.openlocfilehash: f849968c16d2c3d8940a71da0e0cda536882d9c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692058"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Co je zodpovědný strojové učení? (Preview)
 
@@ -41,7 +42,7 @@ V případě umělých a autonomních systémů, které se integrují do prostř
 
 Obtížně vysvětlené nebo neprůhledné systémy mohou být problematické, protože jsou pro účastníky, jako jsou vývojáři systému, regulačních skupin, uživatelé a tvůrci obchodních rozhodnutí, obtížné porozumět tomu, proč systémy provádějí určitá rozhodnutí. Některé systémy AI jsou vysvětlené než jiné a někdy se jedná o kompromis mezi systémem s vyšší přesností a jedním z nich, který je popsán.
 
-K sestavení interpretované systémy AI použijte [InterpretML](https://github.com/interpretml/interpret), což je open source balíček sestavený Microsoftem. [InterpretML se dají použít v Azure Machine Learning](how-to-machine-learning-interpretability.md) k [interpretaci a vysvětlení modelů strojového učení](how-to-machine-learning-interpretability-aml.md), včetně [automatizovaných modelů strojového učení](how-to-machine-learning-interpretability-automl.md).
+K sestavení interpretované systémy AI použijte [InterpretML](https://github.com/interpretml/interpret), což je open source balíček sestavený Microsoftem. Balíček InterpretML podporuje širokou škálu metod interpretace, jako je například SHapley aditivní vysvětlení (SHAP), napodobující vysvětlení a funkci permutace (PFI).  [InterpretML se dají použít v Azure Machine Learning](how-to-machine-learning-interpretability.md) k [interpretaci a vysvětlení modelů strojového učení](how-to-machine-learning-interpretability-aml.md), včetně [automatizovaných modelů strojového učení](how-to-machine-learning-interpretability-automl.md).
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>Zmírnění rovnosti v modelech strojového učení
 
@@ -62,10 +63,7 @@ Když se data používají k analýze, je důležité, aby data zůstala soukrom
 
 V tradičních scénářích se nezpracovaná data ukládají do souborů a databází. Když uživatelé analyzují data, obvykle používají nezpracovaná data. To je důležité, protože by mohlo dojít k porušení ochrany osobních údajů jednotlivce. Rozdílové soukromí se snaží s tímto problémem zabývat přidáním "šumu" nebo náhodnosti k datům, aby uživatelé nemohli identifikovat jednotlivé datové body.
 
-Implementace rozdílových privátních systémů je obtížná. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. Další informace o rozdílových zásadách ochrany osobních údajů a projektu WhiteNoise najdete v článku [zachování ochrany osobních údajů pomocí rozdílového soukromí a WhiteNoise](./concept-differential-privacy.md) .
-
-> [!NOTE]
-> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
+Implementace rozdílových privátních systémů je obtížná. [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. Další informace o rozdílových zásadách ochrany osobních údajů a projektu SmartNoise najdete v článku [zachování ochrany osobních údajů pomocí rozdílového soukromí a SmartNoise](./concept-differential-privacy.md) .
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Práce s šifrovanými daty pomocí šifrování homomorphic
 
@@ -73,7 +71,7 @@ V tradičním cloudovém úložišti a výpočtovém řešení potřebuje Cloud 
 
 Homomorphic šifrování umožňuje provádět výpočty na šifrovaných datech bez nutnosti přístupu ke tajnému (dešifrovacímu) klíči. Výsledky výpočtů jsou zašifrované a dají se odhalet jenom vlastníkem tajného klíče. Při použití šifrování homomorphic nemají operátoři cloudu nikdy zašifrovaný přístup k datům, která ukládá a výpočetní výkon. Výpočty se provádějí přímo v šifrovaných datech. Ochrana osobních údajů dat se spoléhá na špičkovou kryptografii a vlastník dat kontroluje všechny verze informací. Další informace o šifrování homomorphic v Microsoftu najdete v tématu [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
 
-Pokud chcete začít se šifrováním homomorphic v Azure Machine Learning, použijte k [Microsoft zapečetit](https://github.com/microsoft/SEAL)vazby Pythonu, která je [zašifrovaná](https://pypi.org/project/encrypted-inference/) . Microsoft SEAL je open source knihovna šifrování homomorphic, která umožňuje provádět přidávání a násobení u šifrovaných celých čísel nebo reálných čísel. Další informace o Microsoft SEAL najdete na stránce [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) nebo [projektu Microsoft Research](https://www.microsoft.com/research/project/microsoft-seal/).
+Pokud chcete začít se šifrováním homomorphic v Azure Machine Learning, použijte k [Microsoft zapečetit](https://github.com/microsoft/SEAL)vazby Pythonu, která je [zašifrovaná](https://pypi.org/project/encrypted-inference/) . Microsoft SEAL je open source knihovna šifrování homomorphic, která umožňuje provádět přidávání a násobení u šifrovaných celých čísel nebo reálných čísel. Další informace o Microsoft SEAL najdete na stránce [cetrum architektury Azure](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) nebo [projektu Microsoft Research](https://www.microsoft.com/research/project/microsoft-seal/).
 
 V následující ukázce se dozvíte, [Jak nasadit šifrovanou webovou službu Inferencing v Azure Machine Learning](how-to-homomorphic-encryption-seal.md).
 
@@ -96,5 +94,5 @@ V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learni
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-- Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) .
+- Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](/azure/architecture/guide/responsible-innovation/) .
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

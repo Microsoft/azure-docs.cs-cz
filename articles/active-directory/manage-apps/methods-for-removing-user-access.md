@@ -1,26 +1,21 @@
 ---
-title: Postup odebrání přístupu uživatele k aplikaci | Microsoft Docs
-description: Princip odebrání přístupu uživatele k aplikaci
+title: Postup odebrání přístupu uživatele k aplikaci v Azure Active Directory
+description: Princip odebrání přístupu uživatele k aplikaci v Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: kenwith
-manager: celestedg
-ms.assetid: ''
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6a6c00811a7b87156802897db62a4a10130f130
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763155"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257351"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 
@@ -28,31 +23,15 @@ Tento článek vám pomůže pochopit, jak odebrat přístup uživatele k aplika
 
 ## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Chci odebrat přiřazení konkrétního uživatele nebo skupiny do aplikace
 
-Chcete-li odebrat přiřazení uživatele nebo skupiny k aplikaci, postupujte podle kroků uvedených v části [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) článku.
+Chcete-li odebrat přiřazení uživatele nebo skupiny k aplikaci, postupujte podle kroků uvedených v části [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace v Azure Active Directory](./assign-user-or-group-access-portal.md) článku.
 
 ## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Chci zakázat veškerý přístup k aplikaci pro každého uživatele
 
-Pokud chcete zakázat přihlášení všech uživatelů k aplikaci, postupujte podle kroků uvedených v tématu [zakázání přihlášení uživatelů pro podnikovou aplikaci v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) článku.
+Pokud chcete zakázat přihlášení všech uživatelů k aplikaci, postupujte podle kroků uvedených v tématu [zakázání přihlášení uživatelů pro podnikovou aplikaci v Azure Active Directory](./disable-user-sign-in-portal.md) článku.
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Chci úplně odstranit aplikaci
 
-Pokud chcete **aplikaci odstranit**, postupujte podle těchto pokynů:
-
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
-
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
-
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
-
-4. V navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
-
-5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací.
-
-   * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
-
-6. Vyberte aplikaci, kterou chcete odstranit.
-
-7. Po načtení aplikace klikněte na **Odstranit** ikonu v horním podokně s **přehledem** aplikace.
+[Série rychlý Start při správě aplikací](delete-application-portal.md) zahrnuje pokyny k odstranění aplikace z vašeho tenanta Azure Active Directory.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace souhlasu uživatele s budoucími uživateli u libovolné aplikace
 

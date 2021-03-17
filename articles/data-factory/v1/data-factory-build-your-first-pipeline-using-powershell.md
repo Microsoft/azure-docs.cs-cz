@@ -1,22 +1,18 @@
 ---
 title: Sestavení prvního objektu pro vytváření dat (PowerShell)
 description: V tomto kurzu vytvoříte pomocí prostředí Azure PowerShell ukázkový kanál služby Azure Data Factory.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 3f388937c43c9c6a2b9e4700768d4af9cdcb39de
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 60fb3a8c1fed8e8005ba0b8f67865a7d39c754d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543108"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392047"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -39,7 +35,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 > 
 > Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [plánování a spouštění v Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -168,7 +164,7 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
    * Místo používání clusteru HDInsight na vyžádání můžete použít **vlastní cluster HDInsight** . Podrobnosti najdete v tématu [Propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
    * Cluster HDInsight vytvoří **výchozí kontejner** v úložišti objektů blob, které jste zadali ve formátu JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. V případě propojené služby HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje řez, pokud neexistuje aktivní cluster (**TimeToLive**). Po dokončení zpracování se cluster automaticky odstraní.
 
-       Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
+       Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF **yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
 
      Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 2. Spusťte rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu s názvem HDInsightOnDemandLinkedService.
@@ -313,7 +309,7 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou **HDInsightHive**. Vst
     ```
     V tomto fragmentu kódu JSON vytváříte kanál sestávající z jediné aktivity, která zpracovává data v clusteru HDInsight pomocí skriptu Hive.
 
-    Soubor skriptu podregistru **partitionweblogs. HQL**je uložený v účtu Azure Storage (určený parametrem scriptLinkedService, nazvaným **StorageLinkedService**) a ve složce **Script** v kontejneru **adfgetstarted**.
+    Soubor skriptu podregistru **partitionweblogs. HQL** je uložený v účtu Azure Storage (určený parametrem scriptLinkedService, nazvaným **StorageLinkedService**) a ve složce **Script** v kontejneru **adfgetstarted**.
 
     Oddíl **defines** určuje nastavení běhového prostředí, které se předá skriptu Hive jako konfigurační hodnoty Hive (např. ${hiveconf:inputtable}, ${hiveconf:partitionedtable}).
 
@@ -411,7 +407,7 @@ V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDIns
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
 | [Referenční informace o rutinách služby Data Factory](/powershell/module/az.datafactory) |Tady najdete rozsáhlou dokumentaci o rutinách služby Data Factory. |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |

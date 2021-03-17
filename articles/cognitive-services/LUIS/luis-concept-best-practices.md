@@ -1,15 +1,16 @@
 ---
 title: Osvědčené postupy pro sestavení aplikace v LUIS
 description: Seznamte se s osvědčenými postupy pro dosažení nejlepších výsledků z modelu vaší aplikace v LUIS.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683753"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788481"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Osvědčené postupy pro sestavování aplikace pro porozumění jazyku (LUIS)
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
@@ -65,7 +66,7 @@ Vezměte v úvahu následující příklad projevy:
 |Kniha a letu|
 |Kniha a Hotel|
 
-`Book a flight`a `Book a hotel` Používejte stejný slovník pro `book a ` . Tento formát je stejný, takže by měl být stejný záměr s různými slovy `flight` a `hotel` jako extrahované entity.
+`Book a flight` a `Book a hotel` Používejte stejný slovník pro `book a ` . Tento formát je stejný, takže by měl být stejný záměr s různými slovy `flight` a `hotel` jako extrahované entity.
 
 ## <a name="do-add-features-to-intents"></a>Přidání funkcí do záměrů
 
@@ -86,7 +87,7 @@ Přečtěte si o [efektivních entitách strojového učení](luis-concept-entit
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Opakované sestavování aplikace pomocí verzí
 
-Každý cyklus vytváření obsahu by měl být v rámci nové [verze](luis-concept-version.md), který je klonován z existující verze.
+Každý cyklus vytváření obsahu by měl být v rámci nové [verze](./luis-concept-app-iteration.md), který je klonován z existující verze.
 
 ## <a name="do-build-for-model-decomposition"></a>Sestavit pro dekompozici modelu
 
@@ -140,7 +141,7 @@ Tento záměr je záložním záměrem, který označuje všechno mimo vaši apl
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Sledování výkonu aplikace
 
-Sledujte přesnost předpovědi pomocí sady [dávkových testů](luis-concept-batch-test.md) .
+Sledujte přesnost předpovědi pomocí sady [dávkových testů](./luis-how-to-batch-test.md) .
 
 Ponechte samostatnou sadu projevy, která se nepoužívá jako [příklad projevy](luis-concept-utterance.md) nebo Endpoint projevy. Udržujte lepší aplikaci pro sadu testů. Přizpůsobte sadu testů tak, aby odrážela reálného uživatele projevy. Pomocí této sady testů vyhodnoťte každou iteraci nebo verzi aplikace.
 

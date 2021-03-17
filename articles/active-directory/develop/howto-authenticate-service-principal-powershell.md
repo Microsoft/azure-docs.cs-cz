@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 06/26/2020
+ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 423ec19d249d183f8888bf9e1eb837e2c860b1ed
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688531"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postupy: použití Azure PowerShell k vytvoření instančního objektu s certifikátem
 
@@ -43,7 +43,7 @@ K dokončení tohoto článku musíte mít dostatečná oprávnění v rámci va
 Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. Informace najdete v článku [Kontrola požadovaných oprávnění](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="assign-the-application-to-a-role"></a>Přiřazení aplikace k roli
-Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích naleznete v tématu [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
+Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou zděděna na nižší úrovně rozsahu. Například přidání aplikace do role *Čtenář* pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje. Pokud chcete aplikaci dovolit, aby prováděla akce, jako je restartování, spuštění a zastavení instancí, vyberte roli *Přispěvatel* .
 
@@ -52,7 +52,7 @@ Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo pr
 Následující příklad popisuje jednoduchou situaci. Používá [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) k vytvoření instančního objektu s certifikátem podepsaným svým držitelem a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) přiřadí roli [čtenáře](../../role-based-access-control/built-in-roles.md#reader) k instančnímu objektu. Přiřazení role je vymezené vaším aktuálně vybraným předplatným Azure. Pokud chcete vybrat jiné předplatné, použijte [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 > [!NOTE]
-> Rutina New-SelfSignedCertificate a modul PKI v současnosti není v prostředí PowerShell Core podporována. 
+> Rutina New-SelfSignedCertificate a modul PKI se v prostředí PowerShell Core momentálně nepodporují. 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -72,7 +72,7 @@ Příkladem je režim spánku, který po dobu 20 sekund umožní určitému nov�
 
 Přiřazení role můžete vymezit na konkrétní skupinu prostředků pomocí parametru **ResourceGroupName**. Vymezit konkrétní rozsah můžete také pomocí parametrů **ResourceType** a **ResourceName**. 
 
-Pokud **nemáte Windows 10 nebo Windows Server 2016**, musíte si z webu Microsoft Script Center stáhnout [generátor certifikátů podepsaných svým držitelem](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/). Rozbalte jeho obsah a importujte potřebnou rutinu.
+Pokud nemáte **Windows 10 nebo Windows Server 2016**, stáhněte [rutinu New-SELFSIGNEDCERTIFICATEEX](https://www.pkisolutions.com/tools/pspki/New-SelfSignedCertificateEx/) z řešení PKI. Rozbalte jeho obsah a importujte potřebnou rutinu.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,14 +91,14 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Poskytnutí certifikátu pomocí automatizovaného skriptu PowerShellu
 
-Vždy, když se přihlásíte jako instanční objekt, musíte pro svoji aplikaci AD zadat ID tenanta adresáře. Tenant je instance služby Azure AD.
+Pokaždé, když se přihlásíte jako instanční objekt, zadejte ID tenanta adresáře vaší aplikace AD. Tenant je instance služby Azure AD.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
 $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
- Connect-AzAccount -ServicePrincipal `
+$Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
+Connect-AzAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
@@ -126,7 +126,7 @@ Param (
  Connect-AzAccount
  Import-Module Az.Resources
  Set-AzContext -Subscription $SubscriptionId
- 
+
  $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
 
  $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
@@ -146,22 +146,22 @@ Param (
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
- 
+
  $NewRole
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Poskytnutí certifikátu pomocí automatizovaného skriptu PowerShellu
-Vždy, když se přihlásíte jako instanční objekt, musíte pro svoji aplikaci AD zadat ID tenanta adresáře. Tenant je instance služby Azure AD.
+Pokaždé, když se přihlásíte jako instanční objekt, zadejte ID tenanta adresáře vaší aplikace AD. Tenant je instance služby Azure AD.
 
 ```powershell
 Param (
- 
+
  [Parameter(Mandatory=$true)]
  [String] $CertPath,
 
  [Parameter(Mandatory=$true)]
  [String] $CertPlainPassword,
- 
+
  [Parameter(Mandatory=$true)]
  [String] $ApplicationId,
 
@@ -225,3 +225,4 @@ Při vytváření instančního objektu může dojít k následujícím chybám:
 * Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 * Podrobnější vysvětlení aplikací a instančních objektů najdete v článku [Objekty aplikací a instanční objekty](app-objects-and-service-principals.md).
 * Další informace o ověřování Azure AD najdete v tématu [scénáře ověřování pro Azure AD](./authentication-vs-authorization.md).
+* Informace o práci s registracemi aplikací pomocí **Microsoft Graph** najdete v referenčních informacích k rozhraní API pro [aplikace](/graph/api/resources/application) .

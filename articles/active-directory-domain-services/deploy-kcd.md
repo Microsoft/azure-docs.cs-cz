@@ -2,7 +2,7 @@
 title: Omezené delegování protokolu Kerberos pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak povolit omezené delegování protokolu Kerberos založené na prostředku (KCD) ve spravované doméně Azure Active Directory Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 0d2d5a9a6d897e3dde039f6124a1b6c1b356a29a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: 138b90a33ff1dbc4b014f17fa0098112e1da66e4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040091"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619772"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services
 
@@ -26,11 +26,11 @@ Spravované domény Azure Active Directory Domain Services (Azure služba AD DS)
 
 V tomto článku se dozvíte, jak nakonfigurovat omezené delegování protokolu Kerberos založené na prostředku ve spravované doméně Azure služba AD DS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -113,4 +113,4 @@ Další informace o tom, jak delegování funguje v Active Directory Domain Serv
 [Set-ADUser]: /powershell/module/addsadministration/set-aduser
 
 <!-- EXTERNAL LINKS -->
-[kcd-technet]: https://technet.microsoft.com/library/jj553400.aspx
+[kcd-technet]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)

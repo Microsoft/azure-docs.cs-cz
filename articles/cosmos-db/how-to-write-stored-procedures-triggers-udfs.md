@@ -3,27 +3,29 @@ title: Zápis uložených procedur, triggerů a UDF v Azure Cosmos DB
 description: Naučte se definovat uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 17cde20d69fbf7d135fe48c9e285ccf348b4b58c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420154"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028858"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB poskytuje jazykově integrované spouštění transakčního jazyka JavaScript, které vám umožní zapisovat **uložené procedury**, **triggery**a **uživatelsky definované funkce (UDF)**. Při použití rozhraní SQL API v Azure Cosmos DB můžete definovat uložené procedury, triggery a UDF v jazyce JavaScript. Logiku můžete napsat v JavaScriptu a spustit ji uvnitř databázového stroje. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) a [Cosmos DBch klientských sad SDK pro rozhraní SQL API](sql-api-dotnet-samples.md). 
+Azure Cosmos DB poskytuje jazykově integrované spouštění transakčního jazyka JavaScript, které vám umožní zapisovat **uložené procedury**, **triggery** a **uživatelsky definované funkce (UDF)**. Při použití rozhraní SQL API v Azure Cosmos DB můžete definovat uložené procedury, triggery a UDF v jazyce JavaScript. Logiku můžete napsat v JavaScriptu a spustit ji uvnitř databázového stroje. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) a [Cosmos DBch klientských sad SDK pro rozhraní SQL API](sql-api-dotnet-samples.md). 
 
 Chcete-li volat uloženou proceduru, Trigger a uživatelsky definovanou funkci, je nutné ji zaregistrovat. Další informace najdete v tématu [jak pracovat s uloženými procedurami, triggery, uživatelsky definovanými funkcemi v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
 
 > [!NOTE]
 > U dělených kontejnerů při provádění uložené procedury musí být v možnostech žádosti uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu, nebudou viditelné pro uloženou proceduru. To se také aplikuje i na triggery.
 > [!Tip]
-> Cosmos podporuje nasazování kontejnerů s uloženými procedurami, triggery a uživatelsky definovanými funkcemi. Další informace najdete v tématu [vytvoření kontejneru Azure Cosmos DB s využitím funkce na straně serveru.](manage-sql-with-resource-manager.md#create-sproc)
+> Cosmos podporuje nasazování kontejnerů s uloženými procedurami, triggery a uživatelsky definovanými funkcemi. Další informace najdete v tématu [vytvoření kontejneru Azure Cosmos DB s využitím funkce na straně serveru.](./manage-with-templates.md#create-sproc)
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Postup zápisu uložených procedur
 
@@ -282,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Zápis triggerů
 
-Azure Cosmos DB podporuje před triggery a po triggerech. Před změnou položky databáze se spustí předběžné triggery před úpravou položky databáze a následnými triggery.
+Azure Cosmos DB podporuje před triggery a po triggerech. Před změnou položky databáze se spustí předběžné triggery před úpravou položky databáze a následnými triggery. Triggery nejsou spouštěny automaticky, musí být zadány pro každou databázovou operaci, kterou chcete provést. Po definování triggeru byste měli [zaregistrovat a volat předběžnou Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) pomocí sad Azure Cosmos DB SDK.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>Předběžné triggery
 
@@ -386,7 +388,7 @@ function tax(income) {
 
 Příklady, jak registrovat a používat uživatelsky definovanou funkci, najdete [v tématu použití uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) článku.
 
-## <a name="logging"></a>Protokolování 
+## <a name="logging"></a>protokolování 
 
 Při použití uložené procedury, triggerů nebo uživatelsky definovaných funkcí můžete pomocí příkazu zaprotokolovat kroky `console.log()` . Tento příkaz zachová řetězec pro ladění, pokud `EnableScriptLogging` je nastaven na hodnotu true, jak je znázorněno v následujícím příkladu:
 

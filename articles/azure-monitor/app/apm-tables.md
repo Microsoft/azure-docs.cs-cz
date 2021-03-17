@@ -2,25 +2,23 @@
 title: Schéma prostředků založené na pracovním prostoru Azure Monitor Application Insights
 description: Přečtěte si o nové struktuře a schématu tabulek pro Azure Monitor Application Insights prostředky založené na pracovním prostoru.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323175"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575599"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Změny prostředků na základě pracovního prostoru (Preview)
+# <a name="workspace-based-resource-changes"></a>Změny prostředků na základě pracovního prostoru
 
-Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](../platform/data-platform-logs.md).
+Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](../logs/data-platform-logs.md).
 
 Data prostředků Application Insights na základě pracovního prostoru se ukládají do pracovního prostoru Log Analytics s dalšími daty monitorování a daty aplikací. Tím se zjednoduší vaše konfigurace tím, že vám umožní snadněji analyzovat data napříč více řešeními a využívat možnosti pracovních prostorů.
 
 ## <a name="table-structure"></a>Struktura tabulky
 
-| Starší verze názvu tabulky | Název nové tabulky | Popis |
+| Starší verze názvu tabulky | Nový název tabulky | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Souhrnná data z testů dostupnosti.|
 | browserTimings | AppBrowserTimings | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.|
@@ -58,8 +56,8 @@ Starší tabulka: dostupnost
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
@@ -68,7 +66,7 @@ Starší tabulka: dostupnost
 |itemType|řetězec|Typ|Řetězec|
 |location|řetězec|Umístění|řetězec|
 |zpráva|řetězec|Zpráva|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -76,7 +74,7 @@ Starší tabulka: dostupnost
 |performanceBucket|řetězec|PerformanceBucket|řetězec|
 |sdkVersion|řetězec|SdkVersion|řetězec|
 |session_Id|řetězec|SessionId|řetězec|
-|velikost|real|Velikost|real|
+|size|real|Velikost|real|
 |úspěch|řetězec|Success|Logická hodnota|
 |časové razítko|datetime|TimeGenerated|datetime|
 |user_AccountId|řetězec|UserAccountId|řetězec|
@@ -102,13 +100,13 @@ Starší tabulka: browserTimings
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|datetime|
+|name|řetězec|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
@@ -146,8 +144,8 @@ Starší tabulka: závislosti
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |data|řetězec|Data|řetězec|
 |doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
@@ -155,7 +153,7 @@ Starší tabulka: závislosti
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -191,13 +189,13 @@ Starší tabulka: customEvents
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -228,11 +226,11 @@ Starší tabulka: customMetrics
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -269,15 +267,15 @@ Starší tabulka: pageViews
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -312,12 +310,12 @@ Starší tabulka: čítače výkonu
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
 |counter|řetězec|odstraněn||
-|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |případě|řetězec|Instance|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -349,15 +347,15 @@ Starší tabulka: žádosti
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|DurationMs|Skutečné|
 |`id`|řetězec|`Id`|Řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Název|Řetězec|
+|name|řetězec|Name|Řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -394,9 +392,9 @@ Starší tabulka: výjimky
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|dynamické|
-|customMeasurements|dynamické|Měření|dynamické|
-|zobrazí|dynamické|Podrobnosti|dynamické|
+|customDimensions|dynamic|Vlastnosti|dynamic|
+|customMeasurements|dynamic|Měření|dynamic|
+|zobrazí|dynamic|Podrobnosti|dynamic|
 |handledAt|řetězec|HandledAt|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |innermostAssembly|řetězec|InnermostAssembly|řetězec|
@@ -445,8 +443,8 @@ Starší tabulka: trasování
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|dynamické|
-|customMeasurements|dynamické|Měření|dynamické|
+|customDimensions|dynamic|Vlastnosti|dynamic|
+|customMeasurements|dynamic|Měření|dynamic|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
@@ -466,6 +464,6 @@ Starší tabulka: trasování
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)
 

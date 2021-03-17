@@ -1,26 +1,28 @@
 ---
 title: Vytváření filtrů pomocí Azure Media Services V3 REST API
-description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
+description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services V3 REST API vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90527322"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Vytváření filtrů pomocí Media Services REST API
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services vám umožní definovat filtry účtu a filtry assetů pro váš obsah. 
 
@@ -31,7 +33,7 @@ V tomto tématu se dozvíte, jak definovat filtr pro prostředek video na vyžá
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 

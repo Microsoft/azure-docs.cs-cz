@@ -11,12 +11,13 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-azurecli
+ms.openlocfilehash: 3e5ab1667ee0cda459785efa624bd7f4fc6818b8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319214"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562952"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -27,21 +28,20 @@ ms.locfileid: "87319214"
 ## <a name="what-you-learn"></a>Co se naučíte
 
 * Jak vytvořit centrum IoT a zaregistrovat zařízení pro MXChip IoT DevKit.
-* Jak připojit IoT DevKit k Wi-Fi a nakonfigurovat připojovací řetězec IoT Hub.
+* Jak připojit DevKit IoT pro Wi-Fi a nakonfigurovat připojovací řetězec IoT Hub
 * Jak odesílat data telemetrie senzorů DevKit do služby IoT Hub.
 * Příprava vývojového prostředí a vývoj aplikací pro IoT DevKit.
 
 Ještě nemáte DevKit? Vyzkoušejte [simulátor DevKit](https://azure-samples.github.io/iot-devkit-web-simulator/) nebo si [Kupte DevKit](https://aka.ms/iot-devkit-purchase).
 
-Zdrojový kód pro všechny kurzy DevKit můžete najít z [Galerie ukázek kódu](https://docs.microsoft.com/samples/browse/?term=mxchip).
+Zdrojový kód pro všechny kurzy DevKit můžete najít z [Galerie ukázek kódu](/samples/browse/?term=mxchip).
 
 ## <a name="what-you-need"></a>Co budete potřebovat
 
-* MXChip IoT DevKit Board s kabelem Micro USB. [Získejte ho hned teď](https://aka.ms/iot-devkit-purchase).
-* Počítač se systémem Windows 10, macOS 10.10 + nebo Ubuntu 18.04 +.
-* Musíte mít aktivní předplatné Azure. [Aktivujte si bezplatný 30denní zkušební účet Microsoft Azure](https://azureinfo.microsoft.com/us-freetrial.html).
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- MXChip IoT DevKit Board s kabelem Micro USB. [Získejte ho hned teď](https://aka.ms/iot-devkit-purchase).
+- Počítač se systémem Windows 10, macOS 10.10 + nebo Ubuntu 18.04 +.
+- Musíte mít aktivní předplatné Azure. [Aktivujte si bezplatný 30denní zkušební účet Microsoft Azure](https://azureinfo.microsoft.com/us-freetrial.html).
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
   
 ## <a name="prepare-your-hardware"></a>Příprava hardwaru
 
@@ -98,7 +98,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
+    az iot hub device-identity connection-string show --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
@@ -166,7 +166,7 @@ Pomocí těchto kroků Připravte vývojové prostředí pro DevKit:
 1. Nainstalujte [integrované vývojové prostředí (Arduino](https://www.arduino.cc/en/Main/Software)). Poskytuje potřebný sada nástrojů pro kompilaci a nahrávání Arduino kódu.
     * **Windows**: použijte instalační služba systému Windows verzi. Neinstalujte z App Storu.
     * **MacOS**: přetáhněte extrahovanou **Arduino. app** do `/Applications` složky.
-    * **Ubuntu**: rozbalte ho do složky, jako je například`$HOME/Downloads/arduino-1.8.8`
+    * **Ubuntu**: rozbalte ho do složky, jako je například `$HOME/Downloads/arduino-1.8.8`
 
 2. Nainstalujte [Visual Studio Code](https://code.visualstudio.com/), Editor zdrojového kódu pro různé platformy s výkonným IntelliSense, doplňováním kódu a podporou ladění a také bohatá rozšíření, která můžete nainstalovat z webu Marketplace.
 
@@ -176,9 +176,9 @@ Pomocí těchto kroků Připravte vývojové prostředí pro DevKit:
 
 4. Podívejte se na [Azure IoT Tools](https://aka.ms/azure-iot-tools) na webu rozšíření Marketplace a nainstalujte ho.
 
-    ![Instalace nástrojů Azure IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+    ![Snímek obrazovky, který zobrazuje nástroje Azure IoT na webu rozšíření Marketplace.](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    Nebo zkopírujte a vložte tuto adresu URL do okna prohlížeče:`vscode:extension/vsciot-vscode.azure-iot-tools`
+    Nebo zkopírujte a vložte tuto adresu URL do okna prohlížeče: `vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Balíček rozšíření Azure IoT Tools obsahuje [Workbench Azure IoT](https://aka.ms/iot-workbench) , která se používá k vývoji a ladění různých zařízení IoT DevKit. [Rozšíření Azure IoT Hub](https://aka.ms/iot-toolkit), které je součástí sady rozšíření Azure IoT Tools, se používá ke správě a interakci s centry Azure IoT Hub.
@@ -218,7 +218,7 @@ Pomocí těchto kroků Připravte vývojové prostředí pro DevKit:
 
     ![Nainstalovat sadu DevKit SDK](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-az3166-sdk.png)
 
-### <a name="install-st-link-drivers"></a>Nainstalovat ovladače pro Svatý Link
+### <a name="install-st-link-drivers"></a>Nainstalovat ST-Link ovladače
 
 [St-Link/v2](https://www.st.com/en/development-tools/st-link-v2.html) je rozhraní USB, které IoT DevKit používá ke komunikaci s vývojovým počítačem. Je potřeba ho nainstalovat ve Windows, aby se kompilovaný kód zařízení vyslal do sady DevKit. Postupujte podle kroků pro konkrétní operační systém a umožněte počítači přístup k vašemu zařízení.
 
@@ -267,7 +267,7 @@ Místo zřízení IoT Hub a zařízení Azure z Azure Portal to můžete udělat
 
     ![Vybrat sub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
 
-1. Pak vyberte nebo vytvořte novou [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology).
+1. Pak vyberte nebo vytvořte novou [skupinu prostředků](../azure-resource-manager/management/overview.md#terminology).
 
     ![Výběr skupiny prostředků](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
 
@@ -301,7 +301,7 @@ Místo zřízení IoT Hub a zařízení Azure z Azure Portal to můžete udělat
 
 1. Kliknutím `F1` otevřete paletu příkazů, potom zadejte a vyberte **Azure IoT Device Workbench: konfigurovat nastavení zařízení...**, pak vyberte **Config Device connection string > vyberte IoT Hub připojovací řetězec zařízení**.
 
-1. V DevKit stiskněte **tlačítko**a, nahrajte a uvolněte tlačítko **obnovit** a pak uvolněte **tlačítko**a. Vaše DevKit vstoupí do režimu konfigurace a uloží připojovací řetězec.
+1. V DevKit stiskněte **tlačítko** a, nahrajte a uvolněte tlačítko **obnovit** a pak uvolněte **tlačítko** a. Vaše DevKit vstoupí do režimu konfigurace a uloží připojovací řetězec.
 
     ![Připojovací řetězec](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
@@ -348,7 +348,7 @@ Pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemNa
 
     ![portál Azure](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
-1. V podokně **zásady sdíleného přístupu** klikněte na **zásadu iothubowner**a zapište připojovací řetězec služby IoT Hub.
+1. V podokně **zásady sdíleného přístupu** klikněte na **zásadu iothubowner** a zapište připojovací řetězec služby IoT Hub.
 
     ![Připojovací řetězec služby Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
@@ -362,7 +362,7 @@ Pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemNa
 
 1. V podokně **výstup** můžete zobrazit příchozí zprávy D2C na IoT Hub.
 
-    ![Zpráva D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+    ![Snímek obrazovky zobrazující příchozí zprávy D2C IoT Hub.](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
 
 ## <a name="review-the-code"></a>Kontrola kódu
 

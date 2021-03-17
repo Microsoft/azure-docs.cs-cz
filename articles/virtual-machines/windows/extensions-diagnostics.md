@@ -3,18 +3,20 @@ title: Azure Diagnostics rozšíření pro Windows
 description: Monitorování virtuálních počítačů Azure s Windows pomocí rozšíření Azure Diagnostics
 author: johnkemnetz
 manager: ashwink
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: b657231cb6b896479766654e5bd989468d9b73e7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e703a8f91f18467660ef7e1b91fdb034feeb00b1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501146"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549528"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření Azure Diagnostics pro virtuální počítače s Windows
 
@@ -34,7 +36,7 @@ Rozšíření Azure Diagnostics vyžaduje, aby byl cílový virtuální počíta
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-[Schéma rozšíření Azure Diagnostics a hodnoty vlastností jsou popsány v tomto dokumentu.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[Schéma rozšíření Azure Diagnostics a hodnoty vlastností jsou popsány v tomto dokumentu.](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
@@ -54,7 +56,7 @@ az vm extension set \
   --settings public-settings.json 
 ```
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 `Set-AzVMDiagnosticsExtension`Příkaz lze použít k přidání rozšíření Azure Diagnostics do existujícího virtuálního počítače. Další informace najdete [v tématu použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows](../extensions/diagnostics-windows.md).
 
@@ -81,12 +83,12 @@ Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhr
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Podrobný průvodce odstraňováním potíží pro Azure Diagnostics rozšíření [najdete v tomto článku](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) .
+Podrobný průvodce odstraňováním potíží pro Azure Diagnostics rozšíření [najdete v tomto článku](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md) .
 
 ### <a name="support"></a>Podpora
 
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Zkontrolovat schéma a verze rozšíření](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [Další informace o rozšíření Azure Diagnostics](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [Zkontrolovat schéma a verze rozšíření](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)

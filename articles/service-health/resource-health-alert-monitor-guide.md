@@ -3,23 +3,20 @@ title: Vytváření upozornění Resource Health pomocí webu Azure Portal
 description: Vytvořte výstrahu pomocí Azure Portal, která vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e48c400e5be3516b08496db7a4cb6a19e45d6c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091568"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594629"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurace upozornění na stav prostředků s využitím webu Azure Portal
 
 V tomto článku se dozvíte, jak nastavit výstrahy protokolu aktivit pro oznámení o stavu prostředků pomocí Azure Portal.
 
-Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Výstrahy Azure Resource Health vás můžou zobrazit téměř v reálném čase, když tyto prostředky mají změnu stavu. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
+Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Upozornění služby Azure Resource Health vás můžou téměř v reálném čase informovat o změnách stavu těchto prostředků. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
 
-> [!NOTE]
-> Výstrahy Resource Health jsou v tuto chvíli ve verzi Preview.
-
-Oznámení o stavu prostředků se ukládají do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) , který vám poskytne potenciálně velký objem informací uložených v protokolu aktivit. k dispozici je samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu prostředků.
+Oznámení o stavu prostředků se ukládají do [protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md) , který vám poskytne potenciálně velký objem informací uložených v protokolu aktivit. k dispozici je samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu prostředků.
 Můžete obdržet upozornění, když prostředek Azure pošle oznámení o stavu prostředků vašemu předplatnému Azure. Můžete nakonfigurovat výstrahu na základě:
 
 * Ovlivněné předplatné.
@@ -35,7 +32,7 @@ Můžete také nakonfigurovat, komu má být upozornění odesláno:
 * Vyberte existující skupinu akcí.
 * Vytvořte novou skupinu akcí (kterou lze použít k budoucím výstrahám).
 
-Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
+Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/alerts/action-groups.md).
 
 Informace o tom, jak nakonfigurovat výstrahy pro oznamování stavu prostředků pomocí šablon Azure Resource Manager, najdete v tématu [Správce prostředků Templates](./resource-health-alert-arm-template-guide.md).
 Výstraha Resource Health pomocí Azure Portal
@@ -59,12 +56,12 @@ Výstraha Resource Health pomocí Azure Portal
     1. **Název pravidla výstrahy**: název nového pravidla výstrahy.
     2. **Popis**: popis nového pravidla výstrahy.
     3. **Uložit upozornění do skupiny prostředků**: vyberte skupinu prostředků, do které chcete toto nové pravidlo Uložit.
-7. V části **Skupina akcí**v rozevírací nabídce určete skupinu akcí, kterou chcete přiřadit k tomuto novému pravidlu výstrahy. Případně můžete [vytvořit novou skupinu akcí](../azure-monitor/platform/action-groups.md) a přiřadit ji k novému pravidlu. Pokud chcete vytvořit novou skupinu, vyberte + **Nová skupina**.
+7. V části **Skupina akcí** v rozevírací nabídce určete skupinu akcí, kterou chcete přiřadit k tomuto novému pravidlu výstrahy. Případně můžete [vytvořit novou skupinu akcí](../azure-monitor/alerts/action-groups.md) a přiřadit ji k novému pravidlu. Pokud chcete vytvořit novou skupinu, vyberte + **Nová skupina**.
 8. Chcete-li po vytvoření pravidla povolit, vyberte možnost **Ano** pro **pravidlo Povolit při vytváření** .
 9. Vyberte **Vytvořit pravidlo upozornění**.
 
 Vytvoří se nové pravidlo výstrahy pro protokol aktivit a v pravém horním rohu okna se zobrazí potvrzovací zpráva.
-Pravidlo můžete povolit, zakázat, upravit nebo odstranit. Přečtěte si další informace o [tom, jak spravovat pravidla protokolů aktivit](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
+Pravidlo můžete povolit, zakázat, upravit nebo odstranit. Přečtěte si další informace o [tom, jak spravovat pravidla protokolů aktivit](../azure-monitor/alerts/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -76,5 +73,5 @@ Další informace o Resource Health:
 Vytvořit výstrahy Service Health:
 
 * [Konfigurace upozornění pro Service Health](./alerts-activity-log-service-notifications-portal.md) 
-* [Schéma událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log-schema.md)
+* [Schéma událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log-schema.md)
 * [Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru](./resource-health-alert-arm-template-guide.md)

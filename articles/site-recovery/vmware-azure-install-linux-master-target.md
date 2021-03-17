@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019238"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro účely navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
@@ -48,16 +48,7 @@ Vytvořte hlavní cíl podle následujících pokynů pro změnu velikosti:
 - **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci operačního systému)
 - **Další velikost disku pro jednotku pro uchovávání dat**: 1 TB
 - **Jádra procesoru**: 4 jádra nebo víc
-
-Podporovány jsou následující jádra Ubuntu.
-
-
-|Řada jader  |Podpora až po  |
-|---------|---------|
-|4.4      |4.4.0 – 81 – obecný         |
-|4,8      |4.8.0 – 56 – obecný         |
-|4,10     |4.10.0-24 – obecný        |
-
+- **Jádro**: 4,16. *
 
 ## <a name="deploy-the-master-target-server"></a>Nasazení hlavního cílového serveru
 
@@ -71,7 +62,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 1.  Jako preferovaný jazyk vyberte **angličtinu** a pak vyberte **ENTER**.
     
     ![Vyberte jazyk](./media/vmware-azure-install-linux-master-target/image1.png)
-1. Vyberte **instalovat server Ubuntu**a pak vyberte **ENTER**.
+1. Vyberte **instalovat server Ubuntu** a pak vyberte **ENTER**.
 
     ![Výběr instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
 
@@ -106,7 +97,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
 1. Pokud je zobrazené časové pásmo správné, vyberte **Ano** (výchozí možnost) a pak vyberte **ENTER**. Pokud chcete změnit konfiguraci časového pásma, vyberte **ne**.
 
-1. Z možností použití oddílů vyberte **Průvodce – použít celý disk**a pak vyberte **ENTER**.
+1. Z možností použití oddílů vyberte **Průvodce – použít celý disk** a pak vyberte **ENTER**.
 
      ![Vyberte možnost metody dělení.](./media/vmware-azure-install-linux-master-target/image14.png)
 
@@ -118,9 +109,9 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
     ![Vyberte výchozí možnost.](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  V okně Konfigurovat výběr proxy serveru vyberte výchozí možnost, vyberte **pokračovat**a potom vyberte **ENTER**.
+1.  V okně Konfigurovat výběr proxy serveru vyberte výchozí možnost, vyberte **pokračovat** a potom vyberte **ENTER**.
      
-     ![Vyberte, jak se mají spravovat upgrady.](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Snímek obrazovky, který ukazuje, kde vybrat pokračovat a pak vyberte Enter.](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  Vyberte možnost **bez možnosti automatických aktualizací** ve výběru pro správu upgradů v systému a pak vyberte **ENTER**.
 
@@ -133,7 +124,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
     ![Vybrat software](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. Ve výběru pro instalaci zaváděcího nástroje GRUB spusťte výběr možnosti **Ano**a pak vyberte **ENTER**.
+1. Ve výběru pro instalaci zaváděcího nástroje GRUB spusťte výběr možnosti **Ano** a pak vyberte **ENTER**.
      
     ![Instalační program GRUB Boot](./media/vmware-azure-install-linux-master-target/image20.png)
 
@@ -142,7 +133,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
      
     ![Vyberte vhodné zařízení.](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. Vyberte **pokračovat**a potom kliknutím na tlačítko **ENTER** dokončete instalaci.
+1. Vyberte **pokračovat** a potom kliknutím na tlačítko **ENTER** dokončete instalaci.
 
     ![Dokončete instalaci.](./media/vmware-azure-install-linux-master-target/image22.png)
 
@@ -155,7 +146,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
 ### <a name="configure-the-machine-as-a-master-target-server"></a>Konfigurace počítače jako hlavního cílového serveru
 
-Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se systémem Linux, **disk. **Je nutné povolit parametr EnableUUID = true. Chcete-li povolit tento parametr, proveďte následující kroky:
+Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se systémem Linux, **disk.** Je nutné povolit parametr EnableUUID = true. Chcete-li povolit tento parametr, proveďte následující kroky:
 
 1. Vypněte virtuální počítač.
 
@@ -163,7 +154,7 @@ Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se
 
 3. Vyberte kartu **Možnosti** .
 
-4. V levém podokně vyberte možnost **Upřesnit**  >  **Obecné**a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
+4. V levém podokně vyberte možnost **Upřesnit**  >  **Obecné** a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
 
     ![Otevřít konfigurační parametr](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -177,7 +168,7 @@ Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se
 
    - Pokud hodnota neexistuje, vyberte **Přidat řádek**.
 
-   - Do sloupce název přidejte **disk. EnableUUID**a nastavte hodnotu na **true**.
+   - Do sloupce název přidejte **disk. EnableUUID** a nastavte hodnotu na **true**.
 
      ![Probíhá kontrola, zda disk. EnableUUID už existuje.](./media/vmware-azure-install-linux-master-target/image25.png)
 
@@ -247,7 +238,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 
     ![ID více cest](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/ \<Retention disk's multipath id> **.
+3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/ \<Retention disk's multipath id>**.
     
     ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -266,7 +257,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 
     **/dev/Mapper/ \<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
-    Vyberte **ESC**a potom zadejte **: WQ** (Write and quit), čímž zavřete okno editoru.
+    Vyberte **ESC** a potom zadejte **: WQ** (Write and quit), čímž zavřete okno editoru.
 
 ### <a name="install-the-master-target"></a>Instalace hlavního cíle
 
@@ -361,7 +352,7 @@ Uvidíte, že pole **verze** obsahuje číslo verze hlavního cíle.
 
 
 ## <a name="next-steps"></a>Další kroky
-Po dokončení instalace a registrace hlavního cíle se zobrazí hlavní cíl v sekci **hlavní cíl** v **Site Recovery infrastruktury**v části Přehled konfiguračního serveru.
+Po dokončení instalace a registrace hlavního cíle se zobrazí hlavní cíl v sekci **hlavní cíl** v **Site Recovery infrastruktury** v části Přehled konfiguračního serveru.
 
 Nyní můžete pokračovat v [reprotection](vmware-azure-reprotect.md)a potom navrácení služeb po obnovení.
 

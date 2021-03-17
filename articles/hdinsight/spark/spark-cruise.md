@@ -1,18 +1,15 @@
 ---
 title: Urychlení Apache Spark dotazů pomocí SparkCruise ve službě Azure HDInsight
 description: Naučte se používat optimalizační platformu SparkCruise ke zvýšení efektivity Apache Spark dotazů.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649053"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928270"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>SparkCruise ve službě Azure HDInsight
 
@@ -36,7 +33,7 @@ SparkCruise je k dispozici na všech clusterech HDInsight 4,0 s Spark 2,3 nebo 2
 Následující vzorový scénář ukazuje, jak použít *SparkCruise* k optimalizaci Apache Spark dotazů. 
 
 1. SSH do hlavního uzlu clusteru Spark.
-1. Zadejte příkaz `spark-shell`.
+1. Zadejte `spark-shell`.
 1. Spusťte následující fragment kódu, který spouští několik základních dotazů využívajících ukázková data v clusteru.
 
     ```scala
@@ -87,7 +84,7 @@ Soubor zpětné vazby obsahuje položky v následujícím formátu: `subplan-ide
 
 Chcete-li otestovat optimalizace, spusťte jinou sadu ukázkových dotazů.
 
-1. Zadejte příkaz `spark-shell`.
+1. Zadejte `spark-shell`.
 1. Spustit následující fragment kódu
 
     ```scala

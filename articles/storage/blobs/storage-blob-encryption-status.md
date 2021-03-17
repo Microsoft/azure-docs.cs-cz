@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee54357250e3f31ef9db633d933d897fff362f48
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809095"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878557"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Zkontroluje stav šifrování objektu BLOB.
 
@@ -94,7 +94,7 @@ Example:
 azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt'
 ```
 
-Další informace o použití AzCopy ke kopírování dat objektů BLOB najdete v tématu [přenos dat pomocí služby AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md).
+Další informace o použití AzCopy ke kopírování dat objektů BLOB najdete v tématu [přenos dat pomocí služby AzCopy a BLOB Storage](../common/storage-use-azcopy-v10.md#transfer-data).
 
 ## <a name="next-steps"></a>Další kroky
 

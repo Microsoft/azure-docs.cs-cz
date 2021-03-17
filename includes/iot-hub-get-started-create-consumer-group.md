@@ -4,16 +4,16 @@ manager: philmea
 ms.author: robinsh
 ms.topic: include
 ms.date: 05/20/2019
-ms.openlocfilehash: c164433efc6a34a3a06676a3145feb18d3de80b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbb4e53e0047b9768a70c01aecfb7f31ae213b3f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66248894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026795"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidání skupiny příjemců do služby IoT Hub
 
-[Skupiny příjemců](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) poskytují nezávislá zobrazení do datového proudu událostí, který aplikacím a službám Azure umožňuje nezávisle spotřebovat data ze stejného koncového bodu centra událostí. V této části přidáte skupinu příjemců do integrovaného koncového bodu služby IoT Hub, který se použije později v tomto kurzu k vyžádání dat z koncového bodu.
+[Skupiny příjemců](../articles/event-hubs/event-hubs-features.md#event-consumers) poskytují nezávislá zobrazení do datového proudu událostí, který aplikacím a službám Azure umožňuje nezávisle spotřebovat data ze stejného koncového bodu centra událostí. V této části přidáte skupinu příjemců do integrovaného koncového bodu služby IoT Hub, který se použije později v tomto kurzu k vyžádání dat z koncového bodu.
 
 Pokud chcete přidat skupinu příjemců do služby IoT Hub, postupujte takto:
 

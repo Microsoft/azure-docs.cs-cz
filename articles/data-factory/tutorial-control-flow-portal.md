@@ -1,22 +1,19 @@
 ---
 title: Větvení a řetězení aktivit v kanálu pomocí Azure Portal
-description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
-services: data-factory
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
+description: Naučte se řídit tok dat v Azure Data Factory kanálu pomocí Azure Portal.
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9d8d9af4892001ff1f8f60a92f28aedad14c17cf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378600"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
 
@@ -24,7 +21,7 @@ ms.locfileid: "86077643"
 
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, kanál odešle podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, kanál odešle podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
-Základní schéma tohoto scénáře: ![Přehled](media/tutorial-control-flow-portal/overview.png)
+Podrobný přehled scénáře: ![ diagram zobrazuje Azure Blob Storage, což je cíl kopie, která při úspěšném odeslání pošle e-mail s podrobnostmi nebo v případě chyby pošle e-mail s podrobnostmi o chybě.](media/tutorial-control-flow-portal/overview.png)
 
 V tomto kurzu provedete následující kroky:
 
@@ -42,7 +39,7 @@ Tento kurz používá Azure Portal. K interakci s Azure Data Factory můžete po
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud nemáte databázi v Azure SQL Database, přečtěte si článek [Vytvoření databáze v článku Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 
@@ -93,7 +90,7 @@ Požadavek v návrháři aplikace logiky by měl vypadat podobně jako na násle
 
 ![Návrhář aplikace logiky – požadavek](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Zde naleznete příklad:
+Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Tady je příklad:
 
 ![Návrhář aplikace logiky – akce odeslání e-mailu](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +102,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
-Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
+Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
 
 ![Návrhář aplikace logiky – pracovní postup pro e-maily s informací o neúspěchu](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -145,7 +142,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-      - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+      - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
@@ -184,7 +181,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
    ![Přetažení aktivity kopírování](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. V okně **Vlastnosti** aktivity **Kopírování** přepněte v dolní části na kartu **Zdroj** a klikněte na **+ Nový**. V tomto kroku vytvoříte zdrojovou datovou sadu pro aktivitu kopírování.
 
-   ![Zdrojová datová sada](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![Snímek obrazovky, který ukazuje, jak vytvořit zdrojovou datovou sadu pro aktivitu kopírování.](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. V okně **Nová datová sada** vyberte **Azure Blob Storage** a klikněte na **Dokončit**.
 
    ![Výběr služby Azure Blob Storage](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +270,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
         ![Nastavení druhé aktivity webu](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. V návrháři kanálu vyberte aktivitu **Kopírování**, klikněte na tlačítko **+->** a vyberte **Chyba**.  
 
-    ![Nastavení druhé aktivity webu](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![Snímek obrazovky, který ukazuje, jak vybrat chybu v aktivitě kopírování v Návrháři kanálu.](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Přetáhněte **červené** tlačítko vedle aktivity kopírování na druhou aktivitu webu **SendFailureEmailActivity**. Aktivity můžete přesunout tak, aby kanál vypadal podobně jako na následujícím obrázku:
 
     ![Úplný kanál se všemi aktivitami](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -282,7 +279,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     ![Ověření kanálu](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Pokud chcete publikovat entity (datové sady, kanály atd.) do služby Data Factory, vyberte **Publikovat vše**. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**.
 
-    ![Publikování](./media/tutorial-control-flow-portal/publish-button.png)
+    ![Publikovat](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>Aktivace spuštění kanálu, které proběhne úspěšně
 1. Pokud chcete **aktivovat** spuštění kanálu, klikněte na **Aktivační událost** na panelu nástrojů a pak klikněte na **Aktivovat**.
@@ -293,7 +290,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     1. Jako hodnotu parametru **sourceBlobContainer** zadejte **adftutorial/adfv2branch/input**.
     2. Jako hodnotu parametru **sinkBlobContainer** zadejte **adftutorial/adfv2branch/output**.
     3. Zadejte **e-mailovou adresu****příjemce**.
-    4. Klikněte na **Dokončit**.
+    4. Klikněte na **Dokončit** .
 
         ![Parametry spuštění kanálu](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
 
@@ -304,7 +301,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     ![Úspěšné spuštění kanálu](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. Pokud chcete **zobrazit spuštění aktivit** související se spuštěním kanálu, klikněte na první odkaz ve sloupci **Akce**. Zpět na předchozí zobrazení můžete přepnout kliknutím na **Kanály** v horní části. Pomocí tlačítka **Aktualizovat** seznam aktualizujte.
 
-    ![Spuštění aktivit](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![Snímek obrazovky, který ukazuje, jak zobrazit seznam spuštění aktivit](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Aktivace spuštění kanálu, které selže
 1. Vlevo přepněte na kartu **Upravit**.

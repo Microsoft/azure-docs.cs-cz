@@ -1,19 +1,16 @@
 ---
 title: Použití pracovních postupů Hadoop Oozie v Azure HDInsight se systémem Linux
 description: Použijte Hadoop Oozie v HDInsight se systémem Linux. Naučte se definovat pracovní postup Oozie a odeslat úlohu Oozie.
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085935"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702772"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
 
@@ -35,9 +32,9 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 
 * **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Azure SQL Database**.  Viz téma [Vytvoření databáze v Azure SQL Database Azure Portal](../sql-database/sql-database-get-started.md).  V tomto článku se používá databáze s názvem **oozietest**.
+* **Azure SQL Database**.  Viz téma [Vytvoření databáze v Azure SQL Database Azure Portal](../azure-sql/database/single-database-create-quickstart.md).  V tomto článku se používá databáze s názvem **oozietest**.
 
-* Schéma identifikátoru URI pro primární úložiště clusterů. `wasb://`pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` . Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
+* Schéma identifikátoru URI pro primární úložiště clusterů. `wasb://` pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` . Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Ukázkový pracovní postup
 
@@ -64,7 +61,7 @@ Pracovní postup použitý v tomto dokumentu obsahuje dvě akce. Akce jsou defin
 
 ## <a name="create-the-working-directory"></a>Vytvořit pracovní adresář
 
-Oozie očekává, že budete ukládat všechny prostředky, které jsou potřeba pro úlohu ve stejném adresáři. Tento příklad používá `wasbs:///tutorials/useoozie` . Tento adresář vytvoříte tak, že provedete následující kroky:
+Oozie očekává, že budete ukládat všechny prostředky, které jsou potřeba pro úlohu ve stejném adresáři. Tento příklad používá `wasbs:///tutorials/useoozie`. Tento adresář vytvoříte tak, že provedete následující kroky:
 
 1. Úpravou následujícího kódu nahraďte `sshuser` uživatelské jméno SSH pro cluster a nahraďte `CLUSTERNAME` názvem clusteru.  Pak zadejte kód pro připojení ke clusteru HDInsight [pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).  
 
@@ -130,7 +127,7 @@ Pomocí následujících kroků vytvořte skript HiveQL (podregistr Query Langua
 
      Soubor definice pracovního postupu, workflow.xml v tomto článku, předá tyto hodnoty do tohoto skriptu HiveQL za běhu.
 
-1. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.  
+1. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y** a pak vyberte **ENTER**.  
 
 1. Následující příkaz použijte ke zkopírování `useooziewf.hql` do `wasbs:///tutorials/useoozie/useooziewf.hql` :
 
@@ -215,7 +212,7 @@ Definice pracovních postupů Oozie se napíší v jazyce hPDL (Hadoop proces De
 
      Také si poznamenejte `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` položku v části Sqoop. Tato položka dává pokyn pro Oozie k tomu, aby tento archiv byl k dispozici pro Sqoop při spuštění této akce.
 
-3. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.  
+3. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y** a pak vyberte **ENTER**.  
 
 4. Pomocí následujícího příkazu zkopírujte `workflow.xml` soubor do `/tutorials/useoozie/workflow.xml` :
 
@@ -306,7 +303,7 @@ Definice úlohy popisuje, kde najít workflow.xml. Popisuje také místo, kde na
     |Hodnota zástupného textu| Nahrazená hodnota|
     |---|---|
     |wasbs://mycontainer \@ mystorageaccount.blob.Core.Windows.NET| Hodnota přijatá z kroku 1.|
-    |admin| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
+    |správce| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
     |serverName| Název serveru Azure SQL Database.|
     |sqlLogin| Přihlášení k serveru Azure SQL Database.|
     |sqlPassword| Přihlašovací heslo serveru Azure SQL Database.|
@@ -382,7 +379,7 @@ Definice úlohy popisuje, kde najít workflow.xml. Popisuje také místo, kde na
 
 4. Po otevření editoru nano vložte upravený XML jako obsah souboru.
 
-5. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.
+5. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y** a pak vyberte **ENTER**.
 
 ## <a name="submit-and-manage-the-job"></a>Odeslat a spravovat úlohu
 
@@ -491,7 +488,7 @@ Pomocí REST API Oozie můžete vytvářet vlastní nástroje, které pracují s
 
 * **Identifikátor URI**: přístup k REST API můžete získat mimo cluster na adrese `https://CLUSTERNAME.azurehdinsight.net/oozie` .
 
-* **Ověřování**: k ověření použijte rozhraní API. účet http clusteru (správce) a heslo. Příklad:
+* **Ověřování**: k ověření použijte rozhraní API. účet http clusteru (správce) a heslo. Například:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -529,7 +526,7 @@ Chcete-li získat přístup k webovému uživatelskému rozhraní Oozie, proveď
 
     ![Informace o úloze HDInsight Apache Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
-6. Na kartě **informace o úloze** můžete zobrazit základní informace o úloze a jednotlivé akce v rámci úlohy. Karty v horní části můžete použít k zobrazení **definice úlohy**, **Konfigurace úlohy**, přístupu k **protokolu úlohy**nebo zobrazení orientovaného acyklického grafu (DAG) úlohy v rámci **úlohy DAG**.
+6. Na kartě **informace o úloze** můžete zobrazit základní informace o úloze a jednotlivé akce v rámci úlohy. Karty v horní části můžete použít k zobrazení **definice úlohy**, **Konfigurace úlohy**, přístupu k **protokolu úlohy** nebo zobrazení orientovaného acyklického grafu (DAG) úlohy v rámci **úlohy DAG**.
 
    * **Protokol úlohy**: kliknutím na tlačítko **získat protokoly** zobrazíte všechny protokoly pro úlohu, nebo použijte pole **zadat vyhledávací filtr** k filtrování protokolů.
 
@@ -576,7 +573,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
     > * `${coordTimezone}`: Úlohy koordinátora jsou v pevně stanoveném časovém pásmu bez letního času, který je obvykle reprezentován pomocí standardu UTC. Toto časové pásmo se označuje jako *časové pásmo zpracování Oozie.*
     > * `${wfPath}`: Cesta k workflow.xml.
 
-2. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.
+2. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y** a pak vyberte **ENTER**.
 
 3. Chcete-li zkopírovat soubor do pracovního adresáře pro tuto úlohu, použijte následující příkaz:
 
@@ -631,7 +628,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
 
        Tyto hodnoty nastaví počáteční čas na 12:00 odp. května 2018 a koncový čas do 12. května 2018. Interval pro spuštění této úlohy je nastaven na denně. Frekvence je v minutách, takže 24 hodin × 60 minut = 1440 minut. Nakonec je časové pásmo nastaveno na hodnotu UTC.
 
-5. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.
+5. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y** a pak vyberte **ENTER**.
 
 6. Chcete-li odeslat a spustit úlohu, použijte následující příkaz:
 

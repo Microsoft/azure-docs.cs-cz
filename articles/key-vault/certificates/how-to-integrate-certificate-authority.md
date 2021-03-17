@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588921"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789006"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
 
@@ -23,7 +23,7 @@ Azure Key Vault umožňuje snadno zřídit, spravovat a nasazovat digitální ce
 
 Uživatelé služby Azure Key Recovery můžou certifikáty DigiCert vygenerovat přímo z jejich Key Vault. Key Vault by zajistilo ucelenou správu životního cyklu certifikátů pro certifikáty vydávané DigiCert prostřednictvím důvěryhodného partnerství Key Vault s certifikační autoritou DigiCert.
 
-Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates).
+Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](./about-certificates.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -31,9 +31,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 K dokončení této příručky musíte mít následující prostředky.
 * Trezor klíčů. Můžete použít existující Trezor klíčů nebo vytvořit nový pomocí následujících kroků v jednom z těchto rychlých startů:
-   - [Vytvoření trezoru klíčů pomocí Azure CLI](../secrets/quick-create-cli.md)
-   - [Vytvoření trezoru klíčů pomocí Azure PowerShell](../secrets/quick-create-powershell.md)
-   - [Vytvořte Trezor klíčů pomocí Azure Portal](../secrets/quick-create-portal.md).
+   - [Vytvoření trezoru klíčů pomocí Azure CLI](../general/quick-create-cli.md)
+   - [Vytvoření trezoru klíčů pomocí Azure PowerShell](../general/quick-create-powershell.md)
+   - [Vytvořte Trezor klíčů pomocí Azure Portal](../general/quick-create-portal.md).
 *   Musíte aktivovat účet DigiCert CertCentral. [Zaregistrujte](https://www.digicert.com/account/signup/) si účet CertCentral.
 *   Oprávnění na úrovni správce v účtech.
 
@@ -48,20 +48,20 @@ Ujistěte se, že máte následující informace užitečné z účtu DigiCert C
 ## <a name="adding-certificate-authority-in-key-vault"></a>Přidání certifikační autority v Key Vault 
 Po shromáždění výše uvedených informací z účtu DigiCert CertCentral teď můžete přidat DigiCert do seznamu certifikačních autorit v trezoru klíčů.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1.  Pokud chcete přidat certifikační autoritu DigiCert, přejděte do trezoru klíčů, do kterého chcete přidat DigiCert. 
 2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
-3.  Vyberte kartu **certifikační autority** . ![ Vlastnosti certifikátu](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+3.  Vyberte kartu **certifikační autority** . ![ Vybrat certifikační autority](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  Vyberte **Přidat** možnost.
- ![Vlastnosti certifikátu](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+ ![Přidat certifikační autority](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Na obrazovce **Vytvoření certifikační autority** vyberte následující hodnoty:
     -   **Název**: Přidejte název vystavitele, který chcete identifikovat. Příklad DigicertCA
     -   **Zprostředkovatel**: z nabídky vyberte DigiCert.
     -   **ID účtu**: Zadejte ID účtu DigiCert CertCentral.
     -   **Heslo účtu**: Zadejte klíč rozhraní API, který jste vygenerovali v účtu DigiCert CertCentral.
     -   **ID organizace**: zadejte OrgID shromážděné z účtu DigiCert CertCentral 
-    -   Klikněte na možnost **Vytvořit**.
+    -   Klikněte na **Vytvořit**.
    
 6.  Uvidíte, že v seznamu certifikačních autorit se teď přidalo DigicertCA.
 
@@ -101,24 +101,22 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 - Definovat proměnnou **ID účtu**
 - Definovat proměnnou **ID organizace**
 - Definovat **klíčovou proměnnou rozhraní API**
-- Definovat proměnnou **názvu vystavitele**
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. Nastavit **vystavitele** Tím se do trezoru klíčů přidá DigiCert jako certifikační autorita.
+4. Nastavit **vystavitele** Tím se do trezoru klíčů přidá DigiCert jako certifikační autorita. Další informace o parametrech najdete [tady](/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer) .
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
 5. **Nastavení zásad pro certifikát a vystavení certifikátu** z DigiCert přímo v Key Vault.
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -128,7 +126,10 @@ Certifikát byl teď úspěšně vydaný certifikační autoritou DigiCert v zad
 
 Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení **certifikátu** a zkontrolujte, jestli je v něm zobrazená chybová zpráva DigiCert.
 
- ![Vlastnosti certifikátu](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![Operace certifikátu](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+
+Chybová zpráva: pro dokončení této žádosti o certifikát prosím proveďte sloučení.
+Aby bylo možné dokončit tuto žádost, bude nutné sloučit CSR podepsané certifikační autoritou. [Další informace](./create-certificate-signing-request.md)
 
 Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -136,8 +137,15 @@ Další informace najdete v referenčních informacích o [operacích certifiká
 
 - Můžu vytvořit certifikát se zástupným znakem DigiCert prostřednictvím trezoru klíčů? 
    Ano. Bude záviset na tom, jak jste nakonfigurovali účet DigiCert.
-- Pokud jsme chtěli vytvořit certifikát EV, jak to zadáte? 
-   Při vytváření certifikátu klikněte na Pokročilá konfigurace zásad a pak zadejte typ certifikátu. Podporované hodnoty: OV-SSL, EV-SSL
+- Jak můžu vytvořit certifikát **ov-SSL nebo EV-SSL** s DigiCert? 
+   Trezor klíčů podporuje vytváření certifikátů SSL OV a EV. Při vytváření certifikátu klikněte na Pokročilá konfigurace zásad a pak zadejte typ certifikátu. Podporované hodnoty: OV-SSL, EV-SSL
+   
+   Tento typ certifikátu byste mohli vytvořit v trezoru klíčů, pokud to váš účet DigiCert povoluje. Pro tento typ certifikátu provádí ověření DigiCert a jejich tým podpory by vám mohl při ověřování probíhat, pokud se ověření nepodaří. Při vytváření certifikátu můžete přidat další informace jejich definováním v tématu Subject.
+
+Příklad
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - Je při vytváření certifikátu DigiCert prostřednictvím integrace, která přímo získává certifikát prostřednictvím DigiCert, k dispozici časová prodleva?
    Ne. Při vytváření certifikátu se jedná o proces ověřování, který může chvíli trvat a toto ověření závisí na procesu, který DigiCert sleduje.
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85132002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572258"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
 
@@ -20,8 +20,8 @@ Tento kurz popisuje, jaké jsou protokoly prostředků pro službu Azure Signal,
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete povolit protokoly prostředků, budete si muset někam uložit data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Nastavení protokolů prostředků pro službu Azure Signal
 
@@ -31,7 +31,7 @@ Můžete zobrazit protokoly prostředků pro službu Azure Signal Service. Tyto 
 
 Ve výchozím nastavení jsou protokoly prostředků zakázané. Pokud chcete povolit protokoly prostředků, postupujte podle těchto kroků:
 
-1. V [Azure Portal](https://portal.azure.com)v části **monitorování**klikněte na **nastavení diagnostiky**.
+1. V [Azure Portal](https://portal.azure.com)v části **monitorování** klikněte na **nastavení diagnostiky**.
 
     ![Navigační podokno s nastavením diagnostiky](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
@@ -50,7 +50,7 @@ Ve výchozím nastavení jsou protokoly prostředků zakázané. Pokud chcete po
 
 Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-Další informace o konfiguraci diagnostiky najdete v tématu [Přehled protokolů prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
+Další informace o konfiguraci diagnostiky najdete v tématu [Přehled protokolů prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="resource-logs-categories"></a>Kategorie protokolů prostředků
 
@@ -68,7 +68,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 **Formát**
 
-Name | Description
+Název | Description
 ------- | -------
 time | Čas události protokolu
 úroveň | Úroveň události protokolu
@@ -81,10 +81,10 @@ properties | Podrobné vlastnosti související s touto událostí protokolu Dal
 
 **Tabulka vlastností**
 
-Name | Description
+Název | Description
 ------- | -------
 typ | Typ události protokolu V současné době poskytujeme informace o připojení ke službě Azure Signal. `ConnectivityLogs`K dispozici je jenom typ.
- – kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a`Throttling`
+ – kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
 connectionId | Identita připojení
 transportType | Typ přenosu připojení. Povolené hodnoty jsou: `Websockets` \| `ServerSentEvents` \|`LongPolling`
 connectionType | Typ připojení. Povolené hodnoty jsou: `Server` \| `Client` . `Server`: připojení ze strany serveru; `Client`: připojení ze strany klienta
@@ -122,19 +122,19 @@ Chcete-li zobrazit protokoly prostředků, postupujte podle následujících kro
 
     ![Položka nabídky Log Analytics](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Zadejte `SignalRServiceDiagnosticLogs` a vyberte časový rozsah pro dotazování protokolů prostředků. Rozšířené dotazy najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md)
+2. Zadejte `SignalRServiceDiagnosticLogs` a vyberte časový rozsah pro dotazování protokolů prostředků. Rozšířené dotazy najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![Dotaz pro přihlášení Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
 Sloupce protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Name | Description
+Název | Description
 ------- | ------- 
 TimeGenerated | Čas události protokolu
-Kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a`Throttling`
+Kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
 OperationName | Název operace události
 Umístění | Umístění služby signalizace Azure
-Úroveň | Úroveň události protokolu
+Level | Úroveň události protokolu
 CallerIpAddress | IP adresa vašeho serveru/klienta
 Zpráva | Podrobná zpráva události protokolu
 UserId | Identita uživatele
@@ -182,7 +182,7 @@ Pokud obdržíte pro žádosti klientů 401 neautorizovaných prostředků, ově
 
 #### <a name="throttling"></a>Throttling
 
-Pokud zjistíte, že nemůžete navázat připojení klientů ke službě Azure Signal Service, Projděte si protokoly prostředků. Pokud narazíte `Connection count reaches limit` na protokol prostředků, nakonfigurujete příliš mnoho připojení ke službě signalizace, která dosáhla limitu počtu připojení. Zvažte možnost škálování služby Signal. Pokud se setkáte `Message count reaches limit` v protokolu prostředků, znamená to, že použijete úroveň Free a použijete kvótu zpráv. Pokud chcete odesílat další zprávy, zvažte změnu služby signalizace na úroveň Standard, aby se odesílaly další zprávy. Další informace najdete v tématu [ceny služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).
+Pokud zjistíte, že nemůžete navázat připojení klientů ke službě Azure Signal Service, Projděte si protokoly prostředků. Pokud narazíte `Connection count reaches limit` na protokol prostředků, nakonfigurujete příliš mnoho připojení ke službě signalizace, která dosáhla limitu počtu připojení. Zvažte možnost škálování služby Signal. Pokud se setkáte `Message count reaches limit` v protokolu prostředků, znamená to, že použijete úroveň Free a použijete kvótu zpráv. Pokud chcete odesílat další zprávy, zvažte změnu služby signalizace na úroveň Standard, aby se odesílaly další zprávy. Další informace najdete v tématu [ceny služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).
 
 ### <a name="get-help"></a>Získání pomoci
 

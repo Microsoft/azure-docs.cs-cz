@@ -1,22 +1,25 @@
 ---
-title: Komunikace pro role v Cloud Services | Microsoft Docs
+title: Komunikace pro role v Cloud Services (Classic) | Microsoft Docs
 description: Instance rolí v Cloud Services můžou mít pro ně definované koncové body (http, https, TCP, UDP), které komunikují s vnějším nebo mezi ostatními instancemi role.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386336"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743028"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Povolení komunikace pro instance rolí v Azure
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Povolení komunikace pro instance rolí v Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Role cloudových služeb komunikují prostřednictvím interních a externích připojení. Externím připojením se říká **vstupní koncové body** , zatímco interní připojení se nazývají **interní koncové body**. Toto téma popisuje, jak upravit [definici služby](cloud-services-model-and-package.md#csdef) pro vytváření koncových bodů.
 
 ## <a name="input-endpoint"></a>Vstupní koncový bod
@@ -106,7 +109,7 @@ Vlastnost **Instances** vrátí kolekci objektů **RoleInstance** . Tato kolekce
 > 
 > 
 
-Chcete-li zjistit číslo portu pro interní koncový bod instance role, můžete použít vlastnost [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) k vrácení objektu Dictionary, který obsahuje názvy koncových bodů a jejich odpovídajících IP adres a portů. Vlastnost [IPEndPoint](/previous-versions/azure/reference/ee741919(v=azure.100)) vrací IP adresu a port pro zadaný koncový bod. Vlastnost **PublicIPEndpoint** vrací port pro koncový bod s vyrovnáváním zatížení. Část IP adresy vlastnosti **PublicIPEndpoint** se nepoužívá.
+Chcete-li zjistit číslo portu pro interní koncový bod instance role, můžete použít [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100)) vlastnost k vrácení objektu Dictionary, který obsahuje názvy koncových bodů a jejich odpovídajících IP adres a portů. [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100))Vlastnost vrací IP adresu a port pro zadaný koncový bod. `PublicIPEndpoint`Vlastnost vrátí port pro koncový bod s vyrovnáváním zatížení. Část IP adresy této `PublicIPEndpoint` vlastnosti se nepoužívá.
 
 Tady je příklad, který prochází instance rolí.
 
@@ -294,7 +297,7 @@ Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1** a **WorkerRole
 ```
 
 ### <a name="scenario-3"></a>Scénář 3
-Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1**a **WorkerRole1** až **WorkerRole2**.
+Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1** a **WorkerRole1** až **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -323,7 +326,7 @@ Povoluje jenom síťový provoz z **WebRole1** do **WorkerRole1**a **WorkerRole1
 ```
 
 ### <a name="scenario-4"></a>Scénář 4
-Povoluje jenom síťový provoz od **WebRole1** do **WorkerRole1**, **WebRole1** do **WorkerRole2**a **WorkerRole1** až **WorkerRole2**.
+Povoluje jenom síťový provoz od **WebRole1** do **WorkerRole1**, **WebRole1** do **WorkerRole2** a **WorkerRole1** až **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

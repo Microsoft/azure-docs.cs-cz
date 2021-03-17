@@ -5,19 +5,22 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
-ms.date: 07/27/2020
-ms.openlocfilehash: 85b1b6c56221deaa03057a7ccb658b4bf67124eb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/31/2020
+ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830576"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101721119"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Jak vytvořit překryv pomocí Media Encoder Standard
 
-Media Encoder Standard umožňuje překrýt obrázek do existujícího videa. V současné době jsou podporovány následující formáty: PNG, jpg, GIF a BMP.
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+Media Encoder Standard umožňuje překrytí obrázku, zvukového souboru nebo jiného videa na jiné video. Vstup musí určovat přesně jeden soubor. Můžete určit soubor obrázku ve formátu JPG, PNG, GIF nebo BMP nebo zvukový soubor (například WAV, MP3, WMA nebo M4A) nebo videosoubor.
+
+
+## <a name="prerequisites"></a>Požadavky
 
 * Shromážděte informace o účtu, které potřebujete ke konfiguraci *appsettings.js* v souboru v ukázce. Pokud si nejste jisti, jak to provést, přečtěte si téma [rychlý Start: registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md). V *appsettings.js* souboru jsou očekávány následující hodnoty.
 
@@ -30,7 +33,7 @@ Media Encoder Standard umožňuje překrýt obrázek do existujícího videa. V 
     "AccountName": "",
     "ArmAadAudience": "https://management.core.windows.net/",
     "ArmEndpoint": "https://management.azure.com/",
-    "Region": "",
+    "Location": "",
     "ResourceGroup": "",
     "SubscriptionId": ""
     }
@@ -50,4 +53,4 @@ Stáhněte si [ukázku Media-Services-překryv](https://github.com/Azure-Samples
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rozříznout video při kódování pomocí Media Services-.NET](subclip-video-dotnet-howto.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

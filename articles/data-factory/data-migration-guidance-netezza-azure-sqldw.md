@@ -1,28 +1,24 @@
 ---
 title: Migrace dat z místního serveru Netezza do Azure
 description: K migraci dat z místního Netezza serveru do Azure použijte Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/09/2020
+ms.openlocfilehash: 36ca7b709e0ec945f1fb4a9a8b745d20e6a58fe1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416459"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367771"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mechanismus pro migraci dat ve velkém měřítku z místního Netezza serveru do svého účtu služby Azure Storage nebo Azure SQL Data Warehouse databáze. 
+Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mechanismus pro migraci dat se škálováním z místního serveru Netezza k vašemu účtu služby Azure Storage nebo k databázi Azure synapse Analytics. 
 
 Tento článek poskytuje následující informace pro inženýry dat a vývojáře:
 
@@ -41,13 +37,13 @@ Azure Data Factory nabízí architekturu bez serveru, která umožňuje paraleli
 
 Předchozí diagram lze interpretovat následujícím způsobem:
 
-- Jedna aktivita kopírování může využít výhod škálovatelných výpočetních prostředků. Když použijete Azure Integration Runtime, můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) . V místním prostředí Integration runtime (v místním prostředí IR) můžete ručně škálovat počítač nebo škálovat na více počítačů ([až čtyři uzly](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) a jedna aktivita kopírování distribuuje svůj oddíl napříč všemi uzly. 
+- Jedna aktivita kopírování může využít výhod škálovatelných výpočetních prostředků. Když použijete Azure Integration Runtime, můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](./copy-activity-performance.md#data-integration-units) . V místním prostředí Integration runtime (v místním prostředí IR) můžete ručně škálovat počítač nebo škálovat na více počítačů ([až čtyři uzly](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) a jedna aktivita kopírování distribuuje svůj oddíl napříč všemi uzly. 
 
 - Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí více vláken. 
 
-- Tok řízení Azure Data Factory může současně spustit více aktivit kopírování. Například je může spustit pomocí příkazu [pro každou smyčku](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Tok řízení Azure Data Factory může současně spustit více aktivit kopírování. Například je může spustit pomocí příkazu [pro každou smyčku](./control-flow-for-each-activity.md). 
 
-Další informace najdete v tématu [Průvodce výkonem a škálovatelností aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+Další informace najdete v tématu [Průvodce výkonem a škálovatelností aktivity kopírování](./copy-activity-performance.md).
 
 ## <a name="resilience"></a>Odolnost
 
@@ -57,7 +53,7 @@ Při Azure Data Factory aktivity kopírování se při kopírování dat mezi zd
 
 ## <a name="network-security"></a>Zabezpečení sítě 
 
-Ve výchozím nastavení Azure Data Factory přenáší data z místního serveru Netezza do účtu služby Azure Storage nebo do databáze Azure SQL Data Warehouse pomocí šifrovaného připojení přes protokol HTTPS (Hypertext Transfer Protocol Secure). Protokol HTTPS zajišťuje šifrování dat při přenosu a znemožňuje odposlouchávání a útoky prostředníkem.
+Ve výchozím nastavení Azure Data Factory přenáší data z místního serveru Netezza do účtu služby Azure Storage nebo do databáze Azure synapse Analytics pomocí šifrovaného připojení přes protokol HTTPS (Hypertext Transfer Protocol Secure). Protokol HTTPS zajišťuje šifrování dat při přenosu a znemožňuje odposlouchávání a útoky prostředníkem.
 
 Případně, pokud nechcete, aby se data přenesla prostřednictvím veřejného Internetu, můžete přispět k vyššímu zabezpečení prostřednictvím přenosu dat prostřednictvím privátního partnerského propojení prostřednictvím trasy Azure Express. 
 
@@ -95,33 +91,33 @@ Předchozí diagram lze interpretovat následujícím způsobem:
 
 ### <a name="manage-authentication-and-credentials"></a>Správa ověřování a přihlašovacích údajů 
 
-- K ověření v Netezza můžete použít ověřování pomocí [rozhraní ODBC prostřednictvím připojovacího řetězce](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties). 
+- K ověření v Netezza můžete použít ověřování pomocí [rozhraní ODBC prostřednictvím připojovacího řetězce](./connector-netezza.md#linked-service-properties). 
 
 - Ověření ve službě Azure Blob Storage: 
 
-   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Spravované identity založené na automaticky spravované Azure Data Factory identitě v Azure Active Directory (Azure AD) umožňují konfigurovat kanály bez nutnosti zadávat přihlašovací údaje v definici propojené služby.  
+   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](./connector-azure-blob-storage.md#managed-identity). Spravované identity založené na automaticky spravované Azure Data Factory identitě v Azure Active Directory (Azure AD) umožňují konfigurovat kanály bez nutnosti zadávat přihlašovací údaje v definici propojené služby.  
 
-   - Případně můžete provést ověření ve službě Azure Blob Storage pomocí [instančního objektu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sdíleného přístupového podpisu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)nebo [klíče účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
+   - Případně můžete provést ověření ve službě Azure Blob Storage pomocí [instančního objektu](./connector-azure-blob-storage.md#service-principal-authentication), [sdíleného přístupového podpisu](./connector-azure-blob-storage.md#shared-access-signature-authentication)nebo [klíče účtu úložiště](./connector-azure-blob-storage.md#account-key-authentication). 
 
 - Ověření pro Azure Data Lake Storage Gen2: 
 
-   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
+   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](./connector-azure-data-lake-storage.md#managed-identity).
    
-   - Můžete také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) nebo [klíč účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication). 
+   - Můžete také použít [instanční objekt](./connector-azure-data-lake-storage.md#service-principal-authentication) nebo [klíč účtu úložiště](./connector-azure-data-lake-storage.md#account-key-authentication). 
 
-- Ověření pro Azure SQL Data Warehouse:
+- Ověření ve službě Azure synapse Analytics:
 
-   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
+   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](./connector-azure-sql-data-warehouse.md#managed-identity).
    
-   - Můžete také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) nebo [ověřování SQL](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication).
+   - Můžete také použít [instanční objekt](./connector-azure-sql-data-warehouse.md#service-principal-authentication) nebo [ověřování SQL](./connector-azure-sql-data-warehouse.md#sql-authentication).
 
-- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně doporučujeme [ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , aby bylo snazší centrálně spravovat a střídat klíče, aniž byste museli upravovat Azure Data Factory propojené služby. Toto je také jedním z [osvědčených postupů pro CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně doporučujeme [ukládat přihlašovací údaje v Azure Key Vault](./store-credentials-in-key-vault.md) , aby bylo snazší centrálně spravovat a střídat klíče, aniž byste museli upravovat Azure Data Factory propojené služby. Toto je také jedním z [osvědčených postupů pro CI/CD](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="migrate-initial-snapshot-data"></a>Migrace dat počátečního snímku 
 
 Pro malé tabulky (to znamená, že tabulky se svazkem menším než 100 GB nebo které je možné migrovat do Azure do dvou hodin), můžete vytvořit každou úlohu kopírování dat na každou tabulku. Pro větší propustnost můžete spustit několik úloh kopírování Azure Data Factory pro souběžné načtení samostatných tabulek. 
 
-Aby bylo možné spouštět paralelní dotazy a kopírovat data podle oddílů, můžete v rámci každé úlohy kopírování spojit i určitou úroveň paralelismu pomocí [ `parallelCopies` nastavení vlastnosti](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) v některé z následujících možností datových oddílů:
+Aby bylo možné spouštět paralelní dotazy a kopírovat data podle oddílů, můžete v rámci každé úlohy kopírování spojit i určitou úroveň paralelismu pomocí [ `parallelCopies` nastavení vlastnosti](./copy-activity-performance.md#parallel-copy) v některé z následujících možností datových oddílů:
 
 - Abychom vám pomohli dosáhnout vyšší efektivity, doporučujeme začít z datového řezu.  Ujistěte se, že hodnota v `parallelCopies` nastavení je menší než celkový počet oddílů datového řezu v tabulce na serveru Netezza.  
 
@@ -131,7 +127,7 @@ Pro větší tabulky (tj. tabulky se svazkem 100 GB nebo vyšší nebo, které *
 
 Pokud dojde k selhání jakékoli úlohy kopírování z důvodu přechodného problému sítě nebo úložiště dat, můžete znovu spustit úlohu, která se nezdařila, a znovu načíst konkrétní oddíl z tabulky. Jiné úlohy kopírování, které načítají jiné oddíly, nejsou ovlivněny.
 
-Když nahráváte data do databáze Azure SQL Data Warehouse, doporučujeme, abyste v rámci úlohy kopírování v úložišti objektů BLOB v Azure jako fázování povolili základ.
+Při načítání dat do databáze Azure synapse Analytics doporučujeme, abyste v rámci úlohy kopírování ve službě Azure Blob Storage povolili základ databáze jako pracovní.
 
 ### <a name="migrate-delta-data"></a>Migrace rozdílových dat 
 
@@ -162,7 +158,7 @@ Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivi
 
 ### <a name="estimate-your-pricing"></a>Odhad ceny 
 
-Vezměte v úvahu následující kanál, který je vytvořený k migraci dat z místního serveru Netezza do databáze Azure SQL Data Warehouse:
+Vezměte v úvahu následující kanál, který je vytvořený k migraci dat z místního serveru Netezza do databáze Azure synapse Analytics:
 
 ![Cenový kanál](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -192,18 +188,18 @@ V závislosti na předchozích předpokladech je zde uvedená odhadovaná cena:
 Další informace najdete v následujících článcích a příručkách:
 
 - [Migrace dat z místní databáze relačního datového skladu do Azure pomocí Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Konektor Netezza](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [Konektor ODBC](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Konektor služby Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Konektor Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Vytvoření a konfigurace místního prostředí Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Aspekty zabezpečení přesunu dat](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Uložení přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Přírůstkové kopírování dat z jedné tabulky](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [Přírůstkové kopírování dat z více tabulek](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Konektor Netezza](./connector-netezza.md)
+- [Konektor ODBC](./connector-odbc.md)
+- [Konektor služby Azure Blob Storage](./connector-azure-blob-storage.md)
+- [Konektor Azure Data Lake Storage Gen2](./connector-azure-data-lake-storage.md)
+- [Konektor Azure synapse Analytics](./connector-azure-sql-data-warehouse.md)
+- [Průvodce laděním výkonu aktivity kopírování](./copy-activity-performance.md)
+- [Vytvoření a konfigurace místního prostředí Integration Runtime](./create-self-hosted-integration-runtime.md)
+- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Aspekty zabezpečení přesunu dat](./data-movement-security-considerations.md)
+- [Uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Přírůstkové kopírování dat z jedné tabulky](./tutorial-incremental-copy-portal.md)
+- [Přírůstkové kopírování dat z více tabulek](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Stránka s cenami Azure Data Factory](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Další kroky

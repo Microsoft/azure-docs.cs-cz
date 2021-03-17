@@ -1,17 +1,17 @@
 ---
 title: Migrace založená na agentech v migraci serveru Azure Migrate
 description: Poskytuje přehled migrace virtuálních počítačů VMware založených na agentech v Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425849"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861955"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
 
@@ -34,7 +34,7 @@ Migrace založená na agentech se používá k migraci místních virtuálních 
 
 Diagram znázorňuje komponenty, které jsou součástí migrace na základě agenta.
 
-![Architektura](./media/agent-based-replication-architecture/architecture.png)
+![Diagram zobrazuje komponenty pro migraci založené na agentech, které jsou vysvětleny v tabulce.](./media/agent-based-replication-architecture/architecture.png)
 
 Tabulka shrnuje součásti používané pro migraci na základě agenta.
 
@@ -99,7 +99,7 @@ Pomocí hodnot v této tabulce můžete zjistit, jestli v nasazení potřebujete
 --- | --- | --- | --- | ---
 8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | Počítače s < 100 
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | 100-150 počítačů.
-16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB až 2 TB | 151-200 počítačů.
+16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB až 2 TB | 151-200 počítačů.
 
 ### <a name="sizing-scale-out-process-servers"></a>Změna velikosti procesových serverů se škálováním na více instancí
 
@@ -108,19 +108,19 @@ Pokud potřebujete nasadit procesový Server se škálováním na více instanc�
 **Procesový Server** | **Volné místo pro ukládání dat do mezipaměti** | **Míra četnosti změn** | **Omezení replikace**
 --- | --- | --- | --- 
 4 vCPU (2 sokety × 2 jádra \@ 2,5 GHz), 8 GB paměti | 300 GB | 250 GB nebo méně | Až 85 počítačů 
-8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 251 GB až 1 TB    | 86-150 počítačů.
+8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 251 GB až 1 TB | 86-150 počítačů.
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz), 24 GB paměti | 1 TB | 1-2 TB | 151-225 počítačů.
 
 ## <a name="throttle-upload-bandwidth"></a>Omezí šířku pásma nahrávání.
 
 Provoz VMware, který se replikuje do Azure, prochází přes konkrétní procesový Server. Propustnost nahrávání můžete omezit omezením šířky pásma na počítačích, které jsou spuštěny jako procesové servery. Šířku pásma můžete ovlivnit pomocí tohoto klíče registru:
 
-- Hodnota registru HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci. Výchozí hodnota je 4. Maximální hodnota je 32. Monitorováním provozu hodnotu optimalizujte.
+- Hodnota registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci. Výchozí hodnota je 4. Maximální hodnota je 32. Monitorováním provozu hodnotu optimalizujte.
 - Navíc můžete omezit šířku pásma na počítači procesového serveru následujícím způsobem:
 
     1. Na počítači procesového serveru otevřete modul snap-in Azure Backup MMC. Je k dispozici zástupce na ploše nebo ve složce C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
     2. V modulu snap-in vyberte **změnit vlastnosti**.
-    3. V případě **omezení**vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
+    3. V případě **omezení** vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
 
 
 ## <a name="next-steps"></a>Další kroky

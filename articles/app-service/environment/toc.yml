@@ -3,6 +3,8 @@
   items:
     - name: Informace o službách App Service Environment
       href: intro.md
+    - name: App Service Environment v3 (Preview)
+      href: overview.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -10,11 +12,13 @@
       href: create-external-ase.md
     - name: Vytvoření interní služby ASE
       href: create-ilb-ase.md
+    - name: Vytvoření ASEv3 (Preview)
+      href: creation.md
 - name: Kurzy
   items:
     - name: Integrace s WAF
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: Konfigurace TLS
+    - name: Vlastní nastavení ASE
       href: app-service-app-service-environment-custom-settings.md
 - name: ukázky
   items:
@@ -28,12 +32,12 @@
       href: network-info.md
     - name: Geograficky distribuované škálování
       href: app-service-app-service-environment-geo-distributed-scale.md
-    - name: ASEv1
-      href: app-service-app-service-environment-intro.md
     - name: Diagnostika
       href: ../overview-diagnostics.md
     - name: Certifikáty
       href: certificates.md
+    - name: Síťové služby ASEv3 (Preview)
+      href: networking.md
 - name: Návody
   items:
     - name: Použití ASE
@@ -48,12 +52,16 @@
       href: firewall-integration.md
     - name: Zónová redundance
       href: zone-redundancy.md
+    - name: Použití ASEv3 (Preview)
+      href: using.md
 - name: Referenční informace
   items:
     - name: Adresy pro správu
       href: management-addresses.md
     - name: Dokumentace ASEv1
       items:
+        - name: ASEv1
+          href: app-service-app-service-environment-intro.md
         - name: Vytvoření ASEv1
           href: app-service-web-how-to-create-an-app-service-environment.md
         - name: Konfigurace ASEv1

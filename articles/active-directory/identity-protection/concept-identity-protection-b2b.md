@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72881314"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88949192"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Ochrana identit a uživatelé B2B
 
@@ -53,4 +53,4 @@ Vyloučení uživatelů B2B ze zásad podmíněného přístupu na základě riz
 
 Přečtěte si následující články o spolupráci Azure AD B2B:
 
-- [Co je spolupráce B2B ve službě Azure AD?](../b2b/what-is-b2b.md)
+- [Co je spolupráce B2B ve službě Azure AD?](../external-identities/what-is-b2b.md)

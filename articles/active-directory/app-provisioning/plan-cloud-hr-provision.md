@@ -3,7 +3,7 @@ title: Plánování aplikace cloudového HR pro Azure Active Directory zřizová
 description: Tento článek popisuje proces nasazení integrující systémy cloudového HR, jako je například Workday a SuccessFactors, s Azure Active Directory. Integrace služby Azure AD s vaším systémem cloudového HR má za následek kompletní systém pro správu životního cyklu identit.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235686"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256707"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -31,7 +31,7 @@ Azure AD pomocí této integrace povolí následující pracovní postupy aplika
 - **Zapište zpátky do aplikace cloudového HR:** Napište e-mailové adresy a atributy uživatelského jména z Azure AD zpátky do aplikace Cloude HR.
 
 > [!NOTE]
-> Tento plán nasazení vám ukáže, jak nasadit pracovní postupy vaší aplikace cloudového HR pomocí zřizování uživatelů Azure AD. Informace o tom, jak nasadit Automatické zřizování uživatelů do aplikací SaaS (software jako služba), najdete v tématu [plánování automatického zřizování uživatelů](https://aka.ms/deploymentplans/provisioning).
+> Tento plán nasazení vám ukáže, jak nasadit pracovní postupy vaší aplikace cloudového HR pomocí zřizování uživatelů Azure AD. Informace o tom, jak nasadit Automatické zřizování uživatelů do aplikací SaaS (software jako služba), najdete v tématu [plánování automatického zřizování uživatelů](./plan-auto-user-provisioning.md).
 
 ## <a name="enabled-hr-scenarios"></a>Povolené scénáře pro personální oddělení
 
@@ -50,9 +50,9 @@ Integrace aplikace pro cloudovou HR se zřizováním uživatelů Azure AD je ide
 - Vyžaduje přímé zřizování uživatelů z aplikace cloudového HR do služby Active Directory nebo Azure AD.
 - Vyžadovat, aby se uživatelé zřídili pomocí dat získaných z aplikace cloudového HR.
 - Vyžadovat, aby se uživatelé synchronizovaly do jedné nebo víc doménových struktur služby Active Directory, domén a organizačních jednotek, a to na základě informací o změně zjištěných v aplikaci cloudového HR.
-- K odeslání e-mailu použijte Office 365.
+- K odeslání e-mailu použijte Microsoft 365.
 
-## <a name="learn"></a>Informace
+## <a name="learn"></a>Learn
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit. Vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
@@ -61,14 +61,14 @@ Zřizování uživatelů vytvoří základ pro průběžné řízení identit. V
 Tento článek používá následující výrazy:
 
 - **Zdrojový systém**: úložiště uživatelů, ze kterých Azure AD zřídí. Příkladem je aplikace cloudového HR, jako je například Workday nebo SuccessFactors.
-- **Cílový systém**: úložiště uživatelů, na které Azure AD zřídí. Příklady jsou Active Directory, Azure AD, Office 365 nebo jiné aplikace SaaS.
+- **Cílový systém**: úložiště uživatelů, na které Azure AD zřídí. Příklady jsou služby Active Directory, Azure AD, Microsoft 365 nebo jiné aplikace SaaS.
 - **Připojení – stěhovací společnosti – proces Leavers**: termín používaný pro nová přijetí, přenosy a ukončení pomocí aplikace cloudového HR jako systému záznamů. Proces se dokončí, když služba úspěšně zřídí nezbytné atributy pro cílový systém.
 
 ### <a name="key-benefits"></a>Klíčové výhody
 
 Tato schopnost zajišťování IT na základě lidských zdrojů nabízí tyto významné obchodní výhody:
 
-- **Zvýšení produktivity:** Teď můžete automatizovat přiřazování uživatelských účtů a licencí Office 365 a poskytovat přístup ke skupinám klíčů. Automatizace přiřazení poskytuje novým lidem okamžitý přístup ke svým nástrojům úloh a zvyšuje produktivitu.
+- **Zvýšení produktivity:** Nyní můžete automatizovat přiřazování uživatelských účtů a Microsoft 365 licencí a poskytovat přístup ke skupinám klíčů. Automatizace přiřazení poskytuje novým lidem okamžitý přístup ke svým nástrojům úloh a zvyšuje produktivitu.
 - **Řízení rizik:** Zabezpečení můžete zvýšit automatizací změn na základě stavu zaměstnanců nebo členství ve skupinách pomocí toku dat z aplikace cloudového HR. Automatizace změn zajišťuje, že identity uživatelů a přístup k klíčovým aplikacím se automaticky aktualizují, když uživatelé přecházejí nebo odejdou z organizace.
 - **Řešení dodržování předpisů a zásad správného řízení:** Azure AD podporuje protokoly nativního auditu pro požadavky uživatelů na zřizování prováděné aplikacemi ze zdrojového i cílového systému. Díky auditování můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 - **Spravovat náklady:** Automatické zřizování snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Díky starším a zastaralým platformám omezuje nutnost sestavování řešení pro zřizování uživatelů vytvořených v průběhu času.
@@ -81,8 +81,8 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 
 ### <a name="prerequisites"></a>Požadavky
 
-- [Správce hybridní identity](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
-- Role [Správce aplikací](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
+- [Správce hybridní identity](../roles/permissions-reference.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
+- Role [Správce aplikací](../roles/permissions-reference.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
 - Instance testu a výroby aplikace cloudového HR.
 - Oprávnění správce v aplikaci cloudového HR k vytvoření uživatele Integration System a provedení změn v datech testování zaměstnanců pro účely testování.
 - V případě zřizování uživatelů pro službu Active Directory se pro hostování agenta Azure AD Connectho zřizování vyžaduje server se systémem Windows Server 2012 nebo vyšší s modulem runtime .NET 4.7.1 +.
@@ -96,7 +96,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
 | Kurzy | [Seznam kurzů pro integraci aplikací SaaS s Azure AD](../saas-apps/tutorial-list.md) |
 | | [Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Časté otázky | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| Nejčastější dotazy | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -110,7 +110,7 @@ Následující příklad popisuje architekturu řešení zřizování koncových
 
 #### <a name="description-of-workflow"></a>Popis pracovního postupu
 
-V diagramu jsou uvedené následující klíčové kroky:  
+V diagramu jsou uvedené následující klíčové kroky:  
 
 1. **Tým HR** provádí transakce v tenantovi cloudové aplikace.
 2. **Služba zřizování Azure AD** spouští naplánované cykly z tenanta aplikace cloudového HR a identifikuje změny, které je potřeba zpracovat pro synchronizaci se službou Active Directory.
@@ -126,7 +126,7 @@ Při určování strategie pro toto nasazení v prostředí zvažte potřeby va�
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshody očekávání na dopad, výsledky a odpovědnosti. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste připraví správné zúčastněné strany](https://aka.ms/deploymentplans). Také se ujistěte, že role účastníků v projektu jsou dobře pochopitelné. Zdokumentujte zúčastněné strany a jejich vstup a accountabilities projektu.
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshody očekávání na dopad, výsledky a odpovědnosti. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste připraví správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md). Také se ujistěte, že role účastníků v projektu jsou dobře pochopitelné. Zdokumentujte zúčastněné strany a jejich vstup a accountabilities projektu.
 
 Zahrňte zástupce z organizace pro personální oddělení, který může poskytovat vstupy na stávající obchodní procesy a identitu pracovního procesu a požadavky na zpracování dat úloh.
 
@@ -255,7 +255,7 @@ Můžete také [přizpůsobit výchozí mapování atributů](../app-provisionin
 
 Ve výchozím nastavení aplikace zřizovacího konektoru mapuje stav uživatelského profilu HR na stav uživatelského účtu ve službě Active Directory nebo Azure AD, aby určil, jestli chcete uživatelský účet povolit nebo zakázat.
 
-Když zahájíte proces JOIN-Leavers, shromážděte následující požadavky.
+Při zahájení procesu Joiners-Leavers shromážděte následující požadavky.
 
 | Proces | Požadavky |
 | - | - |
@@ -303,7 +303,7 @@ Je to běžný požadavek na umístění uživatelských účtů služby Active 
 
 Pomocí funkce [Switch ()](../app-provisioning/functions-for-customizing-application-data.md#switch) nakonfigurujte obchodní logiku pro přiřazení organizační jednotky a namapujte ji na atribut služby Active Directory **parentDistinguishedName**.
 
-Například pokud chcete vytvořit uživatele v organizační jednotce na **základě atributu personální**oddělení, můžete použít následující výraz:
+Například pokud chcete vytvořit uživatele v organizační jednotce na **základě atributu personální** oddělení, můžete použít následující výraz:
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
@@ -378,7 +378,7 @@ Azure AD může poskytovat další poznatky k zřizování uživatelů a provozn
 
 Po úspěšném [počátečním cyklu](../app-provisioning/how-provisioning-works.md#initial-cycle)služba zřizování Azure AD nadále spouští přírůstkové přírůstkové aktualizace po neomezenou dobu v intervalech definovaných v kurzech specifických pro jednotlivé aplikace, dokud nedojde k jedné z následujících událostí:
 
-- Služba se ručně zastavila. Nový počáteční cyklus se spustí pomocí [Azure Portal](https://portal.azure.com/) nebo odpovídajícího příkazu [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) .
+- Služba se ručně zastavila. Nový počáteční cyklus se spustí pomocí [Azure Portal](https://portal.azure.com/) nebo odpovídajícího příkazu [Microsoft Graph API](/graph/api/resources/synchronization-overview) .
 - V důsledku změny mapování atributů nebo filtrů oborů se aktivuje nový počáteční cyklus.
 - Proces zřizování přejde do karantény z důvodu vysoké míry chyb. Zůstane v karanténě po dobu delší než čtyři týdny, kdy je automaticky zakázaná.
 
@@ -404,9 +404,9 @@ Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypn
 
 - [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](application-provisioning-config-problem.md)
 - [Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci](user-provisioning-sync-attributes-for-mapping.md)
-- [Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím.](application-provisioning-config-problem-storage-limit.md)
+- [Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím.](./user-provisioning.md)
 - [Pro aplikaci Galerie Azure AD se nezřídí žádní uživatelé.](application-provisioning-config-problem-no-users-provisioned.md)
-- [Pro aplikaci Galerie Azure AD se zřizuje nesprávná sada uživatelů.](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Pro aplikaci Galerie Azure AD se zřizuje nesprávná sada uživatelů.](../manage-apps/add-application-portal-assign-users.md)
 - [Nastavení Prohlížeč událostí Windows pro řešení potíží s agentem](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [Nastavení protokolů auditu Azure Portal pro řešení potíží se službou](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [Porozumění protokolům pro operace vytvoření účtu uživatele služby AD](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
@@ -416,6 +416,6 @@ Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypn
 ### <a name="next-steps"></a>Další kroky
 
 - [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
-- [Přehled rozhraní API pro synchronizaci Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Přehled rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview)
 - [Přeskočit odstranění uživatelských účtů, které přesahují rozsah](skip-out-of-scope-deletions.md)
 - [Agent zřizování Azure AD Connect: Historie verzí](provisioning-agent-release-version-history.md)

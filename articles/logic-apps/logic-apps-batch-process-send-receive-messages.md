@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458216"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak sestavit dávkové řešení vytvořením dvou aplik
 
 Váš přijímač Batch a Batch odesilatel musí sdílet stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
@@ -48,7 +48,7 @@ Váš přijímač Batch a Batch odesilatel musí sdílet stejné předplatné Az
 
 Než budete moci odeslat zprávy do dávky, tato dávková operace musí nejprve existovat jako cíl, kam tyto zprávy odešlete. Nejprve je třeba vytvořit aplikaci logiky "Batch Receiver", která začíná triggerem **dávky** . Tímto způsobem můžete při vytváření aplikace logiky pro dávkové příjemce vybrat aplikaci Logic Receiver Logic. Přijímač dávky pokračuje ve shromažďování zpráv, dokud nebudou zadaná kritéria splněna pro uvolnění a zpracování těchto zpráv. I když přijímače dávek nemusí nic informovat o modulech pro odesílání dávek, musí odesílatelé dávky znát cíl, kam zprávy odesílají.
 
-1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu vytvořte aplikaci logiky s tímto názvem:`BatchReceiver`
+1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu vytvořte aplikaci logiky s tímto názvem: `BatchReceiver`
 
 1. V návrháři aplikace logiky přidejte Trigger **Batch** , který spustí pracovní postup vaší aplikace logiky. Do vyhledávacího pole zadejte `batch` a vyberte tuto aktivační událost: **zprávy Batch**
 
@@ -126,7 +126,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
 
 * Ujistěte se, že váš přijímač a odesilatel dávky sdílí stejnou oblast Azure *a* předplatné Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-1. Vytvořte další aplikaci logiky s tímto názvem:`BatchSender`
+1. Vytvořte další aplikaci logiky s tímto názvem: `BatchSender`
 
    1. Do vyhledávacího pole zadejte `recurrence` jako filtr. V seznamu triggery vyberte tuto aktivační událost: **opakování** .
 

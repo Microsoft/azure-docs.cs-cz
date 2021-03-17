@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421905"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548746"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell pro role Azure AD v Privileged Identity Management
 
@@ -30,7 +30,7 @@ Tento článek obsahuje pokyny k používání rutin prostředí PowerShell pro 
 > [!Note]
 > Náš oficiální PowerShell je podporován pouze v případě, že používáte novou verzi Azure AD Privileged Identity Management. Přejděte prosím na Privileged Identity Management a ujistěte se, že je v okně rychlý Start k dispozici následující nápis.
 > [![ověřte verzi Privileged Identity Management, kterou máte](media/pim-how-to-add-role-to-user/pim-new-version.png "Vyberte Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) . Pokud tento banner neznáte, počkejte prosím, než v současnosti probíhá zavádění tohoto aktualizovaného prostředí za několik následujících týdnů.
-> Rutiny prostředí PowerShell pro Privileged Identity Management jsou podporovány prostřednictvím modulu Azure AD Preview. Pokud používáte jiný modul a tento modul vrací chybovou zprávu, začněte prosím používat tento nový modul. Pokud máte nějaké produkční systémy postavené na jiném modulu, obraťte se napim_preview@microsoft.com
+> Rutiny prostředí PowerShell pro Privileged Identity Management jsou podporovány prostřednictvím modulu Azure AD Preview. Pokud používáte jiný modul a tento modul vrací chybovou zprávu, začněte prosím používat tento nový modul. Pokud máte nějaké produkční systémy postavené na jiném modulu, obraťte se na [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) .
 
 ## <a name="installation-and-setup"></a>Instalace a nastavení
 
@@ -54,7 +54,7 @@ Tento článek obsahuje pokyny k používání rutin prostředí PowerShell pro 
     ![Vyhledání ID organizace ve vlastnostech organizace Azure AD](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> V následujících částech najdete jednoduché příklady, které vám pomůžou začít pracovat. Podrobnější dokumentaci týkající se následujících rutin najdete na adrese https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management . V parametru providerID ale budete muset nahradit "azureResources" pomocí "aadRoles". Bude také nutné pamatovat na použití ID organizace pro vaši organizaci Azure AD jako parametr resourceId.
+> V následujících částech najdete jednoduché příklady, které vám pomůžou začít pracovat. Podrobnější dokumentaci týkající se následujících rutin najdete na adrese [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) . Je však nutné nahradit "azureResources" v parametru providerID parametrem "aadRoles". Bude také nutné pamatovat na použití ID tenanta pro vaši organizaci Azure AD jako parametr resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Načítání definic rolí
 
@@ -135,7 +135,7 @@ Tato rutina je skoro shodná s rutinou pro vytvoření přiřazení role. Klíč
 K získání všech nastavení rolí ve vaší organizaci Azure AD použijte následující rutinu.
 
 ```powershell
-Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'"
 ```
 
 Nastavení obsahuje čtyři hlavní objekty. PIM používá jenom tři z těchto objektů. UserMemberSettings jsou nastavení aktivace, AdminEligibleSettings jsou nastavení přiřazení pro oprávněná přiřazení a AdminmemberSettings jsou nastavení přiřazení pro aktivní přiřazení.
@@ -145,14 +145,16 @@ Nastavení obsahuje čtyři hlavní objekty. PIM používá jenom tři z těchto
 Chcete-li aktualizovat nastavení role, je nutné získat existující objekt nastavení pro určitou roli a provést změny v něm:
 
 ```powershell
-$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-$setting.UserMemberSetting.justificationRule = '{"required":false}'
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq 'tenant id' and RoleDefinitionId eq 'role id'"
+$settinga = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting
+$settinga.RuleIdentifier = "JustificationRule"
+$settinga.Setting = '{"required":false}'
 ```
 
 Pak můžete použít nastavení na jeden z objektů pro určitou roli, jak je znázorněno níže. ID tady je ID nastavení role, které se dá načíst z výsledku rutiny nastavení role seznamu.
 
 ```powershell
-Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $settinga 
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -160,4 +162,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 - [Přiřazení vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
 - [Konfigurace přiřazení vlastní role Azure AD](azure-ad-custom-roles-configure.md)
-- [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Definice rolí v Azure AD](../roles/permissions-reference.md)

@@ -1,14 +1,14 @@
 ---
 title: 'Ukázka podrobného plánu ISO 27001: Sdílené služby – přehled'
 description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdílené služby Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.'
-ms.date: 07/13/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
-ms.translationtype: HT
+ms.openlocfilehash: d5ac88fc7a4fe21cef74ee23af2336a5a376471a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927347"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627646"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -27,12 +27,12 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 
 - [Role Azure](../../../../role-based-access-control/overview.md) využívané k oddělení povinností od roviny kontrol Před nasazením libovolné infrastruktury jsou definované tři role:
   - Role NetOps má oprávnění spravovat síťové prostředí, včetně nastavení brány firewall, nastavení NSG, směrování a dalších síťových funkcí
-  - Role SecOps má nezbytná oprávnění k nasazení a správě služby [Azure Security Center](../../../../security-center/security-center-intro.md), definování [zásad Azure](../../../policy/overview.md) a další oprávnění související se zabezpečením
-  - Role SysOps má nezbytná oprávnění k definování [zásad Azure](../../../policy/overview.md) v rámci předplatného, správě služby [Log Analytics](../../../../azure-monitor/overview.md) pro celé prostředí a další provozní práva
+  - Role SecOps má nezbytná oprávnění k nasazení a správě služby [Azure Security Center](../../../../security-center/security-center-introduction.md), definování definic [Azure Policy](../../../policy/overview.md) a další oprávnění související se zabezpečením
+  - Role SysOps má nezbytná oprávnění k definování definic [Azure Policy](../../../policy/overview.md) v rámci předplatného, správě služby [Log Analytics](../../../../azure-monitor/overview.md) pro celé prostředí a další provozní práva
 - Jako první služba Azure se nasadí [Log Analytics](../../../../azure-monitor/overview.md), aby se zajistilo, že se všechny akce a služby připojují k centrálnímu umístění, a to od okamžiku, kdy vaše zabezpečené nasazení spustíte.
 - Virtuální síť podporující podsítě pro možnosti připojení zpátky k místnímu datovému centru, zásobník příchozího a odchozího přenosu dat pro internetové připojení a podsíť sdílených služeb využívající skupiny zabezpečení sítě a skupiny zabezpečení aplikace pro kompletní mikrosegmentaci obsahující:
   - Jumpbox nebo hostitele typu bašta (bastion host) používaného pro účely správy, který je přístupný jenom přes službu [Azure Firewall](../../../../firewall/overview.md) nasazenou v podsíti stacku příchozího přenosu dat
-  - Dva virtuální počítače, na kterých běží Active Directory Domain Services (ADDS) a DNS, které jsou přístupné jenom přes tento jumpbox a které se dají nakonfigurovat jenom pro replikaci AD přes VPN nebo připojení [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nejsou nasazené v rámci podrobného plánu)
+  - Dva virtuální počítače, na kterých běží Azure Active Directory Domain Services (Azure AD DS) a DNS, které jsou přístupné jenom přes tento jumpbox a které se dají nakonfigurovat jenom pro replikaci AD přes VPN nebo připojení [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nejsou nasazené v rámci podrobného plánu)
   - Použití [Azure Net Watcheru](../../../../network-watcher/network-watcher-monitoring-overview.md) a standardní ochrany před útoky DDoS
 - Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
 

@@ -11,28 +11,29 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387060"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503432"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Naučte se, jak změnit přístupové klávesy pro účty Azure Storage používané v Azure Machine Learning. Azure Machine Learning můžou používat účty úložiště k ukládání dat nebo školených modelů.
 
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
 
 > [!IMPORTANT]
-> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
 
-## <a name="prerequisites"></a>Předpoklady
+> Přihlašovací údaje registrované pro úložiště dat se ukládají do Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte v Key Vault povoleno [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) , v tomto článku najdete pokyny k aktualizaci přihlašovacích údajů. Pokud zrušíte registraci úložiště dat a pokusíte se ho znovu zaregistrovat pod stejným názvem, tato akce se nezdaří. Pokud chcete v tomto scénáři povolit obnovitelné odstranění, přečtěte si téma [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) .
+
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 
-* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
 
 * [Rozšíření Azure Machine Learning CLI](reference-azure-machine-learning-cli.md).
 
@@ -141,4 +142,4 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o registraci úložišť dat najdete v [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) odkazu na třídu.
+Další informace o registraci úložišť dat najdete v [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29) odkazu na třídu.

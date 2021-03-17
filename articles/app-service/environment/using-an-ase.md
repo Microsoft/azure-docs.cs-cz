@@ -4,15 +4,15 @@ description: Naučte se vytvářet, publikovat a škálovat aplikace v App Servi
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 5/10/2020
+ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448192"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594056"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -139,7 +139,7 @@ Postup při konfiguraci DNS v privátních zónách Azure DNS:
 1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
 1. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
 
-Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese * &lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET*. 
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese *&lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET*. 
 
 Zóna s názvem *. &lt; asename &gt; . appserviceenvironment.NET* je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít *. contoso.com* pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
@@ -149,7 +149,7 @@ V rámci služby řízení přihlašování jako u víceklientské App Service m
 
 - Nasazení webu
 - FTP
-- Průběžná integrace (CI)
+- Kontinuální integrace (CI)
 - Přetažení v konzole Kudu
 - Integrované vývojové prostředí (IDE), jako je například Visual Studio, zatmění nebo IntelliJ nápad
 
@@ -165,7 +165,7 @@ Koncové body pro publikování pro aplikace ve službě ASE s interním nástro
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesílání protokolů o pomocném programu do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou protokolovány Dnes:
 
@@ -196,7 +196,7 @@ Pokud provádíte integraci s Log Analytics, můžete protokoly zobrazit tak, ž
 
 **Vytvoření výstrahy**
 
-Pokud chcete vytvořit výstrahu proti svým protokolům, postupujte podle pokynů v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor][logalerts]. V krátkém případě:
+Pokud chcete vytvořit výstrahu proti svým protokolům, postupujte podle pokynů v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../../azure-monitor/alerts/alerts-log.md). V krátkém případě:
 
 * Otevřete stránku výstrahy na portálu pro pomocné služby.
 * Vybrat **nové pravidlo výstrahy**
@@ -292,7 +292,7 @@ For more specific examples, use: az find "az appservice ase"
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
@@ -302,5 +302,5 @@ For more specific examples, use: az find "az appservice ase"
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

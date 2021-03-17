@@ -1,34 +1,30 @@
 ---
 title: Transformace se službou Azure Databricks
 description: Naučte se používat šablonu řešení k transformaci dat pomocí poznámkového bloku datacihly v Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee663423071458605f37f07293693dbc91f592bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362110"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformace se službou Azure Databricks
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte kompletní kanál obsahující **ověřování**, **kopírování dat**a aktivity **poznámkových bloků** v Azure Data Factory.
+V tomto kurzu vytvoříte kompletní kanál obsahující **ověřování**, **kopírování dat** a aktivity **poznámkových bloků** v Azure Data Factory.
 
 - **Ověření** zajišťuje, že vaše zdrojová datová sada je připravená na využití pro příjem dat před aktivací úlohy kopírování a analýzy.
 
 - **Kopírování dat** duplikuje zdrojovou datovou sadu do úložiště jímky, které je připojené jako DBFS do poznámkového bloku Azure Databricks. Tímto způsobem lze datovou sadu přímo spotřebovat pomocí Sparku.
 
-- **Poznámkový blok** spustí Poznámkový blok datacihly, který transformuje datovou sadu. Také přidá datovou sadu do zpracované složky nebo Azure SQL Data Warehouse.
+- **Poznámkový blok** spustí Poznámkový blok datacihly, který transformuje datovou sadu. Také přidá datovou sadu do zpracované složky nebo Azure Azure synapse Analytics.
 
 V případě jednoduchosti šablona v tomto kurzu nevytvoří plánovanou aktivační událost. V případě potřeby ho můžete přidat.
 
@@ -56,29 +52,29 @@ Import **transformačního** poznámkového bloku do pracovního prostoru dataci
 
    V importovaném poznámkovém bloku přejdete na **příkaz 5** , jak je znázorněno v následujícím fragmentu kódu.
 
-   - Nahraďte `<storage name>` a `<access key>` vlastními informacemi o připojení úložiště.
+   - Nahraďte `<storage name>` a `<access key>` vlastními informacemi o připojení úložiště.
    - Použijte účet úložiště s `sinkdata` kontejnerem.
 
     ```python
-    # Supply storageName and accessKey values  
-    storageName = "<storage name>"  
-    accessKey = "<access key>"  
+    # Supply storageName and accessKey values  
+    storageName = "<storage name>"  
+    accessKey = "<access key>"  
 
-    try:  
-      dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+    try:  
+      dbutils.fs.mount(  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
-    except Exception as e:  
-      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
+    except Exception as e:  
+      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
 
-    import re
-    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
-    if result:
-      print result[-1] \# Print only the relevant error message
-    else:  
-      print e \# Otherwise print the whole stack trace.  
+    import re
+    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
+    if result:
+      print result[-1] \# Print only the relevant error message
+    else:  
+      print e \# Otherwise print the whole stack trace.  
     ```
 
 1. Vygenerujte **přístupový token datacihly** pro Data Factory pro přístup k datacihlům.
@@ -126,23 +122,23 @@ Import **transformačního** poznámkového bloku do pracovního prostoru dataci
 
 V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchozími hodnotami. Zkontrolujte konfigurace kanálu a proveďte potřebné změny.
 
-1. V **příznaku dostupnosti**aktivity **ověření** ověřte, zda je hodnota zdrojové **datové sady** nastavena na hodnotu `SourceAvailabilityDataset` , kterou jste vytvořili dříve.
+1. V **příznaku dostupnosti** aktivity **ověření** ověřte, zda je hodnota zdrojové **datové sady** nastavena na hodnotu `SourceAvailabilityDataset` , kterou jste vytvořili dříve.
 
    ![Hodnota zdrojové datové sady](media/solution-template-Databricks-notebook/validation-settings.png)
 
-1. V souboru s aktivitou **kopírování dat** **do objektu BLOB**se podívejte na karty **zdroje** a **jímky** . V případě potřeby změňte nastavení.
+1. V souboru s aktivitou **kopírování dat** **do objektu BLOB** se podívejte na karty **zdroje** a **jímky** . V případě potřeby změňte nastavení.
 
    - **Karta zdroje zdrojového kódu** ![](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
    - Karta jímky na kartě **jímky** ![](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1. V **transformaci**aktivity **poznámkového bloku** zkontrolujte a podle potřeby aktualizujte cesty a nastavení.
+1. V **transformaci** aktivity **poznámkového bloku** zkontrolujte a podle potřeby aktualizujte cesty a nastavení.
 
    **Propojená služba datacihly** by měla být předem vyplněná hodnotou z předchozího kroku, jak je znázorněno v následujícím příkladu: ![ naplněná hodnota pro propojenou službu datacihly](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    Postup kontroly nastavení **poznámkového bloku** :
   
-    1. Vyberte kartu **Nastavení** . V poli **cesta k poznámkovému bloku**ověřte, zda je výchozí cesta správná. Možná budete muset vyhledat a zvolit správnou cestu k poznámkovému bloku.
+    1. Vyberte kartu **Nastavení** . V poli **cesta k poznámkovému bloku** ověřte, zda je výchozí cesta správná. Možná budete muset vyhledat a zvolit správnou cestu k poznámkovému bloku.
 
        ![Cesta k poznámkovému bloku](media/solution-template-Databricks-notebook/notebook-settings.png)
 

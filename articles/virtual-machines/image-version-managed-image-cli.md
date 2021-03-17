@@ -1,24 +1,24 @@
 ---
-title: Migrace ze spravované image na verzi Image pomocí Azure CLI
-description: Naučte se migrovat ze spravované image na verzi image v galerii sdílených imagí pomocí Azure CLI.
+title: Klonování spravované image na verzi Image pomocí Azure CLI
+description: Přečtěte si, jak naklonovat spravovanou bitovou kopii na verzi image v galerii sdílených imagí pomocí Azure CLI.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502881"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553778"
 ---
-# <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Migrace ze spravované image na verzi Image pomocí Azure CLI
-Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli migrovat do sdílené Galerie imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [prostředí PowerShell](image-version-managed-image-powershell.md).
+# <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Klonování spravované image na verzi Image pomocí Azure CLI
+Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli klonovat do galerie sdílených imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [prostředí PowerShell](image-version-managed-image-powershell.md).
 
 Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto příkladu:
 - **Definice obrázku** obsahuje informace o imagi a požadavcích na jejich použití. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, specializované nebo zobecněné, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. 
@@ -41,11 +41,11 @@ Vzhledem k tomu, že jsou spravované image vždycky generalizované, vytvoří 
 
 Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./linux/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [zobecněnou](./linux/shared-image-galleries.md#generalized-and-specialized-images) bitovou kopii operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
+V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [zobecněnou](./shared-image-galleries.md#generalized-and-specialized-images) bitovou kopii operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG

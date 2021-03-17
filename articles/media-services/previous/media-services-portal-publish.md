@@ -3,7 +3,7 @@ title: Publikování obsahu v Azure Portal | Microsoft Docs
 description: Tento kurz vás provede jednotlivými kroky publikování obsahu v Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: faf0db31b458ed6b8dd4961fffbf2a810990574d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c22570153200b9daeae44701c814faa1a28916c8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084479"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009796"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Publikování obsahu v Azure Portal  
+# <a name="publish-content-in-the-azure-portal"></a>Publikování obsahu v Azure Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -63,7 +66,7 @@ Další informace najdete v tématu [Přehled doručování obsahu](media-servic
 > 
 > 
 
-Chcete-li aktualizovat datum vypršení platnosti lokátoru, použijte možnost použít [REST API](/rest/api/media/operations/locator#update_a_locator) nebo rozhraní [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
+Chcete-li aktualizovat datum vypršení platnosti lokátoru, použijte možnost použít [REST API](/rest/api/media/operations/locator#update_a_locator) nebo rozhraní [.NET API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator). 
 
 > [!NOTE]
 > Při aktualizaci data vypršení platnosti lokátoru sdíleného přístupového podpisu se změní adresa URL.

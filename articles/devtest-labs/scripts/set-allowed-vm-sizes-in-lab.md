@@ -5,11 +5,11 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
 ms.openlocfilehash: 476b86b7c577db17efc39dbac64a527432c916b6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998124"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Nastavení povolených velikostí virtuálních počítačů v Azure Lab Services pomocí PowerShellu
 
@@ -32,7 +32,7 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| Najít – AzResource | Vyhledá prostředky na základě zadaných parametrů. |
+| Find-AzResource | Vyhledá prostředky na základě zadaných parametrů. |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Získá prostředky. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Upraví prostředek. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Vytvořit prostředek. |

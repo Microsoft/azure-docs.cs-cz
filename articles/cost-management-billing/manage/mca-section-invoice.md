@@ -4,21 +4,26 @@ description: Zjistěte, jak uspořádat náklady na faktuře. Fakturační úče
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 553263ebac3c64e27a7711b4407a7d4ba573998c
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
-ms.translationtype: HT
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460027"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036230"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Uspořádání nákladů přizpůsobením fakturačního účtu
 
 Fakturační účet pro smlouvu se zákazníkem Microsoftu poskytuje flexibilitu uspořádání nákladů podle vašich potřeb, ať už podle oddělení, projektu nebo vývojového prostředí.
 
 Tento článek popisuje, jak můžete pomocí webu Azure Portal uspořádat náklady. Týká se fakturačního účtu smlouvy se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+
+Podívejte se na informace o uspořádání, a [to přizpůsobením videa fakturačního účtu zákaznických smluv Microsoftu](https://www.youtube.com/watch?v=7RxTfShGHwU) a Naučte se, jak organizovat náklady na fakturační účet.
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>Strukturujte účet pomocí fakturačních profilů a oddílů faktur
 
@@ -52,19 +57,19 @@ Tato část popisuje běžné scénáře uspořádání nákladů a odpovídají
 |---------|---------|
 |Honza si zaregistruje služby Azure a potřebuje jednu měsíční fakturu. | Fakturační profil a oddíl faktury. Tato struktura se pro Honzu automaticky nastaví, když se zaregistruje do Azure a nevyžaduje žádné další kroky. |
 
-![Informační grafika pro jednoduchý scénář fakturace](./media/mca-section-invoice/organize-billing-scenario1.png)
+![Infografika pro scénář jedné fakturace](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |Scénář  |Struktura  |
 |---------|---------|
 |Contoso je malá organizace, která potřebuje jednu měsíční fakturu, ale seskupuje náklady podle oddělení – marketingového a technického oddělení.  | Fakturační profil pro Contoso a oddíly faktury pro marketingové a technické oddělení. |
 
-![Informační grafika pro jednoduchý scénář fakturace](./media/mca-section-invoice/organize-billing-scenario2.png)
+![Infografika pro scénář více fakturací](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Scénář  |Struktura  |
 |---------|---------|
 |Společnost Fabrikam je organizací střední velikosti, která potřebuje samostatné faktury pro technické a marketingové oddělení. Pro technické oddělení chtějí seskupit náklady podle prostředí – produkčního a vývojového.  | Fakturační profil pro marketingové a technické oddělení. Technické oddělení má oddíly faktury pro produkční a vývojové prostředí. |
 
-![Informační grafika pro jednoduchý scénář fakturace](./media/mca-section-invoice/organize-billing-scenario3.png)
+![Infografika pro scénář více fakturací s oddělenou fakturací za produkční a vývojové prostředí](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>Vytvoření nového oddílu faktury
 
@@ -106,7 +111,7 @@ Pokud chcete vytvořit fakturační profil, musíte být **vlastníkem fakturač
 
 3. V levém podokně vyberte **Fakturační profily** a pak v horní části stránky vyberte **Přidat**.
 
-   [![Snímek obrazovky se seznamem fakturačních profilů](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Snímek obrazovky se seznamem fakturačních profilů a vybranou možností Přidat](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -135,15 +140,15 @@ Jakmile přizpůsobíte fakturační účet svým potřebám, můžete propojit 
 
 2. Vyhledejte **Předplatná**.
 
-   [![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Snímek obrazovky znázorňující hledání předplatného na webu Azure Portal](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. V horní části stránky vyberte **Přidat**.
 
-   ![Snímek obrazovky, který zobrazuje tlačítko Přidat v zobrazení Předplatná](./media/mca-section-invoice/subscription-add.png)
+   ![Snímek obrazovky s tlačítkem Přidat v zobrazení Předplatná pro přidání nového předplatného](./media/mca-section-invoice/subscription-add.png)
 
 4. Pokud máte přístup k více fakturačním účtům, vyberte fakturační účet pro vaši smlouvu se zákazníkem Microsoftu.
 
-   ![Snímek obrazovky, který zobrazuje tlačítko Přidat v zobrazení Předplatná](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![Snímek obrazovky s podoknem Vytvořit předplatné](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. Vyberte fakturační profil, kterému se bude účtovat za využití předplatného. Poplatky za využití Azure a další nákupy pro toto předplatné se budou účtovat na fakturu vybraného fakturačního profilu.
 
@@ -165,7 +170,7 @@ Pokud máte existující předplatná Azure nebo jiné produkty, například Azu
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-   ![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/mca-section-invoice/search-cmb.png)
+   ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/mca-section-invoice/search-cmb.png)
 
 3. Pokud chcete propojit předplatné s novým oddílem faktury, vyberte v levé části obrazovky **Předplatná Azure**. Pro jiné produkty, jako jsou Azure Marketplace a zdrojové prostředky aplikací, vyberte **Pravidelné poplatky**.
 

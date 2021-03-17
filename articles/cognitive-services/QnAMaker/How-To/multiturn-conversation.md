@@ -1,18 +1,20 @@
 ---
 title: Konverzace s vícenásobným zapnete – QnA Maker
 description: Pomocí výzev a kontextu můžete spravovat vícenásobná vypnutí, označovaná jako vícenásobný křížek, pro robota z jedné otázky do druhé. Vícenásobné zapínání je schopnost mít v případě potřeby konverzaci, kde kontext předchozí otázky ovlivňuje další otázku a odpověď.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 313d1a390c30e7e5612b8d9bab7783b6698c35fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229342"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618487"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
-Pomocí následných výzev a kontextu můžete spravovat vícenásobná zapínání _, která se označují jako u_robotů z jedné otázky do druhé.
+Pomocí následných výzev a kontextu můžete spravovat vícenásobná zapínání _, která se označují jako u_ robotů z jedné otázky do druhé.
 
 Pokud chcete zjistit, jak funguje vícenásobně, podívejte se na následující ukázkové video:
 
@@ -37,7 +39,6 @@ Na předchozím obrázku uživatel zahájil konverzaci zadáním **mého účtu*
 
 Když uživatel vybere možnost (#3), zobrazí se další seznam možností upřesnění (#4). Tato sekvence pokračuje (#5), dokud uživatel neurčí správnou odpověď (#6).
 
-
 ### <a name="use-multi-turn-in-a-bot"></a>Použití vícenásobného zapínání v robotu
 
 Po publikování KB můžete vybrat tlačítko **vytvořit robota** a nasadit QnA maker bot do Azure bot Service. Výzvy se zobrazí v klientech chatu, které jste povolili pro robota.
@@ -52,7 +53,7 @@ Když vyberete tuto možnost, QnA Maker extrahuje hierarchii přítomnou ve stru
 
 Strukturu vícenásobného navýšení můžete odvodit jenom z adres URL, souborů PDF nebo souborů DOCX. Příklad struktury najdete v obrazovém [souboru PDF Microsoft Surface User Manually](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
 
-![! [Příklad struktury v uživatelské příručce] (.. /Media/Conversational-Context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+:::image type="content" source="../media/conversational-context/import-file-with-conversational-structure.png" alt-text="Snímek obrazovky ukazuje příklad struktury v uživatelské příručce." lightbox="../media/conversational-context/import-file-with-conversational-structure.png":::
 
 ### <a name="building-your-own-multi-turn-document"></a>Sestavení vlastního dokumentu s vícenásobným zahnutím
 
@@ -77,35 +78,34 @@ Když přidáte hierarchický dokument, QnA Maker určí následné výzvy ze st
 > [!Caution]
 > Podpora pro použití exportovaného souboru. základní znalostní báze ve formátu TSV nebo XLS jako zdroj dat pro novou nebo prázdnou znalostní bázi není podporována. Tento typ souboru je potřeba **importovat** na stránce **nastavení** na portálu QnA maker, aby se do znalostní báze přidaly exportované výzvy s vícenásobným zapnutím.
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Vytvoření znalostní báze s použitím s více zapnutími výzev pomocí rozhraní API pro vytvoření
 
-Můžete vytvořit znalostní případ s vícenásobnými výzvami, a to pomocí [QnA Maker vytvořit rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Výzvy se přidávají do `context` `prompts` pole vlastnosti.
+Můžete vytvořit znalostní případ s vícenásobnými výzvami, a to pomocí [QnA Maker vytvořit rozhraní API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Výzvy se přidávají do `context` `prompts` pole vlastnosti.
 
 ## <a name="show-questions-and-answers-with-context"></a>Zobrazit otázky a odpovědi s použitím kontextu
 
 Zmenšete zobrazené páry otázek a odpovědí jenom na ty, které mají kontextové konverzace.
 
-Vyberte **Možnosti zobrazení**a pak vyberte **Zobrazit kontext**. V seznamu se zobrazí páry otázek a odpovědí, které obsahují následné výzvy.
+Vyberte **Možnosti zobrazení** a pak vyberte **Zobrazit kontext**. V seznamu se zobrazí páry otázek a odpovědí, které obsahují následné výzvy.
 
 ![Filtrovat páry otázek a odpovědí pomocí kontextových konverzací](../media/conversational-context/filter-question-and-answers-by-context.png)
 
 V prvním sloupci se zobrazí kontext vícenásobného zapnutí.
 
-![! ["Kontextový (PREVIEW)" sloupec] (.. /Media/Conversational-Context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Snímek obrazovky ukazuje zvýrazněný kontextový oddíl." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 V předchozím obrázku **#1** označuje tučný text ve sloupci, který označuje aktuální otázku. Nadřazená otázka je nejvyšší položka na řádku. Všechny dotazy pod ní jsou propojené páry otázek a odpovědí. Tyto položky jsou vybrané, takže můžete okamžitě přejít k ostatním položkám kontextu.
 
 ## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Přidat existující pár otázek a odpovědí jako následnou výzvu
 
-Původní otázka, **můj účet**má následné výzvy, jako jsou **účty a přihlašování**.
+Původní otázka, **můj účet** má následné výzvy, jako jsou **účty a přihlašování**.
 
 ![Odpovědi a výzvy pro následné přihlášení](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
 Přidejte následnou výzvu na existující pár otázek a odpovědí, který není aktuálně propojený. Vzhledem k tomu, že se otázka neodkazuje na žádnou dvojici dotazů a odpovědí, je nutné změnit aktuální nastavení zobrazení.
 
 1. Pokud chcete propojit existující dvojici otázek a odpovědí jako následné výzvy, vyberte řádek pro pár otázek a odpovědí. V případě ručního povrchu vyhledejte seznam **odhlášení** , abyste snížili seznam.
-1. V řádku pro **odhlášení**klikněte ve sloupci **odpověď** na **Přidat následnou výzvu**.
+1. V řádku pro **odhlášení** klikněte ve sloupci **odpověď** na **Přidat následnou výzvu**.
 1. Do polí v místním okně **výzvy pro zpracování výzvy** zadejte následující hodnoty:
 
     |Pole|Hodnota|
@@ -113,7 +113,6 @@ Přidejte následnou výzvu na existující pár otázek a odpovědí, který ne
     |Zobrazený text|Zadejte **vypnout zařízení**. Toto je vlastní text, který se zobrazí v následném dotazu.|
     |Pouze kontext| Zaškrtněte toto políčko. Odpověď je vrácena pouze v případě, že otázka určuje kontext.|
     |Odkaz na odpověď|Pokud chcete najít existující pár otázek a odpovědí, zadejte **použít přihlašovací obrazovku** .|
-
 
 1.  Vrátí se jedna shoda. Vyberte tuto odpověď jako následnou a potom vyberte **Uložit**.
 
@@ -123,7 +122,7 @@ Přidejte následnou výzvu na existující pár otázek a odpovědí, který ne
 
 ### <a name="edit-the-display-text"></a>Upravit zobrazený text
 
-Když se vytvoří následná výzva a jako **odkaz na odpověď**se zadá existující pár otázek a odpovědí, můžete zadat nový **zobrazený text**. Tento text nenahrazuje stávající otázku a nepřidá novou alternativní otázku. Je oddělená od těchto hodnot.
+Když se vytvoří následná výzva a jako **odkaz na odpověď** se zadá existující pár otázek a odpovědí, můžete zadat nový **zobrazený text**. Tento text nenahrazuje stávající otázku a nepřidá novou alternativní otázku. Je oddělená od těchto hodnot.
 
 1. Chcete-li upravit zobrazený text, vyhledejte a vyberte otázku v poli **Context** .
 1. V řádku této otázky vyberte v sloupci odpověď následnou výzvu.
@@ -135,12 +134,11 @@ Když se vytvoří následná výzva a jako **odkaz na odpověď**se zadá exist
 1. Až budete hotovi s úpravou zobrazovaného textu, vyberte **Uložit**.
 1. V horním navigačním panelu **uložte a prohlaste**.
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Přidání nového páru otázek a odpovědí jako následné výzvy
 
 Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá dvojice by měla být propojená s existující otázkou jako následná výzva.
 
-1. Na panelu nástrojů znalostní báze vyhledejte a vyberte existující pár otázek a odpovědí pro **účty a přihlaste**se.
+1. Na panelu nástrojů znalostní báze vyhledejte a vyberte existující pár otázek a odpovědí pro **účty a přihlaste** se.
 
 1. Ve sloupci **odpověď** pro tuto otázku vyberte **Přidat následnou výzvu**.
 1. V části **výzva k následnému zobrazení (Preview)** vytvořte novou následnou výzvu zadáním následujících hodnot:
@@ -149,17 +147,16 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
     |--|--|
     |Zobrazený text|*Vytvořte účet systému Windows*. Vlastní text, který se má zobrazit v následných dotazech|
     |Pouze kontext|Zaškrtněte toto políčko. Tato odpověď se vrátí pouze v případě, že otázka určuje kontext.|
-    |Odkaz na odpověď|Jako odpověď zadejte následující text:<br>* [Vytvořte](https://account.microsoft.com/) účet systému Windows s novým nebo existujícím e-mailovým účtem*.<br>Při ukládání a učení databáze se tento text převede. |
+    |Odkaz na odpověď|Jako odpověď zadejte následující text:<br>*[Vytvořte](https://account.microsoft.com/) účet systému Windows s novým nebo existujícím e-mailovým účtem*.<br>Při ukládání a učení databáze se tento text převede. |
     |||
 
     ![Vytvořit novou otázku a odpověď na výzvu](../media/conversational-context/create-child-prompt-from-parent.png)
 
-
-1. Vyberte **vytvořit novou**a potom vyberte **Uložit**.
+1. Vyberte **vytvořit novou** a potom vyberte **Uložit**.
 
     Tato akce vytvoří novou dvojici otázek a odpovědí a propojí vybranou otázku jako následnou výzvu. **Kontextový** sloupec pro obě otázky indikuje vztah následné výzvy.
 
-1. Vyberte **Možnosti zobrazení**a pak vyberte [**Zobrazit kontext (Preview)**](#show-questions-and-answers-with-context).
+1. Vyberte **Možnosti zobrazení** a pak vyberte [**Zobrazit kontext (Preview)**](#show-questions-and-answers-with-context).
 
     Nová otázka ukazuje, jak je propojena.
 
@@ -167,7 +164,7 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
 
     Nadřazený dotaz zobrazí novou otázku jako jednu z možností.
 
-    ![! [Kontextový sloupec pro obě otázky indikuje vztah následné výzvy] (.. /Media/Conversational-Context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Snímek obrazovky zobrazující kontextový sloupec pro obě otázky indikuje vztah následné výzvy." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Po přidání následné výzvy vyberte v horním navigačním panelu možnost **Uložit a výuka** .
 
@@ -225,7 +222,7 @@ Předchozí část požadovala odpověď a jakékoli následné výzvy k zadán�
             "questions": [
                 "Sign out"
             ],
-            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start, and right-click your name. Then select Sign out. ",
+            "answer": "**Sign out**\n\nHere's how to sign out: \n\n  Go to Start, and right-click your name. Then select Sign out. ",
             "score": 38.01,
             "id": 18,
             "source": "product-manual.pdf",
@@ -352,14 +349,13 @@ Odpověď QnA Maker _GenerateAnswer_ JSON zahrnuje následné výzvy ve `context
 
 Pokud vytváříte vlastní aplikaci pomocí funkce vícenásobného zapnutí. V reakci prvotní otázky se vrátí všechny následné výzvy a její přidružené výzvy `qnaId` . Teď, když máte ID, můžete to předat v textu žádosti o následné výzvy. Pokud tělo požadavku obsahuje `qnaId` , a kontextový objekt (který obsahuje předchozí vlastnosti QnA maker), vrátí GenerateAnswer přesný dotaz podle ID namísto použití algoritmu řazení k vyhledání odpovědi textem otázky.
 
-
 ## <a name="display-order-is-supported-in-the-update-api"></a>V rozhraní API pro aktualizaci se podporuje pořadí zobrazení.
 
-[Zobrazení textu a pořadí zobrazení](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)vrácené v odpovědi JSON je podporované pro úpravy pomocí [rozhraní Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).
+[Zobrazení textu a pořadí zobrazení](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)vrácené v odpovědi JSON je podporované pro úpravy pomocí [rozhraní Update API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update).
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Přidání nebo odstranění výzev s vícenásobným zahnutím pomocí aktualizačního rozhraní API
 
-Pomocí [rozhraní API pro QnA maker Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)můžete přidat nebo odstranit výzvy k vícenásobnému zapínání.  Výzvy se přidávají do `context` `promptsToAdd` pole vlastnosti a `promptsToDelete` pole.
+Pomocí [rozhraní API pro QnA maker Update](/rest/api/cognitiveservices/qnamaker/knowledgebase/update)můžete přidat nebo odstranit výzvy k vícenásobnému zapínání.  Výzvy se přidávají do `context` `promptsToAdd` pole vlastnosti a `promptsToDelete` pole.
 
 ## <a name="export-knowledge-base-for-version-control"></a>Exportovat znalostní bázi pro správu verzí
 
@@ -367,7 +363,7 @@ QnA Maker podporuje správu verzí zahrnutím kroků vícenásobného konverzace
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o kontextových konverzacích z tohoto [dialogového okna ukázka](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) nebo si přečtěte další informace o [návrhu koncepčního robota pro vícenásobné konverzace](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Přečtěte si další informace o kontextových konverzacích z tohoto [dialogového okna ukázka](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) nebo si přečtěte další informace o [návrhu koncepčního robota pro vícenásobné konverzace](/azure/bot-service/bot-builder-conversations).
 
 > [!div class="nextstepaction"]
 > [Migrace znalostní báze](../Tutorials/migrate-knowledge-base.md)

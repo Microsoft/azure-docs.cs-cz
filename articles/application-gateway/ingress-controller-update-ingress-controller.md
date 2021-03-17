@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84806784"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Postup upgradu kontroleru příchozího přenosu dat služby Application Gateway s využitím Helmu 
@@ -56,7 +56,7 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
     application-gateway-kubernetes-ingress/ingress-azure    0.6.0           0.6.0           Use Azure Application Gateway as the ingress for an Azure...
     ```
 
-    Nejnovější dostupná verze ze seznamu výše je:`0.7.0-rc1`
+    Nejnovější dostupná verze ze seznamu výše je: `0.7.0-rc1`
 
 1. Zobrazení aktuálně nainstalovaných grafů Helm:
 
@@ -100,7 +100,7 @@ Pokud by nasazení Helm nebylo úspěšné, můžete vrátit zpět na předchoz�
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    Z ukázkového výstupu `helm history` příkazu vypadá jako poslední úspěšné nasazení naší `odd-billygoat` Revize.`1`
+    Z ukázkového výstupu `helm history` příkazu vypadá jako poslední úspěšné nasazení naší `odd-billygoat` Revize. `1`
 
 1. Vrátit zpět poslední úspěšnou revizi:
 

@@ -1,21 +1,18 @@
 ---
 title: Použití funkce diagnostiky připojení v prostředí SSIS Integration runtime
 description: Řešení potíží s připojením v prostředí SSIS Integration runtime pomocí funkce diagnostiky připojení.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: meiyl
 author: meiyl
 ms.reviewer: sawinark
-manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: cf41da685036770144ebf7eb2befd0c3d126362d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 1fb9a0c77a7cdc286c7c206d6eb33e43917ee719
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446027"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361850"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>Použití funkce diagnostiky připojení v prostředí SSIS Integration runtime
 
@@ -104,6 +101,6 @@ V následujících částech se dozvíte o nejběžnějších chybách, ke kter�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení projektu SSIS do Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)
-- [Spouštění balíčků SSIS v Azure s SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)
-- [Plánování balíčků SSIS v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)
+- [Nasazení projektu SSIS do Azure pomocí SSMS](/sql/integration-services/ssis-quickstart-deploy-ssms)
+- [Spouštění balíčků SSIS v Azure s SSMS](/sql/integration-services/ssis-quickstart-run-ssms)
+- [Plánování balíčků SSIS v Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)

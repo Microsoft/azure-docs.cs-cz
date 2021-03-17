@@ -6,19 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 20a2639716048a8c549ec6d584e807cb209f83d9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507841"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670946"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -58,18 +58,18 @@ Proto je jako zákazník povinný, abyste si přečetli poznámky SAP týkajíc�
 
 Konkrétně proveďte kontrolu následujících parametrů a nakonec proveďte úpravu na:
 
-- NET. Core. rmem_max = 16777216
-- NET. Core. wmem_max = 16777216
-- NET. Core. rmem_default = 16777216
-- NET. Core. wmem_default = 16777216
-- NET. Core. optmem_max = 16777216
-- NET. IPv4. tcp_rmem = 65536 16777216 16777216
-- NET. IPv4. tcp_wmem = 65536 16777216 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
+- net.core.rmem_default = 16777216
+- net.core.wmem_default = 16777216
+- net.core.optmem_max = 16777216
+- net.ipv4.tcp_rmem = 65536 16777216 16777216
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
 Počínaje SLES12 SP1 a RHEL 7,2 musí být tyto parametry nastaveny v konfiguračním souboru v adresáři/etc/sysctl.d. Například je třeba vytvořit konfigurační soubor s názvem 91 – NetApp-HANA. conf. Pro starší verze SLES a RHEL musí být tyto parametry nastaveny v/v/sysctl. conf.
 
 Pro všechny RHEL verze počínaje verzí RHEL 6,3 Pamatujte na toto: 
-- Parametr sunRPC. tcp_slot_table_entries = 128 musí být nastaven na hodnotu/etc/modprobe. d/sunRPC-Local. conf. Pokud soubor neexistuje, je nutné jej nejprve vytvořit přidáním položky: 
+- Parametr sunrpc.tcp_slot_table_entries = 128 musí být nastaven na hodnotu/etc/modprobe. d/sunRPC-Local. conf. Pokud soubor neexistuje, je nutné jej nejprve vytvořit přidáním položky: 
     - možnosti sunRPC tcp_max_slot_table_entries = 128
 
 **Pátý krok** je ověřit systémový čas jednotky velkých instancí Hana. Instance jsou nasazeny se systémovým časovým pásmem. Toto časové pásmo představuje umístění oblasti Azure, ve které se nachází razítko velké instance HANA. Můžete změnit systémový čas nebo časové pásmo instancí, které vlastníte. 
@@ -128,7 +128,7 @@ V důsledku toho musíte nastavit samostatný časový server, který mohou pou�
 Předpokládáme, že jste postupovali podle doporučení v tématu navrhování virtuálních sítí Azure a v tématu propojení těchto virtuálních sítí s velkými instancemi HANA, jak je popsáno v následujících dokumentech:
 
 - [Přehled a architektura SAP HANA (Velká instance) v Azure](./hana-overview-architecture.md)
-- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md)
 
 V některých podrobnostech se dozvíte o sítích jednotlivých jednotek. Každá jednotka velkých instancí HANA má dvě nebo tři IP adresy, které jsou přiřazené dvěma nebo třem portům síťových adaptérů. V konfiguracích se škálováním na více systémů a ve scénáři replikace systému HANA se používají tři IP adresy. Jedna z IP adres přiřazená síťovému rozhraní jednotky je mimo fond IP adres, který je popsaný v tématu [SAP Hana (velké instance) přehled a architektura v Azure](./hana-overview-architecture.md).
 
@@ -138,7 +138,7 @@ Další informace o možnostech sítě Ethernet pro vaši architekturu najdete v
 
 Rozložení úložiště pro SAP HANA v Azure (velké instance) se konfiguruje SAP HANA v Azure `service management` prostřednictvím doporučených pokynů SAP. Tyto pokyny jsou popsány v dokumentu White Paper [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) . 
 
-Hrubou velikost různých svazků s různými jednotkami SKU velkých instancí HANA je popsána v článku [SAP Hana (velké instance) přehled a architektura v Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Hrubou velikost různých svazků s různými jednotkami SKU velkých instancí HANA je popsána v článku [SAP Hana (velké instance) přehled a architektura v Azure](hana-overview-architecture.md).
 
 Zásady vytváření názvů svazků úložiště jsou uvedené v následující tabulce:
 
@@ -160,7 +160,7 @@ Pro prostředí se škálováním na více instancí se svazky, protokoly a zál
 
 Když se podíváte na jednotku velkých instancí HANA, zjistíte, že jednotky přicházejí do velkorysáho disku pro HANA a data a že je k dispozici svazek HANA/log/Backup. Důvodem pro velké objemy HANA/dat je to, že snímky úložiště, které nabízíme jako zákazník, používají stejný diskový svazek. Víc snímků úložiště, které provedete, je více místa spotřebované snímky v přiřazených svazcích úložiště. 
 
-Svazek HANA/log/Backup by neměl být svazkem pro zálohy databáze. Má velikost, která se má použít jako záložní svazek pro zálohy protokolu transakcí HANA. Další informace najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Svazek HANA/log/Backup by neměl být svazkem pro zálohy databáze. Má velikost, která se má použít jako záložní svazek pro zálohy protokolu transakcí HANA. Další informace najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md). 
 
 Kromě úložiště, které je k dispozici, můžete zakoupit další kapacitu úložiště v přírůstcích po 1 TB. Toto dodatečné úložiště je možné přidat jako nové svazky do velké instance HANA.
 
@@ -179,7 +179,7 @@ Tyto přípojné body jsou nakonfigurovány v/etc/fstab, jak je znázorněno na 
 
 Výstup příkazu df-h na velké jednotce instance S72m HANA vypadá nějak takto:
 
-![fstab připojených svazků v jednotce velkých instancí HANA](./media/hana-installation/image2_df_output.PNG)
+![Snímek obrazovky zobrazuje výstup příkazu pro jednotku velkých instancí HANA.](./media/hana-installation/image2_df_output.PNG)
 
 
 Řadič úložiště a uzly v dlouhých razítkech instance se synchronizují se servery NTP. Když synchronizujete SAP HANA jednotky Azure (velké instance) a virtuální počítače Azure se serverem NTP, neměli byste nijak významně přetěžovat mezi infrastrukturou a výpočetními jednotkami v Azure nebo v označeních velkých instancí.

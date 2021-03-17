@@ -1,27 +1,32 @@
 ---
 title: Optimalizace dotazů na podregistry ve službě Azure HDInsight
-description: Tento článek popisuje, jak optimalizovat dotazy Apache Hive pro Hadoop v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: Tento článek popisuje, jak optimalizovat dotazy Apache Hive ve službě Azure HDInsight.
 ms.service: hdinsight
-ms.topic: how-to
+ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: 89c276ffe6059a61323755eaf928d525ab5ea416
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 10/28/2020
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085289"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945559"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Apache Hivu v Azure HDInsightu
 
-V Azure HDInsight existuje několik typů clusterů a technologií, které můžou spouštět dotazy Apache Hive. Vyberte vhodný typ clusteru, který vám umožní optimalizovat výkon vašich potřeb úloh.
+Tento článek popisuje některé z nejběžnějších optimalizací výkonu, které můžete použít ke zlepšení výkonu Apache Hive dotazů.
 
-Například vyberte typ clusteru **interaktivních dotazů** , který se má optimalizovat pro `ad hoc` interaktivní dotazy. Vyberte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy na podregistr používané jako dávkové zpracování. Typy clusterů **Spark** a **HBA** můžou také spouštět dotazy na podregistr. Další informace o spouštění dotazů na podregistry na různých typech clusterů HDInsight najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight](hadoop/hdinsight-use-hive.md).
+## <a name="cluster-type-selection"></a>Výběr typu clusteru
 
-Clustery HDInsight typu clusteru Hadoop nejsou ve výchozím nastavení optimalizované pro výkon. Tento článek popisuje některé z nejběžnějších metod optimalizace výkonu podregistru, které můžete použít pro vaše dotazy.
+V Azure HDInsight můžete spouštět dotazy Apache Hive na několika různých typech clusterů. 
+
+Vyberte vhodný typ clusteru, který vám umožní optimalizovat výkon vašich potřeb pro úlohy:
+
+* Vyberte typ clusteru **interaktivních dotazů** , který se má optimalizovat pro `ad hoc` interaktivní dotazy. 
+* Vyberte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy na podregistr používané jako dávkové zpracování. 
+* Typy clusterů **Spark** a **HBA** můžou také spouštět dotazy na podregistr a můžou být vhodné, pokud tyto úlohy spouštíte. 
+
+Další informace o spouštění dotazů na podregistry na různých typech clusterů HDInsight najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight](hadoop/hdinsight-use-hive.md).
 
 ## <a name="scale-out-worker-nodes"></a>Horizontální navýšení kapacity pracovních uzlů
 
@@ -195,9 +200,8 @@ Existuje více metod optimalizace, které je možné zvážit, například:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s několika běžnými metodami optimalizace dotazů na podregistr. Další informace najdete v následujících článcích:
+V tomto článku jste se seznámili s několika běžnými metodami optimalizace dotazů na podregistr. Další informace najdete v těchto článcích:
 
-* [Použití Apache Hive ve službě HDInsight](hadoop/hdinsight-use-hive.md)
 * [Optimalizace Apache Hivu](./optimize-hive-ambari.md)
 * [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analýza dat Twitteru pomocí Apache Hive ve službě HDInsight](hdinsight-analyze-twitter-data-linux.md)

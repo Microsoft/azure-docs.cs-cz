@@ -1,17 +1,17 @@
 ---
 title: Parametry serveru – Azure Database for MariaDB
 description: Toto téma poskytuje pokyny pro konfiguraci parametrů serveru v Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca1acfd6891c9389363fceb7eccec6f460537399
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392722"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664142"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Parametry serveru v Azure Database for MariaDB
 
@@ -29,6 +29,12 @@ Seznam podporovaných parametrů serveru se neustále zvětšuje. Pomocí karty 
 
 Další informace o omezeních několika běžně aktualizovaných parametrů serveru najdete v následujících částech. Omezení se určují podle cenové úrovně a virtuální jádra serveru.
 
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+V Azure Database for MariaDB jsou binární protokoly vždycky povolené (tj. `log_bin` je nastavené na zapnuto). V případě, že budete chtít použít triggery, zobrazí se chybová zpráva podobná se tomu, že nemáte *oprávnění super a binární protokolování je povolené (je možné použít méně bezpečné `log_bin_trust_function_creators` proměnné)*.
+
+Formát binárního protokolování je vždy **řádek** a všechna připojení k serveru **vždy** používají binární protokolování založené na řádcích. V případě binárního protokolování založeného na řádcích neexistují problémy se zabezpečením a binární protokolování nemůže přerušit, takže můžete bezpečně nastavit [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) na **hodnotu true**.
+
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
 Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/innodb-system-variables/#innodb_buffer_pool_size) .
@@ -37,8 +43,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|872415232|134217728|872415232|
-|Základní|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|3758096384|134217728|3758096384|
 |Pro obecné účely|4|8053063680|134217728|8053063680|
 |Pro obecné účely|8|16106127360|134217728|16106127360|
@@ -55,8 +61,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|872415232|134217728|872415232|
-|Základní|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|7516192768|134217728|7516192768|
 |Pro obecné účely|4|16106127360|134217728|16106127360|
 |Pro obecné účely|8|32212254720|134217728|32212254720|
@@ -72,7 +78,7 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`dá se aktualizovat jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
+> `innodb_file_per_table` dá se aktualizovat jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 
 MariaDB ukládá tabulku InnoDB v různých tabulkových prostorech na základě konfigurace, kterou jste zadali během vytváření tabulky. [Systémový tabulkový prostor](https://mariadb.com/kb/en/innodb-system-tablespaces/) je oblast úložiště pro slovník InnoDB data Dictionary. [Tabulkový prostor pro tabulku](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) obsahuje data a indexy pro jednu tabulku InnoDB a je uložený v systému souborů ve vlastním datovém souboru. Toto chování je řízeno `innodb_file_per_table` parametrem serveru. Nastavení `innodb_file_per_table` na `OFF` způsobí, že InnoDB vytvoří tabulky v systémovém tabulkovém prostoru. V opačném případě InnoDB vytvoří tabulky v tabulkových prostorech v souborové tabulce.
 
@@ -84,8 +90,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -100,10 +106,10 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 ### <a name="max_connections"></a>max_connections
 
-|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Min. hodnota**|**Max. hodnota**|
 |---|---|---|---|---|
-|Základní|1|50|10|50|
-|Základní|2|100|10|100|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
 |Pro obecné účely|2|300|10|600|
 |Pro obecné účely|4|625|10|1250|
 |Pro obecné účely|8|1250|10|2500|
@@ -133,8 +139,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -153,10 +159,10 @@ Mezipaměť dotazů je ve výchozím nastavení povolená v MariaDB s `have_quer
 
 Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) .
 
-|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -175,8 +181,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -195,8 +201,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|

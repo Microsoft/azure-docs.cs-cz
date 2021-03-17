@@ -1,20 +1,20 @@
 ---
 title: Kurz – vytvoření virtuálního počítače pro správu pro Azure Active Directory Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows, který používáte ke správě Azure Active Directory Domain Services spravované domény.
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: justinha
+ms.openlocfilehash: d017fc3fc53c9f89978893670df10ecd731da904
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024600"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618174"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény Azure Active Directory Domain Services
 
@@ -31,11 +31,11 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -85,7 +85,7 @@ V předchozím kurzu se vytvořil virtuální počítač s Windows serverem a p�
 Začněte tím, že se připojíte k virtuálnímu počítači s Windows serverem následujícím způsobem:
 
 1. V Azure Portal na levé straně vyberte **skupiny prostředků** . Zvolte skupinu prostředků, ve které se vytvořil váš virtuální počítač, třeba *myResourceGroup*, a potom vyberte virtuální počítač, jako je třeba *myVM*.
-1. V podokně **Přehled** pro váš virtuální počítač vyberte **připojit**a pak **bastionu**.
+1. V podokně **Přehled** pro váš virtuální počítač vyberte **připojit** a pak **bastionu**.
 
     ![Připojení k virtuálnímu počítači s Windows pomocí bastionu v Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
@@ -103,8 +103,8 @@ Pokud chcete nainstalovat nástroje pro správu služby Active Directory do virt
 
 1. Pokud se při přihlášení k virtuálnímu počítači ve výchozím nastavení **Správce serveru** neotevře, vyberte nabídku **Start** a pak zvolte **Správce serveru**.
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
-1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
-1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
+1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí* vyberte **Další**.
+1. Pro *typ instalace* ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
 1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** rozbalte uzel **Nástroje pro vzdálenou správu serveru** a potom rozbalte uzel **Nástroje pro správu rolí** .
@@ -160,4 +160,4 @@ Pokud chcete bezpečně pracovat se svojí spravovanou doménou z jiných aplika
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md

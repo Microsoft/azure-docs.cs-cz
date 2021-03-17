@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.subservice: tables
-ms.openlocfilehash: d592dd6ac705d0f1a0b3ed55e115d06023b0a511
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236263"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326756"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rychlý start: Vytvoření tabulky Azure Storage na webu Azure Portal 
 
@@ -31,15 +31,15 @@ K vytvoření tabulky na webu Azure Portal můžete použít službu Table Servi
 
 1. Klikněte na Přehled > Tabulky.
 
-   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![Na vmamcgestorage účet úložiště se zvýrazní karta Přehled. V podokně Přehled v části služby se zvýrazní tabulky.](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. Klikněte na **+ Tabulka**.
 
-   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![U Table service pro vmamcgestorage se zvýrazní možnost + Table.](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. Do pole **Název tabulky** zadejte název tabulky a potom klikněte na **OK**. 
 
-   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![Na kartě Přidat tabulku v Table service je tabulka zadána do názvu tabulky a zvýrazní se. Je vybráno a zvýrazněno tlačítko OK.](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>Další kroky
 

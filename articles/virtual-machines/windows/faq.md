@@ -2,20 +2,21 @@
 title: Nejčastější dotazy týkající se virtuálních počítačů s Windows v Azure
 description: Obsahuje odpovědi na některé běžné dotazy týkající se virtuálních počítačů s Windows vytvořených pomocí modelu Správce prostředků.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: d5dda567d0cfa89863731a3e8e651aede4ab5957
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0de25b29dc1e930956c01f342ca2614d1a9082ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825187"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557501"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Nejčastější dotazy týkající se Windows Virtual Machines
-Tento článek popisuje některé běžné dotazy k virtuálním počítačům s Windows vytvořeným v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Linux najdete v tématu [Nejčastější dotazy o Linux Virtual Machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek popisuje některé běžné dotazy k virtuálním počítačům s Windows vytvořeným v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Linux najdete v tématu [Nejčastější dotazy o Linux Virtual Machines](../linux/faq.md).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co můžu spouštět na virtuálním počítači Azure?
 Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Informace o zásadách podpory pro používání serverového softwaru Microsoftu v Azure najdete v tématu [podpora serverového softwaru Microsoftu pro Azure Virtual Machines](https://support.microsoft.com/kb/2721672).
@@ -23,14 +24,14 @@ Všichni předplatitelé můžou na virtuálním počítači Azure spouštět se
 Některé verze Windows 7, Windows 8.1 a Windows 10 jsou dostupné pro předplatitele zvýhodněné služby MSDN Azure a předplatitele MSDN pro vývoj a testování s průběžnými platbami podle aktuálního využití pro úlohy vývoje a testování. Podrobnosti, včetně pokynů a omezení, najdete v tématu [Image klienta Windows pro předplatitele MSDN](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
-Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](../sizes.md).
 
 Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít více Managed Disks. Managed Disks nabízí dva typy trvalých možností úložiště: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Účty Azure Storage taky můžou poskytovat úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžu získat přístup k virtuálnímu počítači?
-Navažte vzdálené připojení pomocí Připojení ke vzdálené ploše (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podporuje se maximálně dvě souběžná připojení, pokud server není nakonfigurovaný jako hostitel relace vzdálené plochy.  
+Navažte vzdálené připojení pomocí Připojení ke vzdálené ploše (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md). Podporuje se maximálně dvě souběžná připojení, pokud server není nakonfigurovaný jako hostitel relace vzdálené plochy.  
 
 Pokud máte problémy se vzdálenou plochou, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
 
@@ -39,20 +40,20 @@ Pokud jste obeznámeni s technologií Hyper-V, možná hledáte nástroj podobn�
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Můžu pro ukládání dat použít dočasný disk (ve výchozím nastavení jednotku D:)?
 Nepoužívejte dočasný disk k ukládání dat. Je to jenom dočasné úložiště, takže byste měli riskovat ztráty dat, která se nedají obnovit. Pokud se virtuální počítač přesune na jiného hostitele, může dojít ke ztrátě dat. Mezi důvody možného přesunu virtuálního počítače patří změna velikosti virtuálního počítače, aktualizace hostitele nebo selhání hardwaru.
 
-Pokud máte aplikaci, která potřebuje použít písmeno jednotky D:, můžete znovu přiřadit písmena jednotek, aby dočasný disk používal jinou hodnotu než D:.. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Pokud máte aplikaci, která potřebuje použít písmeno jednotky D:, můžete znovu přiřadit písmena jednotek, aby dočasný disk používal jinou hodnotu než D:.. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md).
 
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>Jak můžu změnit písmeno jednotky dočasného disku?
-Můžete změnit písmeno jednotky přesunutím stránkovacího souboru a opětovným přiřazením písmen jednotek, ale musíte se ujistit, že provedete kroky v určitém pořadí. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Můžete změnit písmeno jednotky přesunutím stránkovacího souboru a opětovným přiřazením písmen jednotek, ale musíte se ujistit, že provedete kroky v určitém pořadí. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md).
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Můžu přidat existující virtuální počítač do skupiny dostupnosti?
-Ne. Pokud chcete, aby váš virtuální počítač byl součástí skupiny dostupnosti, musíte vytvořit virtuální počítač v rámci sady. V tuto chvíli není možné přidat virtuální počítač do skupiny dostupnosti po jeho vytvoření.
+No. Pokud chcete, aby váš virtuální počítač byl součástí skupiny dostupnosti, musíte vytvořit virtuální počítač v rámci sady. V tuto chvíli není možné přidat virtuální počítač do skupiny dostupnosti po jeho vytvoření.
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>Můžu nahrát virtuální počítač do Azure?
 Ano. Pokyny najdete v tématu [migrace místních virtuálních počítačů do Azure](on-prem-to-azure.md).
 
 ## <a name="can-i-resize-the-os-disk"></a>Můžu změnit velikost disku s operačním systémem?
-Ano. Pokyny najdete v tématu [postup rozšíření jednotky operačního systému virtuálního počítače ve skupině prostředků Azure](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ano. Pokyny najdete v tématu [postup rozšíření jednotky operačního systému virtuálního počítače ve skupině prostředků Azure](expand-os-disk.md).
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžu zkopírovat nebo naklonovat stávající virtuální počítač Azure?
 Ano. Pomocí spravovaných imagí můžete vytvořit image virtuálního počítače a pak image použít k sestavení několika nových virtuálních počítačů. Pokyny najdete v tématu [Vytvoření vlastní image virtuálního počítače](tutorial-custom-images.md).

@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: be76cd9d3c358864d1278cad77be43048dec7a71
-  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
-  ms.translationtype: HT
+  ms.openlocfilehash: e7582856bc986b09d4f21b2c94562a2d7eec83dc
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/17/2020
-  ms.locfileid: "88263448"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102502667"
 landingContent:
 - title: Certifikáty
   linkLists:
@@ -42,8 +42,14 @@ landingContent:
       url: quick-create-powershell.md
     - text: Portál
       url: quick-create-portal.md
+    - text: .NET
+      url: quick-create-net.md
     - text: Python
       url: quick-create-python.md
+    - text: Node.js
+      url: quick-create-node.md
+    - text: Java
+      url: quick-create-java.md
     - text: Import certifikátu ve službě Key Vault
       url: tutorial-import-certificate.md
 - title: Klientské knihovny pro certifikáty služby Key Vault
@@ -51,13 +57,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Klientská knihovna v .NET
-      url: /dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet
+      url: /dotnet/api/azure.security.keyvault.certificates
     - text: Klientská knihovna v Pythonu
-      url: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+      url: /python/api/overview/azure/keyvault-certificates-readme
     - text: Klientská knihovna v Javě
-      url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.2.0/index.html
+      url: https://apidocs.chargebee.com/docs/api?lang=java#client_library
     - text: Klientská knihovna v Node.js
-      url: /javascript/api/@azure/keyvault-certificates/?view=azure-node-latest
+      url: /javascript/api/@azure/keyvault-certificates/
 - title: Další informace o službě Key Vault
   linkLists:
   - linkListType: overview
@@ -66,10 +72,10 @@ landingContent:
       url: ../general/overview.md
     - text: Základní koncepty
       url: ../general/basic-concepts.md
+    - text: Přehled zabezpečení
+      url: ../general/security-overview.md
     - text: Přehled obnovitelného odstranění
       url: ../general/soft-delete-overview.md
-    - text: Přehled zabezpečení
-      url: ../general/overview-security.md
 - title: Microsoft Learn
   linkLists:
   - linkListType: learn

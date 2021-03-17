@@ -1,6 +1,6 @@
 ---
-title: Co je zabezpečení na úrovni sloupců pro Azure synapse?
-description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožňuje implementovat omezení přístupu k sloupci.
+title: Zabezpečení na úrovni sloupce pro vyhrazený fond SQL
+description: Column-Level Security umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožňuje implementovat omezení přístupu k sloupci.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/19/2020
 ms.author: jrasnick
-ms.reviewer: igorstan, carlrab
+ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb34051f7d4b24190806dde939c8cc6d9c2a4896
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208089"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679943"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 
-Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky na základě kontextu spuštění nebo členství ve skupině uživatele.
+Column-Level Security umožňuje zákazníkům řídit přístup k sloupcům tabulky na základě kontextu spuštění nebo členství ve skupině uživatele.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Vzhledem k tomu, že toto video bylo zveřejněné [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , které se stalo pro Azure synapse.
+Vzhledem k tomu, že toto video bylo zveřejněné, [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bylo v Azure Synapse k dispozici pro vyhrazený fond SQL.
 
 Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. umožňuje omezit přístup k sloupci na ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z jakékoli úrovně. Toto omezení zajišťuje spolehlivější a robustní zabezpečení tím, že redukuje plochu celkového systému zabezpečení. Kromě toho zabezpečení na úrovni sloupců také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu uživatelům.
 
-Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
+Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (Azure AD).
 
-![specifikaci](./media/column-level-security/cls.png)
+![Diagram znázorňuje sloupcovou tabulku s prvním sloupcem s uzavřenou visacího zámku nezobrazuje a jejími buňkami oranžová barva, zatímco ostatní sloupce jsou bílé buňky.](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntax
 
@@ -85,5 +85,5 @@ SELECT * FROM Membership;
 
 Některé příklady použití zabezpečení na úrovni sloupců v současnosti:
 
-- Společnost DataServices zajišťuje přístup jenom správcům účtů, kteří mají přístup k číslům sociálního pojištění zákazníka (rodné číslo), telefonním číslům a dalším identifikovatelným osobním údajům (PII).
+- Společnost DataServices zajišťuje přístup jenom správcům účtů, kteří mají přístup k číslům sociálního pojištění zákazníka (SSN), telefonním číslům a dalším osobním údajům.
 - Poskytovatel péče o zdravotní péči umožňuje přístup k citlivým lékařským záznamům jenom lékaři a zdravotní sestry a zároveň brání členům fakturačního oddělení zobrazit tato data.

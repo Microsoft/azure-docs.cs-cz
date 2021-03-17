@@ -1,30 +1,30 @@
 ---
-title: Osvědčené postupy načítání dat pro synapse fond SQL
-description: Doporučení a optimalizace výkonu pro načítání dat pomocí synapse fondu SQL.
+title: Osvědčené postupy načítání dat pro vyhrazené fondy SQL
+description: Doporučení a optimalizace výkonu pro načítání dat pomocí vyhrazených fondů SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10e43332728ea70d27c08cf4d3dfe116c83b3f1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201629"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679800"
 ---
-# <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Osvědčené postupy načítání dat pomocí synapse fondu SQL
+# <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy načítání dat pomocí vyhrazených fondů SQL ve službě Azure synapse Analytics
 
-V tomto článku se seznámíte s doporučeními a optimalizacemi výkonu pro načítání dat pomocí fondu SQL.
+V tomto článku se seznámíte s doporučeními a optimalizacemi výkonu pro načítání dat pomocí vyhrazeného fondu SQL.
 
 ## <a name="preparing-data-in-azure-storage"></a>Příprava dat v Azure Storage
 
-Pokud chcete minimalizovat latenci, najděte vrstvu úložiště a váš fond SQL.
+Pokud chcete minimalizovat latenci, najděte vrstvu úložiště a vyhrazený fond SQL.
 
 Při exportu dat do formátu souboru ORC může dojít k chybám s nedostatkem paměti Java, pokud se zde nacházejí velké textové sloupce. Toto omezení můžete obejít tím, že importujete jen podmnožinu sloupců.
 
@@ -34,7 +34,7 @@ Velké komprimované soubory rozdělte do menších komprimovaných souborů.
 
 ## <a name="running-loads-with-enough-compute"></a>Dostatečné výpočetní prostředky pro načítání dat
 
-Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není proveditelné, spouštějte současně minimální počet zatížení. Pokud očekáváte velkou úlohu načítání, zvažte možnost škálovat svůj fond SQL před zatížením.
+Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není proveditelné, spouštějte současně minimální počet zatížení. Pokud očekáváte velkou úlohu načítání, zvažte, zda před zatížením škálovat vyhrazený fond SQL.
 
 Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Klasifikujte každého uživatele načítání do konkrétní skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Zatížení se spouští se skupinou úloh uživatele.  
 
@@ -47,10 +47,10 @@ Tento příklad vytvoří uživatele načítání klasifikovaného na konkrétn�
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Připojte se ke fondu SQL a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi s názvem mySampleDataWarehouse. Ukazuje, jak vytvořit uživatele s názvem Loader a přidělí uživateli oprávnění k vytváření tabulek a načtení pomocí [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Pak klasifikuje uživatele na skupinu úloh dataloads s maximálními prostředky. 
+Připojte se k vyhrazenému fondu SQL a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi s názvem mySampleDataWarehouse. Ukazuje, jak vytvořit uživatele s názvem Loader a přidělí uživateli oprávnění k vytváření tabulek a načtení pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). Pak klasifikuje uživatele na skupinu úloh dataloads s maximálními prostředky. 
 
 ```sql
-   -- Connect to the SQL pool
+   -- Connect to the dedicated SQL pool
    CREATE USER loader FOR LOGIN loader;
    GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
    GRANT INSERT ON <yourtablename> TO loader;
@@ -60,7 +60,7 @@ Připojte se ke fondu SQL a vytvořte uživatele. Následující kód předpokl�
    
    CREATE WORKLOAD GROUP DataLoads
    WITH ( 
-      MIN_PERCENTAGE_RESOURCE = 100
+       MIN_PERCENTAGE_RESOURCE = 100
        ,CAP_PERCENTAGE_RESOURCE = 100
        ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
     );
@@ -71,12 +71,15 @@ Připojte se ke fondu SQL a vytvořte uživatele. Následující kód předpokl�
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>Toto je extrémní příklad přidělení 100% prostředků fondu SQL do jediného zatížení. To vám poskytne maximální souběžnost 1. Uvědomte si, že by se to mělo používat jenom při počátečním zatížení, kdy budete muset vytvořit další skupiny úloh s vlastní konfigurací, abyste balanace prostředky napříč vašimi úlohami. 
 
 Pokud chcete spustit zatížení s prostředky pro načtení skupiny úloh, přihlaste se jako zavaděč a spusťte zátěž.
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>Povolení načtení více uživatelů (základ)
 
-Je často potřeba, aby data načetla více uživatelů do fondu SQL. Načítání s [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (základ) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům.
+Je často potřeba, aby data načetla více uživatelů do vyhrazeného fondu SQL. Načítání s [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (základ) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům.
 
 Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
 
@@ -91,9 +94,9 @@ User_A a user_B jsou nyní uzamčeny ze schématu jiné oddělení.
 
 ## <a name="loading-to-a-staging-table"></a>Načítání do pracovní tabulky
 
-Chcete-li dosáhnout nejrychlejší rychlosti načítání pro přesun dat do tabulky fondu SQL, načtěte data do pracovní tabulky.  Pracovní tabulku definujte jako haldu a jako způsob distribuce použijte kruhové dotazování (round robin).
+Chcete-li dosáhnout nejrychlejší rychlosti načítání pro přesun dat do vyhrazené tabulky fondu SQL, načtěte data do pracovní tabulky.  Pracovní tabulku definujte jako haldu a jako způsob distribuce použijte kruhové dotazování (round robin).
 
-Vezměte v úvahu, že načítání je obvykle proces se dvěma kroky, ve kterém jste nejprve načetli pracovní tabulku a pak do ní vložíte data do provozní tabulky fondu SQL. Pokud provozní tabulka používá k distribuci algoritmus hash, může být celková doba načtení a vložení dat kratší, než když k definici pracovní tabulky použijete distribuci hash.
+Vezměte v úvahu, že načítání je obvykle proces se dvěma kroky, ve kterém jste nejprve načetli pracovní tabulku a pak do ní vložíte data do vyhrazené tabulky fondu SQL pro produkční prostředí. Pokud provozní tabulka používá k distribuci algoritmus hash, může být celková doba načtení a vložení dat kratší, než když k definici pracovní tabulky použijete distribuci hash.
 
 Načítání do pracovní tabulky trvá déle, ale druhý krok, který spočívá ve vkládání řádků do provozní tabulky, nepřesouvá data prostřednictvím distribuce.
 
@@ -111,7 +114,7 @@ V případě nedostatku paměti nemusí index columnstore dosahovat maximální 
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvýšit velikost dávky při použití rozhraní SqLBulkCopy API nebo BCP
 
-Načtení pomocí příkazu COPY poskytne nejvyšší propustnost s fondem SQL. Pokud nemůžete použít kopírování pro načtení a musí používat [rozhraní SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), měli byste zvážit zvýšení propustnosti zvětšením velikosti dávky.
+Načtení pomocí příkazu COPY poskytne nejvyšší propustnost s vyhrazenými fondy SQL. Pokud nemůžete použít kopírování pro načtení a musí používat [rozhraní SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), měli byste zvážit zvýšení propustnosti zvětšením velikosti dávky.
 
 > [!TIP]
 > Pro určení optimální kapacity velikosti dávky je velikost dávky mezi 100 až 1 milion řádků doporučeným směrným plánem.
@@ -127,11 +130,11 @@ Záznam dat se považuje za nečistý, pokud splňuje jednu z následujících p
 
 Pokud chcete nezapsané záznamy opravit, ujistěte se, že jsou definice formátů externí tabulky a externího souboru správné a že externí data těmto definicím odpovídají.
 
-Pokud je podmnožina záznamů externích dat špinavá, můžete se rozhodnout tyto záznamy pro své dotazy odmítnout pomocí možností odmítnutí v části [vytvořit externí tabulku (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Pokud je podmnožina záznamů externích dat špinavá, můžete se rozhodnout tyto záznamy pro své dotazy odmítnout pomocí možností odmítnutí v části [vytvořit externí tabulku (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="inserting-data-into-a-production-table"></a>Vložení dat do provozní tabulky
 
-Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení.
+Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení.
 
 Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich dávku, abyste je mohli načíst hromadně.  Vyvíjejte své procesy tak, aby samostatná vkládání připojovaly do souboru, a pak vytvořte další proces, který tento soubor bude pravidelně načítat.
 
@@ -155,7 +158,7 @@ Osvědčeným postupem zabezpečení je pravidelně měnit přístupový klíč 
 
 Obměna klíčů účtu služby Azure Storage:
 
-Pro každý účet úložiště, jehož klíč se změnil, vydejte příkaz [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Pro každý účet úložiště, jehož klíč se změnil, vydejte příkaz [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Příklad:
 
@@ -175,6 +178,6 @@ V příslušných externích zdrojích dat se nevyžadují žádné další změ
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o příkazu COPY nebo o základu při navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for SQL Data Warehouse](design-elt-data-loading.md).
-- Pro kurz načítání [použijte příkaz Copy k načtení dat z úložiště objektů BLOB v Azure do synapse SQL](load-data-from-azure-blob-storage-using-polybase.md).
+- Další informace o příkazu COPY nebo o základu při navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for Azure synapse Analytics](design-elt-data-loading.md).
+- Pro kurz načítání [použijte příkaz Copy k načtení dat z úložiště objektů BLOB v Azure do synapse SQL](./load-data-from-azure-blob-storage-using-copy.md).
 - Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).

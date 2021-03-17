@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2a2e9d429d494c35c49a5b0a3e10b291fd8f24a6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054521"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633933"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Spravované aplikace Azure s oznámeními
 
@@ -61,7 +61,7 @@ Informace o tom, jak začít, najdete v tématu [publikování aplikace katalogu
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Přidat Azure Marketplace oznámení o spravovaných aplikacích
-Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../../marketplace/create-new-azure-apps-offer.md).
 
 ![Azure Marketplace oznámení spravované aplikace v Azure Portal](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Aktivační události
@@ -70,12 +70,12 @@ Následující tabulka popisuje všechny možné kombinace EventType a Provision
 Typ události | ProvisioningState | Aktivační událost pro oznámení
 ---|---|---
 PUT | Přijato | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
-PUT | Úspěch | Úplné zřízení spravované aplikace bylo po vložení úspěšné.
-PUT | Failed | Chyba při zřizování instance aplikace v jakémkoli bodě.
-POUŽITA | Úspěch | Po úspěšné opravě instance spravované aplikace aktualizujte značky, zásady přístupu JIT nebo spravovanou identitu.
+PUT | Úspěšný | Úplné zřízení spravované aplikace bylo po vložení úspěšné.
+PUT | Neúspěšný | Chyba při zřizování instance aplikace v jakémkoli bodě.
+POUŽITA | Úspěšný | Po úspěšné opravě instance spravované aplikace aktualizujte značky, zásady přístupu JIT nebo spravovanou identitu.
 DELETE | odstraňování | Jakmile uživatel zahájí odstranění instance spravované aplikace.
 DELETE | Odstraněné | Po úplném a úspěšném odstranění spravované aplikace.
-DELETE | Failed | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
+DELETE | Neúspěšný | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
 ## <a name="notification-schema"></a>Schéma oznámení
 Když nastavíte koncový bod Webhooku pro zpracování oznámení, budete muset analyzovat datovou část, abyste získali důležité vlastnosti, které pak budou fungovat na oznámení. Služba Service Catalog a Azure Marketplace oznámení o spravovaných aplikacích poskytují mnoho stejných vlastností. V tabulce, která následuje za ukázkami, jsou popsaný dva malé rozdíly.
 
@@ -86,10 +86,10 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
-    "applicationDefinitionId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>"    
+    "applicationDefinitionId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>"    
 }
 
 ```
@@ -104,7 +104,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
-    "applicationDefinitionId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>",
+    "applicationDefinitionId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>",
     "error": {
         "code": "ErrorCode",
         "message": "error message",
@@ -127,7 +127,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
     "billingDetails": {
@@ -150,7 +150,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
     "billingDetails": {
@@ -178,7 +178,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 Parametr | Popis
 ---|---
-Typ | Typ události, která aktivovala oznámení. (Například PUT, PATCH, DELETE.)
+eventType | Typ události, která aktivovala oznámení. (Například PUT, PATCH, DELETE.)
 applicationId | Plně kvalifikovaný identifikátor prostředku spravované aplikace, pro kterou bylo oznámení aktivované.
 eventTime | Časové razítko události, která aktivovala oznámení (Datum a čas ve formátu UTC ISO 8601)
 provisioningState | Stav zřizování instance spravované aplikace. (Například úspěch, selhalo, odstranění, odstraněno.)

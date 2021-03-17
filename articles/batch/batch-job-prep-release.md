@@ -3,13 +3,13 @@ title: Vytváření úloh pro přípravu & dokončených úloh na výpočetních
 description: K minimalizaci přenosu dat do Azure Batch výpočetních uzlů a vyplňování úloh pro vyčištění uzlů při dokončování úloh můžete použít úkoly přípravy na úrovni úlohy.
 ms.topic: how-to
 ms.date: 02/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: 4bd7c87028dc01fdccecdb7beac765e74fb3435c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964358"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88919450"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úkolů přípravy úloh a uvolnění úloh na výpočetních uzlech Batch
 

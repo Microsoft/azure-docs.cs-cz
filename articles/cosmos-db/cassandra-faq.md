@@ -3,17 +3,19 @@ title: Nejčastější dotazy týkající se rozhraní API Cassandra pro Azure C
 description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API Cassandra pro Azure Cosmos DB.
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1368a3174af08f557b6d08f298fba015601d568c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167602"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030828"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Tento článek popisuje rozdíly mezi funkcemi Apache Cassandra a rozhraní API Cassandra v Azure Cosmos DB. Obsahuje také odpovědi na nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB.
 
@@ -75,15 +77,15 @@ Je nutné zjistit, jaké operace (a jejich objem) způsobují tento problém. M�
 
 K dispozici jsou metriky, které ukazují, jak se propustnost používá za hodiny, za dny a za sedm dní, napříč oddíly nebo v agregaci. Další informace najdete v tématu [monitorování a ladění pomocí metrik v Azure Cosmos DB](use-metrics.md).
 
-Diagnostické protokoly jsou vysvětleny v článku [Azure Cosmos DB diagnostické protokolování](logging.md) .
+Diagnostické protokoly jsou vysvětleny v článku [Azure Cosmos DB diagnostické protokolování](./monitor-cosmos-db.md) .
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Mapuje primární klíč na klíč oddílu Azure Cosmos DB konceptu?
 
-Ano, klíč oddílu se použije k umístění entity do správného umístění. V Azure Cosmos DB se používá k vyhledání správného logického oddílu, který je uložený na fyzickém oddílu. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku. Základní poznatkem tady je, že logický oddíl by neměl přecházet přes limit 20 GB.
+Ano, klíč oddílu se použije k umístění entity do správného umístění. V Azure Cosmos DB se používá k vyhledání správného logického oddílu, který je uložený na fyzickém oddílu. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partitioning-overview.md) článku. Základní poznatkem tady je, že logický oddíl by neměl přecházet přes limit 20 GB.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Co se stane, když získám oznámení, že je oddíl plný?
 
-Azure Cosmos DB je systém založený na smlouvě o úrovni služeb (SLA). Poskytuje neomezenou škálu a zaručuje latenci, propustnost, dostupnost a konzistenci. Toto neomezené úložiště je založené na horizontálním škálování dat a používá dělení jako klíčové pojmy. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku.
+Azure Cosmos DB je systém založený na smlouvě o úrovni služeb (SLA). Poskytuje neomezenou škálu a zaručuje latenci, propustnost, dostupnost a konzistenci. Toto neomezené úložiště je založené na horizontálním škálování dat a používá dělení jako klíčové pojmy. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partitioning-overview.md) článku.
 
 U počtu entit nebo položek na logický oddíl byste měli dodržovat limit 20 GB. Aby se zajistilo, že se vaše aplikace dobře škáluje, doporučujeme, abyste nevytvořili aktivní oddíl tím, *že budete ukládat* všechny informace v jednom oddílu a dotazovat se na něj. Tato chyba se může nacházet jenom v případě, že jsou vaše data nakloněná: to znamená, že máte spoustu dat pro jeden klíč oddílu (víc než 20 GB). Distribuci dat můžete najít pomocí portálu úložiště. Tuto chybu lze vyřešit tak, že znovu vytvoříte tabulku a vyberete podrobný primární (klíč oddílu), který umožňuje lepší distribuci dat.
 
@@ -133,11 +135,11 @@ Ano, hodnota TTL je podporována.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Jak můžu monitorovat infrastrukturu spolu s propustností?
 
-Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Další možnosti:
+Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Můžete:
 
-- Monitorovat [SLA](monitor-accounts.md)
+- Monitorovat [SLA](./monitor-cosmos-db.md)
 - Použití [metrik](use-metrics.md)
-- Použití [diagnostických protokolů](logging.md)
+- Použití [diagnostických protokolů](./monitor-cosmos-db.md)
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Které klientské sady SDK můžou pracovat s rozhraní API Cassandra?
 
@@ -174,7 +176,7 @@ Ne. Rozhraní API Cassandra podporuje [sekundární indexy](cassandra-secondary-
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Můžu novou rozhraní API Cassandra sadu SDK použít lokálně s emulátorem?
 
-Ano, tato možnost je podporována. Podrobnosti o tom, jak to povolit, najdete v článku [použití emulátoru Azure Cosmos pro místní vývoj a testování](local-emulator.md#cassandra-api) .
+Ano, tato možnost je podporována. Podrobnosti o tom, jak to povolit, najdete v článku [použití emulátoru Azure Cosmos DB pro místní vývoj a testování](local-emulator.md#cassandra-api) .
 
 
 ### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>Jak mohu migrovat data z clusterů Apache Cassandra do Azure Cosmos DB?
@@ -187,7 +189,7 @@ Informace o možnostech migrace najdete v článku [migrace dat do rozhraní API
 Poskytněte zpětnou vazbu pomocí [hlasu pro uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Další kroky
 

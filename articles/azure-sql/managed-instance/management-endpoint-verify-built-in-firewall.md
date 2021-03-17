@@ -6,22 +6,22 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 1d2fffabba3615394bdf96ed487177bf21f3ecec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d46518415dc56e2792ef090b0be654d538426f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708701"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853267"
 ---
-# <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Ověřte vestavěnou bránu firewall Azure SQL Managed instance
+# <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Ověření integrované brány firewall služby Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Povinná příchozí pravidla zabezpečení](connectivity-architecture-overview.md#mandatory-inbound-security-rules) Azure SQL Managed instance vyžadují, aby byly porty pro správu 9000, 9003, 1438, 1440 a 1452 otevřené z **libovolného zdroje** ve skupině zabezpečení sítě (NSG), která chrání SQL Managed instance. I když jsou tyto porty otevřeny na úrovni NSG, jsou chráněny na úrovni sítě pomocí integrované brány firewall.
+[Povinná příchozí pravidla zabezpečení](connectivity-architecture-overview.md#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) Azure SQL Managed instance vyžadují, aby byly porty pro správu 9000, 9003, 1438, 1440 a 1452 otevřené z **libovolného zdroje** ve skupině zabezpečení sítě (NSG), která chrání SQL Managed instance. I když jsou tyto porty otevřeny na úrovni NSG, jsou chráněny na úrovni sítě pomocí integrované brány firewall.
 
 ## <a name="verify-firewall"></a>Ověřit bránu firewall
 

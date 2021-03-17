@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116797"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219956"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -28,11 +28,11 @@ Pokud teprve začínáte, podívejte se na dokumentaci k [platformě Microsoft I
 Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](./index.yml).
 
 > [!TIP]
-> *Pomocník pro integraci* v Azure Portal vám může pomáhat při použití řady osvědčených postupů a doporučení. V Azure Portal vyberte libovolnou [registraci vaší aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a pak vyberte položku nabídky **Průvodce integrací (Preview)** , abyste mohli začít používat pomocníka.
+> *Pomocník pro integraci* v Azure Portal vám může pomáhat při použití řady osvědčených postupů a doporučení. V Azure Portal vyberte libovolnou [registraci vaší aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a pak vyberte položku nabídky **Pomocník pro integraci** , abyste mohli začít s pomocníkem.
 
 ## <a name="basics"></a>Základy
 
-![Zaškrtněte políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) a pochopte si [Zásady platformy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Ujistěte se, že vaše aplikace dodržuje podmínek, které jsou navržené tak, aby chránily uživatele a platformu.
+![Zaškrtněte políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) a pochopte si [Zásady platformy Microsoft](/legal/microsoft-identity-platform/terms-of-use). Ujistěte se, že vaše aplikace dodržuje podmínek, které jsou navržené tak, aby chránily uživatele a platformu.
 
 ## <a name="ownership"></a>Vlastnictví
 
@@ -68,7 +68,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) používá řešení pro moderní ověřování (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) k bezpečnému přihlášení uživatelů.
 
-![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) Neprogramuje přímo proti protokolům, jako je OAuth 2,0 a Open ID. Místo toho využijte [Microsoft Authentication Library (MSAL)](msal-overview.md). Knihovny MSAL bezpečně zabalí protokoly zabezpečení do snadno použitelné knihovny a získáte integrovanou podporu pro scénáře [podmíněného přístupu](../conditional-access/overview.md) , [jednotné přihlašování (SSO) v rámci jednotného přihlašování (SSO)](../manage-apps/what-is-single-sign-on.md)a integrovanou podporu ukládání tokenů do mezipaměti. Další informace najdete v seznamu podporovaných [klientských knihoven](reference-v2-libraries.md#microsoft-supported-client-libraries) a [knihoven middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) od Microsoftu a v seznamu [kompatibilních klientských knihoven třetích stran](reference-v2-libraries.md#compatible-client-libraries).<br/><br/>Pokud potřebujete pro ověřovací protokoly rukou, měli byste postupovat podle metodologie, jako je například [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Věnujte velkou pozornost hlediskům zabezpečení v specifikacích standardů pro jednotlivé protokoly.
+![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) Neprogramuje přímo proti protokolům, jako je OAuth 2,0 a Open ID. Místo toho využijte [Microsoft Authentication Library (MSAL)](msal-overview.md). Knihovny MSAL bezpečně zabalí protokoly zabezpečení do snadno použitelné knihovny a získáte integrovanou podporu pro scénáře [podmíněného přístupu](../conditional-access/overview.md) , [jednotné přihlašování (SSO) v rámci jednotného přihlašování (SSO)](../manage-apps/what-is-single-sign-on.md)a integrovanou podporu ukládání tokenů do mezipaměti. Další informace najdete v seznamu [klientských knihoven](reference-v2-libraries.md)podporovaných Microsoftem. Pokud je nutné pro ověřovací protokoly předat kód, měli byste postupovat podle rozhraní [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) nebo podobné metodologie vývoje. Věnujte velkou pozornost hlediskům zabezpečení v specifikacích standardů pro jednotlivé protokoly.
 
 ![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) migruje stávající aplikace z [knihovny Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) do [knihovny Microsoft Authentication Library](msal-overview.md). MSAL je řešení nejnovější platformy od Microsoftu a upřednostňuje se pro ADAL. Je k dispozici pro .NET, JavaScript, Android, iOS, macOS a je také ve verzi Public Preview pro Python a Java. Přečtěte si další informace o migraci aplikací [ADAL.NET](msal-net-migration.md), [ADAL.js](msal-compare-msal-js-and-adal-js.md)a [ADAL.NET a zprostředkovatelů iOS](msal-net-migration-ios-broker.md) .
 
@@ -100,11 +100,11 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) Otestujte svoji aplikaci se všemi možnými účty, které hodláte podporovat (například pracovní nebo školní účty, osobní účty Microsoft, podřízené účty a účty z svrchovaného účtu).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Prostudujte si podrobné informace týkající se v2.0:
 
-* [Microsoft Identity Platform (přehled verze 2.0)](v2-overview.md)
+* [Microsoft Identity Platform (přehled)](v2-overview.md)
 * [Referenční informace o protokolech platformy Microsoft Identity Platform](active-directory-v2-protocols.md)
 * [informace o přístupových tokenech](access-tokens.md)
 * [informace o tokenech ID](id-tokens.md)

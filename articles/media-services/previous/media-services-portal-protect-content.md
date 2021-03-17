@@ -3,7 +3,7 @@ title: Konfigurace zásad ochrany obsahu pomocí Azure Portal | Microsoft Docs
 description: Tento článek ukazuje, jak pomocí Azure Portal nakonfigurovat zásady ochrany obsahu. Tento článek také ukazuje, jak povolit dynamické šifrování pro vaše prostředky.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
@@ -12,19 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 8d0e2487632971579a1a473375eb2200f3a63a46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c6620158965271ba99f80c2fbd36504fdbea7ecf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084530"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010775"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí Azure Portal
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 >
 
  Pomocí Azure Media Services můžete své médium zabezpečit od okamžiku, kdy počítač opustí úložiště, zpracování a doručování. Media Services můžete použít k dynamickému šifrování obsahu pomocí standard AES (Advanced Encryption Standard) (AES) pomocí 128 bitových šifrovacích klíčů. Můžete ji také použít se společným šifrováním (CENC) pomocí technologie PlayReady nebo Widevine DRM (Správa digitálních práv) a Apple FairPlay. 
@@ -73,10 +75,10 @@ Pokud licenci nakonfigurujete jako trvalou, uloží se do trvalého úložiště
 ## <a name="widevine-license-template"></a>Šablona licencování Widevine
 Šablona licence Widevine nastaví funkce, které jsou povolené na vašich licencích Widevine.
 
-### <a name="basic"></a>Základní
+### <a name="basic"></a>Basic
 Když vyberete **základní**, vytvoří se šablona se všemi výchozími hodnotami.
 
-### <a name="advanced"></a>Upřesnit
+### <a name="advanced"></a>Pokročilý
 Další informace o šabloně Widevine Rights najdete v tématu [Přehled šablon licencí Widevine](media-services-widevine-license-template-overview.md).
 
 ![Pokročilá ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)
@@ -103,7 +105,7 @@ Když pro prostředek vyberete možnost **šifrování** , zobrazí se dvě mož
 ![Konfigurace šifrování](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DIGITÁLNÍCH
-1. Po výběru **DRM**se zobrazí různé zásady ochrany obsahu (které se musí konfigurovat tímto bodem) a sada protokolů streamování:
+1. Po výběru **DRM** se zobrazí různé zásady ochrany obsahu (které se musí konfigurovat tímto bodem) a sada protokolů streamování:
 
     a. **PlayReady a Widevine s MPEG-pomlčkou** dynamicky šifruje váš datový proud MPEG-spojovník pomocí PlayReady a Widevine několikanásobnou.
 
@@ -115,7 +117,7 @@ Když pro prostředek vyberete možnost **šifrování** , zobrazí se dvě mož
     
     e. **Fairplay jenom s HLS** dynamicky šifruje datový proud HLS pomocí Fairplay.
 
-1. Pokud chcete povolit šifrování FairPlay, v okně **Content Protection globální nastavení** vyberte **Konfigurace Fairplay**. Pak vyberte **certifikát aplikace**a zadejte **tajný klíč aplikace**.
+1. Pokud chcete povolit šifrování FairPlay, v okně **Content Protection globální nastavení** vyberte **Konfigurace Fairplay**. Pak vyberte **certifikát aplikace** a zadejte **tajný klíč aplikace**.
 
     ![Typ šifrování](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 

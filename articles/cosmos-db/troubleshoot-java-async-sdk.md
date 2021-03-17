@@ -10,14 +10,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b39a74bd06f942cf21d201c8cef48bc6dfc57d46
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321050"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548082"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Async Java SDK v2 s účty SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Sada Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
@@ -26,7 +27,7 @@ ms.locfileid: "87321050"
 > 
 
 > [!IMPORTANT]
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte [Průvodce odstraňováním potíží](troubleshoot-java-sdk-v4-sql.md)Azure Cosmos DB Java SDK v4. Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte [Průvodce odstraňováním potíží](troubleshoot-java-sdk-v4-sql.md)Azure Cosmos DB Java SDK v4. Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) Guide to upgrade. 
 >
 > Tento článek popisuje řešení potíží pouze Azure Cosmos DB Async Java SDK v2. Další informace najdete v [poznámkách k verzi](sql-api-sdk-async-java.md)Azure Cosmos DB ASYNC Java SDK v2, v tématu [úložiště Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) a [tipy ke zvýšení výkonu](performance-tips-async-java.md) .
 >
@@ -63,17 +64,17 @@ Počet povolených otevřených souborů, které jsou označeny jako "soubor", m
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portů Azure SNAT (PAT)
 
-Pokud je vaše aplikace nasazená v Azure Virtual Machines bez veřejné IP adresy, ve výchozím nastavení [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Pokud je vaše aplikace nasazená v Azure Virtual Machines bez veřejné IP adresy, ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports).
 
  Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu a proces z virtuálního počítače se pokusí připojit k veřejné IP adrese. Omezení Azure SNAT se vyhnete dvěma řešením:
 
-* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
+    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl).
 * Přiřaďte k VIRTUÁLNÍmu počítači Azure veřejnou IP adresu.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nejde se připojit ke službě – firewall
-``ConnectTimeoutException``indikuje, že sada SDK nemůže získat přístup ke službě.
+``ConnectTimeoutException`` indikuje, že sada SDK nemůže získat přístup ke službě.
 Při použití přímého režimu se může zobrazit chyba podobná této:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
@@ -175,7 +176,7 @@ Pomocí nástroje `observeOn(customScheduler)` uvolníte vstupně-výstupní vl�
 
 ### <a name="connection-pool-exhausted-issue"></a>Problém vyčerpání fondu připojení
 
-`PoolExhaustedException`je selhání na straně klienta. Tato chyba znamená, že zatížení vaší aplikace je vyšší než to, co může poskytovat fond připojení sady SDK. Zvyšte velikost fondu připojení nebo distribuujte zatížení více aplikací.
+`PoolExhaustedException` je selhání na straně klienta. Tato chyba znamená, že zatížení vaší aplikace je vyšší než to, co může poskytovat fond připojení sady SDK. Zvyšte velikost fondu připojení nebo distribuujte zatížení více aplikací.
 
 ### <a name="request-rate-too-large"></a>Příliš velký počet požadavků
 Tato chyba je selhání na straně serveru. Indikuje, že jste využili zřízenou propustnost. Zkuste to znovu později. Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce.
@@ -276,5 +277,3 @@ Mnoho připojení ke koncovému bodu Azure Cosmos DB může být ve `CLOSE_WAIT`
 [Enable client SDK logging]: #enable-client-sice-logging
 [Omezení počtu připojení na hostitelském počítači]: #connection-limit-on-host
 [Vyčerpání portů Azure SNAT (PAT)]: #snat
-
-

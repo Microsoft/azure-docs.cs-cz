@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ccf755a73cafa4b855f602aa18246d710e5e1ff
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551740"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Kurz: Azure Active Directory integrace s ENVI MMIS
 
@@ -27,7 +27,7 @@ Integrace ENVI MMIS se službou Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k ENVI MMIS (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ENVI MMIS, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování ENVI MMIS](#configure-envi-mmis-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování ENVI MMIS](#configure-envi-mmis-single-sign-on)** , abyste na straně aplikace nakonfigurovali nastavení jednoho Sign-On.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte ENVI MMIS Test User](#create-envi-mmis-test-user)** – abyste měli protějšek Britta Simon v ENVI MMIS, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,13 +93,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ENVI MMI
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** kliknutím na **Upravit** ikonu otevřete základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na **Upravit** ikona a otevřete DIALOGOVÉ okno **základní konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![ENVI MMIS, informace o jednotném přihlašování v doméně a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky zobrazující konfiguraci "základní S A M L" se zvýrazněným tlačítkem "identifikátor", "odpovědět U R L" a "Uložit".](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -114,7 +114,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ENVI MMI
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory ENVI MMIS](mailto:support@ioscorp.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -128,29 +128,29 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ENVI MMI
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-envi-mmis-single-sign-on"></a>Konfigurace jednotného přihlašování ENVI MMIS
+### <a name="configure-envi-mmis-single-sign-on"></a>Konfigurace ENVI MMIS Single Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu ENVI MMIS jako správce.
 
 2. Klikněte na kartu **moje doména** .
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure1.png)
+    ![Snímek obrazovky s vybraným názvem moje doména v nabídce uživatele](./media/envimmis-tutorial/configure1.png)
 
 3. Klikněte na **Upravit**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure2.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko pro úpravy](./media/envimmis-tutorial/configure2.png)
 
 4. Zaškrtněte políčko **použít vzdálené ověřování** a potom v rozevíracím seznamu **typ ověřování** vyberte **http přesměrování** .
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure3.png)
+    ![Snímek obrazovky, který zobrazuje kartu Podrobnosti s zaškrtnutým políčkem použít vzdálené ověřování a je zaškrtnuté políčko "H T T P redirect".](./media/envimmis-tutorial/configure3.png)
 
 5. Vyberte kartu **prostředky** a pak klikněte na **Odeslat metadata**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure4.png)
+    ![Snímek obrazovky zobrazující kartu prostředky s vybranou akcí odeslat metadata](./media/envimmis-tutorial/configure4.png)
 
 6. V překryvném okně **nahrát metadata** proveďte následující kroky:
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure5.png)
+    ![Snímek obrazovky, který zobrazuje automaticky otevírané okno pro nahrávání metadat se zvolenou možností "soubor" a ikona zvolit soubor a tlačítko OK se zvýrazní.](./media/envimmis-tutorial/configure5.png)
 
     a. V rozevíracím seznamu **Odeslat z** vyberte možnost **soubor** .
 
@@ -160,7 +160,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ENVI MMI
 
 7. Po nahrání staženého souboru metadat se pole vyplní automaticky. Kliknout na **aktualizovat**
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure6.png)
+    ![Tlačítko pro konfiguraci jednoho Sign-On Uložit](./media/envimmis-tutorial/configure6.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -185,7 +185,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -193,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ENVI MMIS**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **ENVI MMIS**.
 
@@ -223,11 +223,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k ENVI MMIS, musí se zřídit v
 
 2. Klikněte na kartu **seznam uživatelů** .
 
-    ![Přidat zaměstnance](./media/envimmis-tutorial/user1.png)
+    ![Snímek obrazovky, který zobrazuje nabídku uživatel se zvoleným seznamem uživatelů](./media/envimmis-tutorial/user1.png)
 
 3. Klikněte na tlačítko **Přidat uživatele** .
 
-    ![Přidat zaměstnance](./media/envimmis-tutorial/user2.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "uživatelé" s vybraným tlačítkem Přidat uživatele.](./media/envimmis-tutorial/user2.png)
 
 4. V části **Přidat uživatele** proveďte následující kroky:
 
@@ -251,13 +251,12 @@ Aby se uživatelé Azure AD mohli přihlašovat k ENVI MMIS, musí se zřídit v
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ENVI MMIS, měli byste být automaticky přihlášeni k ENVI MMIS, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ENVI MMIS, měli byste být automaticky přihlášeni k ENVI MMIS, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

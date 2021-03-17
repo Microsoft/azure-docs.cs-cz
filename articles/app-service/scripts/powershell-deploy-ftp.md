@@ -5,17 +5,17 @@ tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: fd01e42570a10b0b9f9be182690dbd1daca5b896
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 90c4a30243569c07e1a70ad46c8b2f7e70d493b2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083255"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005575"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Nahrání souborů do webové aplikace pomocí FTP
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pomocí FTP nasadí kód vaší webové aplikace (pomocí metody [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)).
+Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pomocí FTP nasadí kód vaší webové aplikace (pomocí metody [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile)).
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 

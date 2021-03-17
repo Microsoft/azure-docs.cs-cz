@@ -3,17 +3,17 @@ title: Co je Azure IoT Central | Microsoft Docs
 description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT a pomáhá snižovat zatížení a náklady na operace správy IoT a vývoj. Tento článek obsahuje přehled funkcí Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: mvc, contperf-fy21q2
+ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042713"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833809"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak IoT Central:
 
 Dokumentace IoT Central odkazuje na čtyři osobyy, které komunikují s aplikací IoT Central:
 
-- _Tvůrce řešení_ zodpovídá za [Definování typů zařízení](howto-set-up-template.md) , která se připojují k aplikaci, a přizpůsobení aplikace pro operátor.
+- _Tvůrce řešení_ zodpovídá za [Vytvoření aplikace](quick-deploy-iot-central.md), [konfiguraci pravidel a akcí](quick-configure-rules.md), [Definování integrace s jinými službami](howto-export-data.md)a další přizpůsobení aplikace pro operátory a vývojáře zařízení.
 - _Operátor_ [spravuje zařízení](howto-manage-devices.md) připojená k aplikaci.
 - _Správce_ zodpovídá za úlohy správy, jako je například Správa [rolí uživatelů a oprávnění](howto-administer.md) v rámci aplikace.
 - _Vývojář zařízení_ [vytvoří kód, který běží na zařízení](concepts-telemetry-properties-commands.md) nebo [IoT Edge modul](concepts-iot-edge.md) připojený k vaší aplikaci.
@@ -50,14 +50,21 @@ Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit konkr�
 
 Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je plán, který definuje charakteristiky a chování typu zařízení, například:
 
-- Telemetrii, kterou posílá.
-- Obchodní vlastnosti, které můžete upravit operátor
-- Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení
-- Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení.
+- Telemetrii, kterou posílá. Mezi příklady patří teplota a vlhkost. Telemetrie jsou streamovaná data.
+- Obchodní vlastnosti, které můžete upravit operátor Mezi příklady patří adresa zákazníka a datum poslední služby.
+- Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení Například stav ventilu buď otevřený, nebo vypnutý.
+- Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení. Například cílovou teplotu pro zařízení.
+- Příkazy, které může operátor volat, které se spouštějí na zařízení. Například příkaz pro vzdálené restartování zařízení.
 
 Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 
-- _Model schopností zařízení_ , který popisuje možnosti, které by zařízení mělo implementovat, jako je například telemetrie, kterou posílá, a vlastnosti, které vystavuje.
+- _Model zařízení_ , který popisuje možnosti, které zařízení má implementovat. Mezi možnosti zařízení patří:
+
+  - Telemetrie IT, která se má IoT Central.
+  - Vlastnosti jen pro čtení, které používá k hlášení stavu do IoT Central.
+  - Vlastnosti s možností zápisu, které obdrží z IoT Central pro nastavení stavu zařízení.
+  - Příkazy volané z IoT Central.
+
 - Vlastnosti cloudu, které nejsou uložené na zařízení.
 - Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
 
@@ -65,9 +72,9 @@ Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 
 Jako tvůrce řešení máte k dispozici několik možností pro vytváření šablon zařízení:
 
-- Navrhněte šablonu zařízení v IoT Central a potom implementujte svůj model schopností zařízení do kódu zařízení.
-- Vytvořte model schopností zařízení pomocí nástroje Visual Studio Code a publikujte model do úložiště. Implementujte kód zařízení z modelu a připojte své zařízení k aplikaci IoT Central. IoT Central najde model schopností zařízení z úložiště a vytvoří pro vás jednoduchou šablonu zařízení.
-- Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte jakékoli vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
+- Navrhněte šablonu zařízení v IoT Central a potom v kódu zařízení implementujte svůj model zařízení.
+- Vytvořte model zařízení pomocí nástroje Visual Studio Code a publikujte model do úložiště. Implementujte kód zařízení z modelu a připojte své zařízení k aplikaci IoT Central. IoT Central najde model zařízení z úložiště a vytvoří pro vás jednoduchou šablonu zařízení.
+- Vytvořte model zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Ručně importujte model zařízení do aplikace IoT Central a pak přidejte jakékoli vlastnosti cloudu, vlastní nastavení a řídicí panely, které aplikace IoT Central potřebuje.
 
 Jako tvůrce řešení můžete použít IoT Central k vygenerování kódu pro testovací zařízení pro ověření šablon zařízení.
 
@@ -107,7 +114,7 @@ Sestavujte [vlastní pravidla](tutorial-create-telemetry-rules.md) na základě 
 
 ## <a name="integrate-with-other-services"></a>Integrace s ostatními službami
 
-Jako aplikační platforma IoT Central umožňuje transformovat data IoT do obchodních přehledů, které mají za úkol reagovat. Příklady, jak můžete integrovat IoT Central s obchodními aplikacemi, najdete v tématu [pravidla](./tutorial-create-telemetry-rules.md), [Export dat](./howto-export-data.md)a [veřejné REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) :
+Jako aplikační platforma IoT Central umožňuje transformovat data IoT do obchodních přehledů, které mají za úkol reagovat. Příklady, jak můžete integrovat IoT Central s obchodními aplikacemi, najdete v tématu [pravidla](./tutorial-create-telemetry-rules.md), [Export dat](./howto-export-data.md)a [veřejné REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) :
 
 ![Jak IoT Central můžou transformovat data IoT](media/overview-iot-central/transform.png)
 
@@ -130,7 +137,7 @@ Aplikace IoT Central plně hostují Microsoft, což snižuje nároky na správu 
 IoT Central aplikaci můžete vytvořit pomocí bezplatné zkušební verze 7 dní nebo použít Cenový tarif Standard.
 
 - Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.
-- Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete zvolit Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Přečtěte si další informace o [cenách IoT Central](https://aka.ms/iotcentral-pricing).
+- Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. v prvním ze dvou zařízení, která jsou zdarma, můžete zvolit Cenový tarif **Standard 0**, **Standard 1** nebo **Standard 2** . Přečtěte si další informace o [cenách IoT Central](https://aka.ms/iotcentral-pricing).
 
 ## <a name="quotas"></a>Kvóty
 
@@ -144,17 +151,11 @@ Každé předplatné Azure má výchozí kvóty, které by mohly mít vliv na ro
 - Typy schématu pole nejsou podporovány.
 - Podporovaná je jenom sada SDK pro zařízení C a sady SDK pro Node.js zařízení a služeb.
 - IoT Central je v současné době k dispozici v místech USA, Evropa, Asie a Tichomoří, Austrálie, Spojené království a Japonsko.
-- Nemůžete použít šablonu **vlastní aplikace (starší verze)** v umístěních Spojeného království a Japonsko.
-- Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když máte přehled o IoT Central, tady je několik navrhovaných dalších kroků:
 
-- Seznamte se s dostupnými [technologiemi a službami Azure pro vytváření řešení IoT](../../iot-fundamentals/iot-services-and-technologies.md).
+- Pokud jste vývojářem zařízení a chcete podrobně do nějakého kódu, je navržený další krok [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device.md).
 - Seznamte se s [uživatelským rozhraním Azure IoT Central](overview-iot-central-tour.md).
 - Začněte [vytvořením aplikace Azure IoT Central](quick-deploy-iot-central.md).
-- Naučte se [připojit zařízení Azure IoT Edge](./tutorial-add-edge-as-leaf-device.md).
-- Přečtěte si další informace o [technologiích a službách Azure IoT](../../iot-fundamentals/iot-services-and-technologies.md).
-
-Pokud jste vývojářem zařízení a chcete podrobně do nějakého kódu, je navržený další krok [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device-nodejs.md).

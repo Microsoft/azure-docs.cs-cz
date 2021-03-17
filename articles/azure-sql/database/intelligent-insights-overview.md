@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 96557a6049b316a69c32e96012206eab128e024a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986500"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592073"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Dostupné možnosti Intelligent Insights jsou:
 
 | Možnost Intelligent Insights | Podpora Azure SQL Database | Podpora spravované instance Azure SQL |
 | :----------------------------- | ----- | ----- |
-| **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Ano | Ano |
-| **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Ano | Ano |
-| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Ano | Ano |
-| **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Ano | Ano |
+| **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Yes | Yes |
+| **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Yes | Yes |
+| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Yes | Yes |
+| **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Yes | Yes |
 
 > [!NOTE]
 > Inteligentní přehledy jsou funkce ve verzi Preview, která není dostupná v následujících oblastech: Západní Evropa, Severní Evropa, Západní USA 1 a Východní USA 1.
@@ -85,7 +85,7 @@ Dostupné možnosti Intelligent Insights jsou:
 
 Výstup Intelligent Insights může být streamování do jednoho z několika cílů pro účely analýzy:
 
-- Výstup streamování do Log Analyticsho pracovního prostoru se dá použít s [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) k zobrazení přehledů prostřednictvím uživatelského rozhraní Azure Portal. Toto je integrované řešení Azure a nejběžnější způsob, jak zobrazit přehledy.
+- Výstup streamování do Log Analyticsho pracovního prostoru se dá použít s [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) k zobrazení přehledů prostřednictvím uživatelského rozhraní Azure Portal. Toto je integrované řešení Azure a nejběžnější způsob, jak zobrazit přehledy.
 - Výstup streamování do Azure Event Hubs se dá použít pro vývoj vlastních scénářů monitorování a upozorňování.
 - Výstup streamování do Azure Storage lze použít pro vlastní vývoj aplikací, například pro vlastní vytváření sestav, dlouhodobé archivaci dat a tak dále.
 
@@ -107,7 +107,7 @@ Následující příklad ukazuje Intelligent Insights zobrazení prostřednictv�
 
 ### <a name="set-up-with-event-hubs"></a>Nastavení pomocí Event Hubs
 
-Pokud chcete použít Intelligent Insights s Event Hubs, nakonfigurujte Intelligent Insights data protokolu pro streamování do Event Hubs, viz [metriky a protokolování diagnostiky](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) a [streamování protokolů Azure diagnostics na Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Pokud chcete použít Intelligent Insights s Event Hubs, nakonfigurujte Intelligent Insights data protokolu pro streamování do Event Hubs, viz [metriky a protokolování diagnostiky](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) a [streamování protokolů Azure diagnostics na Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 Pokud chcete použít Event Hubs k nastavení vlastního monitorování a upozorňování, přečtěte si téma [co dělat s protokoly metrik a diagnostikami v Event Hubs](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs).
 
@@ -158,7 +158,7 @@ Vygenerované přehledy obsahují počet požadavků s časovým limitem a poče
 
 ## <a name="excessive-wait-times"></a>Nadměrné doby čekání
 
-Model nadměrné doby čekání sleduje jednotlivé databázové dotazy. Detekuje neobvykle vysoké statistiky čekání na dotaz, které překračují absolutní prahové hodnoty spravované systémem. Následující dotaz nenáročné metriky čekací doby v [úložišti dotazů (sys. query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql):
+Model nadměrné doby čekání sleduje jednotlivé databázové dotazy. Detekuje neobvykle vysoké statistiky čekání na dotaz, které překračují absolutní prahové hodnoty spravované systémem. Následující dotaz nenáročné metriky čekací doby v [úložišti dotazů (sys.query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql):
 
 - Dosažení limitů prostředků
 - Dosažení limitů prostředků elastického fondu

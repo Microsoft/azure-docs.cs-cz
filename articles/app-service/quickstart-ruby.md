@@ -6,25 +6,25 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 45c87f690c24e989a797cbd82147b9125e447e79
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084985"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561779"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Vytvoření aplikace v Ruby na železnici v App Service
 
-[Azure App Service v systému Linux](overview.md#app-service-on-linux) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v Ruby na železnici, která App Service na Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Azure App Service v systému Linux](overview.md#app-service-on-linux) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v Ruby na železnici, která App Service na Linux pomocí [Cloud Shell](../cloud-shell/overview.md).
 
 > [!NOTE]
-> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít nepodporovanou verzi Ruby, je nutné [ji spustit ve vlastním kontejneru](containers/quickstart-docker-go.md).
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít nepodporovanou verzi Ruby, je nutné [ji spustit ve vlastním kontejneru](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux).
 
 ![Hello World](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Nainstalovat Ruby 2,6 nebo vyšší</a>
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
@@ -69,7 +69,7 @@ Ve webovém prohlížeči přejděte na adresu `http://localhost:3000` a místn�
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Přejděte do aplikace a podívejte se na nově vytvořenou webovou aplikaci s použitím integrované image. Nahraďte _ &lt; název aplikace>_ názvem vaší webové aplikace.
+Přejděte do aplikace a podívejte se na nově vytvořenou webovou aplikaci s použitím integrované image. Nahraďte _&lt; název aplikace>_ názvem vaší webové aplikace.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -85,7 +85,7 @@ Spuštěním následujících příkazů nasaďte místní aplikaci do vaší we
 
 ```bash
 git remote add azure <Git deployment URL from above>
-git push azure master
+git push azure main
 ```
 
 Zkontrolujte, že operace vzdáleného nasazení hlásí úspěch. Příkazy vygenerují výstup podobný následujícímu textu:
@@ -104,7 +104,7 @@ remote: Running post deployment command(s)...
 remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git
-   a6e73a2..ae34be9  master -> master
+   a6e73a2..ae34be9  main -> main
 ```
 
 Až se nasazení dokončí, počkejte asi 10 sekund, než se webová aplikace restartuje, a pak přejděte do webové aplikace a ověřte výsledky.

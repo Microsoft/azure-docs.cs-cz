@@ -5,12 +5,13 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: d5f6d3502662d48cf6ff750c9a695fadfeac97c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3c20d86bd29d60eca328a44ab5d5d600bbf4da4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256230"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89010932"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurace nastavení FabricTransport pro Reliable Actors
 

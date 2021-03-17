@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data ze seznamu SharePointu Online do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83871913"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177857"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,8 +50,8 @@ Konektor online seznamu SharePointu používá pro připojení k SharePointu ov�
     1. Otevřete odkaz na web SharePointu Online `https://[your_site_url]/_layouts/15/appinv.aspx` , např. (nahraďte adresu URL webu).
     2. Vyhledejte ID aplikace, které jste zaregistrovali, vyplňte prázdná pole a klikněte na vytvořit.
 
-        - Doména aplikace:`localhost.com`
-        - Adresa URL pro přesměrování:`https://www.localhost.com`
+        - Doména aplikace: `localhost.com`
+        - Adresa URL pro přesměrování: `https://www.localhost.com`
         - XML žádosti o oprávnění:
 
         ```xml
@@ -79,14 +74,14 @@ Následující části obsahují podrobné informace o vlastnostech, které mů�
 
 Pro propojenou službu seznamu SharePointu Online jsou podporovány následující vlastnosti:
 
-| **Vlastnost**        | **Popis**                                              | **Požadováno** |
+| **Vlastnost**        | **Popis**                                              | **Povinné** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Yes          |
-| siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
-| servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Yes          |
-| servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes          |
-| tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Yes          |
-| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No           |
+| typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Ano          |
+| siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Ano          |
+| servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Ano          |
+| servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano          |
+| tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Ano          |
+| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne           |
 
 **Příklad:**
 
@@ -112,10 +107,10 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). V následující části najdete seznam vlastností podporovaných datovou sadou tabulky SAP.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Yes |
-| listName | Název seznamu SharePointu Online | Yes |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Ano |
+| listName | Název seznamu SharePointu Online | Ano |
 
 **Příklad**
 
@@ -145,11 +140,11 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Yes |
-| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | No |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Ano |
+| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | Ne |
+| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | Ne |
 
 **Příklad**
 
@@ -183,6 +178,9 @@ Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** ak
 ]
 ```
 
+> [!NOTE]
+> V Azure Data Factory nemůžete pro zdroj seznamu SharePointu Online vybrat více než jeden datový typ *volby* .
+
 ## <a name="data-type-mapping-for-sharepoint-online-list"></a>Mapování datových typů pro seznam SharePointu Online
 
 Při kopírování dat ze seznamu SharePointu Online se používají následující mapování mezi datovými typy seznamu SharePointu Online a Azure Data Factory pro dočasné datové typy. 
@@ -192,18 +190,18 @@ Při kopírování dat ze seznamu SharePointu Online se používají následují
 | Jeden řádek textu                             | Edm.String                                           | Řetězec                                   |
 | Více řádků textu                          | Edm.String                                           | Řetězec                                   |
 | Volba (nabídka pro výběr)                    | Edm.String                                           | Řetězec                                   |
-| Číslo (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
-| Měna ($, y, €)                              | Edm.Double                                           | Double                                   |
+| Číslo (1, 1,0, 100)                            | Edm.Double                                           | dvojité                                   |
+| Měna ($, y, &euro; )                              | Edm.Double                                           | dvojité                                   |
 | Datum a čas                                   | EDM. DateTime                                         | DateTime                                 |
 | Vyhledávání (informace již na tomto webu)       | Edm.Int32                                            | Int32                                    |
 | Ano/ne (zaškrtávací políčko)                              | Edm.Boolean                                          | Logická hodnota                                  |
 | Osoba nebo Skupina                                 | Edm.Int32                                            | Int32                                    |
 | Hypertextový odkaz nebo obrázek                            | Edm.String                                           | Řetězec                                   |
 | Počítané (výpočet na základě jiných sloupců) | EDM. String/EDM. Double/EDM. DateTime/EDM. Boolean | String, Double/DateTime/Boolean     |
-| Příloha                                      | Nepodporuje se                                        |                                          |
-| Výsledek úkolu                                    | Nepodporuje se                                        |                                          |
-| Externí data                                   | Nepodporuje se                                        |                                          |
-| Spravovaná metadata                                | Nepodporuje se                                        |                                          |
+| Příloha                                      | Nepodporováno                                        |                                          |
+| Výsledek úkolu                                    | Nepodporováno                                        |                                          |
+| Externí data                                   | Nepodporováno                                        |                                          |
+| Spravovaná metadata                                | Nepodporováno                                        |                                          |
 
 ## <a name="copy-file-from-sharepoint-online"></a>Kopírovat soubor ze SharePointu Online
 
@@ -219,7 +217,7 @@ Můžete zkopírovat soubor ze SharePointu Online pomocí **aktivity webu** pro 
     - **Metoda**: post
     - **Hlavičky**:
         - Content-Type: application/x-www-form-urlencoded
-    - **Tělo**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Nahraďte ID klienta, tajný klíč klienta, ID tenanta a název tenanta.
+    - **Tělo**:  `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Nahraďte ID klienta, tajný klíč klienta, ID tenanta a název tenanta.
 
     > [!CAUTION]
     > Nastavte možnost zabezpečený výstup na hodnotu true v aktivitě webu, aby se zabránilo přihlášení hodnoty tokenu do prostého textu. Všechny další aktivity, které tuto hodnotu využívají, by měly mít možnost zabezpečeného vstupu nastavenou na hodnotu true.
@@ -234,6 +232,9 @@ Můžete zkopírovat soubor ze SharePointu Online pomocí **aktivity webu** pro 
         - **Metoda požadavku**: Get
         - **Další záhlaví**: použijte následující výraz `@{concat('Authorization: Bearer ', activity('<Web-activity-name>').output.access_token)}` , který používá token nosiče generovaný nadřazeným webem aktivity jako autorizační záhlaví. Nahraďte název webové aktivity.
     - Nakonfigurujte jímku aktivity kopírování obvyklým způsobem.
+
+> [!NOTE]
+> I v případě, že aplikace Azure AD má `FullControl` oprávnění k SharePointu Online, nemůžete kopírovat soubory z knihoven dokumentů se zapnutou technologií IRM.
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

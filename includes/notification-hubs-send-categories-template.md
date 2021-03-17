@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfd5d42d83046c9c5b0bc3a78fabec08da5da646
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228153"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027321"
 ---
 V této části odešlete nejnovější zprávy jako šablonové oznámení se značkami z konzolové aplikace .NET.
 
 1. Ve Visual Studiu vytvořte novou konzolovou aplikaci Visual C#:
     1. V nabídce vyberte **soubor**  >  **Nový**  >  **projekt**.
-    1. V části **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** pro C# v seznamu šablon a vyberte **Další**.
+    1. V části **vytvořit nový projekt** vyberte **Konzolová aplikace (.NET Framework)** pro C# v seznamu šablon a vyberte **Další**.
     1. Zadejte název aplikace.
-    1. Pro **řešení**zvolte možnost **Přidat do řešení**a vyberte **vytvořit** a vytvořte projekt.
+    1. Pro **řešení** zvolte možnost **Přidat do řešení** a vyberte **vytvořit** a vytvořte projekt.
 
 1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** a pak v okně konzoly spusťte následující příkaz:
 
@@ -83,7 +83,7 @@ V této části odešlete nejnovější zprávy jako šablonové oznámení se z
 
 <!-- URLs. -->
 [Get started with Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
-[Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
+[Notification Hubs REST interface]: /previous-versions/azure/reference/dn223264(v=azure.100)
+[Add push notifications for Mobile Apps]: /previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft. Azure. NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

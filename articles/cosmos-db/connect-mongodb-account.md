@@ -6,16 +6,21 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 03/02/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 0a25301bac125cd95b975a5ba1fc0cce47b56abd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+adobe-target: true
+adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./connect-mongodb-account-experimental
+ms.openlocfilehash: b3e10931307914f1471b8a6fbffd38953ee4717b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954090"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659473"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB ke službě Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Zjistěte, jak připojit aplikaci MongoDB ke službě Azure Cosmos DB pomocí připojovacího řetězce MongoDB. Pak můžete jako úložiště dat pro aplikaci MongoDB použít databázi Azure Cosmos DB.
 
@@ -26,7 +31,7 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure. Pokud nemáte účet Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) hned teď.
+- Účet Azure: Pokud nemáte účet Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) hned teď.
 - Účet Cosmos. Pokyny najdete v tématu [Vytvoření webové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a .NET SDK](create-mongodb-dotnet.md).
 
 ## <a name="get-the-mongodb-connection-string-by-using-the-quick-start"></a>Získání připojovacího řetězce MongoDB pomocí rychlého startu
@@ -69,6 +74,12 @@ Hodnoty tohoto řetězce jsou k dispozici v okně **připojovací řetězec** zo
 Představte si třeba účet zobrazený v okně **připojovací řetězec** . Platný připojovací řetězec:
 
 `mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true`
+
+## <a name="driver-requirements"></a>Požadavky na ovladače
+
+Všechny ovladače, které podporují síťový protokol verze 3,4 nebo vyšší, budou podporovat rozhraní Azure Cosmos DB API pro MongoDB.
+
+Konkrétně musí klientské ovladače podporovat rozšíření TLS (identifikace názvu služby) a/nebo parametr připojovacího řetězce appName. `appName`Je-li zadán parametr, musí být zahrnut jako v hodnotě připojovacího řetězce v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 

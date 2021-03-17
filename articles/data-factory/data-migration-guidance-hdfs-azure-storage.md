@@ -1,22 +1,18 @@
 ---
 title: Migrace dat z místního clusteru Hadoop do Azure Storage
 description: Naučte se používat Azure Data Factory k migraci dat z místního clusteru Hadoop do Azure Storage.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417131"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367788"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory 
 
@@ -26,7 +22,7 @@ Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mecha
 
 Data Factory nabízí dva základní přístupy k migraci dat z místního HDFS do Azure. Můžete vybrat přístup v závislosti na vašem scénáři. 
 
-- **Data Factory režim DistCp** (doporučeno): v Data Factory můžete k kopírování souborů do Azure Blob Storage (včetně [dvoufázové kopie](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) nebo Azure Data Lake Store Gen2 použít [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (distribuované kopírování). Pomocí Data Factory integrovaných s DistCp můžete využít stávající výkonný cluster, abyste dosáhli nejlepší propustnosti kopírování. Získáte také výhodu flexibilního plánování a sjednocení monitorovacího prostředí od Data Factory. V závislosti na konfiguraci Data Factory se aktivita kopírování automaticky vytvoří příkaz DistCp, odešle data do vašeho clusteru Hadoop a pak monitoruje stav kopírování. Pro migraci dat z místního clusteru Hadoop do Azure doporučujeme Data Factory režim DistCp.
+- **Data Factory režim DistCp** (doporučeno): v Data Factory můžete k kopírování souborů do Azure Blob Storage (včetně [dvoufázové kopie](./copy-activity-performance.md#staged-copy)) nebo Azure Data Lake Store Gen2 použít [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (distribuované kopírování). Pomocí Data Factory integrovaných s DistCp můžete využít stávající výkonný cluster, abyste dosáhli nejlepší propustnosti kopírování. Získáte také výhodu flexibilního plánování a sjednocení monitorovacího prostředí od Data Factory. V závislosti na konfiguraci Data Factory se aktivita kopírování automaticky vytvoří příkaz DistCp, odešle data do vašeho clusteru Hadoop a pak monitoruje stav kopírování. Pro migraci dat z místního clusteru Hadoop do Azure doporučujeme Data Factory režim DistCp.
 - **Data Factory režim nativního prostředí Integration runtime**: DistCp není možnost ve všech scénářích. Například v prostředí Azure Virtual Networks nástroj DistCp nepodporuje privátní partnerské vztahy Azure ExpressRoute s koncovým bodem Azure Storage virtuální sítě. V některých případech navíc nebudete chtít použít stávající cluster Hadoop jako modul pro migraci dat, takže nebudete mít v clusteru velké zatížení, což může mít vliv na výkon stávajících úloh ETL. Místo toho můžete použít nativní schopnost prostředí Data Factory Integration runtime jako modul, který kopíruje data z místního HDFS do Azure.
 
 Tento článek poskytuje následující informace o obou metodách:
@@ -45,11 +41,11 @@ DistCp používá MapReduce k ovlivnění distribuce, zpracování a obnovení c
 
 Režim Data Factory Native Integration runtime také umožňuje paralelismus na různých úrovních. Paralelismus můžete využít k plnému využití šířky pásma sítě, IOPS úložiště a šířky pásma pro maximalizaci propustnosti přesunu dat:
 
-- Jedna aktivita kopírování může využít výhod škálovatelných výpočetních prostředků. V místním prostředí Integration runtime můžete ručně škálovat počítač nebo škálovat na více počítačů ([až na čtyři uzly](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Jedna aktivita kopírování rozdělí svou sadu souborů napříč všemi uzly. 
+- Jedna aktivita kopírování může využít výhod škálovatelných výpočetních prostředků. V místním prostředí Integration runtime můžete ručně škálovat počítač nebo škálovat na více počítačů ([až na čtyři uzly](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)). Jedna aktivita kopírování rozdělí svou sadu souborů napříč všemi uzly. 
 - Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí více vláken. 
-- Tok řízení Data Factory může současně spustit více aktivit kopírování. Můžete například použít [pro každou smyčku](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Tok řízení Data Factory může současně spustit více aktivit kopírování. Můžete například použít [pro každou smyčku](./control-flow-for-each-activity.md). 
 
-Další informace najdete v tématu [Průvodce výkonem aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+Další informace najdete v tématu [Průvodce výkonem aktivity kopírování](./copy-activity-performance.md).
 
 ## <a name="resilience"></a>Odolnost
 
@@ -93,10 +89,10 @@ Při implementaci migrace dat doporučujeme dodržovat tyto osvědčené postupy
 
 ### <a name="authentication-and-credential-management"></a>Ověřování a Správa přihlašovacích údajů 
 
-- K ověření pro HDFS můžete použít [buď Windows (Kerberos), nebo anonymní](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties). 
-- Pro připojení k úložišti objektů BLOB v Azure se podporuje víc typů ověřování.  Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Spravované identity založené na automaticky spravované Data Factory identitě v Azure Active Directory (Azure AD) umožňují konfigurovat kanály bez zadání přihlašovacích údajů do definice propojené služby. Případně můžete provést ověření pro úložiště objektů BLOB pomocí [instančního objektu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sdíleného přístupového podpisu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)nebo [klíče účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
-- Pro připojení k Data Lake Storage Gen2 se podporuje taky více typů ověřování.  Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity), ale taky můžete použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) nebo [klíč účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication). 
-- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně doporučujeme [ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , aby bylo snazší centrálně spravovat a střídat klíče bez nutnosti úprav Data Factory propojených služeb. To je také [doporučený postup pro CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- K ověření pro HDFS můžete použít [buď Windows (Kerberos), nebo anonymní](./connector-hdfs.md#linked-service-properties). 
+- Pro připojení k úložišti objektů BLOB v Azure se podporuje víc typů ověřování.  Důrazně doporučujeme používat [pro prostředky Azure spravované identity](./connector-azure-blob-storage.md#managed-identity). Spravované identity založené na automaticky spravované Data Factory identitě v Azure Active Directory (Azure AD) umožňují konfigurovat kanály bez zadání přihlašovacích údajů do definice propojené služby. Případně můžete provést ověření pro úložiště objektů BLOB pomocí [instančního objektu](./connector-azure-blob-storage.md#service-principal-authentication), [sdíleného přístupového podpisu](./connector-azure-blob-storage.md#shared-access-signature-authentication)nebo [klíče účtu úložiště](./connector-azure-blob-storage.md#account-key-authentication). 
+- Pro připojení k Data Lake Storage Gen2 se podporuje taky více typů ověřování.  Důrazně doporučujeme používat [pro prostředky Azure spravované identity](./connector-azure-data-lake-storage.md#managed-identity), ale taky můžete použít [instanční objekt](./connector-azure-data-lake-storage.md#service-principal-authentication) nebo [klíč účtu úložiště](./connector-azure-data-lake-storage.md#account-key-authentication). 
+- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně doporučujeme [ukládat přihlašovací údaje v Azure Key Vault](./store-credentials-in-key-vault.md) , aby bylo snazší centrálně spravovat a střídat klíče bez nutnosti úprav Data Factory propojených služeb. To je také [doporučený postup pro CI/CD](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>Migrace dat počátečního snímku 
 
@@ -141,16 +137,16 @@ Tady je odhadovaná cena na základě našich předpokladů:
 
 ### <a name="additional-references"></a>Další odkazy
 
-- [Konektor HDFS](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
-- [Konektor služby Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Vytvoření a konfigurace místního prostředí Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Vysoká dostupnost a škálovatelnost místního prostředí Integration runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Aspekty zabezpečení přesunu dat](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Uložení přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Postupné kopírování souboru na základě názvu souboru s časovým segmentem](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [Kopírování nových a změněných souborů na základě LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Konektor HDFS](./connector-hdfs.md)
+- [Konektor služby Azure Blob Storage](./connector-azure-blob-storage.md)
+- [Konektor Azure Data Lake Storage Gen2](./connector-azure-data-lake-storage.md)
+- [Průvodce laděním výkonu aktivity kopírování](./copy-activity-performance.md)
+- [Vytvoření a konfigurace místního prostředí Integration Runtime](./create-self-hosted-integration-runtime.md)
+- [Vysoká dostupnost a škálovatelnost místního prostředí Integration runtime](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Aspekty zabezpečení přesunu dat](./data-movement-security-considerations.md)
+- [Uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Postupné kopírování souboru na základě názvu souboru s časovým segmentem](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Kopírování nových a změněných souborů na základě LastModifiedDate](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Stránka s cenami Data Factory](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,21 +1,22 @@
 ---
 title: Rozšíření pro systém Linux snímku virtuálního počítače pro Azure Backup
-description: Proveďte zálohu virtuálního počítače konzistentní s aplikací z Azure Backup pomocí rozšíření snímku virtuálního počítače.
-services: backup, virtual-machines-linux
+description: Proveďte zálohu virtuálního počítače konzistentní s aplikací z Azure Backup pomocí rozšíření VM Snapshot Linux.
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
-manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: d0ad54c19749d670f9ab753e1e6d8eb130475ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea984fdc4abeb08f4b080e913a0c34b99c59d93c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79415100"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561105"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozšíření pro systém Linux snímku virtuálního počítače pro Azure Backup
 

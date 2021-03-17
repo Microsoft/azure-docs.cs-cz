@@ -3,22 +3,22 @@ title: Přidání nebo aktualizace tajného kódu pro vyžádání Red Hat v clu
 description: Přidání nebo aktualizace tajného kódu pro vyžádání Red Hat na stávajících 4 clusterech v ARO. x
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: tajný kód pro vyžádání obsahu, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 3351052db63f095bfca5f0b91f26e1013319c582
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58c0eb2be3423783a69d005277ffe75aaf59415f
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097221"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633729"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Přidání nebo aktualizace tajného kódu pro vyžádání Red Hat v clusteru Azure Red Hat OpenShift 4
 
-Tento průvodce popisuje přidání nebo aktualizaci tajného kódu pro vyžádání Red Hat pro existující cluster Azure Red Hat OpenShift 4. x.
+Tento průvodce popisuje přidání nebo aktualizaci tajného kódu pro vyžádání Red Hat pro stávající cluster Azure Red Hat OpenShift (ARO) 4. x.
 
-Pokud vytváříte cluster poprvé, můžete při vytváření clusteru přidat svůj tajný klíč pro vyžádání obsahu. Další informace o tom, jak vytvořit cluster ARO s použitím tajného kódu pro vyžádání Red Hat, najdete v tématu [Vytvoření clusteru Azure Red Hat OpenShift 4](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional).
+Pokud vytváříte cluster poprvé, můžete při vytváření clusteru přidat tajný klíč pro vyžádání obsahu. Další informace o tom, jak vytvořit cluster ARO s použitím tajného kódu pro vyžádání Red Hat, najdete v tématu [Vytvoření clusteru Azure Red Hat OpenShift 4](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -29,13 +29,13 @@ Když vytvoříte cluster ARO bez přidání tajného klíče pro vyžádání o
 
 Tato část vás provede aktualizací tajného klíče pro vyžádání pomocí dalších hodnot z tajného kódu pro vyžádání obsahu Red Hat.
 
-1. Načtěte tajný klíč s názvem `pull-secret` v oboru názvů OpenShift-config a uložte ho do samostatného souboru spuštěním následujícího příkazu: 
+1. Načtěte tajný klíč s názvem `pull-secret` v `openshift-config` oboru názvů a uložte ho do samostatného souboru spuštěním následujícího příkazu: 
 
     ```console
     oc get secrets pull-secret -n openshift-config -o template='{{index .data ".dockerconfigjson"}}' | base64 -d > pull-secret.json
     ```
 
-    Výstup by měl vypadat přibližně takto (Všimněte si, že byla odstraněna skutečná tajná hodnota):
+    Výstup by měl vypadat přibližně takto: (Všimněte si, že se odebrala skutečná tajná hodnota.)
 
     ```json
     {
@@ -47,7 +47,7 @@ Tato část vás provede aktualizací tajného klíče pro vyžádání pomocí 
     }
     ```
 
-2. Přejděte na [portál Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) a klikněte na **možnost stáhnout tajný klíč pro vyžádání.** Váš tajný klíč pro stažení Red Hat bude vypadat takto (Všimněte si, že se odebraly skutečné tajné hodnoty):
+2. Navštivte [portál Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) a vyberte **Stáhnout tajný klíč pro vyžádání**. Váš tajný klíč pro stažení Red Hat bude vypadat následovně. (Všimněte si, že se odebraly skutečné tajné hodnoty.)
 
     ```json
     {
@@ -75,7 +75,7 @@ Tato část vás provede aktualizací tajného klíče pro vyžádání pomocí 
 3. Přihlaste se k souboru s tajným klíčem pro vyžádání obsahu, který jste získali z clusteru, přidáním do záznamů, které najdete v tajných klíčích pro vyžádání 
 
     > [!IMPORTANT]
-    > Zahrnutí `cloud.openshift.com` položky z kódu pro vyžádání obsahu Red Hat způsobí, že váš cluster začne odesílat data telemetrie do Red Hat. Tuto část zahrňte jenom v případě, že chcete odesílat data telemetrie. V opačném případě ponechte následující část.
+    > Zahrnutím `cloud.openshift.com` údajů z libovolného tajného kódu Red Hat by váš cluster mohl začít odesílat data telemetrie do Red Hat. Tuto část zahrňte pouze v případě, že chcete odesílat data telemetrie. V opačném případě ponechte následující část.    
     > ```json
     > {
     >         "cloud.openshift.com": {
@@ -86,13 +86,14 @@ Tato část vás provede aktualizací tajného klíče pro vyžádání pomocí 
 
     > [!CAUTION]
     > Neodstraňujte ani neměňte `arosvc.azurecr.io` položku z vašeho tajného kódu pro vyžádání obsahu. Tato část je nutná pro správné fungování clusteru.
+
     ```json
     "arosvc.azurecr.io": {
                 "auth": "<my-aroscv.azurecr.io-secret>"
             }
     ```
 
-    Konečný soubor by měl vypadat takto (Všimněte si, že se odebraly skutečné tajné hodnoty):
+    Konečný soubor by měl vypadat nějak takto. (Všimněte si, že se odebraly skutečné tajné hodnoty.)
 
     ```json
     {
@@ -121,19 +122,20 @@ Tato část vás provede aktualizací tajného klíče pro vyžádání pomocí 
     ```
 
 4. Zajistěte, aby byl soubor platným kódem JSON. Existuje mnoho způsobů, jak ověřit JSON. Následující příklad používá JQ:
+
     ```json
     cat pull-secret.json | jq
     ```
 
     > [!NOTE]
-    > Pokud se v souboru nachází chyba, může se zobrazit `parse error` .
+    > Pokud se v souboru nachází chyba, zobrazí se jako `parse error` .
 
 ## <a name="add-your-pull-secret-to-your-cluster"></a>Přidání tajného kódu pro vyžádání do clusteru
 
-Spusťte následující příkaz pro aktualizaci tajného kódu pro vyžádání obsahu:
+Spusťte následující příkaz, který aktualizuje tajný klíč pro vyžádání obsahu.
 
 > [!NOTE]
-> Spuštěním tohoto příkazu dojde k tomu, že uzly clusteru při aktualizaci nainstalují jednu po jedné. 
+> Při spuštění tohoto příkazu dojde k tomu, že se uzly clusteru restartují o jednu po aktualizaci. 
 
 ```console
 oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=./pull-secret.json
@@ -151,9 +153,9 @@ Nejprve upravte konfigurační soubor operátor Samples. Pak můžete spuštěn�
 oc edit configs.samples.operator.openshift.io/cluster -o yaml
 ```
 
-Změňte `spec.architectures.managementState` hodnoty a na `status.architecture.managementState` `Removed` `Managed` . 
+Změňte `spec.architectures.managementState` hodnoty a `status.architecture.managementState` z `Removed` na `Managed` . 
 
-Následující fragment kódu YAML ukazuje pouze relevantní oddíly upravovaného souboru YAML.
+Následující fragment kódu YAML ukazuje pouze relevantní oddíly upravovaného souboru YAML:
 
 ```yaml
 apiVersion: samples.operator.openshift.io/v1
@@ -181,9 +183,9 @@ Za druhé spusťte následující příkaz, který upraví konfigurační soubor
 oc edit operatorhub cluster -o yaml
 ```
 
-Změňte `Spec.Sources.Disabled` `Status.Sources.Disabled` hodnoty a hodnotami z `true` na na `false` pro všechny zdroje, které chcete povolit.
+Změňte `Spec.Sources.Disabled` hodnoty a `Status.Sources.Disabled` z `true` na na `false` pro všechny zdroje, které chcete povolit.
 
-Následující fragment kódu YAML ukazuje pouze relevantní oddíly upravovaného souboru YAML.
+Následující fragment kódu YAML ukazuje pouze relevantní oddíly upravovaného souboru YAML:
 
 ```yaml
 Name:         cluster
@@ -214,7 +216,7 @@ Uložte soubor, aby se změny projevily.
 
 ## <a name="validate-that-your-secret-is-working"></a>Ověření funkčního tajného klíče
 
-Po přidání tajného kódu pro vyžádání obsahu a úpravě správných konfiguračních souborů může váš cluster trvat několik minut, než se aktualizuje. Pokud chcete ověřit, jestli se váš cluster aktualizoval, spusťte následující příkaz, který zobrazí certifikované operátory a dostupné zdroje operátorů Red Hat:
+Po přidání tajného kódu pro vyžádání obsahu a úpravě správných konfiguračních souborů může trvat několik minut, než se cluster aktualizuje. Pokud chcete ověřit, jestli se váš cluster aktualizoval, spusťte následující příkaz, který zobrazí certifikované operátory a dostupné zdroje operátorů Red Hat:
 
 ```console
 $ oc get catalogsource -A
@@ -226,9 +228,9 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 
 Pokud nevidíte certifikované operátory a operátory Red Hat, počkejte pár minut a zkuste to znovu.
 
-Aby se zajistilo, že se váš tajný kód pro vyžádání aktualizoval a funguje správně, otevřete OperatorHub a vyhledejte všechny ověřené operátory Red Hat. Například zkontrolujte, zda je k dispozici operátor úložiště kontejneru OpenShift, a zkontrolujte, zda máte oprávnění k instalaci.
+Aby se zajistilo, že se váš tajný kód pro vyžádání aktualizace aktualizoval a funguje správně, otevřete OperatorHub a vyhledejte všechny ověřené operátory Red Hat. Například zkontrolujte, zda je k dispozici operátor úložiště kontejneru OpenShift, a zkontrolujte, zda máte oprávnění k instalaci.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tajných klíčích pro vyžádání Red Hat najdete v tématu [použití tajných kódů pro vyžádání obrazu](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html).
+Další informace o tajných klíčích pro vyžádání Red Hat najdete v tématu [použití tajných kódů pro vyžádání obrazu](https://docs.openshift.com/container-platform/4.6/openshift_images/managing_images/using-image-pull-secrets.html).
 
-Další informace o Red Hat OpenShift 4 najdete v tématu [Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/welcome/index.html).
+Další informace o Red Hat OpenShift 4 najdete v [dokumentaci k platformě Red Hat OpenShift Container Platform](https://docs.openshift.com/container-platform/4.6/welcome/index.html).

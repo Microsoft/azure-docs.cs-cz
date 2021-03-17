@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738630"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709508"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace vzorů síťových přenosů z vašich virtuálních počítačů a z nich pomocí Open-source nástrojů
 
@@ -25,18 +25,18 @@ Zachycení paketů obsahují síťová data, která umožňují provádět foren
 
 Azure Network Watcher poskytuje možnost zachytit data tím, že vám umožní zachytávání paketů v síti. Tento článek poskytuje přehled o tom, jak vizualizovat a získávat poznatky z zachycení paketů pomocí CapAnalysis s využitím Network Watcher.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Máte jednoduchou webovou aplikaci nasazenou na virtuálním počítači v Azure, chcete použít Open Source nástroje k vizualizaci svého síťového provozu, abyste mohli rychle identifikovat modely toků a případné anomálie. Pomocí Network Watcher můžete získat zachycení paketů v síťovém prostředí a přímo ho uložit do svého účtu úložiště. CapAnalysis může následně ingestovat zachytávání paketů přímo z objektu BLOB úložiště a vizualizovat jeho obsah.
 
 ![scénář][1]
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 ### <a name="install-capanalysis"></a>Nainstalovat CapAnalysis
 
 Pokud chcete nainstalovat CapAnalysis na virtuální počítač, můžete si tady přečtěte oficiální pokyny https://www.capanalysis.net/ca/how-to-install-capanalysis .
-V zájmu vzdáleného přístupu k CapAnalysis je potřeba na svém VIRTUÁLNÍm počítači otevřít port 9877 přidáním nového příchozího pravidla zabezpečení. Další informace o vytváření pravidel ve skupinách zabezpečení sítě najdete v tématu [Vytvoření pravidel v existující NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po úspěšném přidání pravidla byste měli mít přístup k CapAnalysis z`http://<PublicIP>:9877`
+V zájmu vzdáleného přístupu k CapAnalysis je potřeba na svém VIRTUÁLNÍm počítači otevřít port 9877 přidáním nového příchozího pravidla zabezpečení. Další informace o vytváření pravidel ve skupinách zabezpečení sítě najdete v tématu [Vytvoření pravidel v existující NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po úspěšném přidání pravidla byste měli mít přístup k CapAnalysis z `http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Spuštění relace zachytávání paketů pomocí Azure Network Watcher
 
@@ -47,7 +47,7 @@ Pomocí karty importovat z adresy URL můžete přímo nahrát zachytávání pa
 
 Při zadání odkazu na CapAnalysis nezapomeňte připojit token SAS k adrese URL objektu BLOB úložiště.  Provedete to tak, že přejdete na podpis sdíleného přístupu z účtu úložiště, určíte povolená oprávnění a vytvoříte token stisknutím tlačítka generovat SAS. Pak můžete připojit token SAS k adrese URL objektu BLOB úložiště pro zachytávání paketů.
 
-Výsledná adresa URL bude vypadat přibližně podobně jako následující adresa URL:`http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Výsledná adresa URL bude vypadat přibližně podobně jako následující adresa URL: `http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Analýza zachycení paketů

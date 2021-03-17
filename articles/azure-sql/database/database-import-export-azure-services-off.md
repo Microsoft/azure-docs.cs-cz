@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543754"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724165"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Import nebo export Azure SQL Database, aniž by bylo možné povolit službám Azure přístup k serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak importovat nebo exportovat *Azure SQL Database
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-the-azure-virtual-machine"></a>Vytvoření virtuálního počítače Azure
 
@@ -44,9 +44,9 @@ Následující kroky ukazují, jak se připojit k virtuálnímu počítači pomo
 
 1. Po dokončení nasazení přejděte k prostředku virtuálního počítače.
 
-   ![Virtuální počítač](./media/database-import-export-azure-services-off/vm.png)  
+   ![Snímek obrazovky s tlačítkem připojit zobrazí stránku s přehledem virtuálního počítače.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. Vyberte **Připojit**.
+2. Vyberte **Connect** (Připojit).
 
    Zobrazí se formulář soubor protokol RDP (Remote Desktop Protocol) (soubor. RDP) s veřejnou IP adresou a číslem portu pro virtuální počítač.
 
@@ -67,9 +67,9 @@ Následující kroky ukazují, jak se připojit k virtuálnímu počítači pomo
 
 ## <a name="install-sqlpackage"></a>Nainstalovat SqlPackage
 
-[Stáhněte a nainstalujte si nejnovější verzi SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download).
+[Stáhněte a nainstalujte si nejnovější verzi SqlPackage](/sql/tools/sqlpackage-download).
 
-Další informace najdete v tématu [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage).
+Další informace najdete v tématu [SqlPackage.exe](/sql/tools/sqlpackage).
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Vytvořte pravidlo brány firewall, které umožní virtuálnímu počítači přístup k databázi.
 
@@ -95,9 +95,9 @@ Následující postup slouží k vytvoření pravidla brány firewall protokolu 
 
 ## <a name="export-a-database-using-sqlpackage"></a>Export databáze pomocí SqlPackage
 
-Chcete-li exportovat Azure SQL Database pomocí nástroje příkazového řádku [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) , přečtěte si téma [Export parametrů a vlastností](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties). Nástroj SqlPackage se dodává s nejnovějšími verzemi nástrojů [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)nebo si můžete stáhnout nejnovější verzi nástroje [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download).
+Chcete-li exportovat Azure SQL Database pomocí nástroje příkazového řádku [SqlPackage](/sql/tools/sqlpackage) , přečtěte si téma [Export parametrů a vlastností](/sql/tools/sqlpackage#export-parameters-and-properties). Nástroj SqlPackage se dodává s nejnovějšími verzemi nástrojů [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)nebo si můžete stáhnout nejnovější verzi nástroje [SqlPackage](/sql/tools/sqlpackage-download).
 
-Pro většinu produkčních prostředí doporučujeme používat nástroj SqlPackage pro škálování a výkon. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Pro většinu produkčních prostředí doporučujeme používat nástroj SqlPackage pro škálování a výkon. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 
 Tento příklad ukazuje, jak exportovat databázi pomocí SqlPackage.exe s univerzálním ověřováním služby Active Directory. Nahraďte hodnotami, které jsou specifické pro vaše prostředí.
 
@@ -107,9 +107,9 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 ## <a name="import-a-database-using-sqlpackage"></a>Import databáze pomocí SqlPackage
 
-Chcete-li importovat databázi SQL Server pomocí nástroje příkazového řádku [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) , přečtěte si téma [Import parametrů a vlastností](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage má nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt). Můžete si také stáhnout nejnovější verzi [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download).
+Chcete-li importovat databázi SQL Server pomocí nástroje příkazového řádku [SqlPackage](/sql/tools/sqlpackage) , přečtěte si téma [Import parametrů a vlastností](/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage má nejnovější [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt). Můžete si také stáhnout nejnovější verzi [SqlPackage](/sql/tools/sqlpackage-download).
 
-Pro škálování a výkon doporučujeme místo použití Azure Portal používat SqlPackage ve většině produkčních prostředí. Blog týmu pro poradenské zákazníky SQL Server o migraci pomocí `BACPAC` souborů najdete v tématu [migrace z SQL Server na Azure SQL Database pomocí souborů BacPac](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Pro škálování a výkon doporučujeme místo použití Azure Portal používat SqlPackage ve většině produkčních prostředí. Blog týmu pro poradenské zákazníky SQL Server o migraci pomocí `BACPAC` souborů najdete v tématu [migrace z SQL Server na Azure SQL Database pomocí souborů BacPac](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 
 Následující příkaz SqlPackage importuje databázi **AdventureWorks2017** z místního úložiště do Azure SQL Database. Vytvoří novou databázi s názvem **myMigratedDatabase** s úrovní služeb **Premium** a cílem služby **P6** . Změňte tyto hodnoty tak, jak jsou vhodné pro vaše prostředí.
 
@@ -141,13 +141,13 @@ Nejlepšího výkonu dosáhnete, když můžete vyzkoušet následující strate
 
 ## <a name="store-the-imported-or-exported-bacpac-file"></a>Uložte import nebo export. Soubor BACPAC
 
-Okně. Soubor BACPAC se dá Uložit do [objektů blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)nebo [souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+Okně. Soubor BACPAC se dá Uložit do [objektů blob Azure](../../storage/blobs/storage-blobs-overview.md)nebo [souborů Azure](../../storage/files/storage-files-introduction.md).
 
 K dosažení nejlepšího výkonu použijte soubory Azure. SqlPackage pracuje se systémem souborů, aby mohl přistupovat přímo k souborům Azure.
 
-Pokud chcete snížit náklady, používejte objekty blob Azure, které jsou nižší než Premium Azure File sdílená složka. Bude však vyžadovat zkopírování [. BACPAC soubor](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) mezi objektem BLOB a místním systémem souborů před operací import nebo export. Výsledkem bude to, že proces trvá déle.
+Pokud chcete snížit náklady, používejte objekty blob Azure, které jsou nižší než Premium Azure File sdílená složka. Bude však vyžadovat zkopírování [. BACPAC soubor](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) mezi objektem BLOB a místním systémem souborů před operací import nebo export. Výsledkem bude to, že proces trvá déle.
 
-Pro nahrání nebo stažení. Soubory BACPAC, přečtěte si téma [přenos dat pomocí úložiště AzCopy a objektů BLOB](../../storage/common/storage-use-azcopy-blobs.md)a [přenos dat pomocí AzCopy a souborového úložiště](../../storage/common/storage-use-azcopy-files.md).
+Pro nahrání nebo stažení. Soubory BACPAC, přečtěte si téma [přenos dat pomocí úložiště AzCopy a objektů BLOB](../../storage/common/storage-use-azcopy-v10.md#transfer-data)a [přenos dat pomocí AzCopy a souborového úložiště](../../storage/common/storage-use-azcopy-files.md).
 
 V závislosti na vašem prostředí možná budete muset [nakonfigurovat Azure Storage brány firewall a virtuální sítě](../../storage/common/storage-network-security.md).
 
@@ -156,4 +156,4 @@ V závislosti na vašem prostředí možná budete muset [nakonfigurovat Azure S
 - Informace o tom, jak se připojit k importovaným SQL Database a dotazování na ně, najdete v tématu [rychlý Start: Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](connect-query-ssms.md).
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
 - Diskuzi o celém procesu migrace databáze SQL Server, včetně doporučení týkajících se výkonu, najdete v tématu [SQL Server migrace databáze na Azure SQL Database](migrate-to-database-from-sql-server.md).
-- Informace o tom, jak bezpečně spravovat a sdílet klíče úložiště a signatury sdíleného přístupu, najdete v tématu [Azure Storage Průvodce zabezpečením](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- Informace o tom, jak bezpečně spravovat a sdílet klíče úložiště a signatury sdíleného přístupu, najdete v tématu [Azure Storage Průvodce zabezpečením](../../storage/blobs/security-recommendations.md).

@@ -3,44 +3,43 @@ title: Rychlý Start, kde se dozvíte, jak používat konfiguraci aplikací Azur
 description: V tomto rychlém startu vytvoříte aplikaci v jazyce Java s konfigurací aplikace v systému Azure, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586449"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932026"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pružině Java, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+- Podporovaná [sada Java Development Kit (JDK)](/java/azure/jdk) s verzí 8.
 - [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte možnost **Průzkumník konfigurace**  >  **+ vytvořit**  >  **klíč-hodnota** a přidejte následující páry klíč-hodnota:
+7. Vyberte možnost **Průzkumník konfigurace**  >  **+ vytvořit**  >  **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
     | Klíč | Hodnota |
     |---|---|
-    | /application/config.message | Hello (Nazdar) |
+    | /application/config.message | Dobrý den |
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
-7. Vyberte **Použít**.
+8. Vyberte **Použít**.
 
 ## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace pro spouštění pružiny
 
@@ -147,7 +146,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
     setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
@@ -188,7 +187,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci Java pružiny. Další informace najdete v tématu [pružina v Azure](https://docs.microsoft.com/java/azure/spring-framework/). Další informace o tom, jak povolit aplikaci v jazyce Java, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci Java pružiny. Další informace najdete v tématu [pružina v Azure](/java/azure/spring-framework/). Další informace o tom, jak povolit aplikaci v jazyce Java, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Povolení dynamické konfigurace](./enable-dynamic-configuration-java-spring-app.md)

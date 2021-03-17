@@ -1,26 +1,22 @@
 ---
 title: Přírůstkové kopírování dat pomocí Change Tracking pomocí prostředí PowerShell
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: 41841fd51433a18389aa9f5beee063fb30696755
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
+ms.date: 02/18/2021
+ms.openlocfilehash: a31f8ce227175e65f7119c25dcc575dc6fafdcd4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251169"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727732"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>Přírůstkové načtení dat z Azure SQL Database do Azure Blob Storage používání informací o sledování změn pomocí PowerShellu
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data na základě informací o **sledování změn** ve zdrojové databázi v Azure SQL Database do úložiště objektů BLOB v Azure.  
 
@@ -69,7 +65,7 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
     ![Diagram toku přírůstkového načtení](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,7 +75,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ### <a name="create-a-data-source-table-in-your-database"></a>Vytvoření tabulky zdroje dat v databázi
 
-1. Spusťte **SQL Server Management Studio**a připojte se k SQL Database.
+1. Spusťte **SQL Server Management Studio** a připojte se k SQL Database.
 2. V **Průzkumníku serveru** klikněte pravým tlačítkem na **databázi** a potom zvolte **Nový dotaz**.
 3. Spusťte následující příkaz SQL pro vaši databázi a vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat.  
 
@@ -143,8 +139,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -216,7 +212,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
         }
     }
     ```
-2. V **Azure PowerShell**přepněte do složky **C:\ADFTutorials\IncCopyChangeTrackingTutorial** .
+2. V **Azure PowerShell** přepněte do složky **C:\ADFTutorials\IncCopyChangeTrackingTutorial** .
 3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty pro parametry **ResourceGroupName** a **DataFactory** .
 
     ```powershell
@@ -225,7 +221,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -235,7 +231,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 V tomto kroku propojíte databázi s datovou továrnou.
 
-1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.js** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem: Nahraďte ** &lt; název serveru &gt; &lt; databáze &gt; , &lt; ID uživatele &gt; a &lt; heslo &gt; ** názvem serveru, názvem databáze, ID uživatele a heslem před uložením souboru.
+1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.js** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem: Nahraďte **&lt; název serveru &gt; &lt; databáze &gt; , &lt; ID uživatele &gt; a &lt; heslo &gt;** názvem serveru, názvem databáze, ID uživatele a heslem před uložením souboru.
 
     ```json
     {
@@ -248,7 +244,7 @@ V tomto kroku propojíte databázi s datovou továrnou.
         }
     }
     ```
-2. V **Azure PowerShell**spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureSQLDatabaseLinkedService**.
+2. V **Azure PowerShell** spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte propojenou službu: **AzureSQLDatabaseLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -256,7 +252,7 @@ V tomto kroku propojíte databázi s datovou továrnou.
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -424,7 +420,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
 
    Zde je ukázkový výstup:
 
-   ```json
+   ```console
     PipelineName      : FullCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -453,10 +449,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
     ![Dlaždice Monitorování a správa](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. **Aplikace pro integraci dat** se spustí na samostatné kartě. Můžete zobrazit všechna **spuštění kanálu** a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na sloupec **Parametry**. Pokud došlo k chybě, zobrazí se odkaz ve sloupci **Chyba**. Klikněte na odkaz ve sloupci **Akce**.
 
-    ![Spuštění kanálu](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    ![Snímek obrazovky ukazuje spuštění kanálu pro datovou továrnu.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. Po kliknutí na odkaz ve sloupci **Akce** uvidíte následující stránku, která zobrazuje všechna **spuštění aktivit** pro příslušný kanál.
 
-    ![Spuštění aktivit](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    ![Snímek obrazovky znázorňující spuštění aktivit pro datovou továrnu s odkazem na kanály, který se nazývá.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. Pokud chcete přejít zpátky k zobrazení **Spuštění kanálu**, klikněte na **Kanály**, jak ukazuje obrázek.
 
 
@@ -498,113 +494,110 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 
     ```json
     {
-            "name": "IncrementalCopyPipeline",
-            "properties": {
-                "activities": [
+        "name": "IncrementalCopyPipeline",
+        "properties": {
+            "activities": [
                 {
-                        "name": "LookupLastChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
+                    "name": "LookupLastChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
                         "source": {
                             "type": "SqlSource",
                             "sqlReaderQuery": "select * from table_store_ChangeTracking_version"
-                            },
-
-                            "dataset": {
+                        },
+                        "dataset": {
                             "referenceName": "ChangeTrackingDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-                    {
-                        "name": "LookupCurrentChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
+                    }
+                },
+                {
+                    "name": "LookupCurrentChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
                         },
-
-                            "dataset": {
+                        "dataset": {
                             "referenceName": "SourceDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-
-                    {
-                        "name": "IncrementalCopyActivity",
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
-                            }
-                        },
-                        "dependsOn": [
-                            {
-                                "activity": "LookupLastChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            },
-                            {
-                                "activity": "LookupCurrentChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                        }
-                        ],
-
-                        "inputs": [
-                            {
-                            "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                        }
-                        ],
-                        "outputs": [
-                            {
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference"
-                            }
-                        ]
-                    },
-
-                {
-                        "name": "StoredProceduretoUpdateChangeTrackingActivity",
-                        "type": "SqlServerStoredProcedure",
-                        "typeProperties": {
-
-                            "storedProcedureName": "Update_ChangeTracking_Version",
-                            "storedProcedureParameters": {
-                            "CurrentTrackingVersion": {"value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}", "type": "INT64" },
-                                "TableName":  { "value":"@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}", "type":"String"}
-                            }
-                    },
-
-                        "linkedServiceName": {
-                        "referenceName": "AzureSQLDatabaseLinkedService",
-                            "type": "LinkedServiceReference"
-                        },
-
-                        "dependsOn": [
-                        {
-                                "activity": "IncrementalCopyActivity",
-                            "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            }
-                        ]
                     }
-                ]
-
-            }
+                },
+                {
+                    "name": "IncrementalCopyActivity",
+                    "type": "Copy",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
+                        },
+                        "sink": {
+                            "type": "BlobSink"
+                        }
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "LookupLastChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        },
+                        {
+                            "activity": "LookupCurrentChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ],
+                    "inputs": [
+                        {
+                            "referenceName": "SourceDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "SinkDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                },
+                {
+                    "name": "StoredProceduretoUpdateChangeTrackingActivity",
+                    "type": "SqlServerStoredProcedure",
+                    "typeProperties": {
+                        "storedProcedureName": "Update_ChangeTracking_Version",
+                        "storedProcedureParameters": {
+                            "CurrentTrackingVersion": {
+                                "value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}",
+                                "type": "INT64"
+                            },
+                            "TableName": {
+                                "value": "@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}",
+                                "type": "String"
+                            }
+                        }
+                    },
+                    "linkedServiceName": {
+                        "referenceName": "AzureSQLDatabaseLinkedService",
+                        "type": "LinkedServiceReference"
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "IncrementalCopyActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     }
-
     ```
+
 2. Spuštěním rutiny Set-AzDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
 
    ```powershell
@@ -613,7 +606,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 
    Zde je ukázkový výstup:
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -632,10 +625,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Monitorování kanálu přírůstkového kopírování
 1. V **aplikaci pro integraci dat** aktualizujte zobrazení **spuštění kanálu**. Zkontrolujte, že se v tomto seznamu zobrazuje IncrementalCopyPipeline. Klikněte na odkaz ve sloupci **Akce**.  
 
-    ![Spuštění kanálu](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    ![Snímek obrazovky ukazuje spuštění kanálu pro datovou továrnu, včetně vašeho kanálu.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. Po kliknutí na odkaz ve sloupci **Akce** uvidíte následující stránku, která zobrazuje všechna **spuštění aktivit** pro příslušný kanál.
 
-    ![Spuštění aktivit](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    ![Snímek obrazovky ukazuje spuštění kanálu pro datovou továrnu s několika označenými úspěchy.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. Pokud chcete přejít zpátky k zobrazení **Spuštění kanálu**, klikněte na **Kanály**, jak ukazuje obrázek.
 
 ### <a name="review-the-results"></a>Kontrola výsledků
@@ -655,8 +648,8 @@ První tři sloupce představují změněná data z data_source_table. Poslední
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
 
 

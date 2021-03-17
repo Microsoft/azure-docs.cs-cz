@@ -4,10 +4,10 @@ description: Průvodce pro povolení migrace stávajících oborů názvů Azure
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "85340745"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
@@ -25,7 +25,7 @@ Některé body, které je potřeba poznamenat:
 - Obor názvů **Premium** by neměl obsahovat **žádné entity** , aby migrace proběhla úspěšně.
 - Všechny **entity** v oboru názvů Standard jsou během procesu migrace **zkopírovány** do oboru názvů Premium.
 - Migrace podporuje **1 000 entit na jednu jednotku zasílání zpráv** na úrovni Premium. Pokud chcete zjistit, kolik jednotek pro zasílání zpráv potřebujete, začněte s počtem entit, které máte v aktuálním oboru názvů Standard.
-- Nemůžete migrovat přímo z úrovně **Basic** na **úroveň Premium**, ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
+- Nemůžete migrovat přímo z úrovně **Basic** na **úroveň Premium** , ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
 
 ## <a name="migration-steps"></a>Kroky migrace
 
@@ -211,7 +211,7 @@ Pokud však můžete provést migraci během plánované údržby nebo údržbu 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [rozdílech mezi zasíláním zpráv na úrovni Standard a Premium](./service-bus-premium-messaging.md).
-* Seznamte se s [vysokou dostupností a geografickými aspekty zotavení po havárii pro Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
+* Seznamte se s [aspekty vysoké dostupnosti a Geo-Disaster pro obnovení Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
 [Cílová stránka migrace]: ./media/service-bus-standard-premium-migration/1.png
 [Nastavit obor názvů]: ./media/service-bus-standard-premium-migration/2.png

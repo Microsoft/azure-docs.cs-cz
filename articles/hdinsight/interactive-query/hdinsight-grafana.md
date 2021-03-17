@@ -1,18 +1,15 @@
 ---
 title: Použití Grafana ve službě Azure HDInsight
 description: Přečtěte si, jak získat přístup k řídicímu panelu Grafana s clustery Apache Hadoop ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083028"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940876"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Přístup ke Grafaně ve službě Azure HDInsight
 
@@ -24,7 +21,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Vytvoření clusteru Apache Hadoop
 
-Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Jako **typ clusteru**vyberte **Spark**, **Kafka**, **HBA**nebo **interaktivní dotaz**.
+Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Jako **typ clusteru** vyberte **Spark**, **Kafka**, **HBA** nebo **interaktivní dotaz**.
 
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicímu panelu Grafana
 
@@ -40,11 +37,11 @@ Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 
-1. V části **služby**vyberte **clustery HDInsight** .
+1. V části **služby** vyberte **clustery HDInsight** .
 
 1. V seznamu clusterů HDInsight, které se zobrazí, vyberte **...** vedle clusteru, který jste vytvořili.
 

@@ -1,19 +1,20 @@
 ---
 title: Migrace databáze-Azure Database for PostgreSQL – jeden server
 description: Popisuje, jak extrahovat databázi PostgreSQL do souboru skriptu a importovat data do cílové databáze z daného souboru.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/24/2019
-ms.openlocfilehash: 5d97f7b976ef1dfcf0493a8bef6ddcdd2cd63960
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/22/2020
+ms.openlocfilehash: 080f444d50dcdf17be15d940002b745624b2f6a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116360"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708522"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migrace databáze PostgreSQL pomocí exportu a importu
+[!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
 K extrakci databáze PostgreSQL do souboru skriptu a [psql](https://www.postgresql.org/docs/current/static/app-psql.html) pro import dat do cílové databáze z tohoto souboru můžete použít [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) .
 
 ## <a name="prerequisites"></a>Požadavky
@@ -26,6 +27,7 @@ Při exportu a importu databáze PostgreSQL postupujte podle těchto kroků.
 
 ## <a name="create-a-script-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Vytvoření souboru skriptu pomocí pg_dump obsahujícího data, která mají být načtena
 Pokud chcete exportovat stávající databázi PostgreSQL místně nebo na virtuálním počítači do souboru skriptu SQL, spusťte v existujícím prostředí následující příkaz:
+
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
@@ -36,14 +38,24 @@ pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sq
 
 ## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>Importovat data na cílovém Azure Database for PostgreSQL
 Pomocí příkazového řádku psql a parametru--dbname (-d) můžete importovat data do serveru Azure Database for PostgreSQL a načíst data ze souboru SQL.
+
 ```bash
-psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
+psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --dbname=<target database name>
 ```
 Tento příklad používá nástroj psql a soubor skriptu s názvem **TestDB. SQL** z předchozího kroku k importu dat do databáze **mypgsqldb** cílového serveru **mydemoserver.Postgres.Database.Azure.com**.
+
+V případě **jednoho serveru**použijte tento příkaz. 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
+V případě **flexibilního serveru**použijte tento příkaz.  
+```bash
+psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
+```
+
+
+
 ## <a name="next-steps"></a>Další kroky
 - Postup migrace databáze PostgreSQL pomocí výpisu a obnovení najdete v tématu [migrace databáze PostgreSQL pomocí výpisu a obnovení](howto-migrate-using-dump-and-restore.md).
-- Další informace o migraci databází do Azure Database for PostgreSQL najdete v [Průvodci migrací databáze](https://aka.ms/datamigration). 
+- Další informace o migraci databází do Azure Database for PostgreSQL najdete v [Průvodci migrací databáze](https://aka.ms/datamigration).

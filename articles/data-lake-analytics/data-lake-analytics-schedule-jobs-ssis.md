@@ -1,19 +1,16 @@
 ---
 title: Plánování úloh U-SQL Azure Data Lake Analytics pomocí SSIS
 description: Naučte se používat služba SSIS (SQL Server Integration Services) k plánování úloh U-SQL pomocí vloženého skriptu nebo souborů dotazů U-SQL.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132496"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221447"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí služba SSIS (SQL Server Integration Services) (SSIS)
 
@@ -21,16 +18,16 @@ V tomto dokumentu se dozvíte, jak orchestrovat a vytvářet úlohy U-SQL pomoc�
 
 ## <a name="prerequisites"></a>Předpoklady
 
-[Azure Feature Pack pro integrační služby](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) poskytuje [úlohu Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) a [Správce připojení Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) , který pomáhá připojit se ke službě Azure Data Lake Analytics. Chcete-li použít tuto úlohu, nezapomeňte nainstalovat:
+[Azure Feature Pack pro integrační služby](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud) poskytuje [úlohu Azure Data Lake Analytics](/sql/integration-services/control-flow/azure-data-lake-analytics-task) a [Správce připojení Azure Data Lake Analytics](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager) , který pomáhá připojit se ke službě Azure Data Lake Analytics. Chcete-li použít tuto úlohu, nezapomeňte nainstalovat:
 
-- [Stažení a instalace nástrojů SQL Server Data Tools (SSDT) pro Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
-- [Nainstalovat Azure Feature Pack pro integrační služby (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
+- [Stažení a instalace nástrojů SQL Server Data Tools (SSDT) pro Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)
+- [Nainstalovat Azure Feature Pack pro integrační služby (SSIS)](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)
 
 ## <a name="azure-data-lake-analytics-task"></a>Azure Data Lake Analytics úkol
 
 Úkol Azure Data Lake Analytics umožní uživatelům odesílat úlohy U-SQL do účtu Azure Data Lake Analytics. 
 
-[Přečtěte si, jak nakonfigurovat úlohu Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+[Přečtěte si, jak nakonfigurovat úlohu Azure Data Lake Analytics](/sql/integration-services/control-flow/azure-data-lake-analytics-task).
 
 ![Azure Data Lake Analytics úkol v SSIS](./media/data-lake-analytics-schedule-jobs-ssis/data-lake-analytics-azure-data-lake-analytics-task-in-ssis.png)
 
@@ -56,18 +53,18 @@ Postupujte podle následujících kroků a nastavte připojení mezi úlohou Azu
 
 V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure Data Lake Store**, **kontejner smyčky foreach** a **úlohu Azure Data Lake Analytics** do kontejneru smyčky foreach. Úloha Azure Data Lake Store systému souborů pomáhá stahovat soubory U-SQL v účtu ADLS do dočasné složky. Kontejner smyčky foreach a úloha Azure Data Lake Analytics pomůžou odeslat každý soubor U-SQL pod dočasnou složkou do Azure Data Lake Analytics účtu jako úlohu U-SQL.
 
-![Použití souborů U-SQL v Azure Data Lake Store](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![Diagram, který ukazuje úkol systému souborů Azure Data Lake Store přidaný do kontejneru smyčky foreach.](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Konfigurace úlohy systému souborů Azure Data Lake Store
 
 1. Nastavte **operaci** na **CopyFromADLS**.
-2. Nastavte **AzureDataLakeConnection**, přečtěte si další informace o [Azure Data Lake Store Správce připojení](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
+2. Nastavte **AzureDataLakeConnection**, přečtěte si další informace o [Azure Data Lake Store Správce připojení](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 3. Nastavte **AzureDataLakeDirectory**. Přejděte do složky, kde jsou uloženy skripty U-SQL. Použijte relativní cestu, která je relativní vzhledem ke kořenové složce účtu Azure Data Lake Store.
 4. Nastavte **cíl** na složku, která ukládá do mezipaměti stažené skripty U-SQL. Tato cesta ke složce se použije v kontejneru smyčky foreach pro odeslání úlohy U-SQL. 
 
 ![Konfigurace úlohy systému souborů Azure Data Lake Store](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
-[Přečtěte si další informace o úloze Azure Data Lake Store systému souborů](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-store-file-system-task?view=sql-server-2017).
+[Přečtěte si další informace o úloze Azure Data Lake Store systému souborů](/sql/integration-services/control-flow/azure-data-lake-store-file-system-task).
 
 ### <a name="configure-foreach-loop-container"></a>Konfigurovat kontejner smyčky foreach
 
@@ -77,7 +74,7 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
 
 3. Nastavte **soubory** v **konfiguraci enumerátoru** tak `*.usql` , aby kontejner smyčky zachytává pouze soubory končící na `.usql` .
 
-    ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![Snímek obrazovky zobrazující Editor smyčky foreach s vybraným kolekcí a zvýrazněné konfigurační oddíly výčtu a čítače výčtu.](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. Na stránce **mapování proměnných** přidejte uživatelsky definovanou proměnnou pro získání názvu souboru u každého souboru U-SQL. Pro získání názvu souboru nastavte **index** na 0. V tomto příkladu definujte proměnnou s názvem `User::FileName` . Tato proměnná se použije k dynamickému získání připojení souboru skriptu U-SQL a nastavení názvu úlohy U-SQL v Azure Data Lake Analytics úlohy.
 
@@ -94,7 +91,7 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
    1. Vyberte možnost **\<New Connection...>** v nastavení připojení \.
    2. Nastavte **typ využití** na **existující soubor**a nastavte **soubor** na cestu k souboru existujícímu souboru.
 
-       ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Snímek obrazovky, který zobrazuje Editor Správce připojení souborů s vybraným "existujícím souborem", pro "typ využití".](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. V zobrazení **Správci připojení** klikněte pravým tlačítkem myši na vytvořené připojení k souboru a vyberte možnost **vlastnosti**.
 
@@ -102,9 +99,9 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
 
        ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
-3. Nastavte **AzureDataLakeAnalyticsConnection** na účet Azure Data Lake Analytics, do kterého chcete odesílat úlohy. Přečtěte si další informace o [Azure Data Lake Analytics Správce připojení](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
+3. Nastavte **AzureDataLakeAnalyticsConnection** na účet Azure Data Lake Analytics, do kterého chcete odesílat úlohy. Přečtěte si další informace o [Azure Data Lake Analytics Správce připojení](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager).
 
-4. Nastavte další konfigurace úloh. [Další informace](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)
+4. Nastavte další konfigurace úloh. [Další informace](/sql/integration-services/control-flow/azure-data-lake-analytics-task)
 
 5. Použijte **výrazy** k dynamickému nastavení názvu úlohy U-SQL:
 
@@ -117,7 +114,7 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
 
 V Azure Feature Pack můžete použít soubory U-SQL v Azure Blob Storage pomocí **úlohy stažení objektu BLOB v Azure** . Tento přístup vám umožní používat skripty v cloudu.
 
-Postup je podobný [scénáři 2: použití souborů U-SQL v Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Změňte úlohu systému souborů Azure Data Lake Store na úlohu stažení objektu BLOB v Azure. [Přečtěte si další informace o úloze stažení objektu BLOB v Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Postup je podobný [scénáři 2: použití souborů U-SQL v Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Změňte úlohu systému souborů Azure Data Lake Store na úlohu stažení objektu BLOB v Azure. [Přečtěte si další informace o úloze stažení objektu BLOB v Azure](/sql/integration-services/control-flow/azure-blob-download-task).
 
 Tok řízení je podobný následujícímu.
 
@@ -162,10 +159,10 @@ V některých případech možná budete chtít dynamicky nastavit hodnotu prom�
 - Nastavte proměnné cesty vstupního a výstupního souboru dynamicky na základě aktuálního data a času.
 - Nastavte parametr pro uložené procedury.
 
-[Přečtěte si další informace o tom, jak nastavit parametry pro skript U-SQL](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
+[Přečtěte si další informace o tom, jak nastavit parametry pro skript U-SQL](/sql/integration-services/control-flow/azure-data-lake-analytics-task#parameter-mapping-page-configuration).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spouštění balíčků služby SSIS v Azure](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-- [Azure Feature Pack pro integrační služby (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [Plánování úloh U-SQL pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Spouštění balíčků služby SSIS v Azure](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
+- [Azure Feature Pack pro integrační služby (SSIS)](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud)
+- [Plánování úloh U-SQL pomocí Azure Data Factory](../data-factory/transform-data-using-data-lake-analytics.md)

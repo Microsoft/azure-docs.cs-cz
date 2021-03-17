@@ -10,20 +10,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851677"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562480"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady služby API Management
 
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
 
-## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a>Rozšířené zásady
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Rozšířené zásady
 
 -   [Tok řízení](api-management-advanced-policies.md#choose) – podmíněně aplikuje příkazy zásad na základě výsledků vyhodnocení logických [výrazů](api-management-policy-expressions.md).
 -   [Dopředné žádosti](#ForwardRequest) – přepošle požadavek do služby back-end.
@@ -41,11 +41,11 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 -   [Trasování](#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](./api-management-howto-api-inspector.md) Application Insights telemetrií a protokoly prostředků.
 -   [Wait](#Wait) -čeká na uzavřenou [žádost o odeslání](api-management-advanced-policies.md#SendRequest), před pokračováním [Získá hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey)nebo zásady [toku řízení](api-management-advanced-policies.md#choose) .
 
-## <a name="control-flow"></a><a name="choose"></a>Tok řízení
+## <a name="control-flow"></a><a name="choose"></a> Tok řízení
 
 Tato `choose` zásada aplikuje uzavřené příkazy zásad na základě výsledku vyhodnocení logických výrazů, podobně jako konstruktor if-then-else nebo konstrukce přepínače v programovacím jazyce.
 
-### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a>Prohlášení o zásadách
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a> Prohlášení o zásadách
 
 ```xml
 <choose>
@@ -65,7 +65,7 @@ Zásady toku řízení musí obsahovat alespoň jeden `<when/>` element. `<other
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="example"></a><a name="ChooseExample"></a>Případě
+#### <a name="example"></a><a name="ChooseExample"></a> Případě
 
 Následující příklad ukazuje zásadu [set-Variable](api-management-advanced-policies.md#set-variable) a dva zásady toku řízení.
 
@@ -78,7 +78,7 @@ Druhá zásada toku řízení je v odchozím oddílu a podmíněně aplikuje zá
 ```xml
 <policies>
     <inbound>
-        <set-variable name="isMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+        <set-variable name="isMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
         <base />
         <choose>
             <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">
@@ -138,7 +138,7 @@ Tento příklad ukazuje, jak provést filtrování obsahu odebráním datových 
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | Condition = "logický výraz &#124; Boolean Constant" | Logický výraz nebo konstanta k vyhodnocení při vyhodnocení obsahujícího `when` příkazu zásad. | Ano      |
 
-### <a name="usage"></a><a name="ChooseUsage"></a>Využívání
+### <a name="usage"></a><a name="ChooseUsage"></a> Využívání
 
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
@@ -146,7 +146,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="forward-request"></a><a name="ForwardRequest"></a>Dopředný požadavek
+## <a name="forward-request"></a><a name="ForwardRequest"></a> Dopředný požadavek
 
 `forward-request`Zásada předává příchozí požadavek do back-end služby zadané v [kontextu](api-management-policy-expressions.md#ContextVariables)požadavku. Adresa URL back-end služby je zadaná v [Nastavení](./import-and-publish.md) rozhraní API a dá se změnit pomocí [nastavení zásady back-end služby](api-management-transformation-policies.md) .
 
@@ -156,7 +156,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
 ```xml
-<forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" fail-on-error-status-code="false | true"/>
+<forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" buffer-response="true | false" fail-on-error-status-code="false | true"/>
 ```
 
 ### <a name="examples"></a>Příklady
@@ -255,6 +255,7 @@ Tato zásada na úrovni operace nepředávají požadavky do back-endové služb
 | timeout = "Integer"                             | Doba v sekundách, po kterou se má čekat na vrácení hlaviček odpovědí HTTP službou back-end, než dojde k vygenerování chyby časového limitu. Minimální hodnota je 0 sekund. Hodnoty větší než 240 sekund nemusí být dodrženy, protože podkladová síťová infrastruktura může po uplynutí této doby zrušit nečinné připojení. | Ne       | Žádné    |
 | následné přesměrování = "false &#124; true"          | Určuje, jestli je následováno přesměrování ze služby back-end, nebo se vrátí volajícímu.                                                                                                                                                                                                    | Ne       | false (nepravda)   |
 | buffer-Request-body = "false &#124; true"       | Pokud je hodnota nastavená na "true", uloží se do vyrovnávací paměti a při [opakovaném pokusu](api-management-advanced-policies.md#Retry)se znovu použije.                                                                                                                                                                                               | Ne       | false (nepravda)   |
+| buffer-Response = "false &#124; true" | Ovlivňuje zpracování odpovědí v bloku. Když se nastaví na false, každý blok získaný z back-endu se okamžitě vrátí volajícímu. Pokud je nastavená na "true", jsou bloky dat ukládány do vyrovnávací paměti (8 KB, pokud se nezjistí konec streamu) a teprve potom se vrátí volajícímu. | Ne | true |
 | selhání-On-Error-Status-Code = "false &#124; true" | Pokud je nastavená hodnota true Triggers [On-Error](api-management-error-handling-policies.md) , pro kódy odpovědí v rozsahu od 400 do 599 včetně.                                                                                                                                                                      | Ne       | false (nepravda)   |
 
 ### <a name="usage"></a>Využití
@@ -264,11 +265,11 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 -   **Oddíly zásad:** back-end
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a>Omezení souběžnosti
+## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a> Omezení souběžnosti
 
 `limit-concurrency`Zásada zabraňuje tomu, aby se uzavřené zásady prováděly ve více než zadaném počtu žádostí. Po překročení tohoto počtu budou nové požadavky okamžitě úspěšné a 429 příliš mnoho stavových kódů požadavků.
 
-### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>Prohlášení o zásadách
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a> Prohlášení o zásadách
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -304,7 +305,7 @@ Následující příklad ukazuje, jak omezit počet požadavků předaných do b
 
 | Atribut | Popis                                                                                        | Povinné | Výchozí |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| Klíč       | Řetězec. Výraz je povolený. Určuje rozsah souběžnosti. Může být sdíleno více zásadami. | Ano      | –     |
+| key       | Řetězec. Výraz je povolený. Určuje rozsah souběžnosti. Může být sdíleno více zásadami. | Ano      | –     |
 | max – počet | Celé číslo Určuje maximální počet požadavků, které mají povolené zadání těchto zásad.           | Ano      | –     |
 
 ### <a name="usage"></a>Využití
@@ -315,7 +316,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a>Přihlášení do centra událostí
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a> Přihlášení do centra událostí
 
 `log-to-eventhub`Zásada odesílá zprávy v zadaném formátu do centra událostí, které definuje entita protokolovacího nástroje. Jak název naznačuje, zásada se používá k uložení vybraných informací o kontextu požadavku nebo odpovědi pro online nebo offline analýzu.
 
@@ -369,7 +370,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="mock-response"></a><a name="mock-response"></a>Přípravou odezva
+## <a name="mock-response"></a><a name="mock-response"></a> Přípravou odezva
 
 `mock-response`Jak název naznačuje, se používá k napodobování rozhraní API a operací. Přerušuje normální spuštění kanálu a vrátí napodobnou odpověď volajícímu. Zásada se vždycky pokusí vrátit odpovědi nejvyšší přesnosti. V případě, že jsou k dispozici, preferuje příklady obsahu odpovědi. Generuje ukázkové odpovědi ze schémat, pokud jsou k dispozici schémata a příklady nejsou. Nejsou-li nalezeny žádné příklady ani schémata, budou vráceny odpovědi bez obsahu.
 
@@ -413,7 +414,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="retry"></a><a name="Retry"></a>Opakujte
+## <a name="retry"></a><a name="Retry"></a> Opakujte
 
 `retry`Zásady spustí své podřízené zásady jednou a potom se znovu pokusí o jejich spuštění, dokud se znovu nespustí `condition` `false` nebo `count` se znovu vyčerpá.
 
@@ -465,7 +466,7 @@ V následujícím příkladu se znovu pokusí o předávání požadavků až de
 | count            | Kladné číslo určující maximální počet opakovaných pokusů o opakování.                                                                                | Ano      | –     |
 | interval         | Kladné číslo v sekundách, které určuje interval čekání mezi pokusy o opakování.                                                                 | Ano      | –     |
 | Max – interval     | Kladné číslo v sekundách, které určuje maximální interval čekání mezi pokusy o opakování. Slouží k implementaci algoritmu exponenciálního opakování. | Ne       | –     |
-| rozdíl            | Kladné číslo v sekundách, které určuje přírůstek intervalu čekání. Slouží k implementaci algoritmů lineárního a exponenciálního opakování.             | Ne       | –     |
+| Delta            | Kladné číslo v sekundách, které určuje přírůstek intervalu čekání. Slouží k implementaci algoritmů lineárního a exponenciálního opakování.             | Ne       | –     |
 | First – Fast – opakování | Pokud je nastavená na `true` , první pokus o opakování proběhne okamžitě.                                                                                  | Ne       | `false` |
 
 > [!NOTE]
@@ -481,7 +482,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="return-response"></a><a name="ReturnResponse"></a>Návratová odpověď
+## <a name="return-response"></a><a name="ReturnResponse"></a> Návratová odpověď
 
 `return-response`Zásady přeruší spuštění kanálu a vrátí buď výchozí nebo vlastní odpověď volajícímu. Výchozí odezva není `200 OK` bez těla. Vlastní odpověď lze zadat prostřednictvím kontextové proměnné nebo příkazů zásad. V případě, že jsou k dispozici obě, je odpověď obsažená v kontextové proměnné upravena pomocí příkazů zásad před jejich vrácením volajícímu.
 
@@ -531,7 +532,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a>Poslat jednosměrnou žádost
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a> Poslat jednosměrnou žádost
 
 `send-one-way-request`Zásada odešle zadaný požadavek na zadanou adresu URL bez čekání na odpověď.
 
@@ -605,7 +606,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="send-request"></a><a name="SendRequest"></a>Odeslat žádost
+## <a name="send-request"></a><a name="SendRequest"></a> Odeslat žádost
 
 `send-request`Zásada odešle poskytnutý požadavek na zadanou adresu URL, která čeká na uplynutí doby, než je nastavená hodnota časového limitu.
 
@@ -692,7 +693,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a>Nastavit proxy server HTTP
+## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a> Nastavit proxy server HTTP
 
 `proxy`Zásady vám umožní směrovat požadavky předané do back-endu prostřednictvím proxy serveru http. Mezi bránou a proxy serverem se podporuje jenom HTTP (ne HTTPS). Pouze ověřování typu Basic a NTLM.
 
@@ -734,7 +735,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="set-request-method"></a><a name="SetRequestMethod"></a>Nastavit metodu požadavku
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a> Nastavit metodu požadavku
 
 Tato `set-method` zásada umožňuje změnit metodu požadavku HTTP pro požadavek.
 
@@ -789,7 +790,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="set-status-code"></a><a name="SetStatus"></a>Nastavit stavový kód
+## <a name="set-status-code"></a><a name="SetStatus"></a> Nastavit stavový kód
 
 `set-status`Zásada nastaví stavový kód HTTP na zadanou hodnotu.
 
@@ -838,22 +839,22 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 -   **Oddíly zásad:** odchozí, back-end, on-error
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="set-variable"></a><a name="set-variable"></a>Nastavit proměnnou
+## <a name="set-variable"></a><a name="set-variable"></a> Nastavit proměnnou
 
 `set-variable`Zásada deklaruje [kontextovou](api-management-policy-expressions.md#ContextVariables) proměnnou a přiřadí jí hodnotu zadanou prostřednictvím [výrazu](api-management-policy-expressions.md) nebo řetězcového literálu. Pokud výraz obsahuje literál, bude převeden na řetězec a typ hodnoty bude `System.String` .
 
-### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>Prohlášení o zásadách
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a> Prohlášení o zásadách
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="example"></a><a name="set-variableExample"></a>Případě
+### <a name="example"></a><a name="set-variableExample"></a> Případě
 
 Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí. Tato sada zásad proměnné vytvoří `isMobile` logickou [kontextovou](api-management-policy-expressions.md#ContextVariables) proměnnou, která je nastavena na hodnotu true, pokud `User-Agent` Hlavička požadavku obsahuje text `iPad` nebo `iPhone` .
 
 ```xml
-<set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+<set-variable name="IsMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
 ```
 
 ### <a name="elements"></a>Elementy
@@ -864,10 +865,10 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 
 ### <a name="attributes"></a>Atributy
 
-| Atribut | Popis                                                              | Povinné |
+| Atribut | Popis                                                              | Vyžadováno |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Název proměnné.                                                | Ano      |
-| value     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Ano      |
+| hodnota     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Ano      |
 
 ### <a name="usage"></a>Využití
 
@@ -876,7 +877,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 -   **Obory zásad:** všechny rozsahy
 
-### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a>Povolené typy
+### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a> Povolené typy
 
 Výrazy používané v `set-variable` zásadách musí vracet jeden z následujících základních typů.
 
@@ -912,12 +913,12 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 -   System. Char?
 -   System. DateTime?
 
-## <a name="trace"></a><a name="Trace"></a>Přehled
+## <a name="trace"></a><a name="Trace"></a> Přehled
 
 `trace`Zásada přidá vlastní trasování do výstupu kontroly rozhraní API, Application Insights telemetrií a/nebo protokoly prostředků.
 
 -   Zásada přidá vlastní trasování do výstupu [inspektoru rozhraní API](./api-management-howto-api-inspector.md) , když se aktivuje trasování, tj. `Ocp-Apim-Trace` je přítomná hlavička Request, která má nastavenou hodnotu true a `Ocp-Apim-Subscription-Key` je k dispozici Hlavička požadavku a obsahuje platný klíč, který umožňuje trasování.
--   Zásada vytvoří telemetrii [trasování](../azure-monitor/app/data-model-trace-telemetry.md) v Application Insights, pokud je povolená [integrace Application Insights](./api-management-howto-app-insights.md) a `severity` úroveň zadaná v zásadách je vyšší nebo rovna `verbosity` úrovni určené v nastavení diagnostiky.
+-   Zásada vytvoří telemetrii [trasování](../azure-monitor/app/data-model-trace-telemetry.md) v Application Insights, pokud je povolená [Application Insights integrace](./api-management-howto-app-insights.md) a `severity` zadaná hodnota v zásadách je větší nebo rovna hodnotě `verbosity` uvedené v nastavení diagnostiky.
 -   Zásada přidá do položky protokolu vlastnost, pokud je povolená možnost [protokoly prostředků](./api-management-howto-use-azure-monitor.md#activity-logs) a úroveň závažnosti zadaná v zásadách je na nebo vyšší než úroveň podrobností uvedená v nastavení diagnostiky.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
@@ -931,7 +932,7 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 
 ```
 
-### <a name="example"></a><a name="traceExample"></a>Případě
+### <a name="example"></a><a name="traceExample"></a> Případě
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -955,7 +956,7 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 | source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Ano      | –     |
 | severity  | Určuje úroveň závažnosti trasování. Povolené hodnoty jsou `verbose` , `information` , `error` (od nejnižší po nejvyšší). | Ne       | Verbose |
 | name      | Název vlastnosti.                                                                                                     | Ano      | –     |
-| value     | Hodnota vlastnosti                                                                                                    | Ano      | –     |
+| hodnota     | Hodnota vlastnosti                                                                                                    | Ano      | –     |
 
 ### <a name="usage"></a>Využití
 
@@ -965,7 +966,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 
 -   **Obory zásad:** všechny rozsahy
 
-## <a name="wait"></a><a name="Wait"></a>Počkej
+## <a name="wait"></a><a name="Wait"></a> Počkej
 
 `wait`Zásady spustí paralelně své bezprostřední podřízené zásady a počká, až se všechny nebo jedna z jejích bezprostředně podřízených zásad dokončí, než se dokončí. Zásady čekání můžou mít jako své bezprostřední podřízené zásady [odesílat požadavky](api-management-advanced-policies.md#SendRequest), [získávat hodnoty z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey)a zásady [toku řízení](api-management-advanced-policies.md#choose) .
 
@@ -1025,7 +1026,7 @@ V následujícím příkladu jsou k dispozici dvě `choose` zásady jako přím�
 
 | Atribut | Popis                                                                                                                                                                                                                                                                                                                                                                                                            | Povinné | Výchozí |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| pro       | Určuje, jestli `wait` zásady čekají na dokončení všech bezprostředních podřízených zásad, nebo jenom jeden. Povolené hodnoty jsou následující:<br /><br /> - `all`– Počkejte na dokončení všech okamžitých podřízených zásad<br />-Any – počkejte na dokončení všech bezprostředně podřízených zásad. Jakmile se dokončí první bezprostředně podřízená zásada, `wait` zásada se dokončí a provede se ukončení všech ostatních okamžitých podřízených zásad. | Ne       | Vše     |
+| pro       | Určuje, jestli `wait` zásady čekají na dokončení všech bezprostředních podřízených zásad, nebo jenom jeden. Povolené hodnoty jsou následující:<br /><br /> - `all` – Počkejte na dokončení všech okamžitých podřízených zásad<br />-Any – počkejte na dokončení všech bezprostředně podřízených zásad. Jakmile se dokončí první bezprostředně podřízená zásada, `wait` zásada se dokončí a provede se ukončení všech ostatních okamžitých podřízených zásad. | Ne       | Vše     |
 
 ### <a name="usage"></a>Využití
 
@@ -1041,4 +1042,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 -   [Zásady v API Management](api-management-howto-policies.md)
 -   [Výrazy zásad](api-management-policy-expressions.md)
 -   [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
--   [Ukázky zásad](policy-samples.md)
+-   [Ukázky zásad](./policy-reference.md)

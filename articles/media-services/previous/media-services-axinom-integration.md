@@ -3,7 +3,7 @@ title: Použití Axinom k doručování licencí Widevine Azure Media Services |
 description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) doručovat datový proud, který je dynamicky zašifrovaný pomocí AMS, pomocí PlayReady i Widevine několikanásobnou. Licence PlayReady pochází z Media Services licenční server PlayReady a licence Widevine se doručují prostřednictvím licenčního serveru Axinom.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 9c93fa4e-b4da-4774-ab6d-8b12b371631d
@@ -12,17 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 532e982b02bb35074370db45fec8cc42a898c83e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954617"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015502"
 ---
-# <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí Axinomu 
+# <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí Axinomu
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [castLabs](media-services-castlabs-integration.md)
 > * [Axinom](media-services-axinom-integration.md)
@@ -54,7 +58,7 @@ Dynamickou ochranu CENC můžete nakonfigurovat pomocí více DRM pro PŘERUŠOV
 
 Důvody, proč Azure Active Directory nelze použít jako STS pro licenční server Widevine pro Axinom, najdete v části [generování tokenu JWT](media-services-axinom-integration.md#jwt-token-generation) .
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 1. K vygenerování klíče obsahu pro konfiguraci služby doručování klíčů je nutné použít Axinom zadaného klíčového počátečního klíče (8888000000000000000000000000000000000000) a vygenerované nebo vybrané ID klíče. Axinom License Server vystavuje všechny licence obsahující klíče obsahu založené na stejném počátečním klíči, který je platný pro testování i pro produkční prostředí.
 2. Adresa URL pro získání licence Widevine pro testování: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense) . Jsou povoleny protokoly HTTP a HTTS.
 
@@ -142,7 +146,7 @@ Licenční server Axinom Widevine
 <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
 ```
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 1. I když služba pro doručování licencí PlayReady v AMS vyžaduje "Bearer =" před ověřovacím tokenem, Axinom licenční server Widevine ho nepoužívá.
 2. Axinom Communications Key se používá jako podpisový klíč. Klíč je řetězec v šestnáctkové soustavě, ale musí být zpracován jako série bajtů, nikoli String při kódování. Toho je dosaženo metodou ConvertHexStringToByteArray.
 
@@ -199,8 +203,8 @@ Následující parametry jsou vyžadovány ve zkráceném řešení, které vyu�
 | --- | --- |
 | ID komunikačního klíče |Musí být zahrnuté jako hodnota deklarace com_key_id v tokenu JWT (viz [Tato](media-services-axinom-integration.md#jwt-token-generation) část). |
 | Komunikační klíč |Musí být použit jako podpisový klíč tokenu JWT (viz [Tato](media-services-axinom-integration.md#jwt-token-generation) část). |
-| Klíčová semena |Musí se použít ke generování klíče obsahu s jakýmkoli daným ID klíče obsahu (viz [Tato](media-services-axinom-integration.md#content-protection) část). |
-| Adresa URL pro získání licence Widevine |Se musí použít při konfiguraci zásad doručení assetů pro PŘERUŠOVANé streamování (viz [Tato](media-services-axinom-integration.md#content-protection) část). |
+| Klíčová semena |Musí se použít ke generování klíče obsahu s jakýmkoli daným ID klíče obsahu (viz  [Tato](media-services-axinom-integration.md#content-protection) část). |
+| Adresa URL pro získání licence Widevine |Se musí použít při konfiguraci zásad doručení assetů pro PŘERUŠOVANé streamování (viz  [Tato](media-services-axinom-integration.md#content-protection) část). |
 | ID klíče obsahu |Musí být zahrnuté jako součást hodnoty nároku na zprávu nároku tokenu JWT (viz v [této](media-services-axinom-integration.md#jwt-token-generation) části). |
 
 ## <a name="additional-notes"></a>Další poznámky

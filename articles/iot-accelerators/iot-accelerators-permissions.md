@@ -8,21 +8,21 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61447424"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387832"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Nasazení akcelerátoru řešení pomocí webu azureiotsolutions.com
 
-Akcelerátory řešení Azure IoT můžete nasadit do předplatného Azure z [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators). AzureIoTSolutions.com je hostitelem akcelerátorů řešení Microsoft Open Source i partner. Tyto akcelerátory řešení se zarovnají s [referenční architekturou Azure IoT](https://aka.ms/iotrefarchitecture). Web můžete použít k rychlému nasazení akcelerátoru řešení jako ukázkové nebo produkční prostředí.
+Akcelerátory řešení Azure IoT můžete nasadit do předplatného Azure z [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators). AzureIoTSolutions.com je hostitelem akcelerátorů řešení Microsoft Open Source i partner. Tyto akcelerátory řešení se zarovnají s [referenční architekturou Azure IoT](/azure/architecture/reference-architectures/iot). Web můžete použít k rychlému nasazení akcelerátoru řešení jako ukázkové nebo produkční prostředí.
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="Domovská stránka řešení IoT":::
 
 > [!TIP]
-> Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít rozhraní příkazového [řádku k nasazení akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy-cli.md).
+> Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít rozhraní příkazového řádku k nasazení akcelerátoru řešení.
 
 Akcelerátory řešení můžete nasadit v následujících konfiguracích:
 
@@ -38,7 +38,7 @@ Než budete moct nasadit akcelerátor řešení, musíte se přihlásit na Azure
 
 Vaše oprávnění nasadit akcelerátory řešení, spravovat uživatele a spravovat služby Azure závisí na vaší roli ve vybraném adresáři. Mezi běžné role Azure AD přidružené k akcelerátorům řešení patří:
 
-* **Globální správce**: může existovat mnoho [globálních správců](../active-directory/users-groups-roles/directory-assign-admin-roles.md) na tenanta Azure AD:
+* **Globální správce**: může existovat mnoho [globálních správců](../active-directory/roles/permissions-reference.md) na tenanta Azure AD:
 
   * Při vytváření tenanta Azure AD jste ve výchozím nastavení globálním správcem tohoto tenanta.
   * Globální správce může nasazovat základní a standardní akcelerátory řešení.
@@ -64,9 +64,4 @@ Pokud jste výrobce hardwaru, klikněte na **stát se partnerem** , kde se dozv�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, projděte si následující rychlé starty:
-
-* [Vyzkoušení řešení pro vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
-* [Vyzkoušení řešení propojené továrny](quickstart-connected-factory-deploy.md)
-* [Vyzkoušení řešení prediktivní údržby](quickstart-predictive-maintenance-deploy.md)
-* [Vyzkoušení řešení simulace zařízení](quickstart-device-simulation-deploy.md)
+Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, Projděte si rychlý Start: [Vyzkoušejte řešení propojené továrny](quickstart-connected-factory-deploy.md).

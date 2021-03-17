@@ -1,18 +1,16 @@
 ---
 title: Optimalizace využití paměti v Apache Spark – Azure HDInsight
 description: Naučte se optimalizovat využití paměti v Apache Spark ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 06bb8f2005dae9e36fe55547a31c81c36d0c7068
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: d54cf4e9025dfd75d9029dec534fc5dc5dd990a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737644"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944183"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Optimalizace využití paměti pro Apache Spark
 

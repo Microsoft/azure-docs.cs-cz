@@ -1,28 +1,24 @@
 ---
-title: Publikování verzí rozhraní API pomocí služby Azure API Management | Microsoft Docs
-description: Pomocí kroků v tomto kurzu se naučíte publikovat několik verzí pomocí služby API Management.
-services: api-management
-documentationcenter: ''
+title: Kurz – publikování verzí rozhraní API pomocí Azure API Management
+description: Pomocí kroků v tomto kurzu se dozvíte, jak publikovat více verzí rozhraní API v API Management.
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255026"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546648"
 ---
-# <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
+# <a name="tutorial-publish-multiple-versions-of-your-api"></a>Kurz: publikování několika verzí vašeho rozhraní API 
 
-Občas je nepraktické, aby všichni volající vašeho rozhraní API používali naprosto stejnou verzi. Když volající chtějí upgradovat na novější verzi, chtějí mít možnost to udělat snadno pochopitelným způsobem. Ve službě Azure API Management je možné toho docílit s využitím **verzí**. Další informace najdete v tématu [Verze a revize](https://azure.microsoft.com/blog/versions-revisions/).
+Existují situace, kdy je nepraktické, aby všichni volající na rozhraní API používali přesně stejnou verzi. Když volající chtějí upgradovat na novější verzi, chtějí mít přístup, který je snadno srozumitelný. Jak je znázorněno v tomto kurzu, je možné v Azure API Management poskytnout více *verzí* . 
+
+V případě pozadí si přečtěte téma [verze & revize](https://azure.microsoft.com/blog/versions-revisions/).
 
 V tomto kurzu se naučíte:
 
@@ -32,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Přidání verze do produktu
 > * Zobrazení verze na portálu pro vývojáře
 
-![Verze zobrazená na portálu pro vývojáře](media/api-management-getstarted-publish-versions/azure_portal.PNG)
+:::image type="content" source="media/api-management-getstarted-publish-versions/azure-portal.png" alt-text="Verze zobrazená v Azure Portal":::
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,66 +38,95 @@ V tomto kurzu se naučíte:
 
 ## <a name="add-a-new-version"></a>Přidání nové verze
 
-![Místní nabídka rozhraní API – přidání verze](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
+1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
+1. Vyberte **Rozhraní API**.
+1. V seznamu rozhraní API vyberte rozhraní **Demo Conference API**. 
+1. Vyberte kontextovou nabídku (**...**) vedle pole **demo konferenčního rozhraní API**.
+1. Vyberte **Přidat verzi**.
 
-1. V seznamu rozhraní API vyberte rozhraní **Demo Conference API**.
-2. Vyberte místní nabídku (**...**) vedle něj.
-3. Vyberte **+ Přidat verzi**.
+:::image type="content" source="media/api-management-getstarted-publish-versions/add-version-menu.png" alt-text="Místní nabídka rozhraní API – přidat verzi":::
+
 
 > [!TIP]
-> Verze je možné povolit také při vytváření nového rozhraní API – vyberte **Chcete vytvořit verzi tohoto rozhraní API?** na obrazovce **Přidat rozhraní API**.
+> Verze je možné povolit i při vytváření nového rozhraní API. Na obrazovce **Přidat rozhraní API** vyberte možnost **verze tohoto rozhraní API?**.
 
 ## <a name="choose-a-versioning-scheme"></a>Výběr schématu vytváření verzí
 
-Azure API Management umožňuje zvolit způsob, jakým umožníte volajícím určit požadovanou verzi rozhraní API. Verzi rozhraní API, která se má použít, zadáte výběrem **schématu vytváření verzí**. Toto schéma může být **cesta, hlavička nebo řetězec dotazu**. V následujícím příkladu se k výběru schématu vytváření verzí používá cesta.
+V Azure API Management zvolíte způsob, jakým volající určuje verzi rozhraní API, výběrem *schématu správy verzí*: **cesta, záhlaví** nebo **řetězec dotazu**. V následujícím příkladu se jako schéma správy verzí používá *cesta* .
 
-![Obrazovka Přidat verzi](media/api-management-getstarted-publish-versions/AddVersion.PNG)
+Zadejte hodnoty z následující tabulky. Pak vyberte **vytvořit** a vytvořte svou verzi.
 
-1. Jako **schéma vytváření verzí** ponechte vybranou možnost **cesta**.
-2. Do pole **Název** zadejte **demo-conference-api-v1**.
+:::image type="content" source="media/api-management-getstarted-publish-versions/add-version.png" alt-text="Přidat verzi – okno":::
 
-    > [!NOTE]
-    > Verze je ve skutečnosti nové rozhraní API založené na revizi rozhraní API. **Název** je název nového rozhraní API a musí být jedinečný v rámci instance služby API Management.
 
-3. Do pole **Identifikátor verze** zadejte **v1**.
 
-    > [!TIP]
-    > Pokud jako schéma vytváření verzí vyberete **hlavičku** nebo **řetězec dotazu**, je potřeba zadat další hodnotu – název hlavičky nebo parametr řetězce dotazu.
+|Nastavení   |Hodnota  |Popis  |
+|---------|---------|---------|
+|**Název**     |  *Ukázka – konferenční rozhraní API – v1*       |  Jedinečný název v instanci API Management.<br/><br/>Vzhledem k tomu, že verze je ve skutečnosti nové rozhraní API založené na [revizi](api-management-get-started-revise-api.md)rozhraní API, toto nastavení je nový název rozhraní API.   |
+|**Schéma správy verzí**     |  **Cesta**       |  Způsob, jakým volající určí verzi rozhraní API.     |
+|**Identifikátorem verze**     |  *V1*       |  Indikátor verze konkrétního schématu. Pro **cestu** je přípona cesty URL rozhraní API. <br/><br/> Pokud je vybraná možnost **záhlaví** nebo **řetězec dotazu** , zadejte další hodnotu: název záhlaví nebo parametr řetězce dotazu.<br/><br/> Zobrazí se příklad použití.        |
+|**Produkty**     |  **Unlimited**       |  Volitelně jeden nebo více produktů, ke kterým je přiřazena verze rozhraní API. Pokud chcete rozhraní API publikovat, musíte ho přidružit k produktu. [Verzi produktu](#add-the-version-to-a-product) můžete také přidat později.      |
 
-4. Vyberte **Vytvořit** a nastavte svou novou verzi.
-5. V seznamu rozhraní API se teď pod položkou **Demo Conference API** zobrazí dvě různá rozhraní API – **Original** (Původní) a **v1**.
+Po vytvoření verze se teď v seznamu rozhraní API zobrazí pod **ukázkovou konferenční místností API** . Teď vidíte dvě rozhraní API: **původní** a **v1**.
 
-    ![Verze uvedené pod rozhraním API na webu Azure Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
+![Verze uvedené pod rozhraním API na webu Azure Portal](media/api-management-getstarted-publish-versions/version-list.png)
 
-    > [!Note]
-    > Pokud přidáte verzi k rozhraní bez správy verzí, automaticky se vytvoří verze **Original**, která odpovídá na výchozí adrese URL. Tím se zajistí, že proces přidání verze negativně neovlivní žádné stávající volající. Pokud vytvoříte nové rozhraní API, které má už od začátku povolené verze, verze Original se nevytvoří.
+Nyní můžete upravit a nakonfigurovat **v1** jako rozhraní API, které je oddělené od **původního**. Změny jedné verze nemají vliv na jinou verzi.
 
-6. Teď můžete upravit a nakonfigurovat verzi **v1** jako rozhraní API, které je oddělené od verze **Original**. Změny jedné verze nemají vliv na jinou verzi.
+> [!Note]
+> Pokud přidáte verzi do rozhraní API bez verze, bude automaticky vytvořen i **původní** . Tato verze reaguje na výchozí adresu URL. Vytvořením původní verze se zajistí, že proces přidávání verze neruší žádné existující volající. Pokud vytvoříte nové rozhraní API s verzemi, které jsou na začátku povolené, původní verze se nevytvoří.
 
 ## <a name="add-the-version-to-a-product"></a>Přidání verze do produktu
 
-Aby se volajícím zobrazila nová verze, musí se přidat do **produktu**.
+Aby se volajícím zobrazila nová verze, musí se přidat do *produktu*. Pokud jste ještě nepřidali verzi k produktu, můžete ji kdykoli přidat do produktu.
 
-![Produkty API Managementu](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+Například pro přidání verze do **neomezeného** produktu:
+1. V Azure Portal přejděte k instanci API Management.
+1. Vyberte možnost **produkty**  >  **neomezené**  >  **rozhraní API**  >  **+ Přidat**.
+1. Vyberte **ukázková konferenční konference API** verze **v1**.
+1. Klikněte na **Vybrat**.
 
-1. Na stránce modelu nasazení Classic vyberte **Produkty**.
-2. Vyberte **Neomezeno**.
-3. Vyberte **Rozhraní API**.
-4. Vyberte **Přidat**.
-5. Vyberte **Demo Conference API, verze v1**.
-6. Klikněte na **Vybrat**.
+:::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Přidat verzi k produktu":::
+
+## <a name="use-version-sets"></a>Použití sad verzí
+
+Když vytvoříte více verzí, vytvoří Azure Portal *sadu verzí*, která představuje sadu verzí pro jedno logické rozhraní API. Vyberte název rozhraní API, které obsahuje více verzí. Azure Portal zobrazí **sadu verzí**. Můžete přizpůsobit **název** a **Popis** virtuální sady.
+
+Můžete přímo komunikovat se sadami verzí pomocí Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Pokud chcete zobrazit všechny sady verzí, spusťte příkaz [AZ APIM API versionset list](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) :
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Když Azure Portal vytvoří pro vás sadu verzí, přiřadí alfanumerický název, který se zobrazí ve sloupci **název** v seznamu. Tento název použijte v dalších příkazech rozhraní příkazového řádku Azure.
+
+Pokud chcete zobrazit podrobnosti o sadě verzí, spusťte příkaz [AZ APIM API versionset show](/api/versionset#az_apim_api_versionset_show) :
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+Další informace o sadách verzí najdete v tématu [verze v Azure API Management](api-management-versions.md#how-versions-are-represented).
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 
+Pokud jste si vyzkoušeli [portál pro vývojáře](api-management-howto-developer-portal-customize.md), můžete zobrazit verze rozhraní API.
+
 1. V horní nabídce vyberte **Portál pro vývojáře**.
-2. Vyberte **rozhraní API** a klikněte na **UKÁZKOVOU konferenci rozhraní API**.
+2. Vyberte **Rozhraní API** a pak rozhraní **Demo Conference API**.
 3. Vedle názvu rozhraní API byste měli vidět rozevírací seznam s více verzemi.
 4. Vyberte **v1**.
 5. Všimněte si **adresy URL požadavku** první operace na seznamu. Ukazuje, že cesta URL rozhraní API zahrnuje **v1**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Přidání nové verze stávajícího rozhraní API
@@ -112,4 +137,4 @@ V tomto kurzu se naučíte:
 Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení stylu stránek portálu pro vývojáře](api-management-customize-styles.md)
+> [Přizpůsobení stylu stránek portálu pro vývojáře](api-management-howto-developer-portal-customize.md)

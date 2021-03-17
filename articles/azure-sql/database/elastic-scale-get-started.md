@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84044182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919540"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji pro Elastic Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,20 +85,22 @@ Chcete-li stáhnout a spustit ukázku, postupujte podle následujících kroků:
 
 1. Stáhněte si [ukázku nástrojů elastické databáze pro Azure SQL-Začínáme](https://github.com/Azure/elastic-db-tools). Rozbalte ukázku do zvoleného umístění.
 
-2. Chcete-li vytvořit projekt, otevřete řešení *ElasticScaleStarterKit. sln* z adresáře *jazyka C#* .
+2. Chcete-li vytvořit projekt, otevřete řešení *ElasticDatabaseTools. sln* z adresáře *elastické databáze-Tools-Master* . 
 
-3. V řešení pro ukázkový projekt otevřete soubor *app.config* . Pak podle pokynů v souboru přidejte název svého serveru a přihlašovací údaje (uživatelské jméno a heslo).
+3. Nastavte projekt *ElasticScaleStarterKit* jako spouštěný projekt.
 
-4. Sestavte a spusťte aplikaci. Po zobrazení výzvy umožněte aplikaci Visual Studio obnovit balíčky NuGet řešení. Tato akce stáhne nejnovější verzi klientské knihovny elastické databáze z NuGetu.
+4. V projektu *ElasticScaleStarterKit* otevřete soubor *App.config* . Pak podle pokynů v souboru přidejte název svého serveru a přihlašovací údaje (uživatelské jméno a heslo).
 
-5. Chcete-li získat další informace o možnostech klientské knihovny, Experimentujte s různými možnostmi. Poznamenejte si kroky, které aplikace převezme ve výstupu konzoly, a nebojte se prozkoumat kód na pozadí.
+5. Sestavte a spusťte aplikaci. Po zobrazení výzvy umožněte aplikaci Visual Studio obnovit balíčky NuGet řešení. Tato akce stáhne nejnovější verzi klientské knihovny elastické databáze z NuGetu.
+
+6. Chcete-li získat další informace o možnostech klientské knihovny, Experimentujte s různými možnostmi. Poznamenejte si kroky, které aplikace převezme ve výstupu konzoly, a nebojte se prozkoumat kód na pozadí.
 
    ![Průběh][4]
 
 Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
 
 > [!IMPORTANT]
-> Doporučujeme vždy používat nejnovější verzi Management Studio, abyste měli stále synchronizovaný s aktualizacemi Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+> Doporučujeme vždy používat nejnovější verzi Management Studio, abyste měli stále synchronizovaný s aktualizacemi Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="key-pieces-of-the-code-sample"></a>Klíčové části Ukázky kódu
 
@@ -134,7 +136,7 @@ Další informace o Elastic Databasech nástrojích najdete v následujících �
   * [Elastická horizontálních oddílů v centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [oznámení elastického škálování](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * Kanál 9: [video s přehledem elastického škálování](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Diskuzní fórum: [Microsoft Q&Stránka s otázkou pro Azure SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
+* Diskuzní fórum: [Microsoft Q&Stránka s otázkou pro Azure SQL Database](/answers/topics/azure-sql-database.html)
 * Měření výkonu: [čítače výkonu pro správce map horizontálních oddílů](elastic-database-client-library.md)
 
 <!--Anchors-->

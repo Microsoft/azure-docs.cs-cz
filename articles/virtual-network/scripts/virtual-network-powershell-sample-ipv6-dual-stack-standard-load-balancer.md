@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 89923bbbb6f1745a4efe033d795a6ee90d1e4d32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291894"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223189"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Ukázka konfigurace protokolu IPv6 front-endu ve virtuální síťové skriptu pomocí Standard Load Balancer (Preview)
 
@@ -174,28 +175,28 @@ $nsg = New-AzNetworkSecurityGroup `
 # Create dual stack subnet
 $subnet = New-AzVirtualNetworkSubnetConfig `
 -Name "dsSubnet" `
--AddressPrefix "10.0.0.0/24","ace:cab:deca:deed::/64"
+-AddressPrefix "10.0.0.0/24","fd00:db8:deca:deed::/64"
 
 # Create the virtual network
 $vnet = New-AzVirtualNetwork `
 -ResourceGroupName $rg.ResourceGroupName `
 -Location $rg.Location  `
 -Name "dsVnet" `
--AddressPrefix "10.0.0.0/16","ace:cab:deca::/48"  `
+-AddressPrefix "10.0.0.0/16","fd00:db8:deca::/48"  `
 -Subnet $subnet
   
 #Create network interfaces (NICs)
-$Ip4Config=New-AzNetworkInterfaceIpConfig `
--Name dsIp4Config `
+$Ip4Config=New-AzNetworkInterfaceIpConfig `
+-Name dsIp4Config `
 -Subnet $vnet.subnets[0] `
--PrivateIpAddressVersion IPv4 `
+-PrivateIpAddressVersion IPv4 `
 -LoadBalancerBackendAddressPool $backendPoolv4 `
 -PublicIpAddress  $RdpPublicIP_1
     
-$Ip6Config=New-AzNetworkInterfaceIpConfig `
--Name dsIp6Config `
+$Ip6Config=New-AzNetworkInterfaceIpConfig `
+-Name dsIp6Config `
 -Subnet $vnet.subnets[0] `
--PrivateIpAddressVersion IPv6 `
+-PrivateIpAddressVersion IPv6 `
 -LoadBalancerBackendAddressPool $backendPoolv6
     
 $NIC_1 = New-AzNetworkInterface `
@@ -205,10 +206,10 @@ $NIC_1 = New-AzNetworkInterface `
 -NetworkSecurityGroupId $nsg.Id `
 -IpConfiguration $Ip4Config,$Ip6Config 
     
-$Ip4Config=New-AzNetworkInterfaceIpConfig `
--Name dsIp4Config `
+$Ip4Config=New-AzNetworkInterfaceIpConfig `
+-Name dsIp4Config `
 -Subnet $vnet.subnets[0] `
--PrivateIpAddressVersion IPv4 `
+-PrivateIpAddressVersion IPv4 `
 -LoadBalancerBackendAddressPool $backendPoolv4 `
 -PublicIpAddress  $RdpPublicIP_2  
 
@@ -268,6 +269,6 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro sítě najdete v [dokumentaci se základními informacemi k sítím Azure](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

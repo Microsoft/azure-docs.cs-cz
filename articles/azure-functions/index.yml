@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Functions
-summary: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu.
+summary: Azure Functions je cloudová služba dostupná na vyžádání, která poskytuje veškerou nepřetržitě aktualizovanou infrastrukturu a prostředky potřebné ke spouštění vašich aplikací. Zaměřte se na části kódu, které jsou pro vás nejvhodnější, a funkce zpracuje zbytek. Funkce poskytují výpočetní prostředky pro Azure bez serveru. Pomocí funkcí můžete vytvářet webová rozhraní API, reagovat na změny v databázi, zpracovávat datové proudy IoT, spravovat fronty zpráv a další.
 metadata:
   title: Dokumentace ke službě Azure Functions
-  description: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu.
+  description: Azure Functions je cloudová služba dostupná na vyžádání, která poskytuje veškerou nepřetržitě aktualizovanou infrastrukturu a prostředky potřebné ke spouštění vašich aplikací. Vy se zaměříte na části kódu, které jsou pro vás nejdůležitější, a služba Azure Functions se postará o všechno ostatní. Funkce poskytují výpočetní prostředky pro Azure bez serveru. Azure Functions můžete také použít k sestavení webových rozhraní API, reakcím na změny databází, zpracování datových proudů IoT, správě front zpráv a dalším akcím.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 7a6f493bef86952de212eea264cccea1c0bcfeca
-  ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
-  ms.translationtype: HT
+  ms.openlocfilehash: de93d836731f9f8e21170d896d8c7dd2c4b90ffa
+  ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/05/2020
-  ms.locfileid: "87810050"
+  ms.lasthandoff: 03/14/2021
+  ms.locfileid: "103463885"
 landingContent:
 - title: Informace o službě Azure Functions
   linkLists:
@@ -22,12 +22,16 @@ landingContent:
     links:
     - text: Co je služba Azure Functions?
       url: functions-overview.md
-    - text: Porovnání bezserverových možností
-      url: functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: get-started
+    links:
+    - text: Začínáme
+      url: functions-get-started.md
   - linkListType: concept
     links:
     - text: Možnosti hostování
       url: functions-scale.md
+    - text: Porovnání bezserverových možností
+      url: functions-compare-logic-apps-ms-flow-webjobs.md
   - linkListType: learn
     links:
     - text: Volba možnosti bezserverového výpočetního prostředí
@@ -41,15 +45,21 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Vytvoření první funkce (C#)
-      url: functions-create-your-first-function-visual-studio.md
+      url: create-first-function-vs-code-csharp.md
+    - text: Vytvoření první funkce (Go)
+      url: create-first-function-vs-code-other.md?tabs=go
     - text: Vytvoření první funkce (Java)
-      url: functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java
+      url: create-first-function-cli-java.md?tabs=bash%2Cazure-cli%2Cbrowser
     - text: Vytvoření první funkce (JavaScript)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-javascript
+      url: create-first-function-vs-code-node.md
     - text: Vytvoření první funkce (PowerShell#)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-powershell
+      url: create-first-function-vs-code-powershell.md
     - text: Vytvoření první funkce (Python)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-python
+      url: create-first-function-vs-code-python.md
+    - text: Vytvoření první funkce (Rust)
+      url: create-first-function-vs-code-other.md?tabs=rust
+    - text: Vytvoření první funkce (TypeScript)
+      url: create-first-function-vs-code-typescript.md
   - linkListType: learn
     links:
     - text: Vytvoření bezserverové logiky
@@ -122,14 +132,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Nasazení s využitím modulu plug-in Jenkinse
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Výkon a sledování
+- title: Osvědčené postupy pro výkon a sledování
   linkLists:
   - linkListType: concept
     links:
+    - text: Výkon a spolehlivost
+      url: functions-best-practices.md
+    - text: Správa připojení
+      url: manage-connections.md
+    - text: Aspekty úložišť
+      url: storage-considerations.md
+    - text: Zpracování chyb a opakované pokusy funkcí
+      url: functions-bindings-error-pages.md
+    - text: Zabezpečení
+      url: security-concepts.md
     - text: Monitorování funkcí
       url: functions-monitoring.md
-    - text: Optimalizace výkonu
-      url: functions-best-practices.md
     - text: Aspekty sítí
       url: functions-networking-options.md
   - linkListType: how-to-guide

@@ -3,18 +3,21 @@ title: Podřetězec v jazyce Azure Cosmos DB Query
 description: Přečtěte si o podřetězcůch funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17888ccd8fc51ed96f7fc92a0f9275d2c8cb56f8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303694"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340822"
 ---
 # <a name="substring-azure-cosmos-db"></a>Podřetězec (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí část řetězcového výrazu počínaje zadaným znakem na základě nuly a pokračuje určenou délkou nebo na konci řetězce.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -60,4 +63,4 @@ Tato systémová funkce bude těžit z [indexu rozsahu](index-policy.md#includee
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

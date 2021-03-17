@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8f8b18d36453ac65300a5dd19fa7e07b1449bc28
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87538944"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518120"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Rámec zabezpečení: citlivá data | Hrozeb 
 | Produkt/služba | Článek |
 | --------------- | ------- |
 | **Hranice důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že binární soubory jsou zakódovány, pokud obsahují citlivé informace.](#binaries-info)</li><li>[Při ochraně důvěrných dat specifických pro uživatele zvažte použití systému souborů EFS (Encrypted File System).](#efs-user)</li><li>[Zajistěte, aby citlivá data uložená aplikací v systému souborů byla zašifrovaná.](#filesystem)</li></ul> | 
 | **Webová aplikace** | <ul><li>[Zajistěte, aby se citlivý obsah v prohlížeči neukládal do mezipaměti.](#cache-browser)</li><li>[Šifrovat oddíly konfiguračních souborů webové aplikace, které obsahují citlivá data](#encrypt-data)</li><li>[Explicitně zakázat atribut AutoComplete HTML v citlivých formulářích a vstupech](#autocomplete-input)</li><li>[Zajistěte, aby se citlivá data zobrazená na obrazovce uživatele maskována](#data-mask)</li></ul> | 
-| **Database** | <ul><li>[Implementace dynamického maskování dat pro omezení ohrožení citlivých dat uživatelů bez oprávnění](#dynamic-users)</li><li>[Zajistěte, aby hesla byla uložená ve formátu soled hash.](#salted-hash)</li><li>[Ujistěte se, že citlivá data ve sloupcích databáze jsou šifrovaná.](#db-encrypted)</li><li>[Ujistěte se, že je povolené šifrování na úrovni databáze (TDE).](#tde-enabled)</li><li>[Zajistěte, aby zálohy databáze byly šifrované.](#backup)</li></ul> | 
-| **Web API** | <ul><li>[Ujistěte se, že citlivá data související s webovým rozhraním API nejsou uložená v úložišti prohlížeče.](#api-browser)</li></ul> | 
+| **Databáze** | <ul><li>[Implementace dynamického maskování dat pro omezení ohrožení citlivých dat uživatelů bez oprávnění](#dynamic-users)</li><li>[Zajistěte, aby hesla byla uložená ve formátu soled hash.](#salted-hash)</li><li>[Ujistěte se, že citlivá data ve sloupcích databáze jsou šifrovaná.](#db-encrypted)</li><li>[Ujistěte se, že je povolené šifrování na úrovni databáze (TDE).](#tde-enabled)</li><li>[Zajistěte, aby zálohy databáze byly šifrované.](#backup)</li></ul> | 
+| **Webové rozhraní API** | <ul><li>[Ujistěte se, že citlivá data související s webovým rozhraním API nejsou uložená v úložišti prohlížeče.](#api-browser)</li></ul> | 
 | Azure Document DB | <ul><li>[Šifrování citlivých dat uložených v Azure Cosmos DB](#encrypt-docdb)</li></ul> | 
 | **Hranice vztahu důvěryhodnosti virtuálních počítačů Azure IaaS** | <ul><li>[Použití Azure Disk Encryption k šifrování disků používaných nástrojem Virtual Machines](#disk-vm)</li></ul> | 
 | **Service Fabric hranice důvěryhodnosti** | <ul><li>[Šifrování tajných kódů v aplikacích Service Fabric](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Proveďte modelování zabezpečení a v případě potřeby použijte obchodní jednotky/týmy.](#modeling-teams)</li><li>[Minimalizace přístupu ke sdílení funkcí u kritických entit](#entities)</li><li>[Školení uživatelů o rizicích spojených s funkcí sdílení Dynamics CRM a dobrými postupy zabezpečení](#good-practices)</li><li>[Zahrnutí pravidla pro vývojové standardy proscribing zobrazení podrobností o konfiguraci ve správě výjimek](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Použít šifrování služby Azure Storage (SSE) pro neaktivní neaktivní data (Preview)](#sse-preview)</li><li>[Použití šifrování na straně klienta k ukládání citlivých dat v Azure Storage](#client-storage)</li></ul> | 
+| **Azure Storage** | <ul><li>[Použít šifrování služby Azure Storage (SSE) pro neaktivní neaktivní data (Preview)](#sse-preview)</li><li>[Použití šifrování Client-Side k ukládání citlivých dat v Azure Storage](#client-storage)</li></ul> | 
 | **Mobilní klient** | <ul><li>[Šifrování citlivých nebo PII dat zapsaných na telefonech v místním úložišti](#pii-phones)</li><li>[Zazmatení vygenerovaných binárních souborů před distribucí koncovým uživatelům](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[Nastavení clientCredentialType na certifikát nebo Windows](#cert)</li><li>[WCF – režim zabezpečení není povolený.](#security)</li></ul> | 
 
@@ -88,7 +88,7 @@ ms.locfileid: "87538944"
   <system.webServer>
    <httpProtocol>
     <customHeaders>
-        <add name="Cache-Control" value="no-cache" />
+        <add name="Cache-Control" value="no-store" />
         <add name="Pragma" value="no-cache" />
         <add name="Expires" value="-1" />
     </customHeaders>
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Postupy: šifrování konfiguračních oddílů v ASP.NET 2,0 pomocí DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [určení poskytovatele chráněné konfigurace](https://msdn.microsoft.com/library/68ze1hb2.aspx) [pomocí Azure Key Vault k ochraně tajných klíčů aplikací](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Reference**              | [Postupy: šifrování konfiguračních oddílů v ASP.NET 2,0 pomocí DPAPI](/previous-versions/msp-n-p/ff647398(v=pandp.10)), [určení poskytovatele chráněné konfigurace](/previous-versions/68ze1hb2(v=vs.140)) [pomocí Azure Key Vault k ochraně tajných klíčů aplikací](/azure/architecture/multitenant-identity/web-api) |
 | **Kroky** | Konfigurační soubory, například Web.config, appsettings.jsna se často používají k ukládání citlivých informací, včetně uživatelských jmen, hesel, připojovacích řetězců databáze a šifrovacích klíčů. Pokud tyto informace nechráníte, je vaše aplikace zranitelná vůči útočníkům nebo zlomyslným uživatelům, kteří získají citlivé informace, jako jsou uživatelská jména a hesla pro účty, názvy databází a názvy serverů. V závislosti na typu nasazení (Azure/on-Prem) Šifrujte citlivé oddíly konfiguračních souborů pomocí DPAPI nebo služeb, jako je Azure Key Vault. |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>Explicitně zakázat atribut AutoComplete HTML v citlivých formulářích a vstupech
@@ -143,7 +143,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [MSDN: atributy automatického](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)dokončování [pomocí automatického dokončování ve formátu HTML](https://msdn.microsoft.com/library/ms533032.aspx), [chyby zabezpečení při upravení HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [Automatické dokončování.](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Reference**              | [MSDN: atributy automatického](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)dokončování [pomocí automatického dokončování ve formátu HTML](/previous-versions/windows/internet-explorer/ie-developer/), [chyby zabezpečení při upravení HTML](/security-updates/SecurityBulletins/2010/ms10-071), [Automatické dokončování.](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Kroky** | Atribut AutoComplete určuje, zda má formulář mít zapnuto nebo vypnuto automatické dokončování. Když je automatické dokončování zapnuté, prohlížeč automaticky dokončí hodnoty na základě hodnot, které uživatel zadal před. Pokud je například ve formuláři zadáno nové jméno a heslo a formulář je odeslán, prohlížeč zobrazí dotaz, zda má být heslo uloženo. Po zobrazení formuláře se pak jméno a heslo vyplní automaticky nebo se dokončí, protože se zadá název. Útočník s místním přístupem by mohl získat heslo nešifrovaného textu z mezipaměti prohlížeče. Ve výchozím nastavení je automatické dokončování povolené a musí být explicitně zakázané. |
 
 ### <a name="example"></a>Příklad
@@ -169,18 +169,18 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure, OnPrem |
 | **Atributy**              | SQL verze – V12, verze SQL – MsSQL2016 |
-| **Reference**              | [Dynamické maskování dat](https://msdn.microsoft.com/library/mt130841) |
+| **Reference**              | [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking) |
 | **Kroky** | Účelem dynamického maskování dat je omezit vystavení citlivých dat a zabránit tak uživatelům, kteří by neměli mít přístup k datům ze zobrazení. Dynamické maskování dat nemá za cíl zabránit uživatelům databáze v přímém připojení k databázi a spouštění vyčerpávajících dotazů, které zveřejňují citlivé údaje. Dynamické maskování dat je doplňkem dalších funkcí SQL Server zabezpečení (auditování, šifrování, zabezpečení na úrovni řádků) a důrazně se doporučuje tuto funkci používat společně s nimi, aby bylo možné lépe chránit citlivá data v databázi. Upozorňujeme, že tato funkce je podporovaná jenom SQL Server počínaje 2016 a Azure SQL Database. |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>Zajistěte, aby hesla byla uložená ve formátu soled hash.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
@@ -191,40 +191,40 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | SQL verze – vše |
-| **Reference**              | Jak [šifrovat citlivá data v SQL serveru](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [Postupy: šifrování sloupce dat v SQL Server](https://msdn.microsoft.com/library/ms179331), [šifrování podle certifikátu](https://msdn.microsoft.com/library/ms188061) |
+| **Reference**              | Jak [šifrovat citlivá data v SQL serveru](/previous-versions/sql/sql-server-2008-r2/ff848751(v=sql.105)), [Postupy: šifrování sloupce dat v SQL Server](/sql/relational-databases/security/encryption/encrypt-a-column-of-data), [šifrování podle certifikátu](/sql/t-sql/functions/encryptbycert-transact-sql) |
 | **Kroky** | Citlivá data, jako jsou třeba čísla kreditních karet, se musí v databázi šifrovat. Data lze zašifrovat pomocí šifrování na úrovni sloupce nebo pomocí funkce šifrování. |
 
 ## <a name="ensure-that-database-level-encryption-tde-is-enabled"></a><a id="tde-enabled"></a>Ujistěte se, že je povolené šifrování na úrovni databáze (TDE).
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Principy SQL Server transparentní šifrování dat (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **Reference**              | [Principy SQL Server transparentní šifrování dat (TDE)](/previous-versions/sql/sql-server-2008-r2/bb934049(v=sql.105)) |
 | **Kroky** | Funkce transparentní šifrování dat (TDE) v systému SQL Server pomáhá šifrovat citlivá data v databázi a chránit klíče používané k šifrování dat pomocí certifikátu. To zabrání komukoli bez klíčů v používání dat. TDE chrání data v klidovém znění, což znamená data a soubory protokolů. Nabízí možnost dodržovat řadu zákonů, předpisů a pokynů v různých oborech. |
 
 ## <a name="ensure-that-database-backups-are-encrypted"></a><a id="backup"></a>Zajistěte, aby zálohy databáze byly šifrované.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure, OnPrem |
 | **Atributy**              | SQL verze – V12, verze SQL – MsSQL2014 |
-| **Reference**              | [Šifrování zálohování databáze SQL](https://msdn.microsoft.com/library/dn449489) |
+| **Reference**              | [Šifrování zálohování databáze SQL](/sql/relational-databases/backup-restore/backup-encryption) |
 | **Kroky** | SQL Server má možnost šifrovat data při vytváření zálohy. Když při vytváření zálohy zadáte šifrovací algoritmus a modul pro šifrování (certifikát nebo asymetrický klíč), může jeden vytvořit zašifrovaný záložní soubor. |
 
 ## <a name="ensure-that-sensitive-data-relevant-to-web-api-is-not-stored-in-browsers-storage"></a><a id="api-browser"></a>Ujistěte se, že citlivá data související s webovým rozhraním API nejsou uložená v úložišti prohlížeče.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC 5, MVC 6 |
 | **Atributy**              | Zprostředkovatel identity – ADFS, zprostředkovatel identity – Azure AD |
@@ -263,8 +263,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Použití Azure Disk Encryption k šifrování disků používaných vašimi virtuálními počítači](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **Kroky** | <p>Azure Disk Encryption je nová funkce, která je aktuálně ve verzi Preview. Tato funkce umožňuje šifrovat disky s operačním systémem a datové disky, které používá virtuální počítač s IaaS. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Tato možnost je integrovaná s Azure Key Vault, aby vám umožnila řídit a spravovat klíče pro šifrování disků. Řešení Azure Disk Encryption podporuje následující tři scénáře šifrování zákazníka:</p><ul><li>Povolte šifrování u nových virtuálních počítačů s IaaS vytvořených ze souborů VHD zašifrovaných zákazníkem a šifrovacích klíčů poskytnutých zákazníkem, které jsou uložené v Azure Key Vault.</li><li>Povolte šifrování u nových virtuálních počítačů s IaaS vytvořených z Azure Marketplace.</li><li>Povolte šifrování u stávajících virtuálních počítačů s IaaS, které už běží v Azure.</li></ul>| 
+| **Reference**              | [Použití Azure Disk Encryption k šifrování disků používaných vašimi virtuálními počítači](../../storage/blobs/security-recommendations.md#data-protection) |
+| **Kroky** | <p>Azure Disk Encryption je nová funkce, která je aktuálně ve verzi Preview. Tato funkce umožňuje šifrovat disky s operačním systémem a datové disky, které používá virtuální počítač s IaaS. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-Crypt. Tato možnost je integrovaná s Azure Key Vault, aby vám umožnila řídit a spravovat klíče pro šifrování disků. Řešení Azure Disk Encryption podporuje následující tři scénáře šifrování zákazníka:</p><ul><li>Povolte šifrování u nových virtuálních počítačů s IaaS vytvořených ze souborů VHD zašifrovaných zákazníkem a šifrovacích klíčů poskytnutých zákazníkem, které jsou uložené v Azure Key Vault.</li><li>Povolte šifrování u nových virtuálních počítačů s IaaS vytvořených z Azure Marketplace.</li><li>Povolte šifrování u stávajících virtuálních počítačů s IaaS, které už běží v Azure.</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>Šifrování tajných kódů v aplikacích Service Fabric
 
@@ -274,7 +274,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure |
-| **Reference**              | [Správa tajných kódů v aplikacích Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **Reference**              | [Správa tajných kódů v aplikacích Service Fabric](../../service-fabric/service-fabric-application-secret-management.md) |
 | **Kroky** | Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu. Ke správě klíčů a tajných kódů v aplikacích Service Fabric použijte Azure Key Vault. |
 
 ## <a name="perform-security-modeling-and-use-business-unitsteams-where-required"></a><a id="modeling-teams"></a>Proveďte modelování zabezpečení a v případě potřeby použijte obchodní jednotky/týmy.
@@ -329,10 +329,10 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | StorageType – objekt BLOB |
-| **Reference**              | [Šifrování služby Azure Storage pro neaktivní neaktivní data (Preview)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **Reference**              | [Šifrování služby Azure Storage pro neaktivní neaktivní data (Preview)](../../storage/common/storage-service-encryption.md) |
 | **Kroky** | <p>Šifrování služby Azure Storage (SSE) pro neaktivní data pomáhá chránit a chránit vaše data, aby splňovala závazky zabezpečení a dodržování předpisů vaší organizace. Pomocí této funkce služba Azure Storage automaticky šifruje vaše data před zachováním v úložišti a dešifruje před jejich načtením. Šifrování, dešifrování a Správa klíčů je pro uživatele zcela transparentní. SSE platí jenom pro objekty blob bloku, objekty blob stránky a doplňovací objekty blob. Ostatní typy dat, včetně tabulek, front a souborů, nebudou zašifrovány.</p><p>Pracovní postup šifrování a dešifrování:</p><ul><li>Zákazník povoluje šifrování v účtu úložiště.</li><li>Když zákazník zapisuje nová data (vložte objekt blob, blok PUT, vložte stránku atd.) do úložiště objektů BLOB; Každý zápis je zašifrovaný pomocí 256 šifrování AES, což je jedno z nejúčinnějších šifrovacích šifr, které jsou k dispozici.</li><li>Když zákazník potřebuje přístup k datům (získat objekt BLOB atd.), data se před návratem k uživateli automaticky dešifrují.</li><li>Pokud je šifrování zakázané, nové zápisy už nebudou šifrované a stávající šifrovaná data zůstanou zašifrovaná, dokud je uživatel nepřepíše. Když je šifrování povolené, zašifrují se zápisy do úložiště objektů BLOB. Stav dat se nemění s uživatelem přepínáním mezi povolením nebo zakázáním šifrování pro účet úložiště.</li><li>Všechny šifrovací klíče se ukládají, šifrují a spravují pomocí Microsoftu.</li></ul><p>Upozorňujeme, že v tuto chvíli jsou klíče používané pro šifrování spravované Microsoftem. Společnost Microsoft tyto klíče vygenerovala jako původní a spravuje zabezpečené úložiště klíčů a také pravidelné otočení definované interními zásadami Microsoftu. V budoucnu zákazníci získají možnost spravovat vlastní šifrovací klíče >a poskytnou klíč pro migraci z klíčů spravovaných společností Microsoft do klíčů spravovaných zákazníkem.</p>| 
 
-## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Použití šifrování na straně klienta k ukládání citlivých dat v Azure Storage
+## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Použití šifrování Client-Side k ukládání citlivých dat v Azure Storage
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -340,7 +340,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Azure Key Vault a šifrování na straně klienta pro Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/) [kurz: šifrování a dešifrování objektů BLOB v Microsoft Azure Storage pomocí Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [bezpečné ukládání dat v Azure Blob Storage s rozšířeními pro šifrování Azure](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **Reference**              | [Azure Key Vault a šifrování na straně klienta pro Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md) [kurz: šifrování a dešifrování objektů BLOB v Microsoft Azure Storage pomocí Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md), [bezpečné ukládání dat v Azure Blob Storage s rozšířeními pro šifrování Azure](/archive/blogs/partnercatalystteam/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions) |
 | **Kroky** | <p>Balíček klientské knihovny NuGet Azure Storage pro .NET podporuje šifrování dat v rámci klientských aplikací před odesláním do Azure Storage a dešifrování dat při stahování do klienta. Knihovna také podporuje integraci se službou Azure Key Vault pro správu klíčů účtu úložiště. Tady je stručný popis toho, jak funguje šifrování na straně klienta:</p><ul><li>Sada SDK Azure Storage klienta generuje šifrovací klíč obsahu (CEK), což je symetrický klíč založený na jednorázovém použití.</li><li>Zákaznická data se šifrují pomocí tohoto CEK</li><li>CEK se pak zabalí (zašifruje) pomocí klíčového šifrovacího klíče (KEK). KEK je identifikován identifikátorem klíče a může se jednat o asymetrický klíč nebo symetrický klíč a lze ho spravovat místně nebo uložit v Azure Key Vault. Klient úložiště nemá nikdy přístup k KEK. Pouze vyvolá algoritmus zalamování klíčů, který je k dispozici v Key Vault. Zákazníci si můžou vybrat, jestli mají používat vlastní poskytovatele pro zalamování a rozbalení klíče, pokud chtějí.</li><li>Šifrovaná data se pak nahrají do služby Azure Storage. Odkazy v části odkazy najdete v podrobnostech o implementaci nízké úrovně.</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>Šifrování citlivých nebo PII dat zapsaných na telefonech v místním úložišti
@@ -351,7 +351,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, Xamarin  |
 | **Atributy**              | –  |
-| **Reference**              | [Správa nastavení a funkcí v zařízeních pomocí zásad Microsoft Intune](https://docs.microsoft.com/mem/intune/configuration/) [osobního řetězce klíčů](https://components.xamarin.com/view/square.valet) |
+| **Reference**              | [Správa nastavení a funkcí v zařízeních pomocí zásad Microsoft Intune](/mem/intune/configuration/) [osobního řetězce klíčů](https://components.xamarin.com/view/square.valet) |
 | **Kroky** | <p>Pokud aplikace zapisuje citlivé informace, jako je třeba PII (e-mail, telefonní číslo, křestní jméno, příjmení, předvolby atd.) – v mobilním systému souborů by měl být před zápisem do místního systému souborů zašifrován. Pokud je aplikace podniková aplikace, prozkoumejte možnost publikování aplikace pomocí služby Windows Intune.</p>|
 
 ### <a name="example"></a>Příklad
@@ -402,7 +402,7 @@ Pokud aplikace není podniková aplikace, použijte úložiště klíčů, kter�
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Reference**              | [Zmatené šifrování pro .NET](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
-| **Kroky** | Generované binární soubory (sestavení v rámci APK) by měly být zakódovány pro zastavení zpětné analýzy sestavení. `CryptoObfuscator`Pro tento účel se můžou použít nástroje, jako je. |
+| **Kroky** | Generované binární soubory (sestavení v rámci APK) by měly být zakódovány pro zastavení zpětné analýzy sestavení. `CryptoObfuscator` Pro tento účel se můžou použít nástroje, jako je. |
 
 ## <a name="set-clientcredentialtype-to-certificate-or-windows"></a><a id="cert"></a>Nastavení clientCredentialType na certifikát nebo Windows
 
@@ -431,7 +431,7 @@ Nastavte clientCredentialType na Certificate nebo Windows.
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, .NET Framework 3 |
 | **Atributy**              | Režim zabezpečení – přenos, režim zabezpečení – zpráva |
-| **Reference**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Španělská](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) [republika, základy služby WCF CoDe Security Magazine](https://www.codemag.com/article/0611051) |
+| **Reference**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [Španělská](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) [republika, základy služby WCF CoDe Security Magazine](https://www.codemag.com/article/0611051) |
 | **Kroky** | Nebyla definována žádná zabezpečení přenosu nebo zprávy. Aplikace, které přenášejí zprávy bez přenosu nebo zabezpečení zprávy, nemůžou zaručit integritu a důvěrnost zpráv. Pokud je vazba zabezpečení WCF nastavená na hodnotu žádné, je přenos i zabezpečení zpráv zakázané. |
 
 ### <a name="example"></a>Příklad

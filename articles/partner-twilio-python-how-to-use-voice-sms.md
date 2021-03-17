@@ -14,11 +14,11 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000432"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Pythonu
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -41,21 +41,21 @@ Rozhraní Twilio API je rozhraní RESTful API, které poskytuje funkce hlasu a S
 Klíčovými aspekty rozhraní Twilio API jsou Twilio příkazy a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Operace Twilio
-Rozhraní API využívá operace Twilio; Například příkaz ** &lt; vyslovit &gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
+Rozhraní API využívá operace Twilio; Například příkaz **&lt; vyslovit &gt;** instruuje Twilio, aby audibly doručení zprávy na volání.
 
 Následuje seznam operací Twilio. Přečtěte si o dalších příkazech a funkcích prostřednictvím [dokumentace jazyka Twilio Markup Language][twiml].
 
-* ** &lt; Vytočit &gt; **: připojí volajícího k jinému telefonu.
-* ** &lt; Shromáždit &gt; **: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
-* ** &lt; Hangup &gt; **: ukončí volání.
-* ** &lt; Pozastavit &gt; **: netiché čekání po zadaný počet sekund.
-* ** &lt; Přehrát &gt; **: přehraje zvukový soubor.
-* ** &lt; Queue &gt; **: přidejte do fronty volajících.
-* ** &lt; Záznam &gt; **: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* ** &lt; Přesměrování &gt; **: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
-* ** &lt; Odmítnout &gt; **: odmítne příchozí volání na číslo Twilio bez fakturace.
-* ** &lt; Řekněme &gt; **: převede text na řeč, který se provádí na volání.
-* ** &lt; SMS &gt; **: pošle zprávu SMS.
+* **&lt; Vytočit &gt;**: připojí volajícího k jinému telefonu.
+* **&lt; Shromáždit &gt;**: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
+* **&lt; Hangup &gt;**: ukončí volání.
+* **&lt; Pozastavit &gt;**: netiché čekání po zadaný počet sekund.
+* **&lt; Přehrát &gt;**: přehraje zvukový soubor.
+* **&lt; Queue &gt;**: přidejte do fronty volajících.
+* **&lt; Záznam &gt;**: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt; Přesměrování &gt;**: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
+* **&lt; Odmítnout &gt;**: odmítne příchozí volání na číslo Twilio bez fakturace.
+* **&lt; Řekněme &gt;**: převede text na řeč, který se provádí na volání.
+* **&lt; SMS &gt;**: pošle zprávu SMS.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založených na XML, která je založená na příkazech Twilio, které informují Twilio o tom, jak zpracovat volání nebo SMS.
@@ -76,7 +76,7 @@ Další informace o příkazech Twilio, jejich atributech a TwiML naleznete v t�
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Vytvoření účtu Twilio
 Až budete připraveni získat účet Twilio, zaregistrujte se do [Twilio try][try_twilio]. Můžete začít s bezplatným účtem a později upgradovat svůj účet.
 
-Když se přihlásíte k účtu Twilio, obdržíte identifikátor SID účtu a ověřovací token. Pro volání rozhraní API Twilio budou potřeba obojí. Abyste zabránili neoprávněnému přístupu k účtu, udržujte svůj ověřovací token zabezpečený. Identifikátor SID a ověřovací token vašeho účtu se v [konzole Twilio][twilio_console]zobrazit v polích s označením **SID účtu** a ověřovacího **tokenu**v uvedeném pořadí.
+Když se přihlásíte k účtu Twilio, obdržíte identifikátor SID účtu a ověřovací token. Pro volání rozhraní API Twilio budou potřeba obojí. Abyste zabránili neoprávněnému přístupu k účtu, udržujte svůj ověřovací token zabezpečený. Identifikátor SID a ověřovací token vašeho účtu se v [konzole Twilio][twilio_console]zobrazit v polích s označením **SID účtu** a ověřovacího **tokenu** v uvedeném pořadí.
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Vytvoření aplikace v Pythonu
 Aplikace v Pythonu, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace v Pythonu, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z Pythonu několika způsoby, Tento článek se zaměřuje na použití služeb Twilio s [Twilio knihovnou pro Python z GitHubu][twilio_python]. Další informace o použití knihovny Twilio pro Python najdete v tématu [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] .
@@ -216,7 +216,7 @@ print(str(response))
 
 Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference] .
 
-Jakmile budete mít aplikaci Python nastavenou tak, aby poskytovala odpovědi TwiML, použijte adresu URL aplikace jako adresu URL předanou `client.calls.create` metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure, můžete použít její adresu URL jako Webhook, jak je znázorněno v následujícím příkladu:
+Jakmile budete mít aplikaci Python nastavenou tak, aby poskytovala odpovědi TwiML, použijte adresu URL aplikace jako adresu URL předanou `client.calls.create`  metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure, můžete použít její adresu URL jako Webhook, jak je znázorněno v následujícím příkladu:
 
 ```python
 from twilio.rest import TwilioRestClient

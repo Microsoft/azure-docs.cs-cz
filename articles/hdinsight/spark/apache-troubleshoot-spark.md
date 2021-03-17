@@ -2,18 +2,16 @@
 title: Řešení potíží s Apache Spark ve službě Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Spark a Azure HDInsight.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79271938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942499"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparkem s využitím služby Azure HDInsight
 
@@ -25,7 +23,7 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
 1. Přihlaste se k Ambari `https://CLUSTERNAME.azurehdidnsight.net` s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled. Mezi HDInsight 3,6 a 4,0 jsou mírné rozdíly v kosmetických rozdílech.
 
-1. Přejděte do **Spark2**  >  **Konfigurace**Spark2.
+1. Přejděte do   >  **Konfigurace** Spark2.
 
     ![Vyberte kartu konfigurace.](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
@@ -61,7 +59,7 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
     ![Zkontrolovat spuštěné procesy](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Můžete přidat konfigurace. V seznamu konfigurací vyberte **Custom-spark2-Defaults**a pak vyberte **Přidat vlastnost**.
+1. Můžete přidat konfigurace. V seznamu konfigurací vyberte **Custom-spark2-Defaults** a pak vyberte **Přidat vlastnost**.
 
     ![Výběr vlastnosti přidat](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
@@ -75,9 +73,9 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
 Tyto změny jsou v clusteru v rozsahu, ale můžou být přepsány při odeslání úlohy Spark.
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak na clusterech nakonfigurovat aplikaci Apache Spark pomocí poznámkového bloku Jupyter?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Návody nakonfigurovat Apache Spark aplikaci pomocí Jupyter Notebook v clusterech?
 
-V první buňce poznámkového bloku Jupyter po direktivě **%% Configure** zadejte konfigurace Sparku v platném formátu JSON. Podle potřeby změňte skutečné hodnoty:
+V první buňce Jupyter Notebook za direktivou **%% Configure** zadejte konfigurace Sparku v platném formátu JSON. Podle potřeby změňte skutečné hodnoty:
 
 ![Přidat konfiguraci](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
@@ -97,7 +95,7 @@ Spusťte Spark-Shell pomocí příkazu podobného následujícímu. Podle potře
 spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
 ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 [Apache Spark odesílání úloh v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
@@ -107,10 +105,10 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * [Přehled správy paměti Spark](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 
-* [Ladění aplikace Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
+* [Ladění aplikace Spark v clusterech HDInsight](/archive/blogs/azuredatalake/spark-debugging-101).
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -5,12 +5,12 @@ description: Zjistěte, jak ručně vytvořit svazek se soubory Azure pro použi
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4e009c5de2e24c1b0bd94fb4c11b0c52a3bc378d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281204"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609069"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
@@ -67,9 +67,10 @@ Pomocí `kubectl create secret` příkazu vytvořte tajný klíč. Následujíc�
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>Připojit sdílenou složku jako svazek
+## <a name="mount-file-share-as-an-inline-volume"></a>Připojení sdílené složky jako vloženého svazku
+> Poznámka: od 1.18.15, 1.19.7, 1.20.2, 1.21.0, oboru názvů tajného kódu v vloženém `azureFile` svazku se dá nastavit jenom jako `default` obor názvů, aby se určil jiný tajný obor názvů, použijte prosím níže uvedený příklad trvalého svazku.
 
-Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor `azure-files-pod.yaml` s názvem s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného*klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného* klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 ```yaml
 apiVersion: v1
@@ -78,7 +79,7 @@ metadata:
   name: mypod
 spec:
   containers:
-  - image: nginx:1.15.5
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: mypod
     resources:
       requests:
@@ -110,7 +111,7 @@ Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na 
 Containers:
   mypod:
     Container ID:   docker://86d244cfc7c4822401e88f55fd75217d213aa9c3c6a3df169e76e8e25ed28166
-    Image:          nginx:1.15.5
+    Image:          mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     Image ID:       docker-pullable://nginx@sha256:9ad0746d8f2ea6df3a17ba89eca40b48c47066dfab55a75e08e2b70fc80d929e
     State:          Running
       Started:      Sat, 02 Mar 2019 00:05:47 +0000
@@ -131,9 +132,10 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Možnosti připojení
+## <a name="mount-file-share-as-an-persistent-volume"></a>Připojit sdílenou složku jako trvalý svazek
+ - Možnosti připojení
 
-Výchozí hodnota pro *FileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kubernetes verze 1.8.5 nebo vyšší a staticky vytváříte objekt trvalého svazku, musí být v objektu *PersistentVolume* zadány možnosti připojení. Následující příklad nastaví *0777*:
+Výchozí hodnota pro *FileMode* a *dirMode* je *0777* pro Kubernetes verze 1,15 a vyšší. Následující příklad nastaví *0755* na objekt *PersistentVolume* :
 
 ```yaml
 apiVersion: v1
@@ -145,21 +147,19 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
+    secretNamespace: default
     shareName: aksshare
     readOnly: false
   mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
+  - dir_mode=0755
+  - file_mode=0755
   - uid=1000
   - gid=1000
   - mfsymlinks
   - nobrl
 ```
-
-Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0*. Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
 
 Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume*. Například:
 
@@ -173,7 +173,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -197,7 +196,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi

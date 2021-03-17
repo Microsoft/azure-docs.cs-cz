@@ -1,20 +1,20 @@
 ---
-title: Komunikace s aplikací zařízení v Node.js s využitím streamování zařízení Azure IoT Hub
+title: Rychlý Start – komunikace s aplikací zařízení v Node.js s využitím streamování zařízení Azure IoT Hub
 description: V tomto rychlém startu spustíte Node.js aplikaci na straně služby, která komunikuje se zařízením IoT přes datový proud zařízení.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d398e450175c9f97c419b397266cda0a52e7e21c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416090"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624384"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node.js prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87416090"
 
 V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview podporuje Node.js SDK na straně služby pouze datové proudy zařízení. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončíní [komunikace s aplikacemi zařízení v C prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-c.md) nebo [komunikace s aplikacemi zařízení v jazyce C# prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md).
 
@@ -30,35 +30,27 @@ V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komun
 
 * [Node.js 10 +](https://nodejs.org).
 
+    Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [Vzorový Node.js projekt](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
-Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```cmd/sh
-node --version
-```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!IMPORTANT]
 > Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 >
-> * Střední USA
+> * USA – střed
 > * Střed USA EUAP
 > * Severní Evropa
 > * Jihovýchodní Asie
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
-
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -87,7 +79,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     Všimněte si vráceného připojovacího řetězce služby pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
@@ -162,4 +154,4 @@ V tomto rychlém startu nastavíte centrum IoT, zaregistrované zařízení, nav
 Další informace o datových proudech zařízení získáte pomocí odkazů níže:
 
 > [!div class="nextstepaction"]
-> [Přehled streamů zařízení](./iot-hub-device-streams-overview.md) 
+> [Přehled streamů zařízení](./iot-hub-device-streams-overview.md)

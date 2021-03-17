@@ -3,19 +3,17 @@ title: Vzor. libovolný typ entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Pattern. any je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979165"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542202"
 ---
 # <a name="patternany-entity"></a>Entita Pattern.any
 
@@ -29,7 +27,7 @@ Vzor. všechny entity musí být označeny v příkladech šablony [vzoru](luis-
 
 ## <a name="usage"></a>Využití
 
-Pro klientskou aplikaci, která vyhledává knihy na základě názvu, vzoru. vše extrahuje úplný název. Šablona utterance pomocí vzoru. Any pro toto hledání v knihách `Was {BookTitle} written by an American this year[?]`je.
+Pro klientskou aplikaci, která vyhledává knihy na základě názvu, vzoru. vše extrahuje úplný název. Šablona utterance pomocí vzoru. Any pro toto hledání v knihách je `Was {BookTitle} written by an American this year[?]` .
 
 V následující tabulce má každý řádek dvě verze utterance. Horní utterance je to, jak LUIS zpočátku vidí utterance. Není jasné, kde začíná a končí nadpis knihy. Dolní utterance používá vzor. kterákoli entita označuje začátek a konec entity.
 
@@ -69,7 +67,7 @@ S názvem vloženého formuláře, který se má extrahovat jako vzor. any:
 
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=false` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -79,7 +77,7 @@ Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
 }
 ```
 
-Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {

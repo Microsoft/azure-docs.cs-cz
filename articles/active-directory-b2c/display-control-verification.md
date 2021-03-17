@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85202310"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532490"
 ---
 # <a name="verification-display-control"></a>Ovládací prvek zobrazení ověřování
 
@@ -30,11 +30,9 @@ Ovládací prvek zobrazení ověřování se skládá ze dvou kroků (akce):
 
     ![Příklad stránky pro akci odeslat kód](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. Po odeslání kódu uživatel přečte zprávu, zadá ověřovací kód do ovládacího prvku, který je zobrazen ovládacím prvkem zobrazení, a vybere příkaz **ověřit kód**. Výběrem možnosti **ověřit kód**se spustí **Akce VerifyCode** , která ověří kód přidružený k adrese. Pokud uživatel vybere **Odeslat nový kód**, první akce se provede znovu.
+1. Po odeslání kódu uživatel přečte zprávu, zadá ověřovací kód do ovládacího prvku, který je zobrazen ovládacím prvkem zobrazení, a vybere příkaz **ověřit kód**. Výběrem možnosti **ověřit kód** se spustí **Akce VerifyCode** , která ověří kód přidružený k adrese. Pokud uživatel vybere **Odeslat nový kód** , první akce se provede znovu.
 
     ![Příklad stránky pro ověření akce kódu](media/display-control-verification/display-control-verification-email-action-02.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="verificationcontrol-required-elements"></a>VerificationControl vyžadované prvky
 
@@ -49,7 +47,7 @@ Ovládací prvek zobrazení ověřování se skládá ze dvou kroků (akce):
   - **SendCode** – pošle uživateli kód. Tato akce obvykle obsahuje dva technické profily ověření, vygeneruje kód a pošle ho.
   - **VerifyCode** – ověřuje kód. Tato akce obvykle obsahuje jeden technický profil ověření.
 
-V následujícím příkladu se na stránce zobrazí textové pole **e-mailu** . Když uživatel zadá svou e-mailovou adresu a vybere **SendCode**, aktivuje se akce **SendCode** v back-endu Azure AD B2C.
+V následujícím příkladu se na stránce zobrazí textové pole **e-mailu** . Když uživatel zadá svou e-mailovou adresu a vybere **SendCode** , aktivuje se akce **SendCode** v back-endu Azure AD B2C.
 
 Pak uživatel zadá **verificationCode** a vybere **VerifyCode** , který aktivuje akci **VerifyCode** v back-endu. Pokud jsou všechna ověření splněná, **VerificationControl** se považuje za kompletní a uživatel může pokračovat k dalšímu kroku.
 

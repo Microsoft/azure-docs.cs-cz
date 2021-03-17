@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207133"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454239"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Zálohování úložišť konfigurací aplikací automaticky
 
@@ -37,14 +37,17 @@ Motivace za zálohováním úložišť konfigurací aplikací je použití něko
 
 V tomto kurzu vytvoříte sekundární úložiště v `centralus` oblasti a všech dalších prostředcích v `westus` oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-- Předplatné Azure. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/). 
+## <a name="prerequisites"></a>Požadavky 
+
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou vývoje Azure.
-- [.NET Core SDK](https://dotnet.microsoft.com/download).
-- Nejnovější verzi rozhraní příkazového řádku Azure CLI (2.3.1 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI, musíte se nejdřív přihlásit pomocí `az login` . Volitelně můžete použít Azure Cloud Shell.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- [.NET Core SDK](https://dotnet.microsoft.com/download).
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Tento kurz vyžaduje verzi rozhraní příkazového řádku Azure (2.3.1 nebo novější). Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -62,7 +65,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>Vytvoření úložišť konfigurací aplikací
 
 Vytvořte si úložiště konfigurací primární a sekundární aplikace v různých oblastech.
-Nahraďte  `<primary_appconfig_name>` a `<secondary_appconfig_name>` jedinečnými názvy pro úložiště konfigurací. Každý název úložiště musí být jedinečný, protože se používá jako název DNS.
+Nahraďte `<primary_appconfig_name>` a `<secondary_appconfig_name>` jedinečnými názvy pro úložiště konfigurací. Každý název úložiště musí být jedinečný, protože se používá jako název DNS.
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -124,7 +127,7 @@ V tomto článku budete pracovat s funkcemi jazyka C#, které mají následujíc
 - Azure Functions runtime verze 3. x
 - Funkce aktivované časovačem každých 10 minut
 
-Aby bylo snazší začít zálohovat vaše data, [otestovali a publikovali jsme funkci](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) , kterou můžete použít, aniž byste museli provádět změny kódu. Stáhněte si soubory projektu a [publikujte je do vlastní aplikace Azure Functions ze sady Visual Studio](/azure/azure-functions/functions-develop-vs#publish-to-azure).
+Aby bylo snazší začít zálohovat vaše data, [otestovali a publikovali jsme funkci](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) , kterou můžete použít, aniž byste museli provádět změny kódu. Stáhněte si soubory projektu a [publikujte je do vlastní aplikace Azure Functions ze sady Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 > [!IMPORTANT]
 > V kódu, který jste stáhli, neprovádějte žádné změny proměnných prostředí. V další části vytvoříte požadovaná nastavení aplikace.
@@ -133,13 +136,13 @@ Aby bylo snazší začít zálohovat vaše data, [otestovali a publikovali jsme 
 ### <a name="build-your-own-function"></a>Sestavení vlastní funkce
 
 Pokud ukázkový kód uvedený dříve nesplňuje vaše požadavky, můžete také vytvořit vlastní funkci. Aby bylo možné dokončit zálohování, musí být funkce schopna provádět následující úlohy:
-- Pravidelně si načtěte obsah vaší fronty, abyste viděli, jestli obsahují oznámení z Event Grid. Podrobnosti o implementaci najdete v [sadě SDK pro frontu úložiště](/azure/storage/queues/storage-quickstart-queues-dotnet) .
-- Pokud vaše fronta obsahuje [oznámení o událostech z Event Grid](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema), Extrahujte všechny jedinečné `<key, label>` informace ze zpráv událostí. Kombinací klíčového a popisku je jedinečný identifikátor pro změny klíč-hodnota v primárním úložišti.
+- Pravidelně si načtěte obsah vaší fronty, abyste viděli, jestli obsahují oznámení z Event Grid. Podrobnosti o implementaci najdete v [sadě SDK pro frontu úložiště](../storage/queues/storage-quickstart-queues-dotnet.md) .
+- Pokud vaše fronta obsahuje [oznámení o událostech z Event Grid](./concept-app-configuration-event.md#event-schema), Extrahujte všechny jedinečné `<key, label>` informace ze zpráv událostí. Kombinací klíčového a popisku je jedinečný identifikátor pro změny klíč-hodnota v primárním úložišti.
 - Načte všechna nastavení z primárního úložiště. Aktualizuje jenom ta nastavení v sekundárním úložišti, která mají odpovídající událost ve frontě. Odstraňte všechna nastavení ze sekundárního úložiště, která byla přítomna ve frontě, ale ne v primárním úložišti. [Sadu App Configuration SDK](https://github.com/Azure/AppConfiguration#sdks) můžete použít pro přístup k úložištím konfigurace prostřednictvím kódu programu.
 - Odstraní zprávy z fronty, pokud během zpracování nebyly žádné výjimky.
 - Implementujte zpracování chyb podle vašich potřeb. Další informace o běžných výjimkách, které byste mohli chtít zpracovat, najdete v předchozím příkladu kódu.
 
-Další informace o vytváření funkcí najdete v tématu [Vytvoření funkce v Azure aktivované časovačem](/azure/azure-functions/functions-create-scheduled-function) a [vývoj Azure Functions pomocí sady Visual Studio](/azure/azure-functions/functions-develop-vs).
+Další informace o vytváření funkcí najdete v tématu [Vytvoření funkce v Azure aktivované časovačem](../azure-functions/functions-create-scheduled-function.md) a [vývoj Azure Functions pomocí sady Visual Studio](../azure-functions/functions-develop-vs.md).
 
 
 > [!IMPORTANT]
@@ -167,16 +170,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>Udělení přístupu spravované identitě aplikace Function App
 
-Pomocí následujícího příkazu nebo [Azure Portal](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) Přidejte spravovanou identitu přiřazenou systémem aplikace Function App.
+Pomocí následujícího příkazu nebo [Azure Portal](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) Přidejte spravovanou identitu přiřazenou systémem aplikace Function App.
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> Aby bylo možné provést požadované vytváření prostředků a správu rolí, váš účet potřebuje `Owner` oprávnění v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si, [jak přidat nebo odebrat přiřazení rolí Azure pomocí Azure Portal](/azure/role-based-access-control/role-assignments-portal).
+> Aby bylo možné provést požadované vytváření prostředků a správu rolí, váš účet potřebuje `Owner` oprávnění v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si, [jak přiřadit role Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-Pomocí následujících příkazů nebo [Azure Portal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) udělte spravované identitě aplikace Function App přístup k vašim úložištím konfigurace vaší aplikace. Použijte tyto role:
+Pomocí následujících příkazů nebo [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) udělte spravované identitě aplikace Function App přístup k vašim úložištím konfigurace vaší aplikace. Použijte tyto role:
 - Přiřaďte `App Configuration Data Reader` roli v primárním úložišti konfigurace aplikace.
 - Přiřaďte `App Configuration Data Owner` roli v úložišti konfigurace sekundární aplikace.
 
@@ -196,7 +199,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-Pomocí následujícího příkazu nebo [Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) udělte spravované identitě aplikace Function App přístup k vaší frontě. Přiřaďte `Storage Queue Data Contributor` roli ve frontě.
+Pomocí následujícího příkazu nebo [Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) udělte spravované identitě aplikace Function App přístup k vaší frontě. Přiřaďte `Storage Queue Data Contributor` roli ve frontě.
 
 ```azurecli-interactive
 az role assignment create \
@@ -213,10 +216,10 @@ Chcete-li otestovat, zda vše funguje, můžete vytvořit, aktualizovat nebo ods
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-Aktivovali jste událost. Za chvíli Event Grid odešle oznámení události do fronty. *Po dalším naplánovaném spuštění funkce*zobrazte nastavení konfigurace v sekundárním úložišti, abyste viděli, jestli obsahuje aktualizovanou hodnotu klíče z primárního úložiště.
+Aktivovali jste událost. Za chvíli Event Grid odešle oznámení události do fronty. *Po dalším naplánovaném spuštění funkce* zobrazte nastavení konfigurace v sekundárním úložišti, abyste viděli, jestli obsahuje aktualizovanou hodnotu klíče z primárního úložiště.
 
 > [!NOTE]
-> [Svou funkci můžete aktivovat ručně](/azure/azure-functions/functions-manually-run-non-http) během testování a řešení potíží bez čekání na naplánovanou aktivační událost časovače.
+> [Svou funkci můžete aktivovat ručně](../azure-functions/functions-manually-run-non-http.md) během testování a řešení potíží bez čekání na naplánovanou aktivační událost časovače.
 
 Po zajistěte, aby byla funkce zálohování úspěšně spuštěná, vidíte, že se klíč nachází v sekundárním úložišti.
 
@@ -243,9 +246,9 @@ Pokud se v sekundárním úložišti nezobrazuje nové nastavení:
 
 - Ujistěte se, že se funkce zálohování aktivovala *po* vytvoření nastavení v primárním úložišti.
 - Je možné, že Event Grid nemohl odeslat oznámení události do fronty v čase. Ověřte, jestli fronta stále obsahuje oznámení o událostech z primárního úložiště. V takovém případě znovu spusťte funkci zálohování.
-- V [protokolech Azure Functions](/azure/azure-functions/functions-create-scheduled-function#test-the-function) najdete případné chyby nebo upozornění.
-- Pomocí [Azure Portal](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) zajistěte, aby aplikace funkce Azure obsahovala správné hodnoty pro nastavení aplikace, které se Azure Functions pokouší přečíst.
-- Můžete také nastavit monitorování a upozorňování na Azure Functions pomocí [Azure Application Insights](/azure/azure-functions/functions-monitoring?tabs=cmd). 
+- V [protokolech Azure Functions](../azure-functions/functions-create-scheduled-function.md#test-the-function) najdete případné chyby nebo upozornění.
+- Pomocí [Azure Portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) zajistěte, aby aplikace funkce Azure obsahovala správné hodnoty pro nastavení aplikace, které se Azure Functions pokouší přečíst.
+- Můžete také nastavit monitorování a upozorňování na Azure Functions pomocí [Azure Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd). 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

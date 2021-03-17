@@ -2,24 +2,24 @@
 title: Koncepty doménové struktury prostředků pro Azure AD Domain Services | Microsoft Docs
 description: Seznamte se s tím, co je doménová struktura prostředků v Azure Active Directory Domain Services a jak mají prospěch pro vaši organizaci v hybridním prostředí s omezenými možnostmi ověřování uživatelů nebo problémy zabezpečení.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: 79cf408bcb9060c247b97e6a81204c5a5517d384
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480403"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619997"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Koncepty a funkce doménové struktury prostředků pro Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure služba AD DS) poskytuje přihlašovací prostředí pro starší místní obchodní aplikace. Uživatelé, skupiny a hodnoty hash hesel místních i cloudových uživatelů se synchronizují do spravované domény Azure služba AD DS. Tato synchronizovaná hodnota hash hesla dává uživatelům jedinou sadu přihlašovacích údajů, které můžou používat pro místní služba AD DS, Office 365 a Azure Active Directory.
+Azure Active Directory Domain Services (Azure služba AD DS) poskytuje přihlašovací prostředí pro starší místní obchodní aplikace. Uživatelé, skupiny a hodnoty hash hesel místních i cloudových uživatelů se synchronizují do spravované domény Azure služba AD DS. Tato synchronizovaná hodnota hash hesla dává uživatelům jedinou sadu přihlašovacích údajů, které můžou používat pro místní služba AD DS, Microsoft 365 a Azure Active Directory.
 
 I když zabezpečení a poskytuje další výhody zabezpečení, některé organizace nemůžou synchronizovat hodnoty hash hesel uživatelů do služby Azure AD nebo Azure služba AD DS. Uživatelé v organizaci nemusí znát heslo, protože používají jenom ověřování pomocí čipové karty. Tato omezení brání některým organizacím v používání Azure služba AD DS k přenesení a posunutí místních klasických aplikací do Azure.
 

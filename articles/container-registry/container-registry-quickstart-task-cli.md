@@ -1,26 +1,27 @@
 ---
-title: Rychlý Start – sestavení image kontejneru & spuštění
-description: Rychlé spouštění úloh s Azure Container Registry k sestavení a spuštění image kontejneru Docker na vyžádání v cloudu.
+title: Rychlý Start – sestavení image kontejneru na vyžádání v Azure
+description: Použijte Azure Container Registry příkazy k rychlému sestavení, vložení a spuštění image kontejneru Docker na vyžádání v cloudu Azure.
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: c6fe1fc246d112218b492072155175b2db99c8c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753709"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032945"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý Start: sestavení a spuštění image kontejneru pomocí Azure Container Registrych úloh
 
-V tomto rychlém startu použijete příkazy Azure Container Registry úkoly k rychlému sestavování, nasdílení a spuštění image kontejneru Docker v rámci Azure, který ukazuje, jak přesměrovat vývojový cyklus "vnitřní smyčka" do cloudu. [ACR úkoly][container-registry-tasks-overview] jsou sadou funkcí v rámci Azure Container Registry, které vám pomůžou se správou a úpravou imagí kontejnerů napříč životním cyklem kontejneru. 
+V tomto rychlém startu použijete příkazy [Azure Container Registry úkoly][container-registry-tasks-overview] k rychlému sestavování, nasdílení a spuštění image kontejneru Docker v Azure, a to bez místní instalace Docker. ACR úkoly jsou sadou funkcí v rámci Azure Container Registry, které vám pomůžou se správou a úpravou imagí kontejnerů napříč životním cyklem kontejneru. Tento příklad ukazuje, jak přesměrovat cyklus vývoje image kontejneru "vnitřní smyčka" do cloudu pomocí buildů na vyžádání s využitím místních souboru Dockerfile. 
 
-Po tomto rychlém startu Prozkoumejte pokročilejší funkce úloh ACR. ACR úlohy můžou automatizovat sestavení imagí na základě potvrzení kódu nebo základních aktualizací imagí nebo můžete paralelně testovat více kontejnerů, a to i v jiných scénářích. 
+Po tomto rychlém startu se seznámíte s pokročilejšími funkcemi úloh ACR s využitím [kurzů](container-registry-tutorial-quick-task.md). ACR úlohy můžou automatizovat sestavení imagí na základě potvrzení kódu nebo základních aktualizací imagí nebo můžete paralelně testovat více kontejnerů, a to i v jiných scénářích. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-K dokončení tohoto rychlého startu můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.58 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- V tomto rychlém startu se vyžaduje verze Azure CLI 2.0.58 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -32,7 +33,7 @@ Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umí
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Pomocí příkazu [AZ ACR Create][az-acr-create] vytvořte registr kontejnerů. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry008* . Aktualizujte název na jedinečnou hodnotu.
 
@@ -45,10 +46,10 @@ Tento příklad vytvoří *základní* registr, což je možnost pro vývojáře
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Sestavení a vložení obrázku z souboru Dockerfile
 
-Nyní použijte Azure Container Registry k sestavení a vložení obrázku. Nejprve vytvořte pracovní adresář a pak vytvořte souboru Dockerfile s názvem *souboru Dockerfile* s jedním řádkem: `FROM hello-world` . Toto je jednoduchý příklad pro sestavení image kontejneru Linux z `hello-world` image v Docker Hub. Můžete vytvářet vlastní standardní souboru Dockerfile a image sestavení pro jiné platformy. Pokud pracujete v prostředí bash, vytvořte souboru Dockerfile pomocí následujícího příkazu:
+Nyní použijte Azure Container Registry k sestavení a vložení obrázku. Nejprve vytvořte místní pracovní adresář a pak vytvořte souboru Dockerfile s názvem *souboru Dockerfile* s jedním řádkem: `FROM mcr.microsoft.com/hello-world` . Toto je jednoduchý příklad pro sestavení image kontejneru Linux z `hello-world` Image hostované v Microsoft Container Registry. Můžete vytvářet vlastní standardní souboru Dockerfile a image sestavení pro jiné platformy. Pokud pracujete v prostředí bash, vytvořte souboru Dockerfile pomocí následujícího příkazu:
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 Spusťte příkaz [AZ ACR Build, který sestaví][az-acr-build] image a po úspěšném sestavení image ji nahrajte do svého registru. Následující příklad sestaví a vloží `sample/hello-world:v1` obrázek. Na `.` konci příkazu nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
@@ -77,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483495"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91325402"
 ---
 # <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
 
@@ -31,7 +31,7 @@ Musíte už mít vytvořený účet NetApp.
 
 [Vytvoření účtu NetApp](azure-netapp-files-create-netapp-account.md)
 
-## <a name="steps"></a>Kroky 
+## <a name="steps"></a>Postup 
 
 1. Přejděte do okna pro správu účtu NetApp a pak v navigačním podokně klikněte na **fondy kapacit**.  
     
@@ -49,16 +49,27 @@ Musíte už mít vytvořený účet NetApp.
      Toto pole ukazuje cílový výkon fondu kapacity.  
      Zadejte úroveň služby pro fond kapacit: [**Ultra**](azure-netapp-files-service-levels.md#Ultra), [**Premium**](azure-netapp-files-service-levels.md#Premium)nebo [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
-   * **Hodnota**     
+    * **Hodnota**     
      Zadejte velikost fondu kapacity, kterou kupujete.        
      Minimální velikost fondu kapacity je 4 TiB. Můžete vytvořit fond s velikostí, která je násobkem 4 TiB.   
-      
-     ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Klikněte na **OK**.
+   * **Službou**   
+     Určete, jestli fond kapacit má používat **Ruční** nebo **Automatický** typ QoS.  
+
+     Informace o typech QoS najdete v tématu věnovaném informacím o hierarchii a [výkonu](azure-netapp-files-performance-considerations.md) [úložiště](azure-netapp-files-understand-storage-hierarchy.md) .  
+
+     > [!IMPORTANT] 
+     > Nastavení **typu QoS** na **Ruční** je trvalé. Ruční fond kapacit QoS nejde převést tak, aby používal automatickou technologii QoS. Fond kapacit automatické kvality technologie QoS ale můžete převést na použití ruční technologie QoS. Přečtěte si téma [Změna fondu kapacit pro použití ruční technologie QoS](manage-manual-qos-capacity-pool.md#change-to-qos).   
+     > Použití ručního typu QoS pro fond kapacit vyžaduje registraci. Viz [Správa ručního fondu kapacity QoS](manage-manual-qos-capacity-pool.md#register-the-feature). 
+
+    ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. Klikněte na **Vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky 
 
+- [Hierarchie úložiště](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
-- Ceny různých úrovní služeb najdete na [stránce s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/) .
+- [Stránka s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Správa fondu ručně zřizovaného kapacity QoS](manage-manual-qos-capacity-pool.md)
 - [Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

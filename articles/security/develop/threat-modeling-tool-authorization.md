@@ -15,30 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07e33279452b8296688c358c9ffdab1bfb2e1321
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 38b147a85a26fd1e0be4f5dc6b63ae4c1331d348
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543958"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093994"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Rámec zabezpečení: autorizace | Hrozeb 
 | Produkt/služba | Článek |
 | --------------- | ------- |
 | **Hranice důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že jsou nakonfigurovány správné seznamy ACL pro omezení neoprávněného přístupu k datům v zařízení.](#acl-restricted-access)</li><li>[Zajistěte, aby byl v adresáři User-Profile uložený obsah aplikace citlivý pro uživatele.](#sensitive-directory)</li><li>[Zajistěte, aby byly nasazené aplikace spuštěné s nejnižšími oprávněními.](#deployed-privileges)</li></ul> |
 | **Webová aplikace** | <ul><li>[Vymáhat pořadí sekvenčních kroků při zpracování toků obchodních logiky](#sequential-logic)</li><li>[Implementujte mechanismus omezování četnosti, aby se zabránilo výčtu.](#rate-enumeration)</li><li>[Zajistěte, aby byla zajištěna správná autorizace a následovala zásada minimálního oprávnění.](#principle-least-privilege)</li><li>[Obchodní logika a rozhodnutí o autorizaci přístupu k prostředkům by neměly být založené na parametrech příchozích požadavků.](#logic-request-parameters)</li><li>[Ujistěte se, že obsah a prostředky nejsou vyčíslitelné nebo přístupné prostřednictvím vynuceného procházení.](#enumerable-browsing)</li></ul> |
-| **Database** | <ul><li>[Zajistěte, aby se pro připojení k databázovému serveru používaly minimálně privilegované účty.](#privileged-server)</li><li>[Implementujte zabezpečení na úrovni řádků, abyste klientům zabránili v přístupu k ostatním datům.](#rls-tenants)</li><li>[Role sysadmin by měla mít pouze platné potřebné uživatele.](#sysadmin-users)</li></ul> |
+| **Databáze** | <ul><li>[Zajistěte, aby se pro připojení k databázovému serveru používaly minimálně privilegované účty.](#privileged-server)</li><li>[Implementujte zabezpečení na úrovni řádků, abyste klientům zabránili v přístupu k ostatním datům.](#rls-tenants)</li><li>[Role sysadmin by měla mít pouze platné potřebné uživatele.](#sysadmin-users)</li></ul> |
 | **Cloudová brána IoT** | <ul><li>[Připojení ke cloudové bráně s použitím nejnižších privilegovaných tokenů](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Pro generování tokenů zařízení použít jenom klíč SAS s oprávněním pro odesílání](#sendonly-sas)</li><li>[Nepoužívejte přístupové tokeny, které poskytují přímý přístup k centru událostí.](#access-tokens-hub)</li><li>[Připojte se k centru událostí pomocí klíčů SAS, které mají minimální požadovaná oprávnění.](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[Pokud je to možné, použijte k připojení Azure Cosmos DB tokeny prostředků.](#resource-docdb)</li></ul> |
-| **Hranice důvěry Azure** | <ul><li>[Povolení jemně odstupňovaného řízení přístupu k předplatnému Azure pomocí RBAC](#grained-rbac)</li></ul> |
-| **Service Fabric hranice důvěryhodnosti** | <ul><li>[Omezení přístupu klienta k operacím clusteru pomocí RBAC](#cluster-rbac)</li></ul> |
+| **Hranice důvěry Azure** | <ul><li>[Povolit jemně odstupňovanou správu přístupu k předplatnému Azure pomocí Azure RBAC](#grained-rbac)</li></ul> |
+| **Service Fabric hranice důvěryhodnosti** | <ul><li>[Omezení přístupu klienta k operacím clusteru pomocí Azure RBAC](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[V případě potřeby proveďte modelování zabezpečení a použijte zabezpečení na úrovni polí.](#modeling-field)</li></ul> |
 | **Portál Dynamics CRM** | <ul><li>[Provedete si modelování zabezpečení účtů portálu a mějte na paměti, že se model zabezpečení portálu liší od zbytku CRM.](#portal-security)</li></ul> |
-| **Azure Storage** | <ul><li>[Udělení jemně odstupňovaného oprávnění pro řadu entit v Azure Table Storage](#permission-entities)</li><li>[Povolení Access Control na základě rolí (RBAC) na účet služby Azure Storage pomocí Azure Resource Manager](#rbac-azure-manager)</li></ul> |
+| **Azure Storage** | <ul><li>[Udělení jemně odstupňovaného oprávnění pro řadu entit v Azure Table Storage](#permission-entities)</li><li>[Povolení řízení přístupu na základě role Azure (Azure RBAC) na účet služby Azure Storage pomocí Azure Resource Manager](#rbac-azure-manager)</li></ul> |
 | **Mobilní klient** | <ul><li>[Implementovat implicitní jailbreaků nebo detekci kořene](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[Slabý odkaz na třídu ve WCF](#weak-class-wcf)</li><li>[WCF – implementace autorizačního řízení](#wcf-authz)</li></ul> |
-| **Web API** | <ul><li>[Implementace správného autorizačního mechanismu ve webovém rozhraní API ASP.NET](#authz-aspnet)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Implementace správného autorizačního mechanismu ve webovém rozhraní API ASP.NET](#authz-aspnet)</li></ul> |
 | **Zařízení IoT** | <ul><li>[Provádět kontroly autorizace v zařízení, pokud podporuje různé akce, které vyžadují různé úrovně oprávnění](#device-permission)</li></ul> |
 | **Brána pole IoT** | <ul><li>[Provádět kontroly autorizace v bráně pole, pokud podporuje různé akce, které vyžadují různé úrovně oprávnění.](#field-permission)</li></ul> |
 
@@ -106,7 +107,7 @@ ms.locfileid: "87543958"
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Reference**              | –  |
-| **Kroky** | <p>Princip poskytuje uživatelský účet pouze ta oprávnění, která jsou pro tyto uživatele zásadní. Například uživatel pro zálohování nemusí instalovat software: proto má uživatel pro zálohování oprávnění pouze ke spouštění aplikací souvisejících se zálohováním a zálohováním. Všechna další oprávnění, jako je instalace nového softwaru, jsou blokovaná. Princip platí také pro uživatele osobního počítače, který obvykle pracuje v normálním uživatelském účtu a otevírá privilegovaný účet chráněný heslem (tj. uživatel) pouze v případě, že je přesně vydává. </p><p>Tato zásada se dá použít i pro vaše webové aplikace. Místo výhradně v závislosti na metodách ověřování založených na rolích pomocí relací chceme k uživatelům přiřadit oprávnění prostřednictvím databázového ověřovacího systému. Pořád používáme relace, abychom zjistili, jestli byl uživatel přihlášený správně, jenom teď namísto přiřazení tohoto uživatele k určité roli, kterou mu přiřadíme, aby ověřil, které akce má k systému oprávnění provést. Tato metoda je také velká pro tuto metodu, kdykoli se uživateli přiřadí méně oprávnění, která se použijí, protože přiřazení nezávisí na relaci, která jinak musela nejdřív vypršet.</p>|
+| **Kroky** | <p>Princip poskytuje uživatelský účet pouze ta oprávnění, která jsou pro tyto uživatele zásadní. Například uživatel pro zálohování nemusí instalovat software: proto má uživatel pro zálohování oprávnění pouze ke spouštění aplikací souvisejících se zálohováním a zálohováním. Všechna další oprávnění, jako je instalace nového softwaru, jsou blokovaná. Princip platí také pro uživatele osobního počítače, který obvykle pracuje v normálním uživatelském účtu a otevírá privilegovaný účet chráněný heslem (tj. uživatel) pouze v případě, že je přesně vydává. </p><p>Tato zásada se dá použít i pro vaše webové aplikace. Místo výhradně v závislosti na metodách ověřování založených na rolích pomocí relací chceme k uživatelům přiřadit oprávnění prostřednictvím Database-Basedho ověřovacího systému. Pořád používáme relace, abychom zjistili, jestli byl uživatel přihlášený správně, jenom teď namísto přiřazení tohoto uživatele k určité roli, kterou mu přiřadíme, aby ověřil, které akce má k systému oprávnění provést. Tato metoda je také velká pro tuto metodu, kdykoli se uživateli přiřadí méně oprávnění, která se použijí, protože přiřazení nezávisí na relaci, která jinak musela nejdřív vypršet.</p>|
 
 ## <a name="business-logic-and-resource-access-authorization-decisions-should-not-be-based-on-incoming-request-parameters"></a><a id="logic-request-parameters"></a>Obchodní logika a rozhodnutí o autorizaci přístupu k prostředkům by neměly být založené na parametrech příchozích požadavků.
 
@@ -142,23 +143,23 @@ Nyní možný Útočník nemůže manipulovat a měnit operaci aplikace, protož
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Hierarchie oprávnění SQL](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [zabezpečit SQL](https://docs.microsoft.com/sql/relational-databases/security/securables) |
+| **Reference**              | [Hierarchie oprávnění SQL](/sql/relational-databases/security/permissions-hierarchy-database-engine), [zabezpečit SQL](/sql/relational-databases/security/securables) |
 | **Kroky** | Pro připojení k databázi by se měly použít aspoň privilegované účty. Přihlášení aplikace by mělo být omezeno v databázi a mělo by se provádět pouze vybrané uložené procedury. Přihlašovací jméno aplikace by nemělo mít přímý přístup k tabulce. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>Implementujte zabezpečení na úrovni řádků, abyste klientům zabránili v přístupu k ostatním datům.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure, OnPrem |
 | **Atributy**              | SQL verze – V12, verze SQL – MsSQL2016 |
-| **Reference**              | [SQL Server zabezpečení na úrovni řádků (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
-| **Kroky** | <p>Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například členství ve skupině nebo kontext spuštění).</p><p>Zabezpečení na úrovni řádků (RLS) zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například pro zajištění, že pracovníci mají přístup pouze k datovým řádkům, které se vztahují k jejich oddělení, nebo pro omezení přístupu zákazníků pouze k datům souvisejícím s jejich společností.</p><p>Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databázový systém použije omezení přístupu při každém pokusu o přístup k datům z libovolné úrovně. Tím se zajistí spolehlivější a robustní zabezpečení systému tím, že se zmenší plocha plochy systému zabezpečení.</p><p>|
+| **Reference**              | [Zabezpečení SQL Server Row-Level (RLS)](/sql/relational-databases/security/row-level-security) |
+| **Kroky** | <p>Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například členství ve skupině nebo kontext spuštění).</p><p>Row-Level Security (RLS) zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například pro zajištění, že pracovníci mají přístup pouze k datovým řádkům, které se vztahují k jejich oddělení, nebo pro omezení přístupu zákazníků pouze k datům souvisejícím s jejich společností.</p><p>Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databázový systém použije omezení přístupu při každém pokusu o přístup k datům z libovolné úrovně. Tím se zajistí spolehlivější a robustní zabezpečení systému tím, že se zmenší plocha plochy systému zabezpečení.</p><p>|
 
 Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze pro SQL Server spouštění 2016, Azure SQL Database a SQL Managed instance. Pokud není implementovaná funkce samoobslužná aplikace, měla by být zajištěna omezení přístupu k datům pomocí zobrazení a postupů.
 
@@ -166,11 +167,11 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Hierarchie oprávnění SQL](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [zabezpečit SQL](https://docs.microsoft.com/sql/relational-databases/security/securables) |
+| **Reference**              | [Hierarchie oprávnění SQL](/sql/relational-databases/security/permissions-hierarchy-database-engine), [zabezpečit SQL](/sql/relational-databases/security/securables) |
 | **Kroky** | Členové pevné role serveru SysAdmin by měli být velmi omezené a nikdy neobsahují účty používané aplikacemi.  Zkontrolujte seznam uživatelů v roli a odeberte všechny nepotřebné účty.|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Připojení ke cloudové bráně s použitím nejnižších privilegovaných tokenů
@@ -181,7 +182,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Volba brány – Azure IoT Hub |
-| **Reference**              | [Access Control IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
+| **Reference**              | [Access Control IoT Hub](../../iot-hub/iot-hub-devguide.md) |
 | **Kroky** | Poskytněte minimální oprávnění pro různé komponenty, které se připojují ke cloudové bráně (IoT Hub). Typickým příkladem je – služba Device Management/zřizování používá registryread/Write. procesor událostí (ASA) používá službu Connect. Jednotlivá zařízení se připojují pomocí přihlašovacích údajů zařízení.|
 
 ## <a name="use-a-send-only-permissions-sas-key-for-generating-device-tokens"></a><a id="sendonly-sas"></a>Pro generování tokenů zařízení použít jenom klíč SAS s oprávněním pro odesílání
@@ -192,7 +193,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Kroky** | Klíč SAS se používá ke generování jednotlivých tokenů zařízení. Při generování tokenu zařízení pro daného vydavatele používejte oprávnění SAS jenom pro odesílání.|
 
 ## <a name="do-not-use-access-tokens-that-provide-direct-access-to-the-event-hub"></a><a id="access-tokens-hub"></a>Nepoužívejte přístupové tokeny, které poskytují přímý přístup k centru událostí.
@@ -203,8 +204,8 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Kroky** | Token, který uděluje přímý přístup do centra událostí, by neměl být předaný zařízení. Použití s nejnižším privilegovaným tokenem pro zařízení, které poskytuje přístup pouze vydavateli, může pomoci identifikovat a nepoužívat, pokud se zjistí jako neautorizovaný nebo ohrožené zařízení.|
+| **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](../../event-hubs/authenticate-shared-access-signature.md) |
+| **Kroky** | Token, který uděluje přímý přístup do centra událostí, by neměl být předaný zařízení. Použití s nejnižším privilegovaným tokenem pro zařízení, které poskytuje přístup jenom vydavateli, pomůžete ho identifikovat a zakázat, pokud se zjistilo, že se jedná o neautorizovaný nebo ohrožené zařízení.|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>Připojte se k centru událostí pomocí klíčů SAS, které mají minimální požadovaná oprávnění.
 
@@ -214,7 +215,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Reference**              | [Přehled ověřování a modelu zabezpečení Event Hubs](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Kroky** | Poskytněte minimální oprávnění pro různé back-endové aplikace, které se připojují k centru událostí. Vygenerujte samostatné klíče SAS pro každou back-end aplikaci a poskytněte jim pouze požadovaná oprávnění – Odeslat, přijmout nebo spravovat.|
 
 ## <a name="use-resource-tokens-to-connect-to-cosmos-db-whenever-possible"></a><a id="resource-docdb"></a>Pokud je to možné, použijte k připojení Cosmos DB tokeny prostředků.
@@ -228,7 +229,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Reference**              | –  |
 | **Kroky** | Token prostředku je přidružen k prostředku oprávnění Azure Cosmos DB a zachycuje vztah mezi uživatelem databáze a oprávněním, které má uživatel pro určitý prostředek Azure Cosmos DB aplikace (např. kolekce, dokument). Pro přístup k Azure Cosmos DB vždy použít token prostředku, pokud klienta nemůžete důvěřovat pomocí řídicího panelu nebo klíčů jen pro čtení, jako je aplikace koncového uživatele, jako je například mobilní klient nebo stolní počítač. Použijte hlavní klíč nebo klíče jen pro čtení z back-endu aplikací, které můžou tyto klíče bezpečně uložit.|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>Povolení jemně odstupňovaného řízení přístupu k předplatnému Azure pomocí RBAC
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Povolit jemně odstupňovanou správu přístupu k předplatnému Azure pomocí Azure RBAC
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -236,10 +237,10 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
-| **Kroky** | Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí řízení přístupu na základě role v Azure můžete uživatelům poskytnout pouze takovou úroveň přístupu, kterou potřebují k provádění svých úloh.|
+| **Reference**              | [Přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md)  |
+| **Kroky** | Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí Azure RBAC můžete udělit jenom množství přístupu, které uživatelé potřebují k provádění svých úloh.|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>Omezení přístupu klienta k operacím clusteru pomocí RBAC
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Omezení přístupu klienta k operacím clusteru pomocí Service Fabric RBAC
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -247,7 +248,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure |
-| **Reference**              | [Řízení přístupu na základě role pro klienty Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
+| **Reference**              | [Service Fabric řízení přístupu na základě role pro klienty Service Fabric](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **Kroky** | <p>Azure Service Fabric podporuje pro klienty, kteří jsou připojení ke clusteru Service Fabric, dva různé typy řízení přístupu: správce a uživatel. Řízení přístupu umožňuje správci clusteru omezit přístup k určitým clusterovým operacím pro různé skupiny uživatelů a tím zvýšit zabezpečení clusteru.</p><p>Správci mají plný přístup k funkcím správy (včetně funkcí pro čtení a zápis). Uživatelé mají ve výchozím nastavení přístup jen pro čtení k funkcím pro správu (například možnosti dotazů) a možnost přeložit aplikace a služby.</p><p>V době vytváření clusteru určíte dvě role klienta (správce a klient), a to tak, že pro každý z nich poskytnete samostatné certifikáty.</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>V případě potřeby proveďte modelování zabezpečení a použijte zabezpečení na úrovni polí.
@@ -280,10 +281,10 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | StorageType – tabulka |
-| **Reference**              | [Jak delegovat přístup k objektům ve vašem účtu Azure Storage pomocí SAS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
+| **Reference**              | [Jak delegovat přístup k objektům ve vašem účtu Azure Storage pomocí SAS](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Kroky** | V některých obchodních scénářích může být pro Azure Table Storage nutné ukládat citlivá data, která jsou v různých stranách. Například citlivá data týkající se různých zemí nebo oblastí. V takových případech je možné signatury SAS vytvořit zadáním rozsahu klíče a rozsahů klíčů řádků, aby uživatel měl přístup k datům, která jsou specifická pro určitou zemi nebo oblast.| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Povolení Access Control na základě rolí (RBAC) na účet služby Azure Storage pomocí Azure Resource Manager
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Povolení řízení přístupu na základě role Azure (Azure RBAC) na účet služby Azure Storage pomocí Azure Resource Manager
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -291,7 +292,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Jak zabezpečit svůj účet úložiště pomocí Access Control na základě rolí (RBAC)](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
+| **Reference**              | [Jak zabezpečit účet úložiště pomocí řízení přístupu na základě role Azure (RBAC)](../../storage/blobs/security-recommendations.md) |
 | **Kroky** | <p>Když vytváříte nový účet úložiště, vyberete model nasazení Classic nebo Azure Resource Manager. Klasický model vytváření prostředků v Azure umožňuje jenom přístup k předplatnému a k tomuto předplatnému a zároveň účet úložiště.</p><p>Pomocí modelu Azure Resource Manager umístíte účet úložiště do skupiny prostředků a řídíte přístup k rovině správy tohoto konkrétního účtu úložiště pomocí Azure Active Directory. Můžete například udělit konkrétním uživatelům přístup k klíčům účtu úložiště, zatímco jiní uživatelé mohou zobrazit informace o účtu úložiště, ale nemají přístup k klíčům účtu úložiště.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Implementovat implicitní jailbreaků nebo detekci kořene
@@ -313,7 +314,7 @@ Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | –  |
-| **Reference**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Reference**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Kroky** | <p>Systém používá slabý odkaz na třídu, který může útočníkovi umožnit spustit neautorizovaný kód. Program odkazuje na uživatelsky definovanou třídu, která není jednoznačně identifikována. Když rozhraní .NET načte tuto slabě identifikovanou třídu, vyhledá zavaděč typu CLR třídu v následujících umístěních v zadaném pořadí:</p><ol><li>Pokud je známo sestavení typu, zavaděč vyhledá umístění pro přesměrování konfiguračního souboru, GAC, aktuální sestavení s použitím informací o konfiguraci a základního adresáře aplikace.</li><li>Pokud je sestavení neznámé, zavaděč vyhledá aktuální sestavení, mscorlib a umístění, které vrátila obslužná rutina události TypeResolve.</li><li>Toto pořadí vyhledávání CLR se dá upravit pomocí háčků, jako je mechanismus předávání typů a událost AppDomain. TypeResolve.</li></ol><p>Pokud útočník zneužije pořadí vyhledávání CLR vytvořením alternativní třídy se stejným názvem a umístěním do alternativního umístění, které modul CLR načte jako první, modul CLR neúmyslně neprovede kód poskytovaný útočníkem.</p>|
 
 ### <a name="example"></a>Příklad
@@ -350,7 +351,7 @@ Použití plně kvalifikovaných (silných) názvů jednoznačně identifikuje t
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | –  |
-| **Reference**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Reference**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Kroky** | <p>Tato služba nepoužívá řízení autorizací. Když klient zavolá konkrétní službu WCF, poskytuje WCF různá autorizační schémata, která ověřují, jestli má volající oprávnění ke spuštění metody služby na serveru. Pokud nejsou pro služby WCF povolené ovládací prvky pro autorizaci, může ověřený uživatel dosáhnout eskalace oprávnění.</p>|
 
 ### <a name="example"></a>Příklad
@@ -394,7 +395,7 @@ return result;
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, MVC5 |
 | **Atributy**              | N/A, zprostředkovatel identity – ADFS, zprostředkovatel identity – Azure AD |

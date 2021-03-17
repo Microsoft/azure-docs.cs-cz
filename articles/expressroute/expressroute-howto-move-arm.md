@@ -2,17 +2,18 @@
 title: 'Azure ExpressRoute: přesunutí klasických okruhů do Správce prostředků'
 description: Tato stránka popisuje, jak přesunout klasický okruh do modelu nasazení Správce prostředků pomocí prostředí PowerShell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: charwen
-ms.openlocfilehash: 3d094f614cbaf75158c38b86345fd5f925310d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039306"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90532541"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Správce prostředků pomocí prostředí PowerShell
 
@@ -94,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 V klasickém režimu nemá okruh ExpressRoute žádný pojem spojený s oblastí. V Správce prostředků ale musí být každý prostředek namapovaný na oblast Azure. Oblast zadaná v rutině Move-AzExpressRouteCircuit může být technicky jakákoli oblast. Pro účely organizace můžete zvolit oblast, která bude úzce představovat vaše umístění partnerského vztahu.
 
 > [!NOTE]
-> Po dokončení přesunu se k řešení tohoto prostředku použije nový název, který je uvedený v předchozí rutině. Okruh bude v podstatě přejmenován.
-> 
+> * Po přesunu klasického okruhu ExpressRoute do modelu nasazení Správce prostředků bude mít ve výchozím nastavení přístup k modelům nasazení Classic i Správce prostředků.
+> * Nový název, který je uveden v předchozí rutině, bude použit k vyřešení prostředku. Okruh bude v podstatě přejmenován.
 
 ## <a name="modify-circuit-access"></a>Upravit přístup okruhu
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Povolení přístupu okruhu ExpressRoute pro oba modely nasazení
 
-Po přesunu klasického okruhu ExpressRoute do modelu nasazení Správce prostředků můžete povolit přístup k oběma modelům nasazení. Spusťte následující rutiny pro povolení přístupu do obou modelů nasazení:
+Můžete povolit přístup k modelu nasazení Classic pro okruhy ExpressRoute, které byly vytvořeny v modelu nasazení Správce prostředků. Spusťte následující rutiny pro povolení přístupu do obou modelů nasazení:
 
 1. Získat podrobnosti o okruhu.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 00d2f0eeb5d353c8ebd7ad30f6866f890d6cb42e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096950"
 ---
 # <a name="createuidefinition-logical-functions"></a>Logické funkce CreateUiDefinition
@@ -81,7 +81,7 @@ Chcete-li nastavit podmínku pro akci jiného pole na aktuální zvolené hodnot
 
 To je nezbytné, protože `databaseType` zpočátku není viditelné, a proto nemá hodnotu. To způsobí, že se celý výraz nevyhodnotí správně.
 
-## <a name="equals"></a>equals
+## <a name="equals"></a>rovná se
 
 Vrátí, `true` zda oba parametry mají stejný typ a hodnotu. Tato funkce podporuje všechny datové typy JSON.
 

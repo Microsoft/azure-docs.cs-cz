@@ -1,28 +1,28 @@
 ---
-title: Azure File Sync místní bránu firewall a nastavení proxy serveru | Microsoft Docs
-description: Pochopte Azure File Sync místní proxy a nastavení brány firewall. Projděte si podrobnosti o konfiguraci portů, sítí a zvláštních připojení k Azure.
+title: Synchronizace souborů Azure místní bránu firewall a nastavení proxy serveru | Microsoft Docs
+description: Pochopte Synchronizace souborů Azure místní proxy a nastavení brány firewall. Projděte si podrobnosti o konfiguraci portů, sítí a zvláštních připojení k Azure.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729636"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
-Azure File Sync propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
+Synchronizace souborů Azure propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
 
-Tento článek vám poskytne přehled o specifických požadavcích a možnostech, které jsou k dispozici pro úspěšné a bezpečné připojení serveru k Azure File Sync.
+Tento článek vám poskytne přehled o specifických požadavcích a možnostech, které jsou k dispozici pro úspěšné a bezpečné připojení serveru k Synchronizace souborů Azure.
 
-Před načtením tohoto průvodce doporučujeme přečíst si [informace o Azure File Syncch sítích](storage-sync-files-networking-overview.md) .
+Před načtením tohoto průvodce doporučujeme přečíst si [informace o synchronizace souborů Azurech sítích](storage-sync-files-networking-overview.md) .
 
 ## <a name="overview"></a>Přehled
-Azure File Sync slouží jako služba orchestrace mezi vaším Windows serverem, sdílenou složkou Azure a několika dalšími službami Azure pro synchronizaci dat, jak je popsáno ve skupině synchronizace. Aby Azure File Sync fungovalo správně, budete muset nakonfigurovat servery tak, aby komunikovaly s následujícími službami Azure:
+Synchronizace souborů Azure slouží jako služba orchestrace mezi vaším Windows serverem, sdílenou složkou Azure a několika dalšími službami Azure pro synchronizaci dat, jak je popsáno ve skupině synchronizace. Aby Synchronizace souborů Azure fungovalo správně, budete muset nakonfigurovat servery tak, aby komunikovaly s následujícími službami Azure:
 
 - Azure Storage
 - Synchronizace souborů Azure
@@ -30,28 +30,52 @@ Azure File Sync slouží jako služba orchestrace mezi vaším Windows serverem,
 - Ověřovací služby
 
 > [!Note]  
-> Agent Azure File Sync na Windows serveru zahájí všechny požadavky na cloudové služby, které mají za následek jenom zvážit odchozí přenosy z perspektivy brány firewall. <br /> Žádná služba Azure neinicializuje připojení k agentovi Azure File Sync.
+> Agent Synchronizace souborů Azure na Windows serveru zahájí všechny požadavky na cloudové služby, které mají za následek jenom zvážit odchozí přenosy z perspektivy brány firewall. <br /> Žádná služba Azure neinicializuje připojení k agentovi Synchronizace souborů Azure.
 
 ## <a name="ports"></a>Porty
-Azure File Sync přesouvá data souborů a metadata exkluzivně přes protokol HTTPS a vyžaduje, aby byl port 443 otevřený odchozí.
+Synchronizace souborů Azure přesouvá data souborů a metadata exkluzivně přes protokol HTTPS a vyžaduje, aby byl port 443 otevřený odchozí.
 V důsledku toho je veškerý provoz zašifrovaný.
 
 ## <a name="networks-and-special-connections-to-azure"></a>Sítě a zvláštní připojení k Azure
-Agent Azure File Sync nemá žádné požadavky týkající se speciálních kanálů, jako je [ExpressRoute](../../expressroute/expressroute-introduction.md)atd. do Azure.
+Agent Synchronizace souborů Azure nemá žádné požadavky týkající se speciálních kanálů, jako je [ExpressRoute](../../expressroute/expressroute-introduction.md)atd. do Azure.
 
-Azure File Sync budou fungovat s dostupnými prostředky, které umožňují dosahovat Azure, automaticky se přizpůsobí různým charakteristikám sítě, jako je šířka pásma, latence a nabízí administrativní ovládací prvky pro vyladění. V tuto chvíli nejsou k dispozici všechny funkce. Pokud chcete nakonfigurovat konkrétní chování, dejte nám informace prostřednictvím [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670).
+Synchronizace souborů Azure budou fungovat s dostupnými prostředky, které umožňují dosahovat Azure, automaticky se přizpůsobí různým charakteristikám sítě, jako je šířka pásma, latence a nabízí administrativní ovládací prvky pro vyladění. V tuto chvíli nejsou k dispozici všechny funkce. Pokud chcete nakonfigurovat konkrétní chování, dejte nám informace prostřednictvím [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670).
 
 ## <a name="proxy"></a>Proxy server
-Azure File Sync podporuje nastavení proxy serveru pro konkrétní aplikace a na úrovni počítače.
+Synchronizace souborů Azure podporuje nastavení proxy serveru pro konkrétní aplikace a na úrovni počítače.
 
-**Nastavení proxy serveru specifické pro aplikaci** umožňuje konfiguraci proxy serveru specificky pro Azure File Sync provoz. Nastavení proxy serveru specifické pro aplikaci jsou podporovaná v agentech verze 4.0.1.0 nebo novější a dají se nakonfigurovat během instalace agenta nebo pomocí rutiny Set-StorageSyncProxyConfiguration prostředí PowerShell.
+**Nastavení proxy serveru specifické pro aplikaci** umožňuje konfiguraci proxy serveru specificky pro synchronizace souborů Azure provoz. Nastavení proxy serveru specifické pro aplikaci jsou podporovaná v agentech verze 4.0.1.0 nebo novější a dají se nakonfigurovat během instalace agenta nebo pomocí rutiny Set-StorageSyncProxyConfiguration PowerShellu.
 
 příkazů PowerShellu pro konfiguraci nastavení proxy serveru pro konkrétní aplikaci:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-**Nastavení proxy serveru pro celý počítač** jsou transparentní pro agenta Azure File Sync, protože celý provoz serveru je směrován přes proxy server.
+Pokud například vaše proxy server vyžaduje ověřování pomocí uživatelského jména a hesla, spusťte následující příkazy PowerShellu:
+
+```powershell
+# IP address or name of the proxy server.
+$Address="127.0.0.1"  
+
+# The port to use for the connection to the proxy.
+$Port=8080
+
+# The user name for a proxy.
+$UserName="user_name" 
+
+# Please type or paste a string with a password for the proxy.
+$SecurePassword = Read-Host -AsSecureString
+
+$Creds = New-Object System.Management.Automation.PSCredential ($UserName, $SecurePassword)
+
+# Please verify that you have entered the password correctly.
+Write-Host $Creds.GetNetworkCredential().Password
+
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+
+Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential $Creds
+```
+**Nastavení proxy serveru pro celý počítač** jsou transparentní pro agenta synchronizace souborů Azure, protože celý provoz serveru je směrován přes proxy server.
 
 Pokud chcete nakonfigurovat nastavení proxy serveru pro celý počítač, postupujte následovně: 
 
@@ -95,11 +119,12 @@ V následující tabulce jsou popsány požadované domény pro komunikaci:
 |---------|----------------|---------------|------------------------------|
 | **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | Jakékoli uživatelské volání (například prostředí PowerShell) odkazuje na tuto adresu URL, včetně počátečního volání registrace serveru. |
 | **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Resource Manager volání musí provádět ověřený uživatel. K úspěšnému použití se tato adresa URL používá pro ověřování uživatelů. |
-| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | V rámci nasazení Azure File Sync se vytvoří instanční objekt v Azure Active Directory předplatného. Tato adresa URL se pro tuto adresu používá. Tento objekt zabezpečení se používá k delegování minimální sady práv ke službě Azure File Sync. Uživatel, který provádí počáteční nastavení Azure File Sync, musí být ověřeným uživatelem s oprávněním vlastníka předplatného. |
-| **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | Použijte adresu URL veřejného koncového bodu. | K této adrese URL má přístup Knihovna ověřování Active Directory, kterou používá uživatelské rozhraní pro registraci Azure File Sync serveru pro přihlášení správce. |
+| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | V rámci nasazení Synchronizace souborů Azure se vytvoří instanční objekt v Azure Active Directory předplatného. Tato adresa URL se pro tuto adresu používá. Tento objekt zabezpečení se používá k delegování minimální sady práv ke službě Synchronizace souborů Azure. Uživatel, který provádí počáteční nastavení Synchronizace souborů Azure, musí být ověřeným uživatelem s oprávněním vlastníka předplatného. |
+| **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | Použijte adresu URL veřejného koncového bodu. | K této adrese URL má přístup Knihovna ověřování Active Directory, kterou používá uživatelské rozhraní pro registraci Synchronizace souborů Azure serveru pro přihlášení správce. |
 | **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Když server stáhne soubor, pak server při přímé komunikaci do sdílené složky Azure v účtu úložiště provede rychlejší přesun dat. Server má klíč SAS, který umožňuje jenom cílenému přístupu ke sdíleným složkám souborů. |
-| **Synchronizace souborů Azure** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Po počáteční registraci serveru dostane Server místní adresu URL pro instanci služby Azure File Sync Service v této oblasti. Server může adresu URL použít ke komunikaci přímo a efektivně s instancí, která zpracovává její synchronizaci. |
-| **Infrastruktura veřejných klíčů Microsoftu** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Po instalaci agenta Azure File Sync se adresa URL PKI používá ke stažení zprostředkujících certifikátů potřebných ke komunikaci se službou Azure File Sync a sdílenou složkou souborů Azure. Adresa URL protokolu OCSP slouží ke kontrole stavu certifikátu. |
+| **Synchronizace souborů Azure** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Po počáteční registraci serveru dostane Server místní adresu URL pro instanci služby Synchronizace souborů Azure Service v této oblasti. Server může adresu URL použít ke komunikaci přímo a efektivně s instancí, která zpracovává její synchronizaci. |
+| **Infrastruktura veřejných klíčů Microsoftu** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | Po instalaci agenta Synchronizace souborů Azure se adresa URL PKI používá ke stažení zprostředkujících certifikátů potřebných ke komunikaci se službou Synchronizace souborů Azure a sdílenou složkou souborů Azure. Adresa URL protokolu OCSP slouží ke kontrole stavu certifikátu. |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. ctldl.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. ctldl.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | Po instalaci agenta Synchronizace souborů Azure se Microsoft Update adresy URL používají ke stažení Synchronizace souborů Azure aktualizace agenta. |
 
 > [!Important]
 > Při povolování provozu do &ast; . AFS.Azure.NET je přenos možné pouze do synchronizační služby. Tuto doménu nepoužívají žádné další služby společnosti Microsoft.
@@ -107,35 +132,39 @@ V následující tabulce jsou popsány požadované domény pro komunikaci:
 
 Pokud &ast; je. AFS.Azure.NET nebo &ast; . One.Microsoft.com příliš široké, můžete omezit komunikaci serveru tím, že povolíte komunikaci jenom s explicitními místními instancemi služby Azure Files Sync. Které instance se mají zvolit, závisí na oblasti služby synchronizace úložiště, kterou jste nasadili a zaregistrovali na serveru. Tato oblast se nazývá "primární adresa URL koncového bodu" v následující tabulce.
 
-V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste pravděpodobně zadali sdílené složky Azure v globálním redundantním účtu úložiště (GRS). V takovém případě se sdílené složky Azure převezmou v spárované oblasti v případě trvajícího regionálního výpadku. Azure File Sync používá stejné místní párování jako úložiště. Takže pokud používáte účty úložiště GRS, je potřeba povolit další adresy URL, které umožní vašemu serveru komunikovat s spárovanými oblastmi pro Azure File Sync. Následující tabulka volá tuto "spárované oblasti". Kromě toho je k dispozici také adresa URL profilu Traffic Manageru, která musí být povolena. To zajistí plynulé přesměrování síťového provozu do spárované oblasti v případě převzetí služeb při selhání a v následující tabulce se nazývá "adresa URL zjišťování".
+V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste pravděpodobně zadali sdílené složky Azure v globálním redundantním účtu úložiště (GRS). V takovém případě se sdílené složky Azure převezmou v spárované oblasti v případě trvajícího regionálního výpadku. Synchronizace souborů Azure používá stejné místní párování jako úložiště. Takže pokud používáte účty úložiště GRS, je potřeba povolit další adresy URL, které umožní vašemu serveru komunikovat s spárovanými oblastmi pro Synchronizace souborů Azure. Následující tabulka volá tuto "spárované oblasti". Kromě toho je k dispozici také adresa URL profilu Traffic Manageru, která musí být povolena. To zajistí plynulé přesměrování síťového provozu do spárované oblasti v případě převzetí služeb při selhání a v následující tabulce se nazývá "adresa URL zjišťování".
 
 | Cloud  | Oblast | Adresa URL primárního koncového bodu | Spárovaná oblast | Adresa URL zjišťování |
 |--------|--------|----------------------|---------------|---------------|
-| Veřejný |Austrálie – východ | https: \/ /australiaeast01.AFS.Azure.NET<br>https: \/ /kailani-Aue.One.Microsoft.com | Australia Southeast | https: \/ /TM-australiaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
-| Veřejný |Australia Southeast | https: \/ /australiasoutheast01.AFS.Azure.NET<br>https: \/ /kailani-AUS.One.Microsoft.com | Austrálie – východ | https: \/ /TM-australiasoutheast01.AFS.Azure.NET<br>https: \/ /TM-kailani-AUS.One.Microsoft.com |
-| Veřejný | Brazil South | https: \/ /brazilsouth01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-brazilsouth01.AFS.Azure.NET |
-| Veřejný | Střední Kanada | https: \/ /canadacentral01.AFS.Azure.NET<br>https: \/ /kailani-CAC.One.Microsoft.com | Kanada – východ | https: \/ /TM-canadacentral01.AFS.Azure.NET<br>https: \/ /TM-kailani-CAC.One.Microsoft.com |
-| Veřejný | Kanada – východ | https: \/ /canadaeast01.AFS.Azure.NET<br>https: \/ /kailani-CAE.One.Microsoft.com | Střední Kanada | https: \/ /TM-canadaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani.CAE.One.Microsoft.com |
-| Veřejný | Indie – střed | https: \/ /centralindia01.AFS.Azure.NET<br>https: \/ /kailani-CIN.One.Microsoft.com | Indie – jih | https: \/ /TM-centralindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-CIN.One.Microsoft.com |
-| Veřejný | Střední USA | https: \/ /centralus01.AFS.Azure.NET<br>https: \/ /kailani-CUS.One.Microsoft.com | USA – východ 2 | https: \/ /TM-centralus01.AFS.Azure.NET<br>https: \/ /TM-kailani-CUS.One.Microsoft.com |
-| Veřejný | Východní Asie | https: \/ /eastasia01.AFS.Azure.NET<br>https: \/ /kailani11.One.Microsoft.com | Southeast Asia | https: \/ /TM-eastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani11.One.Microsoft.com |
-| Veřejný | East US | https: \/ /eastus01.AFS.Azure.NET<br>https: \/ /kailani1.One.Microsoft.com | USA – západ | https: \/ /TM-eastus01.AFS.Azure.NET<br>https: \/ /TM-kailani1.One.Microsoft.com |
-| Veřejný | USA – východ 2 | https: \/ /eastus201.AFS.Azure.NET<br>https: \/ /kailani-ESS.One.Microsoft.com | Střední USA | https: \/ /TM-eastus201.AFS.Azure.NET<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
-| Veřejný | Japan East | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
-| Veřejný | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japan East | https: \/ /TM-japanwest01.AFS.Azure.NET |
-| Veřejný | Jižní Korea – střed | https: \/ /koreacentral01.AFS.Azure.NET/ | Jižní Korea – jih | https: \/ /TM-koreacentral01.AFS.Azure.NET/ |
-| Veřejný | Jižní Korea – jih | https: \/ /koreasouth01.AFS.Azure.NET/ | Jižní Korea – střed | https: \/ /TM-koreasouth01.AFS.Azure.NET/ |
-| Veřejný | USA – středosever | https: \/ /northcentralus01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-northcentralus01.AFS.Azure.NET |
-| Veřejný | Severní Evropa | https: \/ /northeurope01.AFS.Azure.NET<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani7.One.Microsoft.com |
-| Veřejný | Středojižní USA | https: \/ /southcentralus01.AFS.Azure.NET | USA – středosever | https: \/ /TM-southcentralus01.AFS.Azure.NET |
-| Veřejný | Indie – jih | https: \/ /southindia01.AFS.Azure.NET<br>https: \/ /kailani-Sin.One.Microsoft.com | Indie – střed | https: \/ /TM-southindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-Sin.One.Microsoft.com |
-| Veřejný | Southeast Asia | https: \/ /southeastasia01.AFS.Azure.NET<br>https: \/ /kailani10.One.Microsoft.com | Východní Asie | https: \/ /TM-southeastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani10.One.Microsoft.com |
-| Veřejný | Spojené království – jih | https: \/ /uksouth01.AFS.Azure.NET<br>https: \/ /kailani-UKS.One.Microsoft.com | Spojené království – západ | https: \/ /TM-uksouth01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKS.One.Microsoft.com |
-| Veřejný | Spojené království – západ | https: \/ /ukwest01.AFS.Azure.NET<br>https: \/ /kailani-UKW.One.Microsoft.com | Spojené království – jih | https: \/ /TM-ukwest01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKW.One.Microsoft.com |
-| Veřejný | USA – středozápad | https: \/ /westcentralus01.AFS.Azure.NET | Západní USA 2 | https: \/ /TM-westcentralus01.AFS.Azure.NET |
-| Veřejný | West Europe | https: \/ /westeurope01.AFS.Azure.NET<br>https: \/ /kailani6.One.Microsoft.com | Severní Evropa | https: \/ /TM-westeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani6.One.Microsoft.com |
-| Veřejný | USA – západ | https: \/ /westus01.AFS.Azure.NET<br>https: \/ /kailani.One.Microsoft.com | East US | https: \/ /TM-westus01.AFS.Azure.NET<br>https: \/ /TM-kailani.One.Microsoft.com |
-| Veřejný | Západní USA 2 | https: \/ /westus201.AFS.Azure.NET | USA – středozápad | https: \/ /TM-westus201.AFS.Azure.NET |
+| Veřejná |Austrálie – východ | https: \/ /australiaeast01.AFS.Azure.NET<br>https: \/ /kailani-Aue.One.Microsoft.com | Austrálie – jihovýchod | https: \/ /TM-australiaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
+| Veřejná |Austrálie – jihovýchod | https: \/ /australiasoutheast01.AFS.Azure.NET<br>https: \/ /kailani-AUS.One.Microsoft.com | Austrálie – východ | https: \/ /TM-australiasoutheast01.AFS.Azure.NET<br>https: \/ /TM-kailani-AUS.One.Microsoft.com |
+| Veřejná | Brazílie – jih | https: \/ /brazilsouth01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-brazilsouth01.AFS.Azure.NET |
+| Veřejná | Střední Kanada | https: \/ /canadacentral01.AFS.Azure.NET<br>https: \/ /kailani-CAC.One.Microsoft.com | Kanada – východ | https: \/ /TM-canadacentral01.AFS.Azure.NET<br>https: \/ /TM-kailani-CAC.One.Microsoft.com |
+| Veřejná | Kanada – východ | https: \/ /canadaeast01.AFS.Azure.NET<br>https: \/ /kailani-CAE.One.Microsoft.com | Střední Kanada | https: \/ /TM-canadaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani.CAE.One.Microsoft.com |
+| Veřejná | Indie – střed | https: \/ /centralindia01.AFS.Azure.NET<br>https: \/ /kailani-CIN.One.Microsoft.com | Indie – jih | https: \/ /TM-centralindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-CIN.One.Microsoft.com |
+| Veřejná | USA – střed | https: \/ /centralus01.AFS.Azure.NET<br>https: \/ /kailani-CUS.One.Microsoft.com | USA – východ 2 | https: \/ /TM-centralus01.AFS.Azure.NET<br>https: \/ /TM-kailani-CUS.One.Microsoft.com |
+| Veřejná | Východní Asie | https: \/ /eastasia01.AFS.Azure.NET<br>https: \/ /kailani11.One.Microsoft.com | Southeast Asia | https: \/ /TM-eastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani11.One.Microsoft.com |
+| Veřejná | East US | https: \/ /eastus01.AFS.Azure.NET<br>https: \/ /kailani1.One.Microsoft.com | USA – západ | https: \/ /TM-eastus01.AFS.Azure.NET<br>https: \/ /TM-kailani1.One.Microsoft.com |
+| Veřejná | USA – východ 2 | https: \/ /eastus201.AFS.Azure.NET<br>https: \/ /kailani-ESS.One.Microsoft.com | USA – střed | https: \/ /TM-eastus201.AFS.Azure.NET<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
+| Veřejná | Německo – sever | https: \/ /germanynorth01.AFS.Azure.NET | Německo – středozápad | https: \/ /TM-germanywestcentral01.AFS.Azure.NET |
+| Veřejná | Německo – středozápad | https: \/ /germanywestcentral01.AFS.Azure.NET | Německo – sever | https: \/ /TM-germanynorth01.AFS.Azure.NET |
+| Veřejná | Japonsko – východ | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
+| Veřejná | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japonsko – východ | https: \/ /TM-japanwest01.AFS.Azure.NET |
+| Veřejná | Jižní Korea – střed | https: \/ /koreacentral01.AFS.Azure.NET/ | Jižní Korea – jih | https: \/ /TM-koreacentral01.AFS.Azure.NET/ |
+| Veřejná | Jižní Korea – jih | https: \/ /koreasouth01.AFS.Azure.NET/ | Jižní Korea – střed | https: \/ /TM-koreasouth01.AFS.Azure.NET/ |
+| Veřejná | USA – středosever | https: \/ /northcentralus01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-northcentralus01.AFS.Azure.NET |
+| Veřejná | Severní Evropa | https: \/ /northeurope01.AFS.Azure.NET<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani7.One.Microsoft.com |
+| Veřejná | Středojižní USA | https: \/ /southcentralus01.AFS.Azure.NET | USA – středosever | https: \/ /TM-southcentralus01.AFS.Azure.NET |
+| Veřejná | Indie – jih | https: \/ /southindia01.AFS.Azure.NET<br>https: \/ /kailani-Sin.One.Microsoft.com | Indie – střed | https: \/ /TM-southindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-Sin.One.Microsoft.com |
+| Veřejná | Southeast Asia | https: \/ /southeastasia01.AFS.Azure.NET<br>https: \/ /kailani10.One.Microsoft.com | Východní Asie | https: \/ /TM-southeastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani10.One.Microsoft.com |
+| Veřejná | Švýcarsko – sever | https: \/ /switzerlandnorth01.AFS.Azure.NET<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.NET | Švýcarsko – západ | https: \/ /switzerlandwest01.AFS.Azure.NET<br>https: \/ /TM-switzerlandwest01.AFS.Azure.NET |
+| Veřejná | Švýcarsko – západ | https: \/ /switzerlandwest01.AFS.Azure.NET<br>https: \/ /TM-switzerlandwest01.AFS.Azure.NET | Švýcarsko – sever | https: \/ /switzerlandnorth01.AFS.Azure.NET<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.NET |
+| Veřejná | Spojené království – jih | https: \/ /uksouth01.AFS.Azure.NET<br>https: \/ /kailani-UKS.One.Microsoft.com | Spojené království – západ | https: \/ /TM-uksouth01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKS.One.Microsoft.com |
+| Veřejná | Spojené království – západ | https: \/ /ukwest01.AFS.Azure.NET<br>https: \/ /kailani-UKW.One.Microsoft.com | Spojené království – jih | https: \/ /TM-ukwest01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKW.One.Microsoft.com |
+| Veřejná | USA – středozápad | https: \/ /westcentralus01.AFS.Azure.NET | Západní USA 2 | https: \/ /TM-westcentralus01.AFS.Azure.NET |
+| Veřejná | West Europe | https: \/ /westeurope01.AFS.Azure.NET<br>https: \/ /kailani6.One.Microsoft.com | Severní Evropa | https: \/ /TM-westeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani6.One.Microsoft.com |
+| Veřejná | USA – západ | https: \/ /westus01.AFS.Azure.NET<br>https: \/ /kailani.One.Microsoft.com | East US | https: \/ /TM-westus01.AFS.Azure.NET<br>https: \/ /TM-kailani.One.Microsoft.com |
+| Veřejná | Západní USA 2 | https: \/ /westus201.AFS.Azure.NET | USA – středozápad | https: \/ /TM-westus201.AFS.Azure.NET |
 | Státní správa | USA (Gov) – Arizona | https: \/ /usgovarizona01.AFS.Azure.us | USA (Gov) – Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
 | Státní správa | USA (Gov) – Texas | https: \/ /usgovtexas01.AFS.Azure.us | USA (Gov) – Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
 
@@ -149,12 +178,12 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 > - https: \/ /eastus01.AFS.Azure.NET (oblast převzetí služeb při selhání, která se spáruje: východní USA)
 > - https: \/ /TM-westus01.AFS.Azure.NET (adresa URL zjišťování primární oblasti)
 
-### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Seznam povolených pro Azure File Sync IP adres
-Azure File Sync podporuje použití [značek služeb](../../virtual-network/service-tags-overview.md), které reprezentují skupinu předpon IP adres pro danou službu Azure. Pomocí značek služby můžete vytvořit pravidla brány firewall, která umožňují komunikaci s Azure File Sync službou. Označení služby pro Azure File Sync je `StorageSyncService` .
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Seznam povolených pro Synchronizace souborů Azure IP adres
+Synchronizace souborů Azure podporuje použití [značek služeb](../../virtual-network/service-tags-overview.md), které reprezentují skupinu předpon IP adres pro danou službu Azure. Pomocí značek služby můžete vytvořit pravidla brány firewall, která umožňují komunikaci s Synchronizace souborů Azure službou. Označení služby pro Synchronizace souborů Azure je `StorageSyncService` .
 
-Pokud používáte Azure File Sync v rámci Azure, můžete pro povolení provozu použít ve skupině zabezpečení sítě přímo název značky služby. Další informace o tom, jak to provést, najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/security-overview.md).
+Pokud používáte Synchronizace souborů Azure v rámci Azure, můžete pro povolení provozu použít ve skupině zabezpečení sítě přímo název značky služby. Další informace o tom, jak to provést, najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md).
 
-Pokud používáte Azure File Sync v místním prostředí, můžete k získání specifických rozsahů IP adres pro seznam povolených bran firewall použít rozhraní API tag služby. Existují dvě metody pro získání těchto informací:
+Pokud používáte Synchronizace souborů Azure v místním prostředí, můžete k získání specifických rozsahů IP adres pro seznam povolených bran firewall použít rozhraní API tag služby. Existují dvě metody pro získání těchto informací:
 
 - Aktuální seznam rozsahů IP adres pro všechny služby Azure, které podporují značky služby, se každý týden zveřejňuje na webu služby Stažení softwaru ve formě dokumentu JSON. Každý cloud Azure má svůj vlastní dokument JSON s rozsahy IP adres, které jsou relevantní pro tento Cloud:
     - [Veřejné Azure](https://www.microsoft.com/download/details.aspx?id=56519)
@@ -162,9 +191,9 @@ Pokud používáte Azure File Sync v místním prostředí, můžete k získán�
     - [Azure (Čína)](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure (Německo)](https://www.microsoft.com/download/details.aspx?id=57064)
 - Rozhraní API zjišťování značek služby (Preview) umožňuje programové načtení aktuálního seznamu značek služeb. Ve verzi Preview může rozhraní API zjišťování značek služby vracet informace, které jsou méně aktuální než informace vrácené z dokumentů JSON publikovaných na webu Microsoft Download Center. Plochu rozhraní API můžete použít na základě preference automatizace:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Vzhledem k tomu, že se rozhraní API zjišťování značek služeb neaktualizuje tak často, jako dokumenty JSON publikované na webu Microsoft Download Center, doporučujeme k aktualizaci seznamu povolených místních bran firewall použít dokument JSON. Můžete to udělat takto:
 
@@ -266,16 +295,16 @@ if ($found) {
 Pak můžete použít rozsahy IP adres v nástroji `$ipAddressRanges` k aktualizaci brány firewall. Informace o tom, jak aktualizovat bránu firewall, najdete na webu brány firewall/síťového zařízení.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Otestování připojení k síti ke koncovým bodům služby
-Jakmile je server zaregistrovaný ve službě Azure File Sync, je možné pomocí rutiny Test-StorageSyncNetworkConnectivity a ServerRegistration.exe testovat komunikaci se všemi koncovými body (URL), které jsou specifické pro tento server. Tato rutina může pomoct řešit potíže, pokud nekompletní komunikace brání serveru plně pracovat s Azure File Sync a dá se použít k doladění konfigurací proxy a brány firewall.
+Jakmile je server zaregistrovaný ve službě Synchronizace souborů Azure, můžete použít rutinu Test-StorageSyncNetworkConnectivity a ServerRegistration.exe k otestování komunikace se všemi koncovými body (URL) specifickými pro tento server. Tato rutina může pomoct řešit potíže, pokud nekompletní komunikace brání serveru plně pracovat s Synchronizace souborů Azure a dá se použít k doladění konfigurací proxy a brány firewall.
 
-Pokud chcete spustit test připojení k síti, nainstalujte agenta Azure File Sync verze 9,1 nebo novější a spusťte následující příkazy PowerShellu:
+Pokud chcete spustit test připojení k síti, nainstalujte agenta Synchronizace souborů Azure verze 9,1 nebo novější a spusťte následující příkazy PowerShellu:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity
 ```
 
 ## <a name="summary-and-risk-limitation"></a>Souhrn a omezení rizik
-Seznamy uvedené dříve v tomto dokumentu obsahují adresy URL Azure File Sync aktuálně komunikuje s. Brány firewall musí umožňovat přenos odchozího provozu do těchto domén. Microsoft usiluje o to, aby tento seznam byl aktualizovaný.
+Seznamy uvedené dříve v tomto dokumentu obsahují adresy URL Synchronizace souborů Azure aktuálně komunikuje s. Brány firewall musí umožňovat přenos odchozího provozu do těchto domén. Microsoft usiluje o to, aby tento seznam byl aktualizovaný.
 
 Nastavením omezení domény pravidla brány firewall může být míra, která zvyšuje zabezpečení. Pokud se tyto konfigurace brány firewall používají, je potřeba mít na paměti, že se přidají adresy URL a v průběhu času se můžou dokonce měnit. Pravidelně kontrolujte Tento článek.
 

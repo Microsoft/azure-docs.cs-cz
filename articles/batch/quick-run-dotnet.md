@@ -3,13 +3,13 @@ title: Rychlý Start – spuštění první Azure Batch úlohy pomocí rozhraní
 description: V tomto rychlém startu spustíte ukázkovou úlohu Azure Batch a úlohy z aplikace v jazyce C# pomocí klientské knihovny Batch .NET.
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.custom: mvc
-ms.openlocfilehash: f17fc2103e4b8512e050d79f5a639b38d90a2a95
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 9087261865b07d32afab65012e04ea478cb60611
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511027"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88921643"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -19,7 +19,7 @@ Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům sl
 
 ![Diagram znázorňující přehled pracovního postupu aplikace Azure Batch.](./media/quick-run-dotnet/sampleapp.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

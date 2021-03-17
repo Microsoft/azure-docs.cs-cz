@@ -3,12 +3,12 @@ title: Agent Microsoft Azure Recovery Services (MARS) – nejčastější dotazy
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874618"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917354"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
 
@@ -22,7 +22,7 @@ Nejnovější agent MARS, který se používá při zálohování počítačů s
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>Kde můžu stáhnout soubor s přihlašovacími údaji trezoru?
 
-V Azure Portal přejděte na **vlastnosti** vašeho trezoru. V části **přihlašovací údaje pro zálohování**zaškrtněte políčko pro **použití nejnovějšího agenta Recovery Services**. Vyberte **Stáhnout**.
+V Azure Portal přejděte na **vlastnosti** vašeho trezoru. V části **přihlašovací údaje pro zálohování** zaškrtněte políčko pro **použití nejnovějšího agenta Recovery Services**. Vyberte **Stáhnout**.
 
 ![Stáhnout přihlašovací údaje](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
@@ -32,7 +32,7 @@ Platnost přihlašovacích údajů trezoru vyprší po 10 dnech. Pokud platnost 
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>Jaké znaky jsou pro přístupové heslo povoleny?
 
-Přístupové heslo by mělo používat znaky ze znakové sady ASCII, přičemž [hodnoty ASCII jsou menší nebo rovny 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127).
+Přístupové heslo by mělo používat znaky ze znakové sady ASCII, přičemž [hodnoty ASCII jsou menší nebo rovny 127](/office/vba/language/reference/user-interface-help/character-set-0127).
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Z jakých jednotek můžu zálohovat soubory a složky?
 
@@ -72,6 +72,10 @@ Ano. Po přípravě operace zálohování převede agent MARS data s odstraněn�
 
 Ano, instalace agenta MARS a konfigurace záloh pomocí konzoly MARS vyžaduje, aby uživatel byl místním správcem na chráněném serveru.
 
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>Jaký má dopad na zálohy agenta MARS na převod předplatného trezoru do jiného adresáře služby Azure AD?
+
+Změna adresáře služby Azure AD nebude mít žádný vliv na zálohy agenta MARS. 
+
 ## <a name="manage-backups"></a>Správa záloh
 
 ### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>Co se stane, když přejmenujem počítač se systémem Windows nakonfigurovaný pro zálohování?
@@ -80,7 +84,7 @@ Při přejmenování počítače se systémem Windows se zastaví všechna aktu�
 
 * Nový název počítače je potřeba zaregistrovat v úložišti záloh.
 * Když zaregistrujete nový název trezoru, první operace je *Úplná* záloha.
-* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Přečtěte si další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaká je maximální délka cesty k souboru pro zálohování?
 
@@ -109,7 +113,7 @@ Velikost složky mezipaměti určuje množství zálohovaných dat.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak zjistit, jestli je pomocná složka platná a dostupná?
 
-1. Ve výchozím nastavení se složka pro pomocné složky nachází v`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+1. Ve výchozím nastavení se složka pro pomocné složky nachází v `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Ujistěte se, že cesta k umístění pomocné složky odpovídá hodnotám klíčů registru, které jsou uvedené níže:
 
     | Cesta k registru | Klíč registru | Hodnota |
@@ -123,7 +127,7 @@ Velikost složky mezipaměti určuje množství zálohovaných dat.
 
     ```Net stop obengine```
 2. Pokud jste nakonfigurovali zálohování stavu systému, otevřete správu disků a odpojte disky s názvy ve formátu `"CBSSBVol_<ID>"` .
-3. Ve výchozím nastavení se složka pro pomocné složky nachází v`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+3. Ve výchozím nastavení se složka pro pomocné složky nachází v `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Zkopírujte celou `\Scratch` složku na jinou jednotku, která má dostatek místa. Přesvědčte se, zda je obsah zkopírován, nikoli přesunut.
 5. Aktualizujte následující položky registru s cestou nově přesunuté pomocné složky.
 
@@ -140,7 +144,7 @@ Velikost složky mezipaměti určuje množství zálohovaných dat.
     Net start obengine
     ```
 
-7. Spusťte zálohování na vyžádání. Po úspěšném dokončení zálohování pomocí nového umístění můžete odebrat původní složku mezipaměti.
+7. Spuštění zálohování na vyžádání Po úspěšném dokončení zálohování pomocí nového umístění můžete odebrat původní složku mezipaměti.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Kde by měla být složka mezipaměti umístěna?
 
@@ -163,7 +167,7 @@ Složka mezipaměti a virtuální pevný disk metadat nemají potřebné atribut
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Existuje způsob, jak upravit šířku pásma používanou pro zálohování?
 
-Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-windows-with-mars-agent.md#enable-network-throttling).
+Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Přečtěte si další informace](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Obnovení
 
@@ -175,7 +179,7 @@ Agent Azure Backup vyžaduje heslo (které jste zadali během registrace) k deš
 
 | Původní počítač <br> *(zdrojový počítač, ve kterém proběhlo zálohování)* | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| K dispozici. |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](./backup-azure-manage-mars.md#re-generate-passphrase).  |
+| K dispozici |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](./backup-azure-manage-mars.md#re-generate-passphrase).  |
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 Vezměte v úvahu následující podmínky:
@@ -194,12 +198,12 @@ Pokud máte stejné heslo (které jste zadali během registrace) původního po�
 
 | Původní počítač | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| Ztráty |K dispozici. |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení**jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení **jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Úlohy zálohování se nezdařily nebo nejsou spuštěny po dlouhou dobu. Jsem po dobu uchování. Můžu I nadále obnovit?
 
-V rámci bezpečnostního opatření Azure Backup zachová poslední bod obnovení, a to i v případě, že zůstane po dobu uchování. Jakmile budou zálohy obnoveny a budou k dispozici nové body obnovení, bude starší bod obnovení odebrán podle zadaného uchovávání.
+V rámci bezpečnostního opatření Azure Backup zachová nejaktuálnější bod obnovení, i když je po dobu uchování mimo dobu uchování. Jakmile budou zálohy obnoveny a budou k dispozici nové body obnovení, bude starší bod obnovení odebrán podle zadaného uchovávání.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 

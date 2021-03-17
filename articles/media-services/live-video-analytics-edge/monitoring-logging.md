@@ -1,33 +1,35 @@
 ---
 title: Monitorování a protokolování – Azure
-description: Tento článek poskytuje přehled živé analýzy videí na IoT Edge monitorování a protokolování.
+description: Tento článek poskytuje přehled monitorování a protokolování v živé analýze videí v IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730234"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
-V tomto článku se dozvíte, jak můžete přijímat události z nástroje Live video Analytics v modulu IoT Edge pro vzdálené monitorování. 
+V tomto článku se dozvíte, jak přijímat události pro vzdálené monitorování ze služby Live video Analytics v modulu IoT Edge. 
 
-Naučíte se také, jak můžete řídit protokoly, které modul generuje.
+Naučíte se také, jak řídit protokoly generované modulem.
 
 ## <a name="taxonomy-of-events"></a>Taxonomie událostí
 
-Live video Analytics na IoT Edge generuje události nebo data telemetrie podle následující taxonomie.
+Live video Analytics na IoT Edge generuje události nebo data telemetrie v závislosti na následující taxonomii:
 
-![Live video Analytics ve schématu telemetrie IoT Edge](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Diagram znázorňující taxonomii událostí.":::
 
-* Provozní: události, které jsou generovány jako součást akcí prováděných uživatelem nebo během provádění [mediálního grafu](media-graph-concept.md).
+* Provozní: události vygenerované akcemi uživatele nebo při spuštění [mediálního grafu](media-graph-concept.md)
    
-   * Volume: očekávalo se, že bude nízká (několikrát za minutu nebo i nižší).
+   * Volume: očekávalo se, že bude nízká (za pár minut nebo ještě méně).
    * Příklady:
 
-      Záznam je spuštěný (níže), nahrávání se zastavilo.
+      - Záznam byl zahájen (znázorněno v následujícím příkladu)
+      - Záznam se zastavil.
       
       ```
       {
@@ -44,12 +46,13 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
         }
       }
       ```
-* Diagnostika: události, které vám pomůžou diagnostikovat problémy nebo problémy s výkonem.
+* Diagnostika: události, které vám pomůžou diagnostikovat problémy s výkonem
 
    * Svazek: může být vysoký (několikrát za minutu).
    * Příklady:
    
-      Informace [o](https://en.wikipedia.org/wiki/Session_Description_Protocol) datovém kanálu RTSP (níže) nebo mezery v příchozím videu.
+      - Informace o službě RTSP [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) (viz následující příklad) 
+      - Mezery v kanálu příchozího videa
 
       ```
       {
@@ -65,12 +68,14 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
         }
       }
       ```
-* Analytics: události, které jsou generovány jako součást analýzy videa.
+* Analýzy: události vygenerované jako součást analýzy videí
 
-   * Svazek: může být vysoký (několikrát za minutu nebo častěji).
+   * Svazek: může být vysoký (několikrát za minutu nebo více).
    * Příklady:
       
-      Byl zjištěn pohyb (níže), odvozený výsledek.
+      - Byl zjištěn pohyb (zobrazený v následujícím příkladu) 
+      - Výsledek odvození
+
    ```      
    {
      "body": {
@@ -98,19 +103,42 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
      }
    }
    ```
-Události generované modulem jsou odesílány do [centra IoT Edge](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)a v takovém případě je lze směrovat do jiných cílů. 
+
+Události emitované modulem se odesílají do [centra IoT Edge](../../iot-edge/iot-edge-runtime.md#iot-edge-hub). Je možné je směrovat z umístění do jiných cílů. 
+
+### <a name="timestamps-in-analytic-events"></a>Časová razítka v analytických událostech
+
+Jak bylo uvedeno dříve, události vygenerované jako součást analýzy videa mají přidružena časová razítka. Pokud jste jako součást topologie grafu [nahráli živé video](video-recording-concept.md) , tato časová razítka vám pomůžou najít, kde v zaznamenaném videu došlo k určité události. Níže jsou uvedeny pokyny pro mapování časového razítka v analytické události na časovou osu videa zaznamenaného v [Azure Media Servicesm prostředku](terminology.md#asset).
+
+Nejprve rozbalte `eventTime` hodnotu. Tuto hodnotu použijte v rámci [filtru časového rozsahu](playback-recordings-how-to.md#time-range-filters) k načtení vhodné části záznamu. Můžete například chtít načíst video, které začíná 30 sekund před `eventTime` a končí 30 sekundami. V předchozím příkladu, kde `eventTime` je 2020-05-12T23:33:09.381 z, požadavek na manifest HLS po dobu 30 sekund před a potom `eventTime` by vypadal jako tento požadavek:
+
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+
+Předchozí adresa URL vrátí [hlavní seznam](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming) testů, který obsahuje adresy URL pro seznamy skladeb multimédií. Seznam stop média by obsahoval položky podobné tomuto:
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+Předchozí položka hlásí, že je k dispozici fragment videa, který začíná `timestamp` hodnotou `143039375031270` . `timestamp`Hodnota v analytické události používá stejnou časovou osu jako seznam stop média. Dá se použít k identifikaci relevantního fragmentu videa a k hledání správného rámce.
+
+Další informace najdete v těchto [článcích o přesném hledání](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) v HLS v rámci rámce.
 
 ## <a name="controlling-events"></a>Řízení událostí
 
-Pro řízení provozních a diagnostických událostí, které jsou publikovány ve službě Live video Analytics v modulu IoT Edge, můžete použít následující funkční vlastnosti modulu, jak je popsáno v [modulu s dvojitým](module-twin-configuration-schema.md)zápisem do schématu JSON.
+Pomocí následujících vlastností modulu můžete řídit provozní a diagnostické události publikované v rámci analýzy živých videí v modulu IoT Edge. Tyto vlastnosti jsou popsány v [modulu s dvojitým výsledkem ve schématu JSON](module-twin-configuration-schema.md).
 
-`diagnosticsEventsOutputName`– Zahrňte a poskytněte (any) hodnotu pro tuto vlastnost, aby bylo možné z modulu získat diagnostické události. Vynechejte nebo ponechte prázdné, aby modul zastavil publikování diagnostických událostí.
+- `diagnosticsEventsOutputName`: Chcete-li získat diagnostické události z modulu, zahrňte tuto vlastnost a zadejte pro ni libovolnou hodnotu. Vynechejte nebo ponechte prázdné, aby modul zastavil publikování diagnostických událostí.
    
-`operationalEventsOutputName`– Zahrňte a poskytněte (any) hodnotu pro tuto vlastnost, aby bylo možné z modulu získat provozní události. Vynechejte, nebo ponechte prázdné, aby se modul zastavil od publikování provozních událostí.
+- `operationalEventsOutputName`: Chcete-li získat provozní události z modulu, zahrňte tuto vlastnost a zadejte pro ni libovolnou hodnotu. Vynechejte nebo ponechte prázdné, aby se modul zastavil od publikování provozních událostí.
    
-Události analýzy jsou generovány uzly, jako je například procesor detekce pohybu nebo procesor rozšíření HTTP, a jímka centra IoT slouží k jejich posílání do centra IoT Edge. 
+Události analýzy jsou generovány uzly, jako je procesor detekce pohybu nebo procesor rozšíření HTTP. Jímka centra IoT slouží k jejich posílání do centra IoT Edge. 
 
-[Směrování všech výše uvedených událostí](../../iot-edge/module-composition.md#declare-routes) můžete řídit prostřednictvím požadované vlastnosti vlákna modulu $edgeHub v manifestu (v manifestu nasazení):
+[Směrování všech předchozích událostí](../../iot-edge/module-composition.md#declare-routes) můžete řídit pomocí `desired` vlastnosti `$edgeHub` modulu v manifestu nasazení:
 
 ```
  "$edgeHub": {
@@ -126,55 +154,55 @@ Události analýzy jsou generovány uzly, jako je například procesor detekce p
  }
 ```
 
-Ve výše uvedeném příkladu je lvaEdge název pro Live video Analytics v modulu IoT Edge a pravidlo směrování následuje po schématu definovaném v části [deklarace tras](../../iot-edge/module-composition.md#declare-routes).
+V předchozím formátu JSON `lvaEdge` je název živé analýzy videí v modulu IoT Edge. Pravidlo směrování následuje po schématu definované v části [Declare Routes](../../iot-edge/module-composition.md#declare-routes).
 
 > [!NOTE]
-> Aby se zajistilo, že události analýzy dosáhnou centra IoT Edge, musí se jednat o uzel jímky služby IoT Hub za provozu libovolného uzlu procesoru pro detekci pohybu nebo libovolného uzlu procesoru rozšíření HTTP.
+> Aby se zajistilo, že události analýzy dosáhnou centra IoT Edge, je nutné mít uzel jímky služby IoT Hub v jednom uzlu procesoru pro detekci pohybů nebo libovolného uzlu procesoru rozšíření HTTP.
 
 ## <a name="event-schema"></a>Schéma událostí
 
-Události pocházejí z hraničního zařízení a můžou se spotřebovat na hranici nebo v cloudu. Události generované živou analýzou videa na IoT Edge odpovídají [vzoru zasílání zpráv streamování](../../iot-hub/iot-hub-devguide-messages-construct.md) , který vytvořila služba Azure IoT Hub, s vlastnostmi systému, vlastnostmi aplikace a textem.
+Události pocházejí z hraničního zařízení a dají se spotřebovat na hranici nebo v cloudu. Události generované živou analýzou videa na IoT Edge odpovídají [vzoru zasílání zpráv streamování](../../iot-hub/iot-hub-devguide-messages-construct.md) , který vytváří Azure IoT Hub. Vzor se skládá z vlastností systému, vlastností aplikace a textu.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
-Každá událost, pokud je pozorována prostřednictvím IoT Hub, bude mít sadu společných vlastností, jak je popsáno níže.
+Každá událost, pokud je pozorována prostřednictvím IoT Hub, má sadu společných vlastností:
 
-|Vlastnost   |Typ vlastnosti| Typ dat   |Popis|
+|Vlastnost   |Typ vlastnosti| Datový typ   |Popis|
 |---|---|---|---|
-|ID zprávy |systém |guid|  Jedinečné ID události|
-|téma| applicationProperty |řetězec|    Azure Resource Manager cesta pro Media Services účet.|
-|závislosti|   applicationProperty |řetězec|    Dílčí cesta k entitě, která vysílá událost|
-|eventTime| applicationProperty|    řetězec| Čas, kdy byla událost vygenerována.|
-|eventType| applicationProperty |řetězec|    Identifikátor typu události (viz níže).|
-|text|text  |object|    Konkrétní data události.|
-|dataVersion    |applicationProperty|   řetězec  |{Hlavní}. Moll|
+|`message-id`   |systém |guid|  Jedinečné ID události|
+|`topic`|   applicationProperty |řetězec|    Azure Resource Manager cesta pro Azure Media Services účet.|
+|`subject`| applicationProperty |řetězec|    Dílčí cesta entity, která vysílá událost|
+|`eventTime`|   applicationProperty|    řetězec| Čas, kdy byla událost vygenerována.|
+|`eventType`|   applicationProperty |řetězec|    Identifikátor typu události (Další informace najdete v následující části.)|
+|`body`|text    |object|    Konkrétní data události.|
+|`dataVersion`  |applicationProperty|   řetězec  |{Hlavní}. Moll|
 
 ### <a name="properties"></a>Vlastnosti
 
 #### <a name="message-id"></a>ID zprávy
 
-Globálně jedinečný identifikátor události (GUID)
+Globálně jedinečný identifikátor (GUID) pro událost.
 
 #### <a name="topic"></a>téma
 
-Představuje účet Azure Media Service přidružený ke grafu.
+Představuje účet Azure Media Services přidružený ke grafu.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
-#### <a name="subject"></a>závislosti
+#### <a name="subject"></a>subject
 
-Entita, která vysílá událost:
+Entita, která vyvolala událost:
 
 `/graphInstances/{graphInstanceName}`<br/>
 `/graphInstances/{graphInstanceName}/sources/{sourceName}`<br/>
 `/graphInstances/{graphInstanceName}/processors/{processorName}`<br/>
 `/graphInstances/{graphInstanceName}/sinks/{sinkName}`
 
-Vlastnost Subject umožňuje mapovat Obecné události na modul generování. Například v případě neplatného uživatelského jména nebo hesla pro RTSP bude vygenerovaná událost `Microsoft.Media.Graph.Diagnostics.ProtocolError` na `/graphInstances/myGraph/sources/myRtspSource` uzlu.
+`subject`Vlastnost umožňuje mapovat Obecné události na modul generování. Například pro neplatné uživatelské jméno nebo heslo protokolu RTSP bude vygenerovaná událost `Microsoft.Media.Graph.Diagnostics.ProtocolError` na `/graphInstances/myGraph/sources/myRtspSource` uzlu.
 
 #### <a name="event-types"></a>Typy událostí
 
-Typy událostí jsou přiřazeny k oboru názvů podle následujícího schématu:
+Typy událostí jsou přiřazeny k oboru názvů podle tohoto schématu:
 
 `Microsoft.Media.Graph.{EventClass}.{EventType}`
 
@@ -183,65 +211,211 @@ Typy událostí jsou přiřazeny k oboru názvů podle následujícího schémat
 |Název třídy|Popis|
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
-|Diagnostika    |Události, které pomáhají diagnostikovat problémy a výkon.|
-|Funkční    |Události generované jako součást operace prostředků|
+|Diagnostika    |Události, které vám pomůžou diagnostikovat problémy a výkon.|
+|Provoz    |Události generované jako součást operace prostředků|
 
 Typy událostí jsou specifické pro každou třídu Event.
 
 Příklady:
 
-* Microsoft. Media. Graph. Analytics. odvození
-* Microsoft. Media. Graph. Diagnostics. AuthorizationError
-* Microsoft. Media. Graph. Operational. GraphInstanceStarted
+* `Microsoft.Media.Graph.Analytics.Inference`
+* `Microsoft.Media.Graph.Diagnostics.AuthorizationError`
+* `Microsoft.Media.Graph.Operational.GraphInstanceStarted`
 
 ### <a name="event-time"></a>Čas události
 
-Čas události je popsán v ISO8601 String a v čase, kdy k události došlo.
+Čas události je naformátován v řetězci ISO 8601. Představuje čas, kdy došlo k události.
 
-## <a name="logging"></a>Protokolování
+### <a name="azure-monitor-collection-via-telegraf"></a>Kolekce Azure Monitor přes telegraf
 
-Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) na hraničním zařízení. Informace, které jsou zapsány v protokolech, mohou být řízeny [následujícími dvojitými vlastnostmi modulu](module-twin-configuration-schema.md) :
+Tyto metriky se budou nahlásit z videa Live video Analytics v modulu IoT Edge:  
 
-* logLevel
+|Název metriky|Typ|Popisek|Popis|
+|-----------|----|-----|-----------|
+|lva_active_graph_instances|Měřidlo|iothub, edge_device module_name, graph_topology|Celkový počet aktivních grafů na topologii.|
+|lva_received_bytes_total|Čítač|iothub, edge_device, module_name, graph_topology, graph_instance graph_node|Celkový počet bajtů přijatých uzlem Podporováno pouze pro zdroje RTSP.|
+|lva_data_dropped_total|Čítač|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node data_kind|Čítač všech vyřazených dat (události, média atd.).|
 
-   * Povolené hodnoty jsou verbose, Information, Warning, Error, none.
-   * Výchozí hodnota jsou informace – protokoly budou obsahovat chyby, varování a informace. zprávy.
-   * Pokud nastavíte hodnotu upozornění, protokoly budou obsahovat chybové zprávy a upozornění.
-   * Pokud nastavíte hodnotu chyba, protokoly budou obsahovat pouze chybové zprávy.
-   * Pokud nastavíte hodnotu žádné, nebudou vygenerovány žádné protokoly (nedoporučuje se).
-   * Verbose byste měli použít jenom v případě, že potřebujete sdílet protokoly s podporou Azure pro diagnostiku problému.
-* logCategories
+> [!NOTE]
+> [Koncový bod Prometheus](https://prometheus.io/docs/practices/naming/) se zveřejňuje na portu 9600 kontejneru. Pokud zadáte své Live video Analytics na IoT Edge Module "lvaEdge", budou moci získat přístup k metrikám odesláním žádosti o získání do http://lvaEdge:9600/metrics .   
 
-   * Čárkami oddělený seznam jednoho nebo více z následujících hodnot: aplikace, události, MediaPipeline.
-   * Výchozí: aplikace, události.
-   * Aplikace – jedná se o informace vysoké úrovně z modulu, například zprávy o spuštění modulu, chyby prostředí a přímá volání metody.
-   * Události – jedná se o všechny události popsané dříve v tomto článku.
-   * MediaPipeline – jedná se o některé protokoly nízké úrovně, které mohou nabídnout přehled při řešení problémů, například problémy s navázáním spojení s fotoaparátem podporujícím RTSP.
+Pomocí těchto kroků povolíte shromažďování metrik z živé analýzy videí v modulu IoT Edge:
+
+1. Ve vývojovém počítači vytvořte složku a otevřete ji do této složky.
+
+1. Ve složce vytvořte `telegraf.toml` soubor, který obsahuje následující konfigurace:
+    ```
+    [agent]
+        interval = "30s"
+        omit_hostname = true
+
+    [[inputs.prometheus]]
+      metric_version = 2
+      urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
+
+    [[outputs.azure_monitor]]
+      namespace_prefix = "lvaEdge"
+      region = "westus"
+      resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
+    ```
+    > [!IMPORTANT]
+    > Nezapomeňte nahradit proměnné v souboru. toml. Proměnné jsou označeny složenými závorkami ( `{}` ).
+
+1. Ve stejné složce vytvořte souboru Dockerfile, který obsahuje následující příkazy:
+    ```
+        FROM telegraf:1.15.3-alpine
+        COPY telegraf.toml /etc/telegraf/telegraf.conf
+    ```
+
+1. Pomocí příkazů Docker CLI Sestavte soubor Docker a publikujte image do služby Azure Container Registry.
+    
+   Další informace o použití rozhraní příkazového řádku Docker pro vložení do registru kontejneru najdete v tématu [Image Docker push a pull](../../container-registry/container-registry-get-started-docker-cli.md). Další informace o Azure Container Registry najdete v [dokumentaci](../../container-registry/index.yml).
+
+
+1. Po dokončení operace Push na Azure Container Registry přidejte do souboru manifestu nasazení následující uzel:
+    ```
+    "telegraf": 
+    {
+      "settings": 
+        {
+            "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+        },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": 
+        {
+            "AZURE_TENANT_ID": { "value": "{YOUR_TENANT_ID}" },
+            "AZURE_CLIENT_ID": { "value": "{YOUR CLIENT_ID}" },
+            "AZURE_CLIENT_SECRET": { "value": "{YOUR_CLIENT_SECRET}" }
+        }
+    ``` 
+    > [!IMPORTANT]
+    > Nezapomeňte nahradit proměnné v souboru manifestu. Proměnné jsou označeny složenými závorkami ( `{}` ).
+
+
+   Azure Monitor lze [ověřit prostřednictvím instančního objektu](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
+        
+   Modul plug-in Azure Monitor telegraf zpřístupňuje [několik metod ověřování](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication). 
+
+  1. Chcete-li použít ověřování instančního objektu, nastavte tyto proměnné prostředí:  
+     `AZURE_TENANT_ID`: Určuje tenanta, pro který se má ověřit.  
+     `AZURE_CLIENT_ID`: Určuje ID klienta aplikace, které se má použít.  
+     `AZURE_CLIENT_SECRET`: Určuje tajný klíč aplikace, který se má použít.  
+     
+     >[!TIP]
+     > Instančnímu objektu můžete přidělit roli **vydavatele metrik monitorování** . Postupujte podle kroků v části **[Vytvoření instančního objektu](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)** a vytvořte instanční objekt a přiřaďte roli.
+
+1. Po nasazení modulů se metriky zobrazí v Azure Monitor pod jediným oborem názvů. Názvy metrik budou odpovídat těm, které emituje Prometheus. 
+
+   V takovém případě v Azure Portal v levém podokně vyberte **metriky a vyberte metriky** . Měla by se zobrazit Metrika.
+
+### <a name="log-analytics-metrics-collection"></a>Kolekce metrik Log Analytics
+Pomocí [koncového bodu Prometheus](https://prometheus.io/docs/practices/naming/) spolu s [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)můžete generovat a [monitorovat metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , jako jsou například používané CPUPercent, MemoryUsedPercent atd.   
+
+> [!NOTE]
+> Konfigurace níže neshromažďuje protokoly, **jenom metriky**. Je možné rozložit modul sběrače na shromažďování a odesílání protokolů.
+
+[![Diagram, který zobrazuje kolekci metrik pomocí Log Analytics.](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
+
+1. Naučte se [shromažďovat metriky](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector) .
+1. Pomocí příkazů Docker CLI Sestavte [soubor Docker](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux) a publikujte image do služby Azure Container Registry.
+    
+   Další informace o použití rozhraní příkazového řádku Docker pro vložení do registru kontejneru najdete v tématu [Image Docker push a pull](../../container-registry/container-registry-get-started-docker-cli.md). Další informace o Azure Container Registry najdete v [dokumentaci](../../container-registry/index.yml).
+
+1. Po dokončení operace Push na Azure Container Registry se do manifestu nasazení vloží následující:
+    ```json
+    "azmAgent": {
+      "settings": {
+        "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_METRICS_COLLECTOR}"
+      },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": {
+        "LogAnalyticsWorkspaceId": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_ID}" },
+        "LogAnalyticsSharedKey": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_SECRET}" },
+        "LogAnalyticsLogType": { "value": "IoTEdgeMetrics" },
+        "MetricsEndpointsCSV": { "value": "http://edgeHub:9600/metrics,http://edgeAgent:9600/metrics,http://lvaEdge:9600/metrics" },
+        "ScrapeFrequencyInSecs": { "value": "30 " },
+        "UploadTarget": { "value": "AzureLogAnalytics" }
+      }
+    }
+    ```
+    > [!NOTE]
+    > Moduly `edgeHub` `edgeAgent` a `lvaEdge` jsou názvy modulů, které jsou definovány v souboru manifestu nasazení. Ujistěte se prosím, že se názvy modulů shodují.   
+
+    Hodnoty a můžete získat `LogAnalyticsWorkspaceId` `LogAnalyticsSharedKey` pomocí následujících kroků:
+    1. Přejít na Azure Portal
+    1. Hledání vašich Log Analyticsch pracovních prostorů
+    1. Po nalezení Log Analytics pracovního prostoru přejděte k `Agents management` Možnosti v levém navigačním podokně.
+    1. Najdete ID pracovního prostoru a tajné klíče, které můžete použít.
+
+1. V dalším kroku vytvořte sešit kliknutím na `Workbooks` kartu v levém navigačním podokně.
+1. Pomocí dotazovacího jazyka Kusto můžete psát dotazy níže a získat procento využití procesoru, které používají moduly IoT Edge.
+    ```kusto
+    let cpu_metrics = IoTEdgeMetrics_CL
+    | where Name_s == "edgeAgent_used_cpu_percent"
+    | extend dimensions = parse_json(Tags_s)
+    | extend module_name = tostring(dimensions.module_name)
+    | where module_name in ("lvaEdge","yolov3","tinyyolov3")
+    | summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+    cpu_metrics
+    | summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+    | extend module_name = "Total"
+    | union cpu_metrics
+    ```
+
+    [![Diagram, který zobrazuje metriky pomocí dotazu Kusto](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
+## <a name="logging"></a>protokolování
+
+Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) na hraničním zařízení. Informace, které se zapisují do protokolů, můžete nakonfigurovat pomocí [následujících dvojitých vlastností modulu](module-twin-configuration-schema.md) :
+
+* `logLevel`
+
+   * Povolené hodnoty jsou `Verbose` , `Information` ,, a `Warning` `Error` `None` .
+   * Výchozí hodnota je `Information`. Protokoly budou obsahovat chybové zprávy, upozornění a informační zprávy.
+   * Pokud nastavíte hodnotu na `Warning` , protokoly budou obsahovat chybové zprávy a upozornění.
+   * Pokud nastavíte hodnotu na `Error` , protokoly budou obsahovat pouze chybové zprávy.
+   * Pokud nastavíte hodnotu na `None` , nebudou vygenerovány žádné protokoly. (Tuto konfiguraci nedoporučujeme.)
+   * Použijte `Verbose` pouze v případě, že potřebujete sdílet protokoly s podporou Azure pro diagnostiku problému.
+
+* `logCategories`
+
+   * Čárkami oddělený seznam jedné nebo více z těchto hodnot: `Application` , `Events` , `MediaPipeline` .
+   * Výchozí hodnota je `Application, Events`.
+   * `Application`: Informace vysoké úrovně z modulu, například zprávy o spuštění modulu, chyby prostředí a přímá volání metody.
+   * `Events`: Všechny události, které byly popsány dříve v tomto článku.
+   * `MediaPipeline`: Protokoly nízké úrovně, které můžou nabízet přehledy při řešení problémů, jako jsou potíže s navázáním spojení s fotoaparátem podporujícím RTSP.
    
 ### <a name="generating-debug-logs"></a>Generování protokolů ladění
 
-V některých případech možná budete muset vygenerovat podrobnější protokoly než ty, které jsou popsané výše, a pomoci tak podpoře Azure vyřešit problém. Tuto akci lze provést dvěma kroky.
+V některých případech může být potřeba vygenerovat podrobnější protokoly, než jaké jste popsali v tomto tématu, aby mohla podpora Azure vyřešit problém. Generování těchto protokolů:
 
-Nejdřív [propojíte úložiště modulu s úložištěm zařízení](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) přes createOptions. Pokud prohlížíte [šablonu manifestu nasazení](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) z rychlého startu, zobrazí se:
+1. [Propojte úložiště modulu s úložištěm zařízení](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) prostřednictvím `createOptions` . Pokud se podíváte na [šablonu manifestu nasazení](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) z rychlých startů, uvidíte tento kód:
 
-```
-"createOptions": {
-   …
-   "Binds": [
-     "/var/local/mediaservices/:/var/lib/azuremediaservices/"
-   ]
- }
-```
+   ```
+   "createOptions": {
+     …
+     "Binds": [
+       "/var/local/mediaservices/:/var/lib/azuremediaservices/"
+     ]
+    }
+   ```
 
-Výše vám umožní, aby modul Edge zapisoval protokoly do cesty úložiště (zařízení) "/var/local/MediaServices/". Pokud do modulu přidáte následující požadovanou vlastnost:
+   Tento kód umožňuje, aby modul Edge zapisoval protokoly do cesty úložiště zařízení `/var/local/mediaservices/` . 
 
-`"debugLogsDirectory": "/var/lib/azuremediaservices/debuglogs/",`
+ 1. Přidejte `desired` do modulu následující vlastnost:
 
-Modul pak bude zapisovat protokoly ladění v binárním formátu do cesty úložiště (zařízení)/var/local/MediaServices/debuglogs/, kterou můžete sdílet s podporou Azure.
+    `"debugLogsDirectory": "/var/lib/azuremediaservices/debuglogs/",`
+
+Modul nyní bude zapisovat protokoly ladění v binárním formátu do cesty úložiště zařízení `/var/local/mediaservices/debuglogs/` . Tyto protokoly můžete sdílet s podporou Azure.
 
 ## <a name="faq"></a>Časté otázky
 
-[Nejčastější dotazy](faq.md#monitoring-and-metrics)
+Pokud máte nějaké dotazy, přečtěte si [Nejčastější dotazy týkající se monitorování a metrik](faq.md#monitoring-and-metrics).
 
 ## <a name="next-steps"></a>Další kroky
 

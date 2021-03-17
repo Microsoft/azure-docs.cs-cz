@@ -8,20 +8,22 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118878"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010341"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 V tomto kurzu se dozvíte, jak pomocí Azure Cosmos DB ukládat data a přistupovat k nim z aplikace ASP.NET MVC hostované v Azure. V tomto kurzu použijete sadu .NET SDK v3. Následující obrázek ukazuje webovou stránku, kterou vytvoříte pomocí ukázky v tomto článku:
@@ -68,25 +70,25 @@ V další části vytvoříte novou ASP.NET Core aplikaci MVC.
 
 1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
 
-1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Next** (Další).
+1. V nástroji **vytvořit nový projekt** vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Další**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Vytvořit nový projekt ASP.NET Core webové aplikace":::
 
-1. V části **Konfigurovat nový projekt**zadejte název *projektu a vyberte* **vytvořit**.
+1. V části **Konfigurovat nový projekt** zadejte název *projektu a vyberte* **vytvořit**.
 
-1. V v možnosti **vytvořit novou webovou aplikaci ASP.NET Core**vyberte možnost **Webová aplikace (model-zobrazení-kontroler)**. Pokračujte výběrem **vytvořit** .
+1. V v možnosti **vytvořit novou webovou aplikaci ASP.NET Core** vyberte možnost **Webová aplikace (model-zobrazení-kontroler)**. Pokračujte výběrem **vytvořit** .
 
    Visual Studio vytvoří prázdnou aplikaci MVC.
 
-1. **Debug**  >  Pro místní spuštění aplikace ASP.NET vyberte ladit**Spustit ladění** nebo F5.
+1. **Debug**  >  Pro místní spuštění aplikace ASP.NET vyberte ladit **Spustit ladění** nebo F5.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>Krok 3: Přidání balíčku Azure Cosmos DB NuGet do projektu
 
 Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro toto řešení, můžeme přidat balíčky NuGet, které jsou potřebné pro připojení k Azure Cosmos DB.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. Ve **Správci balíčků NuGet**vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Nainstalovat**.
+1. Ve **Správci balíčků NuGet** vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Install** (Nainstalovat).
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Nainstalovat balíček NuGet":::
 
@@ -102,11 +104,11 @@ Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro 
 
 Nyní přidáme do této aplikace MVC modely, zobrazení a řadiče.
 
-### <a name="add-a-model"></a><a name="add-a-model"></a>Přidání modelu
+### <a name="add-a-model"></a><a name="add-a-model"></a> Přidání modelu
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **modely** , vyberte **Přidat**  >  **třídu**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **modely** , vyberte **Přidat**  >  **třídu**.
 
-1. V **položce Přidat novou položku**pojmenujte novou třídu *Item.cs* a vyberte **Přidat**.
+1. V **položce Přidat novou položku** pojmenujte novou třídu *Item.cs* a vyberte **Přidat**.
 
 1. Obsah třídy *Item.cs* nahraďte následujícím kódem:
 
@@ -116,76 +118,116 @@ Azure Cosmos DB používá k přesunu a uložení dat JSON. Můžete použít `J
 
 ### <a name="add-views"></a><a name="add-views"></a>Přidání zobrazení
 
-Nyní vytvoříme následující tři zobrazení.
+Nyní přidáme následující zobrazení.
 
-* Přidat zobrazení položky seznamu
-* Přidat zobrazení nové položky
-* Přidání zobrazení upravit položku
+* Zobrazení vytvořit položku
+* Zobrazení odstranit položku
+* Zobrazení, které získá podrobnosti položky
+* Zobrazení upravit položku
+* Zobrazení pro výpis všech položek
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>Přidat zobrazení položky seznamu
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Vytvořit zobrazení položky
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **zobrazení** a vyberte **Přidat**  >  **novou složku**. Pojmenujte *položku*složky.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **zobrazení** a vyberte **Přidat**  >  **novou složku**. Pojmenujte *položku* složky.
 
 1. Klikněte pravým tlačítkem na složku prázdná **položka** a pak vyberte **Přidat**  >  **zobrazení**.
 
-1. V **zobrazení přidat MVC**zadejte následující hodnoty:
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
-   * Do **název zobrazení**zadejte *index*.
-   * V **šabloně**vyberte **seznam**.
-   * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
+   * Do **zobrazení název** zadejte *vytvořit*.
+   * V **šabloně** vyberte **vytvořit**.
+   * V seznamu **třída modelu** vyberte **položku (todo. Modely)**.
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+   * Vyberte **Přidat**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Snímek obrazovky se zobrazeným dialogovým oknem přidat zobrazení MVC":::
 
-1. Po přidání těchto hodnot vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony.
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
 
-Po dokončení aplikace Visual Studio otevře soubor *cshtml* , který vytvoří. Tento soubor můžete zavřít v aplikaci Visual Studio. Později se k ní vrátíme.
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
 
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>Přidat zobrazení nové položky
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Odstranit zobrazení položky
 
-Podobně jako při vytváření zobrazení pro položky seznamu vytvořte nové zobrazení pro vytváření položek pomocí následujících kroků:
+1. Z **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
 
-1. V **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
-1. V okně **Přidat zobrazení MVC**proveďte následující změny:
-
-   * Do **zobrazení název**zadejte *vytvořit*.
-   * V **šabloně**vyberte **vytvořit**.
-   * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
+   * Do pole **název zobrazení** zadejte Delete ( *Odstranit*).
+   * V poli **Šablona** vyberte **Odstranit**.
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte možnost **Přidat**.
+   * Vyberte **Přidat**.
+
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Přidání zobrazení pro získání podrobností o položce
+
+1. V **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+
+1. V **zobrazení přidat MVC** zadejte následující hodnoty:
+
+   * Do **název zobrazení** zadejte *Podrobnosti*.
+   * V **šabloně** vyberte **Podrobnosti**.
+   * V seznamu **třída modelu** vyberte **položku (todo. Modely)**.
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Přidání zobrazení upravit položku
 
-A nakonec přidejte zobrazení pro úpravu položky pomocí následujících kroků:
+1. Z **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
 
-1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
-
-1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
    * Do pole **Název zobrazení** zadejte *Edit*.
    * V poli **Šablona** vyberte **Edit**.
    * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte možnost **Přidat**.
+   * Vyberte **Přidat**.
 
-Po dokončení těchto kroků zavřete všechny dokumenty *cshtml* v aplikaci Visual Studio při návratu do těchto zobrazení později.
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>Přidat zobrazení pro výpis všech položek
+
+A nakonec přidejte zobrazení pro získání všech položek pomocí následujících kroků:
+
+1. Z **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
+
+   * Do pole **Název zobrazení** zadejte *Index*.
+   * V poli **Šablona** vyberte **Seznam**.
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+   * Vyberte **Přidat**.
+
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+Po dokončení těchto kroků zavřete všechny dokumenty *cshtml* v aplikaci Visual Studio.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Deklarovat a inicializovat služby
 
-Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Azure Cosmos DB. Pro tento kurz zapouzdřeme tuto logiku do třídy s názvem `CosmosDBService` a z rozhraní s názvem `ICosmosDBService` . Tato služba provádí operace CRUD. Také provádí operace čtení informačního kanálu, jako je například výpis neúplných položek, vytváření, úpravy a odstraňování položek.
+Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Azure Cosmos DB. Pro tento kurz zapouzdřeme tuto logiku do třídy s názvem `CosmosDbService` a z rozhraní s názvem `ICosmosDbService` . Tato služba provádí operace CRUD. Také provádí operace čtení informačního kanálu, jako je například výpis neúplných položek, vytváření, úpravy a odstraňování položek.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Přidat**  >  **novou složku**. Pojmenujte složku *služby*.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Přidat**  >  **novou složku**. Pojmenujte složku *služby*.
 
-1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *CosmosDBService* a vyberte **Přidat**.
+1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *CosmosDbService* a vyberte **Přidat**.
 
-1. Obsah *CosmosDBService.cs* nahraďte následujícím kódem:
+1. Obsah *CosmosDbService.cs* nahraďte následujícím kódem:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *ICosmosDBService* a vyberte **Přidat**.
+1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *ICosmosDbService* a vyberte **Přidat**.
 
-1. Do třídy *ICosmosDBService* přidejte následující kód:
+1. Do třídy *ICosmosDbService* přidejte následující kód:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -197,7 +239,7 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   Kód v tomto kroku inicializuje klienta na základě konfigurace jako instance typu Singleton, která se má vložit prostřednictvím [Injektáže závislosti v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+   Kód v tomto kroku inicializuje klienta na základě konfigurace jako instance typu Singleton, která se má vložit prostřednictvím [Injektáže závislosti v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection).
 
    A nezapomeňte změnit výchozí kontroler MVC na tak, že `Item` upravíte trasy v `Configure` metodě stejného souboru:
 
@@ -217,9 +259,9 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Přidání kontroleru
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler**.
 
-1. V nástroji **Přidat generování uživatelského rozhraní**vyberte možnost **kontroler MVC – prázdné** a vyberte **Přidat**.
+1. V nástroji **Přidat generování uživatelského rozhraní** vyberte možnost **kontroler MVC – prázdné** a vyberte **Přidat**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Vybrat kontroler MVC – prázdné v přidat generování uživatelského rozhraní":::
 
@@ -263,11 +305,11 @@ Nyní, když je aplikace dokončena a správně funguje se službou Azure Cosmos
 
 1. Pokud chcete tuto aplikaci publikovat, klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a vyberte **publikovat**.
 
-1. V **rozevíracím App Service vybrat cíl publikování**vyberte možnost **App Service**.
+1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost **App Service**.
 
-1. Pokud chcete použít existující profil App Service, zvolte **Vybrat existující**a pak vyberte **publikovat**.
+1. Pokud chcete použít existující profil App Service, zvolte **Vybrat existující** a pak vyberte **publikovat**.
 
-1. V **App Service**vyberte **předplatné**. Použijte filtr **zobrazení** k řazení podle skupiny prostředků nebo typu prostředku.
+1. V **App Service** vyberte **předplatné**. Použijte filtr **zobrazení** k řazení podle skupiny prostředků nebo typu prostředku.
 
 1. Najděte svůj profil a pak vyberte **OK**. V dalším hledání požadovaného Azure App Service a vyberte **OK**.
 
@@ -277,11 +319,11 @@ Další možností je vytvořit nový profil:
 
 1. Jako v předchozím postupu klikněte pravým tlačítkem myši na projekt v **Průzkumník řešení** a vyberte **publikovat**.
   
-1. V **rozevíracím App Service vybrat cíl publikování**vyberte možnost **App Service**.
+1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost **App Service**.
 
-1. V **rozevíracím výběru vybrat cíl publikování**vyberte **vytvořit novou** a vyberte **publikovat**.
+1. V **rozevíracím výběru vybrat cíl publikování** vyberte **vytvořit novou** a vyberte **publikovat**.
 
-1. V **App Service**zadejte název vaší webové aplikace a příslušné předplatné, skupinu prostředků a plán hostování a pak vyberte **vytvořit**.
+1. V **App Service** zadejte název vaší webové aplikace a příslušné předplatné, skupinu prostředků a plán hostování a pak vyberte **vytvořit**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Dialogové okno Vytvořit plán App Service v sadě Visual Studio":::
 
@@ -292,11 +334,11 @@ Během několika sekund Visual Studio publikuje vaši webovou aplikaci a spustí
 V tomto kurzu jste se naučili, jak vytvořit webovou aplikaci ASP.NET Core MVC. Vaše aplikace má přístup k datům uloženým v Azure Cosmos DB. Teď můžete pokračovat s těmito prostředky:
 
 * [Dělení ve službě Azure Cosmos DB](./partitioning-overview.md)
-* [Začínáme s dotazy SQL](./how-to-sql-query.md)
+* [Začínáme s příkazy jazyka SQL](./sql-query-getting-started.md)
 * [Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: https://docs.microsoft.com/aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
-[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
+[Preventing Cross-Site Request Forgery]: /aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
+[Basic CRUD Operations in ASP.NET MVC]: /aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app

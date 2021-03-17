@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9cb5698f95aa220208fb02a35a52ff5363a173ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443362"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647966"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Postup vytvoření testovacího prostředí se sdíleným prostředkem v Azure Lab Services
 
@@ -31,6 +31,20 @@ Sdílený prostředek může být software spuštěný ve virtuálním počíta�
 Diagram taky zobrazuje skupinu zabezpečení sítě (NSG), která se dá použít k omezení provozu z virtuálního počítače studenta.  Můžete například napsat pravidlo zabezpečení, které zajistí, že provoz z IP adres virtuálního počítače studenta může přistupovat jenom k jednomu sdílenému prostředku a nic jiného.  Další informace o nastavení pravidel zabezpečení najdete v tématu [Správa skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md#work-with-security-rules). Pokud chcete omezit přístup ke sdílenému prostředku do konkrétního testovacího prostředí, Získejte IP adresu pro testovací prostředí z [Nastavení testovacího prostředí z účtu testovacího prostředí](manage-labs.md#view-labs-in-a-lab-account) a nastavte příchozí pravidlo povolující přístup jenom z této IP adresy.  Nezapomeňte pro tuto IP adresu povolit porty 49152 až 65535.  Volitelně můžete najít soukromou IP adresu virtuálních počítačů studenta pomocí [stránky fond virtuálních počítačů](how-to-set-virtual-machine-passwords.md).
 
 Pokud je váš sdílený prostředek virtuálním počítačem Azure, který spouští potřebný software, budete možná muset upravit výchozí pravidla brány firewall pro virtuální počítač.
+
+### <a name="tips-for-shared-resources---license-server"></a>Tipy pro sdílené prostředky – licenční server
+Jednou z častých sdílených prostředků je licenční server. tady je několik tipů, jak to provést s nastavením.
+#### <a name="server-region"></a>Oblast serveru
+Licenční server bude nutné připojit k virtuální síti, která je v rámci tohoto testovacího prostředí, takže licenční server musí být umístěn ve stejné oblasti jako účet testovacího prostředí.
+
+#### <a name="static-private-ip-and-mac-address"></a>Statická privátní IP adresa a adresa MAC
+Ve výchozím nastavení mají virtuální počítače dynamickou privátní IP adresu, [než nakonfigurujete veškerý software nastavený na statickou IP](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)adresu. Tím se nastaví privátní IP adresa a adresa MAC, které se budou statické.  
+
+#### <a name="control-access"></a>Řízení přístupu
+Řízení přístupu k licenčnímu serveru je klíč.  Jakmile bude mít virtuální počítač přístup k instalaci, bude potřeba i pro údržbu, řešení potíží a aktualizaci.  Tady je několik různých způsobů, jak to provést.
+- [Nastavení přístupu JIT (just in time) v rámci Azure Security Center.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Nastavení skupiny zabezpečení sítě pro omezení přístupu.](../virtual-network/network-security-groups-overview.md)
+- [Nastavením bastionu povolíte zabezpečený přístup k licenčnímu serveru.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Účet testovacího prostředí
 

@@ -10,23 +10,28 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 07b0dd68e39f555171e5606b71cd1eec92a4035c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76983108"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353336"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání instance Vlastní vyhledávání Bingu z portálu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Po nakonfigurování vlastního vyhledávacího prostředí ho můžete otestovat na [portálu](https://customsearch.ai)vlastní vyhledávání Bingu. 
 
 ![snímek obrazovky s portálem pro vlastní vyhledávání Bingu](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Vytvoření vyhledávacího dotazu 
 
-Po přihlášení k [portálu](https://customsearch.ai)vlastní vyhledávání Bingu vyberte svou instanci hledání a klikněte na kartu **Výroba** . V části **koncové body**vyberte koncový bod rozhraní API (například webové rozhraní API). Vaše předplatné určuje, jaké koncové body se zobrazí.
+Po přihlášení k [portálu](https://customsearch.ai)vlastní vyhledávání Bingu vyberte svou instanci hledání a klikněte na kartu **Výroba** . V části **koncové body** vyberte koncový bod rozhraní API (například webové rozhraní API). Vaše předplatné určuje, jaké koncové body se zobrazí.
 
-Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v [referenčních](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) informacích k rozhraní API pro vlastní vyhledávání. Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
+Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v [referenčních](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) informacích k rozhraní API pro vlastní vyhledávání. Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
 
 Níže jsou uvedeny některé důležité parametry:
 
@@ -42,7 +47,7 @@ Kliknutím na **Další parametry** se odhalí následující parametry:
 
 |Parametr  |Popis  |
 |---------|---------|
-|Bezpečné vyhledávání     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní. Všimněte si, že vlastní Vyhledávání videí Bingu podporuje jenom `moderate` dvě `strict`hodnoty: a.        |
+|Bezpečné vyhledávání     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní. Všimněte si, že vlastní Vyhledávání videí Bingu podporuje jenom dvě hodnoty: `moderate` a `strict` .        |
 |Jazyk uživatelského rozhraní    | Jazyk používaný pro řetězce uživatelského rozhraní. Pokud například povolíte image a videa v hostovaném uživatelském rozhraní, na kartách **Obrázek** a **video** se použije zadaný jazyk.        |
 |Počet     | Počet výsledků hledání, které se mají vrátit v odpovědi K dispozici pouze pro koncové body webu, obrázku a videa.         |
 |Posun    | Počet výsledků hledání, které se mají přeskočit před vrácením výsledků K dispozici pouze pro koncové body webu, obrázku a videa.        |
@@ -60,4 +65,4 @@ Předplatné přidružené k vaší instanci Vlastní vyhledávání Bingu můž
 - [Volání vlastního zobrazení pomocí NodeJs](./call-endpoint-nodejs.md)
 - [Volání vlastního zobrazení pomocí Pythonu](./call-endpoint-python.md)
 
-- [Volání vlastního zobrazení pomocí sady C# SDK](./sdk-csharp-quick-start.md)
+- [Volání vlastního zobrazení pomocí sady C# SDK](./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)

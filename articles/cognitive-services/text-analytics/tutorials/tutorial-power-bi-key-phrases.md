@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: a97619abdedd60f827f524cd279c4ffc360d92e1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291666"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736674"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
@@ -89,7 +89,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 ## <a name="understand-the-api"></a>Vysvětlení rozhraní API
 <a name="UnderstandingAPI"></a>
 
-[Rozhraní API Klíčové fráze](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) služby Analýza textu dokáže v jednom požadavku HTTP zpracovat až tisíc textových dokumentů. Power BI ale upřednostňuje postupné zpracování jednotlivých záznamů. V tomto kurzu bude ve voláních rozhraní API vždy jen jeden dokument. Rozhraní API Klíčové fráze vyžaduje, aby každý zpracovávaný dokument obsahoval následující pole.
+[Rozhraní API Klíčové fráze](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) služby Analýza textu dokáže v jednom požadavku HTTP zpracovat až tisíc textových dokumentů. Power BI ale upřednostňuje postupné zpracování jednotlivých záznamů. V tomto kurzu bude ve voláních rozhraní API vždy jen jeden dokument. Rozhraní API Klíčové fráze vyžaduje, aby každý zpracovávaný dokument obsahoval následující pole.
 
 | Pole | Popis |
 | - | - |
@@ -103,7 +103,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 Teď jste připraveni vytvořit vlastní funkci, která integruje Power BI s Analýzou textu. Funkce jako parametr přijímá text ke zpracování. Převede data do požadovaného formátu JSON (nebo z něj) a vytvoří požadavek HTTP do rozhraní API Klíčové fráze. Dále funkce parsuje odpověď z API a vrátí řetězec, který obsahuje seznam extrahovaných klíčových frází oddělených čárkou.
 
 > [!NOTE]
-> Vlastní funkce Power BI Desktopu se píší v [jazyce vzorců Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference) nebo zkráceně jenom M. M je funkcionální programovací jazyk založený na [F#](https://docs.microsoft.com/dotnet/fsharp/). Pro dokončení tohoto kurzu však nemusíte být programátor – požadovaný kód je uvedený níže.
+> Vlastní funkce Power BI Desktopu se píší v [jazyce vzorců Power Query M](/powerquery-m/power-query-m-reference) nebo zkráceně jenom M. M je funkcionální programovací jazyk založený na [F#](/dotnet/fsharp/). Pro dokončení tohoto kurzu však nemusíte být programátor – požadovaný kód je uvedený níže.
 
 V Power BI Desktopu se ujistěte, že jste v okně Editoru dotazů. Pokud v něm nejste, vyberte pás karet **Domů** a ve skupině **Externí data** klikněte na **Upravit dotazy**.
 
@@ -121,7 +121,7 @@ Na pásu karet **Domů** ve skupině **Dotaz** klikněte na **Rozšířený edit
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v3.0/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -225,14 +225,14 @@ Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivn
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[score]
+    sentiment   = jsonresp[documents]{0}[confidenceScores]
 in  sentiment
 ```
 
@@ -242,7 +242,7 @@ Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazy
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -256,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -276,7 +276,7 @@ A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vr�
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -293,10 +293,10 @@ in  keyphrases
 Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power Query M nebo Power BI.
 
 > [!div class="nextstepaction"]
-> [Referenční informace k rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+> [Referenční informace k rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
 
 > [!div class="nextstepaction"]
-> [Power Query M – referenční informace](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Power Query M – referenční informace](/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Dokumentace k Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý Start: připojení pomocí PHP-Azure Database for PostgreSQL-Single server'
 description: V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 000f3cd9598bc4bdffa896be47466d157c7df8c1
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 200fdd126e2ed95804f81c1dd36804ecc6c61d85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182710"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019682"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -50,7 +50,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-php/1-connection-string.png)
+ :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="Název serveru Azure Database for PostgreSQL":::
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
@@ -87,7 +87,7 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
     // Insert some data into table.
     $name = '\'banana\'';
     $quantity = 150;
-    $query = "INSERT INTO inventory (name, quantity) VALUES ($1, $2);";
+    $query = "INSERT INTO inventory (name, quantity) VALUES ($name, $quantity);";
     pg_query($connection, $query) 
         or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
 
@@ -214,6 +214,16 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
     // Closing connection
     pg_close($connection);
 ?>
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Další kroky

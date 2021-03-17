@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 69fe84d6546e3fcb9e905a6b77ad3d9af3ed4d51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2da4ebfa6a9ce64b03e6e1d29956f740f6cb3c1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077950"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960602"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí prostředí PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "87077950"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> Rozhraní API pro zobrazení skupiny zabezpečení již není udržováno a bude brzy zastaralé. Použijte prosím [funkci platná pravidla zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) , která poskytuje stejné funkce. 
+> Rozhraní API pro zobrazení skupiny zabezpečení již není udržováno a bude brzy zastaralé. Použijte prosím [funkci platná pravidla zabezpečení](./network-watcher-security-group-view-overview.md) , která poskytuje stejné funkce. 
 
 Zobrazení skupiny zabezpečení vrací nakonfigurovaná a efektivní pravidla zabezpečení sítě, která se používají pro virtuální počítač. Tato funkce je užitečná pro audit a diagnostiku skupin zabezpečení sítě a pravidel nakonfigurovaných na virtuálním počítači, aby se zajistilo správné povolení nebo odepření provozu. V tomto článku vám ukážeme, jak načíst nakonfigurovaná a platná pravidla zabezpečení pro virtuální počítač pomocí prostředí PowerShell.
 
@@ -70,7 +70,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="viewing-the-results"></a>Zobrazení výsledků
 
-Následující příklad je zkrácená odezva vrácených výsledků. Ve výsledcích se zobrazí všechna platná a použitá pravidla zabezpečení na virtuálním počítači rozdělená do skupin **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**a **EffectiveSecurityRules**.
+Následující příklad je zkrácená odezva vrácených výsledků. Ve výsledcích se zobrazí všechna platná a použitá pravidla zabezpečení na virtuálním počítači rozdělená do skupin **NetworkInterfaceSecurityRules**, **DefaultSecurityRules** a **EffectiveSecurityRules**.
 
 ```
 NetworkInterfaces : [
@@ -132,5 +132,3 @@ NetworkInterfaces : [
 ## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak automatizovat ověřování skupin zabezpečení sítě, najdete [v tématu auditování skupin zabezpečení sítě (NSG) s Network Watcher](network-watcher-nsg-auditing-powershell.md) .
-
-

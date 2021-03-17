@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876304"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327045"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -23,22 +23,23 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 1. Obnovte databázi z Azure.
 
 >[!NOTE]
->DPM 2019 UR2 podporuje SQL Server instance clusterů s podporou převzetí služeb při selhání (FCI) pomocí sdílených svazků clusteru (CSV).
+>DPM 2019 UR2 podporuje SQL Server instance clusterů s podporou převzetí služeb při selhání (FCI) pomocí sdílených svazků clusteru (CSV).<br><br>
+>Tato funkce podporuje ochranu [SQL Server instance clusteru s podporou převzetí služeb při selhání s prostory úložiště s přímým přístupem v Azure](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)  a [SQL Server instanci clusteru s podporou převzetí služeb při selhání se sdílenými disky Azure](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md) . Aby bylo možné chránit instanci SQL FCI nasazenou na virtuálních počítačích Azure, musí být server DPM nasazený na virtuálním počítači Azure. 
 
 ## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
 
 * Pokud máte databázi se soubory ve vzdálené sdílené složce, ochrana se nezdaří a ID chyby bude 104. DPM nepodporuje ochranu pro SQL Server dat ve vzdálené sdílené složce souborů.
 * Aplikace DPM nemůže chránit databáze, které jsou uloženy ve vzdálených sdílených složkách protokolu SMB.
-* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * Účet System **NTAUTHORITY\SYSTEM.** musíte explicitně přidat do skupiny Sysadmin na SQL Server.
-* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) .
-* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) .
+* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) .
+* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream) .
 * Ochrana SQL Serveru AlwaysOn:
   * Aplikace DPM při spuštění dotazu při vytváření skupiny ochrany vyhledá skupiny dostupnosti.
   * Aplikace zjistí převzetí služeb při selhání a pokračuje v ochraně databáze.
   * Aplikace DPM podporuje konfigurace clusteru více lokalit pro instanci SQL Serveru.
 * Když chráníte databáze využívající funkci AlwaysOn, má nástroj DPM tato omezení:
-  * Nástroj DPM bude ctít zásady zálohování pro skupiny dostupnosti, které jsou nastaveny v systému SQL Server na základě předvoleb zálohování:
+  * DPM bude dodržovat zásady zálohování pro skupiny dostupnosti, které jsou nastavené v SQL Server na základě předvoleb zálohování, a to takto:
     * Preferovat sekundární – zálohy se budou objevovat na sekundární replice s výjimkou případu, kdy je primární replika jedinou replikou online. Pokud je k dispozici více sekundárních replik, bude pro zálohování vybrán uzel s nejvyšší prioritou zálohování. Pokud je k dispozici pouze primární replika, pak by záloha měla být provedena na primární replice.
     * Pouze sekundární – záloha se nebude provádět na primární replice. Pokud je online jenom primární replika, zálohování neproběhne.
     * Primární – zálohování se musí vždy odehrávat na primární replice.
@@ -50,7 +51,7 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
     * Pokud se zálohování na vybraném uzlu nepovede, operace zálohování se nezdařila.
     * Obnovení do původního umístění není podporováno.
 * SQL Server 2014 nebo vyšší problémy se zálohováním:
-  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). Aplikaci DPM nelze použít k ochraně této konfigurace.
+  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure). Aplikaci DPM nelze použít k ochraně této konfigurace.
   * U možnosti "Preferovat sekundární" zálohování pro možnost SQL AlwaysOn Existují známé problémy. DPM vždycky provede zálohu ze sekundárního serveru. Pokud není možné najít sekundární, zálohování se nepovede.
 
 ## <a name="before-you-start"></a>Než začnete
@@ -62,7 +63,7 @@ Než začnete, ujistěte se, že jste splnili [požadavky](backup-azure-dpm-intr
 * Nainstalujte agenta Azure Backup.
 * Zaregistrujte server v trezoru.
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 
 Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady zálohování:
 
@@ -80,7 +81,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 1. Pojmenujte skupinu ochrany a potom vyberte **Chci online ochranu**.
 
     ![Zvolit metodu ochrany dat – krátkodobá Ochrana disku nebo online ochrana Azure](./media/backup-azure-backup-sql/pg-name.png)
-1. Na stránce **zadat krátkodobé cíle** uveďte nezbytné vstupy pro vytváření záložních bodů na disku.
+1. Na stránce **zadat Short-Termé cíle** uveďte nezbytné vstupy pro vytváření záložních bodů na disku.
 
     V tomto příkladu je **Rozsah uchování** nastavený na *5 dní*. **Frekvence synchronizace** záloh je nastavená na každých *15 minut*. **Expresní úplné zálohování** je nastaveno na *8:00 PM*.
 
@@ -103,7 +104,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 
     ![Zvolit metodu vytvoření repliky](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) na server DPM. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu**přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
+    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) na server DPM. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu** přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
 
     Po dokončení prvotního zálohování budou zálohy v počátečním záložním kopírování přírůstkově dokončeny. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
 
@@ -144,7 +145,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 1. Vyberte způsob přenosu prvotní záložní kopie do Azure.
 
     * Možnost **automaticky přes síť** se řídí vaším plánem zálohování a převádí data do Azure.
-    * Další informace o **offline zálohování**najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
+    * Další informace o **offline zálohování** najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
 
     Po výběru mechanismu přenosu vyberte možnost **Další**.
 

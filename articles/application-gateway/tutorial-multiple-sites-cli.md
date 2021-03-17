@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502748"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566142"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
@@ -22,23 +22,22 @@ Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření brány Application Gateway
-> * Vytvořit back-endové naslouchací procesy
-> * Vytvořit pravidla směrování
-> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvoření záznamu CNAME v doméně
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Vytvořit back-endové naslouchací procesy
+* Vytvořit pravidla směrování
+* Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
+* Vytvoření záznamu CNAME v doméně
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Application Gateway více lokalit":::
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -125,7 +124,7 @@ Přidejte naslouchací procesy, které jsou potřeba ke směrování provozu pom
 
 >[!NOTE]
 > Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě.
->Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure CLI, je nutné použít `--host-names` místo `--host-name` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `--host-names "*.contoso.com,*.fabrikam.com"`.
+>Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure CLI, je nutné použít `--host-names` místo `--host-name` . U názvů hostitelů můžete jako hodnoty oddělené mezerami uvést až pět názvů hostitelů. Například `--host-names "*.contoso.com *.fabrikam.com"`.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -176,7 +175,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy v aplikační bráně. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy v aplikační bráně. Vytvořené škálovací sady se budou jmenovat *myvmss1* , *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

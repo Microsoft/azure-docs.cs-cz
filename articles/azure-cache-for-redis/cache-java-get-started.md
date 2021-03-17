@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s Java'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v jazyce Java'
 description: V tomto rychlém startu vytvoříte novou aplikaci Java, která bude používat Azure cache pro Redis.
 author: yegu-ms
 ms.service: cache
@@ -8,16 +8,20 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528820"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121265"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Java
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis v jazyce Java
 
 V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Java pomocí klienta [Jedis](https://github.com/xetorthio/jedis) Redis, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
+
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start Java](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,8 +50,8 @@ export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 
 Zástupné symboly nahraďte následujícími hodnotami:
 
-- `<YOUR_HOST_NAME>`: Název hostitele DNS získaný z oddílu Properties ( *vlastnosti* ) prostředku Azure cache for Redis na webu Azure Portal.
-- `<YOUR_PRIMARY_ACCESS_KEY>`: Primární přístupový klíč získaný z oddílu *přístupové klíče* v mezipaměti Azure pro prostředek Redis na webu Azure Portal.
+- `<YOUR_HOST_NAME>`: Název hostitele DNS získaný z oddílu Properties ( *vlastnosti* ) prostředku Azure cache for Redis v Azure Portal.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Primární přístupový klíč získaný z oddílu *přístupové klíče* v mezipaměti Azure pro prostředek Redis v Azure Portal.
 
 ## <a name="create-a-new-java-app"></a>Vytvoření nové aplikace Java
 

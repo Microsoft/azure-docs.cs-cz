@@ -3,25 +3,25 @@ title: Udělení uživatelských oprávnění ke konkrétním zásadám testovac
 description: Naučte se, jak udělit uživatelům oprávnění ke konkrétním zásadám testovacího prostředí v DevTest Labs na základě potřeb jednotlivých uživatelů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8e910a5d4499d104e4b09076ec7862ae96272ef4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 976862476d25e4e9a4933d8a5319eec9d77ca39b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835676"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328466"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí
 ## <a name="overview"></a>Přehled
 Tento článek ukazuje, jak pomocí PowerShellu udělit uživatelům oprávnění ke konkrétním zásadám testovacího prostředí. Tímto způsobem lze oprávnění použít na základě potřeb jednotlivých uživatelů. Můžete třeba udělit konkrétnímu uživateli možnost změnit nastavení zásad virtuálního počítače, ale ne zásady pro náklady.
 
 ## <a name="policies-as-resources"></a>Zásady jako prostředky
-Jak je popsáno v článku [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) , umožňuje RBAC přístup k prostředkům pro Azure s jemnou správou. Pomocí RBAC můžete oddělit povinnosti v rámci týmu DevOps a udělit jenom přístup uživatelům, kteří potřebují k provádění svých úloh.
+Jak je popsáno v článku [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) , Azure RBAC umožňuje detailní řízení přístupu k prostředkům pro Azure. Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu DevOps a udělit jenom přístup uživatelům, kteří potřebují k provádění svých úloh.
 
-V DevTest Labs je zásada typem prostředku, který umožňuje akci RBAC **Microsoft. DevTestLab/Labs/policySets/policies**/. Každá zásada testovacího prostředí je prostředek v typu prostředku zásady a dá se přiřadit jako obor pro roli Azure.
+V DevTest Labs je zásada typem prostředku, který umožňuje akci Azure RBAC **Microsoft. DevTestLab/Labs/policySets/policies**/. Každá zásada testovacího prostředí je prostředek v typu prostředku zásady a dá se přiřadit jako obor pro roli Azure.
 
 Pokud třeba chcete uživatelům udělit oprávnění ke čtení a zápisu pro zásady **povolených velikostí virtuálních počítačů** , vytvoříte vlastní roli, která bude fungovat s **Microsoft. DevTestLab/Labs/policySets/** actions/action, a pak těmto vlastním rolím přiřadíte příslušné uživatele v oboru **Microsoft. DevTestLab/Labs/PolicySets/** Policy/AllowedVmSizesInLab.
 
-Další informace o vlastních rolích v RBAC najdete v tématu [řízení přístupu vlastních rolí](../role-based-access-control/custom-roles.md).
+Další informace o vlastních rolích ve službě Azure RBAC najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Vytvoření vlastní role testovacího prostředí pomocí prostředí PowerShell
 Aby bylo možné začít, budete muset [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps). 

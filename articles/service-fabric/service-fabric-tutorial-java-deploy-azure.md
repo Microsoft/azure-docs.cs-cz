@@ -1,17 +1,15 @@
 ---
 title: Nasazení aplikace Java do clusteru Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci Service Fabric v Javě do clusteru Azure Service Fabric.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 50ae4d34cd7b238403ee95bd36a97ac82392f3ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 48cb7df49fb918ebd30883edc573cc63b6e35e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320727"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789393"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -37,7 +35,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Instalace Azure CLI](/cli/azure/install-azure-cli)
 * Nainstalujte sadu Service Fabric SDK pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md).
 * [Instalace Pythonu 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
@@ -116,10 +114,10 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 10. Pomocí následujícího příkazu vytvořte prostředek služby Event Hubs. Postupujte podle zobrazených výzev a zadejte podrobnosti pro hodnoty namespaceName (název oboru názvů), eventHubName (název centra událostí), consumerGroupName (název skupiny příjemců), sendAuthorizationRuleName (název autorizačního pravidla pro odesílání) a receiveAuthorizationRuleName (název autorizačního pravidla pro příjem).
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup

@@ -5,15 +5,16 @@ author: yashesvi
 ms.reviewer: yashesvi
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 4072fe48b9f53e5d2a43be66cdc5385784f285b6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 773334787ec7b2706c16e517281d6a60215ad482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020706"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353013"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro automatizaci rezervací Azure
 
@@ -61,7 +62,7 @@ Text požadavku:
 Rezervaci můžete zakoupit také na webu Azure Portal. Další informace najdete v následujících článcích:
 
 Plány služby:
-- [Virtuální počítač](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
+- [Virtuální počítač](../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fbilling%2fTOC.json)
 -  [Databáze Cosmos](../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
 - [SQL Database](../../azure-sql/database/reserved-capacity-overview.md?toc=/azure/billing/TOC.json)
 
@@ -87,9 +88,9 @@ Pokud zjistíte, že se rezervace vaší organizace využívají málo:
 
 Seznam všech rezervací, ke kterým má uživatel přístup, lze získat pomocí rozhraní [Reservation – Operation – List API](/rest/api/reserved-vm-instances/reservationorder/list). Pokud chcete udělit přístup k rezervaci prostřednictvím programu, přečtěte si následující články:
 
-- [Správa přístupu pomocí RBAC a rozhraní REST API](../../role-based-access-control/role-assignments-rest.md)
-- [Správa přístupu pomocí RBAC a Azure PowerShellu](../../role-based-access-control/role-assignments-powershell.md)
-- [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](../../role-based-access-control/role-assignments-powershell.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>Rozdělení nebo sloučení rezervace
 
@@ -114,4 +115,4 @@ Ke změně rozsahu prostřednictvím programu použijte rozhraní API [Reservati
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)
 - [Náklady na software pro Windows nezahrnuté v rezervacích](reserved-instance-windows-software-costs.md)
-- [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](/partner-center/azure-reservations)

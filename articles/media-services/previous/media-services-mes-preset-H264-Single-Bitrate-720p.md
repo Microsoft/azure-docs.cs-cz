@@ -1,7 +1,7 @@
 ---
 title: Přednastavení Media Encoder Standard H264 s jednou přenosovou rychlostí 720p – Azure | Microsoft Docs
-description: Tento článek obsahuje přehled přednastavené úlohy Media Encoder Standard "H264 Single přenosová rychlost 720p".
-author: Juliako
+description: Tento článek obsahuje přehled přednastavené H264é úlohy 720p Media Encoder Standard s jednou přenosovou rychlostí.
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,17 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: e48f0c614ba7a7b4199e6ddf0050de0ae7db063f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2f772d8d881f64e91c4cb047b7587bd1f83b9b23
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74886825"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011744"
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 Single Bitrate 720p
-`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+`Media Encoder Standard` definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Toto téma ukazuje `H264 Single Bitrate 720p` Předvolby ve formátu XML a JSON.  
   

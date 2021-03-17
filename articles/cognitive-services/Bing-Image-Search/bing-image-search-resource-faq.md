@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e8502b1d01e0f3fbf5d42e924511cc978690bce4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184051"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342188"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Nejčastější dotazy týkající se rozhraní API Bingu pro vyhledávání obrázků
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Získejte odpovědi na nejčastější dotazy týkající se konceptů, kódu a scénářů souvisejících s rozhraní API Bingu pro vyhledávání obrázků pro Microsoft Cognitive Services v Azure.
 
@@ -35,7 +40,7 @@ Je obzvláště důležité zachovat ID klienta a vrátit ho s následnými pož
 
 Když však zavoláte rozhraní API Bingu pro vyhledávání obrázků z JavaScriptu, můžou vám integrované funkce zabezpečení (CORS) v prohlížeči bránit v přístupu k hodnotám těchto hlaviček.
 
-Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API Bingu pro vyhledávání obrázků vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API Bingu pro vyhledávání obrázků vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které filtruje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
 
 Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](tutorial-bing-image-search-single-page-app.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 

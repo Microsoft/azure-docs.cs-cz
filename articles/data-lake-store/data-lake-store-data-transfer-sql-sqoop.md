@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323073"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "92109183"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
 
@@ -31,7 +31,7 @@ Než začnete, musíte mít následující:
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny k vytvoření účtu najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). V tomto článku se předpokládá, že máte cluster HDInsight Linux s přístupem Data Lake Storage Gen1.
-* **Azure SQL Database**. Pokyny k vytvoření databáze v Azure SQL Database najdete v tématu [Vytvoření databáze v Azure SQL Database](../sql-database/sql-database-get-started.md)
+* **Azure SQL Database**. Pokyny k vytvoření databáze v Azure SQL Database najdete v tématu [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)
 
 ## <a name="create-sample-tables-in-the-database"></a>Vytvoření ukázkových tabulek v databázi
 
@@ -121,11 +121,11 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Každý soubor **s částí m-*** odpovídá řádku ve zdrojové tabulce ( **Tabulka1**). Můžete zobrazit obsah souborů částí m-*, které chcete ověřit.
+   Každý soubor **část-m-** _ odpovídá řádku ve zdrojové tabulce, _ *Tabulka1 * *. Můžete zobrazit obsah souboru části m* , který chcete ověřit.
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Export dat z Data Lake Storage Gen1 do Azure SQL Database
 
-1. Exportujte data z účtu Data Lake Storage Gen1 do prázdné tabulky **Tabulka2**v Azure SQL Database. Použijte následující syntaxi.
+1. Exportujte data z účtu Data Lake Storage Gen1 do prázdné tabulky **Tabulka2** v Azure SQL Database. Použijte následující syntaxi.
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
@@ -156,7 +156,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Požadavky na výkon při použití Sqoop
 
-Informace o optimalizaci výkonu úlohy Sqoop pro kopírování dat do Data Lake Storage Gen1 najdete v [příspěvku na blogu o výkonu Sqoop](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
+Informace o optimalizaci výkonu úlohy Sqoop pro kopírování dat do Data Lake Storage Gen1 najdete v [příspěvku na blogu o výkonu Sqoop](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
 
 ## <a name="next-steps"></a>Další kroky
 

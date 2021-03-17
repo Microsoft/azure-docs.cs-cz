@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
-ms.openlocfilehash: a47a6e1860edcb9b2bf89c25e78f6a66e8a7cf4d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117708"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295613"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Řešení potíží s připojením pro Azure Database for PostgreSQL – škálování (Citus)
 
@@ -27,7 +27,7 @@ Problémy s připojením mohou být způsobeny několika způsoby, například:
 * Údržba služby
 * Převzetí služeb při selhání uzlem koordinátora na novém hardwaru
 
-Obecně platí, že problémy s připojením k škálovatelnému škálování můžou být klasifikovány takto:
+Obecně platí, že problémy s připojením do Citus () je možné klasifikovat následujícím způsobem:
 
 * Přechodné chyby (krátkodobé nebo občasné)
 * Trvalé nebo nepřechodné chyby (chyby, které se pravidelně opakují)
@@ -36,7 +36,7 @@ Obecně platí, že problémy s připojením k škálovatelnému škálování m
 
 K přechodným chybám dochází z několika důvodů. Nejběžnější zahrnuje údržbu systému, chybu s hardwarem nebo softwarem a vCore upgrady uzlů koordinátora.
 
-Povolení vysoké dostupnosti pro uzly skupin serverů ve velkém měřítku může automaticky zmírnit tyto typy problémů. Vaše aplikace by ale měla být stále připravená, aby krátce ztratila připojení. I další události mohou trvat delší dobu, například když velká transakce způsobí dlouhotrvající obnovení.
+Povolení vysoké dostupnosti pro uzly skupin serverů Citus () může automaticky zmírnit tyto typy problémů. Vaše aplikace by ale měla být stále připravená, aby krátce ztratila připojení. I další události mohou trvat delší dobu, například když velká transakce způsobí dlouhotrvající obnovení.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
 
@@ -49,13 +49,13 @@ Povolení vysoké dostupnosti pro uzly skupin serverů ve velkém měřítku mů
 
 Pokud se aplikace trvale nepřipojí ke škálování (Citus), nejběžnější příčiny jsou chybná konfigurace brány firewall nebo chyba uživatele.
 
-* Konfigurace brány firewall uzlu koordinátora: Ujistěte se, že je brána firewall serveru pro škálování na úrovni serveru nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
+* Konfigurace brány firewall uzlu koordinátora: Ujistěte se, že je brána firewall serveru Citus () nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
 * Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. Některé brány firewall vyžadují, aby povolily nejen aplikaci podle názvu, ale povolily IP adresy a porty serveru.
 * Chyba uživatele: dvakrát ověřte připojovací řetězec. Můžete mít netypové parametry, jako je název serveru. Připojovací řetězce můžete najít pro různé jazykové architektury a psql v Azure Portal. Přejít na stránku **připojovací řetězce** ve skupině serverů Citus (vlastní měřítko). Pamatujte také na to, že clustery Citus () mají pouze jednu databázi a její předdefinovaný název je **Citus**.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 
-1. Nastavte [pravidla brány firewall](howto-hyperscale-manage-firewall-using-portal.md) tak, aby povolovala IP adresu klienta. Pro účely dočasného testování nastavte pravidlo brány firewall pomocí direktivy 0.0.0.0 jako počáteční IP adresu a jako koncovou IP adresu použijte 255.255.255.255. Toto pravidlo otevře Server pro všechny IP adresy. Pokud pravidlo vyřeší problém s připojením, odeberte ho a vytvořte pravidlo brány firewall pro odpovídající omezené IP adresy nebo rozsah adres.
+1. Nastavte [pravidla brány firewall](howto-hyperscale-manage-firewall-using-portal.md) tak, aby povolovala IP adresu klienta. Pro účely dočasného testování nastavte pravidlo brány firewall pomocí direktivy 0.0.0.0 jako počáteční IP adresu a jako koncovou IP adresu použijte 255.255.255.255. Toto pravidlo otevře server pro všechny IP adresy. Pokud pravidlo vyřeší problém s připojením, odeberte ho a vytvořte pravidlo brány firewall pro odpovídající omezené IP adresy nebo rozsah adres.
 2. U všech bran firewall mezi klientem a internetem se ujistěte, že je port 5432 otevřený pro odchozí připojení.
 3. Ověřte připojovací řetězec a další nastavení připojení.
 4. Projděte si stav služby na řídicím panelu.

@@ -4,14 +4,14 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 ms.date: 03/10/2020
-ms.author: mathoma
+ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046135"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178064"
 ---
 V tomto kroku vytvoříte [logický SQL Server](../database/logical-servers.md) a samostatnou [databázi](../database/single-database-overview.md) , která používá ukázková data AdventureWorksLT. Databázi můžete vytvořit pomocí nabídek a obrazovek Azure Portal nebo pomocí skriptu Azure CLI nebo PowerShellu v Azure Cloud Shell.
 
@@ -33,10 +33,10 @@ Postup vytvoření skupiny prostředků, serveru a izolované databáze v Azure 
    ![Vytvoření izolované databáze](./media/sql-database-create-single-database/create-single-database.png)
 
 1. Na kartě **základy** ve formuláři **vytvořit databázi SQL** v části **Project Details (podrobnosti projektu**) vyberte správné **předplatné** Azure, pokud ještě není vybrané.
-1. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte *myResourceGroup*a vyberte **OK**.
-1. V části **Podrobnosti databáze**zadejte do **pole název databáze** *mySampleDatabase*.
-1. Pro možnost **Server**vyberte **vytvořit novou**a vyplňte formulář **nového serveru** následujícím způsobem:
-   - **Název serveru**: zadejte *MySQLServer*a některé znaky pro jedinečnost.
+1. V části **Skupina prostředků** vyberte **vytvořit novou**, zadejte *myResourceGroup* a vyberte **OK**.
+1. V části **Podrobnosti databáze** zadejte do **pole název databáze** *mySampleDatabase*.
+1. Pro možnost **Server** vyberte **vytvořit novou** a vyplňte formulář **nového serveru** následujícím způsobem:
+   - **Název serveru**: zadejte *MySQLServer* a některé znaky pro jedinečnost.
    - **Přihlašovací jméno správce serveru**: zadejte *azureuser*.
    - **Heslo**: zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
    - **Umístění**: rozevírací seznam a vyberte umístění, například **(US) východní USA**.
@@ -47,7 +47,7 @@ Postup vytvoření skupiny prostředků, serveru a izolované databáze v Azure 
 
    Zaznamenejte přihlašovací jméno a heslo správce serveru, abyste se mohli přihlásit k serveru a jeho databázím. Pokud zapomenete přihlašovací jméno nebo heslo, můžete po vytvoření databáze získat přihlašovací jméno nebo resetovat heslo na stránce **SQL serveru** . Chcete-li otevřít stránku **systému SQL Server** , vyberte název serveru na stránce **Přehled** databáze.
 
-1. Pokud chcete překonfigurovat výchozí hodnoty, vyberte v části **COMPUTE + úložiště**možnost **Konfigurovat databázi**.
+1. Pokud chcete překonfigurovat výchozí hodnoty, vyberte v části **COMPUTE + úložiště** možnost **Konfigurovat databázi**.
 
    Na stránce **Konfigurace** můžete volitelně:
    - Změňte **výpočetní vrstvu** ze **zřízené** na bez **serveru**.
@@ -60,15 +60,17 @@ Postup vytvoření skupiny prostředků, serveru a izolované databáze v Azure 
 
    ![Nová databáze SQL – karta Basic](./media/sql-database-create-single-database/new-sql-database-basics.png)
 
-1. Na kartě **sítě** v části **způsob připojení**vyberte **veřejný koncový bod**.
-1. V části **pravidla brány firewall**nastavte **Přidat aktuální IP adresu klienta** na **Ano**.
+1. Na kartě **sítě** v části **způsob připojení** vyberte **veřejný koncový bod**.
+1. V části **pravidla brány firewall** nastavte **Přidat aktuální IP adresu klienta** na **Ano**.
 1. Vyberte **Další: Další nastavení** v dolní části stránky.
 
    ![Karta sítě](./media/sql-database-create-single-database/networking.png)
   
    Další informace o nastavení brány firewall najdete v tématu [Povolení služeb a prostředků Azure pro přístup k tomuto serveru](../database/network-access-controls-overview.md) a [Přidání privátního koncového bodu](../database/private-endpoint-overview.md).
 
-1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data**vyberte **Ukázka**.
+1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data** vyberte **Ukázka**.
+1. Volitelně můžete povolit [Azure Defender pro SQL](../database/azure-defender-for-sql.md).
+1. Volitelně můžete nastavit časové [intervaly pro správu a údržbu](../database/maintenance-window.md) , aby se plánovaná údržba prováděla v nejvhodnější době pro vaši databázi.
 1. V dolní části stránky vyberte **zkontrolovat + vytvořit** .
 
    ![Karta Další nastavení](./media/sql-database-create-single-database/additional-settings.png)
@@ -149,11 +151,11 @@ Předchozí kód používá tyto příkazy rozhraní příkazového řádku Azur
 
 | Příkaz | Popis |
 |---|---|
-| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. |
+| [AZ Account set](/cli/azure/account#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. |
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server, který je hostitelem databází a elastických fondů. |
 | [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Vytvoří pravidlo brány firewall na úrovni serveru. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | Vytvoří databázi. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Vytvoří databázi. |
 
 Další Azure SQL Database ukázek rozhraní příkazového řádku Azure najdete v tématu [ukázky Azure CLI](../database/az-cli-script-samples-content-guide.md).
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006209"
 ---
 # <a name="building-an-accessible-application"></a>Vytvoření přístupné aplikace
@@ -103,15 +103,15 @@ Mapa má několik vestavěných klávesových zkratek, které usnadňují použ�
 | Šipka vpravo | Posunout mapu vpravo o 100 pixelů |
 | Klávesa šipka dolů | Posunout mapu dolů na 100 pixelů |
 | Klávesa šipka nahoru | Posouvání mapy o 100 pixelů |
-| `Shift`+ Šipka nahoru | Zvětšit rozteč mapy o 10 stupňů |
-| `Shift`+ Šipka dolů | Zmenšit rozteč v mapě o 10 stupňů |
-| `Shift`+ šipka doprava | Otočit mapu o 15 stupňů po směru hodinových ručiček |
-| `Shift`+ šipka doleva | Otočit mapu o 15 stupňů po směru hodinových ručiček |
+| `Shift` + Šipka nahoru | Zvětšit rozteč mapy o 10 stupňů |
+| `Shift` + Šipka dolů | Zmenšit rozteč v mapě o 10 stupňů |
+| `Shift` + šipka doprava | Otočit mapu o 15 stupňů po směru hodinových ručiček |
+| `Shift` + šipka doleva | Otočit mapu o 15 stupňů po směru hodinových ručiček |
 | Znaménko plus ( `+` ) nebo symbol <sup>*</sup> rovná se ( `=` ) | Přiblížit |
 | Symbol mínus, spojovník ( `-` ) nebo <sup>*</sup> podtržítko ( `_` ) | Oddálit | 
-| `Shift`+ Přetáhnutím myši na mapu pro vykreslení oblasti | Přiblížit oblast |
+| `Shift` + Přetáhnutím myši na mapu pro vykreslení oblasti | Přiblížit oblast |
 
-<sup>*</sup>Tyto klávesové zkratky obvykle sdílejí stejný klíč na klávesnici. Tyto klávesové zkratky byly přidány pro zlepšení uživatelského prostředí. Bez ohledu na to, jestli uživatel používá klávesu SHIFT nebo ne pro tyto klávesové zkratky.
+<sup>*</sup> Tyto klávesové zkratky obvykle sdílejí stejný klíč na klávesnici. Tyto klávesové zkratky byly přidány pro zlepšení uživatelského prostředí. Bez ohledu na to, jestli uživatel používá klávesu SHIFT nebo ne pro tyto klávesové zkratky.
 
 ## <a name="screen-reader-support"></a>Podpora čtečky obrazovky
 

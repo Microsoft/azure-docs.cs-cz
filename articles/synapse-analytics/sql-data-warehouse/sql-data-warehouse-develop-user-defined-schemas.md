@@ -1,25 +1,25 @@
 ---
 title: Použití uživatelsky definovaných schémat
-description: Tipy pro vývoj řešení v synapse fondu SQL pomocí uživatelsky definovaných schémat T-SQL
+description: Tipy pro použití uživatelsky definovaných schémat T-SQL k vývoji řešení pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3204c77dd076d9aac6eb5a60b489280caefcbf4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213359"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460448"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Uživatelsky definovaná schémata ve fondu SQL synapse
-Tento článek se zaměřuje na poskytnutí několika tipů pro vývoj řešení v synapse fondu SQL pomocí uživatelsky definovaných schémat T-SQL.
+# <a name="user-defined-schemas-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Uživatelsky definovaná schémata pro vyhrazené fondy SQL ve službě Azure synapse Analytics
+Tento článek se zaměřuje na poskytnutí několika tipů pro vývoj řešení ve vyhrazeném fondu SQL pomocí uživatelsky definovaných schémat T-SQL.
 
 ## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikace
 
@@ -27,7 +27,7 @@ Tradiční datové sklady často používají samostatné databáze k vytvořen�
 
 Například tradiční datový sklad SQL Server může zahrnovat pracovní databázi, databázi datového skladu a některé databáze datového tržiště. V této topologii každá databáze funguje jako zatížení a hranice zabezpečení v architektuře.
 
-Naproti tomu fond SQL spouští celou úlohu datového skladu v rámci jedné databáze. Spojení mezi databázemi nejsou povolena. Fond SQL očekává, že všechny tabulky používané datovým skladem budou uloženy v rámci jedné databáze.
+Naproti tomu vyhrazený fond SQL spouští celou úlohu datového skladu v rámci jedné databáze. Spojení mezi databázemi nejsou povolena. Vyhrazený fond SQL očekává, že všechny tabulky používané datovým skladem budou uloženy v rámci jedné databáze.
 
 > [!NOTE]
 > Fond SQL nepodporuje databázové dotazy jakéhokoli druhu. V důsledku toho bude nutné implementace datového skladu, které využívají tento model, upravit.
@@ -37,11 +37,11 @@ Naproti tomu fond SQL spouští celou úlohu datového skladu v rámci jedné da
 ## <a name="recommendations"></a>Doporučení
 Níže jsou uvedeny doporučení pro konsolidaci úloh, zabezpečení, domény a funkční hranice pomocí uživatelsky definovaných schémat:
 
-- Pomocí jedné databáze fondu SQL spusťte celou úlohu datového skladu.
-- Konsolidujte stávající prostředí datového skladu tak, aby používalo jednu databázi fondu SQL.
+- Pomocí jedné databáze ve vyhrazeném fondu SQL spusťte celou úlohu datového skladu.
+- Konsolidujte stávající prostředí datového skladu pro použití jedné vyhrazené databáze fondu SQL.
 - Využijte **uživatelsky definovaných schémat** k poskytnutí hranice dříve implementovaného pomocí databází.
 
-Pokud se dřív definovaná schémata ještě nepoužila, máte čistou SLAT. Jako základ pro schémata definovaná uživatelem v databázi fondu SQL použijte starý název databáze.
+Pokud se dřív definovaná schémata ještě nepoužila, máte čistou SLAT. Jako základ pro vaše uživatelsky definované schémat ve vyhrazené databázi fondu SQL použijte starý název databáze.
 
 Pokud se už schémata používala, máte několik možností:
 
@@ -50,7 +50,7 @@ Pokud se už schémata používala, máte několik možností:
 - Starší názvy schémat zachovejte implementací zobrazení v tabulce ve dodatečném schématu pro opětovné vytvoření staré struktury schématu.
 
 > [!NOTE]
-> Při první kontrole 3 se může zdát, že se jedná o možnost nejúčinnějšího odvolání. Nicméně Devil je v podrobnostech. Zobrazení jsou jen pro čtení ve fondu SQL. Veškerá data nebo úpravy tabulek by se musely provést na základě základní tabulky. Možnost 3 také zavádí do systému vrstvu zobrazení. Pokud již používáte zobrazení ve vaší architektuře, je vhodné dát mu další myšlenky.
+> Při první kontrole 3 se může zdát, že se jedná o možnost nejúčinnějšího odvolání. Nicméně Devil je v podrobnostech. Zobrazení jsou jen pro čtení v vyhrazeném fondu SQL. Veškerá data nebo úpravy tabulek by se musely provést na základě základní tabulky. Možnost 3 také zavádí do systému vrstvu zobrazení. Pokud již používáte zobrazení ve vaší architektuře, je vhodné dát mu další myšlenky.
 > 
 > 
 

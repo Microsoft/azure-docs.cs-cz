@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/20/2019
-ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 10/07/2020
+ms.openlocfilehash: 1690b8d143b86e5caa691f5f8f479f715f57f0c8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132394"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054649"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Kurz: vytváření pracovních postupů pro automatizované schvalování pomocí Azure Logic Apps
 
-V tomto kurzu se dozvíte, jak vytvořit [aplikaci logiky](../logic-apps/logic-apps-overview.md) , která automatizuje pracovní postup založený na schválení. Konkrétně tato aplikace logiky zpracovává žádosti o odběr pro seznam adresátů spravovaný službou [MailChimp](https://mailchimp.com/) . Tato aplikace logiky monitoruje tyto žádosti v e-mailovém účtu, odesílá je ke schválení a přidává schválené členy do seznamu adresátů.
+V tomto kurzu se dozvíte, jak sestavit ukázkovou [aplikaci logiky](../logic-apps/logic-apps-overview.md) , která automatizuje pracovní postup založený na schválení. Konkrétně Tato ukázková aplikace logiky zpracovává žádosti o odběr pro seznam adresátů spravovaný službou [MailChimp](https://mailchimp.com/) . Tato aplikace logiky obsahuje různé kroky, které začnou monitorovat e-mailový účet pro žádosti, odesílá tyto požadavky ke schválení, kontroluje, jestli požadavek získá schválení, přidá schválené členy do seznamu adresátů a potvrdí, jestli se do seznamu přidaly noví členové.
 
 V tomto kurzu se naučíte:
 
@@ -36,84 +36,83 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Účet MailChimp, který obsahuje seznam s názvem test-Members-ML, kde aplikace logiky může přidat e-mailové adresy pro schválené členy. Pokud účet nemáte, [Zaregistrujte si bezplatný účet](https://login.mailchimp.com/signup/)a podívejte se, [jak vytvořit seznam MailChimp](https://us17.admin.mailchimp.com/lists/#).
+* Účet MailChimp, kde jste dříve vytvořili seznam s názvem test-Members-ML, kde aplikace logiky může přidat e-mailové adresy pro schválené členy. Pokud účet nemáte, [Zaregistrujte si bezplatný účet](https://login.mailchimp.com/signup/)a podívejte se, [jak vytvořit seznam MailChimp](https://us17.admin.mailchimp.com/lists/#).
 
-* E-mailový účet v Office 365 Outlooku nebo Outlook.com, který podporuje schvalovací pracovní postupy. V tomto článku se používá Office 365 Outlook. Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak.
+* E-mailový účet od poskytovatele e-mailu, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). V tomto rychlém startu se pro Office 365 Outlook používá pracovní nebo školní účet. Pokud používáte jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní se může mírně lišit.
+
+* E-mailový účet v Office 365 Outlooku nebo Outlook.com, který podporuje schvalovací pracovní postupy. Tento kurz používá Office 365 Outlook. Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak.
+
+* Pokud vaše aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí brána firewall povolit přístup *pro* [příchozí](logic-apps-limits-and-config.md#inbound) i [odchozí](logic-apps-limits-and-config.md#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](logic-apps-limits-and-config.md#outbound) v oblasti Azure vaší aplikace logiky.
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure. Na domovské stránce Azure vyberte **vytvořit prostředek**.
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
+1. V nabídce Azure Marketplace vyberte aplikace **Integration**  >  **Logic**.
 
-   ![Vytvoření nového prostředku aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
+   ![Snímek obrazovky, který zobrazuje Azure Marketplace nabídku s vybranou možnost integrace a aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
-1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky podle následujícího obrázku a popisu. Po dokončení vyberte **Vytvořit**.
+1. V podokně **Aplikace logiky** zadejte zde popsané informace o aplikaci logiky, kterou chcete vytvořit.
 
-   ![Zadání informací o vaší aplikaci logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
+   ![Snímek obrazovky, který zobrazuje podokno vytvoření aplikace logiky a informace, které se mají poskytnout pro novou aplikaci logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Název** | LA-MailingList | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "LA-MailingList". |
-   | **Předplatné** | <*Vaše předplatné – Azure-Subscription-Name*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | LA-MailingList-RG | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), která se používá k uspořádání souvisejících prostředků. V tomto příkladu se používá "LA-MailingList-RG". |
-   | **Umístění** | USA – západ | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
+   | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure. Tento příklad používá `Pay-As-You-Go`. |
+   | **Skupina prostředků** | LA-MailingList-RG | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), která se používá k uspořádání souvisejících prostředků. Tento příklad vytvoří novou skupinu prostředků s názvem `LA-MailingList-RG` . |
+   | **Název** | LA-MailingList | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá `LA-MailingList`. |
+   | **Umístění** | USA – západ | Oblast, kam se mají ukládat informace o aplikaci logiky Tento příklad používá `West US`. |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení**  >  **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
+1. Až budete hotovi, vyberte **zkontrolovat + vytvořit**. Až Azure ověří informace o vaší aplikaci logiky, vyberte **vytvořit**.
 
-   ![Přejít na nový prostředek aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
+1. Až Azure nasadí vaši aplikaci, vyberte **Přejít k prostředku**.
 
-   Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
+   Azure otevře podokno pro výběr šablony Logic Apps, ve kterém se zobrazí úvodní video, běžně používané triggery a vzory šablon aplikací logiky.
 
-   Otevře se Návrhář Logic Apps a zobrazí se stránka s úvodním videem a běžně používanými triggery a vzorci aplikace logiky. V oblasti **Šablony** vyberte **Prázdná aplikace logiky**.
+1. Posuňte se dolů v částech video a běžné triggery do části **šablony** a vyberte **prázdná aplikace logiky**.
 
-   ![Vybrat šablonu prázdná aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/select-logic-app-template.png)
+   ![Snímek obrazovky, který zobrazuje podokno pro výběr šablony Logic Apps s vybranou volbou prázdná aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/select-logic-app-template.png)
 
-Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), který naslouchá příchozím e-mailům s žádostmi o přihlášení k odběru. Každá aplikace logiky musí začít triggerem, který se aktivuje, když dojde ke konkrétní události nebo když nová data splní určitou podmínku. Další informace najdete v článku [Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) Outlooku, který naslouchá příchozím e-mailům s požadavky na odběr. Každá aplikace logiky musí začínat triggerem, který se aktivuje, když dojde ke konkrétní události nebo když nová data splní určitou podmínku. Další informace najdete v článku [Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-trigger-to-monitor-emails"></a>Přidání triggeru pro monitorování e-mailů
 
-1. V návrháři aplikace logiky zadejte do vyhledávacího pole `when email arrives` jako filtr. V seznamu **triggery** vyberte, kdy se má aktivovat **nový e-mail** pro poskytovatele e-mailu.
+1. Do vyhledávacího pole návrháře Logic Apps zadejte `when email arrives` a **po přijetí nového e-mailu** vyberte aktivační událost s názvem.
 
-   V tomto příkladu se používá aktivační událost sady Office 365 Outlook:
+   * U pracovních nebo školních účtů Azure vyberte **Office 365 Outlook**.
+   * U osobních účtů Microsoft, vyberte **Outlook.com**.
 
-   ![Vyberte, kdy se má aktivovat nový e-mail pro poskytovatele e-mailu.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   Tento příklad pokračuje tím, že vyberete Office 365 Outlook.
 
-   * Pro pracovní nebo školní účty Azure vyberte Office 365 Outlook.
-   * Pro osobní účty Microsoft vyberte Outlook.com.
+   ![Snímek obrazovky, který zobrazuje vyhledávací pole návrháře Logic Apps, které obsahuje hledaný termín "když e-mail přijde", a zobrazí se vybraná aktivační událost když nový e-mail přijde.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
-1. Pokud se zobrazí výzva, přihlaste se k e-mailovému účtu pomocí svých přihlašovacích údajů, aby Logic Apps mohli vytvořit připojení k e-mailovému účtu.
+1. Pokud ještě nemáte připojení, přihlaste se a po zobrazení výzvy ověřte přístup k e-mailovému účtu.
 
-1. V aktivační události zadejte kritéria pro kontrolu všech nových e-mailů.
+   Azure Logic Apps vytvoří připojení k vašemu e-mailovému účtu.
 
-   1. Určete složku, interval a frekvenci kontroly e-mailů.
+1. V aktivační události zadejte kritéria pro kontrolu nového e-mailu.
 
-      ![Určení složky, intervalu a frekvence kontroly e-mailů](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
+   1. Zadejte složku pro kontrolu e-mailů a nechte ostatní vlastnosti nastavené na výchozí hodnoty.
 
-      | Vlastnost | Hodnota | Popis |
-      |----------|-------|-------------|
-      | **Složka** | `Inbox` | E-mailová složka, která se má monitorovat |
-      | **Interval** | `1` | Počet intervalů, po které se má čekat mezi kontrolami |
-      | **Frekvence** | `Hour` | Jednotka času pro opakování |
-      ||||
+      ![Snímek obrazovky, který zobrazuje návrháře s akcí "při přijetí nového e-mailu" a "složka" nastavenou na "Doručená pošta".](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-   1. Nyní do triggeru přidejte další vlastnost, aby bylo možné filtrovat podle řádku předmětu e-mailu. Otevřete **seznam přidat nový parametr**a vyberte vlastnost **Filtr předmětu** .
+   1. Přidejte vlastnost **filtru předmětu** triggeru, abyste mohli filtrovat e-maily na základě řádku předmětu. Otevřete seznam **Přidat nový parametr** a vyberte **Filtr předmětu**.
 
-      ![Přidat vlastnost filtr předmětu k triggeru](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
+      ![Snímek obrazovky, který zobrazuje otevřený seznam nový parametr s vybraným "filtrem předmětu".](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
       Další informace o vlastnostech této triggeru najdete v referenčních informacích ke [konektoru Office 365 Outlook](/connectors/office365/) nebo [konektoru Outlook.com](/connectors/outlook/).
 
-   1. Po zobrazení vlastnosti v triggeru zadejte tento text:`subscribe-test-members-ML`
+   1. Po zobrazení vlastnosti v triggeru zadejte tento text: `subscribe-test-members-ML`
 
-      ![Zadat text pro vlastnost "filtr předmětu"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
+      ![Snímek obrazovky zobrazující vlastnost "filtr předmětu" s textem "odběr-test-Members-ML".](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
-1. Pokud chcete podrobnosti o triggeru prozatím skrýt, klikněte na jeho záhlaví.
+1. Chcete-li nyní skrýt podrobnosti triggeru, sbalte tvar kliknutím dovnitř záhlaví obrazce.
 
-   ![Tvar sbalení pro skrytí podrobností](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
+   ![Snímek obrazovky, který zobrazuje sbalený obrazec triggeru](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
 
 1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -123,64 +122,57 @@ Vaše aplikace logiky je teď v provozu, ale kromě kontroly příchozích e-mai
 
 Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts), která odešle e-mail ke schválení nebo zamítnutí žádosti.
 
-1. V aktivační události vyberte **Nový krok**. 
+1. V Návrháři Logic Apps v části **při přijetí nového e-mailu** na triggeru vyberte **Nový krok**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `approval` jako filtr. V seznamu akce vyberte akci **Odeslat e-mailovou** zprávu o schválení pro poskytovatele e-mailů. 
+1. V části **Zvolit operaci** zadejte do vyhledávacího pole `send approval` a vyberte akci s názvem **Odeslat schvalovací e-mail**.
 
-   V tomto příkladu se používá akce Office 365 Outlook:
+   ![Snímek obrazovky, na kterém se zobrazuje seznam zvolit operaci filtrovaný podle schválení a akce Odeslat e-mail schválení](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
 
-   ![Výběr akce Odeslat e-mail se schválením](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
+1. Nyní zadejte hodnoty pro zadané vlastnosti zobrazené a popsané zde. ponechte všechny ostatní na jejich výchozích hodnotách. Další informace o těchto vlastnostech najdete v článku referenční informace ke [konektoru Office 365 Outlook](/connectors/office365/) nebo [konektor Outlook.com](/connectors/outlook/).
 
-1. Zadejte informace o této akci, jak je popsáno níže: 
-
-   ![Odeslat vlastnosti e-mailu schválení](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
+   ![Snímek obrazovky se zobrazením vlastností e-mail pro odeslání schválení](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Schopn** | <*vaše e-mailová adresa*> | E-mailová adresa schvalovatele. Pro účely testování můžete použít svou vlastní adresu. V tomto příkladu se používá fiktivní sophia.owen@fabrikam.com e-mailová adresa. |
+   | **Do** | <*schválení-e-mailová adresa*> | E-mailová adresa schvalovatele. Pro účely testování můžete použít svou vlastní adresu. V tomto příkladu se používá fiktivní `sophiaowen@fabrikam.com` e-mailová adresa. |
    | **Předmět** | `Approve member request for test-members-ML` | Popisný předmět e-mailu |
-   | **Možnosti uživatele** | `Approve, Reject` | Možnosti odpovědi, které může schvalovatel vybrat. Ve výchozím nastavení může schvalovatel jako odpověď vybrat buď "schválit" nebo "odmítnout". |
+   | **Možnosti uživatele** | `Approve, Reject` | Ujistěte se, že tato vlastnost určuje možnosti odpovědi, které schvalovatel může vybrat, které se ve výchozím nastavení **schvalují** nebo **zamítnou** . |
    ||||
 
-   Prozatím ignorujte seznam dynamického obsahu, který se zobrazí po kliknutí do specifických textových polí. Tento seznam vám umožní vybrat dostupný výstup z předchozích akcí, které můžete použít jako vstupy v pracovním postupu.
-
-   Další informace o vlastnostech této akce najdete v referenčních informacích ke [konektoru Office 365 Outlook](/connectors/office365/) nebo [konektoru Outlook.com](/connectors/outlook/).
+   > [!NOTE]
+   > Po kliknutí do některých textových polí se zobrazí seznam dynamického obsahu, který můžete pro nyní ignorovat. Tento seznam obsahuje výstupy z předchozích akcí, které jsou k dispozici pro výběr jako vstupy pro následné akce v pracovním postupu.
  
 1. Uložte aplikaci logiky.
 
-Dále přidejte podmínku pro kontrolu vybrané odpovědi schvalovatele.
+Dále přidejte podmínku, která zkontroluje odpověď vybraného schvalovatele.
 
 ## <a name="check-approval-response"></a>Kontrola odpovědi na žádost o schválení
 
 1. V akci **Odeslat e-mail pro schválení** vyberte **Nový krok**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition` jako filtr. V seznamu akce vyberte akci **Podmínka** .
+1. V části **Zvolit operaci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition` a vyberte akci s názvem **Podmínka**.
 
-   ![Vyhledejte a vyberte akci podmínka.](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
+   ![Snímek obrazovky, který zobrazuje vyhledávací pole "zvolit operaci" s vybraným "předdefinovaným" a "podmínkou" jako hledaný termín, zatímco se zobrazuje akce "podmínka".](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
-1. Přejmenujte podmínku tak, aby její popis lépe vystihoval účel.
+1. V záhlaví **podmínky** vyberte tlačítko se **třemi tečkami** (**...**) a pak vyberte **Přejmenovat**. Přejmenujte podmínku s použitím tohoto popisu: `If request approved`
 
-   1. V záhlaví podmínky vyberte tlačítko se **třemi tečkami** (..**.**) > **Přejmenovat**.
-
-      ![Popis podmínky přejmenování](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
-
-   1. Přejmenujte podmínku s použitím tohoto popisu: `If request approved`
+   ![Snímek obrazovky, který zobrazuje tlačítko se třemi tečkami vybraným se zobrazeným seznamem nastavení a vybraným příkazem pro přejmenování](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
 1. Vytvořte podmínku, která kontroluje, zda schvalovatel zvolil **schválení**.
 
-   1. V podmínce klikněte do pole **zvolit hodnotu** na levé straně podmínky.
+   1. Na levé straně podmínky klikněte do pole **zvolit hodnotu** .
 
-   1. V seznamu dynamický obsah, který se zobrazí, v části **Odeslat schvalovací e-mail**vyberte vlastnost **SelectedOption** .
+   1. V seznamu dynamický obsah, který se zobrazí, v části **Odeslat schvalovací e-mail** vyberte vlastnost **SelectedOption** .
 
-      ![V seznamu dynamický obsah vyberte "SelectedOption".](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
+      ![Snímek obrazovky, který zobrazuje seznam dynamického obsahu v části "odeslání e-mailu pro schválení", se zobrazuje výstup "SelectedOption".](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
    1. V poli prostřední porovnání vyberte operátor **je rovno** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento text:`Approve`
+   1. Na pravé straně podmínky v poli **zvolit hodnotu** zadejte text `Approve` .
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 
-      ![Podmínka dokončení pro schválený příklad](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
+      ![Snímek obrazovky, který ukazuje dokončenou podmínku pro příklad schválené žádosti](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
 1. Uložte aplikaci logiky.
 
@@ -190,110 +182,110 @@ Dále určete akci, kterou vaše aplikace logiky provede po schválení žádost
 
 Nyní přidejte akci, která přidá schváleného člena do seznamu adresátů.
 
-1. V větvi podmínka **Pokud je true** vyberte **přidat akci**.
+1. V poli **pravdivá** větev podmínky vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte `mailchimp` jako filtr a vyberte akci **Přidat člena do seznamu** .
+1. V poli pro hledání **operace zvolte** možnost **vše**. Do vyhledávacího pole zadejte `mailchimp` a vyberte akci s názvem **Přidat člena do seznamu**.
 
-   ![Výběr akce Přidat člena do seznamu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
+   ![Snímek obrazovky, který zobrazuje pole "zvolit operaci" s hledaným termínem "MailChimp" a vybranou akcí přidat člena do seznamu.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
-1. Pokud se zobrazí výzva k zadání přístupu ke svému účtu MailChimp, přihlaste se pomocí přihlašovacích údajů MailChimp.
+1. Pokud ještě nemáte připojení k účtu MailChimp, budete vyzváni k přihlášení.
 
-1. Zadejte informace o této akci, jak je znázorněno zde:
+1. V akci **Přidat člena do seznamu** zadejte informace, jak je znázorněno a popsáno zde:
 
-   ![Zadání informací pro akci Přidat člena do seznamu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
+   ![Snímek obrazovky, který zobrazuje informace o akci přidat člena do seznamu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **ID seznamu** | Ano | `test-members-ML` | Název seznamu adresátů MailChimp. V tomto příkladu se používá "test-Members-ML". |
-   | **Stav** | Ano | `subscribed` | Vyberte stav předplatného pro nového člena. V tomto příkladu se používá "odebírané". <p>Další informace najdete v tématu [Správa odběratelů pomocí rozhraní API MailChimp](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
-   | **E-mailová adresa** | Ano | <*New-member-e-mailová adresa*> | V seznamu dynamického **obsahu vyberte v** části **při přijetí nového e-mailu**, který předá e-mailovou adresu nového člena. |
-   ||||
+   | **ID seznamu** | Yes | <*adresát – seznam názvů*> | Vyberte název seznamu adresátů MailChimp. Tento příklad používá `test-members-ML`. |
+   | **E-mailová adresa** | Yes | <*New-member-e-mailová adresa*> | V seznamu dynamický obsah, který se otevře, vyberte v části **při přijetí nového e-mailu** možnost **z**, která je výstupem triggeru, a určete e-mailovou adresu nového člena. |
+   | **Stav** | Yes | <*member-Subscription-status*> | Vyberte stav předplatného, který chcete nastavit pro nového člena. Tento příklad vybere `subscribed` . <p>Další informace najdete v tématu [Správa odběratelů pomocí rozhraní API MailChimp](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
+   |||||
 
-   Další informace o vlastnostech této akce najdete v referenčních informacích ke [konektoru MailChimp](/connectors/mailchimp/).
+   Další informace o vlastnostech akce **Přidat člena do seznamu** naleznete v tématu reference ke [konektoru MailChimp](/connectors/mailchimp/).
 
 1. Uložte aplikaci logiky.
 
-Dále přidejte podmínku, abyste mohli kontrolovat, jestli se nový člen úspěšně připojil k vašemu seznamu adresátů. Tím se zajistí, že vás aplikace logiky bude upozorňovat na úspěch nebo selhání této operace.
+Dále přidejte podmínku, abyste mohli kontrolovat, jestli se nový člen úspěšně připojil k vašemu seznamu adresátů. Vaše aplikace logiky tak může upozorňovat na to, jestli tato operace proběhla úspěšně, nebo selhala.
 
 ## <a name="check-for-success-or-failure"></a>Kontrola úspěchu nebo selhání
 
-1. Ve větvi **Pokud je true** v akci **Přidat člena do seznamu** vyberte **přidat akci**.
+1. Ve větvi **true** vyberte v akci **Přidat člena do seznamu** možnost **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition` jako filtr. V seznamu akce vyberte **Podmínka**.
+1. V části **Zvolit operaci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition` a vyberte akci s názvem **Podmínka**.
 
 1. Přejmenujte podmínku s použitím tohoto popisu: `If add member succeeded`
 
 1. Vytvořte podmínku, která bude kontrolovat, jestli bylo připojení schváleného člena k vašemu seznamu adresátů úspěšné nebo neúspěšné:
 
-   1. V podmínce klikněte do pole **zvolit hodnotu** , které je na levé straně podmínky. V seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu**vlastnost **stav** .
+   1. Na levé straně podmínky klikněte do pole **zvolit hodnotu** . V seznamu dynamický obsah, který se zobrazí, vyberte v části **Přidat člena do seznamu** vlastnost **stav** .
 
       Například vaše podmínka vypadá jako v tomto příkladu:
 
-      ![Výběr možnosti Status (Stav) v části Přidat člena do seznamu](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member.png)
+      ![Snímek obrazovky zobrazující levou stranu podmínky "výběr hodnoty", která je zadána jako "stav".](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member.png)
 
    1. V poli prostřední porovnání vyberte operátor **je rovno** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento text:`subscribed`
+   1. Na pravé straně podmínky v poli **zvolit hodnotu** zadejte tento text: `subscribed`
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 
-      ![Dokončená podmínka pro příklad odběru](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
+      ![Snímek obrazovky, který ukazuje dokončenou podmínku pro kontrolu úspěšného nebo neúspěšného předplatného.](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
 
-Dále nastavte e-maily, které se odešlou po úspěšném nebo neúspěšném připojení schváleného člena k vašemu seznamu adresátů.
+Dále nastavte e-maily, které se mají odeslat, když schválený člen buď proběhne úspěšně, nebo selže v připojení k vašemu seznamu adresátů.
 
 ## <a name="send-email-if-member-added"></a>Odeslání e-mailu v případě přidání člena
 
-1. V části Pokud je **splněna** podmínka **Přidání člena** , ve větvi Pokud je true vyberte **přidat akci**.
+1. V podmínce **úspěšné přidání člena** , ve větvi **true** vyberte **přidat akci**.
 
-   ![Ve větvi Pokud je true vyberte přidat akci.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
+   ![Snímek obrazovky, který zobrazuje větev "Pokud byl úspěšně přidán člen" "true" s vybranou možnost přidat akci.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `outlook send email` jako filtr a vyberte akci **Odeslat e-mail** .
+1. Do vyhledávacího pole **Zvolte operaci** zadejte `outlook send email` a vyberte akci s názvem **Odeslat e-mail**.
 
-   ![Přidat akci "Odeslat e-mail"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
+   ![Snímek obrazovky, který zobrazuje vyhledávací pole "zvolit operaci" s zadáním "Outlook send email" a akci "Odeslat e-mail", která je vybrána pro oznámení.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
 1. Přejmenujte akci s tímto popisem: `Send email on success`
 
-1. Zadejte pro tuto akci informace zobrazené a popsané níže:
+1. V akci **Odeslat e-mail po úspěšném** zadání zadejte informace, jak je znázorněno a popsáno zde:
 
-   ![Zadání informací pro e-mail s informací o úspěchu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
+   ![Snímek obrazovky zobrazující akci odeslat e-mail při úspěchu a informace, které jsou k dispozici pro e-mail s informací o úspěchu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Ano | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o úspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
-   | **Předmět** | Ano | <*Předmět pro úspěch – e-mail*> | Předmět e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Success! Member added to "test-members-ML": ` <p>V seznamu dynamického obsahu v části **Přidat člena do seznamu**vyberte vlastnost **e-mailová adresa** . |
-   | **Text** | Ano | <*text pro úspěch – e-mail*> | Obsah textu e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`New member has joined "test-members-ML":` <p>V seznamu dynamický obsah vyberte vlastnost **e-mailová adresa** . <p>Do dalšího řádku zadejte tento text:`Member opt-in status: ` <p> V seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu**vlastnost **stav** . |
+   | **Text** | Yes | <*úspěch – e-mail – tělo*> | Obsah textu e-mailu s informací o úspěchu. Pro tento kurz použijte následující postup: <p>1. Zadejte tento text s koncovým mezerou: `New member has joined "test-members-ML":` <p>2. ze seznamu dynamického obsahu, který se zobrazí, vyberte vlastnost **e-mailová adresa** . <p>**Poznámka**: Pokud se tato vlastnost nezobrazuje, vedle záhlaví oddílu **Přidat člena do seznamu** vyberte **Zobrazit další**. <p>3. na dalším řádku zadejte tento text s koncovým místem: `Member opt-in status: ` <p>4. ze seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu** vlastnost **stav** . |
+   | **Předmět** | Yes | <*úspěch – e-mail – předmět*> | Předmět e-mailu s informací o úspěchu. Pro tento kurz použijte následující postup: <p>1. Zadejte tento text s koncovým mezerou: `Success! Member added to "test-members-ML": ` <p>2. ze seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu** vlastnost **e-mailové adresy** . |
+   | **Do** | Yes | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o úspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    |||||
 
 1. Uložte aplikaci logiky.
 
 ## <a name="send-email-if-member-not-added"></a>Odeslání e-mailu v případě nepřidání člena
 
-1. V podmínce **úspěšné přidání člena** , ve větvi **Pokud je false** vyberte **přidat akci**.
+1. V podmínce **úspěšné přidání člena** , ve větvi **false** vyberte **přidat akci**.
 
-   ![Ve větvi Pokud je false vyberte přidat akci.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
+   ![Snímek obrazovky zobrazující větev "Pokud se člen úspěšně přidal" "NEPRAVDA", pokud má vybranou možnost přidat akci](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `outlook send email` jako filtr a vyberte akci **Odeslat e-mail** .
+1. Do vyhledávacího pole **Zvolte operaci** zadejte `outlook send email` a vyberte akci s názvem **Odeslat e-mail**.
 
-   ![Přidání akce Odeslat e-mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
+   ![Snímek obrazovky, který zobrazuje vyhledávací pole "zvolit operaci" s uvedeným zadáním "Outlook odeslat e-mail" a je vybrána akce Odeslat e-mail.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
 1. Přejmenujte akci s tímto popisem: `Send email on failure`
 
 1. Zadejte informace o této akci, jak je znázorněno zde:
 
-   ![Zadání informací o e-mailu s informací o neúspěchu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
+   ![Snímek obrazovky zobrazující akci "Odeslat e-mail při selhání" a informace, které jsou k dispozici pro e-mail o selhání](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Ano | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o neúspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
-   | **Předmět** | Ano | <*Předmět pro selhání – e-mail*> | Předmět e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Failed, member not added to "test-members-ML": ` <p>V seznamu dynamického obsahu v části **Přidat člena do seznamu**vyberte vlastnost **e-mailová adresa** . |
-   | **Text** | Ano | <*tělo – chyba – e-mail*> | Obsah textu e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Text** | Yes | <*tělo – chyba – e-mail*> | Obsah textu e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Předmět** | Yes | <*Předmět pro selhání – e-mail*> | Předmět e-mailu s informací o neúspěchu. Pro tento kurz použijte následující postup: <p>1. Zadejte tento text s koncovým mezerou: `Failed, member not added to "test-members-ML": ` <p>2. ze seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu** vlastnost **e-mailové adresy** . |
+   | **Do** | Yes | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o neúspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    |||||
 
 1. Uložte aplikaci logiky. 
 
 V dalším kroku otestujte aplikaci logiky, která teď vypadá podobně jako v tomto příkladu:
 
-![Ukázka dokončeného pracovního postupu aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-completed.png)
+![Snímek obrazovky zobrazující příklad dokončeného pracovního postupu aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-completed.png)
 
 ## <a name="run-your-logic-app"></a>Spuštění aplikace logiky
 
@@ -303,35 +295,43 @@ V dalším kroku otestujte aplikaci logiky, která teď vypadá podobně jako v 
 
    Pokud váš e-mail obsahuje předmět, který odpovídá filtru předmětu triggeru, aplikace logiky vám odešle e-mail ke schválení žádosti o odběr.
 
-1. V e-mailu pro schválení vyberte **schválit**.
+1. V přijatém e-mailu pro schválení vyberte **schválit**.
 
 1. Pokud emailová adresa odběratele ve vašem seznamu adresátů neexistuje, aplikace logiky přidá e-mailovou adresu tohoto člověka a odešle vám podobný e-mail jako v tomto příkladu:
 
-   ![Příklad e-mailu – úspěšné předplatné](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-success.png)
+   ![Snímek obrazovky, který zobrazuje příklad e-mailu pro úspěšné předplatné.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-success.png)
 
    Pokud vaše aplikace logiky nemůže odběratele přidat, obdržíte podobný e-mail jako v tomto příkladu:
 
-   ![Příklad e-mailu – neúspěšné předplatné](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-failed.png)
+   ![Snímek obrazovky, který zobrazuje příklad e-mailu pro neúspěšné předplatné.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-failed.png)
 
-   Pokud neobdržíte žádné e-maily, zkontrolujte složku s nevyžádanou poštou. Váš filtr nevyžádané pošty může tento typ e-mailů přesměrovávat. Pokud si nejste jisti správným spuštěním aplikace logiky, přečtěte si téma [Řešení potíží s aplikací logiky](../logic-apps/logic-apps-diagnosing-failures.md).
+  > [!TIP]
+  > Pokud neobdržíte žádné e-maily, zkontrolujte složku s nevyžádanou poštou. Váš filtr nevyžádané pošty může tento typ e-mailů přesměrovávat. Pokud si nejste jisti správným spuštěním aplikace logiky, přečtěte si téma [Řešení potíží s aplikací logiky](../logic-apps/logic-apps-diagnosing-failures.md).
 
 Blahopřejeme, právě jste vytvořili a spustili aplikaci logiky, která integruje informace napříč Azure, službami Microsoftu a dalšími aplikacemi SaaS.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už ukázkovou aplikaci logiky nepotřebujete, odstraňte skupinu prostředků, která obsahuje vaši aplikaci logiky a související prostředky. 
+Vaše aplikace logiky pokračuje běžet, dokud aplikaci nezakážete nebo neodstraníte. Pokud už ukázkovou aplikaci logiky nepotřebujete, odstraňte skupinu prostředků, která obsahuje vaši aplikaci logiky a související prostředky.
 
-1. V hlavní nabídce Azure přejděte na **Skupiny prostředků** a vyberte skupinu prostředků pro vaši aplikaci logiky.
+1. Do vyhledávacího pole Azure Portal zadejte název skupiny prostředků, kterou jste vytvořili. Z výsledků v části **skupiny prostředků** vyberte skupinu prostředků.
 
-1. V nabídce skupina prostředků vyberte **Přehled**  >  **Odstranit skupinu prostředků**. 
+   V tomto příkladu se vytvořila skupina prostředků s názvem `LA-MailingList-RG` .
 
-   ![Přehled > Odstranit skupinu prostředků](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
+   ![Snímek obrazovky, který zobrazuje pole Azure Search s uvedením "La-Mailinglist-RG" a * * LA-MailingList-RG * * Selected.](./media/tutorial-process-mailing-list-subscriptions-workflow/find-resource-group.png)
 
-1. Jako potvrzení zadejte název skupiny prostředků a vyberte **Odstranit**.
+   > [!TIP]
+   > Pokud se na domovské stránce Azure zobrazuje skupina prostředků v části **nedávné prostředky**, můžete vybrat skupinu z domovské stránky.
+
+1. V nabídce skupina prostředků ověřte, že je vybraná možnost **Přehled** . Na panelu nástrojů v podokně **Přehled** vyberte **Odstranit skupinu prostředků**.
+
+   ![Snímek obrazovky, který zobrazuje podokno "Přehled" skupiny prostředků a na panelu nástrojů, je vybrána možnost odstranit skupinu prostředků.](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
+
+1. V podokně potvrzení, které se zobrazí, zadejte název skupiny prostředků a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili aplikaci logiky, která spravuje schvalování požadavků na seznam adresátů. Teď můžete zjistit, jak vytvořit aplikaci logiky, která zpracovává a ukládá e-mailové přílohy díky integraci služeb Azure, mimo jiné služeb Azure Storage a Azure Functions.
+V tomto kurzu jste vytvořili aplikaci logiky, která zpracovává schválení pro žádosti o seznam adresátů. Teď můžete zjistit, jak vytvořit aplikaci logiky, která zpracovává a ukládá e-mailové přílohy díky integraci služeb Azure, mimo jiné služeb Azure Storage a Azure Functions.
 
 > [!div class="nextstepaction"]
 > [Zpracování e-mailových příloh](../logic-apps/tutorial-process-email-attachments-workflow.md)

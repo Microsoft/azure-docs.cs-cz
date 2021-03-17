@@ -2,20 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 08/12/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
-ms.author: diberry
-ms.openlocfilehash: 67b747d19a7866201afabd7f9590895a26ef55d6
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.custom: include file, devx-track-js
+ms.openlocfilehash: 7fd44bd6feb5ee256b2a6b723fc684ea8c9ed736
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237373"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91544888"
 ---
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -26,5 +24,5 @@ Tyto fragmenty kódu ukazují, jak provést následující s klientskou knihovno
 * [Přidání entit](#create-entities-for-the-app)
 * [Přidat ukázkové promluvy](#add-example-utterance-to-intent)
 * [Výuka aplikace](#train-the-app)
-* [Publikování aplikace](#publish-a-language-understanding-app)
+* [Publikování aplikace](#publish-app-to-production-slot)
 * [Předpověď podle slotu](#get-prediction-from-runtime)

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom:
 - seo-lt-2019
 - seo-dt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 11659bcbdf77d04c0f4e6f8bc7aca30c716fc924
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090701"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606885"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problémy online migrace & omezení pro Azure DB for MySQL s Azure Database Migration Service
 
@@ -32,7 +32,7 @@ Známé problémy a omezení související s online migracemi z MySQL na Azure D
 - Azure Database for MySQL podporuje:
   - MySQL Community Edition
   - Modul InnoDB
-- Migrace stejné verze. Migrace MySQL 5,6 na Azure Database for MySQL 5,7 není podporována.
+- Migrace stejné verze. Migrace MySQL 5,6 na Azure Database for MySQL 5,7 není podporována. Migrace do MySQL 8,0 se nepodporují.
 - Povolit binární přihlášení my.ini (Windows) nebo My. CNF (UNIX)
   - Nastavte Server_id na libovolné číslo větší nebo rovno 1, například Server_id = 1 (pouze pro MySQL 5,6).
   - Nastavení log-bin = \<path> (jenom pro MySQL 5,6)
@@ -42,18 +42,18 @@ Známé problémy a omezení související s online migracemi z MySQL na Azure D
 - Kolace definovaná pro zdrojovou databázi MySQL jsou shodná s těmi, která jsou definována v cílovém Azure Database for MySQL.
 - Schéma se musí shodovat se zdrojovou databází MySQL a cílovou databází v Azure Database for MySQL.
 - Schéma v cílovém Azure Database for MySQL nesmí obsahovat cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
-    ```
+    ```sql
     SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
     FROM
     (SELECT 
     KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME,
-        CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
+      CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
         CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery
         FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC
         WHERE
-          KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
-          AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
+        KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+        AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
       AND KCU.REFERENCED_TABLE_SCHEMA = ['schema_name']) Queries
       GROUP BY SchemaName;
     ```
@@ -82,12 +82,12 @@ Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout větší veliko
 
     **Alternativní řešení**: Nahraďte primární klíč jinými typy nebo sloupci, které nejsou typu LOB.
 
-- **Omezení**: Pokud je délka sloupce large object (LOB) větší než 32 KB, data můžou být v cíli zkrácená. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
+- **Omezení**: Pokud je sloupec délka large object (LOB) větší než parametr omezení velikosti LOB (by neměl být větší než 64 KB), může dojít ke zkrácení dat v cíli. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 32 KB, kontaktujte technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 64 KB, použijte parametr "Allow neomezenou velikost LOB". Počítejte s tím, že migrace pomocí parametru "povolí neomezenou velikost LOB" bude pomalejší než migrace pomocí parametru "omezení velikosti LOB".
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Omezení při migraci online z AWS VP MySQL
 
@@ -118,7 +118,7 @@ Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MyS
 
   **Omezení**: k této chybě dochází, pokud cílová databáze Azure Database for MySQL nemá požadované schéma. Migrace schématu je nutná k tomu, aby bylo možné migrovat data do cíle.
 
-  **Alternativní řešení**: [migrujte schéma](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) ze zdrojové databáze do cílové databáze.
+  **Alternativní řešení**: [migrujte schéma](./tutorial-mysql-azure-mysql-online.md#migrate-the-sample-schema) ze zdrojové databáze do cílové databáze.
 
 ## <a name="other-limitations"></a>Další omezení
 
@@ -136,7 +136,7 @@ Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MyS
 
 - V Azure Database Migration Service je limit databází pro migraci v jedné aktivitě migrace čtyři.
 
-- Azure DMS nepodporuje referenční akci CASCADE, která pomáhá automaticky odstranit nebo aktualizovat shodný řádek v podřízené tabulce při odstranění nebo aktualizaci řádku v nadřazené tabulce. Další informace najdete v části referenční akce článku [omezení cizího klíče](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)v dokumentaci k MySQL. Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) . 
+- Azure DMS nepodporuje referenční akci CASCADE, která pomáhá automaticky odstranit nebo aktualizovat shodný řádek v podřízené tabulce při odstranění nebo aktualizaci řádku v nadřazené tabulce. Další informace najdete v části referenční akce článku [omezení cizího klíče](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)v dokumentaci k MySQL. Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](../mysql/concepts-migrate-dump-restore.md) . 
 
 - **Chyba:** Velikost řádku je moc velká (> 8126). Změna některých sloupců na TEXT nebo objekt BLOB může pomáhat. V aktuálním formátu řádku je předpona objektu BLOB 0 bajtů uložená jako vložená.
 

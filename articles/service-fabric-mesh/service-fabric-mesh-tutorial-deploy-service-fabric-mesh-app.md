@@ -1,19 +1,24 @@
 ---
 title: Kurz – nasazení aplikace Service Fabric sítě
 description: Zjistěte, jak pomocí sady Visual Studio publikovat aplikaci Azure Service Fabric Mesh složenou z webu ASP.NET Core, který komunikuje s back-endovou webovou službou.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 713f8dcb3d3b3d30fecbea4bb6b50cc4e47d451d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261329"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216747"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric Mesh
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 V tomto kurzu, který je třetí částí série, se dozvíte, jak publikovat webovou aplikaci Azure Service Fabric Mesh přímo ze sady Visual Studio.
 
@@ -51,7 +56,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 Aplikace se nachází v adresáři `src\todolistapp`.
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-to-azure"></a>Publikování do Azure
 
 Pokud chcete projekt Service Fabric Mesh publikovat do Azure, klikněte v sadě Visual Studio pravým tlačítkem na **todolistapp** a vyberte **Publikovat**.
 
@@ -61,7 +66,7 @@ Zobrazí se dialogové okno **Publikovat aplikaci Service Fabricu**.
 
 Vyberte účet a předplatné Azure. Vyberte **umístění**. Tento článek používá umístění **USA – východ**.
 
-V části **Skupina prostředků**vyberte **\<Create New Resource Group...>** . Zobrazí se dialogové okno, ve kterém vytvoříte novou skupinu prostředků. Tento článek pracuje s umístěním **USA – východ** a názvem skupiny **sfmeshTutorial1RG** (pokud vaše organizace má více lidí, kteří používají stejné předplatné, zvolte jedinečný název skupiny).  Kliknutím na **Vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
+V části **Skupina prostředků** vyberte **\<Create New Resource Group...>** . Zobrazí se dialogové okno, ve kterém vytvoříte novou skupinu prostředků. Tento článek pracuje s umístěním **USA – východ** a názvem skupiny **sfmeshTutorial1RG** (pokud vaše organizace má více lidí, kteří používají stejné předplatné, zvolte jedinečný název skupiny).  Kliknutím na **Vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
 
 ![Dialogové okno nové skupiny prostředků Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
@@ -139,4 +144,4 @@ Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
 > [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli

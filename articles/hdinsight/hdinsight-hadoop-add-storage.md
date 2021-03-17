@@ -1,32 +1,29 @@
 ---
 title: Přidání dalších účtů Azure Storage do HDInsight
 description: Naučte se, jak přidat další účty Azure Storage do stávajícího clusteru HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 23e7b0f8dcb0c64259627d5350511ebdc48d6fac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078980"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945937"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
-Naučte se používat akce skriptů k přidání dalších *účtů* Azure Storage do HDInsight. Kroky v tomto dokumentu přidávají *účet* úložiště do stávajícího clusteru HDInsight. Tento článek se týká *účtů* úložiště (nikoli výchozího účtu úložiště clusteru) a ne dalšího úložiště, jako je [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) a [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
+Naučte se používat akce skriptů k přidání dalších *účtů* Azure Storage do HDInsight. Kroky v tomto dokumentu přidávají *účet* úložiště do stávajícího clusteru HDInsight. Tento článek se týká *účtů* úložiště (nikoli výchozího účtu úložiště clusteru) a ne dalšího úložiště, jako je [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) a [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
 
 > [!IMPORTANT]  
 > Informace v tomto dokumentu se týkají přidání dalších účtů úložiště do clusteru po jeho vytvoření. Informace o přidávání účtů úložiště během vytváření clusteru najdete v tématu [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Název a klíč účtu úložiště Viz [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md).
-* Pokud používáte PowerShell, budete potřebovat AZ Module.  Další informace najdete v tématu [přehled Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
+* Pokud používáte PowerShell, budete potřebovat AZ Module.  Další informace najdete v tématu [přehled Azure PowerShell](/powershell/azure/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -55,8 +52,8 @@ Použijte [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md#script-acti
 |Typ (typy) uzlů|Head|
 |Parametry|`ACCOUNTNAME``ACCOUNTKEY` `-p` (volitelné)|
 
-* `ACCOUNTNAME`je název účtu úložiště, který se má přidat do clusteru HDInsight.
-* `ACCOUNTKEY`je přístupový klíč pro `ACCOUNTNAME` .
+* `ACCOUNTNAME` je název účtu úložiště, který se má přidat do clusteru HDInsight.
+* `ACCOUNTKEY` je přístupový klíč pro `ACCOUNTNAME` .
 * Parametr `-p` je volitelný. Je-li tento parametr zadán, klíč nebude šifrován a je uložen v souboru core-site.xml jako prostý text.
 
 ## <a name="verification"></a>Ověření

@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 56f79bf38b627f80d73b59dbbfbb73dddd809458
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5915830e4521399ad322dd4a6f3926428d811455
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525150"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94942503"
 ---
-V prohlížeči přejděte na web Azure Portal a přihlaste se pomocí svého účtu Azure.
+V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
-1. Přejděte na stránku Virtual WAN. Na portálu klikněte na **+ Vytvořit prostředek**. Do vyhledávacího pole zadejte **virtuální síť WAN** a vyberte Enter.
-1. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
+1. Na portálu vyberte **+ vytvořit prostředek**. Do vyhledávacího pole zadejte **virtuální síť WAN** a vyberte **ENTER**.
+1. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN vyberte **vytvořit** a otevřete stránku vytvořit síť WAN.
 1. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Základy":::
+   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Snímek obrazovky se zobrazí v podokně vytvořit síť WAN se zvolenou kartou základy.":::
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Skupina prostředků** – vytvořte nové nebo použijte existující.
-   * **Umístění skupiny prostředků** – vyberte umístění prostředku z rozevíracího seznamu. Síť WAN je globální prostředek, takže se nenachází v určité oblasti. Přesto je ale potřeba oblast vybrat, abyste mohli snáz spravovat a vyhledávat prostředek sítě WAN, který vytvoříte.
+   * **Umístění skupiny prostředků** – vyberte umístění prostředku z rozevíracího seznamu. Síť WAN je globální prostředek, takže se nenachází v určité oblasti. Je však nutné vybrat oblast, aby bylo možné spravovat a vyhledat prostředek sítě WAN, který vytvoříte.
    * **Název** – zadejte název, který chcete zavolat do sítě WAN.
-   * **Typ** – Basic nebo Standard. Pokud vytvoříte základní síť WAN, můžete vytvořit jenom základní centrum. Základní centra se podporují jenom pro připojení VPN typu Site-to-site.
+   * **Typ** – Basic nebo Standard. Vyberte **Standard**. Pokud vyberete základní VWAN, je třeba pochopit, že základní VWANs může obsahovat jenom základní rozbočovače, které omezují typ připojení typu Site-to-site.
 1. Po dokončení vyplňování polí vyberte **zkontrolovat + vytvořit**.
 1. Po úspěšném ověření vyberte **vytvořit** a vytvořte virtuální síť WAN.

@@ -5,16 +5,17 @@ author: vikramdesai01
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 74c00678ca901d163d951e02167c89896c43e7b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: HT
+ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281765"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096413"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačním údajům v Azure
 
@@ -37,9 +38,9 @@ Správce účtu může udělit přístup k fakturačním údajům Azure jiným o
 - Čtenář
 - Čtenář fakturace
 
-Tyto role mají přístup k fakturačním údajům na webu [Azure Portal](https://portal.azure.com/). Lidé, kteří mají přiřazené tyto role, můžou také využívat [rozhraní API pro fakturaci](usage-rate-card-overview.md), která umožňují programový přístup k fakturám a informacím o využití.
+Tyto role mají přístup k fakturačním údajům na webu [Azure Portal](https://portal.azure.com/). Lidé, kteří mají přiřazené tyto role, můžou také využívat [rozhraní API pro fakturaci](consumption-api-overview.md#usage-details-api), která umožňují programový přístup k fakturám a informacím o využití.
 
-Informace o přiřazování rolí najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Pokud chcete přiřadit role, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ** Pokud jste zákazníkem se smlouvou Enterprise, vlastník účtu může přiřadit výše uvedenou roli ostatním uživatelům ze svého týmu. Pokud si ale tito uživatelé chtějí zobrazovat fakturační údaje, musí podnikový správce na webu Enterprise Portal povolit nastavení AO view charges (Vlastník účtu může zobrazit náklady).
 
@@ -52,7 +53,7 @@ Jakmile správce účtu přiřadí jiným uživatelům příslušné role, musí
 
 1. Vyhledejte **Cost Management a fakturace**.
 
-    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![Screenshot zvýrazňující Cost Management + Billing v části Služby](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. V levém podokně vyberte **Předplatná**. V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná**.
 
@@ -93,7 +94,7 @@ Funkce role Čtenář fakturace je ve verzi Preview a ještě nepodporuje jiné 
 1. Do textového pole **Vyberte** zadejte jméno nebo e-mail uživatele, kterého chcete přidat.
 1. Vyberte uživatele.
 1. Vyberte **Uložit**.
-    ![Snímek obrazovky znázorňující kliknutí na tlačítko Přidat přiřazení role](./media/manage-billing-access/billing-save-role-assignment.png)
+    ![Screenshot zvýrazňující tlačítko Uložit](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Po chvíli se uživateli přiřadí k roli Čtenář fakturace pro toto předplatné.
 
@@ -104,7 +105,7 @@ Funkce role Čtenář fakturace je ve verzi Preview a ještě nepodporuje jiné 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Uživatelé v jiných rolích, například Vlastník nebo Přispěvatel, mají přístup nejen k fakturačním údajům, ale také ke službám Azure. Informace o správě těchto rolí najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+- Uživatelé v jiných rolích, například Vlastník nebo Přispěvatel, mají přístup nejen k fakturačním údajům, ale také ke službám Azure. Pokud chcete spravovat tyto role, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 - Další informace o rolích najdete v tématu věnovaném [předdefinovaným rolím v Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

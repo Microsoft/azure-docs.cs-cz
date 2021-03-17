@@ -8,40 +8,60 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: 1. Vytvoření clusteru Azure Red Hat OpenShift 4
+    - name: 1. Vytvoření clusteru ARO
       href: tutorial-create-cluster.md
-    - name: 2. Připojení ke clusteru Azure Red Hat OpenShift 4
+    - name: 2. Připojení ke clusteru ARO
       href: tutorial-connect-cluster.md
-    - name: 3. Odstranění clusteru Azure Red Hat OpenShift 4
+    - name: 3. Odstranění clusteru ARO
       href: tutorial-delete-cluster.md
 - name: Návody
   items:
-    - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 4
-      href: howto-create-private-cluster-4x.md
-    - name: Aktualizace tajného kódu pro načtení pro cluster Azure Red Hat OpenShift 4
-      href: howto-add-update-pull-secret.md
-    - name: Konfigurace předávání DNS pro cluster Azure Red Hat OpenShift 4
-      href: dns-forwarding.md
-    - name: Konfigurace ověřování Active Directory pro cluster Azure Red Hat OpenShift 4
+    - name: Operace clusteru
+      items:
+        - name: Upgrade clusteru ARO
+          href: howto-upgrade.md
+    - name: Sítě
+      items:
+        - name: Vytvoření privátního clusteru ARO
+          href: howto-create-private-cluster-4x.md
+        - name: Konfigurace přesměrování DNS
+          href: dns-forwarding.md
+    - name: Storage
+      items:
+        - name: Šifrování virtuálních okruhů pomocí klíče spravovaného zákazníkem (Preview)
+          href: howto-encrypt-data-disks.md
+        - name: Vytvoření třídy Azure Files Storage
+          href: howto-create-a-storageclass.md
+        - name: Použití integrovaného registru kontejneru
+          href: built-in-container-registry.md
+        - name: Použití služby Azure Container Registry
+          href: howto-use-acr-with-aro.md
+    - name: Zabezpečení a ověřování
       items:
         - name: Konfigurace ověřování Azure Active Directory (CLI)
           href: configure-azure-ad-cli.md
         - name: Konfigurace ověřování Azure Active Directory (portál)
           href: configure-azure-ad-ui.md
-    - name: Vytvoření zálohy a obnovení aplikace s využitím Velero
+        - name: Aktualizace tajného kódu pro načtení pro cluster ARO
+          href: howto-add-update-pull-secret.md
+    - name: Zálohování a obnovení
       items:
         - name: Vytvoření zálohy aplikace clusteru s využitím Velero
           href: howto-create-a-backup.md
         - name: Vytvoření obnovení aplikace clusteru s využitím Velero
           href: howto-create-a-restore.md
-    - name: Monitorování a protokolování pro Azure Red Hat OpenShift 4
+    - name: Monitorování a protokolování
       items:
-        - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 4 (Preview)
+        - name: Azure Monitor pro kontejnery
           items:
-            - name: Konfigurace Azure Monitoru pro kontejnery pro Azure Red Hat OpenShift 4 (Preview)
+            - name: Konfigurace Azure Monitoru pro kontejnery pro ARO 4 (Preview)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
-            - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+            - name: Zákaz Azure Monitoru pro kontejnery v ARO 4 (Preview)
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
+    - name: Vývoj a spouštění aplikací
+      items:
+        - name: Nasazení aplikace Open Liberty / WebSphere Liberty
+          href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
         - name: Nastavení vývojového prostředí Azure Red Hat OpenShift pro Azure Red Hat OpenShift 3.11
@@ -62,10 +82,10 @@
             - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
               items:
                 - name: Konfigurace Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
-                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Spouštění privilegovaných kontejnerů v Azure Red Hat OpenShiftu 3.11
           href: howto-run-privileged-containers.md
@@ -77,9 +97,9 @@
               href: cluster-administration-security-context-constraints.md
 - name: Koncepty
   items:
-    - name: Sítě v clusterech Azure Red Hat OpenShift 4
+    - name: Sítě
       href: concepts-networking.md
-    - name: Migrace z Azure Red Hat OpenShiftu 3.11 na Azure Red Hat OpenShift 4
+    - name: Migrace z ARO 3.11 na ARO 4
       href: migration.md
 - name: Referenční informace
   items:
@@ -93,15 +113,15 @@
       href: openshift-faq.md
     - name: Řešení potíží
       href: troubleshoot.md
-    - name: Podporované prostředky pro Azure Red Hat OpenShift 3.11
-      href: supported-resources.md
-    - name: Podporované prostředky pro Azure Red Hat OpenShift 4.3
+    - name: Zásady podpory pro ARO 4
       href: support-policies-v4.md
+    - name: Životní cyklus podpory pro ARO 4
+      href: support-lifecycle.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Dokumentace k Azure Red Hat OpenShiftu 4.3
+    - name: Dokumentace k Red Hat OpenShiftu 4
       href: 'https://docs.openshift.com/aro/4/welcome/index.html'
-    - name: Dokumentace k Azure Red Hat OpenShiftu 3.11
-      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Plány ARO
+      href: 'https://github.com/Azure/OpenShift/projects/1'

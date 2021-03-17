@@ -2,14 +2,14 @@
 title: Sledování dostupnosti a odezvy libovolných webů | Dokumentace Microsoftu
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 03/10/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310272"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012560"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -23,9 +23,12 @@ Existují tři typy testů dostupnosti:
 
 * [Testování ping adresy URL](#create-a-url-ping-test): jednoduchý test, který můžete vytvořit na portálu Azure.
 * [Webový test s více kroky](availability-multistep.md): záznam sekvence webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
-* [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
+* [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
 
 **Pro každý prostředek Application Insights můžete vytvořit testy dostupnosti až 100.**
+
+> [!IMPORTANT]
+> [Test příkazového testu adresy URL](#create-a-url-ping-test) a [webový test na více kroků](availability-multistep.md) se spoléhá na veřejnou internetovou infrastrukturu DNS k překladu názvů domén testovaných koncových bodů. To znamená, že pokud používáte Privátní DNS, musíte buď zajistit, aby všechny názvy domén testu byly přeložitelnými servery veřejných domén, nebo pokud není možné, můžete místo toho použít [vlastní sledovací testy dostupnosti](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) .
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -69,8 +72,42 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Standardním** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
+
+### <a name="location-population-tags"></a>Umístění značek naplnění
+
+Po nasazení testu adresy URL dostupnosti pomocí Azure Resource Manager se dá pro atribut geografické polohy použít následující Tagy naplnění.
+
+#### <a name="azure-gov"></a>Gov Azure
+
+| Zobrazovaný název   | Název souboru     |
+|----------------|---------------------|
+| USGov Virginie | usgov – VA – AZR        |
+| USGov Arizona  | usgov-PHX-AZR       |
+| USGov Texas    | usgov-TX-AZR        |
+| USDoD východ     | usgov-ddeast-AZR    |
+| USDoD – střed  | usgov-ddcentral-AZR |
+
+#### <a name="azure"></a>Azure
+
+| Zobrazovaný název                           | Název souboru   |
+|----------------------------------------|-------------------|
+| Austrálie – východ                         | Evropa – au – SYD – Edge  |
+| Brazílie – jih                           | LATAM-br – Gru – Edge |
+| USA – střed                             | US-FL – Mia – Edge    |
+| Východní Asie                              | APAC-HK-hkn-AZR   |
+| East US                                | US-VA-popel – AZR     |
+| Francie – jih (dříve Francie – střed) | oblast EMEA-ch-ZRH-Edge  |
+| Francie – střed                         | Evropa – fr – pra – Edge  |
+| Japonsko – východ                             | APAC – JP – KAW – Edge  |
+| Severní Evropa                           | oblast EMEA-GB-DB3-AZR   |
+| USA – středosever                       | US-Il-CH1-AZR     |
+| Středojižní USA                       | US-TX-SN1-AZR     |
+| Southeast Asia                         | APAC-SG-Sin-AZR   |
+| Spojené království – západ                                | oblast EMEA-se-ši-Edge  |
+| West Europe                            | Evropa – nl – AMS – AZR   |
+| USA – západ                                | US-CA-SJC-AZR     |
+| Spojené království – jih                               | Evropa – ru – MSA – Edge  |
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
 
@@ -78,7 +115,7 @@ Výsledky testů dostupnosti lze vizuálně zobrazit pomocí spojnicových i bod
 
 Po několika minutách kliknutím na **aktualizovat** zobrazíte výsledky testů.
 
-![Řádkové zobrazení](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Snímek obrazovky zobrazující stránku dostupnosti se zvýrazněným tlačítkem aktualizovat](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 Zobrazení scatterplot zobrazuje ukázky výsledků testů, které obsahují podrobné informace o testovacím kroku testu. V případě testů obsahujících selhání ukládá testovací modul diagnostické informace. U úspěšných testů se diagnostické informace ukládají pro celou dílčí sadu provedení. Pokud chcete zobrazit test, název testu a umístění, najeďte myší na kteroukoli zelenou/červenou tečku.
 
@@ -113,7 +150,7 @@ Kliknutím na řádek výjimky zobrazíte podrobnosti o výjimce na straně serv
 
 ![Diagnostika na straně serveru](./media/monitor-web-app-availability/open-instance-4.png)
 
-Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](../platform/metrics-getting-started.md):
+Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](../essentials/metrics-getting-started.md):
 
 1. Dostupnost: procento testů, které proběhly úspěšně, vzhledem k celkovému počtu provedení testu.
 2. Doba trvání testu: průměrná doba trvání u všech provedení testu.
@@ -121,7 +158,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 ## <a name="automation"></a>Automation
 
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](./powershell.md#add-an-availability-test).
-* Nastavení [webhook](../platform/alerts-webhooks.md), který je volán při vydání výstrahy.
+* Nastavení [webhook](../alerts/alerts-webhooks.md), který je volán při vydání výstrahy.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

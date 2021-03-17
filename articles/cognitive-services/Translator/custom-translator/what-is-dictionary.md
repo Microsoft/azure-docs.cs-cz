@@ -2,25 +2,25 @@
 title: Co je slovník? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Slovník je zarovnaný dokument, který určuje seznam frází nebo vět (a jejich překlady), který má aplikace Microsoft Translator vždycky přeložit stejným způsobem. Slovníky se někdy také označují jako Glossaries nebo pojem základ.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 160aa372cec2d018d5a3558f99e079624d965098
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510755"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895556"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
 Slovník je zarovnaný pár dokumentů, které určují seznam frází nebo vět a jejich odpovídající překlady. Použijte slovník ve školicím programu, pokud chcete, aby Microsoft Translator vždy přeložil všechny instance zdrojové fráze nebo věty pomocí překladu, který jste zadali ve slovníku. Slovníky jsou někdy označovány jako Glossaries nebo pojem základ. Slovník si můžete představit jako hrubou silou "zkopírovat a nahradit" pro všechny uvedené výrazy. Kromě toho služba vlastní překladatele Microsoftu sestaví a využívá vlastní slovníky pro obecné účely ke zlepšení kvality jeho překladu. Slovník poskytnutý zákazníkem má ale stejný předchůdce a bude prohledán jako první hledaná slova nebo věty.
 
-Slovníky fungují jenom pro projekty ve dvojicích jazyků, které mají plně podporovaný model Microsoft General neuronové Network. [Zobrazte úplný seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Slovníky fungují jenom pro projekty ve dvojicích jazyků, které mají plně podporovaný model Microsoft General neuronové Network. [Zobrazte úplný seznam jazyků](../language-support.md#customization).
 
 ## <a name="phrase-dictionary"></a>Slovník frází
 Slovník frází rozlišuje velká a malá písmena. Jedná se o přesné operace Find a nahrazování. Když zahrnete Frázový slovník do školicího modelu, všechna slova nebo fráze uvedená v seznamu se budou přeložit způsobem, který jste zadali. Zbytek věty je přeložen běžným způsobem. Pomocí slovníku frází můžete určit fráze, které by se neměly překládat, zadáním stejné nepřeložené fráze ve zdrojovém a cílovém souboru ve slovníku.

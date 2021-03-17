@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285947"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584936"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k měření přesnosti trained model. Poskytnete datovou sadu obsahující skóre vygenerované z modelu a modul **vyhodnocení modelu** vypočítá sadu standardních metrik vyhodnocení v oboru.
   
@@ -30,7 +30,7 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 
 > [!TIP]
-> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
+> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials) od EdX. 
 
 
 ## <a name="how-to-use-evaluate-model"></a>Jak používat model vyhodnocení
@@ -39,6 +39,14 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
     > Pokud k výběru části vstupní datové sady používáte moduly, jako je "vybrat sloupce v sadě dat", zajistěte, aby byl pro výpočet metriky, jako je AUC, přesnost pro binární klasifikaci nebo detekci anomálií k dispozici sloupec s popiskem skóre
     > Pro výpočet metriky pro klasifikaci a regresi ve více třídách existuje skutečný sloupec popisku, sloupec označené skóre.
     > Sloupec ' přiřazení ', sloupce ' DistancesToClusterCenter ne. X (X je těžiště index, v rozsahu od 0,..., počet centroids-1) existuje pro výpočet metrik pro clusteringu.
+
+    > [!IMPORTANT]
+    > + Pro vyhodnocení výsledků by měla výstupní datová sada obsahovat konkrétní názvy sloupců skóre, které splňují požadavky na modul pro vyhodnocení modelu.
+    > + `Labels`Sloupec bude považován za skutečné popisky.
+    > + Pro úlohu regrese musí mít datová sada k vyhodnocení jeden sloupec s názvem `Regression Scored Labels` , který představuje popisky skóre.
+    > + Pro úlohu binární klasifikace musí mít datová sada, která se má vyhodnotit, dva sloupce s názvem `Binary Class Scored Labels` , `Binary Class Scored Probabilities` , které představují popisky s skóre a pravděpodobnosti v uvedeném pořadí.
+    > + Pro úlohu více klasifikací musí mít datová sada, která se má vyhodnotit, jeden sloupec s názvem `Multi Class Scored Labels` , který představuje popisky skóre.
+    > Pokud výstupy nadřazeného modulu tyto sloupce nemají, je nutné upravit podle výše uvedených požadavků.
 
 2. Volitelné Připojte výstup výsledné **sady** dat [modelu skóre](./score-model.md) nebo výstup výsledné sady výsledků do clusterů pro druhý model ke **správnému** vstupnímu portu pro **vyhodnocení modelu**. Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
 
@@ -49,7 +57,7 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 ## <a name="results"></a>Výsledky
 
-Po spuštění **modelu vyhodnocení**vyberte modul a otevřete na pravé straně navigační panel **modelu hodnocení** .  Pak zvolte kartu **výstupy + protokoly** a na této kartě se v části **datové výstupy** zobrazí několik ikon. Ikona **vizualizace** má pruhový graf s ikonou a je prvním způsobem, jak zobrazit výsledky.
+Po spuštění **modelu vyhodnocení** vyberte modul a otevřete na pravé straně navigační panel **modelu hodnocení** .  Pak zvolte kartu **výstupy + protokoly** a na této kartě se v části **datové výstupy** zobrazí několik ikon. Ikona **vizualizace** má pruhový graf s ikonou a je prvním způsobem, jak zobrazit výsledky.
 
 V případě binární klasifikace můžete po kliknutí na ikonu **vizualizace** vizualizovat matrici v binární měně.
 V případě vícenásobné klasifikace můžete najít soubor vykreslení matrice na kartě **výstupy a protokoly** , jako je následující:
@@ -86,7 +94,7 @@ Následující metriky jsou hlášeny při vyhodnocování binárních klasifika
   
 -   **Skóre F1** je vypočítáváno jako vážený průměr přesnosti a odvolání v rozmezí 0 až 1, kde ideální hodnota skóre F1 je 1.  
   
--   **AUC** měří oblast pod křivkou vykreslenou se skutečnými klady na ose y a falešně pozitivních hodnot na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů.  
+-   **AUC** měří oblast pod křivkou vykreslenou se skutečnými klady na ose y a falešně pozitivních hodnot na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů. AUC je klasifikace-prahová hodnota – invariantní. Měří kvalitu předpovědi modelu bez ohledu na to, jaká prahová hodnota klasifikace je vybrána.
 
 
 ### <a name="metrics-for-regression-models"></a>Metriky pro regresní modely
@@ -105,7 +113,7 @@ Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb. 
   
 
   
-- **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
+- **Koeficient stanovitelnosti**, který se často označuje jako R <sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
 
 ###  <a name="metrics-for-clustering-models"></a>Metriky pro modely clusteringu
 
@@ -117,7 +125,7 @@ Vzhledem k tomu, že se modely clusteringu výrazně liší od klasifikace a reg
   
 Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
     
--   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu**představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
+-   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu** představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
 
 -   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů**, představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
   
@@ -134,4 +142,4 @@ Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

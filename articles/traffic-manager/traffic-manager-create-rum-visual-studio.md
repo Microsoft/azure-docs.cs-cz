@@ -3,21 +3,21 @@ title: Měření reálných uživatelů s Visual Studio Mobile Center – Azure 
 description: Nastavte mobilní aplikaci vyvinutou pomocí aplikace Visual Studio Mobile Center k odeslání Měření reálných uživatelů do Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6c16e8541c703aa574e4ddae8ed01571e027b261
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.author: duau
+ms.custom: devx-track-js
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431956"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184607"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Postup odeslání Měření reálných uživatelů pro Traffic Manager v aplikaci Visual Studio Mobile Center
 
@@ -35,7 +35,7 @@ Měření, která provedete a odesíláte Traffic Manager z klientské aplikace,
 K získání klíče rumu pomocí Azure Portal použijte následující postup:
 1. V prohlížeči se přihlaste k webu Azure Portal. Pokud ještě účet nemáte, můžete si zaregistrovat zkušební verzi na měsíc zdarma.
 2. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. Na stránce Traffic Manager profil klikněte v části **Nastavení**na **měření reálných uživatelů** .
+3. Na stránce Traffic Manager profil klikněte v části **Nastavení** na **měření reálných uživatelů** .
 4. Klikněte na **vygenerovat klíč** a vytvořte nový klíč rumu.
         
    ![Generovat klíč Měření reálných uživatelů](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
@@ -52,7 +52,7 @@ K získání klíče rumu pomocí Azure Portal použijte následující postup:
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: instrumentace aplikace pomocí balíčku rumu sady Mobile Center SDK
 
-Pokud s Visual Studio Mobile Center začínáte, přejděte na jeho [Web](https://mobile.azure.com). Podrobné pokyny k integraci sady SDK najdete v tématu [Začínáme s Android SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Pokud s Visual Studio Mobile Center začínáte, přejděte na jeho [Web](https://mobile.azure.com). Podrobné pokyny k integraci sady SDK najdete v tématu [Začínáme s Android SDK](/mobile-center/sdk/getting-started/Android).
 
 Pokud chcete použít Měření reálných uživatelů, proveďte následující postup:
 
@@ -98,8 +98,7 @@ Pokud chcete použít Měření reálných uživatelů, proveďte následující
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [měření reálných uživatelů](traffic-manager-rum-overview.md)
 - Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
-- Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Další informace o [Mobile Center](/mobile-center/)
 - [Zaregistrovat](https://mobile.azure.com) se v Mobile Center
 - Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
-- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
-
+- Informace o tom, jak [vytvořit profil Traffic Manager](./quickstart-create-traffic-manager-profile.md)

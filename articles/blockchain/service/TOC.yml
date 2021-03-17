@@ -13,6 +13,8 @@
       href: create-member.md
     - name: Vytvoření člena s využitím CLI
       href: create-member-cli.md
+    - name: Vytvoření člena s využitím Azure PowerShellu
+      href: create-member-powershell.md
     - name: Vytvoření člena s využitím šablony ARM
       displayName: Resource Manager
       href: create-member-template.md
@@ -81,7 +83,7 @@
     - name: Podpora komunity
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Podpora webu Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-service'
     - name: Zpětná vazba k produktu
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: Ceny

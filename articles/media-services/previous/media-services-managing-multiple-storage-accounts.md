@@ -3,7 +3,7 @@ title: Správa Media Servicesch prostředků napříč několika účty úloži�
 description: V tomto článku najdete pokyny k tomu, jak spravovat Media Services prostředků napříč několika účty úložiště.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 2796a2be5c779124db4dd7f1137ebbff4094705d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b3b2cb4328a68c7718101c5acd362258706cb6d8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056697"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013240"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Servicesch prostředků napříč několika účty úložiště  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 K jednomu Media Services účtu můžete připojit více účtů úložiště. Možnost připojit více účtů úložiště k účtu Media Services přináší následující výhody:
 
@@ -31,7 +34,7 @@ Tento článek ukazuje, jak připojit více účtů úložiště k účtu Media 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při připojování více účtů úložiště k vašemu Media Services účtu platí následující požadavky:
 

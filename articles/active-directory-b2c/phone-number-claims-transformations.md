@@ -12,10 +12,10 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385378"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definovat transformace deklarací telefonního čísla v Azure AD B2C
@@ -118,7 +118,7 @@ Tím se extrahuje kód země nebo oblasti a národní číslo ze vstupní deklar
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | phoneNumber | řetězec | Deklarace řetězce telefonního čísla. Telefonní číslo musí být v mezinárodním formátu a musí se zadat úvodní znak "+" a země/oblasti. |
-| InputParameter | throwExceptionOnFailure | Boolean | Volitelné Parametr, který označuje, zda je vyvolána výjimka, pokud telefonní číslo není platné. Výchozí hodnota je false. |
+| InputParameter | throwExceptionOnFailure | boolean | Volitelné Parametr, který označuje, zda je vyvolána výjimka, pokud telefonní číslo není platné. Výchozí hodnota je false. |
 | InputParameter | countryCodeType | řetězec | Volitelné Parametr označující typ kódu země/oblasti ve výstupní deklaraci identity. Dostupné hodnoty jsou **CallingCode** (mezinárodní volající kód pro zemi nebo oblast, například + 1) nebo **ISO3166** (kód země/oblasti o dvou písmenech ISO-3166). |
 | OutputClaim | nationalNumber | řetězec | Deklarace řetězce pro národní číslo telefonního čísla. |
 | OutputClaim | countryCode | řetězec | Deklarace řetězce pro kód země nebo oblasti telefonního čísla. |

@@ -5,13 +5,13 @@ author: srrengar
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
-ms.custom: mvc
-ms.openlocfilehash: 5cde4967e85dbdab0b2d7177f9c09836a2082db2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244953"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791774"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Kurz: monitorování clusteru Service Fabric v Azure
 
@@ -57,7 +57,7 @@ Vyberte prostředek **ServiceFabric (mysfomsworkspace)**.
 
 V **přehledu** uvidíte dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
 
-![Řešení Service Fabric](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Snímek obrazovky, který zobrazuje graf Service Fabric.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 Následující obrázek ukazuje domovskou stránku Service Fabric Analytics řešení. Tato domovská stránka nabízí snímek toho, co se děje ve vašem clusteru.
 
@@ -227,9 +227,9 @@ Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, můžete 
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>Zobrazit čítače výkonu pomocí protokolů Azure Monitor
 Chcete-li zobrazit čítače výkonu, otevřete [Azure Portal](https://portal.azure.com) a skupinu prostředků, ve které jste vytvořili řešení Service Fabric Analytics. 
 
-Vyberte ServiceFabric prostředku **(mysfomsworkspace)**, pak **Log Analytics pracovní prostor**a pak **Rozšířené nastavení**.
+Vyberte ServiceFabric prostředku **(mysfomsworkspace)**, pak **Log Analytics pracovní prostor** a pak **Rozšířené nastavení**.
 
-Klikněte na **data**a pak na **čítače výkonu Windows**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](/windows/desktop/PerfCtrs/specifying-a-counter-path). Klikněte na **Uložit**a pak na **OK**.
+Klikněte na **data** a pak na **čítače výkonu Windows**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](/windows/desktop/PerfCtrs/specifying-a-counter-path). Klikněte na **Uložit** a pak na **OK**.
 
 Zavřete okno Upřesnit nastavení a v části **Obecné** vyberte možnost **Souhrn pracovního prostoru** . Pro každé z povolených řešení je k dispozici grafická dlaždice, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
 
@@ -240,7 +240,7 @@ Výběrem grafu **metriky kontejnerů** zobrazíte další podrobnosti. Můžete
 ## <a name="query-the-eventstore-service"></a>Dotazování na službu Eventstoru
 [Služba eventstoru](service-fabric-diagnostics-eventstore.md) poskytuje způsob, jak pochopit stav clusteru nebo úloh v daném časovém okamžiku. Eventstoru je stavová služba Service Fabric, která udržuje události z clusteru. Události jsou zpřístupněny prostřednictvím [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), Rest a rozhraní API. Eventstoru dotazuje cluster přímo, aby získal diagnostická data na jakékoli entitě v clusteru, aby se zobrazil úplný seznam událostí, které jsou k dispozici v Eventstoru, viz [Service Fabric události](service-fabric-diagnostics-event-generation-operational.md).
 
-Rozhraní API pro Eventstoru se dají dotazovat programově pomocí [klientské knihovny Service Fabric](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
+Rozhraní API pro Eventstoru se dají dotazovat programově pomocí [klientské knihovny Service Fabric](/dotnet/api/overview/azure/service-fabric#client-library).
 
 Tady je příklad požadavku na všechny události clusteru mezi 2018-04-03T18:00:00Z a 2018-04-04T18:00:00Z, prostřednictvím funkce GetClusterEventListAsync.
 
@@ -299,10 +299,10 @@ Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) s e
 
 Cluster se vyplní automaticky zprávami o stavu, které odesílají součásti systému. Další informace najdete v tématu [použití sestav stavu systému k řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-Service Fabric zveřejňuje dotazy na stav pro každý z podporovaných [typů entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). K nim lze přistupovat prostřednictvím rozhraní API pomocí metod na [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), rutin PowerShellu a REST. Tyto dotazy vrátí kompletní informace o stavu o entitě: agregovaný stav, události stavu entity, podřízené stavy (Pokud je k dispozici), nestavová hodnocení (Pokud entita není v pořádku) a údaje o podřízeném stavu (Pokud je k dispozici).
+Service Fabric zveřejňuje dotazy na stav pro každý z podporovaných [typů entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). K nim lze přistupovat prostřednictvím rozhraní API pomocí metod na [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager), rutin PowerShellu a REST. Tyto dotazy vrátí kompletní informace o stavu o entitě: agregovaný stav, události stavu entity, podřízené stavy (Pokud je k dispozici), nestavová hodnocení (Pokud entita není v pořádku) a údaje o podřízeném stavu (Pokud je k dispozici).
 
 ### <a name="get-cluster-health"></a>Získat stav clusteru
-[Rutina Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) vrátí stav entity clusteru a obsahuje stav aplikací a uzlů (podřízené položky clusteru).  Nejdřív se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps).
+[Rutina Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) vrátí stav entity clusteru a obsahuje stav aplikací a uzlů (podřízené položky clusteru).  Nejdřív se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster).
 
 Stav clusteru je 11 uzlů, systémová aplikace a prostředky infrastruktury:/hlasování nakonfigurované podle popisu.
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>Získat stav uzlu
-[Rutina Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) vrátí stav entity uzlu a obsahuje události stavu hlášené v uzlu. Nejdřív se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps). Následující příklad načte stav konkrétního uzlu pomocí výchozích zásad stavu:
+[Rutina Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) vrátí stav entity uzlu a obsahuje události stavu hlášené v uzlu. Nejdřív se připojte ke clusteru pomocí [rutiny Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster). Následující příklad načte stav konkrétního uzlu pomocí výchozích zásad stavu:
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

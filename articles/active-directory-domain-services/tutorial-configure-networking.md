@@ -1,20 +1,20 @@
 ---
 title: Kurz – konfigurace virtuální sítě pro Azure AD Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat podsíť virtuální sítě Azure nebo partnerský vztah sítě pro Azure Active Directory Domain Services spravovanou doménu pomocí Azure Portal.
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: justinha
+ms.openlocfilehash: ddb8f360304bdb41ae359f293af4d10b0afc6558
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024770"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618412"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace virtuální sítě pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -33,11 +33,11 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -86,7 +86,7 @@ Pro vytvoření podsítě virtuální sítě pro virtuální počítače a úloh
 
     ![Přidejte do Azure Portal další rozsah IP adres virtuální sítě.](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
-1. V nabídce vlevo v okně virtuální síť vyberte **podsítě**a pak vyberte **+ podsíť** a přidejte podsíť.
+1. V nabídce vlevo v okně virtuální síť vyberte **podsítě** a pak vyberte **+ podsíť** a přidejte podsíť.
 1. Zadejte název podsítě, například *úlohy*. V případě potřeby aktualizujte **Rozsah adres** , pokud chcete použít podmnožinu rozsahu IP adres nakonfigurovaného pro virtuální síť v předchozích krocích. Prozatím ponechte výchozí nastavení pro možnosti, jako je skupina zabezpečení sítě, směrovací tabulka, koncové body služby.
 
     V následujícím příkladu se vytvoří podsíť s názvem *úlohy* , která používá rozsah IP adres *10.0.3.0/24* :

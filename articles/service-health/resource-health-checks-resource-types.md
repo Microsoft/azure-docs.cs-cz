@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611938"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883363"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -22,6 +22,11 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |Provedené kontroly|
 |---|
 |<ul><li>Je služba API Management zapnutá a spuštěná?</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
+|Provedené kontroly|
+|---|
+|<ul><li>Je k dispozici instance služby jarního cloudu Azure?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Provedené kontroly|
@@ -46,7 +51,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Provedené kontroly|
 |---|
-|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li><li>[Další informace](../cloud-services/resource-health-for-cloud-services.md) o provedených kontrolách</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices Account/účty
 |Provedené kontroly|
@@ -56,12 +61,17 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftcomputehostgroupshosts"></a>Microsoft. COMPUTE/hostgroups/hostitelů
 |Provedené kontroly|
 |---|
-|<ul><li>Je hostitel v provozu a spuštěný.</li><li>Je hardware hostitele degradován?</li><li>Vydělí se hostitel?</li><li>Je hostitelem hardwarové služby zacelený jiný hardware?</li></ul>|
+|<ul><li>Je hostitel v provozu a běží?</li><li>Je hardware hostitele degradován?</li><li>Vydělí se hostitel?</li><li>Je hostitelem hardwarové služby zacelený jiný hardware?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft. COMPUTE/VirtualMachines
 |Provedené kontroly|
 |---|
 |<ul><li>Je server hostující tento virtuální počítač v provozu a běží?</li><li>Je spuštění hostitelského operačního systému dokončeno?</li><li>Je kontejner virtuálních počítačů zřízený a zapnutý?</li><li>Je mezi hostitelem a účtem úložiště připojení k síti?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/managedClusters
+|Provedené kontroly|
+|---|
+|<ul><li>Je cluster zapnutý a spuštěný?</li><li>Jsou v clusteru k dispozici základní služby?</li><li>Jsou všechny uzly clusteru připravené?</li><li>Je objekt služby aktuální a platný?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
 |Provedené kontroly|
@@ -109,6 +119,11 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Je centrum IoT v provozu?</li></ul>|
 
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft. DigitalTwins/DigitalTwinsInstances
+|Provedené kontroly|
+|---|
+|<ul><li>Je instance digitálních vláken Azure v provozu a běží?</li></ul>|
+
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Provedené kontroly|
 |---|
@@ -124,10 +139,20 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Jsou v clusteru HDInsight k dispozici základní služby?</li><li>Může cluster HDInsight přistupovat ke klíči pro šifrování BYOK v klidovém umístění?</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
+|Provedené kontroly|
+|---|
+|<ul><li>Je aplikace IoT Central k dispozici?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Trezory a trezory Microsoft.
 |Provedené kontroly|
 |---|
 |<ul><li>Jsou požadavky na Trezor klíčů neúspěšné kvůli problémům s platformou Azure datatrezoru?</li><li>Jsou požadavky na Trezor klíčů omezené z důvodu příliš velkého počtu požadavků provedených zákazníkem?</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/clustery
+|Provedené kontroly|
+|---|
+|<ul><li>Dochází v clusteru k nízkým rychlostem úspěšnosti přijímání dat?</li><li>Dochází v clusteru k vysoké latenci přijímání dat?</li><li>Dochází v clusteru k velkému počtu chyb dotazů?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft. MachineLearning/WebServices
 |Provedené kontroly|
@@ -143,6 +168,11 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |Provedené kontroly|
 |---|
 |<ul><li>Je výkon Application Gateway snížený?</li><li>Je Application Gateway k dispozici?</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionhosts
+|Provedené kontroly|
+|---|
+|<ul><li>Je hostitel bastionu v provozu a běží?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/připojení
 |Provedené kontroly|
@@ -164,6 +194,11 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Jsou k dispozici koncové body vyrovnávání zatížení?</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficmanagerprofiles
+|Provedené kontroly|
+|---|
+|<ul><li>Existují nějaké problémy, které mají vliv na profil Traffic Manager?</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 |Provedené kontroly|
 |---|
@@ -182,12 +217,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
 |Provedené kontroly|
 |---|
-|<ul><li>Je prostředek kapacity v provozu a běží?</li><li>Jsou všechny úlohy spuštěné a spuštěné?</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft. PowerBI/workspaceCollections
-|Provedené kontroly|
-|---|
-|<ul><li>Je operační systém hostitele v provozu a běží?</li><li>Je dostupná aplikace pracovní prostorcollection z oblasti mimo datové centrum?</li><li>Je poskytovatel prostředků Power BI k dispozici?</li><li>Je služba Power BI k dispozici v příslušné oblasti?</li></ul>|
+|<ul><li>Je prostředek kapacity v provozu a běží?</li><li>Jsou všechny úlohy spuštěné a spuštěné?</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 |Provedené kontroly|
@@ -237,4 +267,4 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="next-steps"></a>Další kroky
 -  Další informace najdete v tématu [Úvod do Azure Service Healthho řídicího panelu](service-health-overview.md) a [Úvod do Azure Resource Health](resource-health-overview.md) . 
 -  [Nejčastější dotazy týkající se Azure Resource Health](resource-health-faq.md)
-- Nastavte výstrahy, abyste byli informováni o problémech se stavem. Další informace najdete v tématu [Konfigurace výstrah pro události služby Service Health](./alerts-activity-log-service-notifications-portal.md). 
+- Nastavte výstrahy, abyste byli informováni o problémech se stavem. Další informace najdete v tématu [Konfigurace výstrah pro události služby Service Health](./alerts-activity-log-service-notifications-portal.md).

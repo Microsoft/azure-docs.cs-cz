@@ -3,7 +3,7 @@ title: Přehled kodérů médií v Azure na vyžádání | Microsoft Docs
 description: Azure Media Services poskytuje více možností pro kódování médií v cloudu. Tento článek obsahuje přehled kodérů médií na vyžádání v Azure.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,19 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
-ms.author: juliako
-ms.openlocfilehash: ef558b9339fe1d4525156cf58efe5056862de0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0fcf3aaa830c092dfa225f55fef882e2263b16cd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052743"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013546"
 ---
-# <a name="overview-of-azure-on-demand-media-encoders"></a>Přehled kodérů médií na vyžádání v Azure 
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Přehled kodérů médií na vyžádání v Azure
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Azure Media Services poskytuje více možností pro kódování médií v cloudu.
 
@@ -34,12 +36,11 @@ Media Services poskytuje dynamické balení, které vám umožní doručovat obs
 
 Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. K koncovým bodům streamování dojde pokaždé, když je koncový bod ve **spuštěném** stavu.
 
-Media Services podporuje následující kodéry na vyžádání, které jsou popsány v tomto článku:
+Media Services podporuje následující kodér na vyžádání:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Pracovní postup kodéru Media Encoder Premium](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Tento článek poskytuje stručný přehled kodérů médií na vyžádání a obsahuje odkazy na články, které poskytují podrobnější informace. Téma také poskytuje porovnání kodérů.
+Tento článek poskytuje stručný přehled kodérů médií na vyžádání a odkazy na články s podrobnějšími informacemi.
 
 Ve výchozím nastavení každý účet Media Services může mít současně jednu aktivní úlohu kódování. Můžete rezervovat jednotky kódování, které vám umožní mít souběžně spuštěné více úloh kódování. jednu pro každou rezervovanou jednotku kódování zakoupíte. Informace najdete v tématu [škálování jednotek kódování](media-services-scale-media-processing-overview.md).
 
@@ -52,7 +53,7 @@ Ve výchozím nastavení každý účet Media Services může mít současně je
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Žádném
-Media Encoder Standard se konfiguruje pomocí některého z přednastavených kodérů popsaných [tady](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard se konfiguruje pomocí některého z přednastavených kodérů popsaných [tady](./media-services-mes-presets-overview.md).
 
 ### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
 Metadata vstupu kodérů jsou popsána [zde](media-services-input-metadata-schema.md).
@@ -60,7 +61,7 @@ Metadata vstupu kodérů jsou popsána [zde](media-services-input-metadata-schem
 [Zde](media-services-output-metadata-schema.md)jsou popsána metadata pro kodéry.
 
 ### <a name="generate-thumbnails"></a>Generovat miniatury
-Informace najdete v tématu [jak generovat miniatury pomocí Media Encoder Standard](media-services-advanced-encoding-with-mes.md#thumbnails).
+Informace najdete v tématu [jak generovat miniatury pomocí Media Encoder Standard](media-services-advanced-encoding-with-mes.md).
 
 ### <a name="trim-videos-clipping"></a>Střih videí (oříznutí)
 Informace najdete v tématu [Postup při stříhání videí pomocí Media Encoder Standard](media-services-advanced-encoding-with-mes.md#trim_video).
@@ -70,15 +71,6 @@ Informace najdete v tématu [jak vytvořit překryvy pomocí Media Encoder Stand
 
 ### <a name="see-also"></a>Viz také
 [Blog Media Services](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
-
-## <a name="media-encoder-premium-workflow"></a>Pracovní postup kodéru Media Encoder Premium
-### <a name="overview"></a>Přehled
-[Představujeme Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>Způsob použití
-Media Encoder Premium Workflow se konfiguruje pomocí složitých pracovních postupů. Soubory pracovních postupů je možné vytvořit a aktualizovat pomocí nástroje [Návrhář postupu provádění](media-services-workflow-designer.md) .
-
-[Jak používat kódování Premium v Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>Známé problémy
 Pokud vstupní video neobsahuje skryté titulky, bude výstupní Asset stále obsahovat prázdný soubor TTML.

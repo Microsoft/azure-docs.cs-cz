@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749613"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90905720"
 ---
 # <a name="train-anomaly-detection-model-module"></a>Modul detekce anomálií pro vlaky
 
-Tento článek popisuje, jak použít modul detekce anomálií pro vlaky v Návrháři Azure Machine Learning (Preview) k vytvoření výukového modelu pro detekci anomálií.
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul detekce anomálií vlaků k vytvoření výukového modelu pro detekci anomálií.
 
 Modul přijímá jako vstup sadu parametrů pro model detekce anomálií a datovou sadu bez popisku. Vrátí model detekce anomálií spolu se sadou štítků pro školicí data.  
 
@@ -53,5 +53,5 @@ Po dokončení školení:
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 
-Seznam chyb specifických pro moduly návrháře naleznete v tématu [výjimky a kódy chyb pro návrháře (Preview)](designer-error-codes.md) .
+Seznam chyb specifických pro moduly návrháře naleznete v tématu [výjimky a kódy chyb pro návrháře](designer-error-codes.md) .
 '

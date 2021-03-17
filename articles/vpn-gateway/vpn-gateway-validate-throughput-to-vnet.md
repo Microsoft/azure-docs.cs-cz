@@ -1,21 +1,21 @@
 ---
 title: Ověření propustnosti sítě VPN pro Microsoft Azure Virtual Network
-description: Účelem tohoto dokumentu je pomáhat uživateli ověřit propustnost sítě z místních prostředků na virtuální počítač Azure.
+description: Tento článek vám pomůže ověřit propustnost sítě z vašich místních prostředků na virtuální počítač Azure.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 05/29/2019
+ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998472"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660929"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
@@ -119,7 +119,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 1. Po dokončení předchozích kroků spusťte stejný postup s rolemi obráceně, aby uzel serveru byl nyní klientským uzlem, a naopak.
 
 > [!Note]
-> Iperf není jediným nástrojem. [NTTTCP je alternativní řešení pro testování](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
+> Iperf není jediným nástrojem. [NTTTCP je alternativní řešení pro testování](../virtual-network/virtual-network-bandwidth-testing.md).
 
 ## <a name="test-vms-running-windows"></a>Testovací virtuální počítače s Windows
 
@@ -127,7 +127,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 
 Stáhněte si nejnovější verzi [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-Zvažte vložení Latte.exe do samostatné složky, jako je například`c:\tools`
+Zvažte vložení Latte.exe do samostatné složky, jako je například `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení Latte.exe přes bránu Windows Firewall
 
@@ -217,7 +217,7 @@ Vytvoření instalace je rychlé
 
 > [!Note]
 > Ujistěte se, že během testování propustnosti mezi virtuálním počítačem a bránou neexistují žádné zprostředkující segmenty (např. virtuální zařízení).
-> Pokud existují špatné výsledky (z hlediska celkové propustnosti) pocházející z výše uvedených testů iPERF/NTTTCP, přečtěte si následující článek, který vám pomůže pochopit klíčové faktory za možnými hlavními příčinami problému:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Pokud existují špatné výsledky (z hlediska celkové propustnosti) pocházející z výše uvedených testů iPERF/NTTTCP, přečtěte si následující článek, který vám pomůže pochopit klíčové faktory za možnými hlavními příčinami problému: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 Konkrétně analýza trasování paketů (Wireshark/Sledování sítě) shromážděných paralelně od klienta a serveru během těchto testů pomůže při posuzování špatného výkonu. Tato trasování můžou zahrnovat ztrátu paketů, vysokou latenci a velikost MTU. fragmentace, okno protokolu TCP 0, fragmenty mimo pořadí a tak dále.
 
@@ -225,7 +225,7 @@ Konkrétně analýza trasování paketů (Wireshark/Sledování sítě) shromá�
 
 I v případě, že celková propustnost vyhodnocená pomocí předchozích kroků (iPERF/NTTTCP/atd.) byla dobrá, může docházet ke zpomalení souboru kopírování při použití Průzkumníka Windows nebo přetahování přes relaci RDP. K tomuto problému obvykle dochází v důsledku jednoho nebo obou následujících faktorů:
 
-* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **Akce**kopírovat  >  **Možnosti**kopírování  >  **souborů**.
+* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](/previous-versions/technet-magazine/dd547088(v=msdn.10)) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **Akce** kopírovat  >  **Možnosti** kopírování  >  **souborů**.
 
    ![Pomalé problémy při kopírování souborů](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ I v případě, že celková propustnost vyhodnocená pomocí předchozích krok
    > Ne všechny aplikace pracují stejně, a ne všechny aplikace nebo procesy využívají všechna vlákna. Pokud spustíte test, můžete vidět, že některá vlákna jsou prázdná a neposkytují přesné výsledky propustnosti.
    > Chcete-li ověřit výkon přenosu souborů aplikace, použijte více vláken tím, že zvýšíte počet vláken v průběhu úspěchu nebo je zmenšíte, aby bylo možné zjistit optimální propustnost aplikace nebo přenosu souborů.
 
-* Nedostatečná rychlost čtení/zápisu disku virtuálního počítače Další informace najdete v tématu [řešení potíží s Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
+* Nedostatečná rychlost čtení/zápisu disku virtuálního počítače Další informace najdete v tématu [řešení potíží s Azure Storage](/previous-versions/azure/storage/common/storage-e2e-troubleshooting).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Externí rozhraní pro místní zařízení
 
@@ -241,7 +241,7 @@ Uvedli jsme podsítě místních rozsahů, které chcete, aby Azure dosáhl pře
 
 * **Brána založená na trasách**: zásady nebo selektor provozu pro sítě VPN založené na trasách jsou nakonfigurovány jako any (nebo zástupné karty).
 
-* **Brána založená**na zásadách: sítě VPN založené na zásadách šifrují a směrují pakety prostřednictvím tunelů IPsec na základě kombinací předpon adres mezi vaší místní sítí a virtuální sítí Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
+* **Brána založená** na zásadách: sítě VPN založené na zásadách šifrují a směrují pakety prostřednictvím tunelů IPsec na základě kombinací předpon adres mezi vaší místní sítí a virtuální sítí Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
 
 * Připojení **UsePolicyBasedTrafficSelector** : ("UsePolicyBasedTrafficSelectors" pro $true v připojení nakonfiguruje bránu Azure VPN, aby se připojila k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu definovaných pomocí všech kombinací místní sítě (brány místní sítě) k předponám virtuální sítě Azure a místo libovolných.
 
@@ -253,7 +253,7 @@ Latenci můžete kontrolovat pomocí následujících nástrojů:
 
 * WinMTR
 * TCPTraceroute
-* `ping`a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
+* `ping` a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
 
 ![Kontrolovat latenci](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
@@ -265,4 +265,4 @@ Pokud se v rámci "msn.net" zaznamená velký špička latence, kontaktujte pros
 
 Chcete-li získat další informace nebo nápovědu, podívejte se na následující odkaz:
 
-* [Podpora společnosti Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [podpora Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

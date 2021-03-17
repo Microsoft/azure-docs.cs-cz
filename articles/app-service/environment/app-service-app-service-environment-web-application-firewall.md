@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833177"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90973707"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
 
-Brány firewall webových aplikací (WAF) pomáhají zabezpečit webové aplikace tím, že zkoumají příchozí webový provoz a blokují injektáže SQL, skriptování napříč weby, nahrávání malwaru, útoky DDoS a další útoky. Zkoumají také odpovědi webových serverů pro zajištění ochrany před únikem informací (DLP). V kombinaci s izolací a dalším škálováním, které poskytuje služba App Service Environment, to představuje ideální prostředí pro hostování důležitých obchodních webových aplikací, které potřebují odolat škodlivým požadavkům a velkému objemu provozu. Azure poskytuje funkci WAF prostřednictvím služby [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Pokud chcete zjistit, jak integrovat službu App Service Environment se službou Application Gateway, přečtěte si dokument [Integrace služby ASE s interním nástrojem pro vyrovnávání zatížení se službou Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
+Brány firewall webových aplikací (WAF) pomáhají zabezpečit webové aplikace tím, že zkoumají příchozí webový provoz a blokují injektáže SQL, skriptování napříč weby, nahrávání malwaru, útoky DDoS a další útoky. Zkoumají také odpovědi webových serverů pro zajištění ochrany před únikem informací (DLP). V kombinaci s izolací a dalším škálováním, které poskytuje služba App Service Environment, to představuje ideální prostředí pro hostování důležitých obchodních webových aplikací, které potřebují odolat škodlivým požadavkům a velkému objemu provozu. Azure poskytuje funkci WAF prostřednictvím služby [Application Gateway](../../application-gateway/overview.md).  Pokud chcete zjistit, jak integrovat službu App Service Environment se službou Application Gateway, přečtěte si dokument [Integrace služby ASE s interním nástrojem pro vyrovnávání zatížení se službou Application Gateway](./integrate-with-application-gateway.md).
 
 Kromě služby Azure Application Gateway je k dispozici několik možností na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice), například [Barracuda WAF pro Azure](https://www.barracuda.com/programs/azure). Zbytek tohoto dokumentu se zaměřuje na integraci služby App Service Environment se zařízením Barracuda WAF.
 
@@ -26,7 +26,7 @@ Kromě služby Azure Application Gateway je k dispozici několik možností na w
 ## <a name="setup"></a>Nastavení
 Pro účely tohoto dokumentu nakonfigurujeme službu App Service Environment za několika instancemi Barracuda WAF s vyrovnáváním zatížení, aby se do služby App Service Environment dostal pouze provoz z této brány WAF a aby služba nebyla přístupná z DMZ. Před instancí Barracuda WAF také máme službu Azure Traffic Manager, která vyrovnává zatížení napříč datovými centry a oblastmi Azure. Podrobný diagram nastavení bude podobný jako na následujícím obrázku:
 
-![Architektura][Architecture] 
+![Diagram znázorňuje volitelnou službu Azure Traffic Manager připojující se k instancím brány firewall webových aplikací, která se připojuje k síti A C L, aby povolovala přenosy jenom z brány firewall v App Service Environment, která obsahuje web, P I a mobilní aplikace pro dvě oblasti.][Architecture] 
 
 > [!NOTE]
 > Díky zavedení [podpory interního nástroje pro vyrovnávání zatížení pro službu App Service Environment](app-service-environment-with-internal-load-balancer.md) můžete nakonfigurovat službu ASE tak, aby nebyla přístupná z DMZ a byla dostupná pouze pro privátní síť. 
@@ -34,7 +34,7 @@ Pro účely tohoto dokumentu nakonfigurujeme službu App Service Environment za 
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>Konfigurace služby App Service Environment
-Informace o konfiguraci služby App Service Environment najdete v [naší dokumentaci](app-service-web-how-to-create-an-app-service-environment.md) k tomuto tématu. Po vytvoření služby App Service Environment můžete v tomto prostředí vytvářet funkce Web Apps, API Apps a [Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md) chráněné za bránou WAF, kterou nakonfigurujeme v další části.
+Informace o konfiguraci služby App Service Environment najdete v [naší dokumentaci](app-service-web-how-to-create-an-app-service-environment.md) k tomuto tématu. Po vytvoření služby App Service Environment můžete v tomto prostředí vytvářet funkce Web Apps, API Apps a [Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) chráněné za bránou WAF, kterou nakonfigurujeme v další části.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfigurace cloudové služby Barracuda WAF
 Barracuda nabízí [podrobný článek](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) věnovaný nasazení jejich brány WAF na virtuální počítač v Azure. Protože však chceme zajistit redundanci a vyhnout se kritickému prvku způsobujícímu selhání, měli byste do stejné cloudové služby nasadit alespoň dvě instance virtuálních počítačů s WAF, pokud budete postupovat podle těchto pokynů.

@@ -1,14 +1,16 @@
 ---
 title: Omezení a hranice – QnA Maker
 description: QnA Maker má meta omezení pro části znalostní báze a služby. Pro účely testování a publikování je důležité zachovat znalostní bázi v rámci těchto omezení.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 11/09/2020
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524433"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164868"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -32,8 +34,8 @@ Názvy souborů nesmí obsahovat tyto znaky:
 
 |Nepoužívat znak|
 |--|
-|Jednoduchá uvozovka`'`|
-|Dvojité uvozovky`"`|
+|Jednoduchá uvozovka `'`|
+|Dvojité uvozovky `"`|
 
 ### <a name="maximum-file-size"></a>Maximální velikost souboru
 
@@ -48,6 +50,9 @@ Názvy souborů nesmí obsahovat tyto znaky:
 ### <a name="maximum-number-of-files"></a>Maximální počet souborů
 
 Maximální počet souborů, které se dají extrahovat a maximální velikost souboru, je založený na vašich **[QnA maker omezeních cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)**.
+
+> [!NOTE]
+> QnA Maker Managed (Preview) je bezplatná služba bez omezení počtu zdrojů, které se dají přidat. Propustnost se momentálně omezené za 10 transakcí za sekundu pro rozhraní API pro správu i pro předpovědi rozhraní API.
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>Maximální počet přímých odkazů z adresy URL
 
@@ -71,18 +76,18 @@ Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následu
 
 |Položka|Povolené znaky|Porovnávání vzorů regulárního výrazu|Maximální počet znaků|
 |--|--|--|--|
-|Název (klíč)|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_`podtržítkem<br> Nesmí obsahovat mezery.|`^[a-zA-Z0-9_]+$`|100|
-|Hodnota|Umožňuje vše kromě<br>`:`kolon<br>`|`(vertikální svislá čára)<br>Je povolena pouze jedna hodnota.|`^[^:|]+$`|500|
+|Název (klíč)|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_` podtržítkem<br> Nesmí obsahovat mezery.|`^[a-zA-Z0-9_]+$`|100|
+|Hodnota|Umožňuje vše kromě<br>`:` kolon<br>`|` (vertikální svislá čára)<br>Je povolena pouze jedna hodnota.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Omezení obsahu znalostní báze
 Celková omezení obsahu ve znalostní bázi Knowledge Base:
-* Délka textu odpovědi: 25 000
-* Délka textu otázky: 1 000
-* Délka textu klíče metadat: 100
-* Délka textu hodnoty metadat: 500
-* Podporované znaky pro název metadat: abecedy, číslice a`_`
-* Podporované znaky pro hodnotu metadat: vše kromě `:` a`|`
+* Délka textu odpovědi: 25 000 znaků
+* Délka textu otázky: 1 000 znaků
+* Délka textu klíče metadat: 100 znaků
+* Délka textu hodnoty metadat: 500 znaků
+* Podporované znaky pro název metadat: abecedy, číslice a `_`
+* Podporované znaky pro hodnotu metadat: vše kromě `:` a `|`
 * Délka názvu souboru: 200
 * Podporované formáty souborů: ". TSV", ". PDF", ". txt", ". docx", ". xlsx".
 * Maximální počet alternativních otázek: 300
@@ -91,16 +96,18 @@ Celková omezení obsahu ve znalostní bázi Knowledge Base:
 
 ## <a name="create-knowledge-base-call-limits"></a>Vytvořit limity volání ve znalostní bázi Knowledge Base:
 Tyto hodnoty udávají omezení pro každou akci vytvoření znalostní báze. To znamená, že kliknete na *vytvořit KB* nebo zavolat rozhraní CreateKnowledgeBase API.
-* Maximální počet alternativních otázek na odpověď: 300
+* Doporučený maximální počet alternativních otázek na odpověď: 300
 * Maximální počet adres URL: 10
 * Maximální počet souborů: 10
+* Maximální počet povolených QnAs za volání: 1000
 
 ## <a name="update-knowledge-base-call-limits"></a>Aktualizovat omezení volání znalostní báze
 Tyto hodnoty udávají omezení pro každou akci aktualizace. To znamená, že kliknete na *Uložit a naučíte* se volat rozhraní UpdateKnowledgeBase API.
 * Délka každého názvu zdroje: 300
-* Maximální počet přidaných nebo odstraněných alternativních otázek: 300
+* Doporučený maximální počet přidaných nebo odstraněných alternativních otázek: 300
 * Maximální počet přidaných nebo odstraněných polí metadat: 10
 * Maximální počet adres URL, které lze aktualizovat: 5
+* Maximální počet povolených QnAs za volání: 1000
 
 ## <a name="next-steps"></a>Další kroky
 

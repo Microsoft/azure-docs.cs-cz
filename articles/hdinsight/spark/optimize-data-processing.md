@@ -1,18 +1,16 @@
 ---
 title: Optimalizace zpracování dat pro Apache Spark – Azure HDInsight
 description: Naučte se, jak zvolit nejúčinnější operace pro zpracování vašich dat v Apache Spark s využitím Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 021999e1757993eea4bbfe3aec0bd68049a37e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 98457456bc1c8f9fdb08c32fdcd319a3aa9ff14a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737661"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944721"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Optimalizace zpracování dat pro Apache Spark
 

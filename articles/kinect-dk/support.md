@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, nahrávání, senzor, SDK, přístup, Hloubka, video, fotoaparát, imu, pohyb, senzor, zvuk, mikrofon, Matroska, sada senzorů, stažení, tělo, sledování, podpora
-ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277232"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587090"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Možnosti a prostředky podpory Azure Kinect
 
@@ -32,9 +32,9 @@ Existuje několik způsobů, jak získat podporu pro Azure Kinect s asistencí.
 
 ### <a name="microsoft-qa"></a>Microsoft Q&A
 
-Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](https://aka.ms/azureqa), preferovaný cíl Azure pro podporu komunity.
+Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](/answers/products/azure), preferovaný cíl Azure pro podporu komunity.
 
-- [Microsoft Q&a pro Azure Kinect](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html), kde můžete klást otázky nebo Hledat v existující knihovně otázek.
+- [Microsoft Q&a pro Azure Kinect](/answers/topics/azure-kinect-dk.html), kde můžete klást otázky nebo Hledat v existující knihovně otázek.
 
 ### <a name="development-azure-kinect-on-azure"></a>Vývoj Azure Kinect v Azure
 
@@ -50,12 +50,14 @@ Technickou podporu s použitím sady SDK pro sadu senzorů a místní sady SDK p
 
 ### <a name="azure-kinect-dk-device"></a>Zařízení Azure Kinect DK
 
-Než se obrátíte na hardwarovou podporu, ujistěte se, že jste nastavili a aktualizovali Azure Kinect DK. Pokud chcete otestovat, jestli zařízení funguje, použijte [prohlížeč Azure Kinect](azure-kinect-viewer.md). Další informace najdete na naší stránce s [technickou pomocí Azure Kinect DK](https://aka.ms/kinectsupport) .
+Než se obrátíte na hardwarovou podporu, ujistěte se, že jste nastavili a aktualizovali Azure Kinect DK. Pokud chcete otestovat, jestli zařízení funguje, použijte [prohlížeč Azure Kinect](azure-kinect-viewer.md). Další informace najdete na naší stránce s [technickou pomocí Azure Kinect DK](./index.yml) .
 Můžete taky chtít zjistit naše [známé problémy a řešit](troubleshooting.md)potíže.
 
 [Získejte pomoc](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) s funkcemi zařízení nebo senzorů, aktualizacemi firmwaru nebo možnostmi nákupu.
 
 Další informace o nabídkách podpory najdete v podrobnějších informacích o [podpoře Microsoftu pro firmy](https://support.microsoft.com/help/4341255/support-for-business).
+
+[Tady](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3) jsou deklarace shody EU pro hardwarové produkty Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 

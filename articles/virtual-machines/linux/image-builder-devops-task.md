@@ -3,16 +3,17 @@ title: Úloha DevOps služby Azure image Builder
 description: Úloha Azure DevOps k vložení artefaktů sestavení do image virtuálního počítače, abyste mohli nainstalovat a nakonfigurovat svoji aplikaci a operační systém.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068162"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670468"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -21,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí úlohy Azure DevOps vložit artefakty 
 ## <a name="devops-task-versions"></a>Verze úloh DevOps
 Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních počítačů (AIB) Azure:
 
-* [Úkol "stabilní" AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), který nám umožňuje předcházet nejnovějším aktualizacím a funkcím, umožnit zákazníkům jejich otestování před tím, než ho budeme povýšit na úkol "stabilní", přibližně 1 týden později. 
+* ["Stabilní" AIB úloha](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), jedná se o nejnovější stabilní testovaný Build a telemetrie nezobrazuje žádné problémy. 
 
 
 * [Nestabilní úloha AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), která nám umožní umístit do nejnovějších aktualizací a funkcí a umožnit zákazníkům jejich otestování, než ji povýšíme na "stabilní" úlohu. Pokud neexistují žádné nahlášené problémy a naše telemetrie nezobrazuje žádné problémy, přibližně 1 týden později, budeme povýšit kód úlohy na stabilní. 
@@ -31,8 +32,8 @@ Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních po�
 * Nainstalujte [stabilní úlohu DevOps z Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * Musíte mít účet VSTS DevOps a vytvořený kanál sestavení.
 * Zaregistrujte a povolte požadavky funkcí Tvůrce imagí v předplatném, které používají kanály:
-    * [AZ PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [AZ PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [AZ CLI](../windows/image-builder.md#register-the-features)
     
 * Vytvořte ve skupině prostředků zdrojové image standard Azure Storage účet, můžete použít jiné skupiny prostředků nebo účty úložiště. Účet úložiště se používá k přenosu artefaktů sestavení z úlohy DevOps do bitové kopie.
 
@@ -55,7 +56,7 @@ Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních po�
 
 ## <a name="add-task-to-release-pipeline"></a>Přidat úlohu do kanálu uvolnění
 
-Vybrat **Release Pipeline**  >  **úpravu** kanálu vydaných verzí
+Vybrat   >  **úpravu** kanálu vydaných verzí
 
 V uživatelském agentovi vyberte, pokud *+* chcete přidat a pak vyhledat **Image Builder**. Vyberte **Přidat**.
 
@@ -71,14 +72,14 @@ Použijte skupinu prostředků, do které se uloží artefakt šablony dočasné
  
 ### <a name="location"></a>Umístění
 
-Umístění je oblast, kde se spustí Tvůrce imagí. Podporován je pouze nastavený počet [oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) . V tomto umístění se musí nacházet zdrojové image. Pokud například používáte sdílenou galerii imagí, musí replika existovat v této oblasti.
+Umístění je oblast, kde se spustí Tvůrce imagí. Podporován je pouze nastavený počet [oblastí](../image-builder-overview.md#regions) . V tomto umístění se musí nacházet zdrojové image. Pokud například používáte sdílenou galerii imagí, musí replika existovat v této oblasti.
 
 ### <a name="managed-identity-required"></a>Spravovaná identita (povinné)
-Image Builder vyžaduje spravovanou identitu, kterou používá ke čtení zdrojových vlastních imagí, připojení k Azure Storage a vytváření vlastních imagí. Další podrobnosti najdete [tady](https://aka.ms/azvmimagebuilder#permissions).
+Image Builder vyžaduje spravovanou identitu, kterou používá ke čtení zdrojových vlastních imagí, připojení k Azure Storage a vytváření vlastních imagí. Další podrobnosti najdete [tady](../image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>Podpora virtuální sítě
 
-V současné době úloha DevOps nepodporuje zadání existující podsítě, ale pokud chcete využít existující virtuální síť, můžete použít šablonu ARM s vnořenou šablonou tvůrce imagí. Podívejte se na příklady šablon imagí Windows Image Builder, jak to dosáhnete, nebo můžete použít [AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell).
+V současné době úloha DevOps nepodporuje zadání existující podsítě, ale pokud chcete využít existující virtuální síť, můžete použít šablonu ARM s vnořenou šablonou tvůrce imagí. Podívejte se na příklady šablon imagí Windows Image Builder, jak to dosáhnete, nebo můžete použít [AZ AIB PowerShell](../windows/image-builder-powershell.md).
 
 ### <a name="source"></a>Zdroj
 
@@ -144,7 +145,7 @@ Následující příklad vysvětluje, jak to funguje:
 
 * Windows – soubory existují v `C:\` . Vytvoří se adresář s názvem, `buildArtifacts` který obsahuje `webapp` adresář.
 
-* Linux – soubory existují v `/tmp` . `webapp`Vytvoří se adresář, který bude obsahovat všechny soubory a adresáře. Soubory je nutné přesunout z tohoto adresáře. V opačném případě se odstraní, protože se nachází v dočasném adresáři.
+* Linux – soubory existují v  `/tmp` . `webapp`Vytvoří se adresář, který bude obsahovat všechny soubory a adresáře. Soubory je nutné přesunout z tohoto adresáře. V opačném případě se odstraní, protože se nachází v dočasném adresáři.
 
 #### <a name="inline-customization-script"></a>Vložený skript pro přizpůsobení
 
@@ -154,7 +155,13 @@ Následující příklad vysvětluje, jak to funguje:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Příklad:
+   Můžete odkazovat na více skriptů nebo přidávat další příkazy, například:
+
+    ```PowerShell
+    & 'c:\buildArtifacts\webapp\webconfig.ps1'
+    & 'c:\buildArtifacts\webapp\installAgent.ps1'
+    ```
+* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Například:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +183,7 @@ Následující příklad vysvětluje, jak to funguje:
 > Nástroj image Builder automaticky neodebere artefakty sestavení, důrazně doporučujeme, abyste vždy měli kód pro odebrání artefaktů sestavení.
 > 
 
-* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Příklad:
+* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Například:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +193,7 @@ Následující příklad vysvětluje, jak to funguje:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Příklad:
+* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Například:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -194,7 +201,7 @@ Následující příklad vysvětluje, jak to funguje:
     
 #### <a name="total-length-of-image-build"></a>Celková délka sestavení obrázku
 
-V úloze kanálu DevOps se zatím nedají změnit celkovou délku. Používá výchozí hodnotu 240 minut. Pokud chcete zvýšit [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes), můžete použít úlohu AZ CLI v kanálu vydání. Nakonfigurujte úkol pro zkopírování šablony a odeslání. Příklad najdete v tomto [řešení](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), nebo použijte AZ PowerShell.
+V úloze kanálu DevOps se zatím nedají změnit celkovou délku. Používá výchozí hodnotu 240 minut. Pokud chcete zvýšit [buildTimeoutInMinutes](./image-builder-json.md#properties-buildtimeoutinminutes), můžete použít úlohu AZ CLI v kanálu vydání. Nakonfigurujte úkol pro zkopírování šablony a odeslání. Příklad najdete v tomto [řešení](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), nebo použijte AZ PowerShell.
 
 
 #### <a name="storage-account"></a>Účet úložiště
@@ -298,7 +305,7 @@ Publikování/nabídka/SKU/verze zdrojové image Marketplace:
 Identifikátor URI image – ResourceID distribuované Image:
 * $ (imageUri)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Můžu použít existující šablonu obrázku, kterou už jste vytvořili, mimo DevOps?
 
@@ -306,13 +313,13 @@ V současné době není aktuálně k dispozici.
 
 ### <a name="can-i-specify-the-image-template-name"></a>Můžu zadat název šablony obrázku?
 
-Ne. Použije se jedinečný název šablony, který se pak odstraní.
+No. Použije se jedinečný název šablony, který se pak odstraní.
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>Tvůrce imagí se nezdařil. Jak můžu řešit potíže?
 
 Pokud dojde k selhání sestavení, úloha DevOps neodstraní pracovní skupinu prostředků. Můžete získat přístup k pracovní skupině prostředků, která obsahuje protokol vlastního nastavení sestavení.
 
-V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Příklad:
+V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Například:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Ukázková chyba úlohy DevOps, která zobrazuje chybu.":::
 
@@ -330,9 +337,9 @@ template name:  t_1556938436xxx
 
 ```
 
-Artefakt prostředku šablony obrázku je ve skupině prostředků zadané zpočátku v úloze. Po dokončení odstraňování potíží odstraňte artefakt. Při odstraňování pomocí Azure Portal v rámci skupiny prostředků vyberte **Zobrazit skryté typy**a zobrazte artefakt.
+Artefakt prostředku šablony obrázku je ve skupině prostředků zadané zpočátku v úloze. Po dokončení odstraňování potíží odstraňte artefakt. Při odstraňování pomocí Azure Portal v rámci skupiny prostředků vyberte **Zobrazit skryté typy** a zobrazte artefakt.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Přehled nástroje Azure image Builder](image-builder-overview.md).
+Další informace najdete v tématu [Přehled nástroje Azure image Builder](../image-builder-overview.md).

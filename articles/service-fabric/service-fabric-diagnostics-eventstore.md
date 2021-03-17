@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247638"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91354815"
 ---
 # <a name="eventstore-overview"></a>Eventstoru – přehled
 
@@ -26,7 +26,7 @@ Eventstoru je stavová služba Service Fabric, která udržuje události z clust
 * Ověřte, že se správně zpracovávají akce správy, které provedete v clusteru.
 * Získání "snímku" způsobu, jakým Service Fabric interakci s konkrétní entitou
 
-![Eventstoru](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![Snímek obrazovky se zobrazí na kartě události v podokně uzly několik událostí, včetně události NodeDown.](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Úplný seznam událostí, které jsou k dispozici v Eventstoru, najdete v tématu [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -36,15 +36,15 @@ Eventstoru je stavová služba Service Fabric, která udržuje události z clust
 Služba Eventstoru se dá dotazovat na události, které jsou k dispozici pro každou entitu a typ entity v clusteru. To znamená, že se můžete dotazovat na události na následujících úrovních:
 * Cluster: události specifické pro samotný cluster (například upgrade clusteru)
 * Uzly: události na úrovni všech uzlů
-* Uzel: události specifické pro jeden uzel identifikovaný`nodeName`
+* Uzel: události specifické pro jeden uzel identifikovaný `nodeName`
 * Aplikace: všechny události na úrovni aplikace
-* Aplikace: události specifické pro jednu aplikaci identifikovanou`applicationId`
+* Aplikace: události specifické pro jednu aplikaci identifikovanou `applicationId`
 * Služby: události ze všech služeb ve vašich clusterech
-* Služba: události z konkrétní služby identifikované`serviceId`
+* Služba: události z konkrétní služby identifikované `serviceId`
 * Oddíly: události ze všech oddílů
-* Oddíl: události z konkrétního oddílu identifikovaného`partitionId`
-* Repliky oddílů: události ze všech replik/instancí v rámci určitého oddílu identifikovaného`partitionId`
-* Replika oddílu: události z konkrétní repliky/instance identifikované `replicaId` a`partitionId`
+* Oddíl: události z konkrétního oddílu identifikovaného `partitionId`
+* Repliky oddílů: události ze všech replik/instancí v rámci určitého oddílu identifikovaného `partitionId`
+* Replika oddílu: události z konkrétní repliky/instance identifikované `replicaId` a `partitionId`
 
 Další informace o rozhraní API najdete v referenčních informacích k [rozhraní eventstoru API](/rest/api/servicefabric/sfclient-index-eventsstore).
 

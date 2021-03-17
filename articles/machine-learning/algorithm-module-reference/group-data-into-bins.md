@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: d3a9f88325f03d0252adf51c5bf221b131d7d33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751724"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998494"
 ---
 # <a name="group-data-into-bins-module"></a>Seskupit data do modulu přihrádky
 
-Tento článek popisuje, jak pomocí modulu seskupit data do přihrádek v Návrháři Azure Machine Learning (Preview) seskupovat čísla nebo měnit distribuci souvislých dat.
+Tento článek popisuje, jak použít modul seskupit data do přihrádek v Návrháři Azure Machine Learning, abyste mohli seskupovat čísla nebo měnit distribuci souvislých dat.
 
 Modul seskupit data do přihrádek podporuje více možností pro binningu data. Můžete přizpůsobit, jak jsou okraje přihrádky nastaveny a jak jsou hodnoty rozděleny do přihrádek. Můžete například:  
 
@@ -44,13 +44,14 @@ Modul seskupit data do přihrádek podporuje více možností pro binningu data.
 
 Následující diagram znázorňuje rozdělení číselných hodnot před a po binningu pomocí metody *quantiles* . Všimněte si, že v porovnání s nezpracovanými daty zůstala data rozdělenýá a transformovaná na normální škálu jednotek.  
 
-Příklad můžete najít [ve výsledku tohoto spuštění kanálu](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net).
+> [!div class="mx-imgBorder"]
+> ![Vizualizace výsledku](media/module/group-data-into-bins-result-example.png)
 
 Vzhledem k tomu, že existuje mnoho způsobů, jak seskupovat data, je vše přizpůsobitelné, doporučujeme experimentovat s různými metodami a hodnotami. 
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Konfigurace dat skupin do přihrádek
 
-1. Přidejte do kanálu modul **data skupiny** do kanálu v Návrháři (Preview). Tento modul můžete najít v **transformaci dat**kategorií.
+1. Přidejte do kanálu modul **data skupiny** do kanálu v návrháři. Tento modul můžete najít v **transformaci dat**kategorií.
 
 2. Připojte datovou sadu, která má číselná data pro přihrádku. Kvantizační lze použít pouze pro sloupce, které obsahují číselná data. 
 
@@ -65,6 +66,9 @@ Vzhledem k tomu, že existuje mnoho způsobů, jak seskupovat data, je vše při
     - **Vlastní hrany**: můžete zadat hodnoty, které začínají jednotlivými přihrádkami. Hodnota Edge je vždy dolní hranice přihrádky. 
     
       Předpokládejme například, že chcete seskupit hodnoty do dvou přihrádek. Jedna bude mít hodnoty větší než 0 a jedna bude mít hodnoty menší nebo rovny 0. V tomto případě pro okraje bin zadáte **0** do **čárkami odděleného seznamu okrajů bin**. Výstupem modulu bude hodnota 1 a 2, která označuje index přihrádky pro každou hodnotu řádku. Všimněte si, že seznam hodnot oddělených čárkou musí být ve vzestupném pořadí, například 1, 3, 5, 7.
+    
+    > [!Note]
+    > V nástroji Studio (Classic) je definovaný režim *entropie MDL* a neexistuje žádný odpovídající otevřený zdrojový balíček, který by se mohl ještě využít pro podporu v návrháři.        
 
 4. Pokud používáte režimy **quantiles** a **stejné šířky** binningu, použijte možnost **počet přihrádek** k určení, kolik přihrádek nebo *quantiles*chcete vytvořit.
 

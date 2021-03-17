@@ -3,27 +3,41 @@ title: Získání oznámení o údržbě pomocí rozhraní příkazového řádk
 description: Zobrazení oznámení o údržbě pro virtuální počítače běžící v Azure a spuštění samoobslužné údržby pomocí Azure CLI.
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 633708219adaba2fb4c4889754b2112fbf3c4180
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd042ce09533cbefe37cb2e4d311a3857e3dfdec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069354"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552401"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Zpracování oznámení o plánované údržbě pomocí Azure CLI
 
 **Tento článek se týká virtuálních počítačů, na kterých běží Linux i Windows.**
 
-Pomocí rozhraní příkazového řádku můžete zjistit, kdy se virtuální počítače naplánovaly na [údržbu](maintenance-notifications.md). Informace o plánované údržbě jsou k dispozici z [AZ VM Get-instance-View](/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view).
+Pomocí rozhraní příkazového řádku můžete zjistit, kdy se virtuální počítače naplánovaly na [údržbu](maintenance-notifications.md). Informace o plánované údržbě jsou k dispozici z [AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view).
  
 Informace o údržbě jsou vráceny pouze v případě, že je naplánována údržba. 
 
 ```azurecli-interactive
 az vm get-instance-view -n myVM -g myResourceGroup --query instanceView.maintenanceRedeployStatus
+```
+
+Výstup
+```
+      "maintenanceRedeployStatus": {
+      "additionalProperties": {},
+      "isCustomerInitiatedMaintenanceAllowed": true,
+      "lastOperationMessage": null,
+      "lastOperationResultCode": "None",
+      "maintenanceWindowEndTime": "2018-06-04T16:30:00+00:00",
+      "maintenanceWindowStartTime": "2018-05-21T16:30:00+00:00",
+      "preMaintenanceWindowEndTime": "2018-05-19T12:30:00+00:00",
+      "preMaintenanceWindowStartTime": "2018-05-14T12:30:00+00:00"
 ```
 
 ## <a name="start-maintenance"></a>Spustit údržbu

@@ -1,25 +1,21 @@
 ---
 title: Kopírování dat z SAP Business Warehouse přes Open hub
 description: Přečtěte si, jak kopírovat data z SAP Business Warehouse (ČERNOBÍLe) prostřednictvím otevřeného centra pro podporovaná úložiště dat jímky pomocí aktivity kopírování v Azure Data Factoryovém kanálu.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 02/02/2020
+ms.openlocfilehash: b766ce248a3543ef3323e026d760e550a0e3dd75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533406"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386675"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z SAP Business Warehouse (ČERNOBÍLého) prostřednictvím otevřeného centra. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
@@ -38,8 +34,8 @@ Data z SAP Business Warehouse můžete kopírovat prostřednictvím otevřeného
 
 Konkrétně konektor Open hub pro SAP Business Warehouse podporuje:
 
-- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**. Tento konektor nepodporuje SAP BW4/HANA.
-- Kopírování dat prostřednictvím místní tabulky Open hub, která je v této části může být DSO, InfoCube, s více dodanými, zdroji dat atd.
+- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**. Tento konektor nepodporuje SAP BW/4HANA.
+- Kopírování dat prostřednictvím místní tabulky v otevřeném centru, která se může nacházet na DSO, InfoCube, s více dodávajících, zdroji dat atd.
 - Kopírování dat pomocí základního ověřování.
 - Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 - Načítání dat prostřednictvím RFC.
@@ -69,7 +65,7 @@ Extrakce z SAP InfoProviders to Azure Data Factory (ADF) se skládá ze dvou kro
 
 V prvním kroku se spustí DTP. Každé spuštění vytvoří nové ID požadavku SAP. ID žádosti je uloženo v otevřené tabulce centra a pak ji použije konektor ADF k identifikaci rozdílu. Dva kroky se spouštějí asynchronně: DTP se aktivuje pomocí SAP a v rámci ADF se aktivuje kopie dat ADF. 
 
-Ve výchozím nastavení ADF nečte poslední rozdíl z otevřené tabulky hub (možnost "vyloučit poslední žádost" je true). V tomto případě nejsou data v ADF 100% v aktuálním stavu s daty v otevřené tabulce hub (poslední Delta chybí). V rámci tohoto postupu zajišťuje tento postup, aby se žádné řádky neztratily kvůli asynchronní extrakci. Funguje správně i v případě, že ADF čte otevřenou tabulku hub, zatímco DTP stále zapisuje do stejné tabulky. 
+Ve výchozím nastavení ADF nečte poslední rozdíl z otevřené tabulky hub (možnost "vyloučit poslední žádost" je true). V případě, že data v ADF neobsahují 100%, data v otevřené tabulce hub (poslední Delta chybí). V rámci tohoto postupu zajišťuje tento postup, aby se žádné řádky neztratily kvůli asynchronní extrakci. Funguje správně i v případě, že ADF čte otevřenou tabulku hub, zatímco DTP stále zapisuje do stejné tabulky. 
 
 V pracovním úložišti dat (jako je Azure Blob ve výše uvedeném diagramu) obvykle ukládáte maximální zkopírované ID žádosti v posledním spuštění pomocí ADF. Proto se stejný požadavek během následného spuštění v rámci ADF nepřečte podruhé. Mezitím si všimněte, že data se v otevřené tabulce hub automaticky neodstraní.
 
@@ -81,7 +77,7 @@ Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
 
 - Nastavte Integration Runtime v místním prostředí s verzí 3,13 nebo vyšší. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
 
-- Stáhněte si **64-bit [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html) ** z webu SAP a nainstalujte ho na místně hostovaný počítač IR. Při instalaci nástroje v okně volitelné kroky instalace se ujistěte, že jste vybrali možnost **instalovat sestavení do GAC** , jak je znázorněno na následujícím obrázku. 
+- Stáhněte si **64-bit [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html)** z webu SAP a nainstalujte ho na místně hostovaný počítač IR. Při instalaci nástroje v okně volitelné kroky instalace se ujistěte, že jste vybrali možnost **instalovat sestavení do GAC** , jak je znázorněno na následujícím obrázku. 
 
     ![Nainstalovat konektor SAP .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -90,7 +86,7 @@ Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
     - Autorizace pro RFC a SAP BW. 
     - Oprávnění pro aktivitu Execute objektu autorizace S_SDSAUTH.
 
-- Vytvoří cílový typ pro SAP otevřený rozbočovač jako **databázovou tabulku** se zaškrtnutou možností "technický klíč".  Doporučuje se také nechat odstranit data z tabulky jako nezaškrtnutá, i když se nevyžaduje. Využijte DTP (přímo spouštěný nebo integrovaný do stávajícího řetězce procesu) a využívejte data ze zdrojového objektu (například datové krychle), který jste zvolili v otevřené cílové tabulce centra.
+- Vytvoří cílový typ pro SAP otevřený rozbočovač jako **databázovou tabulku** se zaškrtnutou možností "technický klíč".  Doporučuje se také nechat odstranit data z tabulky jako nezaškrtnutá, i když se nevyžaduje. Použijte DTP (přímo spouštěný nebo integrovaný do stávajícího řetězce procesu) k vytvoření pozemku dat ze zdrojového objektu (například datové krychle), který jste zvolili v otevřené cílové tabulce centra.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -121,7 +117,7 @@ Pro propojenou službu SAP Business Warehouse se podporují následující vlast
 | heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -159,7 +155,7 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
 
 Pokud jste nacházeli `excludeLastRequest` a `baseRequestId` v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -197,7 +193,7 @@ Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** akt
 
 Pro urychlení načítání dat můžete [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) u aktivity kopírování nastavit, aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies` . Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -241,7 +237,7 @@ Při kopírování dat z SAP BW otevřeném centru, se z SAP BW datových typů 
 | F (float) | dvojité |
 | D (datum) | Řetězec |
 | T (čas) | Řetězec |
-| P (komprimovaná BCD, měna, desetinné číslo, množství) | Desetinné číslo |
+| P (komprimovaná BCD, měna, desetinné číslo, množství) | Decimal |
 | N (NUMC) | Řetězec |
 | X (binární a hrubá) | Řetězec |
 

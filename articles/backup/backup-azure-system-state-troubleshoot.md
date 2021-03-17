@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit problémy v zálohování
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513841"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89376277"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -17,10 +17,10 @@ Tento článek popisuje řešení problémů, ke kterým může docházet při p
 
 ## <a name="basic-troubleshooting"></a>Základní řešení potíží
 
-Před zahájením odstraňování potíží se zálohováním stavu systému doporučujeme provést níže uvedené ověření:
+Než začnete s odstraňováním potíží se zálohováním stavu systému, doporučujeme provést následující kroky ověření:
 
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
 - [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
@@ -37,12 +37,12 @@ Před zahájením odstraňování potíží se zálohováním stavu systému dop
 
 ### <a name="limitation"></a>Omezení
 
-- Microsoft nedoporučuje obnovování pomocí obnovení stavu systému na jiný hardware.
+- Obnovení na jiný hardware pomocí obnovení stavu systému nedoporučuje Microsoft
 - Zálohování stavu systému aktuálně podporuje místní servery Windows. Tato funkce není k dispozici pro virtuální počítače Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před odstraňováním potíží se zálohováním stavu systému pomocí Azure Backup proveďte níže uvedenou kontrolu požadavků.  
+Před odstraňováním potíží se zálohováním stavu systému pomocí Azure Backup proveďte následující kontrolu předpokladů.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Ověřte, že je nainstalovaná Zálohování Windows Serveru.
 
@@ -66,23 +66,23 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí PowerShellu, spu
 
 Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru, proveďte následující kroky:
 
-1. V nástroji **Správce serveru**klikněte na **Přidat role a funkce**. Zobrazí se **Průvodce přidáním rolí a funkcí** .
+1. V nástroji **Správce serveru**vyberte **Přidat role a funkce**. Zobrazí se **Průvodce přidáním rolí a funkcí** .
 
     ![Řídicí panel](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. Vyberte **typ instalace** a klikněte na **Další**.
+2. Vyberte **typ instalace** a vyberte **Další**.
 
     ![Typ instalace](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Vyberte server z fondu serverů a klikněte na **Další**. V roli serveru ponechte výchozí výběr a klikněte na **Další**.
-4. Na kartě **funkce** vyberte **zálohování Windows serveru** a klikněte na **Další**.
+3. Vyberte server z fondu serverů a vyberte **Další**. V roli serveru ponechte výchozí výběr a vyberte **Další**.
+4. Na kartě **funkce** vyberte **zálohování Windows serveru** a vyberte **Další**.
 
-    ![funkce](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![Okno pro výběr funkcí](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. Na kartě **potvrzení** kliknutím na **instalovat** spusťte proces instalace.
+5. Na kartě **potvrzení** vyberte **instalovat** a spusťte proces instalace.
 6. Na kartě **výsledky** se zobrazí funkce zálohování Windows serveru se úspěšně nainstalovala na Windows Server.
 
-    ![result](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![Výsledky instalace](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Oprávnění k informacím o svazcích systému
 

@@ -2,16 +2,15 @@
 title: Zabezpečení Azure Data Lake Analytics pro více uživatelů
 description: Naučte se konfigurovat více uživatelů ke spouštění úloh v Azure Data Lake Analytics.
 ms.service: data-lake-analytics
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
-ms.openlocfilehash: 9006a22c588a7f1456585d40da0b4345145c6d05
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 52bdd80dba1d5de150f403199fbd5c14d188a410
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132479"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220138"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Konfigurace přístupu uživatelů k informacím o úloze v Azure Data Lake Analytics 
 
@@ -19,7 +18,7 @@ V Azure Data Lake Analytics můžete ke spouštění úloh použít více uživa
 
 Aby mohli uživatelé zobrazit podrobné informace o úlohách, musí být schopni číst obsah složek úloh. Složky úloh se nacházejí v `/system/` adresáři. 
 
-Pokud nejsou potřebná oprávnění nakonfigurovaná, může se uživateli zobrazit chyba:`Graph data not available - You don't have permissions to access the graph data.` 
+Pokud nejsou potřebná oprávnění nakonfigurovaná, může se uživateli zobrazit chyba: `Graph data not available - You don't have permissions to access the graph data.` 
 
 ## <a name="configure-user-access-to-job-information"></a>Konfigurace přístupu uživatelů k informacím o úloze
 

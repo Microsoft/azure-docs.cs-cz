@@ -1,5 +1,6 @@
 ---
-title: Volání webových rozhraní API z desktopové aplikace – Microsoft Identity Platform | Azure
+title: Volání webových rozhraní API z desktopové aplikace | Azure
+titleSuffix: Microsoft identity platform
 description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51619fe049d580c21b338af2f86b2afea6765b04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882960"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756529"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: volání webového rozhraní API
 
@@ -64,7 +65,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Volání webového rozhraní API v MSAL pro iOS a macOS
 
-Metody získání tokenů vrací `MSALResult` objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost, která se dá použít k volání webového rozhraní API. Než provedete volání pro přístup k chráněnému webovému rozhraní API, přidejte přístupový token do hlavičky autorizace protokolu HTTP.
+Metody získání tokenů vrací `MSALResult` objekt. `MSALResult` zpřístupňuje `accessToken` vlastnost, která se dá použít k volání webového rozhraní API. Než provedete volání pro přístup k chráněnému webovému rozhraní API, přidejte přístupový token do hlavičky autorizace protokolu HTTP.
 
 Cíl-C:
 
@@ -129,5 +130,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Přesunout do produkčního prostředí](scenario-desktop-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-desktop-production.md)prostředí.

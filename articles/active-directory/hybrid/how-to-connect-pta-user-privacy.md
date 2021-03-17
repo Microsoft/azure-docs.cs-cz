@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358119"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996572"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Ochrana osobních údajů uživatelů a předávací ověřování služby Azure Active Directory
 
@@ -46,7 +46,7 @@ Tuto druhou možnost důrazně doporučujeme, protože je snazší ji implemento
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranit Azure AD Connect soubory protokolu trasování
 
-Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (soubory**Trace- \* . log** ) této složky během 48 hodin od instalace nebo Azure AD Connect upgradu konfigurace předávacího ověřování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
+Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (soubory **Trace- \* . log** ) této složky během 48 hodin od instalace nebo Azure AD Connect upgradu konfigurace předávacího ověřování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
 
 >[!IMPORTANT]
 >Neodstraňujte soubor **PersistedState.xml** v této složce, protože tento soubor slouží k údržbě stavu předchozí instalace Azure AD Connect a používá se v případě, že je dokončena instalace upgradu. Tento soubor nikdy nebude obsahovat žádná data o osobě a neměl by se nikdy odstranit.
@@ -67,7 +67,7 @@ Další informace o souvisejících požadavcích Azure AD Connect GDPR najdete 
 
 ### <a name="delete-authentication-agent-event-logs"></a>Odstranit protokoly událostí ověřovacího agenta
 
-Tento produkt může také vytvářet **protokoly událostí systému Windows**. Pokud se chcete dozvědět víc, přečtěte si [Tento článek](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Tento produkt může také vytvářet **protokoly událostí systému Windows**. Pokud se chcete dozvědět víc, přečtěte si [Tento článek](/windows/win32/wes/windows-event-log).
 
 Chcete-li zobrazit protokoly související s agentem předávacího ověřování, otevřete aplikaci **Prohlížeč událostí** na serveru a zaškrtněte v části **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
@@ -92,18 +92,18 @@ Pokud chcete naplánovat spuštění tohoto skriptu každých 48 hodin, postupuj
 
 1.  Uložte skript do souboru s příponou. PS1 "rozšíření.
 2.  Otevřete **Ovládací panely** a klikněte na **systém a zabezpečení**.
-3.  V části **Nástroje pro správu** klikněte na**plán úlohy**.
-4.  V **Plánovač úloh**klikněte pravým tlačítkem na "**Knihovna plánování úkolů**" a klikněte na "**vytvořit základní úlohu...**".
+3.  V části **Nástroje pro správu** klikněte na **plán úlohy**.
+4.  V **Plánovač úloh** klikněte pravým tlačítkem na "**Knihovna plánování úkolů**" a klikněte na "**vytvořit základní úlohu...**".
 5.  Zadejte název nové úlohy a klikněte na **Další**.
-6.  Pro **aktivační událost úlohy** vyberte**denní**a klikněte na **Další**.
+6.  Pro **aktivační událost úlohy** vyberte **denní** a klikněte na **Další**.
 7.  Nastavte opakování na dva dny a klikněte na **Další**.
-8.  Jako akci vyberte**Spustit program**a klikněte na **Další**.
+8.  Jako akci vyberte **Spustit program** a klikněte na **Další**.
 9.  Do pole program nebo skript zadejte "**PowerShell**" a v poli označený jako "**Přidat argumenty (nepovinné)**" zadejte úplnou cestu ke skriptu, který jste vytvořili dříve, a pak klikněte na tlačítko **Další**.
 10. Na další obrazovce se zobrazí souhrn úlohy, kterou se chystáte vytvořit. Ověřte hodnoty a kliknutím na **Dokončit** vytvořte úlohu:
  
 ### <a name="note-about-domain-controller-logs"></a>Poznámka o protokolech řadičů domény
 
-Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
+Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
 ## <a name="next-steps"></a>Další kroky
 * [Přečtěte si téma zásady ochrany osobních údajů Microsoftu na webu Trust Center.](https://www.microsoft.com/trustcenter)

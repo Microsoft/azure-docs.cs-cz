@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 8acc8b1e32304705b4221fe5570f7445720eafed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307909"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966696"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Rychlý Start: zřízení simulovaného zařízení pro IoT Hub s symetrickými klíči
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit simulátor zaříze
 
 I když tento článek popisuje, jak zřídit jednotlivé registrace, můžete použít skupiny registrací. Při používání skupin registrací jsou některé rozdíly. Například je nutné použít odvozený klíč zařízení s jedinečným ID registrace pro zařízení. Přestože skupiny registrací symetrického klíče nejsou omezené na starší verze zařízení, příklad skupiny registrací najdete v článku o [zřízení starší verze zařízení pomocí osvědčení symetrického klíče](how-to-legacy-device-symm-key.md). Další informace najdete v článku o [osvědčení symetrického klíče v části o skupinových registracích](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Pokud neznáte proces automatického zřizování, projděte si [koncepty automatického zřizování](concepts-auto-provisioning.md). 
+Pokud nejste obeznámeni s procesem automatického zřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . 
 
 Než budete pokračovat v tomto rychlém zprovoznění, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). Tento rychlý start vyžaduje vytvořenou instanci služby Device Provisioning Service.
 
@@ -34,7 +34,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ujistěte se, že na svém počítači máte nainstalovanou [Java se Development Kit 8](https://aka.ms/azure-jdks) nebo novější.
+* Ujistěte se, že na svém počítači máte nainstalovanou [Java se Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) nebo novější.
 
 * Stáhněte a nainstalujte [Maven](https://maven.apache.org/install.html).
 
@@ -146,7 +146,7 @@ V této části provedete aktualizaci ukázkového kódu zařízení a odešlete
 Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a pak stiskněte tlačítko **Odstranit** v horní části podokna. 
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
 1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
 
 ## <a name="next-steps"></a>Další kroky

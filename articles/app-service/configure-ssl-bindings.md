@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078627"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039797"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
 
-V tomto článku se dozvíte, jak zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) ve vaší [aplikaci App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikaci Function App](https://docs.microsoft.com/azure/azure-functions/) vytvořením vazby certifikátu. Až budete hotovi, můžete k aplikaci App Service přistupovat na `https://` koncový bod pro vlastní název DNS (například `https://www.contoso.com` ). 
+V tomto článku se dozvíte, jak zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) ve vaší [aplikaci App Service](./index.yml) nebo [aplikaci Function App](../azure-functions/index.yml) vytvořením vazby certifikátu. Až budete hotovi, můžete k aplikaci App Service přistupovat na `https://` koncový bod pro vlastní název DNS (například `https://www.contoso.com` ). 
 
 ![Webová aplikace s vlastním certifikátem TLS/SSL](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -37,12 +37,12 @@ V tomto kurzu se naučíte:
 
 Postup při použití tohoto průvodce:
 
-- [Vytvořit aplikaci App Service](/azure/app-service/)
+- [Vytvořit aplikaci App Service](./index.yml)
 - [Namapujte název domény na aplikaci](app-service-web-tutorial-custom-domain.md) nebo [kupte a nakonfigurujte ji v Azure](manage-custom-dns-buy-domain.md) .
 - [Přidání privátního certifikátu do aplikace](configure-ssl-certificate.md)
 
 > [!NOTE]
-> Nejjednodušší způsob, jak přidat privátní certifikát, je [vytvořit bezplatný App Service spravovaný certifikát](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview).
+> Nejjednodušší způsob, jak přidat privátní certifikát, je [vytvořit bezplatný App Service spravovaný certifikát](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Preview).
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -61,7 +61,7 @@ V levém navigačním panelu aplikace spusťte dialog **vazby TLS/SSL** :
 
 ![Přidat vazbu k doméně](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-V části **vlastní doména**vyberte vlastní doménu, pro kterou chcete přidat vazbu.
+V části **vlastní doména** vyberte vlastní doménu, pro kterou chcete přidat vazbu.
 
 Pokud už vaše aplikace obsahuje certifikát pro vybranou vlastní doménu, pokračujte na [vytvoření vazby](#create-binding) přímo. V opačném případě pokračujte dál.
 
@@ -73,7 +73,7 @@ Pokud vaše aplikace nemá žádný certifikát pro vybranou vlastní doménu, m
 - **Import App Service Certificate** – Sledujte pracovní postup při [importu certifikátu App Service](configure-ssl-certificate.md#import-an-app-service-certificate)a pak vyberte tuto možnost.
 
 > [!NOTE]
-> Můžete také [vytvořit bezplatný certifikát](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview) nebo [importovat certifikát Key Vault](configure-ssl-certificate.md#import-a-certificate-from-key-vault), ale musíte to udělat samostatně a pak se vrátit k dialogovému OKNU **vazby TLS/SSL** .
+> Můžete také [vytvořit bezplatný certifikát](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Preview) nebo [importovat certifikát Key Vault](configure-ssl-certificate.md#import-a-certificate-from-key-vault), ale musíte to udělat samostatně a pak se vrátit k dialogovému OKNU **vazby TLS/SSL** .
 
 ### <a name="create-binding"></a>Vytvořit vazbu
 
@@ -108,7 +108,7 @@ K dispozici jsou dvě změny, které byste si měli udělat, možná:
 
 V různých prohlížečích vyhledejte a `https://<your.custom.domain>` Ověřte, jestli funguje v aplikaci.
 
-![Přechod do aplikace Azure na portálu](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Snímek obrazovky, který ukazuje příklad procházení k vlastní doméně s zvýrazněnou adresou URL contoso.com.":::
 
 Kód aplikace může zkontrolovat protokol přes hlavičku "x-AppService-proto". Záhlaví bude mít hodnotu `http` nebo `https` . 
 
@@ -159,13 +159,13 @@ Konfigurační příručky specifické pro konkrétní jazyk, jako je napříkla
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-* [Použijte certifikát TLS/SSL v kódu v Azure App Service](configure-ssl-certificate-in-code.md)
-* [Nejčastější dotazy: App Service certifikátů](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Použití certifikátu TLS nebo SSL v kódu ve službě Azure App Service](configure-ssl-certificate-in-code.md)
+* [Nejčastější dotazy: App Service certifikátů](./faq-configuration-and-management.md)

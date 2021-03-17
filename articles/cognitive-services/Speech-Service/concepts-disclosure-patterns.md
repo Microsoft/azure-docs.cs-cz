@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: shlo
+ms.openlocfilehash: aec553b473e0fb2688224e8a8d027f7e9f3a6025
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74776618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716614"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
 Teď, když jste&#39;i zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové prostředí,&#39;s vhodným časem prozkoumat potenciální vzory návrhu.
@@ -62,7 +62,7 @@ Než začnete s hlasovým prostředím, zaveďte digitální asistenta tak, aby 
 *Při připojování nového uživatele se zavádí syntetický hlas.*
 
 Doporučení
-- Popište, že hlas je umělý ( &quot;např&quot;. Digital).
+- Popište, že hlas je umělý (např. &quot; Digital &quot; ).
 - Popište, co je agent schopný provádět
 - Explicitní stav zdroje hlasových&#39;s
 - Nabídnout vstupní bod pro další informace o syntetickém hlasu
@@ -141,7 +141,7 @@ Doporučení
 - Cílové nadřízené položky jako primární cílová skupina pro zpřístupnění
 - Podpora rodičů pro komunikaci se svými dětmi
 - Vstupní body nabídky pro další informace o syntetizovém hlasu
-- Využijte možnost vyžádat si rodiče o &quot;jednoduchou&quot; bezpečnostní otázku, aby si ukázali, že si přečetli zveřejnění.
+- Využijte možnost vyžádat si rodiče o jednoduchou &quot; bezpečnostní &quot; otázku, aby si ukázali, že si přečetli zveřejnění.
 
 ### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden
 
@@ -184,7 +184,7 @@ Při začleňování následujících typů pomůcek zvažte různé režimy int
 
 Zveřejnění se dá provést implicitně nastavením přesného očekávání za to, co je digitální asistent schopný. Poskytněte ukázkové příkazy, aby se uživatelé mohli naučit pracovat s digitálním asistentem a nabídnout kontextovou nápovědu pro další informace o syntetickém hlasu v počátečních fázích prostředí.
 
-![Vizuální pomůcky a zpětná vazba](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Příklad výchozích odpovědí na konverzaci, kterou můžete vytvořit.](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>Průhlednost konverzací
 
@@ -193,13 +193,13 @@ V případě, že konverzace spadají do neočekávaných cest, zvažte vytvoře
 ![Zpracování neočekávaných cest](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Mimo úkol nebo &quot;osobní&quot; dotazy směrované k agentovi jsou vhodný čas k přihlašování uživatelů syntetické povahy agenta a jejich řízení, aby se s ním mohli řádně zapojit nebo přesměrovat na skutečnou osobu.
+Mimo úkol nebo &quot; osobní &quot; dotazy směrované k agentovi jsou vhodný čas k přihlašování uživatelů syntetické povahy agenta a jejich řízení, aby se s ním mohli řádně zapojit nebo přesměrovat na skutečnou osobu.
 
 ![Zpracování dotazů na úlohy](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
 ## <a name="when-to-disclose"></a>Kdy se má zveřejnit
 
-Existuje mnoho příležitostí k odhalení během cesty uživatele. Návrh prvního použití, druhé použití, n-tý použití..., ale také k &quot;výpadku selhání&quot; při zdůraznění transparentnosti, například v případě, že systém provede chybu nebo když uživatel zjistí omezení schopností&#39;s agentem.
+Existuje mnoho příležitostí k odhalení během cesty uživatele. Návrh prvního použití, druhé použití, n-tý použití..., ale také &quot; k výpadku selhání &quot; při zdůraznění transparentnosti, například v případě, že systém provede chybu nebo když uživatel zjistí omezení schopností&#39;s agentem.
 
 ![Příležitosti k zveřejnění v průběhu cesty uživatelů](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
@@ -237,21 +237,14 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 - [Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [Předání do lidského](#conversational-transparency)
 
-
-
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 - [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Pokyny pro návrh Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows Mixed reality – pokyny pro hlasové příkazy](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Pokyny pro návrh Cortany](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows Mixed reality – pokyny pro hlasové příkazy](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Referenční dokumenty
+## <a name="see-also"></a>Viz také
 
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Přehled o uzavírání](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
-
-## <a name="next-steps"></a>Další kroky
-
-* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)

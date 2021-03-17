@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 802f732e8d62f5df861be525316b3c31ab4d0655
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184529"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957924"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
 
@@ -42,13 +42,13 @@ Chcete-li vytvořit službu StorSimple Data Manager, proveďte následující kr
 
    2. Vyberte **předplatné** z rozevíracího seznamu. Předplatné je propojeno s vaším fakturačním účtem. Pokud máte jenom jedno předplatné, vyplní se toto pole automaticky (a nedá se vybrat).
 
-   3. Vyberte existující skupinu prostředků nebo vytvořte novou skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   3. Vyberte existující skupinu prostředků nebo vytvořte novou skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    4. Zadejte **umístění** služby, které slouží k uložení účtů úložiště a služby StorSimple data Manager. Služba StorSimple Device Manager, Služba Data Manager a přidružený účet úložiště by měly být všechny v podporovaných oblastech.
     
    5. Pokud chcete na řídicím panelu získat odkaz na tuto službu, vyberte **Připnout na řídicí panel**.
     
-   6. Klikněte na možnost **Vytvořit**.
+   6. Klikněte na **Vytvořit**.
 
       ![Vytvoření StorSimple Data Manager služby 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -74,7 +74,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
     ![Konfigurace úložiště zdrojových dat](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. Vzhledem k tomu, že se jedná o novou Data Manager službu, nejsou nakonfigurovaná žádná úložiště dat. V části **Konfigurovat zdroj dat**zadejte podrobnosti zařízení řady StorSimple 8000 a data, která vás zajímají.
+6. Vzhledem k tomu, že se jedná o novou Data Manager službu, nejsou nakonfigurovaná žádná úložiště dat. V části **Konfigurovat zdroj dat** zadejte podrobnosti zařízení řady StorSimple 8000 a data, která vás zajímají.
 
    Pokud chcete přidat Device Manager StorSimple jako úložiště dat, klikněte na **Přidat nový** v rozevíracím seznamu úložiště dat a pak klikněte na **Přidat úložiště dat**.
 
@@ -94,7 +94,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
       Po dokončení klikněte na **OK** . Tím uložíte úložiště dat. Znovu použít tuto StorSimple Device Manager v jiných definicích úlohy bez zadání těchto parametrů. Po kliknutí na **OK** může trvat několik sekund, než se nově vytvořené zdrojové úložiště dat zobrazí v rozevíracím seznamu.
 
-7. V rozevíracím seznamu pro **úložiště dat**vyberte úložiště dat, které jste vytvořili. 
+7. V rozevíracím seznamu pro **úložiště dat** vyberte úložiště dat, které jste vytvořili. 
 
    1. Zadejte název zařízení řady StorSimple 8000, které obsahuje data, která vás zajímají.
 
@@ -119,7 +119,7 @@ K vytvoření definice úlohy proveďte následující kroky.
     
 10. Po přidání úložiště dat počkejte několik minut.
     
-    1. V rozevíracím seznamu v **názvu cílového účtu**vyberte úložiště, které jste vytvořili jako cíl.
+    1. V rozevíracím seznamu v **názvu cílového účtu** vyberte úložiště, které jste vytvořili jako cíl.
 
     2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na **OK**.
 
@@ -153,7 +153,7 @@ Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který
 
 ### <a name="view-logs-after-job-completion"></a>Zobrazení protokolů po dokončení úlohy
 
-Po dokončení úlohy můžete zobrazit stav úlohy. Stav úlohy je možné **úspěšně**provést, **částečně úspěšné** a **neúspěšné**. Můžete zobrazit seznam souborů, které byly úspěšně zkopírovány, a soubory, jejichž kopírování se nezdařilo. Tyto seznamy jsou k dispozici v kontejneru s názvem **"StorSimple-data-Manager-joblogs"** v rámci svého cílového účtu úložiště. V rámci tohoto kontejneru můžete vyhledat složku se stejným názvem, jako má vaše definice úlohy. V této složce se vytvoří složka pro každé spuštění úlohy, která bude obsahovat vaše seznamy. Název této složky bude identifikátor GUID úlohy, který můžete získat ze stránky s podrobnostmi úlohy. Případně se ve většině případů na stránce úlohy zobrazí odkaz na protokoly kopírování.
+Po dokončení úlohy můžete zobrazit stav úlohy. Stav úlohy je možné **úspěšně** provést, **částečně úspěšné** a **neúspěšné**. Můžete zobrazit seznam souborů, které byly úspěšně zkopírovány, a soubory, jejichž kopírování se nezdařilo. Tyto seznamy jsou k dispozici v kontejneru s názvem **"StorSimple-data-Manager-joblogs"** v rámci svého cílového účtu úložiště. V rámci tohoto kontejneru můžete vyhledat složku se stejným názvem, jako má vaše definice úlohy. V této složce se vytvoří složka pro každé spuštění úlohy, která bude obsahovat vaše seznamy. Název této složky bude identifikátor GUID úlohy, který můžete získat ze stránky s podrobnostmi úlohy. Případně se ve většině případů na stránce úlohy zobrazí odkaz na protokoly kopírování.
 V této složce se zobrazuje 2 sada souborů CSV. Všechny soubory, které začínají na **copiedfilelist...** budou obsahovat seznam úspěšně zkopírovaných souborů. Všechny soubory, které začínají na **failedfilelist...** obsahují soubory, které se nemohly zkopírovat, spolu s chybovou zprávou.
 
 

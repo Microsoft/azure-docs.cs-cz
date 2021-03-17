@@ -7,19 +7,19 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691492"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650676"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
 Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru prostřednictvím integrace s Azure Functions. Tento článek ukazuje, jak přidat a nasadit rozhraní API do webu Azure static Web Apps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným.
   - Pokud účet nemáte, můžete si [ho vytvořit zdarma](https://azure.microsoft.com/free).
@@ -32,7 +32,7 @@ Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru pros
 
 Následující kroky ukazují, jak vytvořit nové úložiště a klonovat soubory do počítače.
 
-1. Ujistěte se, že jste přihlášeni k GitHubu, a přejděte k https://github.com/staticwebdev/vanilla-basic/generate Vytvoření nového úložiště.
+1. Ujistěte se, že jste přihlášeni k GitHubu, a přejděte k [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) Vytvoření nového úložiště.
 1. Do pole _název úložiště_ zadejte **My-Vanilla-API**.
 1. Klikněte na **vytvořit úložiště ze šablony**.
 
@@ -59,9 +59,9 @@ V dalším kroku vytvoříte Azure Functions projekt jako rozhraní API aplikace
 1. Vyberte složku **rozhraní API** jako adresář pracovního prostoru projektu.
 1. Zvolte **Vybrat**
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Snímek obrazovky se zobrazí jako složka P I a na tlačítko vybrat.":::
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
     - _Vyberte jazyk_: zvolte **JavaScript** .
     - _Vyberte šablonu pro funkci prvního projektu_: zvolte **aktivační událost http** .
@@ -145,13 +145,13 @@ Visual Studio Code se integruje s [Azure Functions Core Tools](../azure-function
 
     Základní nástroje zobrazují výstup z běžící aplikace na panelu _terminálu_ . Jako součást výstupu uvidíte koncový bod adresy URL vaší funkce aktivované protokolem HTTP spuštěnou místně.
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Snímek obrazovky se zobrazí na kartě terminál, kde vidíte U R L.":::
 
 1. Pokud běží základní nástroje, přejděte na následující adresu URL, abyste ověřili, že rozhraní API běží správně: `http://localhost:7071/api/message` .
 
    Odpověď v prohlížeči by měla vypadat podobně jako v následujícím příkladu:
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="ALT textScreenshot ukazuje textovou odpověď v prohlížeči.":::
 
 1. Stisknutím **SHIFT + F5** zastavíte relaci ladění.
 
@@ -199,7 +199,7 @@ Při nasazení do Azure jsou požadavky na rozhraní API automaticky směrovány
 
     Nyní by se měla zobrazit zpráva rozhraní API na webové stránce.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Snímek obrazovky ukazuje zprávu A P v prohlížeči.":::
 
    > [!NOTE]
    > K obsluze souboru můžete použít další servery HTTP nebo proxy `index.html` . Přístup k souboru `index.html` z `file:///` nebude fungovat.
@@ -234,14 +234,16 @@ Pak přidejte nastavení specifické pro aplikaci.
 1. Klikněte na tlačítko **Přihlásit se přes GitHub** a ověřte se v této službě.
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-Vanilla-API** .
-1. V rozevíracím seznamu _větev_ vyberte **Hlavní** .
-1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
+1. V rozevíracím seznamu _větev_ vyberte **Main (Hlavní** ).
+1. V rozevíracím seznamu _přednastavení sestavení_ vyberte rozhraní podle vašeho výběru pro konfiguraci buildu.
+
+ > Tato pole budou odpovídat výchozí struktuře projektu typu aplikace. Změňte hodnoty tak, aby vyhovovaly vaší aplikaci.
 
 Dále přidejte následující podrobnosti o sestavení.
 
-1. Jako **/** _umístění aplikace_zadejte.
+1. Jako **/** _umístění aplikace_ zadejte.
 1. Do pole _umístění rozhraní API_ zadejte **API** .
-1. Zrušte zaškrtnutí políčka Výchozí hodnota mimo _umístění artefaktu aplikace_a nechte pole prázdné.
+1. Zrušte zaškrtnutí políčka Výchozí hodnota mimo _umístění artefaktu aplikace_ a nechte pole prázdné.
 1. Klikněte na **Zkontrolovat a vytvořit**.
 1. Klikněte na tlačítko **Create** (Vytvořit).
 
@@ -266,7 +268,7 @@ Pokud nechcete, aby se tato aplikace nadále používala k dalšímu použití, 
 1. Klikněte na **skupiny prostředků** .
 1. Vybrat **myResourceGroup**
 1. Na stránce _myResourceGroup_ se ujistěte, že uvedené prostředky jsou ty, které chcete odstranit.
-1. Vybrat **Odstranit**
+1. Vyberte **Odstranit**.
 1. Do textového pole zadejte **myResourceGroup** .
 1. Vyberte **Odstranit**.
 

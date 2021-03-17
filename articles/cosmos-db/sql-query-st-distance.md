@@ -3,18 +3,21 @@ title: ST_DISTANCE v dotazovacím jazyce Azure Cosmos DB
 description: Přečtěte si o funkcích systému SQL ST_DISTANCE v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 02844569137a46ea030b2189191b84a9db24ed22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f01f5faf68821fe9f85657c74111efdbb02bd204
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537291"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559932"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí vzdálenost mezi dvěma LineStringmi body, mnohoúhelníkem, výrazem pro více bodových JSON. Další informace najdete v článku o [datech geoprostorového a geografického umístění JSON](sql-query-geospatial-intro.md) .
   
 ## <a name="syntax"></a>Syntaxe
@@ -52,10 +55,10 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude využívat [geoprostorové rejstřík](index-policy.md#spatial-indexes).
+Tato systémová funkce bude využívat výhod [geoprostorového indexu](index-policy.md#spatial-indexes) s výjimkou dotazů s agregacemi.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Cosmos DB prostorových funkcí](sql-query-spatial-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

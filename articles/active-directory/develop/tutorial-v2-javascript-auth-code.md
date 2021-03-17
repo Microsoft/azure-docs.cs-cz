@@ -1,7 +1,7 @@
 ---
-title: Kurz pro jednostránkové aplikace v JavaScriptu – tok kódu ověřování | Azure
+title: 'Kurz: vytvoření jednostránkové aplikace v JavaScriptu, která používá tok kódu ověřování | Azure'
 titleSuffix: Microsoft identity platform
-description: Jak aplikace JavaScript SPA můžou pomocí toku kódu ověřování volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Azure Active Directory v 2.0
+description: V tomto kurzu vytvoříte kód JavaScript SPA, který se může přihlašovat uživatelům, a pomocí toku kódu ověřování získá přístupový token z platformy Microsoft identity a zavolá rozhraní Microsoft Graph API.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,37 +11,41 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311534"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756165"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
-V tomto kurzu se dozvíte, jak vytvořit jednostránkovou aplikaci v JavaScriptu (SPA), která používá knihovnu Microsoft Authentication Library (MSAL) pro JavaScript v 2.0:
+V tomto kurzu vytvoříte jednostránkovou aplikaci v JavaScriptu (SPA), která podepisuje uživatele a volá Microsoft Graph pomocí toku autorizačního kódu s PKCE. Při sestavování zabezpečeného hesla se používá knihovna Microsoft Authentication Library (MSAL) pro JavaScript v 2.0.
 
+V tomto kurzu:
 > [!div class="checklist"]
 > * Provedení toku autorizačního kódu OAuth 2,0 s PKCE
 > * Přihlaste se k osobním účtům Microsoft i pracovním a školním účtům.
 > * Získání přístupového tokenu
-> * Zavolejte Microsoft Graph nebo vlastní rozhraní API, které vyžaduje přístupové tokeny získané z koncového bodu Microsoft Identity Platform.
+> * Zavolejte Microsoft Graph nebo vlastní rozhraní API, které vyžaduje přístupové tokeny získané z platformy Microsoft Identity Platform.
 
 MSAL.js 2,0 vylepšuje MSAL.js 1,0 tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL.js **2,0 nepodporuje implicitní** tok.
 
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+## <a name="prerequisites"></a>Požadavky
+
+* [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
+* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
 
 ## <a name="how-the-tutorial-app-works"></a>Jak funguje aplikace tutorial
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
 
-Aplikace, kterou vytvoříte v tomto kurzu, umožňuje pomocí JavaScriptu ZABEZPEČENÉho dotazování na rozhraní API Microsoft Graph získat tokeny zabezpečení z koncového bodu Microsoft Identity Platform. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP v autorizační hlavičce. Získání a obnovení tokenu jsou zpracovávány knihovnou Microsoft Authentication Library pro JavaScript (MSAL.js).
+Aplikace, kterou vytvoříte v tomto kurzu, umožňuje, aby se pomocí JavaScriptu SPA mohl dotazovat rozhraní API pro Microsoft Graph tím, že získává tokeny zabezpečení od platformy Microsoft identity. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP v autorizační hlavičce. Získání a obnovení tokenu jsou zpracovávány knihovnou Microsoft Authentication Library pro JavaScript (MSAL.js).
 
 V tomto kurzu se používá následující knihovna:
 
-[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) Knihovna Microsoft Authentication Library pro JavaScript v 2.0 – balíček
+[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) balíčku Microsoft Authentication Library pro JavaScript v 2.0
 
 ## <a name="get-the-completed-code-sample"></a>Získat ukázku dokončeného kódu
 
@@ -52,11 +56,6 @@ Chcete místo toho stáhnout ukázkový projekt tohoto kurzu? Chcete-li spustit 
 Pokud chcete před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
 
 Pokud chcete pokračovat v kurzu a sestavit aplikaci sami, přejděte k další části [požadavky](#prerequisites).
-
-## <a name="prerequisites"></a>Požadavky
-
-* [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
-* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
 
 ## <a name="create-your-project"></a>Vytvoření projektu
 
@@ -120,13 +119,13 @@ Teď máte malý dynamický Server, který bude sloužit pro SPA. Po dokončení
 ```
 msal-spa-tutorial/
 ├── app
-│   ├── authConfig.js
-│   ├── authPopup.js
-│   ├── authRedirect.js
-│   ├── graphConfig.js
-│   ├── graph.js
-│   ├── index.html
-│   └── ui.js
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
 └── server.js
 ```
 
@@ -325,8 +324,8 @@ Upravte hodnoty v `msalConfig` části, jak je popsáno zde:
 - `Enter_the_Cloud_Instance_Id_Here`: Cloudová instance Azure, ve které je vaše aplikace zaregistrovaná.
   - V případě hlavního (nebo *globálního*) cloudu Azure zadejte `https://login.microsoftonline.com` .
   - Pro **národní** cloudy (například Čína) můžete najít odpovídající hodnoty v [národních cloudech](authentication-national-cloud.md).
-- `Enter_the_Tenant_info_here`měla by být jedna z následujících:
-  - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například, `contoso.microsoft.com`.
+- `Enter_the_Tenant_info_here` měla by být jedna z následujících:
+  - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například `contoso.microsoft.com`.
   - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` .
   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` .
   - Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` .
@@ -350,9 +349,9 @@ const graphConfig = {
 
 Upravte hodnoty v `graphConfig` části, jak je popsáno zde:
 
-- `Enter_the_Graph_Endpoint_Here`je instancí rozhraní API Microsoft Graph, se kterou by měla aplikace komunikovat.
+- `Enter_the_Graph_Endpoint_Here` je instancí rozhraní API Microsoft Graph, se kterou by měla aplikace komunikovat.
   - Pro **globální** koncový bod rozhraní API Microsoft Graph nahraďte oba výskyty řetězce `https://graph.microsoft.com` .
-  - V případě koncových bodů v **národních** cloudových nasazeních najdete informace v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments) v dokumentaci Microsoft Graph.
+  - V případě koncových bodů v **národních** cloudových nasazeních najdete informace v tématu věnovaném [národním cloudovým nasazením](/graph/deployments) v dokumentaci Microsoft Graph.
 
 `graphMeEndpoint`Hodnoty a `graphMailEndpoint` v *graphConfig.js* by měly být podobné následujícímu, pokud používáte globální koncový bod:
 
@@ -361,7 +360,7 @@ graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
 graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
 ```
 
-## <a name="use-microsoft-authentication-library-msal-to-sign-in-user"></a>Přihlášení uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-user"></a>Přihlášení uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
 ### <a name="pop-up"></a>Automaticky otevíraná okna
 
@@ -549,25 +548,27 @@ function readMail() {
 
 Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` metoda se zavolá na `loginPopup` přihlášení uživatele. `loginPopup`Metoda otevře automaticky otevírané okno s *koncovým bodem Microsoft Identity Platform* , kde se zobrazí výzva a ověří přihlašovací údaje uživatele. Po úspěšném přihlášení zahájí *msal.js* [tok autorizačního kódu](v2-oauth2-auth-code-flow.md).
 
-V tomto okamžiku se do koncového bodu tokenu Protected CORS pošle autorizační kód chráněný PKCE a vyměňují se pro tokeny. Vaše *msal.js*aplikace obdrží token ID, přístupový token a aktualizační token a informace obsažené v tokenech jsou uložené v mezipaměti.
+V tomto okamžiku se do koncového bodu tokenu Protected CORS pošle autorizační kód chráněný PKCE a vyměňují se pro tokeny. Vaše *msal.js* aplikace obdrží token ID, přístupový token a aktualizační token a informace obsažené v tokenech jsou uložené v mezipaměti.
 
-Token ID obsahuje základní informace o uživateli, jako je jeho zobrazované jméno. Pokud máte v úmyslu použít jakákoli data poskytnutá tokenem ID, váš back-end server *musí* ověřit, zda byl token vydán platnému uživateli vaší aplikace. Obnovovací token má omezené trvání a vyprší za 24 hodin. Obnovovací token lze použít k tichému získání nových přístupových tokenů.
+Token ID obsahuje základní informace o uživateli, jako je jeho zobrazované jméno. Pokud máte v úmyslu použít jakákoli data poskytnutá tokenem ID, váš back-end server *musí* ověřit, zda byl token vydán platnému uživateli vaší aplikace.
+
+Přístupový token má omezené trvání a vyprší za 24 hodin. Obnovovací token lze použít k tichému získání nových přístupových tokenů.
 
 SPA, které jste vytvořili v tomto kurzu, volá nebo `acquireTokenSilent` `acquireTokenPopup` získá *přístupový token* , který se používá k dotazování rozhraní API Microsoft Graph pro informace o profilu uživatele. Pokud potřebujete ukázku, která ověří token ID, přečtěte si ukázkovou aplikaci [Active-Directory-JavaScript-singlepageapp-dotnet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) na GitHubu. Ukázka používá webové rozhraní API ASP.NET pro ověření tokenu.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Například:
+Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s platformou Microsoft identity. Například:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
 - Je vyžadováno dvojúrovňové ověřování.
 
-Volání `acquireTokenPopup` otevře automaticky otevírané okno (nebo `acquireTokenRedirect` přesměruje uživatele na koncový bod Microsoft Identity Platform). V tomto okně musí uživatelé pracovat pomocí potvrzení svých přihlašovacích údajů, udělení souhlasu k požadovanému prostředku nebo dokončením dvojúrovňového ověřování.
+Volání `acquireTokenPopup` otevře automaticky otevírané okno (nebo `acquireTokenRedirect` přesměruje uživatele na platformu Microsoft Identity). V tomto okně musí uživatelé pracovat pomocí potvrzení svých přihlašovacích údajů, udělení souhlasu k požadovanému prostředku nebo dokončením dvojúrovňového ověřování.
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` `loginRedirect` prvním spuštění (nebo) `acquireTokenSilent` je metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. (Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.) `acquireTokenSilent`v některých případech může selhat. Může například dojít k vypršení platnosti hesla uživatele. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
+`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` `loginRedirect` prvním spuštění (nebo) `acquireTokenSilent` je metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. (Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.) `acquireTokenSilent` v některých případech může selhat. Může například dojít k vypršení platnosti hesla uživatele. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
 
 1. Okamžitě zavolejte, `acquireTokenPopup` aby se aktivovala výzva k přihlášení uživatele. Tento model se běžně používá v online aplikacích, kde není k dispozici žádný neautorizovaný obsah v aplikaci pro uživatele. Ukázka vygenerovaná tímto procesem instalace používá tento model.
 1. Vizuálně nahlaste uživateli, že je vyžadováno interaktivní přihlášení, aby mohl uživatel vybrat správný čas pro přihlášení, nebo může aplikace opakovat `acquireTokenSilent` později. Tato technika se běžně používá v případě, že uživatel může použít jiné funkce aplikace, aniž by došlo k přerušení. V aplikaci může být například dostupný neautorizovaný obsah. V takovém případě se uživatel může rozhodnout, kdy se chce přihlásit k přístupu k chráněnému prostředku, nebo aktualizovat zastaralé informace.
@@ -617,7 +618,7 @@ Dokončili jste vytváření aplikace a teď jste připraveni spustit Node.js we
 
 ### <a name="sign-in-to-the-application"></a>Přihlášení k aplikaci
 
-Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit** se. Budete vyzváni k přihlášení pomocí platformy Microsoft Identity Platform:
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webový prohlížeč, který zobrazuje přihlašovací dialog":::
 
@@ -649,14 +650,7 @@ Pokud rozhraní API pro back-end nevyžaduje obor, což se nedoporučuje, může
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili jednostránkovou aplikaci v JavaScriptu (SPA), která používá knihovnu Microsoft Authentication Library (MSAL) pro JavaScript v 2.0:
+Pokud byste chtěli podrobně hlubší vývoj aplikací v JavaScriptu na platformě Microsoft Identity Platform, přečtěte si naši řadu scénářů s více částmi:
 
-> [!div class="checklist"]
-> * Provedení toku autorizačního kódu OAuth 2,0 s PKCE
-> * Přihlaste se k osobním účtům Microsoft i pracovním a školním účtům.
-> * Získání přístupového tokenu
-> * Zavolejte Microsoft Graph nebo vlastní rozhraní API, které vyžaduje přístupové tokeny získané z koncového bodu Microsoft Identity Platform.
-
-Další informace o toku autorizačního kódu, včetně rozdílů mezi toky implicitního a ověřovacího kódu, najdete v části [Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
-
-Pokud byste chtěli podrobně hlubší vývoj aplikací v JavaScriptu na platformě Microsoft Identity Platform, scénář s více částmi: řada článků s [jednou stránkou](scenario-spa-overview.md) vám může pomáhat začít.
+> [!div class="nextstepaction"]
+> [Scénář: jednostránkové aplikace](scenario-spa-overview.md)

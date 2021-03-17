@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abe4bb3a53e3177857cb8041fd255ec916985054
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85114771"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089861"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Šifrování dat ve službě Azure Cosmos DB 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Šifrování v klidovém stavu je slovní spojení, které běžně označuje šifrování dat na zařízeních s nestálým úložištěm, jako jsou jednotky SSD (Solid State Drive) a jednotky pevného disku (HDD). Cosmos DB ukládá své primární databáze na SSD. Jeho přílohy a zálohy médií jsou uložené ve službě Azure Blob Storage, která je obecně zálohovaná pomocí HDD. S vydáním šifrování v klidovém stavu pro Cosmos DB se šifrují všechny vaše databáze, přílohy médií a zálohy. Vaše data se teď šifrují při přenosu (přes síť) a v klidovém stavu (nestálá úložiště), což vám dává ucelené šifrování.
 
@@ -46,7 +47,7 @@ Odpověď: klíče spravuje Microsoft.
 Odpověď: Microsoft obsahuje sadu vnitřních pokynů pro rotaci šifrovacích klíčů, které Cosmos DB následující. Konkrétní pokyny nejsou publikovány. Společnost Microsoft zveřejňuje prostředí [SDL (Security Development Lifecycle)](https://www.microsoft.com/sdl/default.aspx), které se zobrazuje jako podmnožina interních pokynů, a má užitečné osvědčené postupy pro vývojáře.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Otázka: můžu použít vlastní šifrovací klíče?
-Odpověď: Ano, tato funkce je nyní k dispozici pro nové účty Azure Cosmos DB a ta by se měla provést v době vytváření účtu. Další informace najdete v dokumentu [klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) .
+Odpověď: Ano, tato funkce je nyní k dispozici pro nové účty Azure Cosmos DB a ta by se měla provést v době vytváření účtu. Další informace najdete v dokumentu [klíčů spravovaných zákazníkem](./how-to-setup-cmk.md) .
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Otázka: u kterých oblastí je šifrování zapnuté?
 O: všechny oblasti Azure Cosmos DB mají zapnuté šifrování pro všechna uživatelská data.

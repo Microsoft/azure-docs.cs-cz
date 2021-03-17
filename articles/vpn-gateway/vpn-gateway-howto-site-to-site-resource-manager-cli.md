@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/18/2018
+ms.date: 10/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: a90563f77a1e491bdc7fb7d421dedc7b265790d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3a29c4522812b728f553bf52543ac3307f0ffbda
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030595"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739933"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Vytvoření virtuální sítě s připojením VPN typu Site-to-Site pomocí rozhraní příkazového řádku
 
@@ -24,9 +24,6 @@ Tento článek ukazuje, jak pomocí Azure CLI vytvořit připojení brány VPN t
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Rozhraní příkazového řádku](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-site-to-site-classic-portal.md)
-> 
->
-
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-diagram.png)
 
@@ -39,9 +36,8 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 * Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
-* Pomocí Azure Cloud Shell můžete spustit příkazy rozhraní příkazového řádku (pokyny najdete níže). Pokud ale dáváte přednost spouštění příkazů místně, ověřte, že máte nainstalovanou nejnovější verzi příkazů rozhraní příkazového řádku (2,0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli). 
- 
-  [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+* Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ### <a name="example-values"></a><a name="example"></a>Příklady hodnot
 
@@ -50,21 +46,21 @@ Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můž
 ```
 #Example values
 
-VnetName                = TestVNet1 
-ResourceGroup           = TestRG1 
-Location                = eastus 
-AddressSpace            = 10.11.0.0/16 
-SubnetName              = Subnet1 
-Subnet                  = 10.11.0.0/24 
-GatewaySubnet           = 10.11.255.0/27 
-LocalNetworkGatewayName = Site2 
+VnetName                = TestVNet1 
+ResourceGroup           = TestRG1 
+Location                = eastus 
+AddressSpace            = 10.11.0.0/16 
+SubnetName              = Subnet1 
+Subnet                  = 10.11.0.0/24 
+GatewaySubnet           = 10.11.255.0/27 
+LocalNetworkGatewayName = Site2 
 LNG Public IP           = <VPN device IP address>
 LocalAddrPrefix1        = 10.0.0.0/24
-LocalAddrPrefix2        = 20.0.0.0/24   
-GatewayName             = VNet1GW 
-PublicIP                = VNet1GWIP 
-VPNType                 = RouteBased 
-GatewayType             = Vpn 
+LocalAddrPrefix2        = 20.0.0.0/24   
+GatewayName             = VNet1GW 
+PublicIP                = VNet1GWIP 
+VPNType                 = RouteBased 
+GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
@@ -148,7 +144,7 @@ Použijte následující hodnoty:
 Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/network/vnet-gateway). Pokud tento příkaz spustíte s použitím parametru --no-wait, nezobrazí se žádná zpětná vazba ani výstup. Tento parametr umožňuje bránu vytvořit na pozadí. Vytvoření brány trvá přibližně 45 minut.
 
 ```azurecli-interactive
-az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
+az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
 ## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. konfigurace zařízení VPN
@@ -186,7 +182,7 @@ Pokud chcete k ověření připojení použít jinou metodu, přečtěte si tém
 
 ## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Připojení k virtuálnímu počítači
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Běžné úkoly
 
@@ -196,10 +192,10 @@ Tato část obsahuje běžné příkazy, které jsou užitečné při práci s k
 
 ## <a name="next-steps"></a>Další kroky
 
-* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/).
+* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](../index.yml).
 * Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).
 * Informace o vynuceném tunelování najdete v tématu [o vynuceném tunelování](vpn-gateway-forced-tunneling-rm.md).
 * Informace o vysoce dostupných připojeních typu aktivní-aktivní najdete v tématu [Připojení s vysokou dostupností mezi jednotlivými místy a VNet-to-VNet](vpn-gateway-highlyavailable.md).
-* Seznam příkazů Azure CLI pro práci se sítěmi najdete v tématu věnovaném [Azure CLI](https://docs.microsoft.com/cli/azure/network).
+* Seznam příkazů Azure CLI pro práci se sítěmi najdete v tématu věnovaném [Azure CLI](/cli/azure/network).
 * Informace o vytvoření připojení VPN typu Site-to-site pomocí šablony Azure Resource Manager najdete v tématu [vytvoření připojení VPN typu Site-to-site](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/).
 * Informace o vytvoření připojení VPN typu VNet-to-VNet pomocí šablony Azure Resource Manager najdete v tématu [nasazení HBA pro geografickou replikaci](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/).

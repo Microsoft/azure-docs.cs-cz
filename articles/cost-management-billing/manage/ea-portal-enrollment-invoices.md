@@ -3,46 +3,136 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
-ms.reviewer: boalcsva
-ms.openlocfilehash: 89b344a4fc97ccc65a123a2892eac998eaf18b28
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
-ms.translationtype: HT
+ms.subservice: enterprise
+ms.reviewer: ruturajd
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244104"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430801"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
 V tomto článku je vysvětlená správa faktury za smlouvu Azure Enterprise (Azure EA) a její další použití. Vaše faktura představuje vyúčtování. Zkontrolujte její správnost. Měli byste se také seznámit s dalšími úkoly, které při správě faktury můžete potřebovat.
 
+## <a name="view-usage-summary-and-download-reports"></a>Zobrazení souhrnu využití a stahování sestav
+
+Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebované zálohy na Azure a poplatky za další využití. Poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
+
+Pokud se chcete podívat na podrobné využití u konkrétních účtů, stáhněte si sestavu s podrobnostmi o využití:
+
+1. Přihlaste se k portálu Azure Enterprise.
+1. Vyberte **Sestavy**.
+1. Vyberte kartu **Download Usage** (Stáhnout data o využití).
+1. V seznamu sestav vyberte **Download** (Stáhnout) u měsíční sestavy, kterou chcete získat.
+
+   > [!NOTE]
+   > Sestava s podrobnostmi využití nezahrnuje příslušné daně.
+   >
+   > Mezi časem skutečného využití a promítnutím tohoto údaje do sestavy může vzniknout zpoždění až 8 hodin.
+
+Zobrazení sestav a grafů se souhrnem využití:
+
+1. Přihlaste se k portálu Azure Enterprise Portal.
+1. Vyberte období zálohy.
+   Pokud chcete změnit rozsah data pro **Usage Summary** (Souhrn využití), můžete vpravo nahoře na stránce přepnout z **M** (Monthly) (Měsíčně) na **C** (Custom) (Vlastní) a zadat vlastní počáteční a koncové datum.  
+   ![Vytvoření a zobrazení souhrnu využití a stahování sestav ve vlastním zobrazení](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. Pokud se chcete podívat na další podrobnosti, můžete vybrat období nebo měsíc v grafu.
+   - V grafu se zobrazuje meziměsíční využití s rozpisem spotřebovaného využití, nadměrného vyúčtování služeb, poplatků fakturovaných samostatně a poplatků z Azure Marketplace.
+   - Pro vybraný měsíc můžete pomocí polí pod grafem filtrovat podle oddělení, účtů a předplatných.
+   - Můžete přepínat mezi volbami **Charge by Services** (Vyúčtování podle služeb) a **Charge by Hierarchy** (Vyúčtování podle hierarchie).
+   - Rozbalením a sbalením příslušných oddílů **Azure Service** (Služba Azure), **Charges Billed Separately** (Samostatně fakturované poplatky) a **Azure Marketplace** si můžete zobrazit podrobnosti.
+
+Podívejte se na toto video, ze kterého se dozvíte, jak zobrazit informace o využití:
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+
+### <a name="download-csv-reports"></a>Stahování sestav CSV
+
+Podnikoví správci si mohou ze stránky s měsíčními sestavami stáhnout následující sestavy ve formátu CSV:
+
+- Zůstatek a poplatky
+- Podrobnosti o využití
+- Poplatky za Azure Marketplace
+- Ceník
+
+Jak sestavy stáhnout:
+
+1. Na portálu Azure Enterprise vyberte **Reports** (Sestavy).
+2. V horní části stránky vyberte **Download Usage** (Stáhnout data o využití).
+3. Vyberte tlačítko **Download** (Stáhnout) vedle sestavy pro požadovaný měsíc.
+
+   > [!NOTE]
+   > Mezi datem skutečného využití a jeho zobrazením v sestavě může docházet ke zpoždění až 72 hodin.
+   >
+   > U uživatelů, kteří si soubory CSV stahují přes Safari do Excelu, může docházet k chybám formátování. Chybám se vyhnete tak, že soubor otevřete pomocí textového editoru.
+
+![Příklad ukazující stránku pro stažení údajů o využití](./media/ea-portal-enrollment-invoices/create-ea-download-csv-reports.png)
+
+Podívejte se na toto video, které ukazuje, jak si stáhnout informace o využití:
+
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+
+### <a name="advanced-report-download"></a>Stažení rozšířené sestavy
+
+Pomocí stažení rozšířené sestavy můžete získat sestavy, které pokrývají konkrétní rozsahy kalendářních dat nebo účty. Výstupní soubor je ve formátu CSV, aby pojal rozsáhlé sady záznamů.
+
+1. Na portálu Azure Enterprise vyberte **Advanced Report Download** (Stažení rozšířené sestavy).
+1. Vyberte příslušný rozsah data a příslušné účty.
+1. Vyberte **Požádat o data o využití**.
+1. Opakovaně vyberte tlačítko **Refresh** (Aktualizovat), dokud se stav sestavy neaktualizuje na **Download** (Stáhnout).
+1. Stáhněte sestavu.
+
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>Stažení sestav využití a fakturačních údajů pro předchozí registraci
+
+Sestavy využití a fakturační údaje pro předchozí registraci si můžete stáhnout až po přenosu registrace. Portál Azure Enterprise i správa nákladů umožňuje generování historických sestav.
+
+Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Aby se zobrazily neaktivní přenesené registrace, budete muset zrušit zaškrtnutí políčka **Active** (Aktivní).  
+
+![Zrušení zaškrtnutí políčka Active (Aktivní) umožní uživateli zobrazit neaktivní registrace](./media/ea-portal-enrollment-invoices/unchecked-active-box.png)
+
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Změna čísla nákupní objednávky pro chystanou fakturu za nadlimitní využití
 
-Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní objednávky, pokud podnikový správce nenastavil před datem faktury jiné číslo. Podnikový správce může číslo nákupní objednávky aktualizovat až sedm dnů od přijetí automatického e-mailu s oznámením o faktuře.
+Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní objednávky, pokud podnikový správce nenastavil před datem faktury jiné číslo. Podnikový správce může číslo nákupní objednávky aktualizovat až sedm dnů od přijetí automatického e-mailu s oznámením o faktuře. 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>Aktualizace čísla nákupní objednávky služeb Azure:
+Chcete-li zabránit automatické generaci čísel nákupních objednávek každý měsíc, můžete číslo nákupní objednávky uzamknout. Viz [číslo pro zámek](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles).
+
+### <a name="update-the-azure-services-purchase-order-number"></a>Aktualizace čísla nákupní objednávky služeb Azure
 
 1. Na portálu Azure Enterprise Portal vyberte **Report** (Sestava) > **Usage Summary** (Souhrn využití).
 1. V pravém horním rohu vyberte **Edit PO Numbers** (Upravit čísla nákupních objednávek).
 1. Vyberte přepínač **Služby Azure**.
 1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
-
    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
-1. Do pole**Číslo objednávky** zadejte nové číslo nákupní objednávky.
+1. Do pole **Číslo objednávky** zadejte nové číslo nákupní objednávky.
 1. Pokud chcete změnu odeslat, vyberte **Uložit**.
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Aktualizace čísla nákupní objednávky na Azure Marketplace:
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>Aktualizace čísla nákupní objednávky Azure Marketplace
 
 1. Na portálu Azure Enterprise Portal vyberte **Report** (Sestava) > **Usage Summary** (Souhrn využití).
 1. V pravém horním rohu vyberte **Edit PO Numbers** (Upravit čísla nákupních objednávek).
 1. Vyberte přepínač **Marketplace**.
-1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
-
-   Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
-1. Do pole**Číslo objednávky** zadejte nové číslo nákupní objednávky.
+1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.  
+    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
+1. Do pole **Číslo objednávky** zadejte nové číslo nákupní objednávky.
 1. Pokud chcete změnu odeslat, vyberte **Uložit**.
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>Umožňuje uzamknout číslo a zabránit automatické aktualizaci v nadcházejících fakturačních cyklech.
+
+Po uzamknutí čísla No zůstane tato hodnota uzamčená pro všechny nové faktury a nemusíte aktualizovat číslo No.
+
+1.  Na portálu Azure Enterprise vyberte   >  **Souhrn využití** sestav.
+2.  V pravém horním rohu vyberte **Edit PO Numbers** (Upravit čísla nákupních objednávek).
+3.  Do pole **číslo nákupní objednávky** zadejte nové číslo objednávky.
+4.  Vyberte pole **zámek pro číslo objednávky** .
+5.  Pokud chcete změnu odeslat, vyberte **Uložit**.  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="Snímek obrazovky s polem Zobrazit/upravit čísla objednávek" lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Četnost fakturace Azure Enterprise
 
@@ -160,21 +250,7 @@ Informace o základních cenách pro veřejnost, měrných jednotkách, nejčast
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Měrné jednotky smlouvy Enterprise
 
-Měrné jednotky pro smlouvy Enterprise se často liší od jednotek, které znáte z jiných programů, jako je například program Microsoft Online Services Agreement (MOSA). To znamená, že u řady služeb se měrná jednotka agreguje, aby bylo možné poskytovat normalizované ceny. Měrná jednotka, která se na portálu Azure Enterprise Portal zobrazuje v zobrazení Usage Summary (Souhrn využití), je vždy měrnou jednotkou smlouvy Enterprise. Úplný seznam aktuálních měrných jednotek a převodů pro jednotlivé služby najdete v excelovém souboru [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb).
-
-### <a name="rounding-rules"></a>Pravidla zaokrouhlování
-
-Portál Azure Enterprise Portal využívá logiku statistického zaokrouhlování neboli Gaussova zaokrouhlování podle standardu IEEE. Podle této logiky se čísla s polovinou zaokrouhlí na nejbližší sudé číslo. Obvyklejší logika zaokrouhlování polovin směrem nahoru vždy zaokrouhlí čísla s polovinou na další nejvyšší číslo. Tato metoda portálu Azure Enterprise Portal ve skutečnosti v porovnání se standardní logikou aplikace Excel poskytuje přesnější celkový součet skupiny.
-
-Pro ilustraci: Pokud je první vynechaná číslice 5 a nenásledují žádné další číslice nebo jsou následující číslice nuly, zaokrouhlí se na nejbližší sudé číslo. Příklad: 2,315 i 2,325 se zaokrouhlí na nejbližší setinu, tzn. 2,32.
-
-V následující tabulce najdete excelové vzorce, které můžete použít k modelování pravidel portálu Azure Enterprise Portal pro zaokrouhlování a převod:
-
-| Scénář | Logický vzorec statistického zaokrouhlování |
-| --- | --- |
-| Zaokrouhlování využití | =MROUND({_zdroj_}, 0.0002) |
-| Zaokrouhlování cen (na 2 desetinná místa) | =MROUND({_zdroj_}, 0.02) |
-| Zaokrouhlování cen (na 0 desetinných míst) | =MROUND({_zdroj_}, 2) |
+Měrné jednotky pro smlouvy Enterprise se často liší od jednotek, které znáte z jiných programů, jako je například program Microsoft Online Services Agreement (MOSA). To znamená, že u řady služeb se měrná jednotka agreguje, aby bylo možné poskytovat normalizované ceny. Měrná jednotka, která se na portálu Azure Enterprise Portal zobrazuje v zobrazení Usage Summary (Souhrn využití), je vždy měrnou jednotkou smlouvy Enterprise. Úplný seznam aktuálních měrných jednotek a převodech pro jednotlivé služby získáte odesláním [žádosti o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Převod mezi sestavou podrobností o využití a stránkou souhrnu využití
 
@@ -260,13 +336,6 @@ Pokud ke změně distribučního partnera dojde uprostřed měsíce, zákazník 
 Tyto faktury se vystaví následující měsíc po skončení fakturačního období. V případě měsíční fakturace se faktura za září pro oba partnery vystaví v říjnu. V případě čtvrtletního nebo ročního fakturačního období může zákazník očekávat fakturu za využití v období pod předchozím přidruženým partnerem a zbývající využití se v závislosti na četnosti fakturace bude účtovat pod novým partnerem.
 
 ## <a name="next-steps"></a>Další kroky
-
-- Následující excelové soubory obsahují podrobnosti o službách Azure a aktualizují se 6. a 20. dne každého měsíce:
-
-   | Nadpis | Popis | Název souboru |
-   | --- | --- | --- |
-   | [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb) | Obsahuje seznam všech aktivních služeb a zahrnuje: <br>  <ul><li>kagorii služby</li>   <li>popisný název služby</li>   <li>název zálohy a číslo součásti</li> <li>název spotřeby a číslo součásti</li>   <li>měrné jednotky</li>   <li>faktory převodu mezi vykázaným využitím a využitím zobrazeným na portálu Enterprise</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [Service Download Fields](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) (Pole ve stažených informacích o službách) | Tato tabulka obsahuje seznam všech možných kombinací polí souvisejících se službami v sestavě využití ke stažení. | Service\_Download\_Fields.xlsx |
 
 - Informace, které vysvětlují fakturu a poplatky, najdete v tématu, ve kterém [je vysvětlená faktura ke smlouvě Azure Enterprise](../understand/review-enterprise-agreement-bill.md).
 - Pokud chcete začít používat portál Azure Enterprise Portal, přečtěte si, [jak začít používat portál Azure EA](ea-portal-get-started.md).

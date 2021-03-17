@@ -1,7 +1,7 @@
 ---
-title: Kurz pro jednostránkové aplikace v JavaScriptu | Azure
+title: 'Kurz: vytvoření jednostránkové aplikace v JavaScriptu, která používá Microsoft Identity Platform pro ověřování | Azure'
 titleSuffix: Microsoft identity platform
-description: V tomto kurzu se naučíte, jak můžou jednostránkové aplikace v JavaScriptu (jednostránkové) volat rozhraní API, které vyžaduje přístupové tokeny vydané platformou Microsoft identity.
+description: V tomto kurzu vytvoříte jednostránkovou aplikaci v JavaScriptu (SPA), která používá Microsoft Identity Platform k přihlašování uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph jménem.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -11,53 +11,49 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: dab4ac22a8b0da927f05376755463885ce32c343
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118191"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103001"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA)
 
-Tato příručka ukazuje, jak může jednostránková aplikace v JavaScriptu (SPA):
-- Přihlaste se k osobním účtům a pracovním a školním účtům
-- Získání přístupového tokenu
-- Volání rozhraní API Microsoft Graph nebo jiných rozhraní API, která vyžadují přístupové tokeny z *koncového bodu Microsoft Identity Platform*
+V tomto kurzu vytvoříte jednostránkovou aplikaci v JavaScriptu (SPA), která podepisuje uživatele a volá Microsoft Graph pomocí implicitního toku. Při vytváření zabezpečeného hesla se používá knihovna Microsoft Authentication Library (MSAL) pro jazyk JavaScript v 1.0.
+
+V tomto kurzu:
+
+> [!div class="checklist"]
+> * Vytvořit projekt JavaScriptu pomocí `npm`
+> * Registrace aplikace v Azure Portal
+> * Přidat kód pro podporu přihlášení a odhlášení uživatele
+> * Přidat kód pro volání rozhraní API Microsoft Graph
+> * Otestování aplikace
 
 >[!TIP]
 > V tomto kurzu se používá MSAL.js V1. x, která je omezená na použití implicitního toku udělení pro jednostránkové aplikace. Místo toho doporučujeme, aby všechny nové aplikace používaly [MSAL.js 2. x a tok autorizačního kódu s podporou PKCE a CORS](tutorial-v2-javascript-auth-code.md) .
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Node.js](https://nodejs.org/en/download/) pro spuštění místního webového serveru.
+* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný editor pro úpravu souborů projektu.
+* Moderní webový prohlížeč. Aplikace **Internet Explorer** není aplikací, kterou jste v tomto kurzu sestavili, **podporována** , protože používá konvence [ES6](http://www.ecma-international.org/ecma-262/6.0/) v aplikaci.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto kurzem funguje](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>Další informace
+Ukázková aplikace vytvořená touto příručkou umožňuje, aby se pomocí JavaScriptu ZABEZPEČENÉho dotazování Microsoft Graph rozhraní API nebo webové rozhraní API, které přijímá tokeny z platformy Microsoft identity. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Pomocí tohoto tokenu se získá profil uživatele a e-maily přes **MS Graph API**.
 
-Ukázková aplikace vytvořená touto příručkou umožňuje, aby se v prostředí JavaScript SPA dotazoval rozhraní API pro Microsoft Graph nebo webové rozhraní API, které přijímá tokeny z koncového bodu Microsoft Identity Platform. V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Pomocí tohoto tokenu se získá profil uživatele a e-maily přes **MS Graph API**. Získání a obnovení tokenu jsou zpracovávány **knihovnou Microsoft Authentication Library (MSAL) pro jazyk JavaScript**.
-
-### <a name="libraries"></a>Knihovny
-
-Tato příručka používá následující knihovnu:
-
-|Knihovna|Popis|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Knihovna Microsoft Authentication Library pro JavaScript|
+Získání a obnovení tokenu jsou zpracovávány [knihovnou Microsoft Authentication Library (MSAL) pro jazyk JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 ## <a name="set-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
 > Chcete místo toho stáhnout tento projekt ukázky? [Stáhněte si soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
 > Chcete-li před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
-
-## <a name="prerequisites"></a>Požadavky
-
-* Pro spuštění tohoto kurzu potřebujete místní webový server, například [Node.js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integraci se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-
-* Pokyny v této příručce jsou založené na webovém serveru, který je sestavený v Node.js. Doporučujeme použít [Visual Studio Code](https://code.visualstudio.com/download) jako integrované vývojové prostředí (IDE).
-
-* Moderní webový prohlížeč. Tato ukázka JavaScriptu používá konvence [ES6](http://www.ecma-international.org/ecma-262/6.0/) a jako **takový nepodporuje** **Internet Explorer**.
 
 ## <a name="create-your-project"></a>Vytvoření projektu
 
@@ -76,7 +72,7 @@ Ujistěte se, že máte nainstalovanou [Node.js](https://nodejs.org/en/download/
    npm install morgan --save
    ```
 
-1. Nyní vytvořte soubor. js s názvem `index.js` a přidejte následující kód:
+1. Nyní vytvořte soubor. js s názvem `server.js` a přidejte následující kód:
 
    ```JavaScript
    const express = require('express');
@@ -269,21 +265,22 @@ Teď máte k dispozici jednoduchý Server, který bude sloužit pro SPA. Zamýš
 
 Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure Active Directory**.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
-1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. V části **identifikátor URI pro přesměrování** vyberte v rozevíracím seznamu **webovou** platformu a pak nastavte tuto hodnotu na adresu URL aplikace, která je založená na vašem webovém serveru.
 1. Vyberte **Zaregistrovat**.
 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
-1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
+1. V části **Spravovat** vyberte **ověřování**.
+1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Nastavit adresu URL pro přesměrování pro Node.js
 >
-> V případě Node.js můžete port webového serveru nastavit v souboru *index.js* . V tomto kurzu se používá port 3000, ale můžete použít jakýkoli jiný dostupný port.
+> V případě Node.js můžete port webového serveru nastavit v souboru *server.js* . V tomto kurzu se používá port 3000, ale můžete použít jakýkoli jiný dostupný port.
 >
 > Chcete-li nastavit adresu URL pro přesměrování v informacích o registraci aplikace, přepněte zpět do podokna **Registrace aplikace** a proveďte jednu z následujících akcí:
 >
@@ -410,23 +407,23 @@ Vytvořte nový soubor. js s názvem `authPopup.js` , který bude obsahovat vaš
 
 ### <a name="more-information"></a>Další informace
 
-Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` metoda se zavolá na `loginPopup` přihlášení uživatele. Tato metoda otevře automaticky otevírané okno s *koncovým bodem Microsoft Identity Platform* , kde se zobrazí výzva a ověří přihlašovací údaje uživatele. Po úspěšném přihlášení se uživatel přesměruje zpátky na původní *index.htmstránku l* . Obdrží se token, který se zpracovává, `msal.js` a informace obsažené v tokenu se ukládají do mezipaměti. Tento token je známý jako *token ID* a obsahuje základní informace o uživateli, jako je například zobrazované jméno uživatele. Pokud plánujete použít data poskytnutá tímto tokenem pro jakékoli účely, musíte se ujistit, že váš back-end Server ověří tento token, aby bylo zaručeno, že token byl vydán pro platného uživatele pro vaši aplikaci.
+Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` metoda se zavolá na `loginPopup` přihlášení uživatele. Tato metoda otevře automaticky otevírané okno s *koncovým bodem Microsoft Identity Platform* , kde se zobrazí výzva a ověří přihlašovací údaje uživatele. Po úspěšném přihlášení se uživatel přesměruje zpátky na původní *index.htmstránku l* . Obdrží se token, který se zpracovává, `msal.js` a informace obsažené v tokenu se ukládají do mezipaměti. Tento token je známý jako *token ID* a obsahuje základní informace o uživateli, jako je například zobrazované jméno uživatele. Pokud plánujete použít data poskytnutá tímto tokenem pro jakékoli účely, ujistěte se, že je tento token ověřený vaším back-end serverem, aby bylo zaručeno, že token byl vydán pro platného uživatele pro vaši aplikaci.
 
 Zabezpečené ověřování hesla vygenerované touto příručkou volá `acquireTokenSilent` nebo `acquireTokenPopup` získá *přístupový token* , který se používá k dotazování rozhraní API pro Microsoft Graph pro informace o profilu uživatele. Pokud potřebujete ukázku, která ověří token ID, podívejte se na [tuto](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-dotnet-WebApi-v2 Sample") ukázkovou aplikaci v GitHubu. Ukázka používá webové rozhraní API ASP.NET pro ověření tokenu.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklady:
+Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy přinutíte uživatele k interakci s platformou Microsoft Identity Platform. Mezi příklady patří:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
 - Je vyžadováno dvojúrovňové ověřování.
 
-Volání *acquireTokenPopup* otevře automaticky otevírané okno (nebo *acquireTokenRedirect* uživatele přesměruje na koncový bod Microsoft Identity Platform). V tomto okně musí uživatelé pracovat pomocí potvrzení svých přihlašovacích údajů, udělení souhlasu k požadovanému prostředku nebo dokončením dvojúrovňového ověřování.
+Volání *acquireTokenPopup* otevře automaticky otevírané okno (nebo *acquireTokenRedirect* uživatele přesměruje na platformu Microsoft Identity). V tomto okně musí uživatelé pracovat pomocí potvrzení svých přihlašovacích údajů, udělení souhlasu k požadovanému prostředku nebo dokončením dvojúrovňového ověřování.
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` `loginRedirect` prvním spuštění (nebo) `acquireTokenSilent` je metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. (Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.) `acquireTokenSilent`v některých případech může selhat. Může například dojít k vypršení platnosti hesla uživatele. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
+`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginPopup` `loginRedirect` prvním spuštění (nebo) `acquireTokenSilent` je metoda, která se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům pro následná volání. (Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.) `acquireTokenSilent` v některých případech může selhat. Může například dojít k vypršení platnosti hesla uživatele. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
 
 1. Zavolejte `acquireTokenPopup` okamžitě, čímž se spustí výzva k přihlášení uživatele. Tento model se běžně používá v online aplikacích, kde není k dispozici žádný neautorizovaný obsah v aplikaci pro uživatele. Ukázka vygenerovaná tímto procesem instalace používá tento model.
 
@@ -486,9 +483,7 @@ V ukázkové aplikaci vytvořené touto příručkou se `callMSGraph()` Metoda p
    ```
 1. V prohlížeči zadejte **http://localhost:3000** nebo **http://localhost:{port}** , kde *port* je port, na který webový server naslouchá. Měl by se zobrazit obsah souboru *index.html* a **přihlašovací** tlačítko.
 
-## <a name="test-your-application"></a>Testování aplikace
-
-Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit** se. Budete vyzváni k přihlášení pomocí platformy Microsoft Identity Platform:
 
 ![Přihlašovací okno účtu v jazyce JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
@@ -512,3 +507,10 @@ Rozhraní Microsoft Graph API vyžaduje, aby *uživatel. přečetl* obor pro čt
 > Uživatel může být vyzván k dalšímu souhlasu při zvýšení počtu oborů.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+V naší sadě scénářů s více částmi se dostanete hlouběji do vývoje jednostránkové aplikace (SPA) na platformě Microsoft identity.
+
+> [!div class="nextstepaction"]
+> [Scénář: jednostránkové aplikace](scenario-spa-overview.md)

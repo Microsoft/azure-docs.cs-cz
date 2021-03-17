@@ -5,19 +5,19 @@ description: Naučte se, jak otočit ochranu transparentní šifrování dat (TD
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b2729975db154fbaf4569afc5aa9b5eaab358146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84321347"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321419"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Otočení ochrany transparentní šifrování dat (TDE)
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,25 +28,25 @@ Tento článek popisuje střídání klíčů pro [Server](logical-servers.md) p
 Tato příručka popisuje dvě možnosti, jak na serveru otočit ochranu TDE.
 
 > [!NOTE]
-> Pozastavený fond SQL Azure synapse Analytics musí být před otočením klíče obnoven.
+> Pozastavený vyhrazený fond SQL ve službě Azure synapse Analytics se musí před otočením klíčů obnovit.
 
 > [!IMPORTANT]
 > Po přecházení neodstraňujte předchozí verze klíče. Když se převezmou klíče, některá data se zašifrují s předchozími klíči, jako je třeba starší zálohy databáze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo Azure synapse Analytics. Viz [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-overview.md).
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.
-- [Doporučené, ale volitelné] V modulu hardwarového zabezpečení (HSM) nebo v místním úložišti klíčů vytvořte materiál klíče pro ochranu TDE a naimportujte klíč klíče do Azure Key Vault. Pokud se chcete dozvědět víc, postupujte podle [pokynů k použití modulu hardwarového zabezpečení (HSM) a Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) .
+- [Doporučené, ale volitelné] V modulu hardwarového zabezpečení (HSM) nebo v místním úložišti klíčů vytvořte materiál klíče pro ochranu TDE a naimportujte klíč klíče do Azure Key Vault. Pokud se chcete dozvědět víc, postupujte podle [pokynů k použití modulu hardwarového zabezpečení (HSM) a Key Vault](../../key-vault/general/overview.md) .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Informace o instalaci najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -75,7 +75,7 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
    -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Použijte příkaz [AZ Key trezor Create](/cli/azure/keyvault/key#az-keyvault-key-create), [AZ SQL Server Key Create](/cli/azure/sql/server/key#az-sql-server-key-create)a [AZ SQL Server TDE-Key set](/cli/azure/sql/server/tde-key#az-sql-server-tde-key-set) Commands.
 
@@ -110,7 +110,7 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
        -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 V následujících příkladech je použit [příkaz AZ SQL Server TDE-Key set](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector).
 

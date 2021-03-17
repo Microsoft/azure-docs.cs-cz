@@ -7,20 +7,19 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: erhopf
 ms.custom: include
-ms.openlocfilehash: e4c1310d8f27e00bf46f8f4de4ae7b76e3d796d6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 44d42fa53a25436205c88d6e00bb3a01f6f7462f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225111"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710310"
 ---
 ## <a name="service-specific-updates"></a>Aktualizace specifické pro službu 
 
-* [Computer Vision](../Computer-vision/whats-new.md)
-* [Custom Vision](../Custom-Vision-Service/whats-new.md)
+* [Počítačové zpracování obrazu](../computer-vision/whats-new.md)
+* [Custom Vision](../custom-vision-service/whats-new.md)
 * [Rozpoznávání formulářů](../form-recognizer/whats-new.md)
 * [Language Understanding (LUIS)](../LUIS/whats-new.md)
 * [Personalizace](../personalizer/whats-new.md)
-* [QnA Maker](../QnAMaker/whats-new.md)
-* [Služba Speech](../Speech-Service/whats-new.md)
+* [QnA Maker](../qnamaker/whats-new.md)
 * [Analýza textu](../text-analytics/whats-new.md)

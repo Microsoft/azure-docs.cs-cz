@@ -1,5 +1,5 @@
 ---
-title: Jak zakoupit software v AppSource | Azure Marketplace
+title: Jak koupit software na Microsoft AppSource
 description: Postup pro nákup softwaru v AppSource | Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: e3faad025a794b0ae9905fa73b090b55799f3279
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708029"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Jak koupit software na Microsoft AppSource
 
 Microsoft [AppSource](https://appsource.microsoft.com/) nyní zákazníkům umožňuje přihlásit se k odběru aplikací SaaS, které nabízejí partneři Microsoftu. Zákazníci můžou najít certifikované webové aplikace v obchodě a můžou spravovat poplatky, upgrady, Downgrady a zrušení na jednom místě pomocí centra pro správu od Microsoftu. Tento článek popisuje, jak si můžete koupit aplikaci ze Storu.
 
-AppSource poskytuje výběr aplikací, ze kterých si můžete vybrat, včetně bezplatného, zkušebního a placeného předplatného. Tento článek popisuje, jak můžou být placené odběry zakoupeny prostřednictvím AppSource.
+AppSource poskytuje výběr aplikací, ze kterých si můžete vybrat, včetně bezplatných zkušebních verzí a placených předplatných. Tento článek popisuje, jak můžou být placené odběry zakoupeny prostřednictvím AppSource.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -51,7 +51,7 @@ K nákupu nabídek SaaS potřebujete:
 
 Po přijetí vaší objednávky může trvat několik sekund, než se potvrzení dostanou. Obdržíte odkaz na konfiguraci předplatného SaaS na stránce a také e-mail potvrzující nákup a odkaz pro dokončení konfigurace.
 
-1. Na stránce **potvrzení objednávky** vyberte **Konfigurovat**. Případně můžete použít odkaz na konfiguraci, který jste poslali v e-mailu s potvrzením.
+1. Na stránce **potvrzení objednávky** vyberte **Konfigurovat**. Případně můžete místo toho použít odkaz konfigurace, který jste si poslali v e-mailu s potvrzením.
 1. Dokončete zřizování a nastavte na webu poskytovatele softwaru.
 
     > [!Note]
@@ -61,8 +61,8 @@ Po přijetí vaší objednávky může trvat několik sekund, než se potvrzení
 
 [Lístek podpory můžete odeslat](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) prostřednictvím centra pro správu Microsoft 365.
 
-V případě obchodních produktů [kontaktujte nápovědu zde](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
+V případě obchodních produktů [kontaktujte nápovědu zde](/office365/admin/contact-support-for-business-products?tabs=phone).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v [dokumentaci k komerčnímu webu Marketplace](partner-center-portal/commercial-marketplace-overview.md) .
+- [Dokumentace pro zákazníka na webu Microsoft Marketplace](/marketplace/)

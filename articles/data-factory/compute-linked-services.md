@@ -1,21 +1,17 @@
 ---
 title: Výpočetní prostředí podporovaná nástrojem Azure Data Factory
-description: Přečtěte si o výpočetních prostředích, která můžete použít v Azure Data Factorych kanálech (například Azure HDInsight) k transformaci nebo zpracování dat.
-services: data-factory
-documentationcenter: ''
+description: Výpočetní prostředí, která se dají použít s Azure Data Factory kanály (například Azure HDInsight) k transformaci nebo zpracování dat.
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 2b5c053847852cc6090ee94858a5be52275d62fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725335"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 
@@ -28,12 +24,11 @@ Následující tabulka uvádí seznam výpočetních prostředí podporovaných 
 | Výpočetní prostředí                                          | activities                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Cluster HDInsight na vyžádání](#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](#azure-hdinsight-linked-service) | [Podregistr](transform-data-using-hadoop-hive.md), [prase](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [streamování Hadoop](transform-data-using-hadoop-streaming.md) |
-| [Azure Batch](#azure-batch-linked-service)                   | [Uživatelská](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](transform-data-using-machine-learning.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning spustit kanál](transform-data-machine-learning-service.md) |
+| [Azure Batch](#azure-batch-linked-service)                   | [Vlastní](transform-data-using-dotnet-custom-activity.md)     |
+| [Azure Machine Learning Studio (klasický)](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning Studio (klasické) aktivity: dávkové provádění a aktualizace prostředku](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning spustit kanál](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [U-SQL Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Uložená procedura](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Uložená procedura](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Poznámkový blok](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 | [Funkce Azure Functions](#azure-function-linked-service)         | [Aktivita funkce Azure](control-flow-azure-function-activity.md)
 >  
@@ -42,7 +37,7 @@ Následující tabulka uvádí seznam výpočetních prostředí podporovaných 
 
 Podrobnosti o podporovaných typech propojených služeb úložiště pro konfiguraci na vyžádání a BYOC (Přineste si vlastní výpočetní prostředí) najdete v níže uvedené tabulce.
 
-| V propojené službě COMPUTE | Název vlastnosti                | Popis                                                  | Blob | ADLS Gen2 | Azure SQL DB | ADLS Gen 1 |
+| V propojené službě COMPUTE | Název vlastnosti                | Popis                                                  | Objekt blob | ADLS Gen2 | Azure SQL DB | ADLS Gen 1 |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
 | Na vyžádání                 | linkedServiceName            | Azure Storage propojená služba, kterou má cluster na vyžádání použít k ukládání a zpracování dat. | Ano  | Ano       | Ne           | Ne         |
 |                           | additionalLinkedServiceNames | Určuje další účty úložiště pro propojenou službu HDInsight, aby je služba Data Factory mohla zaregistrovat vaším jménem. | Ano  | Ne        | Ne           | Ne         |
@@ -133,7 +128,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 | clusterPassword                   | Heslo v typu zabezpečeného řetězce pro přístup ke clusteru | Ne       |
 | clusterSshUserName         | Uživatelské jméno pro SSH se vzdáleně připojuje k uzlu clusteru (pro Linux). | Ne       |
 | clusterSshPassword         | Heslo v typu zabezpečeného řetězce pro vzdálené připojení protokolu SSH k uzlu clusteru (pro Linux). | Ne       |
-| Nenašly | Zadejte skript pro [přizpůsobení clusteru HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) během vytváření clusteru na vyžádání. <br />V současné době Nástroj pro tvorbu uživatelského rozhraní Azure Data Factory podporuje zadání pouze 1 akce skriptu, ale toto omezení můžete obdržet ve formátu JSON (zadat více akcí skriptu ve formátu JSON). | Ne |
+| Nenašly | Zadejte skript pro [přizpůsobení clusteru HDInsight](../hdinsight/hdinsight-hadoop-customize-cluster-linux.md) během vytváření clusteru na vyžádání. <br />V současné době Nástroj pro tvorbu uživatelského rozhraní Azure Data Factory podporuje zadání pouze 1 akce skriptu, ale toto omezení můžete obdržet ve formátu JSON (zadat více akcí skriptu ve formátu JSON). | Ne |
 
 
 > [!IMPORTANT]
@@ -153,7 +148,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 
 #### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Propojená služba HDInsight na vyžádání vyžaduje k vytvoření clusterů HDInsight vaším jménem ověřování instančního objektu. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí roli **přispěvatele** předplatného nebo skupiny prostředků, ve které se cluster HDInsight vytvoří. Podrobný postup najdete v tématu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
+Propojená služba HDInsight na vyžádání vyžaduje k vytvoření clusterů HDInsight vaším jménem ověřování instančního objektu. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí roli **přispěvatele** předplatného nebo skupiny prostředků, ve které se cluster HDInsight vytvoří. Podrobný postup najdete v tématu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 
 - ID aplikace
 - Klíč aplikace 
@@ -245,7 +240,7 @@ Velikosti uzlů Head, data a Zookeeper můžete zadat pomocí následujících v
 | dataNodeSize      | Určuje velikost datového uzlu. Výchozí hodnota je: Standard_D3. | Ne       |
 | zookeeperNodeSize | Určuje velikost uzlu v police pro sadu zoolog. Výchozí hodnota je: Standard_D3. | Ne       |
 
-* Určení velikosti uzlů viz [velikosti Virtual Machines](../virtual-machines/linux/sizes.md) článku pro řetězcové hodnoty, které potřebujete zadat pro vlastnosti uvedené v předchozí části. Hodnoty musí splňovat **rutiny & rozhraní API** , na které se odkazuje v článku. Jak vidíte v článku, má datový uzel velké (výchozí) velikosti velikost 7 GB paměti, což pro váš scénář nemusí být dostatečné. 
+* Určení velikosti uzlů viz [velikosti Virtual Machines](../virtual-machines/sizes.md) článku pro řetězcové hodnoty, které potřebujete zadat pro vlastnosti uvedené v předchozí části. Hodnoty musí splňovat **rutiny & rozhraní API** , na které se odkazuje v článku. Jak vidíte v článku, má datový uzel velké (výchozí) velikosti velikost 7 GB paměti, což pro váš scénář nemusí být dostatečné. 
 
 Pokud chcete vytvořit hlavní uzly velikosti D4 a pracovní uzly, zadejte **Standard_D4** jako hodnotu pro vlastnosti HeadNodeSize a dataNodeSize. 
 
@@ -254,7 +249,7 @@ Pokud chcete vytvořit hlavní uzly velikosti D4 a pracovní uzly, zadejte **Sta
 "dataNodeSize": "Standard_D4",
 ```
 
-Pokud pro tyto vlastnosti zadáte chybnou hodnotu, může se zobrazit následující **Chyba:** nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: Chyba. Zpráva: ' PreClusterCreationValidationFailure '. Když se zobrazí tato chyba, ujistěte se, že používáte **rutinu & název rozhraní API** z tabulky ve [velikosti Virtual Machines](../virtual-machines/linux/sizes.md) článku.        
+Pokud pro tyto vlastnosti zadáte chybnou hodnotu, může se zobrazit následující **Chyba:** nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: Chyba. Zpráva: ' PreClusterCreationValidationFailure '. Když se zobrazí tato chyba, ujistěte se, že používáte **rutinu & název rozhraní API** z tabulky ve [velikosti Virtual Machines](../virtual-machines/sizes.md) článku.
 
 ### <a name="bring-your-own-compute-environment"></a>Přineste si vlastní výpočetní prostředí
 V tomto typu konfigurace můžou uživatelé zaregistrovat už existující výpočetní prostředí jako propojenou službu v Data Factory. Výpočetní prostředí spravuje uživatel a služba Data Factory ji používá ke spuštění aktivit.
@@ -265,7 +260,7 @@ Tento typ konfigurace se podporuje pro následující výpočetní prostředí:
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL DB, Azure SQL DW, SQL Server
+* Azure SQL DB, Azure synapse Analytics, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Propojená služba Azure HDInsight
 Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastní cluster HDInsight s Data Factory.
@@ -305,7 +300,7 @@ Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastn�
 | username          | Zadejte jméno uživatele, který se má použít pro připojení k existujícímu clusteru HDInsight. | Ano      |
 | heslo          | Zadejte heslo pro uživatelský účet.                       | Ano      |
 | linkedServiceName | Název propojené služby Azure Storage, která odkazuje na úložiště objektů BLOB v Azure používané clusterem HDInsight. <p>V současné době nelze pro tuto vlastnost zadat propojenou službu Azure Data Lake Storage (Gen 2). Pokud má cluster HDInsight přístup k Data Lake Store, můžete k datům v Azure Data Lake Storage (Gen 2) přistupovat ze skriptů z podregistru nebo vepřového masa. </p> | Ano      |
-| isEspEnabled      | Pokud je cluster HDInsight [balíček zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) povolený, zadejte*hodnotu true*. Výchozí hodnota je*false (NEPRAVDA*). | Ne       |
+| isEspEnabled      | Pokud je cluster HDInsight [balíček zabezpečení podniku](../hdinsight/domain-joined/apache-domain-joined-architecture.md) povolený, zadejte *hodnotu true*. Výchozí hodnota je *false (NEPRAVDA*). | Ne       |
 | connectVia        | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. <br />U clusteru HDInsight s povoleným Balíček zabezpečení podniku (ESP) se používá místní prostředí Integration runtime, které má na clusteru řadu pohledů, nebo by se mělo nasadit do stejného Virtual Network jako cluster protokolu ESP HDInsight. | Ne       |
 
 > [!IMPORTANT]
@@ -325,8 +320,11 @@ Můžete vytvořit propojenou službu Azure Batch k registraci fondu služby Bat
 Pokud Azure Batch službu nepoužíváte, přečtěte si následující články:
 
 * [Azure Batch základy](../batch/batch-technical-overview.md) pro přehled služby Azure Batch.
-* Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v článku [použití PowerShellu ke správě Azure Batch účtu](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
+* Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v článku [použití PowerShellu ke správě Azure Batch účtu](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account) .
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
+
+> [!IMPORTANT]
+> Při vytváření nového fondu Azure Batch musí být použit ' VirtualMachineConfiguration ' a ne ' CloudServiceConfiguration '. Další podrobnosti najdete v tématu [pokyny k migraci fondu Azure Batch](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md). 
 
 ### <a name="example"></a>Příklad
 
@@ -368,8 +366,8 @@ Pokud Azure Batch službu nepoužíváte, přečtěte si následující články
 | linkedServiceName | Název propojené služby Azure Storage přidružené k této Azure Batch propojené službě. Tato propojená služba se používá pro pracovní soubory potřebné ke spuštění aktivity. | Ano      |
 | connectVia        | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne       |
 
-## <a name="azure-machine-learning-studio-linked-service"></a>Propojená služba Azure Machine Learning Studio
-Vytvoříte propojenou službu Azure Machine Learning Studio k registraci koncového bodu Machine Learning dávkového vyhodnocování do objektu pro vytváření dat.
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Propojená služba Azure Machine Learning Studio (Classic)
+Vytvoříte propojenou službu Azure Machine Learning Studio (Classic) k registraci koncového bodu vyhodnocování Machine Learning Studio (Classic) dávkového vyhodnocování pro datovou továrnu.
 
 ### <a name="example"></a>Příklad
 
@@ -399,7 +397,7 @@ Vytvoříte propojenou službu Azure Machine Learning Studio k registraci koncov
 | Typ                   | Vlastnost Type by měla být nastavená na: **AzureML**. | Ano                                      |
 | mlEndpoint             | Adresa URL dávkového vyhodnocování                   | Ano                                      |
 | apiKey                 | Rozhraní API modelu publikovaného pracovního prostoru.     | Ano                                      |
-| updateResourceEndpoint | Adresa URL prostředku aktualizace pro koncový bod webové služby Azure Machine Learning, který se používá k aktualizaci prediktivní webové služby pomocí souboru trained model | Ne                                       |
+| updateResourceEndpoint | Adresa URL prostředku aktualizace pro koncový bod webové služby Azure Machine Learning Studio (Classic), který se používá k aktualizaci prediktivní webové služby pomocí souboru trained model | Ne                                       |
 | servicePrincipalId     | Zadejte ID klienta aplikace.     | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
 | servicePrincipalKey    | Zadejte klíč aplikace.           | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
 | tenant                 | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
@@ -498,7 +496,7 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics** pro propojení Azur
 ## <a name="azure-databricks-linked-service"></a>Propojená služba Azure Databricks
 Můžete vytvořit **propojenou službu Azure Databricks** k registraci pracovního prostoru datacihly, který používáte ke spouštění úloh datacihly (Poznámkový blok, JAR, Python). 
 > [!IMPORTANT]
-> Propojené služby datacihly podporují [fondy instancí](https://aka.ms/instance-pools). 
+> Propojené služby datacihly podporují [fondy instancí](https://aka.ms/instance-pools) & ověřování spravované identity přiřazené systémem.
 
 ### <a name="example---using-new-job-cluster-in-databricks"></a>Příklad – použití nového clusteru úloh v datacihlech
 
@@ -543,12 +541,13 @@ Můžete vytvořit **propojenou službu Azure Databricks** k registraci pracovn�
 
 ### <a name="properties"></a>Vlastnosti
 
-| Vlastnost             | Popis                              | Povinné                                 |
+| Vlastnost             | Popis                              | Vyžadováno                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Název propojené služby               | Ano   |
 | typ                 | Vlastnost Type by měla být nastavená na: **Azure Databricks**. | Ano                                      |
 | doména               | Podle oblasti pracovního prostoru datacihly určete příslušné oblasti Azure. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
-| accessToken          | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky, jak najít přístupový token, najdete [tady](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) .  | Ano                                       |
+| accessToken          | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky, jak najít přístupový token, najdete [tady](/azure/databricks/dev-tools/api/latest/authentication#generate-token) .  | Ne                                       |
+| MSI          | K ověření Azure Databricks použijte spravovanou identitu Data Factory (přiřazenou systémem). Přístupový token nepotřebujete při použití ověřování MSI.  | Ne                                       |
 | existingClusterId    | ID clusteru existujícího clusteru, ve kterém se mají spouštět všechny úlohy. Mělo by se jednat o již vytvořený interaktivní cluster. Pokud přestane reagovat, může být nutné cluster restartovat ručně. Datacihly navrhují spuštěné úlohy na nových clusterech kvůli větší spolehlivosti. ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > interaktivní název clusteru – > značky konfigurace >. [Další podrobnosti](https://docs.databricks.com/user-guide/clusters/tags.html) | Ne 
 | instancePoolId    | ID fondu instancí existujícího fondu v pracovním prostoru datacihly  | Ne  |
 | newClusterVersion    | Verze Sparku clusteru Vytvoří cluster úloh v datacihlách. | Ne  |
@@ -562,9 +561,9 @@ Můžete vytvořit **propojenou službu Azure Databricks** k registraci pracovn�
 
 Vytvoříte propojenou službu Azure SQL a použijete ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) k vyvolání uložené procedury z data Factoryho kanálu. Podrobnosti o této propojené službě najdete v článku [konektor Azure SQL](connector-azure-sql-database.md#linked-service-properties) .
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Propojená služba Azure SQL Data Warehouse
+## <a name="azure-synapse-analytics-linked-service"></a>Propojená služba Azure synapse Analytics
 
-Vytvoříte propojenou službu Azure SQL Data Warehouse a použijete ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) k vyvolání uložené procedury z kanálu Data Factory. Podrobnosti o této propojené službě najdete v článku [Azure SQL Data Warehouse konektoru](connector-azure-sql-data-warehouse.md#linked-service-properties) .
+Vytvoříte propojenou službu Azure synapse Analytics a použijete ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) k vyvolání uložené procedury z data Factoryho kanálu. Podrobnosti o této propojené službě najdete v článku [konektor služby Azure synapse Analytics](connector-azure-sql-data-warehouse.md#linked-service-properties) .
 
 ## <a name="sql-server-linked-service"></a>Propojená služba SQL Server
 
@@ -572,9 +571,9 @@ Vytvoříte propojenou službu SQL Server a použijete ji s [aktivitou uložené
 
 ## <a name="azure-function-linked-service"></a>Propojená služba Functions Azure
 
-Vytvoříte propojenou službu Azure functions a použijete ji s [aktivitou funkce Azure](control-flow-azure-function-activity.md) ke spouštění Azure Functions v kanálu Data Factory. Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) že JArray *není* `JObject` .) Libovolný návratový typ jiný než `JObject` neúspěch a vyvolá *obsah odpovědi*na chyb uživatele není platný JObject.
+Vytvoříte propojenou službu Azure functions a použijete ji s [aktivitou funkce Azure](control-flow-azure-function-activity.md) ke spouštění Azure Functions v kanálu Data Factory. Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, [](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) že JArray *není* `JObject` .) Libovolný návratový typ jiný než `JObject` neúspěch a vyvolá *obsah odpovědi* na chyb uživatele není platný JObject.
 
-| **Majetek** | **Popis** | **Požadováno** |
+| **Vlastnost** | **Popis** | **Povinné** |
 | --- | --- | --- |
 | typ   | Vlastnost Type musí být nastavená na: **AzureFunction** . | ano |
 | Adresa URL aplikace Function App | Adresa URL pro Azure Function App. Formát je `https://<accountname>.azurewebsites.net` . Tato adresa URL je hodnota v sekci **URL** při zobrazení Function App v Azure Portal  | ano |

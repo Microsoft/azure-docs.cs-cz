@@ -14,27 +14,30 @@
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
     - name: Vytvoření řídicího panelu
       items:
+        - name: Azure CLI
+          href: quickstart-portal-dashboard-azure-cli.md
         - name: Azure PowerShell
           href: quickstart-portal-dashboard-powershell.md
         - name: Šablona ARM
           displayName: Resource Manager
           href: quick-create-template.md
-- name: Koncepty
-  items:
-    - name: Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role
-      href: azure-portal-dashboard-share-access.md
-    - name: Vytváření řídicích panelů Azure prostřednictvím kódu programu
-      href: azure-portal-dashboards-create-programmatically.md
 - name: Návody
   items:
     - name: Správa nastavení a předvoleb na webu Azure Portal
       href: set-preferences.md
     - name: 'Přidání, odebrání a řazení oblíbených položek'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Zobrazení a filtrování informací o prostředcích
+      href: manage-filter-resource-views.md
     - name: Vytváření řídicích panelů Azure
       items:
-        - name: Vytváření a sdílení řídicích panelů Azure
+        - name: Vytvoření řídicího panelu Azure
           href: azure-portal-dashboards.md
+        - name: Sdílení řídicího panelu Azure
+          href: azure-portal-dashboard-share-access.md
+        - name: Programové vytvoření řídicího panelu Azure
+          href: azure-portal-dashboards-create-programmatically.md
+          displayName: 'Azure CLI, az portal dashboard, az portal'
         - name: Použití vlastní dlaždice Markdown
           href: azure-portal-markdown-tile.md
     - name: Série videí s postupy pro Azure Portal
@@ -65,8 +68,6 @@
       items:
         - name: Obnovení odstraněného řídicího panelu
           href: recover-shared-deleted-dashboard.md
-        - name: Řešení potíží s oblastí nebo předplatným skladové položky
-          href: supportability/sku-series-unavailable.md
         - name: Zachycení trasování prohlížeče pro řešení potíží
           href: capture-browser-trace.md
 - name: Referenční informace
@@ -79,6 +80,9 @@
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
       href: /cli/azure/ext/portal/portal
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

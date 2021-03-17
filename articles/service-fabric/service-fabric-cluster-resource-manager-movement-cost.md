@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0fdcfb02851d56ed996ae4bf32671ab545782733
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75563339"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89005339"
 ---
 # <a name="service-movement-cost"></a>Náklady na přesun služeb
 Faktor, který Správce prostředků Cluster Service Fabric zvažuje při pokusu o určení toho, jaké změny provedete v clusteru, jsou náklady na tyto změny. Pojem "náklady" se nepodílí na tom, kolik clusteru je možné zlepšit. Náklady se připravují při přesunu služeb pro vyrovnávání, defragmentaci a další požadavky. Cílem je splnit požadavky alespoň na rušivý nebo nákladný způsob.

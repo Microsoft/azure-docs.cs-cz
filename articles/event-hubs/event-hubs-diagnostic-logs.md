@@ -2,22 +2,22 @@
 title: Nastavení diagnostických protokolů – centrum událostí Azure | Microsoft Docs
 description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742530"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
 Můžete si zobrazit dva typy protokolů pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)**: tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené. Položky protokolu aktivit můžete zobrazit tak, že v levém podokně pro obor názvů centra událostí v Azure Portal vyberete **Protokol aktivit** . Například: "vytvořit nebo aktualizovat obor názvů", "vytvořit nebo aktualizovat centrum událostí".
+* **[Protokoly aktivit](../azure-monitor/essentials/platform-logs-overview.md)**: tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené. Položky protokolu aktivit můžete zobrazit tak, že v levém podokně pro obor názvů centra událostí v Azure Portal vyberete **Protokol aktivit** . Například: "vytvořit nebo aktualizovat obor názvů", "vytvořit nebo aktualizovat centrum událostí".
 
     ![Protokol aktivit pro obor názvů Event Hubs](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)**: diagnostické protokoly poskytují bohatší informace o operacích a akcích, které se provádí v rámci vašeho oboru názvů pomocí rozhraní API, nebo prostřednictvím klientů pro správu v jazykové sadě SDK. 
+* **[Diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md)**: diagnostické protokoly poskytují bohatší informace o operacích a akcích, které se provádí v rámci vašeho oboru názvů pomocí rozhraní API, nebo prostřednictvím klientů pro správu v jazykové sadě SDK. 
     
     V následující části se dozvíte, jak povolit diagnostické protokoly pro obor názvů Event Hubs.
 
@@ -36,7 +36,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. K povolení di
 
     Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-    Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
+    Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Kategorie diagnostických protokolů
 
@@ -45,7 +45,7 @@ Event Hubs zachycuje diagnostické protokoly pro následující kategorie:
 | Kategorie | Popis | 
 | -------- | ----------- | 
 | Protokoly archivu | Zachycuje informace o [Event Hubs operací zachycení](event-hubs-capture-overview.md) , konkrétně o protokolech souvisejících s chybami zachycení. |
-| Provozní protokoly | Zachyťte všechny operace správy, které se provádějí v oboru názvů Azure Event Hubs. Datové operace nejsou zachyceny kvůli velkému objemu operací s daty, které jsou prováděny na Azure Event Hubs. |
+| Provozní protokoly | Zachyťte všechny operace správy, které se provádějí v oboru názvů Azure Event Hubs. Datové operace se nezachycují kvůli vysokému objemu operací s daty, které jsou prováděny na Azure Event Hubs. |
 | Protokoly automatického škálování | Zachycuje automatické neploché operace provedené v oboru názvů Event Hubs. |
 | Protokoly koordinátora Kafka | Zachycuje operace koordinátora Kafka související s Event Hubs. |
 | Protokoly chyb uživatele Kafka | Zachycuje informace o rozhraních API Kafka volaných na Event Hubs. |
@@ -61,18 +61,18 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 Název | Popis
 ------- | -------
-/TN | Popis úlohy, která se nezdařila
-ActivityId | Interní ID, které se používá ke sledování
-trackingId | Interní ID, které se používá ke sledování
-resourceId | ID prostředku Azure Resource Manager
-eventHub | Úplný název centra událostí (zahrnuje název oboru názvů)
-Oddílu | Oddíl centra událostí, do kterého se zapisuje
-archiveStep | možné hodnoty: ArchiveFlushWriter, DestinationInit
-startTime | Čas spuštění chyby
-úspěšně | Počet výskytů chyby
-durationInSeconds | Doba trvání selhání
-zpráva | Chybová zpráva
-category | ArchiveLogs
+`TaskName` | Popis úlohy, která se nezdařila
+`ActivityId` | Interní ID, které se používá ke sledování
+`trackingId` | Interní ID, které se používá ke sledování
+`resourceId` | ID prostředku Azure Resource Manager
+`eventHub` | Úplný název centra událostí (zahrnuje název oboru názvů)
+`partitionId` | Oddíl centra událostí, do kterého se zapisuje
+`archiveStep` | možné hodnoty: ArchiveFlushWriter, DestinationInit
+`startTime` | Čas spuštění chyby
+`failures` | Počet výskytů chyby
+`durationInSeconds` | Doba trvání selhání
+`message` | Chybová zpráva
+`category` | ArchiveLogs
 
 Následující kód je příkladem řetězce JSON protokolu archivu:
 
@@ -99,15 +99,15 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 
 Název | Popis
 ------- | -------
-ActivityId | Interní ID, které se používá pro účely sledování |
-EventName | Název operace |
-resourceId | ID prostředku Azure Resource Manager |
-SubscriptionId | ID předplatného |
-EventTimeString | Čas operace |
-EventProperties | Vlastnosti operace |
-Status | Stav operace |
-Volající | Volající operace (Azure Portal nebo klient pro správu) |
-Kategorie | OperationalLogs |
+`ActivityId` | Interní ID, které se používá pro účely sledování |
+`EventName` | Název operace Seznam hodnot pro tento prvek najdete v tématu [názvy událostí](#event-names) . |
+`resourceId` | ID prostředku Azure Resource Manager |
+`SubscriptionId` | ID předplatného |
+`EventTimeString` | Čas operace |
+`EventProperties` |Vlastnosti pro operaci. Tento prvek poskytuje další informace o události, jak je znázorněno v následujícím příkladu. |
+`Status` | Stav operace. Hodnota může být buď **úspěšná** , nebo **neúspěšná**.  |
+`Caller` | Volající operace (Azure Portal nebo klient pro správu) |
+`Category` | OperationalLogs |
 
 Následující kód je příkladem řetězce JSON provozního protokolu:
 
@@ -126,14 +126,21 @@ Example:
 }
 ```
 
+### <a name="event-names"></a>Názvy událostí
+Název události je vyplněný jako typ operace + typ prostředku z následujících výčtů. Například,, `Create Queue` `Retrieve Event Hu` nebo `Delete Rule` . 
+
+| Typ operace | Typ prostředku | 
+| -------------- | ------------- | 
+| <ul><li>Vytvořit</li><li>Aktualizace</li><li>Odstranit</li><li>Stahovat</li><li>Neznámý</li></ul> | <ul><li>Obor názvů</li><li>Fronta</li><li>Téma</li><li>Předplatné</li><li>Centrum událostí</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>Pravidlo</li>Klientská organizace</li> |
+
 ## <a name="autoscale-logs-schema"></a>Schéma protokolů automatického škálování
 JSON protokolu automatického škálování obsahuje prvky uvedené v následující tabulce:
 
 | Název | Popis |
 | ---- | ----------- | 
-| TrackingId | Interní ID, které se používá pro účely trasování |
-| ResourceId | ID prostředku Azure Resource Manager. |
-| Zpráva | Informační zpráva, která poskytuje podrobné informace o automatické neploché akci. Zpráva obsahuje předchozí a aktuální hodnotu jednotky propustnosti pro daný obor názvů a, která aktivovala neplochý počet výskytů. |
+| `TrackingId` | Interní ID, které se používá pro účely trasování |
+| `ResourceId` | ID prostředku Azure Resource Manager. |
+| `Message` | Informační zpráva, která poskytuje podrobné informace o automatické neploché akci. Zpráva obsahuje předchozí a aktuální hodnotu jednotky propustnosti pro daný obor názvů a, která aktivovala neplochý počet výskytů. |
 
 Tady je příklad události automatického škálování: 
 
@@ -150,13 +157,13 @@ JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulc
 
 | Název | Popis |
 | ---- | ----------- | 
-| Identifikátor | ID žádosti, která se používá pro účely trasování |
-| ResourceId | ID prostředku Azure Resource Manager |
-| Operace | Název operace, která se má provést během koordinace skupiny |
-| ClientId | ID klienta |
-| NamespaceName | Název oboru názvů | 
-| SubscriptionId | ID předplatného Azure |
-| Zpráva | Informativní nebo varovné zprávy, které poskytují podrobné informace o akcích provedených během koordinace skupiny. |
+| `RequestId` | ID žádosti, která se používá pro účely trasování |
+| `ResourceId` | ID prostředku Azure Resource Manager |
+| `Operation` | Název operace, která se má provést během koordinace skupiny |
+| `ClientId` | ID klienta |
+| `NamespaceName` | Název oboru názvů | 
+| `SubscriptionId` | ID předplatného Azure |
+| `Message` | Informativní nebo varovné zprávy, které poskytují podrobné informace o akcích provedených během koordinace skupiny. |
 
 ### <a name="example"></a>Příklad
 
@@ -178,28 +185,29 @@ JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující ta
 
 | Název | Popis |
 | ---- | ----------- |
-| TrackingId | ID sledování, které se používá pro účely trasování. |
-| NamespaceName | Název oboru názvů |
-| Eventhub | Název centra událostí |
-| Oddílu | ID oddílu |
-| GroupId | ID skupiny |
-| ClientId | ID klienta |
-| ResourceId | ID prostředku Azure Resource Manager. |
-| Zpráva | Informační zpráva, která poskytuje podrobné informace o chybě |
+| `TrackingId` | ID sledování, které se používá pro účely trasování. |
+| `NamespaceName` | Název oboru názvů |
+| `Eventhub` | Název centra událostí |
+| `PartitionId` | ID oddílu |
+| `GroupId` | ID skupiny |
+| `ClientId` | ID klienta |
+| `ResourceId` | ID prostředku Azure Resource Manager. |
+| `Message` | Informační zpráva, která poskytuje podrobné informace o chybě |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs schéma událostí připojení k virtuální síti
-
 Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky uvedené v následující tabulce:
 
 | Název | Popis |
 | ---  | ----------- | 
-| SubscriptionId | ID předplatného Azure |
-| NamespaceName | Název oboru názvů |
-| IPAddress | IP adresa klienta připojujícího se ke službě Event Hubs |
-| Akce | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce **akceptují připojení** a **zamítají připojení**. |
-| Důvod | Poskytuje důvod, proč byla akce dokončena. |
-| Count | Počet výskytů pro danou akci |
-| ResourceId | ID prostředku Azure Resource Manager. |
+| `SubscriptionId` | ID předplatného Azure |
+| `NamespaceName` | Název oboru názvů |
+| `IPAddress` | IP adresa klienta připojujícího se ke službě Event Hubs |
+| `Action` | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce **akceptují připojení** a **zamítají připojení**. |
+| `Reason` | Poskytuje důvod, proč byla akce dokončena. |
+| `Count` | Počet výskytů pro danou akci |
+| `ResourceId` | ID prostředku Azure Resource Manager. |
+
+Protokoly virtuální sítě se generují jenom v případě, že obor názvů umožňuje přístup z **vybraných sítí** nebo z **konkrétních IP adres** (pravidla filtru IP). Pokud nechcete omezit přístup k vašemu oboru názvů pomocí těchto funkcí a přesto chcete získat protokoly virtuální sítě ke sledování IP adres klientů připojujících se k Event Hubsmu oboru názvů, můžete použít následující alternativní řešení. [Povolte filtrování IP](event-hubs-ip-filtering.md)adres a přidejte celkový adresovatelný rozsah IPv4 (1.0.0.0/1-255.0.0.0/1). Event Hubs filtrování IP adres nepodporuje rozsahy IPv6. Všimněte si, že v protokolu se můžou zobrazit adresy privátních koncových bodů ve formátu IPv6. 
 
 ### <a name="example"></a>Příklad
 
@@ -221,14 +229,14 @@ Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uve
 
 | Název | Popis |
 | ---- | ----------- | 
-| Kategorie | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
-| ResourceId | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |
-| KeyVault | Název prostředku Key Vault |
-| Key | Název Key Vaultho klíče |
-| Verze | Verze Key Vaultho klíče |
-| Operace | Název operace, která byla provedena k obsluze požadavků |
-| Kód | Stavový kód |
-| Zpráva | Zpráva, která poskytuje podrobné informace o chybě nebo informativní zprávě |
+| `Category` | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
+| `ResourceId` | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |
+| `KeyVault` | Název prostředku Key Vault |
+| `Key` | Název Key Vaultho klíče |
+| `Version` | Verze Key Vaultho klíče |
+| `Operation` | Název operace, která byla provedena k obsluze požadavků |
+| `Code` | Stavový kód |
+| `Message` | Zpráva, která poskytuje podrobné informace o chybě nebo informativní zprávě |
 
 
 
@@ -236,7 +244,7 @@ Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uve
 - [Úvod do Event Hubs](./event-hubs-about.md)
 - [Ukázky Event Hubs](sdks.md)
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

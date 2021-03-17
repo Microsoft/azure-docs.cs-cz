@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
 ms.openlocfilehash: b4477e0b98ef534b8170ee297edf88ac6fa62dd7
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476440"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Kurz: Přístup k testovacímu prostředí v Azure DevTest Labs
@@ -21,7 +21,7 @@ V tomto kurzu provedete následující akce:
 > * Připojení k virtuálnímu počítači
 > * Vrácení virtuálního počítače
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="access-the-lab"></a>Přístup k testovacímu prostředí
 

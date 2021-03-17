@@ -1,14 +1,14 @@
 ---
 title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
-ms.date: 07/25/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541783"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919137"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -22,8 +22,8 @@ Azure Resource Graph je služba v Azure, která je navržená tak, aby rozšíř
 V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 > [!NOTE]
-> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [Change history](../policy/how-to/determine-non-compliance.md#change-history) 
->  _vizuální rozdíly_v historii změn Azure Policy. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
+> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [](../policy/how-to/determine-non-compliance.md#change-history) 
+>  _vizuální rozdíly_ v historii změn Azure Policy. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -37,6 +37,9 @@ Pomocí Azure Resource graphu můžete:
 
 - Přístup k vlastnostem vráceným poskytovateli prostředků bez nutnosti udělat jednotlivá volání na každého poskytovatele prostředků.
 - Podívejte se na posledních 14 dní historie změn provedených u prostředku, abyste viděli, jaké vlastnosti se změnily a kdy. (Preview)
+
+> [!NOTE]
+> Jako funkce ve _verzi Preview_ `type` mají některé objekty k dispozici další vlastnosti, které nejsou správce prostředků. Další informace najdete v tématu [Rozšířené vlastnosti (Preview)](./concepts/query-language.md#extended-properties).
 
 ## <a name="how-resource-graph-is-kept-current"></a>Způsob aktuálnosti grafu prostředků
 
@@ -56,7 +59,7 @@ Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použ�
 
 ## <a name="permissions-in-azure-resource-graph"></a>Oprávnění v Azure Resource Graph
 
-Pokud chcete používat Resource Graph, musíte mít odpovídající oprávnění v [řízení přístupu na základě role](../../role-based-access-control/overview.md), a to alespoň oprávnění ke čtení pro prostředky, které chcete dotazovat. Pokud pro objekt nebo skupinu objektů Azure nemáte alespoň oprávnění `read`, nevrátí se žádné výsledky.
+Pokud chcete použít graf prostředků, musíte mít příslušná práva v [rámci řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) s minimálním přístupem pro čtení k prostředkům, které chcete dotazovat. Pokud pro objekt nebo skupinu objektů Azure nemáte alespoň oprávnění `read`, nevrátí se žádné výsledky.
 
 > [!NOTE]
 > V grafu prostředků se při přihlášení používají předplatná, která jsou k objektu zabezpečení k dispozici. Chcete-li zobrazit prostředky nového předplatného přidaného během aktivní relace, objekt zabezpečení musí kontext aktualizovat. Tato akce se provádí automaticky při odhlašování a zpátky v.
@@ -74,8 +77,8 @@ Zadejte svůj obchodní případ a v případě, že vás tým bude kontaktovat,
 
 Graf prostředků omezuje dotazy na úrovni uživatele. Odpověď služby obsahuje následující hlavičky protokolu HTTP:
 
-- `x-ms-user-quota-remaining`(int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
-- `x-ms-user-quota-resets-after`(hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele
+- `x-ms-user-quota-remaining` (int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
+- `x-ms-user-quota-resets-after` (hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele
 
 Další informace najdete v tématu [doprovodné materiály k omezení požadavků](./concepts/guidance-for-throttled-requests.md).
 

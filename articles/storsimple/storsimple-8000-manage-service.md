@@ -1,6 +1,6 @@
 ---
 title: Nasazení služby StorSimple Device Manager v Azure | Microsoft Docs
-description: Vysvětluje, jak vytvořit a odstranit službu StorSimple Device Manager v Azure Portal a popisuje, jak spravovat registrační klíč služby.
+description: Přečtěte si o krocích potřebných k vytvoření, odstranění, migraci služby a správě registračního klíče služby.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847108"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360670"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
 
@@ -58,7 +58,7 @@ Chcete-li vytvořit službu, proveďte následující kroky.
 Pro každou službu StorSimple Device Manager existují následující atributy:
 
 * **Název** – název, který byl přiřazen službě StorSimple Device Manager při vytvoření. **Po vytvoření služby se název služby nedá změnit. Platí to taky pro jiné entity, jako jsou zařízení, svazky, kontejnery svazků a zásady zálohování, které se nedají přejmenovat v Azure Portal.**
-* **Stav** – stav služby, který může být **aktivní**, **vytváří**nebo je **online**.
+* **Stav** – stav služby, který může být **aktivní** , **vytváří** nebo je **online**.
 * **Location (umístění** ) – zeměpisné umístění, ve kterém bude nasazeno zařízení StorSimple.
 * **Předplatné** – fakturační předplatné, které je přidružené k vaší službě.
 
@@ -103,9 +103,9 @@ Registrační klíč služby je nutné znovu vygenerovat, pokud potřebujete pro
 K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt; ** .
+1. V okně **StorSimple Device Manager** otevřete okno **klíče** pro **správu &gt;** .
     
-    ![Okno Klíče](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![Přejít k oknu klíče](./media/storsimple-8000-manage-service/regenregkey2.png)
 
 2. V okně **klíče** klikněte na **znovu vygenerovat**.
 
@@ -177,21 +177,21 @@ Provedením následujících kroků aktualizujte šifrování dat služby na va�
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Aktualizace šifrovacího klíče dat služby na fyzických zařízeních
 1. K připojení ke konzole použijte Windows PowerShell pro StorSimple. Vyberte možnost 1 pro přihlášení s úplným přístupem.
-2. Do příkazového řádku zadejte:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. Do příkazového řádku zadejte:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Zadejte šifrovací klíč dat služby, který jste získali v [kroku 2: použití Windows PowerShell pro StorSimple k inicializaci změny šifrovacího klíče dat služby](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Aktualizace šifrovacího klíče dat služby ve všech cloudových zařízeních 8010/8020
 1. Stáhněte a nastavte [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) powershellový skript. 
-2. Otevřete PowerShell a na příkazovém řádku zadejte:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Otevřete PowerShell a na příkazovém řádku zadejte:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Tento skript zajistí, aby se šifrovací klíč dat služby nastavil na všech cloudových zařízeních 8010/8020 ve Správci zařízení.
 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Podporované operace na zařízeních s verzemi staršími než aktualizace 5,0
 V Azure Portal se podporují jenom zařízení StorSimple, která používají aktualizaci 5,0 a vyšší. Zařízení, na kterých běží starší verze, mají omezená podpora. Po dokončení migrace na Azure Portal použijte následující tabulku, která vám pomůže pochopit, které operace jsou podporované na zařízeních s verzemi staršími než aktualizace 5,0.
 
-| Operace                                                                                                                       | Podporuje se      |
+| Operace                                                                                                                       | Podporováno      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Registrování zařízení                                                                                                               | Yes            |
+| Registrace zařízení                                                                                                               | Yes            |
 | Konfigurace nastavení zařízení, jako jsou obecné, síť a zabezpečení                                                                | Yes            |
 | Hledání, stahování a instalace aktualizací                                                                                             | Yes            |
 | Deaktivovat zařízení                                                                                                               | Yes            |

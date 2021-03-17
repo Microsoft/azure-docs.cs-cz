@@ -3,7 +3,7 @@ title: Povolení automatického zřizování uživatelů pro aplikace s více kl
 description: Průvodce pro nezávislé výrobce softwaru pro povolení automatického zřizování
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7bd0fc634109beb6cc674d89f56666e7035d33ef
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235634"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255691"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -64,13 +64,13 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
 | Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| X |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| × |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
-| Odstranění uživatelů na základě obchodních pravidel| √| √| X |
-| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| X| √ |
-| Podpora více zprostředkovatelů identity| √| X| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
+| Podpora více zprostředkovatelů identity| √| ×| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podnik (B2C)| X| √| √ |
+| Podpora účtů mimo podnik (B2C)| ×| √| √ |
 
 <sup>*</sup> – Azure AD Connect instalační program je nutný k synchronizaci uživatelů ze služby AD do Azure AD.  
 <sup>+</sup >– Použití SCIM pro zřizování vám nevylučuje integraci aplikace s Microsoft Graph pro jiné účely.
@@ -89,9 +89,9 @@ Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, 
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph pro zřizování
 
-Při použití Microsoft Graph ke zřízení máte přístup ke všem uživatelům, kteří jsou k dispozici v grafu. Kromě podrobností o uživatelích a skupinách můžete také načítat Další informace, jako jsou role uživatelů, vedoucí a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí, které jsou k dispozici v [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0). 
+Při použití Microsoft Graph ke zřízení máte přístup ke všem uživatelům, kteří jsou k dispozici v grafu. Kromě podrobností o uživatelích a skupinách můžete také načítat Další informace, jako jsou role uživatelů, vedoucí a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí, které jsou k dispozici v [Microsoft Graph](/graph/api/overview). 
 
-Více než 15 000 000 organizací a 90% Fortune 500 společnosti využívají Azure AD při přihlášení k odběru cloudových služeb Microsoftu, jako je Office 365, Microsoft Azure, Enterprise Mobility Suite nebo Microsoft 365. Pomocí Microsoft Graph můžete integrovat svou aplikaci s pracovními postupy pro správu, jako je například registrace zaměstnanců (a ukončení), údržba profilu a další. 
+Při přihlášení k odběru cloudových služeb Microsoftu, jako je Microsoft 365, Microsoft Azure nebo sada Enterprise mobility, se za víc než 15 000 000 organizací a 90% z Fortune 500 společnosti používá Azure AD. Pomocí Microsoft Graph můžete integrovat svou aplikaci s pracovními postupy pro správu, jako je například registrace zaměstnanců (a ukončení), údržba profilu a další. 
 
 Další informace o použití Microsoft Graph pro zřizování:
 
@@ -111,7 +111,7 @@ Kompilátor SAML používá informace o deklaracích identity v tokenu SAML k vy
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Povolení jednotného přihlašování pro aplikaci](../manage-apps/isv-sso-content.md)
+* [Povolení jednotného přihlašování pro aplikaci](../develop/v2-howto-app-gallery-listing.md)
 
 * [Odesláním seznamu aplikací](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a partnera s Microsoftem můžete vytvořit dokumentaci na webu Microsoftu.
 

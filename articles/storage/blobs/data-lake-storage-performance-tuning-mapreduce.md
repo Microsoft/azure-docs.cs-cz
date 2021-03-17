@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b95d37e1725940799750dbd3c29174d9855390d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912922"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ Seznamte se s faktory, které byste měli zvážit při ladění výkonu mapy om
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
-* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) .
-* **Použití MapReduce ve službě HDInsight**.  Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) .
+* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](../common/storage-account-create.md).
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) .
+* **Použití MapReduce ve službě HDInsight**.  Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](../../hdinsight/hadoop/hdinsight-use-mapreduce.md) .
 * **Pokyny k ladění výkonu na data Lake Storage Gen2**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen2 pokyny k ladění výkonu](data-lake-storage-performance-tuning-guidance.md) .
 
 ## <a name="parameters"></a>Parametry
@@ -65,7 +65,7 @@ Pokud používáte prázdný cluster, může být paměť celkovou paměti PŘÍ
 
 Kontejnery PŘÍZe určují množství souběžnosti, které je k dispozici pro úlohu.  Využijte celkovou paměť PŘÍZe a rozdělte ji pomocí MapReduce. map. Memory.  
 
-\#kontejnery PŘÍZ = celková paměť PŘÍZe/MapReduce. map. Memory
+\# kontejnery PŘÍZ = celková paměť PŘÍZe/MapReduce. map. Memory
 
 **Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes**
 
@@ -93,7 +93,7 @@ Celková paměť z clusteru je 8 uzlů * 96GB paměti PŘÍZe D14 = 768GB
 
 **Krok 4: výpočet počtu kontejnerů PŘÍZe**
 
-\#kontejnerů PŘÍZ = 768GB dostupné paměti/3 GB paměti = 256
+\# kontejnerů PŘÍZ = 768GB dostupné paměti/3 GB paměti = 256
 
 **Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes**
 

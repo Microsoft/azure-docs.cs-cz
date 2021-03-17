@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552896"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630873"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
 
-Zásady podmíněného přístupu musí zahrnovat přiřazení uživatele jako jeden ze signálů v rámci procesu rozhodování. Uživatele můžete zahrnout nebo vyloučit ze zásad podmíněného přístupu. 
+Zásady podmíněného přístupu musí zahrnovat přiřazení uživatele jako jeden ze signálů v rámci procesu rozhodování. Uživatele můžete zahrnout nebo vyloučit ze zásad podmíněného přístupu. Azure Active Directory vyhodnotí všechny zásady a zajistí splnění všech požadavků před udělením přístupu uživateli. Kromě tohoto článku máme video o [tom, jak zahrnout nebo vyloučit uživatele ze zásad podmíněného přístupu](https://www.youtube.com/watch?v=5DsW1hB3Jqs) , které vás provedou procesem popsaným níže. 
 
 ![Uživatel jako signál v rozhodnutích učiněných podmíněným přístupem](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -38,21 +38,24 @@ Při vytváření zásad podmíněného přístupu jsou k dispozici následujíc
    - Všichni uživatelé typu Host a externí uživatelé
       - Tento výběr zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s `user type` atributem nastaveným na `guest` . Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
    - Role adresáře
-      - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce.
+      - Umožňuje správcům vybrat konkrétní integrované role adresáře Azure AD, které se používají k určení přiřazení zásad. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce. Jiné typy rolí se nepodporují, včetně rolí adresáře správy s rozsahem jednotky, vlastních rolí.
    - Uživatelé a skupiny
       - Umožňuje zaměřit se na konkrétní skupiny uživatelů. Organizace můžou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybraná aplikace pro HR. Skupina může být libovolný typ skupiny v Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce. Zásady se použijí pro vnořené uživatele a skupiny.
+
+> [!IMPORTANT]
+> Když vybíráte, kteří uživatelé a skupiny jsou součástí zásad podmíněného přístupu, je limit počtu jednotlivých uživatelů, kteří se dají přidat přímo do zásad podmíněného přístupu. Pokud je potřeba přidat velké množství individuálních uživatelů, kteří jsou přidaní přímo do zásad podmíněného přístupu, doporučujeme umístit uživatele do skupiny a místo toho přiřadit skupinu k zásadám podmíněného přístupu.
 
 > [!WARNING]
 > Pokud jsou uživatelé nebo skupiny členy více než 2048 skupin, jejich přístup může být blokovaný. Toto omezení platí pro přímé i vnořené členství ve skupinách.
 
 > [!WARNING]
-> Zásady podmíněného přístupu nepodporují uživatelům, kteří mají přiřazenou roli adresáře v [oboru pro jednotky pro správu](../users-groups-roles/roles-admin-units-assign-roles.md) nebo role adresáře přímo na objekt, jako je například prostřednictvím [vlastních rolí](../users-groups-roles/roles-create-custom.md).
+> Zásady podmíněného přístupu nepodporují uživatelům, kteří mají přiřazenou roli adresáře v [oboru pro jednotky pro správu](../roles/admin-units-assign-roles.md) nebo role adresáře přímo na objekt, jako je například prostřednictvím [vlastních rolí](../roles/custom-create.md).
 
 ## <a name="exclude-users"></a>Vyloučení uživatelů
 
 Pokud organizace zahrnují a vylučují uživatele nebo skupinu, uživatel nebo skupina je ze zásad vyloučená, protože akce vyloučení Přepisuje zahrnutí v zásadě. Vyloučení se běžně používají pro nouzový přístup nebo pro účty pro rozbití. Další informace o účtech pro nouzový přístup a o tom, proč jsou důležité, najdete v následujících článcích: 
 
-* [Správa účtů pro nouzový přístup v Azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Správa účtů pro nouzový přístup v Azure AD](../roles/security-emergency-access.md)
 * [Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 Při vytváření zásad podmíněného přístupu je k dispozici možnost vyloučit následující možnosti.
@@ -66,13 +69,15 @@ Při vytváření zásad podmíněného přístupu je k dispozici možnost vylou
 
 ### <a name="preventing-administrator-lockout"></a>Prevence uzamčení správce
 
-Pokud chcete zabránit tomu, aby správce při vytváření zásad použitých pro **všechny uživatele** a **všechny aplikace**uzamknul svůj adresář, zobrazí se následující upozornění.
+Pokud chcete zabránit tomu, aby správce při vytváření zásad použitých pro **všechny uživatele** a **všechny aplikace** uzamknul svůj adresář, zobrazí se následující upozornění.
 
 > Nezamykat! Doporučujeme, abyste nejdřív použili zásadu pro malou skupinu uživatelů, abyste ověřili, že se chová podle očekávání. Doporučujeme také, abyste z těchto zásad vyloučili alespoň jednoho správce. Tím zajistíte, že budete mít stále přístup a budete moct aktualizovat zásady, pokud je potřeba změnit. Přečtěte si prosím ovlivněné uživatele a aplikace.
 
 Ve výchozím nastavení zásada nabídne možnost vyloučení aktuálního uživatele ze zásad, ale toto nastavení může přepsat správce, jak je znázorněno na následujícím obrázku. 
 
 ![Upozornění, neprovádějte zámek!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[Co dělat v případě, že jste se odhlásili z Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.date: 08/04/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828519"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426560"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Rychlý Start: vytvoření centra oznámení Azure v Azure Portal
 
@@ -34,7 +34,7 @@ V této části vytvoříte obor názvů a centrum v oboru názvů.
 
 V této části vytvoříte centrum oznámení v existujícím oboru názvů.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** , vyhledejte **Centrum oznámení**, vyberte **hvězdičku** ( `*` ) vedle položky **obory názvů centra oznámení** a přidejte je do části **Oblíbené** v nabídce vlevo. Vyberte **obory názvů centra oznámení**.
 
       ![Azure Portal – výběr oborů názvů centra oznámení](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
@@ -52,10 +52,10 @@ V této části vytvoříte centrum oznámení v existujícím oboru názvů.
       ![Oznámení o nasazení](./media/create-notification-hub-portal/deployment-notification.png)
 7. Aktualizujte webovou stránku **obory názvů centra oznámení** , abyste viděli nové centrum v seznamu.
 
-      ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/create-notification-hub-portal/new-hub-in-list.png)
+      ![Snímek obrazovky, který zobrazuje webovou stránku obory názvů centra oznámení s novým centrem v seznamu.](./media/create-notification-hub-portal/new-hub-in-list.png)
 8. Vyberte **Centrum oznámení** , kde se zobrazí domovská stránka centra oznámení.
 
-      ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/create-notification-hub-portal/hub-home-page.png)
+      ![Snímek obrazovky, který zobrazuje domovskou stránku centra oznámení.](./media/create-notification-hub-portal/hub-home-page.png)
 
 ## <a name="next-steps"></a>Další kroky
 

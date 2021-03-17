@@ -1,7 +1,7 @@
 ---
-title: Media Services a podpora licencí Apple FairPlay – Azure | Microsoft Docs
+title: Media Services podporu licencí Apple FairPlay
 description: Toto téma poskytuje přehled licenčních požadavků a konfigurací Apple FairPlay.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,18 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/08/2018
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 433768ddea6e250c66483ec3da4c7737b3538a1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 187c1e60d97e0bebb3b6216b0055ddffe6e6cb4c
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092044"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454377"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Konfigurace a licenční požadavky pro Apple FairPlay 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Konfigurace a licenční požadavky pro Apple FairPlay
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services umožňuje šifrování obsahu HLS pomocí **Apple Fairplay** (AES-128 CBC). Media Services taky poskytuje službu pro doručování licencí FairPlay. Když se hráč pokusí přehrát obsah chráněný FairPlay, pošle se do služby doručování licencí požadavek, aby získal licenci. Pokud licenční služba žádost schválí, vydá licenci, která je odeslána klientovi a slouží k dešifrování a přehrání zadaného obsahu.
 
@@ -84,7 +86,7 @@ K nakonfigurování licencí FairPlay můžete použít rozhraní API pro Media 
 > [!NOTE]
 > Obvykle byste chtěli nakonfigurovat možnosti zásad FairPlay jenom jednou, protože budete mít jenom jednu sadu certifikace a dotaz.
 
-Následující příklad používá ke konfiguraci licence [sadu Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) .
+Následující příklad používá ke konfiguraci licence [sadu Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models) .
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

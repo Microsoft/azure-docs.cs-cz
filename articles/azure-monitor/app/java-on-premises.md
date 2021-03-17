@@ -6,14 +6,14 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: c2d35a6f379b0d7cf3c4c7d61e5e679553e5302f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1afd851f5511ce7b880727c36ffb76a7f4c6d5fe
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326881"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376982"
 ---
-# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Monitorování aplikací s kódováním kódu Java v místním prostředí – Azure Monitor Application Insights – Public Preview
+# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights"></a>Monitorování aplikace nekódování Java v místním prostředí – Azure Monitor Application Insights
 
 Monitorování aplikací bez kódu Java je vše o jednoduchosti – neexistují žádné změny kódu, agent Java může být povolený jenom v několika změnách konfigurace.
 

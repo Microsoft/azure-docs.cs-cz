@@ -2,24 +2,43 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 02/25/2021
+ms.openlocfilehash: f8c15b1236d15c193638842ce4dab7e81cd70ace
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511284"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184206"
 ---
-Tento článek poskytuje informace a ukázkový kód, který vám může pomoci začít používat Custom Vision klientské knihovny s nástrojem přejít k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v cestách.
+Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro přejít k sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+
+> [!NOTE]
+> Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
+
+Pomocí klientské knihovny Custom Vision můžete přejít na:
+
+* Vytvoření nového projektu Custom Vision
+* Přidat do projektu značky
+* Nahrávání a označování obrázků
+* Výuka projektu
+* Publikovat aktuální iteraci
+* Testování koncového bodu předpovědi
+
+Referenční dokumentace [(školení)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training) [(předpověď)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)| Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/customvision/training) [(předpověď)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.1/customvision/prediction) 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Přejít 1.8 +](https://golang.org/doc/install)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* [Přejít 1.8 +](https://golang.org/doc/install)
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Custom Vision budete potřebovat klíč a koncový bod z prostředků, které vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
+## <a name="setting-up"></a>Nastavení
 
-Chcete-li nainstalovat knihovnu klienta služby Custom Vision pro službu přejít, spusťte v prostředí PowerShell následující příkaz:
+### <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
+
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision for přejít budete potřebovat klientskou knihovnu služby Custom Vision. V PowerShellu spusťte následující příkaz:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -30,19 +49,16 @@ nebo pokud používáte `dep` , v rámci vašeho spuštění úložiště:
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
 
 [!INCLUDE [python-get-images](../../includes/python-get-images.md)]
 
-## <a name="add-the-code"></a>Přidání kódu
+## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
 
-Vytvořte nový soubor s názvem *Sample. přejít* do preferovaného adresáře projektu.
-
-### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
+Vytvořte nový soubor s názvem *Sample. přejít* do vašeho preferovaného adresáře projektu a otevřete ho v preferovaném editoru kódu.
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
 
-Chcete-li určit další možnosti při vytváření projektu, viz metoda [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) (vysvětlení najdete v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ).
+Chcete-li určit další možnosti při vytváření projektu, viz metoda [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) (vysvětlení najdete v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ).
 
 ```go
 import(
@@ -88,7 +104,7 @@ func main() {
     project, _ := trainer.CreateProject(ctx, project_name, "", objectDetectDomain.ID, "")
 ```
 
-### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
+## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
 Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *Sample. přejít*:
 
@@ -98,7 +114,7 @@ forkTag, _ := trainer.CreateTag(ctx, *project.ID, "fork", "A fork", string(train
 scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of scissors", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
+## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
 Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic.
 
@@ -217,7 +233,7 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
+## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
 
 Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
@@ -236,7 +252,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
+## <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -272,11 +288,17 @@ go run sample.go
 
 V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné označení testovacího obrázku (ve složce **samples/vision/images/Test**) a správnost oblasti detekce.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující průvodce školením se zabývá klasifikací imagí, ale jeho princip se podobá detekci objektů.
+Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
+
+* [Co je Custom Vision?](../../overview.md)
+* [Referenční dokumentace k sadě SDK (školení)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [Referenční dokumentace k sadě SDK (předpovědi)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

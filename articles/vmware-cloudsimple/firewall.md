@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – nastavení tabulek a pravidel brány firewall
 description: Popisuje, jak nastavit tabulky a pravidla brány firewall privátního cloudu pro omezení provozu v podsítích a sítích VLAN.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32dcfb0c6cd26b5f34afad328db8f383fa1c2a6f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846868"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895627"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
 
@@ -49,7 +49,7 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
     * Při vytváření tabulky brány firewall klikněte na **Přidat pravidlo** .
     * Vyberte konkrétní tabulku brány firewall na stránce **> tabulky brány firewall sítě** a klikněte na **vytvořit nové pravidlo brány firewall**.
 2. Pravidlo nastavte takto:
-    * **Název**. Zadejte název pravidla.
+    * **Název:** Zadejte název pravidla.
     * **Priorita**. Přiřaďte k pravidlu prioritu. Jako první se spustí pravidla s nižšími čísly.
     * **Typ provozu**. Vyberte, jestli je pravidlo pro provoz privátního cloudu, Internetu nebo VPN (bez stavu) nebo pro veřejnou IP adresu (Stavový).
     * **Protokol**. Vyberte protokol, na který se vztahuje pravidlo (TCP, UDP nebo jakýkoli protokol).
@@ -72,7 +72,7 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
 
 Po definování tabulky brány firewall můžete určit podsítě, na které se vztahují pravidla v tabulce.
 
-1. Na stránce **Network**  >  **tabulky brány firewall** sítě vyberte tabulku brány firewall.
+1. Na stránce   >  **tabulky brány firewall** sítě vyberte tabulku brány firewall.
 2. Otevřete kartu **připojené sítě VLAN/podsíť** .
 3. Klikněte na **připojit k síti VLAN nebo podsíti**.
 4. Vyberte privátní cloud a síť VLAN. Zobrazí se název přidružené podsítě a blok CIDR.

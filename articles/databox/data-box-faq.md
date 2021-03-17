@@ -2,22 +2,23 @@
 title: Microsoft Azure Data Box – nejčastější dotazy | Microsoft Docs
 description: Obsahuje nejčastější dotazy a odpovědi pro Azure Data Box cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730571"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
-Hybridní řešení Microsoft Azure Data Box umožňuje odesílat do Azure rychle, levně a bezpečně terabajty dat prostřednictvím přenosového zařízení. Tyto nejčastější dotazy obsahují otázky a odpovědi, které se týkají používání služby Data Box na webu Azure Portal. 
+Hybridní řešení Microsoft Azure Data Box umožňuje odesílat do Azure rychle, levně a bezpečně terabajty dat prostřednictvím přenosového zařízení. Tyto nejčastější dotazy obsahují otázky a odpovědi, které se týkají používání služby Data Box na webu Azure Portal.
 
 Otázky a odpovědi jsou uspořádané do těchto kategorií:
 
@@ -57,23 +58,37 @@ A.  Informace o tom, které země nebo oblasti jsou Data Box k dispozici, najdet
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Otázka: V jakých oblastech můžu k ukládání dat použít Data Box?
 A. Data Box se podporuje pro všechny oblasti v USA, Západní Evropa, Severní Evropa, Francie, Spojené království, Japonsko, Austrálie a Kanada. Další informace najdete v [oblasti dostupnost oblasti](data-box-overview.md#region-availability).
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Otázka: Jak můžu importovat místní zdrojová data do oblasti Azure v jiné zemi nebo oblasti nebo exportovat data z oblasti Azure v jedné zemi do jiné země nebo oblasti?
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Otázka: Jak můžu importovat zdrojová data v dané zemi do konkrétní země do oblasti Azure v jiné zemi nebo oblasti nebo exportovat data z oblasti Azure v jedné zemi do jiné země nebo oblasti?
 
-Data Box podporuje příjem dat nebo výstup pouze v rámci stejné země nebo oblasti jako jejich cíl a nebude se překračovat na mezinárodní hranici. Jediná výjimka je určena pro objednávky v Evropské unii (EU), kde se datová pole dají dodávat do a z libovolné země nebo oblasti EU.
+Data Box podporuje příjem dat nebo výstup pouze v rámci stejné země nebo oblasti jako cíl a nepřekračuje žádné mezinárodní hranice. Jediná výjimka je určena pro objednávky v Evropské unii (EU), kde se datová pole dají dodávat do a z libovolné země nebo oblasti EU.
 
-Například ve scénáři import, pokud máte místní data v Kanadě, že jste chtěli přejít na účet úložiště Azure WestUS, můžete to dosáhnout následujícím způsobem:
+Pokud jste například ve scénáři importu měli zdrojová data v Kanadě, že jste chtěli přejít na účet úložiště Azure Západní USA, můžete to dosáhnout následujícím způsobem:
 
-1. V Kanadě zvolte účet úložiště v Cananda, abyste mohli objednat Data Box. Zařízení se dodává z datacentra Azure v Kanadě po dodací adresu (v Kanadě), která je k dispozici během vytváření objednávky.
+1. V Kanadě zvolte účet úložiště v Kanadě, Data Box objednat. Zařízení se dodává z datacentra Azure v Kanadě po dodací adresu (v Kanadě), která je k dispozici během vytváření objednávky.
 
 2. Jakmile se Prem data zkopíruje do Data Box, vraťte zařízení do datacentra Azure v Kanadě. Data v Data Box pak se nahrají do cílového účtu úložiště v oblasti Kanada Azure zvolené během vytváření objednávky.
 
-3. Pak můžete použít nástroj jako AzCopy ke zkopírování dat do účtu úložiště v WestUS. Tento krok se započítá se [standardními](https://azure.microsoft.com/pricing/details/storage/) [poplatky za úložiště a šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) , které nejsou zahrnuté do data box fakturace.
+3. Pak můžete použít nástroj jako AzCopy ke zkopírování dat do účtu úložiště v Západní USA. Tento krok se započítá se [standardními](https://azure.microsoft.com/pricing/details/storage/) [poplatky za úložiště a šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) , které nejsou zahrnuté do data box fakturace.
 
-### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Otázka: Na koho se mám obrátit v případě potíží s Data Boxem?
-A. V případě potíží s Data Boxem se prosím [obraťte na podporu Microsoftu](data-box-disk-contact-microsoft-support.md).
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>Otázka: Ukládá Data Box data o zákaznících mimo oblast služby?
 
-### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Otázka: Ztratil jsem Data Box. Dojde ke ztrátě poplatků za zařízení?
-A. Ano. Účtuje se ztracený nebo poškozený poplatek za zařízení. Tento poplatek se účtuje na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a také v [licenčních podmínkami produktu](https://www.microsoft.com/licensing/product-licensing/products).
+A. No. Data Box neukládají žádná zákaznická data mimo oblast služby. Zákazník má plné vlastnictví svých dat a může ukládat data do zadaného umístění na základě účtu úložiště, který během vytváření objednávky vybral.  
+
+Kromě zákaznických dat se Data Box data zahrnující artefakty zabezpečení související se zařízením, protokoly monitorování pro zařízení a službu a metadata týkající se služeb. Ve všech oblastech (s výjimkou Brazílie – jih a jihovýchodní Asie) se Data Box data ukládají a replikují do spárované oblasti pomocí geograficky redundantního účtu úložiště, která chrání před ztrátou dat.  
+
+Z důvodu [požadavků](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) na umístění dat v oblasti Brazílie – jih a jihovýchodní asie se data box data ukládají do účtu úložiště s redundantním úložištěm (ZRS) tak, aby byla obsažena v jedné oblasti. V případě jihovýchodní Asie se všechna Data Box data ukládají v Singapuru a v oblasti Brazílie – jih jsou data uložená v Brazílii. 
+
+Pokud dojde k výpadku služby v oblasti Brazílie – jih a jihovýchodní Asie, můžou zákazníci vytvořit nové objednávky z jiné oblasti. Nové objednávky budou obsluhovány z oblasti, ve které jsou vytvořeny, a zákazníci jsou odpovědni za to, že se Data Box zařízení dostanou do dodání.
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>Otázka: Jak můžu obnovit data v případě, že dojde k chybě celé oblasti?
+
+A. V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V tomto případě se nevyžaduje žádná akce v této části. Vaše objednávka bude splněna v oblasti převzetí služeb při selhání, pokud se nachází v rámci stejné země nebo obchodní hranice. Některé oblasti Azure ale nemají spárované oblasti ve stejné geografické ani obchodní hranici. Pokud dojde k havárii v některé z těchto oblastí, bude nutné znovu vytvořit pořadí Data Box z jiné oblasti, která je k dispozici, a zkopírovat data do Azure v nové oblasti. Další informace viz [Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure](../best-practices-availability-paired-regions.md).
+
+### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>Otázka: Koho se mám obrátit v případě problémů s Data Box?
+A. Pokud dodržíte všechny problémy s Data Box, [obraťte](data-box-disk-contact-microsoft-support.md)se na podpora Microsoftu.
+
+### <a name="q-i-lost-my-data-box-is-there-a-lost-device-charge"></a>Otázka: Ztratil jsem Data Box. Dojde ke ztrátě poplatků za zařízení?
+A. Ano. Ztracené nebo poškozené zařízení je zpoplatněné. Tento poplatek se vztahuje na [stránku s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a na [produktové podmínkami](https://www.microsoft.com/licensing/product-licensing/products).
 
 
 ## <a name="order-device"></a>Objednání zařízení
@@ -81,23 +96,39 @@ A. Ano. Účtuje se ztracený nebo poškozený poplatek za zařízení. Tento po
 ### <a name="q-how-do-i-get-data-box"></a>Otázka: Jak získám Data Box? 
 A.  Pokud chcete získat Azure Data Box, přihlaste se na webu Azure Portal a objednejte si zařízení Data Box. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po vystavení objednávky vám Data Box dodáme do 10 dnů (podle dostupnosti). Další informace nejdete v článku o [objednání zařízení Data Box](data-box-deploy-ordered.md).
 
-### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemůžu na webu Azure Portal vytvořit objednávku na Data Box. Čím to může být?
-A. Pokud vám nejde vystavit objednávka zařízení Data Box, může to být typem předplatného nebo přístupem. 
+### <a name="q-i-couldnt-create-a-data-box-order-in-the-azure-portal-why"></a>Otázka: Nemohu vytvořit Data Box pořadí v Azure Portal. Proč?
+A. Pokud nemůžete vytvořit objednávku Data Box, dojde k problému s vaším typem nebo přístupem k předplatnému.
 
-Zkontrolujte si předplatné. Data Box je dostupný jenom zákazníkům se smlouvou Enterprise (EA) nebo poskytovatelům Cloud Solution Provider (CSP). Pokud máte jiný typ předplatného, kontaktujte podporu Microsoftu a předplatné upgradujte.
+Zkontrolujte si předplatné. Data Box je dostupný jenom zákazníkům se smlouvou Enterprise (EA) nebo poskytovatelům Cloud Solution Provider (CSP). Pokud některý z těchto typů předplatných nemáte, kontaktujte podpora Microsoftu k upgradu vašeho předplatného.
 
 Pokud máte podporovaný typ předplatného, zkontrolujte svou úroveň přístupu k předplatnému. K vytvoření objednávky musíte být přispěvatel nebo vlastník předplatného.
 
-### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>Otázka: Objednal(a) jsem několik zařízení Data Box. Nemůžu vytvářet další objednávky. Čím to může být?
-A. U každého předplatného je povolených maximálně 5 aktivních objednávek ve stejné obchodní oblasti (vybraná kombinace země a oblasti). Pokud potřebujete objednat další zařízení, obraťte se na podporu Microsoftu a požádejte u svého předplatného o zvýšení limitu.
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>Otázka: Jak dlouho bude pořadí trvat, než se v objednávce vytvoří data nahraná do Azure?
+
+A. Následující Odhadované doby realizace pro každou fázi zpracování objednávek vám poskytnou dobrý nápad na to, co očekávat.  
+
+Tyto doby realizace jsou *odhady*. Čas pro každou fázi zpracování objednávky je ovlivněn zatížením datového centra, souběžnými objednávkami a dalšími podmínkami v oblasti životního prostředí.
+
+**Odhadované doby realizace Data Boxho pořadí:**
+
+1. Pořadí Data Box: několik minut, z portálu
+2. Přidělení a příprava zařízení: 1-2 pracovních dní v závislosti na dostupnosti inventáře a dalších objednávkách, které čekají na splnění
+3. Doprava: 2–3 pracovní dny
+4. Kopírování dat na zákaznických webech: závisí na povaze dat, velikosti a počtu souborů.
+5. Vrácení: 2–3 pracovní dny
+6. Zpracovává se zařízení v datacentru: 1-2 pracovních dnů, s výjimkou dalších objednávek, které čekají na zpracování.
+7. Nahrávání dat do Azure: začíná ihned po dokončení zpracování a připojení zařízení. Doba nahrávání závisí na charakteru dat, velikosti a počtu souborů.
+
+### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Otázka: Objednal(a) jsem několik zařízení Data Box. Nemůžu vytvořit další objednávky. Proč?
+A. Povolujeme maximálně pět aktivních objednávek na předplatné na hranici obchodu (kombinace země a oblasti vybraná). Pokud potřebujete objednat další zařízení, obraťte se na podporu Microsoftu a požádejte u svého předplatného o zvýšení limitu.
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>Otázka: Když se pokouším vytvořit objednávku, zobrazí se mi oznámení, že služba Data Box není k dispozici. Co to znamená?
-A. Znamená to, že pro vámi vybranou kombinaci země a oblasti není služba Data Box k dispozici. Pokud tuto kombinaci změníte, pravděpodobně budete mít službu Data Box k dispozici. Seznam oblastí, kde je služba dostupná, najdete v části o [regionální dostupnosti služby Data Box](data-box-overview.md#region-availability).
+A. Služba Data Box není k dispozici pro kombinaci země a oblasti, kterou jste vybrali. Pokud tuto kombinaci změníte, pravděpodobně budete mít službu Data Box k dispozici. Seznam oblastí, kde je služba dostupná, najdete v části o [regionální dostupnosti služby Data Box](data-box-overview.md#region-availability).
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>Otázka: Před několika dny jsem si objednal(a) zařízení Data Box. Kdy mi Data Box přijde?
 A. Když vystavíte objednávku, zkontrolujeme, jestli je pro objednávku zařízení k dispozici. Pokud tomu tak je, expedujeme ho do 10 dnů. Může se stát, že v určitých obdobích se poptávka zvýší. V takovém případě zařadíme vaši objednávku do fronty. Změnu jejího stavu můžete sledovat na webu Azure Portal. Pokud objednávku nevyřídíme do 90 dnů, bude automaticky zrušena.
 
-### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Otázka: Mám Data Box plný a potřebuji objednat další. Existuje nějaký rychlý způsob, jak tuto objednávku vytvořit?
+### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Otázka: Naplnili jsem Data Box daty a je potřeba objednat další. Existuje nějaký rychlý způsob, jak tuto objednávku vytvořit?
 A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoří stejná objednávka, jako byla ta předchozí. Podrobnosti této objednávky však můžete upravit. Nebudete tedy muset znovu zadávat adresu, kontaktní údaje a podrobnosti o oznámení. Klonování je povoleno pouze pro objednávky importu.
 
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
@@ -120,31 +151,43 @@ A. Ano. Rozhraní 10 GbE lze v Data Box připojit ke kopírování dat současn�
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
 
-### Q. I could not set up Data Box using a Dynamic (DHCP) IP address. Why would this be?
+### Q. I could not set up Data Box using a Dynamic (DHCP) IP address. Why?
 A.
 
-### Q. I could not set up Data Box using a Static IP address. Why would this be?
+### Q. I could not set up Data Box using a Static IP address. Why?
 A.
 
-### Q. I could not set up Data Box on a private network. Why would this be?
+### Q. I could not set up Data Box on a private network. Why?
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Otázka: Na předním ovládacím panelu svítí dioda, která signalizuje chybu systému. Co bych měl/a dělat?
-A. Pokud svítí dioda, která signalizuje chybu systému, znamená to, že systém není v pořádku. Pro další kroky [kontaktujte podpora Microsoftu](data-box-disk-contact-microsoft-support.md) .
+A. Pod tlačítkem napájení na přední straně Data Boxu jsou dvě indikátory LED. Nejhorším světlem je indikátor systémové chyby, který označuje, jestli je váš systém v pořádku.
 
-### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemám přístup k heslu pro odemčení Data Boxu na webu Azure Portal. Čím to může být?
-A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu Azure Portal, zkontrolujte oprávnění v předplatném a v účtu úložiště. Ověřte, že na úrovni skupiny prostředků máte oprávnění přispěvatele nebo vlastníka. V takovém případě musíte mít alespoň Data Box oprávnění role operátora, aby bylo možné zobrazit přihlašovací údaje pro přístup.
+Indikátor systémové chyby, který je červený, může ukazovat na některý z následujících problémů:
+- Selhání ventilátoru
+- Teplota procesoru je vysoká.
+- Teplota základní desky je vysoká.
+- Duální chyba modulu vložené paměti (DIMM) Chyba při připojování kódu (ECC)
+
+Proveďte tyto kroky:
+1. Ověřte, zda ventilátor funguje.
+2. Přesuňte zařízení do umístění s větším tokem.
+
+Pokud je indikátor chyby systému stále zapnutý, obraťte se na [Podpora Microsoftu](data-box-disk-contact-microsoft-support.md).
+
+### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why"></a>Otázka: Nemám přístup k heslu pro odemčení Data Boxu na webu Azure Portal. Proč?
+A. Pokud nemůžete získat přístup k heslu pro odemknutí v Azure Portal, ověřte oprávnění ve vašem předplatném a účtu úložiště. Ověřte, že na úrovni skupiny prostředků máte oprávnění přispěvatele nebo vlastníka. Abyste mohli zobrazit přihlašovací údaje pro přístup, musíte mít aspoň Data Box oprávnění role operátora.
 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Otázka: Podporuje se Data Box konfigurace kanálu portů? Jak se funkce MPIO týká?
-A. V Data Box nepodporujeme konfiguraci kanálu portů, konfiguraci funkce Multipath v/v (MPIO) nebo konfiguraci sítě vLAN.
+A. Na Data Box nepodporujeme konfiguraci kanálu portů, konfiguraci funkce Multipath v/v (MPIO) nebo konfiguraci sítě vLAN.
 
 ## <a name="track-status"></a>Sledování stavu
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Otázka: Jak můžu sledovat Data Box od okamžiku vystavení objednávky až do zpětného odeslání zařízení? 
-A.  Stav objednávky Data Boxu můžete sledovat na webu Azure Portal. Při vytváření objednávky se zobrazuje také výzva k zadání e-mailové adresy pro oznámení. Pokud jste tuto adresu zadali, budete prostřednictvím e-mailu dostávat oznámení o všech změnách stavu dané objednávky. Další informace o [konfiguraci e-mailových adres pro oznámení](data-box-portal-ui-admin.md#edit-notification-details).
+A.  Stav objednávky Data Boxu můžete sledovat na webu Azure Portal. Při vytváření objednávky budete vyzváni k zadání e-mailové zprávy s oznámením. Pokud jste ho zadali, budete upozorněni e-mailem o všech změnách stavu objednávky. Další informace o [konfiguraci e-mailových adres pro oznámení](data-box-portal-ui-admin.md#edit-notification-details).
 
 ### <a name="q-how-do-i-return-the-device"></a>Otázka: Jak můžu zařízení vrátit? 
-A.  Microsoft zobrazuje expediční štítek na displeji s elektronickým inkoustem. Pokud se expediční štítek na displeji s elektronickým inkoustem nezobrazuje, přejděte na **Přehled > Stáhnout expediční štítek**. Stáhněte a vytiskněte tento štítek, vložte ho do průhledného plastového obalu na zařízení a předejte zařízení svému dopravci. 
+A.  Microsoft zobrazuje expediční štítek na displeji s elektronickým inkoustem. Pokud se expediční štítek nezobrazuje na displeji elektronického inkoustu, přečtěte si **přehled > stáhnout expediční štítek**. Stáhněte a vytiskněte popisek, vložte popisek do značky Clear plast na zařízení a uvolněte ho v umístění přepravce. 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Otázka: Přišlo mi e-mailem oznámení, že zařízení dorazilo do datacentra Azure. Jak zjistím, jestli probíhá nahrávání dat?
 A. Na webu Azure Portal přejděte k objednávce Data Boxu a pak přejděte na **Přehled**. Pokud se data začala nahrávat do Azure, zobrazí se v pravém podokně průběh kopírování. 
@@ -161,7 +204,7 @@ A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximáln
 A. Data Box má implementovaných několik bezpečnostní funkcí, kterými je zařízení zabezpečené během přepravy. Jsou to například pečetě, hardwarová a softwarová detekce nedovolené manipulace a heslo pro odemčení zařízení. Další informace najdete v článku o [zabezpečení a ochraně dat ve službě Azure Data Box](data-box-security.md).
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box"></a>Otázka: Jak zkopíruji data do Data Boxu? 
-A.  Pokud používáte klienta SMB, můžete k přetažení a zkopírování dat do zařízení použít SMB kopírovací nástroj, jako je Robocopy, Diskboss nebo Průzkumník souborů Windows. 
+A.  Pokud používáte klienta SMB, můžete ke zkopírování dat do zařízení použít nástroj pro kopírování SMB, jako `Robocopy` je, `Diskboss` nebo dokonce přetahování pomocí nástroje Windows File Explorer. 
 
 Pokud používáte klienta NSF, můžete použít [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/). 
 
@@ -170,10 +213,10 @@ Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o přesných používaných příkazech najdete v [kurzu o kopírování dat do služby Azure Data Box a jejich ověření](data-box-deploy-copy-data.md).
+- Použijte pro kopírování dat více streamů. Například s pomocí `Robocopy` použijte možnost s více vlákny. Další informace o přesných používaných příkazech najdete v [kurzu o kopírování dat do služby Azure Data Box a jejich ověření](data-box-deploy-copy-data.md).
 - Použijte více relací.
-- Místo kopírování dat přes sdílenou síťovou složku (při kterém můžete být omezeni rychlostí sítě) zajistěte, aby byla data přímo na počítači, ke kterému je zařízení Data Box připojené.
-- Proveďte srovnávací testy výkonu počítače, který se používá ke kopírování dat. Pro srovnávací testy výkonu hardwaru serveru si stáhněte a používejte [nástroj Bluestop FIO](https://ci.appveyor.com/project/axboe/fio). Vyberte nejnovější sestavení x86 nebo x64, vyberte kartu **artefakty** a Stáhněte soubor MSI.
+- Místo kopírování přes sdílenou síťovou složku (kde rychlosti sítě může omezit rychlost kopírování) uložte data místně na počítači, ke kterému je Data Box připojená.
+- Proveďte srovnávací testy výkonu počítače, který se používá ke kopírování dat. Stáhněte a použijte [ `Bluestop` `FIO` Nástroj](https://ci.appveyor.com/project/axboe/fio) k testování výkonu hardwaru serveru. Vyberte nejnovější sestavení x86 nebo x64, vyberte kartu **artefakty** a Stáhněte soubor MSI.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -184,15 +227,15 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Otázka: Můžu se zařízením Data Box používat více účtů úložiště?
-A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro obecné účely, klasických úložišť nebo úložišť objektů blob. Podporují se horké i studené objekty blob. 
+A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro obecné účely, klasických úložišť nebo úložišť objektů blob. Podporují se horké i studené objekty blob.
 
 
 ## <a name="ship-device"></a>Dodání zařízení
 
 <!--### Q. How do I schedule a pickup for my Data Box?--> 
 
-### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení přišlo, ale zdá se být poškozené. Co bych měl/a dělat?
-A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způsobem manipuloval, nepoužívejte ho. [Obraťte se na podporu Microsoftu](data-box-disk-contact-microsoft-support.md) a co nejdříve zařízení vraťte. Můžete také vystavit novou objednávku náhradního zařízení Data Box. V uvedeném případě vám náhradní zařízení nebudeme účtovat.
+### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení bylo doručeno, ale zdá se, že zařízení je poškozené. Co bych měl/a dělat?
+A. Pokud vaše zařízení dorazilo do poškozeného nebo se nejedná o manipulaci, zařízení nepoužívejte. [Kontaktujte podpora Microsoftu](data-box-disk-contact-microsoft-support.md) a vraťte zařízení co nejrychleji. Můžete také vystavit novou objednávku náhradního zařízení Data Box. V takovém případě se vám nebude účtovat náhrada za náhradní zařízení.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Otázka: Můžu Data Box objednávku vybrat? Můžu Data Box vrátit přes dopravce, který zvolím?
 A. Ano. Microsoft také nabízí samostatně spravované dodávky. Při umísťování Data Box pořadí můžete zvolit možnost samostatně spravovaná dodávka. Další informace najdete v tématu [osobní spravované odeslání pro data box](data-box-portal-customer-managed-shipping.md).
@@ -201,10 +244,10 @@ A. Ano. Microsoft také nabízí samostatně spravované dodávky. Při umísťo
 A. Všechna Data Box zařízení se dodávají v rámci stejné země nebo oblasti jako jejich cíl a nebudou se předávat mezi žádné mezinárodní hranice. Jedinou výjimkou jsou objednávky v Evropské unii (EU), kde se můžou zařízení dodávat do a z libovolné země nebo oblasti EU. To platí jak pro Data Box, tak pro Data Box Heavyá zařízení.
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Otázka: Objednal (a) jsem Data Box v USA – východ, ale dostal jsem zařízení, které bylo odesláno z umístění v USA – západ. Kam se má zařízení vrátit?
-A. Snažíme se získat Data Box zařízení co nejrychleji. Podáváme prioritu dodávky z datového centra nejbližšího k vašemu umístění účtu úložiště, ale odešlete zařízení z libovolného datacentra Azure, které má dostupný inventář. Váš Data Box by měl být vrácen do stejného umístění, ze kterého byl dodán, jak je zobrazeno v expedičním štítku.
+A. Snažíme se co nejrychleji získat Data Box zařízení. Podáváme prioritu dodávky z datového centra nejbližšího k vašemu umístění účtu úložiště, ale odešlete zařízení z libovolného datacentra Azure, které má dostupný inventář. Váš Data Box by měl být vrácen do stejného umístění, ze kterého byl dodán, jak je zobrazeno v expedičním štítku.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co bych měl/a dělat?
-A. Pokud se na displeji s elektronickým inkoustem nezobrazuje štítek pro vrácení zásilky, postupujte takto:
+A. Pokud zobrazení E-Ink nezobrazuje popisek dodávky zpět, proveďte následující kroky:
 - Odstraňte starý expediční štítek a všechny ostatní štítky, které se týkají minulé přepravy.
 - Na webu Azure Portal přejděte ke své objednávce. Přejděte na **Přehled** > **Stáhnout expediční štítek**. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
 - Vytiskněte expediční štítek a vložte ho do průhledného plastového obalu, který je připevněný k zařízení. 
@@ -216,11 +259,11 @@ A.  Během přepravy jsou data v zařízení Data Box chráněná následující
  - Zařízení je zamčené a k jeho odemčení je potřeba zadat heslo, aby byl možný přístup k datům.
 Další informace najdete v části o [bezpečnostních funkcích zařízení Data Box](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Otázka: Dokončil (a) jsem přípravu na expedici pro svůj způsob importu a vypnutí zařízení. Můžeme do Data Boxu přidat další data?
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>Otázka: Dokončil (a) jsem přípravu na expedici pro svůj způsob importu a vypnutí zařízení. Můžu ještě do Data Box přidat další data?
 A. Ano. Zařízení můžete znovu zapnout a přidat do něj další data. Až data nakopírujete, budete muset znovu spustit **přípravu k odeslání**.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Otázka: Zobrazil jsem jsem moje zařízení a nespouští se? Návody zařízení odeslat zpátky?
-A. Pokud se vaše zařízení nespouští, v Azure Portal pokračujte na objednávku. Stáhněte si expediční štítek a přihlaste se k němu na zařízení. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
+A. Pokud se vaše zařízení nespouští, v Azure Portal pokračujte na objednávku. Stáhněte si expediční štítek a připojte ho k zařízení. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání
 
@@ -228,21 +271,21 @@ A. Pokud se vaše zařízení nespouští, v Azure Portal pokračujte na objedn�
 A.  Jakmile se u objednávky zařízení **Data Copy** zobrazí stav **dokončeno**, měli byste mít přístup ke svým datům.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Otázka: Kde v Azure se moje data po nahrání nachází?
-A.  Po zkopírování dat do Data Box v závislosti na tom, jestli data blokují objekty blob nebo objekty blob stránky nebo soubory Azure, se data nahrají na jednu z následujících cest v účtu Azure Storage.
+A.  Po zkopírování dat do Data Box v závislosti na tom, jestli data blokují objekty blob nebo objekty blob stránky nebo soubory Azure, se data nahrají na jednu z následujících cest v účtu Azure Storage:
 - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
 - `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
-  Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
+  Alternativně můžete přejít na účet služby Azure Storage v Azure Portal a přejít tam.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Otázka: Zjistil(a) jsem, že jsem nedodržel(a) požadavky Azure na názvy kontejnerů. Znamená to, že nahrání mých dat do Azure se nezdaří?
-A.  Pokud názvy kontejnerů obsahují velké písmeno, pak jsou tyto názvy automaticky převedeny na malá písmena. Pokud názvy nevyhovují z jiných důvodů (speciální znaky, jiné jazyky atd.), nahrání se nepodaří. Další informace o osvědčených postupech při pojmenovávání sdílených složek, kontejnerů a souborů najdete zde:
-- [Pojmenování sdílených složek a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Zvyklosti u objektů blob bloku a objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+A.  Pokud mají názvy kontejnerů velká písmena, budou tyto názvy automaticky převedeny na malá písmena. Pokud názvy nevyhovují z jiných důvodů (speciální znaky, jiné jazyky atd.), nahrání se nepodaří. Další informace o pojmenování sdílených složek, kontejnerů a souborů najdete v těchto pokynech:
+- [Pojmenování sdílených složek a odkazování na ně](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Zvyklosti u objektů blob bloku a objektů blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Otázka: Jak ověřím data, která zkopíruji do zařízení Data Box?
 A.  Když po zkopírování dat spustíte funkci **Připravit k odeslání**, data se ověří. Při ověřování generuje Data Box seznam souborů a kontrolní součty dat. Můžete si stáhnout seznam souborů a ověřit seznam souborů ve zdrojových datech. Další informace najdete v popisu [přípravy k odeslání](data-box-deploy-picked-up.md#prepare-to-ship).
 
-### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>Otázka: Co se stane s mými daty po vrácení Data Boxu?
+### <a name="q-what-happens-to-my-data-after-i-return-the-data-box"></a>Otázka: Co se stane s daty po vrácení Data Box?
 A.  Jakmile se data zkopírují do Azure, budou z disků zařízení Data Box bezpečně vymazána podle pokynů normy NIST SP 800-88 Revision 1. Další informace najdete v části o [vymazání dat ze zařízení Data Box](data-box-deploy-picked-up.md#erasure-of-data-from-data-box).
 
 ## <a name="audit-report"></a>Sestava auditování
@@ -264,9 +307,9 @@ A.  Řetězec opatrovnictví podporují následující sestavy:
 A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v historii objednávky Data Boxu. Tuto sestavu máte k dispozici po vrácení zařízení do datacentra Azure a vymazání dat z disků zařízení. Pro okamžité potřeby můžete také přejít přímo na web dopravce s číslem sledování objednávky a získat informace o sledování.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Můžu dopravit Data Box do datacentra Azure? 
-A.  Ne. Pokud jste zvolili spravované odeslání Microsoftem, nemůžete data přenést. V současné době Azure datacentra nepřijímá doručování Data Box od zákazníků nebo od jiných dopravců než UPS.
+A.  No. Pokud jste zvolili spravované odeslání Microsoftem, nemůžete data přenést. Datacenter Azure v současné době nepřijímá doručování Data Box od zákazníků nebo od jiných dopravců než ze zdroje UPS.
 
-Pokud jste zvolili možnost samostatně spravovat, můžete Data Box z datového centra Azure vybrat nebo odpustit.
+Pokud jste zvolili samoobslužné expedici, můžete Data Box z datového centra Azure vybrat nebo odpustit.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656236"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993179"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Zvýšení zabezpečení pro volání vlastních rozhraní API z Azure Logic Apps
 
@@ -53,14 +53,14 @@ Vaše aplikace logiky používá tuto identitu aplikace Azure AD k ověřování
    > [!TIP]
    > Chcete-li přepnout adresáře, zvolte svůj profil a vyberte jiný adresář. Případně vyberte možnost **Přehled**  >  **adresáře Switch**.
 
-3. V nabídce adresář v části **Spravovat**vyberte **Registrace aplikací**  >  **Nová registrace aplikace**.
+3. V nabídce adresář v části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace aplikace**.
 
    > [!TIP]
    > Ve výchozím nastavení zobrazuje seznam registrací aplikací všechny registrace aplikací ve vašem adresáři. Chcete-li zobrazit pouze registrace aplikací, vyberte vedle pole hledání možnost **Moje aplikace**. 
 
    ![Vytvoření nové registrace aplikace](./media/logic-apps-custom-api-authentication/new-app-registration-azure-portal.png)
 
-4. Přiřaďte vaší aplikaci název, ponechte **Typ aplikace** nastavenou na **Webová aplikace/rozhraní API**, zadejte jedinečný řetězec formátovaný jako doména pro **přihlašovací adresu URL**a klikněte na **vytvořit**.
+4. Přiřaďte vaší aplikaci název, ponechte **Typ aplikace** nastavenou na **Webová aplikace/rozhraní API**, zadejte jedinečný řetězec formátovaný jako doména pro **přihlašovací adresu URL** a klikněte na **vytvořit**.
 
    ![Zadejte název a přihlašovací adresu URL pro identitu aplikace.](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
 
@@ -74,13 +74,13 @@ Vaše aplikace logiky používá tuto identitu aplikace Azure AD k ověřování
 
 6. Pokud není nastavení identity vaší aplikace viditelné, vyberte **Nastavení** nebo **všechna nastavení**.
 
-7. V části **přístup k rozhraní API**vyberte **klíče**. V části **Popis**zadejte název klíče. Pod položkou **konec platnosti**vyberte dobu trvání pro svůj klíč.
+7. V části **přístup k rozhraní API** vyberte **klíče**. V části **Popis** zadejte název klíče. Pod položkou **konec platnosti** vyberte dobu trvání pro svůj klíč.
 
    Klíč, který vytváříte, funguje jako klíčová slova pro identitu aplikace nebo heslo pro vaši aplikaci logiky.
 
    ![Vytvořit klíč pro identitu aplikace logiky](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
 
-8. Na panelu nástrojů klikněte na tlačítko **Uložit**. Pod položkou **hodnota**se teď klíč zobrazuje. 
+8. Na panelu nástrojů klikněte na tlačítko **Uložit**. Pod položkou **hodnota** se teď klíč zobrazuje. 
 **Nezapomeňte si klíč zkopírovat a uložit** pro pozdější použití, protože při opuštění stránky **klíče** je klíč skrytý.
 
    Když nakonfigurujete aplikaci logiky v části 3, zadáte tento klíč jako tajný klíč nebo heslo.
@@ -103,7 +103,7 @@ Tuto úlohu můžete provést prostřednictvím Azure Resource Manager s využit
 
 1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
-1. Nezapomeňte zkopírovat **ID tenanta** (GUID vašeho TENANTA Azure AD), **ID aplikace**a heslo, které jste použili.
+1. Nezapomeňte zkopírovat **ID tenanta** (GUID vašeho TENANTA Azure AD), **ID aplikace** a heslo, které jste použili.
 
 Další informace najdete v tématu [Vytvoření instančního objektu s prostředím PowerShell pro přístup k prostředkům](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -115,7 +115,7 @@ Pokud je vaše webová aplikace nebo aplikace API už nasazená, můžete zapnou
 
 1. V [Azure Portal](https://portal.azure.com "https://portal.azure.com")vyhledejte a vyberte webovou aplikaci nebo aplikaci API. 
 
-2. V části **Nastavení**vyberte **ověřování/autorizace**. V části **ověřování App Service**zapněte **ověřování.** V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
+2. V části **Nastavení** vyberte **ověřování/autorizace**. V části **ověřování App Service** zapněte **ověřování.** V části **Zprostředkovatelé ověřování** vyberte **Azure Active Directory**.
 
    ![Zapnout ověřování](./media/logic-apps-custom-api-authentication/custom-web-api-app-authentication.png)
 
@@ -129,20 +129,20 @@ Teď musíte najít ID klienta a ID tenanta pro identitu aplikace, která je př
 
 **Vyhledejte ID klienta identity aplikace a ID tenanta webové aplikace nebo aplikace API v Azure Portal**
 
-1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**. 
+1. V části **Zprostředkovatelé ověřování** vyberte **Azure Active Directory**. 
 
    ![Volba možnosti Azure Active Directory](./media/logic-apps-custom-api-authentication/custom-api-app-identity-client-id-tenant-id.png)
 
 2. Na stránce **nastavení Azure Active Directory** nastavte **režim správy** na **Upřesnit**.
 
-3. Zkopírujte **ID klienta**a uložte tento identifikátor GUID pro použití v části 3.
+3. Zkopírujte **ID klienta** a uložte tento identifikátor GUID pro použití v části 3.
 
    > [!TIP] 
    > Pokud se **ID klienta** a **Adresa URL vystavitele** nezobrazí, zkuste aktualizovat Azure Portal a opakujte krok 1.
 
-4. V části **Adresa URL vystavitele**zkopírujte a uložte jenom identifikátor GUID pro část 3. V případě potřeby můžete také použít tento identifikátor GUID v šabloně nasazení webové aplikace nebo aplikace API.
+4. V části **Adresa URL vystavitele** zkopírujte a uložte jenom identifikátor GUID pro část 3. V případě potřeby můžete také použít tento identifikátor GUID v šabloně nasazení webové aplikace nebo aplikace API.
 
-   Toto GUID je váš konkrétní identifikátor GUID vašeho tenanta ("ID tenanta") a měl by se zobrazovat v této adrese URL:`https://sts.windows.net/{GUID}`
+   Toto GUID je váš konkrétní identifikátor GUID vašeho tenanta ("ID tenanta") a měl by se zobrazovat v této adrese URL: `https://sts.windows.net/{GUID}`
 
 5. Bez uložení změn zavřete stránku **nastavení Azure Active Directory** .
 
@@ -206,7 +206,7 @@ Otevřete definici aplikace logiky v zobrazení kódu, vyhledejte část definic
 | typ | Yes | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth` . | 
 |||| 
 
-Příklad:
+Například:
 
 ``` json
 {
@@ -250,7 +250,7 @@ V části **autorizace** zahrňte tyto vlastnosti:
 
 | Vlastnost | Povinné | Popis |
 | -------- | -------- | ----------- |
-| `type` | Yes | Typ ověřování. Pro klientské certifikáty TLS/SSL musí být hodnota `ClientCertificate` . |
+| `type` | Ano | Typ ověřování. Pro klientské certifikáty TLS/SSL musí být hodnota `ClientCertificate` . |
 | `password` | No | Heslo pro přístup k klientskému certifikátu (soubor PFX) |
 | `pfx` | Yes | Obsah klientského certifikátu kódovaný v Base64 (soubor PFX) |
 ||||
@@ -274,7 +274,7 @@ V části **autorizace** zahrňte tyto vlastnosti:
 | Vlastnost | Povinné | Popis | 
 | -------- | -------- | ----------- | 
 | typ | Yes | Typ ověřování, který chcete použít. Pro základní ověřování musí být hodnota `Basic` . | 
-| uživatelské jméno | Yes | Uživatelské jméno, které chcete použít pro ověřování. | 
+| username | Yes | Uživatelské jméno, které chcete použít pro ověřování. | 
 | heslo | Yes | Heslo, které chcete použít pro ověřování. | 
 |||| 
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 02/01/2021
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49b0df3e750d4d23cb6a64f3f7266613fd2f2981
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ad8f2d150c3cf17c4b24c6dc92188be9017dcfa9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501827"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666001"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Konfigurace předvolby směrování pro virtuální počítač pomocí Azure CLI
 
@@ -26,15 +26,6 @@ V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování pro vir
 
 V tomto článku se dozvíte, jak vytvořit virtuální počítač s veřejnou IP adresou, která je nastavená na směrování provozu přes veřejný Internet pomocí Azure CLI.
 
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="register-the-feature-for-your-subscription"></a>Registrace funkce pro vaše předplatné
-Funkce předvolby směrování je aktuálně ve verzi Preview. Zaregistrujte funkci pro vaše předplatné následujícím způsobem:
-```azurecli
-az feature register --namespace Microsoft.Network --name AllowRoutingPreferenceFeature
-```
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `az login` .
 2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
@@ -63,7 +54,7 @@ Než nasadíte virtuální počítač, musíte vytvořit podpůrné síťové pr
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příchozí a odchozí komunikaci ve vaší virtuální síti pomocí [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) .
+Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příchozí a odchozí komunikaci ve vaší virtuální síti pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) .
 
 ```azurecli
 az network nsg create \
@@ -74,7 +65,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). Následující příklad vytvoří virtuální síť s názvem *myVNET* s podsítěmi *mySubNet*:
+Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Následující příklad vytvoří virtuální síť s názvem *myVNET* s podsítěmi *mySubNet*:
 
 ```azurecli
 # Create a virtual network
@@ -94,7 +85,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>Vytvoření síťové karty
 
-Vytvořte virtuální síťovou kartu pro virtuální počítač pomocí [AZ Network nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create). Následující příklad vytvoří virtuální síťovou kartu, která bude připojena k virtuálnímu počítači.
+Vytvořte virtuální síťovou kartu pro virtuální počítač pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create). Následující příklad vytvoří virtuální síťovou kartu, která bude připojena k virtuálnímu počítači.
 
 ```azurecli-interactive
 # Create a NIC
@@ -110,7 +101,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří virtuální počítač s Windows serverem 2019 a požadované součásti virtuální sítě, pokud ještě neexistují.
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Následující příklad vytvoří virtuální počítač s Windows serverem 2019 a požadované součásti virtuální sítě, pokud ještě neexistují.
 
 ```azurecli
 az vm create \
@@ -133,5 +124,5 @@ az group delete --name myResourceGroup --yes
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [předvolbách směrování ve veřejných IP adresách](routing-preference-overview.md).
-- Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure.
+- Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure.
 - Přečtěte si další informace o [nastavení veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).

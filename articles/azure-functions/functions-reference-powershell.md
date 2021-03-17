@@ -3,14 +3,14 @@ title: Referenční příručka pro vývojáře PowerShellu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 author: eamonoreilly
 ms.topic: conceptual
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642210"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936783"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -20,7 +20,7 @@ Funkce PowerShellu Azure (Function) je reprezentovaná jako PowerShellový skrip
 
 Podobně jako u jiných druhů funkcí mají funkce skriptu PowerShellu parametry, které odpovídají názvům všech vstupních vazeb definovaných v `function.json` souboru. `TriggerMetadata`Předává se i parametr, který obsahuje další informace o triggeru, který tuto funkci spustil.
 
-V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) .
+V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](./create-first-function-vs-code-powershell.md) .
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -128,7 +128,7 @@ Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
 | Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
 | **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
@@ -143,9 +143,9 @@ Podporovány jsou i tyto společné parametry:
 * `PipelineVariable`
 * `OutVariable` 
 
-Další informace najdete v tématu [o CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu [o CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Příklad push-OutputBinding: odpovědi HTTP
+#### <a name="push-outputbinding-example-http-responses"></a>Příklad Push-OutputBinding: odpovědi HTTP
 
 Aktivační událost protokolu HTTP vrátí odpověď pomocí výstupní vazby s názvem `response` . V následujícím příkladu má výstupní vazba `response` hodnotu "výstupní #1":
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad push-OutputBinding: Queue Output Binding
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad Push-OutputBinding: Queue Output Binding
 
 `Push-OutputBinding` slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue-output.md). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
 
@@ -233,7 +233,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 
 | Úroveň protokolování funkcí | Rutina protokolování |
 | ------------- | -------------- |
-| Chyba | **`Write-Error`** |
+| Chybová | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informační | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informační | Zapisuje do protokolování na úrovni _informací_ . |
 | Ladění | **`Write-Debug`** |
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 V prostředí PowerShell existuje koncept profilu PowerShellu. Pokud nejste obeznámeni s profily PowerShellu, přečtěte si téma [o profilech](/powershell/module/microsoft.powershell.core/about/about_profiles).
 
-Ve funkcích PowerShellu se skript profilu spustí při spuštění aplikace Function App. Aplikace Function App se spustí při prvním nasazení a po nečinnosti (při[studeném startu](#cold-start)).
+Ve funkcích PowerShellu se skript profilu spustí jednou za instanci pracovního procesu PowerShellu v aplikaci při prvním nasazení a po nečinnosti ([spuštění](#cold-start)po ukončení). Pokud je souběžnost povolená nastavením hodnoty [PSWorkerInProcConcurrencyUpperBound](#concurrency) , skript profilu se spustí pro každé vytvořené prostředí runspace.
 
 Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visual Studio Code a Azure Functions Core Tools, vytvoří `profile.ps1` se pro vás výchozí hodnota. Výchozí profil se udržuje [v úložišti GitHub Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) a obsahuje:
 
@@ -384,14 +384,60 @@ Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visua
 
 ## <a name="powershell-versions"></a>Verze PowerShellu
 
-V následující tabulce jsou uvedeny verze prostředí PowerShell podporované každou hlavní verzí modulu runtime functions a požadovaná verze rozhraní .NET:
+V následující tabulce jsou uvedeny verze prostředí PowerShell, které jsou k dispozici pro každou hlavní verzi modulu runtime functions a požadovaná verze rozhraní .NET:
 
 | Verze funkcí | Verze prostředí PowerShell                               | Verze .NET  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Aktuální verzi můžete zobrazit pomocí tisku `$PSVersionTable` z libovolné funkce.
+
+### <a name="running-local-on-a-specific-version"></a>Místní spuštění na konkrétní verzi
+
+Při místním spuštění Azure Functions modul runtime standardně používá PowerShell Core 6. Chcete-li místo toho použít prostředí PowerShell 7 při místním spuštění, je nutné přidat nastavení `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` do `Values` pole v local.setting.jssouboru v kořenovém adresáři projektu. Při místním spuštění v prostředí PowerShell 7 vaše local.settings.jsv souboru vypadá jako v následujícím příkladu: 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>Změna verze prostředí PowerShell
+
+Vaše aplikace Function App musí běžet na verzi 3. x, aby bylo možné upgradovat z PowerShellu Core 6 na PowerShell 7. Další informace o tom, jak to provést, najdete v tématu [zobrazení a aktualizace aktuální verze modulu runtime](set-runtime-version.md#view-and-update-the-current-runtime-version).
+
+Pomocí následujících kroků můžete změnit verzi prostředí PowerShell, kterou používá aplikace Function App. To můžete provést buď v Azure Portal, nebo pomocí prostředí PowerShell.
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace Function App.
+
+1. V části **Nastavení** vyberte **Konfigurace**. Na kartě **Obecné nastavení** vyhledejte **verzi prostředí PowerShell**. 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="Zvolit verzi prostředí PowerShell, kterou používá aplikace Function App"::: 
+
+1. Zvolte požadovanou **verzi PowerShell Core** a vyberte **Uložit**. Pokud se zobrazí upozornění na nedokončené restartování, vyberte **pokračovat**. Aplikace Function App se restartuje ve zvolené verzi prostředí PowerShell. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Spuštěním následujícího skriptu změňte verzi prostředí PowerShell: 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+Nahraďte `<SUBSCRIPTION_ID>` , `<RESOURCE_GROUP>` a `<FUNCTION_APP>` číslem ID vašeho předplatného Azure, název vaší skupiny prostředků a aplikace Function App (v uvedeném pořadí).  Nahraďte také `<VERSION>` buď `~6` nebo `~7` . Můžete ověřit aktualizovanou hodnotu `powerShellVersion` nastavení v `Properties` vrácené zatřiďovací tabulce. 
+
+---
+
+Aplikace Function App se restartuje po provedení změny v konfiguraci.
 
 ## <a name="dependency-management"></a>Správa závislostí
 
@@ -417,7 +463,10 @@ Když vytvoříte nový projekt PowerShell Functions, Správa závislostí je ve
 Když aktualizujete soubor requirements.psd1, po restartování se nainstalují aktualizované moduly.
 
 > [!NOTE]
-> Spravované závislosti vyžadují přístup k www.powershellgallery.com, aby bylo možné stahovat moduly. Pokud spouštíte místně, ujistěte se, že modul runtime má k této adrese URL přístup přidáním požadovaných pravidel brány firewall. 
+> Spravované závislosti vyžadují přístup k www.powershellgallery.com, aby bylo možné stahovat moduly. Pokud spouštíte místně, ujistěte se, že modul runtime má k této adrese URL přístup přidáním požadovaných pravidel brány firewall.
+
+> [!NOTE]
+> Spravované závislosti aktuálně nepodporují moduly, které vyžadují, aby uživatel přijal licenci, a to buď prostřednictvím interaktivního přijetí licence, nebo zadáním `-AcceptLicense` přepínače při vyvolání `Install-Module` .
 
 Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci nástroje `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí přibližně v `MDNewSnapshotCheckPeriod` .
 
@@ -435,6 +484,7 @@ Ve funkcích `PSModulePath` obsahuje dvě cesty:
 
 * `Modules`Složka, která existuje v kořenu aplikace Function App.
 * Cesta ke `Modules` složce, kterou řídí pracovní proces jazyka PowerShell.
+
 
 ### <a name="function-app-level-modules-folder"></a>Složka na úrovni aplikace Function App `Modules`
 
@@ -502,17 +552,22 @@ Ve výchozím nastavení může běhový modul PowerShellu funkcí zpracovat pou
 * Při pokusu o zpracování velkého počtu vyvolání současně.
 * Pokud máte funkce, které vyvolávají jiné funkce v rámci stejné aplikace Function App.
 
-Toto chování můžete změnit nastavením následující proměnné prostředí na celočíselnou hodnotu:
+Existuje několik modelů souběžnosti, které byste mohli prozkoumat v závislosti na typu úlohy:
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* Zvýšit ```FUNCTIONS_WORKER_PROCESS_COUNT``` . To umožňuje zpracování volání funkcí ve více procesech v rámci stejné instance, což přináší určité nároky na procesor a paměť. Obecně platí, že funkce vázané na vstupně-výstupní operace nebudou z této režie ovlivněny. V případě funkcí vázaných na procesor může být dopad významný.
 
-Tuto proměnnou prostředí nastavíte v [nastavení aplikace](functions-app-settings.md) Function App.
+* Zvyšte ```PSWorkerInProcConcurrencyUpperBound``` hodnotu nastavení aplikace. To umožňuje vytvoření více prostředí runspace v rámci stejného procesu, což významně snižuje nároky na procesor a paměť.
+
+Tyto proměnné prostředí nastavíte v [nastavení aplikace](functions-app-settings.md) vaší aplikace Function App.
+
+V závislosti na vašem případu použití může Durable Functions významně zlepšit škálovatelnost. Další informace najdete v tématu [Durable Functions vzorech aplikací](./durable/durable-functions-overview.md?tabs=powershell#application-patterns).
+
+>[!NOTE]
+> Je možné, že se "požadavky zařadí do fronty z důvodu žádného dostupného upozornění prostředí runspace". Upozorňujeme, že se nejedná o chybu. Zpráva oznamuje, že požadavky se zařadí do fronty a budou zpracovány po dokončení předchozích požadavků.
 
 ### <a name="considerations-for-using-concurrency"></a>Předpoklady pro použití souběžnosti
 
-PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Vytvořené množství prostředí runspace se bude shodovat s nastavením aplikace PSWorkerInProcConcurrencyUpperBound. Propustnost bude mít vliv na množství CPU a paměti, které jsou k dispozici ve vybraném plánu.
+PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Vytvořené množství prostředí runspace se bude shodovat s ```PSWorkerInProcConcurrencyUpperBound``` nastavením aplikace. Propustnost bude mít vliv na množství CPU a paměti, které jsou k dispozici ve vybraném plánu.
 
 Azure PowerShell používá některé kontexty _na úrovni procesu_ a stav, které vám pomůžou ušetřit nadměrné typování. Pokud však zapnete souběžnost ve vaší aplikaci Function App a vyvoláte akce, které mění stav, můžete se zaměřit na konflikty časování. Tyto konflikty časování je obtížné ladit, protože jedno vyvolání spoléhá na určitý stav a druhé vyvolání změnilo stav.
 
@@ -594,11 +649,11 @@ Při práci s funkcemi PowerShellu si pamatujte na informace v následujících 
 
 ### <a name="cold-start"></a>Studený start
 
-Při vývoji Azure Functions v [modelu hostování bez serveru](functions-scale.md#consumption-plan)je to realita. *Studená Start* odkazuje na dobu, kterou aplikace Function App spustí pro zpracování žádosti. K studenému startu dochází častěji v plánu spotřeby, protože aplikace Function App se během období nečinnosti ukončí.
+Při vývoji Azure Functions v [modelu hostování bez serveru](consumption-plan.md)je to realita. *Studená Start* odkazuje na dobu, kterou aplikace Function App spustí pro zpracování žádosti. K studenému startu dochází častěji v plánu spotřeby, protože aplikace Function App se během období nečinnosti ukončí.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Místo použití použít modul sady `Install-Module`
 
-Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install-Module` ve vašem skriptu. Místo toho použijte `Save-Module` před publikováním, aby vaše funkce nemusela ztrácet čas stažením modulu. Pokud mají tyto funkce vliv na studená spuštění, zvažte nasazení aplikace Function App do [plánu App Service](functions-scale.md#app-service-plan) nastaveného na hodnotu *Always On* nebo [Premium](functions-scale.md#premium-plan).
+Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install-Module` ve vašem skriptu. Místo toho použijte `Save-Module` před publikováním, aby vaše funkce nemusela ztrácet čas stažením modulu. Pokud mají tyto funkce vliv na studená spuštění, zvažte nasazení aplikace Function App do [plánu App Service](dedicated-plan.md) nastaveného na hodnotu *Always On* nebo [Premium](functions-premium-plan.md).
 
 ## <a name="next-steps"></a>Další kroky
 

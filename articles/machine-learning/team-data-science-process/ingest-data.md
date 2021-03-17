@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46e911ad6bdf5a478d46e425f8700740ece56c6e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720533"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452666"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Načtení dat do prostředí úložiště pro analýzu
 
-Vědecké zpracování týmových dat vyžaduje, aby data byla v jednotlivých fázích ingestovaná nebo načtena do nejvhodnějšího způsobu. Cíle dat můžou zahrnovat Azure Blob Storage, databáze SQL Azure, SQL Server na virtuálních počítačích Azure, HDInsight (Hadoop), synapse Analytics a Azure Machine Learning. 
+Vědecké zpracování týmových dat vyžaduje, aby data byla v jednotlivých fázích ingestovaná nebo načtena do nejvhodnějšího způsobu. Cíle dat můžou zahrnovat Azure Blob Storage, databáze SQL Azure, SQL Server na virtuálním počítači Azure, HDInsight (Hadoop), Azure synapse Analytics a Azure Machine Learning. 
 
 Následující články popisují, jak ingestovat data do různých cílových prostředí, kde se data ukládají a zpracovávají.
 

@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239549"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093634"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho jsou data sestav služby Azure AD Store?
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte o zásadách uchovávání dat pro různé sestavy 
 | Edice Azure AD | Začátek shromažďování |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | Když se přihlásíte k předplatnému |
-| Azure AD Free| Při prvním otevření okna [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použití [rozhraní API pro vytváření sestav](https://aka.ms/aadreports)  |
+| Azure AD Free| Při prvním otevření okna [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použití [rozhraní API pro vytváření sestav](./overview-reports.md)  |
 
 ---
 
@@ -47,13 +47,7 @@ V tomto článku se dozvíte o zásadách uchovávání dat pro různé sestavy 
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak brzy můžu zobrazit data o aktivitách po získání licence na prémii?
 
-Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžitě zobrazit při upgradu. Pokud nemáte žádná data, bude trvat jeden nebo dva dny, než se data zobrazí v sestavách po upgradu na licenci Premium.
-
----
-
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
-
-Pokud jste nedávno přešli na verzi Premium (včetně zkušební verze), můžete nejdřív zobrazit data až 7 dní. Po shromáždění dat můžete zobrazit data za posledních 30 dní.
+Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžitě zobrazit při upgradu. Pokud nemáte žádná data, bude trvat až tři dny, než se data zobrazí v sestavách po upgradu na licenci Premium.
 
 ---
 
@@ -71,7 +65,7 @@ Pro bezpečnostní signály se proces shromažďování spustí, když se přihl
 | :--                    | :--           | :--                 | :--                 |
 | Protokoly auditu             | 7 dní        | 30 dní             | 30 dní             |
 | Přihlášení               | 7 dní        | 30 dní             | 30 dní             |
-| Využití Azure MFA        | 30 dní       | 30 dní             | 30 dní             |
+| Využití Azure AD MFA        | 30 dní       | 30 dní             | 30 dní             |
 
 Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí doba uchování, která je uvedená výše, směrováním do účtu služby Azure Storage pomocí Azure Monitor. Další informace najdete v tématu [archivace protokolů služby Azure AD do účtu služby Azure Storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
@@ -81,5 +75,11 @@ Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí
 | :--            | :--           | :--                 | :--                 |
 | Ohrožení uživatelé  | 7 dní        | 30 dní             | 90 dnů             |
 | Riziková přihlášení | 7 dní        | 30 dní             | 90 dnů             |
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
+
+**Ne**, nemůžete. Azure ukládá až sedm dní dat o aktivitách pro bezplatnou verzi. To znamená, že když přepnete ze bezplatné verze na verzi Premium, zobrazí se vám jenom 7 dní dat.
 
 ---

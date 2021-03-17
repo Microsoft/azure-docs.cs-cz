@@ -4,32 +4,32 @@ description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místn
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.custom: sfrev
-ms.openlocfilehash: 005a04833b95e893758fda768113801c5a4f6f66
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: sfrev, devx-track-azurepowershell
+ms.openlocfilehash: 4568b791db07eaa7a513c42066b22df04b24cb6d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207458"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010299"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
+> * [Mac OS X](service-fabric-get-started-mac.md)
 >
 >
 
 Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 
 Pro vývoj jsou podporovány tyto verze operačních systémů:
 
-* Windows 7
+* Windows 7
 * Windows 8 / Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
@@ -54,12 +54,6 @@ Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu M
 
 * [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
 
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Použití sady Visual Studio 2015 (vyžaduje Visual Studio 2015 Update 2 nebo novější)
-
-Pro sadu Visual Studio 2015 se nástroje Service Fabric nainstalují společně se sadou SDK a modulem runtime pomocí Instalace webové platformy:
-
-* [Instalace Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
-
 ### <a name="sdk-installation-only"></a>Jenom instalace sady SDK
 
 Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
@@ -68,8 +62,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 
 Aktuální verze jsou:
 
-* 4.1.456 SDK a nástroje pro Service Fabric
-* Service Fabric modulu runtime 7.1.456
+* 4.2.477 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 7.2.477
 
 Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 
@@ -94,8 +88,9 @@ Teď, když jste dokončili nastavení vývojového prostředí, můžete začí
 
 * [Naučte se vytvářet, nasazovat a spravovat aplikace.](service-fabric-tutorial-create-dotnet-app.md)
 * [Seznamte se s programovacími modely: Reliable Services a Reliable Actors](service-fabric-choose-framework.md)
-* [Prohlédněte si ukázky kódu Service Fabric na GitHubu](https://aka.ms/servicefabricsamples)
+* [Prohlédněte si ukázky kódu Service Fabric na GitHubu](/samples/browse/?products=azure)
 * [Vizualizujte cluster pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)
+* [Příprava linuxového vývojového prostředí ve Windows](service-fabric-local-linux-cluster-windows.md)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Stránka kampaně Service Fabric"

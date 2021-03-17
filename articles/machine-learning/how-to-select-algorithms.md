@@ -11,12 +11,12 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 5ad0d2c520d5347e36a9cead4ed6c5526d885ca4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308230"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak vybrat algoritmy pro Azure Machine Learning
 
@@ -30,12 +30,12 @@ Běžným dotazem je "který algoritmus strojového učení mám použít?" Vybr
 
 ## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Obchodní scénáře a Tahákový list s algoritmem Machine Learning
 
-[List tahák Algorithm](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri) vám pomůže s prvními aspekty: **co chcete s daty dělat**? Azure Machine Learning Na listu Machine Learning tahák Algorithm vyhledejte úkol, který chcete provést, a pak vyhledejte algoritmus [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri) pro řešení prediktivní analýzy. 
+[List tahák Algorithm](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) vám pomůže s prvními aspekty: **co chcete s daty dělat** ? Azure Machine Learning Na listu Machine Learning tahák Algorithm vyhledejte úkol, který chcete provést, a pak vyhledejte algoritmus [Azure Machine Learning Designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) pro řešení prediktivní analýzy. 
 
-Machine Learning Designer poskytuje komplexní portfolio algoritmů, jako je například více [tříd rozhodovací doménové struktury](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri), [systémy doporučení](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-recommender?WT.mc_id=docs-article-lazzeri), [regrese sítě neuronové](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri), [neuronové síť s více třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri)a [K – znamená clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri). Každý algoritmus je navržený tak, aby vyřešil jiný typ problému strojového učení. Úplný seznam spolu s dokumentací o tom, jak každý algoritmus funguje a jak vyladit parametry pro optimalizaci algoritmu, najdete v části [algoritmus návrháře Machine Learning a příručka k modulům](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) .
+Machine Learning Designer poskytuje komplexní portfolio algoritmů, jako je například více [tříd rozhodovací doménové struktury](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri), [systémy doporučení](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri), [regrese sítě neuronové](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri), [neuronové síť s více třídami](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)a [K – znamená clustering](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri). Každý algoritmus je navržený tak, aby vyřešil jiný typ problému strojového učení. Úplný seznam spolu s dokumentací o tom, jak každý algoritmus funguje a jak vyladit parametry pro optimalizaci algoritmu, najdete v části [algoritmus návrháře Machine Learning a příručka k modulům](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri) .
 
 > [!NOTE]
-> Pokud si chcete stáhnout list tahák pro algoritmus strojového učení, jděte do [listu tahák pro algoritmus Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
+> Pokud si chcete stáhnout list tahák pro algoritmus strojového učení, jděte do [listu tahák pro algoritmus Azure Machine Learning](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri).
 > 
 > 
 
@@ -50,24 +50,24 @@ Následující tabulka shrnuje některé nejdůležitější charakteristiky alg
 | **Algoritmus** | **Údajů** | **Doba trénování** | **Linearita** | **Parametry** | **Poznámky** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Rodina klasifikace** | | | | | |
-| [Logistická regrese dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré  |Rychlý |Ano |4 | |
-| [Rozhodovací doménová struktura se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
-| [Zvýšení rozhodovacího stromu se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
-| [Neuronové síť se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
-| [Průměrná hodnota Perceptron se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ano |4 | |
-| [Vektorový počítač podpory dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |5 |Vhodné pro velké sady funkcí |
-| [Mikrotřída logistické regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
-| [Více tříd – rozhodovací doménová struktura](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. |
-| [Více tříd pro rozhodovací strom s více třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
-| [Neuronové síť pro více tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
-| [Jedna a více tříd – All](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zobrazí vlastnosti vybrané metody dvě třídy. |
+| [Logistická regrese dvou tříd](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré  |Rychlý |Ano |4 | |
+| [Rozhodovací doménová struktura se dvěma třídami](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
+| [Zvýšení rozhodovacího stromu se dvěma třídami](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
+| [Neuronové síť se dvěma třídami](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [Průměrná hodnota Perceptron se dvěma třídami](./algorithm-module-reference/two-class-averaged-perceptron.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ano |4 | |
+| [Vektorový počítač podpory dvou tříd](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |5 |Vhodné pro velké sady funkcí |
+| [Mikrotřída logistické regrese](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
+| [Více tříd – rozhodovací doménová struktura](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. |
+| [Více tříd pro rozhodovací strom s více třídami](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
+| [Neuronové síť pro více tříd](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [Jedna a více tříd – All](./algorithm-module-reference/one-vs-all-multiclass.md?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zobrazí vlastnosti vybrané metody dvě třídy. |
 | **Řada regrese** | | | | | |
-| [Lineární regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
-| [Regrese rozhodovací doménové struktury](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Vynikající |Pokročilé |Ne |5 | |
-| [Zvýšila se regrese rozhodovacího stromu.](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
-| [Regrese sítě neuronové](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [Lineární regrese](./algorithm-module-reference/linear-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
+| [Regrese rozhodovací doménové struktury](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Vynikající |Pokročilé |Ne |5 | |
+| [Zvýšila se regrese rozhodovacího stromu.](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
+| [Regrese sítě neuronové](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
 | **Řada clusteringu** | | | | | |
-| [K-znamená clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ano |8 |Algoritmus clusteringu |
+| [K-znamená clustering](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ano |8 |Algoritmus clusteringu |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>Požadavky na scénář pro datové vědy
 
@@ -83,7 +83,7 @@ Proveďte volby a případné kompromisy pro následující požadavky:
 
 ## <a name="accuracy"></a>Údajů
 
-Přesnost v rámci strojového učení měří efektivitu modelu jako poměr skutečných výsledků do celkového počtu případů. V Návrháři Machine Learning [modul vyhodnocení modelu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri) vypočítá sadu standardních metrik vyhodnocení v oboru. Tento modul můžete použít k měření přesnosti trained model.
+Přesnost v rámci strojového učení měří efektivitu modelu jako poměr skutečných výsledků do celkového počtu případů. V Návrháři Machine Learning [modul vyhodnocení modelu](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri) vypočítá sadu standardních metrik vyhodnocení v oboru. Tento modul můžete použít k měření přesnosti trained model.
 
 Získání nejpřesnější možné odpovědi není vždy nutné. V závislosti na tom, co chcete použít pro, je někdy sblížení vhodné. Pokud je to tento případ, může být možné zkrátit čas zpracování tím, že se dokončí více přibližnými metodami. Přibližné metody také přirozeně zabraňují přebudování.
 
@@ -93,7 +93,7 @@ Existují tři způsoby použití modulu vyhodnocení modelu:
 - Generování skóre modelu, ale porovnání těchto skóre s skóre na rezervované sadě testů
 - Porovnání skóre dvou různých, ale souvisejících modelů, pomocí stejné sady dat
 
-Úplný seznam metrik a přístupů, pomocí kterých můžete vyhodnotit přesnost modelů strojového učení, najdete v tématu [vyhodnocení modulu modelu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri).
+Úplný seznam metrik a přístupů, pomocí kterých můžete vyhodnotit přesnost modelů strojového učení, najdete v tématu [vyhodnocení modulu modelu](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="training-time"></a>Doba trénování
 
@@ -105,9 +105,9 @@ V Návrháři Machine Learning je vytváření a používání modelu Machine Le
 
 1.  Nakonfigurujte model výběrem konkrétního typu algoritmu a následným definováním jeho parametrů nebo parametrů. 
 
-2.  Poskytněte datovou sadu, která je označena a má data kompatibilní s algoritmem. Připojte data i model k [modulu výuka modelu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/train-model?WT.mc_id=docs-article-lazzeri).
+2.  Poskytněte datovou sadu, která je označena a má data kompatibilní s algoritmem. Připojte data i model k [modulu výuka modelu](./algorithm-module-reference/train-model.md?WT.mc_id=docs-article-lazzeri).
 
-3.  Po dokončení školení použijte školicí model s jedním z [modulů bodování](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/score-model?WT.mc_id=docs-article-lazzeri) a předpovědi se na nová data.
+3.  Po dokončení školení použijte školicí model s jedním z [modulů bodování](./algorithm-module-reference/score-model.md?WT.mc_id=docs-article-lazzeri) a předpovědi se na nová data.
 
 ## <a name="linearity"></a>Linearita
 
@@ -115,25 +115,25 @@ Linearita v statistice a strojovém učení znamená, že mezi proměnnou a kons
 
 Spousta algoritmů strojového učení využívá linearitu. V Návrháři Azure Machine Learning jsou: 
 
-- [Mikrotřída logistické regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri)
-- [Logistická regrese dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri)
-- [Podpora vektorových počítačů](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)  
+- [Mikrotřída logistické regrese](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri)
+- [Logistická regrese dvou tříd](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri)
+- [Podpora vektorových počítačů](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri)  
 
 Algoritmy lineární regrese předpokládají, že trendy dat následují rovnou čáru. Tento předpoklad není pro některé problémy správný, ale u ostatních omezuje přesnost. Bez ohledu na jejich nevýhody se jako první strategii populární lineární algoritmy. Mají za následek algorithmically jednoduché a rychlé ke školení.
 
 ![Nelineární hranice třídy](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-***Nelineární hranice třídy***: *spoléhání se na algoritmus lineární klasifikace by způsobil nízkou přesnost.*
+**_Nelineární hranice třídy_* _: _Relying v algoritmu lineární klasifikace by výsledkem byla nízká přesnost. *
 
 ![Data s nelineárním trendem](./media/how-to-select-algorithms/nonlinear-trend.png)
 
-***Data s nelineárním trendem***: *použití metody lineární regrese by vygenerovala mnohem větší chybu, než je potřeba.*
+***Data s nelineárním trendem** _: _Using metoda lineární regrese by vygenerovala mnohem větší chybu, než je potřeba. *
 
 ## <a name="number-of-parameters"></a>Počet parametrů
 
 Parametry jsou ovladače, které vám pomohou při nastavování algoritmu zapnout datový vědecký pracovník. Jsou to čísla, která mají vliv na chování algoritmu, jako je odolnost proti chybám, počet iterací nebo možnosti mezi variantami, jak se algoritmus chová. Čas školení a přesnost algoritmu je někdy citlivý, aby bylo možné získat pouze ta správná nastavení. Algoritmy s velkým počtem parametrů obvykle vyžadují většinu zkušební verze a chybu, aby bylo možné najít dobrou kombinaci.
 
-Alternativně je v Návrháři Machine Learning [modul předparametrů modelu ladění](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/tune-model-hyperparameters?WT.mc_id=docs-article-lazzeri) : cílem tohoto modulu je určení optimálních parametrů pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
+Alternativně je v Návrháři Machine Learning [modul předparametrů modelu ladění](./algorithm-module-reference/tune-model-hyperparameters.md?WT.mc_id=docs-article-lazzeri) : cílem tohoto modulu je určení optimálních parametrů pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
 
 I když je to skvělý způsob, jak se ujistit, že jste přepnuli prostor parametrů, čas potřebný ke zvýšení modelu se zvyšuje exponenciálně s počtem parametrů. Je to, že má mnoho parametrů obvykle indikuje, že algoritmus má větší flexibilitu. Často dosahuje velmi dobré přesnosti, pokud můžete najít správnou kombinaci nastavení parametrů.
 
@@ -141,14 +141,14 @@ I když je to skvělý způsob, jak se ujistit, že jste přepnuli prostor param
 
 Ve službě Machine Learning je funkce kvantifikovaná proměnná pro jev, který se snažíte analyzovat. U určitých typů dat může být počet funkcí velmi velký v porovnání s počtem datových bodů. To je často případ s geneticky nebo textovými daty. 
 
-Velký počet funkcí může zpomalitovat některé algoritmy učení, takže školení se unfeasibly dlouhou dobu. [Podpora vektorových počítačů](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) je zvláště vhodná pro scénáře s vysokým počtem funkcí. Z tohoto důvodu byly použity v mnoha aplikacích z načítání informací do klasifikace textu a obrázku. Podporu vektorových počítačů lze použít pro úlohy klasifikace i regrese.
+Velký počet funkcí může zpomalitovat některé algoritmy učení, takže školení se unfeasibly dlouhou dobu. [Podpora vektorových počítačů](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) je zvláště vhodná pro scénáře s vysokým počtem funkcí. Z tohoto důvodu byly použity v mnoha aplikacích z načítání informací do klasifikace textu a obrázku. Podporu vektorových počítačů lze použít pro úlohy klasifikace i regrese.
 
-Výběr funkcí odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. [Modul výběru funkce založený na filtrech](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) v Návrháři Machine Learning poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát.
+Výběr funkcí odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. [Modul výběru funkce založený na filtrech](./algorithm-module-reference/filter-based-feature-selection.md?WT.mc_id=docs-article-lazzeri) v Návrháři Machine Learning poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát.
 
-Můžete také použít [modul důležitost funkcí permutace](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) k výpočtu sady výsledků důležitosti funkce pro datovou sadu. Pak můžete využít tyto výsledky, abyste mohli určit nejlepší funkce pro použití v modelu.
+Můžete také použít [modul důležitost funkcí permutace](./algorithm-module-reference/permutation-feature-importance.md?WT.mc_id=docs-article-lazzeri) k výpočtu sady výsledků důležitosti funkce pro datovou sadu. Pak můžete využít tyto výsledky, abyste mohli určit nejlepší funkce pro použití v modelu.
 
 ## <a name="next-steps"></a>Další kroky
 
- - [Další informace o Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
- - Popisy všech algoritmů strojového učení, které jsou dostupné v Azure Machine Learning designeru, najdete v tématu [algoritmus Machine Learning designeru a Reference k modulům](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) .
- - Informace o tom, jak prozkoumat vztah mezi hlubokou výukou, Machine Learningem a AI, najdete v článku o [podrobném učení vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
+ - [Další informace o Azure Machine Learning designeru](./concept-designer.md?WT.mc_id=docs-article-lazzeri)
+ - Popisy všech algoritmů strojového učení, které jsou dostupné v Azure Machine Learning designeru, najdete v tématu [algoritmus Machine Learning designeru a Reference k modulům](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri) .
+ - Informace o tom, jak prozkoumat vztah mezi hlubokou výukou, Machine Learningem a AI, najdete v článku o [podrobném učení vs. Machine Learning](./concept-deep-learning-vs-machine-learning.md?WT.mc_id=docs-article-lazzeri)

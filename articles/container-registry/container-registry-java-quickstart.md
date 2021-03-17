@@ -6,12 +6,12 @@ ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 42200fe61b0ac73a63b9f8a3317687fac60c5c02
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9e400ee0bae2690a84f9cfd3f6a76359e08eabc2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078576"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018334"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rychlý Start: sestavení a vložení imagí kontejnerů Java do Azure Container Registry
 
@@ -20,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit kontejnerovou aplikaci Java a
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud zatím předplatné Azure nemáte, můžete si aktivovat [výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial).
-* [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/overview)
+* Rozhraní příkazového [řádku Azure Command-Line (CLI)](/cli/azure/overview).
 * Podporovaná sada Java Development Kit (JDK). Další informace o sadách JDK, které můžete využít při vývoji v Azure, najdete tady: <https://aka.ms/azure-jdks>.
 * Nástroj [Maven](http://maven.apache.org) Build pro Apache (verze 3 nebo vyšší).
 * Klient [Git](https://git-scm.com).
@@ -149,7 +149,7 @@ Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku sest
 
 ## <a name="verify-your-container-image"></a>Ověření image kontejneru
 
-Blahopřejeme! Teď máte svoji kontejnerovou aplikaci Java, která je v Azure podporovaná JDK, vložená do vaší ACR. Bitovou kopii teď můžete otestovat nasazením, aby se Azure App Service, nebo když ji nasadíte do místní příkazového řádku (nahraďte zástupný symbol):
+Gratulujeme! Teď máte svoji kontejnerovou aplikaci Java, která je v Azure podporovaná JDK, vložená do vaší ACR. Bitovou kopii teď můžete otestovat nasazením, aby se Azure App Service, nebo když ji nasadíte do místní příkazového řádku (nahraďte zástupný symbol):
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
@@ -177,5 +177,5 @@ Další informace naleznete v následujících zdrojích:
 * [Práce s Azure DevOps a Javou](/azure/devops/java)
 * [Začínáme s aplikací Spring Boot v Dockeru](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [Nasazení aplikace Spring Boot do služby Azure App Service](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [Nasazení aplikace Spring Boot do služby Azure App Service](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-on-linux#configure-maven-to-build-image-to-your-azure-container-registry)
 * [Použití vlastní image Dockeru pro webovou aplikaci Azure v Linuxu](../app-service/tutorial-custom-container.md)

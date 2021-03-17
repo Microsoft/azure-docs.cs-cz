@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76906107"
 ---
 # <a name="sfctl-events"></a>události sfctl
@@ -19,7 +19,7 @@ Systémovou službu Eventstoru lze přidat prostřednictvím upgradu konfigurace
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
 | všechny aplikace – seznam | Načte všechny události související s aplikacemi. |
 | všechny uzly – seznam | Načte všechny události související s uzly. |
@@ -38,9 +38,9 @@ Načte všechny události související s aplikacemi.
 
 Odpovědí je seznam objektů ApplicationEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH \: mm \: SSZ. |
@@ -51,7 +51,7 @@ Odpovědí je seznam objektů ApplicationEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -64,9 +64,9 @@ Načte všechny události související s uzly.
 
 Odpovědí je seznam objektů NodeEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH \: mm \: SSZ. |
@@ -77,7 +77,7 @@ Odpovědí je seznam objektů NodeEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -90,9 +90,9 @@ Načte všechny události související s oddíly.
 
 Odpovědí je seznam objektů PartitionEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH \: mm \: SSZ. |
@@ -103,7 +103,7 @@ Odpovědí je seznam objektů PartitionEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -116,9 +116,9 @@ Načte všechny události související se službami.
 
 Odpovědí je seznam objektů ServiceEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH \: mm \: SSZ. |
@@ -129,7 +129,7 @@ Odpovědí je seznam objektů ServiceEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -142,9 +142,9 @@ Získá události související s aplikací.
 
 Odpovědí je seznam objektů ApplicationEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Například pokud je název aplikace "Fabric \: /MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
@@ -156,7 +156,7 @@ Odpovědí je seznam objektů ApplicationEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -169,9 +169,9 @@ Načte všechny události související s clusterem.
 
 Odpovědí je seznam objektů ClusterEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH \: mm \: SSZ. |
@@ -182,7 +182,7 @@ Odpovědí je seznam objektů ClusterEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -195,9 +195,9 @@ Načte události související s uzlem.
 
 Odpovědí je seznam objektů NodeEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Node-Name [povinné] | Název uzlu |
@@ -209,7 +209,7 @@ Odpovědí je seznam objektů NodeEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -222,9 +222,9 @@ Načte všechny události související s replikami pro oddíl.
 
 Odpovědí je seznam objektů ReplicaEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -236,7 +236,7 @@ Odpovědí je seznam objektů ReplicaEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -249,9 +249,9 @@ Získá události související s oddíly.
 
 Odpovědí je seznam objektů PartitionEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -263,7 +263,7 @@ Odpovědí je seznam objektů PartitionEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -276,9 +276,9 @@ Získá události související s replikou oddílu.
 
 Odpovědí je seznam objektů ReplicaEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -291,7 +291,7 @@ Odpovědí je seznam objektů ReplicaEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -304,9 +304,9 @@ Načte události související se službou.
 
 Odpovědí je seznam objektů ServiceEvent.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH \: mm \: SSZ. |
 | --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Pokud je například název služby "Fabric \: /MyApp/app1/svc1", identita služby by byla "MyApp \~ app1 \~ svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
@@ -318,7 +318,7 @@ Odpovědí je seznam objektů ServiceEvent.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

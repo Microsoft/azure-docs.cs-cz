@@ -6,14 +6,15 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588151"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369794"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrovaná podpora Jupyter poznámkových bloků v Azure Cosmos DB (Preview)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Jupyter Notebook je webová aplikace open source, která vám umožňuje vytvářet a sdílet dokumenty, které obsahují živý kód, rovnice, vizualizace a doprovodný text. 
 
@@ -60,5 +61,7 @@ Jupyter poznámkové bloky můžou zahrnovat několik typů komponent, které js
 Pokud chcete začít s integrovanými Jupyter poznámkami v Azure Cosmos DB, přečtěte si následující články:
 
 * [Povolení poznámkových bloků v účtu Azure Cosmos](enable-notebooks.md)
+* [Prozkoumat galerii ukázek poznámkových bloků](https://cosmos.azure.com/gallery.html)
 * [Použití funkcí a příkazů poznámkového bloku Pythonu](use-python-notebook-features-and-commands.md)
 * [Použití funkcí a příkazů pro Poznámkový blok jazyka C#](use-csharp-notebook-features-and-commands.md)
+* [Import poznámkových bloků z úložiště GitHub](import-github-notebooks.md)

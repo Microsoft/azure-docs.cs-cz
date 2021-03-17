@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214138"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250124"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -128,78 +128,6 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
-
-Tady jsou data vazby v *function.js* souboru:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Tady je kód JavaScriptu:
-
-```javascript
-module.exports = function (context, eventGridEvent) {
-    context.log("JavaScript Event Grid function processed a request.");
-    context.log("Subject: " + eventGridEvent.subject);
-    context.log("Time: " + eventGridEvent.eventTime);
-    context.log("Data: " + JSON.stringify(eventGridEvent.data));
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
-
-Tady jsou data vazby v *function.js* souboru:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "event",
-      "direction": "in"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Tady je kód Pythonu:
-
-```python
-import json
-import logging
-
-import azure.functions as func
-
-def main(event: func.EventGridEvent):
-
-    result = json.dumps({
-        'id': event.id,
-        'data': event.get_json(),
-        'topic': event.topic,
-        'subject': event.subject,
-        'event_type': event.event_type,
-    })
-
-    logging.info('Python EventGrid trigger processed an event: %s', result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Tato část obsahuje následující příklady:
@@ -265,6 +193,103 @@ Po doručení je datová část JSON události deserializovaná do ```EventSchem
 
 V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `EventGridTrigger` anotaci pro parametry, jejichž hodnota by pocházela z EventGrid. Parametry s těmito poznámkami způsobí, že se funkce spustí při přijetí události.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = function (context, eventGridEvent) {
+    context.log("JavaScript Event Grid function processed a request.");
+    context.log("Subject: " + eventGridEvent.subject);
+    context.log("Time: " + eventGridEvent.eventTime);
+    context.log("Data: " + JSON.stringify(eventGridEvent.data));
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje, jak nakonfigurovat vazbu triggeru Event Grid v souboru *function.json* .
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Událost Event Grid zpřístupňuje funkci prostřednictvím parametru s názvem `eventGridEvent` , jak je znázorněno v následujícím příkladu PowerShellu.
+
+```powershell
+param($eventGridEvent, $TriggerMetadata)
+
+# Make sure to pass hashtables to Out-String so they're logged correctly
+$eventGridEvent | Out-String | Write-Host
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Tady je kód Pythonu:
+
+```python
+import json
+import logging
+
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
@@ -289,17 +314,21 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 Skripty jazyka C# nepodporují atributy.
 
+# <a name="java"></a>[Java](#tab/java)
+
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) anotace umožňuje deklarativní konfiguraci vazby Event Grid poskytováním hodnot konfigurace. Další podrobnosti najdete v částech s [příkladem](#example) a [konfigurací](#configuration) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
-
-# <a name="java"></a>[Java](#tab/java)
-
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) anotace umožňuje deklarativní konfiguraci vazby Event Grid poskytováním hodnot konfigurace. Další podrobnosti najdete v částech s [příkladem](#example) a [konfigurací](#configuration) .
 
 ---
 
@@ -343,17 +372,21 @@ V Azure Functions 2. x a vyšší máte také možnost pro aktivační událost 
 > [!NOTE]
 > Ve funkcích v1 Pokud se pokusíte vytvořit vazby na `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` , kompilátor zobrazí "zastaralé" zprávy a pomůže vám `Microsoft.Azure.EventGrid.Models.EventGridEvent` místo toho použít. Chcete-li použít novější typ, odkazujte na balíček NuGet [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) a plně kvalifikováním `EventGridEvent` názvu typu pomocí předpony `Microsoft.Azure.EventGrid.Models` . Informace o tom, jak odkazovat na balíčky NuGet ve funkci skriptu jazyka C#, najdete v tématu [použití balíčků NuGet](functions-reference-csharp.md#using-nuget-packages) .
 
+# <a name="java"></a>[Java](#tab/java)
+
+Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k `EventGridTrigger` atributu, který je zadaný jako `EventSchema` . Další podrobnosti najdete v [příkladu](#example) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsna* souboru `name` .
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsna* souboru `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
 Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsu* souboru, který je `name` zadaný jako `func.EventGridEvent` .
-
-# <a name="java"></a>[Java](#tab/java)
-
-Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k `EventGridTrigger` atributu, který je zadaný jako `EventSchema` . Další podrobnosti najdete v [příkladu](#example) .
 
 ---
 
@@ -399,7 +432,7 @@ Vysvětlení běžných vlastností a specifických pro události naleznete v t�
 
 Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid předplatné, které určuje adresu URL koncového bodu, která funkci vyvolá.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portál Azure Portal
 
 U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte možnost **integrace** a potom vyberte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné**.
 
@@ -413,7 +446,7 @@ Další informace o tom, jak vytvořit odběry pomocí Azure Portal, najdete v t
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete vytvořit předplatné pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), použijte příkaz [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) .
+Pokud chcete vytvořit předplatné pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli), použijte příkaz [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) .
 
 Příkaz vyžaduje adresu URL koncového bodu, která vyvolá funkci. Následující příklad ukazuje vzor adresy URL pro konkrétní verzi:
 
@@ -435,25 +468,55 @@ Tady je příklad, který se přihlásí k odběru účtu úložiště objektů 
 
 #### <a name="version-2x-and-higher-runtime"></a>Modul runtime verze 2. x (a vyšší)
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
---provider-namespace Microsoft.Storage --resource-type storageAccounts \
---resource-name myblobstorage12345 --name myFuncSub  \
---included-event-types Microsoft.Storage.BlobCreated \
---subject-begins-with /blobServices/default/containers/images/blobs/ \
---endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
+    --provider-namespace Microsoft.Storage --resource-type storageAccounts \
+    --resource-name myblobstorage12345 --name myFuncSub \
+    --included-event-types Microsoft.Storage.BlobCreated \
+    --subject-begins-with /blobServices/default/containers/images/blobs/ \
+    --endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az eventgrid resource event-subscription create -g myResourceGroup ^
+    --provider-namespace Microsoft.Storage --resource-type storageAccounts ^
+    --resource-name myblobstorage12345 --name myFuncSub ^
+    --included-event-types Microsoft.Storage.BlobCreated ^
+    --subject-begins-with /blobServices/default/containers/images/blobs/ ^
+    --endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
+```
+
+---
 
 #### <a name="version-1x-runtime"></a>Modul runtime verze 1. x
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
---provider-namespace Microsoft.Storage --resource-type storageAccounts \
---resource-name myblobstorage12345 --name myFuncSub  \
---included-event-types Microsoft.Storage.BlobCreated \
---subject-begins-with /blobServices/default/containers/images/blobs/ \
---endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
+    --provider-namespace Microsoft.Storage --resource-type storageAccounts \
+    --resource-name myblobstorage12345 --name myFuncSub \
+    --included-event-types Microsoft.Storage.BlobCreated \
+    --subject-begins-with /blobServices/default/containers/images/blobs/ \
+    --endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az eventgrid resource event-subscription create -g myResourceGroup ^
+    --provider-namespace Microsoft.Storage --resource-type storageAccounts ^
+    --resource-name myblobstorage12345 --name myFuncSub ^
+    --included-event-types Microsoft.Storage.BlobCreated ^
+    --subject-begins-with /blobServices/default/containers/images/blobs/ ^
+    --endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
+```
+
+---
 
 Další informace o tom, jak vytvořit předplatné, najdete v tématu [rychlý Start úložiště objektů BLOB](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account) nebo v ostatních Event Grid rychlých startech.
 
@@ -508,7 +571,7 @@ K otestování triggeru Event Grid v místním počítači musíte získat Event
 1. [Vygenerujte požadavek](#generate-a-request) a zkopírujte text žádosti z aplikace pro prohlížeč.
 1. [Požadavek odešlete ručně](#manually-post-the-request) na adresu URL místního hostitele funkce triggeru Event Grid.
 
-Až budete s testováním hotovi, můžete použít stejné předplatné pro produkci aktualizací koncového bodu. Použijte příkaz [AZ eventgrid Event-Subscription aktualizace pro](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI.
+Až budete s testováním hotovi, můžete použít stejné předplatné pro produkci aktualizací koncového bodu. Použijte příkaz [AZ eventgrid Event-Subscription aktualizace pro](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-update) Azure CLI.
 
 ### <a name="create-a-viewer-web-app"></a>Vytvoření webové aplikace v prohlížeči
 
@@ -540,7 +603,7 @@ Jako první se přijme žádost o ověření předplatného. Ignorujte všechny 
 
 ### <a name="manually-post-the-request"></a>Ruční odeslání žádosti
 
-Spusťte funkci Event Grid lokálně.
+Spusťte funkci Event Grid lokálně. `Content-Type`Hlavičky a `aeg-event-type` se musí nastavit ručně, zatímco všechny ostatní hodnoty můžou být ponechány jako výchozí.
 
 K vytvoření požadavku HTTP POST použijte nástroj, jako je například [post](https://www.getpostman.com/) nebo [kudrlinkou](https://curl.haxx.se/docs/httpscripting.html) :
 

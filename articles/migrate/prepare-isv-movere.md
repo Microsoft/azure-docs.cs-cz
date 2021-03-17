@@ -1,14 +1,17 @@
 ---
 title: Příprava Azure Migrate pro práci s nástrojem/stěhovací společnosti ISV
 description: Tento článek popisuje, jak připravit Azure Migrate pro práci s nástrojem ISV nebo stěhovací společnosti a jak začít používat nástroj.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103921"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753769"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky
 
@@ -26,7 +29,7 @@ Váš uživatelský účet Azure potřebuje tato oprávnění:
 
 1. Ve službě Azure AD ověřte roli svého účtu.
 2. Pokud máte roli uživatele, vyberte na levé straně **nastavení uživatele** a ověřte, jestli uživatelé můžou registrovat aplikace. Pokud je tato možnost nastavená na **hodnotu Ano**, můžou aplikace zaregistrovat všechny uživatele v TENANTOVI Azure AD. Pokud je nastavená na **ne**, můžou aplikace registrovat jenom správci.   
-3. Pokud nemáte oprávnění, uživatel s právy pro správu může poskytnout svůj uživatelský účet s rolí [správce aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-administrator) , aby bylo možné aplikaci zaregistrovat.
+3. Pokud nemáte oprávnění, uživatel s právy pro správu může poskytnout svůj uživatelský účet s rolí [správce aplikace](../active-directory/roles/permissions-reference.md#application-administrator) , aby bylo možné aplikaci zaregistrovat.
 4. Po propojení nástroje s Azure Migrate může správce odebrat roli z vašeho účtu.
 
 ### <a name="set-permissions-to-assign-a-role-to-an-azure-ad-app"></a>Nastavení oprávnění k přiřazení role k aplikaci Azure AD
@@ -36,13 +39,13 @@ Ve vašem předplatném Azure vyžaduje váš účet **Microsoft. Authorization/
 1. Na webu Azure Portal otevřete **Předplatná**.
 2. Vyberte příslušné předplatné. Pokud ho nevidíte, vyberte **Filtr globálních předplatných**. 
 3. Vyberte **Moje oprávnění**. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto předplatnému**.
-4. V **zobrazení přiřazení rolí**  >  **View**Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) nebo role [vlastníka](../role-based-access-control/built-in-roles.md#owner) .
+4. V **zobrazení přiřazení rolí**  >  **View** Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) nebo role [vlastníka](../role-based-access-control/built-in-roles.md#owner) .
 
 ## <a name="allow-access-to-urls"></a>Povolení přístupu k adresám URL
 
 V případě nástrojů ISV a Azure Database Pomocník s migrací povolte přístup k adresám URL veřejného cloudu, které jsou shrnuté v tabulce. Pokud pro připojení k Internetu používáte proxy server založený na adrese URL, ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL. 
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 *.portal.azure.com  | Přejděte na Azure Portal. 
 *.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | Přihlaste se ke svému předplatnému Azure. 
@@ -53,7 +56,7 @@ management.azure.com | Proveďte Azure Resource Manager volání do projektu Azu
 
 ## <a name="start-using-the-tool"></a>Začněte používat nástroj.
 
-1. Pokud ještě nemáte licenci nebo bezplatnou zkušební verzi nástroje, v položce nástroje v Azure Migrate v části **Registrovat**vyberte další **informace**.
+1. Pokud ještě nemáte licenci nebo bezplatnou zkušební verzi nástroje, v položce nástroje v Azure Migrate v části **Registrovat** vyberte další **informace**.
 2. V nástroji postupujte podle pokynů pro odkazování nástroje na projekt Azure Migrate a k odeslání dat do Azure Migrate.
 
 ## <a name="next-steps"></a>Další kroky

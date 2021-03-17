@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 301d6eb0867604a6e780eb1d059eef0c153f246f
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449054"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574505"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -23,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Raycast s prostorovými dotazy
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento kurz sestaví v [kurzu: rozhraní a vlastní modely](../custom-models/custom-models.md).
 
@@ -36,7 +37,7 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
 1. Vytvořte nový skript ve stejném adresáři jako **RemoteRenderedModel** a pojmenujte ho **RemoteBounds**.
 1. Obsah skriptu nahraďte následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -50,8 +51,6 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     {
         //Remote bounds works with a specific remotely rendered model
         private BaseRemoteRenderedModel targetModel = null;
-
-        private BoundsQueryAsync remoteBoundsQuery = null;
 
         private RemoteBoundsState currentBoundsState = RemoteBoundsState.NotReady;
 
@@ -93,14 +92,8 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
             }
         }
 
-        // Create a query using the model entity
-        private void QueryBounds()
-        {
-            //Implement me
-        }
-
-        // Check the result and apply it to the local Unity bounding box if it was successful
-        private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
+        // Create an async query using the model entity
+        async private void QueryBounds()
         {
             //Implement me
         }
@@ -110,33 +103,23 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     > [!NOTE]
     > Pokud se v C# 6 zobrazí chyba funkce deklarace identity sady Visual Studio *X není dostupná. Použijte prosím jazyk verze 7,0 nebo vyšší*, tato chyba se dá bezpečně ignorovat. To se týká řešení Unity a generování projektů.
 
-    Tento skript by měl být přidán do stejného GameObject jako skript, který implementuje **BaseRemoteRenderedModel**. V tomto případě to znamená **RemoteRenderedModel**. Podobně jako u předchozích skriptů bude tento počáteční kód zpracovávat všechny změny stavu, události a data související se vzdálenými mezemi.
+    Tento skript by měl být přidán do stejného GameObject jako skript, který implementuje  **BaseRemoteRenderedModel**. V tomto případě to znamená **RemoteRenderedModel**. Podobně jako u předchozích skriptů bude tento počáteční kód zpracovávat všechny změny stavu, události a data související se vzdálenými mezemi.
 
-    K implementaci můžete použít dvě metody: **QueryBounds** a **ProcessQueryResult**. **QueryBounds** načte meze a **ProcessQueryResult** provede výsledek dotazu a použije ho pro místní **BoxCollider**.
+    K implementaci je k dispozici jenom jedna metoda: **QueryBounds**. **QueryBounds** načítá hranice asynchronně, přebírá výsledek dotazu a použije ho pro místní **BoxCollider**.
 
-    Metoda **QueryBounds** je jednoduchá: odešlete dotaz do relace vzdáleného vykreslování a naslouchat `Completed` události.
+    Metoda **QueryBounds** je jednoduchá: odešlete dotaz do relace vzdáleného vykreslování a počkáte na výsledek.
 
 1. Nahraďte metodu **QueryBounds** následující metodou dokončeno:
 
-    ```csharp
+    ```cs
     // Create a query using the model entity
-    private void QueryBounds()
+    async private void QueryBounds()
     {
-        remoteBoundsQuery = targetModel.ModelEntity.QueryLocalBoundsAsync();
+        var remoteBounds = targetModel.ModelEntity.QueryLocalBoundsAsync();
         CurrentBoundsState = RemoteBoundsState.Updating;
-        remoteBoundsQuery.Completed += ProcessQueryResult;
-    }
-    ```
+        await remoteBounds;
 
-    **ProcessQueryResult** je také jednoduchá. Výsledek zkontrolujeme, abychom zjistili, jestli bylo úspěšné. Pokud ano, převeďte a aplikujte vrácené vazby ve formátu, který může **BoxCollider** přijmout.    
-
-1. Nahraďte metodu **ProcessQueryResult** následující metodou dokončeno:
-
-    ```csharp
-    // Check the result and apply it to the local Unity bounding box if it was successful
-    private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
-    {
-        if (remoteBounds.IsRanToCompletion)
+        if (remoteBounds.IsCompleted)
         {
             var newBounds = remoteBounds.Result.toUnity();
             BoundsBoxCollider.center = newBounds.center;
@@ -151,6 +134,8 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     }
     ```
 
+    Zkontrolujeme výsledek dotazu a zjistíme, jestli bylo úspěšné. Pokud ano, převeďte a aplikujte vrácené vazby ve formátu, který může **BoxCollider** přijmout.
+
 Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu objektu jako **RemoteRenderedModel**, bude v případě potřeby přidán **BoxCollider** a když model dosáhne svého `Loaded` stavu, budou se tato hranice automaticky dotazovat a použít na **BoxCollider**.
 
 1. Pomocí **TestModel** GameObject, který jste vytvořili dříve, přidejte komponentu **RemoteBounds** .
@@ -160,13 +145,13 @@ Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu obj
 
 1. Spusťte aplikaci znovu. Krátce po načtení modelu se zobrazí hranice pro vzdálený objekt. Uvidíte něco podobného jako u následujících hodnot:
 
-     ![Meze aktualizovány](./media/updated-bounds.png)
+     ![Snímek obrazovky, který zobrazuje příklad svázaných vzdálených objektů.](./media/updated-bounds.png)
 
 Teď máme místní **BoxCollider** nakonfigurovaný s přesnou hranicí objektu Unity. Meze umožňují vizualizaci a interakci pomocí stejných strategií, které bychom použili pro místně vykreslený objekt. Například skripty, které mění transformaci, fyzika a další.
 
 ## <a name="move-rotate-and-scale"></a>Přesunutí, otočení a škálování  
 
-Přesunutí, otočení a škálování vzdáleně vygenerovaných objektů funguje stejně jako u všech ostatních objektů Unity. **RemoteRenderingCoordinator**ve své `LateUpdate` metodě volá v `Update` aktuálně aktivní relaci. Součástí toho, co `Update` je synchronizace entity místního modelu se svými vzdálenými protějšky. Chcete-li přesunout, otočit nebo škálovat vzdáleně vykreslený model, stačí pouze přesunout, otočit nebo škálovat transformaci GameObject představující vzdálený model. Tady se upraví transformace nadřazených GameObject, ke kterým je připojen skript **RemoteRenderedModel** .
+Přesunutí, otočení a škálování vzdáleně vygenerovaných objektů funguje stejně jako u všech ostatních objektů Unity. **RemoteRenderingCoordinator** ve své `LateUpdate` metodě volá v `Update` aktuálně aktivní relaci. Součástí toho, co `Update` je synchronizace entity místního modelu se svými vzdálenými protějšky. Chcete-li přesunout, otočit nebo škálovat vzdáleně vykreslený model, stačí pouze přesunout, otočit nebo škálovat transformaci GameObject představující vzdálený model. Tady se upraví transformace nadřazených GameObject, ke kterým je připojen skript **RemoteRenderedModel** .
 
 Tento kurz používá MRTK pro interakci s objekty. Většina implementace konkrétního MRTK pro přesun, otočení a škálování objektu je mimo rámec tohoto kurzu. V nabídce **nástroje modelu** je k dispozici kontroler zobrazení modelu, který je předem nakonfigurován uvnitř **AppMenu**.
 
@@ -175,7 +160,7 @@ Tento kurz používá MRTK pro interakci s objekty. Většina implementace konkr
 1. Stisknutím tlačítka Přehrát v Unity přehrajete scénu a otevřete nabídku **nástroje modelu** v rámci **AppMenu**.
 ![Kontroler zobrazení](./media/model-with-view-controller.png)
 
-**AppMenu** má dílčí nabídky **modelů** , které implementují kontroler zobrazení pro vazbu s modelem. Pokud GameObject obsahuje komponentu **RemoteBounds** , kontroler zobrazení přidá komponentu [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) , což je komponenta MRTK, která vykresluje ohraničující rámeček kolem objektu s **BoxCollider**. [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator), který zodpovídá za interakci. Tyto skripty dohromady umožní přesunout, otočit a škálovat vzdáleně vykreslený model.
+**AppMenu** má dílčí nabídky **modelů** , které implementují kontroler zobrazení pro vazbu s modelem. Pokud GameObject obsahuje komponentu **RemoteBounds** , kontroler zobrazení přidá komponentu [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) , což je komponenta MRTK, která vykresluje ohraničující rámeček kolem objektu s **BoxCollider**. [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html), který zodpovídá za interakci. Tyto skripty dohromady umožní přesunout, otočit a škálovat vzdáleně vykreslený model.
 
 1. Přesuňte ukazatel myši na panel hry a kliknutím dovnitř ho přidělte fokus.
 1. Pokud používáte [MRTKou simulaci](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation), stiskněte a podržte levý klávesu SHIFT.
@@ -197,7 +182,7 @@ Nejprve vytvoříme statickou obálku kolem vzdálených dotazů na přetypován
 
 1. Vytvořte nový skript s názvem **RemoteRayCaster** a nahraďte jeho obsah následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -219,7 +204,8 @@ Nejprve vytvoříme statickou obálku kolem vzdálených dotazů na přetypován
             if(RemoteRenderingCoordinator.instance.CurrentCoordinatorState == RemoteRenderingCoordinator.RemoteRenderingState.RuntimeConnected)
             {
                 var rayCast = new RayCast(origin.toRemotePos(), dir.toRemoteDir(), maxDistance, hitPolicy);
-                return await RemoteRenderingCoordinator.CurrentSession.Actions.RayCastQueryAsync(rayCast).AsTask();
+                var result = await RemoteRenderingCoordinator.CurrentSession.Connection.RayCastQueryAsync(rayCast);
+                return result.Hits;
             }
             else
             {
@@ -236,13 +222,13 @@ Nejprve vytvoříme statickou obálku kolem vzdálených dotazů na přetypován
     ```
 
     > [!NOTE]
-    > Unity má třídu s názvem [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html)a vzdálené vykreslování Azure má třídu s názvem [**RaycastHit**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.raycasthit). Velké písmeno **C** je důležitý rozdíl, aby nedocházelo k chybám při kompilaci.
+    > Unity má třídu s názvem [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html)a vzdálené vykreslování Azure má třídu s názvem [**RaycastHit**](/dotnet/api/microsoft.azure.remoterendering.raycasthit). Velké písmeno **C** je důležitý rozdíl, aby nedocházelo k chybám při kompilaci.
 
     **RemoteRayCaster** poskytuje běžný přístupový bod pro přetypování vzdálených paprsků do aktuální relace. Aby bylo konkrétnější, implementujeme obslužnou rutinu MRTK ukazatele na další. Skript implementuje `IMixedRealityPointerHandler` rozhraní, které sděluje MRTKi, že chceme, aby tento skript naslouchal událostem [ukazatele hybridní reality](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/Input/Pointers.html) .
 
 1. Vytvořte nový skript s názvem **RemoteRayCastPointerHandler** a nahraďte kód následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -301,19 +287,19 @@ Nejprve vytvoříme statickou obálku kolem vzdálených dotazů na přetypován
     }
     ```
 
-**RemoteRayCastPointerHandler**Metoda RemoteRayCastPointerHandler `OnPointerClicked` je volána MRTK, když ukazatel "klikne" na kolidujícím objektu, jako je například kokolize našeho boxu. Poté `PointerDataToRemoteRayCast` je volána pro převedení výsledku ukazatele na bod a směr. Tento bod a směr se pak použije k přetypování vzdáleného ray ve vzdálené relaci.
+Metoda RemoteRayCastPointerHandler `OnPointerClicked` je volána MRTK, když ukazatel "klikne" na kolidujícím objektu, jako je například kokolize našeho boxu. Poté `PointerDataToRemoteRayCast` je volána pro převedení výsledku ukazatele na bod a směr. Tento bod a směr se pak použije k přetypování vzdáleného ray ve vzdálené relaci.
 
 ![Meze aktualizovány](./media/raycast-local-remote.png)
 
 Odesílání žádostí o obsazení paprsků po kliknutí je efektivní strategií pro dotazování vzdálených objektů. Nejedná se však o ideální uživatelské prostředí, protože ukazatel koliduje se kokolizí boxu, nikoli modelem samotného.
 
-Můžete také vytvořit nový ukazatel MRTK, který vrhá své paprsky ve vzdálené relaci častěji. I když se jedná o složitější přístup, činnost koncového uživatele by byla lepší. Tato strategie je mimo rámec tohoto kurzu, ale příklad tohoto přístupu se může zobrazit v aplikaci s ukázkami, který najdete v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase).
+Můžete také vytvořit nový ukazatel MRTK, který vrhá své paprsky ve vzdálené relaci častěji. I když se jedná o složitější přístup, činnost koncového uživatele by byla lepší. Tato strategie je mimo rámec tohoto kurzu, ale příklad tohoto přístupu se může zobrazit v aplikaci s ukázkami, který najdete v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase).
 
-Po úspěšném dokončení přetypování do **RemoteRayCastPointerHandler**se `Entity` z `OnRemoteEntityClicked` události Unity vygeneruje. Pro reakci na tuto událost vytvoříme Pomocný skript, který přijme `Entity` a provede na něm akci. Pojďme začít získáním skriptu pro vytištění názvu `Entity` do protokolu ladění.
+Po úspěšném dokončení přetypování do **RemoteRayCastPointerHandler** se `Entity` z `OnRemoteEntityClicked` události Unity vygeneruje. Pro reakci na tuto událost vytvoříme Pomocný skript, který přijme `Entity` a provede na něm akci. Pojďme začít získáním skriptu pro vytištění názvu `Entity` do protokolu ladění.
 
 1. Vytvořte nový skript s názvem **RemoteEntityHelper** a nahraďte jeho obsah následujícím textem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
     
@@ -358,7 +344,7 @@ Stejný postup lze provést programově a je prvním krokem při úpravě specif
 
 1. Upravte skript **RemoteEntityHelper** tak, aby obsahoval také následující metodu:
 
-    ```csharp
+    ```cs
     public void MakeSyncedGameObject(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);

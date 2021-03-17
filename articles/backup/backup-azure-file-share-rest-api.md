@@ -3,18 +3,18 @@ title: Zálohování sdílených složek Azure pomocí REST API
 description: Naučte se používat REST API k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654136"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88824861"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Zálohování sdílené složky Azure pomocí Azure Backup přes REST API
 
 Tento článek popisuje, jak zálohovat sdílenou složku Azure pomocí Azure Backup přes REST API.
 
-V tomto článku se předpokládá, že jste už vytvořili trezor služby Recovery Services a zásady pro konfiguraci zálohování pro sdílenou složku. Pokud jste to ještě neudělali, přečtěte si téma [Vytvoření trezoru](./backup-azure-arm-userestapi-createorupdatevault.md) a [Vytvoření zásad](./backup-azure-arm-userestapi-createorupdatepolicy.md) REST APIch výukových kurzů pro vytváření nových trezorů a zásad.
+V tomto článku se předpokládá, že jste už vytvořili Recovery Services trezor a zásady pro konfiguraci zálohování sdílené složky. Pokud jste to ještě neudělali, přečtěte si téma [Vytvoření trezoru](./backup-azure-arm-userestapi-createorupdatevault.md) a [Vytvoření zásad](./backup-azure-arm-userestapi-createorupdatepolicy.md) REST APIch výukových kurzů pro vytváření nových trezorů a zásad.
 
 V tomto článku budeme používat následující zdroje:
 
@@ -156,7 +156,7 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-Vzhledem k tomu, že jsme v těle odpovědi našli *testvault2* účet úložiště s popisným názvem, operace aktualizace provedená výše byla úspěšná. Trezor služby Recovery Services teď může úspěšně zjistit účty úložiště se sdílenými složkami nechráněných souborů ve stejném předplatném.
+Vzhledem k tomu, že jsme v těle odpovědi našli *testvault2* účet úložiště s popisným názvem, operace aktualizace provedená výše byla úspěšná. Trezor Recovery Services teď může úspěšně zjistit účty úložiště se sdílenými složkami nechráněných souborů ve stejném předplatném.
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>Registrace účtu úložiště pomocí Recovery Servicesového trezoru
 
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-| Název       | Typ                       | Popis                       |
+| Název       | Typ                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Vlastnosti | AzurefilesharebackupReques | Vlastnosti BackupRequestResource |
 

@@ -1,6 +1,6 @@
 ---
 title: Připojit data syslogu ke službě Azure Sentinel | Microsoft Docs
-description: Připojte libovolný počítač nebo zařízení, které podporuje syslog, do Azure Sentinel pomocí agenta na počítači se systémem Linux mezi zařízením a Sentinel. 
+description: Připojte libovolný počítač nebo zařízení, které podporuje syslog, do Azure Sentinel pomocí agenta na počítači se systémem Linux mezi zařízením a službou Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566144"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595468"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
 
@@ -34,7 +34,7 @@ Pomocí agenta Log Analytics pro Linux (dřív označovaného jako agent OMS) m�
 
 **SYSLOG** je protokol protokolování událostí, který je společný pro Linux. Když je na VIRTUÁLNÍm počítači nebo zařízení nainstalovaný **agent Log Analytics pro Linux** , rutina instalace nakonfiguruje místní démon syslog, aby předal zprávy agentovi na portu TCP 25224. Agent pak pošle zprávu do vašeho pracovního prostoru Log Analytics přes HTTPS, kde se analyzuje do položky protokolu událostí v tabulce syslog v **protokolech služby Azure Sentinel >**.
 
-Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
+Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Konfigurovat shromažďování syslog
 
@@ -67,37 +67,35 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurace agenta Log Analytics
 
-1. V dolní části okna konektoru syslog klikněte na odkaz **otevřít konfiguraci rozšířených nastavení v pracovním prostoru >** .
+1. V dolní části okna konektoru syslog klikněte na odkaz **otevřít konfiguraci agentů pracovního prostoru >** .
 
-1. V okně **Upřesnit nastavení** vyberte **data**  >  **syslog**. Pak přidejte zařízení, aby se konektor mohl shromažďovat.
+1. V okně **Konfigurace agentů** vyberte kartu **syslog** . Pak přidejte zařízení, aby se konektor mohl shromažďovat. Vyberte **Přidat zařízení** a zvolte možnost z rozevíracího seznamu zařízení.
     
     - Přidejte do svých hlaviček protokolů zařízení, která vaše zařízení syslog zahrnuje. 
     
     - Pokud chcete použít zjišťování přihlášení neobvyklé SSH s daty, která shromáždíte, přidejte **auth** a **authpriv**. Další podrobnosti najdete v [následující části](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-1. Po přidání všech zařízení, která chcete monitorovat, a upravení všech možností závažnosti pro každé z nich zaškrtněte políčko **použít pro tyto počítače níže uvedenou konfiguraci**.
+1. Po přidání všech zařízení, která chcete monitorovat, ověřte, zda jsou označena zaškrtávací políčka pro všechny požadované závažnost.
 
-1. Vyberte **Uložit**. 
+1. Vyberte **Použít**. 
 
 1. Na svém VIRTUÁLNÍm počítači nebo zařízení se ujistěte, že posíláte zařízení, která jste zadali.
 
 1. Chcete-li zadat dotaz na data protokolu syslog v **protokolech**, zadejte `Syslog` do okna dotazu.
 
-1. Pomocí parametrů dotazu popsaných v tématu [použití funkcí v Azure Monitorch](../azure-monitor/log-query/functions.md) dotazech protokolu můžete analyzovat zprávy syslog. Dotaz pak můžete uložit jako novou funkci Log Analytics a použít ji jako nový datový typ.
+1. Pomocí parametrů dotazu popsaných v tématu [použití funkcí v Azure Monitorch](../azure-monitor/logs/functions.md) dotazech protokolu můžete analyzovat zprávy syslog. Dotaz pak můžete uložit jako novou funkci Log Analytics a použít ji jako nový datový typ.
 
 > [!NOTE]
 > **Použití stejného počítače pro přeposílání prostých zpráv syslog *a* CEF**
->
 >
 > Existující [počítač pro přeposílání protokolů CEF](connect-cef-agent.md) můžete použít ke shromažďování a posílání protokolů z jednoduchých zdrojů syslog. K tomu, abyste se vyhnuli posílání událostí v obou formátech do služby Azure Sentinel, je nutné provést následující kroky, protože výsledkem bude duplikace událostí.
 >
 >    Již jste nastavili [shromažďování dat z vašich CEF zdrojů](connect-common-event-format.md)a nakonfigurovali jste agenta Log Analytics, jak je uvedeno výše:
 >
-> 1. V každém počítači, který odesílá protokoly ve formátu CEF, je nutné upravit konfigurační soubor syslog a odebrat tak zařízení, která se používají k odesílání zpráv CEF. Zařízení, která jsou odesílána v CEF, nebudou také odesílána ve službě syslog. Podrobné pokyny k tomu, jak to udělat, najdete v tématu [Konfigurace protokolu syslog v agentovi Linux](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. V každém počítači, který odesílá protokoly ve formátu CEF, je nutné upravit konfigurační soubor syslog a odebrat tak zařízení, která se používají k odesílání zpráv CEF. Zařízení, která jsou odesílána v CEF, nebudou také odesílána ve službě syslog. Podrobné pokyny k tomu, jak to udělat, najdete v tématu [Konfigurace protokolu syslog v agentovi Linux](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. Pokud chcete zakázat synchronizaci agenta s konfigurací syslog v Azure Sentinel, musíte na těchto počítačích spustit následující příkaz. Tím se zajistí, že se změna konfigurace, kterou jste provedli v předchozím kroku, nepřepíše.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurace konektoru syslog pro detekci přihlášení neobvyklé SSH
 
@@ -113,22 +111,23 @@ Azure Sentinel může použít Machine Learning (ML) na data syslog k identifika
  
 Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog: 
 
-1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Příklad:
-    
-    > [!div class="mx-imgBorder"]
-    > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)
+1. V kroku 2 v části [Konfigurace agenta Log Analytics](#configure-the-log-analytics-agent) výše se ujistěte, že je vybraná možnost **ověřování** a **authpriv** jako zařízení, která se mají monitorovat, a že jsou vybrané všechny závažnosti. 
 
-2. Umožněte shromažďování informací syslogu dostatek času. Pak přejděte do části **Azure Sentinel-logs**a zkopírujte a vložte následující dotaz:
+2. Umožněte shromažďování informací syslogu dostatek času. Pak přejděte do části **Azure Sentinel-logs** a zkopírujte a vložte následující dotaz:
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     V případě potřeby změňte **časový rozsah** a vyberte **Spustit**.
     
     Pokud je výsledný počet nula, potvrďte konfiguraci konektoru a monitorované počítače mají po dobu, kterou jste zadali pro dotaz, aktivitu úspěšného přihlášení.
     
-    Pokud je výsledný počet větší než nula, data syslogu jsou vhodná pro detekci přihlášení neobvyklé SSH. Toto zjišťování povolíte pomocí **Analytics**  >   **šablon pravidel**analýz  >  **(Preview) neobvyklé zjišťování přihlášení SSH**.
+    Pokud je výsledný počet větší než nula, data syslogu jsou vhodná pro detekci přihlášení neobvyklé SSH. Toto zjišťování povolíte pomocí   >   **šablon pravidel** analýz  >  **(Preview) neobvyklé zjišťování přihlášení SSH**.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit místní zařízení syslog ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

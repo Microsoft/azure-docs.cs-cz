@@ -2,16 +2,17 @@
 title: Profilování živě Cloud Services Azure pomocí Application Insights | Microsoft Docs
 description: Povolí Application Insights Profiler pro Azure Cloud Services.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8119477a69771c67db1f1e59c082d5d0d611214b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5eb6680bba44872821a2f0d094d31d0ad994f8a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305852"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589582"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živě Cloud Services Azure pomocí Application Insights
 
@@ -37,11 +38,11 @@ Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. S
 
 1. Nakonfigurujte rozšíření Azure Diagnostics pro povolení profileru:
 
-    a. Vyhledejte soubor [Azure Diagnostics](../platform/diagnostics-extension-overview.md) *Diagnostics. wadcfgx* pro vaši aplikační roli, jak je znázorněno zde:  
+    a. Vyhledejte soubor [Azure Diagnostics](../agents/diagnostics-extension-overview.md) *Diagnostics. wadcfgx* pro vaši aplikační roli, jak je znázorněno zde:  
 
       ![Umístění konfiguračního souboru diagnostiky](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Pokud soubor nemůžete najít, přečtěte si téma [nastavení diagnostiky pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?view=vs-2019).
+      Pokud soubor nemůžete najít, přečtěte si téma [nastavení diagnostiky pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
     b. Přidejte následující `SinksConfig` oddíl jako podřízený prvek `WadCfg` :  
 
@@ -63,7 +64,7 @@ Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. S
     > * Klíč, který používá jímka ApplicationInsights. 
     > * Klíč, který používá jímka ApplicationInsightsProfiler. 
     >
-    > Aktuální hodnotu klíč instrumentace, kterou používá jímka, najdete `ApplicationInsights` v *ServiceConfiguration. \* . soubory cscfg* . 
+    > Aktuální hodnotu klíč instrumentace, kterou používá jímka, najdete `ApplicationInsights` v     *ServiceConfiguration. \* . soubory cscfg* . 
     > Po vydání sady Visual Studio 15,5 Azure SDK se musí navzájem shodovat pouze klíče instrumentace používané aplikací a jímka ApplicationInsightsProfiler.
 
 1. Nasaďte službu s novou konfigurací diagnostiky a Application Insights Profiler je nakonfigurovaná tak, aby běžela ve vaší službě.

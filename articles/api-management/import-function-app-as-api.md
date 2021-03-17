@@ -1,7 +1,7 @@
 ---
 title: Import Function App Azure jako rozhraní API v API Management
 titleSuffix: Azure API Management
-description: V tomto kurzu se dozvíte, jak importovat aplikaci Azure Function App do služby Azure API Management jako rozhraní API.
+description: V tomto článku se dozvíte, jak naimportovat Function App Azure do Azure API Management jako rozhraní API.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -10,15 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f66395b1e0f45f1e80cd0ac93bf8c9ae8674a0f2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243422"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732941"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Naimportujete aplikaci Azure Functions jako rozhraní API ve službě Azure API Management
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 * Projděte si rychlý start [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
-* Zkontrolujte, jestli máte v předplatném aplikaci Azure Functions. Další informace najdete v tématu [Vytvoření aplikace Azure Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Musí obsahovat funkce s triggerem HTTP a úrovní autorizace nastavenou na *Anonymní* nebo *Funkce*.
+* Zkontrolujte, jestli máte v předplatném aplikaci Azure Functions. Další informace najdete v tématu [Vytvoření aplikace Azure Function App](../azure-functions/functions-get-started.md). Musí obsahovat funkce s triggerem HTTP a úrovní autorizace nastavenou na *Anonymní* nebo *Funkce*.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -50,29 +50,29 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
 
 2. V seznamu **Přidat nové rozhraní API** vyberte **Function App**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-01.png)
+    ![Snímek obrazovky, který zobrazuje dlaždici Function App.](./media/import-function-app-as-api/add-01.png)
 
 3. Klikněte na **Procházet** a vyberte funkce, které chcete importovat.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-02.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko pro procházení.](./media/import-function-app-as-api/add-02.png)
 
 4. Kliknutím na část **Function App** zobrazte seznam dostupných aplikací Function App, ze kterých si můžete vybrat.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-03.png)
+    ![Snímek obrazovky, který zvýrazní oddíl Function App.](./media/import-function-app-as-api/add-03.png)
 
 5. Vyhledejte aplikaci Function App, ze které chcete importovat funkce, klikněte na ni a stiskněte **Vybrat**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-04.png)
+    ![Snímek obrazovky, který zvýrazní Function App chcete importovat funkce a tlačítko vybrat.](./media/import-function-app-as-api/add-04.png)
 
 6. Vyberte funkce, které chcete importovat, a klikněte na **Vybrat**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-05.png)
+    ![Snímek obrazovky, který zvýrazní funkce, které se mají importovat, a tlačítko pro výběr.](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
     > Můžete importovat pouze funkce, které jsou založené na triggeru HTTP a mají úroveň autorizace nastavenou na *Anonymní* nebo *Funkce*.
 
-7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby zadejte další pole během vytváření nebo je nakonfigurujte později tak, že na kartu **Nastavení** nakonfigurujete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
-8. Klikněte na **Create** (Vytvořit).
+7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby zadejte další pole během vytváření nebo je nakonfigurujte později tak, že na kartu **Nastavení** nakonfigurujete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
+8. Klikněte na **Vytvořit**.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
 
@@ -82,33 +82,33 @@ Podle následujícího postupu připojíte aplikaci Azure Function App k existuj
 
 2. Zvolte rozhraní API, do kterého chcete importovat aplikaci Azure Function App. Klikněte na **...** a v místní nabídce vyberte **Importovat**.
 
-    ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-01.png)
+    ![Snímek obrazovky, který zvýrazní možnost nabídky Import](./media/import-function-app-as-api/append-01.png)
 
 3. Klikněte na dlaždici **Function App**.
 
-    ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-02.png)
+    ![Snímek obrazovky, který zvýrazní dlaždici Function App.](./media/import-function-app-as-api/append-02.png)
 
 4. V automaticky otevíraném okně klikněte na **Procházet**.
 
-    ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-03.png)
+    ![Snímek obrazovky zobrazující tlačítko pro procházení](./media/import-function-app-as-api/append-03.png)
 
 5. Kliknutím na část **Function App** zobrazte seznam dostupných aplikací Function App, ze kterých si můžete vybrat.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-03.png)
+    ![Snímek obrazovky, který zvýrazní seznam aplikací Function App](./media/import-function-app-as-api/add-03.png)
 
 6. Vyhledejte aplikaci Function App, ze které chcete importovat funkce, klikněte na ni a stiskněte **Vybrat**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-04.png)
+    ![Snímek obrazovky, který zvýrazní Function App chcete importovat funkce.](./media/import-function-app-as-api/add-04.png)
 
 7. Vyberte funkce, které chcete importovat, a klikněte na **Vybrat**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-05.png)
+    ![Snímek obrazovky, který zvýrazní functnios, která se má importovat](./media/import-function-app-as-api/add-05.png)
 
 8. Klikněte na **importovat**.
 
     ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a><a name="authorization"></a>Udělován
+## <a name="authorization"></a><a name="authorization"></a> Udělován
 
 Při importu aplikace Azure Function App se automaticky vygeneruje:
 
@@ -128,11 +128,11 @@ Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává
 
 2. V přehledu vyberte **Nastavení aplikace Function App**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-02-a.png)
+    ![Snímek obrazovky, který zvýrazní možnost nastavení aplikací Function App](./media/import-function-app-as-api/keys-02-a.png)
 
 3. Klíč se nachází v části **Klíče hostitele**.
 
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-02-b.png)
+    ![Snímek obrazovky, který zvýrazní oddíl klíčů hostitele.](./media/import-function-app-as-api/keys-02-b.png)
 
 ### <a name="access-the-named-value-in-azure-api-management"></a>Přístup k pojmenované hodnotě ve službě Azure API Management
 
@@ -140,7 +140,7 @@ Přejděte k vaší instanci služby Azure API Management a v nabídce na levé 
 
 ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a> Otestujte nové rozhraní API v Azure Portal
 
 Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí pohodlný způsob zobrazení a testování operací v rozhraní API.  
 
@@ -152,7 +152,7 @@ Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí po
 
     Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jedna z hlaviček je **OCP-APIM-Subscription-Key**, pro klíč předplatného produktu, který je spojený s tímto rozhraním API. Pokud jste vytvořili instanci služby API Management, jste už správcem a klíč se tedy vyplní automaticky. 
 
-4. Vyberte **Poslat**.
+4. Vyberte **Odeslat**.
 
     Back-end předá odpověď **200 OK** a nějaká data.
 

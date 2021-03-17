@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/10/2020
+ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388523"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215429"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Kódy chyb: Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90013` | Požadovaný typ odpovědi {0} zadaný v požadavku není podporován. |
 | `AADB2C90014` | Požadovaný režim odpovědi {0} zadaný v požadavku není podporován. |
 | `AADB2C90016` | Požadovaný typ kontrolního výrazu klienta se {0} neshoduje s očekávaným typem {1} . |
-| `AADB2C90017` | Kontrolní výraz klienta zadaný v požadavku je neplatný:{0} |
+| `AADB2C90017` | Kontrolní výraz klienta zadaný v požadavku je neplatný: {0} |
 | `AADB2C90018` | ID klienta {0} zadané v žádosti není zaregistrované v tenantovi {1} . |
 | `AADB2C90019` | Kontejner klíčů s ID {0} v tenantovi nemá {1} platný klíč. Důvod: {2} . |
 | `AADB2C90021` | Technický profil ' {0} ' neexistuje v zásadách ' ' {1} klienta ' ' {2} . |
@@ -61,6 +61,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90055` | Obor {0} zadaný v požadavku musí určovat prostředek, třeba https://example.com/calendar.read . |
 | `AADB2C90057` | Zadaná aplikace není nakonfigurovaná tak, aby povolovala implicitní tok protokolu OAuth. |
 | `AADB2C90058` | Zadaná aplikace není nakonfigurovaná tak, aby umožňovala veřejné klienty. |
+| `AADB2C99059` | Zadaný požadavek musí představovat code_challenge. Vyžaduje se pro jednostránkové aplikace pomocí toku autorizačního kódu.| 
 | `AADB2C90067` | Identifikátor URI přesměrování po odhlášení {0} má neplatný formát. Zadejte adresu URL založenou na protokolu HTTPS, jako je ' https://example.com/return ' nebo pro nativní klienty použijte identifikátor URI nativního klienta IETF: IETF: WG: OAuth: 2.0: OOB '. |
 | `AADB2C90068` | Poskytnutá aplikace s IDENTIFIKÁTORem není {0} platná pro tuto službu. Použijte prosím aplikaci vytvořenou prostřednictvím portálu B2C a zkuste to znovu. |
 | `AADB2C90075` | Výměna deklarací identity {0} zadaná v kroku {1} vrátila chybovou odpověď HTTP s kódem {2} a důvodem {3} . |
@@ -73,7 +74,8 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90085` | V této službě došlo k vnitřní chybě. Proveďte prosím znovu ověření a zkuste to znovu. |
 | `AADB2C90086` | Zadaný grant_type [ {0} ] není podporován. |
 | `AADB2C90087` | Poskytnutý grant nebyl vydán pro tuto verzi koncového bodu protokolu. |
-| `AADB2C90088` | Poskytnutý grant nebyl vystaven pro tento koncový bod. Skutečná hodnota: {0} a očekávaná hodnota:{1} |
+| `AADB2C90088` | Poskytnutý grant nebyl vystaven pro tento koncový bod. Skutečná hodnota: {0} a očekávaná hodnota: {1} |
+| `AADB2C90091` | Zrušení uživatele |
 | `AADB2C90092` | Poskytnutá aplikace s ID {0} je pro tenanta zakázaná {1} . Povolte prosím aplikaci a zkuste to znovu. |
 | `AADB2C90107` | Aplikace s ID {0} nemůže získat token ID, protože v požadavku nebyl zadán obor OpenID, nebo aplikace není pro ni autorizována. |
 | `AADB2C90108` | Krok orchestrace {0} ' ' neurčuje CpimIssuerTechnicalProfileReferenceId, pokud byla očekávána jedna. |
@@ -100,7 +102,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90159` | Požadavek na ověření s vlastním uplatněním se nezdařil z důvodu {0} . |
 | `AADB2C90161` | Odpověď na odeslání s vlastním kontrolním výrazem se nezdařila z důvodu {0} . |
 | `AADB2C90165` | Zpráva iniciace SAML s ID {0} nebyla ve stavu nalezena. |
-| `AADB2C90168` | Požadavek HTTP-redirect neobsahuje požadovaný parametr {0} pro podepsaný požadavek. |
+| `AADB2C90168` | Požadavek HTTP-Redirect neobsahuje požadovaný parametr ' {0} ' pro podepsaný požadavek. |
 | `AADB2C90178` | Podpisový certifikát ' {0} ' nemá žádný privátní klíč. |
 | `AADB2C90182` | Dodaná code_verifier se neshodují s přidruženými code_challenge |
 | `AADB2C90183` | Zadaný code_verifier není platný. |

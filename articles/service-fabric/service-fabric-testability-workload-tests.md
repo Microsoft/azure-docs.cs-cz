@@ -1,16 +1,15 @@
 ---
 title: Simulace chyb v aplikacích Azure Service Fabric
 description: Přečtěte si, jak posílit vaše služby Azure Service Fabric před řádnými a nedarovanými chybami.
-author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.author: anmola
-ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c714ae30c64ea073cbac521eac5e15a8d968b7ea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645986"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531306"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulace chyb během úloh služby
 Scénáře testování v Azure Service Fabric umožňují vývojářům bez obav řešit jednotlivé chyby. Existují však situace, kdy může být potřeba explicitní prokládání úloh a selhání klienta. Prokládání zatížení a chyb klienta zajišťuje, že služba skutečně provádí určitou akci, když dojde k selhání. Vzhledem k úrovni řízení, které poskytuje testování, by mohly být v přesném bodě provádění úlohy. Tento počet chyb v různých stavech aplikace může najít chyby a zlepšit kvalitu.
@@ -18,7 +17,7 @@ Scénáře testování v Azure Service Fabric umožňují vývojářům bez obav
 ## <a name="sample-custom-scenario"></a>Ukázka vlastního scénáře
 Tento test znázorňuje scénář, který ponechá pracovní úlohu s [řádnými a nedarovanými chybami](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Chyby by se měly vystavit za provozu služeb nebo výpočetních prostředků pro dosažení nejlepších výsledků.
 
-Podívejme se na příklad služby, která zveřejňuje čtyři úlohy: A, B, C a D. Každá z nich odpovídá sadě pracovních postupů a může být COMPUTE, úložiště nebo kombinace. V zájmu jednoduchosti se v našem příkladu vyčerpá úlohy. K různým chybám provedeným v tomto příkladu patří:
+Pojďme si projít příkladem služby, která zveřejňuje čtyři úlohy: A, B, C a D. Každá z nich odpovídá sadě pracovních postupů a může být COMPUTE, úložiště nebo kombinace. V zájmu jednoduchosti se v našem příkladu vyčerpá úlohy. K různým chybám provedeným v tomto příkladu patří:
 
 * RestartNode: nedarovaná chyba pro simulaci restartování počítače.
 * RestartDeployedCodePackage: nedarovaná chyba pro simulaci selhání procesu hostitele služby.

@@ -3,7 +3,7 @@ title: Konfigurace zásad doručení assetu pomocí Media Services REST API | Mi
 description: V tomto tématu se dozvíte, jak nakonfigurovat různé zásady doručování assetů pomocí Media Services REST API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: cfowler
 editor: ''
 ms.assetid: 5cb9d32a-e68b-4585-aa82-58dded0691d0
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 4c67866e55b49f37d7dbf94ddde9698f58b5300b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 65a7b9479dae1826f478ca5e038ef5feb1caefb6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057054"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017320"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurace zásad doručení assetu
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
 Pokud plánujete doručování dynamicky šifrovaných prostředků, jeden z kroků v pracovním postupu pro doručování obsahu Media Services konfiguruje zásady doručování pro prostředky. Zásada doručení assetu oznamuje Media Services, jak chcete, aby se Asset doručil: do kterého by měl být váš Asset dynamicky zabalen (například MPEG POMLČKa, HLS, Smooth Streaming nebo vše), ať už chcete, nebo ne, chcete-li prostředek dynamicky zašifrovat a jak (obálky nebo běžné šifrování).
@@ -56,7 +60,7 @@ MPEG DASH
 
 Pokyny k publikování assetu a vytvoření adresy URL streamování najdete v článku o [vytvoření adresy URL streamování](media-services-deliver-streaming-content.md).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 * Nelze odstranit AssetDeliveryPolicy přidružené k assetu, zatímco pro daný prostředek existuje Lokátor OnDemand (streaming). Doporučujeme odstranit zásadu z assetu předtím, než zásadu odstraníte.
 * Lokátor streamování nejde vytvořit na prostředku šifrovaném úložiště, pokud není nastavená žádná zásada pro doručení prostředků.  Pokud prostředek není šifrovaný jako zašifrovaný, systém vám umožní vytvořit Lokátor a streamovat prostředek ve formě bez zásad doručení assetu.
 * K jednomu prostředku můžete mít k dispozici více zásad doručení prostředků, ale můžete zadat jenom jeden způsob, jak zpracovat daný AssetDeliveryProtocol.  To znamená, že se pokusíte propojit dvě zásady doručování, které určují protokol AssetDeliveryProtocol. SmoothStreaming, který bude mít za následek chybu, protože systém neví, který z nich chcete použít, když klient provede požadavek Smooth Streaming.
@@ -278,7 +282,7 @@ Host: media.windows.net
 
 Pokud chcete chránit svůj obsah pomocí Widevine DRM, aktualizujte hodnoty AssetDeliveryConfiguration na použití WidevineLicenseAcquisitionUrl (která má hodnotu 7) a zadejte adresu URL služby doručování licencí. Následující partneři AMS vám pomůžou s poskytováním licencí Widevine: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
-Příklad: 
+Například: 
 
 ```console
 {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}

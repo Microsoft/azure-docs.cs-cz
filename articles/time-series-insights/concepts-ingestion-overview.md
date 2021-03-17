@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33cafd058e55951f7da4e925a603c2c442d4aed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b76490ab23cb14755f6f90a27ec8b176bb30a11
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077672"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780021"
 ---
 # <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Přehled příjmu dat Azure Time Series Insights Gen2
 
 Prostředí Azure Time Series Insights Gen2 obsahuje *modul* ingestování, který umožňuje shromažďovat, zpracovávat a ukládat data časových řad streamování. Když se data dostanou do vašich zdrojů událostí, Azure Time Series Insights Gen2 spotřebuje a uloží vaše data téměř v reálném čase.
 
-[![Přehled příjmu](media/concepts-ingress-overview/ingress-overview.png)](media/concepts-ingress-overview/ingress-overview.png#lightbox)
+[![Přehled příjmu dat](media/concepts-ingress-overview/ingress-overview.png)](media/concepts-ingress-overview/ingress-overview.png#lightbox)
 
 ## <a name="ingestion-topics"></a>Témata pro přijímání zpráv
 
@@ -37,4 +37,4 @@ Následující články zahrnují zpracování dat v hloubkě, včetně osvědč
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokračujte na Další informace o [zdrojích událostí](./concepts-streaming-ingestion-event-sources.md) pro prostředí Azure Time Series Insights Gen2. 
+* Pokračujte na Další informace o [zdrojích událostí](./concepts-streaming-ingestion-event-sources.md) pro prostředí Azure Time Series Insights Gen2.

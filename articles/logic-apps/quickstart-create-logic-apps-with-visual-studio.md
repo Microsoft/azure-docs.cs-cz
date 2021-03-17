@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/07/2020
-ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 10/27/2020
+ms.openlocfilehash: 8181097425045e5b1ed838c5fcc08b0069185908
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008878"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051953"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlé zprovoznění: Vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -20,9 +20,9 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a sady Visual S
 
 Pokud s Azure Logic Apps teprve začínáte a chcete jenom základní koncepty, vyzkoušejte si [rychlý Start pro vytvoření aplikace logiky v Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Návrhář aplikace logiky funguje podobně jak v Azure Portal, tak i v sadě Visual Studio.
 
-V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual Studio jako rychlý Start Azure Portal. Tato aplikace logiky monitoruje informační kanál RSS webu a odesílá e-maily pro každou novou položku v tomto informačním kanálu. Vaše dokončená aplikace logiky bude vypadat jako tento pracovní postup vysoké úrovně:
+V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual Studio jako rychlý Start Azure Portal. Můžete se také naučit [vytvořit ukázkovou aplikaci v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)a [vytvářet a spravovat aplikace logiky prostřednictvím rozhraní Azure Command-Line (Azure CLI)](quickstart-logic-apps-azure-cli.md). Tato aplikace logiky monitoruje informační kanál RSS webu a odesílá e-maily pro každou novou položku v tomto informačním kanálu. Vaše dokončená aplikace logiky bude vypadat jako tento pracovní postup vysoké úrovně:
 
-![Hotová aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
+![Snímek obrazovky, který zobrazuje pracovní postup dokončené aplikace logiky na nejvyšší úrovni.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -37,7 +37,7 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
     > [!IMPORTANT]
     > Když nainstalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali úlohu **vývoj pro Azure** .
 
-  * [Microsoft Azure SDK pro .NET (2.9.1 nebo novější)](https://azure.microsoft.com/downloads/). Další informace o sadě [Azure SDK pro .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  * [Microsoft Azure SDK pro .NET (2.9.1 nebo novější)](https://azure.microsoft.com/downloads/). Další informace o sadě [Azure SDK pro .NET](/dotnet/azure/intro).
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -55,10 +55,12 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
 
   Návrhář potřebuje připojení k Internetu, aby mohl vytvářet prostředky v Azure a číst vlastnosti a data z konektorů ve vaší aplikaci logiky.
 
-* E-mailový účet podporovaný v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pro jiné poskytovatele zkontrolujte [seznam konektorů](/connectors/). V tomto příkladu se používá Office 365 Outlook. Pokud použijete jiného poskytovatele, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+* E-mailový účet, který podporuje Logic Apps, jako je například Outlook pro Microsoft 365, Outlook.com nebo Gmail. Pro jiné poskytovatele zkontrolujte [seznam konektorů](/connectors/). V tomto příkladu se používá Office 365 Outlook. Pokud použijete jiného poskytovatele, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
   > [!IMPORTANT]
   > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Pokud vaše aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí brána firewall povolit přístup *pro* [příchozí](logic-apps-limits-and-config.md#inbound) i [odchozí](logic-apps-limits-and-config.md#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](logic-apps-limits-and-config.md#outbound) v oblasti Azure vaší aplikace logiky.
 
 <a name="azure-government"></a>
 
@@ -70,7 +72,7 @@ Můžete použít rozšíření sady [Visual Studio pro selektory prostředí Az
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-Pokud chcete pracovat s předplatnými Azure Government v Azure Logic Apps, musíte [do sady Visual Studio přidat koncový bod zjišťování pro Azure Government Cloud](../azure-government/documentation-government-connect-vs.md). *Před přihlášením k aplikaci Visual Studio pomocí účtu Azure Government*je však nutné přejmenovat soubor JSON, který je generován po přidání koncového bodu zjišťování pomocí následujících kroků:
+Pokud chcete pracovat s předplatnými Azure Government v Azure Logic Apps, musíte [do sady Visual Studio přidat koncový bod zjišťování pro Azure Government Cloud](../azure-government/documentation-government-connect-vs.md). *Před přihlášením k aplikaci Visual Studio pomocí účtu Azure Government* je však nutné přejmenovat soubor JSON, který je generován po přidání koncového bodu zjišťování pomocí následujících kroků:
 
 1. Zavřete Visual Studio.
 
@@ -136,11 +138,11 @@ Když máte projekt skupiny prostředků Azure, vytvořte aplikaci logiky pomoc�
 
    Visual Studio vás vyzve k zadání předplatného Azure a skupiny prostředků Azure pro vytváření a nasazování prostředků pro vaši aplikaci logiky a připojení.
 
-1. Jako **předplatné**vyberte své předplatné Azure. V případě **skupiny prostředků**vyberte **vytvořit novou** a vytvořte další skupinu prostředků Azure.
+1. Jako **předplatné** vyberte své předplatné Azure. V případě **skupiny prostředků** vyberte **vytvořit novou** a vytvořte další skupinu prostředků Azure.
 
    ![Výběr předplatného Azure, skupiny prostředků a umístění prostředků](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Nastavení | Příklad hodnoty | Popis |
+   | Nastavení | Příklad hodnoty | Description |
    | ------- | ------------- | ----------- |
    | Uživatelský účet | Fabrikam <br> sophia-owen@fabrikam.com | Účet, který jste použili při přihlášení k aplikaci Visual Studio |
    | **Předplatné** | Průběžné platby <br> (sophia-owen@fabrikam.com) | Název vašeho předplatného Azure a přidruženého účtu |
@@ -148,7 +150,7 @@ Když máte projekt skupiny prostředků Azure, vytvořte aplikaci logiky pomoc�
    | **Umístění** | **Stejné jako skupina prostředků** | Typ umístění a konkrétní umístění pro nasazení aplikace logiky Typ umístění je buď oblast Azure, nebo existující [prostředí Integration Service (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Pro tento rychlý Start ponechejte typ umístění nastavený na **oblast** a umístění nastavené na **stejné jako skupina prostředků**. <p>**Poznámka**: po vytvoření projektu skupiny prostředků můžete [změnit typ umístění a umístění](manage-logic-apps-with-visual-studio.md#change-location), ale jiný typ umístění ovlivní vaši aplikaci logiky různými způsoby. |
    ||||
 
-1. Návrhář Logic Apps otevře stránku se zobrazeným úvodním videem a běžně používanými triggery. Posuňte se dolů za video a triggery do **šablon**a vyberte **prázdná aplikace logiky**.
+1. Návrhář Logic Apps otevře stránku se zobrazeným úvodním videem a běžně používanými triggery. Posuňte se dolů za video a triggery do **šablon** a vyberte **prázdná aplikace logiky**.
 
    ![Výběr možnosti Prázdná aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 

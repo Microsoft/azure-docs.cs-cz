@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689210"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90563858"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect synchronizace: Principy architektury
 Toto téma popisuje základní architekturu pro Azure AD Connect synchronizaci. V mnoha aspektech se podobá jejím předchůdcům MIIS 2003, ILM 2007 a FIM 2010. Azure AD Connect synchronizace je vývoj těchto technologií. Pokud jste obeznámeni s některou z těchto dřívějších technologií, bude vám také docházet k obsahu tohoto tématu. Pokud s synchronizací začínáte, toto téma je za vás. Není však nutné znát podrobnosti tohoto tématu, aby bylo možné provést přizpůsobení Azure AD Connect synchronizaci (tzv. synchronizační modul v tomto tématu).
@@ -36,7 +36,7 @@ Synchronizační modul zapouzdřuje interakci s připojeným zdrojem dat v rámc
 
 Konektory umožňují volání rozhraní API k výměně informací o identitě (čtení i zápis) s připojeným zdrojem dat. Je také možné přidat vlastní konektor pomocí rozšiřitelné architektury pro připojení. Následující obrázek znázorňuje, jak konektor připojuje propojený zdroj dat k synchronizačnímu modulu.
 
-![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![Diagram znázorňuje připojený zdroj dat a synchronizační modul přidružený k řádku s názvem Connector.](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 Data mohou být v obou směrech předávána, ale nemohou současně procházet oběma směry. Jinými slovy konektor lze nakonfigurovat tak, aby povoloval data, která se mají přesměrovat z připojeného zdroje dat do synchronizačního modulu, nebo z synchronizačního modulu do připojeného zdroje dat, ale pro jeden objekt a atribut můžou být v jednom okamžiku jenom jedna z těchto operací. Směr se může lišit pro různé objekty a pro různé atributy.
 
@@ -62,7 +62,7 @@ Kromě toho synchronizační modul ukládá informace o stavu všech objektů, k
 
 Následující obrázek znázorňuje obor názvů konektoru a obor názvů Metaverse v rámci synchronizačního modulu.
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![Diagram znázorňuje připojený zdroj dat a synchronizační modul, který je rozdělený na prostor konektoru a obory názvů Metaverse, který je přidružený k řádku s názvem Connector.](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>Synchronizovat objekty identity modulu
 Objekty v modulu synchronizace představují reprezentace buď objektů v připojeném zdroji dat, nebo integrovaného zobrazení, které modul synchronizace obsahuje. Každý objekt synchronizačního modulu musí mít globálně jedinečný identifikátor (GUID). Identifikátory GUID poskytují integritu dat a expresní vztahy mezi objekty.
@@ -97,13 +97,13 @@ Pracovní objekt může být objekt pro import nebo objekt exportu. Synchroniza�
 
 Následující ilustrace znázorňuje objekt importu, který představuje objekt v připojeném zdroji dat.
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![Diagram znázorňuje objekt importu předaný z připojeného zdroje dat do oboru názvů připojovacího prostoru v synchronizačním modulu.](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 Synchronizační modul vytvoří objekt exportu pomocí informací o objektu v úložišti Metaverse. Exportovat objekty jsou exportovány do připojeného zdroje dat během další komunikační relace. Z perspektivy synchronizačního modulu neexistují objekty exportu v připojeném zdroji dat. Proto atribut Anchor pro objekt exportu není k dispozici. Po přijetí objektu z synchronizačního modulu vytvoří připojený zdroj dat jedinečnou hodnotu pro atribut ukotvení objektu.
 
 Následující obrázek ukazuje, jak je objekt exportu vytvořen pomocí informací o identitě v úložišti Metaverse.
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![Diagram znázorňuje objekt exportu z úložiště metaverse do oboru názvů služby Connector a následně do připojeného zdroje dat.](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 Synchronizační modul potvrdí Export objektu opětovným importem objektu z připojeného zdroje dat. Exportovat objekty se stanou importovat objekty, když je synchronizační modul obdrží během příštího importu z připojeného zdroje dat.
 
@@ -132,7 +132,7 @@ Když se pracovní objekt změní na připojený objekt během synchronizace, at
 
 Jeden objekt prostoru konektoru může být propojený jenom s jedním objektem úložiště metaverse. Každý objekt úložiště metaverse je však možné propojit s více objekty prostoru konektoru ve stejném nebo v různých prostorech konektoru, jak je znázorněno na následujícím obrázku.
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![Diagram znázorňuje dva připojené datové objekty přidružené konektory k synchronizačnímu modulu, který má připojené objekty a odpojený objekt.](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 Propojený vztah mezi pracovním objektem a objektem úložiště metaverse je trvalý a lze jej odebrat pouze pomocí pravidel, která zadáte.
 
@@ -145,7 +145,7 @@ Objekt importu se vytvoří jako odpojený objekt. Objekt exportu musí být př
 ## <a name="sync-engine-identity-management-process"></a>Proces správy identit modulu synchronizace
 Proces správy identit řídí způsob, jakým se aktualizují informace o identitě mezi různými připojenými zdroji dat. Správa identit probíhá ve třech procesech:
 
-* Import
+* Importovat
 * Synchronizace
 * Export
 
@@ -157,7 +157,7 @@ Synchronizační modul během procesu exportu vysune změny, které jsou připra
 
 Následující obrázek ukazuje, kde se jednotlivé procesy vyskytují jako informace o identitě z jednoho připojeného zdroje dat do jiného.
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![Diagram znázorňuje tok informací o identitě z připojených dat do prostoru konektoru (import) do úložiště dat (synchronizaci) do úložiště s připojenými daty (export) do úložiště metaverse.](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>Importovat proces
 Synchronizační modul během procesu importu vyhodnocuje aktualizace informací o identitě. Synchronizační modul porovnává informace o identitě získané z připojeného zdroje dat s informacemi o přípravných objektech a určí, zda pracovní objekt vyžaduje aktualizace. Pokud je potřeba aktualizovat pracovní objekt novými daty, pracovní objekt je označen jako čeká na import.
@@ -252,7 +252,7 @@ Například proces v připojeném zdroji dat může změnit atributy objektu zp�
 
 Synchronizační modul ukládá informace o stavu exportu a importu o všech pracovních objektech. Pokud se od posledního exportu změnily hodnoty atributů, které jsou zadány v seznamu pro zahrnutí atributů, je uložení stavu importu a exportu umožní, aby synchronizační modul správně reagoval. Synchronizační modul používá proces importu k potvrzení hodnot atributů, které byly exportovány do připojeného zdroje dat. Porovnání importovaných a exportovaných informací, jak je znázorněno na následujícím obrázku, umožňuje modulu synchronizace určit, zda byl export úspěšný, nebo zda je nutné jej opakovat.
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![Diagram znázorňuje synchronizaci objektu mezi spojovacím prostorem a připojenými daty přes konektor.](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 Například pokud synchronizační modul exportuje atribut C, který má hodnotu 5, na připojený zdroj dat, ukládá C = 5 do své paměťové stavy exportu. Každý další export tohoto objektu vede k pokusu o export C = 5 do připojeného zdroje dat, protože synchronizační modul předpokládá, že se tato hodnota pro objekt netrvalě nepoužila (to znamená, pokud se v poslední době neimportovala jiná hodnota z připojeného zdroje dat). Exportovaná paměť je vymazána při přijetí C = 5 během operace importu objektu.
 

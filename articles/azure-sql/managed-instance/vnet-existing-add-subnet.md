@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711302"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91617648"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Konfigurace stávající virtuální sítě pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,7 +31,7 @@ Pokud se vám na vás vztahuje jeden z následujících případů, můžete ov�
 - Chcete ověřit, že podsíť ještě splňuje [požadavky sítě](connectivity-architecture-overview.md#network-requirements) po provedení změn.
 
 > [!Note]
-> Spravovanou instanci můžete vytvořit pouze ve virtuálních sítích vytvořených pomocí modelu nasazení Azure Resource Manager. Virtuální sítě Azure vytvořené prostřednictvím modelu nasazení Classic se nepodporují. Vypočítejte velikost podsítě podle pokynů v článku [Určení velikosti podsítě pro SQL Managed instance](vnet-subnet-determine-size.md) . Po nasazení prostředků v rámci nelze změnit velikost podsítě.
+> Spravovanou instanci můžete vytvořit pouze ve virtuálních sítích vytvořených pomocí modelu nasazení Azure Resource Manager. Virtuální sítě Azure vytvořené prostřednictvím modelu nasazení Classic se nepodporují. Vypočítejte velikost podsítě podle pokynů v článku [Určení velikosti podsítě pro SQL Managed instance](vnet-subnet-determine-size.md) . Po nasazení prostředků do podsítě není možné změnit velikost podsítě.
 >
 > Po vytvoření spravované instance se přesunutí instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného nepodporuje.
 

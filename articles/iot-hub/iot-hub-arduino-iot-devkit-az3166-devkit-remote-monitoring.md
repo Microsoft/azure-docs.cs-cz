@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6912124ce8d1741731d625dccfea445417b2488d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337955"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785012"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
 
@@ -24,9 +24,9 @@ V tomto kurzu se naučíte, jak spustit ukázkovou aplikaci v DevKit a poslat da
 
 ## <a name="what-you-need"></a>Co budete potřebovat
 
-Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
+Dokončete [průvodce Začínáme](./iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
-* Připojení DevKit k Wi-Fi
+* Připojte DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
 Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes jednu z těchto dvou metod:
@@ -66,7 +66,7 @@ Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregist
   
    ![Vytvořit zařízení s ID](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
-8. Poznamenejte si **IoT Hub název hostitele**a klikněte na **Hotovo**.
+8. Poznamenejte si **IoT Hub název hostitele** a klikněte na **Hotovo**.
 
 ## <a name="open-the-remotemonitoring-sample"></a>Otevřete ukázku RemoteMonitoring
 
@@ -79,10 +79,10 @@ Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregist
    * Úvodní stránka DevKit
    * Příklady Arduino: praktické ukázky, které vám pomohou začít s DevKit.
 
-4. Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT**a vyberte **RemoteMonitoring**. Otevře se nové okno VS Code se složkou projektu v něm.
+4. Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT** a vyberte **RemoteMonitoring**. Otevře se nové okno VS Code se složkou projektu v něm.
 
    > [!NOTE]
-   > Pokud se rozhodnete podokno zavřít, můžete ho znovu otevřít. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
+   > Pokud se rozhodnete podokno zavřít, můžete ho znovu otevřít. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino** a pak vyhledejte a vyberte **Arduino: příklady**.
 
 ## <a name="provision-required-azure-services"></a>Zřízení požadovaných služeb Azure
 
@@ -120,7 +120,7 @@ Po spuštění ukázkové aplikace DevKit odešle data ze senzorů přes WiFi do
 
 ## <a name="change-device-id"></a>Změnit ID zařízení
 
-Pokud chcete změnit pevně zakódované **AZ3166** na vlastní ID zařízení v kódu, upravte řádek kódu zobrazeného v [příkladu vzdáleného monitorování](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md).
+Pokud chcete změnit pevně zakódované **AZ3166** na vlastní ID zařízení v kódu, upravte řádek kódu zobrazeného v [příkladu vzdáleného monitorování](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2).
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
@@ -133,6 +133,6 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy k sadě IoT
 
 Teď, když jste se seznámili s postupem připojení zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a vizualizaci dat snímačů, tady jsou doporučené další kroky:
 
-* [Přehled akcelerátorů řešení Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Přehled akcelerátorů řešení Azure IoT](/azure/iot-suite/)
 
-* [Sada IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/) 
+* [Sada IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/)

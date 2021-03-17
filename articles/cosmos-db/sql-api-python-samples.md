@@ -9,19 +9,21 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 34257281470f051f3d385aa729ca5a4f3591e61c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586246"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018951"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Příklady Azure Cosmos DB Python
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Příklady sady .NET v2 SDK](sql-api-dotnet-samples.md)
 > * [Příklady sady .NET V3 SDK](sql-api-dotnet-v3sdk-samples.md)
 > * [Příklady sady Java v4 SDK](sql-api-java-sdk-samples.md)
+> * [Příklady sad data pružiny V3 SDK](sql-api-spring-data-sdk-samples.md)
 > * [Příklady v Node.js](sql-api-nodejs-samples.md)
 > * [Příklady v Pythonu](sql-api-python-samples.md)
 > * [Galerie ukázkového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -37,7 +39,7 @@ Ukázková řešení, která dělají operace CRUD a další běžné operace t�
     * V rámci předplatného Azure Active:
         * [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free) nebo použijte stávající předplatné. 
         * [Měsíční kredity sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB úroveň Free](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB úroveň Free](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * Bez aktivního předplatného Azure:
         * [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/), což je testovací prostředí, které trvá po dobu 30 dnů.
         * [Emulátor služby Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) 
@@ -49,47 +51,47 @@ Ukázková řešení, která dělají operace CRUD a další běžné operace t�
 
 ## <a name="database-examples"></a>Příklady pro databáze
 
-Ukázka [database_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Ukázka [database_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
 | Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
-| [Vytvoření databáze](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L48-L56) |CosmosClient. create_database|
-| [Čtení databáze podle ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L59-L67) |CosmosClient. get_database_client|
-| [Dotazování databází](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L32-L67) |CosmosClient. query_databases|
-| [Výpis databází pro účet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L70-L81) |CosmosClient. list_databases|
-| [Odstranění databáze](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L84-L93) |CosmosClient. delete_database|
+| [Vytvoření databáze](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L48-L56) |CosmosClient.create_database|
+| [Čtení databáze podle ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L59-L67) |CosmosClient.get_database_client|
+| [Dotazování databází](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L32-L67) |CosmosClient.query_databases|
+| [Výpis databází pro účet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L70-L81) |CosmosClient.list_databases|
+| [Odstranění databáze](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L84-L93) |CosmosClient.delete_database|
 
 ## <a name="container-examples"></a>Příklady pro kontejnery
 
-Ukázka [container_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) Python ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Ukázka [container_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) Python ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
 | Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
-| [Dotaz na kontejner](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L51-L66) |databáze. query_containers |
-| [Vytvoření kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L69-L163) |databáze. create_container |
-| [Vypsat všechny kontejnery v databázi](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L206-L217) |databáze. list_containers |
-| [Získat kontejner podle jeho ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L195-L203) |databáze. get_container_client |
-| [Správa zřízené propustnosti kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L166-L192) |Container. read_offer, Container. replace_throughput|
-| [Odstranění kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L220-L229) |databáze. delete_container |
+| [Dotaz na kontejner](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L51-L66) |database.query_containers |
+| [Vytvoření kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L69-L163) |database.create_container |
+| [Vypsat všechny kontejnery v databázi](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L206-L217) |database.list_containers |
+| [Získat kontejner podle jeho ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L195-L203) |database.get_container_client |
+| [Správa zřízené propustnosti kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L166-L192) |container.read_offer container.replace_throughput|
+| [Odstranění kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L220-L229) |database.delete_container |
 
 ## <a name="item-examples"></a>Příklady pro položky
 
-Ukázka [item_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Ukázka [item_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
 | Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
-| [Vytváření položek v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L26-L38) |kontejner. create_item |
-| [Číst položku podle jejího ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L41-L49) |kontejner. read_item |
-| [Načte všechny položky v kontejneru.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L52-L63) |kontejner. read_all_items |
-| [Dotazování položky podle jejího ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78) |kontejner. query_items |
-| [Nahrazení položky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L81-L88) |kontejner. replace_items |
-| [Upsert položku](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L91-L98) |kontejner. upsert_item |
-| [Odstranění položky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L101-L106) |kontejner. delete_item |
-| [Získání kanálu změn položek v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/change_feed_management.py) |kontejner. query_items_change_feed |
+| [Vytváření položek v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L26-L38) |container.create_item |
+| [Číst položku podle jejího ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L41-L49) |container.read_item |
+| [Načte všechny položky v kontejneru.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L52-L63) |container.read_all_items |
+| [Dotazování položky podle jejího ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78) |container.query_items |
+| [Nahrazení položky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L81-L88) |container.replace_items |
+| [Upsert položku](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L91-L98) |container.upsert_item |
+| [Odstranění položky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L101-L106) |container.delete_item |
+| [Získání kanálu změn položek v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/change_feed_management.py) |container.query_items_change_feed |
 
 ## <a name="indexing-examples"></a>Příklady indexování
 
-Ukázka [index_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) .
+Ukázka [index_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-overview.md#index-types)a [indexovaných cestách](index-policy.md#include-exclude-paths) .
 
 | Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
@@ -97,5 +99,5 @@ Ukázka [index_management. py](https://github.com/Azure/azure-sdk-for-python/blo
 | [Použití ručního indexování s indexovanými konkrétními položkami](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L204-L263) | Document. IndexingDirective. include |
 | [Vyloučit cesty z indexování](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L266-L336) |Definovat cesty, které mají být vyloučeny ve `IndexingPolicy` vlastnosti |
 | [Použití indexů rozsahu na řetězce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L401-L485) | Definujte zásady indexování s indexy rozsahu pro datový typ String. `'kind': documents.IndexKind.Range`, `'dataType': documents.DataType.String`|
-| [Provedení transformace indexu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L488-L544) |Database. replace_container (použití aktualizovaných zásad indexování)|
+| [Provedení transformace indexu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L488-L544) |database.replace_container (použití aktualizovaných zásad indexování)|
 | [Použít kontroly, pokud v cestě existuje jenom index hash.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L339-L398) | nastavení `enable_scan_in_query=True` a `enable_cross_partition_query=True` při dotazování na položky |

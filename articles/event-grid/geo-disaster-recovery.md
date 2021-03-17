@@ -2,21 +2,21 @@
 title: Obnovení geografického zotavení po havárii v Azure Event Grid | Microsoft Docs
 description: Popisuje, jak Azure Event Grid automaticky podporuje obnovení geografického zotavení po havárii (GeoDR).
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 11/19/2020
+ms.openlocfilehash: 10beaf0ae25f3ed9b7bcda5961a89494b18b84d9
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105842"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980843"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Geografické zotavení po havárii na straně serveru v Azure Event Grid
 Event Grid nyní obsahuje automatickou geografickou obnovu po havárii (GeoDR) meta-data nejenom pro nové, ale všechny existující domény, témata a odběry událostí. Pokud dojde k výpadku celé oblasti Azure, Event Grid už budou všechna metadata infrastruktury související s událostmi synchronizovaná do spárované oblasti. Vaše nové události začnou pokračovat bez zásahu. 
 
 Zotavení po havárii se měří se dvěma metrikami:
 
-- [Cíl bodu obnovení (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): počet minut nebo hodin dat, která mohou být ztracena.
-- Plánovaná [Doba obnovení (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): počet minut, po které může být služba vypnutá.
+- Cíl bodu obnovení (RPO): počet minut nebo hodin dat, která mohou být ztracena.
+- Plánovaná doba obnovení (RTO): počet minut nebo hodin, po které může být služba vypnutá.
 
 Automatické převzetí služeb při selhání v Event Grid má různé RPO a RTO pro vaše metadata (odběry událostí atd.) a data (události). Pokud potřebujete různé specifikace z následujících možností, můžete i nadále implementovat vlastní funkci [převzetí služeb při selhání na straně klienta pomocí rozhraní API pro stav tématu](custom-disaster-recovery.md).
 

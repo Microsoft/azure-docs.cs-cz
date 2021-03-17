@@ -4,14 +4,14 @@ description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 50fdab1fa8def1b4e3b9a9d59d3b2593e5526c65
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092486"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472044"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
@@ -29,9 +29,9 @@ Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.micr
 
 ![snímek stránky s podrobnostmi projektu v Azure Portal](media/hpc-cache-create-basics.png)
 
-V části **Project Details (podrobnosti projektu**) vyberte předplatné a skupinu prostředků, které budou hostovat mezipaměť. Ujistěte se, že je odběr v seznamu [přístupu](hpc-cache-prerequisites.md#azure-subscription) .
+V části **Project Details (podrobnosti projektu**) vyberte předplatné a skupinu prostředků, které budou hostovat mezipaměť.
 
-V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní atributy:
+V části **Podrobnosti o službě** nastavte název mezipaměti a tyto ostatní atributy:
 
 * Umístění – vyberte jednu z [podporovaných oblastí](hpc-cache-overview.md#region-availability).
 * Virtuální síť – můžete vybrat existující virtuální síť nebo vytvořit novou.
@@ -59,7 +59,7 @@ Azure HPC cache spravuje, které soubory jsou uložené do mezipaměti a předem
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Povolit šifrování Azure Key Vault (volitelné)
 
-Pokud je vaše mezipaměť v oblasti, která podporuje šifrovací klíče spravované zákazníkem, zobrazí se stránka **klíče šifrování disku** mezi kartami **mezipaměti** a **značky** . Další informace o podpoře oblastí najdete v tématu věnovaném [místní dostupnosti](hpc-cache-overview.md#region-availability) .
+Na kartách **mezipaměť** a **značky** se zobrazí stránka **šifrovací klíče disku** .<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 Pokud chcete spravovat šifrovací klíče používané pro úložiště mezipaměti, zadejte informace o Azure Key Vault na stránce **klíče pro šifrování disku** . Trezor klíčů musí být ve stejné oblasti a ve stejném předplatném jako mezipaměť.
 
@@ -81,7 +81,7 @@ Po vytvoření mezipaměti ji musíte autorizovat, aby používala službu trezo
 
 ## <a name="add-resource-tags-optional"></a>Přidat značky prostředků (volitelné)
 
-Stránka **značky** umožňuje přidat [značky prostředků](https://go.microsoft.com/fwlink/?linkid=873112) do instance mezipaměti prostředí Azure HPC.
+Stránka **značky** umožňuje přidat [značky prostředků](../azure-resource-manager/management/tag-resources.md) do instance mezipaměti prostředí Azure HPC.
 
 ## <a name="finish-creating-the-cache"></a>Dokončení vytváření mezipaměti
 
@@ -102,10 +102,10 @@ Po dokončení vytváření se zobrazí oznámení s odkazem na novou instanci m
 
 ## <a name="create-the-cache-with-azure-cli"></a>Vytvoření mezipaměti pomocí Azure CLI
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
 > [!NOTE]
-> Rozhraní příkazového řádku Azure v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijte Azure Portal.
+> Rozhraní příkazového řádku Azure v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijete Azure Portal
 
 Pomocí příkazu [AZ HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) vytvořte novou mezipaměť prostředí Azure HPC.
 
@@ -188,6 +188,97 @@ Zpráva obsahuje několik užitečných informací, včetně těchto položek:
 
 * Adresy připojení klienta – tyto IP adresy použijte, až budete připraveni k propojení klientů s mezipamětí. Další informace najdete [v tématu připojení mezipaměti prostředí Azure HPC](hpc-cache-mount.md) .
 * Stav upgradu – při vydání aktualizace softwaru se tato zpráva změní. [Software mezipaměti můžete ručně upgradovat](hpc-cache-manage.md#upgrade-cache-software) v pohodlném čase, nebo bude použit automaticky po několika dnech.
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> Modul PowerShell AZ. HPCCache je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb. Nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="requirements"></a>Požadavky
+
+Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps). Pokud se rozhodnete použít Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](../cloud-shell/overview.md) , kde najdete další informace.
+
+> [!IMPORTANT]
+> I když je modul PowerShell **AZ. HPCCache** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna k vydaným verzím modulu PowerShellu a k dispozici nativně z aplikace Azure Cloud Shell.
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>Vytvoření mezipaměti pomocí Azure PowerShell
+
+> [!NOTE]
+> Azure PowerShell v současné době nepodporuje vytváření mezipaměti pomocí šifrovacích klíčů spravovaných zákazníkem. Použijete Azure Portal
+
+Pomocí rutiny [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) vytvořte novou mezipaměť prostředí Azure HPC.
+
+Zadejte tyto hodnoty:
+
+* Název skupiny prostředků mezipaměti
+* Název mezipaměti
+* Oblast Azure
+* Podsíť mezipaměti v tomto formátu:
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  Podsíť mezipaměti potřebuje minimálně 64 IP adres (/24) a nemůže začínat žádné další prostředky.
+
+* Kapacita mezipaměti. Dvě hodnoty nastaví maximální propustnost vaší mezipaměti HPC Azure:
+
+  * Velikost mezipaměti (v GB)
+  * SKU virtuálních počítačů použitých v infrastruktuře mezipaměti
+
+  [Get-AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) zobrazí dostupné SKU a možnosti platné velikosti mezipaměti pro každé z nich. Možnosti velikosti mezipaměti jsou v rozsahu od 3 TB do 48 TB, ale podporují se jenom některé hodnoty.
+
+  Tento graf znázorňuje, která velikost mezipaměti a kombinace SKU jsou platné v době přípravy tohoto dokumentu (červenec 2020).
+
+  | Velikost mezipaměti | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | ano         | ne          | ne          |
+  | 6144 GB    | ano         | ano         | ne          |
+  | 12 288 GB   | ano         | ano         | ano         |
+  | 24 576 GB   | ne          | ano         | ano         |
+  | 49 152 GB   | ne          | ne          | ano         |
+
+  Informace o cenách, propustnosti a způsobu vhodné velikosti mezipaměti pro váš pracovní postup najdete v části **Nastavení kapacity mezipaměti** na kartě pokyny pro portál.
+
+Příklad vytvoření mezipaměti:
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+Vytvoření mezipaměti trvá několik minut. Po úspěšném provedení příkaz Create vrátí následující výstup:
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
+```
+
+Zpráva obsahuje několik užitečných informací, včetně těchto položek:
+
+* Adresy připojení klienta – tyto IP adresy použijte, až budete připraveni k propojení klientů s mezipamětí. Další informace najdete [v tématu připojení mezipaměti prostředí Azure HPC](hpc-cache-mount.md) .
+* Stav upgradu – při vydání aktualizace softwaru se tato zpráva změní. [Software mezipaměti můžete ručně upgradovat](hpc-cache-manage.md#upgrade-cache-software) v pohodlný čas, nebo se použije automaticky po několik dní.
 
 ---
 

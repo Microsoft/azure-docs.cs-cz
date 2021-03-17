@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2566b2cf950df915f8ea843c34ea1fb6f8e7ea21
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67542746"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342001"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>Přizpůsobení a návrh dotazů na hledání obrázků
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto článku se dozvíte, jak přizpůsobit dotazy a navrhovat hledané výrazy k odeslání do rozhraní API Bingu pro vyhledávání obrázků.
 
@@ -28,7 +33,7 @@ Pokud vaše aplikace obsahuje vyhledávací pole, ve kterém jsou zadány hledan
 
 ## <a name="pivot-the-query"></a>Kontingenční dotaz
 
-Pokud může Bing rozdělit původní vyhledávací dotaz, obsahuje `pivotSuggestions`objekt vrácených [obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) . Návrhy pivotu se dají uživateli zobrazit jako volitelné hledané výrazy. Například pokud byl původní dotaz na *Microsoft Surface*, Bing může segmentovat dotaz do *Microsoftu* a *Surface* a pro každý z nich navrhovat navržené pivoty. Tyto návrhy se dají uživateli zobrazit jako volitelné výrazy pro dotazování.
+Pokud může Bing rozdělit původní vyhledávací dotaz, obsahuje objekt vrácených [obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) `pivotSuggestions` . Návrhy pivotu se dají uživateli zobrazit jako volitelné hledané výrazy. Například pokud byl původní dotaz na *Microsoft Surface*, Bing může segmentovat dotaz do *Microsoftu* a *Surface* a pro každý z nich navrhovat navržené pivoty. Tyto návrhy se dají uživateli zobrazit jako volitelné výrazy pro dotazování.
 
 Následující příklad ukazuje návrhy pivotu pro *Microsoft Surface*:  
 
@@ -89,9 +94,9 @@ Následující příklad ukazuje návrhy pivotu pro *Microsoft Surface*:
 }
 ```
 
-Pole `pivotSuggestions` obsahuje seznam segmentů (pivotů), na které se rozdělil původní dotaz. Pro každý pivot obsahuje odpověď seznam objektů [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj), které obsahují navrhované dotazy. `text` Pole obsahuje navrhovaný dotaz. `displayText` Pole obsahuje termín, který nahradí Pivot v původním dotazu. Příkladem je datum vydání povrchu.
+Pole `pivotSuggestions` obsahuje seznam segmentů (pivotů), na které se rozdělil původní dotaz. Pro každý pivot obsahuje odpověď seznam objektů [Query](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj), které obsahují navrhované dotazy. `text`Pole obsahuje navrhovaný dotaz. `displayText`Pole obsahuje termín, který nahradí Pivot v původním dotazu. Příkladem je datum vydání povrchu.
 
-Pokud je řetězec kontingenčního dotazu, který uživatel hledá, použijte pole `text` a `thumbnail` k zobrazení řetězců kontingenčního dotazu. Nastavte miniaturu a text tak, aby se na `webSearchUrl` něj mohla kliknout `searchLink` pomocí adresy URL nebo adresy URL. Slouží `webSearchUrl` k odeslání uživatele do výsledků vyhledávání Bingu. Pokud zadáte vlastní stránku výsledků, použijte `searchLink`.
+Pokud je řetězec kontingenčního dotazu, který uživatel hledá, použijte `text` `thumbnail` pole a k zobrazení řetězců kontingenčního dotazu. Nastavte miniaturu a text tak, aby se na něj mohla kliknout pomocí `webSearchUrl` adresy URL nebo `searchLink` adresy URL. Slouží `webSearchUrl` k odeslání uživatele do výsledků vyhledávání Bingu. Pokud zadáte vlastní stránku výsledků, použijte `searchLink` .
 
 <!-- Need a sanitized version of the image
 The following shows an example of the pivot queries.
@@ -101,7 +106,7 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>Rozbalí dotaz
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) obsahovat pole `queryExpansions`. Pokud byl například dotaz na *Microsoft Surface*, rozšířené dotazy mohou být:
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) obsahovat pole `queryExpansions`. Pokud byl například dotaz na *Microsoft Surface*, rozšířené dotazy mohou být:
 - Microsoft surfing **pro 3**.
 - Microsoft Surface **RT**.
 - Microsoft Surface **Phone**.
@@ -147,7 +152,7 @@ Následující příklad ukazuje rozšířené dotazy pro dotaz *Microsoft Surfa
 }
 ```
 
-Pole `queryExpansions` obsahuje seznam objektů [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj). `text` Pole obsahuje rozbalený dotaz. `displayText` Pole obsahuje výraz rozšíření. Pokud je řetězec rozšířeného dotazu hledaný uživatelem, použijte pole `text` a `thumbnail` k zobrazení rozšířených řetězců dotazu. Nastavte miniaturu a text tak, aby se na `webSearchUrl` něj mohla kliknout `searchLink` pomocí adresy URL nebo adresy URL. Slouží `webSearchUrl` k odeslání uživatele do výsledků vyhledávání Bingu. Pokud zadáte vlastní stránku výsledků, použijte `searchLink`.
+Pole `queryExpansions` obsahuje seznam objektů [Query](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj). `text`Pole obsahuje rozbalený dotaz. `displayText`Pole obsahuje výraz rozšíření. Pokud je řetězec rozšířeného dotazu hledaný uživatelem, použijte `text` `thumbnail` pole a k zobrazení rozšířených řetězců dotazu. Nastavte miniaturu a text tak, aby se na něj mohla kliknout pomocí `webSearchUrl` adresy URL nebo `searchLink` adresy URL. Slouží `webSearchUrl` k odeslání uživatele do výsledků vyhledávání Bingu. Pokud zadáte vlastní stránku výsledků, použijte `searchLink` .
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.

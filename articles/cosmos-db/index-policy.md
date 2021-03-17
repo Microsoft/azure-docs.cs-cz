@@ -3,21 +3,23 @@ title: Azure Cosmos DB zásady indexování
 description: Přečtěte si, jak nakonfigurovat a změnit výchozí zásady indexování pro automatické indexování a vyšší výkon v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607511"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378804"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-V Azure Cosmos DB má každý kontejner zásady indexování, které určují, jak by měly být indexovány položky kontejneru. Výchozí zásada indexování pro nově vytvořené kontejnery indexuje každou vlastnost každé položky a vynutila indexy rozsahu pro libovolný řetězec nebo číslo. To vám umožní získat vysoký výkon dotazů, aniž byste se museli zabývat o indexování a správě indexu předem.
+Ve službě Azure Cosmos DB má každý kontejner zásady indexování, které určují, jakým způsobem by se měly indexovat položky kontejneru. Výchozí zásady indexování pro nově vytvořené kontejnery indexují všechny vlastnosti všech položek a u všech řetězců a čísel vynucují indexy rozsahu. To vám umožní získat dobrý výkon dotazů, aniž byste se museli zabývat předem s indexováním a správou indexu.
 
-V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování*a zahrnutí nebo vyloučení *cest k vlastnostem*.
+V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování* a zahrnutí nebo vyloučení *cest k vlastnostem*.
 
 > [!NOTE]
 > Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core). Další informace o indexování v [rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md)
@@ -30,11 +32,19 @@ Azure Cosmos DB podporuje dva režimy indexování:
 - **Žádné**: indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
 
 > [!NOTE]
-> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Pokud plánujete dotaz na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete taky požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
+> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority v době, kdy modul neprovádí žádnou jinou práci. To může vést k **nekonzistentním nebo neúplným** výsledkům dotazů. Pokud plánujete dotazy na kontejner Cosmos, neměli byste vybírat opožděné indexování. Nové kontejnery nemůžou vybírat opožděné indexování. Můžete požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
 
 Ve výchozím nastavení je zásada indexování nastavena na `automatic` . Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na `true` . Nastavením této vlastnosti `true` umožníte, aby Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Zahrnutí a vyloučení cest k vlastnostem
+## <a name="index-size"></a><a id="index-size"></a>Velikost indexu
+
+V Azure Cosmos DB celkové spotřebované úložiště je kombinací velikosti dat i velikosti indexu. Následující seznam obsahuje některé funkce velikosti indexu:
+
+* Velikost indexu závisí na zásadách indexování. Pokud jsou všechny vlastnosti indexovány, velikost indexu může být větší než velikost dat.
+* Při odstranění dat jsou indexy komprimovány téměř nepřetržitě. U malých odstranění dat ale nemusíte okamžitě sledovat velikost indexu.
+* Velikost indexu může být dočasně zvětšena při rozdělení fyzických oddílů. Indexový prostor je vydaný po dokončení rozdělení oddílu.
+
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 
 Vlastní zásada indexování může určovat cesty vlastností, které jsou explicitně zahrnuté nebo vyloučené z indexování. Optimalizací počtu indexovaných cest můžete významně snížit latenci a RU za operace zápisu. Tyto cesty jsou definovány podle [metody popsané v části Přehled indexování](index-overview.md#from-trees-to-property-paths) s následujícími přídavky:
 
@@ -73,7 +83,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 - Zahrňte kořenovou cestu pro selektivní vyloučení cest, které nemusejí být indexovány. To je doporučený postup, protože umožňuje Azure Cosmos DB proaktivní indexování všech nových vlastností, které mohou být přidány do modelu.
 - Vylučte kořenovou cestu pro selektivní zahrnutí cest, které je třeba indexovat.
 
-- Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "/ \" path-ABC \" /?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkce bez jakýchkoli rozdílů neprovádí žádnou odchylku, pokud zadáte všechny cesty a pouze ty, které mají speciální znaky.
+- Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "/ \" path-ABC \" /?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkčně nezpůsobuje žádný rozdíl, pokud řídíte každou cestu a pouze ty, které obsahují speciální znaky.
 
 - Vlastnost System `_etag` je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
 
@@ -81,7 +91,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 
-- `kind` může být buď `range` nebo `hash` . Funkce indexu rozsahu poskytuje všechny funkce indexu hash, proto doporučujeme použít index rozsahu.
+- `kind` může být buď `range` nebo `hash` . Podpora indexu hash je omezená na filtry rovnosti. Funkce indexu rozsahu poskytuje veškerou funkčnost indexů hash a také efektivní řazení, filtry rozsahu a systémové funkce. Vždycky doporučujeme použít index rozsahu.
 
 - `precision` je číslo definované na úrovni indexu pro zahrnuté cesty. Hodnota `-1` označuje maximální přesnost. Doporučujeme vždycky nastavit tuto hodnotu na `-1` .
 
@@ -133,7 +143,7 @@ Azure Cosmos DB ve výchozím nastavení nebudou vytvořeny žádné prostorové
 
 ## <a name="composite-indexes"></a>Složené indexy
 
-Dotazy, které mají `ORDER BY` klauzuli se dvěma nebo více vlastnostmi, vyžadují složený index. Můžete také definovat složený index pro zlepšení výkonu mnoha dotazů na rovnost a rozsah. Ve výchozím nastavení nejsou definovány žádné složené indexy, takže v případě potřeby byste měli [Přidat složené indexy](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+Dotazy, které mají `ORDER BY` klauzuli se dvěma nebo více vlastnostmi, vyžadují složený index. Můžete také definovat složený index pro zlepšení výkonu mnoha dotazů na rovnost a rozsah. Ve výchozím nastavení nejsou definovány žádné složené indexy, takže v případě potřeby byste měli [Přidat složené indexy](how-to-manage-indexing-policy.md#composite-index) .
 
 Na rozdíl od zahrnutých nebo vyloučených cest nemůžete vytvořit cestu se `/*` zástupným znakem. Každá složená cesta má implicitní `/?` na konci cesty, kterou nemusíte zadávat. Složené cesty vedou k skalární hodnotě a toto je jediná hodnota, která je obsažena ve složeném indexu.
 
@@ -158,7 +168,7 @@ Při použití složených indexů pro dotazy s `ORDER BY` klauzulí se dvěma n
 
 Vezměte v úvahu následující příklad, ve kterém je definován složený index ve vlastnostech název, věk a _ts:
 
-| **Složený index**     | **Vzorový `ORDER BY` dotaz**      | **Podporuje složený index?** |
+| **Složený index**     | **Vzorový `ORDER BY` dotaz**      | **Podpora složeného indexu** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -173,93 +183,155 @@ Zásady indexování byste měli přizpůsobit, abyste mohli obsluhovat všechny
 
 Pokud dotaz obsahuje filtry na dvě nebo více vlastností, může být užitečné vytvořit složený index pro tyto vlastnosti.
 
-Zvažte například následující dotaz, který má filtr rovnosti na dvou vlastnostech:
+Zvažte například následující dotaz, který má filtr rovnosti a rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18
 ```
 
-Tento dotaz bude efektivnější a bude trvat méně času a bude využívat méně RU, pokud dokáže využít složený index (název ASC, věk ASC).
+Tento dotaz bude efektivnější, bude trvat méně času a bude využívat méně RU, pokud je schopný využít složený index na `(name ASC, age ASC)` .
 
-Dotazy s filtry rozsahu lze také optimalizovat pomocí složeného indexu. Dotaz však může mít pouze jeden filtr rozsahu. Mezi filtry rozsahu patří `>` ,,, a `<` `<=` `>=` `!=` . Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
+Dotazy s více filtry rozsahu lze také optimalizovat pomocí složeného indexu. U každého samostatného složeného indexu ale můžete optimalizovat jenom jeden filtr rozsahu. Mezi filtry rozsahu patří `>` ,,, a `<` `<=` `>=` `!=` . Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
 
-Vezměte v úvahu následující dotaz s filtry rovnosti a rozsahu:
+Vezměte v úvahu následující dotaz s filtrem rovnosti a dvěma filtry rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-Tento dotaz bude efektivnější u složeného indexu (název ASC, věk ASC). Dotaz však nevyužívá složený index na (věk ASC, název ASC), protože filtry rovnosti musí být definovány jako první ve složeném indexu.
+Tento dotaz bude efektivnější díky složenému indexu v systémech `(name ASC, age ASC)` a `(name ASC, _ts ASC)` . Dotaz však nevyužívá složený index, `(age ASC, name ASC)` protože vlastnosti s filtry rovnosti musí být v složeném indexu definovány jako první. Místo jediného složeného indexu jsou požadovány dva samostatné složené indexy `(name ASC, age ASC, _ts ASC)` , protože každý složený index může optimalizovat pouze jeden filtr rozsahu.
 
 Při vytváření složených indexů pro dotazy s filtry na více vlastností se používají následující požadavky.
 
+- Výrazy filtru můžou používat víc složených indexů.
 - Vlastnosti ve filtru dotazu by měly odpovídat hodnotám ve složeném indexu. Pokud je vlastnost ve složeném indexu, ale není obsažena v dotazu jako filtr, dotaz nebude používat složený index.
 - Pokud má dotaz další vlastnosti, které nebyly definovány ve složeném indexu, pak se pro vyhodnocení dotazu použije kombinace složených a rozsahových indexů. To bude vyžadovat méně RU než výhradně pomocí indexů rozsahu.
-- Pokud má vlastnost filtr rozsahu ( `>` ,,, `<` `<=` `>=` nebo `!=` ), měla by být tato vlastnost definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, nebude složený index využívat.
+- Pokud má vlastnost filtr rozsahu ( `>` ,,, `<` `<=` `>=` nebo `!=` ), měla by být tato vlastnost definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, může to přinést více složených indexů.
 - Při vytváření složeného indexu pro optimalizaci dotazů s více filtry `ORDER` nebude mít složený index žádný vliv na výsledky. Tato vlastnost je nepovinná.
-- Pokud nedefinujete složený index pro dotaz s filtry na více vlastností, dotaz bude stále úspěšný. Náklady na dotaz na RU se ale můžou snížit pomocí složeného indexu.
 
 Vezměte v úvahu následující příklady, kde je pro název, stáří a časové razítko definováno složený index:
 
-| **Složený index**     | **Vzorový dotaz**      | **Podporuje složený index?** |
+| **Složený index**     | **Vzorový dotaz**      | **Podpora složeného indexu** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
+| ```(name ASC, age ASC)```   | ```SELECT COUNT(1) FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
 | ```(name DESC, age ASC)```    | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+| ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Dotazy s filtrem i klauzulí ORDER BY
+### <a name="queries-with-a-filter-and-order-by"></a>Dotazy s filtrem a POŘADÍm podle
 
 Pokud dotaz filtruje jednu nebo více vlastností a má jiné vlastnosti v klauzuli ORDER BY, může být užitečné přidat vlastnosti ve filtru k `ORDER BY` klauzuli.
 
-Například přidáním vlastností ve filtru do klauzule ORDER by může být přepsán následující dotaz pro využití složeného indexu:
+Například přidáním vlastností do klauzule Filter by bylo možné `ORDER BY` přepsat následující dotaz, který využívá složený index:
 
 Dotaz pomocí indexu rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+SELECT *
+FROM c 
+WHERE c.name = "John" 
+ORDER BY c.timestamp
 ```
 
 Dotaz používající složený index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John"
+ORDER BY c.name, c.timestamp
 ```
 
-Stejné optimalizace vzorů a dotazů je možné zobecnit pro dotazy s více filtry rovnosti:
+Stejné optimalizace dotazů je možné zobecnit pro všechny `ORDER BY` dotazy s filtry. Mějte na paměti, že jednotlivé složené indexy můžou podporovat maximálně jeden filtr rozsahu.
 
 Dotaz pomocí indexu rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.timestamp
 ```
 
 Dotaz používající složený index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.name, c.age, c.timestamp
 ```
 
-Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a klauzule se používají následující požadavky `ORDER BY` :
+Kromě toho můžete použít složené indexy k optimalizaci dotazů se systémovými funkcemi a seřadit podle:
 
-* Pokud dotaz filtruje vlastnosti, měly by být zahrnuty do `ORDER BY` klauzule First.
+Dotaz pomocí indexu rozsahu:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.lastName
+```
+
+Dotaz používající složený index:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.firstName, c.lastName
+```
+
+Při vytváření složených indexů pro optimalizaci dotazu s klauzulí Filter a použijte následující předpoklady `ORDER BY` :
+
 * Pokud nedefinujete složený index pro dotaz s filtrem na jednu vlastnost a samostatnou `ORDER BY` klauzulí s použitím jiné vlastnosti, dotaz bude stále úspěšný. Náklady na dotaz na dotaz se ale dají snížit pomocí složeného indexu, zejména pokud vlastnost v `ORDER BY` klauzuli má vysokou mohutnost.
+* Pokud dotaz filtruje vlastnosti, měly by být zahrnuty do `ORDER BY` klauzule First.
+* Pokud dotaz filtruje více vlastností, musí být filtry rovnosti prvními vlastnostmi v `ORDER BY` klauzuli.
+* Pokud se dotaz filtruje u více vlastností, můžete mít maximálně jeden filtr rozsahu nebo funkci systému vydanou na složeném indexu. Vlastnost použitá ve filtru rozsahu nebo v systémové funkci by měla být definována jako poslední ve složeném indexu.
 * Všechny požadavky na vytváření složených indexů pro `ORDER BY` dotazy s více vlastnostmi a dotazy s filtry na více vlastností jsou stále používány.
 
 
-| **Složený index**                      | **Vzorový `ORDER BY` dotaz**                                  | **Podporuje složený index?** |
+| **Složený index**                      | **Vzorový `ORDER BY` dotaz**                                  | **Podpora složeného indexu** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" AND c.timestamp > 1589840355 ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT * FROM c WHERE c.timestamp > 1589840355 AND c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
 
-## <a name="modifying-the-indexing-policy"></a>Změna zásad indexování
+### <a name="queries-with-a-filter-and-an-aggregate"></a>Dotazy s filtrem a agregací 
 
-Zásadu indexování kontejneru lze kdykoli aktualizovat [pomocí Azure Portal nebo jedné z podporovaných sad SDK](how-to-manage-indexing-policy.md). Aktualizace zásad indexování spustí transformaci ze starého indexu do nového, který je proveden online a místně (takže během operace se nespotřebovává žádný další prostor úložiště). Index staré zásady se efektivně transformuje na nové zásady, aniž by to ovlivnilo dostupnost zápisu, dostupnost čtení nebo propustnost zajištěné v kontejneru. Transformace indexu je asynchronní operace a čas potřebný k dokončení závisí na zřízené propustnosti, počtu položek a jejich velikosti.
+Pokud dotaz filtruje jednu nebo více vlastností a má agregovanou systémovou funkci, může být užitečné vytvořit složený index pro vlastnosti v systémové funkci Filter a Aggregate. Tato optimalizace platí pro funkce [Sum](sql-query-aggregate-sum.md) a [AVG](sql-query-aggregate-avg.md) System.
+
+Při vytváření složených indexů pro optimalizaci dotazu pomocí filtru a agregační systémové funkce platí následující požadavky.
+
+* Složené indexy jsou při spouštění dotazů s agregacemi volitelné. Náklady na dotaz na RU se ale můžou často významně snížit pomocí složeného indexu.
+* Pokud dotaz filtruje více vlastností, musí být filtry rovnosti prvními vlastnostmi ve složeném indexu.
+* Můžete mít maximálně jeden filtr rozsahu na každý složený index a musí být ve vlastnosti agregační systémové funkce.
+* Vlastnost ve agregované systémové funkci by měla být definována jako poslední ve složeném indexu.
+* `order`( `ASC` Nebo `DESC` ) nezáleží na tom.
+
+| **Složený index**                      | **Vzorový dotaz**                                  | **Podpora složeného indexu** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
+
+## <a name="index-transformationmodifying-the-indexing-policy"></a><transformace indexu>úpravou zásad indexování
+
+Zásadu indexování kontejneru lze kdykoli aktualizovat [pomocí Azure Portal nebo jedné z podporovaných sad SDK](how-to-manage-indexing-policy.md). Aktualizace zásad indexování spustí transformaci ze starého indexu do nového, který je proveden online a místně (takže během operace se nespotřebovává žádný další prostor úložiště). Stará zásada indexování je efektivně transformovaná na nové zásady, aniž by to ovlivnilo dostupnost zápisu, dostupnost čtení nebo propustnost zřízenou v kontejneru. Transformace indexu je asynchronní operace a čas potřebný k dokončení závisí na zřízené propustnosti, počtu položek a jejich velikosti.
 
 > [!IMPORTANT]
 > Transformace indexu je operace, která využívá [jednotky žádosti](request-units.md). Pokud používáte kontejnery bez [serveru](serverless.md) , nejsou aktuálně účtovány jednotky žádosti spotřebované transformací indexu. Tyto jednotky žádosti se budou účtovat, jakmile budou všeobecně dostupné servery bez serveru.
@@ -271,7 +343,7 @@ V žádném z transformací indexu není žádný vliv na dostupnost zápisu. Tr
 
 Při přidávání nového indexu nemá žádný vliv na dostupnost čtení. Po dokončení transformace indexu budou dotazy využívat pouze nové indexy. Při transformaci indexu bude modul dotazu dál používat stávající indexy, takže budete mít podobný výkon při čtení během transformace indexování na to, co jste předtím provedli při zahájení změny indexování. Při přidávání nových indexů nehrozí riziko neúplných nebo nekonzistentních výsledků dotazu.
 
-Při odebírání indexů a okamžitém spuštění dotazů, které filtrují na vyřazených indexech, není zaručeno konzistentní nebo úplné výsledky dotazu. Pokud odeberete více indexů a uděláte to v jedné změně zásady indexování, nástroj pro dotazování garantuje konzistenci a úplnost výsledků v celé transformaci indexu. Pokud ale odeberete indexy prostřednictvím několika změn zásad indexování, dotazovací modul nezaručuje konzistenci nebo úplnost výsledků, dokud se nedokončí všechny transformace indexu. Většina vývojářů nevynechává indexy a potom se okamžitě pokusí spustit dotazy, které tyto indexy využívají, takže v praxi je tato situace nepravděpodobná.
+Při odebírání indexů a okamžitém spuštění dotazů, které filtrují na vyřazených indexech, není zaručeno konzistentní nebo úplné výsledky dotazu. Pokud odeberete více indexů a v rámci jedné změny zásad indexování zadáte jednu, nástroj pro vytváření dotazů poskytne konzistentní a kompletní výsledky v celé transformaci indexu. Pokud ale odeberete indexy pomocí několika změn zásad indexování, dotazovací modul nebude poskytovat konzistentní nebo úplné výsledky, dokud se nedokončí všechny transformace indexu. Většina vývojářů nevynechává indexy a potom se okamžitě pokusí spustit dotazy, které tyto indexy využívají, takže v praxi je tato situace nepravděpodobná.
 
 > [!NOTE]
 > Pokud je to možné, měli byste vždycky zkusit seskupit více změn indexování do jedné změny zásad indexování.
@@ -280,14 +352,10 @@ Při odebírání indexů a okamžitém spuštění dotazů, které filtrují na
 
 Použití [funkce TTL (Time-to-Live)](time-to-live.md) vyžaduje indexování. To znamená, že:
 
-- hodnotu TTL není možné aktivovat u kontejneru, ve kterém je režim indexování nastavený na None.
+- hodnotu TTL není možné aktivovat u kontejneru, ve kterém je nastaven režim indexování `none` ,
 - není možné nastavit režim indexování na žádný v kontejneru, kde je aktivována hodnota TTL.
 
-U scénářů, ve kterých není nutné indexovat žádnou cestu k vlastnostem, ale je vyžadována hodnota TTL, můžete použít zásadu indexování pomocí:
-
-- režim indexování nastavený na konzistentní a
-- žádná zahrnutá cesta a
-- `/*` jako jediná Vyloučená cesta.
+U scénářů, ve kterých není nutné indexovat žádnou cestu k vlastnostem, ale je vyžadována hodnota TTL, můžete použít zásady indexování s režimem indexování nastaveným na `consistent` , žádné zahrnuté cesty a `/*` jako jediná Vyloučená cesta.
 
 ## <a name="next-steps"></a>Další kroky
 

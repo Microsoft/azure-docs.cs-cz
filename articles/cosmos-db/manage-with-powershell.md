@@ -1,33 +1,38 @@
 ---
-title: Vytvoření a Správa Azure Cosmos DB pomocí prostředí PowerShell
-description: Využijte Azure PowerShell správu účtů, databází, kontejnerů a propustnosti Azure Cosmos.
+title: Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) API pomocí prostředí PowerShell
+description: Spravujte prostředky rozhraní API pro Azure Cosmos DB Core (SQL) API pomocí prostředí PowerShell.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/13/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2d99a760e3bf44febcee05bf9827479616bf7bd6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486472"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333422"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) pomocí PowerShellu
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Následující příručka popisuje, jak pomocí PowerShellu skriptovat a automatizovat správu prostředků Azure Cosmos DB, včetně účtů, databází, kontejnerů a propustnosti.
+Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků rozhraní API pro Azure Cosmos DB Core (SQL), včetně účtu Cosmos, databáze, kontejneru a propustnosti. Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShellu pro Cassandra](powershell-samples-cassandra.md), ukázky PowerShellu pro [MongoDB API](powershell-samples-mongodb.md), ukázky PowerShellu pro Gremlin, [ukázky](powershell-samples-table.md) PowerShellu pro [PowerShell Samples for Gremlin](powershell-samples-gremlin.md)
 
 > [!NOTE]
 > Ukázky v tomto článku využívají rutiny [AZ. CosmosDB](/powershell/module/az.cosmosdb) Management. Nejnovější změny najdete na stránce s referenční stránkou [AZ. CosmosDB](/powershell/module/az.cosmosdb) API.
 
-Pro správu Azure Cosmos DB pro různé platformy můžete použít `Az` `Az.CosmosDB` rutiny a s [prostředím PowerShell pro různé platformy](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)a také rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), [REST API][rp-rest-api]nebo [Azure Portal](create-sql-api-dotnet.md#create-account).
+Pro správu Azure Cosmos DB pro různé platformy můžete použít `Az` `Az.CosmosDB` rutiny a s [prostředím PowerShell pro různé platformy](/powershell/scripting/install/installing-powershell)a také rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), [REST API][rp-rest-api]nebo [Azure Portal](create-sql-api-dotnet.md#create-account).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>začínáme
 
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
+
+> [!IMPORTANT]
+> Prostředky Azure Cosmos DB nelze přejmenovat, protože jsou v rozporu s tím, jak Azure Resource Manager pracuje s identifikátory URI prostředků.
 
 ## <a name="azure-cosmos-accounts"></a>Účty Azure Cosmos
 
@@ -46,22 +51,24 @@ Následující části demonstrují, jak spravovat účet Azure Cosmos, včetně
 * [Aktivace ručního převzetí služeb při selhání pro účet Azure Cosmos](#trigger-manual-failover)
 * [Vypsat zámky prostředků na Azure Cosmos DB účtu](#list-account-locks)
 
-### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Vytvoření účtu Azure Cosmos
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a> Vytvoření účtu Azure Cosmos
 
 Tento příkaz vytvoří účet databáze Azure Cosmos DB s [více oblastmi][distribute-data-globally], [automatickým převzetím služeb při selhání](how-to-manage-database-account.md#automatic-failover) a [zásadami konzistence](consistency-levels.md)vázaných na zastaralé.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
-$locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
 $apiKind = "Sql"
 $consistencyLevel = "BoundedStaleness"
 $maxStalenessInterval = 300
 $maxStalenessPrefix = 100000
+$locations = @()
+$locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
 
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations `
+    -LocationObject $locations `
     -Name $accountName `
     -ApiKind $apiKind `
     -EnableAutomaticFailover:$true `
@@ -70,15 +77,15 @@ New-AzCosmosDBAccount `
     -MaxStalenessPrefix $maxStalenessPrefix
 ```
 
-* `$resourceGroupName`Skupina prostředků Azure, do které se má účet Cosmos nasadit Už musí existovat.
-* `$locations`Oblasti pro databázový účet, počínaje oblastí pro zápis a seřazené podle priority převzetí služeb při selhání.
-* `$accountName`Název účtu Azure Cosmos. Musí být jedinečné, malá a velká písmena, obsahovat pouze alfanumerické znaky a znaky "-" a délku 3 až 31 znaků.
-* `$apiKind`Typ Cosmos účtu, který se má vytvořit Další informace najdete v tématu [rozhraní API v Cosmos DB](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis).
+* `$resourceGroupName` Skupina prostředků Azure, do které se má účet Cosmos nasadit Už musí existovat.
+* `$locations` Oblasti pro databázový účet, oblast s, `FailoverPriority 0` je oblast zápisu.
+* `$accountName` Název účtu Azure Cosmos. Musí být jedinečné, malá a velká písmena, obsahovat pouze alfanumerické znaky a znaky "-" a délku 3 až 31 znaků.
+* `$apiKind` Typ Cosmos účtu, který se má vytvořit Další informace najdete v tématu [rozhraní API v Cosmos DB](introduction.md#simplified-application-development).
 * `$consistencyPolicy`, `$maxStalenessInterval` a `$maxStalenessPrefix` výchozí úroveň konzistence a nastavení účtu Azure Cosmos. Další informace najdete v tématu [úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
 
 Účty Azure Cosmos se dají nakonfigurovat pomocí brány firewall protokolu IP, Virtual Networkch koncových bodů služby a privátních koncových bodů. Informace o tom, jak nakonfigurovat bránu firewall protokolu IP pro Azure Cosmos DB, najdete v tématu [Konfigurace brány firewall protokolu IP](how-to-configure-firewall.md). Informace o tom, jak povolit koncové body služby pro Azure Cosmos DB, najdete v tématu [Konfigurace přístupu z virtuálních sítí](how-to-configure-vnet-service-endpoint.md). Informace o povolení privátních koncových bodů pro Azure Cosmos DB najdete v tématu [Konfigurace přístupu z privátních koncových bodů](how-to-configure-private-endpoints.md).
 
-### <a name="list-all-azure-cosmos-accounts-in-a-resource-group"></a><a id="list-accounts"></a>Vypsat všechny účty Azure Cosmos ve skupině prostředků
+### <a name="list-all-azure-cosmos-accounts-in-a-resource-group"></a><a id="list-accounts"></a> Vypsat všechny účty Azure Cosmos ve skupině prostředků
 
 Tento příkaz vypíše všechny účty Azure Cosmos ve skupině prostředků.
 
@@ -88,7 +95,7 @@ $resourceGroupName = "myResourceGroup"
 Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="get-the-properties-of-an-azure-cosmos-account"></a><a id="get-account"></a>Získání vlastností účtu Azure Cosmos
+### <a name="get-the-properties-of-an-azure-cosmos-account"></a><a id="get-account"></a> Získání vlastností účtu Azure Cosmos
 
 Tento příkaz umožňuje získat vlastnosti stávajícího účtu Azure Cosmos.
 
@@ -99,7 +106,7 @@ $accountName = "mycosmosaccount"
 Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 ```
 
-### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a>Aktualizace účtu Azure Cosmos
+### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a> Aktualizace účtu Azure Cosmos
 
 Tento příkaz umožňuje aktualizovat vlastnosti účtu databáze Azure Cosmos DB. Mezi vlastnosti, které lze aktualizovat, patří následující:
 
@@ -107,7 +114,7 @@ Tento příkaz umožňuje aktualizovat vlastnosti účtu databáze Azure Cosmos 
 * Mění se výchozí zásada konzistence.
 * Změna filtru rozsahu IP adres
 * Změna konfigurace Virtual Network
-* Povolení více hlavních serverů
+* Povolení zápisů ve více oblastech
 
 > [!NOTE]
 > Nemůžete současně přidat ani odebrat oblasti ( `locations` ) a změnit další vlastnosti pro účet Azure Cosmos. Úprava oblastí se musí provádět jako samostatná operace z jakékoli jiné změny účtu.
@@ -117,33 +124,33 @@ Tento příkaz umožňuje aktualizovat vlastnosti účtu databáze Azure Cosmos 
 ```azurepowershell-interactive
 # Create account with two regions
 $resourceGroupName = "myResourceGroup"
-$locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
 $apiKind = "Sql"
 $consistencyLevel = "Session"
 $enableAutomaticFailover = $true
+$locations = @()
+$locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
 
 # Create the Cosmos DB account
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations `
+    -LocationObject $locations `
     -Name $accountName `
     -ApiKind $apiKind `
     -EnableAutomaticFailover:$enableAutomaticFailover `
     -DefaultConsistencyLevel $consistencyLevel
 
 # Add a region to the account
-$locations2 = @("West US 2", "East US 2", "South Central US")
-$locationObjects2 = @()
-$i = 0
-ForEach ($location in $locations2) {
-    $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ }
-}
+$locationObject2 = @()
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "South Central US" -FailoverPriority 2 -IsZoneRedundant 0
 
 Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
-    -LocationObject $locationObjects2
+    -LocationObject $locationObject2
 
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
@@ -151,23 +158,21 @@ Write-Host "When region was added, press any key to continue."
 $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | OUT-NULL
 $HOST.UI.RawUI.Flushinputbuffer()
 
-# Remove a region from the account
-$locations3 = @("West US 2", "South Central US")
-$locationObjects3 = @()
-$i = 0
-ForEach ($location in $locations3) {
-    $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ }
-}
+# Remove West US region from the account
+$locationObject3 = @()
+$locationObject3 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locationObject3 += New-AzCosmosDBLocationObject -LocationName "South Central US" -FailoverPriority 1 -IsZoneRedundant 0
 
 Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
-    -LocationObject $locationObjects3
+    -LocationObject $locationObject3
 
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a>Povolení více oblastí zápisu pro účet Azure Cosmos
+
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Povolení více oblastí zápisu pro účet Azure Cosmos
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -176,20 +181,20 @@ $enableAutomaticFailover = $false
 $enableMultiMaster = $true
 
 # First disable automatic failover - cannot have both automatic
-# failover and multi-master on an account
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableAutomaticFailover:$enableAutomaticFailover
 
-# Now enable multi-master
+# Now enable multi-region writes
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableMultipleWriteLocations:$enableMultiMaster
 ```
 
-### <a name="delete-an-azure-cosmos-account"></a><a id="delete-account"></a>Odstranění účtu Azure Cosmos
+### <a name="delete-an-azure-cosmos-account"></a><a id="delete-account"></a> Odstranění účtu Azure Cosmos
 
 Tento příkaz odstraní existující účet Azure Cosmos.
 
@@ -203,7 +208,7 @@ Remove-AzCosmosDBAccount `
     -PassThru:$true
 ```
 
-### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a>Aktualizovat značky účtu Azure Cosmos
+### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a> Aktualizovat značky účtu Azure Cosmos
 
 Tento příkaz nastaví [značky prostředků Azure][azure-resource-tags] pro účet Azure Cosmos. Značky je možné nastavit jak při vytvoření účtu `New-AzCosmosDBAccount` , tak i na použití aktualizace účtu pomocí `Update-AzCosmosDBAccount` .
 
@@ -218,9 +223,9 @@ Update-AzCosmosDBAccount `
     -Tag $tags
 ```
 
-### <a name="list-account-keys"></a><a id="list-keys"></a>Výpis klíčů účtu
+### <a name="list-account-keys"></a><a id="list-keys"></a> Výpis klíčů účtu
 
-Když vytvoříte účet Azure Cosmos, vygeneruje služba dva hlavní přístupové klíče, které se dají použít k ověřování při přístupu k účtu Azure Cosmos. Vygenerují se taky klíče jen pro čtení pro ověřování operací jen pro čtení.
+Když vytvoříte účet Azure Cosmos, vygeneruje služba dva primární přístupové klíče, které se dají použít k ověřování při přístupu k účtu Azure Cosmos. Vygenerují se taky klíče jen pro čtení pro ověřování operací jen pro čtení.
 Po poskytnutí dvou přístupových klíčů vám Azure Cosmos DB umožňuje znovu vygenerovat a otočit jeden klíč, a to bez přerušení pro váš účet Azure Cosmos.
 Účty Cosmos DB mají dva klíče pro čtení i zápis (primární a sekundární) a dva klíče jen pro čtení (primární a sekundární).
 
@@ -234,7 +239,7 @@ Get-AzCosmosDBAccountKey `
     -Type "Keys"
 ```
 
-### <a name="list-connection-strings"></a><a id="list-connection-strings"></a>Vypsat připojovací řetězce
+### <a name="list-connection-strings"></a><a id="list-connection-strings"></a> Vypsat připojovací řetězce
 
 Následující příkaz načte připojovací řetězce pro připojení aplikací k účtu Cosmos DB.
 
@@ -248,7 +253,7 @@ Get-AzCosmosDBAccountKey `
     -Type "ConnectionStrings"
 ```
 
-### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a>Znovu vygenerovat klíče účtu
+### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a> Znovu vygenerovat klíče účtu
 
 Přístup ke klíčům k účtu Azure Cosmos by se měl pravidelně znovu vygenerovat, aby se připojení zajistila v bezpečí. K účtu se přiřadí primární a sekundární přístupové klíče. To umožňuje klientům zachovat přístup v době, kdy se jeden klíč najednou vygeneruje.
 Existují čtyři typy klíčů pro účet Azure Cosmos (primární, sekundární, PrimaryReadonly a SecondaryReadonly).
@@ -264,7 +269,7 @@ New-AzCosmosDBAccountKey `
     -KeyKind $keyKind
 ```
 
-### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a>Povolit automatické převzetí služeb při selhání
+### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a> Povolit automatické převzetí služeb při selhání
 
 Následující příkaz nastaví účet Cosmos DB pro automatické převzetí služeb při selhání do sekundární oblasti v případě, že primární oblast nebude k dispozici.
 
@@ -274,8 +279,8 @@ $accountName = "mycosmosaccount"
 $enableAutomaticFailover = $true
 $enableMultiMaster = $false
 
-# First disable multi-master - cannot have both automatic
-# failover and multi-master on an account
+# First disable multi-region writes - cannot have both automatic
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -288,7 +293,7 @@ Update-AzCosmosDBAccount `
     -EnableAutomaticFailover:$enableAutomaticFailover
 ```
 
-### <a name="modify-failover-priority"></a><a id="modify-failover-priority"></a>Úprava priority převzetí služeb při selhání
+### <a name="modify-failover-priority"></a><a id="modify-failover-priority"></a> Úprava priority převzetí služeb při selhání
 
 U účtů konfigurovaných s automatickým převzetím služeb při selhání můžete změnit pořadí, ve kterém bude Cosmos povýšit sekundární repliky na primární, pokud primární databáze není k dispozici.
 
@@ -308,7 +313,7 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
-### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a>Aktivace ručního převzetí služeb při selhání
+### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a> Aktivace ručního převzetí služeb při selhání
 
 U účtů konfigurovaných pomocí ručního převzetí služeb při selhání můžete převzít služby při selhání a zvýšit úroveň sekundární repliky na primární úpravou `failoverPriority=0` . Tato operace se dá použít k inicializaci plánování zotavení po havárii při zotavení po havárii.
 
@@ -328,7 +333,7 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
-### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a>Vypsat zámky prostředků na Azure Cosmos DB účtu
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a> Vypsat zámky prostředků na Azure Cosmos DB účtu
 
 Zámky prostředků se dají umístit na prostředky Azure Cosmos DB, včetně databází a kolekcí. Následující příklad ukazuje, jak zobrazit seznam všech zámků prostředků Azure na účtu Azure Cosmos DB.
 
@@ -350,6 +355,7 @@ Následující části demonstrují, jak spravovat databázi Azure Cosmos DB, v�
 * [Vytvoření databáze Azure Cosmos DB](#create-db)
 * [Vytvoření databáze Azure Cosmos DB se sdílenou propustností](#create-db-ru)
 * [Získání propustnosti Azure Cosmos DB databáze](#get-db-ru)
+* [Migrace propustnosti databáze do automatického škálování](#migrate-db-ru)
 * [Výpis všech Azure Cosmos DB databází v účtu](#list-db)
 * [Získat jednu Azure Cosmos DB databázi](#get-db)
 * [Odstranění databáze Azure Cosmos DB](#delete-db)
@@ -395,6 +401,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>Migrace propustnosti databáze do automatického škálování
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>Získání všech Azure Cosmos DB databází v účtu
@@ -478,6 +498,7 @@ Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetn
 * [Vytvoření kontejneru Azure Cosmos DB s AutoScale](#create-container-autoscale)
 * [Vytvoření kontejneru Azure Cosmos DB s velkým klíčem oddílu](#create-container-big-pk)
 * [Získání propustnosti Azure Cosmos DB kontejneru](#get-container-ru)
+* [Migrace propustnosti kontejneru do automatického škálování](#migrate-container-ru)
 * [Vytvoření kontejneru Azure Cosmos DB s vlastním indexováním](#create-container-custom-index)
 * [Vytvoření kontejneru Azure Cosmos DB s vypnutým indexováním](#create-container-no-index)
 * [Vytvoření kontejneru Azure Cosmos DB s jedinečným klíčem a hodnotou TTL](#create-container-unique-key-ttl)
@@ -563,6 +584,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>Migrace propustnosti kontejneru do automatického škálování
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>Vytvoření kontejneru Azure Cosmos DB s vlastními zásadami indexů
@@ -795,9 +832,9 @@ Remove-AzResourceLock `
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-[powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
+[powershell-install-configure]: /powershell/azure/
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md
-[azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
-[azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+[azure-resource-groups]: ../azure-resource-manager/management/overview.md#resource-groups
+[azure-resource-tags]: ../azure-resource-manager/management/tag-resources.md
 [rp-rest-api]: /rest/api/cosmos-db-resource-provider/

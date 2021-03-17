@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61cefacc4147ab1eb105af9cb21365129dd1950e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680912"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742455"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -29,7 +29,11 @@ Správce portálu User Portal je možné nastavit a udělit jim oprávnění př
 V závislosti na vašem prostředí můžete chtít portál User Portal nasadit na stejný server jako Azure Multi-Factor Authentication Server, nebo na jiný server s přístupem k internetu.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ![Přihlašovací stránka uživatelského portálu pro MFA Server](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -45,7 +49,7 @@ V obou scénářích, pokud sada SDK webové služby Azure Multi-Factor Authenti
 3. Dokončete instalaci s použitím výchozích hodnot, pokud je z nějakého důvodu nepotřebujete změnit.
 4. Navažte certifikát TLS/SSL na lokalitu ve službě IIS.
 
-Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 Sada SDK webové služby musí být zabezpečená certifikátem TLS/SSL. Pro tento účel stačí certifikát podepsaný svým držitelem. Importujte certifikát do úložiště "důvěryhodné kořenové certifikační autority" účtu místního počítače na webovém serveru portálu User Portal tak, aby při zahájení připojení TLS důvěřoval tomuto certifikátu.
 
@@ -73,7 +77,7 @@ Pokud chcete nasadit portál User Portal, postupujte takto:
 
 ![Instalace portálu User Portal pro MFA Server](./media/howto-mfaserver-deploy-userportal/install.png)
 
-Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>Nasazení portálu User Portal na samostatný server
 
@@ -110,7 +114,7 @@ Instalace portálu uživatele na jiném serveru, než je Azure Multi-Factor Auth
 
 6. Z libovolného počítače otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: `https://mfa.contoso.com/MultiFactorAuth` ). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 
-Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurace nastavení portálu User Portal v Azure Multi-Factor Authentication Serveru
 
@@ -130,7 +134,7 @@ Volitelná konfigurace:
 
 Server Azure Multi-Factor Authentication poskytuje pro uživatelský portál několik možností. V následující tabulce je seznam těchto možností a vysvětlení, k čemu se používají.
 
-| Nastavení uživatelského portálu | Description |
+| Nastavení uživatelského portálu | Popis |
 |:--- |:--- |
 | Adresa URL portálu User Portal | Zadejte adresu URL, na které se portál hostuje. |
 | Primární ověření | Zadejte typ ověřování, které se má použít pro přihlašování k portálu. Ověření Windows, Radius nebo LDAP. |
@@ -154,7 +158,7 @@ Na portálu se tato nastavení uživatelům zviditelní, jakmile jsou povolena a
 
 ### <a name="self-service-user-enrollment"></a>Samoobslužná registrace uživatele
 
-Pokud chcete, aby se uživatelé přihlásili a zaregistrovali, musíte vybrat možnost **dovolit uživatelům přihlášení** a **Povolení registrace uživatelů** na kartě nastavení. Mějte na paměti, že nastavení, které vyberete, bude mít vliv na přihlašovací uživatelské prostředí.
+Pokud chcete, aby se uživatelé přihlásili a zaregistrovali, musíte vybrat možnost **dovolit uživatelům přihlášení** a **Povolení registrace uživatelů** na kartě nastavení. Mějte na paměti, že nastavení, které vyberete, bude mít vliv na přihlašovací prostředí uživatele.
 
 Pokud se například uživatel přihlásí k portálu User Portal poprvé, bude přesměrován na stránku Azure Multi-Factor Authentication – Nastavení uživatele. Podle toho, jak jste nakonfigurovali ověřování Azure Multi-Factor Authentication si uživatel možná bude moci vybrat metodu ověření.
 

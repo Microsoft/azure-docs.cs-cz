@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807103"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693736"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Instalace AGIC (příchozího adaptéru Application Gateway) pomocí existující Application Gateway
 
@@ -29,8 +29,8 @@ AGIC [sleduje prostředky](https://kubernetes.io/docs/concepts/services-networki
 
 ## <a name="prerequisites"></a>Požadavky
 V tomto dokumentu se předpokládá, že už máte nainstalované tyto nástroje a infrastrukturu:
-- [AKS](https://azure.microsoft.com/services/kubernetes-service/) s povolenými [pokročilými sítěmi](https://docs.microsoft.com/azure/aks/configure-azure-cni)
-- [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ve stejné virtuální síti jako AKS
+- [AKS](https://azure.microsoft.com/services/kubernetes-service/) s povolenými [pokročilými sítěmi](../aks/configure-azure-cni.md)
+- [Application Gateway v2](./tutorial-autoscale-ps.md) ve stejné virtuální síti jako AKS
 - [Identita AAD pod](https://github.com/Azure/aad-pod-identity) nainstalovanou v clusteru AKS
 - [Cloud Shell](https://shell.azure.com/) je prostředí Azure shell s `az` nainstalovaným rozhraním CLI, `kubectl` a `helm` . Tyto nástroje jsou vyžadovány pro následující příkazy.
 
@@ -40,13 +40,13 @@ Před instalací AGIC prosím __zálohujte konfiguraci Application Gateway__ :
 
 Stažený soubor zip bude mít šablony JSON, bash a PowerShellové skripty, které byste mohli použít k obnovení brány App Gateway, aby bylo nezbytné.
 
-## <a name="install-helm"></a>Nainstalovat Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) je správce balíčků pro Kubernetes. Použijeme ji k instalaci `application-gateway-kubernetes-ingress` balíčku.
+## <a name="install-helm"></a>Instalace nástroje Helm
+[Helm](../aks/kubernetes-helm.md) je správce balíčků pro Kubernetes. Použijeme ji k instalaci `application-gateway-kubernetes-ingress` balíčku.
 K instalaci Helm použijte [Cloud Shell](https://shell.azure.com/) :
 
-1. Nainstalujte [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a spusťte následující příkaz pro přidání `application-gateway-kubernetes-ingress` balíčku Helm:
+1. Nainstalujte [Helm](../aks/kubernetes-helm.md) a spusťte následující příkaz pro přidání `application-gateway-kubernetes-ingress` balíčku Helm:
 
-    - *RBAC povolena* Cluster AKS
+    - *KUBERNETES RBAC povolena* Cluster AKS
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -54,7 +54,7 @@ K instalaci Helm použijte [Cloud Shell](https://shell.azure.com/) :
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - *RBAC zakázána* Cluster AKS
+    - *KUBERNETES RBAC je zakázaná* . Cluster AKS
 
     ```bash
     helm init
@@ -72,14 +72,14 @@ AGIC komunikuje se serverem rozhraní Kubernetes API a Azure Resource Manager. P
 
 ## <a name="set-up-aad-pod-identity"></a>Nastavení identity AAD pod
 
-[Identita AAD pod](https://github.com/Azure/aad-pod-identity) je kontroler, podobně jako AGIC, který se taky spouští na AKS. Naváže Azure Active Directory identity k Kubernetes luskům. Aby aplikace v Kubernetes pod mohla komunikovat s dalšími komponentami Azure, vyžaduje se identita. V takovém případě potřebujeme autorizaci pro AGIC pod, aby bylo možné požadavky HTTP na [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+[Identita AAD pod](https://github.com/Azure/aad-pod-identity) je kontroler, podobně jako AGIC, který se taky spouští na AKS. Naváže Azure Active Directory identity k Kubernetes luskům. Aby aplikace v Kubernetes pod mohla komunikovat s dalšími komponentami Azure, vyžaduje se identita. V takovém případě potřebujeme autorizaci pro AGIC pod, aby bylo možné požadavky HTTP na [ARM](../azure-resource-manager/management/overview.md).
 
 Postupujte podle [pokynů pro instalaci služby AAD pod](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) , abyste přidali tuto komponentu do AKS.
 
 Dál musíme vytvořit identitu Azure a dát jí oprávnění ARM.
 Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny následující příkazy a vytvořit identitu:
 
-1. Vytvořte identitu Azure **ve stejné skupině prostředků jako uzly AKS**. Je důležité vybrat správnou skupinu prostředků. Skupina prostředků požadovaná v příkazu *níže není ta, na* kterou se odkazuje v podokně AKS Portal. Toto je skupina prostředků `aks-agentpool` virtuálních počítačů. Obvykle se skupina prostředků spouští s `MC_` a obsahuje název vaší AKS. Např.:`MC_resourceGroup_aksABCD_westus`
+1. Vytvořte identitu Azure **ve stejné skupině prostředků jako uzly AKS**. Je důležité vybrat správnou skupinu prostředků. Skupina prostředků požadovaná v příkazu *níže není ta, na* kterou se odkazuje v podokně AKS Portal. Toto je skupina prostředků `aks-agentpool` virtuálních počítačů. Obvykle se skupina prostředků spouští s `MC_` a obsahuje název vaší AKS. Např.: `MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -91,9 +91,9 @@ Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny násle
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Udělte identitě `Contributor` přístup k vašemu Application Gateway. Za tímto účelem budete potřebovat ID Application Gateway, který bude vypadat přibližně takto:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Udělte identitě `Contributor` přístup k vašemu Application Gateway. Za tímto účelem budete potřebovat ID Application Gateway, který bude vypadat přibližně takto: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    Seznam ID Application Gateway v předplatném získáte pomocí:`az network application-gateway list --query '[].id'`
+    Seznam ID Application Gateway v předplatném získáte pomocí: `az network application-gateway list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -102,7 +102,7 @@ Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny násle
         --scope <App-Gateway-ID>
     ```
 
-1. Udělte identitě `Reader` přístup ke skupině prostředků Application Gateway. ID skupiny prostředků by vypadalo takto: `/subscriptions/A/resourceGroups/B` . Všechny skupiny prostředků můžete získat takto:`az group list --query '[].id'`
+1. Udělte identitě `Reader` přístup ke skupině prostředků Application Gateway. ID skupiny prostředků by vypadalo takto: `/subscriptions/A/resourceGroups/B` . Všechny skupiny prostředků můžete získat takto: `az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -187,7 +187,7 @@ V prvních několika krocích nainstalujeme do vašeho clusteru Kubernetes do He
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     
@@ -245,8 +245,8 @@ Stažený soubor zip bude mít šablony JSON, bash a PowerShellové skripty, kte
 
 ### <a name="example-scenario"></a>Ukázkový scénář
 Pojďme se podívat na imaginární Application Gateway, který spravuje provoz dvou webů:
-  - `dev.contoso.com`– hostovaná na novém AKS pomocí Application Gateway a AGIC
-  - `prod.contoso.com`– hostovaná v [sadě škálování virtuálních počítačů Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+  - `dev.contoso.com` – hostovaná na novém AKS pomocí Application Gateway a AGIC
+  - `prod.contoso.com` – hostovaná v [sadě škálování virtuálních počítačů Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
 Ve výchozím nastavení předpokládá AGIC 100% vlastnictví Application Gateway, na které se odkazuje. AGIC Přepisuje veškerou konfiguraci služby App Gateway. Pokud jsme museli ručně vytvořit naslouchací proces pro `prod.contoso.com` (na Application Gateway), aniž byste ho definovali v rámci Kubernetes příchozího přenosu dat, AGIC `prod.contoso.com` během několika sekund tuto konfiguraci odstraní.
 
@@ -323,7 +323,7 @@ Rozšířit AGIC oprávnění pomocí:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Povolit pro existující instalaci AGIC
-Předpokládejme, že už máme v našem clusteru funkční AKS, Application Gateway a nakonfigurovaný AGIC. Máme příchozí `prod.contosor.com` data pro a úspěšně obsluhují provoz z AKS. Chceme přidat `staging.contoso.com` k naší existující Application Gateway, ale je potřeba ho hostovat na [virtuálním počítači](https://azure.microsoft.com/services/virtual-machines/). Znovu použijeme existující Application Gateway a ručně nakonfigurujete naslouchací proces a fond back-end pro `staging.contoso.com` . Ale ruční úprava Application Gateway konfigurace (prostřednictvím [portálu](https://portal.azure.com), [rozhraní API ARM](https://docs.microsoft.com/rest/api/resources/) nebo [terraformu](https://www.terraform.io/)) je v konfliktu se předpoklady úplného vlastnictví AGIC. Krátce po použití změn se AGIC přepíše nebo odstraní.
+Předpokládejme, že už máme v našem clusteru funkční AKS, Application Gateway a nakonfigurovaný AGIC. Máme příchozí `prod.contoso.com` data pro a úspěšně obsluhují provoz z AKS. Chceme přidat `staging.contoso.com` k naší existující Application Gateway, ale je potřeba ho hostovat na [virtuálním počítači](https://azure.microsoft.com/services/virtual-machines/). Znovu použijeme existující Application Gateway a ručně nakonfigurujete naslouchací proces a fond back-end pro `staging.contoso.com` . Ale ruční úprava Application Gateway konfigurace (prostřednictvím [portálu](https://portal.azure.com), [rozhraní API ARM](/rest/api/resources/) nebo [terraformu](https://www.terraform.io/)) je v konfliktu se předpoklady úplného vlastnictví AGIC. Krátce po použití změn se AGIC přepíše nebo odstraní.
 
 AGIC můžeme zabránit v provádění změn v podmnožině konfigurace.
 

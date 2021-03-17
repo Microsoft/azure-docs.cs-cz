@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05ce0d3d3d5c66514edc07446aaf0a879657c10c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546827"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Kanbanize
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Kanbanize s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Kanbanize svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -115,7 +115,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -153,15 +153,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Na stránce panelu pro správu na levé straně nabídky klikněte na **integrace** a pak povolte **jednotné přihlašování**.
 
-    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![Snímek obrazovky se zobrazí panel pro správu s vybraným integrací.](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-6. V části integrace klikněte na **Konfigurovat** a otevřete stránku **Integrace jednotného přihlašování** .
+6. V části integrace klikněte na **Konfigurovat** a otevřete stránku **integrace s jedním Sign-On** .
 
     ![Kanbanize konfigurace](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-7. Na stránce **Integrace jednotného přihlašování** v části **Konfigurace**proveďte následující kroky:
+7. Na stránce **integrace s jedním Sign-On** v části **Konfigurace**proveďte následující kroky:
 
-    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![Snímek obrazovky se zobrazí stránka integrace na jednom Sign-On, kde zadáte hodnoty v tomto kroku.](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
@@ -192,15 +192,14 @@ V této části se v Kanbanize vytvoří uživatel s názvem B. Simon. Kanbanize
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Kanbanize, měli byste se automaticky přihlásit k Kanbanize, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Kanbanize, měli byste se automaticky přihlásit k Kanbanize, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Kanbanize s Azure AD](https://aad.portal.azure.com/)
-

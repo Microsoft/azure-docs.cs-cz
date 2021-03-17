@@ -1,17 +1,17 @@
 ---
 title: Vytváření uživatelů – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database for PostgreSQLem na jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: 1ae627a7ee1a7e2a704cc17cc8ec9ccc9846c109
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1dbbdde03d1c24882be298d8c81362744debeecf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829301"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91704935"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Vytváření uživatelů v Azure Database for PostgreSQL – jeden server
 
@@ -23,7 +23,7 @@ Pokud chcete získat informace o tom, jak vytvářet a spravovat uživatele pře
 
 Při prvním vytvoření Azure Database for PostgreSQL jste zadali uživatelské jméno a heslo správce serveru. Další informace najdete v tématu [rychlý Start](quickstart-create-server-database-portal.md) , kde se můžete podívat na podrobný postup. Vzhledem k tomu, že uživatelské jméno správce serveru je vlastní název, můžete najít zvolené uživatelské jméno správce serveru z Azure Portal.
 
-Server Azure Database for PostgreSQL se vytvoří se 3 definovanými výchozími rolemi. Tyto role můžete zobrazit spuštěním příkazu:`SELECT rolname FROM pg_roles;`
+Server Azure Database for PostgreSQL se vytvoří se 3 definovanými výchozími rolemi. Tyto role můžete zobrazit spuštěním příkazu: `SELECT rolname FROM pg_roles;`
 
 - azure_pg_admin
 - azure_superuser
@@ -70,7 +70,7 @@ Uživatelský účet správce serveru se dá použít k vytvoření dalších u�
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Pomocí účtu správce může být potřeba udělit další oprávnění k zabezpečení objektů v databázi. Další podrobnosti o databázových rolích a oprávněních najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/static/ddl-priv.html) . Příklad:
+4. Pomocí účtu správce může být potřeba udělit další oprávnění k zabezpečení objektů v databázi. Další podrobnosti o databázových rolích a oprávněních najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/static/ddl-priv.html) . Například:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;

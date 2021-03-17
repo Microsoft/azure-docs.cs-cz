@@ -1,20 +1,19 @@
 ---
 title: Rychlý Start – monitorování zařízení v Azure IoT Central
-description: Jako operátor se naučíte, jak pomocí aplikace IoT Central v Azure monitorovat vaše zařízení.
+description: Rychlý Start – jako operátor, Naučte se používat vaši aplikaci Azure IoT Central k monitorování vašich zařízení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c63a9833e6b9a9b243d289d79428ddef1468253
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80998922"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833877"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Rychlý Start: použití IoT Central Azure ke sledování vašich zařízení
 
@@ -28,29 +27,33 @@ Než začnete, měli byste provést tři předchozí rychlé starty a [vytvořit
 
 ## <a name="receive-a-notification"></a>Přijmout oznámení
 
-Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Tvůrce přidal pravidlo pro odeslání oznámení v případě, že teplota v snímači připojeného zařízení překročila prahovou hodnotu. Zprávu najdete v e-mailech odeslaných na účet, který tvůrce zvolil pro příjem oznámení.
+Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Jako tvůrce jste přidali pravidlo pro odeslání oznámení do operátoru, když vlhkost ve snímači připojeného zařízení překročila prahovou hodnotu. Jako operátor zkontrolujete e-maily s oznámením.
 
 Otevřete e-mailovou zprávu, kterou jste dostali na konci [pravidla konfigurace a akcí pro](quick-configure-rules.md) rychlý Start zařízení. V e-mailu vyberte odkaz na zařízení:
 
-![E-mail s oznámením výstrah](media/quick-monitor-devices/email.png)
+:::image type="content" source="media/quick-monitor-devices/email.png" alt-text="Snímek obrazovky, který zobrazuje e-mail s oznámením":::
 
 Zobrazení **přehledu** pro simulované zařízení, které jste vytvořili v předchozích rychlých startech, se otevře v prohlížeči:
 
-![Zařízení, které aktivovalo e-mailovou zprávu s oznámením](media/quick-monitor-devices/dashboard.png)
+:::image type="content" source="media/quick-monitor-devices/dashboard.png" alt-text="Snímek obrazovky zobrazující přehled zařízení, které spustilo oznámení":::
 
 ## <a name="investigate-an-issue"></a>Průzkum problému
 
-Jako operátor můžete zobrazit informace o zařízení v zobrazeních **Přehled**, **informace**a **příkazy** . Tvůrce vytvořil zobrazení pro **správu zařízení** , ve kterém můžete upravovat informace o zařízení a nastavovat vlastnosti zařízení.
+Jako operátor můžete zobrazit informace o zařízení v zobrazeních **Přehled**, **informace** a **příkazy** . Tvůrce vytvořil zobrazení pro **správu zařízení** , ve kterém můžete upravovat informace o zařízení a nastavovat vlastnosti zařízení.
 
-Graf na řídicím panelu vykresluje teplotní křivku zařízení. Rozhodnete se, že je teplota zařízení příliš vysoká.
+V grafu na řídicím panelu se zobrazuje graf vlhkosti zařízení. Rozhodnete se, že je vlhkost zařízení příliš vysoká.
 
 ## <a name="remediate-an-issue"></a>Oprava problému
 
 Chcete-li provést změnu zařízení, použijte stránku **spravovat zařízení** .
 
-Změňte **rychlost ventilátoru** na 500, aby se zařízení vychlado. Pokud chcete zařízení aktualizovat, klikněte na **Uložit** . Když zařízení potvrdí změnu nastavení, stav vlastnosti se změní na **Synchronizovaný**:
+Změňte **cílovou teplotu** na 80, aby se zařízení zahřívání a snížila vlhkost. Pokud chcete zařízení aktualizovat, klikněte na **Uložit** . Když zařízení potvrdí změnu nastavení, stav vlastnosti se změní na **Synchronizovaný**:
 
-![Aktualizace nastavení](media/quick-monitor-devices/change-settings.png)
+:::image type="content" source="media/quick-monitor-devices/change-settings.png" alt-text="Snímek obrazovky se stavem aktualizované cílové teploty pro zařízení":::
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

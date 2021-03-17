@@ -2,17 +2,17 @@
 title: Povolení koncového šifrování TLS v Azure Application Gateway
 description: Tento článek představuje přehled Application Gateway kompletní podpora protokolu TLS.
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962097"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001282"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Přehled ukončení protokolu TLS a koncového a koncového protokolu TLS s Application Gateway
 
@@ -30,7 +30,7 @@ Application Gateway podporuje ukončení protokolu TLS v bráně, po kterém pro
 Chcete-li nakonfigurovat ukončení protokolu TLS, je nutné přidat certifikát TLS/SSL do naslouchacího procesu, aby Application Gateway mohl odvodit symetrický klíč jako podle specifikace protokolu TLS/SSL. Symetrický klíč se pak použije k šifrování a dešifrování provozu odeslaného do brány. Certifikát TLS/SSL musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat privátní klíč, který služba Application Gateway vyžaduje k provádění šifrování a dešifrování provozu.
 
 > [!IMPORTANT] 
-> Upozorňujeme, že certifikát na naslouchací službě vyžaduje nahrání celého řetězu certifikátů. 
+> Certifikát na naslouchací službě vyžaduje nahrání celého řetězce certifikátů (kořenový certifikát od certifikační autority, zprostředkujících a listových certifikátů) k vytvoření řetězu důvěryhodnosti. 
 
 
 > [!NOTE] 
@@ -49,12 +49,12 @@ Application Gateway podporuje následující typy certifikátů:
 - Certifikát CA (certifikační autorita): certifikát certifikační autority je digitální certifikát vydaný certifikační autoritou (CA).
 - Certifikát EV (rozšířené ověřování): certifikát proev je certifikát, který vyhovuje běžným pokynům pro certifikáty v oboru. Tím se změní i panel lokátoru prohlížeče na zelenou a bude také publikován název společnosti.
 - Certifikát se zástupnými znaky: Tento certifikát podporuje libovolný počet subdomén na základě *. site.com, kde by vaše subdoména nahradila *. Ale nepodporuje site.com, takže pokud uživatelé přistupují k webu, aniž by museli psát úvodní "www", certifikát se zástupnými znaky nebude pokrývat.
-- Certifikáty podepsané svým držitelem: klientské prohlížeče nedůvěřují těmto certifikátům a upozorní uživatele, že certifikát virtuální služby není součástí řetězce důvěryhodnosti. Certifikáty podepsané svým držitelem jsou vhodné pro testování nebo prostředí, kde správci kontrolují klienty a můžou bezpečně obejít výstrahy zabezpečení v prohlížeči. Provozní úlohy by nikdy neměly používat certifikáty podepsané svým držitelem.
+- Certifikáty Self-Signed: klientské prohlížeče nedůvěřují těmto certifikátům a upozorní uživatele, že certifikát virtuální služby není součástí řetězce důvěryhodnosti. Certifikáty podepsané svým držitelem jsou vhodné pro testování nebo prostředí, kde správci kontrolují klienty a můžou bezpečně obejít výstrahy zabezpečení v prohlížeči. Provozní úlohy by nikdy neměly používat certifikáty podepsané svým držitelem.
 
-Další informace najdete v tématu [Konfigurace ukončení TLS pomocí služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Další informace najdete v tématu [Konfigurace ukončení TLS pomocí služby Application Gateway](./create-ssl-portal.md).
 
 ### <a name="size-of-the-certificate"></a>Velikost certifikátu
-V části [omezení Application Gateway](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) můžete zjistit, že je podporovaná maximální velikost certifikátu TLS/SSL.
+V části [omezení Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits) můžete zjistit, že je podporovaná maximální velikost certifikátu TLS/SSL.
 
 ## <a name="end-to-end-tls-encryption"></a>Komplexní šifrování TLS
 
@@ -62,7 +62,7 @@ Možná nebudete chtít nešifrovaná komunikace se servery back-end. Je možné
 
 Koncová TLS umožňuje šifrovat a bezpečně přenášet citlivá data do back-endu při použití funkcí vyrovnávání zatížení vrstvy 7 Application Gateway. Mezi tyto funkce patří spřažení relace na základě souborů cookie, směrování na základě adresy URL, podpora směrování založeného na lokalitách, možnost přepisování nebo vkládání hlaviček X předávaných do * a tak dále.
 
-Při konfiguraci s koncovým režimem komunikace TLS Application Gateway ukončí relace TLS u brány a dešifruje provoz uživatelů. Následně použije nakonfigurovaná pravidla k výběru příslušné instance back-endového fondu, na kterou provoz přesměruje. Application Gateway pak iniciuje nové připojení TLS k back-end serveru a před odesláním požadavku do back-endu znovu zašifruje data pomocí certifikátu veřejného klíče back-end serveru. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem. Kompletní protokol TLS je povolený nastavením nastavení protokolu v [Nastavení http back-endu](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) na https, které se pak použije na back-end fond.
+Při konfiguraci s koncovým režimem komunikace TLS Application Gateway ukončí relace TLS u brány a dešifruje provoz uživatelů. Následně použije nakonfigurovaná pravidla k výběru příslušné instance back-endového fondu, na kterou provoz přesměruje. Application Gateway pak iniciuje nové připojení TLS k back-end serveru a před odesláním požadavku do back-endu znovu zašifruje data pomocí certifikátu veřejného klíče back-end serveru. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem. Kompletní protokol TLS je povolený nastavením nastavení protokolu v [Nastavení http back-endu](./configuration-overview.md#http-settings) na https, které se pak použije na back-end fond.
 
 Pro SKU Application Gateway a WAF V1 se zásady TLS vztahují na provoz front-endu i back-endu. Na front-endu Application Gateway funguje jako server a vynutila zásady. V back-endu Application Gateway slouží jako klient a odesílá informace protokolu/šifry jako preference během ověřování TLS.
 

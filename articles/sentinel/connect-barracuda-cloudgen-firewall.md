@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e0aa186e742318ab5793fa8390251d94327bf08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77588497"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632703"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Připojení brány Barracuda CloudGen Firewall
 
 Konektor brány firewall Barracuda CloudGen (CGFW) umožňuje snadno připojit protokoly Barracuda CGFW k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení.
-
-
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,17 +33,16 @@ Konektor brány firewall Barracuda CloudGen (CGFW) umožňuje snadno připojit p
 
 ## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>Připojení Azure Sentinel k bráně firewall Barracuda CloudGen
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **datové konektory** Azure Sentinel a pak vyberte konektor **brány firewall Barracuda CloudGen** .
+1. V Azure Portal přejděte na   >  **datové konektory** Azure Sentinel a pak vyberte konektor **brány firewall Barracuda CloudGen** .
 
-2. Vyberte **stránku otevřít konektor**.
+1. Vyberte **stránku otevřít konektor**.
 
-3. Postupujte podle pokynů na stránce **brány firewall Barracuda CloudGen** .
-
+1. Postupujte podle pokynů na stránce **brány firewall Barracuda CloudGen** .
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto dokumentu jste zjistili, jak připojit bránu firewall Barracuda CloudGen ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
-
-

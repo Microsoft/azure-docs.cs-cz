@@ -2,26 +2,68 @@
 title: Výběr imagí virtuálních počítačů se systémem Linux pomocí Azure CLI
 description: Naučte se používat Azure CLI k určení vydavatele, nabídky, SKU a verze imagí virtuálních počítačů Marketplace.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.collection: linux
+ms.openlocfilehash: efa0b91c9c0e43104f36017c3b1a1f3167190d63
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374078"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562805"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na Azure Marketplace pomocí Azure CLI
 
 Toto téma popisuje, jak pomocí rozhraní příkazového řádku Azure vyhledat image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image Marketplace při programovém vytvoření virtuálního počítače pomocí rozhraní příkazového řádku, Správce prostředků šablon nebo jiných nástrojů.
 
-K dispozici je také procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo [Azure PowerShell](../windows/cli-ps-findimage.md). 
+K dispozici je také procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo  [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Ujistěte se, že jste nainstalovali nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a že jste přihlášeni k účtu Azure ( `az login` ).
+Ujistěte se, že jste přihlášeni k účtu Azure ( `az login` ).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Nasazení z VHD pomocí parametrů plánu nákupu
+
+Pokud máte existující virtuální pevný disk, který byl vytvořen pomocí placené Azure Marketplace image, může být nutné při vytváření nového virtuálního počítače z daného virtuálního pevného disku poskytnout informace o plánu nákupu. 
+
+Pokud máte i nadále původní virtuální počítač nebo jiný virtuální počítač vytvořený pomocí stejné image na webu Marketplace, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí [příkaz AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view). Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+Pokud jste neobdrželi informace o plánu před odstraněním původního virtuálního počítače, můžete [požádat o podporu](https://ms.portal.azure.com/#create/Microsoft.Support). Budou potřebovat název virtuálního počítače, ID předplatného a časové razítko operace odstranění.
+
+Jakmile budete mít informace o plánu, můžete vytvořit nový virtuální počítač pomocí `--attach-os-disk` parametru a zadat virtuální pevný disk.
+
+```azurecli-interactive
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>Nasazení nového virtuálního počítače s využitím parametrů plánu nákupu
+
+Pokud již máte informace o imagi, můžete ji nasadit pomocí `az vm create` příkazu. V tomto příkladu nasadíme virtuální počítač s imagí RabbitMQ Certified by Bitnami:
+
+```azurecli
+az group create --name myResourceGroupVM --location westus
+
+az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
+```
+
+Pokud se vám zobrazí zpráva, jak přijmout podmínky obrázku, přečtěte si část [přijměte podmínky](#accept-the-terms) dále v tomto článku.
 
 ## <a name="list-popular-images"></a>Výpis oblíbených imagí
 
@@ -33,7 +75,7 @@ az vm image list --output table
 
 Výstup obsahuje identifikátor URN obrázku (hodnota ve sloupci *urn* ). Když vytváříte virtuální počítač s jednou z těchto oblíbených imagí na webu Marketplace, můžete případně zadat *UrnAlias*, zkrácenou formu, jako je *UbuntuLTS*.
 
-```
+```output
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
@@ -60,7 +102,7 @@ az vm image list --offer Debian --all --output table
 
 Částečný výstup: 
 
-```
+```output
 Offer              Publisher    Sku                  Urn                                                    Version
 -----------------  -----------  -------------------  -----------------------------------------------------  --------------
 Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
@@ -110,7 +152,7 @@ az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 
 
 Částečný výstup:
 
-```
+```output
 Offer    Publisher    Sku                Urn                                              Version
 -------  -----------  -----------------  -----------------------------------------------  -------------
 Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
@@ -158,7 +200,7 @@ az vm image list-publishers --location westus --output table
 
 Částečný výstup:
 
-```
+```output
 Location    Name
 ----------  ----------------------------------------------------
 westus      128technology
@@ -194,7 +236,7 @@ az vm image list-offers --location westus --publisher Canonical --output table
 
 Výstup:
 
-```
+```output
 Location    Name
 ----------  -------------------------
 westus      Ubuntu15.04Snappy
@@ -211,7 +253,7 @@ az vm image list-skus --location westus --publisher Canonical --offer UbuntuServ
 
 Výstup:
 
-```
+```output
 Location    Name
 ----------  -----------------
 westus      12.04.3-LTS
@@ -242,7 +284,7 @@ az vm image list --location westus --publisher Canonical --offer UbuntuServer --
 
 Částečný výstup:
 
-```
+```output
 Offer         Publisher    Sku        Urn                                               Version
 ------------  -----------  ---------  ------------------------------------------------  ---------------
 UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
@@ -286,7 +328,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 
 Výstup:
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/18.04.201901220",
@@ -307,7 +349,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 ```
 Výstup:
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1901151016",
@@ -325,7 +367,7 @@ Výstup:
 }
 ```
 
-### <a name="accept-the-terms"></a>Přijetí podmínek použití
+## <a name="accept-the-terms"></a>Přijetí podmínek použití
 
 Pokud si chcete zobrazit a přijmout licenční podmínky, použijte příkaz [AZ VM Image Accept-terms](/cli/azure/vm/image?) . Když souhlasíte s podmínkami, povolíte v předplatném programové nasazení. Pro bitovou kopii musíte pro Image přijmout jenom jednou za odběr. Například:
 
@@ -335,7 +377,7 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 
 Výstup obsahuje `licenseTextLink` licenční smlouvy a označuje, že hodnota `accepted` je `true` :
 
-```
+```output
 {
   "accepted": true,
   "additionalProperties": {},
@@ -350,16 +392,6 @@ Výstup obsahuje `licenseTextLink` licenční smlouvy a označuje, že hodnota `
   "signature": "XXXXXXLAZIK7ZL2YRV5JYQXONPV76NQJW3FKMKDZYCRGXZYVDGX6BVY45JO3BXVMNA2COBOEYG2NO76ONORU7ITTRHGZDYNJNXXXXXX",
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
-```
-
-### <a name="deploy-using-purchase-plan-parameters"></a>Nasazení pomocí parametrů plánu nákupu
-
-Po přijetí podmínek pro image můžete nasadit virtuální počítač v rámci předplatného. Chcete-li nasadit bitovou kopii pomocí `az vm create` příkazu, zadejte kromě názvu URN obrázku také parametry pro plán nákupu. Pokud například chcete nasadit virtuální počítač s RabbitMQ certifikováno pomocí Bitnami Image:
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
 ## <a name="next-steps"></a>Další kroky

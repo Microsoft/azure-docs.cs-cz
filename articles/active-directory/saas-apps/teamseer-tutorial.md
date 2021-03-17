@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542492"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Kurz: Azure Active Directory integrace s TeamSeer
 
@@ -27,10 +27,10 @@ Integrace TeamSeer s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k TeamSeer (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s TeamSeer potřebujete následující položky:
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí TeamSeer, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování TeamSeer](#configure-teamseer-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování TeamSeer](#configure-teamseer-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření TeamSeer Test User](#create-teamseer-test-user)** – pro Britta Simon v TeamSeer, který je propojený s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://www.teamseer.com/<companyid>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -120,13 +120,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-teamseer-single-sign-on"></a>Konfigurace jednotného přihlašování TeamSeer
+### <a name="configure-teamseer-single-sign-on"></a>Nakonfigurovat TeamSeer jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu TeamSeer společnosti jako správce.
 
 1. Přejít na **správce lidských zdrojů**
 
-    ![Správce lidských zdrojů](./media/teamseer-tutorial/ic789634.png "Správce lidských zdrojů")
+    ![Snímek obrazovky ukazuje správce H R vybraný v okně TeamSeer.](./media/teamseer-tutorial/ic789634.png "Správce lidských zdrojů")
 
 1. Klikněte na tlačítko **nastavit**.
 
@@ -134,11 +134,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
 1. Klikněte na **nastavení podrobnosti o poskytovateli SAML**.
 
-    ![Nastavení SAML](./media/teamseer-tutorial/ic789636.png "Nastavení SAML")
+    ![Snímek obrazovky s vybraným nastavením podrobností o poskytovateli SAML.](./media/teamseer-tutorial/ic789636.png "Nastavení SAML")
 
 1. V části Podrobnosti o poskytovateli SAML proveďte následující kroky:
 
-    ![Nastavení SAML](./media/teamseer-tutorial/ic789637.png "Nastavení SAML")
+    ![Snímek obrazovky s podrobnostmi o poskytovateli SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/teamseer-tutorial/ic789637.png "Nastavení SAML")
 
     a. Do textového pole **Adresa URL** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -146,7 +146,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
 1. Konfiguraci zprostředkovatele SAML dokončíte provedením následujících kroků:
 
-    ![Nastavení SAML](./media/teamseer-tutorial/ic789638.png "Nastavení SAML")
+    ![Snímek obrazovky se zobrazí v konfiguraci zprostředkovatele SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/teamseer-tutorial/ic789638.png "Nastavení SAML")
 
     a. Do pole **testovací e-mailové adresy**zadejte e-mailovou adresu testovacího uživatele.
   
@@ -177,7 +177,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -185,7 +185,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **TeamSeer**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **TeamSeer**.
 
@@ -215,7 +215,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k TeamSeer, musí se zřídit v 
 
 1. Přejděte na **správce řízení \> uživatelských zdrojů** a potom klikněte na **Spustit Průvodce vytvořením nového uživatele**.
 
-    ![Správce lidských zdrojů](./media/teamseer-tutorial/ic789640.png "Správce lidských zdrojů")
+    ![Snímek obrazovky se zobrazí na kartě Správce H R, kde můžete vybrat průvodce, který se má spustit.](./media/teamseer-tutorial/ic789640.png "Správce lidských zdrojů")
 
 1. V části **Podrobnosti o uživateli** proveďte následující kroky:
 
@@ -223,7 +223,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k TeamSeer, musí se zřídit v 
 
     a. Do příslušných textových polí zadejte **jméno**, **příjmení**, **uživatelské jméno (e-mailová adresa)** platného účtu Azure AD, který chcete zřídit.
   
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. Podle pokynů na obrazovce přidejte nového uživatele a klikněte na **Dokončit**.
 
@@ -234,12 +234,12 @@ Aby se uživatelé Azure AD mohli přihlašovat k TeamSeer, musí se zřídit v 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici TeamSeer, měli byste se automaticky přihlásit k TeamSeer, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici TeamSeer, měli byste se automaticky přihlásit k TeamSeer, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

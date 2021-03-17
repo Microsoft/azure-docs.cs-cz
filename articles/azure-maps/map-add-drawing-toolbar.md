@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 141ae90805e81d7269a12dcf465389d6a9dcaf55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286976"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896391"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Přidání panelu nástrojů nástrojů pro kreslení na mapu
 
-V tomto článku se dozvíte, jak používat modul nástrojů pro kreslení a jak zobrazit panel nástrojů kreslení na mapě. Ovládací prvek [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) přidá panel nástrojů kreslení na mapě. Naučíte se, jak vytvářet mapy jenom s jedním a všemi nástroji pro kreslení a jak přizpůsobit vykreslování obrazových tvarů ve Správci výkresu.
+V tomto článku se dozvíte, jak používat modul nástrojů pro kreslení a jak zobrazit panel nástrojů kreslení na mapě. Ovládací prvek [DrawingToolbar](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) přidá panel nástrojů kreslení na mapě. Naučíte se, jak vytvářet mapy jenom s jedním a všemi nástroji pro kreslení a jak přizpůsobit vykreslování obrazových tvarů ve Správci výkresu.
 
 ## <a name="add-drawing-toolbar"></a>Přidání panelu nástrojů pro kreslení
 
@@ -38,7 +38,7 @@ Níže je uvedená ukázka kompletního běžícího kódu pro výše uvedené f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Přidání panelu nástrojů pro kreslení" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Přidání panelu nástrojů pro kreslení" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>panel nástrojů přidat kreslení</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -62,7 +62,7 @@ Níže je uvedená ukázka kompletního běžícího kódu pro výše uvedené f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Přidat kreslicí nástroj mnohoúhelníku" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Přidat kreslicí nástroj mnohoúhelníku" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Přidání mnohoúhelníkového kreslicího nástroje</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -122,7 +122,7 @@ Níže je uvedená ukázka kompletního běžícího kódu pro výše uvedené f
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Změnit styl vykreslování kresby" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Změnit styl vykreslování kresby" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>styl vykreslování kresby změnit</a> u Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -143,10 +143,10 @@ Naučte se používat další funkce modulu nástrojů pro kreslení:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Panel nástrojů kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
 
 > [!div class="nextstepaction"]
-> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)

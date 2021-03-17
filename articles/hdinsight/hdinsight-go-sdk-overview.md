@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight SDK pro cestách
 description: Referenční materiál pro použití Azure HDInsight SDK for přejít a Apache Hadoop clusterů
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09564bd149488d956586c8a0e349cd79eec358a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79479582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582759"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for (Preview)
 
@@ -21,7 +18,7 @@ ms.locfileid: "79479582"
 Sada HDInsight SDK for přejít poskytuje třídy a funkce, které umožňují spravovat clustery HDInsight. Zahrnuje operace pro vytváření, odstraňování, aktualizaci, vypsání, změnu velikosti, provádění akcí skriptu, monitorování, získávání vlastností clusterů HDInsight a další.
 
 > [!NOTE]  
->Referenční materiál GoDoc pro tuto sadu SDK je také [k dispozici zde](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
+>Referenční materiál GoDoc pro tuto sadu SDK je také [k dispozici zde](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,14 +29,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sdk-installation"></a>Instalace sady SDK
 
-Z umístění GOPATH tak spusťte`go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
+Z umístění GOPATH tak spusťte `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
 ## <a name="authentication"></a>Authentication
 
 Nejdřív je potřeba ověřit sadu SDK s vaším předplatným Azure.  Použijte následující příklad k vytvoření instančního objektu a použijte ho k ověření. Po dokončení budete mít instanci `ClustersClient` , která obsahuje mnoho funkcí (popsaných v níže uvedených částech), které lze použít k provádění operací správy.
 
 > [!NOTE]  
-> Kromě níže uvedeného příkladu můžete ověřit jiné způsoby, které by mohly být vhodnější pro vaše potřeby. Zde jsou uvedené všechny funkce: [ověřování funkcí v Azure SDK pro go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
+> Kromě níže uvedeného příkladu můžete ověřit jiné způsoby, které by mohly být vhodnější pro vaše potřeby. Zde jsou uvedené všechny funkce: [ověřování funkcí v Azure SDK pro go](/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>Příklad ověřování pomocí instančního objektu
 
@@ -157,7 +154,7 @@ Skupinu prostředků můžete vytvořit pomocí [Azure Cloud Shell](https://shel
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 ```
 
-##### <a name="creating-a-storage-account"></a>Vytváření účtu úložiště
+##### <a name="creating-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště můžete pomocí [Azure Cloud Shell](https://shell.azure.com/bash) vytvořit spuštěním:
 
@@ -365,7 +362,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>Povolit monitorování OMS
 
 > [!NOTE]  
-> Chcete-li povolit monitorování OMS, je nutné mít existující Log Analytics pracovní prostor. Pokud jste ho ještě nevytvořili, můžete se dozvědět, jak to udělat: [Vytvoření pracovního prostoru Log Analytics v Azure Portal](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+> Chcete-li povolit monitorování OMS, je nutné mít existující Log Analytics pracovní prostor. Pokud jste ho ještě nevytvořili, můžete se dozvědět, jak to udělat: [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 Postup povolení monitorování OMS ve vašem clusteru:
 
@@ -394,7 +391,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 HDInsight poskytuje konfigurační funkci nazvanou akce skriptů, které vyvolávají vlastní skripty pro přizpůsobení clusteru.
 
 > [!NOTE]  
-> Další informace o tom, jak použít akce skriptů, najdete tady: [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> Další informace o tom, jak použít akce skriptů, najdete tady: [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů](./hdinsight-hadoop-customize-cluster-linux.md)
 
 ### <a name="execute-script-actions"></a>Spustit akce skriptu
 
@@ -491,4 +488,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [referenční materiál GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). GoDocs poskytuje referenční dokumentaci pro všechny funkce v sadě SDK.
+Prozkoumejte [referenční materiál GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight). GoDocs poskytuje referenční dokumentaci pro všechny funkce v sadě SDK.

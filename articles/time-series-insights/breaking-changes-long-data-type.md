@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0f7ac9844bfe7eac7094d3b7fdf653e07f236599
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167993"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780820"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Přidání podpory pro typ Long data v Azure Time Series Insights Gen2
 
@@ -33,7 +33,7 @@ Pokud máte vliv na některý z následujících případů, proveďte doporuče
 
 V případě, že se na vás vztahují nějaké případy, proveďte změny v modelu. Aktualizujte výraz Time Series (TSX) v definici proměnné o doporučené změny. Aktualizovat obojí:
 
-- Azure Time Series Insights Průzkumník Gen2
+- Průzkumník Azure Time Series Insights
 - Libovolný vlastní klient používající naše rozhraní API
 
 V závislosti na vašem řešení a omezeních IoT možná nebudete mít přehled o datech, která se odesílají do prostředí Azure Time Series Insights Gen2. Pokud si nejste jistí, jestli jsou vaše data celočíselná nebo integrální i neintegrální, máte několik možností:
@@ -42,11 +42,11 @@ V závislosti na vašem řešení a omezeních IoT možná nebudete mít přehle
 - Můžete proměnit doporučené změny pro všechny číselné značky.
 - Můžete dočasně směrovat podmnožinu událostí do úložiště pro lepší pochopení a prozkoumání schématu.
 
-Pokud chcete ukládat události, zapněte [zachytávání událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) pro Azure Event Hubs nebo [trasu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) z IoT Hub do úložiště objektů BLOB v Azure.
+Pokud chcete ukládat události, zapněte [zachytávání událostí](../event-hubs/event-hubs-capture-overview.md) pro Azure Event Hubs nebo [trasu](../iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint) z IoT Hub do úložiště objektů BLOB v Azure.
 
-Data je také možné pozorovat prostřednictvím [Průzkumníka centra událostí](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)nebo pomocí nástroje [Event Processor Host](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events).
+Data je také možné pozorovat prostřednictvím [Průzkumníka centra událostí](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)nebo pomocí nástroje [Event Processor Host](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md#receive-events).
 
-Pokud používáte IoT Hub, přejděte k části [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) pro přístup k integrovanému koncovému bodu.
+Pokud používáte IoT Hub, přejděte k části [čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](../iot-hub/iot-hub-devguide-messages-read-builtin.md) pro přístup k integrovanému koncovému bodu.
 
 > [!NOTE]
 > Pokud neprovedete doporučené změny, může docházet k přerušení. Například ovlivněné proměnné Time Series Insights, ke kterým se dostanete prostřednictvím rozhraní API pro dotazy nebo Time Series Insights Explorer, vrátí **hodnotu null** (tj. v Průzkumníkovi nezobrazí žádná data).
@@ -66,19 +66,19 @@ Pokud aktuálně odesíláte celočíselná data telemetrie, vaše data budou ro
 
 Vaše celočíselné zápisy dat do **propertyValue_long**. Dříve ingestovaná číselná data v **propertyValue_double** nebyla kopírována.
 
-Pokud chcete zadat dotaz na data v těchto dvou sloupcích pro vlastnost **PropertyValue** , musíte v TSX použít skalární funkci **COALESCE ()** . Funkce přijímá argumenty stejného **datového typu** a vrací první hodnotu, která není null v seznamu argumentů. Další informace najdete v tématu [Azure Time Series Insights Gen2ch konceptů přístupu k datům](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
+Pokud chcete zadat dotaz na data v těchto dvou sloupcích pro vlastnost **PropertyValue** , musíte v TSX použít skalární funkci **COALESCE ()** . Funkce přijímá argumenty stejného **datového typu** a vrací první hodnotu, která není null v seznamu argumentů. Další informace najdete v tématu [Azure Time Series Insights Gen2ch konceptů přístupu k datům](/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>Definice proměnné v TSX – numeric
 
 *Definice předchozí proměnné:*
 
-[![Definice předchozí proměnné](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
+[![Snímek obrazovky se zobrazí dialogové okno Přidat novou proměnnou pro proměnnou PropertyValue, číselná.](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
 *Definice nové proměnné:*
 
-[![Definice nové proměnné](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
+[![Snímek obrazovky se zobrazí dialogové okno Přidat novou proměnnou pro proměnnou PropertyValue s vlastní hodnotou, která je číselná.](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
+Jako [výraz vlastní časové řady](/rest/api/time-series-insights/reference-time-series-expression-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Vložená definice proměnné s použitím rozhraní API pro dotazy TSX – numerický
 
@@ -126,7 +126,7 @@ Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-s
 }
 ```
 
-Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
+Jako [výraz vlastní časové řady](/rest/api/time-series-insights/reference-time-series-expression-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
 
 > [!NOTE]
 > Tyto proměnné Doporučujeme aktualizovat na všech místech, která se můžou použít. Mezi tato místa patří model časových řad, uložené dotazy a dotazy konektoru Power BI.
@@ -139,15 +139,15 @@ Pokud aktuálně používáte proměnné kategorií, které mapují celočíseln
 
 *Definice předchozí proměnné:*
 
-[![Definice předchozí proměnné](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
+[![Snímek obrazovky se zobrazí dialogové okno Přidat novou proměnnou pro proměnnou PropertyValue, kategorií.](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
 *Definice nové proměnné:*
 
-[![Definice nové proměnné](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
+[![Snímek obrazovky se zobrazí dialogové okno Přidat novou proměnnou pro proměnnou PropertyValue s vlastní hodnotou kategorií.](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
+Jako [výraz vlastní časové řady](/rest/api/time-series-insights/preview#time-series-expression-and-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
 
-Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady.](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)
+Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady.](/rest/api/time-series-insights/reference-time-series-expression-syntax)
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Vložená definice proměnné pomocí rozhraní API pro dotazy TSX – kategorií
 
@@ -227,7 +227,7 @@ Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datov�
 }
 ```
 
-Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > Tyto proměnné Doporučujeme aktualizovat na všech místech, která se můžou použít. Mezi tato místa patří model časových řad, uložené dotazy a dotazy konektoru Power BI.

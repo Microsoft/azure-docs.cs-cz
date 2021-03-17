@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066464"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91269229"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvoření nebo připojení paralelních větví pro akce pracovního postupu v Azure Logic Apps
 
@@ -20,7 +20,7 @@ Ve výchozím nastavení se vaše akce v pracovních postupech aplikace logiky s
 > [!TIP] 
 > Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -47,7 +47,7 @@ Vaše aplikace logiky čeká na dokončení všech větví před pokračováním
 
 1. Ve vyhledávacím poli vyhledejte a vyberte požadovanou akci.
 
-   ![Vyhledejte a vyberte akci, kterou chcete.](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Snímek obrazovky zobrazující okno zvolit akci v návrháři aplikace logiky](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    Vybraná akce se teď zobrazí ve větvi Parallel, například:
 
@@ -59,7 +59,7 @@ Vaše aplikace logiky čeká na dokončení všech větví před pokračováním
 
 1. Ve vyhledávacím poli vyhledejte a vyberte požadovanou akci.
 
-   ![Najít a vybrat sekvenční akci](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Snímek obrazovky zobrazující okno zvolit akci a vyhledávací pole v návrháři aplikace logiky](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    Vybraná akce se teď zobrazí v rámci aktuální větve, například:
 
@@ -181,7 +181,7 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu spo
 }
 ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).

@@ -3,18 +3,21 @@ title: ST_ISVALIDDETAILED v dotazovacím jazyce Azure Cosmos DB
 description: Přečtěte si o funkcích systému SQL ST_ISVALIDDETAILED v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ccd3178f1126ce8fe8f10b126dc6eadaf72bf53
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71349352"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004411"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí hodnotu JSON obsahující logickou hodnotu, pokud je platný LineString výraz pro typ bodového zápisu, mnohoúhelník nebo výraz JSON, a pokud je neplatný, a navíc důvod jako řetězcovou hodnotu.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -58,4 +61,4 @@ SELECT ST_ISVALIDDETAILED({
 
 - [Azure Cosmos DB prostorových funkcí](sql-query-spatial-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

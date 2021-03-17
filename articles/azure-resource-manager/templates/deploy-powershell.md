@@ -1,85 +1,71 @@
 ---
 title: Nasazení prostředků pomocí PowerShellu a šablony
-description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
+description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 64993b526b67430266a8b3e85e3bcc233a3e28a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/04/2021
+ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079515"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521624"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
 
-Tento článek vysvětluje, jak používat Azure PowerShell se šablonami Azure Resource Manager (šablony ARM) k nasazení vašich prostředků do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md).
+Tento článek vysvětluje, jak použít Azure PowerShell se šablonami Azure Resource Manager (šablony ARM) nebo soubory bicep k nasazení vašich prostředků do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md) nebo [bicep Overview](bicep-overview.md).
 
-## <a name="deployment-scope"></a>Rozsah nasazení
+K nasazení souborů bicep potřebujete [Azure PowerShell verze 5.6.0 nebo novější](/powershell/azure/install-az-ps).
 
-Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro správu nebo tenanta. Ve většině případů budete cílit na nasazení do skupiny prostředků. Chcete-li použít zásady a přiřazení rolí v rámci většího rozsahu, použijte předplatné, skupinu pro správu nebo nasazení klientů. Při nasazování do předplatného můžete vytvořit skupinu prostředků a nasadit do ní prostředky.
+## <a name="prerequisites"></a>Požadavky
 
-V závislosti na rozsahu nasazení použijete jiné příkazy.
+K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte [ukázkovou šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru použitý v tomto článku je _C:\MyTemplates\azuredeploy.js_.
 
-* K nasazení do **skupiny prostředků**použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
-
-  ```azurepowershell
-  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
-  ```
-
-* K nasazení do **předplatného**použijte New-AzSubscriptionDeployment:
-
-  ```azurepowershell
-  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
-  ```
-
-  Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
-
-* K nasazení do **skupiny pro správu**použijte [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
-
-  ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
-  ```
-
-  Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
-
-* K nasazení do **tenanta**použijte [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
-
-  ```azurepowershell
-  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
-  ```
-
-  Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
-
-Příklady v tomto článku používají nasazení skupin prostředků.
-
-## <a name="prerequisites"></a>Předpoklady
-
-K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte [ukázkovou šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.js**.
-
-Pokud nepoužíváte Azure Cloud Shell k nasazení šablon, musíte nainstalovat Azure PowerShell a připojit se k Azure:
+Musíte nainstalovat Azure PowerShell a připojit se k Azure:
 
 - **Nainstalujte rutiny Azure PowerShell na místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 - **Připojte se k Azure pomocí [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Pokud máte více předplatných Azure, může být nutné spustit také rutinu [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použití více předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
 
-## <a name="deploy-local-template"></a>Nasadit místní šablonu
+Pokud nemáte nainstalovaný PowerShell, můžete použít Azure Cloud Shell. Další informace najdete v tématu [Nasazení šablon ARM z Azure Cloud Shell](deploy-cloud-shell.md).
 
-Následující příklad vytvoří skupinu prostředků a nasadí šablonu z místního počítače. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Nemůže končit tečkou.
+## <a name="deployment-scope"></a>Rozsah nasazení
 
-```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro správu nebo tenanta. V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -Name ExampleDeployment `
-  -ResourceGroupName $resourceGroupName `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
-```
+- K nasazení do **skupiny prostředků** použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
-Dokončení nasazení může trvat několik minut.
+  ```azurepowershell
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template-or-bicep>
+  ```
+
+- K nasazení do **předplatného** použijte [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) , což je alias `New-AzDeployment` rutiny:
+
+  ```azurepowershell
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
+  ```
+
+  Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+
+- K nasazení do **skupiny pro správu** použijte [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
+
+  ```azurepowershell
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
+  ```
+
+  Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
+
+- K nasazení do **tenanta** použijte [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
+
+  ```azurepowershell
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
+  ```
+
+  Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
+
+Pro každý obor musí mít uživatel, který šablonu nasazuje, potřebná oprávnění k vytváření prostředků.
 
 ## <a name="deployment-name"></a>Název nasazení
 
-V předchozím příkladu jste najmenovali nasazení `ExampleDeployment` . Pokud název nasazení nezadáte, použije se název souboru šablony. Například pokud nasadíte šablonu s názvem `azuredeploy.json` a nezadáte název nasazení, nasazení se pojmenuje `azuredeploy` .
+Při nasazování šablony ARM můžete dát nasazení název. Tento název vám může pomáhat s načtením nasazení z historie nasazení. Pokud název nasazení nezadáte, použije se název souboru šablony. Například pokud nasadíte šablonu s názvem `azuredeploy.json` a nezadáte název nasazení, nasazení se pojmenuje `azuredeploy` .
 
 Pokaždé, když spustíte nasazení, do historie nasazení skupiny prostředků se přidá záznam s názvem nasazení. Pokud spustíte jiné nasazení a přiřadíte mu stejný název, bude předchozí položka nahrazena aktuálním nasazením. Pokud chcete zachovat jedinečné položky v historii nasazení, udělte každému nasazení jedinečný název.
 
@@ -105,43 +91,97 @@ Pokud pro každé nasazení zadáte jedinečný název, můžete je spustit soub
 
 Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v historii nasazení jedinečné položky, udělte každé nasazení jedinečný název.
 
-## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
+## <a name="deploy-local-template-or-bicep-file"></a>Nasadit místní šablonu nebo soubor bicep
 
-Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete ukládat do úložiště správy zdrojového kódu (například GitHub). Nebo je můžete uložit do účtu služby Azure Storage pro sdílený přístup ve vaší organizaci.
+Šablonu můžete nasadit z místního počítače nebo z nějakého, který je uložen externě. Tato část popisuje nasazení místní šablony.
 
-Pokud chcete nasadit externí šablonu, použijte parametr **TemplateUri** . Pomocí identifikátoru URI v příkladu nasaďte ukázkovou šablonu z GitHubu.
+Pokud provádíte nasazení do skupiny prostředků, která neexistuje, vytvořte skupinu prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Název nemůže končit tečkou.
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+New-AzResourceGroup -Name ExampleGroup -Location "Central US"
+```
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+K nasazení místní šablony nebo souboru bicep použijte `-TemplateFile` parametr v příkazu nasazení. Následující příklad také ukazuje, jak nastavit hodnotu parametru, který pochází ze šablony.
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name ExampleDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateFile <path-to-template-or-bicep>
+```
+
+Dokončení nasazení může trvat několik minut.
+
+## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
+
+> [!NOTE]
+> V současné době Azure PowerShell nepodporuje nasazování vzdálených souborů bicep. K nasazení vzdáleného souboru bicep použijte příkaz CLI bicep pro zkompilování souboru bicep do šablony JSON jako první.
+
+Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
+
+Pokud provádíte nasazení do skupiny prostředků, která neexistuje, vytvořte skupinu prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Název nemůže končit tečkou.
+
+```azurepowershell
+New-AzResourceGroup -Name ExampleGroup -Location "Central US"
+```
+
+K nasazení externí šablony použijte parametr `-TemplateUri`.
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name remoteTemplateDeployment `
+  -ResourceGroupName ExampleGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikátor URI, který funguje ve většině scénářů, protože by šablona neměla obsahovat citlivá data. Pokud potřebujete zadat citlivá data (třeba heslo správce), předejte tuto hodnotu jako zabezpečený parametr. Pokud ale nechcete, aby byla šablona veřejně přístupná, můžete ji chránit uložením do privátního kontejneru úložiště. Informace o nasazení šablony, která vyžaduje token sdíleného přístupového podpisu (SAS), najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md). Kurz najdete v tématu [kurz: integrace Azure Key Vault v nasazení šablony ARM](template-tutorial-use-key-vault.md).
+Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikátor URI, který funguje ve většině scénářů, protože by šablona neměla obsahovat citlivá data. Pokud potřebujete zadat citlivá data (třeba heslo správce), předejte tuto hodnotu jako zabezpečený parametr. Pokud ale chcete spravovat přístup k šabloně, zvažte použití [specifikací šablon](#deploy-template-spec).
+
+Pokud chcete nasadit vzdálené propojené šablony s relativní cestou uloženou v účtu úložiště, použijte `QueryString` k zadání tokenu SAS:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+Další informace najdete v tématu [použití relativní cesty pro propojené šablony](./linked-templates.md#linked-template).
+
+## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
+
+> [!NOTE]
+> V současné době Azure PowerShell nepodporuje vytváření specifikací šablon poskytnutím souborů bicep. Můžete však vytvořit soubor bicep pomocí prostředku [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) pro nasazení specifikace šablony. Tady je [příklad](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
+
+Následující příklady ukazují, jak vytvořit a nasadit specifikace šablony.
+
+Nejdřív vytvořte specifikaci šablony tím, že poskytnete šablonu ARM.
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0 `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateJsonFile ./mainTemplate.json
+```
+
+Pak Získejte ID pro specifikaci šablony a nasaďte ji.
+
+```azurepowershell
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName demoRG `
+  -TemplateSpecId $id
+```
+
+Další informace najdete v tématu [Azure Resource Manager specifikace šablon (Preview)](template-specs.md).
 
 ## <a name="preview-changes"></a>Zobrazit náhled změn
 
 Před nasazením šablony můžete zobrazit náhled změn, které šablona provede pro vaše prostředí. Pomocí [operace citlivosti](template-deploy-what-if.md) ověřte, že šablona provádí očekávané změny. Co když zároveň ověří chyby v šabloně.
-
-## <a name="deploy-from-azure-cloud-shell"></a>Nasazení z Azure Cloud Shell
-
-K nasazení šablony můžete použít [Azure Cloud Shell](https://shell.azure.com) . Chcete-li nasadit externí šablonu, zadejte identifikátor URI šablony. Pokud chcete nasadit místní šablonu, musíte nejdřív načíst šablonu do účtu úložiště pro vaši Cloud Shell. Chcete-li odeslat soubory do prostředí, vyberte v okně prostředí ikonu nabídky **nahrát/stáhnout soubory** .
-
-Chcete-li otevřít Cloud Shell, přejděte na adresu [https://shell.azure.com](https://shell.azure.com) nebo vyberte příkaz **try-it** z následujícího oddílu kódu:
-
-```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-```
-
-Pokud chcete vložit kód do prostředí, klikněte pravým tlačítkem myši do prostředí a pak vyberte **Vložit**.
 
 ## <a name="pass-parameter-values"></a>Předat hodnoty parametrů
 
@@ -154,7 +194,7 @@ Chcete-li předat vložené parametry, zadejte název parametru pomocí `New-AzR
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString "inline string" `
   -exampleArray $arrayParam
 ```
@@ -164,7 +204,7 @@ Obsah souboru můžete také získat a poskytnout ho jako vložený parametr.
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
 ```
@@ -178,25 +218,25 @@ $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
 $hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
 $subnetArray = $hash1, $hash2
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleArray $subnetArray
 ```
 
 ### <a name="parameter-files"></a>Soubory parametrů
 
-Místo předání parametrů jako vložených hodnot do skriptu může být snazší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů může být místní soubor nebo externí soubor s přístupným identifikátorem URI.
+Místo předávání parametrů v podobě hodnot vložených do skriptu pro vás možná bude jednodušší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů může být místní soubor nebo externí soubor s přístupným identifikátorem URI. Šablona ARM i soubor bicep používají soubory parametrů JSON.
 
-Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](parameter-files.md).
+Další informace o souboru parametrů najdete v tématu [Vytvoření souboru parametrů Resource Manageru](parameter-files.md).
 
-Chcete-li předat místní soubor parametrů, použijte parametr **TemplateParameterFile** :
+Chcete-li předat místní soubor parametrů, použijte `TemplateParameterFile` parametr:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Chcete-li předat externí soubor parametrů, použijte parametr **TemplateParameterUri** :
+Chcete-li předat externí soubor parametrů, použijte `TemplateParameterUri` parametr:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -209,4 +249,4 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 - Chcete-li se vrátit k úspěšnému nasazení, když se zobrazí chyba, přečtěte si téma [vrácení chyby při úspěšném nasazení](rollback-on-error.md).
 - Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
 - Informace o definování parametrů v šabloně najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
-- Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md).
+- Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](secure-template-with-sas-token.md).

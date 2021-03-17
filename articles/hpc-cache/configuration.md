@@ -1,30 +1,33 @@
 ---
 title: Konfigurace nastavení mezipaměti prostředí Azure HPC
-description: Vysvětluje, jak nakonfigurovat další nastavení pro mezipaměť, jako je MTU a No-Root-"squash, a jak získat přístup k expresním snímkům z cílů úložiště objektů BLOB v Azure.
+description: Vysvětluje, jak nakonfigurovat další nastavení pro mezipaměť, jako je MTU, vlastní konfiguraci NTP a DNS a jak získat přístup k expresním snímkům z cílů služby Azure Blob Storage.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497195"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563371"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurovat další nastavení mezipaměti HPC Azure
 
-**Konfigurační** stránka v Azure Portal obsahuje možnosti pro přizpůsobení několika nastavení. Většina uživatelů nemusí tato nastavení měnit z výchozích hodnot.
+Stránka **sítě** v Azure Portal obsahuje možnosti pro přizpůsobení několika nastavení. Většina uživatelů nemusí tato nastavení měnit z výchozích hodnot.
 
 Tento článek také popisuje, jak používat funkci snímků pro cíle služby Azure Blob Storage. Funkce snímku nemá žádná konfigurovatelná nastavení.
 
-Nastavení zobrazíte tak, že otevřete stránku **Konfigurace** mezipaměti v Azure Portal.
+Nastavení zobrazíte tak, že otevřete stránku **síť** mezipaměti v Azure Portal.
 
-![obrazovka konfigurační stránky v Azure Portal](media/configuration.png)
+![obrazovka stránky síť v Azure Portal](media/networking-page.png)
 
-> [!TIP]
-> [Správa videa Azure HPC cache](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) zobrazuje konfigurační stránku a její nastavení.
+> [!NOTE]
+> Předchozí verze této stránky zahrnovala nastavení kořenového "squash na úrovni mezipaměti, ale toto nastavení se přesunulo do [zásad přístupu klienta](access-policies.md).
+
+<!-- >> [!TIP]
+> The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
 
 ## <a name="adjust-mtu-value"></a>Upravit hodnotu MTU
 <!-- linked from troubleshoot-nas article -->
@@ -42,18 +45,39 @@ Pokud nechcete změnit nastavení jednotky MTU u jiných součástí systému, n
 
 Další informace o nastaveních jednotky MTU ve službě Azure Virtual Network získáte vyčtením [ladění výkonu protokolu TCP/IP pro virtuální počítače Azure](../virtual-network/virtual-network-tcpip-performance-tuning.md).
 
-## <a name="configure-root-squash"></a>Konfigurace kořenového "squash
-<!-- linked from troubleshoot -->
+## <a name="customize-ntp"></a>Přizpůsobení NTP
 
-Nastavení **Povolit kořen "squash** určuje, jak mezipaměť HPC Azure zpracovává požadavky od kořenového uživatele na klientských počítačích.
+Vaše mezipaměť ve výchozím nastavení používá time.microsoft.com časový server založený na Azure. Pokud chcete, aby mezipaměť používala jiný server NTP, zadejte ji do konfiguračního oddílu **NTP** . Použijte plně kvalifikovaný název domény nebo IP adresu.
 
-Pokud je povolená možnost root "squash, budou se uživatelé z klienta při odesílání požadavků přes mezipaměť HPC Azure automaticky mapovat na uživatele" Nikdo ". Zabrání taky klientským žádostem o použití bitů oprávnění set-UID.
+## <a name="set-a-custom-dns-configuration"></a>Nastavení vlastní konfigurace DNS
 
-Pokud je kořenový "squash zakázaný, požadavek od uživatele root Client (UID 0) se předá do systému úložiště NFS back-end jako kořen. Tato konfigurace může umožňovat nevhodný přístup k souborům.
+> [!CAUTION]
+> Pokud nepotřebujete, neměňte konfiguraci DNS pro mezipaměť. Chyby konfigurace můžou mít nepříjemné následky. Pokud vaše konfigurace nedokáže přeložit názvy služeb Azure, stane se trvale nedosažitelná instance mezipaměti HPC.
 
-Nastavení kořenového "squash pro mezipaměť může přispět k vynulování požadavků na povinná ``no_root_squash`` nastavení v systémech NAS, které se používají jako cíle úložiště. (Další informace o [požadavcích cíle úložiště NFS](hpc-cache-prerequisites.md#nfs-storage-requirements)najdete v tématu.) Může taky zvýšit zabezpečení při použití s cíli úložiště Azure Blob.
+Mezipaměť HPC Azure je automaticky nakonfigurovaná tak, aby používala zabezpečený a pohodlný Azure DNS systém. Několik neobvyklých konfigurací ale vyžaduje, aby mezipaměť používala samostatný místní systém DNS místo systému Azure. Oddíl **Konfigurace DNS** stránky **síť** slouží k určení tohoto typu systému.
 
-Výchozí nastavení je **Ano**. (Mezipaměti vytvořené před dubna 2020 mohou mít výchozí nastavení **ne**.)
+Obraťte se na zástupce Azure nebo se obraťte na službu a podporu společnosti Microsoft, abyste zjistili, jestli potřebujete použít vlastní konfiguraci DNS pro mezipaměť.
+
+Pokud nakonfigurujete svůj vlastní místní systém DNS pro použití mezipaměti HPC Azure, musíte zajistit, aby konfigurace mohla přeložit názvy koncových bodů Azure pro služby Azure. V případě potřeby musíte nakonfigurovat vlastní prostředí DNS tak, aby přeneslo určité požadavky na překlad IP adres na Azure DNS nebo na jiný server.
+
+Ověřte, že konfigurace služby DNS může tyto položky úspěšně vyřešit, než ji použijete pro mezipaměť prostředí Azure HPC:
+
+* ``*.core.windows.net``
+* Seznam odvolaných certifikátů (CRL) a ověřovací služby protokolu OCSP (Online Certificate Status Protocol). Částečný seznam najdete v [položce pravidla brány firewall](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) na konci tohoto [článku o Azure TLS](../security/fundamentals/tls-certificate-changes.md), ale měli byste se obrátit na technický zástupce Microsoftu, abyste pochopili všechny požadavky.
+* Plně kvalifikovaný název domény vašeho serveru NTP (time.microsoft.com nebo vlastní server)
+
+Pokud potřebujete pro svou mezipaměť nastavit vlastní server DNS, použijte zadaná pole:
+
+* **Doména hledání DNS** (volitelné) – zadejte doménu hledání, například ``contoso.com`` . Jedna hodnota je povolena nebo ji můžete nechat prázdnou.
+* Servery **DNS** – zadejte až tři servery DNS. Zadejte je podle IP adresy.
+
+<!-- 
+  > [!NOTE]
+  > The cache will use only the first DNS server it successfully finds. -->
+
+### <a name="refresh-storage-target-dns"></a>Aktualizovat cílový DNS úložiště
+
+Pokud server DNS aktualizuje IP adresy, budou se k dočasnému nedostupné cíle úložiště NFS. Přečtěte si, jak aktualizovat vlastní IP adresy systému DNS v [úpravách cílů úložiště](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only).
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Zobrazení snímků pro cíle služby Blob Storage
 
@@ -72,8 +96,8 @@ Snímky jsou pořízeny každých 8 hodin, ve formátu UTC 0:00, 08:00 a 16:00.
 
 Mezipaměť HPC Azure ukládá každý den, týdně a měsíčně snímky, dokud se nenahradí novými. Omezení jsou:
 
-* až 20 denních snímků
-* až 8 týdenních snímků
-* až 3 měsíční snímky
+* Až 20 denních snímků
+* Až 8 týdenních snímků
+* Až 3 měsíční snímky
 
 Přihlaste se k snímkům z `.snapshot` adresáře v oboru názvů cílů služby Blob Storage.

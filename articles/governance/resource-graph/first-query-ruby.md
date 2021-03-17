@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na Ruby'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení grafu prostředků Gem pro Ruby a spuštění prvního dotazu.
-ms.date: 07/12/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 9763e2e9ec49d6fb4ea37fac12578ab23b7b5363
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101976"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920033"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Ruby
 
@@ -16,9 +16,9 @@ Prvním krokem k použití Azure Resource graphu je ověření, že je nainstalo
 
 Na konci tohoto procesu přidáte Gems do instalace Ruby a spustíte váš první dotaz na graf prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Objekt služby Azure, včetně _ClientID_ a _clientSecret_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -89,9 +89,9 @@ Když je skript Ruby uložený a připravený k použití, je čas vyzkoušení 
 
 V každém volání metody `argQuery` jsou použity proměnné, které je třeba nahradit vlastními hodnotami:
 
-- `{tenantId}`– Nahraďte ID tenanta.
-- `{clientId}`– Nahraďte ID klienta objektu služby.
-- `{clientSecret}`– Nahraďte tajným kódem klienta vašeho instančního objektu.
+- `{tenantId}` – Nahraďte ID tenanta.
+- `{clientId}` – Nahraďte ID klienta objektu služby.
+- `{clientSecret}` – Nahraďte tajným kódem klienta vašeho instančního objektu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 1. Změňte adresář na složku projektu, kde jste vytvořili `Gemfile` soubory a `argClient.rb` .

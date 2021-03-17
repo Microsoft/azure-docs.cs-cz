@@ -1,24 +1,18 @@
 ---
 title: Vyvolat balíček SSIS pomocí aktivity uložená procedura Azure Data Factory
 description: Tento článek popisuje, jak vyvolat balíček služba SSIS (SQL Server Integration Services) (SSIS) z kanálu Azure Data Factory pomocí aktivity uložená procedura.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c831fa1c6351840693f2b10a22f59c5cc424d0f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322128"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392880"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčku SSIS pomocí aktivity uložená procedura v Azure Data Factory
 Tento článek popisuje, jak vyvolat balíček SSIS z kanálu Azure Data Factory pomocí aktivity uložené procedury. 
@@ -32,7 +26,7 @@ Tento článek popisuje, jak vyvolat balíček SSIS z kanálu Azure Data Factory
 Návod v tomto článku používá Azure SQL Database. Můžete také použít spravovanou instanci Azure SQL.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
-Vytvořte prostředí Azure-SSIS Integration runtime, pokud ho nepoužíváte, a to podle podrobných pokynů v tomto [kurzu: nasaďte balíčky SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Data Factory verze 1 nelze použít k vytvoření prostředí Azure-SSIS Integration runtime. 
+Vytvořte prostředí Azure-SSIS Integration runtime, pokud ho nepoužíváte, a to podle podrobných pokynů v tomto [kurzu: nasaďte balíčky SSIS](../tutorial-deploy-ssis-packages-azure.md). Data Factory verze 1 nelze použít k vytvoření prostředí Azure-SSIS Integration runtime. 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 V této části použijete Azure PowerShell k vytvoření kanálu Data Factory s aktivitou uložené procedury, která vyvolá balíček SSIS.
@@ -44,7 +38,7 @@ Nainstalujte nejnovější Azure PowerShell moduly podle pokynů v tématu [Jak 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Následující postup popisuje kroky k vytvoření datové továrny. V této datové továrně vytvoříte kanál s aktivitou uložené procedury. Aktivita uložené procedury provede uloženou proceduru v databázi SSISDB ke spuštění balíčku SSIS.
 
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Příklad: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -100,7 +94,7 @@ Vytvořte propojenou službu, která propojí vaši databázi v Azure SQL Databa
         }
         }
     ```
-2. V **Azure PowerShell**přepněte do složky **C:\ADF\RunSSISPackage** .
+2. V **Azure PowerShell** přepněte do složky **C:\ADF\RunSSISPackage** .
 3. Spuštěním rutiny **New-AzDataFactoryLinkedService** vytvořte propojenou službu: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
@@ -198,4 +192,3 @@ V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Tato aktivita 
 
 ## <a name="next-steps"></a>Další kroky
 Podrobnosti o aktivitě uložené procedury najdete v článku o [aktivitě uložené procedury](data-factory-stored-proc-activity.md) .
-

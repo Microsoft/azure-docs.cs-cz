@@ -1,21 +1,18 @@
 ---
 title: Transformace dat pomocí podregistru v Azure Virtual Network pomocí Azure Portal
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083062"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377954"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Transformujte data v Azure Virtual Network pomocí aktivity podregistru v Azure Data Factory pomocí Azure Portal
 
@@ -32,7 +29,7 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který 
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,10 +39,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 - **Virtual Network Azure.** Pokud nemáte virtuální síť Azure, vytvořte ji pomocí [těchto pokynů](../virtual-network/quick-create-portal.md). V této ukázce je HDInsight ve službě Azure Virtual Network. Tady je ukázka konfigurace služby Azure Virtual Network. 
 
     ![Vytvoření virtuální sítě](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **Cluster HDInsight.** Vytvořte cluster HDInsight a připojte ho k virtuální síti, kterou jste vytvořili v předchozím kroku, a na základě informací v článku věnovaném [rozšíření Azure HDInsightu s využitím služby Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Tady je ukázka konfigurace HDInsightu ve virtuální síti. 
+- **Cluster HDInsight.** Vytvořte cluster HDInsight a připojte ho k virtuální síti, kterou jste vytvořili v předchozím kroku, a na základě informací v článku věnovaném [rozšíření Azure HDInsightu s využitím služby Azure Virtual Network](../hdinsight/hdinsight-plan-virtual-network-deployment.md). Tady je ukázka konfigurace HDInsightu ve virtuální síti. 
 
     ![HDInsight ve virtuální síti](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+- **Azure PowerShell.** Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 - **Virtuální počítač**. Vytvořte virtuální počítač Azure a připojte ho do stejné virtuální sítě, která obsahuje váš cluster HDInsight. Podrobnosti najdete v tématu věnovaném [postupu při vytváření virtuálních počítačů](../virtual-network/quick-create-portal.md#create-virtual-machines). 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Uložení skriptu Hivu do vašeho účtu služby Blob Storage
@@ -88,7 +85,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-   - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+   - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
@@ -166,7 +163,7 @@ V této části vytvoříte a nasadíte dvě propojené služby:
 
     1. Jako **Název** zadejte **AzureStorageLinkedService**.
     2. V části **Připojit prostřednictvím prostředí Integration Runtime** zadejte **MySelfHostedIR**.
-    3. Jako **název účtu úložiště**vyberte svůj účet úložiště Azure. 
+    3. Jako **název účtu úložiště** vyberte svůj účet úložiště Azure. 
     4. Pokud chcete otestovat připojení k účtu úložiště, klikněte na **Test připojení**.
     5. Klikněte na **Uložit**.
    
@@ -228,12 +225,12 @@ Je třeba počítat s následujícím:
         ![Nastavení skriptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. Na kartě **Skript** rozbalte část **Upřesnit**. 
     6. V části **Parametry** klikněte na **Automaticky vyplnit ze skriptu**. 
-    7. Zadejte hodnotu parametru **Output** (Výstup) v následujícím formátu: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Například: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Zadejte hodnotu parametru **Output** (Výstup) v následujícím formátu: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Příklad: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Argumenty skriptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Pokud chcete publikovat artefakty do služby Data Factory, klikněte na **Publikovat**.
 
-    ![Publikování](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![Snímek obrazovky ukazuje možnost publikování do Data Factory.](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Aktivace spuštění kanálu
 
@@ -276,6 +273,3 @@ Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azur
 
 > [!div class="nextstepaction"]
 >[Větvení a řetězení tok řízení Data Factory](tutorial-control-flow-portal.md)
-
-
-

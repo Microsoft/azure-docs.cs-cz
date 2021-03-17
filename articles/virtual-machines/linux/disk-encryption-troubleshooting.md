@@ -2,18 +2,19 @@
 title: Řešení potíží s Azure Disk Encryption pro virtuální počítače se systémem Linux
 description: Tento článek popisuje tipy pro řešení potíží pro Microsoft Azure šifrování disku pro virtuální počítače se systémem Linux.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ca6431531f8cebf1205aa555c5545f4dc44abd3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58ea788d6959b039ff5de8a4a889c531b987d826
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372208"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563366"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure Disk Encryption pro virtuální počítače se systémem Linux
 
@@ -127,7 +128,7 @@ Viz [šifrování disků v izolované síti](disk-encryption-isolated-network.md
 
 Portál může zobrazit disk jako zašifrovaný, i když byl v rámci virtuálního počítače nešifrovaný.  K tomu může dojít, když se k přímému rozšifrování disku z virtuálního počítače používají příkazy nízké úrovně, místo abyste používali příkazy pro správu Azure Disk Encryption vyšší úrovně.  Příkazy vyšší úrovně nešifrují jenom disk v rámci virtuálního počítače, ale mimo virtuální počítač aktualizují důležitá nastavení šifrování na úrovni platformy a nastavení rozšíření přidružená k virtuálnímu počítači.  Pokud tyto možnosti nejsou zachovány, platforma nebude moci nahlásit stav šifrování ani zřídit virtuální počítač správně.
 
-Pokud chcete Azure Disk Encryption zakázat pomocí prostředí PowerShell, použijte [příkaz disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný rutinou [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění Remove-AzVMDiskEncryptionExtension před zakázáním šifrování selže.
+Pokud chcete Azure Disk Encryption zakázat pomocí prostředí PowerShell, použijte [příkaz disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný rutinou [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění Remove-AzVMDiskEncryptionExtension před vypnutím šifrování selže.
 
 Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového řádku, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption).
 
@@ -135,5 +136,5 @@ Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového ř�
 
 V tomto dokumentu jste se dozvěděli o některých běžných problémech v Azure Disk Encryption a o tom, jak tyto problémy řešit. Další informace o této službě a jejích funkcích najdete v následujících článcích:
 
-- [Použít šifrování disku v Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Použít šifrování disku v Azure Security Center](../../security-center/asset-inventory.md)
 - [Šifrování neaktivních uložených dat v Azure](../../security/fundamentals/encryption-atrest.md)

@@ -5,37 +5,36 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: 0c1baa96c9093e02c54fb70949d1de0ddbda1bcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86eaa645cd6a81b9180d1241695240a71aa8202d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804328"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397259"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure PowerShell
 
-Pomocí Azure PowerShell můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro ukončení protokolu TLS/SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve vaší aplikační bráně. V tomto příkladu vytvoříte také [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end fond aplikační brány, která obsahuje dvě instance virtuálních počítačů. 
+Pomocí Azure PowerShell můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro ukončení protokolu TLS/SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve vaší aplikační bráně. V tomto příkladu vytvoříte také [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/overview.md) pro back-end fond aplikační brány, která obsahuje dvě instance virtuálních počítačů. 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Přidat pravidlo naslouchacího procesu a přesměrování
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+* Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+* Nastavit síť
+* Vytvořit aplikační bránu s certifikátem
+* Přidat pravidlo naslouchacího procesu a přesměrování
+* Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Chcete-li spustit příkazy v tomto kurzu, je nutné spustit také `Login-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
-V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) pomocí rutiny [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) pomocí rutiny [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -95,7 +94,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
@@ -318,7 +317,7 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http://52.170.203.149.
 
@@ -334,11 +333,4 @@ Pokud chcete přijímat upozornění zabezpečení v případě použití certif
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Přidat pravidlo naslouchacího procesu a přesměrování
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+- [Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway](rewrite-http-headers-url.md)

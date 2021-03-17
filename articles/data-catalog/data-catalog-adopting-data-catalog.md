@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72801876"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
@@ -129,7 +129,7 @@ Jako součást pilotního projektu používá Nancyin tým také zdroje dat pops
 
 Jakmile se realizuje pilotní projekt, je čas ke spuštění plánu přijetí katalogu Data Catalog.
 
-### <a name="execute"></a>Spuštění
+### <a name="execute"></a>Spuštěním
 
 V tomto okamžiku jste našli případy použití pro katalog Data Catalog a identifikovali jste svůj první projekt. Kromě toho jste zaregistrovali klíčové zdroje dat společnosti Adventure Works a přidali informace z existujícího sešitu aplikace Excel pomocí nástroje, který sestavilo oddělení IT. Nyní je čas pracovat s pilotním týmem na spuštění procesu přijetí katalogu Data Catalog.
 
@@ -151,7 +151,7 @@ V pravidelných intervalech se setkávejte s týmem, abyste posoudili některé 
 
 A rozhodující zkouškou projektu je, zda uživatelé dokáží vyhledat a porozumět zdrojům dat, které potřebují používat. Pilotní uživatelé by měli pravidelně zkoušet katalog, aby bylo zajištěno, že zdroje dat, které používají pro každodenní práci, jsou relevantní. Pokud požadovaný zdroj dat chybí nebo není správně opatřen poznámkami, má tato skutečnost sloužit jako připomenutí k zaregistrování dalších zdrojů dat nebo poskytnutí dalších poznámek. Tento návyk přidá nejen hodnotu úsilí pilotního projektu, ale zároveň vytvoří efektivní návyky, které se po dokončení pilotního projektu přenesou do dalších týmů.
 
-### <a name="provide-training"></a>Poskytněte školení
+### <a name="provide-training"></a>Proškolení
 
 Školení by mělo pomoct uživatelům začít a mělo by být přizpůsobeno specifickým cílům a úrovni zkušeností členů pilotního týmu. Chcete-li začít se školením, můžete postupovat podle kroků v článku [Začínáme s Azure Data Catalog](data-catalog-get-started.md). Navíc si můžete stáhnout [prezentaci školení pilotního projektu Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/blob/master/Azure%20Data%20Catalog%20Training.pptx?raw=true). Tato prezentace v aplikaci PowerPoint vám pomůže začít členům pilotního týmu představovat Data Catalog.
 

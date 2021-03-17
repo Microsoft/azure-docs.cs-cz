@@ -1,19 +1,17 @@
 ---
 title: 'Výhody: migrace místních Apache Hadoop do Azure HDInsight'
 description: Seznamte se s motivací a výhodami migrace místních clusterů Hadoop do Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072779"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943259"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
@@ -39,11 +37,11 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
 
 - **Spravovaný hardware a konfigurace** – nemusíte si dělat starosti s fyzickým hardwarem nebo infrastrukturou s clusterem HDInsight. Stačí zadat konfiguraci clusteru a Azure ho nastaví.
 
-- **Snadno škálovatelná** – HDInsight umožňuje [škálovat](../hdinsight-administer-use-portal-linux.md) úlohy nahoru nebo dolů. Azure se stará o redistribuci dat a opětovné vyrovnávání zatížení, aniž by došlo k přerušení úloh zpracování dat.
+- **Snadno škálovatelná** – HDInsight umožňuje [škálovat](../hdinsight-administer-use-portal-linux.md) úlohy nahoru nebo dolů. Azure se stará o redistribuci dat a opětovné vyrovnávání zatížení, aniž by došlo k přerušení úloh zpracování dat.
 
 - **Globální dostupnost** – HDInsight je k dispozici ve více [oblastech](https://azure.microsoft.com/regions/services/) než jakákoli jiná nabídka analýzy velkých objemů dat. Služba Azure HDInsight je dostupná také pro Azure Government, Čínu a Německo a umožňuje tak splnit požadavky vašeho podniku v klíčových suverénních oblastech.
 
-- **Zabezpečené a kompatibilní** – HDInsight umožňuje chránit vaše podnikové datové prostředky pomocí Virtual Network, [šifrování](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)a integrace s [Azure](../hdinsight-plan-virtual-network-deployment.md)pomocí [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight také splňuje nejoblíbenější obory a [standardy dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud)pro státní správu.
+- **Zabezpečené a kompatibilní** – HDInsight umožňuje chránit vaše podnikové datové prostředky pomocí Virtual Network, [šifrování](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)a integrace s [Azure](../hdinsight-plan-virtual-network-deployment.md)pomocí [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight také splňuje nejoblíbenější oborové a vládní [standardy dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud).
 
 - **Zjednodušená správa verzí** – Azure HDInsight spravuje verzi součástí pro ekosystém systému Hadoop a udržuje je aktuální. Aktualizace softwaru jsou obvykle složitým procesem pro místní nasazení.
 
@@ -51,9 +49,9 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
 
 - **Produktivita** – v upřednostňovaném vývojovém prostředí můžete použít různé nástroje pro Hadoop a Spark.
 
-- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)   z místa na trhu Azure.
+- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) z místa na trhu Azure.
 
-- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md)   a poskytuje tak jediné rozhraní, se kterým můžete monitorovat všechny clustery.
+- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) a poskytuje tak jediné rozhraní, se kterým můžete monitorovat všechny clustery.
 
 - **Integrace s dalšími službami Azure** – HDInsight je možné snadno integrovat s dalšími oblíbenými službami Azure, jako jsou tyto:
 
@@ -112,7 +110,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |HDFS – Access Control|  Ruční, uživatelé SSH|
 |Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
 |Auditování|Ambari, Cloudera Navigator, Ranger|
-|Monitorování|Grafit, Collect, statd, telegraf, InfluxDB|
+|Sledování|Grafit, Collect, statd, telegraf, InfluxDB|
 |Zobrazení výstrah|Kapacitor, Prometheus, služby Datadog|
 |Doba uchovávání dat| 3 roky, 5 let|
 |Správci clusteru|Jeden správce, více správců|
@@ -148,14 +146,14 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Míra růstu uzlů clusteru|5% za rok
 |**Téma**: **využití clusteru**|||
 |Průměrné využití procesoru v%|60 %||
-|Průměrná doba využití paměti%|75 %||
-|Využité místo na disku|75 %||
-|Průměrná doba využití sítě%|25 %
+|Průměrná doba využití paměti%|75%||
+|Využité místo na disku|75%||
+|Průměrná doba využití sítě%|25%
 |**Téma**: **zaměstnanci**|||
 |Počet správců|2||
 |Počet vývojářů|10||
 |Počet koncových uživatelů|100||
-|Dovedností|Hadoop, Spark||
+|Dovednosti|Hadoop, Spark||
 |Počet dostupných prostředků pro účely migrace|2||
 |**Téma**: **omezení**|||
 |Aktuální omezení|Latence je vysoká.||
@@ -170,13 +168,13 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Upřednostňovaná virtuální síť?|Yes||
 |Je potřeba HA/DR?|Yes||
 |Integraci s dalšími Cloud Services?|ADF, CosmosDB||
-|**Téma**: **přesun dat**  |||
+|**Téma**:   **přesun dat**  |||
 |Předvolba počátečního zatížení|DistCp, data box, ADF, WANDisco||
 |Rozdíl přenosu dat|DistCp, AzCopy||
 |Pokračující přírůstkový přenos dat|DistCp, Sqoop||
-|**Téma**: **monitorování výstrah &** |||
+|**Téma**:   **monitorování výstrah &** |||
 |Použití monitorování Azure & upozorňování a integrace monitorování třetích stran|Použití upozorňování & monitorování Azure||
-|**Téma**: **Předvolby zabezpečení** |||
+|**Téma**:   **Předvolby zabezpečení** |||
 |Privátní a chráněný datový kanál?|Yes||
 |Cluster připojený k doméně (ESP)?|     Yes||
 |Místní AD Sync ke cloudu?|     Yes||
@@ -185,11 +183,11 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Jenom uživatelé cloudu?|                 Yes||
 |Je potřeba MFA?|                       No|| 
 |Požadavky na autorizaci dat?|  Yes||
-|Access Control na základě rolí?|        Yes||
+|Řízení přístupu na základě role?|        Yes||
 |Je vyžadováno auditování?|                  Yes||
 |Šifrování dat v klidovém umístění?|          Yes||
 |Šifrování dat při přenosu?|       Yes||
-|**Téma**: **Předvolby opětovné architektury** |||
+|**Téma**:   **Předvolby opětovné architektury** |||
 |Jeden cluster vs konkrétní typy clusterů|Konkrétní typy clusterů||
 |Společně umístěné úložiště vs – vzdálené úložiště?|Vzdálené úložiště||
 |Menší velikost clusteru jako data se ukládají vzdáleně?|Menší velikost clusteru||

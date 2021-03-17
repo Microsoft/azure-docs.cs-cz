@@ -3,20 +3,18 @@ title: Předem vytvořená entita s měnou – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 56d264fa976967ae4772f50b4aa6f58b30355d6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c89de0ba74d04c510f3d5ba537f3a6dcc4819169
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270768"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534332"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita v měně pro aplikaci pro LUIS
 Entita předem vytvořená měna detekuje měnu v mnoha denominováncích a zemích nebo oblastech, bez ohledu na jazykovou verzi aplikace LUIS. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující měnu. Entita měny je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md).
@@ -28,7 +26,7 @@ Měna se spravuje z úložiště pro [rozpoznávání textu](https://github.com/
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -41,7 +39,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

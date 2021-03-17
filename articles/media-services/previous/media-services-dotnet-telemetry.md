@@ -3,7 +3,7 @@ title: Konfigurace telemetrie Azure Media Services pomocí .NET | Microsoft Docs
 description: V tomto článku se dozvíte, jak používat telemetrie Azure Media Services s využitím sady .NET SDK.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f8f55e37-0714-49ea-bf4a-e6c1319bec44
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: c101f6f2007e9d772f03be5d69e56d5f52866d6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6bd7b472d8f42bd7872aeacf8b78aac8b249f4bd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052782"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013725"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace telemetrie Azure Media Services pomocí .NET 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace telemetrie Azure Media Services pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek popisuje obecné kroky, které můžete provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí sady .NET SDK. 
 

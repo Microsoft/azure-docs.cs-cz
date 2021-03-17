@@ -1,22 +1,22 @@
 ---
 title: Skupiny zabezpečení sítě s Azure Site Recovery | Microsoft Docs
 description: Popisuje, jak používat skupiny zabezpečení sítě s Azure Site Recovery pro zotavení po havárii a pro migraci.
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292363"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367969"
 ---
-# <a name="network-security-groups-with-azure-site-recovery"></a>Skupiny zabezpečení sítě s Azure Site Recovery
+# <a name="network-security-groups-with-azure-site-recovery"></a>Skupiny zabezpečení sítě se službou Azure Site Recovery
 
-Skupiny zabezpečení sítě se používají k omezení síťového provozu do prostředků ve virtuální síti. [Skupina zabezpečení sítě (NSG)](../virtual-network/security-overview.md#network-security-groups) obsahuje seznam pravidel zabezpečení, která povolují nebo zakazují příchozí nebo odchozí síťový provoz na základě zdrojové nebo cílové IP adresy, portu a protokolu.
+Skupiny zabezpečení sítě se používají k omezení síťového provozu do prostředků ve virtuální síti. [Skupina zabezpečení sítě (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) obsahuje seznam pravidel zabezpečení, která povolují nebo zakazují příchozí nebo odchozí síťový provoz na základě zdrojové nebo cílové IP adresy, portu a protokolu.
 
 V rámci modelu nasazení Správce prostředků lze skupin zabezpečení sítě přidružit k podsítím nebo jednotlivým síťovým rozhraním. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti. Provoz se může dál omezit taky tím, že přidruží NSG k jednotlivým síťovým rozhraním v rámci podsítě, která už má přidružené NSG.
 
@@ -37,7 +37,7 @@ V tomto příkladu je pro příchozí provoz vyhodnocena podsíť NSG jako prvn�
 
 To umožňuje aplikaci pro podrobné pravidlo zabezpečení. Například můžete chtít povolit příchozí internetový přístup k několika virtuálním počítačům aplikace (jako jsou front-endové virtuální počítače) v podsíti, ale omezit příchozí internetový přístup k jiným virtuálním počítačům (například k databázím a dalším back-end virtuálním počítačům). V takovém případě můžete mít další mírné pravidlo pro NSG, povolení internetového provozu a omezení přístupu ke konkrétním virtuálním počítačům tím, že odepřete přístup k virtuálnímu počítači NSG. Totéž lze použít pro odchozí provoz.
 
-Při nastavování takových konfigurací NSG zajistěte, aby byly na [pravidla zabezpečení](../virtual-network/security-overview.md#security-rules)aplikovány správné priority. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.
+Při nastavování takových konfigurací NSG zajistěte, aby byly na [pravidla zabezpečení](../virtual-network/network-security-groups-overview.md#security-rules)aplikovány správné priority. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.
 
 Ne vždy musíte mít přehled o použití skupin zabezpečení sítě na síťové rozhraní i podsíť. Můžete ověřit agregovaná pravidla použitá pro síťové rozhraní zobrazením [platných pravidel zabezpečení](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) pro síťové rozhraní. Funkci [ověření toku protokolu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) v [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) taky můžete použít k určení, jestli je komunikace povolená pro nebo ze síťového rozhraní. Tento nástroj vám řekne, jestli je povolená komunikace, a které pravidlo zabezpečení sítě povoluje nebo odepírá provoz.
 
@@ -72,7 +72,7 @@ Zvážení [ukázkového scénáře](concepts-network-security-group-with-site-r
 Po vytvoření a konfiguraci skupin zabezpečení sítě doporučujeme spuštění [testovacího převzetí služeb při selhání](azure-to-azure-tutorial-dr-drill.md) za účelem ověření provedených NSG přidružení a připojení virtuálního počítače po převzetí služeb při selhání.
 
 ## <a name="next-steps"></a>Další kroky
--    Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/security-overview.md#network-security-groups).
--    Přečtěte si další informace o [pravidlech zabezpečení](../virtual-network/security-overview.md#security-rules)NSG.
+-    Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/network-security-groups-overview.md#network-security-groups).
+-    Přečtěte si další informace o [pravidlech zabezpečení](../virtual-network/network-security-groups-overview.md#security-rules)NSG.
 -    Přečtěte si další informace o [platných pravidlech zabezpečení](../virtual-network/diagnose-network-traffic-filter-problem.md) pro NSG.
 -    Další informace o [plánech obnovení](site-recovery-create-recovery-plans.md) pro automatizaci převzetí služeb při selhání aplikace.

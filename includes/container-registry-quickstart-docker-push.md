@@ -8,33 +8,33 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 404fd10c3e3610671d2b6e5dbc6aba8bcaa70046
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031773"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100019741"
 ---
 ## <a name="push-image-to-registry"></a>Odeslání image do registru
 
-Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprve mít nějakou image. Pokud ještě nemáte žádné místní image kontejneru, spusťte následující příkaz [Docker Pull][docker-pull] , který vyžádá existující image z Docker Hub. V tomto příkladu si přetáhnete `hello-world` obrázek.
+Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprve mít nějakou image. Pokud ještě nemáte žádné místní image kontejneru, spusťte následující příkaz [Docker Pull][docker-pull] , který vyžádá existující veřejnou image. V tomto příkladu načetli `hello-world` image z Microsoft Container Registry.
 
 ```
-docker pull hello-world
+docker pull mcr.microsoft.com/hello-world
 ```
 
-Před nahráním image do registru je nutné ji označit pomocí plně kvalifikovaného názvu přihlašovacího serveru registru. Název přihlašovacího serveru je ve formátu * \<registry-name\> . azurecr.IO* (malá písmena), například *mycontainerregistry.azurecr.IO*.
+Před nahráním image do registru je nutné ji označit pomocí plně kvalifikovaného názvu přihlašovacího serveru registru. Název přihlašovacího serveru je ve formátu *\<registry-name\> . azurecr.IO* (musí být malými písmeny), například *mycontainerregistry.azurecr.IO*.
 
 Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte `<login-server>` názvem přihlašovacího serveru vaší instance ACR.
 
 ```
-docker tag hello-world <login-server>/hello-world:v1
+docker tag mcr.microsoft.com/hello-world <login-server>/hello-world:v1
 ```
 
 Příklad:
 
 ```
-docker tag hello-world mycontainerregistry.azurecr.io/hello-world:v1
+docker tag mcr.microsoft.com/hello-world mycontainerregistry.azurecr.io/hello-world:v1
 ```
 
 

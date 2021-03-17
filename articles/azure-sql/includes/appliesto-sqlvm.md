@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 06fccd410f3edf5dbd63fa9959aad2d65a626a0d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e74b48ca526d977da33dcdccae84491213856079
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503777"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90533233"
 ---
-<Token>**platí pro:** ![ Ano ](../media/applies-to/yes.png) SQL Server na virtuálním počítači Azure</Token> 
+<Token>**platí pro:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: SQL Server na virtuálním počítači Azure </Token> 
 

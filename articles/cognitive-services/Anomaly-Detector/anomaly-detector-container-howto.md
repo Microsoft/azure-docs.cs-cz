@@ -1,31 +1,38 @@
 ---
-title: Jak nainstalovat a spustit kontejnery pro použití rozhraní API detektoru anomálií
+title: Instalace a spuštění kontejnerů Docker pro rozhraní API detektoru anomálií
 titleSuffix: Azure Cognitive Services
-description: Pomocí pokročilých algoritmů rozhraní API pro detekci anomálií můžete identifikovat anomálie v datech časových řad.
+description: Pomocí algoritmu rozhraní API pro detekci anomálií můžete najít anomálie ve vašich datech v místním prostředí pomocí kontejneru Docker.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.author: aahi
-ms.openlocfilehash: ee742f09f3fcc1bd283efbc346fea6a040e53f48
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/28/2020
+ms.author: mbullwin
+ms.custom: cog-serv-seo-aug-2020
+keywords: místní, Docker, kontejner, streamování, algoritmy
+ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548527"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862308"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Instalace a spuštění kontejnerů detektoru anomálií (Preview)
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API detektoru anomálií 
 
-Detektor anomálií nabízí následující funkce kontejneru:
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-| Funkce | Funkce |
-|--|--|
-| Detektor anomálií | <li> Detekuje anomálie při jejich výskytu v reálném čase. <li> Detekuje anomálie v celé sadě dat jako dávku. <li> Odvodí očekávaný normální rozsah dat. <li> Podporuje úpravu citlivosti detekce anomálií, aby lépe vyhovovala vašim datům. |
+Kontejnery umožňují používat rozhraní API detektoru anomálií ve vašem vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner detektoru anomálií.
 
-Podrobné informace o rozhraních API najdete v těchto tématech:
+Detektor anomálií nabízí jeden kontejner Docker pro použití v místním rozhraní API. Použít kontejner pro:
+* Použití algoritmů detektoru anomálií pro vaše data
+* Monitorujte streamovaná data a zjišťují anomálie při jejich výskytu v reálném čase.
+* Detekuje anomálie v celé sadě dat jako dávku. 
+* Detekuje body změny trendu ve vaší datové sadě jako dávku.
+* Upravte citlivost algoritmu pro detekci anomálií, aby lépe vyhovovala vašim datům.
+
+Podrobné informace o tomto rozhraní API najdete v těchto tématech:
 * [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
@@ -34,9 +41,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Než začnete používat kontejnery detektoru anomálií, musíte splnit následující předpoklady:
 
-|Vyžadováno|Účel|
+|Povinné|Účel|
 |--|--|
-|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.|
 |Prostředek detektoru anomálií |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek _detektoru anomálií_ Azure, který získá přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehled **detektoru anomálií** Azure Portal a klíče a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
 
@@ -46,7 +53,7 @@ Než začnete používat kontejnery detektoru anomálií, musíte splnit násled
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-<!--* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
+<!--* [Azure IoT Edge](../../iot-edge/index.yml). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavky na kontejner a doporučení
 
@@ -67,7 +74,7 @@ Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pul
 
 | Kontejner | Repository |
 |-----------|------------|
-| rozpoznávání – služby – anomálie-detektor | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| rozpoznávání – služby – anomálie-detektor | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -84,18 +91,18 @@ docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [examples](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
+[](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -168,16 +175,12 @@ Kontejnery detektoru anomálií odesílají informace o fakturaci do Azure pomoc
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](anomaly-detector-container-configuration.md).
 
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
 ## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů detektoru anomálií. Souhrn:
 
 * Detekce anomálií poskytuje jeden kontejner pro Linux pro Docker, který zapouzdřuje detekci anomálií pomocí služby Batch vs streaming, očekávalo se odvození rozsahu a optimalizace citlivosti.
-* Image kontejneru se stáhnou z privátní Azure Container Registry vyhrazené pro kontejnery ve verzi Preview.
+* Image kontejneru se stáhnou z privátní Azure Container Registry vyhrazené pro kontejnery.
 * Image kontejneru se spouštějí v Docker.
 * Můžete použít REST API nebo SDK pro volání operací v kontejnerech detektoru anomálií zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.

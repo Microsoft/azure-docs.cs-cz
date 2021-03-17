@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 8ecdcf6f44409f3b72d4a8040be348d4a6f9a863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d12db413fdf01995bc84ae018065e877afb15e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738188"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017812"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí Azure CLI
 
@@ -44,9 +44,9 @@ az provider register --namespace Microsoft.Insights
 V následujícím příkladu se zobrazí příkaz pro povolení protokolů toku:
 
 ```azurecli
-az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
+az network watcher flow-log create --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName --location location
 # Configure 
-az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName  --format JSON --log-version 2
+az network watcher flow-log create --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName --location location --format JSON --log-version 2
 ```
 
 Účet úložiště, který zadáte, nemůže mít pro něj nakonfigurovaná Síťová pravidla, která omezují přístup k síti jenom na služby Microsoftu nebo konkrétní virtuální sítě. Účet úložiště může být ve stejném nebo jiném předplatném Azure, než NSG, pro který povolíte protokol toku. Pokud používáte jiné odběry, musí být oba přidruženy ke stejnému Azure Active Directory tenantovi. Účet, který použijete pro každé předplatné, musí mít [potřebná oprávnění](required-rbac-permissions.md). 
@@ -63,7 +63,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 ## <a name="download-a-flow-log"></a>Stažení protokolu toku
 
-Umístění úložiště protokolu toku je definováno při vytvoření. Pohodlný nástroj pro přístup k těmto protokolům toků uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady:https://storageexplorer.com/
+Umístění úložiště protokolu toku je definováno při vytvoření. Pohodlný nástroj pro přístup k těmto protokolům toků uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady:  https://storageexplorer.com/
 
 Pokud je zadaný účet úložiště, soubory protokolu Flow se uloží do účtu úložiště v následujícím umístění:
 

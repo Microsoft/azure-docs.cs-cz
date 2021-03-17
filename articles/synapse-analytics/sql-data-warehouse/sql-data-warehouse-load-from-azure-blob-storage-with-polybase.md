@@ -1,26 +1,26 @@
 ---
-title: Načtení maloobchodních dat Contoso do synapse SQL Data Warehouse
-description: K načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL použijte příkazy jazyka T-SQL.
+title: Načtení maloobchodních dat contoso na vyhrazené fondy SQL
+description: K načtení dvou tabulek z maloobchodních dat společnosti Contoso do vyhrazených fondů SQL použijte příkazy jazyka T-SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac0d8b923dc87f8be59cb594b155aafcf25fd0e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213308"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677150"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>Načtení maloobchodních dat Contoso do synapse SQL 
+# <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Načtení maloobchodních dat Contoso do vyhrazených fondů SQL ve službě Azure synapse Analytics
 
-V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL Data Warehouse.
+V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do vyhrazených fondů SQL.
 
 V tomto kurzu provedete tyto kroky:
 
@@ -30,11 +30,11 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ke spuštění tohoto kurzu potřebujete účet Azure, který už má synapse SQL Data Warehouse. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
+Ke spuštění tohoto kurzu potřebujete účet Azure, který už má vyhrazený fond SQL. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
 
-Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů se ukládají do služby synapse SQL Data Warehouse. Data jsou ukládána externě.
+Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy ve vyhrazených fondech SQL. Data jsou ukládána externě.
 
 ## <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
 
@@ -77,7 +77,7 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat
 
-Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uložte umístění dat a datový typ.
+Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) uložte umístění dat a datový typ.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -122,7 +122,7 @@ GO
 
 Spusťte následující skript pro vytvoření externích tabulek DimProduct a FactOnlineSales. Tady je definování názvů sloupců a datových typů a jejich navázání na umístění a formát souborů úložiště objektů BLOB v Azure. Definice je uložena v datovém skladu a data jsou stále v Azure Storage Blob.
 
-Parametr **Location** je složka v kořenové složce Azure Storage BLOB. Každá tabulka je v jiné složce.
+Parametr  **Location** je složka v kořenové složce Azure Storage BLOB. Každá tabulka je v jiné složce.
 
 ```sql
 --DimProduct
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Načtení dat do nových tabulek
 
-K načtení dat z úložiště objektů BLOB v Azure do tabulky datového skladu použijte příkaz [CREATE TABLE AS Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . Načítání pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) využívá externí tabulky silného typu, které jste vytvořili. Chcete-li načíst data do nových tabulek, použijte jeden příkaz CTAS na tabulku.
+K načtení dat z úložiště objektů BLOB v Azure do tabulky datového skladu použijte příkaz [CREATE TABLE AS Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Načítání pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) využívá externí tabulky silného typu, které jste vytvořili. Chcete-li načíst data do nových tabulek, použijte jeden příkaz CTAS na tabulku.
 
 CTAS vytvoří novou tabulku a naplní ji výsledky příkazu SELECT. CTAS definuje novou tabulku, která bude mít stejné sloupce a datové typy jako výsledky příkazu SELECT. Pokud vyberete všechny sloupce z externí tabulky, bude nová tabulka replikou sloupců a datových typů v externí tabulce.
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
 
-Ve výchozím nastavení služba SQL Data Warehouse synapse ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení jsou vyhrazené fondy SQL uloženy v tabulce jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
 Pro optimalizaci výkonu dotazů a komprese columnstore po načtení znovu sestavte tabulku, aby index columnstore vynutil komprimaci všech řádků.
 

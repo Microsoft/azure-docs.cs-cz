@@ -7,18 +7,18 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ffe8451b2b2a08ab30761eaf3a928b5e117b3
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78274707"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537624"
 ---
 # <a name="application-security-groups"></a>Skupiny zabezpečení aplikací
 
@@ -26,7 +26,7 @@ Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě ja
 
 ![Skupiny zabezpečení aplikací](./media/security-groups/application-security-groups.png)
 
-Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplikace *AsgWeb*. *NIC3* je členem skupiny zabezpečení aplikace *AsgLogic*. *NIC4* je členem skupiny zabezpečení aplikace *AsgDb*. Přestože jsou všechna síťová rozhraní v tomto příkladu členy pouze jedné skupiny zabezpečení aplikace, síťové rozhraní může být členem více skupin zabezpečení aplikací, a to až do limitu daného [omezeními Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Žádné ze síťových rozhraní nemá přidruženou skupinu zabezpečení sítě. Skupina *NSG1* je přidružená k oběma podsítím a obsahuje následující pravidla:
+Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplikace *AsgWeb*. *NIC3* je členem skupiny zabezpečení aplikace *AsgLogic*. *NIC4* je členem skupiny zabezpečení aplikace *AsgDb*. I když je každé síťové rozhraní v tomto příkladu členem jenom jedné skupiny zabezpečení sítě, může být síťové rozhraní členem několika skupin zabezpečení aplikací, a to až do [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Žádné ze síťových rozhraní nemá přidruženou skupinu zabezpečení sítě. Skupina *NSG1* je přidružená k oběma podsítím a obsahuje následující pravidla:
 
 ## <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 
@@ -42,7 +42,7 @@ Vzhledem k tomu, že výchozí pravidlo zabezpečení **AllowVNetInBound** povol
 
 |Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Všechny | Odepřít |
+| 120 | * | * | AsgDb | 1433 | Libovolný | Odepřít |
 
 ## <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 

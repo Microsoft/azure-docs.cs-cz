@@ -3,16 +3,17 @@ title: Vytvoření image virtuálního počítače a použití spravované ident
 description: Pomocí nástroje Azure image Builder můžete vytvořit image virtuálního počítače, která bude mít přístup k souborům uloženým v Azure Storage pomocí uživatelsky přiřazené spravované identity.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
-ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: 9bcb7a94cdf1d5478db32a22ba6e612a90c53ed9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085550"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695375"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Vytvoření image a použití spravované identity přiřazené uživatelem pro přístup k souborům v Azure Storage 
 
@@ -48,6 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.Network | grep registrationState
 ```
 
 Pokud nevyžadují registraci, spusťte tento příkaz:
@@ -57,6 +59,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 
@@ -109,7 +112,7 @@ imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
 
 # download preconfigured role definition example
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 # update the definition
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
@@ -147,7 +150,7 @@ az storage blob copy start \
     --destination-blob customizeScript.sh \
     --destination-container $scriptStorageAccContainer \
     --account-name $scriptStorageAcc \
-    --source-uri https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
+    --source-uri https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
 Udělte tvůrci imagí oprávnění k vytváření prostředků ve skupině prostředků image. `--assignee`Hodnota je ID identity uživatele.
@@ -167,7 +170,7 @@ az role assignment create \
 Stáhněte soubor example. JSON a nakonfigurujte ho pomocí proměnných, které jste vytvořili.
 
 ```console
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateMsi.json
@@ -256,4 +259,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte při práci s nástrojem Azure image Builder problémy, přečtěte si téma [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).
+Pokud máte při práci s nástrojem Azure image Builder problémy, přečtěte si téma [řešení potíží](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).

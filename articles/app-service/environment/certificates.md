@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831875"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962039"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
 
-App Service Environment (pomocného programu) je nasazení Azure App Service, které běží v rámci služby Azure Virtual Network (VNet). Dá se nasadit pomocí koncového bodu aplikace přístupného pro Internet nebo koncového bodu aplikace, který je ve vaší virtuální síti. Pokud nasadíte službu pomocného bodu s dostupným koncovým bodem Internetu, toto nasazení se nazývá externí přístupový objekt. Pokud nasadíte službu pomocného bodu s koncovým bodem ve vaší virtuální síti, toto nasazení se nazývá interního nástroje pomocného programu. Další informace o interního nástroje pomocného mechanismu pro vytváření najdete v dokumentu [Vytvoření a použití interního nástroje](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) .
+App Service Environment (pomocného programu) je nasazení Azure App Service, které běží v rámci služby Azure Virtual Network (VNet). Dá se nasadit pomocí koncového bodu aplikace přístupného pro Internet nebo koncového bodu aplikace, který je ve vaší virtuální síti. Pokud nasadíte službu pomocného bodu s dostupným koncovým bodem Internetu, toto nasazení se nazývá externí přístupový objekt. Pokud nasadíte službu pomocného bodu s koncovým bodem ve vaší virtuální síti, toto nasazení se nazývá interního nástroje pomocného programu. Další informace o interního nástroje pomocného mechanismu pro vytváření najdete v dokumentu [Vytvoření a použití interního nástroje](./create-ilb-ase.md) .
 
 Pomocným mechanismem je jeden klientský systém. Vzhledem k tomu, že se jedná o jediného tenanta, jsou k dispozici pouze některé funkce s pomocným mechanismem řízení, které nejsou k dispozici ve víceklientské App Service. 
 
@@ -75,7 +75,7 @@ Pokud chcete nahrát certifikát do vaší aplikace v pomocném mechanismu služ
 
 1. Vygenerujte soubor *. cer* pro váš certifikát. 
 2. Přejít do aplikace, která potřebuje certifikát, v Azure Portal
-3. V aplikaci přejdete na nastavení SSL. Klikněte na Nahrát certifikát. Vyberte možnost veřejné. Vyberte místní počítač. Zadejte název. Procházejte a vyberte svůj soubor *. cer* . Vyberte nahrát. 
+3. V aplikaci přejdete na nastavení SSL. Klikněte na Nahrát certifikát. Vyberte Veřejný. Vyberte místní počítač. Zadejte název. Procházejte a vyberte svůj soubor *. cer* . Vyberte nahrát. 
 4. Zkopírujte kryptografický otisk.
 5. Přejít na nastavení aplikace. Vytvoří nastavení aplikace WEBSITE_LOAD_ROOT_CERTIFICATES s kryptografickým otiskem jako hodnotou. Pokud máte více certifikátů, můžete je umístit do stejného nastavení oddělené čárkami a bez mezer jako 
 

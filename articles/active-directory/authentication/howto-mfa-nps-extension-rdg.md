@@ -1,33 +1,33 @@
 ---
-title: Integrace RDG s rozšířením NPS pro Azure MFA – Azure Active Directory
-description: Integrujte svoji Brána vzdálené plochy infrastrukturu s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Microsoft Azure
+title: Integrace RDG s Azure AD MFA NPS Extension – Azure Active Directory
+description: Integrujte svoji Brána vzdálené plochy infrastrukturu s využitím Azure AD MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Microsoft Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117018"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743373"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
-Tento článek poskytuje podrobné informace o integraci Brána vzdálené plochy infrastruktury s Azure Multi-Factor Authentication (MFA) pomocí rozšíření NPS (Network Policy Server) pro Microsoft Azure.
+Tento článek poskytuje podrobné informace o integraci Brána vzdálené plochy infrastruktury s Azure AD Multi-Factor Authentication (MFA) pomocí rozšíření NPS (Network Policy Server) pro Microsoft Azure.
 
-Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazníkům chránit ověřování klientů protokol RADIUS (Remote Authentication Dial-In User Service) (RADIUS) pomocí cloudové [Multi-Factor Authentication Azure (MFA)](multi-factor-authentication.md). Toto řešení poskytuje dvoustupňové ověřování pro přidání druhé vrstvy zabezpečení do přihlašování a transakcí uživatelů.
+Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazníkům chránit ověřování klientů protokol RADIUS (Remote Authentication Dial-In User Service) (RADIUS) pomocí cloudové [Multi-Factor Authentication Azure (MFA)](./concept-mfa-howitworks.md). Toto řešení poskytuje dvoustupňové ověřování pro přidání druhé vrstvy zabezpečení do přihlašování a transakcí uživatelů.
 
-Tento článek poskytuje podrobné pokyny pro integraci infrastruktury serveru NPS s Azure MFA pomocí rozšíření NPS pro Azure. To umožňuje zabezpečené ověřování pro uživatele, kteří se pokoušejí přihlásit k Brána vzdálené plochy.
+Tento článek poskytuje podrobné pokyny pro integraci infrastruktury serveru NPS se službou Azure AD MFA pomocí rozšíření NPS pro Azure. To umožňuje zabezpečené ověřování pro uživatele, kteří se pokoušejí přihlásit k Brána vzdálené plochy.
 
 > [!NOTE]
-> Tento článek by se neměl používat s nasazeními MFA serveru a měl by se používat jenom s nasazeními Azure MFA (cloudové).
+> Tento článek by se neměl používat s nasazeními MFA serveru a měl by se používat jenom s nasazeními Azure AD MFA (cloudové).
 
 Služba Síťové zásady a přístup (NPS) poskytuje organizacím možnost provádět tyto akce:
 
@@ -37,9 +37,9 @@ Služba Síťové zásady a přístup (NPS) poskytuje organizacím možnost prov
 
 Organizace obvykle používají server NPS (RADIUS) k zjednodušení a centralizaci správy zásad sítě VPN. Mnoho organizací ale taky používá server NPS ke zjednodušení a centralizaci správy zásad autorizace připojení k vzdálené ploše (RD).
 
-Organizace také mohou integrovat server NPS s Azure MFA, aby zvýšil zabezpečení a poskytovala vysokou úroveň dodržování předpisů. To pomáhá zajistit, aby uživatelé při přihlášení k Brána vzdálené plochy navázali dvoustupňové ověřování. Uživatelům, kteří mají udělit přístup, musí zadat kombinaci uživatelského jména a hesla spolu s informacemi, které má uživatel v rámci svého řízení. Tyto informace musí být důvěryhodné a nelze je snadno duplikovat, například číslo mobilního telefonu, číslo pevné, aplikace v mobilním zařízení atd. RDG v současné době podporuje telefonní hovory a nabízená oznámení z metod aplikace Microsoft Authenticator pro 2FA. Další informace o podporovaných metodách ověřování najdete v části [Určení metod ověřování, které uživatelé mohou používat](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
+Organizace můžou také integrovat server NPS se službou Azure AD MFA za účelem zvýšení zabezpečení a zajištění vysoké úrovně dodržování předpisů. To pomáhá zajistit, aby uživatelé při přihlášení k Brána vzdálené plochy navázali dvoustupňové ověřování. Uživatelům, kteří mají udělit přístup, musí zadat kombinaci uživatelského jména a hesla spolu s informacemi, které má uživatel v rámci svého řízení. Tyto informace musí být důvěryhodné a nelze je snadno duplikovat, například číslo mobilního telefonu, číslo pevné, aplikace v mobilním zařízení atd. RDG v současné době podporuje telefonní hovory a nabízená oznámení z metod aplikace Microsoft Authenticator pro 2FA. Další informace o podporovaných metodách ověřování najdete v části [Určení metod ověřování, které uživatelé mohou používat](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
 
-Před dostupností rozšíření serveru NPS pro Azure museli zákazníci, kteří chtějí implementovat dvoustupňové ověřování pro integrovaná rozhraní NPS a Azure MFA, nakonfigurovat a udržovat samostatný server MFA v místním prostředí, jak je uvedeno v [Brána vzdálené plochy a v azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md).
+Před dostupností rozšíření serveru NPS pro Azure museli zákazníci, kteří chtějí implementovat dvoustupňové ověřování pro integrovaná rozhraní NPS a Azure AD MFA, nakonfigurovat a udržovat samostatný server MFA v místním prostředí, jak je popsáno v [Brána vzdálené plochy a Azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md).
 
 Dostupnost rozšíření serveru NPS pro Azure teď nabízí organizacím možnost nasadit řešení MFA založené na místním nasazení nebo cloudové řešení MFA, které zajistí ověřování klientů RADIUS.
 
@@ -51,20 +51,20 @@ Brána VP je možné nakonfigurovat tak, aby používala centrální úložišt�
 
 Když je rozšíření serveru NPS pro Azure integrované s NPS a Brána vzdálené plochy, je postup úspěšného ověřování následující:
 
-1. Server Brána vzdálené plochy obdrží požadavek na ověření od uživatele vzdálené plochy pro připojení k prostředku, jako je například relace vzdálené plochy. V případě klienta RADIUS Brána vzdálené plochy Server převede požadavek na zprávu s požadavkem na přístup k protokolu RADIUS a pošle zprávu na server RADIUS (NPS), na kterém je rozšíření NPS nainstalované.
+1. Server Brána vzdálené plochy obdrží požadavek na ověření od uživatele vzdálené plochy pro připojení k prostředku, jako je například relace vzdálené plochy. V případě klienta RADIUS Brána vzdálené plochy Server převede požadavek na zprávu Access-Request protokolu RADIUS a pošle zprávu na server RADIUS (NPS), na kterém je rozšíření NPS nainstalované.
 1. Kombinace uživatelského jména a hesla se ověřuje ve službě Active Directory a uživatel je ověřený.
-1. Pokud jsou splněné všechny podmínky uvedené v žádosti o připojení serveru NPS a zásady sítě (například omezení času nebo členství ve skupinách), rozšíření serveru NPS vyvolá požadavek na sekundární ověřování pomocí Azure MFA.
-1. Azure MFA komunikuje s Azure AD, načítá podrobnosti o uživateli a provádí sekundární ověřování pomocí podporovaných metod.
-1. Po úspěšném ověření MFA Azure MFA sdělí výsledek rozšíření serveru NPS.
-1. Server NPS, ve kterém je rozšíření nainstalované, pošle na Brána vzdálené plochy Server zprávu o přístupu přes protokol RADIUS pro zásady CAP k vzdálené ploše.
+1. Pokud jsou splněné všechny podmínky uvedené v žádosti o připojení NPS a zásady sítě (například omezení doby platnosti nebo členství ve skupinách), rozšíření serveru NPS spustí požadavek na sekundární ověřování pomocí Azure AD MFA.
+1. Azure AD MFA komunikuje se službou Azure AD, načte podrobnosti o uživateli a provede sekundární ověřování pomocí podporovaných metod.
+1. Po úspěšném ověření MFA služba Azure AD MFA oznámí výsledek rozšíření serveru NPS.
+1. Server NPS, ve kterém je rozšíření nainstalované, pošle na Brána vzdálené plochy Server zprávu RADIUS Access-Accept pro zásady CAP k vzdálené ploše.
 1. Uživateli je udělen přístup k požadovanému síťovému prostředku prostřednictvím Brána VP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tato část podrobně popisuje požadavky nezbytné před integrací Azure MFA s Brána vzdálené plochy. Než začnete, musíte mít splněné následující požadavky.  
+Tato část podrobně popisuje požadavky nezbytné před integrací Azure AD MFA s Brána vzdálené plochy. Než začnete, musíte mít splněné následující požadavky.  
 
 * Infrastruktura služby Vzdálená plocha (RDS)
-* Licence Azure MFA
+* Licence Azure AD MFA
 * Software Windows serveru
 * Role NPS (Network Policy and Access Services)
 * Azure Active Directory synchronizován s místní službou Active Directory
@@ -75,11 +75,11 @@ Tato část podrobně popisuje požadavky nezbytné před integrací Azure MFA s
 Je nutné, aby byla k dispozici fungující infrastruktura vzdálené plochy (Remote Desktop Services). Pokud to neuděláte, můžete tuto infrastrukturu v Azure rychle vytvořit pomocí následující šablony pro rychlé zprovoznění: [vytvoření nasazení kolekce relací vzdálené plochy](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
 Pokud chcete rychle vytvořit místní infrastrukturu služby Vzdálená plocha pro účely testování, postupujte podle pokynů pro nasazení jednoho.
-**Další informace**: [nasazení RDS pomocí rychlého startu Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) a [základního nasazení infrastruktury VP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)
+**Další informace**: [nasazení RDS pomocí rychlého startu Azure](/windows-server/remote/remote-desktop-services/rds-in-azure) a [základního nasazení infrastruktury VP](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)
 
-### <a name="azure-mfa-license"></a>Licence Azure MFA
+### <a name="azure-ad-mfa-license"></a>Licence Azure AD MFA
 
-Vyžaduje se licence pro Azure MFA, která je dostupná prostřednictvím Azure AD Premium nebo jiných sad, které ji obsahují. Licence založené na spotřebě pro Azure MFA, třeba pro licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. Další informace najdete v tématu [Jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md). Pro účely testování můžete použít zkušební předplatné.
+Vyžaduje se licence k Azure AD MFA, která je dostupná prostřednictvím Azure AD Premium nebo jiných sad, které ji obsahují. Licence založené na spotřebě pro Azure AD MFA, například pro licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. Další informace najdete v tématu [Jak získat Multi-Factor Authentication služby Azure AD](concept-mfa-licensing.md). Pro účely testování můžete použít zkušební předplatné.
 
 ### <a name="windows-server-software"></a>Software Windows serveru
 
@@ -89,7 +89,7 @@ Rozšíření serveru NPS vyžaduje systém Windows Server 2008 R2 SP1 nebo nov�
 
 Služba role NPS poskytuje funkce serveru RADIUS a klienta a také službu stavu zásad přístupu k síti. Tato role musí být nainstalovaná aspoň na dvou počítačích v infrastruktuře: Brána vzdálené plochy a jiný členský server nebo řadič domény. Ve výchozím nastavení je role již přítomna v počítači nakonfigurovaném jako Brána vzdálené plochy.  Také je nutné nainstalovat roli serveru NPS alespoň do jiného počítače, jako je například řadič domény nebo členský server.
 
-Informace o instalaci služby role NPS Windows Server 2012 nebo starší najdete v tématu [instalace serveru zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
+Informace o instalaci služby role NPS Windows Server 2012 nebo starší najdete v tématu [instalace serveru zásad stavu NAP](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synchronizován s místní službou Active Directory
 
@@ -101,32 +101,32 @@ Pro instalaci rozšíření NPS potřebujete znát identifikátor GUID služby A
 
 ## <a name="configure-multi-factor-authentication"></a>Konfigurace Multi-Factor Authentication
 
-V této části najdete pokyny pro integraci Azure MFA s Brána vzdálené plochy. Jako správce musíte nakonfigurovat službu Azure MFA, aby mohli uživatelé sami zaregistrovat svoje zařízení nebo aplikace na více zařízeních.
+V této části najdete pokyny pro integraci Azure AD MFA s Brána vzdálené plochy. Jako správce musíte nakonfigurovat službu Azure AD MFA, aby mohli uživatelé sami zaregistrovat svá zařízení nebo aplikace na více procesorech.
 
-Postupujte podle kroků v části [Začínáme s Azure Multi-Factor Authentication v cloudu](howto-mfa-getstarted.md) a povolte MFA pro uživatele Azure AD.
+Postupujte podle kroků v části [Začínáme se službou Azure ad Multi-Factor Authentication v cloudu](howto-mfa-getstarted.md) a povolte MFA pro uživatele Azure AD.
 
 ### <a name="configure-accounts-for-two-step-verification"></a>Konfigurace účtů pro dvoustupňové ověřování
 
 Jakmile je pro MFA povolený účet, nebudete se moct přihlašovat k prostředkům, které řídí zásada MFA, dokud jste neúspěšně nenakonfigurovali důvěryhodné zařízení na použití pro druhý faktor ověřování a ověřili jste ověřování pomocí dvoustupňového ověřování.
 
-Postupujte podle kroků v části [co Azure Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
+Postupujte podle kroků v části [co Azure AD Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user-first-time.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
 
 > [!IMPORTANT]
-> Chování při přihlašování pro Brána vzdálené plochy neposkytuje možnost zadat ověřovací kód pomocí Azure Multi-Factor Authentication. Uživatelský účet musí být nakonfigurovaný pro ověřování na telefonu nebo pro aplikaci Microsoft Authenticator s nabízenými oznámeními.
+> Chování při přihlašování pro Brána vzdálené plochy neposkytuje možnost zadat ověřovací kód s Multi-Factor Authentication služby Azure AD. Uživatelský účet musí být nakonfigurovaný pro ověřování na telefonu nebo pro aplikaci Microsoft Authenticator s nabízenými oznámeními.
 >
-> Pokud není jedna z těchto dvou metod ověřování pro uživatele nakonfigurovaná, nebude moct dokončit službu Azure Multi-Factor Authentication Challenge a přihlásit se k Brána vzdálené plochy.
+> Pokud není jedna z těchto dvou metod ověřování pro uživatele nakonfigurovaná, nebude moct dokončit službu Azure AD Multi-Factor Authentication Challenge a přihlásit se k Brána vzdálené plochy.
 
 ## <a name="install-and-configure-nps-extension"></a>Instalace a konfigurace rozšíření serveru NPS
 
-V této části najdete pokyny ke konfiguraci infrastruktury služby RDS pro použití Azure MFA pro ověřování klientů pomocí Brána vzdálené plochy.
+V této části najdete pokyny ke konfiguraci infrastruktury VP pro použití Azure AD MFA pro ověřování klientů pomocí Brána vzdálené plochy.
 
 ### <a name="acquire-azure-active-directory-tenant-id"></a>Získat ID tenanta Azure Active Directory
 
 V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID Azure AD pro vašeho tenanta Azure AD. Chcete-li získat ID tenanta, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
-1. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
-1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta*vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
+1. V nabídce Azure Portal vyberte **Azure Active Directory** nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
+1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta* vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
    ![Získává se ID tenanta z Azure Portal.](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
@@ -142,8 +142,8 @@ Nainstalujte rozšíření serveru NPS na server, na kterém je nainstalovaná r
 1. Stáhněte si [rozšíření serveru NPS](https://aka.ms/npsmfa).
 1. Zkopírujte spustitelný soubor instalačního programu (NpsExtnForAzureMfaInstaller.exe) na server NPS.
 1. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller.exe**. Pokud se zobrazí výzva, klikněte na **Spustit**.
-1. V dialogovém okně rozšíření NPS pro instalaci Azure MFA si přečtěte licenční podmínky pro software, zkontrolujte, že souhlasím **s licenčními podmínkami a ujednáními**, a klikněte na **nainstalovat**.
-1. V dialogovém okně rozšíření serveru NPS pro instalaci Azure MFA klikněte na **Zavřít**.
+1. V dialogovém okně rozšíření serveru NPS pro službu Azure AD MFA si přečtěte licenční podmínky pro software, zkontrolujte, zda souhlasím **s licenčními podmínkami a ujednáními**, a klikněte na tlačítko **nainstalovat**.
+1. V dialogovém okně rozšíření NPS pro nastavení Azure AD MFA klikněte na **Zavřít**.
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Konfigurace certifikátů pro použití s rozšířením NPS pomocí skriptu PowerShellu
 
@@ -167,7 +167,7 @@ Pokud chcete použít skript, zadejte rozšíření s přihlašovacími údaji s
 
    ![Spuštění AzureMfaNpsExtnConfigSetup.ps1 ve službě Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. Jakmile skript ověří instalaci modulu PowerShellu, zobrazí se dialogové okno Azure Active Directory modulu PowerShellu. V dialogovém okně zadejte svoje přihlašovací údaje a heslo správce Azure AD a klikněte na **Přihlásit**se.
+1. Jakmile skript ověří instalaci modulu PowerShellu, zobrazí se dialogové okno Azure Active Directory modulu PowerShellu. V dialogovém okně zadejte svoje přihlašovací údaje a heslo správce Azure AD a klikněte na **Přihlásit** se.
 
    ![Ověřování ve službě Azure AD v prostředí PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
@@ -187,11 +187,11 @@ Tok ověřování vyžaduje, aby byly zprávy protokolu RADIUS vyměněny mezi B
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Konfigurace zásad autorizace Brána vzdálené plochy připojení pro použití centrálního úložiště
 
-Zásady autorizace připojení ke vzdálené ploše (RD CAP) určují požadavky pro připojení k serveru Brána vzdálené plochy. Možnost Cap k VP se dá ukládat lokálně (ve výchozím nastavení) nebo můžou být uložená v centrálním úložišti CAP k vzdálené ploše, na kterém běží server NPS. Pokud chcete nakonfigurovat integraci Azure MFA s RDS, musíte zadat použití centrálního úložiště.
+Zásady autorizace připojení ke vzdálené ploše (RD CAP) určují požadavky pro připojení k serveru Brána vzdálené plochy. Možnost Cap k VP se dá ukládat lokálně (ve výchozím nastavení) nebo můžou být uložená v centrálním úložišti CAP k vzdálené ploše, na kterém běží server NPS. Pokud chcete nakonfigurovat integraci Azure AD MFA s RDS, musíte zadat použití centrálního úložiště.
 
 1. Na serveru Brána VP otevřete **Správce serveru**.
-1. V nabídce klikněte na **nástroje**, přejděte na **Vzdálená plocha**a pak klikněte na **Správce brány vzdálené plochy**.
-1. V Správce brány VP klikněte pravým tlačítkem myši na ** \[ název serveru \] (místní)** a klikněte na **vlastnosti**.
+1. V nabídce klikněte na **nástroje**, přejděte na **Vzdálená plocha** a pak klikněte na **Správce brány vzdálené plochy**.
+1. V Správce brány VP klikněte pravým tlačítkem myši na **\[ název serveru \] (místní)** a klikněte na **vlastnosti**.
 1. V dialogovém okně Vlastnosti vyberte kartu **úložiště Cap k vzdálené ploše** .
 1. Na kartě úložiště CAP k vzdálené ploše vyberte **centrální server, na kterém běží server NPS**. 
 1. Do pole **Zadejte název nebo IP adresu serveru, na kterém běží server NPS** , zadejte IP adresu nebo název serveru, na který jste nainstalovali rozšíření serveru NPS.
@@ -213,8 +213,8 @@ Zásady autorizace připojení ke vzdálené ploše (RD CAP) určují požadavky
 
 Aby bylo zajištěno, že bude k dispozici čas ověřovat přihlašovací údaje uživatelů, provádět dvoustupňové ověřování, přijímat odpovědi a reagovat na zprávy protokolu RADIUS, je nutné upravit hodnotu časového limitu POLOMĚRu.
 
-1. Na serveru Brána VP otevřete Správce serveru. V nabídce klikněte na **nástroje**a potom klikněte na **Server NPS (Network Policy Server**).
-1. V konzole **NPS (místní)** rozbalte položku **klienti a servery RADIUS**a vyberte **vzdálený server RADIUS**.
+1. Na serveru Brána VP otevřete Správce serveru. V nabídce klikněte na **nástroje** a potom klikněte na **Server NPS (Network Policy Server**).
+1. V konzole **NPS (místní)** rozbalte položku **klienti a servery RADIUS** a vyberte **vzdálený server RADIUS**.
 
    ![Konzola pro správu serveru NPS (Network Policy Server) se vzdáleným serverem RADIUS](./media/howto-mfa-nps-extension-rdg/image12.png)
 
@@ -238,9 +238,9 @@ Aby bylo zajištěno, že bude k dispozici čas ověřovat přihlašovací údaj
 
 ### <a name="verify-connection-request-policies"></a>Ověření zásad žádosti o připojení
 
-Ve výchozím nastavení platí, že když nakonfigurujete Brána VP pro použití centrálního úložiště zásad pro zásady autorizace připojení, Brána VP je nakonfigurované tak, aby servery NPS předaly požadavky na CAP. Server NPS s nainstalovaným rozšířením Azure MFA zpracovává žádost o přístup přes protokol RADIUS. Následující kroky ukazují, jak ověřit výchozí zásadu žádosti o připojení.  
+Ve výchozím nastavení platí, že když nakonfigurujete Brána VP pro použití centrálního úložiště zásad pro zásady autorizace připojení, Brána VP je nakonfigurované tak, aby servery NPS předaly požadavky na CAP. Server NPS s nainstalovaným rozšířením Azure AD MFA zpracovává žádost o přístup přes protokol RADIUS. Následující kroky ukazují, jak ověřit výchozí zásadu žádosti o připojení.  
 
-1. Na Brána VP v konzole NPS (místní) rozbalte **zásady**a vyberte **zásady vyžádání nového připojení**.
+1. Na Brána VP v konzole NPS (místní) rozbalte **zásady** a vyberte **zásady vyžádání nového připojení**.
 1. Poklikejte na **zásady autorizace brány TS**.
 1. V dialogovém okně **Vlastnosti zásad autorizace brány TS** klikněte na kartu **Nastavení** .
 1. Na kartě **Nastavení** klikněte v části předávání žádosti o připojení na **ověřování**. Klient protokolu RADIUS je nakonfigurován pro přeposílání požadavků pro ověřování.
@@ -250,7 +250,7 @@ Ve výchozím nastavení platí, že když nakonfigurujete Brána VP pro použit
 1. Klikněte na tlačítko **Storno**.
 
 >[!NOTE]
-> Další informace o vytvoření zásady vyžádání nového připojení najdete v článku Konfigurace dokumentace pro [zásady požadavků na připojení](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) . 
+> Další informace o vytvoření zásady vyžádání nového připojení najdete v článku Konfigurace dokumentace pro [zásady požadavků na připojení](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) . 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurace serveru NPS na serveru, na kterém je nainstalováno rozšíření serveru NPS
 
@@ -261,7 +261,7 @@ Server NPS, na kterém je nainstalované rozšíření NPS, musí být schopný 
 Aby bylo možné v tomto scénáři správně fungovat, musí být server NPS zaregistrován ve službě Active Directory.
 
 1. Na serveru NPS otevřete **Správce serveru**.
-1. V Správce serveru klikněte na **nástroje**a pak klikněte na **Server NPS (Network Policy Server**).
+1. V Správce serveru klikněte na **nástroje** a pak klikněte na **Server NPS (Network Policy Server**).
 1. V konzole serveru NPS (Network Policy Server) klikněte pravým tlačítkem na **NPS (místní)** a pak klikněte na **zaregistrovat server ve službě Active Directory**.
 1. Dvakrát klikněte na **OK** .
 
@@ -286,15 +286,15 @@ Brána vzdálené plochy nutné nakonfigurovat jako klienta RADIUS serveru NPS.
 
 ### <a name="configure-network-policy"></a>Konfigurace zásad sítě
 
-Odvolá, že server NPS s rozšířením Azure MFA je určené centrální úložiště zásad pro zásady autorizace připojení (CAP). Proto je potřeba implementovat na server NPS CAP, aby se schvalovaly platné požadavky na připojení.  
+Odvolat, že server NPS s rozšířením Azure AD MFA je určené centrální úložiště zásad pro zásady autorizace připojení (CAP). Proto je potřeba implementovat na server NPS CAP, aby se schvalovaly platné požadavky na připojení.  
 
-1. Na serveru NPS otevřete konzolu NPS (místní), rozbalte **zásady**a klikněte na **zásady sítě**.
-1. Klikněte pravým tlačítkem na **připojení k ostatním serverům pro přístup**a klikněte na **Duplikovat zásady**.
+1. Na serveru NPS otevřete konzolu NPS (místní), rozbalte **zásady** a klikněte na **zásady sítě**.
+1. Klikněte pravým tlačítkem na **připojení k ostatním serverům pro přístup** a klikněte na **Duplikovat zásady**.
 
    ![Duplikovat připojení k zásadám jiných přístupových serverů](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. Klikněte pravým tlačítkem na **Kopírovat připojení k ostatním serverům pro přístup**a klikněte na **vlastnosti**.
-1. V dialogovém okně **kopie připojení k jiným přístupovým serverům** zadejte do pole **název zásady**vhodný název, například _RDG_CAP_. Zaškrtněte políčko **Povolit zásadu**a vyberte **udělit přístup**. V případě potřeby můžete v **části Typ serveru pro přístup k síti**vybrat možnost **Brána vzdálené plochy**, nebo ji nechat **nespecifikovanou**.
+1. Klikněte pravým tlačítkem na **Kopírovat připojení k ostatním serverům pro přístup** a klikněte na **vlastnosti**.
+1. V dialogovém okně **kopie připojení k jiným přístupovým serverům** zadejte do pole **název zásady** vhodný název, například _RDG_CAP_. Zaškrtněte políčko **Povolit zásadu** a vyberte **udělit přístup**. V případě potřeby můžete v **části Typ serveru pro přístup k síti** vybrat možnost **Brána vzdálené plochy**, nebo ji nechat **nespecifikovanou**.
 
    ![Pojmenování zásady, povolení a udělení přístupu](./media/howto-mfa-nps-extension-rdg/image21.png)
 
@@ -313,7 +313,7 @@ Odvolá, že server NPS s rozšířením Azure MFA je určené centrální úlo�
 
 ## <a name="verify-configuration"></a>Ověřit konfiguraci
 
-Pokud chcete konfiguraci ověřit, musíte se přihlásit k Brána vzdálené plochy pomocí vhodného klienta RDP. Ujistěte se, že používáte účet, který je povolený v zásadách autorizace připojení a je povolený pro Azure MFA.
+Pokud chcete konfiguraci ověřit, musíte se přihlásit k Brána vzdálené plochy pomocí vhodného klienta RDP. Ujistěte se, že používáte účet, který je povolený v zásadách autorizace připojení a je povolený pro Azure AD MFA.
 
 Jak je znázorněno na obrázku níže, můžete použít stránku **Web Access vzdálené plochy** .
 
@@ -321,7 +321,7 @@ Jak je znázorněno na obrázku níže, můžete použít stránku **Web Access 
 
 Po úspěšném zadání přihlašovacích údajů k primárnímu ověřování se v dialogovém okně připojení ke vzdálené ploše zobrazí stav iniciace vzdáleného připojení, jak je znázorněno níže. 
 
-Pokud úspěšně ověříte sekundární metodou ověřování, kterou jste předtím nakonfigurovali v Azure MFA, budete připojeni k prostředku. Pokud se ale sekundární ověřování nezdařilo, budete mít přístup k prostředku odepřený. 
+Pokud úspěšně ověříte sekundární metodou ověřování, kterou jste předtím nakonfigurovali v Azure AD MFA, budete připojeni k prostředku. Pokud se ale sekundární ověřování nezdařilo, budete mít přístup k prostředku odepřený. 
 
 ![Připojení ke vzdálené ploše iniciování vzdáleného připojení](./media/howto-mfa-nps-extension-rdg/image26.png)
 
@@ -358,15 +358,15 @@ Můžete také zobrazit protokol zabezpečení nebo vlastní zobrazení služby 
 
 ![Služba Síťové zásady a přístup Prohlížeč událostí](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-Na serveru, na který jste nainstalovali rozšíření serveru NPS pro Azure MFA, můžete najít Prohlížeč událostí protokoly aplikací specifické pro rozšíření na stránce _Application and Services Logs\Microsoft\AzureMfa_.
+Na serveru, na který jste nainstalovali rozšíření serveru NPS pro Azure AD MFA, najdete Prohlížeč událostí protokoly aplikací specifické pro rozšíření na stránce _Application and Services Logs\Microsoft\AzureMfa_.
 
 ![Prohlížeč událostí protokoly aplikací AuthZ](./media/howto-mfa-nps-extension-rdg/image32.png)
 
 ## <a name="troubleshoot-guide"></a>Průvodce odstraňováním potíží
 
-Pokud konfigurace nefunguje podle očekávání, je první místo, kde začít s odstraňováním potíží, ověřit, jestli je uživatel nakonfigurovaný tak, aby používal Azure MFA. Připojte se k [Azure Portal](https://portal.azure.com)uživatele. Pokud se uživatelům zobrazí výzva k sekundárnímu ověření a je možné ho úspěšně ověřit, můžete eliminovat neplatnou konfiguraci Azure MFA.
+Pokud konfigurace nefunguje podle očekávání, je první místo, kde začít s odstraňováním potíží, ověřit, jestli je uživatel nakonfigurovaný tak, aby používal Azure AD MFA. Připojte se k [Azure Portal](https://portal.azure.com)uživatele. Pokud se uživatelům zobrazí výzva k sekundárnímu ověření a je možné ho úspěšně ověřit, můžete eliminovat neplatnou konfiguraci Azure AD MFA.
 
-Pokud pro uživatele pracuje Azure MFA, měli byste si projít příslušné protokoly událostí. Patří sem události zabezpečení, provozní brány a protokoly Azure MFA, které jsou popsány v předchozí části.
+Pokud pro uživatele pracuje Azure AD MFA, měli byste zkontrolovat příslušné protokoly událostí. Patří sem události zabezpečení, provoz brány a protokoly Azure AD MFA, které jsou popsány v předchozí části.
 
 Níže je uvedený příklad výstupu protokolu zabezpečení zobrazujícího neúspěšnou událost přihlášení (ID události 6273).
 
@@ -374,17 +374,17 @@ Níže je uvedený příklad výstupu protokolu zabezpečení zobrazujícího ne
 
 Níže je uvedená související událost z AzureMFA protokolů:
 
-![Ukázka Prohlížeč událostí protokolu Azure MFA](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Ukázka Prohlížeč událostí protokolu Azure AD MFA](./media/howto-mfa-nps-extension-rdg/image34.png)
 
 Pokud chcete provádět pokročilé možnosti odstraňování potíží, Projděte si soubory protokolů ve formátu databáze NPS, kde je nainstalovaná služba NPS. Tyto soubory protokolu se vytvoří ve složce _%systemroot%\System32\Logs_ jako textové soubory s oddělovači.
 
-Popis těchto souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](https://technet.microsoft.com/library/cc771748.aspx). Položky v těchto protokolových souborech se můžou obtížně interpretovat bez jejich importu do tabulky nebo databáze. Několik analyzátorů služby IAS můžete najít online, abyste vám pomohli interpretovat soubory protokolu.
+Popis těchto souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)). Položky v těchto protokolových souborech se můžou obtížně interpretovat bez jejich importu do tabulky nebo databáze. Několik analyzátorů služby IAS můžete najít online, abyste vám pomohli interpretovat soubory protokolu.
 
 Následující obrázek ukazuje výstup jedné takové [shareware aplikace](https://www.deepsoftware.com/iasviewer)ke stažení.
 
 ![Ukázka analyzátoru služby IAS pro shareware App](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Nakonec můžete pro další možnosti řešení potíží použít analyzátor protokolů, jako je například [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+Nakonec můžete pro další možnosti řešení potíží použít analyzátor protokolů, jako je například [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide).
 
 Následující obrázek v Microsoft Message Analyzer zobrazuje síťový provoz filtrovaný podle protokolu RADIUS, který obsahuje uživatelské jméno **CONTOSO\AliceC**.
 
@@ -392,7 +392,7 @@ Následující obrázek v Microsoft Message Analyzer zobrazuje síťový provoz 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Jak získat službu Azure Multi-Factor Authentication](concept-mfa-licensing.md)
+[Jak získat Multi-Factor Authentication služby Azure AD](concept-mfa-licensing.md)
 
 [Brána vzdálené plochy Azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md)
 

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511967"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629678"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Sdílená složka Azure – Nepodařilo se odstranit soubory ze sdílené složky Azure
 
@@ -34,7 +34,7 @@ K zpracování tohoto příkazu není k dispozici dostatečná kvóta.
 
 ## <a name="cause"></a>Příčina
 
-K chybě 1816 dochází, když se dosáhne horní meze souběžných otevřených popisovačů povolených pro určitý soubor v počítači, kam se sdílená složka sdílí. Další informace najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
+K chybě 1816 dochází, když se dosáhne horní meze souběžných otevřených popisovačů povolených pro určitý soubor v počítači, kam se sdílená složka sdílí. Další informace najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost Azure Storage](../blobs/storage-performance-checklist.md).
 
 ## <a name="resolution"></a>Řešení
 
@@ -44,7 +44,7 @@ Snižte počet souběžných otevřených popisovačů uzavřením některých p
 
 ### <a name="install-the-latest-azure-powershell-module"></a>Nainstalovat nejnovější modul Azure PowerShell
 
-* [Instalace modulu Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Instalace modulu Azure PowerShellu](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>Připojte se k Azure:
 
@@ -92,4 +92,4 @@ Chcete-li zavřít otevřený popisovač, použijte následující příkaz:
 
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+* [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

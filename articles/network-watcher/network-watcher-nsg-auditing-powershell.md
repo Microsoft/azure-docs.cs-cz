@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 10abd1065fe47556109ed69d36493c165dec1418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 177215775c9e83286aa98872eed0ab211a8f36ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738205"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948744"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizace NSG auditování pomocí zobrazení skupiny zabezpečení Azure Network Watcher
 
 Zákazníci se často setkávají s výzvou k ověření stav zabezpečení jejich infrastruktury. Tato výzva není pro své virtuální počítače v Azure odlišná. Je důležité mít podobný profil zabezpečení na základě použitých pravidel skupiny zabezpečení sítě (NSG). Pomocí zobrazení skupiny zabezpečení teď můžete získat seznam pravidel použitých pro virtuální počítač v rámci NSG. Můžete definovat zlatý NSG profil zabezpečení a spustit zobrazení skupiny zabezpečení na týdenní tempo a porovnat výstup s zlatým profilem a vytvořit sestavu. Tímto způsobem můžete snadno identifikovat všechny virtuální počítače, které neodpovídají předepsanému profilu zabezpečení.
 
-Pokud neznáte skupiny zabezpečení sítě, přečtěte si téma [Přehled zabezpečení sítě](../virtual-network/security-overview.md).
+Pokud neznáte skupiny zabezpečení sítě, přečtěte si téma [Přehled zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -189,16 +189,3 @@ SideIndicator            : <=
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se nastavení změnila, přečtěte si téma [Správa skupin zabezpečení](../virtual-network/manage-network-security-group.md) sítě a sledujte příslušné skupiny zabezpečení sítě a pravidla zabezpečení.
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s aplikacemi .NET'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v .NET Framework'
 description: V tomto rychlém startu se dozvíte, jak získat přístup k Azure cache pro Redis z aplikací .NET.
 author: yegu-ms
 ms.author: yegu
@@ -8,18 +8,22 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b64fd82ab6050d6f4a9f0f91c2b8336ce03ab1d3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ffc5c8ea647d4cadd2d151eb880c794ac5f4ebd4
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211353"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121435"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Framework
+# <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Rychlý Start: použití mezipaměti Azure pro Redis v .NET Framework
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Framework, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s kódem C# v aplikaci konzoly .NET.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si téma [rychlý start .NET Framework](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet) na GitHubu.
+
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -57,7 +61,7 @@ Vyberte **Konzolová aplikace (.NET Framework)** a **vedle** konfigurace aplikac
 
 V této části nakonfigurujete konzolovou aplikaci, aby pro .NET používala klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis).
 
-V aplikaci Visual Studio klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**a spusťte následující příkaz z okna konzoly Správce balíčků.
+V aplikaci Visual Studio klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** a spusťte následující příkaz z okna konzoly Správce balíčků.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -92,7 +96,7 @@ using System.Configuration;
 
 Připojení k mezipaměti Azure pro Redis je spravováno `ConnectionMultiplexer` třídou. V klientské aplikaci byste měli tuto třídu sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
 
-Neuchovávejte přihlašovací údaje ve zdrojovém kódu. Pro zjednodušení této ukázky používám pouze konfigurační soubor externích tajných kódů. Lepším přístupem může být použití řešení [Azure Key Vault s certifikáty](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios).
+Neuchovávejte přihlašovací údaje ve zdrojovém kódu. Pro zjednodušení této ukázky používám pouze konfigurační soubor externích tajných kódů. Lepším přístupem může být použití řešení [Azure Key Vault s certifikáty](/rest/api/keyvault/certificate-scenarios).
 
 V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace následující členy:
 
@@ -186,7 +190,7 @@ Mezipaměť Azure pro Redis může ukládat do mezipaměti objekty .NET i primit
 
 Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat a deserializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
 
-V aplikaci Visual Studio klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**a spusťte následující příkaz z okna konzoly Správce balíčků.
+V aplikaci Visual Studio klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** a spusťte následující příkaz z okna konzoly Správce balíčků.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -247,7 +251,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
@@ -271,4 +275,4 @@ V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z ap
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

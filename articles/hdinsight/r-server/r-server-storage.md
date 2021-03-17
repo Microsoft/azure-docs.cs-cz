@@ -2,37 +2,34 @@
 title: Řešení Azure Storage pro služby ML ve službě HDInsight – Azure
 description: Seznamte se s různými možnostmi úložiště dostupnými pro služby ML v HDInsight.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 4d3568e3869415a3223154af30b22d85c8104199
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087618"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943903"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro služby ML ve službě Azure HDInsight
 
 Služby ML Services v HDInsight můžou používat různá řešení úložiště k uchovávání dat, kódu nebo objektů, které obsahují výsledky z analýz. Tato řešení zahrnují následující možnosti:
 
-- [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Služba Azure File Storage](https://azure.microsoft.com/services/storage/files/)
+- [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
+- [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/)
+- [Azure File Storage](https://azure.microsoft.com/services/storage/files/)
 
 Máte také možnost získat přístup k více účtům nebo kontejnerům Azure Storage s clusterem HDInsight. Služba Azure File Storage je pohodlný způsob ukládání dat pro použití na hraničním uzlu, který umožňuje připojit sdílenou složku úložiště Azure, například systém souborů Linux. Sdílené složky Azure je ale možné připojit a používat jakýmkoli systémem, který má podporovaný operační systém, jako je Windows nebo Linux.
 
-Když vytvoříte cluster Apache Hadoop v HDInsight, zadáte buď účet **Azure Storage** , nebo **Data Lake Storage**. Konkrétní kontejner úložiště z tohoto účtu obsahuje systém souborů pro cluster, který vytvoříte (například systém souborů DFS (Distributed File System) Hadoop). Další informace a pokyny najdete v těchto tématech:
+Když vytvoříte cluster Apache Hadoop v HDInsight, zadáte buď účet služby **Azure Blob Storage** , nebo **Data Lake Storage Gen1**. Konkrétní kontejner úložiště z tohoto účtu obsahuje systém souborů pro cluster, který vytvoříte (například systém souborů DFS (Distributed File System) Hadoop). Další informace a pokyny najdete v těchto tématech:
 
-- [Použití Azure Storage se službou HDInsight](../hdinsight-hadoop-use-blob-storage.md)
-- [Použití Data Lake Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
+- [Použití úložiště objektů BLOB v Azure se službou HDInsight](../hdinsight-hadoop-use-blob-storage.md)
+- [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Použití účtů úložiště Azure BLOB v clusteru služby ML
 
-Pokud jste při vytváření clusteru služby ML zadali více než jeden účet úložiště, následující pokyny vysvětlují, jak použít sekundární účet pro přístup k datům a operace v clusteru služby ML. Předpokládejme následující účty úložiště a kontejner: **storage1** a výchozí kontejner s názvem **container1**a **storage2** s **container2**.
+Pokud jste při vytváření clusteru služby ML zadali více než jeden účet úložiště, následující pokyny vysvětlují, jak použít sekundární účet pro přístup k datům a operace v clusteru služby ML. Předpokládejme následující účty úložiště a kontejner: **storage1** a výchozí kontejner s názvem **container1** a **storage2** s **container2**.
 
 > [!WARNING]  
 > Pro účely výkonu se cluster HDInsight vytvoří ve stejném datovém centru jako primární účet úložiště, který zadáte. Použití účtu úložiště v jiném umístění, než je cluster HDInsight, se nepodporuje.
@@ -108,23 +105,23 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 ```
 
-## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>Použití Azure Data Lake Storage s clusterem služeb ML
+## <a name="use-azure-data-lake-storage-gen1-with-ml-services-cluster"></a>Použití Azure Data Lake Storage Gen1 s clusterem služeb ML
 
-Pokud chcete použít Data Lake Storage s clusterem HDInsight, musíte vašemu clusteru udělit přístup ke každému Azure Data Lake Storage, který chcete použít. Pokyny, jak pomocí Azure Portal vytvořit cluster HDInsight s účtem služby Azure Data Lake Storage jako výchozí úložiště nebo jako další úložiště, najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Pokud chcete použít Data Lake Storage Gen1 s clusterem HDInsight, musíte vašemu clusteru udělit přístup ke každému Azure Data Lake Storage Gen1, který chcete použít. Pokyny, jak pomocí Azure Portal vytvořit cluster HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště nebo jako další úložiště, najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 Pak použijete úložiště ve skriptu R podobně jako u sekundárního účtu úložiště Azure, jak je popsáno v předchozím postupu.
 
-### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Přidání přístupu k clusteru do Azure Data Lake Storage
+### <a name="add-cluster-access-to-your-azure-data-lake-storage-gen1"></a>Přidání přístupu k clusteru do Azure Data Lake Storage Gen1
 
-K Data Lake Storage přistupujete pomocí instančního objektu služby Azure Active Directory (Azure AD), který je přidružený k vašemu clusteru HDInsight.
+K Data Lake Storage Gen1 přistupujete pomocí instančního objektu služby Azure Active Directory (Azure AD), který je přidružený k vašemu clusteru HDInsight.
 
-1. Při vytváření clusteru HDInsight vyberte z karty **zdroj dat** **cluster AAD identity** .
+1. Když vytváříte cluster HDInsight, vyberte z karty **zdroj dat** **cluster Azure AD identity** .
 
-2. V dialogovém okně **Identita AAD clusteru** v části **Vybrat instanční objekt služby Active Directory**vyberte **vytvořit novou**.
+2. V dialogovém okně **cluster Azure AD identity** vyberte v části **Vybrat instanční objekt služby Active Directory** možnost **vytvořit nový**.
 
 Když zadáte název instančního objektu a vytvoříte pro něj heslo, klikněte na **spravovat přístup adls** a přidružte objekt služby k vašemu Data Lake Storage.
 
-Je také možné přidat přístup clusteru k jednomu nebo více Data Lake účtů úložiště po vytvoření clusteru. Otevřete položku Azure Portal pro Data Lake Storage a přejděte na **Průzkumník dat > přístup > přidat**.
+Při vytváření clusteru je také možné přidat přístup clusteru k jednomu nebo více Data Lakech účtů Gen1 úložiště. Otevřete položku Azure Portal pro Data Lake Storage Gen1 a přejděte na **Průzkumník dat > přístup > přidat**.
 
 ### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Přístup k Data Lake Storage Gen1 ze služby ML Services ve službě HDInsight
 
@@ -151,7 +148,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 ```
 
-Následující příkazy se používají ke konfiguraci Data Lake Storage Gen1 účtu pomocí adresáře RevoShare a přidání ukázkového souboru. CSV z předchozího příkladu:
+Následující příkazy se používají ke konfiguraci Data Lake Storage Gen1 v adresáři RevoShare a přidání ukázkového souboru. CSV z předchozího příkladu:
 
 ```bash
 hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -169,7 +166,7 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 K dispozici je také vhodná možnost úložiště dat pro použití na hraničním uzlu s názvem [soubory Azure](https://azure.microsoft.com/services/storage/files/). Umožňuje připojení sdílené složky souborů Azure Storage k systému souborů Linux. Tato možnost může být užitečná pro ukládání datových souborů, skriptů R a objektů výsledků, které může být potřeba později, zejména v případě, kdy je vhodné použít nativní souborový systém na hraničním uzlu místo HDFS.
 
-Hlavní výhodou souborů Azure je, že sdílené složky je možné připojit a používat v jakémkoli systému, který má podporovaný operační systém, jako je Windows nebo Linux. Můžete ho například použít v jiném clusteru HDInsight, který vy nebo někdo z týmu používá virtuální počítač Azure, nebo dokonce místní systém. Další informace naleznete v tématech:
+Hlavní výhodou souborů Azure je, že sdílené složky je možné připojit a používat v jakémkoli systému, který má podporovaný operační systém, jako je Windows nebo Linux. Můžete ho například použít v jiném clusteru HDInsight, který vy nebo někdo z týmu používá virtuální počítač Azure, nebo dokonce místní systém. Další informace naleznete v tématu:
 
 - [Jak používat Azure File Storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md)
 - [Jak používat službu Azure File Storage ve Windows](../../storage/files/storage-dotnet-how-to-use-files.md)

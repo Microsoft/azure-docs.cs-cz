@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8961cccbd57294e477f0d33202fe91cd292b7814
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653021"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742217"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Ověřování pomocí protokolu LDAP a Azure Multi-Factor Authentication Server
 
@@ -25,7 +25,11 @@ Ve výchozím nastavení je Azure Multi-Factor Authentication Server nakonfiguro
 Pokud chcete použít Azure Multi-Factor Authentication jako proxy LDAP, vložte Multi-Factor Authentication Server Azure mezi klienta LDAP (například zařízení VPN, aplikace) a adresářový server LDAP. Azure Multi-Factor Authentication Server musí být nakonfigurován tak, aby komunikoval s klientskými servery i s adresářem LDAP. V této konfiguraci server Azure Multi-Factor Authentication přijímá požadavky LDAP od klientských serverů a aplikací a předává je cílovému adresářovému serveru LDAP pro ověření primárních pověření. Pokud adresář LDAP ověří primární přihlašovací údaje, Azure Multi-Factor Authentication provede druhé ověření identity a pošle odpověď zpátky klientovi LDAP. Celkové ověření proběhne úspěšně pouze pokud je úspěšné ověření pomocí serveru LDAP i druhý krok ověření.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="configure-ldap-authentication"></a>Konfigurace ověřování pomocí protokolu LDAP
 
@@ -40,7 +44,7 @@ Pro konfiguraci ověřování pomocí protokolu LDAP nainstalujte server Azure M
 
 3. Na kartě Klienti změňte port TCP a SSL (TLS), pokud má služba Azure Multi-Factor Authentication LDAP vytvořit vazby na nestandardní porty pro naslouchání požadavkům LDAP.
 4. Pokud plánujete použít LDAPs z klienta nástroje na Multi-Factor Authentication Server Azure, musí být certifikát TLS/SSL nainstalovaný na stejném serveru jako server MFA. Klikněte na tlačítko **Procházet** vedle pole certifikát SSL (TLS) a vyberte certifikát, který chcete použít pro zabezpečené připojení.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na **Přidat**.
 6. V dialogovém okně Přidat klienta LDAP zadejte IP adresu zařízení, serveru nebo aplikace, které se ověřují pro server a název aplikace (volitelné). Název aplikace se zobrazí v sestavách Azure Multi-Factor Authentication a může se zobrazit v rámci SMS zpráv nebo mobilních aplikací ověřování.
 7. Zaškrtněte políčko **Vyžadovat porovnání uživatele Azure Multi-Factor Authentication**, pokud byli nebo budou všichni uživatelé importováni na server a podstoupí dvoustupňové ověření. Pokud se na server ještě neimportoval velký počet uživatelů a/nebo se nejedná o dvoustupňové ověření, ponechejte políčko nezaškrtnuté. Další informace o této funkci najdete v souboru s nápovědu k serveru MFA.
 

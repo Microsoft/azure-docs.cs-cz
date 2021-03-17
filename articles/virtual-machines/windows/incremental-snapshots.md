@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5ace6017ce66bbaa8be71e23196823c1c1318902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.collection: windows
+ms.openlocfilehash: 1bc69d56fc4cfb900dc45e01b298feb3e4c7a616
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869477"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554356"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Zálohování nespravovaných disků virtuálních počítačů Azure pomocí přírůstkových snímků
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

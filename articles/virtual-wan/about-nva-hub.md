@@ -5,26 +5,26 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: ad7c7fb5111ce700a5725336b7c9db788e178c4c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097133"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028076"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuální síťové zařízení ve službě Azure Virtual WAN hub (Preview)
 
 Azure Virtual WAN spolupracuje se síťovými partnery a vytváří automatizaci, která usnadňuje připojení místního zařízení (CPE) zákazníka ke službě Azure VPN Gateway ve virtuálním centru. Azure pracuje s vybranými síťovými partnery, aby zákazníkům umožnila nasadit síťové virtuální zařízení (síťové virtuální zařízení) třetí strany přímo do virtuálního centra. To umožňuje zákazníkům, kteří se chtějí připojit ke své pobočce, na stejném síťové virtuální ZAŘÍZENÍi ve virtuálním centru, aby mohli využívat výhod všech komplexních funkcí SD-WAN.
 
-Barracuda Networks je první partner, který poskytuje síťové virtuální zařízení nabídku, kterou je možné nasadit přímo do virtuální sítě WAN pomocí svého [Barracuda CloudGene produktu WAN](https://www.barracuda.com/products/cloudgenwan) . Azure pracuje s větším partnerem, takže očekává, že bude sledovat další nabídky.
+Sítě Barracuda a Cisco Systems jsou prvními partnery, kteří poskytují síťová virtuální zařízení, které se dají nasadit přímo do virtuálního centra sítě WAN.  Přečtěte si článek [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) and [Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) pro příslušnou dokumentaci k produktu. Azure pracuje s většími partnery, takže očekává, že budou sledovat další nabídky.
 
 > [!NOTE]
 > Do virtuálního centra WAN se můžou nasadit jenom síťové virtuální zařízení nabídky, které se dají nasadit do virtuálního centra WAN. Nejde je nasadit do libovolné virtuální sítě v Azure.
 
-## <a name="how-does-it-work"></a><a name="how"></a>Jak funguje?
+## <a name="how-does-it-work"></a><a name="how"></a>Jak to funguje?
 
 Síťová virtuální zařízení, které jsou k dispozici pro nasazení přímo do služby Azure Virtual WAN, jsou navržené speciálně pro použití ve virtuálním centru. Nabídka síťové virtuální zařízení je publikována v Azure Marketplace jako spravovaná aplikace a zákazníci mohou tuto nabídku nasadit přímo z Azure Marketplace nebo mohou nasadit tuto nabídku z virtuálního rozbočovače prostřednictvím Azure Portal.
 
@@ -85,7 +85,7 @@ SÍŤOVÉ virtuální zařízení ve virtuálním rozbočovači je k dispozici p
 | Asie | Japan East |
 | Austrálie | Austrálie – východ |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Jsem partnerem síťového zařízení a chcete získat naše síťové virtuální ZAŘÍZENÍy v centru.  Můžu se připojit k tomuto partnerskému programu?
 
@@ -93,15 +93,15 @@ V tuto chvíli bohužel nemusíme mít na zadarmo žádné nové nabídky partne
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Můžu nasazovat jakékoli síťové virtuální zařízení z Azure Marketplace do virtuálního centra sítě WAN?
 
-Ne. V tuto chvíli je k nasazení do virtuálního centra WAN dostupná jenom [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) .
+V tuto chvíli jsou k dispozici pouze aplikace [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) a [Cisco Cloud vWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) , které by bylo možné nasadit do virtuálního centra sítě WAN.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Jaké jsou náklady na síťové virtuální zařízení?
 
-Musíte si koupit licenci pro Barracuda CloudGen WAN síťové virtuální zařízení od Barracuda. Další informace o licencování najdete na [stránce CLOUDGEN WAN pro Barracuda](https://www.barracuda.com/products/cloudgenwan). Navíc se vám od Microsoftu účtují poplatky za jednotky infrastruktury síťové virtuální zařízení, které spotřebujete, a všechny další prostředky, které využijete. Další informace najdete v tématu [cenové koncepty](pricing-concepts.md).
+Musíte si koupit licenci na síťové virtuální zařízení od dodavatele síťové virtuální zařízení.  Barracuda CloudGen WAN síťové virtuální zařízení z licence Barracuda najdete na [stránce Barracuda WAN pro CloudGen](https://www.barracuda.com/products/cloudgenwan). Cisco v současné době nabízí jenom BYOL (Přineste si vlastní licenci), které je potřeba obstarat přímo od Cisco. Navíc se vám od Microsoftu účtují poplatky za jednotky infrastruktury síťové virtuální zařízení, které spotřebujete, a všechny další prostředky, které využijete. Další informace najdete v tématu [cenové koncepty](pricing-concepts.md).
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>Můžu nasazovat síťové virtuální zařízení do základního rozbočovače?
 
-Ne. Pokud chcete nasadit síťové virtuální zařízení, musíte použít standardní centrum.
+No. Pokud chcete nasadit síťové virtuální zařízení, musíte použít standardní centrum.
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Můžu síťové virtuální zařízení nasadit do zabezpečeného centra?
 
@@ -109,7 +109,7 @@ Yes. Barracuda CloudGen WAN se dá nasadit do centra s Azure Firewall.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Můžu na svém firemním pobočce připojit libovolné zařízení CPE, aby se Barracuda CloudGen WAN síťové virtuální zařízení v centru?
 
-Ne. Barracuda CloudGen WAN je kompatibilní jenom se zařízeními Barracuda CPE. Další informace o požadavcích na CloudGen WAN najdete na [stránce CLOUDGEN WAN pro Barracuda](https://www.barracuda.com/products/cloudgenwan).
+No. Barracuda CloudGen WAN je kompatibilní jenom se zařízeními Barracuda CPE. Další informace o požadavcích na CloudGen WAN najdete na [stránce CLOUDGEN WAN pro Barracuda](https://www.barracuda.com/products/cloudgenwan). V případě Cisco je k dispozici několik zařízení SD-WAN CPE, která jsou compatable. Pro compatable CPEs se podívejte [na článek Cisco Cloud OnRamp pro multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) documenation.
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>Jaké scénáře směrování podporuje síťové virtuální zařízení v centru?
 

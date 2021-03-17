@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214074"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935445"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Postup vytvoření dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání 
 
@@ -49,14 +49,14 @@ Následující diagram znázorňuje hypotetický kanál pro obohacení:
 ![Hypotetický kanál pro obohacení](media/cognitive-search-defining-skillset/sample-skillset.png "Hypotetický kanál pro obohacení")
 
 
-Jakmile budete mít k dispozici lepší představu o tom, co chcete v kanálu, můžete vyjádřit dovednosti, které poskytuje tyto kroky. Funkce dovednosti se vyjadřuje při nahrávání definice indexeru do Azure Kognitivní hledání. Další informace o tom, jak nahrát indexer, najdete v dokumentaci k [indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Jakmile budete mít k dispozici lepší představu o tom, co chcete v kanálu, můžete vyjádřit dovednosti, které poskytuje tyto kroky. Funkce dovednosti se vyjadřuje při nahrávání definice indexeru do Azure Kognitivní hledání. Další informace o tom, jak nahrát indexer, najdete v dokumentaci k [indexeru](/rest/api/searchservice/create-indexer).
 
 
 V diagramu se krok *vytrhlinování dokumentu* provede automaticky. V podstatě Kognitivní hledání Azure ví, jak otevřít dobře známé soubory a vytvoří pole *obsahu* obsahující text extrahovaný z každého dokumentu. Prázdné čtverečky jsou integrované nástroje pro obohacení a pole s tečkami Vyhledávání entit Bingu představuje vlastní obohacení, které vytváříte. Jak je znázorněno, dovednosti obsahuje tři dovednosti.
 
 ## <a name="skillset-definition-in-rest"></a>Definice dovednosti v REST
 
-Dovednosti je definován jako pole dovedností. Každá dovednost definuje zdroj svých vstupů a název vytvořených výstupů. Pomocí [REST API Create dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset)můžete definovat dovednosti, který odpovídá předchozímu diagramu: 
+Dovednosti je definován jako pole dovedností. Každá dovednost definuje zdroj svých vstupů a název vytvořených výstupů. Pomocí [REST API Create dovednosti](/rest/api/searchservice/create-skillset)můžete definovat dovednosti, který odpovídá předchozímu diagramu: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -281,4 +281,4 @@ Můžete zvolit ukládání obohacených dokumentů jako tabulek s hierarchický
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste obeznámeni s kanálem pro obohacení a dovednosti, pokračujte s [odkazem na poznámky v dovednosti](cognitive-search-concept-annotations-syntax.md) nebo [jak mapovat výstupy na pole v indexu](cognitive-search-output-field-mapping.md). 
+Teď, když jste obeznámeni s kanálem pro obohacení a dovednosti, pokračujte s [odkazem na poznámky v dovednosti](cognitive-search-concept-annotations-syntax.md) nebo [jak mapovat výstupy na pole v indexu](cognitive-search-output-field-mapping.md).

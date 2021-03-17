@@ -1,17 +1,17 @@
 ---
 title: Query Performance Insight – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci Query Performance Insight v rámci Azure Database for PostgreSQL na jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768380"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710256"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -30,7 +30,7 @@ Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na
 
 Na stránce portálu vašeho serveru Azure Database for PostgreSQL v části **inteligentní výkon** v řádku nabídek vyberte **Query Performance Insight** .
 
-![Query Performance Insight dlouho běžící dotazy](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Query Performance Insight dlouho běžící dotazy":::
 
 Karta **dlouho běžící dotazy** zobrazuje prvních pět dotazů na základě průměrné doby trvání za běhu, agregované v intervalech 15 minut. Další dotazy můžete zobrazit tak, že v rozevíracím seznamu vyberete **Počet dotazů**. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
 
@@ -40,7 +40,7 @@ Tabulka pod grafem obsahuje další podrobnosti o dlouhotrvajících dotazech v 
 
 Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
 
-![Query Performance Insight čeká na statistiku](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight dlouho běžící dotazy":::
 
 ## <a name="considerations"></a>Důležité informace
 * Query Performance Insight není pro [repliky čtení](concepts-read-replicas.md)k dispozici.

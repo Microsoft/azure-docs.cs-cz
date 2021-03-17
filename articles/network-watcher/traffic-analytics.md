@@ -9,15 +9,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747530"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095357"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -43,10 +44,10 @@ Virtuální sítě Azure mají protokoly toku NSG, které poskytují informace o
 
 ## <a name="key-components"></a>Klíčové komponenty
 
-- **Skupina zabezpečení sítě (NSG)**: obsahuje seznam pravidel zabezpečení, která povolují nebo zakazují síťový provoz pro prostředky připojené k Azure Virtual Network. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Skupina zabezpečení sítě (NSG)**: obsahuje seznam pravidel zabezpečení, která povolují nebo zakazují síťový provoz pro prostředky připojené k Azure Virtual Network. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Protokoly toku pro skupinu zabezpečení sítě (NSG)**: umožňuje zobrazit informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě. Protokoly toku NSG jsou zapsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní, ke kterému se tok vztahuje, obsahuje pět informací o toku (zdrojová nebo cílová IP adresa, zdrojový nebo cílový port a protokol) a pokud byl provoz povolený nebo zakázaný. Další informace o protokolech toku NSG najdete v tématu [protokoly toků NSG](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Služba Azure, která shromažďuje data monitorování a ukládá je do centrálního úložiště. Tato data můžou zahrnovat události, data o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je například sledování výkonu sítě a analýza provozu, je sestaveno pomocí protokolu Azure Monitor jako základní. Další informace najdete v tématu [protokoly Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics pracovní prostor**: instance Azure monitor protokolů, kde se ukládají data týkající se účtu Azure. Další informace o Log Analytics pracovních prostorech najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics**: Služba Azure, která shromažďuje data monitorování a ukládá je do centrálního úložiště. Tato data můžou zahrnovat události, data o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je například sledování výkonu sítě a analýza provozu, je sestaveno pomocí protokolu Azure Monitor jako základní. Další informace najdete v tématu [protokoly Azure monitor](../azure-monitor/logs/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics pracovní prostor**: instance Azure monitor protokolů, kde se ukládají data týkající se účtu Azure. Další informace o Log Analytics pracovních prostorech najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/logs/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher**: místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v Azure. Protokoly NSG Flow můžete zapnout a vypnout pomocí Network Watcher. Další informace najdete v tématu [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak funguje Analýza provozu
@@ -58,68 +59,114 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 ## <a name="supported-regions-nsg"></a>Podporované oblasti: NSG 
 
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
-
-* Střední Kanada
-* USA – středozápad
-* USA – východ
-* USA – východ 2
-* USA – středosever
-* USA – středojih
-* USA – střed
-* USA – západ
-* USA – západ 2
-* Francie – střed
-* Západní Evropa
-* Severní Evropa
-* Brazílie – jih
-* Spojené království – západ
-* Spojené království – jih
-* Austrálie – východ
-* Austrálie – jihovýchod
-* Východní Asie
-* Jihovýchodní Asie
-* Jižní Korea – střed
-* Indie – střed
-* Indie – jih
-* Japonsko – východ 
-* Japonsko – západ
-* USA (Gov) – Virginia
-* Čína – východ 2
+:::row:::
+   :::column span="":::
+      Austrálie – střed  
+      Austrálie – východ  
+      Austrálie – jihovýchod  
+      Brazílie – jih  
+      Střední Kanada  
+      Kanada – východ  
+      Indie – střed  
+      USA – střed  
+      Čína – východ 2  
+      Čína – sever 2  
+      Východní Asie       
+   :::column-end:::
+   :::column span="":::
+      East US  
+      USA – východ 2  
+      Východní USA 2 EUAP  
+      Francie – střed  
+      Německo – středozápad Japonsko – východ  
+      Japonsko – západ  
+      Jižní Korea – střed  
+      Jižní Korea – jih  
+      USA – středosever  
+      Severní Evropa    
+   :::column-end:::
+   :::column span="":::
+      Jižní Afrika – sever  
+      Středojižní USA  
+      Indie – jih  
+      Southeast Asia  
+      Švýcarsko – sever  
+      Švýcarsko – západ  
+      Spojené arabské emiráty sever  
+      Spojené království – jih  
+      Spojené království – západ   
+      USGov Arizona  
+      USGov Texas
+   :::column-end:::
+   :::column span="":::
+      USGov Virginie  
+      USNat východ  
+      USNat – západ  
+      USSec východ  
+      USSec – západ  
+      USA – středozápad  
+      West Europe  
+      USA – západ  
+      Západní USA 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Podporované oblasti: Log Analytics pracovní prostory
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
-* Střední Kanada
-* USA – středozápad
-* USA – východ
-* USA – východ 2
-* USA – středosever
-* USA – středojih
-* USA – střed
-* USA – západ
-* USA – západ 2
-* USA – střed
-* Francie – střed
-* Západní Evropa
-* Severní Evropa
-* Brazílie – jih
-* Spojené království – západ
-* Spojené království – jih
-* Austrálie – východ
-* Austrálie – jihovýchod
-* Východní Asie
-* Jihovýchodní Asie
-* Jižní Korea – střed
-* Indie – střed
-* Japonsko – východ
-* USA (Gov) – Virginia
-* Čína – východ 2
+:::row:::
+   :::column span="":::
+      Austrálie – střed  
+      Austrálie – východ  
+      Austrálie – jihovýchod  
+      Brazílie – jih  
+      Střední Kanada  
+      Indie – střed  
+      USA – střed  
+      Čína – východ 2  
+      Východní Asie  
+      East US  
+   :::column-end:::
+   :::column span="":::
+      USA – východ 2  
+      Východní USA 2 EUAP  
+      Francie – střed  
+      Německo – středozápad  
+      Japonsko – východ  
+      Jižní Korea – střed  
+      USA – středosever  
+      Severní Evropa  
+      Jižní Afrika – sever  
+      Středojižní USA  
+   :::column-end:::
+   :::column span="":::
+      Southeast Asia  
+      Švýcarsko – sever  
+      Švýcarsko – západ  
+      Spojené arabské emiráty – střed  
+      Spojené arabské emiráty sever  
+      Spojené království – jih  
+      Spojené království – západ   
+      USGov Arizona  
+      USGov Virginie  
+      USNat východ   
+   :::column-end:::
+   :::column span="":::
+      USNat – západ   
+      USSec východ  
+      USSec – západ  
+      USA – středozápad  
+      West Europe  
+      USA – západ  
+      Západní USA 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="user-access-requirements"></a>Požadavky na přístup uživatelů
 
-Váš účet musí být členem jedné z následujících [předdefinovaných rolí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)Azure:
+Váš účet musí být členem jedné z následujících [předdefinovaných rolí Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json):
 
 |Model nasazení   | Role                   |
 |---------          |---------               |
@@ -152,7 +199,7 @@ K analýze provozu potřebujete existující sledovací proces sítě nebo [Povo
 
 Než povolíte protokolování toku NSG, musíte mít skupinu zabezpečení sítě, která bude protokolovat toky pro. Pokud nemáte skupinu zabezpečení sítě, přečtěte si téma [Vytvoření skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md#create-a-network-security-group) a vytvořte ji.
 
-V Azure Portal přejít na **sledovací proces sítě**a pak vyberte **protokoly toku NSG**. Vyberte skupinu zabezpečení sítě, pro kterou chcete povolit protokol NSG flow, jak je znázorněno na následujícím obrázku:
+V Azure Portal přejít na **sledovací proces sítě** a pak vyberte **protokoly toku NSG**. Vyberte skupinu zabezpečení sítě, pro kterou chcete povolit protokol NSG flow, jak je znázorněno na následujícím obrázku:
 
 ![Výběr skupin zabezpečení sítě, který vyžaduje povolení protokolu toku NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -185,9 +232,9 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 2. Vyberte *verzi 2* pro **protokol toků verze**. Verze 2 obsahuje statistiku relací toků (bajty a pakety).
 3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Ujistěte se, že ve vašem úložišti není nastavená možnost Data Lake Storage Gen2 hierarchický obor názvů Enabled na hodnotu true.
 4. Nastavte dobu **uchování** na počet dní, pro které chcete ukládat data. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky. 
-5. Pro **Analýza provozu stav**vyberte *zapnuto* .
+5. Pro **Analýza provozu stav** vyberte *zapnuto* .
 6. Vyberte interval zpracování. Na základě vašeho výběru budou protokoly toků shromažďovány z účtu úložiště a zpracovány Analýza provozu. Můžete zvolit interval zpracování každé 1 hodiny nebo každých 10 minut. 
-7. Vyberte pracovní prostor existující Log Analytics (OMS) nebo vyberte **vytvořit nový pracovní prostor** a vytvořte nový. Log Analytics pracovní prostor používá Analýza provozu k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýz. Pokud vyberete existující pracovní prostor, musí existovat v některé z [podporovaných oblastí](#supported-regions-log-analytics-workspaces) a byl upgradován na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů naleznete v tématu [Azure Log Analytics upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+7. Vyberte pracovní prostor existující Log Analytics (OMS) nebo vyberte **vytvořit nový pracovní prostor** a vytvořte nový. Log Analytics pracovní prostor používá Analýza provozu k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýz. Pokud vyberete existující pracovní prostor, musí existovat v některé z [podporovaných oblastí](#supported-regions-log-analytics-workspaces) a byl upgradován na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů naleznete v tématu [Azure Log Analytics upgrade na nové prohledávání protokolu](../azure-monitor/logs/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 > [!NOTE]
 >Pracovní prostor Log Analytics hostující řešení pro analýzu provozu a skupin zabezpečení sítě nemusí být ve stejné oblasti. Například můžete mít analýzu provozu v pracovním prostoru v oblasti Západní Evropa, zatímco jste si možná skupin zabezpečení sítěi Východní USA a Západní USA. Ve stejném pracovním prostoru se dá nakonfigurovat víc skupin zabezpečení sítě.
@@ -224,9 +271,9 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
 - Statistika blokovaného provozu.
     - Proč hostitel blokuje značný objem neškodných přenosů? Toto chování vyžaduje další šetření a pravděpodobně optimalizaci konfigurace.
 - Statistika škodlivého povoleného/blokovaného provozu
-  - Proč je hostitel, který přijímá škodlivý provoz a proč je povolený tok z škodlivého zdroje? Toto chování vyžaduje další šetření a pravděpodobně optimalizaci konfigurace.
+  - Proč hostitel přijímá škodlivý provoz a proč jsou povoleny toky ze škodlivých zdrojů? Toto chování vyžaduje další šetření a pravděpodobně optimalizaci konfigurace.
 
-    V části **hostitel**vyberte **Zobrazit vše**, jak je znázorněno na následujícím obrázku:
+    V části **hostitel** vyberte **Zobrazit vše**, jak je znázorněno na následujícím obrázku:
 
     ![Hostitel předvádí na řídicím panelu s největším objemem podrobností o provozu](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
@@ -242,7 +289,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
     - Proč hostitel povoluje nebo blokuje významný objem provozu
 - Nejčastěji používaný aplikační protokol mezi největší páry hostitelů konverzující:
     - Jsou tyto aplikace v této síti povoleny?
-    - Jsou aplikace správně nakonfigurovány? Používají odpovídající protokol pro komunikaci? V části **častá konverzace**vyberte Zobrazit **vše** , jak je znázorněno na následujícím obrázku:
+    - Jsou aplikace správně nakonfigurovány? Používají odpovídající protokol pro komunikaci? V části **častá konverzace** vyberte Zobrazit **vše** , jak je znázorněno na následujícím obrázku:
 
         ![Nejčastější konverzace předvádí na řídicím panelu](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
 
@@ -254,7 +301,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
 
 - Který aplikační protokol se ve vašem prostředí nejvíce používá a jaké páry hostitelů konverzující používají aplikační protokol nejvíc?
     - Jsou tyto aplikace v této síti povoleny?
-    - Jsou aplikace správně nakonfigurovány? Používají odpovídající protokol pro komunikaci? Očekávané chování jsou běžné porty, například 80 a 443. Pokud se pro standardní komunikaci zobrazují nějaké neobvyklé porty, může to vyžadovat změnu konfigurace. V části **port aplikace**vyberte **Zobrazit vše** a na následujícím obrázku:
+    - Jsou aplikace správně nakonfigurovány? Používají odpovídající protokol pro komunikaci? Očekávané chování jsou běžné porty, například 80 a 443. Pokud se pro standardní komunikaci zobrazují nějaké neobvyklé porty, může to vyžadovat změnu konfigurace. V části **port aplikace** vyberte **Zobrazit vše** a na následujícím obrázku:
 
         ![Hlavní aplikační protokoly předvádí řídicího panelu](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
 
@@ -270,7 +317,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
     - Každá SKU sítě VPN umožňuje určité množství šířky pásma. Jsou brány VPN nevyužité?
     - Dosahují vaše brány kapacitu? Měli byste upgradovat na další vyšší SKU?
 - Které jsou konverzující hostitelé přes kterou bránu VPN, přes který port?
-    - Je tento vzor normální? V části **Brána sítě VPN**vyberte **Zobrazit vše** , jak je znázorněno na následujícím obrázku:
+    - Je tento vzor normální? V části **Brána sítě VPN** vyberte **Zobrazit vše** , jak je znázorněno na následujícím obrázku:
 
         ![Předvádí hlavních aktivních připojení VPN řídicího panelu](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
 
@@ -286,7 +333,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
   - Pokud budete v datovém centru sledovat více zátěží, můžete naplánovat efektivní distribuci provozu.
   - Pokud se v datovém centru konverzující podvodné sítě, pak správné pravidla NSG zablokuje jejich blokování.
 
-    Ve **svém prostředí**vyberte **Zobrazit mapu** , jak je znázorněno na následujícím obrázku:
+    Ve **svém prostředí** vyberte **Zobrazit mapu** , jak je znázorněno na následujícím obrázku:
 
     ![Distribuce provozu předvádí na řídicím panelu](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
@@ -308,7 +355,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
   - Znalost toho, která virtuální síť je konverzující k virtuální síti. Pokud se konverzace neočekává, můžete ji opravit.
   - Pokud jsou podvodné sítě konverzující s virtuální sítí, můžete opravit pravidla NSG pro blokování neautorizovaných sítí.
  
-    Ve **svém prostředí**vyberte **zobrazení virtuální sítě** , jak je znázorněno na následujícím obrázku:
+    Ve **svém prostředí** vyberte **zobrazení virtuální sítě** , jak je znázorněno na následujícím obrázku:
 
     ![Distribuce virtuální sítě předvádí řídicího panelu](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
@@ -339,7 +386,7 @@ Distribuce provozu na aplikační bránu & Load Balancer, topologii, hlavních z
  - Poznáte, která podsíť je konverzující, na kterou Aplikační bránu nebo Load Balancer. Pokud si nejste všimnout neočekávaných konverzací, můžete konfiguraci opravit.
  - Pokud se podvodné sítě konverzující s aplikační bránou nebo Load Balancer, můžete je opravit tak, že nakonfigurujete pravidla NSG pro blokování neautorizovaných sítí. 
 
-    ![podsíť-topologie-předvádí-přenosová síť – brána – s ohledem na toky](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![Snímek obrazovky ukazuje topologii podsítě s distribucí provozu do podsítě aplikační brány s ohledem na toky.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Zobrazit porty a virtuální počítače, které přijímají provoz z Internetu
 

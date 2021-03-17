@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2bc356060bacd1c04ecb3d3dd10b8322ae40b8ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4406e3875bd2d56a33bcc9a94a24ad874fecf8da
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758669"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592173"
 ---
 # <a name="materials"></a>Materiály
 
@@ -65,22 +66,32 @@ void SetMaterialColorToGreen(Material material)
 ```cpp
 void SetMaterialColorToGreen(ApiHandle<Material> material)
 {
-    if (*material->MaterialSubType() == MaterialType::Color)
+    if (material->GetMaterialSubType() == MaterialType::Color)
     {
         ApiHandle<ColorMaterial> colorMaterial = material.as<ColorMaterial>();
-        colorMaterial->AlbedoColor({ 0, 1, 0, 1 });
+        colorMaterial->SetAlbedoColor({ 0, 1, 0, 1 });
         return;
     }
 
-    if (*material->MaterialSubType() == MaterialType::Pbr)
+    if (material->GetMaterialSubType() == MaterialType::Pbr)
     {
         ApiHandle<PbrMaterial> pbrMat = material.as<PbrMaterial>();
-        pbrMat->AlbedoColor({ 0, 1, 0, 1 });
+        pbrMat->SetAlbedoColor({ 0, 1, 0, 1 });
         return;
     }
 }
 ```
 
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída materiálu C#](/dotnet/api/microsoft.azure.remoterendering.material)
+* [Třída C# ColorMaterial](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [Třída C# PbrMaterial](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RenderingConnection. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
+* [Třída materiálu C++](/cpp/api/remote-rendering/material)
+* [Třída C++ ColorMaterial](/cpp/api/remote-rendering/colormaterial)
+* [Třída C++ PbrMaterial](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RenderingConnection:: CreateMaterial ()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>Další kroky
 

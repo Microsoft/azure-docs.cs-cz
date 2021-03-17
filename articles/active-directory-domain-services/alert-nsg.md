@@ -2,21 +2,21 @@
 title: Vyřešit výstrahy skupiny zabezpečení sítě v Azure služba AD DS | Microsoft Docs
 description: Přečtěte si, jak řešit a řešit výstrahy konfigurace skupiny zabezpečení sítě pro Azure Active Directory Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 12/16/2020
+ms.author: justinha
+ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040448"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693913"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
 
@@ -38,21 +38,23 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 
 ### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
-| Priorita | Name | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
+| Priorita | Název | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Všechny | Povolit |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Libovolný | Odepřít<sup>1</sup> |
 | 65000    | AllVnetInBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerInBound | Všechny | Všechny | AzureLoadBalancer | Všechny | Povolit |
 | 65500    | DenyAllInBound | Všechny | Všechny | Všechny | Všechny | Odepřít |
+
+
+<sup>1</sup> Volitelné pro ladění. Povolte, pokud je to nutné pro pokročilé řešení potíží.
 
 > [!NOTE]
 > Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps]. Toto dodatečné pravidlo je vyžadováno pro správné komunikace LDAPs.
 
 ### <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
-| Priorita | Name | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
+| Priorita | Název | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerOutBound | Všechny | Všechny |  Všechny | Internet | Povolit |
@@ -80,7 +82,7 @@ Chcete-li přidat chybějící pravidlo zabezpečení, proveďte následující 
 1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
 1. Vyberte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*.
 1. V části **Nastavení** na levém panelu klikněte na *příchozí pravidla zabezpečení* nebo na *odchozí pravidla zabezpečení* v závislosti na tom, které pravidlo potřebujete přidat.
-1. Vyberte **Přidat**a pak vytvořte požadované pravidlo na základě portu, protokolu, směru atd. Až budete připraveni, vyberte **OK**.
+1. Vyberte **Přidat** a pak vytvořte požadované pravidlo na základě portu, protokolu, směru atd. Až budete připraveni, vyberte **OK**.
 
 Přidání a zobrazení pravidla zabezpečení v seznamu bude chvíli trvat.
 

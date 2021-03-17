@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072642"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570782"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML s využitím map v Azure Logic Apps s rozšířením Enterprise Integration Pack
 
@@ -23,7 +23,7 @@ Předpokládejme například, že pravidelně dostanete objednávky B2B nebo fak
 
 Omezení související s integračními účty a artefakty, jako jsou mapy, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -40,7 +40,7 @@ Omezení související s integračními účty a artefakty, jako jsou mapy, najd
     |------|-------------|
     | [Účet úložiště Azure](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů BLOB v Azure pro vaše sestavení. Naučte [se vytvořit účet úložiště](../storage/common/storage-account-create.md). |
     | Kontejner objektů blob | V tomto kontejneru můžete nahrát sestavení. Toto umístění kontejneru budete potřebovat také při přidávání sestavení do účtu pro integraci. Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
+    | [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
     |||
 
   * U map můžete v současnosti přidat větší mapy pomocí [Azure Logic Apps REST API Maps](/rest/api/logic/maps/createorupdate).
@@ -69,7 +69,7 @@ Při vytváření a přidávání map nepotřebujete aplikaci logiky. Pokud ale 
 
 1. Po otevření stránky **sestavení** klikněte na tlačítko **Přidat**.
 
-   ![Zvolit přidat](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Snímek obrazovky, který zvýrazní tlačítko Přidat na stránce sestavení.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 V závislosti na velikosti souboru sestavení, postupujte podle kroků pro nahrání sestavení, které je buď [na 2 MB](#smaller-assembly) , nebo [více než 2 MB, ale pouze až 8 MB](#larger-assembly).
 Omezení množství sestavení v integračních účtech najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).

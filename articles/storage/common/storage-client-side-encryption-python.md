@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804907"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043741"
 ---
 # <a name="client-side-encryption-with-python"></a>Šifrování na straně klienta pomocí Pythonu
 
@@ -150,6 +150,12 @@ Uživatelé mohou volitelně povolit režim operace, kde všechna nahraná a sta
 ### <a name="blob-service-encryption"></a>Blob service šifrování
 Nastavte pole zásad šifrování v objektu blockblobservice. Všechny ostatní budou zpracovávány v interní knihovně klienta.
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
@@ -171,9 +177,16 @@ my_block_blob_service.create_blob_from_stream(
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Služba front šifrování
 Nastavte pole zásad šifrování v objektu QueueService. Všechny ostatní budou zpracovávány v interní knihovně klienta.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -195,11 +208,18 @@ my_queue_service.put_message(queue_name, content)
 # Retrieve message
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
+---
 
 ### <a name="table-service-encryption"></a>Table service šifrování
 Kromě vytvoření zásad šifrování a jejich nastavení v možnostech žádosti musíte buď zadat **encryption_resolver_function** na **tableservice**, nebo nastavit atribut Encrypt na EntityProperty.
 
 ### <a name="using-the-resolver"></a>Použití překladače
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -233,13 +253,21 @@ my_table_service.insert_entity(table_name, entity)
 my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
+---
 
 ### <a name="using-attributes"></a>Použití atributů
 Jak bylo uvedeno výše, vlastnost může být označena pro šifrování tím, že ji uloží do objektu EntityProperty a nastaví pole šifrovat.
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Šifrování a výkon
 Všimněte si, že šifrování dat úložiště má za následek zvýšené nároky na výkon. Klíč obsahu a IV se musí vygenerovat, samotný obsah musí být zašifrovaný a musí se naformátovat a nahrát další metadata. Tato režie se bude lišit v závislosti na množství šifrovaných dat. Zákazníkům doporučujeme, aby při vývoji vždy otestovali své aplikace na výkon.

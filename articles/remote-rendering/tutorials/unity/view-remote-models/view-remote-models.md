@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e9c29edb28700d0f2d3411925c0985adc0f53e92
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225797"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573111"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -42,7 +43,7 @@ Pro tento kurz potřebujete:
 
 Pokud chcete získat přístup ke službě vzdáleného vykreslování Azure, musíte nejdřív [vytvořit účet](../../../how-tos/create-an-account.md#create-an-account).
 
-## <a name="create-a-new-unity-project"></a>Vytvořit nový projekt Unity
+## <a name="create-a-new-unity-project"></a>Vytvoření nového projektu Unity
 
 > [!TIP]
 > [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje projekt se všemi dokončenými kurzy, který je možné použít jako referenci. Prohlédněte si *Unity\Tutorial-Complete* pro úplný projekt Unity.
@@ -54,43 +55,9 @@ V tomto příkladu budeme předpokládat, že se projekt vytváří ve složce s
 
 ## <a name="include-the-azure-remote-rendering-package"></a>Zahrnutí balíčku vzdáleného vykreslování Azure
 
-Je potřeba upravit soubor `Packages/manifest.json` , který je umístěný ve složce projektu Unity. Otevřete soubor v textovém editoru a přidejte následující řádky do horní části svého manifestu:
+[Postupujte podle pokynů](../../../how-tos/unity/install-remote-rendering-unity-package.md) , jak přidat balíček vzdáleného vykreslování Azure do projektu Unity.
 
-```json
-{
-    "scopedRegistries": [
-    {
-        "name": "Azure Mixed Reality Services",
-        "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-        "scopes": ["com.microsoft.azure"]
-    }
-    ],
-    "dependencies": {
-        "com.unity.render-pipelines.universal": "7.3.1",
-        "com.microsoft.azure.remote-rendering": "0.1.31",
-        ...existing dependencies...
-    }
-}
-```
 
-Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, že jsou balíčky načteny v okně *projektu* :
-
-:::image type="content" source="./media/confirm-packages.png" alt-text="potvrdit importy balíčků":::
-
-Pokud se vaše balíčky nenačítá, vyhledejte chyby v konzole Unity. Pokud nemáte žádné chyby a stále nevidíte žádné balíčky ve složce **Packages** , zkontrolujte přepínací tlačítko viditelnosti balíčku. \
-![Vlastnosti kamery Unity](./media/unity-package-visibility.png)
-
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Ujistěte se, že máte nejnovější verzi balíčku.
-
-Následující kroky zajišťují, aby projekt používal nejnovější verzi balíčku vzdáleného vykreslování.
-
-1. V horní nabídce editoru Unity otevřete *okno >správce balíčků*.
-1. Vyberte balíček **Microsoft Azure vzdálené vykreslování**.
-1. Na stránce Správce balíčků pro balíček **Microsoft Azure vzdálené vykreslování** zkontrolujte, zda je k dispozici tlačítko **aktualizovat** . Pokud je, klikněte na něj, aby se balíček aktualizoval na nejnovější dostupnou verzi: \
-![Balíček ARR ve Správci balíčků](./media/package-manager.png)
-1. Aktualizace balíčku občas může vést k chybám konzoly. Pokud k tomu dojde, zkuste projekt zavřít a znovu otevřít.
-1. Pokud je balíček aktuální, bude se správce balíčků zobrazovat v aktuálním **stavu** místo na tlačítku aktualizovat. \
-![Aktuální balíček](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>Konfigurace kamery
 
 1. Vyberte **hlavní uzel kamery** .
@@ -119,7 +86,7 @@ Následující kroky zajišťují, aby projekt používal nejnovější verzi ba
 
 1. Výběr **grafiky** z nabídky vlevo v seznamu
 1. Změňte nastavení **kanálu vykreslování pomocí skriptů** na *HybridRenderingPipeline*. \
-    ![Změna nastavení grafiky projektu](./media/settings-graphics-render-pipeline.png)\
+    ![Snímek obrazovky, který ukazuje, kde změníte nastavení kanálu vykreslování pomocí skriptů na HybridRenderingPipeline.](./media/settings-graphics-render-pipeline.png)\
     V některých případech uživatelské rozhraní nenačítá seznam dostupných typů kanálů z balíčků. Pokud k tomu dojde, musí se prostředek *HybridRenderingPipeline* do pole přetáhnout ručně: \
     ![Změna nastavení grafiky projektu](./media/hybrid-rendering-pipeline.png)
 
@@ -144,7 +111,7 @@ Následující kroky zajišťují, aby projekt používal nejnovější verzi ba
     * **SpatialPerception**
     * **PrivateNetworkClientServer** (*volitelné*). Tuto možnost vyberte, pokud chcete ke svému zařízení připojit vzdálený ladicí program Unity.
 
-1. V části **podporované rodiny zařízení**povolit **holografické** a **desktopové**
+1. V části **podporované rodiny zařízení** povolit **holografické** a **desktopové**
 1. Zavřít nebo ukotvit panel **nastavení projektu**
 1. Otevřít *soubor->nastavení sestavení*
 1. Vyberte **Univerzální platforma Windows**
@@ -168,7 +135,7 @@ Existují čtyři základní fáze pro zobrazení vzdáleně vygenerovaných mod
 
 ![Zásobník ARR 0](./media/remote-render-stack-0.png)
 
-1. V podokně *projekt* v části **assety**vytvořte novou složku s názvem *RemoteRenderingCore*. Pak uvnitř *RemoteRenderingCore*vytvořte další složku s názvem *skripty*.
+1. V podokně *projekt* v části **assety** vytvořte novou složku s názvem *RemoteRenderingCore*. Pak uvnitř *RemoteRenderingCore* vytvořte další složku s názvem *skripty*.
 
 1. Vytvořte [Nový skript jazyka C#](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) s názvem **RemoteRenderingCoordinator**.
 Váš projekt by měl vypadat takto:
@@ -179,7 +146,7 @@ Váš projekt by měl vypadat takto:
 
 1. Otevřete **RemoteRenderingCoordinator** v editoru kódu a nahraďte jeho celý obsah následujícím kódem:
 
-```csharp
+```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -219,7 +186,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -235,6 +202,14 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         get => accountId.Trim();
         set => accountId = value;
     }
+
+    [SerializeField]
+    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
+    public string AccountAuthenticationDomain
+    {
+        get => accountAuthenticationDomain.Trim();
+        set => accountAuthenticationDomain = value;
+    }   
 
     [SerializeField]
     private string accountKey = "<enter your account key here>";
@@ -283,7 +258,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    public delegate Task<AzureFrontendAccountInfo> AccountInfoGetter();
+    public delegate Task<SessionConfiguration> AccountInfoGetter();
 
     public static AccountInfoGetter ARRCredentialGetter
     {
@@ -308,7 +283,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static event Action<RemoteRenderingState> CoordinatorStateChange;
 
-    public static AzureSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
+    public static RenderingSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
 
     private ARRServiceUnity arrSessionService;
 
@@ -322,10 +297,10 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    private async Task<AzureFrontendAccountInfo> GetDevelopmentCredentials()
+    private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -453,8 +428,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     private async Task<bool> IsSessionAvailable(string sessionID)
     {
-        var allSessions = await ARRSessionService.Frontend.GetCurrentRenderingSessionsAsync().AsTask();
-        return allSessions.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+        var allSessions = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
+        return allSessions.SessionProperties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
     }
 
     /// <summary>
@@ -472,11 +447,11 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     /// <summary>
     /// The session must have its runtime pump updated.
-    /// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+    /// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
     /// </summary>
     private void LateUpdate()
     {
-        ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+        ARRSessionService?.CurrentActiveSession?.Connection?.Update();
     }
 
     /// <summary>
@@ -486,17 +461,17 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Implement me
         return null;
     }
 
-    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, AzureSession session)
+    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, RenderingSession session)
     {
-        var properties = await session.GetPropertiesAsync().AsTask();
+        var properties = await session.GetPropertiesAsync();
 
-        switch (properties.Status)
+        switch (properties.SessionProperties.Status)
         {
             case RenderingSessionStatus.Error:
             case RenderingSessionStatus.Expired:
@@ -539,7 +514,7 @@ Koordinátor vzdáleného vykreslování a jeho požadovaný skript (*ARRService
 1. Přidejte skript *RemoteRenderingCoordinator* do **RemoteRenderingCoordinator** GameObject. \
 ![Přidat komponentu RemoteRenderingCoordinator](./media/add-coordinator-script.png)
 1. Potvrďte, že se skript *ARRServiceUnity* , který se zobrazuje jako *Služba* v inspektoru, automaticky přidá do GameObject. V případě, že se zajímáte, je to výsledek, který se nachází `[RequireComponent(typeof(ARRServiceUnity))]` v horní části **RemoteRenderingCoordinator** skriptu.
-1. Do skriptu koordinátora přidejte své přihlašovací údaje pro vzdálené vykreslování Azure a doménu účtu: \
+1. Přidejte přihlašovací údaje pro vzdálené vykreslování Azure, doménu ověřování účtu a doménu účtu do skriptu koordinátora: \
 ![Přidání přihlašovacích údajů](./media/configure-coordinator-script.png)
 
 ## <a name="initialize-azure-remote-rendering"></a>Inicializovat vzdálené vykreslování Azure
@@ -557,7 +532,7 @@ Při zadávání stavu **NotAuthorized** se volá **CheckAuthorization** , kter�
 
 1. Nahraďte obsah hodnot **InitializeARR** a **InitializeSessionService** následujícím kódem:
 
- ```csharp
+ ```cs
 /// <summary>
 /// Initializes ARR, associating the main camera
 /// Note: This must be called on the main Unity thread
@@ -596,7 +571,7 @@ Aby bylo možné postupovat od **NotAuthorized** po **relaci**, obvykle k uživa
 1. Přetáhněte komponentu na vlastní událost, aby odkazovala na sebe sama. \
 ![Obejít ověřování](./media/bypass-authorization-add-event.png)\
 1. V rozevíracím seznamu vyberte **RemoteRenderingCoordinator-> BypassAuthorization**. \
-![Obejít ověřování](./media/bypass-authorization-event.png)
+![Snímek obrazovky zobrazující vybranou možnost RemoteRenderingCoordinator. BypassAuthorization](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>Vytvoření nebo připojení vzdálené relace
 
@@ -604,7 +579,7 @@ Druhá fáze je vytvořit nebo připojit relaci vzdáleného vykreslování (Dal
 
 ![Zásobník ARR 2](./media/remote-render-stack-2.png)
 
-Vzdálená relace je místo, kde se budou modely vykreslovat. Metoda **JoinRemoteSession ()** se pokusí připojit k existující relaci, která je sledována pomocí vlastnosti **LastUsedSessionID** , nebo pokud je v **SessionIDOverride**přiřazeno ID aktivní relace. **SessionIDOverride** je určena pouze pro účely ladění a mělo by se používat pouze tehdy, když víte, že relace existuje a chcete se k ní explicitně připojit.
+Vzdálená relace je místo, kde se budou modely vykreslovat. Metoda **JoinRemoteSession ()** se pokusí připojit k existující relaci, která je sledována pomocí vlastnosti **LastUsedSessionID** , nebo pokud je v **SessionIDOverride** přiřazeno ID aktivní relace. **SessionIDOverride** je určena pouze pro účely ladění a mělo by se používat pouze tehdy, když víte, že relace existuje a chcete se k ní explicitně připojit.
 
 Pokud nejsou k dispozici žádné relace, vytvoří se nová relace. Vytvoření nové relace je však časově náročná operace. Proto byste se měli pokusit vytvořit relace pouze v případě potřeby a znovu je použít (viz [komerční Příprava: sdružování relací, plánování a osvědčené postupy](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) pro další informace o správě relací).
 
@@ -615,7 +590,7 @@ Stavový počítač teď bude postupovat buď **ConnectingToNewRemoteSession** n
 
 1. Chcete-li se připojit k nové relaci, upravte kód tak, aby nahradil metody **JoinRemoteSession ()** a **StopRemoteSession ()** pomocí níže uvedených příkladů:
 
-```csharp
+```cs
 /// <summary>
 /// Attempts to join an existing session or start a new session
 /// </summary>
@@ -631,7 +606,7 @@ public async void JoinRemoteSession()
     else
     {
         CurrentCoordinatorState = RemoteRenderingState.ConnectingToNewRemoteSession;
-        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationParams(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
+        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, (int)maxLeaseHours, (int)maxLeaseMinutes));
     }
 
     if (joinResult.Status == RenderingSessionStatus.Ready || joinResult.Status == RenderingSessionStatus.Starting)
@@ -668,12 +643,12 @@ V dalším kroku aplikace potřebuje připojit svůj místní modul runtime ke v
 
 ![ŠIPKA 1 – zásobník 3](./media/remote-render-stack-3.png)
 
-Aplikace také musí naslouchat událostem souvisejícím s připojením mezi modulem runtime a aktuální relací. Tyto změny stavu jsou zpracovávány v **OnLocalRuntimeStatusChanged**. Tento kód bude náš stav **ConnectingToRuntime**. Po připojení v **OnLocalRuntimeStatusChanged**bude stav přejít na **RuntimeConnected**. Připojení k modulu runtime je poslední stav, ve kterém se koordinátor týká, což znamená, že je aplikace prováděná se všemi běžnými konfiguracemi a je připravená začít pracovat s modelem načítání a vykreslování specifických pro relaci.
+Aplikace také musí naslouchat událostem souvisejícím s připojením mezi modulem runtime a aktuální relací. Tyto změny stavu jsou zpracovávány v **OnLocalRuntimeStatusChanged**. Tento kód bude náš stav **ConnectingToRuntime**. Po připojení v **OnLocalRuntimeStatusChanged** bude stav přejít na **RuntimeConnected**. Připojení k modulu runtime je poslední stav, ve kterém se koordinátor týká, což znamená, že je aplikace prováděná se všemi běžnými konfiguracemi a je připravená začít pracovat s modelem načítání a vykreslování specifických pro relaci.
 
  1. Nahraďte metody **ConnectRuntimeToRemoteSession ()** a **DisconnectRuntimeFromRemoteSession ()** s dokončenými verzemi níže.
  1. Je důležité poznamenat **volá** metodu Unity a aktualizovat aktuální aktivní relaci. Tím umožníte, aby aktuální relace odesílala a přijímala zprávy a aktualizovala vyrovnávací paměť snímků pomocí rámců přijatých ze vzdálené relace. Funkčnost pochodu na ni je velmi důležitá.
 
-```csharp
+```cs
 /// <summary>
 /// Connects the local runtime to the current active session, if there's a session available
 /// </summary>
@@ -689,7 +664,7 @@ public void ConnectRuntimeToRemoteSession()
     //This session is set when connecting to a new or existing session
 
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged += OnLocalRuntimeStatusChanged;
-    ARRSessionService.CurrentActiveSession.ConnectToRuntime(new ConnectToRuntimeParams());
+    ARRSessionService.CurrentActiveSession.ConnectAsync(new RendererInitOptions());
     CurrentCoordinatorState = RemoteRenderingState.ConnectingToRuntime;
 }
 
@@ -701,18 +676,18 @@ public void DisconnectRuntimeFromRemoteSession()
         return;
     }
 
-    ARRSessionService.CurrentActiveSession.DisconnectFromRuntime();
+    ARRSessionService.CurrentActiveSession.Disconnect();
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged -= OnLocalRuntimeStatusChanged;
     CurrentCoordinatorState = RemoteRenderingState.RemoteSessionReady;
 }
 
 /// <summary>
 /// The session must have its runtime pump updated.
-/// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+/// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
 /// </summary>
 private void LateUpdate()
 {
-    ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+    ARRSessionService?.CurrentActiveSession?.Connection?.Update();
 }
 ```
 
@@ -723,13 +698,13 @@ private void LateUpdate()
 
 V případě, že je na místě požadovaná základní, jste připraveni načíst model do vzdálené relace a začít přijímat rámce.
 
-![Šipka pro ARR 4](./media/remote-render-stack-4.png)
+![Diagram znázorňující tok procesu pro přípravu na načtení a zobrazení modelu.](./media/remote-render-stack-4.png)
 
 Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou rutinu průběhu a nadřazenou transformaci. Tyto argumenty budou použity k načtení modelu do vzdálené relace, aktualizaci uživatele při načítání a orientaci vzdáleně vykresleného modelu na základě nadřazené transformace.
 
 1. Nahraďte metodu **LoadModel** zcela následujícím kódem:
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model into the remote session for rendering
     /// </summary>
@@ -737,10 +712,10 @@ Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou 
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -769,11 +744,9 @@ Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou 
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
-        if(progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -795,7 +768,7 @@ Teď máme veškerý kód potřebný k zobrazení vzdáleně vykresleného model
 
 1. Přidejte následující kód do třídy **RemoteRenderingCoordinator** , těsně pod metodou **LoadModel** , je to v pořádku:
 
-    ```csharp
+    ```cs
     private bool loadingTestModel = false;
     [ContextMenu("Load Test Model")]
     public async void LoadTestModel()

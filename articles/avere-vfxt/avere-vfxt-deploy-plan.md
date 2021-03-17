@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272786"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342395"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -109,7 +109,7 @@ Každý uzel vFXT bude identický. To znamená, že pokud vytvoříte cluster se
 
 Disková mezipaměť na uzel je konfigurovatelná a může být Rage z 1000 GB do 8000 GB. pro uzly Standard_E32s_v3 doporučená velikost mezipaměti je 4 TB na uzel.
 
-Pokud chcete získat další informace o těchto virtuálních počítačích, přečtěte si dokumentaci k Microsoft Azure: [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Pokud chcete získat další informace o těchto virtuálních počítačích, přečtěte si dokumentaci k Microsoft Azure: [paměťově optimalizované velikosti virtuálních počítačů](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>Kvóta účtu
 

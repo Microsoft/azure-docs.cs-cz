@@ -1,19 +1,19 @@
 ---
 title: Konfigurace koncových bodů sítě služby Azure Files | Microsoft Docs
-description: Přehled možností sítě pro soubory Azure.
+description: Přečtěte si, jak nakonfigurovat koncové body služby Azure File Network.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586677"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621327"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 
@@ -27,12 +27,12 @@ Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště
 
 Před načtením tohoto průvodce doporučujeme přečíst si [informace o sítích Azure Files](storage-files-networking-overview.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - V tomto článku se předpokládá, že už máte vytvořenou sdílenou složku Azure v účtu úložiště, ke kterému se chcete připojit z místního prostředí. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
-- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
 
 ## <a name="endpoint-configurations"></a>Konfigurace koncových bodů
 
@@ -55,6 +55,17 @@ Vytvořením privátního koncového bodu pro účet úložiště dojde k nasaze
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-private-portal](../../../includes/storage-files-networking-endpoints-private-portal.md)]
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
+---
+
+## <a name="verify-connectivity"></a>Ověřit připojení
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfigurovali předávání DNS, jak je popsáno v tématu [konfigurace předávání DNS pro soubory Azure](storage-files-networking-dns.md), můžete otestovat správné nastavení privátního koncového bodu spuštěním následujících příkazů z PowerShellu, příkazového řádku nebo terminálu (funguje pro Windows, Linux nebo MacOS). Musíte nahradit `<storage-account-name>` odpovídajícím názvem účtu úložiště:
 
 ```
@@ -74,7 +85,6 @@ Aliases:  storageaccount.file.core.windows.net
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
 
 Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfigurovali předávání DNS, jak je popsáno v tématu [konfigurace předávání DNS pro soubory Azure](storage-files-networking-dns.md), můžete otestovat správné nastavení privátního koncového bodu s následujícími příkazy:
 
@@ -101,7 +111,6 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
 
 Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfigurovali předávání DNS, jak je popsáno v tématu [konfigurace předávání DNS pro soubory Azure](storage-files-networking-dns.md), můžete otestovat správné nastavení privátního koncového bodu s následujícími příkazy:
 
@@ -127,10 +136,9 @@ storageaccount.file.core.windows.net      canonical name = storageaccount.privat
 Name:   storageaccount.privatelink.file.core.windows.net
 Address: 192.168.0.5
 ```
-
 ---
 
-### <a name="restrict-public-endpoint-access"></a>Omezení přístupu k veřejnému koncovému bodu
+## <a name="restrict-public-endpoint-access"></a>Omezení přístupu k veřejnému koncovému bodu
 
 Omezení přístupu ke veřejnému koncovému bodu nejdřív vyžaduje, abyste zakázali obecný přístup k veřejnému koncovému bodu. Zákaz přístupu ke veřejnému koncovému bodu nemá vliv na privátní koncové body. Po zakázání veřejného koncového bodu můžete vybrat konkrétní sítě nebo IP adresy, které k nim můžou dál přistupovat. Obecně platí, že většina zásad brány firewall pro účet úložiště omezuje přístup k síti na jednu nebo více virtuálních sítí.
 

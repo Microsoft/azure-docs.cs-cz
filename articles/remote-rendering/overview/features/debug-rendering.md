@@ -5,12 +5,13 @@ author: jumeder
 ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
-ms.openlocfilehash: aa6e6dced3dfd32896489db2ed76704304dbc745
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f6d79f41843069fe6cafe1fa1358ac6c1aab12e6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565440"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591731"
 ---
 # <a name="debug-rendering"></a>Ladění vykreslování
 
@@ -18,7 +19,7 @@ Rozhraní API pro vykreslování ladění poskytuje řadu globálních možnost�
 
 ## <a name="available-debug-rendering-effects"></a>Dostupné efekty vykreslování ladění
 
-|Nastavení                          | Efekt                               |
+|Nastavení                          | Účinek                               |
 |---------------------------------|:-------------------------------------|
 |Čítač rámců                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuální ID rámce na straně serveru, které se průběžně zvětšuje podle toho, jak vykreslování pokračuje. |
 |Počet mnohoúhelníků                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuálně vykreslené množství mnohoúhelníků, stejnou hodnotu jako dotazování dotazů na výkon na [straně serveru](performance-queries.md) .| 
@@ -27,9 +28,9 @@ Rozhraní API pro vykreslování ladění poskytuje řadu globálních možnost�
 Následující kód povoluje tyto efekty ladění:
 
 ```cs
-void EnableDebugRenderingEffects(AzureSession session, bool highlight)
+void EnableDebugRenderingEffects(RenderingSession session, bool highlight)
 {
-    DebugRenderingSettings settings = session.Actions.DebugRenderingSettings;
+    DebugRenderingSettings settings = session.Connection.DebugRenderingSettings;
 
     // Enable frame counter text overlay on the server side rendering
     settings.RenderFrameCount = true;
@@ -43,18 +44,18 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ```
 
 ```cpp
-void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight)
+void EnableDebugRenderingEffects(ApiHandle<RenderingSession> session, bool highlight)
 {
-    ApiHandle<DebugRenderingSettings> settings = *session->Actions()->DebugRenderingSettings();
+    ApiHandle<DebugRenderingSettings> settings = session->Connection()->GetDebugRenderingSettings();
 
     // Enable frame counter text overlay on the server side rendering
-    settings->RenderFrameCount(true);
+    settings->SetRenderFrameCount(true);
 
     // Enable polygon count text overlay on the server side rendering
-    settings->RenderPolygonCount(true);
+    settings->SetRenderPolygonCount(true);
 
     // Enable wireframe rendering of object geometry on the server
-    settings->RenderWireframe(true);
+    settings->SetRenderWireframe(true);
 }
 ```
 
@@ -73,6 +74,10 @@ Poskytnuté účinky však neposkytují žádné podrobné introspekce stavu slu
 
 * Povolení překryvných textů se mírně nezvyšuje bez režie výkonu.
 * Povolení režimu drátěného modelu má za následek netriviální výkon, i když se může lišit v závislosti na scéně. U složitých scén může tento režim způsobit pokles frekvence snímků pod cílovou 60 až Hz.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [C++ RenderingConnection::D ebugRenderingSettings ()](/cpp/api/remote-rendering/renderingconnection#debugrenderingsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

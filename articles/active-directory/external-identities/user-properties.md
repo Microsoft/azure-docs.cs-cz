@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908401"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365459"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -28,7 +28,7 @@ V závislosti na potřebách zvát organizace může být uživatel spolupráce 
 - Stav 1: domů v externí instanci Azure AD a reprezentovaný jako uživatel typu Host v hostitelské organizaci. V tomto případě se uživatel B2B přihlásí pomocí účtu Azure AD, který patří k pozvanému tenantovi. Pokud partnerská organizace nepoužívá službu Azure AD, je uživatel typu Host ve službě Azure AD stále vytvořen. Požadavky jsou v tom, že uplatní svou pozvánku a Azure AD ověří svou e-mailovou adresu. Toto uspořádání se také nazývá nájem JIT (just-in-time) nebo "virová".
 
    > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 - Stav 2: domů v Microsoft nebo jiném účtu, který je reprezentován jako uživatel typu Host v organizaci hostitele. V takovém případě se uživatel typu Host přihlásí pomocí účet Microsoft nebo účtu v sociální síti (google.com nebo podobný). Identita pozvaného uživatele je vytvořena jako účet Microsoft v adresáři rezvaníing vaší organizace během uplatnění nabídky.
 
@@ -71,6 +71,8 @@ Tato vlastnost označuje vztah uživatele k hostitelské architektuře. Tato vla
   > [!NOTE]
   > UserType nemá žádný vztah k tomu, jak se uživatel přihlásí, role adresáře uživatele atd. Tato vlastnost jednoduše označuje vztah uživatele k hostitelské organizaci a umožňuje organizaci vyhovět zásadám, které jsou závislé na této vlastnosti.
 
+Podrobnosti o cenách najdete v referenčních [Azure Active Directory cenách](https://azure.microsoft.com/pricing/details/active-directory).
+
 ### <a name="source"></a>Zdroj
 Tato vlastnost určuje, jak se uživatel přihlásí.
 
@@ -104,11 +106,11 @@ Je možné vypnout výchozí omezení, aby uživatel typu Host v adresáři spol
 ![Snímek obrazovky s možností externích uživatelů v uživatelském nastavení](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Je možné uživatele typu Host zobrazit v globálním seznamu adres systému Exchange?
-Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v tématu **jak se dají objekty hosta zobrazit v globálním seznamu adres?** v tématu [Správa přístupu hosta ve skupinách Office 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
+Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v tématu zobrazení **objektů hosta v globálním seznamu adres?** v tématu [Správa přístupu hostů v Microsoft 365ch skupinách](/office365/admin/create-groups/manage-guest-access-in-groups).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Můžu aktualizovat e-mailovou adresu uživatele typu Host?
 
-Pokud uživatel typu Host přijme vaši pozvánku a následně změní svou e-mailovou adresu, nový e-mail se automaticky nesynchronizuje s objektem uživatele hosta v adresáři. Vlastnost mail se vytvoří prostřednictvím [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). Vlastnost mail můžete aktualizovat prostřednictvím centra pro správu Exchange nebo [PowerShellu pro Exchange Online](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)a tato změna se projeví v objektu uživatele hosta Azure AD.
+Pokud uživatel typu Host přijme vaši pozvánku a následně změní svou e-mailovou adresu, nový e-mail se automaticky nesynchronizuje s objektem uživatele hosta v adresáři. Vlastnost mail se vytvoří prostřednictvím [rozhraní Microsoft Graph API](/graph/api/resources/user). Vlastnost mail můžete aktualizovat prostřednictvím rozhraní Microsoft Graph API, centra pro správu Exchange nebo [prostředí PowerShell pro Exchange Online](/powershell/module/exchange/users-and-groups/set-mailuser). Tato změna se projeví v objektu uživatele hosta Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

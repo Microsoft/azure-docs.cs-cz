@@ -4,14 +4,14 @@ description: Naučte se připojit cluster Microsoft Azure Red Hat OpenShift
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5295f0fbd28140bc0b278f3a44915239df200a70
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587850"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215659"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Kurz: připojení k clusteru Azure Red Hat OpenShift 4
 
@@ -25,7 +25,7 @@ V tomto kurzu, který je třetí částí ze tří, se připojíte ke clusteru A
 
 V předchozích kurzech se vytvořil cluster Azure Red Hat OpenShift. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – Vytvoření clusteru Azure Red Hat OpenShift 4.](tutorial-create-cluster.md)
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Následující příklad výstupu ukazuje, že heslo bude v `kubeadminPassword` .
+Následující příklad výstupu ukazuje, co bude heslo v `kubeadminPassword` .
 
 ```json
 {
@@ -46,7 +46,7 @@ Následující příklad výstupu ukazuje, že heslo bude v `kubeadminPassword` 
 }
 ```
 
-Adresu URL konzoly clusteru můžete najít spuštěním následujícího příkazu, který bude vypadat nějak takto: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+Adresu URL konzoly clusteru můžete najít spuštěním následujícího příkazu, který bude vypadat jako `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` .
 
 ```azurecli-interactive
  az aro show \
@@ -63,7 +63,7 @@ V prohlížeči spusťte adresu URL konzoly a přihlaste se pomocí `kubeadmin` 
 
 Po přihlášení ke webové konzole OpenShift klikněte na **?** v pravém horním rohu a pak na **nástrojích příkazového řádku**. Stáhněte si verzi vhodnou pro váš počítač.
 
-![Přihlašovací obrazovka Azure Red Hat OpenShift](media/aro4-download-cli.png)
+![Snímek obrazovky, který zvýrazní možnost nástroje příkazového řádku v seznamu, když vyberete? hamburgeru.](media/aro4-download-cli.png)
 
 Můžete si také stáhnout nejnovější verzi rozhraní příkazového řádku, která je vhodná pro váš počítač <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 

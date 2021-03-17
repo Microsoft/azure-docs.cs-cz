@@ -5,18 +5,19 @@ metadata:
   title: Dokumentace ke službě Azure Key Vault
   description: Naučte se využívat službu Key Vault k vytváření a správě klíčů, kterí zajišťují přístup k vašim cloudovým prostředků, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
   services: key-vault
+  ms.subservice: general
   ms.service: key-vault
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/19/2019
-  ms.openlocfilehash: ada202a8683b64144f2adacc759b9461472e4a31
-  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
-  ms.translationtype: HT
+  ms.openlocfilehash: 6a8449eaf0e05498cc10ee87701fc246d5919835
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/17/2020
-  ms.locfileid: "88262564"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102503891"
 landingContent:
 - title: Informace o službě Azure Key Vault
   linkLists:
@@ -48,20 +49,26 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
+    - text: Přehled zabezpečení
+      url: security-overview.md
     - text: Zabezpečení služby Key Vault
       url: secure-your-key-vault.md
-    - text: Doporučení zabezpečení
-      url: security-recommendations.md
     - text: Standardní hodnoty zabezpečení
       url: security-baseline.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ověřování pro Key Vault
+      url: authentication.md
+    - text: Přiřazení zásad přístupu (CLI)
+      url: assign-access-policy-CLI.md
+    - text: Přiřazení zásad přístupu (PowerShell)
+      url: assign-access-policy-powershell.md
+    - text: Přiřazení zásad přístupu (portál)
+      url: assign-access-policy-portal.md
   - linkListType: tutorial
     links:
     - text: Použití privátního propojení
       url: private-link-service.md
-    - text: Použití spravované identity
-      url: managed-identity.md
-    - text: Použití zásad přístupu
-      url: group-permissions-for-apps.md
 - title: Klientské knihovny
   linkLists:
   - linkListType: reference
@@ -69,13 +76,13 @@ landingContent:
     - text: Klientské knihovny pro Azure Key Vault
       url: client-libraries.md
     - text: Klientská knihovna v .NET
-      url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      url: /dotnet/api/overview/azure/key-vault
     - text: Klientská knihovna v Pythonu
-      url: /python/api/overview/azure/key-vault-index?view=azure-python
+      url: /python/api/overview/azure/key-vault-index
     - text: Klientská knihovna v Javě
       url: https://azure.github.io/azure-sdk-for-java/keyvault.html
     - text: Klientská knihovna v Node.js
-      url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+      url: /javascript/api/overview/azure/key-vault-index
 - title: Microsoft Learn
   linkLists:
   - linkListType: learn

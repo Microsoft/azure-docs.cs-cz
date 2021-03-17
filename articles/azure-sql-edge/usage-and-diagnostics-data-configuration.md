@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 81b2aabbae148faec06c9ab420bdfecde475b4bb
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759610"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604988"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Konfigurace využití a dat diagnostiky Azure SQL Edge
 
@@ -32,34 +32,37 @@ Ukázkový dotaz z dotazů použitých pro shromažďování dat využití a dia
 ```sql
 select 
 count(*) as [count], sum(inputs) as inputs, sum(outputs) as outputs, sum(linked_to_job) 
-as linked_to_job, data_source_type  
+as linked_to_job, data_source_type
 from ( 
-select isnull(value,'unknown') as data_source_type, inputs, outputs, linked_to_job  
+select isnull(value,'unknown') as data_source_type, inputs, outputs, linked_to_job
 from 
     ( 
         select 
         convert(sysname, lower(substring(ds.location, 0, charindex('://', ds.location))), 1) as data_source_type, 
         isnull(inputs, 0) as inputs, isnull(outputs, 0) as outputs, isnull(js.stream_id/js.stream_id, 0) as linked_to_job 
-        from sys.external_streams es              
+        from sys.external_streams es
         join sys.external_data_sources ds 
-             on es.data_source_id = ds.data_source_id             
+             on es.data_source_id = ds.data_source_id
         left join 
             ( 
             select stream_id, max(cast(is_input as int)) inputs, max(cast(is_output as int)) outputs 
             from sys.external_job_streams group by stream_id 
-            ) js                
+            ) js
              on js.stream_id = es.object_id 
-    ) ds            
+    ) ds
 left join 
     (
         select value from string_split('edgehub,sqlserver,kafka', ',')) as known_ep on data_source_type = value 
-    ) known_ds        
+    ) known_ds
 group by data_source_type
 ```
 
 ## <a name="disable-usage-and-diagnostic-data-collection"></a>Zakázat shromažďování dat o využití a diagnostiku
 
 Shromažďování dat o využití a diagnostiku v Azure SQL Edge se dá zakázat pomocí některé z následujících metod.
+
+> [!NOTE]
+> Data o využití a diagnostiku není možné pro vývojářskou verzi zakázat.
 
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>Zakázání používání a diagnostiky pomocí proměnných prostředí
 
@@ -68,11 +71,11 @@ Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQ
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE – povolí shromažďování dat o využití a diagnostice. Toto je výchozí konfigurace.
-- FALSE – zakáže shromažďování dat o využití a diagnostiku.
+- FALSE – zakáže shromažďování dat o využití a diagnostice.
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>Zakázání používání a diagnostiky pomocí souboru MSSQL. conf
 
-Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQL Azure, přidejte do souboru MSSQL. conf na trvalé jednotce úložiště, která je namapovaná do složky/var/opt/MSSQL/v modulu SQL Edge, následující soubory. Další informace o konfiguraci Azure SQL Edge pomocí souboru MSSQL. conf najdete v tématu [Konfigurace pomocí souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file).
+Pokud chcete zakázat shromažďování dat o využití a diagnostice na Edge SQL Azure, přidejte následující řádky do souboru MSSQL. conf na trvalé jednotce úložiště, která je namapovaná na složku/var/opt/MSSQL/v modulu SQL Edge. Další informace o konfiguraci Azure SQL Edge pomocí souboru MSSQL. conf najdete v tématu [Konfigurace pomocí souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file).
 
 ```ini
 [telemetry]

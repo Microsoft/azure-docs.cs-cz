@@ -2,7 +2,7 @@
 title: 'Rychlý Start: odeslání telemetrie do Azure IoT Hub pomocí Java'
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Java, které odesílají simulovaná telemetrická data do centra IoT a čtou z centra IoT telemetrická data pro účely zpracování v cloudu.
 author: wesmc7777
-manager: philmea
+manager: lizross
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -14,13 +14,14 @@ ms.custom:
 - seo-java-september2019
 - mqtt
 - devx-track-java
-ms.date: 05/26/2020
-ms.openlocfilehash: 757e0892469e52b1f2716d837d8423c5940322e2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-azurecli
+ms.date: 01/27/2021
+ms.openlocfilehash: df6673f6e8e448b0208ee53c17cf86f55d6d9f8f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317922"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219161"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Rychlý Start: odeslání telemetrie do služby Azure IoT Hub a její čtení pomocí aplikace Java
 
@@ -32,35 +33,29 @@ V tomto rychlém startu odešlete telemetrii do Azure IoT Hub a přečtete ji po
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)v části **Dlouhodobá podpora**vyberte **Java 8**.
+* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/)v části **Dlouhodobá podpora** vyberte **Java 8**.
+
+    Aktuální verzi Javy na vývojovém počítači můžete ověřit pomocí následujícího příkazu:
+
+    ```cmd/sh
+    java -version
+    ```
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
-* [Vzorový projekt Java](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip).
+    Aktuální verzi Mavenu na vývojovém počítači můžete ověřit pomocí následujícího příkazu:
+
+    ```cmd/sh
+    mvn --version
+    ```
+
+* Stáhněte nebo naklonujte úložiště Azure-IoT-Samples-Java pomocí tlačítka **Code (kód** ) na [stránce úložiště Azure-IoT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java). 
+
+    V tomto článku se používají ukázky [simulovaného zařízení](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/simulated-device) a [čtení-D2C-Messages](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) z úložiště.
 
 * Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-Aktuální verzi Javy na vývojovém počítači můžete ověřit pomocí následujícího příkazu:
-
-```cmd/sh
-java -version
-```
-
-Aktuální verzi Mavenu na vývojovém počítači můžete ověřit pomocí následujícího příkazu:
-
-```cmd/sh
-mvn --version
-```
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
-
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy specifické pro IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -87,7 +82,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
@@ -96,7 +91,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v rychlém startu.
 
-3. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
      **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
@@ -119,6 +114,16 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
 
     Nahraďte hodnotu `connString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java**.
+
+    ```java
+    public class SimulatedDevice {
+      // The device connection string to authenticate the device with your IoT hub.
+      // Using the Azure CLI:
+      // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+
+      //private static String connString = "{Your device connection string here}";    
+      private static String connString = "HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}";    
+     ```
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte aplikaci simulovaného zařízení:
 
@@ -149,6 +154,23 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
     | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
     | `EVENT_HUBS_COMPATIBLE_PATH`     | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
     | `IOT_HUB_SAS_KEY`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
+
+    ```java
+    public class ReadDeviceToCloudMessages {
+    
+      private static final String EH_COMPATIBLE_CONNECTION_STRING_FORMAT = "Endpoint=%s/;EntityPath=%s;"
+          + "SharedAccessKeyName=%s;SharedAccessKey=%s";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_ENDPOINT = "{your Event Hubs compatible endpoint}";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_PATH = "{your Event Hubs compatible name}";
+    
+      // az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name}
+      private static final String IOT_HUB_SAS_KEY = "{your service primary key}";    
+    ```
+
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte back-endovou aplikaci:
 

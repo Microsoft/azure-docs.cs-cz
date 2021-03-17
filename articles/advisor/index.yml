@@ -8,12 +8,12 @@ metadata:
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: e7cf35654bec7302423a62e66a39651ad1745651
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-  ms.translationtype: HT
+  ms.openlocfilehash: 41198ef3e8026bd8de9e55a0e75b23f0cd357e4e
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "75768652"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102508788"
 landingContent:
 - title: Informace o službě Azure Advisor
   linkLists:
@@ -31,13 +31,13 @@ landingContent:
     links:
     - text: Začínáme se službou Azure Advisor
       url: advisor-get-started.md
-- title: Referenční informace
+- title: Reference
   linkLists:
   - linkListType: reference
     links:
     - text: CLI (Common Language Interface)
-      url: /cli/azure/advisor?view=azure-cli-latest
+      url: /cli/azure/advisor
     - text: PowerShell
-      url: /powershell/module/az.advisor/?view=azps-1.2.0
+      url: /powershell/module/az.advisor/
     - text: REST API
       url: /rest/api/advisor/

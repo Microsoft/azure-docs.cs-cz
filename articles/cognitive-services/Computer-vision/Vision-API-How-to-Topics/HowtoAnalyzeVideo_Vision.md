@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: c86b06ff46f1ddc8d22d2ab7ec4bc8620a8c862f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983503"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88933167"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Analýza videí téměř v reálném čase
 
@@ -232,7 +232,7 @@ Chcete-li začít s touto ukázkou, postupujte následovně:
 
 1. Vytvořte [účet Azure](https://azure.microsoft.com/free/cognitive-services/). Pokud ho už máte, můžete přejít k dalšímu kroku.
 2. Vytvořte prostředky pro Počítačové zpracování obrazu a tvář v Azure Portal, abyste získali svůj klíč a koncový bod. Při instalaci nezapomeňte vybrat bezplatnou úroveň (F0).
-   - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Počítačové zpracování obrazu](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
    - [Tvář](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Po nasazení prostředků klikněte na **Přejít k prostředku** a Shromážděte svůj klíč a koncový bod pro každý prostředek. 
 3. Naklonujte úložiště GitHub [-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub.
 4. Otevřete ukázku v aplikaci Visual Studio 2015 nebo novější a poté Sestavte a spusťte ukázkové aplikace:
@@ -243,7 +243,7 @@ Až budete připraveni na integraci ukázek, odkazujte na knihovnu VideoFrameAna
 
 Funkce VideoFrameAnalyzer s využitím obrázků, hlasu, videa a porozumění textu v využívají Azure Cognitive Services. Microsoft obdrží obrázky, zvuk, video a další data, která nahráváte (prostřednictvím této aplikace), a může je používat pro účely zlepšování služby. Žádáme vás o pomoc při ochraně uživatelů, jejichž data vaše aplikace odesílá do služeb Azure Cognitive Services.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili, jak spustit analýzu téměř v reálném čase u streamů videa s využitím obličeje a Počítačové zpracování obrazu služeb. Zjistili jste také, jak můžete začít používat náš vzorový kód.
 

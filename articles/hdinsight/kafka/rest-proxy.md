@@ -1,33 +1,30 @@
 ---
 title: Apache Kafka REST proxy – Azure HDInsight
 description: Naučte se, jak provádět operace s Apache Kafka pomocí Kafka REST proxy v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 57c2fb125547149a7fea6643a483e29f5fecb495
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: a9a007d33226c508e193368b08b189001bf53401
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167041"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944073"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s Apache Kafka clustery ve službě Azure HDInsight pomocí proxy REST
 
-Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes protokol HTTP. Tato akce znamená, že klienti Kafka můžou být mimo vaši virtuální síť. Klienti můžou provádět jednoduché volání HTTP do clusteru Kafka a nemusí se spoléhat na knihovny Kafka. Tento článek vám ukáže, jak vytvořit cluster Kafka s povoleným proxy serverem REST. Obsahuje také vzorový kód, který ukazuje, jak volat proxy REST.
+Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Tato akce znamená, že klienti Kafka můžou být mimo vaši virtuální síť. Klienti můžou provádět jednoduché zabezpečené volání HTTPS do clusteru Kafka a nemusíte přitom spoléhat na Kafka knihovny. Tento článek vám ukáže, jak vytvořit cluster Kafka s povoleným proxy serverem REST. Obsahuje také vzorový kód, který ukazuje, jak volat proxy REST.
 
 ## <a name="rest-api-reference"></a>REST API – referenční informace
 
-Informace o operacích podporovaných Kafka REST API najdete v tématu [Reference k rozhraní API HDInsight Kafka REST](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
+Informace o operacích podporovaných Kafka REST API najdete v tématu [Reference k rozhraní API HDInsight Kafka REST](/rest/api/hdinsight-kafka-rest-proxy).
 
 ## <a name="background"></a>Pozadí
 
 ![Návrh proxy serveru REST Kafka](./media/rest-proxy/rest-proxy-architecture.png)
 
-Úplnou specifikaci operací podporovaných rozhraním API najdete v tématu [rozhraní API služby REST proxy serveru Apache Kafka](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
+Úplnou specifikaci operací podporovaných rozhraním API najdete v tématu [rozhraní API služby REST proxy serveru Apache Kafka](/rest/api/hdinsight-kafka-rest-proxy).
 
 ### <a name="rest-proxy-endpoint"></a>Koncový bod proxy REST
 
@@ -37,15 +34,15 @@ Vytvoření clusteru HDInsight Kafka pomocí proxy REST vytvoří nový veřejn�
 
 Přístup k proxy Kafka REST se spravuje pomocí skupin zabezpečení Azure Active Directory. Při vytváření clusteru Kafka zadejte skupinu zabezpečení Azure AD s přístupem ke koncovému bodu REST. Kafka klienti, kteří potřebují přístup k proxy REST, by měli být k této skupině zaregistrovaní vlastníkem skupiny. Vlastník skupiny se může zaregistrovat prostřednictvím portálu nebo pomocí PowerShellu.
 
-V případě požadavků koncových bodů proxy REST by klientské aplikace měly získat token OAuth. Token slouží k ověření členství ve skupině zabezpečení. Níže najdete [ukázku klientské aplikace](#client-application-sample) , která ukazuje, jak získat token OAuth. Klientská aplikace předá token OAuth v požadavku HTTP na proxy REST.
+V případě požadavků koncových bodů proxy REST by klientské aplikace měly získat token OAuth. Token slouží k ověření členství ve skupině zabezpečení. Níže najdete [ukázku klientské aplikace](#client-application-sample) , která ukazuje, jak získat token OAuth. Klientská aplikace předá token OAuth v požadavku HTTPS proxy REST.
 
 > [!NOTE]
-> Další informace o skupinách zabezpečení AAD najdete v tématu [Správa přístupu k aplikacím a prostředkům pomocí skupin Azure Active Directory](../../active-directory/fundamentals/active-directory-manage-groups.md). Další informace o tom, jak tokeny OAuth fungují, najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/develop/v1-protocols-oauth-code.md).
+> Další informace o skupinách zabezpečení AAD najdete v tématu [Správa přístupu k aplikacím a prostředkům pomocí skupin Azure Active Directory](../../active-directory/fundamentals/active-directory-manage-groups.md). Další informace o tom, jak tokeny OAuth fungují, najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/azuread-dev/v1-protocols-oauth-code.md).
 
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>Kafka REST proxy se skupinami zabezpečení sítě
 Pokud přenesete vlastní virtuální síť a řízení síťového provozu pomocí skupin zabezpečení sítě, povolte kromě portu 443 **příchozí** provoz na portu **9400** . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Zaregistrovat aplikaci s Azure AD. Klientské aplikace, které napíšete pro interakci s proxy Kafka REST, budou k ověření v Azure používat ID a tajný kód této aplikace.
 
@@ -63,13 +60,13 @@ Následující postup používá Azure Portal. Příklad použití rozhraní př
 
 1. V pracovním postupu vytváření clusteru Kafka na kartě **zabezpečení + sítě** zaškrtněte možnost **Povolit proxy REST Kafka** .
 
-     ![Povolit proxy REST Kafka a vybrat skupinu zabezpečení](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     ![Snímek obrazovky s vybraným zabezpečením a sítí zobrazí stránku vytvořit cluster s informacemi o clusteru v D.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. Klikněte na **Vybrat skupinu zabezpečení**. V seznamu skupin zabezpečení vyberte skupinu zabezpečení, kterou chcete mít přístup k proxy REST. Pomocí vyhledávacího pole můžete najít příslušnou skupinu zabezpečení. Klikněte na tlačítko **Vybrat** v dolní části.
 
-     ![Povolit proxy REST Kafka a vybrat skupinu zabezpečení](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     ![Snímek obrazovky s možností výběru skupiny zabezpečení zobrazí stránku vytvořit cluster s příponou H D Insight.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
-1. Dokončete zbývající kroky k vytvoření clusteru, jak je popsáno v tématu [Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started).
+1. Dokončete zbývající kroky k vytvoření clusteru, jak je popsáno v tématu [Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal](./apache-kafka-get-started.md).
 
 1. Po vytvoření clusteru přejděte do vlastností clusteru a zaznamenejte adresu URL proxy serveru Kafka REST.
 
@@ -88,23 +85,35 @@ K interakci s proxy REST v clusteru Kafka můžete použít následující kód 
     |ID tenanta|Tenant Azure, ve kterém je vaše předplatné.|
     |ID klienta|ID aplikace, kterou jste zaregistrovali ve skupině zabezpečení.|
     |Tajný klíč klienta|Tajný klíč pro aplikaci, kterou jste zaregistrovali ve skupině zabezpečení.|
-    |Kafkarest_endpoint|Tuto hodnotu získáte na kartě **vlastnosti** v přehledu clusteru, jak je popsáno v [části nasazení](#create-a-kafka-cluster-with-rest-proxy-enabled). Měl by být v následujícím formátu –`https://<clustername>-kafkarest.azurehdinsight.net`|
+    |Kafkarest_endpoint|Tuto hodnotu získáte na kartě **vlastnosti** v přehledu clusteru, jak je popsáno v [části nasazení](#create-a-kafka-cluster-with-rest-proxy-enabled). Měl by být v následujícím formátu – `https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. Z příkazového řádku spusťte soubor Python spuštěním příkazu.`sudo python3 <filename.py>`
+1. Z příkazového řádku spusťte soubor Python spuštěním příkazu. `sudo python3 <filename.py>`
 
 Tento kód provede následující akci:
 
 1. Načte token OAuth z Azure AD.
 1. Ukazuje, jak vytvořit požadavek na Kafka proxy REST.
 
-Další informace o získání tokenů OAuth v Pythonu najdete v tématu [Třída Python AuthenticationContext](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). V takovém případě se může zobrazit prodleva `topics` , která není vytvořena ani smazána prostřednictvím proxy Kafka REST. Tato prodleva je způsobená obnovením mezipaměti.
+Další informace o získání tokenů OAuth v Pythonu najdete v tématu [Třída Python AuthenticationContext](/python/api/adal/adal.authentication_context.authenticationcontext). V takovém případě se může zobrazit prodleva `topics` , která není vytvořena ani smazána prostřednictvím proxy Kafka REST. Tato prodleva je způsobená obnovením mezipaměti. Pole **hodnota** rozhraní API pro producenta bylo vylepšeno. Nyní přijímá objekty JSON a všechny serializované formuláře.
 
 ```python
 #Required python packages
 #pip3 install msal
 
+import json
 import msal
+import random
 import requests
+import string
+import sys
+import time
+
+def get_random_string():
+    letters = string.ascii_letters
+    random_string = ''.join(random.choice(letters) for i in range(7))
+
+    return random_string
+
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -117,32 +126,189 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
+# Get access token
 # Scope
 scope = 'https://hib.azurehdinsight.net/.default'
 #Authority
 authority = 'https://login.microsoftonline.com/' + tenant_id
 
-# Create a preferably long-lived app instance which maintains a token cache.
 app = msal.ConfidentialClientApplication(
     client_id , client_secret, authority,
     #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
-    )
+)
 
 # The pattern to acquire a token looks like this.
 result = None
-
 result = app.acquire_token_for_client(scopes=[scope])
-
-print(result)
 accessToken = result['access_token']
+verify_https = True
+request_timeout = 10
 
-# relative url
-getstatus = "/v1/metadata/topics"
-request_url = kafkarest_endpoint + getstatus
+# Print access token
+print("Access token: " + accessToken)
 
-# sending get request and saving the response as response object
-response = requests.get(request_url, headers={'Authorization': 'Bearer ' + 'accessToken})
+# API format
+api_version = 'v1'
+api_format = kafkarest_endpoint + '/{api_version}/{rest_api}'
+get_topic_api = 'metadata/topics'
+topic_api_format = 'topics/{topic_name}'
+producer_api_format = 'producer/topics/{topic_name}'
+consumer_api_format = 'consumer/topics/{topic_name}/partitions/{partition_id}/offsets/{offset}?count={count}'  # by default count = 1
+
+# Request header
+headers = {
+    'Authorization': 'Bearer ' + accessToken,
+    'Content-type': 'application/json'          # set Content-type to 'application/json'
+}
+
+# New topic
+new_topic = 'hello_topic_' + get_random_string()
+print("Topic " + new_topic + " is going to be used for demo.")
+
+topics = []
+
+# Create a  new topic
+# Example of topic config
+topic_config = {
+    "partition_count": 1,
+    "replication_factor": 1,
+    "topic_properties": {
+        "retention.ms": 604800000,
+        "min.insync.replicas": "1"
+    }
+}
+
+create_topic_url = api_format.format(api_version=api_version, rest_api=topic_api_format.format(topic_name=new_topic))
+response = requests.put(create_topic_url, headers=headers, json=topic_config, timeout=request_timeout, verify=verify_https)
 print(response.content)
+
+if response.ok:
+    while new_topic not in topics:
+        print("The new topic " + new_topic + " is not visible yet. sleep 30 seconds...")
+        time.sleep(30)
+        # List Topic
+        get_topic_url = api_format.format(api_version=api_version, rest_api=get_topic_api)
+
+        response = requests.get(get_topic_url, headers={'Authorization': 'Bearer ' + accessToken}, timeout=request_timeout, verify=verify_https)
+        topic_list = response.json()
+        topics = topic_list.get("topics", [])
+else:
+    print("Topic " + new_topic + " was created. Exit.")
+    sys.exit(1)
+
+# Produce messages to new_topic
+# Example payload of Producer REST API
+payload_json = {
+    "records": [
+        {
+            "key": "key1",
+            "value": "**********"         # A string                              
+        },
+        {
+            "partition": 0,
+            "value": 5                    # An integer
+        },
+        {
+            "value": 3.14                 # A floating number
+        },
+        {
+            "value": {                    # A JSON object
+                "id": 1,
+                "name": "HDInsight Kafka REST proxy"
+            }
+        },
+        {
+            "value": [                    # A list of JSON objects
+                {
+                    "id": 1,
+                    "name": "HDInsight Kafka REST proxy 1"
+                },
+                {
+                    "id": 2,
+                    "name": "HDInsight Kafka REST proxy 2"
+                },
+                {
+                    "id": 3,
+                    "name": "HDInsight Kafka REST proxy 3"
+                }
+            ]
+        },
+        {
+            "value": {                  # A nested JSON object
+                "group id": 1,
+                "HDI Kafka REST": {
+                    "id": 1,
+                    "name": "HDInsight Kafka REST proxy 1"
+                },
+                "HDI Kafka REST server info": {
+                    "id": 1,
+                    "name": "HDInsight Kafka REST proxy 1",
+                    "servers": [
+                        {
+                            "server id": 1,
+                            "server name": "HDInsight Kafka REST proxy server 1"
+                        },
+                        {
+                            "server id": 2,
+                            "server name": "HDInsight Kafka REST proxy server 2"
+                        },
+                        {
+                            "server id": 3,
+                            "server name": "HDInsight Kafka REST proxy server 3"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+print("Payloads in a Producer request: \n", payload_json)
+producer_url = api_format.format(api_version=api_version, rest_api=producer_api_format.format(topic_name=new_topic))
+response = requests.post(producer_url, headers=headers, json=payload_json, timeout=request_timeout, verify=verify_https)
+print(response.content)
+
+# Consume messages from the topic
+partition_id = 0
+offset = 0
+count = 2
+
+while True:
+    consumer_url = api_format.format(api_version=api_version, rest_api=consumer_api_format.format(topic_name=new_topic, partition_id=partition_id, offset=offset, count=count))
+    print("Consuming " + str(count) + " messages from offset " + str(offset))
+
+    response = requests.get(consumer_url, headers=headers, timeout=request_timeout, verify=verify_https)
+
+    if response.ok:
+        messages = response.json()
+        print("Consumed messages: \n" + json.dumps(messages, indent=2))
+        next_offset = response.headers.get("NextOffset")
+        if offset == next_offset or not messages.get("records", []):
+            print("Consumer caught up with producer. Exit for now...")
+            break
+
+        offset = next_offset
+
+    else:
+        print("Error " + str(response.status_code))
+        break
+        
+# List partitions
+get_partitions_url = api_format.format(api_version=api_version, rest_api=partitions_api_format.format(topic_name=new_topic))
+print("Fetching partitions from  " + get_partitions_url)
+
+response = requests.get(get_partitions_url, headers={'Authorization': 'Bearer ' + accessToken}, timeout=request_timeout, verify=verify_https)
+partition_list = response.json()
+print("Partition list: \n" + json.dumps(partition_list, indent=2))
+
+# List a partition
+get_partition_url = api_format.format(api_version=api_version, rest_api=partition_api_format.format(topic_name=new_topic, partition_id=partition_id))
+print("Fetching metadata of a partition from  " + get_partition_url)
+
+response = requests.get(get_partition_url, headers={'Authorization': 'Bearer ' + accessToken}, timeout=request_timeout, verify=verify_https)
+partition = response.json()
+print("Partition metadata: \n" + json.dumps(partition, indent=2))
+
 ```
 
 Níže najdete další ukázku, jak získat token z Azure pro proxy REST pomocí příkazu složeného. **Všimněte si, že pro `scope=https://hib.azurehdinsight.net/.default` získání tokenu potřebujeme zadaný.**
@@ -153,4 +319,4 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Referenční dokumenty k rozhraní API proxy Kafka REST](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)
+* [Referenční dokumenty k rozhraní API proxy Kafka REST](/rest/api/hdinsight-kafka-rest-proxy/)

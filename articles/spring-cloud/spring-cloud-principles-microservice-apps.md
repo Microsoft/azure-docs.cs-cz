@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a8e1d43138e0b7481ebb89d747fa26df9470a09f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037131"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090671"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java a základní operační systém pro aplikace mikroslužeb Spring
+
+**Tento článek se týká:** ✔️ Java
+
 Níže jsou uvedené zásady pro udržení zdravého a základního operačního systému Java pro aplikace pro jarní mikroslužby.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Principy zdravého Java a základního operačního systému
 * Musí se jednat o stejný základní operační systém napříč vrstvami – Basic | Standardní | Nárok.
@@ -43,7 +46,7 @@ Systémy Azul budou nepřetržitě vyhledávat změny v základních operačníc
     * Ubuntu 20,04 LTS (kontaktní fossa). Aplikace budou dál zůstat na nejnovější verzi LTS Ubuntu.
     * Viz [Ubuntu 20,04 LTS (kontaktní fossa)](http://releases.ubuntu.com/focal/)
 * Jak můžu stáhnout podporovaný běhový modul Java pro místní vývoj? 
-    * Přečtěte si téma [instalace JDK pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+    * Přečtěte si téma [instalace JDK pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-install)
 * Jak získám podporu pro problémy na úrovni běhového prostředí Java?
     * Otevřete lístek podpory s podporou Azure.
  
@@ -52,5 +55,6 @@ Systémy Azul budou nepřetržitě vyhledávat změny v základních operačníc
 > ![Výchozí nasazení](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>Další kroky
-* [Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
-* [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+
+* [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
+* [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-long-term-support)

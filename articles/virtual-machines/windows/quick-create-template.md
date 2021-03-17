@@ -2,18 +2,19 @@
 title: 'Rychlý Start: použití šablony Správce prostředků k vytvoření virtuálního počítače s Windows'
 description: V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků vytvořit virtuální počítač s Windows.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649665"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560748"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s Windows pomocí šablony ARM
 
@@ -60,7 +61,7 @@ V šabloně je definováno několik prostředků:
     - **Skupina prostředků**: z rozevíracího seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**, pro skupinu prostředků zadejte jedinečný název a pak klikněte na **OK**.
     - **Umístění:** Vyberte prosím umístění.  Například **USA – střed**.
     - **Uživatelské jméno správce**: zadejte uživatelské jméno, například *azureuser*.
-    - **Heslo správce**: zadejte heslo, které se má použít pro účet správce. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    - **Heslo správce**: zadejte heslo, které se má použít pro účet správce. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
     - **Předpona popisku DNS**: Zadejte jedinečný identifikátor, který se použije jako součást popisku DNS.
     - **Verze operačního systému Windows**: vyberte verzi Windows, kterou chcete na virtuálním počítači spustit.
     - **Velikost virtuálního počítače**: vyberte [Velikost](../sizes.md) , která se má použít pro virtuální počítač.

@@ -9,14 +9,15 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 67813aa36b0e0824db3ed89c7b7dbc06c3fd46d8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321033"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596461"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Java SDK V4 s účty SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Sada Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
@@ -38,6 +39,13 @@ Začněte s tímto seznamem:
 * Přečtěte si [tipy ke zvýšení výkonu](performance-tips-java-sdk-v4-sql.md) pro Azure Cosmos DB Java SDK v4 a použijte doporučené postupy.
 * Pokud jste nenalezli řešení, přečtěte si zbytek tohoto článku. Pak zapište [problém GitHubu](https://github.com/Azure/azure-sdk-for-java/issues). Pokud je k dispozici možnost Přidat značky k vašemu problému GitHubu, přidejte značku *Cosmos: v4-Item* .
 
+### <a name="retry-logic"></a>Logika opakování <a id="retry-logics"></a>
+Pokud sada SDK služby Cosmos DB umožňuje opakování, při každém selhání vstupně-výstupních operací se sada SDK pokusí neúspěšnou operaci zopakovat Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
+
+1. Čtení a vstupně-výstupní chyby se budou opakovat sadou SDK, aniž by je zpřístupnění koncovým uživatelům.
+2. Zápisy (Create, Upsert, Replace, DELETE) jsou "NOT" idempotentní a proto sada SDK nemůže vždy bez chybně opakovat operace zápisu. Je nutné, aby logika aplikace uživatele mohla zpracovat selhání a opakovat akci.
+3. [Problémy s řešením dostupnosti sady SDK](troubleshoot-sdk-availability.md) popisují opakované pokusy pro Cosmos DB účty ve více oblastech.
+
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Běžné problémy a alternativní řešení
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Problémy se sítí, neúspěšný časový limit čtení, nízká propustnost, vysoká latence
@@ -46,7 +54,7 @@ Začněte s tímto seznamem:
 Nejlepší výkon:
 * Ujistěte se, že aplikace běží ve stejné oblasti jako váš Azure Cosmos DB účet. 
 * Ověřte využití procesoru na hostiteli, kde je aplikace spuštěná. Pokud je využití CPU 50 nebo více, spusťte aplikaci na hostiteli s vyšší konfigurací. Nebo můžete zatížení distribuovat do více počítačů.
-    * Pokud aplikaci spouštíte ve službě Azure Kubernetes, můžete [k monitorování využití procesoru použít Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze).
+    * Pokud aplikaci spouštíte ve službě Azure Kubernetes, můžete [k monitorování využití procesoru použít Azure monitor](../azure-monitor/containers/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Omezování připojení
 Omezení připojení může nastat kvůli [limitu připojení na hostitelském počítači] nebo [vyčerpání portů Azure SNAT (Pat)].
@@ -62,17 +70,17 @@ Počet povolených otevřených souborů, které jsou označeny jako "soubor", m
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portů Azure SNAT (PAT)
 
-Pokud je vaše aplikace nasazená v Azure Virtual Machines bez veřejné IP adresy, ve výchozím nastavení [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Pokud je vaše aplikace nasazená v Azure Virtual Machines bez veřejné IP adresy, ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports).
 
  Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu a proces z virtuálního počítače se pokusí připojit k veřejné IP adrese. Omezení Azure SNAT se vyhnete dvěma řešením:
 
-* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
+    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl).
 * Přiřaďte k VIRTUÁLNÍmu počítači Azure veřejnou IP adresu.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nejde se připojit ke službě – firewall
-``ConnectTimeoutException``indikuje, že sada SDK nemůže získat přístup ke službě.
+``ConnectTimeoutException`` indikuje, že sada SDK nemůže získat přístup ke službě.
 Při použití přímého režimu se může zobrazit chyba podobná této:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
@@ -177,12 +185,12 @@ Přidejte také log4j config.
 ```
 # this is a sample log4j configuration
 
-# Set root logger level to DEBUG and its only appender to A1.
+# Set root logger level to INFO and its only appender to A1.
 log4j.rootLogger=INFO, A1
 
-log4j.category.com.microsoft.azure.cosmosdb=DEBUG
-#log4j.category.io.netty=INFO
-#log4j.category.io.reactivex=INFO
+log4j.category.com.azure.cosmos=INFO
+#log4j.category.io.netty=OFF
+#log4j.category.io.projectreactor=OFF
 # A1 is set to be a ConsoleAppender.
 log4j.appender.A1=org.apache.log4j.ConsoleAppender
 
@@ -217,5 +225,3 @@ Mnoho připojení ke koncovému bodu Azure Cosmos DB může být ve `CLOSE_WAIT`
 [Enable client SDK logging]: #enable-client-sice-logging
 [Omezení počtu připojení na hostitelském počítači]: #connection-limit-on-host
 [Vyčerpání portů Azure SNAT (PAT)]: #snat
-
-

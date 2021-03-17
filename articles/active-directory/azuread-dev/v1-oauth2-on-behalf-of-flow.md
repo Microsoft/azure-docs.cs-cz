@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117732"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
@@ -51,7 +51,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-middle-tier-service"></a>Registrace služby střední vrstvy
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
@@ -69,7 +69,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-client-application"></a>Registrace klientské aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
@@ -105,7 +105,7 @@ Klientská aplikace je zabezpečená buď sdíleným tajným klíčem, nebo cert
 
 Při použití sdíleného tajného klíče obsahuje požadavek na přístupový token služby na službu následující parametry:
 
-| Parametr | Typ | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Požadavek OBO používá JSON Web Token (JWT), takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti |
@@ -139,13 +139,13 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Požadavek na přístupový token služby na službu s certifikátem obsahuje následující parametry:
 
-| Parametr | Typ | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Požadavek OBO používá přístupový token JWT, takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota tokenu použitého v požadavku. |
 | client_id |vyžadováno | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
-| client_assertion_type |vyžadováno |Hodnota musí být`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |vyžadováno | JSON Web Token, kterou vytvoříte a podepíšete pomocí certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o formátu kontrolního výrazu a o tom, jak svůj certifikát zaregistrovat, najdete v tématu [přihlašovací údaje k certifikátu](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .|
+| client_assertion_type |vyžadováno |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |vyžadováno | JSON Web Token, kterou vytvoříte a podepíšete pomocí certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o formátu kontrolního výrazu a o tom, jak svůj certifikát zaregistrovat, najdete v tématu  [přihlašovací údaje k certifikátu](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .|
 | prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
 | requested_token_use |vyžadováno | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
 | scope |vyžadováno | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
@@ -249,7 +249,7 @@ Některé webové služby založené na protokolu OAuth potřebují přístup k 
 
 Požadavek služby na službu pro kontrolní výraz SAML obsahuje následující parametry:
 
-| Parametr | Typ | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Pro požadavek, který používá JWT, musí být hodnota **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti|
@@ -282,10 +282,10 @@ Odpověď obsahuje token SAML kódovaný v UTF8 a Base64url.
 - expires_in: 3296
 - ext_expires_in: 0
 - expires_on: 1529627844
-- partner`https://api.contoso.com`
-- access_token:\<SAML assertion\>
+- partner `https://api.contoso.com`
+- access_token: \<SAML assertion\>
 - issued_token_type: urn: IETF: param: OAuth: typ tokenu: typu Saml2
-- refresh_token:\<Refresh token\>
+- refresh_token: \<Refresh token\>
 
 ## <a name="client-limitations"></a>Omezení klienta
 

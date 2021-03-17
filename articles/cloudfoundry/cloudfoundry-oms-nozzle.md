@@ -1,7 +1,7 @@
 ---
 title: Nasazení služby Azure Log Analytics trysek pro monitorování Cloud Foundry
 description: Podrobné pokyny k nasazení Cloud Foundry trysku loggregator pro Azure Log Analytics. Pomocí trysky můžete monitorovat stav Cloud Foundry systému a metriky výkonu.
-services: virtual-machines-linux
+services: virtual-machines
 author: ningk
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54001c47d03b686a8e7c1f59f1e53d405e3bc506
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277363"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557382"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení služby Azure Log Analytics trysek pro Cloud Foundry sledování systému
 
@@ -59,7 +59,7 @@ Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony
 #### <a name="to-create-the-workspace-manually"></a>Postup ručního vytvoření pracovního prostoru:
 
 1. V Azure Portal vyhledejte seznam služeb v Azure Marketplace a pak vyberte Log Analytics pracovní prostory.
-2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
+2. Vyberte **vytvořit** a pak vyberte volby pro následující položky:
 
    * **Log Analytics pracovní prostor**: zadejte název pracovního prostoru.
    * **Předplatné**: Pokud máte více předplatných, vyberte ten, který se shoduje s vaším nasazením CF.
@@ -67,7 +67,7 @@ Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony
    * **Umístění**: zadejte umístění.
    * **Cenová úroveň**: dokončete výběr kliknutím na **tlačítko OK** .
 
-Další informace najdete v tématu [Začínáme s protokoly Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../azure-monitor/overview.md).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Pokud chcete vytvořit pracovní prostor Log Analytics pomocí šablony monitorování z místa na trhu Azure:
 
@@ -183,7 +183,7 @@ Pokud jste pracovní prostor Log Analytics vytvořili ručně, vytvořte zobraze
 
 ### <a name="1-import-the-oms-view"></a>1. Import zobrazení OMS
 
-Na portálu OMS přejděte k **zobrazení Náhled**  >  **importu**návrháře  >  **Browse**a vyberte jeden ze souborů omsview. Vyberte například *Cloud Foundry. omsview*a uložte zobrazení. Na stránce **Přehled** se teď zobrazí dlaždice. Vyberte ho a podívejte se na vizuální metriky.
+Na portálu OMS přejděte k **zobrazení Náhled**  >  **importu** návrháře  >  a vyberte jeden ze souborů omsview. Vyberte například *Cloud Foundry. omsview* a uložte zobrazení. Na stránce **Přehled** se teď zobrazí dlaždice. Vyberte ho a podívejte se na vizuální metriky.
 
 Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřednictvím **návrháře zobrazení**.
 
@@ -191,7 +191,7 @@ Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřed
 
 ### <a name="2-create-alert-rules"></a>2. vytvoření pravidel upozornění
 
-Můžete [vytvořit výstrahy](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)a podle potřeby upravit dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
+Můžete [vytvořit výstrahy](../azure-monitor/alerts/alerts-overview.md)a podle potřeby upravit dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
 
 | Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

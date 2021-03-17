@@ -1,10 +1,10 @@
 ---
 title: Problémy s přihlášením k aplikaci Microsoftu | Microsoft Docs
-description: Řešení běžných problémů při přihlašování k aplikacím Microsoftu, které používají službu Azure AD (například Office 365)
+description: Řešení běžných problémů při přihlašování k aplikacím Microsoftu, které používají službu Azure AD (například Microsoft 365).
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79c8d6d072379853d6eca561d372f61dbb8acc8a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759279"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260007"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémy s přihlášením k aplikaci Microsoftu
 
-Aplikace Microsoftu (jako je Office 365 Exchange, SharePoint, Yammer atd.) se přiřazují a spravují jinak než aplikace třetích stran SaaS nebo jiné aplikace, které integrujete se službou Azure AD pro jednotné přihlašování.
+Aplikace Microsoftu (jako Exchange, SharePoint, Yammer atd.) se přiřazují a spravují jinak než aplikace třetích stran SaaS nebo jiné aplikace, které integrujete se službou Azure AD pro jednotné přihlašování.
 
 Existují tři hlavní způsoby, jak může uživatel získat přístup k aplikaci publikované v Microsoftu.
 
--   Pro aplikace v sadě Office 365 nebo jiné placené sady se uživatelům udělí přístup prostřednictvím **přiřazení licence** buď přímo k jejich uživatelskému účtu, nebo prostřednictvím skupiny s využitím možnosti přiřazení licencí na základě skupin.
+-   Pro aplikace v Microsoft 365 nebo jiné placené sady se uživatelům udělí přístup prostřednictvím **přiřazení licence** buď přímo ke svému uživatelskému účtu, nebo prostřednictvím skupiny pomocí možnosti přiřazení licencí na základě skupin.
 
 -   Pro aplikace, které společnost Microsoft nebo třetí strana zveřejňuje volně pro použití kýmkoli, se uživatelům může udělit přístup prostřednictvím **souhlasu uživatele**. To znamená, že se přihlásí k aplikaci pomocí pracovního nebo školního účtu Azure AD a umožní, aby měl přístup k některé omezené sadě dat na svém účtu.
 
@@ -61,9 +61,9 @@ Tady jsou některé běžné problémy, ke kterým lidé běžet, když se jejic
 
   * Ujistěte se, že **uživatelský účet existuje** v Azure Active Directory. [Ověřte, zda uživatelský účet existuje v Azure Active Directory](#problems-with-the-users-account)
 
-  * Ujistěte se, že je **povolený** účet uživatele pro přihlášení. [Zkontrolujte stav účtu uživatele](#problems-with-the-users-account) .
+  * Ujistěte se, že je **povolený** účet uživatele pro přihlášení. [Zkontroluje stav účtu uživatele](#problems-with-the-users-account) .
 
-  * Ujistěte se, že **heslo uživatele není prošlé nebo zapomenuté.** [Resetování hesla uživatele](#reset-a-users-password) nebo [Povolení samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Ujistěte se, že **heslo uživatele není prošlé nebo zapomenuté.** [Resetování hesla uživatele](#reset-a-users-password) nebo [Povolení samoobslužného resetování hesla](../authentication/tutorial-enable-sspr.md)
 
   * Ujistěte se, že **Multi-Factor Authentication** neblokuje přístup uživatelů. [Kontrolovat stav vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status) nebo [zjistit kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
@@ -179,9 +179,9 @@ Pokud chcete resetovat heslo uživatele, postupujte podle těchto kroků:
 
 Pokud chcete povolit samoobslužné resetování hesla, postupujte podle následujících kroků nasazení:
 
--   [Povolit uživatelům resetovat hesla Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat hesla Azure Active Directory](../authentication/tutorial-enable-sspr.md)
 
--   [Povolit uživatelům resetovat nebo změnit místní hesla služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat nebo změnit místní hesla služby Active Directory](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Zkontroluje stav vícefaktorového ověřování uživatele.
 
@@ -203,7 +203,7 @@ Chcete-li zjistit stav vícefaktorového ověřování uživatele, postupujte ta
 
 8. Vyhledejte uživatele v seznamu uživatelů hledáním, filtrováním nebo řazením.
 
-9. Vyberte uživatele ze seznamu uživatelů a podle potřeby povolte, **zakažte** **nebo** **vypněte**službu Multi-Factor Authentication.
+9. Vyberte uživatele ze seznamu uživatelů a podle potřeby povolte, **zakažte** **nebo** **vypněte** službu Multi-Factor Authentication.
 
    * **Poznámka**: Pokud je uživatel ve stavu **vykonatelné** , můžete ho nastavit tak, aby se dočasně **zakázal** , aby se mohl vrátit ke svému účtu. Jakmile se znovu vrátí, můžete změnit jejich stav na **povoleno** , aby bylo možné znovu zaregistrovat své kontaktní údaje při příštím přihlášení. Případně můžete postupovat podle pokynů v [kontaktních informacích k ověření uživatele](#check-a-users-authentication-contact-info) a ověřit nebo nastavit tato data.
 
@@ -438,7 +438,7 @@ Kontrola nebo ověření jedné zásady podmíněného přístupu:
 7. Zkontrolujte, že neexistují žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která by mohla blokovat přístup uživatelů.
 
    >[!NOTE]
-   >Možná budete chtít dočasně zakázat tuto zásadu, aby se zajistilo, že se neovlivňují přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
+   >Možná budete chtít dočasně zakázat tuto zásadu, aby nedošlo k ovlivnění přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
    >
    >
 
@@ -470,7 +470,7 @@ Chcete-li zkontrolovat nebo ověřit aktuálně nakonfigurovanou zásadu podmín
 9.  Zkontrolujte, zda nejsou k dispozici žádné konkrétní podmínky, přiřazení nebo jiná nastavení, která mohou blokovat přístup uživatelů.
 
      >[!NOTE]
-     >Možná budete chtít dočasně zakázat tuto zásadu, aby se zajistilo, že se neovlivňují přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
+     >Možná budete chtít dočasně zakázat tuto zásadu, aby nedošlo k ovlivnění přihlášení. Uděláte to tak, že nastavíte přepínač **Povolit zásadu** na **ne** a kliknete na tlačítko **Uložit** .
      >
      >
 
@@ -508,26 +508,25 @@ Přístup k aplikaci je možné zablokovat, protože nedošlo k operaci souhlasu
 
 -   U jakékoli otevřené aplikace s podporou připojení, která žádá o oprávnění, přejde na přihlašovací obrazovce aplikace souhlas na úrovni uživatele k aplikaci pro přihlášeného uživatele.
 
--   Pokud to chcete provést programově, přečtěte si téma [vyžádání souhlasu jednotlivých uživatelů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
+-   Pokud to chcete provést programově, přečtěte si téma [vyžádání souhlasu jednotlivých uživatelů](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent).
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Provedení operace souhlasu na úrovni správce u libovolné aplikace
 
--   **Jenom pro aplikace vyvíjené pomocí aplikačního modelu v1**můžete tomuto souhlasu s oprávněními na úrovni správce přinutit tak, že na konec adresy URL pro přihlášení k aplikaci přidáte "**? prompt = \_ souhlasu správce**".
+-   **Jenom pro aplikace vyvíjené pomocí aplikačního modelu v1** můžete tomuto souhlasu s oprávněními na úrovni správce přinutit tak, že na konec adresy URL pro přihlášení k aplikaci přidáte "**? prompt = \_ souhlasu správce**".
 
--   U **všech aplikací vyvinutých pomocí aplikačního modelu v2**můžete vyhovět tomuto souhlasu na úrovni správce, a to podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   U **všech aplikací vyvinutých pomocí aplikačního modelu v2** můžete vyhovět tomuto souhlasu na úrovni správce, a to podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Provedení souhlasu na úrovni správce pro aplikaci s jedním klientem
 
 -   Pro **aplikace pro jednoho tenanta** , které požadují oprávnění (například ty, které vyvíjíte nebo vlastníte ve vaší organizaci), můžete provádět operace **souhlasu s správní úrovní** jménem všech uživatelů přihlášením jako globální správce a kliknutím na tlačítko **udělit oprávnění** v horní části **registru aplikace – &gt; všechny aplikace – &gt; Vyberte podokno &gt; oprávnění požadovaná aplikací** .
 
--   U **všech aplikací vyvinutých pomocí aplikačního modelu v1 nebo v2**můžete vyhovět tomuto souhlasu na úrovni správce, a to podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   U **všech aplikací vyvinutých pomocí aplikačního modelu v1 nebo v2** můžete vyhovět tomuto souhlasu na úrovni správce, a to podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Provádění souhlasu se správcem na úrovni správce pro aplikaci s více klienty
 
 -   Pro **víceklientské aplikace** , které vyžadují oprávnění (například aplikace, kterou třetí strana nebo společnost Microsoft), můžete provést operaci **souhlasu s správní úrovní** . Přihlaste se jako globální správce a klikněte na tlačítko **udělit oprávnění** v části **podnikové aplikace – &gt; všechny aplikace – &gt; Vyberte podokno &gt; oprávnění aplikace** (brzy bude k dispozici).
 
--   Tento souhlas na úrovni správce můžete taky vyžádat podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Tento souhlas na úrovni správce můžete taky vyžádat podle pokynů v části **vyžádání oprávnění z Správce adresáře** v tématu [použití koncového bodu souhlasu správce](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ## <a name="next-steps"></a>Další kroky
-[Použití koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
-
+[Použití koncového bodu souhlasu správce](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)

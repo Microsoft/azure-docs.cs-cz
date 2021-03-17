@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ac21e1f00dc2a5580b90a1a5eb43da05288e800a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589669"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489419"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
 Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
@@ -25,6 +25,8 @@ Existují dva způsoby konfigurace fondu back-endu:
 Nakonfigurujte svůj fond back-end podle síťových adaptérů při použití existujících virtuálních počítačů a služby Virtual Machine Scale Sets. Tato metoda vytváří nejpřímější propojení mezi vaším prostředkem a back-end fondem. 
 
 Při předrozdělování back-endu s rozsahem IP adres, který plánujete později vytvořit virtuální počítače a služby Virtual Machine Scale Sets, nakonfigurujte svůj fond back-end podle kombinace IP adresy a ID virtuální sítě.
+
+Pro stejný nástroj pro vyrovnávání zatížení můžete nakonfigurovat fondy back-endu založených na protokolu IP a síťových adaptérů, ale nemůžete vytvořit jeden back-end fond, který kombinuje zálohované adresy, na které cílí síťové karty a IP adresy v rámci stejného fondu.
 
 Konfigurační oddíly tohoto článku se zaměří na:
 
@@ -45,14 +47,14 @@ Následující příklady jsou zaměřené na operace vytvoření a naplnění f
 
 ### <a name="powershell"></a>PowerShell
 Vytvořit nový back-end fond:
- 
+ 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
 Vytvořte nové síťové rozhraní a přidejte ho do fondu back-end:
@@ -81,7 +83,7 @@ $backendPoolName = "myBackendPool"
 
 $lb =
 Get-AzLoadBalancer -ResourceGroupName $res
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
 ```
 
 Vytvořte nový virtuální počítač a připojte síťové rozhraní k umístění do back-endu fondu:
@@ -115,7 +117,7 @@ Vytvořte back-end fond:
 
 ```azurecli-interactive
 az network lb address-pool create \
---resourceGroup myResourceGroup \
+--resource-group myResourceGroup \
 --lb-name myLB \
 --name myBackendPool 
 ```
@@ -179,9 +181,11 @@ Text požadavku JSON:
           "subnet": {
             "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
           },
-          "loadBalancerBackendAddressPools": {
-                                    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-          }
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
+            }
+          ]
         }
       }
     ]
@@ -246,22 +250,28 @@ Text požadavku JSON:
 ```
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
+
 Podle tohoto [rychlého startu správce prostředků šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) nasaďte Nástroj pro vyrovnávání zatížení a virtuální počítače a přidejte virtuální počítače do back-endového fondu prostřednictvím síťového rozhraní.
+
+Podle tohoto [rychlého startu správce prostředků šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool) nasaďte Nástroj pro vyrovnávání zatížení a virtuální počítače a přidejte virtuální počítače do back-endu fondu prostřednictvím IP adresy.
+
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Konfigurace fondu back-endu podle IP adresy a virtuální sítě
 Ve scénářích s předem vyplněnými back-end fondy použijte IP a virtuální síť.
 
 Veškerá správa back-end fondu se provádí přímo na objektu back-end fondu, který je zvýrazněný v níže uvedených příkladech.
 
-  >[!IMPORTANT] 
-  >Tato funkce je aktuálně ve verzi Preview a má následující omezení:
-  >* Jenom standardní nástroj pro vyrovnávání zatížení
-  >* Limit 100 IP adres ve fondu back-endu
-  >* Back-endové prostředky musí být ve stejné virtuální síti jako nástroj pro vyrovnávání zatížení.
-  >* Tato funkce se v současnosti v Azure Portal nepodporuje.
-  >* Tato funkce aktuálně nepodporuje kontejnery ACI.
-  >* Nástroje pro vyrovnávání zatížení nebo služby, které jsou front-end vyrovnávání zatížení, nelze umístit do back-endového fondu služby Load Balancer.
-  
+### <a name="limitations"></a>Omezení
+Back-end fond konfigurovaný podle IP adresy má následující omezení:
+  * Dá se použít jenom pro standardní nástroje pro vyrovnávání zatížení.
+  * Limit 100 IP adres ve fondu back-endu
+  * Back-endové prostředky musí být ve stejné virtuální síti jako nástroj pro vyrovnávání zatížení.
+  * Load Balancer s back-end fondem založeným na IP adrese nemůže fungovat jako služba privátního propojení.
+  * Tato funkce se v současnosti v Azure Portal nepodporuje.
+  * Tato funkce aktuálně nepodporuje kontejnery ACI.
+  * Nástroje pro vyrovnávání zatížení nebo služby, které jsou front-end vyrovnávání zatížení, nelze umístit do back-endového fondu služby Load Balancer.
+  * Příchozí pravidla překladu adres (NAT) nejde zadat podle IP adresy.
+
 ### <a name="powershell"></a>PowerShell
 Vytvořit nový back-end fond:
 
@@ -273,18 +283,18 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 Aktualizovat back-end fond s novou IP adresou z existující virtuální sítě:
- 
+ 
 ```azurepowershell-interactive
-$virtualNetwork = 
-Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
- 
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
- 
-$backendPool.LoadBalancerBackendAddresses.Add($ip1) 
+$virtualNetwork = 
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+ 
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+ 
+$backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
 Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
@@ -292,7 +302,7 @@ Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste ověřili, že se back-endové adresy přidávají do back-endu.
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 Vytvořte síťové rozhraní a přidejte ho do fondu back-end. Nastavte IP adresu na jednu z back-endové adresy:
 
@@ -521,325 +531,7 @@ Text požadavku JSON:
   }
 }
 ```
-
-### <a name="resource-manager-template"></a>Šablona Resource Manageru
-Vytvořte Nástroj pro vyrovnávání zatížení, fond back-end a naplňte back-end fond s back-end adresami:
-```
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "loadBalancers_myLB_location": {
-            "type": "SecureString"
-        },
-        "loadBalancers_myLB_location_1": {
-            "type": "SecureString"
-        },
-        "backendAddressPools_myBackendPool_location": {
-            "type": "SecureString"
-        },
-        "backendAddressPools_myBackendPool_location_1": {
-            "type": "SecureString"
-        },
-        "loadBalancers_myLB_name": {
-            "defaultValue": "myLB",
-            "type": "String"
-        },
-        "virtualNetworks_myVNET_externalid": {
-            "defaultValue": "/subscriptions/6bb4a28a-db84-4e8a-b1dc-fabf7bd9f0b2/resourceGroups/ErRobin4/providers/Microsoft.Network/virtualNetworks/myVNET",
-            "type": "String"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Network/loadBalancers",
-            "apiVersion": "2020-04-01",
-            "name": "[parameters('loadBalancers_myLB_name')]",
-            "location": "eastus",
-            "sku": {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "LoadBalancerFrontEnd",
-                        "properties": {
-                            "privateIPAddress": "10.0.0.7",
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                                "id": "[concat(parameters('virtualNetworks_myVNET_externalid'), '/subnets/Subnet-1')]"
-                            },
-                            "privateIPAddressVersion": "IPv4"
-                        }
-                    }
-                ],
-                "backendAddressPools": [
-                    {
-                        "name": "myBackendPool",
-                        "properties": {
-                            "loadBalancerBackendAddresses": [
-                                {
-                                    "name": "addr1",
-                                    "properties": {
-                                        "ipAddress": "10.0.0.4",
-                                        "virtualNetwork": {
-                                            "location": "[parameters('loadBalancers_myLB_location')]"
-                                        }
-                                    }
-                                },
-                                {
-                                    "name": "addr2",
-                                    "properties": {
-                                        "ipAddress": "10.0.0.5",
-                                        "virtualNetwork": {
-                                            "location": "[parameters('loadBalancers_myLB_location_1')]"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "loadBalancingRules": [],
-                "probes": [],
-                "inboundNatRules": [],
-                "outboundRules": [],
-                "inboundNatPools": []
-            }
-        },
-        {
-            "type": "Microsoft.Network/loadBalancers/backendAddressPools",
-            "apiVersion": "2020-04-01",
-            "name": "[concat(parameters('loadBalancers_myLB_name'), '/myBackendPool')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_myLB_name'))]"
-            ],
-            "properties": {
-                "loadBalancerBackendAddresses": [
-                    {
-                        "name": "addr1",
-                        "properties": {
-                            "ipAddress": "10.0.0.4",
-                            "virtualNetwork": {
-                                "location": "[parameters('backendAddressPools_myBackendPool_location')]"
-                            }
-                        }
-                    },
-                    {
-                        "name": "addr2",
-                        "properties": {
-                            "ipAddress": "10.0.0.5",
-                            "virtualNetwork": {
-                                "location": "[parameters('backendAddressPools_myBackendPool_location_1')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    ]
-}
-```
-
-Vytvořte virtuální počítač a připojené síťové rozhraní. Nastavte IP adresu síťového rozhraní na jednu z back-endové adresy:
-```
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "String",
-      "metadata": {
-        "description": "Name of storage account"
-      }
-    },
-    "storageAccountDomain": {
-      "type": "String",
-      "metadata": {
-        "description": "The domain of the storage account to be created."
-      }
-    },
-    "adminUsername": {
-      "type": "String",
-      "metadata": {
-        "description": "Admin username"
-      }
-    },
-    "adminPassword": {
-      "type": "SecureString",
-      "metadata": {
-        "description": "Admin password"
-      }
-    },
-    "vmName": {
-      "defaultValue": "myVM",
-      "type": "String",
-      "metadata": {
-        "description": "Prefix to use for VM names"
-      }
-    },
-    "imagePublisher": {
-      "type": "String",
-      "metadata": {
-        "description": "Image Publisher"
-      }
-    },
-    "imageOffer": {
-      "defaultValue": "WindowsServer",
-      "type": "String",
-      "metadata": {
-        "description": "Image Offer"
-      }
-    },
-    "imageSKU": {
-      "defaultValue": "2012-R2-Datacenter",
-      "type": "String",
-      "metadata": {
-        "description": "Image SKU"
-      }
-    },
-    "lbName": {
-      "defaultValue": "myLB",
-      "type": "String",
-      "metadata": {
-        "description": "Load Balancer name"
-      }
-    },
-    "nicName": {
-      "defaultValue": "nic",
-      "type": "String",
-      "metadata": {
-        "description": "Network Interface name prefix"
-      }
-    },
-    "privateIpAddress": {
-      "defaultValue": "10.0.0.5",
-      "type": "String",
-      "metadata": {
-        "description": "Private IP Address of the VM"
-      }
-    },
-    "vnetName": {
-      "defaultValue": "myVNET",
-      "type": "String",
-      "metadata": {
-        "description": "VNET name"
-      }
-    },
-    "vmSize": {
-      "defaultValue": "Standard_A1",
-      "type": "String",
-      "metadata": {
-        "description": "Size of the VM"
-      }
-    },
-    "storageLocation": {
-      "type": "String",
-      "metadata": {
-        "description": "Location of the Storage Account."
-      }
-    },
-    "location": {
-      "type": "String",
-      "metadata": {
-        "description": "Location to deploy all the resources in."
-      }
-    }
-  },
-  "variables": {
-    "networkSecurityGroupName": "networkSecurityGroup1",
-    "storageAccountType": "Standard_LRS",
-    "subnetName": "Subnet-1",
-    "publicIPAddressType": "Static",
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vnetName'))]",
-    "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables ('subnetName'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2015-05-01-preview",
-      "name": "[parameters('storageAccountName')]",
-      "location": "[parameters('storageLocation')]",
-      "properties": {
-        "accountType": "[variables('storageAccountType')]"
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "apiVersion": "2016-03-30",
-      "name": "[variables('networkSecurityGroupName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "securityRules": []
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2015-05-01-preview",
-      "name": "[parameters('nicName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Static",
-              "privateIpAddress": "[parameters('privateIpAddress')]",
-              "subnet": {
-                "id": "[variables('subnetRef')]"
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-05-01-preview",
-      "name": "[parameters('vmName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-        "[parameters('nicName')]"
-      ],
-      "properties": {
-        "hardwareProfile": {
-          "vmSize": "[parameters('vmSize')]"
-        },
-        "osProfile": {
-          "computername": "[parameters('vmName')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]"
-        },
-        "storageProfile": {
-          "imageReference": {
-            "publisher": "[parameters('imagePublisher')]",
-            "offer": "[parameters('imageOffer')]",
-            "sku": "[parameters('imageSKU')]",
-            "version": "latest"
-          },
-          "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-              "uri": "[concat('http://',parameters('storageAccountName'),'.blob.',parameters('storageAccountDomain'),'/vhds/','osdisk', '.vhd')]"
-            },
-            "caching": "ReadWrite",
-            "createOption": "FromImage"
-          }
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
+  
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste se dozvěděli o Azure Load Balancer správě fondu back-endu a o tom, jak nakonfigurovat back-end fond podle IP adresy a virtuální sítě.
 

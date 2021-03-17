@@ -5,17 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/08/2020
+ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 509568b143c9fbbf236139ca83cb55b0ef39beb0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef9efe389894af7c792e980922ca422e9d05929b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145920"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026184"
 ---
 V následující tabulce jsou popsány výchozí limity pro účty úložiště Azure pro obecné účely V1, v2, BLOB Storage a Block. Limit *ingress* příchozího přenosu dat odkazuje na všechna data, která se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data přijatá z účtu úložiště.
+
+> [!NOTE]
+> Můžete požadovat vyšší omezení kapacity a příchozího přenosu dat. Pokud chcete požádat o zvýšení, obraťte se na [podporu Azure](https://azure.microsoft.com/support/faq/).
 
 | Prostředek | Omezení |
 | --- | --- |
@@ -38,6 +41,4 @@ V následující tabulce jsou popsány výchozí limity pro účty úložiště 
 > [!NOTE]
 > Microsoft doporučuje, abyste pro většinu scénářů používali účet úložiště pro obecné účely v2. Účet Azure Blob Storage pro obecné účely v1 nebo Azure můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data. Další informace najdete v tématu [upgrade na účet úložiště pro obecné účely v2](../articles/storage/common/storage-account-upgrade.md).
 
-Pokud požadavky vaší aplikace překračují cíle škálovatelnosti jednoho účtu úložiště, můžete vytvořit aplikaci pro používání více účtů úložiště. Datové objekty pak můžete rozdělit do oddílů v rámci těchto účtů úložiště. Informace o cenách na svazcích najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
-
-Všechny účty úložiště běží v ploché síťové topologii bez ohledu na to, kdy byly vytvořeny. Další informace o architektuře Azure Storage ploché sítě a o škálovatelnosti najdete v článku [Microsoft Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets). 
+Všechny účty úložiště běží v ploché síťové topologii bez ohledu na to, kdy byly vytvořeny. Další informace o architektuře Azure Storage ploché sítě a o škálovatelnosti najdete v článku [Microsoft Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets).

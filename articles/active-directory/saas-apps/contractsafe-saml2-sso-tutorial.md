@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 9459d13e8943f7e9177d2ad493873257f46f6649
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544378"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455303"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Kurz: Integrace Azure Active Directory jednotného přihlašování (SSO) pomocí jednotného přihlašování ContractSafe typu Saml2
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat ContractSafe typu Saml2 SSO pomocí Az
 * Umožněte uživatelům, aby se automaticky přihlásili k ContractSafe SSO pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -142,14 +142,14 @@ Vytvořte uživatele s názvem B. Simon v rámci ContractSafeu typu Saml2 SSO. S
 
 ## <a name="test-sso"></a>Test SSO
 
-Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu. Když vyberete dlaždici SSO ContractSafe typu Saml2 SSO na přístupovém panelu, měli byste se automaticky přihlásit k rozhraní ContractSafe typu Saml2 SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu. Když vyberete dlaždici SSO ContractSafe typu Saml2 SSO na přístupovém panelu, měli byste se automaticky přihlásit k rozhraní ContractSafe typu Saml2 SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte jednotné přihlašování ContractSafe typu Saml2 s Azure AD](https://aad.portal.azure.com/)

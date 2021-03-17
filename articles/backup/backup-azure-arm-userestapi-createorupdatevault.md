@@ -4,16 +4,16 @@ description: V tomto článku se dozvíte, jak spravovat operace zálohování a
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079328"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002932"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Vytvoření trezoru služby Azure Recovery Services pomocí REST API
 
-Postup vytvoření trezoru služby Azure Recovery Services pomocí REST API je popsaný v dokumentaci k [Vytvoření trezoru REST API](/rest/api/recoveryservices/vaults/createorupdate) . Tento dokument můžeme použít jako referenci k vytvoření trezoru s názvem "testVault" v "Západní USA".
+Postup vytvoření trezoru služby Azure Recovery Services pomocí REST API je popsaný v dokumentaci k [Vytvoření trezoru REST API](/rest/api/recoveryservices/vaults/createorupdate) . Pojďme tento dokument použít jako referenci k vytvoření trezoru s názvem "testVault" v "Západní USA".
 
 Pokud chcete vytvořit nebo aktualizovat trezor služby Azure Recovery Services, použijte následující operaci *vložení* .
 
@@ -23,14 +23,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Vytvoření žádosti
 
-Chcete-li vytvořit požadavek *Put* , `{subscription-id}` je vyžadován parametr. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Nadefinujete `{resourceGroupName}` a `{vaultName}` pro své prostředky spolu s `api-version` parametrem. Tento článek používá `api-version=2016-06-01` .
+Chcete-li vytvořit požadavek *Put* , `{subscription-id}` je vyžadován parametr. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli). Nadefinujete `{resourceGroupName}` a `{vaultName}` pro své prostředky spolu s `api-version` parametrem. Tento článek používá `api-version=2016-06-01` .
 
 Jsou vyžadovány následující hlavičky:
 
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
 | *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Authorization:* | Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |
+| *Authorization:* | Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |
 
 Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty REST API žádosti o odezvu](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -38,7 +38,7 @@ Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty R
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-|Název  |Požaduje se  |Typ  |Description  |
+|Name  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |

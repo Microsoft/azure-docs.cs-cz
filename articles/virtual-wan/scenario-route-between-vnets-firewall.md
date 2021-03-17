@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589346"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515565"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Scénář: Azure Firewall-vlastní
 
@@ -28,10 +28,10 @@ Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba, můžete vy
 
 | Z           | Do:      | *Virtuální sítě*      | *Větve*    | *Internet*   |
 |---             |---       |---           |---            |---           |
-| **Virtuální sítě**      |   &#8594;|     X        |     AzFW      |     AzFW     |
-| **Větve**   |   &#8594;|    AzFW      |       X       |       X      |
+| **Virtuální sítě**      |   &#8594;|    Direct    |     AzFW      |     AzFW     |
+| **Větve**   |   &#8594;|    AzFW      |    Direct     |    Direct    |
 
-V předchozí tabulce představuje "X" přímé připojení mezi dvěma připojeními bez provozu přenášeného Azure Firewall ve virtuální síti WAN a "AzFW" znamená, že tok projde Azure Firewall. Vzhledem k tomu, že v matici existují dva odlišné vzory připojení, budeme potřebovat dvě směrovací tabulky, které budou nakonfigurovány takto:
+"Přímá" v předchozí tabulce představuje přímé připojení mezi dvěma připojeními bez provozu přenášeného Azure Firewall ve virtuální síti WAN a "AzFW" indikuje, že tok projde Azure Firewall. Vzhledem k tomu, že v matici existují dva odlišné vzory připojení, budeme potřebovat dvě směrovací tabulky, které budou nakonfigurovány takto:
 
 * Virtuální sítě:
   * Přidružená směrovací tabulka: **RT_VNet**

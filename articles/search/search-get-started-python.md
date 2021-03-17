@@ -1,161 +1,183 @@
 ---
-title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu pomocí rozhraní REST API'
+title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu'
 titleSuffix: Azure Cognitive Search
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Kognitivní hledání.
+description: Naučte se vytvářet vyhledávací index, načítat data a spouštět dotazy pomocí Pythonu, Jupyter Notebook a Azure.Documents. Vyhledat klientskou knihovnu pro Python
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.devlang: rest-api
-ms.date: 08/20/2020
+ms.date: 03/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: aa2357e31bf2fba97ae8547948cacdffc70cc741
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705006"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225213"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí Jupyter Notebook
 
 > [!div class="op_single_selector"]
-> * [Python (REST)](search-get-started-python.md)
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
-> * [Post (REST)](search-get-started-postman.md)
+> * [Python](search-get-started-python.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
+> * [REST](search-get-started-rest.md)
 > * [Azure Portal](search-get-started-portal.md)
-> 
+>
 
-Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvoření poznámkového bloku, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [knihovny Azure-Search-Documents](/python/api/overview/azure/search-documents-readme) v sadě Azure SDK pro Python. Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
+V tomto rychlém startu jsou vyžadovány následující služby a nástroje.
 
-+ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), který poskytuje Poznámkový blok Python 3. x a Jupyter.
+* [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), který poskytuje Python 3. x a Jupyter notebook.
 
-+ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
+* [Azure-Search-Documents – balíček](https://pypi.org/project/azure-search-documents/)
 
-## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
+* [Vytvořte vyhledávací službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
+
+## <a name="copy-a-key-and-url"></a>Zkopírování klíče a adresy URL
 
 Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Kognitivní hledání
 
-V této úloze spusťte Poznámkový blok Jupyter a ověřte, jestli se můžete připojit k Azure Kognitivní hledání. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
+V této úloze spusťte Jupyter Notebook a ověřte, že se můžete připojit k Azure Kognitivní hledání. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
 
 1. Vytvoření nového poznámkového bloku python3
 
-1. V první buňce načtěte knihovny používané pro práci s JSON a formulujte požadavky HTTP.
+1. V první buňce načtěte knihovny ze sady Azure SDK pro Python, včetně [Azure-Search-Documents](/python/api/azure-search-documents).
 
    ```python
-   import json
-   import requests
-   from pprint import pprint
+    !pip install azure-search-documents --pre
+    !pip show azure-search-documents
+    
+    import os
+    from azure.core.credentials import AzureKeyCredential
+    from azure.search.documents.indexes import SearchIndexClient 
+    from azure.search.documents import SearchClient
+    from azure.search.documents.indexes.models import (
+        ComplexField,
+        CorsOptions,
+        SearchIndex,
+        ScoringProfile,
+        SearchFieldDataType,
+        SimpleField,
+        SearchableField
+    )
    ```
 
-1. Do druhé buňky zadejte prvky požadavku, které budou konstanty u všech požadavků. Nahraďte název vyhledávací služby (klíč-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (kód-správce-rozhraní API-KEY) pomocí platných hodnot. 
+1. Do druhé buňky zadejte prvky požadavku, které budou konstanty u všech požadavků. Zadejte název vyhledávací služby, klíč rozhraní API pro správu a klíč rozhraní API pro dotaz, který jste zkopírovali v předchozím kroku. Tato buňka také nastaví klienty, které budete používat pro konkrétní operace: [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) k vytvoření indexu a [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) k dotazování indexu.
 
    ```python
-   endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
-   api_version = '?api-version=2020-06-30'
-   headers = {'Content-Type': 'application/json',
-           'api-key': '<YOUR-ADMIN-API-KEY>' }
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
+    index_name = "hotels-quickstart"
+    
+    # Create an SDK client
+    endpoint = "https://{}.search.windows.net/".format(service_name)
+    admin_client = SearchIndexClient(endpoint=endpoint,
+                          index_name=index_name,
+                          credential=AzureKeyCredential(admin_key))
+    
+    search_client = SearchClient(endpoint=endpoint,
+                          index_name=index_name,
+                          credential=AzureKeyCredential(admin_key))
    ```
 
-   Pokud získáte ConnectionError `"Failed to establish a new connection"` , ověřte, že klíč rozhraní API je primární nebo sekundární klíč správce a že jsou nastavené všechny úvodní a koncové znaky ( `?` a `/` ).
-
-1. V třetí buňce formulujte požadavek. Tento požadavek GET cílí na kolekci indexů vaší vyhledávací služby a vybere vlastnost název existujících indexů.
+1. V třetí buňce spusťte operaci delete_index, abyste vymazali službu všech stávajících indexů *rychlého* spuštění v hotelů. Odstranění indexu vám umožní vytvořit další index pro *rychlé* spuštění se stejným názvem.
 
    ```python
-   url = endpoint + "indexes" + api_version + "&$select=name"
-   response  = requests.get(url, headers=headers)
-   index_list = response.json()
-   pprint(index_list)
+    try:
+        result = admin_client.delete_index(index_name)
+        print ('Index', index_name, 'Deleted')
+    except Exception as ex:
+        print (ex)
    ```
 
-1. Spusťte jednotlivé kroky. Pokud indexy existují, obsahuje odpověď seznam názvů indexů. Na následujícím snímku obrazovky již služba obsahuje index azureblobu-index a realestate-US-Sample.
-
-   ![Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání](media/search-get-started-python/connect-azure-search.png "Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání")
-
-   Naproti tomu prázdná kolekce indexů vrátí tuto odpověď: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+1. Spusťte jednotlivé kroky.
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok používá [REST API vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) k odeslání schématu indexu do služby.
+Požadované prvky indexu zahrnují název, kolekci polí a klíč. Kolekce pole definuje strukturu logického *vyhledávacího dokumentu*, která se používá pro načítání dat a vracení výsledků. 
 
-Požadované prvky indexu zahrnují název, kolekci polí a klíč. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se pole používá (například zda je fulltextově prohledávatelné, filtrovatelné nebo dá být možné ve výsledcích hledání). V indexu musí být jedno z polí typu `Edm.String` určeno jako *klíč* pro identitu dokumentu.
+Každé pole má název, typ a atributy, které určují, jak se pole používá (například zda je fulltextově prohledávatelné, filtrovatelné nebo dá být možné ve výsledcích hledání). V indexu musí být jedno z polí typu `Edm.String` určeno jako *klíč* pro identitu dokumentu.
 
 Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které vidíte níže. Jedná se o podmnožinu většího [indexu hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) používaných v jiných návodech. V tomto rychlém startu jsme ho pro zkrácení vystříhat.
 
-1. V další buňce vložte následující příklad do buňky pro zadání schématu. 
+1. V další buňce vložte následující příklad do buňky pro zadání schématu.
 
     ```python
-    index_schema = {
-       "name": "hotels-quickstart",  
-       "fields": [
-         {"name": "HotelId", "type": "Edm.String", "key": "true", "filterable": "true"},
-         {"name": "HotelName", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "true", "facetable": "false"},
-         {"name": "Description", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "false", "facetable": "false", "analyzer": "en.lucene"},
-         {"name": "Description_fr", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "false", "facetable": "false", "analyzer": "fr.lucene"},
-         {"name": "Category", "type": "Edm.String", "searchable": "true", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "Tags", "type": "Collection(Edm.String)", "searchable": "true", "filterable": "true", "sortable": "false", "facetable": "true"},
-         {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "Rating", "type": "Edm.Double", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "Address", "type": "Edm.ComplexType", 
-         "fields": [
-         {"name": "StreetAddress", "type": "Edm.String", "filterable": "false", "sortable": "false", "facetable": "false", "searchable": "true"},
-         {"name": "City", "type": "Edm.String", "searchable": "true", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "StateProvince", "type": "Edm.String", "searchable": "true", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "PostalCode", "type": "Edm.String", "searchable": "true", "filterable": "true", "sortable": "true", "facetable": "true"},
-         {"name": "Country", "type": "Edm.String", "searchable": "true", "filterable": "true", "sortable": "true", "facetable": "true"}
+    # Specify the index schema
+    name = index_name
+    fields = [
+            SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
+            SearchableField(name="HotelName", type=SearchFieldDataType.String, sortable=True),
+            SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
+            SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
+            SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
+        
+            SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
+    
+            SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
+            SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
+            SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
+    
+            ComplexField(name="Address", fields=[
+                SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
+                SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
+                SearchableField(name="StateProvince", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
+                SearchableField(name="PostalCode", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
+                SearchableField(name="Country", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
+            ])
         ]
-       }
-      ]
-    }
+    cors_options = CorsOptions(allowed_origins=["*"], max_age_in_seconds=60)
+    scoring_profiles = []
+    suggester = [{'name': 'sg', 'source_fields': ['Tags', 'Address/City', 'Address/Country']}]
     ```
 
-2. V jiné buňce formulujte požadavek. Tento požadavek POST cílí na kolekci indexů vaší vyhledávací služby a vytvoří index založený na schématu indexu, které jste zadali v předchozí buňce.
+1. V jiné buňce formulujte požadavek. Tato create_index požadavek cílí na kolekci indexů vaší vyhledávací služby a vytvoří [SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) založenou na schématu indexu, které jste zadali v předchozí buňce.
 
-   ```python
-   url = endpoint + "indexes" + api_version
-   response  = requests.post(url, headers=headers, json=index_schema)
-   index = response.json()
-   pprint(index)
-   ```
+    ```python
+    index = SearchIndex(
+        name=name,
+        fields=fields,
+        scoring_profiles=scoring_profiles,
+        suggesters = suggester,
+        cors_options=cors_options)
+    
+    try:
+        result = admin_client.create_index(index)
+        print ('Index', result.name, 'created')
+    except Exception as ex:
+        print (ex)
+    ```
 
-3. Spusťte jednotlivé kroky.
-
-   Odpověď obsahuje reprezentace schématu ve formátu JSON. Následující snímek obrazovky ukazuje jenom část odpovědi.
-
-    ![Požadavek na vytvoření indexu](media/search-get-started-python/create-index.png "Požadavek na vytvoření indexu")
-
-> [!Tip]
-> Dalším způsobem, jak ověřit vytvoření indexu, je zkontrolovat seznam indexy na portálu.
+1. Spusťte jednotlivé kroky.
 
 <a name="load-documents"></a>
 
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API je [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHubu.
+Chcete-li načíst dokumenty, vytvořte kolekci dokumentů pomocí [Akce indexu](/python/api/azure-search-documents/azure.search.documents.models.indexaction) pro typ operace (nahrávání, sloučení a nahrání a tak dále). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHubu.
 
 1. V nové buňce poskytněte čtyři dokumenty, které odpovídají schématu indexu. Zadejte akci odeslání pro každý dokument.
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -233,84 +255,96 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
             }
         }
     ]
-    }
-    ```   
+    ```  
 
-2. V jiné buňce formulujte požadavek. Tento požadavek POST cílí na kolekci docs pro index pro rychlý začátek a vložení dokumentů uvedených v předchozím kroku.
+1. V jiné buňce formulujte požadavek. Tato upload_documents požadavek cílí na kolekci docs v indexu pro rychlé zprovoznění a nahraje dokumenty v předchozím kroku do indexu Kognitivní hledání.
 
-   ```python
-   url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
-   response  = requests.post(url, headers=headers, json=documents)
-   index_content = response.json()
-   pprint(index_content)
-   ```
+    ```python
+    try:
+        result = search_client.upload_documents(documents=documents)
+        print("Upload of new document succeeded: {}".format(result[0].succeeded))
+    except Exception as ex:
+        print (ex.message)
+    ```
 
-3. Spusťte jednotlivé kroky a nahrajte dokumenty do indexu ve vyhledávací službě. Výsledky by měly vypadat podobně jako v následujícím příkladu. 
-
-    ![Odeslat dokumenty do indexu](media/search-get-started-python/load-index.png "Odeslat dokumenty do indexu")
+1. Spusťte jednotlivé kroky a nahrajte dokumenty do indexu ve vyhledávací službě.
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+V tomto kroku se dozvíte, jak zadat dotaz na  index pomocí metody Search [třídy Search. Client](/python/api/azure-search-documents/azure.search.documents.searchclient).
 
-1. V buňce zadejte výraz dotazu, který spustí prázdné vyhledávání (Search = *) a vrátí Neseřazený seznam (hledání skóre = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Kognitivní hledání vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte $count = true pro získání počtu všech dokumentů ve výsledcích.
+1. Následující krok spustí prázdné hledání ( `search=*` ) a vrátí Neseřazený seznam (skóre hledání = 1,0) libovolných dokumentů. Vzhledem k tomu, že nejsou k dispozici žádná kritéria, jsou do výsledků zahrnuty všechny dokumenty. Tento dotaz vytiskne pouze dvě pole v každém dokumentu. Také přidá `include_total_count=True` k získání počtu všech dokumentů (4) ve výsledcích.
 
-   ```python
-   searchstring = '&search=*&$count=true'
+    ```python
+    results =  search_client.search(search_text="*", include_total_count=True)
+    
+    print ('Total Documents Matching Query:', results.get_count())
+    for result in results:
+        print("{}: {}".format(result["HotelId"], result["HotelName"]))
+    ```
 
-   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
-   response  = requests.get(url, headers=headers, json=searchstring)
-   query = response.json()
-   pprint(query)
-   ```
+1. Další dotaz přidá celé výrazy do vyhledávacího výrazu ("WiFi"). Tento dotaz určuje, že výsledky obsahují pouze pole v `select` příkazu. Omezením polí, která se vrátí, minimalizuje množství dat odesílaných zpět po drátu a zkracuje latenci hledání.
 
-1. V nové buňce zadejte následující příklad pro hledání podmínek "hotely" a "WiFi". Přidejte $select pro určení, která pole se mají zahrnout do výsledků hledání.
+    ```python
+    results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
+    
+    print ('Total Documents Matching Query:', results.get_count())
+    for result in results:
+        print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
+    ```
 
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+1. Dále použijte výraz filtru, který vrátí pouze hotely s hodnocením větším než 4 seřazené v sestupném pořadí.
 
-   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
-   response  = requests.get(url, headers=headers, json=searchstring)
-   query = response.json()
-   pprint(query)   
-   ```
+    ```python
+    results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
+    
+    for result in results:
+        print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
+    ```
 
-   Výsledky by měly vypadat podobně jako v následujícím výstupu. 
+1. Přidat `search_fields` k oboru dotazu odpovídajícího jednomu poli
 
-    ![Prohledání indexu](media/search-get-started-python/search-index.png "Prohledání indexu")
+    ```python
+    results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
+    
+    for result in results:
+        print("{}: {}".format(result["HotelId"], result["HotelName"]))
+    ```
 
-1. Dále použijte výraz $filter, který vybere pouze hotely se hodnocením větším než 4. 
+1. Omezující vlastnosti jsou popisky, které lze použít k vytvoření struktury navigace omezující vlastnosti. Tento dotaz vrací charakteristiky a počty pro kategorii.
 
-   ```python
-   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+    ```python
+    results =  search_client.search(search_text="*", facets=["Category"])
+    
+    facets = results.get_facets()
+    
+    for facet in facets["Category"]:
+        print("    {}".format(facet))
+    ```
 
-   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
-   response  = requests.get(url, headers=headers, json=searchstring)
-   query = response.json()
-   pprint(query)     
-   ```
+1. V tomto příkladu vyhledejte konkrétní dokument založený na jeho klíči. Obvykle byste chtěli vrátit dokument, když uživatel klikne na dokument ve výsledku hledání.
 
-1. Ve výchozím nastavení vyhledávací modul vrací prvních 50 dokumentů, ale můžete použít horní a přeskočení pro přidání stránkování a výběr množství dokumentů v každém výsledku. Tento dotaz vrátí v každé sadě výsledků dva dokumenty.
+    ```python
+    result = search_client.get_document(key="3")
+    
+    print("Details for hotel '3' are:")
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
-   ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+1. V tomto příkladu použijeme funkci automatického dokončování. Obvykle se používá ve vyhledávacím poli, které umožňuje automatické dokončování potenciálních shod jako uživatelských typů do vyhledávacího pole.
 
-   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
-   response  = requests.get(url, headers=headers, json=searchstring)
-   query = response.json()
-   pprint(query)
-   ```
+   Při vytvoření indexu byl v rámci žádosti vytvořen i modul pro návrhy s názvem "SG". Definice modulu pro návrhy určuje, která pole lze použít k nalezení potenciálních shod pro žádosti navrhovat. V tomto příkladu jsou tato pole "Tags", "adresa/město", "adresa/země". Chcete-li simulovat automatické dokončování, předejte písmena "sa" jako částečný řetězec. Metoda AutoComplete [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) odesílá zpět potenciální shodné termíny.
 
-1. V tomto posledním příkladu použijte $orderby k řazení výsledků podle města. Tento příklad obsahuje pole z kolekce adres.
-
-   ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
-
-   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
-   response  = requests.get(url, headers=headers, json=searchstring)
-   query = response.json()
-   pprint(query)
-   ```
+    ```python
+    search_suggestion = 'sa'
+    results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
+    
+    print("Autocomplete for:", search_suggestion)
+    for result in results:
+        print (result['text'])
+    ```
 
 ## <a name="clean-up"></a>Vyčištění
 

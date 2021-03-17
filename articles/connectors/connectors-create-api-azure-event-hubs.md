@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 65da8e07c01561577fe7eff449bfc10348c7f277
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716597"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a odesílání událostí s využitím služby Azure Event Hubs a Azure Logic Apps
 
@@ -33,24 +33,24 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 Abyste se ujistili, že vaše aplikace logiky bude mít přístup k centru událostí, zkontrolujte svá oprávnění a získejte připojovací řetězec pro obor názvů Event Hubs.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Přejít na *obor názvů*Event Hubs, ne na konkrétní centrum událostí. 
+1. Přejít na *obor názvů* Event Hubs, ne na konkrétní centrum událostí. 
 
-1. V nabídce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
+1. V nabídce obor názvů v části **Nastavení** vyberte **zásady sdíleného přístupu**. V části **deklarace identity** ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
    ![Správa oprávnění pro obor názvů centra událostí](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
 1. Pokud budete chtít později ručně zadat informace o připojení, Získejte připojovací řetězec pro obor názvů Event Hubs.
 
-   1. V části **zásady**vyberte **RootManageSharedAccessKey**.
+   1. V části **zásady** vyberte **RootManageSharedAccessKey**.
 
    1. Najděte připojovací řetězec primárního klíče. Klikněte na tlačítko Kopírovat a uložte připojovací řetězec pro pozdější použití.
 
       ![Zkopírování připojovacího řetězce oboru názvů Event Hubs](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Event Hubs nebo konkrétnímu centru událostí, ujistěte se, že připojovací řetězec nemá `EntityPath`   parametr. Pokud tento parametr vyhledáte, připojovací řetězec bude pro konkrétní centrum událostí "entita" a není to správný řetězec pro použití s vaší aplikací logiky.
+      > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Event Hubs nebo konkrétnímu centru událostí, ujistěte se, že připojovací řetězec nemá `EntityPath` parametr. Pokud tento parametr vyhledáte, připojovací řetězec bude pro konkrétní centrum událostí "entita" a není to správný řetězec pro použití s vaší aplikací logiky.
 
 1. Nyní pokračujte [přidáním triggeru Event Hubs](#add-trigger) nebo [přidejte akci Event Hubs](#add-action).
 
@@ -156,7 +156,7 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
    | **Obor názvů Event Hubs** | Ano | <*Event-Centers – obor názvů*> | Vyberte obor názvů Event Hubs, který chcete použít. |
    |||||  
 
-   Příklad:
+   Například:
 
    ![Vytvořit připojení centra událostí](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 

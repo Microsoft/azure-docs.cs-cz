@@ -10,14 +10,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517316"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356294"
 ---
-# <a name="azure-sql-managed-instance-connection-types"></a>Typy připojení spravované instance SQL Azure
+# <a name="azure-sql-managed-instance-connection-types"></a>Typy připojení ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek vysvětluje, jak se klienti připojují ke službě Azure SQL Managed instance v závislosti na typu připojení. Ukázky skriptů pro změnu typů připojení jsou uvedené níže a s důležitými informacemi týkajícími se změny výchozího nastavení připojení.
@@ -26,14 +27,14 @@ Tento článek vysvětluje, jak se klienti připojují ke službě Azure SQL Man
 
 Spravovaná instance Azure SQL podporuje tyto dva typy připojení:
 
-- **Přesměrování (doporučeno):** Klienti navážou připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení pomocí přesměrování, musíte otevřít brány firewall a skupiny zabezpečení sítě (NSG), abyste mohli povolit přístup na portech 1433 a 11000-11999. Pakety se přecházejí přímo do databáze a díky přesměrování přes proxy se pak zvyšují latence a výkon.
-- **Proxy server (výchozí):** V tomto režimu všechna připojení používají komponentu proxy serveru. Chcete-li povolit připojení, je nutné otevřít pouze port 1433 pro privátní sítě a port 3342 pro veřejné připojení. Výběr tohoto režimu může mít za následek vyšší latenci a nižší propustnost, a to v závislosti na povaze úlohy. Pro nejnižší latenci a nejvyšší propustnost důrazně doporučujeme zásady připojení přesměrování použít u zásad připojení k proxy serveru.
+- **Přesměrování (doporučeno):** Klienti navážou připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete umožnit připojení s využitím přesměrování, musíte otevřít brány firewall a skupiny zabezpečení sítě (NSG), aby umožňovaly přístup na portech 1433 a 11000–11999. Při použití přesměrování místo proxy serveru se pakety přenášejí přímo do databáze, a díky tomu dochází k vylepšení latence a propustnosti.
+- **Proxy server (výchozí):** V tomto režimu všechna připojení používají komponentu proxy serveru. Pokud chcete umožnit připojení, stačí otevřít pouze port 1433 pro privátní sítě a port 3342 pro veřejná připojení. Výběrem tohoto režimu může v závislosti na povaze konkrétní úlohy dojít ke zvýšení latence a snížení propustnosti. Pokud chcete dosáhnout nejnižší latence a nejvyšší propustnosti, důrazně doporučujeme místo zásad připojení přes proxy server použít zásady přesměrování připojení.
 
 ## <a name="redirect-connection-type"></a>Přesměrování – typ připojení
 
 Když se v typu připojení přesměrování naváže relace TCP na modul SQL, klientská relace získá cílovou virtuální IP adresu uzlu virtuálního clusteru z nástroje pro vyrovnávání zatížení. Následné pakety se přecházejí přímo na uzel virtuálního clusteru a brána se vynechá. Tento tok přenosů znázorňuje následující diagram.
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![Diagram znázorňuje místní síť s přesměrováním-Find DB připojenou k bráně ve virtuální síti Azure a dotazem na přesměrování připojeným k primárnímu uzlu databáze ve virtuální síti.](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > Typ připojení přesměrování aktuálně funguje jenom pro soukromý koncový bod. Bez ohledu na nastavení typu připojení by připojení přicházející prostřednictvím veřejného koncového bodu byla prostřednictvím proxy serveru.
@@ -42,7 +43,7 @@ Když se v typu připojení přesměrování naváže relace TCP na modul SQL, k
 
 V typu připojení proxy je relace TCP vytvořena pomocí brány a všech následných paketů toku. Tento tok přenosů znázorňuje následující diagram.
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![Diagram znázorňuje místní síť s proxy připojením k bráně ve službě Azure Virtual Network, která se připojuje k primárnímu uzlu databáze ve virtuální síti.](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>Změna typu připojení
 

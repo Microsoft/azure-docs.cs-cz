@@ -10,14 +10,20 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5194dab21842e47d2bf2445c69ccaeec3cb78e4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273535"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943418"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rychlý Start: Kontrola pravopisu pomocí sady Kontrola pravopisu Bingu SDK pro jazyk C #
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Pomocí tohoto rychlého startu můžete spustit kontrolu pravopisu v sadě Kontrola pravopisu Bingu SDK pro jazyk C#. I když Kontrola pravopisu Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
 
@@ -61,7 +67,7 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
 
 ## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a přečíst odpověď
 
-1. Ve funkci vytvořené výše proveďte následující kroky. Odešlete žádost o kontrolu pravopisu u klienta. Přidejte text, který se má zkontrolovat do `text` parametru, a nastavte režim na `proof`.  
+1. Ve funkci vytvořené výše proveďte následující kroky. Odešlete žádost o kontrolu pravopisu u klienta. Přidejte text, který se má zkontrolovat do `text` parametru, a nastavte režim na `proof` .  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
@@ -104,4 +110,4 @@ Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor l
 > [Vytvoření jednostránkové webové aplikace](tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](overview.md)
-- [Referenční příručka k sadě Kontrola pravopisu Bingu C# SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Referenční příručka k sadě Kontrola pravopisu Bingu C# SDK](/dotnet/api/overview/azure/cognitiveservices/bing-spell-check-readme)

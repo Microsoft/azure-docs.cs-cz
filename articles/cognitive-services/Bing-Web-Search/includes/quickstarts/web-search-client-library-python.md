@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85940418"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947531"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do vaší aplikace Python. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
@@ -83,7 +83,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
 
-1. Zkopírujte ukázkový kód do svého projektu. `endpoint`může to být globální koncový bod nebo vlastní koncový bod [subdomény](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.:  
+1. Zkopírujte ukázkový kód do svého projektu. `endpoint` může to být globální koncový bod nebo vlastní koncový bod [subdomény](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.:  
 
     ```python
     # Import required modules.
@@ -169,7 +169,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Nahraďte `YOUR_ENDPOINT` adresou URL koncového bodu na portálu a odeberte část "Bing/v 7.0" z koncového bodu.
 
-1. Spusťte program. Například: `python your_program.py`.
+1. Spustíte program. Příklad: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definice funkcí a filtrování výsledků
 
@@ -177,7 +177,7 @@ Teď, když jste provedli první volání rozhraní API Bingu pro vyhledávání
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Omezení počtu výsledků vrácených Bingem
 
-Tato ukázka používá `count` parametry a `offset` k omezení počtu vrácených výsledků pomocí [ `search` metody](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)sady SDK. Vytiskne se `name` a `url` prvního výsledku.
+Tato ukázka používá `count` parametry a `offset` k omezení počtu vrácených výsledků pomocí [ `search` metody](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)sady SDK. Vytiskne se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
 
@@ -212,7 +212,7 @@ Tato ukázka používá `count` parametry a `offset` k omezení počtu vrácený
             print("Encountered exception. {}".format(err))
     ```
 
-1. Spusťte program.
+1. Spustíte program.
 
 ### <a name="filter-for-news-and-freshness"></a>Filtrování zpráv podle stáří
 
@@ -262,11 +262,11 @@ Tato ukázka používá `response_filter` parametry a `freshness` k filtrování
     web_search_with_response_filter(subscription_key)
     ```
 
-1. Spusťte program.
+1. Spustíte program.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
-Tato ukázka používá `answer_count` parametry, `promote` a `safe_search` k filtrování výsledků hledání pomocí [ `search` metody](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)sady SDK. Zobrazí se `name` a `url` prvního výsledku.
+Tato ukázka používá `answer_count` parametry, `promote` a `safe_search` k filtrování výsledků hledání pomocí [ `search` metody](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)sady SDK. Zobrazí se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
 
@@ -307,7 +307,7 @@ Tato ukázka používá `answer_count` parametry, `promote` a `safe_search` k fi
             print("Encountered exception. {}".format(err))
     ```
 
-1. Spusťte program.
+1. Spustíte program.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -318,6 +318,6 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-* [Referenční informace k sadě Azure Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)
+* [Referenční informace k sadě Azure Python SDK](/python/api/azure-cognitiveservices-search-websearch/)

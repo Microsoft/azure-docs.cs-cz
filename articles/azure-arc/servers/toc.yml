@@ -1,0 +1,106 @@
+- name: Dokumentace k serverům s podporou služby Azure Arc
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o serverech s podporou služby Azure Arc
+      href: overview.md
+    - name: Novinky agenta Connected Machine
+      href: agent-release-notes.md
+- name: Rychlé starty
+  items:
+    - name: Povolení agenta Servery s podporou služby Arc
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: Kurzy
+  items:
+    - name: Přiřazení zásad pro posouzení dodržování předpisů
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: Monitorování počítače
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: Přehled zabezpečení
+          href: security-overview.md
+- name: Návody
+  items:
+    - name: Připojení ke službě Azure Arc
+      items:
+        - name: Přehled agenta připojeného počítače
+          href: agent-overview.md
+        - name: Plánování nasazení v měřítku
+          href: plan-at-scale-deployment.md
+        - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+          href: onboard-portal.md
+        - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+          href: onboard-service-principal.md
+        - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
+          href: onboard-dsc.md
+        - name: Připojení počítačů z platformy Windows Admin Center
+          href: onboard-windows-admin-center.md
+        - name: Připojení počítačů ke službě Azure Arc s využitím PowerShellu
+          href: onboard-powershell.md
+    - name: Spravovat
+      items:
+        - name: Rozšíření virtuálních počítačů
+          items:
+            - name: Přehled
+              href: manage-vm-extensions.md
+            - name: Správa rozšíření z portálu
+              href: manage-vm-extensions-portal.md
+            - name: Správa rozšíření pomocí rozhraní příkazového řádku
+              href: manage-vm-extensions-cli.md
+            - name: Správa rozšíření pomocí PowerShellu
+              href: manage-vm-extensions-powershell.md
+            - name: Nasazení rozšíření pomocí šablony ARM
+              href: manage-vm-extensions-template.md
+        - name: Použití spravovaných identit na serveru
+          href: managed-identity-authentication.md
+        - name: Správa agenta
+          href: manage-agent.md
+        - name: Migrovat počítač napříč oblastmi
+          href: manage-howto-migrate.md
+    - name: Scénáře
+      items:
+        - name: Onboarding do Azure Sentinelu
+          href: scenario-onboard-azure-sentinel.md
+        - name: Onboarding do služby Azure Security Center
+          href: ../../security-center/quickstart-onboard-machines.md
+    - name: Řešení potíží
+      items:
+        - name: Problémy s připojením agentů
+          href: troubleshoot-agent-onboard.md
+        - name: Problémy s rozšířením virtuálního počítače
+          href: troubleshoot-vm-extensions.md
+- name: Referenční informace
+  items:
+    - name: Rezidence dat
+      href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
+    - name: Azure Stack HCI REST
+      href: /rest/api/stackhci
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Přejít
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/compute/resourcemanagement
+    - name: JavaScript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md
+- name: Zdroje a prostředky
+  items:
+    - name: Rychlé zprovoznění služby Azure Arc
+      href: 'https://azurearcjumpstart.io'

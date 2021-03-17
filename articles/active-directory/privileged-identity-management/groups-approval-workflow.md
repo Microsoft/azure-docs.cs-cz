@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3fbb92c2e3623f5fd9571cd94ae521a41139dd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505858"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536983"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Schvalování žádostí o aktivaci pro členy a vlastníky skupiny privilegovaného přístupu (Preview)
 
@@ -32,7 +32,7 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti o role
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role prostředku Azure čeká na vaše schválení. Můžete zobrazit nevyřízené žádosti v Privileged Identity Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -46,7 +46,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
 1. Vyhledejte a vyberte žádost, kterou chcete schválit, a vyberte **schválit**.
 
-    ![Schválení žádostí – podokno schválení nebo odepření s podrobnostmi a polem odůvodnění](./media/groups-approval-workflow/groups-confirm-approval.png)
+    ![Snímek obrazovky zobrazující stránku schválení požadavků se zvýrazněnými tlačítky schválit a potvrdit](./media/groups-approval-workflow/groups-confirm-approval.png)
 
 1. Do pole **odůvodnění** zadejte obchodní odůvodnění.
 

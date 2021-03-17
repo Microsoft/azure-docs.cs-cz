@@ -5,19 +5,19 @@ author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
-ms.custom: mvc
-ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631477"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747771"
 ---
 # <a name="using-openfaas-on-aks"></a>Používání OpenFaaS v AKS
 
 [OpenFaaS][open-faas] je architektura pro sestavování funkcí bez serveru prostřednictvím použití kontejnerů. Jako otevřený zdrojový projekt získal v rámci komunity rozsáhlé přijetí. Tento dokument popisuje, jak nainstalovat a používat OpenFaas v clusteru Azure Kubernetes Service (AKS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto článku budete potřebovat následující.
 
@@ -91,7 +91,8 @@ alertmanager-config  1     20s
 NOTES:
 To verify that openfaas has started, run:
 
-  kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
+```console
+kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
 Pro přístup k bráně OpenFaaS se vytvoří veřejná IP adresa. Pokud chcete načíst tuto IP adresu, použijte příkaz [kubectl Get Service][kubectl-get] . Přiřazení IP adresy službě může trvat několik minut.
@@ -131,9 +132,9 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 Teď, když je OpenFaaS funkční, vytvořte funkci pomocí portálu OpenFaas.
 
-Klikněte na **nasadit novou funkci** a vyhledejte **FIGlet**. Vyberte funkci FIGlet a klikněte na **nasadit**.
+Klikněte na **nasadit novou funkci** a vyhledejte **FIGlet** . Vyberte funkci FIGlet a klikněte na **nasadit** .
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Snímek obrazovky se zobrazí dialogové okno nasadit novou funkci s textem FIGlet na řádku pro hledání.](media/container-service-serverless/figlet.png)
 
 K vyvolání funkce použijte oblé. V následujícím příkladu nahraďte IP adresu bránou OpenFaas.
 

@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Pomocí těchto ukázek a návodů se dozvíte, jak zpracovávat běžné úlohy a scénáře pomocí Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cda5dfd936243602775e1f4f965032b9d746b0b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012565"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519758"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
 
@@ -23,12 +22,12 @@ Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového k�
 > [!NOTE]
 > Další informace o tom, jak spustit poznámkové bloky Jupyter na virtuálních počítačích pro datové vědy, najdete v části [Access Jupyter](#access-jupyter) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné spustit tyto ukázky, je nutné zřídit [Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md).
 
 ## <a name="available-samples"></a>Dostupné ukázky
-| Kategorie ukázek | Popis | Umístění |
+| Kategorie ukázek | Description | Umístění |
 | ------------- | ------------- | ------------- |
 | Jazyk R  | Ukázky ilustrují scénáře, jako je například připojení k úložištím cloudových dat založených na Azure a postup porovnání Open Source R a Microsoft Machine Learning Server. Také vysvětlují, jak zprovoznění modely na Microsoft Machine Learning Server a SQL Server. <br/> [Jazyk R](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Jazyk Python  | Ukázky popisují scénáře, jak se připojit k úložištím cloudových dat založenými na Azure a jak pracovat s Azure Machine Learning.  <br/> [Jazyk Python](#python-language) | <br/>`~notebooks` <br/><br/>|

@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078122"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213993"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Rychlý Start: vytvoření a nasazení pracovního postupu aplikace logiky pomocí šablony ARM
 
@@ -49,7 +49,7 @@ Použijte možnost, kterou chcete použít k nasazení šablony pro rychlý Star
 | Možnost | Popis |
 |--------|-------------|
 | [Azure Portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Pokud vaše prostředí Azure splňuje požadavky a jste obeznámeni s používáním šablon ARM, tyto kroky vám pomůžou se přihlašovat přímo do Azure a otevřít šablonu pro rychlý Start v Azure Portal. Další informace najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Rozhraní příkazového řádku Azure (Azure CLI) je sada příkazů pro vytváření a správu prostředků Azure. Pokud chcete spustit tyto příkazy, potřebujete Azure CLI verze 2,6 nebo novější. Chcete-li zjistit verzi rozhraní příkazového řádku, zadejte `az --version` . Další informace najdete v těchto tématech: <p><p>- [Co je Azure CLI](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Rozhraní příkazového řádku Azure (Azure CLI) je sada příkazů pro vytváření a správu prostředků Azure. Pokud chcete spustit tyto příkazy, potřebujete Azure CLI verze 2,6 nebo novější. Chcete-li zjistit verzi rozhraní příkazového řádku, zadejte `az --version` . Další informace najdete v těchto tématech: <p><p>- [Co je Azure CLI](/cli/azure/what-is-azure-cli) <br>- [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli) |
 | [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model Azure Resource Manager. Další informace najdete v těchto tématech: <p><p>- [Přehled Azure PowerShell](/powershell/azure/azurerm/overview) <br>- [Představení Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az) <br>- [Začínáme s Azure PowerShell](/powershell/azure/get-started-azureps) |
 | [REST API správy prostředků Azure](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure poskytuje rozhraní REST API pro reprezentaci, což jsou koncové body služby, které podporují operace HTTP (metody), které slouží k vytváření, načítání, aktualizaci nebo odstraňování přístupu k prostředkům služby. Další informace najdete v tématu [Začínáme s Azure REST API](/rest/api/azure/). |
 |||
@@ -67,9 +67,9 @@ Použijte možnost, kterou chcete použít k nasazení šablony pro rychlý Star
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Předplatné** | <*Azure – předplatné – název*> | Název předplatného Azure, které se má použít |
-   | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název nové nebo existující skupiny prostředků Azure. Tento příklad používá `Check-Azure-Status-RG` . |
-   | **Oblast** | <*Oblast Azure*> | Oblast datacenter Azure pro použití vaší aplikace logiky Tento příklad používá `West US` . |
-   | **Název aplikace logiky** | <*Logic-App-Name*> | Název, který se má použít pro vaši aplikaci logiky. Tento příklad používá `Check-Azure-Status-LA` . |
+   | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název nové nebo existující skupiny prostředků Azure. Tento příklad používá `Check-Azure-Status-RG`. |
+   | **Oblast** | <*Oblast Azure*> | Oblast datacenter Azure pro použití vaší aplikace logiky Tento příklad používá `West US`. |
+   | **Název aplikace logiky** | <*Logic-App-Name*> | Název, který se má použít pro vaši aplikaci logiky. Tento příklad používá `Check-Azure-Status-LA`. |
    | **Identifikátor URI testu** | <*identifikátor URI testu*> | Identifikátor URI pro službu, která má být volána podle konkrétního plánu. Tento příklad používá `https://status.azure.com/en-us/status/` , což je stránka stavu Azure. |
    | **Umístění** |  <*Azure-region-All-Resources*> | Oblast Azure, která se má použít pro všechny prostředky, pokud se liší od výchozí hodnoty. V tomto příkladu se používá výchozí hodnota, `[resourceGroup().location]` , která je umístěním skupiny prostředků. |
    ||||
@@ -132,10 +132,10 @@ Další informace najdete v těchto tématech:
    | Hodnota | Popis |
    |-------|-------------|
    | `subscriptionId`| Identifikátor GUID předplatného Azure, který chcete použít |
-   | `resourceGroupName` | Název skupiny prostředků Azure, která se má vytvořit. Tento příklad používá `Check-Azure-Status-RG` . |
+   | `resourceGroupName` | Název skupiny prostředků Azure, která se má vytvořit. Tento příklad používá `Check-Azure-Status-RG`. |
    |||
 
-   Příklad:
+   Například:
 
    ```http
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG?api-version=2019-10-01
@@ -155,11 +155,11 @@ Další informace najdete v těchto tématech:
    | Hodnota | Popis |
    |-------|-------------|
    | `subscriptionId`| Identifikátor GUID předplatného Azure, který chcete použít |
-   | `resourceGroupName` | Název skupiny prostředků Azure, která se má použít. Tento příklad používá `Check-Azure-Status-RG` . |
-   | `deploymentName` | Název, který se má použít pro vaše nasazení. Tento příklad používá `Check-Azure-Status-LA` . |
+   | `resourceGroupName` | Název skupiny prostředků Azure, která se má použít. Tento příklad používá `Check-Azure-Status-RG`. |
+   | `deploymentName` | Název, který se má použít pro vaše nasazení. Tento příklad používá `Check-Azure-Status-LA`. |
    |||
 
-   Příklad:
+   Například:
 
    ```http
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
@@ -188,13 +188,13 @@ Další informace najdete v těchto tématech:
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | `location`| <*Oblast Azure*> | Oblast Azure, která se má použít pro nasazení Tento příklad používá `West US` . |
+   | `location`| <*Oblast Azure*> | Oblast Azure, která se má použít pro nasazení Tento příklad používá `West US`. |
    | `templateLink` : `uri` | <*rychlý Start – šablona – adresa URL*> | Umístění adresy URL šablony pro rychlý Start, která se má použít pro nasazení: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*rychlý Start – šablona-parametr-soubor-URL*> | Umístění adresy URL souboru parametrů šablony pro rychlý Start, který se má použít pro nasazení: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Další informace o souboru parametrů Správce prostředků najdete v těchto tématech: <p><p>- [Vytvořit soubor Správce prostředků parametrů](../azure-resource-manager/templates/parameter-files.md) <br>- [Kurz: použití souborů parametrů k nasazení šablony ARM](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
    | `mode` | <*režim nasazení*> | Spusťte buď přírůstkovou aktualizaci, nebo úplnou aktualizaci. V tomto příkladu `Incremental` je použita výchozí hodnota. Další informace najdete v tématu [režimy nasazení Azure Resource Manager](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
-   Příklad:
+   Například:
 
    ```json
    {
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Další informace najdete v tématu [Azure CLI: AZ Logic Workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
+Další informace najdete v tématu [Azure CLI: AZ Logic Workflow show](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -266,11 +266,11 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | Hodnota | Popis |
 |-------|-------------|
 | `subscriptionId`| Identifikátor GUID předplatného Azure, kde jste nasadili šablonu pro rychlý Start. |
-| `resourceGroupName` | Název skupiny prostředků Azure, do které jste nasadili šablonu pro rychlý Start. Tento příklad používá `Check-Azure-Status-RG` . |
-| `workflowName` | Název aplikace logiky, kterou jste nasadili. Tento příklad používá `Check-Azure-Status-LA` . |
+| `resourceGroupName` | Název skupiny prostředků Azure, do které jste nasadili šablonu pro rychlý Start. Tento příklad používá `Check-Azure-Status-RG`. |
+| `workflowName` | Název aplikace logiky, kterou jste nasadili. Tento příklad používá `Check-Azure-Status-LA`. |
 |||
 
-Příklad:
+Například:
 
 ```http
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Další informace najdete v tématu [Azure CLI: AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Další informace najdete v tématu [Azure CLI: AZ Group Delete](/cli/azure/group#az-group-delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -324,10 +324,10 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 | Hodnota | Popis |
 |-------|-------------|
 | `subscriptionId`| Identifikátor GUID předplatného Azure, kde jste nasadili šablonu pro rychlý Start. |
-| `resourceGroupName` | Název skupiny prostředků Azure, do které jste nasadili šablonu pro rychlý Start. Tento příklad používá `Check-Azure-Status-RG` . |
+| `resourceGroupName` | Název skupiny prostředků Azure, do které jste nasadili šablonu pro rychlý Start. Tento příklad používá `Check-Azure-Status-RG`. |
 |||
 
-Příklad:
+Například:
 
 ```http
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01

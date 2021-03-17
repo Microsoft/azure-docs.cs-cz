@@ -1,20 +1,20 @@
 ---
-title: Nastavení Azure Key Vault pro virtuální počítače se systémem Linux
-description: Jak nastavit Key Vault pro použití s virtuálním počítačem s Azure Resource Manager pomocí Azure CLI.
+title: Nastavení Azure Key Vault pomocí rozhraní příkazového řádku
+description: Jak nastavit Key Vault pro virtuální počítač pomocí Azure CLI.
 author: mimckitt
-manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/24/2017
 ms.author: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fac9e9cb4bc6a4589e27efcf9ec18a378d7407d4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84a88c9c563141d6e6e9ba1584d577addcade8fe
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501538"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565219"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Jak nastavit Key Vault pro virtuální počítače pomocí Azure CLI
 

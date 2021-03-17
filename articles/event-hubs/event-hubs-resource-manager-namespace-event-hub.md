@@ -4,12 +4,12 @@ description: 'Rychlý Start: vytvoření oboru názvů Event Hubs s centrem udá
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: dbec62c182fe804ba45cae2f9e40c189b9bc0279
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e6da5fbe3c0e269f5ceb2c3627df27ccf0e3b30b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641122"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88933847"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Rychlý Start: vytvoření centra událostí pomocí šablony ARM
 
@@ -92,10 +92,10 @@ Write-Host "Press [ENTER] to continue ..."
 
 V tomto článku jste vytvořili obor názvů Event Hubs a centrum událostí v oboru názvů. Podrobné pokyny k odesílání událostí do (nebo) přijímání událostí z centra událostí najdete v tématu kurzy pro **odesílání a příjem** :
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Přejít](event-hubs-go-get-started-send.md)
 - [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)

@@ -8,19 +8,19 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651722"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504299"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -60,12 +60,12 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - Použití konfigurace clusteru s více identifikátory SID pro služby SAP Central Services je podporované v hostovaných operačních systémech Windows, SLES a RHEL v Azure. Mějte na paměti, že poloměr vysokého počtu ASCS/SCS se dá zvýšit na takový cluster s více identifikátory SID. Dokumentaci k příslušnému scénáři hostujícího operačního systému najdete v těchto článcích:
         - [Vysoká dostupnost ASCS/SCS instance SAP pomocí clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku v Azure](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID](./high-availability-guide-suse-multi-sid.md)
+        - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID](./high-availability-guide-rhel-multi-sid.md)
     - Architektura vysoké dostupnosti a zotavení po havárii.
         - Na základě RTO a RPO definujte, co má architektura vysoké dostupnosti a zotavení po havárii vypadat jako.
         - V případě vysoké dostupnosti v rámci zóny si přečtěte, co má požadovaný systém DBMS nabídnout v Azure. Většina balíčků DBMS nabízí synchronní metody synchronního aktivního pohotovostního režimu, které doporučujeme pro produkční systémy. Také si projděte dokumentaci týkající se SAP pro různé databáze a začněte s [důležitými informacemi o nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md) a související dokumenty.
-           Použití clusteringu s podporou převzetí služeb při selhání Windows serveru s konfigurací sdíleného disku pro vrstvu DBMS, například [popsané pro SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017), není podporované. Místo toho použijte řešení jako:
+           Použití clusteringu s podporou převzetí služeb při selhání Windows serveru s konfigurací sdíleného disku pro vrstvu DBMS, například [popsané pro SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server), není podporované. Místo toho použijte řešení jako:
            - [AlwaysOn SQL Serveru](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [Replikace systému HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -109,7 +109,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
            -  [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
            -  [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
    2. Úložiště.
-        - Podívejte se na dokument [Azure Storage typy pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) .
+        - Podívejte se na dokument [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) .
         - Minimálně použijte [úložiště Azure SSD úrovně Standard](../../disks-types.md#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
         - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](../../disks-types.md#standard-hdd).
         - [Azure Premium Storage](../../disks-types.md#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.
@@ -127,7 +127,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Vyhodnoťte a otestujte cestu k datům mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
             -  Umístění [virtuálních síťových zařízení Azure](https://azure.microsoft.com/solutions/network-appliances/) v komunikační cestě mezi aplikací SAP a vrstvou DBMS systémů SAP založených na SAP NetWeaver, Hybris nebo S/4HANA se nepodporuje.
             -  Umístění aplikační vrstvy SAP a SAP DBMS v různých virtuálních sítích Azure, které nejsou partnerské vztahy, se nepodporuje.
-            -  Pomocí [skupin zabezpečení aplikace a pravidel skupiny zabezpečení sítě](../../../virtual-network/security-overview.md) můžete definovat trasy mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
+            -  Pomocí [skupin zabezpečení aplikace a pravidel skupiny zabezpečení sítě](../../../virtual-network/network-security-groups-overview.md) můžete definovat trasy mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
         - Ujistěte se, že je na virtuálních počítačích, které se používají v aplikační vrstvě SAP a ve vrstvě SAP DBMS, zapnuté [akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) . Mějte na paměti, že pro podporu akcelerovaných síťových služeb v Azure jsou potřeba různé úrovně operačního systému:
             - Windows Server 2012 R2 nebo novější
             - SUSE Linux 12 SP3 nebo novější.
@@ -135,10 +135,10 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
             - Oracle Linux 7,5. Pokud používáte jádro RHCKL, je vyžadována verze 3.10.0-862.13.1. el7. Pokud používáte jádro Oracle UEK, je vyžadována verze 5.
         - Otestujte a vyhodnoťte latenci sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS podle poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
         - Ujistěte se, že nasazení interního nástroje jsou nastavená tak, aby používala přímé vrácení serveru. Toto nastavení omezí latenci při použití Azure ILBs pro konfigurace s vysokou dostupností na vrstvě DBMS.
-        - Pokud používáte Azure Load Balancer společně s hostovanými operačními systémy Linux, ověřte, zda je parametr sítě Linux **net. IPv4. tcp_timestamps** nastaven na **hodnotu 0**. Toto doporučení je v konfliktu s doporučeními ve starších verzích [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). Poznámka SAP je nyní aktualizována na stav, že tento parametr musí být nastaven na **hodnotu 0** , aby fungoval se službou Azure Load Balancer.
-        - Pokud chcete dosáhnout optimální latence sítě, zvažte použití [skupin umístění blízkosti Azure](../../linux/co-location.md) . Další informace najdete v tématu [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+        - Pokud používáte Azure Load Balancer společně s hostovanými operačními systémy Linux, ověřte, zda je parametr sítě Linux **net.IPv4.tcp_timestamps** nastaven na **hodnotu 0**. Toto doporučení je v konfliktu s doporučeními ve starších verzích [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). Poznámka SAP je nyní aktualizována na stav, že tento parametr musí být nastaven na **hodnotu 0** , aby fungoval se službou Azure Load Balancer.
+        - Pokud chcete dosáhnout optimální latence sítě, zvažte použití [skupin umístění blízkosti Azure](../../co-location.md) . Další informace najdete v tématu [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
    4. Nasazení s vysokou dostupností a zotavením po havárii.
-        - Pokud nasadíte vrstvu aplikace SAP bez definování konkrétní zóny dostupnosti Azure, ujistěte se, že všechny virtuální počítače, na kterých běží instance dialogových oken SAP nebo instance middlewaru s jedním systémem SAP, jsou nasazené ve [skupině dostupnosti](../../windows/manage-availability.md).
+        - Pokud nasadíte vrstvu aplikace SAP bez definování konkrétní zóny dostupnosti Azure, ujistěte se, že všechny virtuální počítače, na kterých běží instance dialogových oken SAP nebo instance middlewaru s jedním systémem SAP, jsou nasazené ve [skupině dostupnosti](../../availability-set-overview.md).
         - Pokud nepotřebujete vysokou dostupnost pro centrální služby SAP a DBMS, můžete tyto virtuální počítače nasadit do stejné skupiny dostupnosti jako aplikační vrstva SAP.
         - Pokud chráníte službu SAP Central Services a vrstvu DBMS pro zajištění vysoké dostupnosti pomocí pasivní replikace, umístěte tyto dva uzly pro centrální služby SAP v jedné samostatné skupině dostupnosti a dva uzly DBMS v jiné skupině dostupnosti.
         - Pokud nasadíte do Zóny dostupnosti Azure, nemůžete použít skupiny dostupnosti. Musíte ale mít jistotu, že nasadíte aktivní a pasivní uzly centrální služby do dvou různých Zóny dostupnosti. Použijte Zóny dostupnosti, které mají nejnižší latenci mezi nimi.
@@ -161,7 +161,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
             -   [Podpora SAP Poznámka #2753418 – potenciální snížení výkonu z důvodu záložního použití časovače](https://launchpad.support.sap.com/#/notes/2753418)
             -   [Podpora SAP Poznámka #2791572 – snížení výkonu kvůli chybějící podpoře VDSO pro Hyper-V v Azure](https://launchpad.support.sap.com/#/notes/2791572)
             -   [Poznámka k podpoře SAP #2382421 – optimalizace konfigurace sítě v HANA a na úrovni operačního systému](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [Poznámka k podpoře SAP #2694118 – doplněk Red Hat Enterprise Linux HA v Azure](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [Poznámka k podpoře SAP #2694118 – Red Hat Enterprise Linux HA Add-On v Azure](https://launchpad.support.sap.com/#/notes/2694118)
             -   [Poznámka k podpoře SAP #1984787 – SUSE LINUX Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787)
             -   [Poznámka k podpoře SAP #2002167-Red Hat Enterprise Linux 7. x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [Poznámka k podpoře SAP #2292690 – SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690)
@@ -179,7 +179,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
    4. Testování funkcí a architektury DR mezi oblastmi
 1. Kontroly zabezpečení.
    1. Otestuje platnost architektury Azure řízení přístupu na základě role (Azure RBAC). Cílem je oddělení a omezení přístupu a oprávnění různých týmů. Například členové týmu SAP by měli být schopní nasadit virtuální počítače a přiřadit disky z Azure Storage do dané virtuální sítě Azure. Ale tým pro SAP by neměl mít možnost vytvářet vlastní virtuální sítě ani měnit nastavení stávajících virtuálních sítí. Členové síťového týmu by neměli moci nasadit virtuální počítače do virtuálních sítí, ve kterých jsou spuštěné aplikace SAP a virtuální počítače s DBMS. Ani by členové tohoto týmu nemohli měnit atributy virtuálních počítačů nebo dokonce odstraňovat virtuální počítače nebo disky.  
-   1.  Ověřte, že [Skupina zabezpečení sítě a pravidla ASC](../../../virtual-network/security-overview.md) pracují podle očekávání a chrání chráněné prostředky.
+   1.  Ověřte, že [Skupina zabezpečení sítě a pravidla ASC](../../../virtual-network/network-security-groups-overview.md) pracují podle očekávání a chrání chráněné prostředky.
    1.  Ujistěte se, že jsou šifrované všechny prostředky, které je třeba šifrovat. Definuje a implementuje procesy pro zálohování certifikátů, ukládání a přístup k těmto certifikátům a obnovování šifrovaných entit.
    1.  Použijte [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) pro disky s operačním systémem, kde je to možné, z pohledu na operační systém – bod podpory.
    1.  Ujistěte se, že nepoužíváte příliš mnoho vrstev šifrování. V některých případech má smysl použít Azure Disk Encryption společně s jednou z transparentní šifrování datch metod DBMS k ochraně různých disků nebo komponent na stejném serveru.  Na serveru SAP DBMS můžete například povolit Azure Disk Encryption (ADE) na spouštěcím disku operačního systému (Pokud operační systém podporuje ADE) a tyto datové disky nepoužívá soubory pro trvalost dat DBMS.  Příkladem je použití ADE na disku, který uchovává šifrovací klíče DBMS TDE.
@@ -208,12 +208,12 @@ Během této fáze obvykle nasazujete vývojové systémy, systémy testování 
 8.  Podívejte [se na web SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) pro nové SKU s certifikací Hana v Azure. Porovnejte ceny nových SKU s těmi, které jste naplánovali použít. Nakonec proveďte potřebné změny, abyste mohli používat ty, které mají nejlepší poměr ceny a výkonu.
 9.  Přizpůsobte skripty pro nasazení a použijte nové typy virtuálních počítačů a zahrňte nové funkce Azure, které chcete použít.
 10. Po nasazení infrastruktury otestujete a vyhodnoťte latenci sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS podle poznámky podpory SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](./hana-network-architecture.md#networking-architecture-for-hana-large-instance). Ujistěte se, že žádná omezení uvedená v části [požadavky týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md#azure-network-considerations) a [Konfigurace infrastruktury SAP Hana a operací v Azure](./hana-vm-operations.md) se vztahují na vaše nasazení.
-11. Zajistěte, aby byly virtuální počítače nasazené do správné [skupiny umístění služby Azure Proximity](../../linux/co-location.md), jak je popsáno v tématu [skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+11. Zajistěte, aby byly virtuální počítače nasazené do správné [skupiny umístění služby Azure Proximity](../../co-location.md), jak je popsáno v tématu [skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 11. Před použitím úlohy proveďte všechny další kontroly uvedené pro fázi ověření konceptu.
 12. Jak zatížení platí, zaznamenejte spotřebu prostředků systémů v Azure. Porovnejte tuto spotřebu se záznamy z vaší staré platformy. Pokud zjistíte, že máte velké rozdíly, upravte velikost virtuálních počítačů v budoucích nasazeních. Pamatujte na to, že když se klidnějších, úložiště a šířka pásma sítě virtuálních počítačů, sníží se i.
     - [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Sizes for Linux virtual machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Experimentujte s funkcí a procesy systémové kopie. Cílem je zjednodušit zkopírování vývojového systému nebo testovacího systému, takže projektové týmy můžou rychle získat nové systémy. Zvažte použití [SAP Lama](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) pro tyto úlohy.
+13. Experimentujte s funkcí a procesy systémové kopie. Cílem je zjednodušit zkopírování vývojového systému nebo testovacího systému, takže projektové týmy můžou rychle získat nové systémy. 
 14. Optimalizujte a doladit přístup, oprávnění a procesy založené na rolích týmu do Azure, abyste se ujistili, že máte oddělení povinností. Ve stejnou chvíli se ujistěte, že všechny týmy můžou provádět své úkoly v infrastruktuře Azure.
 15. Cvičení, testování a dokumentace postupů vysoké dostupnosti a zotavení po havárii, které zaměstnancům umožní provádět tyto úlohy. Identifikujte nedostatky a přizpůsobte nové funkce Azure, které Integrujte do svých nasazení.
 
@@ -242,15 +242,15 @@ V této fázi můžete shromažďovat, co jste se seznámili a zjistili během n
     - Azure Premium Storage se používá pro disky citlivé na latenci nebo kde se vyžaduje [smlouva SLA s jedním virtuálním počítačem 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) .
     - Azure Akcelerátor zápisu je nasazený správně.
         - Ujistěte se, že se v rámci virtuálních počítačů, prostorů úložiště nebo sad prokládaných svazků správně vytvořily na discích, které vyžadují Akcelerátor zápisu.
-        - Ověřte [konfiguraci softwarového pole RAID v systému Linux](../../linux/configure-raid.md).
-        - Ověřte [konfiguraci LVM na virtuálních počítačích se systémem Linux v Azure](../../linux/configure-lvm.md).
+        - Ověřte [konfiguraci softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
+        - Ověřte [konfiguraci LVM na virtuálních počítačích se systémem Linux v Azure](/previous-versions/azure/virtual-machines/linux/configure-lvm).
     - Služby [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) se používají výhradně.
     - Virtuální počítače se nasadily do správných skupin dostupnosti a Zóny dostupnosti.
     - [Akcelerace sítě Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) je povolená na virtuálních počítačích, které se používají v aplikační vrstvě SAP a ve vrstvě SAP DBMS.
     - Žádná [virtuální síťová zařízení Azure](https://azure.microsoft.com/solutions/network-appliances/) nejsou v komunikačních cestách mezi aplikací SAP a vrstvou DBMS systémů SAP založenou na SAP NetWeaver, Hybris nebo S/4HANA.
     - Pravidla skupiny zabezpečení aplikace a skupiny zabezpečení sítě umožňují komunikaci podle potřeby a plánované a zablokování komunikace v případě potřeby.
     - Nastavení časového limitu je správně nastaveno, jak je popsáno výše.
-    - Virtuální počítače se nasazují do správné [skupiny umístění služby Azure Proximity](../../linux/co-location.md), jak je popsáno v tématu [skupiny umístění pro Azure v blízkosti pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+    - Virtuální počítače se nasazují do správné [skupiny umístění služby Azure Proximity](../../co-location.md), jak je popsáno v tématu [skupiny umístění pro Azure v blízkosti pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
     - Latence sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS se testuje a ověřuje, jak je popsáno v tématu poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
     - Šifrování bylo implementováno tam, kde je to nutné, a s odpovídající metodou šifrování.
     - Rozhraní a další aplikace mohou připojit nově nasazenou infrastrukturu.
@@ -277,7 +277,7 @@ Během fáze přechodu do živého prostředí nezapomeňte postupovat podle pla
         - Zápis na disk v KB/s, na jednotlivé disky
         - Zápis na disk za sekundu, na jednotlivé disky
         - Zápis na disk v mikrosekundách/čteních na jednotlivých discích
-    - Sítě.
+    - Síť:
         - Síťové pakety za sekundu
         - Odchozí síťové pakety za sekundu
         - Síť KB za sekundu

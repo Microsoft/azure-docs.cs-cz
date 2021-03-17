@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9566bcc329b4d148fe9454fe70b556a9010fc4ac
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036466"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890917"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
 
@@ -22,11 +22,11 @@ V tomto článku se dozvíte, jak vytvořit mapu a animovat mapu.
 
 ## <a name="loading-a-map"></a>Načítání mapy
 
-Chcete-li načíst mapu, vytvořte novou instanci [třídy map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map). Při inicializaci mapy předejte ID elementu DIV pro vykreslení mapy a předání sady možností pro použití při načítání mapy. Pokud v oboru názvů nejsou zadány výchozí informace o ověřování `atlas` , bude nutné tyto informace při načítání mapy zadat v možnostech mapování. Mapa načítá několik zdrojů asynchronně pro výkon. V takovém případě po vytvoření instance mapy připojte `ready` `load` událost nebo k mapě a pak přidejte jakýkoliv další kód, který komunikuje s mapou, do obslužné rutiny události. `ready`Událost se aktivuje, jakmile bude mít mapa dostatek prostředků, aby je bylo možné používat programově. `load`Událost je aktivována po úplném načtení počátečního zobrazení mapy. 
+Chcete-li načíst mapu, vytvořte novou instanci [třídy map](/javascript/api/azure-maps-control/atlas.map). Při inicializaci mapy předejte ID elementu DIV pro vykreslení mapy a předání sady možností pro použití při načítání mapy. Pokud v oboru názvů nejsou zadány výchozí informace o ověřování `atlas` , bude nutné tyto informace při načítání mapy zadat v možnostech mapování. Mapa načítá několik zdrojů asynchronně pro výkon. V takovém případě po vytvoření instance mapy připojte `ready` `load` událost nebo k mapě a pak přidejte jakýkoliv další kód, který komunikuje s mapou, do obslužné rutiny události. `ready`Událost se aktivuje, jakmile bude mít mapa dostatek prostředků, aby je bylo možné používat programově. `load`Událost je aktivována po úplném načtení počátečního zobrazení mapy. 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Základní načtení mapy" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Základní načtení mapy" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>základní načtení mapy</a> perem pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -39,7 +39,7 @@ Když se mapa zmenší na celé obrazovce, zobrazí se ve vodorovném směru ví
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -48,10 +48,10 @@ Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderW
 
 Při vytváření mapy je k dispozici několik různých typů možností, které mohou být předány, aby bylo možné přizpůsobit, jak mapa funguje, jak je uvedeno níže.
 
-- [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) a [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) se používají k určení oblasti, kterou má mapa zobrazovat.
-- [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) slouží k určení, jak má mapa spolupracovat se službami, které mapu nasazuje.
-- [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) se používají k určení mapování, které by mělo být ve stylu a vykreslené.
-- [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) slouží k určení způsobu, jakým má mapování dosáhnout při interakci uživatele s mapou. 
+- [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) a [CameraBoundOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions) se používají k určení oblasti, kterou má mapa zobrazovat.
+- [ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions) slouží k určení, jak má mapa spolupracovat se službami, které mapu nasazuje.
+- [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions) se používají k určení mapování, které by mělo být ve stylu a vykreslené.
+- [UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) slouží k určení způsobu, jakým má mapování dosáhnout při interakci uživatele s mapou. 
 
 Tyto možnosti lze také aktualizovat poté, co byla mapa načtena pomocí `setCamera` funkcí, `setServiceOptions` , `setStyle` a `setUserInteraction` . 
 
@@ -81,11 +81,11 @@ map.setCamera({
 });
 ```
 
-V následujícím kódu je vytvořen [objekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) a jsou nastaveny možnosti centrování a přiblížení. Vlastnosti mapy, jako je například střed a úroveň přiblížení, jsou součástí [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions).
+V následujícím kódu je vytvořen [objekt mapy](/javascript/api/azure-maps-control/atlas.map) a jsou nastaveny možnosti centrování a přiblížení. Vlastnosti mapy, jako je například střed a úroveň přiblížení, jsou součástí [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Vytvoření mapy prostřednictvím CameraOptions' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>vytvořením mapy `CameraOptions` prostřednictvím </a>Azure Location Based Services ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Vytvoření mapy prostřednictvím CameraOptions' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>vytvořením mapy `CameraOptions` prostřednictvím </a>Azure Location Based Services ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <a id="setCameraBoundsOptions"></a>
@@ -101,16 +101,16 @@ map.setCamera({
 });
 ```
 
-V následujícím kódu je [objekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) vytvořen pomocí `new atlas.Map()` . Vlastnosti mapy, jako je například, `CameraBoundsOptions` lze definovat prostřednictvím funkce [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) třídy map. Vlastnosti bounds a odsazení jsou nastaveny pomocí `setCamera` .
+V následujícím kódu je [objekt mapy](/javascript/api/azure-maps-control/atlas.map) vytvořen pomocí `new atlas.Map()` . Vlastnosti mapy, jako je například, `CameraBoundsOptions` lze definovat prostřednictvím funkce [SetCamera](/javascript/api/azure-maps-control/atlas.map) třídy map. Vlastnosti bounds a odsazení jsou nastaveny pomocí `setCamera` .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Vytvoření mapy prostřednictvím CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>vytvořením mapy `CameraBoundsOptions` prostřednictvím </a>Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Vytvoření mapy prostřednictvím CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>vytvořením mapy `CameraBoundsOptions` prostřednictvím </a>Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ### <a name="animate-map-view"></a>Animovat zobrazení mapy
 
-Při nastavování možností kamery mapy lze nastavit také [Možnosti animace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) . Tyto možnosti určují typ animace a doby trvání, kterou by měl trvat při přesunu kamery.
+Při nastavování možností kamery mapy lze nastavit také [Možnosti animace](/javascript/api/azure-maps-control/atlas.animationoptions) . Tyto možnosti určují typ animace a doby trvání, kterou by měl trvat při přesunu kamery.
 
 ```javascript
 map.setCamera({
@@ -125,7 +125,7 @@ V následujícím kódu vytvoří první blok kódu mapu a nastaví styly pro vl
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Animovat zobrazení mapy' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/WayvbO/'>zobrazení mapy animace</a> perem Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Animovat zobrazení mapy' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/WayvbO/'>zobrazení mapy animace</a> perem Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="request-transforms"></a>Transformace požadavků
@@ -135,7 +135,7 @@ Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapový
 - Přidejte další záhlaví do požadavků dlaždic. To se často provádí pro služby chráněné heslem.
 - Upravte adresy URL tak, aby se spouštěly požadavky prostřednictvím proxy služby.
 
-[Možnosti služby](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) mapy mají a `transformRequest` , které lze použít k úpravě všech požadavků, které jsou provedeny v mapě před jejich provedením. `transformRequest`Možnost je funkce, která přijímá dva parametry, adresu URL řetězce a typ prostředku řetězec, který označuje, k čemu je požadavek použit. Tato funkce musí vracet [requestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) výsledek.
+[Možnosti služby](/javascript/api/azure-maps-control/atlas.serviceoptions) mapy mají a `transformRequest` , které lze použít k úpravě všech požadavků, které jsou provedeny v mapě před jejich provedením. `transformRequest`Možnost je funkce, která přijímá dva parametry, adresu URL řetězce a typ prostředku řetězec, který označuje, k čemu je požadavek použit. Tato funkce musí vracet [requestParameters](/javascript/api/azure-maps-control/atlas.requestparameters) výsledek.
 
 ```JavaScript
 transformRequest: (url: string, resourceType: string) => RequestParameters
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>Vyzkoušejte si kód
 
-Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kartě js** a zobrazit změny zobrazení mapy na **kartě výsledek**. Můžete také kliknout na **Upravit v CodePen**, v pravém horním rohu a upravit kód v CodePen.
+Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kartě js** a zobrazit změny zobrazení mapy na **kartě výsledek** . Můžete také kliknout na **Upravit v CodePen** , v pravém horním rohu a upravit kód v CodePen.
 
 <a id="relatedReference"></a>
 
@@ -180,7 +180,7 @@ Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kar
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
@@ -197,4 +197,4 @@ Další funkce pro přidání funkcí do aplikace najdete v příkladech kódu:
 > [Přidání ovládacích prvků do mapy](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

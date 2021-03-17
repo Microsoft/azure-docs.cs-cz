@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046439"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531645"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Když velikost příchozích dat překročí konfiguraci vašeho prostředí, může docházet k latenci nebo omezování v Azure Time Series Insights.
 
@@ -62,9 +65,9 @@ Výstrahy umožňují diagnostikovat a zmírnit problémy s latencí, ke kterým
    |**Příchozí přenos dat přijal neplatné zprávy.**     | Počet neplatných zpráv přečtených ze všech zdrojů událostí Azure Event Hubs nebo Azure IoT Hub.      |
    |**Příchozí zprávy příchozího přenosu dat**   | Počet zpráv načtených ze všech Event Hubs nebo zdrojů událostí centra IoT.        |
    |**Uložené bajty příchozího přenosu dat**     | Celková velikost uložených událostí a dostupných pro dotaz Velikost je vypočítána pouze v hodnotě vlastnosti.        |
-   |**Uložené události** příchozího přenosu dat    |   Počet sloučených událostí uložených a dostupných pro dotaz      |
+   |**Uložené události** příchozího přenosu dat     |   Počet sloučených událostí uložených a dostupných pro dotaz      |
    |**Prodleva při příjmu příchozího přenosu zpráv**   |  Rozdíl v sekundách mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu.      |
-   |**Prodleva počtu přijatých zpráv příchozího** přenosu dat   |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
+   |**Prodleva počtu přijatých zpráv příchozího** přenosu dat    |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
 
    Vyberte **Hotovo**.
 
@@ -74,17 +77,17 @@ Výstrahy umožňují diagnostikovat a zmírnit problémy s latencí, ke kterým
 
 ## <a name="throttling-and-ingress-management"></a>Omezování a správa pro příchozí přenosy
 
-* Pokud jste omezili omezení, bude zaregistrována hodnota *časové prodlevy přijatých zpráv příchozího* přenosu informací o tom, kolik sekund za vaším Azure Time Series Insights prostředím probíhá od skutečného času, kdy zpráva narazí na zdroj události (s výjimkou času indexování appx). 30-60 sekund).  
+- Pokud jste omezili omezení, bude zaregistrována hodnota *časové prodlevy přijatých zpráv příchozího* přenosu informací o tom, kolik sekund za vaším Azure Time Series Insights prostředím probíhá od skutečného času, kdy zpráva narazí na zdroj události (s výjimkou času indexování appx). 30-60 sekund).  
 
   *Prodleva počtu přijatých zpráv příchozího* přenosu dat by měla mít také hodnotu, která vám umožní určit, kolik zpráv je za vás.  Nejjednodušší způsob, jak se získat, je zvýšit kapacitu vašeho prostředí na velikost, která vám umožní překonat rozdíl.  
 
   Pokud například vaše prostředí S1 předchází prodlevě 5 000 000 zpráv, můžete zvýšit velikost svého prostředí na šest jednotek po dobu zhruba dne, abyste se mohli zachytit.  Můžete ještě víc zvýšit, abyste rychleji zachytili. Při počátečním zřizování prostředí, zejména v případě, že ho připojíte ke zdroji událostí, který už obsahuje události nebo když hromadně nahráváte spoustu historických dat, je období zachycení běžným výskytem.
 
-* Další možností je nastavit upozornění na **uložené události** příchozího přenosu >= mezní hodnota mírně pod celkovou kapacitou prostředí po dobu 2 hodin.  Tato výstraha vám pomůže pochopit, jestli máte neustále na kapacitě, což znamená vysokou pravděpodobnost latence. 
+- Další možností je nastavit upozornění na **uložené události** příchozího přenosu >= mezní hodnota mírně pod celkovou kapacitou prostředí po dobu 2 hodin.  Tato výstraha vám pomůže pochopit, jestli máte neustále na kapacitě, což znamená vysokou pravděpodobnost latence.
 
   Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za minutu příchozího přenosu dat), můžete nastavit upozornění na **uložené události** příchozího přenosu dat pro >= 1900 události na 2 hodiny. Pokud tuto prahovou hodnotu trvale obdržíte, a proto aktivujete upozornění, pravděpodobně jste v souladu se zřízením.  
 
-* Pokud se domníváte, že jste omezili, můžete porovnat **přijaté zprávy s příchozími** zprávami ve zdroji událostí.  Pokud příchozí přenos dat do centra událostí je větší než vaše **příchozí zprávy**, vaše Azure Time Series Insights jsou nejspíš omezené.
+- Pokud se domníváte, že jste omezili, můžete porovnat **přijaté zprávy s příchozími** zprávami ve zdroji událostí.  Pokud příchozí přenos dat do centra událostí je větší než vaše **příchozí zprávy**, vaše Azure Time Series Insights jsou nejspíš omezené.
 
 ## <a name="improving-performance"></a>Zlepšení výkonu
 

@@ -1,7 +1,7 @@
 ---
 title: Opětovné hostování sálového počítače na virtuálních počítačích Azure
 description: Využijte virtuální počítače na Microsoft Azure a znovu hostovat své sálové úlohy, jako jsou systémy založené na IBM Z.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7ae20b484b4c22c19b856c237d85efe31dc01407
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835523"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553540"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 
@@ -33,7 +33,7 @@ Některé úlohy z sálových počítačů je možné migrovat do Azure s relati
 
 ## <a name="mainframe-migration"></a>Migrace mainframů
 
-Znovu hostovat, znovu sestavit, nahradit nebo vyřadit? IaaS nebo PaaS? Pro určení správné strategie migrace pro vaši sálovou aplikaci si Projděte příručku [migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) v cetrum architektury Azure.
+Znovu hostovat, znovu sestavit, nahradit nebo vyřadit? IaaS nebo PaaS? Pro určení správné strategie migrace pro vaši sálovou aplikaci si Projděte příručku [migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)  v cetrum architektury Azure.
 
 ## <a name="micro-focus-rehosting-platform"></a>Platforma pro opětovné hostování platformy Micro
 
@@ -70,7 +70,7 @@ Jak začít:
 
 Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není totožný s původním prostředím, ale nabízí podobnou dostupnost a škálování jako IBM DB2 pro z/OS běžící v paralelní instalaci Sysplex.
 
-Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](../../linux/ibm-db2-purescale-azure.md).
+Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](.//ibm/ibm-db2-purescale-azure.md).
 
 ## <a name="considerations"></a>Požadavky
 

@@ -5,16 +5,18 @@ description: Přečtěte si o modelování dat v databázích NoSQL, rozdílech 
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136035"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333235"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Databáze bez schématu, jako je například Azure Cosmos DB, usnadňují ukládání a dotazování nestrukturovaných a částečně strukturovaných dat, měli byste věnovat si nějaké informace o datovém modelu a získat tak většinu služby z pohledu výkonu a škálovatelnosti a nejnižších nákladů.
 
@@ -116,7 +118,7 @@ Proveďte tento fragment kódu JSON.
 }
 ```
 
-Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené**, což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
+Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené** , což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
 
 Jak velikost položky zvětšuje schopnost přenášet data prostřednictvím sítě a také číst a aktualizovat položku ve velkém měřítku, bude to mít vliv na.
 
@@ -440,6 +442,6 @@ Stejně jako neexistuje žádný jediný způsob, jak znázornit data na obrazov
 
 Další informace o Azure Cosmos DB najdete na stránce [dokumentace](https://azure.microsoft.com/documentation/services/cosmos-db/) ke službě.
 
-Další informace o tom, jak horizontálních oddílů data napříč více oddíly, najdete [v tématu dělení dat v Azure Cosmos DB](sql-api-partition-data.md).
+Další informace o tom, jak horizontálních oddílů data napříč více oddíly, najdete [v tématu dělení dat v Azure Cosmos DB](partitioning-overview.md).
 
-Pokud chcete zjistit, jak modelovat data a rozdělit je na Azure Cosmos DB pomocí reálného příkladu, přečtěte si téma [modelování a vytváření oddílů dat – příklad reálného světa](how-to-model-partition-example.md).
+Pokud se chcete dozvědět, jak modelovat data a rozdělit je na Azure Cosmos DB s využitím reálného příkladu, přečtěte si téma [ modelování a dělení dat – příklad Real-World](how-to-model-partition-example.md).

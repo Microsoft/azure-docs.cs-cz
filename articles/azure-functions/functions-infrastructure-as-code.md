@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506226"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494035"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -47,7 +47,7 @@ Pro aplikaci Function App je vyžadován účet služby Azure Storage. Potřebuj
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2019-04-01",
+    "apiVersion": "2019-06-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
     "sku": {
@@ -66,11 +66,11 @@ Tyto vlastnosti jsou uvedeny v `appSettings` kolekci v `siteConfig` objektu:
 "appSettings": [
     {
         "name": "AzureWebJobsStorage",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
     },
     {
         "name": "AzureWebJobsDashboard",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
     }
 ]
 ```
@@ -133,15 +133,15 @@ Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web
 ```
 
 > [!IMPORTANT]
-> Pokud explicitně definujete plán hostování, bude v poli dependsOn potřeba další položka:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> Pokud explicitně definujete plán hostování, bude v poli dependsOn potřeba další položka: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 Aplikace Function App musí zahrnovat tato nastavení aplikace:
 
-| Název nastavení                 | Popis                                                                               | Příklady hodnot                        |
+| Název nastavení                 | Description                                                                               | Příklady hodnot                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime služby Functions používá pro interní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
-| FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node` , `java` , `python` nebo`powershell` |
+| FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~3`                                  |
+| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node` , `java` , `python` nebo `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě `node` , že používáte sadu jazyků, určuje verzi, která se má použít.              | `10.14.1`                             |
 
 Tyto vlastnosti jsou zadány v `appSettings` kolekci ve `siteConfig` vlastnosti:
@@ -152,7 +152,7 @@ Tyto vlastnosti jsou zadány v `appSettings` kolekci ve `siteConfig` vlastnosti:
         "appSettings": [
             {
                 "name": "AzureWebJobsStorage",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
             },
             {
                 "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -164,7 +164,7 @@ Tyto vlastnosti jsou zadány v `appSettings` kolekci ve `siteConfig` vlastnosti:
             },
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             }
         ]
     }
@@ -175,7 +175,7 @@ Tyto vlastnosti jsou zadány v `appSettings` kolekci ve `siteConfig` vlastnosti:
 
 ## <a name="deploy-on-consumption-plan"></a>Nasazení na plán spotřeby
 
-Plán spotřeby automaticky přiděluje výpočetní výkon, když je váš kód spuštěný, škáluje se podle potřeby pro zpracování zátěže a pak se škáluje, když kód neběží. Nemusíte platit za nečinné virtuální počítače a nemusíte rezervovat kapacitu předem. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md#consumption-plan).
+Plán spotřeby automaticky přiděluje výpočetní výkon, když je váš kód spuštěný, škáluje se podle potřeby pro zpracování zátěže a pak se škáluje, když kód neběží. Nemusíte platit za nečinné virtuální počítače a nemusíte rezervovat kapacitu předem. Další informace najdete v tématu [škálování Azure functions a hostování](consumption-plan.md).
 
 Ukázkové Azure Resource Managerovou šablonu najdete v tématu [aplikace Function App na základě plánu spotřeby].
 
@@ -212,9 +212,11 @@ Pokud budete plán spotřeby explicitně definovat, budete muset nastavit `serve
 
 ### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
+Nastavení vyžadované aplikací Function App běžícími v plánu spotřeby se odloží mezi systémy Windows a Linux. 
+
 #### <a name="windows"></a>Windows
 
-V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE` . Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
+V systému Windows plán spotřeby vyžaduje další nastavení v konfiguraci lokality: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Tato vlastnost konfiguruje účet úložiště, ve kterém se ukládají kódy a konfigurace funkcí aplikace Function App.
 
 ```json
 {
@@ -231,15 +233,11 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
-                },
-                {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -251,7 +249,7 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -259,9 +257,12 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
 }
 ```
 
+> [!IMPORTANT]
+> Nenastavte [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nastavení tak, jak je vygenerováno při prvním vytvoření webu.  
+
 #### <a name="linux"></a>Linux
 
-V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `functionapp,linux` a musí mít `reserved` vlastnost nastavenou na `true` :
+V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `functionapp,linux` a musí mít `reserved` nastavenou vlastnost na hodnotu `true` . 
 
 ```json
 {
@@ -278,7 +279,7 @@ V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `function
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -290,7 +291,7 @@ V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `function
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         },
@@ -299,10 +300,9 @@ V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `function
 }
 ```
 
-
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)Nastavení a [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nejsou podporovaná v systému Linux.
 
 <a name="premium"></a>
-
 ## <a name="deploy-on-premium-plan"></a>Nasazení na plán Premium
 
 Plán Premium nabízí stejné škálování jako plán spotřeby, ale zahrnuje vyhrazené prostředky a další funkce. Další informace najdete v tématu [plán Azure Functions Premium](./functions-premium-plan.md).
@@ -334,7 +334,7 @@ Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zad
 
 ### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
-Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve. Plán Premium navíc vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE` . Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
+Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve. Plán Premium navíc vyžaduje další nastavení v konfiguraci lokality: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Tato vlastnost konfiguruje účet úložiště, ve kterém se ukládají kódy a konfigurace funkcí aplikace Function App.
 
 ```json
 {
@@ -353,15 +353,11 @@ Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
-                },
-                {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -373,14 +369,15 @@ Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
     }
 }
 ```
-
+> [!IMPORTANT]
+> Nenastavte [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nastavení tak, jak je vygenerováno při prvním vytvoření webu.  
 
 <a name="app-service-plan"></a>
 
@@ -450,7 +447,7 @@ Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastav
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -462,7 +459,7 @@ Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastav
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -470,13 +467,13 @@ Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastav
 }
 ```
 
-Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConfig` . Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem Runtime:
+Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConfig` . Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem modulu runtime ve formátu ```runtime|runtimeVersion``` :
 
 | Zásobník            | Příklad hodnoty                                         |
 |------------------|-------------------------------------------------------|
-| Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
-| .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
+| Python           | `python|3.7`      |
+| JavaScript       | `node|12`          |
+| .NET             | `dotnet|3.1` |
 
 ```json
 {
@@ -495,7 +492,7 @@ Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConf
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -507,16 +504,16 @@ Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConf
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ],
-            "linuxFxVersion": "DOCKER|microsoft/azure-functions-node8:2.0"
+            "linuxFxVersion": "node|12"
         }
     }
 }
 ```
 
-Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](../app-service/containers/index.yml). Nastavte také `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false` , protože obsah vaší aplikace je k dispozici v kontejneru samotném:
+Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](../app-service/index.yml). Nastavte také `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false` , protože obsah vaší aplikace je k dispozici v kontejneru samotném:
 
 ```json
 {
@@ -535,7 +532,7 @@ Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-c
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -547,7 +544,7 @@ Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-c
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 },
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
@@ -597,7 +594,7 @@ Aplikace Function App má mnoho podřízených prostředků, které můžete pou
         "appSettings": [
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             },
             {
                 "name": "Project",
@@ -617,9 +614,9 @@ Aplikace Function App má mnoho podřízených prostředků, které můžete pou
           "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
         ],
         "properties": {
-          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
-          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
-          "FUNCTIONS_EXTENSION_VERSION": "~2",
+          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
+          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
+          "FUNCTIONS_EXTENSION_VERSION": "~3",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
         }
@@ -652,7 +649,7 @@ K nasazení šablony můžete použít kterýkoli z následujících způsobů:
 * [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
-### <a name="deploy-to-azure-button"></a>Tlačítko nasadit do Azure
+### <a name="deploy-to-azure-button"></a>Tlačítko pro nasazení do Azure
 
 Nahraďte ```<url-encoded-path-to-azuredeploy-json>``` verzí inpracovaná cesta ve formátu [adresy URL](https://www.bing.com/search?q=url+encode) `azuredeploy.json` souboru na GitHubu.
 
@@ -695,7 +692,7 @@ Přečtěte si další informace o vývoji a konfiguraci Azure Functions.
 
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Jak nakonfigurovat nastavení Azure Function App](functions-how-to-use-azure-function-app-settings.md)
-* [Vytvoření první funkce Azure Functions](functions-create-first-azure-function.md)
+* [Vytvoření první funkce Azure Functions](./functions-get-started.md)
 
 <!-- LINKS -->
 

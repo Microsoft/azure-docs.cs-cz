@@ -1,79 +1,98 @@
 ---
-title: Použití Azure Queue Storage z Node.js-Azure Storage
-description: Naučte se používat Služba front Azure k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv. Ukázky napsané v Node.js.
+title: Jak používat Azure Queue Storage z Node.js-Azure Storage
+description: Naučte se používat Azure Queue Storage k vytváření a odstraňování front. Naučte se vkládat, získávat a odstraňovat zprávy pomocí Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 12/08/2016
+ms.reviewer: dineshm
+ms.date: 12/21/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
-ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 53bd4905cf4b8829d65ce2b10c85260ff3f8926c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seo-javascript-september2019, devx-track-js
+ms.openlocfilehash: 12ae05e10cdf0fa9a5f0725acaa1784eedc3612c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210515"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803676"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Použití služby Azure Queue Service k vytváření a odstraňování front z Node.js
+# <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Jak používat Azure Queue Storage z Node.js
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
-
 ## <a name="overview"></a>Přehled
-V této příručce se dozvíte, jak provádět běžné scénáře pomocí Služba front Microsoft Azure. Ukázky se napíší pomocí rozhraní Node.js API. Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání**a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
 
-> [!IMPORTANT]
-> Tento článek odkazuje na starší verzi Azure Storage klientské knihovny pro JavaScript. Pokud chcete začít používat nejnovější verzi, přečtěte si [rychlý Start: Klientská knihovna Azure Queue Storage pro JavaScript.](storage-quickstart-queues-nodejs.md)
+V této příručce se dozvíte, jak provádět běžné scénáře pomocí Azure Queue Storage. Ukázky se napíší pomocí rozhraní Node.js API. Mezi zahrnuté scénáře patří vkládání, prohlížení, získávání a odstraňování zpráv fronty. Také se naučíte vytvářet a odstraňovat fronty.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Vytvořte prázdnou Node.jsovou aplikaci. Pokyny k vytvoření Node.js aplikace najdete v tématu [Vytvoření webové aplikace v Node.js v Azure App Service](../../app-service/quickstart-nodejs.md), [sestavení a nasazení Node.js aplikace do cloudové služby Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) pomocí Windows PowerShellu nebo [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
+
+Pokud chcete vytvořit prázdnou Node.js aplikaci, přečtěte si téma [Vytvoření webové aplikace v Node.js v Azure App Service](../../app-service/quickstart-nodejs.md), [sestavení a nasazení Node.js aplikace do Azure Cloud Services](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) pomocí PowerShellu nebo [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurace aplikace pro přístup k úložišti
-Pokud chcete používat službu Azure Storage, potřebujete sadu Azure Storage SDK pro Node.js, která zahrnuje sadu praktických knihoven, které komunikují se službou REST (Storage).
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>K získání balíčku použijte Správce balíčků Node (NPM).
-1. Použijte rozhraní příkazového řádku, například **PowerShell** (Windows,) **Terminal** (Mac,) nebo **bash** (UNIX), přejděte do složky, ve které jste vytvořili ukázkovou aplikaci.
-2. Do příkazového okna zadejte **npm install azure-storage**. Výstup příkazu je podobný následujícímu příkladu.
- 
-    ```bash
-    azure-storage@0.5.0 node_modules\azure-storage
-    +-- extend@1.2.1
-    +-- xmlbuilder@0.4.3
-    +-- mime@1.2.11
-    +-- node-uuid@1.4.3
-    +-- validator@3.22.2
-    +-- underscore@1.4.4
-    +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
-    +-- xml2js@0.2.7 (sax@0.5.2)
-    +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-    ```
+[Klientská knihovna Azure Storage pro jazyk JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript) obsahuje sadu praktických knihoven, které komunikují se službami REST služby Storage.
 
-3. Můžete ručně spustit příkaz **ls** a ověřit tak, že se vytvořila složka ** \_ modulů uzlů** . Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
+<!-- docutune:ignore Terminal -->
+
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>K získání balíčku použijte Správce balíčků Node (npm).
+
+1. Použijte rozhraní příkazového řádku, jako je PowerShell (Windows), terminál (Mac) nebo bash (UNIX), přejděte do složky, ve které jste vytvořili ukázkovou aplikaci.
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+1. `npm install @azure/storage-queue`Do příkazového řádku zadejte.
+
+1. Ověřte, že se `node_modules` vytvořila složka. V této složce najdete `@azure/storage-queue` balíček, který obsahuje klientskou knihovnu, kterou potřebujete pro přístup k úložišti.
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+1. `npm install azure-storage`Do příkazového řádku zadejte.
+
+1. Ověřte, že se `node_modules` vytvořila složka. V této složce najdete `azure-storage` balíček obsahující knihovny, které potřebujete pro přístup k úložišti.
+
+---
 
 ### <a name="import-the-package"></a>Import balíčku
-Pomocí poznámkového bloku nebo jiného textového editoru přidejte do horní části **server.js** souboru aplikace, ve které chcete úložiště použít, následující:
+
+Pomocí editoru kódu přidejte následující kód do horní části souboru JavaScriptu, kde máte v úmyslu používat fronty.
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ImportStatements":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
-## <a name="setup-an-azure-storage-connection"></a>Nastavení Azure Storageho připojení
-Modul Azure přečte proměnnou prostředí \_ účet úložiště Azure \_ a přístupový klíč úložiště \_ Azure \_ \_ nebo \_ \_ připojovací řetězec úložiště Azure \_ pro informace požadované pro připojení k vašemu účtu úložiště Azure. Pokud tyto proměnné prostředí nejsou nastaveny, při volání **createQueueService**je nutné zadat informace o účtu.
+---
 
-## <a name="how-to-create-a-queue"></a>Postupy: vytvoření fronty
-Následující kód vytvoří objekt **QueueService** , který vám umožní pracovat s frontami.
+## <a name="how-to-create-a-queue"></a>Jak vytvořit frontu
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+Následující kód získá hodnotu proměnné prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING` a použije ji k vytvoření [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient) objektu. Tento objekt se pak použije k vytvoření [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) objektu, který vám umožní pracovat s konkrétní frontou.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_CreateQueue":::
+
+Pokud fronta již existuje, je vyvolána výjimka.
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Modul Azure přečte proměnné prostředí `AZURE_STORAGE_ACCOUNT` a `AZURE_STORAGE_ACCESS_KEY` nebo `AZURE_STORAGE_CONNECTION_STRING` pro informace požadované pro připojení k vašemu Azure Storage účtu. Pokud tyto proměnné prostředí nejsou nastaveny, je nutné při volání zadat informace o účtu `createQueueService` .
+
+Následující kód vytvoří `QueueService` objekt, který vám umožní pracovat s frontami.
 
 ```javascript
 var queueSvc = azure.createQueueService();
 ```
 
-Použijte metodu **createQueueIfNotExists** , která vrátí zadanou frontu, pokud již existuje, nebo vytvoří novou frontu se zadaným názvem, pokud ještě neexistuje.
+Voláním `createQueueIfNotExists` metody vytvořte novou frontu se zadaným názvem nebo vraťte frontu, pokud již existuje.
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -85,41 +104,43 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 Pokud je fronta vytvořená, `result.created` má hodnotu true. Pokud fronta existuje, `result.created` je false.
 
-### <a name="filters"></a>Filtry
-Volitelné operace filtrování lze použít na operace prováděné pomocí **QueueService**. Operace filtrování můžou zahrnovat protokolování, automatické opakování atd. Filtry jsou objekty, které implementují metodu s podpisem:
+---
+
+## <a name="how-to-insert-a-message-into-a-queue"></a>Vložení zprávy do fronty
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+Chcete-li přidat zprávu do fronty, zavolejte [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) metodu.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_AddMessage":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Chcete-li vložit zprávu do fronty, zavolejte `createMessage` metodu pro vytvoření nové zprávy a přidejte ji do fronty.
 
 ```javascript
-function handle (requestOptions, next)
-```
-
-Po provedení předběžného zpracování v možnostech žádosti musí metoda volat "Další" předání zpětného volání s následujícím podpisem:
-
-```javascript
-function (returnObject, finalCallback, next)
-```
-
-V tomto zpětném volání a po zpracování returnObject (odpověď z požadavku na server) musí zpětné volání vyvolat další, pokud existuje, aby pokračovalo v zpracování jiných filtrů, nebo jednoduše vyvolat finalCallback, aby se ukončilo vyvolání služby.
-
-Sada Azure SDK pro Node.js obsahuje dva filtry, které implementují logiku opakování: **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Následující vytvoří objekt **QueueService** , který používá **ExponentialRetryPolicyFilter**:
-
-```javascript
-var retryOperations = new azure.ExponentialRetryPolicyFilter();
-var queueSvc = azure.createQueueService().withFilter(retryOperations);
-```
-
-## <a name="how-to-insert-a-message-into-a-queue"></a>Postupy: vložení zprávy do fronty
-Chcete-li vložit zprávu do fronty, použijte metodu **createMessage** k vytvoření nové zprávy a přidejte ji do fronty.
-
-```javascript
-queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
+queueSvc.createMessage('myqueue', "Hello, World", function(error, results, response){
   if(!error){
     // Message inserted
   }
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Postupy: prohlížení další zprávy
-Můžete prohlížet zprávu v přední části fronty bez jejího odebrání z fronty voláním metody **peekMessages** . Ve výchozím nastavení **peekMessages** prohlédne jednu zprávu.
+---
+
+## <a name="how-to-peek-at-the-next-message"></a>Jak prohlížet další zprávu
+
+Můžete prohlížet zprávy ve frontě bez jejich odebrání z fronty voláním `peekMessages` metody.
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+Ve výchozím nastavení se [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) v jedné zprávě prohlédne. Následující příklad si prohlédne prvních pět zpráv ve frontě. Pokud jsou viditelné méně než pět zpráv, vrátí se pouze zobrazené zprávy.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_PeekMessage":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Ve výchozím nastavení se `peekMessages` v jedné zprávě prohlédne.
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -131,43 +152,23 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 
 `result`Obsahuje zprávu.
 
-> [!NOTE]
-> V **případě, že ve** frontě nejsou žádné zprávy, nevrátí se žádná zpráva, ale nevrátí se žádné zprávy.
-> 
-> 
+---
 
-## <a name="how-to-dequeue-the-next-message"></a>Postupy: vyřazení další zprávy z fronty
-Zpracování zprávy je proces se dvěma fázemi:
+Volání `peekMessages` v případě, že ve frontě nejsou žádné zprávy, nevrátí chybu. Nevrátí se ale žádné zprávy.
 
-1. Vyřadí zprávu do fronty.
-2. Odstraňte zprávu.
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postup změny obsahu zprávy ve frontě
 
-Chcete-li vyřadit zprávu do fronty, použijte **GetMessages**. Tím se zprávy ve frontě nezobrazují, takže je nemůžou zpracovat žádní další klienti. Jakmile aplikace zpracuje zprávu, zavolá **deleteMessage** , aby ji odstranila z fronty. Následující příklad získá zprávu a pak ji odstraní:
+Následující příklad aktualizuje text zprávy.
 
-```javascript
-queueSvc.getMessages('myqueue', function(error, results, response){
-  if(!error){
-    // Message text is in results[0].messageText
-    var message = results[0];
-    queueSvc.deleteMessage('myqueue', message.messageId, message.popReceipt, function(error, response){
-      if(!error){
-        //message deleted
-      }
-    });
-  }
-});
-```
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
 
-> [!NOTE]
-> Ve výchozím nastavení je zpráva skrytá jenom po dobu 30 sekund, po jejímž uplynutí se budou zobrazovat ostatním klientům. Pomocí `options.visibilityTimeout` se **GetMessages**můžete zadat jinou hodnotu.
-> 
-> [!NOTE]
-> Pokud ve frontě nejsou žádné zprávy, nevrátí se k chybě **žádná zpráva,** ale nebudou se vracet žádné zprávy.
-> 
-> 
+Změňte obsah zprávy na místě ve frontě tak, že zavoláte [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-) .
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zprávy ve frontě
-Můžete změnit obsah zprávy na místě ve frontě pomocí **updateMessage**. Následující příklad aktualizuje text zprávy:
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Změňte obsah zprávy na místě ve frontě tak, že zavoláte `updateMessage` .
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -183,13 +184,73 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Postupy: Další možnosti pro vyřazování zpráv z fronty
+---
+
+## <a name="how-to-dequeue-a-message"></a>Jak odřadit zprávu do fronty
+
+Vyřazení zprávy do fronty je proces se dvěma fázemi:
+
+1. Získejte zprávu.
+
+1. Odstraňte zprávu.
+
+Následující příklad získá zprávu a pak ji odstraní.
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+Chcete-li získat zprávu, zavolejte [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) metodu. Toto volání zpřístupňuje zprávy ve frontě, takže je nemohou zpracovat žádní další klienti. Jakmile aplikace zpracuje zprávu, zavolejte [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) k jejímu odstranění z fronty.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessage":::
+
+Ve výchozím nastavení je zpráva po dobu 30 sekund skrytá. Po 30 sekundách je uvidí ostatní klienti. Můžete zadat jinou hodnotu nastavením [`options.visibilityTimeout`](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) při volání `receiveMessages` .
+
+Volání `receiveMessages` v případě, že ve frontě nejsou žádné zprávy, nevrátí chybu. Nebudou ale vráceny žádné zprávy.
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Chcete-li získat zprávu, zavolejte `getMessages` metodu. Toto volání zpřístupňuje zprávy ve frontě, takže je nemohou zpracovat žádní další klienti. Jakmile aplikace zpracuje zprávu, zavolejte `deleteMessage` k jejímu odstranění z fronty.
+
+```javascript
+queueSvc.getMessages('myqueue', function(error, results, response){
+  if(!error){
+    // Message text is in results[0].messageText
+    var message = results[0];
+    queueSvc.deleteMessage('myqueue', message.messageId, message.popReceipt, function(error, response){
+      if(!error){
+        //message deleted
+      }
+    });
+  }
+});
+```
+
+Ve výchozím nastavení je zpráva po dobu 30 sekund skrytá. Po 30 sekundách je uvidí ostatní klienti. Pomocí with můžete zadat jinou hodnotu `options.visibilityTimeout` `getMessages` .
+
+`getMessages`V případě, že ve frontě nejsou žádné zprávy, nevrátí chybu. Nebudou ale vráceny žádné zprávy.
+
+---
+
+## <a name="additional-options-for-dequeuing-messages"></a>Další možnosti pro vyřazování zpráv do fronty
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
 Existují dva způsoby, jak lze přizpůsobit načtení zprávy z fronty:
 
-* `options.numOfMessages` -Načíst dávku zpráv (až 32.)
-* `options.visibilityTimeout` – Nastavte delší nebo kratší časový limit pro neviditelnost.
+- [`options.numberOfMessages`](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages): Načíst dávku zpráv (až do 32).
+- [`options.visibilityTimeout`](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout): Nastavte delší nebo kratší časový limit neviditelnosti.
 
-Následující příklad používá metodu **GetMessages** k získání 15 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky for. U všech zpráv vrácených touto metodou nastaví také časový limit neviditelnosti na pět minut.
+Následující příklad používá `receiveMessages` metodu k získání pěti zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. U všech zpráv vrácených touto metodou nastaví také časový limit neviditelnosti na pět minut.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessages":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Existují dva způsoby, jak lze přizpůsobit načtení zprávy z fronty:
+
+- `options.numOfMessages`: Načíst dávku zpráv (až do 32).
+- `options.visibilityTimeout`: Nastavte delší nebo kratší časový limit neviditelnosti.
+
+Následující příklad používá `getMessages` metodu k získání 15 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. U všech zpráv vrácených touto metodou nastaví také časový limit neviditelnosti na pět minut.
 
 ```javascript
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
@@ -208,8 +269,19 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Postupy: získání délky fronty
-**GetQueueMetadata** vrátí metadata o frontě, včetně přibližného počtu zpráv čekajících ve frontě.
+---
+
+## <a name="how-to-get-the-queue-length"></a>Jak získat délku fronty
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+[`getProperties`](/javascript/api/@azure/storage-queue/queueclient#getproperties-queuegetpropertiesoptions-)Metoda vrátí metadata o frontě, včetně přibližného počtu zpráv čekajících ve frontě.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_QueueLength":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+`getQueueMetadata`Metoda vrátí metadata o frontě, včetně přibližného počtu zpráv čekajících ve frontě.
 
 ```javascript
 queueSvc.getQueueMetadata('myqueue', function(error, results, response){
@@ -219,8 +291,19 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Postupy: výpis front
-Chcete-li načíst seznam front, použijte **listQueuesSegmented**. Chcete-li načíst seznam filtrovaný podle konkrétní předpony, použijte **listQueuesSegmentedWithPrefix**.
+---
+
+## <a name="how-to-list-queues"></a>Výpis front
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+Chcete-li načíst seznam front, zavolejte [`QueueServiceClient.listQueues`](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) . Chcete-li načíst seznam filtrovaný konkrétní předponou, nastavte [možnost Options. prefix](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) na `listQueues` .
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ListQueues":::
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Chcete-li načíst seznam front, použijte `listQueuesSegmented` . Chcete-li načíst seznam filtrovaný pomocí konkrétní předpony, použijte `listQueuesSegmentedWithPrefix` .
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -230,10 +313,23 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Pokud nelze vrátit všechny fronty, `result.continuationToken` lze použít jako první parametr **listQueuesSegmented** nebo druhý parametr **listQueuesSegmentedWithPrefix** pro získání dalších výsledků.
+Pokud nelze vrátit všechny fronty, předejte `result.continuationToken` jako první parametr `listQueuesSegmented` nebo druhý parametr `listQueuesSegmentedWithPrefix` pro získání více výsledků.
 
-## <a name="how-to-delete-a-queue"></a>Postupy: odstranění fronty
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu **deleteQueue** u objektu Queue.
+---
+
+## <a name="how-to-delete-a-queue"></a>Postup odstranění fronty
+
+# <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
+
+Chcete-li odstranit frontu a všechny zprávy, které jsou v něm obsaženy, zavolejte [`DeleteQueue`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) metodu `QueueClient` objektu.
+
+:::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DeleteQueue":::
+
+Chcete-li vymazat všechny zprávy z fronty bez jejich odstranění, zavolejte [`ClearMessages`](/javascript/api/@azure/storage-queue/queueclient#clearmessages-queueclearmessagesoptions-) .
+
+# <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
+
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte `deleteQueue` metodu u objektu Queue.
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -243,108 +339,15 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Pokud chcete vymazat všechny zprávy z fronty bez jejich odstranění, použijte **clearMessages**.
+Chcete-li vymazat všechny zprávy z fronty bez jejich odstranění, zavolejte `clearMessages` .
 
-## <a name="how-to-work-with-shared-access-signatures"></a>Postupy: práce se sdílenými přístupovými podpisy
-Sdílené přístupové podpisy (SAS) představují zabezpečený způsob, jak zajistit podrobný přístup k frontám bez zadání názvu nebo klíčů účtu úložiště. SAS se často používá k zajištění omezeného přístupu k vašim frontám, jako je například umožnění odesílání zpráv do mobilní aplikace.
+---
 
-Důvěryhodná aplikace, jako je cloudová služba, generuje SAS pomocí **GenerateSharedAccessSignature** **QueueService**a poskytuje ji pro nedůvěryhodnou nebo částečně důvěryhodnou aplikaci. Například mobilní aplikace. SAS se generuje pomocí zásady, která popisuje počáteční a koncové datum platnosti SAS a také úroveň přístupu udělenou držiteli SAS.
-
-Následující příklad vygeneruje nové zásady sdíleného přístupu, které umožní držiteli SAS přidat zprávy do fronty a vyprší 100 minut od okamžiku jejího vytvoření.
-
-```javascript
-var startDate = new Date();
-var expiryDate = new Date(startDate);
-expiryDate.setMinutes(startDate.getMinutes() + 100);
-startDate.setMinutes(startDate.getMinutes() - 100);
-
-var sharedAccessPolicy = {
-  AccessPolicy: {
-    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
-    Start: startDate,
-    Expiry: expiryDate
-  }
-};
-
-var queueSAS = queueSvc.generateSharedAccessSignature('myqueue', sharedAccessPolicy);
-var host = queueSvc.host;
-```
-
-Všimněte si, že informace o hostiteli musí být k dispozici také v případě, že se vyžaduje, když se držitel SAS pokusí o přístup ke frontě.
-
-Klientská aplikace pak pomocí SAS s **QueueServiceWithSAS** provede operace s frontou. Následující příklad se připojí ke frontě a vytvoří zprávu.
-
-```javascript
-var sharedQueueService = azure.createQueueServiceWithSas(host, queueSAS);
-sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(error, result, response){
-  if(!error){
-    //message added
-  }
-});
-```
-
-Vzhledem k tomu, že se SAS vygeneroval s oprávněním přidat přístup, pokud došlo k pokusu o čtení, aktualizaci nebo odstranění zpráv, vrátí se chyba.
-
-### <a name="access-control-lists"></a>Seznamy řízení přístupu
-K nastavení zásad přístupu pro SAS můžete použít také seznam řízení přístupu (ACL). To je užitečné, pokud chcete, aby přístup k frontě umožňovalo více klientů, ale poskytovaly pro každého klienta různé zásady přístupu.
-
-Seznam ACL se implementuje pomocí pole zásad přístupu, z nichž každá zásada má přidružené ID. Následující příklad definuje dvě zásady. jednu pro ' uživatel1 ' a jednu pro ' uživatel2 ':
-
-```javascript
-var sharedAccessPolicy = {
-  user1: {
-    Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
-    Start: startDate,
-    Expiry: expiryDate
-  },
-  user2: {
-    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
-    Start: startDate,
-    Expiry: expiryDate
-  }
-};
-```
-
-Následující příklad načte aktuální seznam ACL pro **MyQueue**a pak přidá nové zásady pomocí **setQueueAcl**. Tento přístup umožňuje:
-
-```javascript
-var extend = require('extend');
-queueSvc.getQueueAcl('myqueue', function(error, result, response) {
-  if(!error){
-    var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
-    queueSvc.setQueueAcl('myqueue', newSignedIdentifiers, function(error, result, response){
-      if(!error){
-        // ACL set
-      }
-    });
-  }
-});
-```
-
-Po nastavení seznamu ACL můžete vytvořit SAS na základě ID zásady. Následující příklad vytvoří nový SAS pro uživatele user2:
-
-```javascript
-queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
-```
+[!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základní informace o službě Queue Storage, získáte další informace o složitějších úlohách úložiště pomocí těchto odkazů.
 
-* Navštivte [Blog týmu Azure Storage][Azure Storage Team Blog].
-* Navštivte [Azure Storage SDK pro úložiště uzlů][Azure Storage SDK for Node] na GitHubu.
+Teď, když jste se naučili základy Queue Storage, postupujte podle těchto odkazů a získejte další informace o složitějších úlohách úložiště.
 
-
-
-[Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-
-[using the REST API]: https://msdn.microsoft.com/library/azure/hh264518.aspx
-
-[Azure Portal]: https://portal.azure.com
-
-[Vytvoření webové aplikace Node.js ve službě Azure App Service](../../app-service/quickstart-nodejs.md)
-
-[Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
-
-[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-
-[Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/
+- Navštivte [Blog týmu Azure Storage](https://techcommunity.Microsoft.com/t5/Azure-storage/bg-p/azurestorageblog) , kde se dozvíte, co je nového.
+- Navštivte [Azure Storage klientskou knihovnu pro úložiště JavaScriptu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#Azure-storage-client-library-for-JavaScript) na GitHubu.

@@ -3,22 +3,23 @@ title: Spouštění skriptů PowerShellu na virtuálním počítači s Windows v
 description: Toto téma popisuje, jak spustit PowerShellové skripty na virtuálním počítači Azure s Windows pomocí funkce spustit příkaz.
 services: automation
 ms.service: virtual-machines
+ms.collection: windows
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e2cd8ee4095db235215a2beaa68975e819b474c1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496929"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560680"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Spouštění skriptů PowerShellu na VIRTUÁLNÍm počítači s Windows pomocí příkazu Spustit
 
-Funkce příkazu Run používá agenta virtuálního počítače ke spouštění skriptů PowerShellu v rámci virtuálního počítače Azure s Windows. Tyto skripty můžete použít pro obecnou správu počítačů nebo aplikací. Můžou vám pomůžou rychle diagnostikovat a opravit problémy s přístupem a sítí virtuálních počítačů a získat virtuální počítač zpátky do dobrého stavu.
+Funkce příkazu Run používá agenta virtuálního počítače ke spouštění skriptů PowerShellu v rámci virtuálního počítače Azure s Windows. Tyto skripty můžete použít k obecné správě počítačů nebo aplikací. Můžou vám pomůžou rychle diagnostikovat a opravit problémy s přístupem a sítí virtuálních počítačů a získat virtuální počítač zpátky do dobrého stavu.
 
 
 
@@ -40,9 +41,10 @@ Při použití příkazu Run platí následující omezení:
 * Běžící skript nemůžete zrušit.
 * Maximální doba, kterou může skript běžet, je 90 minut. Po uplynutí této doby dojde k vypršení časového limitu.
 * K vrácení výsledků skriptu se vyžaduje odchozí připojení z virtuálního počítače.
+* Nedoporučujeme spouštět skript, který způsobí zastavení nebo aktualizaci agenta virtuálního počítače. To může mít příponu ve stavu přechodu, což vede k vypršení časového limitu.
 
 > [!NOTE]
-> Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/security-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
+> Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/network-security-groups-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
 
 ## <a name="available-commands"></a>Dostupné příkazy
 
@@ -52,7 +54,7 @@ Tato tabulka obsahuje seznam příkazů, které jsou k dispozici pro virtuální
 The entity was not found in this Azure location
 ```
 
-|**Název**|**Description**|
+|**Název**|**Popis**|
 |---|---|
 |**RunPowerShellScript**|Spustí skript prostředí PowerShell.|
 |**EnableRemotePS**|Nakonfiguruje počítač tak, aby povoloval vzdálené prostředí PowerShell.|
@@ -64,7 +66,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-V následujícím příkladu se pomocí příkazu [AZ VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) spustí skript prostředí na virtuálním počítači Azure s Windows.
+V následujícím příkladu se pomocí příkazu [AZ VM Run-Command](/cli/azure/vm/run-command#az-vm-run-command-invoke) spustí skript prostředí na virtuálním počítači Azure s Windows.
 
 ```azurecli-interactive
 # script.ps1
@@ -80,7 +82,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>portál Azure
 
-V [Azure Portal](https://portal.azure.com) klikněte na virtuální počítač a v části **operace**vyberte **Spustit příkaz** . Zobrazí se seznam dostupných příkazů ke spuštění na virtuálním počítači.
+V [Azure Portal](https://portal.azure.com) klikněte na virtuální počítač a v části **operace** vyberte **Spustit příkaz** . Zobrazí se seznam dostupných příkazů ke spuštění na virtuálním počítači.
 
 ![Seznam příkazů](./media/run-command/run-command-list.png)
 
@@ -101,9 +103,9 @@ Následující příklad používá ke spuštění skriptu PowerShellu na virtu�
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>Omezení přístupu ke spuštění příkazu
+## <a name="limiting-access-to-run-command"></a>Omezení přístupu k funkci Spustit příkaz
 
-Výpis příkazů pro spuštění nebo zobrazení podrobností příkazu vyžaduje `Microsoft.Compute/locations/runCommands/read` oprávnění. Toto oprávnění mají i předdefinovanou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a vyšší úrovně.
+Výpis příkazů pro spuštění nebo zobrazení podrobností příkazu vyžaduje `Microsoft.Compute/locations/runCommands/read` oprávnění na úrovni předplatného. Toto oprávnění mají i předdefinovanou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a vyšší úrovně.
 
 Spuštění příkazu vyžaduje `Microsoft.Compute/virtualMachines/runCommand/action` oprávnění. Toto oprávnění mají role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a vyšší úrovně.
 

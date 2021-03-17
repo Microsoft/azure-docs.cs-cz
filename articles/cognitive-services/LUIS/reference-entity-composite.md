@@ -3,19 +3,17 @@ title: Typ složené entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Složená entita je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3d936555a4d9a9c80718a24ba892c762f5a8354a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681388"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608388"
 ---
 # <a name="composite-entity"></a>Složená entita
 
@@ -173,7 +171,6 @@ Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 ```
 
 * * *
-
 
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|

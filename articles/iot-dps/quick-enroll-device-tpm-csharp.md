@@ -1,20 +1,20 @@
 ---
-title: 'Registrace zařízení TPM do služby Azure Device Provisioning pomocí jazyka C #'
+title: 'Rychlý Start – registrace zařízení TPM do služby Azure Device Provisioning pomocí jazyka C #'
 description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby C# V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: ee1b803459e0c81b86021b617a29e0b29ee19909
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976838"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968107"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby C#
 
@@ -39,38 +39,38 @@ Tento článek ukazuje, jak programově vytvořit jednotlivou registraci pro za�
 
 Pro ukázku v tomto rychlém startu potřebujete připojovací řetězec pro vaši službu zřizování.
 
-1. Přihlaste se k Azure Portal, vyberte **všechny prostředky**a službu Device Provisioning.
+1. Přihlaste se k Azure Portal, vyberte **všechny prostředky** a službu Device Provisioning.
 
-1. Zvolte **zásady sdíleného přístupu**a pak vyberte zásadu přístupu, kterou chcete použít k otevření jejích vlastností. V části **zásady přístupu**zkopírujte a uložte připojovací řetězec primárního klíče.
+1. Zvolte **zásady sdíleného přístupu** a pak vyberte zásadu přístupu, kterou chcete použít k otevření jejích vlastností. V části **zásady přístupu** zkopírujte a uložte připojovací řetězec primárního klíče.
 
     ![Získání připojovacího řetězce služby zřizování z portálu](media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>Vytvoření ukázky jednotlivé registrace
 
-V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která do vaší služby zřizování přidá jednotlivou registraci pro zařízení TPM. S určitými úpravami můžete pomocí tohoto postupu vytvořit pro přidání jednotlivé registrace také konzolovou aplikaci [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot). Další informace o vývoji pomocí IoT Core najdete v [dokumentaci pro vývojáře pro Windows IoT Core](https://docs.microsoft.com/windows/iot-core/).
+V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která do vaší služby zřizování přidá jednotlivou registraci pro zařízení TPM. S určitými úpravami můžete pomocí tohoto postupu vytvořit pro přidání jednotlivé registrace také konzolovou aplikaci [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot). Další informace o vývoji pomocí IoT Core najdete v [dokumentaci pro vývojáře pro Windows IoT Core](/windows/iot-core/).
 
-1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**. V části **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Core)** šablona projektu pro C# a vyberte **Další**.
+1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**. V části **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Core)** šablona projektu pro C# a vyberte **Další**.
 
-1. Pojmenujte projekt *CreateTpmEnrollment*a stiskněte **vytvořit**.
+1. Pojmenujte projekt *CreateTpmEnrollment* a stiskněte **vytvořit**.
 
     ![Konfigurovat klasický desktopový projekt Visual C# pro Windows](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
 1. Po otevření řešení v aplikaci Visual Studio klikněte v podokně **Průzkumník řešení** pravým tlačítkem myši na projekt **CreateTpmEnrollment** . Vyberte **Spravovat balíčky NuGet**.
 
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices. Provisioning. Service**a potom stiskněte **nainstalovat**.
+1. V **nástroji Správce balíčků NuGet** vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices. Provisioning. Service** a potom stiskněte **nainstalovat**.
 
    ![Okno Správce balíčků NuGet](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
    Tento krok stáhne a nainstaluje balíček NuGet [klientské sady SDK služby zřizování pro Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Přidejte následující `using` příkazy za další `using` příkazy v horní části: `Program.cs`
+1. Přidejte následující `using` příkazy za další `using` příkazy v horní části `Program.cs` :
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Přidejte do `Program` třídy následující pole a proveďte níže uvedené změny.
+1. Přidejte do třídy následující pole `Program` a proveďte níže uvedené změny.
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -93,7 +93,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
 
    * Pokud používáte tento rychlý Start společně s [vytvořením a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení C#](quick-create-simulated-device-tpm-csharp.md) ke zřízení simulovaného zařízení, nahraďte ověřovací klíč a ID registrace hodnotami, které jste si poznamenali v tomto rychlém startu. ID zařízení můžete nahradit hodnotou navrhovanou v tomto rychlém startu, použít vlastní hodnotu nebo použít výchozí hodnotu v této ukázce.
 
-1. Do `Program` třídy přidejte následující metodu.  Tento kód vytvoří jednotlivou položku registrace a pak zavolá `CreateOrUpdateIndividualEnrollmentAsync` metodu `ProvisioningServiceClient` pro přidání jednotlivé registrace do služby zřizování.
+1. Do třídy přidejte následující metodu `Program` .  Tento kód vytvoří jednotlivou položku registrace a pak zavolá `CreateOrUpdateIndividualEnrollmentAsync` metodu `ProvisioningServiceClient` pro přidání jednotlivé registrace do služby zřizování.
 
    ```csharp
    public static async Task RunSample()
@@ -128,12 +128,15 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    }
    ```
 
-1. Nakonec nahraďte tělo `Main` metody následujícími řádky:
+1. Nakonec nahraďte `Main` metodu následujícími řádky:
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. Sestavte řešení.
@@ -144,7 +147,7 @@ Spusťte ukázku v sadě Visual Studio, aby se vytvořila jednotlivá registrace
 
 Zobrazí se okno příkazového řádku a začne zobrazovat potvrzovací zprávy. Po úspěšném vytvoření se v okně příkazového řádku zobrazí vlastnosti nového individuálního zápisu.
 
-Můžete ověřit, zda byl vytvořen jednotlivý zápis. Přejít do přehledu služby Device Provisioning a vybrat **spravovat registrace**a pak vybrat **jednotlivé registrace**. Měla by se zobrazit nová položka registrace odpovídající ID registrace, které jste použili v ukázce.
+Můžete ověřit, zda byl vytvořen jednotlivý zápis. Přejít do přehledu služby Device Provisioning a vybrat **spravovat registrace** a pak vybrat **jednotlivé registrace**. Měla by se zobrazit nová položka registrace odpovídající ID registrace, které jste použili v ukázce.
 
 ![Vlastnosti registrace na portálu](media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
 
@@ -158,13 +161,13 @@ Pokud plánujete prozkoumat ukázku služby C#, neprovádějte čištění prost
 
 1. Zavřete okno výstup ukázky C# ve vašem počítači.
 
-1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
+1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace** a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
 
 1. Pokud jste postupovali podle kroků v části [Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení C#](quick-create-simulated-device-tpm-csharp.md) k vytvoření simulovaného zařízení TPM, proveďte následující kroky:
 
     1. Zavřete okno simulátoru TPM a okno výstupu ukázky pro simulované zařízení.
 
-    1. Na webu Azure Portal přejděte do služby IoT Hub, ve které se zřídilo vaše zařízení. V nabídce v části **Průzkumník**vyberte **zařízení IoT**, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
+    1. Na webu Azure Portal přejděte do služby IoT Hub, ve které se zřídilo vaše zařízení. V nabídce v části **Průzkumník** vyberte **zařízení IoT**, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Chyby nenalezených prostředků
 description: Popisuje, jak vyřešit chyby při nalezení prostředku. K této chybě může dojít při nasazování šablony Azure Resource Manager nebo při přijetí akcí správy.
 ms.topic: troubleshooting
 ms.date: 06/10/2020
-ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667943"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526242"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Chyby při řešení nenalezených prostředků
 
@@ -105,7 +105,7 @@ V referenční funkci použijte `Full` k získání všech vlastností včetně 
 
 Vzor je:
 
-`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>), <API-version>, 'Full').Identity.propertyName]"`
 
 > [!IMPORTANT]
 > Nepoužívejte tento vzor:

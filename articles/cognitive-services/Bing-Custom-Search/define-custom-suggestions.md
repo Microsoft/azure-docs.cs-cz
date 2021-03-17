@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 986a7c8f1282b76c2ae94eebcc2c31dc3b3e7cad
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072809"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352010"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurace vlastního prostředí pro automatické návrhy
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Vlastní Automatický návrh vrátí seznam řetězců navrhovaných vyhledávacích dotazů, které jsou relevantní pro vaše možnosti vyhledávání. Navrhované řetězce dotazu jsou založeny na částečném řetězci dotazu, který uživatel poskytuje ve vyhledávacím poli. Seznam bude obsahovat maximálně 10 návrhů. 
 
@@ -60,7 +65,7 @@ Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Povolení automatické návrhy v hostovaném uživatelském rozhraní
 
-Pokud chcete pro hostované uživatelské rozhraní povolit návrhy řetězce dotazu, klikněte na **hostované uživatelské rozhraní**. Přejděte dolů do části **Další konfigurační** oddíl. V části **vyhledávání na webu**vyberte možnost **zapnuto** pro možnost **Povolit automatický návrh**. Chcete-li povolit Automatický návrh, je nutné vybrat rozložení, které obsahuje vyhledávací pole.
+Pokud chcete pro hostované uživatelské rozhraní povolit návrhy řetězce dotazu, klikněte na **hostované uživatelské rozhraní**. Přejděte dolů do části **Další konfigurační** oddíl. V části **vyhledávání na webu** vyberte možnost **zapnuto** pro možnost **Povolit automatický návrh**. Chcete-li povolit Automatický návrh, je nutné vybrat rozložení, které obsahuje vyhledávací pole.
 
 
 ## <a name="calling-the-autosuggest-api"></a>Volání rozhraní API pro automatické návrhy
@@ -81,13 +86,13 @@ Odpověď obsahuje seznam `SearchAction` objektů, které obsahují navrhované 
         },  
 ```
 
-Každý návrh zahrnuje pole `displayText` a `query` . `displayText` Pole obsahuje navrhovaný řetězec dotazu, který použijete k naplnění rozevíracího seznamu vyhledávacího pole.
+Každý návrh zahrnuje `displayText` pole a `query` . `displayText`Pole obsahuje navrhovaný řetězec dotazu, který použijete k naplnění rozevíracího seznamu vyhledávacího pole.
 
 Pokud uživatel vybere navrhovaný řetězec dotazu z rozevíracího seznamu, použijte řetězec dotazu v `query` poli při volání [rozhraní API pro vlastní vyhledávání Bingu](overview.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získání vlastních návrhů](./get-custom-suggestions.md)
+- [Získání vlastních návrhů]()
 - [Hledání vlastní instance](./search-your-custom-view.md)
 - [Konfigurace a využívání vlastního hostovaného uživatelského rozhraní](./hosted-ui.md)

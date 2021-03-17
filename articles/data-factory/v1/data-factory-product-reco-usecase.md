@@ -1,28 +1,23 @@
 ---
 title: Případ použití Data Factory – doporučení pro produkty
 description: Seznamte se s případem použití implementovaným pomocí Azure Data Factory společně s jinými službami.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195892"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387185"
 ---
 # <a name="use-case---product-recommendations"></a>Případ použití – doporučení pro produkty
 Azure Data Factory je jedna z mnoha služeb, které se používají k implementaci Cortana Intelligence Suite akcelerátorů řešení.  Podrobnosti o této sadě najdete na stránce [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) . V tomto dokumentu popisujeme běžný případ použití, který uživatelé Azure už vyřešili a implementovali pomocí Azure Data Factory a dalších služeb Cortana Intelligence komponent.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 Online prodejci obvykle chtějí přesvědčit své zákazníky, aby si mohli koupit produkty tím, že je prezentují s produkty, které nejpravděpodobněji chtějí zajímat, a proto se s největší pravděpodobně koupí. K tomu je potřeba, aby online prodejci přizpůsobili online uživatelské prostředí pomocí individuálních doporučení produktu pro konkrétního uživatele. Tato individuální doporučení se provádějí na základě jejich současného a historických dat o chování při nákupu, informací o produktech, nově zavedených značek a dat segmentace produktů a zákazníků.  Kromě toho můžou poskytnout doporučení pro uživatele, která jsou založená na analýze celkového chování při používání ze všech jejich uživatelů v kombinaci.
 
 Cílem těchto prodejců je optimalizovat pro převody uživatelů na prodej a získat vyšší tržby za prodej.  Dosahují tohoto převodu poskytováním kontextových doporučení týkajících se chování na základě zájmů a akcí zákazníků. Pro účely tohoto případu použití používáme online prodejci jako příklad firem, které chcete pro zákazníky optimalizovat. Nicméně tyto zásady se vztahují na všechny firmy, které chtějí zapojit své zákazníky do svého zboží a služeb a zdokonalit jejich nákupy zákazníků pomocí individuálních doporučení produktu.
@@ -41,7 +36,7 @@ Maloobchodní prodejci si nakonec potřebují změřit účinnost jejich příst
 ## <a name="solution-overview"></a>Přehled řešení
 Tento ukázkový případ použití byl vyřešen a implementován skutečnými uživateli Azure pomocí Azure Data Factory a dalších Cortana Intelligence služeb komponent, včetně [HDInsight](https://azure.microsoft.com/services/hdinsight/) a [Power BI](https://powerbi.microsoft.com/).
 
-Online prodejce používá úložiště objektů BLOB v Azure, místní SQL Server, Azure SQL Database a relační datové tržiště jako své možnosti úložiště dat v celém pracovním postupu.  Úložiště objektů BLOB obsahuje informace o zákaznících, údaje o chování zákazníků a data informací o produktech. Údaje o produktu obsahují informace o značkách produktu a katalog produktů uložený místně ve službě SQL Data Warehouse. 
+Online prodejce používá úložiště objektů BLOB v Azure, místní SQL Server, Azure SQL Database a relační datové tržiště jako své možnosti úložiště dat v celém pracovním postupu.  Úložiště objektů BLOB obsahuje informace o zákaznících, údaje o chování zákazníků a data informací o produktech. Údaje o produktu obsahují informace o značkách produktu a katalog produktů uložený místně ve službě Azure synapse Analytics. 
 
 Všechna data jsou kombinována a podávána do systému doporučení produktu, aby mohla doručovat přizpůsobená doporučení na základě zájmů a akcí zákazníků, zatímco uživatel prochází produkty v katalogu na webu. Zákazníci také uvidí produkty, které souvisejí s produktem, na základě celkových vzorů používání webu, které se nevztahují k jednomu uživateli.
 

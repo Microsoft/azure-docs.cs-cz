@@ -1,16 +1,16 @@
 ---
 title: Nastavení rozhraní příkazového řádku pro síť Azure Service Fabric
 description: K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). Tady je postup, jak ho nastavit.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ea4a7764cf1ede1cfaf53b1097034c5894660376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248488"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660674"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
 K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). Tady je postup, jak ho nastavit.
@@ -25,22 +25,23 @@ Existují tři typy rozhraní příkazového řádku, které lze použít a kter
 
 Ve verzi Preview je rozhraní příkazového řádku služby Azure Service Fabric Mesh jako rozšíření Azure CLI. Můžete ho nainstalovat do Azure Cloud Shellu nebo do místní instalace Azure CLI. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>Instalace rozhraní příkazového řádku pro Azure Service Fabric
-1. Musíte nainstalovat Azure CLI verze 2.0.67 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete rozhraní příkazového řádku nainstalovat nebo upgradovat na nejnovější verzi, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-2. Pomocí následujícího příkazu nainstalujte modul rozšíření rozhraní příkazového řádku Azure Service Fabric. 
+Pokud jste to ještě neudělali, nainstalujte modul rozšíření CLI Azure Service Fabric pro rozhraní příkazového řádku pomocí následujícího příkazu: 
+ 
+```azurecli-interactive
+az extension add --name mesh
+```
 
-    ```azurecli-interactive
-    az extension add --name mesh
-    ```
+Pokud už je nainstalovaná, aktualizujte stávající modul rozhraní příkazového řádku Azure Service Fabric pomocí následujícího příkazu:
 
-3. Pomocí následujícího příkazu aktualizujte existující modul rozhraní příkazového řádku Azure Service Fabric.
-
-    ```azurecli-interactive
-    az extension update --name mesh
-    ```
+```azurecli-interactive
+az extension update --name mesh
+```
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Instalace rozhraní příkazového řádku Service Fabric (sfctl) 
 

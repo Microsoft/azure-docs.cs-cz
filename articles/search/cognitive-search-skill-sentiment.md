@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503213"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547471"
 ---
 # <a name="sentiment-cognitive-skill"></a>Mínění vnímání znalostí
 
-Dovednost **mínění** vyhodnocuje nestrukturovaný text podél pozitivních hodnot Continuum a pro každý záznam vrací číselné skóre mezi 0 a 1. Skóre blížící se 1 značí pozitivní mínění a skóre blížící se 0 značí negativní mínění. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+Dovednost **mínění** vyhodnocuje nestrukturovaný text podél pozitivních hodnot Continuum a pro každý záznam vrací číselné skóre mezi 0 a 1. Skóre blížící se 1 značí pozitivní mínění a skóre blížící se 0 značí negativní mínění. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](../cognitive-services/text-analytics/overview.md) .
 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -29,27 +29,27 @@ Dovednost **mínění** vyhodnocuje nestrukturovaný text podél pozitivních ho
 Microsoft. dovednosti. text. SentimentSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 5000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 5000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |----------------|----------------------|
-| `defaultLanguageCode` | volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně. <br/> Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| `defaultLanguageCode` | volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně. <br/> Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md) |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností 
 
-| Název vstupu | Popis |
+| Název vstupu | Description |
 |--------------------|-------------|
 | `text` | Text, který má být analyzován.|
-| `languageCode`    |  Volitelné Řetězec, který označuje jazyk záznamů. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/>[Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/text-analytics-supported-languages.md)najdete v části.|
+| `languageCode`    |  Volitelné Řetězec, který označuje jazyk záznamů. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/>[Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)najdete v části.|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu | Popis |
+| Název výstupu | Description |
 |--------------------|-------------|
 | `score` | Hodnota mezi 0 a 1, která představuje mínění analyzovaného textu. Hodnoty blížící se 0 mají negativní mínění, blízko až 0,5 mají neutrální mínění a hodnoty blízko 1 mají pozitivní mínění.|
 
@@ -78,7 +78,7 @@ U parametrů se rozlišují malá a velká písmena.
 }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -110,11 +110,9 @@ U parametrů se rozlišují malá a velká písmena.
 }
 ```
 
-## <a name="notes"></a>Poznámky
-Pokud je toto nastavení prázdné, nevrátí se pro tyto záznamy mínění skóre.
-
-## <a name="error-cases"></a>Chybové případy
-Pokud jazyk není podporován, je vygenerována chyba a nebude vráceno žádné mínění skóre.
+## <a name="warning-cases"></a>Případy upozornění
+Pokud je text prázdný, vygeneruje se upozornění a nevrátí se žádné mínění skóre.
+Pokud jazyk není podporován, je vygenerováno upozornění a nebude vráceno žádné mínění skóre.
 
 ## <a name="see-also"></a>Viz také
 

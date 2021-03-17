@@ -3,19 +3,19 @@ title: Omezení požadavků – Překladatel
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje seznam omezení požadavků pro překladatele. Poplatky se účtují na základě počtu znaků, nikoli frekvence požadavků s omezením 5 000 znaků na požadavek. Omezení znaků jsou založená na předplatném, s F0em omezeným na 2 000 000 znaků za hodinu.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.author: lajanuar
+ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903402"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895403"
 ---
 # <a name="request-limits-for-translator"></a>Omezení požadavků pro překladatele
 
@@ -31,7 +31,7 @@ Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci 
 |:----|:----|:----|:----|
 | Překlad | 10 000    | 100   | 10 000 |
 | Transliterace | 5 000 | 10    | 5 000 |
-| Zjišťování | 10 000 | 100 |   50,000 |
+| Zjišťování | 50,000 | 100 |   50,000 |
 | BreakSentence | 50,000    | 100 | 50,000 |
 | Slovníkové vyhledávání| 100 |  10  | 1 000 |
 | Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2 000 |
@@ -52,17 +52,17 @@ Pokud tato omezení dosáhnete nebo překročíte nebo v krátké době zadáte 
 | S3/C3 | 120 000 000 znaků za hodinu |
 | S4/C4 | 200 000 000 znaků za hodinu |
 
-Limity pro [předplatné s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako u úrovně S1.
+Limity pro [předplatné s více službami](./reference/v3-0-reference.md#authentication) jsou stejné jako u úrovně S1.
 
 Tato omezení se omezují na standardní modely překladu společnosti Microsoft. Vlastní modely překladu, které používají vlastní překladatele, jsou omezené na 1 800 znaků za sekundu.
 
 ## <a name="latency"></a>Latence
 
-Při použití vlastních modelů má Překladatel maximální latenci 15 sekund s použitím standardních modelů a 120 sekund. Odpovědi *na text v rámci 100 znaků* jsou obvykle vraceny během 150 milisekund na 300 milisekund. Modely vlastního překladatele mají podobné vlastnosti latence u trvalých požadavků a můžou mít vyšší latenci, když je vaše frekvence požadavků přerušovaná. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v rámci tohoto časového období, zkontrolujte prosím svůj kód, připojení k síti a zkuste to znovu. 
+Při použití vlastních modelů má Překladatel maximální latenci 15 sekund s použitím standardních modelů a 120 sekund. Odpovědi *na text v rámci 100 znaků* jsou obvykle vraceny během 150 milisekund na 300 milisekund. Modely vlastního překladatele mají podobné vlastnosti latence u trvalých požadavků a můžou mít vyšší latenci, když je vaše frekvence požadavků přerušovaná. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](./reference/v3-0-reference.md#errors) v rámci tohoto časového období, zkontrolujte prosím svůj kód, připojení k síti a zkuste to znovu. 
 
 ## <a name="sentence-length-limits"></a>Omezení délky věty
 
-Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) je délka věty omezená na 275 znaků. Existují výjimky pro tyto jazyky:
+Při použití funkce [BreakSentence](./reference/v3-0-break-sentence.md) je délka věty omezená na 275 znaků. Existují výjimky pro tyto jazyky:
 
 | Jazyk | Kód | Omezení počtu znaků |
 |----------|------|-----------------|
@@ -71,7 +71,7 @@ Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive
 | Italština | její | 800 |
 | Japonština | dža | 166 |
 | Portugalština | pt | 800 |
-| Španělština | Ano | 800 |
+| španělština | es | 800 |
 | Thajština | Kolik | 180 |
 
 > [!NOTE]
@@ -81,4 +81,4 @@ Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive
 
 * [Ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionální dostupnost](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [Referenční informace ke službě Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [Referenční informace ke službě Translator v3](./reference/v3-0-reference.md)

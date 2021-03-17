@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563610"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490104"
 ---
 # <a name="what-are-security-partner-providers"></a>Kdo jsou poskytovatelé partnerů pro zabezpečení?
 
@@ -22,7 +22,7 @@ S rychlou konfigurací můžete zabezpečit centrum s podporovaným partnerem za
 
 Můžete nasadit zabezpečená centra nakonfigurovaná s partnerem zabezpečení podle vašeho výběru ve více oblastech Azure, abyste získali připojení a zabezpečení pro uživatele kdekoli na celém světě v těchto oblastech. Díky možnosti použít nabídku partnera zabezpečení pro provoz aplikace Internet/SaaS a Azure Firewall privátních přenosů v zabezpečených centrech teď můžete začít sestavovat hraniční zabezpečení v Azure, které je blízko globálně distribuovaných uživatelů a aplikací.
 
-Podporovaní partneři zabezpečení jsou **ZScaler**, **Check Point** (Preview) a **iboss** (Preview).
+Podporovaní partneři zabezpečení jsou **Zscaler**, **[Check Point](check-point-overview.md)** a **iboss**.
 
 ![Poskytovatelé partnerů pro zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
 
@@ -44,7 +44,7 @@ Podporovány jsou následující scénáře:
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Osvědčené postupy pro filtrování internetového provozu na zabezpečených virtuálních rozbočovačích
 
-Internetový provoz obvykle zahrnuje webový provoz. Zahrnuje to ale i provoz, který je určený pro SaaS aplikace, jako je Office 365 (O365) a Azure Public PaaS Services, jako je například Azure Storage, Azure SQL atd. Níže jsou uvedená doporučení osvědčených postupů pro zpracování provozu do těchto služeb:
+Internetový provoz obvykle zahrnuje webový provoz. Zahrnuje to ale i provoz určený k SaaS aplikacím, jako je Microsoft 365 a Azure Public PaaS Services, jako je Azure Storage, Azure SQL a tak dále. Níže jsou uvedená doporučení osvědčených postupů pro zpracování provozu do těchto služeb:
 
 ### <a name="handling-azure-paas-traffic"></a>Zpracování provozu Azure PaaS
  
@@ -54,15 +54,15 @@ Internetový provoz obvykle zahrnuje webový provoz. Zahrnuje to ale i provoz, k
 
 ![Všechny scénáře pro nástroj Azure Firewall Manager](media/trusted-security-partners/all-scenarios.png)
 
-## <a name="handling-office-365-o365-traffic"></a>Zpracování provozu Office 365 (O365)
+## <a name="handling-microsoft-365-traffic"></a>Zpracování Microsoft 365 provozu
 
-Ve scénářích umístění globálně distribuované větve byste měli před odesláním zbývajícího internetového provozu do zabezpečeného centra Azure přesměrovat provoz Office 365 přímo do větve.
+Ve scénářích umístění s globálně distribuovanou větví byste měli přesměrovat Microsoft 365 provoz přímo ve větvi před odesláním zbývajících internetových přenosů do zabezpečeného centra Azure.
 
-V případě systému Office 365 jsou latence sítě a výkon zásadní pro úspěšné uživatelské prostředí. Aby bylo možné dosáhnout těchto cílů z důvodu optimálního výkonu a uživatelského prostředí, musí zákazníci před tím, než se zaměřením na zbytek internetového provozu přes Azure, implementovat přímo a místní řídicí sekvence Office 365.
+V případě Microsoft 365 je latence sítě a výkon zásadní pro úspěšné uživatelské prostředí. Aby bylo možné dosáhnout těchto cílů z důvodu optimálního výkonu a uživatelského prostředí, musí zákazníci implementovat Microsoft 365 Direct a Local Escape před tím, než se zaměřením na směrování zbývajících internetových přenosů přes Azure.
 
-[Principy připojení k síti office 365](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) volání síťových připojení sady Office 365 k místnímu směrování z uživatelské větve nebo mobilního zařízení a přímo přes Internet do nejbližšího síťového bodu Microsoftu.
+[Zásady Microsoft 365 připojení k síti](/microsoft-365/enterprise/microsoft-365-network-connectivity-principles) volají připojení k síťovým Microsoft 365m, která se budou směrovat místně z uživatelské větve nebo mobilního zařízení a přímo přes Internet do nejbližšího síťového bodu Microsoftu.
 
-Kromě toho jsou připojení k Office 365 zašifrovaná z hlediska ochrany osobních údajů a využívají efektivní a proprietární protokoly z důvodů výkonu. To je nepraktické a mělo by to mít vliv na to, aby se tato připojení mohla vztahovat na tradiční řešení zabezpečení na úrovni sítě. Z těchto důvodů důrazně doporučujeme, aby zákazníci odesílali provoz Office 365 přímo z větví, a to ještě před odesláním zbytku dat prostřednictvím Azure. Microsoft spolupracuje s několika poskytovateli řešení SD-WAN, kteří se integrují s Azure a Office 365, a usnadňuje zákazníkům možnost Povolit sadu Office 365 Direct a Local Internet užitečných. Podrobnosti najdete v tématu [návody nastavení zásad O365 přes virtuální síť WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
+Kromě toho se Microsoft 365 připojení šifrují pro ochranu osobních údajů a využívají efektivní a proprietární protokoly z důvodů výkonu. To je nepraktické a mělo by to mít vliv na to, aby se tato připojení mohla vztahovat na tradiční řešení zabezpečení na úrovni sítě. Z těchto důvodů důrazně doporučujeme, aby zákazníci odesílali Microsoft 365 provoz přímo z větví, před odesláním zbývajících přenosů přes Azure. Microsoft spolupracuje s několika poskytovateli řešení SD-WAN, kteří se integrují s Azure a Microsoft 365 a usnadňuje zákazníkům možnost Microsoft 365 přímé a místní užitečných Internetu. Podrobnosti najdete v tématu [co je Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md)
 
 ## <a name="next-steps"></a>Další kroky
 

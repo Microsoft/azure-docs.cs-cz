@@ -1,27 +1,51 @@
 ---
 title: Škálování aplikací HPC – Azure Virtual Machines | Microsoft Docs
 description: Naučte se škálovat aplikace HPC na virtuálních počítačích Azure.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: hpc
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/12/2021
 ms.author: amverma
-ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020104"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470750"
 ---
 # <a name="scaling-hpc-applications"></a>Škálování aplikací HPC
 
 Optimální výkon a škálování aplikací HPC v Azure v rámci škálování vyžaduje vyladění výkonu a experimenty optimalizace pro konkrétní zatížení. Tato část a stránky specifické pro řady virtuálních počítačů nabízejí obecné pokyny pro škálování aplikací.
+
+## <a name="optimally-scaling-mpi"></a>Optimální škálování MPI 
+
+Následující návrhy se vztahují na optimální efektivitu škálování aplikace, výkon a konzistenci:
+
+- Pro menší úlohy škálování (tj. < připojení 256) použijte možnost:
+   ```bash
+   UCX_TLS=rc,sm
+   ```
+
+- Pro úlohy větší škály (tj. > připojení 256) použijte možnost:
+   ```bash
+   UCX_TLS=dc,sm
+   ```
+
+- Pokud chcete vypočítat počet připojení pro úlohu MPI, použijte:
+   ```bash
+   Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
+   ```
+
+## <a name="process-pinning"></a>Připnutí procesů
+
+- Připnutí procesů k jádrům pomocí přístupu sekvenčního připnutí (na rozdíl od přístupu k automatickému vyrovnávání). 
+- Vazba pomocí technologie NUMA/Core/HwThread je lepší než výchozí vazba.
+- U hybridních paralelních aplikací (OpenMP + MPI) použijte 4 vlákna a 1 MPI pořadí na CCX na velikosti virtuálních počítačů od \ a HBv2.
+- U čistě MPIch aplikací Experimentujte s 1-4 MPI hodným na CCX pro zajištění optimálního výkonu pro velikosti virtuálních počítačů s prostým a HBv2.
+- Některé aplikace s extrémní citlivostí na šířku pásma můžou využívat omezený počet jader na CCX. Pro tyto aplikace může použití 3 nebo 2 jader na CCX snížit obsah šířky pásma paměti a dosáhnout vyššího reálného výkonu nebo jednotnější škálovatelnosti. Tento přístup může využít zejména MPI Allreduce.
+- Pro významně větší běhy se doporučuje používat UD nebo Hybrid RC + UD Transports. K tomuto internímu účelu patří spousta knihoven MPI/knihoven za běhu (například UCX nebo MVAPICH2). Ověřte konfiguraci přenosu pro rozsáhlá spuštění.
 
 ## <a name="compiling-applications"></a>Kompilování aplikací
 
@@ -29,11 +53,11 @@ I když není nutné, kompilování aplikací s příslušnými příznaky optim
 
 ### <a name="amd-optimizing-cc-compiler"></a>Kompilátor C/C++ optimalizuje procesory AMD
 
-Systém pro kompilátor C/C++ s podporou technologie AMD (AOCC) nabízí vysokou úroveň pokročilých optimalizací, multithreading a podpora procesoru, která zahrnuje globální optimalizaci, rozstupnování, analýzu smyček a vytváření kódu. Binární soubory kompilátoru AOCC jsou vhodné pro systémy Linux s knihovnou GNU C (glibc) verze 2,17 a vyšší. Sada kompilátoru se skládá z kompilátoru C/C++ (Clang), kompilátoru FORTRAN (FLANG) a front-endu FORTRAN až po Clang (vejce drak).
+Systém pro kompilátor C/C++ s podporou technologie AMD (AOCC) nabízí vysokou úroveň pokročilých optimalizací, multithreading a podpora procesoru, která zahrnuje globální optimalizaci, rozstupnování, analýzu smyček a vytváření kódu. Binární soubory kompilátoru AOCC jsou vhodné pro systémy Linux s knihovnou GNU C (glibc) verze 2,17 a vyšší. Sada kompilátoru se skládá z kompilátoru jazyka C/C++ (Clang), kompilátoru programu Fortran (FLANG) a front-endu FORTRAN až po Clang (vaječných drak).
 
 ### <a name="clang"></a>Clang
 
-Clang je kompilátor jazyka C, C++ a objektiv-C, který zpracovává předzpracování, analýzu, optimalizaci, generování kódu, sestavení a propojení. Clang podporuje `-march=znver1` příznak pro zajištění nejlepšího generování kódu a optimalizaci pro architekturu x86 založenou na platformě AMD Zen.
+Clang je kompilátor jazyka C, C++ a objektiv-C, který zpracovává předzpracování, analýzu, optimalizaci, generování kódu, sestavení a propojení. Clang podporuje  `-march=znver1` příznak pro zajištění nejlepšího generování kódu a optimalizaci pro architekturu x86 založenou na platformě AMD Zen.
 
 ### <a name="flang"></a>FLANG
 
@@ -41,7 +65,7 @@ Kompilátor FLANG je nedávno přidaný do sady AOCC (přidáno v dubnu 2018) a 
 
 ### <a name="dragonegg"></a>DragonEgg
 
-DragonEgg je modul plug-in pro RSZ, který nahrazuje služby a generátory kódu v RSZ pomocí těch z projektu LLVM. DragonEgg, který se dodává s AOCC, pracuje s RSZ-4.8. x, byl testován pro cíle x86-32/X86-64 a úspěšně se použil na různých platformách Linux.
+DragonEgg je modul plug-in pro RSZ, který nahrazuje služby a generátory kódu v RSZ pomocí těch z projektu LLVM. DragonEgg, který se dodává s AOCC, pracuje s RSZ-4.8. x, byl testován pro cíle x86-32/X86-64 a byl úspěšně použit na různých platformách systému Linux.
 
 GFortran je skutečný front-end pro programy FORTRAN zodpovědné za předzpracování, analýzu a sémantickou analýzu generující mezilehlé reprezentace GIMPLE RSZ (IR). DragonEgg je modul plug-in GNU, který se zapojuje do toku kompilace GFortran. Implementuje rozhraní API modulu plug-in GNU. V rámci architektury modulu plug-in se DragonEgg stal ovladačem kompilátoru, který řídí různé fáze kompilace.  Po stažení a pokyny k instalaci je možné vyvolávat vaječných drak pomocí těchto kroků: 
 
@@ -72,17 +96,6 @@ V případě HPC doporučuje AMD kompilátor RSZ 7,3 nebo novější. Starší v
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
-
-## <a name="scaling-applications"></a>Škálování aplikací 
-
-Následující návrhy se vztahují na optimální efektivitu škálování aplikace, výkon a konzistenci:
-
-* Připněte procesy k jádrům 0-59 pomocí přístupu sekvenčního připnutí (na rozdíl od přístupu k automatickým zůstatkům). 
-* Vazba pomocí technologie NUMA/Core/HwThread je lepší než výchozí vazba.
-* U hybridních paralelních aplikací (OpenMP + MPI) použijte 4 vlákna a 1 MPI pořadí na CCX.
-* Pro zajištění optimálního výkonu pro čistě MPI aplikace Experimentujte s 1-4 MPI pořadím na CCX.
-* Některé aplikace s extrémní citlivostí na šířku pásma můžou využívat omezený počet jader na CCX. Pro tyto aplikace může použití 3 nebo 2 jader na CCX snížit obsah šířky pásma paměti a dosáhnout vyššího reálného výkonu nebo jednotnější škálovatelnosti. MPI Allreduce může využít zejména tento.
-* Pro významně větší běhy se doporučuje používat UD nebo Hybrid RC + UD Transports. K tomuto internímu účelu patří spousta knihoven MPI/knihoven za běhu (například UCX nebo MVAPICH2). Ověřte konfiguraci přenosu pro rozsáhlá spuštění.
 
 ## <a name="next-steps"></a>Další kroky
 

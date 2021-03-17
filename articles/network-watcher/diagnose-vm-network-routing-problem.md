@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76845217"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014497"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostika problému se směrováním sítě virtuálního počítače pomocí portálu Azure Portal
 
@@ -36,7 +36,7 @@ Když nasadíte virtuální počítač, Azure pro něj vytvoří několik výcho
 
 Pokud chcete, můžete problém se směrováním sítě virtuálního počítače diagnostikovat pomocí [Azure CLI](diagnose-vm-network-routing-problem-cli.md) nebo [Azure PowerShellu](diagnose-vm-network-routing-problem-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -52,7 +52,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
@@ -69,7 +69,7 @@ Pokud chcete otestovat síťovou komunikaci pomocí Network Watcheru, nejprve ho
 
 Pokud už Network Watcher máte v alespoň jedné oblasti povolený, přeskočte na část [Použití dalšího směrování](#use-next-hop).
 
-1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Pokud se ve výsledcích zobrazí **Network Watcher** , vyberte ji.
 2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -99,7 +99,7 @@ Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlast
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
-1. Abyste mohli směrování analyzovat podrobněji, zkontrolujte efektivní trasy síťového rozhraní. Do vyhledávacího pole v horní části portálu zadejte*myvm* (nebo název síťového rozhraní, které jste zkontrolovali). Jakmile se ve výsledcích hledání zobrazí položka **myvm**, vyberte ji.
+1. Abyste mohli směrování analyzovat podrobněji, zkontrolujte efektivní trasy síťového rozhraní. Do vyhledávacího pole v horní části portálu zadejte *myvm* (nebo název síťového rozhraní, které jste zkontrolovali). Jakmile se ve výsledcích hledání zobrazí položka **myvm**, vyberte ji.
 2. Podle následujícího obrázku v části **PODPORA A ŘEŠENÍ POTÍŽÍ** vyberte **Efektivní trasy**:
 
     ![Efektivní trasy](./media/diagnose-vm-network-routing-problem/effective-routes.png)

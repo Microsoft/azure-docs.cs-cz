@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f3472aa495042749410bc0b9635f0924a02e1fd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093013"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598545"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Platba za Azure cache pro výpočetní prostředky Redis s využitím rezervované kapacity
 
@@ -25,7 +25,7 @@ Mezipaměť Azure můžete koupit pro Redis rezervovanou kapacitu v [Azure Porta
 * U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
 * Pro program CSP (Cloud Solution Provider) si můžou koupit mezipaměť Azure pro rezervovanou kapacitu Redis jenom agenti správce nebo prodejní agenti.
 
-Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématech [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) a [pochopení využití rezervací Azure pro vaše předplatné](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)s průběžnými platbami.
+Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématech [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) a [pochopení využití rezervací Azure pro vaše předplatné](../cost-management-billing/reservations/understand-reserved-instance-usage.md)s průběžnými platbami.
 
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>Určení správné velikosti mezipaměti před nákupem
@@ -36,6 +36,8 @@ Velikost rezervace by měla být založená na celkové velikosti paměti použ�
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Koupit mezipaměť Azure pro Redis rezervovanou kapacitu
+
+Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../cost-management-billing/reservations/prepare-buy-reservation.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Všechny služby** > **Rezervace**.
@@ -50,16 +52,16 @@ V následující tabulce jsou popsána povinná pole.
 
 | Pole | Popis |
 | :------------ | :------- |
-| Předplatné   | Předplatné použité pro platbu za mezipaměť Azure pro rezervaci rezervované kapacity Redis Platební metodou předplatného se účtují náklady na front-end v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
-| Rozsah | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, na službu Azure cache pro instance Redis spuštěné v rámci vašeho fakturačního kontextu se použije sleva rezervace. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> **Jedno předplatné**– pro instance Redis v tomto předplatném se pro instance služby Azure Cache používá sleva rezervace. </br></br> **Jedna skupina prostředků**– pro instance Redis ve vybraném předplatném a vybrané skupině prostředků v rámci tohoto předplatného se použije sleva rezervované pro Azure cache.
+| Předplatné   | Předplatné použité pro platbu za mezipaměť Azure pro rezervaci rezervované kapacity Redis Platební metodou předplatného se účtují náklady na front-end v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). U podnikového předplatného se poplatky odečtou od předplatného Azure v rámci předplatného (dříve nazývaného peněžního závazku), nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
+| Obor | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, na službu Azure cache pro instance Redis spuštěné v rámci vašeho fakturačního kontextu se použije sleva rezervace. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> **Jedno předplatné**– pro instance Redis v tomto předplatném se pro instance služby Azure Cache používá sleva rezervace. </br></br> **Jedna skupina prostředků**– pro instance Redis ve vybraném předplatném a vybrané skupině prostředků v rámci tohoto předplatného se použije sleva rezervované pro Azure cache.
 | Oblast | Oblast Azure, která je pokrytá mezipamětí Azure pro rezervaci rezervované kapacity Redis
 | Cenová úroveň | Úroveň služby pro servery Azure cache pro Redis.
-| Termín | Jeden rok nebo tři roky
+| Pojem | Jeden rok nebo tři roky
 | Množství | Množství výpočetních prostředků zakoupených v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Množství je počet mezipamětí ve vybrané oblasti Azure a úrovni služby, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit mezipaměť Azure pro servery Redis s celkovou kapacitou mezipaměti 26 GB v oblasti Východní USA, zadejte množství, které vám poskytne ekvivalent 26 GB pro maximalizaci výhod všech mezipamětí. Může se jednat o 1 – P3 nebo 2 P2 Caches.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="cache-size-flexibility"></a>Flexibilita velikosti mezipaměti
 
@@ -77,10 +79,9 @@ Sleva rezervace se automaticky aplikuje do mezipaměti Azure pro instance Redis,
 
 * Další informace o rezervacích Azure najdete v následujících článcích:
 
-    * [Co jsou rezervace Azure?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-    * [Správa rezervací Azure](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-    * [Vysvětlení slev za rezervace Azure](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-    * [Vysvětlení využití rezervací u předplatného s průběžnými platbami](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-    * [Vysvětlení využití rezervací u smlouvy Enterprise](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-    * [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
-
+    * [Co jsou rezervace Azure?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+    * [Správa rezervací Azure](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    * [Vysvětlení slev za rezervace Azure](../cost-management-billing/reservations/understand-reservation-charges.md)
+    * [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+    * [Vysvětlení využití rezervací u smlouvy Enterprise](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    * [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](/partner-center/azure-reservations)

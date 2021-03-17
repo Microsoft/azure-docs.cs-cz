@@ -3,13 +3,13 @@ title: 'Kurz: více zálohování virtuálních počítačů Azure pomocí Power
 description: Tento kurz podrobně popisuje zálohování několika virtuálních počítačů Azure do trezoru Recovery Services pomocí Azure PowerShell.
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 53a5df430a3ea57201ecb19bac68ef9f073beb14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513213"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90980962"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Zálohování virtuálních počítačů Azure s využitím PowerShellu
 
@@ -27,7 +27,7 @@ Co se v tomto kurzu naučíte:
 > * Aktivujte úlohu zálohování na vyžádání pro chráněné virtuální počítače, abyste mohli zálohovat virtuální počítač (nebo ho chránit), musíte splnit [předpoklady](backup-azure-arm-vms-prepare.md) pro přípravu vašeho prostředí pro ochranu vašich virtuálních počítačů.
 
 > [!IMPORTANT]
-> Tento kurz předpokládá, že už máte vytvořenou skupinu prostředků a virtuální počítač Azure.
+> V tomto kurzu se předpokládá, že už máte vytvořenou skupinu prostředků a virtuální počítač Azure.
 
 ## <a name="sign-in-and-register"></a>Přihlášení a registrace
 
@@ -48,17 +48,17 @@ Co se v tomto kurzu naučíte:
 [Recovery Services trezor](backup-azure-recovery-services-vault-overview.md) je logický kontejner, který ukládá zálohovaná data pro chráněné prostředky, jako jsou například virtuální počítače Azure. Při spuštění úlohy zálohování se v rámci Recovery Services trezoru vytvoří bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
 
 * V tomto kurzu vytvoříte trezor ve stejné skupině prostředků a umístění jako virtuální počítač, který chcete zálohovat.
-* Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Geografická redundance zajišťuje, že zálohovaná data se replikují do sekundární oblasti Azure a stovky kilometrů od primární oblasti.
+* Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Geografická redundance zajišťuje, že zálohovaná data se replikují do sekundární oblasti Azure a stovky kilometrů od primární oblasti.
 
 Trezor vytvořte následujícím způsobem:
 
-1. K vytvoření trezoru použijte [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault). Zadejte název skupiny prostředků a umístění virtuálního počítače, který chcete zálohovat.
+1. K vytvoření trezoru použijte  [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault). Zadejte název skupiny prostředků a umístění virtuálního počítače, který chcete zálohovat.
 
     ```powershell
     New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
     ```
 
-2. Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
+2. Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Backup Recovery Services do proměnné.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault –Name myRSVault

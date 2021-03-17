@@ -2,13 +2,13 @@
 title: Monitorovat instance kontejnerů
 description: Jak monitorovat spotřebu výpočetních prostředků, jako je CPU a paměť, v kontejnerech v Azure Container Instances.
 ms.topic: article
-ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/17/2020
+ms.openlocfilehash: ae9725ffe66bebbed26745c311b2ada07d5d2c00
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116363"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589290"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
@@ -27,11 +27,11 @@ V současné době Azure Monitor metriky dostupné jenom pro kontejnery Linux.
 
 Azure Monitor poskytuje následující [metriky pro Azure Container Instances][supported-metrics]. Tyto metriky jsou k dispozici pro skupinu kontejnerů a jednotlivé kontejnery. Ve výchozím nastavení jsou metriky agregované jako průměry.
 
-* **Využití procesoru** – měřené v **millicores**. Jedna millicore je 1/1000th jádra procesoru, takže 500 millicores představuje využití 0,5 CPU core.
-
-* **Využití paměti** – bajty v bajtech
-
-* **Počet bajtů přijatých v síti za sekundu** a **přenos bajtů sítě za sekundu** 
+- **Využití CPU** měřené v **millicores**. 
+  - Jedna millicore je 1/1000th jádra procesoru, takže 500 millicores představuje využití 0,5 CPU core.
+- **Využití paměti** v bajtech
+- **Počet přijatých bajtů sítě** za sekundu
+- **Bajty přenášené přes síť** za sekundu 
 
 ## <a name="get-metrics---azure-portal"></a>Získání metrik – Azure Portal
 
@@ -39,12 +39,12 @@ Data služby Azure Monitor budou k dispozici na webu Azure Portal po vytvoření
 
 ![Dvojitý graf][dual-chart]
 
-Ve skupině kontejnerů, která obsahuje více kontejnerů, použijte [dimenzi][monitor-dimension] a prezentovat metriky podle kontejneru. Graf s metrikami jednotlivých kontejnerů vytvoříte následovně:
+Ve skupině kontejnerů, která obsahuje více kontejnerů, použijte [dimenzi][monitor-dimension] pro zobrazení metrik podle kontejneru. Graf s metrikami jednotlivých kontejnerů vytvoříte následovně:
 
 1. Na stránce **Přehled** vyberte jeden z grafů metrik, například **CPU**. 
 1. Vyberte tlačítko **použít rozdělení** a vyberte **název kontejneru**.
 
-![Dimenze][dimension]
+![Snímek obrazovky ukazuje metriku pro instanci kontejneru s vybraným dělením a názvem kontejneru.][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Získání metrik – Azure CLI
 
@@ -64,18 +64,11 @@ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output t
 ```output
 Timestamp            Name       Average
 -------------------  ---------  ---------
-2019-04-23 22:59:00  CPU Usage
-2019-04-23 23:00:00  CPU Usage
-2019-04-23 23:01:00  CPU Usage  0.0
-2019-04-23 23:02:00  CPU Usage  0.0
-2019-04-23 23:03:00  CPU Usage  0.5
-2019-04-23 23:04:00  CPU Usage  0.5
-2019-04-23 23:05:00  CPU Usage  0.5
-2019-04-23 23:06:00  CPU Usage  1.0
-2019-04-23 23:07:00  CPU Usage  0.5
-2019-04-23 23:08:00  CPU Usage  0.5
-2019-04-23 23:09:00  CPU Usage  1.0
-2019-04-23 23:10:00  CPU Usage  0.5
+2020-12-17 23:34:00  CPU Usage
+. . .
+2020-12-18 00:25:00  CPU Usage
+2020-12-18 00:26:00  CPU Usage  0.4
+2020-12-18 00:27:00  CPU Usage  0.0
 ```
 
 Změňte hodnotu `--metric` parametru v příkazu, aby se získaly další [podporované metriky][supported-metrics]. Pomocí následujícího příkazu můžete například získat metriky využití **paměti** . 
@@ -153,6 +146,6 @@ Naučte se vytvářet [Upozornění na metriky][metric-alert] a dostávat upozor
 
 <!-- LINKS - Internal -->
 [azure-monitoring]: ../azure-monitor/overview.md
-[metric-alert]: ..//azure-monitor/platform/alerts-metric.md
-[monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics
-[supported-metrics]: ../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups
+[metric-alert]: ..//azure-monitor/alerts/alerts-metric.md
+[monitor-dimension]: ../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics
+[supported-metrics]: ../azure-monitor/essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups

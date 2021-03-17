@@ -4,7 +4,7 @@ description: Obsahuje základní informace o tom, jak integrovat místní Power 
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68993a460ba3d6a672a27eb8da5ced85b29d3d12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9f0959ff51714e8a7e69f58a3e3abeab71e8359
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764549"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259368"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k Power BI Mobile s využitím proxy aplikací služby Azure AD
 
@@ -32,12 +32,12 @@ Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD po
 Tento článek předpokládá, že jste již nasadili služby sestav a [povolili proxy aplikace](application-proxy-add-on-premises-application.md).
 
 - Povolení proxy aplikací vyžaduje, abyste nainstalovali konektor na Windows Server a dokončili [požadavky](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) , aby konektor mohl komunikovat se službami Azure AD.
-- Při publikování Power BI doporučujeme použít stejné interní a externí domény. Další informace o vlastních doménách najdete v tématu [práce s vlastními doménami v proxy aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
+- Při publikování Power BI doporučujeme použít stejné interní a externí domény. Další informace o vlastních doménách najdete v tématu [práce s vlastními doménami v proxy aplikace](./application-proxy-configure-custom-domain.md).
 - Tato integrace je k dispozici pro Power BI Mobile aplikace pro **iOS a Android** .
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>Krok 1: Konfigurace omezeného delegování protokolu Kerberos (KCD)
 
-U místních aplikací, které používají ověřování systému Windows, můžete dosáhnout jednotného přihlašování (SSO) pomocí ověřovacího protokolu Kerberos a funkce označované jako omezené delegování protokolu Kerberos (KCD). Když se nakonfiguruje, KCD umožňuje konektoru proxy aplikací získat pro uživatele token Windows, a to i v případě, že uživatel není přihlášený přímo k Windows. Další informace o KCD najdete v tématu [Přehled omezeného delegování Kerberos](https://technet.microsoft.com/library/jj553400.aspx) a [vynucené delegování protokolu Kerberos pro jednotné přihlašování k vašim aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
+U místních aplikací, které používají ověřování systému Windows, můžete dosáhnout jednotného přihlašování (SSO) pomocí ověřovacího protokolu Kerberos a funkce označované jako omezené delegování protokolu Kerberos (KCD). Když se nakonfiguruje, KCD umožňuje konektoru proxy aplikací získat pro uživatele token Windows, a to i v případě, že uživatel není přihlášený přímo k Windows. Další informace o KCD najdete v tématu [Přehled omezeného delegování Kerberos](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)) a [vynucené delegování protokolu Kerberos pro jednotné přihlašování k vašim aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
 
 Na straně služby Reporting Services není potřeba prakticky žádná konfigurace. Stačí, abyste měli platný hlavní název služby (SPN), aby mohlo probíhat správné ověřování protokolem Kerberos. Také se ujistěte, že je server služby Reporting Services povolen pro ověřování Negotiate.
 
@@ -45,7 +45,7 @@ Pokud chcete nastavit KCD pro službu Reporting Services, pokračujte podle nás
 
 ### <a name="configure-the-service-principal-name-spn"></a>Konfigurace hlavního názvu služby (SPN)
 
-Hlavní název služby je jedinečný identifikátor pro službu, která používá ověřování protokolem Kerberos. Budete se muset ujistit, že máte k dispozici správný hlavní název služby HTTP pro váš server sestav. Informace o tom, jak nakonfigurovat správný hlavní název služby (SPN) pro server sestav, najdete v tématu o tom, [jak zaregistrovat hlavní název služby (SPN) pro server sestav](https://msdn.microsoft.com/library/cc281382.aspx).
+Hlavní název služby je jedinečný identifikátor pro službu, která používá ověřování protokolem Kerberos. Budete se muset ujistit, že máte k dispozici správný hlavní název služby HTTP pro váš server sestav. Informace o tom, jak nakonfigurovat správný hlavní název služby (SPN) pro server sestav, najdete v tématu o tom, [jak zaregistrovat hlavní název služby (SPN) pro server sestav](/sql/reporting-services/report-server/register-a-service-principal-name-spn-for-a-report-server).
 , Zda byl hlavní název služby (SPN) přidán, můžete ověřit spuštěním příkazu setspn s parametrem-L. Další informace o tomto příkazu najdete v tématu [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Povolit ověřování Negotiate
@@ -60,7 +60,7 @@ Pokud chcete povolit, aby server sestav používal ověřování pomocí protoko
 </AuthenticationTypes>
 ```
 
-Další informace najdete v tématu o [úpravách konfiguračního souboru služby Reporting Services](https://msdn.microsoft.com/library/bb630448.aspx) a o [konfiguraci ověřování systému Windows na serveru sestav](https://msdn.microsoft.com/library/cc281253.aspx).
+Další informace najdete v tématu o [úpravách konfiguračního souboru služby Reporting Services](/sql/reporting-services/report-server/modify-a-reporting-services-configuration-file-rsreportserver-config) a o [konfiguraci ověřování systému Windows na serveru sestav](/sql/reporting-services/security/configure-windows-authentication-on-the-report-server).
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Zajistěte, aby byl konektor důvěryhodný pro delegování do hlavního názvu služby (SPN) přidaný do účtu fondu aplikací služby Reporting Services.
 Nakonfigurujte KCD, aby služba Azure Proxy aplikací služby AD mohla delegovat identity uživatelů na účet fondu aplikací služby Reporting Services. Nakonfigurujte KCD tak, že povolíte, aby konektor proxy aplikací mohl načíst lístky Kerberos pro uživatele, kteří byli ověřeni ve službě Azure Active Directory. Pak tento server předá v tomto případě kontext cílové aplikaci nebo služby Reporting Services.
@@ -84,10 +84,10 @@ Teď jste připraveni nakonfigurovat proxy aplikací služby Azure Active Direct
 1. Publikujte služby sestav prostřednictvím proxy aplikací s následujícím nastavením. Podrobné pokyny k postupu publikování aplikace prostřednictvím proxy aplikací najdete v tématu [Publikování aplikací pomocí proxy aplikací služby Azure Active Directory](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    - **Interní adresa URL**: zadejte adresu URL serveru sestav, ke kterému konektor může získat přístup v podnikové síti. Ujistěte se, že je tato adresa URL dosažitelná ze serveru, na kterém je konektor nainstalovaný. Osvědčeným postupem je použití domény nejvyšší úrovně, jako je například `https://servername/`, aby se předešlo problémům s dílčími cestami publikovanými prostřednictvím proxy aplikací. Použijte například `https://servername/` a ne `https://servername/reports/` nebo `https://servername/reportserver/`.
      > [!NOTE]
-     > Doporučujeme použít zabezpečené připojení HTTPS k serveru sestav. Informace o postupu najdete v tématu [Konfigurace připojení protokolem SSL na server sestav v nativním režimu](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017).
+     > Doporučujeme použít zabezpečené připojení HTTPS k serveru sestav. Informace o postupu najdete v tématu [Konfigurace připojení protokolem SSL na server sestav v nativním režimu](/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017).
    - **Externí adresa URL**: zadejte veřejnou adresu URL, ke které se Power BI mobilní aplikace připojí. Pokud se například používá vlastní doména, může vypadat jako `https://reports.contoso.com`. Pokud chcete použít vlastní doménu, nahrajte certifikát pro doménu a nasměrujte záznam DNS na výchozí doménu msappproxy.net pro vaši aplikaci. Podrobný postup najdete v tématu [Práce s vlastními doménami v proxy aplikací služby Azure Active Directory](application-proxy-configure-custom-domain.md).
 
-   - **Metoda**předběžného ověřování: Azure Active Directory
+   - **Metoda** předběžného ověřování: Azure Active Directory
 
 2. Po publikování aplikace nakonfigurujte nastavení jednotného přihlašování podle následujících kroků:
 
@@ -99,7 +99,7 @@ Teď jste připraveni nakonfigurovat proxy aplikací služby Azure Active Direct
 
    d. Vyberte **Delegovanou identitu přihlášení**, kterou má konektor používat jménem uživatelů. Další informace najdete v tématu [Práce s různými místními a cloudovými identitami](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Kliknutím na **Uložit** uložte změny.
+   e. Kliknutím na **Uložit** změny uložte.
 
 Pokud chcete dokončit nastavování aplikace, přejděte do části **Uživatelé a skupiny** a přiřaďte uživatele k přístupu k této aplikaci.
 
@@ -112,13 +112,13 @@ Předtím, než se může mobilní aplikace Power BI připojit a získat příst
 3. Vyberte aplikaci a pak vyberte **Ověřování**.
 4. Přidejte následující identifikátory URI přesměrování podle toho, jakou používáte platformu.
 
-   Při konfiguraci aplikace pro Power BI Mobile **iOS**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
+   Při konfiguraci aplikace pro Power BI Mobile **iOS** přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
 
-   Při konfiguraci aplikace pro Power BI Mobile **Android**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
+   Při konfiguraci aplikace pro Power BI Mobile **Android** přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
@@ -133,7 +133,7 @@ Předtím, než se může mobilní aplikace Power BI připojit a získat příst
 
    ![Mobilní aplikace Power BI s externí adresou URL](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. Vyberte **Připojit**. Budete přesměrováni na přihlašovací stránku Azure Active Directory.
+2. Vyberte **Connect** (Připojit). Budete přesměrováni na přihlašovací stránku Azure Active Directory.
 
 3. Zadejte platné přihlašovací údaje pro daného uživatele a vyberte **Přihlásit se**. Uvidíte prvky ze serveru služby Reporting Services.
 
@@ -148,13 +148,15 @@ Microsoft Intune můžete použít ke správě klientských aplikací, které po
 5. V části **rozhraní API, které používá moje organizace**, vyhledejte "Správa mobilních aplikací Microsoftu" a vyberte ji.
 6. Přidání oprávnění **DeviceManagementManagedApps.** zápisu do aplikace
 7. Kliknutím na **udělit souhlas správce** udělte přístup k aplikaci.
-8. Nakonfigurujte požadované zásady Intune tak, že se rozhodnete, [jak vytvořit a přiřadit zásady ochrany aplikací](https://docs.microsoft.com/intune/app-protection-policies).
+8. Nakonfigurujte požadované zásady Intune tak, že se rozhodnete, [jak vytvořit a přiřadit zásady ochrany aplikací](/intune/app-protection-policies).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud aplikace vrátí chybovou stránku po pokusu o načtení sestavy déle než několik minut, může být nutné změnit nastavení časového limitu. Ve výchozím nastavení podporuje proxy aplikací aplikace, které na žádost zabírají až 85 sekund. **Pokud** chcete toto nastavení prodloužit na 180 sekund, vyberte časový limit back-endu na stránce nastavení proxy aplikace pro danou aplikaci. Tipy k vytváření rychlých a spolehlivých sestav najdete v tématu [Power BI osvědčené postupy](https://docs.microsoft.com/power-bi/power-bi-reports-performance).
+Pokud aplikace vrátí chybovou stránku po pokusu o načtení sestavy déle než několik minut, může být nutné změnit nastavení časového limitu. Ve výchozím nastavení podporuje proxy aplikací aplikace, které na žádost zabírají až 85 sekund. **Pokud** chcete toto nastavení prodloužit na 180 sekund, vyberte časový limit back-endu na stránce nastavení proxy aplikace pro danou aplikaci. Tipy k vytváření rychlých a spolehlivých sestav najdete v tématu [Power BI osvědčené postupy](/power-bi/power-bi-reports-performance).
+
+Pomocí služby Azure Proxy aplikací služby AD povolíte, aby se mobilní aplikace Power BI připojovala k místním Server sestav Power BI není podporovaná pro zásady podmíněného přístupu, které vyžadují aplikaci Microsoft Power BI jako schválenou klientskou aplikaci.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md)
-- [Zobrazení místních sestav serveru sestav a klíčových ukazatelů výkonu v mobilních aplikacích Power BI](https://docs.microsoft.com/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)
+- [Zobrazení místních sestav serveru sestav a klíčových ukazatelů výkonu v mobilních aplikacích Power BI](/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

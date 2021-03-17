@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/26/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388914"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951923"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele
 
@@ -65,7 +65,7 @@ Pokud se ověření nepovedlo, REST API musí vrátit HTTP 409 (konflikt) s `use
 }
 ```
 
-Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
+Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](../azure-functions/functions-reference.md) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
 
 ## <a name="define-claims"></a>Definovat deklarace identity
 
@@ -93,7 +93,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+## <a name="add-the-restful-api-technical-profile"></a>Přidat technický profil rozhraní RESTful API 
 
 [Technický profil RESTful](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful v `InputClaims` kolekci a přijímá data zpátky v `OutputClaims` kolekci. Vyhledejte element **ClaimsProviders** a přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
 
@@ -105,6 +105,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
       <DisplayName>Check loyaltyId Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/ValidateProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -129,6 +130,17 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 ```
 
 V tomto příkladu se do `userLanguage` služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
+
+### <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+
+Po nasazení REST API nastavte metadata `REST-ValidateProfile` technického profilu tak, aby odrážela vaše vlastní REST API, včetně:
+
+- **ServiceUrl**. Nastavte adresu URL koncového bodu REST API.
+- **SendClaimsIn**. Určete, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful.
+- **AuthenticationType**. Nastavte typ ověřování prováděného zprostředkovatelem deklarací RESTful. 
+- **AllowInsecureAuthInProduction**. V produkčním prostředí nezapomeňte nastavit tato metadata na `true`
+    
+Další konfigurace najdete v článku [metadata RESTful Technical Profile](restful-technical-profile.md#metadata) .
 
 Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProduction` Určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
 
@@ -217,15 +229,15 @@ Pokud chcete vrátit deklaraci propagačního kódu zpátky do aplikace předáv
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkExtensions.xml*a *SignUpOrSignin.xml*. 
+1. Vyberte **Odeslat vlastní zásadu** a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkExtensions.xml* a *SignUpOrSignin.xml*. 
 1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
 1. Klikněte na odkaz **registrace nyní** .
-1. Do pole **věrnostní ID**zadejte 1234 a klikněte na **pokračovat**. V tomto okamžiku byste měli získat chybovou zprávu ověření.
+1. Do pole **věrnostní ID** zadejte 1234 a klikněte na **pokračovat**. V tomto okamžiku byste měli získat chybovou zprávu ověření.
 1. Přejděte na jinou hodnotu a klikněte na **pokračovat**.
 1. Token, který se odesílá zpátky do vaší aplikace, zahrnuje `promoCode` deklaraci identity.
 

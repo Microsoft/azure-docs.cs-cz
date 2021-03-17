@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka ověřování & šifrování TLS – Azure HDInsight
 description: Nastavte šifrování TLS pro komunikaci mezi klienty Kafka a Kafka brokery i mezi zprostředkovateli Kafka. Nastavte ověřování SSL klientů.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082076"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945183"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování TLS pro Apache Kafka ve službě Azure HDInsight
 
@@ -52,7 +49,7 @@ Souhrn procesu instalace zprostředkovatele je následující:
 Pomocí následujících podrobných pokynů dokončete instalaci zprostředkovatele:
 
 > [!Important]
-> V následujících fragmentech kódu wnX je zkratka pro jeden ze tří pracovních uzlů a měla by být nahrazena `wn0` `wn1` nebo `wn2` podle potřeby. `WorkerNode0_Name`a `HeadNode0_Name` měly by být nahrazeny názvy příslušných počítačů.
+> V následujících fragmentech kódu wnX je zkratka pro jeden ze tří pracovních uzlů a měla by být nahrazena `wn0` `wn1` nebo `wn2` podle potřeby. `WorkerNode0_Name` a `HeadNode0_Name` měly by být nahrazeny názvy příslušných počítačů.
 
 1. Proveďte počáteční nastavení hlavního uzlu 0, který bude pro HDInsight plnit roli certifikační autority (CA).
 
@@ -127,9 +124,9 @@ Nyní jste nastavili jednotlivé zprostředkovatele Kafka s úložištěm klíč
 Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
 
 1. Přihlaste se k Azure Portal a vyberte svůj cluster Azure HDInsight Apache Kafka.
-1. Kliknutím na **Ambari domů** v části **řídicí panely clusteru**přejdete na uživatelské rozhraní Ambari.
-1. V části **zprostředkovatel Kafka** nastavte vlastnost **Listeners** na`PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. V části **Advanced Kafka-Broker** nastavte vlastnost **Security. Inter. Broker. Protocol** na`SSL`
+1. Kliknutím na **Ambari domů** v části **řídicí panely clusteru** přejdete na uživatelské rozhraní Ambari.
+1. V části **zprostředkovatel Kafka** nastavte vlastnost **Listeners** na `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. V části **Advanced Kafka-Broker** nastavte vlastnost **Security. Inter. Broker. Protocol** na `SSL`
 
     ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 

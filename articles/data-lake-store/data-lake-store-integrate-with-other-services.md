@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 929853f4dbedca7034c8e2a51e6231651a2dd08f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322524"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461649"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integrace Azure Data Lake Storage Gen1 s dalšími službami Azure
 Azure Data Lake Storage Gen1 lze použít ve spojení s jinými službami Azure a povolit širší škálu scénářů. Následující článek obsahuje seznam služeb, které Data Lake Storage Gen1 lze integrovat s nástrojem.
@@ -21,7 +21,7 @@ Můžete zřídit cluster [Azure HDInsight](https://azure.microsoft.com/document
 
 Pokyny, jak zřídit cluster HDInsight s Data Lake Storage Gen1, najdete tady:
 
-* [Zřízení clusteru HDInsight s Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Zřízení clusteru HDInsight s Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Zřízení clusteru HDInsight s Data Lake Storage Gen1 jako výchozím úložiště pomocí Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Zřízení clusteru HDInsight s Data Lake Storage Gen1 jako další úložiště pomocí Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
@@ -51,10 +51,10 @@ Pomocí Power BI můžete importovat data z účtu Data Lake Storage Gen1 a anal
 Data z Data Lake Storage Gen1 můžete zaregistrovat do Azure Data Catalog, aby byla data zjistitelná v celé organizaci. Další informace najdete [v tématu Registrace dat z Data Lake Storage Gen1 v Azure Data Catalog](data-lake-store-with-data-catalog.md).
 
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Použití Data Lake Storage Gen1 s služba SSIS (SQL Server Integration Services) (SSIS)
-K připojení balíčku SSIS s Data Lake Storage Gen1 můžete použít Správce připojení Data Lake Storage Gen1 v SSIS. Další informace najdete v tématu [použití Data Lake Storage Gen1 s SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+K připojení balíčku SSIS s Data Lake Storage Gen1 můžete použít Správce připojení Data Lake Storage Gen1 v SSIS. Další informace najdete v tématu [použití Data Lake Storage Gen1 s SSIS](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
-## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Použití Data Lake Storage Gen1 s SQL Data Warehouse
-K načtení dat z Data Lake Storage Gen1 do SQL Data Warehouse můžete použít základnu. Další informace najdete v tématu [použití Data Lake Storage Gen1 s SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
+## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Použití Data Lake Storage Gen1 se službou Azure synapse Analytics
+K načtení dat z Data Lake Storage Gen1 do služby Azure synapse Analytics můžete použít základnu. Další informace najdete v tématu [použití Data Lake Storage Gen1 s analýzou Azure synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Použití Data Lake Storage Gen1 s využitím Azure Event Hubs
 Pomocí Azure Data Lake Storage Gen1 můžete archivovat a zachytit data přijatá službou Azure Event Hubs. Další informace najdete v tématu [použití Data Lake Storage Gen1 s využitím Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).
@@ -62,5 +62,4 @@ Pomocí Azure Data Lake Storage Gen1 můžete archivovat a zachytit data přijat
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Začínáme s Data Lake Storage Gen1 pomocí portálu](data-lake-store-get-started-portal.md)
-* [Začínáme s Data Lake Storage Gen1 pomocí prostředí PowerShell](data-lake-store-get-started-powershell.md)  
-
+* [Začínáme s Data Lake Storage Gen1 pomocí prostředí PowerShell](data-lake-store-get-started-powershell.md)

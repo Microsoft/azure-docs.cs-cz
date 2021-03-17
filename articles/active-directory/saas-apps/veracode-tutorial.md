@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a8c7c70e7956868bf069704eb5fe34db014dd135
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f56f2dc974df58575c72c93a0609026cd7bbf88d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532462"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Veracode
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat Veracode s Azure Active Directory (Azu
 * Řízení ve službě Azure AD, která má přístup k Veracode.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Veracode svým účtům Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
-
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,18 +41,18 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Veracode do služby Azure AD, přidejte Veracode z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text "Veracode".
 1. Na panelu výsledků vyberte **Veracode** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Veracode
+## <a name="configure-and-test-azure-ad-sso-for-veracode"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Veracode
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Veracode pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Veracode.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Veracode, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Veracode postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
     * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -67,11 +65,11 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Veracode** Najděte oddíl **Manage** . Vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **Veracode** Najděte oddíl **Manage** . Vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Snímek obrazovky s nastavením jednotného přihlašování pomocí SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Vyberte **Uložit**.
 
@@ -85,7 +83,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Veracode také očekává několik dalších atributů, které se mají zpětně předat v odpovědi SAML. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | FirstName |User. křestní jméno |
     | polím |User. příjmení |
@@ -95,35 +93,59 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Snímek obrazovky s oddílem nastavení Veracode s zvýrazněnými adresami URL konfigurace](common/copy-configuration-urls.png)
 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Veracode.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Veracode**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
 ## <a name="configure-veracode-sso"></a>Konfigurace jednotného přihlašování Veracode
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Veracode společnosti jako správce.
 
 1. V nabídce v horní části vyberte **Nastavení**  >  **správce**.
    
-    ![Snímek obrazovky se správou Veracode s ikonami nastavení a zvýrazněným správcem](./media/veracode-tutorial/ic802911.png "Správa")
+    ![Snímek obrazovky se správou Veracode s ikonami nastavení a zvýrazněným správcem](./media/veracode-tutorial/admin.png "Správa")
 
 1. Vyberte kartu **SAML** .
 
 1. V části **nastavení pro organizaci SAML** proveďte následující kroky:
 
-    ![Snímek obrazovky oddílu nastavení SAML organizace](./media/veracode-tutorial/ic802912.png "Správa")
+    ![Snímek obrazovky oddílu nastavení SAML organizace](./media/veracode-tutorial/saml.png "Správa")
 
-    a.  Pro **vystavitele**vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
+    a.  Pro **vystavitele** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
-    b. Pro **podpisový certifikát kontrolního výrazu**vyberte **zvolit soubor** a nahrajte stažený certifikát z Azure Portal.
+    b. Pro **podpisový certifikát kontrolního výrazu** vyberte **zvolit soubor** a nahrajte stažený certifikát z Azure Portal.
 
-    c. Pro **samostatnou registraci**vyberte **Povolit samostatnou registraci**.
+    c. Pro **samostatnou registraci** vyberte **Povolit samostatnou registraci**.
 
 1. V části **nastavení pro osobní registraci** proveďte následující kroky a potom vyberte **Uložit**:
 
-    ![Snímek obrazovky s oddílem nastavení pro samostatnou registraci s vybranými různými možnostmi](./media/veracode-tutorial/ic802913.png "Správa")
+    ![Snímek obrazovky s oddílem nastavení pro samostatnou registraci s vybranými různými možnostmi](./media/veracode-tutorial/save.png "Správa")
 
-    a. Pro **aktivaci nového uživatele**vyberte možnost **nepožaduje se žádná aktivace**.
+    a. Pro **aktivaci nového uživatele** vyberte možnost **nepožaduje se žádná aktivace**.
 
-    b. V případě **aktualizací uživatelských dat**vyberte **Předvolby Veracode uživatelská data**.
+    b. V případě **aktualizací uživatelských dat** vyberte **Předvolby Veracode uživatelská data**.
 
-    c. V části **Podrobnosti atributu SAML**vyberte následující:
+    c. V části **Podrobnosti atributu SAML** vyberte následující:
       * **Role uživatelů**
       * **Správce zásad**
       * **Kontrolor**
@@ -135,56 +157,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
       * **Členství v týmu**
       * **Výchozí tým**
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
-
-1. V levém podokně Azure Portal vyberte **Azure Active Directory**  > **Uživatelé**  >  **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
-1. Ve vlastnostech **uživatele** proveďte následující kroky:
-
-   1. Jako **název**zadejte `B.Simon` .  
-   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
-   1. Vyberte možnost **Zobrazit heslo**a potom zapište zobrazenou hodnotu.
-   1. Vyberte **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte B. Simon použití jednotného přihlašování Azure tím, že udělíte přístup k Veracode.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
-1. V seznamu aplikace vyberte **Veracode**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Snímek obrazovky s oddílem spravovat se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
-
-1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
-
-    ![Snímek stránky uživatelů a skupin se zvýrazněným možností přidat uživatele](common/add-assign-user.png)
-
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v části **Uživatelé**možnost **B. Simon**. Pak zvolte **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Pak zvolte **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
-
 ### <a name="create-veracode-test-user"></a>Vytvořit testovacího uživatele Veracode
 
-Pokud se chcete přihlásit k Veracode, je potřeba, aby se uživatelé Azure AD zřídili v Veracode. Tato úloha je automatizovaná a vy nemusíte nic dělat ručně. Uživatelé se v případě potřeby automaticky vytvoří při prvním pokusu o jednotné přihlašování.
+V této části se v Veracode vytvoří uživatel s názvem B. Simon. Veracode podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V tomto oddílu není žádná položka akce. Pokud uživatel ještě v Veracode neexistuje, vytvoří se po ověření nový.
 
 > [!NOTE]
 > K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů Veracode nebo rozhraní API poskytovaná Veracode.
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-Když na přístupovém panelu vyberete **Veracode** , měli byste se automaticky přihlásit k Veracode, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Veracode, pro které jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Veracode v okně moje aplikace, měli byste se automaticky přihlásit k Veracode, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Vyzkoušejte si Veracode s Azure AD](https://aad.portal.azure.com/)
+Po nakonfigurování Veracode můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -4,22 +4,22 @@ description: Tento článek popisuje, jak model kódu aktualizuje pro Azure Anal
 author: chrislound
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: chlound
-ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553899"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491243"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
 Pomocí Azure Automation a PowerShellových runbooků můžete provádět operace automatizované aktualizace dat ve vašich tabelárních modelech Azure Analysis.  
 
-Příklad v tomto článku používá [modul SQL SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
+Příklad v tomto článku používá [modul SQL SQLServer](/powershell/module/sqlserver/?view=sqlserver-ps&preserve-view=true). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Ověřování uživatelů
+## <a name="authentication"></a>Authentication
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -30,7 +30,7 @@ Všechna volání musí být ověřena pomocí platného tokenu Azure Active Dir
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Nainstalujte moduly SqlServer z Galerie prostředí PowerShell.
 
-1. V Azure Automation účtu klikněte na **moduly**a pak **Procházet Galerie**.
+1. V Azure Automation účtu klikněte na **moduly** a pak **Procházet Galerie**.
 
 2. Na panelu hledání vyhledejte **SQLServer**.
 
@@ -54,17 +54,17 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
 1. V účtu Automation vytvořte prostředek s **přihlašovacími údaji** , který se použije k bezpečnému uložení instančního objektu.
 
-    ![Vytvořit přihlašovací údaj](./media/analysis-services-refresh-azure-automation/6.png)
+    ![Snímek obrazovky zobrazující stránku přihlašovací údaje se zvolenou akcí přidat pověření](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Zadejte podrobnosti přihlašovacích údajů. Do pole **uživatelské jméno**zadejte ID aplikace instančního objektu (AppID) a potom zadejte do pole **heslo**tajný klíč instančního objektu.
+2. Zadejte podrobnosti přihlašovacích údajů. Do pole **uživatelské jméno** zadejte ID aplikace instančního objektu (AppID) a potom zadejte do pole **heslo** tajný klíč instančního objektu.
 
     ![Vytvořit přihlašovací údaj](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Import Runbooku služby Automation
+3. Importujte Runbook služby Automation.
 
-    ![Importovat Runbook](./media/analysis-services-refresh-azure-automation/8.png)
+    ![Snímek obrazovky zobrazující stránku sady Runbook s vybranou akcí importovat sadu Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Vyhledejte soubor [Refresh-Model.ps1](#sample-powershell-runbook) , zadejte **název** a **Popis**a pak klikněte na **vytvořit**.
+4. Vyhledejte soubor [Refresh-Model.ps1](#sample-powershell-runbook) , zadejte **název** a **Popis** a pak klikněte na **vytvořit**.
 
     > [!NOTE]
     > Pokud chcete vytvořit soubor s názvem Refresh-Model.ps1 a uložit ho do sady Runbook, použijte v části [ukázkový powershellový Runbook](#sample-powershell-runbook) na konci tohoto dokumentu.
@@ -80,9 +80,9 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
 6. Otestujte Runbook kliknutím na tlačítko **Start**.
 
-    ![Spuštění runbooku](./media/analysis-services-refresh-azure-automation/11.png)
+    ![Snímek obrazovky zobrazující stránku "Přehled" se zvolenou akcí spustit.](./media/analysis-services-refresh-azure-automation/11.png)
 
-7. Vyplňte parametry **DatabaseName**, **ANALYSISSERVER**a **REFRESHTYPE** a pak klikněte na **OK**. Parametr **WEBHOOKDATA** není při ručním spuštění sady Runbook vyžadován.
+7. Vyplňte parametry **DatabaseName**, **ANALYSISSERVER** a **REFRESHTYPE** a pak klikněte na **OK**. Parametr **WEBHOOKDATA** není při ručním spuštění sady Runbook vyžadován.
 
     ![Spuštění runbooku](./media/analysis-services-refresh-azure-automation/12.png)
 
@@ -96,11 +96,11 @@ Runbook se dá nakonfigurovat tak, aby aktivoval Azure Analysis Services aktuali
 
 Dá se nakonfigurovat takto:
 
-1. V sadě Runbook Automation klikněte na **plány**a pak **na Přidat plán**.
+1. V sadě Runbook Automation klikněte na **plány** a pak **na Přidat plán**.
  
     ![Vytvořit plán](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Klikněte na **naplánovat**  >  **vytvořit nový plán**a pak vyplňte podrobnosti.
+2. Klikněte na **naplánovat**  >  **vytvořit nový plán** a pak vyplňte podrobnosti.
 
     ![Konfigurovat plán](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -108,7 +108,7 @@ Dá se nakonfigurovat takto:
 
 4. Vyplňte parametry pro daný plán. Budou použity při každém spuštění triggeru sady Runbook. Parametr **WEBHOOKDATA** by měl zůstat prázdný při spuštění prostřednictvím plánu.
 
-    ![Konfigurovat parametry](./media/analysis-services-refresh-azure-automation/16.png)
+    ![Konfigurace parametrů](./media/analysis-services-refresh-azure-automation/16.png)
 
 5. Klikněte na **OK**.
 
@@ -117,9 +117,9 @@ Dá se nakonfigurovat takto:
 Pokud chcete sadu Runbook využívat pomocí Azure Data Factory, vytvořte nejprve **Webhook** pro sadu Runbook. **Webhook** poskytne adresu URL, kterou je možné volat pomocí Azure Data Factory webové aktivity.
 
 > [!IMPORTANT]
-> K vytvoření **Webhooku**se musí **publikovat**stav Runbooku.
+> K vytvoření **Webhooku** se musí **publikovat** stav Runbooku.
 
-1. V sadě Runbook Automation klikněte na **Webhooky**a pak klikněte na **Přidat Webhook**.
+1. V sadě Runbook Automation klikněte na **Webhooky** a pak klikněte na **Přidat Webhook**.
 
    ![Přidat Webhook](./media/analysis-services-refresh-azure-automation/17.png)
 
@@ -161,7 +161,7 @@ Příklad těla JSON:
 
 Tyto parametry jsou definovány ve skriptu Runbooku PowerShell.  Po spuštění aktivity webu je předaná datová část JSON WEBHOOKDATA.
 
-Toto se deserializovat a uloží jako parametry PowerShellu, které se pak používají příkazem PowerShellu Invoke-ProcesASDatabase.
+Toto se deserializovat a uloží jako parametry PowerShellu, které pak používá příkaz Invoke-ProcesASDatabase PowerShellu.
 
 ![Deserializovaný Webhook](./media/analysis-services-refresh-azure-automation/20.png)
 
@@ -174,7 +174,7 @@ Virtuální počítač Azure se statickou veřejnou IP adresou se dá použít j
 >
 >Další informace o konfiguraci Azure Automation hybridních pracovních procesů najdete v tématu [instalace Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
-Po nakonfigurování Hybrid Worker vytvořte Webhook, jak je popsáno v části věnované [použití s Data Factory](#consume-with-data-factory).  Jediným rozdílem je, že **Run on**  >  při konfiguraci Webhooku vyberte možnost spustit při**Hybrid Worker** .
+Po nakonfigurování Hybrid Worker vytvořte Webhook, jak je popsáno v části věnované [použití s Data Factory](#consume-with-data-factory).  Jediným rozdílem je, že **Run on**  >  při konfiguraci Webhooku vyberte možnost spustit při **Hybrid Worker** .
 
 Příklad Webhooku s použitím Hybrid Worker:
 
@@ -202,7 +202,7 @@ $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
 
 # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData)
-{ 
+{ 
     # Retrieve AAS details from Webhook request body
     $atmParameters = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
     Write-Output "CredentialName: $($atmParameters.CredentialName)"
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>Další kroky
 
 [ukázky](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

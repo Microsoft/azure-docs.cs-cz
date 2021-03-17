@@ -8,18 +8,18 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001044"
 ---
 # <a name="advanced-filtering"></a>Rozšířené filtrování
 Event Grid umožňuje zadat filtry pro libovolnou vlastnost v datové části JSON. Tyto filtry jsou modelovány jako množina `AND` podmínek s každou vnější podmínkou, která má volitelné vnitřní `OR` podmínky. Pro každou `AND` podmínku zadejte následující hodnoty:
 
-* `OperatorType`– Typ porovnání.
-* `Key`– Cesta JSON k vlastnosti, na které má být filtr použit.
-* `Value`– Referenční hodnota, na kterou se filtr spouští (nebo) `Values` – sada referenčních hodnot, na které se filtr spouští.
+* `OperatorType` – Typ porovnání.
+* `Key` – Cesta JSON k vlastnosti, na které má být filtr použit.
+* `Value` – Referenční hodnota, na kterou se filtr spouští (nebo) `Values` – sada referenčních hodnot, na které se filtr spouští.
 
 ## <a name="json-syntax"></a>Syntaxe JSON
 
@@ -55,7 +55,7 @@ Pro operátory, které podporují více hodnot (například `NumberIn` , `Number
 > [!CAUTION]
 > Operátory NOT a se `NumberNotIn` `StringNotIn` chovají jako a podmínky na každé hodnotě zadané v `Values` poli.
 >
-> Pokud to neprovedete, filtr přijme filtr přijmout – vše a předá účel filtrování.
+> V takovém případě filtr Accept-All filtr a předá účel filtrování.
 
 ## <a name="floating-point-rounding-behavior"></a>Chování zaokrouhlení plovoucí desetinné čárky
 

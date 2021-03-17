@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985060"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582805"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Storage Gen1
 Naučte se, jak povolit protokolování diagnostiky pro váš účet Azure Data Lake Storage Gen1 a jak zobrazit protokoly shromážděné pro váš účet.
@@ -26,27 +26,27 @@ Organizace můžou povolit protokolování diagnostiky pro svůj účet Azure Da
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Povolení protokolování diagnostiky pro váš účet Data Lake Storage Gen1
 1. Přihlaste se k novému webu [Azure Portal](https://portal.azure.com).
 2. Otevřete účet Data Lake Storage Gen1 a v okně Data Lake Storage Gen1 účtu klikněte na **nastavení diagnostiky**.
 3. V okně **nastavení diagnostiky** klikněte na **zapnout diagnostiku**.
 
-    ![Povolení protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Povolení diagnostických protokolů")
+    ![Snímek obrazovky s Data Lake Storage účet 1. generace s možností nastavení diagnostiky a možností zapnout diagnostiku s názvem.](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Povolení diagnostických protokolů")
 
 3. V okně **nastavení diagnostiky** proveďte následující změny pro konfiguraci protokolování diagnostiky.
    
-    ![Povolení protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Povolení diagnostických protokolů")
+    ![Snímek obrazovky s oddílem nastavení diagnostiky s textovým polem název a možností Uložit s názvem.](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Povolení diagnostických protokolů")
    
-   * Do pole **název**zadejte hodnotu Konfigurace diagnostického protokolu.
+   * Do pole **název** zadejte hodnotu Konfigurace diagnostického protokolu.
    * Můžete si vybrat, že chcete data ukládat a zpracovávat různými způsoby.
      
         * Vyberte možnost **archivovat do účtu úložiště** pro ukládání protokolů do účtu Azure Storage. Tuto možnost použijete, pokud chcete archivovat data, která budou zpracována dávkově za pozdější datum. Pokud vyberete tuto možnost, musíte zadat účet Azure Storage, do kterého se budou ukládat protokoly.
         
         * Vyberte možnost **streamování do centra událostí** pro streamování dat protokolu do centra událostí Azure. Tato možnost bude pravděpodobně použita, pokud máte k analýze příchozích protokolů v reálném čase kanál pro zpracování dat. Pokud vyberete tuto možnost, musíte zadat podrobnosti o centru událostí Azure, které chcete použít.
 
-        * Vyberte možnost **odeslání Log Analytics** k použití služby Azure monitor k analýze generovaných dat protokolu. Pokud vyberete tuto možnost, musíte zadat podrobné informace o pracovním prostoru Log Analytics, které byste použili při analýze protokolu. Podrobnosti o používání protokolů Azure Monitor najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor](../azure-monitor/learn/tutorial-viewdata.md) .
+        * Vyberte možnost **odeslání Log Analytics** k použití služby Azure monitor k analýze generovaných dat protokolu. Pokud vyberete tuto možnost, musíte zadat podrobné informace o pracovním prostoru Log Analytics, které byste použili při analýze protokolu. Podrobnosti o používání protokolů Azure Monitor najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md) .
      
    * Určete, zda chcete získat protokoly auditu nebo protokoly žádostí nebo obojí.
    * Zadejte počet dní, po které musí být data uchována. Uchování se dá použít jenom v případě, že k archivaci dat protokolu používáte účet Azure Storage.
@@ -73,17 +73,17 @@ Existují dva způsoby, jak zobrazit data protokolu pro váš Data Lake Storage 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Z účtu Azure Storage, který obsahuje data protokolu
 1. Otevřete okno Azure Storage účtu přidruženého k Data Lake Storage Gen1 pro protokolování a potom klikněte na objekty blob. Okno **BLOB Service** uvádí dva kontejnery.
    
-    ![Zobrazit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Zobrazit diagnostické protokoly")
+    ![Snímek obrazovky okna Data Lake Storage Gen 1 – vybraná možnost objekty BLOB a okno služby blogu s názvy dvou služby BLOB Service, které jsou vyvolány.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Zobrazit diagnostické protokoly")
    
    * Kontejner **Insights-logs-audit** obsahuje protokoly auditu.
    * Kontejner **Insights-logs – požadavky** obsahují protokoly žádostí.
 2. V rámci těchto kontejnerů jsou protokoly uloženy v následující struktuře.
    
-    ![Zobrazit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Zobrazit diagnostické protokoly")
+    ![Snímek obrazovky se strukturou protokolů, jak je uložen v kontejneru.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Zobrazit diagnostické protokoly")
    
-    Příkladem může být úplná cesta k protokolu auditu.`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Příkladem může být úplná cesta k protokolu auditu. `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Podobně platí, že úplná cesta k protokolu žádostí může být`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Podobně platí, že úplná cesta k protokolu žádostí může být `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>Pochopení struktury dat protokolu
 Protokoly auditu a požadavků jsou ve formátu JSON. V této části se podíváme na strukturu formátu JSON pro žádosti a protokoly auditu.
@@ -106,7 +106,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
         "callerIpAddress": "::ffff:1.1.1.1",
         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"StoreIngressSize":0 ,"StoreEgressSize":4096,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z","QueryParameters":"api-version=<version>&op=<operationName>"}
     }
     ,
     . . . .
@@ -115,7 +115,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 ```
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -128,7 +128,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -136,6 +136,9 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | ID žádosti klienta |Řetězec |ID, které jedinečně identifikuje tento požadavek |
 | StartTime |Řetězec |Čas přijetí žádosti serverem |
 | EndTime |Řetězec |Čas, kdy server odeslal odpověď |
+| StoreIngressSize |Dlouhou |Velikost v bajtech na Data Lake Store |
+| StoreEgressSize |Dlouhou |Velikost v bajtech, která se nezměnila z Data Lake Store |
+| QueryParameters |Řetězec |Popis: Jedná se o parametry dotazu HTTP. Příklad 1: API-Version = 2014-01-01&op = getfilestatus příklad 2: OP = APPEND&Append = true&syncFlag = DATA&. SessionID = bee3355a-4925-4435-bb4d-ceea52811aeb&leaseID = bee3355a-4925-4435-bb4d-ceea52811aeb&offset = 28313319&API-Version = 2017-08-01 |
 
 ### <a name="audit-logs"></a>Protokoly auditu
 Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznam** , který obsahuje pole objektů log.
@@ -164,7 +167,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 ```
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -177,12 +180,12 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | StreamName |Řetězec |Cesta, na které byla operace provedena |
 
 ## <a name="samples-to-process-the-log-data"></a>Ukázky pro zpracování dat protokolu
-Při odesílání protokolů z Azure Data Lake Storage Gen1 do protokolů Azure Monitor (podrobnosti o používání protokolů Azure Monitor naleznete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor log](../azure-monitor/learn/tutorial-viewdata.md) ). následující dotaz vrátí tabulku obsahující seznam zobrazovaných uživatelských jmen, čas událostí a počet událostí pro čas události spolu s vizuálním grafem. Dá se snadno upravit, aby se zobrazil identifikátor GUID uživatele nebo jiné atributy:
+Při odesílání protokolů z Azure Data Lake Storage Gen1 do protokolů Azure Monitor (podrobnosti o používání protokolů Azure Monitor naleznete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor log](../azure-monitor/logs/log-analytics-tutorial.md) ). následující dotaz vrátí tabulku obsahující seznam zobrazovaných uživatelských jmen, čas událostí a počet událostí pro čas události spolu s vizuálním grafem. Dá se snadno upravit, aby se zobrazil identifikátor GUID uživatele nebo jiné atributy:
 
 ```
 search *
@@ -196,4 +199,3 @@ Azure Data Lake Storage Gen1 poskytuje ukázku, jak zpracovávat a analyzovat da
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
-

@@ -1,7 +1,7 @@
 ---
 title: Transakční replikace
 titleSuffix: Azure SQL Managed Instance
-description: Přečtěte si o použití SQL Server transakční replikace se spravovanou instancí Azure SQL.
+description: Přečtěte si o použití SQL Server transakční replikace se službou Azure SQL Managed instance (Preview).
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920117"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225339"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transakční replikace se spravovanou instancí Azure SQL
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transakční replikace se spravovanou instancí Azure SQL (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Transakční replikace je funkce spravované instance Azure SQL a SQL Server, která umožňuje replikovat data z tabulky ve spravované instanci Azure SQL nebo instance SQL Server do tabulek umístěných ve vzdálených databázích. Tato funkce umožňuje synchronizovat více tabulek v různých databázích. 
@@ -35,11 +35,11 @@ Transakční replikaci můžete použít k nahrání změn provedených ve sprav
 - Databáze instancí ve spravované instanci Azure SQL
 
   > [!NOTE]
-  > Pokud chcete používat všechny funkce spravované instance SQL Azure, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
+  > Pokud chcete používat všechny funkce spravované instance SQL Azure, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt).
 
 ### <a name="components"></a>Komponenty
 
-Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributor**a **předplatitel**, jak je znázorněno na následujícím obrázku:  
+Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributor** a **předplatitel**, jak je znázorněno na následujícím obrázku:  
 
 ![replikace s SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -65,21 +65,21 @@ Spravovaná instance Azure SQL může podporovat předplatitele z následující
 
    > [!NOTE]
    >
-   > - Pro jiné verze SQL Server, které nepodporují publikování do objektů v Azure, je možné použít metodu [opětovného publikování dat](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) k přesunu dat do novějších verzí SQL Server.
+   > - Pro jiné verze SQL Server, které nepodporují publikování do objektů v Azure, je možné použít metodu [opětovného publikování dat](/sql/relational-databases/replication/republish-data) k přesunu dat do novějších verzí SQL Server.
    > - Pokud se pokusíte nakonfigurovat replikaci pomocí starší verze, může dojít k chybě MSSQL_REPL20084 (proces se nemohl připojit k odběrateli) a MSSQ_REPL40532 (nemůže otevřít server \<name> požadovaný přihlášením. Přihlášení se nezdařilo.)
 
 ### <a name="types-of-replication"></a>Typy replikace
 
-Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+Existují různé [typy replikace](/sql/relational-databases/replication/types-of-replication):
 
 | Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano |
-| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
-| [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
-| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
-| [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
+| [**Standardní transakční**](/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano |
+| [**Snímek**](/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
+| [**Sloučit replikaci**](/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
+| [**Obousměrné**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
+| [**Odběry, které by možné aktualizovat**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Matice podpory
@@ -109,7 +109,7 @@ Transakční replikace je užitečná v následujících scénářích:
 | Kategorie | Synchronizace dat | Transakční replikace |
 |---|---|---|
 | Výhody | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci |
-| Nevýhody | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
+| Nevýhody | -Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
 
 ## <a name="common-configurations"></a>Běžné konfigurace
 
@@ -148,7 +148,7 @@ V této konfiguraci je databáze v Azure SQL Database nebo spravované instanci 
 - Nakonfigurujte partnerský vztah VPN mezi virtuálními sítěmi účastníků replikace, pokud se virtuální sítě liší.
 
 > [!NOTE]
-> Při připojování k souboru Azure Storage může dojít k chybě 53, pokud je NSG port 445 pro skupinu zabezpečení sítě (), když je distributor databáze spravované instance Azure SQL a předplatitel místní. Pokud chcete tento problém vyřešit, [aktualizujte NSG virtuální](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) sítě.
+> Při připojování k souboru Azure Storage může dojít k chybě 53, pokud je NSG port 445 pro skupinu zabezpečení sítě (), když je distributor databáze spravované instance Azure SQL a předplatitel místní. Pokud chcete tento problém vyřešit, [aktualizujte NSG virtuální](../../storage/files/storage-troubleshoot-windows-file-connection-problems.md) sítě.
 
 ## <a name="with-failover-groups"></a>Se skupinami převzetí služeb při selhání
 
@@ -196,16 +196,16 @@ Další informace o konfiguraci transakční replikace najdete v následujícíc
 
 - [Konfigurace replikace mezi vydavatelem a odběratelem spravované instance SQL](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Konfigurace replikace mezi vydavatelem spravované instance SQL, distributorem spravované instance SQL a předplatitelem SQL Server](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
-- [Vytvořte publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru jako odběratele (například `N'azuresqldbdns.database.windows.net` a databáze v Azure SQL Database název jako cílovou databázi (například **AdventureWorks**). )
+- [Vytvořte publikaci](/sql/relational-databases/replication/publish/create-a-publication).
+- [Vytvořte nabízený odběr](/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru jako odběratele (například `N'azuresqldbdns.database.windows.net` a databáze v Azure SQL Database název jako cílovou databázi (například **AdventureWorks**). )
 
 ## <a name="see-also"></a>Viz také  
 
 - [Replikace pomocí spravované instance SQL a skupiny převzetí služeb při selhání](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replikace do služby SQL Database](../database/replication-to-sql-database.md)
 - [Replikace do spravované instance](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvoření nabízeného odběru](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Monitorování (replikace)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Inicializovat předplatné](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Vytvoření publikace](/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvoření nabízeného odběru](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typy replikace](/sql/relational-databases/replication/types-of-replication)
+- [Monitorování (replikace)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Inicializovat předplatné](/sql/relational-databases/replication/initialize-a-subscription)

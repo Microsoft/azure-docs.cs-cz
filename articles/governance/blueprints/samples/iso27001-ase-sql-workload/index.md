@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu úlohy ASE/SQL ISO 27001 – přehled
 description: Přehled a architektura ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
-ms.date: 07/13/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
-ms.translationtype: HT
+ms.openlocfilehash: 61e62c9a9099b0c84a98f1840743f05469e46b62
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926089"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627512"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
@@ -29,7 +29,7 @@ Ukázka podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečené a plně monitorované infrastruktury úloh na podnikové úrovni, která je založená na standardech ISO 27001. Toto prostředí tvoří:
 
 - [Role Azure](../../../../role-based-access-control/overview.md) nazvaná DevOps, která má oprávnění nasazovat a spravovat prostředky v p[prostředích Azure App Service Environment](../../../../app-service/environment/intro.md) nasazených ukázkou podrobného plánu
-- [Zásady Azure](../../../policy/overview.md) k pevnému určení služeb, které je možné v tomto prostředí nasadit, a zamítnutí vytváření libovolných prostředků veřejných IP adres (PIP)
+- Definice [Azure Policy](../../../policy/overview.md) k pevnému určení služeb, které je možné v tomto prostředí nasadit, a zamítnutí vytváření libovolných prostředků veřejných IP adres (PIP)
 - Virtuální síť obsahující jednu podsíť, která je propojená k předem připravenému prostředí [sdílených služeb](../iso27001-shared/index.md) a vynucuje průchod veškerého provozu bránou firewall [sdílených služeb](../iso27001-shared/index.md). Tato virtuální síť je hostitelem pro tyto prostředky:
   - [Prostředí Azure App Service Environment](../../../../app-service/environment/intro.md), která se dají využít k hostování jedné nebo několika webových aplikací, webových rozhraní API nebo služeb
   - Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md) využívající koncový bod služby virtuální sítě, a to pro ukládání tajných kódů využívaných aplikacemi, které jsou spuštěné v prostředí příslušné úlohy

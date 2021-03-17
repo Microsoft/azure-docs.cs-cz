@@ -4,12 +4,12 @@ description: Tento skript Azure CLI vytvoří virtuální počítač v laborator
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: b64b6fa13bd0d320707dc279cb554d5c23f1d80d
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c7625f62d7897d61903f864b216ccf9aa13648ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136163"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198417"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Použití Azure CLI k vytvoření a ověření dostupnosti virtuálního počítače v laboratorním prostředí v Azure DevTest Labs
 
@@ -38,8 +38,8 @@ Tento skript používá následující příkazy:
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [AZ Lab VM Create](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | Vytvoří virtuální počítač v laboratorním prostředí. |
-| [az lab vm show](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-show) | Zobrazí stav virtuálního počítače v laboratorním prostředí. |
+| [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create) | Vytvoří virtuální počítač v laboratorním prostředí. |
+| [az lab vm show](/cli/azure/lab/vm#az-lab-vm-show) | Zobrazí stav virtuálního počítače v laboratorním prostředí. |
 
 ## <a name="next-steps"></a>Další kroky
 

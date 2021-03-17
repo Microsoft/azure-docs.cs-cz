@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86134843"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro multi-vrstvou Citrix XenApp a XenDesktop Deployment
@@ -56,8 +56,8 @@ Pro účely tohoto článku se k nastavení zotavení po havárii použila nasaz
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Technologie Hyper-V** | Není v oboru | Yes
-**Hostiteli** | Není v oboru | Yes
+**Hyper-V** | Není v oboru | Yes
+**VMware** | Není v oboru | Yes
 **Fyzický server** | Není v oboru | Yes
 
 ### <a name="versions"></a>Verze
@@ -106,7 +106,7 @@ Po ochraně počítačů (stav je "chráněno" v části replikované položky),
 V výpočetních a síťových > výpočetních vlastnostech můžete zadat název a cílovou velikost virtuálního počítače Azure.
 Podle potřeby upravte název tak, aby byl souladu s požadavky Azure. Můžete také zobrazit a přidat informace o cílové síti, podsíti a IP adrese, která bude přiřazena k virtuálnímu počítači Azure.
 
-Je třeba počítat s následujícím:
+Všimněte si, že:
 
 * Můžete nastavit cílovou IP adresu. Pokud adresu nezadáte, bude počítač, který převezme služby při selhání, používat DHCP. Pokud nastavíte adresu, která není dostupná při převzetí služeb při selhání, převzetí služeb při selhání nebude fungovat. Stejnou cílovou IP adresu je možné použít pro testovací převzetí služeb při selhání, pokud je adresa k dispozici v testovací síti převzetí služeb při selhání.
 

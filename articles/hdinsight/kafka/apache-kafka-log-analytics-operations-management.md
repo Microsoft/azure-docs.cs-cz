@@ -1,19 +1,16 @@
 ---
 title: Protokoly Azure Monitor pro Apache Kafka – Azure HDInsight
 description: Naučte se používat protokoly Azure Monitor k analýze protokolů z Apache Kafka clusteru v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087397"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595288"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka ve službě HDInsight
 
@@ -37,7 +34,7 @@ Protokoly Apache Kafka v clusteru se nacházejí v umístění `/var/log/kafka` 
 
 Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny clustery HDInsight. Pomocí následujících odkazů můžete pochopit, jak vytvořit a nakonfigurovat požadované služby:
 
-1. Vytvořte pracovní prostor Log Analytics. Další informace najdete v části [protokoly v dokumentu Azure monitor](../../azure-monitor/platform/data-platform-logs.md) .
+1. Vytvoříte pracovní prostor služby Log Analytics Další informace najdete v části [protokoly v dokumentu Azure monitor](../../azure-monitor/logs/data-platform-logs.md) .
 
 2. Vytvořte Kafka v clusteru HDInsight. Další informace najdete v dokumentu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) .
 
@@ -50,7 +47,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
 1. V [Azure Portal](https://portal.azure.com)vyberte pracovní prostor Log Analytics.
 
-2. V nabídce vlevo v části **Obecné**vyberte **protokoly**. Odtud můžete vyhledávat data shromážděná z Kafka. V okně dotazu zadejte dotaz a pak vyberte **Spustit**. Následuje několik příkladů hledání:
+2. V nabídce vlevo v části **Obecné** vyberte **protokoly**. Odtud můžete vyhledávat data shromážděná z Kafka. V okně dotazu zadejte dotaz a pak vyberte **Spustit**. Následuje několik příkladů hledání:
 
 * Využití disku:
 
@@ -104,7 +101,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Monitor najdete v tématech [přehled Azure monitor](../../log-analytics/log-analytics-get-started.md)a [dotazy Azure monitor protokoly pro monitorování clusterů HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Další informace o Azure Monitor najdete v tématech [přehled Azure monitor](../../azure-monitor/overview.md)a [dotazy Azure monitor protokoly pro monitorování clusterů HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 Další informace o práci s Apache Kafka najdete v následujících dokumentech:
 

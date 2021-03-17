@@ -8,31 +8,33 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3989ec4ca2b5c9d7385841604678791b20c1d102
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194786"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489978"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Pochopení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Automatická nasazení a vrstvená nasazení vám pomůžou spravovat a konfigurovat moduly na velkém počtu IoT Edgech zařízení.
 
 Azure IoT Edge poskytuje dva způsoby, jak nakonfigurovat moduly, které se mají spouštět na IoT Edge zařízeních. První metodou je nasazení modulů na základě jednotlivých zařízení. Vytvoříte manifest nasazení a pak ho použijete pro konkrétní zařízení podle názvu. Druhou metodou je nasadit moduly automaticky do libovolného registrovaného zařízení, které splňuje sadu definovaných podmínek. Vytvoříte manifest nasazení a pak definujete, která zařízení se vztahují na závislosti na [značkách](../iot-edge/how-to-deploy-at-scale.md#identify-devices-using-tags) v zařízení.
 
-Tento článek se zaměřuje na konfiguraci a monitorování loďstva zařízení, které se souhrnně označují jako *IoT Edge Automatická nasazení*.Základní postup nasazení je následující:
+Tento článek se zaměřuje na konfiguraci a monitorování loďstva zařízení, které se souhrnně označují jako *IoT Edge Automatická nasazení*. Základní postup nasazení je následující:
 
-1. Operátor definuje nasazení, které popisuje sadu modulů a cílová zařízení.Každé nasazení má manifest nasazení, který tyto informace odráží.
+1. Operátor definuje nasazení, které popisuje sadu modulů a cílová zařízení. Každé nasazení má manifest nasazení, který tyto informace odráží.
 2. Služba IoT Hub komunikuje se všemi cílovými zařízeními a nakonfiguruje je pomocí deklarované moduly.
-3. Služba IoT Hub načítá stav ze zařízení IoT Edge a zpřístupňuje je operátorovi.Například operátor může zobrazit, když se hraniční zařízení nenakonfigurovalo úspěšně nebo když v modulu runtime dojde k chybě.
+3. Služba IoT Hub načítá stav ze zařízení IoT Edge a zpřístupňuje je operátorovi.  Například operátor může zobrazit, když se hraniční zařízení nenakonfigurovalo úspěšně nebo když v modulu runtime dojde k chybě.
 4. V každém okamžiku jsou pro nasazení nakonfigurovaná nová IoT Edge zařízení, která splňují podmínky cílení.
 
 Tento článek popisuje jednotlivé komponenty, které jsou součástí konfigurace a monitorování nasazení. Návod k vytvoření a aktualizaci nasazení najdete v tématu věnovaném [nasazení a sledování IoT Edgech modulů ve velkém měřítku](how-to-deploy-at-scale.md).
 
 ## <a name="deployment"></a>Nasazení
 
-IoT Edge automatické nasazení přiřadí image IoT Edge modulu, aby se spouštěly jako instance na cílové sadě IoT Edge zařízení. Funguje tak, že nakonfiguruje manifest nasazení IoT Edge tak, aby zahrnoval seznam modulů s odpovídajícími inicializačními parametry.Nasazení se dá přiřadit k jednomu zařízení (na základě ID zařízení) nebo ke skupině zařízení (na základě značek).Jakmile zařízení IoT Edge obdrží manifest nasazení, stáhne a nainstaluje image kontejneru z příslušných úložišť kontejnerů a nakonfiguruje je odpovídajícím způsobem.Po vytvoření nasazení může operátor sledovat stav nasazení a zjistit, jestli jsou cílová zařízení správně nakonfigurovaná.
+IoT Edge automatické nasazení přiřadí image IoT Edge modulu, aby se spouštěly jako instance na cílové sadě IoT Edge zařízení. Funguje tak, že nakonfiguruje manifest nasazení IoT Edge tak, aby zahrnoval seznam modulů s odpovídajícími inicializačními parametry. Nasazení se dá přiřadit k jednomu zařízení (na základě ID zařízení) nebo ke skupině zařízení (na základě značek). Jakmile zařízení IoT Edge obdrží manifest nasazení, stáhne a nainstaluje image kontejneru z příslušných úložišť kontejnerů a nakonfiguruje je odpovídajícím způsobem. Po vytvoření nasazení může operátor sledovat stav nasazení a zjistit, jestli jsou cílová zařízení správně nakonfigurovaná.
 
 S nasazením lze nakonfigurovat pouze IoT Edge zařízení. Než může přijmout nasazení, musí být na zařízení následující požadavky:
 
@@ -42,7 +44,7 @@ S nasazením lze nakonfigurovat pouze IoT Edge zařízení. Než může přijmou
 
 ### <a name="deployment-manifest"></a>Manifest nasazení
 
-Manifest nasazení je dokument JSON, který popisuje moduly, které mají být nakonfigurovány na cílových IoT Edge zařízeních. Obsahuje konfigurační metadata pro všechny moduly, včetně požadovaných systémových modulů (konkrétně agent IoT Edge a centrum IoT Edge).  
+Manifest nasazení je dokument JSON, který popisuje moduly, které mají být nakonfigurovány na cílových IoT Edge zařízeních. Obsahuje konfigurační metadata pro všechny moduly, včetně požadovaných systémových modulů (konkrétně agent IoT Edge a centrum IoT Edge).  
 
 Konfigurační metadata pro každý modul zahrnují:
 
@@ -81,11 +83,11 @@ Při vytváření cílové podmínky Vezměte v úvahu tato omezení:
 
 ### <a name="priority"></a>Priorita
 
-Priorita definuje, jestli se má nasazení použít u cílového zařízení vzhledem k jiným nasazením. Priorita nasazení je kladné celé číslo s větší prioritou, která označuje vyšší prioritu. Pokud je zařízení IoT Edge cíleno více než jedním nasazením, platí nasazení s nejvyšší prioritou.Nasazení s nižšími prioritami se neaplikují, ani se nesloučí.Pokud je zařízení cíleno na dvě nebo více nasazení se stejnou prioritou, platí poslední vytvořené nasazení (určené časovým razítkem vytvoření).
+Priorita definuje, jestli se má nasazení použít u cílového zařízení vzhledem k jiným nasazením. Priorita nasazení je kladné celé číslo s větší prioritou, která označuje vyšší prioritu. Pokud je zařízení IoT Edge cíleno více než jedním nasazením, platí nasazení s nejvyšší prioritou.  Nasazení s nižšími prioritami se neaplikují, ani se nesloučí.  Pokud je zařízení cíleno na dvě nebo více nasazení se stejnou prioritou, platí poslední vytvořené nasazení (určené časovým razítkem vytvoření).
 
 ### <a name="labels"></a>Popisky
 
-Popisky jsou páry klíč/hodnota řetězce, které lze použít k filtrování a seskupení nasazení.Nasazení může mít více popisků. Popisky jsou volitelné a neovlivňují skutečnou konfiguraci IoT Edgech zařízení.
+Popisky jsou páry klíč/hodnota řetězce, které lze použít k filtrování a seskupení nasazení. Nasazení může mít více popisků. Popisky jsou volitelné a neovlivňují skutečnou konfiguraci IoT Edgech zařízení.
 
 ### <a name="metrics"></a>Metriky
 
@@ -98,7 +100,7 @@ Ve výchozím nastavení všechna nasazení hlásí čtyři metriky:
 
 Kromě toho můžete definovat vlastní metriky, které vám pomůžou monitorovat a spravovat nasazení.
 
-Metriky poskytují souhrnné počty různých stavů, které mohou zařízení nahlásit zpět v důsledku použití konfigurace nasazení. Metriky se mohou dotazovat na [nedokončené hlášené vlastnosti modulu edgeHub](module-edgeagent-edgehub.md#edgehub-reported-properties), jako je *lastDesiredStatus* nebo *lastConnectTime*. Příklad:
+Metriky poskytují souhrnné počty různých stavů, které mohou zařízení nahlásit zpět v důsledku použití konfigurace nasazení. Metriky se mohou dotazovat na [nedokončené hlášené vlastnosti modulu edgeHub](module-edgeagent-edgehub.md#edgehub-reported-properties), jako je *lastDesiredStatus* nebo *lastConnectTime*. Například:
 
 ```sql
 SELECT deviceId FROM devices
@@ -174,16 +176,16 @@ Postupné zavedení je celkový proces, kdy operátor nasadí změny do rozší�
 
 Postupné zavedení se provádí v následujících fázích a krocích:
 
-1. Vytvořte testovací prostředí IoT Edgech zařízení tím, že je zřídíte a nastavíte nestejnou značku zařízení jako `tag.environment='test'` .Testovací prostředí by mělo zrcadlit provozní prostředí, na které bude nasazení nakonec cílit.
+1. Vytvořte testovací prostředí IoT Edgech zařízení tím, že je zřídíte a nastavíte nestejnou značku zařízení jako `tag.environment='test'` . Testovací prostředí by mělo zrcadlit provozní prostředí, na které bude nasazení nakonec cílit.
 2. Vytvořte nasazení, včetně požadovaných modulů a konfigurací. Podmínka cílení by měla cílit na prostředí test IoT Edge zařízení.
 3. Ověřte konfiguraci nového modulu v testovacím prostředí.
 4. Aktualizujte nasazení tak, aby zahrnovalo podmnožinu produkčních IoT Edge zařízení přidáním nové značky do podmínky cílení. Také se ujistěte, že priorita pro nasazení je vyšší než jiné nasazení, které jsou aktuálně cílem těchto zařízení.
 5. Zobrazením stavu nasazení ověřte, jestli se nasazení na cílových zařízeních IoT úspěšně dokončilo.
 6. Aktualizujte nasazení a Zaměřte se na všechna zbývající produkční IoT Edge zařízení.
 
-## <a name="rollback"></a>Návrat
+## <a name="rollback"></a>Vrácení zpět
 
-Nasazení se dá vrátit zpátky, pokud se zobrazí chyby nebo chybné konfigurace.Vzhledem k tomu, že nasazení definuje absolutní konfiguraci modulu pro IoT Edge zařízení, musí být další nasazení cíleno na stejné zařízení s nižší prioritou, i když je cílem odebrat všechny moduly.  
+Nasazení se dá vrátit zpátky, pokud se zobrazí chyby nebo chybné konfigurace. Vzhledem k tomu, že nasazení definuje absolutní konfiguraci modulu pro IoT Edge zařízení, musí být další nasazení cíleno na stejné zařízení s nižší prioritou, i když je cílem odebrat všechny moduly.  
 
 Odstraněním nasazení se moduly neodstraňují z cílových zařízení. Musí existovat jiné nasazení, které definuje novou konfiguraci pro zařízení, a to i v případě, že se jedná o prázdné nasazení.
 

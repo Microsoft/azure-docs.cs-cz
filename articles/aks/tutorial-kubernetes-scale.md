@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Škálování aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak škálovat uzly a pody v Kubernetes a jak implementovat automatické horizontální škálování podů.
 services: container-service
 ms.topic: tutorial
-ms.date: 01/14/2019
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361587"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251365"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a 
 > * Ruční škálování podů Kubernetes, ve kterých se spouští vaše aplikace
 > * Konfigurace automatického škálování podů, ve kterých se spouští front-end aplikace
 
-V dalších kurzech se hlasová aplikace Azure aktualizuje na novou verzi.
+V novějších kurzech se aplikace hlasování Azure aktualizuje na novou verzi.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -39,7 +39,7 @@ kubectl get pods
 
 Následující příklad výstupu ukazuje jeden pod front-endu a jeden pod back-endu:
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -51,7 +51,7 @@ Pokud chcete ručně změnit počet podů v nasazení *azure-vote-front*, použi
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Spusťte [kubectl][kubectl-get] a znovu se zajistěte, aby AKS vytvořil další lusky. Asi za minutu budou další pody dostupné ve vašem clusteru:
+Spusťte [kubectl][kubectl-get] znovu, abyste ověřili, že AKS úspěšně vytvořil další lusky. Po minutě, kdy jsou lusky k dispozici ve vašem clusteru:
 
 ```console
 kubectl get pods
@@ -131,7 +131,7 @@ spec:
 
 Použijte `kubectl apply` k použití automatického škálování definovaného v `azure-vote-hpa.yaml` souboru manifestu.
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 Po úspěšném škálování clusteru se výstup podobá následujícímu příkladu:
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,
@@ -176,7 +176,7 @@ Po úspěšném škálování clusteru se výstup podobá následujícímu pří
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Naučili jste se tyto postupy:
+V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Naučili jste se:
 
 > [!div class="checklist"]
 > * Ruční škálování podů Kubernetes, ve kterých se spouští vaše aplikace

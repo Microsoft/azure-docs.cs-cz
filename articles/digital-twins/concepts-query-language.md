@@ -4,23 +4,88 @@ titleSuffix: Azure Digital Twins
 description: Seznamte se se základy dotazovacího jazyka Azure pro digitální vlákna.
 author: baanders
 ms.author: baanders
-ms.date: 3/26/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 29e1fa603600e246031f2a86aae3b0876b4910ba
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562463"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490972"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
 
-Odvolat, že střed digitálních vláken Azure je [**dvojitým grafem**](concepts-twins-graph.md)vytvořeným z **digitálních vláken** a **vztahů**. Tento graf se dá dotázat, aby se získaly informace o digitálních vztazích a vztazích, které obsahuje. Tyto dotazy se napíší ve vlastním dotazovacím jazyce podobném SQL, který se označuje jako **dotazovací jazyk digitálních vláken Azure**.
+Odvolat, že střed digitálních vláken Azure je [dvojitým grafem](concepts-twins-graph.md)vytvořeným z digitálních vláken a vztahů. 
 
-K odeslání dotazu do služby z klientské aplikace použijete [**rozhraní API pro dotazování**](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview)digitálních vláken Azure. To umožňuje vývojářům psát dotazy a používat filtry pro hledání sad digitálních vláken ve dvojitých grafech a další informace o scénáři digitálních vláken Azure.
+Tento graf se dá dotázat, aby se získaly informace o digitálních vztazích a vztazích, které obsahuje. Tyto dotazy se píšou ve vlastním dotazovacím jazyce podobném SQL, který se označuje jako **dotazovací jazyk Azure Digital Twins**. To je podobné [dotazovacímu jazyku IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) s mnoha srovnatelnými funkcemi.
 
-[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+Tento článek popisuje základy dotazovacího jazyka a jeho schopností. Podrobnější příklady syntaxe dotazů a spuštění požadavků na dotazy naleznete v tématu [*How to: Query*](how-to-query-graph.md)a requested Graph.
+
+## <a name="about-the-queries"></a>O dotazech
+
+Pomocí jazyka dotazů digitálních vláken Azure můžete načíst digitální vlákna podle jejich...
+* vlastnosti (včetně [vlastností značek](how-to-use-tags.md))
+* modely
+* relationships
+  - vlastnosti relací
+
+K odeslání dotazu do služby z klientské aplikace použijete [**rozhraní API pro dotazování**](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure. Jedním ze způsobů, jak používat rozhraní API, je prostřednictvím jedné ze [sad SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) pro digitální vlákna Azure.
+
+### <a name="considerations-for-querying"></a>Pokyny pro dotazování
+
+Při psaní dotazů pro digitální vlákna Azure mějte na paměti následující skutečnosti:
+* Rozlišovat **velká a malá** písmena: u všech operací dotazů Azure Digital autoforms se rozlišují velká a malá písmena, proto je potřeba se starat o použití přesně názvů definovaných v modelech. Pokud jsou názvy vlastností špatně napsané nebo nesprávně použita, je sada výsledků prázdná a nevrátí se žádné chyby.
+* **Řídicí jednoduché uvozovky**: Pokud text dotazu obsahuje v datech jeden znak uvozovky, bude nutné, aby byla tato uvozovka uvozená `\` znakem. Tady je příklad, který se zabývá hodnotou vlastnosti *D'Souza*:
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
+## <a name="reference-expressions-and-conditions"></a>Reference: výrazy a podmínky
+
+Tato část popisuje operátory a funkce, které jsou k dispozici pro zápis dotazů digitálních vláken Azure. Například dotazy, které ilustrují použití těchto funkcí, naleznete v tématu [*How to: Query a Remonstred Graph*](how-to-query-graph.md).
+
+### <a name="operators"></a>Operátory
+
+Podporovány jsou následující operátory:
+
+| Rodina | Operátory |
+| --- | --- |
+| Logické |`AND`, `OR`, `NOT` |
+| Porovnání | `=`, `!=`, `<`, `>`, `<=`, `>=` |
+| Contains | `IN`, `NIN` |
+
+### <a name="functions"></a>Functions
+
+Podporují se následující funkce kontroly a přetypování typů:
+
+| Funkce | Popis |
+| -------- | ----------- |
+| `IS_DEFINED` | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . `DateTime`, typy objektů a pole nejsou podporovány. |
+| `IS_OF_MODEL` | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
+| `IS_BOOL` | Vrací logickou hodnotu označující, zda je typ zadaného výrazu logická hodnota. |
+| `IS_NUMBER` | Vrací logickou hodnotu označující, zda je typ zadaného výrazu číslo. |
+| `IS_STRING` | Vrací logickou hodnotu označující, zda je typ zadaného výrazu řetězec. |
+| `IS_NULL` | Vrací logickou hodnotu označující, zda je typ zadaného výrazu null. |
+| `IS_PRIMITIVE` | Vrací logickou hodnotu označující, zda je typ zadaného výrazu primitivní (řetězec, logická hodnota, číselná hodnota nebo `null` ). |
+| `IS_OBJECT` | Vrací logickou hodnotu označující, zda je typ zadaného výrazu objekt JSON. |
+
+Podporovány jsou následující řetězcové funkce:
+
+| Funkce | Popis |
+| -------- | ----------- |
+| `STARTSWITH(x, y)` | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
+| `ENDSWITH(x, y)` | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |
+
+## <a name="query-limitations"></a>Omezení dotazů
+
+V této části jsou popsána omezení dotazovacího jazyka.
+
+* Časování: může dojít ke zpoždění až na 10 sekund, než se změny v instanci projeví v dotazech. Například pokud dokončíte operaci, jako je vytváření nebo odstraňování vláken s rozhraním API DigitalTwins, výsledek se v dotazech rozhraní API nemusí projevit okamžitě. Čekání na krátkou dobu by měla být dostačující pro vyřešení.
+* V rámci příkazu nejsou podporovány žádné poddotazy `FROM` .
+* `OUTER JOIN` Sémantika není podporována, což znamená, že pokud má relace hodnotu nula, pak je celý "řádek" odstraněn z výstupní sady výsledků.
+* Hloubka procházení grafů je omezená na pět `JOIN` úrovní na jeden dotaz.
+* Relace v rámci digitálních vláken Azure se nedají dotazovat jako nezávislé entity. také je nutné zadat informace o zdroji dat, ze kterého vztah pochází. To znamená, že k této operaci existují určitá omezení `JOIN` , která se používají k dotazování vztahů, aby se zajistilo, že dotaz deklaruje vlákna, kde začíná dotaz. Příklady najdete v tématu [*dotazování podle vztahu*](how-to-query-graph.md#query-by-relationship) v článku *Postupy: dotazování na článek s dvojitým grafem* .
 
 ## <a name="next-steps"></a>Další kroky
 

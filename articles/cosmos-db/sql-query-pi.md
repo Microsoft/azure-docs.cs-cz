@@ -3,18 +3,21 @@ title: PI v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si informace o systémové funkci SQL PI v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ebe94d8b06c342fc61fae4255fa354150974c4f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71349651"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341701"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí konstantní hodnotu čísla pí.  
   
 ## <a name="syntax"></a>Syntax
@@ -45,4 +48,4 @@ SELECT PI() AS pi
 
 - [Matematické funkce Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

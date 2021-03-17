@@ -1,7 +1,7 @@
 ---
 title: Přístup k úložištím dat a sdíleným složkám s ověřováním systému Windows
 description: Naučte se konfigurovat SSIS Catalog v Azure SQL Database a Azure-SSIS Integration Runtime v Azure Data Factory ke spouštění balíčků, které přistupují k úložištím dat a sdíleným složkám s ověřováním systému Windows.
-ms.date: 3/22/2018
+ms.date: 10/27/2020
 ms.topic: conceptual
 ms.prod: sql
 ms.prod_service: integration-services
@@ -10,25 +10,25 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77283596e4b0d7e25d757c9de76c284ca4f5d4f2
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118810"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556388"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Přístup k úložištím dat a sdíleným složkám s využitím ověřování systému Windows z balíčků SSIS v Azure
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ověřování systému Windows můžete použít pro přístup k úložištím dat, jako jsou servery SQL, sdílené složky, soubory Azure atd. z balíčků SSIS běžících na vašem Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF). Vaše úložiště dat můžou být místní, hostovaná na Azure Virtual Machines (virtuální počítače) nebo spuštěná v Azure jako spravované služby. Pokud jsou místní, musíte se připojit k Azure-SSIS IR k Virtual Network (Microsoft Azure Virtual Network) připojenému k vaší místní síti, viz téma [join Azure-SSIS IR to Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Existují čtyři metody přístupu k úložištím dat s ověřováním systému Windows z balíčků SSIS běžících na vašem Azure-SSIS IR:
+Ověřování systému Windows můžete použít pro přístup k úložištím dat, jako jsou servery SQL, sdílené složky, soubory Azure atd. z balíčků SSIS běžících na vašem Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF). Vaše úložiště dat můžou být místní, hostovaná na Azure Virtual Machines (virtuální počítače) nebo spuštěná v Azure jako spravované služby. Pokud jsou místní, musíte se připojit k Azure-SSIS IR k Virtual Network (Microsoft Azure Virtual Network) připojenému k vaší místní síti, viz téma [join Azure-SSIS IR to Microsoft Azure Virtual Network](./join-azure-ssis-integration-runtime-virtual-network.md). Existují čtyři metody přístupu k úložištím dat s ověřováním systému Windows z balíčků SSIS běžících na vašem Azure-SSIS IR:
 
 | Způsob připojení | Platný rozsah | Krok nastavení | Metoda přístupu v balíčcích | Počet sad přihlašovacích údajů a připojených prostředků | Typ připojených prostředků | 
 |---|---|---|---|---|---|
-| Nastavení kontextu spuštění na úrovni aktivity | Aktivita za spuštění balíčku SSIS | Nakonfigurujte vlastnost **ověřování systému Windows** tak, aby se při spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF spustily kontext spuštění/spuštění jako.<br/><br/> Další informace najdete v tématu [Konfigurace aktivity SSIS balíčku Execute](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity). | Přímý přístup k prostředkům v balíčcích prostřednictvím cesty UNC, například pokud používáte sdílené soubory nebo soubory Azure: `\\YourFileShareServerName\YourFolderName` nebo`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Podporuje jenom jednu sadu přihlašovacích údajů pro všechny připojené prostředky. | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> – Servery SQL na místních nebo virtuálních počítačích Azure s ověřováním systému Windows<br/><br/> – Další prostředky s ověřováním systému Windows |
-| Nastavení kontextu spuštění na úrovni katalogu | Za Azure-SSIS IR, ale při nastavení kontextu spuštění na úrovni aktivity je přepsáno (viz výše) | Spusťte `catalog.set_execution_credential` uloženou proceduru SSISDB a nastavte kontext spuštění/spuštění jako.<br/><br/> Další informace najdete v části níže v tomto článku. | Přímý přístup k prostředkům v balíčcích prostřednictvím cesty UNC, například pokud používáte sdílené soubory nebo soubory Azure: `\\YourFileShareServerName\YourFolderName` nebo`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Podporuje jenom jednu sadu přihlašovacích údajů pro všechny připojené prostředky. | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> – Servery SQL na místních nebo virtuálních počítačích Azure s ověřováním systému Windows<br/><br/> – Další prostředky s ověřováním systému Windows |
-| Trvalé uchování přihlašovacích údajů prostřednictvím `cmdkey` příkazu | Za Azure-SSIS IR, ale při nastavení kontextu spuštění na úrovni aktivity nebo katalogu se přepsal (viz výše) | Spusťte `cmdkey` příkaz ve skriptu vlastního nastavení ( `main.cmd` ) při zřizování Azure-SSIS IR, například pokud používáte sdílené soubory nebo soubory Azure: `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` nebo `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey` .<br/><br/> Další informace najdete v tématu [přizpůsobení nastavení pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). | Přímý přístup k prostředkům v balíčcích prostřednictvím cesty UNC, například pokud používáte sdílené soubory nebo soubory Azure: `\\YourFileShareServerName\YourFolderName` nebo`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Podpora více sad přihlašovacích údajů pro různé připojené prostředky | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> – Servery SQL na místních nebo virtuálních počítačích Azure s ověřováním systému Windows<br/><br/> – Další prostředky s ověřováním systému Windows |
-| Připojování jednotek v době spuštění balíčku (netrvalá) | Za balíček | Spustit `net use` příkaz v úloze spustit proces, která je přidána na začátek toku řízení v balíčcích, například`net use D: \\YourFileShareServerName\YourFolderName` | Přístup ke sdíleným složkám souborů prostřednictvím mapovaných jednotek | Podpora více jednotek pro různé sdílené složky | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) |
+| Nastavení kontextu spuštění na úrovni aktivity | Aktivita za spuštění balíčku SSIS | Nakonfigurujte vlastnost **ověřování systému Windows** tak, aby se při spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF spustily kontext spuštění/spuštění jako.<br/><br/> Další informace najdete v tématu [Konfigurace aktivity SSIS balíčku Execute](./how-to-invoke-ssis-package-ssis-activity.md). | K prostředkům přímo v balíčcích použijte například cestu UNC pro přístup ke sdíleným složkám nebo k souborům Azure: `\\YourFileShareServerName\YourFolderName` nebo `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Podporuje jenom jednu sadu přihlašovacích údajů pro všechny připojené prostředky. | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](../storage/files/storage-how-to-use-files-windows.md)<br/><br/> – Servery SQL na místních nebo virtuálních počítačích Azure s ověřováním systému Windows<br/><br/> – Další prostředky s ověřováním systému Windows |
+| Nastavení kontextu spuštění na úrovni katalogu | Za Azure-SSIS IR, ale při nastavení kontextu spuštění na úrovni aktivity je přepsáno (viz výše) | Spusťte `catalog.set_execution_credential` uloženou proceduru SSISDB a nastavte kontext spuštění/spuštění jako.<br/><br/> Další informace najdete v části níže v tomto článku. | K prostředkům přímo v balíčcích použijte například cestu UNC pro přístup ke sdíleným složkám nebo k souborům Azure: `\\YourFileShareServerName\YourFolderName` nebo `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Podporuje jenom jednu sadu přihlašovacích údajů pro všechny připojené prostředky. | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](../storage/files/storage-how-to-use-files-windows.md)<br/><br/> – Servery SQL na místních nebo virtuálních počítačích Azure s ověřováním systému Windows<br/><br/> – Další prostředky s ověřováním systému Windows |
+| Trvalé uchování přihlašovacích údajů prostřednictvím `cmdkey` příkazu | Za Azure-SSIS IR, ale při nastavení kontextu spuštění na úrovni aktivity nebo katalogu se přepsal (viz výše) | Spusťte `cmdkey` příkaz ve skriptu vlastního nastavení ( `main.cmd` ) při zřizování Azure-SSIS IR například při použití sdílených složek, souborů Azure nebo SQL Server:<br/><br/> `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword`,<br/><br/> `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey`, nebo<br/><br/> `cmdkey /add:YourSQLServerFullyQualifiedDomainNameOrIPAddress:YorSQLServerPort /user:YourDomainName\YourUsername /pass:YourPassword`.<br/><br/> Další informace najdete v tématu [přizpůsobení nastavení pro Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md). | K prostředkům přímo v balíčcích použijte například cestu UNC pro přístup ke sdíleným složkám nebo k souborům Azure: `\\YourFileShareServerName\YourFolderName` nebo `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Podpora více sad přihlašovacích údajů pro různé připojené prostředky | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](../storage/files/storage-how-to-use-files-windows.md)<br/><br/> – Servery SQL na místních nebo virtuálních počítačích Azure s ověřováním systému Windows<br/><br/> – Další prostředky s ověřováním systému Windows |
+| Připojování jednotek v době spuštění balíčku (netrvalá) | Za balíček | Spustit `net use` příkaz v úloze spustit proces, která je přidána na začátek toku řízení v balíčcích, například `net use D: \\YourFileShareServerName\YourFolderName` | Přístup ke sdíleným složkám souborů prostřednictvím mapovaných jednotek | Podpora více jednotek pro různé sdílené složky | – Sdílené složky na místních nebo virtuálních počítačích Azure<br/><br/> – Soubory Azure, viz [použití sdílené složky Azure](../storage/files/storage-how-to-use-files-windows.md) |
 |||||||
 
 > [!WARNING]
@@ -44,7 +44,7 @@ Když použijete ověřování systému Windows v balíčku SSIS, můžete použ
 
 K poskytnutí přihlašovacích údajů domény, které umožňují balíčkům používat ověřování systému Windows pro přístup k úložištím dat místně, proveďte následující akce:
 
-1. Pomocí SQL Server Management Studio (SSMS) nebo jiného nástroje se připojte k spravované instanci SQL Database/SQL, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Pomocí SQL Server Management Studio (SSMS) nebo jiného nástroje se připojte k spravované instanci SQL Database/SQL, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Pomocí SSISDB jako aktuální databáze otevřete okno dotazu.
 
@@ -60,7 +60,7 @@ K poskytnutí přihlašovacích údajů domény, které umožňují balíčkům 
 
 Chcete-li zobrazit přihlašovací údaje pro aktivní doménu, proveďte následující akce:
 
-1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Pomocí SSISDB jako aktuální databáze otevřete okno dotazu.
 
@@ -75,7 +75,7 @@ Chcete-li zobrazit přihlašovací údaje pro aktivní doménu, proveďte násle
 ### <a name="clear-domain-credentials"></a>Vymazat přihlašovací údaje domény
 Pokud chcete vymazat a odebrat přihlašovací údaje, které jste zadali, jak je popsáno v tomto článku, proveďte následující akce:
 
-1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Pomocí SSISDB jako aktuální databáze otevřete okno dotazu.
 
@@ -105,9 +105,9 @@ Pokud chcete získat přístup k SQL Server místním prostředím z balíčků 
 
 1.  V SQL Server Configuration Manager povolit protokol TCP/IP.
 
-2. Povolí přístup přes bránu Windows Firewall. Další informace najdete v tématu [Konfigurace brány Windows Firewall pro přístup k SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access).
+2. Povolí přístup přes bránu Windows Firewall. Další informace najdete v tématu [Konfigurace brány Windows Firewall pro přístup k SQL Server](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access).
 
-3. Připojte svůj Azure-SSIS IR k Microsoft Azure Virtual Network připojenému k SQL Server místním.  Další informace najdete v tématu [připojení Azure-SSIS IR k Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+3. Připojte svůj Azure-SSIS IR k Microsoft Azure Virtual Network připojenému k SQL Server místním.  Další informace najdete v tématu [připojení Azure-SSIS IR k Microsoft Azure Virtual Network](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 4. Použijte `catalog.set_execution_credential` uloženou proceduru SSISDB k zadání přihlašovacích údajů, jak je popsáno v tomto článku.
 
@@ -132,7 +132,7 @@ Pro přístup ke sdílené složce v místním prostředí z balíčků spuště
 
 1. Povolí přístup přes bránu Windows Firewall.
 
-2. Připojte svůj Azure-SSIS IR k Microsoft Azure Virtual Network připojenému ke sdílené složce místně.  Další informace najdete v tématu [připojení Azure-SSIS IR k Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+2. Připojte svůj Azure-SSIS IR k Microsoft Azure Virtual Network připojenému ke sdílené složce místně.  Další informace najdete v tématu [připojení Azure-SSIS IR k Microsoft Azure Virtual Network](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 3. Použijte `catalog.set_execution_credential` uloženou proceduru SSISDB k zadání přihlašovacích údajů, jak je popsáno v tomto článku.
 
@@ -140,7 +140,7 @@ Pro přístup ke sdílené složce v místním prostředí z balíčků spuště
 
 Pokud chcete získat přístup ke sdílené složce na virtuálním počítači Azure z balíčků běžících v Azure, udělejte tyto věci:
 
-1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Pomocí SSISDB jako aktuální databáze otevřete okno dotazu.
 
@@ -156,7 +156,7 @@ Další informace o službě soubory Azure najdete v tématu [soubory Azure](htt
 
 Pro přístup ke sdílené složce v Azure Files z balíčků běžících v Azure udělejte tyto věci:
 
-1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Pomocí SSMS nebo jiného nástroje se připojte k SQL Database/SQL Managed instance, která hostuje SSISDB. Další informace najdete v tématu [připojení k SSISDB v Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Pomocí SSISDB jako aktuální databáze otevřete okno dotazu.
 
@@ -168,6 +168,6 @@ Pro přístup ke sdílené složce v Azure Files z balíčků běžících v Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nasaďte balíčky. Další informace najdete v tématu [nasazení projektu SSIS do Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Spusťte balíčky. Další informace najdete v tématu [spuštění balíčků SSIS v Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms).
-- Naplánujte balíčky. Další informace najdete v tématu [plánování balíčků SSIS v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Nasaďte balíčky. Další informace najdete v tématu [nasazení projektu SSIS do Azure pomocí SSMS](/sql/integration-services/ssis-quickstart-deploy-ssms).
+- Spusťte balíčky. Další informace najdete v tématu [spuštění balíčků SSIS v Azure pomocí SSMS](/sql/integration-services/ssis-quickstart-run-ssms).
+- Naplánujte balíčky. Další informace najdete v tématu [plánování balíčků SSIS v Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).

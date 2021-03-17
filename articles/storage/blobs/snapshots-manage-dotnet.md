@@ -1,26 +1,27 @@
 ---
 title: Vytvoření a Správa snímku objektu BLOB v .NET
 titleSuffix: Azure Storage
-description: Naučte se vytvořit snímek objektu BLOB jen pro čtení pro zálohování dat objektů BLOB v daném časovém okamžiku.
+description: Naučte se používat klientskou knihovnu .NET k vytvoření snímku objektu BLOB jen pro čtení pro zálohování dat objektů BLOB v daném časovém okamžiku.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ae1d72c30fb7c45c92f24ec5132859a45c6ae953
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185277"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543370"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Vytvoření a Správa snímku objektu BLOB v .NET
 
-Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku. Tento článek popisuje, jak vytvořit a spravovat snímky objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku. Tento článek popisuje, jak vytvořit a spravovat snímky objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage).
 
-Další informace o snímcích objektů BLOB v Azure Storage najdete v tématu [Vytvoření a Správa snímku objektu BLOB v rozhraní .NET](snapshots-overview.md).
+Další informace o snímcích objektů BLOB v Azure Storage najdete v tématu [snímky objektů BLOB](snapshots-overview.md).
 
 ## <a name="create-a-snapshot"></a>Vytvoření snímku
 
@@ -161,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>Další kroky
 
 - [Snímky objektů BLOB](snapshots-overview.md)
-- [Verze objektů BLOB (Preview)](versioning-overview.md)
-- [Obnovitelné odstranění pro objekty blob](storage-blob-soft-delete.md)
+- [Verze objektů BLOB](versioning-overview.md)
+- [Obnovitelné odstranění pro objekty blob](./soft-delete-blob-overview.md)

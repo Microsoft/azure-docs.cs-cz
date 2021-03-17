@@ -1,17 +1,17 @@
 ---
 title: Protokoly-Azure Database for PostgreSQL – jeden server
 description: Popisuje konfiguraci protokolování, úložiště a analýzu na Azure Database for PostgreSQL – jeden server
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621d5a6a91a8c22c52e6febc7c2638571f5bf113
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392807"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595797"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokoly v Azure Database for PostgreSQL – jeden server
 
@@ -23,7 +23,7 @@ Protokolování auditu se zpřístupňuje prostřednictvím rozšíření Postgr
 ## <a name="configure-logging"></a>Konfigurovat protokolování 
 Na serveru můžete nakonfigurovat standardní protokolování Postgres pomocí parametrů protokolovacího serveru. Na každém serveru Azure Database for PostgreSQL `log_checkpoints` a `log_connections` jsou ve výchozím nastavení zapnuté. Existují další parametry, které je možné upravit, aby vyhovovaly vašim požadavkům na přihlášení: 
 
-![Azure Database for PostgreSQL – parametry protokolování](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL – parametry protokolování":::
 
 Další informace o parametrech protokolu Postgres najdete v části dokumentace k [protokolování](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) a [co do protokolu](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) v dokumentaci k Postgres. Většina, ale ne všechny parametry protokolování Postgres jsou k dispozici pro konfiguraci v Azure Database for PostgreSQL.
 
@@ -68,13 +68,13 @@ Postup povolení protokolů prostředku pomocí Azure Portal:
    5. Vyberte typ protokolu **PostgreSQLLogs**.
    7. Uložte nastavení.
 
-Pokud chcete povolit protokoly prostředků pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na článek [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) .
+Pokud chcete povolit protokoly prostředků pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na článek [nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) .
 
 ### <a name="access-resource-logs"></a>Přístup k protokolům prostředků
 
-Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../azure-monitor/platform/resource-logs-collect-storage.md) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) .
 
-Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../azure-monitor/log-query/log-query-overview.md) .
+Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../azure-monitor/logs/log-query-overview.md) .
 
 Níže jsou uvedené dotazy, které můžete zkusit začít. Výstrahy můžete konfigurovat na základě dotazů.
 
@@ -103,10 +103,10 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | TenantId | ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| Typ | Typ protokolu Stál`AzureDiagnostics` |
+| Typ | Typ protokolu Stál `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID předplatného, ke kterému server patří |
 | ResourceGroup | Název skupiny prostředků, do které server patří |
-| ResourceProvider | Název poskytovatele prostředků Stál`MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Název poskytovatele prostředků Stál `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identifikátor URI prostředku |
 | Prostředek | Název serveru |
@@ -114,7 +114,7 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | OperationName | `LogEvent` |
 | errorLevel | Úroveň protokolování, příklad: protokol, chyba, upozornění |
 | Zpráva | Zpráva primárního protokolu | 
-| Domain (Doména) | Verze serveru, například: Postgres-10 |
+| Doména | Verze serveru, například: Postgres-10 |
 | Podrobnosti | Sekundární zpráva protokolu (Pokud je k dispozici) |
 | ColumnName | Název sloupce (Pokud je k dispozici) |
 | SchemaName | Název schématu (Pokud je k dispozici) |

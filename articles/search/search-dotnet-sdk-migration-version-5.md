@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171903"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539533"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Upgrade na Azure Search .NET SDK verze 5
 
-Pokud používáte verzi 4,0-Preview nebo starší [sadu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 5.
+Pokud používáte verzi 4,0-Preview nebo starší [sadu .NET SDK](/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 5.
 
 Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
@@ -35,7 +35,7 @@ Verze 5 sady Azure Search .NET SDK obsahuje některé změny z dřívějších v
 Verze 5 rozhraní Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API, konkrétně 2017-11-11. Díky tomu je možné využít nové funkce Azure Search z aplikace .NET, včetně následujících:
 
 * [Synonyma](search-synonyms.md).
-* Nyní můžete programově přistupovat k upozorněním v historii spouštění indexeru (Další informace najdete v tématu `Warning` vlastnost `IndexerExecutionResult` v [odkazu na rozhraní .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) ).
+* Nyní můžete programově přistupovat k upozorněním v historii spouštění indexeru (Další informace najdete v tématu `Warning` vlastnost `IndexerExecutionResult` v [odkazu na rozhraní .NET](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult) ).
 * Podpora pro .NET Core 2
 * Nová struktura balíčku podporuje jenom ty součásti sady SDK, které potřebujete (podrobnosti najdete v tématu zásadní [změny ve verzi 5](#ListOfChanges) ).
 

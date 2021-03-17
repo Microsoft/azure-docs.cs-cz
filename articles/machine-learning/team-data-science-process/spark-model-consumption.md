@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027439"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Modely strojového učení založené na zprovoznění Spark
@@ -86,7 +86,7 @@ datetime.datetime.now()
 
 DateTime. DateTime (2016, 4, 25, 23, 56, 19, 229403)
 
-### <a name="import-libraries"></a>Importovat knihovny
+### <a name="import-libraries"></a>Import knihoven
 Nastavte kontext Spark a importujte potřebné knihovny s následujícím kódem.
 
 ```python
@@ -115,7 +115,7 @@ Jádra PySpark, která jsou poskytována pomocí poznámkových bloků Jupyter, 
 Jádro PySpark poskytuje některé předdefinované "MAGICS", což jsou speciální příkazy, které můžete volat pomocí%%. Existují dva takové příkazy, které jsou použity v těchto ukázkách kódu.
 
 * **%% místní** Určili jsme, že kód na dalších řádcích se spustí místně. Kód musí být platný kód Pythonu.
-* **%% SQL-o\<variable name>** 
+* **%% SQL-o \<variable name>** 
 * Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
 
 Další informace o jádrech pro Jupyter poznámkových blocích a předdefinovaných "Magic" najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).

@@ -1,19 +1,16 @@
 ---
 title: Použití jazyka C# s MapReduce na Hadoop ve službě HDInsight – Azure
 description: Naučte se používat C# k vytváření řešení MapReduce pomocí Apache Hadoop ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 0a20a120f72c70cb50cae37cece54d5efad31f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699381"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce streamingmi na Apache Hadoop ve službě HDInsight
 
@@ -23,7 +20,7 @@ Streamování Apache Hadoop umožňuje spouštět úlohy MapReduce pomocí skrip
 
 ## <a name="net-on-hdinsight"></a>.NET v HDInsight
 
-Clustery HDInsight využívají [mono https://mono-project.com) (](https://mono-project.com) ke spouštění aplikací .NET). Mono verze 4.2.1 je součástí HDInsight verze 3,6. Další informace o verzi mono, která je součástí služby HDInsight, najdete v tématu [Apache Hadoop komponenty dostupné s různými verzemi služby HDInsight](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
+Clustery HDInsight využívají [mono https://mono-project.com) (](https://mono-project.com) ke spouštění aplikací .NET). Mono verze 4.2.1 je součástí HDInsight verze 3,6. Další informace o verzi mono, která je součástí služby HDInsight, najdete v tématu [Apache Hadoop komponenty dostupné ve verzích HDInsight](../hdinsight-component-versioning.md).
 
 Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -39,7 +36,7 @@ Základní proces používaný pro streamování v tomto dokumentu je následuj�
 
 Další informace o streamování najdete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Visual Studio
 
@@ -47,7 +44,7 @@ Další informace o streamování najdete v tématu [streamování Hadoop](https
 
 * Způsob nahrání souborů. exe do clusteru. Kroky v tomto dokumentu používají nástroje Data Lake pro Visual Studio k nahrání souborů do primárního úložiště pro cluster.
 
-* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -165,9 +162,9 @@ Dál je potřeba nahrát *Mapovač* a aplikace *snižující* kapacitu do úlož
 
         ![Ikona nahrání HDInsight pro Mapper, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru**možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** přejdete do složky *bin\Debug* pro projekt *mapper* a pak zvolte soubor *mapper.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
+        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru** možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** přejdete do složky *bin\Debug* pro projekt *mapper* a pak zvolte soubor *mapper.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
 
-    * V případě **Azure Data Lake Storage**klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a pak vyberte **Odeslat**. Nakonec vyberte soubor *mapper.exe* a pak vyberte **otevřít**.
+    * V případě **Azure Data Lake Storage** klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a pak vyberte **Odeslat**. Nakonec vyberte soubor *mapper.exe* a pak vyberte **otevřít**.
 
     Po dokončení nahrávání *mapper.exe* opakujte proces nahrávání pro *reducer.exe* soubor.
 

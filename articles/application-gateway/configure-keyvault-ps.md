@@ -1,19 +1,19 @@
 ---
 title: Konfigurace ukončení TLS pomocí certifikátů Key Vault – PowerShell
 titleSuffix: Azure Application Gateway
-description: Přečtěte si, jak můžete integrovat Azure Application Gateway s Key Vault pro certifikáty serveru, které jsou připojené k posluchačům s povoleným protokolem HTTPS.
+description: Naučte se používat skript Azure PowerShell k integraci vašeho trezoru klíčů s aplikační bránou pro certifikáty ukončení TLS/SSL.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386278"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91323419"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurace ukončení TLS pomocí Key Vault certifikátů pomocí Azure PowerShell
 
@@ -25,9 +25,9 @@ V tomto článku se dozvíte, jak pomocí skriptu Azure PowerShell integrovat Tr
 
 Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete spustit příkazy v tomto článku, musíte taky vytvořit připojení k Azure spuštěním `Connect-AzAccount` .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít nainstalovaný modul ManagedServiceIdentity:
 

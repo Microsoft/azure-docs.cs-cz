@@ -1,17 +1,26 @@
 ---
-ms.openlocfilehash: ed7be82146f38cc7ae57fd863bb0c1b8e6910fd2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 766dd13f58268c044435a22fb30c1de816d4d151
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690954"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532072"
 ---
 Pomocí těchto kroků spusťte vzorový kód:
 
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. V Visual Studio Code v nástroji použijte *Src/Cloud-to-Device-Console-App/operations.js*.
 1. V uzlu **GraphTopologySet** se ujistěte, že vidíte následující hodnotu:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/2.0/topology.json"`
 1. V uzlech **GraphInstanceSet** a **GraphTopologyDelete**  zajistěte, aby hodnota `topologyName` odpovídala hodnotě `name` vlastnosti v topologii grafu:
 
     `"topologyName" : "MotionDetection"`
@@ -24,7 +33,7 @@ Pomocí těchto kroků spusťte vzorový kód:
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-        "@apiVersion": "1.0"
+        "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -41,7 +50,7 @@ Pomocí těchto kroků spusťte vzorový kód:
          
     ```
     {
-      "@apiVersion": "1.0",
+      "@apiVersion": "2.0",
       "name": "Sample-Graph",
       "properties": {
         "topologyName": "MotionDetection",

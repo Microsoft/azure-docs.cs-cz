@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539896"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515723"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
 
 Microsoft Threat Modeling Tool 2018 byla vydána jako GA v září 2018 jako bezplatný soubor **[ke stažení](https://aka.ms/threatmodelingtool)**. Mechanismus změny v doručení nám umožňuje nabízet nejnovější vylepšení a opravy chyb zákazníkům pokaždé, když tento nástroj otevřou, což usnadňuje údržbu a používání.
 Tento článek vás provede procesem Začínáme s řešením Microsoft SDL Threat Modeling a ukazuje, jak používat nástroj k vývoji skvělých modelů hrozeb jako páteře procesu zabezpečení.
 
-Tento článek se sestavuje s existujícím vědomím přístupu k modelování hrozeb v SDL. V případě rychlé kontroly se podívejte na **[webové aplikace modelování hrozeb](https://msdn.microsoft.com/library/ms978516.aspx)** a Archivovaná verze řešení chyb **[zabezpečení na základě přístupu k](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** článku věnovaném webu MSDN publikovaném v 2006.
+Tento článek se sestavuje s existujícím vědomím přístupu k modelování hrozeb v SDL. V případě rychlé kontroly se podívejte na **[webové aplikace modelování hrozeb](/previous-versions/msp-n-p/ff648006(v=pandp.10))** a Archivovaná verze řešení chyb **[zabezpečení na základě přístupu k](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** článku věnovaném webu MSDN publikovaném v 2006.
 
 K rychlému sumarizaci je potřeba, abyste vytvořili diagram, identifikovali hrozby, zmírnili je a vyhodnotili případné zmírnění. Zde je diagram, který zvýrazní tento proces:
 
@@ -41,7 +41,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 ### <a name="threat-model-section"></a>Oddíl modelu hrozeb
 
-| Komponenta                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Součást                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Názory, tlačítko návrhy a problémy** | Přejdete na **[Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. Nabízí vám možnost si přečíst si, co dělají jiní uživatelé, spolu s alternativními řešeními a doporučeními. Pokud stále nemůžete najít, co hledáte, pošlete tmtextsupport@microsoft.com nám e-mail pro náš tým podpory, který vám může pomoci                                                                                                                            |
 | **Vytvoření modelu**                          | Otevře prázdné plátno pro vykreslení diagramu. Ujistěte se, že jste vybrali šablonu, kterou chcete použít pro váš model.                                                                                                                                                                                                                                                                                                                                                                       |
@@ -51,7 +51,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 ### <a name="template-section"></a>Oddíl Template
 
-| Komponenta               | Podrobnosti                                                                                                                                                          |
+| Součást               | Podrobnosti                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Vytvořit novou šablonu** | Otevře prázdnou šablonu, na kterou se má vytvořit. Pokud nemáte rozsáhlé znalosti při vytváření šablon od začátku, doporučujeme, abyste si vytvořili z existujících. |
 | **Otevřít šablonu**       | Otevře existující šablony, abyste mohli provádět změny.                                                                                                              |
@@ -97,11 +97,11 @@ Ricardo začíná výběrem první položky v seznamu. Co se stane:
 
 Za prvé je vylepšená interakce mezi těmito dvěma vzorníky.
 
-![Interakce](./media/threat-modeling-tool-getting-started/interaction.png)
+![Snímek obrazovky se dvěma předlohami a zakřivenou šipkou, která je propojuje s těžší tloušťkou čáry.](./media/threat-modeling-tool-getting-started/interaction.png)
 
 Za druhé se zobrazí další informace týkající se hrozby okno Vlastnosti
 
-![Informace o interakci](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Snímek obrazovky zobrazuje okno Vlastnosti hrozeb, která obsahuje název, kategorii, popis, interakci a prioritu.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 Vygenerovaná hrozba pomáhá pochopit možné nedostatky v návrhu. Kategorizace v ROZTEČi poskytuje představu o potenciálních způsobech útoku, zatímco další popis přesně informuje o tom, co je špatně, a také potenciální způsoby, jak to zmírnit. Může použít upravitelná pole k zápisu poznámek v podrobnostech odůvodnění nebo změnu hodnocení priority v závislosti na panelu chyb ve své organizaci.
 
@@ -118,7 +118,7 @@ V rozevíracím seznamu stav můžete změnit hrozby, které se nevztahují na n
 
 Jakmile Ricardo projde seznamem pomocí Cristina a přidá důležité poznámky, zmírnění a odůvodnění, priority a změny stavu, vybere sestavy – > vytvořit úplnou sestavu > Uložit sestavu, která pro ni vytiskne zprávu, která bude mít k dispozici, aby bylo zajištěno správné fungování zabezpečení.
 
-![Informace o interakci](./media/threat-modeling-tool-feature-overview/report.png)
+![Snímek obrazovky se zobrazí jako zástupce sestavy modelování hrozeb.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Pokud místo toho chce Ricardo sdílet soubor, může to udělat tak, že se uloží na účet OneDrive jeho organizace. Jakmile to provede, může zkopírovat odkaz na dokument a sdílet ho s kolegy. 
 

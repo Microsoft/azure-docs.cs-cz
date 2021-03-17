@@ -1,37 +1,37 @@
 ---
 title: 'Kurz: ochrana nových prostředků pomocí zámků'
 description: V tomto kurzu použijete možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
-ms.date: 05/06/2020
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969636"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485737"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 
-Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Azure Resource Manager (ARM Template).
+Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Azure Resource Manager (ARM Template). Zámek prostředků podrobného plánu se nastavuje během přiřazení podrobného plánu.
 
 V tomto kurzu provedete tyto kroky:
 
 > [!div class="checklist"]
 > - Vytvořit definici podrobného plánu
 > - Označení definice podrobného plánu jako **publikované**
-> - Přiřazení definice podrobného plánu k existujícímu předplatnému
+> - Přiřazení definice podrobného plánu k existujícímu předplatnému (**nastavení zámků prostředků**)
 > - Kontrola nové skupiny prostředků
 > - Zrušení přiřazení podrobného plánu k odebrání zámků
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-a-blueprint-definition"></a>Vytvořit definici podrobného plánu
 
 Nejprve vytvořte definici podrobného plánu.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na stránce **Začínáme** na levé straně vyberte **vytvořit** v části vytvořit podrobný **plán**.
 
@@ -39,23 +39,26 @@ Nejprve vytvořte definici podrobného plánu.
 
 1. Na kartě **základy** zadejte tyto informace:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu. V tomto kurzu použijeme název **uzamčený-storageaccount**.
-   - **Popis**podrobného plánu: přidejte popis definice podrobného plánu. Slouží **k testování uzamykání prostředků podrobného plánu u nasazených prostředků**.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu. V tomto kurzu použijeme název **uzamčený-storageaccount**.
+   - **Popis** podrobného plánu: přidejte popis definice podrobného plánu. Slouží **k testování uzamykání prostředků podrobného plánu u nasazených prostředků**.
    - **Umístění definice**: vyberte tlačítko se třemi tečkami (...) a pak vyberte skupinu pro správu nebo předplatné, do které chcete uložit definici podrobného plánu.
 
 1. V horní části stránky vyberte kartu **artefakty** nebo vyberte **Další: artefakty** v dolní části stránky.
 
 1. Přidat skupinu prostředků na úrovni předplatného:
-   1. V části **předplatné**vyberte řádek **Přidat artefakt** .
-   1. V části **Typ artefaktu**vyberte **Skupina prostředků** .
+   1. V části **předplatné** vyberte řádek **Přidat artefakt** .
+   1. V části **Typ artefaktu** vyberte **Skupina prostředků** .
    1. Nastavte **Zobrazovaný název artefaktu** na **RGtoLock**.
    1. Pole **název skupiny prostředků** a **umístění** ponechte prázdné, ale ujistěte se, že je zaškrtnuté políčko u každé vlastnosti, aby byly **dynamické parametry**.
    1. Vyberte **Přidat** a přidejte artefakt do podrobného plánu.
 
 1. Přidejte šablonu do skupiny prostředků:
    1. V položce **RGtoLock** vyberte řádek **Přidat artefakt** .
-   1. V části **Typ artefaktu**vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
+   1. V části **Typ artefaktu** vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount** a nechejte **Popis** prázdný.
    1. Na kartě **Šablona** vložte do pole Editor následující šablonu ARM. Po vložení do šablony vyberte **Přidat** a přidejte artefakt do podrobného plánu.
+
+      > [!NOTE]
+      > Tento krok definuje prostředky, které mají být nasazeny, které jsou uzamčeny zámkem prostředků podrobného plánu, ale nezahrnují zámky prostředků podrobného plánu. Zámky prostředků podrobného plánu jsou nastaveny jako parametr přiřazení podrobného plánu.
 
    ```json
    {
@@ -109,11 +112,11 @@ Po úspěšném zobrazení oznámení na portálu pro **uložení definice** pod
 
 Ve vašem prostředí se teď vytvořila vaše definice podrobného plánu. Je vytvořená v režimu **konceptu** a musí být publikována před tím, než bude možné ji přiřadit a nasadit.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
+1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. V horní části stránky vyberte **publikovat podrobný plán** . V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném**plánu. Potom v dolní části stránky vyberte **publikovat** .
+1. Nahoře na stránce vyberte **Publikovat podrobný plán**. V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném** plánu. Na konci stránky pak vyberte **Publikovat**.
 
 Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování definice podrobného plánu můžete provádět změny. Pokud provedete změny, je nutné publikovat definici s novou hodnotou verze ke sledování rozdílů mezi verzemi stejné definice podrobného plánu.
 
@@ -123,11 +126,11 @@ Po **úspěšném** zobrazení oznámení na portálu pro definici podrobného p
 
 Po publikování definice podrobného plánu ji můžete přiřadit k předplatnému v rámci skupiny pro správu, do které jste ji uložili. V tomto kroku zadáte parametry, které zajistí, aby každé nasazení definice podrobného plánu bylo jedinečné.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
+1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
+1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán**.
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
@@ -137,24 +140,27 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
      - **Název přiřazení**: název je předem vyplněný na základě názvu definice podrobného plánu. Chceme, aby toto přiřazení představovalo uzamykání nové skupiny prostředků, proto změňte název přiřazení na **přiřazení-Locked-storageaccount-TestingBPLocks**.
      - **Umístění**: Vyberte oblast, ve které chcete vytvořit spravovanou identitu. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
        Pro tento kurz vyberte **východní USA 2**.
-     - **Verze definice**podrobného plánu: vyberte publikovanou verzi **1,0** definice podrobného plánu.
+     - **Verze definice** podrobného plánu: vyberte publikovanou verzi **1,0** definice podrobného plánu.
 
    - **Zamknout přiřazení**
 
      Vyberte režim zámku **podrobného** plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
+     > [!NOTE]
+     > Tento krok nakonfiguruje zámek prostředků podrobného plánu u nově nasazených prostředků.
+
    - **Spravovaná identita**
 
      Použijte výchozí možnost: **přiřazený systém**. Další informace najdete v tématu [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - **Parametry artefaktu**
+   - **Parametry artefaktů**
 
      Parametry definované v této části se vztahují na artefakt, ve kterém jsou definovány. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru tak, aby se zobrazila ve sloupci **hodnota** .
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Name|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|USA – západ 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
 1. Po zadání všech parametrů vyberte **přiřadit** v dolní části stránky.
@@ -167,7 +173,7 @@ Až se zobrazí oznámení na portálu **přiřazení definice** podrobného pl�
 
 Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úložiště nasazený artefaktem šablony ARM. Nová skupina prostředků a vybraný stav uzamčení se zobrazí na stránce Podrobnosti přiřazení.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na levé straně vyberte stránku **přiřazené plány** . Pomocí filtrů vyhledejte přiřazení **podrobného plánu přiřazení storageaccount-TestingBPLocks** a pak ho vyberte.
 
@@ -187,7 +193,7 @@ Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úlož
 
 1. Vyberte přiřazení odepřít a na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení zamítnutí brání všem operacím s **\*** konfigurací **Akce** a, ale umožňuje přístup pro čtení s výjimkou ** \* /Read** prostřednictvím **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s konfigurací **\* Akce *_ a _*** , ale umožňuje přístup pro čtení s výjimkou **\* /Read** prostřednictvím **NotActions**.
 
 1. V Azure Portal s popisem cesty vyberte **TestingBPLocks-Access Control (IAM)**. Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadáním názvu **TestingBPLocks** potvrďte odstranění a potom v dolní části podokna vyberte **Odstranit** .
 
@@ -199,7 +205,7 @@ Tyto kroky ukazují, že naše nasazené prostředky jsou teď chráněné pomoc
 
 Posledním krokem je odebrání přiřazení definice podrobného plánu. Odebráním přiřazení nedojde k odebrání přidružených artefaktů.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na levé straně vyberte stránku **přiřazené plány** . Pomocí filtrů vyhledejte přiřazení **podrobného plánu přiřazení storageaccount-TestingBPLocks** a pak ho vyberte.
 

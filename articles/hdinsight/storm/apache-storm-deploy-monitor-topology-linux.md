@@ -1,19 +1,16 @@
 ---
 title: Nasazení a Správa topologií Apache Storm v Azure HDInsight
 description: Naučte se nasazovat, monitorovat a spravovat Apache Storm topologie pomocí řídicího panelu pro zaplavování v HDInsight se systémem Linux. Použijte nástroje Hadoop pro Visual Studio.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085731"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929168"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
@@ -23,7 +20,7 @@ V tomto dokumentu se naučíte základy správy a monitorování [Apache Stormch
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
-* Volitelné Znalost Secure Shell (SSH) a zabezpečeného kopírování (SCP). Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Volitelné Znalost Secure Shell (SSH) a zabezpečeného kopírování (SCP). Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Volitelné Visual Studio, Azure SDK 2.5.1 nebo novější a nástroje pro Data Lake pro Visual Studio. Další informace naleznete v tématu [Apache Hadoop & Visual Studio Data Lake Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
@@ -44,13 +41,13 @@ Pomocí nástrojů Data Lake pro Visual Studio můžete odesílat do clusteru s 
 
 1. V okně **vytvořit nový projekt** vyberte vyhledávací pole a zadejte `Storm` . Pak ze seznamu výsledek zvolte možnost převést **vzorek** a vyberte **Další**.
 
-1. V okně **Konfigurovat nový projekt** zadejte **název projektu**a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
+1. V okně **Konfigurovat nový projekt** zadejte **název projektu** a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
 
     ![Konfigurace nového okna projektu, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-1. Z **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure** a vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
+1. Z **Průzkumník serveru** klikněte pravým tlačítkem myši na **Azure** a vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
 
-1. Z **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro**zaplavení v HDInsight.
+1. Z **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro** zaplavení v HDInsight.
 
     > [!NOTE]  
     > Pokud se zobrazí výzva, zadejte přihlašovací údaje pro vaše předplatné Azure. Pokud máte více než jedno předplatné, přihlaste se k počítači, který obsahuje vaše navýšení na clusteru HDInsight.
@@ -80,7 +77,7 @@ Pomocí nástrojů Data Lake pro Visual Studio můžete odesílat do clusteru s 
 
 ## <a name="submit-a-topology-programmatically"></a>Programové odeslání topologie
 
-Topologii můžete programově nasadit pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology)poskytuje ukázkovou aplikaci v jazyce Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
+Topologii můžete programově nasadit pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) poskytuje ukázkovou aplikaci v jazyce Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
 
 ## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Monitorování a Správa topologie v aplikaci Visual Studio
 
@@ -89,7 +86,7 @@ Při odesílání topologie pomocí sady Visual Studio se zobrazí okno **zobraz
 ![Monitorování topologie, okna zobrazení topologií s více topologiemi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> **Topologie** **přePrůzkumník serveru**můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak vyberte **Zobrazit topologie**přeplavování.
+> **Topologie** **přePrůzkumník serveru** můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak vyberte **Zobrazit topologie** přeplavování.
 
 Vyberte tvar pro spoutů nebo šrouby pro zobrazení informací o těchto součástech. Pro vybranou položku se zobrazí popisek s informacemi o komponentě.
 
@@ -172,7 +169,7 @@ Uživatelské rozhraní funkce pro zaplavení poskytuje webové rozhraní pro pr
 
 Hlavní stránka uživatelského rozhraní pro zaplavení poskytuje následující informace:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn clusteru| Základní informace o clusteru zaplavení. |
 | Nimbus souhrn | Seznam základních informací Nimbus. |
@@ -188,7 +185,7 @@ Hlavní stránka uživatelského rozhraní se bude podobat této webové stránc
 
 Výběrem odkazu v části **Souhrn topologie** se zobrazí následující informace o topologii:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn topologie | Základní informace o topologii. |
 | Akce topologie| Akce správy, které lze provést pro topologii. Dostupné akce jsou popsány dále v této části. |
@@ -205,7 +202,7 @@ Stránka Souhrn topologie s více podsítěmi vypadá podobně jako tato webová
 
 V části **Akce topologie** můžete vybrat následující tlačítka k provedení akce:
 
-| Tlačítko | Description |
+| Tlačítko | Popis |
 | --- | --- |
 | Aktivovat | Obnoví zpracování deaktivované topologie. |
 | Deaktivovat | Pozastaví běžící topologii. |
@@ -219,16 +216,16 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 
 Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující informace o vybrané položce:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn komponenty | Základní informace o Spout nebo šroubu |
 | Akce komponenty | **Ladění** a **zastavování tlačítek ladění** . |
 | Statistiky Spout nebo šroubů | Statistika Spout nebo šroubu Chcete-li nastavit časový rámec pro položku v této části, vyberte její odkaz ve sloupci **okno** . |
 | (Pouze šroub)<br/>Vstupní statistiky *(časový rámec)* | Informace o vstupních streamech spotřebovaných šroubem |
 | Statistiky výstupu *(časový rámec)* | Informace o datových proudech emitovaných Spout nebo šroubem. |
-| Profilace a ladění | Ovládací prvky pro profilaci a ladění komponent na této stránce. Můžete nastavit hodnotu **stav/časový limit (minuty)** a můžete vybrat tlačítka pro **JStack**, **restartovat pracovní proces**a **haldu**. |
+| Profilace a ladění | Ovládací prvky pro profilaci a ladění komponent na této stránce. Můžete nastavit hodnotu **stav/časový limit (minuty)** a můžete vybrat tlačítka pro **JStack**, **restartovat pracovní proces** a **haldu**. |
 | Prováděcí moduly *(časový rámec)* | Informace o instancích Spout nebo šroubu. Chcete-li zobrazit protokol diagnostických informací vytvořených pro tuto instanci, vyberte položku **port** pro konkrétního prováděcího modulu. Pracovní prostředky přidružené ke konkrétnímu vykonavateli můžete zobrazit také tak, že vyberete jeho odkaz ve sloupci **hostitel** . |
-| chyby | Jakékoli informace o chybě pro Spout nebo šroub. |
+| Chyby | Jakékoli informace o chybě pro Spout nebo šroub. |
 
 Stránka souhrnu šroubového šroubu bude vypadat podobně jako tato webová stránka:
 
@@ -249,10 +246,10 @@ Základní identifikátor URI pro REST API v clusterech HDInsight se systémem L
 
 Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru můžete najít několika způsoby:
 
-| Metoda zjišťování plně kvalifikovaného názvu domény | Description |
+| Metoda zjišťování plně kvalifikovaného názvu domény | Popis |
 | --- | --- |
 | Relace SSH | Použijte příkaz `headnode -f` z relace SSH do clusteru. |
-| Ambari Web | Na webové stránce clusteru Ambari ( `https://CLUSTERNAME.azurehdinsight.net` ) vyberte **služby** v horní části stránky a pak vyberte možnost přestránkovat **Storm**. Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |
+| Ambari Web | Na webové stránce clusteru Ambari ( `https://CLUSTERNAME.azurehdinsight.net` ) vyberte **služby** v horní části stránky a pak vyberte možnost přestránkovat . Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |
 | Ambari REST API | Pomocí příkazu `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` načtěte informace o uzlu, na kterém běží uživatelské rozhraní a REST API. Nahraďte dvě instance *název_clusteru* názvem clusteru. Až budete vyzváni, zadejte heslo pro účet uživatele (správce). V odpovědi obsahuje položka "host_name" výstupu JSON plně kvalifikovaný název domény uzlu. |
 
 ### <a name="authentication"></a>Authentication

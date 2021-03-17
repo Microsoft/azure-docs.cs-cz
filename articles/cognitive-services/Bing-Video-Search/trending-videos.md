@@ -10,18 +10,23 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfeebcda201df592f6c396dcc780208a36d1e989
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68500619"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353795"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získejte vývoj videí pomocí rozhraní API Bingu pro vyhledávání videí 
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Rozhraní API Bingu pro vyhledávání videí vám umožní najít dnešní vývojové videa z celého webu a v různých kategoriích. 
 
-## <a name="get-request"></a>ZÍSKAT žádost
+## <a name="get-request"></a>Požadavek GET
 
 Pokud si chcete z rozhraní API Bingu pro vyhledávání videí dostat dnešní vývojové videa, pošlete následující požadavek GET:  
   

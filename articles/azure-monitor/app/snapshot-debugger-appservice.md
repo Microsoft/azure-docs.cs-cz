@@ -2,38 +2,51 @@
 title: Povolit Snapshot Debugger pro aplikace .NET v Azure App Service | Microsoft Docs
 description: Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676834"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211613"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 
-Snapshot Debugger v současné době funguje pro aplikace ASP.NET a ASP.NET Core, které běží na Azure App Service v plánech služby Windows.
+Snapshot Debugger aktuálně podporuje aplikace ASP.NET a ASP.NET Core, které běží na Azure App Service v plánech služby Windows.
 
-## <a name="enable-snapshot-debugger"></a><a id="installation"></a>Povolit Snapshot Debugger
-Pokud chcete povolit Snapshot Debugger pro aplikaci, postupujte podle následujících pokynů. Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení Snapshot Debugger na jiných podporovaných platformách:
+Při použití ladicího programu Snapshot doporučujeme, abyste aplikaci spustili v úrovni služeb Basic nebo vyšší.
+
+Pro většinu aplikací nemá úroveň Free a Shared Service dostatek paměti nebo místa na disku pro ukládání snímků.
+
+## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Povolit Snapshot Debugger
+Pokud chcete povolit Snapshot Debugger pro aplikaci, postupujte podle následujících pokynů.
+
+Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení Snapshot Debugger na dalších podporovaných platformách:
+* [Funkce Azure Functions](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Služby Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines a Virtual Machine Scale Sets](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Místní virtuální nebo fyzické počítače](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Pokud používáte verzi Preview rozhraní .NET Core, postupujte podle pokynů pro [povolení Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , aby se do aplikace zahrnul balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a pak se dokončí zbytek níže uvedených pokynů. 
+> [!NOTE]
+> Pokud používáte verzi Preview rozhraní .NET Core nebo pokud vaše aplikace odkazuje na sadu Application Insights SDK přímo nebo nepřímo prostřednictvím závislého sestavení, postupujte podle pokynů pro [povolení Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , která zahrnují balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a pak dokončete zbývající kroky níže. 
+>
+> Bezkódová instalace Application Insights Snapshot Debugger se řídí zásadami podpory .NET Core.
+> Další informace o podporovaných modulech runtime najdete v tématu [zásady podpory .NET Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
-Application Insights Snapshot Debugger je předem nainstalován jako součást modulu runtime App Services, ale je nutné ji zapnout, abyste získali snímky pro aplikaci App Service. Po nasazení aplikace, a to i v případě, že jste zahrnuli sadu Application Insights SDK ve zdrojovém kódu, použijte následující postup, chcete-li povolit nástroj snapshot Debugger.
+Snapshot Debugger je předem nainstalován jako součást modulu runtime App Services, ale je nutné ji zapnout, abyste získali snímky pro aplikaci App Service.
+
+Po nasazení aplikace postupujte podle následujících kroků a povolte ladicí program snímků:
 
 1. Pro App Service přejděte na ovládací panel Azure.
 2. Přejít na stránku **nastavení > Application Insights** .
 
    ![Povolení App Insights na portálu App Services](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Podle pokynů na stránce vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že jsou **zapnuté**oba přepínače pro Snapshot Debugger.
+3. Podle pokynů na stránce vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že jsou **zapnuté** oba přepínače pro Snapshot Debugger.
 
    ![Přidat rozšíření webu App Insights][Enablement UI]
 
@@ -41,14 +54,25 @@ Application Insights Snapshot Debugger je předem nainstalován jako součást m
 
     ![Nastavení aplikace pro Snapshot Debugger][snapshot-debugger-app-setting]
 
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>Povolit Snapshot Debugger pro ostatní cloudy
+
+V současné době jsou v současnosti k [disAzure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide) jedinou oblastí, které vyžadují úpravy koncového bodu, pomocí Application Insights připojovacího řetězce.
+
+|Vlastnost připojovacího řetězce    | Cloud pro státní správu USA | Čína – Cloud |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Další informace o dalších přepsáních připojení najdete v tématu [Application Insights dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+
 ## <a name="disable-snapshot-debugger"></a>Zakázat Snapshot Debugger
 
-Použijte stejný postup jako u **možnost povolit Snapshot Debugger**, ale u Snapshot Debugger **vypnout**přepínač obou přepínačů.
-Doporučujeme, abyste Snapshot Debugger povolili ve všech aplikacích, abyste usnadnili diagnostiku výjimek aplikací.
+Použijte stejný postup jako u **možnost povolit Snapshot Debugger**, ale u Snapshot Debugger **vypnout** přepínač obou přepínačů.
+
+Doporučujeme, abyste Snapshot Debugger povolili ve všech aplikacích, abyste mohli snadno diagnostikovat výjimky aplikací.
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-V případě Azure App Service můžete nastavit nastavení aplikace v šabloně Azure Resource Manager a povolit Snapshot Debugger a Profiler. Přidáte konfigurační prostředek, který obsahuje nastavení aplikace jako podřízený prostředek webu:
+V případě Azure App Service můžete nastavit nastavení aplikace v rámci šablony Azure Resource Manager tak, aby povolovala Snapshot Debugger a Profiler, a to v následujícím fragmentu šablony:
 
 ```json
 {

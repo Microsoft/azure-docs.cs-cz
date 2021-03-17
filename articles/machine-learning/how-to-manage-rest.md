@@ -1,7 +1,7 @@
 ---
 title: Použití REST ke správě prostředků ML
 titleSuffix: Azure Machine Learning
-description: Jak používat rozhraní REST API k vytváření, spouštění a odstraňování prostředků Azure ML
+description: Jak používat rozhraní REST API k vytváření, spouštění a odstraňování prostředků Azure Machine Learning, jako je například pracovní prostor nebo registrování modelů.
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b61050db29ff960b7923f2211b2f09649608b37e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846696"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520315"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
+
+K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](/cli/azure)nebo [sadu Python SDK](/python/api/overview/azure/ml/intro). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -36,9 +36,9 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
-- [Pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- Žádosti REST pro správu používají ověřování instančního objektu. Postupujte podle kroků v části [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) pro vytvoření instančního objektu v pracovním prostoru.
-- Nástroj pro **otáčení** . **Oblý** program je k dispozici v [subsystému Windows pro Linux](https://aka.ms/wslinstall/) nebo distribuci systému UNIX. V PowerShellu je **kudrlinkou** alias pro **volání metody Invoke-WebRequest** a `curl -d "key=val" -X POST uri` bude se jednat o `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
+- [Pracovní prostor Azure Machine Learning](./how-to-manage-workspace.md)
+- Žádosti REST pro správu používají ověřování instančního objektu. Postupujte podle kroků v části [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](./how-to-setup-authentication.md#service-principal-authentication) pro vytvoření instančního objektu v pracovním prostoru.
+- Nástroj pro **otáčení** . **Oblý** program je k dispozici v [subsystému Windows pro Linux](/windows/wsl/install-win10) nebo distribuci systému UNIX. V PowerShellu je **kudrlinkou** alias pro **volání metody Invoke-WebRequest** a `curl -d "key=val" -X POST uri` bude se jednat o `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Načtení ověřovacího tokenu instančního objektu
 
@@ -48,7 +48,7 @@ V tomto článku získáte informace o těchto tématech:
 - ID klienta (které bude přidruženo k vytvořenému tokenu)
 - Váš tajný klíč klienta (který byste měli chránit)
 
-Tyto hodnoty by měly být z odpovědi na Vytvoření instančního objektu. Získání těchto hodnot je popsáno v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Pokud používáte předplatné vaší společnosti, možná nemáte oprávnění k vytvoření instančního objektu. V takovém případě byste měli použít buď [bezplatné, nebo placené osobní předplatné](https://aka.ms/AMLFree).
+Tyto hodnoty by měly být z odpovědi na Vytvoření instančního objektu. Získání těchto hodnot je popsáno v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](./how-to-setup-authentication.md#service-principal-authentication). Pokud používáte předplatné vaší společnosti, možná nemáte oprávnění k vytvoření instančního objektu. V takovém případě byste měli použít buď [bezplatné, nebo placené osobní předplatné](https://aka.ms/AMLFree).
 
 Načtení tokenu:
 
@@ -79,7 +79,7 @@ Odpověď by měla poskytnout token pro přístup, který je vhodný pro jednu h
 Poznamenejte si token, protože ho budete používat k ověřování všech dalších požadavků na správu. Provedete to tak, že nastavíte hlavičku autorizace ve všech požadavcích:
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 Všimněte si, že hodnota začíná řetězcem "Bearer", včetně jednoho prostoru před přidáním tokenu.
@@ -202,7 +202,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Všimněte si, že pokud chcete zobrazit seznam experimentů, na které začíná cesta `history/v1.0` a kdy se mají vypisovat modely, začíná cesta `modelmanagement/v1.0` . REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. 
 
-|Oblast|Cesta|
+|Plošný|Cesta|
 |-|-|
 |Artifacts|/rest/api/azureml|
 |Úložiště dat|/azure/machine-learning/how-to-access-data|
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Pokud chcete vytvořit nebo přepsat pojmenovaný výpočetní prostředek, použijte požadavek PUT. V následující části se kromě nově známých nahrazení,,, `your-subscription-id` `your-resource-group` `your-workspace-name` a `your-access-token` , náhradou `your-compute-name` a hodnot pro `location` , `vmSize` ,, `vmPriority` `scaleSettings` , `adminUserName` a `adminUserPassword` . Jak je uvedeno v odkazu na [odkaz na výpočetní prostředky služby Machine Learning – vytvořit nebo aktualizovat sadu SDK](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), následující příkaz vytvoří vyhrazený Standard_D1 s jedním uzlem (základní výpočetní prostředek procesoru), který se bude škálovat po 30 minutách:
+Pokud chcete vytvořit nebo přepsat pojmenovaný výpočetní prostředek, použijte požadavek PUT. V následující části se kromě nově známých nahrazení,,, `your-subscription-id` `your-resource-group` `your-workspace-name` a `your-access-token` , náhradou `your-compute-name` a hodnot pro `location` , `vmSize` ,, `vmPriority` `scaleSettings` , `adminUserName` a `adminUserPassword` . Jak je uvedeno v odkazu na [odkaz na výpočetní prostředky služby Machine Learning – vytvořit nebo aktualizovat sadu SDK](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), následující příkaz vytvoří vyhrazený Standard_D1 s jedním uzlem (základní výpočetní prostředek procesoru), který se bude škálovat po 30 minutách:
 
 ```bash
 curl -X PUT \
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>Odstranit prostředky, které už nepotřebujete
 
-Některé, ale ne všechny, prostředky podporují příkaz DELETE. Než se pustíte do REST API pro případy použití odstranění, ověřte [Reference k rozhraní API](https://docs.microsoft.com/rest/api/azureml/) . Chcete-li odstranit model, například můžete použít:
+Některé, ale ne všechny, prostředky podporují příkaz DELETE. Než se pustíte do REST API pro případy použití odstranění, ověřte [Reference k rozhraní API](/rest/api/azureml/) . Chcete-li odstranit model, například můžete použít:
 
 ```bash
 curl
@@ -422,6 +422,6 @@ Azure Machine Learning pracovní prostor používá pro některé operace Azure 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si [odkaz na úplný REST API AzureML](https://docs.microsoft.com/rest/api/azureml/).
-- Naučte se používat nástroje Studio & Designer k [předpovědi ceny automobilu pomocí návrháře (Preview)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
-- Prozkoumejte [Azure Machine Learning s poznámkovým blokem Jupyter](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).
+- Projděte si [odkaz na úplný REST API AzureML](/rest/api/azureml/).
+- Naučte se, jak pomocí návrháře [předpovídat cenu automobilu s návrhářem](./tutorial-designer-automobile-price-train-score.md).
+- Prozkoumejte [Azure Machine Learning s poznámkovým blokem Jupyter](..//machine-learning/samples-notebooks.md).

@@ -1,6 +1,6 @@
 ---
 title: Kurz – použití Azure Key Vault s virtuálním počítačem v Pythonu | Microsoft Docs
-description: V tomto kurzu nakonfigurujete aplikaci ASP.NET Core pro čtení tajného klíče z vašeho trezoru klíčů.
+description: V tomto kurzu nakonfigurujete virtuální počítač s aplikací Python pro čtení tajného klíče z vašeho trezoru klíčů.
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875945"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203534"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v Pythonu
 
@@ -81,7 +81,7 @@ Všimněte si hodnoty `publicIpAddress` ve výstupu.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 
-Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu Azure CLI [AZ VM identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
+Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu Azure CLI [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"
@@ -166,4 +166,4 @@ az group delete -g myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](/rest/api/keyvault/)

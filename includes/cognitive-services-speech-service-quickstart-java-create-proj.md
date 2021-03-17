@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: be62cb9cd9f9e603e60006d5482b59ed37a516ff
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 68e83ca0fc92247a31e840e76fc8019736b71dd9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374666"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214253"
 ---
 1. Spusťte Eclipse.
 
@@ -35,7 +35,7 @@ ms.locfileid: "87374666"
 
    ![Snímek obrazovky s průzkumníkem balíčků](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Zobrazí se okno **Create new POM** (Vytvořit nový POM). Do pole **ID skupiny** zadejte *com. Microsoft. cognitiveservices Account. Speech. Samples*a do pole **ID artefaktu** zadejte *rychlý Start*. Pak vyberte **Dokončit**.
+1. Zobrazí se okno **Create new POM** (Vytvořit nový POM). Do pole **ID skupiny** zadejte *com. Microsoft. cognitiveservices Account. Speech. Samples* a do pole **ID artefaktu** zadejte *rychlý Start*. Pak vyberte **Dokončit**.
 
    ![Snímek obrazovky s oknem Create new POM (Vytvořit nový POM)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "87374666"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Přidejte také `dependencies` element s sadou Speech SDK verze 1.13.0 jako závislost:
+   * Přidejte také `dependencies` element s sadou Speech SDK verze 1.15.0 jako závislost:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

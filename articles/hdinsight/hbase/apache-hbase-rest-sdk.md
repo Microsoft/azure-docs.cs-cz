@@ -1,19 +1,16 @@
 ---
 title: Použití sady .NET SDK pro adaptéry HBA – Azure HDInsight
 description: Pomocí sady .NET SDK pro adaptéry HBA můžete vytvářet a odstraňovat tabulky a číst a zapisovat data.
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 9d03a201711488b1c0a3f4f2bab0981f83374a5d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d1979e43adc76f4125097fc809ef137baee05f53
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085578"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939567"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .NET SDK pro Apache HBA
 
@@ -40,7 +37,7 @@ client = new HBaseClient(credentials);
 
 Položku název_clusteru nahraďte názvem clusteru HDInsight HBA a uživatelské jméno a heslo s přihlašovacími údaji Apache Hadoop zadaným při vytváření clusteru. Výchozí uživatelské jméno Hadoop je **admin**.
 
-## <a name="create-a-new-table"></a>Vytvořit novou tabulku
+## <a name="create-a-new-table"></a>Vytvoření nové tabulky
 
 HBA ukládají data v tabulkách. Tabulka se skládá z *Rowkey*, primárního klíče a jedné nebo více skupin sloupců s názvem *rodin sloupců*. Data v každé tabulce jsou horizontálně distribuována Rowkey rozsahem do *oblastí*. Každá oblast má počáteční a koncový klíč. Tabulka může mít jednu nebo více oblastí. Při zvětšování dat v tabulce rozděluje adaptéry HBA velké oblasti do menších oblastí. Oblasti jsou uloženy v oblastech *servery*, kde jeden server oblasti může ukládat více oblastí.
 
@@ -190,4 +187,4 @@ finally
 ## <a name="next-steps"></a>Další kroky
 
 * [Začínáme s příkladem Apache HBase ve službě HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Sestavení ucelené aplikace s [analýzou mínění na Twitteru v reálném čase pomocí Apache HBA](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* Sestavení ucelené aplikace s [analýzou mínění na Twitteru v reálném čase pomocí Apache HBA](./apache-hbase-tutorial-get-started-linux.md)

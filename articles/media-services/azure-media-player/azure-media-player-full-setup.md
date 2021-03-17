@@ -6,22 +6,21 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: b6b239f44311424db2e80c59e2aba639ae3c0000
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423044"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797449"
 ---
 # <a name="azure-media-player-full-setup"></a>Kompletní nastavení Azure Media Playeru #
 
 Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu přímo z vašeho účtu Azure Media Services trvá jenom chvíli. [Ukázky](https://github.com/Azure-Samples/azure-media-player-samples) jsou k dispozici také v adresáři Samples této verze.
 
-
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Krok 1: zahrnutí souborů JavaScriptu a CSS do hlavičky stránky ##
 
-Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se doporučuje vložit JavaScript před značku konce těla `<body>` místo `<head>` , ale Azure Media Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se jako platný element mohla přicházet k označení videa.
+Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se teď doporučuje vložit JavaScript před značku konce těla `<body>` místo `<head>` , ale Azure Meia Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se mohla považovat značka videa za platný element.
 
 > [!NOTE]
 > Pokud již používáte HTML5 Shiv jako [modernizr](https://modernizr.com/) , můžete Azure Media Player JavaScriptu umístit kamkoli. Ujistěte se však, že vaše verze modernizr zahrnuje Shiv pro video.
@@ -34,7 +33,7 @@ Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. 
 ```
 
 > [!IMPORTANT]
-> Tuto verzi **NOT** byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
+> Tuto verzi  byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
 > [!NOTE]
 > Od `1.2.0` verze už není potřeba, aby zahrnovala umístění pro záložní pracovníky (z relativní cesty azuremediaplayer.min.js souboru se automaticky vybralo umístění). Umístění záložních techniků můžete upravit přidáním následujícího skriptu do `<head>` výše uvedených skriptů.
@@ -56,11 +55,11 @@ Pomocí Azure Media Player můžete použít značku videa HTML5 pro vložení v
 1. `<data-setup>`Atribut na `<video>` Azure Media Player informuje o tom, že se video automaticky nastaví, když je stránka připravená, a z atributu si přečte všechny (ve formátu JSON).
 1. `id`Atribut: by měl být použit a jedinečný pro každé video na stejné stránce.
 1. `class`Atribut obsahuje dvě třídy:
-    - `azuremediaplayer`použije styly, které jsou vyžadovány pro Azure Media Player funkce uživatelského rozhraní.
-    - `amp-default-skin`použije výchozí vzhled pro ovládací prvky HTML5.
+    - `azuremediaplayer` použije styly, které jsou vyžadovány pro Azure Media Player funkce uživatelského rozhraní.
+    - `amp-default-skin` použije výchozí vzhled pro ovládací prvky HTML5.
 1. `<source>`Obsahuje dva povinné atributy.
-    - `src`atribut může obsahovat soubor **. ISM/manifest* z Azure Media Services je přidána Azure Media Player automaticky přidá adresy URL pro pomlčky, vyhlazení a HLS do přehrávače.
-    - `type`atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *". ISM/manifest"* je *"application/vnd. MS-sstr + XML"*
+    - `src` atribut může obsahovat soubor **. ISM/manifest* z Azure Media Services je přidána Azure Media Player automaticky přidá adresy URL pro pomlčky, vyhlazení a HLS do přehrávače.
+    - `type` atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *". ISM/manifest"* je *"application/vnd. MS-sstr + XML"*
 1. *Volitelný* `<data-setup>` atribut na stránce `<source>` oznamuje Azure Media Player, jestli existují jedinečné zásady doručování pro datový proud z Azure Media Services, včetně, ale ne omezení na typ šifrování (AES nebo PlayReady, Widevine nebo FairPlay) a token.
 
 Zahrňte nebo vylučte atributy, nastavení, zdroje a stopy přesně tak, jak byste chtěli pro video HTML5.

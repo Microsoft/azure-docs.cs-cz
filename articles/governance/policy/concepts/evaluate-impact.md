@@ -1,18 +1,18 @@
 ---
 title: Vyhodnotit dopad nové definice Azure Policy
 description: Pochopení procesu, který se má provést při zavedení nové definice zásady do prostředí Azure
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544698"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590812"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Vyhodnotit dopad nové definice Azure Policy
 
-Azure Policy je výkonný nástroj pro správu prostředků Azure do obchodních standardů a splnění požadavků na dodržování předpisů. Když lidé, procesy nebo kanály vytvoří nebo aktualizují prostředky, Azure Policy zkontroluje požadavek. Když je efekt definice zásad přidaný nebo [DeployIfNotExists](./effects.md#deployifnotexists), zásady změní [požadavek nebo přidá](./effects.md#deny) do něj. Když je efekt definice zásad [audit](./effects.md#audit) nebo [AuditIfNotExists](./effects.md#auditifnotexists), zásada způsobí vytvoření položky protokolu aktivit. A když je vliv definice zásad [odepřený](./effects.md#deny), zásada zastaví vytváření nebo změnu žádosti.
+Azure Policy je výkonný nástroj pro správu prostředků Azure do obchodních standardů a splnění požadavků na dodržování předpisů. Když lidé, procesy nebo kanály vytvoří nebo aktualizují prostředky, Azure Policy zkontroluje požadavek. Když je efekt definice zásad [upravený](./effects.md#modify), [Append](./effects.md#deny) nebo [DeployIfNotExists](./effects.md#deployifnotexists), zásady změní požadavek nebo přidá do něj. Když je efekt definice zásad [audit](./effects.md#audit) nebo [AuditIfNotExists](./effects.md#auditifnotexists), zásada způsobí vytvoření položky protokolu aktivit pro nové a aktualizované prostředky. A když je vliv definice zásad [odepřený](./effects.md#deny), zásada zastaví vytváření nebo změnu žádosti.
 
 Tyto výsledky jsou přesně tak, jak je potřeba, když víte, že je zásada správně definovaná. Je ale důležité ověřit, že nové zásady fungují tak, jak jsou zamýšlené, než je povolíte pro změnu nebo blokování práce. Ověření musí zajistit, aby byly pouze zamýšlené prostředky považovány za nevyhovující a že ve výsledcích nejsou nesprávně zahrnuté žádné odpovídající prostředky (označované jako _falešně pozitivní_).
 
@@ -63,7 +63,7 @@ Jakékoli změny rozsahu (úrovně nebo vyloučení) by se měly plně ověřit 
 
 ## <a name="monitor-your-policy-and-compliance"></a>Monitorování zásad a dodržování předpisů
 
-Implementace a přiřazení definice zásad není posledním krokem. Průběžně monitorujte úroveň [dodržování předpisů](../how-to/get-compliance-data.md) u prostředků na novou definici zásad a nastavte vhodné [Azure monitor výstrahy a oznámení,](../../../azure-monitor/platform/alerts-overview.md) když se identifikují zařízení, která nedodržují předpisy. Doporučuje se také vyhodnotit definici zásady a související přiřazení na základě plánu, aby definice zásad splňovala požadavky na obchodní zásady a dodržování předpisů. Zásady by se měly odebrat, pokud už je nepotřebujete. Zásady se taky musí aktualizovat v čase, protože základní prostředky Azure se vyvíjí a přidávají nové vlastnosti a možnosti.
+Implementace a přiřazení definice zásad není posledním krokem. Průběžně monitorujte úroveň [dodržování předpisů](../how-to/get-compliance-data.md) u prostředků na novou definici zásad a nastavte vhodné [Azure monitor výstrahy a oznámení,](../../../azure-monitor/alerts/alerts-overview.md) když se identifikují zařízení, která nedodržují předpisy. Doporučuje se také vyhodnotit definici zásady a související přiřazení na základě plánu, aby definice zásad splňovala požadavky na obchodní zásady a dodržování předpisů. Zásady by se měly odebrat, pokud už je nepotřebujete. Zásady se taky musí aktualizovat v čase, protože základní prostředky Azure se vyvíjí a přidávají nové vlastnosti a možnosti.
 
 ## <a name="next-steps"></a>Další kroky
 

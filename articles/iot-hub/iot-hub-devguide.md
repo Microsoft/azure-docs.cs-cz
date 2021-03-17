@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fcf560ba1fef137a28ab1872635cc2182cd07e1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81728819"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009194"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Příručka pro vývojáře Azure IoT Hub
 
@@ -52,7 +52,7 @@ Tento IoT Hub příručka pro vývojáře obsahuje následující články:
 
 * [Nahrání souborů ze zařízení](iot-hub-devguide-file-upload.md) popisuje, jak můžete nahrávat soubory ze zařízení. Článek obsahuje také informace o tématech, jako jsou oznámení, která může proces nahrávání odeslat.
 
-* [Správa identit zařízení v IoT Hub](iot-hub-devguide-identity-registry.md)popisuje informace o úložištích registru identit v centru IoT Hub. Tento článek také popisuje, jak k němu můžete přistupovat a jak ho upravovat.
+* [Správa identit zařízení v IoT Hub](iot-hub-devguide-identity-registry.md) popisuje informace o úložištích registru identit v centru IoT Hub. Tento článek také popisuje, jak k němu můžete přistupovat a jak ho upravovat.
 
 * [Řízení přístupu k IoT Hub](iot-hub-devguide-security.md) popisuje model zabezpečení, který se používá k udělení přístupu k funkcím IoT Hub pro zařízení i cloudové komponenty. Tento článek obsahuje informace o používání tokenů a certifikátů X. 509 a podrobnosti o oprávněních, která můžete udělit.
 
@@ -75,5 +75,3 @@ Tento IoT Hub příručka pro vývojáře obsahuje následující články:
 * Sady [SDK pro referenční zařízení a služby](iot-hub-devguide-sdks.md) obsahují sady SDK Azure IoT pro vývoj aplikací pro zařízení a služby, které komunikují se službou IoT Hub. Článek obsahuje odkazy na online dokumentaci k rozhraní API.
 
 * [Odkaz IoT Hub podpora MQTT](iot-hub-mqtt-support.md) poskytuje podrobné informace o tom, jak IoT Hub podporuje protokol MQTT. Článek popisuje podporu protokolu MQTT integrovaného se službou Azure IoT SDK a poskytuje informace o přímém použití protokolu MQTT.
-
-* [Glosář](iot-hub-devguide-glossary.md) se seznamem běžných termínů souvisejících s IoT Hub.

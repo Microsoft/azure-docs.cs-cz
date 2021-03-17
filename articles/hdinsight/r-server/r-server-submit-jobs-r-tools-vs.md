@@ -1,25 +1,22 @@
 ---
 title: Odesílání úloh z Nástroje R pro Visual Studio – Azure HDInsight
 description: Odešlete úlohy R z místního počítače s Visual Studiem do clusteru HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75435258"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943939"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
-[Nástroje R pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) je bezplatné open source rozšíření pro edice Enterprise (Free), Professional a Enterprise sady [Visual Studio 2017](https://www.visualstudio.com/downloads/)a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) nebo vyšší. RTVS není pro [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)k dispozici.
+[Nástroje R pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) je bezplatné open source rozšíření pro edice Enterprise (Free), Professional a Enterprise sady [Visual Studio 2017](https://www.visualstudio.com/downloads/)a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) nebo vyšší. RTVS není pro [Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019)k dispozici.
 
-RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je například [okno interaktivní R](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (dokončování kódu), [vizualizaci grafu](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) pomocí knihoven R, jako jsou ggplot2 a Ggviz, [ladění kódu R](https://docs.microsoft.com/visualstudio/rtvs/debugging)a další.
+RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je například [okno interaktivní R](/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (dokončování kódu), [vizualizaci grafu](/visualstudio/rtvs/visualizing-data) pomocí knihoven R, jako jsou ggplot2 a Ggviz, [ladění kódu R](/visualstudio/rtvs/debugging)a další.
 
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
@@ -27,12 +24,12 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 
     ![Instalace RTVS v aplikaci Visual Studio 2017](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Vyberte úlohu pro *datové vědy a analytické aplikace* a pak vyberte **podporu jazyka r**, **podporu modulu runtime pro vývoj**v jazyce r a možnosti **Microsoft R Client** .
+2. Vyberte úlohu pro *datové vědy a analytické aplikace* a pak vyberte **podporu jazyka r**, **podporu modulu runtime pro vývoj** v jazyce r a možnosti **Microsoft R Client** .
 
 3. Pro ověřování SSH musíte mít veřejné a privátní klíče.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Nainstalujte na svém počítači [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server poskytuje [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) funkce a `RxSpark` .
+4. Nainstalujte na svém počítači [ml Server](/previous-versions/machine-learning-server/install/r-server-install-windows) . ML Server poskytuje [`RevoScaleR`](/machine-learning-server/r-reference/revoscaler/revoscaler) funkce a `RxSpark` .
 
 5. Nainstalujte si výstup, který poskytuje výpočetní [kontext pro spouštění](https://www.putty.org/) `RevoScaleR` funkcí z místního klienta do vašeho clusteru HDInsight.
 
@@ -49,7 +46,7 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 ## <a name="execute-local-r-methods"></a>Spustit místní metody jazyka R
 
 1. Vytvořte cluster služeb HDInsight ML.
-2. Nainstalujte [rozšíření RTVS](https://docs.microsoft.com/visualstudio/rtvs/installation).
+2. Nainstalujte [rozšíření RTVS](/visualstudio/rtvs/installation).
 3. Stáhněte si [soubor zip s ukázkami](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Otevřete `examples/Examples.sln` pro spuštění řešení v aplikaci Visual Studio.
 5. Otevřete `1-Getting Started with R.R` soubor ve `A first look at R` složce řešení.
@@ -121,7 +118,7 @@ Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybavené
 
         ![Kontejnery Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare*a **nový_uživatel**. `people.json`Soubor by měl být zobrazen ve `newUser` složce.
+    4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare* a **nový_uživatel**. `people.json`Soubor by měl být zobrazen ve `newUser` složce.
 
         ![HDInsight zkopíroval umístění složky souborů](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

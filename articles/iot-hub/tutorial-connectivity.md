@@ -1,6 +1,6 @@
 ---
-title: Kontrola připojení zařízení k Azure IoT Hubu
-description: Nástroje služby IoT Hub slouží k řešení potíží s připojením zařízení do vašeho centra IoT během vývoje.
+title: Kurz – ověření připojení zařízení k Azure IoT Hub
+description: Kurz – použití IoT Hub nástrojů k řešení potíží během vývoje, ve službě IoT Hub problémy s připojením zařízení.
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -11,17 +11,17 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
+- devx-track-js
 - devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: f6ac83a0fc32b426a914b76d27c2920ff8ce6731
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500244"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538706"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -36,15 +36,7 @@ V tomto kurzu se naučíte:
 > * Zkontrolovat připojení cloudu k zařízení
 > * Zkontrolovat synchronizaci dvojčat zařízení
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Požadavky
-
-Skripty rozhraní příkazového řádku spouštěné v tomto kurzu využívají [rozšíření Microsoft Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md). Toto rozšíření nainstalujete zadáním následujícího příkazu do příkazového řádku:
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -74,15 +66,15 @@ Před jakoukoli výměnou dat je třeba zařízení u centra ověřit. Ke správ
 
 Přihlaste se na portál a přejděte do svého centra IoT. Pak přejděte k nástroji **Zařízení IoT**:
 
-![Nástroj Zařízení IoT](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="Nástroj Zařízení IoT":::
 
-Nové zařízení zaregistrujete tak, že kliknete na **+ Přidat**, nastavíte **ID zařízení** na **MyTestDevice**a kliknete na **Uložit**:
+Pokud chcete zaregistrovat nové zařízení, klikněte na **+ Nový**, nastavte **ID zařízení** na **MyTestDevice** a klikněte na **Uložit**.
 
-![Přidání nového zařízení](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="Přidání nového zařízení":::
 
-Získejte připojovací řetězec zařízení **MyTestDevice** tak, že na něj kliknete v seznamu zařízení a pak zkopírujete hodnotu **Připojovací řetězec – primární klíč**. Připojovací řetězec obsahuje *klíč pro sdílený přístup* k zařízení.
+Pokud chcete načíst připojovací řetězec pro **MyTestDevice**, klikněte na něj v seznamu zařízení a potom zkopírujte hodnotu **primárního připojovacího řetězce** . Připojovací řetězec obsahuje *klíč pro sdílený přístup* k zařízení.
 
-![Načtení připojovacího řetězce zařízení](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="Načíst připojovací řetězec zařízení}":::
 
 Pokud chcete simulovat, že zařízení **MyTestDevice** odesílá telemetrii do centra IoT, spusťte aplikaci simulovaného zařízení v Node.js, kterou jste si stáhli v předchozí části.
 
@@ -184,7 +176,7 @@ Jakmile se zařízení připojí, obvykle se pokusí začít odesílat telemetri
 Nejdřív pomocí následujícího příkazu do simulovaného zařízení načtěte aktuální připojovací řetězec:
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 Chcete-li spustit simulované zařízení, které odesílá zprávy, přejděte do složky **IoT-hub\Tutorials\ConnectivityTests** v kódu, který jste stáhli.
@@ -226,9 +218,9 @@ Jakmile simulované zařízení přijme volání přímou metodou, vytiskne zpr�
 
 ![Simulované zařízení přijímá volání přímou metodou](media/tutorial-connectivity/receive-method-call.png)
 
-Když simulované zařízení úspěšně přijme volání přímou metodou, odešle potvrzení zpět do centra:
+Když simulované zařízení úspěšně přijme přímé volání metody, pošle potvrzení zpět do centra:
 
-![Přijetí potvrzení přímé metody](media/tutorial-connectivity/method-acknowledgement.png)
+![Přijmout potvrzení přímé metody](media/tutorial-connectivity/method-acknowledgement.png)
 
 ## <a name="check-twin-synchronization"></a>Kontrola synchronizace dvojčat zařízení
 
@@ -273,4 +265,4 @@ Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prost
 V tomto kurzu jste se dozvěděli, jak zkontrolovat klíče zařízení, připojení zařízení ke cloudu a cloudu k zařízení a synchronizaci dvojčat zařízení. Další informace o tom, jak sledovat centrum IoT, najdete v článku s postupy monitorování služby IoT Hub.
 
 > [!div class="nextstepaction"]
-> [Monitorování s diagnostikou](iot-hub-monitor-resource-health.md)
+> [Monitorování IoT Hubu](monitor-iot-hub.md)

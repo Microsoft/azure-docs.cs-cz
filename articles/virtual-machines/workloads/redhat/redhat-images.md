@@ -1,23 +1,20 @@
 ---
 title: Přehled Red Hat Enterprise Linux imagí v Azure
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694678"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -26,7 +23,7 @@ Tento článek popisuje dostupné Red Hat Enterprise Linux (RHEL) imagí v Azure
 Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata). Podrobnosti o cenách najdete v tématu [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. [Zvýhodněné hybridní využití Azure](../../windows/hybrid-use-benefit-licensing.md) a dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se nepodporují. Chcete-li přepnout režim licencování, musíte virtuální počítač znovu nasadit z odpovídající image.
+> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. Dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se dá dělat prostřednictvím [zvýhodněné hybridní využití Azure](../../linux/azure-hybrid-benefit-linux.md).
 
 >[!NOTE]
 > Pro všechny problémy související s RHEL obrázky v Azure Marketplace si zaregistrujte lístek podpory s Microsoftem.
@@ -64,10 +61,13 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> Obecně platí, že porovnání verzí za účelem určení nejnovější následuje pravidla [metody CompareTo](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_).
-Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu [verze](/dotnet/api/system.version.-ctor?view=netframework-4.8) , nikoli jako řetězce.
+> Obecně platí, že porovnání verzí za účelem určení nejnovější následuje pravidla [metody CompareTo](/dotnet/api/system.version.compareto#system_version_compareto_system_version_).
+Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu [verze](/dotnet/api/system.version.-ctor) , nikoli jako řetězce.
 
 ## <a name="rhel-6-image-types"></a>Typy imagí RHEL 6
+
+>[!NOTE]
+> Od prosince 30 2020 RHEL 6,10 zadal konec životnosti (konce řádku). Pokud chcete pokračovat v podpoře, povolte ELS jako součást fáze podpory rozšířené životního cyklu. Další informace najdete v [dokumentaci k Red Hat ELS](./redhat-extended-lifecycle-support.md).
 
 Pro image RHEL 6. x jsou typy obrázků uvedené v následující tabulce.
 
@@ -108,15 +108,25 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 |Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image s RHEL 8 LVM oddíly připojené ke standardním úložištím Red Hat.
-|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../linux/generation-2.md).
+|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md).
+|RedHat | RHEL | RHEL-SAP-APLIKACE | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.1.2021012201) | Tyto image jsou RHEL pro Image aplikací SAP. Mají oprávnění získat přístup k úložištím aplikací SAP a základním úložištím RHEL.
+|RedHat | RHEL | RHEL-SAP-HA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.1.2021010602) | Tyto image jsou RHEL pro SAP s imagí pro vysokou dostupnost a službu Update Services. Mají oprávnění k přístupu k úložištím řešení a aplikací SAP a k úložištím s vysokou dostupností a také k úložištím RHEL E4S. Účtování zahrnuje základní výpočetní poplatek na úrovni Premium RHEL Premium, SAP Premium a vysoká dostupnost.
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL už podporuje doplňky.
+## <a name="rhel-extended-support-add-ons"></a>Doplňky RHEL Extended Support Doplňky
+
+### <a name="extended-life-cycle-support"></a>Rozšířená podpora životního cyklu
+
+Doplněk prodloužená podpora životního cyklu (ELS) je volitelný odběr, který umožňuje kritické a důležité opravy zabezpečení pro vydané verze, které dosáhly konce životnosti (konce řádku). Další informace o RHEL EUS najdete v [dokumentaci k Red Hat](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support).
+
+ELS je aktuálně dostupná jenom pro RHEL 6,10. V případě imagí s průběžnými platbami můžete ELS povolit podle kroků v [dokumentaci k Red Hat ELS](./redhat-extended-lifecycle-support.md).
+
+Pokud používáte starší verzi nástroje, je potřeba upgradovat na RHEL 6,10, abyste mohli povolit ELS.
 
 ### <a name="extended-update-support"></a>Podpora rozšířené aktualizace
 
 Od dubna 2019 jsou k dispozici image RHEL, které jsou ve výchozím nastavení připojené k úložištím EUS. Další informace o RHEL EUS najdete v [dokumentaci k Red Hat](https://access.redhat.com/articles/rhel-eus).
 
-Přepínání na úložiště EUS je možné a podporuje se. Pokyny, jak přepnout virtuální počítač na EUS a další informace o datech ukončení životnosti EUS, najdete v článku [RHEL EUS a virtuální počítače s zámky verze RHEL](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+Přepínání na úložiště EUS je možné a podporuje se. Pokyny, jak přepnout virtuální počítač na EUS a další informace o datech ukončení životnosti EUS, najdete v článku [RHEL EUS a virtuální počítače s zámky verze RHEL](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 >[!NOTE]
 > EUS se v RHEL Extras nepodporuje. To znamená, že pokud nainstalujete balíček, který je obvykle dostupný z kanálu RHEL Extras, nebudete ho moct v EUS použít. Další informace o životním cyklu produktu Red Hat extra získáte v tématu [Red Hat Enterprise Linux životní cyklus dalších](https://access.redhat.com/support/policy/updates/extras/).
@@ -183,6 +193,6 @@ Aktuální zásada zachová všechny dřív publikované image. Vyhrazujeme si p
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete zobrazit úplný seznam imagí RHEL v Azure, přečtěte si část [Red Hat Enterprise Linux (RHEL) imagí dostupné v Azure](./redhat-imagelist.md).
-* Další informace o infrastruktuře aktualizací Red Hat najdete v tématu [infrastruktura aktualizace Red Hat pro virtuální počítače RHEL na vyžádání v Azure](https://aka.ms/rhui-update).
+* Další informace o infrastruktuře aktualizací Red Hat najdete v tématu [infrastruktura aktualizace Red Hat pro virtuální počítače RHEL na vyžádání v Azure](./redhat-rhui.md).
 * Další informace o nabídce BYOS pro RHEL Red Hat Enterprise Linux najdete v článku o tom, jak se v Azure naučíte používat [zlaté image pro vlastní odběry](./byos.md).
 * Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).

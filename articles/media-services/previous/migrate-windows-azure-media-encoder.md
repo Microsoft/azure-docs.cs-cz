@@ -1,9 +1,9 @@
 ---
 title: Migrace z Windows Azure Media Encoder do Media Encoder Standard | Microsoft Docs
-description: Toto téma popisuje, jak migrovat z Azure Media Encoder do procesoru Media Encoder Standard Media.
+description: Toto téma popisuje, jak migrovat z Windows Azure Media Encoder do procesoru Media Encoder Standard Media.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2019
-ms.author: juliako
-ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0a80d25145162c81ef999f8af1015cd590d5a090
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513197"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011115"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Windows Azure Media Encoder na Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek popisuje postup migrace z staršího procesoru Windows Azure Media Encoder (WAME) Media (který se právě vyřazuje) do procesoru Media Encoder Standard Media. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 

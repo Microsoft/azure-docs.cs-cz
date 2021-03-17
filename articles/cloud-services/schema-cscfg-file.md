@@ -1,22 +1,25 @@
 ---
-title: Schéma definice Azure Cloud Services (soubor. cscfg) | Microsoft Docs
+title: Schéma definice Azure Cloud Services (Classic) (soubor. cscfg) | Microsoft Docs
 description: Soubor konfigurace služby (. cscfg) určuje, kolik instancí rolí se má nasadit pro každou roli, konfigurační hodnoty a kryptografické otisky certifikátů pro roli.
-services: cloud-services
-ms.custom: ''
-ms.date: 12/07/2016
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 35
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79534741"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743470"
 ---
-# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Schéma konfigurace pro Azure Cloud Services (soubor. cscfg)
+# <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Schéma konfigurace pro Azure Cloud Services (Classic) (soubor. cscfg)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Konfigurační soubor služby určuje počet instancí rolí, které mají být nasazeny pro každou roli ve službě, hodnoty nastavení konfigurace a kryptografické otisky pro všechny certifikáty přidružené k roli. Je-li služba součástí Virtual Network, musí být v konfiguračním souboru služby k dispozici informace o konfiguraci sítě, a to i v konfiguračním souboru virtuální sítě. Výchozí rozšíření konfiguračního souboru služby je. cscfg.
 
 Model služby je popsaný v rámci [schématu definice cloudové služby (Classic)](schema-csdef-file.md).
@@ -51,7 +54,7 @@ Následující témata popisují schéma pro `ServiceConfiguration` element:
 ## <a name="service-configuration-namespace"></a>Obor názvů konfigurace služby
 Obor názvů XML pro konfigurační soubor služby je: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration` .
 
-##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>Element ServiceConfiguration
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a> Element ServiceConfiguration
 `ServiceConfiguration`Element je element nejvyšší úrovně konfiguračního souboru služby.
 
 Následující tabulka popisuje atributy `ServiceConfiguration` prvku. Všechny hodnoty atributů jsou typy řetězců.

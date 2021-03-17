@@ -1,27 +1,34 @@
 ---
-author: rothja
+author: amitbapat
 ms.service: key-vault
 ms.topic: include
-ms.date: 04/21/2020
-ms.author: jroth
-ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/09/2021
+ms.author: ambapat
+ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838769"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010948"
 ---
-### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klíčové transakce (maximální počet transakcí povolených za 10 sekund, na trezor v oblasti<sup>1</sup>):
+Služba Azure Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Následující dvě části popisují omezení služby pro každé z nich.
+
+### <a name="resource-type-vault"></a>Typ prostředku: trezor
+
+Tato část popisuje omezení služby pro typ prostředku `vaults` .
+
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klíčové transakce (maximální počet transakcí povolených za 10 sekund, na trezor v oblasti<sup>1</sup>):
 
 |Typ klíče|Klíč HSM<br>VYTVOŘIT klíč|Klíč HSM<br>Všechny ostatní transakce|Softwarový klíč<br>VYTVOŘIT klíč|Softwarový klíč<br>Všechny ostatní transakce|
 |:---|---:|---:|---:|---:|
-|RSA 2 048-bit|5|1 000|10|2 000|
+|RSA 2 048-bit|5|1 000|10|2 000|
 |RSA 3 072-bit|5|250|10|500|
 |RSA 4 096-bit|5|125|10|250|
-|ECC P-256|5|1 000|10|2 000|
-|ECC P-384|5|1 000|10|2 000|
-|ECC P-521|5|1 000|10|2 000|
-|ECC SECP256K1|5|1 000|10|2 000|
+|ECC P-256|5|1 000|10|2 000|
+|ECC P-384|5|1 000|10|2 000|
+|ECC P-521|5|1 000|10|2 000|
+|ECC SECP256K1|5|1 000|10|2 000|
+||||||
 
 > [!NOTE]
 > V předchozí tabulce uvidíme, že pro klíče RSA 2 048 jsou povolené transakce 2 000 GET transakcí za 10 sekund. V případě šifrování RSA 2 048 jsou povoleny klíče HSM, 1 000 GET transakcí za 10 sekund.
@@ -34,22 +41,103 @@ ms.locfileid: "85838769"
 > - 125 RSA 4 096-bit HSM-Key GET Transactions
 > - 124 RSA 4 096-bit HSM-Key GET Transactions a 8 RSA 2 048-bit HSM-Key GET Transactions
 
-### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Tajné kódy, klíče spravovaného účtu úložiště a transakce trezoru:
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Tajné kódy, klíče spravovaného účtu úložiště a transakce trezoru:
 
 | Typ transakcí | Maximální počet transakcí povolených za 10 sekund, na trezor v oblasti<sup>1</sup> |
 | --- | --- |
 | Všechny transakce |2 000 |
 
-Informace o tom, jak zpracovávat omezení v případě překročení těchto limitů, najdete v tématu [Azure Key Vault pokyny k omezování](../articles/key-vault/key-vault-ovw-throttling.md).
+Informace o tom, jak zpracovávat omezení v případě překročení těchto limitů, najdete v tématu [Azure Key Vault pokyny k omezování](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> limit pro všechny typy transakcí v rámci celého předplatného je pětkrát na limit trezoru klíčů. Například modul HSM – ostatní transakce v rámci předplatného jsou omezeny na 5 000 transakcí za 10 sekund na jedno předplatné.
 
-### <a name="azure-private-link-integration"></a>Integrace s privátními propojeními Azure
+#### <a name="azure-private-link-integration"></a>Integrace s privátními propojeními Azure
 
 > [!NOTE]
 > Počet trezorů klíčů s povolenými soukromými koncovými body pro každé předplatné je upravitelný limit. Níže uvedený limit je nastaven jako výchozí. Pokud chcete pro vaši službu požádat o zvýšení limitu, pošlete prosím e-mail na adresu akv-privatelink@microsoft.com . Tyto žádosti schválíme na základě případu.
 
 | Prostředek | Omezení |
-| -------- | ----- |
+| -------- | -----:|
 | Soukromé koncové body na Trezor klíčů | 64 |
 | Trezory klíčů s privátními koncovými body na předplatné | 400 |
+
+### <a name="resource-type-managed-hsm-preview"></a>Typ prostředku: spravovaný HSM (Preview)
+
+Tato část popisuje omezení služby pro typ prostředku `managed HSM` .
+
+#### <a name="object-limits"></a>Omezení objektu
+
+|Položka|Omezení|
+|----|------:|
+Počet instancí HSM na předplatné a oblast|1 (ve verzi Preview)
+Počet klíčů na jeden fond HSM|5000
+Počet verzí na klíč|100
+Počet vlastních definic rolí na HSM|50
+Počet přiřazení rolí v oboru HSM|50
+Počet přiřazení role v každém oboru jednotlivých klíčů|10
+|||
+
+#### <a name="transaction-limits-for-administrative-operations-number-of-operations-per-second-per-hsm-instance"></a>Omezení transakcí pro operace správy (počet operací za sekundu na instanci HSM)
+|Operace |Počet operací za sekundu|
+|----|------:|
+Všechny operace RBAC<br/>(zahrnuje všechny operace CRUD pro definice rolí a přiřazení rolí)|5
+Úplné zálohování/obnovení HSM<br/>(podporovaná je jenom jedna souběžná operace zálohování nebo obnovení na instanci HSM)|1
+
+#### <a name="transaction-limits-for-cryptographic-operations-number-of-operations-per-second-per-hsm-instance"></a>Omezení transakcí pro kryptografické operace (počet operací za sekundu na instanci HSM)
+
+- Každá spravovaná instance HSM představuje 3 oddíly modulu HSM s vyrovnáváním zatížení. Omezení propustnosti jsou funkce základní hardwarové kapacity přidělené pro každý oddíl. Následující tabulky znázorňují maximální propustnost, která je k dispozici alespoň v jednom oddílu. Pokud jsou k dispozici všechny tři oddíly, může být skutečná propustnost až 3x vyšší.
+- Zjištěné limity propustnosti předpokládají, že se k dosažení maximální propustnosti používá jeden jeden klíč. Pokud například použijete jeden klíč RSA-2048, bude maximální propustnost 1100 operací podepisování. Pokud použijete 1100 různých klíčů s 1 transakcí za sekundu, nebudou moci dosáhnout stejné propustnosti.
+
+##### <a name="rsa-key-operations-number-of-operations-per-second-per-hsm-instance"></a>Operace klíčů RSA (počet operací za sekundu na instanci HSM)
+
+|Operace|2048 – bit|3072 – bit|4096 – bit|
+|--|--:|--:|--:|
+Vytvořit klíč|1| 1| 1
+Odstranit klíč (obnovitelné odstranění)|10|10|10 
+Vymazat klíč|10|10|10 
+Záložní klíč|10|10|10 
+Obnovit klíč|10|10|10 
+Získání informací o klíči|1100|1100|1100
+Šifrování|10000|10000|6000
+Dešifrování|1100|360|160
+Balí|10000|10000|6000
+Rozbalení|1100|360|160
+Znaménko|1100|360|160
+Ověření|10000|10000|6000
+|||||
+
+##### <a name="ec-key-operations-number-of-operations-per-second-per-hsm-instance"></a>Operace s klíči ES (počet operací za sekundu na instanci HSM)
+
+Tato tabulka popisuje počet operací za sekundu pro každý typ křivky.
+
+|Operace|P-256|P-256|P-384|P-521|
+|---|---:|---:|---:|---:|
+Vytvořit klíč| 1| 1| 1| 1
+Odstranit klíč (obnovitelné odstranění)|10|10|10|10
+Vymazat klíč|10|10|10|10
+Záložní klíč|10|10|10|10
+Obnovit klíč|10|10|10|10
+Získání informací o klíči|1100|1100|1100|1100
+Znaménko|260|260|165|56
+Ověření|130|130|82|28
+||||||
+
+
+##### <a name="aes-key-operations-number-of-operations-per-second-per-hsm-instance"></a>Operace s klíči AES (počet operací za sekundu na instanci HSM)
+- Operace šifrování a dešifrování předpokládají velikost paketu 4KB.
+- Omezení propustnosti pro šifrování/dešifrování se vztahují na algoritmy AES-CBC a AES-GCM.
+- Omezení propustnosti pro zabalení a rozbalení se vztahují na algoritmus AES-KW.
+
+|Operace|128 – bit|192 – bit|256 – bit|
+|--|--:|--:|--:|
+Vytvořit klíč|1| 1| 1
+Odstranit klíč (obnovitelné odstranění)|10|10|10
+Vymazat klíč|10|10|10
+Záložní klíč|10|10|10
+Obnovit klíč|10|10|10
+Získání informací o klíči|1100|1100|1100
+Šifrování|8000|8000 |8000 
+Dešifrování|8000|8000|8000
+Balí|9000|9000|9000
+Rozbalení|9000|9000|9000
+

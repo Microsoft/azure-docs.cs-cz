@@ -1,24 +1,25 @@
 ---
 title: Distribuce systému Linux schválená v Azure
 description: Přečtěte si informace o systému Linux v distribucích schválených Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 091a06fd608763ac7265670733890e93bf71dde1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607002"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547403"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 
@@ -36,10 +37,10 @@ Agent Azure Linux je již předinstalovaný na Azure Marketplace imagí a je obv
 | --- | --- | --- | --- |
 | CentOS podle neautorizovaných vln softwaru |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [stažení v lis](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: v jádru |Balíček: v [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS je teď [konec životnosti](https://coreos.com/os/eol/) od 26. května 2020. |Již není k dispozici | | |
-| Debian podle credativ |8.x, 9.x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar Container Linux od Kinvolk| Stable, Edge| | |
+| Debian podle credativ |8. x, 9. x, 10. x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+|Flatcar Container Linux od Kinvolk| Pro, stabilní, beta verze| V jádru | WA-Linux-agent je už nainstalovaný v/usr/share/OEM/bin/waagent |
 | Oracle Linux Oracle |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat Enterprise Linux se Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Enterprise Linux se Red Hat](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise podle SUSE |SLES/SLES pro SAP 11. x, 12. x, 15. x <br/> [Životní cyklus SUSE veřejné cloudové image](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |V jádru |Balíček<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE podle SUSE |openSUSE Leap 15.x |V jádru |Balíček: v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu podle kanonického |Server Ubuntu a verze pro. 16. x, 18. x, 20. x<p>Informace o rozšířené podpoře pro Ubuntu 12,04 a 14,04 najdete tady: [Ubuntu rozšířená údržba zabezpečení](https://www.ubuntu.com/esm). |V jádru |Balíček: v úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -50,14 +51,15 @@ Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktual
 
 ## <a name="azure-tuned-kernels"></a>Jádra Azure – vyladěné jádro
 
-Azure úzce spolupracuje s různými schválenými distribucí pro Linux k optimalizaci imagí, které publikovali do Azure Marketplace. Jedním z aspektů této spolupráce je vývoj "vyladěných" jader pro Linux, které jsou optimalizované pro platformu Azure a dodávané jako plně podporované součásti distribuce systému Linux. Jádro optimalizované pro Azure zahrnují nové funkce a vylepšení výkonu a rychlejší (obvykle čtvrtletní) tempo ve srovnání s výchozími nebo obecnými jádry, které jsou dostupné z distribuce.
+Azure úzce spolupracuje s různými schválenými distribucí pro Linux k optimalizaci imagí, které publikovali do Azure Marketplace. Jedním z aspektů této spolupráce je vývoj "vyladěných" jader pro Linux, které jsou optimalizované pro platformu Azure a dodávané jako plně podporované součásti distribuce systému Linux. Azure-Tuned jádra zahrnují nové funkce a vylepšení výkonu a rychlejší (obvykle čtvrtletní) tempo ve srovnání s výchozími nebo obecnými jádry, které jsou dostupné z distribuce.
 
-Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované na výchozích imagí v Azure Marketplace tak, aby zákazníci ihned získali výhody těchto optimalizovaných jader. Další informace o těchto jádrech vyladěných pro Azure najdete na následujících odkazech:
+Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované na výchozích imagí v Azure Marketplace tak, aby zákazníci ihned získali výhody těchto optimalizovaných jader. Další informace o těchto Azure-Tuned jádra najdete v následujících odkazech:
 
-- [CentOS vyladěné v Azure – dostupné přes CentOS Virtualization SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned jádro – dostupné přes CentOS Virtualization SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel – k dispozici s imagemi Debian 10 a Debian 9 v Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [Jádro Azure s vyladěným SLES](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Jádro Azure s vyladěným Ubuntu](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Jádro Azure-Tuned SLES](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Jádro Azure-Tuned Ubuntu](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Flatcar Container Linux pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>Partneři
 
@@ -69,11 +71,11 @@ Microsoft má dva (2) kanály migrace pro CoreOS uživatele.
 - Flatcar podle Kinvolk (viz položka "Flatcar Container Linux by Kinvolk".)
 - [Fedora Core OS](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (zákazníci musí nahrávat svoji vlastní image. Tady je [dokumentace k migraci](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)).
 
-### <a name="credativ"></a>Credativ
+### <a name="credativ"></a>credativ
 
-[https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
+[https://www.credativ.de/en/portfolio/support/open-source-support-center/](https://www.credativ.de/en/portfolio/support/open-source-support-center/)
 
-Credativ je nezávislá společnost pro poradenské a služby, která se specializuje na vývoj a implementaci profesionálních řešení pomocí bezplatného softwaru. Credativ nabízí mezinárodní rozpoznávání s mnoha IT odděleními, které využívají jejich podporu, jako špičkové open source specialisty. V kombinaci s Microsoftem se v credativ aktuálně připravují odpovídající image Debian pro Debian 8 (Jessie) a Debian před 7 (Wheezy). Obě image jsou speciálně navržené pro běh v Azure a je možné je snadno spravovat přes platformu. Credativ bude také podporovat dlouhodobou údržbu a aktualizaci imagí Debian pro Azure prostřednictvím svých Open Source Center Support Center.
+credativ je nezávislá společnost pro poradenské a služby, která se specializuje na vývoj a implementaci profesionálních řešení pomocí bezplatného softwaru. Credativ nabízí mezinárodní rozpoznávání s mnoha IT odděleními, které využívají jejich podporu, jako špičkové open source specialisty. V kombinaci s Microsoftem se credativ připravují image Debian. Image jsou speciálně navržené pro běh v Azure a je možné je snadno spravovat přes platformu. credativ bude také podporovat dlouhodobou údržbu a aktualizaci imagí Debian pro Azure prostřednictvím svých Open Source Center Support Center.
 
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)

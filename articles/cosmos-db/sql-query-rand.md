@@ -3,18 +3,21 @@ title: RAND v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci systému SQL NÁHČÍSLO v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb3e310970fcc2146ee0d4b790a9744dcd566bad
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302215"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341650"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí náhodně generovanou číselnou hodnotu z [0, 1).
  
 ## <a name="syntax"></a>Syntax
@@ -29,7 +32,8 @@ RAND ()
 
 ## <a name="remarks"></a>Poznámky
 
-  `RAND`je nedeterministické funkce. Opakující se volání `RAND` nevrací stejné výsledky.
+  `RAND` je nedeterministické funkce. Opakující se volání `RAND` nevrací stejné výsledky. Tato systémová funkce nebude index využívat.
+
 
 ## <a name="examples"></a>Příklady
   
@@ -45,12 +49,8 @@ SELECT RAND() AS rand
 [{"rand": 0.87860053195618093}]  
 ``` 
 
-## <a name="remarks"></a>Poznámky
-
-Tato systémová funkce nebude index využívat.
-
 ## <a name="next-steps"></a>Další kroky
 
 - [Matematické funkce Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

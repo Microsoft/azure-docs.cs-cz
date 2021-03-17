@@ -7,23 +7,26 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77b105fd5bbc6cc88411379e79522562ebce3677
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a808e37c0f0aae2816eb536dc43485c125354b81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083748"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916197"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
+
+**Tento článek se týká:** ✔️ Java
+
 Modul plug-in IntelliJ pro jarní cloud Azure podporuje nasazení aplikací z NÁPADu IntelliJ.  
 
-## <a name="prerequisites"></a>Předpoklady
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
-* [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
-* [IntelliJ nápad, komunita/Ultimate Edition, verze 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
+Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
+
+## <a name="prerequisites"></a>Požadavky
+* [IntelliJ nápad, komunita/Ultimate Edition, verze 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Instalace modulu plug-in
-Můžete přidat Azure Toolkit for IntelliJ nápad 3.35.0 z uživatelského rozhraní **modulů plug-in** IntelliJ.
+Můžete přidat Azure Toolkit for IntelliJ nápad 3.43.0 z uživatelského rozhraní **modulů plug-in** IntelliJ.
 
 1. Spusťte IntelliJ.  Pokud jste projekt otevřeli dřív, zavřete projekt, aby se zobrazil uvítací dialog. Vyberte možnost **Konfigurovat** v pravém dolním rohu a potom kliknutím na **moduly plug** -in otevřete dialogové okno Konfigurace modulu plug-in a vyberte možnost **instalovat moduly plug-in z disku**.
 
@@ -44,7 +47,7 @@ Následující postupy nasadí Hello World aplikace s využitím NÁPADu Intelli
 
 ## <a name="open-gs-spring-boot-project"></a>Otevřít projekt GS – pružina spuštění
 
-1. Stáhněte a rozbalte zdrojové úložiště pro tento kurz nebo ho naklonujte pomocí Gitu: git clonehttps://github.com/spring-guides/gs-spring-boot.git 
+1. Stáhněte a rozbalte zdrojové úložiště pro tento kurz nebo ho naklonujte pomocí Gitu: git clone https://github.com/spring-guides/gs-spring-boot.git 
 1. CD do GS-Spring-boot\complete.
 1. Otevřete **uvítací** dialog IntelliJ a výběrem **Importovat projekt** otevřete Průvodce importem.
 1. Vyberte `gs-spring-boot\complete` složku.
@@ -52,7 +55,7 @@ Následující postupy nasadí Hello World aplikace s využitím NÁPADu Intelli
     ![Importovat projekt](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Nasazení do jarního cloudu Azure
-Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure a vybrat své předplatné.  Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure a vybrat své předplatné.  Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud**.
 
@@ -64,7 +67,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
     ![Nasazení do Azure 2](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
-1. Zadejte **název aplikace**a pak klikněte na **OK**.
+1. Zadejte **název aplikace** a pak klikněte na **OK**.
 
     ![Nasadit do Azure v pořádku](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
 
@@ -84,7 +87,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
 ## <a name="show-streaming-logs"></a>Zobrazit protokoly streamování
 Postup získání protokolů:
-1. Vyberte **Azure Explorer**a pak **jarní Cloud**.
+1. Vyberte **Azure Explorer** a pak **jarní Cloud**.
 1. Klikněte pravým tlačítkem na spuštěnou aplikaci.
 1. V rozevíracím seznamu vyberte možnost **protokoly streamování** .
 
@@ -99,5 +102,5 @@ Postup získání protokolů:
     ![Výstup protokolu streamování](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>Další kroky
-* [Příprava aplikace pružiny pro jarní cloud Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [Další informace o Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Příprava aplikace pružiny pro jarní cloud Azure](./spring-cloud-tutorial-prepare-app-deployment.md)
+* [Další informace o Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)

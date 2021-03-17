@@ -4,16 +4,16 @@ description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure St
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322223"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359760"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven Java V12
 
@@ -398,7 +398,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="":::
-      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
    :::column-end:::
    :::column span="":::
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
@@ -437,7 +437,7 @@ Pokud chcete zobrazit kompletní ukázkové knihovny Java, přečtěte si:
 
 Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
 Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
 
@@ -453,4 +453,5 @@ Informace o ukázkách pro jiné jazyky:
 * .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
 * Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
 * JavaScript/Node.js: [ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
+* C++: [Azure Storage ukázky pomocí jazyka C++](storage-samples-c-plus-plus.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

@@ -3,7 +3,7 @@ title: Prostředí koncových uživatelů pro aplikace – Azure Active Director
 description: Azure Active Directory (Azure AD) poskytuje několik přizpůsobitelných způsobů, jak nasadit aplikace pro koncové uživatele ve vaší organizaci.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,56 +11,49 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c2ec85af2c954c2189f0df1b407a2c40967f096
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3f1cab0637c7409cbc45f4f5a5374b2b5b6a77
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763393"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259249"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Prostředí koncových uživatelů pro aplikace v Azure Active Directory
 
 Azure Active Directory (Azure AD) poskytuje několik přizpůsobitelných způsobů, jak nasadit aplikace pro koncové uživatele ve vaší organizaci:
 
-* Přístupový panel Azure AD
-* Spouštěč aplikace Office 365
+* Moje aplikace v Azure AD
+* Microsoft 365 spouštěč aplikace
 * Přímé přihlášení k federovaným aplikacím
 * Přímé odkazy na federované nebo existující aplikace či aplikace založené na hesle
 
 Jaké metody si zvolíte pro nasazení ve vaší organizaci, je vaše rozhodnutí.
 
-## <a name="azure-ad-access-panel"></a>Přístupový panel Azure AD
+## <a name="azure-ad-my-apps"></a>Moje aplikace v Azure AD
 
-Přístupový panel na https://myapps.microsoft.com webu je webový portál, který umožňuje koncovému uživateli s účtem organizace v Azure Active Directory zobrazit a spustit aplikace, kterým jim byl udělen přístup správce Azure AD. Pokud jste koncovým uživatelem s [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), můžete pomocí přístupového panelu využít také možnosti samoobslužné správy skupin.
+Moje aplikace na https://myapps.microsoft.com webu je webový portál, který umožňuje koncovému uživateli s účtem organizace v Azure Active Directory zobrazit a spustit aplikace, kterým jim byl udělen přístup správce Azure AD. Pokud jste koncovým uživatelem s [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), můžete prostřednictvím mých aplikací využít možnosti samoobslužné správy skupin.
 
-![Snímek obrazovky se zobrazí na portálu Azure AD Access panel](media/what-is-single-sign-on/azure-ad-access-panel.png)
+Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Kolekce ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Kolekce můžete například použít k vytvoření logických seskupení aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Vytvoření kolekcí na portálu moje aplikace](access-panel-collections.md). 
 
-Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Kolekce ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Kolekce můžete například použít k vytvoření logických seskupení aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Jak používat kolekce mých aplikací k přizpůsobení panelů přístupu uživatelů](access-panel-collections.md). 
+Moje aplikace jsou oddělené od Azure Portal a nevyžadují, aby uživatelé měli předplatné Azure nebo Microsoft 365 předplatné.
 
-Přístupový panel je oddělený od Azure Portal a nevyžaduje, aby uživatelé měli předplatné Azure nebo předplatné Office 365.
+Další informace o službě Azure AD moje aplikace najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-Další informace o přístupovém panelu Azure AD najdete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+## <a name="microsoft-365-application-launcher"></a>Microsoft 365 spouštěč aplikace
 
-## <a name="office-365-application-launcher"></a>Spouštěč aplikace Office 365
+Pro organizace, které nasadily Microsoft 365, se aplikace přiřazené uživatelům prostřednictvím služby Azure AD zobrazí také na portálu Office 365 na adrese [https://portal.office.com/myapps](https://portal.office.com/myapps) . To usnadňuje uživatelům v organizaci, aby mohli spouštět své aplikace, aniž by museli používat druhý portál a je doporučené řešení pro spouštění aplikací pro organizace, které používají Microsoft 365.
 
-Pro organizace, které mají nasazenou sadu Office 365, se aplikace přiřazené uživatelům prostřednictvím služby Azure AD zobrazí také na portálu Office 365 na adrese [https://portal.office.com/myapps](https://portal.office.com/myapps) . To usnadňuje uživatelům v organizaci, aby mohli spouštět své aplikace, aniž by museli používat druhý portál a je doporučené řešení pro spouštění aplikací pro organizace, které používají Office 365.
-
-![Snímek obrazovky zobrazující portál Office 365](./media/end-user-experiences/microsoft-365-portal-office-com.png)
-
-Další informace o spouštěčech aplikací Office 365 najdete v tématu o tom, že [se vaše aplikace zobrazuje ve Spouštěči aplikací office 365](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
+Další informace o spouštěčech aplikací Office 365 najdete v tématu o tom, že [se vaše aplikace zobrazuje ve Spouštěči aplikací office 365](/previous-versions/office/office-365-api/).
 
 ## <a name="direct-sign-on-to-federated-apps"></a>Přímé přihlášení k federovaným aplikacím
 
 Většina federovaných aplikací, které podporují SAML 2,0, WS-Federation nebo OpenID Connect, taky podporuje možnost spouštění uživatelů v aplikaci a přihlášení prostřednictvím služby Azure AD buď pomocí automatického přesměrování, nebo kliknutím na odkaz pro přihlášení. To se označuje jako přihlašování iniciované poskytovatelem služeb a většina federovaných aplikací v galerii aplikací Azure AD (podrobnosti najdete v dokumentaci propojené z Průvodce konfigurací jednotného přihlašování aplikace v Azure Portal).
 
-![Příklad přihlašovací stránky mobilní aplikace](./media/end-user-experiences/workdaymobile.png)
-
 ## <a name="direct-sign-on-links"></a>Přímé přihlašovací odkazy
 
 Azure AD také podporuje přímé jednotné přihlašování k jednotlivým aplikacím, které podporují jednotné přihlašování založené na heslech, propojené jednotné přihlašování a jakoukoli formu federovaného jednotného přihlašování.
 
-Tyto odkazy jsou speciálně vytvořené adresy URL, které odesílají uživatele prostřednictvím procesu přihlášení služby Azure AD pro konkrétní aplikaci, aniž by museli uživatele spustit z přístupového panelu Azure AD nebo ze sady Office 365. Tyto **adresy URL pro přístup uživatelů** najdete ve vlastnostech dostupných podnikových aplikací. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte aplikaci a pak vyberte **vlastnosti**.
+Tyto odkazy jsou speciálně vytvořené adresy URL, které odesílají uživatele prostřednictvím procesu přihlášení služby Azure AD pro konkrétní aplikaci, aniž by museli uživatele spustit z Azure AD moje aplikace nebo Microsoft 365. Tyto **adresy URL pro přístup uživatelů** najdete ve vlastnostech dostupných podnikových aplikací. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte aplikaci a pak vyberte **vlastnosti**.
 
 ![Příklad adresy URL přístupu uživatele ve vlastnostech Twitteru](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -68,14 +61,16 @@ Tyto odkazy můžete zkopírovat a vložit kdekoli, kde chcete zadat odkaz pro p
 
 `https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
-Podobně jako adresy URL pro přístupovou aplikaci pro konkrétní organizace můžete tuto adresu URL dál upravit přidáním jedné z aktivních nebo ověřených domén pro adresář za doménu myapps.microsoft.com. Tím se zajistí, že se na přihlašovací stránce okamžitě načte jakékoli organizační značky, aniž by uživatel musel zadat své ID uživatele:
+Podobně jako adresy URL specifické pro organizaci pro moje aplikace můžete tuto adresu URL dál upravit přidáním jedné z aktivních nebo ověřených domén pro adresář za doménu *myapps.Microsoft.com* . Tím se zajistí, že se na přihlašovací stránce okamžitě načte jakékoli organizační značky, aniž by uživatel musel zadat své ID uživatele:
 
 `https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
-Když ověřený uživatel klikne na jednu z těchto odkazů specifických pro jednotlivé aplikace, nejprve uvidí přihlašovací stránku organizace (za předpokladu, že ještě nejsou přihlášeni), a když se přihlásí do své aplikace, aniž by bylo třeba na přístupovém panelu zastavovat. Pokud uživatel postrádá požadavky pro přístup k aplikaci, jako je například rozšíření prohlížeče jednotného přihlašování založené na heslech, pak odkaz vyzve uživatele k instalaci chybějícího rozšíření. Adresa URL odkazu také zůstává konstantní, pokud se změní konfigurace jednotného přihlašování pro aplikaci.
+Když ověřený uživatel klikne na jednu z těchto odkazů specifických pro jednotlivé aplikace, nejprve uvidí přihlašovací stránku organizace (za předpokladu, že ještě nejsou přihlášení) a když se přihlásí do své aplikace, aniž by se nejdřív zastavily ve svých aplikacích. Pokud uživatel postrádá požadavky pro přístup k aplikaci, jako je například rozšíření prohlížeče jednotného přihlašování založené na heslech, pak odkaz vyzve uživatele k instalaci chybějícího rozšíření. Adresa URL odkazu také zůstává konstantní, pokud se změní konfigurace jednotného přihlašování pro aplikaci.
 
-Tyto odkazy používají stejné mechanismy řízení přístupu jako přístupový panel a Office 365 a budou moci úspěšně ověřit pouze uživatelé nebo skupiny, kteří byli přiřazeni k aplikaci v Azure Portal. Jakýkoli uživatel, který je neautorizovaný, se však zobrazí zpráva s vysvětlením, že jim nebyl udělen přístup, a má odkaz na načtení přístupového panelu, ve kterém zobrazí dostupné aplikace, ke kterým mají přístup.
+Tyto odkazy používají stejné mechanismy řízení přístupu jako moje aplikace a Microsoft 365. pouze uživatelé nebo skupiny, kteří byli přiřazeni k aplikaci v Azure Portal, budou moci úspěšně ověřit. Jakýkoli uživatel, který je neautorizovaný, uvidí ale zprávu s vysvětlením, že jim nebyl udělen přístup, a má odkaz na načtení mých aplikací, aby zobrazil dostupné aplikace, ke kterým mají přístup.
 
 ## <a name="next-steps"></a>Další kroky
 
-Plány nasazení najdete v tématu [Azure Active Directory plány nasazení](../fundamentals/active-directory-deployment-plans.md) .
+* [Série rychlý Start při správě aplikací](view-applications-portal.md)
+* [Co je jednotné přihlašování?](what-is-single-sign-on.md)
+* [Průvodce integrací Azure Active Directory s aplikacemi Začínáme](plan-an-application-integration.md)

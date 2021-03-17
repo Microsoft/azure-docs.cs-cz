@@ -9,23 +9,23 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035974"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493488"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Operační systém Windows][Logo_Windows] Windows
 >
 
 Pomocí [interního nástroje pro vyrovnávání zatížení Azure][load-balancer-multivip-overview]můžete spravovat víc virtuálních IP adres. 
@@ -47,7 +47,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v části [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]. Zvažte také použití [SKU azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) místo základní SKU nástroje pro vyrovnávání zatížení Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster služby WSFC jste už nakonfigurovali pro použití pro jednu instanci SAP ASCS/SCS pomocí **sdílené složky**, jak je znázorněno v tomto diagramu.
 
@@ -59,8 +59,10 @@ _**Obrázek 1:** Instance SAP ASCS/SCS a SOFS nasazené ve dvou clusterech_
 > Nastavení musí splňovat následující podmínky:
 > * Instance SAP ASCS/SCS musí sdílet stejný cluster služby WSFC.
 > * Různé sdílené složky SAP Global Hosts patřící do různých identifikátorů SID SAP musí sdílet stejný cluster SOFS.
+> * Instance SAP ASCS/SCS a sdílené složky SOFS nesmí být sloučeny do stejného clusteru. 
 > * Každý identifikátor SID systému správy databáze (DBMS) musí mít vlastní vyhrazený cluster WSFC.
 > * Aplikační servery SAP, které patří k jednomu identifikátoru zabezpečení systému SAP, musí mít vlastní vyhrazené virtuální počítače.
+> * Kombinace replikačního serveru fronty 1 a fronty replikačního serveru 2 ve stejném clusteru není podporovaná.  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Architektura SAP ASCS/SCS s více identifikátory SID se sdílenou složkou
 
@@ -70,13 +72,13 @@ Cílem je nainstalovat několik clusterových instancí SAP Advanced Business Ap
 
 _**Obrázek 2:** Konfigurace SAP pro více identifikátorů SID ve dvou clusterech_
 
-Instalace dalšího systému ** \<SID2> SAP** je stejná jako instalace jednoho \<SID> systému. V clusteru ASCS/SCS se vyžadují dva další přípravné kroky i pro cluster sdílení souborů SOFS.
+Instalace dalšího systému **\<SID2> SAP** je stejná jako instalace jednoho \<SID> systému. V clusteru ASCS/SCS se vyžadují dva další přípravné kroky i pro cluster sdílení souborů SOFS.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Příprava infrastruktury pro scénář s více identifikátory SID SAP
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Příprava infrastruktury na řadiči domény
 
-Vytvořte skupinu domény ** \<Domain> \ SAP_ \<SID2> _GlobalAdmin**například s \<SID2> = PR2. Název skupiny domén je \<Domain> \ SAP_PR2_GlobalAdmin.
+Vytvořte skupinu domény **\<Domain> \ SAP_ \<SID2> _GlobalAdmin** například s \<SID2> = PR2. Název skupiny domén je \<Domain> \ SAP_PR2_GlobalAdmin.
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Příprava infrastruktury v clusteru ASCS/SCS
 
@@ -97,8 +99,8 @@ Můžete znovu použít stávající \<SAPGlobalHost> a Volume1 prvního \<SID1>
 _**Obrázek 3:** SOFS s více SID je stejný jako název globálního hostitele SAP._
 
 > [!IMPORTANT]
->Pro druhý systém **SAP \<SID2> ** se použije stejný Volume1 a stejný **\<SAPGlobalHost>** název sítě.
->Vzhledem k tomu, že jste již nastavili **SAPMNT** jako název sdílené složky pro různé systémy SAP, budete muset použít stejný Volume1, aby bylo možné znovu použít **\<SAPGlobalHost>** název sítě. **Volume1**
+>Pro druhý systém **SAP \<SID2>** se použije stejný Volume1 a stejný **\<SAPGlobalHost>** název sítě.
+>Vzhledem k tomu, že jste již nastavili **SAPMNT** jako název sdílené složky pro různé systémy SAP, budete muset použít stejný Volume1, aby bylo možné znovu použít **\<SAPGlobalHost>** název sítě. 
 >
 >Cesta k souboru pro \<SID2> globálního hostitele je C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.
 >
@@ -467,4 +469,4 @@ Nainstalujte systémy DBMS a aplikační servery SAP, jak je popsáno výše.
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
-[virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[virtual-machines-manage-availability]:../../availability.md

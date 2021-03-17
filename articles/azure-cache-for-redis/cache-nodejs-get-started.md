@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s Node.js'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v Node.js'
 description: V tomto rychlém startu se dozvíte, jak používat Azure cache pro Redis s Node.js a node_redis.
 author: yegu-ms
 ms.service: cache
@@ -7,17 +7,21 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 89a5a911cc0de82afa704c43226d7dca0c9f98a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281170"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121248"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Node.js
+# <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis v Node.js
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace Node.js, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
+
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si téma [ rychlý startNode.js](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/nodejs) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,7 +55,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-Nevytvářejte nová připojení pro každou operaci v kódu. Raději co nejvíce připojení použijte opakovaně. 
+Pro každou operaci v kódu nevytvářejte nové připojení. Raději co nejvíce připojení použijte opakovaně. 
 
 ## <a name="create-a-new-nodejs-app"></a>Vytvoření nové aplikace Node.js
 

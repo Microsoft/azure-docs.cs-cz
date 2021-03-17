@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 922565d26274aee12c9397c08c19330b4fce00e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422253"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076296"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>Přidání hlavičky obsahující ID korelace
 
-Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak přidat hlavičku obsahující ID korelace do příchozího požadavku. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak přidat hlavičku obsahující ID korelace do příchozího požadavku. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-reference.md).
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Vložte kód do **vstupního** bloku.
 
@@ -35,5 +35,4 @@ Vložte kód do **vstupního** bloku.
 Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
-+ [Ukázky zásad](../policy-samples.md)
-
++ [Ukázky zásad](../policy-reference.md)

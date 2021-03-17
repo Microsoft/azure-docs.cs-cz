@@ -2,13 +2,13 @@
 title: Azure Event Grid koncepty
 description: Popisuje Azure Event Grid a jeho koncepty. Definuje několik klíčových součástí Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116484"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685699"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v Azure Event Grid
 
@@ -18,10 +18,7 @@ Tento článek popisuje hlavní koncepty v Azure Event Grid.
 
 Událost je nejmenší množství informací, které plně popisuje něco, co se stalo v systému. Každá událost má běžné informace, jako je zdroj události, čas, kdy došlo k události, a jedinečný identifikátor. Každá událost má také konkrétní informace, které jsou relevantní pouze pro konkrétní typ události. Například událost související s vytvářením nového souboru v Azure Storage obsahuje podrobnosti o daném souboru, jako je hodnota `lastTimeModified`. Událost služby Event Hubs zase obsahuje adresu URL souboru Capture. 
 
-K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
-
-
-Vlastnosti, které se odesílají v události, najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
+Maximální povolená velikost pro událost je 1 MB. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. Vlastnosti, které se odesílají v události, najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
 ## <a name="publishers"></a>Vydavatelé
 
@@ -37,11 +34,11 @@ Informace o implementaci některého z podporovaných zdrojů Event Grid najdete
 
 Téma Event Grid poskytuje koncový bod, ve kterém zdroj odesílá události. Vydavatel vytvoří téma Event Grid a rozhodne, zda zdroj události potřebuje jedno téma nebo více než jedno téma. Téma se používá pro kolekci souvisejících událostí. Pro reakci na určité typy událostí předplatitelé rozhodují, která témata se přihlásí k odběru.
 
-Systémová témata jsou integrovaná témata poskytované službami Azure, jako jsou Azure Storage, Azure Event Hubs a Azure Service Bus. V předplatném Azure můžete vytvořit systémová témata a přihlásit se k jejich odběru. Další informace najdete v tématu [Přehled systémových témat](system-topics.md). 
+**Systémová témata** jsou integrovaná témata poskytované službami Azure, jako jsou Azure Storage, Azure Event Hubs a Azure Service Bus. V předplatném Azure můžete vytvořit systémová témata a přihlásit se k jejich odběru. Další informace najdete v tématu [Přehled systémových témat](system-topics.md). 
 
-Vlastní témata jsou témata aplikací a témata třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. Další informace najdete v tématu [vlastní témata](custom-topics.md).
+**Vlastní témata** jsou témata aplikací a třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. Další informace najdete v tématu [vlastní témata](custom-topics.md). Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
 
-Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
+K dispozici je jiný typ tématu: **Partnerská část**. Funkce [partnerských událostí](partner-events-overview.md) umožňuje poskytovateli SaaS třetí strany publikovat události ze svých služeb, aby byly dostupné pro uživatele, kteří se můžou přihlásit k odběru těchto událostí. Poskytovatel SaaS zpřístupňuje typ tématu, **Partnerská část**, kterou předplatitelé používají ke spotřebě událostí. Nabízí také čistý model Pub-sub, který odděluje obavy a vlastnictví prostředků, které používají vydavatelé a předplatitelé událostí.
 
 ## <a name="event-subscriptions"></a>Odběry událostí
 
@@ -76,10 +73,7 @@ Pokud Event Grid nedokáže potvrdit, že koncový bod předplatitele událost p
 
 ## <a name="batching"></a>Dávkování
 
-Při použití vlastního tématu musí být události vždy publikovány v poli. Může se jednat o dávku jednoho pro scénáře s nízkou propustností, ale pro případy vysokého využití se doporučuje vytvořit dávku několika událostí v rámci publikování, abyste dosáhli vyšší efektivity. Dávky mohou být až 1 MB. Každá událost by neměla být větší než 64 KB (Obecná dostupnost) nebo 1 MB (Preview).
-
-> [!NOTE]
-> K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 KB. 
+Při použití vlastního tématu musí být události vždy publikovány v poli. Může se jednat o dávku jednoho pro scénáře s nízkou propustností, ale pro případy vysokého využití se doporučuje vytvořit dávku několika událostí v rámci publikování, abyste dosáhli vyšší efektivity. Dávky mohou mít velikost až 1 MB a maximální velikost události je 1 MB. 
 
 ## <a name="next-steps"></a>Další kroky
 

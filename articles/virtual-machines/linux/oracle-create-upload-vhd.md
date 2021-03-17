@@ -1,18 +1,20 @@
 ---
 title: Vytvoření a nahrání Oracle Linux VHD
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje Oracle Linux operační systém.
-author: gbowerman
-ms.service: virtual-machines-linux
+author: danielsollondon
+ms.service: virtual-machines
+ms.collection: linux
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 12/10/2019
-ms.author: guybo
-ms.openlocfilehash: 97fd61614eff05ddc542dbe17cf199663ab4cf1b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: 9984589b19f15ab00e895bca75c295a92a68d0fe
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371902"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557790"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linux pro Azure
 
@@ -23,9 +25,10 @@ V tomto článku se předpokládá, že jste už Oracle Linux operační systém
 * Technologie Hyper-V a Azure se Oracle Linux s využitím jádra neUEKho podnikového jádra () nebo Red Hat kompatibilního s prostředím Red Hat.
 * Technologie Hyper-V a Azure UEK2 se nepodporuje, protože neobsahují požadované ovladače.
 * Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny Convert-VHD.
-* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
+* **Vyžaduje se podpora jádra pro připojení systémů souborů UDF.** Při prvním spuštění v Azure se konfigurace zřizování předává virtuálnímu počítači Linux přes médium ve formátu UDF, které je připojené k hostu. Agent Azure Linux musí být schopný připojit systém souborů UDF ke čtení konfigurace a zřídit virtuální počítač.
+* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) se můžou použít na datových discích, pokud jsou preferované.
 * Verze jádra Linux starší než 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v Oracle Linux 6,6 a novějším.
-* Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
+* Nekonfigurujte odkládací oddíl na disku s operačním systémem. Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Ujistěte se, že `Addons` je úložiště povolené. Upravte soubor `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux 7) a `enabled=0` v tomto souboru změňte řádek na `enabled=1` **[ol6_addons]** nebo **[ol7_addons]** .
 
@@ -41,7 +44,7 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
     ```
 
     **Poznámka:** Pokud balíček ještě není nainstalovaný, tento příkaz se nezdaří a zobrazí se chybová zpráva. To se očekává.
-4. V adresáři vytvořte soubor **network** s názvem Network `/etc/sysconfig/` , který obsahuje následující text:
+4. V adresáři vytvořte soubor  s názvem Network `/etc/sysconfig/` , který obsahuje následující text:
 
     ```config   
     NETWORKING=yes
@@ -141,7 +144,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
-3. V adresáři vytvořte soubor **network** s názvem Network `/etc/sysconfig/` , který obsahuje následující text:
+3. V adresáři vytvořte soubor  s názvem Network `/etc/sysconfig/` , který obsahuje následující text:
 
     ```config
     NETWORKING=yes
@@ -207,34 +210,106 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
     ```
 
 11. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění.  Obvykle se jedná o výchozí nastavení.
-12. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
+12. Nainstalujte agenta a závislosti pro Azure Linux:
 
-    ```console
-    # sudo yum install WALinuxAgent
-    # sudo systemctl enable waagent
+    ```bash
+    sudo yum install WALinuxAgent
+    sudo systemctl enable waagent
     ```
 
-13. Nevytvářejte odkládací místo na disku s operačním systémem.
-    
-    Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte odpovídajícím způsobem následující parametry v/etc/waagent.conf:
+13. Instalace Cloud-init pro zpracování zřizování
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
+
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
     ```
 
-14. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
-    
+14. Přepnutí konfigurace nevytváří na disku s operačním systémem odkládací místo.
+
+    Dříve se agent Azure Linux použil k automatické konfiguraci odkládacího prostoru pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. To je ale teď zpracovávané pomocí Cloud-init. k naformátování disku prostředků pro vytvoření odkládacího souboru **nemusíte** použít agenta pro Linux. Upravte následující parametry `/etc/waagent.conf` správným způsobem:
+
     ```console
-    # sudo waagent -force -deprovision
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+
+    Pokud chcete připojit, formátovat a vytvořit prohození, můžete buď:
+    * Při každém vytvoření virtuálního počítače ho předejte jako Cloud-init config.
+    * Pomocí direktivy Cloud-init vloženými do image, která to provede při každém vytvoření virtuálního počítače:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+
+
+15. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
+
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
+
     # export HISTSIZE=0
+
     # logout
     ```
 
-15. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
+16. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 ## <a name="next-steps"></a>Další kroky
 Nyní jste připraveni k vytváření nových virtuálních počítačů v Azure pomocí Oracle Linux. VHD. Pokud soubor. VHD do Azure nahráváte poprvé, přečtěte si článek [Vytvoření virtuálního počítače se systémem Linux z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).

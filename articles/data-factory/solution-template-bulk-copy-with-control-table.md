@@ -1,30 +1,26 @@
 ---
 title: Hromadné kopírování z databáze pomocí řídicí tabulky
 description: Naučte se používat šablonu řešení ke kopírování hromadných dat z databáze pomocí externí tabulky ovládacích prvků k uložení seznamu oddílů zdrojových tabulek pomocí Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/09/2020
+ms.openlocfilehash: eed7a304bdd57846cd038cc9bf9a67e8150ca505
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629078"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392455"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Chcete-li kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server Azure SQL Data Warehouse, je nutné načíst obrovský objem dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
+Pokud chcete kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server do služby Azure synapse Analytics, musíte načíst velké objemy dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
 
- >! Poznámka: Pokud chcete kopírovat data z malého počtu tabulek s relativně malým objemem dat do SQL Data Warehouse, je efektivnější použít [nástroj Azure Data Factory kopírování dat](copy-data-tool.md). Šablona popsaná v tomto článku je více, než kolik jich v tomto scénáři potřebujete.
+ >! Poznámka: Pokud chcete kopírovat data z malého počtu tabulek s relativně malým objemem dat do služby Azure synapse Analytics, je efektivnější použít [nástroj Kopírování dat Azure Data Factory](copy-data-tool.md). Šablona popsaná v tomto článku je více, než kolik jich v tomto scénáři potřebujete.
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
@@ -44,11 +40,11 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 - *Data_Destination_Container* je cesta ke kořenové složce, do které se zkopírují data do cílového úložiště. 
 - *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři, kam se zkopírují data do cílového úložiště. 
 
-Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics (dřív SQL DW), tyto parametry se nevyžadují. Názvy tabulek a schématu v SQL Data Warehouse musí být stejné jako ty ve zdrojové databázi.
+Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics, tyto parametry se nevyžadují. Názvy tabulek a schéma ve službě Azure synapse Analytics ale musí být stejné jako ty ve zdrojové databázi.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
-1. Umožňuje vytvořit v SQL Server nebo Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů zdrojové databáze pro hromadnou kopii. V následujícím příkladu je ve zdrojové databázi pět oddílů. Tři oddíly jsou pro *datasource_table*a dva jsou pro *project_table*. Sloupec *LastModifytime* se používá k vytvoření oddílů dat v tabulce *datasource_table* ze zdrojové databáze. Dotaz, který se používá ke čtení prvního oddílu, je SELECT * FROM datasource_table, kde LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' a LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' '. Podobný dotaz můžete použít ke čtení dat z jiných oddílů.
+1. Umožňuje vytvořit v SQL Server nebo Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů zdrojové databáze pro hromadnou kopii. V následujícím příkladu je ve zdrojové databázi pět oddílů. Tři oddíly jsou pro *datasource_table* a dva jsou pro *project_table*. Sloupec *LastModifytime* se používá k vytvoření oddílů dat v tabulce *datasource_table* ze zdrojové databáze. Dotaz, který se používá ke čtení prvního oddílu, je SELECT * FROM datasource_table, kde LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' a LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' '. Podobný dotaz můžete použít ke čtení dat z jiných oddílů.
 
      ```sql
             Create table ControlTableForTemplate
@@ -86,7 +82,7 @@ Poslední tři parametry, které definují cestu v cílovém úložišti, jsou v
 
     ![Kontrola kanálu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+7. Vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.
 
     ![Klikněte na * * ladit * *.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
@@ -94,7 +90,7 @@ Poslední tři parametry, které definují cestu v cílovém úložišti, jsou v
 
     ![Kontrola výsledku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics (dřív SQL DW), musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje SQL Data Warehouse báze. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
+9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics, musíte pro přípravu zadat připojení ke službě Azure Blob Storage, jak to vyžaduje základ databáze Azure synapse Analytics. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
     
     ![Základní nastavení](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

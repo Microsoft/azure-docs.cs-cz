@@ -1,15 +1,18 @@
 - name: Azure Active Directory pro vývojáře
   href: index.yml
 - name: Přehled
-  href: v1-overview.md
-- name: ukázky
-  href: sample-v1-code.md
-- name: Koncepty
+  expanded: true
   items:
+    - name: Přehled
+      href: v1-overview.md
     - name: Rozvoj platformy Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
     - name: Proč aktualizovat na v2.0
       href: azure-ad-endpoint-comparison.md
+- name: ukázky
+  href: sample-v1-code.md
+- name: Koncepty
+  items:
     - name: Typy aplikací
       items:
         - name: Typy aplikací
@@ -94,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: Povolení jednotného přihlašování v iOS
               href: howto-v1-enable-sso-ios.md
-            - name: Ladění jednotného přihlašování založeného na SAML
-              href: howto-v1-debug-saml-sso-issues.md
         - name: Konfigurace deklarací identity
           items:
             - name: Konfigurace deklarací identity rolí
@@ -146,8 +147,6 @@
       items:
         - name: Publikování na App Service
           href: howto-get-appsource-certified.md
-        - name: Publikování v galerii aplikací Azure AD
-          href: howto-app-gallery-listing.md
         - name: Publikování na řídicí panel prodejce Office 365
           href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure Access Control Service

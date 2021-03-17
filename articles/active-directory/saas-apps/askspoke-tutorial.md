@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8ef2dadfc0099822d68a5b1cfb2cc35759e1a866
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549421"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s askSpoke
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat askSpoke s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k askSpoke svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,16 +35,16 @@ Chcete-li začít, potřebujete následující položky:
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * askSpoke odběr s povoleným jednotným přihlašováním (SSO).
 
-> [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
-
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * askSpoke podporuje jednotné přihlašování (SSO) **a IDP** .
 * askSpoke podporuje zřizování uživatelů **jenom v čase** .
-* Po nakonfigurování askSpoke můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování askSpoke můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-askspoke-from-the-gallery"></a>Přidání askSpoke z Galerie
 
@@ -57,7 +57,7 @@ Pokud chcete nakonfigurovat integraci askSpoke do služby Azure AD, musíte při
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **askSpoke** .
 1. Na panelu výsledků vyberte **askSpoke** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>Konfigurace a testování jednotného přihlašování Azure AD pro askSpoke
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>Konfigurace a testování jednotného přihlašování Azure AD pro askSpoke
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí askSpoke pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v askSpoke.
 
@@ -120,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -146,15 +146,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém navigačním podokně klikněte na kartu **Nastavení** .
 
-    ![Konfigurace askSpoke](./media/askspoke-tutorial/configure1.png)
+    ![Karta nastavení askSpoke](./media/askspoke-tutorial/configure1.png)
 
 1. Přejděte dolů k **jednotné přihlašování** a klikněte na **připojit**.
 
-    ![Konfigurace askSpoke](./media/askspoke-tutorial/configure2.png)
+    ![askSpoke připojit](./media/askspoke-tutorial/configure2.png)
 
 1. V části **povolit & SCIM SAML** proveďte následující kroky:
 
-    ![Konfigurace askSpoke](./media/askspoke-tutorial/configure3.png)
+    ![askSpoke povolit část SCIM & SAML](./media/askspoke-tutorial/configure3.png)
 
     1. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **Adresa URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -174,19 +174,16 @@ V této části se v askSpoke vytvoří uživatel s názvem B. Simon. askSpoke p
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici askSpoke, měli byste se automaticky přihlásit k askSpoke, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici askSpoke, měli byste se automaticky přihlásit k askSpoke, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si askSpoke s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit askSpoke pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

@@ -2,19 +2,21 @@
 title: Migrace z CouchBase do Azure Cosmos DB SQL API
 description: Podrobné pokyny pro migraci z CouchBase do Azure Cosmos DB SQL API
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366717"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606194"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB je škálovatelná, globálně distribuovaná a plně spravovaná databáze. Poskytuje zaručený přístup k datům s nízkou latencí. Další informace o Azure Cosmos DB najdete v článku [Přehled](introduction.md) . Tento článek poskytuje pokyny k migraci aplikací Java, které jsou připojené k Couchbase, na účet rozhraní SQL API v Azure Cosmos DB.
 
@@ -22,18 +24,18 @@ Azure Cosmos DB je škálovatelná, globálně distribuovaná a plně spravovan�
 
 Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s Couchbase fungují jinak:
 
-|   Couchbase     |   Azure Cosmos DB   |
-| ---------------|-------------------|
-|Server Couchbase| Účet       |
-|Blocích           | Databáze      |
-|Blocích           | Kontejner/kolekce |
-|Dokument JSON    | Položka/dokument |
+| Couchbase | Azure Cosmos DB |
+|--|--|
+| Server Couchbase | Účet |
+| Blocích | Database |
+| Blocích | Kontejner/kolekce |
+| Dokument JSON | Položka/dokument |
 
 ## <a name="key-differences"></a>Klíčové rozdíly
 
 * Azure Cosmos DB má v dokumentu pole "ID", zatímco Couchbase má ID jako součást intervalu. Pole ID je v rámci oddílu jedinečné.
 
-* Azure Cosmos DB škáluje pomocí techniky dělení nebo horizontálního dělení. To znamená, že data rozdělí do několika horizontálních oddílů/oddílů. Tyto oddíly/horizontálních oddílů se vytvářejí na základě vlastnosti klíče oddílu, kterou zadáte. Můžete vybrat klíč oddílu pro optimalizaci čtení, i když jsou taky optimalizované operace zápisu nebo čtení/zápis. Další informace najdete v článku [dělení](./partition-data.md) .
+* Azure Cosmos DB škáluje pomocí techniky dělení nebo horizontálního dělení. To znamená, že data rozdělí do několika horizontálních oddílů/oddílů. Tyto oddíly/horizontálních oddílů se vytvářejí na základě vlastnosti klíče oddílu, kterou zadáte. Můžete vybrat klíč oddílu pro optimalizaci čtení, i když jsou taky optimalizované operace zápisu nebo čtení/zápis. Další informace najdete v článku [dělení](./partitioning-overview.md) .
 
 * V Azure Cosmos DB není nutné, aby hierarchie nejvyšší úrovně naznamenala kolekci, protože název kolekce již existuje. Tato funkce zpřístupňuje strukturu JSON mnohem jednodušší. Následuje příklad, který ukazuje rozdíly v datovém modelu mezi Couchbase a Azure Cosmos DB:
 
@@ -179,7 +181,7 @@ Dokument si můžete přečíst s nebo bez zadání klíče oddílu. Pokud klí�
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-To je to, teď můžete aplikaci používat s Azure Cosmos DB. Kompletní ukázka kódu pro příklad popsaný v tomto dokumentu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) .
+To je to, teď můžete aplikaci používat s Azure Cosmos DB. Kompletní ukázka kódu pro příklad popsaný v tomto dokumentu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) .
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase jako úložiště dokumentů & pomocí dotazů N1QL
 
@@ -187,7 +189,7 @@ Dotazy N1QL slouží jako způsob, jak definovat dotazy v Couchbase.
 
 |Dotaz N1QL | Dotaz na Azure CosmosDB|
 |-------------------|-------------------|
-|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0   | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c |
+|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0 | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c._type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c. |
 
 Ve svých dotazech N1QL si můžete všimnout následujících změn:
 
@@ -219,12 +221,12 @@ Použijte asynchronní sadu Java SDK s následujícími kroky:
    cp.connectionMode(ConnectionMode.DIRECT);
     
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(MasterKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();   
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
    
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -240,22 +242,22 @@ Nyní můžete pomocí výše uvedené metody předat více dotazů a provést b
 ```java
 for(SqlQuerySpec query:queries)
 {
-    objFlux= container.queryItems(query, fo);
-    objFlux .publishOn(Schedulers.elastic())
-            .subscribe(feedResponse->
-                {
-                    if(feedResponse.results().size()>0)
-                    {
-                        _docs.addAll(feedResponse.results());
-                    }
-                
-                },
-                Throwable::printStackTrace,latch::countDown);
-    lstFlux.add(objFlux);
+   objFlux= container.queryItems(query, fo);
+   objFlux .publishOn(Schedulers.elastic())
+         .subscribe(feedResponse->
+            {
+               if(feedResponse.results().size()>0)
+               {
+                  _docs.addAll(feedResponse.results());
+               }
+            
+            },
+            Throwable::printStackTrace,latch::countDown);
+   lstFlux.add(objFlux);
 }
-                        
-        Flux.merge(lstFlux);
-        latch.await();
+                  
+      Flux.merge(lstFlux);
+      latch.await();
 }
 ```
 
@@ -265,7 +267,7 @@ Pomocí předchozího kódu můžete spouštět dotazy paralelně a zvýšit tak
 
 Chcete-li vložit dokument, spusťte následující kód:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -276,13 +278,13 @@ CountDownLatch latch=new CountDownLatch(1);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
+           if(resourceResponse.statusCode()!=successStatus)
+              {
+                 throw new RuntimeException(resourceResponse.toString());
+              }
+           },
         Throwable::printStackTrace,latch::countDown);
-latch.await();              
+latch.await();
 ```
 
 ### <a name="upsert-operation"></a>Operace Upsert
@@ -298,12 +300,12 @@ Pak se přihlaste k odběru mono. Přečtěte si fragment předplatného mono v 
 
 Následující fragment kódu provede operaci odstranění:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) .
+Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) .
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase jako pár klíč/hodnota
 
@@ -311,7 +313,7 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
 
 1. Zvažte možnost "/ID" jako primární klíč, což zajistí, že můžete provádět operace vyhledávání přímo v konkrétním oddílu. Vytvořte kolekci a jako klíč oddílu zadejte "/ID".
 
-1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat**vyberte svou **databázi** a **kontejner**. Otevřete kartu **nastavení & škálování** a vyberte **zásadu indexování**. V současné době indexování zásad vypadá takto:
+1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat** vyberte svou **databázi** a **kontejner**. Otevřete kartu **nastavení & škálování** a vyberte  **zásadu indexování**. V současné době indexování zásad vypadá takto:
     
    ```json
    {
@@ -348,12 +350,12 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
    cp.connectionMode(ConnectionMode.DIRECT);
    
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(MasterKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
     
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -368,16 +370,16 @@ Chcete-li číst položku, použijte následující fragment kódu:
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
 ro.partitionKey(new PartitionKey(documentId));
 CountDownLatch latch=new CountDownLatch(1);
-        
+      
 var objCosmosItem= container.getItem(documentId, documentId);
 Mono<CosmosItemResponse> objMono = objCosmosItem.read(ro);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.item()!=null)
-            {
-                doc= resourceResponse.properties().toObject(UserModel.class);
-            }
+           if(resourceResponse.item()!=null)
+           {
+              doc= resourceResponse.properties().toObject(UserModel.class);
+           }
         },
         Throwable::printStackTrace,latch::countDown);
 latch.await();
@@ -387,7 +389,7 @@ latch.await();
 
 Chcete-li vložit položku, můžete provést následující kód:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -396,14 +398,14 @@ Pak se přihlaste k odběru mono jako:
 ```java
 CountDownLatch latch=new CountDownLatch(1);
 objMono.subscribeOn(Schedulers.elastic())
-        .subscribe(resourceResponse->
-        {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
-        Throwable::printStackTrace,latch::countDown);
+      .subscribe(resourceResponse->
+      {
+         if(resourceResponse.statusCode()!=successStatus)
+            {
+               throw new RuntimeException(resourceResponse.toString());
+            }
+         },
+      Throwable::printStackTrace,latch::countDown);
 latch.await();
 ```
 
@@ -420,12 +422,12 @@ Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předpl
 
 Pomocí následujícího fragmentu kódu spusťte operaci odstranění:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) .
+Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) .
 
 ## <a name="data-migration"></a>Migrace dat
 

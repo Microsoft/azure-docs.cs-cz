@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b3070a1296b368ea2c56038ec696942416a6fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d9fdc44681c8773d7b6f724174a74e76e57939e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743877"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369756"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu rolí Azure AD v Privileged Identity Management
 
@@ -27,9 +27,9 @@ Chcete-li snížit riziko související se zastaralými přiřazeními rolí, m�
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro privilegované role Azure AD.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-[Správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Správce privilegovaných rolí](../roles/permissions-reference.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Otevřít recenze přístupů
 

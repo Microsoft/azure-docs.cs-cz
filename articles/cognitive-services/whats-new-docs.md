@@ -1,67 +1,52 @@
 ---
-title: 'Cognitive Services Docs: novinky od 1. července 2020 – 31. července 2020'
-description: Novinky v dokumentaci Cognitive Services pro 1. července 2020 – 31. července 2020.
+title: 'Cognitive Services: co je nového v docs'
+description: Co je nového v Cognitive Services dokumentaci k 1. únoru 2020 – 28. února 2020.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 08/03/2020
-ms.openlocfilehash: eda90a430d96d43d052a603f82832aef6c0facdb
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 03/08/2021
+ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553355"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631366"
 ---
-# <a name="cognitive-services-docs-whats-new-for-july-1-2020---july-31-2020"></a>Cognitive Services Docs: novinky od 1. července 2020 – 31. července 2020
+# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services Docs: co je nového pro 1. února 2021 – 28. února 2021
 
-Vítá vás novinky v Cognitive Services dokumentaci od 1. července 2020 do 31. července 2020. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
+Vítejte v Cognitive Services dokumentaci od 1. února 2021 do 28. února 2021. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
+
+## <a name="cognitive-services"></a>Cognitive Services
+
+### <a name="new-articles"></a>Nové články
+
+- [Azure Policy kontroly dodržování předpisů pro Azure Cognitive Services](security-controls-policy.md)
+
+## <a name="containers"></a>Kontejnery
+
+### <a name="new-articles"></a>Nové články
+
+- [Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)](/azure/cognitive-services/containers/container-faq)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Značky imagí a poznámky k verzi služby Azure Cognitive Services Container](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-### <a name="new-articles"></a>Nové články
+### <a name="updated-articles"></a>Aktualizované články
 
-- [Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI](/azure/cognitive-services/form-recognizer/tutorial-ai-builder)
-
-## <a name="personalizer"></a>Personalizace
-
-### <a name="new-articles"></a>Nové články
-
-- [Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot](/azure/cognitive-services/personalizer/tutorial-use-personalizer-chat-bot)
-
-## <a name="qna-maker"></a>QnA Maker
-
-### <a name="new-articles"></a>Nové články
-
-- [Plánování aplikace QnA Maker](/azure/cognitive-services/qnamaker/concepts/plan)
-
-## <a name="speech-service"></a>Speech Service
-
-### <a name="new-articles"></a>Nové články
-
-- [Šifrování vlastních příkazů pro neaktivní uložená data](/azure/cognitive-services/speech-service/custom-commands-encryption-of-data-at-rest)
-- [Základy vlastního klíčového slova](/azure/cognitive-services/speech-service/custom-keyword-basics)
-- [Použití aplikace Vlastní příkazy se službou Vlastní hlas](/azure/cognitive-services/speech-service/how-to-custom-commands-use-custom-voice)
-- [Sada Batch Processing Kit pro kontejnery řeči](/azure/cognitive-services/speech-service/speech-container-batch-processing)
+- [Nasazení ukázkového nástroje pro popisování](/azure/cognitive-services/form-recognizer/deploy-label-tool)
+- [Co je služba Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/overview)
+- [Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
 
 ## <a name="text-analytics"></a>Analýza textu
 
-### <a name="new-articles"></a>Nové články
+### <a name="updated-articles"></a>Aktualizované články
 
-- [Postupy: použití Analýza textu pro stav (Preview)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
-
-## <a name="community-contributors"></a>Přispěvatelé komunity
-
-Následující lidé přispěli během tohoto období k dokumentaci Cognitive Services. Děkujeme! Naučte se, jak přispívat pomocí odkazů v části " [postupovat" na úvodní stránce co je nového](index.yml).
-
-- [milestonedev](https://github.com/milestonedev) -Justin mil. (2)
-- [felixvanleeuwen](https://github.com/felixvanleeuwen) (1)
-- [LoicB](https://github.com/LoicB) -Loic Beylot (1)
-- [nkgami](https://github.com/nkgami) -Hiroki Nakagami (1)
-- [RussellJQA](https://github.com/RussellJQA) -Russell Johnsonem (1)
-- [ryotokuro](https://github.com/ryotokuro) -Taiyue Tan (1)
-- [smorcuend](https://github.com/smorcuend) -Sergio Morcuende (1)
-- [swildermann](https://github.com/swildermann) -Sven Wildermann (1)
+- [Podpora jazyka rozhraní API pro analýzu textu V3](/azure/cognitive-services/text-analytics/language-support)
+- [Způsob volání Analýza textu REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

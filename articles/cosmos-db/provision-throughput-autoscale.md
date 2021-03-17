@@ -5,21 +5,21 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/11/2020
+ms.custom: seo-nov-2020
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791142"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368660"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB umožňuje nastavit standardní (ruční) nebo automatické škálování zřízené propustnosti databází a kontejnerů. Tento článek popisuje výhody a případy použití automatického škálování zřízené propustnosti. 
+V Azure Cosmos DB můžete pro vaše databáze a kontejnery nakonfigurovat buď standardní (ruční), nebo škálovatelnou propustnost. Zajištěná propustnost při automatickém škálování v Azure Cosmos DB umožňuje **automaticky a okamžitě škálovat propustnost (ru/s) databáze nebo kontejneru**. Propustnost se škáluje na základě využití, aniž by to ovlivnilo dostupnost, latenci, propustnost nebo výkon pro úlohy.
 
-Zajištěná propustnost pro automatické škálování je vhodná pro klíčové úlohy, které mají proměnlivé nebo nepředvídatelné vzory přenosů dat, a vyžadují SLA s vysokým výkonem a škálováním. 
-
-Díky automatickému škálování Azure Cosmos DB **automaticky a okamžitě škálovat propustnost (ru/s)** databáze nebo kontejneru na základě využití, aniž by to ovlivnilo dostupnost, latenci, propustnost nebo výkon zátěže. 
+Zajištěná propustnost pro automatické škálování je vhodná pro klíčové úlohy, které mají proměnlivé nebo nepředvídatelné vzory přenosů dat, a vyžadují SLA s vysokým výkonem a škálováním. Tento článek popisuje výhody a případy použití automatického škálování zřízené propustnosti.
 
 ## <a name="benefits-of-autoscale"></a>Výhody automatického škálování
 
@@ -59,9 +59,9 @@ Vstupním bodem pro maximální propustnost pro automatické škálování `Tmax
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Povolit automatické škálování u stávajících prostředků
 
-Pomocí [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) můžete povolit automatické škálování existující databáze nebo kontejneru. Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . V současné době můžete pro všechna rozhraní API použít Azure Portal jenom k povolení automatického škálování u stávajících prostředků.
+K povolení automatického škálování u existující databáze nebo kontejneru použijte [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), [Azure Resource Manager šablonu](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) nebo [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) . Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) .
 
-## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Omezení propustnosti a úložiště pro automatické škálování
+## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Omezení propustnosti a úložiště pro automatické škálování
 
 V případě jakékoli hodnoty `Tmax` může databáze nebo kontejner uchovávat celkem `0.01 * Tmax GB` . Po dosažení této velikosti úložiště se maximální počet RU/s automaticky zvýší v závislosti na nové hodnotě úložiště bez jakéhokoli dopadu na vaši aplikaci. 
 
@@ -77,7 +77,7 @@ Další podrobnosti najdete v této [dokumentaci](how-to-choose-offer.md) k výb
 | **Zřízená propustnost (RU/s)** | Ručně zřízené. | Automatické a okamžité škálování na základě vzorců využití úloh. |
 | **Frekvence – omezení požadavků/operací (429)**  | Může nastat, pokud spotřeba překročí zřízenou kapacitu. | Neproběhne, pokud použijete RU/s v rámci rozsahu propustnosti automatického škálování, který jste nastavili.    |
 | **Plánování kapacity** |  Musíte provést plánování kapacity a zajistit přesnou propustnost, kterou potřebujete. |    Systém se automaticky postará o plánování kapacity a správu kapacity. |
-| **Ceny** | Platíte za ručně zřízené RU/s za hodinu pomocí [standardu (ruční) ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). | Platíte za hodinu pro nejvyšší úroveň RU/s. systém bude škálovat až do hodiny. <br/><br/> U účtů oblastí s jedním zápisem platíte za použití RU/s za každou hodinu, a to pomocí [automatického ŠKÁLOVÁNÍ ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>U účtů s více oblastmi zápisu se neúčtují žádné další poplatky za automatické škálování. Za tuto propustnost platíte za každou hodinu, a to pomocí stejné sady [multi-Master ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). |
+| **Ceny** | Platíte za ručně zřízené RU/s za hodinu pomocí [standardu (ruční) ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). | Platíte za hodinu pro nejvyšší úroveň RU/s. systém bude škálovat až do hodiny. <br/><br/> U účtů oblastí s jedním zápisem platíte za použití RU/s za každou hodinu, a to pomocí [automatického ŠKÁLOVÁNÍ ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>U účtů s více oblastmi zápisu se neúčtují žádné další poplatky za automatické škálování. Platíte za propustnost, která se používá každou hodinu, a to za použití stejného [zápisu ru/s ve více oblastech za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). |
 | **Nejvhodnější pro typy úloh** |  Předvídatelné a stabilní úlohy|   Nepředvídatelné a proměnlivé úlohy  |
 
 ## <a name="next-steps"></a>Další kroky
@@ -85,6 +85,6 @@ Další podrobnosti najdete v této [dokumentaci](how-to-choose-offer.md) k výb
 * Přečtěte si [Nejčastější dotazy k automatickému škálování](autoscale-faq.md).
 * Naučte se [vybírat mezi ruční a propustností automatického škálování](how-to-choose-offer.md).
 * Naučte se [zřídit propustnost automatického škálování v databázi nebo kontejneru Azure Cosmos](how-to-provision-autoscale-throughput.md).
-* Přečtěte si další informace o [dělení](partition-data.md) Azure Cosmos DB.
+* Přečtěte si další informace o [dělení](partitioning-overview.md) Azure Cosmos DB.
 
 

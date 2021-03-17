@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 02/23/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: aeed031025b9c494b35886861c273e2a7f9d2ac4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612312"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653724"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -26,7 +26,7 @@ Udělení autorizačního kódu OAuth 2,0 se dá použít v aplikacích, které 
 
 Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci pomocí libovolného jazyka.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
-Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth 2,0](https://tools.ietf.org/html/rfc6749). Používá se k ověřování a autorizaci ve většině typů aplikací, včetně [aplikací s jednou stránkou](v2-app-types.md#single-page-apps-javascript), [webových aplikací](v2-app-types.md#web-apps)a [nativně nainstalovaných aplikací](v2-app-types.md#mobile-and-native-apps). Tok umožňuje aplikacím bezpečně získat access_tokens, které se dají použít k přístupu k prostředkům zabezpečeným koncovým bodem platformy Microsoft identity, a také k aktualizaci tokenů, aby získali další access_tokens a tokeny ID pro přihlášeného uživatele.
+Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth 2,0](https://tools.ietf.org/html/rfc6749). Používá se k ověřování a autorizaci ve většině typů aplikací, včetně [aplikací s jednou stránkou](v2-app-types.md#single-page-apps-javascript), [webových aplikací](v2-app-types.md#web-apps)a [nativně nainstalovaných aplikací](v2-app-types.md#mobile-and-native-apps). Tok umožňuje aplikacím bezpečně získat access_tokens, které se dají použít k přístupu k prostředkům zabezpečeným platformou Microsoft identity a také k aktualizaci tokenů pro získání dalších access_tokens a tokenů ID přihlášeného uživatele.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
@@ -44,11 +44,11 @@ Pokud se pokusíte použít tok autorizačního kódu a zobrazit tuto chybu:
 
 `access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
 
-Pak je potřeba navštívit registraci vaší aplikace a aktualizovat identifikátor URI přesměrování pro vaši aplikaci na typ `spa` .
+Potom navštivte registraci vaší aplikace a aktualizujte identifikátor URI přesměrování pro vaši aplikaci na typ `spa` .
 
 ## <a name="request-an-authorization-code"></a>Vyžádání autorizačního kódu
 
-Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient požaduje `openid` `offline_access` oprávnění, a `https://graph.microsoft.com/mail.read ` od uživatele.  Některá oprávnění jsou omezená na správce, například zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All` . Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným oprávněním správce, měli byste je požádat přímo od správce společnosti.  Další informace najdete v tématu [oprávnění s omezeným oprávněním pro správu](v2-permissions-and-consent.md#admin-restricted-permissions).
+Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient požaduje `openid` `offline_access` oprávnění, a `https://graph.microsoft.com/mail.read ` od uživatele.  Některá oprávnění jsou omezená na správce, například zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All` . Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným oprávněním správce, měli byste je požádat přímo od globálního správce.  Další informace najdete v tématu [oprávnění s omezeným oprávněním pro správu](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -58,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read%20api%3A%2F%2F
 &state=12345
 &code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
 &code_challenge_method=S256
@@ -72,28 +72,28 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |--------------|-------------|--------------|
 | `tenant`    | vyžadováno    | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | vyžadováno    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci.  |
-| `response_type` | vyžadováno    | Musí zahrnovat `code` tok autorizačního kódu.       |
-| `redirect_uri`  | vyžadováno | Redirect_uri vaší aplikace, ve které vaše aplikace může odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. Pro nativní & mobilní aplikace byste měli použít výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
+| `response_type` | vyžadováno    | Musí zahrnovat `code` tok autorizačního kódu. Může také zahrnovat `id_token` nebo `token` při použití [hybridního toku](#request-an-id-token-as-well-hybrid-flow). |
+| `redirect_uri`  | vyžadováno | Redirect_uri vaší aplikace, ve které vaše aplikace může odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. Pro nativní & mobilní aplikace byste měli použít jednu z doporučených hodnot –  `https://login.microsoftonline.com/common/oauth2/nativeclient` (pro aplikace používající vložené prohlížeče) nebo `http://localhost` (pro aplikace, které používají systémové prohlížeče). |
 | `scope`  | vyžadováno    | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md) , ke kterým má uživatel udělit souhlas.  Pro `/authorize` nohy žádosti to může pokrývat více prostředků, což vaší aplikaci umožní získat souhlas s více webovými rozhraními API, která chcete volat. |
-| `response_mode`   | doporučil | Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může to být jedna z následujících:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít, `query` jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query` , `fragment` nebo `form_post` . `form_post` provede příspěvek obsahující kód pro identifikátor URI přesměrování. Další informace najdete v tématu [protokol OpenID Connect](../azuread-dev/v1-protocols-openid-connect-code.md).  |
+| `response_mode`   | doporučil | Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může to být jedna z následujících:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít, `query` jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query` , `fragment` nebo `form_post` . `form_post` provede příspěvek obsahující kód pro identifikátor URI přesměrování. |
 | `state`                 | doporučil | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Hodnota může také kódovat informace o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-| `prompt`  | optional    | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou v tomto okamžiku `login` , `none` a `consent` .<br/><br/>- `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování.<br/>- `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncová platforma Microsoft Identity platformu `interaction_required` chybu.<br/>- `prompt=consent` aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění.<br/>- `prompt=select_account` dojde k přerušení jednotného přihlašování, které poskytuje možnosti výběru účtu, které uvádějí všechny účty buď v relaci, nebo v jakémkoli zašifrovaném účtu, nebo možnost zvolit, že se má úplně použít jiný účet.<br/> |
+| `prompt`  | optional    | Určuje typ interakce uživatele, která je povinná. Jediné platné hodnoty jsou v tomto okamžiku `login` , `none` a `consent` .<br/><br/>- `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování.<br/>- `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, bude platforma Microsoft Identity platformou vracet `interaction_required` chybu.<br/>- `prompt=consent` aktivuje dialog souhlasu OAuth po přihlášení uživatele a vyzve uživatele, aby aplikaci udělil oprávnění.<br/>- `prompt=select_account` dojde k přerušení jednotného přihlašování, které poskytuje možnosti výběru účtu, které uvádějí všechny účty buď v relaci, nebo v jakémkoli zašifrovaném účtu, nebo možnost zvolit, že se má úplně použít jiný účet.<br/> |
 | `login_hint`  | optional    | Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte své uživatelské jméno předem. Aplikace budou často používat tento parametr během opakovaného ověřování, kteří už z předchozího přihlášení extrahovali uživatelské jméno, a to pomocí `preferred_username` deklarace identity.   |
 | `domain_hint`  | optional    | Pokud se tato možnost zahrne, přeskočí proces zjišťování e-mailu, který uživatel prochází na přihlašovací stránce, což vede k poněkud efektivnějšímu uživatelskému rozhraní, které je třeba odeslat do svého federovaného poskytovatele identity. Aplikace budou často používat tento parametr během opakovaného ověřování, a to extrakcí `tid` z předchozího přihlášení. Pokud `tid` je hodnota deklarace identity `9188040d-6c67-4c5b-b112-36a304b66dad` , měli byste použít `domain_hint=consumers` . V opačném případě použijte `domain_hint=organizations` .  |
-| `code_challenge`  | Doporučené/povinné | Slouží k zabezpečení autorizačního kódu prostřednictvím ověřovacího klíče pro výměnu kódu (PKCE). Požadováno `code_challenge_method` , pokud je zahrnuto. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). Teď se doporučuje pro všechny typy aplikací – nativní aplikace, jednostránkové a důvěrné klienty, jako jsou webové aplikace. |
+| `code_challenge`  | Doporučené/povinné | Slouží k zabezpečení autorizačního kódu prostřednictvím ověřovacího klíče pro výměnu kódu (PKCE). Požadováno `code_challenge_method` , pokud je zahrnuto. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). To se teď doporučuje u všech typů aplikací – veřejných i důvěrných klientů, které vyžaduje platforma Microsoft identity pro jednostránkové aplikace, a to [pomocí toku autorizačního kódu](reference-third-party-cookies-spas.md). |
 | `code_challenge_method` | Doporučené/povinné | Metoda použitá k zakódování `code_verifier` pro `code_challenge` parametr. To *by mělo* být `S256` , ale specifikace umožňuje použití z `plain` nějakého důvodu, když klient nepodporuje SHA256. <br/><br/>Pokud je vyloučený, předpokládá se, že je v `code_challenge` případě zahrnutí prostý text `code_challenge` . Platforma Microsoft identity podporuje i `plain` `S256` . Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). To je nutné pro [jednostránkové aplikace pomocí toku autorizačního kódu](reference-third-party-cookies-spas.md).|
 
 
-V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Koncový bod platformy Microsoft Identity také zajistí, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel nesouhlasí s žádným z těchto oprávnění, požádá uživatele o souhlas s požadovanými oprávněními. Podrobnosti o [oprávněních, souhlasu a víceklientské aplikacích najdete tady](v2-permissions-and-consent.md).
+V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Platforma Microsoft Identity také zajistí, že uživatel souhlasí s oprávněními uvedenými v `scope` parametru dotazu. Pokud uživatel nesouhlasí s žádným z těchto oprávnění, požádá uživatele o souhlas s požadovanými oprávněními. Podrobnosti o [oprávněních, souhlasu a víceklientské aplikacích najdete tady](v2-permissions-and-consent.md).
 
-Jakmile uživatel ověří a udělí souhlas, koncový bod platformy Microsoft Identity Platform vrátí odpověď do vaší aplikace na uvedené adrese `redirect_uri` pomocí metody zadané v `response_mode` parametru.
+Jakmile se uživatel ověří a udělí souhlas, platforma Microsoftu identity vrátí odpověď do vaší aplikace na uvedené adrese `redirect_uri` pomocí metody uvedené v `response_mode` parametru.
 
 #### <a name="successful-response"></a>Úspěšná odpověď
 
 Úspěšná odpověď pomocí `response_mode=query` vypadá takto:
 
 ```HTTP
-GET https://login.microsoftonline.com/common/oauth2/nativeclient?
+GET http://localhost?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
@@ -103,14 +103,14 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | `code` | Authorization_code, kterou aplikace požadovala Aplikace může pomocí autorizačního kódu požádat o přístupový token pro cílový prostředek. Authorization_codes jsou krátkodobé, obvykle vyprší po 10 minutách. |
 | `state` | Pokud je parametr State zahrnut v žádosti, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty stavu v žádosti a odpovědi jsou identické. |
 
-Můžete také získat přístupový token a token ID, pokud je vyžádáte a máte v registraci vaší aplikace povolený implicitní grant.  Tento postup se někdy označuje jako "hybridní tok" a používá se v rozhraních, jako je ASP.NET.
+Token ID můžete získat také v případě, že si ho vyžádáte a máte v registraci vaší aplikace povolený implicitní grant.  Tento postup se někdy označuje jako ["hybridní tok"](#request-an-id-token-as-well-hybrid-flow)a používá se v rozhraních, jako je ASP.NET.
 
 #### <a name="error-response"></a>Chybová odezva
 
 Odpovědi na chyby mohou být také odesílány do, `redirect_uri` aby je aplikace mohla správně zpracovat:
 
 ```HTTP
-GET https://login.microsoftonline.com/common/oauth2/nativeclient?
+GET http://localhost?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
@@ -129,12 +129,59 @@ Následující tabulka popisuje různé chybové kódy, které mohou být vráce
 | `invalid_request` | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemá oprávnění vyžadovat autorizační kód. | K této chybě obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
 | `access_denied`  | Vlastník prostředku zamítl souhlas.  | Klientská aplikace může uživatele informovat, že nemůže pokračovat, dokud se uživatel nesouhlasí. |
-| `unsupported_response_type` | Autorizační Server v žádosti nepodporuje typ odpovědi. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování.  |
+| `unsupported_response_type` | Autorizační Server v žádosti nepodporuje typ odpovědi. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování. Při pohledu v [hybridním toku](#request-an-id-token-as-well-hybrid-flow)signalizuje, že je nutné povolit nastavení implicitního udělení tokenu ID v registraci klientské aplikace. |
 | `server_error`  | Na serveru došlo k neočekávané chybě.| Opakujte požadavek. Tyto chyby mohou být způsobeny dočasnými podmínkami. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděná na dočasnou chybu. |
 | `temporarily_unavailable`   | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 | `invalid_resource`  | Cílový prostředek není platný, protože neexistuje, služba Azure AD ho nemůže najít nebo není správně nakonfigurovaná. | Tato chyba označuje prostředek, pokud existuje, není v tenantovi nakonfigurovaný. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
 | `login_required` | Bylo nalezeno příliš mnoho uživatelů. | Klient požadoval tiché ověřování ( `prompt=none` ), ale nenašlo se jeden uživatel. To může znamenat, že je v relaci aktivní více uživatelů, nebo žádní uživatelé. Tím se vezme v úvahu zvolený tenant (například pokud jsou aktivní dva účty Azure AD a jedna účet Microsoft a `consumers` je zvolena možnost tiché ověřování funguje). |
 | `interaction_required` | Požadavek vyžaduje zásah uživatele. | Vyžaduje se další krok ověřování nebo souhlas. Opakujte požadavek bez `prompt=none` . |
+
+### <a name="request-an-id-token-as-well-hybrid-flow"></a>Vyžádat i token ID (hybridní tok)
+
+Chcete-li zjistit, kdo je před uplatněním autorizačního kódu, je běžné, že aplikace také vyžádají token ID, když požadují autorizační kód. Tento postup se nazývá *hybridní tok* , protože kombinuje implicitní udělení s tokem autorizačního kódu. Hybridní tok se běžně používá ve webových aplikacích, které chtějí vykreslovat stránku pro uživatele bez blokování uplatnění kódu, zejména [ASP.NET](quickstart-v2-aspnet-core-webapp.md). V tomto modelu využívají jednostránkové aplikace i tradiční webové aplikace výhodu se sníženou latencí.
+
+Hybridní tok je stejný jako tok autorizačního kódu popsaný výše, ale se třemi dodatky, které jsou nutné k vyžádání tokenu ID: nové obory, nový response_type a nový `nonce` parametr dotazu.
+
+```
+// Line breaks for legibility only
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=code%20id_token
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&response_mode=fragment
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&state=12345
+&nonce=abcde
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
+```
+
+| Aktualizovaný parametr | Požadováno/volitelné | Popis |
+|---------------|-------------|--------------|
+|`response_type`| Povinné | Přidání `id_token` označuje serveru, který by aplikace chtěla jako token ID v odpovědi z `/authorize` koncového bodu.  |
+|`scope`| Vyžadováno | Pro tokeny ID se musí aktualizovat tak, aby zahrnovaly obory tokenů ID – `openid` a volitelně `profile` a `email` . |
+|`nonce`| Vyžadováno|     Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledného id_token jako deklarace. Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. |
+|`response_mode`| Doporučeno | Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Ve výchozím nastavení se `query` používá jenom autorizační kód, ale `fragment` Pokud požadavek obsahuje id_token `response_type` .  Doporučuje se ale použít aplikace `form_post` , zejména při použití `http:/localhost` jako identifikátoru URI přesměrování. |
+
+Použití `fragment` jako režim odezvy způsobuje problémy pro webové aplikace, které čtou kód z přesměrování, protože prohlížeče neprojde fragmentem na webový server.  V těchto situacích by aplikace měly použít `form_post` režim odezvy k zajištění toho, aby byla všechna data odeslána na server. 
+
+#### <a name="successful-response"></a>Úspěšná odpověď
+
+Úspěšná odpověď pomocí `response_mode=fragment` vypadá takto:
+
+```HTTP
+GET https://login.microsoftonline.com/common/oauth2/nativeclient#
+code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
+&id_token=eYj...
+&state=12345
+```
+
+| Parametr | Popis  |
+|-----------|--------------|
+| `code` | Autorizační kód, který požadovaná aplikace požaduje. Aplikace může pomocí autorizačního kódu požádat o přístupový token pro cílový prostředek. Autorizační kódy jsou krátkodobé, obvykle vyprší po 10 minutách. |
+| `id_token` | Token ID pro uživatele, který byl vydán prostřednictvím *implicitního udělení*. Obsahuje speciální `c_hash` deklaraci identity, která je hodnotou hash `code` ve stejné žádosti. |
+| `state` | Pokud je parametr State zahrnut v žádosti, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty stavu v žádosti a odpovědi jsou identické. |
 
 ## <a name="request-an-access-token"></a>Vyžádání přístupového tokenu
 
@@ -167,7 +214,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | optional   | Mezerou oddělený seznam oborů. Rozsahy musí být z jednoho prostředku, společně s OIDC obory ( `profile` , `openid` , `email` ). Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). Toto je rozšíření Microsoftu pro tok autorizačního kódu, které umožňuje aplikacím deklarovat prostředek, který chce mít token při uplatnění tokenu.|
 | `code`          | vyžadováno  | Authorization_code, kterou jste získali v první nožkě toku. |
 | `redirect_uri`  | vyžadováno  | Stejná redirect_uri hodnota, která byla použita k získání authorization_code. |
-| `client_secret` | vyžadováno pro důvěrné webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Nepoužívejte tajný klíč aplikace v nativní aplikaci nebo v jedné stránce, protože client_secrets nejde spolehlivě uložit na zařízení nebo webové stránky. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru.  Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. Další informace o kódování identifikátoru URI naleznete v tématu [Obecná specifikace syntaxe identifikátoru URI](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | vyžadováno pro důvěrné webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Nepoužívejte tajný klíč aplikace v nativní aplikaci nebo v jedné stránce, protože client_secrets nejde spolehlivě uložit na zařízení nebo webové stránky. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru.  Stejně jako všechny parametry, které jsou zde popsané, musí mít tajný klíč klienta zakódovaný URL před odesláním, což je krok obvykle proveden sadou SDK. Další informace o kódování identifikátoru URI naleznete v tématu [Obecná specifikace syntaxe identifikátoru URI](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | doporučil  | Stejný code_verifier, který byl použit k získání authorization_code. Vyžaduje se, pokud se v žádosti o udělení autorizačního kódu použil PKCE. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Úspěšná odpověď
@@ -286,7 +333,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`        | vyžadováno     | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | vyžadováno    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
 | `grant_type`    | vyžadováno    | Musí být `refresh_token` pro tuto nožku toku autorizačního kódu. |
-| `scope`         | vyžadováno    | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina oborů požadovaných v původní nožkě authorization_code žádosti. Pokud obory zadané v tomto požadavku vynásobí více prostředků serveru, pak koncový bod platformy Microsoft Identity vrátí token pro prostředek zadaný v prvním oboru. Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
+| `scope`         | vyžadováno    | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina oborů požadovaných v původní nožkě authorization_code žádosti. Pokud obory zadané v tomto požadavku vynásobí více prostředků serveru, pak bude platforma Microsoft Identity vracet token pro prostředek zadaný v prvním oboru. Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
 | `refresh_token` | vyžadováno    | Refresh_token, kterou jste získali v druhé nožkě toku. |
 | `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Neměl by se používat v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru. Tento tajný klíč musí být kódovaný pomocí adresy URL. Další informace naleznete v tématu [Obecná specifikace syntaxe identifikátoru URI](https://tools.ietf.org/html/rfc3986#page-12). |
 

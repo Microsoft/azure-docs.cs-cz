@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: abfd5e104bd4854781a0d3c9d08544506279518a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a8f673295236d60ec6681bbfaee1201a4659674b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850079"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585703"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Sledování závislostí pomocí OpenCensus Pythonu
 
@@ -172,7 +172,7 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 * [Mapa aplikace](./app-map.md)
 * [Dostupnost](./monitor-web-app-availability.md)
-* [Vyhledávání](./diagnostic-search.md)
-* [Dotaz na protokol (Analytics)](../log-query/log-query-overview.md)
+* [Hledání](./diagnostic-search.md)
+* [Dotaz na protokol (Analytics)](../logs/log-query-overview.md)
 * [Diagnostika transakcí](./transaction-diagnostics.md)
 

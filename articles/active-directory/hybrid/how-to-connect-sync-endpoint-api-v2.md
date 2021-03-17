@@ -1,5 +1,5 @@
 ---
-title: Inverze Public Preview pro koncový bod služby Azure AD Connect Sync v2 | Microsoft Docs
+title: Koncový bod služby Azure AD Connect Sync v2 | Microsoft Docs
 description: Tento dokument popisuje aktualizace rozhraní API koncových bodů služby Azure AD Connect Sync v2.
 services: active-directory
 author: billmath
@@ -8,53 +8,43 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357575"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937600"
 ---
-# <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
+# <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
     
- -  synchronizace skupin s až 250 tisíc členy
+ - synchronizace skupin s až 250 tisíc členy
  - zisky z výkonu při exportu a importu do Azure AD
  
 > [!NOTE]
-> V současné době nový koncový bod nemá nakonfigurovanou omezení velikosti skupiny pro skupiny O365, které se zapisují zpátky. To může mít vliv na latenci služby Active Directory a synchronizaci cyklů.  Doporučuje se postupně zvyšovat velikosti skupin.  
+> V současné době nový koncový bod nemá nakonfigurovanou omezení velikosti skupiny pro Microsoft 365 skupiny, které jsou zapsány zpět. To může mít vliv na latenci služby Active Directory a synchronizaci cyklů. Doporučuje se postupně zvyšovat velikosti skupin.  
 
-
-## <a name="pre-requisites"></a>Požadavky  
+## <a name="prerequisites"></a>Požadavky  
 Aby bylo možné použít nový koncový bod v2, budete muset použít [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější a postupovat podle níže uvedených kroků nasazení a povolit koncový bod v2 pro váš Azure AD Connect Server.   
-
->[!NOTE]
->V současné době je tato verze Public Preview dostupná jenom v globálním cloudu Azure a není dostupná pro [národní](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)cloudy.
-
-### <a name="public-preview-limitations"></a>Omezení veřejné verze Preview  
-I když tato verze prošla rozsáhlým testováním, může dojít k problémům. Jedním z cílů této verze Public Preview je vyhledat a opravit takové problémy.  
-
->[!IMPORTANT]
-> I když je pro tuto verzi veřejné verze Preview k dispozici podpora, společnost Microsoft nemusí vždy řešit všechny problémy, se kterými se můžete setkat hned. Z tohoto důvodu doporučujeme, abyste před nasazením této verze v produkčním prostředí používali svůj nejlepší odhad. 
 
 ## <a name="deployment-guidance"></a>Pokyny k nasazení 
 Pro použití koncového bodu v2 budete muset nasadit [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější. Použijte odkaz určený ke stažení. 
 
-Pro zavedení nového koncového bodu ve vašem prostředí doporučujeme postupovat podle metody [migrace](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration) přístupnosti. V takovém případě bude v případě jasného pohotovostního plánu v případě nutnosti důležité vrácení zpět. Následující příklad ukazuje, jak lze v tomto scénáři použít migraci za použití. Další informace o metodě nasazení migrace po migraci najdete v zadaném odkazu. 
+Pro zavedení nového koncového bodu ve vašem prostředí doporučujeme postupovat podle metody [migrace](./how-to-upgrade-previous-version.md#swing-migration) přístupnosti. V takovém případě bude v případě jasného pohotovostního plánu v případě nutnosti důležité vrácení zpět. Následující příklad ukazuje, jak lze v tomto scénáři použít migraci za použití. Další informace o metodě nasazení migrace po migraci najdete v zadaném odkazu. 
 
 ### <a name="swing-migration-for-deploying-v2-endpoint"></a>Zapojení do migrace pro nasazení koncového bodu v2
 Následující postup vás provede nasazením koncového bodu v2 pomocí metody dráhy.
 
 1. Nasaďte koncový bod v2 na aktuální pracovní server. Tento server bude v níže uvedených krocích znám jako **Server v2** . Aktuální aktivní server bude pokračovat ve zpracování produkční úlohy pomocí koncového bodu V1, který se bude jmenovat níže na **serveru v1** .
 1. Ověřte, že **Server v2** stále zpracovává importy podle očekávání. V této fázi se velké skupiny nezřídí pro Azure AD ani on-Prem AD, ale budete moct ověřit, že upgrade nevedl k žádnému neočekávanému dopadu na stávající proces synchronizace. 
-2. Po dokončení ověření přepněte **Server v2** tak, aby byl aktivním serverem a **Server v1** jako pracovní server. V tuto chvíli budou velké skupiny, které jsou v oboru, které se mají synchronizovat, zřízené ve službě Azure AD a velké sjednocené skupiny O365 se budou zřizovat ve službě AD, pokud je povolen zpětný zápis skupiny.
+2. Po dokončení ověření přepněte **Server v2** tak, aby byl aktivním serverem a **Server v1** jako pracovní server. V tuto chvíli budou velké skupiny, které jsou v oboru, které se mají synchronizovat, zřízené ve službě Azure AD a velké Microsoft 365 sjednocené skupiny se zřídí ve službě AD, pokud je povolen zpětný zápis skupiny.
 3. Ověřte, že **Server v2** provádí a úspěšně zpracovává velké skupiny. V tomto kroku se můžete rozhodnout, že v tomto kroku budete sledovat proces synchronizace za určitou dobu.
   >[!NOTE]
-  > Pokud potřebujete přejít zpátky k předchozí konfiguraci, můžete provést migraci z **verze V2** na **Server v1**zpátky. Vzhledem k tomu, že koncový bod v1 nepodporuje skupiny s více než 50 tis členy, bude následně odstraněna jakákoli velká skupina, která byla zřízena Azure AD Connect v Azure AD nebo v Prem AD. 
+  > Pokud potřebujete přejít zpátky k předchozí konfiguraci, můžete provést migraci z **verze V2** na **Server v1** zpátky. Vzhledem k tomu, že koncový bod v1 nepodporuje skupiny s více než 50 tis členy, bude následně odstraněna jakákoli velká skupina, která byla zřízena Azure AD Connect v Azure AD nebo v Prem AD. 
 4. Jakmile budete mít jistotu, že používáte koncový bod v2, upgradujte **Server v1** a začněte používat koncový bod v2. 
  
 
@@ -116,12 +106,12 @@ K navýšení limitu členství můžete použít následující kroky:
 1. Otevřít Editor pravidel synchronizace Azure AD 
 2. V editoru vyberte **odchozí** pro směr 
 3. Klikněte na možnost **ven do AAD –** pravidlo synchronizace připojení ke skupině. 
-4. Klikněte na **Edit** tlačítko Upravit ![ Upravit pravidlo synch.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. Klikněte na  ![ snímek obrazovky pro úpravy, na kterém se zobrazí vybraná možnost zobrazit a spravovat vaše synchronizační pravidla pomocí příkazu připojit k službě AAD-Group Join.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Kliknutím na tlačítko **Ano** zakážete výchozí pravidlo a vytvoříte upravitelnou kopii.
- ![Upravit pravidlo synchronizace](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![Snímek obrazovky, na kterém se zobrazí okno Upravit potvrzení rezervovaného pravidla s vybraným tlačítkem Ano](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. V automaticky otevíraném okně na stránce **Popis** nastavte prioritu na dostupnou hodnotu v rozmezí 1 až 99 ![ Upravit pravidlo synch.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. V automaticky otevíraném okně na stránce **Popis** nastavte prioritu na dostupnou hodnotu mezi 1 a 99 snímků ![ obrazovky, která zobrazuje okno Upravit pravidlo odchozí synchronizace s zvýrazněnou prioritou.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. Na stránce **transformace** aktualizujte **zdrojovou** hodnotu pro transformaci **členů** a nahraďte hodnotu ' 50000 ' hodnotou v rozmezí 50001 až 250000. Tato náhrada zvýší maximální velikost členství skupin, které se budou synchronizovat do Azure AD. Doporučujeme začít s řadou 100 tisíc, abyste pochopili, jaký dopad synchronizace velkých skupin bude na výkon synchronizace. 
  
@@ -153,9 +143,9 @@ Během následného nárůstu na omezení počtu členů skupiny v pravidle **pr
  `Set-ADSyncSchedulerConnectorOverride -FullSyncRequired $false -ConnectorName "<AAD Connector Name>" `
  
 >[!NOTE]
-> Pokud máte sjednocené skupiny O365, které mají víc než 50 tis členové, budou se tyto skupiny číst do Azure AD Connect a pokud je povolen zpětný zápis skupiny, budou se zapisovat do místní služby AD. 
+> Pokud máte Microsoft 365 sjednocené skupiny, které mají více než 50 tis členové, budou se skupiny číst do Azure AD Connect a pokud je povolen zpětný zápis skupiny, budou zapsány do místní služby AD. 
 
-## <a name="rollback"></a>Návrat 
+## <a name="rollback"></a>Vrácení zpět 
 Pokud jste povolili koncový bod v2 a potřebujete provést vrácení zpět, postupujte takto: 
 
 1. Na serveru Azure AD Connect: a. Volitelné Pořídit zálohu databáze 
@@ -181,20 +171,12 @@ Pokud jste povolili koncový bod v2 a potřebujete provést vrácení zpět, pos
  `Set-ADSyncScheduler -SyncCycleEnabled $true`
  
 >[!NOTE]
-> Když přepnete zpátky z koncových bodů v2 na V1, po spuštění úplné synchronizace se odstraní skupiny synchronizované s více než 50 tis členy, a to pro obě skupiny služby AD zřízené na služby Azure AD a O365 sjednocené skupiny zřízené pro AD. 
+> Když přepnete zpátky z koncových bodů v2 na V1, skupiny synchronizované s více než 50 tis členy se po spuštění úplné synchronizace odstraní pro obě skupiny AD zřízené na Azure AD a Microsoft 365 sjednocené skupiny zřízené pro AD. 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy  
-**Otázka: může zákazník použít tuto funkci v produkčním prostředí?**  
-</br>Ano, tato možnost se dá použít v produkčním prostředí s upozorněním, jak je uvedeno výše.
  
-**Otázka: kdo může kontaktovat zákazníka, když se něco pokazilo?**  
-</br>Pokud potřebujete podporu při používání této funkce, měli byste otevřít případ podpory. 
- 
-**Otázka: je možné očekávat časté aktualizace verze Public Preview?**  
-</br>Během Public Preview existuje omezená míra probíhajících změn.Toto riziko byste měli vyhodnotit při nasazování Public Previewch funkcí v produkčním prostředí.  
- 
-**Otázka: čas do dalšího milníku?**  
-</br>Je možné, že se funkce Public Preview před dalším milníkem odeberou a případně přenavrhují.  
+**Kdy se nový koncový bod stane výchozím nastavením pro upgrady a nové instalace?**  
+</br>Plánujeme nové vydání AADConnect pro publikování ke stažení v únoru 2021. Tato verze ve výchozím nastavení použije koncový bod v2 a umožní synchronizaci skupin větších než 50 tis bez jakékoli další konfigurace. Tato verze bude následně publikována pro automatický upgrade na opravňující servery.
  
 ## <a name="next-steps"></a>Další kroky
 

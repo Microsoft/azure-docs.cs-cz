@@ -6,8 +6,6 @@
       href: overview.md
     - name: 'Informace o klíčích, tajných kódech a certifikátech'
       href: about-keys-secrets-certificates.md
-    - name: Co je nového
-      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -25,6 +23,10 @@
           href: tutorial-net-virtual-machine.md
         - name: Použití služby Azure Key Vault s virtuálním počítačem v Pythonu
           href: tutorial-python-virtual-machine.md
+    - name: Azure App Service
+      items:
+        - name: Použití služby Azure Key Vault s webovou aplikací v .NET
+          href: tutorial-net-create-vault-azure-web-app.md
     - name: Azure Kubernetes Service
       items:
         - name: Integrace služby Azure Key Vault s protokolem Kubernetes
@@ -33,38 +35,38 @@
       items:
         - name: Přístup ke službě Azure Blob Storage s využitím služeb Azure Databricks a Azure Key Vault
           href: integrate-databricks-blob-storage.md
-    - name: Připojení Key Vaultu k webové aplikaci se spravovanou identitou a .NET
-      href: tutorial-net-create-vault-azure-web-app.md
 - name: ukázky
   items:
     - name: Ukázky kódu pro službu Key Vault
-      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+      href: /samples/browse/?expanded=azure&products=azure-key-vault
 - name: Koncepty
   items:
     - name: Základní koncepty
       href: basic-concepts.md
+    - name: Osvědčené postupy
+      href: best-practices.md
     - name: Zabezpečení
       items:
-        - name: Zabezpečení služby Azure Key Vault
-          href: overview-security.md
-        - name: Osvědčené postupy při používání služby Key Vault –⁠ Azure Key Vault
-          href: best-practices.md
-        - name: Světy zabezpečení služby Azure Key Vault
+        - name: Přehled
+          href: security-overview.md
+        - name: Zabezpečení přístupu k trezoru klíčů
+          href: secure-your-key-vault.md
+        - name: Základy ověřování služby Key Vault
+          href: authentication-fundamentals.md
+        - name: Světy zabezpečení a geografické hranice
           href: overview-security-worlds.md
         - name: Zabezpečení sítě
           href: network-security.md
-        - name: Zabezpečený přístup k trezoru klíčů –⁠ Azure Key Vault
-          href: secure-your-key-vault.md
         - name: Standardní hodnoty zabezpečení Azure pro službu Key Vault
           href: security-baseline.md
-        - name: Doporučení k zabezpečení služby Azure Key Vault
-          href: security-recommendations.md
-    - name: Oznámení (Preview)
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+    - name: Protokolování v Azure Key Vaultu
+      href: logging.md
+    - name: Oznámení
       items:
-        - name: Monitorování pomocí služby Azure Event Grid (Preview)
+        - name: Monitorování pomocí služby Azure Event Grid
           href: event-grid-overview.md
     - name: Obnovitelné odstranění
       items:
@@ -78,56 +80,66 @@
       href: overview-throttling.md
     - name: Dostupnost a redundance služby Azure Key Vault
       href: disaster-recovery-guidance.md
-    - name: Koncové body služby Azure Key Vault pro virtuální síť –⁠ Azure Key Vault
+    - name: Koncové body služby Azure Key Vault pro virtuální síť
       href: overview-vnet-service-endpoints.md
 - name: Návody
   items:
-    - name: Ověření
+    - name: Ověřování a autorizace
       items:
         - name: Ověřování pro Key Vault
           href: authentication.md
-        - name: Použití spravované identity služby App Service
-          href: managed-identity.md
-        - name: Použití zásad řízení přístupu
-          href: group-permissions-for-apps.md
+        - name: Přiřazení zásad přístupu
+          items:
+            - name: Rozhraní příkazového řádku
+              href: assign-access-policy-cli.md
+            - name: PowerShell
+              href: assign-access-policy-powershell.md
+            - name: Portál
+              href: assign-access-policy-portal.md
+        - name: Model oprávnění Azure RBAC
+          items:
+            - name: 'Použití služby Azure RBAC ke správě přístupu ke klíčům, tajným klíčům a certifikátům'
+              href: rbac-guide.md
+            - name: Průvodce migrací zásad přístupu k trezoru na Azure RBAC
+              href: rbac-migration.md
         - name: Řešení potíží s přístupem
           href: troubleshooting-access-issues.md
     - name: Vývoj
       items:
         - name: Průvodce vývojáře pro službu Azure Key Vault
           href: developers-guide.md
-        - name: Uložení tajných kódů webové aplikace
-          href: vs-secure-secret-appsettings.md
-        - name: Ověřování služba-služba s využitím .NET
-          href: service-to-service-authentication.md
+        - name: Použití Azure Resource Manager k nasazení služby Key Vault
+          href: vault-create-template.md
         - name: Používání připojené služby Key Vault
           href: vs-key-vault-add-connected-service.md
     - name: Monitorování a řízení
       items:
-        - name: Konfigurace monitorování a upozorňování pro Azure Key Vault
+        - name: Oznámení Event Gridu
+          items:
+            - name: Příjem oznámení prostřednictvím služby Logic Apps
+              href: event-grid-logicapps.md
+            - name: Příjem oznámení prostřednictvím služby Azure Automation
+              href: event-grid-tutorial.md
+        - name: Povolit protokolování
+          href: howto-logging.md
+        - name: Konfigurace monitorování a upozorňování pro Azure Key Vault s využitím Azure Monitoru
           href: alert.md
+        - name: Správa obnovení s ochranou před vymazáním a obnovitelným odstraněním
+          href: key-vault-recovery.md
         - name: Integrace služby Azure Key Vault se službou Azure Policy
           href: azure-policy.md
-        - name: Protokolování v Azure Key Vaultu
-          href: logging.md
-        - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Logic Apps
-          href: event-grid-logicapps.md
-        - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Azure Automation
-          href: event-grid-tutorial.md
         - name: Zálohování jednotlivých objektů Key Vaultu
           href: backup.md
     - name: Zabezpečení
       items:
-        - name: Integrace se službou Azure Private Link
-          href: private-link-service.md
-        - name: Přístup ke službě Key Vault za bránou firewall –⁠ Azure Key Vault
+        - name: Azure Private Link
+          items:
+            - name: Integrace se službou Azure Private Link
+              href: private-link-service.md
+            - name: Diagnostika potíží s konfigurací služeb Private Link
+              href: private-link-diagnostics.md
+        - name: Přístup ke Key Vaultu za bránou firewall
           href: access-behind-firewall.md
-    - name: Obnovitelné odstranění
-      items:
-        - name: Použití obnovitelného odstranění v rozhraní příkazového řádku
-          href: soft-delete-cli.md
-        - name: Použití obnovitelného odstranění v PowerShellu
-          href: soft-delete-powershell.md
     - name: Přesun Key Vaultu
       items:
         - name: Přesun Key Vaultu do jiné skupiny prostředků
@@ -138,31 +150,38 @@
           href: move-region.md
 - name: Referenční informace
   items:
+    - name: Co je nového
+      href: whats-new.md
     - name: Klientské knihovny
       href: client-libraries.md
-    - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault
+    - name: Kódy chyb rozhraní REST API
       href: rest-error-codes.md
+    - name: Běžné kódy chyb
+      href: common-error-codes.md
     - name: Běžné parametry a záhlaví
       href: common-parameters-and-headers.md
     - name: Verze Key Vaultu
       href: versions.md
     - name: Azure PowerShell
-      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
+      href: /powershell/module/az.keyvault/#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
+      href: /dotnet/api/overview/azure/key-vault
     - name: Java
-      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+      href: /java/api/overview/azure/keyvault
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest'
+      href: /javascript/api/overview/azure/key-vault-index
     - name: Python
-      href: /python/api/overview/azure/keyvault/management?view=azure-python
+      href: /python/api/overview/azure/key-vault-index
     - name: REST
       href: /rest/api/keyvault
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn
@@ -180,6 +199,6 @@
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=key-vault'
     - name: Blog
-      href: 'https://blogs.technet.com/b/kv/'
+      href: /archive/blogs/kv/
     - name: Zpětná vazba k produktu
       href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

@@ -4,12 +4,12 @@ description: Tento článek vysvětluje, jak odložit doručování Azure Servic
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511275"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622041"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
@@ -26,7 +26,7 @@ Jednoduchým ilustrativním příkladem je pořadí zpracování objednávky, ve
 
 ## <a name="message-deferral-apis"></a>Rozhraní API pro odložení zpráv
 
-Rozhraní API je [BrokeredMessage. odklad](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) nebo [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) v klientovi .NET Framework, [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) v klientovi .NET Standard a [IMessageReceiver. pozdržet](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) nebo [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) v klientovi Java. 
+Rozhraní API je [BrokeredMessage. odklad](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) nebo [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) v klientovi .NET Framework, [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) v klientovi .NET Standard a [IMessageReceiver. pozdržet](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer) nebo [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync) v klientovi Java. 
 
 Odložené zprávy zůstávají v hlavní frontě společně se všemi ostatními aktivními zprávami (na rozdíl od zpráv s nedoručenými zprávami, které jsou v podfrontě uložené), ale už se nedají přijímat pomocí běžných funkcí Receive/metody ReceiveAsync. Odložené zprávy lze zjistit pomocí [procházení zpráv](message-browsing.md) , pokud aplikace ztratí jejich sledování.
 

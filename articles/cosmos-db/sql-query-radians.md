@@ -3,18 +3,21 @@ title: RADIÁNy v Azure Cosmos DB dotazovacího jazyka
 description: Přečtěte si o systémových funkcích SQL RADIÁNech v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6eaff5abd8c10aa90b89a54cd48281ba8ec09dc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302232"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341667"
 ---
 # <a name="radians-azure-cosmos-db"></a>RADIÁNy (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí radiány při zadání číselného výrazu ve stupních.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -60,4 +63,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Matematické funkce Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -3,19 +3,19 @@ title: Osvědčené postupy při používání rozhraní API Detektoru anomáli�
 titleSuffix: Azure Cognitive Services
 description: Seznamte se s osvědčenými postupy při detekci anomálií pomocí rozhraní API detektoru anomálií.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: aahi
-ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 01/22/2021
+ms.author: mbullwin
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67721619"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936206"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Osvědčené postupy pro používání rozhraní API detektoru anomálií
 
@@ -25,7 +25,7 @@ Rozhraní API pro detekci anomálií je Bezstavová služba pro detekci anomáli
 * Použité parametry rozhraní API detektoru anomálií.
 * Počet datových bodů v žádosti rozhraní API. 
 
-V tomto článku se seznámíte s osvědčenými postupy pro používání rozhraní API, které získává nejlepší výsledky pro vaše data. 
+V tomto článku se seznámíte s osvědčenými postupy pro používání rozhraní API k získání nejlepších výsledků pro vaše data. 
 
 ## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Kdy použít detekci anomálií (celý) nebo nejnovější (poslední) bod dávky
 
@@ -52,7 +52,7 @@ Níže je stejná datová sada používající detekci anomálií v dávce. Mode
 
 ## <a name="data-preparation"></a>Příprava dat
 
-Rozhraní API detektoru anomálií akceptuje data časové řady formátovaná do objektu žádosti JSON. Časová řada může být jakákoli číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odesílat okna dat časových řad do koncového bodu rozhraní API detektoru anomálií, aby se zlepšil výkon rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximum je 8640 bodů. [Členitost](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definována jako sazba, na kterou jsou data Navzorkovaná. 
+Rozhraní API detektoru anomálií akceptuje data časové řady formátovaná do objektu žádosti JSON. Časová řada může být jakákoli číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odesílat okna dat časových řad do koncového bodu rozhraní API detektoru anomálií, aby se zlepšil výkon rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximum je 8640 bodů. [Členitost](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity) je definována jako sazba, na kterou jsou data Navzorkovaná. 
 
 Datové body odesílané do rozhraní API detektoru anomálií musí mít platný koordinovaný světový čas (UTC) a číselnou hodnotu. 
 
@@ -93,9 +93,9 @@ Rozhraní API pro detekci anomálií funguje nejlépe u rovnoměrně distribuova
 
 Pokud víte, že vaše data časové řady mají sezónní vzor (k tomu dochází v pravidelných intervalech), můžete zlepšit přesnost a dobu odezvy rozhraní API. 
 
-Určení `period` při vytváření požadavku JSON může snížit latenci detekce anomálií až o 50%. `period` Je celé číslo, které určuje zhruba počet datových bodů, které časová řada potřebuje k opakování vzoru. Například časová řada s jedním datovým bodem za den bude `period` mít jako `7`a časová řada s jedním bodem za hodinu (se stejným týdenním vzorem) by `period` měla. `7*24` Pokud si nejste jisti vzorem vašich dat, nemusíte tento parametr zadávat.
+Určení `period` při vytváření požadavku JSON může snížit latenci detekce anomálií až o 50%. `period`Je celé číslo, které určuje zhruba počet datových bodů, které časová řada potřebuje k opakování vzoru. Například časová řada s jedním datovým bodem za den bude mít `period` jako `7` a časová řada s jedním bodem za hodinu (se stejným týdenním vzorem) by měla `period`  `7*24` . Pokud si nejste jisti vzorem vašich dat, nemusíte tento parametr zadávat.
 
-Nejlepších výsledků dosáhnete, když `period`zadáte 4 pro datový bod a navíc ještě další. Například hodinová data s týdenním vzorem, jak je popsáno výše, by měla v textu žádosti (`7 * 24 * 4 + 1`) poskytnout 673 datových bodů.
+Nejlepších výsledků dosáhnete, když zadáte čtyři `period` množství datových bodů, a navíc ještě další. Například hodinová data s týdenním vzorem, jak je popsáno výše, by měla v textu žádosti () poskytnout 673 datových bodů `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Vzorkování dat pro sledování v reálném čase
 
@@ -104,4 +104,4 @@ Pokud jsou vaše streamovaná data vzorkovat v krátkém intervalu (například 
 ## <a name="next-steps"></a>Další kroky
 
 * [Co je rozhraní API Detektoru anomálií?](../overview.md)
-* [Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií](../quickstarts/detect-data-anomalies-csharp.md)
+* [Rychlý Start: zjištění anomálií v datech časových řad pomocí detektoru anomálií](../quickstarts/client-libraries.md)

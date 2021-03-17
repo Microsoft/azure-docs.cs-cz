@@ -6,19 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: babd7c1dcae9d83af1f6c41e756b663d92d6d486
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70101260"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677116"
 ---
 # <a name="disaster-recovery-principles"></a>Principy zotavení po havárii
 
@@ -68,7 +68,7 @@ Dalším krokem je instalace druhé instance SAP HANA na velké jednotce instanc
 - Zastavte nově nainstalovanou instanci SAP HANA na jednotce velkých instancí HANA v oblasti Azure DR.
 - Odpojte tyto svazky PRD a obraťte se SAP HANA na správu služeb Azure. Svazky nemůžou zůstat připojené k jednotce, protože nemůžou být dostupné, když budou fungovat jako cíl replikace úložiště.  
 
-![Krok instalace DR před vytvořením replikace](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Diagram, který zobrazuje vztah replikace mezi PRD svazky v produkční oblasti Azure a PRD svazky v oblasti Azure DR.](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 Provozní tým vytvoří vztah replikace mezi PRD svazky v produkční oblasti Azure a PRD svazky v oblasti Azure DR.
 
@@ -77,7 +77,7 @@ Provozní tým vytvoří vztah replikace mezi PRD svazky v produkční oblasti A
 
 V dalším kroku nastavte nebo upravte plán zálohování snímků úložiště, abyste se dostali k vašemu RTO a RPO v případě havárie. Chcete-li minimalizovat cíl bodu obnovení, nastavte následující intervaly replikace ve službě velká instance HANA:
 - Pro svazky zahrnuté do kombinovaného snímku (typ snímku **Hana**) nastavte hodnotu replikovat každých 15 minut na ekvivalentní cíle svazku úložiště na webu pro zotavení po havárii.
-- Pro svazek zálohy protokolu transakcí ( **protokoly**typu snímku) nastavte na hodnotu replikovat každé 3 minuty na ekvivalentní cíle svazku úložiště v lokalitě pro obnovení po havárii.
+- Pro svazek zálohy protokolu transakcí ( **protokoly** typu snímku) nastavte na hodnotu replikovat každé 3 minuty na ekvivalentní cíle svazku úložiště v lokalitě pro obnovení po havárii.
 
 Chcete-li minimalizovat cíl bodu obnovení, nastavte následující:
 - Proveďte snímek úložiště typu **Hana** (viz "krok 7: provádět snímky") každých 30 minut až 1 hodinu.

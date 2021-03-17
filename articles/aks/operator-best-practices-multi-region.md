@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653992"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976397"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -113,16 +113,13 @@ Vaše aplikace mohou používat Azure Storage pro svá data. Vzhledem k tomu, ž
 
 Vaše aplikace můžou vyžadovat trvalé úložiště i po odstranění pod. V Kubernetes můžete použít trvalé svazky k trvalému ukládání dat. Trvalé svazky jsou připojené k virtuálnímu počítači uzlu a pak jsou vystavené pro lusky. Trvalé svazky následují po částech, a to i v případě, že se lusky přesunou do jiného uzlu ve stejném clusteru.
 
-Použitá strategie replikace závisí na řešení úložiště. Běžná řešení úložiště, jako jsou [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [věž](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)a [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) , poskytují vlastní pokyny pro zotavení po havárii a replikaci.
+Použitá strategie replikace závisí na řešení úložiště. Běžná řešení úložiště, jako jsou [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [věž](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)a [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) , poskytují vlastní pokyny pro zotavení po havárii a replikaci.
 
 Typickou strategií je poskytnout společný bod úložiště, ve kterém můžou aplikace zapisovat svá data. Tato data se pak replikují do různých oblastí a pak se k nim přistupovala místně.
 
 ![Asynchronní replikace na základě infrastruktury](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Pokud používáte Azure Managed Disks, můžete zvolit následující řešení pro replikaci a zotavení po havárii:
-
-* [Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Backup](../backup/backup-overview.md)
+Pokud používáte Azure Managed Disks, máte k dispozici několik možností pro zpracování replikace a zotavení po havárii. [Velero v Azure][velero] a [Kasten][kasten] zálohují řešení nativní na Kubernetes, ale nejsou podporovaná.
 
 ### <a name="application-based-asynchronous-replication"></a>Asynchronní replikace založená na aplikaci
 
@@ -140,3 +137,6 @@ Tento článek se zaměřuje na požadavky na provozní kontinuitu a zotavení p
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/

@@ -1,14 +1,16 @@
 ---
 title: 'Kurz: předpověď záměrů – LUIS'
 description: Vytvořte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text) v tomto kurzu.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 04ba7dc79deef2dbad12c3f65a324201d3e9f598
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959855"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612758"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace v LUIS pro určení záměrů uživatele
 
@@ -55,7 +57,7 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
 
 1. Do tohoto záměru přidejte několik příkladů projevy, u kterých očekáváte, že se uživatel zeptá:
 
-    |`OrderPizza`Příklad projevy|
+    |`OrderPizza` Příklad projevy|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -67,7 +69,7 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s přidáním ukázkového projevyu na stránce záměru LUIS na portálu](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Poskytnutím _ukázkového projevyu_Luis informace o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. Tyto příklady jsou pozitivní. Projevy ve všech ostatních záměrech se pro tento záměr považují za negativní příklady.
+    Poskytnutím _ukázkového projevyu_ Luis informace o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. Tyto příklady jsou pozitivní. Projevy ve všech ostatních záměrech se pro tento záměr považují za negativní příklady.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -75,7 +77,7 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
 
 1. Vytvořte `Greeting` záměr a přidejte následující příklad projevy. Účelem je určit, jestli uživatel začíná novou konverzaci v Pizza pořadí.
 
-    |`Greeting`Příklad projevy|
+    |`Greeting` Příklad projevy|
     |--|
     |`Hi`|
     |`Hello`|
@@ -85,7 +87,7 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
 
 1. Vytvořte `Confirm` záměr a přidejte následující příklad projevy. Cílem je zjistit, jestli je uživatel hotový, a přijmout podrobnosti objednávky.
 
-    |`Confirm`Příklad projevy|
+    |`Confirm` Příklad projevy|
     |--|
     |`Go ahead`|
     |`ok`|
@@ -191,7 +193,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 * [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování na portálu LUIS](luis-interactive-test.md)
-* [Robot Azure bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Robot Azure bot](/azure/bot-service/)
 
 
 ## <a name="next-steps"></a>Další kroky

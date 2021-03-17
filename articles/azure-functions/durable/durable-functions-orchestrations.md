@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033638"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845429"
 ---
 # <a name="durable-orchestrations"></a>Trvalé orchestrace
 
@@ -51,7 +51,7 @@ Když je funkce orchestrace předána více práce (například přijetí zpráv
 > Aby model opětovného přehrávání fungoval správně a spolehlivě, musí být kód funkce Orchestrator *deterministický*. Další informace o omezeních kódu pro funkce nástroje Orchestrator naleznete v tématu [omezení kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md) .
 
 > [!NOTE]
-> Pokud funkce Orchestrator vygeneruje zprávy protokolu, chování při opakovaném přehrávání může způsobit vygenerování duplicitních zpráv protokolu. V tématu [protokolování](durable-functions-diagnostics.md#logging) najdete další informace o tom, proč k tomuto chování dochází a jak ho obejít.
+> Pokud funkce Orchestrator vygeneruje zprávy protokolu, chování při opakovaném přehrávání může způsobit vygenerování duplicitních zpráv protokolu. V tématu [protokolování](durable-functions-diagnostics.md#app-logging) najdete další informace o tom, proč k tomuto chování dochází a jak ho obejít.
 
 ## <a name="orchestration-history"></a>Historie orchestrace
 
@@ -293,7 +293,7 @@ Není možné předat více parametrů funkci Activity přímo. Doporučení je 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-V rozhraní .NET můžete také použít objekty [ValueTuples](/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuples](/dotnet/csharp/tuples) přidané v [jazyce C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
+V rozhraní .NET můžete také použít objekty [ValueTuple](/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuple](/dotnet/csharp/tuples) přidané v [jazyce C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -348,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="getweather-activity"></a>`GetWeather`Akce
+#### <a name="getweather-activity"></a>`GetWeather` Akce
 
 ```javascript
 module.exports = async function (context, location) {
@@ -376,7 +376,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     # ...
 
 ```
-#### <a name="getweather-activity"></a>`GetWeather`Akce
+#### <a name="getweather-activity"></a>`GetWeather` Akce
 
 ```python
 from collections import namedtuple

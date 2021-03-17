@@ -17,11 +17,27 @@
     - name: 'Detekce pohybu, nahrávání videa do Media Services'
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: Detekce pohybu a generování událostí
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: S využitím volání přímých metod
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: 'Detekce pohybu, nahrávání videa na hraničních zařízeních'
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: Spuštění analýzy živého videa s využitím vlastního modelu
-      href: use-your-model-quickstart.md
+      items:
+        - name: S využitím volání přímých metod
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Analýza živého videa s využitím vlastního modelu
+      items:
+        - name: s rozšířením HTTP
+          items:
+            - name: S využitím volání přímých metod
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: s rozšířením gRPC
+          items:
+            - name: S využitím volání přímých metod
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: Kurzy
   items:
     - name: Nepřetržité nahrávání videa
@@ -35,14 +51,30 @@
         - name: S využitím OVMS přes rozšíření HTTP
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: S OV DL načtení proudu ImageList přes rozšíření gRPC
+          displayName: 'intel, OpenVINO DL Streamer'
+          href: use-intel-grpc-vas-tutorial.md
+        - name: Použití Custom Vision
+          href: custom-vision-tutorial.md
+        - name: Použití prostorové analýzy
+          href: spatial-analysis-tutorial.md
 - name: ukázky
   items:
-    - name: Ukázky v C# pro analýzu živého videa ve službě IoT Edge
+    - name: Ukázky přímých metod v C#
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Ukázky pro C# SDK
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
+    - name: Ukázky přímých metod v Pythonu
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Ukázky Python SDK
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: Koncepty
   items:
     - name: Graf médií
       href: media-graph-concept.md
+    - name: Rozšíření grafu médií
+      displayName: AI
+      href: media-graph-extension-concept.md
     - name: Záznam videa
       href: video-recording-concept.md
     - name: Přehrávání videa
@@ -61,20 +93,34 @@
       href: create-custom-azure-resource-manager-role-how-to.md
     - name: Nasazení do zařízení IoT Edge
       href: deploy-iot-edge-device.md
+    - name: Nasazení na IoT Edge pro Linux ve Windows
+      href: deploy-iot-edge-linux-on-windows.md
     - name: Monitorování a protokolování
       href: monitoring-logging.md
     - name: Přehrávání záznamu
       href: playback-recordings-how-to.md
     - name: Správa zásad nahrávání
       href: manage-recording-policy-how-to.md
-    - name: Analýza živého videa s využitím AI dle vašeho výběru
-      href: analyze-with-ai-your-choice-how-to.md
     - name: Vyvolání přímých metod s využitím portálu
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: Nasazení na Azure Stack Edge
+      href: deploy-azure-stack-edge-how-to.md
+    - name: Konfigurace brány pro signály
+      href: configure-signal-gate-how-to.md
     - name: Řešení potíží
       href: troubleshoot-how-to.md
+    - name: Upgrade
+      href: upgrading-lva-module.md
+    - name: Vývoj a nasazení odvozovacího serveru gRPC
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: Referenční informace
   items:
+    - name: Protokol rozšíření HTTP
+      href: http-extension-protocol.md
+    - name: Protokol rozšíření gRPC
+      href: grpc-extension-protocol.md
+    - name: Schéma odvozování metadat
+      href: inference-metadata-schema.md
     - name: Přímé metody
       href: direct-methods.md
     - name: Schéma konfigurace dvojčat modulů
@@ -85,3 +131,11 @@
       href: faq.md
     - name: Připravenost na produkční prostředí a osvědčené postupy
       href: production-readiness.md
+    - name: Zásady transparentnosti a zodpovědné umělé inteligence
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'

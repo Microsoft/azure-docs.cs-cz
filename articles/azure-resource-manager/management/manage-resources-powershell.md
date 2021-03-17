@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 10f8c2a17c161d7e5622636b08b524932defe451
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ce3b1d9f8d01e722e4ec5078d92ef4148072da25
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826870"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185738"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Správa prostředků Azure pomocí Azure PowerShell
 
@@ -63,7 +63,7 @@ Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny. Dalš�
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Nasazení prostředků do více předplatných nebo skupin prostředků
 
-Obvykle se všechny prostředky v šabloně nasazují do jedné skupiny prostředků. Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete v tématu [nasazení prostředků Azure do několika předplatných nebo skupin prostředků](../templates/cross-scope-deployment.md).
+Obvykle se všechny prostředky v šabloně nasazují do jedné skupiny prostředků. Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete v tématu [nasazení prostředků Azure do několika předplatných nebo skupin prostředků](../templates/deploy-to-resource-group.md).
 
 ## <a name="delete-resources"></a>Odstranění prostředků
 
@@ -133,7 +133,7 @@ Označení pomáhá organizovat skupinu prostředků a prostředky logicky. Info
 
 ## <a name="manage-access-to-resources"></a>Správa přístupu k prostředkům
 
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

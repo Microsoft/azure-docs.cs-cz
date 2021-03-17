@@ -3,23 +3,24 @@ title: 'Kurz: Vytvoření aplikace pro překlad pomocí WPF, C# – translatoru'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci WPF, která provede překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.author: lajanuar
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728004"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace pro překlad pomocí WPF
 
-V tomto kurzu sestavíte aplikaci [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) , která používá Azure Cognitive Services pro překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného. Konkrétně vaše aplikace bude volat rozhraní API z překladatele a [Kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/).
+V tomto kurzu sestavíte aplikaci [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf) , která používá Azure Cognitive Services pro překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného. Konkrétně vaše aplikace bude volat rozhraní API z překladatele a [Kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
 Co je WPF (Windows Presentation Foundation)? Jedná se o architekturu uživatelského rozhraní, která vytváří klientské aplikace pro stolní počítače. Vývojová platforma WPF podporuje širokou škálu funkcí pro vývoj aplikací, včetně modelu aplikace, prostředků, ovládacích prvků, grafiky, rozložení, datových vazeb, dokumentů a zabezpečení. Je to podmnožina .NET Framework, takže pokud jste dříve vytvořili aplikace s .NET Framework pomocí ASP.NET nebo model Windows Forms, je vhodné seznámit se s programováním v prostředí. WPF používá jazyk XAML (Extensible App Markup Language) k poskytnutí deklarativního modelu pro programování aplikací, který si projdeme v nadcházejících částech.
 
@@ -39,16 +40,16 @@ Tento seznam obsahuje Cognitive Services používané v tomto kurzu. Postupujte 
 
 | Služba | Funkce | Popis |
 |---------|---------|-------------|
-| Translator | [Získat jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Načte Úplný seznam podporovaných jazyků pro překlad textu. |
-| Translator | [Posunut](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Přeloží text na více než 70 jazyků. |
-| Translator | [Zjišťování](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Rozpoznávání jazyka vstupního textu. Zahrnuje hodnocení spolehlivosti pro detekci. |
-| Kontrola pravopisu Bingu | [Kontrola pravopisu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Opravte chyby pravopisu, aby se zlepšila přesnost překladu. |
+| Translator | [Získat jazyky](./reference/v3-0-languages.md) | Načte Úplný seznam podporovaných jazyků pro překlad textu. |
+| Translator | [Posunut](./reference/v3-0-translate.md) | Přeloží text na jazyky a dialekty 90. |
+| Translator | [Soustavy](./reference/v3-0-detect.md) | Rozpoznávání jazyka vstupního textu. Zahrnuje hodnocení spolehlivosti pro detekci. |
+| Kontrola pravopisu Bingu | [Kontrola pravopisu](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Opravte chyby pravopisu, aby se zlepšila přesnost překladu. |
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než budeme pokračovat, budete potřebovat následující:
 
-* Předplatné Azure Cognitive Services. [Získat Cognitive Services klíč](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
+* Předplatné Azure Cognitive Services. [Získat Cognitive Services klíč](../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).
 * Počítač s Windows
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) – Community nebo Enterprise
 
@@ -60,8 +61,8 @@ Než budeme pokračovat, budete potřebovat následující:
 První věc, kterou je potřeba udělat, je nastavit náš projekt v sadě Visual Studio.
 
 1. Otevřete sadu Visual Studio. Vyberte **vytvořit nový projekt**.
-1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **aplikace WPF (.NET Framework)**. Můžete vybrat C# z **jazyka** a zúžit tak možnosti.
-1. Vyberte **Další**a potom název projektu `MSTranslatorDemo` .
+1. V nástroji **vytvořit nový projekt** vyhledejte a vyberte **aplikace WPF (.NET Framework)**. Můžete vybrat C# z **jazyka** a zúžit tak možnosti.
+1. Vyberte **Další** a potom název projektu `MSTranslatorDemo` .
 1. Nastavte verzi Frameworku na **.NET Framework 4.7.2** nebo novější a vyberte **vytvořit**.
    ![Zadejte název a verzi rozhraní v aplikaci Visual Studio.](media/name-wpf-project-visual-studio.png)
 
@@ -82,14 +83,14 @@ Pojďme do našeho projektu přidat sestavení k serializaci a deserializaci obj
 1. Na kartě **sestavení** jsou uvedena všechna .NET Framework sestavení, která jsou k dispozici pro referenci. K vyhledání odkazů použijte panel hledání v pravém horním rohu.
    ![Přidat odkazy na sestavení](media/add-assemblies-2019.png)
 1. Vyberte následující odkazy pro váš projekt:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Runtime.Serialization](/dotnet/api/system.runtime.serialization)
+   * [System.Web](/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System. Windows](/dotnet/api/system.windows)
 1. Po přidání těchto odkazů do projektu můžete kliknutím na tlačítko **OK** zavřít **Správce odkazů**.
 
 > [!NOTE]
-> Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [Postup: Přidání nebo odebrání odkazu pomocí Správce odkazů](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [Postup: Přidání nebo odebrání odkazu pomocí Správce odkazů](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager).
 
 ### <a name="install-newtonsoftjson"></a>Nainstalovat NewtonSoft.Jsna
 
@@ -263,12 +264,12 @@ Nakonec jsme přidali kód pro volání metod pro načtení jazyků pro překlad
 
 ## <a name="get-supported-languages"></a>Zjištění podporovaných jazyků
 
-Překladatel aktuálně podporuje více než 70 jazyků. Vzhledem k tomu, že se nová jazyková podpora přidá v průběhu času, doporučujeme, abyste místo zakódujeme seznamu jazyků ve vaší aplikaci zavolali prostředek jazyků vystavený překladatelem.
+Překladatel aktuálně podporuje jazyky a dialekty 90. Vzhledem k tomu, že se nová jazyková podpora přidá v průběhu času, doporučujeme, abyste místo zakódujeme seznamu jazyků ve vaší aplikaci zavolali prostředek jazyků vystavený překladatelem.
 
 V této části vytvoříme `GET` požadavek na prostředek jazyků a určíme, že chceme seznam jazyků dostupných pro překlad.
 
 > [!NOTE]
-> Prostředek jazyky umožňuje filtrovat jazykovou podporu pomocí následujících parametrů dotazu: převádění, slovníku a překladu. Další informace najdete v tématu [Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Prostředek jazyky umožňuje filtrovat jazykovou podporu pomocí následujících parametrů dotazu: převádění, slovníku a překladu. Další informace najdete v tématu [Reference k rozhraní API](./reference/v3-0-languages.md).
 
 Než budeme pokračovat, Pojďme se podívat na ukázkový výstup pro volání do prostředku jazyky:
 
@@ -580,4 +581,4 @@ Zdrojový kód pro tento projekt je k dispozici na GitHubu.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Reference k Microsoft translatoru](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Reference k Microsoft translatoru](./reference/v3-0-reference.md)

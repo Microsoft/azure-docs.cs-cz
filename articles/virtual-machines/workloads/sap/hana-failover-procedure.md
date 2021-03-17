@@ -6,19 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a33340524556f5da1703cae3532f053fbe8ba13
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83660578"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670988"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Postup převzetí služeb při selhání pro zotavení po havárii
 
@@ -104,7 +104,7 @@ Navrácení služeb po obnovení z programu zotavení po havárii do provozní l
 
 V lokalitě pro obnovení po havárii jste provozoval provozní úlohy SAP pro určitou dobu. V případě, že jsou problémy v produkčním webu vyřešeny, budete chtít provést navrácení služeb po obnovení do produkčního webu. Vzhledem k tomu, že nemůžete přijít o data, krok zpátky do produkční lokality zahrnuje několik kroků a uzavře spolupráci s SAP HANA v rámci Azure Operations Team. Můžete aktivovat provozní tým, aby po vyřešení problémů zahájil synchronizaci zpět do produkční lokality.
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Služba SAP HANA v rámci Azure Operations Team získá Trigger, který synchronizuje úložné svazky úložiště od svazků úložiště pro zotavení po havárii, které teď reprezentují stav výroby. V tomto stavu je jednotka velkých instancí HANA v produkčním webu vypnutá.
 1. SAP HANA v Azure Operations týmu sleduje replikaci a zajišťuje, aby se zachytila předtím, než vás informují.

@@ -1,19 +1,16 @@
 ---
 title: Použití Apache Maven k vytvoření klienta Java HBA pro Azure HDInsight
 description: Naučte se používat Apache Maven k vytváření aplikací Apache HBA založených na jazyce Java a pak ji nasadit do HBA v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323770"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942956"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Java pro Apache HBA
 
@@ -25,13 +22,13 @@ Kroky v tomto dokumentu používají [Apache Maven](https://maven.apache.org/) k
 
 * Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](./apache-hbase-tutorial-get-started-linux.md).
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 
 * Textový editor Tento článek používá program Poznámkový blok společnosti Microsoft.
 
@@ -103,7 +100,7 @@ V této části je uvedeno, že projekt potřebuje komponenty **HBA-Client** a *
 | Verze clusteru HDInsight | Verze Apache HBA, které se mají použít |
 | --- | --- |
 | 3,6 | 1.1.2 |
-| 4.0 | 2.0.0 |
+| 4,0 | 2.0.0 |
 
 Další informace o verzích a součástech služby HDInsight najdete v tématu [co jsou různé Apache Hadoop komponenty dostupné v HDInsight](../hdinsight-component-versioning.md).
 
@@ -415,7 +412,7 @@ Následující postup slouží `scp` ke zkopírování jar do primárního hlavn
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    Tento příkaz vytvoří tabulku HBA s názvem **lidé**a naplní ji daty.
+    Tento příkaz vytvoří tabulku HBA s názvem **lidé** a naplní ji daty.
 
 4. Pokud chcete vyhledat e-mailové adresy uložené v tabulce, použijte následující příkaz:
 
@@ -442,7 +439,7 @@ Následující postup slouží `scp` ke zkopírování jar do primárního hlavn
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>Nahrání úloh JAR a spuštění (PowerShell)
 
-Následující postup slouží k nahrání JAR do výchozího úložiště pro cluster Apache HBA pomocí Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) . Rutiny HDInsight se pak používají ke vzdálenému spuštění příkladů.
+Následující postup slouží k nahrání JAR do výchozího úložiště pro cluster Apache HBA pomocí Azure PowerShell [AZ Module](/powershell/azure/new-azureps-module-az) . Rutiny HDInsight se pak používají ke vzdálenému spuštění příkladů.
 
 1. Po instalaci a konfiguraci modulu AZ Module vytvořte soubor s názvem `hbase-runner.psm1` . Jako obsah souboru použijte následující text:
 

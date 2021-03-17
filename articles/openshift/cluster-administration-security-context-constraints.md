@@ -4,17 +4,23 @@ description: Omezení kontextu zabezpečení pro správce clusteru Azure Red Hat
 services: container-service
 author: troy0820
 ms.author: b-trconn
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 977504c1faec9bd8134646a8cbe31f9eea665edd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063179"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636199"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 Omezení kontextu zabezpečení (SCCs) umožňují správcům clusterů řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v [dokumentaci k architektuře pro SCCs](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). SCCs v instanci můžete spravovat jako normální objekty rozhraní API pomocí rozhraní příkazového řádku (CLI).
 

@@ -1,25 +1,25 @@
 ---
-title: Co je Automated ML/AutoML
+title: Co je to automatizovaná ML? AutoML
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak Azure Machine Learning může automaticky vybrat algoritmus a vytvořit z něj model, který vám umožní ušetřit čas pomocí parametrů a kritérií, které zadáte pro výběr nejlepšího algoritmu pro váš model.
+description: Přečtěte si, jak Azure Machine Learning může automaticky generovat model pomocí parametrů a kritérií, která zadáte.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 10/27/2020
+ms.custom: automl
+ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652096"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502531"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
-Automatizované Machine Learning, označovaný také jako automatizovaná ML nebo AutoML, je proces automatizace časově náročného zpracování iterativních úloh vývoje modelů strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým škálováním, efektivitou a produktivitou, a přitom udržuje kvalitu modelu. Automatizované ML je založené na převratcích z našeho [oddělení Microsoft Research](https://www.microsoft.com/research/project/automl/).
+Automatizované Machine Learning, označovaný také jako automatizovaná ML nebo AutoML, je proces automatizace časově náročného zpracování iterativních úloh vývoje modelů strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým škálováním, efektivitou a produktivitou, a přitom udržuje kvalitu modelu. Automatizované ML v Azure Machine Learning jsou založené na převratcích z našeho [oddělení Microsoft Research](https://www.microsoft.com/research/project/automl/).
 
 Tradiční vývoj modelů ve strojovém učení je náročný na prostředky, což vyžaduje významné znalosti v doméně a dobu potřebnou k vytváření a porovnávání desítk modelů. Díky automatizovanému strojového učení urychlíte dobu potřebnou k získání modelů ML připravené k produkčnímu prostředí s využitím Skvělé a efektivity.
 
@@ -33,13 +33,13 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 + Využijte osvědčené postupy pro datové vědy
 + Zajištění agilních problémů – řešení potíží
 
-### <a name="classification"></a>Classification
+### <a name="classification"></a>Klasifikace
 
 Klasifikace je běžný úkol strojového učení. Klasifikace je typ vzdělávání pod dohledem, ve kterém se modely učí pomocí školicích dat, a aplikujte tyto učení na nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-configure-auto-features.md#featurization) 
 
 Hlavním cílem modelů klasifikace je předpovědět, ke kterým kategoriím budou nová data zacházet v závislosti na studiu ze svých školicích dat. Mezi běžné klasifikace patří zjišťování podvodů, rozpoznávání rukopisu a detekce objektů. Přečtěte si další informace a podívejte se na příklad [Vytvoření klasifikačního modelu pomocí automatizovaného ml](tutorial-first-experiment-automated-ml.md).
 
-Podívejte se na příklady klasifikace a automatizované strojové učení v těchto poznámkových blocích Pythonu: [zjišťování podvodů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [předpověď marketingu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)a [klasifikace dat diskusních skupin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) .
+Podívejte se na příklady klasifikace a automatizované strojové učení v těchto poznámkových blocích Pythonu: [zjišťování podvodů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [předpověď marketingu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)a [klasifikace dat diskusních skupin](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b) .
 
 ### <a name="regression"></a>Regrese
 
@@ -66,11 +66,11 @@ Pokročilá konfigurace prognózy zahrnuje:
 
 Podívejte se na příklady regrese a automatizovaného strojového učení pro předpovědi v těchto poznámkových blocích Pythonu: [Prognózování prodeje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb), [Prognózování poptávky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)a [výrobní prognózy pro nápoje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
-## <a name="how-automl-works"></a>Jak funguje AutoML
+## <a name="how-automated-ml-works"></a>Jak automatizované ML funguje
 
 Během školení Azure Machine Learning vytvoří řadu kanálů paralelně, které pro vás vyzkouší různé algoritmy a parametry. Služba prochází algoritmy ML spárované s výběry funkcí, kde každá iterace vytváří model se studijním skóre. Čím vyšší je skóre, tím lépe se model považuje za "přizpůsobit" vašim datům.  Dojde k zastavení, jakmile bude narazí na kritéria ukončení definovaná v experimentu. 
 
-Pomocí **Azure Machine Learning**můžete navrhovat a spouštět experimenty automatizovaného školení ml pomocí těchto kroků:
+Pomocí **Azure Machine Learning** můžete navrhovat a spouštět experimenty automatizovaného školení ml pomocí těchto kroků:
 
 1. **Určení problému ml** , který se má vyřešit: klasifikace, předpovědi nebo regrese
 
@@ -78,8 +78,6 @@ Pomocí **Azure Machine Learning**můžete navrhovat a spouštět experimenty au
 
    * V případě omezeného nebo žádného prostředí pro práci s kódem zkuste vyzkoušet web Azure Machine Learning Studio na adrese. [https://ml.azure.com](https://ml.azure.com/)  
    * Pro vývojáře v Pythonu se podívejte na [sadu SDK Azure Machine Learning Pythonu](how-to-configure-auto-train.md) . 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **Zadejte zdroj a formát podaných školicích dat**: numpy Arrays nebo PANDAS dataframe
 
@@ -118,7 +116,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Popis |
+|&nbsp; & &nbsp; Zpracování škálování| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -142,7 +140,7 @@ Povolit toto nastavení pomocí:
 
 Automatizované Machine Learning podporuje modely kompletování, které jsou ve výchozím nastavení povolené. Seznámení se službou kompletování vylepšuje výsledky strojového učení a prediktivní výkon tím, že kombinuje více modelů na rozdíl od použití jednoduchých modelů. Iterace kompletu se zobrazí jako poslední iterace vašeho spuštění. Automatizované strojové učení používá pro kombinování modelů jak hlasovací, tak i stohování metod kompletování:
 
-* **Hlasovací**vše: Předpověď na základě váženého průměru předpokládaných pravděpodobností třídy (pro úlohy klasifikace) nebo předpokládaných regresních cílů (pro regresní úkoly).
+* **Hlasovací** vše: Předpověď na základě váženého průměru předpokládaných pravděpodobností třídy (pro úlohy klasifikace) nebo předpokládaných regresních cílů (pro regresní úkoly).
 * **Skládání**: skládání kombinuje modely heterogenní a nakládá Meta model založený na výstupu z jednotlivých modelů. Aktuální výchozí meta modely jsou LogisticRegression pro úlohy klasifikace a ElasticNet pro úlohy regrese/předpovědi.
 
 K rozhodnutí, které modely použít v kompletu, se používá [algoritmus výběru kompletu Caruana](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) se seřazenou inicializací kompletu. Na vysoké úrovni tento algoritmus inicializuje komplet až o pět modelů s nejlepšími jednotlivými výsledky a ověří, že tyto modely jsou v rámci 5% prahové hodnoty nejlepšího skóre, aby nedocházelo k nedostatečnému počátečnímu kompletování. Pak pro každou iteraci komplet se do existující kompletu přidá nový model a vypočte se výsledné skóre. Pokud nový model vylepšuje existující skóre kompletu, je komplet aktualizován tak, aby obsahoval nový model.
@@ -159,8 +157,8 @@ Webové rozhraní pro automatizované ML vždy používá vzdálený [cíl výpo
 ### <a name="choose-compute-target"></a>Zvolit cíl pro výpočetní prostředky
 Při volbě cíle výpočetní služby Vezměte v úvahu tyto faktory:
 
- * **Zvolte místní výpočetní**prostředky: Pokud se váš scénář týká počátečních průzkumů nebo ukázek pomocí malých objemů dat a krátkých vlaků (tj. sekund nebo pár minut na jeden podřízený běh), může být lepší volbou školení na místním počítači.  Nejedná se o čas nastavení, prostředky infrastruktury (Váš počítač nebo virtuální počítač) jsou přímo dostupné.
- * **Zvolte vzdálený výpočetní cluster ml**: Pokud provádíte školení s většími datovými sadami, jako je v produkčním školení, vytváření modelů, které potřebují delší vlaky, vzdálené výpočty budou poskytovat mnohem lepší výkon, protože `AutoML` budou paralelizovat vlaky napříč uzly clusteru. Ve vzdáleném výpočetním prostředí se čas spuštění interní infrastruktury přidá přibližně 1,5 minut na jedno podřízený běh a další minuty pro infrastrukturu clusteru, pokud virtuální počítače ještě nejsou spuštěné.
+ * **Zvolte místní výpočetní** prostředky: Pokud se váš scénář týká počátečních průzkumů nebo ukázek pomocí malých objemů dat a krátkých vlaků (tj. sekund nebo pár minut na jeden podřízený běh), může být lepší volbou školení na místním počítači.  Nejedná se o čas nastavení, prostředky infrastruktury (Váš počítač nebo virtuální počítač) jsou přímo dostupné.
+ * **Výběr vzdáleného výpočetního clusteru ml**: Pokud provádíte školení s většími datovými sadami, jako je v produkčním školení, vytváření modelů, které potřebují delší vlaky, vzdálené výpočty budou poskytovat mnohem lepší výkon, protože `AutoML` se paralelizovat vlaky v uzlech clusteru. Ve vzdáleném výpočetním prostředí se čas spuštění interní infrastruktury přidá přibližně 1,5 minut na jedno podřízený běh a další minuty pro infrastrukturu clusteru, pokud virtuální počítače ještě nejsou spuštěné.
 
 ### <a name="pros-and-cons"></a>Specialisté a nevýhody
 Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
@@ -172,25 +170,25 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
 ### <a name="feature-availability"></a>Dostupnost funkcí 
 
- K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. Některé z těchto funkcí jsou k dispozici pouze v pracovním prostoru Enterprise.
+ K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. 
 
-| Funkce                                                    | Vzdálené | Místní | Nutné <br>Pracovní prostor Enterprise |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | ✓                             |
-| Featurization a školení textu založeného na DNN-BERT             | ✓      |       | ✓                             |
-| Dopředná podpora GPU (školení a odvození)        | ✓      |       | ✓                             |
-| Klasifikace obrázků a podpora popisků                  | ✓      |       | ✓                             |
-| Modely auto-ARIMA, Prophet a ForecastTCN pro prognózování | ✓      |       | ✓                             |
-| Paralelní vícenásobné běhy a iterace                       | ✓      |       | ✓                             |
-| Vytváření modelů s možností interpretace v uživatelském rozhraní AutoML Studio Web Experience      | ✓      |       | ✓                             |
-| Přizpůsobení technologie funkcí v uživatelském rozhraní sady Studio Web Experience                        | ✓      |       | ✓                              |
-| Ladění předparametrů Azure ML                             | ✓      |       |                               |
-| Podpora pracovního postupu kanálu Azure ML                         | ✓      |       |                               |
-| Pokračovat v běhu                                             | ✓      |       |                               |
-| Prognózování                                                | ✓      | ✓     | ✓                             |
-| Vytváření a spouštění experimentů v poznámkových blocích                    | ✓      | ✓     |                               |
-| Zaregistrujte a vizualizujte informace a metriky experimentů v uživatelském rozhraní. | ✓      | ✓     |                               |
-| Guardrails dat                                            | ✓      | ✓     |                               |
+| Funkce                                                    | Vzdálené | Místní | 
+|------------------------------------------------------------|--------|-------|
+| Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | 
+| Featurization a školení textu založeného na DNN-BERT             | ✓      |       |
+| Dopředná podpora GPU (školení a odvození)        | ✓      |       |
+| Klasifikace obrázků a podpora popisků                  | ✓      |       |
+| Modely auto-ARIMA, Prophet a ForecastTCN pro prognózování | ✓      |       | 
+| Paralelní vícenásobné běhy a iterace                       | ✓      |       |
+| Vytváření modelů s možností interpretace v uživatelském rozhraní AutoML Studio Web Experience      | ✓      |       |
+| Přizpůsobení technologie funkcí v uživatelském rozhraní sady Studio Web Experience| ✓      |       |
+| Ladění předparametrů Azure ML                             | ✓      |       |
+| Podpora pracovního postupu kanálu Azure ML                         | ✓      |       |
+| Pokračovat v běhu                                             | ✓      |       |
+| Prognózování                                                | ✓      | ✓     |
+| Vytváření a spouštění experimentů v poznámkových blocích                    | ✓      | ✓     |
+| Zaregistrujte a vizualizujte informace a metriky experimentů v uživatelském rozhraní. | ✓      | ✓     |
+| Guardrails dat                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>Mnoho modelů 
 
@@ -204,9 +202,9 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 ## <a name="automl-in-azure-machine-learning"></a>AutoML v Azure Machine Learning
 
-Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML.
+Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML:
 
-* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) 
 
 * Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -221,11 +219,11 @@ Následující nastavení vám umožní nakonfigurovat experiment automatizovan�
 |**Rozdělit data na sady vlaků a ověření**| ✓|✓
 |**Podporuje úlohy ML: klasifikace, regrese a prognózy.**| ✓| ✓
 |**Optimalizuje se na základě primární metriky.**| ✓| ✓
-|**Podporuje COMPUTE AML jako cíl výpočtů.** | ✓|✓
+|**Podporuje Azure ML COMPUTE jako cíl výpočtů.** | ✓|✓
 |**Konfigurace horizontu předpovědi, cílové prodlevy & posuvné okno**|✓|✓
 |**Nastavení kritérií ukončení** |✓|✓ 
 |**Nastavit souběžné iterace**| ✓|✓
-|**Odkládací sloupce**| ✓|✓
+|**Vyřazení sloupců**| ✓|✓
 |**Algoritmy blokování**|✓|✓
 |**Vzájemné ověřování** |✓|✓
 |**Podporuje školení u clusterů Azure Databricks.**| ✓|
@@ -265,7 +263,7 @@ Pomocí Azure Machine Learning můžete pomocí automatizovaného ML vytvořit m
 
 Podívejte se, jak převést na formát ONNX [v tomto příkladu poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Zjistěte, které [algoritmy jsou v ONNX podporované](how-to-configure-auto-train.md#select-your-experiment-type).
 
-Modul runtime ONNX podporuje také jazyk C#, takže můžete použít model sestavený automaticky v aplikacích C# bez nutnosti opětovného kódování nebo jakékoli latence sítě, které zavádí koncové body REST. Přečtěte si další informace o [modelech INFERENCING ONNX pomocí rozhraní API jazyka C# Runtime ONNX](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
+Modul runtime ONNX podporuje také jazyk C#, takže můžete použít model sestavený automaticky v aplikacích C# bez nutnosti opětovného kódování nebo jakékoli latence sítě, které zavádí koncové body REST. Přečtěte si další informace o [použití modelu AUTOML ONNX v aplikaci .NET s ml.NET](./how-to-use-automl-onnx-model-dotnet.md) a [Inferencing ONNX modely s rozhraním API ONNX runtime C#](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -273,11 +271,11 @@ K dispozici je několik prostředků, které vám pomohou při práci s AutoML.
 
 ### <a name="tutorials-how-tos"></a>Kurzy a postupy
 Kurzy představují ucelené Úvodní příklady scénářů AutoML.
-+ **Při prvním použití kódu**postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning Python SDK](tutorial-auto-train-models.md).
++ **Při prvním použití kódu** postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning Python SDK](tutorial-auto-train-models.md).
 
- + V **případě nedostatku nebo prostředí bez kódu**si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
+ + V **případě nedostatku nebo prostředí bez kódu** si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
 
-Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Příklad: 
+Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Třeba 
 
 + Konfigurovat nastavení pro automatické experimenty školení
     + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md). 
@@ -289,10 +287,9 @@ Kurzy představují ucelené Úvodní příklady scénářů AutoML.
 
 Přečtěte si podrobné příklady kódu a případy použití v [úložišti notebook GitHub pro automatizované ukázky strojového učení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
 
-### <a name="python-sdk-reference"></a>Referenční dokumentace sady Python SDK 
+### <a name="python-sdk-reference"></a>Referenční dokumentace sady Python SDK
 
-Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). 
+Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 > [!Note]
-> Automatizované funkce strojového učení jsou dostupné i v dalších řešeních Microsoftu, jako jsou [ml.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
-
+> Automatizované funkce strojového učení jsou dostupné i v dalších řešeních Microsoftu, jako jsou [ml.NET](/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

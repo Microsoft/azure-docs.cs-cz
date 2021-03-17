@@ -4,14 +4,14 @@ description: Tento článek popisuje integraci partnerských serverů z více sn
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613281"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183790"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
@@ -41,11 +41,11 @@ K propojení FarmBeats musíte použít následující přihlašovací údaje v 
 
 Rozhraní API obsahují technickou dokumentaci k Swagger. Informace o rozhraních API a odpovídajících požadavcích nebo odpovědích naleznete v části [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-FarmBeats používá Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
+FarmBeats používá Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 
-Další informace o Azure AD najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+Další informace o Azure AD najdete v tématu [Azure Active Directory](../../app-service/overview-authentication-authorization.md).   
 
 FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje:
 
@@ -89,10 +89,10 @@ access_token = token_response.get('access_token')
 
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats DataHub.
 
-**Hlaviček** | **Popis a příklad**
+**Hlavička** | **Popis a příklad**
 --- | ---
 Typ obsahu  | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
-Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
+Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosič <Access-Token>
 Přijmout  | Formát odpovědi. Pro rozhraní FarmBeats DataHub API je formát JSON. Přijmout: Application/JSON
 
 
@@ -500,4 +500,4 @@ Po volání rozhraní/SceneFile API se vrátí adresa URL pro nahrání SAS, kte
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o REST API podrobností integrace na základě REST API najdete v tématu [REST API](rest-api-in-azure-farmbeats.md).
+Další informace o REST API podrobností integrace na základě REST API najdete v tématu [](rest-api-in-azure-farmbeats.md).

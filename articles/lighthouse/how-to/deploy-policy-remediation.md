@@ -1,14 +1,14 @@
 ---
 title: Nasazení zásady, která se dá napravit
 description: Pokud chcete nasadit zásady, které používají úlohu nápravy prostřednictvím Azure Lighthouse, musíte vytvořit spravovanou identitu v tenantovi zákazníka.
-ms.date: 08/12/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163250"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233878"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Nasazení zásady, která se dá opravit v rámci delegovaného předplatného
 
@@ -19,9 +19,9 @@ ms.locfileid: "88163250"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Vytvoření uživatele, který může přiřadit role ke spravované identitě v tenantovi zákazníka
 
-Když si zařadíte zákazníka do Azure Lighthouse, použijete [šablonu Azure Resource Manager](onboard-customer.md#create-an-azure-resource-manager-template) společně se souborem parametrů, který definuje uživatele, skupiny uživatelů a instanční objekty ve vašem tenantovi pro správu, které budou mít přístup k delegovaným prostředkům v tenantovi zákazníka. V souboru parametrů má každý z těchto uživatelů (**principalId**) přiřazenou [předdefinovanou roli](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**), která definuje úroveň přístupu.
+Když zařadíte zákazníka do Azure Lighthouse, použijete [šablonu Azure Resource Manager](onboard-customer.md#create-an-azure-resource-manager-template) společně se souborem parametrů k definování autorizací, která udělují přístup k delegovaným prostředkům v tenantovi zákazníka. Každé autorizaci Určuje **principalId** , který odpovídá uživateli, skupině nebo instančnímu objektu služby Azure AD ve správě tenanta, a **roleDefinitionId** , který odpovídá [předdefinované roli Azure](../../role-based-access-control/built-in-roles.md) , která bude udělena.
 
-Aby **principalId** mohl vytvořit spravovanou identitu v tenantovi zákazníka, musíte nastavit její **RoleDefinitionId** na **Správce přístupu uživatele**. I když tato role není obecně podporovaná, dá se použít v tomto konkrétním scénáři, takže uživatelé s tímto oprávněním můžou k spravovaným identitám přiřadit jednu nebo více specifických rolí. Tyto role jsou definovány ve vlastnosti **delegatedRoleDefinitionIds** . Do této služby můžete zahrnout jakoukoli vestavěnou roli s výjimkou správce nebo vlastníka přístupu uživatele.
+Aby **principalId** mohl vytvořit spravovanou identitu v tenantovi zákazníka, musíte nastavit její **RoleDefinitionId** na **Správce přístupu uživatele**. I když tato role není obecně podporovaná, dá se použít v tomto konkrétním scénáři, což umožňuje uživatelským účtům s tímto oprávněním přiřadit k spravovaným identitám jednu nebo více konkrétních integrovaných rolí. Tyto role jsou definované ve vlastnosti **delegatedRoleDefinitionIds** a můžou zahrnovat libovolnou [podporovanou integrovanou roli Azure](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) s výjimkou správce nebo vlastníka přístupu uživatele.
 
 Po zprovoznění zákazníka bude **principalId** vytvořený v této autorizaci moci přiřadit tyto předdefinované role ke spravovaným identitám v tenantovi zákazníka. Nebudou ale mít žádná další oprávnění obvykle přidružená k roli správce přístupu uživatelů.
 
@@ -41,7 +41,7 @@ Následující příklad ukazuje **principalId** , který bude mít roli správc
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Nasazení zásad, které se dají opravit
 
-Po vytvoření uživatele s potřebnými oprávněními, jak je popsáno výše, může uživatel nasadit zásady, které používají nápravné úlohy v rámci tenanta zákazníka.
+Po vytvoření uživatele s potřebnými oprávněními, jak je popsáno výše, může tento uživatel nasadit zásady, které používají nápravné úkoly v rámci delegovaných předplatných zákazníků.
 
 Řekněme například, že jste chtěli povolit diagnostiku na Azure Key Vault prostředky v tenantovi zákazníka, jak je znázorněno v této [ukázce](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring). Uživatel v tenantovi pro správu s příslušnými oprávněními (jak je popsáno výše) nasadí [šablonu Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) , která tento scénář povolí.
 

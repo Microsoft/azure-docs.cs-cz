@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827552"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593851"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Protokoly dotazů z funkce Start/Stop VMs during off-hours
 
-Azure Automation přepošle dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a datové proudy úloh. Tento článek kontroluje data, která jsou k dispozici pro [dotazy](../azure-monitor/log-query/log-query-overview.md) v Azure monitor.
+Azure Automation přepošle dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a datové proudy úloh. Tento článek kontroluje data, která jsou k dispozici pro [dotazy](../azure-monitor/logs/log-query-overview.md) v Azure monitor.
 
 ## <a name="job-logs"></a>Protokoly úloh
 
@@ -72,5 +72,5 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete tuto funkci nastavit, přečtěte si téma [Konfigurace virtuálních počítačů zastavit/spustit v době mimo špičku](automation-solution-vm-management-config.md).
-* Informace o výstrahách protokolů během nasazování funkcí najdete v tématu [vytvoření výstrah protokolu pomocí Azure monitor](../azure-monitor/platform/alerts-log.md).
+* Informace o výstrahách protokolů během nasazování funkcí najdete v tématu [vytvoření výstrah protokolu pomocí Azure monitor](../azure-monitor/alerts/alerts-log.md).
 * Informace o řešení chyb funkcí najdete v tématu [řešení potíží s Start/Stop VMS during off-hours](troubleshoot/start-stop-vm.md).

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135351"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366648"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter Server
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže při řešení problémů, ke kterým dochází kv�
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Jiné než číselné hodnoty ve vlastnosti maxSnapShots
 
-Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu pro `snapshot.maxSnapShots` vlastnost Property na virtuálním počítači.
+Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu pro  `snapshot.maxSnapShots` vlastnost Property na virtuálním počítači.
 
 Tento problém je identifikovaný ID chyby 95126.
 
@@ -54,7 +54,7 @@ Při výskytu tohoto problému dojde k následujícím situacím:
 
 Řešení tohoto problému:
 
-Stáhněte si [Nástroj PsExec](https://aka.ms/PsExec). 
+Stáhněte si [Nástroj PsExec](/sysinternals/downloads/psexec). 
 
 Použijte nástroj PsExec pro přístup k systémovému kontextu uživatele a určete, jestli je adresa proxy serveru nakonfigurovaná. Pak můžete přidat vCenter do seznamu pro obejití pomocí následujících postupů.
 
@@ -81,4 +81,4 @@ Pro konfiguraci proxy serveru DRA:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

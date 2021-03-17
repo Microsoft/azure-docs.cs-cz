@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574122"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změna nebo odstranění směrovací tabulky
 
@@ -81,11 +81,11 @@ Pokud chcete spravovat svoji virtuální síť, otevřete [Azure Portal](https:/
 
 1. V seznamu směrovací tabulka Vyberte směrovací tabulku, pro kterou chcete zobrazit podrobnosti.
 
-1. Na stránce směrovací tabulka v části **Nastavení**zobrazte **trasy** v tabulce směrování nebo v **podsítích** , ke kterým je tabulka směrování přidružená.
+1. Na stránce směrovací tabulka v části **Nastavení** zobrazte **trasy** v tabulce směrování nebo v **podsítích** , ke kterým je tabulka směrování přidružená.
 
 Další informace o běžných nastaveních Azure najdete v následujících informacích:
 
-- [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md)
+- [Protokol aktivit](../azure-monitor/essentials/platform-logs-overview.md)
 - [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
 - [Značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Zámky](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -125,7 +125,7 @@ Volitelně můžete k podsíti přidružit směrovací tabulku. Směrovací tabu
 
 1. Vyberte podsíť, ke které chcete přidružit směrovací tabulku.
 
-1. V **tabulce směrování**vyberte směrovací tabulku, kterou chcete přidružit k podsíti.
+1. V **tabulce směrování** vyberte směrovací tabulku, kterou chcete přidružit k podsíti.
 
 1. Vyberte **Uložit**.
 
@@ -150,7 +150,7 @@ Když zrušíte přidružení směrovací tabulky z podsítě, Azure směruje pr
 
 1. Vyberte podsíť, ze které chcete zrušit přidružení tabulky směrování.
 
-1. V **tabulce směrování**vyberte **None (žádné**).
+1. V **tabulce směrování** vyberte **None (žádné**).
 
 1. Vyberte **Uložit**.
 
@@ -169,7 +169,7 @@ Směrovací tabulku, která je přidružená k žádným podsítím, nelze odstr
 
 1. V seznamu směrovací tabulka Vyberte směrovací tabulku, kterou chcete odstranit.
 
-1. Vyberte **Odstranit**a potom v potvrzovacím dialogovém okně vyberte **Ano** .
+1. Vyberte **Odstranit** a potom v potvrzovacím dialogovém okně vyberte **Ano** .
 
 ### <a name="delete-a-route-table---commands"></a>Odstranění směrovací tabulky – příkazy
 
@@ -190,7 +190,7 @@ Existuje omezení, kolik tras na směrovací tabulce může vytvořit pro každ�
 
 1. Zadejte jedinečný **název trasy** trasy v tabulce směrování.
 
-1. Zadejte **předponu adresy**v notaci směrování mezi doménami bez tříd (CIDR), do kterého chcete směrovat provoz. Předpona nemůže být duplikována ve více než jedné trase v tabulce směrování, i když předpona může být v jiné předponě. Pokud jste například v jedné trase definovali *10.0.0.0/16* jako předponu, můžete i nadále definovat jinou trasu s předponou adresy *10.0.0.0/22* . Azure vybere trasu pro provoz na základě nejdelší shody předpony. Další informace najdete v tématu [jak Azure vybírá trasu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Zadejte **předponu adresy** v zápisu CIDR (Classless Inter-Domain Routing), do které chcete směrovat provoz. Předpona nemůže být duplikována ve více než jedné trase v tabulce směrování, i když předpona může být v jiné předponě. Pokud jste například v jedné trase definovali *10.0.0.0/16* jako předponu, můžete i nadále definovat jinou trasu s předponou adresy *10.0.0.0/22* . Azure vybere trasu pro provoz na základě nejdelší shody předpony. Další informace najdete v tématu [jak Azure vybírá trasu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
 1. Vyberte **typ dalšího segmentu směrování**. Další informace o typech dalších segmentů směrování najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md).
 
@@ -268,7 +268,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informac�
 
 1. Vyberte trasu, kterou chcete odstranit.
 
-1. Vyberte **Odstranit**a potom v potvrzovacím dialogovém okně vyberte **Ano** .
+1. Vyberte **Odstranit** a potom v potvrzovacím dialogovém okně vyberte **Ano** .
 
 ### <a name="delete-a-route---commands"></a>Odstranění příkazů route
 
@@ -333,7 +333,7 @@ Po krátkém čekání vám Azure ukáže typ dalšího segmentu směrování a 
 
 Aby bylo možné provádět úlohy s směrovacími tabulkami a trasami, musí být váš účet přiřazen k [roli Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                          |   Název                                                  |
+| Akce                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Čtení směrovací tabulky                                    |
 | Microsoft. Network/routeTables/Write                             |   Vytvoří nebo aktualizuje směrovací tabulku.                        |
@@ -348,4 +348,4 @@ Aby bylo možné provádět úlohy s směrovacími tabulkami a trasami, musí b�
 ## <a name="next-steps"></a>Další kroky
 
 - Vytvoření směrovací tabulky pomocí [PowerShellu](powershell-samples.md) nebo ukázkových skriptů [Azure CLI](cli-samples.md) nebo [šablon Azure správce prostředků](template-samples.md)
-- Vytvoření a přiřazení [definic Azure Policy](policy-samples.md) pro virtuální sítě
+- Vytvoření a přiřazení [definic Azure Policy](./policy-reference.md) pro virtuální sítě

@@ -3,20 +3,18 @@ title: Záměry a entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Jeden záměr představuje úkol nebo akci, kterou chce uživatel provést. Je to účel nebo cíl vyjádřený výrokem uživatele. Definujte sadu záměrů, které odpovídají akcím, které uživatelé chtějí provést ve své aplikaci.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101072"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025904"
 ---
 # <a name="intents-in-your-luis-app"></a>Záměry v aplikaci LUIS
 
@@ -27,14 +25,14 @@ Definujte sadu záměrů, které odpovídají akcím, které uživatelé chtěj�
 Cestovní záměrové aplikace   |   Ukázkové promluvy   |
 ------|------|
  BookFlight (Rezervovat let)     |   "Book mi do Rio Next Week" <br/> "Postupování do Rio na 24 července" <br/> "Potřebuji lístek roviny další neděli do Rio de Janeiro"    |
- Pozdrav     |   Vysoké <br/>"Hello" <br/>"Dobré ráno"  |
- CheckWeather | "Jaké je počasí, jako je například Boston?" <br/> "Zobrazit prognózu pro tento víkend" |
- Žádná         | "Získat recept na soubory cookie"<br>"Lakers Win?" |
+ Pozdrav     |   „Hi“ (Nazdar) <br/>"Hello" <br/>„Good morning“ (Dobré jitro)  |
+ Zkontrolovat počasí | "Jaké je počasí, jako je například Boston?" <br/> "Zobrazit prognózu pro tento víkend" |
+ Žádné         | "Získat recept na soubory cookie"<br>"Lakers Win?" |
 
 Všechny aplikace jsou dodávány s předdefinovaným záměrem "[none](#none-intent)", což je záložní záměr.
 
 ## <a name="prebuilt-domains-provide-intents"></a>Předem připravené domény poskytují záměry
-Kromě záměrů, které definujete, můžete použít předem sestavené záměry z jedné z [předem připravených domén](luis-how-to-use-prebuilt-domains.md).
+Kromě záměrů, které definujete, můžete použít předem sestavené záměry z jedné z [předem připravených domén](./howto-add-prebuilt-models.md).
 
 ## <a name="return-all-intents-scores"></a>Vrátit skóre všech záměrů
 Přiřadíte utterance k jednomu záměru. Když LUIS přijme utterance na koncovém bodu, ve výchozím nastavení vrátí nejvyšší záměr pro daný utterance.
@@ -55,17 +53,17 @@ Vytvořte záměr, když má _záměr_ uživatele spustit akci v klientské apli
 
 |Záměr   | Entita | Ukázková promluva   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"Type": "Location"; "entita": "Praha"}<br>{"Type": "Builtin. datetimeV2. Date", "entita": "zítra", "Solution": "2018-05-23"} | Jaký je počasí jako v `Seattle` `tomorrow`? |
-| CheckWeather | {"Type": "date_range", "entita": "Tento víkend"} | Zobrazit prognózu pro`this weekend` |
+| Zkontrolovat počasí | {"Type": "Location"; "entita": "Praha"}<br>{"Type": "Builtin. datetimeV2. Date", "entita": "zítra", "Solution": "2018-05-23"} | Jaký je počasí jako v `Seattle` `tomorrow` ? |
+| Zkontrolovat počasí | {"Type": "date_range", "entita": "Tento víkend"} | Zobrazit prognózu pro `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Předem sestavené záměry domény
 
-[Předem připravené domény](luis-how-to-use-prebuilt-domains.md) poskytují záměry pomocí projevy.
+[Předem připravené domény](./howto-add-prebuilt-models.md) poskytují záměry pomocí projevy.
 
 ## <a name="none-intent"></a>Žádný záměr
 
-Záměr **none** není vytvořen, ale je ponechán prázdný. Záměr **none** je povinný záměr a nelze ho odstranit ani přejmenovat. Naplňte ji do projevy, které jsou mimo vaši doménu.
+Záměr **none** není vytvořen, ale je ponechán prázdný. Záměr **none** je povinný záměr a nelze ho odstranit ani přejmenovat. Vyplňte do něj výroky, které nepatří do vaší domény.
 
 Záměrem **none** je nouzový záměr, který je důležitý v každé aplikaci a měl by mít 10% z celkového počtu projevy. Slouží k učení LUIS projevy, které nejsou důležité v doméně aplikace (předmět oblasti). Pokud nepřidáte žádné projevyy pro záměr **none** , Luis vynutí utterance, který se nachází mimo doménu, do jedné z doménových záměrů. Tato akce zkosí skóre předpovědi podle výuky LUIS špatného záměru pro utterance.
 

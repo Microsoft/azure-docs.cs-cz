@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612516"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225543"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -25,7 +25,7 @@ K dispozici jsou další matrice podpory:
 
 ## <a name="vault-support"></a>Podpora trezoru
 
-Azure Backup používá k orchestraci a správě záloh Recovery Services trezory. Používá taky trezory k ukládání zálohovaných dat.
+Azure Backup používá Recovery Services trezory k orchestraci a správě záloh pro následující typy úloh – virtuální počítače Azure, SQL na virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, sdílené složky Azure a místní úlohy pomocí agenta Azure Backup, Azure Backup Server a aplikace System Center DPM. Používá taky Recovery Services trezory k ukládání zálohovaných dat pro tyto úlohy.
 
 Následující tabulka popisuje funkce trezorů Recovery Services:
 
@@ -39,6 +39,8 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 **Přesunout trezory** | [Trezory můžete přesouvat](./backup-azure-move-recovery-services-vault.md) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
 **Přesun dat mezi trezory** | Přesouvání zálohovaných dat mezi trezory se nepodporuje.
 **Upravit typ úložiště trezoru** | Před uložením záloh můžete upravit typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor. Po zahájení zálohování v trezoru se typ replikace nedá upravit.
+**Zónově redundantní úložiště (ZRS)** | K dispozici v oblastech Velká Británie – jih (UKS) a Jižní Východní Asie (v moři).
+**Soukromé koncové body** | V [této části](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start) najdete požadavky na vytváření privátních koncových bodů pro trezor služby Recovery Services.  
 
 ## <a name="on-premises-backup-support"></a>Podpora místních záloh
 
@@ -66,7 +68,7 @@ Co je se podporuje, pokud chcete zálohovat virtuální počítače Azure:
 
 **Počítač** | **Co se zálohuje** | **Umístění** | **Funkce**
 --- | --- | --- | ---
-**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Celý virtuální počítač | Zálohujte do trezoru. | Rozšíření nainstalované při povolení zálohování pro virtuální počítač.<br/><br/> Zálohujte se jednou denně.<br/><br/> Zálohování s podporou aplikací pro virtuální počítače s Windows; Zálohování konzistentní se soubory pro virtuální počítače se systémem Linux. Konzistenci aplikací pro počítače se systémem Linux můžete nakonfigurovat pomocí vlastních skriptů.<br/><br/> Obnovte virtuální počítač nebo disk.<br/><br/> Virtuální počítač Azure nejde zálohovat do místního umístění.
+**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Celý virtuální počítač | Zálohujte do trezoru. | Rozšíření nainstalované při povolení zálohování pro virtuální počítač.<br/><br/> Zálohujte se jednou denně.<br/><br/> Zálohování s podporou aplikací pro virtuální počítače s Windows; Zálohování konzistentní se soubory pro virtuální počítače se systémem Linux. Konzistenci aplikací pro počítače se systémem Linux můžete nakonfigurovat pomocí vlastních skriptů.<br/><br/> Obnovte virtuální počítač nebo disk.<br/><br/>Jsou podporovány [zálohy a obnovení řadičů domény služby Active Directory](active-directory-backup-restore.md) .<br><br> Virtuální počítač Azure nejde zálohovat do místního umístění.
 **Zálohování virtuálních počítačů Azure pomocí agenta MARS** | Soubory, složky, stav systému | Zálohujte do trezoru. | Zálohujte třikrát denně.<br/><br/> Pokud chcete zálohovat konkrétní soubory nebo složky namísto celého virtuálního počítače, můžete agenta MARS spustit společně s rozšířením virtuálního počítače.
 **Virtuální počítač Azure s DPM** | Soubory, složky, svazky, stav systému, data aplikací | Zálohujte do místního úložiště virtuálního počítače Azure, na kterém běží DPM. DPM se pak zálohuje do trezoru. | Snímky s podporou aplikací.<br/><br/> Úplná členitost pro zálohování a obnovení.<br/><br/> Linux podporovaný pro virtuální počítače (Hyper-V/VMware).<br/><br/> Oracle není podporován.
 **Virtuální počítač Azure s MABS** | Soubory, složky, svazky, stav systému, data aplikací | Zálohujte do místního úložiště virtuálního počítače Azure, na kterém běží MABS. MABS se pak zálohuje do trezoru. | Snímky s podporou aplikací.<br/><br/> Úplná členitost pro zálohování a obnovení.<br/><br/> Linux podporovaný pro virtuální počítače (Hyper-V/VMware).<br/><br/> Oracle není podporován.
@@ -75,7 +77,7 @@ Co je se podporuje, pokud chcete zálohovat virtuální počítače Azure:
 
 Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
-**Typ zálohy** | **Linux (schváleno Azure)**
+**Typ zálohování** | **Linux (schváleno Azure)**
 --- | ---
 **Přímá záloha místního počítače se systémem Linux** | Nepodporováno Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 **Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.
@@ -145,14 +147,14 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 ## <a name="cross-region-restore"></a>Obnovení mezi oblastmi
 
-Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost dat a schopnost odolnosti, což zákazníkům umožňuje úplné řízení obnovení dat do sekundární oblasti. Pokud chcete tuto funkci nakonfigurovat, přejděte [na článek nastavení obnovení mezi oblastmi.](backup-create-rs-vault.md#set-cross-region-restore) Tato funkce je podporována pro následující typy správy:
+Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat a schopností odolnosti, což vám umožní úplné řízení obnovení dat do sekundární oblasti. Pokud chcete tuto funkci nakonfigurovat, přejděte [na článek nastavení obnovení mezi oblastmi.](backup-create-rs-vault.md#set-cross-region-restore) Tato funkce je podporována pro následující typy správy:
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | No                                                           | –               |
-| SQL/SAP HANA          | No                                                           | –               |
-| BUŇK                    | No                                                           | –               |
+| Virtuální počítač Azure               | Podporováno pro virtuální počítače Azure se spravovanými i nespravovanými disky. Nepodporuje se u klasických virtuálních počítačů. | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | Ve verzi Preview                                                      | K dispozici ve všech veřejných oblastech Azure a oblastech svrchovaného případu s výjimkou Francie – střed, Austrálie – střed, Jižní Afrika – sever, Spojené arabské emiráty sever, Švýcarsko – sever, Německo – středozápad, Norsko – východ. <br>Informace o použití v těchto oblastech získáte od [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Agent MARS/místní  | No                                                           | –               |
+| AFS (sdílené složky Azure)                 | No                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

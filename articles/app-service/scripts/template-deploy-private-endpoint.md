@@ -1,5 +1,5 @@
 ---
-title: Pomocí této šablony Azure Resource Manager budete moci nasadit privátní koncový bod pro webovou aplikaci.
+title: Použití šablony Azure Resource Manager k nasazení privátního koncového bodu pro webovou aplikaci
 description: Naučte se používat šablonu ARM k nasazení privátního koncového bodu pro vaši webovou aplikaci.
 author: ericgre
 ms.assetid: 49e460d0-7759-4ceb-b5a4-f1357e4fde56
@@ -8,16 +8,16 @@ ms.date: 07/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ff2d59ed569037f34e24a69ffafa0df237a3de34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535693"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89652028"
 ---
-# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-resource-manager-template"></a>Vytvoření aplikace App Service a nasazení privátního koncového bodu pomocí šablony Azure Resource Manager
+# <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Vytvoření aplikace App Service a nasazení privátního koncového bodu pomocí šablony Azure Resource Manager
 
-V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření webové aplikace a zpřístupníte ji pomocí privátního koncového bodu.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (ARM) k vytvoření webové aplikace a zpřístupníte ji pomocí privátního koncového bodu.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,13 +37,10 @@ Tato šablona vytvoří privátní koncový bod pro webovou aplikaci Azure.
 
 Tady je postup, jak nasadit šablonu Azure Resource Manager do Azure:
 
-1. Pokud se chcete přihlásit k Azure a otevřít šablonu, vyberte **nasadit do Azure**. Šablona vytvoří virtuální síť, webovou aplikaci, soukromý koncový bod a privátní zónu DNS.
-
-   [Nasazení do Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)
-
+1. Pokud se chcete přihlásit k Azure a otevřít šablonu, vyberte tento odkaz:  [nasadit do Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json). Šablona vytvoří virtuální síť, webovou aplikaci, soukromý koncový bod a privátní zónu DNS.
 2. Vyberte nebo vytvořte skupinu prostředků.
-3. Zadejte název webové aplikace, App Service plán, soukromý koncový bod.
-5. Přečtěte si prohlášení o podmínkách a ujednáních. Pokud souhlasíte, vyberte Souhlasím s výše uvedenými podmínkami a ujednáními > nákupu. Dokončení nasazení může trvat několik minut.
+3. Zadejte název vaší webové aplikace, Azure App Serviceho plánu a privátního koncového bodu.
+5. Přečtěte si prohlášení o podmínkách a ujednáních. Pokud souhlasíte, vyberte Souhlasím **s podmínkami a ujednáními uvedenými nad**  >  **nákupem**. Dokončení nasazení může trvat několik minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -57,4 +54,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další šablony Azure Resource Manager pro Azure App Service Web Apps najdete v [ukázkách šablon ARM](../samples-resource-manager-templates.md).
+- Další šablony Azure Resource Manager pro Azure App Service webové aplikace najdete v [ukázkách šablon ARM](../samples-resource-manager-templates.md).

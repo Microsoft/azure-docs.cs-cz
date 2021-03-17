@@ -3,15 +3,16 @@ title: Vytvoření dalšího předplatného Azure
 description: Naučte se, jak na webu Azure Portal přidat nové předplatné Azure. Projděte si informace o formulářích fakturačního účtu a další dostupné zdroje informací.
 author: amberbhargava
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460962"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844689"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Vytvoření dalšího předplatného Azure
 
@@ -29,7 +30,7 @@ K vytváření předplatných potřebujete následující oprávnění:
 |---------|---------|
 |Smlouva Enterprise (EA) |  Role Vlastník účtu pro registraci smlouvy Enterprise Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](understand-ea-roles.md).    |
 |Smlouva se zákazníkem Microsoftu (MCA) |  Role vlastníka nebo přispěvatele oddílu faktury, fakturačního profilu nebo fakturačního účtu Případně role Tvůrce předplatného Azure u oddílu faktury  Další informace najdete v tématu [Role a úlohy související s fakturací předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Smlouva s partnerem Microsoftu |   Role Globální správce nebo Agent správy v partnerské organizaci CSP Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).  Pro vytvoření předplatného Azure se musí uživatel přihlásit k tenantu partnera.   |
+|Smlouva s partnerem Microsoftu |   Role Globální správce nebo Agent správy v partnerské organizaci CSP Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](/partner-center/permissions-overview).  Pro vytvoření předplatného Azure se musí uživatel přihlásit k tenantu partnera.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Vytvoření předplatného na webu Azure Portal
 
@@ -72,13 +73,17 @@ K vytváření předplatných potřebujete následující oprávnění:
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Programové vytvoření dalšího předplatného Azure
 
-Můžete také vytvořit další předplatná programově. Další informace najdete v tématu [Programové vytváření předplatných Azure](../../azure-resource-manager/management/programmatically-create-subscription.md).
+Můžete také vytvořit další předplatná programově. Další informace najdete tady:
+
+- [Programové vytváření předplatných EA s využitím nejnovějšího rozhraní API](programmatically-create-subscription-enterprise-agreement.md)
+- [Programové vytváření předplatných MCA s využitím nejnovějšího rozhraní API](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [Programové vytváření předplatných MPA s využitím nejnovějšího rozhraní API](Programmatically-create-subscription-microsoft-customer-agreement.md)
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Přidávání a změna správců předplatného Azure](add-change-subscription-administrator.md)
 - [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [Vytvoření skupin pro správu pro organizaci a správu prostředků](../../governance/management-groups/create.md)
+- [Vytvoření skupin pro správu pro organizaci a správu prostředků](../../governance/management-groups/create-management-group-portal.md)
 - [Zrušení předplatného pro Azure](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

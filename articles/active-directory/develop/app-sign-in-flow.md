@@ -1,7 +1,7 @@
 ---
-title: Postup přihlášení k aplikaci pomocí platformy Microsoft Identity Platform | Azure
+title: Postup přihlášení aplikace s platformou Microsoft identity | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o procesu přihlašování webových, desktopových a mobilních aplikací v platformě Microsoft Identity Platform (v 2.0).
+description: Přečtěte si o procesu přihlašování webových, desktopových a mobilních aplikací na platformě Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772195"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755702"
 ---
-# <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Postup přihlášení aplikace s platformou Microsoft identity
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Postup přihlášení aplikace s platformou Microsoft identity
 
 Toto téma popisuje základní postup přihlášení pro webové, desktopové a mobilní aplikace s využitím platformy Microsoft Identity Platform. V tématu [toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md) se dozvíte o scénářích přihlašování podporovaných platformou Microsoft identity.
 
@@ -30,7 +30,7 @@ Když uživatel přejde v prohlížeči do webové aplikace, dojde k následují
 
 * Webová aplikace určuje, jestli je uživatel ověřený.
 * Pokud se uživatel neověřuje, Webová aplikace se přihlásí k Azure AD, aby se přihlásili uživateli. Toto přihlášení bude vyhovovat zásadám organizace, což může znamenat, že uživatel musí zadat své přihlašovací údaje pomocí služby [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (někdy se mu říká dvojúrovňové ověřování nebo 2FA) nebo vůbec nepoužívat heslo (například Windows Hello).
-* Uživateli se zobrazí výzva k vyjádření souhlasu s přístupem, který klientská aplikace potřebuje. Důvodem je, že klientské aplikace musí být zaregistrované ve službě Azure AD, aby platforma Microsoft Identity Platform mohla poskytovat tokeny představující přístup, ke kterému se uživatel poslal.
+* Uživateli se zobrazí výzva k vyjádření souhlasu s přístupem, který klientská aplikace potřebuje. Důvodem je, že klientské aplikace musí být zaregistrované ve službě Azure AD, aby platforma identity Microsoftu mohla poskytovat tokeny představující přístup, ke kterému se uživatel poslal.
 
 Po úspěšném ověření uživatele:
 
@@ -48,12 +48,12 @@ Vývojáři webové aplikace mohou určit, zda některé stránky vyžadují ov�
 
 Tento atribut způsobí, že ASP.NET zkontroluje přítomnost souboru cookie relace, který obsahuje identitu uživatele. Pokud soubor cookie přítomen není, ASP.NET přesměruje ověřování na zadaného zprostředkovatele identity. Pokud je poskytovatel identity Azure AD, přesměruje Tato webová aplikace ověřování na `https://login.microsoftonline.com` , které zobrazuje přihlašovací dialog.
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Způsob, jakým webová aplikace deleguje přihlášení k platformě Microsoft identity a získá token
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Způsob, jakým webová aplikace deleguje přihlášení k platformě Microsoft identity a získá token
 
 K ověřování uživatelů dochází prostřednictvím prohlížeče. Protokol OpenID používá standardní zprávy protokolu HTTP.
 
 * Webová aplikace pošle do prohlížeče protokol HTTP 302 (přesměrování), aby používal platformu Microsoft Identity Platform.
-* Když je uživatel ověřený, Microsoft Identity Platform pošle token do webové aplikace pomocí přesměrování přes prohlížeč.
+* Po ověření uživatele pošle platforma Microsoft Identity token do webové aplikace pomocí přesměrování přes prohlížeč.
 * Přesměrování je poskytováno webovou aplikací ve formě identifikátoru URI přesměrování. Tento identifikátor URI přesměrování je zaregistrován u objektu aplikace služby Azure AD. Může existovat několik identifikátorů URI pro přesměrování, protože aplikaci je možné nasadit na několik adres URL. Proto bude webová aplikace také muset určit identifikátor URI pro přesměrování, který se má použít.
 * Azure AD ověří, že identifikátor URI přesměrování odesílaný webovou aplikací je jedním z registrovaných identifikátorů URI pro přesměrování pro aplikaci.
 

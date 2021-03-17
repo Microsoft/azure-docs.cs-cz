@@ -4,23 +4,25 @@ description: 'Kurz: Naučte se používat vestavěné notebooky Jupyter k import
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: beb58922172a045242f4f9bcaf647b3cfc8b5551
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961094"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380793"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje, jak pomocí integrovaných poznámkových bloků Jupyter importovat ukázková maloobchodní data do Azure Cosmos DB. Uvidíte, jak použít příkazy SQL a Azure Cosmos DB Magic ke spouštění dotazů, analýze dat a vizualizaci výsledků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Povolit podporu poznámkových bloků při vytváření účtu Azure Cosmos](enable-notebooks.md)
+* [Povolení poznámkových bloků v účtu Azure Cosmos](enable-notebooks.md)
 
 ## <a name="create-the-resources-and-import-data"></a>Vytvoření prostředků a import dat
  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d201f80aea2c22e1bee06c776d2a84fb69f2bd7d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554856"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92452579"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Fluxx Labs
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Fluxx Labs s Azure Active Directory (A
 * Umožněte uživatelům, aby se do Fluxx Labs automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Fluxx Labs podporuje **IDPy** iniciované jednotné přihlašování.
-* Po nakonfigurování Fluxx Labs můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování Fluxx Labs můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-fluxx-labs-from-the-gallery"></a>Přidání Fluxx Labs z Galerie
 
@@ -76,7 +76,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML proveďte následující kroky:
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -113,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,15 +139,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V části **Nastavení** vyberte **správce** .
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config1.png)
+    ![Snímek obrazovky, který zobrazuje oddíl Settings (nastavení) se zvoleným správcem](./media/fluxxlabs-tutorial/config1.png)
 
 3. Na panelu pro správu vyberte integrace **s modulem plug-in**  >  **Integrations** a pak vyberte **jednotné přihlašování SAML – (zakázáno)** .
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config2.png)
+    ![Snímek obrazovky zobrazující kartu Integration (integrace) s vybraným S A M L S S O – (zakázaný)](./media/fluxxlabs-tutorial/config2.png)
 
 4. V části atributu proveďte následující kroky:
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config3.png)
+    ![Snímek obrazovky, který zobrazuje oddíl Attributes s zaškrtnutým políčkem S A M L S S, hodnotami zadanými v polích a vybraným tlačítkem Uložit.](./media/fluxxlabs-tutorial/config3.png)
 
     a. Zaškrtněte políčko **SAML SSO** .
 
@@ -155,7 +155,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     c. Do textového pole **cesta zpětného volání** zadejte **/auth/SAML/callback**.
 
-    d. Do textového pole **Adresa URL služby assertion Consumer Service (adresa URL jednotného přihlašování)** zadejte hodnotu **adresy URL odpovědi** , kterou jste zadali v Azure Portal.
+    d. Do textového pole **Adresa URL služby pro příjemce kontrolního výrazu (Single Sign-On URL)** zadejte hodnotu **adresy URL odpovědi** , kterou jste zadali v Azure Portal.
 
     e. Do textového pole **cílová skupina (ID entity SP)** zadejte hodnotu **identifikátoru** , kterou jste zadali v Azure Portal.
 
@@ -180,11 +180,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k Fluxx Labs, musí se zřídit 
 
 2. Klikněte na **ikonu**zobrazené níže.
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config6.png)
+    ![Snímek obrazovky, který zobrazuje možnosti Správce se ikonou "plus" vybraným v "řídicí panel je prázdný".](./media/fluxxlabs-tutorial/config6.png)
 
 3. Na řídicím panelu klikněte na ikonu níže zobrazené a otevřete kartu **nové osoby** .
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config4.png)
+    ![Snímek obrazovky, který zobrazuje nabídku "Správa kontaktů" se ikonou "plus" vedle možnosti "lidé".](./media/fluxxlabs-tutorial/config4.png)
 
 4. V části **noví lidé** proveďte následující kroky:
 
@@ -198,18 +198,18 @@ Aby se uživatelé Azure AD mohli přihlašovat k Fluxx Labs, musí se zřídit 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Fluxx Labs na přístupovém panelu, měli byste se automaticky přihlásit k Fluxx Labs, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Fluxx Labs na přístupovém panelu, měli byste se automaticky přihlásit k Fluxx Labs, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte Fluxx Labs s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Fluxx Labs pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Fluxx Labs pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

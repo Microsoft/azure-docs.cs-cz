@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebcb79088ebac761632e882e98e00f165cc4bd05
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035227"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491381"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Povolení samoobslužného resetování hesla Azure Active Directory na přihlašovací obrazovce Windows
 
@@ -35,12 +35,12 @@ Následující omezení platí pro použití SSPR z přihlašovací obrazovky Wi
 
 - Resetování hesla není v současné době podporováno ze vzdálené plochy nebo z rozšířených relací technologie Hyper-V.
 - Je známo, že někteří poskytovatelé přihlašovacích údajů třetích stran způsobují problémy s touto funkcí.
-- Vypnutí řízení uživatelských účtů prostřednictvím změny [klíče registru EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) je známo, že způsobují problémy.
+- Vypnutí řízení uživatelských účtů prostřednictvím změny [klíče registru EnableLUA](/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) je známo, že způsobují problémy.
 - Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce pro sítě s nasazeným ověřováním pomocí sítě 802.1 x doporučujeme použít ověřování počítače.
 - Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti. To znamená, že zařízení musí být buď v interní síti organizace, nebo na síti VPN se síťovým přístupem k místnímu řadiči domény.
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - U následujících nastavení je známo, že se bude rušit možnost používat a resetovat hesla na zařízeních s Windows 10:
-    - Pokud zásady ve verzích Windows 10 před v1809 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
+    - Pokud zásady ve Windows 10 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
     - Pokud jsou oznámení na zamykací obrazovce vypnutá, **resetování hesla** nebude fungovat.
     - *HideFastUserSwitching* je nastavené na povoleno nebo 1.
     - *DontDisplayLastUserName* je nastavené na povoleno nebo 1.
@@ -52,6 +52,10 @@ Následující omezení platí pro použití SSPR z přihlašovací obrazovky Wi
     - *DisableLockScreenAppNotifications* = 1 nebo povoleno
     - SKU Windows není Home nebo Professional Edition.
 
+> [!NOTE]
+> Tato omezení platí také pro resetování PIN kódu ve Windows Hello pro firmy na zamykací obrazovce zařízení.
+>
+
 ## <a name="windows-10-password-reset"></a>Resetování hesla Windows 10
 
 Pokud chcete na přihlašovací obrazovce nakonfigurovat zařízení s Windows 10 pro SSPR, přečtěte si následující požadavky a kroky konfigurace.
@@ -59,10 +63,10 @@ Pokud chcete na přihlašovací obrazovce nakonfigurovat zařízení s Windows 1
 ### <a name="windows-10-prerequisites"></a>Požadavky Windows 10
 
 - Správce [musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal](tutorial-enable-sspr.md).
-- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR. [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Není jedinečné, aby bylo možné používat SSPR z přihlašovací obrazovky Windows, všichni uživatelé musí před resetováním hesla zadat kontaktní údaje pro ověření.
 - Požadavky na síťový proxy server:
-    - Port 443 až `passwordreset.microsoftonline.com` a`ajax.aspnetcdn.com`
+    - Port 443 až `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
     - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
 - Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
     - Připojené k Azure AD
@@ -75,20 +79,20 @@ Nasazení změny konfigurace, aby se povolilo SSPR z přihlašovací obrazovky p
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Vytvoření zásad konfigurace zařízení v Intune
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **Intune**.
-1. Vytvořte nový profil konfigurace zařízení tak, že přejdete na **konfigurační**  >  **profily**zařízení a pak vyberete **+ vytvořit profil** .
+1. Vytvořte nový profil konfigurace zařízení tak, že přejdete na **konfigurační**  >  **profily** zařízení a pak vyberete **+ vytvořit profil** .
    - Pro **platformu** vyberte *Windows 10 a novější* .
-   - Jako **typ profilu**vyberte *vlastní* .
-1. Vyberte **vytvořit**a zadejte smysluplný název profilu, jako je například *přihlašovací obrazovka Windows 10 SSPR* .
+   - Jako **typ profilu** vyberte *vlastní* .
+1. Vyberte **vytvořit** a zadejte smysluplný název profilu, jako je například *přihlašovací obrazovka Windows 10 SSPR* .
 
     Volitelně můžete zadat smysluplný popis profilu a pak vybrat **Další**.
-1. V části *nastavení konfigurace*vyberte **Přidat** a zadejte následující nastavení OMA-URI, které povolí odkaz pro resetování hesla:
+1. V části *nastavení konfigurace* vyberte **Přidat** a zadejte následující nastavení OMA-URI, které povolí odkaz pro resetování hesla:
       - Zadejte smysluplný název, který vysvětluje, co toto nastavení dělá, například *odkaz Přidat SSPR*.
       - Volitelně můžete zadat smysluplný popis nastavení.
       - Identifikátor **OMA-URI** nastavte na `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`.
       - **Datový typ** nastavte na **Integer**.
       - Jako **Hodnota** nastavte **1**.
 
-    Vyberte **Přidat**a **Další**.
+    Vyberte **Přidat** a **Další**.
 1. Zásady je možné přiřadit konkrétním uživatelům, zařízením nebo skupinám. Přiřaďte profil požadovaný pro vaše prostředí, ideálně do testovací skupiny zařízení a pak vyberte **Další**.
 
     Další informace najdete v tématu [přiřazení profilů uživatelů a zařízení v Microsoft Intune](/mem/intune/configuration/device-profile-assign).
@@ -126,10 +130,10 @@ Pokud chcete na přihlašovací obrazovce nakonfigurovat zařízení se systéme
 ### <a name="windows-7-8-and-81-prerequisites"></a>Požadavky pro Windows 7, 8 a 8,1
 
 - Správce [musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal](tutorial-enable-sspr.md).
-- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR. [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Není jedinečné, aby bylo možné používat SSPR z přihlašovací obrazovky Windows, všichni uživatelé musí před resetováním hesla zadat kontaktní údaje pro ověření.
 - Požadavky na síťový proxy server:
-    - Port 443 až`passwordreset.microsoftonline.com`
+    - Port 443 až `passwordreset.microsoftonline.com`
 - Opraven operační systém Windows 7 nebo Windows 8.1.
 - Protokol TLS 1,2 povolený pomocí pokynů uvedených v [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings#tls-12).
 - Pokud je na vašem počítači povolený víc než jeden poskytovatel přihlašovacích údajů třetích stran, na přihlašovací obrazovce se uživatelům zobrazí víc než jeden profil uživatele.
@@ -143,7 +147,7 @@ V systému Windows 7, 8 a 8,1 musí být v počítači nainstalována malá sou�
 
 1. Stáhněte si odpovídající instalační program pro verzi systému Windows, kterou chcete povolit.
 
-    Instalační program softwaru je k dispozici na webu Microsoft Download Center na adrese[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+    Instalační program softwaru je k dispozici na webu Microsoft Download Center na adrese [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Přihlaste se k počítači, do kterého chcete nainstalovat, a spusťte instalační program.
 1. Po instalaci se důrazně doporučuje restartování počítače.
 1. Po restartování klikněte na obrazovce přihlášení na uživatele a vyberte zapomenuté heslo. Pro zahájení pracovního postupu pro resetování hesla.

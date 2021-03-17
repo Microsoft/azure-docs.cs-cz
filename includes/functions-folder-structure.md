@@ -8,11 +8,11 @@ ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 5f5f682c8c31c17f1a645bcdacdc78f32bd5c001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77205729"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018414"
 ---
 Kód pro všechny funkce v konkrétní aplikaci Function App je umístěn v kořenové složce projektu, která obsahuje konfigurační soubor hostitele a jednu nebo více podsložek. Každá podsložka obsahuje kód pro samostatnou funkci. Struktura složek se zobrazuje v následujícím vyjádření:
 

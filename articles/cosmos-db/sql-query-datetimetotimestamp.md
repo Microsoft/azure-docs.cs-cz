@@ -3,18 +3,20 @@ title: DateTimeToTimestamp v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimeToTimestamp funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 673e6a8cb86986ff24e3ee55589d13e8a9e4fdc5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 11e0150089fd979cbf840d3b117c0d796ecc68f3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608730"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335717"
 ---
 # <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Převede zadaný typ DateTime na časové razítko.
   
@@ -85,4 +87,4 @@ SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

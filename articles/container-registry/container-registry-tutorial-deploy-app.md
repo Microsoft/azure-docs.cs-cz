@@ -4,12 +4,12 @@ description: Nasazení webové aplikace se systémem Linux do dvou různých obl
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74456106"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148429"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
 
@@ -27,7 +27,7 @@ V dalším článku této série aplikaci aktualizujete a pak vložíte aktualiz
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatické nasazení do služby Web Apps for Containers
 
-Služba Azure Container Registry poskytuje podporu pro nasazování kontejnerizovaných aplikací do služby [Web Apps for Containers](../app-service/containers/index.yml). V tomto kurzu nasadíte pomocí webu Azure Portal image kontejneru, kterou jste vytvořili v předchozím kurzu, do dvou plánů webových aplikací umístěných v různých oblastech Azure.
+Služba Azure Container Registry poskytuje podporu pro nasazování kontejnerizovaných aplikací do služby [Web Apps for Containers](../app-service/index.yml). V tomto kurzu nasadíte pomocí webu Azure Portal image kontejneru, kterou jste vytvořili v předchozím kurzu, do dvou plánů webových aplikací umístěných v různých oblastech Azure.
 
 Když nasadíte webovou aplikaci z image kontejneru v registru a máte geograficky replikovaný registr ve stejné oblasti, vytvoří vám služba Azure Container Registry [webhook](container-registry-webhook.md) pro nasazení image. Když do úložiště kontejnerů vložíte novou image, převezme webhook tuto změnu a automaticky nasadí novou image kontejneru do vaší webové aplikace.
 
@@ -37,11 +37,11 @@ V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *USA
 
 Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte do registru, který jste vytvořili v předchozím kurzu.
 
-Vyberte **úložiště** > **ACR-HelloWorld**, potom klikněte pravým tlačítkem na značku **v1** v části **značky** a vyberte **nasadit do webové aplikace**:
+Vyberte **úložiště**  >  **ACR-HelloWorld**, potom klikněte pravým tlačítkem na značku **v1** v části **značky** a vyberte **nasadit do webové aplikace**:
 
 ![Nasazení do služby App Service na portálu Azure Portal][deploy-app-portal-01]
 
-Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Můžete povolit uživatele správce v **Nastavení** > **přístupové klíče** v Azure Portal.
+Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Můžete povolit uživatele správce v **Nastavení**  >  **přístupové klíče** v Azure Portal.
 
 V části **Web App for Containers**, která se zobrazí po výběru možnosti Nasadit do webové aplikace, zadejte u jednotlivých nastavení následující hodnoty:
 
@@ -58,7 +58,7 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – západ*.
 
-![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-02]
+![Snímek obrazovky ukazuje Web App for Containers s zvýrazněným tlačítkem pro vytvoření.][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>Zobrazení nasazené webové aplikace
 
@@ -68,11 +68,11 @@ Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste
 
 Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
 
-![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-04]
+![Snímek obrazovky s zvýrazněnou adresou URL webové aplikace zobrazuje přehled App Service.][deploy-app-portal-04]
 
 Po nasazení image Dockeru z geograficky replikovaného registru kontejneru se v lokalitě zobrazí obrázek představující oblast Azure, která je hostitelem registru kontejneru.
 
-![Nasazená webová aplikace zobrazená v prohlížeči][deployed-app-westus]
+![Snímek obrazovky se zobrazí nasazená webová aplikace zobrazená v prohlížeči.][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>Nasazení druhé instance služby Web App for Containers
 
@@ -88,9 +88,9 @@ Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci 
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.
 
-![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-06]
+![Snímek obrazovky ukazuje Web App for Containers okno vytvořit s zvýrazněným tlačítkem pro vytvoření.][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>Zobrazení nasazené webové aplikace
+## <a name="view-the-second-deployed-web-app"></a>Zobrazení druhé nasazené webové aplikace
 
 Stejně jako v předchozí části můžete běžící aplikaci zobrazit tak, že přejdete v prohlížeči na její adresu URL.
 

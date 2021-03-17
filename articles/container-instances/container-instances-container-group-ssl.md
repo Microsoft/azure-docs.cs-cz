@@ -3,12 +3,12 @@ title: Povolit TLS s kontejnerem webpostranního vozíku
 description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů běžící v Azure Container Instances spuštěním Nginx v kontejneru webvozíku
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169846"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558075"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu TLS v kontejneru webvozík
 
@@ -22,9 +22,9 @@ V tomto příkladu skupina kontejnerů zveřejňuje port 443 pro Nginx s jeho ve
 
 Další přístupy k povolení TLS ve skupině kontejnerů najdete v části [Další kroky](#next-steps) .
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.55 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
@@ -40,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Podle pokynů přidejte identifikační informace. Do pole běžný název zadejte název hostitele přidružený k certifikátu. Po zobrazení výzvy k zadání hesla stiskněte klávesu ENTER bez psaní, abyste mohli přeskočit Přidání hesla.
 
-Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým držitelem (soubor. CRT) z žádosti o certifikát. Například:
+Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým držitelem (soubor. CRT) z žádosti o certifikát. Příklad:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt

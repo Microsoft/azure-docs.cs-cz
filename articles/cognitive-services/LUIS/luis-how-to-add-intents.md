@@ -3,26 +3,24 @@ title: Přidat záměry – LUIS
 titleSuffix: Azure Cognitive Services
 description: Přidejte do aplikace LUIS záměry k identifikaci skupin otázek nebo příkazů, které mají stejné záměry.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344420"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018935"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
 Přidejte do aplikace LUIS [záměry](luis-concept-intent.md) k identifikaci skupin dotazů nebo příkazů, které mají stejný záměr.
 
-V portálu LUIS se záměry spravují z části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu.
+V portálu LUIS se záměry spravují z části **sestavení** v horním navigačním panelu a pak z **záměrů** v levém panelu.
 
 ## <a name="add-an-intent-to-your-app"></a>Přidání záměru do aplikace
 
@@ -83,4 +81,4 @@ Po přidání, úpravě nebo odebrání záměrů, [školení](luis-how-to-train
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o přidání [ukázkového projevyu](luis-how-to-add-example-utterances.md) s entitami.
+Přečtěte si další informace o přidání [ukázkového projevyu](./luis-how-to-add-entities.md) s entitami.

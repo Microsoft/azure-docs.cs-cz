@@ -2,18 +2,18 @@
 title: Přizpůsobení síťových konfigurací pro virtuální počítač s podporou převzetí služeb při selhání | Microsoft Docs
 description: V této části najdete Přehled přizpůsobení síťových konfigurací pro virtuální počítač s podporou převzetí služeb při selhání při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135832"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541186"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
 
@@ -31,7 +31,7 @@ Při replikaci virtuálních počítačů Azure můžete pro virtuální počít
 - [Veřejná IP adresa](../virtual-network/public-ip-addresses.md)
 - [Skupina zabezpečení sítě](../virtual-network/manage-network-security-group.md) pro podsíť i pro síťovou kartu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že vaše konfigurace na straně obnovení naplánujete předem.
 - Vytvořte si síťové prostředky předem. Poskytněte ji jako vstup, aby služba Azure Site Recovery mohla přijmout tato nastavení a zajistit, aby se virtuální počítač s podporou převzetí služeb při selhání dodržoval s těmito nastaveními.
@@ -44,7 +44,7 @@ Při replikaci virtuálních počítačů Azure můžete pro virtuální počít
 
      ![Přizpůsobení síťových konfigurací převzetí služeb při selhání](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Vyberte virtuální síť testovacího převzetí služeb při selhání. Můžete ho nechat prázdné a vybrat ho v době testovacího převzetí služeb při selhání.
+4. Vyberte virtuální síť testovacího převzetí služeb při selhání.
 5. Síť s podporou převzetí služeb při selhání je výběr **Upravit** u síťového adaptéru, který chcete konfigurovat. V dalším okně, které se otevře, vyberte odpovídající předem vytvořené prostředky v části testovací převzetí služeb při selhání a umístění pro převzetí služeb při selhání.
 
     ![Úprava konfigurace síťové karty](media/azure-to-azure-customize-networking/nic-drilldown.png) 
@@ -77,7 +77,7 @@ Veřejná IP adresa:
 - Předplatné a oblast veřejné IP adresy a cílového virtuálního počítače by měly být stejné.
 - SKU veřejné IP adresy cílového virtuálního počítače a SKU interního nástroje pro vyrovnávání zatížení by měly být stejné.
 
-Network security group (Skupina zabezpečení sítě):
+Skupina zabezpečení sítě:
 - Předplatné a oblast skupiny zabezpečení sítě a cílový virtuální počítač by měly být stejné.
 
 

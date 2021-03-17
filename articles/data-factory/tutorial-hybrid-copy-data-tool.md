@@ -1,29 +1,25 @@
 ---
 title: Kopírování místních dat pomocí nástroje Azure Kopírování dat
-description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat zkopírujte data z databáze SQL Server do úložiště objektů BLOB v Azure.
-services: data-factory
+description: Vytvořte Azure Data Factory a pak pomocí nástroje Kopírování dat zkopírujte data z databáze SQL Server do úložiště objektů BLOB v Azure.
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 02/18/2021
+ms.openlocfilehash: aa6c7dd786a90abadb43a13eaa73a78a2a61bd0a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660949"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719283"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure pomocí nástroje Kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](tutorial-hybrid-copy-data-tool.md)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure.
 
@@ -44,12 +40,12 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 ### <a name="azure-roles"></a>Role Azure
 Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který používáte pro přihlášení k Azure, přiřazený k roli *Přispěvatel* nebo *vlastník* nebo musí být *správcem* předplatného Azure.
 
-Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázkové pokyny pro přidání uživatele k roli najdete v článku o [správě přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 a 2017
 V tomto kurzu použijete databázi SQL Server jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této SQL Server databáze (zdroj) do úložiště objektů BLOB (jímka). Pak vytvoříte tabulku s názvem **EMP** v databázi SQL Server a do tabulky vložíte několik vzorových položek.
 
-1. Spusťte aplikaci SQL Server Management Studio. Pokud na vašem počítači ještě není nainstalovaná, přejděte na stránku pro [stažení aplikace SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+1. Spusťte aplikaci SQL Server Management Studio. Pokud na vašem počítači ještě není nainstalovaná, přejděte na stránku pro [stažení aplikace SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 1. Pomocí svých přihlašovacích údajů se přihlaste ke své instanci SQL Serveru.
 
@@ -99,7 +95,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. V okně **objekty blob** vyberte **+ kontejner**.
 
-1. V okně **Nový kontejner** v části **název**zadejte **adftutorial**a pak vyberte **OK**.
+1. V okně **Nový kontejner** v části **název** zadejte **adftutorial** a pak vyberte **OK**.
 
 1. V seznamu kontejnerů vyberte **adftutorial**.
 
@@ -109,7 +105,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce na levé straně vyberte **+ vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků.
+1. V nabídce na levé straně vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  .
 
    ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -123,7 +119,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
-   - Vyberte **vytvořit novou**a zadejte název skupiny prostředků. 
+   - Vyberte **vytvořit novou** a zadejte název skupiny prostředků. 
         
      Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).
 1. Jako **Verzi** vyberte **V2**.
@@ -146,15 +142,15 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. Na stránce **Source data store** (Zdrojové úložiště dat) klikněte na **Create new connection** (Vytvořit nové připojení).
 
-1. V části **Nová propojená služba**vyhledejte **SQL Server**a pak vyberte **pokračovat**.
+1. V části **Nová propojená služba** vyhledejte **SQL Server** a pak vyberte **pokračovat**.
 
-1. V dialogovém okně **Nová propojená služba (SQL Server)** do pole **název**zadejte **SqlServerLinkedService**. V části **připojení prostřednictvím prostředí Integration runtime**vyberte **+ Nový** . Musíte vytvořit místní prostředí Integration Runtime, stáhnout ho na svůj počítač a zaregistrovat ho ve službě Data Factory. Místní prostředí Integration Runtime kopíruje data mezi vaším místním prostředím a cloudem.
+1. V dialogovém okně **Nová propojená služba (SQL Server)** do pole **název** zadejte **SqlServerLinkedService**. V části **připojení prostřednictvím prostředí Integration runtime** vyberte **+ Nový** . Musíte vytvořit místní prostředí Integration Runtime, stáhnout ho na svůj počítač a zaregistrovat ho ve službě Data Factory. Místní prostředí Integration Runtime kopíruje data mezi vaším místním prostředím a cloudem.
 
 1. V dialogovém okně **nastavení Integration runtime** vyberte možnost místní **hostování**. Potom vyberte **Pokračovat**.
 
    ![Vytvoření prostředí Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. V dialogovém okně **nastavení Integration runtime** do pole **název**zadejte **TutorialIntegrationRuntime**. Potom vyberte **Vytvořit**.
+1. V dialogovém okně **nastavení Integration runtime** do pole **název** zadejte **TutorialIntegrationRuntime**. Potom vyberte **Vytvořit**.
 
 1. V dialogovém okně **nastavení Integration runtime** vyberte **kliknutím sem spustíte expresní instalaci pro tento počítač**. Tato akce nainstaluje prostředí Integration Runtime na vašem počítači a zaregistruje ho ve službě Data Factory. Případně můžete využít možnost ruční instalace a stáhnout instalační soubor, spustit ho a použít klíč k registraci prostředí Integration Runtime.
 
@@ -172,7 +168,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
     d. V části **Typ ověřování** vyberte odpovídající typ ověřování.
 
-    e. V části **uživatelské jméno**zadejte jméno uživatele s přístupem k SQL Server.
+    e. V části **uživatelské jméno** zadejte jméno uživatele s přístupem k SQL Server.
 
     f. Zadejte **heslo** pro uživatele.
 
@@ -187,13 +183,13 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 1. Na stránce **Destination data store** (Cílové úložiště dat) vyberte **Create new connection** (Vytvořit nové připojení).
 
 
-1. V **nové propojené službě**vyhledejte a vyberte **objekt blob Azure**a pak vyberte **pokračovat**.
+1. V **nové propojené službě** vyhledejte a vyberte **objekt blob Azure** a pak vyberte **pokračovat**.
 
    ![Výběr služby Blob Storage](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
 1. V dialogovém okně **New Linked Service (Azure Blob Storage)** (Nová propojená služba (Azure Blob Storage)) proveďte následující kroky:
 
-   a. Do **pole název**zadejte **AzureStorageLinkedService**.
+   a. Do **pole název** zadejte **AzureStorageLinkedService**.
 
    b. V části **Connect via integration runtime** (Připojit prostřednictvím prostředí Integration Runtime) vyberte **TutorialIntegrationRuntime**.
 
@@ -227,7 +223,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z databáze SQL Server do úložiště objektů BLOB. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z databáze SQL Server do úložiště objektů BLOB. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

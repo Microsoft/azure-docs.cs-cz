@@ -1,19 +1,17 @@
 ---
 title: Migrace Azure SQL Database tabulek do Azure CosmosDB s využitím Azure Data Factory
 description: Vezměte existující normalizované schéma databáze z Azure SQL Database a migrujte do denormalizovaného kontejneru Azure CosmosDB pomocí Azure Data Factory.
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691901"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383938"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrace normalizovaného schématu databáze z Azure SQL Database do denormalizovaného kontejneru Azure CosmosDB
 
@@ -96,11 +94,11 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 19. V nastavení jímky, klíč oddílu na ```\SalesOrderID``` a akci kolekce na "znovu vytvořit". Zajistěte, aby karta mapování vypadala takto:
 
-![Nastavení jímky](media/data-flow/cosmosb7.png)
+![Snímek obrazovky se zobrazí karta mapování.](media/data-flow/cosmosb7.png)
 
 20. Klikněte na náhled dat a ujistěte se, že se tyto 32 řádky nastavily tak, aby se do nového kontejneru vložily jako nové dokumenty:
 
-![Nastavení jímky](media/data-flow/cosmosb8.png)
+![Snímek obrazovky se zobrazí na kartě náhled dat.](media/data-flow/cosmosb8.png)
 
 Pokud vše vypadá dobře, teď jste připraveni vytvořit nový kanál, přidejte tuto aktivitu toku dat do tohoto kanálu a spusťte ji. Můžete provést z ladění nebo aktivovaného spuštění. Po několika minutách byste měli mít v databázi CosmosDB nový denormalizovaný kontejner objednávek nazývaný "Orders".
 

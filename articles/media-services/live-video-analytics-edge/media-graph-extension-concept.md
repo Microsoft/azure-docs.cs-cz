@@ -3,25 +3,27 @@ title: Co je rozšíření Media graphu – Azure
 description: Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 09fc2b71a6188caf1bdd9b7a2ef4da287f022845
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691775"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455835"
 ---
-# <a name="media-graph-extension"></a>Rozšíření Media graphu
+# <a name="media-graph-extension"></a>Rozšíření grafu médií
 
-Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu. Váš modul plug-in pro analýzu analýz může využívat tradiční techniky zpracování obrazu nebo modely AI pro počítačové vidění. Rozšíření grafu jsou povolena zahrnutím uzlu rozšíření procesoru v mediálním grafu. Uzel procesoru rozšíření přenáší video snímky do nakonfigurovaného koncového bodu a funguje jako rozhraní pro vaše rozšíření. Připojení se dá vytvořit v místním nebo vzdáleném koncovém bodě a v případě potřeby ho můžete zabezpečit pomocí ověřování a šifrování TLS. Kromě toho uzel procesoru rozšíření grafu umožňuje volitelné škálování a kódování snímků videa předtím, než se odešlou do vašeho vlastního rozšíření.
+Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu. Váš modul plug-in pro analýzu analýz může využívat tradiční techniky zpracování obrazu nebo modely AI pro počítačové vidění. Rozšíření grafu jsou povolena zahrnutím uzlu rozšíření procesoru v mediálním grafu. Uzel procesoru rozšíření přenáší video snímky do nakonfigurovaného koncového bodu a funguje jako rozhraní pro vaše rozšíření. Připojení se dá vytvořit v místním nebo vzdáleném koncovém bodě a v případě potřeby ho můžete zabezpečit pomocí ověřování a šifrování TLS. Kromě toho uzel procesoru rozšíření grafu umožňuje volitelné škálování a kódování snímků videa předtím, než se odešlou do vašeho vlastního rozšíření. 
 
 Live video Analytics podporuje dva druhy procesorů rozšíření pro Media Graph:
 
 * [Procesor rozšíření HTTP](media-graph-concept.md#http-extension-processor)
 * [procesor rozšíření gRPC](media-graph-concept.md#grpc-extension-processor)
 
+Uzel rozšíření grafu očekává, že modul plug-in analytického rozšíření vrátí výsledky ve formátu JSON. V ideálním případě by měly výsledky následovat po [objektovém modelu schématu metadat odvození](/azure/media-services/live-video-analytics-edge/inference-metadata-schema).
+
 ## <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
-Procesor rozšíření HTTP umožňuje scénáře rozšiřitelnosti pomocí protokolu HTTP, kde výkon nebo optimální využití prostředků nejsou primárním problémem. Vlastní AI můžete vystavit do mediálního grafu prostřednictvím koncového bodu HTTP REST. 
+Procesor rozšíření HTTP umožňuje scénáře rozšiřitelnosti pomocí [protokolu HTTP](/azure/media-services/live-video-analytics-edge/http-extension-protocol), kde výkon nebo optimální využití prostředků nejsou primárním problémem. Vlastní AI můžete vystavit do mediálního grafu prostřednictvím koncového bodu HTTP REST. 
 
 Uzel procesoru rozšíření HTTP použijte v těchto případech:
 
@@ -31,7 +33,7 @@ Uzel procesoru rozšíření HTTP použijte v těchto případech:
 
 ## <a name="grpc-extension-processor"></a>procesor rozšíření gRPC
 
-procesor rozšíření gRPC umožňuje scénáře rozšiřitelnosti pomocí gRPC, vysoce výkonného strukturovaného protokolu. Je ideální pro scénáře, kde je výkon nebo optimální využití prostředků prioritou. Procesor rozšíření gRPC vám umožňuje získat kompletní výhody definic strukturovaných dat. gRPC nabízí vysoký výkon přenosu obsahu pomocí:
+procesor rozšíření gRPC umožňuje scénáře rozšiřitelnosti pomocí gRPC, vysoce výkonného [strukturovaného protokolu](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol). Je ideální pro scénáře, kde je výkon nebo optimální využití prostředků prioritou. Procesor rozšíření gRPC vám umožňuje získat kompletní výhody definic strukturovaných dat. gRPC nabízí vysoký výkon přenosu obsahu pomocí:
 
 * [sdílená paměť v krabicích](https://en.wikipedia.org/wiki/Shared_memory) nebo 
 * přímý vkládání obsahu do textu zpráv gRPC 
@@ -46,16 +48,19 @@ Proto použijte uzel procesoru rozšíření gRPC při:
 
 ## <a name="use-your-inferencing-model-with-live-video-analytics"></a>Použití modelu Inferencing s živým analýzou videí
 
-Rozšíření mediálních grafů umožňují spouštět modely odvození podle vašeho výběru na jakémkoli dostupném modulu runtime pro odvození, jako je ONNX, TensorFlow, PyTorch nebo jiné ve vašem vlastním kontejneru Docker. Vlastní rozšíření Inferencing by se mělo nasadit společně s modulem Edge Analytics pro video, aby se co nejlépe vyvolalo, a pak se vyvolá prostřednictvím procesoru rozšíření HTTP nebo procesoru rozšíření gRPC, který je součástí topologie grafu. Kromě toho je možné omezit frekvenci volání do vlastního rozšíření tím, že v případě potřeby přidáte [procesor snímače pohybu](media-graph-concept.md#motion-detection-processor) a přesměruje [procesor filtru snímkového přenosu](media-graph-concept.md#frame-rate-filter-processor) do procesoru rozšíření médií.
+Rozšíření mediálních grafů umožňují spouštět modely odvození podle vašeho výběru na jakémkoli dostupném modulu runtime pro odvození, jako je ONNX, TensorFlow, PyTorch nebo jiné ve vašem vlastním kontejneru Docker. Vlastní rozšíření Inferencing by se mělo nasadit společně s modulem Edge Analytics pro video, aby se co nejlépe vyvolalo, a pak se vyvolá prostřednictvím procesoru rozšíření HTTP nebo procesoru rozšíření gRPC, který je součástí topologie grafu. Kromě toho je možné omezit frekvenci volání do vlastního rozšíření tím, že v případě, že přidáte [procesor snímače pohybu](media-graph-concept.md#motion-detection-processor) do procesoru rozšíření médií, zadáváte datový proud.
 
 Následující diagram znázorňuje tok dat vysoké úrovně:
- 
-![Tok dat](./media/media-graph-extension/data-flow.png)
 
-## <a name="samples"></a>Ukázky
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="Odvozená služba AI":::
 
-Zarezervujte některé ukázky [Jupyter poznámkových bloků](https://jupyter.org/) pro Live video Analytics. Tyto poznámkové bloky vám poskytnou podrobné pokyny:
+## <a name="samples"></a>ukázky
+
+Můžete začít s jedním z našich rychlých startů, které znázorňují živé video analýzy pomocí předem připravené služby rozšíření s [procesorem rozšíření http](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp) nebo s vysokými kmitočty s [procesorem rozšíření gRPC](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp) .
+
+Pro pokročilé uživatele můžete rezervovat některé ukázky [Jupyter poznámkových bloků](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) pro Live video Analytics. Tyto poznámkové bloky vám poskytnou podrobné pokyny pro **rozšíření grafu multimédií** na těchto místech:
 
 * Postup vytvoření image kontejneru Docker pro službu rozšíření
 * Jak nasadit službu rozšíření jako kontejner spolu s kontejnerem živé analýzy videí
-* Jak používat Live video Analytics Media Graph s klientem rozšíření a nasměrovat ho na koncový bod rozšíření gRPC
+* Jak používat Live video Analytics Media Graph s klientem rozšíření a nasměrovat ho na koncový bod rozšíření (HTTP/gRPC)

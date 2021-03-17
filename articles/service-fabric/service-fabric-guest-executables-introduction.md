@@ -4,11 +4,11 @@ description: Přečtěte si o sbalení existující aplikace jako spustitelného
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247383"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017742"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasaďte existující spustitelný soubor pro Service Fabric
 Jako službu můžete v Azure Service Fabric spustit libovolný typ kódu, jako je například Node.js, Java nebo C++. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory typu Host.
@@ -19,7 +19,7 @@ Spustitelné soubory hosta jsou ošetřeny Service Fabric jako bezstavové služ
 Pro spuštění spustitelného souboru hosta v Service Fabric clusteru je k dispozici několik výhod:
 
 * Vysoká dostupnost Aplikace, které běží v Service Fabric, jsou vytvořeny jako vysoce dostupné. Service Fabric zajistí, aby byly spuštěné instance aplikace.
-* Sledování stavu. Service Fabric monitoring stavu zjistí, jestli je aplikace spuštěná, a když dojde k selhání, poskytne diagnostické informace.   
+* Monitorování stavu. Service Fabric monitoring stavu zjistí, jestli je aplikace spuštěná, a když dojde k selhání, poskytne diagnostické informace.   
 * Správa životního cyklu aplikací. Kromě poskytování upgradů bez výpadků nabízí Service Fabric automatické vrácení zpět předchozí verzi, pokud dojde k chybné události stavu hlášené během upgradu.    
 * Výsadb. V clusteru můžete spustit několik aplikací, což eliminuje nutnost spuštění každé aplikace na vlastním hardwaru.
 * Zjistitelnost: použití REST můžete zavolat službu pojmenování Service Fabric a najít další služby v clusteru. 

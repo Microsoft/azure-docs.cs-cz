@@ -2,14 +2,14 @@
 author: rothja
 ms.service: media-services
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85839099"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329651"
 ---
 >[!NOTE]
 >U prostředků, které nejsou opraveny, otevřete lístek podpory, který se zeptá na zvýšení kvót. Při pokusu o získání vyšších limitů nevytvářejte další účty Azure Media Services.
@@ -29,7 +29,7 @@ ms.locfileid: "85839099"
 | Programy ve spuštěném stavu na jeden kanál |3|
 | Koncové body streamování, které se zastavily nebo spouštějí na účet Media Services|2|
 | Jednotky streamování na jeden koncový bod streamování |10 |
-| Účty úložiště | 1 000<sup>5</sup> (fixní) |
+| Účty úložiště | 100<sup>5</sup> (fixní) |
 | Zásady | 1 000 000<sup>6</sup> |
 | Velikost souboru| V některých scénářích je omezení maximální velikosti souboru podporovanou pro zpracování v Media Services. <sup>7</sup> |
 

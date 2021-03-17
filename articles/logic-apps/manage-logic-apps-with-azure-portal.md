@@ -10,17 +10,17 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078617"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006094"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Správa aplikací logiky v Azure Portal
 
 Aplikace logiky můžete spravovat pomocí [Azure Portal](https://portal.azure.com) nebo sady [Visual Studio](manage-logic-apps-with-visual-studio.md). Tento článek popisuje, jak upravit, zakázat, povolit nebo odstranit Logic Apps v Azure Portal. Pokud s Azure Logic Appsem začínáte, přečtěte si téma [co je Azure Logic Apps](logic-apps-overview.md)?
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -50,7 +50,7 @@ K vyhledání a otevření aplikace logiky použijte následující postup:
 
 1. V Azure Portal [Najděte a otevřete aplikaci logiky](#find-logic-app).
 
-1. V nabídce aplikace logiky v části **Nastavení**vyberte **vlastnosti**.
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **vlastnosti**.
 
 1. V podokně **vlastnosti** můžete zobrazit a zkopírovat následující informace o vaší aplikaci logiky:
 
@@ -194,7 +194,7 @@ Můžete použít Azure Portal pro správu verzí vašich aplikací logiky. Mů�
 
 1. V Azure Portal [Najděte aplikaci logiky, kterou chcete spravovat](#find-logic-app).
 
-1. V nabídce aplikace logiky v části **vývojové nástroje**vyberte možnost **verze**.
+1. V nabídce aplikace logiky v části **vývojové nástroje** vyberte možnost **verze**.
 
    ![Snímek aplikace logiky v Azure Portal se zobrazeným výběrem stránky verze ve vývojových nástrojích.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
@@ -214,7 +214,7 @@ Můžete použít Azure Portal pro správu verzí vašich aplikací logiky. Mů�
 
    ![Snímek historie verze aplikace logiky, na které se zobrazuje tlačítko pro zvýšení úrovně předchozí verze](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
-1. Na stránce **návrháře Logic Apps** , která se otevře, upravte podle potřeby verzi, kterou podporujete. Můžete přepínat mezi **návrhářem** a režimy **zobrazení kódu** . Můžete také aktualizovat **parametry**, **šablony**a **konektory**.
+1. Na stránce **návrháře Logic Apps** , která se otevře, upravte podle potřeby verzi, kterou podporujete. Můžete přepínat mezi **návrhářem** a režimy **zobrazení kódu** . Můžete také aktualizovat **parametry**, **šablony** a **konektory**.
 
    ![Snímek obrazovky návrháře Logic Apps, který zobrazuje tlačítko pro zvýšení úrovně předchozí verze aplikace logiky](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Šifrování disků pro Azure Scale Sets pomocí Azure CLI
-description: Naučte se používat Azure PowerShell k šifrování instancí virtuálních počítačů a připojených disků v sadě škálování virtuálního počítače s Windows.
+description: Naučte se používat rozhraní příkazového řádku Azure k šifrování instancí virtuálních počítačů a připojených disků v sadě škálování virtuálního počítače s Windows.
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -9,20 +9,20 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: dfb8a0dc6c27b042319f43bc5970dd8d1bc2b094
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496946"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215948"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit a zašifrovat sadu škálování virtuálního počítače. Další informace o použití služby Azure Disk Encryption pro sadu škálování virtuálního počítače najdete v tématu [Azure Disk Encryption Virtual Machine Scale Sets](disk-encryption-overview.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.31 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
@@ -139,7 +139,7 @@ az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 
 Když jsou instance virtuálních počítačů šifrované, stavový kód hlásí *EncryptionState/Encrypted*, jak je znázorněno v následujícím příkladu výstupu:
 
-```bash
+```console
 [
   {
     "disks": [
@@ -166,7 +166,7 @@ Když jsou instance virtuálních počítačů šifrované, stavový kód hlás�
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
 
-Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete šifrování zakázat pomocí příkazu [AZ VMSS Encryption Disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) následujícím způsobem:
+Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete šifrování zakázat pomocí příkazu [AZ VMSS Encryption Disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) následujícím způsobem:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

@@ -1,27 +1,22 @@
 ---
 title: Kopírování dat z Azure Data Lake Storage Gen1 do Gen2
 description: Použití Azure Data Factory ke kopírování dat z Azure Data Lake Storage Gen1 na Gen2
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/13/2019
-ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/18/2021
+ms.openlocfilehash: 4a4bc0b55928fcaa40cd1cb03ca0522e611df476
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727715"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je integrovaná do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md). Můžete ji použít pro připojení k datům pomocí paradigmat systému souborů a úložiště objektů.
 
@@ -35,7 +30,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 * Azure Data Lake Storage Gen1 účet s daty.
 * Azure Storage účet s povoleným Data Lake Storage Gen2em. Pokud nemáte účet úložiště, [vytvořte účet](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 
@@ -52,7 +47,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
     * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \" LoadADLSDemo \" není k dispozici", zadejte jiný název pro datovou továrnu. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Vytvořte datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: z rozevíracího seznamu vyberte existující skupinu prostředků. Můžete také vybrat možnost **vytvořit novou** a zadat název skupiny prostředků. Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
-    * **Verze**: vyberte **v2**.
+    * **Verze**: Vyberte **V2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat používaná datovou továrnou se můžou nacházet v jiných umístěních a oblastech. 
 
 3. Vyberte **Vytvořit**.
@@ -97,7 +92,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 7. Určete chování při kopírování, a to tak, že vyberete **rekurzivní soubory kopírování** a možnosti **binárního kopírování** . Vyberte **Další**.
 
-    ![Zadat výstupní složku](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
+    ![Snímek obrazovky se zobrazeným vstupním souborem nebo složkou, kde můžete vybrat rekurzivní kopírování souborů a binární kopii.](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
 8. Na stránce **cílové úložiště dat** vyberte **+ vytvořit nové připojení**  >  **Azure Data Lake Storage Gen2**  >  **pokračovat**.
 
@@ -113,14 +108,14 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 10. Na stránce **zvolte výstupní soubor nebo složku** zadejte **copyfromadlsgen1** jako název výstupní složky a vyberte **Další**. Data Factory vytvoří během kopírování odpovídající Azure Data Lake Storage Gen2 systém souborů a podsložek, pokud neexistují.
 
-    ![Zadat výstupní složku](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
+    ![Snímek obrazovky zobrazující cestu ke složce, kterou zadáte.](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 
 11. Na stránce **Nastavení** vyberte **Další**, aby se použilo výchozí nastavení.
 
 12. Na stránce **Souhrn** zkontrolujte nastavení a klikněte na tlačítko **Další**.
 
     ![Stránka souhrnu](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png)
-13. Na **stránce nasazení**vyberte **monitorovat** a monitorujte kanál.
+13. Na **stránce nasazení** vyberte **monitorovat** a monitorujte kanál.
 
     ![Stránka Nasazení](./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png)
 14. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu.

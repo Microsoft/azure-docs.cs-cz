@@ -8,24 +8,25 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 953648f5cf83d5ffd22683ba0ce02335a637f18a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 037137cf5a6e4ddd66fc15e8ad9775ea77177ef6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407216"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625194"
 ---
 Pomocí tohoto rychlého startu můžete udělat své první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace JavaScript posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) s dalším zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Sada Cognitive Services Image Search SDK pro Node.js](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * Dá se nainstalovat pomocí `npm install @azure/cognitiveservices-imagesearch`.
-* Modul [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure)
-    * Dá se nainstalovat pomocí `npm install ms-rest-azure`.
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* [Sada vyhledávání obrázků Bingu SDK pro JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+     *  Chcete-li nainstalovat, spusťte příkaz `npm install @azure/cognitiveservices-imagesearch`
+* `CognitiveServicesCredentials`Třída z `@azure/ms-rest-azure-js` balíčku pro ověření klienta.
+     * Chcete-li nainstalovat, spusťte příkaz `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -36,7 +37,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     ```javascript
     'use strict';
     const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     ```
 
 2. V metodě main vašeho projektu vytvořte proměnné pro váš platný klíč předplatného, výsledky obrázků, které má vrátit Bing, a hledaný výraz. Potom pomocí daného klíče vytvořte instanci klienta vyhledávání obrázků.
@@ -90,12 +91,12 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také
 
-* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
+* [Co je Vyhledávání obrázků Bingu?](../../overview.md)
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Ukázky Node.js pro sadu Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Dokumentace ke službě Azure Cognitive Services](../../../index.yml)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

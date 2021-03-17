@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 25003269fb6e00cadcc14d2356308cae54c70bf7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f3d558736751d3c50e3c007e3aebb369093ef856
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085283"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244752"
 ---
-V Cloud Shell vytvořte pomocí [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) příkazu plán App Service ve skupině prostředků.
+V Cloud Shell vytvořte pomocí příkazu plán App Service ve skupině prostředků [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) .
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-Následující příklad vytvoří plán App Service `myAppServicePlan` pojmenovaný v **bezplatné** cenové úrovni (`--sku F1`) a v kontejneru Linux (`--is-linux`).
+Následující příklad vytvoří plán App Service pojmenovaný `myAppServicePlan` v **bezplatné** cenové úrovni ( `--sku F1` ) a v kontejneru Linux ( `--is-linux` ).
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
@@ -27,7 +27,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Po vytvoření plánu služby App Service se v rozhraní příkazového řádku Azure zobrazí podobné informace jako v následujícím příkladu:
 
-<pre>
+```json
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -38,9 +38,9 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
   "location": "West Europe",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  &lt; JSON data removed for brevity. &gt;
+  <JSON data removed for brevity.>
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 } 
-</pre>
+```

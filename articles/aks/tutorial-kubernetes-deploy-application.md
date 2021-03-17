@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Nasazení aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) nasadíte do svého clusteru vícekontejnerovou aplikaci s použitím vlastní image uložené ve službě Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77593270"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250175"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. M�
 > * Spuštění aplikace v Kubernetes
 > * Testování aplikace
 
-V dalších kurzech se tato aplikace škáluje a aktualizuje.
+V novějších kurzech se tato aplikace škáluje a aktualizuje.
 
 Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes.
 
@@ -43,18 +43,18 @@ Název přihlašovacího serveru ACR získáte pomocí příkazu [az acr list][a
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-V ukázkovém souboru manifestu z úložiště git naklonovaného v prvním kurzu se jako název přihlašovacího serveru používá *microsoft*. Ujistěte se, že jste naklonováni v adresáři *Azure-hlasování-App-Redis* , a pak otevřete soubor manifestu pomocí textového editoru, jako je například `vi`:
+V ukázkovém souboru manifestu z úložiště git naklonovaného v prvním kurzu se jako název přihlašovacího serveru používá *microsoft*. Ujistěte se, že jste naklonováni v adresáři *Azure-hlasování-App-Redis* , a pak otevřete soubor manifestu pomocí textového editoru, jako je například `vi` :
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Nahraďte *microsoft* názvem vašeho přihlašovacího serveru ACR. Název bitové kopie najdete na řádku 51 souboru manifestu. Následující příklad ukazuje výchozí název image:
+Nahraďte *microsoft* názvem vašeho přihlašovacího serveru ACR. Název bitové kopie najdete na řádku 60 souboru manifestu. Následující příklad ukazuje výchozí název image:
 
 ```yaml
 containers:
 - name: azure-vote-front
-  image: microsoft/azure-vote-front:v1
+  image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
 ```
 
 Zadejte vlastní název přihlašovacího serveru ACR, aby váš soubor manifestu vypadal jako v následujícím příkladu:
@@ -65,7 +65,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Uložte soubor a zavřete ho. V `vi`použijte `:wq`.
+Uložte soubor a zavřete ho. V `vi` použijte `:wq` .
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
 
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 Následující příklad výstupu ukazuje úspěšné vytvoření prostředků v clusteru AKS:
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -98,25 +98,25 @@ kubectl get service azure-vote-front --watch
 
 Počáteční *IP adresa* pro službu *Azure-hlas-front* je zpočátku zobrazená jako *nevyřízená*:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Pokud se *IP* adresa změní z *čekání* na skutečnou veřejnou IP adresu, použijte `CTRL-C` k zastavení procesu `kubectl` sledování. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
+Pokud se *IP* adresa změní z *čekání* na skutečnou veřejnou IP adresu, použijte `CTRL-C` k zastavení `kubectl` procesu sledování. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 Pokud chcete zobrazit aplikaci v akci, otevřete webový prohlížeč na externí IP adresu vaší služby:
 
-![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="Snímek obrazovky s obrázkem kontejneru hlasovací aplikace v Azure běžící v clusteru AKS otevřeném v místním webovém prohlížeči" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 Pokud se aplikace nenačte, může to být kvůli problému s autorizací u vašeho registru imagí. Stav vašich kontejnerů můžete zobrazit pomocí příkazu `kubectl get pods`. Pokud se image kontejnerů nedají načíst, přečtěte si téma [ověření pomocí Azure Container Registry služby Azure Kubernetes](cluster-container-registry-integration.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste v AKS nasadili ukázkovou aplikaci pro hlasování Azure do clusteru Kubernetes. Naučili jste se tyto postupy:
+V tomto kurzu jste v AKS nasadili ukázkovou aplikaci pro hlasování Azure do clusteru Kubernetes. Naučili jste se:
 
 > [!div class="checklist"]
 > * Aktualizace souborů manifestu Kubernetes

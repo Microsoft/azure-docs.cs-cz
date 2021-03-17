@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887438"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978029"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení Azure CDN prostředků pomocí ověřování tokenů
 
@@ -64,7 +64,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
 
     ![Tlačítko Spravovat profil CDN](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Najeďte myší na **velkou velikost protokolu HTTP**a pak v informačním rámečku Vyberte **ověřování pomocí tokenu** . Pak můžete nastavit šifrovací klíč a parametry šifrování následujícím způsobem:
+2. Najeďte myší na **velkou velikost protokolu HTTP** a pak v informačním rámečku Vyberte **ověřování pomocí tokenu** . Pak můžete nastavit šifrovací klíč a parametry šifrování následujícím způsobem:
 
    1. Vytvořte jeden nebo více šifrovacích klíčů. Šifrovací klíč rozlišuje velká a malá písmena a může obsahovat libovolnou kombinaci alfanumerických znaků. Žádný jiný typ znaků, včetně mezer, není povolen. Maximální délka je 250 znaků. Aby bylo zajištěno, že šifrovací klíče jsou náhodné, doporučujeme je vytvořit pomocí [nástroje OpenSSL](https://www.openssl.org/). 
 
@@ -72,7 +72,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
 
       ```rand -hex <key length>```
 
-      Příklad:
+      Například:
 
       ```OpenSSL> rand -hex 32``` 
 
@@ -168,9 +168,9 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
 
       Po dešifrování tokenu se jeho parametry zobrazí v poli **původní parametry** .
 
-   9. Volitelně můžete přizpůsobit typ kódu odpovědi, který se vrátí, když je žádost zamítnuta. Vyberte **povoleno**a pak vyberte kód odpovědi ze seznamu **kódu odpovědi** . **Název záhlaví** je automaticky nastaven na **umístění**. Vyberte **Uložit** pro implementaci nového kódu odpovědi. U některých kódů odpovědí musíte zadat také adresu URL chybové stránky v poli **hodnota hlavičky** . Ve výchozím nastavení je vybrán kód odpovědi **403** (zakázáno). 
+   9. Volitelně můžete přizpůsobit typ kódu odpovědi, který se vrátí, když je žádost zamítnuta. Vyberte **povoleno** a pak vyberte kód odpovědi ze seznamu **kódu odpovědi** . **Název záhlaví** je automaticky nastaven na **umístění**. Vyberte **Uložit** pro implementaci nového kódu odpovědi. U některých kódů odpovědí musíte zadat také adresu URL chybové stránky v poli **hodnota hlavičky** . Ve výchozím nastavení je vybrán kód odpovědi **403** (zakázáno). 
 
-3. V části **velký protokol HTTP**vyberte **modul pravidel**. Použijete modul pravidel k definování cest pro použití funkce, povolení funkce ověřování tokenu a povolení dalších možností souvisejících s ověřováním tokenů. Další informace najdete v tématu [Referenční příručka k modulům pravidel](cdn-rules-engine-reference.md).
+3. V části **velký protokol HTTP** vyberte **modul pravidel**. Použijete modul pravidel k definování cest pro použití funkce, povolení funkce ověřování tokenu a povolení dalších možností souvisejících s ověřováním tokenů. Další informace najdete v tématu [Referenční příručka k modulům pravidel](./cdn-verizon-premium-rules-engine-reference.md).
 
    1. Vyberte existující pravidlo nebo vytvořte nové pravidlo k definování prostředku nebo cesty, pro kterou chcete použít ověřování pomocí tokenu. 
    2. Pokud chcete pro pravidlo Povolit ověřování tokenu, vyberte v seznamu **funkce** možnost **[ověření tokenu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** a pak vyberte **povoleno**. **Pokud aktualizujete pravidlo nebo pokud** vytváříte pravidlo, vyberte **aktualizovat** .

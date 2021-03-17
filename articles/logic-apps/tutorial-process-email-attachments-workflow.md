@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132326"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576359"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -36,16 +36,18 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * E-mailový účet od poskytovatele podporovaného v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/).
 
-  Tato aplikace logiky používá účet Office 365 Outlook. Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak.
+  Tato aplikace logiky používá pracovní nebo školní účet. Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak.
 
   > [!IMPORTANT]
   > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Zdarma stáhnout a nainstalovat [Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com/). Tento nástroj vám umožní zkontrolovat, jestli máte kontejner úložiště správně nastavený.
+
+* Pokud vaše aplikace logiky potřebuje komunikovat přes bránu firewall, která omezuje provoz na konkrétní IP adresy, musí brána firewall povolit přístup *pro* [příchozí](logic-apps-limits-and-config.md#inbound) i [odchozí](logic-apps-limits-and-config.md#outbound) IP adresy, které používá služba Logic Apps nebo modul runtime v oblasti Azure, ve které vaše aplikace logiky existuje. Pokud vaše aplikace logiky používá i [spravované konektory](../connectors/apis-list.md#managed-api-connectors), jako je například konektor Office 365 Outlook nebo konektor SQL, nebo používá [vlastní konektory](/connectors/custom-connectors/), musí brána firewall také umožňovat přístup pro *všechny* [odchozí IP adresy spravovaného konektoru](logic-apps-limits-and-config.md#outbound) v oblasti Azure vaší aplikace logiky.
 
 ## <a name="set-up-storage-to-save-attachments"></a>Nastavení úložiště pro ukládání příloh
 
@@ -82,11 +84,11 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
 
    1. V nabídce účtu úložiště v části **Nastavení** vyberte **Přístupové klíče**.
 
-   1. Zkopírujte název účtu úložiště a **klíč1**a uložte tyto hodnoty někam do trezoru.
+   1. Zkopírujte název účtu úložiště a **klíč1** a uložte tyto hodnoty někam do trezoru.
 
       ![Zkopírování a uložení názvu a klíče účtu úložiště](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   K získání přístupového klíče účtu úložiště můžete použít taky prostředí [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) nebo [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list).
+   K získání přístupového klíče účtu úložiště můžete použít taky prostředí [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) nebo [Azure CLI](/cli/azure/storage/account/keys).
 
 1. Vytvořte kontejner úložiště objektů blob pro přílohy e-mailů.
 
@@ -96,13 +98,13 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
 
    1. Po otevření stránky **Kontejnery** vyberte na panelu nástrojů **Kontejner**.
 
-   1. V části **Nový kontejner**zadejte `attachments` jako název kontejneru. V části **úroveň veřejného přístupu**vyberte **kontejner (anonymní přístup pro čtení pro kontejnery a objekty BLOB)**  >  **OK**.
+   1. V části **Nový kontejner** zadejte `attachments` jako název kontejneru. V části **úroveň veřejného přístupu** vyberte **kontejner (anonymní přístup pro čtení pro kontejnery a objekty BLOB)**  >  **OK**.
 
       Jakmile budete hotovi, objeví se kontejner úložiště ve vašem účtu úložiště tady na portálu Azure Portal:
 
       ![Hotový kontejner úložiště](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Pokud chcete vytvořit kontejner úložiště, můžete použít taky [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) nebo [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create).
+   Pokud chcete vytvořit kontejner úložiště, můžete použít taky [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) nebo [Azure CLI](/cli/azure/storage/container#az-storage-container-create).
 
 Dalším krokem je propojení Průzkumníka služby Storage s vaším účtem.
 
@@ -121,13 +123,13 @@ Teď se svým účtem úložiště propojte Průzkumníka služby Storage, abyst
    > [!TIP]
    > Pokud se nezobrazí žádné výzvy, na panelu nástrojů Průzkumník služby Storage vyberte **Přidat účet**.
 
-1. Do **pole Zobrazovaný název**zadejte popisný název připojení. Do pole **Název účtu** zadejte název svého účtu úložiště. V části **klíč účtu**zadejte přístupový klíč, který jste předtím uložili, a vyberte **Další**.
+1. Do **pole Zobrazovaný název** zadejte popisný název připojení. Do pole **Název účtu** zadejte název svého účtu úložiště. V části **klíč účtu** zadejte přístupový klíč, který jste předtím uložili, a vyberte **Další**.
 
 1. Potvrďte informace o připojení a pak vyberte **připojit**.
 
-   Průzkumník služby Storage vytvoří připojení a v okně Průzkumníka v části **místní & připojené**  >  **účty úložiště**se zobrazí váš účet úložiště.
+   Průzkumník služby Storage vytvoří připojení a v okně Průzkumníka v části **místní & připojené**  >  **účty úložiště** se zobrazí váš účet úložiště.
 
-1. Pokud chcete najít kontejner úložiště objektů blob, v části **účty úložiště**rozbalte svůj účet úložiště, který je **attachmentstorageacct** tady, a rozbalte **kontejnery objektů BLOB** , kde najdete kontejner **příloh** , například:
+1. Pokud chcete najít kontejner úložiště objektů blob, v části **účty úložiště** rozbalte svůj účet úložiště, který je **attachmentstorageacct** tady, a rozbalte **kontejnery objektů BLOB** , kde najdete kontejner **příloh** , například:
 
    ![Průzkumník služby Storage – vyhledání kontejneru úložiště](./media/tutorial-process-email-attachments-workflow/storage-explorer-check-contianer.png)
 
@@ -152,7 +154,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Application Insights** | Zakázat | Zapne monitorování aplikací pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md), ale pro tento kurz vyberte **Zakázat**  >  **použít**. |
    ||||
 
-   Pokud se vaše aplikace Function po nasazení automaticky neotevře, v poli hledání [Azure Portal](https://portal.azure.com) vyhledejte a vyberte **Function App**. V části **Function App**vyberte svou aplikaci Function App.
+   Pokud se vaše aplikace Function po nasazení automaticky neotevře, v poli hledání [Azure Portal](https://portal.azure.com) vyhledejte a vyberte **Function App**. V části **Function App** vyberte svou aplikaci Function App.
 
    ![Výběr aplikace funkcí](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
 
@@ -160,19 +162,19 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    ![Vytvořená aplikace funkcí](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Pokud chcete vytvořit aplikaci Function App, můžete použít také [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)nebo [šablony powershellu a správce prostředků](../azure-resource-manager/templates/deploy-powershell.md).
+   Pokud chcete vytvořit aplikaci Function App, můžete použít také [Azure CLI](../azure-functions/create-first-function-cli-csharp.md)nebo [šablony powershellu a správce prostředků](../azure-resource-manager/templates/deploy-powershell.md).
 
 1. V seznamu **aplikace Function** App rozbalte aplikaci Function App, pokud ještě není rozbalená. V části aplikace Function App vyberte Functions ( **funkce**). Na panelu nástrojů funkcí zvolte **Nová funkce**.
 
    ![Vytvoření nové funkce](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
-1. V části **Zvolte šablonu níže nebo se v rychlém**startu vyberte šablonu **triggeru http** .
+1. V části **Zvolte šablonu níže nebo se v rychlém** startu vyberte šablonu **triggeru http** .
 
    ![Vybrat šablonu triggeru HTTP](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
 
    Azure vytvoří funkci pomocí šablony specifické pro konkrétní jazyk pro funkci aktivovanou protokolem HTTP.
 
-1. V okně **Nová funkce** v poli **Název** zadejte `RemoveHTMLFunction`. Možnost zachovat **úroveň autorizace** je nastavena na hodnotu **funkce**a vyberte **vytvořit**.
+1. V okně **Nová funkce** v poli **Název** zadejte `RemoveHTMLFunction`. Možnost zachovat **úroveň autorizace** je nastavena na hodnotu **funkce** a vyberte **vytvořit**.
 
    ![Pojmenování funkce](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
@@ -208,7 +210,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    ![Otevření testovacího podokna](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
-1. V podokně **test** v části **text požadavku**zadejte tento řádek a vyberte **Spustit**.
+1. V podokně **test** v části **text požadavku** zadejte tento řádek a vyberte **Spustit**.
 
    `{"name": "<p><p>Testing my function</br></p></p>"}`
 
@@ -259,7 +261,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 1. Do návrháře v poli hledání zadejte `when new email arrives` jako filtr. Vyberte pro svého poskytovatele e-mailu tento trigger: **Při přijetí nového e-mailu – <*váš_poskytovatel_e-mailu*>**.
 
-   Například:
+   Příklad:
 
    ![Výběr triggeru pro konkrétního poskytovatele e-mailu: „Při přijetí nového e-mailu“](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -278,8 +280,8 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
       | **Složka** | Doručená pošta | E-mailová složka, která se má kontrolovat |
-      | **Má přílohu** | Ano | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
-      | **Zahrnout přílohy** | Ano | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
+      | **Má přílohu** | Yes | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
+      | **Zahrnout přílohy** | Yes | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
       | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
       | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami |
       ||||
@@ -309,7 +311,7 @@ Teď přidejte podmínku, která vybere jenom e-maily s přílohami.
 
    ![Nový krok](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `condition` . Vyberte tuto akci: **Podmínka**
+1. V části **zvolit akci** zadejte do vyhledávacího pole `condition` . Vyberte tuto akci: **Podmínka**
 
    ![Vybrat podmínku](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
@@ -323,7 +325,7 @@ Teď přidejte podmínku, která vybere jenom e-maily s přílohami.
 
    1. Na prvním řádku pod **A** klikněte do levého pole. Zobrazí se seznam dynamického obsahu. Vyberte v něm vlastnost **Má přílohu**.
 
-      ![Vytvoření podmínky](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![Snímek obrazovky, který zobrazuje vlastnost "a" pro podmínku a výběr vlastnosti "má přílohy".](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. V prostředním poli ponechte operátor **rovná se**.
 
@@ -363,7 +365,7 @@ Teď otestujte, jestli podmínka správně funguje:
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu**triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu** triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje jednu přílohu. Prozatím jednoduše vytvořte prázdný textový soubor a připojte ho k e-mailu.
 
@@ -389,7 +391,7 @@ Tento krok přidá do aplikace logiky funkci Azure, kterou jste předtím vytvo�
 
    ![Přidání akce ve větvi „Pokud je true“](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. V poli hledání vyhledejte „azure functions“ a vyberte tuto akci: **Zvolte funkci Azure – Azure Functions**.
+1. Ve vyhledávacím poli Najděte Azure functions a vyberte tuto akci: **Zvolte funkci Azure Functions-Azure Functions**
 
    ![Výběr akce v části „Zvolte funkci Azure“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +460,7 @@ V dalším kroku přidejte akci, která vytvoří v kontejneru úložiště obje
 
    Po dokončení bude akce vypadat jako v tomto příkladu:
 
-   ![Dokončená akce „Vytvořit objekt blob“](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![Snímek obrazovky, který ukazuje příklad dokončené akce vytvořit objekt BLOB.](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. Uložte aplikaci logiky.
 
@@ -470,17 +472,17 @@ Teď otestujte, jestli aplikace logiky zpracovává e-maily tak, jak jste zamý�
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu**triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu** triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje aspoň jednu přílohu. Prozatím stačí vytvořit jeden prázdný textový soubor a připojit ho k e-mailu.
 
-   * Váš e-mail obsahuje nějaký testovací obsah v těle, například:`Testing my logic app`
+   * Váš e-mail obsahuje nějaký testovací obsah v těle, například: `Testing my logic app`
 
    Pokud se aplikace logiky i přes úspěšnou aktivaci triggeru neaktivovala nebo nespustila, podívejte se do článku [Řešení potíží s aplikací logiky](../logic-apps/logic-apps-diagnosing-failures.md).
 
 1. Zkontrolujte, jestli aplikace logiky uložila e-mail do správného kontejneru úložiště.
 
-   1. V Průzkumník služby Storage rozbalte **místní & připojené**  >  attachmentstorageacct**účty úložiště**–  >  přílohy kontejnerů objektů BLOB **(Key)**  >  **Blob Containers**  >  **attachments**.
+   1. V Průzkumník služby Storage rozbalte **místní & připojené**  >  attachmentstorageacct **účty úložiště**–  >  přílohy kontejnerů objektů BLOB **(Key)**  >    >  .
 
    1. Vyhledejte testovací e-mail v kontejneru **přílohy**.
 
@@ -502,7 +504,7 @@ Pokud chcete zpracovat všechny přílohy e-mailu, přidejte do pracovního post
 
    ![Přidání smyčky „pro každý“](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `for each` jako filtr a vyberte tuto akci: **pro každý**
+1. V části **zvolit akci** zadejte do vyhledávacího pole `for each` jako filtr a vyberte tuto akci: **pro každý**
 
    ![Vyberte for each.](./media/tutorial-process-email-attachments-workflow/select-for-each.png)
 
@@ -555,7 +557,7 @@ Teď otestujte, jestli aplikace logiky zpracovává e-přílohy tak, jak jste za
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje aspoň dvě přílohy. Prozatím jednoduše vytvořte dva prázdné textové soubory a připojte je k e-mailu.
 
@@ -563,7 +565,7 @@ Teď otestujte, jestli aplikace logiky zpracovává e-přílohy tak, jak jste za
 
 1. Zkontrolujte, jestli aplikace logiky uložila e-mail a přílohy do správného kontejneru úložiště.
 
-   1. V Průzkumník služby Storage rozbalte **místní & připojené**  >  attachmentstorageacct**účty úložiště**–  >  přílohy kontejnerů objektů BLOB **(Key)**  >  **Blob Containers**  >  **attachments**.
+   1. V Průzkumník služby Storage rozbalte **místní & připojené**  >  attachmentstorageacct **účty úložiště**–  >  přílohy kontejnerů objektů BLOB **(Key)**  >    >  .
 
    1. Zkontrolujte, jestli se do kontejneru **přílohy** uložil e-mail i přílohy.
 
@@ -601,8 +603,8 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
 
    | Nastavení | Hodnota | Poznámky |
    | ------- | ----- | ----- |
-   | **Schopn** | <*příjemce-e-mailová adresa*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
-   | **Předmět**  | ```ASAP - Review applicant for position:``` **Předmět** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. |
+   | **Do** | <*příjemce-e-mailová adresa*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Předmět**  | ```ASAP - Review applicant for position:```**Subjekt** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. |
    | **Text** | ```Please review new applicant:``` <p>```Applicant name:```**Od** <p>```Application file location:``` **Cesta** <p>```Application email content:``` **Text** | Obsah textu e-mailu. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu vyberte tato pole: <p>- Pole **Od** v části **Při přijetí nového e-mailu** </br>- Pole **Cesta** v části **Vytvořit objekt blob pro tělo e-mailu** </br>- Pole **Text** v části **Volat funkci RemoveHTMLFunction k vymazání textu e-mailu** |
    ||||
 
@@ -621,7 +623,7 @@ V dalším kroku otestujte aplikaci logiky, která teď vypadá podobně jako v 
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje jednu nebo více příloh. Můžete znovu použít prázdný textový soubor z předchozího testu. Pokud chcete vyzkoušet realističtější scénář, připojte soubor s životopisem.
 

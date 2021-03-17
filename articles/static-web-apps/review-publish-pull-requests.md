@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83597027"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172736"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Kontrola žádostí o přijetí změn v předprodukčních prostředích ve službě Azure Static Web Apps ve verzi Preview
 
@@ -24,7 +24,7 @@ Azure static Web Apps generuje pracovní postup akcí GitHubu v úložišti. Př
 
 Při použití statického Web Apps Azure může současně existovat několik předprodukčních prostředí současně. Pokaždé, když vytvoříte žádost o přijetí změn na sledovanou větev, nainstaluje se připravené verze s vašimi změnami do samostatného předprodukčního prostředí.
 
-Používání předprodukčních prostředí přináší spoustu výhod. Můžete například provést následující věci:
+Používání předprodukčních prostředí přináší spoustu výhod. Můžete například:
 
 - Zkontrolujte vizuální změny mezi výrobou a produkčním prostředím. Například zobrazení aktualizací obsahu a rozložení.
 - Demonstrujte změny svého týmu.
@@ -33,7 +33,7 @@ Používání předprodukčních prostředí přináší spoustu výhod. Můžet
 - Před nasazením do produkčního prostředí proveďte kontrolu správnosti.
 
 > [!NOTE]
-> Během období Preview je povolena [maximálně jedna Příprava pracovního prostředí](quotas.md) .
+> Během období Preview jsou povoleny [maximálně tři pracovní prostředí](quotas.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,7 +67,7 @@ Pak z této změny vytvořte žádost o přijetí změn.
 
 1. Klikněte na tlačítko **porovnat & žádosti** o přijetí změn ve vaší větvi.
 
-1. Volitelně můžete zadat nějaké podrobnosti o změnách a pak kliknout na **vytvořit žádost o**přijetí změn.
+1. Volitelně můžete zadat nějaké podrobnosti o změnách a pak kliknout na **vytvořit žádost o** přijetí změn.
 
     :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Vytvoření žádosti o získání dat v GitHubu":::
 
@@ -80,7 +80,7 @@ V případě potřeby můžete přiřadit revidující a přidat komentáře k d
 
 Po vytvoření žádosti o získání dat se spustí pracovní postup nasazení [akcí GitHubu](https://github.com/features/actions) a nasadí vaše změny do předprodukčního prostředí.
 
-Jakmile pracovní postup dokončí sestavování a nasazování vaší aplikace, robot na GitHubu přidá komentář k žádosti o přijetí změn, která obsahuje adresu URL předprodukčního prostředí. Kliknutím na tento odkaz můžete zobrazit připravené změny.
+Jakmile pracovní postup dokončí sestavování a nasazování vaší aplikace, robot na GitHubu přidá komentář k žádosti o přijetí změn, která obsahuje adresu URL předprodukčního prostředí. Kliknutím na tento odkaz si můžete zobrazit připravené změny.
 
 :::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Komentář žádosti o získání dat s předprodukční adresou URL":::
 
@@ -109,7 +109,7 @@ Připravené verze vaší aplikace jsou aktuálně přístupné veřejně prost�
 > [!WARNING]
 > Buďte opatrní při publikování citlivého obsahu na připravené verze, protože přístup k předprodukčním prostředím není omezený.
 
-Počet předprodukčních prostředí dostupných pro každou aplikaci nasazenou se statickým Web Apps závisí na úrovni SKU, kterou používáte. Například u bezplatné úrovně můžete mít kromě produkčního prostředí 1 předprodukční prostředí.
+Počet předprodukčních prostředí dostupných pro každou aplikaci nasazenou se statickým Web Apps závisí na úrovni SKU, kterou používáte. Například u bezplatné úrovně můžete mít kromě produkčního prostředí tři předprodukční prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,22 +1,19 @@
 ---
 title: Kopírování nových a změněných souborů pomocí LastModifiedDate
 description: Naučte se používat šablonu řešení ke kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94d09dc96d017dba3b16cc5fe113272a9393741d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629061"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362076"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 
@@ -26,7 +23,7 @@ Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírov
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů **LastModifiedDate**a pak zkopíruje tyto vybrané soubory z úložiště zdrojů dat do úložiště cíle dat.
+Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů **LastModifiedDate** a pak zkopíruje tyto vybrané soubory z úložiště zdrojů dat do úložiště cíle dat.
 
 Šablona obsahuje jednu aktivitu:
 - **Kopírováním** můžete kopírovat nové a změněné soubory pouze pomocí LastModifiedDate z úložiště souborů do cílového úložiště.
@@ -69,13 +66,13 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
     ![Spuštění kanálu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
-6. Zkontrolujte výsledek. Zobrazí se pouze soubory poslední změny v nakonfigurovaném časovém rozmezí byly zkopírovány do cílového úložiště.
+6. Prohlédněte si výsledek. Zobrazí se pouze soubory poslední změny v nakonfigurovaném časovém rozmezí byly zkopírovány do cílového úložiště.
 
     ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. Nyní můžete přidat bubnovou aktivační událost Windows pro automatizaci tohoto kanálu, aby kanál vždy mohl pravidelně kopírovat nové a změněné soubory pouze pomocí LastModifiedDate.  Vyberte **Přidat aktivační událost**a vyberte **Nová/upravit**.
+7. Nyní můžete přidat bubnovou aktivační událost Windows pro automatizaci tohoto kanálu, aby kanál vždy mohl pravidelně kopírovat nové a změněné soubory pouze pomocí LastModifiedDate.  Vyberte **Přidat aktivační událost** a vyberte **Nová/upravit**.
 
-    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![Snímek obrazovky, který zvýrazní možnost nabídky nová/upravit, která se zobrazí, když vyberete Přidat Trigger.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
 8. V okně **Přidat aktivační události** vyberte **+ Nový**.
 
@@ -88,8 +85,8 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
     - **Directory_Source**  =  **podsložky**.  Můžete nahradit podsložku ve zdrojovém úložišti dat.
     - **FolderPath_Destination**  =  **DestinationFolder**.  Můžete nahradit složkou v cílovém úložišti dat.
     - **Directory_Destination**  =  **podsložky**.  Můžete nahradit podsložku v cílovém úložišti dat.
-    - **LastModified_From**  =   ** \@ Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
-    - **LastModified_To**  =  ** \@ Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
+    - **LastModified_From**  =   **\@ Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
+    - **LastModified_To**  =  **\@ Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
     
     ![Vstupní parametry](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
@@ -101,9 +98,9 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
 13. V levém navigačním panelu vyberte kartu **monitorování** a počkejte asi 15 minut, pokud se opakování triggeru nastavilo na každých 15 minut. 
 
-14. Zkontrolujte výsledek. Váš kanál se zobrazí automaticky každých 15 minut a do cílového úložiště v každém spuštění kanálu se zkopírují jenom nové nebo změněné soubory ze zdrojového úložiště.
+14. Prohlédněte si výsledek. Váš kanál se zobrazí automaticky každých 15 minut a do cílového úložiště v každém spuštění kanálu se zkopírují jenom nové nebo změněné soubory ze zdrojového úložiště.
 
-    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![Snímek obrazovky, který zobrazuje výsledky, které se vrátí při aktivaci kanálu.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>Další kroky
 

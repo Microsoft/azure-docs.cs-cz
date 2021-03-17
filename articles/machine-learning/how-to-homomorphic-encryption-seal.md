@@ -9,17 +9,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b241220168a5cd81ce23be729944df387e87e567
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, devx-track-python, deploy, responsible-ml
+ms.openlocfilehash: a2c8b765f109408b8cb08f78a4b3ad2283f35eb9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844538"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223580"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Nasazení šifrované webové služby Inferencing (Preview)
 
-Naučte se nasadit model klasifikace imagí jako šifrovanou webovou službu Inferencing v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI). Webová služba je image kontejneru Docker, která obsahuje logiku modelu a bodování.
+Naučte se nasadit model klasifikace imagí jako šifrovanou webovou službu Inferencing v [Azure Container Instances](../container-instances/index.yml) (ACI). Webová služba je image kontejneru Docker, která obsahuje logiku modelu a bodování.
 
 V této příručce použijete službu Azure Machine Learning k těmto akcím:
 
@@ -30,7 +30,7 @@ V této příručce použijete službu Azure Machine Learning k těmto akcím:
 > * Nastavit šifrované předpovědi
 > * Vyčištění prostředků
 
-ACI je skvělé řešení pro testování a porozumění pracovnímu postupu nasazení modelu. Pro škálovatelná produkční nasazení zvažte použití Azure Kubernetes Service. Další informace naleznete v tématu [Jak nasadit a kde](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+ACI je skvělé řešení pro testování a porozumění pracovnímu postupu nasazení modelu. Pro škálovatelná produkční nasazení zvažte použití Azure Kubernetes Service. Další informace naleznete v tématu [Jak nasadit a kde](./how-to-deploy-and-where.md).
 
 Metoda šifrování použitá v této ukázce je [homomorphic šifrování](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic šifrování umožňuje provádět výpočty na šifrovaných datech bez nutnosti přístupu ke tajnému (dešifrovacímu) klíči. Výsledky výpočtů jsou zašifrované a dají se odhalet jenom vlastníkem tajného klíče. 
 
@@ -60,7 +60,7 @@ V poznámkovém bloku Jupyter
     > [!NOTE]
     > `encrypted-inference`Balíček je momentálně ve verzi Preview.
 
-    [`encrypted-inference`](https://pypi.org/project/encrypted-inference)je knihovna, která obsahuje vazby pro šifrované Inferencing založené na [Microsoft Seal](https://github.com/Microsoft/SEAL).
+    [`encrypted-inference`](https://pypi.org/project/encrypted-inference) je knihovna, která obsahuje vazby pro šifrované Inferencing založené na [Microsoft Seal](https://github.com/Microsoft/SEAL).
 
     ```python
     !pip install encrypted-inference==0.9

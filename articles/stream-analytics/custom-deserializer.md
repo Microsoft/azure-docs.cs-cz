@@ -1,24 +1,23 @@
 ---
 title: Kurz – vlastní deserializace rozhraní .NET pro cloudové úlohy Azure Stream Analytics
 description: Tento kurz ukazuje, jak vytvořit vlastní deserializátor .NET pro cloudovou úlohu Azure Stream Analytics pomocí sady Visual Studio.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 12/17/2020
+ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443695"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018203"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Kurz: vlastní deserializace rozhraní .NET pro Azure Stream Analytics
 
 Azure Stream Analytics má [integrovanou podporu pro tři formáty dat](stream-analytics-parsing-json.md): JSON, CSV a Avro. Pomocí vlastních deserializátorů .NET můžete číst data z jiných formátů, jako je například [vyrovnávací paměť protokolu](https://developers.google.com/protocol-buffers/), [vázání](https://github.com/Microsoft/bond) a další uživatelsky definované formáty pro úlohy cloudu i Edge.
 
-Tento kurz ukazuje, jak vytvořit vlastní deserializátor .NET pro cloudovou úlohu Azure Stream Analytics pomocí sady Visual Studio. 
+Tento kurz ukazuje, jak vytvořit vlastní deserializátor .NET pro cloudovou úlohu Azure Stream Analytics pomocí sady Visual Studio. Informace o tom, jak vytvořit deserializátory .NET v Visual Studio Code, najdete v tématu [Vytvoření deserializátorů .NET pro úlohy Azure Stream Analytics v Visual Studio Code](visual-studio-code-custom-deserializer.md).
 
 V tomto kurzu se naučíte:
 
@@ -26,17 +25,16 @@ V tomto kurzu se naučíte:
 > * Vytvořte vlastní deserializaci pro vyrovnávací paměť protokolu.
 > * Vytvořte úlohu Azure Stream Analytics v aplikaci Visual Studio.
 > * Nakonfigurujte svou úlohu Stream Analytics, aby používala vlastní deserializaci.
-> * Spusťte úlohu Stream Analytics místně a otestujte vlastní deserializaci.
+> * Spustit úlohu Stream Analytics místně a otestovat a ladit vlastní deserializaci.
+
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Nainstalujte [Visual studio 2017](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/). Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express není podporovaná.
+* Nainstalujte [Visual studio 2019 (doporučeno)](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/). Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express není podporovaná. 
 
-* [Nainstalujte nástroje pro Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) nebo aktualizujte na nejnovější verzi. Podporují se tyto verze sady Visual Studio:
-   * Visual Studio 2015
-   * Visual Studio 2017
+* [Nainstalujte nástroje pro Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) nebo aktualizujte na nejnovější verzi. 
 
 * Otevřete **Průzkumníka cloudu** v aplikaci Visual Studio a přihlaste se ke svému předplatnému Azure.
 
@@ -57,13 +55,13 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
 
 ## <a name="add-an-azure-stream-analytics-project"></a>Přidat Azure Stream Analytics projekt
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na řešení **deserializátor Protobuf** a vyberte **Přidat > nový projekt**. V části **Azure Stream Analytics > Stream Analytics**vyberte **Azure Stream Analytics Application (aplikace**). Pojmenujte ji **ProtobufCloudDeserializer** a vyberte **OK**. 
+1. V Průzkumník řešení klikněte pravým tlačítkem na řešení **deserializátor Protobuf** a vyberte **Přidat > nový projekt**. V části **Azure Stream Analytics > Stream Analytics** vyberte **Azure Stream Analytics Application (aplikace**). Pojmenujte ji **ProtobufCloudDeserializer** a vyberte **OK**. 
 
-2. Klikněte pravým tlačítkem na **odkazy** v rámci projektu **ProtobufCloudDeserializer** Azure Stream Analytics. V části **projekty**přidejte **Protobuf deserializaci**. Mělo by se automaticky vyplnit.
+2. Klikněte pravým tlačítkem na **odkazy** v rámci projektu **ProtobufCloudDeserializer** Azure Stream Analytics. V části **projekty** přidejte **Protobuf deserializaci**. Mělo by se automaticky vyplnit.
 
 ## <a name="configure-a-stream-analytics-job"></a>Konfigurace úlohy Stream Analytics
 
-1. Dvakrát klikněte na **JobConfig. JSON**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
+1. Dvakrát klikněte na **JobConfig.jszapnuto**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
@@ -74,7 +72,7 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
    |Vlastní nastavení úložiště kódu účet úložiště|< svého účtu úložiště >|
    |Kontejner nastavení vlastního úložiště kódu|< kontejneru úložiště >|
 
-2. V části **vstupy**poklikejte na **input. JSON**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
+2. V části **vstupy** dvakrát klikněte **Input.jsna**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
@@ -85,9 +83,9 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
    |Kontejner|< kontejneru úložiště >|
    |Formát serializace události|Jiné (Protobuf, XML, proprietární...)|
    |Prostředek|Zatížení z odkazu na projekt ASA nebo CodeBehind|
-   |Název sestavení CSharp|ProtobufDeserializer. dll|
+   |Název sestavení CSharp|ProtobufDeserializer.dll|
    |Název třídy|MessageBodyProto.MessageBodyDeserializer|
-   |Typ komprese události|Žádná|
+   |Typ komprese události|Žádné|
 
 3. Do souboru **script. asaql** přidejte následující dotaz.
 
@@ -95,14 +93,14 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
    SELECT * FROM Input
    ```
 
-4. Stáhněte si [vzorový vstupní soubor protobuf](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). Ve složce **vstupy** klikněte pravým tlačítkem na **input. JSON** a vyberte **Přidat místní vstup**. Potom poklikejte na **local_Input. JSON** a nakonfigurujte následující nastavení:
+4. Stáhněte si [vzorový vstupní soubor protobuf](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). Ve složce **vstupy** klikněte pravým tlačítkem na **Input.jsna** a vyberte **Přidat místní vstup**. Pak dvakrát klikněte **local_Input.jsna** a nakonfigurujte následující nastavení:
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
    |Alias pro vstup|Vstup|
    |Typ zdroje|Datový proud|
    |Formát serializace události|Jiné (Protobuf, XML, proprietární...)|
-   |Název sestavení CSharp|ProtobufDeserializer. dll|
+   |Název sestavení CSharp|ProtobufDeserializer.dll|
    |Název třídy|MessageBodyProto.MessageBodyDeserializer|
    |Cesta k místnímu vstupnímu souboru|< cestu k souboru pro stažený ukázkový vstupní soubor protobuf>|
 
@@ -116,11 +114,13 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
 
 ## <a name="debug-your-deserializer"></a>Ladění odserializátoru
 
-Deserializaci rozhraní .NET můžete ladit místně stejným způsobem jako ladění standardního kódu .NET. 
+Deserializaci rozhraní .NET můžete ladit místně stejným způsobem jako ladění standardního kódu .NET.
 
-1. Přidejte do své funkce zarážky.
+1. Klikněte pravým tlačítkem myši na název projektu **ProtobufCloudDeserializer** a nastavte jej jako spouštěný projekt.
 
-2. Stisknutím klávesy **F5** spusťte ladění. Program se podle očekávání bude zastavovat na zarážkách.
+2. Přidejte do své funkce zarážky.
+
+3. Stisknutím klávesy **F5** spusťte ladění. Program se podle očekávání bude zastavovat na zarážkách.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

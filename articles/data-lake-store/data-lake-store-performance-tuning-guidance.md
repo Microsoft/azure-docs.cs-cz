@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 – ladění výkonu
 description: Přečtěte si, jak využít veškerou dostupnou propustnost v Azure Data Lake Storage Gen1 je důležité pro dosažení optimálního výkonu díky souběžnému provádění tolika operací čtení a zápisu.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190246"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724676"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Vyladění Azure Data Lake Storage Gen1 pro výkon
 
@@ -25,7 +25,7 @@ Data Lake Storage Gen1 se může škálovat, aby poskytovala potřebnou propustn
 
 Při příjmu dat ze zdrojového systému do Data Lake Storage Gen1 je důležité vzít v úvahu, že zdrojový hardware, zdrojový síťový hardware a síťové připojení k Data Lake Storage Gen1 může být kritickým bodem.
 
-![Data Lake Storage Gen1 výkon](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Diagram znázorňující, že zdrojový hardware, zdrojový síťový hardware a síťové připojení k Data Lake Storage Gen1 může být kritickým bodem.](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Je důležité zajistit, aby přesun dat neovlivnily tyto faktory.
 
@@ -39,15 +39,15 @@ Síťové připojení mezi zdrojovými daty a Data Lake Storage Gen1 může něk
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurace nástrojů pro přijímání dat pro maximální paralelismus
 
-Po vyřešení kritických bodů hardwaru zdroje a síťového připojení jste připraveni ke konfiguraci nástrojů pro přijímání. Následující tabulka shrnuje nastavení klíče pro několik oblíbených nástrojů pro přijímání a poskytuje podrobné články pro ladění výkonu. Další informace o tom, který nástroj použít pro váš scénář, najdete v tomto [článku](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
+Po vyřešení kritických bodů hardwaru zdroje a síťového připojení jste připraveni ke konfiguraci nástrojů pro přijímání. Následující tabulka shrnuje nastavení klíče pro několik oblíbených nástrojů pro přijímání a poskytuje podrobné články pro ladění výkonu. Další informace o tom, který nástroj použít pro váš scénář, najdete v tomto [článku](./data-lake-store-data-scenarios.md).
 
 | Nástroj          | Nastavení | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | Hodnoty perfilethreadcount, hodnota concurrentfilecount | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Jednotky Azure Data Lake Analytics | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (mapovač) | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies | [Propojit](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. Size,-m (Mapper) | [Propojit](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| PowerShell       | Hodnoty perfilethreadcount, hodnota concurrentfilecount | [Odkaz](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Jednotky Azure Data Lake Analytics | [Odkaz](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapovač) | [Odkaz](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies | [Odkaz](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper) | [Odkaz](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Struktura sady dat
 
@@ -100,7 +100,7 @@ V rámci clusteru HDInsight existují tři vrstvy, které je možné vyladit, ab
 
 **Spusťte cluster s více uzly a/nebo s většími velikostmi virtuálních počítačů.** Větší cluster vám umožní spustit více kontejnerů PŘÍZ, jak je znázorněno na obrázku níže.
 
-![Data Lake Storage Gen1 výkon](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![Diagram, který ukazuje použití více kontejnerů PŘÍZe.](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **Používejte virtuální počítače s větší šířkou pásma sítě.** Velikost šířky pásma sítě může být kritickým bodem, pokud je menší šířka pásma sítě, než Data Lake Storage Gen1 propustnost. Různé virtuální počítače budou mít proměnlivé velikosti šířky pásma sítě. Vyberte typ virtuálního počítače, který má největší možnou šířku pásma sítě.
 
@@ -108,7 +108,7 @@ V rámci clusteru HDInsight existují tři vrstvy, které je možné vyladit, ab
 
 **Použijte menší kontejnery PŘÍZe.** Zmenšete velikost každého kontejneru PŘÍZe, aby bylo možné vytvořit více kontejnerů se stejným množstvím prostředků.
 
-![Data Lake Storage Gen1 výkon](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![Diagram, který ukazuje použití menších kontejnerů PŘÍZ.](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 V závislosti na zatížení bude vždy potřeba minimální velikost kontejneru PŘÍZe. Pokud vybíráte příliš malý kontejner, úlohy budou fungovat při potížích s nedostatkem paměti. Obvykle kontejnery PŘÍZe by neměly být menší než 1 GB. Je běžné Zobrazit 3 GB PŘÍZ kontejnery. Pro některé úlohy budete možná potřebovat větší kontejnery PŘÍZe.
 
@@ -118,7 +118,7 @@ V závislosti na zatížení bude vždy potřeba minimální velikost kontejneru
 
 **Použijte všechny dostupné kontejnery.** Nastavte počet úkolů, které mají být stejné nebo větší než počet dostupných kontejnerů, aby byly použity všechny prostředky.
 
-![Data Lake Storage Gen1 výkon](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Diagram, který zobrazuje použití všech dostupných kontejnerů.](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **Neúspěšné úlohy jsou nákladné.** Pokud má každý úkol zpracovat velké množství dat, pak při selhání úlohy dojde k nenáročnému opakování. Proto je lepší vytvořit další úkoly, z nichž každý zpracovává malé množství dat.
 

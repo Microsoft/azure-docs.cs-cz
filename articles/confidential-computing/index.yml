@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Dokumentace k důvěrných výpočetním operacím Azure
+summary: Důvěrné výpočetní operace Azure nabízejí řešení umožňující izolaci citlivých dat během jejich zpracování v cloudu. Přečtěte si koncepci, projděte si kurzy, pracujte s ukázkami kódu a naučte se vytvářet a nasazovat aplikace založené na důvěrné výpočetní infrastruktuře. Produkty Microsoftu postavené na důvěrných výpočetních operacích vám umožní zajistit maximální zabezpečení vašich úloh.
+metadata:
+  title: Důvěrné výpočetní operace Azure
+  description: Seznamte se s tím, jak důvěrné výpočetní operace v Azure chrání data během používání a naučte se, jak vytvářet důvěrné úlohy v cloudu.
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100652628"
+landingContent:
+- title: Informace o důvěrných výpočetních operacích Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou důvěrné výpočetní operace Azure?
+      url: overview.md
+    - text: Scénáře
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: Virtuální počítače
+      url: confidential-computing-enclaves.md
+    - text: Výpočetní prostředky kontejnerů v AKS
+      url: confidential-containers.md
+    - text: Vývoj aplikací
+      url: application-development.md
+    - text: Attestation
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Virtuální počítače Intel SGX
+      url: ../virtual-machines/dcv2-series.md
+- title: Virtuální počítače
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Virtuální počítače Intel SGX
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: Řešení na virtuálních počítačích
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: Nasazení na webu Azure Portal
+      url: quick-create-portal.md
+    - text: Nasazení na webu Azure Portal
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: Nejčastější dotazy k virtuálním počítačům s důvěrnými výpočetními operacemi
+      url: faq.md
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: Dostupnost
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: Výpočetní prostředky kontejneru
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Důvěrné výpočetní uzly v AKS (služba Azure Kubernetes)
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: Důvěrné kontejnery
+      url: confidential-containers.md
+    - text: Kontejnery s podporou enklávy
+      url: enclave-aware-containers.md
+    - text: Ověření out-of-proc
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: Zřizování na základě CLI s využitím jednoduché kontejnerové aplikace enklávy v AKS
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: Ukázky důvěrného kontejneru (neupravené kontejnery v SGX)
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Ukázky kontejnerů s podporou enklávy
+      url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
+  - linkListType: reference
+    links:
+    - text: Nejčastější dotazy k důvěrným uzlům v AKS
+      url: confidential-nodes-aks-faq.md
+    - text: Informace o službě Azure Kubernetes Service (AKS)
+      url: ../aks/intro-kubernetes.md
+- title: Důvěrné cloudové služby
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure Attestation
+      url: ../attestation/overview.md
+    - text: Důvěrný odvozovací modul runtime ONNX
+      url: https://aka.ms/confidentialinference
+- title: Sestavení s využitím důvěrných výpočetních operací
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tajná ukázka zdravotní péče na AKS
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Ověřený vzájemný protokol TLS s využitím Open Enclave v AKS
+      url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
+  - linkListType: reference
+    links:
+    - text: Open Enclave (OE) SDK
+      url: https://aka.ms/oesdkGitHubRepo

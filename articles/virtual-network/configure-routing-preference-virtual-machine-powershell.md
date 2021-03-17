@@ -10,30 +10,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 2002e4a11a2accbbc639c200372c393b8dc2f228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ffa7ef7b3539e3cefc4e2f8621d7c67cd3b56b0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707527"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672954"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Konfigurace předvolby směrování pro virtuální počítač pomocí Azure PowerShell
 
 V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování pro virtuální počítač. Internetový provoz z virtuálního počítače bude směrován přes síť poskytovatele internetových služeb, pokud zvolíte možnost **Internet** jako předvolby směrování. Výchozí směrování je prostřednictvím globální sítě Microsoftu.
 
 V tomto článku se dozvíte, jak vytvořit virtuální počítač s veřejnou IP adresou, která je nastavená na směrování provozu přes síť poskytovatele internetových služeb pomocí Azure PowerShell.
-
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="register-the-feature-for-your-subscription"></a>Registrace funkce pro vaše předplatné
-Funkce předvolby směrování je aktuálně ve verzi Preview. Zaregistrujte funkci pro vaše předplatné následujícím způsobem:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `Connect-AzAccount` .
@@ -156,5 +146,5 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [předvolbách směrování ve veřejných IP adresách](routing-preference-overview.md).
-* Přečtěte si další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure.
+* Přečtěte si další informace o [veřejných IP adresách](./public-ip-addresses.md#public-ip-addresses) v Azure.
 * Přečtěte si další informace o [nastavení veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address).

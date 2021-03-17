@@ -5,12 +5,13 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: 16dcfd23ec00a144b17244e811e91a92db9e6995
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253043"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784575"
 ---
 # <a name="reliable-services-notifications"></a>Oznámení Reliable Services
 Oznámení umožňují klientům sledovat změny provedené v objektu, který zajímá. Oznámení podporují dva typy objektů: *Reliable State Manager* a *Reliable Dictionary*.
@@ -41,7 +42,7 @@ Kolekce Reliable State Manageru se znovu sestaví ve třech případech:
 * Úplná kopie: předtím, než se replika může připojit ke konfigurační sadě, je nutné ji sestavit. V některých případech vyžaduje, aby se pro sekundární repliku nečinných dat nastavila úplná kopie stavu spolehlivého správce stavu z primární repliky. Reliable State Manager v sekundární replice používá **NotifyStateManagerChangedEventArgs** k vyvolání události, která obsahuje sadu spolehlivých stavů, které získala z primární repliky.
 * Obnovení: ve scénářích zotavení po havárii je možné obnovit stav repliky ze zálohy prostřednictvím **RestoreAsync**. V takových případech používá správce Reliable State na primární replice **NotifyStateManagerChangedEventArgs** k vyvolání události, která obsahuje sadu spolehlivých stavů, které obnovila ze zálohy.
 
-Pokud chcete zaregistrovat oznámení o transakcích a oznámeních správce stavu, musíte se zaregistrovat s **TransactionChanged** nebo **StateManagerChanged** událostmi ve Správci Reliable State Manager. Běžným místem pro registraci těchto obslužných rutin událostí je konstruktor stavové služby. Při registraci do konstruktoru nepřijdete o žádné oznámení, které se v průběhu životnosti **IReliableStateManager**způsobilo změnou.
+Pokud chcete zaregistrovat oznámení o transakcích a oznámeních správce stavu, musíte se zaregistrovat s **TransactionChanged** nebo **StateManagerChanged** událostmi ve Správci Reliable State Manager. Běžným místem pro registraci těchto obslužných rutin událostí je konstruktor stavové služby. Při registraci do konstruktoru nepřijdete o žádné oznámení, které se v průběhu životnosti **IReliableStateManager** způsobilo změnou.
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -102,7 +103,7 @@ Spolehlivý slovník poskytuje oznámení pro následující události:
 
 * Rebuild: volá se, když **ReliableDictionary** obnovil svůj stav z obnoveného nebo zkopírovaného místního stavu nebo zálohy.
 * Clear: volá se, když se stav **ReliableDictionary** vymazal pomocí metody **ClearAsync** .
-* Add: volá se, když se do **ReliableDictionary**přidá položka.
+* Add: volá se, když se do **ReliableDictionary** přidá položka.
 * Update: volá se, když se aktualizovala položka v **IReliableDictionary** .
 * Remove: volá se, když se odstraní položka v **IReliableDictionary** .
 
@@ -210,4 +211,4 @@ Tady je několik věcí, které je potřeba vzít v úvahu:
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
-* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

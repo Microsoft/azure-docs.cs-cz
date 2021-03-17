@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8f755b42249a88a2d37117003d561f79aea6b170
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4230a194fb18587a209c100a39b0924e6170502d
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165987"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063463"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Předpoklady pro prohlížeč systému Xamarin Android pro použití MSAL.NET
 
@@ -44,23 +44,23 @@ V následující tabulce jsou uvedena zařízení a prohlížeče, které byly t
 
 | Zařízení | Prohlížeč     |  Výsledek  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/jeden + | Chrome\* | Dána|
-| Huawei/jeden + | Edge\* | Dána|
-| Huawei/jeden + | Firefox\* | Dána|
-| Huawei/jeden + | Brave\* | Dána|
-| Jedna + | Ecosia\* | Dána|
-| Jedna + | Kiwi\* | Dána|
-| Huawei/jeden + | Opera | Dána|
-| Huawei | OperaMini | Dána|
-| Huawei/jeden + | Prohlížeč | Dána|
-| Jedna + | Maxthon | Dána|
+| Huawei/jeden + | Chrome\* | Úspěšné absolvování|
+| Huawei/jeden + | Edge\* | Úspěšné absolvování|
+| Huawei/jeden + | Firefox\* | Úspěšné absolvování|
+| Huawei/jeden + | Brave\* | Úspěšné absolvování|
+| Jedna + | Ecosia\* | Úspěšné absolvování|
+| Jedna + | Kiwi\* | Úspěšné absolvování|
+| Huawei/jeden + | Opera | Úspěšné absolvování|
+| Huawei | OperaMini | Úspěšné absolvování|
+| Huawei/jeden + | Prohlížeč | Úspěšné absolvování|
+| Jedna + | Maxthon | Úspěšné absolvování|
 | Huawei/jeden + | DuckDuckGo | Uživatel zrušil ověřování.|
 | Huawei/jeden + | Prohlížeč UC | Uživatel zrušil ověřování.|
 | Jedna + | Delfín | Uživatel zrušil ověřování.|
 | Jedna + | Prohlížeč CM | Uživatel zrušil ověřování.|
 | Huawei/jeden + | Žádné nainstalované | Výjimka AndroidActivityNotFound|
 
-\*Podporuje vlastní karty
+\* Podporuje vlastní karty
 
 ## <a name="known-issues"></a>Známé problémy
 

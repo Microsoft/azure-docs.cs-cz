@@ -1,17 +1,17 @@
 ---
 title: Doporučení pro výkon – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci doporučení výkonu na serveru Azure Database for PostgreSQL-Single.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768465"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710562"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Doporučení týkající se výkonu v Azure Database for PostgreSQL – jeden server
 
@@ -27,13 +27,13 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 Otevřete **doporučení pro výkon** z části **inteligentní výkon** na panelu nabídek na stránce Azure Portal pro server PostgreSQL.
 
-![Úvodní stránka Doporučení k výkonu](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Úvodní stránka Doporučení k výkonu":::
 
 Vyberte možnost **analyzovat** a zvolte databázi, která bude začínat analýzou. V závislosti na vašem zatížení může trvat několik minut, než se dokončí analýza. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provede důkladné přezkoumání vaší databáze. Doporučujeme, abyste provedli analýzu v době mimo špičku. 
 
 V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena kterákoli z nich.
 
-![Nová stránka s doporučeními pro výkon](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Úvodní stránka Doporučení k výkonu":::
 
 Doporučení se nepoužívají automaticky. Pokud chcete doporučení použít, zkopírujte text dotazu a spusťte ho z vašeho klienta podle vlastního výběru. Nezapomeňte otestovat a monitorovat, abyste vyhodnotili doporučení. 
 

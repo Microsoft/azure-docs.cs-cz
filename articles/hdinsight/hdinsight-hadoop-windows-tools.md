@@ -1,19 +1,16 @@
 ---
 title: Použití počítače s Windows se systémem Hadoop ve službě HDInsight – Azure
 description: Práce z počítače s Windows v systému Hadoop ve službě HDInsight. Spravujte a Dotazujte clustery pomocí nástrojů PowerShell, Visual Studio a Linux. Vývoj řešení pro velké objemy dat pomocí .NET
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceb83c8c1754f0bc298290f522a8ae532db32140
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75933938"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434606"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v Apache Hadoop ekosystému ve službě HDInsight z počítače s Windows
 
@@ -31,17 +28,17 @@ Příklady úloh, které můžete provádět s PowerShellem:
 * [Spouštějte Apache Hive dotazy pomocí PowerShellu](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Správa clusterů pomocí PowerShellu](hdinsight-administer-use-powershell.md)
 
-Pokud chcete získat nejnovější verzi, postupujte podle kroků pro [instalaci a konfiguraci Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps) .
+Pokud chcete získat nejnovější verzi, postupujte podle kroků pro [instalaci a konfiguraci Azure PowerShellu](/powershell/azure/install-az-ps) .
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Nástroje, které můžete spustit v prohlížeči
 
 Následující nástroje mají webové uživatelské rozhraní, které běží v prohlížeči:
-* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** je interaktivní prostředí příkazového řádku, které běží v prohlížeči a v rámci Azure Portal.
+* **[Azure Cloud Shell](../cloud-shell/overview.md)** je interaktivní prostředí příkazového řádku, které běží v prohlížeči a v rámci Azure Portal.
 
 * **[Webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)** je nástroj pro správu a monitorování, který je k dispozici ve Azure Portal, který je možné použít ke správě různých druhů úloh, jako je například:
     * [Použití Apache Ambari s REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Zobrazení Apache Hive v Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Zobrazení Apache Tez v Apache Ambari](hdinsight-debug-ambari-tez-view.md)
+    * [Zobrazení Apache Tez v Apache Ambari](./index.yml)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop) Tools pro Visual Studio
 
@@ -58,7 +55,7 @@ Příklady úloh, které můžete provádět pomocí sady Visual Studio a Data L
 Sadu Visual Studio se sadou .NET SDK můžete použít ke správě clusterů a vývoji aplikací pro velké objemy dat. Můžete použít další prostředí pro následující úkoly, ale příklady jsou uvedeny v aplikaci Visual Studio.
 
 Příklady úloh, které můžete provádět s .NET SDK v sadě Visual Studio:
-* [Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)
+* [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight)
 * [Spouštějte Apache Hive dotazy pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Pomocí uživatelem definovaných funkcí jazyka C# se Apache Hive a Apache vepřovým proudem v Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
@@ -84,13 +81,13 @@ Clustery Apache Spark v HDInsight zahrnují notebooky Apache Zeppelin a jádra, 
 
 Pokud jste pocházeli v situaci, kdy je nutné použít nástroj nebo technologii, která je k dispozici pouze pro Linux, vezměte v úvahu následující možnosti:
 
-* **Bash v Ubuntu ve Windows 10** poskytuje podsystém Linux ve Windows. Bash umožňuje přímo spouštět nástroje pro Linux bez nutnosti udržovat vyhrazenou instalaci systému Linux. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .
-* **Docker for Windows** poskytuje přístup k mnoha nástrojům pro Linux a dá se spustit přímo z Windows. Můžete například použít Docker ke spuštění klienta Beeline pro podregistr přímo z Windows. Docker můžete použít také ke spuštění místního poznámkového bloku Jupyter a ke vzdálenému připojení ke Sparku ve službě HDInsight. [Začínáme s Docker for Windows](https://docs.docker.com/docker-for-windows/)
+* **Bash v Ubuntu ve Windows 10** poskytuje podsystém Linux ve Windows. Bash umožňuje přímo spouštět nástroje pro Linux bez nutnosti udržovat vyhrazenou instalaci systému Linux. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .
+* **Docker for Windows** poskytuje přístup k mnoha nástrojům pro Linux a dá se spustit přímo z Windows. Můžete například použít Docker ke spuštění klienta Beeline pro podregistr přímo z Windows. Docker můžete použít také ke spuštění místního Jupyter Notebook a ke vzdálenému připojení ke Sparku ve službě HDInsight. [Začínáme s Docker for Windows](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)** umožňuje grafiku procházet systémem souborů clusteru přes připojení SSH.
 
 ## <a name="cross-platform-tools"></a>Nástroje pro různé platformy
 
-Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.  Další informace najdete v tématu [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.  Další informace najdete v tématu [rozhraní příkazového řádku (CLI) pro Azure Command-Line](/cli/azure/).
 
 ## <a name="next-steps"></a>Další kroky
 

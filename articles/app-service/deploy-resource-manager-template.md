@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637933"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88961597"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manager
 
@@ -90,7 +90,7 @@ Pokud vaše Správce prostředků šablona používá MSDeploy, může být obt�
 
 1. Přejít na [konzolu Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)webu.
 2. Přejděte do složky na adrese D:\home\LogFiles\SiteExtensions\MSDeploy..
-3. Vyhledejte soubory appManagerStatus.xml a appManagerLog.xml. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k [fóru](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+3. Vyhledejte soubory appManagerStatus.xml a appManagerLog.xml. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k [fóru](/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Zvolit jedinečný název webové aplikace
 

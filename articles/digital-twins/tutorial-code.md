@@ -1,22 +1,29 @@
 ---
-title: Kódování klientské aplikace
+title: 'Kurz: vytvoření kódu klientské aplikace'
 titleSuffix: Azure Digital Twins
 description: Kurz pro zápis minimálního kódu pro klientskou aplikaci pomocí sady .NET (C#) SDK.
-author: cschormann
-ms.author: cschorm
-ms.date: 05/05/2020
+author: baanders
+ms.author: baanders
+ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d063418bb8e78bf306dda8fc558bb0e3005dbd0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584892"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424457"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>Kódování pomocí rozhraní API digitálních vláken Azure
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
-Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [klientské knihovny Azure IoT Digital vláken pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
+Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [sady Azure Digital prokážed SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
+
+> [!div class="checklist"]
+> * Nastavit projekt
+> * Začínáme s kódem projektu   
+> * Ukázka kompletního kódu
+> * Vyčištění prostředků
+> * Další kroky
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +33,11 @@ Co je potřeba začít:
 * Jakýkoli Editor kódu
 * **.NET Core 3,1** na vašem vývojovém počítači. Tuto verzi .NET Core SDK můžete stáhnout pro více platforem od [stažení .NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
+### <a name="prepare-an-azure-digital-twins-instance"></a>Příprava instance digitálních vláken Azure
+
+[!INCLUDE [Azure Digital Twins: instance prereq](../../includes/digital-twins-prereq-instance.md)]
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
 ## <a name="set-up-project"></a>Nastavit projekt
 
@@ -36,7 +47,7 @@ V počítači otevřete příkazový řádek nebo jiné okno konzoly a vytvořte
 
 Přejděte do nového adresáře.
 
-Jednou v adresáři projektu vytvořte prázdný projekt konzolové aplikace .NET. V příkazovém okně spusťte následující příkaz pro vytvoření minimálního projektu C# pro konzolu:
+Jednou v adresáři projektu **vytvořte prázdný projekt konzolové aplikace .NET**. V okně příkazového řádku můžete spuštěním následujícího příkazu vytvořit projekt minimálního C# pro konzolu:
 
 ```cmd/sh
 dotnet new console
@@ -44,16 +55,14 @@ dotnet new console
 
 Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *program.cs* , kde budete psát většinu kódu.
 
-Dále přidejte dvě nezbytné závislosti pro práci s digitálními úkoly Azure:
+Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
+
+V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
 ```
-
-První závislost je [Klientská knihovna pro Azure IoT, která je pro .NET Vyzdvojená](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Druhá závislost poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
-
-Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
 
 ## <a name="get-started-with-project-code"></a>Začínáme s kódem projektu
 
@@ -67,29 +76,19 @@ V této části začnete psát kód pro nový projekt aplikace, abyste mohli pra
 
 K dispozici je také část zobrazující kompletní kód na konci tohoto kurzu. Tuto možnost můžete použít jako referenci ke kontrole vašeho programu.
 
-Začněte tím, že otevřete soubor *program.cs* v editoru kódu. Zobrazí se minimální šablona kódu, která vypadá nějak takto:
+Začněte tím, že otevřete soubor *program.cs* v editoru kódu. Zobrazí se minimální šablona kódu, která vypadá přibližně takto:
 
-```csharp
-using System;
-
-namespace DigitalTwinsCodeTutorial
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
-```
+:::row:::
+    :::column:::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="Fragment kódu vzorku. Existuje jeden příkaz using System;, obor názvů s názvem DigitalTwinsCodeTutorial; Třída v oboru názvů s názvem program; a metoda Main ve třídě s standardním podpisem &quot;static void Main (String [] args)&quot;. Metoda Main obsahuje příkaz Hello World Print." lightbox="media/tutorial-code/starter-template.png":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 Nejprve přidejte `using` do horní části kódu některé řádky, které budou vyžádané v nezbytných závislostech.
 
-```csharp
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Azure_Digital_Twins_dependencies":::
 
 Dále do tohoto souboru přidáte kód, který vyplní některé funkce. 
 
@@ -97,40 +96,13 @@ Dále do tohoto souboru přidáte kód, který vyplní některé funkce.
 
 První věc, kterou bude vaše aplikace muset udělat, je ověřování vůči službě Azure Digital prokážed. Pak můžete vytvořit třídu klienta služby pro přístup k funkcím sady SDK.
 
-Aby bylo možné ověřit, potřebujete tři části informací:
-* *ID adresáře (tenanta)* pro vaše předplatné
-* *ID aplikace (klienta)* vytvořené při nastavování instance služby Azure Digital provláknas dříve
-* *Název hostitele* instance digitálního vlákna Azure
+Aby bylo možné ověřit, potřebujete *název hostitele* instance digitálního vlákna Azure.
 
->[!TIP]
-> Pokud neznáte *ID adresáře (tenant)*, můžete ho získat spuštěním tohoto příkazu v [Azure Cloud Shell](https://shell.azure.com):
-> 
-> ```azurecli-interactive
-> az account show --query tenantId
-> ```
+Do *program.cs* vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele* instance digitálního vlákna Azure.
 
-Do *program.cs*vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele*instance digitálního vlákna Azure, `clientId` *ID vaší aplikace*a ID `tenantId` vašeho *adresáře*.
-
-```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
-Console.WriteLine($"Service client created – ready to go");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
 Soubor uložte. 
-
-Všimněte si, že v tomto příkladu se používá interaktivní přihlašovací údaje prohlížeče:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Tento typ přihlašovacích údajů způsobí, že se otevře okno prohlížeče s výzvou k zadání přihlašovacích údajů Azure. 
-
->[!NOTE]
-> Informace o dalších typech přihlašovacích údajů najdete v dokumentaci k [ověřovacím knihovnám Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md).
 
 V příkazovém okně spusťte kód pomocí tohoto příkazu: 
 
@@ -140,7 +112,7 @@ dotnet run
 
 Tato akce obnoví závislosti při prvním spuštění a pak program spustí. 
 * Pokud nedojde k žádné chybě, program vytiskne *klienta služby, který je vytvořený a připravený k přechodu*.
-* Vzhledem k tomu, že v tomto projektu není žádná manipulace s chybami, v případě chyby se zobrazí výjimka, která je vyvolána kódem.
+* Vzhledem k tomu, že v tomto projektu není žádná manipulace s chybami, zobrazí se výjimka vyvolaná kódem.
 
 ### <a name="upload-a-model"></a>Nahrání modelu
 
@@ -150,48 +122,23 @@ Prvním krokem při vytváření řešení digitálních vláken Azure je defino
 
 V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON* s názvem *SampleModel.jsv*. Vložte do následujícího textu souboru: 
 
-```json
-{
-  "@id": "dtmi:com:contoso:SampleModel;1",
-  "@type": "Interface",
-  "displayName": "SampleModel",
-  "contents": [
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    },
-    {
-      "@type": "Property",
-      "name": "data",
-      "schema": "string"
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/SampleModel.json":::
 
 > [!TIP]
 > Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat*. To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
 
 > [!TIP] 
-> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
+> Je k dispozici [Ukázka validátoru](/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
 
 Dále přidejte další kód do *program.cs* , abyste nahráli model, který jste právě vytvořili, do instance digitálního vlákna Azure.
 
 Nejprve přidejte `using` do horní části souboru několik příkazů:
 
-```csharp
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_dependencies":::
 
 Dále připravte na použití asynchronních metod v sadě SDK služby C# tak, že změníte `Main` signaturu metody tak, aby povolovala asynchronní spuštění. 
 
-```csharp
-static async Task Main(string[] args)
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Async_signature":::
 
 > [!NOTE]
 > Použití `async` není bezpodmínečně nutné, protože sada SDK také poskytuje synchronní verze všech volání. V tomto kurzu se používají postupy `async` .
@@ -200,37 +147,22 @@ Další součástí je první bit kódu, který komunikuje se službou Azure Dig
 
 Vložte následující kód v rámci autorizačního kódu, který jste přidali dříve.
 
-```csharp
-Console.WriteLine();
-Console.WriteLine($"Upload a model");
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-// Upload the model to the service
-await client.CreateModelsAsync(typeList);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs":::
 
 V příkazovém okně spusťte program s tímto příkazem: 
 
 ```cmd/sh
 dotnet run
 ```
-"Nahrání modelu" se ve výstupu vytiskne, ale ještě neexistuje žádný výstup k označení toho, jestli se modely úspěšně nahrály.
+"Nahrání modelu" bude vytištěno ve výstupu, což znamená, že byl tento kód dosažen, ale ještě neexistuje žádný výstup k označení, zda bylo nahrávání úspěšné.
 
-Pokud chcete přidat příkaz Print, který určuje, jestli se modely skutečně odesílají úspěšně, přidejte za předchozí část následující kód:
+Chcete-li přidat příkaz Print se zobrazením všech modelů, které byly úspěšně nahrány do instance, přidejte po předchozím oddílu následující kód:
 
-```csharp
-// Read a list of models back from the service
-AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
-await foreach (ModelData md in modelDataList)
-{
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Print_model":::
 
-Předtím, než program znovu spustíte pro otestování tohoto nového kódu, zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže se při opětovném spuštění programu očekává, že se zobrazí výjimka.
+**Předtím, než program znovu spustíte pro otestování tohoto nového kódu**, zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže pokud se pokusíte znovu nahrát stejný model, program by měl vyvolat výjimku.
 
-Nyní spusťte program znovu s tímto příkazem v příkazovém okně:
+V takovém případě spusťte program znovu s tímto příkazem v příkazovém okně:
 
 ```cmd/sh
 dotnet run
@@ -242,148 +174,61 @@ V další části se dozvíte o výjimkách, jako jsou tyto výjimky a jak je zp
 
 ### <a name="catch-errors"></a>Zachytit chyby
 
-Chcete-li zabránit selhání programu, můžete přidat kód výjimky kolem kódu nahrávání modelu. Zabalte existující volání klienta `client.CreateModelsAsync` v obslužné rutině try/catch, například takto:
+Chcete-li zabránit selhání programu, můžete přidat kód výjimky kolem kódu nahrávání modelu. Zabalte existující volání klienta `await client.CreateModelsAsync(typeList)` v obslužné rutině try/catch, například takto:
 
-```csharp
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_try_catch":::
 
-Pokud program spustíte `dotnet run` v okně příkazového okna nyní, uvidíte, že se vám vrátí kód chyby. Výstup bude vypadat nějak takto:
+Když teď spustíte program `dotnet run` ve vašem příkazovém okně, uvidíte, že se vám vrátí kód chyby. Výstup kódu vytváření modelů zobrazuje tuto chybu:
 
-```cmd/sh
-Hello World!
-Service client created - ready to go
-
-Upload a model
-Load model: 409:Service request failed.
-Status: 409 (Conflict)
-
-Content:
-{"error":{"code":"DocumentAlreadyExists","message":"A document with same identifier already exists.","details":[]}}
-
-Headers:
-api-supported-versions: REDACTED
-Date: Tue, 05 May 2020 01:57:51 GMT
-Content-Length: 115
-Content-Type: application/json; charset=utf-8
-
-Type name: : dtmi:com:contoso:SampleModel;1
-```
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="Výstup programu zobrazuje zprávu s oznámením, že žádost o službu se nezdařila. Stav: 409 (konflikt). ', následuje odkaz na chybu oznamující, že dtmi: Příklad: SampleModel; 1 již existuje.":::
 
 Od tohoto okamžiku se v kurzu zabalí všechna volání metod služby v obslužných rutinách try/catch.
 
-### <a name="create-digital-twins"></a>Vytváření digitálních vláken
+### <a name="create-digital-twins"></a>Vytvoření digitálních dvojčat
 
-Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken**použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
+Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken** použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
 
-Přidejte nový `using` příkaz v horní části, protože budete potřebovat vestavěný serializátor .NET JSON v `System.Text.Json` :
+Na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
 
-```csharp
-using System.Text.Json;
-using Azure.DigitalTwins.Core.Serialization;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Initialize_twins":::
 
-Pak na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
+V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu vyhledejte tiskové zprávy, které byly vytvořeny z *sampleTwin-0*, *sampleTwin-1* a *sampleTwin-2* . 
 
-```csharp
-// Initialize twin data
-BasicDigitalTwin twinData = new BasicDigitalTwin();
-twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.CustomProperties.Add("data", $"Hello World!");
+Pak program spusťte znovu. 
 
-string prefix="sampleTwin-";
-for(int i=0; i<3; i++) {
-    try {
-        twinData.Id = $"{prefix}{i}";
-        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
-        Console.WriteLine($"Created twin: {prefix}{i}");
-    } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-    }
-}
-```
-
-V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Pak opakujte spuštění programu znovu. 
-
-Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlákna, a to i v případě, že vlákna již existují po prvním spuštění. Na rozdíl od vytváření modelů je vytvoření vlákna na úrovni REST, volání *Put* se sémantikou *Upsert* . To znamená, že pokud už existuje, zkuste ho znovu vytvořit, jenom nahradit ho. Nepožaduje se žádná chyba.
+Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlákna, a to i v případě, že vlákna již existují po prvním spuštění. Na rozdíl od vytváření modelů je vytvoření vlákna na úrovni REST, volání *Put* se sémantikou *Upsert* . To znamená, že pokud již existuje vlákna, pokus o vytvoření stejné vlákna znovu nahradí původní vlákna. Není vyvolána žádná chyba.
 
 ### <a name="create-relationships"></a>Vytvoření relací
 
 V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem**. K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
-Aby bylo možné vytvářet relace, přidejte `using` příkaz pro základní typ vztahu v sadě SDK: tuto přeskočit, pokud již byla přidána.
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
+Přidejte do třídy **novou statickou metodu** `Program` pod `Main` metodou (kód má nyní dvě metody):
 
-Dále přidejte do třídy novou statickou metodu `Program` pod `Main` metodou:
-```csharp
-public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = targetId,
-        Name = "contains"
-    };
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Create_relationship":::
 
-    try
-    {
-        string relId = $"{srcId}-contains->{targetId}";
-        await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
-        Console.WriteLine("Created relationship successfully");
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-    }
-}
-```
+Dále přidejte následující kód na konec `Main` metody, pro volání `CreateRelationship` metody a použijte kód, který jste právě napsali:
 
-Pak přidejte následující kód na konec `Main` metody pro volání `CreateRelationship` kódu:
-```csharp
-// Connect the twins with relationships
-await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
-await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Use_create_relationship":::
 
-V příkazovém okně spusťte program pomocí příkazu `dotnet run` .
+V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu vyhledejte příkazy Print oznamující, že se tyto dvě relace úspěšně vytvořily.
 
-Všimněte si, že digitální vlákna Azure vám neumožní vytvořit relaci, pokud už existuje jedna se stejným ID – Pokud spustíte program několikrát, při vytváření relace se zobrazí výjimky. Tento kód zachytí výjimky a ignoruje je. 
+Všimněte si, že digitální vlákna Azure vám neumožní vytvořit relaci, pokud už existuje jiná relace se stejným ID, takže pokud program spustíte několikrát, při vytváření relace se zobrazí výjimky. Tento kód zachytí výjimky a ignoruje je. 
 
 ### <a name="list-relationships"></a>Výpis relací
 
 Další kód, který přidáte, vám umožní zobrazit seznam relací, které jste vytvořili.
 
-Do třídy `Program` přidejte následující novou metodu:
+Do třídy přidejte následující **novou metodu** `Program` :
 
-```csharp
-public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
-{
-    try {
-        AsyncPageable<string> results = client.GetRelationshipsAsync(srcId);
-        Console.WriteLine($"Twin {srcId} is connected to:");
-        await foreach (string rel in results)
-        {
-            var brel = JsonSerializer.Deserialize<BasicRelationship>(rel);
-            Console.WriteLine($" -{brel.Name}->{brel.TargetId}");
-        }
-    } catch (RequestFailedException rex) {
-        Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="List_relationships":::
 
 Pak přidejte následující kód na konec `Main` metody pro volání `ListRelationships` kódu:
 
-```csharp
-//List the relationships
-await ListRelationships(client, "sampleTwin-0");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Use_list_relationships":::
 
-V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Měl by se zobrazit seznam všech relací, které jste vytvořili.
+V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Měl by se zobrazit seznam všech relací, které jste vytvořili v příkazu OUTPUT, který vypadá takto:
+
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="Výstup programu zobrazující zprávu s názvem &quot;zdvojená sampleTwin-0&quot; je připojená k: obsahuje->sampleTwin-1,-Contains->sampleTwin-2" lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>Dotazování na digitální vlákna
 
@@ -391,19 +236,13 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
 Poslední část kódu, který se má přidat v tomto kurzu, spustí dotaz na instanci digitálních vláken Azure. Dotaz použitý v tomto příkladu vrátí všechny digitální vlákna v instanci.
 
-Na konec metody přidejte následující kód `Main` :
+Přidejte tento `using` příkaz, který umožňuje použití `JsonSerializer` třídy k prezentaci informací o digitálním typu.
 
-```csharp
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
-{
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
-    Console.WriteLine("---------------");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_dependencies":::
+
+Pak na konec metody přidejte následující kód `Main` :
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_twins":::
 
 V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu by se měly zobrazit všechny digitální vlákna v této instanci.
 
@@ -411,147 +250,19 @@ V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výst
 
 V tomto okamžiku v tomto kurzu máte úplnou klientskou aplikaci, která umožňuje provádět základní akce proti digitálním vazbám Azure. Pro referenci je úplný kód programu v *program.cs* uveden níže:
 
-```csharp
-using System;
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-using Azure.DigitalTwins.Core.Models;
-using Azure.DigitalTwins.Core.Serialization;
-using System.Text.Json;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
-namespace minimal
-{
-    class Program
-    {
-        static async Task Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
-            Console.WriteLine($"Service client created – ready to go");
-
-            Console.WriteLine();
-            Console.WriteLine($"Upload a model");
-            var typeList = new List<string>();
-            string dtdl = File.ReadAllText("SampleModel.json");
-            typeList.Add(dtdl);
-
-            // Upload the model to the service
-            try {
-                await client.CreateModelsAsync(typeList);
-            } catch (RequestFailedException rex) {
-                Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-            }
-            // Read a list of models back from the service
-            AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
-            await foreach (ModelData md in modelDataList)
-            {
-                Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
-            }
-
-            // Initialize twin data
-            BasicDigitalTwin twinData = new BasicDigitalTwin();
-            twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-            twinData.CustomProperties.Add("data", $"Hello World!");
-    
-            string prefix="sampleTwin-";
-            for(int i=0; i<3; i++) {
-                try {
-                    twinData.Id = $"{prefix}{i}";
-                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
-                    Console.WriteLine($"Created twin: {prefix}{i}");
-                } catch(RequestFailedException rex) {
-                    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-                }
-            }
-
-            // Connect the twins with relationships
-            await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
-            await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
-
-            //List the relationships
-            await ListRelationships(client, "sampleTwin-0");
-
-            // Run a query    
-            AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-            await foreach (string twin in result)
-            {
-                object jsonObj = JsonSerializer.Deserialize<object>(twin);
-                string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-                Console.WriteLine(prettyTwin);
-                Console.WriteLine("---------------");
-            }
-        }
-
-        public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-        {
-            var relationship = new BasicRelationship
-            {
-                TargetId = targetId,
-                Name = "contains"
-            };
-        
-            try
-            {
-                string relId = $"{srcId}-contains->{targetId}";
-                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
-                Console.WriteLine("Created relationship successfully");
-            }
-            catch (RequestFailedException rex) {
-                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-            }
-        }
-        
-        public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
-        {
-            try {
-                AsyncPageable<string> results = client.GetRelationshipsAsync(srcId);
-                Console.WriteLine($"Twin {srcId} is connected to:");
-                await foreach (string rel in results)
-                {
-                    var brel = JsonSerializer.Deserialize<BasicRelationship>(rel);
-                    Console.WriteLine($" -{brel.Name}->{brel.TargetId}");
-                }
-            } catch (RequestFailedException rex) {
-                Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-            }
-        }
-
-    }
-}
-```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, v závislosti na tom, co byste chtěli udělat dál.
+
+* Pokud se chystáte **pokračovat k dalšímu kurzu**, instance použitá v tomto kurzu se dá znovu použít v následující části. Můžete zachovat prostředky v oblasti digitálních vláken Azure, které tady nastavíte, a přeskočit zbytek této části.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
-Instance použitá v tomto kurzu se dá znovu použít v dalším kurzu. [*kurz: Prozkoumejte základy pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pokud máte v úmyslu pokračovat k dalšímu kurzu, můžete ponechat instanci digitálních vláken Azure, kterou jste nastavili tady.
- 
-Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím se odebere skupina prostředků a instance digitálního vlákna Azure.
-
-> [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
-
-Otevřete Azure Cloud Shell a spuštěním následujícího příkazu odstraňte skupinu prostředků a vše, co obsahuje.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-V dalším kroku odstraňte registraci aplikace Azure Active Directory, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
-
-Nakonec odstraňte složku projektu, kterou jste vytvořili na místním počítači.
+Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -561,7 +272,3 @@ Pokračujte k dalšímu kurzu, abyste prozkoumali věci, které můžete s touto
 
 > [!div class="nextstepaction"]
 > [*Kurz: zkoumání základních informací pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md)
-
-Do kódu, který jste napsali v tomto kurzu, můžete přidat také informace o více operacích správy v článcích s postupy, nebo můžete začít hledat v dokumentaci konceptu, kde najdete další informace o prvcích, se kterými jste se v tomto kurzu pracovali.
-* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
-* [*Koncepty: vlastní modely*](concepts-models.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7d94a681fa987a4b23dbcda744c2f8516da4437a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128552"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891661"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Přidat vrstvu mapy z Open Geospatial Consortium (OGC)
 
@@ -23,7 +23,7 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 
 **Služba webového mapování (WMS)**
 
-- Podporované verze: `1.0.0` , `1.1.0` , `1.1.1` a`1.3.0`
+- Podporované verze: `1.0.0` , `1.1.0` , `1.1.1` a `1.3.0`
 - Služba musí podporovat `EPSG:3857` systém projekce nebo reprojekce.
 - GetFeatureInfo vyžaduje, aby služba podporovala `EPSG:4326` nebo zpracovala reprojekce. 
 - Podporované operace:
@@ -36,9 +36,9 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 
 **Služba dlaždic webového mapy (WMTS)**
 
-- Podporované verze:`1.0.0`
+- Podporované verze: `1.0.0`
 - Dlaždice musí být čtvercové, například `TileWidth == TileHeight` .
-- Podporovaný počítačový počítač: `EPSG:3857` nebo`GoogleMapsCompatible` 
+- Podporovaný počítačový počítač: `EPSG:3857` nebo `GoogleMapsCompatible` 
 - Identifikátor TileMatrix musí být celočíselná hodnota, která odpovídá úrovni přiblížení na mapě. V mapě Azure je úroveň přiblížení hodnota mezi `"0"` a `"22"` . Takže se `"0"` podporuje, ale nepodporuje se `"00"` .
 - Podporované operace:
 
@@ -83,10 +83,10 @@ Můžete také zadat nastavení mapování pro použití proxy služby. Služba 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [OgcMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
+> [OgcMapLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
 
 > [!div class="nextstepaction"]
-> [OgcMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
+> [OgcMapLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
 
 Podívejte se na následující články, které obsahují ukázky kódu, které byste mohli přidat do svých map:
 

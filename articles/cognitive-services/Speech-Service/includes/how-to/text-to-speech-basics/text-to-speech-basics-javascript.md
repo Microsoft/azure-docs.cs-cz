@@ -2,32 +2,43 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 02/10/2021
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 931fcd113f883f126c2f94e6f3d06684b9a0e772
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407624"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428183"
 ---
+V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
+
+* Získávání odpovědí jako proudů v paměti
+* Přizpůsobení výstupní vzorkovací frekvence a přenosové rychlosti
+* Odesílání požadavků na syntézu pomocí SSML (Speech syntézy Markup Language)
+* Používání hlasů neuronové
+
+## <a name="skip-to-samples-on-github"></a>Přeskočit na ukázky na GitHubu
+
+Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rychlý Start JavaScriptu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) na GitHubu.
+
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a prostředek služby Speech. Pokud nemáte účet a prostředek, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">sadu Speech SDK pro JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js<span 
+Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">sadu Speech SDK pro JavaScript </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč </a>
 
 V závislosti na cílovém prostředí navíc použijte jednu z následujících možností:
 
 # <a name="script"></a>[pravidel](#tab/script)
 
-Stáhněte a extrahujte <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">sadu Speech SDK pro <span class="docon docon-navigate-external x-hidden-focus"></span> JavaScript</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* soubor a umístěte ji do složky přístupné pro váš soubor HTML.
+Stáhněte a extrahujte <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">sadu Speech SDK pro JavaScript</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* soubor a umístěte ji do složky přístupné pro váš soubor HTML.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
@@ -39,10 +50,10 @@ Stáhněte a extrahujte <a href="https://aka.ms/csspeech/jsbrowserpackage" targe
 # <a name="import"></a>[importovat](#tab/import)
 
 ```javascript
-import * from "microsoft-cognitiveservices-speech-sdk";
+import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-Další informace o najdete v `import` tématu <a href="https://javascript.info/import-export" target="_blank">Export a import <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace o najdete v `import` tématu <a href="https://javascript.info/import-export" target="_blank">Export a import </a>.
 
 # <a name="require"></a>[žádá](#tab/require)
 
@@ -50,42 +61,44 @@ Další informace o najdete v `import` tématu <a href="https://javascript.info/
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">co je potřeba? <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">co je potřeba? </a>.
 
 ---
 
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) . Tato třída obsahuje informace o vašem prostředku, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
 
 > [!NOTE]
 > Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
-Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) :
+Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) :
 
-* S předplatným: předejte klíč a přidruženou oblast.
+* S prostředkem: předejte klíč a přidruženou oblast.
 * S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-V tomto příkladu vytvoříte [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) pomocí klíče a oblasti předplatného. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) . Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
+V tomto příkladu vytvoříte [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) pomocí klíče a oblasti prostředku. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free). Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 }
+
+synthesizeSpeech();
 ```
 
 ## <a name="synthesize-speech-to-a-file"></a>Vysyntetizátorování řeči v souboru
 
-V dalším kroku vytvoříte [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) objekt, který provede převody textu na řeč a výstupy na reproduktory, soubory nebo jiné výstupní datové proudy. [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest)Parametr přijímá jako je [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) objekt vytvořený v předchozím kroku a [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) objekt, který určuje, jak by měly být zpracovány výsledky výstupu.
+V dalším kroku vytvoříte [`SpeechSynthesizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer) objekt, který provede převody textu na řeč a výstupy na reproduktory, soubory nebo jiné výstupní datové proudy. [`SpeechSynthesizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer)Parametr přijímá jako je [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) objekt vytvořený v předchozím kroku a [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) objekt, který určuje, jak by měly být zpracovány výsledky výstupu.
 
 Začněte tím, že vytvoříte `AudioConfig` a automaticky zapíšete výstup do `.wav` souboru pomocí `fromAudioFileOutput()` statické funkce.
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     const audioConfig = AudioConfig.fromAudioFileOutput("path/to/file.wav");
 }
 ```
@@ -101,10 +114,11 @@ function synthesizeSpeech() {
     synthesizer.speakTextAsync(
         "A simple test to write to a file.",
         result => {
-            if (result) {
-                console.log(JSON.stringify(result));
-            }
             synthesizer.close();
+            if (result) {
+                // return result as stream
+                return fs.createReadStream("path-to-file.wav");
+            }
         },
         error => {
             console.log(error);
@@ -129,9 +143,9 @@ function synthesizeSpeech() {
         "Synthesizing directly to speaker output.",
         result => {
             if (result) {
-                console.log(JSON.stringify(result));
+                synthesizer.close();
+                return result.audioData;
             }
-            synthesizer.close();
         },
         error => {
             console.log(error);
@@ -153,7 +167,9 @@ Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte 
 > [!NOTE]
 > Předání `undefined` pro `AudioConfig` místo toho, aby ho nemuseli vynechat jako v příkladu výstupu mluvčího, ve výchozím nastavení nebude přehrávat zvuk na aktuálním aktivním výstupním zařízení.
 
-Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult?view=azure-node-latest) proměnné. `SpeechSynthesisResult.audioData`Vlastnost vrací `ArrayBuffer` výstupní data. S tímto můžete pracovat `ArrayBuffer` ručně.
+Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) proměnné. `SpeechSynthesisResult.audioData`Vlastnost vrací `ArrayBuffer` výstupní data, výchozí typ streamu prohlížeče. Pro kód serveru převeďte arrayBuffer na datový proud vyrovnávací paměti. 
+
+Následující kód funguje pro kód na straně klienta. 
 
 ```javascript
 function synthesizeSpeech() {
@@ -163,11 +179,8 @@ function synthesizeSpeech() {
     synthesizer.speakTextAsync(
         "Getting the response as an in-memory stream.",
         result => {
-            // Interact with the audio ArrayBuffer data
-            const audioData = result.audioData;
-            console.log(`Audio data byte size: ${audioData.byteLength}.`)
-
             synthesizer.close();
+            return result.audioData;
         },
         error => {
             console.log(error);
@@ -176,7 +189,34 @@ function synthesizeSpeech() {
 }
 ```
 
-Odsud můžete implementovat jakékoli vlastní chování pomocí výsledného `ArrayBuffer` objektu.
+Odsud můžete implementovat jakékoli vlastní chování pomocí výsledného `ArrayBuffer` objektu. ArrayBuffer je běžný typ pro příjem v prohlížeči a přehrávání z tohoto formátu. 
+
+Pro jakýkoliv kód založený na serveru, pokud potřebujete pracovat s daty jako datovým proudem namísto ArrayBuffer, je nutné převést objekt na datový proud. 
+
+```javascript
+function synthesizeSpeech() {
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
+
+    synthesizer.speakTextAsync(
+        "Getting the response as an in-memory stream.",
+        result => {
+            const { audioData } = result;
+
+            synthesizer.close();
+
+            // convert arrayBuffer to stream
+            // return stream
+            const bufferStream = new PassThrough();
+            bufferStream.end(Buffer.from(audioData));
+            return bufferStream;
+        },
+        error => {
+            console.log(error);
+            synthesizer.close();
+        });
+}
+```
 
 ## <a name="customize-audio-format"></a>Přizpůsobení formátu zvuku
 
@@ -186,9 +226,12 @@ V následující části se dozvíte, jak přizpůsobit atributy výstupů zvuku
 * Vzorkovací frekvence
 * Bitová hloubka
 
-Chcete-li změnit formát zvuku, použijte `speechSynthesisOutputFormat` vlastnost `SpeechConfig` objektu. Tato vlastnost očekává `enum` typ [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) , který můžete použít k výběru výstupního formátu. [Seznam zvukových formátů](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) , které jsou k dispozici, najdete v referenční dokumentaci.
+Chcete-li změnit formát zvuku, použijte `speechSynthesisOutputFormat` vlastnost `SpeechConfig` objektu. Tato vlastnost očekává `enum` typ [`SpeechSynthesisOutputFormat`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat) , který můžete použít k výběru výstupního formátu. [Seznam zvukových formátů](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat) , které jsou k dispozici, najdete v referenční dokumentaci.
 
 V závislosti na vašich požadavcích máte k dispozici různé možnosti pro různé typy souborů. Všimněte si, že podle definice nezpracované formáty jako neobsahují `Raw24Khz16BitMonoPcm` zvukové hlavičky. Nezpracované formáty použijte jenom v případě, že vaše implementace pro příjem dat může dekódovat nezpracovaný Bitstream, nebo pokud plánujete ruční vytváření hlaviček na základě bitové hloubky, vzorkovací frekvence, počtu kanálů atd.
+
+> [!NOTE]
+> Hlasy **en-US-AriaRUS** a **en-US-GuyRUS** se vytvářejí z ukázek kódovaných v `Riff24Khz16BitMonoPcm` vzorkovací frekvenci.
 
 V tomto příkladu zadáte RIFF formát s vysokou přesností nastavením `Riff24Khz16BitMonoPcm` `speechSynthesisOutputFormat` `SpeechConfig` objektu na. Podobně jako v příkladu v předchozí části získáte zvuková `ArrayBuffer` data a s nimi interaktivně pracovat.
 
@@ -223,7 +266,7 @@ Po opětovném spuštění programu se zapíše `.wav` soubor do zadané cesty.
 SSML (Speech syntézy Language) umožňuje vyladit rozteč, výslovnost, míru řeči, objem a další výstup textu do mluvené řeči odesláním požadavků ze schématu XML. Tato část obsahuje několik praktických příkladů použití, ale pro podrobnějšího průvodce si přečtěte [článek SSML postupy](../../../speech-synthesis-markup.md).
 
 Chcete-li začít používat SSML k přizpůsobení, provedete jednoduchou změnu, která přepne hlas.
-Nejprve vytvořte nový soubor XML pro SSML config v kořenovém adresáři projektu, v tomto příkladu `ssml.xml` . Kořenový element je vždy `<speak>` a zalamování textu v `<voice>` prvku umožňuje změnit hlas pomocí `name` param. Tento příklad změní hlas na hlas v češtině (UK). Všimněte si, že tento hlas je **standardní** hlas, který má různé ceny a dostupnost než **neuronové** hlasy. Podívejte se na [úplný seznam](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) podporovaných **standardních** hlasů.
+Nejprve vytvořte nový soubor XML pro SSML config v kořenovém adresáři projektu, v tomto příkladu `ssml.xml` . Kořenový element je vždy `<speak>` a zalamování textu v `<voice>` prvku umožňuje změnit hlas pomocí `name` param. Tento příklad změní hlas na hlas v češtině (UK). Všimněte si, že tento hlas je **standardní** hlas, který má různé ceny a dostupnost než **neuronové** hlasy. Podívejte se na [úplný seznam](../../../language-support.md#standard-voices) podporovaných **standardních** hlasů.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -242,7 +285,7 @@ function xmlToString(filePath) {
 }
 ```
 
-Další informace o najdete v `readFileSync` tématu <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js <span class="docon docon-navigate-external x-hidden-focus"></span> systému souborů</a>. Z tohoto místa je objekt výsledku přesně stejný jako předchozí příklady.
+Další informace o najdete v `readFileSync` tématu <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js systému souborů</a>. Z tohoto místa je objekt výsledku přesně stejný jako předchozí příklady.
 
 ```javascript
 function synthesizeSpeech() {
@@ -284,10 +327,10 @@ Výstup funguje, ale existuje několik jednoduchých změn, které vám pomůžo
 
 Hlasy neuronové jsou algoritmy pro syntézu řeči založené na hluboce neuronové sítích. Při použití hlasu neuronové je syntetizované rozpoznávání řeči skoro neodlišitelné od lidských nahrávek. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci uživatelů se systémy AI.
 
-Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možností hlasu neuronové](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Pak přidejte obor názvů XML pro `mstts` a zabalte text do `<mstts:express-as>` značky. Použijte `style` parametr pro přizpůsobení stylu speaking. Tento příklad používá `cheerful` , ale zkuste ho nastavit na `customerservice` nebo `chat` pro zobrazení rozdílu ve stylu speaking.
+Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možností hlasu neuronové](../../../language-support.md#neural-voices). Pak přidejte obor názvů XML pro `mstts` a zabalte text do `<mstts:express-as>` značky. Použijte `style` parametr pro přizpůsobení stylu speaking. Tento příklad používá `cheerful` , ale zkuste ho nastavit na `customerservice` nebo `chat` pro zobrazení rozdílu ve stylu speaking.
 
 > [!IMPORTANT]
-> Hlasy neuronové se podporují **jenom** u zdrojů řeči vytvořených v oblastech *Východní USA*, *Jižní východní Asie*a *západní Evropa* .
+> Hlasy neuronové se podporují **jenom** u zdrojů řeči vytvořených v oblastech *Východní USA*, *Jižní východní Asie* a *západní Evropa* .
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"

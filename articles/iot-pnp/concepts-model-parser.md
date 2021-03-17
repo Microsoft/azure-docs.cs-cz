@@ -1,22 +1,21 @@
 ---
 title: Principy analyzátoru modelu digitálních vláken | Microsoft Docs
-description: Jako vývojář se naučíte používat analyzátor DTDL k ověřování modelů.
+description: Jako vývojář se naučíte, jak použít analyzátor DTDL k ověřování modelů.
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352186"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331783"
 ---
-# <a name="understand-the-digital-twins-model-parser"></a>Principy analyzátoru modelu digitálních vláken
+# <a name="understand-the-digital-twins-model-parser"></a>Principy analyzátoru modelů digitálních dvojčat
 
 DTDL (Digital autodefinition Definition Language) je popsána ve [specifikaci DTDL](https://github.com/Azure/opendigitaltwins-dtdl). Uživatelé můžou k ověření a dotazování modelu definovaného ve více souborech použít balíček NuGet pro _analyzátor modelů vláken s digitálními_ podmnožinami.
 
@@ -28,9 +27,12 @@ Analyzátor je k dispozici v NuGet.org s ID: [Microsoft. Azure. DigitalTwins. Pa
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> V době psaní je verze analyzátoru `3.12.5` .
+
 ## <a name="use-the-parser-to-validate-a-model"></a>Použití analyzátoru k ověření modelu
 
-Model, který chcete ověřit, se může skládat z jednoho nebo více rozhraní popsaných v souborech JSON. Pomocí analyzátoru můžete načíst všechny soubory v dané složce a použít analyzátor k ověření všech souborů jako celku včetně všech odkazů mezi soubory:
+Model se může skládat z jednoho nebo více rozhraní popsaných v souborech JSON. Pomocí analyzátoru můžete načíst všechny soubory v dané složce a použít analyzátor k ověření všech souborů jako celku včetně všech odkazů mezi soubory:
 
 1. Vytvořit `IEnumerable<string>` se seznamem všech modelů obsahu:
 
@@ -57,18 +59,20 @@ Model, který chcete ověřit, se může skládat z jednoho nebo více rozhraní
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. Kontrola chyb ověřování. Pokud analyzátor najde nějaké chyby, vyvolá `AggregateException` se se seznamem podrobných chybových zpráv:
+1. Kontrola chyb ověřování. Pokud analyzátor najde nějaké chyby, vyvolá `ParsingException` se se seznamem chyb:
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,19 +80,10 @@ Model, který chcete ověřit, se může skládat z jednoho nebo více rozhraní
 1. Zkontrolujte `Model` . V případě úspěšného ověření můžete model zkontrolovat pomocí rozhraní API analyzátoru modelů. Následující fragment kódu ukazuje, jak iterovat všechny modely analyzovány a zobrazuje existující vlastnosti:
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 

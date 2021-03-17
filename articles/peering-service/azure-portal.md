@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 6646016a4529f46431ecb622c7546140a93a5d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872143"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534943"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>Registrace služby partnerského vztahu pomocí Azure Portal
 
-Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Office 365, Dynamics 365, software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu.
+Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu.
 
 V tomto článku se dozvíte, jak zaregistrovat připojení ke službě peering Service pomocí Azure Portal.
 
@@ -72,14 +72,14 @@ V prohlížeči přejdete na Azure Portal a přihlásíte se pomocí svého úč
 1. V dolní části oddílu **předpony** vyberte **vytvořit novou předponu** a zobrazí se textová pole. Nyní zadejte název prostředku předpony a předpony, které jsou přidruženy k poskytovateli služeb.
 
 1. Vyberte **klíč předpony** a přidejte klíč předpony, který vám dal poskytovatel (ISP nebo IXP). Tento klíč umožňuje společnosti Microsoft ověřit předponu a poskytovatele, kteří mají přidělenou předponu IP.
-   > ![Zaregistrovat kartu konfigurace partnerského vztahu služby](./media/peering-service-portal/peering-serviceconfiguration.png)
+   > ![Snímek obrazovky se zobrazí karta konfigurace na stránce vytvořit připojení ke službě partnerského vztahu, kde můžete zadat klíč předpony.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. V levém dolním rohu stránky vyberte tlačítko **Revize + vytvořit** . Zobrazí se stránka **Revize + vytvořit** a Azure ověří vaši konfiguraci.
     
 
 1. Až se zobrazí zpráva s **potvrzením úspěšného ověření** , vyberte **vytvořit**.
 
-   > ![Zaregistrovat kartu konfigurace partnerského vztahu služby](./media/peering-service-portal/peering-service-prefix.png)
+   > ![Snímek obrazovky s kartou pro vytváření připojení ke službě peering Service se zobrazí na stránce pro kontrolu a vytvoření.](./media/peering-service-portal/peering-service-prefix.png)
 
 
 1. Po registraci připojení ke službě peering Service se pro zahrnuté předpony provede další ověřování. Stav ověření můžete zkontrolovat v části **předpony** názvu prostředku. Pokud se ověření nepovede, zobrazí se jedna z následujících chybových zpráv:

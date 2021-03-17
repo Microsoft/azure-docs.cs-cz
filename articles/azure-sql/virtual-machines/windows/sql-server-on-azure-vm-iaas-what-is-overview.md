@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b4b1234b88eafedbd03b78241baaa40231a6cbd6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236365"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356799"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server ve službě Azure Virtual Machines (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,10 @@ ms.locfileid: "88236365"
 
 [SQL Server v Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) umožňují používat v cloudu úplné verze SQL Server, aniž byste museli spravovat jakýkoli místní hardware. SQL Server virtuální počítače také zjednodušují náklady na licencování při průběžných platbách.
 
-Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../../../virtual-machines/windows/sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. To umožňuje virtuálním počítačům dobrou možnost pro mnoho různých SQL Server úloh.
+Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../../../virtual-machines/sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. To umožňuje virtuálním počítačům dobrou možnost pro mnoho různých SQL Server úloh.
+
+Pokud s SQL Server na virtuálních počítačích Azure začínáte, podívejte se na video o *SQL Server na virtuálním počítači Azure* z naší podrobné sady [videí Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>Automatizované aktualizace
 
@@ -39,7 +42,7 @@ SQL Server v Azure Virtual Machines můžou používat [automatizované opravy](
 
 SQL Server v Azure Virtual Machines můžou využívat výhod [automatizovaného zálohování](automated-backup.md), které pravidelně vytváří zálohy databáze do úložiště objektů BLOB. Tento postup můžete použít také ručně. Další informace najdete v tématu [Použití služby Azure Storage pro zálohování a obnovování SQL Serveru](azure-storage-sql-server-backup-restore-use.md).
 
-Azure také nabízí řešení zálohování na podnikové úrovni pro SQL Server běžící na virtuálních počítačích Azure. Plně spravované řešení zálohování podporuje skupiny dostupnosti Always On, dlouhodobé uchovávání, obnovení k určitému bodu v čase a centrální správu a monitorování. Další informace najdete v tématu [Azure Backup pro SQL Server ve virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+Azure také nabízí řešení zálohování na podnikové úrovni pro SQL Server běžící na virtuálních počítačích Azure. Plně spravované řešení zálohování podporuje skupiny dostupnosti Always On, dlouhodobé uchovávání, obnovení k určitému bodu v čase a centrální správu a monitorování. Další informace najdete v tématu [Azure Backup pro SQL Server ve virtuálních počítačích Azure](../../../backup/backup-azure-sql-database.md).
   
 
 ## <a name="high-availability"></a>Vysoká dostupnost
@@ -117,7 +120,7 @@ Pokud chcete spravovat existující prostředky, vyberte požadovanou položku v
 
 ![Vytvoření prostředku Azure SQL](./media/sql-server-on-azure-vm-iaas-what-is-overview/create-azure-sql-resource.png)
 
-Po výběru možnosti **+ Přidat**zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
+Po výběru možnosti **+ Přidat** zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
 
 ![Podrobnosti dlaždice databáze](./media/sql-server-on-azure-vm-iaas-what-is-overview/sql-vm-details.png)
 
@@ -132,7 +135,7 @@ Podrobnosti najdete tady:
 Azure pro každou podporovanou kombinaci operačního systému, jeho verze a edice udržuje pouze jednu image virtuálního počítače. To znamená, že se image v průběhu času aktualizují a staré image se odebírají. Další informace najdete v části **Image** tématu [Nejčastější dotazy k virtuálním počítačům s SQL Serverem](frequently-asked-questions-faq.md#images).
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (CEIP)
-Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (CEIP) je ve výchozím nastavení povolen. Ten pravidelně odesílá zprávy do Microsoftu s cílem přispět k vylepšování SQL Serveru. S programem CEIP není spojená žádná nutná úloha správy – za předpokladu, že ho nechcete po zřízení zakázat. Tento program můžete přizpůsobit nebo vypnout připojením k virtuálnímu počítači pomocí vzdálené plochy. Pak spusťte nástroj **pro zasílání zpráv o chybách a vytváření sestav využití SQL Serveru**. Podle pokynů zakažte generování sestav. Další informace o shromažďování dat najdete v [Prohlášení o zásadách ochrany osobních údajů pro SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-privacy).
+Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (CEIP) je ve výchozím nastavení povolen. Ten pravidelně odesílá zprávy do Microsoftu s cílem přispět k vylepšování SQL Serveru. S programem CEIP není spojená žádná nutná úloha správy – za předpokladu, že ho nechcete po zřízení zakázat. Tento program můžete přizpůsobit nebo vypnout připojením k virtuálnímu počítači pomocí vzdálené plochy. Pak spusťte nástroj **pro zasílání zpráv o chybách a vytváření sestav využití SQL Serveru**. Podle pokynů zakažte generování sestav. Další informace o shromažďování dat najdete v [Prohlášení o zásadách ochrany osobních údajů pro SQL Server](/sql/sql-server/sql-server-privacy).
 
 ## <a name="related-products-and-services"></a>Související produkty a služby
 ### <a name="windows-virtual-machines"></a>Virtuální počítače s Windows
@@ -142,12 +145,12 @@ Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Sítě
-* [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
+* [Přehled Virtual Network](../../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../../virtual-network/public-ip-addresses.md)
-* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../../../virtual-machines/linux/portal-create-fqdn.md)
+* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [Dokumentace SQL Serveru](https://docs.microsoft.com/sql/index)
+* [Dokumentace k SQL Server](/sql/index)
 * [Porovnání Azure SQL Database](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
@@ -162,5 +165,5 @@ Získejte odpovědi na nejčastější dotazy týkající se SQL Server virtuál
 
 Zobrazení referenčních architektur pro spouštění N-vrstvých aplikací na SQL Server v IaaS
 
-* [N-vrstvá aplikace Windows v Azure s SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Spuštění N-vrstvé aplikace v několika oblastech Azure pro zajištění vysoké dostupnosti](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [N-vrstvá aplikace Windows v Azure s SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Spuštění N-vrstvé aplikace v několika oblastech Azure pro zajištění vysoké dostupnosti](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

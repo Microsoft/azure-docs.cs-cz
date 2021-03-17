@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start k odeslání telemetrie do Azure IoT Hub (CLI)
+title: Rychlý Start – odeslání telemetrie do Azure IoT Hub (CLI) – rychlý Start
 description: V tomto rychlém startu IoT Hub se dozvíte, jak začít používat Azure CLI k vytvoření centra IoT, odesílání telemetrie a zobrazování zpráv mezi zařízením a centrem.
 ms.service: iot-hub
 ms.topic: quickstart
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: e2b8eecc629e9da75ea15815ee38844c48abb019
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499904"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199794"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich sledování pomocí Azure CLI
 
@@ -26,7 +26,7 @@ IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrick
 
 ## <a name="prerequisites"></a>Požadavky
 - Pokud ještě nemáte předplatné Azure, [vytvořte ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ještě před tím, než začnete.
-- Azure CLI Všechny příkazy v tomto rychlém startu můžete spustit pomocí Azure Cloud Shell interaktivního prostředí CLI, které běží v prohlížeči. Pokud používáte Cloud Shell, nemusíte nic instalovat. Pokud dáváte přednost používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.76 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+- Azure CLI Všechny příkazy v tomto rychlém startu můžete spustit pomocí Azure Cloud Shell interaktivního prostředí CLI, které běží v prohlížeči. Pokud používáte Cloud Shell, nemusíte nic instalovat. Pokud dáváte přednost používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.76 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
@@ -55,7 +55,7 @@ V této části připravíte dvě relace Azure CLI. Pokud používáte Cloud She
 
 Azure CLI vyžaduje, abyste se přihlásili ke svému účtu Azure. Veškerá komunikace mezi relací prostředí Azure CLI a službou IoT Hub je ověřená a šifrovaná. V důsledku toho tento rychlý Start nepotřebuje další ověřování, které byste použili u reálného zařízení, jako je například připojovací řetězec.
 
-*  Spuštěním příkazu [AZ Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) přidejte Microsoft Azure rozšíření IoT pro Azure CLI do prostředí CLI. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+*  Spuštěním příkazu [AZ Extension Add](/cli/azure/extension#az-extension-add) přidejte Microsoft Azure rozšíření IoT pro Azure CLI do prostředí CLI. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ V této části pomocí Azure CLI vytvoříte skupinu prostředků a IoT Hub.  S
 > [!TIP]
 > Volitelně můžete pomocí [Azure Portal](iot-hub-create-through-portal.md), [Visual Studio Code](iot-hub-create-use-iot-toolkit.md)nebo jiných programových metod vytvořit skupinu prostředků Azure, IoT Hub a další prostředky.  
 
-1. Spuštěním příkazu [AZ Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) vytvořte skupinu prostředků. Následující příkaz vytvoří skupinu prostředků s názvem *MyResourceGroup* v umístění *eastus* . 
+1. Spuštěním příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte skupinu prostředků. Následující příkaz vytvoří skupinu prostředků s názvem *MyResourceGroup* v umístění *eastus* . 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Spuštěním příkazu [AZ IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
+1. Spuštěním příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. Název centra IoT musí být v Azure globálně jedinečný. Tento zástupný symbol se používá ve zbývající části tohoto rychlého startu k vyjádření názvu služby IoT Hub.
 
@@ -94,7 +94,7 @@ V této části pomocí Azure CLI vytvoříte skupinu prostředků a IoT Hub.  S
 V této části vytvoříte simulované zařízení v první relaci CLI. Simulované zařízení odesílá telemetrii zařízení do služby IoT Hub. V druhé relaci rozhraní příkazového řádku můžete monitorovat události a telemetrii a odesílat do simulovaného zařízení zprávu typu cloud-zařízení.
 
 Vytvoření a spuštění simulovaného zařízení:
-1. Spusťte příkaz [AZ IoT Hub Device-identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) v první relaci CLI. Tím se vytvoří simulovaná identita zařízení. 
+1. Spusťte příkaz [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) v první relaci CLI. Tím se vytvoří simulovaná identita zařízení. 
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -104,7 +104,7 @@ Vytvoření a spuštění simulovaného zařízení:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. Spusťte příkaz [AZ IoT Device simuluje](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate) v první relaci CLI.  Tím se spustí simulované zařízení. Zařízení pošle telemetrii do služby IoT Hub a přijímá z ní zprávy.  
+1. Spusťte příkaz [AZ IoT Device simuluje](/cli/azure/ext/azure-iot/iot/device#ext-azure-iot-az-iot-device-simulate) v první relaci CLI.  Tím se spustí simulované zařízení. Zařízení pošle telemetrii do služby IoT Hub a přijímá z ní zprávy.  
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -113,7 +113,7 @@ Vytvoření a spuštění simulovaného zařízení:
     ```
 
 Postup monitorování zařízení:
-1. V druhé relaci CLI spusťte příkaz [AZ IoT Hub monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) . Tím se spustí monitorování simulovaného zařízení. Výstup zobrazuje telemetrii, kterou simulované zařízení odesílá do centra IoT.
+1. V druhé relaci CLI spusťte příkaz [AZ IoT Hub monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) . Tím se spustí monitorování simulovaného zařízení. Výstup zobrazuje telemetrii, kterou simulované zařízení odesílá do centra IoT.
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -136,7 +136,7 @@ V této části použijete druhou relaci CLI k odeslání zprávy na simulované
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. V druhé relaci CLI spusťte příkaz [AZ IoT Device C2D-Message Send](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send) . Tím se do simulovaného zařízení pošle zpráva typu cloud-zařízení ze služby IoT Hub. Zpráva obsahuje řetězec a dvě páry klíč-hodnota.  
+1. V druhé relaci CLI spusťte příkaz [AZ IoT Device C2D-Message Send](/cli/azure/ext/azure-iot/iot/device/c2d-message#ext-azure-iot-az-iot-device-c2d-message-send) . Tím se do simulovaného zařízení pošle zpráva typu cloud-zařízení ze služby IoT Hub. Zpráva obsahuje řetězec a dvě páry klíč-hodnota.  
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -163,9 +163,9 @@ Chcete-li vizualizovat metriky zasílání zpráv v Azure Portal:
 
     ![IoT Hub metriky zasílání zpráv](media/quickstart-send-telemetry-cli/iot-hub-portal-metrics.png)
 
-1. Do **oboru**zadejte název služby IoT Hub.
+1. Do **oboru** zadejte název služby IoT Hub.
 
-2. V **oboru názvů metriky**vyberte *Standardní metriky IoT Hub* .
+2. V **oboru názvů metriky** vyberte *Standardní metriky IoT Hub* .
 
 3. Vyberte *Celkový počet zpráv použitých* v **metrikě**. 
 
@@ -184,12 +184,12 @@ Pokud budete pokračovat k dalšímu doporučenému článku, můžete zachovat 
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
 
 Odstranění skupiny prostředků podle názvu:
-1. Spusťte příkaz [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků, IoT Hub a registraci zařízení, kterou jste vytvořili.
+1. Spusťte příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) . Tím odeberete skupinu prostředků, IoT Hub a registraci zařízení, kterou jste vytvořili.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Spuštěním příkazu [AZ Group list](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list) potvrďte odstranění skupiny prostředků.  
+1. Spuštěním příkazu [AZ Group list](/cli/azure/group#az-group-list) potvrďte odstranění skupiny prostředků.  
 
     ```azurecli
     az group list

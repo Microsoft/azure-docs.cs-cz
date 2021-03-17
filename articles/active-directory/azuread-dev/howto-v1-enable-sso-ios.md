@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383695"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v iOS pomocí ADAL
@@ -175,11 +175,11 @@ Aby platforma identity věděla, že je povoleno sdílet tokeny napříč vašim
 
 Identifikátory URI pro přesměrování umožňují identifikovat různé aplikace služby Microsoft identity, pokud používá stejné ID aplikace. Každá aplikace může obsahovat více identifikátorů URI pro přesměrování v portálu pro registraci. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Příklad toho, jak se toto vypadá níže:
 
-Identifikátor URI pro přesměrování app1:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+Identifikátor URI pro přesměrování app1: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-Identifikátor URI pro přesměrování app2:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+Identifikátor URI pro přesměrování app2: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-Identifikátor URI pro přesměrování APP3:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+Identifikátor URI pro přesměrování APP3: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 
@@ -239,7 +239,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > Když ve svých aplikacích sdílíte řetězce klíčů, můžou aplikace odstraňovat uživatele nebo horším odstranit všechny tokeny v rámci vaší aplikace. To je obzvláště katastrofální důsledky, pokud máte aplikace, které na tokenech spoléhají na práci na pozadí. Sdílení řetězce klíčů znamená, že musíte být velmi opatrní v jakékoli a všech operacích odebrání prostřednictvím sad identity identity.
 
-A to je vše! Sada SDK teď bude sdílet přihlašovací údaje napříč všemi vašimi aplikacemi. Seznam uživatelů bude také sdílen napříč instancemi aplikace.
+A je to! Sada SDK teď bude sdílet přihlašovací údaje napříč všemi vašimi aplikacemi. Seznam uživatelů bude také sdílen napříč instancemi aplikace.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Zapnutí jednotného přihlašování pro zprostředkovatele s asistencí pro jednotné přihlašování
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826056"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368260"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru do Azure Logic Apps
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak můžete naplánovat jednorázové a opakovan�
 
 Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v tomto rychlém startu: [vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -96,7 +96,7 @@ Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace 
 
    Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata:
 
-   ![Akce HTTP](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![Snímek obrazovky ukazuje prodlevu, dokud akce následovaná akcí H T T P s metodou POST.](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. Až budete hotovi, uložte aplikaci logiky.
 
@@ -133,7 +133,7 @@ Po odeslání hovoru se odpověď z vaší aplikace logiky zobrazí v poli **nez
 
 ## <a name="cancel-a-one-time-job"></a>Zrušení jednorázové úlohy
 
-V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spuštění aplikace logiky. Chcete-li zrušit jednorázovou úlohu, můžete použít [spuštění pracovního postupu – zrušit](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel) v REST API Logic Apps. Po odeslání volání triggeru zadejte [ID spuštění pracovního postupu](#workflow-run-id).
+V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spuštění aplikace logiky. Chcete-li zrušit jednorázovou úlohu, můžete použít [spuštění pracovního postupu – zrušit](/rest/api/logic/workflowruns/cancel) v REST API Logic Apps. Po odeslání volání triggeru zadejte [ID spuštění pracovního postupu](#workflow-run-id).
 
 ## <a name="schedule-recurring-jobs"></a>Plánování opakujících se úloh
 
@@ -155,7 +155,7 @@ V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spu
 
    Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata:
 
-   ![Akce HTTP](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![Snímek obrazovky ukazuje akci H T T P s metodou POST.](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. Až budete hotovi, uložte aplikaci logiky.
 
@@ -239,7 +239,7 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 
 **Komunita**
 
-* [Microsoft Q&Stránka s otázkou pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
+* [Microsoft Q&Stránka s otázkou pro Azure Logic Apps](/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Další kroky

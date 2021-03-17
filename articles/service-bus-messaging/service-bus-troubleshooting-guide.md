@@ -1,14 +1,14 @@
 ---
 title: Průvodce odstraňováním potíží pro Azure Service Bus | Microsoft Docs
-description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Service Bus a navrhovaných akcí, které se mají učinit, když dojde k výjimce.
+description: Přečtěte si tipy a doporučení pro řešení potíží pro několik problémů, které se mohou zobrazit při použití Azure Service Bus.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 03/03/2021
+ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067048"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179693"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 V tomto článku najdete tipy a doporučení pro odstraňování problémů s několika problémy, které se můžou zobrazit při použití Azure Service Bus. 
@@ -26,7 +26,7 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
     
     Příklad chybové zprávy o selhání:
 
-    ```json
+    ```xml
     <Error>
         <Code>400</Code>
         <Detail>
@@ -52,6 +52,8 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
     ```
     Ekvivalentní příkazy můžete použít, pokud používáte jiné nástroje `tnc` , například, `ping` a tak dále. 
 - Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
+- Pokud chcete najít správné IP adresy, které se mají přidat do seznamu povolených připojení, přečtěte si téma [co je potřeba přidat do seznamu povolených IP adres](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problémy, které se mohou vyskytnout při upgradech nebo restartu služby
 
@@ -80,7 +82,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 Identita nemá oprávnění pro přístup k Service Busmu tématu. 
 
 ### <a name="resolution"></a>Řešení
-Pokud chcete tuto chybu vyřešit, nainstalujte knihovnu [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Další informace najdete v tématu [ověřování místního vývoje](../key-vault/general/service-to-service-authentication.md#local-development-authentication). 
+Pokud chcete tuto chybu vyřešit, nainstalujte knihovnu [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Další informace najdete v tématu [ověřování místního vývoje](/dotnet/api/overview/azure/service-to-service-authentication#local-development-authentication). 
 
 Informace o tom, jak přiřadit oprávnění k rolím, najdete v tématu [ověřování spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus](service-bus-managed-service-identity.md).
 

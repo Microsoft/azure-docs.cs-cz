@@ -1,24 +1,24 @@
 ---
 title: 'Rychlý Start: použití Node.js pro připojení k serveru Azure Database for PostgreSQL-Single'
 description: V tomto rychlém startu najdete Node.js ukázka kódu, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom:
 - mvc
 - devcenter
 - seo-javascript-september2019
 - seo-javascript-october2019
-- devx-track-javascript
+- devx-track-js
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 10c7abf7349a3b2419e81459866920f20c3af6f7
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 7569606429740de23b56767d490b9bb14283d468
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182727"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331688"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Node.js k připojení a dotazování dat v Azure Database for PostgreSQL-jednom serveru
 
@@ -48,11 +48,11 @@ npm list
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
+1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver** ).
 
 1. Na panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
 
-   ![Připojovací řetězec Azure Database for PostgreSQL](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+   :::image type="content" source="./media/connect-nodejs/server-details-azure-database-postgresql.png" alt-text="Připojovací řetězec Azure Database for PostgreSQL":::
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Spuštění kódu jazyka JavaScript v Node.js
 Node.js můžete spouštět z prostředí Bash, Terminálu nebo příkazového řádku Windows tak, že zadáte `node` a potom interaktivně spustíte příklad kódu jazyka JavaScript tak, že ho zkopírujete a vložíte na příkazový řádek. Případně můžete kód jazyka JavaScript uložit do textového souboru a provést příkaz `node filename.js`, kdy název souboru se bude shodovat s parametrem, který ho spouští.
@@ -250,6 +250,16 @@ function queryDatabase() {
             throw err;
         });
 }
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Další kroky

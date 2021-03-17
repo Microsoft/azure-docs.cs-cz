@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144066"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861319"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory ověřování pomocí certifikátů v iOS
 
@@ -61,21 +61,21 @@ Platí následující požadavky a předpoklady pro Active Directory Federation 
 
 Aby služba Azure AD mohla odvolat klientský certifikát, musí mít token ADFS následující deklarace identity. Azure AD přidá tyto deklarace do aktualizačního tokenu, pokud jsou k dispozici v tokenu služby AD FS (nebo jakémkoli jiném tokenu SAML). Pokud je nutné ověřit token aktualizace, slouží tyto informace ke kontrole odvolání:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`-přidat sériové číslo vašeho klientského certifikátu
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`– Přidejte řetězec pro vystavitele klientského certifikátu.
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` -přidat sériové číslo vašeho klientského certifikátu
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` – Přidejte řetězec pro vystavitele klientského certifikátu.
 
 Osvědčeným postupem je, že byste měli aktualizovat také chybové stránky ADFS vaší organizace s následujícími informacemi:
 
 * Požadavek na instalaci Microsoft Authenticator v systému iOS.
 * Pokyny, jak získat uživatelský certifikát
 
-Další informace najdete v tématu [přizpůsobení AD FS přihlašovací stránky](https://technet.microsoft.com/library/dn280950.aspx).
+Další informace najdete v tématu [přizpůsobení AD FS přihlašovací stránky](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Použití moderního ověřování s aplikacemi Office
 
 Některé aplikace Office s povoleným moderním ověřováním odesílají `prompt=login` do služby Azure AD v jejich žádosti. Ve výchozím nastavení Azure AD překládá `prompt=login` v žádosti na službu AD FS `wauth=usernamepassworduri` (požádá službu AD FS, aby provedou ověřování U/P), a `wfresh=0` (POžádá službu ADFS, aby ignorovala stav jednotného přihlašování a provede nové ověřování). Pokud chcete pro tyto aplikace povolit ověřování na základě certifikátů, upravte výchozí chování služby Azure AD.
 
-Chcete-li aktualizovat výchozí chování, nastavte '*PromptLoginBehavior*' v nastavení federované domény na *disabled*. K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) , jak je znázorněno v následujícím příkladu:
+Chcete-li aktualizovat výchozí chování, nastavte '*PromptLoginBehavior*' v nastavení federované domény na *disabled*. K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings) , jak je znázorněno v následujícím příkladu:
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

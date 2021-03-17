@@ -4,12 +4,12 @@ description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomoc
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486540"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020071"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI
 
@@ -69,10 +69,16 @@ Poznamenejte si `loginServer` výstup, který je plně kvalifikovaný název reg
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před vložením a stažením imagí kontejneru se musíte přihlásit k registru. K tomu použijte příkaz [az acr login][az-acr-login].
+Před vložením a stažením imagí kontejneru se musíte přihlásit k registru. K tomu použijte příkaz [az acr login][az-acr-login]. Při přihlašování pomocí Azure CLI zadejte jenom název registru. Nepoužívejte název přihlašovacího serveru, který zahrnuje příponu domény, například `azurecr.io` . 
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Příklad:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné).

@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a3c10d95a57ea81f269af8f8f1cad49fc1c1b845
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79463607"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131254"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 
@@ -134,4 +135,4 @@ V tomto kurzu jste se naučili:
 Pokud jste pro své účty ještě nepovolili přístup k rozhraní API Azure Resource Manageru, pokračujte k následujícímu článku.
 
 > [!div class="nextstepaction"]
-> [Aktivace účtů a předplatných Azure](../../cost-management/activate-subs-accounts.md)
+> [Aktivace účtů a předplatných Azure](./activate-subs-accounts.md)

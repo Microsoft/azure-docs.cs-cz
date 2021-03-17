@@ -1,28 +1,25 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí PowerShellu
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
-services: data-factory
+description: V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z několika tabulek v databázi databáze SQL Server do Azure SQL Database.
 ms.author: yexu
 author: dearandyxu
-manager: anandsub
 ms.reviewer: douglasl, maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 02/18/2021
+ms.openlocfilehash: bd29c91efe419ec36b2adc337ecfd1ea7fd71f71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250957"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739313"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.    
+V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z několika tabulek v databázi databáze SQL Server do Azure SQL Database.    
 
 V tomto kurzu provedete následující kroky:
 
@@ -34,7 +31,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -65,7 +62,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     ![Přírůstkové načtení dat](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -74,7 +71,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
-1. Otevřete [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)a připojte se k SQL Server databázi.
+1. Otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)a připojte se k SQL Server databázi.
 
 2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
 
@@ -113,7 +110,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Vytvoření cílových tabulek v Azure SQL Database
 
-1. Otevřete [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)a připojte se k SQL Server databázi.
+1. Otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)a připojte se k SQL Server databázi.
 
 2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
 
@@ -167,8 +164,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -365,7 +362,7 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : SqlServerLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -398,7 +395,7 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -773,7 +770,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
    Zde je ukázkový výstup: 
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -812,7 +809,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 
@@ -821,11 +818,11 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 4. Na stránce **Datová továrna** vyberte **vytvořit & monitorování** a spusťte Azure Data Factory na samostatné kartě.
 
 5. Na stránce **Začínáme** vyberte **monitor** na levé straně. 
-![Spuštění kanálu](media/doc-common-process/get-started-page-monitor-button.png)    
+![Snímek obrazovky se stránkou Začínáme pro Azure Data Factory.](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. Zobrazí se všechna spuštění kanálů a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na odkaz ve sloupci **Parametry**. Pokud došlo k chybě, uvidíte odkaz ve sloupci **Chyba**.
 
-    ![Spuštění kanálu](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![Snímek obrazovky ukazuje spuštění kanálu pro datovou továrnu, včetně vašeho kanálu.](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Když vyberete odkaz ve sloupci **Akce** , zobrazí se všechna spuštění aktivit pro daný kanál. 
 
 8. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**. 
@@ -985,7 +982,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -994,5 +991,3 @@ Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azur
 
 > [!div class="nextstepaction"]
 >[Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-powershell.md)
-
-

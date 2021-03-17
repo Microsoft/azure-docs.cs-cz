@@ -12,34 +12,24 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771855"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753721"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: desktopová aplikace, která volá webová rozhraní API
 
 Seznamte se s tím, že potřebujete vytvořit desktopovou aplikaci, která volá webová rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="get-started"></a>Začínáme
 
-Pokud jste to ještě neudělali, vytvořte svou první aplikaci pomocí Průvodce rychlým startem pro plochu .NET, rychlým startem Univerzální platforma Windows (UWP) nebo rychlým startem macOS Native App:
+Pokud jste to ještě neudělali, vytvořte svou první aplikaci dokončením rychlého startu:
 
-> [!div class="nextstepaction"]
-> [Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [Rychlý Start: získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
+- [Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows](./quickstart-v2-windows-desktop.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Přehled
 
@@ -65,7 +55,10 @@ Napíšete desktopovou aplikaci a chcete se přihlašovat do vaší aplikace a v
 
 Aplikace klasické pracovní plochy mají určitou řadu. Závisí hlavně na tom, jestli vaše aplikace používá interaktivní ověřování nebo ne.
 
+## <a name="recommended-reading"></a>Doporučené čtení
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Desktopová aplikace: registrace aplikace](scenario-desktop-app-registration.md)
+Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](scenario-desktop-app-registration.md).

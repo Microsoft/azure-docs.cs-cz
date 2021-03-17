@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 326115a2a6cf29fcf211cdbd918edd0994fe45ed
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3f3a99c83d4a18f3085419b91be947dd67f8eec4
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212113"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763315"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Vstupní vazba služby Signal pro Azure Functions
 
@@ -245,11 +245,11 @@ Příklad function.js:
 Tady je kód Pythonu:
 
 ```python
-def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+def main(req: func.HttpRequest, connectionInfo: str) -> func.HttpResponse:
     # connectionInfo contains an access key token with a name identifier
     # claim set to the authenticated user
     return func.HttpResponse(
-        connectionInfoJson,
+        connectionInfo,
         status_code=200,
         headers={
             'Content-type': 'application/json'
@@ -280,4 +280,5 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Zpracování zpráv ze služby signalizace (aktivační vazba)](./functions-bindings-signalr-service-trigger.md)
 - [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md) 

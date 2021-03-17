@@ -1,23 +1,24 @@
 ---
-title: Princip využití rezervací Azure u smluv Enterprise
-description: Zjistěte, jak číst údaje o využití, abyste měli představu o tom, jak se na vaši prováděcí smlouvu Enterprise uplatňují rezervace Azure.
+title: Pochopení využití rezervací Azure pro smlouva Enterprise a zákaznickou smlouvu Microsoftu
+description: Naučte se číst informace o využití, abyste zjistili, jak se rezervace Azure vztahuje na smlouva Enterprise a používání zákaznických smluv Microsoftu.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: a8fbdcc9176b2297d160a4166b7d9079ff1b7fb5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022346"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683713"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získání nákladů na rezervace a jejich využití u smlouvy Enterprise
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Získat smlouva Enterprise a náklady a využití rezervace zákaznických smluv Microsoftu
 
-Náklady na rezervace a údaje o využití jsou zákazníkům se smlouvou Enterprise dostupné na webu Azure Portal a přes rozhraní REST API. Tento článek vám pomůže:
+Rozšířená data pro náklady na rezervaci a využití jsou k dispozici pro smlouva Enterprise (EA) a využití systému Microsoft Customer Agreement (MCA) ve správě nákladů. Tento článek vám pomůže:
 
 - Získat údaje o nákupech rezervací
 - Zjistit, které předplatné, skupina prostředků nebo prostředek rezervaci využil
@@ -54,15 +55,13 @@ Jiné informace dostupné v údajích o využití Azure byly změněny:
 - Term – 12 nebo 36 měsíců.
 - RINormalizationRatio – k dispozici v sekci AdditionalInfo. Jedná se o poměr, kdy je rezervace vztažena k záznamu o využití. Pokud je u rezervace povolena flexibilní velikost instance, může platit pro jiné velikosti. Tato hodnota udává poměr, kdy byla rezervace vztažena na záznam o využití.
 
-[Zobrazit definici polí](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[Zobrazit definici polí](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Získání dat o spotřebě a využití rezervací Azure pomocí rozhraní API
 
 Tato data můžete získat přes rozhraní API nebo stáhnout z webu Azure Portal.
 
-Nová data získáte voláním [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list). Podrobnosti o terminologii najdete v článku s [pojmy souvisejícími s využitím](../understand/understand-usage.md). Volajícím by měl být podnikový správce smlouvy Enterprise, který používá [portál EA](https://ea.azure.com). Tato data mohou získat také podnikoví správci s právy jen pro čtení.
-
-Upozorňujeme, že tato data nejsou dostupná v [rozhraních API pro vytváření sestav pro podnikové zákazníky – podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Nová data získáte voláním [rozhraní API podrobností využití](/rest/api/consumption/usagedetails/list). Podrobnosti o terminologii najdete v článku s [pojmy souvisejícími s využitím](../understand/understand-usage.md).
 
 Tady je příklad volání rozhraní API Podrobnosti využití:
 
@@ -70,7 +69,7 @@ Tady je příklad volání rozhraní API Podrobnosti využití:
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-Další informace o {enrollmentId} a {billingPeriodId}, najdete v článku [Podrobnosti využití – rozhraní API seznamu](https://docs.microsoft.com/rest/api/consumption/usagedetails/list).
+Další informace o {enrollmentId} a {billingPeriodId}, najdete v článku [Podrobnosti využití – rozhraní API seznamu](/rest/api/consumption/usagedetails/list).
 
 Informace o metrice a filtru v následující tabulce vám pomohou vyřešit běžné problémy s rezervacemi.
 
@@ -86,7 +85,7 @@ Informace o metrice a filtru v následující tabulce vám pomohou vyřešit bě
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Stažení souboru CSV využití s novými daty
 
-Pokud jste správcem EA, můžete si z webu Azure Portal stáhnout soubor CSV, který obsahuje nová data o využití. Tato data nejsou k dispozici na portálu EA (ea.azure.com), pokud chcete zobrazit nová data, musíte stáhnout soubor využití z webu Azure Portal (portal.azure.com).
+Pokud jste správce služby EA, můžete si stáhnout soubor CSV, který obsahuje nová data o využití z Azure Portal. Tato data nejsou k dispozici na portálu EA (ea.azure.com), pokud chcete zobrazit nová data, musíte stáhnout soubor využití z webu Azure Portal (portal.azure.com).
 
 Na webu Azure Portal přejděte na [Správa nákladů a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
@@ -139,6 +138,8 @@ Opatřete si data Amortizované náklady a vyfiltrujte v datech rezervovanou ins
 2. Získejte náklady na rezervaci. Sečtením hodnot _Cost_ získáte peněžní hodnotu, kterou jste zaplatili za rezervovanou instanci. Zahrnuje využité a nevyužité náklady na rezervaci.
 3. Odečtením nákladů na rezervaci od odhadovaných nákladů na průběžné platby získáte odhadované úspory.
 
+Nezapomínejte, že v případě nedostatečně využité rezervace je potřeba vzít v úvahu také položku _UnusedReservation_ pro _ChargeType_. Pokud máte plně využitou rezervaci, získáváte maximální možnou úsporu. Libovolná hodnota _UnusedReservation_ vaše úspory snižuje.
+
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Nákupy a amortizace rezervací v analýze nákladů
 
 Náklady na rezervaci jsou dostupné v [analýze nákladů](https://aka.ms/costanalysis). V analýze nákladů se standardně zobrazují **Skutečné náklady**, což jsou náklady, které budou uvedeny ve vašem vyúčtování. Pokud chcete zobrazit nákupy rezervací rozepsané a přiřazené k prostředkům, které tuto výhodu využily, přepněte na **Amortizované náklady**:
@@ -147,7 +148,7 @@ Náklady na rezervaci jsou dostupné v [analýze nákladů](https://aka.ms/costa
 
 Při seskupení podle typu poplatku zobrazíte rozpis využití, nákupů a refundací; při seskupení podle rezervace zobrazíte rozpis rezervací a nákladů na vyžádání. Mějte na paměti, že jedinými náklady na rezervaci, které uvidíte při pohledu na skutečné náklady, jsou nákupy; při pohledu na amortizované náklady budou ale náklady přiděleny k jednotlivým prostředkům, které tuto výhodu využily. Při pohledu na amortizované náklady uvidíte také nový poplatek typu **UnusedReservation**.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -156,7 +157,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 Další informace o rezervacích Azure najdete v následujících článcích:
 
 - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Správa rezervací Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci](../manage/understand-vm-reservation-charges.md)

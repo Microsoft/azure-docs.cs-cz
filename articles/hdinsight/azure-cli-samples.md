@@ -1,19 +1,16 @@
 ---
 title: 'Azure HDInsight: ukázky Azure CLI'
 description: Příklady Azure CLI pro běžné úlohy ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946879"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: ukázky Azure CLI
 
@@ -26,13 +23,13 @@ Tento článek poskytuje ukázkové skripty pro běžné úlohy. Pro každý př
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure CLI Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* Azure CLI Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) .
 
-* Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
+* Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
 
 ## <a name="az-login"></a>az login
 
-[Přihlaste se k Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
+[Přihlaste se k Azure](/cli/azure/reference-index#az-login).
 
 ```azurecli
 az login
@@ -43,7 +40,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>AZ HDInsight Create
 
-[Vytvoří nový cluster](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
+[Vytvoří nový cluster](/cli/azure/hdinsight#az-hdinsight-create).
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>Vytvoření clusteru s existujícím účtem úložiště
 
@@ -176,7 +173,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>AZ HDInsight Application Create
 
-[Vytvořte aplikaci pro cluster HDInsight](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create).
+[Vytvořte aplikaci pro cluster HDInsight](/cli/azure/hdinsight/application#az-hdinsight-application-create).
 
 ### <a name="create-an-application-with-a-script-uri"></a>Vytvoření aplikace s identifikátorem URI skriptu
 
@@ -243,7 +240,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>AZ HDInsight Script-Action Execute
 
-[Spustí akce skriptu v zadaném clusteru HDInsight](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
+[Spustí akce skriptu v zadaném clusteru HDInsight](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute).
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>Provést akci skriptu a zachovat při úspěchu
 

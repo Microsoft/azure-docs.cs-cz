@@ -4,13 +4,12 @@ description: Typy uzlů, odolnost, spolehlivost a další věci, které je potř
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714931"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -34,7 +33,7 @@ Každý cluster vyžaduje jeden **primární typ uzlu**, který spouští důle�
 
 **Typy neprimárních uzlů** lze použít k definování aplikačních rolí (například *front-endové* a *back-endové* služby) a k fyzické izolaci služeb v rámci clusteru. Clustery Service Fabric mohou mít nula nebo více typů neprimárních uzlů.
 
-Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci definice typu uzlu v šabloně nasazení Azure Resource Manager. Úplný seznam vlastností typu uzlu naleznete v [objektu NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Například použití otevřete libovolný *AzureDeploy.js* v souboru v části [Service Fabric ukázky clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) a *vyhledejte na stránce* hledání `nodetTypes` objektu.
+Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci definice typu uzlu v šabloně nasazení Azure Resource Manager. Úplný seznam vlastností typu uzlu naleznete v [objektu NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Například použití otevřete libovolný *AzureDeploy.js* v souboru v části [Service Fabric ukázky clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) a *vyhledejte na stránce* hledání `nodeTypes` objektu.
 
 ### <a name="node-type-planning-considerations"></a>Požadavky na plánování typu uzlu
 
@@ -56,7 +55,7 @@ Počet počátečních uzlů závisí na účelu clusteru a aplikacích a služb
 
     Service Fabric podporuje clustery, které jsou rozloženy mezi [zóny dostupnosti](../availability-zones/az-overview.md) , nasazením typů uzlů, které jsou připnuté na konkrétní zóny, a zajišťuje tak vysokou dostupnost vašich aplikací. Zóny dostupnosti vyžadovat další plánování typu uzlu a minimální požadavky. Podrobnosti najdete v tématu [doporučená topologie pro typ primárního uzlu Service Fabricch clusterů, které jsou rozloženy mezi zóny dostupnosti](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
-Při určování počtu a vlastností typů uzlů pro počáteční vytvoření clusteru mějte na paměti, že po nasazení clusteru můžete kdykoli přidat, upravit nebo odebrat (neprimární) typy uzlů. [Typy primárních uzlů je také možné upravovat](service-fabric-scale-up-node-type.md) ve spuštěných clusterech (i když tyto operace vyžadují skvělé řešení plánování a opatrnosti v produkčních prostředích).
+Při určování počtu a vlastností typů uzlů pro počáteční vytvoření clusteru mějte na paměti, že po nasazení clusteru můžete kdykoli přidat, upravit nebo odebrat (neprimární) typy uzlů. [Typy primárních uzlů je také možné upravovat](service-fabric-scale-up-primary-node-type.md) ve spuštěných clusterech (i když tyto operace vyžadují skvělé řešení plánování a opatrnosti v produkčních prostředích).
 
 Dalším aspektem vlastností typu uzlu je úroveň odolnosti, která určuje oprávnění, které virtuální počítače typu uzlu mají v infrastruktuře Azure. Použijte velikost virtuálních počítačů, které jste si zvolili pro svůj cluster, a počet instancí, které přiřadíte pro jednotlivé typy uzlů, které vám pomůžou určit vhodnou úroveň odolnosti pro každý typ uzlu, jak je popsáno dále.
 
@@ -74,6 +73,9 @@ Následující tabulka uvádí Service Fabric vrstev odolnosti, jejich požadavk
 | Gold             | 5                              | Velikosti celého uzlu vyhrazené pro jednoho zákazníka (například L32s úrovně, GS5, G5, DS15_v2 D15_v2) | Může se zpozdit až po schválení clusterem Service Fabric. | Může být pozastaveno po dobu 2 hodin na upgradované doméně, aby se mohly další časy zotavit z předchozích chyb. |
 | Silver           | 5                              | Virtuální počítače s jedním jádrem nebo novějším s minimálně 50 GB místní jednotky SSD                      | Může se zpozdit až po schválení clusterem Service Fabric. | Nelze zpozdit na jakékoli významné časové období.                                                    |
 | Bronzová          | 1                              | Virtuální počítače s minimálně 50 GB místní jednotky SSD                                              | Nebude zpožděný Service Fabricým clusterem.           | Nelze zpozdit na jakékoli významné časové období.                                                    |
+
+> [!NOTE]
+> Výše zmíněný minimální počet virtuálních počítačů je nezbytným požadavkem pro každou úroveň trvanlivosti. Provádíme ověřování na místě, které zabrání vytvoření nebo úpravě stávajících scalesets virtuálních počítačů, které tyto požadavky nesplňují.
 
 > [!WARNING]
 > V případě bronzové odolnosti není k dispozici automatický upgrade pro image operačního systému. I když se [aplikace Orchestration](service-fabric-patch-orchestration-application.md) (určená jenom pro clustery, které nejsou hostované na Azure) *nedoporučují* pro stříbrné nebo vyšší úrovně odolnosti, jedná se o jedinou možnost pro automatizaci aktualizací Windows s ohledem na Service Fabric upgradovacích domén.
@@ -105,7 +107,7 @@ Používejte stříbro nebo zlatou odolnost pro všechny typy uzlů, které host
 Použijte tato doporučení pro správu typů uzlů pomocí stříbrné nebo zlaté odolnosti:
 
 * Udržujte cluster a aplikace pořád v pořádku a ujistěte se, že aplikace reagují na všechny [události životního cyklu repliky služby](service-fabric-reliable-services-lifecycle.md) (jako replika v buildu se zablokuje) včas.
-* Zajištění bezpečnějšího způsobu změny velikosti virtuálního počítače (horizontální navýšení kapacity) Změna velikosti virtuálního počítače pro sadu škálování virtuálního počítače vyžaduje pečlivé plánování a zvýšení opatrnosti. Podrobnosti najdete v tématu [horizontální navýšení kapacity Service Fabric typu uzlu](service-fabric-scale-up-node-type.md) .
+* Zajištění bezpečnějšího způsobu změny velikosti virtuálního počítače (horizontální navýšení kapacity) Změna velikosti virtuálního počítače pro sadu škálování virtuálního počítače vyžaduje pečlivé plánování a zvýšení opatrnosti. Podrobnosti najdete v tématu [horizontální navýšení kapacity Service Fabric typu uzlu](service-fabric-scale-up-primary-node-type.md) .
 * Udržujte minimální počet pěti uzlů pro všechny sady škálování virtuálních počítačů, které mají povolenou úroveň odolnosti Gold nebo stříbrné. Cluster zadáte chybový stav, pokud budete škálovat pod tuto prahovou hodnotu a budete muset ručně vyčistit stav ( `Remove-ServiceFabricNodeState` ) odebraných uzlů.
 * Každá sada škálování virtuálního počítače s úrovní odolnosti stříbrného nebo zlata musí být v Service Fabricm clusteru namapována na vlastní typ uzlu. Mapování několika sad Virtual Machine Scale Sets na jeden typ uzlu zabráníte správnému fungování koordinace mezi Service Fabricm clusterem a infrastrukturou Azure.
 * Neodstraňujte náhodné instance virtuálních počítačů, ve funkci vždy používejte škálování Virtual Machine Scale-Scale. Odstranění náhodných instancí virtuálních počítačů může mít za následek vytvoření nerovnováhy v instanci virtuálního počítače mezi [doménami upgradu](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) a [doménami selhání](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains). Tato nerovnováha by mohla negativně ovlivnit schopnost systémů správně vyrovnávat zatížení mezi instancemi služby nebo replikami služeb.
@@ -147,7 +149,7 @@ Tady je doporučení pro výběr úrovně spolehlivosti. Počet počátečních 
 | 7 nebo 8 | Gold |
 | 9 a více | Podpora |
 
-Při zvětšení nebo zmenšení velikosti clusteru (součet instancí virtuálních počítačů ve všech typech uzlů) zvažte aktualizaci spolehlivosti clusteru z jedné úrovně na jinou. Tím se aktivují upgrady clusteru potřebné ke změně počtu sad replik systémových služeb. Před provedením jakýchkoli dalších změn v clusteru, jako je přidání uzlů, počkejte na dokončení probíhajícího upgradu.  Průběh upgradu můžete monitorovat na Service Fabric Explorer nebo spuštěním [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+Při zvětšení nebo zmenšení velikosti clusteru (součet instancí virtuálních počítačů ve všech typech uzlů) zvažte aktualizaci spolehlivosti clusteru z jedné úrovně na jinou. Tím se aktivují upgrady clusteru potřebné ke změně počtu sad replik systémových služeb. Před provedením jakýchkoli dalších změn v clusteru, jako je přidání uzlů, počkejte na dokončení probíhajícího upgradu.  Průběh upgradu můžete monitorovat na Service Fabric Explorer nebo spuštěním [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade)
 
 ### <a name="capacity-planning-for-reliability"></a>Plánování kapacity pro spolehlivost
 

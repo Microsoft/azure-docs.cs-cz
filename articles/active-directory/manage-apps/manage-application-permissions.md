@@ -2,8 +2,8 @@
 title: Správa oprávnění uživatelů a správců – Azure Active Directory | Microsoft Docs
 description: Přečtěte si, jak kontrolovat a spravovat oprávnění pro aplikaci v Azure AD. Odvolejte například všechna oprávnění udělená aplikaci.
 services: active-directory
-author: mimart
-manager: CelesteDG
+author: msmimart
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: cbd2bc7b9ccc9efe0c6fdf8de02665160667cb8f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510874"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256928"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Provedení akce na privilegovaných nebo podezřelých aplikacích v Azure Active Directory
 
@@ -29,14 +29,14 @@ Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azur
 
 Chcete-li provést následující akce, musíte se přihlásit jako globální správce, správce aplikace nebo správce cloudové aplikace.
 
-Chcete-li omezit přístup k aplikacím, je nutné vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
+Chcete-li omezit přístup k aplikacím, je nutné vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
 
 K portálu Azure AD můžete přistupovat a získat tak kontextové skripty PowerShellu k provedení těchto akcí.
  
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **oprávnění**. Na panelu příkazů vyberte **zkontrolovat oprávnění**.
+4. Vyberte **Oprávnění**. Na panelu příkazů vyberte **zkontrolovat oprávnění**.
 
 ![Snímek obrazovky okna zkontrolovat oprávnění](./media/manage-application-permissions/review-permissions.png)
 
@@ -48,8 +48,8 @@ Doporučujeme, abyste omezili přístup k aplikaci tak, že zapnete nastavení *
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak nastavte **požadavky uživatele** na **Ano**.
-5. Vyberte **uživatele a skupiny**a potom odeberte nechtěné uživatele, kteří jsou přiřazeni k aplikaci.
+4. Vyberte **vlastnosti** a pak nastavte **požadavky uživatele** na **Ano**.
+5. Vyberte **uživatele a skupiny** a potom odeberte nechtěné uživatele, kteří jsou přiřazeni k aplikaci.
 6. Přiřaďte aplikaci uživatelům nebo skupinám.
 
 Volitelně můžete odebrat všechny uživatele, kteří jsou přiřazeni k aplikaci pomocí prostředí PowerShell.
@@ -66,7 +66,7 @@ Volitelně můžete aplikaci zakázat, aby uživatelé měli přístup k aplikac
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak nastavte možnost **povoleno pro uživatele, aby se přihlásili?** na **ne**.
+4. Vyberte **vlastnosti** a pak nastavte možnost **povoleno pro uživatele, aby se přihlásili?** na **ne**.
 
 ## <a name="investigate-a-suspicious-application"></a>Prozkoumat podezřelou aplikaci
 
@@ -75,8 +75,8 @@ Doporučujeme, abyste omezili přístup k aplikaci tak, že zapnete nastavení *
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 3. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 5. Vyberte aplikaci, ke které chcete omezit přístup.
-6. Vyberte **vlastnosti**a pak nastavte **požadavky uživatele** na **Ano**.
-7. Vyberte **oprávnění**a zkontrolujte oprávnění správce a uživatel se souhlasem.
+6. Vyberte **vlastnosti** a pak nastavte **požadavky uživatele** na **Ano**.
+7. Vyberte **oprávnění** a zkontrolujte oprávnění správce a uživatel se souhlasem.
 
 Volitelně můžete pomocí prostředí PowerShell:
 
@@ -94,7 +94,7 @@ Doporučujeme, abyste aplikaci zakázali, aby blokovala přístup uživatelů a 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak zkopírujte ID objektu.
+4. Vyberte **vlastnosti** a pak zkopírujte ID objektu.
 
 ### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
 
@@ -104,70 +104,70 @@ Načte ID instančního objektu služby.
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
 3. Vyberte aplikaci, ke které chcete omezit přístup.
-4. Vyberte **vlastnosti**a pak zkopírujte ID objektu.
+4. Vyberte **vlastnosti** a pak zkopírujte ID objektu.
 
 ```powershell
-    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-    $sp.ObjectId
+$sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+$sp.ObjectId
 ```
 Odeberte všechny uživatele, kteří jsou přiřazeni k aplikaci.
  ```powershell
-    Connect-AzureAD
+Connect-AzureAD
 
-    # Get Service Principal using objectId
-    $sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
 
-    # Get Azure AD App role assignments using objectId of the Service Principal
-    $assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
+# Get Azure AD App role assignments using objectId of the Service Principal
+$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
 
-    # Remove all users and groups assigned to the application
-    $assignments | ForEach-Object {
-        if ($_.PrincipalType -eq "User") {
-            Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-        } elseif ($_.PrincipalType -eq "Group") {
-            Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-        }
+# Remove all users and groups assigned to the application
+$assignments | ForEach-Object {
+    if ($_.PrincipalType -eq "User") {
+        Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
+    } elseif ($_.PrincipalType -eq "Group") {
+        Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
     }
+}
  ```
 
 Odvolat oprávnění udělená aplikaci.
 
 ```powershell
-    Connect-AzureAD
+Connect-AzureAD
 
-    # Get Service Principal using objectId
-    $sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
 
-    # Get all delegated permissions for the service principal
-    $spOAuth2PermissionsGrants = Get-AzureADOAuth2PermissionGrant -All $true| Where-Object { $_.clientId -eq $sp.ObjectId }
+# Get all delegated permissions for the service principal
+$spOAuth2PermissionsGrants = Get-AzureADOAuth2PermissionGrant -All $true| Where-Object { $_.clientId -eq $sp.ObjectId }
 
-    # Remove all delegated permissions
-    $spOAuth2PermissionsGrants | ForEach-Object {
-        Remove-AzureADOAuth2PermissionGrant -ObjectId $_.ObjectId
-    }
+# Remove all delegated permissions
+$spOAuth2PermissionsGrants | ForEach-Object {
+    Remove-AzureADOAuth2PermissionGrant -ObjectId $_.ObjectId
+}
 
-    # Get all application permissions for the service principal
-    $spApplicationPermissions = Get-AzureADServiceAppRoleAssignedTo -ObjectId $sp.ObjectId -All $true | Where-Object { $_.PrincipalType -eq "ServicePrincipal" }
+# Get all application permissions for the service principal
+$spApplicationPermissions = Get-AzureADServiceAppRoleAssignedTo -ObjectId $sp.ObjectId -All $true | Where-Object { $_.PrincipalType -eq "ServicePrincipal" }
 
-    # Remove all delegated permissions
-    $spApplicationPermissions | ForEach-Object {
-        Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
-    }
+# Remove all delegated permissions
+$spApplicationPermissions | ForEach-Object {
+    Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
+}
 ```
 Zruší platnost obnovovacích tokenů.
 ```powershell
-        Connect-AzureAD
+Connect-AzureAD
 
-        # Get Service Principal using objectId
-        $sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
 
-        # Get Azure AD App role assignments using objectID of the Service Principal
-        $assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true | Where-Object {$_.PrincipalType -eq "User"}
+# Get Azure AD App role assignments using objectID of the Service Principal
+$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true | Where-Object {$_.PrincipalType -eq "User"}
 
-        # Revoke refresh token for all users assigned to the application
-        $assignments | ForEach-Object {
-            Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
-        }
+# Revoke refresh token for all users assigned to the application
+$assignments | ForEach-Object {
+    Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
+}
 ```
 ## <a name="next-steps"></a>Další kroky
 - [Správa souhlasu s aplikacemi a vyhodnocení žádosti o souhlas](manage-consent-requests.md)

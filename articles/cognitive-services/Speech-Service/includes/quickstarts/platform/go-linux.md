@@ -2,14 +2,14 @@
 author: glecaros
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/30/2020
+ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: a1bc980f8334ca815a1805f33f3572cded4ba0ef
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cf765145cafa2eb06d77ea2e153e45c296281b71
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156726"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552219"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Linux.
 
@@ -17,32 +17,28 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
+Linux Podívejte se na seznam [podporovaných distribucí a cílových architektur systému Linux](~/articles/cognitive-services/speech-service/speech-sdk.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat:
 
+* V systému Windows potřebujete [Microsoft Visual C++ distribuovatelné součásti pro Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) pro vaši platformu. První instalace může vyžadovat restartování.
 * RSZ
 * [Přejít do binárního souboru (1,13 nebo novější)](https://golang.org/dl/)
 
 * Podporované platformy Linux budou vyžadovat nainstalovaná konkrétní knihovny ( `libssl` pro podporu SSL (Secure Sockets Layer `libasound2` ) a pro podporu zvuku. Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
-   * V Ubuntu:
+   * V Ubuntu/Debian:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * V Debian 9:
+     Pokud libssl 1.0.0 není k dispozici, nainstalujte libssl 1.0. x (kde x je větší než 0) nebo místo toho libssl 1.1.
 
-     ```sh
-     sudo apt-get update
-     sudo apt-get install build-essential libssl1.0.2 libasound2 wget
-     ```
-
-   * V RHEL/CentOS 8:
+   * V RHEL/CentOS:
 
      ```sh
      sudo yum update
@@ -51,24 +47,27 @@ K dokončení tohoto rychlého startu budete potřebovat:
      ```
 
 > [!NOTE]
-> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> - V RHEL/CentOS 7 postupujte podle pokynů, [jak nakonfigurovat RHEL/CentOS 7 pro sadu Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
+> - V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 [!INCLUDE [linux-install-sdk](linux-install-sdk.md)]
 
 
 ## <a name="configure-go-environment"></a>Konfigurace prostředí pro přechod
 
+Pomocí následujících kroků nastavte prostředí pro rozpoznávání řeči a vyhledejte sadu Speech SDK. V obou krocích nahraďte `<architecture>` architekturou procesoru vašeho procesoru. To bude `x86` ,, `x64` `arm32` nebo `arm64` .
+
 1. Vzhledem k tomu, že vazby spoléhají na `cgo` , je třeba nastavit proměnné prostředí tak, aby mohl najít sadu SDK:
 
    ```sh
    export CGO_CFLAGS="-I$SPEECHSDK_ROOT/include/c_api"
-   export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib -lMicrosoft.CognitiveServices.Speech.core"
+   export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib/<architecture> -lMicrosoft.CognitiveServices.Speech.core"
    ```
 
-1. Pro spouštění aplikací, včetně sady SDK, je navíc potřeba sdělit operačnímu systému, kde najít knihovny:
+1. Aby bylo možné spouštět aplikace včetně sady SDK, musíme říct operačnímu systému, kde najít knihovny:
 
    ```sh
-   export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<arch>:$LD_LIBRARY_PATH"
+   export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<architecture>:$LD_LIBRARY_PATH"
    ```
 
 ## <a name="next-steps"></a>Další kroky

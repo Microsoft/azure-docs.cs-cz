@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926191"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337589"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Kurz: použití rozhraní REST API ke kopírování dat do Azure Data Boxho úložiště objektů BLOB  
 
@@ -42,7 +42,7 @@ Než začnete, ujistěte se, že:
 
 ## <a name="connect-via-http-or-https"></a>Připojení přes HTTP nebo https
 
-Pomocí *protokolu HTTP* nebo *https*se můžete připojit k data box úložišti objektů BLOB.
+Pomocí *protokolu HTTP* nebo *https* se můžete připojit k data box úložišti objektů BLOB.
 
 * *Protokol HTTPS* je zabezpečený a doporučený způsob, jak se připojit k data box úložišti objektů BLOB.
 * *Protokol HTTP* se používá při připojování přes důvěryhodné sítě.
@@ -85,7 +85,7 @@ K stažení certifikátu použijte Azure Portal.
 
 1. Přihlaste se k portálu Azure Portal.
 2. Přejděte do objednávky Data Box a přejděte na **obecné > informace o zařízení**.
-3. V části **přihlašovací údaje pro zařízení**přejděte na **rozhraní API přístup** k zařízení. Klikněte na tlačítko **Stáhnout**. Tato akce stáhne soubor certifikátu ** \<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
+3. V části **přihlašovací údaje pro zařízení** přejděte na **rozhraní API přístup** k zařízení. Klikněte na tlačítko **Stáhnout**. Tato akce stáhne soubor certifikátu **\<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
 
     ![Stáhnout certifikát v Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -109,17 +109,17 @@ Pomocí následujícího postupu naimportujte `.cer` soubor do kořenového úlo
 #### <a name="use-windows-server-ui"></a>Použít uživatelské rozhraní systému Windows Server
 
 1. Klikněte na soubor pravým tlačítkem `.cer` a vyberte **nainstalovat certifikát**. Tato akce spustí Průvodce importem certifikátu.
-2. V poli **umístění úložiště**vyberte **místní počítač**a pak klikněte na **Další**.
+2. V poli **umístění úložiště** vyberte **místní počítač** a pak klikněte na **Další**.
 
-    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![Průvodce importem certifikátu, Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
+3. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště** a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
 
-    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Průvodce importem certifikátu, úložiště certifikátů](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. Klikněte na **Finish** (Dokončit). Zobrazí se zpráva oznamující, že import proběhl úspěšně.
 
-    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Průvodce importem certifikátu, dokončení importu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Použití systému Linux
 
@@ -139,7 +139,7 @@ Podrobnosti najdete v dokumentaci specifické pro vaši distribuci.
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby BLOB Service 
 
-[Při připojování přes *protokol HTTP*použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint).
+[Při připojování přes *protokol HTTP* použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint).
 
 ### <a name="configure-partner-software-and-verify-connection"></a>Konfigurace partnerského softwaru a ověření připojení
 
@@ -171,9 +171,9 @@ Prvním krokem je vytvoření kontejneru, protože objekty blob jsou vždycky na
 
 1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte účet úložiště, ve kterém chcete vytvořit kontejner objektů BLOB.
-3. Klikněte pravým tlačítkem na **kontejnery objektů BLOB**a v místní nabídce vyberte **vytvořit kontejner objektů BLOB**.
+3. Klikněte pravým tlačítkem na **kontejnery objektů BLOB** a v místní nabídce vyberte **vytvořit kontejner objektů BLOB**.
 
-   ![Místní nabídka pro vytvoření kontejnerů objektů BLOB](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![Kontextová nabídka kontejnery objektů blob, vytvořit kontejner objektů BLOB](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. Pod složkou **kontejnerů objektů BLOB** se zobrazí textové pole. Zadejte název kontejneru objektů blob. Podívejte se na téma [vytvoření kontejneru a nastavení oprávnění](../storage/blobs/storage-quickstart-blobs-dotnet.md) pro informace o pravidlech a omezeních pro pojmenování kontejnerů objektů BLOB.
 5. Pokud chcete vytvořit kontejner objektů blob, stiskněte klávesu **ENTER** , nebo operaci zrušte stisknutím klávesy **ESC** . Po úspěšném vytvoření kontejneru objektů BLOB se zobrazí ve složce **kontejnery objektů BLOB** pro vybraný účet úložiště.
@@ -200,7 +200,7 @@ azcopy \
 AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 ```
 
-Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče**, vyberte klíč a vložte ho do příkazu AzCopy.
+Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče** , vyberte klíč a vložte ho do příkazu AzCopy.
 
 Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje. Aktualizujte zdrojovou cestu k adresáři dat a `data-box-storage-account-name` v cílové adrese URL nahraďte názvem účtu úložiště, který je přidružený k vašemu data box.
 

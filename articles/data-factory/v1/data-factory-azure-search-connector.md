@@ -1,23 +1,18 @@
 ---
 title: Vložení dat do indexu vyhledávání pomocí Data Factory
 description: Přečtěte si informace o tom, jak odeslat data do služby Azure Kognitivní hledání index pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0226ab75d53733b94a9ae5734b42b7340998759c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194922"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379263"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Vložení dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -39,7 +34,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která odešle data ze zdro
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -55,7 +50,7 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Azure Kognitivní hledání.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | -------- | ----------- | -------- |
 | typ | Vlastnost Type musí být nastavená na: **AzureSearch**. | Yes |
 | url | Adresa URL služby vyhledávání | Yes |
@@ -65,7 +60,7 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad. Oddíl **typeProperties** se liší pro každý typ datové sady. Oddíl typeProperties pro datovou sadu typu **AzureSearchIndex** má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | -------- | ----------- | -------- |
 | typ | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Yes |
 | indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Yes |
@@ -78,7 +73,7 @@ V případě aktivity kopírování, pokud je jímka typu **AzureSearchIndexSink
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Odeslat| No |
+| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Nahrávání| No |
 | WriteBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) . | 1 až 1 000. Výchozí hodnota je 1000. | No |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
@@ -99,12 +94,12 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 
 | Datový typ Azure Kognitivní hledání | Podporováno v jímky Azure Kognitivní hledání |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
-| Int32 | Ano |
-| Int64 | Ano |
-| Double | Ano |
-| Logická hodnota | Ano |
-| DataTimeOffset | Ano |
+| Řetězec | Y |
+| Int32 | Y |
+| Int64 | Y |
+| dvojité | Y |
+| Logická hodnota | Y |
+| DataTimeOffset | Y |
 | Pole řetězců | N |
 | GeographyPoint | N |
 

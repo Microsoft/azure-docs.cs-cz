@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6a12db8e34421dd16c12d167896ef66b3377d524
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ad3dfc8c86d22e58377ebfbdb94b2beb004ded56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853018"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092462"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Kurz: načtení ukázkových dat do rozhraní API Cassandra tabulky v Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. K ukládání a správě dat o klíčích a hodnotách můžete použít účet rozhraní API Cassandra v Azure Cosmos DB. V tomto kurzu se dozvíte, jak načíst ukázková uživatelská data do tabulky v rozhraní API Cassandra účtu v Azure Cosmos DB pomocí aplikace Java. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) a načítá uživatelská data, jako je ID uživatele, jméno uživatele a město uživatele. 
 
@@ -27,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento článek patří do vícedílného kurzu. Než začnete s tímto dokumentem, ujistěte se, že jste [vytvořili rozhraní API Cassandra účet, prostor a tabulku](create-cassandra-api-account-java.md).   
 

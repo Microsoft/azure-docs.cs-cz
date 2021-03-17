@@ -1,18 +1,15 @@
 ---
 title: Vytvoření řídicího panelu Azure Portal pomocí prostředí PowerShell
 description: Naučte se, jak vytvořit řídicí panel v Azure Portal pomocí Azure PowerShell.
-author: mgblythe
-ms.service: azure-portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.author: mblythe
 ms.date: 07/24/2020
-ms.openlocfilehash: 6b7a4f6d4ad7f5e94d19b9d531992f54ff13fec0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87440768"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745736"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Rychlý Start: Vytvoření řídicího panelu Azure Portal pomocí prostředí PowerShell
 
@@ -21,9 +18,9 @@ ms.locfileid: "87440768"
 
 ## <a name="requirements"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > I když je modul PowerShellu **AZ. Portal** ve verzi Preview, musíte ho z rutiny nainstalovat samostatně z nástroje AZ PowerShell Module `Install-Module` . Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna k tomu, že vydává verze modulu PowerShell a jsou dostupné nativně z Azure Cloud Shell.
@@ -36,7 +33,7 @@ Install-Module -Name Az.Portal
 
 ## <a name="choose-a-specific-azure-subscription"></a>Zvolit konkrétní předplatné Azure
 
-Pokud máte více předplatných Azure, vyberte příslušné předplatné, ve kterém se prostředky mají fakturovat. Vyberte konkrétní předplatné pomocí rutiny [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) .
+Pokud máte více předplatných Azure, vyberte příslušné předplatné, ve kterém se prostředky mají fakturovat. Vyberte konkrétní předplatné pomocí rutiny [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -68,7 +65,7 @@ $vmName = 'SimpleWinVM'
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rutiny [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
 
 Následující příklad vytvoří skupinu prostředků na základě názvu v `$resourceGroupName` proměnné v oblasti určené v `$location` proměnné.
 
@@ -102,7 +99,7 @@ Nasazení virtuálního počítače se teď spustí a obvykle trvá několik min
 
 ## <a name="download-the-dashboard-template"></a>Stažení šablony řídicího panelu
 
-Vzhledem k tomu, že řídicí panely Azure jsou prostředky, mohou být reprezentovány jako JSON. Následující kód stáhne reprezentace ukázkového řídicího panelu ve formátu JSON. Další informace najdete v tématu [Struktura řídicích panelů Azure](/azure/azure-portal/azure-portal-dashboards-structure).
+Vzhledem k tomu, že řídicí panely Azure jsou prostředky, mohou být reprezentovány jako JSON. Následující kód stáhne reprezentace ukázkového řídicího panelu ve formátu JSON. Další informace najdete v tématu [Struktura řídicích panelů Azure](./azure-portal-dashboards-structure.md).
 
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
@@ -180,4 +177,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Další informace o rutinách obsažených v modulu příkazového portálu AZ. Portal PowerShell najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure PowerShell: rutiny řídicího panelu portálu](https://docs.microsoft.com/powershell/module/Az.Portal/)
+> [Microsoft Azure PowerShell: rutiny řídicího panelu portálu](/powershell/module/Az.Portal/)

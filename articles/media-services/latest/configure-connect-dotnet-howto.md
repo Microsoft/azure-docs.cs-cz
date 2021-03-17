@@ -3,29 +3,31 @@ title: Připojení k Azure Media Services V3 API – .NET
 description: Tento článek ukazuje, jak se připojit k rozhraní Media Services V3 API s rozhraním .NET.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/18/2019
-ms.author: juliako
-ms.custom: has-adal-ref
-ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 11/17/2020
+ms.author: inhenkel
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001311"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455378"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, viz [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
@@ -41,7 +43,7 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .
 
 Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](/archive/blogs/benwilli/async-main-is-available-but-hidden) .
 
-## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
+## <a name="add-required-nuget-packagesassemblies"></a>Přidat požadované balíčky a sestavení NuGet
 
 1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce NuGet**.
 2. V okně **konzoly Správce balíčků** `Install-Package` přidejte následující balíčky NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
@@ -49,10 +51,14 @@ Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód použ
 |Balíček|Popis|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Abyste měli jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Knihovna ověřování ADAL pro sadu Azure SDK pro NET|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Čtení hodnot konfigurace z proměnných prostředí a místních souborů JSON|
-|`Microsoft.Extensions.Configuration.Json`|Čtení hodnot konfigurace z proměnných prostředí a místních souborů JSON
-|`WindowsAzure.Storage`|Sada SDK pro úložiště|
+
+### <a name="other-required-assemblies"></a>Další požadovaná sestavení
+
+- Azure. Storage. BLOBs
+- Microsoft.Extensions.Configuration
+- Microsoft.Extensions.Configuration. EnvironmentVariables
+- Microsoft.Extensions.Configuration.Jsna
+- Microsoft. REST. ClientRuntime. Azure. Authentication
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Vytvoření a konfigurace souboru nastavení aplikace
 
@@ -134,9 +140,9 @@ namespace ConsoleApp1
             get { return new Uri(_config["ArmEndpoint"]); }
         }
 
-        public string Region
+        public string Location
         {
-            get { return _config["Region"]; }
+            get { return _config["Location"]; }
         }
     }
 }
@@ -243,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Viz také
 
-* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management)
 * Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

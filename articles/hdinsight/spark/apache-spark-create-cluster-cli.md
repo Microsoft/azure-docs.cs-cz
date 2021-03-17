@@ -1,19 +1,16 @@
 ---
 title: 'Rychlý Start: Apache Spark clusterů pomocí Azure CLI – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit cluster Apache Spark ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9827c50d034b1c49700869c3274800c194c631a8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: db7e6b8fb6e70d6a64e84da29bbb0a299ed8da2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499445"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940547"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -21,12 +18,9 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
 
 Pokud používáte více clusterů společně, budete chtít vytvořit virtuální síť a pokud používáte cluster Spark, budete také chtít použít konektor pro skladiště z podregistru. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) a [integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru](../interactive-query/apache-hive-warehouse-connector.md).
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), pokud nechcete používat Azure Cloud Shell.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Vytvoření clusteru Apache Spark
 

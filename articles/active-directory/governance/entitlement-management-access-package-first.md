@@ -1,9 +1,9 @@
 ---
-title: Kurz – vytvoření balíčku pro přístup – Správa nároků Azure AD
-description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
+title: Kurz – Správa přístupu k prostředkům v Azure AD – Správa nároků
+description: Podrobný návod, jak vytvořit první balíček přístupu pomocí Azure Portal v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
-ms.author: barclayn
+ms.date: 09/30/2020
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034572"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547396"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Kurz: Správa přístupu k prostředkům v Azure AD – Správa nároků
 
 Správa přístupu ke všem zdrojům prostředků, jako jsou skupiny, aplikace a weby, je důležitou funkcí pro organizace. Chcete zaměstnancům udělit správnou úroveň přístupu, které potřebují k zajištění produktivity, a odebrat svůj přístup, když už ho nepotřebujete.
 
-V tomto kurzu pracujete s Woodgrove bankou jako s správcem IT. Byli jste požádáni o vytvoření balíčku prostředků pro marketingovou kampaň, na které interní uživatelé můžou samoobslužné požadavky. Žádosti nevyžadují schválení a přístup uživatele vyprší po 30 dnech. Pro účely tohoto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jednat o kolekci skupin, aplikací nebo webů SharePointu Online.
+V tomto kurzu pracujete s Woodgrove bankou jako s správcem IT. Byli jste požádáni o vytvoření balíčku prostředků pro marketingovou kampaň, které interní uživatelé můžou použít k samoobslužnému požadavku. Žádosti nevyžadují schválení a přístup uživatele vyprší po 30 dnech. Pro účely tohoto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jednat o kolekci skupin, aplikací nebo webů SharePointu Online.
 
-![Přehled scénáře](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![Diagram, který zobrazuje přehled scénáře.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 V tomto kurzu se naučíte:
 
@@ -42,12 +42,12 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
 - Azure AD Premium P2
-- Licence pro Enterprise Mobility + Security (EMS) E5
+- Licence Enterprise Mobility + Security (EMS) E5
 
 Další informace najdete v tématu [licenční požadavky](entitlement-management-overview.md#license-requirements).
 
@@ -68,9 +68,9 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
     | Název | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
-    | **Requestor1** | Uživatel |
+    | **Requestor1** | User |
 
-1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným**typem členství.
+1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným** typem členství.
 
     Tato skupina bude cílovým prostředkem pro správu nároků. Skupina by měla být prázdná pro členy, kteří mají být spuštěni.
 
@@ -106,9 +106,9 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 9. V podokně vybrat skupiny vyhledejte a vyberte skupinu **marketingových zdrojů** , kterou jste vytvořili dříve.
 
-    Ve výchozím nastavení se zobrazují skupiny uvnitř i vně katalogu **Obecné** . Když vyberete skupinu mimo katalog **Obecné** , přidá se do katalogu pro **Obecné** .
+     Ve výchozím nastavení se zobrazují skupiny v katalogu Obecné. Když vyberete skupinu mimo katalog obecné, uvidíte, že zaškrtnutí políčka **Zobrazit vše** bude přidáno do katalogu Obecné.
 
-    ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Snímek obrazovky zobrazující kartu nové přístupové balíčky a role prostředků a okno vybrat skupiny](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Kliknutím na **Vybrat** přidejte skupinu do seznamu.
 
@@ -116,9 +116,14 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
     ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
 
+    >[!IMPORTANT]
+    >Skupiny role, které přiřadíte do balíčku přístupu, budou označeny pomocí podtypu, který **lze přiřadit k rolím**. Další podrobnosti o skupinách, které je možné přiřadit k rolím Azure AD, najdete v tématu [Vytvoření skupiny s přiřazením rolí](../roles/groups-create-eligible.md) v Azure Active Directory. Mějte na paměti, že jakmile se skupina, která je přiřazena rolí, nachází v katalogu balíků přístupu, bude moct administrativní uživatelé, kteří můžou spravovat správu nároků, včetně globálních správců, správců uživatelů a vlastníků katalogu katalogu, řídit balíčky pro přístup v katalogu a umožnit jim zvolit, kdo může být do těchto skupin přidaný. Pokud nevidíte skupinu přiřazenou rolí, kterou chcete přidat, nebo ji nemůžete přidat, ujistěte se, že máte požadovanou roli Azure AD a správu oprávnění k provedení této operace. Možná budete muset požádat někoho s požadovanými rolemi přidat prostředek do katalogu. Další informace najdete v tématu [požadované role pro přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+
     >[!NOTE]
-    > Při použití [dynamických skupin](../users-groups-roles/groups-create-rule.md) se kromě vlastníka nezobrazí žádné další role. Toto chování je úmyslné.
+    > Při použití [dynamických skupin](../enterprise-users/groups-create-rule.md) se kromě vlastníka nezobrazí žádné další role. Toto chování je úmyslné.
     > ![Přehled scénáře](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. Kliknutím na **Další** otevřete kartu **žádosti** .
 
@@ -140,7 +145,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 18. Nechte položku **vyžadovat schválení** nastavenou na **ne**.
 
-19. Pro **Povolit žádosti**klikněte na **Ano** , aby se tento balíček pro přístup vyžádal, jakmile se vytvoří.
+19. Pro **Povolit žádosti** klikněte na **Ano** , aby se tento balíček pro přístup vyžádal, jakmile se vytvoří.
 
     ![Nový přístupový balíček – vyžádá schválení a povolí žádosti na kartě.](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
@@ -244,17 +249,17 @@ V tomto kroku odeberete změny, které jste provedli, a odstraníte balíček p�
 
 1. Klikněte na **přiřazení**.
 
-1. V případě **Requestor1**klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odebrat přístup**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V případě **Requestor1** klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odebrat přístup**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
 
     Po chvíli se stav změní ze doručeno na vypršela jeho platnost.
 
 1. Klikněte na **role prostředků**.
 
-1. U **marketingových zdrojů**klikněte na tři tečky (**...**) a pak klikněte na **Odebrat roli prostředku**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. U **marketingových zdrojů** klikněte na tři tečky (**...**) a pak klikněte na **Odebrat roli prostředku**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
 
 1. Otevřete seznam balíčků přístupu.
 
-1. V případě **marketingové kampaně**klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odstranit**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V případě **marketingové kampaně** klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odstranit**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
 
 1. V Azure Active Directory odstraňte všechny uživatele, které jste vytvořili, jako je **Requestor1** a **admin1**.
 

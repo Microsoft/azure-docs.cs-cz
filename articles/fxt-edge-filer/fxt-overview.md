@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72308bf64246a8041bd40fa557280014a13c95eb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72254842"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218778"
 ---
 # <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co je Azure FXT Edge – mezipaměť hybridního úložiště souborového?
 
@@ -19,7 +19,7 @@ Azure FXT Edge souborového je řešení hybridního ukládání do mezipaměti,
 
 Funguje s více zdroji dat, ať už jsou uložené v místním datovém centru, vzdáleně nebo v cloudu. Azure FXT Edge souborového může poskytovat sjednocený obor názvů pro data v různých systémech úložišť.
 
-Tři nebo více hardwarových zařízení FXT Edge souborového společně spolupracuje jako clusterovaný systém souborů pro zajištění mezipaměti. Podrobnosti o nákupu požadovaného hardwaru získáte od zástupce společnosti Microsoft. 
+Tři nebo více hardwarových zařízení FXT Edge souborového společně spolupracuje jako clusterovaný systém souborů pro zajištění mezipaměti. Podrobnosti o nákupu požadovaného hardwaru získáte od zástupce společnosti Microsoft.
 
 Pokud se chcete dozvědět víc, přečtěte si informace o produktu a datový list na [Azure FXT Edge souborového](https://azure.microsoft.com/services/fxt-edge-filer/).
 
@@ -27,31 +27,30 @@ Pokud se chcete dozvědět víc, přečtěte si informace o produktu a datový l
 
 Azure FXT Edge souborového vylepšuje produktivitu pro pracovní postupy, jako jsou tyto:
 
-* Pracovní postup pro čtení a těžký přístup k souborům 
+* Pracovní postup pro čtení a těžký přístup k souborům
 * Protokoly NFSv3 nebo SMB2
 * Výpočetní farmy 1000 až 100 000 PROCESORových jader
 
 ### <a name="nas-optimization-and-scaling"></a>Optimalizace a škálování pro servery NAS
 
-Mezipaměť souborového pro Azure FXT Edge můžete použít k zajištění hladkého přístupu k existujícím systémům NetApp a Dell EMC Isilon NAS. Můžete taky přidat Azure Blob nebo jiné cloudové úložiště, abyste zajistili škálovatelnost bez nutnosti přepracovat procesy přístupu k datům na straně klienta. 
+Mezipaměť souborového pro Azure FXT Edge můžete použít k zajištění hladkého přístupu k existujícím systémům NetApp a Dell EMC Isilon NAS. Můžete taky přidat Azure Blob nebo jiné cloudové úložiště, abyste zajistili škálovatelnost bez nutnosti přepracovat procesy přístupu k datům na straně klienta.
 
 ### <a name="wan-caching"></a>Ukládání do mezipaměti sítě WAN
 
-Azure FXT Edge souborového se dá použít k podpoře rychlého přístupu k souborům od uživatelů v případě, že data, která potřebují, jsou uložená jinde. Poskytněte přístup a zajistěte v centralizovaném datovém centru zálohování a další systémy správy dat. 
+Azure FXT Edge souborového se dá použít k podpoře rychlého přístupu k souborům od uživatelů v případě, že data, která potřebují, jsou uložená jinde. Poskytněte přístup a zajistěte v centralizovaném datovém centru zálohování a další systémy správy dat.
 
 ### <a name="active-archive-in-azure-blob"></a>Aktivní archiv v objektu blob Azure
 
-Rozšiřte své datové centrum do cloudového úložiště s využitím Azure FXT Edge souborového jako přístupového bodu. 
+Rozšiřte své datové centrum do cloudového úložiště s využitím Azure FXT Edge souborového jako přístupového bodu.
 
-## <a name="features"></a>Funkce 
+## <a name="features"></a>Funkce
 
-K dispozici jsou dva hardwarové modely. 
+K dispozici jsou dva hardwarové modely.
 
-| Model | DRAM | NVMe SSD | Síťové porty | 
+| Model | DRAM | NVMe SSD | Síťové porty |
 |-------|------|----------|---------------|
 | FXT 6600 | 1536 GB | 25,6 TB | 6 × 25 GB/10Gb + 2 × 1 GB |
 | FXT 6400 | 768 GB | 12,8 TB | 6 × 25 GB/10Gb + 2 × 1 GB |
-
 
 ## <a name="next-steps"></a>Další kroky
 

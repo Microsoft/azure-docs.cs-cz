@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999516"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809560"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Vypočítat celkovou fakturační velikost kontejneru objektů BLOB
 
 Tento skript vypočítá velikost kontejneru v úložišti objektů BLOB v Azure za účelem odhadu nákladů na fakturaci. Skript sčítá velikost objektů BLOB v kontejneru.
+
+> [!IMPORTANT]
+> Vzorový skript uvedený v tomto článku nemusí přesně vypočítat velikost fakturace pro snímky objektů BLOB.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -31,7 +34,7 @@ Tento skript vypočítá velikost kontejneru v úložišti objektů BLOB v Azure
 
 Celková velikost kontejneru objektů BLOB zahrnuje velikost samotného kontejneru a velikost všech objektů BLOB v kontejneru.
 
-V následujících částech se dozvíte, jak se počítá kapacita úložiště pro kontejnery objektů BLOB a objekty blob.V následujícím oddílu len (X) znamená počet znaků v řetězci.
+V následujících částech se dozvíte, jak se počítá kapacita úložiště pro kontejnery objektů BLOB a objekty blob. V následujícím oddílu len (X) znamená počet znaků v řetězci.
 
 ### <a name="blob-containers"></a>Kontejnery objektů blob
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 Toto je rozpis:
+
 * 48 bajtů režie pro každý kontejner zahrnuje čas poslední změny, oprávnění, veřejné nastavení a některá metadata systému.
 
 * Název kontejneru je uložený jako Unicode, takže převezme počet znaků a vynásobí ho dvěma.
@@ -80,7 +84,7 @@ Toto je rozpis:
 * 124 bajtů režie pro objekt blob, včetně:
     - Čas poslední změny
     - Velikost
-    - Řízení mezipaměti
+    - Cache-Control
     - Typ obsahu
     - Obsah – jazyk
     - Kódování obsahu
@@ -120,6 +124,6 @@ Toto je rozpis:
 
 - Další informace o fakturaci Azure Storage najdete v tématu [Principy fakturace Windows Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Další informace o modulu Azure PowerShell najdete v [dokumentaci k Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
+- Další informace o modulu Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/).
 
 - Další ukázkové skripty PowerShellu pro úložiště najdete v [ukázkách PowerShellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).

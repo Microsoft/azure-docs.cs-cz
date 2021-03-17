@@ -1,19 +1,16 @@
 ---
 title: Použití služby Azure Kubernetes s Kafka ve službě HDInsight
 description: Naučte se používat Kafka v HDInsight z imagí kontejnerů hostovaných ve službě Azure Kubernetes Service (AKS).
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087418"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933034"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s Apache Kafka v HDInsight
 
@@ -24,9 +21,9 @@ Naučte se používat službu Azure Kubernetes Service (AKS) s [Apache Kafka](ht
 > [!NOTE]  
 > Tento dokument se zaměřuje na kroky potřebné k tomu, aby služba Azure Kubernetes mohla komunikovat s Kafka v HDInsight. Samotným příkladem je pouze základní klient Kafka, který předvádí, že konfigurace funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/install-azure-cli)
 * Předplatné Azure
 
 Tento dokument předpokládá, že máte zkušenosti s vytvářením a používáním následujících služeb Azure:
@@ -69,7 +66,7 @@ Pokud ještě nemáte cluster AKS, použijte jeden z následujících dokumentů
 
 2. Ze skupiny prostředků vyberte prostředek __virtuální sítě__ . Tento název si poznamenejte pro pozdější použití.
 
-3. V části **Nastavení**vyberte __adresní prostor__. Všimněte si adresního prostoru uvedeného v seznamu.
+3. V části **Nastavení** vyberte __Adresní prostor__. Všimněte si adresního prostoru uvedeného v seznamu.
 
 ### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -94,7 +91,7 @@ Pokud ještě nemáte cluster AKS, použijte jeden z následujících dokumentů
     |---|---|
     |Název partnerského vztahu z \<this VN> do vzdálené virtuální sítě|Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.|
     |Virtuální síť|Vyberte virtuální síť pro **cluster AKS**.|
-    |Název partnerského vztahu od \<AKS VN> do\<this VN>|Zadejte jedinečný název.|
+    |Název partnerského vztahu od \<AKS VN> do \<this VN>|Zadejte jedinečný název.|
 
     Ponechte všechna ostatní pole na výchozí hodnotě a pak výběrem __OK__ nakonfigurujte partnerský vztah.
 
@@ -150,7 +147,7 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
 
 11. Chcete-li zakázat režim údržby, použijte tlačítko __Akce služby__ a vyberte možnost __vypnout režim údržby__. Kliknutím na **tlačítko OK** dokončete tuto operaci.
 
-## <a name="test-the-configuration"></a>Otestování konfigurace
+## <a name="test-the-configuration"></a>Otestujte konfiguraci.
 
 V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím partnerských virtuálních sítí. K otestování tohoto připojení použijte následující postup:
 

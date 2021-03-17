@@ -8,20 +8,21 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78303303"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516392"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Kurz: implementace vzoru Data Lake Capture pro aktualizaci rozdílové tabulky datacihly
 
 V tomto kurzu se dozvíte, jak zpracovávat události v účtu úložiště, který má hierarchický obor názvů.
 
-Vytvoříte malé řešení, které umožní uživateli naplnit rozdílovou tabulku datacihly tím, že nahraje textový soubor s oddělovači (CSV), který popisuje prodejní objednávku. Toto řešení sestavíte tak, že spojíte Event Grid předplatné, funkci Azure a [úlohu](https://docs.azuredatabricks.net/user-guide/jobs.html) v Azure Databricks.
+Vytvoříte malé řešení, které umožní uživateli naplnit rozdílovou tabulku datacihly tím, že nahraje textový soubor s oddělovači (CSV), který popisuje prodejní objednávku. Toto řešení sestavíte tak, že spojíte Event Grid předplatné, funkci Azure a [úlohu](/azure/databricks/jobs) v Azure Databricks.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření předplatného Event Grid, které volá funkci Azure Functions.
@@ -34,20 +35,20 @@ Toto řešení sestavíme v obráceném pořadí, počínaje Azure Databricks pr
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Vytvořte účet úložiště, který má hierarchický obor názvů (Azure Data Lake Storage Gen2). V tomto kurzu se používá účet úložiště `contosoorders`s názvem. Ujistěte se, že váš uživatelský účet má přiřazenou [roli Přispěvatel dat objektů BLOB úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) .
+* Vytvořte účet úložiště, který má hierarchický obor názvů (Azure Data Lake Storage Gen2). V tomto kurzu se používá účet úložiště s názvem `contosoorders` . Ujistěte se, že váš uživatelský účet má přiřazenou [roli Přispěvatel dat objektů BLOB úložiště](../common/storage-auth-aad-rbac-portal.md) .
 
-  Viz [Vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+   Přečtěte si téma [Vytvoření účtu úložiště pro použití s Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
-* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
-  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
   > [!IMPORTANT]
   > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
 
-  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a heslo do textového souboru. Tyto hodnoty budete potřebovat později.
+  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení v](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a heslo do textového souboru. Tyto hodnoty budete potřebovat později.
 
 ## <a name="create-a-sales-order"></a>Vytvoření prodejní objednávky
 
@@ -68,7 +69,7 @@ Nejdřív vytvořte soubor CSV, který popisuje prodejní objednávku, a pak ten
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. Uložte tento soubor do místního počítače a pojmenujte ho name **data. csv**.
+4. Uložte tento soubor do místního počítače a pojmenujte ho **data.csv**.
 
 5. V Průzkumník služby Storage nahrajte tento soubor do **vstupní** složky.  
 
@@ -86,7 +87,7 @@ V této části provedete následující úlohy:
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků** > **Analytics** > **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  .
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -100,7 +101,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do pracovního prostoru Azure Databricks, který jste vytvořili, a pak vyberte **Spustit pracovní prostor**.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový** > **cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový**  >  **cluster**.
 
     ![Datacihly v Azure](./media/data-lake-storage-events/databricks-on-azure.png "Datacihly v Azure")
 
@@ -113,9 +114,9 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     * Zadejte název clusteru.
     * Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
-4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+4. Vyberte **vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
-Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](/azure/databricks/clusters/create).
 
 ### <a name="create-a-notebook"></a>Vytvoření poznámkového bloku
 
@@ -125,7 +126,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 2. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Jako jazyk vyberte **Python** a pak vyberte cluster Spark, který jste vytvořili dříve.
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-events/new-databricks-notebook.png "Vytvoření poznámkového bloku v datacihlech")
+    ![Snímek obrazovky, který zobrazuje dialogové okno vytvořit Poznámkový blok a kde vybrat Python jako jazyk](./media/data-lake-storage-events/new-databricks-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
     Vyberte **Vytvořit**.
 
@@ -133,7 +134,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 1. V poznámkovém bloku, který jste vytvořili, zkopírujte a vložte následující blok kódu do první buňky, ale tento kód ještě nespustíte.  
 
-   `appId` `tenant` Nahraďte zástupné hodnoty v tomto bloku kódu hodnotami, které jste shromáždili při dokončování `password`požadavků tohoto kurzu.
+   Nahraďte `appId` `password` `tenant` zástupné hodnoty v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -152,7 +153,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
     Tento kód vytvoří pomůcku s názvem **source_file**. Později vytvoříte funkci Azure, která tento kód volá a předá do této pomůcky cestu k souboru.  Tento kód také ověřuje váš instanční objekt s účtem úložiště a vytváří některé proměnné, které budete používat v jiných buňkách.
 
     > [!NOTE]
-    > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. <br><br>Například namísto použití tohoto řádku kódu: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`byste použili následující řádek kódu:. `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` <br><br>Po dokončení tohoto kurzu si přečtěte článek [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks a podívejte se na příklady tohoto přístupu.
+    > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. <br><br>Například namísto použití tohoto řádku kódu: byste `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` použili následující řádek kódu: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Po dokončení tohoto kurzu si přečtěte článek [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) na webu Azure Databricks a podívejte se na příklady tohoto přístupu.
 
 2. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 
@@ -245,7 +246,7 @@ Vytvořte úlohu, která spustí Poznámkový blok, který jste vytvořili dří
 
    ![Vytvoření úlohy](./media/data-lake-storage-events/create-spark-job.png "Vytvoření úlohy")
 
-## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
+## <a name="create-an-azure-function"></a>Vytvoření funkce Azure Function
 
 Vytvořte funkci Azure, která úlohu spustí.
 
@@ -259,7 +260,7 @@ Vytvořte funkci Azure, která úlohu spustí.
   
 3. Vyberte tlačítko **vytvořit prostředek** v levém horním rohu Azure Portal a pak vyberte **COMPUTE > Function App**.
 
-   ![Vytvořit funkci Azure](./media/data-lake-storage-events/function-app-create-flow.png "Vytvoření funkce Azure Functions")
+   ![Vytvoření funkce Azure Functions](./media/data-lake-storage-events/function-app-create-flow.png "Vytvoření funkce Azure Functions")
 
 4. Na stránce **vytvořit** Function App Ujistěte se, že jste vybrali **.NET Core** pro zásobník modulu runtime, a ujistěte se, že jste nakonfigurovali instanci Application Insights.
 
@@ -267,7 +268,7 @@ Vytvořte funkci Azure, která úlohu spustí.
 
 5. Na stránce **přehled** Function App klikněte na **Konfigurace**.
 
-   ![Konfigurace aplikace Function App](./media/data-lake-storage-events/configure-function-app.png "Konfigurace aplikace Function App")
+   ![Snímek obrazovky, který zvýrazní možnost konfigurace v části nakonfigurované funkce](./media/data-lake-storage-events/configure-function-app.png "Konfigurace aplikace Function App")
 
 6. Na stránce **nastavení aplikace** klikněte na tlačítko **Nová nastavení aplikace** a přidejte jednotlivá nastavení.
 
@@ -279,7 +280,7 @@ Vytvořte funkci Azure, která úlohu spustí.
    |----|----|
    |**DBX_INSTANCE**| Oblast pracovního prostoru datacihly. Příklad: `westus2.azuredatabricks.net`|
    |**DBX_PAT**| Osobní přístupový token, který jste předtím vygenerovali. |
-   |**DBX_JOB_ID**|Identifikátor spuštěné úlohy. V našem případě je `1`tato hodnota.|
+   |**DBX_JOB_ID**|Identifikátor spuštěné úlohy. V našem případě je tato hodnota `1` .|
 7. Na stránce Přehled aplikace Function App klikněte na tlačítko **Nová funkce** .
 
    ![Nová funkce](./media/data-lake-storage-events/new-function.png "Nová funkce")
@@ -290,7 +291,7 @@ Vytvořte funkci Azure, která úlohu spustí.
 
    Zobrazí se podokno **Nová funkce** .
 
-9. V podokně **Nová funkce** pojmenujte funkci **UpsertOrder**a potom klikněte na tlačítko **vytvořit** .
+9. V podokně **Nová funkce** pojmenujte funkci **UpsertOrder** a potom klikněte na tlačítko **vytvořit** .
 
 10. Nahraďte obsah souboru s kódem tímto kódem a pak klikněte na tlačítko **Uložit** :
 
@@ -344,17 +345,17 @@ V této části vytvoříte předplatné Event Grid, které při nahrávání so
 
 1. Na stránce s kódem funkce klikněte na tlačítko **přidat Event Grid předplatné** .
 
-   ![Nové předplatné událostí](./media/data-lake-storage-events/new-event-subscription.png "Nové předplatné událostí")
+   ![Snímek obrazovky, který zvýrazní tlačítko Přidat Event Grid předplatné.](./media/data-lake-storage-events/new-event-subscription.png "Nové předplatné událostí")
 
 2. Na stránce **vytvořit odběr události** zadejte název předplatného a pak použijte pole na stránce a vyberte svůj účet úložiště.
 
    ![Nové předplatné událostí](./media/data-lake-storage-events/new-event-subscription-2.png "Nové předplatné událostí")
 
-3. V rozevíracím seznamu **filtrovat do typů událostí** vyberte **vytvořený objekt BLOB**a události **odstraněné z objektů BLOB** a potom klikněte na tlačítko **vytvořit** .
+3. V rozevíracím seznamu **filtrovat do typů událostí** vyberte **vytvořený objekt BLOB** a události **odstraněné z objektů BLOB** a potom klikněte na tlačítko **vytvořit** .
 
 ## <a name="test-the-event-grid-subscription"></a>Test předplatného Event Grid
 
-1. Vytvořte soubor s názvem `customer-order.csv`, do tohoto souboru vložte následující informace a uložte ho do místního počítače.
+1. Vytvořte soubor s názvem `customer-order.csv` , do tohoto souboru vložte následující informace a uložte ho do místního počítače.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
@@ -385,14 +386,14 @@ V této části vytvoříte předplatné Event Grid, které při nahrávání so
 
    ![Poslední záznam se zobrazí v tabulce.](./media/data-lake-storage-events/final_query.png "Poslední záznam se zobrazí v tabulce.")
 
-6. Chcete-li aktualizovat tento záznam, vytvořte soubor `customer-order-update.csv`s názvem, do tohoto souboru vložte následující informace a uložte jej do místního počítače.
+6. Chcete-li aktualizovat tento záznam, vytvořte soubor s názvem `customer-order-update.csv` , do tohoto souboru vložte následující informace a uložte jej do místního počítače.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-   Tento soubor CSV je skoro totožný s předchozím souborem, s výjimkou toho, že je množství objednávky `228` změněno `22`z na.
+   Tento soubor CSV je skoro totožný s předchozím souborem, s výjimkou toho, že je množství objednávky změněno z `228` na `22` .
 
 7. V Průzkumník služby Storage nahrajte tento soubor do **vstupní** složky vašeho účtu úložiště.
 

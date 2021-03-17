@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545246"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Kurz: Azure Active Directory integrace s obrázkovým přenosem
 
@@ -27,7 +27,7 @@ Integrace Image Relay se službou Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Image Relay (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -73,7 +73,7 @@ Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propo
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD s využitím Image Relay, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování přes Image Relay](#configure-image-relay-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování přes Image Relay](#configure-image-relay-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořit testovacího uživatele pro Image Relay](#create-image-relay-test-user)** – Chcete-li mít protějšek Britta Simon v obrazovém přenosu, který je propojený s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot [tým podpory pro klienty](http://support.imagerelay.com/) s kontaktem pro předávání obrázků. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -122,33 +122,33 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-image-relay-single-sign-on"></a>Konfigurace jednotného přihlašování přes Image Relay
+### <a name="configure-image-relay-single-sign-on"></a>Konfigurace jednoho Sign-On pro přenos obrázků
 
 1. V jiném okně prohlížeče se přihlaste k webovému serveru Image Relay jako správce.
 
 2. Na panelu nástrojů v horní části klikněte na úlohu **uživatele & oprávnění** .
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![Snímek obrazovky zobrazuje uživatele & oprávnění vybraná na panelu nástrojů.](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. Klikněte na **vytvořit nové oprávnění**.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![Snímek obrazovky se zobrazí textové pole pro zadání názvu oprávnění a možnost výběru typu oprávnění.](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. V úloze **nastavení jednotného přihlašování** zaškrtněte políčko **Tato skupina se může přihlásit jenom pomocí jednotného přihlašování** a pak klikněte na **Uložit**.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![Snímek obrazovky se zobrazí nastavení jednotného přihlašování, kde můžete vybrat možnost.](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. Přejít na **Nastavení účtu**.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Snímek obrazovky s možností zobrazení panelu nastavení účtu](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. Přejít na úlohu **nastavení jednotného přihlašování** .
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![Snímek obrazovky s možností jednotného přihlašování zobrazí možnost v nabídce nastavení.](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. V dialogovém okně **Nastavení SAML** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně nastavení SAML, kde můžete zadat informace.](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -160,19 +160,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     e. V části **certifikát x. 509**klikněte na **aktualizovat certifikát**.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Snímek obrazovky ukazuje možnost aktualizovat certifikát.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. Otevřete stažený certifikát v programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **certifikát x. 509** .
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Snímek obrazovky ukazuje certifikát x. 509.](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     například V části **zřizování uživatelů za běhu** vyberte možnost **Povolit zřizování uživatelů za běhu**.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Snímek obrazovky ukazuje oddíl zřizování uživatelů za běhu s vybraným ovládacím prvkem povolit.](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. Vyberte skupinu oprávnění (například **SSO Basic**), která se smí přihlásit jenom prostřednictvím jednotného přihlašování.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Snímek obrazovky zobrazuje oddíl zřizování uživatelů za běhu s vybraným s s s s.](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. Klikněte na **Uložit**.
 
@@ -199,7 +199,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -207,7 +207,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Image Relay**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **předávání obrázků**.
 
@@ -237,24 +237,24 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v obrazovém
 
 2. Klepněte na **uživatelé & oprávnění**     a vyberte **vytvořit uživatele jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Snímek obrazovky se v nabídce zobrazí možnost vytvořit S/O uživatel.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. Zadejte **e-mail**, jméno, **příjmení**a **firmu** **uživatele, kterého**chcete ZŘÍDIT, a vyberte skupinu oprávnění (například SSO Basic), která je skupina, která se může přihlásit pouze prostřednictvím jednotného přihlašování.
 
-    ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![Snímek obrazovky se zobrazí stránka vytvořit uživatele S příponou O/S, kde můžete zadat požadované informace.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
-4. Klikněte na možnost **Vytvořit**.
+4. Klikněte na **Vytvořit**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici s obrázkem Relay na přístupovém panelu byste měli být automaticky přihlášeni k předávání obrázků, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici s obrázkem Relay na přístupovém panelu byste měli být automaticky přihlášeni k předávání obrázků, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

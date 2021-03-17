@@ -1,5 +1,6 @@
 ---
-title: Přesunutí webového rozhraní API volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+title: Přesunutí webového rozhraní API volání webových rozhraní API do produkčního prostředí | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přesunout webové rozhraní API, které volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aea3a173fd07b66021d35142a84499ae9c66c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 370bedf04dc61e2a637f735580cd4df14061264a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518194"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753332"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webové rozhraní API, které volá webová rozhraní API: Přesun do produkčního prostředí
 
@@ -30,4 +31,4 @@ Teď, když znáte základy volání webových rozhraní API z vlastního webov�
 
 | Ukázka | Platforma | Popis |
 |--------|----------|-------------|
-| [Active-Directory-aspnetcore-WebApi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) kapitola 1 | ASP.NET Core webové rozhraní API, Desktop (WPF) | ASP.NET Core volání webového rozhraní API Microsoft Graph, které voláte z aplikace WPF pomocí technologie Microsoft Identity Platform (v 2.0). |
+| [Active-Directory-aspnetcore-WebApi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) kapitola 1 | ASP.NET Core webové rozhraní API, Desktop (WPF) | ASP.NET Core volání webového rozhraní API Microsoft Graph, které voláte z aplikace WPF pomocí platformy Microsoft identity. |

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192867"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91574190"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen1 pomocí Power BI
 V tomto článku se naučíte, jak pomocí Power BI Desktop analyzovat a vizualizovat data uložená v Azure Data Lake Storage Gen1.
@@ -27,7 +27,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 1. V počítači spusťte Power BI Desktop.
 2. Na pásu karet **Domů** klikněte na **získat data**a pak klikněte na další. V dialogovém okně **získat data** klikněte na **Azure**, klikněte na **Azure Data Lake Store**a pak klikněte na **připojit**.
    
-    ![Připojení k Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Připojení k Data Lake Storage Gen1")
+    ![Snímek obrazovky dialogového okna načíst data s zvýrazněnou možností Azure Data Lake Store a možností připojit se vyvolala.](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Připojení k Data Lake Storage Gen1")
 3. Pokud se zobrazí dialogové okno s konektorem v vývojové fázi, nezapomeňte pokračovat.
 4. V dialogovém okně **Azure Data Lake Store** zadejte adresu URL účtu Data Lake Storage Gen1 a pak klikněte na tlačítko **OK**.
    
@@ -37,7 +37,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     ![Přihlaste se Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Přihlaste se Data Lake Storage Gen1")
 6. Po úspěšném přihlášení klikněte na **připojit**.
    
-    ![Připojení k Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Připojení k Data Lake Storage Gen1")
+    ![Snímek obrazovky dialogového okna Azure Data Lake Store s možností připojit s názvem.](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Připojení k Data Lake Storage Gen1")
 7. V dalším dialogovém okně se zobrazí soubor, který jste nahráli do účtu Data Lake Storage Gen1. Ověřte informace a klikněte na **načíst**.
    
     ![Načíst data z Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Načíst data z Data Lake Storage Gen1")
@@ -52,19 +52,19 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     V dalších krocích aktualizujeme dotaz na převod importovaných dat v požadovaném formátu.
 9. Na pásu karet **Domů** klikněte na **Upravit dotazy**.
    
-    ![Upravit dotazy](./media/data-lake-store-power-bi/edit-queries.png "Úprava dotazů")
+    ![Snímek obrazovky pásu karet domů s možností upravit dotazy s názvem.](./media/data-lake-store-power-bi/edit-queries.png "Úprava dotazů")
 10. V editoru dotazů pod sloupcem **obsah** klikněte na **binární**.
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query1.png "Úprava dotazů")
+    ![Snímek obrazovky editoru dotazů se sloupcem obsahu s názvem.](./media/data-lake-store-power-bi/convert-query1.png "Úprava dotazů")
 11. Zobrazí se ikona souboru, která představuje soubor **Drivers.txt** , který jste nahráli. Klikněte na soubor pravým tlačítkem a klikněte na **CSV**.    
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query2.png "Úprava dotazů")
+    ![Snímek obrazovky editoru dotazů s navolanou možností sdíleného svazku clusteru](./media/data-lake-store-power-bi/convert-query2.png "Úprava dotazů")
 12. Měl by se zobrazit výstup, jak je znázorněno níže. Vaše data jsou teď dostupná ve formátu, který můžete použít k vytváření vizualizací.
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query3.png "Úprava dotazů")
+    ![Snímek obrazovky editoru dotazů s výstupem zobrazeným podle očekávání](./media/data-lake-store-power-bi/convert-query3.png "Úprava dotazů")
 13. Na pásu karet **Domů** klikněte na **Zavřít a použít**a pak klikněte na **Zavřít a použít**.
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/load-edited-query.png "Úprava dotazů")
+    ![Snímek obrazovky pásu karet domů s možností zavřít a použít s názvem.](./media/data-lake-store-power-bi/load-edited-query.png "Úprava dotazů")
 14. Po aktualizaci dotazu se na kartě **pole** zobrazí nová pole, která jsou k dispozici pro vizualizaci.
     
     ![Aktualizovaná pole](./media/data-lake-store-power-bi/updated-query-fields.png "Aktualizovaná pole")

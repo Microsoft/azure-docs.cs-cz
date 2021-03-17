@@ -4,7 +4,7 @@ description: Popisuje chyby, ke kterým může dojít během procesu souhlasu s 
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9f829672f88ea848e4611000b54d9cc200bc166d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499496"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259973"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
-Tento článek popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací. Pokud řešíte problémy s neočekávaným souhlasem, které neobsahují žádné chybové zprávy, přečtěte si téma [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+Tento článek popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací. Pokud řešíte problémy s neočekávaným souhlasem, které neobsahují žádné chybové zprávy, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-vs-authorization.md).
 
 Mnoho aplikací, které jsou integrovány s Azure Active Directory, vyžaduje oprávnění k přístupu k jiným prostředkům, aby fungovaly. Pokud jsou tyto prostředky integrovány i Azure Active Directory, jsou oprávnění pro přístup k nim často požadována pomocí společného souhlasu architektury. Zobrazí se výzva k vyjádření souhlasu, která obvykle nastane při prvním použití aplikace, ale může se objevit i při dalším použití aplikace.
 
@@ -35,7 +35,7 @@ Aby mohl uživatel udělit souhlas s oprávněními, které aplikace vyžaduje, 
 * **AADSTS90093:** &lt; clientAppDisplayName &gt; požaduje jedno nebo více oprávnění, která nemáte autorizaci udělit. Obraťte se na správce, který může tuto aplikaci vyjádřit vaším jménem.
 * **AADSTS90094:** &lt; clientAppDisplayName &gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
 
-K této chybě dochází, když se uživatel, který není správcem společnosti, pokusí použít aplikaci požadující oprávnění, která může udělit jenom správce. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
+K této chybě dochází, když se uživatel, který není globálním správcem, pokusí použít aplikaci, která požaduje oprávnění, která může udělit pouze správce. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 K této chybě může dojít také v případě, že uživatel brání v souhlasu s aplikací kvůli tomu, že je žádost o oprávnění riskantní. V takovém případě se událost auditu bude protokolovat jako kategorie "ApplicationManagement", typ aktivity "souhlas s aplikací" a důvod stavu "riziková aplikace zjištěná".
 
@@ -44,7 +44,7 @@ K této chybě může dojít v jiném scénáři, pokud je pro aplikaci vyžadov
 ## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje udělení oprávnění k chybě.
 * **AADSTS90093:** Správce &lt; tenantDisplayName &gt; nastavil zásadu, která vám zabrání v udělení &lt; názvu aplikace oprávnění, která &gt; požaduje. Kontaktujte správce &lt; tenantDisplayName &gt; , který vám může udělit oprávnění k této aplikaci vaším jménem.
 
-K této chybě dojde, když správce společnosti vypne možnost souhlasu uživatelů s aplikacemi, pak se uživatel bez oprávnění správce pokusí použít aplikaci, která vyžaduje souhlas. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
+K této chybě dochází, pokud globální správce vypne možnost souhlasu uživatelů s aplikacemi, pak se uživatel bez oprávnění správce pokusí použít aplikaci, která vyžaduje souhlas. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 ## <a name="intermittent-problem-error"></a>Chyba přerušovaného problému
 * **AADSTS90090:** Vypadá to, že při procesu přihlašování došlo k přerušovanému problému se záznamem oprávnění, která jste se pokusili udělit &lt; clientAppDisplayName &gt; . Zkuste to znovu později.
@@ -78,10 +78,18 @@ K těmto chybám dochází, když aplikace, se kterou se uživatel snaží souhl
 
     -   Přidání aplikace z Galerie aplikací Azure AD
 
+## <a name="risky-app-error-and-warning"></a>Chybová zpráva a upozornění rizikové aplikace
+* **AADSTS900941:** Je vyžadován souhlas správce. Aplikace se považuje za rizikové. (AdminConsentRequiredDueToRiskyApp)
+* Tato aplikace může být riskantní. Pokud tuto aplikaci považujete za důvěryhodnou, požádejte správce, aby vám udělil přístup.
+* **AADSTS900981:** Pro rizikovou aplikaci byla přijata žádost o souhlas správce. (AdminConsentRequestRiskyAppWarning)
+* Tato aplikace může být riskantní. Pokračujte pouze v případě, že tuto aplikaci důvěřujete.
+
+Obě tyto zprávy se zobrazí, když společnost Microsoft zjistí, že žádost o souhlas může být riskantní. V mnoha dalších faktorech to může nastat, pokud se [ověřený vydavatel](../develop/publisher-verification-overview.md) nepřidal do registrace aplikace. První kód chyby a zpráva se koncovým uživatelům zobrazí, když je [pracovní postup pro vyjádření souhlasu správce](configure-admin-consent-workflow.md) zakázán. Druhý kód a zpráva se zobrazí koncovým uživatelům, když je povolen pracovní postup souhlasu správce a správců. 
+
+Koncoví uživatelé nebudou moci udělit souhlas aplikacím, které byly zjištěny jako rizikové. Správci jsou schopni, ale měli by zhodnotit, že aplikace je velmi opatrní a bude postupovat opatrně. Pokud se aplikace při další kontrole jeví jako podezřelá, může se Microsoftu ohlásit na obrazovce pro vyjádření souhlasu. 
+
 ## <a name="next-steps"></a>Další kroky 
 
-[Aplikace, oprávnění a souhlas v Azure Active Directory (koncový bod V1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Aplikace, oprávnění a souhlas v Azure Active Directory (koncový bod V1)](../develop/quickstart-register-app.md)<br>
 
-[Rozsahy, oprávnění a souhlas v Azure Active Directory (koncový bod verze 2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Rozsahy, oprávnění a souhlas v Azure Active Directory (koncový bod verze 2.0)](../develop/v2-permissions-and-consent.md)

@@ -3,13 +3,14 @@ title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
 description: Monitorujte webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
 ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aa39a1eca04621fc4db75f755402d3679403e814
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310459"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920590"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
@@ -21,6 +22,9 @@ K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se p
 > [Pro všechny](./worker-service.md) konzolové aplikace se *důrazně doporučuje* použít balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) a související pokyny. Tento balíček cílí [`NetStandard2.0`](/dotnet/standard/net-standard) , a proto se dá použít v .NET Core 2,1 nebo vyšší a .NET Framework 4.7.2 nebo novější.
 
 ## <a name="getting-started"></a>Začínáme
+
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
 
 * Na webu [Azure Portal](https://portal.azure.com)[vytvořte prostředek Application Insights](./create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
 * Zkopírujte klíč instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili.
@@ -36,7 +40,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po volání `Track()` metod, telemetrie nemůžete odeslat, pokud `Flush()` a `Sleep` / `Delay` není provedeno před ukončením aplikace, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku. `Sleep`není vyžadováno, pokud používáte `InMemoryChannel` . Existuje aktivní problém týkající se potřeby, `Sleep` které tady sledujeme: [ApplicationInsights-dotnet/problémy/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
+> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po volání `Track()` metod, telemetrie nemůžete odeslat, pokud `Flush()` a `Sleep` / `Delay` není provedeno před ukončením aplikace, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku. `Sleep` není vyžadováno, pokud používáte `InMemoryChannel` . Existuje aktivní problém týkající se potřeby, `Sleep` které tady sledujeme: [ApplicationInsights-dotnet/problémy/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * Nainstalovat nejnovější verzi balíčku [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) – automaticky sleduje http, SQL nebo některá další volání vnějších závislostí.

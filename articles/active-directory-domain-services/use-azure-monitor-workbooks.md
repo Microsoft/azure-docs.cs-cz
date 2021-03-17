@@ -1,20 +1,20 @@
 ---
 title: Použití Azure Monitorch sešitů s Azure AD Domain Services | Microsoft Docs
 description: Naučte se používat sešity Azure Monitor ke kontrole auditů zabezpečení a pochopení problémů v Azure Active Directory Domain Services spravované doméně.
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: justinha
+ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419593"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574201"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
@@ -46,7 +46,7 @@ Azure služba AD DS obsahuje následující dvě šablony sešitu:
 * Sestava přehledu zabezpečení
 * Sestava aktivity účtu
 
-Další informace o tom, jak upravovat a spravovat sešity, najdete v tématu [přehled Azure Monitorch sešitů](../azure-monitor/platform/workbooks-overview.md).
+Další informace o tom, jak upravovat a spravovat sešity, najdete v tématu [přehled Azure Monitorch sešitů](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="use-the-security-overview-report-workbook"></a>Použití sešitu se sestavou přehledu zabezpečení
 
@@ -58,7 +58,7 @@ Pro přístup k šabloně sešitu pro sestavu přehledu zabezpečení proveďte 
 1. Vyberte spravovanou doménu, například *aaddscontoso.com* .
 1. V nabídce na levé straně vyberte **monitorování > sešity** .
 
-    ![V Azure Portal vyberte možnost nabídky sešity.](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![Snímek obrazovky, který hightlights, kde se má vybrat Sestava Přehled zabezpečení a sestava aktivity účtu](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Vyberte **sestavu Přehled zabezpečení**.
 1. V rozevíracích nabídkách v horní části sešitu vyberte své předplatné Azure a pak Azure Monitor pracovní prostor.
@@ -103,7 +103,7 @@ Stejně jako v sestavě přehledu zabezpečení můžete přejít k podrobnostem
 
 Dva sešity šablon, které poskytuje Azure služba AD DS, jsou vhodným místem, kde můžete začít s vlastní analýzou dat. Pokud potřebujete podrobnější informace v dotazech a dotazech k datům, můžete uložit vlastní sešity a upravit dotazy.
 
-1. Pokud chcete uložit kopii jedné ze šablon sešitu, vyberte **upravit > Uložit jako > sdílené sestavy**a potom zadejte název a uložte ho.
+1. Pokud chcete uložit kopii jedné ze šablon sešitu, vyberte **upravit > Uložit jako > sdílené sestavy** a potom zadejte název a uložte ho.
 1. Z vlastní kopie šablony vyberte **Upravit** a zadejte režim úprav. Můžete zvolit modré tlačítko **Upravit** vedle libovolné části sestavy a změnit ji.
 
 Všechny grafy a tabulky v Azure Monitor sešitech se generují pomocí dotazů Kusto. Další informace o vytváření vlastních dotazů najdete v kurzu [Azure monitor dotazy protokolů][azure-monitor-queries] a [dotazy Kusto][kusto-queries].
@@ -122,5 +122,5 @@ V případě problémů s uživateli se dozvíte, jak řešit problémy s [přih
 [password-policy]: password-policy.md
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
-[azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
-[kusto-queries]: https://docs.microsoft.com/azure/kusto/query/tutorial?pivots=azuredataexplorer
+[azure-monitor-queries]: /azure/data-explorer/kusto/query/
+[kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

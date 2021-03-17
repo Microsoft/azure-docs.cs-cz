@@ -7,7 +7,7 @@
     - name: Osvědčené postupy
       href: howto-best-practices.md
     - name: Nejčastější dotazy
-      href: faq.md
+      href: faq.yml
 - name: Rychlé starty
   expanded: true
   items:
@@ -23,6 +23,8 @@
           href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
+        - name: Python
+          href: quickstart-python.md
         - name: Šablona ARM
           href: quickstart-resource-manager.md
           displayName: 'ARM, azure resource manager template'
@@ -32,11 +34,13 @@
           href: quickstart-feature-flag-aspnet-core.md
         - name: .NET Framework
           href: quickstart-feature-flag-dotnet.md
+        - name: Azure Functions v .NET Core
+          href: quickstart-feature-flag-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-feature-flag-spring-boot.md
 - name: Kurzy
   items:
-    - name: Povolení dynamické konfigurace
+    - name: Povolit dynamickou konfiguraci pomocí modelu cyklického dotazování
       items:
         - name: Jádro ASP.NET
           href: enable-dynamic-configuration-aspnet-core.md
@@ -48,9 +52,13 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
-    - name: Použití příznaků funkcí
+    - name: Povolit dynamickou konfiguraci pomocí modelu push
       items:
         - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
+    - name: Použití příznaků funkcí
+      items:
+        - name: Jádro ASP.NET
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -62,17 +70,22 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: Integrace s kanálem CI/CD
-      href: integrate-ci-cd-pipeline.md
+    - name: Integrace kanál§ CI/CD
+      items:
+        - name: Nasdílení změn s využitím Azure Pipelines
+          href: push-kv-devops-pipeline.md
+        - name: Přijmutí změn s využitím Azure Pipelines
+          href: pull-key-value-devops-pipeline.md
+        - name: Nasdílení změn s využitím GitHub Actions
+          href: concept-github-action.md
+        - name: Sestavení projektu pomocí vyexportované konfigurace
+          href: integrate-ci-cd-pipeline.md
     - name: Integrace s nasazením Kubernetes s využitím Helmu
       href: integrate-kubernetes-deployment-helm.md
 - name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Klíče a hodnoty
@@ -81,8 +94,6 @@
       href: concept-point-time-snapshot.md
     - name: Správa funkcí
       href: concept-feature-management.md
-    - name: Synchronizace s využitím GitHub Actions
-      href: concept-github-action.md
     - name: Zpracování událostí
       href: concept-app-configuration-event.md
     - name: Zabezpečení
@@ -95,58 +106,117 @@
           href: concept-enable-rbac.md
         - name: Přiřazení spravované identity Azure
           href: overview-managed-identity.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii
           href: concept-disaster-recovery.md
 - name: Návody
   items:
-    - name: Povolení funkce pro podmnožinu uživatelů
+    - name: Použití příznaků podmíněných funkcí
       href: howto-feature-filters-aspnet-core.md
+    - name: Povolení funkce pro zadané uživatele/skupiny
+      href: howto-targetingfilter-aspnet-core.md
     - name: Použití popisků pro konfiguraci pro jednotlivá prostředí
       href: howto-labels-aspnet-core.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md
     - name: Použití záhlaví content-type JSON pro páry klíč-hodnota
       href: howto-leverage-json-content-type.md
-    - name: Směrování událostí na vlastní koncový bod
+    - name: Použití Event Grid pro oznámení o změnách dat
       href: howto-app-configuration-event.md
     - name: Automatické zálohování úložiště konfigurace
       href: howto-backup-config-store.md
     - name: Použití spravovaných identit pro přístup ke službě App Configuration
       href: howto-integrate-azure-managed-service-identity.md
+    - name: Integrace konfigurace aplikace v aplikaci Visual Studio
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: Referenční informace
   items:
     - name: Konfigurace
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
+          href: /cli/azure/appconfig
         - name: Poskytovatel .NET Core
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+          href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: Tvůrce .NET Frameworku
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
         - name: Sada Azure SDK pro .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Poskytovatel Java Springu
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+          href: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
         - name: Azure SDK pro Javu
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: Azure SDK pro Python
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Správa funkcí
       items:
         - name: Knihovna .NET Core
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+          href: /dotnet/api/microsoft.featuremanagement
         - name: Knihovna filtrů .NET Core
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+          href: /dotnet/api/microsoft.featuremanagement.featurefilters
     - name: Správa úložiště konfigurace
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+          href: /rest/api/appconfiguration/
+        - name: PowerShell
+          href: /powershell/module/az.appconfiguration/
+        - name: Terraform
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: Přehled
+          href: rest-api.md
+        - name: Prostředky
+          items:
+            - name: Klíče
+              href: ./rest-api-keys.md
+            - name: Páry klíč-hodnota
+              href: ./rest-api-key-value.md
+            - name: Popisky
+              href: ./rest-api-labels.md
+            - name: Zámky
+              href: ./rest-api-locks.md
+            - name: Revize
+              href: ./rest-api-revisions.md
+        - name: Protokol
+          items:
+            - name: Authentication
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Ověřování služby Azure Active Directory
+                  href: rest-api-authentication-azure-ad.md
+                - name: Ověřování HMAC
+                  href: rest-api-authentication-hmac.md
+            - name: Autorizace
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Autorizace Azure Active Directory
+                  href: rest-api-authorization-azure-ad.md
+                - name: Autorizace HMAC
+                  href: rest-api-authorization-hmac.md
+            - name: Model konzistence
+              href: ./rest-api-consistency.md
+            - name: Společné hlavičky
+              href: ./rest-api-headers.md
+            - name: Throttling
+              href: ./rest-api-throttling.md
+            - name: Správa verzí
+              href: ./rest-api-versioning.md
+        - name: Vývoj
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: Postman
+              href: ./rest-api-postman.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Ceny
@@ -161,7 +231,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: Azure App Configuration v pořadu Cloud Native Show
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
-        - name: Filtrování funkcí v Azure Friday
-          url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
+        - name: Zavádění nových funkcí
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: Poskytnutí zpětné vazby k produktu
       href: 'https://github.com/Azure/AppConfiguration/issues'

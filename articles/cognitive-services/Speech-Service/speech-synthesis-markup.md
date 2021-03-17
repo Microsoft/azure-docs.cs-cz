@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3394882574f94e4a1af3aa942f3b0bd87be55368
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 0a0f48a311e5adf0dd7c70c43317d99cc94fca86
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690081"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470519"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -32,6 +32,11 @@ Implementace služby SSML pro rozpoznávání řeči je založená konsorcium Wo
 Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy je k dispozici ve čtyřech jazycích a národních prostředích. Úplný seznam podporovaných jazyků, národních prostředí a hlasů (neuronové a Standard) najdete v tématu [Podpora jazyků](language-support.md).
 
 Další informace o standardních, neuronové a vlastních hlasů najdete v tématu [Přehled převodu textu na řeč](text-to-speech.md).
+
+
+> [!NOTE]
+> Můžete slyšet hlasy v různých stylech a pomocí [stránky převod textu na řeč se](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)podíváme na vzorový text.
+
 
 ## <a name="special-characters"></a>Speciální znaky
 
@@ -83,11 +88,11 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 **Příklad**
 
 > [!NOTE]
-> V tomto příkladu se používá `en-US-AriaRUS` hlas. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
+> V tomto příkladu se používá `en-US-JennyNeural` hlas. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -112,7 +117,7 @@ V závislosti na jazyku sady Speech SDK nastavíte vlastnost na `"SpeechServiceR
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>.
 
 ```csharp
 speechConfig.SetProperty(
@@ -121,7 +126,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>.
 
 ```cpp
 speechConfig->SetProperty(
@@ -130,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>.
 
 ```java
 speechConfig.setProperty(
@@ -139,7 +144,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>.
 
 ```python
 speech_config.set_property_by_name(
@@ -148,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty` </a>.
 
 ```javascript
 speechConfig.setProperty(
@@ -157,7 +162,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -165,7 +170,7 @@ Další informace najdete na webu <a href="https://docs.microsoft.com/objectivec
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -178,11 +183,11 @@ speechConfig!.setPropertyTo(
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         Good morning!
     </voice>
-    <voice name="en-US-Guy24kRUS">
-        Good morning to you too Aria!
+    <voice name="en-US-GuyNeural">
+        Good morning to you too Jenny!
     </voice>
 </speak>
 ```
@@ -192,42 +197,141 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > Úpravy mluveného stylu budou fungovat jenom s neuronové hlasy.
 
-Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pomocí neutrálního mluveného stylu pro hlasy Standard i neuronové. S neuronové hlasymi můžete upravit styl speaking tak, aby bylo možné vyjádřit různé emoce, jako je cheerfulness, soucit a Calm, nebo optimalizovat hlas pro různé scénáře, jako je vlastní služba, newscasting a hlasový asistent, a to pomocí  `mstts:express-as`   elementu. Toto je volitelný element jedinečný pro službu Speech Service.
+Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pomocí neutrálního mluveného stylu pro hlasy Standard i neuronové. S neuronové hlasymi můžete upravit styl speaking tak, aby bylo možné vyjádřit různé emoce, jako je cheerfulness, soucit nebo Calm, nebo optimalizovat hlas pro různé scénáře, jako jsou služby zákazníkům, newscasting a hlasový asistent, a to pomocí `mstts:express-as` elementu. Toto je volitelný element jedinečný pro službu Speech Service.
 
 V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
+* `zh-CN-YunxiNeural` Tisk
+* `zh-CN-XiaohanNeural` Tisk
+* `zh-CN-XiaomoNeural` Tisk
+* `zh-CN-XiaoxuanNeural` Tisk
+* `zh-CN-XiaoruiNeural` Tisk
 
-Změny se aplikují na úrovni věty a styl se liší podle hlasu. Pokud styl není podporován, služba vrátí řeč ve výchozím stylu neutrálního mluveného slova.
+Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči. 
+
+V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
+* `zh-CN-XiaoxiaoNeural`
+
+Kromě úprav stylů a stylu mluveného projevu můžete také upravit `role` parametr tak, aby hlas byl jiný a pohlaví. Například samcský hlas může zvýšit rozteč a změnit rozmocninu k napodobenině ženského hlasu.
+
+V současné době jsou úpravy role-přehrávání podporovány pro tyto hlasy neuronové:
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se liší podle hlasu. Pokud styl nebo role-Play není podporován, služba vrátí rozpoznávání řeči ve výchozím nastavení neutrální speaking. Můžete si prohlédnout, jaké styly a role-Play jsou podporovány pro každý hlas prostřednictvím [rozhraní API pro seznam hlasu](rest-text-to-speech.md#get-a-list-of-voices) nebo prostřednictvím platformy pro [vytváření obsahu pro zvuk](https://aka.ms/audiocontentcreation) bez kódu.
 
 **Syntax**
 
 ```xml
 <mstts:express-as style="string"></mstts:express-as>
 ```
+```xml
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
+```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
+> [!NOTE]
+> V tuto chvíli `styledegree` podporuje jenom zh-CN-XiaoxiaoNeural. `role` podporuje pouze zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.
 
 **Atributy**
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `style` | Určuje styl speaking. V současné době jsou styly mluvené řeči specifické pro hlas. | Vyžaduje se, když se upraví styl speakování pro neuronové hlas. Pokud používáte `mstts:express-as` , musí být zadán styl. Pokud je zadána neplatná hodnota, bude tento prvek ignorován. |
+| `styledegree` | Určuje intenzitu stylu speaking. **Přijaté hodnoty**: 0,01 až 2 včetně. Výchozí hodnota je 1, což znamená, že předdefinovaná intenzita stylu. Minimální jednotka je 0,01, což má za následek trochu tendenci pro cílový styl. Hodnota 2 má za následek zdvojnásobení výchozí intenzity stylu.  | Volitelné (v současné době `styledegree` podporuje jenom zh-CN-XiaoxiaoNeural.)|
+| `role` | Určuje speaking Role-Play. Hlas bude fungovat jako jiný věk a pohlaví.  | Volitelné (v současné době `role` podporuje jenom zh-CN-XiaomoNeural a zh-CN-XiaoxuanNeural.)|
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
 | Hlas                   | Styl                     | Popis                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | Formální, jistý a autoritativní tón pro doručování zpráv|
-|                         | `style="newscast-casual"` | Univerzální a příležitostné tóny pro obecné doručování zpráv       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
+|                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
 |                         | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
 |                         | `style="chat"`            | Vyjádření nepříležitostného a odlehčeného tónu                         |
 |                         | `style="cheerful"`        | Vyjadřuje kladný a šťastný tón.                         |
 |                         | `style="empathetic"`      | Vyjadřuje smysl caring a porozumění               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
+|                         | `style="chat"`            | Vyjádření nepříležitostného a odlehčeného tónu                         |
+|                         | `style="assistant"`       | Vyjadřuje teplý a odlehčený tón pro digitální asistenty    |
+|                         | `style="newscast"`        | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.   |
+| `en-US-GuyNeural`       | `style="newscast"`        | Vyjadřuje formální a profesionální tón pro zprávy mluveného komentáře. |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | Vyjadřuje studenou, získanou a složenou polohu při mluvení. Tónů, rozteč a Prosody je v porovnání s jinými typy řeči mnohem jednotnější.                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Vyjadřuje formální a profesionální tón pro zprávy mluveného komentáře. |
 |                         | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
 |                         | `style="assistant"`       | Vyjadřuje teplý a odlehčený tón pro digitální asistenty    |
+|                         | `style="chat"`            | Vyjádření příležitostného a odlehčeného tónu pro CHITEST – chat           |
+|                         | `style="calm"`            | Vyjadřuje studenou, získanou a složenou polohu při mluvení. Tónů, rozteč a Prosody je v porovnání s jinými typy řeči mnohem jednotnější.                                |
+|                         | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.          |
+|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |     
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
 |                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  | 
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Vyjadřuje studenou, získanou a složenou polohu při mluvení. Tónů, rozteč a Prosody je v porovnání s jinými typy řeči mnohem jednotnější.    | 
+|                         | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
+|                         | `style="embarrassed"`     | Vyjadřuje nejistý a váhají tón, když je mluvčí Uncomfortable.   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="embarrassed"`     | Vyjadřuje nejistý a váhají tón, když je mluvčí Uncomfortable.   |
+|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |     
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
+|                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+
+Pomocí této tabulky můžete určit, které role se u každého hlasu neuronové podporují.
+
+| Hlas                   | Role                       | Popis                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Hlasový hovor je napodoben od mladých dospělých samic.                 |
+|                         | `role="OlderAdultMale"`    | Tento hlas je napodoben na starší dospělé samci.                   |
+|                         | `role="Girl"`              | Hlasový vstup je napodoben na Girl.                               |
+|                         | `role="Boy"`               | Hlasový vstup je napodoben na Boy.                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Hlasový hovor je napodoben od mladých dospělých samic.                 |
+|                         | `role="OlderAdultFemale"`  | Tento hlas je napodoben na starší dospělého ženského pohlaví.                 |
+|                         | `role="OlderAdultMale"`    | Tento hlas je napodoben na starší dospělé samci.                   |
 
 **Příklad**
 
@@ -239,6 +343,35 @@ Tento fragment SSML ukazuje, jak se `<mstts:express-as>` prvek používá ke zm�
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+Tento fragment SSML ukazuje, jak se `styledegree` atribut používá ke změně intenzity stylu speaking pro XiaoxiaoNeural.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+Tento fragment SSML ukazuje, jak se `role` atribut používá ke změně Role-Play pro XiaomoNeural.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
         </mstts:express-as>
     </voice>
 </speak>
@@ -263,7 +396,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
-| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a. `500` | Volitelné |
+| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Volitelné |
 
 | Obsahem                      | Popis |
 |-------------------------------|-------------|
@@ -282,6 +415,37 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
+```
+## <a name="add-silence"></a>Přidat tichou
+
+Použijte `mstts:silence` element pro vložení pauz před nebo za text nebo mezi 2 sousedícími větami. 
+
+> [!NOTE]
+>Rozdíl mezi `mstts:silence` a `break` je, který `break` lze přidat na libovolné místo v textu, ale ticha funguje pouze na začátku nebo konci vstupního textu nebo na hranici 2 sousedících vět.  
+
+
+**Syntax**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**Atributy**
+
+| Atribut | Popis | Požadováno/volitelné |
+|-----------|-------------|---------------------|
+| `type` | Určuje umístění tichého navýšení: <ul><li>Přední – na začátku textu </li><li>Zakončení – na konci textu </li><li>Sentenceboundary – mezi sousedními větami </li></ul> | Vyžadováno |
+| `Value` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Vyžadováno |
+
+**Příklad** V tomto příkladu `mtts:silence` se používá k přidání 200 MS ticha mezi dvěma větami.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Zadat odstavce a věty
@@ -303,7 +467,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -322,6 +486,9 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, číslicemi nebo znaky, někdy v kombinaci. Každý telefon popisuje jedinečný zvuk řeči. To je na rozdíl od abecedy latinky, kde jakékoli písmeno může představovat více mluvených zvuků. Vezměte v úvahu různé výslovnosti písmena "c" ve slově "Candy" a "pozastaveno", nebo na rozdíl od kombinace písmen "th" v slovech "věc" a "ty".
 
+> [!NOTE]
+> Značka fonémy se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
+
 **Syntax**
 
 ```XML
@@ -332,14 +499,14 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `alphabet` | Určuje fonetickou abecedu, která se použije při syntetizování výslovnosti řetězce v `ph` atributu. Řetězec určující abecedu musí být zadán malými písmeny. Níže jsou uvedené možné abecedy, které můžete zadat.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Mezinárodní fonetická abeceda <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [Fonetická abeceda služby Speech](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Univerzální telefonní sada</a></li></ul><br>Abeceda se vztahuje pouze na `phoneme` prvek v prvku.. | Volitelné |
+| `alphabet` | Určuje fonetickou abecedu, která se použije při syntetizování výslovnosti řetězce v `ph` atributu. Řetězec určující abecedu musí být zadán malými písmeny. Níže jsou uvedené možné abecedy, které můžete zadat.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Mezinárodní fonetická abeceda</a></li><li>`sapi`&ndash; [Fonetická abeceda služby Speech](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Univerzální telefonní sada</a></li></ul><br>Abeceda se vztahuje pouze na `phoneme` prvek v prvku.. | Volitelné |
 | `ph` | Řetězec obsahující telefony, které určují výslovnost slova v `phoneme` prvku. Pokud zadaný řetězec obsahuje nerozpoznané telefony, služba převod textu na mluvené slovo (TTS) odmítne celý dokument SSML a vytvoří žádný z výstupů řeči zadaného v dokumentu. | Vyžaduje se, pokud používáte fonémy. |
 
 **Příklady**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
@@ -347,7 +514,7 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <phoneme alphabet="sapi" ph="iy eh n y uw eh s"> en-US </phoneme>
     </voice>
 </speak>
@@ -355,7 +522,7 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
@@ -367,6 +534,10 @@ Někdy může služba převod textu na řeč přesně vyslovit slovo. Napříkla
 
 > [!NOTE]
 > Vlastní lexikon aktuálně podporuje kódování UTF-8. 
+
+> [!NOTE]
+> Vlastní lexikon se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
+
 
 **Syntax**
 
@@ -403,9 +574,9 @@ Chcete-li definovat způsob čtení více entit, můžete vytvořit vlastní lex
 </lexicon>
 ```
 
-`lexicon`Element obsahuje alespoň jeden `lexeme` element. Každý `lexeme` prvek obsahuje nejméně jeden `grapheme` element a jeden nebo více elementů `grapheme` , `alias` a `phoneme` . `grapheme`Element obsahuje text popisující <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. `alias`Prvky slouží k označení výslovnosti zkratky nebo zkrácení podmínky. `phoneme`Element poskytuje text popisující způsob, jakým `lexeme` je vyslovení.
+`lexicon`Element obsahuje alespoň jeden `lexeme` element. Každý `lexeme` prvek obsahuje nejméně jeden `grapheme` element a jeden nebo více elementů `grapheme` , `alias` a `phoneme` . `grapheme`Element obsahuje text popisující <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography </a>. `alias`Prvky slouží k označení výslovnosti zkratky nebo zkrácení podmínky. `phoneme`Element poskytuje text popisující způsob, jakým `lexeme` je vyslovení.
 
-Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost zkratky nebo zkrácení podmínky, nejprve zadejte `alias` a přidružte k `phoneme` ní `alias` . Příklad:
+Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost fráze pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost zkratky nebo zkrácení podmínky, nejprve zadejte `alias` a přidružte k `phoneme` ní `alias` . Například:
 
 ```xml
   <lexeme>
@@ -418,12 +589,20 @@ Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova p
   </lexeme>
 ```
 
+Můžete také přímo poskytnout očekávanou `alias` zkratku nebo zkrácený termín. Například:
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>Scotland Media Wave</alias> 
+  </lexeme>
+```
+
 > [!IMPORTANT]
 > `phoneme`Element nemůže obsahovat prázdné znaky při použití IPA.
 
 Další informace o souboru s vlastním souborem lexikonu naleznete v tématu [jiných pracovních prostorů (výslovnost lexikon Specification) verze 1,0](https://www.w3.org/TR/pronunciation-lexicon/).
 
-Potom publikujte svůj vlastní soubor lexikonu. I když nemáme omezení, kde je možné tento soubor uložit, doporučujeme použít [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Potom publikujte svůj vlastní soubor lexikonu. I když nemáme omezení, kde je možné tento soubor uložit, doporučujeme použít [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md).
 
 Po publikování vlastního slovníku ho můžete odkázat z SSML.
 
@@ -434,7 +613,7 @@ Po publikování vlastního slovníku ho můžete odkázat z SSML.
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
         BTW, we will be there probably at 8:00 tomorrow morning.
         Could you help leave a message to Robert Benigni for me?
@@ -493,11 +672,11 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600 Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80 Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Volitelné |
-| `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
+| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například, `<prosody pitch="600Hz">some text</prosody>`.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: `<prosody pitch="+80Hz">some text</prosody>` nebo `<prosody pitch="-2st">some text</prosody>` . "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul> | Volitelné |
+| `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
 | `range` | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch` . | Volitelné |
 | `rate` | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>střední</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
-| `duration` | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | Volitelné |
+| `duration` | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. Doba trvání podporuje pouze standardní hlasy.| Volitelné |
 | `volume` | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od *tichého* po *nahlasu*. Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>střední</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | Volitelné |
 
 ### <a name="change-speaking-rate"></a>Změna míry projevení
@@ -524,7 +703,7 @@ Změny svazku lze použít na standardní hlasy na úrovni slova nebo na úrovni
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -606,7 +785,7 @@ Modul Shrnutí řeči připraví následující příklad jako "první požadave
  
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <p>
         Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
         on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
@@ -644,7 +823,7 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <p>
             <audio src="https://contoso.com/opinionprompt.wav"/>
             Thanks for offering your opinion. Please begin speaking after the beep.
@@ -684,7 +863,7 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
     <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)">
         The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>

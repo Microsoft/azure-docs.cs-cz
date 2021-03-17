@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720465"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740177"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Fáze modelování životního cyklu procesu vědeckého zpracování dat týmu
 
@@ -45,7 +45,7 @@ V této fázi jsou řešeny tři hlavní úlohy:
   * **Školení modelů**: Najděte model, který přesně odpovídá otázce, porovnáním jejich metrik úspěšnosti.
   * Zjistěte, jestli je model **vhodný pro produkční prostředí.**
 
-### <a name="feature-engineering"></a>Návrh funkcí
+### <a name="feature-engineering"></a>Příprava atributů
 Konstrukce funkcí zahrnuje zahrnutí, agregaci a transformaci nezpracovaných proměnných pro vytvoření funkcí používaných při analýze. Pokud chcete získat přehled o tom, co řídí model, pak potřebujete pochopit, jak vzájemně souvisí tyto funkce a jak se tyto funkce používají v algoritmech strojového učení. 
 
 Tento krok vyžaduje tvůrčí kombinaci odbornosti domény a přehledy získané z kroku pro zkoumání dat. Inženýrské funkce je vyvážením zákonem o hledání a zahrnutí informativních proměnných, ale zároveň se snažíte se vyhnout příliš mnoha nesouvisejícím proměnným. Informativní proměnné zlepšují svůj výsledek; nesouvisející proměnné představují zbytečný šum v modelu. Tyto funkce je také potřeba vygenerovat pro všechna nová data získaná během bodování. V důsledku toho generování těchto funkcí může záviset jenom na datech, která jsou k dispozici v době hodnocení. 
@@ -53,7 +53,7 @@ Tento krok vyžaduje tvůrčí kombinaci odbornosti domény a přehledy získan�
 Technické pokyny pro strojírenství funkcí při využívání různých datových technologií Azure najdete v tématu Technické informace o [funkcích v procesu datové vědy](create-features.md). 
 
 ### <a name="model-training"></a>Trénování modelu
-V závislosti na typu otázky, na kterou se pokoušíte odpovědět, je k dispozici mnoho algoritmů modelování. Pokyny k výběru algoritmů najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](../studio/algorithm-choice.md). I když tento článek používá Azure Machine Learning, pokyny, které poskytuje, jsou užitečné pro všechny projekty strojového učení. 
+V závislosti na typu otázky, na kterou se pokoušíte odpovědět, je k dispozici mnoho algoritmů modelování. Pokyny k výběru algoritmů najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](../how-to-select-algorithms.md). I když tento článek používá Azure Machine Learning, pokyny, které poskytuje, jsou užitečné pro všechny projekty strojového učení. 
 
 Proces pro školení modelů zahrnuje následující kroky: 
 
@@ -66,8 +66,6 @@ Proces pro školení modelů zahrnuje následující kroky:
 > **Vyhněte se únikům**: únik dat můžete způsobit, pokud zahrnete data mimo sadu školicích dat, která umožňuje model nebo algoritmus strojového učení, aby se nerealisticky předpovědi. Netěsnost je běžným důvodem pro to, proč se datové odborníky dostanou do nervu, když získají prediktivní výsledky, které se jeví jako nepravdivé. Tyto závislosti můžou být obtížné detekovat. Aby se zabránilo úniku často, je třeba provést iteraci mezi sestavením sady dat analýzy, vytvořením modelu a vyhodnocením přesnosti výsledků. 
 > 
 > 
-
-Poskytujeme [automatizovaný nástroj pro modelování a vytváření sestav](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) s TDSP, které je možné spustit pomocí několika algoritmů a Sweep parametrů a vytvořit základní model. Vytvoří také sestavu modelování standardních hodnot, která shrnuje výkon jednotlivých kombinací modelů a parametrů, včetně důležitosti proměnné. Tento proces je také iterativní, protože může řídit další inženýry funkcí. 
 
 ## <a name="artifacts"></a>Artifacts
 Artefakty vytvořené v této fázi zahrnují:
@@ -90,4 +88,4 @@ Tady jsou odkazy na jednotlivé kroky v životním cyklu TDSP:
 
 Poskytujeme kompletní podrobné návody, které znázorňují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](./index.yml).

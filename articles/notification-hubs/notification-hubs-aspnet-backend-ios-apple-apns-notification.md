@@ -1,8 +1,8 @@
 ---
 title: Posílání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs | Microsoft Docs
-description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
+description: Přečtěte si, jak odesílat nabízená oznámení konkrétním uživatelům iOS pomocí Azure Notification Hubs.
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016933"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -57,7 +57,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
     ![Upravit scénář v Tvůrci rozhraní Xcode][1]
 
    * **Uživatelské jméno**: UITextField se zástupným textem, *Zadejte uživatelské jméno*, hned pod popiskem odeslat výsledky a omezením na levý a pravý okraj a pod popiskem odeslat výsledky.
-   * **Heslo**: UITextField se zástupným textem, *Zadejte heslo*hned pod textové pole uživatelské jméno a omezené na levý a pravý okraj a pod textovým polem username (uživatelské jméno). V inspektoru atributů v části *návratový klíč*zaškrtněte políčko **Zabezpečená textová položka** .
+   * **Heslo**: UITextField se zástupným textem, *Zadejte heslo* hned pod textové pole uživatelské jméno a omezené na levý a pravý okraj a pod textovým polem username (uživatelské jméno). V inspektoru atributů v části *návratový klíč* zaškrtněte políčko **Zabezpečená textová položka** .
    * **Přihlásit**: UIButton označený hned pod textovým polem heslo a zrušit kontrolu možnosti **Enabled** v inspektoru atributů v části *řízení-obsah*
    * **WNS**: Label a Switch povolí odeslání služby oznamování systému Windows oznámení, pokud byla nastavena v centru. Přečtěte si kurz [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
    * **GCM**: Label a Switch povolí odesílání oznámení Google Cloud Messaging, pokud bylo nastaveno v centru. Viz kurz k [androidu Začínáme](notification-hubs-android-push-notification-google-gcm-get-started.md) .
@@ -312,7 +312,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
     ```
 
     > [!NOTE]
-    > Následující fragment kódu není schématem zabezpečeného ověřování. měli byste nahradit implementaci `createAndSetAuthenticationHeaderWithUsername:AndPassword:` pomocí konkrétního ověřovacího mechanismu, který vygeneruje ověřovací token, který má být využíván registrací třídy klienta, například OAuth, Active Directory.
+    > Následující fragment kódu není schématem zabezpečeného ověřování. měli byste nahradit implementaci    `createAndSetAuthenticationHeaderWithUsername:AndPassword:` pomocí konkrétního ověřovacího mechanismu, který vygeneruje ověřovací token, který má být využíván registrací třídy klienta, například OAuth, Active Directory.
 
 10. Pak v `@implementation` části `ViewController.m` přidejte následující kód, který přidá implementaci pro nastavení tokenu zařízení a záhlaví ověřování.
 

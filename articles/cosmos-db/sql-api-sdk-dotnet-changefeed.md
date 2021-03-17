@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB rozhraní API změny rozhraní .NET pro zpracování kanálu, poznámky k verzi sady SDK
-description: Seznamte se s rozhraním API pro změny kanálu a sadou SDK včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi sady SDK pro změny rozhraní .NET pro zpracování datových kanálů.
+title: Rozhraní API procesoru kanálu změn Azure Cosmos DB .NET, poznámky k verzi sady SDK
+description: Seznamte se s informacemi o rozhraní API procesoru kanálu změn a sadě SDK, včetně dat vydání, dat vyřazení z provozu a změn provedených mezi jednotlivými verzemi sady SDK .NET procesoru kanálu změn.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,218 +8,219 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6d25eb2965e31211c0d30ec8d5e3e376176147c0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 43ad7a91719430798d93c4883027cb4c58fd3442
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590043"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423840"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK .NET s procesorem kanálu změn: Stažení a poznámky k verzi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 >
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * REST (/rest/api
-> * [Poskytovatel prostředků REST] (/rest/api
+> * [REST](/rest/api
+> * [REST Resource Provider](/rest/api
 > * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API pro změnu knihovny procesoru v informačním kanálu](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Začínáme**|[Začínáme s rozhraním .NET SDK Change feed Processor](change-feed.md)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API knihovny procesoru kanálu změn](/dotnet/api/microsoft.azure.documents.changefeedprocessor)|
+|**Začínáme**|[Začínáme se sadou SDK .NET s procesorem kanálu změn](change-feed.md)|
 |**Aktuální podporovaná architektura**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
-> Pokud používáte procesor Change feed, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](change-feed-processor.md), která obsahuje kanál změn integrovaný do sady SDK. 
+> Pokud používáte procesor kanálu změn, podívejte se na nejnovější verzi 3.x sady [.NET SDK](change-feed-processor.md), ve které je zabudovaný kanál změn. 
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="v2-builds"></a>V2 sestavení
+### <a name="v2-builds"></a>Buildy v2
 
-### <a name="232"></a><a name="2.3.2"/>2.3.2
-* Přidání kompatibility úložiště zapůjčení se sadou [V3 SDK](sql-api-sdk-dotnet-standard.md) , která umožňuje cesty při migraci za provozu. Aplikace může migrovat na sadu SDK v3 a migrovat zpátky do knihovny Change feed Processor, aniž by došlo ke ztrátě jakéhokoli stavu.
+### <a name="232"></a><a id="2.3.2"></a>2.3.2
+* Přidali jsme kompatibilitu úložiště zapůjčení se sadou SDK v3, která umožňuje cesty migrace horké vrstvy. Aplikace může migrovat na sadu SDK v3 a zpátky do knihovny procesoru kanálu změn bez ztráty stavu.
 
-### <a name="231"></a><a name="2.3.1"/>kládají
-* Opraven případ při `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` odeslání důvodu uzavření na, `FeedProcessing.IChangeFeedObserver.CloseAsync` Pokud oddíl nebyl nalezen nebo pokud cílová replika není aktuální s relací čtení. V těchto případech `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` a `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` jsou nyní použity důvody zavření.
-* Byl přidán nový důvod zavření `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` , který je odeslán za účelem zavření pozorovatele kanálu změn v případě, že cílová replika není v aktuálním stavu v relaci čtení.
+### <a name="231"></a><a id="2.3.1"></a>2.3.1
+* Opravili jsme situaci, kdy se důvod ukončení `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` v případě nenalezení oblasti nebo nesouladu aktuálnosti cílové repliky s relací čtení odeslal do `FeedProcessing.IChangeFeedObserver.CloseAsync`. V těchto případech se teď používají důvody ukončení `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` a `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable`.
+* Přidali jsme nový důvod ukončení `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable`, který se odešle za účelem ukončení pozorovatele kanálu změn, když není aktuálnost cílové repliky v souladu s relací čtení.
 
-### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Přidala se nová metoda `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` a odpovídající veřejné rozhraní `ICheckpointPartitionProcessorFactory` . To umožňuje implementaci `IPartitionProcessor` rozhraní k použití integrovaného mechanismu kontrolního bodu. Nový objekt pro vytváření je podobný jako stávající `IPartitionProcessorFactory` , s tím rozdílem, že jeho `Create` Metoda také přijímá `ILeaseCheckpointer` parametr.
-* `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` Pro stejnou instanci lze použít pouze jednu ze dvou metod, buď nebo `ChangeFeedProcessorBuilder` .
+### <a name="230"></a><a id="2.3.0"></a>2.3.0
+* Přidali jsme novou metodu `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` a odpovídající veřejné rozhraní `ICheckpointPartitionProcessorFactory`. To umožňuje implementaci rozhraní `IPartitionProcessor` používat integrovaný mechanismus kontrolních bodů. Nový objekt pro vytváření je podobný stávajícímu objektu `IPartitionProcessorFactory` s tím rozdílem, že jeho metoda `Create` přijímá také parametr `ILeaseCheckpointer`.
+* Pro stejnou instanci `ChangeFeedProcessorBuilder` se dá použít jenom jedna z těchto dvou metod, tedy buď `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory`, nebo `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`.
 
-### <a name="228"></a><a name="2.2.8"></a>2.2.8
+### <a name="228"></a><a id="2.2.8"></a>2.2.8
 * Vylepšení stability a diagnostiky:
-  * Přidala se podpora pro detekci kanálu změny čtení a trvá to dlouhou dobu. Pokud trvá déle než hodnota zadaná `ChangeFeedProcessorOptions.ChangeFeedTimeout` vlastností, provedou se tyto kroky:
-    * Operace čtení kanálu změn u problematického oddílu se přerušila.
-    * Instance procesoru změny kanálu převezme vlastnictví problematického zapůjčení. Zrušené zapůjčení se vybere během příštího kroku získání zapůjčení, který bude proveden stejnou nebo jinou instancí Change feed Processor. Tímto způsobem se zahájí čtení kanálu změn.
-    * Monitorování stavu oznamuje problém. Výchozí monitorování stavu odesílá všechny nahlášené problémy do protokolu trasování.
-  * Přidání nové veřejné vlastnosti: `ChangeFeedProcessorOptions.ChangeFeedTimeout` . Výchozí hodnota této vlastnosti je 10 minut.
-  * Byla přidána nová hodnota veřejného výčtu: `Monitoring.MonitoredOperation.ReadChangeFeed` . Pokud `HealthMonitoringRecord.Operation` je hodnota nastavena na `Monitoring.MonitoredOperation.ReadChangeFeed` , znamená to, že problém se stavem souvisí se čtením kanálu změn.
+  * Přidali jsme podporu detekce příliš dlouhé doby čtení kanálu změn. Pokud trvá delší dobu, než uvádí hodnota určená vlastností `ChangeFeedProcessorOptions.ChangeFeedTimeout`, provedou se tyto kroky:
+    * Dojde k přerušení operace čtení kanálu změn v problematickém oddílu.
+    * Instance procesoru kanálu změn zruší vlastnictví problematického zapůjčení. Zrušené zapůjčení se vybere během příštího kroku získání zapůjčení, který provede stejná nebo jiná instance procesoru kanálu změn. Čtení kanálu změn tak začne zase od začátku.
+    * Monitoru stavu se nahlásí problém. Výchozí monitor stavu odesílá všechny nahlášené problémy do protokolu trasování.
+  * Přidali jsme novou veřejnou vlastnost: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Výchozí hodnota této vlastnosti je 10 minut.
+  * Přidali jsme novou veřejnou hodnotu výčtu: `Monitoring.MonitoredOperation.ReadChangeFeed`. Když je hodnota `HealthMonitoringRecord.Operation` nastavená na `Monitoring.MonitoredOperation.ReadChangeFeed`, znamená to, že daný problém se stavem souvisí se čtením kanálu změn.
 
-### <a name="227"></a><a name="2.2.7"></a>2.2.7
-* Vylepšená strategie vyrovnávání zatížení pro situaci, kdy se u všech zapůjčení trvá déle než interval vypršení platnosti zapůjčení, např. kvůli problémům se sítí:
-  * V tomto scénáři se algoritmus vyrovnávání zatížení, který se používá k nepravdivému zvážení zapůjčených adres, což způsobilo odcizení zapůjčení od aktivních vlastníků. To může aktivovat zbytečné opětovné vyrovnávání zapůjčených adres.
-  * Tento problém se v této verzi opravil tím, že se vyhnete opakovanému pokusu o konflikt při získání vypršení zapůjčení, které vlastník nezměnil, a odložení platnosti zapůjčení do příštího vyrovnávání zatížení.
+### <a name="227"></a><a id="2.2.7"></a>2.2.7
+* Vylepšená strategie vyrovnávání zatížení pro situaci, kdy získání všech zapůjčení trvá déle než interval vypršení platnosti zapůjčení, například kvůli problémům se sítí:
+  * V tomto scénáři algoritmus vyrovnávání zatížení nesprávně považoval zapůjčení za zapůjčení s prošlou platností, což vedlo k rušení zapůjčení aktivním vlastníkům. To by mohlo způsobit zbytečné vyrovnávání mnoha zapůjčení.
+  * Tento problém jsme v této verzi opravili, takže už se při konfliktech během získávání zapůjčení s prošlou platností, jejichž vlastník se nezměnil, neprovádí opakované pokusy a získání zapůjčení s prošlou platností se odkládá na další iteraci vyrovnávání zatížení.
 
-### <a name="226"></a><a name="2.2.6"></a>2.2.6
+### <a name="226"></a><a id="2.2.6"></a>2.2.6
 * Vylepšené zpracování výjimek pozorovatele.
 * Rozšířené informace o chybách pozorovatele:
-  * Když je pozorovatel uzavřený kvůli výjimce vyvolané ProcessChangesAsync pozorovatele, CloseAsync teď obdrží parametr důvod nastavený na ChangeFeedObserverCloseReason. ObserverError.
-  * Přidání trasování pro identifikaci chyb v uživatelském kódu v pozorovateli.
+  * Když se pozorovatel ukončí kvůli výjimce metody ProcessChangesAsync pozorovatele, metoda CloseAsync teď dostane parametr důvodu nastavený na hodnotu ChangeFeedObserverCloseReason.ObserverError.
+  * Přidali jsme trasování za účelem identifikaci chyb v uživatelském kódu v pozorovateli.
 
-### <a name="225"></a><a name="2.2.5"></a>2.2.5
-* Přidání podpory pro zpracování rozdělení v kolekcích, které používají propustnost sdílené databáze.
-  * Tato verze opravuje problém, ke kterému může dojít během rozdělení v kolekcích pomocí propustnosti sdílené databáze při rozdělení výsledku do opětovného vyrovnávání oddílů s vytvořeným pouze jedním podřízeným rozsahem klíče oddílu, nikoli dvěma. Pokud k tomu dojde, může procesor Change feed zablokovat odstranění zapůjčení pro starý rozsah klíčů oddílu a nevytvářet nové zapůjčení. Tento problém je opravený v této verzi.
+### <a name="225"></a><a id="2.2.5"></a>2.2.5
+* Přidali jsme podporu pro zpracování rozdělení v kolekcích, které využívají propustnost sdílené databáze.
+  * Tato verze opravuje problém, ke kterému může dojít během rozdělení v kolekcích využívajících propustnost sdílené databáze, když rozdělení vede k vyrovnávání oddílů jen s jedním vytvořeným rozsahem klíčů podřízeného oddílu namísto dvou. Pokud k tomu dojde, může se procesor kanálu změn při odstraňování zapůjčení starého rozsahu klíčů oddílu zablokovat, takže pak nevytváří nová zapůjčení. Tento problém je v této verzi opravený.
 
-### <a name="224"></a><a name="2.2.4"></a>2.2.4
-* Byla přidána nová vlastnost ChangeFeedProcessorOptions. StartContinuation, která podporuje spuštění kanálu změn z tokenu pro pokračování žádosti. Používá se pouze v případě, že je shromažďování zapůjčení prázdné nebo zapůjčení nemá token continuationtoken sadu. Pro zapůjčení v kolekci zapůjčení, které mají token continuationtoken sadu, se použije token continuationtoken a ChangeFeedProcessorOptions. StartContinuation se ignoruje.
+### <a name="224"></a><a id="2.2.4"></a>2.2.4
+* Přidali jsme novou vlastnost ChangeFeedProcessorOptions.StartContinuation, která podporuje spuštění kanálu změn od tokenu pro pokračování požadavku. Používá se jen tehdy, když je kolekce zapůjčení prázdná nebo když nemá zapůjčení nastavený token ContinuationToken. U zapůjčení v kolekci zapůjčení, která mají nastavený token ContinuationToken, se použije tento token ContinuationToken a vlastnost ChangeFeedProcessorOptions.StartContinuation se ignoruje.
 
-### <a name="223"></a><a name="2.2.3"></a>2.2.3
-* Přidání podpory pro použití vlastního úložiště k uchování tokenů pokračování na oddíl.
-  * Vlastní úložiště zapůjčení můžete například Azure Cosmos DB zapůjčení dělit jakýmkoli vlastním způsobem.
-  * Vlastní úložiště zapůjčení můžou používat nové veřejné rozhraní ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) a ILeaseStoreManager.
-  * Rozhraní ILeaseManager se refaktoruje na více rozhraních role.
-* Menší zásadní změna: odebraný bod rozšíření ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager) použijte místo toho ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager).
+### <a name="223"></a><a id="2.2.3"></a>2.2.3
+* Přidali jsme podporu použití vlastního úložiště k zachování tokenů pro pokračování každého oddílu.
+  * Vlastní úložiště zapůjčení může být třeba kolekce zapůjčení Azure Cosmos DB rozdělená jakýmkoli vlastním způsobem.
+  * Vlastní úložiště zapůjčení můžou využívat nový bod rozšiřitelnosti ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) a veřejné rozhraní ILeaseStoreManager.
+  * Došlo k refaktorování rozhraní ILeaseManager do rozhraní s více rolemi.
+* Menší změna způsobující chybu: Došlo k odebrání bodu rozšiřitelnosti ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager), použijte místo něj bod rozšiřitelnosti ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager).
 
-### <a name="222"></a><a name="2.2.2"></a>bodě
-* Tato verze opravuje problém, ke kterému došlo během zpracování rozdělení v monitorované kolekci a použití dělené kolekce zapůjčení. Při zpracování zapůjčení rozděleného oddílu nemusí být zapůjčení odpovídající tomuto oddílu smazáno. Tento problém je opravený v této verzi.
+### <a name="222"></a><a id="2.2.2"></a>2.2.2
+* Tato verze opravuje problém, ke kterému dochází při zpracování rozdělení v monitorované kolekci a při používání kolekce zapůjčení rozdělené na oddíly. Při zpracování zapůjčení pro rozdělený oddíl se může stát, že se neodstraní zapůjčení odpovídající tomuto oddílu. Tento problém je v této verzi opravený.
 
-### <a name="221"></a><a name="2.2.1"></a>2.2.1
-* Opravený výpočet Estimator pro více hlavních účtů a nový formát tokenu relace.
+### <a name="221"></a><a id="2.2.1"></a>2.2.1
+* Opravený výpočet nástroje pro posouzení pro účty s více oblastmi zápisu a novým formátem tokenu relace.
 
-### <a name="220"></a><a name="2.2.0"></a>2.2.0
-* Přidání podpory pro dělené kolekce zapůjčení Klíč oddílu musí být definovaný jako/ID.
-* Menší Průlomová změna: metody rozhraní IChangeFeedDocumentClient a třídy ChangeFeedDocumentClient se změnily tak, aby zahrnovaly parametry RequestOptions a CancellationToken. IChangeFeedDocumentClient je pokročilý bod rozšiřitelnosti, který umožňuje poskytovat vlastní implementaci klienta dokumentů pro použití s procesorem Change feed, např. DocumentClient a zachytit všechna volání do něj za účelem dodatečného trasování, zpracování chyb atd. V této aktualizaci bude nutné kód, který implementuje IChangeFeedDocumentClient, změnit tak, aby zahrnoval nové parametry v implementaci.
+### <a name="220"></a><a id="2.2.0"></a>2.2.0
+* Přidali jsme podporu kolekcí zapůjčení rozdělených na oddíly. Klíč oddílu musí být definovaný jako /id.
+* Menší změna způsobující chybu: Došlo ke změně metod rozhraní IChangeFeedDocumentClient interface a třídy ChangeFeedDocumentClient, takže teď zahrnují parametry RequestOptions a CancellationToken. IChangeFeedDocumentClient je rozšířený bod rozšiřitelnosti, který umožňuje poskytovat vlastní implementaci klienta dokumentu pro použití s procesorem kanálu změn, například k přizpůsobení třídy DocumentClient a zachycení všech volání této třídy za účelem dalšího trasování, zpracování chyb atd. V důsledku této aktualizace bude potřeba změnit kód, který implementuje bod IChangeFeedDocumentClient, aby v implementaci zahrnoval nové parametry.
 * Menší vylepšení diagnostiky.
 
-### <a name="210"></a><a name="2.1.0"></a>2.1.0
-* Bylo přidáno nové rozhraní API, Task &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). To se dá použít k získání odhadované práce pro každý oddíl.
-* Podporuje sadu Microsoft.Azure.DocumentDB SDK 2,0. Vyžaduje Microsoft.Azure.DocumentDB 2,0 nebo novější.
+### <a name="210"></a><a id="2.1.0"></a>2.1.0
+* Přidali jsme nové rozhraní API Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Dá se použít k získání odhadu objemu práce v každém oddílu.
+* Podporuje sadu Microsoft.Azure.DocumentDB SDK 2.0. Vyžaduje Microsoft.Azure.DocumentDB 2.0 nebo vyšší.
 
-### <a name="206"></a><a name="2.0.6"></a>2.0.6
-* Byla přidána veřejná vlastnost ChangeFeedEventHost. HostName pro kompatibilitu s v1.
+### <a name="206"></a><a id="2.0.6"></a>2.0.6
+* Kvůli kompatibilitě s verzí 1 jsme přidali veřejnou vlastnost ChangeFeedEventHost.HostName.
 
-### <a name="205"></a><a name="2.0.5"></a>2.0.5
-* Opravili jste konflikt časování, ke kterému dojde během rozdělení oddílu. Konflikt časování může vést k tomu, že získá zapůjčení a hned ho ztratí během rozdělení oddílů a způsobuje spor. V této verzi je vyřešen problém s podmínkou časování.
+### <a name="205"></a><a id="2.0.5"></a>2.0.5
+* Opravili jsme konflikt časování, ke kterému dochází při rozdělení oddílu. Konflikt časování může vést k tomu, že se během dělení oddílu získá zapůjčení a hned se zase zruší, což může způsobovat spory. Problém s konfliktem časování je v této verzi vyřešený.
 
-### <a name="204"></a><a name="2.0.4"></a>2.0.4
-* GA SDK
+### <a name="204"></a><a id="2.0.4"></a>2.0.4
+* Sada GA SDK
 
-### <a name="203-prerelease"></a><a name="2.0.3-prerelease"></a>2.0.3 – Předběžná verze
+### <a name="203-prerelease"></a><a id="2.0.3-prerelease"></a>2.0.3 – předběžná verze
 * Opravené následující problémy:
-  * Pokud dojde k rozdělení oddílu, mohlo by dojít ke změně duplicitního zpracování dokumentů před rozdělením.
-  * Rozhraní GetEstimatedRemainingWork API vrátilo hodnotu 0, pokud v kolekci zapůjčení nebylo přítomno žádné zapůjčení.
+  * Po rozdělení oddílu by mohlo docházet k duplicitnímu zpracování dokumentů upravených před rozdělením.
+  * Když kolekce zapůjčení neobsahovala žádná zapůjčení, rozhraní API GetEstimatedRemainingWork vrátilo hodnotu 0.
 
-* Následující výjimky jsou zveřejněny. Rozšíření implementující IPartitionProcessor můžou tyto výjimky vyvolat.
-  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. LeaseLostException. 
-  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. PartitionException. 
-  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. PartitionNotFoundException.
-  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. PartitionSplitException. 
+* Zveřejnili jsme následující výjimky. Tyto výjimky můžou vydávat rozšíření, která implementují rozhraní IPartitionProcessor.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
-### <a name="202-prerelease"></a><a name="2.0.2-prerelease"></a>2.0.2 – Předběžná verze
-* Dílčí změny rozhraní API:
-  * Byl odebrán ChangeFeedProcessorOptions. IsAutoCheckpointEnabled, který byl označen jako zastaralý.
+### <a name="202-prerelease"></a><a id="2.0.2-prerelease"></a>2.0.2 – předběžná verze
+* Menší změny rozhraní API:
+  * Došlo k odebrání položky ChangeFeedProcessorOptions.IsAutoCheckpointEnabled, kterou jsme označili za zastaralou.
 
-### <a name="201-prerelease"></a><a name="2.0.1-prerelease"></a>2.0.1 – předběžná verze
+### <a name="201-prerelease"></a><a id="2.0.1-prerelease"></a>2.0.1 – předběžná verze
 * Vylepšení stability:
-  * Lepší zpracování inicializace úložiště zapůjčení. Pokud je úložiště pro zapůjčení prázdné, může ho inicializovat jenom jedna instance procesoru, ostatní budou čekat.
-  * Stabilnější/efektivní zapůjčení/vydání. Obnovení a uvolnění zapůjčení jeden oddíl nezávisí na obnovení ostatních. V v1 byly postupně provedeny pro všechny oddíly.
-* Nové rozhraní API v2:
-  * Vzor tvůrce pro flexibilní konstrukci procesoru: třída ChangeFeedProcessorBuilder
-    * Může mít libovolnou kombinaci parametrů.
-    * Může převzít instanci DocumentClient pro monitorování nebo shromažďování zapůjčení (není k dispozici ve verzi V1).
-  * IChangeFeedObserver. ProcessChangesAsync teď přijímá CancellationToken.
-  * IRemainingWorkEstimator – zbývající pracovní Estimator se dají použít odděleně od procesoru.
+  * Lepší zpracování inicializace úložiště zapůjčení. Pokud je úložiště zapůjčení prázdné, může ho inicializovat jenom jedna instance procesoru a ostatní budou čekat.
+  * Stabilnější/efektivnější prodloužení/uvolnění zapůjčení. Prodloužení a uvolnění zapůjčení z jednoho oddílu není závislé na prodloužení jiných zapůjčení. Ve verzi 1 tento proces probíhal postupně pro všechny oddíly.
+* Nové rozhraní API verze 2:
+  * Vzor tvůrce pro flexibilní konstrukci procesoru: třída ChangeFeedProcessorBuilder.
+    * Přijímá libovolnou kombinaci parametrů.
+    * Může přijmout instanci DocumentClient pro monitorování nebo kolekci zapůjčení (ve verzi 1 není k dispozici).
+  * IChangeFeedObserver.ProcessChangesAsync teď přijímá parametr CancellationToken.
+  * IRemainingWorkEstimator – nástroj pro posouzení zbývající práce se dá používat nezávisle na procesoru.
   * Nové body rozšiřitelnosti:
     * IPartitionLoadBalancingStrategy – pro vlastní vyrovnávání zatížení oddílů mezi instancemi procesoru.
     * ILease, ILeaseManager – pro vlastní správu zapůjčení.
-    * IPartitionProcessor – pro vlastní změny zpracování oddílu.
-* Protokolování – používá knihovnu [LibLog](https://github.com/damianh/LibLog) .
-* 100% zpětně kompatibilní s rozhraním API v1.
-* Nová základna kódu.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21.1 a vyšší.
+    * IPartitionProcessor – pro vlastní změny zpracování v určitém oddílu.
+* Logging – využívá knihovnu [LibLog](https://github.com/damianh/LibLog).
+* 100% zpětně kompatibilní s rozhraním API verze 1.
+* Nový základ kódu.
+* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21.1 a vyšší.
 
-### <a name="v1-builds"></a>sestavení v1
+### <a name="v1-builds"></a>Buildy v1
 
-### <a name="133"></a><a name="1.3.3"></a>1.3.3
-* Bylo přidáno další protokolování.
-* Opravili jsme únik DocumentClient při volání nedokončené práce několikrát.
+### <a name="133"></a><a id="1.3.3"></a>1.3.3
+* Přidali jsme další protokolování.
+* Opravili jsme únik třídy DocumentClient při vícenásobném volání odhadu nedokončené práce.
 
-### <a name="132"></a><a name="1.3.2"></a>1.3.2
-* Opravy ve odhadu nedokončené práce.
+### <a name="132"></a><a id="1.3.2"></a>1.3.2
+* Opravuje odhad nedokončené práce.
 
-### <a name="131"></a><a name="1.3.1"></a>1.3.1
+### <a name="131"></a><a id="1.3.1"></a>1.3.1
 * Vylepšení stability.
-  * Oprava pro zpracování problému zrušených úkolů, který by mohl vést k zastavení pozorovatelů na některých oddílech.
-* Podpora ručního vytvoření kontrolního bodu.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1,21 a vyšší.
+  * Oprava problému se zpracováním zrušených úloh, který mohl v některých oddílech způsobit zastavení pozorovatelů.
+* Podpora ručního vytváření kontrolních bodů.
+* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21 a vyšší.
 
-### <a name="120"></a><a name="1.2.0"></a>1.2.0
-* Přidá podporu pro .NET Standard 2,0. Balíček teď podporuje `netstandard2.0` a `net451` monikery rozhraní.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.17.0 a vyšší.
-* Kompatibilní s verzemi [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 a vyšší.
+### <a name="120"></a><a id="1.2.0"></a>1.2.0
+* Přidává podporu platformy .NET Standard 2.0. Balíček teď podporuje monikery architektury `netstandard2.0` a `net451`.
+* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.17.0 a vyšší.
+* Kompatibilní se sadou [.NET Core SDK](sql-api-sdk-dotnet-core.md) verze 1.5.1 a vyšší.
 
-### <a name="111"></a><a name="1.1.1"></a>1.1.1
-* Opravuje problém s výpočtem odhadu zbývající práce, pokud byl kanál změn prázdný nebo nečeká na zpracování.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
+### <a name="111"></a><a id="1.1.1"></a>1.1.1
+* Opravuje problém s výpočtem odhadu zbývající práce, pokud byl kanál změn prázdný nebo nebyla k dispozici žádná nevyřízená práce.
+* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
 
-### <a name="110"></a><a name="1.1.0"></a>1.1.0
+### <a name="110"></a><a id="1.1.0"></a>1.1.0
 * Přidali jsme metodu pro získání odhadu zbývající práce, která se má zpracovat v kanálu změn.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
+* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
 
-### <a name="100"></a><a name="1.0.0"></a>1.0.0
-* GA SDK
-* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.14.1 a nižší.
+### <a name="100"></a><a id="1.0.0"></a>1.0.0
+* Sada GA SDK
+* Kompatibilní se sadou [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.14.1 nebo nižší.
 
-## <a name="release--retirement-dates"></a>Data vyřazení & vydání
+## <a name="release--retirement-dates"></a>Data vydání a vyřazení z provozu
 
-Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** . Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 > [!WARNING]
-> Po 31. srpna 2022 již Azure Cosmos DB nebude provádět opravy chyb, přidávat nové funkce a poskytovat podporu pro verze 1. x rozhraní Azure Cosmos DB .NET nebo .NET Core SDK pro rozhraní SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
+> Od 31. srpna 2022 už Azure Cosmos DB nebude provádět opravy chyb, přidávat nové funkce ani poskytovat podporu pro verze 1.x sad SDK Azure Cosmos DB .NET nebo .NET Core pro rozraní SQL API. Pokud nechcete provést upgrade, služba Azure Cosmos DB bude dál zpracovávat požadavky odeslané z verze 1.x sady SDK.
 
 <br/>
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [2.3.2](#2.3.2) |11. srpna 2020 |--- |
-| [kládají](#2.3.1) |30. července 2020 |--- |
-| [2.3.0](#2.3.0) |2. dubna 2020 |--- |
+| [2.3.1](#2.3.1) |30. července 2020 |--- |
+| [2.3.0](#2.3.0) |2\. dubna 2020 |--- |
 | [2.2.8](#2.2.8) |28. října 2019 |--- |
 | [2.2.7](#2.2.7) |14. května 2019 |--- |
 | [2.2.6](#2.2.6) |29. ledna 2019 |--- |
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
 | [2.2.3](#2.2.3) |19. listopadu 2018 |--- |
-| [bodě](#2.2.2) |31. října 2018 |--- |
+| [2.2.2](#2.2.2) |31. října 2018 |--- |
 | [2.2.1](#2.2.1) |24. října 2018 |--- |
-| [1.3.3](#1.3.3) |8. května 2018 |--- |
+| [1.3.3](#1.3.3) |8\. května 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
 | [1.3.1](#1.3.1) |13. března 2018 |--- |
 | [1.2.0](#1.2.0) |31. října 2017 |--- |
 | [1.1.1](#1.1.1) |29. srpna 2017 |--- |
 | [1.1.0](#1.1.0) |13. srpna 2017 |--- |
-| [1.0.0](#1.0.0) |7. července 2017 |--- |
+| [1.0.0](#1.0.0) |7\. července 2017 |--- |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
 
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

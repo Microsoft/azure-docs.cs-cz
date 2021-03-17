@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051342"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861336"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
 
@@ -31,7 +31,7 @@ Konfigurace této funkce eliminuje nutnost zadat kombinaci uživatelského jmén
 Toto téma:
 
 - Poskytuje postup pro konfiguraci a používání ověřování založeného na certifikátech pro uživatele klientů v plánech Office 365 Enterprise, Business, školství a USA. Tato funkce je dostupná ve verzi Preview v Office 365 Čína, obrany státní správy USA a federálních plánech pro státní správu USA.
-- Předpokládá, že už máte [infrastrukturu veřejného klíče (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) a [AD FS](../hybrid/how-to-connect-fed-whatis.md) nakonfigurovanou.
+- Předpokládá, že už máte [infrastrukturu veřejného klíče (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) a [AD FS](../hybrid/how-to-connect-fed-whatis.md) nakonfigurovanou.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -93,7 +93,7 @@ Schéma certifikační autority vypadá takto:
     }
 ```
 
-Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0):
+Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2):
 
 1. Spusťte prostředí Windows PowerShell s oprávněními správce.
 2. Nainstalujte modul Azure AD verze [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) nebo novější.
@@ -104,9 +104,9 @@ Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/p
 
 Jako první krok konfigurace musíte navázat spojení s vaším klientem. Jakmile existuje připojení k vašemu tenantovi, můžete si prohlédnout, přidat, odstranit a upravit důvěryhodné certifikační autority, které jsou definovány ve vašem adresáři.
 
-### <a name="connect"></a>Připojit
+### <a name="connect"></a>Připojení
 
-K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) :
+K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/powershell/module/azuread/connect-azuread) :
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,15 +114,15 @@ K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/po
 
 ### <a name="retrieve"></a>Stahovat
 
-K načtení důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte rutinu [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) .
+K načtení důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte rutinu [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority) .
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
 ```
 
-### <a name="add"></a>Přidat
+### <a name="add"></a>Přidání
 
-Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
+Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [Ne
 
 ### <a name="remove"></a>Odebrat
 
-K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) :
+K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority) :
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-Azu
 
 ### <a name="modify"></a>Modify
 
-Chcete-li upravit důvěryhodnou certifikační autoritu, použijte rutinu [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) :
+Chcete-li upravit důvěryhodnou certifikační autoritu, použijte rutinu [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority) :
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -154,7 +154,7 @@ Chcete-li upravit důvěryhodnou certifikační autoritu, použijte rutinu [set-
 
 ## <a name="step-3-configure-revocation"></a>Krok 3: konfigurace odvolání
 
-Pro odvolání klientského certifikátu Azure Active Directory načte seznam odvolaných certifikátů (CRL) z adres URL odeslaných jako součást informací o certifikační autoritě a uloží ji do mezipaměti. Poslední časové razítko publikování (vlastnost**Datum účinnosti** ) v seznamu odvolaných certifikátů se používá k zajištění, že seznam odvolaných certifikátů je stále platný. Seznam odvolaných certifikátů je pravidelně odkazován k odvolání přístupu k certifikátům, které jsou součástí seznamu.
+Pro odvolání klientského certifikátu Azure Active Directory načte seznam odvolaných certifikátů (CRL) z adres URL odeslaných jako součást informací o certifikační autoritě a uloží ji do mezipaměti. Poslední časové razítko publikování (vlastnost **Datum účinnosti** ) v seznamu odvolaných certifikátů se používá k zajištění, že seznam odvolaných certifikátů je stále platný. Seznam odvolaných certifikátů je pravidelně odkazován k odvolání přístupu k certifikátům, které jsou součástí seznamu.
 
 Je-li vyžadováno více okamžitých odvolání (například pokud uživatel ztratí zařízení), je možné zrušit platnost autorizačního tokenu uživatele. Pro zrušení platnosti autorizačního tokenu nastavte pole **StsRefreshTokenValidFrom** pro tohoto konkrétního uživatele pomocí Windows PowerShellu. Musíte aktualizovat pole **StsRefreshTokenValidFrom** pro každého uživatele, pro kterého chcete přístup odvolat.
 
@@ -184,7 +184,7 @@ Následující kroky popisují proces aktualizace a devalidace autorizačního t
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 ```
 
-Datum, které nastavíte, musí být v budoucnosti. Pokud datum není v budoucnu, vlastnost **StsRefreshTokensValidFrom** není nastavena. Pokud je datum v budoucnosti, **StsRefreshTokensValidFrom** je nastaveno na aktuální čas (nikoli datum uvedené v příkazu set-MsolUser).
+Datum, které nastavíte, musí být v budoucnosti. Pokud datum není v budoucnu, vlastnost **StsRefreshTokensValidFrom** není nastavena. Pokud je datum v budoucnosti, **StsRefreshTokensValidFrom** je nastaveno na aktuální čas (nikoli datum uvedené Set-MsolUser příkazu).
 
 ## <a name="step-4-test-your-configuration"></a>Krok 4: otestování konfigurace
 

@@ -1,17 +1,15 @@
 ---
 title: Vytvoření infrastruktury pro cluster v AWS
 description: V tomto kurzu se naučíte, jak nastavit infrastrukturu AWS pro spuštění clusteru Service Fabric.
-author: dkkapur
 ms.topic: tutorial
 ms.date: 05/11/2018
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75613971"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842899"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS pro hostování clusteru Service Fabric
 

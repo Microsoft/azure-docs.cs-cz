@@ -1,18 +1,19 @@
 ---
 title: PowerShellový skript – najít trezor pro účet úložiště
-description: Naučte se, jak pomocí skriptu Azure PowerShell najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
+description: Naučte se používat skript Azure PowerShell k vyhledání trezoru Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 56e1b1bc1b9d46abecfbdc4b98385a0349711aab
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 40859c1ea05210d27fcdcf33ba9d4f961965ea22
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89075694"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Skript PowerShellu pro vyhledání trezoru Recovery Services, ve kterém je registrovaný účet úložiště
 
-Tento skript vám pomůže najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
+Tento skript vám pomůže najít Recovery Services trezor, ve kterém je váš účet úložiště zaregistrovaný.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -56,7 +57,7 @@ if(!$found)
     * **-StorageAccountName** – název účtu úložiště
     * **-SubscriptionId** – ID předplatného, kde se nachází účet úložiště.
 
-Následující příklad se pokusí najít trezor služby Recovery Services, kde je zaregistrován účet úložiště *afsaccount* :
+Následující příklad se pokusí najít Recovery Services trezoru, kde je zaregistrován účet úložiště *afsaccount* :
 
 ```powershell
 .\FindRegisteredStorageAccount.ps1 -ResourceGroupName AzureFiles -StorageAccountName afsaccount -SubscriptionId ef4ad5a7-c2c0-4304-af80-af49f49af3d1
@@ -64,7 +65,7 @@ Následující příklad se pokusí najít trezor služby Recovery Services, kde
 
 ## <a name="output"></a>Výstup
 
-Ve výstupu se zobrazí úplná cesta k trezoru služby Recovery Services, kde je zaregistrován účet úložiště. Zde je ukázkový výstup:
+Ve výstupu se zobrazí úplná cesta k trezoru Recovery Services, kde je zaregistrován účet úložiště. Zde je ukázkový výstup:
 
 ```output
 Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c2c0-4304-af80-af49f49af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault123

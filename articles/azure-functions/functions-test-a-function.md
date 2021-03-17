@@ -3,15 +3,15 @@ title: Testování Azure Functions
 description: Vytváření automatizovaných testů pro funkci jazyka C# v aplikaci Visual Studio a funkce JavaScriptu v VS Code
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212898"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674146"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
 
@@ -28,7 +28,7 @@ Ukázkové úložiště je k dispozici na [GitHubu](https://github.com/Azure-Sam
 
 ## <a name="c-in-visual-studio"></a>C# v sadě Visual Studio
 
-Následující příklad popisuje, jak vytvořit aplikaci funkcí jazyka C# v aplikaci Visual Studio a spustit a testy pomocí [xUnit](https://xunit.github.io).
+Následující příklad popisuje, jak vytvořit aplikaci funkcí jazyka C# v aplikaci Visual Studio a spustit a testy pomocí [xUnit](https://github.com/xunit/xunit).
 
 ![Testování Azure Functions pomocí jazyka C# v aplikaci Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -36,12 +36,12 @@ Následující příklad popisuje, jak vytvořit aplikaci funkcí jazyka C# v ap
 
 Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Následující kroky vám pomůžou vytvořit aplikace a funkce, které jsou potřeba pro podporu testů:
 
-1. [Vytvoření nové aplikace Functions](./functions-create-first-azure-function.md) a pojmenování IT **funkcí**
-2. [Vytvořte funkci http ze šablony](./functions-create-first-azure-function.md) a pojmenujte ji **MyHttpTrigger**.
+1. [Vytvoření nové aplikace Functions](./functions-get-started.md) a pojmenování IT **funkcí**
+2. [Vytvořte funkci http ze šablony](./functions-get-started.md) a pojmenujte ji **MyHttpTrigger**.
 3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger**.
-4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests**.
+4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.net/docs/getting-started/netcore/cmdline) a pojmenujte ji **Functions. Tests**.
 5. Pomocí NuGet přidejte odkaz z testovací aplikace do [Microsoft. AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Odkázat na aplikaci *Functions* ](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
+6. [Odkázat na aplikaci *Functions*](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
 
 ### <a name="create-test-classes"></a>Vytváření testovacích tříd
 
@@ -251,7 +251,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**: Tento test vytvoří instanci třídy `ListLogger` a předá ji funkcím časovače. Po spuštění funkce se zkontroluje protokol, aby se zajistilo, že je k dispozici očekávaná zpráva.
 
-Chcete-li získat přístup k nastavení aplikace v testech, můžete použít [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Chcete-li získat přístup k nastavení aplikace v testech, můžete [Vložit](./functions-dotnet-dependency-injection.md) `IConfiguration` instanci s vydanými hodnotami proměnné prostředí do funkce.
 
 ### <a name="run-tests"></a>Spouštění testů
 
@@ -295,7 +295,7 @@ Nyní aktualizujte _package.jsna_ a nahraďte stávající testovací příkaz n
 
 V případě inicializovaného projektu můžete vytvořit moduly používané pro spuštění automatizovaných testů. Začněte vytvořením nové složky s názvem *testování* , která bude obsahovat moduly podpory.
 
-Ve složce *testování* přidejte nový soubor, pojmenujte ho **defaultContext.js**a přidejte následující kód:
+Ve složce *testování* přidejte nový soubor, pojmenujte ho **defaultContext.js** a přidejte následující kód:
 
 ```javascript
 module.exports = {
@@ -305,7 +305,7 @@ module.exports = {
 
 Tento modul nakládá funkce *protokolu* tak, aby reprezentovala výchozí kontext spuštění.
 
-Dále přidejte nový soubor, pojmenujte ho **defaultTimer.js**a přidejte následující kód:
+Dále přidejte nový soubor, pojmenujte ho **defaultTimer.js** a přidejte následující kód:
 
 ```javascript
 module.exports = {
@@ -315,7 +315,7 @@ module.exports = {
 
 Tento modul implementuje `IsPastDue` vlastnost jako nefalešnou instanci časovače. Konfigurace časovače, jako jsou výrazy NCRONTAB, zde nejsou požadovány, protože testovací svazek je pouhým voláním funkce přímo k otestování výsledku.
 
-Dále pomocí rozšíření VS Code Functions [vytvořte novou funkci http jazyka JavaScript](/azure/developer/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ji *HttpTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js**a přidejte následující kód:
+Dále pomocí rozšíření VS Code Functions [vytvořte novou funkci http jazyka JavaScript](/azure/developer/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ji *HttpTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js** a přidejte následující kód:
 
 ```javascript
 const httpFunction = require('./index');
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 Funkce HTTP ze šablony vrací řetězec "Hello" zřetězený s názvem zadaným v řetězci dotazu. Tento test vytvoří falešnou instanci požadavku a předá ji funkci HTTP. Test ověří, zda je metoda *protokolu* volána jednou a vrácený text se rovná "Hello Bill".
 
-Potom pomocí rozšíření VS Code Functions vytvořte novou funkci časovače JavaScriptu a pojmenujte ji *TimerTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js**a přidejte následující kód:
+Potom pomocí rozšíření VS Code Functions vytvořte novou funkci časovače JavaScriptu a pojmenujte ji *TimerTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js** a přidejte následující kód:
 
 ```javascript
 const timerFunction = require('./index');

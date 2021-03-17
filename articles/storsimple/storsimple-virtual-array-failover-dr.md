@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184716"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096419"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Zotavení po havárii a převzetí služeb při selhání zařízení StorSimple Virtual Array prostřednictvím webu Azure Portal
 
 ## <a name="overview"></a>Přehled
 Tento článek popisuje zotavení po havárii pro vaše Microsoft Azure StorSimple virtuální pole, včetně podrobných kroků pro převzetí služeb při selhání v jiném virtuálním poli. Převzetí služeb při selhání umožňuje přesunout data ze *zdrojového* zařízení v datacentru do *cílového* zařízení. Cílové zařízení se může nacházet ve stejném nebo jiném geografickém umístění. Převzetí služeb při selhání zařízení je pro celé zařízení. Během převzetí služeb při selhání změní cloudová data pro zdrojové zařízení vlastnictví cílového zařízení.
 
-Tento článek se vztahuje pouze na virtuální pole StorSimple. Pokud chcete převzít služby při selhání zařízení řady 8000, přečtěte si [převzetí služeb při selhání zařízení a zotavení po havárii zařízení StorSimple](storsimple-device-failover-disaster-recovery.md).
+Tento článek se vztahuje pouze na virtuální pole StorSimple. Pokud chcete převzít služby při selhání zařízení řady 8000, přečtěte si [převzetí služeb při selhání zařízení a zotavení po havárii zařízení StorSimple](./storsimple-8000-device-failover-disaster-recovery.md).
 
 ## <a name="what-is-disaster-recovery-and-device-failover"></a>Co je zotavení po havárii a převzetí služeb při selhání zařízení?
 
-Ve scénáři zotavení po havárii primární zařízení přestane fungovat. V tomto scénáři můžete přesunout data cloudu přidružená k zařízení, které selhalo, do jiného zařízení. Jako *zdroj* můžete použít primární zařízení a jako *cíl*zadat jiné zařízení. Tento proces se označuje jako *převzetí služeb při selhání*. Během převzetí služeb při selhání budou všechny svazky nebo sdílené složky ze zdrojového zařízení měnit vlastnictví a jsou přeneseny do cílového zařízení. Nepovoluje se žádné filtrování dat.
+Ve scénáři zotavení po havárii primární zařízení přestane fungovat. V tomto scénáři můžete přesunout data cloudu přidružená k zařízení, které selhalo, do jiného zařízení. Jako *zdroj* můžete použít primární zařízení a jako *cíl* zadat jiné zařízení. Tento proces se označuje jako *převzetí služeb při selhání*. Během převzetí služeb při selhání budou všechny svazky nebo sdílené složky ze zdrojového zařízení měnit vlastnictví a jsou přeneseny do cílového zařízení. Nepovoluje se žádné filtrování dat.
 
 DR se modeluje jako úplné obnovení zařízení pomocí vrstvení a sledování na základě Heat mapy. Heat mapa je definována přiřazením hodnoty tepla k datům na základě vzorů pro čtení a zápis. Tato Heat mapa pak vrstvy nejnižší objemy tepelného zpracování dat do cloudu napřed a přitom udržuje horní datový proud (nejčastěji používané) datové bloky v místní vrstvě. Při zotavení po havárii používá StorSimple Heat mapu k obnovení a dehydratovanému využití dat z cloudu. Zařízení načte všechny svazky nebo sdílené složky v poslední poslední záloze (podle interního určení) a provede obnovení z této zálohy. Virtuální pole orchestruje celý proces zotavení po havárii.
 
@@ -40,11 +40,11 @@ DR se modeluje jako úplné obnovení zařízení pomocí vrstvení a sledován�
 > 
 > 
 
-Zotavení po havárii probíhá prostřednictvím funkce převzetí služeb při selhání zařízení a inicializuje se z okna **zařízení** . Toto okno tabulates všechna zařízení StorSimple připojená ke službě StorSimple Device Manager. Pro každé zařízení můžete zobrazit popisný název, stav, zřízené a maximální kapacitu, typ a model.
+Zotavení po havárii probíhá prostřednictvím funkce převzetí služeb při selhání zařízení a inicializuje se z okna **zařízení** . Toto okno tabulates všechna zařízení StorSimple připojená ke službě StorSimple Správce zařízení. Pro každé zařízení můžete zobrazit popisný název, stav, zřízené a maximální kapacitu, typ a model.
 
 ## <a name="prerequisites-for-device-failover"></a>Požadavky na převzetí služeb při selhání zařízení
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 V případě převzetí služeb při selhání zařízení se ujistěte, že jsou splněné následující předpoklady:
 
@@ -92,7 +92,7 @@ Po úspěšném dokončení programu DR se vlastnictví cloudových dat na zdroj
 
 ## <a name="fail-over-to-a-virtual-array"></a>Převzetí služeb při selhání virtuálním polem
 
-Před spuštěním tohoto postupu doporučujeme zřídit, nakonfigurovat a zaregistrovat jiné virtuální pole StorSimple pomocí služby StorSimple Device Manager.
+Před spuštěním tohoto postupu doporučujeme zřídit, nakonfigurovat a zaregistrovat jiné virtuální pole StorSimple pomocí služby StorSimple Správce zařízení.
 
 > [!IMPORTANT]
 > 
@@ -102,7 +102,7 @@ Před spuštěním tohoto postupu doporučujeme zřídit, nakonfigurovat a zareg
 
 Provedením následujících kroků obnovíte zařízení na cílové virtuální zařízení StorSimple.
 
-1. Zřízení a konfigurace cílového zařízení, které splňuje [požadavky pro převzetí služeb při selhání zařízení](#prerequisites). Dokončete konfiguraci zařízení prostřednictvím místního webového uživatelského rozhraní a zaregistrujte ho do služby StorSimple Device Manager. Pokud vytváříte souborový server, použijte krok 1 [Nastavení souborového serveru](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Pokud vytváříte server iSCSI, přejít ke kroku 1 v [nastavení serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
+1. Zřízení a konfigurace cílového zařízení, které splňuje [požadavky pro převzetí služeb při selhání zařízení](#prerequisites). Dokončete konfiguraci zařízení prostřednictvím místního webového uživatelského rozhraní a zaregistrujte ho do služby StorSimple Správce zařízení. Pokud vytváříte souborový server, použijte krok 1 [Nastavení souborového serveru](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Pokud vytváříte server iSCSI, přejít ke kroku 1 v [nastavení serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
 
 2. Převeďte svazky nebo sdílené složky na hostiteli v režimu offline. Pokud chcete svazky nebo sdílené složky převést do režimu offline, přečtěte si pokyny pro hostitele na základě konkrétního operačního systému. Pokud jste to ještě neučinili offline, musíte na zařízení přebírat všechny svazky nebo sdílené složky, a to následujícím způsobem.
    
@@ -116,7 +116,7 @@ Provedením následujících kroků obnovíte zařízení na cílové virtuáln�
    
     5. Klikněte na **převést do režimu offline**.
 
-3. Ve službě StorSimple Device Manager, navštivte **> Správa zařízení**. V okně **zařízení** vyberte a klikněte na zdrojové zařízení.
+3. Ve službě StorSimple Správce zařízení, navštivte **> Správa zařízení**. V okně **zařízení** vyberte a klikněte na zdrojové zařízení.
 
 4. V okně **řídicí panel zařízení** klikněte na **deaktivovat**.
 
@@ -156,7 +156,7 @@ Provedením následujících kroků obnovíte zařízení na cílové virtuáln�
     1. Vyberte a klikněte na zařízení StorSimple, které se použilo jako cílové zařízení pro proces převzetí služeb při selhání.
     2. Přejít na **nastavení > správa > sdílené složky** (nebo **svazky** , pokud server iSCSI). V okně **akcie** můžete zobrazit všechny sdílené složky (svazky) ze starého zařízení.
         ![Snímek obrazovky okna zařízení Cílové zařízení je uvedené ve stavu online.](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Budete muset [vytvořit alias DNS](https://support.microsoft.com/kb/168322) , aby se všechny aplikace, které se snaží připojit, mohly přesměrovat na nové zařízení.
+14. Budete muset [vytvořit alias DNS](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322) , aby se všechny aplikace, které se snaží připojit, mohly přesměrovat na nové zařízení.
 
 ## <a name="errors-during-dr"></a>Chyby během zotavení po havárii
 
@@ -174,11 +174,10 @@ Pokud některá z předkontrol není splněná, zobrazí se chyba předkontroly.
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>Zotavení po havárii pro provozní kontinuitu (BCDR)
 
-Když celé datacentrum Azure přestane fungovat, nastane Scénář zotavení po havárii (BCDR) pro provozní kontinuitu. To může mít vliv na vaši službu StorSimple Device Manager a přidružená zařízení StorSimple.
+Když celé datacentrum Azure přestane fungovat, nastane Scénář zotavení po havárii (BCDR) pro provozní kontinuitu. To může mít vliv na vaši službu StorSimple Správce zařízení a přidružená zařízení StorSimple.
 
 Pokud se StorSimple zařízení, která byla zaregistrována těsně před haváriemi, je možné, že tato zařízení StorSimple bude nutné odstranit. Po havárii můžete tato zařízení znovu vytvořit a nakonfigurovat.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o tom, jak [spravovat virtuální pole StorSimple pomocí místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md).
-

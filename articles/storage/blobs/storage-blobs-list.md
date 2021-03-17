@@ -5,21 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 81eab2f3c5748c4edf7e09e5147a178a08bc546b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185702"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543064"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
 Při výpisu objektů BLOB z kódu můžete zadat několik možností pro správu způsobu, jakým jsou vráceny výsledky z Azure Storage. Můžete zadat počet výsledků, které se mají vrátit v každé sadě výsledků, a pak načíst následné sady. Můžete zadat předponu pro návrat objektů blob, jejichž názvy začínají daným znakem nebo řetězcem. A můžete vytvořit seznam objektů BLOB ve strukturách s plochým výpisem nebo hierarchicky. Hierarchický výpis vrátí objekty blob, jako kdyby byly uspořádány do složek.
 
-Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
+Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage).  
 
 ## <a name="understand-blob-listing-options"></a>Vysvětlení možností výpisu objektů BLOB
 
@@ -27,10 +28,10 @@ Pokud chcete zobrazit seznam objektů BLOB v účtu úložiště, zavolejte jedn
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-- [BlobContainerClient. getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient. getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -50,23 +51,23 @@ Přetížení těchto metod poskytují další možnosti pro správu způsobu, j
 
 ### <a name="manage-how-many-results-are-returned"></a>Spravujte, kolik výsledků se vrátí.
 
-Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků, ale můžete zadat počet výsledků, které mají vracet jednotlivé operace výpisu. Příklady uvedené v tomto článku vám ukážou, jak to udělat.
-
-Pokud operace výpisu vrátí více než 5000 objektů BLOB nebo pokud počet dostupných objektů BLOB překračuje zadaný počet, pak Azure Storage vrátí *token pro pokračování* se seznamem objektů BLOB. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
-
-V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, pak znovu spusťte operaci výpisu, která předá token pro pokračování pro načtení další sady výsledků, dokud token pro pokračování nemá hodnotu null.
+Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků, ale můžete zadat počet výsledků, které mají vracet jednotlivé operace výpisu. Příklady uvedené v tomto článku ukazují, jak vracet výsledky na stránkách.
 
 ### <a name="filter-results-with-a-prefix"></a>Filtrovat výsledky s předponou
 
-Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro `prefix` parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze objekty blob, jejichž názvy začínají touto předponou.
+Chcete-li filtrovat seznam objektů blob, zadejte řetězec pro `prefix` parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze objekty blob, jejichž názvy začínají touto předponou.
 
 ### <a name="return-metadata"></a>Návratová metadata
 
-Můžete vracet metadata objektu BLOB s výsledky. 
+Můžete vracet metadata objektu BLOB s výsledky.
 
-- Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) .
+- Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) .
 
 - Pokud používáte sadu .NET V11 SDK, zadejte hodnotu **metadat** pro výčet [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) . Azure Storage zahrnuje metadata s vrácenými objekty blob, takže nemusíte v tomto kontextu volat jednu z metod **FetchAttributes** k načtení metadat objektu BLOB.
+
+### <a name="list-blob-versions-or-snapshots"></a>Vypsat verze nebo snímky objektů BLOB
+
+Chcete-li vypsat verze nebo snímky objektů BLOB pomocí klientské knihovny .NET V12, zadejte parametr [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) s polem **verze** nebo **snímku** . Verze a snímky jsou uvedeny z nejstarší na nejnovější. Další informace o výpisu verzí najdete v tématu [seznam verzí objektů BLOB](versioning-enable.md#list-blob-versions).
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Plochý výpis versus hierarchický výpis
 
@@ -89,6 +90,10 @@ Pokud jste na svém účtu povolili funkci hierarchického oboru názvů, adres�
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Pokud operace výpisu vrátí více než 5000 objektů BLOB nebo pokud počet dostupných objektů BLOB překračuje zadaný počet, pak Azure Storage vrátí *token pro pokračování* se seznamem objektů BLOB. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+
+V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, pak znovu spusťte operaci výpisu, která předá token pro pokračování pro načtení další sady výsledků, dokud token pro pokračování nemá hodnotu null.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -152,7 +157,7 @@ Když zavoláte operaci výpisu hierarchicky, Azure Storage vrátí virtuální 
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Chcete-li zobrazit seznam objektů BLOB hierarchicky, zavolejte metodu [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)nebo [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) .
+Chcete-li zobrazit seznam objektů BLOB hierarchicky, zavolejte metodu [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)nebo [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) .
 
 Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pomocí hierarchického výpisu, který má zadanou volitelnou velikost segmentu, a zapíše název objektu blob do okna konzoly.
 

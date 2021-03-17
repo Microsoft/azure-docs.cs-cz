@@ -4,12 +4,12 @@ description: Tento článek poskytuje pokyny pro referenční architekturu pro A
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480180"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328840"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Referenční architektura Azure DevTest Labs pro podniky
 Tento článek popisuje referenční architekturu, která vám může pomáhat s nasazením řešení na základě Azure DevTest Labs v podniku. Zahrnuje následující:
@@ -24,13 +24,13 @@ Tento článek popisuje referenční architekturu, která vám může pomáhat s
 Toto jsou klíčové prvky referenční architektury:
 
 - **Azure Active Directory (Azure AD)**: DevTest Labs používá [službu Azure AD pro správu identit](../active-directory/fundamentals/active-directory-whatis.md). Tyto dvě klíčové aspekty zvažte, když uživatelům udělíte přístup k prostředí založenému na DevTest Labs:
-    - **Správa prostředků**: poskytuje přístup k Azure Portal ke správě prostředků (vytváření virtuálních počítačů, vytváření prostředí, spouštění, zastavování, restartování, odstraňování a uplatnění artefaktů atd.). Správa prostředků se provádí v Azure pomocí řízení přístupu na základě role (RBAC). Role přiřadíte uživatelům a nastavíte oprávnění na úrovni prostředků a přístupu.
+    - **Správa prostředků**: poskytuje přístup k Azure Portal ke správě prostředků (vytváření virtuálních počítačů, vytváření prostředí, spouštění, zastavování, restartování, odstraňování a uplatnění artefaktů atd.). Správa prostředků se provádí pomocí řízení přístupu na základě role v Azure (Azure RBAC). Role přiřadíte uživatelům a nastavíte oprávnění na úrovni prostředků a přístupu.
     - **Virtuální počítače (na úrovni sítě)**: ve výchozí konfiguraci používají virtuální počítače účet místního správce. Pokud je k dispozici doména ([Azure AD Domain Services](../active-directory-domain-services/overview.md), místní doména nebo cloudová doména), můžete počítače připojit k doméně. Uživatelé pak můžou k připojení k virtuálním počítačům používat své identity založené na doméně.
 - **Místní připojení**: v našem diagramu architektury se používá [ExpressRoute](../expressroute/expressroute-introduction.md) . Můžete ale také použít síť [VPN typu Site-to-site](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md). I když se ExpressRoute pro DevTest Labs nevyžaduje, obvykle se používá v podnicích. ExpressRoute se vyžaduje jenom v případě, že potřebujete přístup k podnikovým prostředkům. Mezi běžné scénáře patří:
     - Máte místní data, která se nedají přesunout do cloudu.
     - Upřednostňujete připojení virtuálních počítačů testovacího prostředí k místní doméně.
     - Chcete vynutit veškerý síťový provoz v cloudovém prostředí a z něj prostřednictvím místní brány firewall pro zabezpečení/dodržování předpisů.
-- **Skupiny zabezpečení sítě**: běžný způsob, jak omezit provoz do cloudového prostředí (nebo v cloudovém prostředí) založeného na zdrojové a cílové IP adrese, je použití [skupiny zabezpečení sítě](../virtual-network/security-overview.md). Například chcete v sítích testovacího prostředí, které pocházejí z podnikové sítě, umožňovat pouze provoz.
+- **Skupiny zabezpečení sítě**: běžný způsob, jak omezit provoz do cloudového prostředí (nebo v cloudovém prostředí) založeného na zdrojové a cílové IP adrese, je použití [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md). Například chcete v sítích testovacího prostředí, které pocházejí z podnikové sítě, umožňovat pouze provoz.
 - **Brána vzdálené plochy**: podniky obvykle blokují odchozí připojení ke vzdálené ploše v podnikové bráně firewall. Existuje několik možností, jak povolit připojení ke cloudovém prostředí v DevTest Labs, včetně těchto:
   - Použijte [bránu Vzdálená plocha](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)a povolte statickou IP adresu nástroje pro vyrovnávání zatížení brány.
   - [Nasměrujte veškerý příchozí provoz protokolu RDP](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) prostřednictvím připojení ExpressRoute/site-to-Site VPN. Tato funkce je běžně zvážena v případě, že podniky naplánují nasazení DevTest Labs.
@@ -46,7 +46,7 @@ I když DevTest Labs nemá předdefinované kvóty nebo limity, další prostře
     - **Použití sdílených veřejných IP adres**: všechny virtuální počítače se stejnou velikostí a oblastí jdou do stejné skupiny prostředků. Tato konfigurace je střední deska mezi kvótami skupin prostředků a kvótami typu prostředku a skupiny prostředků, pokud mají virtuální počítače povoleno mít veřejné IP adresy.
 - **Prostředky na skupinu prostředků na typ prostředku**: výchozí limit pro [prostředky na skupinu prostředků na typ prostředku je 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Když použijete *všechny virtuální počítače ve stejné konfiguraci skupiny prostředků* , uživatelé budou mít tento limit předplatného mnohem dřív, zejména v případě, že virtuální počítače mají mnoho dalších disků.
 - **Účty úložiště**: testovací prostředí v DevTest Labs se dodává s účtem úložiště. Kvóta Azure pro [počet účtů úložiště podle oblasti v rámci předplatného je 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Maximální počet DevTest Labs ve stejné oblasti je také 250.
-- **Přiřazení rolí**: přiřazení role je způsob, jakým udělíte uživateli nebo hlavní přístup k prostředku (vlastník, prostředek, úroveň oprávnění). V Azure existuje [omezení 2 000 přiřazení rolí na předplatné](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits). Ve výchozím nastavení vytvoří služba DevTest Labs skupinu prostředků pro každý virtuální počítač. Vlastníkovi je uděleno oprávnění *vlastníka* pro virtuální počítač DevTest Labs a oprávnění *Čtenář* pro skupinu prostředků. Každý nově vytvořený virtuální počítač navíc používá přiřazení dvou rolí k přiřazením, která se používají, když uživatelům udělíte oprávnění k testovacímu prostředí.
+- **Přiřazení rolí**: přiřazení role je způsob, jakým udělíte uživateli nebo hlavní přístup k prostředku (vlastník, prostředek, úroveň oprávnění). V Azure existuje [omezení 2 000 přiřazení rolí na předplatné](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits). Ve výchozím nastavení vytvoří služba DevTest Labs skupinu prostředků pro každý virtuální počítač. Vlastníkovi je uděleno oprávnění *vlastníka* pro virtuální počítač DevTest Labs a oprávnění *Čtenář* pro skupinu prostředků. Každý nově vytvořený virtuální počítač navíc používá přiřazení dvou rolí k přiřazením, která se používají, když uživatelům udělíte oprávnění k testovacímu prostředí.
 - **Čtení a zápisy rozhraní API**: Existují různé způsoby, jak automatizovat Azure a DevTest Labs, včetně rozhraní REST API, PowerShellu, Azure CLI a sady Azure SDK. Prostřednictvím automatizace můžete získat další omezení požadavků rozhraní API: každé předplatné umožňuje až [12 000 požadavků na čtení a 1 200 požadavků na zápis za hodinu](../azure-resource-manager/management/request-limits-and-throttling.md). Při automatizaci DevTest Labs si pamatujte na toto omezení.
 
 ## <a name="manageability-considerations"></a>Aspekty správy
@@ -59,7 +59,7 @@ DevTest Labs má skvělé administrativní uživatelské rozhraní pro práci s 
 
 Je důležité si uvědomit, že DevTest Labs používá základní prostředky Azure, které jsou spravované stejným způsobem: sítě, disky, výpočetní prostředky a tak dále. Například Azure Policy platí pro virtuální počítače, které jsou vytvořeny v testovacím prostředí. Azure Security Center může hlásit dodržování předpisů virtuálních počítačů. A služba Azure Backup může poskytovat pravidelné zálohování pro virtuální počítače v testovacím prostředí.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 Azure DevTest Labs používá existující prostředky v Azure (výpočty, sítě a tak dále). Proto automaticky přináší výhody funkcí zabezpečení, které jsou součástí platformy. Pokud třeba chcete, aby příchozí připojení ke vzdálené ploše vycházela jenom z podnikové sítě, stačí přidat skupinu zabezpečení sítě do virtuální sítě v bráně Vzdálená plocha. Jediným dalším aspektem zabezpečení je úroveň oprávnění, která udělujete členům týmu, kteří používají cvičení na každodenní bázi. Nejběžnějšími oprávněními jsou [ *vlastník* a *uživatel*](devtest-lab-add-devtest-user.md). Další informace o těchto rolích najdete [v tématu Přidání vlastníků a uživatelů v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Další kroky

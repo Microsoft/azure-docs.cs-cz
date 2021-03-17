@@ -2,14 +2,16 @@
 title: 'Kurz: Kontrola koncového bodu projevy-LUIS'
 description: V tomto kurzu Vylepšete předpovědi aplikace tím, že ověříte nebo opravíte projevy, které jste obdrželi prostřednictvím koncového bodu HTTP LUIS, který LUIS nedrží. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
-ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959014"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324633"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
 V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
@@ -82,7 +84,7 @@ Prohlédněte si projevy koncového bodu pro správné zarovnání záměru. I k
 
 1. V části **Build (sestavení** ) na portálu vyberte **zkontrolovat koncový bod projevy** z levé navigační oblasti. Seznam je filtrovaný pro záměr **ApplyForJob**.
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Snímek obrazovky s tlačítkem revize koncového bodu projevy v levém navigačním panelu":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Změňte ze stránky verze na stránku záměry.":::
 
     Tento utterance, není `I'm looking for a job with Natural Language Processing` správného záměru _GetJobInformation_. V důsledku podobnosti názvů úloh a operací v obou záměrech došlo k neočekávanému odhadu _ApplyForJob_ .
 

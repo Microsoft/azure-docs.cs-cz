@@ -3,12 +3,12 @@ title: Omezení kapacity v Azure Lab Services
 description: Přečtěte si o limitech kapacity (omezeních virtuálních počítačů) v Azure Lab Services.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444093"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491014"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Omezení kapacity v Azure Lab Services
 Azure Lab Services má v předplatných Azure výchozí omezení kapacity, které bude vyhovovat omezením kvóty Azure COMPUTE a zmírnit podvod. Všechna předplatná Azure budou mít počáteční limit kapacity, který se může lišit v závislosti na typu předplatného, počtu standardních výpočetních jader a jádrech GPU dostupných v Azure Lab Services. Omezuje počet virtuálních počítačů, které můžete v laboratoři vytvořit, než budete muset požádat o zvýšení limitu.  
@@ -50,4 +50,5 @@ Jakmile odešlete žádost o podporu, zkontrolujeme žádost. V případě potř
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující článek:
+- [Příručka pro správce – Změna velikosti virtuálního počítače](administrator-guide.md#vm-sizing)
 - [Nejčastější dotazy](classroom-labs-faq.md)

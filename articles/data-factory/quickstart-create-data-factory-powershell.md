@@ -1,26 +1,20 @@
 ---
 title: Kopírování dat v Blob Storage pomocí Azure Data Factory
-description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
-services: data-factory
-documentationcenter: ''
+description: Vytvořte Azure Data Factory pomocí prostředí PowerShell ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f419d89a9757a11055781335cbf98e9eb651548
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372718"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření datové továrny Azure pomocí PowerShellu
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření Azure Data Factory pomocí prostředí PowerShell
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -28,7 +22,7 @@ ms.locfileid: "81419336"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento rychlý start popisuje použití PowerShellu k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](transform-data-using-spark.md).
+V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Data Factory. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](transform-data-using-spark.md).
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Úvod do služby Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](introduction.md).
@@ -40,6 +34,9 @@ Tento rychlý start popisuje použití PowerShellu k vytvoření datové továrn
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nainstalujte nejnovější Azure PowerShell moduly podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+
+>[!WARNING]
+>Pokud nepoužíváte nejnovější verze PowerShellu a Data Factory modulu, můžete při spouštění příkazů použít k chybám deserializaci. 
 
 #### <a name="log-in-to-powershell"></a>Přihlášení do PowerShellu
 
@@ -65,7 +62,7 @@ Nainstalujte nejnovější Azure PowerShell moduly podle pokynů v tématu [Jak 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Například: `"ADFQuickStartRG"`.
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Příklad: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
@@ -115,8 +112,8 @@ Je třeba počítat s následujícím:
 V datové továrně vytvořte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto rychlém startu vytvoříte propojenou službu Azure Storage, která slouží jako zdroj i úložiště jímky. Tato propojená služba má informace o připojení, které služba Data Factory používá pro připojení za běhu.
 
 >[!TIP]
->V tomto rychlém startu použijete *klíč účtu* jako typ ověřování pro úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS*,*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) .
->K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) .
+>V tomto rychlém startu použijete *klíč účtu* jako typ ověřování pro úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS*,*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-blob-storage.md#linked-service-properties) .
+>K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](./store-credentials-in-key-vault.md) .
 
 1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem: (pokud ještě neexistuje, složku ADFv2QuickStartPSH vytvořte).
 
@@ -166,7 +163,7 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
 V tomto postupu vytvoříte dvě datové sady:**InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **Binary**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části.
 Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**input**) a soubor (**emp.txt**) obsahující zdrojová data.
 Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**output**) a soubor, do kterého se data kopírují. 
-1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **InputDataset. JSON** s následujícím obsahem:
+1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **InputDataset.js** s následujícím obsahem:
 
     ```json
     {
@@ -208,7 +205,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Pomocí stejného postupu vytvořte výstupní datovou sadu. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **OutputDataset. JSON** s následujícím obsahem:
+3. Pomocí stejného postupu vytvořte výstupní datovou sadu. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **OutputDataset.js** s následujícím obsahem:
 
     ```json
     {
@@ -341,12 +338,12 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
             -PipelineRunId $RunId
 
         if ($Run) {
-            if ($run.Status -ne 'InProgress') {
+            if ( ($Run.Status -ne "InProgress") -and ($Run.Status -ne "Queued") ) {
                 Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
                 $Run
                 break
             }
-            Write-Output "Pipeline is running...status: InProgress"
+            Write-Output ("Pipeline is running...status: " + $Run.Status)
         }
 
         Start-Sleep -Seconds 10

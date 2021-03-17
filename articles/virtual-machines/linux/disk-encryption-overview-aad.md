@@ -1,19 +1,20 @@
 ---
 title: Azure Disk Encryption se předpoklady pro aplikace Azure AD (předchozí verze)
-description: Tento článek popisuje předpoklady pro použití Microsoft Azureho šifrování disku pro virtuální počítače s IaaS.
+description: Tento článek popisuje doplňky Azure Disk Encryption pro virtuální počítače se systémem Linux s dalšími požadavky a požadavky pro Azure Disk Encryption s Azure AD.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e27eb64139c20ac2b8c776edc2d0840b80fddb62
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372633"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558334"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Disk Encryption s Azure Active Directory (AD) (předchozí verze)
 
@@ -47,7 +48,7 @@ Pokud chcete funkci Azure Disk Encryption povolit pomocí starší syntaxe param
   ```
 
 ### <a name="group-policy"></a>Zásady skupiny
- - Řešení Azure Disk Encryption využívá ochranu pomocí nástroje BitLocker pro virtuální počítače s Windows IaaS. Pro virtuální počítače připojené k doméně neinstalujte žádné zásady skupiny, které vynutily ochranu čipem TPM. Informace o Zásady skupiny možnosti **Povolení BitLockeru bez kompatibilního čipu TPM**najdete v tématu [Zásady skupiny BitLockeru](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
+ - Řešení Azure Disk Encryption využívá ochranu pomocí nástroje BitLocker pro virtuální počítače s Windows IaaS. Pro virtuální počítače připojené k doméně neinstalujte žádné zásady skupiny, které vynutily ochranu čipem TPM. Informace o Zásady skupiny možnosti **Povolení BitLockeru bez kompatibilního čipu TPM** najdete v tématu [Zásady skupiny BitLockeru](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
 - Zásady BitLockeru na virtuálních počítačích připojených k doméně s vlastním Zásady skupiny musí zahrnovat následující nastavení: [Konfigurace úložiště informací pro obnovení BitLockeru – > povolení 256ho obnovovacího klíče](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption se nezdařila, pokud je nastavení vlastního Zásady skupiny BitLockeru nekompatibilní. V počítačích, které nemají správné nastavení zásad, použijte novou zásadu, vynutí aktualizaci nové zásady (gpupdate.exe/Force) a pak se v případě potřeby restartuje. 
 

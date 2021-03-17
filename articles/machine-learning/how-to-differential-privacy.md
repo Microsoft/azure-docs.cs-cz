@@ -1,40 +1,36 @@
 ---
-title: Jak zachovat ochranu dat pomocí balíčků WhiteNoise (Preview)
+title: Rozdílové ochrany osobních údajů – SmartNoise (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí balíčků WhiteNoise použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
+description: Naučte se, jak pomocí SmartNoise Open Source knihoven použít pro Azure Machine Learning modelů rozdílové postupy ochrany osobních údajů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320200"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681400"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Použití rozdílového soukromí v Azure Machine Learning (Preview)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-Naučte se, jak pomocí balíčků WhiteNoise Pythonu použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
+Naučte se, jak pomocí knihoven Open-Source SmartNoise Pythonu použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
 
 Rozdílová ochrana osobních údajů je zlatá standardní definice ochrany osobních údajů. Systémy, které vyhovují této definici ochrany osobních údajů, poskytují silné záruky proti široké škále útoků na obnovu a reidentifikaci dat, včetně útoků nežádoucí osoby, kteří mají pomocné informace. Přečtěte si další informace o [fungování rozdílového soukromí](./concept-differential-privacy.md).
 
-> [!NOTE]
-> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-whitenoise-packages"></a>Nainstalovat balíčky WhiteNoise
+## <a name="install-smartnoise-python-libraries"></a>Nainstalovat SmartNoise knihovny Pythonu
 
 ### <a name="standalone-installation"></a>Samostatná instalace
 
@@ -42,45 +38,45 @@ Knihovny jsou navržené tak, aby pracovaly s distribuovanými Clustery Spark a 
 
 Následující pokyny předpokládají, že vaše `python` `pip` příkazy a jsou namapovány na `python3` a `pip3` .
 
-Pomocí PIP nainstalujte [balíčky Pythonu WhiteNoise](https://pypi.org/project/opendp-whitenoise/).
+Pomocí PIP nainstalujte [balíčky Pythonu SmartNoise](https://pypi.org/project/opendp-smartnoise/).
 
-`pip install opendp-whitenoise`
+`pip install opendp-smartnoise`
 
 Pokud chcete ověřit, že jsou balíčky nainstalované, spusťte příkazový řádek Pythonu a zadejte:
 
 ```python
-import opendp.whitenoise.core
-import opendp.whitenoise.sql
+import opendp.smartnoise.core
+import opendp.smartnoise.sql
 ```
 
 Pokud importy proběhly úspěšně, knihovny se nainstalují a připravené k použití.
 
-### <a name="docker-image"></a>Image Dockeru
+### <a name="docker-image-installation"></a>Instalace bitové kopie Docker
 
-Balíčky WhiteNoise můžete také použít s Docker.
+Balíčky SmartNoise můžete také použít s Docker.
 
-Načetli `opendp/whitenoise` image pro použití knihoven uvnitř kontejneru Docker, který obsahuje Spark, Jupyter a vzorový kód.
+Načetli `opendp/smartnoise` image pro použití knihoven uvnitř kontejneru Docker, který obsahuje Spark, Jupyter a vzorový kód.
 
 ```sh
-docker pull opendp/whitenoise:privacy
+docker pull opendp/smartnoise:privacy
 ```
 
 Po dokončení image spusťte Jupyter Server:
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run opendp/smartnoise:privacy
 ```
 
-Tím se na svém portu spustí server Jupyter `8989` `localhost` s heslem `pass@word99` . Za předpokladu, že jste použili příkazový řádek výše ke spuštění kontejneru s názvem `whitenoise-privacy` , můžete otevřít terminál bash na serveru Jupyter spuštěním příkazu:
+Tím se na svém portu spustí server Jupyter `8989` `localhost` s heslem `pass@word99` . Za předpokladu, že jste použili příkazový řádek výše ke spuštění kontejneru s názvem `smartnoise-privacy` , můžete otevřít terminál bash na serveru Jupyter spuštěním příkazu:
 
 ```sh
-docker exec -it whitenoise-run bash
+docker exec -it smartnoise-run bash
 ```
 
 Instance Docker vymaže všechny stavy při vypnutí, takže ztratíte všechny poznámkové bloky, které vytvoříte ve spuštěné instanci. Chcete-li tento problém napravit, můžete připojit místní složku ke kontejneru při jeho spuštění:
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/smartnoise:privacy
 ```
 
 Všechny poznámkové bloky, které vytvoříte ve složce *Moje poznámkové bloky* , budou uloženy v místním systému souborů.
@@ -95,7 +91,7 @@ Tato ukázka odkazuje na veřejné použití microdata (PUMS) pro Kalifornie, kt
 import os
 import sys
 import numpy as np
-import opendp.whitenoise.core as wn
+import opendp.smartnoise.core as sn
 
 data_path = os.path.join('.', 'data', 'PUMS_california_demographics_1000', 'data.csv')
 var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
@@ -104,19 +100,19 @@ var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
 V tomto příkladu vypočítáme průměr a odchylku stáří.  Používáme celkem `epsilon` 1,0 (Epsilon je náš parametr ochrany osobních údajů a šíříme rozpočet ochrany osobních údajů napříč dvěma množstvími, která chceme počítat. Přečtěte si další informace o [metrikách ochrany osobních údajů](concept-differential-privacy.md#differential-privacy-metrics).
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
                           data_n = 1000
                          )
     # get variance of age
-    age_var = wn.dp_variance(data = wn.cast(data['age'], type="FLOAT"),
+    age_var = sn.dp_variance(data = sn.cast(data['age'], type="FLOAT"),
                              privacy_usage = {'epsilon': .35},
                              data_lower = 0.,
                              data_upper = 100.,
@@ -149,26 +145,26 @@ Knihovnu můžete použít k vytvoření složitějších analytických grafů s
 
 | Statistika    | Mechanismy | Nástroje  |
 | ------------- |------------|------------|
-| Count         | Gaussovské   | Změna typu       |
+| Počet         | Gaussovské   | Změna typu       |
 | Histogram     | 2D  | Upnutí   |
 | Mean          | Laplace    | Digitalizaci   |
-| Quantiles     |            | Filtr     |
-| Sčítání           |            | Imputace |
+| Kvantily     |            | Filtrovat     |
+| Sum           |            | Imputace |
 | Variance/kovariance |      | Transformace  |
 
-Další podrobnosti najdete v [poznámkovém bloku základních analýz dat](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
+Další podrobnosti najdete v [poznámkovém bloku analýzy dat](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>Přibližný nástroj rozdílných privátních vydání
 
 Vzhledem k tomu, že rozdílová ochrana osobních údajů funguje kalibrací hluku, může se nástroj pro vydání lišit v závislosti na riziku ochrany osobních údajů.  Obecně platí, že hluk potřebný k ochraně jednotlivých jednotlivců je zanedbatelný, protože velikosti vzorků mají větší velikost, ale zahltí výsledek pro vydané verze, které cílí na jednu jednotlivou osobu.  Analytiké můžou zkontrolovat informace o přesnosti pro vydání, aby zjistili, jak užitečnou verzi je:
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
@@ -202,11 +198,11 @@ Tady je příklad `Analysis` určení přihrádek pro souvislý histogram promě
 ```python
 income_edges = list(range(0, 100000, 10000))
 
-with wn.Analysis() as analysis:
-    data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
-    income_histogram = wn.dp_histogram(
-            wn.cast(data['income'], type='int', lower=0, upper=100),
+    income_histogram = sn.dp_histogram(
+            sn.cast(data['income'], type='int', lower=0, upper=100),
             edges = income_edges,
             upper = 1000,
             null_value = 150,
@@ -216,11 +212,11 @@ with wn.Analysis() as analysis:
 
 Vzhledem k tomu, že jednotlivci jsou mezi přihrádkami bez společného dělení, náklady na ochranu osobních údajů se účtují pouze jednou za histogram, a to i v případě, že histogram obsahuje mnoho přihrádek.
 
-Další informace o histogramech najdete v [poznámkovém bloku histogramy](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/histograms.ipynb).
+Další informace o histogramech najdete v [poznámkovém bloku histogramy](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/histograms.ipynb).
 
 ## <a name="generate-a-covariance-matrix"></a>Generování matice kovariance
 
-WhiteNoise nabízí tři různé funkce s její `dp_covariance` funkcí:
+SmartNoise nabízí tři různé funkce s její `dp_covariance` funkcí:
 
 - Kovariance mezi dvěma vektory
 - Matice Kovariance matice
@@ -229,13 +225,13 @@ WhiteNoise nabízí tři různé funkce s její `dp_covariance` funkcí:
 Tady je příklad výpočtu skalární kovariance:
 
 ```python
-with wn.Analysis() as analysis:
-    wn_data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    wn_data = sn.Dataset(path = data_path, column_names = var_names)
 
-    age_income_cov_scalar = wn.dp_covariance(
-      left = wn.cast(wn_data['age'], 
+    age_income_cov_scalar = sn.dp_covariance(
+      left = sn.cast(wn_data['age'], 
       type = "FLOAT"), 
-      right = wn.cast(wn_data['income'], 
+      right = sn.cast(wn_data['income'], 
       type = "FLOAT"), 
       privacy_usage = {'epsilon': 1.0},
       left_lower = 0., 
@@ -247,8 +243,8 @@ with wn.Analysis() as analysis:
 ```
 
 Další informace najdete v [poznámkovém bloku kovariance](
-https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/covariance.ipynb) .
+https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/covariance.ipynb) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte [ukázkové poznámkové bloky WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-samples/tree/master/analysis).
+- Prozkoumejte [ukázkové poznámkové bloky SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis).

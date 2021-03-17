@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751701"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907857"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Modul přidělování latentních Dirichletův
 
-Tento článek popisuje, jak použít modul latentních Dirichletův přidělování v Návrháři Azure Machine Learning (Preview) k seskupení dalších neklasifikovaných textů do kategorií. 
+Tento článek popisuje, jak použít modul Dirichletův pro přidělování latentních přihlášení v Návrháři Azure Machine Learning, aby bylo možné seskupit jinak neklasifikovaný text do kategorií. 
 
 Latentní Dirichletův přidělování (LDA) se často používá při zpracování v přirozeném jazyce k nalezení podobných textů. Dalším běžným termínem je *modelování témat*.
 
@@ -58,7 +58,7 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu, a to buď nez
 
     Vzhledem k tomu, že LDA vytvoří z textu celou matrici funkcí, obvykle budete analyzovat jeden textový sloupec.
 
-4. Pro **počet témat pro model**zadejte celé číslo od 1 do 1000, které určuje, kolik kategorií nebo témat chcete ze vstupního textu odvodit.
+4. Pro  **počet témat pro model**zadejte celé číslo od 1 do 1000, které určuje, kolik kategorií nebo témat chcete ze vstupního textu odvodit.
 
     Ve výchozím nastavení se vytvoří 5 témat.
 
@@ -75,7 +75,7 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu, a to buď nez
     + Hodnoty v matici tématu funkce budou vyjádřeny jako pravděpodobnost, kde `P(word|topic)` .
 
     > [!NOTE] 
-    > V Návrháři Azure Machine Learning (Preview) už knihovna scikit-učení nepodporuje nenormalizovaný *doc_topic_distr* výstup z verze 0,19. V tomto modulu se parametr **Normalize** dá použít jenom pro výstup *matice tématu funkce* . *Transformovaný výstup datové sady* je vždy normalizován.
+    > V Azure Machine Learning Designer už knihovna scikit-učí nepodporuje nenormalizovaný *doc_topic_distr* výstup z verze 0,19. V tomto modulu se parametr **Normalize** dá použít jenom pro výstup *matice tématu funkce* . *Transformovaný výstup datové sady* je vždy normalizován.
 
 7. Vyberte možnost **Zobrazit všechny možnosti**a pak ji nastavte na **hodnotu true** , pokud chcete nastavit následující rozšířené parametry.
 
@@ -134,7 +134,7 @@ Kvalitativní míry mohou být užitečné také pro vyhodnocení výsledků. K 
 
 + Údajů. Jsou podobné položky podobné?
 + Rozmanitost. Může model odlišit podobné položky v případě potřeby pro obchodní potíže?
-+ Škálovatelnost. Pracuje na široké škále kategorií textu nebo jenom na úzké cílové doméně?
++ Škálovatelnost Pracuje na široké škále kategorií textu nebo jenom na úzké cílové doméně?
 
 Můžete často vylepšit přesnost modelů založených na LDA pomocí zpracování přirozeného jazyka pro čištění, sumarizaci a zjednodušení nebo zařazování textu do kategorií. Například následující techniky, které jsou podporované v Azure Machine Learning, můžou zlepšit přesnost klasifikace:
 
@@ -148,7 +148,7 @@ Můžete často vylepšit přesnost modelů založených na LDA pomocí zpracov�
 
 Další informace najdete v tématu [předzpracování textu](preprocess-text.md).
 
-V Návrháři můžete také použít knihovny R nebo Python pro zpracování textu: [Spustit skript jazyka r](execute-r-script.md), [Spustit skript jazyka Python](execute-python-script.md).
+V Návrháři můžete také použít knihovny R nebo Python pro zpracování textu: [Spustit skript jazyka r](execute-r-script.md),  [Spustit skript jazyka Python](execute-python-script.md).
 
 
 
@@ -181,13 +181,13 @@ Po vypočítání indexů je míra podobnosti na základě vzdálenosti porovná
 
 ###  <a name="module-parameters"></a>Parametry modulu
 
-|Name|Typ|Rozsah|Volitelné|Výchozí|Description|  
+|Název|Typ|Rozsah|Volitelné|Výchozí|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Cílový sloupec (y)|Výběr sloupce||Vyžadováno|StringFeature|Název nebo index cílového sloupce.|  
 |Počet témat pro model|Integer|[1; 1000]|Vyžadováno|5|Namodelujte distribuci dokumentu na N témata.|  
 |N-gramů|Integer|[1; 10]|Vyžadováno|2|Pořadí N-gramů generovaných během hashace.|  
 |Normalizovat|Logická hodnota|True nebo false|Vyžadováno|true|Normalizuje výstup na pravděpodobnost.  Transformovaná datová sada bude P (téma&#124;dokumentu) a matice tématu funkce bude P (Word&#124;téma).|  
-|Zobrazit všechny možnosti|Logická hodnota|True nebo false|Vyžadováno|False|Uvede další parametry, které jsou specifické pro scikit – Přečtěte si online LDA.|  
+|Zobrazit všechny možnosti|Logická hodnota|True nebo false|Vyžadováno|Nepravda|Uvede další parametry, které jsou specifické pro scikit – Přečtěte si online LDA.|  
 |Ró – parametr|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce slova tématu|  
 |Parametr alfa|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce dokumentu|  
 |Odhadovaný počet dokumentů|Integer|[1; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|1000|Odhadovaný počet dokumentů Odpovídá `total_samples` parametru.|  
@@ -195,10 +195,10 @@ Po vypočítání indexů je míra podobnosti na základě vzdálenosti porovná
 |Počáteční hodnota iterace použitá v plánu aktualizace studijních kurzů|Integer|[0; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0|Počáteční hodnota, která downweights kurzů pro počáteční iterace. Odpovídá `learning_offset` parametru.|  
 |Zapnutí pro iteraci během aktualizací|Float|[0,0; 1,0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,5|Napájení použité pro počet iterací za účelem řízení míry učení. Odpovídá `learning_decay` parametru. |  
 |Počet iterací cvičení|Integer|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|25|Počet iterací cvičení.|  
-|Sestavit slovník pro ngrams|Logická hodnota|True nebo false|Platí v případě *, že není zaškrtnuté* políčko **Zobrazit všechny možnosti** .|True|Vytvoří slovník ngrams před výpočetním LDA. Užitečné pro kontrolu a výklad modelu.|  
+|Sestavit slovník pro ngrams|Logická hodnota|True nebo false|Platí v případě *, že není zaškrtnuté* políčko **Zobrazit všechny možnosti** .|Ano|Vytvoří slovník ngrams před výpočetním LDA. Užitečné pro kontrolu a výklad modelu.|  
 |Maximální velikost ngram slovníku|Integer|[1; int. MaxValue|Platí v případě, že je **hodnota** **ngrams slovníku pro možnost Build** .|20000|Maximální velikost ngrams slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizí.|  
 |Počet bitů, které se mají použít pro funkci hashování funkcí|Integer|[1; 31]|Platí v případě, že *není zaškrtnuté* políčko **Zobrazit všechny možnosti** a **slovník sestavení ngrams** je **false** .|12|Počet bitů, které se mají použít pro funkci hashování funkcí| 
-|Sestavit slovník ngrams před LDA|Logická hodnota|True nebo false|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|True|Vytvoří slovník ngrams před LDA. Užitečné pro kontrolu a výklad modelu.|  
+|Sestavit slovník ngrams před LDA|Logická hodnota|True nebo false|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|Ano|Vytvoří slovník ngrams před LDA. Užitečné pro kontrolu a výklad modelu.|  
 |Maximální počet ngrams ve slovníku|Integer|[1; int. MaxValue|Platí v případě, že je zaškrtnuté políčko **Zobrazit všechny možnosti** a možnost **sestavit slovník ngrams** je **true** .|20000|Maximální velikost slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizí.|  
 |Počet bitů hash|Integer|[1; 31]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** a možnost **sestavit slovník ngrams** je **false** .|12|Počet bitů, které se mají použít při vytváření hodnot hash funkcí|   
 

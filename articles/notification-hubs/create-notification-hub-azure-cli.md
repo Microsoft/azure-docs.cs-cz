@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1829b6d8ab7b2cab0734ffd3cbab295e6c39678
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761089"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563745"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -29,37 +29,20 @@ V tomto rychlém startu vytvoříte centrum oznámení pomocí Azure CLI. První
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Spusťte `az --version` pro vyhledání verze a závislých knihoven, které jsou nainstalovány. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+> [!IMPORTANT]
+> Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Spuštěním příkazu [az version](/cli/azure/reference-index#az_version) zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte [az upgrade](/cli/azure/reference-index#az_upgrade).
 
-## <a name="prepare-your-environment"></a>Příprava prostředí
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
+Azure Notification Hubs, stejně jako všechny prostředky Azure, musí být nasazené do skupiny prostředků.  Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.  Další informace o skupinách prostředků najdete v tématu [co je Azure Resource Manager](../azure-resource-manager/management/overview.md) .
 
-    ```azurecli
-    az login
-    ```
+V tomto rychlém startu vytvořte skupinu prostředků s názvem **spnhubrg** v umístění **eastus** pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
 
-    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
-
-2. Když pracujete s odkazy na rozšíření pro rozhraní příkazového řádku Azure CLI, musíte nejdřív nainstalovat rozšíření. Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku. Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-   [Rozšíření pro Notification Hubs](/cli/azure/ext/notification-hub/notification-hub) nainstalujete spuštěním následujícího příkazu:
-
-    ```azurecli
-    az extension add --name notification-hub
-   ```
-
-3. Vytvořte skupinu prostředků.
-
-   Azure Notification Hubs, stejně jako všechny prostředky Azure, musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
-
-   V tomto rychlém startu vytvořte skupinu prostředků s názvem _spnhubrg_ v umístění _eastus_ pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
-
-   ```azurecli
-   az group create --name spnhubrg --location eastus
-   ```
+```azurecli
+az group create --name spnhubrg --location eastus
+```
 
 ## <a name="create-a-notification-hubs-namespace"></a>Vytvoření oboru názvů Notification Hubs
 
@@ -109,7 +92,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
 
 2. Získá seznam oborů názvů.
 
-   Podrobnosti o vašem novém oboru názvů zobrazíte pomocí příkazu [AZ Notification-hub Namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) . `--resource-group`Parametr je nepovinný, pokud chcete zobrazit všechny obory názvů pro předplatné.
+   Podrobnosti o vašem novém oboru názvů zobrazíte pomocí příkazu [AZ Notification-hub Namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) . `--resource-group`Parametr je nepovinný, pokud chcete zobrazit všechny obory názvů pro předplatné.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -135,7 +118,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
 
 3. Získejte seznam Center oznámení.
 
-   Azure CLI vrátí buď úspěch, nebo chybovou zprávu s každým provedeným příkazem; je ale možné dotazovat se na seznam Center oznámení, který se znovu zaručí. Pro tento účel byl navržen příkaz [AZ Notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) .
+   Azure CLI vrátí buď úspěch, nebo chybovou zprávu s každým provedeným příkazem; je ale možné dotazovat se na seznam Center oznámení, který se znovu zaručí. Pro tento účel byl navržen příkaz [AZ Notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) .
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009020"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Konfigurace DNS clusteru Avere
 
@@ -74,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Nastavení DNS clusteru
 
-Zadejte server DNS, který cluster vFXT používá na **Cluster**  >  stránce nastavení**sítě pro správu** clusteru. Nastavení na této stránce zahrnují:
+Zadejte server DNS, který cluster vFXT používá na **Cluster**  >  stránce nastavení **sítě pro správu** clusteru. Nastavení na této stránce zahrnují:
 
 * Adresa serveru DNS
 * Název domény DNS

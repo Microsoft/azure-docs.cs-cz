@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 10e6d0a183afdda2bf89014bb72f58d03a3013ec
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0e9f4602582a8c24f74d6603b732e7b91d97fa8d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171886"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89002687"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Upgrade na Azure Search .NET SDK verze 3
 
@@ -25,7 +26,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Pokud používáte verzi 2,0-Preview nebo starší [sadu Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 3.
+Pokud používáte verzi 2,0-Preview nebo starší [sadu Azure Search .NET SDK](/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 3.
 
 Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
@@ -63,7 +64,7 @@ Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft
 
 Dalším krokem je opravit tuto chybu sestavení. Podrobnosti o tom, co způsobuje chybu a jak ji opravit, najdete v tématu zásadní [změny ve verzi 3](#ListOfChanges) .
 
-Může se zobrazit další upozornění sestavení související s zastaralými metodami nebo vlastnostmi. Upozornění budou obsahovat pokyny k používání funkce místo zastaralé funkce. Například pokud vaše aplikace používá `IndexingParameters.Base64EncodeKeys` vlastnost, měli byste získat upozornění, které říká`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Může se zobrazit další upozornění sestavení související s zastaralými metodami nebo vlastnostmi. Upozornění budou obsahovat pokyny k používání funkce místo zastaralé funkce. Například pokud vaše aplikace používá `IndexingParameters.Base64EncodeKeys` vlastnost, měli byste získat upozornění, které říká `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 3](#WhatsNew).
 
@@ -132,7 +133,7 @@ index.Analyzers = new Analyzer[]
 
 Můžou se zobrazit chyby sestavení související s metodami nebo vlastnostmi, které byly označené jako zastaralé ve verzi 2,0-Preview a následně odebrány ve verzi 3. Pokud dojde k takovým chybám, můžete je vyřešit:
 
-- Pokud jste tento konstruktor používali: `ScoringParameter(string name, string value)` , použijte tuto jednu z nich:`ScoringParameter(string name, IEnumerable<string> values)`
+- Pokud jste tento konstruktor používali: `ScoringParameter(string name, string value)` , použijte tuto jednu z nich: `ScoringParameter(string name, IEnumerable<string> values)`
 - Pokud jste vlastnost používali `ScoringParameter.Value` , použijte `ScoringParameter.Values` `ToString` místo toho vlastnost nebo metodu.
 - Pokud jste vlastnost používali `SearchRequestOptions.RequestId` , použijte `ClientRequestId` místo ní vlastnost.
 

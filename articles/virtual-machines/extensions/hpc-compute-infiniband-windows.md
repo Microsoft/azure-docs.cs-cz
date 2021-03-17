@@ -1,23 +1,25 @@
 ---
 title: Rozšíření ovladače InfiniBand – virtuální počítače Azure s Windows
 description: Microsoft Azure rozšíření pro instalaci ovladačů InfiniBand ve výpočetních virtuálních počítačích H a N-Series se systémem Windows.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 81720c18ce858cd5667413a9d39afdadc95acb23
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096745"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559694"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Rozšíření ovladače InfiniBand pro Windows
 
@@ -25,19 +27,19 @@ Toto rozšíření nainstaluje ovladače InfiniBand ND (pro povolený non SR-IOV
 
 K dispozici je také rozšíření pro instalaci ovladačů InfiniBand pro [virtuální počítače se systémem Linux](hpc-compute-infiniband-linux.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému.
+Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému. Poznamenejte si odpovídající InfiniBand síťovou kartu pro velikosti virtuálních počítačů H a N-Series, které vás zajímají.
 
-| Distribuce | Verze |
+| Distribuce | Ovladače InfiniBand NIC |
 |---|---|
-| Windows 10 | Jádro |
-| Windows Server 2019 | Jádro |
-| Windows Server 2016 | Jádro |
-| Windows Server 2012 R2 | Jádro |
-| Windows Server 2012 | Jádro |
+| Windows 10 | CX5, CX6 |
+| Windows Server 2019 | CX5, CX6 |
+| Windows Server 2016 | CX3-pro, CX5, CX6 |
+| Windows Server 2012 R2 | CX3-pro, CX5, CX6 |
+| Windows Server 2012 | CX3-pro, CX5, CX6 |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -69,7 +71,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
@@ -149,7 +151,7 @@ Následující příklad nainstaluje nejnovější InfiniBandDriverWindows rozš
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

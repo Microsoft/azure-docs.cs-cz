@@ -6,16 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8273be760b37c12f3db7a393e59ab8ead291ec02
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 552d2587f35ed391b470c6d5b1693b79fd57306b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879574"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům BLOB a Queue pomocí spravovaných identit pro prostředky Azure
 
@@ -27,10 +28,10 @@ Tento článek popisuje, jak autorizovat přístup k datům objektů BLOB nebo f
 
 Než budete moct pomocí spravovaných identit pro prostředky Azure autorizovat přístup k objektům blob a frontám z virtuálního počítače, musíte nejdřív na VIRTUÁLNÍm počítači povolit spravované identity pro prostředky Azure. Informace o tom, jak povolit spravované identity pro prostředky Azure, najdete v jednom z těchto článků:
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portal](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Šablona Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Klientské knihovny Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -47,7 +48,12 @@ Další informace o klientské knihovně Azure identity pro .NET najdete v téma
 
 ### <a name="assign-azure-roles-for-access-to-data"></a>Přiřazení rolí Azure pro přístup k datům
 
-Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datům objektu BLOB nebo fronty, musí mít tento objekt zabezpečení oprávnění k prostředku. Bez ohledu na to, jestli je objekt zabezpečení spravovanou identitou v Azure nebo uživatelským účtem Azure AD, který spouští kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazená role Azure, která uděluje přístup k objektům blob nebo frontě v Azure Storage. Informace o přiřazování oprávnění přes RBAC najdete v části **přiřazení rolí Azure pro přístupová práva** v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
+Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datům objektu BLOB nebo fronty, musí mít tento objekt zabezpečení oprávnění k prostředku. Bez ohledu na to, jestli je objekt zabezpečení spravovanou identitou v Azure nebo uživatelským účtem Azure AD, který spouští kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazená role Azure, která uděluje přístup k objektům blob nebo frontě v Azure Storage. Informace o přiřazování oprávnění přes Azure RBAC najdete v části **přiřazení rolí Azure pro přístupová práva** v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
+
+> [!NOTE]
+> Když vytvoříte účet Azure Storage, nebudete automaticky přiřazovat oprávnění pro přístup k datům prostřednictvím služby Azure AD. Musíte explicitně přiřadit roli Azure pro Azure Storage. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.
+>
+> Předtím, než přiřadíte roli pro přístup k datům, budete mít přístup k datům v účtu úložiště prostřednictvím Azure Portal, protože Azure Portal může k přístupu k datům použít taky klíč účtu. Další informace najdete v tématu [Volba způsobu autorizace přístupu k datům objektu BLOB v Azure Portal](../blobs/authorize-data-operations-portal.md).
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Ověření uživatele ve vývojovém prostředí
 
@@ -70,7 +76,7 @@ V následujícím příkladu se pomocí Azure CLI vytvoří nový instanční ob
 ```azurecli-interactive
 az ad sp create-for-rbac \
     --name <service-principal> \
-    --role "Storage Blob Data Reader" \
+    --role "Storage Blob Data Contributor" \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
@@ -162,6 +168,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spravujte přístupová práva k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
+- [Spravujte přístupová práva k datům úložiště pomocí Azure RBAC](./storage-auth-aad-rbac-portal.md).
 - [Používejte Azure AD s aplikacemi pro úložiště](storage-auth-aad-app.md).
-- [Spusťte příkazy Azure CLI nebo PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo Queue](authorize-active-directory-powershell.md).
+- [Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektu BLOB](../blobs/authorize-data-operations-powershell.md)
+- [Kurz: přístup k úložišti z App Service pomocí spravovaného identies](../../app-service/scenario-secure-app-access-storage.md)

@@ -1,23 +1,20 @@
 ---
 title: Správa žádosti o podporu Azure
 description: Popisuje, jak zobrazit žádosti o podporu, odesílat zprávy, měnit úroveň závažnosti žádosti, sdílet diagnostické informace s podporou Azure, znovu otevřít uzavřenou žádost o podporu a nahrát soubory.
-author: mgblythe
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
-ms.service: azure-supportability
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.author: mblythe
-ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.date: 12/14/2020
+ms.openlocfilehash: 4d0c03e0035f6b71a23891ac1691f5421c1bdb76
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852295"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502514"
 ---
 # <a name="manage-an-azure-support-request"></a>Správa žádosti o podporu Azure
 
-Po [Vytvoření žádosti o podporu Azure](how-to-create-azure-support-request.md)ji můžete spravovat v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově pomocí [lístku podpory Azure REST API](/rest/api/support).
+Po [Vytvoření žádosti o podporu Azure](how-to-create-azure-support-request.md)ji můžete spravovat v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově, pomocí [lístku podpory Azure REST API](/rest/api/support)nebo pomocí [Azure CLI](/cli/azure/azure-cli-support-request).
 
 ## <a name="view-support-requests"></a>Zobrazení žádostí o podporu
 
@@ -53,7 +50,7 @@ Na této stránce můžete vyhledat, filtrovat a seřadit žádosti o podporu. V
 
         :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Vybrat novou úroveň závažnosti":::
 
-    - Pokud se vaše žádost přiřadila, zobrazí se obrazovka podobná této. Vyberte **OK**a pak vytvořte [novou zprávu](#send-a-message) pro vyžádání změny úrovně závažnosti.
+    - Pokud se vaše žádost přiřadila, zobrazí se obrazovka podobná této. Vyberte **OK** a pak vytvořte [novou zprávu](#send-a-message) pro vyžádání změny úrovně závažnosti.
 
         :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Nejde vybrat novou úroveň závažnosti.":::
 
@@ -67,7 +64,7 @@ Když vytvoříte žádost o podporu, ve výchozím nastavení je vybraná možn
 
     1. Na stránce **všechny žádosti o podporu** vyberte žádost o podporu.
     
-    1. Na stránce **žádost o podporu** vyberte **udělit oprávnění**a pak vyberte **Ano** a **OK**.
+    1. Na stránce **žádost o podporu** vyberte **udělit oprávnění** a pak vyberte **Ano** a **OK**.
     
         :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Udělení oprávnění pro diagnostické informace":::
 
@@ -79,7 +76,7 @@ Možnost nahrávání souborů můžete použít k nahrání diagnostických sou
 
 1. Na stránce **žádost o podporu** vyhledejte soubor a pak vyberte **Odeslat**. Pokud máte více souborů, opakujte tento postup.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Nahrání souboru":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Nahrát soubor":::
 
 ### <a name="file-upload-guidelines"></a>Pokyny pro nahrávání souborů
 
@@ -91,40 +88,48 @@ Při použití možnosti nahrávání souborů postupujte podle těchto pokynů:
 * Soubory nemohou být větší než 4 MB.
 * Všechny soubory musí mít příponu názvu souboru, například *. docx* nebo *. xlsx*. Následující tabulka uvádí přípony názvů souborů, které jsou povoleny pro nahrání.
 
-| 0-9, A-C    | D – G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
+| 0-9, A-C    | D – G   | H-N         | O-Q   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | . dat  | .hwl        | . ODX  | . rar     | .tdb       | .xlam   |
-| . a          | . DB   | . ICS        | . oft  | . RDL     | .tdf       | .xlr    |
-| . ABC        | . DMP  | . ini        | . old  | . rdlc    | . text      | .xls    |
-| . adm        | . do_  | .java       | . One  | . re_     | .thmx      | .xlsb   |
-| . aspx       | .doc  | .jpg        | . OSD  | . reg     | .tif       | .xlsm   |
-| . ATF        | .docm | . LDF        | . MIMO  | . Remove  | . trc       | .xlsx   |
-| . b          | .docx | . hlavičkový formát | . P1   | . Ren     | . TTD       | .xlt    |
-| . ba_        | .dotm | . lnk        | .pcap | . rename  | . tx_       | .xltx   |
-| . bak        | .dotx | . lo_        | soubor. pdb  | .rft     | .txt       | .xml    |
-| .bat        | .dtsx | . log        | .pdf  | . rpt     | .uccapilog | . XMLA   |
-| . blg        | . EDS  | .lpk        | .piz  | .rte     | .uccplog   | .xps    |
-| . CA_        | . EMF  | . manifest   | .pmls | .rtf     | .udcx      | . xsd    |
-| . SOUBORŮ        | . eml  | . Master     | .png  | . Run     | . vb_       | . xsn    |
-| . Cap        | .emz  | . mdmp       | .potx | .saz     | . vbs_      | . xxx    |
-| .catx       | . err  | . mof        | .ppt  | SQL     | . vcf       | . z_     |
-| . Priorita        | . ETL  | . mp3        | .pptm | .sqlplan | . vsd       | .z01    |
-| . komprimovaná | . evt  | . mpg        | .pptx | . STP     | . wdb       | .z02    |
-| . Konfigurace     | .evtx | . ms_        | . prn  | .svclog  | . WKS       | . Zi     |
-| .cpk        | . DODATEČNÉ   | . msg        | . PSV  |   -       | . WMA       | . zi_    |
-| . cpp        | . ex_  | .msi        | PST  |  -        | . wmv       | .zip    |
-| .cs         | .ex0  | soubor. mso        | . pub  | -         | . WMZ       | . zip_   |
-| . Formát        | . FRD  | . msu        | -      |-          | . WPS       | .zipp   |
-| .cvr        | .gif  | . nfo        | -      |-          | .wpt       | . zip |
-| -            | identifikátor. GUID | -            | -      | -         | . WSDL      | .zippy  |
-| -            | . gz   | -            | -      | -         | . wsp       | .zipx   |
-| -            | -      | -            | -      | -         | .wtl       | .zit    |
-| -            | -      | -            | -      | -         |     -       | .zix    |
-| -            | -      | -            | -      | -         |  -          | . zzz    |
+| .7z         | . dat  | . har        | . ODX  | . rar     | .uccapilog | .xlam   |
+| . a          | . DB   | .hwl        | . oft  | . RDL     | .uccplog   | .xlr    |
+| . ABC        | . DMP  | . ICS        | . old  | . rdlc    | .udcx      | .xls    |
+| . adm        | .do_  | . ini        | . One  | .re_     | .vb_       | .xlsb   |
+| . aspx       | .doc  | .java       | . OSD  | . Remove  | .vbs_      | .xlsm   |
+| . ATF        | .docm | .jpg        | . MIMO  | . Ren     | . vcf       | .xlsx   |
+| . b          | .docx | . LDF        | . P1   | . rename  | . vsd       | .xlt    |
+| .ba_        | .dotm | . hlavičkový formát | .pcap | .rft     | . wdb       | .xltx   |
+| . bak        | .dotx | .lo_        | soubor. pdb  | . rpt     | . WKS       | .xml    |
+| . blg        | .dtsx | . log        | .pdf  | .rte     | . WMA       | . XMLA   |
+| .CA_        | . EDS  | .lpk        | .piz  | .rtf     | . wmv       | .xps    |
+| . SOUBORŮ        | . EMF  | . manifest   | .pmls | . Run     | . WMZ       | . xsd    |
+| . Cap        | . eml  | . Master     | .png  | .saz     | . WPS       | . xsn    |
+| .catx       | .emz  | . mdmp       | .potx | SQL     | .wpt       | . xxx    |
+| . Priorita        | . err  | . mof        | .ppt  | .sqlplan | . WSDL      | .z_     |
+| . komprimovaná | . ETL  | . mp3        | .pptm | . STP     | . wsp       | .z01    |
+| . Konfigurace     | . evt  | . mpg        | .pptx | .svclog  | .wtl       | .z02    |
+| .cpk        | .evtx | .ms_        | . prn  | .tdb     | -          | . Zi     |
+| . cpp        | . DODATEČNÉ   | . msg        | . PSV  | .tdf     | -          | .zi_    |
+| .cs         | .ex_  | soubor. mso        | PST  | . text    | -          | .zip    |
+| . Formát        | .ex0  | . msu        | . pub  | .thmx    | -          | .zip_   |
+| .cvr        | . FRD  | . nfo        | -     | .tif     | -          | .zipp   |
+| -           | .gif  | -           | -     | . trc     | -          | . zip |
+| -           | identifikátor. GUID | -           | -     | . TTD     | -          | .zippy  |
+| -           | . gz   | -           | -     | .tx_     | -          | .zipx   |
+| -           | -     | -           | -     | .txt     | -          | .zit    |
+| -           | -     | -           | -     | -        | -          | .zix    |
+| -           | -     | -           | -     | -        | -          | . zzz    |
+
+## <a name="close-a-support-request"></a>Zavřít žádost o podporu
+
+Pokud potřebujete zavřít žádost o podporu, [odešlete zprávu s](#send-a-message) žádostí o uzavření žádosti.
 
 ## <a name="reopen-a-closed-request"></a>Znovu otevřít uzavřenou žádost
 
 Pokud potřebujete znovu otevřít uzavřenou žádost o podporu, vytvořte [novou zprávu](#send-a-message), která automaticky znovu otevře požadavek.
+
+## <a name="cancel-a-support-plan"></a>Zrušení plánu podpory
+
+Pokud potřebujete zrušit plán podpory, přečtěte si článek [zrušení plánu podpory](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 
 ## <a name="next-steps"></a>Další kroky
 

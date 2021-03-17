@@ -1,22 +1,22 @@
 ---
-title: Řešení potíží s připojením synapse Studio (Preview) pomocí PowerShellu
+title: Řešení potíží s připojením funkce Synapse Studio
 description: Řešení potíží s připojením ke službě Azure synapse Studio pomocí PowerShellu
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ff3d985bb24ec852bb5c6cfaedf295fd79a8247
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046672"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120355"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika potíží s připojením ke službě Azure synapse Studio (Preview) pomocí skriptu PowerShellu
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>Řešení potíží s připojením synapse Studio pomocí PowerShellu
 
-Azure synapse Studio (Preview) závisí na sadě koncových bodů webového rozhraní API, aby fungovaly správně. Tato příručka vám pomůže identifikovat příčiny potíží s připojením, když máte tyto možnosti:
+Azure synapse Studio závisí na sadě koncových bodů webového rozhraní API, aby fungovaly správně. Tato příručka vám pomůže identifikovat příčiny potíží s připojením, když máte tyto možnosti:
 - Konfigurace místní sítě (například sítě za podnikovou bránou firewall) pro přístup k Azure synapse studiu.
 - nastávají problémy s připojením pomocí Azure synapse studia.
 
@@ -27,13 +27,13 @@ Azure synapse Studio (Preview) závisí na sadě koncových bodů webového rozh
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Klikněte pravým tlačítkem na následující odkaz a klikněte na Uložit cíl jako:
+Klikněte pravým tlačítkem na následující odkaz a vyberte Uložit cíl jako:
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Alternativně můžete odkaz otevřít přímo a uložit otevřený soubor skriptu. Neuloží adresu odkazu výše, jak se může v budoucnu změnit.
 
-V Průzkumníku souborů klikněte pravým tlačítkem na stažený soubor skriptu a klikněte na spustit s prostředím PowerShell.
+V Průzkumníku souborů klikněte pravým tlačítkem na stažený soubor skriptu a vyberte spustit s prostředím PowerShell.
 
 ![Spustit stažený soubor skriptu pomocí PowerShellu](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
@@ -58,4 +58,4 @@ Pokud jste správcem sítě a vyladěním konfigurace brány firewall pro Azure 
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud vám předchozí kroky nepomohly vyřešit problém s [vytvořením lístku podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Pokud vám předchozí kroky nepomohly problém vyřešit, [vytvořte lístek podpory](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

@@ -13,16 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b08b07ebcd6e45e95e23dff8686148889e9d4b39
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116291"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173915"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Pokyny pro vývojáře funkce podmíněného přístupu Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
+
+> [!NOTE]
+> Verzi tohoto článku pro Microsoft Identity Platform najdete v tématu [pokyny pro vývojáře pro Azure Active Directory podmíněný přístup](../develop/v2-conditional-access-dev-guide.md).
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
@@ -40,7 +43,7 @@ Předpokládá se znalost [jednotlivých a víceklientské](../develop/howto-con
 
 ### <a name="app-types-impacted"></a>Ovlivněné typy aplikací
 
-V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře.Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu.Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
+V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře. Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu. Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
 
 Konkrétně následující scénáře vyžadují kód pro zpracování výzev podmíněného přístupu:
 
@@ -88,7 +91,7 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](../fundamentals/active-directory-whatis.md). Další informace o licenčních požadavcích najdete v [sestavě používání bez licenčního využití](../reports-monitoring/overview-reports.md). Vývojáři se můžou připojit ke [službě Microsoft Developer Network](/), která zahrnuje bezplatné předplatné sady Enterprise mobility, které zahrnuje Azure AD Premium.
 
@@ -153,9 +156,9 @@ V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplik
 
 V ADAL.js existuje několik funkcí, které získají tokeny: `login()` , `acquireToken(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
 
-* `login()`Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
-* `acquireToken(…)`dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
-* `acquireTokenPopup(…)`a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
+* `login()` Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
+* `acquireToken(…)` dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
+* `acquireTokenPopup(…)` a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
 
 Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireToken(…)` . Pokud vypršela platnost relace tokenu nebo je potřeba splnit zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo `acquireTokenRedirect()` .
 

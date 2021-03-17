@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046965"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028790"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
 
@@ -183,7 +183,7 @@ V současné době dochází k překrytí funkcí, které nabízí rozhraní Vid
 
 Rozhraní Video Indexer API obsahuje rozhraní API pro autorizaci a rozhraní Operations API. Autorizační rozhraní API obsahuje volání, která vám umožní přístup k tokenu. Každé volání do API Operations by mělo být přidružené k přístupovému tokenu s odpovídajícím oborem autorizace volání.
 
-Přístupové tokeny jsou potřebné k používání rozhraní Video Indexer API pro účely zabezpečení. Tím se zajistí, že přijdete o všechna volání, nebo na uživatele, kteří mají oprávnění k přístupu k vašemu účtu. 
+Přístupové tokeny jsou potřebné k používání rozhraní Video Indexer API pro účely zabezpečení. Tím se zajistí, že přijdete o všechna volání, nebo na uživatele, kteří mají oprávnění k přístupu k vašemu účtu. 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Jaký je rozdíl mezi přístupovými tokeny účtu, tokenem uživatele a přístupovým tokenem?
 
@@ -197,7 +197,7 @@ Přístupové tokeny vyprší každou hodinu, takže musíte každou hodinu vyge
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Jaké jsou možnosti přihlášení Video Indexer portálu pro vývojáře?
 
-Můžete se přihlásit pomocí Azure AD, účet Microsoft, účtu Google nebo účtu Facebook. 
+Podívejte se na poznámku k verzi týkající se [přihlašovacích informací](release-notes.md#october-2020).
 
 Po registraci e-mailového účtu pomocí poskytovatele identity nemůžete tento e-mailový účet použít s jiným poskytovatelem identity.
 
@@ -217,4 +217,5 @@ Ano, Video Indexer nabízí bezplatnou zkušební verzi, která poskytuje úplno
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled](video-indexer-overview.md)
+* [Přehled](video-indexer-overview.md)
+* [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)

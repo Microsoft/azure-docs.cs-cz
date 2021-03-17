@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 14bb693ccaa1b1d16a1d07b7ee1cdeb4493960f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212882"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89226025"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio
 
@@ -53,9 +53,9 @@ Nasaďte projekt jako webovou úlohu samostatně nebo ji propojte s webovým pro
 
 ![Diagram znázorňující, že se projekt úlohy WebJob odkazuje na webový projekt](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Nainstalujte Visual Studio 2017 nebo Visual Studio 2019 s [úlohou vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
+Nainstalujte Visual Studio 2017 nebo Visual Studio 2019 s [úlohou vývoj pro Azure](/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
 ### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> Povolit nasazení WebJobs pro existující projekt konzolové aplikace
 
@@ -184,9 +184,9 @@ Informace o nasazení úlohy WebJob:
 
 Typ webové úlohy může být buď *aktivován* , nebo *průběžně*:
 
-- Aktivované (výchozí): aktivovaná webová úloha se spustí v závislosti na události vazby, podle [plánu](#scheduling-a-triggered-webjob)nebo na ruční aktivaci (na vyžádání). Spustí se ve všech instancích, na kterých běží webová aplikace, ale můžete volitelně omezit webovou úlohu na jedinou instanci.
+- Aktivované (výchozí): aktivovaná webová úloha se spustí v závislosti na události vazby, podle [plánu](#scheduling-a-triggered-webjob)nebo na ruční aktivaci (na vyžádání). Spouští se na jedné instanci, na které běží webová aplikace.
 
-- Průběžné: [nepřetržitá](#continuous-execution) webová úloha se spustí hned po vytvoření webové úlohy. Tento typ webové úlohy je nejvhodnější pro nevázané nebo dlouhotrvající úlohy. Pokud úloha skončí, můžete ji restartovat.  
+- Průběžné: [nepřetržitá](#continuous-execution) webová úloha se spustí hned po vytvoření webové úlohy. Ve výchozím nastavení běží na všech instancích se škálováním webové aplikace, ale dá se nakonfigurovat tak, aby se spouštěla jako jediná instance prostřednictvím *nastavení. job*.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

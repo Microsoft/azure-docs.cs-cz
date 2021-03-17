@@ -5,12 +5,13 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261126"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648204"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Škálování Service Fabric clusteru prostřednictvím kódu programu 
 
@@ -25,9 +26,9 @@ Jednou z možností, jak napsat službu pro zpracování škálování, je, že 
 Instanční objekt se dá vytvořit pomocí následujících kroků:
 
 1. Přihlaste se k Azure CLI ( `az login` ) jako uživatel s přístupem k sadě škálování virtuálního počítače.
-2. Vytvoření instančního objektu pomocí služby`az ad sp create-for-rbac`
+2. Vytvoření instančního objektu pomocí služby `az ad sp create-for-rbac`
     1. Poznamenejte si appId (označované jako "ID klienta" jinde), jméno, heslo a tenant pro pozdější použití.
-    2. Budete také potřebovat ID vašeho předplatného, které se dá zobrazit s`az account list`
+    2. Budete také potřebovat ID vašeho předplatného, které se dá zobrazit s `az account list`
 
 COMPUTE COMPUTE Library se může přihlásit pomocí těchto přihlašovacích údajů takto (Všimněte si, že základní typy technologie Azure, jako `IAzure` jsou v balíčku [Microsoft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) ):
 
@@ -59,7 +60,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternativně je možné spravovat i velikost sady škálování virtuálních počítačů pomocí rutin PowerShellu. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss)může načíst objekt sady škálování virtuálního počítače. Aktuální kapacita je k dispozici prostřednictvím `.sku.capacity` Vlastnosti. Po změně kapacity na požadovanou hodnotu můžete pomocí příkazu aktualizovat sadu škálování virtuálního počítače v Azure [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) .
+Alternativně je možné spravovat i velikost sady škálování virtuálních počítačů pomocí rutin PowerShellu. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) může načíst objekt sady škálování virtuálního počítače. Aktuální kapacita je k dispozici prostřednictvím `.sku.capacity` Vlastnosti. Po změně kapacity na požadovanou hodnotu můžete pomocí příkazu aktualizovat sadu škálování virtuálního počítače v Azure [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) .
 
 Stejně jako při ručním přidávání uzlu by se měla přidat instance sady škálování, která je potřeba ke spuštění nového uzlu Service Fabric, protože šablona sady škálování obsahuje rozšíření, která automaticky připojovat nové instance do clusteru Service Fabric. 
 
@@ -120,5 +121,5 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 Pokud chcete začít s implementací vlastní logiky automatického škálování, Seznamte se s následujícími koncepty a užitečnými rozhraními API:
 
 - [Ruční škálování nebo pravidla automatického škálování](./service-fabric-cluster-scale-in-out.md)
-- [Fluent knihovny pro správu Azure pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (užitečné pro interakci s podkladovou sadou virtuálních počítačů Service Fabricového clusteru)
+- [Knihovny pro správu Azure pro .NET](https://github.com/Azure/azure-libraries-for-net) (užitečné pro interakci s podkladovou sadou virtuálních počítačů Service Fabricového clusteru)
 - [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient) (užitečné pro interakci s clusterem Service Fabric a jeho uzly)

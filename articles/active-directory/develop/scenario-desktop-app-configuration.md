@@ -1,5 +1,6 @@
 ---
-title: Konfigurace desktopových aplikací, které volají webová rozhraní API – Microsoft Identity Platform | Azure
+title: Konfigurace desktopových aplikací, které volají webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat kód desktopové aplikace, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,27 +12,22 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 372efa217e400ffd4bcecd286f3c3dc7b81f64d6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121098"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007956"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 
 Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód pomocí souřadnic aplikace.
 
-## <a name="microsoft-authentication-libraries"></a>Knihovny Microsoft Authentication Library
+## <a name="microsoft-libraries-supporting-desktop-apps"></a>Knihovny Microsoftu podporující desktopové aplikace
 
-Následující knihovny Microsoft Authentication Library (MSALs) podporují desktopové aplikace.
+Následující knihovny Microsoftu podporují desktopové aplikace:
 
-  Identity a ověřování Microsoftu | Popis
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách, jako jsou Linux, Windows a macOS.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podporuje vytváření desktopových aplikací na různých platformách.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Podporuje aplikace klasické pracovní plochy, které běží pouze na macOS.
+[!INCLUDE [active-directory-develop-libraries-desktop](../../../includes/active-directory-develop-libraries-desktop.md)]
 
 ## <a name="public-client-application"></a>Veřejná klientská aplikace
 
@@ -261,5 +257,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Získání tokenu pro desktopovou aplikaci](scenario-desktop-acquire-token.md)
+Přejděte k dalšímu článku v tomto scénáři a [Získejte token pro desktopovou aplikaci](scenario-desktop-acquire-token.md).

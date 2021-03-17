@@ -1,18 +1,18 @@
 ---
 title: Spravovat repliky čtení-Azure PowerShell-Azure Database for MySQL
 description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Database for MySQL pomocí PowerShellu.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/10/2020
+ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e99d378b49596ac208f7235a4d1d8b2b1c8c5310
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498758"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541925"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MySQL pomocí prostředí PowerShell
 
@@ -38,44 +38,44 @@ Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k ú�
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Funkce replika čtení je k dispozici pouze pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je hlavní server v jedné z těchto cenových úrovní.
+> Funkce replika čtení je k dispozici pouze pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je zdrojový server v jedné z těchto cenových úrovní.
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
 > [!IMPORTANT]
-> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
+> Když vytvoříte repliku pro zdroj, který nemá žádné existující repliky, zdroj se nejdřív restartuje, aby se připravil pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
 
 Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
-  New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
+  New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-`New-AzMySqlServerReplica`Příkaz vyžaduje následující parametry:
+`New-AzMySqlReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
-| Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
+| Název | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 
 Pokud chcete vytvořit repliku čtení ve více oblastech, použijte parametr **Location (umístění** ). V následujícím příkladu se vytvoří replika v oblasti **západní USA** .
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
-  New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
+  New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
 Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md).
 
-Ve výchozím nastavení se repliky čtení vytvoří se stejnou konfigurací serveru jako hlavní server, pokud není zadaný parametr **SKU** .
+Ve výchozím nastavení se repliky čtení vytvoří se stejnou konfigurací serveru jako zdroj, pokud není zadaný parametr **SKU** .
 
 > [!NOTE]
-> Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než hlavní, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
+> Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než zdroj, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
 
-### <a name="list-replicas-for-a-master-server"></a>Vypíše repliky pro hlavní server.
+### <a name="list-replicas-for-a-source-server"></a>Vypíše repliky pro zdrojový server.
 
-Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následující příkaz:
+Chcete-li zobrazit všechny repliky pro daný zdrojový server, spusťte následující příkaz:
 
 ```azurepowershell-interactive
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -83,10 +83,10 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
-| ServerName | mydemoserver | Název nebo ID hlavního serveru. |
+| ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
+| ServerName | mydemoserver | Název nebo ID zdrojového serveru. |
 
 ### <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 
@@ -96,12 +96,12 @@ Odstranění serveru repliky pro čtení se dá provést spuštěním `Remove-Az
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Odstranění hlavního serveru
+### <a name="delete-a-source-server"></a>Odstranění zdrojového serveru
 
 > [!IMPORTANT]
-> Odstraněním hlavního serveru se zastaví replikace na všechny servery replik a odstraní se samotný hlavní server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
+> Odstraněním zdrojového serveru se zastaví replikace na všechny servery replik a odstraní se samotný zdrojový server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
 
-Pokud chcete odstranit hlavní server, můžete spustit `Remove-AzMySqlServer` rutinu.
+Pokud chcete odstranit zdrojový server, můžete spustit `Remove-AzMySqlServer` rutinu.
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

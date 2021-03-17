@@ -6,19 +6,20 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 12f6e0fd34de96677693b7f0d159c7cf9032ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 67ba4f12aec9e987d79109b7197d03301bf40650
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511296"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89004778"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-end-user-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 

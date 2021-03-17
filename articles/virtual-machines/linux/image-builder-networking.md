@@ -6,13 +6,14 @@ ms.author: danis
 ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: cd5027ca6e0ce3dc02da14b7dd6afd6e00e3f92d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068146"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669445"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Možnosti sítě služby Azure image Builder
 
@@ -33,7 +34,7 @@ Další informace najdete v jednom z následujících příkladů:
 
 ### <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure?
 
-Privátní propojení Azure poskytuje privátní připojení z virtuální sítě k platformě Azure jako služby (PaaS), které patří zákazníkům nebo partnerům Microsoftu. Zjednodušuje architekturu sítě a zabezpečuje připojení mezi koncovými body v Azure tím, že eliminuje vystavení dat veřejnému Internetu. Další informace najdete v [dokumentaci k privátním odkazům](https://docs.microsoft.com/azure/private-link).
+Privátní propojení Azure poskytuje privátní připojení z virtuální sítě k platformě Azure jako služby (PaaS), které patří zákazníkům nebo partnerům Microsoftu. Zjednodušuje architekturu sítě a zabezpečuje připojení mezi koncovými body v Azure tím, že eliminuje vystavení dat veřejnému Internetu. Další informace najdete v [dokumentaci k privátním odkazům](../../private-link/index.yml).
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>Požadovaná oprávnění pro existující virtuální síť
 
@@ -68,7 +69,7 @@ Velikost nasazeného virtuálního počítače proxy je standardní A1_v2 navíc
 | subnetName | Název podsítě v zadané virtuální síti. Musí být zadán pouze v případě, že je zadán *název* . |
 | resourceGroupName | Název skupiny prostředků, která obsahuje zadanou virtuální síť. Musí být zadán pouze v případě, že je zadán *název* . |
 
-Služba privátního propojení vyžaduje IP adresu z dané virtuální sítě a podsítě. V současné době Azure pro tyto IP adresy nepodporuje zásady sítě. Proto je třeba v podsíti zakázat zásady sítě. Další informace najdete v [dokumentaci k privátním odkazům](https://docs.microsoft.com/azure/private-link).
+Služba privátního propojení vyžaduje IP adresu z dané virtuální sítě a podsítě. V současné době Azure pro tyto IP adresy nepodporuje zásady sítě. Proto je třeba v podsíti zakázat zásady sítě. Další informace najdete v [dokumentaci k privátním odkazům](../../private-link/index.yml).
 
 ### <a name="checklist-for-using-your-vnet"></a>Kontrolní seznam pro použití vaší virtuální sítě
 
@@ -89,4 +90,4 @@ Služba privátního propojení vyžaduje IP adresu z dané virtuální sítě a
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Přehled nástroje Azure image Builder](image-builder-overview.md).
+Další informace najdete v tématu [Přehled nástroje Azure image Builder](../image-builder-overview.md).

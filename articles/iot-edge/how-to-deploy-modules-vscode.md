@@ -4,19 +4,21 @@ description: Pomocí Visual Studio Code s nástroji Azure IoT nahrajte modul IoT
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/8/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e4ac1a6e56cdbf47fd174d5244fc6ab51c63fb07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4840b36d5dadc14bbd664b844e3bcce6f6fec4d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133886"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201677"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Nasazení Azure IoT Edgech modulů z Visual Studio Code
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Jakmile vytvoříte IoT Edge moduly s obchodní logikou, chcete je nasadit do svých zařízení, aby fungovaly na hraničních zařízeních. Pokud máte více modulů, které spolupracují při shromažďování a zpracování dat, můžete je nasadit najednou a deklarovat pravidla směrování, která je spojují.
 
@@ -25,7 +27,10 @@ Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak ho použít 
 ## <a name="prerequisites"></a>Požadavky
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
-* [IoT Edge zařízení](how-to-register-device.md#register-with-visual-studio-code) s nainstalovaným modulem runtime IoT Edge.
+* Zařízení IoT Edge
+
+  Pokud nemáte nastavené zařízení IoT Edge, můžete ho vytvořit na virtuálním počítači Azure. Použijte postup v jednom z článků rychlý Start k [Vytvoření virtuálního zařízení](quickstart-linux.md) se systémem Linux nebo [Vytvoření virtuálního zařízení s Windows](quickstart.md).
+
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) pro Visual Studio Code.
 
@@ -37,12 +42,15 @@ Chcete-li nasadit moduly pomocí Visual Studio Code, uložte manifest nasazení 
 
 Tady je základní manifest nasazení s jedním modulem jako příklad:
 
+>[!NOTE]
+>Tento ukázkový manifest nasazení používá schéma verze 1,1 pro agenta IoT Edge a centrum. Verze schématu 1,1 byla vydána společně s IoT Edge verze 1.0.10 a umožňuje funkce, jako je pořadí spouštění modulu a stanovení priorit směrování.
+
    ```json
    {
      "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "runtime": {
              "type": "docker",
              "settings": {
@@ -55,7 +63,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
              "edgeAgent": {
                "type": "docker",
                "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                 "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                  "createOptions": "{}"
                }
              },
@@ -64,7 +72,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                 "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                  "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                }
              }
@@ -85,7 +93,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
        },
        "$edgeHub": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "routes": {
                "route": "FROM /messages/* INTO $upstream"
            },

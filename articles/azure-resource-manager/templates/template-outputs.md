@@ -1,35 +1,95 @@
 ---
 title: Výstupy v šablonách
-description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager.
+description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager (šablona ARM) a souboru bicep.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/19/2021
+ms.openlocfilehash: 2b6a6afa127bf43102103baadae576233843f00d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123407"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Výstupy v šabloně Azure Resource Manager
+# <a name="outputs-in-arm-templates"></a>Výstupy v šablonách ARM
 
-Tento článek popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager. Výstupy použijete, když potřebujete vrátit hodnoty z nasazených prostředků.
+Tento článek popisuje, jak v šabloně Azure Resource Manager (šablona ARM) a souboru bicep definovat výstupní hodnoty. Výstupy použijete, když potřebujete vrátit hodnoty z nasazených prostředků.
+
+Formát každé výstupní hodnoty se musí přeložit na jeden z [datových typů](data-types.md).
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="define-output-values"></a>Definovat výstupní hodnoty
 
-Následující příklad ukazuje, jak vrátit ID prostředku pro veřejnou IP adresu:
+Následující příklad ukazuje, jak vrátit vlastnost z nasazeného prostředku.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+Pro JSON přidejte `outputs` oddíl do šablony. Výstupní hodnota získá plně kvalifikovaný název domény pro veřejnou IP adresu.
 
 ```json
 "outputs": {
-  "resourceID": {
-    "type": "string",
-    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-  }
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Pro bicep použijte `output` klíčové slovo.
+
+V následujícím příkladu `publicIP` je identifikátor veřejné IP adresy nasazené v souboru bicep. Výstupní hodnota získá plně kvalifikovaný název domény pro veřejnou IP adresu.
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+---
+
+Pokud potřebujete výstup vlastnosti, která má v názvu pomlčku, místo zápisu tečky použijte hranaté závorky kolem názvu. Použijte například  `['property-name']` místo `.property-name` .
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {
+        "user": {
+            "user-name": "Test Person"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "nameResult": {
+            "type": "string",
+            "value": "[variables('user')['user-name']]"
+        }
+    }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var user = {
+  'user-name': 'Test Person'
+}
+
+output stringOutput string = user['user-name']
+```
+
+---
+
 ## <a name="conditional-output"></a>Podmíněný výstup
 
-V části výstupy můžete podmíněně vracet hodnotu. V případě [podmíněného nasazení](conditional-resource-deployment.md) prostředku se obvykle používá podmínka ve výstupech. Následující příklad ukazuje, jak podmíněně vracet ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová:
+Můžete podmíněně vracet hodnotu. Obvykle používáte podmíněný výstup, když jste [provedli podmíněně nasazení](conditional-resource-deployment.md) prostředku. Následující příklad ukazuje, jak podmíněně vracet ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová:
+
+# <a name="json"></a>[JSON](#tab/json)
+
+Ve formátu JSON přidejte `condition` element pro definování, zda je vrácen výstup.
 
 ```json
 "outputs": {
@@ -41,11 +101,42 @@ V části výstupy můžete podmíněně vracet hodnotu. V případě [podmíně
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+K určení podmíněného výstupu v bicep použijte `?` operátor. Následující příklad buďto vrátí adresu URL koncového bodu nebo prázdný řetězec v závislosti na podmínce.
+
+```bicep
+param deployStorage bool = true
+param storageName string
+param location string = resourceGroup().location
+
+resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (deployStorage) {
+  name: storageName
+  location: location
+  kind: 'StorageV2'
+  sku:{
+    name:'Standard_LRS'
+    tier: 'Standard'
+  }
+  properties: {
+    accessTier: 'Hot'
+  }
+}
+
+output endpoint string = deployStorage ? sa.properties.primaryEndpoints.blob : ''
+```
+
+---
+
 Jednoduchý příklad podmíněného výstupu naleznete v tématu [podmíněná výstupní šablona](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamický počet výstupů
 
-V některých scénářích neznáte počet instancí hodnoty, které potřebujete vrátit při vytváření šablony. Můžete vrátit proměnný počet hodnot pomocí elementu **copy** .
+V některých scénářích neznáte počet instancí hodnoty, které potřebujete vrátit při vytváření šablony. Můžete vrátit proměnný počet hodnot pomocí iterativního výstupu.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+Ve formátu JSON přidejte `copy` element pro iteraci výstupu.
 
 ```json
 "outputs": {
@@ -59,17 +150,21 @@ V některých scénářích neznáte počet instancí hodnoty, které potřebuje
 }
 ```
 
-Další informace najdete v tématu [výstup iterace v šablonách Azure Resource Manager](copy-outputs.md).
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Iterativní výstup není v současné době pro bicep k dispozici.
+
+---
+
+Další informace najdete v tématu [výstupní iterace v šablonách ARM](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Propojené šablony
 
-K načtení výstupní hodnoty z propojené šablony použijte [odkazovou](template-functions-resource.md#reference) funkci v nadřazené šabloně. Syntaxe v nadřazené šabloně je:
+V šablonách JSON můžete související šablony nasadit pomocí [propojených šablon](linked-templates.md). K načtení výstupní hodnoty z propojené šablony použijte [odkazovou](template-functions-resource.md#reference) funkci v nadřazené šabloně. Syntaxe v nadřazené šabloně je:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
-
-Při získávání výstupní vlastnosti z propojené šablony název vlastnosti nemůže obsahovat pomlčku.
 
 Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovnávání zatížení načtením hodnoty z propojené šablony.
 
@@ -79,7 +174,49 @@ Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovn�
 }
 ```
 
+Pokud název vlastnosti obsahuje spojovník, místo notace tečky použijte hranaté závorky kolem názvu.
+
+```json
+"publicIPAddress": {
+  "id": "[reference('linkedTemplate').outputs['resource-ID'].value]"
+}
+```
+
 Funkci nelze použít `reference` v části výstupy [vnořené šablony](linked-templates.md#nested-template). Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, převeďte vnořenou šablonu na propojenou šablonu.
+
+[Šablona veřejné IP adresy](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) vytvoří veřejnou IP adresu a vypíše ID prostředku. [Šablona nástroje pro vyrovnávání zatížení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) odkazuje na předchozí šablonu. Při vytváření nástroje pro vyrovnávání zatížení používá ID prostředku ve výstupu.
+
+## <a name="modules"></a>Moduly
+
+V souborech bicep můžete k nasazení souvisejících šablon použít moduly. K načtení výstupní hodnoty z modulu použijte následující syntaxi:
+
+```bicep
+<module-name>.outputs.<property-name>
+```
+
+Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovnávání zatížení načtením hodnoty z modulu. Název modulu je `publicIP` .
+
+```bicep
+publicIPAddress: {
+  id: publicIP.outputs.resourceID
+}
+```
+
+## <a name="example-template"></a>Příklad šablony
+
+Následující šablona neimplementuje žádné prostředky. Ukazuje několik způsobů vrácení výstupů různých typů.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/outputs.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep v současné době nepodporuje smyčky.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/outputs.bicep":::
+
+---
 
 ## <a name="get-output-values"></a>Získat výstupní hodnoty
 
@@ -106,16 +243,6 @@ az deployment group show \
 
 ---
 
-## <a name="example-templates"></a>Příklady šablon
-
-Následující příklady ukazují scénáře použití výstupů.
-
-|Šablona  |Description  |
-|---------|---------|
-|[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří komplexní proměnné a vypíše tyto hodnoty. Neimplementuje žádné prostředky. |
-|[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |
-|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Odkazuje na předchozí šablonu. Při vytváření nástroje pro vyrovnávání zatížení používá ID prostředku ve výstupu. |
-
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dostupných vlastnostech výstupů naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+* Další informace o dostupných vlastnostech výstupů najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

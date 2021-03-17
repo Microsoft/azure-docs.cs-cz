@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381157"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89278390"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Určení požadavků na synchronizaci adresářů
 Synchronizace je všechno, co poskytuje uživatelům identitu v cloudu na základě jejich místní identity. Bez ohledu na to, jestli budou používat synchronizovaný účet pro ověřování nebo federované ověřování, budou muset uživatelé i nadále mít v cloudu identitu.  Tuto identitu bude nutné pravidelně udržovat a aktualizovat.  Aktualizace mohou trvat mnoho forem, od změny názvu do změny hesla.  
@@ -64,7 +64,7 @@ Také je potřeba určit požadavky na zabezpečení a synchronizaci adresářů
   * Budete moci otevřít požadované porty brány firewall pro podporu synchronizace?
 * Máte plán zotavení po havárii pro synchronizační Server?
 * Máte účet se správnými oprávněními pro všechny doménové struktury, se kterými chcete provádět synchronizaci?
-  * Pokud vaše společnost neznala odpověď pro tuto otázku, přečtěte si část "oprávnění k synchronizaci hesel" v článku [instalace služby Azure Active Directory Sync](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) a zjistěte, jestli už máte účet s těmito oprávněními, nebo pokud ho potřebujete vytvořit.
+  * Pokud vaše společnost neznala odpověď pro tuto otázku, přečtěte si část "oprávnění k synchronizaci hesel" v článku [instalace služby Azure Active Directory Sync](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) a zjistěte, jestli už máte účet s těmito oprávněními, nebo pokud ho potřebujete vytvořit.
 * Pokud máte multi synchronizaci doménové struktury, synchronizační Server se může dostat do každé doménové struktury?
 
 > [!NOTE]
@@ -75,6 +75,5 @@ Také je potřeba určit požadavky na zabezpečení a synchronizaci adresářů
 ## <a name="next-steps"></a>Další kroky
 [Určení požadavků na službu Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
-

@@ -1,31 +1,27 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 07/31/2020
-ms.author: rgarcia
-ms.openlocfilehash: 310c0f547ee11a3243589c364755a30a84be1a25
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 98ff5f09b4c972b8a5e23112aa955bdfee887cfd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810160"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185291"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
+Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
 * Přečtěte si [Přehled prostorových kotev Azure](../articles/spatial-anchors/overview.md).
-* Bylo dokončeno jedno z [5 minut rychlých startů](../articles/spatial-anchors/index.yml).
-* Základní znalosti o jazycích C# a Unity.
-* Základní znalosti o <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> , pokud chcete použít Android nebo <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> , pokud chcete použít iOS.
-* Počítač se systémem Windows, ve kterém je nainstalována <a href="https://www.visualstudio.com/downloads/" target="_blank">aplikace Visual Studio 2017</a> nebo novější s úlohou **vývoje ASP.NET a webu** .
+* Proveďte jedno z [5 minut rychlých startů](../articles/spatial-anchors/index.yml). 
+  > [!NOTE]
+  > Android/NDK a rychlé starty pro iOS/SWIFT momentálně neprezentují funkce vysvětlené v tomto kurzu.
+* Základní znalost z těchto součástí:
+  *  <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> , pokud používáte Android.
+  *  <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> , pokud používáte iOS.
+* Počítač se systémem Windows se sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novějším a úlohou **vývoje ASP.NET a webu** .
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download).
-* Jedno nebo více zařízení (iOS nebo Android), na které se má aplikace nasadit a spustit
-  * Pokud používáte Android, budete potřebovat:
-    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3,3</a> nebo novější, <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> nainstalované na počítači s Windows.
-    * Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
-  * Pokud používáte iOS, musíte mít:
-    * Počítač s macOS, na kterém jsou nainstalované <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> nebo novější, <a href="https://cocoapods.org" target="_blank">CocoaPods</a>a <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> .
-    * Zařízení iOS s podporou vývojářů, které je <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
-    * Git se nainstaloval přes homebrew. Do jednoho řádku v terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` pak spusťte `brew install git` .
+* Jedno nebo několik z následujících zařízení, na kterých se má nasadit a spustit aplikace: HoloLens, HoloLens 2, iOS nebo Android.

@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855678"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700835"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Použijte službu import/export Azure pro offline kopírování dat a Data Lake Storage Gen1
 
-V tomto článku se dozvíte, jak kopírovat obrovských datových sad (>200 GB) do Data Lake Storage Gen1 pomocí offline metod kopírování, jako je třeba [Služba import/export Azure](../storage/common/storage-import-export-service.md). Konkrétně soubor, který se používá jako příklad v tomto článku, je 339 420 860 416 bajtů nebo přibližně 319 GB na disku. Pojďme volat tento soubor 319GB. TSV.
+V tomto článku se dozvíte, jak kopírovat obrovských datových sad (>200 GB) do Data Lake Storage Gen1 pomocí offline metod kopírování, jako je třeba [Služba import/export Azure](../import-export/storage-import-export-service.md). Konkrétně soubor, který se používá jako příklad v tomto článku, je 339 420 860 416 bajtů nebo přibližně 319 GB na disku. Pojďme volat tento soubor 319GB. TSV.
 
 Služba import/export Azure vám pomůže bezpečněji přenášet velké objemy dat do úložiště objektů BLOB v Azure prostřednictvím přenosu pevných disků do datacentra Azure.
 
@@ -44,7 +44,7 @@ Operace rozdělení vytvoří soubory s následujícími názvy.
 
 ## <a name="get-disks-ready-with-data"></a>Příprava disků na data
 
-Podle pokynů v tématu věnovaném [použití služby Azure import/export](../storage/common/storage-import-export-service.md) (v části **Příprava jednotek** ) Připravte pevné disky. Zde je celková sekvence:
+Podle pokynů v tématu věnovaném [použití služby Azure import/export](../import-export/storage-import-export-service.md) (v části **Příprava jednotek** ) Připravte pevné disky. Zde je celková sekvence:
 
 1. Pořízení pevného disku, který splňuje požadavky, které se mají použít pro službu Azure import/export.
 2. Identifikujte účet služby Azure Storage, do kterého se budou data po odeslání do datacentra Azure kopírovat.
@@ -53,12 +53,12 @@ Podle pokynů v tématu věnovaném [použití služby Azure import/export](../s
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    Další ukázkové fragmenty najdete v tématu [použití služby Azure import/export](../storage/common/storage-import-export-service.md) .
+    Další ukázkové fragmenty najdete v tématu [použití služby Azure import/export](../import-export/storage-import-export-service.md) .
 4. Předchozí příkaz vytvoří soubor deníku v zadaném umístění. Pomocí tohoto souboru deníku můžete vytvořit úlohu importu z [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-import-job"></a>Vytvoření úlohy importu
 
-Nyní můžete vytvořit úlohu importu pomocí pokynů v tématu [použití služby Azure import/export](../storage/common/storage-import-export-service.md) (v části **Vytvoření úlohy importu** ). Pro tuto úlohu importu taky uveďte soubor deníku vytvořený při přípravě diskových jednotek.
+Nyní můžete vytvořit úlohu importu pomocí pokynů v tématu [použití služby Azure import/export](../import-export/storage-import-export-service.md) (v části **Vytvoření úlohy importu** ). Pro tuto úlohu importu taky uveďte soubor deníku vytvořený při přípravě diskových jednotek.
 
 ## <a name="physically-ship-the-disks"></a>Fyzické dodávání disků
 

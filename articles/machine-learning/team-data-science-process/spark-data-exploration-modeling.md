@@ -10,19 +10,19 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027507"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028083"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Spark
 
 Naučte se používat HDInsight Spark k výuce modelů strojového učení pro předpověď taxislužby tarifů pomocí Spark MLlib.
 
-Tato ukázka předvádí různé kroky v rámci [vědeckého zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). K načtení, prozkoumávání a přípravě dat se používá podmnožina datové sady NYC taxislužby Trip a tarif 2013. Pak se pomocí Sparku MLlib zaměří binární klasifikace a regresní modely, aby se předpovídá, jestli se pro danou cestu má vyplatit tip, a odhadněte částku tipu.
+Tato ukázka předvádí různé kroky v rámci [vědeckého zpracování týmových dat](./index.yml). K načtení, prozkoumávání a přípravě dat se používá podmnožina datové sady NYC taxislužby Trip a tarif 2013. Pak se pomocí Sparku MLlib zaměří binární klasifikace a regresní modely, aby se předpovídá, jestli se pro danou cestu má vyplatit tip, a odhadněte částku tipu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ taxi_train_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windo
 modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 ```
 
-### <a name="import-libraries"></a>Importovat knihovny
+### <a name="import-libraries"></a>Import knihoven
 
 Nastavení také vyžaduje import nezbytných knihoven. Nastavte kontext Spark a importujte potřebné knihovny s následujícím kódem:
 
@@ -92,7 +92,7 @@ Jádra PySpark, která jsou poskytována pomocí poznámkových bloků Jupyter, 
 Jádro PySpark poskytuje některé předdefinované "MAGICS", což jsou speciální příkazy, které můžete volat pomocí%%. Existují dva takové příkazy, které jsou použity v těchto ukázkách kódu.
 
 * **%% místní** Určuje, že kód v následných řádcích má být proveden místně. Kód musí být platný kód Pythonu.
-* **%% SQL-o \<variable name> ** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
+* **%% SQL-o \<variable name>** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
 
 Další informace o jádrech poznámkových bloků Jupyter a předdefinovaných "MAGICS" najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -172,7 +172,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 Doba potřebná k provedení výše v buňce: 51,72 sekund
 
-## <a name="explore-the-data"></a>Zkoumání dat
+## <a name="explore-the-data"></a>Prozkoumání dat
 
 Až se data přenesou do Sparku, další krok v rámci vědeckého zpracování dat je získat hlubší porozumění datům prostřednictvím průzkumu a vizualizace. V této části prověříme taxislužby data pomocí dotazů SQL a vykreslíte cílové proměnné a funkce pro vizuální kontrolu. Konkrétně vykreslíme frekvenci počtu cestujících v taxislužby TRIPS, četnost částek v tipech a způsob, jakým se budou zobrazovat tipy podle množství a typu platby.
 
@@ -181,7 +181,7 @@ Až se data přenesou do Sparku, další krok v rámci vědeckého zpracování 
 Tento kód a následné fragmenty kódu používají SQL Magic k dotazování na ukázku a místní Magic k vykreslení dat.
 
 * **SQL Magic ( `%%sql` )** jádro HDInsight PySpark podporuje jednoduché vložené dotazy HiveQL proti kontext SqlContext. Argument (-o VARIABLE_NAME) uchovává výstup dotazu SQL jako PANDAS dataframe na serveru Jupyter. Toto nastavení zpřístupní výstup v místním režimu.
-* ** `%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. Obvykle použijete `%%local` Magic ve spojení s `%%sql` parametrem Magic s parametrem-o. Parametr-o by zachoval výstup dotazu SQL místně a potom%% Local Magic bude aktivovat další sadu fragmentů kódu pro místní spuštění s výstupem dotazů SQL, které jsou místně uložené.
+* **`%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. Obvykle použijete `%%local` Magic ve spojení s `%%sql` parametrem Magic s parametrem-o. Parametr-o by zachoval výstup dotazu SQL místně a potom%% Local Magic bude aktivovat další sadu fragmentů kódu pro místní spuštění s výstupem dotazů SQL, které jsou místně uložené.
 
 Výstup je automaticky vizuálů po spuštění kódu.
 
@@ -697,7 +697,7 @@ Doba potřebná k provedení výše v buňce: 57,61 sekund
 
 **Znázorněte křivku ROC.**
 
-*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results*v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
+*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results* v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
 
 ```python
 # QUERY RESULTS                              

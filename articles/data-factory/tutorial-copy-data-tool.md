@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat z úložiště objektů BLOB v Azure do SQL pomocí nástroje pro Kopírování dat
-description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat zkopírujte data ze služby Azure Blob Storage do SQL Database.
-services: data-factory
-documentationcenter: ''
+description: Vytvořte Azure Data Factory a pak pomocí nástroje Kopírování dat zkopírujte data z úložiště objektů BLOB v Azure do SQL Database.
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 02/18/2021
+ms.openlocfilehash: 13aa907a8c5b394fbda8d8998928016c09b5524f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660957"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739997"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů BLOB v Azure do SQL Database pomocí nástroje Kopírování dat
 
@@ -25,7 +20,7 @@ ms.locfileid: "84660957"
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](tutorial-copy-data-tool.md)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který kopíruje data ze služby Azure Blob Storage do SQL Database.
 
@@ -80,7 +75,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků:
+1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
@@ -95,12 +90,12 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
 
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
-    b. Vyberte **vytvořit novou**a zadejte název skupiny prostředků.
+    b. Vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).
 
 1. V části **Verze** vyberte **V2**.
-1. V části **umístění**vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
+1. V části **umístění** vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
 1. Vyberte **Vytvořit**.
 
 1. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
@@ -177,7 +172,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
     ![Vybrat kartu autor](./media/tutorial-copy-data-tool/author-tab.png)
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z úložiště objektů blob do SQL Database. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z úložiště objektů blob do SQL Database. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

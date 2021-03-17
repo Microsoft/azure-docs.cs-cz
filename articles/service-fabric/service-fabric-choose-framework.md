@@ -1,16 +1,15 @@
 ---
 title: Přehled programovacího modelu služby Service Fabric
 description: 'Service Fabric nabízí dvě architektury pro vytváření služeb: rozhraní actor Framework a rozhraní služeb. Nabízejí v jednoduchosti a řízení různé kompromisy.'
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260519"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575716"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu služby Service Fabric
 
@@ -22,7 +21,7 @@ Service Fabric nabízí několik způsobů, jak psát a spravovat vaše služby.
 
 Začněte se spustitelnými soubory hosta nasazením první [spustitelné aplikace hosta](service-fabric-deploy-existing-app.md).
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric mohou také nasazovat služby v [kontejnerech](service-fabric-containers-overview.md). Service Fabric podporuje nasazení kontejnerů Linux a kontejnerů Windows ve Windows serveru 2016 a novějších verzích. Image kontejnerů se dají z libovolného úložiště kontejnerů načíst a nasadit do počítače. Stávající aplikace můžete nasadit jako spustitelné soubory typu Host, Service Fabric spolehlivé nebo stavové služby nebo Reliable Actors v kontejnerech a můžete kombinovat služby v procesech a službách v kontejnerech ve stejné aplikaci.
 

@@ -1,14 +1,16 @@
 ---
 title: Upgrade složené entity – LUIS
 description: Upgradujte složenou entitu na entitu strojového učení s procesem upgradu na portálu LUIS.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 58b546a27c1ff1e90e1b70026f430063a47a09e8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 46e9ece70d9f980065c719ee1205eb46591b45c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684082"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025238"
 ---
 # <a name="upgrade-composite-entity-to-machine-learning-entity"></a>Upgrade složené entity na entitu strojového učení
 
@@ -27,7 +29,7 @@ Proces upgradu:
     * Pokud se podřízená entita používá ve složených _a_ jako samostatná entita (označená například jako projevy), přidá se do verze jako entita a jako podentita do nové entity Machine-Learning.
     * Pokud podřízená entita používá roli, převede se každá role na subentitu se stejným názvem.
     * Pokud je podřízená entita entitou bez strojového učení (regulární výraz, seznam entit nebo předem sestavená entita), vytvoří se nová podentita se stejným názvem a nová podentita obsahuje funkci s použitím entity bez strojového učení s přidanou funkcí.
-* Názvy jsou zachovány, ale musí být jedinečné na úrovni stejné subentity nebo na stejné úrovni. Přečtěte si [jedinečné omezení pro pojmenování](luis-boundaries.md#name-uniqueness).
+* Názvy jsou zachovány, ale musí být jedinečné na úrovni stejné subentity nebo na stejné úrovni. Přečtěte si [jedinečné omezení pro pojmenování](./luis-limits.md#name-uniqueness).
 * Popisky v příkladu projevy jsou přepnuty na novou entitu strojového učení s podentitami.
 
 Pro pochopení, jak se model mění, použijte následující graf:

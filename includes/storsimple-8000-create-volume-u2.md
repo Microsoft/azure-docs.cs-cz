@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 400c5f0b2281679c3ec913e94643ffec6082d9e6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175060"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551869"
 ---
 #### <a name="to-create-a-volume"></a>Vytvoření svazku
-1. V tabulkovém výpisu zařízení v okně **Zařízení** vyberte vaše zařízení. Klikněte na **+ Přidat svazek**.
+1. V tabulkovém výpisu zařízení v okně **Zařízení** vyberte vaše zařízení. Klikněte na **+ Přidat svazek**.<!--Note to reviewer. No screen updates. Had to rename screens to be able to correct a formatting error.-->
 
-    ![Přidání nového svazku](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
+    ![Přidání nového svazku](./media/storsimple-8000-create-volume-u2/create-volume-01.png)
 
 2. V okně **Přidat svazek**:
    
@@ -35,10 +35,10 @@ ms.locfileid: "67175060"
        Zařízení 8100 umožňuje zřizovat místně vázané svazky o velikosti až 8.5 TB a vrstvené svazky o velikosti až 200 TB. Větší zařízení 8600 umožňuje zřizovat místně vázané svazky o velikosti až 22.5 TB a vrstvené svazky o velikosti až 500 TB. Protože k hostování fungující sady vrstvených svazků je vyžadováno volné místo v zařízení, vytváření místně vázaných svazků ovlivňuje volné místo dostupné ke zřizování vrstvených svazků. Proto pokud vytvoříte místně připojený svazek, zmenší se dostupné volné místo pro vytváření vrstvených svazků. Podobně pokud vytvoříte vrstvený svazek, zmenší se dostupné volné místo potřebné k vytváření místně vázaných svazků.
       
        Pokud v zařízení 8100 zřídíte místně vázaný svazek o velikosti 8.5 TB (maximální možná velikost), vyčerpáte tím veškeré volné místo dostupné v zařízení. Od této chvíle už nebudete moct vytvořit žádné vrstvené svazky, protože v zařízení už nebude žádné volné místo k hostování pracovní sady vrstveného svazku. Objem dostupného volného místa ovlivňují také vrstvené svazky. Pokud například používáte zařízení 8100, ve kterém jsou už zřízeny vrstvené svazky o velikosti zhruba 106 TB, k vytváření místně vázaných svazků zbude už jenom 4 TB dostupného volného místa.
-
+ 
       1. V poli **Připojení hostitelé** klikněte na šipku. 
 
-         ![Připojení hostitelé](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![Připojení hostitelé](./media/storsimple-8000-create-volume-u2/create-volume-02.png)
 
       1. V okně **Připojení hostitelé** zvolte existující záznam ACR nebo pomocí následujícího postupu přidejte nový záznam ACR:
 
@@ -47,7 +47,7 @@ ms.locfileid: "67175060"
 
       1. Klikněte na **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
 
-         ![Kliknutí na Vytvořit](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Kliknutí na Vytvořit](./media/storsimple-8000-create-volume-u2/create-volume-03.png)
 
          > [!NOTE]
          > Mějte na paměti, že svazek, který jste tu vytvořili, není chráněný. Budete muset vytvořit a přidružit k tomuto svazku zásady zálohování, které zajistí zálohování podle plánu. 

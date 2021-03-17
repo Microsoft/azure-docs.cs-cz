@@ -2,25 +2,23 @@
 title: 'VPN Gateway: tenant Azure AD pro různé skupiny uživatelů: ověřování Azure AD'
 description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: alzam
-ms.openlocfilehash: 57650b32d9155277d8ecc25d1b2147ebc87e7ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 1305ca603aef63dafcc7b055d55e3f0fe281f4fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91819684"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta služby Active Directory (AD) pro připojení protokolu P2S OpenVPN
 
 Při připojování k virtuální síti můžete použít ověřování založené na certifikátech nebo ověřování pomocí protokolu RADIUS. Když ale použijete otevřený protokol sítě VPN, můžete použít i Azure Active Directory ověřování. Pokud chcete, aby se různé skupiny uživatelů připojovaly k různým branám VPN, můžete v AD zaregistrovat několik aplikací a propojit je s různými bránami VPN. Tento článek vám pomůže nastavit tenanta Azure AD pro ověřování P2S OpenVPN a vytvořit a zaregistrovat víc aplikací ve službě Azure AD, aby se povolil jiný přístup pro různé uživatele a skupiny.
 
-> [!NOTE]
-> Ověřování Azure AD se podporuje jenom pro připojení OpenVPN® protokolu.
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
 
@@ -30,7 +28,7 @@ V tomto kroku povolíte ověřování Azure AD v bráně VPN.
 
 1. Povolte ověřování Azure AD v bráně VPN tak, že přejdete na **položku konfigurace Point-to-site** a jako **Typ tunelu zadáte** **OpenVPN (výběr protokolu SSL)** . Jako **typ ověřování** vyberte **Azure Active Directory** a potom zadejte informace v části **Azure Active Directory** .
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-ad-auth-portal.png)
+    ![Zobrazení Azure Portal](./media/openvpn-azure-ad-tenant-multi-app/azure-ad-auth-portal.png)
 
     > [!NOTE]
     > Nepoužívejte ID aplikace klienta Azure VPN: udělí všem uživatelům přístup k bráně VPN. Použijte ID registrovaných aplikací.

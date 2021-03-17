@@ -1,5 +1,5 @@
 ---
-title: Vytváření maloobchodních řešení s využitím Azure IoT Central | Microsoft Docs
+title: Co jsou maloobchodní řešení Azure IoT Central | Microsoft Docs
 description: Přečtěte si o používání šablon aplikací pro Azure IoT Central k vytvoření připojené logistiky, digitálního distribučního centra, analýz v obchodě, monitorování podmínek, rezervací, správy inteligentních inventářů a maloobchodních řešení.
 author: avneet723
 ms.author: avneets
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032281"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832279"
 ---
-# <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
+# <a name="what-are-the-iot-central-retail-solutions"></a>Co jsou maloobchodní řešení IoT Central?
 
 Azure IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady spojené s vývojem, správou a údržbou řešení IoT na podnikové úrovni. Když zvolíte sestavení pomocí Azure IoT Central, získáte možnost zaměřit se na vaše podnikání, peníze a energii při transformaci vaší firmy na data IoT, a ne jenom zachovat a aktualizovat složitou a nepřetržitou vývojovou infrastrukturu IoT.
 
@@ -33,17 +33,17 @@ Pomocí senzorů IoT můžete shromažďovat a monitorovat okolní podmínky, ja
 
 Mezi výhody připojeného logistického řešení patří:
 
-* Monitorování dodávek pomocí sledování a sledování v reálném čase. 
-* Integrita dodávek s monitorováním okolních podmínek v reálném čase.
-* Zabezpečení proti krádeži, ztrátě nebo poškození dodávek.
-* Monitorování geografických zón, optimalizace tras, řízení loďstva a analýzy vozidel.
-* Prognózování pro předvídatelné odchod a dodání dodávek.
+* Monitorování dodávek se sledováním v reálném čase 
+* Zajištění neporušenosti dodávek díky monitorování okolních podmínek v reálném čase
+* Zabezpečení proti krádeži, ztrátě nebo poškození dodávek
+* Monitorování geografických zón, optimalizace tras, správa flotily a analytické informace o vozidlech
+* Prognózování s cílem předvídat odbavení a doručení dodávek
 
 Následující snímky obrazovky zobrazují předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Řídicí panel připojené logistiky":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Snímek obrazovky, který zobrazuje horní polovinu řídicího panelu připojené logistické operace.":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Řídicí panel připojené logistiky":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Snímek obrazovky zobrazující spodní polovinu řídicího panelu připojené logistické operace.":::
 
 Další informace najdete v kurzu [nasazení a Projděte si článek s připojenou logistickou aplikací](./tutorial-iot-central-connected-logistics.md) .
 
@@ -152,7 +152,7 @@ Následující snímek obrazovky ukazuje předem připravený řídicí panel v 
 
 Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace centra vyplňování](./tutorial-micro-fulfillment-center.md) .
 
-## <a name="video-analytics---object-and-motion-detection"></a>Video Analytics – detekce objektů a pohybů
+## <a name="video-analytics---object-and-motion-detection"></a>Analýza videa – detekce objektů a pohybu
 
 Šablona aplikace *IoT Central video Analytics – objekt a detekce pohybu* vám umožní rychle se naučit, jak nasadit, spravovat a monitorovat řešení, které využívá inteligentní hraniční fotoaparáty ke zjišťování objektů a pohybu.
 
@@ -160,28 +160,25 @@ Aplikace video Analytics používá modul [lva (Live video Analytics)](#live-vid
 
 Šablona aplikace zahrnuje čtyři řídicí panely aplikace:
 
-* **Instalační program** poskytuje informace o návrhu aplikace a umožňuje přidat a odstranit kamery.
-* **Správa** vám umožní spravovat kamery. Můžete například nakonfigurovat kamery, zobrazit informace o stavu a spustit kamery spuštěné.
-* **Reálné kamery** vám umožní zobrazovat informace ze skutečných fotoaparátů, jako jsou počty detekce a události kamery.
-* **Monitor** vám umožní zobrazit podrobné informace ze všech vašich kamer.
+* **Začínáme** poskytuje odkazy na prostředky, které vám pomohou začít používat šablonu aplikace.
+* **Ukázka řídicího panelu** poskytuje ilustraci typů informací, které můžete zobrazit z připojených fotoaparátů.
+* **(Ukázka) Správa reálné kamery** používá simulované kamery k zobrazení, jak můžete spravovat kamery z aplikace.
+* **(Ukázka) monitor reálné kamery** používá simulované kamery k zobrazení, jak můžete monitorovat kamery z aplikace.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Video Analytics – detekce objektů a pohybů":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Analýza videa – detekce objektů a pohybu":::
 
 Další informace o architektuře řešení najdete v tématu [Architektura aplikace pro video Analytics](architecture-video-analytics.md).
 
-Informace o tom, jak nasadit řešení, najdete v kurzu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-create-app.md) .
+Informace o tom, jak nasadit řešení, najdete v kurzu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-deploy.md) .
 
 ### <a name="live-video-analytics"></a>Analýza živých videí
 
-Live video Analytics nabízí platformu pro vytváření inteligentních aplikací pro video, které přesahují hranice a Cloud. Platforma nabízí možnost zachytit, nahrávat, analyzovat živé video a publikovat výsledky, což může být video nebo video Analytics, ke službám Azure. Služby Azure by mohly běžet v cloudu nebo na hraničních zařízeních. Platformu můžete použít ke zlepšení řešení IoT pomocí analýzy videí.
+[Live video Analytics](https://github.com/Azure/live-video-analytics) nabízí platformu pro vytváření inteligentních aplikací pro video, které přesahují hranice a Cloud. Platforma nabízí možnost zachytit, nahrávat, analyzovat živé video a publikovat výsledky, což může být video nebo video Analytics, ke službám Azure. Služby Azure by mohly běžet v cloudu nebo na hraničních zařízeních. Platformu můžete použít ke zlepšení řešení IoT pomocí analýzy videí.
 
 ## <a name="next-steps"></a>Další kroky
 
 Začněte vytvářet maloobchodní řešení:
 
 * Začněte s [vytvořením analytické aplikace v Azure IoT Central](./tutorial-in-store-analytics-create-app.md) kurzu, která vás provede postupem sestavení řešení pomocí jedné z šablon aplikací pro analýzu v rámci služby Store.
+* [Nasaďte a Projděte si šablonu aplikace video Analytics](./tutorial-video-analytics-deploy.md).
 * [Nasaďte a Projděte si připojenou šablonu logistické aplikace](./tutorial-iot-central-connected-logistics.md).
-* [Nasaďte a Projděte si šablonu aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center.md).
-* [Nasazení a procházení šablonou aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management.md).
-* [Nasaďte a Projděte si šablonu aplikace centra pro mikroplnění](./tutorial-micro-fulfillment-center.md).
-* Další informace o IoT Central najdete v [přehledu IoT Central](../preview/overview-iot-central.md).

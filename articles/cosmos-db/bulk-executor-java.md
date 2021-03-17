@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d0ccaf15df62b566b5a52ee7a4031ba7e270a4ae
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309150"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218090"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Bulk Executor Java k provádění hromadných operací s daty služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento kurz poskytuje pokyny k importu a aktualizaci dokumentů Azure Cosmos DB pomocí hromadného prováděcího modulu jazyka Java v Azure Cosmos DB. Další informace o hromadné prováděcí knihovně a o tom, jak vám pomůže využít obrovské propustnost a úložiště, najdete v článku [Přehled knihovny hromadného prováděcího modulu](bulk-executor-overview.md) . V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a hromadně importuje do kontejneru Azure Cosmos. Po importu budete hromadně aktualizovat některé vlastnosti dokumentu. 
 
@@ -27,9 +28,9 @@ V současné době je knihovna hromadných prováděcích modulů podporovaná j
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
 
-* Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
+* Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](./local-emulator.md) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticate-requests).  
 
-* [Java Development Kit (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable)  
+* [Java Development Kit (JDK) 1.7 +](/java/azure/jdk/)  
   - Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.  
 
   - Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
@@ -94,7 +95,7 @@ Klonovaný úložiště obsahuje dvě ukázky "bulkimport" a "bulkupdate" relati
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
    ```
-   Rozhraní API pro hromadné importy přijímá kolekci dokumentů serializovaných ve formátu JSON a má následující syntaxi. Další informace najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Rozhraní API pro hromadné importy přijímá kolekci dokumentů serializovaných ve formátu JSON a má následující syntaxi. Další informace najdete v [dokumentaci k rozhraní API](/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkImportResponse importAll(
@@ -131,16 +132,16 @@ Klonovaný úložiště obsahuje dvě ukázky "bulkimport" a "bulkupdate" relati
 6. Po vygenerování cílů závislosti můžete vyvolat aplikaci hromadný import pomocí následujícího příkazu:  
 
    ```bash
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's primary key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    Hromadný import vytvoří novou databázi a kolekci s názvem databáze, názvem kolekce a hodnotami propustnosti zadanými v souboru App.config. 
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Hromadná aktualizace dat v Azure Cosmos DB
 
-Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync API. V tomto příkladu nastavíte pole název na novou hodnotu a odeberete pole Popis z existujících dokumentů. Úplnou sadu podporovaných operací aktualizace polí najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
+Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync API. V tomto příkladu nastavíte pole název na novou hodnotu a odeberete pole Popis z existujících dokumentů. Úplnou sadu podporovaných operací aktualizace polí najdete v [dokumentaci k rozhraní API](/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
 
-1. Definuje položky aktualizace spolu s odpovídajícími operacemi aktualizace polí. V tomto příkladu použijete SetUpdateOperation k aktualizaci pole název a UnsetUpdateOperation k odebrání pole Description ze všech dokumentů. Můžete také provádět jiné operace, jako je například zvýšení pole dokumentu konkrétní hodnotou, zadání specifických hodnot do pole pole nebo odebrání konkrétní hodnoty z pole Array. Další informace o různých metodách, které poskytuje rozhraní API pro hromadnou aktualizaci, najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
+1. Definuje položky aktualizace spolu s odpovídajícími operacemi aktualizace polí. V tomto příkladu použijete SetUpdateOperation k aktualizaci pole název a UnsetUpdateOperation k odebrání pole Description ze všech dokumentů. Můžete také provádět jiné operace, jako je například zvýšení pole dokumentu konkrétní hodnotou, zadání specifických hodnot do pole pole nebo odebrání konkrétní hodnoty z pole Array. Další informace o různých metodách, které poskytuje rozhraní API pro hromadnou aktualizaci, najdete v [dokumentaci k rozhraní API](/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -162,7 +163,7 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   Rozhraní API pro hromadnou aktualizaci přijímá kolekci položek, které se mají aktualizovat. Každá položka aktualizace určuje seznam operací aktualizace pole, které mají být provedeny u dokumentu identifikovaného ID a hodnotou klíče oddílu. Další podrobnosti najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+   Rozhraní API pro hromadnou aktualizaci přijímá kolekci položek, které se mají aktualizovat. Každá položka aktualizace určuje seznam operací aktualizace pole, které mají být provedeny u dokumentu identifikovaného ID a hodnotou klíče oddílu. Další podrobnosti najdete v [dokumentaci k rozhraní API](/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java
    public BulkUpdateResponse updateAll(
@@ -183,7 +184,8 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
    |int getNumberOfDocumentsUpdated ()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány z dokumentů dodaných do volání hromadné aktualizace rozhraní API.      |
    |Dvojitá getTotalRequestUnitsConsumed () |  Celkový počet jednotek žádosti (RU) spotřebovaných voláním rozhraní API hromadné aktualizace.       |
    |Doba trvání getTotalTimeTaken ()  |   Celková doba, kterou zabere volání rozhraní API hromadné aktualizace k dokončení provádění.      |
-   |Výpis \<Exception> GetErrors ()   |       Načte seznam chyb, pokud se nezdařila vložení některých dokumentů z dávky dodané do volání rozhraní API hromadné aktualizace.      |
+   |Výpis \<Exception> GetErrors ()   |       Načte seznam provozních nebo síťových problémů souvisejících s operací aktualizace.      |
+   |Seznam \<BulkUpdateFailure> getFailedUpdates ()   |       Získá seznam aktualizací, které nemohly být dokončeny spolu s konkrétními výjimkami vedoucími k selhání.|
 
 3. Po dokončení aplikace hromadné aktualizace Sestavte nástroj příkazového řádku ze zdroje pomocí příkazu ' MVN Cleanup Package '. Tento příkaz vygeneruje soubor JAR v cílové složce:  
 
@@ -194,7 +196,7 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
 4. Po vygenerování cílových závislostí můžete vyvolat aplikaci hromadné aktualizace pomocí následujícího příkazu:
 
    ```bash
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's primary key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>Tipy pro zvýšení výkonu 
@@ -214,5 +216,3 @@ Při použití knihovny hromadných prováděcích knihoven Vezměte v úvahu n�
     
 ## <a name="next-steps"></a>Další kroky
 * Další informace o podrobnostech balíčku Maven a poznámkách k verzi hromadného vykonavatele Java Library naleznete v tématu[hromadné prováděcí informace sady SDK](sql-api-sdk-bulk-executor-java.md).
-
-

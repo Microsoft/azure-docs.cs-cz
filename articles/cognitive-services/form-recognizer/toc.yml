@@ -7,47 +7,46 @@
       href: overview.md
     - name: Co je nového
       href: whats-new.md
-- name: Rychlé starty
-  expaned: true
+- name: Začínáme s Rozpoznáváním formulářů
+  expanded: true
   items:
-    - name: Použití klientské knihovny
+    - name: S využitím klientské knihovny nebo REST API
       href: quickstarts/client-library.md
     - name: Použití ukázkového nástroje pro popisování
-      items:
-        - name: Trénování vlastního modelu s popisky
-          href: quickstarts/label-tool.md
-    - name: S využitím REST API
-      items:
-        - name: Trénování a využití vlastního modelu bez popisků
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: Trénování a využití vlastního modelu s popisky
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: Použití předem připraveného modelu potvrzení
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: Získání informací o rozložení textu
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: Kurzy
   items:
     - name: Použití Rozpoznávání formulářů se službou Cognitive Search
-      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+      href: ../../search/cognitive-search-custom-skill-form.md
     - name: Použití Rozpoznávání formulářů se službou AI Builder
       href: tutorial-ai-builder.md
+    - name: Použití nástroje pro rozpoznávání formulářů s Azure Functions
+      href: tutorial-azure-function.md
+    - name: Hromadná extrakce dat formuláře
+      href: tutorial-bulk-processing.md
+- name: Koncepty
+  items:
+    - name: Rozhraní API pro rozložení
+      expanded: true
+      items:
+        - name: Extrakce dat formuláře
+          href: concept-layout.md
+    - name: Vlastní modely
+      href: concept-custom.md
+    - name: Účtenky
+      href: concept-receipts.md
+    - name: Vizitky
+      href: concept-business-cards.md
+    - name: Faktury
+      href: concept-invoices.md
+    - name: Identifikační karty
+      href: concept-identification-cards.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
       href: build-training-data-set.md
+    - name: Použití značek tabulky k učení vlastního modelu
+      href: supervised-table-tags.md
     - name: Nasazení ukázkového nástroje pro popisování
       href: deploy-label-tool.md
     - name: Použití kontejnerů
@@ -59,31 +58,34 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Použití instancí kontejneru
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: ../containers/index.yml
     - name: Modely zálohování a obnovení
       href: disaster-recovery.md
 - name: Referenční informace
   items:
+    - name: Rozhraní API pro rozpoznávání formulářů v 2.1 Preview. 3
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm'
     - name: Rozhraní API služby Rozpoznávání formulářů v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: Sady SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre'
+          href: /dotnet/api/overview/azure/ai.formrecognizer-readme
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer'
+          href: /python/api/azure-ai-formrecognizer/
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre'
+          href: /java/api/overview/azure/ai-formrecognizer-readme
         - name: JavaScript
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre'
+          href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Ceny a omezení
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/form-recognizer/'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
-    - name: Stack Overflow
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionální dostupnost
@@ -93,4 +95,4 @@
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování
-      href: form-recognizer-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md

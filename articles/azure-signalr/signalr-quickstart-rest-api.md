@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045002"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874521"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -28,11 +28,17 @@ Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo L
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
+
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -45,6 +51,7 @@ Zatímco se nasazuje služba, přejděme na přípravu kódu. Naklonujte [ukázk
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
@@ -57,7 +64,7 @@ Můžete také zjistit, jak vygenerovat přístupový token k ověření pomocí
 
 ### <a name="build-the-executable-file"></a>Vytvoření spustitelného souboru
 
-Jako příklad použijeme macOS osx.10.13-x64. K dispozici jsou [reference](https://docs.microsoft.com/dotnet/core/rid-catalog) k vytváření na jiných platformách.
+Jako příklad použijeme macOS osx.10.13-x64. K dispozici jsou [reference](/dotnet/core/rid-catalog) k vytváření na jiných platformách.
 
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
@@ -81,6 +88,8 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
+
 ## <a name="run-the-sample-without-publishing"></a>Spuštění ukázky bez publikování
 
 Server nebo klienta můžete také spustit s použitím následujícího příkazu
@@ -97,6 +106,8 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 V kořenovém adresáři vzorku můžete spustit `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"`. Potom už nebudete možnost `-c "<ConnectionString>"` potřebovat.
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
+
 ## <a name="usage"></a>Využití
 
 Po spuštění serveru použijte příkaz k odeslání zprávy:
@@ -110,6 +121,8 @@ broadcast
 ```
 
 Můžete spustit více klientů s různými názvy.
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a>Integrace se službami třetích stran
 
@@ -126,7 +139,7 @@ Verze | Stav rozhraní API | Dveře | Specifikace
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 
-Rozhraní API | 1,0 – Preview | 1.0
+Rozhraní API | 1,0 – Preview | 1,0
 --- | --- | ---
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -244,7 +257,11 @@ Stavový kód odpovědi | Popis
 `200` | Služba je dobrá
 `5xx` | Chyba služby
 
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](signalr-howto-troubleshoot-guide.md) nebo [dejte nám](https://aka.ms/asrs/qsapi)prosím o tom.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252708"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860928"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -82,7 +82,7 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
 Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby na straně klienta pomocí výše uvedených pokynů, a to tak, že objekt zásad skupiny propojíte se servery AD FS. Objekt spojovacího bodu služby definuje zdroj autority pro objekty zařízení. Může to být místní nebo Azure AD. Když je spojovací bod služby na straně klienta nakonfigurovaný pro AD FS, je zdroj pro objekty zařízení vytvořený jako Azure AD.
 
 > [!NOTE]
-> Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
+> Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](/powershell/module/adfs/get-adfsdeviceregistration).
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Řízené ověřování připojení k hybridní službě Azure AD na zařízeních nižší úrovně Windows
 

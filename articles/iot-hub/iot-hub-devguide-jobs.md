@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730109"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
@@ -33,7 +33,7 @@ Zvažte použití úloh, pokud potřebujete naplánovat a sledovat průběh libo
 Úlohy jsou iniciovány back-end řešení a udržovány IoT Hub. Úlohu můžete iniciovat pomocí identifikátoru URI s přístupem ke službě ( `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` ) a dotazovat se na průběh provádění úlohy prostřednictvím identifikátoru URI s přístupem k službě ( `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` ). Chcete-li aktualizovat stav spuštěných úloh po zahájení úlohy, spusťte dotaz na úlohu.
 
 > [!NOTE]
-> Když zahájíte úlohu, názvy vlastností a hodnoty můžou obsahovat jenom tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Když zahájíte úlohu, názvy vlastností a hodnoty můžou obsahovat jenom tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
 ## <a name="jobs-to-execute-direct-methods"></a>Úlohy ke spuštění přímých metod
 
@@ -181,7 +181,7 @@ V následujícím seznamu jsou uvedeny vlastnosti a odpovídající popisy, kter
 | Vlastnost | Popis |
 | --- | --- |
 | **Úlohy** |ID poskytnuté aplikace pro úlohu. |
-| **startTime** |Aplikace zadala počáteční čas (ISO-8601) pro úlohu. |
+| **Spuštění** |Aplikace zadala počáteční čas (ISO-8601) pro úlohu. |
 | **endTime** |IoT Hub poskytnuté datum (ISO-8601) pro dokončení úlohy. Platí až po dosažení stavu dokončeno. |
 | **textový** |Typy úloh: |
 | | **scheduleUpdateTwin**: úloha používaná k aktualizaci sady požadovaných vlastností nebo značek. |

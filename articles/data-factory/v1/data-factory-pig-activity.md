@@ -1,23 +1,18 @@
 ---
 title: Transformace dat pomocí aktivity prasete v Azure Data Factory
-description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+description: Zjistěte, jak můžete pomocí aktivity prasete v Azure Data Factory v1 spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f59734b5452b5a06b49583954f8851e84e8f84d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387168"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity prasete v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +21,8 @@ ms.locfileid: "74703193"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)

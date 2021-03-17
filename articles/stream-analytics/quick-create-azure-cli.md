@@ -3,19 +3,19 @@ title: Rychlý Start – vytvoření Azure Stream Analytics úlohy pomocí Azure
 description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit úlohu Azure Stream Analytics.
 services: stream-analytics
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231253"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016334"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -23,41 +23,11 @@ V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>Příprava prostředí
-
-1. Přihlásit se.
-
-   Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
-
-    ```azurecli
-    az login
-    ```
-
-    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
-
-2. Nainstalujte rozšíření Azure CLI.
-
-   Když pracujete s odkazy na rozšíření pro rozhraní příkazového řádku Azure CLI, musíte nejdřív nainstalovat rozšíření.  Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku.  Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-   [Rozšíření pro Stream Analytics](/cli/azure/ext/stream-analytics/stream-analytics) nainstalujete spuštěním následujícího příkazu:
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   [Rozšíření pro Azure IoT](/cli/azure/ext/azure-iot) nainstalujete spuštěním následujícího příkazu:
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. Vytvořte skupinu prostředků.
-
-   Všechny prostředky Azure musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
+- Vytvořte skupinu prostředků. Všechny prostředky Azure musí být nasazené do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
    V tomto rychlém startu vytvořte skupinu prostředků s názvem *streamanalyticsrg* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
 
@@ -77,7 +47,7 @@ Následující bloky kódu Azure CLI jsou příkazy, které připravují vstupn�
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
+    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -124,7 +94,7 @@ Následující bloky kódu Azure CLI vytvoří účet Blob Storage, který se po
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). Klíč účtu úložiště použijete k autorizaci operace vytvoření kontejneru. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](/azure/storage/common/authorize-data-operations-cli).
+3. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). Klíč účtu úložiště použijete k autorizaci operace vytvoření kontejneru. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](../storage/blobs/authorize-data-operations-cli.md).
 
    ```azurecli
    az storage container create \
@@ -138,7 +108,7 @@ Následující bloky kódu Azure CLI vytvoří účet Blob Storage, který se po
 
 Následující bloky kódu Azure CLI vytvoří úlohu Stream Analytics. Přečtěte si oddíly, abyste porozuměli kódu
 
-1. Vytvořte Stream Analyticsovou úlohu pomocí příkazu [AZ Stream-Analytics Create](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-create) .
+1. Vytvořte Stream Analyticsovou úlohu pomocí příkazu [AZ Stream-Analytics Create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) .
 
 ```azurecli
 az stream-analytics job create \
@@ -154,7 +124,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>Konfigurace vstupu do úlohy
 
-Přidejte vstup do úlohy pomocí rutiny [AZ Stream-Analytics Input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definice vstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte IoT Hub jako vstup.
+Přidejte vstup do úlohy pomocí rutiny [AZ Stream-Analytics Input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definice vstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte IoT Hub jako vstup.
 
 Na místním počítači vytvořte soubor s názvem `datasource.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu v `sharedAccessPolicyKey` `SharedAccessKey` části připojovacího řetězce IoT Hub, který jste uložili v předchozí části.
 
@@ -185,7 +155,7 @@ Na místním počítači vytvořte soubor s názvem `serialization.json` a přid
 Potom spusťte rutinu `az stream-analytics input create`. Nezapomeňte nahradit hodnotu `datasource` proměnné cestou, kam jste uložili soubor JSON definice vstupu úlohy, a hodnotou `serialization` proměnné s cestou, kam jste ULOŽILI soubor JSON serializace.
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -196,7 +166,7 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>Konfigurace výstupu do úlohy
 
-Do úlohy přidejte výstup pomocí rutiny [AZ Stream-Analytics Output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definice výstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
+Do úlohy přidejte výstup pomocí rutiny [AZ Stream-Analytics Output Create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definice výstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
 
 Na místním počítači vytvořte soubor s názvem `datasink.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu pro `accountKey` přístupový klíč účtu úložiště, který je hodnotou uloženou v $storageAccountKey Value.
 
@@ -221,7 +191,7 @@ Na místním počítači vytvořte soubor s názvem `datasink.json` a přidejte 
 Potom spusťte rutinu `az stream-analytics output`. Nezapomeňte nahradit hodnotu `datasource` proměnné cestou, kam jste uložili soubor JSON s definicí výstupu úlohy, a hodnotou `serialization` proměnné s cestou, kam jste ULOŽILI soubor JSON serializace.
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -231,12 +201,12 @@ az stream-analytics output create
 
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
-Přidejte transformaci úlohy pomocí rutiny [AZ Stream-Analytics Transform Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-transformation-create) . Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. 
+Přidejte transformaci úlohy pomocí rutiny [AZ Stream-Analytics Transform Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) . Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. 
 
 Spusťte `az stream-analytics transformation create` rutinu.
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -255,12 +225,12 @@ az stream-analytics transformation create
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-Spusťte úlohu pomocí rutiny [AZ Stream-Analytics Start](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-start) . Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`.
+Spusťte úlohu pomocí rutiny [AZ Stream-Analytics Start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) . Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`.
 
 Jakmile spustíte následující rutinu, vrátí jako výstup hodnotu `True`, pokud se úloha spustí. V kontejneru úložiště se vytvoří výstupní složku s transformovanými daty.
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud máte v plánu tuto úlohu ještě někdy používat, nemusíte ji odstraňovat a prozatím ji jenom zastavte. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené tímto rychlým startem spuštěním následující rutiny:
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

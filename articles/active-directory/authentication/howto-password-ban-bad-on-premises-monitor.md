@@ -6,17 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550284"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741758"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
@@ -40,7 +41,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události zaznamenané různými součástmi agenta řadiče domény spadají do těchto rozsahů:
 
-|Součást |Rozsah ID události|
+|Komponenta |Rozsah ID události|
 | --- | --- |
 |Knihovna DLL filtru hesel agenta řadiče domény| 10000-19999|
 |Proces hostování služby agenta DC| 20000-29999|
@@ -65,15 +66,19 @@ Klíčovým událostem souvisejícím s ověřováním hesla jsou následující
 
 | Událost |Změna hesla |Heslo nastaveno|
 | --- | :---: | :---: |
-|Dána |10014 |10015|
+|Úspěšné absolvování |10014 |10015|
 |Selhání (kvůli zásadám hesel zákazníka)| 10016, 30002| 10017, 30003|
 |Selhání (kvůli zásadám hesel Microsoftu)| 10016, 30004| 10017, 30005|
 |Selhání (kvůli kombinovaným zásadám hesel Microsoftu a zákazníků)| 10016, 30026| 10017, 30027|
+|Selhání (kvůli uživatelskému jménu)| 10016, 30021| 10017, 30022|
 |Úspěšné pouze auditování (by se nezdařila zásada pro heslo zákazníka)| 10024, 30008| 10025, 30007|
 |Úspěch pouze proti auditu (by se nezdařila zásada hesla Microsoftu)| 10024, 30010| 10025, 30009|
 |Úspěšné pouze auditování (by se nezdařily kombinované zásady pro hesla Microsoftu a zákazníků)| 10024, 30028| 10025, 30029|
+|Předání pouze auditu (by nebylo úspěšné kvůli uživatelskému jménu)| 10016, 30024| 10017, 30023|
 
 Případy v tabulce výše, které odkazují na "kombinované zásady", odkazují na situace, ve kterých bylo nalezeno heslo uživatele, aby obsahovalo alespoň jeden token ze seznamu zakázaných hesel Microsoftu i ze seznamu zakázaných hesel zákazníka.
+
+Případy v tabulce výše, které odkazují na "uživatelské jméno", odkazují na situace, ve kterých bylo zjištěno, že heslo uživatele obsahuje buď název uživatelského účtu, nebo jeden z popisných názvů uživatele. V obou případech dojde k odmítnutí hesla uživatele, pokud je zásada nastavená tak, aby se vynutila, nebo jestli se tato zásada předala v režimu auditování.
 
 Je-li protokolována dvojice událostí, jsou obě události explicitně přidruženy pomocí stejného ID korelace.
 
@@ -235,7 +240,7 @@ Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny tét
 
 Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochrana heslem Azure AD**. Nyní jsou k dispozici následující čítače výkonu:
 
-|Název čítače výkonu | Description|
+|Název čítače výkonu | Popis|
 | --- | --- |
 |Zpracovaná hesla |Tento čítač zobrazuje celkový počet zpracovaných a odmítnutých hesel od posledního restartování.|
 |Hesla přijata |Tento čítač zobrazuje celkový počet hesel, která byla přijata od posledního restartování.|
@@ -309,7 +314,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události jsou protokolovány různými součástmi proxy serveru pomocí následujících rozsahů:
 
-|Součást |Rozsah ID události|
+|Komponenta |Rozsah ID události|
 | --- | --- |
 |Proces hostování služby proxy| 10000-19999|
 |Základní obchodní logika služby proxy| 20000-29999|

@@ -10,15 +10,20 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c2e0e907734f30010690817ddb7bb15527c93bbf
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404011"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486874"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: nahrání obrázků do rozhraní API pro vizuální vyhledávání Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API pro vizuální vyhledávání Bingu vám umožňuje hledat na webu obrázky podobné těm, které nahráváte. Pomocí tohoto kurzu můžete vytvořit webovou aplikaci, která může odeslat obrázek do rozhraní API a zobrazit přehledy, které vrátí na webové stránce. Všimněte si, že tato aplikace není v souladu se všemi [požadavky na použití a zobrazení Bingu](../bing-web-search/use-display-requirements.md) pro použití rozhraní API.
 
@@ -472,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Zobrazit přehledy pro různé akce
 
-Následující funkce zobrazují přehledy o různých akcích. Funkce poskytují obrázek umožňující kliknutí nebo odkaz, který vás pošle na webovou stránku s dalšími informacemi o imagi. Tato stránka je buď hostovaná pomocí Bing.com, nebo původního webu image. V této aplikaci se nezobrazí všechna data Insights. Pokud chcete zobrazit všechna pole, která jsou k dispozici pro přehled, přečtěte si odkaz [obrázky – vizuální vyhledávání](https://aka.ms/bingvisualsearchreferencedoc) .
+Následující funkce zobrazují přehledy o různých akcích. Funkce poskytují obrázek umožňující kliknutí nebo odkaz, který vás pošle na webovou stránku s dalšími informacemi o imagi. Tato stránka je buď hostovaná pomocí Bing.com, nebo původního webu image. V této aplikaci se nezobrazí všechna data Insights. Pokud chcete zobrazit všechna pole, která jsou k dispozici pro přehled, přečtěte si odkaz [obrázky – vizuální vyhledávání](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) .
 
 > [!NOTE]
 > Existuje minimální množství přehledných informací, které je třeba zobrazit na stránce. Další informace najdete v tématu věnovaném [použití rozhraní API vyhledávání Bingu a zobrazení](../bing-web-search/use-display-requirements.md) .

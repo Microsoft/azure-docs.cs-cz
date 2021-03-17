@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280218"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609103"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -21,7 +21,7 @@ Tento dokument se dá použít k podpoře následujících scénářů:
 * Migrace clusteru AKS s využitím [skupin dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) na [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md)
 * Migrace clusteru AKS na použití [standardního nástroje pro vyrovnávání zatížení SKU](./load-balancer-standard.md)
 * Migrace z [Azure Container Service (ACS) – vyřazení z 31. ledna 2020](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) do AKS
-* Migrace z [modulu AKS](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) na AKS
+* Migrace z [modulu AKS](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) na AKS
 * Migrace z clusterů Kubernetes založených na jiných než Azure na AKS
 * Přesun existujících prostředků do jiné oblasti
 
@@ -114,7 +114,7 @@ Nestavová migrace aplikace je nejjednodušším případem. Použijte definice 
 Pečlivě naplánujte migraci stavových aplikací, abyste se vyhnuli ztrátě dat nebo neočekávanému výpadku.
 
 Pokud používáte soubory Azure, můžete sdílenou složku připojit jako svazek do nového clusteru:
-* [Připojit statické soubory Azure jako svazek](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [Připojit statické soubory Azure jako svazek](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případě, že je nepřipojen k žádnému virtuálnímu počítači:
 * [Připojit statický disk Azure jako svazek](./azure-disk-volume.md#mount-disk-as-volume)
@@ -122,7 +122,7 @@ Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případ
 Pokud ani jeden z těchto přístupů nefunguje, můžete použít možnosti zálohování a obnovení:
 * [Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-#### <a name="azure-files"></a>Soubory Azure
+#### <a name="azure-files"></a>Azure Files
 
 Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
 
@@ -132,7 +132,7 @@ Pokud vaše aplikace může hostovat několik replik, které odkazují na stejno
 * Nasměrujte svůj živý provoz do nového clusteru AKS.
 * Odpojte původní cluster.
 
-Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) k migraci dat použít příkazy.
+Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete [`az storage file copy`](/cli/azure/storage/file/copy) k migraci dat použít příkazy.
 
 
 #### <a name="migrating-persistent-volumes"></a>Migrace trvalých svazků
@@ -159,7 +159,7 @@ Některé open source nástroje vám pomůžou vytvořit spravované disky a mig
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Nasazení konfigurace clusteru
 
-Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. K [sestavování a nasazování aplikací do AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)můžete použít Azure Pipelines. Naklonujte stávající úlohy nasazení a zajistěte, aby `kubeconfig` odkazovaly na nový cluster AKS.
+Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. K [sestavování a nasazování aplikací do AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)můžete použít Azure Pipelines. Naklonujte stávající úlohy nasazení a zajistěte, aby `kubeconfig` odkazovaly na nový cluster AKS.
 
 Pokud to není možné, exportujte definice prostředků ze stávajícího clusteru Kubernetes a pak je použijte na AKS. Můžete použít `kubectl` k exportu objektů.
 

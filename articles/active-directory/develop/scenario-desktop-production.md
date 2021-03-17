@@ -1,5 +1,6 @@
 ---
-title: Přesun aplikace klasické pracovní plochy volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+title: Přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22e61ea767d781dc9da54d61143c1b2524e06e94
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882875"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584410"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
 
@@ -29,16 +30,16 @@ V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky, ja
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele před několika prostředky
 
 > [!NOTE]
-> Získání souhlasu pro několik prostředků funguje pro Microsoft Identity Platform, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
+> Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. `scopes`Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
+Nemůžete získat token pro několik prostředků současně s platformou Microsoft identity. `scopes`Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
 
 Například můžete mít dva prostředky, které mají dva obory:
 
-- `https://mytenant.onmicrosoft.com/customerapi`s rozsahy `customer.read` a`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`s rozsahy `vendor.read` a`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` s rozsahy `customer.read` a `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` s rozsahy `vendor.read` a `vendor.write`
 
-V tomto příkladu použijte `.WithAdditionalPromptToConsent` modifikátor, který má `extraScopesToConsent` parametr.
+V tomto příkladu použijte `.WithExtraScopesToConsent` modifikátor, který má `extraScopesToConsent` parametr.
 
 Například:
 
@@ -59,7 +60,7 @@ string[] scopesForVendorApi = new string[]
 var accounts = await app.GetAccountsAsync();
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithAccount(accounts.FirstOrDefault())
-                     .WithExtraScopeToConsent(scopesForVendorApi)
+                     .WithExtraScopesToConsent(scopesForVendorApi)
                      .ExecuteAsync();
 ```
 
@@ -95,7 +96,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Toto volání vám získá přístupový token pro první webové rozhraní API.
 
-Pokud potřebujete zavolat druhé webové rozhraní API, zavolejte `AcquireTokenSilent` rozhraní API.
+Při volání druhého webového rozhraní API zavolejte `AcquireTokenSilent` rozhraní API.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
@@ -105,6 +106,11 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 Pro uživatele osobního účtu Microsoft se znovu zobrazí výzva k zadání souhlasu každého nativního klienta (Desktop nebo mobilní aplikace) volání metody autorizovat je zamýšlené chování. Nativní identita klienta je ze své podstaty nezabezpečená, což je v rozporu s identitou důvěrné klientské aplikace. Důvěrné klientské aplikace vyměňují tajný kód s platformou Microsoft identity, aby prokázali jejich identitu. Platforma Microsoft identity se rozhodla snížit toto zabezpečení pro zákazníky pomocí výzvy k souhlasu uživatele při každém autorizaci aplikace.
 
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+Další ukázky najdete v tématu [desktopové a mobilní veřejné klientské aplikace](sample-v2-code.md#desktop-and-mobile-public-client-apps).
+
+
+

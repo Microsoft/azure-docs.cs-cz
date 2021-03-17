@@ -5,21 +5,22 @@ author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9548900fe627f774aca08c05a243d807bb5a699c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3c42db58017dc3a692c227f6eb454cf7b597e77b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297580"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Řešení zůstatku po splatnosti u předplatného Azure
 
 Tento článek se týká zákazníků, kteří si zaregistrovali do Azure online s použitím platební karty a mají fakturační účet programu Microsoft Online Services. Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud máte fakturační účet pro Smlouvu se zákazníkem Microsoftu, přečtěte si místo toho článek [Placení vyúčtování služeb Microsoft Azure](../understand/pay-bill.md).
 
-Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, přijde vám e-mail a na webu Azure Portal se zobrazí upozornění, že je vaše předplatné po splatnosti. Pokud je váš výchozí způsob platby platební karta, [správce účtu](billing-subscription-transfer.md#whoisaa), může nezaplacené poplatky uhradit na webu Azure Portal. Pokud platíte pomocí faktury (šekem nebo převodem), zašlete svou platbu na adresu uvedenou ve spodní části faktury.
+Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, přijde vám e-mail a na webu Azure Portal se zobrazí upozornění, že je vaše předplatné po splatnosti. Pokud je váš výchozí způsob platby platební karta, [správce účtu](../understand/subscription-transfer.md#whoisaa), může nezaplacené poplatky uhradit na webu Azure Portal. Pokud platíte pomocí faktury (šekem nebo převodem), zašlete svou platbu na adresu uvedenou ve spodní části faktury.
 
 > [!IMPORTANT]
 > * Pokud používáte stejnou platební kartu u více předplatných a všechna jsou po splatnosti, musíte celý nevyrovnaný zůstatek uhradit najednou.

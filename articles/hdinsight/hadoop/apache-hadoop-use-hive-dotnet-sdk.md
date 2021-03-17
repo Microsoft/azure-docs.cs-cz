@@ -1,19 +1,16 @@
 ---
 title: Spouštění dotazů Apache Hive pomocí rozhraní HDInsight .NET SDK – Azure
 description: Naučte se odesílat Apache Hadoop úlohy do Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: f1927d44daf49d938d2c43ce9de02cb1dbfb735f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 17264fc2a7d0a51de545e329ccf12ad45ad49d46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207758"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927233"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
 
@@ -142,10 +139,10 @@ Výstup aplikace by měl vypadat přibližně takto:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Další informace najdete v následujících článcích:
+V tomto článku jste zjistili, jak odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Další informace najdete v těchto článcích:
 
 * [Začínáme se službou Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Vytváření clusterů Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Referenční informace k sadě HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Referenční informace k sadě HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)
 * [Použití Apache Sqoop se službou HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
 * [Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

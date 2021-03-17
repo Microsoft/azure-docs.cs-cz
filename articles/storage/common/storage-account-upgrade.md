@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/25/2019
+ms.date: 03/09/2021
 ms.author: tamram
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 029753ecb0afd0cdd02a2f4594a0708cbda06efc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828213"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555002"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely verze 2
 
@@ -24,6 +24,15 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 
 > [!IMPORTANT]
 > Upgrade účtu úložiště pro obecné účely v1 nebo blob na obecné účely je trvalý a nedá se vrátit zpátky.
+
+> [!NOTE]
+> I když společnost Microsoft doporučuje pro většinu scénářů použití účtů pro obecné účely verze 2, bude společnost Microsoft nadále podporovat účty pro obecné účely V1 pro nové i stávající zákazníky. Můžete vytvořit účty úložiště pro obecné účely v1 v nových oblastech, kdykoli je Azure Storage k dispozici v těchto oblastech. Společnost Microsoft v současné době nemá k dispozici plán pro vyřazení podpory pro účty pro obecné účely V1 a před vyřazením jakékoli Azure Storageé funkce poskytne předběžné oznámení alespoň na jeden rok. Microsoft bude dál poskytovat aktualizace zabezpečení pro účty pro obecné účely V1, ale pro tento typ účtu se neočekává žádný nový vývoj funkcí.
+>
+> Od 1. října 2020 se ceny pro účty pro obecné účely v1 v nových Azure Storagech oblastech rovnají s cenami pro účty pro obecné účely V2 v těchto oblastech. Ceny v existujících oblastech Azure Storage se nezměnily. Podrobnosti o cenách pro účty pro obecné účely v1 v konkrétní oblasti najdete na stránce s cenami Azure Storage. Zvolte oblast a potom klikněte na **nabídku ceny** a pak vyberte **Další**.
+
+## <a name="upgrade-an-account"></a>Upgrade účtu
+
+K upgradu účtu úložiště pro obecné účely v1 nebo blob na účet pro obecné účely v2 použijte Azure Portal, PowerShell nebo Azure CLI.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -40,16 +49,17 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí PowerShellu, nejdřív aktualizujte PowerShell tak, aby používal nejnovější verzi modulu **AZ. Storage** . Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí PowerShellu, nejdřív aktualizujte PowerShell tak, aby používal nejnovější verzi modulu **AZ. Storage** . Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 Potom zavolejte následující příkaz pro upgrade účtu, kde nahradíte název skupiny prostředků, název účtu úložiště a požadovanou úroveň přístupu k účtu.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
+Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí Azure CLI, nejdřív nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí Azure CLI, nejdřív nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
 
 Potom zavolejte následující příkaz pro upgrade účtu, kde nahradíte název skupiny prostředků, název účtu úložiště a požadovanou úroveň přístupu k účtu.
 
@@ -111,7 +121,7 @@ Abyste se rozhodli, jak úroveň přístupu vyhovuje vašim potřebám, může b
 
 K monitorování existujících účtů úložiště a sesbírání dat můžete využít službu Azure Storage Analytics, která provádí protokolování a poskytuje data metriky pro účet úložiště. Analýza úložiště může pro účty úložiště typu GPv1, GPv2 a Blob ukládat metriky, včetně souhrnné statistiky transakcí a dat o kapacitě požadavků na službu úložiště. Tato data se ukládají do známých tabulek na tom samém účtu úložiště.
 
-Další informace najdete na stránkách věnovaných [metrikám Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343258.aspx) a [tabulkovému schématu metrik Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx).
+Další informace najdete na stránkách věnovaných [metrikám Analýzy úložiště](../blobs/monitor-blob-storage.md) a [tabulkovému schématu metrik Analýzy úložiště](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 > [!NOTE]
 > Účty úložiště Blob zpřístupňují koncový bod služby Table service pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet.
@@ -168,4 +178,7 @@ Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v p
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Přehled účtu úložiště](storage-account-overview.md)
 * [Vytvoření účtu úložiště](storage-account-create.md)
+* [Přesunutí účtu Azure Storage do jiné oblasti](storage-account-move.md)
+* [Obnovení odstraněného účtu úložiště](storage-account-recover.md)

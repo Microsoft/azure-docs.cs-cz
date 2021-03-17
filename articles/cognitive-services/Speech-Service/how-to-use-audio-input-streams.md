@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 1574ea1c6f97606198d071d79ea69d58304a6159
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 87fa97dafe9de4a23f5eaadfd4083cd1ca517cde
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053554"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026586"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>O rozhraní API pro audio input Stream v sadě Speech SDK
 
@@ -25,7 +26,7 @@ Při použití vstupních datových proudů je potřeba použít následující 
 
 - Určete formát streamu zvuku. Formát musí být podporován sadou Speech SDK a službou Speech. V současné době je podporována pouze následující konfigurace:
 
-  Ukázky zvuku ve formátu PCM, jeden kanál, 16 bitů na vzorek, 8000 nebo 16000 vzorků za sekundu (16000 nebo 32000 bajtů za sekundu), dvě zarovnávání bloků (16 bitů včetně odsazení vzorku).
+  Zvukové vzorky jsou ve formátu PCM, jeden kanál, 16 bitů na vzorek, 8000 nebo 16000 vzorků za sekundu (16000 nebo 32000 bajtů za sekundu), dvě zarovnávání bloku (16 bitů včetně odsazení vzorku).
 
   Odpovídající kód v sadě SDK pro vytvoření formátu zvuku vypadá takto:
 
@@ -36,7 +37,7 @@ Při použití vstupních datových proudů je potřeba použít následující 
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Ujistěte se, že váš kód může poskytovat nezpracovaná zvuková data podle těchto specifikací. Pokud vaše zdrojová data zvuku neodpovídají podporovaným formátům, musí být zvuk předaný do požadovaného formátu.
+- Ujistěte se, že váš kód poskytuje nezpracovaná zvuková data podle těchto specifikací. Zároveň zajistěte, aby se 16bitové vzorky dostaly ve formátu Little endian. Jsou podporovány i podepsané ukázky. Pokud vaše zdrojová data zvuku neodpovídají podporovaným formátům, musí být zvuk předaný do požadovaného formátu.
 
 - Vytvořte si vlastní třídu vstupního streamu zvuku odvozenou z `PullAudioInputStreamCallback` . Implementujte členy `Read()` a `Close()`. Přesný podpis funkce je závislý na jazyku, ale kód bude vypadat podobně jako tento ukázka kódu:
 
@@ -59,7 +60,7 @@ Při použití vstupních datových proudů je potřeba použít následující 
    };
   ```
 
-- Vytvořte zvukovou konfiguraci na základě zvukového formátu a vstupního streamu. Při vytváření nástroje pro rozpoznávání můžete předávat standardní konfiguraci řeči i konfiguraci zvukového vstupu. Příklad:
+- Vytvořte zvukovou konfiguraci na základě zvukového formátu a vstupního streamu. Při vytváření nástroje pro rozpoznávání můžete předávat standardní konfiguraci řeči i konfiguraci zvukového vstupu. Například:
 
   ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -76,4 +77,4 @@ Při použití vstupních datových proudů je potřeba použít následující 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Přečtěte si téma rozpoznávání řeči v jazyce C. #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Přečtěte si téma rozpoznávání řeči v jazyce C. #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

@@ -7,13 +7,13 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023546"
 ---
-# <a name="retain-ip-addresses-during-failover"></a>Zachovat IP adresy během převzetí služeb při selhání
+# <a name="retain-ip-addresses-during-failover"></a>Zachování IP adres během převzetí služeb při selhání
 
 [Azure Site Recovery](site-recovery-overview.md) umožňuje zotavení po havárii pro virtuální počítače Azure replikací virtuálních počítačů do jiné oblasti Azure a převzetí služeb při selhání, pokud dojde k výpadku a navrácení služeb po obnovení do primární oblasti, když se vrátí zpátky na normální.
 
@@ -46,7 +46,7 @@ Tady je architektura před převzetím služeb při selhání.
             - **Podsíť 2**: 10.1.2.0/24
             - **Podsíť 3**: 10.1.3.0/24
     - Sekundární (cílová) oblast je Azure jihovýchodní Asie.
-        - Jihovýchodní Asie mají síť VNet pro obnovení (**virtuální síť pro obnovení**) shodná se **zdrojovou virtuální**sítí.
+        - Jihovýchodní Asie mají síť VNet pro obnovení (**virtuální síť pro obnovení**) shodná se **zdrojovou virtuální** sítí.
         - Jihovýchodní Asie má další virtuální síť (**virtuální síť Azure**) s adresním prostorem 10.2.0.0/16.
         - **Virtuální síť Azure** obsahuje podsíť (**podsíť 4**) s adresním prostorem 10.2.4.0/24.
         - Uzly repliky pro SQL Server Always On, řadič domény atd. se nacházejí v **podsíti 4**.
@@ -60,7 +60,7 @@ Tady je architektura před převzetím služeb při selhání.
 
 Pokud dojde k výpadku zdrojového regionu, společnost A může převzít služby při selhání všech svých prostředků do cílové oblasti.
 
-- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost A orchestrovat převzetí **Azure VNet**služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání To je znázorněno v následujícím diagramu...
+- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost A orchestrovat převzetí **Azure VNet** služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání To je znázorněno v následujícím diagramu...
 - V závislosti na požadavcích aplikace je možné v cílové oblasti navázat připojení mezi dvěma virtuální sítě (**virtuální síť pro obnovení** a **virtuální síť Azure**) v rámci (jako zprostředkující krok) nebo po převzetí služeb při selhání.
   - Společnost může pomocí [plánů obnovení](site-recovery-create-recovery-plans.md) určit, kdy se budou navázat připojení.
   - Můžou se připojit mezi virtuální sítě pomocí partnerského vztahu virtuálních sítí nebo sítě VPN typu Site-to-site.
@@ -85,8 +85,8 @@ V tomto příkladu společnost A umístí aplikace do zdrojové oblasti v vyhraz
 Před převzetím služeb při selhání je architektura následující:
 
 - Virtuální počítače aplikace jsou hostované v primární oblasti Azure Východní Asie:
-    - **App1** Virtuální počítače jsou umístěné ve **virtuální**síti VNet 1:10.1.0.0/16.
-    - **App2** Virtuální počítače se nacházejí ve **zdrojové virtuální**síti ve virtuální síti 2:10.2.0.0/16.
+    - **App1** Virtuální počítače jsou umístěné ve **virtuální** síti VNet 1:10.1.0.0/16.
+    - **App2** Virtuální počítače se nacházejí ve **zdrojové virtuální** síti ve virtuální síti 2:10.2.0.0/16.
     - **Zdrojová virtuální síť 1** obsahuje dvě podsítě.
     - **Zdrojová virtuální síť 2** má dvě podsítě.
 - Sekundární (cílová) oblast je Azure jihovýchodní Asie – jihovýchodní Asie má virtuální sítě obnovení (**virtuální síť pro obnovení 1** a **virtuální síť pro obnovení**), která je shodná se **zdrojovou virtuální sítí 1** a **zdrojovou virtuální sítí 2**.
@@ -109,8 +109,8 @@ Před převzetím služeb při selhání je architektura následující:
 V případě výpadku nebo problému, který má vliv na jednu aplikaci (v našem příkladu * * zdrojová virtuální síť 2), může společnost A obnovit ovlivněnou aplikaci následujícím způsobem:
 
 
-- Odpojte připojení VPN mezi **zdrojovým VNet1** a **zdrojovým VNet2**a mezi **zdrojovou VNet2** a **virtuální sítí Azure** .
-- Navažte připojení VPN mezi **zdrojovým VNet1** a **obnovením VNet2**a mezi **VNet2 obnovení** a **virtuální sítí Azure**.
+- Odpojte připojení VPN mezi **zdrojovým VNet1** a **zdrojovým VNet2** a mezi **zdrojovou VNet2** a **virtuální sítí Azure** .
+- Navažte připojení VPN mezi **zdrojovým VNet1** a **obnovením VNet2** a mezi **VNet2 obnovení** a **virtuální sítí Azure**.
 - Převzetí služeb při selhání u virtuálních počítačů ve **zdrojovém VNet2** do **VNet2 pro obnovení**.
 
 ![Prostředky ve službě Azure App Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
@@ -129,12 +129,12 @@ V takovém případě bude architektura sítě vypadat ještě před převzetím
 
 - Virtuální počítače aplikace jsou hostované v Azure Východní Asie.
 - Východní Asie má síť VNet (**zdrojová virtuální síť**) s adresním prostorem 10.1.0.0/16.
-  - Východní Asie obsahuje úlohy rozdělené mezi tři podsítě ve **zdrojové virtuální**síti:
+  - Východní Asie obsahuje úlohy rozdělené mezi tři podsítě ve **zdrojové virtuální** síti:
     - **Podsíť 1**: 10.1.1.0/24
     - **Podsíť 2**: 10.1.2.0/24
     - **Podsíť 3**: 10.1.3.0/24, která využívá Azure Virtual Network s adresním prostorem 10.1.0.0/16. Tato virtuální síť se nazývá **zdrojová virtuální** síť.
       - Sekundární (cílová) oblast je Azure jihovýchodní Asie:
-  - Jihovýchodní Asie mají síť VNet pro obnovení (**virtuální síť pro obnovení**) shodná se **zdrojovou virtuální**sítí.
+  - Jihovýchodní Asie mají síť VNet pro obnovení (**virtuální síť pro obnovení**) shodná se **zdrojovou virtuální** sítí.
 - Virtuální počítače v Východní Asie jsou připojené k místnímu datovému centru pomocí Azure ExpressRoute nebo VPN typu Site-to-site.
 - Aby se snížilo RTO, společnost B zřídí brány pro virtuální síť pro obnovení ve službě Azure jihovýchodní Asie před převzetím služeb při selhání.
 - Společnost B přiřadí/ověří cílové IP adresy replikovaných virtuálních počítačů. Cílová IP adresa je stejná jako zdrojová IP adresa pro každý virtuální počítač.
@@ -147,7 +147,7 @@ V takovém případě bude architektura sítě vypadat ještě před převzetím
 
 Pokud dojde k výpadku zdrojového regionu, společnost B může převzít služby při selhání všech svých prostředků do cílové oblasti.
 
-- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost B orchestrovat převzetí **Azure VNet**služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání
+- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost B orchestrovat převzetí **Azure VNet** služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání
 - V závislosti na požadavcích aplikace je možné v cílové oblasti navázat připojení mezi dvěma virtuální sítě (**virtuální síť pro obnovení** a **virtuální síť Azure**) v rámci (jako zprostředkující krok) nebo po převzetí služeb při selhání. Společnost může pomocí [plánů obnovení](site-recovery-create-recovery-plans.md) určit, kdy se budou navázat připojení.
 - Původní připojení mezi službou Azure Východní Asie a místním datacentrem by mělo být před navázáním spojení mezi Azure jihovýchodní Asie a místním datacentrem odpojeno.
 - Místní směrování se překonfiguruje tak, aby odkazovalo na cílovou oblast a brány po převzetí služeb při selhání.

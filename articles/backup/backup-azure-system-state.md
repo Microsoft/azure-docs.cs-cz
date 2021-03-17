@@ -3,12 +3,12 @@ title: Zálohování stavu systému Windows do Azure
 description: Naučte se zálohovat stav systému počítačů s Windows serverem do Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263040"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332881"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 
@@ -38,9 +38,9 @@ Při vytváření trezoru služby Recovery Services se ujistěte, že je redunda
     ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Zvolte vhodnou možnost replikace pro svůj trezor.
 
-    ![Volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration-for-vault.png)
 
-    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
+    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. V tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md)si přečtěte další informace o [geograficky redundantních](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantních](../storage/common/storage-redundancy.md#locally-redundant-storage) a [redundantních](../storage/common/storage-redundancy.md#zone-redundant-storage) možnostech úložiště v zóně.
 
 Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu systému Windows.
 
@@ -62,7 +62,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 
     ![Konfigurace souborů a složek](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Po kliknutí na tlačítko OK se vedle **cíle zálohování**zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
+    Po výběru **OK**se vedle možnosti **cíl zálohování**zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
 
     ![Cíl zálohování je nakonfigurovaný, teď se připraví infrastruktura](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
@@ -98,7 +98,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 ## <a name="install-and-register-the-agent"></a>Instalace a registrace agenta
 
 > [!NOTE]
-> Povolení zálohování prostřednictvím webu Azure Portal ještě není dostupné. Pro zálohování stavu systému Windows Server použijte agenta Microsoft Azure Recovery Services.
+> Povolení zálohování prostřednictvím Azure Portal není k dispozici. Pro zálohování stavu systému Windows Server použijte agenta Microsoft Azure Recovery Services.
 >
 
 1. Ve složce Stažené soubory (nebo ve složce, kterou jste vybrali pro stahování) vyhledejte soubor **MARSagentinstaller.exe** a dvakrát na něj klikněte.
@@ -116,7 +116,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
    * Uložit šifrovací heslo na bezpečné místo.
 
      > [!NOTE]
-     > Pokud heslo ztratíte nebo zapomenete, Microsoft vám nemůže pomoci obnovit zálohovaná data. Uložte soubor na bezpečné místo. Je požadováno pro obnovení zálohy.
+     > Pokud heslo ztratíte nebo zapomenete, Microsoft nemůže získat zálohu zálohovaných dat. Uložte soubor na bezpečné místo. Je nutné obnovit zálohu.
      >
      >
 
@@ -132,7 +132,7 @@ Počáteční záloha zahrnuje dvě úlohy:
 K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery Services.
 
 > [!NOTE]
-> Stav systému systému Windows Server 2008 R2 můžete zálohovat pomocí systému Windows Server 2016. Zálohování stavu systému není podporováno u klientských SKU klienta. Stav systému se nezobrazuje jako možnost pro klienty Windows nebo pro počítače s Windows Serverem 2008 SP2.
+> Stav systému systému Windows Server 2008 R2 můžete zálohovat pomocí systému Windows Server 2016. Zálohování stavu systému není podporováno u klientských SKU klienta. Stav systému není zobrazen jako možnost pro klienty se systémem Windows nebo pro počítače s Windows Serverem 2008 SP2.
 >
 >
 

@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fd644e43b704eced4f5a97b82e4b07ab1b4db9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424081"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916333"
 ---
 # <a name="playback-technology-tech"></a>Technologie přehrávání ("tech") #
 
@@ -30,7 +30,7 @@ Aby se zajistilo, že váš Asset bude moct využít širokou škálu zařízen�
 
 `<video data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS, "silverlightSS", "html5"]}`
 
-– nebo –
+nebo
 
 ```javascript
     amp("vid1", {
@@ -44,8 +44,8 @@ Vzhledem k doporučenému technickému pořadí s obsahem streamování z Azure 
 
 | Prohlížeč        | Operační systém                                                       | Očekávalo se Tech (Clear)  | Očekával se technický (AES).  | Očekávaný technický (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| Edge 11      | Windows 10, Windows 8.1 Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | blesk                | blesk              | Silverlight (PlayReady)    |
+| Edge 11      | Windows 10, Windows 8.1 Windows Phone 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11          | Windows 7, Windows Vista<sup>1</sup>                     | blesk                | blesk              | Silverlight (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | nepodporováno                |
 | Edge           | Xbox 1<sup>(aktualizace</sup> 2015)                   | azureHtml5JS           | azureHtml5JS         | nepodporováno                |
 | Chrome 37 +     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
@@ -58,7 +58,7 @@ Vzhledem k doporučenému technickému pořadí s obsahem streamování z Azure 
 | Chrome 37 +     | Android 4.4.4 +<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome 37 +     | Android 4,02                                             | HTML5                  | HTML5 (bez tokenu)<sup>3</sup>    | nepodporováno                |
 | Firefox 42 +    | Android 5.0 +<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | nepodporováno                |
-| IE 8           | Windows                                                  | nepodporováno          | nepodporováno        | nepodporováno                |
+| IE 8, IE 9, IE 10  | Windows                                                  | nepodporováno          | nepodporováno        | nepodporováno                |
 
 <sup>1</sup> konfigurace není podporována nebo testována; uvádí se jako referenční dokumentace pro dokončení.
 

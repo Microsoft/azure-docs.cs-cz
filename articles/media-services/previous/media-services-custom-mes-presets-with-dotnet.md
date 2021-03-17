@@ -3,7 +3,7 @@ title: Přizpůsobení Media Encoder Standard přednastavení | Microsoft Docs
 description: V tomto tématu se dozvíte, jak provést rozšířené kódování přizpůsobením Media Encoder Standard přednastavení úloh. Téma ukazuje, jak pomocí Media Services .NET SDK vytvořit úlohu kódování a úlohu. Také ukazuje, jak poskytovat vlastní přednastavení pro úlohu kódování.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2019
-ms.author: juliako
-ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c2ec7c8fe312787d153c76b0b0194354e1717db7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052932"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016708"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard  
+# <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>Přehled
 
@@ -30,9 +33,9 @@ Tento článek ukazuje, jak provést rozšířené kódování pomocí Media Enc
 V tomto článku se dozvíte, jak přizpůsobit předvolbu pomocí přednastavení [H264 s více přenosovými rychlostmi](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) a snížením počtu vrstev. Článek [přizpůsobení Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) ukazuje vlastní předvolby, které lze použít k provádění pokročilých úloh kódování.
 
 > [!NOTE]
-> Vlastní předvolby popsané v tomto článku nelze použít v [Media Services V3](../latest/index.yml) transformes nebo příkazech CLI. Další podrobnosti najdete v [pokynech k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Vlastní předvolby popsané v tomto článku nelze použít v [Media Services V3](../latest/index.yml) transformes nebo příkazech CLI. Další podrobnosti najdete v [pokynech k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
-## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>Přizpůsobení přednastavené ekonomiky
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> Přizpůsobení přednastavené ekonomiky
 
 ### <a name="original-preset"></a>Původní předvolba
 
@@ -43,74 +46,74 @@ Uložte JSON definovaný v článku [H264 s více přenosovými přenosovými 72
 Otevřete **CustomPreset_JSON.jsv** souboru a odeberte první tři vrstvy z **H264Layers** , aby soubor vypadal.
 
 ```json 
-    {  
-      "Version": 1.0,  
-      "Codecs": [  
-        {  
-          "KeyFrameInterval": "00:00:02",  
-          "H264Layers": [  
-            {  
-              "Profile": "Auto",  
-              "Level": "auto",  
-              "Bitrate": 1000,  
-              "MaxBitrate": 1000,  
-              "BufferWindow": "00:00:05",  
-              "Width": 640,  
-              "Height": 360,  
-              "BFrames": 3,  
-              "ReferenceFrames": 3,  
-              "AdaptiveBFrame": true,  
-              "Type": "H264Layer",  
-              "FrameRate": "0/1"  
-            },  
-            {  
-              "Profile": "Auto",  
-              "Level": "auto",  
-              "Bitrate": 650,  
-              "MaxBitrate": 650,  
-              "BufferWindow": "00:00:05",  
-              "Width": 640,  
-              "Height": 360,  
-              "BFrames": 3,  
-              "ReferenceFrames": 3,  
-              "AdaptiveBFrame": true,  
-              "Type": "H264Layer",  
-              "FrameRate": "0/1"  
-            },  
-            {  
-              "Profile": "Auto",  
-              "Level": "auto",  
-              "Bitrate": 400,  
-              "MaxBitrate": 400,  
-              "BufferWindow": "00:00:05",  
-              "Width": 320,  
-              "Height": 180,  
-              "BFrames": 3,  
-              "ReferenceFrames": 3,  
-              "AdaptiveBFrame": true,  
-              "Type": "H264Layer",  
-              "FrameRate": "0/1"  
-            }  
-          ],  
-          "Type": "H264Video"  
-        },  
-        {  
-          "Profile": "AACLC",  
-          "Channels": 2,  
-          "SamplingRate": 48000,  
-          "Bitrate": 128,  
-          "Type": "AACAudio"  
-        }  
-      ],  
-      "Outputs": [  
-        {  
-          "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",  
-          "Format": {  
-            "Type": "MP4Format"  
+  {  
+    "Version": 1.0,  
+    "Codecs": [  
+      {  
+        "KeyFrameInterval": "00:00:02",  
+        "H264Layers": [  
+          {  
+            "Profile": "Auto",  
+            "Level": "auto",  
+            "Bitrate": 1000,  
+            "MaxBitrate": 1000,  
+            "BufferWindow": "00:00:05",  
+            "Width": 640,  
+            "Height": 360,  
+            "BFrames": 3,  
+            "ReferenceFrames": 3,  
+            "AdaptiveBFrame": true,  
+            "Type": "H264Layer",  
+            "FrameRate": "0/1"  
+          },  
+          {  
+            "Profile": "Auto",  
+            "Level": "auto",  
+            "Bitrate": 650,  
+            "MaxBitrate": 650,  
+            "BufferWindow": "00:00:05",  
+            "Width": 640,  
+            "Height": 360,  
+            "BFrames": 3,  
+            "ReferenceFrames": 3,  
+            "AdaptiveBFrame": true,  
+            "Type": "H264Layer",  
+            "FrameRate": "0/1"  
+          },  
+          {  
+            "Profile": "Auto",  
+            "Level": "auto",  
+            "Bitrate": 400,  
+            "MaxBitrate": 400,  
+            "BufferWindow": "00:00:05",  
+            "Width": 320,  
+            "Height": 180,  
+            "BFrames": 3,  
+            "ReferenceFrames": 3,  
+            "AdaptiveBFrame": true,  
+            "Type": "H264Layer",  
+            "FrameRate": "0/1"  
           }  
+        ],  
+        "Type": "H264Video"  
+      },  
+      {  
+        "Profile": "AACLC",  
+        "Channels": 2,  
+        "SamplingRate": 48000,  
+        "Bitrate": 128,  
+        "Type": "AACAudio"  
+      }  
+    ],  
+    "Outputs": [  
+      {  
+        "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",  
+        "Format": {  
+          "Type": "MP4Format"  
         }  
-      ]  
-    }  
+      }  
+    ]  
+  }  
 ```
 
 ## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK

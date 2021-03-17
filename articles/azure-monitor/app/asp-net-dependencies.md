@@ -2,13 +2,14 @@
 title: Sledování závislostí v Azure Application Insights | Microsoft Docs
 description: Monitorování volání závislostí z vaší místní nebo Microsoft Azure webové aplikace s využitím Application Insights.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321373"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045288"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -16,9 +17,9 @@ ms.locfileid: "87321373"
 
 ## <a name="automatically-tracked-dependencies"></a>Automaticky sledované závislosti
 
-Application Insights sady SDK pro .NET a .NET Core `DependencyTrackingTelemetryModule` , se kterými je modul telemetrie, který automaticky shromažďuje závislosti. Tato kolekce závislostí je automaticky povolená pro [ASP.NET](./asp-net.md) a [ASP.NET Core](./asp-net-core.md) aplikace, pokud je nakonfigurovaná podle propojených oficiálních dokumentů. `DependencyTrackingTelemetryModule`je dodávána jako [Tento](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) balíček NuGet a při použití některého z balíčků NuGet nebo je automaticky načítán `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore` .
+Application Insights sady SDK pro .NET a .NET Core dodávané s nástrojem `DependencyTrackingTelemetryModule` , což je modul telemetrie, který automaticky shromažďuje závislosti. Tato kolekce závislostí je automaticky povolená pro [ASP.NET](./asp-net.md) a [ASP.NET Core](./asp-net-core.md) aplikace, pokud je nakonfigurovaná podle propojených oficiálních dokumentů. `DependencyTrackingTelemetryModule` je dodávána jako [Tento](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) balíček NuGet a při použití některého z balíčků NuGet nebo je automaticky načítán `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore` .
 
- `DependencyTrackingTelemetryModule`v současné době sleduje následující závislosti automaticky:
+ `DependencyTrackingTelemetryModule` v současné době sleduje následující závislosti automaticky:
 
 |Závislosti |Podrobnosti|
 |---------------|-------|
@@ -88,6 +89,9 @@ Pro webové stránky Application Insights JavaScript SDK automaticky shromážd�
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Rozšířené sledování SQL pro získání úplného dotazu SQL
 
+> [!NOTE]
+> Azure Functions vyžaduje pro povolení shromažďování textu SQL samostatné nastavení, další informace najdete v tématu [Konfigurace monitorování pro Azure Functions](../../azure-functions/configure-monitoring.md) .
+
 V případě volání SQL se název serveru a databáze vždycky shromažďují a ukládají se jako název shromážděné služby `DependencyTelemetry` . K dispozici je další pole s názvem data, které může obsahovat úplný text dotazu SQL.
 
 U ASP.NET Corech aplikací se teď vyžaduje, aby se ke kolekci textů SQL mohla vyjádřit pomocí
@@ -100,16 +104,18 @@ V případě aplikací ASP.NET je úplný text dotazu SQL shromážděn pomocí 
 | Platforma | Krok (y) potřebný k získání úplného dotazu SQL |
 | --- | --- |
 | Webová aplikace Azure |V ovládacím panelu webové aplikace otevřete okno [Application Insights](../../azure-monitor/app/azure-web-apps.md) a povolte příkazy SQL pod položkou .NET. |
-| Server IIS (virtuální počítač Azure, on-Prem atd.) | Pomocí balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) nebo pomocí modulu monitorování stavu PowerShellu [nainstalujte modul instrumentace](../../azure-monitor/app/status-monitor-v2-api-reference.md) a restartujte službu IIS. |
+| Server IIS (virtuální počítač Azure, on-Prem atd.) | Pomocí balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) nebo pomocí modulu monitorování stavu PowerShellu [nainstalujte modul instrumentace](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine) a restartujte službu IIS. |
 | Cloudová služba Azure | Přidat [úlohu po spuštění pro instalaci StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by se měla připojit k ApplicationInsights SDK v době sestavení instalací balíčků NuGet pro [ASP.NET](./asp-net.md) nebo [aplikace ASP.NET Core](./asp-net-core.md) . |
 | IIS Express | Použijte balíček NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) .
+| Webové úlohy Azure | Použijte balíček NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) .
 
 Kromě výše uvedených kroků specifických pro platformu je **také nutné explicitně vyjádřit výslovný souhlas s povolením shromažďování příkazů SQL** úpravou souboru applicationInsights.config následujícím způsobem:
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 Ve výše uvedených případech je správným způsobem, jak ověřit, že je modul instrumentace správně nainstalovaný, ověření, že je shromážděná verze sady SDK `DependencyTelemetry` "rddp". ' rdddsd ' nebo ' rddf ' označuje závislosti, které jsou shromažďovány prostřednictvím zpětného volání DiagnosticSource nebo EventSource, takže plný dotaz SQL nebude zachycen.
@@ -122,7 +128,7 @@ Ve výše uvedených případech je správným způsobem, jak ověřit, že je m
 * Kliknutím na z pomalých nebo neúspěšných žádostí zkontrolujete svá volání závislostí.
 * [Analýza](#logs-analytics) se dá použít k dotazování na data závislostí.
 
-## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Diagnostika pomalých požadavků
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a> Diagnostika pomalých požadavků
 
 Každá událost žádosti je přidružená k voláním závislosti, výjimkám a dalším událostem, které jsou sledovány během zpracování požadavku vaší aplikací. Takže pokud některé požadavky nefungují správně, můžete zjistit, zda se jedná z důvodu pomalé odezvy ze závislosti.
 
@@ -154,7 +160,7 @@ Tady budete moct zobrazit počet neúspěšných závislostí. Pokud chcete zís
 
 ## <a name="logs-analytics"></a>Protokoly (analýza)
 
-Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Tady je pár příkladů.
+Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Tady je několik příkladů.
 
 * Vyhledání všech neúspěšných volání závislostí:
 
@@ -195,7 +201,19 @@ Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/)
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Jak automatické shromažďování závislostí hlásí neúspěšná volání závislostí?*
 
-* Neúspěšná volání závislostí budou mít pole Success nastaveno na hodnotu false. `DependencyTrackingTelemetryModule`neoznamuje `ExceptionTelemetry` . Úplný datový model pro závislost je popsán [zde](data-model-dependency-telemetry.md).
+* Neúspěšná volání závislostí budou mít pole Success nastaveno na hodnotu false. `DependencyTrackingTelemetryModule` neoznamuje `ExceptionTelemetry` . Úplný datový model pro závislost je popsán [zde](data-model-dependency-telemetry.md).
+
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*Návody vypočítat latenci příjmu pro telemetrii mých závislostí?*
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*Návody určit čas, kdy bylo volání závislosti iniciováno?*
+
+V zobrazení Log Analytics dotaz `timestamp` představuje okamžik, kdy bylo volání TrackDependency () zahájeno, k němuž dojde ihned po přijetí odpovědi na volání závislosti. Chcete-li vypočítat čas, kdy bylo volání závislostí zahájeno, poberete `timestamp` a odečtete zaznamenané `duration` volání závislosti.
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 Stejně jako každý Application Insights SDK je modul pro shromažďování závislostí také open source. Přečtěte si kód, přispívat k němu nebo nahlaste problémy v [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124053"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746797"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Ochrana instancí pro instance sady škálování virtuálních počítačů Azure
 
@@ -45,16 +45,16 @@ Po vytvoření instancí lze použít ochranu instance pro instance sady škálo
 
 V následujících příkladech jsou k dispozici několik způsobů, jak v instancích sady škálování použít ochranu s možností horizontálního rozšíření kapacity, jak je popsáno níže.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Ochranu pomocí škálování můžete v Azure Portal použít na instanci v sadě škálování. V jednom okamžiku nelze upravovat více než jednu instanci. Opakujte postup pro všechny instance, které chcete chránit.
  
 1. Přejít na existující sadu škálování virtuálního počítače.
-1. V nabídce vlevo v části **Nastavení**vyberte **instance** .
+1. V nabídce vlevo v části **Nastavení** vyberte **instance** .
 1. Vyberte název instance, kterou chcete chránit.
 1. Vyberte kartu **Zásady ochrany** .
 1. V okně **Zásady ochrany** vyberte možnost **chránit před škálováním** .
-1. Vyberte **Uložit**. 
+1. Vyberte **Uložit** . 
 
 ### <a name="rest-api"></a>REST API
 
@@ -113,16 +113,16 @@ Ochrana instance před akcemi sady škálování také chrání instance z autom
 
 Existuje několik způsobů, jak použít ochranu akcí sady škálování na instancích sady škálování, jak je popsáno níže v následujících příkladech.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Ochranu můžete použít z akcí sady škálování pomocí Azure Portal do instance v sadě škálování. V jednom okamžiku nelze upravovat více než jednu instanci. Opakujte postup pro všechny instance, které chcete chránit.
  
 1. Přejít na existující sadu škálování virtuálního počítače.
-1. V nabídce vlevo v části **Nastavení**vyberte **instance** .
+1. V nabídce vlevo v části **Nastavení** vyberte **instance** .
 1. Vyberte název instance, kterou chcete chránit.
 1. Vyberte kartu **Zásady ochrany** .
 1. V okně **Zásady ochrany** vyberte možnost **nastavit akce chránit ze sady škálování** .
-1. Vyberte **Uložit**. 
+1. Vyberte **Uložit** . 
 
 ### <a name="rest-api"></a>REST API
 

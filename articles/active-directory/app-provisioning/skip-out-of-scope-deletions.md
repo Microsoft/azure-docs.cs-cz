@@ -3,7 +3,7 @@ title: Přeskočit odstranění přidaných uživatelů oboru
 description: Přečtěte si, jak potlačit výchozí chování při zrušení zřizování z oboru uživatelů.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -11,20 +11,19 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789901"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256115"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Přeskočit odstranění uživatelských účtů, které přesahují rozsah
 
 Ve výchozím nastavení modul zřizování Azure AD Soft odstraní nebo zakáže uživatele, kteří se nacházejí mimo rozsah. U některých scénářů, jako je například Workday pro příchozí zřizování uživatele AD, nemusí být toto chování očekávané a pravděpodobně budete chtít přepsat toto výchozí chování.  
 
-Tento článek popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak ***SkipOutOfScopeDeletions*** , který řídí zpracování účtů, které se nacházejí mimo rozsah. 
-* Pokud je ***SkipOutOfScopeDeletions*** nastavené na 0 (NEPRAVDA), účty, které se nacházejí mimo rozsah, budou v cíli zakázané.
-* Pokud je ***SkipOutOfScopeDeletions*** nastavené na hodnotu 1 (true), účty, které se nacházejí mimo rozsah, nebudou v cíli zakázány. Tento příznak se nastavuje na úrovni *aplikace pro zřizování* a dá se nakonfigurovat pomocí Graph API. 
+Tento článek popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak ***SkipOutOfScopeDeletions** _, který řídí zpracování účtů, které se nacházejí mimo rozsah. _ Pokud je ***SkipOutOfScopeDeletions** _ nastavené na 0 (false), účty, které se nacházejí mimo rozsah, budou v cíli zakázané.
+_ Pokud je ***SkipOutOfScopeDeletions** _ nastaveno na hodnotu 1 (true), účty, které se nacházejí mimo rozsah, nebudou v cíli zakázány. Tento příznak se nastavuje na úrovni _Provisioning App * a dá se nakonfigurovat pomocí Graph API. 
 
 Vzhledem k tomu, že se tato konfigurace používá v rámci pracovní *doby pro aplikaci zřizování uživatelů služby Active Directory* , následující kroky zahrnují snímky obrazovky aplikace Workday. Nicméně tato konfigurace se dá použít i u *všech ostatních aplikací*, jako jsou ServiceNow, Salesforce a Dropbox.
 
@@ -69,9 +68,9 @@ Tady je blok JSON, který se má přidat do mapování.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Krok 4: aktualizace koncového bodu tajných kódů pomocí příznaku SkipOutOfScopeDeletions
 
-V Průzkumníku grafů spusťte následující příkaz, který aktualizuje koncový bod tajných kódů pomocí příznaku ***SkipOutOfScopeDeletions*** . 
+V Průzkumníku grafů spusťte následující příkaz, který aktualizuje koncový bod tajných kódů pomocí příznaku **_SkipOutOfScopeDeletions_* _. 
 
-V adrese URL níže nahraďte [servicePrincipalId] **servicePrincipalId** extrahovanou z [kroku 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id). 
+V následující adrese URL nahraďte [servicePrincipalId] znakem _ *servicePrincipalId** extrahovaným z [kroku 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id). 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
@@ -90,7 +89,7 @@ Výstup byste měli získat jako "úspěch – stavový kód 204".
 
 Pomocí aktualizace pravidel oboru pro přeskočení konkrétního uživatele můžete otestovat tento příznak výsledky při očekávaném chování. V následujícím příkladu vyloučíme zaměstnance s ID 21173 (který byl dříve v oboru) přidáním nového pravidla oboru: 
 
-   ![Příklad oboru](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Snímek obrazovky, který zobrazuje oddíl přidat filtr oborů, který má zvýrazněný vzorový uživatel.](./media/skip-out-of-scope-deletions/skip-07.png)
 
 V dalším cyklu zřizování služba Azure AD Provisioning zjistí, že se uživateli 21173 dostalo mimo rozsah a jestli je povolená vlastnost SkipOutOfScopeDeletions, a pravidlo synchronizace pro tohoto uživatele zobrazí zprávu, jak je uvedeno níže: 
 

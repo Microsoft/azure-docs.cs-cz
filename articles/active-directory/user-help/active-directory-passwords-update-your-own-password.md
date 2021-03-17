@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 05/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266113"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91827763"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
 
-Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení. Správce musí tuto funkci zapnout, abyste mohli nastavit vaše informace a [resetovat svoje vlastní heslo](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
+Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení. Správce musí tuto funkci zapnout, abyste mohli nastavit vaše informace a [resetovat svoje vlastní heslo](./active-directory-passwords-reset-register.md).
 
-Pokud znáte heslo a chcete ho změnit, přečtěte si část [Změna kroků hesla](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) v tomto článku.
+Pokud znáte heslo a chcete ho změnit, přečtěte si část [Změna kroků hesla](#how-to-change-your-password) v tomto článku.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí obnovit zapomenuté nebo neznámé heslo pracovního nebo školního účtu. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Tento článek je určený pro uživatele, kteří se pokoušejí obnovit zapomenuté nebo neznámé heslo pracovního nebo školního účtu. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](../authentication/howto-sspr-deployment.md).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Resetování nebo odemknutí hesla pro pracovní nebo školní účet
 
@@ -69,7 +69,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
 
     3. Zadejte a potvrďte nové heslo a pak vyberte **Dokončit**.
 
-- **Resetujte heslo pomocí telefonního čísla.** Pošle textovou zprávu na telefonní číslo, které jste předtím nastavili v části informace o zabezpečení. Pokud váš správce zapnul prostředí informací o zabezpečení, můžete získat další informace o nastavení telefonního čísla v článku [Nastavení bezpečnostních údajů pro použití telefonního hovoru (Preview)](security-info-setup-phone-number.md) . Pokud ještě nepoužíváte bezpečnostní údaje, najdete další informace o nastavení telefonního čísla v článku [Nastavení mého účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
+- **Resetujte heslo pomocí telefonního čísla.** Vloží automatizované hlasové volání do telefonního čísla, které jste dříve nastavili v informacích o zabezpečení. Pokud váš správce zapnul prostředí informací o zabezpečení, můžete získat další informace o nastavení telefonního čísla v článku [Nastavení bezpečnostních údajů pro použití telefonního hovoru (Preview)](security-info-setup-phone-number.md) . Pokud ještě nepoužíváte bezpečnostní údaje, najdete další informace o nastavení telefonního čísla v článku [Nastavení mého účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
     1. Vyberte **zavolat mi na mobilní telefon**, zadejte své telefonní číslo a pak vyberte **zavolat**.
 
@@ -107,7 +107,7 @@ Po resetování hesla se může zobrazit potvrzovací e-mail, který pochází z
 
 ## <a name="how-to-change-your-password"></a>Jak si změnit heslo
 
-Pokud chcete změnit jenom heslo, můžete to provést prostřednictvím portálu Office 365, přístupového panelu Azure nebo přihlašovací stránky Windows 10.
+Pokud chcete změnit jenom heslo, můžete to udělat na portálu Office 365, na portálu moje aplikace nebo na přihlašovací stránce Windows 10.
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>Změna hesla pomocí portálu Office 365
 
@@ -121,11 +121,11 @@ Tuto metodu použijte, pokud obvykle k vašim aplikacím přistupujete prostřed
 
 4. Zadejte staré heslo, vytvořte a potvrďte nové heslo a pak vyberte **Odeslat**.
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>Změna hesla z přístupového panelu Azure
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>Změna hesla z portálu moje aplikace
 
-Tuto metodu použijte, pokud obvykle ke svým aplikacím přistupujete z přístupového panelu Azure (MyApp):
+Tuto metodu použijte, pokud obvykle přistupujete k aplikacím z portálu moje aplikace:
 
-1. Přihlaste se na [panel přístupu k Azure](https://myapps.microsoft.com/)pomocí stávajícího hesla.
+1. Přihlaste se k [portálu moje aplikace](https://myapps.microsoft.com/)pomocí stávajícího hesla.
 
 2. V pravém horním rohu vyberte svůj profil a pak vyberte **profil**.
 
@@ -164,6 +164,6 @@ Tady jsou některé běžné chybové případy a jejich řešení:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](user-help-security-info-overview.md) .
+- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](./security-info-setup-signin.md) .
 
 - Pokud se pokoušíte vrátit se k osobnímu účtu, jako je Xbox, hotmail.com nebo outlook.com, zkuste návrhy v části [když se nemůžete přihlásit k vašemu účet Microsoft článku](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

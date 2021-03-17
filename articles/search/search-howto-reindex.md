@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85051737"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119097"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Postup opětovného sestavení indexu v Azure Kognitivní hledání
 
@@ -29,7 +29,7 @@ Opětovné sestavení by nemělo být zaměněno s aktualizací obsahu indexu po
 
 Pokud neměníte strukturu indexu, můžete index aktualizovat pomocí stejných technik, jako jste použili k načtení indexu zpočátku:
 
-* Pro indexování v režimu push volejte změny do indexu [zadáním přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) .
+* Pro indexování v režimu push volejte změny do indexu [zadáním přidat, aktualizovat nebo odstranit dokumenty](/rest/api/searchservice/addupdate-or-delete-documents) .
 
 * U indexerů můžete [naplánovat provádění indexeru](search-howto-schedule-indexers.md) a použít sledování změn nebo časová razítka k identifikaci rozdílu. Pokud se aktualizace musí projevit rychleji, než může Plánovač spravovat, můžete místo toho použít indexování v režimu push.
 
@@ -39,7 +39,7 @@ Pokud platí kterákoli z následujících podmínek, vyřaďte index a vytvořt
 
 | Podmínka | Description |
 |-----------|-------------|
-| Změna definice pole | Kontrola názvu pole, datového typu nebo konkrétních [atributů indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, plošky) vyžadují úplné opětovné sestavení. |
+| Změna definice pole | Kontrola názvu pole, datového typu nebo konkrétních [atributů indexu](/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, plošky) vyžadují úplné opětovné sestavení. |
 | Přiřazení analyzátoru k poli | [Analyzátory](search-analyzers.md) se definují v indexu a pak se přiřazují k polím. Novou definici analyzátoru můžete kdykoli přidat do indexu, ale když je pole Vytvořeno, můžete k němu *přiřadit* pouze analyzátor. To platí jak pro vlastnosti **analyzátoru** , tak pro **indexAnalyzer** . Vlastnost **searchAnalyzer** je výjimka (tuto vlastnost můžete přiřadit existujícímu poli). |
 | Aktualizace nebo odstranění definice analyzátoru v indexu | Existující konfiguraci analyzátoru (Analyzer, provádějících tokenizaci, filtr tokenu nebo filtr znaků) v indexu nelze odstranit, pokud znovu nevytvoříte celý index. |
 | Přidání pole do modulu pro návrhy | Pokud pole již existuje a chcete ho přidat [do konstrukce](index-add-suggesters.md) tvůrců, je nutné index znovu sestavit. |
@@ -48,7 +48,7 @@ Pokud platí kterákoli z následujících podmínek, vyřaďte index a vytvořt
 
 ## <a name="update-conditions"></a>Aktualizovat podmínky
 
-Mnoho dalších úprav lze provést bez vlivu na existující fyzické struktury. Konkrétně následující změny *nevyžadují opětovné* sestavení indexu. U těchto změn můžete [definici indexu aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) pomocí vašich změn.
+Mnoho dalších úprav lze provést bez vlivu na existující fyzické struktury. Konkrétně následující změny *nevyžadují opětovné* sestavení indexu. U těchto změn můžete [definici indexu aktualizovat](/rest/api/searchservice/update-index) pomocí vašich změn.
 
 + Přidání nového pole
 + Nastavení navýšení **atributu v** existujícím poli
@@ -58,7 +58,7 @@ Mnoho dalších úprav lze provést bez vlivu na existující fyzické struktury
 + Přidání, aktualizace nebo odstranění nastavení CORS
 + Přidat, aktualizovat nebo odstranit synonymMaps
 
-Když přidáte nové pole, u existujících indexovaných dokumentů se pro nové pole předává hodnota null. Při budoucí aktualizaci dat hodnoty z externích zdrojových dat nahradí hodnoty null přidané službou Azure Kognitivní hledání. Další informace o aktualizaci obsahu indexu najdete v tématu [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Když přidáte nové pole, u existujících indexovaných dokumentů se pro nové pole předává hodnota null. Při budoucí aktualizaci dat hodnoty z externích zdrojových dat nahradí hodnoty null přidané službou Azure Kognitivní hledání. Další informace o aktualizaci obsahu indexu najdete v tématu [Přidání, aktualizace nebo odstranění dokumentů](/rest/api/searchservice/addupdate-or-delete-documents).
 
 ## <a name="how-to-rebuild-an-index"></a>Postup opětovného sestavení indexu
 
@@ -68,32 +68,32 @@ Pro aplikace, které už jsou v produkčním prostředí, doporučujeme vytvoři
 
 Indexování se nespouští na pozadí a služba vyrovnává další indexování u probíhajících dotazů. Během indexování můžete na portálu [monitorovat požadavky](search-monitor-queries.md) na dotazy, aby se zajistilo, že dotazy budou dokončeny včas.
 
-1. Určete, zda je nutné znovu sestavit sestavení. Pokud přidáváte pouze pole nebo měníte část indexu, která nesouvisí s poli, je možné jednoduše [aktualizovat definici](https://docs.microsoft.com/rest/api/searchservice/update-index) bez odstranění, opětovného vytvoření a úplného opětovného načtení.
+1. Určete, zda je nutné znovu sestavit sestavení. Pokud přidáváte pouze pole nebo měníte část indexu, která nesouvisí s poli, je možné jednoduše [aktualizovat definici](/rest/api/searchservice/update-index) bez odstranění, opětovného vytvoření a úplného opětovného načtení.
 
-1. [Získejte definici indexu](https://docs.microsoft.com/rest/api/searchservice/get-index) pro případ, že ho budete potřebovat pro budoucí referenci.
+1. [Získejte definici indexu](/rest/api/searchservice/get-index) pro případ, že ho budete potřebovat pro budoucí referenci.
 
-1. [Vyřaďte existující index](https://docs.microsoft.com/rest/api/searchservice/delete-index)za předpokladu, že nespouštíte nové a staré indexy vedle sebe. 
+1. [Vyřaďte existující index](/rest/api/searchservice/delete-index)za předpokladu, že nespouštíte nové a staré indexy vedle sebe. 
 
    Všechny dotazy, které cílí na tento index, jsou okamžitě vyřazeny. Pamatujte, že odstranění indexu je nevratné a zničení fyzického úložiště pro kolekce polí a další konstrukce. Než se pustíte do úvahy o důsledcích, pozastavíte je. 
 
-1. [Vytvoří revidovaný index](https://docs.microsoft.com/rest/api/searchservice/create-index), kde tělo požadavku obsahuje změněné nebo upravené definice polí.
+1. [Vytvoří revidovaný index](/rest/api/searchservice/create-index), kde tělo požadavku obsahuje změněné nebo upravené definice polí.
 
-1. [Načtěte index s dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) z externího zdroje.
+1. [Načtěte index s dokumenty](/rest/api/searchservice/addupdate-or-delete-documents) z externího zdroje.
 
 Když vytvoříte index, fyzické úložiště se přidělí pro každé pole ve schématu indexu a pro každé prohledávatelné pole se vytvořil obrácený index. Pole, která nelze prohledávat, lze použít ve filtrech nebo výrazech, ale nemají obrácené indexy a nejsou fulltextové nebo přibližné prohledávatelné. Při opětovném sestavení indexu se tyto opačné indexy odstraní a znovu vytvoří na základě schématu indexu, který zadáte.
 
-Při načtení indexu se převedený index každého pole vyplní všemi jedinečnými slovy, která jsou v jednotlivých dokumentech, a s mapováním na odpovídající ID dokumentů. Například při indexování sady dat hotelů může obrácený index vytvořený pro pole City obsahovat výrazy pro Seattle, Portland a tak dále. K dokumentům, které obsahují Seattle nebo Portland v poli City, by mělo být uvedené ID dokumentu vedle termínu. U všech operací [Přidat, aktualizovat nebo odstranit](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) jsou výrazy a seznam ID dokumentů odpovídajícím způsobem aktualizovány.
+Při načtení indexu se převedený index každého pole vyplní všemi jedinečnými slovy, která jsou v jednotlivých dokumentech, a s mapováním na odpovídající ID dokumentů. Například při indexování sady dat hotelů může obrácený index vytvořený pro pole City obsahovat výrazy pro Seattle, Portland a tak dále. K dokumentům, které obsahují Seattle nebo Portland v poli City, by mělo být uvedené ID dokumentu vedle termínu. U všech operací [Přidat, aktualizovat nebo odstranit](/rest/api/searchservice/addupdate-or-delete-documents) jsou výrazy a seznam ID dokumentů odpovídajícím způsobem aktualizovány.
 
 > [!NOTE]
 > Pokud máte přísné požadavky na smlouvu SLA, můžete zvážit zřízení nové služby speciálně pro tuto práci s vývojem a indexováním, ke kterým dochází v plné izolaci z produkčního indexu. Samostatná služba se spouští na svém vlastním hardwaru a odstraňuje případné případné spory prostředků. Po dokončení vývoje můžete buď ponechat nový index na místě, přesměrovat dotazy do nového koncového bodu a indexu, nebo spustit dokončený kód pro publikování revidovaného indexu v původní službě Azure Kognitivní hledání. V současnosti není k dispozici žádný mechanismus pro přesun připraveného indexu do jiné služby.
 
 ## <a name="check-for-updates"></a>Vyhledat aktualizace
 
-Můžete zahájit dotazování indexu, jakmile se načte první dokument. Pokud znáte ID dokumentu, [vyhledávací dokument REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) vrátí konkrétní dokument. Pro širší testování byste měli počkat, až se index zcela načte, a pak použít dotazy k ověření kontextu, který očekáváte, abyste viděli.
+Můžete zahájit dotazování indexu, jakmile se načte první dokument. Pokud znáte ID dokumentu, [vyhledávací dokument REST API](/rest/api/searchservice/lookup-document) vrátí konkrétní dokument. Pro širší testování byste měli počkat, až se index zcela načte, a pak použít dotazy k ověření kontextu, který očekáváte, abyste viděli.
 
-K vyhledání aktualizovaného obsahu můžete použít [Průzkumníka služby Search](search-explorer.md) nebo nástroj pro testování webu, jako je například [post](search-get-started-postman.md) .
+K vyhledání aktualizovaného obsahu můžete použít [Průzkumníka služby Search](search-explorer.md) nebo nástroj pro testování webu, jako je například [post](search-get-started-rest.md) nebo [Visual Studio Code](search-get-started-vs-code.md) .
 
-Pokud jste přidali nebo přejmenovali pole, použijte [$Select](search-query-odata-select.md) k vrácení tohoto pole:`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
+Pokud jste přidali nebo přejmenovali pole, použijte [$Select](search-query-odata-select.md) k vrácení tohoto pole: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Viz také
 

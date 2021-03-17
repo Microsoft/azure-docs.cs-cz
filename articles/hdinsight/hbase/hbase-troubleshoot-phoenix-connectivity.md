@@ -3,16 +3,13 @@ title: Problémy s připojením Apache Phoenix ve službě Azure HDInsight
 description: Problémy s připojením mezi Apache HBA a Apache Phoenix ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cc6556f681ece170bdfe02b985f56274c0faa1e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75887287"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936962"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scénář: Apache Phoenix problémy s připojením ve službě Azure HDInsight
 
@@ -28,7 +25,7 @@ Nesprávná IP adresa aktivního uzlu Zookeeper
 
 ### <a name="resolution"></a>Řešení
 
-IP adresu aktivního uzlu Zookeeper můžete identifikovat z uživatelského rozhraní Ambari pomocí odkazů na **adaptéry**pro  >  **Rychlé odkazy**  >  **ZK (aktivní)**  >  **Zookeeper informace**. Opravte IP adresu podle potřeby.
+IP adresu aktivního uzlu Zookeeper můžete identifikovat z uživatelského rozhraní Ambari pomocí odkazů na **adaptéry** pro  >  **Rychlé odkazy**  >  **ZK (aktivní)**  >  **Zookeeper informace**. Opravte IP adresu podle potřeby.
 
 ---
 
@@ -66,4 +63,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

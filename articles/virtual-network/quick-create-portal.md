@@ -11,12 +11,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc3ba3a0519400368e0cbfec7abe2d9bd1731b34
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082433"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217630"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí webu Azure Portal
 
@@ -28,28 +28,28 @@ V tomto rychlém startu se dozvíte, jak vytvořit virtuální síť pomocí Azu
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
 1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Z Azure Marketplace vyberte **síť**  >  **virtuální síť**.
 
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit virtuální síť** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK**. |
     | Name | Zadejte *myVirtualNetwork*. |
     | Umístění | Vyberte **USA – východ**.|
 
-1. Vyberte **Další: IP adresy**a pro **adresní prostor IPv4**zadejte *10.1.0.0/16*.
+1. Vyberte **Další: IP adresy** a pro **adresní prostor IPv4** zadejte *10.1.0.0/16*.
 
-1. Vyberte **Přidat podsíť**a pak jako **název podsítě** zadejte *myVirtualSubnet* a *10.1.0.0/24* pro **Rozsah adres podsítě**.
+1. Vyberte **Přidat podsíť** a pak jako **název podsítě** zadejte *myVirtualSubnet* a *10.1.0.0/24* pro **Rozsah adres podsítě**.
 
-1. Vyberte **Přidat**a pak vybrat **zkontrolovat + vytvořit**. Ponechte REST jako výchozí a vyberte **vytvořit**.
+1. Vyberte **Přidat** a pak vybrat **zkontrolovat + vytvořit**. Ponechte REST jako výchozí a vyberte **vytvořit**.
 
-1. V nástroji **vytvořit virtuální síť**vyberte **vytvořit**.
+1. V nástroji **vytvořit virtuální síť** vyberte **vytvořit**.
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -61,14 +61,14 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V Azure Marketplace vyberte **COMPUTE**  >  **Windows Server 2019 Datacenter**. Vyberte **Vytvořit**.
 
-1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Tuto skupinu prostředků jste vytvořili v předchozí části. |
-    | **Podrobnosti instance** |  |
+    | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte *myVm1*. |
     | Oblast | Vyberte **USA – východ**. |
     | Možnosti dostupnosti | Ve výchozím nastavení **není nutná žádná redundance infrastruktury**. |
@@ -76,19 +76,19 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Velikost | Výchozí hodnota je **Standard DS1 v2**. |
     | **Účet správce** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
-    | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
-    | **Pravidla portů pro příchozí provoz** |  |
+    | **Pravidla portů pro příchozí spojení** |  |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Zadejte *http (80)* a *RDP (3389)*. |
+    | Vyberte příchozí porty | Zadejte *http (80)* a *RDP (3389)*. |
     | **Úspora peněz** |  |
     | Máte už licenci na Windows? | Výchozí hodnota je **ne**. |
 
 1. Vyberte **Další: disky**.
 
-1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+1. V části **vytvořit virtuální počítač – disky** ponechte výchozí hodnoty a vyberte **Další: sítě**.
 
-1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
+1. V nástroji **vytvořit virtuální počítač – síť** vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -97,41 +97,41 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Veřejná IP adresa | Výchozí hodnota je **(New) myVm-IP**. |
     | Skupina zabezpečení sítě NIC | Výchozí hodnota je **Basic**. |
     | Veřejné příchozí porty | Výchozí **povolí vybrané porty**. |
-    | Vybrat příchozí porty | Výchozí hodnota je **http** a **RDP**.
+    | Vyberte příchozí porty | Výchozí hodnota je **http** a **RDP**.
 
 1. Vyberte **Další: Správa**.
 
-1. V **nástroji vytvořit virtuální počítač**pro **účet úložiště pro diagnostiku**vyberte **vytvořit novou**.
+1. V **nástroji vytvořit virtuální počítač** pro **účet úložiště pro diagnostiku** vyberte **vytvořit novou**.
 
-1. V nástroji **vytvořit účet úložiště**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit účet úložiště** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *myvmstorageaccount*. Pokud se tento název povede, vytvořte jedinečný název.|
-    | Account kind (Druh účtu) | Výchozí hodnota pro **Storage (pro obecné účely V1)**. |
+    | Druh účtu | Výchozí hodnota pro **Storage (pro obecné účely V1)**. |
     | Výkon | Výchozí hodnota je **Standard**. |
     | Replikace | Výchozí pro **místně redundantní úložiště (LRS)**. |
 
-1. Vyberte **OK**a pak vyberte **zkontrolovat + vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **OK** a pak vyberte **zkontrolovat + vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
 Zopakováním postupu v předchozí části vytvořte další virtuální počítač.
 
 > [!IMPORTANT]
-> Jako **název virtuálního počítače**zadejte *myVm2*.
+> Jako **název virtuálního počítače** zadejte *myVm2*.
 >
-> V případě **účtu úložiště pro diagnostiku**se ujistěte, že jste vybrali možnost **myvmstorageaccount**namísto vytvoření.
+> V případě **účtu úložiště pro diagnostiku** se ujistěte, že jste vybrali možnost **myvmstorageaccount** namísto vytvoření.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-Po vytvoření *myVm1*se připojte k Internetu.
+Po vytvoření *myVm1* se připojte k Internetu.
 
 1. V Azure Portal vyhledejte a vyberte *myVm1*.
 
-1. Vyberte **připojit**a pak **RDP**.
+1. Vyberte **připojit** a pak **RDP**.
 
     ![Připojení k virtuálnímu počítači](./media/quick-create-portal/connect-to-virtual-machine.png)
 
@@ -144,17 +144,17 @@ Po vytvoření *myVm1*se připojte k Internetu.
 1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
     > [!NOTE]
-    > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+    > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Při přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Při přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
 
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
-1. Ve vzdálené ploše *myVm1*otevřete PowerShell.
+1. Ve vzdálené ploše *myVm1* otevřete PowerShell.
 
 1. Zadejte `ping myVm2`.
 
@@ -225,4 +225,4 @@ Další informace o nastavení virtuální sítě najdete v tématu [Vytvoření
 Ve výchozím nastavení umožňuje Azure zabezpečenou komunikaci mezi virtuálními počítači. Azure umožňuje příchozí připojení vzdálené plochy k virtuálním počítačům s Windows z Internetu. Další informace o typech komunikace sítě virtuálních počítačů najdete v tématu [filtrování síťového provozu](tutorial-filter-network-traffic.md).
 
 > [!NOTE] 
-> Náklady na služby Azure Services. Azure Cost Management vám pomůže nastavit rozpočty a nakonfigurovat výstrahy, aby zůstaly pod kontrolou. Pomocí Cost Management Analyzujte, spravujte a optimalizujte náklady na Azure. Další informace najdete v [rychlém startu při analýze vašich nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+> Náklady na služby Azure Services. Azure Cost Management vám pomůže nastavit rozpočty a nakonfigurovat výstrahy, aby zůstaly pod kontrolou. Pomocí Cost Management Analyzujte, spravujte a optimalizujte náklady na Azure. Další informace najdete v [rychlém startu při analýze vašich nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

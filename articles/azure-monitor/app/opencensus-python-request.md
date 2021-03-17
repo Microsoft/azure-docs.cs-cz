@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: c94bc949f13ee19a9d2150c9d3c1b6a2bdb959b2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3b029a9cb14a81c80072847dc17d6b71f480743f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850062"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585673"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Sledování příchozích požadavků pomocí OpenCensus Pythonu
 
@@ -33,7 +33,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
     )
     ```
 
-3. Ujistěte se, že je AzureExporter správně nakonfigurovaný v `settings.py` rámci `OPENCENSUS` . Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS` .
+3. Ujistěte se, že je AzureExporter správně nakonfigurovaný v `settings.py` rámci `OPENCENSUS` . Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `EXCLUDELIST_PATHS` .
 
     ```python
     OPENCENSUS = {
@@ -42,7 +42,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -74,7 +74,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
     
     ```
 
-2. Aplikaci můžete také nakonfigurovat `flask` přes `app.config` . Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS` .
+2. Aplikaci můžete také nakonfigurovat `flask` přes `app.config` . Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `EXCLUDELIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -83,7 +83,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -100,7 +100,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. Doplnění můžete nakonfigurovat `pyramid` přímo v kódu. Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS` .
+2. Doplnění můžete nakonfigurovat `pyramid` přímo v kódu. Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `EXCLUDELIST_PATHS` .
 
     ```python
     settings = {
@@ -110,18 +110,73 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                     connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+                'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }
     config = Configurator(settings=settings)
     ```
 
+## <a name="tracking-fastapi-applications"></a>Sledování aplikací FastAPI
+
+OpenCensus nemá příponu pro FastAPI. Chcete-li napsat vlastní middleware FastAPI, proveďte následující kroky:
+
+1. Jsou vyžadovány následující závislosti: 
+    - [fastapi](https://pypi.org/project/fastapi/)
+    - [uvicorn](https://pypi.org/project/uvicorn/)
+
+2. Přidejte [middleware FastAPI](https://fastapi.tiangolo.com/tutorial/middleware/). Ujistěte se, že jste nastavili server typu span: `span.span_kind = SpanKind.SERVER` .
+
+3. Spusťte aplikaci. Volání do vaší aplikace FastAPI by měla být automaticky sledována a telemetrii by měla být zaprotokolována přímo Azure Monitor.
+
+    ```python 
+    # Opencensus imports
+    from opencensus.ext.azure.trace_exporter import AzureExporter
+    from opencensus.trace.samplers import ProbabilitySampler
+    from opencensus.trace.tracer import Tracer
+    from opencensus.trace.span import SpanKind
+    from opencensus.trace.attributes_helper import COMMON_ATTRIBUTES
+    # FastAPI imports
+    from fastapi import FastAPI, Request
+    # uvicorn
+    import uvicorn
+
+    app = FastAPI()
+
+    HTTP_URL = COMMON_ATTRIBUTES['HTTP_URL']
+    HTTP_STATUS_CODE = COMMON_ATTRIBUTES['HTTP_STATUS_CODE']
+
+    # fastapi middleware for opencensus
+    @app.middleware("http")
+    async def middlewareOpencensus(request: Request, call_next):
+        tracer = Tracer(exporter=AzureExporter(connection_string=f'InstrumentationKey={APPINSIGHTS_INSTRUMENTATIONKEY}'),sampler=ProbabilitySampler(1.0))
+        with tracer.span("main") as span:
+            span.span_kind = SpanKind.SERVER
+
+            response = await call_next(request)
+
+            tracer.add_attribute_to_current_span(
+                attribute_key=HTTP_STATUS_CODE,
+                attribute_value=response.status_code)
+            tracer.add_attribute_to_current_span(
+                attribute_key=HTTP_URL,
+                attribute_value=str(request.url))
+
+        return response
+
+    @app.get("/")
+    async def root():
+        return "Hello World!"
+
+    if __name__ == '__main__':
+        uvicorn.run("example:app", host="127.0.0.1", port=5000, log_level="info")
+    ```
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Mapa aplikace](./app-map.md)
 * [Dostupnost](./monitor-web-app-availability.md)
-* [Vyhledávání](./diagnostic-search.md)
-* [Dotaz na protokol (Analytics)](../log-query/log-query-overview.md)
+* [Hledání](./diagnostic-search.md)
+* [Dotaz na protokol (Analytics)](../logs/log-query-overview.md)
 * [Diagnostika transakcí](./transaction-diagnostics.md)
 

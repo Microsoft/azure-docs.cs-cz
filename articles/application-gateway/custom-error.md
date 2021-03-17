@@ -1,22 +1,22 @@
 ---
 title: Vytvořit vlastní chybové stránky pro Azure Application Gateway
-description: V tomto článku se dozvíte, jak vytvořit Application Gateway vlastní chybové stránky. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
+description: V tomto článku se dozvíte, jak vytvořit Application Gateway vlastní chybové stránky. U vlastní chybové stránky můžete použít vlastní branding a rozložení.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d78f7aa2a02f14dc9b875895e3057bd4dee29b74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355caeb54f09797ae719f21401ceebb7d53d745a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808090"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592716"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Vytvořit Application Gateway vlastní chybové stránky
 
-Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
+Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní branding a rozložení.
 
 Můžete například definovat vlastní stránku údržby, pokud vaše webová aplikace není dostupná. Nebo můžete vytvořit neoprávněnou stránku přístupu, pokud se do webové aplikace pošle škodlivá žádost.
 
@@ -48,7 +48,7 @@ Po zadání chybové stránky ji služba Application Gateway stáhne z umístěn
 
 1. Na portálu přejděte na Application Gateway a vyberte Application Gateway.
 
-    ![AG – přehled](media/custom-error/ag-overview.png)
+    ![Snímek obrazovky se zobrazí stránka s přehledem pro aplikační bránu.](media/custom-error/ag-overview.png)
 2. Klikněte na **naslouchací procesy** a přejděte na konkrétní naslouchací proces, kde chcete zadat chybovou stránku.
 
     ![Naslouchací procesy Application Gateway](media/custom-error/ag-listener.png)
@@ -65,13 +65,23 @@ Po zadání chybové stránky ji služba Application Gateway stáhne z umístěn
 
 Pomocí Azure PowerShell můžete nakonfigurovat vlastní chybovou stránku. Například globální vlastní chybová stránka:
 
-`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+```powershell
+$appgw   = Get-AzApplicationGateway -Name <app-gateway-name> -ResourceGroupName <resource-group-name>
+
+$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
+```
 
 Nebo na stránce s chybou úrovně naslouchacího procesu:
 
-`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+```powershell
+$appgw   = Get-AzApplicationGateway -Name <app-gateway-name> -ResourceGroupName <resource-group-name>
 
-Další informace najdete v tématech [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) a [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+$listener01 = Get-AzApplicationGatewayHttpListener -Name <listener-name> -ApplicationGateway $appgw
+
+$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
+```
+
+Další informace najdete v tématech [Add-AzApplicationGatewayCustomError](/powershell/module/az.network/add-azapplicationgatewaycustomerror) a [Add-AzApplicationGatewayHttpListenerCustomError](/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/14/2018
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 21c24fba2cbe03b17a057c09f95d9dd0d3665dc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064533"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649258"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo připojení typu VNet-to-VNet
 
@@ -34,9 +34,8 @@ Tento článek poskytuje pokyny k vytvoření a konfiguraci zásad IPsec/IKE a p
 
 > [!IMPORTANT]
 > 1. Zásady IPsec/IKE fungují jenom na následujících SKU brány:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (směrování založené na trasách)
->    * ***Standard*** a ***HighPerformance*** (směrování založené na trasách)
-> 2. Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
+>    * ***VpnGw1, VpnGw2, VpnGw3** _ (směrování založené na trasách) _ ***standardní** _ a _*_HighPerformance_*_ (směrování založené na trasách)
+> 2. Pro dané připojení můžete zadat jenom _*_jednu_*_ kombinaci zásad.
 > 3. Je nutné zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
 > 4. Pokud chcete zajistit, aby se zásady na místních zařízeních VPN podporovaly, kontaktujte specifikace dodavatele zařízení VPN. Připojení S2S nebo VNet-to-VNet nelze nastavit, pokud jsou zásady nekompatibilní.
 
@@ -56,7 +55,7 @@ Pokyny v tomto článku vám pomůžou nastavit a nakonfigurovat zásady IPsec/I
 
 Následující tabulka uvádí podporované kryptografické algoritmy a síly klíče, které můžou zákazníci konfigurovat:
 
-| **IPsec/IKEv2**  | **Možnosti**    |
+| _ *IPSec/IKEv2**  | **Možnosti**    |
 | ---  | --- 
 | Šifrování protokolem IKEv2 | AES256, AES192, AES128, DES3, DES  
 | Integrita protokolu IKEv2  | SHA384, SHA256, SHA1, MD5  |
@@ -83,7 +82,7 @@ Následující tabulka uvádí podporované kryptografické algoritmy a síly kl
 > 3. V tabulce výše:
 >    * IKEv2 odpovídá hlavnímu režimu nebo fázi 1.
 >    * Protokol IPsec odpovídá rychlému režimu nebo fázi 2.
->    * Skupina DH určuje skupinu Diffie-Hellmen použitou v hlavním režimu nebo fázi 1.
+>    * Skupina DH určuje Diffie-Hellmen skupinu použitou v hlavním režimu nebo ve fázi 1.
 >    * Skupina PFS zadala skupinu Diffie-Hellmen použitou v rychlém režimu nebo ve fázi 2.
 > 4. V branách Azure VPN Gateway je doba života přidružení zabezpečení protokolu IKEv2 v hlavním režimu pevně nastavena na 28 800 sekund.
 > 5. Nastavení "UsePolicyBasedTrafficSelectors" na $True v připojení nakonfiguruje bránu Azure VPN Gateway, aby se připojovala k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu, které jsou definované se všemi kombinacemi předpon vaší místní sítě (místní síťová brána), a to místo any-to-Any. Například pokud jsou předpony vaší místní sítě 10.1.0.0/16 a 10.2.0.0/16 a předpony vaší virtuální sítě jsou 192.168.0.0/16 a 172.16.0.0/16, je potřeba zadat následující selektory provozu:
@@ -94,7 +93,7 @@ Následující tabulka uvádí podporované kryptografické algoritmy a síly kl
 
 Další informace o selektorech provozu na základě zásad najdete v tématu [připojení několika místních zařízení VPN založených na zásadách](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-V následující tabulce jsou uvedeny odpovídající skupiny Diffie-Hellman podporované vlastními zásadami:
+Následující tabulka obsahuje seznam odpovídajících skupin Diffie-Hellman podporovaných vlastními zásadami:
 
 | **Skupina Diffie-Hellman**  | **DHGroup**              | **PFSGroup** | **Délka klíče** |
 | --- | --- | --- | --- |
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojte se k předplatnému a vytvořte novou skupinu prostředků.
 
-Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo možné používat rutiny Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
+Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo možné používat rutiny Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../azure-resource-manager/management/manage-resources-powershell.md).
 
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 

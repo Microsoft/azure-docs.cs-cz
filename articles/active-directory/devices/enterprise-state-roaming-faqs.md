@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274081"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173120"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na některé otázky, které správci IT můž
 > [!NOTE]
 > Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](/deployedge/microsoft-edge-enterprise-sync).
 
-**Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
+**Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](/windows/uwp/design/app-settings/store-and-retrieve-app-data) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Jaký účet se má použít k synchronizaci nastavení?
 
@@ -66,7 +66,7 @@ Pokud se místní doména služby Active Directory připojí k Azure AD, zaříz
 Pokud jste v podnikovém zařízení uložili nějaké osobní údaje, měli byste si uvědomit, že se operační systém Windows a data aplikací začnou synchronizovat do Azure AD. To má následující důsledky:
 
 * Vaše osobní nastavení účet Microsoft přijde od nastavení vašich pracovních nebo školních účtů Azure AD. Důvodem je to, že synchronizace nastavení účet Microsoft a Azure AD teď používá samostatné účty.
-* Osobní údaje, jako jsou hesla Wi-Fi, webové přihlašovací údaje a oblíbené položky aplikace Internet Explorer, které byly dříve synchronizovány prostřednictvím připojeného účet Microsoft, budou synchronizovány prostřednictvím služby Azure AD.
+* Osobní údaje, například Wi-Fi hesla, Webová pověření a oblíbené položky aplikace Internet Explorer, které byly dříve synchronizovány prostřednictvím připojeného účet Microsoft, budou synchronizovány prostřednictvím služby Azure AD.
 
 ## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Jak účet Microsoft a spolupráce Enterprise State Roaming služby Azure AD funguje?
 
@@ -77,7 +77,7 @@ V listopadu 2015 nebo novějších verzích Windows 10 se Enterprise State Roami
 Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Azure AD, musíte aktualizovat registr zařízení, aby komunikoval se službou Azure Rights Management pro každého tenanta Azure AD.  
 
 1. Vyhledejte identifikátor GUID pro každého tenanta Azure AD. Otevřete Azure Portal a vyberte tenanta Azure AD. Identifikátor GUID pro tenanta se nachází na stránce vlastností vybraného tenanta ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) s popiskem **ID adresáře**. 
-2. Po identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **.
+2. Po dokončení identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**.
    Z klíče **GUID ID tenanta** vytvořte novou hodnotu s více řetězci (reg-multi-SZ) s názvem **AllowedRMSServerUrls**. Pro svá data zadejte adresy URL distribučního bodu pro licencování ostatních tenantů Azure, ke kterým zařízení přistupuje.
 3. Adresy URL distribučního bodu licencování můžete najít spuštěním rutiny **Get-AadrmConfiguration** z modulu aadrm. Pokud se hodnoty pro **LicensingIntranetDistributionPointUrl** a **LicensingExtranetDistributionPointUrl** liší, zadejte obě hodnoty. Pokud jsou hodnoty stejné, zadejte hodnotu pouze jednou.
 
@@ -85,10 +85,10 @@ Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Az
 
 Roaming funguje jenom pro univerzální aplikace pro Windows. K dispozici jsou dvě možnosti, jak povolit roaming ve stávající desktopové aplikaci pro Windows:
 
-* [Most pro stolní počítače](https://aka.ms/desktopbridge) vám pomůže přenést stávající desktopové aplikace Windows do Univerzální platforma Windows. Z tohoto místa se budou vyžadovat minimální změny kódu, aby bylo možné využívat roaming dat aplikací Azure AD. Most pro stolní počítače poskytuje vašim aplikacím identitu aplikace, která je nutná k povolení roamingu dat aplikací pro existující aplikace klasické pracovní plochy.
-* [Virtualizace uživatelského prostředí (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) vám pomůže vytvořit vlastní šablonu nastavení pro stávající desktopové aplikace pro Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojář aplikace změnil kód aplikace. Pro zákazníky, kteří si zakoupili sadu Microsoft Desktop Optimization Pack, je UE-V omezený na místní roaming služby Active Directory.
+* [Most pro stolní počítače](/windows/msix/desktop/source-code-overview) vám pomůže přenést stávající desktopové aplikace Windows do Univerzální platforma Windows. Z tohoto místa se budou vyžadovat minimální změny kódu, aby bylo možné využívat roaming dat aplikací Azure AD. Most pro stolní počítače poskytuje vašim aplikacím identitu aplikace, která je nutná k povolení roamingu dat aplikací pro existující aplikace klasické pracovní plochy.
+* [Virtualizace uživatelského prostředí (UE-V)](/previous-versions//dn458947(v=vs.85)) vám pomůže vytvořit vlastní šablonu nastavení pro stávající desktopové aplikace pro Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojář aplikace změnil kód aplikace. Pro zákazníky, kteří si zakoupili sadu Microsoft Desktop Optimization Pack, je UE-V omezený na místní roaming služby Active Directory.
 
-Správci můžou nakonfigurovat vícefaktorové technologie pro roaming dat aplikací klasické pracovní plochy Windows změnou roamingu nastavení operačního systému Windows a univerzálních aplikačních dat pomocí [zásad skupiny s podporou UE-v](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně těchto:
+Správci můžou nakonfigurovat vícefaktorové technologie pro roaming dat aplikací klasické pracovní plochy Windows změnou roamingu nastavení operačního systému Windows a univerzálních aplikačních dat pomocí [zásad skupiny s podporou UE-v](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně těchto:
 
 * Nastavení roamingu zásady skupiny pro Windows
 * Nesynchronizovat zásady skupiny aplikací pro Windows

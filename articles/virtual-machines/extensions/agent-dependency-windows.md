@@ -1,25 +1,19 @@
 ---
 title: Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows
 description: Nasaďte agenta závislostí Azure Monitor na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
-services: virtual-machines-windows
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.service: virtual-machines
+ms.subservice: extensions
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.collection: windows
+ms.date: 03/29/2019
+ms.openlocfilehash: 429cc01f466c55283985729c3395bb2137e38fa6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250670"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566294"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows
 
@@ -27,7 +21,7 @@ Funkce mapa Azure Monitor pro virtuální počítače získá data od agenta zá
 
 ## <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta závislostí virtuálních počítačů Azure pro Windows je možné spustit s podporovanými operačními systémy uvedenými v části [podporované operační systémy](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) v článku věnovaném nasazení Azure monitor pro virtuální počítače.
+Rozšíření agenta závislostí virtuálních počítačů Azure pro Windows je možné spustit s podporovanými operačními systémy uvedenými v části [podporované operační systémy](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) v článku věnovaném nasazení Azure monitor pro virtuální počítače.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -125,7 +119,7 @@ Když umístíte JSON rozšíření do kořenového adresáře šablony, název 
 }
 ```
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 Pomocí `Set-AzVMExtension` příkazu můžete nasadit rozšíření virtuálního počítače agenta závislosti na existující virtuální počítač. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
 

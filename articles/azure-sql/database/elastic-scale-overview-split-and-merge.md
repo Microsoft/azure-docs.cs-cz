@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047521"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793462"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Nástroj pro dělení a slučování se spouští jako webová služba Azure. Sp
 
 ## <a name="why-use-the-split-merge-tool"></a>Proč používat nástroj pro dělení a slučování
 
-- **Flexibilita**
+- **Umožněn**
 
   Aplikace musí být pružně roztaženy nad limity izolované databáze v Azure SQL Database. Pomocí tohoto nástroje můžete přesouvat data podle potřeby do nových databází a přitom zachovat integritu.
 
@@ -53,7 +53,7 @@ Nástroj pro dělení a slučování se spouští jako webová služba Azure. Sp
 
 - **Sloučit do zmenšení**
 
-  Nároky na kapacitu se zmenšují z důvodu sezónní povahy podniku. Nástroj umožňuje horizontální snížení kapacity v menším množství jednotek škálování v případě, že je čas společnosti pomalý. Tato podmínka pokrývá funkci Merge ve službě elastického škálování Split-Merge.
+  Nároky na kapacitu se zmenšují z důvodu sezónní povahy podniku. Nástroj umožňuje horizontální snížení kapacity v menším množství jednotek škálování v případě, že je čas společnosti pomalý. Tento požadavek se zabývá funkcí Merge ve službě elastického škálování Split-Merge.
 
 - **Správa aktivních bodů přesunutím shardlety**
 
@@ -117,7 +117,7 @@ Nástroj pro dělení a slučování se spouští jako webová služba Azure. Sp
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    Tabulky "region" a "země" jsou definovány jako referenční tabulky a budou zkopírovány pomocí operací rozdělit/sloučit/přesunout. "Customer" a "Orders" jsou definovány jako tabulky horizontálně dělené. `C_CUSTKEY`a `O_CUSTKEY` slouží jako horizontálního dělení klíč.
+    Tabulky "region" a "země" jsou definovány jako referenční tabulky a budou zkopírovány pomocí operací rozdělit/sloučit/přesunout. "Customer" a "Orders" jsou definovány jako tabulky horizontálně dělené. `C_CUSTKEY` a `O_CUSTKEY` slouží jako horizontálního dělení klíč.
 
 - **Referenční integrita**
 
@@ -187,7 +187,7 @@ Služba dělení a slučování běží jako cloudová služba v rámci předpla
 
 Služba rozdělení a sloučení poskytuje tabulku **stavem žádosti** v databázi úložiště metadat pro monitorování dokončených a probíhajících požadavků. Tabulka obsahuje řádek pro každou žádost o dělené sloučení, která byla odeslána do této instance služby dělení a slučování. Pro každý požadavek poskytuje tyto informace:
 
-- **Časové razítko**
+- **Timestamp**
 
   Čas a datum spuštění žádosti.
 
@@ -220,7 +220,7 @@ Služba dělení a slučování používá pro monitorování a diagnostiku Azur
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 Pokud chcete povolit monitorování a diagnostiku pomocí diagnostické konfigurace pro webové a pracovní role poskytované balíčkem NuGet, spusťte následující příkazy pomocí Azure PowerShell:
 
@@ -244,7 +244,7 @@ Další informace o tom, jak nakonfigurovat a nasadit nastavení diagnostiky, na
 
 ## <a name="retrieve-diagnostics"></a>Načíst diagnostiku
 
-K diagnostice můžete snadno přistupovat ze sady Visual Studio Průzkumník serveru v části Azure stromu Průzkumník serveru. Otevřete instanci sady Visual Studio a v řádku nabídek klikněte na tlačítko Zobrazit a Průzkumník serveru. Kliknutím na ikonu Azure se připojíte k vašemu předplatnému Azure. Pak přejděte do tabulky Azure-> úložiště-> `<your storage account>` -> Tables – > WADLogsTable. Další informace najdete v tématu [Průzkumník serveru](https://msdn.microsoft.com/library/x603htbk.aspx).
+K diagnostice můžete snadno přistupovat ze sady Visual Studio Průzkumník serveru v části Azure stromu Průzkumník serveru. Otevřete instanci sady Visual Studio a v řádku nabídek klikněte na tlačítko Zobrazit a Průzkumník serveru. Kliknutím na ikonu Azure se připojíte k vašemu předplatnému Azure. Pak přejděte do tabulky Azure-> úložiště-> `<your storage account>` -> Tables – > WADLogsTable. Další informace najdete v tématu [Průzkumník serveru](/previous-versions/x603htbk(v=vs.140)).
 
 ![WADLogsTable][2]
 

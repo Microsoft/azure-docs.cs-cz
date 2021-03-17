@@ -10,19 +10,19 @@ metadata:
   author: craigg-msft
   ms.author: craigg
   ms.date: 03/30/2020
-  ms.openlocfilehash: 7795ebe8e988cfe2cea41e7fcadf955a354d9a5e
-  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.openlocfilehash: 6205f11a9c6e0ba47541474b874397cad90e7464
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/31/2020
-  ms.locfileid: "80422940"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95024258"
 landingContent:
 - title: Začínáme
   linkLists:
   - linkListType: overview
     links:
     - text: Co je Azure SQL Server Stretch Database?
-      url: https://docs.microsoft.com/sql/sql-server/stretch-database/stretch-database
+      url: /sql/sql-server/stretch-database/stretch-database
   - linkListType: video
     links:
     - text: Video k Azure SQL Server Stretch Database
@@ -30,6 +30,6 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Určení databází a tabulek pro Stretch Database s využitím Data Migration Assistanta
-      url: https://docs.microsoft.com/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
+      url: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
     - text: Začínáme spuštěním průvodce povolením funkce Stretch pro databázi
-      url: https://docs.microsoft.com/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
+      url: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard

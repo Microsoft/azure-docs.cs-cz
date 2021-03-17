@@ -3,17 +3,19 @@ title: Nastavení ovladače GPU řady AMD pro Windows N-Series pro Windows
 description: Jak nastavit ovladače AMD GPU pro virtuální počítače řady N-Series s Windows serverem nebo Windows v Azure
 author: vikancha-MSFT
 manager: jkabat
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: vm-sizes-gpu
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62723a0fee6a3f696c517bc642fdac8cfa80a6b9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998999"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557416"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů AMD GPU pro virtuální počítače řady N-Series s Windows
 
@@ -31,7 +33,13 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 | Operační systém | Ovladač |
 | -------- |------------- |
-| Windows 10 Enterprise multi-session – Build 1903 <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
+| Windows 10 Enterprise multi-session – Build 1909 <br/><br/>Windows 10 – Build 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (. exe) |
+
+ > [!NOTE]
+   >  Pokud používáte Build 1903/1909, možná budete muset aktualizovat následující zásady skupiny pro zajištění optimálního výkonu. Tyto změny nejsou potřeba pro žádná další sestavení Windows.
+   >  
+   >  [Konfigurace počítače->zásady – >nastavení systému Windows – >Šablony pro správu->součásti systému Windows – >Vzdálená plocha – >Hostitel relace vzdálené plochy->prostředí vzdálené plochy] nastavte zásadu [použít pro připojení ke vzdálené ploše ovladač zobrazovací jednotka WDDM] k zakázání.
+   >  
 
 
 ## <a name="driver-installation"></a>Instalace ovladače
@@ -46,13 +54,14 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 ## <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 
-Instalaci ovladače můžete ověřit v Device Manager. Následující příklad ukazuje úspěšnou konfiguraci karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
+Instalaci ovladače můžete ověřit v Správce zařízení. Následující příklad ukazuje úspěšnou konfiguraci karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
 <br />
-![Vlastnosti ovladače GPU](./media/n-series-amd-driver-setup/device-manager.png)
+
+![Snímek obrazovky, který zobrazuje úspěšnou konfiguraci karty Instinct MI25 na virtuálním počítači Azure NVv4.](./media/n-series-amd-driver-setup/device-manager.png)
 
 Pomocí nástroje Dxdiag můžete ověřit zobrazované vlastnosti GPU, včetně video RAM. Následující příklad ukazuje oddíl 1/2 karty Instinct MI25 na virtuálním počítači Azure NVv4.
 <br />
-![Vlastnosti ovladače GPU](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
+![Snímek obrazovky, který zobrazuje oddíl 1/2 karty Instinct MI25 na virtuálním počítači Azure NVv4.](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Pokud používáte Windows 10 Build 1903 nebo vyšší, dxdiag na kartě Display (zobrazení) nezobrazí žádné informace. Použijte prosím v dolní části možnost Uložit všechny informace a ve výstupním souboru se zobrazí informace související s procesorem AMD MI25 GPU.
 

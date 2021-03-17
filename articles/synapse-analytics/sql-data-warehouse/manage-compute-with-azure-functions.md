@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Správa výpočtů pomocí Azure Functions'
-description: Jak používat Azure Functions ke správě výpočetních prostředků vašeho fondu SQL ve službě Azure synapse Analytics.
+description: Jak používat Azure Functions ke správě výpočtů vyhrazeného fondu SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543652"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448373"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Použití Azure Functions ke správě výpočetních prostředků ve fondu SQL Azure synapse Analytics
+# <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Použití Azure Functions ke správě výpočetních prostředků pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
-V tomto kurzu se používá Azure Functions ke správě výpočetních prostředků pro fond SQL ve službě Azure synapse Analytics.
+V tomto kurzu se používá Azure Functions ke správě výpočetních prostředků pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics.
 
-Aby bylo možné používat Azure Function App s fondem SQL, je nutné vytvořit [účet instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) s přístupem přispěvatele v rámci stejného předplatného, jako je vaše instance fondu SQL.
+Pokud chcete použít Function App Azure s vyhrazeným fondem SQL (dřív SQL DW), musíte vytvořit [instanční účet](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Účet instančního objektu vyžaduje přístup přispěvatele ve stejném předplatném jako vaše vyhrazená instance fondu SQL (dřív SQL DW).
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Nasazení škálování založeného na časovači pomocí šablony Azure Resource Manager
 
 K nasazení šablony potřebujete následující informace:
 
-- Název skupiny prostředků, ve které je vaše instance fondu SQL
-- Název serveru, ve kterém je instance fondu SQL
-- Název vaší instance fondu SQL
+- Název skupiny prostředků, ve které je instance vyhrazeného fondu SQL (dříve SQL DW) součástí
+- Název serveru, ve kterém je instance vyhrazeného fondu SQL (dříve SQL DW) v
+- Název vaší vyhrazené instance fondu SQL (dříve SQL DW)
 - ID tenanta (ID adresáře) vaší služby Azure Active Directory
 - ID předplatného
 - ID aplikace instančního objektu
@@ -48,13 +48,13 @@ Po nasazení šablony byste měli najít tři nové prostředky: bezplatný Azur
 
    ![Funkce nasazené s šablonou](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Vyberte *DWScaleDownTrigger* nebo *DWScaleUpTrigger* podle toho, jestli chcete změnit čas vertikálního navýšení nebo snížení kapacity. V rozevírací nabídce vyberte možnost integrovat.
+2. Pro horizontální navýšení nebo snížení kapacity můžete vybrat buď *DWScaleDownTrigger* nebo *DWScaleUpTrigger* . V rozevírací nabídce vyberte možnost integrovat.
 
    ![Výběr možnosti Integrace pro funkci](./media/manage-compute-with-azure-functions/select-integrate.png)
 
 3. Momentálně by zobrazená hodnota měla být *%ScaleDownTime%* nebo *%ScaleUpTime%*. Tyto hodnoty označují, že je plán založený na hodnotách definovaných ve vašem [Nastavení aplikace](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Prozatím můžete tuto hodnotu ignorovat a v závislosti na dalších krocích změnit plán na preferovaný čas.
 
-4. V oblasti plánu přidejte libovolný čas v podobě výrazu CRON, který odráží, jak často chcete vertikálně navyšovat kapacitu služby SQL Data Warehouse.
+4. V oblasti plánování přidejte výraz CRON, který byste chtěli odrážet, jak často chcete škálovat Azure synapse Analytics.
 
    ![Změna plánu funkce](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -70,11 +70,11 @@ Po nasazení šablony byste měli najít tři nové prostředky: bezplatný Azur
 
 1. Přejděte do své služby Function App. Pokud jste nasadili šablonu s výchozími hodnotami, měla by tato služba mít název *DWOperations*. Po otevření vaší aplikace Function App byste si měli všimnout, že do vaší služby Function App je nasazených pět funkcí.
 
-2. Vyberte *DWScaleDownTrigger* nebo *DWScaleUpTrigger* podle toho, jestli chcete změnit hodnotu výpočetního výkonu vertikálního navýšení nebo snížení kapacity. Po výběru funkcí by se ve vašem podokně měl zobrazit soubor *index.js*.
+2. Pro horizontální navýšení nebo snížení kapacity výpočetní hodnoty vyberte buď *DWScaleDownTrigger* nebo *DWScaleUpTrigger* . Po výběru funkcí by se ve vašem podokně měl zobrazit soubor *index.js*.
 
    ![Změna výpočetní úrovně triggeru funkce](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. Změňte hodnotu *ServiceLevelObjective* na požadovanou úroveň a klikněte na Uložit. Tato hodnota je výpočetní úroveň, na kterou se vaše instance datového skladu škáluje podle plánu definovaného v části Integration.
+3. Změňte hodnotu *cíl* na požadovanou úroveň a vyberte Uložit. *Cíl* je výpočetní úroveň, na kterou se vaše instance datového skladu škáluje podle plánu definovaného v části Integration.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Použití pozastavení nebo obnovení místo škálování
 
@@ -84,7 +84,7 @@ Aktuálně jsou ve výchozím nastavení zapnuté funkce *DWScaleDownTrigger* a 
 
    ![Podokno Funkce](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-2. Klikněte na posuvný přepínač u odpovídajících triggerů, které chcete povolit.
+2. U odpovídajících triggerů, které chcete povolit, vyberte na přepínači klouzavého přepínače.
 
 3. Přejděte na karty *Integrace* příslušných triggerů a změňte jejich plán.
 
@@ -97,9 +97,9 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 
 1. Vytvořte novou prázdnou funkci. Výběrem *+* tlačítka poblíž svého umístění funkcí zobrazíte podokno šablon funkcí.
 
-   ![Vytvoření nové funkce](./media/manage-compute-with-azure-functions/create-new-function.png)
+   ![Snímek obrazovky, který zobrazuje nabídku aplikace Functions s ikonou "plus" vedle možnosti "Functions".](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Z jazyka vyberte *JavaScript*a pak vyberte *TimerTrigger*.
+2. Z jazyka vyberte *JavaScript* a pak vyberte *TimerTrigger*.
 
    ![Vytvoření nové funkce](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -114,20 +114,20 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 5. Nastavte proměnnou operace na požadované chování následujícím způsobem:
 
    ```JavaScript
-   // Resume the SQL pool instance
+   // Resume the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the SQL pool instance
+   // Pause the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600
+   // Scale the dedicated SQL pool (formerly SQL DW)l instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
-       "ServiceLevelObjective": "DW600"
+       "ServiceLevelObjective": "DW600c"
    }
    ```
 
@@ -137,36 +137,36 @@ Tato část stručně popisuje, co je potřeba k tomu, aby bylo možné získat 
 
 ### <a name="example-1"></a>Příklad 1
 
-Každodenní vertikální navýšení kapacity v 8:00 na úroveň DW600 a vertikální snížení kapacity ve 20:00 na úroveň DW200.
+Denní horizontální navýšení kapacity 8:00 do DW600c a horizontální snížení kapacity na úrovni 8pm až DW200c.
 
 | Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
-| Funkce2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
+| Funkce2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-2"></a>Příklad 2
 
-Denní horizontální navýšení kapacity 8:00 na DW1000, horizontální snížení kapacity na 16:00 a horizontální snížení kapacity na 10pm.
+Denní horizontální navýšení kapacity 8:00 na DW1000c, horizontální snížení kapacity na 16:00 a horizontální snížení kapacity na 10pm.
 
 | Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Funkce2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
-| Funkce3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Funkce2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
+| Funkce3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-3"></a>Příklad 3
 
-Vertikální navýšení kapacity v 8:00 na úroveň DW1000 a jedno vertikální snížení kapacity na úroveň DW600 v 16:00 ve všední dny. Pozastavení v pátek ve 23:00 a obnovení v pondělí v 7:00 ráno.
+Horizontální navýšení kapacity 8:00 na DW1000c, horizontální navýšení kapacity DW600c v pracovních dnech v 16:00. Pozastavení v pátek ve 23:00 a obnovení v pondělí v 7:00 ráno.
 
 | Funkce  | Plán       | Operace                                |
 | :-------- | :------------- | :--------------------------------------- |
-| Funkce1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Funkce2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
+| Funkce1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Funkce2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
 | Funkce3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
-| Funkce4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
+| Funkce4 | 0 0 7 * * 1    | `var operation = {"operationType": "ResumeDw"}` |
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [triggeru časovače](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro funkce Azure.
+Přečtěte si další informace o Azure Functions [triggeru časovače](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
-Zarezervujte [úložiště ukázek](https://github.com/Microsoft/sql-data-warehouse-samples)fondů SQL.
+Viz [úložiště ukázek](https://github.com/Microsoft/sql-data-warehouse-samples)vyhrazený fond SQL (dříve SQL DW).

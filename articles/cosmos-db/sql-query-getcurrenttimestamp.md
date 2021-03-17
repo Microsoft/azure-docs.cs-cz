@@ -1,20 +1,22 @@
 ---
 title: GetCurrentTimestamp v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o GetCurrentTimestamp funkcí SQL systému v Azure Cosmos DB.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606916"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524257"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Vrátí počet milisekund, které uplynuly od 00:00:00 ve čtvrtek, 1. ledna 1970.
   
@@ -32,7 +34,8 @@ Vrací číselnou hodnotu se znaménkem, aktuální počet milisekund, které up
 
 GetCurrentTimestamp () je nedeterministické funkce. Vrácený výsledek je UTC (koordinovaný světový čas).
 
-Tato systémová funkce nebude index využívat.
+> [!NOTE]
+> Tato systémová funkce nebude index využívat. Pokud potřebujete porovnat hodnoty s aktuálním časem, Získejte aktuální čas před provedením dotazu a použijte tuto konstantní řetězcovou hodnotu v `WHERE` klauzuli.
 
 ## <a name="examples"></a>Příklady
   
@@ -54,4 +57,4 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

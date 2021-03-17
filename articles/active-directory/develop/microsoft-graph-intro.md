@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119670"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860180"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 Rozhraní Microsoft Graph API je webové rozhraní API RESTful, které umožňuje přístup k prostředkům služby Microsoft Cloud. Po registraci aplikace a získání ověřovacích tokenů pro uživatele nebo službu můžete vytvořit požadavky na rozhraní Microsoft Graph API. Další informace najdete v tématu [přehled Microsoft Graph](/graph/overview).
 
 Microsoft Graph zpřístupňuje rozhraní REST API a klientské knihovny pro přístup k datům v následujících Microsoft 365 službách:
-- Služby Office 365: Delvu, Excel, Microsoft Books, Microsoft teams, OneDrive, OneNote, Outlook/Exchange, Planner a SharePoint
+- Microsoft 365 služby: Delvu, Excel, Microsoft, Microsoft teams, OneDrive, OneNote, Outlook, Exchange, Planner a SharePoint
 - Enterprise mobility and Security Services: Advanced Threat Analytics, Rozšířená ochrana před internetovými útoky, Azure Active Directory, Identity Manager a Intune
 - Služby Windows 10: aktivity, zařízení, oznámení
 - Dynamics 365 Business Central
@@ -34,7 +34,7 @@ Microsoft Graph aktuálně podporuje dvě verze: v 1.0 a beta. Verze v 1.0 zahrn
 
 Pokud chcete začít používat beta rozhraní API, přečtěte si téma [referenční informace o Microsoft Graph beta verzi](/graph/api/overview?view=graph-rest-beta)
 
-Pokud chcete začít používat rozhraní API v 1.0, přečtěte si referenční informace o [Microsoft Graph REST API v 1.0](/graph/api/overview?view=graph-rest-1.0) .
+Pokud chcete začít používat rozhraní API v 1.0, přečtěte si referenční informace o [Microsoft Graph REST API v 1.0](/graph/api/overview) .
 
 ## <a name="get-started"></a>Začínáme
 

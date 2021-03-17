@@ -1,14 +1,16 @@
 ---
 title: Kontrola uživatele utterance-LUIS
 description: Díky aktivnímu učení se ke správnému záměru a entitě projevy koncový bod kontroly. LUIS zvolí koncový bod projevy, na který si nejste jistí.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80546856"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316439"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Koncepty pro povolení aktivního učení pomocí kontroly projevy koncového bodu
 Aktivní učení je jedna ze tří strategií pro zlepšení přesnosti předpovědi a nejjednodušší implementace. Díky aktivnímu učení se ke správnému záměru a entitě projevy koncový bod kontroly. LUIS zvolí koncový bod projevy, na který si nejste jistí.
@@ -35,7 +37,7 @@ Použijte **[odstranění neoznačeného rozhraní projevy](https://westus.dev.c
 
 ## <a name="enable-active-learning"></a>Povolit aktivní učení
 
-Chcete-li povolit aktivní učení, je nutné protokolovat uživatelské dotazy. Toho je možné dosáhnout voláním [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) s parametrem a hodnotou `log=true` QueryString.
+Chcete-li povolit aktivní učení, je nutné protokolovat uživatelské dotazy. Toho je možné dosáhnout voláním [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) s `log=true` parametrem a hodnotou QueryString.
 
 ## <a name="next-steps"></a>Další kroky
 

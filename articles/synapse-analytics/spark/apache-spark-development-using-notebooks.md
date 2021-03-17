@@ -1,25 +1,25 @@
 ---
 title: Poznámkové bloky synapse Studio
-description: V tomto článku se dozvíte, jak vytvořit a vyvíjet notebooky Azure synapse Studio (Preview), abyste mohli provádět přípravu a vizualizaci dat.
+description: V tomto článku se dozvíte, jak vytvořit a vyvíjet notebooky Azure synapse Studio, které umožňují přípravu a vizualizaci dat.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849094"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671592"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a Správa poznámkových bloků synapse Studio (Preview) v Azure synapse Analytics
+# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
-Poznámkový blok synapse Studio (Preview) je webové rozhraní, které umožňuje vytvářet soubory, které obsahují živý kód, vizualizace a mluvený text. Poznámkové bloky jsou vhodné místo pro ověřování nápadů a k získání přehledu z vašich dat můžete využít rychlé experimenty. Poznámkové bloky se také často používají při přípravě dat, vizualizaci dat, strojovém učení a dalších scénářích s velkými objemy dat.
+Poznámkový blok synapse Studio je webové rozhraní, které umožňuje vytvářet soubory, které obsahují živý kód, vizualizace a mluvený text. Poznámkové bloky jsou vhodné místo pro ověřování nápadů a k získání přehledu z vašich dat můžete využít rychlé experimenty. Poznámkové bloky se také často používají při přípravě dat, vizualizaci dat, strojovém učení a dalších scénářích s velkými objemy dat.
 
 Pomocí poznámkového bloku Azure synapse Studio můžete:
 
@@ -30,11 +30,29 @@ Pomocí poznámkového bloku Azure synapse Studio můžete:
 
 Tento článek popisuje, jak používat notebooky v Azure synapse Studio.
 
+## <a name="preview-of-the-new-notebook-experience"></a>Náhled nového prostředí poznámkového bloku
+Synapse tým přenesl novou součást poznámkových bloků do synapse studia, aby poskytoval konzistentní prostředí poznámkového bloku pro zákazníky Microsoftu a maximalizoval možnosti zjistitelnosti, produktivity, sdílení a spolupráce. Nové prostředí poznámkového bloku je připravené na verzi Preview. Pokud ho chcete zapnout, podívejte se na tlačítko **funkce ve verzi Preview** na panelu nástrojů Poznámkový blok. Následující tabulka zachycuje porovnání funkcí mezi existujícím poznámkovým blokem (označovaným jako "klasický notebook") s novou verzí Preview.  
+
+|Funkce|Klasický notebook|Náhled poznámkového bloku|
+|--|--|--|
+|% běh| Nepodporováno | &#9745;|
+|% Historie| Nepodporováno |&#9745;
+|% zatížení| Nepodporováno |&#9745;|
+|%% HTML| Nepodporováno |&#9745;|
+|Přesunutí buňky přetažením myší| Nepodporováno |&#9745;|
+|Trvalý displej () výstup|&#9745;| Není k dispozici |
+|Zrušit vše| &#9745;| Není k dispozici|
+|Spustit všechny buňky výše|&#9745;| Není k dispozici |
+|Spustit všechny buňky níže|&#9745;| Není k dispozici |
+|Formátování textové buňky pomocí tlačítek panelu nástrojů|&#9745;| Není k dispozici |
+|Operace vrácení buňky zpět| &#9745;| Není k dispozici |
+
+
 ## <a name="create-a-notebook"></a>Vytvoření poznámkového bloku
 
 Existují dva způsoby, jak vytvořit Poznámkový blok. Můžete vytvořit nový Poznámkový blok nebo importovat existující Poznámkový blok do pracovního prostoru Azure synapse z **Průzkumník objektů**. Poznámkové bloky Azure synapse Studio můžou rozpoznávat standardní soubory Jupyter Notebook IPYNB.
 
-![synapse-Create-import-Poznámkový blok](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![vytvoření poznámkového bloku pro import](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
 ## <a name="develop-notebooks"></a>Vývoj poznámkových bloků
 
@@ -43,6 +61,8 @@ Poznámkové bloky se skládají z buněk, což jsou jednotlivé bloky kódu neb
 ### <a name="add-a-cell"></a>Přidat buňku
 
 Existuje několik způsobů, jak přidat novou buňku do poznámkového bloku.
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 1. Rozbalte tlačítko horní levý **+ buňka** a vyberte **Přidat znaková buňka** nebo **Přidat textovou buňku**.
 
@@ -53,6 +73,19 @@ Existuje několik způsobů, jak přidat novou buňku do poznámkového bloku.
     ![přidávání buněk mezi místy](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
 3. [V režimu příkazu použijte klávesové zkratky](#shortcut-keys-under-command-mode). Stisknutím **klávesy** vložte buňku nad aktuální buňku. Stisknutím tlačítka **B** vložte buňku pod aktuální buňku.
+
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+1. Rozbalte tlačítko vlevo nahoře **+ buňka** a vyberte **buňku kódu** nebo **buňku Markdownu**.
+    ![Přidání – Azure-Poznámkový blok – buňka s tlačítkem-buňka](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
+2. Vyberte znaménko plus na začátku buňky a vyberte **buňku kódu** nebo **buňku Markdownu**.
+
+    ![Přidání – Azure-notebook – buňka – mezi místy](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
+
+3. Použijte [klávesové zkratky aznb v režimu příkazu](#shortcut-keys-under-command-mode). Stisknutím **klávesy** vložte buňku nad aktuální buňku. Stisknutím tlačítka **B** vložte buňku pod aktuální buňku.
+
+---
 
 ### <a name="set-a-primary-language"></a>Nastavení primárního jazyka
 
@@ -80,18 +113,18 @@ V jednom poznámkovém bloku můžete použít více jazyků zadáním správné
 
 Následující obrázek je příkladem, jak můžete napsat dotaz PySpark pomocí příkazu **%% PySpark** Magic nebo dotazu SparkSQL s příkazem **%% SQL** Magic v poznámkovém bloku **Spark (Scala)** . Všimněte si, že primární jazyk pro Poznámkový blok je nastavený na pySpark.
 
-   ![synapse-Spark-Magic](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![Příkazy synapse Spark Magic](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>Použití dočasných tabulek k odkazování na data napříč jazyky
 
 V poznámkovém bloku synapse Studio nejde odkazovat na data ani proměnné přímo v různých jazycích. Ve Sparku může být na dočasné tabulce odkazováno napříč jazyky. Tady je příklad, jak číst datový `Scala` rámec v `PySpark` a `SparkSQL` použít dočasnou tabulku Spark jako alternativní řešení.
 
-1. V buňce 1 Přečtěte z konektoru fondu SQL datový rámec pomocí Scala a vytvořte dočasnou tabulku.
+1. V buňce 1 si přečtěte datový rámec z konektoru fondu SQL pomocí Scala a vytvořte dočasnou tabulku.
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.option("format", "DW connector predefined type")
-   scalaDataFrame.registerTempTable( "mydataframetable" )
+   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
 2. V buňce 2 se Dotazujte na data pomocí Spark SQL.
@@ -123,16 +156,34 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
 Pomocí tlačítek formát v panelu nástrojů textové buňky můžete provádět běžné akce Markdownu. Zahrnuje tučný text, italicizing text, vkládání fragmentů kódu, vkládání neuspořádaného seznamu, vkládání seřazeného seznamu a vkládání obrázku z adresy URL.
 
-  ![synapse-text-buňka – panel nástrojů](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![Panel nástrojů textové buňky synapse](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Panel nástrojů formátování tlačítka není k dispozici pro prostředí poznámkového bloku Preview. 
+
+---
 
 ### <a name="undo-cell-operations"></a>Vrátit operace s buňkami
-Chcete-li odvolat poslední operaci buňky, klikněte na tlačítko **zpět** nebo stiskněte klávesy **CTRL + Z** . Nyní můžete vrátit zpět až 20 posledních 20 historických akcí. 
 
-   ![synapse – vrácení buněk zpět](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Vyberte tlačítko **zpět** nebo stisknutím **kombinace kláves CTRL + Z** Odvolejte poslední operaci buňky. Nyní můžete vrátit zpět až 20 posledních 20 historických akcí. 
+
+   ![Synapse buňky pro vrácení zpět](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Pro prostředí poznámkového bloku Preview zatím není k dispozici operace vrácení buňky zpět. 
+
+---
 
 ### <a name="move-a-cell"></a>Přesunutí buňky
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 Vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně vpravo. Pak vyberte **přesunout buňku nahoru** nebo **přesunout buňku dolů** , aby se přesunula aktuální buňka. 
 
@@ -140,7 +191,16 @@ Vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně v
 
    ![přesunout do buňky](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Klikněte na levou stranu buňky a přetáhněte ji na požadovanou pozici. 
+    ![Synapse přesunout buňky](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
+
+---
+
 ### <a name="delete-a-cell"></a>Odstranění buňky
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 Pokud chcete odstranit buňku, vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně vpravo a pak vyberte **Odstranit buňku**. 
 
@@ -148,16 +208,48 @@ Pokud chcete odstranit buňku, vyberte tři tečky (...) pro přístup k nabídc
   
    ![Odstranění buňky](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Pokud chcete odstranit buňku, vyberte tlačítko Odstranit na pravé straně buňky. 
+
+[V režimu příkazu](#shortcut-keys-under-command-mode)můžete také použít klávesové zkratky. Aktuální buňku odstraníte stisknutím klávesy **SHIFT + D** . 
+
+   ![Azure – Poznámkový blok – odstranění-a-buňka](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
+
+---
+
 ### <a name="collapse-a-cell-input"></a>Sbalení vstupu buňky
-Kliknutím na tlačítko se šipkou v dolní části aktuální buňky ho sbalíte. Chcete-li ji rozbalit, klikněte na tlačítko se šipkou, zatímco je buňka sbalená.
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Kliknutím na tlačítko se šipkou v dolní části aktuální buňky ho sbalíte. Chcete-li ho rozbalit, vyberte tlačítko se šipkou, zatímco je buňka sbalená.
 
    ![sbalení – vstup z buňky](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Vyberte tři  tečky (...) na panelu nástrojů buňky a **vstup** pro sbalení vstupu aktuální buňky. Pokud ho chcete rozbalit, vyberte **skrytý vstup** , zatímco je buňka sbalená.
+
+   ![Azure-notebook – sbalení-buňka – vstup](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
+
+---
+
 ### <a name="collapse-a-cell-output"></a>Sbalit výstup buňky
 
-Kliknutím na tlačítko **sbalit výstup** v levém horním rohu aktuální buňky na výstupu ho sbalíte. Chcete-li ji rozbalit, klikněte na tlačítko **Zobrazit výstup buňky** , zatímco je výstup buňky sbalen.
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Vyberte tlačítko **sbalit výstup** v levém horním rohu aktuální buňky a sbalte ho. Chcete-li ji rozbalit, vyberte možnost **Zobrazit výstup buňky** , zatímco je výstup buňky sbalen.
 
    ![sbalení – výstup z buňky](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Vyberte tři  tečky (...) na panelu nástrojů a ve **výstupu** , abyste mohli sbalit výstup aktuální buňky. Pokud ho chcete rozbalit, vyberte stejné tlačítko, zatímco je výstup buňky skrytý.
+
+   ![Azure-notebook – sbalení-buňka-Output](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
+
+
+---
 
 ## <a name="run-notebooks"></a>Spouštění poznámkových bloků
 
@@ -170,19 +262,18 @@ Existuje několik způsobů, jak kód spustit v buňce.
 1. Najeďte myší na buňku, kterou chcete spustit, a vyberte tlačítko **Spustit buňku** nebo stiskněte klávesy **CTRL + ENTER**.
 
    ![spustit – buňka-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+  
+2. [V režimu příkazu použijte klávesové zkratky](#shortcut-keys-under-command-mode). Stisknutím **SHIFT + ENTER** spusťte aktuální buňku a vyberte buňku níže. Stisknutím **kombinace kláves ALT + ENTER** spusťte aktuální buňku a vložte novou buňku níže.
 
-
-2. Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky (**...**). Pak vyberte **Spustit buňku**.
-
-   ![spustit – buňka 2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
-   
-3. [V režimu příkazu použijte klávesové zkratky](#shortcut-keys-under-command-mode). Stisknutím **SHIFT + ENTER** spusťte aktuální buňku a vyberte buňku níže. Stisknutím **kombinace kláves ALT + ENTER** spusťte aktuální buňku a vložte novou buňku níže.
-
+---
 
 ### <a name="run-all-cells"></a>Spustit všechny buňky
 Kliknutím na tlačítko **Spustit vše** spustíte všechny buňky v aktuálním poznámkovém bloku v sekvenci.
 
    ![Spustit – všechny buňky](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 ### <a name="run-all-cells-above-or-below"></a>Spustit všechny buňky výše nebo níže
 
@@ -195,6 +286,29 @@ Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyb
 Kliknutím na tlačítko **Zrušit vše** zrušíte běžící buňky nebo buňky čekající ve frontě. 
    ![Zrušit vše – buňky](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Zrušit všechny běžící buňky zatím není k dispozici pro prostředí poznámkového bloku Preview. 
+
+---
+
+
+
+### <a name="reference-notebook"></a>Odkaz na Poznámkový blok
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Nepodporováno
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Pomocí ```%run <notebook path>``` příkazu Magic můžete odkazovat na jiný Poznámkový blok v kontextu aktuálního poznámkového bloku. Všechny proměnné definované v referenčním poznámkovém bloku jsou k dispozici v aktuálním poznámkovém bloku. ```%run``` příkaz Magic podporuje vnořené volání, ale nepodporuje rekurzivní volání. Pokud je hloubka příkazu větší než pět, zobrazí se výjimka. ```%run``` příkaz aktuálně podporuje pouze cestu k poznámkovému bloku jako parametr. 
+
+Příklad: ``` %run /path/notebookA ```.
+
+---
+
+
 ### <a name="cell-status-indicator"></a>Indikátor stavu buňky
 
 Podrobný stav spuštění buňky se zobrazí pod buňkou, která vám umožní zobrazit jeho aktuální průběh. Po dokončení spuštění buňky se zobrazí souhrn spuštění s celkovou dobou trvání a časem ukončení a bude se uchovávat pro budoucí použití.
@@ -203,8 +317,8 @@ Podrobný stav spuštění buňky se zobrazí pod buňkou, která vám umožní 
 
 ### <a name="spark-progress-indicator"></a>Indikátor průběhu Sparku
 
-Notebook Azure synapse Studio je čistě založený na Sparku. Buňky kódu se spouštějí ve fondu Spark vzdáleně. Indikátor průběhu úlohy Spark je k dispozici s pruhem průběhu v reálném čase, který vám pomůže pochopit stav provádění úlohy.
-Počet úloh na každou úlohu nebo fázi vám pomůžou identifikovat paralelní úroveň úlohy Sparku. Můžete také přejít k uživatelskému rozhraní Spark konkrétní úlohy (nebo fáze) pomocí kliknutí na odkaz v názvu úlohy (nebo fáze).
+Notebook Azure synapse Studio je čistě založený na Sparku. Buňky kódu jsou spouštěny na Apache Sparkm fondu bez serveru vzdáleně. Indikátor průběhu úlohy Spark je k dispozici s pruhem průběhu v reálném čase, který vám pomůže pochopit stav provádění úlohy.
+Počet úloh na každou úlohu nebo fázi vám pomůžou identifikovat paralelní úroveň úlohy Sparku. Můžete také procházet hlubší uživatelské rozhraní Spark konkrétní úlohy (nebo fáze) prostřednictvím výběru odkazu na název úlohy (nebo fáze).
 
 
 ![Spark – indikátor průběhu](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -213,11 +327,25 @@ Počet úloh na každou úlohu nebo fázi vám pomůžou identifikovat paraleln�
 
 Můžete zadat dobu trvání, číslo a velikost prováděcích modulů, které se mají přiřadit aktuální relaci Sparku v části **konfigurovat relaci**. Restartujte relaci Spark, aby se projevily změny v konfiguraci. Všechny proměnné poznámkového bloku uložené v mezipaměti jsou vymazány.
 
-[![Správa relací](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+[![Správa relací](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
-Doporučení pro relaci Sparku je teď k dispozici na panelu konfigurace relace Spark. Můžete vybrat fond Spark přímo z panelu konfigurace relace a zjistit, kolik uzlů používá a kolik dalších prováděcích modulů je dostupných. Tyto informace vám můžou usnadnit nastavování velikosti relace, ale nemusíte je měnit zpátky a zpátky.
+#### <a name="spark-session-config-magic-command"></a>Příkaz pro konfiguraci relace Spark Magic
+Nastavení relace Spark můžete zadat také prostřednictvím příkazu Magic **%% Configure**. Aby se nastavení projevilo, je třeba spustit relaci Spark. Doporučujeme na začátku poznámkového bloku spustit **konfiguraci%%** . Tady je ukázka, https://github.com/cloudera/livy#request-body kde najdete úplný seznam platných parametrů. 
 
-![relace – doporučit](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
+```
+%%configure -f
+{
+    to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":["myjar1.jar","myjar.jar"],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
 
 
 ## <a name="bring-data-to-a-notebook"></a>Přenesení dat do poznámkového bloku
@@ -232,10 +360,7 @@ from pyspark.sql.types import *
 account_name = "Your account name"
 container_name = "Your container name"
 relative_path = "Your path"
-adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (blob_container_name, blob_account_name,  blob_relative_path)
-
-spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
-spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
+adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
 df1 = spark.read.option('header', 'true') \
                 .option('delimiter', ',') \
@@ -248,21 +373,26 @@ df1 = spark.read.option('header', 'true') \
 ```python
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import *
 
-blob_account_name = "Your blob account name"
-blob_container_name = "Your blob container name"
-blob_relative_path = "Your blob relative path"
-blob_sas_token = "Your blob sas token"
+# Azure storage access info
+blob_account_name = 'Your account name' # replace with your blob name
+blob_container_name = 'Your container name' # replace with your container name
+blob_relative_path = 'Your path' # replace with your relative folder path
+linked_service_name = 'Your linked service name' # replace with your linked service name
 
-wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+blob_sas_token = mssparkutils.credentials.getConnectionStringOrCreds(linked_service_name)
+
+# Allow SPARK to access from Blob remotely
+
+wasb_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+
 spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name), blob_sas_token)
+print('Remote blob path: ' + wasb_path)
 
 df = spark.read.option("header", "true") \
             .option("delimiter","|") \
             .schema(schema) \
             .csv(wasbs_path)
-
 ```
 
 ### <a name="read-data-from-the-primary-storage-account"></a>Čtení dat z primárního účtu úložiště
@@ -270,67 +400,6 @@ df = spark.read.option("header", "true") \
 K datům v primárním účtu úložiště můžete přistupovat přímo. Není nutné zadávat tajné klíče. V Průzkumník dat klikněte pravým tlačítkem na soubor a vyberte **Nový Poznámkový blok** pro zobrazení nového poznámkového bloku s automaticky generovaným nástrojem pro extrakci dat.
 
 ![data na buňku](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
-
-## <a name="visualize-data-in-a-notebook"></a>Vizualizace dat v poznámkovém bloku
-
-### <a name="produce-rendered-table-view"></a>Vygenerovat zobrazení vykreslené tabulky
-
-Zobrazení tabelárních výsledků je k dispozici s možností vytvoření pruhového grafu, spojnicového grafu, výsečového grafu, bodového grafu a plošného grafu. Data můžete vizualizovat bez nutnosti psát kód. Grafy je možné přizpůsobit v **možnostech grafu**. 
-
-V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. <code>display(df)</code>Chcete-li vygenerovat zobrazení vykreslené tabulky, můžete volat funkce Spark Dataframes nebo odolné distribuované datové sady (RDD).
-
-   [![předdefinované – grafy](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
-
-### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Vizualizace vestavěných grafů z velkého rozsahu datové sady 
-
-Ve výchozím nastavení <code>display(df)</code> bude funkce při vykreslování grafů provádět pouze první 1000 řádky dat. Podívejte se na **agregaci všech výsledků** a klikněte na tlačítko **použít** . generování grafu se použije z celé datové sady. Při změně nastavení grafu se aktivuje úloha Sparku, takže se výpočet dokončí a graf se vykreslí. 
-    [![Builtin-Charts-Aggregator-All](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
-
-
-### <a name="visualize-data-statistic-information"></a>Vizualizace informací o statistice dat
-Můžete použít <code>display(df, summary = true)</code> ke kontrole souhrnu statistik daného datového rámce Sparku, který obsahuje název sloupce, typ sloupce, jedinečné hodnoty a chybějící hodnoty pro každý sloupec. Můžete také vybrat konkrétní sloupec, abyste viděli jeho minimální hodnotu, maximální hodnotu, střední hodnotu a směrodatnou odchylku.
-    [![Builtin – grafy – souhrn ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
-
-### <a name="render-html-or-interactive-libraries"></a>Vykreslování HTML nebo interaktivních knihoven
-
-Můžete vykreslit HTML nebo interaktivní knihovny, jako je **rozostření**, pomocí **displayHTML ()**.
-
-Následující obrázek je příkladem vykreslení glyfů přes mapu pomocí **rozostření**.
-
-   ![rozostření – příklad](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
-   
-
-Spusťte následující vzorový kód pro vykreslení obrázku výše.
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-
-```
 
 ## <a name="save-notebooks"></a>Ukládat poznámkové bloky
 
@@ -349,34 +418,56 @@ Ve vlastnostech poznámkového bloku můžete nakonfigurovat, jestli se má při
    ![vlastnosti poznámkového bloku](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>Magic – příkazy
-V poznámkových blocích Azure synapse Studio můžete používat známé příkazy Jupyter Magic. V následujícím seznamu vyhledejte aktuální dostupné příkazy Magic. Řekněte nám své případy použití na GitHubu, abychom mohli pokračovat v sestavování dalších příkazů Magic pro splnění vašich požadavků.
+V poznámkových blocích Azure synapse Studio můžete používat známé příkazy Jupyter Magic. Zkontrolujte následující seznam jako aktuální dostupné příkazy Magic. Řekněte nám [své případy použití na GitHubu](https://github.com/MicrosoftDocs/azure-docs/issues/new) , abychom mohli pokračovat v sestavování dalších příkazů Magic pro splnění vašich požadavků.
 
-Dostupné Magic linky: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% času](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
-Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages)
+Dostupné magicy řádků: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+
+Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages),[%% Configure](#spark-session-config-magic-command)
 
 
-## <a name="orchestrate-notebook"></a>Orchestrace poznámkového bloku
+
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Dostupné magicy řádků: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history),% [Run](#reference-notebook), [% Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+
+Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages),% [% CSharp](#use-multiple-languages),%% [HTML](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html), [%% Konfigurovat](#spark-session-config-magic-command)
+
+--- 
+
+## <a name="integrate-a-notebook"></a>Integrace poznámkového bloku
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Přidání poznámkového bloku do kanálu
 
 Kliknutím na tlačítko **Přidat do kanálu** v pravém horním rohu přidáte Poznámkový blok do existujícího kanálu nebo vytvoříte nový kanál.
 
-![přidání do kanálu](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+![Přidání poznámkového bloku do kanálu](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>Určení buňky parametrů
 
-Chcete-li použít možnost parametrizovat svůj Poznámkový blok, vyberte tři tečky (...) pro přístup k nabídce Další akce v buňce úplně vpravo. Pak vyberte položku **Přepnout parametr buňka** k označení buňky jako buňky Parameters.
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
+
+Chcete-li parametrizovat svůj Poznámkový blok, vyberte tři tečky (...) pro přístup k nabídce Další akce v buňce úplně vpravo. Pak vyberte položku **Přepnout parametr buňka** k označení buňky jako buňky Parameters.
 
 ![přepínač-Parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-Azure Data Factory vyhledá buňku Parameters a považuje tuto buňku za výchozí hodnoty parametrů předaných v době spuštění. Spouštěcí modul přidá novou buňku pod buňkou Parameters se vstupními parametry, aby bylo možné přepsat výchozí hodnoty. Pokud není určena žádná buňka parametrů, vložená buňka se vloží do horní části poznámkového bloku.
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+Chcete-li parametrizovat svůj Poznámkový blok, vyberte tři tečky (...) pro přístup k **dalším příkazům** na panelu nástrojů buňky. Pak vyberte položku **Přepnout parametr buňka** k označení buňky jako buňky Parameters.
+
+![Azure – Poznámkový blok – přepínač-Parameter](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
+
+---
+
+Azure Data Factory vyhledá buňku Parameters a považuje tuto buňku za výchozí hodnoty parametrů předaných v době spuštění. Spouštěcí modul přidá novou buňku pod buňkou Parameters se vstupními parametry, aby bylo možné přepsat výchozí hodnoty. Pokud není určena buňka Parameters, vložená buňka se vloží do horní části poznámkového bloku.
+
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>Přiřazení hodnot parametrů z kanálu
 
 Po vytvoření poznámkového bloku s parametry ho můžete spustit z kanálu pomocí aktivity poznámkového bloku Azure synapse. Po přidání aktivity na plátno kanálu budete moci nastavit hodnoty parametrů v části **základní parametry** na kartě **Nastavení** . 
 
-![přiřadit parametr](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![Přiřadit parametr](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
 Při přiřazování hodnot parametrů můžete použít [Jazyk výrazu kanálu](../../data-factory/control-flow-expression-language-functions.md) nebo [systémové proměnné](../../data-factory/control-flow-system-variables.md).
 
@@ -386,15 +477,17 @@ Při přiřazování hodnot parametrů můžete použít [Jazyk výrazu kanálu]
 
 Podobně jako Jupyter poznámkové bloky mají poznámkové bloky Azure synapse Studio modální uživatelské rozhraní. Klávesnice funguje jinak v závislosti na tom, v jakém režimu je buňka poznámkového bloku. Poznámkové bloky synapse Studio podporují pro danou buňku kódu tyto dva režimy: režim příkazů a režim úprav.
 
-1. Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor, který je vyzván k zadání. Když je buňka v režimu příkazu, můžete Poznámkový blok upravit jako celek, ale ne psát do jednotlivých buněk. Stisknutím `ESC` nebo pomocí myši můžete kliknout mimo oblast editoru buňky a přejít do režimu příkazu.
+1. Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor, který je vyzván k zadání. Když je buňka v režimu příkazu, můžete Poznámkový blok upravit jako celek, ale ne psát do jednotlivých buněk. Stisknutím `ESC` nebo pomocí myši vyberte mimo oblast editoru buňky režim příkazu.
 
-   ![režim příkazu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
+   ![režim příkazu](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
-2. Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, můžete zadat text do buňky. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a přejděte do režimu úprav.
+2. Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, můžete zadat text do buňky. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a vyberte režim úprav.
    
-   ![rezim-uprav](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
+   ![rezim-uprav](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>Klávesové zkratky v režimu příkazu
+
+# <a name="classical-notebook"></a>[Klasický notebook](#tab/classical)
 
 Pomocí následujících klávesových zkratek můžete snáze procházet a spouštět kód v poznámkových blocích Azure synapse.
 
@@ -413,7 +506,26 @@ Pomocí následujících klávesových zkratek můžete snáze procházet a spou
 |Odstranit vybrané buňky| D, D |
 |Přepnout do režimu úprav| Enter |
 
+# <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
+
+| Akce |Zástupci poznámkových bloků synapse Studio  |
+|--|--|
+|Spustit aktuální buňku a vybrat níže | Shift+Enter |
+|Spustit aktuální buňku a vložit níže | Alt+Enter |
+|Spustit aktuální buňku| Ctrl+Enter |
+|Vybrat buňku výše| Nahoru |
+|Vybrat buňku níže| Dolů |
+|Vybrat předchozí buňku| K |
+|Vybrat další buňku| J |
+|Vložit buňku výše| A |
+|Vložit buňku níže| B |
+|Odstranit vybrané buňky| Shift + D |
+|Přepnout do režimu úprav| Enter |
+
+---
+
 ### <a name="shortcut-keys-under-edit-mode"></a>Klávesové zkratky v režimu úprav
+
 
 Pomocí následujících klávesových zkratek můžete v režimu úprav snadněji Procházet a spouštět kód v poznámkových blocích Azure synapse.
 
@@ -435,10 +547,12 @@ Pomocí následujících klávesových zkratek můžete v režimu úprav snadně
 |Zmenšit odsazení|CTRL + [|
 |Přepnout do režimu příkazu| Esc |
 
+---
+
 ## <a name="next-steps"></a>Další kroky
 - [Podívejte se na ukázkové poznámkové bloky synapse](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
+- [Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
 - [Co je Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
-- [Použití .NET pro Apache Spark s Azure synapse Analytics](spark-dotnet.md)
-- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Použití .NET pro Apache Spark se službou Azure Synapse Analytics](spark-dotnet.md)
+- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark)
+- [Azure Synapse Analytics](../index.yml)

@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447098"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973418"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: povolení zpětného zápisu zařízení
 > [!NOTE]
@@ -31,10 +31,10 @@ ms.locfileid: "87447098"
 
 Následující dokumentace poskytuje informace o tom, jak povolit funkci zpětného zápisu zařízení v Azure AD Connect. Zpětný zápis zařízení se používá v následujících scénářích:
 
-* Povolit [Windows Hello pro firmy pomocí nasazení hybridních důvěryhodných certifikátů](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* Povolit [Windows Hello pro firmy pomocí nasazení hybridních důvěryhodných certifikátů](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Povolte podmíněný přístup na základě zařízení do služby AD FS (2012 R2 nebo vyšší) chráněných aplikací (vztahy důvěryhodnosti předávající strany).
 
-To poskytuje další zabezpečení a jistotu, že přístup k aplikacím je udělen pouze důvěryhodným zařízením. Další informace o podmíněném přístupu najdete v tématech [Správa rizik pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) a [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+To poskytuje další zabezpečení a jistotu, že přístup k aplikacím je udělen pouze důvěryhodným zařízením. Další informace o podmíněném přístupu najdete v tématech [Správa rizik pomocí podmíněného přístupu](../conditional-access/overview.md) a [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../devices/overview.md).
 
 > [!IMPORTANT]
 > <li>Zařízení se musí nacházet ve stejné doménové struktuře jako uživatelé. Vzhledem k tomu, že zařízení musí být zapsána zpět do jedné doménové struktury, tato funkce v současné době nepodporuje nasazení s více doménovými strukturami uživatelů.</li>
@@ -83,7 +83,7 @@ Zpětný zápis zařízení by teď měl správně fungovat. Uvědomte si, že m
    ![Seznam registrovaných zařízení centra pro správu služby Active Directory](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Povolit podmíněný přístup
-Podrobné pokyny pro povolení tohoto scénáře jsou k dispozici v rámci [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Podrobné pokyny pro povolení tohoto scénáře jsou k dispozici v rámci [nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../devices/overview.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Zaškrtávací políčko zpětného zápisu je pořád zakázané.
@@ -97,7 +97,7 @@ První věcí:
   * V nabídce Start otevřete **synchronizační službu**.
   * Otevřete kartu **konektory** .
   * Najděte konektor s typem Active Directory Domain Services a vyberte ho.
-  * V části **Akce**vyberte **vlastnosti**.
+  * V části **Akce** vyberte **vlastnosti**.
   * Přejít na **připojení k doménové struktuře služby Active Directory**. Ověřte, že doména a uživatelské jméno zadané na této obrazovce odpovídají účtu, který jste zadali ke skriptu.
     ![Účet konektoru v synchronizaci Service Manager](./media/how-to-connect-device-writeback/connectoraccount.png)
 
@@ -126,9 +126,8 @@ Ověřit konfiguraci ve službě Active Directory:
 ![Řešení potíží, ověření oprávnění pro konfiguraci registrace zařízení](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>Další informace
-* [Řízení rizik pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)
-* [Nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Řízení rizik pomocí podmíněného přístupu](../conditional-access/overview.md)
+* [Nastavení místního podmíněného přístupu pomocí Azure Active Directory Device Registration](../devices/overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
-

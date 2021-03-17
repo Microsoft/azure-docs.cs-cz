@@ -1,38 +1,42 @@
 ---
-title: Zřízení propustnosti kontejneru ve službě Azure Cosmos DB
-description: Naučte se zřizovat propustnost na úrovni kontejneru v Azure Cosmos DB pomocí Azure Portal, CLI, PowerShellu a různých dalších sad SDK.
+title: Zřízení propustnosti kontejneru v Azure Cosmos DB SQL API
+description: Naučte se zřídit propustnost na úrovni kontejneru v Azure Cosmos DB SQL API pomocí Azure Portal, CLI, PowerShellu a různých dalších sad SDK.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 12/13/2019
+ms.date: 10/14/2020
 ms.author: mjbrown
-ms.custom: devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: fa03ae10239be4ec735a2d450343bf98fde00e70
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 4caf43cb972b44dd1482b9e6e467e41cae294708
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100095"
 ---
-# <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos
+# <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos – SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost na kontejneru (kolekci, grafu nebo tabulky) v Azure Cosmos DB. Můžete zřídit propustnost v jednom kontejneru nebo [zřídit propustnost databáze](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit na kontejneru pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
+Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost na kontejneru v Azure Cosmos DB SQL API. Můžete zřídit propustnost v jednom kontejneru nebo [zřídit propustnost databáze](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit na kontejneru pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
+
+Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro MongoDB](how-to-provision-throughput-mongodb.md), [rozhraní API Cassandra](how-to-provision-throughput-cassandra.md), články [Gremlin API](how-to-provision-throughput-gremlin.md) pro zajištění propustnosti.
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nová kolekce**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner** . Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
-   * Zadejte ID kontejneru (nebo tabulky nebo grafu).
-   * Zadejte hodnotu klíče oddílu (například `/userid` ).
+   * Zadejte ID kontejneru.
+   * Zadejte hodnotu klíče oddílu (například `/ItemID` ).
    * Zadejte propustnost, kterou chcete zřídit (například 1000 ru).
-   * Vyberte **OK**.
+   * Vyberte **OK** .
 
-    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="Snímek obrazovky Průzkumník dat se zvýrazněnou novou kolekcí":::
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Snímek obrazovky Průzkumník dat se zvýrazněnou novou kolekcí":::
 
 ## <a name="azure-cli-or-powershell"></a>Rozhraní příkazového řádku Azure CLI nebo PowerShell
 
@@ -41,15 +45,10 @@ Pokud chcete vytvořit kontejner s vyhrazenou propustností, přečtěte si tém
 * [Vytvoření kontejneru pomocí Azure CLI](manage-with-cli.md#create-a-container)
 * [Vytvoření kontejneru pomocí PowerShellu](manage-with-powershell.md#create-container)
 
-> [!Note]
-> Pokud zřizujete propustnost na kontejneru v účtu Azure Cosmos, který je nakonfigurovaný s rozhraním API Azure Cosmos DB pro MongoDB, použijte `/myShardKey` pro cestu ke klíči oddílu. Pokud zřizujete propustnost na kontejneru v účtu Azure Cosmos nakonfigurovaném pomocí rozhraní API Cassandra, použijte `/myPrimaryKey` pro cestu ke klíči oddílu.
-
 ## <a name="net-sdk"></a>.NET SDK
 
 > [!Note]
 > Pomocí sad Cosmos SDK pro SQL API můžete zřídit propustnost pro všechna rozhraní API Cosmos DB s výjimkou rozhraní Cassandra a MongoDB API.
-
-### <a name="sql-gremlin-and-table-apis"></a><a id="dotnet-most"></a>Rozhraní API pro SQL, Gremlin a Table
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -99,47 +98,6 @@ offer.content.offerThroughput = 2000;
 // Replace the offer.
 await client.offer(offer.id).replace(offer);
 ```
-
-### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>Rozhraní API MongoDB
-
-```csharp
-// refer to MongoDB .NET Driver
-// https://docs.mongodb.com/drivers/csharp
-
-// Create a new Client
-String mongoConnectionString = "mongodb://DBAccountName:Password@DBAccountName.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-mongoUrl = new MongoUrl(mongoConnectionString);
-mongoClientSettings = MongoClientSettings.FromUrl(mongoUrl);
-mongoClient = new MongoClient(mongoClientSettings);
-
-// Change the database name
-mongoDatabase = mongoClient.GetDatabase("testdb");
-
-// Change the collection name, throughput value then update via MongoDB extension commands
-// https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-custom-commands#update-collection
-
-var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
-```
-
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Rozhraní API Cassandra
-
-Podobné příkazy lze vydat prostřednictvím libovolného ovladače kompatibilního s CQL.
-
-```csharp
-// Create a Cassandra table with a partition (primary) key and provision throughput of 400 RU/s
-session.Execute("CREATE TABLE myKeySpace.myTable(
-    user_id int PRIMARY KEY,
-    firstName text,
-    lastName text) WITH cosmosdb_provisioned_throughput=400");
-
-```
-### <a name="alter-or-change-throughput-for-cassandra-table"></a>Změna nebo změna propustnosti pro tabulku Cassandra
-
-```csharp
-// Altering the throughput too can be done through code by issuing following command
-session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throughput=5000");
-```
-
 
 ## <a name="next-steps"></a>Další kroky
 

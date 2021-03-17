@@ -3,17 +3,18 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
-ms.translationtype: HT
+ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946988"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -21,7 +22,7 @@ Azure Cost Management mají přirozeně k dispozici přímí partneři, jejichž
 
 V případě přímých partnerů a nepřímých poskytovatelů mají globální správci a agenti správy přístup ke službě Cost Management v tenantovi partnera a spravovat náklady na úrovni s fakturovaných cen.
 
-Prodejci a zákazníci mají přístup ke službě Cost Management v tenantovi zákazníka a vidí náklady pro předplatná, kde se náklady vypočítávají a zobrazují v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
+Prodejci a zákazníci můžou získat přístup k Cost Management v tenantovi zákazníka a zobrazovat náklady na používání předplatných, kde se vypočítávají náklady a zobrazují se v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup Azure RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
 
 Zákazníci můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP.
 
@@ -54,13 +55,15 @@ Azure Cost Management vyžaduje přístup pro čtení fakturačního účtu nebo
 
 Další informace o tom, jak službě Azure Cost Management povolit a přiřadit přístup k fakturačnímu účtu, najdete v tématu o [přiřazení uživatelských rolí a oprávnění](/partner-center/permissions-overview). Ve fakturačním účtu smí náklady spravovat role **globálního správce** a **agenta správy**.
 
-Přístup ke službě Azure Cost Management v rozsahu předplatného může mít každý uživatel, který má k předplatnému přístup RBAC. Takový uživatel může prohlížet náklady odpovídající maloobchodním tarifům (průběžné platby). Pro tenanty zákazníků je ale potřeba povolit [zásadu viditelnosti nákladů](#enable-the-policy-to-view-azure-usage-charges). Kompletní seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
+Přístup ke službě Azure Cost Management v rozsahu předplatného může mít každý uživatel, který má k předplatnému přístup Azure RBAC. Takový uživatel může prohlížet náklady odpovídající maloobchodním tarifům (průběžné platby). Pro tenanty zákazníků je ale potřeba povolit [zásadu viditelnosti nákladů](#enable-the-policy-to-view-azure-usage-charges). Kompletní seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
+
+Při převodu stávajících fakturačních smluv na nového partnera jsou možnosti služby cost management dostupné jenom pro aktuální fakturační vztah s partnerem. Historické náklady před přenosem na nového partnera se nepřesunou na nový fakturační účet. Historie nákladů ale zůstane u původního přidruženého fakturačního účtu.
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá rozsahy
 
-V rozsazích můžete spravovat fakturační data, mít zvláštní role pro platby, zobrazovat faktury a obecně spravovat účet. Role pro fakturaci a účet se spravují nezávisle na rozsazích používaných ke správě prostředků, které používají RBAC. Abychom mohli jasně rozlišit účel těchto oddělených rozsahů, včetně rozdílů v řízení přístupu, označují se jako rozsahy fakturace a rozsahy RBAC.
+V rozsazích můžete spravovat fakturační data, mít zvláštní role pro platby, zobrazovat faktury a obecně spravovat účet. Role pro fakturaci a účet se spravují nezávisle na rozsazích používaných ke správě prostředků, které používají Azure RBAC. Abychom mohli jasně rozlišit účel těchto oddělených rozsahů, včetně rozdílů v řízení přístupu, označují se jako rozsahy fakturace a rozsahy Azure RBAC.
 
-Pokud chcete porozumět rozsahům fakturace a rozsahům RBAC a tomu, jak je používat k řízení nákladů, přečtete si téma [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
+Pokud chcete porozumět rozsahům fakturace a rozsahům Azure RBAC a tomu, jak je používat k řízení nákladů, přečtete si téma [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Správa nákladů s rozsahy fakturace partnerského tenanta
 
@@ -70,9 +73,9 @@ Jakmile vaši zákazníci uzavřou smlouvu se zákazníkem Microsoftu, budete m�
 
 Rozsah fakturačního účtu můžete použít k zobrazení nákladů před zdaněním u všech svých zákazníků a fakturačních profilů. Fakturované náklady se zobrazují jenom u produktů spotřebovávaných zákazníkem podle smlouvy se zákazníkem Microsoftu. Fakturované náklady se ale zobrazují jak pro zakoupené produkty zákazníků s uzavřenou smlouvou se zákazníkem Microsoftu nebo s nabídkou CSP. V současnosti se k zobrazení nákladů v daném rozsahu jako výchozí měna používá americký dolar. Rozpočty, které jsou nastavené pro rozsah, jsou také v USD.
 
-Bez ohledu na různé měny, ve kterých se fakturuje zákazníkům, používají partneři rozsah fakturačního účtu k nastavení rozpočtů a správě nákladů v USD pro své zákazníky, předplatná, prostředky a skupiny prostředků.
+Bez ohledu na různé měny, ve kterých se používají při fakturaci, používají partneři rozsah fakturačního účtu k nastavení rozpočtů a správě nákladů v USD pro své zákazníky, předplatná, prostředky a skupiny prostředků.
 
-V zobrazení analýzy nákladů partneři také můžou filtrovat náklady podle určité fakturační měny u zákazníků. Pokud chcete zobrazit náklady v podporovaných měnách, ve kterých se fakturuje zákazníkům, vyberte seznam **skutečných nákladů**.
+V zobrazení analýzy nákladů partneři také můžou filtrovat náklady podle určité fakturační měny u zákazníků. Pokud chcete zobrazit náklady v podporovaných měnách, ve kterých se fakturuje, vyberte seznam **skutečných nákladů**.
 
 ![Příklad znázorňuje výběr měn u skutečných nákladů](./media/get-started-partners/actual-cost-selector.png)
 
@@ -82,7 +85,7 @@ Zobrazení [amortizovaných nákladů](quick-acm-cost-analysis.md#customize-cost
 
 Rozsah fakturačního profilu použijte k zobrazení nákladů před zdaněním ve fakturační měně za všechny své zákazníky, produkty a předplatná uvedená na faktuře. K filtrování nákladů ve fakturačním profilu pro určitou fakturu použijte filtr **InvoiceID** (IDfaktury). Filtr zobrazuje náklady na spotřebu a nákup produktu k určité faktuře. Náklady také můžete filtrovat za určitého zákazníka na faktuře, pokud chcete zobrazit náklady před zdaněním.
 
-Jakmile zákazníky přimějete k uzavření smlouvy se zákazníkem Microsoftu, přijde vám faktura, ve které budou všechny poplatky za všechny produkty (spotřeba, nákupy a nároky) těchto zákazníků s uzavřenou smlouvou se zákazníkem Microsoftu. Pokud se fakturuje ve stejné měně, obsahují tyto faktury také poplatky za nárokované a zakoupené produkty, jako je SaaS, Azure Marketplace a rezervace zákazníků, kteří ještě stále využívají nabídku CSP.
+Jakmile zákazníky přimějete k uzavření smlouvy se zákazníkem Microsoftu, přijde vám faktura, ve které budou všechny poplatky za všechny produkty (spotřeba, nákupy a nároky) těchto zákazníků s uzavřenou smlouvou se zákazníkem Microsoftu. Pokud se fakturuje ve stejné měně, obsahují tyto faktury také poplatky za nárokované a zakoupené produkty, jako je SaaS, Azure Marketplace a rezervace zákazníků, kteří ještě stále využívají nabídku klasickou nabídku CSP (nikoli plán Azure).
 
 Aby bylo možné odsouhlasit poplatky s fakturou zákazníka, umožňuje rozsah fakturačního profilu zobrazit všechny náklady kumulované na faktuře za vaše zákazníky. Podobně jako na faktuře jsou i v rozsahu zobrazené náklady za každého zákazníka s novou smlouvou se zákazníkem Microsoftu. Rozsah také zobrazuje všechny poplatky za nárokované produkty zákazníka, které zůstávají aktuální v nabídce CSP.
 
@@ -90,7 +93,7 @@ Rozsahy fakturačního profilu a fakturačního účtu jsou jediné platné rozs
 
 Fakturační profily definují předplatná, která jsou uvedená na faktuře. Fakturační profily funkčně odpovídají registraci smlouvy Enterprise. Fakturační profil je rozsah, za který se generují faktury.
 
-V současnosti se k zobrazení nákladů v rozsahu fakturačního profilu jako výchozí měna používá fakturační měna zákazníka. Rozpočty, které jsou nastavené v rozsahu fakturačního profilu, jsou ve fakturační měně.
+V současnosti se k zobrazení nákladů v rozsahu fakturačního profilu jako výchozí měna používá fakturační měna. Rozpočty, které jsou nastavené v rozsahu fakturačního profilu, jsou ve fakturační měně.
 
 Partneři můžou tento rozsah použít k odsouhlasení faktur. Rozsah také používají k nastavení rozpočtů ve fakturační měně pro následující položky:
 
@@ -115,9 +118,9 @@ Spravovat a zobrazovat náklady za fakturační účty, fakturační profily a z
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Povolení správy nákladů pro předplatná tenantů zákazníků
 
-Partneři můžou zákazníkům umožnit přístup ke službě Cost Management, až když podepíšou smlouvu se zákazníkem Microsoftu. Partneři potom mohou povolit zásadu, která zákazníkům umožní zobrazovat náklady na využití služeb Azure vypočítané podle maloobchodních tarifů s průběžnými platbami. Náklady se zobrazují ve fakturační měně zákazníka. Jsou to náklady na využití v rozsahu spotřebovaného předplatného RBAC a spotřebovaných rozsahů skupin prostředků.
+Partneři můžou zákazníkům umožnit přístup ke službě Cost Management, až když podepíšou smlouvu se zákazníkem Microsoftu. Partneři potom mohou povolit zásadu, která zákazníkům umožní zobrazovat náklady na využití služeb Azure vypočítané podle maloobchodních tarifů s průběžnými platbami. Náklady se zobrazují ve fakturační měně zákazníka. Jsou to náklady na využití v rozsahu spotřebovaného předplatného Azure RBAC a spotřebovaných rozsahů skupin prostředků.
 
-Pokud partner povolí zásadu viditelnosti nákladů, může kterýkoli uživatel, který má v Azure Resource Manageru přístup k předplatnému, spravovat a analyzovat náklady podle tarifů s průběžnými platbami. V podstatě to znamená, že prodejci a zákazníci, kteří mají příslušný přístup RBAC k předplatným Azure, uvidí náklady.
+Pokud partner povolí zásadu viditelnosti nákladů, může kterýkoli uživatel, který má v Azure Resource Manageru přístup k předplatnému, spravovat a analyzovat náklady podle tarifů s průběžnými platbami. V podstatě to znamená, že prodejci a zákazníci, kteří mají příslušný přístup Azure RBAC k předplatným Azure, uvidí náklady.
 
 Pokud globální správci a agenti správy mají přístup k předplatnému a skupině prostředků, mohou zobrazovat náklady na předplatná bez ohledu na zásady.
 
@@ -125,7 +128,7 @@ Pokud globální správci a agenti správy mají přístup k předplatnému a sk
 
 Abyste mohli tyto zásady zobrazit a aktualizovat, musíte být členem skupiny **agentů pro správu**. Pokud chcete povolit zásady, které zákazníkům umožňují zobrazovat poplatky za používání Azure, použijte následující informace.
 
-Na webu Azure Portal se přihlaste k partnerskému tenantovi a vyberte **Správa nákladů a fakturace**. V oblasti Obor fakturace vyberte příslušný rozsah fakturace a potom vyberte **Zákazníci**. Seznam zákazníků se vztahuje k fakturačnímu účtu.
+Na webu Azure Portal se přihlaste k *partnerskému tenantovi* a vyberte **Správa nákladů a fakturace**. V oblasti Obor fakturace vyberte příslušný rozsah fakturace a potom vyberte **Zákazníci**. Seznam zákazníků se vztahuje k fakturačnímu účtu. *Pokud jste se omylem přihlásili k zákaznickému tenantovi, seznam **Zákazníci** se nezobrazí.*
 
 V seznamu zákazníků vyberte zákazníka, kterému chcete povolit prohlížet náklady.
 
@@ -148,17 +151,19 @@ Pokud chcete zobrazit náklady pro předplatné, otevřete v Azure tenanta **Spr
 
 [![Zobrazení analýzy nákladů jako zákazník ](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-Analýza nákladů, rozpočty a upozornění jsou k dispozici pro rozsahy RBAC předplatného a skupin prostředků. Použijí se náklady podle tarifů s průběžnými platbami.
+Analýza nákladů, rozpočty a upozornění jsou k dispozici pro rozsahy Azure RBAC předplatného a skupin prostředků. Použijí se náklady podle tarifů s průběžnými platbami.
 
-V amortizačních zobrazeních a ve skutečných nákladech na rezervované instance v rozsazích RBAC se zobrazí nulové poplatky. Náklady na rezervované instance se zobrazují jenom v těch rozsazích fakturace, kde došlo k nákupu.
+V amortizačních zobrazeních a ve skutečných nákladech na rezervované instance v rozsazích Azure RBAC se zobrazí nulové poplatky. Náklady na nákup nároků, jako jsou rezervované instance a poplatky za Marketplace, se zobrazují jenom v rozsazích fakturace tenanta partnera, ve kterých se nákupy uskutečnily.
 
 Maloobchodní ceny použité pro výpočet nákladů uvedených v tomto zobrazení jsou stejné jako ceny uváděné v cenové kalkulačce Azure pro všechny zákazníky. Uvedené náklady nezahrnují slevy ani kredity, které partner může mít, například získané partnerské kredity, slevy založené na úrovni a globální slevy za služby.
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analýza nákladů
 
 Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou v Analýze nákladů zkoumat a analyzovat fakturované náklady, a to buď pro všechny zákazníky, určitého zákazníka nebo fakturu. V zobrazení [Analýza nákladů](quick-acm-cost-analysis.md) také můžete [ukládat zobrazení](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) a exportovat data do [souborů CSV a PNG](quick-acm-cost-analysis.md#download-usage-data).
 
-Uživatelé RBAC s přístupem k předplatnému také můžou v zákaznickém tenantovi analyzovat maloobchodní náklady předplatných, ukládat zobrazení a exportovat data do souborů CSV a PNG.
+Uživatelé Azure RBAC s přístupem k předplatnému také můžou v zákaznickém tenantovi analyzovat maloobchodní náklady předplatných, ukládat zobrazení a exportovat data do souborů CSV a PNG.
 
 Při analýze nákladů můžete používat funkce filtrů a skupin, abyste mohli náklady analyzovat podle různých polí. Specifická pole partnerů jsou zobrazená v další části.
 
@@ -185,7 +190,7 @@ Následující datová pole najdete v souborech s podrobnostmi o využití a v r
 | costCenter | Nákladové centrum přidružené k předplatnému. | – |
 | billingPeriodStartDate | Počáteční datum fakturačního období, které je uvedené na faktuře. | – |
 | billingPeriodEndDate | Koncové datum fakturačního období, které je uvedené na faktuře. | – |
-| servicePeriodStartDate | Počáteční datum hodnoceného období, kdy byly za používání služby účtovány poplatky. Ceny služeb Azure se určují pro hodnocené období. | V partnerském centru je to ChargeStartDate. Počáteční datum fakturačního cyklu. Neplatí pro zatím neúčtovaná data o latentním využití z předchozího fakturačního cyklu. Čas je vždy začátek dne, tj. 0:00. |
+| servicePeriodStartDate | Počáteční datum hodnoceného období, kdy byly za používání služby účtovány poplatky. Ceny služeb Azure se určují pro hodnocené období. | V partnerském centru je to ChargeStartDate.  Počáteční datum fakturačního cyklu. Neplatí pro zatím neúčtovaná data o latentním využití z předchozího fakturačního cyklu. Čas je vždy začátek dne, tj. 0:00. |
 | servicePeriodEndDate | Konečné datum období, za které se vyhodnocují poplatky za používání služby. Ceny služeb Azure se určují na základě hodnoceného období. | – |
 | date | U dat o spotřebě Azure se zobrazuje hodnocené datum použití. U rezervovaných instancí se zobrazuje datum nákupu. U pravidelných i jednorázových poplatků, třeba za Marketplace a podporu, se zobrazí datum nákupu. | – |
 | productID | Identifikátor produktu, kterému se načítají poplatky za spotřebu nebo nákup. Je to klíč vzniklý zřetězením hodnot productID a SKuID, který je zobrazený v partnerském centru. | ID produktu. |
@@ -217,13 +222,13 @@ Následující datová pole najdete v souborech s podrobnostmi o využití a v r
 | Množství | Koupené nebo spotřebované naměřené množství. Množství spotřebované na daném měřiči ve fakturačním období. | Počet jednotek. Při odsouhlasení ověřte, jestli odpovídá informacím ve vašem fakturačním systému. |
 | unitOfMeasure | Určuje jednotku, po které se služba účtuje. Například GB nebo hodiny. | Určuje jednotku, po které se služba účtuje. Například GB, hodiny nebo desetitisíce. |
 | pricingCurrency | Měna, ve které je definovaná jednotková cena. | Měna v ceníku.|
-| billingCurrency | Měna, ve které se definují fakturované náklady. | Měna v geografické oblasti zákazníka. |
+| billingCurrency | Měna, ve které se definují fakturované náklady. | Měna definovaná jako fakturovaná měna na faktuře. |
 | chargeType | Definuje typ poplatku, kterou náklad představuje ve službě Azure Cost Management. Může jít třeba o nákup nebo refundaci. | Typ poplatku nebo úpravy. Pro aktuální aktivitu není k dispozici. |
 | costinBillingCurrency | Celkové nebo smíšené náklady před zdaněním ve fakturované měně. | – |
 | costinPricingCurrency | Celkové nebo smíšené náklady před zdaněním v ceníkové měně kvůli porovnání cen. | – |
 | **costinUSD** | Odhadované celkové nebo smíšené náklady před zdaněním v USD. | – |
-| **paygCostInBillingCurrency** | Zobrazuje náklady, pokud jsou v maloobchodních cenách. Zobrazuje ceny ve fakturační měně při průběžných platbách. K dispozici jen u rozsahů RBAC. | – |
-| **paygCostInUSD** | Zobrazuje náklady, pokud jsou v maloobchodních cenách. Zobrazuje ceny v USD při průběžných platbách. K dispozici jen u rozsahů RBAC. | – |
+| **paygCostInBillingCurrency** | Zobrazuje náklady, pokud jsou v maloobchodních cenách. Zobrazuje ceny ve fakturační měně při průběžných platbách. K dispozici jenom u rozsahů Azure RBAC. | – |
+| **paygCostInUSD** | Zobrazuje náklady, pokud jsou v maloobchodních cenách. Zobrazuje ceny v USD při průběžných platbách. K dispozici jenom u rozsahů Azure RBAC. | – |
 | exchangeRate | Směnný kurz používaný k převodu ceníkové měny na fakturační měnu. | V partnerském centru se označuje jako PCToBCExchangeRate. Směnný kurz ceníkové měny k fakturační měně.|
 | exchangeRateDate | Datum směnného kurzu použitého k převodu ceníkové měny na fakturační měnu. | V partnerském centru se označuje jako PCToBCExchangeRateDat. Datum směnného kurzu ceníkové ceny k fakturační měně.|
 | isAzureCreditEligible | Určuje, jestli je možné k úhradě nákladů použít kredit Azure. | – |
@@ -259,9 +264,9 @@ K filtrování a seskupení také můžete použít vlastnost **PartnerEarnedCre
 
 ## <a name="export-cost-data-to-azure-storage"></a>Export dat o nákladech do Azure Storage
 
-Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou exportovat data o nákladech a využití do úložiště objektů blob v Azure. Objekt blob musí být v předplatném partnerského tenanta, který nepatří k předplatnému sdílené služby ani k předplatnému zákazníka. Pokud chcete povolit export nákladových dat, doporučujeme v partnerském tenantovi nastavit nezávislé předplatné s průběžnými platbami, které bude hostovat exportovaná nákladová data. Účet úložiště pro export se vytvoří v úložišti objektů služby Azure Storage hostovaném v předplatném s průběžnými platbami. Na základě rozsahu, ve kterém partner vytvoří export, se související data pravidelně automaticky exportují do účtu úložiště.
+Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou exportovat data o nákladech a využití do úložiště objektů blob v Azure. Objekt blob musí být v předplatném partnerského tenanta, který nepatří k [předplatnému sdílené služby](/partner-center/shared-services) ani k předplatnému zákazníka. Pokud chcete povolit export nákladových dat, doporučujeme v partnerském tenantovi nastavit nezávislé předplatné s průběžnými platbami, které bude hostovat exportovaná nákladová data. Účet úložiště pro export se vytvoří v úložišti objektů služby Azure Storage hostovaném v předplatném s průběžnými platbami. Na základě rozsahu, ve kterém partner vytvoří export, se související data pravidelně automaticky exportují do účtu úložiště.
 
-Uživatelé s přístupem RBAC k předplatnému také můžou nákladová data exportovat do úložiště objektů blob v Azure hostovaného v některém předplatném zákaznického tenanta.
+Uživatelé s přístupem Azure RBAC k předplatnému také můžou nákladová data exportovat do úložiště objektů blob v Azure hostovaného v některém předplatném zákaznického tenanta.
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Vytvoření exportu v partnerském nebo zákaznickém tenantovi
 
@@ -275,7 +280,7 @@ Dále vyberte **Přidat**, zadejte název a vyberte typ exportu. Vyberte kartu *
 
 Jakmile v partnerském tenantovi vytvoříte export, vyberte v něm předplatné s průběžnými platbami. Toto předplatné použijte k vytvoření účtu služby Azure Storage.
 
-U uživatelů RBAC v zákaznickém tenantovi vyberte předplatné v zákaznickém tenantovi. Předplatné použijte k vytvoření účtu Azure Storage.
+U uživatelů Azure RBAC v zákaznickém tenantovi vyberte předplatné v zákaznickém tenantovi. Předplatné použijte k vytvoření účtu Azure Storage.
 
 Zkontrolujte obsah a vyberte **Vytvořit**, abyste mohli naplánovat export.
 

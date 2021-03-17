@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423316"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087634"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Vytváření oddílů v Azure Cosmos DB rozhraní API Cassandra
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Tento článek popisuje, jak vytváření oddílů funguje v Azure Cosmos DB rozhraní API Cassandra. 
 
@@ -25,7 +26,7 @@ V perspektivě pro vývojáře se při vytváření oddílů chová stejným zp�
 
 ## <a name="differences-between-apache-cassandra-and-azure-cosmos-db"></a>Rozdíly mezi Apache Cassandra a Azure Cosmos DB
 
-V Azure Cosmos DB se každý počítač, na kterém jsou uložené oddíly, nazývá [fyzický oddíl](partition-data.md#physical-partitions). Fyzický oddíl je podobají k virtuálnímu počítači; vyhrazenou výpočetní jednotku nebo sadu fyzických prostředků. Každý oddíl uložený v této výpočetní jednotce se v Azure Cosmos DB označuje jako [logický oddíl](partition-data.md#logical-partitions) . Pokud jste už obeznámení s Apache Cassandra, můžete si logické oddíly představit stejným způsobem, jako byste si myslíte z běžných oddílů v Cassandra. 
+V Azure Cosmos DB se každý počítač, na kterém jsou uložené oddíly, nazývá [fyzický oddíl](partitioning-overview.md#physical-partitions). Fyzický oddíl je podobají k virtuálnímu počítači; vyhrazenou výpočetní jednotku nebo sadu fyzických prostředků. Každý oddíl uložený v této výpočetní jednotce se v Azure Cosmos DB označuje jako [logický oddíl](partitioning-overview.md#logical-partitions) . Pokud jste už obeznámení s Apache Cassandra, můžete si logické oddíly představit stejným způsobem, jako byste si myslíte z běžných oddílů v Cassandra. 
 
 Apache Cassandra doporučuje omezení 100 MB na velikost dat, která se dají uložit do oddílu. Rozhraní API Cassandra pro Azure Cosmos DB umožňuje až 20 GB na logický oddíl a až 30 GB dat na fyzický oddíl. V Azure Cosmos DB na rozdíl od Apache Cassandra je výpočetní kapacita dostupná ve fyzickém oddílu vyjádřená pomocí jedné metriky nazvané [jednotky žádosti](request-units.md), která vám umožní považovat zatížení za požadavky (čtení nebo zápisy) za sekundu, místo jader, paměti nebo IOPS. Díky tomu může plánování kapacity lépe rovnou, jakmile porozumíte nákladům na jednotlivé požadavky. Každý fyzický oddíl může mít k dispozici až 10000 ru výpočetní kapacity. Další informace o možnostech škálovatelnosti najdete v našem článku o [elastickém škálování](manage-scale-cassandra.md) v rozhraní API Cassandra. 
 
@@ -58,7 +59,7 @@ V tomto návrhu jsme definovali `id` pole jako primární klíč. Primární kl�
 
 ## <a name="compound-primary-key"></a>Složený primární klíč
 
-Apache Cassandra má také koncept `compound keys` . Složený objekt `primary key` se skládá z více než jednoho sloupce. první sloupec je `partition key` a všechny další sloupce jsou `clustering keys` . Syntaxe pro `compound primary key` je zobrazena níže:
+Apache Cassandra má také koncept  `compound keys` . Složený objekt `primary key` se skládá z více než jednoho sloupce. první sloupec je `partition key` a všechny další sloupce jsou `clustering keys` . Syntaxe pro `compound primary key` je zobrazena níže:
 
 ```shell
 PRIMARY KEY (partition_key_column_name, clustering_column_name [, ...])
@@ -112,6 +113,6 @@ CREATE TABLE uprofile.user (
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partition-data.md).
+* Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partitioning-overview.md).
 * Přečtěte si o [zřízené propustnosti v Azure Cosmos DB](request-units.md).
 * Přečtěte si o [globální distribuci v Azure Cosmos DB](distribute-data-globally.md).

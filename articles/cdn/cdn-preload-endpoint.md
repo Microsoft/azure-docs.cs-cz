@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 186ded90b504420a2f315d054551d97821cf8465
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192567"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385043"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Předběžné načtení prostředků v koncovém bodu Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -44,7 +44,7 @@ Tento kurz vás provede předběžným načtením obsahu v mezipaměti na všech
     Otevře se podokno **zatížení** .
    
     ![Podokno zatížení CDN](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. V poli **cesta k obsahu**zadejte úplnou cestu každého assetu, který chcete načíst (například `/pictures/kitten.png` ).
+4. V poli **cesta k obsahu** zadejte úplnou cestu každého assetu, který chcete načíst (například `/pictures/kitten.png` ).
    
    > [!TIP]
    > Po zahájení zadávání textu se zobrazí další textová pole s dalšími **cestami k obsahu** , která vám umožní vytvořit seznam více prostředků. Pokud chcete odstranit assety ze seznamu, vyberte tlačítko se třemi tečkami (...) a pak vyberte **Odstranit**.
@@ -68,6 +68,5 @@ Tento kurz vás provede předběžným načtením obsahu v mezipaměti na všech
 
 ## <a name="see-also"></a>Viz také
 * [Vyprázdnit Azure CDN koncový bod](cdn-purge-endpoint.md)
-* [Odkaz na Azure CDN REST API: předběžné načtení obsahu na koncový bod](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Odkaz na Azure CDN REST API: vyprázdnění obsahu z koncového bodu](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
-
+* [Odkaz na Azure CDN REST API: předběžné načtení obsahu na koncový bod](/rest/api/cdn/cdn/endpoints/loadcontent)
+* [Odkaz na Azure CDN REST API: vyprázdnění obsahu z koncového bodu](/rest/api/cdn/cdn/endpoints/purgecontent)

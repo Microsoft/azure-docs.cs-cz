@@ -3,14 +3,14 @@ title: Správa skupin prostředků – Azure PowerShell
 description: Pomocí Azure PowerShell můžete spravovat skupiny prostředků přes Azure Resource Manager. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fb8cd45842e2f9b64048aa939f7b6adc9b0e6e0a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827072"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703678"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure PowerShell
 
@@ -31,15 +31,10 @@ Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístěn
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-Následující skript PowerShellu vytvoří skupinu prostředků a pak zobrazí skupinu prostředků.
+Následující skript prostředí PowerShell vytvoří skupinu prostředků.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-Get-AzResourceGroup -Name $resourceGroupName
+New-AzResourceGroup -Name demoResourceGroup -Location westus
 ```
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
@@ -74,7 +69,7 @@ Další informace o tom, jak Azure Resource Manager objednává odstranění pro
 
 Viz [nasazení prostředků do existující skupiny prostředků](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
 
-Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0).
+Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 
@@ -209,15 +204,15 @@ Použijete-li `-SkipResourceNameParameterization` parametr při exportování š
 ]
 ```
 
-Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
+Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](../../data-factory/copy-clone-data-factory.md).
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
+Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 Další informace najdete v tématu [Export jednoho a více prostředků do šablony v Azure Portal](../templates/export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

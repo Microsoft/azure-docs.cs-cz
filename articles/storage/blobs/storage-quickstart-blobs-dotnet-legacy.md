@@ -7,12 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285284"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96021737"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET
 
@@ -32,7 +33,7 @@ Použijte klientskou knihovnu Azure Blob Storage pro .NET pro:
 
 Další prostředky:
 
-* [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/storage)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -42,7 +43,7 @@ Další prostředky:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet Azure Storage – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Účet Azure Storage – [Vytvoření účtu úložiště](../common/storage-account-create.md)
 * Aktuální [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém. Ujistěte se, že jste získali sadu SDK a ne modul runtime.
 
 ## <a name="setting-up"></a>Nastavení
@@ -102,7 +103,7 @@ Z adresáře projektu:
 2. Odebrat `Console.WriteLine` příkaz
 3. Přidat `using` direktivy
 4. Vytvořte `ProcessAsync` metodu, kde bude umístěn hlavní kód pro příklad.
-5. Asynchronní volání `ProcessAsync` metody z`Main`
+5. Asynchronní volání `ProcessAsync` metody z `Main`
 
 Zde je kód:
 
@@ -198,13 +199,13 @@ Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s kli
    * [Vytvoření kontejneru](#create-a-container)
    * [Nastavení oprávnění pro kontejner](#set-permissions-on-a-container)
    * [Nahrání objektů blob do kontejneru](#upload-blobs-to-a-container)
-   * [Zobrazí seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
+   * [Seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
    * [Stáhnout objekty blob](#download-blobs)
    * [Odstranění kontejneru](#delete-a-container)
 
 ### <a name="authenticate-the-client"></a>Ověření klienta
 
-Následující kód kontroluje, zda proměnná prostředí obsahuje připojovací řetězec, který lze analyzovat a vytvořit tak objekt [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) odkazující na účet úložiště. Ke kontrole platnosti připojovacího řetězce použijte metodu [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet). Pokud `TryParse` je úspěšná, inicializuje `storageAccount` proměnnou a vrátí `true` .
+Následující kód kontroluje, zda proměnná prostředí obsahuje připojovací řetězec, který lze analyzovat a vytvořit tak objekt [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) odkazující na účet úložiště. Ke kontrole platnosti připojovacího řetězce použijte metodu [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse). Pokud `TryParse` je úspěšná, inicializuje `storageAccount` proměnnou a vrátí `true` .
 
 Přidejte tento kód do `ProcessAsync` metody:
 
@@ -247,7 +248,7 @@ Pokud chcete vytvořit kontejner, nejprve vytvořte instanci objektu [CloudBlobC
 V tomto případě kód volá metodu [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) pro vytvoření kontejneru. K názvu kontejneru se připojí hodnota GUID, která zajistí jeho jedinečnost. V produkčním prostředí je často vhodnější použít metodu [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) k vytvoření kontejneru pouze v případě, že ještě neexistuje.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ```csharp
 // Create the CloudBlobClient that represents the 
@@ -296,7 +297,7 @@ CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(localFi
 await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Vypíše objekty BLOB v kontejneru pomocí metody [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
 

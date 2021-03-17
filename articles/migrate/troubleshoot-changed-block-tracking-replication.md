@@ -2,16 +2,16 @@
 title: Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 description: Získat pomoc s chybami cyklu replikace
 author: anvar-ms
-ms.manager: bsiva
 ms.author: anvar
+ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608820"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071370"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -29,14 +29,42 @@ Občas se může zobrazit selhání replikačních cyklů pro virtuální počí
 K monitorování stavu replikace virtuálních počítačů použijte následující postup:
 
   1. Přejít na stránku servery v Azure Migrate na Azure Portal.
-  2. Kliknutím na replikace serverů na dlaždici migrace serveru přejděte na stránku replikace počítačů.
-  3. Zobrazí se seznam replikačních serverů spolu s dalšími informacemi, jako je stav, stav, čas poslední synchronizace atd. Sloupec Health (stav) indikuje aktuální stav replikace virtuálního počítače. Hodnota upozornění Critical'or ve sloupci Stav obvykle označuje, že předchozí cyklus replikace pro virtuální počítač se nezdařil. Pokud chcete získat další informace, klikněte pravým tlačítkem na virtuální počítač a vyberte podrobnosti o chybě. Stránka Podrobnosti o chybě obsahuje informace o chybě a další podrobnosti o tom, jak řešit potíže. Zobrazí se také odkaz nedávné události, který se dá použít k přechodu na stránku události pro daný virtuální počítač.
-  4. Kliknutím na nedávné události zobrazíte předchozí selhání cyklu replikace pro virtuální počítač. Na stránce události vyhledejte nejnovější událost typu "cyklus replikace selhala" nebo "cyklus replikace pro disk" virtuálního počítače "selhal.
-  5. Kliknutím na událost pochopíte možné příčiny chyby a doporučené kroky k nápravě. Použijte informace, které jsou k dispozici k řešení potíží, a opravte chybu.
-    
+  ![Obrázek 1](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. Kliknutím na replikace serverů na dlaždici migrace serveru přejděte na stránku replikace počítačů.
+  ![Obrázek 2](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. Zobrazí se seznam replikačních serverů spolu s dalšími informacemi, jako je stav, stav, čas poslední synchronizace atd. Sloupec Health (stav) indikuje aktuální stav replikace virtuálního počítače. Hodnota "kritická" nebo "Warning" ve sloupci Stav obvykle označuje, že předchozí cyklus replikace pro virtuální počítač se nezdařil. Pokud chcete získat další informace, klikněte pravým tlačítkem na virtuální počítač a vyberte podrobnosti o chybě. Stránka Podrobnosti o chybě obsahuje informace o chybě a další podrobnosti o tom, jak řešit potíže. Zobrazí se také odkaz nedávné události, který se dá použít k přechodu na stránku události pro daný virtuální počítač.
+  ![Obrázek 3](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. Kliknutím na nedávné události zobrazíte předchozí selhání cyklu replikace pro virtuální počítač. Na stránce události vyhledejte nejnovější událost typu "cyklus replikace selhala" nebo "cyklus replikace pro disk" virtuálního počítače "selhal.
+  ![Obrázek 4](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. Kliknutím na událost pochopíte možné příčiny chyby a doporučené kroky k nápravě. Použijte informace, které jsou k dispozici k řešení potíží, a opravte chybu.
+ ![Obrázek 5](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>Běžné chyby replikace
 
 Tato část popisuje některé běžné chyby a jejich řešení.
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>Při pokusu o replikaci virtuálních počítačů došlo k chybě operace Key Vault.
+
+**Chyba:** Operace Key Vault se nezdařila. Operace: konfigurace spravovaného účtu úložiště Key Vault: klíč-trezor-Name, účet úložiště: název účtu úložiště se nezdařil s chybou: "
+
+**Chyba:** Operace Key Vault se nezdařila. Operace: generování definice sdíleného přístupového podpisu, Key Vault: klíč-trezor-Name, účet úložiště: název účtu úložiště se nezdařil s chybou: "
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+K této chybě obvykle dochází, protože zásady přístupu uživatele pro Key Vault nedávají aktuálně přihlášenému uživateli potřebná oprávnění ke konfiguraci účtů úložiště, které se mají Key Vault spravovat. Pokud chcete vyhledat zásady přístupu uživatele v trezoru klíčů, přejděte na stránku trezoru klíčů na portálu pro Trezor klíčů a vyberte zásady přístupu. 
+
+Když portál vytvoří Trezor klíčů, přidá taky zásadu přístupu uživatele, která uděluje aktuálně přihlášeným uživatelským oprávněním ke konfiguraci účtů úložiště, které se mají Key Vault spravovat. To může selhat ze dvou důvodů
+
+- Přihlášený uživatel je vzdáleným hlavním objektem na zákaznících Azure tenant (předplatné CSP – a přihlášený uživatel je správcem partnera). Alternativním řešením v tomto případě je odstranit Trezor klíčů, odhlaste se z portálu a pak se přihlaste pomocí uživatelského účtu z tenanta Customers (ne vzdáleného objektu zabezpečení) a zkuste operaci zopakovat. Partner CSP má obvykle uživatelský účet ve Azure Active Directory klienta, který mohou používat. Pokud ne, může vytvořit nový uživatelský účet pro sebe ve Azure Active Directory zákazníky, přihlaste se k portálu jako nový uživatel a pak zkuste operaci replikace zopakovat. Účet, který se používá, musí mít oprávnění správce vlastníka nebo přispěvatel + správce přístupu uživatele k účtu ve skupině prostředků (migrace skupiny prostředků projektu).
+
+- Druhý případ, kdy k tomu může dojít, nastane, když se jeden uživatel (uživatel1) pokusil nastavit replikaci zpočátku a narazil na chybu, ale Trezor klíčů už je vytvořený (a zásady přístupu uživatele jsou správně přiřazené tomuto uživateli). Nyní se teď jiný uživatel (uživatel2) pokusí nastavit replikaci, ale operace konfigurace spravovaného účtu úložiště nebo vygenerování definice SAS se nezdařila, protože neexistují žádné zásady přístupu uživatele, které by v trezoru klíčů odpovídaly.
+
+**Řešení**: Pokud chcete tento problém vyřešit, vytvořte zásadu přístupu uživatele pro uživatel2 v trezoru klíčů udělující oprávnění uživatel2 ke konfiguraci spravovaného účtu úložiště a generování definic SAS. Uživatel2 to může udělat z Azure PowerShell pomocí níže uvedených rutin:
+
+$userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Účet
+
+Set-AzureRmKeyVaultAccessPolicy-trezor "RegenerateKey"-ObjectId "-ObjectId $userPrincipalId-PermissionsToStorage Get, list, DELETE, set, Update,, getsas, listsas, deletesas, setsas, obnovení, zálohování, obnovení, vyprázdnění
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 
@@ -59,7 +87,7 @@ Komponenta, která se pokouší replikovat data do Azure, je buď nefunkční, n
 
    2.  Otevřete modul snap-in služby Microsoft Services MMC (spusťte > Services. msc) a ověřte, zda je spuštěna služba Microsoft Azure Gateway. Pokud je služba zastavená nebo nespuštěná, spusťte službu. Případně můžete otevřít příkazový řádek nebo PowerShell a udělat: "net start asrgwy"
 
-3. Ověřte problémy s připojením mezi zařízením Azure Migrate a účtem úložiště mezipaměti: 
+3. Ověřte problémy s připojením mezi zařízením Azure Migrate a účtem úložiště zařízení: 
 
     Po stažení AzCopy do zařízení Azure Migrate spusťte následující příkaz:
     
@@ -67,7 +95,7 @@ Komponenta, která se pokouší replikovat data do Azure, je buď nefunkční, n
     
     **Postup spuštění testu výkonnosti výkonu:**
     
-      1. [Stáhnout](https://go.microsoft.com/fwlink/?linkid=2138966) AzCopy
+      1. [Stáhnout](../storage/common/storage-use-azcopy-v10.md) AzCopy
         
       2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migrategwsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
         
@@ -147,9 +175,9 @@ Mezi možné příčiny patří:
     
     **Postup spuštění testu výkonnosti výkonu:**
     
-      1. [Stáhnout](https://go.microsoft.com/fwlink/?linkid=2138966) AzCopy
+      1. [Stáhnout](../storage/common/storage-use-azcopy-v10.md) AzCopy
         
-      2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migrategwsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
+      2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migratelsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
         
       3. V Azure Portal vyhledejte svůj účet úložiště. Ujistěte se, že předplatné, které používáte pro hledání, je stejné jako předplatné (cílové předplatné), ve kterém je účet úložiště vytvořený. Přejít na kontejnery v části služby BLOB Service. Klikněte na + kontejner a vytvořte kontejner. Ponechte úroveň veřejného přístupu na výchozí vybranou hodnotu.
         
@@ -214,7 +242,7 @@ Tuto chybu lze vyřešit následujícími dvěma způsoby:
 
 Jeden takový známý problém, který může způsobit obnovení CBT virtuálního počítače na VMware vSphere 5,5 je popsán v tématu [VMware KB 2048201: změněné sledování bloků](https://go.microsoft.com/fwlink/?linkid=2138888) se resetuje po operaci vMotion úložiště v vSphere 5. x. Pokud používáte VMware vSphere 5.5, nezapomeňte provést aktualizace popsané v tomto článku znalostní báze.
 
-Alternativně můžete na virtuálním počítači s využitím VMware PowerCLI použít [resetovat a zrušit sledování bloků VMware.
+Alternativně můžete na virtuálním počítači pomocí VMware PowerCLI resetovat sledování změn ve VMware.
 
 ## <a name="an-internal-error-occurred"></a>Došlo k vnitřní chybě.
 
@@ -226,7 +254,7 @@ Například: chybová zpráva: došlo k vnitřní chybě. [Zjistila se neplatná
 
 V následující části jsou uvedené některé běžně zjištěné chyby VMware a způsob, jakým je můžete zmírnit.
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Chybová zpráva: došlo k vnitřní chybě. [Server odmítl připojení.]
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Chybová zpráva: došlo k vnitřní chybě. [Server odmítl připojení.]
 
 Problém je známým problémem VMware a probíhá v VDDK 6,7. Musíte zastavit službu brány spuštěnou v zařízení Azure Migrate, [Stáhnout aktualizaci z VMware KB](https://go.microsoft.com/fwlink/?linkid=2138889)a restartovat službu brány.
 
@@ -240,36 +268,54 @@ Postup spuštění služby brány:
 1. Stiskněte kombinaci kláves Windows + R a otevřete Services. msc. Klikněte pravým tlačítkem na Microsoft Azure službu brány a spusťte ji.
 2. Případně můžete otevřít příkazový řádek nebo PowerShell a udělat: net start asrgwy.
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Chybová zpráva: došlo k vnitřní chybě. [Byla zjištěna neplatná konfigurace snímku. ']
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Chybová zpráva: došlo k vnitřní chybě. [Byla zjištěna neplatná konfigurace snímku. ']
 
 Pokud máte virtuální počítač s více disky, může dojít k této chybě při odebrání disku z virtuálního počítače. Chcete-li tento problém vyřešit, přečtěte si postup v [tomto článku o VMware](https://go.microsoft.com/fwlink/?linkid=2138890).
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Chybová zpráva: došlo k vnitřní chybě. [Generovat zavěšení snímků]
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Chybová zpráva: došlo k vnitřní chybě. [Generovat zavěšení snímků]
 
-K tomuto problému dochází, když je generování snímků zavěšeno. Když k tomuto problému dojde, můžete vidět, že se úloha vytvoření snímku zastaví na 95% nebo v 99%. Pokud chcete tento problém vyřešit, přečtěte si tento [článek o VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) .
+K tomuto problému dochází, když generování snímků přestane reagovat. Když k tomuto problému dojde, můžete vidět, že se úloha vytvoření snímku zastaví na 95% nebo v 99%. Pokud chcete tento problém vyřešit, přečtěte si tento [článek o VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_]
 
 Když konsolidujeme disky na konci replikačního cyklu, operace se nezdařila. Postupujte podle pokynů v nástroji [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) výběrem vhodného _důvodu_ k vyřešení problému.
 
 K následujícím chybám dojde při selhání operací souvisejících se snímkem VMware – vytvoření, odstranění nebo konsolidace disků. Pokud chcete chyby opravit, postupujte podle pokynů v následující části:
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Chybová zpráva: došlo k vnitřní chybě. [Už probíhá jiná úloha.]
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Chybová zpráva: došlo k vnitřní chybě. [Už probíhá jiná úloha.]
 
 K tomuto problému dochází v případě, že na pozadí běží konfliktní úkoly virtuálních počítačů, nebo když vyprší časový limit úlohy v vCenter Server. Postupujte podle řešení uvedeného v následující [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138891).
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Chybová zpráva: došlo k vnitřní chybě. [Operace není v aktuálním stavu povolena.]
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Chybová zpráva: došlo k vnitřní chybě. [Operace není v aktuálním stavu povolena.]
 
 K tomuto problému dochází, když vCenter Server agenti pro správu přestanou fungovat. Pokud chcete tento problém vyřešit, přečtěte si řešení v následující [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138971).
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Chybová zpráva: došlo k vnitřní chybě. [Neplatná velikost disku snímku]
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Chybová zpráva: došlo k vnitřní chybě. [Neplatná velikost disku snímku]
 
 Jedná se o známý problém VMware, ve kterém se velikost disku indikuje snímkem, se změní na nula. Postupujte podle řešení uvedeného v [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972).
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Chybová zpráva: došlo k vnitřní chybě. [Přidělení paměti se nezdařilo. Nedostatek paměti.]
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Chybová zpráva: došlo k vnitřní chybě. [Přidělení paměti se nezdařilo. Nedostatek paměti.]
 
 K tomu dojde v případě, že vyrovnávací paměť hostitele NFC nemá dostatek paměti. Pokud chcete tento problém vyřešit, musíte virtuální počítač (COMPUTE vMotion) přesunout na jiného hostitele, který má bezplatné prostředky.
 
+## <a name="replication-cycle-failed"></a>Cyklus replikace se nezdařil.
+
+**ID chyby:** 181008
+
+**Chybová zpráva:** Virtuální počítač: ' VMName '. Chyba: nebyla nalezena žádná disksnapshots pro replikaci snímku s ID snímku: ' SnapshotID '.
+
+**Možné příčiny:**
+
+Možné důvody:
+1. Cesta k jednomu nebo více zahrnutým diskům se změnila kvůli VMotion úložiště.
+2. Nejméně jeden zahrnutý disk již není připojen k virtuálnímu počítači.
+      
+**Základě**
+
+Jsou k dispozici následující doporučení.
+1. Obnovte zahrnuté disky do původní cesty pomocí vMotion úložiště a pak vMotion úložiště zakažte.
+2. Zakažte VMotion úložiště, pokud je povoleno, zastavte replikaci na virtuálním počítači a replikujte virtuální počítač znovu. Pokud problém přetrvává, obraťte se na podporu.
+
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v replikaci virtuálních počítačů a proveďte [testovací migraci](https://go.microsoft.com/fwlink/?linkid=2139333).
+Pokračujte v replikaci virtuálních počítačů a proveďte [testovací migraci](./tutorial-migrate-vmware.md#run-a-test-migration).

@@ -9,17 +9,17 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066119"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015192"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
 Pokud chcete pracovat se X12 zprávami v Azure Logic Apps, můžete použít konektor X12, který poskytuje triggery a akce pro správu komunikace X12. Informace o EDIFACT zprávách najdete v tématu [zprávy Exchange EDIFACT](logic-apps-enterprise-integration-edifact.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -39,7 +39,7 @@ Pokud chcete pracovat se X12 zprávami v Azure Logic Apps, můžete použít kon
 
 Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato smlouva identifikuje a zpracovává příchozí zprávy, které od svého partnera obdržíte prostřednictvím této smlouvy.
 
-1. V části **Přidat**vyberte **Nastavení příjmu**.
+1. V části **Přidat** vyberte **Nastavení příjmu**.
 
 1. Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. **Nastavení příjmu** jsou uspořádána do těchto částí:
 
@@ -161,7 +161,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 
 Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato smlouva identifikuje a zpracovává odchozí zprávy odeslané na svého partnera prostřednictvím této smlouvy.
 
-1. V části **Přidat**vyberte **Odeslat nastavení**.
+1. V části **Přidat** vyberte **Odeslat nastavení**.
 
 1. Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
 
@@ -247,7 +247,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 | **GS2 úrovně** | Volitelně zadejte odesílatele aplikace. |
 | **GS3 úrovně** | Volitelné, určete příjemce aplikace. |
 | **GS4 úrovně** | Volitelné, vyberte **CCYYMMDD** nebo **rrmmdd**. |
-| **GS5** | Volitelné, vyberte **hhmm**, **HHMMSS**nebo **HHMMSSdd**. |
+| **GS5** | Volitelné, vyberte **hhmm**, **HHMMSS** nebo **HHMMSSdd**. |
 | **GS7** | Volitelné, vyberte hodnotu odpovědného úřadu. |
 | **GS8** | Volitelné, zadejte verzi dokumentu schématu. |
 |||
@@ -278,7 +278,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 
 | Vlastnost | Popis |
 |----------|-------------|
-| **Znaková sada, která se má použít** | X12 znaková sada, která je buď **Basic**, **Extended**nebo **UTF8**. |
+| **Znaková sada, která se má použít** | X12 znaková sada, která je buď **Basic**, **Extended** nebo **UTF8**. |
 | **Schéma** | Schéma, které chcete použít. Po výběru schématu vyberte znakovou sadu, kterou chcete použít, na základě níže uvedených popisů oddělovače. |
 | **Typ vstupu** | Vstupní typ znakové sady |
 | **Oddělovač komponent** | Jeden znak, který odděluje složené datové prvky |
@@ -316,7 +316,7 @@ Když pracujete se schématy HIPAA a typy zpráv 277 nebo 837, je nutné provés
 
 Tato tabulka uvádí seznam ovlivněných zpráv, všechny varianty a čísla verzí dokumentů, která jsou namapována na tyto typy zpráv:
 
-| Typ nebo varianta zprávy |  Popis | Číslo verze dokumentu (GS8) |
+| Typ nebo varianta zprávy |  Description | Číslo verze dokumentu (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Oznámení o stavu informací o zdravotní péči | 005010X212 |
 | 837_I | Institucionální deklarace identity zdravotnictví | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |

@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 1. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem Runtime v1.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48dba50b384731befdc7fba7c418e542994cedd9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608950"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsna referenci pro Azure Functions 1. x
 
@@ -93,7 +93,8 @@ Následující vzor *host.js* souborů má všechny možné možnosti.
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -138,8 +139,8 @@ Nastavení konfigurace [aktivační události Azure Cosmos DB a vazeb](functions
 
 |Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
-|GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a`Gateway`|
-|Protocol (Protokol)|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
+|GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
+|Protokol|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
 |leasePrefix|Není k dispozici|Předpona zapůjčení pro použití ve všech funkcích aplikace|
 
 ## <a name="durabletask"></a>durableTask
@@ -148,7 +149,7 @@ Nastavení konfigurace [aktivační události Azure Cosmos DB a vazeb](functions
 
 ## <a name="eventhub"></a>eventHub
 
-Nastavení konfigurace [aktivačních událostí a vazeb centra událostí](functions-bindings-event-hubs-trigger.md#functions-1x)
+Nastavení konfigurace [aktivačních událostí a vazeb centra událostí](functions-bindings-event-hubs.md#functions-1x)
 
 ## <a name="functions"></a> – funkce
 
@@ -194,7 +195,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
 |counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
-## <a name="http"></a>HTTP
+## <a name="http"></a>http
 
 Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-bindings-http-webhook.md).
 
@@ -214,7 +215,7 @@ Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-binding
 |dynamicThrottlesEnabled|false (nepravda)|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.|
 |maxConcurrentRequests|bez vazby ( `-1` )|Maximální počet funkcí HTTP, které se spustí paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci HTTP, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení.|
 |maxOutstandingRequests|bez vazby ( `-1` )|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením.|
-|routePrefix|rozhraní api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
+|routePrefix|api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
 
 ## <a name="id"></a>id
 
@@ -230,7 +231,7 @@ Pokud sdílíte účet úložiště napříč více aplikacemi Function App, uji
 
 ## <a name="logger"></a>Nástroj
 
-Řídí filtrování protokolů zapsaných [objektem ILogger](functions-monitoring.md#write-logs-in-c-functions) nebo [kontextem. log](functions-monitoring.md#write-logs-in-javascript-functions).
+Řídí filtrování protokolů zapsaných objektem [ILogger](functions-dotnet-class-library.md#ilogger) nebo [kontextem. log](functions-reference-node.md#contextlog-method).
 
 ```json
 {
@@ -286,6 +287,7 @@ Nastavení konfigurace pro [výstupní vazbu SendGrind](functions-bindings-sendg
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |Vlastnost  |Výchozí | Description |
@@ -301,7 +303,8 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -310,7 +313,8 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo iniciovat čerpadlo zpráv. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na hodnotu 1. | 
 |prefetchCount|Není k dispozici|Výchozí PrefetchCount, které bude používat základní MessageReceiver.| 
-|autoRenewTimeout|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.| 
+|autoRenewTimeout|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
+|Zobrazovat|true|V případě hodnoty true bude aktivační událost po úspěšném provedení operace dokončit zpracování zprávy automaticky. Je-li hodnota false, je odpovědností funkce k dokončení zprávy před vrácením.|
 
 ## <a name="singleton"></a>singleton
 
@@ -340,7 +344,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 
 *Verze 1. x*
 
-Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` objektu. Viz protokolování [C#](functions-reference-csharp.md#logging) a [protokolováníNode.js](functions-reference-node.md#writing-trace-output-to-the-console).
+Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` objektu. Další informace najdete v tématu [protokolování C#].
 
 ```json
 {

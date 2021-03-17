@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 51fdbda755b98b47b700f57bf990b5c5356854a9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037605"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896867"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrytí provozu
 
-Azure Maps poskytuje podrobné informace o provozu ve formě **toku** a **incidentů**provozu. Tato data je možné vyhodnotit na mapách nebo použít ke generování inteligentnějších tras, které měří v reálném podmínkách řízení.
+Azure Maps poskytuje podrobné informace o provozu ve formě **toku** a **incidentů** provozu. Tato data je možné vyhodnotit na mapách nebo použít ke generování inteligentnějších tras, které měří v reálném podmínkách řízení.
 
 Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země nebo oblasti. V následující tabulce najdete informace o tom, jaké informace o přenosech si můžete vyžádat od jednotlivých zemí nebo oblastí: 
 
@@ -135,4 +135,4 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Maps dat provozu najdete na referenčních stránkách [provozu](https://docs.microsoft.com/rest/api/maps/traffic) .
+Další informace o Azure Maps dat provozu najdete na referenčních stránkách [provozu](/rest/api/maps/traffic) .

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: d529123b52e0e90702839f6822a586cf53dffa52
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 456348f5492af44274a37a6400fb8d95e9bd55a4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546708"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015141"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Kurz: integrace MVISION cloudového jednotného přihlašování do cloudu Azure AD pomocí Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat konfiguraci MVISION cloudu Azure AD SS
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k MVISION konfiguraci jednotného přihlašování služby Azure AD pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Konfigurace jednotného přihlašování v cloudu Azure AD MVISION podporuje **aktualizace SP a IDP** .
-* Jakmile nakonfigurujete Dropbox, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jakmile nakonfigurujete Dropbox, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>Přidání konfigurace MVISION cloudového jednotného přihlašování Azure AD z Galerie
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s MV
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
     4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-1. Konfigurace jednotného přihlašování pro konfiguraci jednotného přihlašování v **[MVISION cloudu Azure AD](#configure-mvision-cloud-azure-ad-sso-configuration-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+1. **[Nakonfigurujte jednotné přihlašování MVISION cloudové služby Azure AD pro konfiguraci](#configure-mvision-cloud-azure-ad-sso-configuration-sso)** jednotného přihlašování – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
     1. **[Vytvořte MVISION cloudového testu konfigurace jednotného přihlašování Azure AD](#create-mvision-cloud-azure-ad-sso-configuration-test-user)** , abyste měli protějšek Britta Simon v MVISION cloudové konfiguraci služby Azure AD, která je propojená s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory konfigurace jednotného přihlašování služby Azure AD pro MVISION Cloud](mailto:support@skyhighnetworks.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -125,15 +125,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k MVISION konfiguraci jednotného přihlašování ke cloudu Azure AD.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **MVISION cloudová konfigurace služby Azure AD SSO**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **MVISION cloudová konfigurace služby Azure AD SSO**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **MVISION cloudová konfigurace služby Azure AD jednotného přihlašování**.
 
@@ -161,22 +161,22 @@ Ke konfiguraci jednotného přihlašování na straně **MVISION cloudové konfi
 
 ### <a name="create-mvision-cloud-azure-ad-sso-configuration-test-user"></a>Vytvořit MVISION cloudového testu konfigurace jednotného přihlašování Azure AD
 
-V této části vytvoříte uživatele s názvem B. Simon v konfiguraci služby jednotného přihlašování v MVISION cloudu Azure AD. Pokud chcete přidat uživatele na MVISION cloudovou platformu pro jednotné přihlašování Azure AD, pracujte s [MVISION cloudem podpory konfigurace jednotného přihlašování služby Azure AD](mailto:support@skyhighnetworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v konfiguraci služby jednotného přihlašování v MVISION cloudu Azure AD. Pokud chcete přidat uživatele na MVISION cloudovou platformu pro jednotné přihlašování Azure AD, pracujte s [MVISION cloudem podpory konfigurace jednotného přihlašování služby Azure AD](mailto:support@skyhighnetworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici konfigurace služby MVISION cloud Azure AD SSO, měli byste se automaticky přihlásit ke cloudové konfiguraci služby Azure AD SSO MVISION, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici konfigurace služby MVISION cloud Azure AD SSO, měli byste se automaticky přihlásit ke cloudové konfiguraci služby Azure AD SSO MVISION, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si MVISION cloudové konfigurace jednotného přihlašování Azure AD pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

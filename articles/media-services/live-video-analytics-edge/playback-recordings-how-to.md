@@ -3,12 +3,12 @@ title: Přehrávání záznamů – Azure
 description: Živé video analýzy můžete použít na IoT Edge pro průběžné nahrávání videa, kde můžete nahrávat video do cloudu po týdny nebo měsíce. Záznam můžete také omezit na klipy, které jsou zajímavé, prostřednictvím záznamu založeného na událostech. Tento článek pojednává o tom, jak se nahrávky mají přehrát.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261076"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490890"
 ---
 # <a name="playback-of-recordings"></a>Přehrávání záznamů 
 
@@ -52,7 +52,7 @@ Kde hodnota přesnosti může být jedna z následujících hodnot: Year, month,
 |---|---|---|---|---|
 |Dotaz|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
 |Odpověď|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Úplná odpověď na věrnost. Pokud vůbec žádné mezery neexistují, začátek by byl Čas_spuštění a konec by byl čas_ukončení.|
-|Omezuje|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY, jinak vrátí chybu.<br/>&#x2022;hodnoty může být libovolný počet roků od sebe.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY-MM, jinak vrátí chybu.<br/>Hodnoty &#x2022;můžou být navzájem od nanejvýš 12 měsíců.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu RRRR-MM-DD, jinak návratová chyba.<br/>Hodnoty &#x2022;můžou být navzájem až 31 dnů od sebe.<br/>Hodnoty jsou včetně.|&#x2022;Čas_spuštění < čas ukončení<br/>Hodnoty &#x2022;mohou být nanejvýš 25 hodin od.<br/>Hodnoty &#x2022;jsou včetně.|
+|Omezení|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY, jinak vrátí chybu.<br/>&#x2022;hodnoty může být libovolný počet roků od sebe.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY-MM, jinak vrátí chybu.<br/>Hodnoty &#x2022;můžou být navzájem od nanejvýš 12 měsíců.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu RRRR-MM-DD, jinak návratová chyba.<br/>Hodnoty &#x2022;můžou být navzájem až 31 dnů od sebe.<br/>Hodnoty jsou včetně.|&#x2022;Čas_spuštění < čas ukončení<br/>Hodnoty &#x2022;mohou být nanejvýš 25 hodin od.<br/>Hodnoty &#x2022;jsou včetně.|
 
 #### <a name="additional-request-format-considerations"></a>Další požadavky formátu požadavků
 
@@ -209,8 +209,8 @@ GET https://hostname/locatorId/content.ism/availableMedia?precision=day&startTim
 
 Jak je uvedeno výše, tyto filtry vám pomůžou vybrat části záznamu (například z 9:00 do 11AM v novém roce dne) pro přehrávání. Při streamování přes HLS by adresa URL streamování vypadala jako `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl).m3u8` . Chcete-li vybrat část záznamu, přidejte Čas_spuštění a parametr čas_ukončení, například: `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00Z,endTime=2019-12-21T10:00:00Z).m3u8` . Proto filtry časového rozsahu jsou modifikátory adresy URL používané k popisu části časové osy nahrávky, která je obsažena v manifestu streamování:
 
-* `starttime`je razítko DateTime ISO 8601, které popisuje požadovaný počáteční čas časové osy videa ve vráceném manifestu.
-* `endtime`je razítko DateTime ISO 8601, které popisuje požadovaný koncový čas časové osy videa vrácené v manifestu.
+* `starttime` je razítko DateTime ISO 8601, které popisuje požadovaný počáteční čas časové osy videa ve vráceném manifestu.
+* `endtime` je razítko DateTime ISO 8601, které popisuje požadovaný koncový čas časové osy videa vrácené v manifestu.
 
 Maximální délka (v čase) takového manifestu nemůže být delší než 24 hodin.
 
@@ -294,7 +294,7 @@ Pomocí takového záznamu:
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T14:01:00.000Z,endTime=2019-12-21T03:00:00.000Z).m3u8`
 * Pokud si vyžádáte manifest, ve kterém byly hodnoty Čas_spuštění a čas_ukončení uvnitř závorce (například z 8:00 až 10AM UTC), služba se chová stejným způsobem, jako by výsledkem filtru Assetu byl prázdný výsledek.
 
-    [Toto je požadavek, který získá prázdnou odpověď.]`GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
+    [Toto je požadavek, který získá prázdnou odpověď.] `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
 * Pokud vyžádáte manifest, ve kterém je pouze jeden z Čas_spuštění nebo čas ukončení uvnitř otvoru, vrácený manifest bude obsahovat pouze část tohoto časového rozpětí. Přichycení hodnoty startTime nebo čas_ukončení k nejbližší platné hranici. Například pokud jste požádali o 3-HR datový proud z 10AM do 13:00, odpověď by měla obsahovat 1 – hod média v hodnotě od 12:00 do 13:00.
 
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T10:00:00.000Z,endTime=2019-12-21T13:00:00.000Z).m3u8`
@@ -303,7 +303,7 @@ Pomocí takového záznamu:
 
 ## <a name="recording-and-playback-latencies"></a>Latence nahrávání a přehrávání
 
-Při použití živé analýzy videí na IoT Edge k nahrávání do Assetu zadáte vlastnost segmentLength, která oznámí modulu, aby agreguje minimální dobu trvání videa (v sekundách) předtím, než se nahraje do cloudu. Pokud je například segmentLength nastavené na 300, pak modul nashromáždí za 5 minut množství videí před nahráním jednoho 5 minut "bloku", přejde do režimu akumulace na dalších 5 minut a nahrajte znovu. Zvýšení segmentLength má výhodu snížit náklady transakce Azure Storage, protože počet čtení a zápisů nebude častější než jednou za segmentLength sekund.
+Při použití živé analýzy videí na IoT Edge k nahrávání do Assetu zadáte vlastnost segmentLength, která oznámí modulu, aby agreguje minimální dobu trvání videa (v sekundách) předtím, než se nahraje do cloudu. Pokud je například segmentLength nastavené na 300, pak modul nashromáždí za 5 minut množství videí před nahráním 1 5 minut "bloku", přejde do režimu akumulace na dalších 5 minut a odešle se znovu. Zvýšení segmentLength má výhodu snížit náklady transakce Azure Storage, protože počet čtení a zápisů nebude častější než jednou za segmentLength sekund.
 
 V důsledku toho se streamování videa z Media Services bude zpozdit alespoň o tolik času. 
 

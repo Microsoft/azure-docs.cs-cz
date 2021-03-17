@@ -8,19 +8,19 @@ manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4c27895c5163d59ca785aa15fa3739359e5be457
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649682"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666596"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačních SAP HANA systémů, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA škálování pro SKU virtuálního počítače M128s. Tento dokument nemá za cíl nahradit standardní dokumentaci SAP, která zahrnuje následující obsah:
@@ -29,7 +29,7 @@ Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačn�
 - [Instalační příručky SAP](https://service.sap.com/instguides)
 - [Poznámky SAP](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K použití tohoto průvodce potřebujete základní znalosti následujících součástí Azure:
 
 - [Virtuální počítače Azure](../../linux/tutorial-manage-vm.md)
@@ -45,7 +45,7 @@ Následující části popisují základní pokyny k instalaci pro nasazení SAP
 Jak je popsáno v [příručce pro plánování virtuálních počítačů Azure](./planning-guide.md), existují dvě základní metody pro připojení k virtuálním počítačům Azure:
 
 - Připojte se přes Internet a veřejné koncové body na virtuálním počítači skoku nebo na VIRTUÁLNÍm počítači, na kterém běží SAP HANA.
-- Připojte se přes [síť VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) nebo Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- Připojte se přes [síť VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) nebo Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 Připojení typu Site-to-site prostřednictvím sítě VPN nebo ExpressRoute je nezbytné pro produkční scénáře. Tento typ připojení je taky potřeba pro neprodukční scénáře, které se dodávají do produkčních scénářů, ve kterých se používá software SAP. Následující obrázek ukazuje příklad připojení mezi lokalitami:
 
@@ -79,7 +79,7 @@ V případě konfigurací úložiště a typů úložiště, které se mají pou
 Když máte připojení typu Site-to-site k Azure prostřednictvím sítě VPN nebo ExpressRoute, musíte mít aspoň jednu virtuální síť Azure, která je připojená přes virtuální bránu k okruhu sítě VPN nebo ExpressRoute. V jednoduchých nasazeních se virtuální brána dá nasadit v podsíti Azure Virtual Network (VNet), která je také hostitelem instancí SAP HANA. Chcete-li nainstalovat SAP HANA, vytvořte dvě další podsítě v rámci služby Azure Virtual Network. Jedna podsíť hostuje virtuální počítače za účelem spuštění instancí SAP HANA. Druhá podsíť spustí virtuální počítače JumpBox nebo Management pro hostování SAP HANA studia, jiného softwaru pro správu nebo softwaru aplikace.
 
 > [!IMPORTANT]
-> Mimo funkčnost, ale z důvodů výkonu je důležitější, není podporována konfigurace [síťových virtuálních zařízení Azure](https://azure.microsoft.com/solutions/network-appliances/) v komunikačních cestách mezi aplikací SAP a vrstvou DBMS systému SAP NetWeaver, Hybris nebo S/4HANA založeného na protokolu SAP. Komunikace mezi aplikační vrstvou SAP a vrstvou DBMS musí být ta přímá. Omezení nezahrnuje [pravidla Azure ASG a NSG](../../../virtual-network/security-overview.md) , pokud pravidla ASG a NSG umožňují přímou komunikaci. Další scénáře, kdy síťová virtuální zařízení nejsou podporované, jsou v komunikačních cestách mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker a SBD zařízení, jak je popsáno v tématu [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro aplikace SAP](./high-availability-guide-suse.md). Nebo v komunikačních cestách mezi virtuálními počítači Azure a Windows serverem SOFS nastavenými v tématu vytvoření [instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure](./sap-high-availability-guide-wsfc-file-share.md). Síťová virtuální zařízení v komunikačních cestách může snadno zdvojnásobit latenci sítě mezi dvěma komunikačními partnery, může omezit propustnost v kritických cestách mezi aplikační vrstvou SAP a vrstvou DBMS. V některých scénářích vydaných zákazníky může síťová virtuální zařízení způsobit selhání clusterů Pacemaker Linux v případech, kdy komunikace mezi uzly clusteru se systémem Linux Pacemaker musí komunikovat se svým zařízením SBD prostřednictvím síťové virtuální zařízení.  
+> Mimo funkčnost, ale z důvodů výkonu je důležitější, není podporována konfigurace [síťových virtuálních zařízení Azure](https://azure.microsoft.com/solutions/network-appliances/) v komunikačních cestách mezi aplikací SAP a vrstvou DBMS systému SAP NetWeaver, Hybris nebo S/4HANA založeného na protokolu SAP. Komunikace mezi aplikační vrstvou SAP a vrstvou DBMS musí být ta přímá. Omezení nezahrnuje [pravidla Azure ASG a NSG](../../../virtual-network/network-security-groups-overview.md) , pokud pravidla ASG a NSG umožňují přímou komunikaci. Další scénáře, kdy síťová virtuální zařízení nejsou podporované, jsou v komunikačních cestách mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker a SBD zařízení, jak je popsáno v tématu [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro aplikace SAP](./high-availability-guide-suse.md). Nebo v komunikačních cestách mezi virtuálními počítači Azure a Windows serverem SOFS nastavenými v tématu vytvoření [instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure](./sap-high-availability-guide-wsfc-file-share.md). Síťová virtuální zařízení v komunikačních cestách může snadno zdvojnásobit latenci sítě mezi dvěma komunikačními partnery, může omezit propustnost v kritických cestách mezi aplikační vrstvou SAP a vrstvou DBMS. V některých scénářích vydaných zákazníky může síťová virtuální zařízení způsobit selhání clusterů Pacemaker Linux v případech, kdy komunikace mezi uzly clusteru se systémem Linux Pacemaker musí komunikovat se svým zařízením SBD prostřednictvím síťové virtuální zařízení.  
 > 
 
 > [!IMPORTANT]
@@ -108,7 +108,7 @@ Přehled různých metod pro přiřazování IP adres najdete v tématu [typy IP
 
 Pro virtuální počítače se systémem SAP HANA byste měli pracovat se přiřazenými statickými IP adresami. Důvodem je, že některé atributy konfigurace odkazují na IP adresy pro HANA.
 
-[Skupiny zabezpečení sítě Azure (skupin zabezpečení sítě)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) se používají k směrování provozu, který je směrován na instanci SAP HANA nebo na JumpBox. [Skupiny zabezpečení aplikace](../../../virtual-network/security-overview.md#application-security-groups) skupin zabezpečení sítě a nakonec jsou přidruženy k SAP HANA podsíti a podsíti pro správu.
+[Skupiny zabezpečení sítě Azure (skupin zabezpečení sítě)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) se používají k směrování provozu, který je směrován na instanci SAP HANA nebo na JumpBox. [Skupiny zabezpečení aplikace](../../../virtual-network/network-security-groups-overview.md#application-security-groups) skupin zabezpečení sítě a nakonec jsou přidruženy k SAP HANA podsíti a podsíti pro správu.
 
 Následující obrázek ukazuje přehled přibližného schématu nasazení pro SAP HANA po architektuře virtuální sítě rozbočovače a paprsků:
 
@@ -135,11 +135,11 @@ Pro/Hana/Shared doporučujeme také použití [Azure NetApp Files](https://azure
 
 Typický základní návrh pro jeden uzel v konfiguraci se škálováním na více instancí bude vypadat takto:
 
-![Základní informace o škálování jednoho uzlu](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![Diagram znázorňující typický základní návrh pro jeden uzel v konfiguraci s možností horizontálního rozšíření kapacity.](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 Základní konfigurace uzlu virtuálního počítače pro SAP HANA škálování na více instancí vypadá takto:
 
-- Pro **/Hana/Shared**používáte NATIVNÍ službu NFS, která je poskytována prostřednictvím Azure NetApp Files. 
+- Pro **/Hana/Shared** používáte NATIVNÍ službu NFS, která je poskytována prostřednictvím Azure NetApp Files. 
 - Všechny ostatní svazky disku nejsou sdíleny mezi různými uzly a nejsou založené na systému souborů NFS. Konfigurace a kroky instalace pro škálování na více systémů s nesdílenými **/Hana/data** a **/Hana/log** se poskytují dál v tomto dokumentu. Pro certifikované úložiště HANA, které se dá použít, se podívejte na článek [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).
 
 
@@ -244,8 +244,8 @@ V souladu s pokyny 2,0 pro osvědčené postupy v/v platí, že propustnost vstu
 Aby bylo dosaženo maximálního počtu propustnosti disku na jeden virtuální počítač, je nutné připojit více disků Azure k virtuálnímu počítači DT 2,0 a vytvořit softwarové pole RAID (prokládání) na úrovni operačního systému. Jeden disk Azure nemůže poskytnout propustnost pro dosažení maximálního limitu virtuálních počítačů v tomto ohledu. Služba Azure Premium Storage je povinná pro spuštění DT 2,0. 
 
 - Podrobnosti o dostupných typech disků Azure najdete [tady](../../disks-types.md) .
-- Podrobnosti o vytváření RAID softwaru prostřednictvím mdadm najdete [tady](../../linux/configure-raid.md) .
-- Podrobnosti o konfiguraci LVM pro vytvoření prokládaného svazku pro maximální propustnost najdete [tady](../../linux/configure-lvm.md) .
+- Podrobnosti o vytváření RAID softwaru prostřednictvím mdadm najdete [tady](/previous-versions/azure/virtual-machines/linux/configure-raid) .
+- Podrobnosti o konfiguraci LVM pro vytvoření prokládaného svazku pro maximální propustnost najdete [tady](/previous-versions/azure/virtual-machines/linux/configure-lvm) .
 
 V závislosti na požadavcích na velikost jsou k dispozici různé možnosti pro dosažení maximální propustnosti virtuálního počítače. Tady jsou možná konfigurace disků datových svazků pro každý typ virtuálního počítače DT 2,0, aby se dosáhlo horního limitu propustnosti virtuálních počítačů. Virtuální počítač E32sv3 by se měl považovat za úroveň vstupu pro menší úlohy. V případě, že by se neměl dostatečně rychle vypínat, může být nutné změnit velikost virtuálního počítače na M64-32ms.
 V případě, že virtuální počítač M64-32ms má mnoho paměti, zatížení v/v nemusí dosahovat limitu, obzvláště pro úlohy náročné na čtení. Proto může být méně disků v sadě Stripe dostačující v závislosti na úlohách specifických pro zákazníka. Ale na bezpečné straně jsou zvolené konfigurace disku, aby se zaručila maximální propustnost:
@@ -323,5 +323,3 @@ Seznamte se s články, jak je uvedeno níže.
 - [Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./sap-hana-high-availability.md)
 - [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md)
-
- 

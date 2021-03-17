@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78250181"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434996"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
 
@@ -20,7 +20,7 @@ Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md
 
 * **createUiDefinition.jsv** souboru. Pokud tento soubor nemáte, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="use-sandbox"></a>Použít izolovaný prostor
 
@@ -38,7 +38,7 @@ Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se formulář po výběru **náhledu**nezobrazí, může dojít k chybě syntaxe. Vyhledejte červený indikátor na pravém posuvníku a přejděte k němu.
+Pokud se formulář po výběru **náhledu** nezobrazí, může dojít k chybě syntaxe. Vyhledejte červený indikátor na pravém posuvníku a přejděte k němu.
 
 ![Zobrazit chybu syntaxe](./media/test-createuidefinition/show-syntax-error.png)
 
@@ -104,4 +104,4 @@ Teď, když jste ověřili, že rozhraní vašeho portálu pracuje podle očeká
 
 ## <a name="next-steps"></a>Další kroky
 
-Po ověření rozhraní portálu se dozvíte, jak [v Marketplace zpřístupnit spravovanou aplikaci Azure](publish-marketplace-app.md).
+Po ověření rozhraní portálu se dozvíte, jak [v Marketplace zpřístupnit spravovanou aplikaci Azure](../../marketplace/create-new-azure-apps-offer.md).

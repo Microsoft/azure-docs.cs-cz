@@ -13,13 +13,19 @@
     - name: Ansible
       items:
         - name: Spuštění playbooku Ansible
-          href: /azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+          href: /azure/developer/ansible/getting-started-cloud-shell?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
         - name: Správa dynamického inventáře Azure
-          href: /azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+          href: /azure/developer/ansible/dynamic-inventory-configure?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
     - name: Terraform
       items:
         - name: Vytvoření plánu provádění
           href: example-terraform-bash.md
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: PowerShell Cloud Shell pro uživatele Windows

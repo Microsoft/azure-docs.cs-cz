@@ -1,19 +1,20 @@
 ---
 title: Hrubá lokální v Unity
 description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubých místních rozmístění v jazyce C#.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5c976bd020d37672c44c89113bf7786e1ccf141b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 29ff255887dcd5f86f0b5fd72374df920a2618ee
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548250"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96017997"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>Postup vytváření a hledání kotev pomocí hrubého použití v jazyce C #
 

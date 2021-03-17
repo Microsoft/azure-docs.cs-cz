@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259731"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006742"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace protokolu DHCPv6 pro virtuální počítače se systémem Linux
 
@@ -44,8 +44,8 @@ Tento dokument popisuje, jak povolit protokol DHCPv6, aby virtuální počítač
 
 2. Upravte konfiguraci sítě pro rozhraní eth0 s následující konfigurací:
 
-   * V **Ubuntu 12,04 a 14,04**upravte soubor */etc/Network/Interfaces.d/eth0.cfg* . 
-   * V **Ubuntu 16,04**upravte soubor */etc/Network/Interfaces.d/50-Cloud-init.cfg* .
+   * V **Ubuntu 12,04 a 14,04** upravte soubor */etc/Network/Interfaces.d/eth0.cfg* . 
+   * V **Ubuntu 16,04** upravte soubor */etc/Network/Interfaces.d/50-Cloud-init.cfg* .
 
     ```config
     iface eth0 inet6 auto
@@ -61,7 +61,7 @@ Tento dokument popisuje, jak povolit protokol DHCPv6, aby virtuální počítač
 
 Počínaje verzí Ubuntu 17,10 je výchozí mechanismus konfigurace sítě [NETPLAN]( https://netplan.io).  V době instalace/vytvoření instance NETPLAN přečte konfiguraci sítě z konfiguračních souborů YAML v tomto umístění:/{lib, atd. Run}/netplan/*. yaml.
 
-Pro každé rozhraní sítě Ethernet ve vaší konfiguraci uveďte příkaz *dhcp6: true* .  Příklad:
+Pro každé rozhraní sítě Ethernet ve vaší konfiguraci uveďte příkaz *dhcp6: true* .  Například:
 
 ```config
 network:

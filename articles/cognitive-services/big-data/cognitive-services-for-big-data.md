@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services pro velké objemy dat
+title: Cognitive Services pro velký objem dat
 description: Naučte se využívat Azure Cognitive Services u velkých datových sad pomocí Pythonu, Java a Scala. Díky Cognitive Services pro velké objemy dat můžete průběžně zlepšovat inteligentní modely přímo do &trade; výpočtů Apache Spark a SQL.
 services: cognitive-services
 author: mhamilton723
@@ -8,59 +8,59 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201777"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461624"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Cognitive Services Azure pro velké objemy dat
 
 ![Cognitive Services Azure pro velké objemy dat](media/cognitive-services-big-data-overview.svg)
 
-Azure Cognitive Services pro velké objemy dat umožňuje uživatelům kanálovat terabajty dat prostřednictvím Cognitive Services [pomocí &trade; Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-spark). Díky Cognitive Services pro velké objemy dat je snadné vytvářet rozsáhlé inteligentní aplikace s libovolným úložištěm dat.
+Azure Cognitive Services pro velké objemy dat umožňuje uživatelům kanálovat terabajty dat prostřednictvím Cognitive Services [pomocí &trade; Apache Spark](/dotnet/spark/what-is-spark). Díky Cognitive Services pro velké objemy dat je snadné vytvářet rozsáhlé inteligentní aplikace s libovolným úložištěm dat.
 
 Díky Cognitive Services pro velké objemy dat můžete průběžně zlepšovat inteligentní modely přímo do &trade; výpočtů Apache Spark a SQL. Tyto nástroje uvolňují vývojáře z podrobností o sítích nízké úrovně, aby se mohli soustředit na vytváření inteligentních distribuovaných aplikací.
 
 ## <a name="features-and-benefits"></a>Funkce a výhody
 
-Cognitive Services pro velké objemy dat může využívat služby z libovolné oblasti světa a také [Cognitive Services kontejnerů](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support). Kontejnery podporují nedostatečné nebo žádné nasazení připojení s odezvou extrémně nízké latence. Kontejnerové Cognitive Services lze spustit místně, přímo na pracovních uzlech clusteru Spark nebo na externím Orchestrator, jako je Kubernetes.
+Cognitive Services pro velké objemy dat může využívat služby z libovolné oblasti světa a také [Cognitive Services kontejnerů](../cognitive-services-container-support.md). Kontejnery podporují nedostatečné nebo žádné nasazení připojení s odezvou extrémně nízké latence. Kontejnerové Cognitive Services lze spustit místně, přímo na pracovních uzlech clusteru Spark nebo na externím Orchestrator, jako je Kubernetes.
 
 ## <a name="supported-services"></a>Podporované služby
 
-[Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), ke kterým se dostanete prostřednictvím rozhraní API a sad SDK, vám vývojářům umožní sestavovat inteligentní aplikace, aniž by měli zkušenosti s AI nebo Pomocí Cognitive Services můžete své aplikace zobrazit, slyšet, mluvit, pochopit a důvod. Chcete-li použít Cognitive Services, musí vaše aplikace odesílat data službě přes síť. Po přijetí služba pošle inteligentní odpověď v rámci návratu. Pro úlohy s velkými objemy dat jsou k dispozici následující služby:
+[Cognitive Services](../index.yml), ke kterým se dostanete prostřednictvím rozhraní API a sad SDK, vám vývojářům umožní sestavovat inteligentní aplikace, aniž by měli zkušenosti s AI nebo Pomocí Cognitive Services můžete své aplikace zobrazit, slyšet, mluvit, pochopit a důvod. Chcete-li použít Cognitive Services, musí vaše aplikace odesílat data službě přes síť. Po přijetí služba pošle inteligentní odpověď v rámci návratu. Pro úlohy s velkými objemy dat jsou k dispozici následující služby:
 
 ### <a name="vision"></a>Obraz
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")| Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací. |
-|[Tvář](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. |
+|[Počítačové zpracování obrazu](../computer-vision/index.yml "Počítačové zpracování obrazu")| Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací. |
+|[Rozpoznávání tváře](../face/index.yml "Rozpoznávání tváře")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. |
 
 ### <a name="speech"></a>Řeč
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba rozpoznávání řeči poskytuje přístup k funkcím, jako je rozpoznávání řeči, syntéza řeči, překlad řeči a ověřování a identifikace mluvčího.|
+|[Služba Speech](../speech-service/index.yml "Služba Speech")|Služba rozpoznávání řeči poskytuje přístup k funkcím, jako je rozpoznávání řeči, syntéza řeči, překlad řeči a ověřování a identifikace mluvčího.|
 
 ### <a name="decision"></a>Rozhodnutí
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Detektor anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Detektor anomálií") | Služba detektoru anomálií (Preview) umožňuje monitorovat a zjišťovat anomálie v datech časových řad.|
+|[Detektor anomálií](../anomaly-detector/index.yml "Detektor anomálií") | Služba detektoru anomálií (Preview) umožňuje monitorovat a zjišťovat anomálie v datech časových řad.|
 
 ### <a name="language"></a>Jazyk
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Analýza textu")| Služba Analýza textu zajišťuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a rozpoznávání jazyka.|
+|[Analýza textu](../text-analytics/index.yml "Analýza textu")| Služba Analýza textu zajišťuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a rozpoznávání jazyka.|
 
 ### <a name="search"></a>Hledat
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Vyhledávání obrázků Bingu")|Služba Vyhledávání obrázků Bingu vrací zobrazení obrázků, které byly pro dotaz uživatele důležité.|
+|[Vyhledávání obrázků Bingu](/azure/cognitive-services/bing-image-search "Vyhledávání obrázků Bingu")|Služba Vyhledávání obrázků Bingu vrací zobrazení obrázků, které byly pro dotaz uživatele důležité.|
 
 ## <a name="supported-programming-languages-for-cognitive-services-for-big-data"></a>Podporované programovací jazyky pro Cognitive Services pro velké objemy dat
 
@@ -80,19 +80,19 @@ Cognitive Services pro velké objemy dat vyžaduje Apache Spark. Existuje někol
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) je analytická platforma založená na Apache Spark optimalizovaná pro platformu Microsoft Azure cloudové služby. Nabízí nastavení jedním kliknutím, zjednodušené pracovní toky a interaktivní pracovní prostor, který podporuje spolupráci mezi odborníky přes data, datovými inženýry a obchodními analytiky.
+[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) je analytická platforma založená na Apache Spark optimalizovaná pro platformu Microsoft Azure cloudové služby. Nabízí nastavení jedním kliknutím, zjednodušené pracovní toky a interaktivní pracovní prostor, který podporuje spolupráci mezi odborníky přes data, datovými inženýry a obchodními analytiky.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure synapse Analytics](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/synapse-analytics) (dříve SQL Data Warehouse) je jako podnikový datový sklad, který využívá obrovský paralelní zpracování. Pomocí analýzy synapse můžete rychle spouštět složité dotazy napříč petabajty daty. Azure synapse Analytics poskytuje spravované fondy Spark pro spouštění úloh Sparku s intuitivním Jupyter Notebookovým rozhraním.
+[Azure synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) je jako podnikový datový sklad, který využívá obrovský paralelní zpracování. Pomocí analýzy synapse můžete rychle spouštět složité dotazy napříč petabajty daty. Azure synapse Analytics poskytuje spravované fondy Spark pro spouštění úloh Sparku s intuitivním Jupyter Notebookovým rozhraním.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Služba Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/) orchestruje kontejnery Docker a distribuované aplikace v obrovské škále. AKS je spravovaná nabídka Kubernetes, která zjednodušuje používání Kubernetes v Azure. Kubernetes může umožnit jemně odstupňované řízení škály, latence a sítě pro rozpoznávání. Pokud však Apache Spark neznáte, doporučujeme použít Azure Databricks nebo synapse Analytics.
+[Služba Azure Kubernetes Service (AKS)](../../aks/index.yml) orchestruje kontejnery Docker a distribuované aplikace v obrovské škále. AKS je spravovaná nabídka Kubernetes, která zjednodušuje používání Kubernetes v Azure. Kubernetes může umožnit jemně odstupňované řízení škály, latence a sítě pro rozpoznávání. Pokud však Apache Spark neznáte, doporučujeme použít Azure Databricks nebo Azure synapse Analytics.
 
 ### <a name="data-connectors"></a>Datové konektory
 
-Po vytvoření clusteru Spark se další krok připojí k vašim datům. Apache Spark má širokou kolekci databázových konektorů. Tyto konektory umožňují aplikacím pracovat s velkými datovými sadami bez ohledu na to, kde jsou uložené. Další informace o podporovaných databázích a konektorech najdete v [seznamu podporovaných zdrojů dat pro Azure Databricks](https://docs.microsoft.com/azure/databricks/data/data-sources/).
+Po vytvoření clusteru Spark se další krok připojí k vašim datům. Apache Spark má širokou kolekci databázových konektorů. Tyto konektory umožňují aplikacím pracovat s velkými datovými sadami bez ohledu na to, kde jsou uložené. Další informace o podporovaných databázích a konektorech najdete v [seznamu podporovaných zdrojů dat pro Azure Databricks](/azure/databricks/data/data-sources/).
 
 ## <a name="concepts"></a>Koncepty
 
@@ -125,12 +125,14 @@ Cognitive Services pro velké objemy dat je příkladem toho, jak můžeme integ
 - [Další informace o tom, jak Cognitive Services pracovat na Apache Spark&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [Úspora sněhových Pohádků s hloubkovým učením a Počítačové zpracování obrazu ve Sparku](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [Microsoft Research podcast: MMLSpark, který umožňuje AI dobrým způsobem s označením Hovorka](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [Dokument White Paper: inteligentní mikroslužby škálované velkými objemy](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>Webináře a videa
 
 - [Azure Cognitive Services ve Sparku: clustery s integrovanými inteligentními službami](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark summit vystoupení: škálovatelný AI pro dobré](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cognitive Services pro velké objemy dat v Cosmos DB](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [Bleskový rozhovor na rozsáhlých inteligentních mikroslužbách škály](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,7 +1,7 @@
 ---
 title: Modely balíčků
 titleSuffix: Azure Machine Learning
-description: Zabalení modelu jako souboru Dockerfile
+description: Zabalit model. Modely lze zabalit jako image Docker, kterou si můžete stáhnout, nebo můžete vytvořit souboru Dockerfile a použít ji k sestavení image.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,20 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d5fb2539d79c31de5a5e0196a7a4814c02a84602
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544559"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312640"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Jak zabalit registrovaný model pomocí Docker
 
 Tento článek ukazuje, jak zabalit registrovaný Azure Machine Learning model pomocí Docker.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek předpokládá, že jste už v pracovním prostoru machine learningu provedli školení a zaregistrovali model. Pokud se chcete dozvědět, jak naučit a registrovat model scikit-učení, [postupujte podle tohoto kurzu](how-to-train-scikit-learn.md).
 
@@ -52,7 +54,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
+Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -163,9 +165,9 @@ docker kill mycontainer
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
-* [Aktualizovat webovou službu](how-to-deploy-update-web-service.md)
+* [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

@@ -1,6 +1,6 @@
 ---
-title: Optimalizujte transakce pro fond SQL.
-description: Naučte se optimalizovat výkon transakčního kódu ve fondu SQL (datový sklad) a současně minimalizovat riziko pro dlouhé vrácení zpět.
+title: Optimalizovat transakce pro vyhrazený fond SQL
+description: Naučte se optimalizovat výkon transakčního kódu ve vyhrazeném fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b1f820cfca0e352b49d815e2b99d407ccc8ce43
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503187"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505694"
 ---
-# <a name="optimize-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
+# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimalizace transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics 
 
-Přečtěte si, jak optimalizovat výkon transakčního kódu ve fondu SQL a zároveň minimalizovat rizika pro dlouhá vrácení zpět.
+Přečtěte si, jak optimalizovat výkon transakčního kódu ve vyhrazeném fondu SQL a zároveň minimalizovat rizika pro dlouhá vrácení zpět.
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
 
-Transakce jsou důležitou součástí databázového stroje relační databáze. Fond SQL používá během změny dat transakce. Tyto transakce můžou být explicitní nebo implicitní. Jednoduché příkazy INSERT, UPDATE a DELETE jsou všechny příklady implicitních transakcí. Explicitní transakce používají příkaz BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, pokud je potřeba spojit více příkazů úprav v jedné atomické jednotce.
+Transakce jsou důležitou součástí databázového stroje relační databáze. Vyhrazený fond SQL používá během změny dat transakce. Tyto transakce můžou být explicitní nebo implicitní. Jednoduché příkazy INSERT, UPDATE a DELETE jsou všechny příklady implicitních transakcí. Explicitní transakce používají příkaz BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, pokud je potřeba spojit více příkazů pro úpravu s jednou atomickou jednotkou.
 
-Fond SQL potvrdí změny v databázi pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy do protokolu transakcí jsou automatické. Není nutná žádná konfigurace. Nicméně i když tento proces zaručuje, že při zápisu se v systému zavádí režie. Tento dopad můžete minimalizovat zapsáním transakčního efektivního kódu. Velmi účinný efektivní kód spadá do dvou kategorií.
+Vyhrazený fond SQL potvrdí změny v databázi pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy do protokolu transakcí jsou automatické. Není nutná žádná konfigurace. Nicméně i když tento proces zaručuje, že při zápisu se v systému zavádí režie. Tento dopad můžete minimalizovat zapsáním transakčního efektivního kódu. Velmi účinný efektivní kód spadá do dvou kategorií.
 
 * Pokud je to možné, používejte minimální konstrukce protokolování
 * Zpracování dat pomocí vymezených dávek, aby se předešlo transakcím v čísle Long spuštěných
@@ -44,13 +44,13 @@ Limity bezpečnosti transakce platí pouze pro plně protokolované operace.
 
 Následující operace jsou schopné provádět minimální protokolování:
 
-* CREATE TABLE JAKO SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-CTAS.MD? TOC =/Azure/synapse-Analytics/toc.jsv&BC =/Azure/synapse-Analytics/breadcrumb/toc.jszapnuto)
+* CREATE TABLE jako SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
 * Vložit.. VYBRALI
 * CREATE INDEX
 * ZMĚNIT INDEX OPĚTOVNÉHO SESTAVENÍ
 * DROP INDEX
 * TRUNCATE TABLE
-* ODKLÁDACÍ TABULKA
+* DROP TABLE
 * ZMĚNIT ODDÍL PŘEPÍNÁNÍ TABULKY
 
 <!--
@@ -68,7 +68,7 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 
 | Primární index | Scénář načtení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Libovolný |**Minimální** |
+| Halda |Všechny |**Minimální** |
 | Clusterovaný index |Prázdná cílová tabulka |**Minimální** |
 | Clusterovaný index |Načtené řádky se nepřesahují s existujícími stránkami v cíli. |**Minimální** |
 | Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Do bloku |
@@ -78,13 +78,13 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 Je třeba poznamenat, že jakékoli zápisy k aktualizaci sekundárních nebo neclusterovaných indexů budou vždy plně protokolované.
 
 > [!IMPORTANT]
-> Fond SQL má 60 distribucí. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a vydávány v jednom oddílu, bude muset dávka obsahovat 6 144 000 řádků nebo větší, aby bylo při zápisu do clusterovaného indexu columnstore minimální protokolované. Pokud je tabulka rozdělená na oddíly a řádky, které jsou vloženy na hranice oddílu, budete potřebovat 6 144 000 řádků na hranici oddílu za předpokladu, že bude i distribuce dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu 102 400 řádku, aby bylo možné vložit na minimum přihlášené k distribuci.
+> Vyhrazený fond SQL má 60 distribucí. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a vydávány v jednom oddílu, bude muset dávka obsahovat 6 144 000 řádků nebo větší, aby bylo při zápisu do clusterovaného indexu columnstore minimální protokolované. Pokud je tabulka rozdělená na oddíly a řádky, které jsou vloženy na hranice oddílu, budete potřebovat 6 144 000 řádků na hranici oddílu za předpokladu, že bude i distribuce dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu 102 400 řádku, aby bylo možné vložit na minimum přihlášené k distribuci.
 
 Načtení dat do neprázdné tabulky s clusterovaným indexem může často obsahovat kombinaci plně protokolovaných a minimálních protokolovaných řádků. Clusterovaný index je vyrovnaný strom (b-Tree) stránek. Pokud stránka, na kterou se zapisuje, již obsahuje řádky z jiné transakce, pak budou tyto zápisy plně protokolovány. Pokud je ale stránka prázdná, pak se zápis na tuto stránku bude považovat za minimální protokol.
 
 ## <a name="optimize-deletes"></a>Optimalizovat odstranění
 
-ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
+ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true) zahodíte starou tabulku s nově vytvořenou tabulkou.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Opětovné vytváření velkých tabulek může mít za úkol používání funkcí správy úloh fondu SQL. Další informace najdete v tématu [třídy prostředků pro správu úloh](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Opětovné vytváření velkých tabulek může mít za úkol používání vyhrazených funkcí správy úloh fondů SQL. Další informace najdete v tématu [třídy prostředků pro správu úloh](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="optimize-with-partition-switching"></a>Optimalizace pomocí přepínání oddílů
 
@@ -406,20 +406,20 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Pokyny pro pozastavení a škálování
 
-Azure synapse Analytics umožňuje [pozastavit, obnovit a škálovat](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) váš fond SQL na vyžádání. 
+Azure synapse Analytics umožňuje [pozastavit, obnovit a škálovat](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) vyhrazený fond SQL na vyžádání. 
 
-Když pozastavíte nebo zmenšíte svůj fond SQL, je důležité pochopit, že jakékoliv transakce v letadle jsou okamžitě ukončeny. způsob vrácení všech otevřených transakcí zpět. 
+Při pozastavení nebo škálování vyhrazeného fondu SQL je důležité pochopit, že jakékoliv transakce v letadle jsou okamžitě ukončeny. způsob vrácení všech otevřených transakcí zpět. 
 
-Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování fondu SQL. 
+Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování vyhrazeného fondu SQL. 
 
 > [!IMPORTANT]
 > `UPDATE`A `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování mohou trvat výrazně déle než ekvivalentní minimální zaznamenání operací.
 
-Nejlepším řešením je umožnit, aby transakce změny letových dat byly dokončeny před tím, než se pozastavily nebo mění velikost fondu SQL. Tento scénář ale nemusí být vždycky praktický. Chcete-li zmírnit riziko dlouhého vrácení zpět, vezměte v úvahu jednu z následujících možností:
+Nejlepším řešením je umožnit, aby transakce změny letových dat byly dokončeny před tím, než se pozastavily nebo mění velikost vyhrazeného fondu SQL. Tento scénář ale nemusí být vždycky praktický. Chcete-li zmírnit riziko dlouhého vrácení zpět, vezměte v úvahu jednu z následujících možností:
 
 * Přepisování dlouhotrvajících operací s použitím [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 * Rozdělit operaci na bloky dat; provozování v podmnožině řádků
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o úrovních izolace a transakčních omezeních najdete [v tématu transakce ve fondu SQL](develop-transactions.md) .  Přehled dalších osvědčených postupů najdete v tématu [osvědčené postupy pro fondy SQL](best-practices-sql-pool.md).
+Další informace o úrovních izolace a omezeních [transakcí najdete v tématu transakce ve vyhrazeném fondu SQL](develop-transactions.md) .  Přehled dalších osvědčených postupů najdete v tématu [věnovaném osvědčeným postupům pro fond SQL](best-practices-sql-pool.md).

@@ -4,15 +4,15 @@ description: V některých běžných scénářích App Service najdete ukázky 
 author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
-ms.date: 01/04/2019
+ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517701"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88891041"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Šablony Azure Resource Manager pro App Service
 
@@ -44,6 +44,7 @@ Další informace o syntaxi a vlastnostech JSON pro App Services prostředky naj
 | [Aplikace s databází v Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Nasadí aplikaci App Service a databázi v Azure SQL Database na úrovni služeb Basic. |
 | [Aplikace s připojením k úložišti objektů BLOB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Nasadí aplikaci App Service s připojovacím řetězcem úložiště objektů BLOB v Azure. Z aplikace pak můžete použít úložiště objektů BLOB. |
 | [Aplikace s mezipamětí Azure pro Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Nasadí aplikaci App Service s mezipamětí Azure pro Redis. |
+| [Aplikace připojená k back-endu WebApp](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| Nasadí dvě webové aplikace (front-end a back-end) bezpečně připojené společně se vkládáním virtuální sítě a soukromým koncovým bodem. |
 |**App Service Environment**| **Popis** |
 | [Vytvoření prostředí App Service v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Vytvoří ve vaší virtuální síti prostředí App Service v2. |
 | [Vytvoření prostředí App Service v2 s adresou interního nástroje pro vyrovnávání zatížení](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Vytvoří ve vaší virtuální síti prostředí App Service v2 s privátní adresou interního nástroje pro vyrovnávání zatížení. |

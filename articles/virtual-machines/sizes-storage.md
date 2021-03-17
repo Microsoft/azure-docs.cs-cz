@@ -1,7 +1,7 @@
 ---
 title: Velikosti virtuálních počítačů Azure – Storage | Microsoft Docs
 description: Obsahuje seznam různých velikostí optimalizovaných pro úložiště, které jsou dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových adaptérů a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
-ms.subservice: sizes
+ms.subservice: vm-sizes-storage
 documentationcenter: ''
 author: sasha-melamed
 ms.service: virtual-machines
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d97fe6cda1134d45468e257965fd5e28fe170e6f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835574"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561020"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro úložiště
 
@@ -27,7 +27,7 @@ Funkce [Lsv2-Series](lsv2-series.md) s vysokou propustností, nízkou latencí a
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro výpočty](sizes-compute.md)
 - [Optimalizované pro paměť](sizes-memory.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

@@ -3,21 +3,21 @@ title: Azure Maps chyb a upozornění převodu vykreslování
 description: Přečtěte si o chybách a upozorněních při převodu, které se mohou vyhovět při používání služby Azure Maps Conversion. Přečtěte si doporučení, jak vyřešit chyby a upozornění, s příklady.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681996"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906212"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Upozornění a chyby převodu kreslení
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
+[Služba Azure Maps Conversion](/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
 
 Služba konverze bude úspěšná, pokud dojde k nějakým upozorněním na převod. Doporučuje se ale zkontrolovat a vyřešit všechna upozornění. Upozornění znamená, že část převodu byla ignorována nebo automaticky opravena. Selhání při řešení problémů by mohlo způsobit chyby v těchto procesech.
 
@@ -35,9 +35,9 @@ Služba konverze nemůže vytvořit funkci mapy z neplatné entity a místo toho
 
 * Následující dva obrázky ukazují příklady mnohoúhelníků s sebou samým.
 
-     ![Příklad mnohoúhelníku protínající sebe](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![Příkladem křížového mnohoúhelníku, který je v sobě příkladem.](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![Příklad mnohoúhelníku protínající sebe](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![Příkladem křížového mnohoúhelníku, který je v sobě příkladem.](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * Níže je obrázek, který zobrazuje neuzavřenou lomenou čáru. Předpokládat, že vrstva podporuje pouze uzavřenou geometrii.
 
@@ -225,7 +225,7 @@ K **partiallyOverlappingUnit** upozornění dojde v případě, že výkres obsa
 
 #### <a name="example-scenarios-partiallyoverlappingunit"></a>*Příklady scénářů partiallyOverlappingUnit*
 
-Na následujícím obrázku je překrývající se jednotka zvýrazněna červeně. `UNIT110`a `HALLWAY` jsou zahozeny.
+Na následujícím obrázku je překrývající se jednotka zvýrazněna červeně. `UNIT110` a `HALLWAY` jsou zahozeny.
 
 ![Příklad překrývajících se jednotek](./media/drawing-conversion-error-codes/partially-overlapping-unit.png)
 
@@ -330,7 +330,7 @@ Pokusili jste se nahrát balíček pro kreslení s nesprávným `udid` parametre
 Pokud chcete opravit chybu **invalidUserData** , ověřte, že:
 
 * Zadali jste správný `udid` pro nahraný balíček.
-* Pro účet Azure Maps, který jste použili k nahrání balíčku pro kreslení, je povolený Azure Maps tvůrce.
+* Pro účet Azure Maps, který jste použili k nahrání balíčku pro kreslení, je povolený Azure Maps Creator (Preview).
 * Požadavek rozhraní API na službu převodu obsahuje klíč předplatného pro Azure Maps účet, který jste použili k nahrání balíčku pro kreslení.
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -350,7 +350,7 @@ K **dwgError** dojde v případě, že balíček pro kreslení obsahuje soubor D
 Pokud chcete opravit **dwgError**, zkontrolujte _manifest.jsv_ souboru a ověřte, že:
 
 * Všechny soubory DWG v archivu ZIP jsou platné kresby formátu DWG AutoCADu, v AutoCADu je otevřete. Odeberte nebo opravte všechny neplatné výkresy.
-* Seznam souborů DWG v _manifest.js_ se shoduje se soubory DWG v archivu zip.
+* Seznam souborů DWG v _manifest.js_  se shoduje se soubory DWG v archivu zip.
 
 ## <a name="manifest-errors"></a>Chyby manifestu
 
@@ -506,4 +506,4 @@ Pokud chcete opravit chybu **verticalPenetrationError** , přečtěte si informa
 > [Jak používat Azure Maps pro vykreslování – Vizualizér chyb](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [Tvůrce pro mapování vnitřníchy](creator-indoor-maps.md)
+> [Creator (Preview) pro mapování vnitřních verzí](creator-indoor-maps.md)

@@ -5,14 +5,13 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7fd04428edc28315e714b9e81af0bea0e9344e52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2580da2a4ac7b943dee3e5e6ff8bdbd49664505b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763801"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745243"
 ---
 # <a name="quota-increase-requests"></a>Žádosti o navýšení kvóty
 
@@ -23,5 +22,7 @@ Můžete požádat o zvýšení limitu kvóty vCPU pro řady virtuálních poč�
 
 Při vytvoření nového předplatného se nemusí výchozí celková oblast vCPU rovnat součtu výchozích kvót vCPU pro všechny jednotlivé řady virtuálních počítačů. Tato skutečnost může mít za následek předplatné s dostatečnou kvótou pro každou jednotlivou řadu virtuálních počítačů, kterou chcete nasadit. Pro všechny místní Vcpuy pro všechna nasazení by mohlo dojít k dostatečnému počtu kvót. V takovém případě budete muset odeslat žádost o explicitní zvýšení celkového počtu místních vCPU. Celkový počet regionálních vCPU nesmí překročit součet schválené kvóty v rámci všech řad virtuálních počítačů v dané oblasti.
 
-Další informace o kvótách najdete v tématech o kvótách [VCPU virtuálních počítačů](../../virtual-machines/windows/quotas.md) a [omezeních, kvótách a omezeních předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+> [!NOTE]
+> Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](../../azure-resource-manager/templates/error-resource-quota.md#solution)zdarma.
 
+Další informace o kvótách najdete v tématech o kvótách [VCPU virtuálních počítačů](../../virtual-machines/windows/quotas.md) a [omezeních, kvótách a omezeních předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019177"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -41,13 +41,13 @@ Vyvážení zátěže přesunutím virtuálních počítačů mezi dvěma proces
 2. Klikněte na konfigurační server, se kterým jsou zaregistrované procesní servery.
 3. Klikněte na procesový Server, pro který chcete vyrovnávat zatížení provozu.
 
-    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Snímek obrazovky ukazuje procesový Server, pro který můžete vyrovnávat zatížení provozu.](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. Klikněte na **Vyrovnávání zatížení**, vyberte cílový procesový Server, na který chcete přesunout počítače. Pak klikněte na **OK** .
 
-    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![Snímek obrazovky zobrazuje podokno vyrovnávání zatížení s vybraným cílovým procesovým serverem.](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. Klikněte na **Vybrat počítače**a vyberte počítače, které chcete přesunout z aktuálního na cílový procesový Server. Pro každý virtuální počítač se zobrazí podrobnosti o průměrné změně dat. Pak klikněte na **OK**. 
+2. Klikněte na **Vybrat počítače** a vyberte počítače, které chcete přesunout z aktuálního na cílový procesový Server. Pro každý virtuální počítač se zobrazí podrobnosti o průměrné změně dat. Pak klikněte na **OK**. 
 3. V trezoru Sledujte průběh úlohy pod **sledováním**  >  **Site Recovery úloh**.
 
 Změny se projeví na portálu tím, že bude trvat přibližně 15 minut. V případě rychlejšího efektu [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
@@ -61,7 +61,7 @@ Přesuňte celé zatížení zpracovávané procesovým serverem na jiný proces
 3. Klikněte na procesový Server, ze kterého chcete úlohu přepnout.
 4. Klikněte na **přepínač**, vyberte cílový procesový Server, na který chcete přesunout úlohu. Pak klikněte na **OK** .
 
-    ![Přepínač](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Snímek obrazovky se zobrazí v podokně vybrat cílový proces serveru.](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. V trezoru Sledujte průběh úlohy pod **sledováním**  >  **Site Recovery úloh**.
 
@@ -69,7 +69,7 @@ Změny se projeví na portálu tím, že bude trvat přibližně 15 minut. V př
 
 ## <a name="register-a-master-target-server"></a>Registrace hlavního cílového serveru
 
-Hlavní cílový server se nachází na konfiguračním serveru a procesových serverech se škálováním na více instancí. Musí být zaregistrovaný na konfiguračním serveru. V případě, že v této registraci dojde k selhání, může to mít vliv na stav chráněných položek. Pokud chcete zaregistrovat hlavní cílový server s konfiguračním serverem, přihlaste se ke konkrétnímu konfiguračnímu serveru nebo procesu serveru se škálováním na více instancí, na kterém je registrace nutná. Přejděte do složky **%ProgramData%\ASR\Agent**a spusťte následující příkaz na příkazovém řádku správce.
+Hlavní cílový server se nachází na konfiguračním serveru a procesových serverech se škálováním na více instancí. Musí být zaregistrovaný na konfiguračním serveru. V případě, že v této registraci dojde k selhání, může to mít vliv na stav chráněných položek. Pokud chcete zaregistrovat hlavní cílový server s konfiguračním serverem, přihlaste se ke konkrétnímu konfiguračnímu serveru nebo procesu serveru se škálováním na více instancí, na kterém je registrace nutná. Přejděte do složky **%ProgramData%\ASR\Agent** a spusťte následující příkaz na příkazovém řádku správce.
 
    ```
    cmd
@@ -91,7 +91,7 @@ Znovu zaregistrujte procesový Server, na kterém běží místně, nebo na virt
 Po uložení nastavení proveďte následující kroky:
 
 1. Na procesovém serveru otevřete příkazový řádek správce.
-2. Přejděte do složky **%ProgramData%\ASR\Agent**a spusťte příkaz:
+2. Přejděte do složky **%ProgramData%\ASR\Agent** a spusťte příkaz:
 
     ```
     cdpcli.exe --registermt
@@ -111,7 +111,7 @@ Pokud místní procesový Server používá proxy server pro připojení k Azure
    net stop obengine
    net start obengine
    ```
-2. Přejděte do složky **%ProgramData%\ASR\Agent**a spusťte tento příkaz:
+2. Přejděte do složky **%ProgramData%\ASR\Agent** a spusťte tento příkaz:
    ```
    cmd
    cdpcli.exe --registermt

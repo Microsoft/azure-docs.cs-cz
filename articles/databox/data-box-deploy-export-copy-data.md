@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259133"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680900"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Kurz: Kopírování dat z Azure Data Boxu přes protokol SMB (Preview)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>Kurz: Kopírování dat z Azure Data Boxu přes protokol SMB
 
 Tento kurz popisuje, jak se pomocí místního webového uživatelského rozhraní připojit k Data Boxu a zkopírovat z něj data na místní server. Zařízení Data Box obsahuje data vyexportovaná z účtu Azure Storage.
 
@@ -27,8 +27,6 @@ V tomto kurzu se naučíte:
 > * Požadavky
 > * Připojení k Data Boxu
 > * Kopírování dat z Data Boxu
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,11 +48,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Výběrem **Získat přihlašovací údaje** získáte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště. 
 
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![Získání přihlašovacích údajů sdílené složky](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Vyberte **OK**.
     
-    ![Získání přihlašovacích údajů sdílené složky 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![Získání přihlašovacích údajů sdílené složky, přístup ke sdílené složce a kopírování dat](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
 3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*exportbvtdataset2* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
@@ -73,16 +71,16 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     The command completed successfully.
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
+5. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů, zadání IP adresy zařízení](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Sdílené složky by se teď měly zobrazit jako složky.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů, zobrazení sdílených složek](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
-Pokud používáte klienta Linuxu, připojte sdílenou složku SMB pomocí následujícího příkazu. Níže uvedený parametr vers představuje verzi protokolu SMB, kterou podporuje váš hostitel s Linuxem. Do následujícího příkazu vložte odpovídající verzi. Verze protokolu SMB, které Data Box podporuje, najdete v tématu věnovaném [podporovaným systémům souborů pro klienty Linuxu](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients). 
+Pokud používáte klienta Linuxu, připojte sdílenou složku SMB pomocí následujícího příkazu. Níže uvedený parametr vers představuje verzi protokolu SMB, kterou podporuje váš hostitel s Linuxem. Do následujícího příkazu vložte odpovídající verzi. Verze protokolu SMB, které Data Box podporuje, najdete v tématu věnovaném [podporovaným systémům souborů pro klienty Linuxu](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients). 
 
 ```console
 sudo mount -t nfs -o vers=2.1 169.254.143.85:/exportbvtdataset2_BlockBlob /home/databoxubuntuhost/databox
@@ -119,4 +117,3 @@ V dalším kurzu se dozvíte, jak Data Box odeslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-export-picked-up.md)
-

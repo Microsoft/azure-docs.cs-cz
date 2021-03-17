@@ -4,16 +4,19 @@ description: Obsahuje souhrn nastavení podpory a omezení při zálohování sd
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289500"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370984"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
 [Službu Azure Backup](./backup-overview.md) můžete použít k zálohování sdílených složek Azure. Tento článek shrnuje nastavení podpory při zálohování sdílených složek Azure pomocí Azure Backup.
+
+> [!NOTE]
+> Azure Backup v současné době nepodporuje sdílené složky NFS.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -25,7 +28,7 @@ Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s v
 
 | Podrobnosti účtu úložiště | Podpora                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Druh účtu            | Azure Backup podporuje sdílené složky Azure, které jsou k dispozici v obecných účelech V1, pro obecné účely v2 a na typech úložiště souborů. |
+| Druh účtu            | Azure Backup podporuje sdílené složky Azure přítomné v účtech úložiště pro obecné účely V1, obecné verze V2 a souborové úložiště. |
 | Výkon              | Azure Backup podporuje sdílení souborů v účtech Standard a Premium Storage. |
 | Replikace              | Podpora sdílených složek Azure v účtech úložiště s jakýmkoli typem replikace je podporovaná. |
 | Povolená brána firewall         | Sdílené složky Azure v účtech úložiště s pravidly brány firewall, které umožňují Microsoft Azure služby pro přístup k účtu úložiště, jsou podporované.|
@@ -60,7 +63,7 @@ Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s v
 | Nastavení                                                      | Omezení   |
 | ------------------------------------------------------------ | ------- |
 | Maximální počet obnovení za den                           | 10      |
-| Maximální počet souborů na obnovení                         | 10      |
+| Maximální počet souborů na obnovení                         | 99      |
 | Maximální doporučená velikost obnovení na obnovení pro velké sdílené složky | 15 TiB |
 
 ## <a name="retention-limits"></a>Omezení uchování

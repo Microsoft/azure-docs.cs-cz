@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu FedRAMP High – přehled
 description: Přehled ukázky podrobného plánu FedRAMP High Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly FedRAMP High.
-ms.date: 07/31/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: a8761d02d089013bccd31a9968367b26c3d22f87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1287a0369e59cc78cce775bff01fe885c1b571d0
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495858"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034845"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>Přehled ukázky podrobného plánu FedRAMP High
 

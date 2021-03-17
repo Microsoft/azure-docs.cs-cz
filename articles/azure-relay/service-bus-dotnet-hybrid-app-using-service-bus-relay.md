@@ -2,13 +2,14 @@
 title: Hybridní místní/cloudová aplikace (.NET) přenosu Azure Windows Communication Foundation (WCF) | Microsoft Docs
 description: Přečtěte si, jak vystavit místní službu WCF pro webovou aplikaci v cloudu pomocí Azure Relay
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079956"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90983885"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Vystavení místní služby WCF pro webovou aplikaci v cloudu pomocí Azure Relay
 
@@ -343,7 +344,7 @@ Spusťte aplikace pro kontrolu, že funguje.
 
 Měla by se objevit vaše aplikace, jak běží v prohlížeči.
 
-![Webová aplikace][21]
+![Snímek obrazovky ukazuje příklad aplikace spuštěné v prohlížeči se zvýrazněnou adresou URL.][21]
 
 ## <a name="put-the-pieces-together"></a>Složení částí do jednoho celku
 

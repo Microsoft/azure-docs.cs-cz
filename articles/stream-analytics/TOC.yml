@@ -2,10 +2,10 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Stream Analytics?
+    - name: Vítá vás Stream Analytics
       href: stream-analytics-introduction.md
-    - name: Kompletní vzory řešení
-      href: stream-analytics-solution-patterns.md
+    - name: Cluster Stream Analytics
+      href: cluster-overview.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -23,28 +23,32 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: Vytvoření clusteru
+      items:
+        - name: portál Azure
+          href: create-cluster.md
 - name: Kurzy
   items:
-    - name: 1. Vytvoření a správa úlohy
-      href: stream-analytics-manage-job.md
-    - name: 2. Spuštění Azure Functions
+    - name: Vizualizace podvodných volání v Power BI
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Spuštění Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4. Spuštění funkce definované uživatelem v C#
+    - name: Spuštění funkce definované uživatelem v C#
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5. Vytvoření vlastního deserializátoru .NET
+    - name: Vytvoření vlastního deserializátoru .NET
       href: custom-deserializer.md
+    - name: Vytvoření úlohy IoT Edge
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md
+      maintainContext: true
 - name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
+    - name: Kompletní vzory řešení
+      href: stream-analytics-solution-patterns.md
     - name: Volba technologie analýzy streamování
       href: streaming-technologies.md
     - name: Volba nástroje pro vývoj úloh
@@ -53,6 +57,8 @@
       href: develop-locally.md
     - name: Zabezpečení
       items:
+        - name: Připojení úloh k virtuální síti Azure
+          href: connect-job-to-vnet.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -73,12 +79,34 @@
         - name: Přehled výstupů
           href: stream-analytics-define-outputs.md
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
-        - name: Výstup do Cosmos DB
-          href: stream-analytics-documentdb-output.md
-        - name: Výstup do Azure SQL DB
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: Azure SQL Database
+          href: sql-database-output.md
+        - name: Výkon SQL Database
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob Storage a Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: Vzory vlastních cest objektů blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: Event Hubs
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: Úložiště Table
+          href: table-storage-output.md
+        - name: Fronty služby Service Bus
+          href: service-bus-queues-output.md
+        - name: Témata služby Service Bus
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Optimalizace Cosmos DB
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
     - name: Rozšiřování dotazů pomocí funkcí
       items:
         - name: Přehled funkcí
@@ -104,6 +132,8 @@
           href: repartition.md
         - name: Zvýšení propustnosti úlohy
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: Stavy úlohy
       href: job-states.md
     - name: Funkce okna
@@ -126,6 +156,14 @@
   items:
     - name: Spravovat
       items:
+        - name: Clustery
+          items:
+            - name: Vytváření a odstraňování privátních koncových bodů
+              href: private-endpoints.md
+            - name: Přidávání a odebírání úloh
+              href: manage-jobs-cluster.md
+            - name: Škálování velikosti clusteru
+              href: scale-cluster.md
         - name: Úlohy automatického škálování
           href: stream-analytics-autoscale.md
         - name: Aktualizace přihlašovacích údajů
@@ -148,30 +186,33 @@
           href: stream-analytics-job-reliability.md
         - name: Použití referenčních dat SQL
           href: sql-reference-data.md
-        - name: Ověřování pomocí spravované identity
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob Storage
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL DB
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: Šifrování dat
           href: data-protection.md
+        - name: Geografická redundance
+          href: geo-redundancy.md
+    - name: Ověřování pomocí spravované identity
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob Storage
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL a Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Vytváření řešení
       items:
         - name: Analýza subjektivního hodnocení na Twitteru
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Zjišťování možných podvodů v reálném čase
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Spouštění úloh ve službě IoT Edge
-          href: stream-analytics-edge.md
+        - name: Spouštění úloh v Azure Stacku
+          href: on-azure-stack.md
         - name: Analýza dat snímačů z mýtných bran
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: Vysokofrekvenční obchodování
@@ -187,7 +228,7 @@
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
         - name: Zpracování Azure SQL Database
-          href: ../sql-database/sql-database-stream-analytics.md
+          href: ../azure-sql/database/stream-data-stream-analytics-integration.md
           maintainContext: true
         - name: Geoprostorové scénáře
           href: geospatial-scenarios.md
@@ -211,6 +252,14 @@
           href: stream-analytics-cicd-api.md
         - name: Export a nasazení s využitím Azure Resource Manageru
           href: resource-manager-export.md
+    - name: Průběžná integrace a nasazování
+      items:
+        - name: Přehled CI/CD
+          href: cicd-overview.md
+        - name: 'Sestavování, testování a nasazování pomocí PowerShellu'
+          href: cicd-tools.md
+        - name: Nastavení kanálu pomocí Azure DevOps
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Instalace nástrojů
@@ -237,10 +286,10 @@
           href: visual-studio-code-local-run-live-input.md
         - name: Ladění dotazů s využitím diagramu úloh
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: Nastavení kanálu CI/CD
-          href: setup-cicd-vs-code.md
         - name: Zkoumání úloh
           href: visual-studio-code-explore-jobs.md
+        - name: Vytvoření a ladění vlastního deserializátoru .NET
+          href: visual-studio-code-custom-deserializer.md
         - name: Pole JobConfig.json
           href: job-config-json.md
     - name: Řešení potíží
@@ -629,6 +678,9 @@
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Stream Analytics (Preview)
@@ -640,7 +692,7 @@
     - name: Fórum pro názory
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-stream-analytics.html'
+      href: /answers/topics/azure-stream-analytics.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
     - name: Cenová kalkulačka

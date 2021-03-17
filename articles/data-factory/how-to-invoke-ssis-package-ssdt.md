@@ -1,23 +1,18 @@
 ---
 title: Spouštění balíčků SSIS z SSDT
 description: Naučte se spouštět balíčky SSIS v Azure z SSDT.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 08/10/2020
-ms.openlocfilehash: 006b7db9f63f5ba74fee936383206b18c42aa038
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 09/06/2020
+ms.openlocfilehash: f11a3845e8644f3f60425538b2ef32cff668d88d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041846"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384924"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Spouštění balíčků SSIS v Azure z SSDT
 
@@ -29,7 +24,7 @@ Pomocí této funkce můžete připojit nově vytvořenou nebo existující Azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete tuto funkci použít, Stáhněte si a nainstalujte nejnovější SSDT s SSIS projekty rozšíření pro Visual Studio (VS) z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects). Alternativně můžete také stáhnout a nainstalovat nejnovější SSDT jako samostatný instalační [program.](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
+Pokud chcete tuto funkci použít, Stáhněte si a nainstalujte nejnovější SSDT s SSIS projekty rozšíření pro Visual Studio (VS) z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects). Alternativně můžete také stáhnout a nainstalovat nejnovější SSDT jako samostatný instalační [program.](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)
 
 ## <a name="azure-enable-ssis-projects"></a>Azure – povolení projektů SSIS
 
@@ -45,7 +40,7 @@ Po vytvoření projektu s podporou Azure se zobrazí výzva, abyste se připojil
 
 Pokud se chcete hned připojit k Azure-SSIS IR, přečtěte si další informace v tématu [připojení k Azure-SSIS IR](#connectssisir) . Můžete se také připojit později tak, že kliknete pravým tlačítkem myši na uzel projektu v Průzkumník řešením okně SSDT k místní nabídce. Potom v podnabídce **Azure Data Factory v** podnabídce vyberte položku **připojit k SSIS v položce Azure Data Factory** .
 
-### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a>Azure – povolení stávajících projektů SSIS
+### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a> Azure – povolení stávajících projektů SSIS
 
 U stávajících projektů SSIS můžete Azure povolit pomocí následujících kroků:
 
@@ -53,17 +48,17 @@ U stávajících projektů SSIS můžete Azure povolit pomocí následujících 
 
    ![Azure – povolit existující projekt SSIS](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
 
-2. Na stránce **Vybrat konfiguraci sady Visual Studio** vyberte existující konfiguraci vs pro použití nastavení spuštění balíčku v Azure. Můžete také vytvořit nové, pokud jste to ještě neudělali, přečtěte si téma [Vytvoření nové konfigurace vs](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019). Pro spouštění balíčků v místních a cloudových prostředích doporučujeme mít aspoň dvě různé konfigurace VS. díky tomu můžete Azure – povolit projekt proti konfiguraci cloudu. Tímto způsobem, pokud jste nastavili parametrizovaný projekt nebo balíčky, můžete přiřadit různé hodnoty k projektu nebo parametrům balíčku za běhu na základě různých prostředí pro spuštění (buď na vašem místním počítači, nebo v Azure). Podívejte se například na téma [přepínání prostředí pro spouštění balíčků](#switchenvironment).
+2. Na stránce **Vybrat konfiguraci sady Visual Studio** vyberte existující konfiguraci vs pro použití nastavení spuštění balíčku v Azure. Můžete také vytvořit nové, pokud jste to ještě neudělali, přečtěte si téma [Vytvoření nové konfigurace vs](/visualstudio/ide/how-to-create-and-edit-configurations). Pro spouštění balíčků v místních a cloudových prostředích doporučujeme mít aspoň dvě různé konfigurace VS. díky tomu můžete Azure – povolit projekt proti konfiguraci cloudu. Tímto způsobem, pokud jste nastavili parametrizovaný projekt nebo balíčky, můžete přiřadit různé hodnoty k projektu nebo parametrům balíčku za běhu na základě různých prostředí pro spuštění (buď na vašem místním počítači, nebo v Azure). Podívejte se například na téma [přepínání prostředí pro spouštění balíčků](#switchenvironment).
 
    ![Vybrat konfiguraci sady Visual Studio](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Azure – povolení vašich stávajících projektů SSIS vyžaduje, abyste jako verzi cílového serveru nastavili nejnovější verzi, kterou podporuje Azure-SSIS IR. V současné době má Azure-SSIS IR výchozí úroveň kompatibility 140, která se rovná **SQL Server 2017**. Zajistěte, aby balíčky neobsahovaly další součásti, které nejsou v SQL Server 2017 podporovány. Zajistěte prosím, aby byly v Azure-SSIS IR také nainstalovány všechny kompatibilní další součásti prostřednictvím vlastních nastavení. Další informace najdete v tématu [přizpůsobení Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). Pokračujte kliknutím na tlačítko **Další** .
+3. Azure – povolení vašich stávajících projektů SSIS vyžaduje, abyste jako verzi cílového serveru nastavili nejnovější verzi, kterou podporuje Azure-SSIS IR. Azure-SSIS IR je aktuálně založená na **SQL Server 2017**. Zajistěte, aby balíčky neobsahovaly další součásti, které nejsou v SQL Server 2017 podporovány. Zajistěte prosím, aby byly v Azure-SSIS IR také nainstalovány všechny kompatibilní další součásti prostřednictvím vlastních nastavení. Další informace najdete v tématu [přizpůsobení Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md). Pokračujte kliknutím na tlačítko **Další** .
 
    ![Přepnout verzi cílového serveru](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
 4. Pokud chcete dokončit připojení projektu k Azure-SSIS IR, přečtěte si téma [připojení k Azure-SSIS IR](#connectssisir) .
 
-## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a>Připojení projektů s podporou Azure k SSIS v Azure Data Factory
+## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a> Připojení projektů s podporou Azure k SSIS v Azure Data Factory
 
 Připojením projektů s podporou Azure tak, aby se SSIS v ADF, můžete nahrát balíčky do souborů Azure a spustit je na Azure-SSIS IR. Můžete to udělat pomocí následujících kroků:
 
@@ -117,7 +112,7 @@ Jakmile si zajistěte, že některé potenciální problémy s kompatibilitou cl
 
 ## <a name="execute-ssis-packages-in-azure"></a>Spouštění balíčků SSIS v Azure
 
-### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a>Konfigurace nastavení povolených pro Azure
+### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a> Konfigurace nastavení povolených pro Azure
 
 Než začnete balíčky v Azure spouštět, můžete pro ně nakonfigurovat nastavení s podporou Azure. Můžete například povolit ověřování systému Windows ve vašem Azure-SSIS IR pro přístup k místním nebo cloudovým úložištím dat pomocí následujících kroků:
 
@@ -129,7 +124,7 @@ Než začnete balíčky v Azure spouštět, můžete pro ně nakonfigurovat nast
 
    ![Povolit ověřování systému Windows](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png)
 
-3. Zadejte přihlašovací údaje pro ověřování systému Windows. Například pro přístup k souborům Azure můžete zadat `Azure` , `YourStorageAccountName` a `YourStorageAccountKey` pro **doménu**, **uživatelské jméno**a **heslo**, v uvedeném pořadí.
+3. Zadejte přihlašovací údaje pro ověřování systému Windows. Například pro přístup k souborům Azure můžete zadat `Azure` , `YourStorageAccountName` a `YourStorageAccountKey` pro **doménu**, **uživatelské jméno** a **heslo**, v uvedeném pořadí.
 
    ![Přihlašovací údaje pro ověřování systému Windows](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png)
 
@@ -151,7 +146,7 @@ Po připojení projektů s podporou Azure za účelem SSISí v ADF, vyhodnocení
 
 Pokud vaše balíčky obsahují úlohy vykonání balíčku, které odkazují na podřízené balíčky uložené v místních systémech souborů, postupujte podle těchto dalších kroků:
 
-1. Nahrajte podřízené balíčky do souborů Azure v rámci stejného Azure Storage účtu připojeného k vašim projektům a získejte novou cestu UNC (Universal Naming Convention), např.`\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
+1. Nahrajte podřízené balíčky do souborů Azure v rámci stejného Azure Storage účtu připojeného k vašim projektům a získejte novou cestu UNC (Universal Naming Convention), např. `\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
 
 2. Nahraďte cestu k souboru těchto podřízených balíčků ve Správci připojení k souboru pro provádění úloh balíčku s novou cestou UNC.
    - Pokud Váš místní počítač se systémem SSDT nemá přístup k nové cestě UNC, můžete ho zadat na panelu Vlastnosti v souboru Správce připojení.
@@ -161,14 +156,14 @@ Pokud vaše balíčky obsahují úlohy vykonání balíčku, které odkazují na
 
 ### <a name="switching-package-protection-level"></a>Přepínání úrovně ochrany balíčků
 
-Spouštění balíčků SSIS v Azure nepodporuje **EncryptSensitiveWithUserKey** / úrovně ochrany**EncryptAllWithUserKey** EncryptSensitiveWithUserKey. V důsledku toho jsou v případě, že jsou vaše balíčky nakonfigurovány k použití, je dočasně **EncryptSensitiveWithPassword**převede na použití / **EncryptAllWithPassword** úrovní ochrany EncryptSensitiveWithPassword. Při nahrávání vašich balíčků do souborů Azure budeme také náhodně generovat šifrovací hesla, která vám na vaše Azure-SSIS IR.
+Spouštění balíčků SSIS v Azure nepodporuje  / úrovně ochrany **EncryptAllWithUserKey** EncryptSensitiveWithUserKey. V důsledku toho jsou v případě, že jsou vaše balíčky nakonfigurovány k použití, je dočasně převede na použití / **EncryptAllWithPassword** úrovní ochrany EncryptSensitiveWithPassword. Při nahrávání vašich balíčků do souborů Azure budeme také náhodně generovat šifrovací hesla, která vám na vaše Azure-SSIS IR.
 
 > [!NOTE]
 > Pokud vaše balíčky obsahují úlohy spouštěné balíčku, které odkazují na podřízené balíčky nakonfigurované tak, aby používaly úrovně ochrany **EncryptSensitiveWithUserKey** / **EncryptAllWithUserKey** , musíte tyto podřízené balíčky před spuštěním balíčků ručně znovu nakonfigurovat tak, aby používaly úrovně ochrany **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** .
 
 Pokud jsou vaše balíčky už nakonfigurované tak, aby používaly úrovně ochrany **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** , nebudeme je uchovávat beze změny. I když nahrajeme vaše balíčky do služby soubory Azure ke spuštění na vašem Azure-SSIS IR, budeme pořád vygenerovat šifrovací hesla.
 
-### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a>Přepínání prostředí provádění balíčků
+### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a> Přepínání prostředí provádění balíčků
 
 Pokud parametrizovatte projekt nebo balíčky v modelu nasazení projektu, můžete vytvořit více konfigurací VS pro přepínání prostředí provádění balíčků. Tímto způsobem můžete přiřadit hodnoty specifické pro prostředí k parametrům projektu nebo balíčku za běhu. Pro spouštění balíčků v místních a cloudových prostředích doporučujeme, abyste měli k dispozici minimálně dvě různé konfigurace VS. díky tomu můžete Azure – povolit vaše projekty v konfiguraci cloudu. Tady je podrobný příklad přepínání prostředí provádění balíčků mezi místním počítačem a Azure:
 
@@ -180,7 +175,7 @@ Pokud parametrizovatte projekt nebo balíčky v modelu nasazení projektu, můž
 
    ![Parametrizovat zdrojové připojení](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
 
-3. Ve výchozím nastavení máte existující konfiguraci VS pro spouštění balíčků v místním prostředí s názvem **vývoj**. Vytvořte novou konfiguraci VS pro spouštění balíčků v cloudovém prostředí s názvem **Azure**. Další informace najdete v tématu [Vytvoření nové konfigurace vs](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019), pokud jste to ještě neudělali.
+3. Ve výchozím nastavení máte existující konfiguraci VS pro spouštění balíčků v místním prostředí s názvem **vývoj**. Vytvořte novou konfiguraci VS pro spouštění balíčků v cloudovém prostředí s názvem **Azure**. Další informace najdete v tématu [Vytvoření nové konfigurace vs](/visualstudio/ide/how-to-create-and-edit-configurations), pokud jste to ještě neudělali.
 
 4. Při prohlížení parametrů balíčku vyberte tlačítko **přidat parametry do konfigurací** a otevřete okno **Spravovat hodnoty parametrů** pro váš balíček. V dalším kroku přiřaďte jiné hodnoty cílového souboru k parametru balíčku **FilePath** v části **vývoj** a konfigurace **Azure** .
 
@@ -206,4 +201,4 @@ Po spuštění balíčku naformátujeme a zobrazíme protokoly v okně **průbě
 
 ## <a name="next-steps"></a>Další kroky
 
-Až budete s spuštěním balíčků v Azure spokojeni z SSDT, můžete je nasadit a spustit jako aktivity balíčku SSIS v kanálech ADF. Další informace najdete v tématu [spouštění balíčků SSIS jako spouštění aktivit balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Až budete s spuštěním balíčků v Azure spokojeni z SSDT, můžete je nasadit a spustit jako aktivity balíčku SSIS v kanálech ADF. Další informace najdete v tématu [spouštění balíčků SSIS jako spouštění aktivit balíčku SSIS v kanálech ADF](./how-to-invoke-ssis-package-ssis-activity.md).

@@ -3,24 +3,24 @@ title: Nastavení přístupu WinRM pro virtuální počítač Azure
 description: Nastavte přístup WinRM pro použití s virtuálním počítačem Azure vytvořeným v modelu nasazení Správce prostředků.
 author: mimckitt
 manager: vashan
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: ac6fad8995d409c14008b8345e9e576b2403c799
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ab676e7595a8ccd902eea27612e4c2fd035fae0c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131689"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555716"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro Virtual Machines v Azure Resource Manager
 
 Tady jsou kroky, které musíte provést při nastavování virtuálního počítače pomocí připojení WinRM.
 
 1. Vytvoření trezoru klíčů
-2. Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+2. Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 3. Nahrání certifikátu podepsaného svým držitelem do Key Vault
 4. Získat adresu URL certifikátu podepsaného svým držitelem v Key Vault
 5. Odkazování na adresu URL certifikátů podepsaných svým držitelem při vytváření virtuálního počítače
@@ -57,16 +57,12 @@ $fileName = "<Path to the .pfx file>"
 $fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 
-$jsonObject = @"
-{
-  "data": "$filecontentencoded",
-  "dataType" :"pfx",
-  "password": "<password>"
+[System.Collections.HashTable]$TableForJSON = @{
+    "data"     = $filecontentencoded;
+    "dataType" = "pfx";
+    "password" = "<password>";
 }
-"@
-
-$jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
-$jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+[System.String]$JSONObject = $TableForJSON | ConvertTo-Json
 
 $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
@@ -93,7 +89,7 @@ $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name
 ```
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5: odkazování na adresu URL certifikátů podepsaných svým držitelem při vytváření virtuálního počítače
-#### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manager
+#### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Při vytváření virtuálního počítače prostřednictvím šablon se na certifikát odkazuje v části tajné klíče a v části winRM následujícím způsobem:
 
 ```json
@@ -153,7 +149,7 @@ Enable-PSRemoting -Force
 ```
 
 > [!NOTE]
-> Pokud výše uvedená nefunguje, možná budete muset zkontrolovat, jestli je spuštěná služba WinRM. Můžete to udělat pomocí`Get-Service WinRM`
+> Pokud výše uvedená nefunguje, možná budete muset zkontrolovat, jestli je spuštěná služba WinRM. Můžete to udělat pomocí `Get-Service WinRM`
 > 
 > 
 

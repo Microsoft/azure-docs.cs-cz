@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84687782"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU brány virtuální sítě (zastaralé SKU)
 
 Tento článek obsahuje informace o starších (starých) SKU brány virtuální sítě. Starší verze SKU stále fungují v obou modelech nasazení pro brány VPN, které již byly vytvořeny. Klasické služby VPN Gateway nadále používají starší skladové položky pro existující brány i pro nové brány. Při vytváření nových Správce prostředků bran VPN Gateway použijte nové SKU brány. Informace o nových SKU najdete v tématu [o VPN Gateway](vpn-gateway-about-vpngateways.md).
 
-## <a name="gateway-skus"></a><a name="gwsku"></a>SKU brány
+## <a name="gateway-skus"></a><a name="gwsku"></a>Skladové položky brány
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 

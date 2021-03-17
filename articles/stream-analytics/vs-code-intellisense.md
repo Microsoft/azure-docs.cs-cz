@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037252"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491566"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense v Azure Stream Analyticsch nástrojích pro Visual Studio Code
 
-Technologie IntelliSense je k dispozici pro [Stream Analytics dotazovací jazyk](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstream-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json) v [Azure Stream Analytics nástrojích pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). IntelliSense je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Funkce IntelliSense se někdy nazývají jiné názvy, například "dokončování kódu", "asistent obsahu" a "porady při psaní kódu".
+Technologie IntelliSense je k dispozici pro [Stream Analytics dotazovací jazyk](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fbread%2ftoc.json&toc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fstream-analytics%2ftoc.json) v [Azure Stream Analytics nástrojích pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). IntelliSense je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Funkce IntelliSense se někdy nazývají jiné názvy, například "dokončování kódu", "asistent obsahu" a "porady při psaní kódu".
 
 ![Ukázka IntelliSense](./media/vs-code-intellisense/intellisense.gif)
 
@@ -71,6 +71,6 @@ Příčinou tohoto problému je chybějící vstupní konfigurace, která poskyt
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)
 * [Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code](visual-studio-code-local-run.md)
 * [Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí Visual Studio Code](visual-studio-code-local-run-live-input.md)

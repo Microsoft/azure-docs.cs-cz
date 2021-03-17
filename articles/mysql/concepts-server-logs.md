@@ -1,22 +1,24 @@
 ---
 title: Protokoly pomalých dotazů – Azure Database for MySQL
 description: Popisuje protokoly pomalých dotazů, které jsou k dispozici v Azure Database for MySQL, a dostupné parametry pro povolení různých úrovní protokolování.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/6/2020
+ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81271977"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595934"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Pomalé dotazování protokolů v Azure Database for MySQL
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokoly pomalých dotazů ve službě Azure Database for MySQL
 V Azure Database for MySQL je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
 
 Další informace o protokolu pomalého dotazu MySQL najdete v [části protokol pomalých dotazů](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)v referenční příručce MySQL.
+
+Když je na serveru povolené [úložiště dotazů](concepts-query-store.md) , můžou se v `CALL mysql.az_procedure_collect_wait_stats (900, 30);` protokolech pomalých dotazů zobrazovat dotazy, jako je protokol. Toto chování je očekávané, protože funkce úložiště dotazů shromažďuje statistiku o vašich dotazech. 
 
 ## <a name="configure-slow-query-logging"></a>Konfigurace pomalého protokolování dotazů 
 Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud ho chcete povolit, nastavte na `slow_query_log` zapnuto. Tato možnost se dá povolit pomocí Azure Portal nebo Azure CLI. 
@@ -51,7 +53,7 @@ Protokoly se otočí každých 24 hodin nebo 7 GB, podle toho, co nastane dřív
 > Výše uvedené uchování protokolu se nevztahuje na protokoly, které jsou v kanálu Azure Monitor diagnostické protokoly. Dobu uchování dat, která se emitují, můžete změnit (např. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for MySQL je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MySQL se můžete rozhodnout, že se mají vysílat Azure Monitor protokoly, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
+Azure Database for MySQL je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MySQL se můžete rozhodnout, že se mají vysílat Azure Monitor protokoly, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md).
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 
@@ -59,18 +61,18 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 |---|---|
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Stál`AzureDiagnostics` |
+| `TimeGenerated` UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
+| `Type` | Typ protokolu Stál `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Stál`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Stál `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Název serveru |
-| `start_time_t`UTC | Čas, kdy dotaz začal |
+| `start_time_t` UTC | Čas, kdy dotaz začal |
 | `query_time_s` | Celková doba v sekundách, po kterou se dotaz trvalo spustit |
 | `lock_time_s` | Celková doba v sekundách, po kterou byl dotaz uzamčen |
 | `user_host_s` | Uživatelské jméno |
@@ -143,4 +145,4 @@ Až budou protokoly pomalých dotazů směrované do Azure Monitor protokolů pr
     
 ## <a name="next-steps"></a>Další kroky
 - [Postup konfigurace protokolů pomalých dotazů z Azure Portal](howto-configure-server-logs-in-portal.md)
-- [Jak nakonfigurovat protokoly pomalých dotazů z Azure CLI](howto-configure-server-logs-in-cli.md).
+- [Jak nakonfigurovat protokoly pomalých dotazů z Azure CLI](howto-configure-server-logs-in-cli.md)

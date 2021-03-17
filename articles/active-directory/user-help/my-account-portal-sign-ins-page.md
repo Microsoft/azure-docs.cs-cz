@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543174"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096068"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení
 
@@ -25,6 +25,12 @@ Můžete zobrazit veškerou aktivitu přihlášení k pracovnímu nebo školním
 - Pokud se někdo pokusí uhodnout heslo.
 - Pokud se útočník úspěšně přihlásil k vašemu účtu a v jakém umístění.
 - K jakým aplikacím se útočník pokusil získat přístup.
+
+>[!Note]
+> Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-recent-sign-in-activity"></a>Zobrazení nedávné přihlašovací aktivity
 
@@ -46,7 +52,7 @@ Než zjistíte, že něco není správné, ujistěte se, že se nezobrazuje fale
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Pokud se zobrazí neúspěšné přihlášení
 
-Pokud se zobrazí neúspěšné přihlášení, může to znamenat, že jste zadali přihlašovací údaje chybně. Může to také znamenat, že se útočník pokouší uhodnout heslo. Pokud chcete na toto riziko odpovědět, nemusíte měnit heslo, ale doporučujeme, abyste se zaregistrovali pro Azure Multi-Factor Authentication (MFA). Při ověřování pomocí služby Multi-Factor Authentication, a to i v případě, že počítačový podvodník heslo vymění, nebude pro přístup k účtu dost místa.
+Pokud se zobrazí neúspěšné přihlášení, může to znamenat, že jste zadali přihlašovací údaje chybně. Může to také znamenat, že se útočník pokouší uhodnout heslo. Pokud chcete na toto riziko odpovědět, nemusíte měnit heslo, ale doporučujeme, abyste se zaregistrovali pro Azure AD Multi-Factor Authentication (MFA). Při ověřování pomocí služby Multi-Factor Authentication, a to i v případě, že počítačový podvodník heslo vymění, nebude pro přístup k účtu dost místa.
 
 ![Neúspěšná dlaždice přihlášení](media/my-account-portal-sign-ins-page/unsuccessful.png)
 
@@ -72,7 +78,7 @@ Přihlášení, která jsou označena jako neobvyklá aktivita, lze potvrdit na 
 
 Po zobrazení nedávné přihlašovací aktivity můžete:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 

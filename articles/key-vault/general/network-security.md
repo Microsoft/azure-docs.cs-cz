@@ -2,24 +2,70 @@
 title: Konfigurace Azure Key Vault bran firewall a virtuálních sítí – Azure Key Vault
 description: Podrobné pokyny pro konfiguraci Key Vault bran firewall a virtuálních sítí
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 04/22/2020
-ms.author: sudbalas
+ms.date: 10/01/2020
+ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742632"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
-Tento článek poskytuje podrobné pokyny ke konfiguraci Azure Key Vault bran firewall a virtuálních sítí pro omezení přístupu k trezoru klíčů. [Koncové body služby virtuální sítě pro Key Vault](overview-vnet-service-endpoints.md)) umožňují omezit přístup k zadané virtuální síti a sadě rozsahů adres IPv4 (Internet Protocol verze 4).
+Tento článek vám poskytne pokyny k tomu, jak nakonfigurovat bránu Azure Key Vault firewall. Tento dokument podrobně popisuje různé konfigurace pro bránu Key Vault firewall a poskytuje podrobné pokyny ke konfiguraci Azure Key Vault pro práci s jinými aplikacemi a službami Azure.
+
+Další informace najdete v tématu [koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md).
+
+## <a name="firewall-settings"></a>Nastavení brány firewall
+
+Tato část se zabývá různými způsoby, jak lze nakonfigurovat bránu Azure Key Vault firewall.
+
+### <a name="key-vault-firewall-disabled-default"></a>Zakázaná brána firewall Key Vault (výchozí)
+
+Ve výchozím nastavení je při vytváření nového trezoru klíčů zakázaná brána firewall Azure Key Vault. Všechny aplikace a služby Azure mají přístup k trezoru klíčů a odesílají požadavky do trezoru klíčů. Upozorňujeme, že tato konfigurace neznamená, že každý uživatel bude moct provádět operace s vaším trezorem klíčů. Trezor klíčů stále omezuje tajné klíče, klíče a certifikáty uložené v trezoru klíčů tím, že vyžaduje oprávnění Azure Active Directory ověřování a zásady přístupu. Další informace o ověřování trezoru klíčů najdete v dokumentu [tady](./authentication-fundamentals.md)popisuje ověřování trezoru klíčů.
+
+### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Brána firewall Key Vault povolena (pouze důvěryhodné služby)
+
+Pokud povolíte bránu Key Vault firewall, budete mít možnost Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall. Seznam důvěryhodných služeb nepokrývá každou jednu službu Azure. Například Azure DevOps není v seznamu důvěryhodných služeb. **To neznamená, že služby, které se nezobrazí v seznamu důvěryhodných služeb, nejsou důvěryhodné nebo nezabezpečené.** Seznam důvěryhodných služeb zahrnuje služby, kde Microsoft kontroluje veškerý kód, který běží ve službě. Vzhledem k tomu, že uživatelé můžou psát vlastní kód v rámci služeb Azure, jako je například Azure DevOps, společnost Microsoft neposkytuje možnost pro vytvoření hromadného schválení služby. Kromě toho, že se služba zobrazuje v seznamu důvěryhodných služeb, neznamená to, že je povolená pro všechny scénáře.
+
+Pokud chcete zjistit, jestli je služba, kterou se pokoušíte použít, v seznamu důvěryhodných služeb, přečtěte si [následující dokument.](./overview-vnet-service-endpoints.md#trusted-services)
+
+### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Brána firewall Key Vault povolena (IPv4 adresy a rozsahy – statické IP adresy)
+
+Pokud chcete autorizovat určitou službu pro přístup k trezoru klíčů prostřednictvím brány Key Vault firewall, můžete přidat IP adresu do seznamu povolených bran firewall trezoru klíčů. Tato konfigurace je nejvhodnější pro služby, které používají statické IP adresy nebo známé rozsahy. Pro tento případ je povolený limit rozsahu 1000 CIDR.
+
+Pokud chcete u prostředku Azure, jako je webová aplikace nebo aplikace logiky, použít IP adresu nebo rozsah, proveďte následující kroky.
+
+1. Přihlášení k webu Azure Portal
+1. Vyberte prostředek (konkrétní instance služby).
+1. V části Nastavení klikněte na okno Vlastnosti.
+1. Vyhledejte pole IP adresa.
+1. Zkopírujte tuto hodnotu nebo rozsah a zadejte ji do seznamu povolených bran firewall trezoru klíčů.
+
+Pokud chcete pro celou službu Azure povolenou prostřednictvím Key Vault brány firewall, použijte [zde](https://www.microsoft.com/download/details.aspx?id=41653)seznam veřejně dokumentovaných IP adres datových center pro Azure. Vyhledejte IP adresy přidružené ke službě, kterou byste chtěli v požadované oblasti, a přidejte tyto IP adresy do brány firewall trezoru klíčů pomocí výše uvedených kroků.
+
+### <a name="key-vault-firewall-enabled-virtual-networks---dynamic-ips"></a>Povolená brána firewall Key Vault (virtuální sítě – dynamické IP adresy)
+
+Pokud se snažíte umožnit prostředek Azure, jako je třeba virtuální počítač prostřednictvím trezoru klíčů, nebudete moct používat statické IP adresy a nebudete chtít, aby všechny IP adresy pro Azure Virtual Machines měly přístup k vašemu trezoru klíčů.
+
+V takovém případě byste měli vytvořit prostředek v rámci virtuální sítě a pak pro přístup k trezoru klíčů umožníte provozu z konkrétní virtuální sítě a podsítě. Uděláte to tak, že provedete následující kroky.
+
+1. Přihlášení k webu Azure Portal
+1. Vyberte Trezor klíčů, který chcete nakonfigurovat.
+1. Vyberte okno síť.
+1. Vyberte + Přidat existující virtuální síť.
+1. Vyberte virtuální síť a podsíť, které chcete umožňovat prostřednictvím brány firewall trezoru klíčů.
+
+### <a name="key-vault-firewall-enabled-private-link"></a>Povolená brána firewall Key Vault (privátní odkaz)
+
+Informace o tom, jak nakonfigurovat připojení privátního propojení v trezoru klíčů, najdete v dokumentu [zde](./private-link-service.md).
 
 > [!IMPORTANT]
 > Po uplatnění pravidel brány firewall můžou uživatelé provádět jenom Key Vault operace [roviny dat](secure-your-key-vault.md#data-plane-access-control) , když jejich požadavky pocházejí z povolených virtuálních sítí nebo rozsahů IPv4 adres. To platí také pro přístup k Key Vault z Azure Portal. I když uživatelé můžou přejít k trezoru klíčů z Azure Portal, nemusí být schopni zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud jejich klientský počítač není v seznamu povolených. To má vliv také na Key Vault pro výběr jinými službami Azure. Uživatelé můžou zobrazit seznam trezorů klíčů, ale ne seznam klíčů, pokud pravidla brány firewall brání jejich klientskému počítači.
@@ -27,8 +73,7 @@ Tento článek poskytuje podrobné pokyny ke konfiguraci Azure Key Vault bran fi
 > [!NOTE]
 > Mějte na paměti následující omezení konfigurace:
 > * Povoluje se maximálně 127 pravidel virtuální sítě a 127 pravidel IPv4. 
-> * Rozsahy malých adres, které používají předpony "/31" nebo "/32", nejsou podporovány. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adres.
-> * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.**, **172.16-31**a **192,168.**. 
+> * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.**, **172.16-31** a **192,168.**. 
 > * V tuto chvíli se podporují jenom IPv4 adresy.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
@@ -36,12 +81,12 @@ Tento článek poskytuje podrobné pokyny ke konfiguraci Azure Key Vault bran fi
 Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomocí Azure Portal:
 
 1. Přejděte do trezoru klíčů, který chcete zabezpečit.
-2. Vyberte **sítě**a pak vyberte kartu **brány firewall a virtuální sítě** .
-3. V části **Povolení přístupu z**vyberte **vybrané sítě**.
+2. Vyberte **sítě** a pak vyberte kartu **brány firewall a virtuální sítě** .
+3. V části **Povolení přístupu z** vyberte **vybrané sítě**.
 4. Pokud chcete přidat existující virtuální sítě do bran firewall a pravidel virtuální sítě, vyberte **+ Přidat existující virtuální sítě**.
 5. V novém okně, které se otevře, vyberte předplatné, virtuální sítě a podsítě, pro které chcete přístup k tomuto trezoru klíčů zpřístupnit. Pokud virtuální sítě a podsítě, které vyberete, nemají povolený koncový bod služby, potvrďte, že chcete povolit koncové body služby, a vyberte **Povolit**. Platnost může trvat až 15 minut.
-6. V části sítě s protokolem **IP**přidejte rozsahy adres IPv4 zadáním rozsahů IPv4 adres v [CIDR (směrování mezi doménami) a zápisem](https://tools.ietf.org/html/rfc4632) nebo jednotlivými IP adresami.
-7. Pokud chcete, aby důvěryhodné služby společnosti Microsoft používaly bránu Key Vault firewall, vyberte Ano. Úplný seznam aktuálních Key Vault důvěryhodných služeb najdete na následujícím odkazu. [Azure Key Vault důvěryhodné služby](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
+6. V části sítě s protokolem **IP** přidejte rozsahy adres IPv4 zadáním rozsahů IPv4 adres v [CIDR (směrování mezi doménami) a zápisem](https://tools.ietf.org/html/rfc4632) nebo jednotlivými IP adresami.
+7. Pokud chcete, aby důvěryhodné služby společnosti Microsoft používaly bránu Key Vault firewall, vyberte Ano. Úplný seznam aktuálních Key Vault důvěryhodných služeb najdete na následujícím odkazu. [Azure Key Vault důvěryhodné služby](./overview-vnet-service-endpoints.md#trusted-services)
 7. Vyberte **Uložit**.
 
 Můžete taky přidat nové virtuální sítě a podsítě a potom pro nově vytvořené virtuální sítě a podsítě povolit koncové body služby tak, že vyberete **+ Přidat novou virtuální síť**. Pak postupujte podle pokynů.
@@ -50,7 +95,7 @@ Můžete taky přidat nové virtuální sítě a podsítě a potom pro nově vyt
 
 Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomocí Azure CLI.
 
-1. Nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Přihlaste se](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [Přihlaste se](/cli/azure/authenticate-azure-cli).
 
 2. Vypíše dostupná pravidla virtuální sítě. Pokud jste pro tento trezor klíčů nenastavili žádná pravidla, seznam bude prázdný.
    ```azurecli
@@ -89,7 +134,7 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
 
 Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomocí prostředí PowerShell:
 
-1. Nainstalujte nejnovější [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)a [přihlaste](https://docs.microsoft.com/powershell/azure/authenticate-azureps)se.
+1. Nainstalujte nejnovější [Azure PowerShell](/powershell/azure/install-az-ps)a [přihlaste](/powershell/azure/authenticate-azureps)se.
 
 2. Vypíše dostupná pravidla virtuální sítě. Pokud jste pro tento trezor klíčů nenastavili žádná pravidla, seznam bude prázdný.
    ```powershell
@@ -122,12 +167,12 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
-## <a name="references"></a>Odkazy
-* Odkaz na šablonu ARM: [odkaz na šablonu Azure Key Vault ARM](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
-* Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Rutiny Azure PowerShell: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
+## <a name="references"></a>Reference
+* Odkaz na šablonu ARM: [odkaz na šablonu Azure Key Vault ARM](/azure/templates/Microsoft.KeyVault/vaults)
+* Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](/cli/azure/keyvault/network-rule)
+* Rutiny Azure PowerShell: [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Koncové body služby virtuální sítě pro Key Vault](overview-vnet-service-endpoints.md))
-* [Zabezpečení trezoru klíčů](secure-your-key-vault.md)
+* [Koncové body služby virtuální sítě pro Key Vault](overview-vnet-service-endpoints.md)
+* [Přehled zabezpečení Azure Key Vault](security-overview.md)

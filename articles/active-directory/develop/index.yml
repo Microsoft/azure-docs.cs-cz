@@ -3,18 +3,18 @@ title: Dokumentace k platformě Microsoft Identity Platform
 summary: Microsoft Identity Platform poskytuje službu ověřování, opensourcové knihovny a nástroje pro správu aplikací. Prostřednictvím našich rychlých zprovoznění, kurzů a ukázek kódu se naučíte vytvářet moderní řešení ověřování založená na standardech. Vytvářejte aplikace, ke kterým se uživatelé a zákazníkům přihlásí pomocí svých identit Microsoft nebo účtů na sociálních sítí, a autorizujte přístup k vašim rozhraním API nebo rozhraním API Microsoftu, jako je Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d978cc0f2b59cdb1cd41b0cf5e23851ad5165558
-  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88116729"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962016"
 landingContent:
 - title: O platformě Microsoft Identity Platform
   linkLists:
@@ -64,8 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-webapp.md
     - text: Jádro ASP.NET
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor Server
+      url: tutorial-blazor-server.md
 - title: Mobilní/nativní aplikace
   linkLists:
   - linkListType: get-started
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: Jádro ASP.NET
-      url: /samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: quickstart-v2-aspnet-core-web-api.md
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -120,9 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Zpracování chyb a výjimek – Android
-      url: msal-android-handling-exceptions.md
-    - text: Atributy rozšíření schématu adresáře v deklaracích identity
-      url: active-directory-schema-extensions.md
-    - text: Ověřovací kód MSAL.js 2.0 + PKCE a CORS
-      url: quickstart-v2-javascript-auth-code.md
+    - text: Novinky v dokumentaci
+      url: whats-new-docs.md
+    - text: Přehled webových knihoven Microsoft Identity
+      url: microsoft-identity-web.md
+    - text: 'Kurz: Blazor Server'
+      url: tutorial-blazor-server.md

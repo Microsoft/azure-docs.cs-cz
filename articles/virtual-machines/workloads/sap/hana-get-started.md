@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509956"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670968"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Instalace SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -61,7 +61,7 @@ V této fázi potřebujete projít kroky nasazení virtuálních počítačů k 
 3. Po nasazení a registraci virtuálního počítače použijte nejnovější opravy na operační systém. Registrováno buď s vlastním předplatným. Nebo pokud jste zvolili Image, která zahrnuje podporu operačního systému, měl by mít virtuální počítač přístup k opravám, které už mají. 
 4. Použijte ladění potřebné pro SAP HANA. Tato ladění jsou uvedená v těchto poznámkách k podpoře SAP:
 
-    - [Poznámka k podpoře SAP #2694118 – doplněk Red Hat Enterprise Linux HA v Azure](https://launchpad.support.sap.com/#/notes/2694118)
+    - [Poznámka k podpoře SAP #2694118 – Red Hat Enterprise Linux HA Add-On v Azure](https://launchpad.support.sap.com/#/notes/2694118)
     - [Poznámka k podpoře SAP #1984787 – SUSE LINUX Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) 
     - [Poznámka k podpoře SAP #2578899-SUSE Linux Enterprise Server 15: Poznámka k instalaci](https://launchpad.support.sap.com/#/notes/2578899)
     - [Poznámka k podpoře SAP #2002167-Red Hat Enterprise Linux 7. x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
@@ -87,7 +87,7 @@ Jednou z konkrétních údajů Azure je instalace rozšíření virtuálního po
 -  [Nasazení Azure Virtual Machines pro SAP NetWeaver](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>Instalace SAP HANA
-S nasazenými virtuálními počítači Azure a registrovanými a nakonfigurovanými operačními systémy můžete SAP HANA nainstalovat podle instalace SAP. Abyste se dostali do této dokumentace, začněte tím, že zahájíte tyto [prostředky](https://www.sap.com/products/hana/implementation/resources.html) SAP web Hana.
+S nasazenými virtuálními počítači Azure a registrovanými a nakonfigurovanými operačními systémy můžete SAP HANA nainstalovat podle instalace SAP. Abyste se dostali do této dokumentace, začněte tím, že zahájíte tyto [prostředky](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd) SAP web Hana.
 
 Pro SAP HANA konfigurací se škálováním na více instancí pomocí přímo připojených disků Azure Premium Storage nebo Ultra disk si přečtěte konkrétní informace v dokumentu [SAP HANA konfigurace infrastruktury a operace v Azure](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out) .
 

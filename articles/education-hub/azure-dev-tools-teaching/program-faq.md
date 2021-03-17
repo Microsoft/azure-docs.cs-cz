@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101973"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675704"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>Nejčastější dotazy ohledně výukových nástrojů Azure pro vývoj
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Nejčastější dotazy týkající se Centrum Education
 
 Tento článek popisuje časté otázky týkající se Azure for Students, Azure for Students Starter a Azure dev Tools pro vzdělávání.
 
@@ -42,11 +42,11 @@ Zbývající kredit můžete zobrazit na [portálu Azure sponsorships](https://w
 
 ### <a name="how-do-i-download-the-software-developer-tools"></a>Návody stáhnout nástroje pro vývojáře softwaru?
 
-Vaše předplatné Azure for Students vám poskytne přístup k určitým vývojářským nástrojům pro software. Aby bylo možné získat přístup k vývojářským nástrojům pro software a stáhnout je, musíte mít aktivní předplatné Azure for Students. Pokud si chcete stáhnout nástroje pro vývojáře softwaru pomocí předplatného Azure for Students, můžete přejít na [centrum Education](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) .
+Vaše předplatné Azure for Students vám poskytne přístup k určitým vývojářským nástrojům pro software. Aby bylo možné získat přístup k vývojářským nástrojům pro software a stáhnout je, musíte mít aktivní předplatné Azure for Students. Pokud si chcete stáhnout nástroje pro vývojáře softwaru pomocí předplatného Azure for Students, můžete přejít na  [centrum Education](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) .
 
 ### <a name="what-is-microsoft-learn"></a>Co je Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) je bezplatná online výuková platforma, která vám umožní naučit se technologie Azure vaším vlastním tempem. Výukové cesty kombinují moduly, které vám umožňují začít základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
+[Microsoft Learn](/learn/) je bezplatná online výuková platforma, která vám umožní naučit se technologie Azure vaším vlastním tempem. Výukové cesty kombinují moduly, které vám umožňují začít základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Dá se Azure for Students používat pro produkční prostředí, nebo jenom pro vývoj?
 
@@ -97,13 +97,13 @@ Tento software si můžete stáhnout v [centrum Education](https://ms.portal.azu
 
 ### <a name="what-is-microsoft-learn"></a>Co je Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) je bezplatná online platforma pro učení, která vám umožní naučit se technologie Azure vlastním tempem. Výukové cesty spojují moduly, které vám umožní začít se základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
+[Microsoft Learn](/learn/) je bezplatná online platforma pro učení, která vám umožní naučit se technologie Azure vlastním tempem. Výukové cesty spojují moduly, které vám umožní začít se základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
 
 ## <a name="azure-academic-grant"></a>Azure – akademická podpora
 
 ### <a name="how-do-i-start-using-my-azure-course-credits"></a>Návody začít používat kredity kurzu Azure?
 
-K kreditům kurzu Azure získáte přístup vytvořením nového předplatného pro akademické poskytování Microsoft Azure. V e-mailu pro schválení sponzorství vyberte tlačítko **aktivovat** .
+K kreditům kurzu Azure získáte přístup vytvořením nového předplatného pro akademické poskytování Microsoft Azure. V e-mailu pro schválení sponzorství vyberte tlačítko  **aktivovat** .
 
 Pro přístup k kreditům můžete také převést existující předplatné na Microsoft Azure Sponsorship nabídku. Podrobnosti o tom, jak převést vaše předplatné, najdete v další otázce.
 
@@ -153,6 +153,11 @@ Pokud se v okně předplatná v Azure Portal podíváte na konkrétní předplat
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
 
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>Kdo má nárok na zakoupení Microsoft Azure nástrojů pro vývoj pro vzdělávání?
+
+Do vývojářských nástrojů Azure pro vzdělávání se můžou zaregistrovat jenom akademické instituce, které mají od Microsoftu uzavřenou smlouvu multilicencí.  Pokud aktuálně jste vývojářské nástroje pro vzdělávání zákazníků bez smlouvy VL, můžete pokračovat v obnovování předplatného. Další informace o smlouvách VL pro akademické instituce najdete na https://aka.ms/ees 
+
+
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Jaké produkty jsou součástí nástrojů pro vývoj v Azure pro vzdělávání v předplatném?
 
 :::row:::
@@ -167,7 +172,7 @@ Machine Learning Server (dřív R Server)<br>
 Hyper-V Server<br>
 Microsoft Project<br>
 Remote Tools for Visual Studio<br>
-SharePoint Designer<br>
+SharePoint Server<br>
 Server Skypu pro firmy<br>
    :::column-end:::
    :::column span="":::
@@ -181,7 +186,7 @@ Aplikace Microsoft Visio<br>
 Visual Studio Code<br>
 Visual Studio Community<br>
 Visual Studio Enterprise<br>
-Visual Studio for Mac<br>
+Visual Studio pro Mac<br>
 Windows 10<br>
 Windows Server<br>
    :::column-end:::
@@ -209,7 +214,7 @@ Centrum Education Store je k dispozici v následujících jazycích: Arabština,
 
 ### <a name="if-our-students-download-software-through-the-azure-dev-tools-for-teaching-program-do-they-get-unlimited-use-of-the-software"></a>Pokud naši studenti stáhnou software prostřednictvím služby Azure dev Tools for výuce, získá neomezený používání softwaru?
 
-Yes. Studenti získají neomezené softwarové využití, aby bylo možné další studijní a výzkumné úsilí.
+Ano. Studenti získají neomezené softwarové využití, aby bylo možné další studijní a výzkumné úsilí.
 
 ### <a name="if-our-students-create-viable-apps-and-products-using-azure-dev-tools-for-teaching-software-can-they-sell-them-commercially"></a>Pokud naši studenti vytvářejí životaschopné aplikace a produkty pomocí vývojových nástrojů Azure pro vyučovací software, můžou je prodávat komerčně?
 
@@ -217,7 +222,7 @@ Obecně to možné není. Studenti nemohou prodávat aplikace a produkty vytvoř
 
 ### <a name="do-i-have-unlimited-use-of-the-software-through-the-azure-dev-tools-for-teaching-program"></a>Mám neomezeně využívat software prostřednictvím nástrojů Azure dev Tools for vyučovací?
 
-Yes. Pokud je člen vyučujícího zaregistrovaný ve schváleném kurzu, mají nárok na instalaci vývojářských nástrojů Azure pro vývoj softwaru na svém osobním počítači pro nekomerční použití.
+Ano. Pokud je člen vyučujícího zaregistrovaný ve schváleném kurzu, mají nárok na instalaci vývojářských nástrojů Azure pro vývoj softwaru na svém osobním počítači pro nekomerční použití.
 
 ### <a name="how-do-i-access-my-visual-studio-enterprise-benefit"></a>Návody získat přístup k Visual Studio Enterprise výhodám?
 
@@ -247,8 +252,8 @@ Pokud se stále nemůžete přihlásit, obraťte se na správce předplatného. 
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Návody najít ID předplatitele?
 
-- **Při prvním přihlášení do programu**: vaše číslo ID předplatitele je v uvítacím e-mailu předplatného, které obdržíte.
-- **Pokud jste si obnovili předplatné**: vaše ID předplatitele je v e-mailu pro obnovení, který správce předplatného přijal.
+- **Při prvním přihlášení do programu** : vaše číslo ID předplatitele je v uvítacím e-mailu předplatného, které obdržíte.
+- **Pokud jste si obnovili předplatné** : vaše ID předplatitele je v e-mailu pro obnovení, který správce předplatného přijal.
 
 Vaše ID předplatitele je také na portálu Visual Studio Subscription. Až se přihlásíte, na stránce **můj účet** se podívejte na **Moje předplatné** .
 
@@ -277,7 +282,7 @@ Pokud tyto e-maily s připomenutím neobdržíte a máte obavy, že vaše předp
 
 Alternativně můžete přejít na [stránku Azure dev Tools for vyučující – obnovit](https://portal.azureforeducation.microsoft.com/)a dokončit proces obnovení.
 
-Pokud chcete zkontrolovat datum vypršení platnosti vašeho předplatného, navštivte [portál pro vývoj pro Azure pro vzdělávání](https://azureforeducation.microsoft.com/account/Subscriptions)a podívejte se na **předplatné**.
+Pokud chcete zkontrolovat datum vypršení platnosti vašeho předplatného, navštivte [portál pro vývoj pro Azure pro vzdělávání](https://azureforeducation.microsoft.com/account/Subscriptions)a podívejte se na **předplatné** .
 
 ### <a name="what-if-i-need-more-help"></a>Co když potřebuji další podrobnější informace?
 

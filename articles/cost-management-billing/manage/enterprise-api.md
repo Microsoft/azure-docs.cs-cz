@@ -4,22 +4,23 @@ description: Přečtěte si o rozhraních API pro generování sestav, která um
 author: mumami
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: reference
-ms.date: 06/22/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a1c420eed89b7b45ea6c50345737b8615f39ad8c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253702"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602077"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 
 > [!Note]
 > Microsoft už neaktualizuje rozhraní API služby Enterprise Reporting pro fakturaci Azure. Místo toho byste měli využívat rozhraní API služby [Azure Consumption](/rest/api/consumption).
 
-Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali určité peněžní závazky a která jim poskytuje přístup k vlastním cenám prostředků Azure.
+Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali Azure Prepayment (dřív označovaný jako peněžní závazek) a která jim poskytuje přístup k vlastním cenám prostředků Azure.
 
 Všechny parametry data a času požadované pro rozhraní API musí být reprezentované jako kombinované hodnoty koordinovaného světového času (UTC). Hodnoty vrácené rozhraními API se zobrazují ve formátu UTC.
 

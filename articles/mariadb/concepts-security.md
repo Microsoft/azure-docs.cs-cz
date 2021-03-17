@@ -1,17 +1,17 @@
 ---
 title: Zabezpečení – Azure Database for MariaDB
 description: Přehled funkcí zabezpečení v Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e6ca797b1e982e1ef632ba99e9210e3c347a2f1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79527822"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664176"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Zabezpečení ve službě Azure Database for MariaDB
 
@@ -43,7 +43,7 @@ Koncové body služby virtuální sítě prodlužují připojení k virtuální 
 Při vytváření Azure Database for MariaDBho serveru poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů MariaDB.
 
 
-## <a name="threat-protection"></a>Ochrana před internetovými útoky
+## <a name="threat-protection"></a>Ochrana před hrozbami
 
 Můžete se rozhodnout pro [rozšířenou ochranu před internetovými útoky](concepts-data-access-and-security-threat-protection.md) , která detekuje neobvyklé aktivity indikující neobvyklé a potenciálně nebezpečné pokusy o přístup k serverům nebo jejich zneužití.
 

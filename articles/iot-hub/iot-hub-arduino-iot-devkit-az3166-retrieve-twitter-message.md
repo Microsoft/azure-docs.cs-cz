@@ -9,25 +9,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560965"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147902"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Protřepení a protřepávání na vyžádání – načtení zprávy Twitteru pomocí Azure Functions
 
 V tomto projektu se naučíte, jak pomocí snímače pohybu aktivovat událost pomocí Azure Functions. Aplikace načte náhodný disk s #hashtag, kterou nakonfigurujete v náčrtu Arduino. Na obrazovce DevKit se zobrazí.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
-Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
+Dokončete [průvodce Začínáme](./iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
 * Připojte DevKit k Wi-Fi.
 * Připravte vývojové prostředí.
 
-Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat prostřednictvím jedné z těchto metod:
+Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat prostřednictvím jedné z těchto metod:
 
 * Aktivujte si [bezplatný 30denní zkušební účet Microsoft Azure](https://azure.microsoft.com/free/) .
 * Pokud jste předplatitelem MSDN nebo Visual studia, můžete svůj [kredit Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) uplatnit.
@@ -60,7 +61,7 @@ V okně řešení spusťte úlohu prostřednictvím `Ctrl+P` (MacOS: `Cmd+P` ) z
 
 V terminálu VS Code vás interaktivní příkazový řádek provede zřízením požadovaných služeb Azure:
 
-![zřízení cloudu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![Snímek obrazovky se zobrazí jako interaktivní příkazový řádek Visual Studio Code terminálu.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
 > Pokud se stránka při pokusu o přihlášení k Azure přestane načítat, podívejte se do části [Nejčastější dotazy ke službě IoT DevKit v kroku "přihlášení přihlašovací stránky"](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
@@ -79,7 +80,7 @@ Nahraďte řetězec `iot` v složených závorkách preferovaným hashtagem. Dev
 
 Pro spuštění `Ctrl+P` `Cmd+P` `task cloud-deploy` nasazení Azure Functions kódu použijte (MacOS:):
 
-![nasazení v cloudu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![Snímek obrazovky ukazuje Visual Studio Code, kde můžete spustit úlohu Cloud – nasazení a nasadit Azure Functions kód.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > V některých případech nemusí funkce Azure fungovat správně. Pokud chcete tento problém vyřešit, přečtěte si [část "Chyba kompilace" v tématu Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
@@ -114,7 +115,7 @@ Připojovací řetězec je teď nastavený, ověří a nahraje aplikaci a pak ji
 
 1. VS Code spustí ověřování a nahrání Arduino náčrtu do vaší DevKit:
 
-   ![zařízení – nahrání](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+   ![Snímek obrazovky ukazuje Visual Studio Code ověřování a nahrávání náčrtu Arduino.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
 2. DevKit se restartuje a začne používat kód.
 
@@ -153,7 +154,7 @@ Po inicializaci aplikace klikněte na tlačítko a uvolněte tlačítko A a pak 
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-![znázorňuje](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![Diagram znázorňuje mobilní zařízení odesílající událost do služby Azure I o-T rozbočovače, která spustí aplikaci Azure Functions, aby požádala o prostředcích, která se pošle zpátky do aplikace a předalo do centra a do mobilního zařízení.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 Náčrt Arduino odešle událost do Azure IoT Hub. Tato událost aktivuje aplikaci Azure Functions. Aplikace Azure Functions obsahuje logiku pro připojení k rozhraní API Twitteru a načtení. Pak tento text zalomí do zprávy C2D (Cloud-zařízení) a pošle je zpátky do zařízení.
 
@@ -169,7 +170,7 @@ Pro účely testování používá tento ukázkový projekt předem nakonfigurov
 
 4. V [Azure Portal](https://portal.azure.com/){: target = "_blank"} se přečtěte do **skupiny prostředků** a vyhledejte funkci Azure Functions (typ: App Service) pro projekt "protřepání". Název vždy obsahuje ' protřepání... ' řetezce.
 
-   ![Azure – funkce](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![Snímek obrazovky Azure Portal zobrazuje aplikační službu pro projekt.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. Aktualizujte kód `run.csx` v rámci **funkcí > shakeshake-cs** s vlastním tokenem:
 
@@ -177,7 +178,7 @@ Pro účely testování používá tento ukázkový projekt předem nakonfigurov
    string authHeader = "Bearer " + "[your own token]";
    ```
   
-   ![Twitter – token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![Snímek obrazovky zobrazuje kód jazyka C# pro funkci, do které můžete zadat svůj token.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Uložte soubor a klikněte na **Spustit**.
 
@@ -195,7 +196,7 @@ Nebo při spuštění kódu existují některé výkyvů, které způsobují res
 
 2. V [Azure Portal](https://portal.azure.com/)Najděte vytvořenou aplikaci Azure functions a restartujte ji:
 
-   ![Azure – funkce – restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![Snímek obrazovky ukazuje Azure Portal s aplikací Azure Functions a tlačítkem restartovat.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 Pokud se setkáte s dalšími problémy, přečtěte si [Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás pomocí následujících kanálů:
 
@@ -206,4 +207,4 @@ Pokud se setkáte s dalšími problémy, přečtěte si [Nejčastější dotazy 
 
 Teď, když jste se naučili, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a načíst provedený disk, je tady doporučený následující postup:
 
-* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](/azure/iot-suite/)

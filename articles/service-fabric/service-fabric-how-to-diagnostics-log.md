@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247213"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89011476"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Přidání protokolování do aplikace Service Fabric
 

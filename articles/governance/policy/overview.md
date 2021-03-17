@@ -1,25 +1,26 @@
 ---
 title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
-ms.date: 06/17/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044188"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220724"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
-Azure Policy pomáhá vyhovět standardům organizace a hodnotit dodržování předpisů v rozsahu. Prostřednictvím řídicího panelu pro dodržování předpisů poskytuje agregované zobrazení pro vyhodnocení celkového stavu prostředí s možností přechodu k podrobnostem podle prostředků a členitosti podle zásad. Také pomáhá zajistit, aby byly prostředky v souladu s hromadnou nápravou pro stávající prostředky a automatickou nápravu pro nové prostředky.
+Služba Azure Policy pomáhá vynutit standardy organizace a vyhodnotit dodržování předpisů s podporou škálování. Prostřednictvím řídicího panelu pro dodržování předpisů poskytuje agregované zobrazení pro vyhodnocení celkového stavu prostředí s možností přechodu k podrobnostem podle prostředků a členitosti podle zásad. Také pomáhá zajistit, aby byly prostředky v souladu s hromadnou nápravou pro stávající prostředky a automatickou nápravu pro nové prostředky.
 
 Běžné případy použití pro Azure Policy zahrnují implementaci zásad správného řízení pro konzistenci prostředků, dodržování legislativních předpisů, zabezpečení, náklady a správu. Definice zásad pro tyto běžné případy použití jsou už v prostředí Azure dostupné jako předdefinované, které vám pomůžou začít.
 
+Všechna Azure Policyová data a objekty jsou v klidovém stavu šifrované. Další informace najdete v tématu [šifrování dat Azure v klidovém umístění](../../security/fundamentals/encryption-atrest.md).
+
 ## <a name="overview"></a>Přehled
 
-Azure Policy vyhodnocuje prostředky v Azure porovnáním vlastností těchto prostředků s obchodními pravidly. Tato obchodní pravidla, která jsou popsaná ve [formátu JSON](./concepts/definition-structure.md), se označují jako [definice zásad](#policy-definition). Pro zjednodušení správy lze seskupit několik obchodních pravidel, aby bylo možné vytvořit [iniciativu zásad](#initiative-definition) (někdy se mu říká _policySet_). Po založení obchodních pravidel se definice nebo podnět zásady [přiřadí](#assignments) k jakémukoli oboru prostředků, které Azure podporuje, jako jsou [skupiny pro správu](../management-groups/overview.md), předplatná, [skupiny prostředků](../../azure-resource-manager/management/overview.md#resource-groups)nebo jednotlivé prostředky. Přiřazení platí pro všechny prostředky v rámci [rozsahu](../../azure-resource-manager/management/overview.md#understand-scope) daného přiřazení.
-Podobory lze v případě potřeby vyloučit.
+Azure Policy vyhodnocuje prostředky v Azure porovnáním vlastností těchto prostředků s obchodními pravidly. Tato obchodní pravidla, která jsou popsaná ve [formátu JSON](./concepts/definition-structure.md), se označují jako [definice zásad](#policy-definition). Pro zjednodušení správy lze seskupit několik obchodních pravidel, aby bylo možné vytvořit [iniciativu zásad](#initiative-definition) (někdy se mu říká _policySet_). Po založení obchodních pravidel se definice nebo podnět zásady [přiřadí](#assignments) k jakémukoli oboru prostředků, které Azure podporuje, jako jsou [skupiny pro správu](../management-groups/overview.md), předplatná, [skupiny prostředků](../../azure-resource-manager/management/overview.md#resource-groups)nebo jednotlivé prostředky. Přiřazení se vztahuje na všechny prostředky v rámci [rozsahu správce prostředků](../../azure-resource-manager/management/overview.md#understand-scope) tohoto přiřazení. Podobory lze v případě potřeby vyloučit. Další informace najdete v tématu věnovaném [oboru v Azure Policy](./concepts/scope.md).
 
 Azure Policy používá [formát JSON](./concepts/definition-structure.md) k vytvoření logiky, kterou vyzkoušení používá k určení, jestli je prostředek kompatibilní, nebo ne. Definice zahrnují metadata a pravidlo zásad. Definované pravidlo může používat funkce, parametry, logické operátory, podmínky a [aliasy](./concepts/definition-structure.md#aliases) vlastností, aby odpovídaly přesně požadovanému scénáři. Pravidlo zásad určuje, které prostředky v oboru přiřazení se vyhodnotí.
 
@@ -36,7 +37,7 @@ Podrobné informace o tom, kdy a jak probíhá vyhodnocení zásad, najdete v t�
 
 ### <a name="control-the-response-to-an-evaluation"></a>Řízení odpovědi na vyhodnocení
 
-Obchodní pravidla pro zpracování nevyhovujících prostředků se mezi organizacemi značně liší. Příklady toho, jak organizace chce, aby platforma reagovala na prostředek bez stížnosti, zahrnuje:
+Obchodní pravidla pro zpracování nevyhovujících prostředků se mezi organizacemi značně liší. Příklady, jak organizace chce, aby platforma reagovala na nekompatibilní prostředek, zahrnuje:
 
 - Odepřít změnu prostředku
 - Zaznamenat změnu prostředku
@@ -58,31 +59,31 @@ Následující přehled služby Azure Policy se týká sestavení 2018. Pokud ch
 
 ## <a name="getting-started"></a>Začínáme
 
-### <a name="azure-policy-and-rbac"></a>Azure Policy a RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Policy a Azure RBAC
 
-Mezi Azure Policy a řízením přístupu na základě role (RBAC) existuje několik klíčových rozdílů. Azure Policy vyhodnocuje stav kontrolou vlastností u prostředků, které jsou zastoupeny v Správce prostředků a vlastnostech některých poskytovatelů prostředků. Azure Policy neomezuje akce (označují se také jako _operace_). Azure Policy zajistí, aby byl stav prostředku v souladu s vašimi obchodními pravidly bez obav, kdo provedl změnu nebo kdo má oprávnění provést změnu.
+Mezi Azure Policy a řízením přístupu na základě role Azure (Azure RBAC) existuje několik klíčových rozdílů. Azure Policy vyhodnocuje stav kontrolou vlastností u prostředků, které jsou zastoupeny v Správce prostředků a vlastnostech některých poskytovatelů prostředků. Azure Policy neomezuje akce (označují se také jako _operace_). Azure Policy zajistí, aby byl stav prostředku v souladu s vašimi obchodními pravidly bez obav, kdo provedl změnu nebo kdo má oprávnění provést změnu.
 
-RBAC se zaměřuje na správu uživatelských [akcí](../../role-based-access-control/resource-provider-operations.md) v různých oborech. Je-li vyžadováno řízení akce, je nástroj RBAC správným nástrojem pro použití. I v případě, že má jednotlivec přístup k provedení určité akce, pokud je výsledkem nekompatibilní prostředek, Azure Policy stále zablokovat vytvoření nebo aktualizaci.
+Azure RBAC se zaměřuje na správu uživatelských [akcí](../../role-based-access-control/resource-provider-operations.md) v různých oborech. Pokud je potřeba řídit akci, je to správný nástroj pro použití Azure RBAC. I v případě, že má jednotlivec přístup k provedení určité akce, pokud je výsledkem nekompatibilní prostředek, Azure Policy stále zablokovat vytvoření nebo aktualizaci.
 
-Kombinace RBAC a Azure Policy poskytuje kompletní řízení oboru v Azure.
+Kombinace Azure RBAC a Azure Policy poskytuje kompletní řízení oboru v Azure.
 
-### <a name="rbac-permissions-in-azure-policy"></a>Oprávnění RBAC ve službě Azure Policy
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Oprávnění Azure RBAC v Azure Policy
 
 Služba Azure Policy má několik oprávnění, která se označují jako operace, ve dvou poskytovatelích prostředků:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft. PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. Role **Přispěvatel zásad prostředků** zahrnuje většinu operací Azure Policy. **Vlastník** má plná práva. Všichni **přispěvatelé** a **čtenáři** mají přístup ke všem operacím _čtení_ Azure Policy. **Přispěvatel** může aktivovat nápravu prostředků, ale nemůže _vytvořit_ definice nebo přiřazení.
+Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. Role **Přispěvatel zásad prostředků** zahrnuje většinu operací Azure Policy. **Vlastník** má plná práva. Všichni **přispěvatelé** a **čtenáři** mají přístup ke všem operacím _čtení_ Azure Policy. **Přispěvatel** může aktivovat nápravu prostředků, ale nemůže _vytvořit_ definice nebo přiřazení. **Správce přístupu uživatele** je nezbytný k udělení oprávnění ke spravované identitě v **deployIfNotExists** nebo k **úpravám** potřebných přiřazení.
 
 Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvořte [vlastní roli](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Spravovaná identita přiřazení zásady **deployIfNotExists** potřebuje dostatečná oprávnění k vytvoření nebo aktualizaci prostředků obsažených v šabloně. Další informace najdete v tématu [Konfigurace definic zásad pro nápravu](./how-to/remediate-resources.md#configure-policy-definition).
+> Spravovaná identita přiřazení zásady **deployIfNotExists** nebo **Modify** potřebuje dostatečná oprávnění k vytvoření nebo aktualizaci prostředků zacílené. Další informace najdete v tématu [Konfigurace definic zásad pro nápravu](./how-to/remediate-resources.md#configure-policy-definition).
 
 ### <a name="resources-covered-by-azure-policy"></a>Prostředky, na které se vztahuje Azure Policy
 
-Azure Policy vyhodnocuje všechny prostředky v Azure. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
+Azure Policy vyhodnocuje všechny prostředky Azure na úrovni předplatného, včetně prostředků s podporou ARC. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Doporučení pro správu zásad
 
@@ -95,7 +96,7 @@ Tady je několik ukazatelů a tipů, které byste měli mít na paměti:
 - Definice iniciativ doporučujeme vytvářet a přiřazovat i pro jednu definici zásad.
   Například máte definici zásad _policyDefA_ a vytvoříte ji v části iniciativa definice _initiativeDefC_. Pokud později vytvoříte další definici zásad pro _policyDefB_ s cíli podobnými _policyDefA_, můžete ho přidat pod _initiativeDefC_ a sledovat společně.
 
-- Po vytvoření přiřazení iniciativy se definice zásad přidané do iniciativy stanou také součástí těchto přiřazení iniciativ.
+- Jakmile vytvoříte přiřazení iniciativy, definice zásad přidané k iniciativě se také stanou součástí přiřazení v této iniciativě.
 
 - Když se vyhodnotí přiřazení iniciativy, vyhodnotí se taky všechny zásady v iniciativě.
   Pokud potřebujete zásadu vyhodnotit jednotlivě, je lepší ji v iniciativě Nezahrnovat.
@@ -104,7 +105,7 @@ Tady je několik ukazatelů a tipů, které byste měli mít na paměti:
 
 ### <a name="policy-definition"></a>Definice zásady
 
-Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady obsahuje podmínky, za kterých se vynutilo. A má definovaný účinek, který se provede, pokud jsou splněny podmínky.
+Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady se vynucuje za určitých podmínek. A má definovaný účinek, který se provede, pokud jsou splněny podmínky.
 
 V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Příklad:
 
@@ -113,10 +114,9 @@ V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve vý
 - **Povolená umístění** (odepřít): omezuje dostupná umístění pro nové prostředky. Účinkem je vynucení vašich požadavků na geografické dodržování předpisů.
 - **Povolené SKU virtuálních počítačů** (odepřít): Určuje sadu SKU virtuálních počítačů, které můžete nasadit.
 - **Přidat značku do prostředků** (Upravit): použije požadovanou značku a její výchozí hodnotu, pokud není zadána v žádosti o nasazení.
-- **Připojit značku a její výchozí hodnotu** (připojit): vynutila požadovanou značku a její hodnotu pro prostředek.
 - **Nepovolené typy prostředků** (odepřít): zabrání v nasazení seznamu typů prostředků.
 
-Pokud chcete implementovat tyto definice zásad (předdefinované i vlastní definice), budete je muset přiřadit. Jakékoli z těchto zásad můžete přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI.
+Pokud chcete implementovat tyto definice zásad (předdefinované i vlastní definice), budete je muset přiřadit. Jakékoli z těchto zásad můžeme přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI.
 
 Vyhodnocení zásad probíhá s několika různými akcemi, jako jsou přiřazení zásad nebo aktualizace zásad. Úplný seznam najdete v tématu [triggery vyhodnocení zásad](./how-to/get-compliance-data.md#evaluation-triggers).
 
@@ -124,7 +124,7 @@ Další informace o strukturách definic zásad najdete v článku [Struktura de
 
 Parametry zásad pomáhají zjednodušit správu zásad tím, že snižují počet definic zásad, které musíte vytvářet. Parametry můžete definovat při vytváření definice zásady a tím ji více zobecnit. Následně můžete tuto definici zásady použít opakovaně pro různé scénáře. Provedete to předáváním různých hodnot při přiřazování této definice zásady. Například můžete pro každé předplatné zadat jednu sadu umístění.
 
-Parametry jsou definovány při vytváření definice zásady. Při definování je parametru dán název a volitelně i hodnota. Pro zásadu můžete například definovat parametr s názvem _location_ (umístění). Následně mu můžete při přiřazování zásady předávat různé hodnoty, například _EastUS_ nebo _WestUS_.
+Parametry jsou definovány při vytváření definice zásady. Při definování dostane parametr název a volitelně i hodnotu. Pro zásadu můžete například definovat parametr s názvem _location_ (umístění). Následně mu můžete při přiřazování zásady předávat různé hodnoty, například _EastUS_ nebo _WestUS_.
 
 Další informace o parametrech zásad najdete v tématu [Struktura definice – parametry](./concepts/definition-structure.md#parameters).
 
@@ -145,15 +145,15 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásada | Název parametru |Typ parametru  |Poznámka |
+| Zásady | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
-| policyA | allowedLocations | pole  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
+| policyA | allowedLocations | array  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |
 
 V tomto scénáři máte při definování parametrů iniciativy pro **initiativeC** tři možnosti:
 
 - Použít parametry definic zásad v rámci této iniciativy: V tomto příkladu se _allowedLocations_ a _allowedSingleLocation_ stanou parametry iniciativy pro **initiativeC**.
-- Zadat hodnoty do parametrů definic zásad v rámci této definice iniciativy. V tomto příkladu můžete zadat seznam umístění pro parametr **zásad**– **allowedLocations** a **policyB**parametr – **allowedSingleLocation**. Hodnoty můžete zadat také při přiřazování této iniciativy.
+- Zadat hodnoty do parametrů definic zásad v rámci této definice iniciativy. V tomto příkladu můžete zadat seznam umístění pro parametr **zásad**– **allowedLocations** a **policyB** parametr – **allowedSingleLocation**. Hodnoty můžete zadat také při přiřazování této iniciativy.
 - Zadat seznam možností _hodnot_, které se můžou použít při přiřazování této iniciativy. Když přiřadíte tuto iniciativu, zděděné parametry z definic zásad v rámci této iniciativy můžou mít pouze hodnoty z tohoto zadaného seznamu.
 
 Při vytváření možností hodnot v definici iniciativy nemůžete zadat jinou hodnotu během přiřazení iniciativy, protože není součástí seznamu.

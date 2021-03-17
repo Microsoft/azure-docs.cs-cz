@@ -4,16 +4,16 @@ description: Zjistěte, co je nového ve službě Azure blockchain, jako je nap�
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921886"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335022"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Co je nového ve službě Azure blockchain?
 
-> Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` do [ ![ ikony čtečky kanálů RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us)čtečky kanálů RSS.
+> Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` do [ ![ ikony čtečky kanálů RSS](./media/whats-new/feed-icon-16x16.png)](/api/search/rss?locale=en-us&search=%2522Release%2bnotes%2b-%2bAzure%2bBlockchain%2bService%2522)čtečky kanálů RSS.
 
 Služba Azure blockchain se průběžně dostává na základě vylepšení. V tomto článku najdete informace o tom, jak se můžete seznámit s nejnovějším vývojem.
 
@@ -27,7 +27,7 @@ Služba Azure blockchain se průběžně dostává na základě vylepšení. V t
 
 ### <a name="version-upgrades"></a>Upgrady verze
 
-- Upgrade verze kvora na 2.6.0. S verzí 2.6.0 můžete odesílat podepsané privátní transakce. Další informace o odesílání privátních transakcí najdete v [dokumentaci k rozhraní API kvora](https://docs.goquorum.com/en/latest/Getting%20Started/api/).
+- Upgrade verze kvora na 2.6.0. S verzí 2.6.0 můžete odesílat podepsané privátní transakce. Další informace o odesílání privátních transakcí najdete v [dokumentaci k rozhraní API kvora](https://docs.goquorum.consensys.net/en/latest/Reference/APIs/ContractExtensionAPIs/#apis).
 - Upgrade verze Tessera na 0.10.5.
 
 ### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>Velikost kontraktu a velikost transakce se zvýšily na 128 KB.
@@ -69,7 +69,7 @@ Dvě fáze vám pomůžou optimalizovat scénáře, kdy je člen vytvořen v dlo
 V kvoru v 2.6.0 volání funkce *ETH. estimateGas* bez zadání dalšího parametru *hodnoty* způsobí výjimku *selhání obslužné rutiny metody* . Tým kvora byl upozorněn a na konci července 2020 byla opravena. Dokud není k dispozici oprava, můžete použít následující alternativní řešení:
 
 - Vyhněte se použití *ETH. estimateGas* , protože může ovlivnit výkon. Další informace o potížích s výkonem ETH. estimateGas najdete v tématu [volání funkce ETH. estimateGas snižuje výkon](#calling-ethestimategas-function-reduces-performance). Zahrňte hodnotu plynu pro každou transakci. Většina knihoven bude volat ETH. estimateGas, pokud není poskytnuta hodnota plynů, což způsobí selhání kvora v 2.6.0.
-- Pokud potřebujete volat *ETH. estimateGas*, tým kvora navrhne, abyste jako alternativní řešení předávali další *hodnotu* parametru jako *0* .
+- Pokud potřebujete volat *ETH. estimateGas* , tým kvora navrhne, abyste jako alternativní řešení předávali další *hodnotu* parametru jako *0* .
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Dolování se zastaví, pokud je méně než čtyři uzly validátoru.
 
@@ -123,9 +123,9 @@ Pokud je to možné, použijte hodnotu konzervativního plynu pro odeslání tra
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Neohraničené smyčky v inteligentních kontraktech snižují výkon
 
-Vyhněte se neohraničeným smyčkám v rámci inteligentních kontraktů, protože mohou snížit výkon. Další informace najdete v následujících materiálech:
+Vyhněte se neohraničeným smyčkám v rámci inteligentních kontraktů, protože mohou snížit výkon. Další informace naleznete v následujících zdrojích:
 
 - [Vyhněte se neohraničeným smyčkám](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [Doporučené postupy zabezpečení pro inteligentní kontrakty](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Pokyny pro inteligentní kontrakty poskytované kvorem](http://docs.goquorum.com/en/latest/Security/Framework/Decentralized%20Application/Smart%20Contracts%20Security/)
+- [Pokyny pro inteligentní kontrakty poskytované kvorem](https://docs.goquorum.consensys.net/en/stable/Concepts/Security/Framework/DecentralizedApplication/SmartContractsSecurity/)
 - [Pokyny týkající se limitů a smyček plynů, které poskytuje plná pevnost](https://solidity.readthedocs.io/en/develop/security-considerations.html#gas-limit-and-loops)

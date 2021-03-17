@@ -6,17 +6,17 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 2c028bff80856f7edcb34688ffa5c3320a66ccc9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9355c2b2c780b6ccd63100e576850fe5566db3cc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112608"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998596"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Automatické zvětšení úložiště v Azure Database for MySQL pomocí Azure Portal
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for MySQL pro růst, aniž by to ovlivnilo zatížení.
 
-Když server dosáhne přiděleného limitu úložiště, je server označený jen pro čtení. Pokud ale povolíte automatické zvětšování úložiště, zvýší se úložiště serveru, aby se vešlo na rostoucí data. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Maximální limity úložiště, jak je uvedeno [zde](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) , platí.
+Když server dosáhne přiděleného limitu úložiště, je server označený jen pro čtení. Pokud ale povolíte automatické zvětšování úložiště, zvýší se úložiště serveru, aby se vešlo na rostoucí data. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Maximální limity úložiště, jak je uvedeno [zde](./concepts-pricing-tiers.md#storage) , platí.
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto průvodce budete potřebovat:
@@ -32,13 +32,13 @@ Pomocí těchto kroků nastavte automatické zvětšování úložiště serveru
 
 3. V části Automatické zvětšování vyberte **Ano** , pokud chcete povolit automatické zvětšování úložiště.
 
-    ![Azure Database for MySQL – Settings_Pricing_tier – automatické zvětšování](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/3-auto-grow.png" alt-text="Azure Database for MySQL – Settings_Pricing_tier – automatické zvětšování":::
 
-4. Klikněte na tlačítko **OK** a uložte změny.
+4. Kliknutím na tlačítko **OK** uložte změny.
 
 5. Oznámení potvrdí, že automatické zvětšování bylo úspěšně povoleno.
 
-    ![Úspěch Azure Database for MySQL – automatické zvětšování](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-success.png" alt-text="Úspěch Azure Database for MySQL – automatické zvětšování":::
 
 ## <a name="next-steps"></a>Další kroky
 

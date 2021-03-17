@@ -1,18 +1,16 @@
 ---
 title: Začínáme s jazykem U-SQL v Azure Data Lake Analytics
 description: Seznamte se se základy jazyka U-SQL v Azure Data Lake Analytics. Napište svůj první dotaz pomocí proměnných pro další data ze souborů, transformujte sadu řádků a agregovaná data.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128841"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219917"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s U-SQL v Azure Data Lake Analytics
 
@@ -21,7 +19,7 @@ U-SQL je jazyk, který kombinuje deklarativní SQL s imperativně v jazyce C#, k
 ## <a name="learning-resources"></a>Studijní materiály
 
 * [Kurz u-SQL](https://aka.ms/usqltutorial) poskytuje podrobný návod pro většinu jazyka u-SQL. Tento dokument se doporučuje přečíst u všech vývojářů, kteří se chtějí dozvědět U-SQL.
-* Podrobné informace o **syntaxi jazyka u-SQL**najdete v tématu Referenční dokumentace [jazyka u-SQL](https://docs.microsoft.com/u-sql/).
+* Podrobné informace o **syntaxi jazyka u-SQL**najdete v tématu Referenční dokumentace [jazyka u-SQL](/u-sql/).
 * Informace o **filozofie návrhu u-SQL**najdete v příspěvku na blogu sady Visual Studio [Představujeme u-SQL – jazyk, který usnadňuje zpracování velkých](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)objemů dat.
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -56,8 +54,8 @@ Všimněte si otazníku vedle datového typu v `Duration` poli. To znamená, že
 ### <a name="key-concepts"></a>Klíčové koncepty
 
 * **Proměnné sady řádků**: každý výraz dotazu, který vytváří sadu řádků, lze přiřadit proměnné. U-SQL následuje vzor pojmenování proměnných T-SQL ( `@searchlog` například) ve skriptu.
-* Klíčové slovo **Extract** čte data ze souboru a definuje schéma při čtení. `Extractors.Tsv`je vestavěný extraktor U-SQL pro soubory s hodnotami oddělenými tabulátorem. Můžete vyvíjet vlastní extraktory.
-* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()`je vestavěný výstup U-SQL, který umožňuje vytvořit soubor s hodnotami oddělenými čárkami. Můžete vyvíjet vlastní výstupy.
+* Klíčové slovo **Extract** čte data ze souboru a definuje schéma při čtení. `Extractors.Tsv` je vestavěný extraktor U-SQL pro soubory s hodnotami oddělenými tabulátorem. Můžete vyvíjet vlastní extraktory.
+* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()` je vestavěný výstup U-SQL, který umožňuje vytvořit soubor s hodnotami oddělenými čárkami. Můžete vyvíjet vlastní výstupy.
 
 ### <a name="file-paths"></a>Cesty k souborům
 

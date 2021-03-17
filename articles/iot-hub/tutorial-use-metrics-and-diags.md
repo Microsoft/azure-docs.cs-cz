@@ -1,80 +1,92 @@
 ---
-title: Nastavení a použití metrik a diagnostických protokolů ve službě Azure IoT Hub
-description: Naučte se, jak nastavit a používat metriky a diagnostické protokoly ve službě Azure IoT Hub. Tím získáte data, která se budou analyzovat, aby bylo možné diagnostikovat problémy, které vaše centrum může mít.
+title: Kurz – nastavení a používání metrik a protokolů ve službě Azure IoT Hub
+description: Kurz – Naučte se, jak nastavit a používat metriky a protokoly ve službě Azure IoT Hub. Tím získáte data, která se budou analyzovat, aby bylo možné diagnostikovat problémy, které vaše centrum může mít.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 3/13/2019
+ms.date: 10/29/2020
 ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
-ms.openlocfilehash: b31fc9df5451665b79a41172286a0cc471b681fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+- devx-track-csharp
+ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500993"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625195"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
+# <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a protokolů ve službě IoT Hub
 
-Pokud máte řešení IoT Hub spuštěné v produkčním prostředí, chcete nastavit několik metrik a povolit diagnostické protokoly. Pokud dojde k potížím, budete mít k dispozici data, která vám pomůžou s diagnostikou problému a jeho rychlejším řešením. V tomto článku se dozvíte, jak povolit diagnostické protokoly a jak je zjistit, jestli neobsahuje chyby. Nastavili jste také některé metriky, které se budou sledovat, a výstrahy, které se aktivují, když metrika dosáhla určité hranice. Můžete vám například poslat e-mail, když počet odeslaných zpráv telemetrie překročí určitou hranici, nebo když se počet použitých zpráv blíží kvótě povolených zpráv za den pro IoT Hub. 
+Pomocí Azure Monitor můžete shromažďovat metriky a protokoly pro Centrum IoT, které vám pomůžou monitorovat provoz řešení a řešit problémy, když k nim dojde. V tomto článku se dozvíte, jak vytvářet grafy založené na metrikách, jak vytvářet výstrahy, které aktivují metriky, jak odesílat IoT Hub operace a chyby do protokolů Azure Monitor a jak zjistit chyby v protokolech.
 
-Příkladem případu použití je plynová stanice, kde jsou pumpa zařízení IoT, která odesílají komunikaci se službou IoT Hub. Platební karty jsou ověřeny a konečná transakce je zapsána do úložiště dat. Pokud zařízení IoT přestanou připojení k centru a posílání zpráv, je mnohem obtížnější opravit, Pokud nevidíte, co se chystá.
+V tomto kurzu se k posílání zpráv do služby IoT Hub používá ukázka Azure z rychlého startu pro [odeslání telemetrie .NET](quickstart-send-telemetry-dotnet.md) . Pro posílání zpráv můžete vždy použít nějaké zařízení nebo jinou ukázku, ale možná budete muset upravit několik kroků odpovídajícím způsobem.
 
-V tomto kurzu se používá ukázka Azure ze [IoT Hub směrování](tutorial-routing.md) k posílání zpráv do služby IoT Hub.
+Před zahájením tohoto kurzu můžou být užitečné některé znalosti Azure Monitor konceptů. Další informace najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md). Další informace o metrikách a protokolech prostředků vysílaných službou IoT Hub najdete v tématu [monitorování informací o sledování](monitor-iot-hub-reference.md).
 
 V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> * Pomocí Azure CLI vytvořte centrum IoT, simulované zařízení a účet úložiště.  
-> * Povolte diagnostické protokoly.
-> * Povolte metriky.
-> * Nastavte výstrahy pro tyto metriky. 
-> * Stáhněte a spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra. 
-> * Spusťte aplikaci, dokud výstrahy nezačnou aktivovat. 
-> * Podívejte se na výsledky metrik a zkontrolujte protokoly diagnostiky. 
+>
+> * Pomocí Azure CLI vytvořte centrum IoT, zaregistrujte simulované zařízení a vytvořte Log Analytics pracovní prostor.  
+> * Odešlete IoT Hub připojení a protokoly prostředků telemetrie zařízení do Azure Monitor protokolů v pracovním prostoru Log Analytics.
+> * Pomocí Průzkumníka metrik vytvořte graf založený na vybraných metrikách a připněte ho na řídicí panel.
+> * Vytvářejte upozornění na metriky, abyste mohli při výskytu důležitých podmínek dostávat oznámení e-mailem.
+> * Stáhněte a spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do služby IoT Hub.
+> * Zobrazit výstrahy, když dojde k vašim podmínkám.
+> * Zobrazení grafu metrik na řídicím panelu.
+> * Zobrazit IoT Hub chyby a operace v protokolech Azure Monitor.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Nainstalujte [Visual Studio](https://www.visualstudio.com/). 
+- Ve vývojovém počítači potřebujete .NET Core SDK 2,1 nebo vyšší. Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
+
+  Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
+
+  ```cmd/sh
+  dotnet --version
+  ```
 
 - E-mailový účet, který může přijímat poštu.
 
 - Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Příprava prostředků
 
-Pro tento kurz potřebujete centrum IoT, účet úložiště a simulované zařízení IoT. Tyto prostředky můžete vytvořit pomocí Azure CLI nebo Azure PowerShellu. Použijte pro všechny prostředky stejnou skupinu a umístění. Na konci můžete odebrat vše v jednom kroku odstraněním skupiny prostředků.
+Pro tento kurz potřebujete centrum IoT, Log Analytics pracovní prostor a simulované zařízení IoT. Tyto prostředky můžete vytvořit pomocí Azure CLI nebo Azure PowerShellu. Použijte pro všechny prostředky stejnou skupinu a umístění. Po dokončení tohoto kurzu můžete odebrat vše v jednom kroku odstraněním skupiny prostředků.
 
-Jedná se o požadované kroky.
+Tady jsou požadované kroky.
 
-1. Vytvořte [skupinu prostředků](../azure-resource-manager/management/overview.md). 
+1. Vytvořte [skupinu prostředků](../azure-resource-manager/management/overview.md).
 
 2. Vytvořte centrum IoT.
 
-3. Vytvořte standardní účet úložiště V1 s replikací Standard_LRS.
+3. Vytvoříte pracovní prostor služby Log Analytics
 
-4. Vytvořte identitu zařízení pro simulované zařízení, které bude odesílat zprávy do vašeho centra. Uložte klíč pro fázi testování.
+4. Zaregistrujte identitu zařízení pro simulované zařízení, které odesílá zprávy do služby IoT Hub. Uložte připojovací řetězec zařízení, který se použije ke konfiguraci simulovaného zařízení.
 
 ### <a name="set-up-resources-using-azure-cli"></a>Nastavení prostředků pomocí Azure CLI
 
-Zkopírujte tento skript a vložte ho do služby Cloud Shell. Za předpokladu, že jste již přihlášeni, se skript provede jeden řádek po druhém. Nové prostředky se vytvoří ve skupině prostředků ContosoResources.
+Zkopírujte tento skript a vložte ho do služby Cloud Shell. Za předpokladu, že jste již přihlášeni, se skript provede jeden řádek po druhém. Spuštění některých příkazů může nějakou dobu trvat. Nové prostředky se vytvoří ve skupině prostředků *ContosoResources*.
 
-K proměnným, které musí být globálně jedinečné, je zřetězená hodnota `$RANDOM`. Při spuštění skriptu a nastavení proměnných se vygeneruje náhodný číselný řetězec a zřetězí se ke konci pevného řetězce. Tím se zajistí jeho jedinečnost.
+Název některých prostředků musí být v rámci Azure jedinečný. Skript vygeneruje náhodnou hodnotu s `$RANDOM` funkcí a uloží ji do proměnné. Pro tyto prostředky skript připojí tuto náhodnou hodnotu k základnímu názvu prostředku, takže název prostředku je jedinečný.
+
+Pro každé předplatné je povolené jenom jedno bezplatné centrum IoT. Pokud už máte ve svém předplatném bezplatné centrum IoT, odstraňte ho před spuštěním skriptu nebo ho upravte tak, aby používal vaše bezplatné centrum IoT nebo IoT Hub, které používají úroveň Standard nebo Basic.
+
+Skript vytiskne název služby IoT Hub, název pracovního prostoru Log Analytics a připojovací řetězec pro zařízení, které registruje. Nezapomeňte si je poznamenat, jak je budete potřebovat později v tomto článku.
 
 ```azurecli-interactive
 
 # This is the IOT Extension for Azure CLI.
 # You only need to install this the first time.
-# You need it to create the device identity. 
+# You need it to create the device identity.
 az extension add --name azure-iot
 
 # Set the values for the resource names that don't have to be globally unique.
@@ -83,7 +95,8 @@ az extension add --name azure-iot
 #   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
-iotDeviceName=Contoso-Test-Device 
+iotDeviceName=Contoso-Test-Device
+randomValue=$RANDOM
 
 # Create the resource group to be used
 #   for all the resources for this tutorial.
@@ -91,31 +104,31 @@ az group create --name $resourceGroup \
     --location $location
 
 # The IoT hub name must be globally unique, so add a random number to the end.
-iotHubName=ContosoTestHub$RANDOM
+iotHubName=ContosoTestHub$randomValue
 echo "IoT hub name = " $iotHubName
 
-# Create the IoT hub in the Free tier.
+# Create the IoT hub in the Free tier. Partition count must be 2.
 az iot hub create --name $iotHubName \
     --resource-group $resourceGroup \
+    --partition-count 2 \
     --sku F1 --location $location
 
-# The storage account name must be globally unique, so add a random number to the end.
-storageAccountName=contosostoragemon$RANDOM
-echo "Storage account name = " $storageAccountName
+# The Log Analytics workspace name must be globally unique, so add a random number to the end.
+workspaceName=contoso-la-workspace$randomValue
+echo "Log Analytics workspace name = " $workspaceName
 
-# Create the storage account.
-az storage account create --name $storageAccountName \
-    --resource-group $resourceGroup \
-    --location $location \
-    --sku Standard_LRS
+
+# Create the Log Analytics workspace
+az monitor log-analytics workspace create --resource-group $resourceGroup \
+    --workspace-name $workspaceName --location $location
 
 # Create the IoT device identity to be used for testing.
 az iot hub device-identity create --device-id $iotDeviceName \
-    --hub-name $iotHubName 
+    --hub-name $iotHubName
 
-# Retrieve the information about the device identity, then copy the primary key to
+# Retrieve the primary connection string for the device identity, then copy it to
 #   Notepad. You need this to run the device simulation during the testing phase.
-az iot hub device-identity show --device-id $iotDeviceName \
+az iot hub device-identity show-connection-string --device-id $iotDeviceName \
     --hub-name $iotHubName
 
 ```
@@ -123,269 +136,299 @@ az iot hub device-identity show --device-id $iotDeviceName \
 >[!NOTE]
 >Při vytváření identity zařízení se může zobrazit následující chyba: *nenašly se žádné klíče pro zásady iothubowner IoT Hub ContosoTestHub*. Pokud chcete tuto chybu opravit, aktualizujte rozšíření IoT Azure CLI a pak znovu spusťte poslední dva příkazy ve skriptu. 
 >
->Tady je příkaz pro aktualizaci rozšíření. Spusťte to v instanci Cloud Shell.
+>Tady je příkaz pro aktualizaci rozšíření. Spusťte tento příkaz v instanci Cloud Shell.
 >
 >```cli
 >az extension update --name azure-iot
 >```
 
-## <a name="enable-the-diagnostic-logs"></a>Povolení diagnostických protokolů 
+## <a name="collect-logs-for-connections-and-device-telemetry"></a>Shromažďovat protokoly pro připojení a telemetrii zařízení
 
-[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) jsou ve výchozím nastavení zakázané, když vytváříte nové centrum IoT. V této části povolíte diagnostické protokoly pro vaše centrum.
+IoT Hub generuje protokoly prostředků pro několik kategorií operací. Chcete-li však zobrazit tyto protokoly, je nutné vytvořit nastavení diagnostiky k odeslání do cíle. Jedním z těchto cílů je Azure Monitor protokolů, které se shromažďují v pracovním prostoru Log Analytics. Protokoly prostředků IoT Hub jsou seskupené do různých kategorií. Můžete vybrat, které kategorie se mají odeslat do Azure Monitor protokoly v nastavení diagnostiky. V tomto článku budeme shromažďovat protokoly o operacích a chybách, ke kterým dochází, a to s využitím připojení a telemetrie zařízení. Úplný seznam kategorií podporovaných pro IoT Hub najdete v tématu [protokoly prostředků IoT Hub](monitor-iot-hub-reference.md#resource-logs).
 
-1. Pokud jste tak ještě neučinili v centru na portálu, klikněte na **skupiny prostředků** a pak klikněte na skupinu prostředků contoso-prostředky. Vyberte centrum ze seznamu zobrazených prostředků. 
+Chcete-li vytvořit nastavení diagnostiky k odeslání IoT Hubch protokolů prostředků do Azure Monitor protokolů, postupujte takto:
 
-2. Vyhledejte část **monitorování** v okně IoT Hub. Klikněte na **Nastavení diagnostiky**. 
+1. Pokud jste tak ještě neučinili v centru na portálu, vyberte **skupiny prostředků** a vyberte skupinu prostředků ContosoResources. Ze seznamu zobrazených prostředků vyberte Centrum IoT.
 
-   ![Snímek obrazovky zobrazující část nastavení diagnostiky v okně IoT Hub](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+1. Vyhledejte část **monitorování** v okně IoT Hub. Vyberte **nastavení diagnostiky**. Pak vyberte **Přidat nastavení diagnostiky**.
 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="Snímek obrazovky, který zvýrazní nastavení diagnostiky v části monitorování.":::
 
-3. Ujistěte se, že je předplatné a skupina prostředků správné. V části **typ prostředku**zrušte zaškrtnutí políčka **Vybrat vše**a vyhledejte a zaškrtněte **IoT Hub**. (Zaškrtnutím *políčka znovu vybrat vše* , stačí ho ignorovat.) V části **prostředek**vyberte název centra. Vaše obrazovka by měla vypadat jako na tomto obrázku: 
+1. V podokně **nastavení diagnostiky** zadejte popisný název, jako je například "odesílání připojení a telemetrie do protokolů".
 
-   ![Snímek obrazovky zobrazující část nastavení diagnostiky v okně IoT Hub](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
+1. V části **Podrobnosti o kategorii** vyberte **připojení** a **telemetrie zařízení**.
 
-4. Nyní klikněte na **zapnout diagnostiku**. Zobrazí se podokno nastavení diagnostiky. Zadejte název nastavení diagnostických protokolů jako "diagnostiky".
+1. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics** a pak pomocí nástroje Log Analytics pro výběr pracovního prostoru vyberte pracovní prostor, který jste si poznamenali dříve. Až budete hotovi, nastavení diagnostiky by mělo vypadat podobně jako na následujícím snímku obrazovky:
 
-5. Ověřte **archiv na účet úložiště**. 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="Snímek obrazovky s konečným nastavením diagnostického protokolu":::
 
-   ![Snímek obrazovky zobrazující nastavení diagnostiky pro archivaci do účtu úložiště](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
+1. Vyberte **Uložit** a nastavení se uloží. Zavřete podokno **nastavení diagnostiky** . Nové nastavení můžete zobrazit v seznamu nastavení diagnostiky.
 
-    Klikněte na **Konfigurovat** , aby se zobrazila obrazovka **Vybrat účet úložiště** , vyberte napravo (*Contosostoragemon*) a kliknutím na **OK** se vraťte do podokna nastavení diagnostiky. 
+## <a name="set-up-metrics"></a>Nastavení metrik
 
-   ![Snímek obrazovky s nastavením diagnostických protokolů k archivaci na účet úložiště](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
+Teď použijeme Průzkumníka metrik k vytvoření grafu, který bude zobrazovat metriky, které chcete sledovat. Tento graf připnete na výchozí řídicí panel v Azure Portal.
 
-6. V části **protokol**zaškrtněte políčka **připojení** a **telemetrie zařízení**a nastavte dobu **uchování (dny)** na 7 dní. Obrazovka nastavení diagnostiky by teď měla vypadat jako na tomto obrázku:
+1. V levém podokně Centra IoT vyberte v části **monitorování** možnost **metriky** .
 
-   ![Snímek obrazovky s konečným nastavením diagnostického protokolu](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
+1. V horní části obrazovky vyberte **posledních 24 hodin (automaticky)**. V rozevíracím seznamu, který se zobrazí, vyberte **Poslední 4 hodiny** pro **časový rozsah**, nastavte **časové rozlišení** na **1 minutu** a v poli **čas zobrazení** vyberte **místní** . Pokud chcete tato nastavení uložit, vyberte **použít** . Nastavení by teď mělo vystavovat **místní čas: poslední 4 hodiny (1 minuta)**.
 
-7. Kliknutím na **Uložit** nastavení uložte. Zavřete podokno nastavení diagnostiky.
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="Snímek obrazovky zobrazující nastavení času metrik":::
 
-Později, když se podíváte na diagnostické protokoly, budete moci zobrazit protokolování připojení a odpojení pro zařízení. 
+1. V grafu je k dispozici částečné nastavení metriky vymezené pro Centrum IoT. Hodnoty oboru  názvů a **metriky** ponechte ve výchozím nastavení. Vyberte nastavení **metriky** a zadejte telemetrie a pak vyberte **zprávy telemetrie odeslané** z rozevíracího seznamu. **Agregace** bude automaticky nastavena na **součet**. Všimněte si, že se také změní název grafu.
 
-## <a name="set-up-metrics"></a>Nastavení metrik 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="Snímek obrazovky, který ukazuje přidání zpráv telemetrie do grafu":::
 
-Teď můžete nastavit některé metriky, které se budou sledovat při posílání zpráv do centra. 
+1. Teď vyberte **Přidat metriku** a přidejte do grafu další metriku. V části **metrika** vyberte **Celkový počet použitých zpráv**. **Agregace** bude automaticky nastavena na **AVG**. Všimněte si, že se název grafu změnil, aby zahrnoval tuto metriku.
 
-1. V podokně nastavení pro Centrum IoT klikněte na možnost **metriky** v části **monitorování** .
+   Teď obrazovka zobrazuje minimalizovanou metriku pro *odeslané zprávy telemetrie* a navíc novou metriku pro *Celkový počet použitých zpráv*.
 
-2. V horní části obrazovky klikněte na tlačítko **Poslední 24 hodin (automaticky)**. V rozevíracím seznamu, který se zobrazí, vyberte **Poslední 4 hodiny** pro **časový rozsah**a nastavte **časové rozlišení** na **1 minutu**, místní čas. Kliknutím na **použít** uložte tato nastavení. 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="Snímek obrazovky, který ukazuje přidání celkového počtu zpráv použitých v grafu metriky":::
 
-   ![Snímek obrazovky zobrazující nastavení času metrik](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
+1. V pravém horním rohu grafu vyberte **Připnout na řídicí panel**.
 
-3. Ve výchozím nastavení je jedna položka metriky. Ponechte skupinu prostředků nastavenou jako výchozí a obor názvů metriky. V rozevíracím seznamu **metrika** vyberte **odeslané zprávy telemetrie**. Nastavte **agregaci** na **součet**.
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="Snímek obrazovky, který zvýrazní tlačítko Připnout na řídicí panel":::
 
-   ![Snímek obrazovky znázorňující přidání metriky pro odeslané zprávy telemetrie](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
+1. V podokně **Připnout na řídicí panel** vyberte **existující** kartu. Vyberte **soukromá** a potom v rozevíracím seznamu řídicího panelu vyberte **řídicí panel** . Nakonec vyberte **připnout** , aby se graf připnout na výchozí řídicí panel v Azure Portal. Pokud graf připnete na řídicí panel, nastavení se při ukončení Průzkumníka metrik neuchovávají.
 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/pin-to-dashboard.png" alt-text="Snímek obrazovky, který zobrazuje nastavení pro připnutí na řídicí panel":::
 
-4. Nyní kliknutím na **Přidat metriku** přidejte do grafu další metriku. Vyberte skupinu prostředků (**ContosoTestHub**). V části **metrika**vyberte **Celkový počet použitých zpráv**. V případě **agregace**vyberte **AVG**. 
+## <a name="set-up-metric-alerts"></a>Nastavení upozornění na metriky
 
-   Teď obrazovka zobrazuje minimalizovanou metriku pro *odeslané zprávy telemetrie*a navíc novou metriku pro *Celkový počet použitých zpráv*.
+Nyní nastavíme výstrahy pro aktivaci na dvou *odeslaných zprávách telemetrie* metrik a *Celkový počet použitých zpráv*.
 
-   ![Snímek obrazovky znázorňující přidání metriky pro odeslané zprávy telemetrie](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+*Odeslané zprávy telemetrie* jsou vhodnou metrikou ke sledování propustnosti zpráv a k zamezení omezení. U IoT Hub na úrovni Free je limit omezování 100 zpráv za sekundu. U jednoho zařízení nebudeme moct dosáhnout tohoto typu propustnosti, takže místo toho nastavíme výstrahu, která se aktivuje, pokud počet zpráv překročí 1000 v období 5 minut. V produkčním prostředí můžete signál nastavit na důležitější hodnotu podle úrovně, edice a počtu jednotek služby IoT Hub.
 
-   Klikněte na **Připnout na řídicí panel**. Připnout ho na řídicí panel svého Azure Portal, abyste k němu mohli znovu přistupovat. Pokud ho připnete na řídicí panel, nastavení se nezachovají.
+*Celkový počet použitých zpráv* sleduje denní počet použitých zpráv. Tato metrika se každý den znovu nastaví v 00:00 UTC. Pokud překročíte denní kvótu po určité prahové hodnotě, IoT Hub už nebude přijímat zprávy. Pro IoT Hub v úrovni Free je denní kvóta zprávy 8000. Nastavíme výstrahu, která se aktivuje, pokud celkový počet zpráv překročí 4000, 50% kvóty. V praxi byste pravděpodobně nastavili toto procento na vyšší hodnotu. Hodnota denní kvóty závisí na úrovni, edici a počtu jednotek služby IoT Hub.
 
-## <a name="set-up-alerts"></a>Nastavení výstrah
+Další informace o limitech kvót a omezení u IoT Hub najdete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 
-Přejít na centrum na portálu. Klikněte na **skupiny prostředků**, vyberte *ContosoResources*a pak vyberte IoT Hub *ContosoTestHub*. 
+Nastavení výstrah metrik:
 
-IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-monitor/platform/data-collection#metrics) . je nutné použít [klasické výstrahy](/azure/azure-monitor/platform/alerts-classic.overview).
+1. V Azure Portal můžete přejít do služby IoT Hub.
 
-1. V části **monitorování**klikněte na **výstrahy** . zobrazí se hlavní obrazovka s výstrahou. 
+1. V části **monitorování** vyberte **výstrahy**. Pak vyberte **nové pravidlo výstrahy**.  Otevře se podokno **vytvořit pravidlo výstrahy** .
 
-   ![Snímek obrazovky ukazující, jak najít klasické výstrahy](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="Snímek obrazovky znázorňující podokno vytvořit pravidlo výstrahy":::
 
-2. Pokud se chcete dostat k klasickým výstrahám, klikněte na **Zobrazit klasické výstrahy**. 
+    V podokně **vytvořit pravidlo výstrahy** jsou čtyři části:
 
-    ![Snímek obrazovky znázorňující obrazovku s klasickými výstrahami](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
+    * **Obor** už je nastavený na vaše centrum IoT, takže tuto část ponecháme samostatně.
+    * **Podmínka** nastaví signál a podmínky, které aktivují výstrahu.
+    * **Akce** nakonfigurují, co se stane, když se výstraha aktivuje.
+    * **Podrobnosti pravidla výstrahy** umožňují nastavit název a popis výstrahy.
 
-    Vyplňte jednotlivá pole: 
+1. Nejdřív nakonfigurujte podmínku, na které se výstraha aktivuje.
 
-    **Předplatné**: nechte toto pole nastavené na vaše aktuální předplatné.
+    1. V části **Podmínka** vyberte **vybrat podmínku**. V podokně **Konfigurace logiky signálu** do vyhledávacího pole zadejte "telemetrie" a vyberte **odeslané zprávy telemetrie**.
 
-    **Zdroj**: nastavte toto pole na *metriky*.
+       :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Snímek obrazovky znázorňující výběr metriky":::
 
-    **Skupina prostředků**: nastavte toto pole na aktuální skupinu prostředků *ContosoResources*. 
+    1. V podokně **Konfigurovat logiku signálu** nastavte nebo potvrďte následující pole v části **Logical Alert** (graf můžete ignorovat):
 
-    **Typ prostředku**: nastavte toto pole na IoT Hub. 
+       **Prahová hodnota**:  *static*.
 
-    **Prostředek**: vyberte Centrum IoT, *ContosoTestHub*.
+       **Operátor**: je *větší než*.
 
-3. Kliknutím na **Přidat upozornění metriky (Classic)** nastavte novou výstrahu.
+       **Typ agregace**: *celkem*.
 
-    Vyplňte jednotlivá pole:
+       **Prahová hodnota**: 1000.
 
-    **Název**: zadejte název pravidla upozornění, například *zprávy telemetrie*.
+       **Členitost agregace (period)**: *5 minut*.
 
-    **Popis**: zadejte popis výstrahy, jako je například *výstraha, když jsou odesílány zprávy telemetrie 1000*. 
+       **Frekvence hodnocení**: *každou 1 minutu*
 
-    **Zdroj**: nastavte tuto hodnotu na *metriky*.
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Snímek obrazovky s nastavením podmínek upozornění":::
 
-    U **předplatného**, **skupiny prostředků**a **prostředku** musí být nastavené hodnoty na hodnotu, kterou jste vybrali na obrazovce **Zobrazit klasické výstrahy** . 
+       Tato nastavení nastaví signál tak, aby celkový počet zpráv za dobu 5 minut. Tato celková hodnota se vyhodnotí každou minutu a v případě, že celkový počet předchozích 5 minut překračuje 1000 zpráv, výstraha se aktivuje.
 
-    Nastavte **metriku** na *odeslané zprávy telemetrie*.
+       Vyberte **Hotovo** a uložte logiku signálu.
 
-    ![Snímek obrazovky s nastavením klasické výstrahy pro odeslané zprávy telemetrie](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
+1. Nyní nakonfigurujte akci pro výstrahu.
 
-4. Po grafu nastavte následující pole:
+    1. Zpět v podokně **vytvořit pravidlo výstrahy** vyberte v části **Akce** možnost **Vybrat skupinu akcí**. V podokně **Vyberte skupinu akcí, která se má připojit k tomuto pravidlu výstrahy** vyberte možnost **vytvořit skupinu akcí**.
 
-   **Podmínka**: nastavte na hodnotu *větší než*.
+    1. Na kartě **základy** v podokně **vytvořit skupinu akcí** zadejte název a zobrazovaný název skupiny akcí.
 
-   **Prahová hodnota**: nastavte na 1000.
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-basics.png" alt-text="Snímek obrazovky znázorňující kartu základy okna vytvořit skupinu akcí":::
 
-   **Period**: nastaveno na *za posledních 5 minut*.
+    1. Vyberte kartu **oznámení** . Jako **Typ oznámení** vyberte v rozevíracím seznamu **e-mail/SMS zpráva/nabízení/hlas** . Otevře se podokno **zpráva e-mailu/zpráva SMS/oznámení/hlas** .
 
-   **Příjemci oznámení e-mailem**: sem zadejte svou e-mailovou adresu. 
+    1. V podokně **e-mail/zpráva SMS/oznámení/hlas** vyberte e-mail a zadejte svou e-mailovou adresu a pak vyberte **OK**.
 
-   ![Snímek obrazovky zobrazující obrazovku s dolní polovinou výstrah](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="Snímek obrazovky s nastavením e-mailové adresy":::
 
-   Výstrahu uložíte kliknutím na tlačítko **OK** . 
+    1. Zpět v podokně **oznámení** zadejte název oznámení.
 
-5. Nyní nastavte další výstrahu pro *Celkový počet použitých zpráv*. Tato metrika je užitečná, pokud chcete odeslat výstrahu, když se počet použitých zpráv blíží kvótě pro službu IoT Hub – abyste věděli, že centrum bude brzy začít odmítat zprávy.
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-notification-complete.png" alt-text="Snímek obrazovky znázorňující podokno dokončená oznámení":::
 
-   Na obrazovce **Zobrazit klasické výstrahy** klikněte na **Přidat výstrahu metriky (Classic)** a potom vyplňte tato pole v podokně **Přidat pravidlo** .
+    1. Volitelné Pokud vyberete kartu **Akce** a potom vyberete rozevírací seznam **typ akce** , můžete zobrazit typy akcí, které lze aktivovat pomocí výstrahy. V tomto článku budeme používat jenom oznámení, abyste mohli ignorovat nastavení na této kartě.
 
-   **Název**: zadejte název pravidla upozornění, například *Počet použitých zpráv*.
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="Snímek obrazovky znázorňující typy akcí, které jsou k dispozici v podokně akce":::
 
-   **Popis**: zadejte popis výstrahy, jako je například *výstraha, pokud se blíží kvótě*.
+    1. Vyberte kartu **Kontrola a vytvoření** , ověřte nastavení a vyberte **vytvořit**.
 
-   **Zdroj**: nastavte toto pole na *metriky*.
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="Snímek obrazovky znázorňující podokno pro kontrolu a vytváření":::
 
-    U **předplatného**, **skupiny prostředků**a **prostředku** musí být nastavené hodnoty na hodnotu, kterou jste vybrali na obrazovce **Zobrazit klasické výstrahy** . 
+    1. Zpět v podokně **vytvořit pravidlo výstrahy** si všimněte, že vaše nová skupina akcí byla přidána k akcím pro danou výstrahu.  
 
-    Nastavte **metriku** na *Celkový počet použitých zpráv*.
+1. Nakonec nakonfigurujte Podrobnosti pravidla výstrahy a uložte pravidlo upozornění.
 
-6. V grafu vyplňte následující pole:
+    1. V podokně **vytvořit pravidlo upozornění** v části Podrobnosti pravidla výstrahy zadejte název a popis výstrahy. například "alert Pokud více než 1000 zpráv za 5 minut". Ujistěte se, že je zaškrtnuté políčko **Povolit pravidlo upozornění při vytváření** . Vaše dokončené pravidlo výstrahy bude vypadat podobně jako tento snímek obrazovky.
 
-   **Podmínka**: nastavte na hodnotu *větší než*.
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-final.png" alt-text="Snímek obrazovky znázorňující dokončené podokno vytvořit pravidlo výstrahy.":::
 
-   **Prahová hodnota**: nastavte na 1000.
+    1. Vyberte **vytvořit pravidlo upozornění** pro uložení nového pravidla.
 
-   **Period**: nastavte toto pole na *více než posledních 5 minut*. 
+1. Nyní nastavte další výstrahu pro *Celkový počet použitých zpráv*. Tato metrika je užitečná, pokud chcete odeslat výstrahu, když se počet použitých zpráv blíží denní kvótě pro službu IoT Hub. v takovém případě bude Centrum IoT zahájit odmítnutí zpráv. Postupujte podle kroků, které jste provedli dříve, a následující rozdíly.
 
-   **Příjemci oznámení e-mailem**: sem zadejte svou e-mailovou adresu. 
+    * Pro signál v podokně **Konfigurovat logiku signálu** vyberte **Celkový počet použitých zpráv**.
 
-   Kliknutím na tlačítko **OK** pravidlo uložte. 
+    * V podokně **Konfigurovat logiku signálu** nastavte nebo potvrďte následující pole (Tento graf můžete ignorovat):
 
-5. V podokně výstrahy Classic by se teď měly zobrazit dvě výstrahy: 
+       **Prahová hodnota**:  *static*.
 
-   ![Snímek obrazovky znázorňující obrazovku klasických výstrah s novými pravidly upozornění](./media/tutorial-use-metrics-and-diags/12-alerts-done.png)
+       **Operátor**: je *větší než*.
 
-6. Zavřete podokno výstrahy. 
-    
-    Pomocí těchto nastavení se zobrazí upozornění, pokud je počet odeslaných zpráv větší než 400 a celkový počet použitých zpráv překračuje číslo.
+       **Typ agregace**: *Maximum*.
 
-## <a name="run-simulated-device-app"></a>Spuštění aplikace simulovaného zařízení
+       **Prahová hodnota**: 4000.
 
-Dříve v části nastavení skriptu jste vytvořili zařízení pro simulaci pomocí zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-cloud do centra IoT.  
+       **Členitost agregace (period)**: *1 minuta*.
 
-Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Tento odkaz stáhne úložiště s několika aplikacemi. řešení, které hledáte, je ve službě IoT-Hub/kurzy/směrování/.
+       **Frekvence hodnocení**: *každou 1 minutu*
 
-Dvojím kliknutím na soubor řešení (SimulatedDevice.sln) otevřete kód v sadě Visual Studio a otevřete Program.cs. Nahraďte `{iot hub hostname}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
+       Tato nastavení nastavují signál, který se aktivuje, když počet zpráv dosáhne 4000. Metrika se vyhodnocuje každou minutu.
 
-   ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHub.azure-devices.net";
-        // This is the primary key for the device. This is in the portal. 
-        // Find your IoT hub in the portal > IoT devices > select your device > copy the key. 
-        static string deviceKey = "{your device key here}";
-   ```
+    * Když zadáte akci pro pravidlo výstrahy, stačí vybrat skupinu akcí, kterou jste předtím vytvořili.
 
-## <a name="run-and-test"></a>Spuštění a testování 
+    * V části Podrobnosti o výstraze vyberte jiný název a popis, než jste předtím.
 
-V Program.cs změňte `Task.Delay` hodnotu od 1000 na 10, což zkracuje dobu mezi odesíláním zpráv z 1 sekundy na. 01 sekund. Zkrácením tohoto zpoždění se zvýší počet odeslaných zpráv.
+1. V levém podokně Centra IoT zvolte **výstrahy** v části **monitorování** . Nyní v nabídce v horní části podokna **výstrahy** vyberte možnost **Spravovat pravidla výstrah** . Otevře se podokno **pravidla** . Teď by se vám měly zobrazit vaše dvě výstrahy:
 
-```csharp
-await Task.Delay(10);
-```
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="Snímek obrazovky znázorňující podokno pravidla s novými pravidly upozornění":::
 
-Spusťte konzolovou aplikaci. Počkejte pár minut (10-15). Můžete zobrazit zprávy odesílané simulovaným zařízením do centra na obrazovce aplikace v konzole.
+1. Zavřete podokno **pravidla** .
 
-### <a name="see-the-metrics-in-the-portal"></a>Zobrazit metriky na portálu
+Pomocí těchto nastavení se aktivuje výstraha a dostanete e-mailové oznámení, když se do 5 minut zasílají více než 1000 zpráv a také když celkový počet využitých zpráv překračuje 4000 (50% denní kvóty pro Centrum IoT na bezplatné úrovni).
 
-Z řídicího panelu otevřete vaše metriky. Změňte hodnoty času na *posledních 30 minut* s časovým rozlišením *1 minuta*. Zobrazuje odeslané zprávy telemetrie a celkový počet zpráv použitých v grafu s nejnovějšími čísly v dolní části grafu.
+## <a name="run-the-simulated-device-app"></a>Spuštění aplikace simulovaného zařízení
 
-   ![Snímek obrazovky znázorňující metriky](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
+V části [nastavení prostředků](#set-up-resources) jste zaregistrovali identitu zařízení, která se má použít k simulaci použití zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-Cloud do IoT Hub, nakonfigurujte ho tak, aby odesílal tyto zprávy do služby IoT Hub, a pak ho spustí. 
 
-### <a name="see-the-alerts"></a>Zobrazit výstrahy
+> [!IMPORTANT]
+>
+> Výstrahy můžou trvat až 10 minut, než se IoT Hub plně nakonfigurují a povolí. Počkejte aspoň 10 minut mezi časem konfigurace Poslední výstrahy a spuštěním aplikace simulovaného zařízení.
 
-Vraťte se zpět na výstrahy. Klikněte na **skupiny prostředků**, vyberte *ContosoResources*a pak vyberte centrum *ContosoTestHub*. Na stránce vlastnosti zobrazené pro centrum vyberte **výstrahy**a potom **Zobrazte klasické výstrahy**. 
+Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Tento odkaz stáhne úložiště s několika aplikacemi. ta, kterou hledáte, je ve službě IoT-Hub/starts/simulovaná-Device/.
 
-Když počet odeslaných zpráv překročí limit, začnete získávat e-mailová upozornění. Pokud chcete zjistit, jestli existují aktivní výstrahy, přejděte do svého centra a vyberte **výstrahy**. Zobrazí se upozornění, která jsou aktivní, a pokud se vyskytnou nějaká upozornění. 
+1. V místním okně terminálu přejděte do kořenové složky řešení. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
-   ![Snímek obrazovky znázorňující aktivované výstrahy](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
+1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
-Klikněte na upozornění pro zprávy telemetrie. Zobrazuje výsledek metriky a graf s výsledky. Také odeslaný e-mail, který vás upozorní na to, že se má vypálení výstrahy líbit, vypadá takto:
+    1. Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali při spuštění skriptu pro nastavení prostředků.
 
-   ![Snímek obrazovky s e-maily ukazující, že se aktivovaly výstrahy](./media/tutorial-use-metrics-and-diags/15-alert-email.png)
+    1. V `SendDeviceToCloudMessagesAsync` metodě změňte `Task.Delay` hodnotu od 1000 na 1, což zkracuje dobu mezi odesíláním zpráv od 1 sekundy do 0,001 sekund. Zkrácením tohoto zpoždění se zvýší počet odeslaných zpráv. (Rychlost zprávy 100 zpráv za sekundu se vám pravděpodobně nezobrazuje.)
 
-### <a name="see-the-diagnostic-logs"></a>Zobrazit diagnostické protokoly
+        ```csharp
+        await Task.Delay(1);
+        ```
 
-Nastavíte, aby byly diagnostické protokoly exportovány do úložiště objektů BLOB. Přejít do skupiny prostředků a vyberte svůj účet úložiště *contosostoragemon*. Vyberte objekty BLOB a pak otevřete kontejner *Insights-logs-připojení*. Přejděte k podrobnostem, dokud se nedostanete k aktuálnímu datu a vyberete poslední soubor. 
+    1. Uložte změny do **SimulatedDevice.cs**.
 
-   ![Snímek obrazovky s přechodem do kontejneru úložiště pro zobrazení diagnostických protokolů](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
+1. V okně místního terminálu spusťte následující příkaz, který nainstaluje požadované balíčky pro aplikaci simulovaného zařízení:
 
-Klikněte na **Stáhnout** a Stáhněte si ho a otevřete ho. Zobrazí se protokoly připojení a odpojení zařízení při odesílání zpráv do centra. Tady je ukázka:
+    ```cmd/sh
+    dotnet restore
+    ```
 
-``` json
-{ 
-  "time": "2018-12-17T18:11:25Z", 
-  "resourceId": 
-    "/SUBSCRIPTIONS/your-subscription-id/RESOURCEGROUPS/CONTOSORESOURCES/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/CONTOSOTESTHUB", 
-  "operationName": "deviceConnect", 
-  "category": "Connections", 
-  "level": "Information", 
-  "properties": 
-      {"deviceId":"Contoso-Test-Device",
-       "protocol":"Mqtt",
-       "authType":null,
-       "maskedIpAddress":"73.162.215.XXX",
-       "statusCode":null
-       }, 
-  "location": "westus"
-}
-{ 
-   "time": "2018-12-17T18:19:25Z", 
-   "resourceId": 
-     "/SUBSCRIPTIONS/your-subscription-id/RESOURCEGROUPS/CONTOSORESOURCES/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/CONTOSOTESTHUB", 
-    "operationName": "deviceDisconnect", 
-    "category": "Connections", 
-    "level": "Error", 
-    "resultType": "404104", 
-    "resultDescription": "DeviceConnectionClosedRemotely", 
-    "properties": 
-        {"deviceId":"Contoso-Test-Device",
-         "protocol":"Mqtt",
-         "authType":null,
-         "maskedIpAddress":"73.162.215.XXX",
-         "statusCode":"404"
-         }, 
-    "location": "westus"
-}
-```
+1. Spuštěním následujícího příkazu v okně místního terminálu sestavte a spusťte aplikaci simulovaného zařízení:
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
+    ```cmd/sh
+    dotnet run
+    ```
 
-Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V takovém případě odebrání služby IoT Hub, účtu úložiště a samotné skupiny prostředků. Pokud jste připnuli metriky na řídicí panel, budete je muset odebrat ručně kliknutím na tři tečky v pravém horním rohu každého a výběrem možnosti **Odebrat**.
+    Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/simulated-device-output.png" alt-text="Snímek obrazovky znázorňující výstup simulovaného zařízení":::
+
+Nechte aplikaci spuštěnou aspoň 10-15 minut. V ideálním případě ji nechte běžet až do chvíle, kdy přestane odesílat zprávy (asi 20-30 minut). K tomu dojde, pokud jste překročili kvótu denních zpráv pro službu IoT Hub a přestali byste přijímat další zprávy.
+
+> [!NOTE]
+> Pokud necháte aplikaci pro zařízení spuštěnou delší dobu po zastavení odesílání zpráv, může se zobrazit výjimka. Tuto výjimku můžete bezpečně ignorovat a zavřít okno aplikace.
+
+## <a name="view-metrics-chart-on-your-dashboard"></a>Zobrazení grafu metrik na řídicím panelu
+
+1. V levém horním rohu Azure Portal otevřete nabídku portál a pak vyberte možnost **řídicí panel**.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="Snímek obrazovky s vybraným řídicím panelem":::
+
+1. Najděte si graf, který jste připnuli, a Kliknutím kamkoli na dlaždici mimo data grafu ho rozbalte. Zobrazuje odeslané zprávy telemetrie a celkový počet zpráv použitých v grafu. Poslední čísla se zobrazí v dolní části grafu. Můžete přesunout kurzor v grafu, aby se zobrazily hodnoty metriky pro konkrétní časy. Můžete také změnit hodnotu času a členitost v horní části grafu pro zúžení nebo rozbalení dat do časového období zájmu.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-on-dashboard-last-hour.png" alt-text="Snímek obrazovky znázorňující graf metriky":::
+
+   V tomto scénáři propustnost zpráv simulovaného zařízení není dostatečně velká, takže by IoT Hub omezila jejich zprávy. Ve scénáři, který ve skutečnosti zahrnuje omezení, můžete vidět, že odeslané zprávy telemetrie přesahují limit omezení pro Centrum IoT po omezenou dobu. To se přizpůsobí nárůstu provozu. Podrobnosti najdete v tématu [přenosový tvar](iot-hub-devguide-quotas-throttling.md#traffic-shaping).
+
+## <a name="view-the-alerts"></a>Zobrazit výstrahy
+
+Když počet odeslaných zpráv přesáhne limity, které jste nastavili v pravidlech upozornění, začnete získávat e-mailová upozornění.
+
+Pokud chcete zjistit, jestli existují aktivní výstrahy, v levém podokně Centra IoT vyberte **výstrahy** v části **monitorování** . V podokně **výstrahy** se zobrazuje počet výstrah, které se v zadaném časovém rozsahu vyvolaly seřazením podle závažnosti.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-alerts.png" alt-text="Snímek obrazovky zobrazující souhrn výstrah":::
+
+Vyberte řádek pro závažnost závažnost 3. Otevře se podokno **všechna upozornění** a zobrazí se seznam výstrah závažnost 3, které byly aktivovány.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-all-alerts.png" alt-text="Snímek obrazovky obsahující podokno všechny výstrahy":::
+
+Vyberte jednu z výstrah pro zobrazení podrobností o výstrahách.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-individual-alert.png" alt-text="Snímek obrazovky zobrazující podrobnosti výstrahy":::
+
+Ověřte e-maily z Microsoft Azure ve vaší doručené poště. Na řádku předmětu bude popsána výstraha, která byla aktivována. Například *Azure: závažnost: 3 výstraha, pokud více než 1000 zpráv za 5 minut*. Tělo bude vypadat podobně jako na následujícím obrázku:
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/alert-mail.png" alt-text="Snímek obrazovky s e-maily ukazující, že se aktivovaly výstrahy":::
+
+## <a name="view-azure-monitor-logs"></a>Zobrazit protokoly Azure Monitor
+
+V části [shromáždit protokoly pro připojení a telemetrie zařízení](#collect-logs-for-connections-and-device-telemetry) jste vytvořili nastavení diagnostiky pro odesílání protokolů prostředků vysílaných službou IoT Hub pro připojení a operace telemetrie zařízení do Azure monitor protokolů. V této části spustíte dotaz Kusto proti Azure Monitor protokolů, abyste mohli sledovat případné chyby, ke kterým došlo.
+
+1. V části **monitorování** v levém podokně Centra IoT v Azure Portal vyberte **protokoly**. Pokud se otevře okno úvodní **dotazy** , zavřete ho.
+
+1. V podokně nový dotaz vyberte kartu **dotazy** a potom rozbalte položku **IoT Hub** . zobrazí se seznam výchozích dotazů.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="Snímek obrazovky s IoT Hub výchozími dotazy":::
+
+1. Vyberte dotaz *souhrnu chyb* . Dotaz se zobrazí v podokně Editoru dotazů. V podokně editoru vyberte **Spustit** a sledujte výsledky dotazu. Rozbalením jednoho z řádků zobrazíte podrobnosti.
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/logs-errors.png" alt-text="Snímek obrazovky protokolů vrácených dotazem souhrnu chyb":::
+
+   > [!NOTE]
+   > Pokud se nezobrazí žádné chyby, zkuste spustit dotaz na *nedávno připojená zařízení* . To by mělo vracet řádek pro simulované zařízení.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V takovém případě odebrání centra IoT, pracovního prostoru Log Analytics a samotné skupiny prostředků. Pokud jste připnuli grafy metriky na řídicí panel, budete je muset odstranit ručně kliknutím na tři tečky v pravém horním rohu každého grafu a výběrem možnosti **Odebrat**. Po odstranění grafů nezapomeňte změny uložit.
+
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive
-az group delete --name $resourceGroup
+az group delete --name ContosoResources
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak používat metriky a diagnostické protokoly prováděním následujících úloh:
+V tomto kurzu jste zjistili, jak používat IoT Hub metriky a protokoly prováděním následujících úloh:
 
 > [!div class="checklist"]
-> * Pomocí Azure CLI vytvořte centrum IoT, simulované zařízení a účet úložiště.  
-> * Povolte diagnostické protokoly. 
-> * Povolte metriky.
-> * Nastavte výstrahy pro tyto metriky. 
-> * Stáhněte a spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra. 
-> * Spusťte aplikaci, dokud výstrahy nezačnou aktivovat. 
-> * Podívejte se na výsledky metrik a zkontrolujte protokoly diagnostiky. 
+>
+> * Pomocí Azure CLI vytvořte centrum IoT, zaregistrujte simulované zařízení a vytvořte Log Analytics pracovní prostor.  
+> * Odešlete IoT Hub připojení a protokoly prostředků telemetrie zařízení do Azure Monitor protokolů v pracovním prostoru Log Analytics.
+> * Pomocí Průzkumníka metrik vytvořte graf založený na vybraných metrikách a připněte ho na řídicí panel.
+> * Vytvářejte upozornění na metriky, abyste mohli při výskytu důležitých podmínek dostávat oznámení e-mailem.
+> * Stáhněte a spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do služby IoT Hub.
+> * Zobrazit výstrahy, když dojde k vašim podmínkám.
+> * Zobrazení grafu metrik na řídicím panelu.
+> * Zobrazit IoT Hub chyby a operace v protokolech Azure Monitor.
 
 V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT. 
 

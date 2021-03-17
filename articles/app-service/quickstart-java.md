@@ -10,23 +10,26 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-java-uiex
+ms.openlocfilehash: ebd189e1cf6e053f5400b8217fc1c2fc385cdac9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182693"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701718"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modulem plug-in webové aplikace Azure pro Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) nasadit soubor webového archivu Java (War).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) s [modulem plug-in webové aplikace Azure pro Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) nasadit soubor. jar nebo soubor. War. Pomocí karet můžete přepínat mezi pokyny Java SE a Tomcat.
 
-> [!NOTE]
-> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Totéž můžete také udělat pomocí oblíbených prostředí, jako je IntelliJ a zatmění. Podívejte se na naše podobné dokumenty při [Azure Toolkit for IntelliJ rychlý Start](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) nebo v [rychlém startu Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app).
->
+
+
 ![Ukázková aplikace spuštěná v Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,6 +37,22 @@ ms.locfileid: "88182693"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-java-app"></a>Vytvoření aplikace v Javě
+
+# <a name="java-se"></a>[Java SE](#tab/javase)
+
+Naklonujte ukázkový projekt [jarního spuštění Začínáme](https://github.com/spring-guides/gs-spring-boot) .
+
+```bash
+git clone https://github.com/spring-guides/gs-spring-boot
+```
+
+Přejděte do adresáře pro dokončený projekt.
+
+```bash
+cd gs-spring-boot/complete
+```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld` :
 
@@ -47,154 +66,165 @@ Pak změňte pracovní adresář na složku projektu:
 cd helloworld
 ```
 
+---
+
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
 
-Proces nasazení, který Azure App Service, může automaticky z Azure CLI převzít vaše přihlašovací údaje Azure. Modul plug-in Maven vás přihlásí pomocí protokolu OAuth nebo přihlášení zařízení, pokud není rozhraní příkazového řádku Azure nainstalované místně. Pokud potřebujete, Projděte si podrobné informace o [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
+Proces nasazování do služby Azure App Service bude automaticky používat vaše přihlašovací údaje k Azure z Azure CLI. Pokud rozhraní příkazového řádku Azure není místně nainstalované, bude se modul plug-in Maven ověřovat pomocí protokolu OAuth nebo přihlášení zařízení. Další informace najdete v tématu [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
-Spuštěním následujícího příkazu Maven můžete nakonfigurovat nasazení.
+Spuštěním následujícího příkazu Maven nakonfigurujte nasazení. Tento příkaz vám pomůže nastavit App Service operační systém, verzi Java a verzi Tomcat.
+
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ```
 
-::: zone pivot="platform-windows" 
-Zobrazí se výzva k výběru 
-* **Operační systém (výchozí: `linux` )**
-* **Java verze (výchozí: `1.8` )**
-* **Webový kontejner (výchozí: `tomcat 8.5` )** 
- 
-Při **`2`** výběru operačního **systému Windows** v prvním kroku buďte opatrní. Ostatní konfigurace můžou být ponechány ve výchozím nastavení stisknutím klávesy **ENTER**. Nakonec stiskněte **`Y`** tlačítko **Potvrdit (a/N)** s výzvou k dokončení konfigurace.
+::: zone pivot="platform-windows"
 
-Vzorový proces vypadá takto:
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-```console
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use: 2
-Define value for javaVersion(Default: 1.8): 
-1. 1.7
-2. 1.7.0_191_ZULU
-3. 1.7.0_51
-4. 1.7.0_71
-5. 1.7.0_80
-6. 1.8 [*]
-7. 1.8.0_102
-8. 1.8.0_111
-9. 1.8.0_144
-10. 1.8.0_172
-11. 1.8.0_172_ZULU
-12. 1.8.0_181
-13. 1.8.0_181_ZULU
-14. 1.8.0_202
-15. 1.8.0_202_ZULU
-16. 1.8.0_25
-17. 1.8.0_60
-18. 1.8.0_73
-19. 1.8.0_92
-20. 11
-21. 11.0.2_ZULU
-Enter index to use:
-Define value for webContainer(Default: tomcat 8.5): 
-1. jetty 9.1
-2. jetty 9.1.0.20131115
-3. jetty 9.3
-4. jetty 9.3.13.20161014
-5. tomcat 7.0
-6. tomcat 7.0.50
-7. tomcat 7.0.62
-8. tomcat 8.0
-9. tomcat 8.0.23
-10. tomcat 8.5 [*]
-11. tomcat 8.5.20
-12. tomcat 8.5.31
-13. tomcat 8.5.34
-14. tomcat 8.5.37
-15. tomcat 8.5.6
-16. tomcat 9.0
-17. tomcat 9.0.0
-18. tomcat 9.0.12
-19. tomcat 9.0.14
-20. tomcat 9.0.8
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1590394316693
-ResourceGroup : helloworld-1590394316693-rg
-Region : westeurope
-PricingTier : PremiumV2_P1v2
-OS : Windows
-Java : 1.8
-WebContainer : tomcat 8.5
-Deploy to slot : false
-Confirm (Y/N)? :
-[INFO] Saving configuration to pom.
-```
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
+1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `3` .
+1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
+
+    Váš souhrnný výstup bude vypadat podobně jako fragment uvedený níže.
+
+    ```
+    Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
+    AppName : spring-boot-1599007390755
+    ResourceGroup : spring-boot-1599007390755-rg
+    Region : westeurope
+    PricingTier : Basic_B2
+    OS : Windows
+    Java : 1.8
+    WebContainer : java 8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 41.118 s
+    [INFO] Finished at: 2020-09-01T17:43:45-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
+1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `3` .
+1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
+1. Pomocí výchozího webového kontejneru **Tomcat 8,5** stiskněte klávesu ENTER.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
+
+    Váš souhrnný výstup bude vypadat podobně jako fragment uvedený níže.
+
+    ```
+    Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
+    AppName : helloworld-1599003152123
+    ResourceGroup : helloworld-1599003152123-rg
+    Region : westeurope
+    PricingTier : Basic_B2
+    OS : Windows
+    Java : 1.8
+    WebContainer : tomcat 8.5
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 03:03 min
+    [INFO] Finished at: 2020-09-01T16:35:30-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
-::: zone pivot="platform-linux"  
+::: zone pivot="platform-linux"
 
-Zobrazí se výzva k výběru 
-* **Operační systém (výchozí: `linux` )**
-* **Java verze (výchozí: `Java 8` )**
-* **Webový kontejner (výchozí: `Tomcat 8.5` )** 
+### <a name="java-se"></a>[Java SE](#tab/javase)
 
-Všechny konfigurace můžou být ponechány ve výchozím nastavení stisknutím klávesy **ENTER**. Nakonec stiskněte **`Y`** tlačítko **Potvrdit (a/N)** s výzvou k dokončení konfigurace.
-Vzorový proces vypadá takto:
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
+1. Po zobrazení výzvy s možností **OS** vyberte **Linux** stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
 
-```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use:
-Define value for javaVersion(Default: jre8):
-1. Java 11
-2. Java 8 [*]
-Enter index to use:
-Define value for runtimeStack(Default: TOMCAT 8.5):
-1. TOMCAT 9.0
-2. TOMCAT 8.5 [*]
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1558400876966
-ResourceGroup : helloworld-1558400876966-rg
-Region : westeurope
-PricingTier : Premium_P1V2
-OS : Linux
-RuntimeStack : TOMCAT 8.5-jre8
-Deploy to slot : false
-Confirm (Y/N)? : Y
-```
+    ```
+    Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
+    AppName : spring-boot-1599007116351
+    ResourceGroup : spring-boot-1599007116351-rg
+    Region : westeurope
+    PricingTier : Basic_B2
+    OS : Linux
+    RuntimeStack : JAVA 8-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 20.925 s
+    [INFO] Finished at: 2020-09-01T17:38:51-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
+1. Po zobrazení výzvy s možností **OS** vyberte **Linux** stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
+1. Pomocí výchozího webového kontejneru **Tomcat 8,5** stiskněte klávesu ENTER.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
+
+    ```
+    Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
+    AppName : helloworld-1599003744223
+    ResourceGroup : helloworld-1599003744223-rg
+    Region : westeurope
+    PricingTier : Basic_B2
+    OS : Linux
+    RuntimeStack : TOMCAT 8.5-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 50.785 s
+    [INFO] Finished at: 2020-09-01T16:43:09-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
 
-Konfigurace pro App Service můžete v `pom.xml` případě potřeby upravit přímo, některé běžné jsou uvedeny níže:
+Konfigurace pro App Service můžete v `pom.xml` případě potřeby upravit přímo. Níže jsou uvedeny některé běžné položky:
 
- Vlastnost | Povinné | Popis | Verze
+Vlastnost | Povinné | Popis | Verze
 ---|---|---|---
 `<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1` , `v2` . | 1.5.2
+`<subscriptionId>` | false (nepravda) | Zadejte ID předplatného. | 0.1.0 +
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
-`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
-`<pricingTier>` | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0 +
-`<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0 +
-`<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) | 0.1.0 +
+`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=app-service) . | 0.1.0 +
+`<pricingTier>` | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2** pro produkční úlohy, zatímco **B2** je Doporučené minimum pro vývoj a testování Java. [Další informace](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
+`<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0 +
+`<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details) | 0.1.0 +
 
 Buďte opatrní na hodnoty `<appName>` a `<resourceGroup>` ( `helloworld-1590394316693` a `helloworld-1590394316693-rg` odpovídajícím způsobem v ukázce), budou použity později.
 
@@ -203,18 +233,19 @@ Buďte opatrní na hodnoty `<appName>` a `<resourceGroup>` ( `helloworld-1590394
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
-Proces nasazení Azure App Service používá přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+Modul plug-in Maven používá k nasazení do App Services přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ```azurecli
 az login
 ```
-Potom můžete aplikaci Java nasadit do Azure pomocí následujícího příkazu:
+
+Potom můžete aplikaci Java nasadit do Azure pomocí následujícího příkazu.
 
 ```bash
 mvn package azure-webapp:deploy
 ```
 
-Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
+Po dokončení nasazení bude vaše aplikace připravena na adrese `http://<appName>.azurewebsites.net/` (`http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
 
 ![Ukázková aplikace spuštěná v Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -225,7 +256,7 @@ Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.a
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shell:
+V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud tyto prostředky už nebudete potřebovat, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shellu:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -234,26 +265,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Spuštění tohoto příkazu může trvat přibližně minut.
 
 ## <a name="next-steps"></a>Další kroky
-> [!div class="nextstepaction"]
-> [Připojení k Azure SQL Database pomocí Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Připojení k Azure DB for MySQL pomocí Java](/azure/mysql/connect-java)
+> [Připojení k Azure DB pro PostgreSQL pomocí Java](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
-> [Připojení k Azure DB pro PostgreSQL pomocí Java](/azure/postgresql/connect-java)
+> [Nastavení CI/CD](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [Informace o cenách](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [Agregované protokoly a metriky](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [Vertikální navýšení kapacity](manage-scale-up.md)
 
 > [!div class="nextstepaction"]
 > [Azure pro vývojáře v jazyce Java – prostředky](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace Java](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [CI/CD s využitím Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)
-
-> [!div class="nextstepaction"]
-> [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [Další informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugins)

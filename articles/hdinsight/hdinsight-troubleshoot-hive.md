@@ -3,17 +3,14 @@ title: Řešení potíží s registrací pomocí Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hive a Azure HDInsight.
 keywords: Azure HDInsight, podregistr, nejčastější dotazy, Průvodce odstraňováním potíží, běžné otázky
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75895235"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931441"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hivem s využitím Azure HDInsightu
 
@@ -41,7 +38,7 @@ Přečtěte si o nejčastějších dotazech a jejich řešeních při práci s A
 
 Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud se cesty k datům liší, můžete vygenerovaný soubor ručně upravit `alltables.sql` tak, aby odrážel všechny změny.
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -49,7 +46,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu **Další**informace o čtení.
+1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu **Další** informace o čtení.
 
 2. Chcete-li zobrazit protokoly klienta podregistru, použijte následující příkaz:
 
@@ -69,7 +66,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -95,7 +92,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Vlastnosti konfigurace podregistru](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
@@ -132,7 +129,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
     - **TaskConcurrencyAnalyzer**: tisk podrobností o souběžnosti úkolu v Dag
     - **VertexLevelCriticalPathAnalyzer**: najít kritickou cestu na úrovni vrcholu v Dag
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -157,16 +154,10 @@ Existují dva způsoby, jak shromažďovat data DAG tez:
   3. Vyberte DAG, který chcete zobrazit.
   4. Vyberte **stáhnout data**.
 
-### <a name="additional-reading"></a><a name="additional-reading-end"></a>Další čtení
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>Další materiály ke čtení
 
 [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-- Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

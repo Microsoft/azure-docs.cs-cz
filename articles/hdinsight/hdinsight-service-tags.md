@@ -1,24 +1,24 @@
 ---
 title: Značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight
 description: Pomocí značek služby HDInsight můžete povolit příchozí provoz do vašeho clusteru z uzlů služeb stavu a správy, aniž byste museli přidávat IP adresy do skupin zabezpečení sítě.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410850"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931769"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Značky služby NSG pro Azure HDInsight
 
-Značky služby Azure HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. [Značky služby](../virtual-network/security-overview.md#service-tags) umožňují příchozí provoz z konkrétních IP adres bez nutnosti ZADÁVAT jednotlivé [IP adresy pro správu](hdinsight-management-ip-addresses.md) v skupin zabezpečení sítě.
+Značky služby Azure HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. [Značky služby](../virtual-network/network-security-groups-overview.md#service-tags) umožňují příchozí provoz z konkrétních IP adres bez nutnosti ZADÁVAT jednotlivé [IP adresy pro správu](hdinsight-management-ip-addresses.md) v skupin zabezpečení sítě.
 
 Služba HDInsight spravuje tyto značky služeb. Nemůžete vytvořit vlastní značku služby ani upravit existující značku. Společnost Microsoft spravuje předpony adres, které se shodují se značkou služby, a automaticky aktualizuje značku služby na změny adres.
+
+Pokud chcete použít určitou oblast a tag služby ještě není na této stránce zdokumentován, můžete k vyhledání svého tagu služby použít [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) . Můžete si také stáhnout [soubor JSON značky služby](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) a vyhledat požadovanou oblast.
 
 ## <a name="get-started-with-service-tags"></a>Začínáme s visačkami služeb
 
@@ -34,7 +34,7 @@ Nejjednodušší způsob, jak začít používat značky služeb v clusteru HDIn
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte skupinu zabezpečení sítě.
 
-1. V části **Nastavení**vyberte **příchozí pravidla zabezpečení**a pak vyberte **+ Přidat**.
+1. V části **Nastavení** vyberte **příchozí pravidla zabezpečení** a pak vyberte **+ Přidat**.
 
 1. V rozevíracím seznamu **zdroj** vyberte možnost **značka služby**.
 
@@ -54,7 +54,7 @@ Pokud chcete zjistit, které značky služby se mají přidat do vaší oblasti,
 
 Pokud je váš cluster umístěný v oblasti uvedené v této tabulce, stačí do NSG přidat jednu regionální značku služby.
 
-| Země | Oblast | Značka služby |
+| Country (Země) | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
 | Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
 | &nbsp; | Austrálie – jihovýchod | HDInsight. AustraliaSoutheast |
@@ -62,7 +62,7 @@ Pokud je váš cluster umístěný v oblasti uvedené v této tabulce, stačí d
 | Čína | Čína – východ 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Čína – sever 2 | HDInsight. ChinaNorth2 |
 | USA | USA – středosever | HDInsight. NorthCentralUS |
-| &nbsp; | USA – západ 2 | HDInsight. WestUS2 |
+| &nbsp; | Západní USA 2 | HDInsight. WestUS2 |
 | &nbsp; | USA – středozápad | HDInsight. WestCentralUS |
 | Kanada | Kanada – východ | HDInsight. CanadaEast |
 | Brazílie | Brazílie – jih | HDInsight. BrazilSouth |
@@ -94,19 +94,19 @@ Pokud se například v dané oblasti vytvoří cluster, budete `East US 2` muset
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Země | Oblast | Značka služby |
+| Country (Země) | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
 | USA | USA – východ 2 | HDInsight. EastUS2 |
 | &nbsp; | USA – střed | HDInsight. CentralUS |
 | &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
-| &nbsp; | USA – středojih | HDInsight. SouthCentralUS |
-| &nbsp; | USA – východ | HDInsight. EastUS |
+| &nbsp; | Středojižní USA | HDInsight. SouthCentralUS |
+| &nbsp; | East US | HDInsight. EastUS |
 | &nbsp; | USA – západ | HDInsight. WestUS |
 | Japonsko | Japonsko – východ | HDInsight. JapanEast |
 | Evropa | Severní Evropa | HDInsight. NorthEurope |
-| &nbsp; | Západní Evropa| HDInsight. WestEurope |
+| &nbsp; | West Europe| HDInsight. WestEurope |
 | Asie | Východní Asie | HDInsight. EastAsia |
-| &nbsp; | Jihovýchodní Asie | HDInsight. SoutheastAsia |
+| &nbsp; | Southeast Asia | HDInsight. SoutheastAsia |
 | Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
 
 #### <a name="group-2"></a>Skupina 2
@@ -123,5 +123,5 @@ Clustery v oblastech *Německa střední* a *Německo – severovýchod* potřeb
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Skupiny zabezpečení sítě: značky služeb](../virtual-network/security-overview.md#security-rules)
+- [Skupiny zabezpečení sítě: značky služeb](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Vytváření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md)

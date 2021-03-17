@@ -4,7 +4,7 @@ description: Jak funguje distribuce provozu s vaším nasazením proxy aplikací
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fda858b0811eb6308b8e5588eaeae9bff5a1730
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764583"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259385"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
-Tento článek vysvětluje, jak funguje distribuce provozu s vaším nasazením proxy aplikací. Budeme projednávat:
+Tento článek vysvětluje, jak funguje distribuce provozu s vaším nasazením proxy aplikací. Probereme tato témata:
 
 - Způsob distribuce provozu mezi uživateli a konektory spolu s tipy pro optimalizaci výkonu konektoru
 
@@ -39,7 +39,7 @@ Konektory vytvářejí svá připojení na základě zásad pro vysokou dostupno
 
 1. Uživatel v klientském zařízení se pokusí o přístup k místní aplikaci publikované prostřednictvím proxy aplikací.
 2. Požadavek prochází Azure Load Balancer k určení, která instance služby proxy aplikace by měla požadavek přijmout. Pro každou oblast je k přijetí žádosti k dispozici desítka instancí. Tato metoda pomáhá rovnoměrně distribuovat provoz napříč instancemi služby.
-3. Požadavek se odešle do [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
+3. Požadavek se odešle do [Service Bus](../../service-bus-messaging/index.yml).
 4. Service Bus signály k dostupnému konektoru. Konektor pak vybere požadavek od Service Bus.
    - V kroku 2 požadavky přecházejí na různé instance služby proxy aplikací, takže připojení jsou pravděpodobně vytvořena pomocí různých konektorů. V důsledku toho se konektory skoro v rámci skupiny používají téměř rovnoměrně.
 5. Konektor předá požadavek back-end serveru aplikace. Pak aplikace pošle odpověď zpátky do konektoru.
@@ -98,4 +98,4 @@ Informace o požadavcích na Vyrovnávání zatížení back-endové aplikace na
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolit podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md)
 - [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
-- [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](../fundamentals/active-directory-architecture.md)

@@ -1,22 +1,21 @@
 ---
-title: Nastavení služby Key Vault
-description: Jak nastavit Key Vault pro použití s virtuálním počítačem.
+title: Nastavení Key Vault pomocí prostředí PowerShell
+description: Jak nastavit Key Vault pro použití s virtuálním počítačem pomocí prostředí PowerShell.
 author: mimckitt
-manager: vashan
 ms.service: virtual-machines
 ms.subservice: security
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: d5e4bb1d3f62685c90e95eebf5f8f07720a23b82
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 124ab121186ff7c9047515f2ee1ff51cee1114b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086989"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557484"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení Key Vault pro virtuální počítače v Azure Resource Manager
+# <a name="set-up-key-vault-for-virtual-machines-using-azure-powershell"></a>Nastavení Key Vault pro virtuální počítače pomocí Azure PowerShell
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 

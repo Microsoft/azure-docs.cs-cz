@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523993"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Wdesk
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Wdesk s Azure Active Directory (Azure 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Wdesk svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Wdesk podporuje **jednotné** přihlašování (SSO) a **IDP** .
-* Po nakonfigurování Wdesk můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování Wdesk můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-wdesk-from-the-gallery"></a>Přidání Wdesk z Galerie
 
@@ -81,13 +81,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wdesk, p
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Wdesk a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
@@ -95,14 +95,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wdesk, p
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně Wdesk a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Tyto hodnoty získáte z portálu WDesk při konfiguraci jednotného přihlašování.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a adresou URL Sign-On. Tyto hodnoty získáte z portálu WDesk při konfiguraci jednotného přihlašování.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -120,7 +120,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wdesk, p
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -138,15 +138,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Wdesk.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Wdesk**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Wdesk**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Wdesk**.
 
@@ -170,41 +170,41 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V jiném okně webového prohlížeče se přihlaste k Wdesk jako správce zabezpečení.
 
-2. V levém dolním rohu klikněte na **správce** a vyberte **správce účtu**:
+1. V levém dolním rohu klikněte na **správce** a vyberte **správce účtu**:
  
-     ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+    ![Snímek obrazovky se zobrazí správce účtu vybraný v nabídce správce.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. V Wdesk správce přejděte na **zabezpečení** **a pak na**  >  **Nastavení SAML SAML**:
+1. V Wdesk správce přejděte na **zabezpečení** **a pak na**  >  **Nastavení SAML SAML**:
 
-    ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![Snímek obrazovky zobrazuje nastavení SAML vybraná na kartě SAML.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
-1. V části **nastavení ID uživatele SAML**ověřte, že **ID uživatele SAML je Wdesk uživatelské jméno**.
+1. V části **nastavení ID uživatele SAML** ověřte, že **ID uživatele SAML je Wdesk uživatelské jméno**.
 
-    ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/wdesk-username.png)
+    ![Snímek obrazovky ukazuje nastavení uživatele SAML I D, kde můžete vybrat uživatele SAML I D.](./media/wdesk-tutorial/wdesk-username.png)
 
-4. V části **Obecné nastavení**zaškrtněte **možnost Povolit jednotné přihlašování SAML**:
+4. V části **Obecné nastavení** zaškrtněte **možnost Povolit jednotné přihlašování SAML**:
 
-    ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![Snímek obrazovky ukazuje upravit nastavení SAML, kde můžete vybrat Povolit jednotné přihlašování SAML.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
-5. V části **Podrobnosti o poskytovateli služeb**proveďte následující kroky:
+5. V části **Podrobnosti o poskytovateli služeb** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![Snímek obrazovky se zobrazí podrobnosti o poskytovateli služeb, kde můžete zadat hodnoty, které jsou popsány.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. Zkopírujte **adresu URL pro přihlášení** a vložte ji do textového pole **Adresa URL pro přihlášení** na Azure Portal.
-   
-      b. Zkopírujte **adresu URL metadat** a vložte ji do textového pole **identifikátoru** v Azure Portal.
-       
-      c. Zkopírujte **adresu URL příjemce** a vložte ji do textového pole **adresa url odpovědi** na Azure Portal.
-   
-      d. Uložte změny kliknutím na **Uložit** na Azure Portal.      
+    1. Zkopírujte **adresu URL pro přihlášení** a vložte ji do textového pole **Adresa URL pro přihlášení** na Azure Portal.
 
-6. Kliknutím na **Konfigurovat nastavení IDP** otevřete dialogové okno **Upravit nastavení IDP** . Kliknutím na **zvolit soubor** vyhledejte **Metadata.xml** soubor, který jste uložili z Azure Portal a pak ho nahrajte.
+    1. Zkopírujte **adresu URL metadat** a vložte ji do textového pole **identifikátoru** v Azure Portal.
+
+    1. Zkopírujte **adresu URL příjemce** a vložte ji do textového pole **adresa url odpovědi** na Azure Portal.
+
+    1. Uložte změny kliknutím na **Uložit** na Azure Portal.      
+
+1. Kliknutím na **Konfigurovat nastavení IDP** otevřete dialogové okno **Upravit nastavení IDP** . Kliknutím na **zvolit soubor** vyhledejte **Metadata.xml** soubor, který jste uložili z Azure Portal a pak ho nahrajte.
     
-    ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![Snímek obrazovky s nastavením upravit I d P, kde můžete nahrávat metadata.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-7. Klikněte na **Uložit změny**.
+1. Klikněte na **Uložit změny**.
 
-    ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![Snímek obrazovky se zobrazí tlačítko Uložit změny.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-wdesk-test-user"></a>Vytvořit testovacího uživatele Wdesk
 
@@ -214,23 +214,23 @@ Aby se uživatelé Azure AD mohli přihlašovat k Wdesk, musí se zřídit v Wde
 
 1. Přihlaste se k Wdesk jako správce zabezpečení.
 
-2. Přejděte na **Admin**  >  **správce účtu**správce.
+2. Přejděte na   >  **správce účtu** správce.
 
-     ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Snímek obrazovky se zobrazí správce účtu vybraný v nabídce správce.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. Klikněte na **Členové** v části **lidé**.
 
 4. Nyní klikněte na tlačítko **Přidat člena** a otevřete dialogové okno **Přidat člena** . 
    
-    ![Vytvoření testovacího uživatele Azure AD](./media/wdesk-tutorial/createuser1.png)  
+    ![Snímek obrazovky se zobrazí na kartě členové, kde můžete vybrat přidat člena.](./media/wdesk-tutorial/createuser1.png)  
 
 5. Do textového pole **uživatel** zadejte uživatelské jméno, jako třeba b.simon@contoso.com , a klikněte na tlačítko **pokračovat** .
 
-    ![Vytvoření testovacího uživatele Azure AD](./media/wdesk-tutorial/createuser3.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat člena, kde můžete zadat uživatele.](./media/wdesk-tutorial/createuser3.png)
 
 6.  Zadejte podrobnosti, jak je znázorněno níže:
   
-    ![Vytvoření testovacího uživatele Azure AD](./media/wdesk-tutorial/createuser4.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat člena, kde můžete přidat základní informace pro uživatele.](./media/wdesk-tutorial/createuser4.png)
  
     a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je například b.simon@contoso.com .
 
@@ -240,20 +240,20 @@ Aby se uživatelé Azure AD mohli přihlašovat k Wdesk, musí se zřídit v Wde
 
 7. Klikněte na tlačítko **Uložit člen** .  
 
-    ![Vytvoření testovacího uživatele Azure AD](./media/wdesk-tutorial/createuser5.png)
+    ![Snímek obrazovky s tlačítkem pro uložení členů zobrazí úvodní e-mail s informacemi o odeslání.](./media/wdesk-tutorial/createuser5.png)
 
 ### <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Wdesk, měli byste se automaticky přihlásit k Wdesk, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Wdesk, měli byste se automaticky přihlásit k Wdesk, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

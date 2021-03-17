@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036755"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013135"
 ---
 # <a name="consumption-model"></a>Model spotřeby
 
 Směrovací služba poskytuje sadu parametrů pro podrobný popis modelu spotřeby specifického pro vozidlo.
-V závislosti na hodnotě **vehicleEngineType**jsou podporovány dva základní modely spotřeby: _spalování_ a _elektroinstalace_. Je nesprávné zadat parametry, které patří do různých modelů ve stejné žádosti. Parametry modelu spotřeby se navíc nedají použít s následujícími **travelMode** hodnotami: _jízdní kolo_ a _pěší_.
+V závislosti na hodnotě **vehicleEngineType** jsou podporovány dva základní modely spotřeby: _spalování_ a _elektroinstalace_. Je nesprávné zadat parametry, které patří do různých modelů ve stejné žádosti. Parametry modelu spotřeby se navíc nedají použít s následujícími **travelMode** hodnotami: _jízdní kolo_ a _pěší_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Omezení parametrů pro model spotřeby
 

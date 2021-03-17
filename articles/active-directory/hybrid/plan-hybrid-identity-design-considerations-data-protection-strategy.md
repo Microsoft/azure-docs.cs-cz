@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109357"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703848"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze definujete strategii ochrany dat pro vaše řešení hybridní identity, aby splňovala obchodní požadavky, které jste definovali v nástroji:
@@ -37,7 +37,7 @@ Jak je vysvětleno v tématu [Určení požadavků na synchronizaci adresářů]
 
 Po ověření se hlavní název uživatele (UPN) přečte z ověřovacího tokenu. Pak autorizační systém určí replikovaný oddíl a kontejner odpovídající doméně uživatele. Informace o existenci, povoleném stavu a roli uživatele pak pomáhají autorizačnímu systému zjistit, jestli je pro uživatele v této relaci autorizovaný přístup k cílovému tenantovi. Některé autorizované akce (konkrétně vytvořit uživatele a resetování hesla) vytvoří záznam pro audit, který správce klienta potom použije ke správě úsilí nebo vyšetřování dodržování předpisů.
 
-Přesouvání dat z místního datacentra do Azure Storage přes připojení k internetu nemusí být vždy proveditelné kvůli objemu dat, dostupnosti šířky pásma nebo jiným hlediskům. [Služba Azure Storage import/export](../../storage/common/storage-import-export-service.md) nabízí hardwarovou možnost pro vkládání a načítání velkých objemů dat v úložišti objektů BLOB. Umožňuje posílat jednotky pevného disku [šifrované bitlockerem](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2) přímo do datového centra Azure, kde operátoři cloudu odesílají obsah do svého účtu úložiště, nebo si můžou stáhnout vaše data Azure na vaše jednotky a vrátit se na vás. Pro tento proces jsou přijímány pouze šifrované disky (pomocí klíče nástroje BitLocker vygenerovaného službou samotný během nastavení úlohy). Klíč BitLockeru se poskytuje pro Azure samostatně, čímž se zajišťuje sdílení klíčů od sebe.
+Přesouvání dat z místního datacentra do Azure Storage přes připojení k internetu nemusí být vždy proveditelné kvůli objemu dat, dostupnosti šířky pásma nebo jiným hlediskům. [Služba Azure Storage import/export](../../import-export/storage-import-export-service.md) nabízí hardwarovou možnost pro vkládání a načítání velkých objemů dat v úložišti objektů BLOB. Umožňuje posílat jednotky pevného disku [šifrované bitlockerem](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) přímo do datového centra Azure, kde operátoři cloudu odesílají obsah do svého účtu úložiště, nebo si můžou stáhnout vaše data Azure na vaše jednotky a vrátit se na vás. Pro tento proces jsou přijímány pouze šifrované disky (pomocí klíče nástroje BitLocker vygenerovaného službou samotný během nastavení úlohy). Klíč BitLockeru se poskytuje pro Azure samostatně, čímž se zajišťuje sdílení klíčů od sebe.
 
 Vzhledem k tomu, že data v přenosech můžou probíhat v různých scénářích, je také důležité znát, že Microsoft Azure používá [virtuální sítě](https://azure.microsoft.com/documentation/services/virtual-network/) k izolaci provozu klientů od sebe, což využívá míry, jako jsou brány firewall na úrovni hostitele a hosta, filtrování paketů IP, blokování portů a koncové body https. Většina interní komunikace v Azure, včetně infrastruktury pro infrastrukturu a z infrastruktury na zákazníka (v místním prostředí), je ale taky šifrovaná. Dalším důležitým scénářem je komunikace v datových centrech Azure. Společnost Microsoft spravuje sítě, aby se zajistilo, že žádný virtuální počítač nemůže zosobnit nebo eavesdrop na IP adrese jiného. TLS/SSL se používá při přístupu k databázím Azure Storage nebo SQL nebo při připojení k Cloud Services. V takovém případě vám správce zákazníka zodpovídá za získání certifikátu TLS/SSL a jeho nasazení do své klientské infrastruktury. Přenos dat mezi Virtual Machines ve stejném nasazení nebo mezi klienty v jednom nasazení prostřednictvím Microsoft Azure Virtual Network se dá chránit prostřednictvím šifrovaných komunikačních protokolů, jako jsou HTTPS, SSL/TLS nebo jiné.
 
@@ -45,10 +45,10 @@ V závislosti na tom, jak jste odpověděli na otázky v části [Určení poža
 
 | Možnosti ochrany dat | V klidovém umístění v cloudu | Místní místní umístění | Při přenosu |
 | --- | --- | --- | --- |
-| BitLocker Drive Encryption |X |X | |
-| SQL Server k šifrování databází |X |X | |
+| BitLocker Drive Encryption |× |× | |
+| SQL Server k šifrování databází |× |× | |
 | Šifrování z virtuálního počítače do virtuálního počítače | | |× |
-| PROTOKOL SSL/TLS | | |× |
+| SSL/TLS | | |× |
 | Síť VPN | | |× |
 
 > [!NOTE]
@@ -61,9 +61,9 @@ V závislosti na tom, jak jste odpověděli na otázky v části [Určení poža
 
 Jednou z výhod používání Azure AD ke správě hybridní infrastruktury identit je, že proces je plně transparentní z pohledu koncového uživatele. Uživatel se pokusí o přístup ke sdílenému prostředku, prostředek vyžaduje ověření. uživatel musí odeslat žádost o ověření do služby Azure AD, aby získal token a měl přístup k prostředku. K tomuto celému procesu dochází na pozadí bez zásahu uživatele. 
 
-Organizace, které mají obavy týkající se ochrany osobních údajů dat, obvykle vyžadují klasifikaci dat pro jejich řešení. Pokud již stávající místní infrastruktura používá klasifikaci dat, je možné použít Azure AD jako hlavní úložiště pro identitu uživatele. Běžným nástrojem, který se používá v místním prostředí pro klasifikaci dat, se říká [Sada nástrojů klasifikace dat](https://msdn.microsoft.com/library/Hh204743.aspx) pro Windows Server 2012 R2. Tento nástroj vám může pomáhat identifikovat, klasifikovat a chránit data na souborových serverech v privátním cloudu. K provedení této úlohy je také možné použít [automatickou klasifikaci souborů](https://technet.microsoft.com/library/hh831672.aspx) ve Windows Serveru 2012.
+Organizace, které mají obavy týkající se ochrany osobních údajů dat, obvykle vyžadují klasifikaci dat pro jejich řešení. Pokud již stávající místní infrastruktura používá klasifikaci dat, je možné použít Azure AD jako hlavní úložiště pro identitu uživatele. Běžným nástrojem, který se používá v místním prostředí pro klasifikaci dat, se říká [Sada nástrojů klasifikace dat](/previous-versions/tn-archive/hh204743(v=technet.10)) pro Windows Server 2012 R2. Tento nástroj vám může pomáhat identifikovat, klasifikovat a chránit data na souborových serverech v privátním cloudu. K provedení této úlohy je také možné použít [automatickou klasifikaci souborů](/windows-server/identity/solution-guides/deploy-automatic-file-classification--demonstration-steps-) ve Windows Serveru 2012.
 
-Pokud vaše organizace nemá zavedenu klasifikaci dat, ale potřebuje chránit citlivé soubory bez nutnosti přidávat nové servery místně, můžou použít [službu Microsoft Azure Rights Management](https://technet.microsoft.com/library/JJ585026.aspx).  Azure RMS používá zásady šifrování, identity a autorizace k zabezpečení souborů a e-mailů a funguje na různých zařízeních – na telefonech, tabletech a počítačích. Vzhledem k tomu, že Azure RMS je cloudová služba, není potřeba explicitně konfigurovat vztahy důvěryhodnosti s jinými organizacemi, abyste s nimi mohli sdílet chráněný obsah. Pokud už mají služby Office 365 nebo adresář Azure AD, je automaticky dostupná podpora spolupráce mezi organizacemi. Můžete také synchronizovat pouze atributy adresáře, které Azure RMS potřebují k podpoře společné identity pro místní účty služby Active Directory, a to pomocí služby Azure Active Directory Synchronization Services (AAD Sync) nebo Azure AD Connect.
+Pokud vaše organizace nemá zavedenu klasifikaci dat, ale potřebuje chránit citlivé soubory bez nutnosti přidávat nové servery místně, můžou použít [službu Microsoft Azure Rights Management](/azure/information-protection/what-is-azure-rms).  Azure RMS používá zásady šifrování, identity a autorizace k zabezpečení souborů a e-mailů a funguje na různých zařízeních – na telefonech, tabletech a počítačích. Vzhledem k tomu, že Azure RMS je cloudová služba, není potřeba explicitně konfigurovat vztahy důvěryhodnosti s jinými organizacemi, abyste s nimi mohli sdílet chráněný obsah. Pokud již mají Microsoft 365 nebo adresář služby Azure AD, je spolupráce v organizacích automaticky podporována. Můžete také synchronizovat pouze atributy adresáře, které Azure RMS potřebují k podpoře společné identity pro místní účty služby Active Directory, a to pomocí služby Azure Active Directory Synchronization Services (Azure AD Sync) nebo Azure AD Connect.
 
 Důležitou součástí správy obsahu je pochopení toho, kdo přistupuje k danému prostředku, proto je pro řešení správy identit důležité bohatou možnost protokolování. Azure AD poskytuje protokol po dobu 30 dnů, včetně:
 
@@ -82,7 +82,7 @@ Důležitou součástí správy obsahu je pochopení toho, kdo přistupuje k dan
 
 | Možnosti správy obsahu | Výhody | Nevýhody |
 | --- | --- | --- |
-| Centralizované místní (Active Directory Rights Management Server) |Úplná kontrola nad infrastrukturou serveru odpovědnou za klasifikaci dat <br> Integrovaná funkce v systému Windows Server, nevyžaduje se licence nebo předplatné navíc <br> V hybridním scénáři se dá integrovat s Azure AD. <br> Podporuje funkce IRM (Správa přístupových práv k informacím) v online službách Microsoftu, jako jsou Exchange Online a SharePoint Online, i Office 365. <br> Podporuje místní serverové produkty společnosti Microsoft, například server Exchange Server, SharePoint Server a souborové servery se systémem Windows Server a infrastrukturou klasifikace souborů (FCI). |Vyšší Údržba (průběžně s aktualizacemi, konfigurací a potenciálními upgrady), vzhledem k tomu, že je vlastníkem serveru <br> Vyžadovat místní serverovou infrastrukturu<br> Nevyužívá nativně možnosti Azure |
+| Centralizované místní (Active Directory Rights Management Server) |Úplná kontrola nad infrastrukturou serveru odpovědnou za klasifikaci dat <br> Integrovaná funkce v systému Windows Server, nevyžaduje se licence nebo předplatné navíc <br> V hybridním scénáři se dá integrovat s Azure AD. <br> Podporuje funkce IRM (Správa přístupových práv k informacím) v online službách Microsoftu, jako je Exchange Online a SharePoint Online, i Microsoft 365 <br> Podporuje místní serverové produkty společnosti Microsoft, například server Exchange Server, SharePoint Server a souborové servery se systémem Windows Server a infrastrukturou klasifikace souborů (FCI). |Vyšší Údržba (průběžně s aktualizacemi, konfigurací a potenciálními upgrady), vzhledem k tomu, že je vlastníkem serveru <br> Vyžadovat místní serverovou infrastrukturu<br> Nevyužívá nativně možnosti Azure |
 | Centralizované v cloudu (Azure RMS) |Snazší správa ve srovnání s místním řešením <br> Dá se integrovat s služba AD DS v hybridním scénáři. <br>  Plně integrovaná se službou Azure AD <br> Pro nasazení služby nevyžaduje místní server. <br> Podporuje místní serverové produkty Microsoftu, jako jsou Exchange Server, SharePoint, server a souborové servery, na kterých běží Windows Server a klasifikace souborů, infrastruktura (FCI). <br> Může mít úplnou kontrolu nad klíčem svého tenanta pomocí funkce BYOK. |Vaše organizace musí mít cloudové předplatné, které podporuje RMS. <br> Aby mohla organizace podporovat ověřování uživatelů služby RMS, musí mít adresář Azure AD. |
 | Hybrid (Azure RMS integrovaný s, místní Active Directory Rights Management Server) |Tento scénář shromažďuje výhody obou, centralizovaných místně i v cloudu. |Vaše organizace musí mít cloudové předplatné, které podporuje RMS. <br> Aby mohla organizace podporovat ověřování uživatelů služby RMS, musí mít adresář Azure AD. <br> Vyžaduje připojení mezi cloudovou službou Azure a místní infrastrukturou. |
 
@@ -102,14 +102,14 @@ Azure Active Directory poskytuje jednotné přihlašování k tisícům aplikac�
 * Certifikáty
 
 > [!NOTE]
-> Pokud chcete získat další podrobnosti o každém protokolu a jeho schopnostech v Azure, přečtěte si [Azure Active Directory ověřovací protokoly](https://msdn.microsoft.com/library/azure/dn151124.aspx) .
+> Pokud chcete získat další podrobnosti o každém protokolu a jeho schopnostech v Azure, přečtěte si [Azure Active Directory ověřovací protokoly](/previous-versions/azure/dn151124(v=azure.100)) .
 >
 >
 
 Díky podpoře Azure AD můžou mobilní obchodní aplikace používat stejné možnosti snadného Mobile Services ověřování, které zaměstnancům umožňují přihlašovat se k mobilním aplikacím pomocí svých podnikových přihlašovacích údajů služby Active Directory. S touto funkcí se Azure AD podporuje jako poskytovatel identity v Mobile Services společně s ostatními zprostředkovateli identity, kteří už jsou podporovaní (včetně účtů Microsoft, Facebooku ID, Google ID a Twitteru). Pokud místní aplikace používají přihlašovací údaje uživatele nacházející se v služba AD DS společnosti, musí být přístup od partnerů a uživatelů pocházejících z cloudu transparentní. Řízení podmíněného přístupu uživatele můžete spravovat na (cloudové) webové aplikace, webové rozhraní API, cloudové služby Microsoftu, aplikace SaaS třetích stran a nativní (mobilní) klientské aplikace a využívat výhody zabezpečení, auditování a vytváření sestav na jednom místě. Doporučuje se ale ověřit implementaci v neprodukčním prostředí nebo s omezeným počtem uživatelů.
 
 > [!TIP]
-> je důležité uvést, že služba Azure AD nemá Zásady skupiny jako služba AD DS. Aby bylo možné vyhovět zásadám pro zařízení, potřebujete řešení pro správu mobilních zařízení, například [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx).
+> je důležité uvést, že služba Azure AD nemá Zásady skupiny jako služba AD DS. Aby bylo možné vyhovět zásadám pro zařízení, potřebujete řešení pro správu mobilních zařízení, například [Microsoft Intune](/mem/intune/).
 >
 >
 
@@ -121,7 +121,7 @@ Každá interakce v diagramu znázorněná na obrázku X představuje jeden scé
 
 1. Podmíněný přístup k aplikacím, které jsou hostované místně: u registrovaných zařízení můžete použít zásady přístupu pro aplikace, které jsou nakonfigurované pro použití AD FS s Windows Serverem 2012 R2.
 
-2. Access Control k Azure Portal: Azure taky umožňuje řídit přístup k portálu pomocí řízení přístupu na základě role (RBAC). Tato metoda umožňuje společnosti omezit počet operací, které může jednotlivec dělat v Azure Portal. Pomocí RBAC pro řízení přístupu k portálu mohou správci IT delegovat přístup pomocí následujících přístupů ke správě přístupu:
+2. Access Control k Azure Portal: Azure vám taky umožní řídit přístup k portálu pomocí řízení přístupu na základě role Azure (Azure RBAC)). Tato metoda umožňuje společnosti omezit počet operací, které může jednotlivec dělat v Azure Portal. Pomocí služby Azure RBAC pro řízení přístupu k portálu mohou správci IT delegovat přístup pomocí následujících přístupů ke správě přístupu:
 
    - Přiřazení role na základě skupin: můžete přiřadit přístup ke skupinám Azure AD, které se dají synchronizovat z vaší místní služby Active Directory. Díky tomu můžete využít stávající investice, které vaše organizace provedla při správě skupin a jejich zpracování. Můžete také použít funkci delegovaná Správa skupin Azure AD Premium.
    - Použijte předdefinované role v Azure: můžete použít tři role – vlastník, přispěvatel a čtenář, abyste zajistili, že uživatelé a skupiny mají oprávnění dělat jenom úkoly, které potřebují ke své práci.
@@ -131,7 +131,7 @@ Každá interakce v diagramu znázorněná na obrázku X představuje jeden scé
    > Pokud vytváříte aplikace a chcete pro ně přizpůsobit řízení přístupu, je také možné použít aplikační role Azure AD pro autorizaci. Přečtěte si tento [příklad WebApp-RoleClaims-dotnet](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) , jak sestavit aplikaci pro použití této funkce.
 
 
-3. Podmíněný přístup pro aplikace Office 365 s Microsoft Intune: Správci IT můžou zřídit zásady pro zařízení podmíněného přístupu pro zabezpečení podnikových prostředků, ale zároveň umožnit pracovníkům s informacemi na vyhovujících zařízeních přístup ke službám. 
+3. Podmíněný přístup pro Microsoft 365 aplikace s Microsoft Intune: Správci IT můžou zřídit zásady pro zařízení podmíněného přístupu pro zabezpečení podnikových prostředků, ale zároveň umožnit pracovníkům s informacemi o vyhovujících zařízeních přístup ke službám. 
   
 4. Podmíněný přístup pro aplikace SaaS: [Tato funkce](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umožňuje konfigurovat pravidla přístupu k Multi-Factor Authentication pro jednotlivé aplikace a možnost blokovat přístup pro uživatele, kteří nejsou v důvěryhodné síti. Pravidla služby Multi-Factor Authentication můžete použít pro všechny uživatele, kteří jsou přiřazeni k aplikaci nebo pouze pro uživatele v rámci zadaných skupin zabezpečení. Pokud uživatelé přistupují k aplikaci z IP adresy, která je v síti organizace, mohou být z požadavku služby Multi-Factor Authentication vyloučeni.
 

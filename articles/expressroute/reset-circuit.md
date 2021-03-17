@@ -2,22 +2,22 @@
 title: 'Resetování neúspěšného okruhu – ExpressRoute: PowerShell: Azure | Microsoft Docs'
 description: Tento článek vám pomůže resetovat okruh ExpressRoute, který je ve stavu selhání.
 services: expressroute
-author: kumudD
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 11/28/2018
-ms.author: kumud
+ms.date: 01/07/2021
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e0f79ce0959e7b7dccc20e46493f34e1963df70e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 84c8275b7a7257530a735e8612047ef42e2f8a7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537101"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011335"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Resetování okruhu ExpressRoute, který selhal
 
-Po úspěšném dokončení operace na okruhu ExpressRoute může okruh přejít do stavu "neúspěch". Tento článek vám pomůže resetovat neúspěšný okruh Azure ExpressRoute.
+Po úspěšném dokončení operace u okruhu ExpressRoute může okruh přejít do stavu selhání. Tento článek vám pomůže resetovat neúspěšný okruh Azure ExpressRoute.
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 

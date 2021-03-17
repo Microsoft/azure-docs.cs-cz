@@ -1,22 +1,18 @@
 ---
 title: Kopírování a transformace dat v Azure Data Lake Storage Gen2
 description: Naučte se, jak kopírovat data do a z Azure Data Lake Storage Gen2 a transformovat data v Azure Data Lake Storage Gen2 pomocí Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: 9eed71f5a264a6308a49ac594563c746bb8ea5b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 10/28/2020
+ms.openlocfilehash: d773556352a85c125e32d0ee56b4b6f4cf11da32
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544770"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364745"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -46,10 +42,6 @@ Pro aktivitu kopírování můžete pomocí tohoto konektoru:
 - [Při kopírování zachovat metadata souboru](#preserve-metadata-during-copy).
 - Při kopírování z Azure Data Lake Storage Gen1/Gen2 [zachovat seznamy ACL](#preserve-acls) .
 
->[!IMPORTANT]
->Pokud povolíte možnost **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** při Azure Storage nastavení brány firewall a chcete použít prostředí Azure Integration runtime pro připojení k Data Lake Storage Gen2, musíte pro adls Gen2 použít [spravované ověřování identity](#managed-identity) .
-
-
 ## <a name="get-started"></a>Začínáme
 
 >[!TIP]
@@ -68,7 +60,8 @@ Konektor Azure Data Lake Storage Gen2 podporuje následující typy ověřován�
 - [Spravované identity pro ověřování prostředků Azure](#managed-identity)
 
 >[!NOTE]
->Když použijete základnu k načtení dat do SQL Data Warehouse, pokud je vaše zdrojová Data Lake Storage Gen2 nakonfigurovaná pomocí Virtual Networkho koncového bodu, musíte použít spravované ověřování identity podle požadavků základu. Viz část [spravované ověřování identity](#managed-identity) s dalšími požadavky na konfiguraci.
+>- Pokud chcete pomocí veřejného prostředí Azure Integration runtime připojit k Data Lake Storage Gen2 pomocí možnosti **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** , který je povolený v bráně firewall Azure Storage, musíte použít [spravované ověřování identity](#managed-identity).
+>- Pokud k načtení dat do služby Azure synapse Analytics použijete příkaz Base nebo COPY, pokud je váš zdrojový nebo pracovní Data Lake Storage Gen2 nakonfigurovaný s koncovým bodem Azure Virtual Network, musíte použít spravované ověřování identity podle požadavků synapse. Viz část [spravované ověřování identity](#managed-identity) s dalšími požadavky na konfiguraci.
 
 ### <a name="account-key-authentication"></a>Ověřování klíčů účtu
 
@@ -131,12 +124,16 @@ Tyto vlastnosti jsou pro propojenou službu podporované:
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Yes |
 | url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net` . | Yes |
 | servicePrincipalId | Zadejte ID klienta aplikace. | Yes |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako `SecureString` pro bezpečné uložení v Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| servicePrincipalCredentialType | Typ přihlašovacích údajů, který se má použít pro ověřování instančního objektu. Povolené hodnoty jsou **ServicePrincipalKey** a **ServicePrincipalCert**. | Yes |
+| servicePrincipalCredential | Přihlašovací údaje instančního objektu. <br/> Pokud jako typ přihlašovacích údajů použijete **ServicePrincipalKey** , zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory nebo [odkazujte na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br/> Pokud jako přihlašovací údaje použijete **ServicePrincipalCert** , odkazujte na certifikát v Azure Key Vault. | Yes |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory nebo [odkazujte na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br/> Tato vlastnost je stále podporovaná tak, jak je pro `servicePrincipalId`  +  `servicePrincipalKey` . Protože ADF přidává nové ověřování certifikátů instančního objektu, je nový model pro ověřování instančního objektu `servicePrincipalId`  +  `servicePrincipalCredentialType`  +  `servicePrincipalCredential` . | No |
 | tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Yes |
-| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure Active Directory zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment**a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | No |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure Active Directory zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment** a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | No |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |No |
 
-**Příklad:**
+**Příklad: použití ověřování klíčů instančního objektu**
+
+Klíč objektu služby můžete také uložit v Azure Key Vault.
 
 ```json
 {
@@ -146,9 +143,38 @@ Tyto vlastnosti jsou pro propojenou službu podporované:
         "typeProperties": {
             "url": "https://<accountname>.dfs.core.windows.net", 
             "servicePrincipalId": "<service principal id>",
-            "servicePrincipalKey": {
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
                 "type": "SecureString",
                 "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad: použití ověření certifikátu instančního objektu**
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
         },
@@ -177,7 +203,7 @@ Pokud chcete používat spravované identity pro ověřování prostředků Azur
 >Pokud použijete Data Factory uživatelské rozhraní k vytváření a spravovaná identita není nastavena pomocí role čtenář/Přispěvatel dat objektů BLOB úložiště v nástroji IAM, při provádění testovacího připojení nebo procházení/procházení složek zvolte možnost Test připojení k cestě k souboru nebo procházet ze zadané cesty a zadejte cestu s oprávněním **číst + spustit** , aby bylo možné pokračovat.
 
 >[!IMPORTANT]
->Použijete-li základ k načtení dat z Data Lake Storage Gen2 do SQL Data Warehouse při použití spravovaného ověřování identity pro Data Lake Storage Gen2, nezapomeňte také postupovat podle kroků 1 a 2 v [tomto návodu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) na 1) zaregistrovat vaše Azure Active Directory (Azure AD) a 2) přiřadit roli Přispěvatel dat objektů BLOB úložiště k vašemu serveru; zbytek se zpracovává pomocí Data Factory. Pokud je váš Data Lake Storage Gen2 nakonfigurovaný s koncovým bodem Azure Virtual Network, aby se k načtení dat z něj používala základna, musíte použít spravované ověřování identity podle požadavků základu.
+>Pokud k načtení dat z Data Lake Storage Gen2 do služby Azure synapse Analytics použijete příkaz Base nebo COPY, při použití spravovaného ověřování identity pro Data Lake Storage Gen2 se ujistěte, že provedete také kroky 1 až 3 v [těchto pokynech](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Tyto kroky zaregistrují váš server ve službě Azure AD a přiřadí roli Přispěvatel dat objektů BLOB úložiště k vašemu serveru. Data Factory zpracuje zbytek. Pokud nakonfigurujete úložiště objektů BLOB pomocí koncového bodu Azure Virtual Network, musíte taky **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** v části Azure Storage **brány firewall účtů a nastavení virtuálních sítí** , jak to vyžaduje synapse.
 
 Tyto vlastnosti jsou pro propojenou službu podporované:
 
@@ -269,13 +295,15 @@ Následující vlastnosti jsou podporovány pro Data Lake Storage Gen2 v části
 | ***Vyhledejte soubory ke zkopírování:*** |  |  |
 | MOŽNOST 1: statická cesta<br> | Kopírování ze zadané cesty systému souborů nebo složky/souboru zadaného v datové sadě. Pokud chcete zkopírovat všechny soubory ze systému souborů nebo složky, zadejte také `wildcardFileName` jako `*` . |  |
 | MOŽNOST 2: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v rámci daného systému souborů nakonfigurovaného v sadě dat pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | No                                            |
-| MOŽNOST 2: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném systému souborů + folderPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape.  Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Yes |
+| MOŽNOST 2: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném systému souborů + folderPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); použijte `^` k Escape, jestli váš skutečný název souboru obsahuje zástupný znak nebo tento řídicí znak v.  Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Yes |
 | MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |No |
 | ***Další nastavení:*** |  | |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je rekurzivní nastavení nastaveno na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |No |
-| deleteFilesAfterCompletion | Uvádí, zda budou binární soubory po úspěšném přesunutí do cílového úložiště odstraněny ze zdrojového úložiště. Odstranění souboru je vázané na soubor, takže když aktivita kopírování selže, uvidíte, že některé soubory se už zkopírovaly do cílového umístění a odstranily ze zdroje, zatímco ostatní jsou pořád ve zdrojovém úložišti. <br/>Tato vlastnost je platná jenom ve scénáři binárního kopírování, kde zdroje dat ukládají objekty blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP nebo FTP. Výchozí hodnota: false. |No |
+| deleteFilesAfterCompletion | Uvádí, zda budou binární soubory po úspěšném přesunutí do cílového úložiště odstraněny ze zdrojového úložiště. Odstranění souboru je vázané na soubor, takže když aktivita kopírování selže, uvidíte, že některé soubory se už zkopírovaly do cílového umístění a odstranily ze zdroje, zatímco ostatní jsou pořád ve zdrojovém úložišti. <br/>Tato vlastnost je platná pouze ve scénáři kopírování binárních souborů. Výchozí hodnota: false. |No |
 | modifiedDatetimeStart    | Filtr souborů na základě atributu: Naposledy změněno <br>Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Pokud `modifiedDatetimeStart` má hodnota DateTime `modifiedDatetimeEnd` , ale je null, znamená to, že budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Pokud `modifiedDatetimeEnd` má hodnota DateTime `modifiedDatetimeStart` , ale je null, znamená to, že jsou soubory, jejichž naposledy upravený atribut je menší než hodnota DateTime, bude vybrána.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | No                                            |
-| modifiedDatetimeEnd      | Stejné jako výše.                                               | No                                            |
+| modifiedDatetimeEnd      | Platí to samé jako výše.                                               | No                                            |
+| enablePartitionDiscovery | U souborů, které jsou rozdělené na oddíly, určete, jestli se mají analyzovat oddíly z cesty k souboru, a přidejte je jako další zdrojové sloupce.<br/>Povolené hodnoty jsou **false** (výchozí) a **true**. | No                                            |
+| partitionRootPath | Pokud je povoleno zjišťování oddílů, zadejte absolutní kořenovou cestu, aby bylo možné číst rozdělené složky jako sloupce dat.<br/><br/>Pokud není zadaný, ve výchozím nastavení<br/>– Pokud použijete cestu k souboru v datové sadě nebo v seznamu souborů na zdroji, je kořenová cesta oddílu cestou nakonfigurovanou v datové sadě.<br/>– Když použijete filtr složky se zástupnými znaky, kořenová cesta oddílu je dílčí cesta před prvním zástupným znakem.<br/><br/>Předpokládejme například, že nakonfigurujete cestu v datové sadě jako kořen/složka/rok = 2020/měsíc = 08/Day = 27:<br/>– Pokud zadáte kořenovou cestu oddílu jako "root/složka/Year = 2020", aktivita kopírování vygeneruje další dva sloupce `month` a `day` hodnoty "08" a "27" společně se sloupci uvnitř souborů.<br/>-Pokud není zadána kořenová cesta oddílu, nebude vygenerován žádný sloupec navíc. | No                                            |
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No                                            |
 
 **Příklad:**
@@ -329,7 +357,7 @@ Následující vlastnosti jsou podporovány pro Data Lake Storage Gen2 v části
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **AzureBlobFSWriteSettings**. | Yes      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No       |
-| blockSizeInMB | Určete velikost bloku v MB používaného k zápisu dat do ADLS Gen2. Přečtěte si další informace o objektech [blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je **mezi 4 MB a 100 MB**. <br/>Ve výchozím nastavení ADF automaticky určuje velikost bloku na základě typu zdrojového úložiště a dat. V případě nebinárních kopírování do ADLS Gen2 je výchozí velikost bloku 100 MB, aby se vešla do velikosti maximálně 4,95 TB dat. Nemusí být optimální, pokud vaše data nejsou velká, zejména pokud používáte Integration Runtime v místním prostředí s nízkou sítí, která má za následek časový limit operace nebo problémy s výkonem. Můžete explicitně zadat velikost bloku a zajistit tak, aby blockSizeInMB * 50000 bylo dostatečně velké pro ukládání dat, jinak se spuštění aktivity kopírování nezdaří. | No |
+| blockSizeInMB | Určete velikost bloku v MB používaného k zápisu dat do ADLS Gen2. Přečtěte si další informace o objektech [blob bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je **mezi 4 MB a 100 MB**. <br/>Ve výchozím nastavení ADF automaticky určuje velikost bloku na základě typu zdrojového úložiště a dat. V případě nebinárních kopírování do ADLS Gen2 je výchozí velikost bloku 100 MB, aby se vešla do velikosti maximálně 4,95 TB dat. Nemusí být optimální, pokud vaše data nejsou velká, zejména pokud používáte Integration Runtime v místním prostředí s nízkou sítí, která má za následek časový limit operace nebo problémy s výkonem. Můžete explicitně zadat velikost bloku a zajistit tak, aby blockSizeInMB * 50000 bylo dostatečně velké pro ukládání dat, jinak se spuštění aktivity kopírování nezdaří. | No |
 | maxConcurrentConnections | Počet připojení, která mají být souběžně propojena s úložištěm dat. Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No       |
 
 **Příklad:**
@@ -528,8 +556,8 @@ Další informace o vlastnostech najdete v části [Odstranění aktivity](delet
 | fileName | Název nebo zástupný filtr pro soubory v zadaném "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny soubory ve složce. <br/><br/>V případě filtru je povolených zástupných znaků `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku).<br/>-Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použijte `^` k ukončení, jestli má skutečný název souboru zástupný znak nebo že se tento řídicí znak nachází uvnitř.<br/><br/>Když není zadaný název souboru pro výstupní datovou sadu a v jímky aktivity není zadaný **preserveHierarchy** , aktivita kopírování automaticky vygeneruje název souboru s následujícím vzorem: "*data. [ identifikátor GUID ID běhu aktivity]. [GUID if FlattenHierarchy]. [formát, pokud je nakonfigurován]. [komprese je-li nakonfigurována]*", například" Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz ". Pokud zkopírujete z tabulkového zdroje místo dotazu pomocí názvu tabulky, bude vzor názvu "*[název tabulky]. [ formát]. [komprese, je-li nakonfigurována]*", například" MyTable.csv ". |No |
 | modifiedDatetimeStart | Filtr souborů na základě naposledy změněného atributu Soubory jsou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Celkový výkon přesunu dat je ovlivněn tím, že toto nastavení povolíte, pokud chcete provést filtr souborů s velkým množstvím souborů. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit filtr atributů souboru. Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime. Pokud `modifiedDatetimeEnd` má hodnota DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než je hodnota DateTime.| No |
 | modifiedDatetimeEnd | Filtr souborů na základě naposledy změněného atributu Soubory jsou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Celkový výkon přesunu dat je ovlivněn tím, že toto nastavení povolíte, pokud chcete provést filtr souborů s velkým množstvím souborů. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit filtr atributů souboru. Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime. Pokud `modifiedDatetimeEnd` má hodnota DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než je hodnota DateTime.| No |
-| formát | Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát jak v definicích vstupní, tak i ve výstupní datové sadě.<br/><br/>Pokud chcete analyzovat nebo generovat soubory s konkrétním formátem, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát** nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Formát Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a formát [Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Ne (jenom pro binární scénář kopírování) |
-| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**.<br/>Podporované úrovně jsou **optimální** a **nejrychlejší**. |No |
+| formát | Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát jak v definicích vstupní, tak i ve výstupní datové sadě.<br/><br/>Pokud chcete analyzovat nebo generovat soubory s konkrétním formátem, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** a **ParquetFormat**. V části **Formát** nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Formát Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a formát [Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Ne (jenom pro binární scénář kopírování) |
+| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou **gzip**, **Deflate**, **bzip2** a **ZipDeflate**.<br/>Podporované úrovně jsou **optimální** a **nejrychlejší**. |No |
 
 >[!TIP]
 >Chcete-li zkopírovat všechny soubory ve složce, zadejte pouze **FolderPath** .<br>Chcete-li zkopírovat jeden soubor se zadaným názvem, zadejte **FolderPath** s částí **složky a názvem souboru s** názvem.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **FolderPath** s částí složky a **názvem souboru** s filtrem zástupných znaků. 

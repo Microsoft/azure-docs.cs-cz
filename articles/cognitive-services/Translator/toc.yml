@@ -2,26 +2,12 @@
   href: index.yml
 - name: Překladač
   items:
-    - name: Přehled
-      items:
-        - name: Co je Translator?
-          href: translator-info-overview.md
-        - name: Podpora jazyků
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
-    - name: Rychlé starty
-      items:
-        - name: Přeložení textu
-          href: quickstart-translate.md
-        - name: Transliterace textu
-          href: quickstart-transliterate.md
-        - name: Zjištění jazyka
-          href: quickstart-detect.md
-        - name: Vyhledání překladů slov
-          href: quickstart-dictionary.md
-        - name: Zjištění podporovaných jazyků
-          href: quickstart-languages.md
-        - name: Určení délky věty
-          href: quickstart-sentences.md
+    - name: Co je Translator?
+      href: translator-info-overview.md
+    - name: Rychlé zprovoznění
+      href: quickstart-translator.md
+    - name: Podpora jazyků
+      href: language-support.md
     - name: Kurzy
       items:
         - name: 'Vytvoření aplikace WPF pro Translator, C#'
@@ -36,8 +22,8 @@
           href: character-counts.md
     - name: Návody
       items:
-        - name: Registrace ke službě Translator
-          href: translator-text-how-to-signup.md
+        - name: Vytvoření prostředku překladatele
+          href: ./translator-how-to-signup.md
         - name: Migrace na Text API v3
           href: migrate-to-v3.md
         - name: Přidání filtrování vulgárních výrazů
@@ -70,34 +56,26 @@
       items:
         - name: Referenční informace ke službě Translator v3
           href: reference/v3-0-reference.md
-          items:
-            - name: Jazyky
-              href: reference/v3-0-languages.md
-            - name: Překlad
-              href: reference/v3-0-translate.md
-            - name: Transliterace
-              href: reference/v3-0-transliterate.md
-            - name: Zjišťování
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: Slovníkové vyhledávání
-              href: reference/v3-0-dictionary-lookup.md
-            - name: Příklady slovníku
-              href: reference/v3-0-dictionary-examples.md
-        - name: Referenční informace ke službě Translator v2 (zastaralé)
-          href: reference/v2-0-reference.md
-          items:
-            - name: Transformace textu
-              href: transform-text.md
-            - name: Jak použít vytváření sestav CTF (Collaborative Translation Framework)
-              href: ctf-reporting.md
-            - name: Vracení N nejvhodnějších překladů
-              href: return-n-best-translations.md
+        - name: Jazyky
+          href: reference/v3-0-languages.md
+        - name: Překlad
+          href: reference/v3-0-translate.md
+        - name: Transliterace
+          href: reference/v3-0-transliterate.md
+        - name: Zjišťování
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Slovníkové vyhledávání
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Příklady slovníku
+          href: reference/v3-0-dictionary-examples.md
         - name: Omezení počtu požadavků
           href: request-limits.md
     - name: Zdroje a prostředky
       items:
+        - name: Možnosti pomoci a podpory
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Vzorový kód na GitHubu
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Nejčastější dotazy
@@ -108,8 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Dodržování předpisů
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+- name: Překlad dokumentu
+  items:
+    - name: Přehled
+      items:
+        - name: Co je překlad dokumentů?
+          href: document-translation/overview.md
+    - name: Návody
+      items:
+        - name: Začínáme s překladem dokumentů
+          href: document-translation/get-started-with-document-translation.md
+        - name: Vytváření tokenů SAS
+          href: document-translation/create-sas-tokens.md
+    - name: Reference
+      items:
+        - name: Reference k rozhraní API pro překlad dokumentu
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Custom Translator
   items:
     - name: Přehled
@@ -162,6 +154,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Zdroje a prostředky
       items:
+        - name: Možnosti pomoci a podpory
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Glosář
           href: custom-translator/glossary.md
         - name: Nejčastější dotazy
@@ -171,6 +165,4 @@
         - name: Dodržování předpisů
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Šifrování
-          href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+          href: encrypt-data-at-rest.md

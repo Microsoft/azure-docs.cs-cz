@@ -1,18 +1,19 @@
 ---
-title: Prostor fáze
+title: Prostor scény
 description: Popisuje nastavení prostoru fáze a případy použití.
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: b67294c503e513290b474e0059771a73ad526a6a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a739907ce0a3b0b6dfcb8791b51d0ea5e7e76e7
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189394"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594006"
 ---
-# <a name="stage-space"></a>Prostor fáze
+# <a name="stage-space"></a>Prostor scény
 
 Při spuštění funkce ARR na zařízení, které poskytuje data sledování hlav, jako je HoloLens 2, se pozice hlavní pozice odesílá do uživatelské aplikace i do serveru. Místo, ve kterém je transformace Head definována, se nazývá *prostor fáze*.
 
@@ -32,9 +33,9 @@ Aby bylo možné informovat Server, že se v prostoru fáze aplikuje další tra
 > V [simulaci plochy](../../concepts/graphics-bindings.md) je umístění kamery na světě zajištěno uživatelskou aplikací. V takovém případě je nutné nastavit, aby byl počátek prostoru fáze přeskočen, protože již byl vynásobený z převodu kamery.
 
 ```cs
-void ChangeStageSpace(AzureSession session)
+void ChangeStageSpace(RenderingSession session)
 {
-    StageSpaceSettings settings = session.Actions.StageSpaceSettings;
+    StageSpaceSettings settings = session.Connection.StageSpaceSettings;
 
     // Set position and rotation to the world-space transform of the stage space.
     settings.Position = new Double3(0, 0, 0);
@@ -43,13 +44,13 @@ void ChangeStageSpace(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeStageSpace(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<StageSpaceSettings> settings = *session->Actions()->StageSpaceSettings();
+    ApiHandle<StageSpaceSettings> settings = session->Connection()->GetStageSpaceSettings();
 
     // Set position and rotation to the world-space transform of the stage space.
-    settings->Position({0, 0, 0});
-    settings->Rotation({0, 0, 0, 1});
+    settings->SetPosition({0, 0, 0});
+    settings->SetRotation({0, 0, 0, 1});
 }
 ```
 

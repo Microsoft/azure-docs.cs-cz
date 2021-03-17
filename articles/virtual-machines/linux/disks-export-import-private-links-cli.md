@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 68b96401fc4fc6ea8916664978dbd4c094d9e5b4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136401"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684521"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
-Podpora privátních odkazů se službou Managed disks je aktuálně ve verzi Preview. Pomocí [privátních koncových bodů](../../private-link/private-endpoint-overview.md) můžete omezit export a import spravovaných disků a bezpečně přistupovat k datům přes [soukromé propojení](../../private-link/private-link-overview.md) z klientů ve službě Azure Virtual Network. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu Managed disks. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
+Pomocí [privátních koncových bodů](../../private-link/private-endpoint-overview.md) můžete omezit export a import spravovaných disků a bezpečně přistupovat k datům přes [soukromé propojení](../../private-link/private-link-overview.md) z klientů ve službě Azure Virtual Network. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu Managed disks. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
 Pokud chcete používat privátní odkazy pro export a import spravovaných disků, nejdřív vytvořte prostředek pro přístup k disku a propojte ho s virtuální sítí ve stejném předplatném vytvořením privátního koncového bodu. Pak přidružte disk nebo snímek k instanci přístupu k disku. Nakonec nastavte vlastnost NetworkAccessPolicy disku nebo snímku na `AllowPrivate` . Tím se omezí přístup k vaší virtuální síti. 
 
@@ -27,14 +27,10 @@ Vlastnost NetworkAccessPolicy můžete nastavit tak, aby `DenyAll` nedocházelo 
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>Regionální dostupnost
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../../includes/virtual-machines-disks-private-links-regions.md)]
 
 ## <a name="log-in-into-your-subscription-and-set-your-variables"></a>Přihlaste se ke svému předplatnému a nastavte proměnné.
 
 ```azurecli-interactive
-
 subscriptionId=yourSubscriptionId
 resourceGroupName=yourResourceGroupName
 region=northcentralus
@@ -57,19 +53,17 @@ az account set --subscription $subscriptionId
 ```
 
 ## <a name="create-a-disk-access-using-azure-cli"></a>Vytvoření přístupu k disku pomocí Azure CLI
-```azurecli-interactive
-az group deployment create -g $resourceGroupName \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDiskAccess.json" \
---parameters "region=$region" "diskAccessName=$diskAccessName"
+```azurecli
+az disk-access create -n $diskAccessName -g $resourceGroupName -l $region
 
-diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+diskAccessId=$(az disk-access show -n $diskAccessName -g $resourceGroupName --query [id] -o tsv)
 ```
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
 Zásady sítě, jako jsou skupiny zabezpečení sítě (NSG), nejsou podporovány u privátních koncových bodů. Aby bylo možné v dané podsíti nasadit privátní koncový bod, je v této podsíti vyžadováno explicitní nastavení zakázání. 
 
-```azurecli-interactive
+```azurecli
 az network vnet create --resource-group $resourceGroupName \
     --name $vnetName \
     --subnet-name $subnetName
@@ -78,7 +72,7 @@ az network vnet create --resource-group $resourceGroupName \
 
 Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže je potřeba aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. 
 
-```azurecli-interactive
+```azurecli
 az network vnet subnet update --resource-group $resourceGroupName \
     --name $subnetName  \
     --vnet-name $vnetName \
@@ -86,7 +80,7 @@ az network vnet subnet update --resource-group $resourceGroupName \
 ```
 ## <a name="create-a-private-endpoint-for-the-disk-access-object"></a>Vytvoření privátního koncového bodu pro objekt pro přístup k disku
 
-```azurecli-interactive
+```azurecli
 az network private-endpoint create --resource-group $resourceGroupName \
     --name $privateEndPointName \
     --vnet-name $vnetName  \
@@ -100,8 +94,8 @@ az network private-endpoint create --resource-group $resourceGroupName \
 
 Vytvořte zónu Privátní DNS pro doménu objektů BLOB úložiště, vytvořte propojení přidružení s Virtual Network a vytvořte skupinu zón DNS pro přidružení privátního koncového bodu ke zóně Privátní DNS. 
 
-```azurecli-interactive
-az network private-dns zone create --resource-group $resourceGroupName \ 
+```azurecli
+az network private-dns zone create --resource-group $resourceGroupName \
     --name "privatelink.blob.core.windows.net"
 
 az network private-dns link vnet create --resource-group $resourceGroupName \
@@ -119,48 +113,46 @@ az network private-endpoint dns-zone-group create \
 ```
 
 ## <a name="create-a-disk-protected-with-private-links"></a>Vytvoření disku chráněného soukromými odkazy
-  ```cli
-    resourceGroupName=yourResourceGroupName
-    region=northcentralus
-    diskAccessName=yourDiskAccessName
-    diskName=yourDiskName
-    diskSkuName=Standard_LRS
-    diskSizeGB=128
+```azurecli-interactive
+resourceGroupName=yourResourceGroupName
+region=northcentralus
+diskAccessName=yourDiskAccessName
+diskName=yourDiskName
+diskSkuName=Standard_LRS
+diskSizeGB=128
 
-    diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
 
-    az group deployment create -g $resourceGroupName \
-       --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDisksWithExportViaPrivateLink.json" \
-       --parameters "diskName=$diskName" \
-       "diskSkuName=$diskSkuName" \
-       "diskSizeGB=$diskSizeGB" \
-       "diskAccessId=$diskAccessId" \
-       "region=$region" \
-       "networkAccessPolicy=AllowPrivate"
+az disk create -n $diskName \
+-g $resourceGroupName \
+-l $region \
+--size-gb $diskSizeGB \
+--sku $diskSkuName \
+--network-access-policy AllowPrivate \
+--disk-access $diskAccessId 
 ```
 
 ## <a name="create-a-snapshot-of-a-disk-protected-with-private-links"></a>Vytvoření snímku disku chráněného soukromými odkazy
-   ```cli
-    resourceGroupName=yourResourceGroupName
-    region=northcentralus
-    diskAccessName=yourDiskAccessName
-    sourceDiskName=yourSourceDiskForSnapshot
-    snapshotNameSecuredWithPL=yourSnapshotName
+```azurecli-interactive
+resourceGroupName=yourResourceGroupName
+region=northcentralus
+diskAccessName=yourDiskAccessName
+sourceDiskName=yourSourceDiskForSnapshot
+snapshotNameSecuredWithPL=yourSnapshotName
 
-    diskId=$(az disk show -n $sourceDiskName -g $resourceGroupName --query [id] -o tsv)
-   
-    diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
-   
-    az group deployment create -g $resourceGroupName \
-      --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateSnapshotWithExportViaPrivateLink.json" \
-      --parameters "snapshotName=$snapshotNameSecuredWithPL" \
-      "sourceResourceId=$diskId" \
-      "diskAccessId=$diskAccessId" \
-      "region=$region" \
-      "networkAccessPolicy=AllowPrivate" 
+diskId=$(az disk show -n $sourceDiskName -g $resourceGroupName --query [id] -o tsv)
+
+diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+
+az snapshot create -n $snapshotNameSecuredWithPL \
+-g $resourceGroupName \
+-l $region \
+--source $diskId \
+--network-access-policy AllowPrivate \
+--disk-access $diskAccessId 
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nejčastější dotazy týkající se privátních odkazů](faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Export nebo kopírování spravovaných snímků jako virtuálních pevných disků do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku](../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md)
+- [Nejčastější dotazy týkající se privátních odkazů](../faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Export nebo kopírování spravovaných snímků jako virtuálních pevných disků do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

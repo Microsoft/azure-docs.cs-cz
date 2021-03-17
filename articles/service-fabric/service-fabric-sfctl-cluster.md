@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259960"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -42,16 +42,16 @@ Načte seznam verzí kódu prostředků infrastruktury, které jsou zřízené v
 
 Načte seznam informací o verzích kódů prostředků infrastruktury, které jsou zřízené v clusteru. Parametr CodeVersion lze použít k volitelnému filtrování výstupu pouze na konkrétní verzi.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Code-Version | Verze produktu Service Fabric. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -64,16 +64,16 @@ Načte seznam verzí konfigurace prostředků infrastruktury, které jsou zříz
 
 Načte seznam informací o verzích konfigurace prostředků infrastruktury, které jsou zřízené v clusteru. Parametr ConfigVersion lze použít k volitelnému filtrování výstupu pouze na konkrétní verzi.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --config-Version | Konfigurační verze Service Fabric. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -86,9 +86,9 @@ Získá stav clusteru Service Fabric.
 
 Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených v clusteru na základě stavu. Podobně použijte NodesHealthStateFilter a ApplicationsHealthStateFilter k filtrování kolekce uzlů a aplikací vrácených na základě jejich agregovaného stavu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Applications-Health-State-Filter | Umožňuje filtrování objektů stavu aplikace vrácených ve výsledku dotazu na stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu získanou ze členů nebo bitové operace na členech výčtu HealthStateFilter. Vrátí se pouze aplikace, které odpovídají filtru. Všechny aplikace se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, pak se vrátí stav aplikací s hodnotou OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
 | --Events – stav – filtr | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
@@ -99,7 +99,7 @@ Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlá
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -112,15 +112,15 @@ Získejte manifest Service Fabricho clusteru.
 
 Získejte manifest Service Fabricho clusteru. Manifest clusteru obsahuje vlastnosti clusteru, které zahrnují různé typy uzlů v clusteru, konfigurace zabezpečení, selhání a upgrady doménových topologií atd. Tyto vlastnosti jsou zadány jako součást ClusterConfig.JSv souboru při nasazení samostatného clusteru. Většina informací v manifestu clusteru se ale generuje interně Service Fabric během nasazování clusteru v jiných scénářích nasazení (například při použití Azure Portal). Obsah manifestu clusteru slouží pouze k informativním účelům a uživatelé neočekávají závislost na formátu obsahu souboru nebo jeho výkladu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -131,11 +131,11 @@ Získejte manifest Service Fabricho clusteru. Manifest clusteru obsahuje vlastno
 ## <a name="sfctl-cluster-operation-cancel"></a>operace clusteru sfctl – zrušit
 Zruší operaci s chybou, která byla vyvolaný uživatelem.
 
-Následující rozhraní API spustí operace selhání, které mohou být zrušeny pomocí CancelOperation \: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Pokud je hodnota Force false, zavedená operace vyvolaný uživatelem se řádně zastaví a vyčistí.  Pokud je hodnota true, příkaz se zruší a některé interní stavy můžou zůstat na pozadí.  Je třeba zadat vynutit jako true, aby se opatrně používala. Volání tohoto rozhraní API s vynucenou nastavenou na hodnotu true není povoleno, dokud toto rozhraní API již není voláno na stejném příkazu testu s vynuceným nastavením na hodnotu false, nebo pokud již testovací příkaz nemá OperationState OperationState. RollingBack. Vyjasnění \: OperationState. RollingBack znamená, že systém bude nebo bude vyčistit vnitřní stav systému způsobený provedením příkazu.  Nebude data obnovovat, pokud by testovací příkaz způsobil ztrátu dat.  Například pokud voláte StartDataLoss a pak zavoláte toto rozhraní API, systém vyčistí pouze vnitřní stav ze spuštění příkazu. Neobnoví data cílového oddílu, pokud příkaz provedl dostatečně daleko, aby způsobil ztrátu dat. Důležité upozornění: \: Pokud je toto rozhraní API vyvoláno s silou = = true, může být vnitřní stav ponechán na pozadí.
+Následující rozhraní API spustí operace selhání, které mohou být zrušeny pomocí CancelOperation \: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Pokud je hodnota Force false, zavedená operace vyvolaný uživatelem se řádně zastaví a vyčistí.  Pokud je hodnota true, příkaz se zruší a některé interní stavy můžou zůstat na pozadí.  Je třeba zadat vynutit jako true, aby se opatrně používala. Volání tohoto rozhraní API s vynucenou nastavenou na hodnotu true není povoleno, dokud toto rozhraní API již není voláno na stejném příkazu testu s vynuceným nastavením na hodnotu false, nebo pokud již testovací příkaz nemá OperationState OperationState. RollingBack. Vyjasnění \: OperationState. RollingBack znamená, že systém bude nebo bude vyčistit vnitřní stav systému způsobený provedením příkazu.  Nebude data obnovovat, pokud by testovací příkaz způsobil ztrátu dat.  Například pokud voláte StartDataLoss a pak zavoláte toto rozhraní API, systém vyčistí pouze vnitřní stav ze spuštění příkazu. Neobnoví data cílového oddílu, pokud příkaz provedl dostatečně daleko, aby způsobil ztrátu dat. Důležité upozornění: \:  Pokud je toto rozhraní API vyvoláno s silou = = true, může být vnitřní stav ponechán na pozadí.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
 | --Force | Označuje, jestli se má řádně vrátit a vyčistit stav interního systému, který se změnil spuštěním operace vyvolané uživatelem. |
@@ -143,7 +143,7 @@ Následující rozhraní API spustí operace selhání, které mohou být zruše
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -156,9 +156,9 @@ Získá seznam uživatelem vyvolaných operací selhání filtrovaných pomocí 
 
 Získá seznam uživatelem vyvolaných operací selhání filtrovaných pomocí poskytnutého vstupu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --State-Filter | Používá se k filtrování OperationState pro operace, které byly získány uživatelem. -65535-vybrat vše-1-vybrat spuštění – 2-vybrat RollingBack-8-vybrat dokončeno-16-vyberte možnost chyba-32-vybrat zrušeno-64-vybrat ForceCancelled.  Výchozí hodnota je \: 65535. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
@@ -166,7 +166,7 @@ Získá seznam uživatelem vyvolaných operací selhání filtrovaných pomocí 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -179,9 +179,9 @@ Zřídit kód nebo konfigurační balíčky Service Fabricho clusteru.
 
 Ověří a zřídí balíčky kódu nebo konfigurace Service Fabricho clusteru.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --cluster-manifest-File-Path | Cesta k souboru manifestu clusteru |
 | --Code-File-Path | Cesta k souboru balíčku kódu clusteru |
@@ -189,7 +189,7 @@ Ověří a zřídí balíčky kódu nebo konfigurace Service Fabricho clusteru.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -202,15 +202,15 @@ Určuje Cluster Service Fabric, který by se měl pokusit obnovit systémové sl
 
 Určuje Cluster Service Fabric, který by se měl pokusit obnovit systémové služby, které jsou aktuálně zablokované ve ztrátě kvora. Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -223,9 +223,9 @@ Odešle zprávu o stavu v clusteru Service Fabric.
 
 Odešle zprávu o stavu v clusteru Service Fabric. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Sestava se odešle do uzlu Service Fabric brány, který se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Pokud chcete zjistit, jestli se sestava použila v Health Store, spusťte GetClusterHealth a zkontrolujte, jestli se sestava zobrazuje v části HealthEvents.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
 | --Health-State [povinné] | Možné hodnoty zahrnují \: "Invalid", "OK", "Warning", "Error", "unknown". |
@@ -239,7 +239,7 @@ Odešle zprávu o stavu v clusteru Service Fabric. Sestava musí obsahovat infor
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -252,9 +252,9 @@ Připojí se ke koncovému bodu Service Fabric clusteru.
 
 Pokud se připojujete k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (. CRT) a soubor klíče (. Key) nebo jeden soubor s oběma (. pem). Nezadávejte obojí. Pokud budete chtít připojení k zabezpečenému clusteru, můžete taky zadat absolutní cestu k souboru nebo adresáři certifikačního úřadu CA.  Neexistují žádné připojení ke clusteru, aniž by bylo třeba spustit tento příkaz, včetně připojení k místnímu hostiteli. Pro připojení k místnímu clusteru ale není nutný žádný explicitní koncový bod.  Pokud používáte certifikát podepsaný svým držitelem nebo jiný certifikát, který není podepsaný známou certifikační autoritou, předejte parametr--CA, abyste zajistili, že ověření proběhlo úspěšně. Pokud není v produkčním clusteru, pokud chcete obejít ověřování na straně klienta (užitečné pro podepsaný nebo neznámou známou certifikační autoritu), použijte možnost--No-ověření. I když je to možné, nedoporučuje se pro produkční clustery. V opačném případě může dojít k chybě ověření certifikátu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --AAD | Pro ověřování použijte Azure Active Directory. |
 | --CA | Absolutní cesta k adresáři certifikátů certifikační autority, která bude považovat za platný nebo soubor sady prostředků CA. Pokud používáte adresář certifikátů CA, které `c_rehash <directory>` poskytuje OpenSSL, musí se nejdřív spustit, aby se vypočítaly hodnoty hash certifikátů a vytvořily příslušné odkazy na symbolické hodnoty. Slouží k ověření, zda je certifikát vrácený clusterem platný. |
@@ -266,7 +266,7 @@ Pokud se připojujete k zabezpečenému clusteru, zadejte absolutní cestu k cer
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -279,7 +279,7 @@ Zobrazit, ke kterému Service Fabric clusteru je tato instance sfctl připojena.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -292,9 +292,9 @@ Zrušení zřízení kódu nebo konfiguračních balíčků Service Fabricho clu
 
 Je podporováno zrušení zajišťování kódu a konfigurace samostatně.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Code-Version | Verze balíčku kódu clusteru |
 | --config-Version | Verze manifestu clusteru |
@@ -302,7 +302,7 @@ Je podporováno zrušení zajišťování kódu a konfigurace samostatně.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -315,9 +315,9 @@ Spusťte upgrade kódu nebo konfigurační verze Service Fabricho clusteru.
 
 Ověřte zadané parametry upgradu a v případě, že jsou parametry platné, spusťte upgrade kódu nebo konfigurační verze Service Fabricho clusteru.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --App-Health-map | Slovník kódovaný v kódování JSON párů názvů aplikací a maximální procento není v pořádku před vyvoláním chyby. |
 | --Typ aplikace-typ-mapa | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
@@ -342,7 +342,7 @@ Ověřte zadané parametry upgradu a v případě, že jsou parametry platné, s
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -355,16 +355,16 @@ Proveďte upgrade clusteru na další upgradovací doménu.
 
 Pokud je to vhodné, změňte kód clusteru nebo upgradujte na další upgradovací doménu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --upgrade-doména [požadováno] | Další upgradovací doména pro tento upgrade clusteru. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -377,15 +377,15 @@ Vraťte zpět upgrade Service Fabricho clusteru.
 
 Vraťte zpět upgrade kódu nebo konfigurace Service Fabricho clusteru.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -398,15 +398,15 @@ Získá průběh aktuálního upgradu clusteru.
 
 Získá aktuální průběh probíhajícího upgradu clusteru. Pokud v tuto chvíli neprobíhá upgrade, získejte poslední stav předchozího upgradu clusteru.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -417,9 +417,9 @@ Získá aktuální průběh probíhajícího upgradu clusteru. Pokud v tuto chv�
 ## <a name="sfctl-cluster-upgrade-update"></a>upgrade clusteru sfctl – aktualizace
 Aktualizujte parametry upgradu Service Fabric upgradu clusteru.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --App-Health-map | Slovník kódovaný v kódování JSON párů názvů aplikací a maximální procento není v pořádku před vyvoláním chyby. |
 | --Typ aplikace-typ-mapa | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
@@ -443,7 +443,7 @@ Aktualizujte parametry upgradu Service Fabric upgradu clusteru.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

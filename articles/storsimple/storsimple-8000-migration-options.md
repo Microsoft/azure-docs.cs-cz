@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514663"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961137"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti migrace dat ze zařízení StorSimple řady 5000–7000 
 
@@ -43,7 +43,7 @@ Další informace o tom, jak migrovat data pomocí řady StorSimple 8000, najdet
 
 Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Azure File Sync (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
 
-Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace dat z řady StorSimple 5000-7000 na Azure File Sync](storsimple-5000-7000-afs-migration.md).
+Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace dat z řady StorSimple 5000-7000 na Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md).
 
 ### <a name="third-party-options"></a>Možnosti třetích stran
 
@@ -63,7 +63,7 @@ Další informace o [migraci na datovou platformu Cohesity](https://info.cohesit
 
 Nasuni usnadňuje zákazníkům s StorSimple 5000-7000 migraci a uchovávání dat v Azure.  Nasuni je špičkové řešení úložiště založené na Azure, které zákazníkům poskytuje výkon a zabezpečení, které očekávají od Prem řešení, s využitím cloudových hospodárnosti a škálování.  Kromě vysoce výkonného úložiště souborů Nasuni a Azure zaznamená zálohování a zotavení po havárii a zároveň vám umožní sdílet data po celém světě s využitím centralizované správy úložiště souborů a spolupracovat s nimi. 
 
-Nasuni je prostředí, které usnadňuje migraci – Začněte ještě dnes:https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni je prostředí, které usnadňuje migraci – Začněte ještě dnes: https://info.nasuni.com/nasuni-storsimple-migration
 
 #### <a name="migrate-to-talon-fast"></a>Migrace na Talon FAST
 
@@ -127,4 +127,4 @@ A. [Tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimpl
 
 ## <a name="next-steps"></a>Další kroky
  - [Migrujte data z řady StorSimple 5000-7000 na zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
- - [Migrace dat z řady StorSimple 5000-7000 na Azure File Sync](storsimple-5000-7000-afs-migration.md)
+ - [Migrace dat z řady StorSimple 5000-7000 na Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md)

@@ -3,21 +3,22 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.date: 03/02/2021
+ms.topic: reference
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205539"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519703"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
-Azure image Builder k předávání informací do služby tvůrce imagí používá soubor. JSON. V tomto článku se přejdou na oddíly souboru JSON, takže si můžete vytvořit vlastní. Příklady úplných souborů. JSON najdete v tématu věnovaném [nástroji Azure image Builder GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Azure image Builder k předávání informací do služby tvůrce imagí používá soubor. JSON. V tomto článku se přejdou na oddíly souboru JSON, takže si můžete vytvořit vlastní. Příklady úplných souborů. JSON najdete v tématu věnovaném [nástroji Azure image Builder GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts).
 
 Toto je základní formát šablony:
 
@@ -77,7 +78,7 @@ Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imag
     "location": "<region>",
 ```
 ## <a name="vmprofile"></a>vmProfile
-Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tento údaj je nepovinný.
+Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tato položka je nepovinná.
 
 ```json
  {
@@ -96,7 +97,7 @@ Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude pou
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-Pokud neurčíte žádné vlastnosti virtuální sítě, vytvoří Tvůrce imagí svou vlastní virtuální síť, veřejnou IP adresu a NSG. Veřejná IP adresa se používá ke komunikaci s virtuálním počítačem sestavení, ale pokud nechcete, aby měl tvůrce imagí přístup k existujícím prostředkům virtuální sítě, jako jsou konfigurační servery (DSC, saďte, Puppet, Ansible), sdílené složky atd., můžete zadat virtuální síť. Další informace najdete v [dokumentaci k síti](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder), která je volitelná.
+Pokud neurčíte žádné vlastnosti virtuální sítě, vytvoří Tvůrce imagí svou vlastní virtuální síť, veřejnou IP adresu a NSG. Veřejná IP adresa se používá ke komunikaci s virtuálním počítačem sestavení, ale pokud nechcete, aby měl tvůrce imagí přístup k existujícím prostředkům virtuální sítě, jako jsou konfigurační servery (DSC, saďte, Puppet, Ansible), sdílené složky atd., můžete zadat virtuální síť. Další informace najdete v [dokumentaci k síti](image-builder-networking.md), která je volitelná.
 
 ```json
     "vnetConfig": {
@@ -120,7 +121,7 @@ Další informace najdete v tématu [Definování závislostí prostředků](../
 
 ## <a name="identity"></a>Identita
 
-Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements).
+Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit identitu Azure User-Assigned, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](image-builder-user-assigned-identity.md).
 
 
 ```json
@@ -133,7 +134,7 @@ Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obr�
 ```
 
 
-Podpora tvůrce imagí pro uživatelem přiřazenou identitu:
+Podpora tvůrce imagí pro User-Assignedou identitu:
 * Podporuje jenom jedinou identitu.
 * Nepodporuje vlastní názvy domén.
 
@@ -142,7 +143,7 @@ Další informace o nasazení této funkce najdete v tématu [Konfigurace spravo
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
-Nástroj image Builder v současné době podporuje jenom image a virtuální počítače Hyper-generace 1, `source` část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
+`source`Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí. Nástroj image Builder aktuálně nativně podporuje vytváření imagí technologie Hyper-V Generation (Gen1) 1 do galerie sdílených imagí Azure (SIG) nebo spravované image. Pokud chcete vytvořit image Gen2, musíte použít zdrojovou image Gen2 a distribuovat ji na VHD. Potom budete muset vytvořit spravovanou bitovou kopii z virtuálního pevného disku a vložit ji do souboru SIG jako Gen2 image.
 
 Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení image, v současné době existují tři typy:
 - PlatformImage – indikuje, že zdrojová Image je image na webu Marketplace.
@@ -154,7 +155,7 @@ Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení ima
 > Pokud používáte stávající vlastní image Windows, můžete spustit příkaz Sysprep až 8 časů na jedné imagi Windows, další informace najdete v dokumentaci k [nástroji Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) .
 
 ### <a name="platformimage-source"></a>PlatformImage zdroj 
-Azure image Builder podporuje image Windows serveru a klienta a Azure Marketplace pro Linux. úplný seznam najdete [tady](../windows/image-builder-overview.md#os-support) . 
+Azure image Builder podporuje image Windows serveru a klienta a Azure Marketplace pro Linux. úplný seznam najdete [tady](../image-builder-overview.md#os-support) . 
 
 ```json
         "source": {
@@ -233,7 +234,7 @@ Ve výchozím nastavení se spustí Tvůrce imagí po dobu 240 minut. Po této i
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Pokud nezadáte hodnotu buildTimeoutInMinutes, nebo ji nastavte na 0, použije se výchozí hodnota. Můžete zvýšit nebo snížit hodnotu až do maximálního počtu 960mins (16hrs). V systému Windows nedoporučujeme toto nastavit níže 60 minut. Pokud zjistíte, že se vám časový limit nelíbí, zkontrolujte [protokoly](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)a podívejte se, jestli krok přizpůsobení čeká na něco jako uživatelský vstup. 
+Pokud nezadáte hodnotu buildTimeoutInMinutes, nebo ji nastavte na 0, použije se výchozí hodnota. Můžete zvýšit nebo snížit hodnotu až do maximálního počtu 960mins (16hrs). V systému Windows nedoporučujeme toto nastavit níže 60 minut. Pokud zjistíte, že se vám časový limit nelíbí, zkontrolujte [protokoly](image-builder-troubleshoot.md#customization-log)a podívejte se, jestli krok přizpůsobení čeká na něco jako uživatelský vstup. 
 
 Pokud zjistíte, že k dokončení úprav potřebujete víc času, nastavte to podle toho, co si myslíte, že potřebujete, a s malým režijním časem. Ale nenastavuje se příliš vysoká, protože možná budete muset počkat na vypršení časového limitu před zobrazením chyby. 
 
@@ -248,7 +249,7 @@ Při použití `customize` :
 - Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
 - Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
 - Do skriptů neumísťujte citlivá data. 
-- Pokud nepoužíváte [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage), musí být umístění skriptu veřejně přístupná.
+- Pokud nepoužíváte [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity), musí být umístění skriptu veřejně přístupná.
 
 ```json
         "customize": [
@@ -308,11 +309,28 @@ Přizpůsobení vlastností:
 - **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
     * K vygenerování sha256Checksum pomocí terminálu pro Mac/Linux spusťte: `sha256sum <fileName>`
 
-
-Příkazy, které se mají spustit s oprávněními superuživatele, musí mít předponu `sudo` .
-
 > [!NOTE]
 > Vložené příkazy jsou uloženy jako součást definice šablony obrázku. Tyto příkazy lze zobrazit při výpisu definice bitové kopie a tyto jsou také podpora Microsoftu v případě případu podpory pro účely řešení potíží. Pokud máte citlivé příkazy nebo hodnoty, důrazně doporučujeme, abyste je přesunuli do skriptů a pomocí identity uživatele ověřili Azure Storage.
+
+#### <a name="super-user-privileges"></a>Oprávnění super uživatele
+Příkazy, které se mají spustit s oprávněními superuživatele, musí být s předponou `sudo` , můžete je přidat do skriptů nebo použít vložené příkazy, například:
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+Příklad skriptu používajícího sudo, na který můžete odkazovat pomocí scriptUri:
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Restart Windows – úprav 
 Úpravce restartování vám umožní restartovat virtuální počítač s Windows a počkat na jeho návrat do režimu online. to vám umožní nainstalovat software, který vyžaduje restart.  
@@ -373,7 +391,7 @@ Přizpůsobení vlastností:
 - **validExitCodes** – volitelné, platné kódy, které lze vrátit z příkazu Script/inline, tím se vyhnete nahlášené chybě příkazu Script/inline.
 - **runElevated** – volitelná, logická hodnota, podpora spouštění příkazů a skriptů se zvýšenými oprávněními.
 - **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
-    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash)
 
 
 ### <a name="file-customizer"></a>Úprav souborů
@@ -397,6 +415,10 @@ Podpora OS: Linux a Windows
 Vlastnosti úprav souborů:
 
 - **SourceUri** – dostupný koncový bod úložiště, může to být GitHub nebo Azure Storage. Můžete stáhnout pouze jeden soubor, nikoli celý adresář. Pokud potřebujete stáhnout adresář, použijte komprimovaný soubor a pak ho dekomprimujte pomocí úprav prostředí nebo úprav prostředí PowerShell. 
+
+> [!NOTE]
+> Pokud sourceUri je účet Azure Storage, nezávisle na tom, jestli je objekt BLOB označený jako Public, udělíte oprávnění identitě spravovaného uživatele pro přístup pro čtení objektu BLOB. Pokud chcete nastavit oprávnění úložiště, podívejte se prosím na tento [příklad](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) .
+
 - **cíl** – jedná se o úplnou cestu k cíli a název souboru. Musí existovat všechny odkazované cesty a podadresáře, pomocí prostředí PowerShell nebo úprav prostředí PowerShell je nastavit předem. Pomocí úprav skriptů můžete vytvořit cestu. 
 
 To je podporováno v adresářích systému Windows a cestách pro Linux, ale existují několik rozdílů: 
@@ -408,8 +430,6 @@ Pokud při pokusu o stažení souboru nebo jeho umístění do zadaného adresá
 
 > [!NOTE]
 > Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo Windows, použijte kód `curl` `Invoke-WebRequest` .
-
-Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
 ### <a name="windows-update-customizer"></a>web Windows Update úprav
 Tento úprav je postaven na [komunitě web Windows Update zřídí](https://packer.io/docs/provisioners/community-supported.html) pro balírnu, což je open source projekt udržovaný komunitou pro balení. Společnost Microsoft testuje a ověřuje ve službě image Builder službu pro vytváření imagí a bude podporovat zkoumání problémů s IT a řešení problémů, ale open source projekt není oficiálně podporován společností Microsoft. Podrobnou dokumentaci a nápovědu k web Windows Update zřídíte v úložišti projektu.
@@ -436,7 +456,7 @@ Přizpůsobení vlastností:
 - **updateLimit** – volitelné, definuje, kolik aktualizací se dá nainstalovat, výchozí 1000.
  
 > [!NOTE]
-> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalace pomocí [režimu spánku] nebo příkazů čekání ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
+> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalací pomocí příkazů [režimu spánku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) nebo čekání ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
 
 ### <a name="generalize"></a>Generalizovat 
 Ve výchozím nastavení bude Azure image Builder na konci každé fáze přizpůsobení image taky spouštět kód zrušení zřízení, aby se image generalizoval. Generalizace je proces, ve kterém je image nastavená tak, aby se mohla znovu použít k vytvoření více virtuálních počítačů. Pro virtuální počítače s Windows používá Azure image Builder nástroj Sysprep. Pro Linux spustí Azure image Builder "waagent-disvision". 
@@ -481,7 +501,7 @@ Pokud chcete příkazy přepsat, použijte modul pro vytváření skriptů Power
 * Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/DeprovisioningScript.sh
 
-Nástroj image Builder tyto příkazy přečte a zapíše se do protokolů AIB, "Customize. log". Podívejte se na téma [Poradce při potížích](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) s postupem shromažďování protokolů.
+Nástroj image Builder tyto příkazy přečte a zapíše se do protokolů AIB, "Customize. log". Podívejte se na téma [Poradce při potížích](image-builder-troubleshoot.md#customization-log) s postupem shromažďování protokolů.
  
 ## <a name="properties-distribute"></a>Vlastnosti: distribuce
 
@@ -534,17 +554,16 @@ Výstup:
 Výstupem obrázku bude prostředek spravované image.
 
 ```json
-"distribute": [
-        {
-"type":"managedImage",
+{
+       "type":"managedImage",
        "imageId": "<resource ID>",
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
             "<name": "<value>",
-             "<name>": "<value>"
-               }
-         }]
+            "<name>": "<value>"
+        }
+}
 ```
  
 Vlastnosti distribuce:
@@ -572,7 +591,7 @@ Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a def
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {
@@ -659,7 +678,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>Rušení sestavení obrázku
 Pokud používáte sestavení bitové kopie, které se domníváte, že je nesprávné, čeká se na vstup uživatele, nebo jste se už neúspěšně dokončí, můžete sestavení zrušit.
 
-Sestavení může být kdykoli zrušeno. Pokud byla fáze distribuce zahájena, můžete stále zrušit, ale budete muset vyčistit všechny bitové kopie, které nemusí být dokončeny. Příkaz Cancel nečeká na dokončení akce zrušit, monitorujte prosím `lastrunstatus.runstate` , abyste zrušili průběh pomocí těchto [příkazů](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)stavu.
+Sestavení může být kdykoli zrušeno. Pokud byla fáze distribuce zahájena, můžete stále zrušit, ale budete muset vyčistit všechny bitové kopie, které nemusí být dokončeny. Příkaz Cancel nečeká na dokončení akce zrušit, monitorujte prosím `lastrunstatus.runstate` , abyste zrušili průběh pomocí těchto [příkazů](image-builder-troubleshoot.md#customization-log)stavu.
 
 
 Příklady `cancel` příkazů:
@@ -678,4 +697,4 @@ az resource invoke-action \
 
 ## <a name="next-steps"></a>Další kroky
 
-V [GitHubu pro Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
+V [GitHubu pro Azure image Builder](https://github.com/azure/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.

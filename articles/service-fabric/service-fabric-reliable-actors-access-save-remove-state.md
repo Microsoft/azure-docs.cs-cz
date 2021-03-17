@@ -1,16 +1,15 @@
 ---
 title: Správa stavu Azure Service Fabric
 description: Přečtěte si informace o přístupu, uložení a odebrání stavu pro Azure Service Fabric Reliable actor a důležitých informací při návrhu aplikace.
-author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: vturecek
-ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1e796232719342883efc2aa5dd377d586f3039ad
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645629"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571313"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Přístup, uložení a odebrání stavu Reliable Actors
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) jsou objekty s jedním vláknem, které mohou spolehlivě zapouzdřovat logiku i stav a udržovat stav spolehlivě. Každá instance objektu actor má svého vlastního [správce stavu](service-fabric-reliable-actors-state-management.md): datová struktura, která spolehlivě ukládá páry klíč/hodnota. Správce stavu je Obálka kolem poskytovatele stavu. Můžete ho použít k ukládání dat bez ohledu na to, jaké [nastavení trvalosti](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) se používá.

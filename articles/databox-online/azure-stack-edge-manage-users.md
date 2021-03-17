@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge spravovat uživatele | Microsoft Docs
-description: Popisuje, jak používat Azure Portal ke správě uživatelů na hraničních Azure Stack.
+title: Azure Stack Edge pro FPGA Správa uživatelů | Microsoft Docs
+description: Popisuje, jak používat Azure Portal ke správě uživatelů v Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/11/2019
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339633"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913292"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>Použití Azure Portal ke správě uživatelů ve službě Azure Azure Stack Edge
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>Pomocí Azure Portal můžete spravovat uživatele na Azure Stack Edge pro FPGA.
 
-Tento článek popisuje, jak spravovat uživatele na Azure Stack hraničních zařízeních. Azure Stack Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
+Tento článek popisuje, jak spravovat uživatele na zařízení Azure Stack Edge pro FPGA. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -39,7 +39,7 @@ Oprávnění uživatele jsou definována při vytváření uživatele během vyt
 
 Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující kroky.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **přehled > uživatelé**. Na panelu příkazů vyberte **+ Přidat uživatele** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Uživatelé**. Na panelu příkazů vyberte **+ Přidat uživatele** .
 
     ![Vyberte Přidat uživatele.](media/azure-stack-edge-manage-users/add-user-1.png)
 
@@ -65,7 +65,7 @@ Po vytvoření uživatele můžete změnit heslo přidružené k uživateli. Vyb
 Pokud chcete uživatele odstranit, proveďte na webu Azure Portal následující kroky.
 
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **přehled > uživatelé**.
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Uživatelé**.
 
     ![Vyberte uživatele, kterého chcete odstranit.](media/azure-stack-edge-manage-users/delete-user-1.png)
 

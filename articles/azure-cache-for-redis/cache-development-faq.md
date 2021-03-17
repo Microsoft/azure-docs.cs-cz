@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211306"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585764"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Nejčastější dotazy týkající se vývoje Azure cache pro Redis
 
@@ -34,7 +34,7 @@ Tato část obsahuje následující Nejčastější dotazy:
 Existuje několik způsobů, jak můžete začít s Azure cache pro Redis.
 
 * Můžete se podívat na jeden z našich kurzů dostupných pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md)a [Python](cache-python-get-started.md).
-* Můžete sledovat, [jak vytvářet vysoce výkonné aplikace pomocí Microsoft Azure cache pro Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
+* Můžete sledovat, [jak vytvářet High-Performance aplikace pomocí Microsoft Azure mezipaměti pro Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
 * Pokud chcete zjistit, jak používat Redis, můžete se podívat na dokumentaci klienta pro klienty, kteří odpovídají vývojovému jazyku vašeho projektu. Existuje mnoho Redis klientů, které lze použít s Azure cache pro Redis. Seznam Redis klientů najdete v tématu [https://redis.io/clients](https://redis.io/clients) .
 
 Pokud ještě nemáte účet Azure, můžete:
@@ -56,7 +56,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
 * **Opakování**
   * V případě ConnectRetry a ConnectTimeout je obecné pokyny pro rychlé selhání a zkuste to znovu. Tyto doprovodné materiály jsou založené na vašich úlohách a o tom, kolik času v průměru trvá klientovi, aby vydával příkaz Redis a dostal odpověď.
   * Nechejte StackExchange. Redis automaticky znovu připojit místo kontroly stavu připojení a opětovném připojení. **Vyhněte se použití vlastnosti ConnectionMultiplexer. nepřipojená**.
-  * Snowballing – někdy můžete narazit na problém, ve kterém zkoušíte, a pokusy Snowball a nikdy se neobnoví. Pokud dojde k Snowballing, měli byste zvážit použití exponenciálního algoritmu opakování omezení rychlosti, jak je popsáno v [obecných pokynech](../best-practices-retry-general.md) , které publikovala skupina Microsoft patterns & Practices.
+  * Snowballing – někdy můžete narazit na problém, ve kterém zkoušíte, a pokusy Snowball a nikdy se neobnoví. Pokud dojde k Snowballing, měli byste zvážit použití exponenciálního algoritmu opakování omezení rychlosti, jak je popsáno v [obecných pokynech](/azure/architecture/best-practices/transient-faults) , které publikovala skupina Microsoft patterns & Practices.
   
 * **Hodnoty časového limitu**
   * Vezměte v úvahu svůj pracovní postup a nastavte hodnoty odpovídajícím způsobem. Pokud ukládáte velké hodnoty, nastavte časový limit na vyšší hodnotu.
@@ -64,12 +64,12 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * `ConnectionMultiplexer.ClientName`Pro účely diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
   * `ConnectionMultiplexer`Pro vlastní úlohy použijte více instancí.
-      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Například:
-      * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
-      * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
-      * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
-      * Nastavte `ClientName` u každého multiplexního multiplexoru vlastnost, která bude pomáhat s diagnostikou.
-      * Tento návod může vést k efektivnější latenci na `ConnectionMultiplexer` .
+    * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
+    * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
+    * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
+    * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
+    * Nastavte `ClientName` u každého multiplexního multiplexoru vlastnost, která bude pomáhat s diagnostikou.
+    * Tento návod může vést k efektivnější latenci na `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jakou mezipaměť Azure pro klienty Redis můžu použít?
 Jednou z skvělých věcí o Redis je to, že mnoho klientů podporuje mnoho různých vývojových jazyků. Aktuální seznam klientů najdete v tématu [Redis klienti](https://redis.io/clients). Výukové kurzy, které pokrývají několik různých jazyků a klientů, najdete v článku [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a na stejné úrovni jako v obsahu.
@@ -109,7 +109,7 @@ Můžete použít kterýkoli z příkazů uvedených v [Redis příkazech](https
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nefungují s portem TLS, ale pomocí `stunnel` pokynů v článku [Jak používat nástroj příkazového řádku Redis s Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) můžete použít nástroj, například k bezpečnému připojení nástrojů k portu TLS.
+> Nástroje příkazového řádku Redis nefungují s portem TLS, ale pomocí `stunnel` pokynů v článku [Jak používat nástroj příkazového řádku Redis s Azure cache for Redis](./cache-how-to-redis-cli-tool.md) můžete použít nástroj, například k bezpečnému připojení nástrojů k portu TLS.
 >
 >
 

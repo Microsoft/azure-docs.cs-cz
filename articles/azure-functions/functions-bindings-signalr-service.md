@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523032"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763485"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -18,6 +18,7 @@ Tato sada článků vysvětluje, jak ověřit a odeslat zprávy v reálném čas
 
 | Akce | Typ |
 |---------|---------|
+| Zpracování zpráv ze služby signalizace | [Aktivační vazba](./functions-bindings-signalr-service-trigger.md) |
 | Vrátí adresu URL koncového bodu služby a přístupový token. | [Vstupní vazba](./functions-bindings-signalr-service-input.md) |
 | Odeslat zprávy služby Signaler |[Výstupní vazba](./functions-bindings-signalr-service-output.md) |
 
@@ -36,7 +37,7 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
 [Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
-[Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
+[Aktualizace rozšíření]: ./functions-bindings-register.md
 [Rozšíření nástrojů Azure]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 Podrobnosti o tom, jak nakonfigurovat a používat službu signalizace a Azure Functions společně, najdete v tématu [Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service](../azure-signalr/signalr-concept-serverless-development-config.md).
@@ -55,5 +56,6 @@ Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, mus
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Zpracování zpráv ze služby signalizace (aktivační vazba)](./functions-bindings-signalr-service-trigger.md)
 - [Vrácení adresy URL koncového bodu služby a přístupového tokenu (vstupní vazba)](./functions-bindings-signalr-service-input.md)
-- [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md) 
+- [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md)

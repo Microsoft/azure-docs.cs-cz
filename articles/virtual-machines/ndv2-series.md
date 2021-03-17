@@ -3,16 +3,16 @@ title: Řada NDv2
 description: Specifikace pro virtuální počítače řady NDv2-Series.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f062aa43132543a2c149039eb50c0a0ab22d83d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286202"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618555"
 ---
 # <a name="updated-ndv2-series"></a>Aktualizace řady NDv2-Series
 
@@ -24,23 +24,25 @@ Instance NDv2 poskytují vynikající výkon pro úlohy HPC a AI s využitím CU
 
 Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což znamená 8 GPU na virtuální počítač), tak na škálování (více vzájemně pracujících více virtuálních počítačů) úloh. NDv2 Series teď podporuje 100 gigabitové sítě InfiniBand EDR, které jsou k dispozici na začátku série virtuálních počítačů HPC, a umožňují tak vysoce výkonné clustering pro paralelní scénáře, včetně distribuovaného školení pro AI a ML. Tato síť back-end podporuje všechny hlavní protokoly InfiniBand, včetně těch, které pracují s knihovnami NCCL2 společnosti NVIDIA, což umožňuje bezproblémové clusteringu GPU.
 
+> [!IMPORTANT]
 > Při [povolování InfiniBand](./workloads/hpc/enable-infiniband.md) na virtuálním počítači s ND40rs_v2 použijte prosím ovladač OFED 4.7-1.0.0.1 Mellanox.
 >
-> V důsledku zvýšené paměti GPU vyžaduje nový virtuální počítač ND40rs_v2 použití [virtuálních počítačů generace 2](./windows/generation-2.md) a imagí z Marketplace. 
+> V důsledku zvýšené paměti GPU vyžaduje nový virtuální počítač ND40rs_v2 použití [virtuálních počítačů generace 2](./generation-2.md) a imagí z Marketplace. 
 >
 > Poznámka: ND40s_v2 o velikosti 16 GB na paměť GPU již není k dispozici pro verzi Preview a byla nahrazena aktualizovaným ND40rs_v2.
 
 <br>
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-InfiniBand: podporované
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+InfiniBand: podporované<br>
+NVIDIA NVLink Interconnect: podporováno<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|
@@ -61,7 +63,7 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

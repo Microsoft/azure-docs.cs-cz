@@ -1,6 +1,6 @@
 ---
 title: Použití Table Storage Azure a Azure Cosmos DB rozhraní API pro tabulky s C++
-description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
+description: Ukládat strukturovaná data v cloudu pomocí služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky pomocí jazyka C++.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 3d38fa2afe35976283e5129eab7d7f8ef3a1103b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236484"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489875"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -78,7 +79,7 @@ Tento příklad ukazuje, jak deklarovat statické pole pro uchování Azure Stor
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-Použijte název svého účtu úložiště pro `<your_storage_account>` . Pro <your_storage_account_key> použijte přístupový klíč pro účet úložiště uvedený v [Azure Portal](https://portal.azure.com). Informace o účtech úložiště a přístupových klíčích najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
+Použijte název svého účtu úložiště pro `<your_storage_account>` . Pro <your_storage_account_key> použijte přístupový klíč pro účet úložiště uvedený v [Azure Portal](https://portal.azure.com). Informace o účtech úložiště a přístupových klíčích najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Nastavení připojovacího řetězce služby Azure Cosmos DB
 
@@ -94,7 +95,7 @@ Použijte název účtu Azure Cosmos DB pro `<your_cosmos_db_account>` . Zadejte
 K otestování vaší aplikace v místním počítači se systémem Windows můžete použít emulátor Azure Storage, který je nainstalovaný se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje služby Azure Blob, Queue a Table, které jsou k dispozici na vašem místním vývojovém počítači. Následující příklad ukazuje, jak deklarovat statické pole pro uložení připojovacího řetězce do místního emulátoru úložiště:  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
@@ -138,7 +139,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Chcete-li přidat entitu do tabulky, vytvořte nový `table_entity` objekt a předejte ho do `table_operation::insert_entity` . Následující kód používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné zadávat dotazy rychleji než entity s různými klíči oddílů. Použití různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Další informace najdete v tématu [Kontrolní seznam výkonu a škálovatelnosti služby Microsoft Azure Storage](../storage/common/storage-performance-checklist.md).
+Chcete-li přidat entitu do tabulky, vytvořte nový `table_entity` objekt a předejte ho do `table_operation::insert_entity` . Následující kód používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné zadávat dotazy rychleji než entity s různými klíči oddílů. Použití různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Další informace najdete v tématu [Kontrolní seznam výkonu a škálovatelnosti služby Microsoft Azure Storage](../storage/blobs/storage-performance-checklist.md).
 
 Následující kód vytvoří novou instanci `table_entity` s některými Zákaznickými daty k uložení. Kód při dalším volání `table_operation::insert_entity` k vytvoření `table_operation` objektu pro vložení entity do tabulky a přidruží k ní novou entitu tabulka. Nakonec kód volá `execute` metodu `cloud_table` objektu. Nový `table_operation` pošle požadavek do Table Service, aby se do tabulky vložila nová entita zákazníka `people` .  
 
@@ -497,12 +498,12 @@ else
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
-Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h*, odeberte přepínač kompilátoru **/Permissive-** :
+Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h* , odeberte přepínač kompilátoru **/Permissive-** :
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti**.
-1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace**, pak rozbalte **C/C++** a vyberte **Jazyk**.
+1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace** , pak rozbalte **C/C++** a vyberte **Jazyk**.
 1. Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,30 +1,30 @@
 ---
-title: Dotazování souborů JSON pomocí SQL na vyžádání (Preview)
-description: V této části se dozvíte, jak číst soubory JSON pomocí SQL na vyžádání v Azure synapse Analytics.
+title: Dotazování souborů JSON pomocí SQL fondu bez serveru
+description: V této části se dozvíte, jak číst soubory JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5fcf688bbe8a5be2fc10b70950990b7b6ca71df8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489720"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225587"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
+# <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve verzi Preview) ve službě Azure synapse Analytics. Cílem dotazu je přečíst soubory JSON pomocí [OpenRowset](develop-openrowset.md). 
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL ve službě Azure synapse Analytics. Cílem dotazu je přečíst soubory JSON pomocí [OpenRowset](develop-openrowset.md). 
 - Standardní soubory JSON, kde je více dokumentů JSON uloženo jako pole JSON.
 - Soubory JSON s hodnotami oddělenými řádky, kde jsou dokumenty JSON oddělené znakem nového řádku. Společná rozšíření pro tyto typy souborů jsou `jsonl` , `ldjson` a `ndjson` .
 
 ## <a name="read-json-documents"></a>Čtení dokumentů JSON
 
-Nejjednodušší způsob, jak zobrazit obsah souboru JSON, je poskytnout URL souboru pro `OPENROWSET` funkci, zadat CSV `FORMAT` a nastavit hodnoty `0x0b` pro `fieldterminator` a `fieldquote` . Pokud potřebujete číst soubory JSON s oddělovači řádků, je to pro vás dostačující. Pokud máte klasický soubor JSON, budete muset nastavit hodnoty `0x0b` pro `rowterminator` . `OPENROWSET`funkce bude analyzovat JSON a vracet všechny dokumenty v následujícím formátu:
+Nejjednodušší způsob, jak zobrazit obsah souboru JSON, je poskytnout adresu URL souboru této `OPENROWSET` funkci, zadat CSV `FORMAT` a nastavit hodnoty `0x0b` pro `fieldterminator` a `fieldquote` . Pokud potřebujete číst soubory JSON s oddělovači řádků, je to pro vás dostačující. Pokud máte klasický soubor JSON, budete muset nastavit hodnoty `0x0b` pro `rowterminator` . `OPENROWSET` funkce bude analyzovat JSON a vracet všechny dokumenty v následujícím formátu:
 
 | přípon |
 | --- |
@@ -33,7 +33,7 @@ Nejjednodušší způsob, jak zobrazit obsah souboru JSON, je poskytnout URL sou
 |{"date_rep": "2020-07-26", "Day": 26; "Month": 7; "Year": 2020, "Cases": 4, "úhyn": 0, "geo_id": "AF"}|
 |{"date_rep": "2020-07-27", "den": 27, "měsíc": 7, "rok": 2020, "případy": 8, "úhyn": 0, "geo_id": "AF"}|
 
-Pokud je soubor veřejně dostupný, nebo pokud vaše identita Azure AD může získat přístup k tomuto souboru, měli byste být schopni zobrazit obsah souboru pomocí dotazu, jako je ten, který je uvedený v následujících příkladech.
+Pokud je soubor veřejně dostupný, nebo pokud vaše identita Azure AD může získat přístup k tomuto souboru, měli byste vidět obsah tohoto souboru pomocí dotazu, jako je ten, který je uvedený v následujících příkladech.
 
 ### <a name="read-json-files"></a>Čtení souborů JSON
 
@@ -58,7 +58,7 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Tento dotaz vrátí každý dokument JSON jako samostatný řádek sady výsledků dotazu. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity, budete muset nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential). 
+Dokument JSON v předchozím ukázkovém dotazu obsahuje pole objektů. Dotaz vrátí každý objekt jako samostatný řádek v sadě výsledků dotazu. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity, musíte nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential). 
 
 ### <a name="data-source-usage"></a>Využití zdroje dat
 
@@ -126,12 +126,13 @@ Příklady dotazů čtou soubory *JSON* obsahující dokumenty s následující 
 
 ### <a name="query-json-files-using-json_value"></a>Dotazování souborů JSON pomocí JSON_VALUE
 
-Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (title, Publisher) z dokumentů JSON:
+Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) k načtení skalárních hodnot ( `date_rep` , `countries_and_territories` , `cases` ) z dokumentů JSON:
 
 ```sql
 select
     JSON_VALUE(doc, '$.date_rep') AS date_reported,
     JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    CAST(JSON_VALUE(doc, '$.deaths') AS INT) as fatal,
     JSON_VALUE(doc, '$.cases') as cases,
     doc
 from openrowset(
@@ -144,9 +145,11 @@ from openrowset(
 order by JSON_VALUE(doc, '$.geo_id') desc
 ```
 
+Po extrakci vlastností JSON z dokumentu JSON můžete definovat aliasy sloupců a volitelně přetypování textové hodnoty na určitý typ.
+
 ### <a name="query-json-files-using-openjson"></a>Dotazování souborů JSON pomocí OPENJSON
 
-Následující dotaz používá [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Načte statistiku COVID, která se oznamuje v Srbsku:
+Následující dotaz používá [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest&preserve-view=true). Načte statistiku COVID, která se oznamuje v Srbsku:
 
 ```sql
 select
@@ -166,6 +169,10 @@ from openrowset(
 where country = 'Serbia'
 order by country, date_rep desc;
 ```
+Výsledky jsou funkčně stejné jako výsledky vracené pomocí `JSON_VALUE` funkce. V některých případech je `OPENJSON` možné využít výhody `JSON_VALUE` :
+- V `WITH` klauzuli můžete explicitně nastavit aliasy sloupců a typy pro každou vlastnost. Funkci nemusíte vkládat `CAST` do každého sloupce v `SELECT` seznamu.
+- `OPENJSON` může být rychlejší, pokud vracíte velký počet vlastností. Pokud vracíte jenom 1-2 vlastností, `OPENJSON` může být funkce režie.
+- Je nutné použít `OPENJSON` funkci, pokud potřebujete analyzovat pole z každého dokumentu a spojit ho s nadřazeným řádkem.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Vytvoření a správa instančního objektu služby Azure Active Di
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4b5b3eedb2e63686e1bb26580ea653e3a50a910
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298544"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507819"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávn
 
 Pokud používáte instanční objekt z jiného tenanta Azure AD, existují další okolnosti týkající se oprávnění, která jsou k dispozici při nasazení clusteru. Možná nemáte potřebná oprávnění ke čtení a zápisu informací o adresáři. Další informace najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?][azure-ad-permissions]
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatické vytvoření a použití instančního objektu
 
@@ -100,19 +100,7 @@ Pokud jako úložiště imagí kontejneru použijete Azure Container Registry (A
 
 ### <a name="networking"></a>Sítě
 
-Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsíť nebo veřejné IP adresy nacházejí v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
-
-- Vytvořte [vlastní roli][rbac-custom-role] a definujte následující oprávnění role:
-  - *Microsoft. Network/virtualNetworks/subnets/JOIN/Action*
-  - *Microsoft. Network/virtualNetworks/podsítí/čtení*
-  - *Microsoft. Network/virtualNetworks/podsítí/Write*
-  - *Microsoft. Network/publicIPAddresses/JOIN/Action*
-  - *Microsoft. Network/publicIPAddresses/Read*
-  - *Microsoft. Network/publicIPAddresses/Write*
-  - Pokud používáte [Vlastní směrovací tabulky v clusterech Kubenet](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) , přidejte tato další oprávnění:
-    - *Microsoft. Network/routeTables/Write*
-    - *Microsoft. Network/routeTables/Read*
-- Nebo přiřaďte integrovanou roli [Přispěvatel sítě][rbac-network-contributor] k podsíti v rámci virtuální sítě.
+Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsíť nebo veřejné IP adresy nacházejí v jiné skupině prostředků. Přiřaďte integrovanou roli [přispěvatele sítě][rbac-network-contributor] v podsíti v rámci virtuální sítě. Případně můžete vytvořit [vlastní roli][rbac-custom-role] s oprávněními pro přístup k síťovým prostředkům v této skupině prostředků. Další podrobnosti najdete v tématu věnovaném [oprávněním služby AKS][aks-permissions] .
 
 ### <a name="storage"></a>Storage
 
@@ -135,12 +123,12 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 - Ve výchozím nastavení jsou přihlašovací údaje instančního objektu platné po dobu jednoho roku. [Přihlašovací údaje instančního objektu můžete kdykoli aktualizovat nebo otáčet][update-credentials] .
 - Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes se dá přidružit k libovolnému platnému názvu aplikace Azure AD (například: *https://www.contoso.org/example* ). Adresa URL aplikace nemusí být skutečný koncový bod.
 - Při zadávání **ID klienta** instančního objektu použijte hodnotu `appId`.
-- Na virtuálních počítačích uzlů agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají do souboru.`/etc/kubernetes/azure.json`
+- Na virtuálních počítačích uzlů agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají do souboru. `/etc/kubernetes/azure.json`
 - Pokud použijete příkaz [az aks create][az-aks-create] k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
 - Pokud instanční objekt nebudete výslovně předávat v dalších příkazech rozhraní příkazového řádku AKS, použije se výchozí instanční objekt umístěný v `~/.azure/aksServicePrincipal.json` .  
 - Volitelně můžete také odebrat aksServicePrincipal.jsv souboru a AKS vytvořit nový instanční objekt.
 - Při odstraňování clusteru AKS vytvořeného příkazem [az aks create][az-aks-create] se instanční objekt, který se vytvořil automaticky, neodstraní.
-    - Pokud chcete odstranit instanční objekt, zadejte dotaz na svůj cluster *servicePrincipalProfile. ClientID* a pak ho odstraňte pomocí příkazu [AZ AD App Delete][az-ad-app-delete]. Nahraďte následující názvy skupin prostředků a názvů clusterů vlastními hodnotami:
+    - Pokud chcete odstranit instanční objekt, zadejte dotaz na svůj cluster *servicePrincipalProfile. ClientID* a pak ho odstraňte pomocí příkazu [AZ AD SP Delete][az-ad-sp-delete]. Nahraďte následující názvy skupin prostředků a názvů clusterů vlastními hodnotami:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -174,6 +162,7 @@ Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [akt
 [aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md
 [acr-intro]: ../container-registry/container-registry-intro.md
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-delete]: /cli/azure/ad/sp#az_ad_sp_delete
 [azure-load-balancer-overview]: ../load-balancer/load-balancer-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [service-principal]:../active-directory/develop/app-objects-and-service-principals.md
@@ -189,3 +178,4 @@ Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [akt
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

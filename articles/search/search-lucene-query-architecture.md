@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002744"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Fulltextové vyhledávání v Azure Kognitivní hledání
 
@@ -49,9 +49,9 @@ Následující diagram znázorňuje komponenty, které se používají ke zpraco
 
 Požadavek hledání je kompletní specifikace toho, co by mělo být vráceno v sadě výsledků dotazu. V nejjednodušším tvaru se jedná o prázdný dotaz bez jakýchkoli kritérií žádného druhu. Realističtější příklad obsahuje parametry, několik dotazů, které mohou být vymezeny na určitá pole, případně výraz filtru a pravidla řazení.  
 
-V následujícím příkladu se nachází požadavek hledání, který můžete odeslat do služby Azure Kognitivní hledání pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).  
+V následujícím příkladu se nachází požadavek hledání, který můžete odeslat do služby Azure Kognitivní hledání pomocí [REST API](/rest/api/searchservice/search-documents).  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 Pro tento požadavek vyhledávací modul provede následující akce:
 
@@ -69,16 +69,16 @@ Pro tento požadavek vyhledávací modul provede následující akce:
 2. Spustí dotaz. V tomto příkladu se vyhledávací dotaz skládá ze frází a podmínek: `"Spacious, air-condition* +\"Ocean view\""` (uživatelé obvykle nezadávají interpunkci, ale včetně v příkladu, které nám umožňují vysvětlit, jak analyzátor zpracovává). Pro tento dotaz hledá vyhledávací modul pole Popis a název zadaný v `searchFields` dokumentu pro dokumenty, které obsahují "zobrazení oceánu", a navíc pro pojem "spacious", nebo na podmínky, které začínají předponou "Air-podmínka". `searchMode`Parametr se používá ke shodě s libovolným termínem (výchozí) nebo všemi nimi, pro případy, kdy není explicitně vyžadován termín ( `+` ).
 3. Vyřadí výslednou sadu hotelů podle blízkosti daného geografického umístění a potom se vrátí volající aplikaci. 
 
-Většina tohoto článku se týká zpracování *vyhledávacího dotazu*: `"Spacious, air-condition* +\"Ocean view\""` . Filtrování a řazení jsou mimo rozsah. Další informace najdete v [referenční dokumentaci rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Většina tohoto článku se týká zpracování *vyhledávacího dotazu*: `"Spacious, air-condition* +\"Ocean view\""` . Filtrování a řazení jsou mimo rozsah. Další informace najdete v [referenční dokumentaci rozhraní API pro hledání](/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>Fáze 1: analýza dotazů 
 
 Jak je uvedeno, řetězec dotazu je první řádek požadavku: 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 Analyzátor dotazů odděluje operátory (například `*` a `+` v příkladu) z vyhledávaných podmínek a dekonstruuje vyhledávací dotaz na *poddotazy* podporovaného typu: 
 
@@ -86,7 +86,7 @@ Analyzátor dotazů odděluje operátory (například `*` a `+` v příkladu) z 
 + *dotaz fráze* pro citované výrazy (například zobrazení oceánu)
 + *dotaz na předponu* pro podmínky následované operátorem předpony `*` (jako je letecký stav)
 
-Úplný seznam podporovaných typů dotazů naleznete v tématu [syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) .
+Úplný seznam podporovaných typů dotazů naleznete v tématu [syntaxe dotazů Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) .
 
 Operátory přidružené k poddotaz určují, zda má být dotaz "musí být" nebo "by měl být" splněn, aby bylo možné dokument považovat za shodu. Například `+"Ocean view"` je "musí" z důvodu `+` operátoru. 
 
@@ -96,7 +96,7 @@ Analyzátor dotazů přestrukturuje poddotazy do *stromu dotazu* (interní struk
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Podporované analyzátory: jednoduchý a úplný Lucene 
 
- Azure Kognitivní hledání zpřístupňuje dva různé jazyky dotazů `simple` (výchozí) a `full` . Nastavením `queryType` parametru s vaším požadavkem hledání sdělujete analyzátor dotazů, který jazyk dotazů zvolíte, aby věděl, jak interpretovat operátory a syntaxi. [Jednoduchý dotazovací jazyk](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) je intuitivní a robustní, často vhodný k interpretaci vstupu uživatele, protože je bez zpracování na straně klienta. Podporuje operátory dotazů, které jsou známé z webových vyhledávačů. [Celý dotazovací jazyk pro Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), který získáte nastavením `queryType=full` , rozšiřuje výchozí jednoduchý dotazovací jazyk přidáním podpory pro více operátorů a typů dotazů, jako jsou zástupné znaky, přibližné, regulární výrazy a dotazy v oboru polí. Například regulární výraz odeslaný v jednoduché syntaxi dotazu by byl interpretován jako řetězec dotazu, nikoli výraz. Příklad žádosti v tomto článku používá úplný dotazovací jazyk Lucene.
+ Azure Kognitivní hledání zpřístupňuje dva různé jazyky dotazů `simple` (výchozí) a `full` . Nastavením `queryType` parametru s vaším požadavkem hledání sdělujete analyzátor dotazů, který jazyk dotazů zvolíte, aby věděl, jak interpretovat operátory a syntaxi. [Jednoduchý dotazovací jazyk](/rest/api/searchservice/simple-query-syntax-in-azure-search) je intuitivní a robustní, často vhodný k interpretaci vstupu uživatele, protože je bez zpracování na straně klienta. Podporuje operátory dotazů, které jsou známé z webových vyhledávačů. [Celý dotazovací jazyk pro Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search), který získáte nastavením `queryType=full` , rozšiřuje výchozí jednoduchý dotazovací jazyk přidáním podpory pro více operátorů a typů dotazů, jako jsou zástupné znaky, přibližné, regulární výrazy a dotazy v oboru polí. Například regulární výraz odeslaný v jednoduché syntaxi dotazu by byl interpretován jako řetězec dotazu, nikoli výraz. Příklad žádosti v tomto článku používá úplný dotazovací jazyk Lucene.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Dopad searchMode na analyzátor 
 
@@ -104,9 +104,9 @@ Dalším parametrem žádosti o vyhledávání, který má vliv na analýzu, je 
 
 Když `searchMode=any` , což je výchozí hodnota, oddělovač mezer mezi spacious a Air je nebo ( `||` ), což znamená, že text ukázkového dotazu odpovídá: 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 Explicitní operátory, jako `+` v `+"Ocean view"` , jsou v konstruktoru logického dotazu jednoznačné (podmínky se *musí* shodovat). Méně zjevně je způsob, jak interpretovat zbývající podmínky: spacious a letecký stav. Vyhledá vyhledávací modul shody v zobrazení oceánu *a* v spacious *a* v klimatizačním prostředí? Nebo by mělo najít zobrazení oceánu plus *jednu* ze zbývajících podmínek? 
 
@@ -114,16 +114,16 @@ Ve výchozím nastavení ( `searchMode=any` ) vyhledávací modul předpokládá
 
 Předpokládejme, že jsme teď nastavili `searchMode=all` . V tomto případě je místo interpretováno jako operace "a". Každý z zbývajících podmínek musí být uveden v dokumentu, aby mohl být kvalifikován jako shoda. Výsledný vzorový dotaz by byl interpretován takto: 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 Upravený strom dotazu pro tento dotaz by byl následující, kde odpovídající dokument je průnik všech tří poddotazů: 
 
  ![Logický dotaz searchmode vše][3]
 
 > [!Note] 
-> Výběr možnosti `searchMode=any` přes `searchMode=all` je rozhodnutí, které se nejlépe dorazilo na základě spuštění reprezentativních dotazů. Uživatelé, kteří budou pravděpodobně zahrnovat operátory (společné při hledání úložišť dokumentů), mohou najít výsledky intuitivnější `searchMode=all` , pokud informují booleovské konstruktory dotazů. Další informace o souhře mezi `searchMode` operátory a najdete v tématu [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
+> Výběr možnosti `searchMode=any` přes `searchMode=all` je rozhodnutí, které se nejlépe dorazilo na základě spuštění reprezentativních dotazů. Uživatelé, kteří budou pravděpodobně zahrnovat operátory (společné při hledání úložišť dokumentů), mohou najít výsledky intuitivnější `searchMode=all` , pokud informují booleovské konstruktory dotazů. Další informace o souhře mezi `searchMode` operátory a najdete v tématu [Jednoduchá syntaxe dotazů](/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>Fáze 2: lexikální analýza 
@@ -137,10 +137,10 @@ Nejběžnější forma lexikální analýzy je *Lingvistická analýza* , která
 * Rozdělení složených slov na části komponent 
 * Malé písmeno velkými písmeny na velké slovo 
 
-Všechny tyto operace mají za následek mazání rozdílů mezi textovým vstupem poskytnutým uživatelem a podmínkami uloženými v indexu. Takové operace přecházejí mimo zpracování textu a vyžadují důkladné znalosti samotného jazyka. Pro přidání této vrstvy povědomí o jazykovém používání Azure Kognitivní hledání podporuje dlouhý seznam [analyzátorů jazyků](https://docs.microsoft.com/rest/api/searchservice/language-support) od Lucene i od Microsoftu.
+Všechny tyto operace mají za následek mazání rozdílů mezi textovým vstupem poskytnutým uživatelem a podmínkami uloženými v indexu. Takové operace přecházejí mimo zpracování textu a vyžadují důkladné znalosti samotného jazyka. Pro přidání této vrstvy povědomí o jazykovém používání Azure Kognitivní hledání podporuje dlouhý seznam [analyzátorů jazyků](/rest/api/searchservice/language-support) od Lucene i od Microsoftu.
 
 > [!Note]
-> V závislosti na vašem scénáři se požadavky na analýzu můžou v rozsahu od minima vymezit. Můžete ovládat složitost lexikální analýzy výběrem jednoho z předdefinovaných analyzátorů nebo vytvořením vlastního [analyzátoru](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search). Analyzátory jsou vymezeny na prohledávatelné pole a jsou zadány jako součást definice pole. To vám umožní měnit lexikální analýzu pro každé pole. Neurčeno, používá se *standardní* analyzátor Lucene.
+> V závislosti na vašem scénáři se požadavky na analýzu můžou v rozsahu od minima vymezit. Můžete ovládat složitost lexikální analýzy výběrem jednoho z předdefinovaných analyzátorů nebo vytvořením vlastního [analyzátoru](/rest/api/searchservice/Custom-analyzers-in-Azure-Search). Analyzátory jsou vymezeny na prohledávatelné pole a jsou zadány jako součást definice pole. To vám umožní měnit lexikální analýzu pro každé pole. Neurčeno, používá se *standardní* analyzátor Lucene.
 
 V našem příkladu je před analýzou počáteční strom dotazu výraz "spacious" s velkým písmenem "S" a čárkou, kterou analyzátor dotazů interpretuje jako součást termínu dotazu (čárka není považována za operátor dotazovacího jazyka).  
 
@@ -150,18 +150,18 @@ Když výchozí analyzátor zpracuje termín, bude se jednat o malý pohled na o
 
 ### <a name="testing-analyzer-behaviors"></a>Chování analyzátoru testování 
 
-Chování analyzátoru se dá testovat pomocí [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/searchservice/test-analyzer). Zadejte text, který chcete analyzovat, aby se zobrazily informace o tom, jaké výrazy vygeneroval analyzátor. Například chcete-li zjistit, jak by standardní analyzátor zpracovával text "letecký stav", můžete vydat následující požadavek:
+Chování analyzátoru se dá testovat pomocí [rozhraní API pro analýzu](/rest/api/searchservice/test-analyzer). Zadejte text, který chcete analyzovat, aby se zobrazily informace o tom, jaké výrazy vygeneroval analyzátor. Například chcete-li zjistit, jak by standardní analyzátor zpracovával text "letecký stav", můžete vydat následující požadavek:
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 Standardní analyzátor přerušuje vstupní text do následujících dvou tokenů a přiřadí je k atributům, jako jsou počáteční a koncové posuny (používané pro zvýrazňování přístupů), a také na jejich pozici (používané pro shodu frází):
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Standardní analyzátor přerušuje vstupní text do následujících dvou token
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Lexikální analýza se vztahuje pouze na typy dotazů, které vyžadují úpln�
 
 Načtení dokumentu odkazuje na hledání dokumentů s vyhovujícími podmínkami v indexu. Tato fáze je nejlépe pochopením příkladu. Pojďme začít s indexem hotelů, který má následující jednoduché schéma: 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Načtení dokumentu odkazuje na hledání dokumentů s vyhovujícími podmínkam
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 Dále předpokládáme, že tento rejstřík obsahuje následující čtyři dokumenty: 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Dále předpokládáme, že tento rejstřík obsahuje následující čtyři dok
         }
     ]
 }
-~~~~
+```
 
 **Jak jsou indexovány výrazy**
 
@@ -251,7 +251,7 @@ To je běžné, ale nevyžadují se pro použití stejných analyzátorů pro op
 
 Návrat do našeho příkladu pro pole **title** má obrácený index vypadat takto:
 
-| Pojem | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | atman | 1 |
 | míčů | 2 |
@@ -265,7 +265,7 @@ V poli title se pouze *Hotel* zobrazuje ve dvou dokumentech: 1, 3.
 
 Pro pole **Popis** je index následující:
 
-| Pojem | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | letové | 3
 | a | 4
@@ -276,7 +276,7 @@ Pro pole **Popis** je index následující:
 | ostrov | 2
 | Kaua ʻ i | 2
 | uložené | 2
-| north | 2
+| sever | 2
 | spadající | 1, 2, 3
 | z | 2
 | on |2
@@ -321,10 +321,12 @@ Každému dokumentu v sadě výsledků hledání je přiřazeno skóre relevance
 ### <a name="scoring-example"></a>Příklad bodování
 
 Odvolat tři dokumenty, které odpovídají našemu ukázkovému dotazu:
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,9 +349,9 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
-V dokumentu 1 se shodoval dotaz, protože v poli Description se vyskytuje jak pojem *spacious* , tak i požadované *zobrazení v oceánu* . Následující dva dokumenty odpovídají pouze *zobrazení*fráze pro fráze. Je možné, že se skóre relevance pro dokument 2 a 3 liší, i když odpovídají dotazu stejným způsobem. Je to proto, že vzorec bodování má víc součástí, než jenom TF/IDF. V tomto případě byl dokumentu 3 přiřazeno trochu větší skóre, protože jeho popis je kratší. Přečtěte si [vzorec praktického bodování pro Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , který vám pomůže pochopit, jak délka pole a další faktory mohou ovlivnit skóre relevance.
+V dokumentu 1 se shodoval dotaz, protože v poli Description se vyskytuje jak pojem *spacious* , tak i požadované *zobrazení v oceánu* . Následující dva dokumenty odpovídají pouze *zobrazení* fráze pro fráze. Je možné, že se skóre relevance pro dokument 2 a 3 liší, i když odpovídají dotazu stejným způsobem. Je to proto, že vzorec bodování má víc součástí, než jenom TF/IDF. V tomto případě byl dokumentu 3 přiřazeno trochu větší skóre, protože jeho popis je kratší. Přečtěte si [vzorec praktického bodování pro Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , který vám pomůže pochopit, jak délka pole a další faktory mohou ovlivnit skóre relevance.
 
 Některé typy dotazů (zástupný znak, prefix, regulární výraz) vždy přispívat k celkovému skóre dokumentu jako konstantní skóre. To umožňuje, aby se shody nalezené prostřednictvím rozšíření dotazu zahrnuly do výsledků, ale aniž by to ovlivnilo hodnocení. 
 
@@ -359,8 +361,8 @@ V tomto příkladu je znázorněna tato záležitost. Hledání pomocí zástupn
 
 Existují dva způsoby, jak ve službě Azure Kognitivní hledání naladit hodnocení relevance:
 
-1. **Profily vyhodnocování** podporují dokumenty v seřazeném seznamu výsledků na základě sady pravidel. V našem příkladu můžeme zvážit, že se dokumenty, které odpovídají poli title, považují za relevantnější než dokumenty, které odpovídají poli Popis. Pokud má náš index pro každý Hotel pole s cenami, můžeme zvýšit úroveň dokumentů s nižší cenou. Přečtěte si další informace o tom, jak [Přidat profily vyhodnocování do indexu vyhledávání.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Zvyšování termínů** (k dispozici pouze v úplné syntaxi dotazů Lucene) poskytuje operátor zvyšování `^` , který lze použít na jakoukoli část stromu dotazu. V našem příkladu se místo hledání předpony Air v *air-condition* \* jednom z nich může vyhledat buď přesný pojem *Air* , nebo předpona, ale dokumenty, které odpovídají přesnému termínu, jsou seřazené výše, a to tak, že se zvýší na termínový dotaz: * klimatizační podmínka ^ 2 | | klimatizační znak * *. Přečtěte si další informace o [zvyšování podmínek](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+1. **Profily vyhodnocování** podporují dokumenty v seřazeném seznamu výsledků na základě sady pravidel. V našem příkladu můžeme zvážit, že se dokumenty, které odpovídají poli title, považují za relevantnější než dokumenty, které odpovídají poli Popis. Pokud má náš index pro každý Hotel pole s cenami, můžeme zvýšit úroveň dokumentů s nižší cenou. Přečtěte si další informace o tom, jak [Přidat profily vyhodnocování do indexu vyhledávání.](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+2. **Zvyšování termínů** (k dispozici pouze v úplné syntaxi dotazů Lucene) poskytuje operátor zvyšování `^` , který lze použít na jakoukoli část stromu dotazu. V našem příkladu se místo hledání předpony Air v *air-condition* \* jednom z nich může vyhledat buď přesný pojem *Air* , nebo předpona, ale dokumenty, které odpovídají přesnému termínu, jsou seřazené výše, a to tak, že se zvýší na termínový dotaz: * klimatizační podmínka ^ 2 | | klimatizační znak * *. Přečtěte si další informace o [zvyšování podmínek](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Bodování v distribuovaném indexu
@@ -383,23 +385,23 @@ Tento článek prozkoumal fulltextové vyhledávání v kontextu Azure Kognitivn
 
 + Sestavte vzorový index, vyzkoušejte si různé dotazy a zkontrolujte výsledky. Pokyny najdete v tématu [sestavení a dotazování indexu na portálu](search-get-started-portal.md#query-index).
 
-+ Vyzkoušejte si další syntaxi dotazu v části ukázka [dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) nebo v tématu [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníkovi služby Search na portálu.
++ Vyzkoušejte si další syntaxi dotazu v části ukázka [dokumentů](/rest/api/searchservice/search-documents#bkmk_examples) nebo v tématu [Jednoduchá syntaxe dotazů](/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníkovi služby Search na portálu.
 
-+ Zkontrolujte [profily vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , pokud chcete ve vyhledávací aplikaci vyladit hodnocení.
++ Zkontrolujte [profily vyhodnocování](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , pokud chcete ve vyhledávací aplikaci vyladit hodnocení.
 
-+ Naučte se používat [lexikální analyzátory specifické pro jazyk](https://docs.microsoft.com/rest/api/searchservice/language-support).
++ Naučte se používat [lexikální analyzátory specifické pro jazyk](/rest/api/searchservice/language-support).
 
-+ [Nakonfigurujte vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo specializované zpracování konkrétních polí.
++ [Nakonfigurujte vlastní analyzátory](/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo specializované zpracování konkrétních polí.
 
 ## <a name="see-also"></a>Viz také
 
-[Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Rozhraní API pro vyhledávání v dokumentech](/rest/api/searchservice/search-documents) 
 
-[Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[Jednoduchá syntaxe dotazů](/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Úplná syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Úplná syntaxe dotazů Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
-[Zpracování výsledků vyhledávání](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+[Zpracování výsledků vyhledávání](./search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

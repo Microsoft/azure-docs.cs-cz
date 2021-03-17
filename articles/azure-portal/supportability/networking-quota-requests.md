@@ -1,18 +1,17 @@
 ---
-title: Zvýšení limitu sítě | Microsoft Docs
+title: Zvýšení limitu sítě
 description: Zvýšení limitu sítě
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e945dec2ce8514c3e4f1edecdecd13c5c43f7c75
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764261"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745447"
 ---
 # <a name="networking-limit-increase"></a>Zvýšení limitu sítě
 
@@ -41,7 +40,7 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
     ![Nová žádost o podporu](./media/networking-quota-request/new-support-request.png)
 
-1. Jako **typ problému**vyberte **služby a omezení pro předplatné (kvóty)**.
+1. Jako **typ problému** vyberte **služby a omezení pro předplatné (kvóty)**.
 
     ![V rozevíracím seznamu typ problému vyberte omezení předplatného.](./media/networking-quota-request/select-quota-issue-type.png)
 
@@ -49,11 +48,11 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
     ![Vybrat příspěvek odběru](./media/networking-quota-request/select-subscription-support-request.png)
 
-1. V části **typ kvóty**vyberte **sítě**. Vyberte **Další: řešení**.
+1. V části **typ kvóty** vyberte **sítě**. Vyberte **Další: řešení**.
 
     ![Vybrat typ kvóty](./media/networking-quota-request/select-quota-type-network.png)
 
-1. V **podrobnostech o problémech**vyberte **zadat podrobnosti** a vyplňte Další informace, které vám pomůžou zpracovat vaši žádost.
+1. V **podrobnostech o problémech** vyberte **zadat podrobnosti** a vyplňte Další informace, které vám pomůžou zpracovat vaši žádost.
 
     ![Zadat podrobnosti](./media/networking-quota-request/provide-details-link.png)
 

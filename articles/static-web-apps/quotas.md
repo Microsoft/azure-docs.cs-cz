@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6fa70eba5875c32d41fa1cfc8daf9b1cdf8f19df
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599989"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042721"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Kvóty ve službě Azure static Web Apps Preview
 
@@ -21,13 +21,13 @@ Pro Azure static Web Apps ve verzi Preview existují následující kvóty.
 > [!IMPORTANT]
 > Statická Web Appsa Azure je ve verzi Public Preview a není určená pro použití v produkčním prostředí.
 
-| Příznak                     | Bezplatný plán        |
+| Funkce                     | Bezplatný plán        |
 |-----------------------------|------------------|
 | Zahrnutá šířka pásma          | 100 GB za měsíc |
 | Nadlimitní šířka pásma           | Neaktivní      |
 | Aplikace na předplatné Azure | 10               |
-| Velikost aplikace                    | 100 MB           |
-| Předprodukční prostředí | 1                |
+| Velikost aplikace                    | 250 MB           |
+| Předprodukční prostředí | 3                |
 | Vlastní domény              | 1                |
 | Autorizace<br><br>S vlastními rolemi a pravidly směrování | Max. 25 pozvaných a přiřazených rolí koncovým uživatelům |
 | Azure Functions             | K dispozici        |

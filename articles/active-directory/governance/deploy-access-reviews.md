@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604004"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932431"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -37,7 +37,7 @@ Kontroly [přístupu Azure Active Directory (Azure AD)](access-reviews-overview.
 
 * Automatizace výsledků kontroly, například odebrání přístupu uživatelů k prostředkům
 
-  ![Plánování plánů přístupu](./media/deploy-access-review/1-planning-review.png)
+  ![Diagram znázorňující tok kontrol přístupu](./media/deploy-access-review/1-planning-review.png)
 
 Kontroly přístupu jsou [Azure AD identity Governanceou](identity-governance-overview.md) funkcí. Další možnosti jsou [Správa nároků](entitlement-management-overview.md), [Privileged Identity Management](../privileged-identity-management/pim-configure.md) a [podmínek použití](../conditional-access/terms-of-use.md). Společně mohou organizace řešit tyto čtyři otázky:
 
@@ -75,7 +75,7 @@ Následující videa můžou být užitečná, když se seznámíte s recenzemi 
 
 * [Kontrola přístupu pomocí přístupu](https://youtu.be/tIKdQhdHLXU)
 
-### <a name="licenses"></a>Licenses
+### <a name="licenses"></a>Licence
 
 Potřebujete platnou licenci Azure AD Premium (P2) pro každou osobu, jinou než globální správce nebo Správce uživatelů, kteří budou vytvářet nebo provádět kontroly přístupu. Další informace najdete v tématu [licenční požadavky kontroly přístupu](access-reviews-overview.md).
 
@@ -87,13 +87,13 @@ Vezměte v úvahu, že vaše organizace potřebuje určit strategii nasazení ko
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Chcete-li se těmto nástrah vyhnout, [Ujistěte se, že jste připravují správné zúčastněné strany](https://aka.ms/deploymentplans) a že role projektu jsou jasné.
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Chcete-li se těmto nástrah vyhnout, [Ujistěte se, že jste připravují správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md) a že role projektu jsou jasné.
 
 V případě kontrol přístupu budete pravděpodobně zahrnovat zástupce z následujících týmů v rámci vaší organizace:
 
 * **Správa IT** spravuje vaši IT infrastrukturu a spravuje vaše cloudové investice a aplikace SaaS (software jako služba). Tento tým bude:
 
-   * Projděte si privilegovaný přístup k infrastruktuře a aplikacím, včetně Office 365 a Azure AD.
+   * Projděte si privilegovaný přístup k infrastruktuře a aplikacím, včetně Microsoft 365 a Azure AD.
 
    * Naplánování a spuštění kontrol přístupu pro skupiny, které se používají k údržbě seznamů výjimek nebo projektů pilotního projektu, pro udržování aktuálnosti seznamů přístupu
 
@@ -180,9 +180,9 @@ Mezi obvyklé cíle pro kontrolu patří:
 
 * [Aplikace integrované do Azure AD pro jednotné přihlašování](../manage-apps/what-is-application-management.md) (například SaaS, obchodní).
 
-* [Členství](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure AD nebo Office 365, včetně Microsoft Teams).
+* [Členství](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure ad nebo Microsoft 365, včetně Microsoft Teams).
 
-* [Přístup k balíčku](/entitlement-management-overview.md) , který seskupuje prostředky (skupiny, aplikace a weby) do jednoho balíčku pro správu přístupu.
+* [Přístup k balíčku](./entitlement-management-overview.md) , který seskupuje prostředky (skupiny, aplikace a weby) do jednoho balíčku pro správu přístupu.
 
 * [Role Azure AD a role prostředků Azure](../privileged-identity-management/pim-resource-roles-assign-roles.md) , jak jsou definované v Privileged Identity Management.
 
@@ -192,13 +192,13 @@ Administrativní role nutná k vytvoření, správě nebo čtení kontroly pří
 
 | Typ prostředku| Vytváření a Správa recenzí přístupu (tvůrci)| Čtení výsledků kontroly přístupu |
 | - | - | -|
-| Skupina nebo aplikace| Globální správce <p>Správce uživatele| Tvůrci a správce zabezpečení |
+| Skupina nebo aplikace| Globální správce <p>Správce uživatelů| Tvůrci a správce zabezpečení |
 | Privilegované role v Azure AD| Globální správce <p>Správce privilegovaných rolí| Creators <p>Čtenář zabezpečení<p>Správce zabezpečení |
-| Privilegované role v Azure (prostředky)| Globální správce<p>Správce uživatele<p>Vlastník prostředku| Creators |
+| Privilegované role v Azure (prostředky)| Globální správce<p>Správce uživatelů<p>Vlastník prostředku| Creators |
 | Přístup k balíčku| Globální správce<p>Tvůrce přístupového balíčku| Pouze globální správce |
 
 
-Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md).
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>Kdo bude kontrolovat přístup k prostředku?
 
@@ -241,12 +241,12 @@ Chcete-li vytvořit zásadu kontroly přístupu, je nutné mít následující i
 
 **Příklad plánu kontroly přístupu**
 
-| Součást| Hodnota |
+| Komponenta| Hodnota |
 | - | - |
 | **Prostředky ke kontrole**| Přístup k Microsoft Dynamics |
 | **Frekvence kontroly**| Měsíčně |
 | **Kdo provádí kontrolu**| Správci programu Dynamics Business Group |
-| **Zveřejnění**| E-mailová adresa 24 hodin před kontrolou aliasu Dynamics-PMS<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
+| **Zveřejnění**| Před kontrolou aliasu Dynamics-Pms e-mailem 24 hodin<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
 | **Časová osa**| 48 hodin z oznámení |
 |**Automatické akce**| Odebrání přístupu z libovolného účtu, který nemá v 90 dnech žádné interaktivní přihlášení, odebráním uživatele ze skupiny zabezpečení Dynamics-Access. <p>*Provede akce, pokud se nekontrolují v časové ose.* |
 | **Ruční akce**| Recenzenti mohou odebrat schválení před automatickými akcemi v případě potřeby. |
@@ -283,7 +283,7 @@ Externím identitám je možné udělit přístup k prostředkům společnosti p
 
 * Přiřazená privilegovaná role v Azure AD nebo v předplatném Azure
 
-Viz [ukázkový skript](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.). Skript zobrazí, kde se použijí externí identity přizvaní do tenanta. V Azure AD můžete zobrazit členství ve skupině externích uživatelů, přiřazení rolí a přiřazení aplikací. Skript nebude zobrazovat žádná přiřazení mimo Azure AD, například přímé přiřazování práv k prostředkům služby SharePoint bez použití skupin.
+Viz [ukázkový skript](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). Skript zobrazí, kde se použijí externí identity přizvaní do tenanta. V Azure AD můžete zobrazit členství ve skupině externích uživatelů, přiřazení rolí a přiřazení aplikací. Skript nebude zobrazovat žádná přiřazení mimo Azure AD, například přímé přiřazování práv k prostředkům služby SharePoint bez použití skupin.
 
 Když vytváříte kontrolu přístupu pro skupiny nebo aplikace, můžete se rozhodnout, že se má kontrolor soustředit na všechny uživatele s přístupem nebo jenom uživatelům typu Host. Když vyberete jenom uživatele typu Host, kontroloré mají k tomuto prostředku přiřazený seznam externích identit z Azure AD B2B.
 
@@ -300,11 +300,11 @@ Při [vytváření balíčku pro přístup](entitlement-management-access-packag
 
 Otevřete kartu životní cyklus a přejděte dolů k recenzím přístupu.
 
- ![Upravení zásady](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![Snímek obrazovky, který zobrazuje "Upravit zásadu" na kartě životní cyklus.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>Plánování kontrol přístupu pro skupiny
 
-Kromě balíčků přístupu je kontrola členství ve skupinách nejúčinnějším způsobem řízení přístupu. Doporučujeme, aby byl přístup k prostředkům přiřazený prostřednictvím [skupin zabezpečení nebo skupin Office 365](../fundamentals/active-directory-manage-groups.md)a aby se uživatelé do těchto skupin přidali k získání přístupu.
+Kromě balíčků přístupu je kontrola členství ve skupinách nejúčinnějším způsobem řízení přístupu. Doporučujeme, aby byl přístup k prostředkům přiřazen prostřednictvím [skupin zabezpečení nebo skupin Microsoft 365](../fundamentals/active-directory-manage-groups.md)a aby se uživatelé do těchto skupin přidali k získání přístupu.
 
 Jednomu skupině se dá udělit přístup ke všem odpovídajícím prostředkům. Přístup ke skupině můžete přiřadit k jednotlivým prostředkům nebo balíčku pro přístup, který seskupuje aplikace a další prostředky. Pomocí této metody můžete zkontrolovat přístup ke skupině místo přístupu pro jednotlivé aplikace k jednotlivým aplikacím. 
 
@@ -322,9 +322,9 @@ Jednomu skupině se dá udělit přístup ke všem odpovídajícím prostředků
 
 Doporučujeme, aby vlastníci skupiny zkontrolovali členství, protože jsou nejlepší pro uživatele, kteří potřebují přístup. Vlastnictví skupin se liší od typu skupiny:
 
-Skupiny vytvořené v Office 365 a Azure AD mají jednoho nebo více dobře definovaných vlastníků. Ve většině případů mají tito vlastníci k dispozici dokonalé kontrolory pro vlastní skupiny, protože ví, kdo má mít přístup. 
+Skupiny vytvořené v Microsoft 365 a Azure AD mají jednoho nebo více dobře definovaných vlastníků. Ve většině případů mají tito vlastníci k dispozici dokonalé kontrolory pro vlastní skupiny, protože ví, kdo má mít přístup. 
 
-Microsoft Teams například používá skupiny Office 365 jako základní autorizační model, aby uživatelům udělil přístup k prostředkům, které jsou v SharePointu, Exchangi, OneNotu nebo jiných službách Office 365. Tvůrce týmu se automaticky stal vlastníkem a měl by být zodpovědný za ověřování členství v této skupině. 
+Microsoft Teams například používá Microsoft 365 skupiny jako základní autorizační model, aby uživatelům udělil přístup k prostředkům, které jsou v SharePointu, Exchangi, OneNotu nebo jiných službách Microsoft 365. Tvůrce týmu se automaticky stal vlastníkem a měl by být zodpovědný za ověřování členství v této skupině. 
 
 Skupiny vytvořené ručně na portálu Azure AD nebo prostřednictvím skriptování prostřednictvím Microsoft Graph nemusí nutně mít definované vlastníky. Doporučujeme, abyste je definovali buď prostřednictvím portálu Azure AD v části vlastníci skupiny, nebo pomocí grafu.
 
@@ -333,9 +333,9 @@ Skupiny, které jsou synchronizované z místní služby Active Directory, nemů
 > [!NOTE]
 > Doporučujeme definovat obchodní zásady, které definují způsob vytvoření skupin, abyste zajistili vymazání vlastnictví skupiny a zodpovědnosti při běžné kontrole členství. 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>Kontrola členství ve skupinách vyloučení v zásadách certifikační autority 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Kontrola členství ve skupinách vyloučení v zásadách podmíněného přístupu 
 
-V některých případech se zásady podmíněného přístupu (CA), které jsou navržené pro zajištění zabezpečení sítě, nepoužijí pro všechny uživatele. Například zásada certifikační autority, která umožňuje uživatelům přihlašovat se jenom v podnikové síti, se nemusí vztahovat k prodejnímu týmu, který se intenzivně rozchází. V takovém případě by se členové prodejního týmu umístili do skupiny a tato skupina by byla vyloučena ze zásad certifikační autority. 
+Existují situace, kdy zásady podmíněného přístupu navržené pro zajištění zabezpečení sítě nebudou platit pro všechny uživatele. Například zásada podmíněného přístupu, která umožňuje uživatelům přihlašovat se jenom v podnikové síti, se nemusí vztahovat k prodejnímu týmu, který se intenzivně rozchází. V takovém případě by se členové prodejního týmu umístili do skupiny a tato skupina by se vyloučila ze zásad podmíněného přístupu. 
 
 Pravidelně kontrolujte Toto členství ve skupině, protože vyloučení představuje potenciální riziko, pokud jsou z tohoto požadavku vyloučeny chybné členy.
 
@@ -343,7 +343,7 @@ Pomocí kontrol [přístupu Azure AD můžete spravovat uživatele vyloučené z
 
 ### <a name="review-external-users-group-memberships"></a>Kontrola členství externích uživatelů ve skupinách
 
-K minimalizaci ruční práce a souvisejících potenciálních chyb zvažte použití [dynamických skupin](../users-groups-roles/groups-create-rule.md) k přiřazení členství ve skupině na základě atributů uživatele. Možná budete chtít vytvořit jednu nebo více dynamických skupin pro externí uživatele. Interní sponzor se může chovat jako kontrolor pro členství ve skupině. 
+K minimalizaci ruční práce a souvisejících potenciálních chyb zvažte použití [dynamických skupin](../enterprise-users/groups-create-rule.md) k přiřazení členství ve skupině na základě atributů uživatele. Možná budete chtít vytvořit jednu nebo více dynamických skupin pro externí uživatele. Interní sponzor se může chovat jako kontrolor pro členství ve skupině. 
 
 Poznámka: externí uživatelé, kteří se ze skupiny odebrali jako výsledek kontroly přístupu, se z tenanta neodstraní. 
 
@@ -361,7 +361,7 @@ Výsledky kontroly přístupu na místních skupinách a jejich zpracování mů
 
 * Použití Microsoft Graph k programovému přístupu k výsledkům a rozhodnutím v průběhu dokončených kontrol přístupu.
 
-Pokud například chcete získat přístup k výsledkům skupiny spravované službou Windows AD, použijte tento [ukázkový skript PowerShellu](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises). Skript popisuje požadovaná volání grafů a export příkazů Windows AD-PowerShellu, aby se změny provedly.
+Pokud například chcete získat přístup k výsledkům skupiny spravované službou Windows AD, použijte tento [ukázkový skript PowerShellu](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises). Skript popisuje požadovaná volání grafů a exportuje příkazy Windows AD-PowerShell pro provedení změn.
 
 ## <a name="plan-access-reviews-for-applications"></a>Plánování kontrol přístupu pro aplikace 
 
@@ -389,13 +389,13 @@ Kontroly přístupu mohou být pro členy skupiny nebo pro uživatele, kteří b
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Plánování přezkoumání rolí prostředků Azure AD a Azure
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům ve službě Azure AD. Tím se udržuje seznam privilegovaných rolí, jak v [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) , tak v [prostředcích Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) mnohem menší a zvyšuje celkové zabezpečení adresáře.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům ve službě Azure AD. Tím se udržuje seznam privilegovaných rolí, jak v [Azure AD](../roles/permissions-reference.md) , tak v [prostředcích Azure](../../role-based-access-control/built-in-roles.md) mnohem menší a zvyšuje celkové zabezpečení adresáře.
 
 Kontroly přístupu umožňují kontrolorům ověřit, jestli se uživatelé pořád potřebují v roli. Stejně jako kontroly přístupu pro balíčky přístupu se recenze pro role Azure AD a prostředek Azure integrují do uživatelského prostředí správce PIM. Doporučujeme pravidelně kontrolovat následující přiřazení rolí:
 
 * Globální správce
 
-* Správce uživatele
+* Správce uživatelů
 
 * Správce privilegovaného ověřování
 
@@ -403,7 +403,7 @@ Kontroly přístupu umožňují kontrolorům ověřit, jestli se uživatelé po�
 
 * Správce zabezpečení
 
-* Všechny role pro správu služeb Office 365 a Dynamics
+* Všechny role Microsoft 365 a Dynamics Service Administrative
 
 Zde vybrané role zahrnují trvalou a oprávněnou roli. 
 
@@ -422,7 +422,7 @@ Aby bylo možné snížit riziko zastaralého přístupu, můžou správci povol
 | Články s návody| Popis |
 | - | - |
 | [Vytvořit kontroly přístupu](entitlement-management-access-reviews-create.md)| Povolit recenze balíčku přístupu |
-| [Provést kontroly přístupu](/entitlement-management-access-reviews-review-access.md)| Provede kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu. |
+| [Provést kontroly přístupu](entitlement-management-access-reviews-review-access.md)| Provede kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu. |
 | [Samostatná kontrola přiřazených balíčků přístupu](entitlement-management-access-reviews-self-review.md)| Samoobslužné přezkoumání přiřazených balíčků přístupu |
 
 
@@ -446,15 +446,15 @@ Přístup k skupinám a aplikacím pro zaměstnance a hosty se nejspíš v průb
 
 Pokud chcete snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup k privilegovaným rolím Azure AD.
 
-![Kontrola rolí Azure AD](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Snímek obrazovky, který zobrazuje seznam "kontroly členství" rolí Azure A D.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
-Postupujte podle pokynů v následujících odkazech:
+Postupujte podle pokynů na následujících odkazech:
 
 | Články s návody | Popis |
 | - | - |
- [Vytvořit kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| Vytváření kontrol přístupu pro privilegované role Azure AD v PIM |
-| [Vlastní kontrola přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
-| [Dokončení kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| Zobrazení kontroly přístupu a použití výsledků |
+ [Vytvořit kontroly přístupu](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role Azure AD v PIM |
+| [Vlastní kontrola přístupu](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
+| [Dokončení kontroly přístupu](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Zobrazení kontroly přístupu a použití výsledků |
 
 
 ### <a name="review-azure-resource-roles"></a>Kontrola rolí prostředků Azure
@@ -463,18 +463,18 @@ Pokud chcete snížit riziko související se zastaralými přiřazeními rolí,
 
 ![Kontrola rolí Azure AD](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
-Postupujte podle pokynů v následujících odkazech:
+Postupujte podle pokynů na následujících odkazech:
 
 | Články s návody| Popis |
 | - | -|
-| [Vytvořit kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| Vytváření kontrol přístupu pro privilegované role prostředků Azure v PIM |
-| [Vlastní kontrola přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
-| [Dokončení kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| Zobrazení kontroly přístupu a použití výsledků |
+| [Vytvořit kontroly přístupu](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role prostředků Azure v PIM |
+| [Vlastní kontrola přístupu](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
+| [Dokončení kontroly přístupu](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Zobrazení kontroly přístupu a použití výsledků |
 
 
 ## <a name="use-the-access-reviews-api"></a>Použití rozhraní API kontroly přístupu
 
-V tématu [metody rozhraní Graph API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [ověření autorizace rolí a aplikací](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) můžete pracovat s prostředky, které lze snadno zobrazit, a spravovat je. Metody kontroly přístupu v rozhraní Microsoft Graph API jsou k dispozici pro kontext aplikace i uživatele. Při spouštění skriptů v kontextu aplikace musí být účet použitý ke spuštění rozhraní API (princip služby) udělen oprávnění "AccessReview. Read. All" pro dotazování na informace o kontrolách přístupu.
+V tématu [metody rozhraní Graph API](/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [ověření autorizace rolí a aplikací](/graph/api/resources/accessreviews-root?view=graph-rest-beta) můžete pracovat s prostředky, které lze snadno zobrazit, a spravovat je. Metody kontroly přístupu v rozhraní Microsoft Graph API jsou k dispozici pro kontext aplikace i uživatele. Při spouštění skriptů v kontextu aplikace musí být účet použitý ke spuštění rozhraní API (princip služby) udělen oprávnění "AccessReview. Read. All" pro dotazování na informace o kontrolách přístupu.
 
 Populární kontroly přístupu: úlohy pro automatizaci pomocí Graph API pro kontroly přístupu:
 
@@ -496,7 +496,7 @@ Při vytváření nových dotazů Graph API pro automatizaci doporučujeme použ
 
 Aktivity kontrol přístupu se zaznamenávají a jsou dostupné z [protokolů auditu Azure AD](../reports-monitoring/concept-audit-logs.md). Můžete filtrovat data auditu v kategorii, typu aktivity a rozsahu kalendářních dat. Tady je ukázkový dotaz:
 
-| Kategorie| Zásady |
+| Kategorie| Zásada |
 | - | - |
 | Typ aktivity| Vytvoření kontroly přístupu |
 | | Aktualizovat kontrolu přístupu |
@@ -518,5 +518,3 @@ Přečtěte si další informace o souvisejících technologiích.
 * [Co je Správa nároků Azure AD?](entitlement-management-overview.md)
 
 * [Co je Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
-
- 

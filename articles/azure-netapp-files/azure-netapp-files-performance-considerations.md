@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 02/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 5f88b4755c7b4c0b20f27065cf9de2351251bc1c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f963c87148c08a4855befc5afb79d9c5ea0f4481
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513872"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713384"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Aspekty výkonu pro Azure NetApp Files
 
-[Omezení propustnosti](azure-netapp-files-service-levels.md) svazku je určeno kombinací kvóty přiřazené ke svazku a vybrané úrovně služby. Při provádění plánů výkonu o Azure NetApp Files je třeba pochopit několik důležitých informací. 
+[Omezení propustnosti](azure-netapp-files-service-levels.md) pro svazek s automatickou QoS je určeno kombinací kvóty přiřazené ke svazku a vybrané úrovně služby. U svazků s ruční technologií QoS se dá limit propustnosti definovat individuálně. Při provádění plánů výkonu o Azure NetApp Files je třeba pochopit několik důležitých informací. 
 
 ## <a name="quota-and-throughput"></a>Kvóta a propustnost  
 
@@ -31,19 +31,25 @@ Limit propustnosti je pouze jeden determinant skutečného výkonu, který bude 
 
 Typickými aspekty výkonu úložiště, včetně kombinace čtení a zápisu, velikosti přenosu, náhodných nebo sekvenčních vzorů a mnoha dalších faktorů, přispějete k celkovému množství dodaného výkonu.  
 
-Maximální empirická propustnost, která byla pozorována při testování, je 4 500 MiB/s.  V úrovni Premium Storage zřídí kvóta 70,31 TiB limit propustnosti, který je dostatečně vysoký pro dosažení této úrovně výkonu.  
+Maximální empirická propustnost, která byla pozorována při testování, je 4 500 MiB/s.  V úrovni Premium Storage zřídí Automatická kvóta svazku QoS 70,31 TiB limit propustnosti, který je dostatečně vysoký, aby dosáhl této úrovně výkonu.  
 
-Pokud se chystáte přidělit objemové kvóty na více než 70,31 TiB, může být ke svazku přiřazená další kvóta pro ukládání dalších dat. Přidaná kvóta ale nebude mít za následek další zvýšení skutečné propustnosti.  
+V případě automatických svazků technologie QoS platí, že pokud se chystáte přidělit objemové kvóty na více než 70,31 TiB, může být ke svazku přiřazená další kvóta pro ukládání dalších dat. Přidaná kvóta ale nebude mít za následek další zvýšení skutečné propustnosti.  
 
-## <a name="overprovisioning-the-volume-quota"></a>Přezřizování kvóty svazků
+Stejný empirický strop propustnosti se vztahuje na svazky s ruční technologií QoS. Maximální propustnost může být přiřazena ke svazku je 4 500 MiB/s.
 
-Pokud je výkon úlohy vázaný na limit propustnosti, je možné převýšit kvótu svazku na nastavení vyšší úrovně propustnosti a dosáhnout vyššího výkonu.  
+## <a name="automatic-qos-volume-quota-and-throughput"></a>Automatická kvóta a propustnost svazku QoS
 
-Pokud například svazek v úrovni Premium Storage má jenom 500 GiB dat, ale vyžaduje 128 MiB/s, můžete nastavit kvótu na 2 TiB, aby se úroveň propustnosti nastavila odpovídajícím způsobem (64 MiB/s za TB × 2 TiB = 128 MiB/s).  
+Tato část popisuje správu kvót a propustnost pro svazky s automatickým typem QoS.
 
-Pokud jste trvale přezřídili svazek pro dosažení vyšší propustnosti, zvažte místo toho použití vyšší úrovně služby.  V předchozím příkladu můžete dosáhnout stejného limitu propustnosti s poloviční kvótou svazku pomocí úrovně Ultra Storage místo toho (128 MiB/s za TiB * 1 TiB = 128 MiB/s).
+### <a name="overprovisioning-the-volume-quota"></a>Přezřizování kvóty svazků
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamické zvýšení nebo snížení kvóty svazku
+Pokud je výkon úlohy vázaný na limit propustnosti, je možné přezřídit automatickou kvótu technologie QoS pro zajištění vyšší úrovně propustnosti a dosáhnout vyššího výkonu.  
+
+Pokud například automatická technologie QoS v úrovni Premium Storage má jenom 500 GiB dat, ale vyžaduje 128 MiB/s, můžete nastavit kvótu na 2 TiB, aby se úroveň propustnosti patřičně nastavila (64 MiB/s na TB × 2 TiB = 128 MiB/s).  
+
+Pokud jste trvale přezřídili svazek pro dosažení vyšší propustnosti, zvažte použití ručních svazků technologie QoS nebo použití vyšší úrovně služby.  V předchozím příkladu můžete dosáhnout stejného limitu propustnosti s poloviční automatickou kvótou svazku QoS pomocí úrovně Ultra Storage místo toho (128 MiB/s za TiB * 1 TiB = 128 MiB/s).
+
+### <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamické zvýšení nebo snížení kvóty svazku
 
 Pokud jsou vaše požadavky na výkon dočasná, nebo pokud jste zvýšili nároky na výkon po určitou dobu, můžete kvótu pro okamžitou úpravu limitu propustnosti dynamicky zvýšit nebo snížit.  Vezměte na vědomí následující skutečnosti: 
 
@@ -55,11 +61,17 @@ Pokud jsou vaše požadavky na výkon dočasná, nebo pokud jste zvýšili náro
 
     Tato změna neovlivní nebo neovlivní přístup ke svazku nebo vstupně-výstupní operace.  
 
-* Úprava kvóty svazku vyžaduje změnu velikosti fondu kapacity.  
+* Úprava kvóty svazku může vyžadovat změnu velikosti fondu kapacity.  
 
     Velikost fondu kapacity se dá upravit dynamicky a aniž by to ovlivnilo dostupnost svazku nebo vstupně-výstupní operace.
 
+## <a name="manual-qos-volume-quota-and-throughput"></a>Ruční kvóta a propustnost svazku QoS 
+
+Pokud používáte ruční svazky technologie QoS, nemusíte převýšit kvótu svazku, aby se dosáhlo vyšší propustnosti, protože propustnost je možné přiřadit každému svazku nezávisle. Stále ale potřebujete zajistit, aby fond kapacit byl předem zajištěný s dostatečnou propustností pro potřeby výkonu. Propustnost fondu kapacity se zřizuje podle velikosti a úrovně služeb. Další podrobnosti najdete v tématu [úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md) .
+
+
 ## <a name="next-steps"></a>Další kroky
 
+- [Azure NetApp Files Kalkulačka výkonu](https://cloud.netapp.com/azure-netapp-files/tco?hs_preview=tIKQbfoF-41214739590)
 - [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 - [Srovnávací testy výkonu pro Linux](performance-benchmarks-linux.md)

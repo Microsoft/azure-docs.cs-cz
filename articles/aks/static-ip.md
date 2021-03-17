@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak vytvořit a používat statickou IP adresu pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
-ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 11/14/2020
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243932"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509468"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service)
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak vytvořit statickou veřejnou IP adresu a při
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 Tento článek se věnuje použití *standardní* IP adresy SKU s nástrojem pro vyrovnávání zatížení *Standard* SKU. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure][ip-sku].
 
@@ -63,16 +63,17 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Vytvoření služby pomocí statické IP adresy
 
-Než začnete vytvářet službu, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků. Příklad:
+Před vytvořením služby zajistěte, aby identita clusteru používaná clusterem AKS měla delegovaná oprávnění k jiné skupině prostředků. Například:
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-Případně můžete použít spravovanou identitu přiřazenou systémem pro oprávnění místo instančního objektu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
+> [!IMPORTANT]
+> Pokud jste přizpůsobili odchozí IP adresu, ujistěte se, že vaše identita clusteru má oprávnění k odchozí veřejné IP adrese i k této příchozí veřejné IP adrese.
 
 Chcete-li vytvořit službu *Vyrovnávání zatížení* se STATICKOU veřejnou IP adresou, přidejte do `loadBalancerIP` manifestu YAML vlastnost a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `load-balancer-service.yaml` a zkopírujte ho na následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Následující příklad také nastaví anotaci na skupinu prostředků s názvem *myResourceGroup*. Zadejte název vlastní skupiny prostředků.
 
@@ -102,7 +103,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít anotaci služby `service.beta.kubernetes.io/azure-dns-label-name` k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, proto se doporučuje použít dostatečně kvalifikovaný popisek.   
 
-Azure pak automaticky připojí výchozí podsíť, například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste zvolili), k názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Příklad:
+Azure pak automaticky připojí výchozí podsíť, například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste zvolili), k názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Například:
 
 ```yaml
 apiVersion: v1

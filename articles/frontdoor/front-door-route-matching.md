@@ -3,24 +3,24 @@ title: Přední dvířka Azure – pravidlo směrování, které odpovídá moni
 description: Tento článek vám pomůže porozumět tomu, jak se na nabízených platformách Azure shoduje pravidlo směrování, které se má použít pro příchozí požadavek.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/28/2020
+ms.author: duau
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878591"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449215"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Jak služba Front Door páruje požadavky s pravidly směrování
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>Jak odpovídají požadavky na pravidlo směrování
 
-Po navázání připojení a provedení metody handshake TLS se v případě, že je žádost umístěná v prostředí front-dveří, jedním z prvních věcí, které přední dveře vymezují, určí ze všech konfigurací, které konkrétní pravidlo směrování odpovídá požadavku a následně provede definovanou akci. Následující dokument vysvětluje, jak přední dveře určují konfiguraci směrování, která se má použít při zpracování požadavku HTTP.
+Po navázání připojení a dokončení metody handshake TLS platí, že když žádost vstoupí do prostředí front-dveří, jedna z prvních věcí, na které se nachází přední dveře, určí, které konkrétní pravidlo směrování bude odpovídat dané žádosti, a pak provede definovanou akci v konfiguraci. Následující dokument vysvětluje, jak přední dveře určují konfiguraci směrování, která se má použít při zpracování požadavku HTTP.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Struktura konfigurace směrování na front-dveří
 Konfigurace pravidla směrování front-dveří se skládá ze dvou hlavních částí: "levá strana" a "pravá strana". Příchozí požadavek odpovídá na levou stranu trasy, zatímco pravá strana definuje, jak zpracováváme požadavek.
@@ -41,7 +41,7 @@ Rozhodnutí o tom, jak žádost zpracovat, závisí na tom, jestli je pro konkr�
 Tato část se zaměřuje na to, jak se shoduje s daným pravidlem směrování front-dveří. Základním konceptem je, že se vždy shoduje s **nejvíce specifickou shodou** , a to nejdřív, co se díváte jenom na levou stranu.  Nejdřív se porovnáváme na základě protokolu HTTP, potom hostitele s front-endu a pak cestou.
 
 ### <a name="frontend-host-matching"></a>Porovnání hostitele front-endu
-Při shodě hostitelů front-end používáme logiku následujícím způsobem:
+Při shodě hostitelů front-endu používáme logiku definovanou níže:
 
 1. Vyhledejte jakékoli směrování s přesnou shodou na hostiteli.
 2. Pokud se neshodují žádné přesné hostitele front-end, zamítnout žádost a pošle 400 chybnou žádost o chybu.

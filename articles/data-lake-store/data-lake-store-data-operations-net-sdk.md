@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515664"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431733"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
 
@@ -39,17 +40,17 @@ Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí 
 
 Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted), vás provede procesem vytvoření souborů v úložišti, zřetězení souborů, stažení souboru a nakonec odstranění některých souborů v úložišti. Tato část článku vás provede hlavními částmi kódu.
 
-1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
+1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový** a poté **projekt**.
 1. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-1. Do **název projektu**zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
+1. Do **název projektu** zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
 1. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.
    1. Na kartě **Správce balíčků NuGet** se ujistěte, že je **zdroj balíčku** nastavený na **NuGet.org**. Ujistěte se také, že je zaškrtnuto políčko **zahrnout předběžné verze** .
    1. Vyhledejte a nainstalujte následující balíčky NuGet:
 
-      * `Microsoft.Azure.DataLake.Store`– Tento článek používá verzi v 1.0.0.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`– Tento článek používá v 2.3.1.
+      * `Microsoft.Azure.DataLake.Store` – Tento článek používá verzi v 1.0.0.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Tento článek používá v 2.3.1.
 
       Zavřete **Správce balíčků NuGet**.
 
@@ -201,7 +202,7 @@ Tady je několik ukázek, které ukazují, jak používat sadu SDK Data Lake Sto
 ## <a name="see-also"></a>Viz také
 
 * [Operace správy účtů při Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>Další kroky
 

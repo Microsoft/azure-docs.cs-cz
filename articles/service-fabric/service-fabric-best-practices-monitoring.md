@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529246"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Osvědčené postupy monitorování a diagnostiky pro Azure Service Fabric
@@ -34,7 +34,7 @@ Pro monitorování událostí na úrovni clusteru se doporučuje používat [pro
 
 ## <a name="watchdogs"></a>Sledovací zařízení
 
-Standardně se jedná o samostatnou službu, která sleduje stav a zatížení napříč službami, příkazy příkazového řádku otestuje a hlásí neočekávané události stavu v clusteru. To může přispět k tomu, aby nedocházelo k chybám, které se nemusí detekovat na základě výkonu jedné služby. Sledovací zařízení jsou také dobrým místem pro hostování kódu, který provádí nápravné akce, které nevyžadují zásah uživatele, jako je například čištění souborů protokolu v úložišti v určitých časových intervalech. Podívejte se na ukázkovou implementaci sledovací služby v [událostech clusteru Service Fabric Linux v protokolu SYSLOG](https://github.com/Azure-Samples/service-fabric-watchdog-service).
+Standardně se jedná o samostatnou službu, která sleduje stav a zatížení napříč službami, příkazy příkazového řádku otestuje a hlásí neočekávané události stavu v clusteru. To může přispět k tomu, aby nedocházelo k chybám, které se nemusí detekovat na základě výkonu jedné služby. Sledovací zařízení jsou také dobrým místem pro hostování kódu, který provádí nápravné akce, které nevyžadují zásah uživatele, jako je například čištění souborů protokolu v úložišti v určitých časových intervalech. Podívejte se na ukázkovou implementaci sledovací služby v  [událostech clusteru Service Fabric Linux v protokolu SYSLOG](https://github.com/Azure-Samples/service-fabric-watchdog-service).
 
 ## <a name="next-steps"></a>Další kroky
 

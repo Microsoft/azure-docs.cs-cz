@@ -5,10 +5,10 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
 ms.openlocfilehash: f3aeec208ba6b80643e50307b89f590977bfb446
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460758"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Přihlášení k odběru událostí skupiny prostředků a vyfiltrování prostředku pomocí PowerShellu
@@ -27,7 +27,7 @@ Tento skript vytvoří odběr Event Gridu pro události skupiny prostředků. Po
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Vzorový skript ve verzi Preview vyžaduje modul Event Grid. Chcete-li nainstalovat, spusťte příkaz`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Vzorový skript ve verzi Preview vyžaduje modul Event Grid. Chcete-li nainstalovat, spusťte příkaz `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events-preview/filter-events-preview.ps1 "Filter events")]
 

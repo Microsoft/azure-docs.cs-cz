@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171461"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002813"
 ---
 # <a name="persist-state-in-windows"></a>Trvalý stav ve Windows
 
@@ -35,7 +35,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Příklad:
+    Třeba
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -46,7 +46,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Příklad:
+    Třeba
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -73,11 +73,11 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     1. Klikněte pravým tlačítkem a pak vyberte **vlastnosti**.
     1. Vyberte **Zabezpečení**.
     1. V části * uživatelské jméno nebo název skupiny vyberte **Upravit**.
-    1. Vyberte **Přidat**, zadejte `Users` , vyberte **název kontroly**a pak vyberte **OK**.
-    1. V části *oprávnění pro uživatele*vyberte **změnit**a vyberte **OK**.
+    1. Vyberte **Přidat**, zadejte `Users` , vyberte **název kontroly** a pak vyberte **OK**.
+    1. V části *oprávnění pro uživatele* vyberte **změnit** a vyberte **OK**.
 1. Pomocí **vazeb** připojte tento svazek a znovu nasaďte Event Grid modul z Azure Portal
 
-   Příklad:
+   Třeba
 
     ```json
         {
@@ -113,7 +113,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro Event Grid modul ve Windows musí být to **C: \\ App \\ metadataDb**.
 
 
-    Příklad:
+    Třeba
 
     ```json
     {
@@ -156,7 +156,7 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
    mkdir <your-directory-name-here>
    ```
 
-   Příklad:
+   Třeba
 
    ```sh
    mkdir C:\myhostdir
@@ -176,7 +176,7 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
     >[!IMPORTANT]
     >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro modul Event Grid ve Windows musí být to **C: \\ App \\ metadataDb**.
 
-    Příklad:
+    Třeba
 
     ```json
     {

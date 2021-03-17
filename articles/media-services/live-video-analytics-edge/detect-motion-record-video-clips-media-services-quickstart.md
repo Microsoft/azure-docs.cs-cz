@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067646"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575530"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -19,25 +19,40 @@ Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  > [!NOTE]
+  > Budete potřebovat předplatné Azure s oprávněním pro vytváření instančních objektů (Tato **role vlastníka** poskytuje). Pokud nemáte správná oprávnění, obraťte se na správce účtu, abyste vám udělili správná oprávnění. 
 * [Visual Studio Code](https://code.visualstudio.com/) na počítači pomocí [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Pokud jste dříve nedokončili [Začínáme rychlý Start](get-started-detect-motion-emit-events-quickstart.md) , Projděte si následující kroky:
     * [Nastavení prostředků Azure](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Nasazení modulů](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Konfigurace Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    * [Konfigurace editoru Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
+    > [!TIP]
+    > Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
 V rámci výše uvedeného postupu pro nastavení prostředků Azure se do virtuálního počítače Linux v Azure, který se používá jako zařízení IoT Edge, zkopíruje (krátké) video o zaparkované dávce. Tento videosoubor se použije k simulaci živého datového proudu pro tento kurz.
 
 Můžete použít aplikaci, jako je [VLC Player](https://www.videolan.org/vlc/), spustit ji, stisknout `Ctrl+N` a vložit [ukázkový odkaz ukázka](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) rádiového videa pro spuštění přehrávání. V symbolech 5 sekund se bílá Auto pohybuje přes sérii parkovacích míst.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 Po dokončení níže uvedeného postupu budete pro detekci pohybu auta používat Live video Analytics na IoT Edge a zaznamenáte si video klip počínaje kolem této 5 sekundové značky. Diagram níže je vizuální znázornění celkového toku.
 
-![Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu](./media/quickstarts/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/topology.svg" alt-text="Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu":::
 
 ## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 
 Pomocí modulu můžete analyzovat živé streamy videa vyvoláním přímých metod. Přečtěte si [přímé metody pro Live video Analytics na IoT Edge](direct-methods.md) , abyste pochopili všechny přímé metody poskytované modulem. 
+
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 
 ### <a name="invoke-graphtopologylist"></a>Vyvolat GraphTopologyList
 Tento krok vytvoří výčet všech [topologií grafu](media-graph-concept.md#media-graph-topologies-and-instances) v modulu.
@@ -48,7 +63,7 @@ Tento krok vytvoří výčet všech [topologií grafu](media-graph-concept.md#me
     
 ```
 {
-    "@apiVersion" : "1.0"
+    "@apiVersion" : "2.0"
 }
 ```
 
@@ -73,7 +88,7 @@ Pomocí stejných kroků, jako jsou ty, které jsou popsané pro vyvolání Grap
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
@@ -183,7 +198,7 @@ Pomocí stejných kroků, jako jsou ty, které jsou popsané pro vyvolání Grap
 
 Výsledkem výše uvedené datové části JSON je vytvoření topologie grafu, která definuje pět parametrů (čtyři z nich mají výchozí hodnoty). Topologie má jeden zdrojový uzel ([zdroj RTSP](media-graph-concept.md#rtsp-source)), dva uzly procesoru ([procesor pro detekci pohybu](media-graph-concept.md#motion-detection-processor) a [procesor brány signálu](media-graph-concept.md#signal-gate-processor)a dva uzly jímky (IoT Hub jímka a [jímka assetu](media-graph-concept.md#asset-sink)). Vizuální znázornění topologie je uvedeno výše.
 
-Během několika sekund se v okně výstup zobrazí následující odpověď.
+Během několika sekund se v okně **výstup** zobrazí následující odpověď.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -320,7 +335,7 @@ Nyní volejte GraphTopologyGet s následující datovou částí
 ```
 
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -463,7 +478,7 @@ Nyní volejte metodu GraphInstanceSet Direct s následující datovou částí:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2",
     "properties" : {
         "topologyName" : "EVRtoAssetsOnMotionDetection",
@@ -525,10 +540,15 @@ Vytvořené médium používá uzel procesoru detekce pohybu k detekci pohybu a 
 
 1. Otevřete podokno Průzkumník v Visual Studio Code a vyhledejte Azure IoT Hub v levém dolním rohu.
 1. Rozbalte uzel zařízení.
-1. Pravým tlačítkem clink na lva-Sample-Device a zvolte možnost spustit sledování integrovaného monitorování událostí.
+1. Klikněte pravým tlačítkem na lva-Sample-Device a zvolte možnost spustit sledování integrovaného monitorování událostí.
 
     ![Spustit monitorování integrovaného monitorování událostí](./media/quickstarts/start-monitoring-iothub-events.png)
     
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     Během několika sekund se v okně výstup zobrazí následující zprávy:
 
 ```
@@ -545,7 +565,7 @@ Nyní aktivujte instanci grafu – tím se spustí tok živého videa prostředn
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -569,7 +589,7 @@ Nyní volejte metodu GraphInstanceGet Direct s následující datovou částí:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -748,7 +768,7 @@ Vyvolat metodu GraphInstanceDeactivate Direct s následující datovou částí:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -776,7 +796,7 @@ Vyvolat přímý GraphInstanceDelete metody s následující datovou částí
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -800,7 +820,7 @@ Vyvolat metodu GraphTopologyDelete Direct s následující datovou částí:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```

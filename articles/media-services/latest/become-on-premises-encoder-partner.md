@@ -1,21 +1,23 @@
 ---
-title: Staňte se místním partnerem kodéru – Azure Media Services
+title: Stát se místním partnerem kodéru
 description: Tento článek popisuje, jak ověřit vaše místní kodéry živého streamování.
 services: media-services
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/02/2020
-ms.topic: article
+ms.date: 08/31/2020
+ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e07831ce4a016d49e0343da66efc0345effafd94
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298627"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954357"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Jak ověřit místní kodér živého streamování
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Jako Azure Media Services on-premises Encoder partner Media Services propaguje váš produkt tím, že doporučí kodér zákazníkům pro podniky. Pokud se chcete stát místním partnerem kodéru, musíte ověřit kompatibilitu místního kodéru s Media Services. Provedete to tak, že provedete následující ověření.
 

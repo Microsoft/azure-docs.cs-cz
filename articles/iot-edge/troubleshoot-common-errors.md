@@ -4,21 +4,23 @@ description: Pomocí tohoto článku můžete vyřešit běžné problémy zjiš
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82783744"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489558"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 V tomto článku najdete postup řešení běžných problémů, ke kterým může docházet při nasazení IoT Edge řešení. Pokud se potřebujete dozvědět, jak najít protokoly a chyby ze zařízení IoT Edge, přečtěte si téma [řešení potíží se zařízením IoT Edge](troubleshoot.md).
 
@@ -43,7 +45,7 @@ Konfigurace sítě v hostitelské síti brání tomu, aby agent IoT Edge dosáhn
 
 Modul runtime IoT Edge nastaví pro každý z modulů síť, na které budou komunikovat. V Linuxu je tato síť síťovým mostem. Ve Windows využívá překlad adres (NAT). K tomuto problému častěji dochází na zařízeních s Windows využívajících kontejnery Windows a síť s překladem adres (NAT).
 
-**Rozhodnutí**
+**Řešení:**
 
 Ujistěte se, že se IP adresy přiřazené k tomuto síťovému mostu nebo síti NAT směrují do internetu. Někdy konfigurace sítě VPN na hostiteli přepíše síť IoT Edge.
 
@@ -57,7 +59,7 @@ Nepodařilo se spustit kontejner a v protokolech edgeAgent se zobrazí chyba 403
 
 Agent IoT Edge nemá oprávnění pro přístup k imagi modulu.
 
-**Rozhodnutí**
+**Řešení:**
 
 Ujistěte se, že přihlašovací údaje registru jsou správně zadané v manifestu nasazení.
 
@@ -71,11 +73,11 @@ Zařízení má potíže se spouštěním modulů definovaných v nasazení. Bě
 
 Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti kontejneru. Zařízení může mít potíže s překladem názvů DNS v rámci této privátní sítě.
 
-**Rozhodnutí**
+**Řešení:**
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Příklad:
+Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Například:
 
 ```json
 {
@@ -103,7 +105,7 @@ Restartujte modul kontejnerů, aby se aktualizace projevily.
 
 **Možnost 2: nastavení serveru DNS v nasazení IoT Edge na modul**
 
-Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Příklad:
+Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Například:
 
 ```json
 "createOptions": {
@@ -143,7 +145,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 Některé jiné procesy na hostitelském počítači mají vazbu na port, který se pokouší vytvořit modul edgeHub. Centrum IoT Edge mapuje porty 443, 5671 a 8883 pro použití ve scénářích bran. Modul se nepovede spustit, pokud už je jeden z těchto portů vázaný na jiný proces.
 
-**Rozhodnutí**
+**Řešení:**
 
 Tento problém můžete vyřešit dvěma způsoby:
 
@@ -174,7 +176,7 @@ V deployment.jssouboru:
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
        },
        "type": "docker",
@@ -188,7 +190,7 @@ V deployment.jssouboru:
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0"
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1"
        },
        "type": "docker",
        "status": "running",
@@ -212,9 +214,12 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 Modul runtime IoT Edge může podporovat pouze názvy hostitelů, které jsou kratší než 64 znaků. Fyzické počítače většinou nemají dlouhé názvy hostitelů, ale tento problém je častější na virtuálním počítači. Automaticky vygenerované názvy hostitelů pro virtuální počítače s Windows hostované v Azure, zejména obvykle dlouhé.
 
-**Rozhodnutí**
+**Řešení:**
 
 Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete název DNS virtuálního počítače a pak nastavíte název DNS jako název hostitele v příkazu pro instalaci.
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. V Azure Portal přejděte na stránku Přehled vašeho virtuálního počítače.
 2. V části název DNS vyberte **Konfigurovat** . Pokud má váš virtuální počítač už nakonfigurovaný název DNS, nemusíte konfigurovat nový.
@@ -222,7 +227,7 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
    ![Konfigurace názvu DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
 
 3. Zadejte hodnotu **jmenovky názvu DNS** a vyberte **Uložit**.
-4. Zkopírujte nový název DNS, který by měl být ve formátu ** \<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
+4. Zkopírujte nový název DNS, který by měl být ve formátu **\<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
 5. Ve virtuálním počítači pomocí následujícího příkazu nastavte modul runtime IoT Edge s vaším názvem DNS:
 
    * V systému Linux:
@@ -237,6 +242,39 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. V Azure Portal přejděte na stránku Přehled vašeho virtuálního počítače.
+
+2. V části název DNS vyberte **Konfigurovat** . Pokud má váš virtuální počítač už nakonfigurovaný název DNS, nemusíte konfigurovat nový.
+
+   ![Konfigurace názvu DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
+
+3. Zadejte hodnotu **jmenovky názvu DNS** a vyberte **Uložit**.
+
+4. Zkopírujte nový název DNS, který by měl být ve formátu **\<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
+
+5. Na zařízení IoT Edge otevřete konfigurační soubor.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. Nahraďte hodnotu `hostname` názvem DNS.
+
+7. Uložte a zavřete soubor a pak použijte změny IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nelze získat protokoly IoT Edge démona v systému Windows.
 
 **Pozorované chování:**
@@ -247,7 +285,7 @@ Při použití ve Windows se zobrazí EventLogException `Get-WinEvent` .
 
 `Get-WinEvent`Příkaz prostředí PowerShell spoléhá na přítomnost položky registru, aby bylo možné najít protokoly podle konkrétního `ProviderName` .
 
-**Rozhodnutí**
+**Řešení:**
 
 Nastavte položku registru pro démona IoT Edge. Vytvořte soubor **iotedge. reg** s následujícím obsahem a naimportujte ho do registru Windows tak, že na něj dvakrát kliknete nebo použijete `reg import iotedge.reg` příkaz:
 
@@ -270,7 +308,7 @@ Můžete se setkat s problémy se stabilitou na zařízeních s omezeným využi
 
 Rozbočovač IoT Edge, který je součástí modulu runtime IoT Edge, je ve výchozím nastavení optimalizován pro výkon a pokusí se přidělit velké bloky paměti. Tato optimalizace není ideální pro omezení hraničních zařízení a může způsobit problémy s stabilitou.
 
-**Rozhodnutí**
+**Řešení:**
 
 Pro Centrum IoT Edge nastavte proměnnou prostředí **OptimizeForPerformance** na **false**. Existují dva způsoby, jak nastavit proměnné prostředí:
 
@@ -286,7 +324,7 @@ V manifestu nasazení:
 "edgeHub": {
   "type": "docker",
   "settings": {
-    "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+    "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
     "createOptions": <snipped>
   },
   "env": {
@@ -310,7 +348,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 Démon IoT Edge vynutil identifikaci procesu pro všechny moduly, které se připojují k edgeHub z bezpečnostních důvodů. Ověřuje, že všechny zprávy odesílané modulem přicházejí z hlavního ID procesu modulu. Pokud je zpráva odesílána modulem z jiného ID procesu, než je původně navázána, bude zpráva odmítnuta chybovou zprávou 404.
 
-**Rozhodnutí**
+**Řešení:**
 
 Od verze 1.0.7 jsou všechny procesy modulů autorizované pro připojení. Další informace najdete v tématu protokol [změn verze 1.0.7](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
@@ -326,11 +364,30 @@ Po nastavení modulů pro zařízení IoT Edge se moduly nasazují úspěšně, 
 
 Pokud se automatické nasazení zaměřuje na zařízení, má přednost před ručním nastavením modulů pro jedno zařízení. Funkce **set modules** v Azure Portal nebo **vytvoření nasazení pro funkce na jednom zařízení** v Visual Studio Code se projeví v průběhu chvilky. Na zařízení se zobrazí moduly, které jste definovali. Priorita automatického nasazení se pak vyplní a přepíše požadované vlastnosti zařízení.
 
-**Rozhodnutí**
+**Řešení:**
 
 Pro každé zařízení můžete použít jenom jeden typ mechanismu nasazení, buď pro automatické nasazení, nebo pro jednotlivá nasazení zařízení. Pokud máte více automatických nasazení cílících na zařízení, můžete změnit prioritu nebo popisy cíle, abyste se ujistili, že se u daného zařízení vztahuje správná možnost. Můžete také aktualizovat dvojitou cílovou možnost zařízení, aby se už neshodovala s popisem automatického nasazení.
 
 Další informace najdete v tématu [vysvětlení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
+
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>IoT Edge za bránou nemůže provádět požadavky HTTP a spustit modul edgeAgent.
+
+**Pozorované chování:**
+
+Démon IoT Edge je aktivní s platným konfiguračním souborem, ale nemůže spustit modul edgeAgent. Příkaz `iotedge list` vrátí prázdný seznam. Sestava protokolů démona IoT Edge `Could not perform HTTP request` .
+
+**Hlavní příčina:**
+
+Zařízení IoT Edge za bránou získají své image modulu z nadřazeného IoT Edge zařízení zadaného v `parent_hostname` poli konfiguračního souboru. Tato `Could not perform HTTP request` chyba znamená, že podřízené zařízení není schopné získat přístup k nadřazenému zařízení přes HTTP.
+
+**Řešení:**
+
+Ujistěte se, že nadřazený IoT Edge zařízení může přijímat příchozí žádosti z podřízeného IoT Edge zařízení. Pro požadavky přicházející z podřízeného zařízení otevřete síťový provoz na portech 443 a 6617.
+
+:::moniker-end
 
 ## <a name="next-steps"></a>Další kroky
 

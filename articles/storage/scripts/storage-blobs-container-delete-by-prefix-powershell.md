@@ -9,12 +9,13 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 18827beeb606694e2c9089f27570216d413aabd9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b95c5ab243fbd938e8a7eb1d3b9619b0d46fb046
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033542"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89072943"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
 

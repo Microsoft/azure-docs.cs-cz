@@ -4,12 +4,12 @@ description: Rychle se naučíte, jak vytvořit privátní službu Azure Contain
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ff74232edf5c96f091082f8486c44fed6125b0b1
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031774"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825848"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Container Registry pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Container Registry**.
+Vyberte **vytvořit**  >  **kontejnery** prostředků  >  **Container Registry**.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="Přejít na registr kontejnerů na portálu":::
 
@@ -45,7 +45,7 @@ Poznamenejte si název registru a hodnotu **přihlašovacího serveru**. Tyto ho
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před vložením a stažením imagí kontejneru se musíte přihlásit k instanci registru. [Přihlaste se k Azure CLI][get-started-with-azure-cli] na svém místním počítači a spusťte příkaz [AZ ACR Login][az-acr-login] . (Při přihlášení pomocí Azure CLI zadejte jenom název registru. Nezahrnovat příponu domény ' azurecr.io '.)
+Před vložením a stažením imagí kontejneru se musíte přihlásit k instanci registru. [Přihlaste se k Azure CLI][get-started-with-azure-cli] na svém místním počítači a spusťte příkaz [AZ ACR Login][az-acr-login] . Při přihlašování pomocí Azure CLI zadejte jenom název registru. Nepoužívejte název přihlašovacího serveru, který zahrnuje příponu domény, například `azurecr.io` .
 
 ```azurecli
 az acr login --name <registry-name>
@@ -63,11 +63,11 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr **a vyberte úložiště a pak**vyberte úložiště **Hello** , které jste vytvořili pomocí `docker push` .
+Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr **a vyberte úložiště a pak** vyberte úložiště  **Hello** , které jste vytvořili pomocí `docker push` .
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Výpis imagí kontejneru na portálu":::
 
-Výběrem úložiště **Hello-World** se v `v1` části **značky**zobrazí obrázek označený příznakem.
+Výběrem úložiště **Hello-World** se v `v1` části **značky** zobrazí obrázek označený příznakem.
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 

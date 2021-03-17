@@ -3,18 +3,21 @@ title: ARRAY_SLICE v dotazovacím jazyce Azure Cosmos DB
 description: Přečtěte si, jak funkce systému SQL řezu Array v Azure Cosmos DB vrací část výrazu pole.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808070f374614ae6cac9a27098ddf2f4d9d2d12
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332521"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí část výrazu pole.
   
 ## <a name="syntax"></a>Syntaxe
@@ -75,4 +78,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Funkce pole Azure Cosmos DB](sql-query-array-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

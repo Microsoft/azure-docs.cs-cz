@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188195"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790181"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změn schématu provedených v rámci schématu data **Sync**, protože tyto změny jsou pravděpodobně provedeny službou synchronizace dat. Pokud chcete replikovat pouze určité typy změn schématu, přidejte další filtry.
+Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změn schématu provedených v rámci schématu data **Sync** , protože tyto změny jsou pravděpodobně provedeny službou synchronizace dat. Pokud chcete replikovat pouze určité typy změn schématu, přidejte další filtry.
 
 Můžete také přidat další aktivační události pro replikaci jiných typů změn schématu. Můžete například vytvořit CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE triggery pro replikaci změn uložených procedur.
 
@@ -173,7 +173,7 @@ Při přejmenování sloupců nebo tabulek se synchronizace dat přestane fungov
 
 Pro jiné typy změn schématu – například vytváření uložených procedur nebo odstranění indexu – aktualizace schématu synchronizace není vyžadována.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Řešení potíží s automatickou replikací změn schématu
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a> Řešení potíží s automatickou replikací změn schématu
 
 Logika replikace popsaná v tomto článku v některých situacích přestane fungovat – například pokud jste provedli změnu schématu v místní databázi, která není v Azure SQL Database podporovaná. V takovém případě se synchronizace tabulky sledování změn schématu nezdařila. Tento problém je potřeba vyřešit ručně:
 
@@ -201,7 +201,7 @@ Logika replikace popsaná v tomto článku v některých situacích přestane fu
 
 Chcete-li vyčistit záznamy v tabulce sledování změn schématu, použijte příkaz DELETE místo ZKRÁCENí. Nikdy neměňte základ sloupce identity v tabulce sledování změn schématu pomocí DBCC CHECKIDENT. Pokud je požadováno opětovné osazení, můžete vytvořit nové tabulky sledování změn schématu a aktualizovat název tabulky v triggeru DDL.
 
-## <a name="other-considerations"></a><a name="other"></a>Další požadavky
+## <a name="other-considerations"></a><a name="other"></a> Další požadavky
 
 -   Uživatelé databáze, kteří konfigurují centrum a členské databáze, musí mít dostatečná oprávnění ke spuštění příkazů změny schématu.
 
@@ -231,7 +231,7 @@ Další informace o Synchronizaci dat SQL:
         -  [Použití PowerShellu k synchronizaci mezi databází v Azure SQL Database a databází v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-data-sync-agent-overview.md)
 -   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-data-sync-best-practices.md)
--   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-data-sync-monitor-sync.md)
+-   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](./monitor-tune-overview.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL]()
 -   Aktualizace schématu synchronizace
     -   Prostředí PowerShell – [použití PowerShellu k aktualizaci schématu synchronizace v existující skupině synchronizace](scripts/update-sync-schema-in-sync-group.md)

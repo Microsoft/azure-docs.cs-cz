@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779760"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Referenční dokumentace obsahu spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 - [Konfigurace ověřování Azure AD](../database/authentication-aad-configure.md)
 - [Konfigurace podmíněného přístupu](../database/conditional-access-configure.md)
-- [Ověřování Multi-Factor Azure AD](../database/authentication-mfa-ssms-overview.md)
+- [Vícefaktorové ověřování Azure AD](../database/authentication-mfa-ssms-overview.md)
 - [Konfigurace vícefaktorového ověřování](../database/authentication-mfa-ssms-configure.md)
 - [Konfigurace dočasné zásady uchovávání informací](../database/temporal-tables-retention-policy.md)
 - [Transparentní šifrování dat s využitím služby BYOK](../database/transparent-data-encryption-byok-configure.md)
@@ -64,10 +64,10 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 - [Ruční ladění](../database/performance-guidance.md)
 - [Monitorování výkonu pomocí zobrazení dynamické správy](../database/monitoring-with-dmvs.md)
-- [Monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Monitorování výkonu pomocí úložiště dotazů](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Řešení potíží s výkonem s využitím služby Intelligent Insights](../database/intelligent-insights-troubleshoot-performance.md)
 - [Použití diagnostického protokolu Intelligent Insights](../database/intelligent-insights-use-diagnostics-log.md)
-- [Monitorování OLTP místa v paměti](../in-memory-oltp-monitor-space.md)
+- [Monitorovat In-Memory OLTP místo](../in-memory-oltp-monitor-space.md)
 
 ### <a name="extended-events"></a>Rozšířené události
 
@@ -77,7 +77,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 ### <a name="alerting"></a>Zobrazení výstrah
 
-- [Vytvoření upozornění na spravovanou instanci](alerts-create.md)
+- [Vytváření upozornění pro spravovanou instanci](alerts-create.md)
 
 ## <a name="operations"></a>Operace
 

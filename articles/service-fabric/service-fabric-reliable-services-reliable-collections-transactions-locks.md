@@ -3,23 +3,22 @@ title: Transakce a režimy zámků ve spolehlivých kolekcích
 description: Azure Service Fabric Reliable State Manager a Reliable Collections – transakce a uzamykání.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.custom: sfrev
-ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500278"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784338"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zámků ve službě Azure Service Fabric Reliable Collections
 
 ## <a name="transaction"></a>Transakce
 
-Transakce je posloupnost operací prováděná jako jediná logická jednotka práce. Vykazuje běžnou [kyselinu](https://en.wikipedia.org/wiki/ACID) (vlastnosti*atomie*, *konzistence*, *izolace*, *odolnosti*) databázových transakcí:
+Transakce je posloupnost operací prováděná jako jediná logická jednotka práce. Vykazuje běžnou [kyselinu](https://en.wikipedia.org/wiki/ACID) (vlastnosti *atomie*, *konzistence*, *izolace*, *odolnosti*) databázových transakcí:
 
 * **Nedělitelnost**: transakce musí být atomická jednotka práce. Jinými slovy, buď dojde k provedení všech úprav dat, nebo žádný z nich není proveden.
 * **Konzistence**: po dokončení transakce musí opustit všechna data v konzistentním stavu. Všechny interní datové struktury musí být na konci transakce správné.
-* **Izolace**: úpravy provedené souběžnými transakcemi musí být izolované od úprav provedených jinými souběžnými transakcemi. Úroveň izolace, která se používá pro operaci v rámci [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) , je určena [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) , který provádí operaci.
+* **Izolace**: úpravy provedené souběžnými transakcemi musí být izolované od úprav provedených jinými souběžnými transakcemi. Úroveň izolace, která se používá pro operaci v rámci [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) , je určena [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) , který provádí operaci.
 * **Trvanlivost**: po dokončení transakce jsou její účinky trvale v systému zavedeny. Úpravy zůstanou zachované i v případě selhání systému.
 
 ### <a name="isolation-levels"></a>Úrovně izolace
@@ -68,7 +67,7 @@ Zámek aktualizace je asymetrický zámek, který slouží k tomu, aby se zabrá
 
 Matice o kompatibilitě zámku najdete v následující tabulce:
 
-| Žádost – uděleno | Žádná | Shared | Aktualizace | Vyhrazen |
+| Žádost – uděleno | Žádné | Shared | Aktualizace | Vyhrazen |
 | --- |:--- |:--- |:--- |:--- |
 | Shared |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
 | Aktualizace |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
@@ -85,4 +84,4 @@ V takovém případě dojde k vypršení časového limitu jedné nebo obou oper
 * [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
 * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
-* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

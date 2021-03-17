@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534596"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959777"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Podpora Azure IoT Hub Device Provisioning Service (DPS) pro virtuální sítě
 
@@ -36,9 +36,9 @@ Z několika důvodů můžou zákazníci chtít omezit připojení k prostředk�
 
 * Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md)navázali vzory připojení na úrovni Azure.
 
-Mezi běžné přístupy k omezení připojení patří [pravidla filtru DPS protokolu IP](./iot-dps-ip-filtering.md) a virtuální síť (VNET) s [privátními koncovými body](../private-link/private-endpoint-overview.md). Tento cíl tohoto článku popisuje přístup k virtuální síti pro DPS pomocí privátních koncových bodů. 
+Mezi běžné přístupy k omezení připojení patří [pravidla filtru DPS protokolu IP](./iot-dps-ip-filtering.md) a virtuální síť (VNET) s [privátními koncovými body](../private-link/private-endpoint-overview.md). Cílem tohoto článku je popsat přístup k virtuální síti pro DPS pomocí privátních koncových bodů. 
 
-Zařízení, která pracují v místních sítích, můžou pomocí [virtuální privátní sítě (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) nebo privátního partnerského vztahu [ExpressRoute](https://azure.microsoft.com/services/expressroute/) se připojit k virtuální síti v Azure a přistupovat k prostředkům DPS prostřednictvím soukromých koncových bodů. 
+Zařízení, která pracují v místních sítích, můžou pomocí [virtuální privátní sítě (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo privátního partnerského vztahu [ExpressRoute](https://azure.microsoft.com/services/expressroute/) se připojit k virtuální síti v Azure a přistupovat k prostředkům DPS prostřednictvím soukromých koncových bodů. 
 
 Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, pomocí které je k dispozici prostředek Azure. Když budete mít privátní koncový bod pro prostředek DPS, budete moct povolit zařízením, která pracují v rámci vaší virtuální sítě, vyžádat si zřizování pomocí prostředku DPS bez povolení provozu do veřejného koncového bodu.
 
@@ -51,7 +51,7 @@ Než budete pokračovat, ujistěte se, že jsou splněné následující předpo
 
 * Zřídili jste virtuální síť Azure s podsítí, ve které se vytvoří privátní koncový bod. Další informace najdete v tématu [vytvoření virtuální sítě pomocí Azure CLI](../virtual-network/quick-create-cli.md).
 
-* Pro zařízení, která pracují v místních sítích, nastavte [virtuální privátní síť (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) nebo privátní partnerský vztah [ExpressRoute](https://azure.microsoft.com/services/expressroute/) do virtuální sítě Azure.
+* Pro zařízení, která pracují v místních sítích, nastavte [virtuální privátní síť (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo privátní partnerský vztah [ExpressRoute](https://azure.microsoft.com/services/expressroute/) do virtuální sítě Azure.
 
 ## <a name="private-endpoint-limitations"></a>Omezení privátního koncového bodu
 
@@ -69,13 +69,13 @@ Při používání privátních koncových bodů Pamatujte na tato aktuální om
 
 K nastavení privátního koncového bodu použijte následující postup:
 
-1. V [Azure Portal](https://portal.azure.com/)otevřete prostředek DPS a klikněte na kartu **sítě** . klikněte na **připojení privátního koncového bodu** a **+ soukromý koncový bod**.
+1. V [Azure Portal](https://portal.azure.com/)otevřete prostředek DPS a klikněte na kartu **síť** . Klikněte na **připojení privátního koncového bodu** a **+ soukromý koncový bod**.
 
     ![Přidání nového privátního koncového bodu pro DPS](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
 2. Na stránce _vytvořit základy privátního koncového bodu_ zadejte informace uvedené v následující tabulce.
 
-    ![Konfigurace prostředku, na který se mapuje nový privátní koncový bod](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![Vytváření základních informací o privátních koncových bodech](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | Pole | Hodnota |
     | :---- | :-----|
@@ -88,7 +88,7 @@ K nastavení privátního koncového bodu použijte následující postup:
 
 3. Na stránce _vytvořit prostředek privátního koncového bodu_ zadejte informace uvedené v následující tabulce.
 
-    ![Konfigurace prostředku, na který se mapuje nový privátní koncový bod](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![Vytvořit prostředek privátního koncového bodu](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | Pole | Hodnota |
     | :---- | :-----|
@@ -105,9 +105,9 @@ K nastavení privátního koncového bodu použijte následující postup:
 
 4. Na stránce _vytvořit konfiguraci privátního koncového bodu_ vyberte virtuální síť a podsíť, ve které chcete vytvořit privátní koncový bod.
  
-    Klikněte na **Další: značky**a volitelně poskytněte pro svůj prostředek všechny značky.
+    Klikněte na **Další: značky** a volitelně poskytněte pro svůj prostředek všechny značky.
 
-    ![Konfigurace prostředku, na který se mapuje nový privátní koncový bod](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![Konfigurace privátního koncového bodu](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Klikněte na tlačítko **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte prostředek privátního koncového bodu.
 
@@ -129,19 +129,19 @@ Pomocí ID prostředku můžete požádat o privátní koncový bod na prostřed
     | :---- | :-----|
     | **ID prostředku nebo alias** | Zadejte ID prostředku pro prostředek DPS. |
     | **Cílový dílčí prostředek** | Zadejte **iotDps** |
-    | **Zpráva požadavku** | Zadejte zprávu požadavku pro vlastníka prostředku DPS.<br>Příklad: <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
+    | **Zpráva požadavku** | Zadejte zprávu požadavku pro vlastníka prostředku DPS.<br>Třeba <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     Kliknutím na **Další: Konfigurace** nakonfigurujte virtuální síť pro privátní koncový bod.
 
 3. Na stránce _vytvořit konfiguraci privátního koncového bodu_ vyberte virtuální síť a podsíť pro vytvoření privátního koncového bodu v nástroji.
  
-    Klikněte na **Další: značky**a volitelně poskytněte pro svůj prostředek všechny značky.
+    Klikněte na **Další: značky** a volitelně poskytněte pro svůj prostředek všechny značky.
 
 4. Kliknutím na tlačítko **zkontrolovat + vytvořit** **a vytvořit vytvořte požadavek na privátní** koncový bod.
 
 5. Vlastník DPS uvidí požadavek na soukromý koncový bod na seznamu **připojení privátního koncového bodu** na kartě DPS sítě. Vlastník může na této stránce **schválit** nebo **odmítnout** požadavek na privátní koncový bod, jak je znázorněno níže.
 
-    ![Karta vlastnosti DPS](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![Schválení DPS](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>Soukromé koncové body pro ceny
@@ -154,5 +154,5 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](ht
 
 K získání dalších informací o funkcích zabezpečení DPS použijte odkazy níže:
 
-* [Zabezpečení](concepts-security.md)
+* [Zabezpečení](./concepts-service.md#attestation-mechanism)
 * [Podpora TLS 1,2](tls-support.md)

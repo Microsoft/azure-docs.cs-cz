@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z MySQL pomocí Azure Data Factory
 description: Přečtěte si informace o tom, jak přesunout data z databáze MySQL pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83c39435d2249981a45798ffe0717054fa7b0717
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281285"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387321"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -50,7 +45,7 @@ Aby se Správa dat brána připojovala k databázi MySQL, musíte nainstalovat [
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -65,12 +60,12 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu MySQL.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Yes |
 | server |Název serveru MySQL |Yes |
 | database |Název databáze MySQL |Yes |
-| XSD |Název schématu v databázi. |No |
+| schema |Název schématu v databázi. |No |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic` . |Yes |
 | userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Yes |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Yes |
@@ -81,7 +76,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (což zahrnuje datovou sadu MySQL) má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky v instanci databáze MySQL, na kterou odkazuje propojená služba |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
@@ -300,23 +295,23 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 
 | Typ databáze MySQL | Typ rozhraní .NET Framework |
 | --- | --- |
-| bigint bez znaménka |Desetinné číslo |
+| bigint bez znaménka |Decimal |
 | bigint |Int64 |
-| bit |Desetinné číslo |
+| bit |Decimal |
 | blob |Byte [] |
 | bool |Logická hodnota |
 | char |Řetězec |
 | date |Datum a čas |
 | datetime |Datum a čas |
-| decimal |Desetinné číslo |
-| Dvojitá přesnost |Double |
-| double |Double |
+| decimal |Decimal |
+| Dvojitá přesnost |dvojité |
+| double |dvojité |
 | enum |Řetězec |
-| float |Jeden |
+| float |Jednoduché |
 | celé číslo bez znaménka |Int64 |
 | int |Int32 |
 | celé číslo bez znaménka |Int64 |
-| celé číslo |Int32 |
+| integer |Int32 |
 | Long varbinary |Byte [] |
 | Long varchar |Řetězec |
 | longblob |Byte [] |
@@ -325,8 +320,8 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 | mediumint bez znaménka |Int64 |
 | mediumint |Int32 |
 | mediumtext |Řetězec |
-| numerické |Desetinné číslo |
-| real |Double |
+| numerické |Decimal |
+| real |dvojité |
 | set |Řetězec |
 | typ smallint bez znaménka |Int32 |
 | smallint |Int16 |

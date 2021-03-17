@@ -2,24 +2,24 @@
 title: Analýza JSON a AVRO v Azure Stream Analytics
 description: Tento článek popisuje, jak pracovat s komplexními datovými typy, jako jsou pole, JSON a formátovaná data ve formátu CSV.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3ae9a787586a4d3f7c27353aca37326be32448
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432539"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012236"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
 
 Azure Stream Analytics podporovat zpracování událostí v datových formátech CSV, JSON a Avro. Data JSON a Avro mohou být strukturovaná a obsahují některé komplexní typy, jako jsou například vnořené objekty (záznamy) a pole. 
 
 >[!NOTE]
->Soubory AVRO vytvořené pomocí centra událostí zachycení používají konkrétní formát, který vyžaduje použití *vlastní funkce deserializace* . Další informace najdete v tématu [čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
+>Soubory AVRO vytvořené pomocí centra událostí zachycení používají konkrétní formát, který vyžaduje použití *vlastní funkce deserializace* . Další informace najdete v tématu [čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET](./custom-deserializer-examples.md).
 >
 >Deserializace Stream Analytics AVRO nepodporuje typ mapy. Stream Analytics nemůže číst objekty blob pro zachycení EventHub, protože zachycení EventHub používá mapu.
 
@@ -89,7 +89,7 @@ Výsledek je následující:
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Přístup k vnořeným polím, pokud je název vlastnosti proměnná
 
-Použijte funkci [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) , pokud je název vlastnosti proměnná. To umožňuje vytvářet dynamické dotazy bez názvů vlastností zakódujeme.
+Použijte funkci [GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) , pokud je název vlastnosti proměnná. To umožňuje vytvářet dynamické dotazy bez názvů vlastností zakódujeme.
 
 Představte si například, že vzorový datový proud musí **být spojen s referenčními daty** obsahujícími prahové hodnoty pro každý senzor zařízení. Fragment těchto referenčních dat je uveden níže.
 
@@ -131,7 +131,7 @@ Výsledek je následující:
 
 ### <a name="convert-record-fields-into-separate-events"></a>Převod polí záznamu na samostatné události
 
-Chcete-li převést pole záznamu na samostatné události, použijte operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s funkcí [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) .
+Chcete-li převést pole záznamu na samostatné události, použijte operátor [Apply](/stream-analytics-query/apply-azure-stream-analytics) společně s funkcí [GetRecordProperties](/stream-analytics-query/getrecordproperties-azure-stream-analytics) .
 
 S původními ukázkovými daty můžete k extrakci vlastností do různých událostí použít následující dotaz.
 
@@ -154,7 +154,7 @@ Výsledek je následující:
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[objekt objektu]|
 
-Pomocí [s](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)můžete tyto události směrovat do různých umístění:
+Pomocí [s](/stream-analytics-query/with-azure-stream-analytics)můžete tyto události směrovat do různých umístění:
 
 ```SQL
 WITH Stage0 AS
@@ -205,7 +205,7 @@ Pak můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níž
 
 ## <a name="array-data-types"></a>Datové typy polí
 
-Datové typy pole jsou seřazené kolekce hodnot. Některé typické operace s hodnotami polí jsou popsány níže. V těchto příkladech se používají funkce [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) .
+Datové typy pole jsou seřazené kolekce hodnot. Některé typické operace s hodnotami polí jsou popsány níže. V těchto příkladech se používají funkce [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [Apply](/stream-analytics-query/apply-azure-stream-analytics) .
 
 Tady je příklad jedné události. `CustomSensor03`A `SensorMetadata` jsou typu **Array**:
 
@@ -265,7 +265,7 @@ Výsledek je následující:
 
 ### <a name="convert-array-elements-into-separate-events"></a>Převést elementy pole na samostatné události
 
-Vyberte všechny prvky pole jako jednotlivé události. Operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s vestavěnou funkcí [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) extrahuje všechny prvky pole jako jednotlivé události:
+Vyberte všechny prvky pole jako jednotlivé události. Operátor [Apply](/stream-analytics-query/apply-azure-stream-analytics) společně s vestavěnou funkcí [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics) extrahuje všechny prvky pole jako jednotlivé události:
 
 ```SQL
 SELECT
@@ -301,7 +301,7 @@ Výsledek je následující:
 |12345|Manufacturer|ABC|
 |12345|Verze|1.2.45|
 
-Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné datovou sadu pivotovat pomocí syntaxe [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) kromě operace [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Toto spojení bude vyžadovat podmínku [časové hranice](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , která zabrání duplikaci:
+Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné datovou sadu pivotovat pomocí syntaxe [with](/stream-analytics-query/with-azure-stream-analytics) kromě operace [Join](/stream-analytics-query/join-azure-stream-analytics) . Toto spojení bude vyžadovat podmínku [časové hranice](/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , která zabrání duplikaci:
 
 ```SQL
 WITH DynamicCTE AS (
@@ -330,4 +330,4 @@ Výsledek je následující:
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>Viz také
-[Datové typy v Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Datové typy v Azure Stream Analytics](/stream-analytics-query/data-types-azure-stream-analytics)

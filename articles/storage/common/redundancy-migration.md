@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50745c96f73f4e2d666a82746549ed361502e381
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501385"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714778"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -39,20 +39,21 @@ Následující tabulka poskytuje přehled toho, jak přepínat mezi jednotlivým
 
 | Přepínání | ... do LRS | ... na GRS/RA – GRS | ... do ZRS | ... na GZRS/RA – GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... z LRS</b> | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
-| <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> Vyžádání migrace za provozu |
-| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . |
+| <b>... z LRS</b> | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
+| <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu |
+| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Vyžádání migrace za provozu |
 | <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – |
 
 <sup>1</sup> dojde k jednorázovému výstupnímu poplatku.<br />
-<sup>2</sup> převod z ZRS na GZRS/RA-GZRS nebo naopak není podporován v následujících oblastech: USA – východ 2, USA – východ, Evropa – západ.
+<sup>2</sup> migrace z LRS na GRS není podporovaná, pokud účet úložiště obsahuje objekty BLOB v archivní úrovni.<br />
+<sup>3</sup> převod z ZRS na GZRS/RA-GZRS nebo naopak se nepodporuje v následujících oblastech: USA – východ 2, USA – východ, Evropa – západ.
 
 > [!CAUTION]
-> Pokud jste provedli [převzetí služeb při selhání u účtu](storage-disaster-recovery-guidance.md) (RA-) GRS nebo (RA-) GZRS, účet se po převzetí služeb při selhání místně redundantní v nové primární oblasti. Migrace za provozu na ZRS nebo GZRS pro účet LRS, který vyplývají z převzetí služeb při selhání, se nepodporuje. Budete muset provést [Ruční migraci](#perform-a-manual-migration-to-zrs) na ZRS nebo GZRS.
+> Pokud jste provedli [převzetí služeb při selhání účtu](storage-disaster-recovery-guidance.md) (RA-) GRS nebo (RA-) GZRS, účet je místně redundantní (LRS) v nové primární oblasti po převzetí služeb při selhání. Migrace za provozu na ZRS nebo GZRS pro účet LRS, který vyplývají z převzetí služeb při selhání, se nepodporuje. To platí i v případě, že se říká operace navrácení služeb po obnovení. Pokud třeba provedete převzetí služeb při selhání z RA-GZRS do LRS v sekundární oblasti a pak ji znovu nakonfigurujete na RA-GRS a provedete jiné převzetí služeb při selhání do původní primární oblasti, nebudete moct kontaktovat podporu pro původní migraci za provozu do RA-GZRS v primární oblasti. Místo toho budete muset provést ruční migraci na ZRS nebo GZRS.
 
 ## <a name="change-the-replication-setting"></a>Změna nastavení replikace
 
-Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete změnit nastavení replikace pro účet úložiště, pokud neměníte způsob, jakým se data replikují v primární oblasti. Pokud migrujete z LRS v primární oblasti na ZRS v primární oblasti nebo naopak, musíte provést [Ruční migraci](#perform-a-manual-migration-to-zrs) nebo [migraci za provozu](#request-a-live-migration-to-zrs).
+Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete změnit nastavení replikace pro účet úložiště, pokud neměníte způsob, jakým se data replikují v primární oblasti. Pokud migrujete z LRS v primární oblasti na ZRS v primární oblasti nebo naopak, musíte provést ruční migraci nebo migraci za provozu.
 
 Změna způsobu replikace účtu úložiště nevede k nezměnění času pro vaše aplikace.
 
@@ -89,7 +90,7 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>Provedení ruční migrace do ZRS
+## <a name="perform-a-manual-migration-to-zrs-gzrs-or-ra-gzrs"></a>Provedení ruční migrace do ZRS, GZRS nebo RA-GZRS
 
 Pokud chcete změnit způsob, jakým se data v účtu úložiště replikují v primární oblasti, přemístěte z LRS na ZRS nebo naopak a pak se můžete rozhodnout provést ruční migraci. Ruční migrace poskytuje větší flexibilitu než migrace za chodu. Můžete řídit časování ruční migrace, takže tuto možnost použijte, pokud potřebujete migraci dokončit do určitého data.
 
@@ -102,9 +103,11 @@ Při ruční migraci kopírujete data z existujícího účtu úložiště do no
 - Kopírování dat pomocí existujícího nástroje, jako je AzCopy, jedna z klientských knihoven Azure Storage, nebo spolehlivého nástroje třetí strany.
 - Pokud jste obeznámeni se systémem Hadoop nebo HDInsight, můžete ke svému clusteru připojit účet zdrojového úložiště i cílový účet úložiště. Pak paralelizovat proces kopírování dat pomocí nástroje, jako je DistCp.
 
-## <a name="request-a-live-migration-to-zrs"></a>Vyžádání migrace za provozu do ZRS
+## <a name="request-a-live-migration-to-zrs-gzrs-or-ra-gzrs"></a>Vyžádání migrace za provozu na ZRS, GZRS nebo RA-GZRS
 
-Pokud potřebujete migrovat účet úložiště z LRS nebo GRS na ZRS v primární oblasti bez výpadků aplikací, můžete požádat o migraci za provozu od Microsoftu. Během migrace za provozu máte přístup k datům ve vašem účtu úložiště, a to bez ztráty odolnosti nebo dostupnosti. Azure Storage smlouva SLA se udržuje během procesu migrace. Při migraci za provozu nedochází k žádné ztrátě dat. Koncové body služby, přístupové klíče, signatury sdíleného přístupu a další možnosti účtu zůstávají po migraci beze změny.
+Pokud potřebujete migrovat účet úložiště z LRS na ZRS v primární oblasti bez výpadků aplikací, můžete požádat o migraci za provozu od Microsoftu. Pokud chcete migrovat z LRS na GZRS nebo RA-GZRS, nejdřív přepněte na GRS nebo RA-GRS a pak požádejte o migraci za provozu. Podobně můžete požádat o migraci za provozu z GRS nebo RA-GRS na GZRS nebo RA-GZRS. Pokud chcete migrovat z GRS nebo RA-GRS na ZRS, nejdřív přepněte na LRS a pak požádejte o migraci za provozu.
+
+Během migrace za provozu máte přístup k datům ve vašem účtu úložiště bez ztráty odolnosti nebo dostupnosti. Azure Storage smlouva SLA se udržuje během procesu migrace. Při migraci za provozu nedochází k žádné ztrátě dat. Koncové body služby, přístupové klíče, signatury sdíleného přístupu a další možnosti účtu zůstávají po migraci beze změny.
 
 ZRS podporuje jenom účty pro obecné účely v2, takže před odesláním žádosti o migraci za provozu do ZRS nezapomeňte upgradovat svůj účet úložiště. Další informace najdete v tématu [upgrade na účet úložiště pro obecné účely v2](storage-account-upgrade.md). Účet úložiště musí obsahovat data, která se mají migrovat prostřednictvím migrace za provozu.
 
@@ -121,8 +124,11 @@ Ruční migraci je nutné provést v těchto případech:
 
 Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Na portálu vyberte účet úložiště, který chcete převést na ZRS.
 
-1. Vybrat **novou žádost o podporu**
-2. Dokončete **základy** na základě informací o účtu. V části **Služba** vyberte **Správa účtu úložiště** a prostředek, který chcete převést na ZRS.
+1. Vyberte **novou žádost o podporu**.
+2. Dokončete **základy** na základě informací o účtu: 
+    - **Typ problému**: vyberte **technický**.
+    - **Služba**: vyberte **moje služby** a **správu účtu úložiště**.
+    - **Prostředek**: Vyberte prostředek, který chcete převést na ZRS.
 3. Vyberte **Další**.
 4. V části **problém** zadejte následující hodnoty:
     - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
@@ -137,11 +143,11 @@ Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azu
 Pracovník podpory vás bude kontaktovat a poskytne vám pomoc, kterou potřebujete.
 
 > [!NOTE]
-> Migrace za provozu není v současné době pro sdílené složky Premium podporována. V tuto chvíli se podporuje jenom ruční kopírování a přesouvání dat.
+> Soubory úrovně Premium (účty úložiště) jsou dostupné jenom pro LRS a ZRS.
 >
-> Účty úložiště GZRS momentálně nepodporují archivní vrstvu. Další podrobnosti najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+> Účty úložiště GZRS momentálně nepodporují archivní vrstvu. Další podrobnosti najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md) .
 >
-> Spravované disky jsou dostupné jenom pro LRS a nedají se migrovat na ZRS. Můžete ukládat snímky a image pro standardní spravované disky SSD na úrovni Standard HDD a [volit mezi LRS a ZRS možností](https://azure.microsoft.com/pricing/details/managed-disks/). Informace o integraci se skupinami dostupnosti najdete v tématu [Seznámení se službou Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
+> Spravované disky jsou dostupné jenom pro LRS a nedají se migrovat na ZRS. Můžete ukládat snímky a image pro standardní spravované disky SSD na úrovni Standard HDD a [volit mezi LRS a ZRS možností](https://azure.microsoft.com/pricing/details/managed-disks/). Informace o integraci se skupinami dostupnosti najdete v tématu [Seznámení se službou Azure Managed disks](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets).
 
 ## <a name="switch-from-zrs-classic"></a>Přepnutí z ZRS Classic
 
@@ -162,7 +168,7 @@ Pokud chcete data účtu ZRS ručně migrovat do nebo z klasického účtu LRS, 
 
 Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do nastavení **Konfigurace** účtu a vyberte **upgradovat**:
 
-![Upgrade ZRS Classic na ZRS na portálu](media/redundancy-migration/portal-zrs-classic-upgrade.png)
+![Upgrade ze ZRS Classic na ZRS na portálu](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -195,6 +201,6 @@ Při migraci účtu úložiště z GRS do LRS se neúčtují žádné další n�
 
 ## <a name="see-also"></a>Viz také
 
-- [Azure Storage redundance](storage-redundancy.md)
+- [Redundance Azure Storage](storage-redundancy.md)
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md)

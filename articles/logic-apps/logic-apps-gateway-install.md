@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386125"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054767"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -26,14 +26,14 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud nemáte účet Azure s předplatným, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   * Váš účet Azure musí být buď pracovní účet, nebo školní účet, který vypadá nějak takto `username@contoso.com` . Nemůžete použít účty Azure B2B (Guest) ani osobní účty Microsoft, například @hotmail.com nebo @outlook.com .
 
     > [!NOTE]
-    > Pokud jste si zaregistrovali nabídku Office 365 a nezadali jste svoji pracovní e-mailovou adresu, může vaše adresa vypadat jako `username@domain.onmicrosoft.com` . Váš účet je uložený v tenantovi Azure AD. Ve většině případů je hlavní název uživatele (UPN) pro váš účet Azure stejný jako vaše e-mailová adresa.
+    > Pokud jste si zaregistrovali Microsoft 365 nabídku a nezadali jste svoji pracovní e-mailovou adresu, může vaše adresa vypadat jako `username@domain.onmicrosoft.com` . Váš účet je uložený v tenantovi Azure AD. Ve většině případů je hlavní název uživatele (UPN) pro váš účet Azure stejný jako vaše e-mailová adresa.
 
     Pokud chcete použít [standardní předplatné sady Visual Studio](https://visualstudio.microsoft.com/vs/pricing/) , které je přidružené k účet Microsoft, [vytvořte nejprve tenanta Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) nebo použijte výchozí adresář. Přidejte do adresáře uživatele s heslem a pak mu poskytněte přístup k vašemu předplatnému Azure. Pak se můžete přihlásit při instalaci brány pomocí tohoto uživatelského jména a hesla.
 
@@ -91,13 +91,13 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit**se, například:
+1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit** se, například:
 
    ![Přihlaste se pomocí pracovního nebo školního účtu.](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
    Vaše instalace brány se může propojit jenom s jedním účtem Azure.
 
-1. **V tomto počítači vyberte zaregistrovat novou bránu**  >  **Next**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
+1. **V tomto počítači vyberte zaregistrovat novou bránu**  >  . Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
    ![Registrovat bránu v místním počítači](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -114,7 +114,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    Poznamenejte si možnost **Přidat existující cluster brány**, který vyberete při instalaci dalších bran pro [scénáře s vysokou dostupností](#high-availability).
 
-1. Ověřte oblast pro cloudovou službu brány a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) , kterou používá instalace brány. Ve výchozím nastavení má tato oblast stejné umístění jako tenant Azure AD pro váš účet Azure.
+1. Ověřte oblast pro cloudovou službu brány a [Azure Service Bus instanci zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md) , kterou používá instalace brány. Ve výchozím nastavení má tato oblast stejné umístění jako tenant Azure AD pro váš účet Azure.
 
    ![Potvrdit oblast pro službu brány a Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -138,9 +138,15 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 1. Nyní [vytvořte prostředek Azure pro instalaci brány](../logic-apps/logic-apps-gateway-connection.md).
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>Kontrolovat nebo upravovat nastavení komunikace
 
-Místní brána dat závisí na [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus. Brána má několik nastavení komunikace, která můžete upravit. Další informace najdete v těchto tématech:
+Místní brána dat závisí na [Azure Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus zasílání zpráv. Brána má několik nastavení komunikace, která můžete upravit.
+
+Příkladem scénáře je použití vlastních konektorů, které přistupují k místním prostředkům pomocí prostředku místní brány dat v Azure. Pokud máte také bránu firewall, která omezuje provoz na konkrétní IP adresy, je třeba nastavit instalaci brány tak, aby povolovala přístup pro příslušné *[odchozí IP adresy](logic-apps-limits-and-config.md#outbound)spravovaných konektorů*. *Všechny* Logic Apps ve stejné oblasti používají stejné rozsahy IP adres.
+
+Další informace najdete v těchto tématech:
 
 * [Úprava nastavení komunikace pro místní bránu dat](/data-integration/gateway/service-gateway-communication)
 * [Konfigurace nastavení proxy serveru pro místní bránu dat](/data-integration/gateway/service-gateway-proxy)
@@ -171,7 +177,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
 1. Po otevření instalačního programu se přihlaste pomocí stejného účtu Azure, který jste použili k instalaci brány.
 
-1. Vyberte možnost **migrovat, obnovit nebo převzetí existující brány**  >  **Next**, například:
+1. Vyberte možnost **migrovat, obnovit nebo převzetí existující brány**  >  , například:
 
    ![Vyberte možnost migrace, obnovení nebo převzetí existující brány.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -179,7 +185,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
    ![Vybrat bránu a zadat obnovovací klíč](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. Chcete-li změnit oblast, vyberte možnost **změnit oblast**a vyberte novou oblast.
+1. Chcete-li změnit oblast, vyberte možnost **změnit oblast** a vyberte novou oblast.
 
 1. Až budete připraveni, vyberte **Konfigurovat** , aby bylo možné dokončit úlohu.
 
@@ -206,7 +212,7 @@ Uživatelé ve vaší organizaci mají přístup k místním datům, ke kterým 
 
 Brána usnadňuje rychlejší a bezpečnější komunikaci na pozadí. Tato komunikace komunikuje mezi uživatelem v cloudu, cloudovou službou brány a vaším místním zdrojem dat. Cloudová služba brány šifruje a ukládá vaše přihlašovací údaje ke zdroji dat a podrobnosti o bráně. Služba také směruje dotazy a jejich výsledky mezi uživatelem, bránou a vaším místním zdrojem dat.
 
-Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz pochází z agenta brány jako zabezpečený odchozí provoz. Brána přenáší data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
+Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz pochází z agenta brány jako zabezpečený odchozí provoz. Brána odesílá data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
 
 ![Architektura pro místní bránu dat](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +223,9 @@ Tyto kroky popisují, co se stane, když budete pracovat s prvkem, který je př
 
 1. Cloudová služba vytvoří dotaz společně se zašifrovanými přihlašovacími údaji pro zdroj dat. Služba pak odešle dotaz a přihlašovací údaje do fronty brány ke zpracování.
 
-1. Cloudová služba brány dotaz analyzuje a odešle požadavek do Azure Service Busu.
+1. Cloudová služba brány dotaz analyzuje a odešle požadavek pro Azure Service Bus zasílání zpráv.
 
-1. Azure Service Bus odešle nevyřízené požadavky do brány.
+1. Azure Service Bus zasílání zpráv odesílá nedokončené žádosti do brány.
 
 1. Brána obdrží dotaz, dešifruje přihlašovací údaje a pomocí nich se připojí k jednomu nebo více zdrojům dat.
 

@@ -16,15 +16,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359344"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746066"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestava rizikových IP adres (Public Preview)
-Zákazníci služby AD FS můžou zveřejnit koncové body ověřování pomocí hesla na internetu a poskytnout tak koncovým zákazníkům ověřovací služby pro přístup k aplikacím SaaS, jako je Office 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
+Zákazníci AD FS můžou zveřejnit koncové body ověřování hesla pro Internet, aby koncovým uživatelům poskytovali služby ověřování pro přístup k aplikacím SaaS, jako je Microsoft 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
 
 Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za několik uživatelů. V takových případech je možné počet pokusů na jednoho uživatele omezit prahovou hodnotou pro ochranu uzamčení účtu ve službě AD FS. Azure AD Connect Health nyní poskytuje sestavu rizikových IP adres, která tuto podmínku detekuje a upozorňuje na její výskyt správce. Klíčové výhody této sestavy jsou následující: 
 - Detekce IP adres, které překročí prahovou hodnotu neúspěšných pokusů o přihlášení na základě hesla
@@ -35,13 +35,13 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 
 > [!NOTE]
 > Pokud chcete tuto sestavu použít, ujistěte se, že je povolené auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Pro přístup k náhledu jsou vyžadována oprávnění Globálního správce nebo [Čtenáře zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader).  
-> 
+> Pro přístup k náhledu jsou vyžadována oprávnění Globálního správce nebo [Čtenáře zabezpečení](../../role-based-access-control/built-in-roles.md#security-reader).  
+>
 
 ## <a name="what-is-in-the-report"></a>Co je v sestavě?
-IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4a.png)
+IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![ snímek obrazovky, který zobrazuje rizikové zprávy IP se zvýrazněnými záhlavími sloupců.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Položky sestavy | Description |
+| Položky sestavy | Popis |
 | ------- | ----------- |
 | Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
 | Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
@@ -52,7 +52,7 @@ IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictv
 
 Například níže uvedená položka sestavy značí, že 28. 2. 2018 v časovém intervalu od 18:00 do 19:00 u IP adresy <i>104.2XX.2XX.9</i> nedošlo k žádnému chybnému zadání hesla, ale došlo k 284 chybám uzamčení extranetu. V rámci kritérií to mělo dopad na 14 jedinečných uživatelů. Událost aktivity překročila určenou hodinovou prahovou hodnotu sestavy. 
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4b.png)
+![Snímek obrazovky, který ukazuje příklad záznamu rizikové IP adresy.](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - V seznamu sestavy se zobrazí pouze aktivity překračující určenou prahovou hodnotu. 
@@ -60,7 +60,7 @@ Například níže uvedená položka sestavy značí, že 28. 2. 2018 v časové
 > - V této sestavě upozornění se nezobrazují IP adresy Exchange ani privátní IP adresy. Ty jsou však stále součástí exportovaného seznamu. 
 >
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4c.png)
+![Snímek obrazovky zobrazující sestavu rizikových IP adres se zvýrazněnou možností "Stáhnout", "nastavení oznámení" a "mezní hodnota".](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>IP adresy služby Vyrovnávání zatížení v seznamu
 Nástroj pro vyrovnávání zatížení agreguje aktivity přihlášení, které selhaly, a překročení prahové hodnoty výstrahy. Pokud se vám zobrazují IP adresy nástroje pro vyrovnávání zatížení, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta. Nakonfigurujte ve svém nástroji pro vyrovnávání zatížení správně předávání IP adresy klienta. 
@@ -68,7 +68,7 @@ Nástroj pro vyrovnávání zatížení agreguje aktivity přihlášení, které
 ## <a name="download-risky-ip-report"></a>Stáhnout sestavu rizikových IP adres 
 Pomocí funkce **Stáhnout** můžete z portálu služby Connect Health exportovat celý seznam rizikových IP adres za posledních 30 dnů. Výsledek exportu bude obsahovat všechny neúspěšné aktivity přihlášení ke službě AD FS v jednotlivých časových intervalech zjišťování, abyste si po exportu mohli upravit filtrování. Kromě zvýrazněných agregací na portálu bude výsledek exportu obsahovat také další podrobnosti o neúspěšných aktivitách přihlášení podle IP adresy:
 
-|  Položky sestavy  |  Description  | 
+|  Položky sestavy  |  Popis  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Ukazuje časové razítko prvního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
 | lastAuditTimestamp | Ukazuje časové razítko posledního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
@@ -79,16 +79,16 @@ Pomocí funkce **Stáhnout** můžete z portálu služby Connect Health exportov
 Kontakty pro správu sestavy je možné aktualizovat prostřednictvím **Nastavení oznámení**. Ve výchozím nastavení je e-mailové oznámení o upozornění na rizikové IP adresy vypnuté. Oznámení můžete zapnout přepnutím tlačítka v části Dostávat e-mailová oznámení o sestavě IP adres, které překročily prahovou hodnotu neúspěšné aktivity. Podobně jako v případě nastavení oznámení o obecných upozornění ve službě Connect Health můžete na tomto místě upravit určený seznam příjemců oznámení o sestavě rizikových IP adres. Při provádění změny můžete také upozornit všechny globální správce. 
 
 ## <a name="configure-threshold-settings"></a>Konfigurovat nastavení prahové hodnoty
-Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení prahových hodnot. Pro začátek má systém nastavené výchozí prahové hodnoty. Nastavení prahových hodnot pro sestavu rizikových IP adres obsahuje čtyři kategorie:
+Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení prahových hodnot. Pro začátek má systém nastavené výchozí prahové hodnoty. Výchozí hodnoty jsou uvedeny níže. Nastavení prahových hodnot pro sestavu rizikových IP adres obsahuje čtyři kategorie:
 
 ![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4d.png)
 
-| Položka prahové hodnoty | Description |
+| Položka prahové hodnoty | Popis |
 | --- | --- |
-| (Chybné U/P + uzamčení extranetu) / den  | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **den** překročí tuto prahovou hodnotu. |
-| (Chybné U/P + uzamčení extranetu) / hodina | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. |
-| Uzamčení extranetu / den | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když počet uzamčení extranetu za **den** překročí tuto prahovou hodnotu. |
-| Uzamčení extranetu / hodina| Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když počet uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. |
+| (Chybné U/P + uzamčení extranetu) / den  | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **den** překročí tuto prahovou hodnotu. Výchozí hodnota je 100.|
+| (Chybné U/P + uzamčení extranetu) / hodina | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. Výchozí hodnota je 50.|
+| Uzamčení extranetu / den | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když počet uzamčení extranetu za **den** překročí tuto prahovou hodnotu. Výchozí hodnota je 50.|
+| Uzamčení extranetu / hodina| Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když počet uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. Výchozí hodnota je 25.|
 
 > [!NOTE]
 > - Změna prahových hodnot pro sestavu se projeví za hodinu od provedení změny nastavení. 
@@ -99,7 +99,7 @@ Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení 
 
 ## <a name="faq"></a>Nejčastější dotazy
 **Proč se v sestavě zobrazují rozsahy privátních IP adres?**  <br />
-Privátní IP adresy (<i>10.x.x.x, 172.x.x.x a 192.168.x.x</i>) a IP adresy Exchange se filtrují a v seznamu povolených IP adres jsou označené hodnotou True. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.
+Privátní IP adresy (<i>10. x. x. x, 172. x. x. x & 192.168. x. x</i>) a IP adresy Exchange se filtrují a v seznamu schválených IP adres jsou označené jako true. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.
 
 **Proč se v sestavě zobrazují IP adresy nástroje pro vyrovnávání zatížení?**  <br />
 Pokud se vám zobrazují IP adresy nástroje pro vyrovnávání zatížení, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta. Nakonfigurujte ve svém nástroji pro vyrovnávání zatížení správně předávání IP adresy klienta. 
@@ -113,9 +113,9 @@ Zjištěné škodlivé IP adresy byste měli přidat do brány firewall nebo je 
 - Na farmách služby AD FS není povolené auditování.
 
 **Proč k sestavě nemám přístup?**  <br />
-Vyžadují se oprávnění globálního správce nebo [čtenáře zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader). Obraťte se s žádostí o udělení přístupu na globálního správce.
+Vyžadují se oprávnění globálního správce nebo [čtenáře zabezpečení](../../role-based-access-control/built-in-roles.md#security-reader). Obraťte se s žádostí o udělení přístupu na globálního správce.
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)

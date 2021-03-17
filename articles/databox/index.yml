@@ -3,7 +3,7 @@ title: Dokumentace ke službě Azure Data Box – offline přenos
 summary: Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Azure Data Box. Podle velikosti vašich dat zvolte službu Data Box Disk, Data Box nebo Data Box Heavy.
 metadata:
   title: Dokumentace ke službě Azure Data Box – offline přenos
-  description: Pokud vás při offline přenosu dat do Azure omezuje čas, síť nebo cena, použijte zařízení Data Box.
+  description: Seznamte se s Azure Data Boxem, úložným zařízením pro offline migraci dat do cloudu. Přečtěte si víc o službách přenosu dat s využitím zabezpečeného proprietárního úložného zařízení.
   services: databox
   ms.service: databox
   ms.subservice: pod
@@ -12,12 +12,14 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 08/16/2019
-  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.custom: seo-azure-migrate
+  keywords: cloud data transfer, data migration to cloud, azure data box, data transfer service, data transfer services, azure data transfer
+  ms.openlocfilehash: 6b3ef7ace8bfb481b294ca4d823ccc1c6c2f7367
+  ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "69650378"
+  ms.lasthandoff: 10/16/2020
+  ms.locfileid: "92125230"
 landingContent:
 - title: Řada služeb Azure Data Box
   linkLists:
@@ -32,7 +34,7 @@ landingContent:
   - linkListType: architecture
     links:
     - text: Volba možností přenosu dat v Azure
-      url: /azure/storage/common/storage-choose-data-transfer-solution
+      url: ../storage/common/storage-choose-data-transfer-solution.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
@@ -46,7 +48,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Import dat offline s využitím Data Boxu
-      url: https://docs.microsoft.com/learn/modules/move-data-with-azure-data-box/
+      url: /learn/modules/move-data-with-azure-data-box/
 - title: Zobrazení požadavků
   linkLists:
   - linkListType: concept

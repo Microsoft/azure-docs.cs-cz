@@ -9,11 +9,11 @@ ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: feed8b21833d4244d027d64d5e6547b94e4fa66f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75945151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004332"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>Co se stane s aplikací během nasazení?
 

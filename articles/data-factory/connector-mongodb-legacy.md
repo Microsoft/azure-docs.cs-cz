@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z MongoDB pomocí starší verze
-description: Naučte se, jak kopírovat data z Mongo DB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
+description: Naučte se, jak kopírovat data z databáze Mongo DB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu staršího Azure Data Factory.
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558189"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368842"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopírování dat z MongoDB pomocí Azure Data Factory (starší verze)
 
@@ -55,16 +51,16 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ |Vlastnost Type musí být nastavená na: **MongoDB** . |Yes |
 | server |IP adresa nebo název hostitele serveru MongoDB |Yes |
 | port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Ne (výchozí hodnota je 27017) |
 | Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Yes |
-| authenticationType | Typ ověřování, který se používá pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Basic**a **Anonymous**. |Yes |
-| uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
+| authenticationType | Typ ověřování, který se používá pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Basic** a **Anonymous**. |Yes |
+| username |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | heslo |Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano (Pokud se používá základní ověřování). |
-| authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |Ne. Pro základní ověřování se ve výchozím nastavení používá účet správce a databáze určená pomocí vlastnosti databaseName. |
+| authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |No. Pro základní ověřování se ve výchozím nastavení používá účet správce a databáze určená pomocí vlastnosti databaseName. |
 | enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
 | allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
@@ -98,7 +94,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Pro datovou sadu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbCollection** . | Yes |
 | collectionName |Název kolekce v databázi MongoDB |Yes |
@@ -129,7 +125,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbSource** . | Yes |
 | query |Pro čtení dat použijte vlastní dotaz SQL-92. Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadaná položka "CollectionName" v sadě dat.) |
@@ -167,7 +163,7 @@ V části **zdroj** aktivity kopírování jsou podporovány následující vlas
 ```
 
 > [!TIP]
-> Při zadávání dotazu SQL věnujte pozornost formátu data a času. Například: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` nebo pro použití parametru`SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+> Při zadávání dotazu SQL věnujte pozornost formátu data a času. Například: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` nebo pro použití parametru `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
 ## <a name="schema-by-data-factory"></a>Schéma podle Data Factory
 
@@ -182,7 +178,7 @@ Při kopírování dat z MongoDB se v datových typech MongoDB používají nás
 | Binární |Byte [] |
 | Logická hodnota |Logická hodnota |
 | Datum |DateTime |
-| NumberDouble |Double |
+| NumberDouble |dvojité |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectId |Řetězec |
@@ -208,14 +204,14 @@ Virtuální tabulky odkazují na data v reálné tabulce a umožňují tak ovlad
 
 Například tady je tabulka MongoDB, která má jeden sloupec s polem objektů v každé buňce – faktury a jeden sloupec s polem skalárních typů – hodnocení.
 
-| _id | Název zákazníka | Faktury | Úroveň služby | Ratings |
+| _id | Název zákazníka | Faktury | Úroveň služeb | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", Item: "informační zpráva", Cena: "456", sleva: "0,2"}, {invoice_id: "124", položka: "sušárna", Cena: "1235", sleva: "0,2"}] |Silver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135"; Item: "nákupem ledničky"; Price: "12543"; Discount: "0,0"}] |Gold |[1, 2] |
 
 Ovladač by vygeneroval několik virtuálních tabulek, které reprezentují tuto jedinou tabulku. První virtuální tabulka je základní tabulka s názvem "priklad Table", která je znázorněna v příkladu. Základní tabulka obsahuje všechna data původní tabulky, ale data z těchto polí byla vynechána a jsou rozbalena ve virtuálních tabulkách.
 
-| _id | Název zákazníka | Úroveň služby |
+| _id | Název zákazníka | Úroveň služeb |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |

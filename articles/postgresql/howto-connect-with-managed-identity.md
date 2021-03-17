@@ -6,12 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b0d6b083228ddab9d958bf3480b592f7ee0d892d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606776"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092640"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Připojení ke službě Azure Database for PostgreSQL s využitím spravované identity
 
@@ -23,23 +24,23 @@ Získáte informace o těchto tématech:
 - Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru Azure Database for PostgreSQL
 - Implementace Načtení tokenu v ukázkové aplikaci v jazyce C#
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../../articles/active-directory/managed-identities-azure-resources/overview.md). Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
+- Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
 - Potřebujete virtuální počítač Azure (například se spuštěným Ubuntu Linux), který chcete použít pro přístup k databázi pomocí spravované identity.
 - Potřebujete Azure Database for PostgreSQL databázový server s nakonfigurovaným [ověřováním Azure AD](howto-configure-sign-in-aad-authentication.md) .
 - Chcete-li postupovat podle příkladu jazyka C#, nejprve dokončete průvodce, jak se [připojit pomocí jazyka c#](connect-csharp.md)
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Vytvoření spravované identity přiřazené uživatelem pro váš virtuální počítač
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) vytvořte v předplatném identitu. Můžete použít stejnou skupinu prostředků, ve které je váš virtuální počítač spuštěný, nebo jiný.
+Pomocí příkazu [AZ identity Create](/cli/azure/identity#az-identity-create) vytvořte v předplatném identitu. Můžete použít stejnou skupinu prostředků, ve které je váš virtuální počítač spuštěný, nebo jiný.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) uložte ID prostředku identity a ID klienta do proměnných.
+Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity#az-identity-show) uložte ID prostředku identity a ID klienta do proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -49,7 +50,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-K virtuálnímu počítači teď můžeme přiřadit identitu přiřazenou uživatelem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
+K virtuálnímu počítači teď můžeme přiřadit identitu přiřazenou uživatelem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

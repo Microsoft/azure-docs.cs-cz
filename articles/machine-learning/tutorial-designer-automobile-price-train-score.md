@@ -1,24 +1,24 @@
 ---
-title: 'Kurz: předpověď cen automobilů pomocí návrháře (Preview)'
+title: 'Kurz: předpověď cen automobilů pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí rozhraní přetažení využít výuku, skóre a nasazení modelu strojového učení. Tento kurz je první částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
+description: Naučte se model strojového učení předpovídat ceny automobilu pomocí lineární regrese. Tento kurz je první částí z dvoudílné série.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290295"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660980"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Kurz: Predikce ceny automobilů s využitím návrháře
+
 
 V tomto kurzu se dozvíte, jak pomocí návrháře Azure Machine Learning naučit a nasazovat model strojového učení, který předpovídá cenu každého auta. Návrhář je nástroj pro přetahování, který umožňuje vytvářet modely strojového učení bez jediného řádku kódu.
 
@@ -48,11 +48,10 @@ Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete Azure Machine
 
 ### <a name="create-a-new-workspace"></a>Vytvoření nového pracovního prostoru
 
-Aby bylo možné používat návrháře, musíte nejprve použít pracovní prostor Azure Machine Learning. Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte v Azure Machine Learning.
+K použití návrháře potřebujete Azure Machine Learning pracovní prostor. Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte v Azure Machine Learning. Pokyny k vytvoření pracovního prostoru najdete v tématu [Vytvoření a správa Azure Machine Learningch pracovních prostorů](how-to-manage-workspace.md).
 
-Pokud máte pracovní prostor Azure Machine Learning s edicí Enterprise, [přejděte k další části](#create-the-pipeline).
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+> [!NOTE]
+> Pokud váš pracovní prostor používá virtuální síť, existují další kroky konfigurace, které musíte použít pro použití návrháře. Další informace najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md) .
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
@@ -79,7 +78,7 @@ Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který vše
     Pokud už máte dostupný cíl výpočtů, můžete ho vybrat ke spuštění tohoto kanálu.
 
     > [!NOTE]
-    > Návrhář může spustit školicí experimenty na Azure Machine Learning výpočetní a Azure Machine Learning výpočetní instance, ale nebudou se zobrazovat jiné výpočetní cíle.
+    > Návrhář může spustit školicí experimenty jenom na Azure Machine Learning výpočetní výkon, ale neobjeví se jiné výpočetní cíle.
 
 1. Zadejte název výpočetního prostředku.
 
@@ -94,7 +93,7 @@ Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který vše
 
 Návrhář obsahuje několik ukázkových datových sad, které můžete experimentovat s nástrojem. Pro tento kurz použijte **data o cenách automobilu (RAW)**. 
 
-1. Vlevo od plátna kanálu je paleta datových sad a modulů. Vyberte **datové sady**a pak zobrazte část **ukázky** a zobrazte si dostupné ukázkové datové sady.
+1. Vlevo od plátna kanálu je paleta datových sad a modulů. Vyberte **ukázková** datová sada pro zobrazení dostupných ukázkových datových sad.
 
 1. Vyberte **data automobil auto data (Hrubá cena)** a přetáhněte je na plátno.
 
@@ -104,13 +103,7 @@ Návrhář obsahuje několik ukázkových datových sad, které můžete experim
 
 Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
-1. Vyberte modul **cena za automobilový data (RAW)** .
-
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokol**.
-
-1. Vyberte ikonu grafu pro vizualizaci dat.
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Sem zadejte alternativní text.":::
+1. Klikněte pravým tlačítkem myši na **data o cenách automobilu (RAW)** a vyberte **vizualizovat**  >  **výstup datové sady**.
 
 1. Výběrem různých sloupců v okně data zobrazíte informace o každém z nich.
 
@@ -140,7 +133,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. V podokně podrobností modulu napravo od plátna vyberte **Upravit sloupec**.
 
-1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout**a vyberte možnost **všechny sloupce**.
+1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout** a vyberte možnost  **všechny sloupce**.
 
 1. Pokud **+** chcete přidat nové pravidlo, vyberte.
 
@@ -165,7 +158,7 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 > [!TIP]
 > Vyčištění chybějících hodnot ze vstupních dat je předpokladem pro použití většiny modulů v návrháři.
 
-1. V paletě modulu nalevo od plátna rozbalte **transformaci dat**oddílu a vyhledejte modul **Vyčištění chybějících dat** .
+1. V paletě modulu nalevo od plátna rozbalte **transformaci dat** oddílu a vyhledejte modul **Vyčištění chybějících dat** .
 
 1. Přetáhněte modul **Vyčištění chybějících dat** na plátno kanálu. Připojte ho k modulu **Výběr sloupců v datové sadě** . 
 
@@ -183,9 +176,9 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 
     Váš kanál by teď měl vypadat nějak takto:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Vybrat – sloupec":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png" alt-text="Vybrat – sloupec":::
 
-## <a name="train-a-machine-learning-model"></a>Výuka modelu strojového učení
+## <a name="train-a-machine-learning-model"></a>Trénování modelu strojového učení
 
 Teď, když máte moduly, které jsou pro zpracování dat k dispozici, můžete nastavit školicí moduly.
 
@@ -220,9 +213,9 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
     
     Tato možnost zobrazí několik kategorií modulů, které lze použít k inicializaci výukových algoritmů.
 
-1. Vyberte **regresní**  >  **lineární regresi**a přetáhněte ji na plátno kanálu.
+1. Vyberte **regresní**  >  **lineární regresi** a přetáhněte ji na plátno kanálu.
 
-1. V paletě modulu rozbalte možnost **školení modulu**oddíl a přetáhněte modul **vlak model** na plátno.
+1. V paletě modulu rozbalte možnost **školení modulu** oddíl a přetáhněte modul **vlak model** na plátno.
 
 1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
 
@@ -231,7 +224,7 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
     > [!IMPORTANT]
     > Ujistěte se, že levé výstupní porty **rozdělených dat** se připojují ke **výukového modelu**. Levý port obsahuje sadu školení. Pravý port obsahuje sadu testů.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu typu vlak a modul rozdělení dat se připojí k pravému portu modelu vlaku.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu typu vlak a modul rozdělení dat se připojí k pravému portu modelu vlaku.":::
 
 1. Vyberte modul **vlakového modelu** .
 
@@ -242,11 +235,11 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 1. Do textového pole zadejte *Price (cena* ) a zadejte hodnotu, kterou model bude předpovídat.
 
     >[!IMPORTANT]
-    > Ujistěte se, že jste zadali název sloupce přesně. Nezadávejte **cenu**na velká písmena. 
+    > Ujistěte se, že jste zadali název sloupce přesně. Nezadávejte **cenu** na velká písmena. 
 
     Váš kanál by měl vypadat takto:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.":::
 
 ### <a name="add-the-score-model-module"></a>Přidat modul určení skóre modelu
 
@@ -266,7 +259,7 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
     Konečný kanál by měl vypadat přibližně takto:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Snímek obrazovky znázorňující správnou konfiguraci kanálu":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png" alt-text="Snímek obrazovky znázorňující správnou konfiguraci kanálu":::
 
 ## <a name="submit-the-pipeline"></a>Odeslat kanál
 
@@ -279,33 +272,29 @@ Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění ka
     > [!NOTE]
     > Experimenty seskupují podobný kanál společně. Pokud kanál spouštíte několikrát, můžete vybrat stejný experiment pro po sobě jdoucí běhy.
 
-    1. Zadejte popisný název **nového názvu experimentu**.
+    1. Pro **nový název experimentu** zadejte **kurz – CarPrices**.
 
     1. Vyberte **Odeslat**.
     
     Stav spuštění a podrobnosti můžete zobrazit v pravém horním rohu plátna.
     
-    Pokud je první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
+    Pokud se jedná o první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
 
 ### <a name="view-scored-labels"></a>Zobrazit popisky s skóre
 
 Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se podívejte na předpovědi vygenerovaný regresním modelem.
 
-1. Vyberte modul určení **skóre modelu** , ve kterém chcete zobrazit jeho výstup.
-
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona ![ vizualizace ikona grafu ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. Klikněte pravým tlačítkem myši na modul **bodového modelu** a vyberte **vizualizovat**  >  **vyhodnocenou datovou sadu** , abyste zobrazili její výstup.
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec popisku s skóre":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png" alt-text="Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec popisku s skóre":::
 
 ### <a name="evaluate-models"></a>Vyhodnotit modely
 
 Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený model proveden na testovací datové sadě.
 
-1. Vyberte modul **vyhodnocení modelu** a zobrazte jeho výstup.
-
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona ![ vizualizace ikona grafu ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. Klikněte pravým tlačítkem na modul **vyhodnotit model** a výběrem **vizualizace**  >  **výsledky vyhodnocení** zobrazte jeho výstup.
 
 Pro váš model se zobrazí následující statistiky:
 

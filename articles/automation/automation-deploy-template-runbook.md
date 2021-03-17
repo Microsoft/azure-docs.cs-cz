@@ -1,30 +1,30 @@
 ---
 title: Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
-description: V tomto článku se dozvíte, jak nasadit šablonu Azure Resource Manager uloženou v Azure Storage z Runbooku PowerShellu.
+description: Tento článek popisuje, jak nasadit šablonu Azure Resource Manager uloženou v Azure Storage z Runbooku PowerShellu.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 09/22/2020
 ms.topic: conceptual
 keywords: PowerShell, Runbook, JSON, Azure Automation
-ms.openlocfilehash: 10eadd7b8ee6c2e954f40469a02d42dc77c2bf41
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d9b443d1840840d3d6202140da235589c73453cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186550"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051392"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Nasazení šablony Azure Resource Manager v Runbooku PowerShellu
 
-Můžete napsat [Azure Automation powershellový Runbook](./learn/automation-tutorial-runbook-textual-powershell.md) , který nasadí prostředek Azure pomocí [šablony správy prostředků Azure](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md). Použití šablony vám umožňuje použít Azure Automation a Azure Storage k automatizaci nasazení prostředků Azure. Šablony Správce prostředků můžete udržovat v centrálním, bezpečném umístění, jako je například Azure Storage.
+Můžete napsat [Azure Automation powershellový Runbook](./learn/automation-tutorial-runbook-textual-powershell.md) , který nasadí prostředek Azure pomocí [šablony správy prostředků Azure](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md). Šablony vám umožňují použít Azure Automation k automatizaci nasazení prostředků Azure. Šablony Správce prostředků můžete udržovat v centrálním, bezpečném umístění, jako je například Azure Storage.
 
 V tomto článku vytvoříme PowerShellový Runbook, který používá šablonu Správce prostředků uloženou v [Azure Storage](../storage/common/storage-introduction.md) k nasazení nového účtu Azure Storage.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ho ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si [zaregistrovat bezplatný účet](https://azure.microsoft.com/free/).
-* [Účet Automation](./manage-runas-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure.  Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
-* [Účet Azure Storage](../storage/common/storage-account-create.md) , do kterého se má uložit Šablona správce prostředků
-* Azure PowerShell nainstalované na místním počítači. Informace o tom, jak získat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps?view=azps-3.5.0) .
+* [Účet Automation](./automation-security-overview.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
+* [Azure Storage účet](../storage/common/storage-account-create.md) , do kterého chcete uložit šablonu správce prostředků.
+* Azure PowerShell nainstalované na místním počítači. Informace o tom, jak získat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) .
 
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 
@@ -88,8 +88,7 @@ Uložte soubor místně jako **TemplateTest.jsna**.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Uložit šablonu Správce prostředků v Azure Storage
 
-Nyní používáme PowerShell k vytvoření Azure Storage sdílené složky a nahrání **TemplateTest.jsdo** souboru.
-Pokyny k vytvoření sdílené složky a nahrání souboru v Azure Portal najdete v tématu Začínáme [se službou Azure File Storage ve Windows](../storage/files/storage-dotnet-how-to-use-files.md).
+Nyní používáme PowerShell k vytvoření Azure Storage sdílené složky a nahrání **TemplateTest.jsdo** souboru. Pokyny k vytvoření sdílené složky a nahrání souboru v Azure Portal najdete v tématu Začínáme [se službou Azure File Storage ve Windows](../storage/files/storage-dotnet-how-to-use-files.md).
 
 Spusťte na svém místním počítači prostředí PowerShell a spuštěním následujících příkazů vytvořte sdílenou složku a nahrajte do této sdílené složky šablonu Správce prostředků.
 
@@ -159,7 +158,7 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 
 # Deploy the storage account
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
-``` 
+```
 
 Uložte soubor místně jako **DeployTemplate.ps1**.
 
@@ -192,7 +191,7 @@ Publish-AzAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>Spuštění runbooku
 
-Nyní spustíme Runbook voláním rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) . Informace o tom, jak spustit sadu Runbook v Azure Portal, najdete v tématu [spuštění sady Runbook v Azure Automation](./start-runbooks.md).
+Nyní spustíme Runbook voláním rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Informace o tom, jak spustit sadu Runbook v Azure Portal, najdete v tématu [spuštění sady Runbook v Azure Automation](./start-runbooks.md).
 
 V konzole PowerShellu spusťte následující příkazy:
 
@@ -202,7 +201,7 @@ $runbookParams = @{
     ResourceGroupName = 'MyResourceGroup'
     StorageAccountName = 'MyStorageAccount'
     StorageAccountKey = $key[0].Value # We got this key earlier
-    StorageFileName = 'TemplateTest.json' 
+    StorageFileName = 'TemplateTest.json'
 }
 
 # Set up parameters for the Start-AzAutomationRunbook cmdlet
@@ -217,10 +216,9 @@ $startParams = @{
 $job = Start-AzAutomationRunbook @startParams
 ```
 
-Sada Runbook se spustí a její stav můžete ověřit spuštěním `$job.Status` .
+Po spuštění sady Runbook můžete zjistit její stav načtením hodnoty vlastnosti objektu úlohy `$job.Status` .
 
-Sada Runbook získá šablonu Správce prostředků a použije ji k nasazení nového účtu Azure Storage.
-Vytvoření nového účtu úložiště můžete zjistit spuštěním následujícího příkazu:
+Sada Runbook získá šablonu Správce prostředků a použije ji k nasazení nového účtu Azure Storage. Nový účet úložiště můžete zobrazit spuštěním následujícího příkazu:
 
 ```powershell
 Get-AzStorageAccount
@@ -231,5 +229,4 @@ Get-AzStorageAccount
 * Další informace o šablonách Správce prostředků najdete v tématu [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md).
 * Pokud chcete začít s Azure Storage, přečtěte si téma [Úvod do Azure Storage](../storage/common/storage-introduction.md).
 * Další užitečné sady Runbook Azure Automation najdete v tématu [použití runbooků a modulů v Azure Automation](automation-runbook-gallery.md).
-* Další užitečné šablony Správce prostředků najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation#automation).

@@ -1,24 +1,21 @@
 ---
 title: Přírůstkové kopírování dat pomocí Change Data Capture
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z tabulky v databázi spravované instance Azure SQL do Azure Storage.
-services: data-factory
 ms.author: nihurt
 author: hurtn
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 02/18/2021
+ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724978"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data na základě **Change Data Capture (CDC)** v zdrojové databázi Azure SQL Managed instance do úložiště objektů BLOB v Azure.  
 
@@ -34,7 +31,7 @@ V tomto kurzu provedete následující kroky:
 > * Dokončení, spuštění a monitorování úplného kanálu přírůstkového kopírování
 
 ## <a name="overview"></a>Přehled
-Technologie Change Data Capture, která je podporovaná v úložištích dat, jako jsou Azure SQL Managed Instances (MI) a SQL Server, se dá použít k identifikaci změněných dat.  V tomto kurzu se dozvíte, jak použít Azure Data Factory s technologií SQL Change Data Capture pro přírůstkové načtení rozdílových dat ze spravované instance Azure SQL do Azure Blob Storage.  Další konkrétní informace o technologii SQL Change Data Capture najdete v tématu [Změna data Capture v SQL Server](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server).
+Technologie Change Data Capture, která je podporovaná v úložištích dat, jako jsou Azure SQL Managed Instances (MI) a SQL Server, se dá použít k identifikaci změněných dat.  V tomto kurzu se dozvíte, jak použít Azure Data Factory s technologií SQL Change Data Capture pro přírůstkové načtení rozdílových dat ze spravované instance Azure SQL do Azure Blob Storage.  Další konkrétní informace o technologii SQL Change Data Capture najdete v tématu [Změna data Capture v SQL Server](/sql/relational-databases/track-changes/about-change-data-capture-sql-server).
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
 Tady jsou typické kroky koncového pracovního postupu pro přírůstkové načtení dat pomocí technologie Change Data Capture.
@@ -49,15 +46,15 @@ V tomto kurzu vytvoříte kanál, který provede následující operace:
    2. Vytvořte **podmínku if** , která zkontroluje, jestli existují změněné záznamy, a pokud ano, vyvolejte aktivitu kopírování.
    3. Vytvořte **aktivitu kopírování** pro zkopírování vložených/aktualizovaných nebo odstraněných dat mezi tabulkami CDC do Azure Blob Storage.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Azure SQL Database spravovaná instance**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte Azure SQL Database spravovanou instanci, přečtěte si článek [vytvoření Azure SQL Database spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) , kde najdete kroky pro jeho vytvoření.
+* **Azure SQL Database spravovaná instance**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte Azure SQL Database spravovanou instanci, přečtěte si článek [vytvoření Azure SQL Database spravované instance](../azure-sql/managed-instance/instance-create-quickstart.md) , kde najdete kroky pro jeho vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **raw**. 
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Vytvoření tabulky zdroje dat v Azure SQL Database
 
-1. Spusťte **SQL Server Management Studio**a připojte se k serveru Azure SQL Managed Instances.
+1. Spusťte **SQL Server Management Studio** a připojte se k serveru Azure SQL Managed Instances.
 2. V **Průzkumníku serveru** klikněte pravým tlačítkem na **databázi** a potom zvolte **Nový dotaz**.
 3. Spusťte následující příkaz SQL pro databázi Azure SQL Managed Instances a vytvořte tabulku s názvem `customers` jako úložiště zdroje dat.  
 
@@ -75,7 +72,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
     > [!NOTE]
     > - Nahraďte &lt; název zdrojového schématu &gt; schématem Azure SQL mi, který má tabulku Customers.
-    > - Change Data Capture nedělá cokoli v rámci transakcí, které mění sledovanou tabulku. Místo toho jsou operace INSERT, Update a DELETE zapisovány do transakčního protokolu. Data, která jsou uložena v tabulkách změn, se nebudou spravovat, pokud tato data pravidelně a systematickě vyřadíte. Další informace najdete v tématu [Povolení služby Change Data Capture pro databázi](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?enable-change-data-capture-for-a-database=&view=sql-server-ver15) .
+    > - Change Data Capture nedělá cokoli v rámci transakcí, které mění sledovanou tabulku. Místo toho jsou operace INSERT, Update a DELETE zapisovány do transakčního protokolu. Data, která jsou uložena v tabulkách změn, se nebudou spravovat, pokud tato data pravidelně a systematickě vyřadíte. Další informace najdete v tématu [Povolení služby Change Data Capture pro databázi](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server#enable-change-data-capture-for-a-database) .
 
     ```sql
     EXEC sys.sp_cdc_enable_db 
@@ -90,10 +87,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
     ```sql
      insert into customers 
-        (customer_id, first_name, last_name, email, city) 
+         (customer_id, first_name, last_name, email, city) 
      values 
-        (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
-        (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
+         (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
+         (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
         (3, 'Nathalia', 'Seckom', 'nseckom2@blogger.com', 'Portsmouth');
     ```
 
@@ -119,7 +116,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 5. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
    1. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-   2. Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+   2. Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
@@ -127,10 +124,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 7. Klikněte na **Vytvořit**.
 8. Po dokončení nasazení klikněte na **Přejít k prostředku** .
 
-   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![Snímek obrazovky se zobrazí zpráva, že vaše nasazení je hotové a možnost přejít k prostředku.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
 
-   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![Snímek obrazovky znázorňující datovou továrnu, kterou jste nasadili.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku:
 
@@ -161,10 +158,10 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 V tomto kroku propojíte databázi Azure SQL MI s datovou továrnou.
 
 > [!NOTE]
-> Pro ty, kteří používají SQL MI, najdete [tady](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database-managed-instance#prerequisites) informace týkající se přístupu prostřednictvím veřejného a privátního koncového bodu. Pokud se používá privátní koncový bod, bude nutné, aby tento kanál běžel pomocí prostředí Integration runtime v místním prostředí. Totéž platí pro ty, na kterých běží SQL Server Prem, ve scénářích virtuálního počítače nebo virtuální sítě.
+> Pro ty, kteří používají SQL MI, najdete [tady](./connector-azure-sql-managed-instance.md#prerequisites) informace týkající se přístupu prostřednictvím veřejného a privátního koncového bodu. Pokud se používá privátní koncový bod, bude nutné, aby tento kanál běžel pomocí prostředí Integration runtime v místním prostředí. Totéž platí pro ty, na kterých běží SQL Server Prem, ve scénářích virtuálního počítače nebo virtuální sítě.
 
 1. Klikněte na **Připojení** a pak na **+ Nové**.
-2. V okně **Nová propojená služba** vyberte **Azure SQL Database spravovaná instance**a klikněte na **pokračovat**.
+2. V okně **Nová propojená služba** vyberte **Azure SQL Database spravovaná instance** a klikněte na **pokračovat**.
 3. V okně **Nová propojená služba** proveďte následující kroky:
 
    1. Do pole **název** zadejte **AzureSqlMI1** .
@@ -186,14 +183,14 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci zdrojových dat.
 1. Ve stromovém zobrazení klikněte na symbol **+ (plus)** a pak klikněte na **Datová sada**.
 
    ![Nabídka Nová datová sada](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
-2. Vyberte **Azure SQL Database spravovaná instance**a klikněte na **pokračovat**.
+2. Vyberte **Azure SQL Database spravovaná instance** a klikněte na **pokračovat**.
 
    ![Typ zdrojové datové sady – Azure SQL Database](./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-sql-database.png)
    
 3. Na kartě **nastavit vlastnosti** nastavte název datové sady a informace o připojení:
  
-   1. Jako **propojená služba**vyberte **AzureSqlMI1** .
-   2. Vyberte **[dbo]. [ dbo_customers_CT]** pro **název tabulky**  Poznámka: Tato tabulka byla automaticky vytvořena, když byla v tabulce Customers povolena funkce CDC. Změněná data se nikdy z této tabulky nedotazují přímo, ale místo toho se extrahují prostřednictvím [funkcí CDC](https://docs.microsoft.com/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15).
+   1. Jako **propojená služba** vyberte **AzureSqlMI1** .
+   2. Vyberte **[dbo]. [ dbo_customers_CT]** pro **název tabulky**  Poznámka: Tato tabulka byla automaticky vytvořena, když byla v tabulce Customers povolena funkce CDC. Změněná data se nikdy z této tabulky nedotazují přímo, ale místo toho se extrahují prostřednictvím [funkcí CDC](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql).
 
    ![Připojení ke zdroji](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
 
@@ -203,16 +200,16 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 1. Ve stromovém zobrazení klikněte na symbol **+ (plus)** a pak klikněte na **Datová sada**.
 
    ![Nabídka Nová datová sada](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
-2. Vyberte **Azure Blob Storage**a klikněte na **pokračovat**.
+2. Vyberte **Azure Blob Storage** a klikněte na **pokračovat**.
 
    ![Typ datové sady jímky – Azure Blob Storage](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-type.png)
-3. Vyberte **DelimitedText**a klikněte na **pokračovat**.
+3. Vyberte **DelimitedText** a klikněte na **pokračovat**.
 
    ![Formát datové sady jímky – DelimitedText](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-format.png)
 4. Na kartě **nastavit vlastnosti** nastavte název datové sady a informace o připojení:
 
    1. Jako **Propojená služba** vyberte **AzureStorageLinkedService**.
-   2. Do části **kontejneru** **FilePath**zadejte **raw** .
+   2. Do části **kontejneru** **FilePath** zadejte **raw** .
    3. Povolit **první řádek jako záhlaví**
    4. Klikněte na **OK** .
 
@@ -221,7 +218,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>Vytvoření kanálu ke zkopírování změněných dat
 V tomto kroku vytvoříte kanál, který nejprve kontroluje počet změněných záznamů v tabulce změn pomocí **aktivity vyhledávání**. Aktivita IF podmínky kontroluje, jestli je počet změněných záznamů větší než nula, a spustí **aktivitu kopírování** , která zkopíruje vložená, aktualizovaná nebo Odstraněná data z Azure SQL Database do Azure Blob Storage. Nakonec se aktivuje aktivační událost bubnového okna a časy zahájení a ukončení budou do aktivit předány jako parametry počátečního a koncového okna. 
 
-1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** . v levém podokně klikněte na **+ (plus)** a pak klikněte na **kanál**.
+1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** . Klikněte na **+ (plus)** v levém podokně a pak klikněte na **kanál**.
 
     ![Nabídka Nový kanál](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
 2. Zobrazí se nová karta, na které můžete kanál konfigurovat. Kanál se zobrazí také ve stromovém zobrazení. V okně **Vlastnosti** změňte název kanálu na **IncrementalCopyPipeline**.
@@ -269,14 +266,14 @@ V tomto kroku vytvoříte kanál, který nejprve kontroluje počet změněných 
 8. Spusťte kanál v režimu **ladění** , abyste ověřili, že se kanál úspěšně spustí. 
 
    ![Kanál – ladění](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug.png)
-9. Pak se vraťte k kroku pravdivé podmínky a odstraňte aktivitu **čekání** . Na panelu nástrojů **aktivity** rozbalte **přesunout & transformovat**a přetáhněte aktivitu **kopírování** na plochu návrháře kanálu. Nastavte název aktivity na **IncrementalCopyActivity**. 
+9. Pak se vraťte k kroku pravdivé podmínky a odstraňte aktivitu **čekání** . Na panelu nástrojů **aktivity** rozbalte **přesunout & transformovat** a přetáhněte aktivitu **kopírování** na plochu návrháře kanálu. Nastavte název aktivity na **IncrementalCopyActivity**. 
 
    ![Aktivita kopírování – název](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
 10. V okně **Vlastnosti** přepněte na kartu **Zdroj** a proveďte následující kroky:
 
    1. Zadejte název datové sady SQL MI pro pole **zdrojové datové sady** . 
    2. Jako **Použít dotaz** vyberte **Dotaz**.
-   3. Pro **dotaz**zadejte následující.
+   3. Pro **dotaz** zadejte následující.
 
       ```sql
       DECLARE @from_lsn binary(10), @to_lsn binary(10); 
@@ -289,10 +286,10 @@ V tomto kroku vytvoříte kanál, který nejprve kontroluje počet změněných 
 
 11. Kliknutím na Náhled Ověřte, že dotaz vrátí správně změněné řádky.
 
-    ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![Snímek obrazovky zobrazující náhled k ověření dotazu.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. Přepněte na kartu **jímka** a určete Azure Storage datovou sadu pro pole **datové sady jímky** .
 
-    ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![Snímek obrazovky se zobrazí karta jímka.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. Klikněte zpátky na hlavní plátno kanálu a připojte aktivitu **vyhledávání** k aktivitě **podmínky if** jednu po jedné. Přetáhněte **zelené** tlačítko připojené k aktivitě **vyhledávání** do aktivity **podmínka if** .
 
     ![Propojení aktivit vyhledávání a kopírování](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -318,22 +315,22 @@ V tomto kroku vytvoříte aktivační událost bubnového okna pro spuštění �
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
-3. V poli skutečný případ aktivity **podmínky if** přejděte na aktivitu **kopírování** a klikněte na kartu **zdroj** . Zkopírujte do dotazu následující příkaz:
+3. Přejděte do aktivity **kopírování** v poli skutečný případ aktivity **podmínka if** a klikněte na kartu **zdroj** . Zkopírujte následující do dotazu:
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 4. Klikněte na kartu **jímka** aktivity **kopírování** a kliknutím na tlačítko **otevřít** upravte vlastnosti datové sady. Klikněte na kartu **parametry** a přidejte nový parametr s názvem **triggerStart** .    
 
-    ![Konfigurace datové sady jímky – 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![Snímek obrazovky ukazuje přidání nového parametru na kartu parametry.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. Dále nakonfigurujte vlastnosti datové sady tak, aby ukládaly data ve **vašich zákaznících/přírůstkovém** podadresáři s oddíly na základě data.
    1. Klikněte na kartu **připojení** vlastností datové sady a přidejte dynamický obsah pro **adresář** i pro oddíly **souborů** . 
    2. V části **adresář** zadejte následující výraz kliknutím na odkaz dynamického obsahu pod textovým polem:
@@ -369,7 +366,7 @@ V tomto kroku vytvoříte aktivační událost bubnového okna pro spuštění �
 
    2. Zadejte název triggeru a zadejte čas spuštění, který je stejný jako čas ukončení okna ladění výše.
 
-   ![Aktivační událost pro přeskakující okno](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
+   ![Aktivační událost pro bubnový interval](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
 
    3. Na další obrazovce zadejte následující hodnoty pro počáteční a koncové parametry v uvedeném pořadí.
     ```sql
@@ -380,7 +377,7 @@ V tomto kroku vytvoříte aktivační událost bubnového okna pro spuštění �
    ![Aktivační událost pro bubnové okno – 2](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png)
 
 > [!NOTE]
-> Poznámka: aktivační událost se spustí až poté, co byla publikována. Kromě toho očekávané chování bubnového okna je spouštět všechny historické intervaly od počátečního data až do okamžiku. Další informace o aktivačních událostech bubnového okna najdete [tady](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger). 
+> Poznámka: aktivační událost se spustí až poté, co byla publikována. Kromě toho očekávané chování bubnového okna je spouštět všechny historické intervaly od počátečního data až do okamžiku. Další informace o aktivačních událostech bubnového okna najdete [tady](./how-to-create-tumbling-window-trigger.md). 
   
 10. Pomocí **SQL Server Management Studio** Udělejte další změny v tabulce zákazníka spuštěním následujícího kódu SQL:
     ```sql

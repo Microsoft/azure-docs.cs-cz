@@ -1,19 +1,16 @@
 ---
 title: Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 description: Naučte se vytvářet a spravovat clustery Azure HDInsight pomocí Azure Portal.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e21361b6d491f53f41754831d2bdf896ef2719db
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598494"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091426"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -29,13 +26,13 @@ Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v té
 
 Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Výpis a zobrazení clusterů
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a> Výpis a zobrazení clusterů
 
 Na stránce **clustery HDInsight** se zobrazí seznam stávajících clusterů.  Z portálu:
 1. V nabídce vlevo vyberte **všechny služby** .
-2. V části **Analýza**vyberte **clustery HDInsight** .
+2. V části **Analýza** vyberte **clustery HDInsight** .
 
-## <a name="cluster-home-page"></a><a name="homePage"></a>Domovská stránka clusteru
+## <a name="cluster-home-page"></a><a name="homePage"></a> Domovská stránka clusteru
 
 Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showClusters) .  Tím otevřete zobrazení **přehledu** , které bude vypadat podobně jako na následujícím obrázku:
 
@@ -57,8 +54,8 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |---|---|
     |Přehled|Poskytuje obecné informace o clusteru.|
     |Protokol aktivit|Zobrazení a dotazování protokolů aktivit.|
-    |Řízení přístupu (IAM)|Použijte přiřazení rolí.  Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
-    |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
+    |Řízení přístupu (IAM)|Použijte přiřazení rolí.  Informace najdete v tématu [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
+    |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project** a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
     |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
     |nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
@@ -70,7 +67,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Velikost clusteru|Kontrolovat, zvyšovat a snižovat počet pracovních uzlů clusteru. Viz [škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Omezení kvót|Zobrazí použitá a dostupná jádra pro vaše předplatné.|
     |SSH + přihlášení k clusteru|Zobrazuje pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH). Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage Gen1|Nakonfigurujte přístup Data Lake Storage Gen1.  Viz [rychlý Start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Data Lake Storage Gen1|Nakonfigurujte přístup Data Lake Storage Gen1.  Viz [rychlý Start: nastavení clusterů v HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).|
     |Účty úložiště|Zobrazení účtů úložiště a klíčů. Účty úložiště se konfigurují během procesu vytváření clusteru.|
     |Aplikace|Přidat nebo odebrat aplikace HDInsight.  Viz [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).|
     |Akce skriptů|Spusťte skripty bash v clusteru. Viz [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -96,7 +93,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Stav prostředků|Podívejte se na téma [Přehled Azure Resource Health](../service-health/resource-health-overview.md).|
     |Nová žádost o podporu|Umožňuje vytvořit lístek podpory s podporou Microsoftu.|
 
-## <a name="cluster-properties"></a><a name="properties"></a>Vlastnosti clusteru
+## <a name="cluster-properties"></a><a name="properties"></a> Vlastnosti clusteru
 
 Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vlastnosti**.
 
@@ -193,7 +190,7 @@ Cluster An HDInsight může mít dva uživatelské účty. Během procesu vytvá
 > Změna hesla uživatele clusteru (správce) může způsobit selhání akcí skriptu spuštěných pro tento cluster. Pokud máte trvalé akce skriptů, které cílí na pracovní uzly, můžou se tyto skripty při přidávání uzlů do clusteru přes operace změny velikosti zdařit. Další informace o akcích skriptu najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
 
 Z [domovské stránky clusteru](#homePage):
-1. V části **Nastavení**vyberte **ssh + přihlášení clusteru** .
+1. V části **Nastavení** vyberte **ssh + přihlášení clusteru** .
 2. Vyberte **resetovat přihlašovací údaje**.
 3. Do textových polí zadejte a potvrďte nové heslo.
 4. Vyberte **OK**.
@@ -215,7 +212,7 @@ Heslo se změní na všech uzlech v clusteru.
     ```
 
 2. Nahrajte soubor do umístění úložiště, ke kterému se dá dostat z HDInsight pomocí adresy HTTP nebo HTTPS. Například veřejné úložiště souborů, jako je OneDrive nebo Azure Blob Storage. Uložte do souboru identifikátor URI (adresa HTTP nebo HTTPS), protože tento identifikátor URI je potřeba v dalším kroku.
-3. Na [domovské stránce clusteru](#homePage)vyberte v části **Nastavení**možnost **akce skriptu** .
+3. Na [domovské stránce clusteru](#homePage)vyberte v části **Nastavení** možnost **akce skriptu** .
 4. Na stránce **akce skriptu** vyberte **Odeslat novou**.
 5. Na stránce **Odeslat akci skriptu** zadejte následující informace:
 
@@ -246,7 +243,7 @@ V režimu Azure Resource Manager se každý cluster HDInsight vytvoří se skupi
 
 ## <a name="find-the-storage-accounts"></a>Vyhledání účtů úložiště
 
-Clustery HDInsight používají k ukládání dat účet Azure Storage nebo Azure Data Lake Storage. Každý cluster HDInsight může mít jeden výchozí účet úložiště a řadu propojených účtů úložiště. Pokud chcete zobrazit seznam účtů úložiště, na [domovské stránce clusteru](#homePage) v části **Nastavení**vyberte **účty úložiště**.
+Clustery HDInsight používají k ukládání dat účet Azure Storage nebo Azure Data Lake Storage. Každý cluster HDInsight může mít jeden výchozí účet úložiště a řadu propojených účtů úložiště. Pokud chcete zobrazit seznam účtů úložiště, na [domovské stránce clusteru](#homePage) v části **Nastavení** vyberte **účty úložiště**.
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 
@@ -266,7 +263,7 @@ Dlaždice **Velikost clusteru** z [domovské stránky clusteru](#homePage) zobra
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili se základními funkcemi pro správu. Další informace najdete v následujících článcích:
+V tomto článku jste se seznámili se základními funkcemi pro správu. Další informace najdete v těchto článcích:
 
 - [Správa HDInsight pomocí Azure PowerShell](hdinsight-administer-use-powershell.md)
 - [Správa HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md)

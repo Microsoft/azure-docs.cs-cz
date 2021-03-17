@@ -3,7 +3,7 @@ title: Jak provádět živé streamování s místními kodéry pomocí .NET | M
 description: V tomto tématu se dozvíte, jak používat rozhraní .NET k provádění kódování v reálném čase pomocí místních kodérů.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 04c4157ab44864ba7063150a624d6d3927141091
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a763bed0ed31d80ec094fde3c68c5c84537fec46
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038813"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013835"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provádět živé streamování s místními kodéry pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -29,11 +33,11 @@ ms.locfileid: "87038813"
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento kurz vás provede jednotlivými kroky použití sady Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurovaný pro předávací doručování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure:

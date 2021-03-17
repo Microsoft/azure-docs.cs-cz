@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650872"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593347"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -42,13 +42,13 @@ Azure Backup umožňuje ochranu dat pro různé úlohy (místně i v cloudu). Je
 
 * **Škodlivá ochrana proti odstranění –** Chraňte proti náhodným a zlomyslným pokusům o odstranění záloh pomocí obnovitelného odstranění záloh. Odstraněná data zálohy se ukládají 14 dnů zdarma a umožňují obnovení z tohoto stavu.
 
-* **Zabezpečené šifrované zálohy –** Azure Backup zajistí bezpečné uložení zálohovaných dat, a to s využitím integrovaných funkcí zabezpečení platformy Azure, jako je RBAC a šifrování.
+* **Zabezpečené šifrované zálohy –** Azure Backup zajistí bezpečné uložení zálohovaných dat, a to s využitím integrovaných funkcí zabezpečení platformy Azure, jako je Azure RBAC a šifrování.
 
 * **Správa životního cyklu zálohovaných dat –** Azure Backup automaticky vyčistí starší zálohovaná data, aby splňovala zásady uchovávání informací. Data z provozního úložiště můžete také navrstvit do úložiště trezoru.
 
 ### <a name="management-plane"></a>Rovina správy
 
-* **Řízení přístupu** – trezor služby Recovery Services poskytuje možnosti správy a je přístupný prostřednictvím Azure Portal, sady SDK, CLI a dokonce rozhraní REST API. Je to také hranice RBAC a poskytuje vám možnost omezit přístup k zálohám jenom na autorizované správce zálohování.
+* **Řízení přístupu** – trezory (Recovery Services a trezory služby Backup) poskytují možnosti správy a jsou přístupné prostřednictvím Azure Portal, centra zálohování, řídicích panelů trezoru, sady SDK, CLI a dokonce rozhraní REST API. Je to také hranice Azure RBAC a poskytuje vám možnost omezit přístup k zálohám jenom na autorizované správce zálohování.
 
 * **Správa zásad** – zásady Azure Backup v rámci jednotlivých úložišť definují, kdy se mají spustit zálohy a jak dlouho je potřeba uchovat. Tyto zásady můžete také spravovat a použít je v několika položkách.
 
@@ -58,7 +58,7 @@ Azure Backup umožňuje ochranu dat pro různé úlohy (místně i v cloudu). Je
 
 ## <a name="vault-considerations"></a>Požadavky na úložiště
 
-Azure Backup používá k orchestraci a správě záloh Recovery Services trezory. Používá taky trezory k ukládání zálohovaných dat. Efektivní návrh trezoru pomáhá organizacím vytvořit strukturu pro uspořádání a správu zálohovacích prostředků v Azure za účelem podpory vašich obchodních priorit. Při vytváření trezoru Vezměte v úvahu následující pokyny:  
+Azure Backup používá trezory (Recovery Services a trezory služby Backup) k orchestraci a správě záloh. Používá taky trezory k ukládání zálohovaných dat. Efektivní návrh trezoru pomáhá organizacím vytvořit strukturu pro uspořádání a správu zálohovacích prostředků v Azure za účelem podpory vašich obchodních priorit. Při vytváření trezoru Vezměte v úvahu následující pokyny:  
 
 ### <a name="align-to-subscription-design-strategy"></a>Zarovnat k strategii návrhu předplatného
 
@@ -66,13 +66,14 @@ Vzhledem k tomu, že trezor je vymezený pro předplatné, můžete přizpůsobi
 
 ### <a name="single-or-multiple-vault"></a>Jeden nebo více trezorů
 
-K uspořádání a správě zálohování můžete použít jeden trezor nebo více trezorů. Vezměte v úvahu následující pokyny:
+K uspořádání a správě zálohování můžete použít jeden trezor nebo více trezorů. Zvažte následující pokyny:
 
 * Pokud jsou vaše úlohy všechny spravované jedním předplatným a jediným prostředkem, můžete k monitorování a správě služby Backup použít jeden trezor.
 
 * Pokud jsou vaše úlohy rozloženy mezi předplatnými, můžete vytvořit více trezorů, jeden nebo více pro každé předplatné.
-  * Pro zjednodušení monitorování provozních činností napříč všemi trezory, předplatnými a klienty můžete použít Průzkumníka a sestavy služby Backup. [Zde najdete další informace](monitor-azure-backup-with-backup-explorer.md) , které vám pomohou získat agregované zobrazení.
-  * Pokud jste potřebovali konzistentní zásady napříč trezory, můžete pomocí zásad Azure rozšířit zásady zálohování napříč několika trezory. Můžete napsat vlastní [definici Azure Policy](../governance/policy/concepts/definition-structure.md) , která pomocí efektu ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) rozšíří zásady zálohování mezi více trezorů. Přiřadíte [tuto definici](../governance/policy/assign-policy-portal.md) Azure Policy k určitému oboru (předplatné nebo RG), aby se nasadil prostředek zásady zálohování do všech trezorů služby Recovery Services v oboru přiřazení Azure Policy. Nastavení zásad zálohování (například četnost zálohování, uchovávání atd.) by mělo být zadáno uživatelem jako parametry v přiřazení Azure Policy.
+  * Centrum zálohování umožňuje mít jediné podokno skla, ve kterém můžete spravovat všechny úlohy týkající se zálohování. [Další informace najdete tady]().
+  * Můžete přizpůsobit zobrazení pomocí šablon sešitu. Průzkumník zálohování je jedna z těchto šablon pro virtuální počítače Azure. [Další informace najdete tady](monitor-azure-backup-with-backup-explorer.md).
+  * Pokud jste potřebovali konzistentní zásady napříč trezory, můžete pomocí zásad Azure rozšířit zásady zálohování napříč několika trezory. Můžete napsat vlastní [definici Azure Policy](../governance/policy/concepts/definition-structure.md) , která pomocí efektu ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) rozšíří zásady zálohování mezi více trezorů. Tuto definici Azure Policy můžete [přiřadit](../governance/policy/assign-policy-portal.md) taky konkrétnímu oboru (předplatnému nebo RG), aby nasadila prostředek zásady zálohování do všech trezorů Recovery Services v oboru přiřazení Azure Policy. Nastavení zásad zálohování (například četnost zálohování, uchovávání atd.) by mělo být zadáno uživatelem jako parametry v přiřazení Azure Policy.
 
 * Jak roste vaše organizační nároky, možná budete chtít přesunout úlohy mezi předplatnými z následujících důvodů: zarovnání podle zásad zálohování, konsolidace trezorů, kompromisů při nižší redundanci za účelem úspory nákladů (přesunout z GRS do LRS).  Azure Backup podporuje přesun trezoru Recovery Services napříč předplatnými Azure nebo do jiné skupiny prostředků v rámci stejného předplatného. [Další informace najdete tady](backup-azure-move-recovery-services-vault.md).
 
@@ -90,7 +91,7 @@ Před konfigurací záloh v trezoru zkontrolujte výchozí nastavení typu repli
 
 ## <a name="backup-policy-considerations"></a>Pokyny k zásadám zálohování
 
-Zásady Azure Backup mají dvě komponenty: *plán* (kdy se má provést zálohování) a *uchování* (doba uchování zálohy). Zásady můžete definovat na základě typu zálohovaných dat, požadavků na RTO/RPO, požadavků na operační nebo legislativní dodržování předpisů a typu úlohy (například virtuálního počítače, databáze, soubory). [Další informace najdete tady](backup-architecture.md#backup-policy-essentials).
+Zásady Azure Backup mají dvě komponenty: *plán* (kdy se má provést zálohování) a *uchování* (doba uchování zálohy). Můžete definovat zásady na základě typu zálohovaných dat, požadavků na RTO/RPO, požadavků na operační nebo legislativní dodržování předpisů a typu úlohy (například virtuální počítač, databáze, soubory). [Další informace najdete tady](backup-architecture.md#backup-policy-essentials).
 
 Při vytváření zásad zálohování Vezměte v úvahu následující pokyny:
 
@@ -108,7 +109,7 @@ Při vytváření zásad zálohování Vezměte v úvahu následující pokyny:
 
 * Dlouhodobé uchovávání:
   * Plánováno (požadavky na dodržování předpisů) – Pokud víte předem, že data jsou od aktuálního času vyžadována za roky, pak použijte dlouhodobou dobu uchovávání.
-  * Neplánované (požadavek na vyžádání) – Pokud si nejste jistí předem, můžete použít na vyžádání s konkrétním vlastním nastavením uchovávání informací (Tato vlastní nastavení uchování nejsou ovlivněná nastavením zásad).
+  * Neplánované (požadavek na vyžádání) – Pokud si nejste jistí předem, můžete použít na vyžádání s konkrétním vlastním nastavením uchovávání informací (Tato vlastní nastavení uchování ovlivněná nastaveními zásad).
 
 * Zálohování na vyžádání s vlastním uchováváním – Pokud potřebujete provést zálohování, které není naplánované prostřednictvím zásad zálohování, můžete použít zálohování na vyžádání. To může být užitečné při pořizování záloh, které nevyhovují plánovanému zálohování, nebo pro provádění podrobného zálohování (například několik záloh virtuálních počítačů IaaS za den, protože plánované zálohování povoluje jenom jednu zálohu za den). Je důležité si uvědomit, že zásady uchovávání informací definované v naplánovaných zásadách se nevztahují na zálohování na vyžádání.
 
@@ -131,7 +132,7 @@ Při vytváření zásad zálohování Vezměte v úvahu následující pokyny:
   * Nelze selektivně odstranit konkrétní body obnovení.
   * Naplánované zálohování nemůžete zcela zakázat a zachovat zdroj dat v chráněném stavu. Minimální častá záloha, kterou můžete pomocí zásad nakonfigurovat, je mít jedno týdenní naplánované zálohování. Alternativou je zastavení ochrany při zachování dat a povolení ochrany pokaždé, když budete chtít provést zálohování, provést zálohování na vyžádání a pak vypnout ochranu, ale zachovejte data záloh. [Další informace najdete tady](backup-azure-manage-vms.md#stop-protecting-a-vm).
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Abychom vám pomohli chránit vaše Zálohovaná data a plnit požadavky na zabezpečení vaší firmy, Azure Backup poskytuje záruku, integritu a zajištění dostupnosti proti úmyslnému útoku a zneužití vašich cenných dat a systémů. Vezměte v úvahu následující pokyny pro zabezpečení Azure Backup řešení:
 
@@ -143,7 +144,7 @@ Abychom vám pomohli chránit vaše Zálohovaná data a plnit požadavky na zabe
 
 * Azure Backup obsahuje několik ovládacích prvků zabezpečení, které jsou součástí služby pro prevenci, detekci a reakci na slabá místa zabezpečení (Další informace).
 
-* Účty úložiště používané trezory služby Recovery Services jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení.
+* Účty úložiště, které používá služba Recovery Services trezory, jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení.
 
 ### <a name="encryption-of-data-in-transit-and-at-rest"></a>Šifrování dat při přenosu a v klidovém režimu
 
@@ -169,7 +170,7 @@ Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) 
 
 ## <a name="network-considerations"></a>Důležité informace z hlediska využívání sítě
 
-Azure Backup vyžaduje přesun dat z vaší úlohy do trezoru Recovery Services. Azure Backup poskytuje několik možností ochrany zálohovaných dat neúmyslným zveřejněním (například útoku prostředníkem na síť). Vezměte v úvahu následující pokyny:
+Azure Backup vyžaduje přesun dat z vaší úlohy do trezoru Recovery Services. Azure Backup poskytuje několik možností ochrany zálohovaných dat neúmyslným zveřejněním (například útoku prostředníkem na síť). Zvažte následující pokyny:
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -199,7 +200,7 @@ Zásady správného řízení v Azure jsou primárně implementovány pomocí [A
 
 ### <a name="azure-backup-cost-considerations"></a>Azure Backup – požadavky na náklady
 
-Funkce služby Azure Backup nabízejí flexibilitu pro efektivní správu vašich nákladů a pořád uspokojují vaše požadavky na BCDR (provozní kontinuita a zotavení po havárii). Vezměte v úvahu následující pokyny:
+Funkce služby Azure Backup nabízejí flexibilitu pro efektivní správu vašich nákladů a pořád uspokojují vaše požadavky na BCDR (provozní kontinuita a zotavení po havárii). Zvažte následující pokyny:
 
 * Pomocí cenové kalkulačky můžete vyhodnotit a optimalizovat náklady úpravou různých páky. [Další informace](azure-backup-pricing.md)
 
@@ -214,7 +215,7 @@ Funkce služby Azure Backup nabízejí flexibilitu pro efektivní správu vašic
 
 * Azure Backup pořizování snímků virtuálních počítačů Azure a ukládá je spolu s disky pro zvýšení vytvoření bodu obnovení a urychlení operací obnovení. Tato funkce se označuje jako okamžité obnovení. Ve výchozím nastavení se snímky okamžitého obnovení uchovávají po dobu dvou dnů. Tato funkce umožňuje operaci obnovení z těchto snímků vyjmutím doby obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům provedeným během tohoto období. [Další informace najdete tady](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Typ replikace úložiště Azure Backupového trezoru je ve výchozím nastavení nastaven na geograficky redundantní (GRS). Tuto možnost nelze po ochraně položek změnit. Geograficky redundantní úložiště (GRS) poskytuje vyšší úroveň odolnosti dat než místně redundantní úložiště (LRS), umožňuje výslovný souhlas s používáním obnovení mezi oblastmi a náklady. Projděte si kompromisy mezi nižšími náklady a vyšší trvanlivostí dat, která je pro váš scénář nejvhodnější. [Další informace](backup-create-rs-vault.md#set-storage-redundancy)
+* Typ replikace úložiště Azure Backupového trezoru je ve výchozím nastavení nastaven na geograficky redundantní (GRS). Tuto možnost nelze po ochraně položek změnit. Geograficky redundantní úložiště (GRS) poskytuje vyšší úroveň odolnosti dat než místně redundantní úložiště (LRS), umožňuje výslovný souhlas s používáním obnovení mezi oblastmi a náklady. Projděte si kompromisy mezi nižšími náklady a vyšší trvanlivostí dat a rozhodněte se, co je pro váš scénář nejvhodnější. [Další informace](backup-create-rs-vault.md#set-storage-redundancy)
 
 * Pokud chráníte úlohy běžící v rámci virtuálního počítače a samotného virtuálního počítače, zkontrolujte, jestli je tato duální ochrana potřebná.
 
@@ -222,7 +223,7 @@ Funkce služby Azure Backup nabízejí flexibilitu pro efektivní správu vašic
 
 Jako uživatel, který má záložního uživatele nebo správce, byste měli být schopni monitorovat všechna řešení zálohování a dostávat upozornění na důležité scénáře. Tato část podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup.
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 
 * Azure Backup poskytuje **integrované monitorování úloh** pro operace, jako je konfigurace zálohování, zálohování, obnovení, odstranění zálohy atd. Toto je vymezené na trezor a ideální pro monitorování jednoho trezoru. [Další informace najdete tady](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
 
@@ -237,9 +238,9 @@ Jako uživatel, který má záložního uživatele nebo správce, byste měli b�
   * Identifikujte klíčové trendy v různých úrovních členitosti.
 
 * Navíc
-  * Do pracovního prostoru **Log Analytics** můžete odesílat data (například úlohy, zásady atd.). Tím umožníte, aby se funkce protokolů Azure Monitor povolily korelace dat s jinými daty monitorování shromážděnými pomocí Azure Monitor, Konsolidujte položky protokolu z několika předplatných Azure a klientů do jednoho umístění pro účely analýzy, pomocí dotazů protokolu provádíte komplexní analýzu a získáte podrobné přehledy o položkách protokolu. [Další informace najdete tady](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
-  * Data můžete odesílat do centra událostí, abyste mohli odesílat položky mimo Azure, například SIEM třetí strany (informace o zabezpečení a správu událostí) nebo jiné řešení Log Analytics. [Další informace najdete tady](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Data můžete do účtu Azure Storage odeslat, pokud chcete uchovávat data protokolu déle než 90 dní pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události jenom po dobu 90 dnů nebo i méně, nemusíte nastavovat archivy na účet úložiště, protože události protokolu aktivit jsou uchovávány na platformě Azure po dobu 90 dnů. [Další informace](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * Do pracovního prostoru **Log Analytics** můžete odesílat data (například úlohy, zásady atd.). Tím umožníte, aby se funkce protokolů Azure Monitor povolily korelace dat s jinými daty monitorování shromážděnými pomocí Azure Monitor, Konsolidujte položky protokolu z několika předplatných Azure a klientů do jednoho umístění pro účely analýzy, pomocí dotazů protokolu provádíte komplexní analýzu a získáte podrobné přehledy o položkách protokolu. [Další informace najdete tady](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
+  * Data můžete odesílat do centra událostí, abyste mohli odesílat položky mimo Azure, například SIEM třetí strany (informace o zabezpečení a správu událostí) nebo jiné řešení Log Analytics. [Další informace najdete tady](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
+  * Data můžete do účtu Azure Storage odeslat, pokud chcete uchovávat data protokolu déle než 90 dní pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události jenom po dobu 90 dnů nebo i méně, nemusíte nastavovat archivy na účet úložiště, protože události protokolu aktivit jsou uchovávány na platformě Azure po dobu 90 dnů. [Přečtěte si další informace](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Zobrazení výstrah
 
@@ -247,13 +248,13 @@ Jako uživatel, který má záložního uživatele nebo správce, byste měli b�
 
 * Azure Backup poskytuje integrovaný mechanizmus oznámení o **výstrahách** prostřednictvím e-mailu pro chyby, varování a kritické operace. Můžete zadat jednotlivé e-mailové adresy nebo distribuční seznamy, které budou oznamovány při vygenerování výstrahy. Můžete si také vybrat, jestli se má zobrazit upozornění na každou jednotlivou výstrahu, nebo je seskupit do hodinových Digest a pak získat oznámení.
   * Tyto výstrahy definuje služba a poskytují podporu pro omezené scénáře – selhání zálohování a obnovování, zastavení ochrany při zachování dat/zastavení ochrany pomocí odstranit data atd. [Další informace najdete tady](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Pokud se provede destruktivní operace, jako je zastavení ochrany pomocí odstranění dat, vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro trezor služby Recovery Services nejsou nakonfigurované oznámení.
+  * Pokud se provede destruktivní operace, jako je zastavení ochrany pomocí odstranění dat, vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro Recovery Services trezoru **nejsou nakonfigurované oznámení** .
   * Některé úlohy můžou generovat vysokou frekvenci selhání (například SQL Server každých 15 minut). Aby nedocházelo k zahlcení výstrahám, které jsou vyvolány pro jednotlivé výskyty selhání, jsou výstrahy konsolidovány. [Další informace najdete tady](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * Integrované výstrahy nelze přizpůsobit a jsou omezeny na e-maily definované v Azure Portal.
 
 * Pokud potřebujete **vytvořit vlastní výstrahy** (například výstrahy na úspěšné úlohy), pak použijte Log Analytics. V Azure Monitor můžete vytvořit vlastní výstrahy v pracovním prostoru Log Analytics. Hybridní úlohy (DPM/MABS) taky můžou odesílat data do LA a používat LA k poskytování běžných výstrah napříč úlohami, které Azure Backup podporuje.
 
-* Můžete také dostávat oznámení prostřednictvím integrovaných **protokolů aktivit**služby Recovery Services trezoru. podporuje ale omezené scénáře a není vhodné pro operace, jako je například naplánované zálohování, které se lépe zarovnají s protokoly prostředků než s protokoly aktivit. Další informace o těchto omezeních a o tom, jak můžete používat Log Analytics pracovní prostor pro monitorování a upozorňování ve velkém měřítku pro všechny vaše úlohy, které jsou chráněné pomocí Azure Backup, najdete v tomto [článku](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
+* Můžete také dostávat oznámení prostřednictvím integrovaných **protokolů aktivit** služby Recovery Services trezor. Podporuje ale omezené scénáře a není vhodné pro operace, jako je například naplánované zálohování, které se lépe zarovnají s protokoly prostředků než s protokoly aktivit. Další informace o těchto omezeních a o tom, jak můžete používat Log Analytics pracovní prostor pro monitorování a upozorňování ve velkém měřítku pro všechny vaše úlohy, které jsou chráněné pomocí Azure Backup, najdete v tomto [článku](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
 
 ## <a name="next-steps"></a>Další kroky
 

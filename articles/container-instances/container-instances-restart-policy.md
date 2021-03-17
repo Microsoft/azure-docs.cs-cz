@@ -2,19 +2,19 @@
 title: Zásady restartování pro úlohy běhu
 description: Naučte se používat Azure Container Instances k provádění úloh, které se spouštějí do dokončení, například v úlohách sestavení, testování nebo vykreslování imagí.
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/11/2020
+ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261344"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203823"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerizovaných úkolů se zásadami restartování
 
 Nasazení kontejnerů ve službě Azure Container Instances je jednoduché a rychlé. Proto je tato platforma vhodná pro úkoly, které se spouští jen jednou, jako je sestavení, testování nebo vykreslení image v instanci kontejneru.
 
-Konfigurovatelné zásady restartování umožňují nastavit, aby se kontejnery po dokončení procesů zastavily. Instance kontejnerů se účtují po sekundách. Proto se vám účtují jenom výpočetní prostředky používané po dobu spuštění kontejneru, když plní vaši úlohu.
+Konfigurovatelné zásady restartování umožňují nastavit, aby se kontejnery po dokončení procesů zastavily. Instance kontejnerů se účtují po sekundách. Proto se vám účtují jenom výpočetní prostředky používané po dobu, kdy kontejner běží a provádí vaši úlohu.
 
 Příklady uvedené v tomto článku používají rozhraní příkazového řádku Azure CLI. Musíte mít [místně nainstalovanou][azure-cli-install]verzi Azure CLI 2.0.21 nebo novější, nebo můžete použít rozhraní příkazového řádku v [Azure Cloud Shell](../cloud-shell/overview.md).
 
@@ -22,11 +22,13 @@ Příklady uvedené v tomto článku používají rozhraní příkazového řád
 
 Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) v Azure Container Instances můžete zadat jedno ze tří nastavení zásad restartování.
 
-| Zásady restartování   | Popis |
+| Zásada restartování   | Popis |
 | ---------------- | :---------- |
 | `Always` | Kontejnery ve skupině kontejnerů se restartují vždy. Jde o **výchozí** nastavení, které se použije vždy, když při vytvoření kontejneru nezadáte zásadu restartování. |
 | `Never` | Kontejnery ve skupině kontejnerů se nerestartují nikdy. Kontejnery se spouštějí nejvýše jednou. |
 | `OnFailure` | Kontejnery ve skupině se restartují jen v případě, že proces spuštěný v kontejneru nebude úspěšný (když skončí nenulovým ukončovacím kódem). Kontejnery se spouštějí aspoň jednou. |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>Zadat zásady restartování
 
@@ -102,7 +104,7 @@ Podrobnosti o tom, jak zachovat výstup kontejnerů, které se spouští k dokon
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

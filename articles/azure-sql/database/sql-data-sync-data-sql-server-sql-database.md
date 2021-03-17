@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080690"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562055"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -44,7 +44,7 @@ Synchronizace dat používá k synchronizaci dat topologii hvězdicové a Paprsk
 Skupina synchronizace má následující vlastnosti:
 
 - **Schéma synchronizace** popisuje, která data se synchronizují.
-- **Směr synchronizace** může být obousměrný nebo může tok pouze v jednom směru. To znamená, že směr synchronizace může být z *rozbočovače na člena*nebo z *člena do středu nebo do*obou.
+- **Směr synchronizace** může být obousměrný nebo může tok pouze v jednom směru. To znamená, že směr synchronizace může být z *rozbočovače na člena* nebo z *člena do středu nebo do* obou.
 - **Interval synchronizace** popisuje, jak často dochází k synchronizaci.
 - **Zásada řešení konfliktů** je zásada na úrovni skupiny, kterou je možné vytvořit jako *rozbočovač WINS* nebo *Členové služby WINS*.
 
@@ -58,15 +58,13 @@ Synchronizace dat je užitečná v případech, kdy je potřeba udržovat data v
 
 Synchronizace dat není preferovaným řešením pro následující scénáře:
 
-| Scénář | Některá doporučená řešení |
+| Scenario | Některá doporučená řešení |
 |----------|----------------------------|
 | Zotavení po havárii | [Geograficky redundantní zálohy Azure](automated-backups-overview.md) |
 | Čtení stupnice | [Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení (Preview)](read-scale-out.md) |
-| ETL (OLTP až OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migrace z SQL Server do Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| ETL (OLTP až OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [služba SSIS (SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services) |
+| Migrace z SQL Server do Azure SQL Database Synchronizace dat SQL však lze použít po dokončení migrace, aby bylo zajištěno, že je zdroj a cíl udržovány synchronizované.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -81,7 +79,15 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 | | Synchronizace dat | Transakční replikace |
 |---|---|---|
 | **Výhody** | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci <br/>– Podpora spravované instance Azure SQL |
-| **Nevýhody** | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
+| **Nevýhody** | -Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
+
+## <a name="private-link-for-data-sync-preview"></a>Privátní odkaz pro synchronizaci dat (Preview)
+Nová funkce privátního odkazu (ve verzi Preview) umožňuje vybrat privátní koncový bod spravovaný službou pro navázání zabezpečeného připojení mezi službou synchronizace a databázemi členů nebo centra během procesu synchronizace dat. Privátní koncový bod spravované služby je privátní IP adresa v konkrétní virtuální síti a podsíti. V rámci synchronizace dat je privátní koncový bod spravovaný službou vytvořen společností Microsoft a používá ji výhradně služba synchronizace dat pro danou operaci synchronizace. Před nastavením privátního odkazu si přečtěte [Obecné požadavky](sql-data-sync-data-sql-server-sql-database.md#general-requirements) této funkce. 
+
+![Privátní odkaz pro synchronizaci dat](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> Je nutné ručně schválit privátní koncový bod spravované služby na stránce **připojení privátního koncového bodu** v Azure Portal během nasazování skupiny synchronizace nebo pomocí prostředí PowerShell.
 
 ## <a name="get-started"></a>Začínáme 
 
@@ -95,13 +101,16 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 - [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [Použití PowerShellu k synchronizaci mezi databází v Azure SQL Database a databázemi v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
+### <a name="set-up-data-sync-with-rest-api"></a>Nastavení synchronizace dat pomocí REST API
+- [Použití REST API k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
+
 ### <a name="review-the-best-practices-for-data-sync"></a>Projděte si osvědčené postupy pro synchronizaci dat
 
 - [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-data-sync-best-practices.md)
 
 ### <a name="did-something-go-wrong"></a>Došlo k chybě.
 
-- [Řešení potíží se Synchronizací dat SQL Azure](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Řešení potíží se Synchronizací dat SQL Azure](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>Konzistence a výkon
 
@@ -115,7 +124,7 @@ Synchronizace dat sleduje změny pomocí aktivačních událostí vložení, akt
 
 Zřizování a rušení zřizování během vytváření skupiny synchronizace, aktualizace a odstraňování může mít vliv i na výkon databáze.
 
-## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a>Požadavky a omezení
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> Požadavky a omezení
 
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -126,7 +135,9 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 > - Data mezi centrem a členy mohou být ztracena, i když synchronizace neoznamuje žádné potíže.
 > - Synchronizace může selhat, protože tabulka sledování má neexistující řádek ze zdroje z důvodu změny primárního klíče.
 
-- Izolace snímku musí být povolená. Další informace najdete v tématu [Izolace snímku na SQL Serveru](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Pro členy synchronizace i pro centrum musí být povolena izolace snímku. Další informace najdete v tématu [Izolace snímku na SQL Serveru](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+
+- Aby bylo možné používat privátní propojení se synchronizací dat, musí být databáze členů i centra hostovány v Azure (stejné nebo jiné oblasti), ve stejném typu cloudu (např. ve veřejném cloudu nebo v cloudovém cloudu). Pro použití privátního propojení se navíc musí registrovat poskytovatelé prostředků Microsoft. Network pro odběry, které hostují rozbočovač a členské servery. Nakonec musíte ručně schválit privátní odkaz pro synchronizaci dat během konfigurace synchronizace v části připojení privátního koncového bodu v Azure Portal nebo prostřednictvím PowerShellu. Další informace o tom, jak schválit privátní propojení, najdete v tématu [nastavení synchronizace dat SQL](./sql-data-sync-sql-server-configure.md). Po schválení privátního koncového bodu služby spravovaného službou se veškerá komunikace mezi synchronizační službou a databázemi členských nebo hub provede přes privátní odkaz. Pokud chcete tuto funkci povolit, můžete aktualizovat existující skupiny synchronizace.
 
 ### <a name="general-limitations"></a>Obecná omezení
 
@@ -135,9 +146,10 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 - Primární klíč nemůže mít následující datové typy: sql_variant, binary, varbinary, image, XML.
 - Buďte opatrní při použití následujících datových typů jako primárního klíče, protože podporovaná přesnost je pouze sekundy: Time, DateTime, datetime2, DateTimeOffset.
 - Názvy objektů (databáze, tabulky a sloupce) nesmí obsahovat tečky tisknutelné znaky (.), levou hranatou závorku ([) nebo pravou hranatou závorku (]).
+- Název tabulky nesmí obsahovat tisknutelné znaky:! "# $% ' () * +-Space
 - Ověřování Azure Active Directory se nepodporuje.
-- Tabulky se stejným názvem, ale různými schématy (například dbo. Customers a Sales. Customers), nejsou podporovány.
-- Sloupce s uživatelsky definovanými datovými typy nejsou podporované.
+- Pokud jsou tabulky se stejným názvem, ale s jiným schématem (například dbo. Customers and Sales. Customers), je možné přidat do synchronizace pouze jednu z tabulek.
+- Sloupce s datovými typy User-Defined se nepodporují.
 - Přesun serverů mezi různými předplatnými není podporován. 
 
 #### <a name="unsupported-data-types"></a>Nepodporované datové typy
@@ -165,12 +177,14 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 | Tabulky ve skupině synchronizace                                          | 500                    | Vytvoření více skupin synchronizace |
 | Sloupce v tabulce ve skupině synchronizace                              | 1000                   |                             |
 | Velikost řádku dat v tabulce                                        | 24 MB                  |                             |
-| Minimální interval synchronizace                                           | 5 minut              |                             |
 
 > [!NOTE]
 > V jedné skupině synchronizace může být až 30 koncových bodů, pokud je k dispozici jenom jedna skupina synchronizace. Pokud existuje více než jedna skupina synchronizace, celkový počet koncových bodů napříč všemi skupinami synchronizace nesmí překročit 30. Pokud databáze patří do více skupin synchronizace, počítá se jako několik koncových bodů, nikoli jedna.
 
 ### <a name="network-requirements"></a>Požadavky sítě
+
+> [!NOTE]
+> Použijete-li privátní odkaz, tyto požadavky na síť se nevztahují. 
 
 Po navázání skupiny synchronizace se musí služba synchronizace dat připojit k databázi centra. V době, kdy vytváříte skupinu synchronizace, musí mít server SQL Azure ve svém nastavení následující konfiguraci `Firewalls and virtual networks` :
 
@@ -224,7 +238,7 @@ Jednu z doporučených postupů zálohování najdete [v tématu kopírování d
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Může synchronizovat data synchronizace šifrovaných tabulek a sloupců
 
 - Pokud databáze používá Always Encrypted, můžete synchronizovat pouze ty tabulky a sloupce, které *nejsou šifrované.* Šifrované sloupce nemůžete synchronizovat, protože synchronizace dat nemůže data dešifrovat.
-- Pokud sloupec používá šifrování na úrovni sloupce (CLE), můžete sloupec synchronizovat, pokud je velikost řádku menší než maximální velikost 24 MB. Synchronizace dat zachází s sloupcem šifrovaným klíčem (CLE) jako s normálními binárními daty. Chcete-li dešifrovat data u jiných členů synchronizace, je nutné mít stejný certifikát.
+- Pokud sloupec používá Column-Level šifrování (CLE), můžete sloupec synchronizovat, pokud je velikost řádku menší než maximální velikost 24 MB. Synchronizace dat zachází s sloupcem šifrovaným klíčem (CLE) jako s normálními binárními daty. Chcete-li dešifrovat data u jiných členů synchronizace, je nutné mít stejný certifikát.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Je kolace podporovaná v Synchronizace dat SQL
 
@@ -247,20 +261,19 @@ Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům export
 
 Je nutné aktualizovat schéma databáze ve skupině synchronizace? Změny schématu se nereplikují automaticky. Některá řešení najdete v následujících článcích:
 
-- [Automatizace replikace změn schématu pomocí Synchronizace dat SQL v Azure](../../sql-database/sql-database-update-sync-schema.md)
+- [Automatizace replikace změn schématu pomocí Synchronizace dat SQL v Azure](./sql-data-sync-update-sync-schema.md)
 - [Aktualizace schématu synchronizace ve stávající skupině synchronizace pomocí PowerShellu](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Monitorování a odstraňování potíží
 
 Je Synchronizace dat SQL podle očekávání? Pokud chcete monitorovat činnost a řešit problémy, přečtěte si následující články:
 
-- [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Řešení potíží se Synchronizací dat SQL Azure](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](./monitor-tune-overview.md)
+- [Řešení potíží se Synchronizací dat SQL Azure](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Další informace o Azure SQL Database
 
 Další informace o Azure SQL Database najdete v následujících článcích:
 
 - [Přehled služby SQL Database](sql-database-paas-overview.md)
-- [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [Správa životního cyklu databáze](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

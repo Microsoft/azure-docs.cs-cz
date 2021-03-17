@@ -3,19 +3,20 @@ title: DateTimeDiff v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimeDiff funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446377"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342262"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
-
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 Vrátí počet (jako celočíselnou hodnotu se znaménkem) zadaného hranice DateTimePart mezi zadanými *StartDate* a *EndDate*.
   
 ## <a name="syntax"></a>Syntaxe
@@ -31,8 +32,8 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 
 | DateTimePart | zkratky        |
 | ------------ | -------------------- |
-| Year         | "Year", "rrrr", "RR" |
-| Month        | "Month", "mm", "m"   |
+| Year (Rok)         | "Year", "rrrr", "RR" |
+| Month (Měsíc)        | "Month", "mm", "m"   |
 | Den          | "Day", "dd", "d"     |
 | Hodina         | "hour", "HH"         |
 | Minuta       | "Minute", "mi", "n"  |
@@ -41,7 +42,7 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 | Úrovni mikrosekund  | "mikrosekunda", "MCS" |
 | Nanosekund   | "nanosekund", "NS"   |
 
-*PočátečníDatum*  
+*StartDate*  
     Hodnota řetězce data a času STANDARDu ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
   |Formát|Popis|
@@ -59,7 +60,7 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
   Další informace o formátu ISO 8601 naleznete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
 *EndDate*  
-   Hodnota řetězce data a času STANDARDu ISO 8601 ve formátu`YYYY-MM-DDThh:mm:ss.fffffffZ`
+   Hodnota řetězce data a času STANDARDu ISO 8601 ve formátu `YYYY-MM-DDThh:mm:ss.fffffffZ`
 
 ## <a name="return-types"></a>Návratové typy
 
@@ -122,4 +123,4 @@ SELECT DateTimeDiff("hh", "2020-01-01T01:00:00.1234527Z", "2020-01-01T01:59:59.1
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

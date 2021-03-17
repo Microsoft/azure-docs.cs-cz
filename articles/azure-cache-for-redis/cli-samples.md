@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 32530982bc2a9d1b5deb31b3bc71460462352258
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499598"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536415"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Správa Azure cache pro Redis pomocí Azure CLI
 
@@ -30,4 +30,4 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 |**Odstranit mezipaměť**| **Popis** |
 | [Odstranění mezipaměti](./scripts/delete-cache.md) | Odstraní službu Azure cache for Redis instance.  |
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu věnovaném [instalaci Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Další informace o rozhraní příkazového řádku Azure najdete v tématu věnovaném [instalaci Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).

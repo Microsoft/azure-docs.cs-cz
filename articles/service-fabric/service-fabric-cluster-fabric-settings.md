@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682988"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232047"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -27,7 +27,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|řetězec, výchozí hodnota je None.|Static| Tím se certifikát serveru neověřuje. požadavek byl úspěšný. V části config ServiceCertificateThumbprints najdete čárkami oddělený seznam kryptografických otisků vzdálených certifikátů, které může reverzní proxy důvěřovat. V tématu config ServiceCommonNameAndIssuer najdete název předmětu a kryptografický otisk vystavitele vzdálených certifikátů, které může reverzní proxy důvěřovat. Další informace najdete v tématu [zabezpečené připojení k reverznímu proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, výchozí hodnota je 16384 |Dynamická| Udává velikost bloku v bajtech použitých ke čtení těla. |
-|CrlCheckingFlag|uint, Default je 0x40000000 |Dynamická| Příznaky pro ověření řetězu certifikátů aplikací nebo služeb; například kontrola CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 zakáže kontrolu seznamu CRL úplný seznam podporovaných hodnot je dokumentován dwFlags CertGetCertificateChain:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
+|CrlCheckingFlag|uint, Default je 0x40000000 |Dynamická| Příznaky pro ověření řetězu certifikátů aplikací nebo služeb; například kontrola CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 zakáže kontrolu seznamu CRL úplný seznam podporovaných hodnot je dokumentován dwFlags CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Čas v sekundách. Výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách.  Poskytuje výchozí časový limit žádosti pro požadavky HTTP zpracovávané ve službě HTTP App Gateway. |
 |ForwardClientCertificate|logická hodnota, výchozí hodnota je FALSE.|Dynamická|Při nastavení na hodnotu false nebude reverzní proxy vyžadovat klientský certifikát. Při nastavení na hodnotu true bude reverzní proxy požadovat certifikát klienta během metody handshake TLS a přesměrovat řetězec formátu PEM kódovaný na kódování Base64 do služby v hlavičce s názvem X-Client-Certificate. služba může po kontrole dat certifikátu selhat požadavek s příslušným stavovým kódem. Pokud je to pravda a klient neprezentuje certifikát, reverzní proxy přepošle prázdné záhlaví a umožní, aby služba zavedla případ. Reverzní proxy bude fungovat jako průhledná vrstva. Další informace najdete v tématu [nastavení ověřování klientských certifikátů](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |řetězec, výchozí hodnota je None. |Static| Určuje typ přihlašovacích údajů zabezpečení, které se mají použít u koncových bodů služby http App Gateway. platné hodnoty jsou None/x509. |
@@ -130,7 +130,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |EnableTelemetry |Logická hodnota, výchozí hodnota je true. | Dynamická |Tím se povolí nebo zakáže telemetrie. |
 |FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je false. | Dynamická | Pokud je povoleno zachycení telemetrie HTTP; zachytávání pouze neúspěšných žádostí To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
 |HttpTelemetryCapturePercentage | int, výchozí hodnota je 50 | Dynamická | Pokud je povoleno zachycení telemetrie HTTP; zachytit jenom náhodné procento požadavků. To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
-|MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamická |Disková kvóta v MB pro soubory protokolu Windows Fabric. |
+|MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamická |Disková kvóta v MB pro soubory protokolu prostředků infrastruktury Windows a Linux. |
 |ProducerInstances |Řetězec | Dynamická |Seznam instancí výrobců DCA. |
 
 ## <a name="dnsservice"></a>Služba DNSservice
@@ -141,6 +141,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |IsEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Povolí nebo zakáže služba DNSservice. Služba DNSservice je ve výchozím nastavení zakázaná a tato konfigurace musí být nastavená tak, aby se povolila. |
 |PartitionPrefix|řetězec, výchozí hodnota je "--"|Static|Určuje řetězcovou hodnotu předpony oddílu v dotazech DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní se specifikací RFC, protože bude součástí dotazu DNS.</li><li>Nesmí obsahovat tečku (.), protože tečka má vliv na chování přípony DNS.</li><li>By neměl být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je nastavení PartitionPrefix přepsáno, pak PartitionSuffix musí být přepsáno a naopak.</li></ul>Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md)|
 |PartitionSuffix|řetězec, výchozí hodnota je ""|Static|Určuje hodnotu řetězce přípony oddílu v dotazech DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní se specifikací RFC, protože bude součástí dotazu DNS.</li><li>Nesmí obsahovat tečku (.), protože tečka má vliv na chování přípony DNS.</li><li>By neměl být delší než 5 znaků.</li><li>Pokud je nastavení PartitionPrefix přepsáno, pak PartitionSuffix musí být přepsáno a naopak.</li></ul>Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md) |
+|RetryTransientFabricErrors|Logická hodnota, výchozí hodnota je true.|Static|Nastavení řídí možnosti opakování při volání rozhraní Service Fabric API z služba DNSservice. Pokud je tato možnost povolená, opakuje se až třikrát, pokud dojde k přechodné chybě.|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -243,7 +244,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static|Zadejte časový interval v sekundách. QuorumLossWaitDuration pro FaultAnalysisService. |
 |ReplicaDropWaitDurationInSeconds|int, výchozí hodnota je 600|Static|Tento parametr se používá v případě, že je voláno rozhraní API pro ztrátu dat. Určuje, jak dlouho bude systém čekat na vyřazení repliky po jejím interním vyvolání odebrání repliky. |
 |ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60 minut.|Static|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro FaultAnalysisService. |
-|StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60*24*7) min. |Static|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
+|StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60 *24* 7) min. |Static|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Static|To je postup, jak často se bude obchod vyčistit. Pouze akce ve stavu terminálu; a které byly dokončeny alespoň před CompletedActionKeepDurationInSeconds, budou odebrány. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Static|To je postup, jak často bude úložiště auditováno pro vyčištění. Pokud je počet událostí vyšší než 30000; Vyčištění bude vykázat. |
 |TargetReplicaSetSize |Int, výchozí hodnota je 0 |Static|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
@@ -320,7 +321,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |MaxPercentDeltaUnhealthyNodes|int, výchozí hodnota je 10.|Static|Zásady hodnocení stavu upgradu clusteru: maximální procento rozdílových uzlů, které nemají stav v pořádku, aby byl cluster v pořádku |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, výchozí hodnota je 15.|Static|Zásady hodnocení stavu upgradu clusteru: maximální procento rozdílu uzlů, které nejsou v pořádku, v upgradovací doméně povolené pro cluster v dobrém stavu |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Hostování
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -348,6 +349,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |DisableContainers|logická hodnota, výchozí hodnota je FALSE.|Static|Konfigurace pro zákaz použití kontejnerů místo DisableContainerServiceStartOnContainerActivatorOpen, což je nepoužívané konfigurace |
 |DisableDockerRequestRetry|logická hodnota, výchozí hodnota je FALSE. |Dynamická| Ve výchozím nastavení SF komunikuje pomocí příkazu DD (Docker Dameon) s časovým limitem "DockerRequestTimeout" pro každý odeslaný požadavek HTTP. Pokud DD nereaguje v rámci tohoto časového období; SF znovu odešle požadavek, pokud stále zbývá operace na nejvyšší úrovni.  S kontejnerem HyperV; DD někdy vybere mnohem více času, aby kontejner mohl vyvolat nebo deaktivovat. V takových případech DD žádosti vyprší od SF perspektivy a SF opakuje operaci. Někdy se zdá, že přidá větší tlak na DD. Tato konfigurace umožňuje zakázat tento pokus o opakování a počkat na odpověď DD. |
 |DnsServerListTwoIps | Logická hodnota, výchozí hodnota je FALSE. | Static | Tyto příznaky přidávají místní server DNS dvakrát, aby bylo možné zmírnit občasné řešení problémů. |
+| DockerTerminateOnLastHandleClosed | logická hodnota, výchozí hodnota je FALSE. | Static | Ve výchozím nastavení, pokud hostitele fabrichost vrátilo spravuje dockerd (na základě: SkipDockerProcessManagement = = false), toto nastavení nakonfiguruje, co se stane, když dojde k chybě hostitele fabrichost vrátilo nebo dockerd. Pokud je `true` Tato možnost nastavena na hodnotu v případě, že dojde k vynucenému ukončení všech spuštěných kontejnerů, bude klientovi HCS nuceně ukončen. Pokud je sada nastavena na kontejnery, budou dál fungovat `false` . Poznámka: předchozí až 8,0 Toto chování bylo neúmyslně ekvivalentem `false` . Výchozím nastavením `true` tady je to, co se ve výchozím nastavení stane, že se při restartování těchto procesů projeví pro naši logiku vyčištění. |
 | DoNotInjectLocalDnsServer | logická hodnota, výchozí hodnota je FALSE. | Static | Zabraňuje modulu runtime vložit místní IP adresu jako server DNS pro kontejnery. |
 |EnableActivateNoWindow| logická hodnota, výchozí hodnota je FALSE.|Dynamická| Aktivovaný proces se vytvoří na pozadí bez konzoly. |
 |EnableContainerServiceDebugMode|logická hodnota, výchozí hodnota je TRUE.|Static|Povolí nebo zakáže protokolování kontejnerů Docker.  Pouze Windows.|
@@ -423,14 +425,14 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AzureStorageMaxConnections | Int, výchozí hodnota je 5000 |Dynamická|Maximální počet souběžných připojení ke službě Azure Storage. |
 |AzureStorageMaxWorkerThreads | Int, výchozí hodnota je 25. |Dynamická|Maximální počet paralelně spuštěných pracovních vláken. |
 |AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000. |Dynamická|Zadejte časový interval v sekundách. Vypršel časový limit pro dokončení operace xstore. |
-|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je FALSE. |Dynamická|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení. |
-|CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnota je FALSE. |Dynamická|Tato konfigurace, pokud je povolená, umožňuje automaticky odregistrovat nepoužívané verze typu aplikace, které přeskočí nejnovější tři nepoužívané verze, a tím vystřihuje místo na disku obsazené úložištěm imagí. Automatické čištění se spustí na konci úspěšného zřízení pro daný typ aplikace a také bude pravidelně spouštět jednou denně pro všechny typy aplikací. Počet nepoužívaných verzí, které se mají přeskočit, se dá konfigurovat pomocí parametru "MaxUnusedAppTypeVersionsToKeep". |
+|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je true. |Dynamická|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení.
+|CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnota je FALSE. |Dynamická|Tato konfigurace, pokud je povolená, umožňuje automaticky odregistrovat nepoužívané verze typu aplikace, které přeskočí nejnovější tři nepoužívané verze, a tím vystřihuje místo na disku obsazené úložištěm imagí. Automatické čištění se spustí na konci úspěšného zřízení pro daný typ aplikace a také bude pravidelně spouštět jednou denně pro všechny typy aplikací. Počet nepoužívaných verzí, které se mají přeskočit, se dá konfigurovat pomocí parametru "MaxUnusedAppTypeVersionsToKeep". <br/> *Osvědčeným postupem je použití `true` .*
 |DisableChecksumValidation | Logická hodnota, výchozí hodnota je false. |Static| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikace. |
 |DisableServerSideCopy | Logická hodnota, výchozí hodnota je false. |Static|Tato konfigurace povolí nebo zakáže kopii balíčku aplikace na straně serveru na úložiště bitových kopií během zřizování aplikace. |
 |ImageCachingEnabled | Logická hodnota, výchozí hodnota je true. |Static|Tato konfigurace nám umožňuje povolit nebo zakázat ukládání do mezipaměti. |
 |ImageStoreConnectionString |SecureString |Static|Připojovací řetězec do kořenového adresáře pro úložiště bitových kopií. |
 |ImageStoreMinimumTransferBPS | Int, výchozí hodnota je 1024 |Dynamická|Minimální přenosová rychlost mezi clusterem a úložiště bitových kopií. Tato hodnota se používá k určení časového limitu při přístupu k externímu úložiště bitových kopií. Tuto hodnotu změňte jenom v případě, že latence mezi clusterem a úložiště bitových kopií je vysoká, aby se cluster mohl stáhnout z externího úložiště bitových kopií. |
-|MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 |Dynamická|Tato konfigurace definuje počet nepoužitých verzí typu aplikace, které mají být vynechány pro vyčištění. Tento parametr je použitelný pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes. |
+|MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 |Dynamická|Tato konfigurace definuje počet nepoužitých verzí typu aplikace, které mají být vynechány pro vyčištění. Tento parametr je použitelný pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes. <br/>*Obecný osvědčený postup je použít výchozí ( `3` ). Hodnoty menší než 1 jsou neplatné.*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -520,6 +522,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AutoDetectAvailableResources|logická hodnota, výchozí hodnota je TRUE.|Static|Tato konfigurace aktivuje automatickou detekci dostupných prostředků v uzlu (procesor a paměť), pokud je tato konfigurace nastavená na hodnotu true. Pokud uživatel zadal chybné kapacity uzlů nebo pokud je tato konfigurace nastavená na false, načtou se skutečné kapacity a opraví. Pokud je tato konfigurace nastavená na false, budeme sledovat upozornění, že uživatel zadal chybné kapacity uzlů. ale nebudeme je opravovat. To znamená, že uživatel chce mít zadané kapacity jako >, než má uzel skutečně má, nebo pokud nejsou definovány kapacity; bude předpokládat neomezenou kapacitu. |
 |BalancingDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách. Po přidání nového uzlu nespouštějte vyrovnávání aktivit v tomto období. |
 |BalancingDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách. Nepovolujte vyvážení aktivit v rámci této doby po událostech uzlu. |
+|BlockNodeInUpgradeConstraintPriority | Int, výchozí hodnota je-1. |Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignorovat  |
 |CapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignoruje se. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, výchozí hodnota je 20 | Dynamická|Definuje počet po sobě jdoucích pohybů vydaných ResourceBalancer před provedením diagnostiky a vygenerování upozornění na stav. Záporné: za touto podmínkou nejsou vygenerována žádná upozornění. |
 |ConstraintFixPartialDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamická| Zadejte časový interval v sekundách. Po přidání nového uzlu DDo v tomto období neopravit FaultDomain a porušení omezení UpgradeDomain. |
@@ -669,7 +672,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |ClusterCredentialType|řetězec, výchozí hodnota je None.|Nepovolené|Určuje typ přihlašovacích údajů zabezpečení, které se mají použít k zabezpečení clusteru. Platné hodnoty jsou None/x509/Windows. |
 |ClusterIdentities|řetězec, výchozí hodnota je ""|Dynamická|Identity Windows uzlů clusteru; používá se pro autorizaci členství v clusteru. Je to seznam oddělený čárkami. Každá položka je název účtu domény nebo název skupiny. |
 |ClusterSpn|řetězec, výchozí hodnota je ""|Nepovolené|Hlavní název služby clusteru; Když se prostředky infrastruktury spouštějí jako uživatel s jedním doménou (účet uživatele gMSA/doména). Je hlavní název služby pro naslouchací procesy zapůjčení a naslouchací procesy v fabric.exe: federační naslouchací procesy; interní naslouchací procesy replikace; naslouchací proces služby runtime a naslouchací proces pro pojmenovávání brány. Při spuštění prostředků infrastruktury jako účtů počítačů by toto mělo zůstat prázdné. v takovém případě připojení hlavního názvu služby (SPN) služby COMPUTE COMPUTE z přenosové adresy naslouchacího procesu. |
-|CrlCheckingFlag|uint, Default je 0x40000000|Dynamická|Výchozí příznak ověření řetězu certifikátů; může být přepsán příznakem specifickým pro součást; například Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 zakáže kontrolu seznamu CRL úplný seznam podporovaných hodnot je dokumentován dwFlags CertGetCertificateChain:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
+|CrlCheckingFlag|uint, Default je 0x40000000|Dynamická|Výchozí příznak ověření řetězu certifikátů; může být přepsán příznakem specifickým pro součást; například Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 zakáže kontrolu seznamu CRL úplný seznam podporovaných hodnot je dokumentován dwFlags CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |CrlDisablePeriod|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (15)|Dynamická|Zadejte časový interval v sekundách. Jak dlouho je kontrola seznamu CRL pro daný certifikát vypnuta po zjištění chyby v režimu offline; Pokud je offline chyba seznamu CRL, můžete ji ignorovat. |
 |CrlOfflineHealthReportTtl|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (1440)|Dynamická|Zadejte časový interval v sekundách. |
 |DisableFirewallRuleForDomainProfile| logická hodnota, výchozí hodnota je TRUE. |Static| Indikuje, jestli se nemá Povolit pravidlo brány firewall pro profil domény. |
@@ -794,7 +797,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |UpgradeApplication |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro spuštění nebo přerušení upgradu aplikace. |
 |UpgradeComposeDeployment|řetězec, výchozí hodnota je admin.| Dynamická|Upgraduje nasazení vytváření. |
 |UpgradeFabric |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro spouštění upgradů clusteru. |
-|Odeslat |řetězec, výchozí hodnota je admin. | Dynamická|Konfigurace zabezpečení pro operaci nahrání klienta úložiště imagí |
+|Nahrávání |řetězec, výchozí hodnota je admin. | Dynamická|Konfigurace zabezpečení pro operaci nahrání klienta úložiště imagí |
 
 ## <a name="securityclientcertificateissuerstores"></a>Zabezpečení/ClientCertificateIssuerStores
 
@@ -849,13 +852,13 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Poskytovatelé |řetězec, výchozí hodnota je "DSTS" |Static|Seznam zprostředkovatelů ověřování tokenů oddělených čárkou, které se mají povolit (platné zprostředkovatele jsou: DSTS; AAD). V současné době může být povolen pouze jeden zprostředkovatel. |
+|Zprostředkovatelé |řetězec, výchozí hodnota je "DSTS" |Static|Seznam zprostředkovatelů ověřování tokenů oddělených čárkou, které se mají povolit (platné zprostředkovatele jsou: DSTS; AAD). V současné době může být povolen pouze jeden zprostředkovatel. |
 
 ## <a name="traceetw"></a>Trasování/trasování událostí pro Windows
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Úroveň |Int, výchozí hodnota je 4. | Dynamická |Trasovat úroveň trasování událostí pro Windows může přibírat hodnoty 1, 2, 3, 4. Aby byla podpora podporovaná, musíte udržet úroveň trasování 4. |
+|Level |Int, výchozí hodnota je 4. | Dynamická |Trasovat úroveň trasování událostí pro Windows může přibírat hodnoty 1, 2, 3, 4. Aby byla podpora podporovaná, musíte udržet úroveň trasování 4. |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 
@@ -875,7 +878,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60)|Static|Zadejte časový interval v sekundách. Časový limit pro nastavení připojení na straně příjmu (včetně vyjednávání zabezpečení v zabezpečeném režimu) |
 |FrameHeaderErrorCheckingEnabled|logická hodnota, výchozí hodnota je TRUE.|Static|Výchozí nastavení pro kontrolu chyb v hlavičce snímku v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
-|MessageErrorCheckingEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Výchozí nastavení pro kontrolu chyb v záhlaví a textu zprávy v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
+|MessageErrorCheckingEnabled|logická hodnota, výchozí hodnota je TRUE.|Static|Výchozí nastavení pro kontrolu chyb v záhlaví a textu zprávy v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
 |ResolveOption|řetězec, výchozí hodnota je "Neurčeno".|Static|Určuje, jak se přeloží plně kvalifikovaný název domény.  Platné hodnoty jsou "Neurčeno/IPv4/IPv6". |
 |SendTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (300)|Dynamická|Zadejte časový interval v sekundách. Vypršel časový limit pro detekci zablokování připojení. Zprávy o chybách TCP nejsou v některých prostředí spolehlivé. To může být potřeba upravit podle dostupné šířky pásma sítě a velikosti odchozích dat ( \* MaxMessageSize \/ \* SendQueueSizeLimit). |
 
@@ -890,7 +893,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |PlacementConstraints | řetězec, výchozí hodnota je "" |Static| PlacementConstraints pro UpgradeOrchestrationService. |
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro UpgradeOrchestrationService. |
 |ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je 60 minut.|Static| Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro UpgradeOrchestrationService. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60*24*7 minut. |Static| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60 *24* 7 minut. |Static| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
 |TargetReplicaSetSize |Int, výchozí hodnota je 0 |Static |TargetReplicaSetSize pro UpgradeOrchestrationService. |
 |UpgradeApprovalRequired | Logická hodnota, výchozí hodnota je false. | Static|Nastavení pro provedení upgradu kódu vyžaduje schválení správcem, než budete pokračovat. |
 

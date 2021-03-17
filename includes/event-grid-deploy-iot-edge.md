@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050308"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Nasadit modul Event Grid IoT Edge
@@ -27,7 +27,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
  
 ### <a name="select-your-iot-edge-device"></a>Vyberte zařízení IoT Edge
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Přejděte na IoT Hub.
 1. V nabídce v části **Automatická správa zařízení** vyberte **IoT Edge** . 
 1. V seznamu zařízení klikněte na ID cílového zařízení.
@@ -46,7 +46,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
 [!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Název**: eventgridmodule
-   * **Identifikátor URI image**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Možnosti vytvoření kontejneru**:
 
 ```json
@@ -67,7 +67,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     }
 ```
 
- 1. Klikněte na **Uložit** .
+ 1. Klikněte na **Uložit**.
  1. Kliknutím na tlačítko **Další** pokračujte v části trasy.
 
     > [!NOTE]

@@ -1,22 +1,25 @@
 ---
-title: Schéma Azure Cloud Services NetworkConfiguration | Microsoft Docs
+title: Schéma NetworkConfiguration pro Azure Cloud Services (Classic) | Microsoft Docs
 description: Přečtěte si o podřízených prvcích elementu NetworkConfiguration konfiguračního souboru služby, který určuje hodnoty Virtual Network a DNS.
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 28
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+'---thor': tagore
+ms.openlocfilehash: acf4c050ade21a6e5fc51ee6ace512eff00360ab
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79529284"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743453"
 ---
-# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Schéma NetworkConfiguration pro Azure Cloud Services config
+# <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>NetworkConfiguration schéma konfigurace pro Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 `NetworkConfiguration`Element konfiguračního souboru služby určuje Virtual Network a hodnoty DNS. Tato nastavení jsou pro Cloud Services volitelná.
 
@@ -24,7 +27,7 @@ Následující prostředek můžete použít k získání dalších informací o
 
 - [Schéma konfigurace cloudové služby (Classic)](schema-cscfg-file.md)
 - [Schéma definice cloudové služby (Classic)](schema-csdef-file.md)
-- [Vytvoření Virtual Network (Classic)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [Vytvoření Virtual Network (Classic)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)
 
 ## <a name="networkconfiguration-element"></a>Element NetworkConfiguration
 Následující příklad ukazuje `NetworkConfiguration` prvek a jeho podřízené prvky.
@@ -62,10 +65,10 @@ Následující příklad ukazuje `NetworkConfiguration` prvek a jeho podřízen�
 
 Následující tabulka popisuje podřízené prvky `NetworkConfiguration` elementu.
 
-| Prvek       | Popis |
+| Element       | Popis |
 | ------------- | ----------- |
 | AccessControl | Nepovinný parametr. Určuje pravidla pro přístup k koncovým bodům v cloudové službě. Název řízení přístupu je definován řetězcem pro `name` atribut. `AccessControl`Element obsahuje jeden nebo více `Rule` prvků. `AccessControl`Je možné definovat více než jeden prvek.|
-| Pravidlo | Nepovinný parametr. Určuje akci, která má být provedena pro zadaný rozsah IP adres. Pořadí pravidla je definováno hodnotou řetězce pro `order` atribut. Čím nižší je číslo pravidla, tím vyšší prioritou. Můžete například zadat pravidla s čísly pořadí 100, 200 a 300. Pravidlo s pořadovým číslem 100 má přednost před pravidlem, které má pořadí 200.<br /><br /> Akce pro pravidlo je definována řetězcem pro `action` atribut. Možné hodnoty:<br /><br /> -   `permit`– Určuje, že s koncovým bodem můžou komunikovat jenom pakety ze zadaného rozsahu podsítě.<br />-   `deny`– Určuje, že přístup je odepřen do koncových bodů v zadaném rozsahu podsítě.<br /><br /> Rozsah podsítě IP adres, na které se pravidlo vztahuje, je definován řetězcem pro `remoteSubnet` atribut. Popis pravidla je definován řetězcem pro `description` atribut.|
+| Pravidlo | Nepovinný parametr. Určuje akci, která má být provedena pro zadaný rozsah IP adres. Pořadí pravidla je definováno hodnotou řetězce pro `order` atribut. Čím nižší je číslo pravidla, tím vyšší prioritou. Můžete například zadat pravidla s čísly pořadí 100, 200 a 300. Pravidlo s pořadovým číslem 100 má přednost před pravidlem, které má pořadí 200.<br /><br /> Akce pro pravidlo je definována řetězcem pro `action` atribut. Možné hodnoty:<br /><br /> -   `permit` – Určuje, že s koncovým bodem můžou komunikovat jenom pakety ze zadaného rozsahu podsítě.<br />-   `deny` – Určuje, že přístup je odepřen do koncových bodů v zadaném rozsahu podsítě.<br /><br /> Rozsah podsítě IP adres, na které se pravidlo vztahuje, je definován řetězcem pro `remoteSubnet` atribut. Popis pravidla je definován řetězcem pro `description` atribut.|
 | EndpointAcl | Nepovinný parametr. Určuje přiřazení pravidel řízení přístupu ke koncovému bodu. Název role, která obsahuje koncový bod, je definován řetězcem pro `role` atribut. Název koncového bodu je definován řetězcem pro `endpoint` atribut. Název sady `AccessControl` pravidel, která by měla být použita na koncový bod, je definována v řetězci pro `accessControl` atribut. Lze definovat více než jeden `EndpointAcl` prvek.|
 | Serveru DNS | Nepovinný parametr. Určuje nastavení serveru DNS. Můžete zadat nastavení pro servery DNS bez Virtual Network. Název serveru DNS je definovaný řetězcem pro `name` atribut. IP adresa serveru DNS je definována řetězcem pro `IPAddress` atribut. IP adresa musí být platná IPv4 adresa.|
 | VirtualNetworkSite | Nepovinný parametr. Určuje název lokality Virtual Network, do které chcete nasadit cloudovou službu. Toto nastavení nevytvoří web Virtual Network. Odkazuje na lokalitu, která byla dříve definována v síťovém souboru pro váš Virtual Network. Cloudová služba může být jenom členem jednoho Virtual Network. Pokud toto nastavení nezadáte, cloudová služba nebude nasazená do Virtual Network. Název Virtual Network lokality je definován řetězcem pro `name` atribut.|

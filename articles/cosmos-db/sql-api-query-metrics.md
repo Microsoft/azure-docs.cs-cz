@@ -5,18 +5,20 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392127"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488082"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](how-to-sql-query.md), bez nutnosti schématu nebo sekundárních indexů. Tento článek poskytuje pro vývojáře následující informace:
+Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](./sql-query-getting-started.md), bez nutnosti schématu nebo sekundárních indexů. Tento článek poskytuje pro vývojáře následující informace:
 
 * Podrobné informace o tom, jak funguje Azure Cosmos DB provádění dotazů SQL
 * Podrobnosti o dotazech na požadavky a odpovědi na dotazy a možnosti klientské sady SDK
@@ -25,7 +27,7 @@ Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](how-to-sq
 
 ## <a name="about-sql-query-execution"></a>O provádění dotazů SQL
 
-V Azure Cosmos DB ukládáte data do kontejnerů, které se můžou zvětšovat podle [velikosti úložiště nebo propustnosti požadavků](partition-data.md). Azure Cosmos DB plynule škáluje data mezi fyzickými oddíly v rámci pokrývání dat a zpracování nárůstu dat nebo zvýšení zajištěné propustnosti. Dotazy SQL můžete vystavit do libovolného kontejneru pomocí REST API nebo některé z podporovaných [sad SQL SDK](sql-api-sdk-dotnet.md).
+V Azure Cosmos DB ukládáte data do kontejnerů, které se můžou zvětšovat podle [velikosti úložiště nebo propustnosti požadavků](partitioning-overview.md). Azure Cosmos DB plynule škáluje data mezi fyzickými oddíly v rámci pokrývání dat a zpracování nárůstu dat nebo zvýšení zajištěné propustnosti. Dotazy SQL můžete vystavit do libovolného kontejneru pomocí REST API nebo některé z podporovaných [sad SQL SDK](sql-api-sdk-dotnet.md).
 
 Stručný přehled dělení: definujete klíč oddílu, například City, který určuje, jak se data rozdělí mezi fyzické oddíly. Data patřící do klíče s jedním oddílem (například City "= =" Praha ") jsou uložena v rámci fyzického oddílu, ale obvykle jeden fyzický oddíl má více klíčů oddílu. Když oddíl dosáhne velikosti úložiště, služba hladce rozdělí oddíl na dva nové oddíly a rovnoměrně rozděluje klíč oddílu mezi tyto oddíly. Vzhledem k tomu, že se oddíly dočasná, používají rozhraní API abstrakci rozsahu klíčů oddílu, který označuje rozsahy hodnot hash klíčů oddílů. 
 
@@ -38,7 +40,7 @@ Když vydáte dotaz pro Azure Cosmos DB, sada SDK provede tyto logické kroky:
 
 Sady SDK poskytují různé možnosti pro provádění dotazů. Například v rozhraní .NET jsou tyto možnosti k dispozici ve `FeedOptions` třídě. Následující tabulka popisuje tyto možnosti a jejich dopad na dobu provádění dotazu. 
 
-| Možnost | Description |
+| Možnost | Popis |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Musí být nastaven na hodnotu true pro všechny dotazy, které je třeba provést v rámci více než jednoho oddílu. Toto je explicitní příznak, který vám umožní zajistit, aby v době vývoje byly kompromisy v výkonu. |
 | `EnableScanInQuery` | Je nutné nastavit na hodnotu true, pokud jste se vyhlásili z indexování, ale chcete spustit dotaz i v rámci kontroly. Dá se použít jenom v případě, že indexování pro požadovanou cestu filtru je zakázané. | 
@@ -124,7 +126,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 Hlavičky odpovědí na klíč vrácené z dotazu zahrnují následující:
 
-| Možnost | Description |
+| Možnost | Popis |
 | ------ | ----------- |
 | `x-ms-item-count` | Počet položek vrácených v odpovědi. Tato možnost závisí na zadaném `x-ms-max-item-count` počtu položek, které se mohou vejít do maximální velikosti datové části odpovědi, zřízené propustnosti a času provádění dotazu. |  
 | `x-ms-continuation:` | Token pokračování pro pokračování v provádění dotazu, pokud jsou k dispozici další výsledky. | 
@@ -136,12 +138,11 @@ Podrobnosti o hlavičkách a možnostech žádosti o REST API najdete v tématu 
 ## <a name="best-practices-for-query-performance"></a>Osvědčené postupy pro výkon dotazů
 Níže jsou uvedené nejběžnější faktory, které mají vliv na Azure Cosmos DB výkon dotazů. Dig se podrobněji pro každé z těchto témat v tomto článku.
 
-| Jednotek | Tip | 
+| Faktor | Tip | 
 | ------ | -----| 
 | Zřízená propustnost | Změřte RU na dotaz a ujistěte se, že máte požadovanou zřízenou propustnost pro vaše dotazy. | 
 | Dělení a klíče oddílů | Upřednostnit dotazy s hodnotou klíče oddílu v klauzuli Filter pro nízkou latenci. |
 | Sada SDK a možnosti dotazu | Dodržujte osvědčené postupy sady SDK, jako je přímé připojení, a vylaďte možnosti spouštění dotazů na straně klienta. |
-| Latence sítě | Účet pro měření režie sítě a použití rozhraní API pro více domovských míst ke čtení z nejbližší oblasti. |
 | Zásady indexování | Ujistěte se, že máte pro dotaz požadované cesty k indexování nebo zásady. |
 | Metriky spuštění dotazu | Analyzujte metriky spouštění dotazů a Identifikujte potenciální přepis datových tvarů dotazů a dat.  |
 
@@ -162,7 +163,7 @@ U Azure Cosmos DB obvykle dotazy provádějí v následujícím pořadí od nejr
 
 Dotazy, které musí pohlížet na všechny oddíly, vyžadují větší latenci a můžou využívat vyšší ru. Vzhledem k tomu, že každý oddíl má automatické indexování proti všem vlastnostem, lze dotaz v tomto případě efektivně zpracovat z indexu. Pomocí možností paralelismus můžete vytvářet dotazy, které přesahují oddíly rychleji.
 
-Další informace o dělení a klíčích oddílů najdete v tématu [dělení v Azure Cosmos DB](partition-data.md).
+Další informace o dělení a klíčích oddílů najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
 ### <a name="sdk-and-query-options"></a>Sada SDK a možnosti dotazu
 V tématu [tipy k výkonu](performance-tips.md) a [testování výkonu](performance-testing.md) získáte nejlepší výkon na straně klienta z Azure Cosmos DB. To zahrnuje použití nejnovějších sad SDK, konfigurace konfigurací specifických pro konkrétní platformu, jako je výchozí počet připojení, frekvence uvolňování paměti a použití zjednodušených možností připojení, jako je Direct/TCP. 
@@ -182,7 +183,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maximální stupeň paralelismu
-V případě dotazů můžete vyladit `MaxDegreeOfParallelism` a identifikovat nejlepší konfigurace pro vaši aplikaci, zejména pokud provádíte dotazy mezi oddíly (bez filtru na hodnotu klíče oddílu). `MaxDegreeOfParallelism`Určuje maximální počet paralelních úloh, tj. maximální počet oddílů, které mají být navštíveny paralelně. 
+V případě dotazů můžete vyladit `MaxDegreeOfParallelism` a identifikovat nejlepší konfigurace pro vaši aplikaci, zejména pokud provádíte dotazy mezi oddíly (bez filtru na hodnotu klíče oddílu). `MaxDegreeOfParallelism`  Určuje maximální počet paralelních úloh, tj. maximální počet oddílů, které mají být navštíveny paralelně. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -213,7 +214,7 @@ Jak nastavit globální distribuci a připojit se k nejbližší oblasti, najdet
 
 Oddíl metriky spouštění dotazů vysvětluje, jak načíst dobu provádění dotazů ( `totalExecutionTimeInMs` ), takže můžete rozlišovat čas strávený při provádění dotazů a čas strávený při přenosu v síti.
 
-### <a name="indexing-policy"></a>Zásady indexování
+### <a name="indexing-policy"></a>Zásada indexování
 Viz téma [Konfigurace zásad indexování](index-policy.md) pro cesty, druhy a režimy indexování a to, jak ovlivňují provádění dotazů. Ve výchozím nastavení zásada indexování používá indexování algoritmu hash pro řetězce, které jsou platné pro dotazy na rovnost, ale ne pro dotaz na rozsah nebo řazení podle dotazů. Pokud pro řetězce potřebujete dotazy na rozsah, doporučujeme zadat typ indexu rozsahu pro všechny řetězce. 
 
 Ve výchozím nastavení Azure Cosmos DB použije automatické indexování na všechna data. V případě scénářů vkládání s vysokým výkonem zvažte možnost vyloučení cest, protože se tím sníží náklady na RU za každou operaci vložení. 
@@ -237,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Jednotka | Description | 
+| Metric | Jednotka | Popis | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -259,7 +260,7 @@ Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých odd�
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Description | 
+| Dotaz | Ukázková metrika | Popis | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 
@@ -274,6 +275,4 @@ Tady je několik ukázkových dotazů a postup interpretace některých metrik v
 ## <a name="next-steps"></a>Další kroky
 * Další informace o podporovaných operátorech dotazu SQL a klíčových slovech naleznete v tématu [SQL Query](sql-query-getting-started.md). 
 * Další informace o jednotkách žádostí najdete v tématu [jednotky žádostí](request-units.md).
-* Další informace o zásadách indexování najdete v tématu [indexování zásad](index-policy.md) . 
-
-
+* Další informace o zásadách indexování najdete v tématu [indexování zásad](index-policy.md) .

@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982850"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231838"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Vzdálená práce pomocí Azure Networking Services
 
@@ -80,21 +80,21 @@ Pro vaše nasazení v jiných veřejných cloudech může společnost Microsoft 
 
 Následující články popisují, jak lze pomocí různých síťových funkcí Azure škálovat uživatele, aby fungovaly vzdáleně:
 
-| **Předmětu** | **Popis** |
+| **Článek** | **Popis** |
 | --- | --- |
 | [Jak povolit vzdálenou práci uživatelů](../vpn-gateway/work-remotely-support.md) | Projděte si dostupné možnosti pro nastavení vzdáleného přístupu pro uživatele nebo doplnění stávajících řešení o další kapacitu vaší organizace.|
 | [Působit potíže se do služby stravování, abyste mohli pracovat s požadavky na domácnosti? Tady je místo, kde může Azure Virtual WAN pomáhat.](../virtual-wan/work-remotely-support.md) | Využijte Azure Virtual WAN k řešení potřeb vaší organizace pro vzdálené připojení.|
 | [Podpora vysokého provozu služby Application Gateway](../application-gateway/high-traffic-support.md) | Pomocí Application Gateway s firewallem webových aplikací (WAF) můžete škálovatelný a zabezpečený způsob správy provozu do webových aplikací. |
 | [Požadavky na síťové virtuální zařízení (síťové virtuální zařízení) pro vzdálenou práci](../vpn-gateway/nva-work-remotely-support.md)|Přečtěte si pokyny k využití síťová virtuální zařízení v Azure k poskytování řešení vzdáleného přístupu. |
-| [Přechod na Protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Přechodem na Protokol OpenVPN nebo IKEv2 překonání limitu souběžného počtu připojení (SSTP) 128.|
+| [Přechod na Protokol OpenVPN nebo IKEv2 z SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md) | Přechodem na Protokol OpenVPN nebo IKEv2 překonání limitu souběžného počtu připojení (SSTP) 128.|
 | [Vzdálená práce pomocí Azure bastionu](../bastion/work-remotely-support.md) | Poskytněte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům v rámci virtuální sítě Azure přímo v Azure Portal bez použití veřejné IP adresy. |
 | [Použití Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](../expressroute/work-remotely-support.md) | Použijte ExpressRoute pro hybridní připojení, aby uživatelé ve vaší organizaci mohli pracovat vzdáleně.|
 | [Podpora vzdálené práce Azure Firewall](../firewall/remote-work-support.md)|Chraňte své prostředky virtuální sítě Azure pomocí Azure Firewall. |
 
 <!--Link References-->
-[VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.microsoft.com/azure/expressroute/expressroute-locations
-[ExR-D]: https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

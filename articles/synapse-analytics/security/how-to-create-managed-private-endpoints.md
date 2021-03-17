@@ -8,25 +8,24 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065484"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461311"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat (Preview)
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat
 
 Tento článek vás seznámí s postupem vytvoření spravovaného privátního koncového bodu pro zdroj dat v Azure. Další informace najdete v tématu [spravované privátní koncové body](./synapse-workspace-managed-private-endpoints.md) .
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>Krok 1: otevřete pracovní prostor Azure synapse v Azure Portal
 
-Můžete vytvořit spravovaný privátní koncový bod ke zdroji dat z Azure synapse studia. Vyberte kartu **Přehled** v Azure Portal a vyberte **Spustit synapse Studio**.
-![Spustit Azure synapse Studio](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+Můžete vytvořit spravovaný privátní koncový bod ke zdroji dat z Azure synapse studia. Vyberte kartu **Přehled** v Azure Portal a v části Začínáme vyberte **otevřít** na kartě otevřít synapse Studio.
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>Krok 2: přechod na kartu spravované virtuální sítě v synapse studiu
 
-V Azure synapse studiu v levém navigačním panelu vyberte kartu **Spravovat** . Vyberte **spravované virtuální sítě** a pak vyberte **+ Nová**.
+V Azure synapse studiu v levém navigačním panelu vyberte kartu **Spravovat** . Vyberte **spravované privátní koncové body** a pak vyberte **+ Nová**.
 ![Vytvoření nového spravovaného privátního koncového bodu](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>Krok 3: Vyberte typ zdroje dat

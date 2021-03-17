@@ -7,6 +7,8 @@
       href: overview.md
     - name: Technický přehled a přehled funkcí
       href: technical-overview.md
+    - name: Novinky v dokumentaci
+      href: whats-new-docs.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -24,11 +26,7 @@
       href: tutorial-register-applications.md
     - name: 3 – Vytvoření toků uživatele
       href: tutorial-create-user-flows.md
-    - name: Přidání zprostředkovatelů identity
-      href: tutorial-add-identity-providers.md
-    - name: Přizpůsobení uživatelského rozhraní
-      href: tutorial-customize-ui.md
-    - name: Ověřování uživatelů
+    - name: 4. ověřování uživatelů
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -39,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: Udělení přístupu k rozhraní API
+    - name: 5. udělení přístupu k rozhraní API
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -51,6 +49,18 @@
   href: code-samples.md
 - name: Koncepty
   items:
+    - name: Porovnání řešení pro externí identity
+      href: ../active-directory/external-identities/compare-with-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+    - name: Seznámení se základy
+      items:
+        - name: Ověřování a autorizace
+          href: ../active-directory/develop/authentication-vs-authorization.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Tokeny
+          href: ../active-directory/develop/security-tokens.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Protokoly
+          href: ../active-directory/develop/v2-app-types.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Knihovna ověřování
+          href: ../active-directory/develop/msal-overview.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: Osvědčené postupy Azure AD B2C
       href: best-practices.md
     - name: Typy aplikací
@@ -69,6 +79,8 @@
           href: tokens-overview.md
         - name: Vyžádání přístupového tokenu
           href: access-tokens.md
+    - name: Klíče zásad
+      href: policy-keys-overview.md
     - name: Zásady a toky uživatele
       items:
         - name: Toky uživatele
@@ -79,17 +91,24 @@
       href: user-overview.md
     - name: Atributy profilu uživatele
       href: user-profile-attributes.md
-    - name: Relace SSO
-      href: session-overview.md
+    - name: Ochrana identity a podmíněný přístup
+      href: conditional-access-identity-protection-overview.md
 - name: Návody
   items:
     - name: Integrace aplikací
       items:
-        - name: Registrace aplikace
+        - name: Registrace webové aplikace
           href: tutorial-register-applications.md
-        - name: Registrace poskytovatele služeb SAML
-          href: connect-with-saml-service-providers.md
-          displayName: 'SP, RP, service provider, connect'
+        - name: Registrace jednostránkové aplikace (SPA)
+          href: tutorial-register-spa.md
+        - name: Aplikace SAML
+          items:
+            - name: Konfigurace aplikace SAML
+              href: saml-service-provider.md
+              displayName: 'SP, service provider'
+            - name: Konfigurace možností aplikace SAML
+              href: saml-service-provider-options.md
+              displayName: 'SP, service provider'
         - name: Registrace aplikace Microsoft Graph
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
@@ -101,147 +120,148 @@
           href: signin-appauth-ios.md
         - name: Android s využitím ověřování aplikace
           href: signin-appauth-android.md
-    - name: Tok uživatele
+    - name: Vytvořit tok
       items:
-        - name: Vytvořit tok
+        - name: Zásady registrace nebo přihlašování
+          href: add-sign-up-and-sign-in-policy.md
+        - name: Zásady přihlášení
+          href: add-sign-in-policy.md
+        - name: Zásady resetování hesel
           items:
-            - name: Registrace nebo přihlášení
-              href: tutorial-create-user-flows.md
-            - name: Přihlašovací údaje vlastníka prostředku s heslem
-              href: configure-ropc.md
-            - name: Nastavení samoobslužného resetování hesla
-              href: user-flow-self-service-password-reset.md
-        - name: Přizpůsobení uživatelského prostředí
+            - name: Samoobslužné resetování hesla
+              href: add-password-reset-policy.md
+            - name: Samoobslužná Změna hesla
+              href: add-password-change-policy.md
+            - name: Vynutit resetování hesla
+              href: force-password-reset.md
+        - name: Zásady upravování profilu
+          href: add-profile-editing-policy.md
+        - name: Zásady oprávnění hesla vlastníka prostředku
+          href: add-ropc-policy.md
+          displayName: ROPC
+        - name: Zásady nastavení samoobslužného resetování hesla (zastaralé)
+          href: user-flow-self-service-password-reset.md
+        - name: Registrace a přihlašování telefonem
+          href: phone-authentication-user-flows.md
+    - name: Zprostředkovatelé identit
+      items:
+        - name: Poskytovatel identity místního účtu
+          href: identity-provider-local.md
+          displayName: 'Username, Email, Phone authorization, Phone sing-in'
+        - name: Přidání zprostředkovatele identity
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+          displayName: 'AD-FS, ADFS'
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Apple (Preview)
+          href: identity-provider-apple-id.md
+        - name: Azure AD (jeden tenant)
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD (více tenantů)
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Azure AD B2C
+          href: identity-provider-azure-ad-b2c.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: Obecné OpenId Connect
+          href: identity-provider-generic-openid-connect.md
+        - name: Obecný zprostředkovatel identity SAML
           items:
-            - name: Přizpůsobení uživatelského rozhraní
-              href: customize-ui-overview.md
-            - name: JavaScript a rozložení stránek
-              href: user-flow-javascript-overview.md
-            - name: Přizpůsobení jazyka
-              href: user-flow-language-customization.md
-            - name: Složitost hesla
-              href: user-flow-password-complexity.md
-            - name: Zakázání ověření e-mailu
-              href: user-flow-disable-email-verification.md
-            - name: Povolení MFA
-              href: custom-policy-multi-factor-authentication.md
-              displayName: multi-factor auth
-        - name: Zprostředkovatelé externích identit
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD (jeden tenant)
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Účet Microsoft
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHubu
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: WeChat
-              href: identity-provider-wechat.md
-            - name: Weibo
-              href: identity-provider-weibo.md
-            - name: Zprostředkovatelé obecných identit
-              href: identity-provider-generic-openid-connect.md
-        - name: Tokeny a správa relací
-          items:
-            - name: Konfigurace tokenů
-              href: configure-tokens.md
-            - name: Konfigurace chování relace
-              href: session-behavior.md
-        - name: Konfigurace ověřování věku
-          href: basic-age-gating.md
-        - name: Definování vlastních atributů
-          href: user-flow-custom-attributes.md
-        - name: Předávací externí token IdP
+            - name: Konfigurace zprostředkovatele identity SAML
+              href: identity-provider-generic-saml.md
+            - name: Konfigurace možností zprostředkovatele identity SAML
+              href: identity-provider-generic-saml-options.md
+        - name: GitHubu
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: ID.me
+          href: identity-provider-id-me.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Účet Microsoft
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Salesforce (SAML)
+          href: identity-provider-salesforce-saml.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: WeChat
+          href: identity-provider-wechat.md
+        - name: Weibo
+          href: identity-provider-weibo.md
+        - name: Předání tokenu zprostředkovatele identity
           href: idp-pass-through-user-flow.md
+    - name: Přizpůsobení uživatelského prostředí
+      items:
+        - name: Konfigurace uživatelského vstupu
+          href: configure-user-input.md
+        - name: Přizpůsobení uživatelského rozhraní
+          displayName: company branding
+          href: customize-ui.md
+        - name: Přizpůsobení uživatelského rozhraní s využitím šablony HTML
+          displayName: content definitions
+          href: customize-ui-with-html.md
+        - name: JavaScript a rozložení stránek
+          href: javascript-and-page-layout.md
+        - name: Vložené přihlášení pomocí IFRAME
+          displayName: iframe
+          href: embedded-login.md
+        - name: Přizpůsobení jazyka
+          href: language-customization.md
+          displayName: localization
+        - name: Složitost hesla
+          href: password-complexity.md
+        - name: Zakázání ověření e-mailu
+          href: disable-email-verification.md
+        - name: Povolení MFA
+          href: multi-factor-authentication.md
+          displayName: multi-factor auth
+        - name: Nastavení přímého přihlášení
+          href: direct-signin.md
+    - name: Tokeny a správa relací
+      items:
+        - name: Konfigurace chování relace
+          href: session-behavior.md
+          displayName: 'SSO, KMSI, Keep me signed in'
+        - name: Konfigurace tokenů
+          href: configure-tokens.md
+    - name: Definování vlastních atributů
+      href: user-flow-custom-attributes.md
+    - name: Ověřování na základě rizika
+      items:
+        - name: Prozkoumat riziko pomocí Identity Protection
+          href: identity-protection-investigate-risk.md
+        - name: Konfigurace podmíněného přístupu
+          href: conditional-access-user-flow.md
+    - name: Konfigurace ověřování věku
+      href: age-gating.md
+    - name: Konektory rozhraní API (Preview)
+      items:
+        - name: Přehled
+          href: api-connectors-overview.md
+        - name: Přidání konektoru rozhraní API
+          href: add-api-connector.md
     - name: Vlastní zásady
       items:
-        - name: Vytvoření zásad
+        - name: Přehled vlastních zásad
+          href: custom-policy-trust-frameworks.md
+        - name: Začínáme s vlastními zásadami
+          href: custom-policy-get-started.md
+        - name: Vlastní ověření e-mailu
           items:
-            - name: Začínáme s vlastními zásadami
-              href: custom-policy-get-started.md
-            - name: Přihlašovací údaje vlastníka prostředku s heslem
-              href: ropc-custom.md
-              displayName: ropc
-            - name: Povolení možnosti zůstat přihlášeni
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
-            - name: Změna hesla
-              href: custom-policy-password-change.md
-            - name: Registrace a přihlašování telefonem
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
-        - name: Přizpůsobení uživatelského prostředí
-          items:
-            - name: Konfigurace uživatelského vstupu
-              href: custom-policy-configure-user-input.md
-              displayName: 'ui, ux'
-            - name: Přizpůsobení uživatelského rozhraní
-              href: custom-policy-ui-customization.md
-              displayName: 'ux, input, cors, html, css'
-            - name: Přizpůsobení jazyka
-              href: custom-policy-localization.md
-            - name: Vlastní ověření e-mailu
-              items:
-                - name: Mailjet
-                  href: custom-email-mailjet.md
-                - name: SendGrid
-                  href: custom-email-sendgrid.md
-              displayName: verification
-            - name: Zakázání ověření e-mailu
-              href: custom-policy-disable-email-verification.md
-            - name: Povolení JavaScriptu
-              href: javascript-samples.md
-            - name: Složitost hesla
-              href: custom-policy-password-complexity.md
-        - name: Zprostředkovatelé externích identit
-          items:
-            - name: Poskytovatelé OIDC/OAuth
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD (jeden tenant)
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD (více tenantů)
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Účet Microsoft
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: Poskytovatelé SAML
-              items:
-                - name: ADFS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
-        - name: Tokeny a správa relací
-          items:
-            - name: Přizpůsobení tokenů
-              href: configure-tokens-custom-policy.md
-            - name: Konfigurace chování relace
-              href: session-behavior-custom-policy.md
-        - name: Předávací externí token IdP
-          href: idp-pass-through-custom.md
-        - name: Adaptivní prostředí
-          items:
-            - name: Nastavení přímého přihlášení
-              href: direct-signin.md
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: Přidání vlastní obchodní logiky
           items:
             - name: Integrace REST API
@@ -254,22 +274,16 @@
               displayName: rest claims exchange
             - name: Zabezpečení REST API
               href: secure-rest-api.md
-        - name: Definování vlastních atributů
-          href: custom-policy-custom-attributes.md
         - name: Řešení potíží
           items:
             - name: Shromažďování protokolů pomocí Application Insights
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: Ověřování zásad
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
-        - name: Analýza využití
-          href: analytics-with-application-insights.md
         - name: Referenční informace
           items:
-            - name: Definice architektury důvěryhodnosti
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -315,24 +329,22 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: Technické profily
                   href: technicalprofiles.md
                   items:
-                    - name: Informace o technických profilech
-                      href: technical-profiles-overview.md
                     - name: Informace o ověřování technických profilů
                       href: validation-technical-profile.md
-                    - name: Application Insights
-                      href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
-                    - name: Azure Multi-Factor Authentication
+                    - name: Vícefaktorové ověřování Azure AD
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
                     - name: Samoobslužné resetování hesla Azure AD
                       href: aad-sspr-technical-profile.md
                     - name: Transformace deklarací identity
                       href: claims-transformation-technical-profile.md
+                    - name: Tip tokenu ID
+                      href: id-token-hint.md
                     - name: Vydavatel tokenu JWT
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1
@@ -359,10 +371,14 @@
                       displayName: single sign-on
             - name: UserJourneys
               href: userjourneys.md
+            - name: SubJourneys
+              href: subjourneys.md
             - name: RelyingParty
               href: relyingparty.md
             - name: Překladače deklarace identity
               href: claim-resolver-overview.md
+    - name: Koncový bod UserInfo
+      href: userinfo-endpoint.md
     - name: Integrace partnerských řešení
       items:
         - name: Galerie partnerů Azure AD B2C
@@ -371,49 +387,82 @@
           href: partner-arkose-labs.md
         - name: Experian
           href: partner-experian.md
+        - name: HYPR
+          href: partner-hypr.md
         - name: IDology
           href: partner-idology.md
         - name: itsme
           href: partner-itsme.md
+        - name: Jumio
+          href: partner-jumio.md
+        - name: Bez klíčů
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
+        - name: Ochrana proti podvodům v Microsoft Dynamics 365
+          href: partner-dynamics-365-fraud-protection.md
+        - name: N8 Identity
+          href: partner-n8identity.md
+        - name: Nevis
+          href: partner-nevis.md
         - name: Onfido
           href: partner-onfido.md
+        - name: Ověřit identitu
+          href: partner-ping-identity.md
+        - name: Saviynt
+          href: partner-saviynt.md
+        - name: Strata
+          href: partner-strata.md
         - name: Trusona
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
         - name: TypingDNA
           href: partner-typingdna.md
-    - name: Použití b2clogin.com
+        - name: WhoIAM
+          href: partner-whoiam.md
+        - name: Zscaler
+          href: partner-zscaler.md
+    - name: Název domény
       items:
         - name: Přehled b2clogin.com
           href: b2clogin.md
-        - name: Migrace webového rozhraní API do b2clogin.com
+        - name: Konfigurace vlastní domény
+          href: custom-domain.md
+        - name: Konfigurace domén webového rozhraní API
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
     - name: Automation
       items:
-        - name: Azure Monitor
-          href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
-        - name: Správa uživatelů – Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Nasazení s využitím Azure Pipelines
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
         - name: Správa zásad s využitím PowerShellu
           href: manage-custom-policies-powershell.md
           displayName: 'scripting, scripts, psh, custom policy'
-    - name: Protokoly auditu
-      href: view-audit-logs.md
     - name: Správa uživatelů – Azure Portal
       href: manage-users-portal.md
       displayName: 'create users, add users, delete users'
     - name: Zabezpečené rozhraní API služby API Management
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Protokoly a monitorování
+      items:
+        - name: Protokoly auditu
+          href: view-audit-logs.md
+          displayName: 'log, logs, logging, usage, events, reports, reporting'
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events, reports, reporting, dashboard'
+        - name: Analýza využití
+          href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights, reports, reporting'
+        - name: Zabezpečení vícefaktorového ověřování pomocí telefonu
+          href: phone-based-mfa.md
+          displayName: 'multi-factor authentication, Azure Monitor, Log Analytics, reports, reporting, dashboard'
     - name: Dodržování předpisů
       items:
         - name: Přístup uživatelů
@@ -428,12 +477,14 @@
           href: user-migration.md
 - name: Referenční informace
   items:
+    - name: Limity a omezení služeb
+      href: service-limits.md
     - name: Registrace aplikací
       href: app-registrations-training-guide.md
     - name: Model fakturace
       href: billing.md
     - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+      href: /samples/browse/?terms=b2c
     - name: Definice souborů cookie
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
@@ -441,14 +492,24 @@
       href: error-codes.md
     - name: Aplikace rozšíření
       href: extensions-app.md
-    - name: Poznámky k verzi IEF
+    - name: Poznámky k verzi pro vlastní zásady (IEF)
       href: custom-policy-developer-notes.md
-    - name: Operace Microsoft Graph API
-      href: microsoft-graph-operations.md
     - name: Verze rozložení stránky
       href: page-layout.md
     - name: Rezidence dat a dostupnost oblastí
       href: data-residency.md
+    - name: Sestavení pro zajištění odolnosti
+      items:
+        - name: Seznámení s odolností Azure AD B2C
+          href: ../active-directory/fundamentals/resilience-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Prostředí koncového uživatele
+          href: ../active-directory/fundamentals/resilient-end-user-experience.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Rozhraní s externími procesy
+          href: ../active-directory/fundamentals/resilient-external-processes.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Osvědčené postupy vývojářů pro Azure AD B2C
+          href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Sledování a analýza
+          href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: Řízení rizik
       href: threat-management.md
       displayName: security
@@ -463,7 +524,7 @@
     - name: Nejčastější dotazy
       href: faq.md
     - name: Získání nápovědy
-      href: /azure/active-directory/develop/developer-support-help-options
+      href: ../active-directory/develop/developer-support-help-options.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory-b2c/'
     - name: Cenová kalkulačka
@@ -475,7 +536,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: Podpora
-      href: support-options.md
+      href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

@@ -1,14 +1,17 @@
 ---
 title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate
-description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate. e
+description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 206df399736dbd3b5d1d52531a249bbd37646514
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171908"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753667"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
@@ -26,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 
 
 > [!NOTE]
-> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik virtuálních počítačů před vyhodnocením škálování, postupujte podle našich [kurzů](tutorial-prepare-vmware.md) .
+> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik virtuálních počítačů před vyhodnocením škálování, postupujte podle našich [kurzů](./tutorial-discover-vmware.md) .
 
 ## <a name="plan-for-assessment"></a>Plánování posouzení
 
@@ -37,7 +40,7 @@ Při plánování posouzení velkého počtu virtuálních počítačů VMware j
 - **Plánování účtů pro zjišťování**: zařízení Azure Migrate používá účet s přístupem k vCenter Server, aby bylo možné zjistit virtuální počítače pro účely posouzení a migrace. Pokud zjišťujete více než 10 000 virtuálních počítačů, nastavte více účtů, pokud je to nutné, a mezi virtuálními počítači zjištěnými ze všech dvou zařízení v projektu se překrývají. 
 
 > [!NOTE]
-> Pokud nastavujete více zařízení, zajistěte, aby se mezi virtuálními počítači v poskytnutých účtech vCenter nepřekrývaly žádné překrytí. Zjišťování s takovým překrytím je nepodporovaný scénář. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem bude duplicita při zjišťování a při povolování replikace pro virtuální počítač pomocí Azure Portal v migraci serveru.
+> Pokud nastavujete více zařízení, zajistěte, aby se mezi virtuálními počítači v poskytnutých účtech vCenter nepřekrývaly žádné překrytí. Scénář zjišťování s takovým překrýváním se nepodporuje. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem bude duplicita při zjišťování a při povolování replikace pro virtuální počítač pomocí Azure Portal v migraci serveru.
 
 ## <a name="planning-limits"></a>Omezení plánování
  
@@ -56,9 +59,9 @@ Tato omezení jsou uvedená v některých ukázkových nasazeních:
 **Server vCenter** | **Virtuální počítače na serveru** | **Doporučení** | **Akce**
 ---|---|---|---
 Jednu | < 10 000 | Jeden Azure Migrate projekt.<br/> Jedno zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.
-Jednu | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními. <br/> <br/> Zajistěte, aby v zadaných účtech vCenter nedošlo k překrytí mezi virtuálními počítači. Zjišťování s takovým překrytím je nepodporovaný scénář. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem je duplicita při zjišťování a v problémech při povolování replikace pro virtuální počítač pomocí Azure Portal v části migrace serveru.
+Jednu | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními. <br/> <br/> Zajistěte, aby v zadaných účtech vCenter nedošlo k překrytí mezi virtuálními počítači. Scénář zjišťování s takovým překrýváním se nepodporuje. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem je duplicita při zjišťování a v problémech při povolování replikace pro virtuální počítač pomocí Azure Portal v části migrace serveru.
 Několik | < 10 000 |  Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
-Několik | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními. <br/><br/> Zajistěte, aby v zadaných účtech vCenter nedošlo k překrytí mezi virtuálními počítači. Zjišťování s takovým překrytím je nepodporovaný scénář. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem je duplicita při zjišťování a v problémech při povolování replikace pro virtuální počítač pomocí Azure Portal v části migrace serveru.
+Několik | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními. <br/><br/> Zajistěte, aby v zadaných účtech vCenter nedošlo k překrytí mezi virtuálními počítači. Scénář zjišťování s takovým překrýváním se nepodporuje. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem je duplicita při zjišťování a v problémech při povolování replikace pro virtuální počítač pomocí Azure Portal v části migrace serveru.
 
 
 
@@ -78,7 +81,7 @@ Připravte Azure a VMware pro vyhodnocování serveru.
 2. Nastavte oprávnění pro účet Azure pro interakci s Azure Migrate.
 3. Připravte VMware na posouzení.
 
-Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-prepare-vmware.md) .
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](./tutorial-discover-vmware.md) .
 
 
 ## <a name="create-a-project"></a>Vytvoření projektu
@@ -88,7 +91,7 @@ V souladu s požadavky na plánování udělejte toto:
 1. Vytvořte Azure Migrate projekty.
 2. Přidejte do projektů Nástroj pro vyhodnocení Azure Migrate serveru.
 
-[Další informace](how-to-add-tool-first-time.md)
+[Další informace](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Vytvoření a kontrola posouzení
 
@@ -96,7 +99,7 @@ V souladu s požadavky na plánování udělejte toto:
 1. Projděte si posouzení v části Příprava na plánování migrace.
 
 
-Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-assess-vmware.md) .
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](./tutorial-assess-vmware-azure-vm.md) .
     
 
 ## <a name="next-steps"></a>Další kroky

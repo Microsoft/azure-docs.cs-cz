@@ -7,15 +7,15 @@ author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: d7a8a598ab2d0c873cf07510cf40a08c22c0f1d4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639799"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608593"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory
 
@@ -29,7 +29,7 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
 
 ## <a name="set-up-powershell-environment"></a>Nastavení prostředí PowerShell
 
-1. Začněte otevřením [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Ujistěte se, že je v rozevíracím seznamu vlevo nahoře nastavená Cloud Shell na PowerShell nebo když zadáte `pwsh` .
+1. Začněte otevřením [Azure Cloud Shell](../../cloud-shell/overview.md). Ujistěte se, že je v rozevíracím seznamu vlevo nahoře nastavená Cloud Shell na PowerShell nebo když zadáte `pwsh` .
 
 1. Zkopírujte a vložte následující fragment kódu do prostředí.
 
@@ -143,21 +143,27 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
     }
     ```
 
-1. Spusťte funkci `Create-ImmersiveReaderResource` , podle potřeby zadejte parametry.
+1. Spusťte funkci `Create-ImmersiveReaderResource` a v případě potřeby zadejte níže uvedené zástupné symboly "<PARAMETER_VALUES>" podle svých vlastních hodnot.
 
     ```azurepowershell-interactive
+    Create-ImmersiveReaderResource -SubscriptionName '<SUBSCRIPTION_NAME>' -ResourceName '<RESOURCE_NAME>' -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' -ResourceSKU '<RESOURCE_SKU>' -ResourceLocation '<RESOURCE_LOCATION>' -ResourceGroupName '<RESOURCE_GROUP_NAME>' -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>' -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+    ```
+
+    Úplný příkaz bude vypadat přibližně takto: Tady jsme každý parametr umístili na vlastní řádek pro přehlednost, abyste viděli celý příkaz. Nekopírujte ani nepoužívejte tento příkaz tak, jak je. Zkopírujte a použijte příkaz uvedený výše s vlastními hodnotami. Tento příklad obsahuje fiktivní hodnoty pro <PARAMETER_VALUES>. Vaše nastavení se bude lišit, protože pro tyto hodnoty se zobrazí vaše vlastní názvy.
+
+    ```
     Create-ImmersiveReaderResource
-      -SubscriptionName '<SUBSCRIPTION_NAME>' `
-      -ResourceName '<RESOURCE_NAME>' `
-      -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' `
-      -ResourceSKU '<RESOURCE_SKU>' `
-      -ResourceLocation '<RESOURCE_LOCATION>' `
-      -ResourceGroupName '<RESOURCE_GROUP_NAME>' `
-      -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' `
-      -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
-      -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
-      -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
-      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
+        -SubscriptionName 'MyOrganizationSubscriptionName'
+        -ResourceName 'MyOrganizationImmersiveReader'
+        -ResourceSubdomain 'MyOrganizationImmersiveReader'
+        -ResourceSKU 'S0'
+        -ResourceLocation 'westus2'
+        -ResourceGroupName 'MyResourceGroupName'
+        -ResourceGroupLocation 'westus2'
+        -AADAppDisplayName 'MyOrganizationImmersiveReaderAADApp'
+        -AADAppIdentifierUri 'https://MyOrganizationImmersiveReaderAADApp'
+        -AADAppClientSecret 'SomeStrongPassword'
+        -AADAppClientSecretExpiration '2021-12-31'
     ```
 
     | Parametr | Komentáře |
@@ -165,7 +171,7 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
     | SubscriptionName |Název předplatného Azure, které se má použít pro prostředek pro moderní čtečku Aby bylo možné vytvořit prostředek, musíte mít předplatné. |
     | ResourceName |  Musí být alfanumerické a může obsahovat znak-, pokud znak-není prvním nebo posledním znakem. Délka nesmí překročit 63 znaků.|
     | ResourceSubdomain |Pro prostředek pro moderní čtečku je potřeba vlastní subdoména. Subdoména je používána sadou SDK při volání služby moderního čtecího zařízení za účelem spuštění čtecího modulu. Subdoména musí být globálně jedinečná. Subdoména musí být alfanumerická a může obsahovat znak-, pokud znak-není prvním nebo posledním znakem. Délka nesmí překročit 63 znaků. Tento parametr je nepovinný, pokud prostředek již existuje. |
-    | ResourceSKU |Možnosti: `S0` . Další informace o jednotlivých dostupných SKU najdete na naší [stránce s cenami Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Tento parametr je nepovinný, pokud prostředek již existuje. |
+    | ResourceSKU |Možnosti: `S0` (úroveň Standard) nebo `S1` (vzdělávací/neziskové organizace). Další informace o jednotlivých dostupných SKU najdete na naší [stránce s cenami Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Tento parametr je nepovinný, pokud prostředek již existuje. |
     | ResourceLocation |Možnosti: `eastus` , `eastus2` , `southcentralus` , `westus` , `westus2` , `australiaeast` , `southeastasia` , `centralindia` , `japaneast` , `northeurope` , `uksouth` , `westeurope` . Tento parametr je nepovinný, pokud prostředek již existuje. |
     | ResourceGroupName |Prostředky se vytvářejí ve skupinách prostředků v rámci předplatných. Zadejte název existující skupiny prostředků. Pokud skupina prostředků ještě neexistuje, vytvoří se nový s tímto názvem. |
     | ResourceGroupLocation |Pokud vaše skupina prostředků neexistuje, je nutné dodat umístění, ve kterém chcete skupinu vytvořit. Chcete-li najít seznam umístění, spusťte příkaz `az account list-locations` . Použijte vlastnost *Name* (bez mezer) vráceného výsledku. Tento parametr je nepovinný, pokud vaše skupina prostředků již existuje. |
@@ -196,7 +202,3 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
 * Podívejte se na [kurz pro iOS](./tutorial-ios.md) , kde najdete další informace, které můžete dělat v sadě pro moderní čtečku pomocí SWIFT pro iOS.
 * Podívejte se na [kurz Pythonu](./tutorial-python.md) , abyste viděli, co dalšího můžete dělat se sadou moderní čtečky pomocí Pythonu.
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
-
-
-
-

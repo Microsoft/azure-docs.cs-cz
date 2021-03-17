@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245504"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89280209"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů
 Azure AD Connect synchronizovat buildy na deklarativní zřizování poprvé představené v Forefront Identity Manageru 2010. Umožňuje implementovat kompletní obchodní logiku pro integraci identit bez nutnosti psaní zkompilovaného kódu.
 
 Důležitou součástí deklarativního zřizování je jazyk výrazů, který se používá v tocích atributů. Použitý jazyk je podmnožinou sady Microsoft® Visual Basic® for Applications (VBA). Tento jazyk se používá v systém Microsoft Office a uživatelé, kteří mají zkušenosti s jazykem VBScript, ho také rozpoznají. Jazyk deklarativního zřizování výrazů používá pouze funkce a není strukturovaným jazykem. Neexistují žádné metody ani příkazy. Funkce jsou místo toho vnořené do programu Express Flow.
 
-Další podrobnosti najdete v tématu [Vítá vás jazyk Visual Basic for Application Reference k jazyku pro Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Další podrobnosti najdete v tématu [Vítá vás jazyk Visual Basic for Application Reference k jazyku pro Office 2013](/office/vba/api/overview/language-reference).
 
 Atributy jsou silného typu. Funkce přijímá pouze atributy správného typu. Rozlišuje také velká a malá písmena. Názvy funkcí i názvy atributů musí mít správné velikosti písmen nebo je vyvolána chyba.
 
@@ -41,7 +41,7 @@ Atributy jsou silného typu. Funkce přijímá pouze atributy správného typu. 
 * Logické hodnoty jsou vyjádřeny konstantami: true, false.
 * Předdefinované konstanty a literály jsou vyjádřeny pouze pomocí jejich názvu: NULL, CRLF, IgnoreThisFlow
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 Deklarativní zřizování používá mnoho funkcí k umožnění možnosti transformace hodnot atributů. Tyto funkce mohou být vnořené, takže výsledek z jedné funkce je předán do jiné funkce.
 
 `Function1(Function2(Function3()))`
@@ -82,10 +82,10 @@ Operátory jsou vyhodnoceny zleva doprava a mají stejnou prioritu hodnocení. T
 ## <a name="multi-valued-attributes"></a>Vícehodnotových atributů
 Funkce mohou fungovat jak v atributu s jednou hodnotou, tak i s více hodnotami. U vícehodnotových atributů funkce funguje v každé hodnotě a použije stejnou funkci na každou hodnotu.
 
-Příklad:  
-`Trim([proxyAddresses])`Proveďte oříznutí všech hodnot v atributu proxyAddress.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`U každé hodnoty s hodnotou @-sign nahraďte doménu hodnotou @contoso.com .  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte adresu SIP a odeberte ji z hodnot.
+Například:  
+`Trim([proxyAddresses])` Proveďte oříznutí všech hodnot v atributu proxyAddress.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` U každé hodnoty s hodnotou @-sign nahraďte doménu hodnotou @contoso.com .  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Vyhledejte adresu SIP a odeberte ji z hodnot.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o modelu konfigurace v tématu [Principy deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
@@ -100,4 +100,3 @@ Příklad:
 **Referenční témata**
 
 * [Azure AD Connect Sync: Reference k funkcím](reference-connect-sync-functions-reference.md)
-

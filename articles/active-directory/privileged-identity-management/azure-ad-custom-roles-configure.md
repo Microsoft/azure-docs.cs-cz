@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422041"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835318"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurace vlastních rolí Azure AD v Privileged Identity Management
 
@@ -44,7 +44,7 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 1. Výběrem **Nastavení** otevřete stránku **Nastavení** . Vyberte roli pro nastavení, které chcete konfigurovat.
 1. Výběrem možnosti **Upravit** otevřete stránku **Nastavení rolí** .
 
-    ![Otevření vlastní role Azure AD pro úpravu nastavení](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![Snímek obrazovky zobrazující stránku podrobností nastavení role se zvolenou akcí upravit](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>Nastavení role
 
@@ -64,9 +64,9 @@ Můžete také zvolit jednu z těchto možností trvání *aktivních* přiřaze
 - **Povolení trvalého aktivního přiřazení**: Správci můžou přiřadit trvalé aktivní členství.
 - **Ukončit aktivní přiřazení po**: Správci můžou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum.
 
-### <a name="require-azure-multi-factor-authentication"></a>Vyžadování služby Azure Multi-Factor Authentication
+### <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication služby Azure AD
 
-Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure AD pro dva různé scénáře.
 
 - **Vyžadovat Multi-Factor Authentication aktivnímu přiřazení**
 
@@ -74,7 +74,7 @@ Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Au
 
 - **Vyžadovat Multi-Factor Authentication při aktivaci**
 
-  Můžete vyžadovat, aby se oprávnění uživatelé přiřazení k roli zaregistrovali v Azure Multi-Factor Authentication předtím, než se můžou aktivovat. Tento proces zajišťuje, že uživatel žádající o aktivaci je tím, kdo říkají, že má rozumnou jistotu. Vynucování této možnosti chrání důležité role v situacích, kdy mohlo dojít k ohrožení uživatelského účtu. Pro vyžadování oprávněného člena pro spuštění služby Azure Multi-Factor Authentication před aktivací zaškrtněte políčko **vyžadovat Multi-Factor Authentication na aktivaci** .
+  Můžete vyžadovat, aby se oprávnění uživatelé přiřazení k roli zaregistrovali v Azure AD Multi-Factor Authentication předtím, než se můžou aktivovat. Tento proces zajišťuje, že uživatel žádající o aktivaci je tím, kdo říkají, že má rozumnou jistotu. Vynucování této možnosti chrání důležité role v situacích, kdy mohlo dojít k ohrožení uživatelského účtu. Pro vyžadování oprávněného člena pro spuštění služby Azure AD Multi-Factor Authentication před aktivací zaškrtněte políčko **vyžadovat Multi-Factor Authentication na aktivaci** .
 
 Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -103,4 +103,4 @@ Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto 
 - [Aktivace vlastní role Azure AD](azure-ad-custom-roles-activate.md)
 - [Přiřazení vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
-- [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Definice rolí v Azure AD](../roles/permissions-reference.md)

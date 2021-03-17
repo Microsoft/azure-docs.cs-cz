@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Vytvoření registru kontejneru
 description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte instanci služby Azure Container Registry a nahrajete image kontejneru ukázkové aplikace.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.custom: mvc
-ms.openlocfilehash: 197e5c7bed569e67376f9c28fe0d2e050016cce8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 01/31/2021
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 9f6ec14cea20192aef7d3010201e6613c5d03a9e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922400"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430960"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR) je privátní registr pro Image kontejnerů. Priv
 > * Odeslat image do služby ACR
 > * Zobrazení imagí v registru
 
-V dalších kurzech se tato instance ACR integruje s clusterem Kubernetes v AKS a z image se nasadí aplikace.
+V novějších kurzech je tato instance ACR integrovaná s clusterem Kubernetes v AKS a aplikace je nasazena z image.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -60,16 +60,16 @@ Příkaz po dokončení vrátí zprávu o *úspěšném přihlášení* .
 
 Seznam aktuálních místních imagí můžete zobrazit pomocí příkazu [docker images][docker-images]:
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
-Ve výstupu příkazu výše se zobrazí seznam aktuálních místních imagí:
+Výstup výše uvedeného příkazu zobrazuje seznam aktuálních místních imagí:
 
-```
-REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
-redis                        latest              a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
+```output
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
+mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 Pokud chcete použít image kontejneru *azure-vote-front* s ACR, musí být image označená pomocí adresy přihlašovacího serveru vašeho registru. Tato značka se používá pro směrování při nahrávání imagí kontejneru do registru imagí.
@@ -83,23 +83,23 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 Teď si označíte svůj místní obrázek *Azure-hlasování* s adresou *acrLoginServer* registru kontejneru. Na konec názvu image přidejte *:v1*, abyste označili číslo verze image:
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
 ```
 
-Pokud chcete ověřit, že se značky použily, znovu spusťte příkaz [docker images][docker-images]. 
+Pokud chcete ověřit, že se značky použily, znovu spusťte příkaz [docker images][docker-images].
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
 
 Image je označená pomocí adresy instance ACR a čísla verze.
 
 ```
-REPOSITORY                                           TAG           IMAGE ID            CREATED             SIZE
-azure-vote-front                                     latest        eaf2b9c57e5e        8 minutes ago       716 MB
-mycontainerregistry.azurecr.io/azure-vote-front      v1            eaf2b9c57e5e        8 minutes ago       716 MB
-redis                                                latest        a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313        8 months ago        694 MB
+REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front    v1                  84b41c268ad9        16 minutes ago      944MB
+mycontainerregistry.azurecr.io/azure-vote-front v1                  84b41c268ad9        16 minutes ago      944MB
+mcr.microsoft.com/oss/bitnami/redis             6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 ## <a name="push-images-to-registry"></a>Nahrávání imagí do registru
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 Následující příklad výstupu jako dostupnou image v registru uvádí *azure-vote-front*:
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 Následující příklad výstupu ukazuje image *v1* označenou v předchozím kroku:
 
-```
+```output
 Result
 --------
 v1

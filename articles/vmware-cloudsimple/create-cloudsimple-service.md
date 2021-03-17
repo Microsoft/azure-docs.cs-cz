@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – vytvoření služby CloudSimple
 description: Naučte se vytvořit službu CloudSimple v Azure Portal. Než začnete, zkontrolujte požadovanou konfiguraci.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140543"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896290"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Vytvoření řešení Azure VMware pomocí služby CloudSimple
 

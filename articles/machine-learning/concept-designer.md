@@ -1,5 +1,5 @@
 ---
-title: Sestavení modelů ML pomocí návrháře (Preview)
+title: Sestavování modelů ML pomocí návrháře
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o pojmech, konceptech a pracovních postupech, které tvoří návrháře pro Azure Machine Learning.
 services: machine-learning
@@ -10,15 +10,15 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012939"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503536"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Co je návrhář služby Azure Machine Learning (Preview)? 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="what-is-azure-machine-learning-designer"></a>Co je návrhář služby Azure Machine Learning? 
+
 
 Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sady](#datasets) a [moduly](#module) na interaktivním plátně a vytvářet modely strojového učení. Informace o tom, jak začít s návrhářem, najdete v tématu [kurz: předpověď ceny automobilu pomocí návrháře.](tutorial-designer-automobile-price-train-score.md)
 
@@ -44,7 +44,7 @@ Návrhář nabízí vizuální plátno pro sestavování, testování a nasazen�
 + [Publikování](#publish) kanálů do **koncového bodu kanálu** REST pro odeslání nového kanálu, který běží s různými parametry a datovými sadami.
     + Publikování **výukového kanálu** pro opakované použití jednoho kanálu pro výuku více modelů při změně parametrů a datových sad.
     + Publikování **kanálu odvození dávky** , aby se předpovědi na nová data pomocí dříve poučeného modelu.
-+ [Deploy](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nových datech v reálném čase.
++ [](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nových datech v reálném čase.
 
 ![Diagram pracovního postupu pro školení, odvozování dávek a odvození v reálném čase v Návrháři](./media/concept-designer/designer-workflow-diagram.png)
 
@@ -81,26 +81,26 @@ Modul je algoritmus, který je možné provést na datech. Návrhář má někol
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když na plátnu vyberete modul, parametry modulu se zobrazí v podokně Vlastnosti napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat. Můžete nastavit výpočetní prostředky pro jednotlivé moduly v návrháři. 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="Vlastnosti modulu":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Vlastnosti modulu":::
 
 
 Další nápovědu k dispozici v knihovně strojového učení, najdete v tématu [Přehled modulu & algoritmu](algorithm-module-reference/module-reference.md). Nápovědu k výběru algoritmu najdete v [tahákm listu s algoritmem Azure Machine Learning](algorithm-cheat-sheet.md).
 
-## <a name="compute-resources"></a><a name="compute"></a>Výpočetní prostředky
+## <a name="compute-resources"></a><a name="compute"></a> Výpočetní prostředky
 
 Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Podporované cíle výpočtů:
 
 | Cílový výpočetní objekt | Školení | Nasazení |
 | ---- |:----:|:----:|
 | Azure Machine Learning COMPUTE | ✓ | |
-| Azure Machine Learning výpočetní instance | ✓ | |
+| Výpočetní instance Azure Machine Learningu | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
 ## <a name="deploy"></a>Nasadit
 
-Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném**čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
+Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném** čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
 
 Koncové body v reálném čase musí být nasazeny do clusteru služby Azure Kubernetes.
 
@@ -114,7 +114,7 @@ Publikované kanály jsou flexibilní, dají se využít ke školení a reučen�
 
 Publikovaný kanál běží na výpočetních prostředcích, které definujete v konceptu kanálu pro každý modul.
 
-Návrhář vytvoří stejný objekt [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) jako sadu SDK.
+Návrhář vytvoří stejný objekt [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline) jako sadu SDK.
 
 ## <a name="next-steps"></a>Další kroky
 

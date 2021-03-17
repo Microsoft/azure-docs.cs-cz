@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 7e0d93d3fd179d672b49967c575bbfb9c0fc5de0
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475239"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213687"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Použití modelů IoT technologie Plug and Play v řešení IoT
 
@@ -26,7 +26,7 @@ Existují dvě široké kategorie řešení IoT:
 
 Použití modelu IoT technologie Plug and Play, řešení IoT:
 
-1. Určuje ID modelu implementovaného zařízením IoT technologie Plug and Play připojeným k řešení.
+1. Určuje ID modelu implementovaného modulem IoT technologie Plug and Play zařízení, modulem nebo IoT Edge připojeným k řešení.
 
 1. Pomocí ID modelu načte definici modelu připojeného zařízení z úložiště modelu nebo vlastního úložiště.
 
@@ -40,7 +40,10 @@ IoT Hub upozorní řešení s ID modelu zařízení jako součást toku připoje
 
 ### <a name="get-device-twin-api"></a>Získat rozhraní API pro vyzdvojené zařízení
 
-Řešení může použít rozhraní API pro [získání](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
+Řešení může použít rozhraní API pro [získání](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
+
+> [!TIP]
+> Pro moduly a moduly IoT Edge použijte [ModuleClient. getvláken](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin).
 
 V následujícím fragmentu dvojitá reakce zařízení `modelId` obsahuje ID modelu technologie Plug and Play zařízení IoT:
 
@@ -68,7 +71,7 @@ V následujícím fragmentu dvojitá reakce zařízení `modelId` obsahuje ID mo
 
 ### <a name="get-digital-twin-api"></a>Získat digitální dvojitou rozhraní API
 
-Řešení může pomocí rozhraní [Get Digital vláken](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API načíst ID modelu implementovaného zařízením IoT technologie Plug and Play.
+Řešení může pomocí rozhraní [Get Digital vláken](/rest/api/iothub/service/digitaltwin/getdigitaltwin) API načíst ID modelu implementovaného zařízením IoT technologie Plug and Play.
 
 V následujícím fragmentu digitálního obrazu s dvojitou odezvou `$metadata.$model` obsahuje ID modelu technologie Plug and Play zařízení IoT:
 
@@ -118,11 +121,11 @@ content-encoding:utf-8
 
 Po identifikaci ID modelu pro nové připojení zařízení použijte následující postup:
 
-1. Načtěte definici modelu pomocí ID modelu z úložiště modelu. Další informace najdete v tématu [získání modelů](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+1. Načtěte definici modelu pomocí ID modelu z úložiště modelu. Další informace najdete v tématu [úložiště modelů zařízení](concepts-model-repository.md).
 
 1. Pomocí definice modelu připojeného zařízení můžete vytvořit výčet možností zařízení.
 
-1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service-node.md).
+1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service.md).
 
 ### <a name="custom-store"></a>Vlastní úložiště
 
@@ -134,12 +137,12 @@ Po identifikaci ID modelu pro nové připojení zařízení použijte následuj�
 
 1. Pomocí definice modelu připojeného zařízení můžete vytvořit výčet možností zařízení. 
 
-1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service-node.md).  
+1. Pomocí možností ve výčtu zařízení můžete uživatelům umožnit [interakci se zařízením](quickstart-service.md).  
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak integrovat technologie Plug and Play modelech IoT do řešení IoT, některé z navrhovaných dalších kroků:
 
-- [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
-- [Digitální zdvojené REST API IoT](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Interakce se zařízením z vašeho řešení](quickstart-service.md)
+- [Digitální zdvojené REST API IoT](/rest/api/iothub/service/digitaltwin)
 - [Průzkumník Azure IoT](howto-use-iot-explorer.md)

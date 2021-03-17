@@ -2,19 +2,16 @@
 title: Naučte se používat Apache Hadoop izolovaného prostoru (sandbox), emulátor – Azure HDInsight
 description: 'Pokud chcete začít s používáním Apache Hadoop ekosystému, můžete nastavit izolovaný prostor Hadoop z Hortonworks na virtuálním počítači Azure. '
 keywords: emulátor Hadoop, izolovaný prostor Hadoop
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207461"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946623"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
 
@@ -39,8 +36,8 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 ## <a name="start-the-virtual-machine"></a>Spustit virtuální počítač
 
 1. Otevřete VirtualBox virtuálního počítače Oracle.
-1. V nabídce **soubor** klikněte na položku **importovat zařízení**a pak zadejte obrázek izolovaného prostoru (Hortonworks).
-1. Vyberte izolovaný prostor Hortonworks, klikněte na **Start**a pak na **normální Start**. Po dokončení procesu spuštění virtuálního počítače se zobrazí pokyny pro přihlášení.
+1. V nabídce **soubor** klikněte na položku **importovat zařízení** a pak zadejte obrázek izolovaného prostoru (Hortonworks).
+1. Vyberte izolovaný prostor Hortonworks, klikněte na **Start** a pak na **normální Start**. Po dokončení procesu spuštění virtuálního počítače se zobrazí pokyny pro přihlášení.
 
     ![normální začátek VirtualBox Manageru](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
@@ -85,7 +82,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Naučte se používat Visual Studio s izolovaným prostorem Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
+* [Naučte se používat Visual Studio s izolovaným prostorem Hortonworks](./apache-hadoop-visual-studio-tools-get-started.md)
 
 * [Učení LAN Hortonworks sandboxu](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 

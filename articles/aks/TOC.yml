@@ -4,10 +4,12 @@
   items:
     - name: Informace o AKS
       href: intro-kubernetes.md
+    - name: Architektury řešení
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření clusteru AKS
+    - name: Nasazení clusteru AKS
       expanded: true
       items:
         - name: Použití Azure CLI
@@ -40,11 +42,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7. Upgrade clusteru
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Clustery a úlohy
@@ -53,6 +50,8 @@
       href: concepts-identity.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Zabezpečení pro aplikace a clustery
           href: concepts-security.md
         - name: Mechanismy zabezpečení služby Azure Policy
@@ -129,28 +128,40 @@
       href: security-hardened-vm-host-image.md
     - name: Přehled diagnostiky služby Azure Kubernetes Service
       href: concepts-diagnostics.md
+    - name: Udržitelné vytváření softwaru
+      href: concepts-sustainable-software-engineering.md
 - name: Návody
   items:
     - name: Operace clusteru
       items:
         - name: Škálování clusteru AKS
           href: scale-cluster.md
+        - name: Zastavení clusteru AKS
+          href: start-stop-cluster.md
+        - name: Použití plánované údržby (Preview)
+          href: planned-maintenance.md
         - name: Upgrade clusteru AKS
           href: upgrade-cluster.md
         - name: Použití smlouvy SLA pro dobu provozu
           href: uptime-sla.md
-        - name: Použití skupin umístění bezkontaktní komunikace (Preview)
+        - name: Použití skupin umístění bezkontaktní komunikace
           href: reduce-latency-ppg.md
-        - name: Upgrade image uzlu (Preview)
+        - name: Upgrade image uzlu
           href: node-image-upgrade.md
+        - name: Automatický upgrade image uzlu s využitím GitHub Actions
+          href: node-upgrade-github-actions.md
         - name: Aktualizace operačního systému procesních uzlů
           href: node-updates-kured.md
         - name: Konfigurace clusteru AKS
           href: cluster-configuration.md
+        - name: Konfigurace vlastních uzlů (Preview)
+          href: custom-node-configuration.md
         - name: Integrace ACR s clusterem AKS
           href: cluster-container-registry-integration.md
         - name: Vytváření virtuálních uzlů
           items:
+            - name: Použití virtuálních uzlů
+              href: virtual-nodes.md
             - name: Použití Azure CLI
               href: virtual-nodes-cli.md
             - name: Použití webu Azure Portal
@@ -163,14 +174,14 @@
           items:
             - name: Použití fondů s více uzly
               href: use-multiple-node-pools.md
-            - name: Použití spotových fondů uzlů (Preview)
+            - name: Použití fondu spotových uzlů
               href: spot-node-pool.md
             - name: Použití fondů systémových uzlů
               href: use-system-pools.md
         - name: Nasazení AKS s Terraformem
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Použití prohlížeče prostředků Kubernetes (Preview)
+        - name: Zobrazení prostředků Azure Portal Kubernetes
           href: kubernetes-portal.md
         - name: Použití řídicího panelu Kubernetes
           href: kubernetes-dashboard.md
@@ -190,6 +201,14 @@
           href: azure-netapp-files.md
         - name: Použití disků Azure úrovně Ultra (Preview)
           href: use-ultra-disks.md
+        - name: Ovladače úložiště CSI
+          items:
+            - name: Povolení ovladačů úložiště CSI (Preview)
+              href: csi-storage-drivers.md
+            - name: Ovladače CSI pro disky Azure (Preview)
+              href: azure-disk-csi.md
+            - name: Ovladače CSI pro Azure Files (Preview)
+              href: azure-files-csi.md
     - name: Konfigurace sítí
       items:
         - name: Vytvoření nebo použití existující virtuální sítě
@@ -239,12 +258,14 @@
           href: kubernetes-service-principal.md
         - name: Použití spravovaných identit
           href: use-managed-identity.md
+        - name: Použití identity podů AAD (Preview)
+          href: use-azure-ad-pod-identity.md
         - name: Omezení přístupu ke konfiguračnímu souboru clusteru
           href: control-kubeconfig-access.md
         - name: Zabezpečení provozu podů s využitím zásad sítě
           href: use-network-policies.md
-        - name: Zabezpečené pody s využitím Azure Policy (Preview)
-          href: use-pod-security-on-azure-policy.md
+        - name: Použití Azure Policy
+          href: use-azure-policy.md
         - name: Použití zásad zabezpečení podu (Preview)
           href: use-pod-security-policies.md
         - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API
@@ -255,9 +276,9 @@
           href: update-credentials.md
         - name: Povolení integrace Azure Active Directory
           items:
-            - name: AAD se správou AKS
+            - name: Azure AD se správou AKS
               href: managed-aad.md
-            - name: Integrace AAD (starší verze)
+            - name: Integrace Azure AD (starší verze)
               href: azure-ad-integration-cli.md
         - name: Použití Azure RBAC pro autorizaci Kubernetes (Preview)
           href: manage-azure-rbac.md
@@ -275,14 +296,14 @@
     - name: Monitorování a protokolování
       items:
         - name: Azure Monitor pro kontejnery
-          href: ../azure-monitor/insights/container-insights-overview.md
+          href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
-        - name: Zobrazení protokolů hlavních komponent
-          href: view-master-logs.md
+        - name: Zobrazit protokoly komponenty roviny ovládacího prvku
+          href: view-control-plane-logs.md
         - name: Zobrazení protokolů Kubelet
           href: kubelet-logs.md
         - name: Zobrazení dat kontejnerů v reálném čase
-          href: ../azure-monitor/insights/container-insights-livedata-overview.md
+          href: ../azure-monitor/containers/container-insights-livedata-overview.md
           maintainContext: true
     - name: Použití kontejnerů s Windows Serverem
       items:
@@ -302,8 +323,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Vývoj a spouštění aplikací
       items:
-        - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: Použití přemostění na Kubernetes s využitím nástroje Visual Studio Code
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: Použití přemostění na Kubernetes s využitím sady Visual Studio
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: Instalace existujících aplikací s využitím Helmu
           href: kubernetes-helm.md
         - name: Použití OpenFaaS
@@ -312,9 +335,13 @@
           href: spark-job.md
         - name: Použití GPU
           href: gpu-cluster.md
-        - name: Použití služby Azure Database for PostgreSQL
-          href: ../postgresql/concepts-aks.md
+        - name: Sestavování aplikací s využitím PostgreSQL
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: Sestavování aplikací s využitím MySQL
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
+        - name: Sestavení aplikace s využitím Open svobody nebo WebSphere svoboda
+          href: howto-deploy-java-liberty-app.md
         - name: Použití Azure API Managementu
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true
@@ -345,10 +372,10 @@
     - name: DevOps
       items:
         - name: Použití Ansible k vytvoření clusteru AKS
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Průběžné nasazování Jenkins
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps Project
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
@@ -366,6 +393,8 @@
           href: ssh.md
         - name: Linuxové nástroje pro měření výkonu
           href: troubleshoot-linux.md
+        - name: Kontrola událostí Resource Health
+          href: aks-resource-health.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -384,6 +413,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

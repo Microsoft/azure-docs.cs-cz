@@ -1,5 +1,5 @@
 ---
-title: Klíče spravované zákazníkem pro Cognitive Services
+title: Customer-Managed klíče pro Cognitive Services
 titleSuffix: Cognitive Services
 description: Naučte se používat Azure Portal ke konfiguraci klíčů spravovaných zákazníkem pomocí Azure Key Vault. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: cognitive-services
@@ -8,35 +8,35 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310695"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706839"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pro Cognitive Services
 
-Proces povolení klíčů spravovaných zákazníkem Azure Key Vault pro Cognitive Services se liší podle produktu. Použijte tyto odkazy na pokyny pro konkrétní službu:
+Proces povolení Customer-Managed klíčů s Azure Key Vault pro Cognitive Services se liší podle produktu. Použijte tyto odkazy na pokyny pro konkrétní službu:
 
 ## <a name="vision"></a>Obraz
 
-* [Custom Vision šifrování dat v klidovém umístění](../Custom-Vision-Service/custom-vision-encryption-of-data-at-rest.md)
-* [Šifrování neaktivních dat ve službě faceation Services](../Face/face-encryption-of-data-at-rest.md)
-* [Rozpoznávání vydaných dat v klidovém formátu](../form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
+* [Custom Vision šifrování dat v klidovém umístění](../custom-vision-service/encrypt-data-at-rest.md)
+* [Šifrování neaktivních dat ve službě faceation Services](../face/encrypt-data-at-rest.md)
+* [Rozpoznávání vydaných dat v klidovém formátu](../form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Jazyk
 
-* [Šifrování neaktivních dat Language Understanding služby](../LUIS/luis-encryption-of-data-at-rest.md)
-* [QnA Maker šifrování dat v klidovém umístění](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
-* [Šifrování dat v klidovém umístění](../translator/translator-encryption-of-data-at-rest.md)
+* [Šifrování neaktivních dat Language Understanding služby](../LUIS/encrypt-data-at-rest.md)
+* [QnA Maker šifrování dat v klidovém umístění](../QnAMaker/encrypt-data-at-rest.md)
+* [Šifrování dat v klidovém umístění](../translator/encrypt-data-at-rest.md)
 
 ## <a name="decision"></a>Rozhodnutí
 
-* [Content Moderator šifrování dat v klidovém umístění](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
-* [Individuální Šifrování neaktivních dat](../personalizer/personalizer-encryption-of-data-at-rest.md)
+* [Content Moderator šifrování dat v klidovém umístění](../Content-Moderator/encrypt-data-at-rest.md)
+* [Individuální Šifrování neaktivních dat](../personalizer/encrypt-data-at-rest.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Formulář žádosti o klíč spravovaný zákazníkem Cognitive Services](https://aka.ms/cogsvc-cmk)
+* [Co je Azure Key Vault](../../key-vault/general/overview.md)?
+* [Formulář žádosti o klíč Customer-Managed Cognitive Services](https://aka.ms/cogsvc-cmk)

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290300"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541515"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
 
@@ -35,9 +35,9 @@ Rozšíření zprávy má tři klíčové prvky:
 
 * Libovolný statický řetězec. Dynamické hodnoty, jako jsou podmínky, logika, operace a funkce, nejsou povoleny. Pokud například vyvíjíte aplikaci SaaS, kterou používá několik zákazníků, můžete každému zákazníkovi přiřadit identifikátor a tento identifikátor zpřístupnit v aplikaci. Po spuštění aplikace IoT Hub označí zprávy telemetrie zařízení pomocí identifikátoru zákazníka, aby bylo možné zpracovat zprávy jinak pro každého zákazníka.
 
-* Název centra IoT, které posílá zprávu Tato hodnota je *$iothubname*.
+* Název centra IoT, které posílá zprávu Tato hodnota je *$iothubname* .
 
-* Informace z vlákna zařízení, například jeho cesta. Příklady by byly *$Twin. Tags. Field* a *$Twin. Tags. Zeměpisná šířka*.
+* Informace z vlákna zařízení, například jeho cesta. Příklady by byly *$Twin. Tags. Field* a *$Twin. Tags. Zeměpisná šířka* .
 
    > [!NOTE]
    > V tuto chvíli pouze $iothubname, $twin. tagss, $twin. Properties. resired a $twin. Properties. hlášeny, podporované proměnné pro rozšíření zprávy.
@@ -63,8 +63,8 @@ Rozšíření lze konfigurovat pomocí následujících metod:
 | **Metoda** | **Příkaz** |
 | ----- | -----| 
 | Portál | [Azure Portal](https://portal.azure.com) | Viz [kurz pro rozšíření zpráv](tutorial-message-enrichments.md) . | 
-| Azure CLI   | [AZ IoT Hub Message-obohacení](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
+| Azure CLI   | [AZ IoT Hub Message-obohacení](/cli/azure/iot/hub/message-enrichment) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 Přidání rozšíření zprávy nepřidá latenci do směrování zpráv.
 
@@ -84,9 +84,9 @@ Informace o tom, jak vyzkoušet rozšíření zpráv, najdete v [kurzu rozšíř
 
 * Aktualizace vlákna zařízení může trvat až pět minut, než se odrazí v odpovídající hodnotě obohacení.
 
-* Celková velikost zprávy, včetně rozšíření, nesmí překročit 256 KB. V případě, že velikost zprávy překračuje 256 KB, bude zpráva vynechá IoT Hub. Můžete použít [IoT Hub metriky](iot-hub-metrics.md) k identifikaci a ladění chyb při vyřazení zpráv. Například můžete monitorovat D2C. telemetrie. odchozí. neplatné.
+* Celková velikost zprávy, včetně rozšíření, nesmí překročit 256 KB. V případě, že velikost zprávy překračuje 256 KB, bude zpráva vynechá IoT Hub. Můžete použít [IoT Hub metriky](monitor-iot-hub-reference.md#metrics) k identifikaci a ladění chyb při vyřazení zpráv. Například můžete monitorovat metriku *nekompatibilních zpráv telemetrie* ( *D2C. telemetrie.* . invalid) v [metrikách směrování](monitor-iot-hub-reference.md#routing-metrics). Další informace najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md).
 
-* Rozšiřování zpráv se nevztahuje na události s digitálními událostmi změny (součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)).
+* Rozšíření zpráv se nevztahují na události digitální události změny.
 
 ## <a name="pricing"></a>Ceny
 

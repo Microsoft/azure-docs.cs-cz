@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553936"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Azure Active Directory integrace se vnímání USA (ne UltiPro)
 
@@ -27,10 +27,10 @@ Integrování příUSA příUltiProch) do Azure AD poskytuje následující výh
 * Uživatelům můžete povolit, aby se automaticky přihlásili ke vnímání USA (bez UltiPro) (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s vnímání USA (ne UltiPro) potřebujete následující položky:
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se vnímáním USA (ne UltiPro), musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování USA vnímání (bez UltiPro)](#configure-perception-united-states-non-ultipro-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurovat jednotné přihlašování USA vnímání (bez UltiPro)](#configure-perception-united-states-non-ultipro-single-sign-on)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si testovacího uživatele UltiPro USA vnímání](#create-perception-united-states-non-ultipro-test-user)** , abyste měli protějšek Britta Simon v vnímání USA (UltiPro), která je propojená s reprezentací uživatele Azure AD.
@@ -93,11 +93,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML proveďte následující kroky:
 
     ![Informace o jednotném přihlašování v doméně a adresách USA (UltiPro)](common/idp-intiated.png)
 
@@ -113,7 +113,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
     
     e. Do textového pole **Adresa URL odpovědi** vložte výše uvedenou hodnotu.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -127,13 +127,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
 
     c. Odhlašovací adresa URL   
 
-### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Konfigurovat jednotné přihlašování USA vnímání (bez UltiPro)
+### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>USA konfigurace UltiPro (bez) jednoho Sign-On
 
 1. V jiném okně prohlížeče se přihlaste k vašemu firemnímu USA (UltiPro) jako správce.
 
 2. Na hlavním panelu nástrojů klikněte na **Nastavení účtu**.
 
-    ![Uživatel vnímání USA (ne UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Snímek obrazovky, který zobrazuje "nastavení účtu" vybrané na hlavním panelu nástrojů.](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. Na stránce **Nastavení účtu** proveďte následující kroky:
 
@@ -143,7 +143,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
     
     b. Do textového pole **název účtu** zadejte název **účtu**.
 
-    c. Do textového pole **výchozí odpověď-e-mail** zadejte platný **e-mail**.
+    c. Do textového pole **výchozí Reply-To e-mailu** zadejte platný **e-mail**.
 
     d. Jako **SAML 2,0**vyberte **poskytovatele identity SSO** .
 
@@ -185,7 +185,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -193,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **USA vnímání (ne UltiPro)**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **vnímání USA (ne UltiPro)**.
 
@@ -221,13 +221,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v vnímání USA (
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici USA vnímání (UltiPro), měli byste být automaticky přihlášeni ke vnímání USA (ne UltiPro), pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici USA vnímání (UltiPro), měli byste být automaticky přihlášeni ke vnímání USA (ne UltiPro), pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

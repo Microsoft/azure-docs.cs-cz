@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Dokumentace k prostředí Azure Machine Learning Studio (Classic)
+summary: Machine Learning Studio (Classic) je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
+metadata:
+  title: Dokumentace k prostředí Machine Learning Studio (Classic) – Azure
+  description: Machine Learning Studio (Classic) je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: studio-classic
+  ms.topic: landing-page
+  ms.collection: collection
+  ms.author: peterlu
+  author: peterclu
+  ms.date: 03/05/2020
+  ms.openlocfilehash: 27be00a986b27f4203e2cbfce568603aa7880802
+  ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100520336"
+landingContent:
+- title: Začínáme se sadou Studio (Classic)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Co je Studio (Classic)?
+      url: studio-classic-overview.md
+    - text: Vytvoření prvního experimentu ML
+      url: create-experiment.md
+    - text: Vytvoření prediktivního řešení
+      url: tutorial-part1-credit-risk.md
+- title: Prozkoumat referenční obsah
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Moduly PowerShellu
+      url: powershell-module.md
+    - text: Algoritmus a moduly
+      url: /azure/machine-learning/studio-module-reference/index
+    - text: Rozhraní PRI pro správu REST
+      url: /rest/api/machinelearning/
+    - text: Kódy chyb webových služeb
+      url: web-service-error-codes.md
+- title: Další technologie Azure ML
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Machine Learning
+      url: ../index.yml
+    - text: Virtuální počítač pro datové vědy
+      url: ../data-science-virtual-machine/index.yml
+    - text: Porovnání našich produktů ML
+      url: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure%2fmachine-learning%2fstudio%2fcontext%2fml-context

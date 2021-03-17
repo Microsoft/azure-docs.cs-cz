@@ -1,6 +1,6 @@
 ---
 title: Vyfiltrování provozu sítě virtuálních počítačů – ukázka skriptu Azure PowerShell
-description: Ukázkový skript Azure PowerShellu – Filtrování příchozího a odchozího síťového provozu virtuálního počítače
+description: Filtrování příchozího a odchozího síťového provozu virtuálního počítače – ukázka Azure PowerShell skriptu.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,18 +15,19 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: fa0778887a1063b01ce3356dc660cfee260b1702
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e2a6c3a656065d6168280705d3cc27adabceb5d2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073900"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491362"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Ukázkový skript pro filtrování příchozího a odchozího síťového provozu virtuálního počítače
 
 Tento ukázkový skript vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP a HTTPS, zatímco odchozí provoz do internetu z back-endové podsítě není omezený. Po spuštění skriptu budete mít jeden virtuální počítač se dvěma síťovými kartami. Obě síťové karty budou připojené k jiné podsíti.
 
-Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. Pokud používáte PowerShell místně, vyžaduje tento skript verzi modulu Azure PowerShell 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. Pokud používáte PowerShell místně, vyžaduje tento skript verzi modulu Azure PowerShell 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-InstalledModule -Name Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

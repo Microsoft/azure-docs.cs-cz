@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611165"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658634"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
 Když připojíte místní síť k virtuální síti Azure a vytvoříte hybridní síť, bude mít možnost řídit přístup k síťovým prostředkům Azure důležitou součást celkového plánu zabezpečení.
 
-Azure Firewall můžete použít k řízení přístupu k síti v hybridní síti pomocí pravidel, která definují povolený a zakázaný síťový provoz.
+S využitím služby Azure Firewall můžete řídit síťový přístup v hybridní síti pomocí pravidel, která definují povolený a zakázaný síťový provoz.
 
 V tomto článku vytvoříte tři virtuální sítě:
 
@@ -31,17 +31,16 @@ V tomto článku vytvoříte tři virtuální sítě:
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Deklarování proměnných
-> * Vytvoření virtuální sítě centra firewallu
-> * Vytvoření virtuální sítě paprsků
-> * Vytvoření místní virtuální sítě
-> * Konfigurace a nasazení brány firewall
-> * Vytvoření a propojení bran VPN
-> * Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
-> * Vytvoření tras
-> * Vytvoření virtuálních počítačů
-> * Testování brány firewall
+* Deklarování proměnných
+* Vytvoření virtuální sítě centra firewallu
+* Vytvoření virtuální sítě paprsků
+* Vytvoření místní virtuální sítě
+* Konfigurace a nasazení brány firewall
+* Vytvoření a propojení bran VPN
+* Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
+* Vytvoření tras
+* Vytvoření virtuálních počítačů
+* Testování brány firewall
 
 Pokud chcete použít Azure Portal k dokončení tohoto kurzu, přečtěte si téma [kurz: nasazení a konfigurace Azure firewall v hybridní síti pomocí Azure Portal](tutorial-hybrid-portal.md).
 
@@ -49,7 +48,7 @@ Pokud chcete použít Azure Portal k dokončení tohoto kurzu, přečtěte si t�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento článek vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
 Předpokladem správného fungování tohoto scénáře jsou tři klíčové požadavky:
 
@@ -62,14 +61,14 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 V části [Vytvoření tras](#create-the-routes) v tomto článku najdete informace o tom, jak se tyto trasy vytvářejí.
 
 >[!NOTE]
->Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
+>Služba Azure Firewall musí mít přímé připojení k internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 >
 >Azure Firewall lze nakonfigurovat pro podporu vynuceného tunelování. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md).
 
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Chcete-li si projít referenční dokumentaci související Azure PowerShell, přečtěte si téma [Azure PowerShell reference](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+Chcete-li si projít referenční dokumentaci související Azure PowerShell, přečtěte si téma [Azure PowerShell reference](/powershell/module/az.network/new-azfirewall).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
@@ -283,7 +282,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 -VirtualNetworkGateway1 $vnetHubgw -VirtualNetworkGateway2 $vnetOnpremgw -Location $Location1 `
 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
 ```
-Vytvořte připojení k virtuální síti z místního prostředí k rozbočovači. Tento krok je podobný předchozímu, s tím rozdílem, že vytvoříte připojení z VNet-OnPrem do VNet-hub. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
+Vytvořte připojení k virtuální síti z místního prostředí k rozbočovači. Tento krok je podobný předchozímu, s tím rozdílem, že vytvoříte připojení z VNet-Onprem k rozbočovači VNet. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
 
   ```azurepowershell
   New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameOnprem -ResourceGroupName $RG1 `
@@ -464,7 +463,7 @@ Na webu Azure Portal se připojte k virtuálnímu počítači **VM-Onprem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a přejděte na http:// \<VM-spoke-01 private IP\> .
+Otevřete webový prohlížeč na **virtuálním počítači-OnPrem** a přejděte na http:// \<VM-spoke-01 private IP\> .
 
 Měla by se zobrazit výchozí stránka Internetové informační služby.
 
@@ -497,4 +496,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
-[Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+[Kurz: Monitorování protokolů brány Azure Firewall](./firewall-diagnostics.md)

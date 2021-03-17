@@ -1,27 +1,25 @@
 ---
 title: Pracovní postup architektury Windows Azure VM | Microsoft Docs
 description: Tento článek poskytuje přehled procesů pracovního postupu při nasazení služby.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 04/08/2019
-ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71162145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700129"
 ---
-#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Pracovní postup architektury klasického virtuálního počítače Windows Azure 
+# <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Pracovní postup architektury klasického virtuálního počítače Windows Azure 
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento článek poskytuje přehled procesů pracovních postupů, ke kterým dochází při nasazování nebo aktualizaci prostředku Azure, jako je třeba virtuální počítač. 
 
 > [!NOTE]
@@ -29,7 +27,7 @@ Tento článek poskytuje přehled procesů pracovních postupů, ke kterým doch
 
 Následující diagram znázorňuje architekturu prostředků Azure.
 
-![Pracovní postup Azure](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<ALT – obrázek o pracovním postupu Azure>":::
 
 ## <a name="workflow-basics"></a>Základy pracovního postupu
    
@@ -54,7 +52,7 @@ Následující diagram znázorňuje architekturu prostředků Azure.
 2. Monitorování všech podřízených procesů.
 3. Vyvolává se událost StatusCheck v procesu hostitele role.
 
-**F**. IISConfigurator se spustí, pokud je role nakonfigurovaná jako plná webová role služby IIS (nespustí se pro role SDK 1,2 umožní). Zodpovídá za:
+**F**. IISConfigurator se spustí, pokud je role nakonfigurovaná jako plná webová role služby IIS. Zodpovídá za:
 
 1. Spuštění standardních služeb IIS
 2. Konfigurace modulu pro přepis ve webové konfiguraci
@@ -69,11 +67,9 @@ Následující diagram znázorňuje architekturu prostředků Azure.
 
 **I**. WaWorkerHost je standardní hostitelský proces pro normální role pracovního procesu. Tento hostitelský proces je hostitelem všech knihoven DLL role a kódu vstupního bodu, jako je například OnStart a Run.
 
-**J**. WaWebHost je standardní hostitelský proces pro webové role, pokud jsou nakonfigurované pro použití hostitele umožní (Web Core) kompatibilního s SDK 1,2. Role mohou povolit režim umožní odebráním elementu z definice služby (. csdef). V tomto režimu se veškerý kód a knihovny DLL služby spouští z procesu WaWebHost. Služba IIS (W3wp) se nepoužívá a ve Správci služby IIS nejsou nakonfigurované žádné fondů aplikací, protože služba IIS je hostovaná v rámci WaWebHost.exe.
+**J**. WaIISHost je hostitelský proces pro kód vstupního bodu role pro webové role, které používají plnou službu IIS. Tento proces načte první nalezenou knihovnu DLL, která používá třídu **RoleEntryPoint** , a spustí kód z této třídy (OnStart, Run, OnStart). V tomto procesu jsou vyvolány jakékoli události **RoleEnvironment** (například StatusCheck a změněné), které jsou vytvořeny ve třídě RoleEntryPoint.
 
-**K**. WaIISHost je hostitelský proces pro kód vstupního bodu role pro webové role, které používají plnou službu IIS. Tento proces načte první nalezenou knihovnu DLL, která používá třídu **RoleEntryPoint** , a spustí kód z této třídy (OnStart, Run, OnStart). V tomto procesu jsou vyvolány jakékoli události **RoleEnvironment** (například StatusCheck a změněné), které jsou vytvořeny ve třídě RoleEntryPoint.
-
-**L**. W3WP je standardní pracovní proces služby IIS, který se používá, pokud je role nakonfigurovaná tak, aby používala plnou službu IIS. Tím se spustí fond, který je nakonfigurovaný z IISConfigurator. V tomto procesu jsou vyvolány jakékoli události RoleEnvironment (například StatusCheck a změněné), které jsou vytvořeny zde. Všimněte si, že RoleEnvironment události se aktivují v obou umístěních (WaIISHost a w3wp.exe), pokud se přihlásíte k odběru událostí v obou procesech.
+**K**. W3WP je standardní pracovní proces služby IIS, který se používá, pokud je role nakonfigurovaná tak, aby používala plnou službu IIS. Tím se spustí fond, který je nakonfigurovaný z IISConfigurator. V tomto procesu jsou vyvolány jakékoli události RoleEnvironment (například StatusCheck a změněné), které jsou vytvořeny zde. Všimněte si, že RoleEnvironment události se aktivují v obou umístěních (WaIISHost a w3wp.exe), pokud se přihlásíte k odběru událostí v obou procesech.
 
 ## <a name="workflow-processes"></a>Pracovní postupy
 
@@ -84,11 +80,10 @@ Následující diagram znázorňuje architekturu prostředků Azure.
 5. WindowsAzureGuestAgent nastaví hostovaný operační systém (bránu firewall, seznamy ACL, LocalStorage atd.), zkopíruje nový konfigurační soubor XML do c:\Config a potom spustí proces WaHostBootstrapper.
 6. U úplných webových rolí služby IIS WaHostBootstrapper spustí IISConfigurator a oznámí IT, aby odstranil všechny existující služby fondů pro webovou roli z IIS.
 7. WaHostBootstrapper přečte úlohy **po spuštění** z E:\RoleModel.xml a začne spouštět úlohy po spuštění. WaHostBootstrapper počká, dokud nebudou dokončeny všechny jednoduché úvodní úlohy a vrátila zprávu "úspěch".
-8. U úplných webových rolí služby IIS WaHostBootstrapper oznamuje IISConfigurator, že má nakonfigurovat službu IIS AppPool a odkazuje na lokalitu `E:\Sitesroot\<index>` , kde `<index>` je index založený na nule na počet `<Sites>` prvků definovaných pro danou službu.
+8. U úplných webových rolí služby IIS WaHostBootstrapper oznamuje IISConfigurator, že má nakonfigurovat službu IIS AppPool a odkazuje na lokalitu `E:\Sitesroot\<index>` , kde `<index>` je index založený na nule na počet `<Sites>` prvků definovaných pro službu.
 9. WaHostBootstrapper spustí proces hostitele v závislosti na typu role:
     1. **Role pracovního procesu**: WaWorkerHost.exe je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Jakmile se vrátí, WaHostBootstrapper spustí metodu Run () a pak ji současně označí jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení (pokud jsou definovány InputEndpoints). WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
-    1. **Umožní webová role SDK 1,2**: WaWebHost je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Po návratu WaHostBootstrapper spustí metodu Run () a pak ji současně označí jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení. WaWebHost vydá požadavek zahřívání (získat/do. rd_runtime_init). Všechny webové požadavky jsou odesílány do WaWebHost.exe. WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
-    1. **Plná webová role služby IIS**: aIISHost je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Po návratu začne spustit metodu Run () a pak zároveň označí roli jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení. WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
+    2. **Plná webová role služby IIS**: aIISHost je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Po návratu začne spustit metodu Run () a pak zároveň označí roli jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení. WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
 10. Příchozí webové požadavky na úplnou webovou roli služby IIS spustí službu IIS, aby spouštěla proces W3WP a obsluhují požadavek stejným způsobem jako v místním prostředí služby IIS.
 
 ## <a name="log-file-locations"></a>Umístění souborů protokolu
@@ -103,10 +98,6 @@ Tento protokol obsahuje aktualizace stavu a oznámení prezenčního signálu a 
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
@@ -123,7 +114,3 @@ Tento protokol obsahuje aktualizace stavu a oznámení prezenčního signálu a 
 **Protokoly událostí systému Windows**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

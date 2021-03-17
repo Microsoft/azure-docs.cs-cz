@@ -1,19 +1,19 @@
 ---
-title: Vytvoření privátního koncového bodu ve službě Azure Private Link
+title: Rychlý Start – vytvoření privátního koncového bodu pomocí šablony ARM
 description: V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření privátního koncového bodu.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705805"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562941"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí šablony ARM
 
@@ -76,7 +76,7 @@ Připojte se k virtuálnímu počítači _myVm {UniqueID}_ z Internetu následuj
 
 1. Na panelu hledání na portálu zadejte _myVm {UniqueID}_.
 
-2. Vyberte **Připojit**. **Připojení k virtuálnímu počítači** se otevře.
+2. Vyberte **Connect** (Připojit). **Připojení k virtuálnímu počítači** se otevře.
 
 3. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (_. RDP_) a stáhne ho do vašeho počítače.
 
@@ -87,11 +87,11 @@ Připojte se k virtuálnímu počítači _myVm {UniqueID}_ z Internetu následuj
    b. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
       > [!NOTE]
-      > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+      > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 5. Vyberte **OK**.
 
-6. Při přihlášení se může zobrazit upozornění na certifikát. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+6. Při přihlášení se může zobrazit upozornění na certifikát. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 7. Po zobrazení plochy virtuálního počítače ho minimalizujte, abyste se mohli vrátit k místnímu počítači.
 
@@ -118,9 +118,9 @@ Tady je postup, jak se připojit k serveru SQL Database z virtuálního počíta
     - **Název serveru**: vyberte **SQLServer {UniqueID}. Database. Windows. NET**.
     - **Uživatelské jméno**: zadejte uživatelské jméno, které jste zadali při vytváření.
     - **Heslo**: zadejte heslo, které jste zadali při vytváření.
-    - **Pamatovat heslo**: vyberte **Ano**.
+    - **Pamatovat heslo**: vyberte  **Ano**.
 
-5.  Vyberte **Připojit**.
+5.  Vyberte **Connect** (Připojit).
 6.  V nabídce na levé straně přejděte do části **databáze**.
 7.  Volitelně můžete vytvořit nebo dotazovat informace z _Sample-DB_.
 8.  Zavřete připojení ke vzdálené ploše na _myVm {UniqueID}_.
@@ -137,4 +137,6 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [privátních odkazech Azure](private-link-overview.md).
+Další informace o službách, které podporují soukromý koncový bod, najdete v těchto tématech:
+> [!div class="nextstepaction"]
+> [Dostupnost privátního propojení](private-link-overview.md#availability)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024379"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366339"
 ---
 # <a name="common-conditional-access-policies"></a>Běžné zásady podmíněného přístupu
 
@@ -28,7 +28,7 @@ ms.locfileid: "86024379"
 
 Další informace o účtech pro nouzový přístup a o tom, proč jsou důležité, najdete v následujících článcích: 
 
-* [Správa účtů pro nouzový přístup v Azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Správa účtů pro nouzový přístup v Azure AD](../roles/security-emergency-access.md)
 * [Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 ## <a name="typical-policies-deployed-by-organizations"></a>Typické zásady nasazené organizacemi
@@ -38,14 +38,14 @@ Další informace o účtech pro nouzový přístup a o tom, proč jsou důleži
 * [Vyžadovat vícefaktorové ověřování pro správu Azure](howto-conditional-access-policy-azure-management.md)\*
 * [Vyžadovat MFA pro všechny uživatele](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Tyto čtyři zásady se nakonfigurují společně a napodobují funkce, které jsou povolené ve [výchozím nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md).
+\* Tyto čtyři zásady se nakonfigurují společně a napodobují funkce, které jsou povolené ve [výchozím nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="additional-policies"></a>Další zásady
 
 * [Podmíněný přístup na základě rizik přihlašování (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Podmíněný přístup na základě rizika uživatele (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk-user.md)
 * [Vyžadování důvěryhodného umístění pro registraci MFA](howto-conditional-access-policy-registration.md)
-* [Blokovat přístup podle umístění](howto-conditional-access-policy-location.md)
+* [Blokování přístupu podle umístění](howto-conditional-access-policy-location.md)
 * [Vyžadování zařízení, které splňuje požadavky](howto-conditional-access-policy-compliant-device.md)
 * [Blokovat přístup kromě konkrétních aplikací](howto-conditional-access-policy-block-access.md)
 

@@ -1,27 +1,25 @@
 ---
-title: Běžné příčiny recyklace rolí cloudové služby | Microsoft Docs
+title: Běžné příčiny recyklace rolí cloudové služby (Classic) | Microsoft Docs
 description: Role cloudové služby, která se náhle recykluje, může způsobit výrazné výpadky. Tady jsou některé běžné problémy, které způsobují recyklaci rolí, což vám může přispět k menšímu výpadku.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920092"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741158"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>Běžné problémy, které způsobují recyklování rolí cloudové služby Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento článek popisuje některé z běžných příčin problémů při nasazení a poskytuje tipy k odstraňování potíží, které vám pomůžou tyto problémy vyřešit. Označuje, že problém s aplikací existuje, když se instance role nepovede spustit, nebo se zacykluje mezi inicializací, zaneprázdněním a stavem zastavení.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,11 +61,11 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 Chcete-li spustit webovou roli v rámci TLS, je nutné zajistit, aby exportovaný certifikát pro správu obsahoval privátní klíč. Pokud k exportu certifikátu používáte *Správce certifikátů Windows* , nezapomeňte u možnosti **exportovat privátní klíč** vybrat **Ano** . Certifikát musí být exportován ve formátu PFX, což je jediný aktuálně podporovaný formát.
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další články týkající se [řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro Cloud Services.
+Podívejte se na další články týkající se [řešení potíží](../index.yml?product=cloud-services&tag=top-support-issue) pro Cloud Services.
 
-Podívejte se na další scénáře recyklace rolí na [blogu Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Podívejte se na další scénáře recyklace rolí na [blogu Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
-[RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Spustit]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
+[OnStart]: /previous-versions/azure/reference/ee772851(v=azure.100)
+[OnStop]: /previous-versions/azure/reference/ee772844(v=azure.100)
+[Spustit]: /previous-versions/azure/reference/ee772746(v=azure.100)

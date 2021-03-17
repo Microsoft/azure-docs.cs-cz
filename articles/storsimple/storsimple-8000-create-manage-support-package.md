@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182011"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017164"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Vytvoření a Správa balíčku pro podporu pro řady StorSimple 8000
 
@@ -66,7 +66,7 @@ Pomocí rutiny Export-HcsSupportPackage můžete použít následující paramet
 
 | Parametr | Požadováno/volitelné | Popis |
 | --- | --- | --- |
-| `-Path` |Vyžadováno |Slouží k zadání umístění sdílené síťové složky, ve které je balíček podpory umístěný. |
+| `-Path` |Povinné |Slouží k zadání umístění sdílené síťové složky, ve které je balíček podpory umístěný. |
 | `-EncryptionPassphrase` |Vyžadováno |Použijte k poskytnutí přístupového hesla, který vám může pomoci s šifrováním balíčku pro podporu. |
 | `-Credential` |Volitelné |Slouží k zadání přihlašovacích údajů pro přístup ke sdílené síťové složce. |
 | `-Force` |Volitelné |Použijte k přeskočení potvrzovacího kroku šifrovacího hesla. |
@@ -108,7 +108,7 @@ Chcete-li upravit balíček podpory před tím, než ho nahrajete na podpora Mic
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![Upravit balíček pro podporu](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![Upravit balíček podpory 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Po zobrazení výzvy zadejte šifrovací heslo pro upravený balíček pro podporu.
    
     ```powershell

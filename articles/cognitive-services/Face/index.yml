@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace k Rozpoznávání tváře
-summary: Cloudová služba Rozpoznávání tváře poskytuje vývojářům přístup k pokročilým algoritmům pro rozpoznávání tváře. Algoritmy služby Microsoft Face umožňují detekovat atributy tváří a rozpoznávat jednotlivé tváře. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.
+summary: 11. června 2020 Microsoft oznámil, že nebude prodávat technologii rozpoznávání tváří policejním oddělením v USA, dokud nebude zavedena přísná regulace založená na lidských právech. Zákazníci tak nesmí používat funkce rozpoznávání tváře nebo funkce, které jsou součástí služeb Azure, jako je Rozpoznávání tváře nebo Video Indexer, pokud je zákazník policejním oddělením v USA nebo umožňuje použití takových služeb ze strany policejních oddělení nebo pro ně.
 metadata:
   title: Dokumentace k Rozpoznávání tváře – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   description: Cloudová služba Rozpoznávání tváře poskytuje vývojářům přístup k pokročilým algoritmům pro rozpoznávání tváře. Algoritmy služby Microsoft Face umožňují detekovat atributy tváří a rozpoznávat jednotlivé tváře. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.
@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/24/2019
-  ms.openlocfilehash: e4d53baf1a083e9dafa6bd43186b507c5e724db3
-  ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-  ms.translationtype: HT
+  ms.date: 9/01/2020
+  ms.openlocfilehash: dc7ef676663e94d6ad03a5cfed8ae68cfcfc26c3
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84268026"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102507734"
 landingContent:
 - title: Informace o službě Rozpoznávání tváře
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Co je služba Rozpoznávání tváře?
       url: Overview.md
+  - linkListType: whats-new
+    links:
+    - text: Co je nového ve službě Rozpoznávání tváře?
+      url: releasenotes.md
 - title: Rozpoznávání tváří
   linkLists:
   - linkListType: concept
@@ -51,11 +55,11 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: quickstarts/csharp-sdk.md
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp
     - text: Používání sady Python SDK
-      url: quickstarts/python-sdk.md
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python
     - text: Použití sady Go SDK
-      url: quickstarts/go-sdk.md
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go
   - linkListType: how-to-guide
     links:
     - text: Určení modelu rozpoznávání obličeje
@@ -83,34 +87,30 @@ landingContent:
   - linkListType: deploy
     links:
     - text: Použití instancí kontejneru
-      url: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
     links:
-    - text: Rozhraní API pro rozpoznávání tváře v1.0
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236
+    - text: REST API
+      url: /rest/api/face/
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
     - text: Python SDK
-      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python
+      url: /python/api/azure-cognitiveservices-vision-face/
     - text: Java SDK
-      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/faceapi
     - text: Node.js SDK
-      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face
+      url: /javascript/api/@azure/cognitiveservices-face
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
-    - text: iOS SDK
-      url: https://github.com/Microsoft/Cognitive-Face-iOS
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices
 - title: Nápověda a zpětná vazba
   linkLists:
   - linkListType: reference
     links:
-    - text: UserVoice
-      url: https://cognitive.uservoice.com/forums/430315-face-api
-    - text: Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context

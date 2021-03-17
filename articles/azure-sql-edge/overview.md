@@ -1,6 +1,6 @@
 ---
-title: Co je Azure SQL Edge (Preview)?
-description: Další informace o Azure SQL Edge (Preview)
+title: Co je Azure SQL Edge?
+description: Další informace o Azure SQL Edge
 keywords: Seznámení s SQL Edgem, co je SQL Edge, Přehled SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,27 +9,31 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: a74e12a5e9bdd2dfdbc6ac07b66798e517f6f426
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642465"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395066"
 ---
-# <a name="what-is-azure-sql-edge-preview"></a>Co je Azure SQL Edge (Preview)?
+# <a name="what-is-azure-sql-edge"></a>Co je Azure SQL Edge?
 
-Azure SQL Edge (Preview) je optimalizovaný relační databázový stroj pro nasazení IoT a IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. Azure SQL Edge poskytuje možnosti pro streamování, zpracování a analýzu relačních a nerelačních dat, jako jsou data JSON, Graph a Time-Series, což dává správné možnosti pro nejrůznější moderní aplikace IoT.
+Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazení IoT a IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. Azure SQL Edge poskytuje možnosti pro streamování, zpracování a analýzu relačních a nerelačních dat, jako jsou data JSON, Graph a Time-Series, což dává správné možnosti pro nejrůznější moderní aplikace IoT.
 
-Azure SQL Edge je postaven na nejnovějších verzích modulu Microsoft SQL Database Engine (/SQL/SQL-Server/SQL-Server-Technical-Documentation? TOC =/Azure/Azure-SQL-Edge/toc.json), který poskytuje špičkové možnosti výkonu, zabezpečení a zpracování dotazů. Vzhledem k tomu, že je Azure SQL Edge postaven na stejném stroji jako [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) a [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), poskytuje stejnou oblast programování v T-SQL, která usnadňuje a urychluje vývoj aplikací nebo řešení a zároveň zajišťuje přenositelnost aplikace mezi IoT Edgemi zařízeními, datovými centry a cloudem.
+Azure SQL Edge je založený na nejnovějších verzích [SQL Server databázového stroje](/sql/sql-server/sql-server-technical-documentation), který poskytuje špičkové možnosti výkonu, zabezpečení a zpracování dotazů. Vzhledem k tomu, že je Azure SQL Edge postaven na stejném stroji jako [SQL Server](/sql/sql-server/sql-server-technical-documentation) a [Azure SQL](../azure-sql/index.yml), poskytuje stejnou oblast programování v jazyce Transact-SQL (T-SQL), která usnadňuje a urychluje vývoj aplikací nebo řešení, a zajišťuje přenositelnost aplikace mezi IoT Edgemi zařízeními, datovými centry a cloudem.
 
-> [!NOTE]
-> Azure SQL Edge je momentálně ve verzi Preview a takovým způsobem by se neměl používat v produkčních prostředích.
+Co je video Azure SQL Edge na Channel 9:
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]
 
 ## <a name="deployment-models"></a>Modely nasazení
 
-Azure SQL Edge je k dispozici na Azure Marketplace a je možné ho nasadit jako modul pro [Azure IoT Edge](../iot-edge/about-iot-edge.md). Další informace najdete v tématu [nasazení serveru Azure SQL Edge](deploy-portal.md).<br>
+Azure SQL Edge podporuje dva režimy nasazení.
+
+- Připojené nasazení prostřednictvím Azure IoT Edge: Azure SQL Edge je k dispozici na Azure Marketplace a je možné ho nasadit jako modul pro [Azure IoT Edge](../iot-edge/about-iot-edge.md). Další informace najdete v tématu [nasazení serveru Azure SQL Edge](deploy-portal.md).<br>
 
 ![Diagram přehledu SQL Edge](media/overview/overview.png)
+
+- Odpojené nasazení: image kontejneru Azure SQL Edge se dají z Docker Hub načíst a nasadit buď jako samostatný kontejner Docker, nebo do clusteru Kubernetes. Další informace najdete v tématu [nasazení Azure SQL Edge pomocí Docker](disconnected-deployment.md) a [nasazení kontejneru Edge SQL Azure v Kubernetes](deploy-kubernetes.md).
 
 ## <a name="editions-of-sql-edge"></a>Edice SQL Edge
 
@@ -42,7 +46,7 @@ SQL Edge je k dispozici ve dvou různých edicích nebo softwarových plánech. 
 
 ## <a name="pricing-and-availability"></a>Ceny a dostupnost
 
-Azure SQL Edge je momentálně ve verzi Preview. Další informace o cenách a dostupnosti najdete v tématu [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
+Azure SQL Edge je teď všeobecně dostupný. Další informace o cenách a dostupnosti v konkrétních oblastech najdete v tématu [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Pro pochopení rozdílů funkcí mezi Azure SQL Edge a SQL Server a rozdíly mezi různými možnostmi Azure SQL Edge najdete informace v tématu [podporované funkce Edge SQL serveru Azure](features.md).
@@ -67,7 +71,7 @@ Azure SQL Edge usnadňuje vývoj a správu aplikací pro snazší a vyšší pro
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) – bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Server po SQL Database.
 - [SQL Server Data Tools v aplikaci Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt/) – bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, databází SQL, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.
 - [Azure Data Studio](/sql/azure-data-studio/what-is/) – bezplatný, zaváděný a databázový Nástroj pro různé platformy pro data Professional s využitím řady místních a cloudových datových platforem v systémech Windows, MacOS a Linux.
-- [Visual Studio Code](https://code.visualstudio.com/docs) – bezplatný a Open Source Editor kódu pro Windows, MacOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure SQL Data Warehouse.
+- [Visual Studio Code](https://code.visualstudio.com/docs) – bezplatný a Open Source Editor kódu pro Windows, MacOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure synapse Analytics.
 
 
 ## <a name="next-steps"></a>Další kroky

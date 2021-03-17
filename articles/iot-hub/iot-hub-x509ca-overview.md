@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 33c878b2af64a72212a8aac060e9ccac83b79a53
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326507"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150710"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Ověřování zařízení pomocí certifikátů webu X.509
 
@@ -27,6 +27,8 @@ Tento článek popisuje, jak používat certifikáty certifikační autority (CA
 * Jak zaregistrovat certifikát CA X. 509 pro IoT Hub
 * Jak podepisovat zařízení pomocí certifikátů certifikační autority X. 509
 * Způsob ověřování zařízení podepsaných pomocí certifikační autority X. 509
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -88,4 +90,4 @@ Tady se dozvíte, jak [Dokončit tento krok připojení zařízení](iot-hub-sec
 
 Přečtěte si o [hodnotě ověřování CA X. 509](iot-hub-x509ca-concept.md) v IoT.
 
-Začínáme se službou IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/).
+Začínáme se službou IoT Hub [Device Provisioning Service](../iot-dps/index.yml).

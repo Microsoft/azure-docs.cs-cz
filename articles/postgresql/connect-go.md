@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: připojení pomocí funkce Přejít-Azure Database for PostgreSQL-Single server'
 description: V tomto rychlém startu najdete ukázku programovacího jazyka na cestách, kterou můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jeden server.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: eb844790ac0ae97c281f6d2d7022bee559f545cd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182897"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331926"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití jazyka přejít k připojení a dotazování dat v Azure Database for PostgreSQL-jednom serveru
 
@@ -80,10 +80,10 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
+2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver** ).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-go/1-connection-string.png)
+ :::image type="content" source="./media/connect-go/1-connection-string.png" alt-text="Název serveru Azure Database for PostgreSQL":::
 
 ## <a name="build-and-run-go-code"></a>Sestavení a spuštění kódu jazyka Go 
 1. K psaní kódu jazyka Go můžete použít editor prostého textu, jako je Poznámkový blok v systému Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost rozsáhlému interaktivnímu vývojovému prostředí (IDE), [Visual Studio Code](https://code.visualstudio.com/) [od společnosti](https://www.jetbrains.com/go/) Microsoft nebo [Atom](https://atom.io/).
@@ -331,6 +331,16 @@ func main() {
     checkError(err)
     fmt.Println("Deleted 1 row of data")
 }
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Další kroky

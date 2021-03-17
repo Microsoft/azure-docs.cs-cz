@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154725"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
@@ -132,11 +132,11 @@ Stručný popis každého typu deklarace identity vygenerovaného službou Azure
 | Vystaveno | Zaznamená čas, kdy byl token vystaven, což se často používá pro aktuálnost tokenu. |
 | Vystavitel | Identifikuje službu tokenů zabezpečení, která token vygenerovala, a také tenanta Azure AD. |
 | Příjmení | Poskytuje příjmení uživatele, jak je nastavené v Azure AD. |
-| Name | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. |
+| Název | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. |
 | ID objektu | Obsahuje neměnný a jedinečný identifikátor subjektu v Azure AD. |
 | Role | Obsahuje popisné názvy aplikačních rolí Azure AD, které byly uživateli uděleny. |
 | Rozsah | Určuje oprávnění udělená klientské aplikaci. |
-| Subjekt | Určuje objekt zabezpečení, o kterém token prosazuje informace. |
+| Předmět | Určuje objekt zabezpečení, o kterém token prosazuje informace. |
 | ID tenanta | Obsahuje neměnný a jedinečný identifikátor tenanta adresáře, který token vydal. |
 | Živostnost tokenu | Definuje časový interval, ve kterém je token platný. |
 | Hlavní název uživatele | Obsahuje hlavní název uživatele subjektu. |

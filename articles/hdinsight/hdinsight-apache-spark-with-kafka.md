@@ -1,19 +1,16 @@
 ---
 title: Apache Spark streamování s Apache Kafka – Azure HDInsight
-description: Naučte se používat Apache Spark ke streamování dat do Apache Kafka pomocí DStreams. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: Naučte se používat Apache Spark ke streamování dat do Apache Kafka pomocí DStreams. V tomto příkladu můžete streamovat data pomocí Jupyter Notebook ze Sparku ve službě HDInsight.
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086088"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942765"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Příklad streamování Apache Spark (DStream) s Apache Kafka v HDInsight
 
@@ -63,7 +60,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
     ![Parametry vlastního nasazení HDInsight](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. Přečtěte si **podmínky a ujednání**a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+1. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
 1. Nakonec vyberte **koupit**. Vytvoření clusteru trvá přibližně 20 minut.
 

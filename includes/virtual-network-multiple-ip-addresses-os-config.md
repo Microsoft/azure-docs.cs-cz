@@ -9,10 +9,10 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194198"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
@@ -138,7 +138,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Nezapomeňte nahradit:
     - **10.0.0.5** za privátní IP adresu, ke které je přidružená veřejná IP adresa,
     - **10.0.0.1** za vaši výchozí bránu,
-    - **ETH2** se na název sekundární síťové karty.</details>
+    - **ETH2** se na název sekundární síťové karty. </details>
 
 ### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
 <details>
@@ -182,7 +182,7 @@ Ubuntu 18,04 a novější se změnily na `netplan` pro správu sítě OS. Doporu
     ```
 
 > [!NOTE]
-> `netplan try`změny se projeví dočasně a změny se vrátí po 120 sekundách. Pokud dojde ke ztrátě připojení, počkejte prosím 120 sekund a pak se znovu připojte. V tuto chvíli se změny vrátí zpět.
+> `netplan try` změny se projeví dočasně a změny se vrátí po 120 sekundách. Pokud dojde ke ztrátě připojení, počkejte prosím 120 sekund a pak se znovu připojte. V tuto chvíli se změny vrátí zpět.
 
 7. Pokud se nepředpokládá žádné problémy s `netplan try` , použijte změny konfigurace:
 
@@ -236,7 +236,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Nezapomeňte nahradit:
     - **10.0.0.5** za privátní IP adresu, ke které je přidružená veřejná IP adresa,
     - **10.0.0.1** za vaši výchozí bránu,
-    - **ETH2** se na název sekundární síťové karty.</details>
+    - **ETH2** se na název sekundární síťové karty. </details>
 
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS a další)
 <details>
@@ -322,4 +322,4 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Nezapomeňte nahradit:
     - **10.0.0.5** za privátní IP adresu, ke které je přidružená veřejná IP adresa,
     - **10.0.0.1** za vaši výchozí bránu,
-    - **ETH2** se na název sekundární síťové karty.</details>
+    - **ETH2** se na název sekundární síťové karty. </details>

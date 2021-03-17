@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60931700"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015416"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Odeslání e-mailu pomocí SendGrid z Node.js
 
-Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky se napíší pomocí rozhraní Node.js API. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů**a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
+Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky se napíší pomocí rozhraní Node.js API. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů** a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Co je e-mailová služba SendGrid?
 
@@ -72,7 +72,7 @@ var email = new sendgrid.Email({
 });
 ```
 
-Můžete také zadat zprávu HTML pro klienty, kteří ji podporují, nastavením vlastnosti HTML. Příklad:
+Můžete také zadat zprávu HTML pro klienty, kteří ji podporují, nastavením vlastnosti HTML. Například:
 
 ```javascript
 html: This is a sample <b>HTML<b> email message.
@@ -96,7 +96,7 @@ sendgrid.send(email, function(err, json){
 ```
 
 > [!NOTE]
-> Zatímco výše uvedené příklady ukazují předávání e-mailového objektu a funkce zpětného volání, můžete také přímo vyvolat funkci Send přímo zadáním vlastností e-mailu. Příklad:  
+> Zatímco výše uvedené příklady ukazují předávání e-mailového objektu a funkce zpětného volání, můžete také přímo vyvolat funkci Send přímo zadáním vlastností e-mailu. Například:  
 > 
 > ```javascript
 > sendgrid.send({
@@ -212,8 +212,8 @@ SendGrid nabízí webová rozhraní API, která můžete použít k využití da
 Teď, když jste se seznámili se základy e-mailové služby SendGrid, získáte další informace na následujících odkazech.
 
 * Úložiště modulu SendGrid Node.js: [SendGrid-NodeJS][sendgrid-nodejs]
-* Dokumentace k rozhraní SendGrid API:<https://sendgrid.com/docs>
-* SendGrid speciální nabídka pro zákazníky Azure:[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* Dokumentace k rozhraní SendGrid API: <https://sendgrid.com/docs>
+* SendGrid speciální nabídka pro zákazníky Azure: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs

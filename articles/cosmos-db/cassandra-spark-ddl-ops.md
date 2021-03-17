@@ -1,21 +1,22 @@
 ---
 title: Operace DDL v Azure Cosmos DB rozhraní API Cassandra ze Sparku
 description: Tento článek podrobně popisuje operace v oblasti klíčů a v tabulce DDL pro Azure Cosmos DB rozhraní API Cassandra ze Sparku.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
-ms.date: 09/24/2018
-ms.openlocfilehash: 30cac5894998ca2bb9c37217820e1000ed97ba5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260555"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092173"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Operace DDL v Azure Cosmos DB rozhraní API Cassandra ze Sparku
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Tento článek podrobně popisuje operace v oblasti klíčů a v tabulce DDL pro Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
@@ -92,8 +93,7 @@ DESCRIBE keyspaces;
 ### <a name="create-a-table"></a>Vytvoření tabulky
 
 ```scala
-val cdbConnector = CassandraConnector(sc)
-cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
+cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks1.books(book_id TEXT,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT, PRIMARY KEY(book_id,book_pub_year)) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
 #### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
@@ -143,6 +143,6 @@ Po vytvoření prostoru klíčů a tabulky pokračujte v následujících člán
 * [Operace vytvoření/vložení](cassandra-spark-create-ops.md)  
 * [Operace čtení](cassandra-spark-read-ops.md)  
 * [Operace Upsert](cassandra-spark-upsert-ops.md)  
-* [Operace odstranění](cassandra-spark-delete-ops.md)  
+* [Operace Delete](cassandra-spark-delete-ops.md)  
 * [Operace agregace](cassandra-spark-aggregation-ops.md)  
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)  

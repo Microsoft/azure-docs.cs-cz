@@ -7,56 +7,60 @@ author: memildin
 manager: rkarlin
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769763"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099331"
 ---
-# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na upozornění zabezpečení ve službě Azure Security Center
+# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na výstrahy zabezpečení v Azure Security Center
 
-V tomto tématu se dozvíte, jak zobrazit a zpracovat výstrahy, které jste obdrželi za účelem ochrany vašich prostředků. 
+V tomto tématu se dozvíte, jak zobrazit a zpracovat výstrahy Security Center a chránit vaše prostředky.
 
-* Další informace o různých typech výstrah najdete v tématu [typy výstrah zabezpečení](alerts-reference.md).
-* Přehled způsobu, jakým Security Center generuje výstrahy, najdete v tématu [jak Azure Security Center detekuje hrozby a reaguje na](security-center-alerts-overview.md)ně.
-
-> [!NOTE]
-> Pokud chcete povolit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná zkušební verze. Pokud chcete provést upgrade, v [zásadách zabezpečení](tutorial-security-policy.md) vyberte cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
+Rozšířené detekce, které aktivují výstrahy zabezpečení, jsou k dispozici pouze v Azure Defenderu. K dispozici je bezplatná zkušební verze. Informace o upgradu najdete v tématu [Povolení Azure Defenderu](enable-azure-defender.md).
 
 ## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
 Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Seznam upřednostňovaných výstrah zabezpečení se zobrazí ve službě Security Center spolu s informacemi, které potřebujete k rychlému prozkoumání problému, a doporučeními týkajícími se řešení útoku.
 
-> [!NOTE]
-> Další informace o tom, jak funkce zjišťování Security Center fungují, najdete v tématu [jak Azure Security Center detekuje hrozby a reaguje na](security-center-alerts-overview.md#detect-threats)ně.
+Další informace o různých typech výstrah najdete v tématu [výstrahy zabezpečení – referenční příručka](alerts-reference.md).
+
+Přehled způsobu, jakým Security Center generuje výstrahy, najdete v tématu [jak Azure Security Center detekuje hrozby a reaguje na](security-center-alerts-overview.md)ně.
+
 
 ## <a name="manage-your-security-alerts"></a>Správa výstrah zabezpečení
 
-1. Na řídicím panelu Security Center se na dlaždici **Ochrana před hrozbami** zobrazí a zobrazí přehled výstrah.
+1. Na stránce Přehled Security Center vyberte dlaždici **výstrahy zabezpečení** v horní části stránky nebo odkaz z tohoto bočního panelu.
 
-    ![Dlaždice Výstrahy zabezpečení ve službě Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/overview-page-alerts-links.png" alt-text="Získání stránky s výstrahami zabezpečení ze stránky s přehledem Azure Security Center":::
 
-1. Pokud chcete zobrazit další podrobnosti o výstrahách, klikněte na dlaždici.
+    Otevře se stránka výstrahy zabezpečení.
 
-   ![Výstrahy zabezpečení ve službě Security Center](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Seznam výstrah zabezpečení Azure Security Center":::
 
-1. Chcete-li filtrovat zobrazené výstrahy, klikněte na tlačítko **Filtr**a v okně **filtru** , které se otevře, vyberte možnosti filtru, které chcete použít. Seznam se aktualizuje podle vybraného filtru. Filtrování může být velmi užitečné. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.
+1. Chcete-li filtrovat seznam výstrah, vyberte některý z příslušných filtrů. Volitelně můžete přidat další filtry pomocí možnosti **Přidat filtr** .
 
-    ![Filtrování výstrah ve službě Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="Přidání filtrů do zobrazení výstrah" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+
+    Seznam se aktualizuje podle možností filtrování, které jste vybrali. Filtrování může být velmi užitečné. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.
+
 
 ## <a name="respond-to-security-alerts"></a>Reakce na výstrahy zabezpečení
 
-1. V seznamu **výstrahy zabezpečení** klikněte na výstrahu zabezpečení. Zobrazí se potřebné prostředky a kroky, které je třeba provést k nápravě útoku.
+1. V seznamu **výstrahy zabezpečení** vyberte výstrahu. Zobrazí se boční podokno s popisem výstrahy a všech ovlivněných prostředků. 
 
-    ![Reakce na výstrahy zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="Zobrazení zkrácených podrobností výstrahy zabezpečení":::
 
-1. Po kontrole informací klikněte na prostředek, který byl napadený.
+    > [!TIP]
+    > Po otevření tohoto bočního podokna můžete rychle zkontrolovat seznam výstrah pomocí šipek nahoru a dolů na své klávesnici.
+
+1. Chcete-li získat další informace, vyberte možnost **Zobrazit úplné podrobnosti**.
 
     V levém podokně stránky výstraha zabezpečení jsou uvedeny informace vysoké úrovně týkající se výstrahy zabezpečení: název, závažnost, stav, čas aktivity, popis podezřelé aktivity a ovlivněný prostředek. Společně s ovlivněným prostředkem jsou značky Azure relevantní pro daný prostředek. Použijte k odvození organizačního kontextu prostředku při zkoumání výstrahy.
 
@@ -64,7 +68,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
      
     ![Návrhy, co dělat s výstrahami zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Také v pravém podokně se nachází karta **provést akci** . pomocí této karty můžete provést další akce týkající se výstrahy zabezpečení. Akce, jako například:
+    Také v pravém podokně se nachází karta **provést akci** . Tato karta slouží k provedení dalších akcí týkajících se výstrahy zabezpečení. Akce, jako například:
     - *Zmírnění hrozby* – poskytuje postup ruční nápravy pro tuto výstrahu zabezpečení.
     - *Prevence budoucích útoků* – poskytuje doporučení zabezpečení, která vám pomůžou snížit plochu pro útoky, zvýšit stav zabezpečení a zabránit budoucím útokům.
     - *Aktivovat automatizovanou odezvu* – poskytuje možnost aktivovat aplikaci logiky jako reakci na toto upozornění zabezpečení.
@@ -80,4 +84,5 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 V tomto dokumentu jste zjistili, jak zobrazit výstrahy zabezpečení. Související materiály najdete na následujících stránkách:
 
 - [Konfigurace pravidel potlačení výstrah](alerts-suppression-rules.md)
-- [Automatizace odpovědí na výstrahy a doporučení pomocí automatizace pracovních postupů](workflow-automation.md)
+- [Automatizace odpovědí na triggery Security Center](workflow-automation.md)
+- [Upozornění zabezpečení – Referenční příručka](alerts-reference.md)

@@ -4,20 +4,20 @@ description: Pomocí šifrování na hostiteli můžete na Azure Managed disks p
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 94a691badf056c8e93f47ae8d052fc1388b34e4c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029004"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737468"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Povolení kompletního šifrování pomocí šifrování u hostitele – Azure CLI
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití rozhraní příkazového řádku Azure k povolení kompletního šifrování pomocí šifrování na hostiteli
 
-Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. Koncepční informace o šifrování na hostiteli a také o dalších typech šifrování spravovaného disku najdete v tématu [šifrování v rámci hostitele – koncové šifrování pro data virtuálních počítačů](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. Koncepční informace o šifrování na hostiteli a také o dalších typech šifrování spravovaného disku najdete v tématu [šifrování v rámci hostitele – koncové šifrování pro data virtuálních počítačů](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 ## <a name="restrictions"></a>Omezení
 
@@ -33,7 +33,7 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 Velikosti virtuálních počítačů můžete zjistit také programově. Informace o tom, jak je načíst programově, najdete v části [hledání podporovaných velikostí virtuálních počítačů](#finding-supported-vm-sizes) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odesláním e-mailu encryptionAtHost@microsoft.com s ID předplatného získáte funkci povolenou pro vaše předplatná.
 
@@ -208,7 +208,7 @@ Volání [rozhraní API SKU prostředku](/rest/api/compute/resourceskus/list) a 
     }
 ```
 
-Nebo zavolejte rutinu PowerShellu [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) .
+Nebo zavolejte rutinu PowerShellu [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) .
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

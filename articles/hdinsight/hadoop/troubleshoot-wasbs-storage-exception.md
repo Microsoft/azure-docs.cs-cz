@@ -1,18 +1,15 @@
 ---
 title: Přistupující účet nepodporuje ve službě Azure HDInsight chybu HTTP.
 description: Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
-ms.openlocfilehash: 14c43e4557275d6a425127acfee7495f68d1d354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46063d5f2d9ff4b85914ad7c4cd74a2400298db0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77165550"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943074"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>Přistupující účet nepodporuje ve službě Azure HDInsight chybu HTTP.
 
@@ -32,7 +29,7 @@ K dispozici je několik důvodů, proč chybová zpráva byla přijata:
 
 * Účet úložiště má povolený [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md) a používá se nesprávné [schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) .
 
-* Cluster byl vytvořen s účtem úložiště, který měl *zakázaný*zabezpečený přenos. Potom byl v účtu úložiště povolený zabezpečený přenos.
+* Cluster byl vytvořen s účtem úložiště, který měl *zakázaný* zabezpečený přenos. Potom byl v účtu úložiště povolený zabezpečený přenos.
 
 ## <a name="resolution"></a>Řešení
 
@@ -48,4 +45,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -1,18 +1,18 @@
 ---
 title: Připojení k místnímu virtuálnímu počítači Azure s převzetím služeb při selhání pomocí Azure Site Recovery
 description: Popisuje, jak se připojit k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí do Azure pomocí Azure Site Recovery
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
-ms.author: mayg
-ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770488"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89568774"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí 
 
@@ -96,19 +96,19 @@ Zachování IP adres vyžaduje následující kroky:
 
 ### <a name="failover-example"></a>Příklad převzetí služeb při selhání
 
-Pojďme se podívat na příklad.
+Podívejme se na příklad.
 
 - Fiktivní společnost Woodgrove Bank hostuje své obchodní aplikace v místním prostředí, které hostují své mobilní aplikace v Azure.
 - Připojují se z místního prostředí k Azure prostřednictvím sítě Site-to-Site VPN. 
 - Woodgrove používá Site Recovery k replikaci místních počítačů do Azure.
 - Jejich místní aplikace používají pevně zakódované IP adresy, takže chtějí uchovávat stejné IP adresy v Azure.
 - Místní počítače, na kterých běží aplikace, běží ve třech podsítích:
-    - 192.168.1.0/24.
+    - 192.168.1.0/24
     - 192.168.2.0/24
     - 192.168.3.0/24
 - Aplikace běžící v Azure se nacházejí ve dvou podsítích ve virtuální **síti** Azure:
-- 172.16.1.0/24
-- 172.16.2.0/24.
+    - 172.16.1.0/24
+    - 172.16.2.0/24
 
 Aby bylo možné tyto adresy zachovat, je zde postup.
 

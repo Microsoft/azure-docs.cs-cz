@@ -8,29 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 59063912b2976890976e3c27bc4f2d93b6392e37
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cc1d375de9f45369f6d2902b106a1740f316ad8d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607780"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948104"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
+[Referenční dokumentace](/javascript/api/@azure/arm-cognitiveservices/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="javascript-prerequisites"></a>JavaScript – požadavky
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Aktuální verze [Node.js](https://nodejs.org/)
 
-## <a name="create-an-azure-service-principal"></a>Vytvoření instančního objektu Azure
+[!INCLUDE [Create a service principal](./create-service-principal.md)]
 
-Pokud chcete, aby vaše aplikace pracovala s vaším účtem Azure, potřebujete instanční objekt Azure pro správu oprávnění. Postupujte podle pokynů v tématu [Vytvoření instančního objektu Azure](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.4.0&viewFallbackFrom=azps-3.3.0).
-
-Když vytvoříte instanční objekt, uvidíte, že má tajnou hodnotu, ID a ID aplikace. Uložte ID aplikace a tajný kód do dočasného umístění pro pozdější kroky.
-
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-
-Než vytvoříte prostředek Cognitive Services, musí mít váš účet skupinu prostředků Azure, která má prostředek obsahovat. Pokud ještě nemáte skupinu prostředků, vytvořte ji v [Azure Portal](https://ms.portal.azure.com/).
+[!INCLUDE [Create a resource group](./create-resource-group.md)]
 
 ## <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
@@ -80,7 +74,11 @@ Dále přidejte následující funkci, `quickstart` která bude zpracovávat hla
 
 Přidejte následující kód na konec `quickstart` funkce k vypsání dostupných prostředků, vytvořte ukázkový prostředek, uveďte seznam vlastněných prostředků a pak odstraňte ukázkový prostředek. Tyto funkce definujete v dalších krocích.
 
-## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku služeb Cognitive Services
+## <a name="create-a-cognitive-services-resource-nodejs"></a>Vytvoření prostředku Cognitive Services (Node.js)
+
+Pokud chcete vytvořit nový prostředek Cognitive Services a přihlásit se k jeho odběru, použijte funkci **Create** . Tato funkce přidá nový fakturovatelný prostředek do skupiny prostředků, kterou předáte. Když vytváříte nový prostředek, budete muset znát "druh" služby, kterou chcete použít, spolu s její cenovou úrovní (nebo SKU) a umístěním Azure. Následující funkce přebírá všechny tyto argumenty a vytvoří prostředek.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/azure_management_service/create_delete_resource.js?name=snippet_create)]
 
 ### <a name="choose-a-service-and-pricing-tier"></a>Výběr služby a cenové úrovně
 
@@ -90,77 +88,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
-Podívejte se na seznam SKU a informace o cenách níže. 
-
-#### <a name="multi-service"></a>Více služeb
-
-| Služba                    | Druh                      |
-|----------------------------|---------------------------|
-| Několik služeb. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cognitive-services/) .            | `CognitiveServices`     |
-
-
-#### <a name="vision"></a>Obraz
-
-| Služba                    | Druh                      |
-|----------------------------|---------------------------|
-| Počítačové zpracování obrazu            | `ComputerVision`          |
-| Custom Vision – předpověď | `CustomVision.Prediction` |
-| Custom Vision – školení   | `CustomVision.Training`   |
-| Tvář                       | `Face`                    |
-| Rozpoznávání formulářů            | `FormRecognizer`          |
-| Rozpoznávání rukopisu             | `InkRecognizer`           |
-
-#### <a name="search"></a>Hledat
-
-| Služba            | Druh                  |
-|--------------------|-----------------------|
-| Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
-| Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
-| Vyhledávání entit Bingu | `Bing.EntitySearch`   |
-| Vyhledávání Bingu        | `Bing.Search.v7`      |
-| Kontrola pravopisu Bingu   | `Bing.SpellCheck.v7`  |
-
-#### <a name="speech"></a>Řeč
-
-| Služba            | Druh                 |
-|--------------------|----------------------|
-| Hlasové služby    | `SpeechServices`     |
-| Rozpoznávání řeči | `SpeakerRecognition` |
-
-#### <a name="language"></a>Jazyk
-
-| Služba            | Druh                |
-|--------------------|---------------------|
-| Porozumění formuláři | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| Analýza textu     | `TextAnalytics`     |
-| Překlad textu   | `TextTranslation`   |
-
-#### <a name="decision"></a>Rozhodnutí
-
-| Služba           | Druh               |
-|-------------------|--------------------|
-| Detektor anomálií  | `AnomalyDetector`  |
-| Content Moderator | `ContentModerator` |
-| Personalizace      | `Personalizer`     |
-
-
-#### <a name="pricing-tiers-and-billing"></a>Cenové úrovně a fakturace
-
-Cenové úrovně (a množství, které se vám bude účtovat), vycházejí z počtu transakcí, které odešlete pomocí ověřovacích informací. Každá cenová úroveň určuje:
-* maximální počet povolených transakcí za sekundu (TPS).
-* funkce služby povolené v rámci cenové úrovně.
-* náklady na předdefinovaný počet transakcí. Po překročení tohoto čísla dojde k zadání dalších poplatků uvedených v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
-
-> [!NOTE]
-> Mnohé z Cognitive Services mají bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
-
-## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku služeb Cognitive Services
-
-Pokud chcete vytvořit nový prostředek Cognitive Services a přihlásit se k jeho odběru, použijte funkci **Create** . Tato funkce přidá nový fakturovatelný prostředek do skupiny prostředků, kterou předáte. Když vytváříte nový prostředek, budete muset znát "druh" služby, kterou chcete použít, spolu s její cenovou úrovní (nebo SKU) a umístěním Azure. Následující funkce přebírá všechny tyto argumenty a vytvoří prostředek.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/azure_management_service/create_delete_resource.js?name=snippet_create)]
+[!INCLUDE [SKUs and pricing](./sku-pricing.md)]
 
 ## <a name="view-your-resources"></a>Zobrazení prostředků
 
@@ -186,9 +114,9 @@ Pak v okně konzoly spusťte aplikaci pomocí `node` příkazu.
 node index.js
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-* [Referenční dokumentace k sadě Azure Management SDK](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
-* [Co je Azure Cognitive Services?](../../Welcome.md)
+* [Referenční dokumentace k sadě Azure Management SDK](/javascript/api/@azure/arm-cognitiveservices/)
+* [Co je Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Ověřování požadavků do Azure Cognitive Services](../../authentication.md)
 * [Vytvoření nového prostředku pomocí webu Azure Portal](../../cognitive-services-apis-create-account.md)

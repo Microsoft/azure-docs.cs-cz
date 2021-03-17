@@ -3,12 +3,12 @@ title: Šifrování účtu úložiště Azure používaného testovacím prostř
 description: Naučte se konfigurovat šifrování úložiště Azure používaného testovacím prostředím v Azure DevTest Labs
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433546"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149307"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Šifrování Azure Storage používaného testovacím prostředím v Azure DevTest Labs
 Každé testovací prostředí vytvořené v Azure DevTest Labs se vytvoří s přidruženým účtem služby Azure Storage. Účet úložiště se používá pro následující účely: 
@@ -28,21 +28,21 @@ Každé testovací prostředí vytvořené v Azure DevTest Labs se vytvoří s p
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Výběr skupiny prostředků na stránce Přehled":::
 1. Vyberte účet Azure Storage testovacího prostředí. Konvence pojmenování pro účet úložiště v testovacím prostředí je: `a<labNameWithoutInvalidCharacters><4-digit number>` . Například pokud je název testovacího prostředí `contosolab` , může být název účtu úložiště `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Ve skupině prostředků testovacího prostředí vyberte účet úložiště.":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Výběr skupiny prostředků na stránce Přehled":::
 3. Na stránce **účet úložiště** vyberte v nabídce vlevo možnost **Průzkumník služby Storage (Preview)** a pak vyberte **kontejnery objektů BLOB** pro nalezení relevantního obsahu souvisejícího s testovacím prostředím. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Storage Explorer (Preview)" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Výběr skupiny prostředků na stránce Přehled" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>Šifrování účtu úložiště testovacího prostředí
 Azure Storage automaticky šifruje vaše data, když se trvale uloží do cloudu. Šifrování Azure Storage chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. Další informace najdete v tématu [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
 
-Data v účtu úložiště testovacího prostředí se šifrují pomocí **klíče spravovaného Microsoftem**. Pro šifrování vašich dat můžete spoléhat na klíče spravované Microsoftem, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování s vlastními klíči pro účet úložiště testovacího prostředí, můžete zadat **klíč spravovaný zákazníkem** , který Azure Key Vault použít pro šifrování a dešifrování dat v úložišti objektů BLOB a ve službě soubory Azure. Další informace o klíčích spravovaných zákazníkem najdete v tématu [použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](../storage/common/encryption-customer-managed-keys.md).
+Data v účtu úložiště testovacího prostředí se šifrují pomocí **klíče spravovaného Microsoftem**. Pro šifrování vašich dat můžete spoléhat na klíče spravované Microsoftem, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování s vlastními klíči pro účet úložiště testovacího prostředí, můžete zadat **klíč spravovaný zákazníkem** , který Azure Key Vault použít pro šifrování a dešifrování dat v úložišti objektů BLOB a ve službě soubory Azure. Další informace o klíčích spravovaných zákazníkem najdete v tématu [použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](../storage/common/customer-managed-keys-overview.md).
 
 Informace o konfiguraci klíčů spravovaných zákazníkem pro šifrování Azure Storage najdete v následujících článcích: 
 
-- [Azure Portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
+- [Azure Portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>Správa životního cyklu služby Azure Blob Storage
@@ -101,8 +101,6 @@ Například následující pravidlo se používá k nastavení 90ho pravidla vyp
 ## <a name="next-steps"></a>Další kroky
 Informace o konfiguraci klíčů spravovaných zákazníkem pro šifrování Azure Storage najdete v následujících článcích: 
 
-- [Azure Portal](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure Portal](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)

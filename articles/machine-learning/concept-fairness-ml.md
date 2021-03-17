@@ -1,5 +1,5 @@
 ---
-title: Zmírnění rovnosti v modelech strojového učení (Preview)
+title: Zmírnění nespravedlivosti v modelech Machine Learning (Preview)
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o nespravedlivosti v modelech strojového učení a o tom, jak může balíček Pythonu Fairlearn pomáhat při vytváření spravedlivých modelů.
 services: machine-learning
@@ -8,19 +8,20 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
-ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 01/26/2021
+ms.custom: responsible-ml
+ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689673"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659677"
 ---
-# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Zmírnění rovnosti v modelech strojového učení (Preview)
+# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>Zmírnění nespravedlivosti v modelech Machine Learning (Preview)
 
-Přečtěte si o nerovnosti ve strojovém učení a o tom, jak [Fairlearn](https://fairlearn.github.io/) Open Source balíček python vám může přispět k zmírnění problémů s spravedlivým používáním modelů strojového učení. Pokud se vám nesnažíte pochopit problémy s rovností a hodnotit spravedlivost při sestavování modelů strojového učení, můžete vytvářet modely, které vytvářejí nerovné výsledky.
+Přečtěte si o nerovnosti ve strojovém učení a o tom, jak [Fairlearn](https://fairlearn.github.io/) Open Source balíček python vám může přispět k zmírňování nespravedlivých problémů v modelech strojového učení. Pokud se vám nesnažíte pochopit problémy s rovností a hodnotit spravedlivost při sestavování modelů strojového učení, můžete vytvářet modely, které vytvářejí nerovné výsledky.
 
-Následující souhrn [uživatelské příručky](https://fairlearn.github.io/user_guide/index.html) k Fairlearn Open Source balíčku popisuje, jak ho použít k vyhodnocení spravedlivého nastavování systémů AI.  Fairlearn Open Source balíček může také nabízet možnosti, které vám pomohou zmírnit a snižovat problémy.  V tématu [postupy](how-to-machine-learning-fairness-aml.md) a [ukázky poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) můžete v průběhu školení na Azure Machine Learning povolit posouzení nespravedlivosti systémů AI.
+Následující souhrn [uživatelské příručky](https://fairlearn.github.io/main/user_guide/index.html) k Fairlearn Open Source balíčku popisuje, jak ho použít k vyhodnocení spravedlivého nastavování systémů AI.  Fairlearn Open Source balíček může také nabízet možnosti, které vám pomohou zmírnit a snižovat problémy.  V tématu [postupy](how-to-machine-learning-fairness-aml.md) a [ukázky poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) můžete v průběhu školení na Azure Machine Learning povolit posouzení nespravedlivosti systémů AI.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Jaké jsou v modelech strojového učení spravedlivé?
@@ -40,7 +41,7 @@ Chcete-li omezit nerovné chování v systémech AI, je nutné tyto škody vyhod
 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Posouzení a zmírnění spravedlnosti pomocí Fairlearn
 
-Fairlearn je open source balíček Pythonu, který vývojářům v systémech Machine Learning umožňuje vyhodnotit jeho neškodné dodržování předpisů a zmírnit pozorně zjištěné problémy s spravedlivou škodou.
+Fairlearn je open source balíček Pythonu, který vývojářům v systémech Machine Learning umožňuje vyhodnotit jeho spravedlivost a zmírnit nespravedlivost.
 
 Otevřený zdrojový balíček Fairlearn má dvě komponenty:
 
@@ -108,6 +109,6 @@ Fairlearn Open Source balíček poskytuje postprocessing a redukční algoritmy 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak používat různé komponenty, na [GitHubu](https://github.com/fairlearn/fairlearn/), [uživatelské příručce](https://fairlearn.github.io/user_guide/index.html), [Příklady](https://fairlearn.github.io/auto_examples/)a [ukázkové poznámkové bloky](https://github.com/fairlearn/fairlearn/tree/master/notebooks)pro Fairlearn.
+- Přečtěte si, jak používat různé komponenty, na [GitHubu](https://github.com/fairlearn/fairlearn/), [uživatelské příručce](https://fairlearn.github.io/main/user_guide/index.html), [Příklady](https://fairlearn.github.io/main/auto_examples/index.html)a [ukázkové poznámkové bloky](https://github.com/fairlearn/fairlearn/tree/master/notebooks)pro Fairlearn.
 - Naučte [se, jak](how-to-machine-learning-fairness-aml.md) v Azure Machine Learning povolit posouzení spravedlnosti pro modely strojového učení.
 - V [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) najdete další scénáře posouzení spravedlivosti v Azure Machine Learning. 

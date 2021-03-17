@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203380"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953113"
 ---
 # <a name="social-accounts-claims-transformations"></a>Transformace deklarací účtů sociálních sítí
 
@@ -39,7 +39,7 @@ Tento článek popisuje příklady použití transformací v rámci schématu ro
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Vytvoří reprezentaci JSON vlastnosti alternativeSecurityId uživatele, kterou lze použít v voláních Azure Active Directory. Další informace najdete v tématu schéma [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) .
+Vytvoří reprezentaci JSON vlastnosti alternativeSecurityId uživatele, kterou lze použít v voláních Azure Active Directory. Další informace najdete v tématu schéma [AlternativeSecurityId](/graph/api/resources/alternativesecurityid) .
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
@@ -82,7 +82,7 @@ Přidá `AlternativeSecurityId` k `alternativeSecurityIdCollection` deklaraci id
 Následující příklad propojuje novou sociální identitu s existujícím účtem. Propojení nové sociální identity:
 1. V technických profilech **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserReadUsingObjectId** vypíše uživatel deklaraci identity **alternativeSecurityIds** uživatele.
 1. Požádejte uživatele, aby se přihlásil pomocí některého z poskytovatelů identity, kteří nejsou přidružení k tomuto uživateli.
-1. Pomocí transformace deklarací identity **CreateAlternativeSecurityId** vytvořte nový typ deklarace identity **alternativeSecurityId** s názvem.`AlternativeSecurityId2`
+1. Pomocí transformace deklarací identity **CreateAlternativeSecurityId** vytvořte nový typ deklarace identity **alternativeSecurityId** s názvem. `AlternativeSecurityId2`
 1. Zavolejte transformaci deklarací **AddItemToAlternativeSecurityIdCollection** a přidejte tak deklaraci identity **AlternativeSecurityId2** do existující deklarace identity **AlternativeSecurityIds** .
 1. Zachovat deklaraci identity **alternativeSecurityIds** pro uživatelský účet
 

@@ -1,19 +1,19 @@
 ---
-title: Konfigurace tunelového propojení uživatelů při trvalém připojení
+title: Konfigurace tunelového propojení uživatele Always-On VPN
 titleSuffix: Azure Virtual WAN
 description: Tento článek popisuje, jak pro virtuální síť WAN nakonfigurovat uživatelské tunelové propojení VPN typu Always On.
-services: vpn-gateway
+services: virtual-wan
 author: cherylmc
-ms.service: vpn-gateway
+ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 03f67053a5a199c8c64efb05d2b6a65ad6707650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e83ca64d2b0e50ec02007a3cd878e6bf034d0961
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564044"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313582"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Konfigurace tunelového připojení VPN typu Always On pro virtuální síť WAN
 

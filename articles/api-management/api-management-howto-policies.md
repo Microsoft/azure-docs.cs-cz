@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: a0786c1ce5d3a693dabe422b65af7177e16c20b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905512"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358112"
 ---
 # <a name="policies-in-azure-api-management"></a>Zásady ve službě Azure API Management
 
@@ -38,7 +38,7 @@ Kliknutím na příkaz Enabled přidáte příslušný kód XML do umístění k
 > 
 > 
 
-Konfigurace je rozdělena do `inbound` , `backend` , `outbound` a `on-error` . Řada zadaných příkazů zásad se spustí v pořadí podle požadavku a odpovědi.
+Konfigurace je rozdělena do `inbound` , `backend` , `outbound` a `on-error` . Pro požadavek a odpověď se spustí řada zadaných příkazů zásad.
 
 ```xml
 <policies>
@@ -70,7 +70,7 @@ Informace o tom, jak nakonfigurovat zásady, najdete v tématu [nastavení nebo 
 
 ## <a name="policy-samples"></a>Ukázky zásad
 
-Další příklady kódu najdete v tématu [ukázky zásad](policy-samples.md) .
+Další příklady kódu najdete v tématu [ukázky zásad](./policy-reference.md) .
 
 ## <a name="examples"></a>Příklady
 
@@ -119,7 +119,7 @@ Další informace o práci se zásadami najdete v těchto tématech:
 
 + [Transformační rozhraní API](transform-api.md)
 + [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
-+ [Ukázky zásad](policy-samples.md)   
++ [Ukázky zásad](./policy-reference.md)   
 
 [Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md

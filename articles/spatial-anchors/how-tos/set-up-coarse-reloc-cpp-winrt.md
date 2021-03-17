@@ -1,19 +1,19 @@
 ---
 title: Hrubá reprostředí v C++/WinRT
 description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubých rozmístění v C++/WinRT.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7068ecb7fcfe888118396523e0e3d997e5a59e9a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548284"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005006"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Jak vytvořit a najít kotvy s využitím hrubých rozmístění v C++/WinRT
 
@@ -31,7 +31,7 @@ Prostorové kotvy Azure můžou přidružit zařízení k datům snímače a um�
 
 K dokončení tohoto průvodce se ujistěte, že máte následující:
 
-- Základní znalostní báze C++ a <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">rozhraní prostředí Windows Runtime API</a>.
+- Základní znalostní báze C++ a <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">rozhraní prostředí Windows Runtime API</a>.
 - Přečtěte si [Přehled prostorových kotev Azure](../overview.md).
 - Bylo dokončeno jedno z [5 minut rychlých startů](../index.yml).
 - Přečtěte si [postupy pro vytváření a hledání kotev](../create-locate-anchors-overview.md).

@@ -1,17 +1,17 @@
 ---
 title: Řešení problémů s projekty Azure Migrate
 description: Pomáhá řešit problémy s vytvářením a správou Azure Migrate projektů.
-ms.topic: troubleshooting
-author: musa-57
+author: ms-psharma
+ms.author: panshar
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/01/2020
-ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f68a57d3780f388488d48835f322ff04ab7c7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121635"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753378"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Řešení problémů s projekty Azure Migrate
 
@@ -19,7 +19,7 @@ Tento článek vám pomůže při řešení potíží při vytváření a správ
 
 ## <a name="how-to-add-new-project"></a>Jak přidat nový projekt?
 
-V předplatném můžete mít více Azure Migratech projektů. [Naučte](how-to-add-tool-first-time.md) se, jak poprvé vytvořit projekt, nebo [Přidat další](create-manage-projects.md#create-additional-projects) projekty.
+V předplatném můžete mít více Azure Migratech projektů. [Naučte](./create-manage-projects.md) se, jak poprvé vytvořit projekt, nebo [Přidat další](create-manage-projects.md#create-additional-projects) projekty.
 
 ## <a name="what-azure-permissions-are-needed"></a>Jaká oprávnění Azure potřebujete?
 
@@ -40,19 +40,19 @@ V jednom projektu můžete vyhodnotit až 35 000 virtuálních počítačů VMwa
 
 ## <a name="can-i-upgrade-old-project"></a>Můžu upgradovat starý projekt?
 
-Projekty z předchozí verze Azure Migrate nelze aktualizovat. Musíte [vytvořit nový projekt](how-to-add-tool-first-time.md)a přidat do něj nástroje.
+Projekty z předchozí verze Azure Migrate nelze aktualizovat. Musíte [vytvořit nový projekt](./create-manage-projects.md)a přidat do něj nástroje.
 
 ## <a name="cant-create-a-project"></a>Nejde vytvořit projekt.
 
 Pokud se pokusíte vytvořit projekt a dojde k chybě při nasazení:
 
-- Zkuste projekt znovu vytvořit pro případ, že se jedná o přechodnou chybu. V **nasazení**klikněte na **znovu nasadit** a zkuste to znovu.
+- Zkuste projekt znovu vytvořit pro případ, že se jedná o přechodnou chybu. V **nasazení** klikněte na **znovu nasadit** a zkuste to znovu.
 - Ověřte, jestli máte v předplatném oprávnění Přispěvatel nebo Owner.
 - Pokud nasazujete v nově přidané geografické oblasti, počkejte krátkou dobu a pak to zkuste znovu.
 - Pokud se zobrazí chybová zpráva "požadavky musí obsahovat hlavičky identity uživatele", může to znamenat, že nemáte přístup k tenantovi Azure Active Directory (Azure AD) organizace. V tomto případě:
     - Při prvním přidání do tenanta Azure AD obdržíte e-mailovou pozvánku pro připojení ke klientovi.
     - Přijměte pozvánku, která se má přidat do tenanta.
-    - Pokud se e-mail nezobrazuje, obraťte se na uživatele s přístupem k tenantovi a požádejte ho, aby [pozvánku poslal znovu](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users) .
+    - Pokud se e-mail nezobrazuje, obraťte se na uživatele s přístupem k tenantovi a požádejte ho, aby [pozvánku poslal znovu](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users) .
     - Po přijetí e-mailu s pozvánkou otevřete ho a vyberte odkaz pro přijetí pozvánky. Pak se odhlaste ze Azure Portal a znovu se přihlaste. (obnovení prohlížeče nebude fungovat.) Pak můžete začít vytvářet projekt migrace.
 
 ## <a name="how-do-i-delete-a-project"></a>Návody odstranit projekt
@@ -61,7 +61,7 @@ Chcete-li odstranit projekt, [postupujte podle těchto pokynů](create-manage-pr
 
 ## <a name="added-tools-dont-show"></a>Přidané nástroje se nezobrazují
 
-Ujistěte se, že máte vybraný správný projekt. V centru Azure Migrate > **serverech** nebo v části **databáze**klikněte v pravém horním rohu obrazovky na **změnit** u pole **migrovat projekt (změnit)** . Vyberte správné předplatné a název projektu > **OK**. Stránka by se měla aktualizovat pomocí přidaných nástrojů vybraného projektu.
+Ujistěte se, že máte vybraný správný projekt. V centru Azure Migrate > **serverech** nebo v části **databáze** klikněte v pravém horním rohu obrazovky na **změnit** u pole **migrovat projekt (změnit)** . Vyberte správné předplatné a název projektu > **OK**. Stránka by se měla aktualizovat pomocí přidaných nástrojů vybraného projektu.
 
 ## <a name="next-steps"></a>Další kroky
 

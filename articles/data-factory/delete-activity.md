@@ -1,23 +1,17 @@
 ---
 title: Aktivita odstranění v Azure Data Factory
 description: Naučte se odstraňovat soubory v různých úložištích souborů s aktivitou odstranění v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 55f2ab7008644ac084782e448e8e761cd19ea37e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3021d29f472dbbf43ae53981287b1f4676e8f932
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225780"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392710"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Aktivita odstranění v Azure Data Factory
 
@@ -52,8 +46,9 @@ Tady je několik doporučení pro použití aktivity odstranit:
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Cloudové úložiště Googlu](connector-google-cloud-storage.md)
+-   [HDFS](connector-hdfs.md)
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,8 +59,11 @@ Tady je několik doporučení pro použití aktivity odstranit:
             "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
-        "recursive": true/false,
-        "maxConcurrentConnections": <number>,
+        "storeSettings": {
+            "type": "<source type>",
+            "recursive": true/false,
+            "maxConcurrentConnections": <number>
+        },
         "enableLogging": true/false,
         "logStorageSettings": {
             "linkedServiceName": {
@@ -82,7 +80,7 @@ Tady je několik doporučení pro použití aktivity odstranit:
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| integrován | Poskytuje odkaz na datovou sadu pro určení souborů nebo složky, které chcete odstranit. | Ano |
+| integrován | Poskytuje odkaz na datovou sadu pro určení souborů nebo složky, které chcete odstranit. | Yes |
 | zahrnout | Určuje, zda se mají rekurzivně odstranit soubory z podsložek nebo pouze ze zadané složky.  | No. Výchozí formát je `false`. |
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště, pro odstraňování složek nebo souborů.   |  No. Výchozí formát je `1`. |
 | enablelogging | Určuje, zda je třeba zaznamenat název složky nebo souboru, které byly odstraněny. Je-li nastavena hodnota true, je třeba zadat účet úložiště pro uložení souboru protokolu, aby bylo možné sledovat chování aktivity odstranit pomocí čtení souboru protokolu. | No |
@@ -116,7 +114,7 @@ Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity od
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Ukázkový soubor protokolu aktivity odstranění
 
-| Název | Kategorie | Stav | Chyba |
+| Name | Kategorie | Stav | Chyba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.jsna | Soubor | Odstraněné |  |
 | test2/hello789.txt | Soubor | Odstraněné |  |
@@ -133,7 +131,7 @@ Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 Nyní používáte aktivitu odstranit k odstranění složky nebo souborů kombinací jiné hodnoty vlastnosti z datové sady a aktivity odstranění:
 
-| folderPath (z datové sady) | Název souboru (z datové sady) | rekurzivní (z aktivity odstranit) | Výstup |
+| folderPath | fileName | zahrnout | Výstup |
 |:--- |:--- |:--- |:--- |
 | Kořen/Folder_A_2 | NULL | Ne | Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Kořen/Folder_A_2 | NULL | Ano | Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
@@ -241,7 +239,7 @@ Můžete vytvořit kanál pro pravidelné vyčištění složky nebo souborů ro
 }
 ```
 
-#### <a name="sample-trigger"></a>Ukázka triggeru
+#### <a name="sample-trigger"></a>Příklad triggeru
 
 ```json
 {
@@ -761,7 +759,7 @@ Můžete také získat šablonu pro přesun [souborů.](solution-template-move-f
 
 -   Aktivita Delete nepodporuje odstranění seznamu složek popsaných pomocí zástupného znaku.
 
--   Při použití filtru atributu souboru: modifiedDatetimeStart a modifiedDatetimeEnd vyberte soubory, které chcete odstranit, nezapomeňte nastavit "fileName": "*" v datové sadě.
+-   Při použití filtru atributů souboru v aktivitě Delete: modifiedDatetimeStart a modifiedDatetimeEnd vyberte soubory, které chcete odstranit, nezapomeňte nastavit "wildcardFileName": "*" v aktivitě DELETE.
 
 ## <a name="next-steps"></a>Další kroky
 

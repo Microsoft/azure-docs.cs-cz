@@ -3,7 +3,7 @@ title: Media Services kvóty a omezení | Microsoft Docs
 description: Toto téma popisuje kvóty a omezení související s Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d4c43afd-dba8-40a2-ad92-6de54152f7ec
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: dc0d41457729bf5fd78adb88d683ab4fbe23a148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 89c8cae9a13225ec76b0a26954b6063332d76495
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60557136"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009466"
 ---
 # <a name="quotas-and-limitations"></a>Kvóty a omezení
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek popisuje kvóty a omezení související s Microsoft Azure Media Services.
 

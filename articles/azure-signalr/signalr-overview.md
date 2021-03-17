@@ -4,14 +4,15 @@ description: Lépe pochopíte typické scénáře použití pro používání sl
 author: sffamily
 ms.service: signalr
 ms.topic: overview
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92da400616ace9f24da121d81798d5ebd9222e35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74157588"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "88921881"
 ---
 # <a name="what-is-azure-signalr-service"></a>Co je služba signalizace Azure?
 

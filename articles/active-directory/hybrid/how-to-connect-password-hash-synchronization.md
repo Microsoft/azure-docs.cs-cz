@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358558"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858735"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -32,7 +32,7 @@ Pokud chcete synchronizovat heslo, Azure AD Connect Sync extrahuje hodnotu hash 
 
 Skutečný tok dat procesu synchronizace hodnot hash hesel je podobný synchronizaci uživatelských dat. Hesla jsou ale synchronizovaná častěji než standardní okno synchronizace adresářů pro jiné atributy. Proces synchronizace hodnot hash hesel se spouští každé 2 minuty. Frekvence tohoto procesu se nedá změnit. Při synchronizaci hesla přepíše existující heslo cloudu.
 
-Při prvním povolení funkce synchronizace hodnot hash hesel provádí počáteční synchronizaci hesel všech uživatelů v oboru. Nelze explicitně definovat podmnožinu hesel uživatelů, které chcete synchronizovat. Pokud však existuje více konektorů, je možné zakázat synchronizaci hodnot hash hesel pro některé konektory, ale ne jiné pomocí rutiny [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
+Při prvním povolení funkce synchronizace hodnot hash hesel provádí počáteční synchronizaci hesel všech uživatelů v oboru. Nelze explicitně definovat podmnožinu hesel uživatelů, které chcete synchronizovat. Pokud však existuje více konektorů, je možné zakázat synchronizaci hodnot hash hesel pro některé konektory, ale ne jiné pomocí rutiny [set-ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) .
 
 Když změníte místní heslo, aktualizované heslo se synchronizuje častěji během několika minut.
 Funkce synchronizace hodnot hash hesel automaticky opakuje neúspěšné pokusy o synchronizaci. Pokud při pokusu o synchronizaci hesla dojde k chybě, do prohlížeče událostí se zaznamená chyba.
@@ -51,19 +51,19 @@ V následující části jsou popsány podrobné informace o tom, jak funguje sy
 
 ![Podrobný tok hesla](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
-1. Každé dvě minuty agent synchronizace hodnot hash hesel na serveru služby AD Connect požaduje uložené hodnoty hash hesel (atribut unicodePwd) z řadiče domény.  Tato žádost je přes standardní protokol replikace [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) , který se používá k synchronizaci dat mezi řadiči domény. Aby bylo možné získat hodnoty hash hesla, musí mít účet služby replikované změny adresáře a replikovat změny adresáře všechna oprávnění služby AD (ve výchozím nastavení udělená při instalaci).
+1. Každé dvě minuty agent synchronizace hodnot hash hesel na serveru služby AD Connect požaduje uložené hodnoty hash hesel (atribut unicodePwd) z řadiče domény.  Tato žádost je přes standardní protokol replikace [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) , který se používá k synchronizaci dat mezi řadiči domény. Aby bylo možné získat hodnoty hash hesla, musí mít účet služby replikované změny adresáře a replikovat změny adresáře všechna oprávnění služby AD (ve výchozím nastavení udělená při instalaci).
 2. Před odesláním řadič domény zašifruje hodnotu hash hesla MD4 pomocí klíče, který je hash [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) klíče relace RPC a Salt. Pak pošle výsledek do agenta synchronizace hodnoty hash hesla přes RPC. Řadič domény také předá sůl agentovi synchronizace pomocí protokolu replikace řadiče domény, takže Agent bude moci dešifrovat obálku.
-3. Po tom, co agent synchronizace hodnot hash hesel obsahuje šifrovanou obálku, použije [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) a sůl k vygenerování klíče k dešifrování přijatých dat zpět do původního formátu MD4. Agent synchronizace hodnoty hash hesla nikdy nemá přístup k heslu nešifrovaných textů. Použití MD5 agenta synchronizace hodnot hash hesla je výhradně pro kompatibilitu replikačního protokolu s řadičem domény a používá se pouze pro místní počítače mezi řadičem domény a agentem synchronizace hodnot hash hesel.
+3. Po tom, co agent synchronizace hodnot hash hesel obsahuje šifrovanou obálku, použije [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider) a sůl k vygenerování klíče k dešifrování přijatých dat zpět do původního formátu MD4. Agent synchronizace hodnoty hash hesla nikdy nemá přístup k heslu nešifrovaných textů. Použití MD5 agenta synchronizace hodnot hash hesla je výhradně pro kompatibilitu replikačního protokolu s řadičem domény a používá se pouze v místním prostředí mezi řadičem domény a agentem synchronizace hodnot hash hesel.
 4. Agent synchronizace hodnot hash hesel rozbalí 16bajtový binární hodnotu hash hesla na 64 bajtů, a to tak, že nejprve převede hodnotu hash na šestnáctkový řetězec 32-Byte a pak tento řetězec převede zpátky do binárního formátu UTF-16.
 5. Agent synchronizace hodnot hash hesla přidá na uživatele hodnotu Salt, která se skládá z 10 bajtů o velikosti soli 64 bajtů, aby bylo možné dále chránit původní hodnotu hash.
-6. Agent synchronizace hodnot hash hesel pak zkombinuje hodnotu hash MD4 Plus pro každou uživatelskou sůl a zaznamená vstup do funkce [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iterací algoritmu hash s klíčem [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) se používají. 
+6. Agent synchronizace hodnot hash hesel pak zkombinuje hodnotu hash MD4 Plus pro každou uživatelskou sůl a zaznamená vstup do funkce [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iterací algoritmu hash s klíčem [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256) se používají. 
 7. Agent synchronizace hodnot hash hesla převezme výsledný 32 bajtový algoritmus hash, zřetězí na uživatele hodnotu Salt a počet SHA256ch iterací (pro použití službou Azure AD) a pak přenáší řetězec z Azure AD Connect do služby Azure AD prostřednictvím protokolu TLS.</br> 
 8. Když se uživatel pokusí přihlásit ke službě Azure AD a zadá heslo, heslo se spustí pomocí stejného procesu MD4 + Salt + PBKDF2 + HMAC-SHA256. Pokud výsledný algoritmus hash odpovídá hodnotě hash uložené ve službě Azure AD, zadal uživatel správné heslo a bude ověřený.
 
 > [!NOTE]
 > Původní algoritmus hash MD4 se nepřenáší do služby Azure AD. Místo toho se přenáší hodnota hash SHA256 původního algoritmu hash MD4. Výsledkem je, že pokud se získá hodnota hash uložená v Azure AD, nedá se použít v rámci útoku typu Pass-the-hash.
 
-### <a name="security-considerations"></a>Aspekty zabezpečení
+### <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Při synchronizaci hesel není verze ve formátu prostého textu hesla vystavena funkci synchronizace hodnot hash hesel, službě Azure AD ani žádné z přidružených služeb.
 
@@ -109,11 +109,11 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Po povolení Služba Azure AD nepřejde na každého synchronizovaného uživatele, aby odebral `DisablePasswordExpiration` hodnotu z atributu PasswordPolicies. Místo toho je hodnota nastavena na `None` během příští synchronizace hesla pro každého uživatele při dalším změně hesla v místní službě AD.  
+Po povolení Služba Azure AD nepřejde na každého synchronizovaného uživatele, aby odebral `DisablePasswordExpiration` hodnotu z atributu PasswordPolicies. Místo toho se `DisablePasswordExpiration` hodnota při další změně hesla v místní službě AD odebere z PasswordPolicies při příští synchronizaci hodnoty hash hesla pro každého uživatele.
 
 Doporučuje se povolit EnforceCloudPasswordPolicyForPasswordSyncedUsers před povolením synchronizace hodnot hash hesel, aby počáteční synchronizace hodnot hash hesel nepřidala `DisablePasswordExpiration` hodnotu do atributu PasswordPolicies pro uživatele.
 
-Výchozí zásady hesel Azure AD vyžadují, aby uživatelé změnili hesla každých 90 dní. Pokud je vaše zásada ve službě AD také 90 dní, obě tyto zásady by se měly shodovat. Pokud ale zásada AD není 90 dní, můžete aktualizovat zásady hesel Azure AD tak, aby odpovídaly pomocí příkazu Set-MsolPasswordPolicy prostředí PowerShell.
+Výchozí zásady hesel Azure AD vyžadují, aby uživatelé změnili hesla každých 90 dní. Pokud je vaše zásada ve službě AD také 90 dní, obě tyto zásady by se měly shodovat. Pokud však zásada AD není 90 dní, můžete aktualizovat zásady hesel služby Azure AD tak, aby odpovídaly pomocí příkazu Set-MsolPasswordPolicy PowerShellu.
 
 Azure AD podporuje pro každou registrovanou doménu samostatné zásady vypršení platnosti hesla.
 
@@ -122,7 +122,7 @@ Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potř
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Příkaz prostředí PowerShell Set-MsolPasswordPolicy nebude fungovat u federovaných domén. 
+> Příkaz Set-MsolPasswordPolicy PowerShellu nebude fungovat u federovaných domén. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Synchronizace dočasných hesel a "vynucení změny hesla při příštím přihlášení"
 
@@ -132,7 +132,7 @@ Funkce dočasného hesla pomáhá zajistit, že přenos vlastnictví přihlašov
 
 Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uživatele, můžete povolit funkci *ForcePasswordChangeOnLogOn* spuštěním následujícího příkazu na vašem serveru Azure AD Connect:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
+`Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Vynucení, když uživatel změní heslo při příštím přihlášení, vyžaduje změnu hesla.  Azure AD Connect nezačne příznak změny hesla vynutit sám o sobě; je doplněné ke zjištěné změně hesla, ke které dochází během synchronizace hodnot hash hesel.
@@ -142,7 +142,7 @@ Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uži
 
 #### <a name="account-expiration"></a>Vypršení platnosti účtu
 
-Pokud vaše organizace používá atribut accountExpires jako součást správy uživatelských účtů, tento atribut není synchronizovaný do Azure AD. V důsledku toho bude v Azure AD stále aktivní účet Active Directory s vypršenou platností v prostředí nakonfigurovaném pro synchronizaci hodnot hash hesel. Doporučujeme, aby v případě vypršení platnosti účtu měla akce pracovního postupu aktivovat skript PowerShellu, který zakáže účet Azure AD uživatele (použijte rutinu [set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) ). Pokud je účet zapnutý, měla by se zapnout instance služby Azure AD.
+Pokud vaše organizace používá atribut accountExpires jako součást správy uživatelských účtů, tento atribut není synchronizovaný do Azure AD. V důsledku toho bude v Azure AD stále aktivní účet Active Directory s vypršenou platností v prostředí nakonfigurovaném pro synchronizaci hodnot hash hesel. Doporučujeme, aby v případě vypršení platnosti účtu měla akce pracovního postupu aktivovat skript PowerShellu, který zakáže účet Azure AD uživatele (použijte rutinu [set-AzureADUser](/powershell/module/azuread/set-azureaduser) ). Pokud je účet zapnutý, měla by se zapnout instance služby Azure AD.
 
 ### <a name="overwrite-synchronized-passwords"></a>Přepsat synchronizovaná hesla
 
@@ -213,7 +213,7 @@ Pokud byl server uzamčen podle standardu FIPS (Federal Information Processing S
 1. Přejít na%programfiles%\Azure AD Sync\Bin.
 2. Otevřete miiserver.exe.config.
 3. Na konci souboru přejít na uzel Configuration/runtime.
-4. Přidejte následující uzel:`<enforceFIPSPolicy enabled="false"/>`
+4. Přidejte následující uzel: `<enforceFIPSPolicy enabled="false"/>`
 5. Uložte provedené změny.
 
 Pro referenci by tento fragment kódu vypadal takto:

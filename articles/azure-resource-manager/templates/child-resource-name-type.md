@@ -1,20 +1,22 @@
 ---
 title: Podřízené prostředky v šablonách
-description: Popisuje, jak nastavit název a typ pro podřízené prostředky v šabloně Azure Resource Manager.
+description: Popisuje, jak nastavit název a typ pro podřízené prostředky v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/21/2020
+ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80743832"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963908"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Nastavení názvu a typu pro podřízené prostředky
 
-Podřízené prostředky jsou prostředky, které existují pouze v kontextu jiného prostředku. Například [rozšíření virtuálního počítače](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) nemůže existovat bez [virtuálního počítače](/azure/templates/microsoft.compute/2019-03-01/virtualmachines). Prostředek rozšíření je podřízený virtuálnímu počítači.
+Podřízené prostředky jsou prostředky, které existují pouze v kontextu jiného prostředku. Například [rozšíření virtuálního počítače](/azure/templates/microsoft.compute/virtualmachines/extensions) nemůže existovat bez [virtuálního počítače](/azure/templates/microsoft.compute/virtualmachines). Prostředek rozšíření je podřízený virtuálnímu počítači.
 
-V šabloně Správce prostředků můžete zadat podřízený prostředek buď v nadřazeném prostředku, nebo mimo nadřazený prostředek. Následující příklad ukazuje podřízený prostředek zahrnutý do vlastnosti Resources nadřazeného prostředku.
+Každý nadřazený prostředek přijímá pouze určité typy prostředků jako podřízené prostředky. Typ prostředku pro podřízený prostředek zahrnuje typ prostředku nadřazeného prostředku. Například `Microsoft.Web/sites/config` a `Microsoft.Web/sites/extensions` jsou oba podřízené prostředky `Microsoft.Web/sites` . Přijaté typy prostředků jsou zadány ve [schématu šablony](https://github.com/Azure/azure-resource-manager-schemas) nadřazeného prostředku.
+
+V šabloně Azure Resource Manager (šablona ARM) můžete zadat podřízený prostředek buď v nadřazeném prostředku, nebo mimo nadřazený prostředek. Následující příklad ukazuje podřízený prostředek zahrnutý do vlastnosti Resources nadřazeného prostředku.
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ V šabloně Správce prostředků můžete zadat podřízený prostředek buď v
   }
 ]
 ```
+
+Podřízené prostředky lze definovat pouze pěti úrovněmi.
 
 Následující příklad ukazuje podřízený prostředek mimo nadřazený prostředek. Tento přístup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šabloně nebo pokud chcete použít [kopírování](copy-resources.md) k vytvoření více než jednoho podřízeného prostředku.
 
@@ -85,7 +89,7 @@ Následující příklad ukazuje virtuální síť a podsíť. Všimněte si, ž
 ]
 ```
 
-Úplný typ prostředku je i **Microsoft. Network/virtualNetworks/podsítí**. Neposkytujeme **Microsoft. Network/virtualNetworks/** , protože se předpokládá od nadřazeného typu prostředku.
+Úplný typ prostředku je stále `Microsoft.Network/virtualNetworks/subnets` . Neposkytnete, `Microsoft.Network/virtualNetworks/` protože se předpokládá od nadřazeného typu prostředku.
 
 Název podřízeného prostředku je nastavený na **Subnet1** , ale úplný název obsahuje název nadřazeného objektu. Neposkytujete **VNet1** , protože se předpokládá od nadřazeného prostředku.
 
@@ -98,7 +102,7 @@ Při definování mimo nadřazený prostředek naformátujete typ a s lomítky, 
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-Následující příklad ukazuje virtuální síť a podsíť, které jsou definovány na kořenové úrovni. Všimněte si, že podsíť není obsažená v poli prostředků pro virtuální síť. Název se nastaví na **VNet1/Subnet1** a typ se nastaví na **Microsoft. Network/virtualNetworks/subnets**. Podřízený prostředek je v nadřazeném prostředku označený jako závislý, protože nadřazený prostředek musí existovat předtím, než bude možné nasadit podřízený prostředek.
+Následující příklad ukazuje virtuální síť a podsíť, které jsou definovány na kořenové úrovni. Všimněte si, že podsíť není obsažená v poli prostředků pro virtuální síť. Název je nastaven na **VNet1/Subnet1** a typ je nastaven na `Microsoft.Network/virtualNetworks/subnets` . Podřízený prostředek je v nadřazeném prostředku označený jako závislý, protože nadřazený prostředek musí existovat předtím, než bude možné nasadit podřízený prostředek.
 
 ```json
 "resources": [
@@ -132,6 +136,5 @@ Následující příklad ukazuje virtuální síť a podsíť, které jsou defin
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
-
+* Další informace o vytváření šablon ARM najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Další informace o formátu názvu prostředku při odkazování na prostředek naleznete v [referenční funkci](template-functions-resource.md#reference).

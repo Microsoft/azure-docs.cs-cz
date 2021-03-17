@@ -4,17 +4,17 @@ summary: Naučte se využívat Azure App Configuration, spravovanou službu, kte
 metadata:
   title: Dokumentace ke službě Azure App Configuration
   description: Naučte se využívat Azure App Configuration, spravovanou službu, která vývojářům pomáhá jednoduše a bezpečně centralizovat nastavení funkcí a aplikací.
-  author: lisaguthrie
-  ms.author: lcozzens
+  author: AlexandraKemperMS
+  ms.author: alkemper
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: abeb409ae213768f52194401933e0ae7afb53741
-  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
-  ms.translationtype: HT
+  ms.openlocfilehash: e994dbb9932dd661486fa37511db79178be826ca
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88234801"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182209"
 landingContent:
 - title: Služba Azure App Configuration
   linkLists:
@@ -23,7 +23,9 @@ landingContent:
     - text: Co je Azure App Configuration?
       url: overview.md
     - text: Nejčastější dotazy
-      url: faq.md
+      url: faq.yml
+    - text: Osvědčené postupy
+      url: howto-best-practices.md
   - linkListType: video
     links:
     - text: Začínáme se službou Azure App Configuration
@@ -34,7 +36,7 @@ landingContent:
       url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210
     - text: Azure App Configuration v pořadu Cloud Native Show
       url: https://www.youtube.com/watch?v=DJqmA5PcfzE
-    - text: Filtrování funkcí v Azure Friday
+    - text: Zavádění nových funkcí
       url: https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553
   - linkListType: whats-new
     links:
@@ -52,16 +54,18 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: Kódování aplikace v ASP.NET Core
+      url: quickstart-aspnet-core-app.md
     - text: Kódování aplikace v .NET Core
       url: quickstart-dotnet-core-app.md
     - text: Kódování aplikace v .NET Frameworku
       url: quickstart-dotnet-app.md
-    - text: Kódování aplikace v ASP.NET Core
-      url: quickstart-aspnet-core-app.md
     - text: Kódování aplikace Azure Functions v C#
       url: quickstart-azure-functions-csharp.md
-    - text: Kódování aplikace Spring Boot
+    - text: Kódování aplikace v Java Springu
       url: quickstart-java-spring-app.md
+    - text: Kódování aplikace v Pythonu
+      url: quickstart-python.md
     - text: Šablona Azure Resource Manageru
       url: quickstart-resource-manager.md
   - linkListType: tutorial
@@ -74,6 +78,10 @@ landingContent:
       url: enable-dynamic-configuration-dotnet.md
     - text: Použití dynamické konfigurace v Azure Functions
       url: enable-dynamic-configuration-azure-functions-csharp.md
+    - text: Použití dynamické konfigurace ve Spring Bootu
+      url: enable-dynamic-configuration-java-spring-app.md
+    - text: Integrace dynamické konfigurace pomocí modelu push
+      url: enable-dynamic-configuration-dotnet-core-push-refresh.md
   - linkListType: tutorial
     links:
     - text: Integrace s kanálem CI/CD
@@ -98,10 +106,10 @@ landingContent:
       url: concept-feature-management.md
   - linkListType: quickstart
     links:
-    - text: Aplikace v .NET Core
-      url: use-feature-flags-dotnet-core.md
     - text: Aplikace v ASP.NET Core
       url: quickstart-feature-flag-aspnet-core.md
+    - text: Aplikace v .NET Core
+      url: use-feature-flags-dotnet-core.md
     - text: Aplikace v .NET Frameworku
       url: quickstart-feature-flag-dotnet.md
     - text: Aplikace Spring Boot
@@ -110,12 +118,18 @@ landingContent:
     links:
     - text: Správa příznaků funkcí
       url: manage-feature-flags.md
+    - text: Používání příznaků funkcí v ASP.NET Core
+      url: use-feature-flags-dotnet-core.md
+    - text: Používání příznaků funkcí při jarním spuštění
+      url: use-feature-flags-spring-boot.md
+    - text: Povolení funkce pro zadané uživatele/skupiny
+      url: howto-targetingfilter-aspnet-core.md
   - linkListType: reference
     links:
     - text: Knihovna .NET Core
-      url: https://go.microsoft.com/fwlink/?linkid=2091700
+      url: /dotnet/api/microsoft.featuremanagement
     - text: Knihovna filtrů .NET Core
-      url: https://go.microsoft.com/fwlink/?linkid=2091601
+      url: /dotnet/api/microsoft.featuremanagement.featurefilters
 - title: Konfigurační sady SDK a ukázky
   linkLists:
   - linkListType: sample
@@ -125,15 +139,15 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
+      url: /cli/azure/appconfig
+    - text: PowerShell
+      url: /powershell/module/az.appconfiguration/
+    - text: Terraform
+      url: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
     - text: Poskytovatel .NET Core
-      url: https://go.microsoft.com/fwlink/?linkid=2074664
-    - text: Tvůrce .NET Frameworku
-      url: https://go.microsoft.com/fwlink/?linkid=2074663
-    - text: Azure SDK for .Net
-      url: https://go.microsoft.com/fwlink/?linkid=2092056
+      url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
     - text: Poskytovatel Spring Boot
-      url: https://go.microsoft.com/fwlink/?linkid=2074659
+      url: https://github.com/microsoft/spring-cloud-azure/tree/master/
     - text: Azure SDK pro Javu
       url: https://go.microsoft.com/fwlink/?linkid=2098196
     - text: Azure SDK pro Python
@@ -141,4 +155,4 @@ landingContent:
     - text: Azure SDK for JavaScript
       url: https://go.microsoft.com/fwlink/?linkid=2103664
     - text: REST
-      url: https://go.microsoft.com/fwlink/?linkid=2078296
+      url: rest-api.md

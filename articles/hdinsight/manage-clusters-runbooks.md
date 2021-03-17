@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: použití sad Runbook Azure Automation k vytváření clusterů – Azure HDInsight'
 description: Naučte se vytvářet a odstraňovat clustery Azure HDInsight pomocí skriptů, které běží v cloudu, pomocí Azure Automation Runbooky.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75553510"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944037"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Kurz: vytvoření clusterů Azure HDInsight pomocí Azure Automation
 
@@ -37,13 +34,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Vyberte účty Azure Automation.
-1. V části **sdílené prostředky**vyberte **Galerie modulů** .
+1. V části **sdílené prostředky** vyberte **Galerie modulů** .
 1. Do pole zadejte **AzureRM. profil** a stiskněte Enter pro hledání. Vyberte dostupný výsledek hledání.
 1. Na obrazovce **AzureRM. profil** vyberte **importovat**. Zaškrtněte políčko pro aktualizaci modulů Azure a pak vyberte **OK**.
 
     ![importovat modul AzureRM. Profile](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
 
-1. Vraťte se do galerie modulů tak, že v části **sdílené prostředky**vyberete **Galerie moduly** .
+1. Vraťte se do galerie modulů tak, že v části **sdílené prostředky** vyberete **Galerie moduly** .
 1. Zadejte **HDInsight**. Vyberte **AzureRM. HDInsight**.
 
     ![Procházet moduly HDInsight](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
@@ -54,7 +51,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-credentials"></a>Vytvořit pověření
 
-1. V části **sdílené prostředky**vyberte **přihlašovací údaje**.
+1. V části **sdílené prostředky** vyberte **přihlašovací údaje**.
 1. Vyberte **Přidat pověření**.
 1. Zadejte požadované informace na novém panelu **přihlašovací údaje** . Toto pověření slouží k uložení hesla clusteru, které vám umožní přihlásit se k Ambari.
 
@@ -66,15 +63,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     | Potvrzení hesla | `SECURE_PASSWORD` |
 
 1. Vyberte **Vytvořit**.
-1. Stejný postup opakujte pro nové přihlašovací údaje `ssh-password` s uživatelským `sshuser` jménem a heslem podle vašeho výběru. Vyberte **Vytvořit**. Tento přihlašovací údaj slouží k uložení hesla SSH pro váš cluster.
+1. Stejný postup opakujte pro nové přihlašovací údaje `ssh-password` s uživatelským jménem `sshuser` a heslem podle vašeho výběru. Vyberte **Vytvořit**. Tento přihlašovací údaj slouží k uložení hesla SSH pro váš cluster.
 
     ![vytvoření přihlašovacích údajů](./media/manage-clusters-runbooks/create-credentials.png)
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Vytvoření Runbooku pro vytvoření clusteru
 
-1. V části **Automatizace procesu**vyberte **Runbooky** .
+1. V části **Automatizace procesu** vyberte **Runbooky** .
 1. Vyberte **vytvořit Runbook**.
-1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-create`. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
+1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-create` . V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
 
     ![vytvořit Runbook](./media/manage-clusters-runbooks/create-runbook.png)
@@ -128,9 +125,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-runbook-to-delete-a-cluster"></a>Vytvoření Runbooku pro odstranění clusteru
 
-1. V části **Automatizace procesu**vyberte **Runbooky** .
+1. V části **Automatizace procesu** vyberte **Runbooky** .
 1. Vyberte **vytvořit Runbook**.
-1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-delete`. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
+1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-delete` . V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
 1. Na obrazovce **Upravit powershellový Runbook** zadejte následující kód a vyberte **publikovat**:
 
@@ -152,8 +149,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="create-a-cluster"></a>Vytvoření clusteru
 
-1. Seznam runbooků pro váš účet Automation zobrazíte tak, že v části **Automatizace procesu**vyberete **Runbooky** .
-1. Vyberte `hdinsight-cluster-create`nebo název, který jste použili při vytváření Runbooku pro vytváření clusterů.
+1. Seznam runbooků pro váš účet Automation zobrazíte tak, že v části **Automatizace procesu** vyberete **Runbooky** .
+1. Vyberte `hdinsight-cluster-create` nebo název, který jste použili při vytváření Runbooku pro vytváření clusterů.
 1. Vyberte **Spustit** , aby se Runbook spustil hned. Můžete také naplánovat pravidelné spouštění Runbooků. Viz [plánování Runbooku v Azure Automation](../automation/shared-resources/schedules.md)
 1. Zadejte požadované parametry skriptu a vyberte **OK**. Tím se vytvoří nový cluster HDInsight s názvem, který jste zadali v parametru **název_clusteru** .
 
@@ -161,7 +158,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="delete-a-cluster"></a>Odstranění clusteru
 
-Odstraňte cluster tak, že vyberete `hdinsight-cluster-delete` Runbook, který jste vytvořili. Vyberte **Start**, zadejte parametr **název_clusteru** a sselect **OK**.
+Odstraňte cluster tak `hdinsight-cluster-delete` , že vyberete Runbook, který jste vytvořili. Vyberte **Start**, zadejte parametr **název_clusteru** a sselect **OK**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

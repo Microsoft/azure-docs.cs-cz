@@ -1,22 +1,18 @@
 ---
 title: Kopírování nebo klonování datové továrny v Azure Data Factory
 description: Naučte se kopírovat nebo klonovat datovou továrnu v Azure Data Factory
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ea16785502ce8a82087b79dd8e7f0014c0059fc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552962"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375234"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopírování nebo klonování datové továrny v Azure Data Factory
 
@@ -49,7 +45,7 @@ Tady jsou některé okolnosti, za kterých může být užitečné zkopírovat n
 
 1. Pokud máte ve zdrojové továrně SelfHosted IntegrationRuntime, musíte ho v cílové továrně vytvořit se stejným názvem. Pokud chcete sdílet SelfHosted Integration Runtime mezi různými továrnami, můžete použít vzor publikovaný [tady](create-shared-self-hosted-integration-runtime-powershell.md) při sdílení SelfHosted IR.
 
-1. Z bezpečnostních důvodů nebudou generované šablony Správce prostředků obsahovat žádné tajné informace, například hesla pro propojené služby. Proto je nutné zadat přihlašovací údaje jako parametry nasazení. Pokud nechcete, aby se přihlašovací údaje pro vaše nastavení zadaly ručně, zvažte prosím, že se místo toho načítají připojovací řetězce a hesla z Azure Key Vault. [Další informace](store-credentials-in-key-vault.md)
+1. Z bezpečnostních důvodů nebudou generované šablony Správce prostředků obsahovat žádné tajné informace, například hesla pro propojené služby. Proto je nutné zadat přihlašovací údaje jako parametry nasazení. Pokud nechcete, aby se přihlašovací údaje pro vaše nastavení zadaly ručně, zvažte prosím, že se místo toho načítají připojovací řetězce a hesla z Azure Key Vault. [Zobrazit více](store-credentials-in-key-vault.md)
 
 ## <a name="next-steps"></a>Další kroky
 

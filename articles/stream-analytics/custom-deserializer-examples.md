@@ -1,18 +1,18 @@
 ---
 title: Čtení vstupu v jakémkoli formátu pomocí vlastního deserializace rozhraní .NET v Azure Stream Analytics
 description: Tento článek vysvětluje formát serializace a rozhraní, která definují vlastní deserializace rozhraní .NET pro Azure Stream Analytics úlohy cloudu a Edge.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873047"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018152"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET
 
@@ -22,7 +22,7 @@ Vlastní deserializace rozhraní .NET umožňují, aby vaše úloha Azure Stream
 
 Následující ukázky kódu jsou rozhraní, která definují vlastní deserializaci a implementují `StreamDeserializer<T>` .
 
-`UserDefinedOperator`je základní třídou pro všechny vlastní operátory streamování. Inicializuje `StreamingContext` , což poskytuje kontext, který zahrnuje mechanismus pro publikování diagnostiky, pro který budete potřebovat ladit jakékoli problémy s deserializací.
+`UserDefinedOperator` je základní třídou pro všechny vlastní operátory streamování. Inicializuje `StreamingContext` , což poskytuje kontext, který zahrnuje mechanismus pro publikování diagnostiky, pro který budete potřebovat ladit jakékoli problémy s deserializací.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -35,7 +35,7 @@ Následující fragment kódu je deserializace pro streamovaná data.
 
 Přeskočené chyby by měly být generovány pomocí `IStreamingDiagnostics` inicializační metody předané prostřednictvím `UserDefinedOperator` metody Initialize. Všechny výjimky budou považovány za chyby a deserializátor bude znovu vytvořen. Po určitém počtu chyb bude úloha přejít na stav selhání.
 
-`StreamDeserializer<T>`deserializace Stream do objektu typu `T` . Musí být splněny následující podmínky:
+`StreamDeserializer<T>` deserializace Stream do objektu typu `T` . Musí být splněny následující podmínky:
 
 1. T je třída nebo struktura.
 1. Všechna veřejná pole v T jsou buď
@@ -45,7 +45,7 @@ Přeskočené chyby by měly být generovány pomocí `IStreamingDiagnostics` in
     1. IList `T2` , kde T2 dodržuje stejná pravidla.
     1. Nemá žádné rekurzivní typy.
 
-Parametr `stream` je datový proud obsahující serializovaný objekt. `Deserialize`Vrátí kolekci `T` instancí.
+Parametr `stream` je datový proud obsahující serializovaný objekt. `Deserialize` Vrátí kolekci `T` instancí.
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +54,7 @@ Parametr `stream` je datový proud obsahující serializovaný objekt. `Deserial
     }
 ```
 
-`StreamingContext`poskytuje kontext, který zahrnuje mechanismus pro publikování diagnostiky pro operátora uživatele.
+`StreamingContext` poskytuje kontext, který zahrnuje mechanismus pro publikování diagnostiky pro operátora uživatele.
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +63,13 @@ Parametr `stream` je datový proud obsahující serializovaný objekt. `Deserial
     }
 ```
 
-`StreamingDiagnostics`je diagnostikou uživatelsky definovaných operátorů, včetně serializátoru, deserializace a uživatelsky definovaných funkcí.
+`StreamingDiagnostics` je diagnostikou uživatelsky definovaných operátorů, včetně serializátoru, deserializace a uživatelsky definovaných funkcí.
 
-`WriteError`zapíše chybovou zprávu do protokolů prostředků a pošle chybu do diagnostiky.
+`WriteError` zapíše chybovou zprávu do protokolů prostředků a pošle chybu do diagnostiky.
 
-`briefMessage`je Stručná chybová zpráva. Tato zpráva se zobrazí v diagnostickém prostředí a je používána produktovým týmem pro účely ladění. Nezahrnujte citlivé informace a nechte zprávu kratší než 200 znaků.
+`briefMessage` je Stručná chybová zpráva. Tato zpráva se zobrazí v diagnostickém prostředí a je používána produktovým týmem pro účely ladění. Nezahrnujte citlivé informace a nechte zprávu kratší než 200 znaků.
 
-`detailedMessage`je podrobná chybová zpráva, která se přidá jenom do vašich protokolů prostředků v úložišti. Tato zpráva by měla být kratší než 2000 znaků.
+`detailedMessage` je podrobná chybová zpráva, která se přidá jenom do vašich protokolů prostředků v úložišti. Tato zpráva by měla být kratší než 2000 znaků.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -200,7 +200,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>Formát serializace pro rozhraní REST API
 
-Každý vstup Stream Analytics má **formát serializace**. Další informace o možnostech vstupu najdete v dokumentaci ke [vstupu REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) .
+Každý vstup Stream Analytics má **formát serializace**. Další informace o možnostech vstupu najdete v dokumentaci ke [vstupu REST API](/rest/api/streamanalytics/2016-03-01/inputs) .
 
 Následující kód jazyka JavaScript je příkladem formátu serializace deserializace rozhraní .NET při použití REST API:
 
@@ -219,7 +219,7 @@ Následující kód jazyka JavaScript je příkladem formátu serializace deseri
 }  
 ```
 
-`serializationClassName`měla by být třída, která implementuje `StreamDeserializer<T>` . Tento postup je popsaný v následující části.
+`serializationClassName` měla by být třída, která implementuje `StreamDeserializer<T>` . Tento postup je popsaný v následující části.
 
 ## <a name="region-support"></a>Podpora oblastí
 
@@ -227,10 +227,10 @@ Tato funkce je k dispozici v následujících oblastech:
 
 * USA – středozápad
 * Severní Evropa
-* USA – východ
+* East US
 * USA – západ
 * USA – východ 2
-* Západní Evropa
+* West Europe
 
 Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblasti.
 
@@ -238,7 +238,7 @@ Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblast
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Kdy bude tato funkce dostupná ve všech oblastech Azure?
 
-Tato funkce je k dispozici v [6 oblastech](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Pokud vás zajímá použití této funkce v jiné oblasti, můžete [Odeslat žádost](https://aka.ms/ccodereqregion). Podpora všech oblastí Azure je v plánu.
+Tato funkce je k dispozici v [6 oblastech](#region-support). Pokud vás zajímá použití této funkce v jiné oblasti, můžete [Odeslat žádost](https://aka.ms/ccodereqregion). Podpora všech oblastí Azure je v plánu.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Můžu získat přístup k MetadataPropertyValue ze svých vstupů, podobně jako funkce GetMetadataPropertyValue?
 
@@ -248,9 +248,9 @@ Tato funkce není podporována. Pokud tuto funkci potřebujete, můžete hlasova
 
 Po implementaci nástroje pro deserializaci můžete ostatním uživatelům usnadnit sdílení pomocí komunity. Odešlete kód do [úložiště Azure Stream Analytics GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Jaké jsou další omezení používání vlastních deserializátorů v Stream Analytics?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Jaká jsou další omezení používání vlastních deserializátorů v Stream Analytics?
 
-Pokud je váš vstup ve formátu Protobuf se schématem obsahujícím typ MapField, nebudete moci implementovat vlastní deserializaci. Pracujeme na podpoře tohoto typu.
+Pokud je váš vstup ve formátu Protobuf pomocí schématu obsahujícího `MapField` typ, nebudete moci implementovat vlastní deserializaci. Vlastní deserializace také nepodporuje ukázková data ani data ve verzi Preview. 
 
 ## <a name="next-steps"></a>Další kroky
 

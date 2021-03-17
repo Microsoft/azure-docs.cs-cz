@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cd02ee8ab794858566aeafa96fa78919be3b85a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002276"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367618"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md).
 
-Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](/powershell/module/windowsvirtualdesktop/).
+Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](/powershell/windows-virtual-desktop/overview).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
@@ -62,7 +62,7 @@ Příčina: virtuální plocha Windows podporuje výběr umístění fondů host
 
 Oprava: v chybové zprávě se zveřejní seznam podporovaných oblastí. Místo toho použijte jednu z podporovaných oblastí.
 
-### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Chyba: příkaz New-AzWvdApplicationGroup musí být ve stejném umístění jako fond hostitelů.
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Chyba: New-AzWvdApplicationGroup musí být ve stejném umístění jako fond hostitelů.
 
 ```powershell
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool

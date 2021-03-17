@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6be3da1e031a1ea5b32f58343639d6e7fbf2425e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: cd3c615a296934d8e06a062125a72c322d05dd7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750247"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -16,20 +16,17 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
 1. Přejít do složky *Src/Cloud-to-Device-Console-App* Tady vidíte *appsettings.jsv* souboru a několik dalších souborů:
 
-    * ***C2D-Console-App. csproj*** – soubor projektu pro Visual Studio Code.
-    * ***operations.jsna*** seznam operací, které má program spustit.
-    * ***Program.cs*** – vzorový programový kód. Tento kód:
+    * operations.jsna seznam operací, které má program spustit.
+    * main.py – vzorový programový kód. Tento kód:
 
         * Načte nastavení aplikace.
-        * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](../../../direct-methods.md).
+        * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho přímých metod.
         * Pozastaví, aby bylo možné kontrolovat výstup programu v okně **terminálu** a prozkoumávat události vygenerované modulem v okně **výstup** .
-        * Vyvolá přímé metody pro vyčištění prostředků.
-
-
+        * Vyvolá přímé metody pro vyčištění prostředků.  
 1. Upravit *operations.jsv* souboru:
     * Změňte odkaz na topologii grafu:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 
     * V části `GraphInstanceSet` upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
 
@@ -53,6 +50,12 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     
     ![Nastavit připojovací řetězec IoT Hub](../../../media/quickstarts/set-iotconnection-string.png)
 
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
+
 1. Klikněte pravým tlačítkem na *Src/Edge/config/deployment.yolov3.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**. 
 
     ![Vytvoření nasazení pro jedno zařízení](../../../media/quickstarts/create-deployment-single-device.png)
@@ -62,16 +65,39 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
     * Modul Live video Analytics s názvem **lvaEdge**
     * Modul **rtspsim** , který simuluje Server RTSP a funguje jako zdroj živého kanálu videa
+        > [!NOTE]
+        > Výše uvedené kroky předpokládají, že používáte virtuální počítač vytvořený instalačním skriptem. Pokud místo toho používáte vlastní hraniční zařízení, přečtěte si hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+        
+        ```
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
+        ```
     * Modul **yolov3** , což je model detekce objektu yolov3, který aplikuje počítač na image a vrací více tříd typů objektů.
  
       ![Moduly, které jsou nasazené na hraničním zařízení](../../../media/quickstarts/yolov3.png)
 
 ### <a name="prepare-to-monitor-events"></a>Příprava na monitorování událostí
 
-Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code. 
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
-![Spustit monitorování](../../../media/quickstarts/start-monitoring-iothub-events.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
+1. Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code. 
+
+   ![Spustit monitorování](../../../media/quickstarts/start-monitoring-iothub-events.png) 
+
+> [!NOTE]
+> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 ### <a name="run-the-sample-program"></a>Spuštění ukázkového programu
 
 1. Chcete-li spustit relaci ladění, vyberte klávesu F5. V okně **terminálu** se zobrazí zprávy tištěné.
@@ -82,7 +108,7 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
    Executing operation GraphTopologyList
    -----------------------  Request: GraphTopologyList  --------------------------------------------------
    {
-   "@apiVersion": "1.0"
+   "@apiVersion": "2.0"
    }
    ---------------  Response: GraphTopologyList - Status: 200  ---------------
    {
@@ -100,7 +126,7 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithHttpExtension",

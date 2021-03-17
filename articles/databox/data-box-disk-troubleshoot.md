@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925538"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605220"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s ověřováním v Azure Data Box Disk pomocí protokolů
 
@@ -21,7 +21,7 @@ Tento článek se týká Microsoft Azure Data Box Disk. Tento článek popisuje,
 
 ## <a name="validation-tool-log-files"></a>Soubory protokolu nástroje pro ověření
 
-Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), vygeneruje se *error.xml* pro protokolování chyb. Soubor protokolu je umístěný ve `Drive:\DataBoxDiskImport\logs` složce vaší jednotky. Odkaz na protokol chyb je k dispozici při spuštění ověřování.
+Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), vygeneruje se *error.xml* pro protokolování chyb. Soubor protokolu je umístěný ve  `Drive:\DataBoxDiskImport\logs` složce vaší jednotky. Odkaz na protokol chyb je k dispozici při spuštění ověřování.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -51,21 +51,21 @@ Pokud spustíte více relací pro ověření, je pro každou relaci vygenerován
 - Tady je ukázka protokolu chyb, pokud název kontejneru není platný. Složka, kterou vytvoříte v adresáři `BlockBlob` , `PageBlob` nebo `AzureFile` složky na disku, se v účtu Azure Storage stal kontejnerem. Název kontejneru musí splňovat [zásady vytváření názvů pro Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
 
     ```xml
-        <?xml version="1.0" encoding="utf-8"?>
-        <ErrorLog Version="2018-10-01">
-          <SessionId>bbsession</SessionId>
-          <ItemType>BlockBlob</ItemType>
-          <SourceDirectory>E:\BlockBlob</SourceDirectory>
-          <Errors>
-            <Error Code="InvalidShareContainerFormat">
-              <List>
-                <Container Name="Azu-reFile" />
-                <Container Name="bbcont ainer1" />
-              </List>
-              <Count>2</Count>
-            </Error>
-          </Errors>
-          <Warnings />
+    <?xml version="1.0" encoding="utf-8"?>
+    <ErrorLog Version="2018-10-01">
+        <SessionId>bbsession</SessionId>
+        <ItemType>BlockBlob</ItemType>
+        <SourceDirectory>E:\BlockBlob</SourceDirectory>
+        <Errors>
+        <Error Code="InvalidShareContainerFormat">
+            <List>
+            <Container Name="Azu-reFile" />
+            <Container Name="bbcont ainer1" />
+            </List>
+            <Count>2</Count>
+        </Error>
+        </Errors>
+        <Warnings />
     </ErrorLog>
     ```
 

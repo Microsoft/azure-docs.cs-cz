@@ -10,20 +10,25 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6d93b6d024fc966f3b260602f4798a2d77669a35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68883551"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501154"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vizuální vyhledávání Bingu
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Rozhraní API pro vizuální vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Každý požadavek by měl zahrnovat zemi nebo oblast uživatele a zvolený jazyk. Znalost trhu uživatele pomáhá službě Bing vracet odpovídající výsledky. Pokud nezadáte zemi, oblast a jazyk, Bing se snaží určit zemi, oblast a jazyk uživatele. Vzhledem k tomu, že výsledky mohou obsahovat odkazy na Bing, může správce země nebo oblasti a jazyku poskytovat preferované lokalizované uživatelské prostředí Bingu, pokud uživatel klikne na odkazy Bingu.
 
-Pokud chcete zadat zemi nebo oblast a jazyk, nastavte parametr `mkt` dotazu (na trhu) na kód z tabulky **trhy** níže. Tento trh určuje zemi nebo oblast i jazyk. Pokud uživatel upřednostňuje zobrazení textu v jiném jazyce, nastavte `setLang` parametr dotazu na příslušný kód jazyka.
+Pokud chcete zadat zemi nebo oblast a jazyk, nastavte `mkt` parametr dotazu (na trhu) na kód z tabulky **trhy** níže. Tento trh určuje zemi nebo oblast i jazyk. Pokud uživatel upřednostňuje zobrazení textu v jiném jazyce, nastavte `setLang` parametr dotazu na příslušný kód jazyka.
 
-Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí hlavičky `Accept-Language` http. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi v tabulce trhy.
+Případně můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi v tabulce trhy.
 
 
 
@@ -36,7 +41,7 @@ Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud
 
 ## <a name="countriesregions"></a>Země nebo oblasti
 
-|Země|kód|
+|Země|Kód|
 |-------|----|
 |Argentina|AR|
 |Austrálie|AU|
@@ -49,7 +54,7 @@ Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní správní oblast|HK|
+|Hongkong – zvláštní administrativní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -73,7 +78,7 @@ Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud
 |Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
-|Spojené státy|USA|
+|USA|USA|
 
 
 ## <a name="markets"></a>Trhy
@@ -93,7 +98,7 @@ Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh – HK|
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
@@ -103,7 +108,7 @@ Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud
 |Mexiko|Španělština|ES – MX|
 |Nizozemsko|Nizozemština|nl-NL|
 |Nový Zéland|Angličtina|EN-NZ|
-|Čína|Chinese|zh-CN|
+|Čína|Čínština|zh-CN|
 |Polsko|Polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
 |Filipíny|Angličtina|EN-PH|
@@ -117,5 +122,5 @@ Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES – US|
+|USA|Angličtina|en-US|
+|USA|Španělština|ES – US|

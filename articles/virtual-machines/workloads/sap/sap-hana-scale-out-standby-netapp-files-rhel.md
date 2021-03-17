@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/15/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: e018f2320b505a174850472d85ec2ebd59310560
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 4947585b1f20b8142c51d9d7e28c6d8504b6d6d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406567"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669647"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux 
 
@@ -59,6 +59,10 @@ Tento článek popisuje, jak nasadit vysoce dostupný SAP HANA systém v konfigu
 
 V ukázkových konfiguracích, instalačních příkazech atd. instance HANA je **03** a ID systému Hana je **HN1**. Příklady jsou založené na HANA 2,0 SP4 a Red Hat Enterprise Linux pro SAP 7,6. 
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na *Hlavní* a *podřízené* výrazy, které Microsoft už nepoužívá. Po odebrání těchto podmínek ze softwaru je odebereme z tohoto článku.
+
+
 Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 
 * [Dokumentace k Azure NetApp Files][anf-azure-doc] 
@@ -80,14 +84,14 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 * [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Průvodce Red Hat Enterprise Linux sítě](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
 * Dokumentace k RHEL specifické pro Azure:
   * [Instalace SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure](https://access.redhat.com/public-cloud/microsoft-azure)
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
-
+* [Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Přehled
 
@@ -110,10 +114,10 @@ Svazky NetApp Azure jsou v samostatné podsíti, [delegované na Azure NetApp Fi
 
 V tomto příkladu konfigurace jsou podsítě:  
 
-  - `client`10.9.1.0/26  
-  - `storage`10.9.3.0/26  
-  - `hana`10.9.2.0/26  
-  - `anf`10.9.0.0/26 (delegovaná podsíť pro Azure NetApp Files)
+  - `client` 10.9.1.0/26  
+  - `storage` 10.9.3.0/26  
+  - `hana` 10.9.2.0/26  
+  - `anf` 10.9.0.0/26 (delegovaná podsíť pro Azure NetApp Files)
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure NetApp Files 
 
@@ -143,7 +147,7 @@ V následujících pokynech se předpokládá, že jste už nasadili službu [Az
 
    Když nasazujete svazky, ujistěte se, že jste vybrali verzi **nfsv 4.1** . Nasaďte svazky v určené Azure NetApp Files [podsíti](/rest/api/virtualnetwork/subnets). IP adresy svazků Azure NetApp se přiřazují automaticky. 
    
-   Pamatujte, že prostředky Azure NetApp Files a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem. Například **HN1**-data-Mnt00001, **HN1**-log-mnt00001 atd. jsou názvy svazků**a NFS://10.9.0.4/HN1-data**-mnt00001, NFS://10.9.0.4/**HN1**-log-mnt00001 atd. jsou cesty k souborům pro Azure NetApp Files svazky.  
+   Pamatujte, že prostředky Azure NetApp Files a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem. Například **HN1**-data-Mnt00001, **HN1**-log-mnt00001 atd. jsou názvy svazků **a NFS://10.9.0.4/HN1-data**-mnt00001, NFS://10.9.0.4/**HN1**-log-mnt00001 atd. jsou cesty k souborům pro Azure NetApp Files svazky.  
 
    * Volume **HN1**-data-mnt00001 (NFS://10.9.0.4/**HN1**-data-mnt00001)
    * Volume **HN1**-data-mnt00002 (NFS://10.9.0.4/**HN1**-data-mnt00002)
@@ -186,7 +190,7 @@ Aby splňovala požadavky na minimální propustnost SAP pro data a protokol, a 
 
 | Svazek | Velikost<br>Premium Storage úroveň | Velikost<br>Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TB | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | 1xRAM na 4 pracovní uzly | 1xRAM na 4 pracovní uzly | V3 nebo v 4.1 |
 
@@ -194,11 +198,11 @@ Konfigurace SAP HANA pro rozložení prezentovaná v tomto článku, která vyu�
 
 | Svazek | Velikost<br>Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 TB | v 4.1 |
-| /hana/log/mnt00002 | 2 TB | v 4.1 |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
 | /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
 | /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TB | V3 nebo v 4.1 |
+| /hana/shared | 2 TiB | V3 nebo v 4.1 |
 
 > [!NOTE]
 > Níže uvedená doporučení pro nastavení velikosti Azure NetApp Files jsou zaměřená na splnění minimálních požadavků, které SAP doporučuje pro poskytovatele infrastruktury. V reálných scénářích nasazení a úloh nemusí být tyto velikosti dostatečné. Tato doporučení použijte jako výchozí bod a přizpůsobte je na základě požadavků konkrétního zatížení.  
@@ -235,11 +239,11 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
    c. Vyberte podsíť klientské virtuální sítě Azure. Vyberte možnost [akcelerovaná síť](../../../virtual-network/create-vm-accelerated-networking-cli.md).  
 
-   Když nasadíte virtuální počítače, název síťového rozhraní se vygeneruje automaticky. V těchto pokynech pro zjednodušení budeme odkazovat na automaticky generovaná síťová rozhraní, která jsou připojená k podsíti virtuální sítě Azure Client, jako **hanadb1-Client**, **hanadb2-Client**a **hanadb3-Client**. 
+   Když nasadíte virtuální počítače, název síťového rozhraní se vygeneruje automaticky. V těchto pokynech pro zjednodušení budeme odkazovat na automaticky generovaná síťová rozhraní, která jsou připojená k podsíti virtuální sítě Azure Client, jako **hanadb1-Client**, **hanadb2-Client** a **hanadb3-Client**. 
 
-3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage**a **hanadb3-Storage**).  
+3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage** a **hanadb3-Storage**).  
 
-4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana` podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
+4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana`  podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana** a **hanadb3-Hana**).  
 
 5. Připojte nově vytvořená virtuální síťová rozhraní k odpovídajícím virtuálním počítačům pomocí následujících kroků:  
 
@@ -249,11 +253,11 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
     c. V podokně **Přehled** vyberte možnost zastavit, čímž **zrušíte** přidělení virtuálního počítače.  
 
-    d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` `hana` podsítě a.  
+    d. Vyberte **sítě** a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` `hana` podsítě a.  
     
     e. Vyberte **Uložit**. 
  
-    f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
+    f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu  **hanadb2** a **hanadb3**).
  
     například Virtuální počítače teď ponechte v zastaveném stavu. V dalším kroku povolíte [urychlené síťové služby](../../../virtual-network/create-vm-accelerated-networking-cli.md) pro všechna nově připojená síťová rozhraní.  
 
@@ -349,7 +353,9 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     net.core.optmem_max = 16777216
     net.ipv4.tcp_rmem = 65536 16777216 16777216
     net.ipv4.tcp_wmem = 65536 16777216 16777216
-    net.core.netdev_max_backlog = 300000 net.ipv4.tcp_slow_start_after_idle=0 net.ipv4.tcp_no_metrics_save = 1
+    net.core.netdev_max_backlog = 300000 
+    net.ipv4.tcp_slow_start_after_idle=0 
+    net.ipv4.tcp_no_metrics_save = 1
     net.ipv4.tcp_moderate_rcvbuf = 1
     net.ipv4.tcp_window_scaling = 1
     net.ipv4.tcp_timestamps = 1
@@ -363,11 +369,13 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     # Add the following entries in the configuration file
     net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> Vyhněte se nastavení net.ipv4.ip_local_port_range a net.ipv4.ip_local_reserved_ports explicitně v konfiguračních souborech sysctl, aby mohl hostitelský agent SAP spravovat rozsahy portů. Další podrobnosti najdete v tématu SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).  
 
 5. **[A]** upravte nastavení sunRPC podle doporučení v [aplikacích SAP NetApp na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure].  
 
@@ -529,7 +537,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1 
     </code></pre>
 
-4. **[2], [3]** Změňte vlastnictví SAP HANA `data` a `log` adresářů na **HN1**ADM.   
+4. **[2], [3]** Změňte vlastnictví SAP HANA `data` a `log` adresářů na **HN1** ADM.   
 
     <pre><code>
     # Execute as root
@@ -563,7 +571,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
      * V části chcete **Přidat hostitele do systému?**: zadejte **y** .
      * Pro **názvy hostitelů oddělených čárkami, které se mají přidat**: zadejte **hanadb2, hanadb3**
      * Pro **kořenové uživatelské jméno** [root]: stisknutím klávesy Enter přijměte výchozí nastavení.
-     * Pro role pro hostitele hanadb2: zadejte **1** (pro pracovního procesu).
+     * Pro role pro hostitele hanadb2: zadejte **1**  (pro pracovního procesu).
      * Pro **skupinu převzetí služeb při selhání hostitele** pro hostitele hanadb2 [výchozí]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **číslo oddílu úložiště** pro hostitele hanadb2 [<<assign automatically>>]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **skupinu Worker** pro hanadb2 hostitele [výchozí]: stisknutím klávesy Enter přijměte výchozí nastavení.
@@ -705,7 +713,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 6. Pokud chcete optimalizovat SAP HANA pro základní úložiště Azure NetApp Files, nastavte následující parametry SAP HANA:
 
-   - `max_parallel_io_requests` **128**
+   - `max_parallel_io_requests`**128**
    - `async_read_submit`**zapnuto**
    - `async_write_submit_active`**zapnuto**
    - `async_write_submit_blocks`**vše**
@@ -728,7 +736,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 1. Simulujte selhání uzlu na SAP HANA pracovním uzlu. Postupujte následovně: 
 
-   a. Před simulací havárie uzlu spusťte následující příkazy jako **HN1**ADM pro zachycení stavu prostředí:  
+   a. Před simulací havárie uzlu spusťte následující příkazy jako **HN1** ADM pro zachycení stavu prostředí:  
 
    <pre><code>
     # Check the landscape status
@@ -784,7 +792,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 2. Pomocí následujícího postupu ukončete názvový server:
 
-   a. Před testem zkontrolujte stav prostředí spuštěním následujících příkazů jako **HN1**ADM:  
+   a. Před testem zkontrolujte stav prostředí spuštěním následujících příkazů jako **HN1** ADM:  
 
    <pre><code>
     #Landscape status 
@@ -806,7 +814,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     hanadb1, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GREEN
    </code></pre>
 
-   b. Spusťte následující příkazy jako **HN1**ADM na aktivním hlavním uzlu, který je v tomto případě **hanadb1** :  
+   b. Spusťte následující příkazy jako **HN1** ADM na aktivním hlavním uzlu, který je v tomto případě **hanadb1** :  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -840,7 +848,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Po zahájení SAP HANA v **hanadb1**očekávat následující stav:  
+   Po zahájení SAP HANA v **hanadb1** očekávat následující stav:  
 
    <pre><code>
     # Check the instance status
@@ -896,7 +904,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Po zahájení SAP HANA v **hanadb3**bude tento stav vypadat takto:  
+   Po zahájení SAP HANA v **hanadb3** bude tento stav vypadat takto:  
 
    <pre><code>
     # Check the instance status
@@ -926,4 +934,5 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* [Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)
 * Další informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v tématu [Vysoká dostupnost SAP HANA na azure Virtual Machines (virtuálních počítačích)][sap-hana-ha].

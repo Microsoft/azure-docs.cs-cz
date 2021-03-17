@@ -10,17 +10,22 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b51fb8dcc456d895d5c4032bd16e1502ee86f0f
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: cef39b940f0d61fc60ea10156acfd781289157de
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407077"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591967"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahování podrobností pomocí rozhraní API Bingu pro vyhledávání obrázků a C#
 
-Existuje více [koncových bodů](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) dostupných prostřednictvím rozhraní API Bingu pro vyhledávání obrázků. Koncový bod `/details` přijímá s obrázkem požadavek POST a může vrátit různé informace o obrázku. Tato aplikace C# odešle obrázek pomocí tohoto rozhraní API a zobrazí podrobnosti vrácené Bingem, což jsou objekty JSON, například následující:
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Existuje více [koncových bodů](./image-search-endpoint.md) dostupných prostřednictvím rozhraní API Bingu pro vyhledávání obrázků. Koncový bod `/details` přijímá s obrázkem požadavek POST a může vrátit různé informace o obrázku. Tato aplikace C# odešle obrázek pomocí tohoto rozhraní API a zobrazí podrobnosti vrácené Bingem, což jsou objekty JSON, například následující:
 
 ![[Výsledky JSON]](media/cognitive-services-bing-images-api/jsonResult.jpg)
 
@@ -35,7 +40,7 @@ Tento kurz vysvětluje následující postupy:
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Libovolná edice sady [Visual studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
 
@@ -99,7 +104,7 @@ Tato odpověď JSON pak může být vytištěna v konzole.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Použití tokenu přehledu obrázků v požadavku
 
-Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Příklad:
+Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Například:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -112,6 +117,6 @@ Pokud obrázek obsahuje identifikovatelné osoby nebo místa, tento požadavek o
 > [!div class="nextstepaction"]
 > [Zobrazení obrázků a možnosti vyhledávání v jednostránkové webové aplikaci ](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

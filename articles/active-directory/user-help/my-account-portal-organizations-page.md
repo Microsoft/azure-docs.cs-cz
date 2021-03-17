@@ -1,6 +1,6 @@
 ---
 title: Spravujte své organizace na portálu Můj účet – Azure AD
-description: Jak zobrazit a opustit organizace připojené k pracovnímu nebo školnímu účtu na stránce organizace na portálu Můj účet.
+description: Jak zobrazit a opustit organizace, ke kterým máte přístup, ze stránky organizace na portálu Můj účet.
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ef2e79f8c8e7964d04db0dd1a3f9988599fcb130
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422435"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094113"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Spravujte své připojené organizace ze stránky organizace.
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Správa organizací, ke kterým máte přístup, na portálu Můj účet
 
-Stránka **organizace** na portálu **můj účet** vám pomůže spravovat organizace (obvykle název vaší organizace) připojené k vašemu pracovnímu nebo školnímu účtu. Na stránce **organizace** se zobrazují dva typy organizací:
+Stránka **organizace** na portálu **můj účet** vám pomůže spravovat organizace (obvykle název vaší organizace), ke kterým máte přístup. Na stránce **organizace** se zobrazují dva typy organizací:
 
 - **Domovská organizace.** Vaše domovská organizace je organizace, která vlastní pracovní nebo školní účet. Nemůžete opustit svou domovskou organizaci.
 
@@ -30,21 +30,26 @@ Stránka **organizace** na portálu **můj účet** vám pomůže spravovat orga
 - **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o organizaci připojené k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě skupin a uživatelů pro vaše zaměstnance a další použití, přečtěte si [dokumentaci ke správě uživatelů v podniku](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o organizaci, k nimž přistupoval pracovní nebo školní účet. Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Pokud jste správcem a hledáte informace o správě skupin a uživatelů pro vaše zaměstnance a další použití, přečtěte si [dokumentaci ke správě uživatelů v podniku](../enterprise-users/index.yml).
 
 ## <a name="view-your-organizations"></a>Zobrazit vaše organizace
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak na stránce **můj účet** ( https://myaccount.microsoft.com/) .
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak na stránce **můj účet** ( https://myaccount.microsoft.com/) . 
 
-2. V levém navigačním podokně vyberte **organizace** nebo vyberte odkaz pro **správu organizací** z bloku **organizace** .
+1. V levém navigačním podokně vyberte **organizace** nebo vyberte odkaz pro **správu organizací** z bloku **organizace** .
 
     ![Stránka můj účet, na které se zobrazují odkazy zvýrazněných organizací](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Projděte si informace o vaší **domovské organizaci**.
+1. Projděte si informace o vaší **domovské organizaci**.
 
     ![Stránka organizace](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Projděte si další přidružené organizace a ujistěte se, že znáte všechny organizace, které jsou k vašemu účtu připojené.
+1. Projděte si jiné organizace a ujistěte se, že znáte všechny organizace, ke kterým máte přístup.
 
 ## <a name="leave-an-organization"></a>Opuštění organizace
 
@@ -61,7 +66,7 @@ Můžete opustit jakoukoli organizaci, která není vaší domovskou organizací
 
 Po zobrazení svých organizací můžete:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 

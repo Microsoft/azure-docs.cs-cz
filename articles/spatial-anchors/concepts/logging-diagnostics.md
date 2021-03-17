@@ -1,19 +1,20 @@
 ---
 title: Protokolování a diagnostika
 description: Podrobné vysvětlení, jak generovat a načíst protokolování a diagnostiku v prostorových ukotveních Azure.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: da8ffd7ff0b8473ce558943bb420b36f26c3fc32
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74270132"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494637"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Protokolování a diagnostika v prostorových ukotveních Azure
 
@@ -42,9 +43,9 @@ Existují dvě zpětná volání, která jsou zajímavá pro uživatele. Násled
 
 Tato zpětná volání událostí jsou k dispozici pro zpracování protokolů a chyb z relace:
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Určuje úroveň podrobností pro události, které mají být přijímány z modulu runtime.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): poskytuje standardní události protokolu ladění.
-- [Chyba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): poskytuje protokolové události, které modul runtime považuje za chyby.
+- [LogLevel](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Určuje úroveň podrobností pro události, které mají být přijímány z modulu runtime.
+- [OnLogDebug](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): poskytuje standardní události protokolu ladění.
+- [Chyba](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): poskytuje protokolové události, které modul runtime považuje za chyby.
 
 ## <a name="diagnostics-logging"></a>Protokolování diagnostiky
 

@@ -5,30 +5,22 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78244967"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310052"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure Portal
 
 Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure Portal.
 
-K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do vaší virtuální sítě, zadáte seznam virtuálních sítí, které mají povolené překládání záznamů v rámci zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
-V tomto rychlém startu se naučíte:
-
-> [!div class="checklist"]
-> * Vytvoření privátní zóny DNS
-> * Vytvoření virtuální sítě
-> * Propojit virtuální síť
-> * Vytvoření testovacích virtuálních počítačů
-> * Vytvoření dalšího záznamu DNS
-> * Testování privátní zóny
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -64,19 +56,19 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | MyAzureResourceGroup (vyberte existující skupinu prostředků) |
-| **\<název virtuální sítě>** | MyAzureVNet          |
-| **\<název oblasti>**          | USA – středozápad      |
-| **\<IPv4 –>adresního prostoru**   | 10.2.0.0 \ 16          |
-| **\<>názvů podsítí**          | MyAzureSubnet        |
-| **\<podsíť-adresa>rozsahu** | 10.2.0.0 \ 24          |
+| **\<resource-group-name>**  | MyAzureResourceGroup (vyberte existující skupinu prostředků) |
+| **\<virtual-network-name>** | MyAzureVNet          |
+| **\<region-name>**          | USA – středozápad      |
+| **\<IPv4-address-space>**   | 10.2.0.0 \ 16          |
+| **\<subnet-name>**          | MyAzureSubnet        |
+| **\<subnet-address-range>** | 10.2.0.0 \ 24          |
 
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>Propojit virtuální síť
 
-Pokud chcete propojit privátní zónu DNS s virtuální sítí, vytvořte odkaz na virtuální síť.
+Když chcete propojit privátní zónu DNS s virtuální sítí, vytvoříte propojení virtuální sítě.
 
 ![Přidat odkaz virtuální sítě](media/private-dns-portal/dns-add-virtual-network-link.png)
 
@@ -143,7 +135,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    ```
    ping myVM01.private.contoso.com
    ```
-   Zobrazený výstup by měl vypadat zhruba takto:
+   Zobrazený výstup by měl vypadat nějak takto:
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -163,7 +155,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    ```
    ping db.private.contoso.com
    ```
-   Zobrazený výstup by měl vypadat zhruba takto:
+   Zobrazený výstup by měl vypadat nějak takto:
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -180,7 +172,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Odstranění všech prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v rámci tohoto rychlého startu.
 
@@ -188,5 +180,5 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGr
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Scénáře pro Azure DNS Private Zones](private-dns-scenarios.md)
+> [Azure DNS Private Zones scénáře](private-dns-scenarios.md)
 

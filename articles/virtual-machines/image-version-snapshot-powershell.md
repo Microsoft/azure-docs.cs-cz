@@ -1,24 +1,24 @@
 ---
-title: PowerShell – vytvoření obrázku ze snímku nebo virtuálního pevného disku v galerii sdílených imagí
-description: Naučte se, jak vytvořit image ze snímku nebo virtuálního pevného disku v galerii sdílených imagí pomocí PowerShellu.
+title: PowerShell – vytvoření image ze snímku nebo spravovaného disku v galerii sdílených imagí
+description: Naučte se, jak vytvořit image ze snímku nebo spravovaného disku v galerii sdílených imagí pomocí PowerShellu.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70ef194ab7f7403f31ad431eba25db5f71dfb580
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494713"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556899"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Vytvoření image z VHD nebo snímku v galerii sdílených imagí pomocí PowerShellu
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Vytvoření image ze spravovaného disku nebo snímku v galerii sdílených imagí pomocí PowerShellu
 
-Pokud máte existující snímek nebo virtuální pevný disk, který byste chtěli migrovat do sdílené Galerie imagí, můžete vytvořit image galerie sdílených imagí přímo z disku VHD nebo snímku. Po otestování nové image můžete zdrojový virtuální pevný disk nebo snímek odstranit. Můžete také vytvořit image z VHD nebo snímku v galerii sdílených imagí pomocí [Azure CLI](image-version-snapshot-cli.md).
+Pokud máte existující snímek nebo spravovaný disk, který byste chtěli migrovat do sdílené Galerie imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravovaného disku nebo snímku. Po otestování nové image můžete zdrojový spravovaný disk nebo snímek odstranit. Můžete také vytvořit image ze spravovaného disku nebo snímku v galerii sdílených imagí pomocí [Azure CLI](image-version-snapshot-cli.md).
 
 Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto příkladu:
 - **Definice obrázku** obsahuje informace o imagi a požadavcích na jejich použití. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, specializované nebo zobecněné, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. 
@@ -27,14 +27,14 @@ Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto p
 
 ## <a name="before-you-begin"></a>Než začnete
 
-K dokončení tohoto článku musíte mít snímek nebo virtuální pevný disk. 
+K dokončení tohoto článku musíte mít snímek nebo spravovaný disk. 
 
 Pokud chcete zahrnout datový disk, velikost datového disku nemůže být větší než 1 TB.
 
 Při práci s tímto článkem nahraďte názvy prostředků tam, kde je to potřeba.
 
 
-## <a name="get-the-snapshot-or-vhd"></a>Získání snímku nebo virtuálního pevného disku
+## <a name="get-the-snapshot-or-managed-disk"></a>Získání snímku nebo spravovaného disku
 
 Seznam snímků, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot). 
 
@@ -50,17 +50,17 @@ $source = Get-AzSnapshot `
    -ResourceGroupName myResourceGroup
 ```
 
-Místo snímku můžete také použít virtuální pevný disk. K získání virtuálního pevného disku použijte [příkaz Get-AzDisk](/powershell/module/az.compute/get-azdisk). 
+Místo snímku můžete použít také spravovaný disk. K získání spravovaného disku použijte [příkaz Get-AzDisk](/powershell/module/az.compute/get-azdisk). 
 
 ```azurepowershell-interactive
 Get-AzDisk | Format-Table -Property Name,ResourceGroupName
 ```
 
-Pak Získejte virtuální pevný disk a přiřaďte ho k `$source` proměnné.
+Pak Získejte spravovaný disk a přiřaďte ho k `$source` proměnné.
 
 ```azurepowershell-interactive
 $source = Get-AzDisk `
-   -SnapshotName mySnapshot
+   -Name myDisk
    -ResourceGroupName myResourceGroup
 ```
 
@@ -88,11 +88,11 @@ $gallery = Get-AzGallery `
 
 Definice obrázků vytvoří logické seskupení obrázků. Používají se ke správě informací o imagi. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
-Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. V tomto příkladu předpokládáme, že snímek nebo virtuální pevný disk jsou z virtuálního počítače, který se používá, a ještě není zobecněný. Pokud byl virtuální pevný disk nebo snímek převedený na zobecněný operační systém (po spuštění nástroje Sysprep pro Windows nebo [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` nebo `-deprovision+user` pro Linux), změňte `-OsState` na `generalized` . 
+Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. V tomto příkladu předpokládáme, že je snímek nebo spravovaný disk z virtuálního počítače, který se používá, a zatím není zobecněný. Pokud se spravovaný disk nebo snímek převzal na zobecněný operační systém (po spuštění nástroje Sysprep pro Windows nebo [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` nebo `-deprovision+user` Linux), změňte na `-OsState` `generalized` . 
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./windows/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
-Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu je definice bitové kopie pojmenována *myImageDefinition*a je určena pro specializované operační systémy Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
+Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu je definice bitové kopie pojmenována *myImageDefinition* a je určena pro specializované operační systémy Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -118,7 +118,7 @@ Vytvořte z snímku verzi Image pomocí [New-AzGalleryImageVersion](/powershell/
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
-Pokud chcete, aby bitová kopie obsahovala datový disk, kromě disku s operačním systémem, přidejte `-DataDiskImage` parametr a nastavte ho na ID snímku datového disku nebo VHD.
+Pokud chcete, aby bitová kopie obsahovala datový disk, kromě disku s operačním systémem, přidejte `-DataDiskImage` parametr a nastavte ho na ID snímku datového disku nebo spravovaného disku.
 
 V tomto příkladu je verze image *1.0.0* a replikuje se do datových center *středozápadní USA* i *střed USA – jih* . Při výběru cílových oblastí pro replikaci nezapomeňte, že je také nutné zahrnout *zdrojovou* oblast jako cíl pro replikaci.
 

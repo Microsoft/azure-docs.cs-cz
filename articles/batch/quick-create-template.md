@@ -1,15 +1,15 @@
 ---
 title: Rychlý Start Azure – vytvoření účtu Batch – šablona Azure Resource Manager
-description: Můžete se rychle naučit, jak pomocí Azure CLI spustit úlohu služby Batch. Vytvářejte a spravujte prostředky Azure z příkazového řádku nebo ve skriptech.
+description: V tomto rychlém startu se dozvíte, jak vytvořit účet Batch pomocí šablony ARM.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: fc6f1537b32c8ced2cfc2bf09f16106f791001fc
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642397"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106576"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Batch pomocí šablony ARM
 

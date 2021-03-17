@@ -1,14 +1,14 @@
 ---
 title: Přehled Azure Resource Health
-description: Přehled Azure Resource Health
+description: Přečtěte si, jak Azure Resource Health pomáhá s diagnostikou a získáním podpory pro problémy se službami, které ovlivňují vaše prostředky Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041570"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90967874"
 ---
 # <a name="resource-health-overview"></a>Přehled Resource Health
  
@@ -50,7 +50,7 @@ Akce uživatele aktivují události jiné než platformy. Mezi příklady patř�
 
 ![Stav "není k dispozici" pro virtuální počítač z důvodu události jiné než platformy](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>Není známo
+### <a name="unknown"></a>Neznámý
 
 *Neznámý* znamená, že Resource Health nedostaly informace o prostředku více než 10 minut. I když tento stav není konečným náznakem stavu prostředku, je důležitým datovým bodem pro řešení problémů.
 

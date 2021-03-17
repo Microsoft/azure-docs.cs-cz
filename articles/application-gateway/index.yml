@@ -3,19 +3,19 @@ title: Dokumentace ke službě Azure Application Gateway
 summary: Naučte se vytvářet aplikační brány. Tato dokumentace vám pomůže naplánovat, nasadit a spravovat webový provoz do vašich prostředků Azure.
 metadata:
   title: Dokumentace ke službě Azure Application Gateway
-  description: Zjistěte, jak nasadit Azure Firewall, cloudovou službu zabezpečení sítě.
+  description: Přečtěte si o Azure Application Gateway, nástroji pro vyrovnávání zatížení webového provozu, který umožňuje spravovat provoz do webových aplikací.
   services: application-gateway
   ms.service: application-gateway
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 03/24/2020
-  ms.openlocfilehash: 63000da3b1d3e69c2a0c0a1d10267e18da199ffa
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-  ms.translationtype: HT
+  ms.date: 02/08/2021
+  ms.openlocfilehash: 129ce0d20ec1d576853ecae565e43f6be8146283
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86524756"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102616135"
 landingContent:
 - title: Informace o službě Application Gateway
   linkLists:
@@ -26,7 +26,11 @@ landingContent:
   - linkListType: concept
     links:
     - text: Nejčastější dotazy
-      url: application-gateway-faq.md
+      url: application-gateway-faq.yml
+  - linkListType: whats-new
+    links:
+    - text: Novinky
+      url: https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway
 - title: Podpora svazků s vysokým provozem
   linkLists:
   - linkListType: concept
@@ -69,8 +73,8 @@ landingContent:
       url: ingress-controller-overview.md
   - linkListType: tutorial
     links:
-    - text: Vytvoření kontroleru Ingress pro AKS
-      url: ingress-controller-install-new.md
+    - text: Nasazení AKS Add-On pro AKS
+      url: tutorial-ingress-controller-add-on-new.md
 - title: Přepsání hlaviček HTTP a adres URL s využitím Application Gateway
   linkLists:
   - linkListType: overview

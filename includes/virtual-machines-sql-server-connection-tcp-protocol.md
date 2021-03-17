@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 8b919608dfc562d8db77619d5215a6828a53a4aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7af6962c3343cd9d3e35e96d88650aa6a42c6b3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174949"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557484"
 ---
 1. Když jste připojeni k virtuálnímu počítači pomocí Vzdálené plochy, vyhledejte nástroj **Configuration Manager**:
 
@@ -27,4 +27,4 @@ ms.locfileid: "67174949"
 
 1. Zavřete SQL Server Configuration Manager.
 
-Další informace o povolení protokolů pro databázový stroj SQL Serveru najdete v tématu věnovaném [povolení nebo zákazu síťového protokolu serveru](https://msdn.microsoft.com/library/ms191294.aspx).
+Další informace o povolení protokolů pro databázový stroj SQL Serveru najdete v tématu věnovaném [povolení nebo zákazu síťového protokolu serveru](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol).

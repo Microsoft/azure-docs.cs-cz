@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75649985"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737316"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Nastavení Azure Functions pro vlastní zprostředkovatele Azure
 
@@ -21,7 +21,7 @@ Vlastní poskytovatel je kontrakt mezi Azure a koncovým bodem. S vlastními pos
 > [!NOTE]
 > V tomto kurzu vytvoříte jednoduchý koncový bod služby, který používá aplikaci Azure Function App. Vlastní zprostředkovatel ale může používat libovolný veřejně přístupný koncový bod. K alternativám patří Azure Logic Apps, Azure API Management a Web Apps funkce Azure App Service.
 
-Pokud chcete začít tento kurz, měli byste nejdřív postupovat podle kurzu [Vytvoření první aplikace funkce Azure Functions v Azure Portal](../../azure-functions/functions-create-first-azure-function.md). Tento kurz vytvoří funkci Webhooku .NET Core, kterou lze upravit v Azure Portal. Základem pro aktuální kurz je také základ.
+Pokud chcete začít tento kurz, měli byste nejdřív postupovat podle kurzu [Vytvoření první aplikace funkce Azure Functions v Azure Portal](../../azure-functions/functions-get-started.md). Tento kurz vytvoří funkci Webhooku .NET Core, kterou lze upravit v Azure Portal. Základem pro aktuální kurz je také základ.
 
 ## <a name="install-azure-table-storage-bindings"></a>Instalace vazeb Azure Table Storage
 
@@ -42,7 +42,7 @@ Postup při instalaci vazeb úložiště tabulek Azure:
 Pokud chcete nastavit funkci Azure, aby zahrnovala metody žádosti RESTful vlastního zprostředkovatele:
 
 1. Přejít na kartu **integrace** pro HttpTrigger.
-1. V části **vybrané metody HTTP**vyberte **Get**, **post**, **Delete**a **Put**.
+1. V části **vybrané metody HTTP** vyberte **Get**, **post**, **Delete** a **Put**.
 
 ![Přehled vlastního zprostředkovatele zobrazujícího metody HTTP](./media/create-custom-provider/azure-functions-http-methods.png)
 
@@ -51,7 +51,7 @@ Pokud chcete nastavit funkci Azure, aby zahrnovala metody žádosti RESTful vlas
 > [!NOTE]
 > Pokud soubor projektu C# chybí v adresáři projektu, můžete ho přidat ručně. Případně se zobrazí po instalaci rozšíření Microsoft. Azure. WebJobs. Extensions. Storage do aplikace Function App.
 
-Dále aktualizujte soubor projektu C# tak, aby zahrnoval užitečné knihovny NuGet. Tyto knihovny usnadňují analýzu příchozích požadavků od vlastních poskytovatelů. Použijte postup [Přidání rozšíření z portálu](../../azure-functions/install-update-binding-extensions-manual.md) a aktualizujte soubor projektu C# tak, aby zahrnoval následující odkazy na balíčky:
+Dále aktualizujte soubor projektu C# tak, aby zahrnoval užitečné knihovny NuGet. Tyto knihovny usnadňují analýzu příchozích požadavků od vlastních poskytovatelů. Použijte postup [Přidání rozšíření z portálu](../../azure-functions/functions-bindings-register.md) a aktualizujte soubor projektu C# tak, aby zahrnoval následující odkazy na balíčky:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ Následující element XML je příkladem souboru projektu jazyka C#:
 V tomto kurzu nastavíte aplikaci funkcí Azure, která bude fungovat jako koncový bod vlastního zprostředkovatele Azure.
 
 Další informace o tom, jak vytvořit RESTful koncový bod vlastního zprostředkovatele, najdete v tématu [kurz: vytváření koncového bodu vlastního zprostředkovatele RESTful](./tutorial-custom-providers-function-authoring.md).
-

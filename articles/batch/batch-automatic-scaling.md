@@ -2,14 +2,14 @@
 title: Automatické škálování výpočetních uzlů ve fondu služby Azure Batch
 description: Povolte automatické škálování v cloudovém fondu, abyste mohli dynamicky upravovat počet výpočetních uzlů ve fondu.
 ms.topic: how-to
-ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 11/23/2020
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387468"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381422"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -128,12 +128,16 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 | $PendingTasks |Součet $ActiveTasks a $RunningTasks. |
 | $SucceededTasks |Počet úloh, které byly úspěšně dokončeny. |
 | $FailedTasks |Počet úkolů, které selhaly. |
+| $TaskSlotsPerNode |Počet slotů úloh, které lze použít ke spuštění souběžných úloh na jednom výpočetním uzlu ve fondu. |
 | $CurrentDedicatedNodes |Aktuální počet vyhrazených výpočetních uzlů. |
 | $CurrentLowPriorityNodes |Aktuální počet výpočetních uzlů s nízkou prioritou, včetně všech zrušených uzlů. |
 | $PreemptedNodeCount | Počet uzlů ve fondu, které jsou v zastaveném stavu. |
 
 > [!TIP]
 > Tyto proměnné definované službou jen pro čtení jsou *objekty* , které poskytují různé metody pro přístup k datům, která jsou k nim přidružená. Další informace najdete v části [získání ukázkových dat](#obtain-sample-data) dále v tomto článku.
+
+> [!NOTE]
+> Použijte `$RunningTasks` při škálování na základě počtu úloh spuštěných v určitém časovém okamžiku a `$ActiveTasks` při škálování na základě počtu úloh, které jsou zařazeny do fronty ke spuštění.
 
 ## <a name="types"></a>Typy
 
@@ -186,13 +190,13 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 | *operátor* TimeInterval TimeInterval |<, <=, = =, >=, >,! = |double |
 | Double – *operátor* Double |&&  &#124;&#124; |double |
 
-Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true**a nula je **false**.
+Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true** a nula je **false**.
 
 ## <a name="functions"></a>Functions
 
 Při definování vzorce automatického škálování můžete použít tyto předdefinované **funkce** .
 
-| Funkce | Návratový typ | Popis |
+| Funkce | Návratový typ | Description |
 | --- | --- | --- |
 | průměr (doubleVecList) |double |Vrátí průměrnou hodnotu pro všechny hodnoty v doubleVecList. |
 | len (doubleVecList) |double |Vrátí délku vektoru, který je vytvořen z doubleVecList. |
@@ -226,7 +230,7 @@ Při definování vzorce můžete použít metriky prostředků i úloh. Cílov�
 
 <table>
   <tr>
-    <th>Metrika</th>
+    <th>Metric</th>
     <th>Popis</th>
   </tr>
   <tr>
@@ -283,7 +287,7 @@ K získání ukázkových dat o proměnných definovaných službou lze použít
 
 | Metoda | Popis |
 | --- | --- |
-| Getsample () |`GetSample()`Metoda vrací vektor ukázek dat.<br/><br/>Vzorek je na data metriky o hodnotě 30 sekund. Jinými slovy jsou vzorky získány každých 30 sekund. Jak je uvedeno níže, nastane zpoždění mezi tím, kdy je vzorek shromážděn a kdy je k dispozici pro vzorec. V takovém případě nemusí být pro vyhodnocení vzorce k dispozici všechny vzorky za dané časové období.<ul><li>`doubleVec GetSample(double count)`: Určuje počet vzorků, které se mají získat z posledních shromážděných ukázek. `GetSample(1)`Vrátí poslední dostupnou ukázku. Metriky, jako `$CPUPercent` například, by však `GetSample(1)` neměly být použity, protože není možné zjistit, *kdy* byla ukázka shromážděna. Může to být nedávno nebo z důvodu systémových problémů může být to mnohem starší. V takových případech je lepší použít časový interval, jak je znázorněno níže.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Určuje časový rámec pro shromažďování ukázkových dat. Volitelně také Určuje procentuální hodnotu vzorků, které musí být k dispozici v požadovaném časovém rámci. Například `$CPUPercent.GetSample(TimeInterval_Minute * 10)` vrátí 20 vzorků, pokud jsou v historii k dispozici všechny ukázky za posledních 10 minut `CPUPercent` . Pokud poslední minuta historie není dostupná, vrátí se jenom 18 ukázek. V tomto případě `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` selže, protože je k dispozici pouze 90% ukázek, ale to `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` bylo úspěšné.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Určuje časový rámec pro shromažďování dat s časem zahájení i časem ukončení. Jak je uvedeno výše, nastane zpoždění mezi tím, kdy je shromážděna ukázka, a když bude k dispozici pro vzorec. Zvažte tuto prodlevu při použití `GetSample` metody. Viz `GetSamplePercent` níže. |
+| Getsample () |`GetSample()`Metoda vrací vektor ukázek dat.<br/><br/>Vzorek je na data metriky o hodnotě 30 sekund. Jinými slovy jsou vzorky získány každých 30 sekund. Jak je uvedeno níže, nastane zpoždění mezi tím, kdy je vzorek shromážděn a kdy je k dispozici pro vzorec. V takovém případě nemusí být pro vyhodnocení vzorce k dispozici všechny vzorky za dané časové období.<ul><li>`doubleVec GetSample(double count)`: Určuje počet vzorků, které se mají získat z posledních shromážděných ukázek. `GetSample(1)` Vrátí poslední dostupnou ukázku. Metriky, jako `$CPUPercent` například, by však `GetSample(1)` neměly být použity, protože není možné zjistit, *kdy* byla ukázka shromážděna. Může to být nedávno nebo z důvodu systémových problémů může být to mnohem starší. V takových případech je lepší použít časový interval, jak je znázorněno níže.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Určuje časový rámec pro shromažďování ukázkových dat. Volitelně také Určuje procentuální hodnotu vzorků, které musí být k dispozici v požadovaném časovém rámci. Například `$CPUPercent.GetSample(TimeInterval_Minute * 10)` vrátí 20 vzorků, pokud jsou v historii k dispozici všechny ukázky za posledních 10 minut `CPUPercent` . Pokud poslední minuta historie není dostupná, vrátí se jenom 18 ukázek. V tomto případě `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` selže, protože je k dispozici pouze 90% ukázek, ale to `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` bylo úspěšné.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Určuje časový rámec pro shromažďování dat s časem zahájení i časem ukončení. Jak je uvedeno výše, nastane zpoždění mezi tím, kdy je shromážděna ukázka, a když bude k dispozici pro vzorec. Zvažte tuto prodlevu při použití `GetSample` metody. Viz `GetSamplePercent` níže. |
 | GetSamplePeriod() |Vrátí období vzorků, které byly získány v historické ukázkové sadě dat. |
 | Count () |Vrátí celkový počet vzorků v historii metrik. |
 | HistoryBeginTime() |Vrátí časové razítko ukázky nejstarších dostupných dat pro danou metriku. |
@@ -381,7 +385,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> Pokud se rozhodnete, můžete do řetězců vzorců zahrnout jak komentáře, tak i zalomení řádků.
+> Pokud se rozhodnete, můžete do řetězců vzorců zahrnout jak komentáře, tak i zalomení řádků. Upozorňujeme také, že chybějící středníky mohou způsobit chyby vyhodnocení.
 
 ## <a name="automatic-scaling-interval"></a>Interval automatického škálování
 
@@ -625,7 +629,7 @@ Ve službě Batch .NET má vlastnost [CloudPool. AutoScaleRun](/dotnet/api/micro
 
 V REST API vrátí informace o žádosti [o fond](/rest/api/batchservice/get-information-about-a-pool) informace o fondu, který obsahuje nejnovější informace o spuštění automatického škálování ve vlastnosti [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) .
 
-Následující příklad jazyka C# používá knihovnu Batch .NET k tisku informací o posledním spuštění automatického škálování na _myPool_fondu.
+Následující příklad jazyka C# používá knihovnu Batch .NET k tisku informací o posledním spuštění automatického škálování na _myPool_ fondu.
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");
@@ -648,6 +652,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>Získat historii spuštění automatického škálování pomocí událostí automatického škálování fondu
+Pomocí dotazu na [PoolAutoScaleEvent](batch-pool-autoscale-event.md)můžete také zaškrtnout historii automatického škálování. Služba Batch generuje tuto událost za účelem zaznamenávání každého výskytu vyhodnocování a provádění vzorce automatického škálování, což může být užitečné při řešení potenciálních problémů.
+
+Ukázková událost pro PoolAutoScaleEvent:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>Ukázka vzorců automatického škálování
 
 Pojďme se podívat na několik vzorců, které ukazují různé způsoby, jak upravit množství výpočetních prostředků ve fondu.
@@ -667,7 +689,7 @@ $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
 
-`$curTime`dá se upravit tak, aby odráželo vaše místní časové pásmo přidáním `time()` do produktu `TimeZoneInterval_Hour` a vašeho posunu UTC. Například použijte `$curTime = time() + (-6 * TimeInterval_Hour);` pro horská oblast (MDT) (letní čas). Mějte na paměti, že posun by musel být upraven na začátku a na konci letního času (Pokud je k dispozici).
+`$curTime` dá se upravit tak, aby odráželo vaše místní časové pásmo přidáním `time()` do produktu `TimeZoneInterval_Hour` a vašeho posunu UTC. Například použijte `$curTime = time() + (-6 * TimeInterval_Hour);` pro horská oblast (MDT) (letní čas). Mějte na paměti, že posun by musel být upraven na začátku a na konci letního času (Pokud je k dispozici).
 
 ### <a name="example-2-task-based-adjustment"></a>Příklad 2: úpravy založené na úlohách
 
@@ -691,7 +713,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>Příklad 3: monitorování účtů pro paralelní úlohy
 
-Tento příklad v jazyce C# upravuje velikost fondu na základě počtu úkolů. Tento vzorec také bere v úvahu hodnotu [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) , která byla pro fond nastavena. Tento přístup je užitečný v situacích, kdy je na vašem fondu povolených [paralelního spouštění úkolů](batch-parallel-node-tasks.md) .
+Tento příklad v jazyce C# upravuje velikost fondu na základě počtu úkolů. Tento vzorec také bere v úvahu hodnotu [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) , která byla pro fond nastavena. Tento přístup je užitečný v situacích, kdy je na vašem fondu povolených [paralelního spouštění úkolů](batch-parallel-node-tasks.md) .
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +721,7 @@ Tento příklad v jazyce C# upravuje velikost fondu na základě počtu úkolů.
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

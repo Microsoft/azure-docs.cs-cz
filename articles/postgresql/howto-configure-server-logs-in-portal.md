@@ -1,17 +1,17 @@
 ---
 title: Správa protokolů-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru (soubory. log) v Azure Database for PostgreSQL-Single server z Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 2be89f9263c71b7c9d7bc32edd0b1fc7cb2cfbce
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999242"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům Azure Database for PostgreSQL-Single server z Azure Portal
 
@@ -23,13 +23,13 @@ Postup v tomto článku vyžaduje, abyste měli [Azure Database for PostgreSQL S
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolům dotazů a protokolům chyb. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte svůj server Azure Database for PostgreSQL.
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
 
-   ![Snímek obrazovky s možnostmi protokolu serveru](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Snímek obrazovky s možnostmi protokolu serveru":::
 
 4. Pokud chcete zobrazit parametry serveru, vyberte **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu**.
 
@@ -37,7 +37,7 @@ Nakonfigurujte přístup k protokolům dotazů a protokolům chyb.
 
    Po změně parametrů vyberte **Save (Uložit**). Nebo můžete změny zrušit. 
 
-   ![Snímek obrazovky s možnostmi parametrů serveru](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Snímek obrazovky s možnostmi parametrů serveru":::
 
 Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím, že stránku zavřete.
 
@@ -50,18 +50,18 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů a 
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka zobrazuje seznam souborů protokolu.
 
-   ![Snímek obrazovky se stránkou protokolů serveru se zvýrazněným seznamem protokolů](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Snímek obrazovky se stránkou protokolů serveru se zvýrazněným seznamem protokolů":::
 
    > [!TIP]
    > Konvence pojmenování protokolu je **PostgreSQL-rrrr-mm-dd_hh0000. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolu se otáčejí každou hodinu nebo 100 MB, podle toho, co nastane dřív.
 
 4. V případě potřeby se pomocí vyhledávacího pole rychle zúží na konkrétní protokol, a to na základě data a času. Hledání je na názvu protokolu.
 
-   ![Snímek obrazovky se stránkou protokolů serveru s vybraným vyhledávacím polem a výsledky](./media/howto-configure-server-logs-in-portal/5-search.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="Snímek obrazovky se stránkou protokolů serveru s vybraným vyhledávacím polem a výsledky":::
 
 5. Chcete-li stáhnout jednotlivé soubory protokolu, vyberte ikonu šipky vedle každého souboru protokolu v řádku tabulky.
 
-   ![Snímek obrazovky se stránkou protokolů serveru s zvýrazněnou ikonou šipky](./media/howto-configure-server-logs-in-portal/6-download.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="Snímek obrazovky se stránkou protokolů serveru s zvýrazněnou ikonou šipky":::
 
 ## <a name="next-steps"></a>Další kroky
 - Informace o tom, jak programově stahovat protokoly, najdete [v tématu Access Server Logs v](howto-configure-server-logs-using-cli.md) rozhraní příkazového řádku.

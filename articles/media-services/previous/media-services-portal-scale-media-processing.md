@@ -3,7 +3,7 @@ title: Škálování zpracování médií pomocí Azure Portal | Microsoft Docs
 description: Tento kurz vás provede jednotlivými kroky při škálování zpracování médií pomocí Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
@@ -12,21 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 3001cd89b5dbb55728fc1f8411e0bb87e17044b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 49c3899b912a88605e9269cdb1c34c7e18ed5247
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084445"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009721"
 ---
 # <a name="change-the-reserved-unit-type"></a>Změna typu rezervované jednotky
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Azure Portal](media-services-portal-scale-media-processing.md)
 > * [REST](/rest/api/media/operations/encodingreservedunittype)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 

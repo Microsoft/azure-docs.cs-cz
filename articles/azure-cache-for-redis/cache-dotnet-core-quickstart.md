@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s aplikacemi .NET Core'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v .NET Core'
 description: V tomto rychlém startu se dozvíte, jak získat přístup k Azure cache pro Redis ve vašich aplikacích .NET Core.
 author: yegu-ms
 ms.author: yegu
@@ -8,22 +8,25 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: bc045eba331c861801dceef7f00db42e851f8bb2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 525ad6df1bb94a1fb917e41495d7f8aafa1e79ae
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211370"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121418"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
+# <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Rychlý Start: použití mezipaměti Azure pro Redis v .NET Core
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Pomocí klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) jste specificky v konzolové aplikaci .NET Core použili kód C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start k .NET Core](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet-core) na GitHubu.
+
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime), které vyžaduje klient StackEdchange. Redis.
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -48,7 +51,7 @@ V okně příkazového řádku přejděte do nového adresáře projektu *Redist
 
 ## <a name="add-secret-manager-to-the-project"></a>Přidání nástroje Secret Manager do projektu
 
-V této části do svého projektu přidáte [nástroj Secret Manager](https://docs.microsoft.com/aspnet/core/security/app-secrets). Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
+V této části do svého projektu přidáte [nástroj Secret Manager](/aspnet/core/security/app-secrets). Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
 Otevřete soubor *Redistest.csproj*. Přidejte element `DotNetCliToolReference` zahrnující *Microsoft.Extensions.SecretManager.Tools*. Přidejte také element `UserSecretsId`, jak je znázorněno níže, a uložte soubor.
 
@@ -294,7 +297,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
@@ -318,4 +321,4 @@ V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z ap
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

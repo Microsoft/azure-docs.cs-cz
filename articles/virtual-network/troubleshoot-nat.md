@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836101"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223427"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
 
@@ -43,7 +43,7 @@ Jeden [prostředek brány NAT](nat-gateway-resource.md) podporuje 64 000 až 1 0
 
 Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u odchozího připojení naváže, spravuje nebo konfigurovatelné časovače, které se mění z výchozích hodnot.  Pečlivě si prostudujte tuto část.
 
-#### <a name="steps"></a>Kroky
+#### <a name="steps"></a>Postup
 
 1. Ověřte, zda jste změnili výchozí časový limit nečinnosti na hodnotu vyšší než 4 minuty.
 2. Prozkoumejte, jak vaše aplikace vytváří odchozí připojení (například revize kódu nebo zachycení paketů). 
@@ -51,7 +51,7 @@ Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u od
 4. Vyhodnotí, zda jsou následovány příslušné vzory.
 5. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí dalších IP adres přiřazených k prostředku brány NAT.
 
-#### <a name="design-patterns"></a>Vzory návrhu
+#### <a name="design-patterns"></a>Způsoby návrhu
 
 Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení.  Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
@@ -68,10 +68,10 @@ _**Řešení:**_ Použití vhodných vzorů a osvědčených postupů
 Vyčerpání SNAT je také možné doplnit dalšími antivzory v podkladové aplikaci. Projděte si tyto další vzory a osvědčené postupy, které vám pomůžou zlepšit škálovatelnost a spolehlivost vaší služby.
 
 - Vyzkoumejte dopad snížení [časového limitu nečinnosti protokolu TCP](nat-gateway-resource.md#timers) na nižší hodnoty, včetně výchozího časového limitu nečinnosti 4 minut, aby se uvolnil inventář portů SNAT dříve.
-- Zvažte [asynchronní vzorce cyklického dotazování](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) pro dlouhotrvající operace pro uvolnění prostředků připojení pro jiné operace.
+- Zvažte [asynchronní vzorce cyklického dotazování](/azure/architecture/patterns/async-request-reply) pro dlouhotrvající operace pro uvolnění prostředků připojení pro jiné operace.
 - Dlouhodobé toky (například opakovaně používané připojení TCP) by měly používat udržení protokolu TCP nebo udržení nedostatku aplikační vrstvy, aby se předešlo vypršení zprostředkujících systémů. Zvýšení časového limitu nečinnosti je poslední a nemusí vyhodnotit původní příčinu. Dlouhý časový limit může způsobit selhání s nízkou rychlostí, pokud vyprší časový limit a zavádí zpoždění a nepotřebná selhání.
-- [Vzorce opakovaného opakování](https://docs.microsoft.com/azure/architecture/patterns/retry) by se měly používat k tomu, aby se předešlo agresivním pokusům o opakování nebo selhání při přechodném selhání nebo obnovení.
-Vytvoření nového připojení TCP pro každou operaci HTTP (označované také jako "atomická připojení") je anti-Pattern.  Atomická připojení zabrání vaší aplikaci v škálování prostředků na dobrém a odpadním zdroji.  Vždy prokanálů více operací do stejného připojení.  Vaše aplikace bude využívat rychlost transakcí a náklady na prostředky.  Když vaše aplikace používá šifrování transportní vrstvy (například TLS), jsou k dispozici značné náklady spojené se zpracováním nových připojení.  Další vzory osvědčených postupů najdete v [vzorech návrhu cloudu Azure](https://docs.microsoft.com/azure/architecture/patterns/) .
+- [Vzorce opakovaného opakování](/azure/architecture/patterns/retry) by se měly používat k tomu, aby se předešlo agresivním pokusům o opakování nebo selhání při přechodném selhání nebo obnovení.
+Vytvoření nového připojení TCP pro každou operaci HTTP (označované také jako "atomická připojení") je anti-Pattern.  Atomická připojení zabrání vaší aplikaci v škálování prostředků na dobrém a odpadním zdroji.  Vždy prokanálů více operací do stejného připojení.  Vaše aplikace bude využívat rychlost transakcí a náklady na prostředky.  Když vaše aplikace používá šifrování transportní vrstvy (například TLS), jsou k dispozici značné náklady spojené se zpracováním nových připojení.  Další vzory osvědčených postupů najdete v [vzorech návrhu cloudu Azure](/azure/architecture/patterns/) .
 
 #### <a name="additional-possible-mitigations"></a>Další možná omezení rizik
 
@@ -96,7 +96,7 @@ Následující tabulka slouží jako výchozí bod, ve kterém se nástroje pou�
 | Operační systém | Test obecného připojení TCP | Test aplikační vrstvy TCP | UDP |
 |---|---|---|---|
 | Linux | NC (test obecného připojení) | kudrlinkou (test aplikační vrstvy TCP) | specifické pro aplikaci |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | Vyvolání PowerShellu [– WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | specifické pro aplikaci |
+| Windows | [PsPing](/sysinternals/downloads/psping) | Vyvolání PowerShellu [– WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | specifické pro aplikaci |
 
 ### <a name="connectivity-failures"></a>Selhání připojení
 
@@ -113,7 +113,7 @@ K ověření připojení použijte nástroje, jako jsou následující. Protokol
 | Operační systém | Test obecného připojení TCP | Test aplikační vrstvy TCP | UDP |
 |---|---|---|---|
 | Linux | NC (test obecného připojení) | kudrlinkou (test aplikační vrstvy TCP) | specifické pro aplikaci |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | Vyvolání PowerShellu [– WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | specifické pro aplikaci |
+| Windows | [PsPing](/sysinternals/downloads/psping) | Vyvolání PowerShellu [– WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | specifické pro aplikaci |
 
 #### <a name="configuration"></a>Konfigurace
 
@@ -196,18 +196,9 @@ Pro prostředek brány NAT není nutné restartovat virtuální počítač s kon
 
 Pokud pořád máte potíže, otevřete případ podpory pro další řešení potíží.
 
-### <a name="connection-setup-time"></a>Čas nastavení připojení
-
-Vzhledem k tomu, že Load Balancer odchozí pravidla staticky přiřazují Fondy portů SNAT konkrétním virtuálním počítačům, vytváření nových odchozích toků je rychlejší než použití Virtual Network překladu adres (NAT). Proto když přepnete z Load Balancer odchozích pravidel, může se při vytváření nového odchozího připojení zobrazit zvýšené latence. Jak bylo vysvětleno dříve, aby se maximalizoval výkon aplikace, měli byste použít dlouhodobé toky (například znovu používané připojení TCP).
-
-_**Řešení**_
-
-Pokud se primárně zajímá latence nastavení minimálního připojení, použijte Load Balancer odchozí pravidla.
-
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o [Virtual Network NAT](nat-overview.md)
 * Další informace o [prostředku brány NAT](nat-gateway-resource.md)
 * Seznamte [se s metrikami a upozorněními pro prostředky brány NAT](nat-metrics.md).
 * [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
-

@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307924"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071485"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Tento článek vysvětluje, jak nasadit službu správy certifikátů trezoru OPC v Azure.
 
@@ -28,7 +31,7 @@ Tento článek vysvětluje, jak nasadit službu správy certifikátů trezoru OP
 
 V současné době je operace sestavení a nasazení omezená na Windows.
 Ukázky jsou napsané pro C# .NET Standard, které potřebujete k vytvoření služby a ukázek pro nasazení.
-Všechny nástroje, které potřebujete pro .NET Standard, jsou dodávány s nástroji .NET Core. Viz Začínáme [s .NET Core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+Všechny nástroje, které potřebujete pro .NET Standard, jsou dodávány s nástroji .NET Core. Viz Začínáme [s .NET Core](/dotnet/articles/core/getting-started).
 
 1. [Nainstalujte .NET Core 2.1 +][dotnet-install].
 2. [Nainstalovat Docker][docker-url] (volitelné, jenom pokud je vyžadováno místní sestavení Docker).
@@ -75,9 +78,9 @@ PowerShellový skript nabízí snadný způsob nasazení mikroslužby trezoru OP
    > [!NOTE]
    > V případě problémů se v části řešení potíží s nasazením v tomto článku přečtěte v části "selhání nasazení.
 
-8. Otevřete oblíbený prohlížeč a otevřete stránku aplikace:`https://myResourceGroup.azurewebsites.net`
+8. Otevřete oblíbený prohlížeč a otevřete stránku aplikace: `https://myResourceGroup.azurewebsites.net`
 8. Poskytněte webové aplikaci a mikroslužbu trezoru OPC pár minut, než se zahřívá po nasazení. Domovská stránka webu může při prvním použití přestat reagovat, dokud neobdržíte první odpověď.
-11. Pokud si chcete prohlédnout rozhraní Swagger API, otevřete:`https://myResourceGroup-service.azurewebsites.net`
+11. Pokud si chcete prohlédnout rozhraní Swagger API, otevřete: `https://myResourceGroup-service.azurewebsites.net`
 13. Pokud chcete spustit místní GDS Server pomocí dotnet, spusťte `.\myResourceGroup-gds.cmd` . V Docker začněte `.\myResourceGroup-dockergds.cmd` .
 
 Je možné znovu nasadit sestavení s přesně stejnými nastaveními. Počítejte s tím, že taková operace obnoví všechny tajné klíče aplikace a může resetovat některá nastavení v Azure Active Directory (Azure AD) registrace aplikací.
@@ -88,9 +91,9 @@ Po úspěšném nasazení můžete začít používat služby. Viz [Správa slu�
 
 ## <a name="delete-the-services-from-the-subscription"></a>Odstranit služby z předplatného
 
-Jak na to:
+Zde je uveden postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, ve které byla služba nasazena.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 4. Po krátké době se všechny nasazené součásti služby odstraní.

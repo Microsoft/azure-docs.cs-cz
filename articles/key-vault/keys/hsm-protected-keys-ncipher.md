@@ -8,23 +8,24 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f7761cf011a3a678bb7609e1063ac6ebec90d395
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589924"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499182"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Import klíčů chráněných HSM pro Key Vault (podpůrný software nCipher)
 
+> [!WARNING]
+> Metoda importu klíče HSM popsaná v tomto dokumentu je **zastaralá** a v budoucnu se nepodporuje. Funguje pouze s podpůrný software nCipher hardwarového nShield řady HSM s firmwarem 12.40.2 nebo 12,50 s opravou hotfix. Důrazně se doporučuje používat [novou metodu pro import klíčů HSM](hsm-protected-keys-byok.md) .
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *bring your own key * (použití vlastního klíče) nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
+Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *bring your own key* (použití vlastního klíče) nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
 
-> [!NOTE]
-> Metoda importu klíče HSM popsaná v tomto dokumentu funguje jenom s podpůrný software nCipher hardwarového nShield rodina HSM. Pro import klíčů HSM-Keys z jiných HSM [najdete tady](hsm-protected-keys-byok.md).
 
 Informace v tomto tématu vám pomůžou při plánování, generování a přenosu vlastních klíčů chráněných HSM, které se používají s Azure Key Vault. 
 
@@ -61,8 +62,8 @@ Seznam požadavků pro Přineste si vlastní klíč (BYOK) pro Azure Key Vault n
 | --- | --- |
 | Předplatné Azure |Pokud chcete vytvořit Azure Key Vault, potřebujete předplatné Azure: [Zaregistrujte se do bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/) . |
 | Úroveň služby Azure Key Vault Premium na podporu klíčů chráněných HSM |Další informace o úrovních služby a možnostech pro Azure Key Vault najdete na webu [Azure Key Vault s cenami](https://azure.microsoft.com/pricing/details/key-vault/) . |
-| Podpůrný software nCipher hardwarového nShield HSM, SmartCard a software podpory |Musíte mít přístup k modulu hardwarového zabezpečení podpůrný software nCipher a základnímu provoznímu znalostí podpůrný software nCipher hardwarového nShield HSM. Seznam kompatibilních modelů najdete v tématu [podpůrný software nCipher hardwarového nShield hardware Security Module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) , případně si můžete koupit modul hardwarového zabezpečení (HSM), pokud ho ještě nemáte. |
-| Následující hardware a software:<ol><li>Offline pracovní stanice x64 s minimálním operačním systémem Windows pro Windows 7 a software podpůrný software nCipher hardwarového nShield, který je minimálně verze 11,50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je potřeba [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a nainstalovanou **minimální verzi** [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 1.1.0.</li><li>Jednotka USB nebo jiné přenosné úložné zařízení, které má alespoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Toto doporučení se ale nevynutilo programově.<br/><br/>V následujících pokynech se tato pracovní stanice označuje jako odpojená pracovní stanice.</p></blockquote><br/>Pokud je váš klíč tenanta pro produkční síť, doporučujeme, abyste k stažení sady nástrojů používali druhou, samostatnou pracovní stanici a nahráli jste klíč tenanta. Pro účely testování k tomu ale můžete použít první pracovní stanici.<br/><br/>V následujících pokynech se tato druhá pracovní stanice označuje jako pracovní stanice připojená k Internetu.</p></blockquote><br/> |
+| Podpůrný software nCipher hardwarového nShield HSM, SmartCard a software podpory |Musíte mít přístup k modulu hardwarového zabezpečení podpůrný software nCipher a základnímu provoznímu znalostí podpůrný software nCipher hardwarového nShield HSM. Seznam kompatibilních modelů najdete v tématu [podpůrný software nCipher hardwarového nShield hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) , případně si můžete koupit modul hardwarového zabezpečení (HSM), pokud ho ještě nemáte. |
+| Následující hardware a software:<ol><li>Offline pracovní stanice x64 s minimálním operačním systémem Windows pro Windows 7 a software podpůrný software nCipher hardwarového nShield, který je minimálně verze 11,50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je potřeba [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a nainstalovanou **minimální verzi** [Azure PowerShell](/powershell/azure/) 1.1.0.</li><li>Jednotka USB nebo jiné přenosné úložné zařízení, které má alespoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Toto doporučení se ale nevynutilo programově.<br/><br/>V následujících pokynech se tato pracovní stanice označuje jako odpojená pracovní stanice.</p></blockquote><br/>Pokud je váš klíč tenanta pro produkční síť, doporučujeme, abyste k stažení sady nástrojů používali druhou, samostatnou pracovní stanici a nahráli jste klíč tenanta. Pro účely testování k tomu ale můžete použít první pracovní stanici.<br/><br/>V následujících pokynech se tato druhá pracovní stanice označuje jako pracovní stanice připojená k Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generování a přenos klíče pro Azure Key Vault HSM
 
@@ -231,7 +232,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 ---
 
 
-K ověření integrity stažené sady nástrojů BYOK z relace Azure PowerShell použijte rutinu [Get-hash](https://technet.microsoft.com/library/dn520872.aspx) .
+K ověření integrity stažené sady nástrojů BYOK z relace Azure PowerShell použijte rutinu [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash) .
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -416,7 +417,7 @@ Ověření staženého balíčku:
      >
 2. Potvrďte, že se zobrazí následující informace, které indikují úspěšné ověření: **výsledek: úspěch**
 
-Tento skript ověří řetěz podepisování až do kořenového klíče hardwarového nShield. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a měla by mít hodnotu **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete také potvrdit samostatně návštěvou [webu podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Tento skript ověří řetěz podepisování až do kořenového klíče hardwarového nShield. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a měla by mít hodnotu **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete také potvrdit samostatně návštěvou [webu podpůrný software nCipher](https://www.ncipher.com).
 
 Nyní jste připraveni vytvořit nový klíč.
 
@@ -434,7 +435,7 @@ Při spouštění tohoto příkazu použijte tyto pokyny:
 
 * Parametr *protect* musí být nastavený na hodnotu **module**, jak je vidět na obrázku. Vytvoří se tím klíč chráněný modulem. Sada nástrojů funkce BYOK nepodporuje klíče chráněné OCS.
 * Hodnotu *contosokey* nahraďte hodnotou **ident** a hodnotu **plainname** nahraďte jakoukoli řetězcovou hodnotou. Pro minimalizaci administrativních režijních a snížení rizik chyb doporučujeme použít stejnou hodnotu pro obojí. Hodnota **Ident** musí obsahovat jenom čísla, pomlčky a malá písmena.
-* Parametr pubexp je v tomto příkladě prázdný (výchozí nastavení), můžete ale zadat konkrétní hodnoty. Další informace najdete v [dokumentaci k podpůrný software nCipher.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* Parametr pubexp je v tomto příkladě prázdný (výchozí nastavení), můžete ale zadat konkrétní hodnoty. Další informace najdete v [dokumentaci k podpůrný software nCipher.](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
 
 Tento příkaz vytvoří soubor klíčového klíče ve složce% NFAST_KMDATA% \ s názvem začínajícím na **key_simple_** a následovaný **Ident** , který byl zadán v příkazu. Například: **key_simple_contosokey**. Tento soubor obsahuje šifrovaný klíč.
 

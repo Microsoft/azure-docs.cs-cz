@@ -6,20 +6,22 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77368303"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301701"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Vytvoření a použití vlastních pravidel brány firewall webových aplikací v2 na Application Gateway
 
 Firewall webových aplikací (WAF) V2 v Azure Application Gateway poskytuje ochranu pro webové aplikace. Tuto ochranu poskytuje základní sada pravidel OWASP (Open Web Application Security) (počítačový systém). V některých případech možná budete muset vytvořit vlastní pravidla, která budou vyhovovat vašim konkrétním potřebám. Další informace o vlastních pravidlech WAF najdete v tématu [Přehled vlastních pravidel firewallu webových aplikací](custom-waf-rules-overview.md).
 
 Tento článek ukazuje několik ukázkových uživatelských pravidel, která můžete vytvořit a používat s WAF v2. Informace o tom, jak nasadit WAF pomocí vlastního pravidla pomocí Azure PowerShell, najdete v tématu [Konfigurace vlastních pravidel firewallu webových aplikací pomocí Azure PowerShell](configure-waf-custom-rules.md).
+
+Fragmenty kódu JSON uvedené v tomto článku jsou odvozeny z prostředku [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) .
 
 >[!NOTE]
 > Pokud Aplikační brána nepoužívá úroveň WAF, v pravém podokně se zobrazí možnost upgradovat aplikační bránu na úroveň WAF.
@@ -28,7 +30,7 @@ Tento článek ukazuje několik ukázkových uživatelských pravidel, která m�
 
 ## <a name="example-1"></a>Příklad 1
 
-Víte, že je k dispozici robot s názvem *evilbot* , který chcete blokovat procházení webu. V takovém případě se zablokuje *Evilbot* User-Agent v hlavičce požadavku.
+Víte, že je k dispozici robot s názvem *evilbot* , který chcete blokovat procházení webu. V takovém případě zablokujete User-Agent *evilbot* v hlavičkách požadavku.
 
 Logika: p
 
@@ -225,11 +227,11 @@ Tady je odpovídající kód JSON:
   }
 ```
 
-Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Odpovídající pravidlo pro počítačový počítač: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>Příklad 4
 
-V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím je zajištěno, že pokud se shodují obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.0/24, požadavek se zablokuje.
+V tomto příkladu chcete blokovat User-Agent *evilbot* a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím je zajištěno, že pokud se shodují obě *evilbot* v hlavičce User-Agent **a** IP adresy z rozsahu 192.168.5.0/24, požadavek se zablokuje.
 
 Logic: p **a** q
 
@@ -388,7 +390,7 @@ A odpovídající kód JSON:
 
 ## <a name="example-6"></a>Příklad 6
 
-Chcete blokovat vlastní SQLI. Vzhledem k tomu, že zde použitá logika je **nebo**a všechny hodnoty jsou v *RequestUri*, všechny *MatchValues* mohou být v seznamu odděleném čárkami.
+Chcete blokovat vlastní SQLI. Vzhledem k tomu, že zde použitá logika je **nebo** a všechny hodnoty jsou v *RequestUri*, všechny *MatchValues* mohou být v seznamu odděleném čárkami.
 
 Logic: p **,** q **nebo** r
 

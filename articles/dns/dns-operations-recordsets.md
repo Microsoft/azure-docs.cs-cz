@@ -12,18 +12,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
-ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011587"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa záznamů a sad záznamů DNS v Azure DNS pomocí Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Rozhraní příkazového řádku Azure Classic](dns-operations-recordsets-cli-nodejs.md)
+> * [Rozhraní příkazového řádku Azure Classic](./dns-operations-recordsets-cli.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -142,7 +142,7 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Vytvoření sady záznamů SRV s jedním záznamem
 
-Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records)zadejte * \_ službu* a * \_ protokol* v názvu sady záznamů. \@Při vytváření sady záznamů SRV v vrcholu zóny není nutné do názvu sady záznamů zahrnout ' '.
+Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records)zadejte *\_ službu* a *\_ protokol* v názvu sady záznamů. \@Při vytváření sady záznamů SRV v vrcholu zóny není nutné do názvu sady záznamů zahrnout ' '.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 

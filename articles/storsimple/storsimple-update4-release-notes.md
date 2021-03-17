@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847283"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954048"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 4
 
@@ -47,7 +47,7 @@ V Update 4 byly provedeny následující hlavní vylepšení a opravy chyb.
 
     V Update 4 je implementována nová funkce, která sleduje často používaná data k vytvoření heatmapu, když se zařízení používá před nástrojem DR (nejčastěji používané datové bloky mají vysoký teplo, zatímco méně využité bloky dat mají nízký výkon). Po zotavení po havárii nástroj StorSimple použije heatmapu k automatickému obnovení a dehydratovanému využití dat z cloudu. 
 
-    Všechna obnovení jsou nyní heatmapu založenou na obnovení. Další informace o tom, jak provést dotazování a zrušení úloh obnovení a reheatmapu na základě služby, naleznete v tématu [Windows PowerShell pro StorSimple Reference k rutinám](https://technet.microsoft.com/library/dn688168.aspx).
+    Všechna obnovení jsou nyní heatmapu založenou na obnovení. Další informace o tom, jak provést dotazování a zrušení úloh obnovení a reheatmapu na základě služby, naleznete v tématu [Windows PowerShell pro StorSimple Reference k rutinám](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 * **Nástroj StorSimple Diagnostics** – v Update 4 se uvolňuje nástroj StorSimple Diagnostics, který umožňuje snadnou diagnostikovat a řešit problémy související se stavem systému, sítě, výkonu a hardwarových součástí. Tento nástroj se spouští prostřednictvím Windows PowerShell pro StorSimple. Další informace najdete v tématu [řešení potíží pomocí nástroje StorSimple Diagnostics](storsimple-8000-diagnostics.md).
 
@@ -59,21 +59,21 @@ V Update 4 byly provedeny následující hlavní vylepšení a opravy chyb.
 
 * **Výstraha při selhání disku** – v této verzi se přidá nová výstraha upozorňující uživatele na hrozící selhání disku. Pokud se zobrazí tato výstraha, kontaktujte podpora Microsoftu k odeslání náhradního disku. Další informace najdete [v oznámeních o hardwaru na zařízení StorSimple](storsimple-8000-manage-alerts.md#hardware-alerts).
 
-* **Změny nahrazení řadiče** – v této verzi se přidá rutina, která uživateli umožní dotazovat se na stav procesu nahrazení řadiče. Pokud potřebujete další informace, přečtěte si do [rutiny stav nahrazení řadiče dotazů](https://technet.microsoft.com/library/dn688168.aspx).
+* **Změny nahrazení řadiče** – v této verzi se přidá rutina, která uživateli umožní dotazovat se na stav procesu nahrazení řadiče. Pokud potřebujete další informace, přečtěte si do [rutiny stav nahrazení řadiče dotazů](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 
 ## <a name="issues-fixed-in-update-4"></a>Problémy opravené ve Update 4
 
 Následující tabulka poskytuje souhrn problémů, které byly opraveny v Update 4.    
 
-| No | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| Ne | Doporučené | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
-| 1 |Převzetí služeb při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Ano |Ano |
-| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Yes |No |
-| 3 |Balíček pro podporu |V předchozí verzi byly problémy související s balíčkem podpory, které by způsobily výjimku System. OutOfMemory nebo jiné chyby, což vedlo k chybě při vytváření balíčku pro podporu. Tyto chyby jsou v této verzi opravené. |Ano |Ano |
-| 4 |Monitorování |V předchozí verzi došlo k potížím souvisejícím s monitorováním grafů pro místně připnuté svazky, ve kterých se spotřeba zobrazila v EB. Tato chyba je vyřešena v této verzi. |Ano |Ano |
-| 5 |Migrace |V předchozí verzi bylo k dispozici několik problémů souvisejících s spolehlivostí migrace z 5000-7000 řad na zařízení 8000 series. Tyto problémy byly řešeny v této verzi. |Ano |Ano |
-| 6 |Aktualizace |Pokud v předchozích verzích došlo k chybě aktualizace, řadiče přešly do režimu obnovení, takže uživatel nemůže v aktualizaci pokračovat a bude potřebovat kontaktovat podpora Microsoftu. <br> Toto chování se v této verzi změnilo. Pokud má uživatel chybu aktualizace, když oba řadiče používají stejnou verzi (Update 4), řadiče nepřejde do režimu obnovení. Pokud se tato chyba vyskytne uživateli, doporučujeme, abyste počkali na bitovou kopii, a pak zkuste aktualizaci zopakovat. Opakování může být úspěšné. Pokud se opakování nepovede, měli byste se obrátit na podpora Microsoftu. |Ano |Ano |
+| 1 |Převzetí služeb při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Yes |Yes |
+| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Yes |Ne |
+| 3 |Balíček pro podporu |V předchozí verzi byly problémy související s balíčkem podpory, které by způsobily výjimku System. OutOfMemory nebo jiné chyby, což vedlo k chybě při vytváření balíčku pro podporu. Tyto chyby jsou v této verzi opravené. |Yes |Yes |
+| 4 |Monitorování |V předchozí verzi došlo k potížím souvisejícím s monitorováním grafů pro místně připnuté svazky, ve kterých se spotřeba zobrazila v EB. Tato chyba je vyřešena v této verzi. |Yes |Yes |
+| 5 |Migrace |V předchozí verzi bylo k dispozici několik problémů souvisejících s spolehlivostí migrace z 5000-7000 řad na zařízení 8000 series. Tyto problémy byly řešeny v této verzi. |Yes |Yes |
+| 6 |Aktualizace |Pokud v předchozích verzích došlo k chybě aktualizace, řadiče přešly do režimu obnovení, takže uživatel nemůže v aktualizaci pokračovat a bude potřebovat kontaktovat podpora Microsoftu. <br> Toto chování se v této verzi změnilo. Pokud má uživatel chybu aktualizace, když oba řadiče používají stejnou verzi (Update 4), řadiče nepřejde do režimu obnovení. Pokud se tato chyba vyskytne uživateli, doporučujeme, abyste počkali na bitovou kopii, a pak zkuste aktualizaci zopakovat. Opakování může být úspěšné. Pokud se opakování nepovede, měli byste se obrátit na podpora Microsoftu. |Yes |Yes |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Známé problémy v Update 4 z předchozích verzí
@@ -82,7 +82,7 @@ V Update 4 nejsou žádné nové známé problémy. Seznam problémů přepravov
 
 ## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Řadič SCSI a aktualizace firmwaru připojené k sériovému portu (SAS) ve Update 4
 
-Tato verze obsahuje řadič SAS a aktualizace ovladačů LSI a firmware. Další informace o tom, jak tyto aktualizace nainstalovat, najdete v tématu [instalace aktualizace Update 4](storsimple-install-update-4.md) na zařízení StorSimple.
+Tato verze obsahuje řadič SAS a aktualizace ovladačů LSI a firmware. Další informace o tom, jak tyto aktualizace nainstalovat, najdete v tématu [instalace aktualizace Update 4](./storsimple-8000-install-update-4.md) na zařízení StorSimple.
 
 ## <a name="virtual-device-updates-in-update-4"></a>Aktualizace virtuálních zařízení v aktualizaci Update 4
 
@@ -90,5 +90,4 @@ Tuto aktualizaci nelze použít pro StorSimple Cloud Appliance (označuje se tak
 
 ## <a name="next-step"></a>Další krok
 
-Přečtěte si, jak [nainstalovat Update 4](storsimple-install-update-4.md) na zařízení StorSimple.
-
+Přečtěte si, jak [nainstalovat Update 4](./storsimple-8000-install-update-4.md) na zařízení StorSimple.

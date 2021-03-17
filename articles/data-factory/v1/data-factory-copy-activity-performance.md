@@ -1,23 +1,18 @@
 ---
 title: Průvodce laděním a výkonem aktivity kopírování
 description: Přečtěte si o klíčových faktorech, které ovlivňují výkon přesunu dat v Azure Data Factory při použití aktivity kopírování.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196107"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377206"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 
@@ -32,7 +27,7 @@ Aktivita kopírování Azure Data Factory poskytuje prvotřídní řešení pro 
 
 Azure poskytuje sadu řešení pro datové úložiště a datové sklady na podnikové úrovni a aktivita kopírování nabízí vysoce optimalizované prostředí pro načítání dat, které se dá snadno nakonfigurovat a nastavit. Jenom s jednou aktivitou kopírování můžete dosáhnout těchto akcí:
 
-* Načtení dat do **Azure SQL Data Warehouse** v **1,2 GB/** s. Návod s případem použití najdete v tématu [načtení 1 TB do Azure SQL Data Warehouse za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Načítání dat do služby **Azure synapse Analytics** při **1,2 GB/** s. Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 * Načtení dat do **úložiště objektů BLOB v Azure** v **1,0 GB/** s
 * Načtení dat do **Azure Data Lake Store** při **1,0 GB/** s
 
@@ -183,9 +178,9 @@ Je **důležité** si uvědomit, že se vám budou účtovat poplatky podle celk
 ## <a name="staged-copy"></a>Připravené kopírování
 Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít úložiště objektů BLOB jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
 
-1. Chcete ingestovat **data z různých úložišť dat do SQL Data Warehouse prostřednictvím základny**. SQL Data Warehouse používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do SQL Data Warehouse. Zdrojová data ale musí být v úložišti objektů BLOB a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů blob můžete aktivovat kopírování dat prostřednictvím dočasného pracovního úložiště objektů BLOB. V takovém případě Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak použije základnu k načtení dat do SQL Data Warehouse. Další podrobnosti najdete v tématu [použití základny k načtení dat do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Návod s případem použití najdete v tématu [načtení 1 TB do Azure SQL Data Warehouse za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+1. Chcete ingestovat **data z různých úložišť dat do služby Azure synapse Analytics prostřednictvím základu**. Azure synapse Analytics používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do Azure synapse Analytics. Zdrojová data ale musí být v úložišti objektů BLOB a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů blob můžete aktivovat kopírování dat prostřednictvím dočasného pracovního úložiště objektů BLOB. V takovém případě Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak použije základnu k načtení dat do služby Azure synapse Analytics. Další podrobnosti najdete v tématu [použití základny k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics). Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 2. **Někdy nějakou dobu trvá, než se provedou hybridní přesun dat (tj. kopírování mezi místním úložištěm dat a cloudovým úložištěm dat) prostřednictvím pomalého síťového připojení**. Aby bylo možné zvýšit výkon, můžete data místně zkomprimovat, aby bylo přesouvání dat do pracovního úložiště dat v cloudu trvat kratší dobu. Pak můžete data z přípravného úložiště dekomprimovat předtím, než je načtete do cílového úložiště dat.
-3. **Z důvodu podnikových zásad IT nechcete v bráně firewall otevírat jiné porty než port 80 a port 443**. Pokud například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo jímky Azure SQL Data Warehouse, je třeba aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři můžete bránu využít k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak načtěte data do SQL Database nebo SQL Data Warehouse z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
+3. **Z důvodu podnikových zásad IT nechcete v bráně firewall otevírat jiné porty než port 80 a port 443**. Když například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo do jímky služby Azure synapse Analytics, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři můžete bránu využít k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak načtěte data do SQL Database nebo Azure synapse Analytics z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
 
 ### <a name="how-staged-copy-works"></a>Jak funguje dvoufázové kopírování
 Když aktivujete pracovní funkci, nejdřív se data zkopírují ze zdrojového úložiště dat do pracovního úložiště dat (Přineste si vlastní). V dalším kroku se data zkopírují z pracovního úložiště dat do úložiště dat jímky. Data Factory pro vás automaticky spravuje tok se dvěma fázemi. Po dokončení přesunu dat Data Factory taky vyčistit dočasná data z pracovního úložiště.
@@ -207,10 +202,10 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování a určete,
 
 | Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |False |No |
-| **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ho použít ve všech ostatních scénářích. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
-| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Není k dispozici |No |
-| **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |False |No |
+| **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Ne |No |
+| **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem se nedá použít k načtení dat do služby Azure synapse Analytics prostřednictvím základu. Můžete ho použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastavené na true |
+| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |No |
+| **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Ne |No |
 
 Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v předchozí tabulce:
 
@@ -262,7 +257,7 @@ Doporučujeme, abyste provedli následující kroky, abyste mohli vyladit výkon
      * [Jednotky pro pohyb dat v cloudu](#cloud-data-movement-units)
      * [Připravené kopírování](#staged-copy)
      * [Škálovatelnost Správa dat brány](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Brána Správa dat](#considerations-for-data-management-gateway)
+   * [Brána správy dat](#considerations-for-data-management-gateway)
    * [Zdroj](#considerations-for-the-source)
    * [Jímka](#considerations-for-the-sink)
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
@@ -282,7 +277,7 @@ Ujistěte se, že základní úložiště dat není zahlcené jinými úlohami, 
 
 V případě úložišť dat Microsoftu si přečtěte témata týkající se [monitorování a ladění](#performance-reference) , která jsou specifická pro úložiště dat, a pomohou vám pochopit charakteristiky výkonu úložiště dat, minimalizovat dobu odezvy a maximalizovat propustnost.
 
-Pokud kopírujete data ze služby Blob Storage do SQL Data Warehouse, zvažte použití **základny** pro zvýšení výkonu. Podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Návod s případem použití najdete v tématu [načtení 1 TB do Azure SQL Data Warehouse za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Pokud kopírujete data z úložiště objektů blob do služby Azure synapse Analytics, zvažte použití **základny** pro zvýšení výkonu. Podrobnosti najdete v tématu [použití základu k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Úložiště dat na základě souborů
 *(Zahrnuje úložiště objektů blob, Data Lake Store, Amazon S3, místní souborové systémy a místní HDFS)*
@@ -292,7 +287,7 @@ Pokud kopírujete data ze služby Blob Storage do SQL Data Warehouse, zvažte po
 * Pro **místní scénář souborového systému** , ve kterém se **Správa dat brána** vyžaduje, si přečtěte část [požadavky na Správa dat Gateway](#considerations-for-data-management-gateway) .
 
 ### <a name="relational-data-stores"></a>Relační úložiště dat
-*(Zahrnuje SQL Database; SQL Data Warehouse; Amazon RedShift; SQL Server databází; a databáze Oracle, MySQL, DB2, Teradata, Sybase a PostgreSQL atd.)*
+*(Zahrnuje SQL Database; Azure synapse Analytics; Amazon RedShift; SQL Server databází; a databáze Oracle, MySQL, DB2, Teradata, Sybase a PostgreSQL atd.)*
 
 * **Datový vzor**: vaše schéma tabulky ovlivňuje propustnost kopírování. Velikost velkého řádku nabízí lepší výkon než velikost malého řádku, aby bylo možné zkopírovat stejné množství dat. Důvodem je, že databáze může efektivněji načíst méně dávkových dat, která obsahují méně řádků.
 * **Dotaz nebo uložená procedura**: Optimalizujte logiku dotazu nebo uložené procedury, kterou zadáte ve zdroji aktivity kopírování, aby se data načetla efektivněji.
@@ -304,7 +299,7 @@ Ujistěte se, že základní úložiště dat není zahlcené jinými úlohami, 
 
 V případě úložišť dat Microsoft najdete témata týkající se [monitorování a ladění](#performance-reference) , která jsou specifická pro úložiště dat. Tato témata vám pomůžou pochopit charakteristiky výkonu úložiště dat a minimalizovat dobu odezvy a maximalizovat propustnost.
 
-Pokud kopírujete data z **úložiště objektů BLOB** do **SQL Data Warehouse**, zvažte použití **základny** pro zvýšení výkonu. Podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Návod s případem použití najdete v tématu [načtení 1 TB do Azure SQL Data Warehouse za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Pokud kopírujete data z **úložiště objektů BLOB** do služby **Azure synapse Analytics**, zvažte použití **základny** pro zvýšení výkonu. Podrobnosti najdete v tématu [použití základu k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Úložiště dat na základě souborů
 *(Zahrnuje úložiště objektů blob, Data Lake Store, Amazon S3, místní souborové systémy a místní HDFS)*
@@ -315,7 +310,7 @@ Pokud kopírujete data z **úložiště objektů BLOB** do **SQL Data Warehouse*
 * V případě scénářů pro **místní souborové systémy** , které vyžadují použití **brány Správa dat**, přečtěte si část [požadavky na Správa dat bránu](#considerations-for-data-management-gateway) .
 
 ### <a name="relational-data-stores"></a>Relační úložiště dat
-*(Zahrnuje SQL Database, SQL Data Warehouse, SQL Server databáze a databáze Oracle)*
+*(Zahrnuje SQL Database, analýzy Azure synapse, databáze SQL Server a databáze Oracle)*
 
 * **Chování při kopírování**: v závislosti na vlastnostech, které jste nastavili pro **sqlSink**, aktivita kopírování zapisuje data do cílové databáze různými způsoby.
   * Ve výchozím nastavení používá služba přesunu dat rozhraní API hromadného kopírování k vkládání dat v režimu připojení, který poskytuje nejlepší výkon.
@@ -323,7 +318,7 @@ Pokud kopírujete data z **úložiště objektů BLOB** do **SQL Data Warehouse*
   * Pokud nakonfigurujete vlastnost **sqlWriterCleanupScript** pro každé spuštění aktivity kopírování, služba spustí skript a potom k vložení dat použijeme rozhraní API pro hromadné kopírování. Pokud například chcete přepsat celou tabulku nejnovějšími daty, můžete před hromadnou načtením nových dat ze zdroje zadat skript, který nejprve odstraní všechny záznamy.
 * **Velikost datového vzoru a dávky**:
   * Vaše schéma tabulky ovlivňuje propustnost kopírování. Chcete-li zkopírovat stejné množství dat, velikost velkého řádku vám poskytne lepší výkon než velikost malého řádku, protože databáze může efektivněji potvrzovat méně dávkám dat.
-  * Aktivita kopírování vloží data do řady dávek. Počet řádků v dávce můžete nastavit pomocí vlastnosti **writeBatchSize** . Pokud vaše data obsahují malé řádky, můžete nastavit vlastnost **writeBatchSize** s vyšší hodnotou, abyste využili nižší nároky na dávku a vyšší propustnost. Pokud je velikost řádku dat velká, buďte při zvýšení **writeBatchSize**opatrní. Vysoká hodnota může vést k selhání kopírování způsobenému přetížením databáze.
+  * Aktivita kopírování vloží data do řady dávek. Počet řádků v dávce můžete nastavit pomocí vlastnosti **writeBatchSize** . Pokud vaše data obsahují malé řádky, můžete nastavit vlastnost **writeBatchSize** s vyšší hodnotou, abyste využili nižší nároky na dávku a vyšší propustnost. Pokud je velikost řádku dat velká, buďte při zvýšení **writeBatchSize** opatrní. Vysoká hodnota může vést k selhání kopírování způsobenému přetížením databáze.
 * U **místních relačních databází** , jako jsou SQL Server a Oracle, které vyžadují použití **brány Správa dat**, si přečtěte část [požadavky na Správa dat Gateway](#considerations-for-data-management-gateway) .
 
 ### <a name="nosql-stores"></a>NoSQL obchody
@@ -413,13 +408,13 @@ V takovém případě může komprese dat bzip2 zpomalit celý kanál. Přepnut�
 
 ![Scénář 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Reference
 Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovaných úložišť dat:
 
 * Azure Blob Storage: [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md) a [Kontrolní seznam výkonu a škálovatelnosti pro úložiště objektů BLOB](../../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: [škálovatelnost a výkonnostní cíle pro úložiště tabulek](../../storage/tables/scalability-targets.md) a pro [Kontrolní seznam výkonu a škálovatelnosti pro úložiště tabulek](../../storage/tables/storage-performance-checklist.md).
-* Azure SQL Database: můžete [monitorovat výkon](../../sql-database/sql-database-single-database-monitor.md) a kontrolovat procento transakčních jednotek databáze (DTU).
-* Azure SQL Data Warehouse: jeho schopnost se měří v jednotkách datového skladu (DWU); viz [Správa výpočetního výkonu v Azure SQL Data Warehouse (přehled)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure SQL Database: můžete [monitorovat výkon](../../azure-sql/database/monitor-tune-overview.md) a kontrolovat procento transakčních jednotek databáze (DTU).
+* Azure synapse Analytics: jeho schopnost se měří v jednotkách datového skladu (DWU); viz [Správa výpočetního výkonu ve službě Azure synapse Analytics (přehled)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) .
 * Azure Cosmos DB: [úrovně výkonu v Azure Cosmos DB](../../cosmos-db/performance-levels.md)
-* Místní SQL Server: [monitorování a optimalizace výkonu](https://msdn.microsoft.com/library/ms189081.aspx)
-* Místní souborový server: [optimalizace výkonu pro souborové servery](https://msdn.microsoft.com/library/dn567661.aspx)
+* Místní SQL Server: [monitorování a optimalizace výkonu](/sql/relational-databases/performance/monitor-and-tune-for-performance)
+* Místní souborový server: [optimalizace výkonu pro souborové servery](/previous-versions//dn567661(v=vs.85))

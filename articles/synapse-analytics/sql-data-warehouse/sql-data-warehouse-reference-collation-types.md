@@ -1,25 +1,26 @@
 ---
 title: Typy řazení datového skladu
-description: Typy kolace podporované ve fondu SQL Azure synapse Analytics.
+description: Typy kolace podporované pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18720d99bc8cf0e237e25ea13f686970573d5704
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80633087"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678436"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Podpora řazení databáze pro fond SQL Azure synapse Analytics
+# <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Podpora řazení databáze pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics 
 
-Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nové databáze fondu SQL Azure synapse. Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
+Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nového vyhrazeného fondu SQL (dřív SQL DW). Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
 
 Kolace poskytují národní prostředí, znakovou stránku, pořadí řazení a pravidla citlivosti znaků pro datové typy založené na znacích. Po výběru budou všechny sloupce a výrazy, které vyžadují informace o kolaci, dědit zvolenou kolaci z nastavení databáze. Výchozí dědičnost lze přepsat explicitním uvedením jiné kolace pro datový typ založený na znacích.
 
@@ -110,4 +111,4 @@ Chcete-li zjistit aktuální kolaci pro databázi, můžete spustit následujíc
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-Když předáte "kolaci" jako parametr vlastnosti, funkce DatabasePropertyEx vrátí aktuální kolaci pro zadanou databázi. Další informace najdete v tématu [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Když předáte "kolaci" jako parametr vlastnosti, funkce DatabasePropertyEx vrátí aktuální kolaci pro zadanou databázi. Další informace najdete v tématu [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

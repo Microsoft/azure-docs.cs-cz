@@ -1,18 +1,18 @@
 ---
 title: Privátní odkaz – Azure CLI – Azure Database for MariaDB
 description: Postup konfigurace privátního odkazu pro Azure Database for MariaDB z Azure CLI
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 55f375c83affea8585ec7ebf881a80315ff7a38c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833177"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361313"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí rozhraní příkazového řádku
 
@@ -21,15 +21,15 @@ Privátní koncový bod je základním stavebním blokem privátního propojení
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Pokud chcete projít tento průvodce, budete potřebovat:
+## <a name="prerequisites"></a>Požadavky
 
-- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md).
+- Potřebujete [server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md). 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě 
-Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly [zásady sítě](../private-link/disable-private-endpoint-network-policy.md)privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly [zásady sítě](../private-link/disable-private-endpoint-network-policy.md)privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -96,7 +96,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMariaDB/servers" --query "id") \    
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMariaDB/servers" --query "id" -o tsv) \    
     --group-id mariadbServer \  
     --connection-name myConnection  
  ```
@@ -123,7 +123,7 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
  
 #Create DNS records 
 az network private-dns record-set a create --name mydemoserver --zone-name privatelink.mariadb.database.azure.com --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name mydemoserver --zone-name privatelink.mariadb.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-dns record-set a add-record --record-set-name mydemoserver --zone-name privatelink.mariadb.database.azure.com --resource-group myResourceGroup -a <Private IP Address>
 ```
 
 > [!NOTE] 
@@ -133,7 +133,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způsobem:
 
-1. Na panelu hledání na portálu zadejte *myVm*.
+1. Na portálu zadejte na panelu hledání *myVm*.
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
@@ -146,17 +146,17 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>Přístup k serveru MariaDB soukromě z virtuálního počítače
 
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+1. Ve vzdálené ploše *myVM* otevřete PowerShell.
 
 2. Zadejte  `nslookup mydemoserver.privatelink.mariadb.database.azure.com`. 
 
@@ -171,7 +171,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 3. Otestujte připojení privátního propojení pro server MariaDB pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili aplikaci [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) .
 
-4. V **nové připojení**zadejte nebo vyberte tyto informace:
+4. V **nové připojení** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -195,7 +195,7 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [tom, co je privátní koncový bod Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+Další informace o [tom, co je privátní koncový bod Azure](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

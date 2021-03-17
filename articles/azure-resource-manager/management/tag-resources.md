@@ -2,14 +2,14 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499989"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896219"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -26,9 +26,11 @@ Doporučení, jak implementovat strategii označování, najdete v článku [Pr�
 
 ## <a name="required-access"></a>Požadovaný přístup
 
-Chcete-li použít značky pro prostředek, musíte mít oprávnění k zápisu do typu prostředku **Microsoft. Resources/Tags** . Role [Přispěvatel značek](../../role-based-access-control/built-in-roles.md#tag-contributor) umožňuje aplikovat značky na entitu bez přístupu k samotné entitě. V současné době role Přispěvatel značek nemůže na základě portálu použít značky na prostředky nebo skupiny prostředků. Může použít značky pro odběry prostřednictvím portálu. Podporuje všechny operace značek prostřednictvím PowerShellu a REST API.  
+Existují dva způsoby, jak získat požadovaný přístup k prostředkům značky.
 
-Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) také uděluje požadovaný přístup k použití značek pro libovolnou entitu. Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+- Můžete mít přístup pro zápis k typu prostředku **Microsoft. Resources/Tags** . Tento přístup vám umožní označit libovolný prostředek, a to i v případě, že nemáte přístup k samotnému prostředku. Tento přístup udělí role [Přispěvatel značek](../../role-based-access-control/built-in-roles.md#tag-contributor) . V současné době role Přispěvatel značek nemůže na základě portálu použít značky na prostředky nebo skupiny prostředků. Může použít značky pro odběry prostřednictvím portálu. Podporuje všechny operace značek prostřednictvím PowerShellu a REST API.  
+
+- Můžete mít přístup pro zápis k samotnému prostředku. Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) uděluje požadovaný přístup pro použití značek pro libovolnou entitu. Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -240,92 +242,208 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>Použít značky
 
-Při přidávání značek do skupiny prostředků nebo prostředku můžete buď přepsat existující značky, nebo připojit nové značky k existujícím značkám.
+Azure CLI nabízí dva příkazy pro použití značek – [AZ tag Create](/cli/azure/tag#az_tag_create) a [AZ tag Update](/cli/azure/tag#az_tag_update). Musíte mít Azure CLI 2.10.0 nebo novější. Verzi můžete ověřit pomocí `az version` . Informace o aktualizaci nebo instalaci najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Chcete-li přepsat značky na prostředku, použijte:
+Příkaz **AZ tag Create** nahradí všechny značky u prostředku, skupiny prostředků nebo předplatného. Při volání příkazu předejte ID prostředku entity, kterou chcete označit.
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Chcete-li připojit značku k existujícím značkám na prostředku, použijte:
+V následujícím příkladu se aplikuje sada značek na účet úložiště:
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-Pokud chcete přepsat existující značky ve skupině prostředků, použijte:
+Po dokončení příkazu si všimněte, že prostředek obsahuje dvě značky.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+Pokud znovu spustíte příkaz, ale tentokrát s různými značkami, Všimněte si, že se předchozí značky odebraly.
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-Pokud chcete přidat značku k existujícím značkám ve skupině prostředků, použijte:
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+Chcete-li přidat značky k prostředku, který již obsahuje značky, použijte `az tag update` . Nastavte `--operation` parametr na `Merge` .
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-V současné době Azure CLI nemá příkaz pro použití značek na předplatná. Pomocí rozhraní příkazového řádku (CLI) ale můžete nasadit šablonu ARM, která tyto značky aplikuje na předplatné. Viz [použití značek pro skupiny prostředků nebo odběry](#apply-tags-to-resource-groups-or-subscriptions).
+Všimněte si, že dvě nové značky byly přidány do dvou existujících značek.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+Každý název značky může mít pouze jednu hodnotu. Pokud zadáte novou hodnotu pro značku, stará hodnota je nahrazena i v případě, že použijete operaci sloučení. Následující příklad změní značku stavu z normálního na zelenou.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+Když nastavíte `--operation` parametr na `Replace` , existující značky budou nahrazeny novou sadou značek.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+V prostředku zůstanou jenom nové značky.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+Stejné příkazy také fungují se skupinami prostředků nebo předplatnými. Předáte identifikátor skupiny prostředků nebo předplatného, které chcete označit.
+
+Pokud chcete do skupiny prostředků přidat novou sadu značek, použijte:
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+Chcete-li aktualizovat značky pro skupinu prostředků, použijte:
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+Pokud chcete přidat novou sadu značek k předplatnému, použijte:
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+Pokud chcete aktualizovat značky pro předplatné, použijte:
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>Výpis značek
 
-Pokud chcete zobrazit existující značky pro prostředek, použijte:
+Chcete-li získat značky prostředku, skupiny prostředků nebo předplatného, použijte příkaz [AZ tag list](/cli/azure/tag#az_tag_list) a předejte mu ID prostředku pro entitu.
+
+Chcete-li zobrazit značky pro prostředek, použijte:
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-Pokud chcete zobrazit existující značky pro skupinu prostředků, použijte:
+Pokud chcete zobrazit značky pro skupinu prostředků, použijte:
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-Výstup tohoto skriptu bude v následujícím formátu:
+Pokud chcete zobrazit značky pro předplatné, použijte:
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>Seznam podle značky
 
-Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, použijte `az resource list` :
+Chcete-li získat prostředky, které mají konkrétní název a hodnotu značky, použijte:
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-Chcete-li získat skupiny prostředků s konkrétní značkou, použijte `az group list` :
+Chcete-li získat prostředky, které mají konkrétní název značky s libovolnou hodnotou značky, použijte:
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+Chcete-li získat skupiny prostředků, které mají konkrétní název a hodnotu značky, použijte:
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>Odebrat značky
+
+Chcete-li odebrat konkrétní značky, použijte `az tag update` a nastavte `--operation` na `Delete` . Předejte značky, které chcete odstranit.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+Zadané značky jsou odebrány.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+Chcete-li odebrat všechny značky, použijte příkaz [AZ tag Delete](/cli/azure/tag#az_tag_delete) .
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>Prostory pro zpracování
 
-Pokud názvy nebo hodnoty značek obsahují mezery, je nutné provést několik dalších kroků. Následující příklad aplikuje všechny značky ze skupiny prostředků na její prostředky, když značky můžou obsahovat mezery.
+Pokud názvy nebo hodnoty značek obsahují mezery, uzavřete je do dvojitých uvozovek.
 
 ```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
-## <a name="templates"></a>Šablony
+## <a name="arm-templates"></a>Šablony ARM
 
-Můžete označovat prostředky, skupiny prostředků a odběry během nasazování pomocí šablony Správce prostředků.
+Během nasazování můžete označovat prostředky, skupiny prostředků a odběry pomocí šablony Azure Resource Manager (šablona ARM).
+
+> [!NOTE]
+> Značky, které použijete v šabloně ARM, přepíšou všechny existující značky.
 
 ### <a name="apply-values"></a>Použít hodnoty
 
@@ -333,7 +451,7 @@ Následující příklad nasadí účet úložiště se třemi značkami. Dvě z
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -372,7 +490,7 @@ Můžete definovat parametr objektu, ve kterém je uloženo několik značek, a 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -410,7 +528,7 @@ Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, kt
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -443,7 +561,7 @@ Chcete-li použít značky ze skupiny prostředků na prostředek, použijte fun
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -579,7 +697,7 @@ Značky použité pro skupinu prostředků nebo odběr nejsou děděny prostřed
 
 Můžete je použít třeba k seskupení údajů o fakturaci. Pokud například používáte odlišný virtuální počítač pro každou organizační složku, můžete pomocí značek seskupit údaje o využití podle nákladových středisek. Značky lze použít také ke kategorizaci nákladů podle prostředí modulu spuštění, jako je například fakturované využití virtuálních počítačů běžících v produkčním prostředí.
 
-Můžete načíst informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a sazebních karet](../../cost-management-billing/manage/usage-rate-card-overview.md) nebo souboru hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
+Můžete načíst informace o značkách stažením souboru použití, souboru hodnot oddělených čárkami (CSV), který je k dispozici v Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 
 Informace o REST API operacích najdete v [referenčních informacích o fakturačních REST API Azure](/rest/api/billing/).
 
@@ -591,7 +709,7 @@ Na značky se vztahují následující omezení:
 * Každý prostředek, skupina prostředků a předplatné můžou mít maximálně 50 párů název/hodnota značky. Pokud potřebujete použít více značek, než je maximální povolený počet, použijte jako hodnotu značky řetězec JSON. Řetězec JSON může obsahovat mnoho hodnot, které se použijí pro jeden název značky. Skupina prostředků nebo předplatné můžou obsahovat spoustu prostředků, které mají každý z nich 50 páry název/hodnota značky.
 * Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
 * Značky nelze použít u klasických prostředků, jako je například Cloud Services.
-* Názvy značek nesmí obsahovat tyto znaky: `<` , `>` , `%` , `&` , `\` , `?` ,`/`
+* Názvy značek nesmí obsahovat tyto znaky: `<` , `>` , `%` , `&` , `\` , `?` , `/`
 
    > [!NOTE]
    > V současné době Azure DNS zóny a služby Traffic Manager také nedovolují použití mezer ve značce.

@@ -3,13 +3,13 @@ title: Použití Azure Active Directory k ověřování řešení pro správu d�
 description: Prozkoumejte použití Azure Active Directory k ověření z aplikací, které používají knihovnu Batch Management .NET.
 ms.topic: how-to
 ms.date: 04/27/2017
-ms.custom: has-adal-ref
-ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141969"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88930209"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověřování řešení Batch Management se službou Active Directory
 

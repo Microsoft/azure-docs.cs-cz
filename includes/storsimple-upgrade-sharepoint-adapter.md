@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3467a5d5daa300f82c7b81641ab7e262259d9285
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175050"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553861"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Upgradujte SharePoint 2010 na SharePoint 2013 a pak nainstalujte adaptér StorSomple pro SharePoint.
 > [!IMPORTANT]
@@ -20,7 +20,7 @@ ms.locfileid: "67175050"
 #### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>Upgrade SharePoint 2010 na SharePoint 2013 a pak nainstalujte adaptér.
 1. V serverové farmě SharePoint 2010 si poznamenejte cestu k úložišti objektů BLOB pro externě uložené objekty BLOB a databáze obsahu, pro které je kód RBS povolený. 
 2. Nainstalujte a nakonfigurujte novou farmu SharePoint 2013. 
-3. Přesuňte databáze, aplikace a kolekce webů z farmy služby SharePoint 2010 na novou farmu služby SharePoint 2013. Pokyny najdete v tématu [Přehled procesu upgradu na SharePoint 2013](https://technet.microsoft.com/library/cc262483.aspx).
+3. Přesuňte databáze, aplikace a kolekce webů z farmy služby SharePoint 2010 na novou farmu služby SharePoint 2013. Pokyny najdete v tématu [Přehled procesu upgradu na SharePoint 2013](/SharePoint/upgrade-and-update/overview-of-the-upgrade-process).
 4. Nainstalujte adaptér StorSimple pro službu SharePoint na novou farmu. Postup najdete v části [Instalace adaptéru StorSimple pro službu SharePoint](#install-the-storsimple-adapter-for-sharepoint) .
 5. Pomocí informací, které jste si poznamenali v kroku 1, povolte RBS pro stejnou sadu databází obsahu a poskytněte stejnou cestu k úložišti objektů BLOB, která byla použita v instalaci SharePoint 2010. Pro postupy použijte [konfiguraci RBS](#configure-rbs) . Po dokončení tohoto kroku by měly být dříve externě dostupné soubory z nové farmy. 
 
@@ -29,7 +29,7 @@ ms.locfileid: "67175050"
 > Měli byste naplánovat, aby se tento upgrade nacházet během plánovaného časového období údržby z následujících důvodů:
 > 
 > * Dříve externě vydaný obsah nebude k dispozici, dokud adaptér nebude znovu nainstalován.
-> * Veškerý obsah nahraný na lokalitu po odinstalaci předchozí verze adaptéru StorSimple pro službu SharePoint, ale před instalací nové verze, bude uložen v databázi obsahu. Po instalaci nového adaptéru budete muset tento obsah přesunout do zařízení StorSimple. `RBS Migrate()`K migraci obsahu můžete použít rutinu prostředí Microsoft PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo](https://technet.microsoft.com/library/ff628255.aspx)z něj. 
+> * Veškerý obsah nahraný na lokalitu po odinstalaci předchozí verze adaptéru StorSimple pro službu SharePoint, ale před instalací nové verze, bude uložen v databázi obsahu. Po instalaci nového adaptéru budete muset tento obsah přesunout do zařízení StorSimple. `RBS Migrate()`K migraci obsahu můžete použít rutinu prostředí Microsoft PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))z něj. 
 > 
 > 
 
@@ -41,4 +41,3 @@ ms.locfileid: "67175050"
    > 
    > 
 2. Nainstalujte nový adaptér StorSimple pro službu SharePoint. Nový adaptér automaticky rozpoznává databáze obsahu, které byly dříve povoleny nebo zakázány pro RBS, a použije předchozí nastavení.
-

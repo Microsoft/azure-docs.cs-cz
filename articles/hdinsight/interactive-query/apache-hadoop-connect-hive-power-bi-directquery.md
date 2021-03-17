@@ -1,19 +1,16 @@
 ---
 title: Zobrazení dat podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight
 description: Použití Microsoft Power BI k vizualizaci dat podregistru interaktivních dotazů z Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087533"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941385"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Vizualizace interaktivních dotazů Apache Hive dat pomocí Microsoft Power BI pomocí přímého dotazování v HDInsight
 
@@ -21,7 +18,7 @@ Tento článek popisuje, jak připojit Microsoft Power BI k clusterům s interak
 
 ![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Pomocí [ovladače Apache Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md) můžete provádět import prostřednictvím obecného konektoru odbc v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. Konektor [HDInsight Interactive pro dotazy](./apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Apache Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepšími možnostmi pro jejich výkon.
+Pomocí [ovladače Apache Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md) můžete provádět import prostřednictvím obecného konektoru odbc v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. Konektor [HDInsight Interactive pro dotazy](./apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Apache Spark](/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepšími možnostmi pro jejich výkon.
 
 ## <a name="prerequisites"></a>Požadavky
 Před provedením tohoto článku musíte mít následující položky:
@@ -41,7 +38,7 @@ Před provedením tohoto článku musíte mít následující položky:
 
 3. V okně **získat data** zadejte do vyhledávacího pole **HDInsight** .  
 
-4. Ve výsledcích hledání vyberte možnost **HDInsight Interactive Query**a pak vyberte **připojit**.  Pokud nevidíte **interaktivní dotaz HDInsight**, musíte aktualizovat Power BI Desktop na nejnovější verzi.
+4. Ve výsledcích hledání vyberte možnost **HDInsight Interactive Query** a pak vyberte **připojit**.  Pokud nevidíte **interaktivní dotaz HDInsight**, musíte aktualizovat Power BI Desktop na nejnovější verzi.
 
 5. Vyberte **pokračovat** a zavřete tak dialogové okno **připojení ke službě třetí strany** .
 

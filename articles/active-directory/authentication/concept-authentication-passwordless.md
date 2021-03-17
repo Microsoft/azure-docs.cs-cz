@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory přihlašování se nehesly (Preview)
+title: Azure Active Directory přihlašování se nevšemi hesly
 description: Přečtěte si o možnostech pro přihlášení k neheslům Azure Active Directory pomocí klíčů zabezpečení FIDO2 nebo Microsoft Authenticator aplikace.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 02/22/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2055730505b360ef8d5bf50cd83532627fb8e08
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 43a0ef208a1a56416f748c69f552ec9169d21479
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245413"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424227"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
@@ -45,14 +45,14 @@ Následující kroky ukazují, jak proces přihlášení funguje se službou Azu
 ![Diagram, který popisuje kroky týkající se přihlašování uživatelů pomocí Windows Hello pro firmy](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. Uživatel se do systému Windows přihlásí pomocí gesta biometriky nebo PIN kódu. Gesto odemkne privátní klíč Windows Hello pro firmy a pošle se do zprostředkovatele podpory zabezpečení Cloud Authentication, který se označuje jako *poskytovatel cloudového přístupového bodu*.
-1. Zprostředkovatel cloudového přístupového bodu vyžaduje hodnotu NONCE z Azure AD.
+1. Zprostředkovatel cloudového přístupového bodu vyžaduje hodnotu NONCE (náhodné libovolné číslo, které lze použít pouze jednou) z Azure AD.
 1. Služba Azure AD vrátí hodnotu NONCE platnou po dobu 5 minut.
 1. Poskytovatel cloudového AP podepíše hodnotu NONCE pomocí privátního klíče uživatele a vrátí hodnotu podepsaná hodnota v rámci služby Azure AD.
 1. Azure AD ověří podepsanou hodnota nonce pomocí zabezpečeného registrovaného veřejného klíče uživatele s podpisem hodnoty nonce. Po ověření signatury ověří služba Azure AD vrácenou znaménku nonce. Když se hodnota nonce ověří, Azure AD vytvoří primární obnovovací token (PRT) s klíčem relace, který se zašifruje na transportní klíč zařízení a vrátí ho do poskytovatele cloudového AP.
 1. Zprostředkovatel cloudového AP obdrží šifrované PRT s klíčem relace. Pomocí privátního transportního klíče zařízení dešifruje zprostředkovatel cloudového AP klíč relace a chrání klíč relace pomocí čipu TPM (Trusted Platform Module) daného zařízení.
 1. Zprostředkovatel cloudového AP vrátí úspěšnou odpověď ověření systému Windows. Uživatel pak může získat přístup k Windows i k cloudovým a místním aplikacím, aniž by bylo nutné znovu ověřovat (SSO).
 
-[Průvodce plánováním](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) Windows Hello pro firmy se dá využít k rozhodování o typu nasazení Windows Hello pro firmy a možnostech, které budete muset vzít v úvahu.
+[Průvodce plánováním](/windows/security/identity-protection/hello-for-business/hello-planning-guide) Windows Hello pro firmy se dá využít k rozhodování o typu nasazení Windows Hello pro firmy a možnostech, které budete muset vzít v úvahu.
 
 ## <a name="microsoft-authenticator-app"></a>Aplikace Microsoft Authenticator
 
@@ -60,7 +60,7 @@ Můžete taky dovolit, aby se telefon od zaměstnance stal metodou ověřování
 
 ![Přihlášení k Microsoft Edge pomocí aplikace Microsoft Authenticator](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Aplikace ověřovatele přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla. Uživatelé se můžou přihlašovat k libovolné platformě nebo prohlížeči tím, že získají oznámení na telefonu, odpovídají číslu zobrazenému na obrazovce na telefonu a pak se pomocí jejich biometriky (dotyky nebo obličeje) nebo kódu PIN ověří. Podrobnosti o instalaci najdete [v tématu Stažení a instalace aplikace Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) .
+Aplikace ověřovatele přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla. Uživatelé se můžou přihlašovat k libovolné platformě nebo prohlížeči tím, že získají oznámení na telefonu, odpovídají číslu zobrazenému na obrazovce na telefonu a pak se pomocí jejich biometriky (dotyky nebo obličeje) nebo kódu PIN ověří. Podrobnosti o instalaci najdete [v tématu Stažení a instalace aplikace Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) .
 
 Ověřování pomocí hesla s použitím ověřovací aplikace se řídí stejným základním vzorem jako Windows Hello pro firmy. Je to trochu složitější, protože je potřeba identifikovat uživatele, aby služba Azure AD mohla najít Microsoft Authenticator verzi aplikace, která se používá:
 
@@ -82,11 +82,15 @@ Pokud chcete začít přihlašovat bez hesla, proveďte následující kroky:
 
 ## <a name="fido2-security-keys"></a>FIDO2 klíče zabezpečení
 
+FIDO (Fast IDentity online) Alliance pomáhá zvýšit úroveň otevřených standardů ověřování a snížit používání hesel jako formy ověřování. FIDO2 je nejnovější standard, který zahrnuje standard webového ověřování (WebAuthn).
+
 Klíče zabezpečení FIDO2 jsou nenáročné metody ověřování bez hesla založené na standardech, které mohou být v libovolném formuláři. Rychlá identita online (FIDO) je otevřený standard pro ověřování neheslem. FIDO umožňuje uživatelům a organizacím využít standard pro přihlášení ke svým prostředkům bez uživatelského jména a hesla pomocí externího bezpečnostního klíče nebo klíče platformy integrovaného do zařízení.
 
-Zaměstnanci můžou pomocí bezpečnostních klíčů přihlašovat se k jejich službě Azure AD nebo k hybridnímu zařízení s Windows 10 připojeným k Azure AD a získat jednotné přihlašování ke svým cloudovým a místním prostředkům. Uživatelé se také můžou přihlašovat k podporovaným prohlížečům. Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
+Uživatelé můžou zaregistrovat a pak vybrat FIDO2 klíč zabezpečení v přihlašovacím rozhraní jako hlavní způsob ověřování. Tyto klíče zabezpečení FIDO2 jsou obvykle zařízeními USB, ale mohou také používat Bluetooth nebo NFC. V případě hardwarového zařízení, které zpracovává ověřování, se zabezpečení účtu zvyšuje, protože není k dispozici žádné heslo, které by mohlo být zveřejněné nebo odhadované.
 
-Přihlášení pomocí klíčů zabezpečení FIDO2 do služby Azure AD je momentálně ve verzi Preview.
+Bezpečnostní klíče FIDO2 se dají použít k přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD nebo k hybridnímu připojení k Azure AD a k získání jednotného přihlašování ke svým cloudovým a místním prostředkům. Uživatelé se také můžou přihlašovat k podporovaným prohlížečům. Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
+
+Máme referenční dokument, který [podporuje FIDO2 ověřování pomocí služby Azure AD](fido2-compatibility.md), a osvědčené postupy pro vývojáře, kteří chtějí [podporovat ověřování FIDO2 v aplikacích, které vyvíjí](../develop/support-fido2-authentication.md).
 
 ![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -115,19 +119,26 @@ Bezpečnostní klíč **musí** implementovat následující funkce a rozšíře
 | 3 | HMAC – tajný klíč | Toto rozšíření zajišťuje, že se můžete přihlásit k zařízení, když je v režimu online nebo v letadle. |
 | 4 | Více účtů na RP | Tato funkce zajišťuje, že můžete použít stejný bezpečnostní klíč v rámci více služeb, jako je například účet Microsoft a Azure Active Directory. |
 
+### <a name="fido2-security-key-providers"></a>FIDO2 zprostředkovatelé zabezpečení klíčů
+
 Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých faktorů, u kterých je známo, že jsou kompatibilní s prostředím bez hesla. Pro vyhodnocení vlastností zabezpečení těchto klíčů doporučujeme, abyste se obrátili na dodavatele i na FIDO Alliance.
 
 | Poskytovatel | Kontakt |
 | --- | --- |
-| Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| Feitian | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
+| Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
+| Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | Řešení TrustKey | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Identita Gemalto (skupina Thales) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
-| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
+| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) |
+| Hypersecu | [https://www.hypersecu.com/hyperfido](https://www.hypersecu.com/hyperfido) |
+| VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
+| KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
+| Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
+| Token2 Švýcarsko | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
 
 > [!NOTE]
 > Pokud si koupíte a plánujete používat klíče zabezpečení založené na technologii NFC, budete pro klíč zabezpečení potřebovat podporovanou čtečku NFC. Čtečka NFC není požadavkem nebo omezením Azure. Seznam podporovaných čtecích zařízení NFC vám poskytne dodavatel s klíčem zabezpečení na NFC.
@@ -139,16 +150,15 @@ Pokud chcete začít s klíči zabezpečení FIDO2, proveďte následující kro
 > [!div class="nextstepaction"]
 > [Povolení podepisování hesla pomocí klíčů zabezpečení FIDO2](howto-authentication-passwordless-security-key.md)
 
+## <a name="supported-scenarios"></a>Podporované scénáře
 
-## <a name="what-scenarios-work-with-the-preview"></a>Jaké scénáře fungují s verzí Preview?
-
-Funkce přihlašování s heslem v Azure AD jsou momentálně ve verzi Preview. Platí následující důležité informace:
+Platí následující důležité informace:
 
 - Správci můžou u svého tenanta povolit metody ověřování nejenom heslem.
 - Správci můžou cílit na všechny uživatele nebo vybrat uživatele/skupiny v rámci svého tenanta.
 - Koncoví uživatelé můžou tyto metody ověřování s heslem zaregistrovat a spravovat na portálu účtů.
-- Koncoví uživatelé se můžou přihlásit pomocí těchto metod ověřování bez hesla.
-   - Microsoft Authenticator aplikace: funguje v situacích, kdy se používá ověřování Azure AD, včetně všech prohlížečů, během instalace systému Windows 10 (OOBE) a s integrovanými mobilními aplikacemi v jakémkoli operačním systému.
+- Koncoví uživatelé se můžou přihlásit pomocí těchto metod ověřování bez hesla:
+   - Microsoft Authenticator aplikace: funguje ve scénářích, kde se používá ověřování Azure AD, včetně všech prohlížečů, během instalace Windows 10 a s integrovanými mobilními aplikacemi v jakémkoli operačním systému.
    - Klíče zabezpečení: Pracujte na zamykací obrazovce pro Windows 10 a na webu v podporovaných prohlížečích, jako je Microsoft Edge (starší verze i nová hrana).
 
 ## <a name="choose-a-passwordless-method"></a>Zvolit metodu neplatných hesel
@@ -159,15 +169,15 @@ Tady je několik faktorů, které je potřeba vzít v úvahu při volbě technol
 
 ||**Windows Hello pro firmy**|**Přihlášení bez hesla pomocí aplikace Microsoft Authenticator**|**FIDO2 klíče zabezpečení**|
 |:-|:-|:-|:-|
-|**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1809 nebo novější<br>Azure Active Directory|
-|**Mode**|Platforma|Software|Hardware|
+|**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1903 nebo novější<br>Azure Active Directory|
+|**Režim**|Platforma|Software|Hardware|
 |**Systémy a zařízení**|POČÍTAČ s integrovaným čipem TPM (Trusted Platform Module)<br>Připnutí a biometrika rozpoznávání |Připnutí a biometrika rozpoznávání na telefonu|FIDO2 zabezpečení zařízení, která jsou kompatibilní s Microsoftem|
 |**Uživatelské prostředí**|Přihlaste se pomocí PIN nebo biometrického rozpoznávání (obličeje, Iris nebo otisk prstu) pomocí zařízení s Windows.<br>Ověřování Windows Hello je vázané na zařízení; pro přístup k firemním prostředkům potřebuje uživatel zařízení i přihlašovací komponentu, jako je PIN nebo biometrické faktor.|Přihlaste se pomocí mobilního telefonu pomocí skenování otisků prstů, obličeje nebo Iris nebo PIN kódu.<br>Uživatelé se přihlásí k pracovnímu nebo osobnímu účtu na svém počítači nebo mobilním telefonu.|Přihlášení pomocí zařízení zabezpečení FIDO2 (biometrika, PIN a NFC)<br>Uživatel může získat přístup k zařízení na základě organizačních ovládacích prvků a ověřování na základě kódu PIN, biometrika pomocí zařízení, jako jsou klíče zabezpečení USB a čipové karty, klíče nebo wearables s podporou NFC.|
 |**Povolené scénáře**| Heslo – bez možnosti použití zařízení s Windows<br>Platí pro vyhrazený pracovní počítač s možností jednotného přihlašování k zařízením a aplikacím.|Řešení bez hesla odkudkoli pomocí mobilního telefonu.<br>Platí pro přístup k pracovním nebo osobním aplikacím na webu z libovolného zařízení.|Prostředí bez hesla pro pracovní procesy s využitím biometrika, kódu PIN a NFC.<br>Platí pro sdílené počítače a v případě, že mobilní telefon není možnost životaschopnosti (například pro pracovníky helpdesku, veřejný terminál nebo tým v nemocnicích).|
 
 Pomocí následující tabulky vyberte, kterou metodu budou podporovat vaše požadavky a uživatele.
 
-|Nežádoucí|Scénář|Prostředí|Technologie nepracující s heslem|
+|Nežádoucí|Scenario|Prostředí|Technologie nepracující s heslem|
 |:-|:-|:-|:-|
 |**Správce**|Zabezpečený přístup k zařízení pro úlohy správy|Přiřazené zařízení s Windows 10|Bezpečnostní klíč Windows Hello pro firmy a/nebo FIDO2|
 |**Správce**|Úlohy správy na zařízeních s jiným systémem než Windows| Mobilní zařízení nebo zařízení s jiným systémem než Windows|Přihlášení bez hesla pomocí aplikace Microsoft Authenticator|

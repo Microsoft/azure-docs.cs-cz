@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e38d92a13c9a66defc2d5090990b44a889cfd21c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75442500"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076228"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>Autorizace požadavků na používání externího objektu Authorizer
 
-Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak zabezpečit přístup přes rozhraní API pomocí externího autorizačního objektu, který zapouzdřuje vlastní ověřování a logiku autorizace. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak zabezpečit přístup přes rozhraní API pomocí externího autorizačního objektu, který zapouzdřuje vlastní ověřování a logiku autorizace. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-reference.md).
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Vložte kód do **vstupního** bloku.
 
@@ -35,4 +35,4 @@ Vložte kód do **vstupního** bloku.
 Další informace o zásadách APIM:
 
 + [Zásady omezení přístupu](../api-management-access-restriction-policies.md)
-+ [Ukázky zásad](../policy-samples.md)
++ [Ukázky zásad](../policy-reference.md)

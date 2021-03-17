@@ -4,12 +4,12 @@ description: Naučte se, jak přidat výstupní vazbu pro připojení funkcí kn
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235373"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185126"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Připojení funkcí k Azure Storage pomocí sady Visual Studio
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak pomocí sady Visual Studio připojit funkci, k
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte: 
 
@@ -29,15 +29,15 @@ Než začnete tento článek, musíte:
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
-V [předchozím článku rychlý Start](functions-create-first-function-vs-code.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do souboru *Local. Settings. JSON* . 
+V [předchozím článku rychlý Start](./create-first-function-vs-code-csharp.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do *local.settings.jsv* souboru. 
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. 
 
-1. V části **Akce**vyberte **Upravit Azure App Service nastavení**. 
+1. V části **Akce** vyberte **Upravit Azure App Service nastavení**. 
 
     ![Upravit nastavení aplikace](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. V části **AzureWebJobsStorage**Zkopírujte hodnotu **vzdáleného** řetězce na **místní**a pak vyberte **OK**. 
+1. V části **AzureWebJobsStorage** Zkopírujte hodnotu **vzdáleného** řetězce na **místní** a pak vyberte **OK**. 
 
 Vazba úložiště, která používá `AzureWebJobsStorage` nastavení pro připojení, se nyní může připojit k úložišti fronty, pokud je spuštěno místně.
 
@@ -75,7 +75,7 @@ Po definování vazby můžete použít `name` vazbu na k přístupu jako atribu
 
 1. V aplikaci Visual Studio v nabídce **zobrazení** vyberte **Průzkumník cloudu**.
 
-1. V **Průzkumníku cloudu**rozbalte předplatné Azure a **účty úložiště**a potom rozbalte účet úložiště, který funkce používá. Pokud si název účtu úložiště nepamatujete, ověřte `AzureWebJobsStorage` nastavení připojovacího řetězce v souboru *Local. Settings. JSON* .  
+1. V **Průzkumníku cloudu** rozbalte předplatné Azure a **účty úložiště** a potom rozbalte účet úložiště, který funkce používá. Pokud si název účtu úložiště nepamatujete, ověřte `AzureWebJobsStorage` nastavení připojovacího řetězce v *local.settings.jsv* souboru.  
 
 1. Rozbalte uzel **fronty** a pak dvakrát klikněte **na frontu s názvem front** -to pro zobrazení obsahu fronty v aplikaci Visual Studio. 
 
@@ -89,7 +89,7 @@ Teď je čas na opětovné publikování aktualizované aplikace Function App do
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>Opětovné nasazení a ověření aktualizované aplikace
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **publikovat**a pak klikněte na **publikovat** , aby se projekt znovu publikoval do Azure.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **publikovat** a pak klikněte na **publikovat** , aby se projekt znovu publikoval do Azure.
 
 1. Po dokončení nasazení můžete znovu použít prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív přidejte řetězec dotazu `&name=<yourname>` k adrese URL.
 
@@ -106,7 +106,7 @@ Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do f
 Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
-> [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Povolení integrace Application Insights](configure-monitoring.md#add-to-an-existing-function-app)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 [předchozí článek rychlý Start]: functions-create-your-first-function-visual-studio.md

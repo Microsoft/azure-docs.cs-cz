@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: jrasnick, sstein
+ms.date: 12/22/2020
+ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324534"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096487"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Správa prostoru souborů pro databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ V následujících scénářích může být potřeba monitorovat využití pros
 
 Většina metrik prostorů úložiště se zobrazuje v Azure Portal a následující rozhraní API měří pouze velikost použitých datových stránek:
 
-- Rozhraní API metrik založené na Azure Resource Manager, včetně PowerShellu [Get – metrik](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Rozhraní API metrik založené na Azure Resource Manager, včetně PowerShellu [Get – metrik](/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Následující rozhraní API však také měří velikost vyhrazeného místa pro databáze a elastické fondy:
 
-- T-SQL: [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL:  [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [Sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Zmenšení datových souborů
 
@@ -84,7 +84,7 @@ Upravte následující dotaz, který vrátí velikost využitého místa pro dat
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité volné místo v databázi dat
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>Maximální velikost dat databáze
@@ -108,7 +108,7 @@ Upravte následující dotaz tak, aby vracel maximální velikost dat databáze.
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Porozumění typům úložného prostoru pro elastický fond
@@ -121,6 +121,9 @@ Při správě prostoru pro elastický fond je důležité pochopit následujíc�
 |**Přidělené datové místo**|Součet datového prostoru přiděleného všemi databázemi v elastickém fondu.||
 |**Přidělené datové místo, ale nepoužívá se**|Rozdíl mezi objemem přiděleného datového prostoru a datovým prostorem používaným všemi databázemi v elastickém fondu.|Toto množství představuje maximální prostor přidělený pro elastický fond, který je možné uvolnit zmenšením datových souborů databáze.|
 |**Maximální velikost dat**|Maximální množství datového prostoru, které může elastický fond používat pro všechny jeho databáze.|Prostor přidělený elastickému fondu by neměl překročit maximální velikost elastického fondu.  Pokud k tomuto stavu dojde, může být přidělené místo, které není používáno, uvolněno zmenšením datových souborů databáze.|
+
+> [!NOTE]
+> Chybová zpráva "elastický fond dosáhl svého limitu úložiště" značí, že objekty databáze byly přiděleny dostatek místa pro splnění limitu úložiště elastického fondu, ale v alokaci datového prostoru může být nevyužité místo. Zvažte zvýšení limitu úložiště elastického fondu, nebo jako krátkodobé řešení, a uvolněte tak místo v níže uvedené části s [**nevyužitým přiděleným místem**](#reclaim-unused-allocated-space) . Měli byste být také vědomi potenciálního dopadu na výkon při zmenšování souborů databáze, viz část [**nové sestavení indexů**](#rebuild-indexes) níže.
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Dotazování elastického fondu pro informace o prostoru úložiště
 
@@ -136,7 +139,7 @@ Upravte následující dotaz, který vrátí velikost využitého datového pros
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité volné místo v datovém prostoru elastického fondu
@@ -148,7 +151,7 @@ Výsledky dotazu pro určení prostoru přiděleného pro každou databázi ve f
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020. Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-Skript prostředí PowerShell vyžaduje SQL Server modul prostředí PowerShell – viz téma [stažení modulu PowerShell](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) k instalaci.
+Skript prostředí PowerShell vyžaduje SQL Server modul prostředí PowerShell – viz téma [stažení modulu PowerShell](/sql/powershell/download-sql-server-ps-module) k instalaci.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -187,7 +190,7 @@ Následující snímek obrazovky ukazuje příklad výstupu skriptu:
 
 ### <a name="elastic-pool-data-max-size"></a>Maximální velikost dat elastického fondu
 
-Upravte následující dotaz T-SQL, který vrátí maximální velikost dat elastického fondu.  Jednotky výsledku dotazu jsou v MB.
+Upravte následující dotaz T-SQL, který vrátí poslední zaznamenanou maximální velikost dat elastického fondu.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Upravte následující dotaz T-SQL, který vrátí maximální velikost dat elas
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>Uvolnění nevyužitého přiděleného místa
 
 > [!NOTE]
-> Tento příkaz může mít vliv na výkon databáze, pokud je spuštěný, a pokud je to možné, měly by být spuštěny během období nízkého využití.
+> Příkazy zmenšení ovlivňují výkon databáze při běhu a pokud je to možné, měli byste je spouštět během období nízkého využití.
 
 ### <a name="dbcc-shrink"></a>Sbalení příkazu DBCC
 
@@ -209,34 +212,38 @@ Jakmile zjistíte, že databáze byly zjištěny pro získání nevyužitého p�
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-Tento příkaz může mít vliv na výkon databáze, pokud je spuštěný, a pokud je to možné, měly by být spuštěny během období nízkého využití.  
+Příkazy zmenšení ovlivňují výkon databáze při běhu a pokud je to možné, měli byste je spouštět během období nízkého využití.  
 
-Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Měli byste být také vědomi potenciálního dopadu na výkon při zmenšování souborů databáze, viz část [**nové sestavení indexů**](#rebuild-indexes) níže.
+
+Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Automatické zmenšení
 
 Alternativně lze pro databázi povolit automatické zmenšení.  Automatické zmenšení snižuje složitost správy souborů a je méně ovlivněná na výkon databáze než `SHRINKDATABASE` nebo `SHRINKFILE` .  Automatické zmenšení může být užitečné hlavně při správě elastických fondů s mnoha databázemi.  Automatické zmenšení ale může být méně účinné při uvolnění místa v souboru než `SHRINKDATABASE` a `SHRINKFILE` .
+Ve výchozím nastavení je automatické zmenšování zakázáno podle doporučení pro většinu databází. Další informace najdete v tématu věnovaném [důležitým AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+
 Chcete-li povolit automatické zmenšení, upravte název databáze v následujícím příkazu.
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-Další informace o tomto příkazu najdete v tématu možnosti [sady databáze](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) .
+Další informace o tomto příkazu najdete v tématu možnosti [sady databáze](/sql/t-sql/statements/alter-database-transact-sql-set-options) .
 
 ### <a name="rebuild-indexes"></a>Opětovné sestavení indexů
 
-Až budou soubory dat databáze zmenšené, indexy se můžou fragmentovat a ztratit jejich efektivitu optimalizace výkonu. Pokud dojde ke snížení výkonu, zvažte opakované sestavení indexů databáze. Další informace o fragmentaci a opětovném sestavování indexů najdete v tématu [reorganizace a opětovné sestavení indexů](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Až budou soubory dat databáze zmenšené, indexy se můžou fragmentovat a ztratit jejich efektivitu optimalizace výkonu. Pokud dojde ke snížení výkonu, zvažte opakované sestavení indexů databáze. Další informace o fragmentaci a opětovném sestavování indexů najdete v tématu [reorganizace a opětovné sestavení indexů](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o maximální velikosti databáze najdete v těchto tématech:
   - [Azure SQL Database omezení pro nákupní model založený na vCore pro jednu databázi](resource-limits-vcore-single-databases.md)
-  - [Omezení prostředků pro izolované databáze s využitím nákupního modelu založeného na DTU](resource-limits-dtu-single-databases.md)
+  - [Limity prostředků pro jednoúčelové databáze využívající nákupní model založený na jednotkách DTU](resource-limits-dtu-single-databases.md)
   - [Azure SQL Database omezení pro nákupní model založený na vCore pro elastické fondy](resource-limits-vcore-elastic-pools.md)
   - [Omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na DTU](resource-limits-dtu-elastic-pools.md)
 - Další informace o příkazu naleznete `SHRINKDATABASE` v tématu [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).

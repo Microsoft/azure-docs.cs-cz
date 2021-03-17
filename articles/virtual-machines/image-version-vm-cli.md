@@ -1,21 +1,21 @@
 ---
-title: Vytvoření image z virtuálního počítače
+title: Vytvoření image z virtuálního počítače pomocí Azure CLI
 description: Naučte se vytvořit image v galerii sdílených imagí z virtuálního počítače v Azure.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c35be8821b6763531b43ec85b10325e91f8bc5f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533916"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556856"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Vytvoření verze image z virtuálního počítače v Azure pomocí rozhraní příkazového řádku Azure
 
@@ -57,11 +57,11 @@ Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, čísl
 
 Ujistěte se, že je vaše definice image správným typem. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-devisioning pro Linux), měli byste vytvořit zobecněnou definici Image pomocí `--os-state generalized` . Pokud chcete virtuální počítač použít bez odebrání stávajících uživatelských účtů, vytvořte pomocí nástroje specializovanou definici image `--os-state specialized` .
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./linux/shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](./linux/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
+V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](./shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \

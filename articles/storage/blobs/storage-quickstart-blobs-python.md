@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Python'
+title: 'Rychlý Start: knihovna pro Azure Blob Storage V12 – Python'
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro Python vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/28/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dce42f1b8bfe58e4d147ba1c982cb770590dfa92
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e315f0f4f7bfff03a659de430e6fe182037f1b8a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845115"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096402"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK
 
 V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Pythonu. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat a vypisovat objekty BLOB a vytvářet a odstraňovat kontejnery.
 
-Další prostředky:
+Další zdroje informací:
 
 * [Referenční dokumentace k rozhraní API](/python/api/azure-storage-blob)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
 * [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-blob/)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [ukázky](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +36,7 @@ Další prostředky:
 
 ## <a name="setting-up"></a>Nastavení
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou služby Azure Blob Storage V12 for Python.
+Tato část vás provede přípravou projektu pro práci s klientskou knihovnou Azure Blob Storage V12 for Python.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
@@ -54,7 +54,7 @@ Vytvořte aplikaci v Pythonu s názvem *BLOB-Start-V12*.
     cd blob-quickstart-v12
     ```
 
-1. V adresáři *objektů BLOB pro rychlý Start – V12* vytvořte další adresář s názvem *data*. V tomto umístění se vytvoří a uloží datové soubory objektů BLOB.
+1. V adresáři *objektů BLOB pro rychlý Start – V12* vytvořte další adresář s názvem *data*. V tomto adresáři se budou vytvářet a ukládat datové soubory objektů BLOB.
 
     ```console
     mkdir data
@@ -62,13 +62,13 @@ Vytvořte aplikaci v Pythonu s názvem *BLOB-Start-V12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Ještě pořád v adresáři aplikace nainstalujte klientskou knihovnu pro úložiště objektů BLOB v Azure pro balíček Pythonu pomocí `pip install` příkazu.
+Ještě pořád v adresáři aplikace nainstalujte knihovnu klienta Azure Blob Storage pro balíček python pomocí `pip install` příkazu.
 
 ```console
 pip install azure-storage-blob
 ```
 
-Tento příkaz nainstaluje klientskou knihovnu pro úložiště objektů BLOB v Azure pro balíček Pythonu a všechny knihovny, na kterých závisí. V tomto případě je to jenom knihovna Azure Core pro Python.
+Tento příkaz nainstaluje knihovnu klienta Azure Blob Storage pro balíček Pythonu a všechny knihovny, na kterých závisí. V tomto případě je to jenom knihovna Azure Core pro Python.
 
 ### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
 
@@ -80,17 +80,7 @@ Z adresáře projektu:
 
     Zde je kód:
 
-    ```python
-    import os, uuid
-    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
-
-    try:
-        print("Azure Blob storage v12 - Python quickstart sample")
-        # Quick start code goes here
-    except Exception as ex:
-        print('Exception:')
-        print(ex)
-    ```
+    :::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/app_framework.py":::
 
 1. Uložte nový soubor jako *BLOB-Quickstart-V12.py* do adresáře *objektů BLOB-rychlý Start-V12* .
 
@@ -98,7 +88,7 @@ Z adresáře projektu:
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Azure Blob Storage je optimalizovaná pro ukládání obrovských objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -116,30 +106,22 @@ Pro interakci s těmito prostředky použijte následující třídy Pythonu:
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující s klientskou knihovnou služby Azure Blob Storage pro Python:
+Tyto ukázkové fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny Azure Blob Storage pro Python:
 
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření kontejneru](#create-a-container)
 * [Nahrání objektů blob do kontejneru](#upload-blobs-to-a-container)
-* [Zobrazí seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
+* [Seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
 * [Stáhnout objekty blob](#download-blobs)
 * [Odstranění kontejneru](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>Získání připojovacího řetězce
 
-Následující kód načte připojovací řetězec pro účet úložiště z proměnné prostředí vytvořené v oddílu [konfigurace vašeho připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
+Následující kód načte připojovací řetězec účtu úložiště z proměnné prostředí vytvořené v oddílu [konfigurace vašeho připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
 
 Přidejte tento kód do `try` bloku:
 
-```python
-# Retrieve the connection string for use with the application. The storage
-# connection string is stored in an environment variable on the machine
-# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
-# created after the application is launched in a console or with Visual Studio,
-# the shell or application needs to be closed and reloaded to take the
-# environment variable into account.
-connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_ConnectionString":::
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -152,62 +134,28 @@ Vytvořte instanci třídy [BlobServiceClient](/python/api/azure-storage-blob/az
 
 Přidejte tento kód na konec `try` bloku:
 
-```python
-# Create the BlobServiceClient object which will be used to create a container client
-blob_service_client = BlobServiceClient.from_connection_string(connect_str)
-
-# Create a unique name for the container
-container_name = "quickstart" + str(uuid.uuid4())
-
-# Create the container
-container_client = blob_service_client.create_container(container_name)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_CreateContainer":::
 
 ### <a name="upload-blobs-to-a-container"></a>Nahrání objektů blob do kontejneru
 
 Následující fragment kódu:
 
+1. Vytvoří místní adresář pro ukládání datových souborů.
 1. Vytvoří textový soubor v místním adresáři.
 1. Získá odkaz na objekt [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) voláním metody [get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) v [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) z oddílu [vytvoření kontejneru](#create-a-container) .
 1. Nahraje místní textový soubor do objektu BLOB voláním metody [upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) .
 
 Přidejte tento kód na konec `try` bloku:
 
-```python
-# Create a file in local data directory to upload and download
-local_path = "./data"
-local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
-upload_file_path = os.path.join(local_path, local_file_name)
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_UploadBlobs":::
 
-# Write text to the file
-file = open(upload_file_path, 'w')
-file.write("Hello, World!")
-file.close()
-
-# Create a blob client using the local file name as the name for the blob
-blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
-
-print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)
-
-# Upload the created file
-with open(upload_file_path, "rb") as data:
-    blob_client.upload_blob(data)
-```
-
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Vypíše objekty BLOB v kontejneru voláním metody [list_blobs](/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
 
 Přidejte tento kód na konec `try` bloku:
 
-```python
-print("\nListing blobs...")
-
-# List the blobs in the container
-blob_list = container_client.list_blobs()
-for blob in blob_list:
-    print("\t" + blob.name)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_ListBlobs":::
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
@@ -215,42 +163,21 @@ Stáhněte dřív vytvořený objekt BLOB voláním metody [download_blob](/pyth
 
 Přidejte tento kód na konec `try` bloku:
 
-```python
-# Download the blob to a local file
-# Add 'DOWNLOAD' before the .txt extension so you can see both files in the data directory
-download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
-print("\nDownloading blob to \n\t" + download_file_path)
-
-with open(download_file_path, "wb") as download_file:
-    download_file.write(blob_client.download_blob().readall())
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_DownloadBlobs":::
 
 ### <a name="delete-a-container"></a>Odstranění kontejneru
 
 Následující kód vyčistí prostředky, které aplikace vytvořila, odebráním celého kontejneru pomocí metody [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) . Pokud chcete, můžete také odstranit místní soubory.
 
-Aplikace pozastaví vstup uživatele voláním `input()` před odstraněním objektu blob, kontejneru a místních souborů. Tato možnost je vhodná pro ověření, že se prostředky správně vytvořily, než se odstraní.
+Aplikace pozastaví vstup uživatele voláním `input()` před odstraněním objektu blob, kontejneru a místních souborů. Před odstraněním ověřte, že se prostředky správně vytvořily.
 
 Přidejte tento kód na konec `try` bloku:
 
-```python
-# Clean up
-print("\nPress the Enter key to begin clean up")
-input()
-
-print("Deleting blob container...")
-container_client.delete_container()
-
-print("Deleting the local source and downloaded files...")
-os.remove(upload_file_path)
-os.remove(download_file_path)
-
-print("Done")
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_CleanUp":::
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Tato aplikace vytvoří testovací soubor v místní složce a nahraje ho do úložiště objektů BLOB. Příklad zobrazí seznam objektů BLOB v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat staré a nové soubory.
+Tato aplikace vytvoří testovací soubor v místní složce a nahraje ho do služby Azure Blob Storage. Příklad zobrazí seznam objektů BLOB v kontejneru a stáhne soubor s novým názvem. Můžete porovnat staré a nové soubory.
 
 Přejděte do adresáře obsahujícího soubor *BLOB-Quickstart-V12.py* a `python` spuštěním následujícího příkazu spusťte aplikaci.
 
@@ -261,7 +188,7 @@ python blob-quickstart-v12.py
 Výstup aplikace je podobný následujícímu příkladu:
 
 ```output
-Azure Blob storage v12 - Python quickstart sample
+Azure Blob Storage v12 - Python quickstart sample
 
 Uploading to Azure Storage as blob:
         quickstartcf275796-2188-4057-b6fb-038352e35038.txt
@@ -279,7 +206,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-Než zahájíte proces vyčištění, vyhledejte tyto dva soubory ve složce *dat* . Můžete je otevřít a podívat se, že jsou identické.
+Než zahájíte proces čištění, vyhledejte ve složce *data* tyto dva soubory. Můžete je otevřít a sledovat, že jsou identické.
 
 Po ověření souborů stiskněte klávesu **ENTER** , aby se odstranily soubory testu, a dokončete ukázku.
 
@@ -290,7 +217,7 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 
 > [!div class="nextstepaction"]
-> [Ukázky V12 v Pythonu pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Ukázky pro Azure Blob Storage SDK V12 Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* Další informace najdete v tématu [klientské knihovny Azure Storage pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12).
+* Další informace najdete v tématu [klientské knihovny Azure Storage pro Python](/azure/developer/python/sdk/storage/overview).
 * Výukové programy, ukázky, rychlé starty a další dokumentaci najdete v [Azure pro vývojáře v Pythonu](/azure/python/).

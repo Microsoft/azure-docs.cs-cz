@@ -8,20 +8,20 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080050"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654859"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Vnímání znalostí překladu textu
 
-Dovednost **překladu textu** vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka. Tato dovednost používá [Translator text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostupné v Cognitive Services.
+Dovednost **překladu textu** vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka. Tato dovednost používá [Translator text API v 3.0](../cognitive-services/translator/reference/v3-0-translate.md) dostupné v Cognitive Services.
 
 Tato možnost je užitečná, pokud očekáváte, že vaše dokumenty nebudou v jednom jazyce. v takovém případě můžete normalizovat text na jeden jazyk před indexováním pro hledání pomocí překladu.  Je také užitečné pro případy použití lokalizace, kde můžete chtít, aby kopie stejného textu byly k dispozici v několika jazycích.
 
-[Translator text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) je Neoblastní služba pro rozpoznávání, což znamená, že vaše data nejsou zaručená zůstat ve stejné oblasti jako Azure kognitivní hledání nebo připojený Cognitive Services prostředek.
+[Translator text API v 3.0](../cognitive-services/translator/reference/v3-0-reference.md) je Neoblastní služba pro rozpoznávání, což znamená, že vaše data nejsou zaručená zůstat ve stejné oblasti jako Azure kognitivní hledání nebo připojený Cognitive Services prostředek.
 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -32,29 +32,29 @@ Tato možnost je užitečná, pokud očekáváte, že vaše dokumenty nebudou v 
 Microsoft. dovednosti. text. TranslationSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do dovednosti překladu textu rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do dovednosti překladu textu rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy                | Description |
+| Vstupy | Popis |
 |---------------------|-------------|
-| defaultToLanguageCode | Požadovanou Kód jazyka, ve kterém se mají dokumenty překládat do pro dokumenty, které nespecifikují jazyk pro explicitně. <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)najdete v části. |
-| defaultFromLanguageCode | Volitelné Kód jazyka, ze kterého se mají dokumenty překládat pro dokumenty, které nespecifikují jazyk z jazyka explicitně.  Pokud není zadán parametr defaultFromLanguageCode, použije se k určení jazyka z tohoto Translator Text API automatické zjišování jazyka, které poskytuje. <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)najdete v části. |
-| suggestedFrom | Volitelné Kód jazyka pro překlad dokumentů, pokud není zadán vstupní fromLanguageCode ani parametr defaultFromLanguageCode a automatické rozpoznávání jazyka neproběhlo úspěšně.  Pokud není zadán jazyk suggestedFrom, použije se jako jazyk suggestedFrom angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)najdete v části. |
+| defaultToLanguageCode | Požadovanou Kód jazyka, ve kterém se mají dokumenty překládat do pro dokumenty, které nespecifikují jazyk pro explicitně. <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)najdete v části. |
+| defaultFromLanguageCode | Volitelné Kód jazyka, ze kterého se mají dokumenty překládat pro dokumenty, které nespecifikují jazyk z jazyka explicitně.  Pokud není zadán parametr defaultFromLanguageCode, použije se k určení jazyka z tohoto Translator Text API automatické zjišování jazyka, které poskytuje. <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)najdete v části. |
+| suggestedFrom | Volitelné Kód jazyka pro překlad dokumentů, pokud není zadán vstupní fromLanguageCode ani parametr defaultFromLanguageCode a automatické rozpoznávání jazyka neproběhlo úspěšně.  Pokud není zadán jazyk suggestedFrom, použije se jako jazyk suggestedFrom angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)najdete v části. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu     | Description |
+| Název vstupu     | Popis |
 |--------------------|-------------|
 | text | Text, který se má přeložit|
-| toLanguageCode    | Řetězec označující jazyk, na který má být text přeložen. Pokud tento vstup není zadán, použije se k převodu textu defaultToLanguageCode. <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
-| fromLanguageCode  | Řetězec označující aktuální jazyk textu. Pokud není tento parametr zadán, použije se k převodu textu defaultFromLanguageCode (nebo automatické rozpoznávání jazyka, pokud není k dispozici defaultFromLanguageCode). <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
+| toLanguageCode    | Řetězec označující jazyk, na který má být text přeložen. Pokud tento vstup není zadán, použije se k převodu textu defaultToLanguageCode. <br/>Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)|
+| fromLanguageCode  | Řetězec označující aktuální jazyk textu. Pokud není tento parametr zadán, použije se k převodu textu defaultFromLanguageCode (nebo automatické rozpoznávání jazyka, pokud není k dispozici defaultFromLanguageCode). <br/>Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Description |
+| Název výstupu    | Popis |
 |--------------------|-------------|
 | translatedText | Výsledek řetězce převodu textu z translatedFromLanguageCode do translatedToLanguageCode.|
 | translatedToLanguageCode  | Řetězec označující kód jazyka, na který byl text přeložen. Užitečné v případě, že překládáte do více jazyků a chcete mít přehled o tom, jaký text má jazyk.|
@@ -91,7 +91,7 @@ U parametrů se rozlišují malá a velká písmena.
   }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {

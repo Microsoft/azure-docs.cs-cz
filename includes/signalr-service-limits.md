@@ -14,10 +14,10 @@ ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
 ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83673539"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení | 
@@ -27,7 +27,7 @@ ms.locfileid: "83673539"
 | Jednotky služby signálu Azure na předplatné na oblast pro úroveň Free|5 |5 |
 | Celkový počet jednotek služby signálů Azure na předplatné na oblast |150 |Unlimited |
 | Počet připojení za jednotku a den pro úroveň Free |20 |20 |
-| Počet připojení za jednotku a den pro úroveň Standard |1 000 |1 000|
+| Počet připojení za jednotku a den pro úroveň Standard |1 000 |1 000|
 | Zahrnuté zprávy na jednotku za den pro úroveň Free|20 000 |20 000 |
 | Další zprávy za jednotku za den pro úroveň Free|0 |0 |
 | Zahrnuté zprávy na jednotku za den pro úroveň Standard|1 000 000 |1 000 000 |

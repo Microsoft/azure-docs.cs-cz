@@ -1,18 +1,18 @@
 ---
 title: Šifrování dat – Azure CLI – Azure Database for MySQL
 description: Naučte se, jak nastavit a spravovat šifrování dat pro váš Azure Database for MySQL pomocí Azure CLI.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799815"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519038"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -24,7 +24,7 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
 * Vytvořte Trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem. V trezoru klíčů taky povolte možnost Vymazat ochranu a obnovitelné odstranění.
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * Ve vytvořeném Azure Key Vault vytvořte klíč, který bude použit pro šifrování dat Azure Database for MySQL.
@@ -46,11 +46,23 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * Dny uchování nastavené na 90 dní
+  ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
   * Žádné datum vypršení platnosti
   * Nezakázáno
-  * Provádění operací **získat**, **zalamovat**a **rozbalení**
+  * Provádění operací **získat**, **zalamovat** a **rozbalení**
+  * atribut recoverylevel je nastavený na **obnovitelné** (vyžaduje se obnovitelné odstranění s dobou uchování nastavenou na 90 dní).
+  * Vymazání ochrany povoleno
+
+Výše uvedené atributy klíče můžete ověřit pomocí následujícího příkazu:
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
@@ -82,7 +94,7 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
     az mysql server key create –name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+    Adresa URL klíče:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Použití šifrování dat pro obnovení nebo servery repliky
 
@@ -126,7 +138,7 @@ az mysql server key create –name  <server name> -g <resource_group> --kid <key
 az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
 ```
 
-Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Adresa URL klíče: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Vypíše použitý klíč.
 

@@ -3,13 +3,13 @@ title: Odesílání upozornění na Azure Service Health pomocí ServiceNow
 description: Získejte přizpůsobená oznámení o událostech služby Service Health do vaší instance ServiceNow.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 68175dc17c1601eab097b94d4eefaa2706731f5c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432529"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588193"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Odesílání upozornění na Azure Service Health s ServiceNow pomocí webhooků
 
@@ -43,9 +43,9 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 
     >[!NOTE]
     >`<secret>` `<group>` Ve skriptu níže musíte aktualizovat hodnotu, a `<email>` .
-    >* `<secret>`měl by to být náhodný řetězec, například GUID.
-    >* `<group>`měla by se jednat o skupinu ServiceNow, ke které chcete přiřadit incident.
-    >* `<email>`měla by to být konkrétní osoba, se kterou chcete incident přiřadit (volitelné).
+    >* `<secret>` měl by to být náhodný řetězec, například GUID.
+    >* `<group>` měla by se jednat o skupinu ServiceNow, ke které chcete přiřadit incident.
+    >* `<email>` měla by to být konkrétní osoba, se kterou chcete incident přiřadit (volitelné).
     >
 
     ```javascript
@@ -178,7 +178,7 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 1. Po dokončení aktualizace skupiny akcí vyberte **Uložit** .
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování integrace Webhooku prostřednictvím požadavku HTTP POST
-1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Ukázkovou datovou část Webhooku pro stav služby najdete na [webhookech pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Ukázkovou datovou část Webhooku pro stav služby najdete na [webhookech pro výstrahy protokolu aktivit Azure](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Požadavek HTTP POST vytvoříte takto:
 
@@ -195,6 +195,6 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Přečtěte si o [oznámeních o stavu služby](./service-notifications.md).
-- Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).
+- Přečtěte si další informace o [skupinách akcí](../azure-monitor/alerts/action-groups.md).

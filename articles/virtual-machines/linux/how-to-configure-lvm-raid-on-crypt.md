@@ -2,17 +2,19 @@
 title: Konfigurace LVM a RAID na šifrovaných zařízeních – Azure Disk Encryption
 description: Tento článek poskytuje pokyny pro konfiguraci LVM a RAID na šifrovaných zařízeních pro virtuální počítače se systémem Linux.
 author: jofrance
-ms.service: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: 746243336d74aefc55df48872fe9dd21e9cd99a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ec9f99d0a13b5b92bc267f184d364ebabe36a050
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268216"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566103"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurace LVM a RAID na šifrovaných zařízeních
 
@@ -76,7 +78,7 @@ New-AzVm -ResourceGroupName ${RGNAME} `
 ```
 Rozhraní příkazového řádku Azure:
 
-```bash
+```azurecli
 az vm create \
 -n ${VMNAME} \
 -g ${RGNAME} \
@@ -104,7 +106,7 @@ Update-AzVM -VM ${VM} -ResourceGroupName ${RGNAME}
 
 Rozhraní příkazového řádku Azure:
 
-```bash
+```azurecli
 az vm disk attach \
 -g ${RGNAME} \
 --vm-name ${VMNAME} \
@@ -124,7 +126,7 @@ $VM.StorageProfile.DataDisks | Select-Object Lun,Name,DiskSizeGB
 
 Rozhraní příkazového řádku Azure:
 
-```bash
+```azurecli
 az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.dataDisks -o table
 ```
 ![Seznam připojených disků v Azure CLI](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
@@ -206,7 +208,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGNAME `
 
 Rozhraní příkazového řádku Azure pomocí KEK:
 
-```bash
+```azurecli
 az vm encryption enable \
 --resource-group ${RGNAME} \
 --name ${VMNAME} \
@@ -230,7 +232,7 @@ Get-AzVmDiskEncryptionStatus -ResourceGroupName ${RGNAME} -VMName ${VMNAME}
 
 Rozhraní příkazového řádku Azure:
 
-```bash
+```azurecli
 az vm encryption show -n ${VMNAME} -g ${RGNAME} -o table
 ```
 ![Stav šifrování v Azure CLI](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
@@ -367,9 +369,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![Informace pro připojené systémy souborů](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![Snímek obrazovky zobrazuje okno konzoly se systémy souborů připojenými jako DATA0 a Data1.](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-V této variaci **lsblk**uvádíme zařízení, která zobrazují závislosti v obráceném pořadí. Tato možnost pomáhá identifikovat zařízení seskupená podle logického svazku místo původních názvů zařízení/dev/SD [disk].
+V této variaci **lsblk** uvádíme zařízení, která zobrazují závislosti v obráceném pořadí. Tato možnost pomáhá identifikovat zařízení seskupená podle logického svazku místo původních názvů zařízení/dev/SD [disk].
 
 Je důležité zajistit, aby se možnost **neúspěšného** připojení přidala do možností přípojného bodu LVM svazků vytvořených na zařízení zašifrovaném pomocí Azure Disk Encryption. Zabrání operačnímu systému v zablokování během procesu spouštění (nebo v režimu údržby).
 
@@ -436,7 +438,7 @@ Ověřte, zda je nový systém souborů připojen:
 lsblk -fs
 df -h
 ```
-![Informace pro připojené systémy souborů](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Snímek obrazovky zobrazuje okno konzoly se systémem souborů připojeným jako raiddata.](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 Je důležité zajistit, aby se možnost **neúspěšného** připojení přidala do možností přípojných bodů svazků RAID vytvořených na zařízení zašifrovaném pomocí Azure Disk Encryption. Zabrání operačnímu systému v zablokování během procesu spouštění (nebo v režimu údržby).
 
@@ -459,4 +461,5 @@ df -h
 ```
 ## <a name="next-steps"></a>Další kroky
 
+- [Změna velikosti zařízení pro správu logických svazků zašifrovaných pomocí Azure Disk Encryption](how-to-resize-encrypted-lvm.md)
 - [Řešení potíží se službou Azure Disk Encryption](disk-encryption-troubleshooting.md)

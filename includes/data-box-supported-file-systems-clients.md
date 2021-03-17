@@ -3,16 +3,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 7374829554f793bea653e27a879ff3f1408b023a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 586f02b47ad00625a865dcacef1f39b7c9acffa6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66242183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91767868"
 ---
-| **Protokoly** | **Zachovávaných** |
+| **Protokol** | **Versions** (Verze) |
 | --- | --- |
-| SMB |2. X a novější |
+| SMB | 3,0 a 2,0 |
 | NFS | Všechny verze až do včetně 4,1|

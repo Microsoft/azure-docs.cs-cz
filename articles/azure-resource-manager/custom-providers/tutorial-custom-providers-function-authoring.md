@@ -3,14 +3,14 @@ title: Vytvoření koncového bodu RESTful
 description: V tomto kurzu se dozvíte, jak vytvořit RESTful koncový bod pro vlastní poskytovatele. Podrobnosti o tom, jak zpracovávat požadavky a odpovědi pro podporované metody HTTP RESTful.
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650020"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200205"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Vytvořit RESTful koncový bod pro vlastní zprostředkovatele
 
@@ -41,9 +41,9 @@ Následující příklad ukazuje `x-ms-customproviders-requestpath` hlavičku vl
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{myResourceType}/{myResourceName}
 ```
 
-V závislosti na `x-ms-customproviders-requestpath` záhlaví tohoto příkladu můžete pro své úložiště vytvořit parametry *partitionKey* a *rowKey* , jak je znázorněno v následující tabulce:
+V závislosti na záhlaví tohoto příkladu `x-ms-customproviders-requestpath` můžete pro své úložiště vytvořit parametry *PartitionKey* a *rowKey* , jak je znázorněno v následující tabulce:
 
-Parametr | Šablona | Popis
+Parametr | Template (Šablona) | Description
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | Parametr *partitionKey* určuje, jak jsou data rozdělená na oddíly. Data jsou obvykle rozdělená instancemi vlastního zprostředkovatele.
 *rowKey* | `{myResourceType}:{myResourceName}` | Parametr *rowKey* určuje jednotlivý identifikátor pro data. Identifikátor je obvykle název prostředku.
@@ -62,7 +62,7 @@ public class CustomResource : TableEntity
 ## <a name="support-custom-provider-restful-methods"></a>Podpora RESTful metod vlastního zprostředkovatele
 
 > [!NOTE]
-> Pokud nekopírujete kód přímo z tohoto kurzu, je nutné, aby obsah odpovědi byl platný ve formátu JSON `Content-Type` , který `application/json`nastaví hlavičku na.
+> Pokud nekopírujete kód přímo z tohoto kurzu, je nutné, aby obsah odpovědi byl platný ve formátu JSON, který nastaví `Content-Type` hlavičku na `application/json` .
 
 Teď, když jste nastavili dělení dat, vytvořte základní metody CRUD a triggeru pro vlastní prostředky a vlastní akce. Vzhledem k tomu, že vlastní zprostředkovatelé fungují jako proxy, koncový bod RESTful musí model a zpracovat požadavek a odpověď. Následující fragmenty kódu ukazují, jak zpracovávat základní operace RESTful.
 
@@ -132,13 +132,13 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-Metoda **CreateCustomResource** aktualizuje příchozí požadavek tak, aby zahrnoval pole **ID**, **název**a **typ**specifická pro Azure. Tato pole jsou vlastnosti nejvyšší úrovně používané službami v Azure. Umožňují vlastnímu zprostředkovateli spolupracovat s dalšími službami, jako jsou Azure Policy, Azure Resource Manager šablony a protokol aktivit Azure.
+Metoda **CreateCustomResource** aktualizuje příchozí požadavek tak, aby zahrnoval pole **ID**, **název** a **typ** specifická pro Azure. Tato pole jsou vlastnosti nejvyšší úrovně používané službami v Azure. Umožňují vlastnímu zprostředkovateli spolupracovat s dalšími službami, jako jsou Azure Policy, Azure Resource Manager šablony a protokol aktivit Azure.
 
-Vlastnost | Příklad | Popis
+Vlastnost | Příklad | Description
 ---|---|---
 **Jméno** | {myCustomResourceName} | Název vlastního prostředku
 **textový** | Microsoft. CustomProviders/resourceProviders/{ResourceType} | Obor názvů typu prostředku
-**účet** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>{ResourceType}/{myCustomResourceName} | ID prostředku
+**id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>{ResourceType}/{myCustomResourceName} | ID prostředku
 
 Kromě přidávání vlastností jste také uložili dokument JSON do úložiště tabulek Azure.
 
@@ -338,7 +338,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 }
 ```
 
-Aktualizovaná metoda **Run** teď zahrnuje vstupní vazbu *tableStorage* , kterou jste přidali pro Azure Table Storage. První část metody načte `x-ms-customproviders-requestpath` hlavičku a použije `Microsoft.Azure.Management.ResourceManager.Fluent` knihovnu k analýze hodnoty jako ID prostředku. `x-ms-customproviders-requestpath` Hlavička je odeslána vlastním poskytovatelem a určuje cestu příchozího požadavku.
+Aktualizovaná metoda **Run** teď zahrnuje vstupní vazbu *tableStorage* , kterou jste přidali pro Azure Table Storage. První část metody načte `x-ms-customproviders-requestpath` hlavičku a použije `Microsoft.Azure.Management.ResourceManager.Fluent` knihovnu k analýze hodnoty jako ID prostředku. `x-ms-customproviders-requestpath`Hlavička je odeslána vlastním poskytovatelem a určuje cestu příchozího požadavku.
 
 Pomocí analyzovaného ID prostředku můžete vygenerovat hodnoty **partitionKey** a **rowKey** pro data, která chcete vyhledat, nebo ukládat vlastní prostředky.
 
@@ -347,7 +347,7 @@ Po přidání metod a tříd je potřeba aktualizovat metody **using** aplikace 
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: jeedes
-ms.openlocfilehash: f56d15fc3d30a9b031ac7bfaafffc70a57faa8a9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 403d04039deef7890bdd5dba1ef337a4b26e86ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549360"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Kurz: Azure Active Directory integrací s Bambu podle klíčového společenské oblasti
 
@@ -27,7 +27,7 @@ Integrace Bambu podle klíčového sociální sítě s Azure AD poskytuje násle
 * Můžete uživatelům povolit, aby se automaticky přihlásili k Bambu pomocí klíčového sociální sítě (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -62,9 +62,9 @@ Pokud chcete nakonfigurovat integraci Bambu podle klíčového sociálních sít
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Bambu podle klíčového**okna, vyberte **Bambu podle klíčového** panelu z výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Bambu podle klíčového** okna, vyberte **Bambu podle klíčového** panelu z výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Bambu podle klíčového sociální sítě v seznamu výsledků](common/search-new-app.png)
+    ![Bambu podle klíčového sociální sítě v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -74,7 +74,7 @@ Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení 
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí Bambuu v rámci klíčového sociální sítě, je potřeba, abyste dokončili tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte Bambu podle klíčového jednotného přihlašování](#configure-bambu-by-sprout-social-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte Bambu podle klíčového jednotného přihlašování](#configure-bambu-by-sprout-social-single-sign-on)** – pro konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte Bambu podle klíčového uživatele pro sociální testy](#create-bambu-by-sprout-social-test-user)** , abyste měli protějšek Britta Simon v Bambu pomocí klíčového okna DataDirectory, který je propojený s reprezentací uživatele v Azure AD.
@@ -94,7 +94,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s Bambu podle kl
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -102,7 +102,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s Bambu podle kl
 
     ![Bambu podle údajů v oblasti sociální sítě a adresy URL jednotného přihlašování](common/preintegrated.png)
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -116,7 +116,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s Bambu podle kl
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-bambu-by-sprout-social-single-sign-on"></a>Konfigurace Bambu pomocí jednotného přihlašování na základě klíčového sdílení
+### <a name="configure-bambu-by-sprout-social-single-sign-on"></a>Konfigurace Bambu podle klíčového Sign-On pro sociální sítě
 
 Chcete-li nakonfigurovat jednotné přihlašování na Bambu na straně **klíčového sociální** sítě, je třeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL od Azure Portal do [Bambu týmem sociální support](mailto:support@getbambu.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -124,7 +124,7 @@ Chcete-li nakonfigurovat jednotné přihlašování na Bambu na straně **klíč
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -137,23 +137,23 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Bambuu v klíčového sociální síti.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Bambu podle klíčového**okna.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Bambu podle klíčového** okna.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Bambu podle klíčového**okna.
+2. V seznamu aplikace vyberte **Bambu podle klíčového** okna.
 
     ![Odkaz na sociální sítě Bambu podle klíčového odkazu v seznamu aplikací](common/all-applications.png)
 
@@ -179,12 +179,12 @@ V této části se uživatel s názvem Britta Simon vytvoří v Bambu v klíčov
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Bambu podle klíčového přístupu na přístupovém panelu byste měli být automaticky přihlášeni k Bambuu pomocí klíčového okna, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Bambu podle klíčového přístupu na přístupovém panelu byste měli být automaticky přihlášeni k Bambuu pomocí klíčového okna, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

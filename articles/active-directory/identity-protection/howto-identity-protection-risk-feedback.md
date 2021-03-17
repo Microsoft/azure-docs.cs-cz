@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03b06d46cb35346580070f1739fd43128fa7a7fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 939ffc9e2a8fb8ce3a25dc212e3df34dc6bb2ec1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463922"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88950353"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Postupy: poskytnutí zpětné vazby o riziku v Azure AD Identity Protection
 
@@ -60,4 +60,4 @@ Zpětná vazba na zjišťování rizik uživatelů v ochraně identity je zpraco
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Referenční informace o Azure Active Directory Identity Protection detekci rizik](risk-events-reference.md)
+- [Referenční informace o Azure Active Directory Identity Protection detekci rizik](./concept-identity-protection-risks.md)

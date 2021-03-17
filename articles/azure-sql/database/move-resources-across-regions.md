@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: carlrab
+ms.topic: how-to
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 46b95c438830a488494d50308d71a115d6f0da42
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982138"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594160"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Přesunutí prostředků do nové oblasti – Azure SQL Database & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Tento článek poskytuje obecný pracovní postup pro přesun prostředků do ji
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
@@ -122,7 +122,7 @@ Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se v
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
@@ -170,7 +170,7 @@ Replikace všech databází na každé instanci se iniciuje automaticky. Další
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
@@ -182,7 +182,7 @@ Jakmile **ReplicationState** je ReplicationState `2` , připojte se ke každé d
 ### <a name="initiate-the-move"></a>Zahájit přesun
 
 1. Připojte se k cílové spravované instanci pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` .
-1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět.
+1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět.
 1. Ověřte, že se příkaz úspěšně dokončil pomocí příkazu `nslook up <fog-name>.secondary.database.windows.net` , aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud se příkaz switch nezdařil, záznam CNAME nebude aktualizován.
 
 ### <a name="remove-the-source-managed-instances"></a>Odebrat zdrojové spravované instance

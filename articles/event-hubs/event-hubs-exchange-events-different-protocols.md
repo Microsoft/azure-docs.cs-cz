@@ -3,22 +3,23 @@ title: Události Azure Event Hubs-Exchange pomocí různých protokolů
 description: V tomto článku se dozvíte, jak můžou zákazníci a výrobci, kteří používají různé protokoly (AMQP, Apache Kafka a HTTPS), vyměňovat události při použití Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002501"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89010315"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Výměna událostí mezi spotřebiteli a producenty, kteří používají různé protokoly: AMQP, Kafka a HTTPS
 Azure Event Hubs podporuje tři protokoly pro příjemce a výrobce: AMQP, Kafka a HTTPS. Každý z těchto protokolů má svůj vlastní způsob, jak vyjádřit zprávu, a to přirozeně na následující otázku: Pokud aplikace odesílá události do centra událostí s jedním protokolem a spotřebovává je s jiným protokolem, co jednotlivé části a hodnoty události vypadají, jako když dorazí na příjemce? Tento článek popisuje osvědčené postupy pro producenta i příjemce, aby bylo zajištěno, že hodnoty v rámci události jsou správně interpretovány náročnými aplikacemi.
 
 Rady v tomto článku se konkrétně zabývá těmito klienty a uvedenými verzemi použitými při vývoji fragmentů kódu:
 
-* Kafka klient Java (verze 1.1.1 zhttps://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
-* Microsoft Azure Event Hubs klient pro jazyk Java (verze 1.1.0 odhttps://github.com/Azure/azure-event-hubs-java)
-* Klient Event Hubs Microsoft Azure pro .NET (verze 2.1.0 odhttps://github.com/Azure/azure-event-hubs-dotnet)
-* Microsoft Azure Service Bus (verze 5.0.0 odhttps://www.nuget.org/packages/WindowsAzure.ServiceBus)
+* Kafka klient Java (verze 1.1.1 z https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+* Microsoft Azure Event Hubs klient pro jazyk Java (verze 1.1.0 od https://github.com/Azure/azure-event-hubs-java)
+* Klient Event Hubs Microsoft Azure pro .NET (verze 2.1.0 od https://github.com/Azure/azure-event-hubs-dotnet)
+* Microsoft Azure Service Bus (verze 5.0.0 od https://www.nuget.org/packages/WindowsAzure.ServiceBus)
 * HTTPS (podporuje jenom producenty)
 
 Ostatní klienti AMQP se můžou chovat trochu jinak. AMQP má dobře definovaný systém typů, ale specifika serializace typů typů do a z daného systému typů závisí na klientovi, jak klient poskytuje přístup k částem zprávy AMQP.

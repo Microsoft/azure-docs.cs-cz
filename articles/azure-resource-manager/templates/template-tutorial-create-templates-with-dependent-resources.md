@@ -1,20 +1,20 @@
 ---
 title: Šablona se závislými prostředky
-description: Zjistěte, jak vytvořit šablonu Azure Resource Manageru s více prostředky a jak ji nasadit pomocí webu Azure Portal
+description: Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM) s několika prostředky a jak ji nasadit pomocí Azure Portal
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a77f64e51a26e1f916f9f96704c55412a870a509
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102068"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673932"
 ---
-# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Kurz: vytvoření šablon ARM se závislými prostředky
+# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Kurz: Vytváření šablon ARM se závislými prostředky
 
-Naučte se vytvořit šablonu Azure Resource Manager (ARM) pro nasazení více prostředků a konfiguraci pořadí nasazení. Po vytvoření šablony nasadíte šablonu pomocí Cloud Shell z Azure Portal.
+Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM) k nasazení několika prostředků a konfiguraci pořadí nasazení. Po vytvoření šablony nasadíte šablonu pomocí Cloud Shell z Azure Portal.
 
 V tomto kurzu vytvoříte účet úložiště, virtuální počítač, virtuální síť a několik dalších závislých prostředků. Některé prostředky se nedají nasadit, dokud bude existovat jiný prostředek. Nemůžete třeba vytvořit virtuální počítač, dokud bude existovat jeho účet úložiště a síťové rozhraní. Tento vztah se definuje tím, že jeden prostředek označíte jako závislý na jiných prostředcích. Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Další informace najdete v tématu [Definování pořadí pro nasazení prostředků v šablonách ARM](./define-resource-dependency.md).
 
@@ -27,13 +27,15 @@ Tento kurz se zabývá následujícími úkony:
 > * Prozkoumání šablony
 > * Nasazení šablony
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+
+Microsoft Learn modul, který pokrývá závislosti prostředků, najdete v tématu [Správa složitých nasazení cloudu pomocí pokročilých funkcí šablon ARM](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```console
@@ -46,7 +48,7 @@ K dokončení tohoto článku potřebujete:
 
 Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -54,20 +56,20 @@ K dokončení tohoto článku potřebujete:
     ```
 
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Vyberte **soubor** > **Uložit jako** a uložte kopii souboru do místního počítače s názvem **azuredeploy.js**.
+4. Vyberte **soubor**  >  **Uložit jako** a uložte kopii souboru do místního počítače s názvem _azuredeploy.js_.
 
 ## <a name="explore-the-template"></a>Prozkoumání šablony
 
 Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
 * Kolik prostředků Azure se v této šabloně definuje?
-* Jedním z prostředků je účet úložiště Azure.  Vypadá jeho definice jako ta, kterou jsme použili v posledním kurzu?
+* Jedním z prostředků je účet úložiště Azure. Vypadá jeho definice jako ta, kterou jsme použili v posledním kurzu?
 * Najdete referenční informace k šablonám pro prostředky definované v této šabloně?
 * Najdete závislosti těchto prostředků?
 
-1. V nástroji Visual Studio Code sbalte elementy tak, abyste viděli jenom elementy první úrovně a u položky **resources** elementy druhé úrovně:
+1. Z Visual Studio Code sbalte prvky, dokud neuvidíte pouze prvky první úrovně a prvky druhé úrovně uvnitř `resources` :
 
-    ![Šablony Azure Resource Manageru ve Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![Visual Studio Code šablon ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Šablona definuje šest prostředků:
 
@@ -78,25 +80,25 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
    * [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
    * [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Před přizpůsobením šablony je vhodné si projít odkaz na šablonu.
+     Před přizpůsobením šablony je užitečné si prohlédnout odkaz na šablonu.
 
-1. Rozbalte první prostředek. Jedná se o účet úložiště. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/Microsoft.Storage/storageAccounts).
+1. Rozbalte první prostředek. Je to účet úložiště. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/Microsoft.Storage/storageAccounts).
 
-    ![Šablony Azure Resource Manageru ve Visual Studio Code – definice účtu úložiště](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Definice účtu úložiště pro šablony Visual Studio Code ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. Rozbalte druhý prostředek. Typ prostředku je `Microsoft.Network/publicIPAddresses`. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/microsoft.network/publicipaddresses).
 
-    ![Šablony Azure Resource Manageru ve Visual Studio Code – definice veřejné IP adresy](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Definice veřejné IP adresy šablon Visual Studio Code ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. Rozbalte třetí prostředek. Typ prostředku je `Microsoft.Network/networkSecurityGroups`. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/microsoft.network/networksecuritygroups).
 
-    ![Definice skupiny zabezpečení sítě Visual Studio Code Azure Resource Manager šablony](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Definice skupiny zabezpečení sítě Visual Studio Code ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. Rozbalte čtvrtý prostředek. Typ prostředku je `Microsoft.Network/virtualNetworks`:
 
-    ![Visual Studio Code Azure Resource Manager šablon dependsOn virtuální sítě](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![DependsOn virtuální sítě šablon ARM Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Tento prostředek závisí na jednom dalším prostředku:
+    `dependsOn`Prvek umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Tento prostředek závisí na jednom dalším prostředku:
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -112,7 +114,7 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
 Následující diagram znázorňuje prostředky a informace o závislostech pro tuto šablonu:
 
-![Šablony Azure Resource Manageru ve Visual Studio Code – diagram](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![Diagram závislosti Visual Studio Code šablon ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. Paralelně nasadí účet úložiště, veřejnou IP adresu a virtuální síť, protože tyto prostředky nemají žádné závislosti. Po nasazení veřejné IP adresy a virtuální sítě se vytvoří síťové rozhraní. Po nasazení všech ostatních prostředků Resource Manager nasadí virtuální počítač.
 
@@ -124,7 +126,7 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste předtím uložili. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste předtím uložili. Po nahrání souboru můžete pomocí `ls` příkazu a `cat` příkazu ověřit, jestli se soubor úspěšně nahrál.
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 

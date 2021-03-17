@@ -3,18 +3,24 @@ title: Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenSh
 description: Spusťte privilegované kontejnery a sledujte zabezpečení a dodržování předpisů.
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
-ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77e75232b7f9d23f1d07931cc7dc231174e1312d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78271366"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633558"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 V clusterech Azure Red Hat OpenShift nemůžete spouštět libovolné privilegované kontejnery.
 Pro spouštění v clusterech v AROch je povoleno řešení dvou monitorování zabezpečení a dodržování předpisů.
@@ -169,7 +175,7 @@ pak spusťte:
 oc create -f twistlock_route.yaml
 ```
 
-Adresu URL přiřazenou ke konzole TwistLock můžete získat pomocí tohoto příkazu:`oc get route twistlock-console -n twistlock`
+Adresu URL přiřazenou ke konzole TwistLock můžete získat pomocí tohoto příkazu: `oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>Konfigurovat konzolu
 

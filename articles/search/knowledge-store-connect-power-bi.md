@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 438d8cbc4bf03fa9e03d0d2e1920522768ba9127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565344"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89289167"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak se připojit k znalostnímu obchodu a prozkoum
 
 + Postupujte podle kroků v [části vytvoření znalostní báze ve Azure Portal](knowledge-store-create-portal.md) nebo [vytvořte službu Azure kognitivní hledání Knowledge Store pomocí REST](knowledge-store-create-rest.md) a vytvořte ukázkové úložiště Knowledge Store použité v tomto návodu. Také budete potřebovat název účtu Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupová klávesa z Azure Portal.
 
-+ [Nainstalovaný Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Instalace Power BI Desktopu](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Ukázka Power BI šablony – pouze Azure Portal
 
@@ -68,12 +68,12 @@ Kliknutím na **získat Power BI šablonu** na stránce **Přidat dovednosti pro
 
 1. Kliknutím na ikonu s protilehlými šipkami v pravé horní části tabulky rozbalte *obsah*. Když se zobrazí seznam sloupců, vyberte všechny sloupce a pak zrušte výběr sloupců, které začínají na metadata. Kliknutím na tlačítko **OK** zobrazíte vybrané sloupce.
 
-   ![Upravit tabulky](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Rozbalit obsah")
+   ![Rozbalit obsah](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Rozbalit obsah")
 
 1. Kliknutím na ikonu ABC-123 v levém horním rohu sloupce změňte datový typ pro následující sloupce.
 
    + Pro položku *Content. Latitude* a *Content. Zeměpis*vyberte **desetinné číslo**.
-   + Pro *Content. reviews_date* a *Content. reviews_dateAdded*vyberte **Datum a čas**.
+   + V případě *Content.reviews_date* a *Content.reviews_dateAdded*vyberte **Datum a čas**.
 
    ![Změna datových typů](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Změna datových typů")
 
@@ -104,13 +104,13 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

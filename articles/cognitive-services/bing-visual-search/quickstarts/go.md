@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Získání přehledů o imagí pomocí REST API a jít Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
+description: Naučte se nahrát obrázek pomocí rozhraní API pro vizuální vyhledávání Bingu a přejít a získat přehled o imagi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,23 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: a0fb6bc96441fe36713d931e561c6d1e272b7819
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: baa0c66508e63fc4363fbf72f01ed7016f2a30eb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872606"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499097"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Rychlý Start: Získání přehledů o imagí pomocí Vizuální vyhledávání Bingu REST API a jít
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Pomocí tohoto rychlého startu můžete provést vaše první volání do rozhraní API pro vizuální vyhledávání Bingu pomocí programovacího jazyka na cestách. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [binární soubory přejít](https://golang.org/dl/).
 * Nainstalujte tiskárnu s přímým použitím Spew, která se používá k zobrazení výsledků. K instalaci příkazu Přejít-Spew použijte `$ go get -u https://github.com/davecgh/go-spew` příkaz.

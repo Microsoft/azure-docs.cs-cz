@@ -1,16 +1,14 @@
 ---
 title: Vizualizace clusteru pomocí Azure Service Fabric Explorer
 description: Service Fabric Explorer je aplikace pro kontrolu a správu cloudových aplikací a uzlů v clusteru Microsoft Azure Service Fabric.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256250"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574051"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
@@ -106,7 +104,7 @@ Můžete také použít Service Fabric Explorer k vytvoření instancí aplikace
 ## <a name="event-store"></a>Úložiště událostí
 Eventstoru je funkce nabízená platformou, která poskytuje Service Fabric události platformy dostupné v Service Fabric Explorer a REST API. Pro každou entitu, např. Node, službu, aplikace a dotaz na základě času události, se můžete podívat na to, co se ve vašem clusteru chystá. Další informace o Eventstoru najdete v tématu [Přehled eventstoru](service-fabric-diagnostics-eventstore.md).   
 
-![Eventstoru][sfx-eventstore]
+![Snímek obrazovky se zobrazí v podokně uzly s vybranými UDÁLOSTmi.][sfx-eventstore]
 
 >[!NOTE]
 >Od verze Service Fabric 6,4. Eventstoru není ve výchozím nastavení povolené a musí být povolená v šabloně Resource Manageru.
@@ -117,7 +115,7 @@ Eventstoru je funkce nabízená platformou, která poskytuje Service Fabric udá
 ## <a name="image-store-viewer"></a>Image Store Viewer
 Prohlížeč úložiště imagí je funkce nabízená při použití nativního Image Store, která umožňuje zobrazit aktuální obsah úložiště imagí a získat informace o souborech a složkách spolu s odebráním souborů nebo složek.
 
-![Service Fabric Explorer mapa clusteru][sfx-imagestore]
+![Snímek obrazovky, který zobrazuje Image Store Viewer.][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 Service Fabric Explorer nabízí možnost rozhraní se [zálohováním a obnovením](./service-fabric-reliable-services-backup-restore.md). Aby bylo možné zobrazit funkce zálohování a obnovení v SFX, musí být povolen rozšířený režim.

@@ -4,17 +4,20 @@ description: Naučte se importovat nebo ingestovat data Azure Cosmos DB vytvoře
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/15/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77587562"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563602"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci .NET, která optimalizuje zřízenou propustnost (RU/s) potřebnou k importu dat do Azure Cosmos DB. V tomto článku načtete data z ukázkového zdroje dat a naimportujete ho do kontejneru Azure Cosmos.
 V tomto kurzu se používá [verze 3.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) sady Azure Cosmos DB .NET SDK, na kterou se dá cílit .NET Framework nebo .NET Core.
@@ -31,11 +34,11 @@ Tento kurz zahrnuje:
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Sada SDK .NET Core 3](https://dotnet.microsoft.com/download/dotnet-core). Spuštěním `dotnet --version`sady můžete ověřit, která verze je ve vašem prostředí k dispozici.
+* [Sada SDK .NET Core 3](https://dotnet.microsoft.com/download/dotnet-core). Spuštěním sady můžete ověřit, která verze je ve vašem prostředí k dispozici `dotnet --version` .
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
 
@@ -43,7 +46,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte n
 
 ## <a name="step-2-set-up-your-net-project"></a>Krok 2: nastavení projektu .NET
 
-Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu. Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem *Hromadná ukázka-import-demo*. `--langVersion` Parametr nastaví vlastnost *langversion –* v souboru vytvořeného projektu.
+Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu. Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem *Hromadná ukázka-import-demo*. `--langVersion`Parametr nastaví vlastnost *langversion –* v souboru vytvořeného projektu.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -81,11 +84,11 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1.  Přejděte k účtu Azure Cosmos.
 1.  Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu.
 
-Pokud používáte emulátor Azure Cosmos DB, Získejte [přihlašovací údaje emulátoru z tohoto článku](local-emulator.md#authenticating-requests).
+Pokud používáte emulátor Azure Cosmos DB, Získejte [přihlašovací údaje emulátoru z tohoto článku](local-emulator.md#authenticate-requests).
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>Krok 5: inicializace objektu CosmosClient s podporou hromadného provádění
 
@@ -109,7 +112,7 @@ Pojďme začít přepsáním výchozí `Main` metody a definováním globálníc
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -147,14 +150,11 @@ Dále vytvořte pomocnou funkci uvnitř `Program` třídy. Tato pomocná funkce 
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Přečtěte si položky a serializovat je do instancí streamu pomocí `System.Text.Json` třídy. Z důvodu povahy automaticky generovaných dat provádíte serializaci dat jako proudů. Instanci položky můžete také použít přímo, ale jejich převodem na datové proudy můžete využít výkon rozhraní API streamu v CosmosClient. Obvykle můžete data použít přímo, pokud znáte klíč oddílu. 
-
-
-Chcete-li převést data na instance služby Stream v `Main` rámci metody, přidejte po vytvoření kontejneru hned následující kód:
+Pomocí pomocné funkce můžete inicializovat seznam dokumentů, se kterými chcete pracovat:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-Dále pomocí datových proudů vytvořte souběžné úlohy a naplňte seznam úkolů pro vložení položek do kontejneru. Chcete-li provést tuto operaci, přidejte do `Program` třídy následující kód:
+Dále pomocí seznamu dokumentů vytvořte souběžné úkoly a naplňte seznam úkolů, který položky vloží do kontejneru. Chcete-li provést tuto operaci, přidejte do třídy následující kód `Program` :
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 
@@ -172,9 +172,9 @@ Chcete-li spustit ukázku, můžete to provést jednoduše pomocí `dotnet` př�
 
 Pokud jste neměli dostatek času k dokončení kroků v tomto kurzu nebo si jen chcete stáhnout ukázky kódu, můžete je získat z [GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer).
 
-Po klonování projektu nezapomeňte aktualizovat požadované přihlašovací údaje v [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25).
+Po klonování projektu nezapomeňte aktualizovat požadované přihlašovací údaje v [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25).
 
-Ukázku můžete spustit tak, že změníte adresář úložiště a použijete `dotnet`:
+Ukázku můžete spustit tak, že změníte adresář úložiště a použijete `dotnet` :
 
    ```bash
    cd cosmos-dotnet-bulk-import-throughput-optimizer

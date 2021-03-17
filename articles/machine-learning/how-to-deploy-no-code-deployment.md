@@ -1,7 +1,7 @@
 ---
 title: Žádné nasazení kódu (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se nasadit model bez vstupního skriptu.
+description: Žádné nasazení kódu vám neumožňuje nasadit model jako webovou službu, aniž by bylo nutné ručně vytvořit skript pro zadávání.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,14 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: deploy
+ms.reviewer: larryfr
+ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185481"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324918"
 ---
 # <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
 
@@ -61,7 +63,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-Chcete-li určit skóre modelu, přečtěte si téma věnované [využívání modelu Azure Machine Learning nasazeného jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service). Mnoho projektů ONNX používá soubory protobuf k komprimaci dat o školeních a ověřováních, což může být obtížné zjistit, co formát dat očekávala služba. Jako vývojář modelů byste měli dokument pro vaše vývojáře:
+Chcete-li určit skóre modelu, přečtěte si téma věnované [využívání modelu Azure Machine Learning nasazeného jako webové služby](./how-to-consume-web-service.md). Mnoho projektů ONNX používá soubory protobuf k komprimaci dat o školeních a ověřováních, což může být obtížné zjistit, co formát dat očekávala služba. Jako vývojář modelů byste měli dokument pro vaše vývojáře:
 
 * Vstupní formát (JSON nebo binární)
 * Vstupní datový tvar a typ (například pole plovoucích tvarů [100100, 3])
@@ -133,7 +135,7 @@ print(output)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
 * [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

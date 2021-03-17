@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 08/14/2020
+ms.date: 09/11/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 48c18e08943e170fdd53f04b49b517424b511c62
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 74b5014b6590fc501291355ee4d142c52ceff129
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246141"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183877"
 ---
 >[!NOTE]
 >Těžko pracujeme na přidání dalších oblastí. Po přidání oblasti ji přidáme do tohoto seznamu.
@@ -51,7 +51,7 @@ ms.locfileid: "88246141"
 * Jižní Korea – střed
 * Jižní Korea – jih
 * Southeast Asia
-* Central India
+* Indie – střed
 * Západní Indie
 
 **Střední východ a Afrika**
@@ -66,4 +66,5 @@ ms.locfileid: "88246141"
 * USA (Gov) – Virginia
 
 **Azure (Čína)**
+* Čína – východ 2
 * Čína – sever 2

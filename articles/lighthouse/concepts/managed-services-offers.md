@@ -1,14 +1,14 @@
 ---
 title: Nabídky spravovaných služeb na Azure Marketplace
 description: Nabídky spravované služby umožňují zákazníkům v Azure Marketplace prodávat nabídky správy prostředků.
-ms.date: 07/28/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163318"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092996"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Nabídky spravovaných služeb na Azure Marketplace
 
@@ -18,11 +18,14 @@ Tento článek popisuje typ nabídky **spravované služby** v [Azure Marketplac
 
 Spravovaná služba nabízí zjednodušení procesu připojování zákazníků do Azure Lighthouse. Když zákazník koupí nabídku v Azure Marketplace, bude moct určit, které předplatné nebo skupiny prostředků by se měly připojit.
 
-Potom budou uživatelé ve vaší organizaci moci pracovat na těchto prostředcích v rámci vašeho spravovaného klienta prostřednictvím [delegované správy prostředků Azure](azure-delegated-resource-management.md)podle přístupu, který jste definovali při vytváření nabídky. To se provádí pomocí manifestu, který určuje Azure Active Directory (Azure AD) uživatelů, skupin a instančních objektů, které budou mít přístup k zákaznickým prostředkům, spolu s rolemi, které definují jejich úroveň přístupu. Když pro skupinu Azure AD přiřadíte oprávnění místo řady individuálních účtů uživatelů nebo aplikací, můžete přidat nebo odebrat jednotlivé uživatele, když se vaše požadavky na přístup změní.
+Potom budou uživatelé ve vaší organizaci moci pracovat na těchto prostředcích v rámci vašeho spravovaného klienta prostřednictvím [delegované správy prostředků Azure](azure-delegated-resource-management.md)podle přístupu, který jste definovali při vytváření nabídky. To se provádí pomocí manifestu, který určuje Azure Active Directory (Azure AD) uživatelů, skupin a instančních objektů, které budou mít přístup k zákaznickým prostředkům, spolu s [rolemi](tenants-users-roles.md) , které definují jejich úroveň přístupu.
+
+> [!NOTE]
+> Nabídky spravované služby nemusí být k dispozici v Azure Government a dalších národních cloudech.
 
 ## <a name="public-and-private-offers"></a>Veřejné a soukromé nabídky
 
-Každá nabídka spravovaných služeb obsahuje jeden nebo více plánů. Plány můžou být buď soukromé, nebo veřejné.
+Každá nabídka spravované služby zahrnuje jeden nebo více plánů. Plány můžou být buď soukromé, nebo veřejné.
 
 Pokud chcete omezit nabídku na konkrétní zákazníky, můžete publikovat soukromý plán. V takovém případě se plán dá koupit jenom pro konkrétní ID předplatného, které zadáte. Další informace najdete v tématu [soukromé nabídky](../../marketplace/private-offers.md).
 
@@ -38,9 +41,9 @@ V případě potřeby můžete do stejné nabídky zahrnout jak veřejné, tak i
 
 ## <a name="publish-managed-service-offers"></a>Publikování nabídek spravovaných služeb
 
-Informace o tom, jak publikovat nabídku spravovaných služeb, najdete v tématu [publikování nabídky spravovaných služeb na Azure Marketplace](../how-to/publish-managed-services-offers.md).
+Informace o tom, jak publikovat nabídku spravované služby, najdete v tématu [publikování nabídky spravované služby pro Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [správě prostředků delegovaných v Azure](azure-delegated-resource-management.md) a o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).
-- [Publikujte nabídky spravovaných služeb](../how-to/publish-managed-services-offers.md) pro Azure Marketplace.
+- [Publikujte nabídky spravované služby](../how-to/publish-managed-services-offers.md) Azure Marketplace.

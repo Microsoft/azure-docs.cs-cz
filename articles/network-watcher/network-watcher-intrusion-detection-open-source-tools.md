@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737355"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014548"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Zjišťování neoprávněných vniknutí k síti pomocí Network Watcher a open source nástrojů
 
@@ -34,11 +34,11 @@ Tento článek vysvětluje, jak nastavit prostředí pro provádění zjišťov�
 
 Na VIRTUÁLNÍm počítači Azure je možné nastavit jak Open Source nástroje, což vám umožní provádět tuto analýzu v rámci vlastního síťového prostředí Azure.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 ### <a name="install-suricata"></a>Nainstalovat Suricata
 
-Všechny ostatní metody instalace najdete na stráncehttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Všechny ostatní metody instalace najdete na stránce https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. V terminálu příkazového řádku pro virtuální počítač spusťte následující příkazy:
 
@@ -80,7 +80,7 @@ I když protokoly, které Suricata vytváří, obsahují cenné informace o tom,
 
 #### <a name="install-elasticsearch"></a>Nainstalovat Elasticsearch
 
-1. Elastická sada z verze 5,0 a vyšší vyžaduje Java 8. Spusťte příkaz `java -version` a ověřte svou verzi. Pokud nemáte nainstalovaný Java, přečtěte si dokumentaci k [Azure-suppored sady JDK](https://aka.ms/azure-jdks).
+1. Elastická sada z verze 5,0 a vyšší vyžaduje Java 8. Spusťte příkaz `java -version` a ověřte svou verzi. Pokud nemáte nainstalovaný Java, přečtěte si dokumentaci k [Azure-suppored sady JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 1. Stáhněte si správný binární balíček pro váš systém:
 
@@ -217,7 +217,7 @@ Další pokyny k instalaci elastického vyhledávání najdete v tématu [instal
 
 Další pokyny k instalaci Logstash najdete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) .
 
-### <a name="install-kibana"></a>Nainstalovat Kibana
+### <a name="install-kibana"></a>Instalace Kibany
 
 1. Spusťte následující příkazy a nainstalujte Kibana:
 
@@ -233,7 +233,7 @@ Další pokyny k instalaci Logstash najdete v [oficiální dokumentaci](https://
     ./bin/kibana
     ```
 
-1. Pokud chcete zobrazit webové rozhraní Kibana, přejděte na`http://localhost:5601`
+1. Pokud chcete zobrazit webové rozhraní Kibana, přejděte na `http://localhost:5601`
 1. Pro tento scénář je vzor indexu použitý pro protokoly Suricata "logstash-*".
 
 1. Pokud chcete zobrazit řídicí panel Kibana vzdáleně, vytvořte příchozí pravidlo NSG, které umožní přístup k **portu 5601**.
@@ -246,7 +246,7 @@ Pro tento článek poskytujeme ukázkový řídicí panel, který vám umožní 
 
 1. Na kartě **Správa** Kibana přejděte na **uložené objekty** a importujte všechny tři soubory. Pak na kartě **řídicí panel** můžete otevřít a načíst ukázkový řídicí panel.
 
-Můžete také vytvořit vlastní vizualizace a řídicí panely, které jsou přizpůsobené všem metrikám svého vlastního zájmu. Přečtěte si další informace o vytváření vizualizací Kibana z [oficiální dokumentace](https://www.elastic.co/guide/en/kibana/current/visualize.html)Kibana.
+Můžete také vytvořit vlastní vizualizace a řídicí panely, které jsou přizpůsobené všem metrikám svého vlastního zájmu. Přečtěte si další informace o vytváření vizualizací Kibana z [oficiální dokumentace](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)Kibana.
 
 ![řídicí panel kibana][2]
 

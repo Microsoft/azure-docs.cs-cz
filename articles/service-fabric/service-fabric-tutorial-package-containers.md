@@ -1,17 +1,15 @@
 ---
 title: Balení a nasazení kontejnerů
 description: V tomto kurzu se dozvíte, jak pomocí Yeomanu vygenerovat definici aplikace Azure Service Fabric a jak aplikaci zabalit.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78252752"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738854"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
@@ -25,7 +23,7 @@ Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na
 > * Nasadit a spustit aplikaci
 > * Vyčistit aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Použijeme image kontejneru odeslané do služby Azure Container Registry, které jsme vytvořili v [části 1](service-fabric-tutorial-create-container-images.md) tohoto kurzu.
 * Musí být [nastavené](service-fabric-tutorial-create-container-images.md) linuxové vývojové prostředí.
@@ -60,7 +58,7 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
     ```
 2. Zadejte text „TestContainer“ a pojmenujte svoji aplikaci.
 3. Zadejte text „azurevotefront“ a pojmenujte svoji aplikační službu.
-4. Zadejte cestu k imagi kontejneru v ACR pro front-endové úložiště – například \<acrName>.azurecr.io/azure-vote-front:v1. Pole \<acrName> musí mít stejnou hodnotu jako v předchozím kurzu.
+4. Zadejte cestu k imagi kontejneru v ACR pro úložiště front-endu – například \<acrName> . azurecr.IO/Azure-vote-front:v1. \<acrName>Pole musí být stejné jako hodnota, která se použila v předchozím kurzu.
 5. Část Commands ponechte prázdnou a stisknutím klávesy Enter přejděte dál.
 6. Pro počet instancí zadejte hodnotu 1.
 
@@ -82,8 +80,8 @@ Následující kód zobrazuje vstup a výstup spuštění příkazu yo:
 
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomanu, proveďte následující kroky:
 
-1. Změňte adresář o jednu úroveň nad adresářem **TestContainer**, například *./TestContainer*.
-2. Spusťte `yo azuresfcontainer:AddService`.
+1. Změňte adresář o jednu úroveň nad adresářem **TestContainer** , například *./TestContainer* .
+2. Spuštěním příkazu `yo azuresfcontainer:AddService`
 3. Službu pojmenujte azurevoteback.
 4. Zadejte cestu k imagi kontejneru pro Redis – alpine:redis.
 5. Část Commands ponechte prázdnou a stisknutím klávesy Enter přejděte dál.
@@ -101,7 +99,7 @@ Zobrazí se všechny položky pro přidání použité služby:
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Ve zbývající části tohoto kurzu budeme pracovat v adresáři **TestContainer**. Například *./TestContainer/TestContainer*. Obsah tohoto adresáře by měl vypadat takto:
+Ve zbývající části tohoto kurzu budeme pracovat v adresáři **TestContainer** . Například *./TestContainer/TestContainer* . Obsah tohoto adresáře by měl vypadat takto:
 
 ```bash
 $ ls
@@ -110,9 +108,9 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Konfigurace manifestu aplikace s přihlašovacími údaji pro Azure Container Registry
 
-Aby mohla služba Service Fabric načítat image kontejneru z Azure Container Registry, je potřeba zadat přihlašovací údaje v souboru **ApplicationManifest.xml**.
+Aby mohla služba Service Fabric načítat image kontejneru z Azure Container Registry, je potřeba zadat přihlašovací údaje v souboru **ApplicationManifest.xml** .
 
-Přihlaste se k instanci ACR. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Přihlaste se k instanci ACR. Dokončete operaci pomocí příkazu **az acr login** . Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>
@@ -140,7 +138,7 @@ V souboru **ApplicationManifest.xml** přidejte do elementu **ServiceManifestImp
 
 ### <a name="configure-communication-port"></a>Konfigurace komunikačního portu
 
-Nakonfigurujte koncový bod HTTP, aby klienti mohli komunikovat s vaší službou. Otevřete soubor *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu.  Přidejte protokol, port a název. Pro účely tohoto kurzu služba naslouchá na portu 80. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest*.
+Nakonfigurujte koncový bod HTTP, aby klienti mohli komunikovat s vaší službou. Otevřete soubor *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu.  Přidejte protokol, port a název. Pro účely tohoto kurzu služba naslouchá na portu 80. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest* .
 
 ```xml
 <Resources>
@@ -154,7 +152,7 @@ Nakonfigurujte koncový bod HTTP, aby klienti mohli komunikovat s vaší službo
 
 ```
 
-Podobně upravte také element Service Manifest pro back-endovou službu. Otevřete soubor *./TestContainer/azurevotebackPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu. V tomto kurzu zůstává zachovaná výchozí hodnota pro redis 6379. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest*.
+Podobně upravte také element Service Manifest pro back-endovou službu. Otevřete soubor *./TestContainer/azurevotebackPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu. V tomto kurzu zůstává zachovaná výchozí hodnota pro redis 6379. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest* .
 
 ```xml
 <Resources>
@@ -167,11 +165,11 @@ Podobně upravte také element Service Manifest pro back-endovou službu. Otevř
 </Resources>
 ```
 
-Pokud zadáte **UriScheme**, koncový bod kontejneru se automaticky zaregistruje ve službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml pro back-endovou službu najdete jako příklad na konci tohoto článku.
+Pokud zadáte **UriScheme** , koncový bod kontejneru se automaticky zaregistruje ve službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml pro back-endovou službu najdete jako příklad na konci tohoto článku.
 
 ### <a name="map-container-ports-to-a-service"></a>Mapování portů kontejneru na službu
 
-Aby bylo možné zveřejnit kontejnery v clusteru, je také potřeba vytvořit v souboru ApplicationManifest.xml vazbu na port. Zásada **PortBinding** odkazuje na **koncové body**, které jsme definovali v souborech **ServiceManifest.xml**. Příchozí žádosti na tyto koncové body se namapují na porty kontejneru, které se tady otevřou a vytvoří se na ně vazba. Do souboru **ApplicationManifest.xml** přidejte následující kód k vytvoření vazby mezi porty 80 a 6379 a koncovými body. Úplný soubor **ApplicationManifest.xml** je k dispozici na konci tohoto dokumentu.
+Aby bylo možné zveřejnit kontejnery v clusteru, je také potřeba vytvořit v souboru ApplicationManifest.xml vazbu na port. Zásada **PortBinding** odkazuje na **koncové body** , které jsme definovali v souborech **ServiceManifest.xml** . Příchozí žádosti na tyto koncové body se namapují na porty kontejneru, které se tady otevřou a vytvoří se na ně vazba. Do souboru **ApplicationManifest.xml** přidejte následující kód k vytvoření vazby mezi porty 80 a 6379 a koncovými body. Úplný soubor **ApplicationManifest.xml** je k dispozici na konci tohoto dokumentu.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -187,7 +185,7 @@ Aby bylo možné zveřejnit kontejnery v clusteru, je také potřeba vytvořit v
 
 ### <a name="add-a-dns-name-to-the-backend-service"></a>Přidání názvu DNS do back-endové služby
 
-Aby mohla služba Service Fabric tento název DNS přiřadit back-endové službě, je potřeba zadat ho v souboru **ApplicationManifest.xml**. Podle následující ukázky přidejte do elementu **Service** atribut **ServiceDnsName**:
+Aby mohla služba Service Fabric tento název DNS přiřadit back-endové službě, je potřeba zadat ho v souboru **ApplicationManifest.xml** . Podle následující ukázky přidejte do elementu **Service** atribut **ServiceDnsName** :
 
 ```xml
 <Service Name="azurevoteback" ServiceDnsName="redisbackend.testapp">
@@ -266,19 +264,19 @@ Připojte se ke clusteru Service Fabric v Azure. Ukázkový koncový bod nahraď
 sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
 ```
 
-Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContainer**, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
+Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContainer** , zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
 
 ```bash
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
+Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http: \/ /containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
 
 ![Service Fabric Explorer][sfx]
 
-Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http:\//containertestcluster.eastus.cloudapp.Azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
+Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http: \/ /containertestcluster.eastus.cloudapp.Azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
 
-![aplikacevoting][votingapp]
+![Snímek obrazovky se zobrazí v hlasovací aplikaci Azure s tlačítky pro kočky, psy a Reset a součty.][votingapp]
 
 ## <a name="clean-up"></a>Vyčištění
 

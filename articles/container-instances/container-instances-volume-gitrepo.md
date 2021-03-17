@@ -4,10 +4,10 @@ description: Naučte se připojit svazek Gitrepo nepodporují, abyste mohli klon
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260711"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku Gitrepo nepodporují v Azure Container Instances
@@ -23,11 +23,11 @@ Svazek *gitrepo nepodporují* připojí adresář a naklonuje zadané úložišt
 
 Když připojíte svazek *gitrepo nepodporují* , můžete nastavit tři vlastnosti pro konfiguraci svazku:
 
-| Vlastnost | Povinné | Popis |
+| Vlastnost | Požaduje se | Popis |
 | -------- | -------- | ----------- |
 | `repository` | Ano | Úplná adresa URL, včetně `http://` nebo `https://` , úložiště Git, které se má klonovat.|
-| `directory` | Ne | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem " `..` ".  Pokud zadáte " `.` ", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
-| `revision` | Ne | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento parametr nezadáte, `HEAD` je revize naklonována. |
+| `directory` | No | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem " `..` ".  Pokud zadáte " `.` ", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
+| `revision` | No | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento parametr nezadáte, `HEAD` je revize naklonována. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Připojit svazek Gitrepo nepodporují: Azure CLI
 

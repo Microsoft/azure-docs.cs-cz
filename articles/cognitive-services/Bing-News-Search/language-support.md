@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9c7fd03c2239cea05dc79ad4dd1965fe253a2ce9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710554"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341593"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání zpráv
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Bingu pro vyhledávání zpráv podporuje řadu zemí nebo oblastí, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem slouží hlavně k upřesnění výsledků hledání na základě zájmů v dané zemi nebo oblasti. Kromě toho můžou výsledky obsahovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle konkrétní země nebo oblasti nebo jazyka.
 
@@ -47,7 +52,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v `cc` parametru dotazu, n
 |Nový Zéland|Angličtina|EN-NZ|
 |Filipínská republika|Angličtina|EN-PH|
 |Singapur|Angličtina|EN-SG|
-|USA|Angličtina|cs-CZ|
+|USA|Angličtina|en-US|
 |Angličtina|obecné|EN-WW|
 |Angličtina|obecné|EN-XA|
 |Jižní Afrika|Angličtina|EN-ZA|
@@ -86,7 +91,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v `cc` parametru dotazu, n
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|EN-AU|
 |Spojené království|Angličtina|en-GB|
-|USA|Angličtina|cs-CZ|
+|USA|Angličtina|en-US|
 |Angličtina|obecné|EN-WW|
 |Chile|Španělština|ES-CL|
 |Mexiko|Španělština|ES – MX|
@@ -108,7 +113,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v `cc` parametru dotazu, n
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|EN-AU|
 |Spojené království|Angličtina|en-GB|
-|USA|Angličtina|cs-CZ|
+|USA|Angličtina|en-US|
 |Kanada|Angličtina|en-CA|
 |Indie|Angličtina|en-IN|
 |Francie|Francouzština|fr-FR|
@@ -162,4 +167,4 @@ Níže jsou uvedené kódy země/oblasti, které můžete zadat v `cc` parametru
 |USA|USA|
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Vyhledávání zpráv Binguch koncových bodech najdete v referenčních informacích k [rozhraní vyhledávání zpráv API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+Další informace o Vyhledávání zpráv Binguch koncových bodech najdete v referenčních informacích k [rozhraní vyhledávání zpráv API v7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

@@ -7,18 +7,18 @@ manager: jillfra
 ms.assetid: da587aac-5e64-4e9a-8405-44cc1924881d
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8410d082369c5eb5bc7212c50a5546e9b74c5b95
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 94f248edfebd6c6fedb78a54eee220c0ef38b4ab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131522"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545856"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "86131522"
 ## <a name="overview"></a>Přehled
 Tento článek popisuje, jak začít používat úložiště Azure Queue v aplikaci Visual Studio po vytvoření nebo odkazování účtu úložiště Azure v projektu cloudové služby pomocí dialogového okna **Přidat připojené služby** sady Visual Studio.
 
-Ukážeme vám, jak vytvořit frontu v kódu. Také vám ukážeme, jak provádět základní operace s frontami, jako je přidání, úprava, čtení a odebrání zpráv fronty. Ukázky jsou napsány v kódu jazyka C# a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Ukážeme vám, jak vytvořit frontu v kódu. Také vám ukážeme, jak provádět základní operace s frontami, jako je přidání, úprava, čtení a odebrání zpráv fronty. Ukázky jsou napsány v kódu jazyka C# a používají [Microsoft Azure Storage klientské knihovny pro .NET](/previous-versions/azure/dn261237(v=azure.100)).
 
 Operace **Přidat připojené služby** nainstaluje příslušné balíčky NuGet pro přístup k úložišti Azure v projektu a přidá připojovací řetězec pro účet úložiště do konfiguračních souborů projektu.
 
@@ -149,8 +149,8 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Použití vzoru Async-await s běžnými rozhraními API fronty Azure
-Tento příklad ukazuje použití vzoru Async-await s běžnými rozhraními API fronty Azure. Ukázka volá asynchronní verzi každé z těchto metod, kterou lze zobrazit **asynchronní** po opravě každé metody. Pokud je použita asynchronní metoda, vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další úkoly, které pomáhají zabránit vzniku kritických bodů výkonu a zvyšují celkovou odezvu aplikace. Další podrobnosti o použití vzoru Async-Await v rozhraní .NET najdete v tématu [Async a Await (C# a Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Použití vzorů Async-Await s běžnými rozhraními API fronty Azure
+Tento příklad ukazuje, jak použít vzor Async-Await s běžnými rozhraními API fronty Azure. Ukázka volá asynchronní verzi každé z těchto metod, kterou lze zobrazit **asynchronní** po opravě každé metody. Pokud je použita asynchronní metoda, vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další úkoly, které pomáhají zabránit vzniku kritických bodů výkonu a zvyšují celkovou odezvu aplikace. Další podrobnosti o použití vzoru Async-Await v rozhraní .NET najdete v tématu [Async a Await (C# a Visual Basic)](/previous-versions/hh191443(v=vs.140)).
 
 ```csharp
 // Create a message to put in the queue
@@ -179,4 +179,3 @@ messageQueue.Delete();
 
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-

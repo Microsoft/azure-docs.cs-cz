@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 14ea9113bf5712d6ffce356d02abb7224c21771a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc6f60397c2d432dd6547a8be34280fcf3acd05d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70067727"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078404"
 ---
 # <a name="implement-x-csrf-pattern"></a>Implementovat vzor X-CSRF
 
-Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak implementovat vzor X-CSRF, který používá mnoho rozhraní API. Tento příklad je konkrétně pro bránu SAP. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak implementovat vzor X-CSRF, který používá mnoho rozhraní API. Tento příklad je konkrétně pro bránu SAP. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-reference.md).
 
 ## <a name="policy"></a>Zásady
 
@@ -34,5 +34,4 @@ Vložte kód do **vstupního** bloku.
 Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
-+ [Ukázky zásad](../policy-samples.md)
-
++ [Ukázky zásad](../policy-reference.md)

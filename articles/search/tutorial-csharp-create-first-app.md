@@ -1,152 +1,179 @@
 ---
 title: Kurz jazyka C# k vytvoření první aplikace
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak vytvořit první aplikaci pro vyhledávání v C# – krok za krokem. Kurz poskytuje odkaz na funkční aplikaci na GitHubu a kompletní proces sestavení zcela nové aplikace. Přečtěte si o základních součástech Azure Kognitivní hledání.
+description: Naučte se, jak vytvořit první krok v jazyce C# pro vyhledávání. Tento kurz poskytuje jak odkaz ke stažení na pracovní aplikaci na GitHubu, tak i úplný proces sestavení zcela nové aplikace.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
-ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 02/26/2021
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695120"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
 
-Naučte se vytvářet webové rozhraní pro dotazování a prezentaci výsledků hledání z indexu pomocí Azure Kognitivní hledání. Tento kurz začíná s existujícím hostovaným indexem, abyste se mohli soustředit na vytváření vyhledávací stránky. Index obsahuje fiktivní data o hotelu. Jakmile budete mít základní stránku, můžete ji v dalších lekcích rozšířit tak, aby zahrnovala stránkování, omezující vlastnosti a prostředí typu před zahájením.
+V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci, která se dotazuje a vrátí výsledky indexu hledání pomocí Azure Kognitivní hledání a sady Visual Studio.
 
-V tomto kurzu se naučíte:
+V tomto kurzu se naučíte, jak:
+
 > [!div class="checklist"]
 > * Nastavení vývojového prostředí
 > * Modelování datových struktur
-> * Vytvoření webové stránky
-> * Definovat metody
+> * Vytvoření webové stránky pro shromáždění vstupů dotazů a výsledků zobrazení
+> * Definování vyhledávací metody
 > * Otestování aplikace
 
 Naučíte se také, jak jednoduché je vyhledávací volání. Klíčové příkazy v kódu, který budete vyvíjet, se zapouzdřují na následujících pár řádcích.
 
-```cs
-var parameters = new SearchParameters
+```csharp
+var options = new SearchOptions()
 {
-    // Enter Hotel property names into this list, so only these values will be returned.
-    Select = new[] { "HotelName", "Description" }
+    // The Select option specifies fields for the result set
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
 };
 
-DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<Hotel>("search text", parameters);
+var searchResult = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+model.resultList = searchResult.Value.GetResults().ToList();
 ```
 
-Toto jedno volání iniciuje hledání dat Azure a vrátí výsledky.
+Pouze jedno volání vyhledá index a vrátí výsledky.
 
-![Hledání "fondu"](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="Hledání * fondu *" border="true":::
 
+## <a name="overview"></a>Přehled
+
+V tomto kurzu se používá seznam hotelů-Sample-index, který můžete rychle vytvořit na vlastní vyhledávací službě. Projděte si [rychlý Start pro import dat](search-get-started-portal.md). Index obsahuje fiktivní data o hotelu, která jsou k dispozici jako vestavěný zdroj dat v každé vyhledávací službě.
+
+První lekce v tomto kurzu vytvoří základní stránku struktury dotazů a hledání, kterou budete rozšiřovat v dalších lekcích, aby zahrnovaly stránkování, omezující vlastnosti a prostředí typu před zahájením.
+
+Hotovou verzi kódu najdete v následujícím projektu:
+
+* [1. Basic – vyhledávání – stránka (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
+
+Tento kurz byl aktualizován tak, aby používal balíček Azure.Search.Documents (verze 11). Starší verzi sady .NET SDK najdete v tématu [Ukázka kódu Microsoft. Azure. Search (verze 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu je potřeba provést následující:
+* [Vytvoří](search-create-service-portal.md) nebo [najde existující vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 
-[Nainstalujte Visual Studio](https://visualstudio.microsoft.com/) pro použití jako rozhraní IDE.
+* Pomocí pokynů v rychlém startu vytvořte seznam hotelů – vzorový index [: vytvořte vyhledávací index](search-get-started-portal.md).
+
+* [Visual Studio](https://visualstudio.microsoft.com/)
+
+* [Klientská knihovna pro Azure Kognitivní hledání (verze 11)](https://www.nuget.org/packages/Azure.Search.Documents/)
 
 ### <a name="install-and-run-the-project-from-github"></a>Instalace a spuštění projektu z GitHubu
 
-1. Vyhledání ukázky na GitHubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples)
-1. Vyberte **klonovat nebo stáhnout** a vytvořte soukromou místní kopii projektu.
-1. Pomocí sady Visual Studio přejděte na a otevřete řešení pro stránku základní vyhledávání a vyberte **Spustit bez ladění** (nebo stiskněte klávesu F5).
-1. Zadejte některá slova (například "WiFi", "View", "bar", "parkování") a Prohlédněte si výsledky.
+Pokud chcete přejít na pracovní aplikaci, postupujte podle následujících kroků a stáhněte a spusťte dokončený kód.
 
-    ![Hledání "WiFi"](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+1. Vyhledání ukázky na GitHubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11)
 
-Snad tento projekt bude pracovat hladce a máte spuštěnou aplikaci Azure. Tato jedna aplikace obsahuje mnoho základních komponent pro složitější hledání, takže je vhodné ji projít a znovu vytvořit krok za krokem.
+1. V [kořenové složce](https://github.com/Azure-Samples/azure-search-dotnet-samples)vyberte **kód**, následovaný **klonem** nebo **stažením zip** , abyste si mohli vytvořit soukromou místní kopii projektu.
 
-Pokud chcete tento projekt vytvořit úplně od začátku, a proto vám pomůžeme posílit součásti Azure Kognitivní hledání na svém mysli, Projděte si následující kroky.
+1. Pomocí sady Visual Studio přejděte na a otevřete řešení pro stránku Basic Search ("1 – Basic-Search-Page") a vyberte možnost **Spustit bez ladění** (nebo stiskněte klávesu F5) a sestavte a spusťte program.
+
+1. Toto je index hotelů, takže zadejte slova, která můžete použít k hledání hotelů (například "WiFi", "View", "bar", "parkování") a Prohlédněte si výsledky.
+
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Hledání * Wi-Fi *" border="true":::
+
+Snad tento projekt bude pracovat hladce a webová aplikace je spuštěná. Tato jedna aplikace obsahuje mnoho základních komponent pro složitější hledání, takže je vhodné ji projít a znovu vytvořit krok za krokem. Následující části obsahují tyto kroky.
 
 ## <a name="set-up-a-development-environment"></a>Nastavení vývojového prostředí
 
-1. V aplikaci Visual Studio 2017 nebo novější vyberte možnost **Nový/projekt** a pak **ASP.NET Core webová aplikace**. Dejte projektu název, jako je například "FirstAzureSearchApp".
+Pokud chcete tento projekt vytvořit úplně od začátku, a tak posílit koncepty Azure Kognitivní hledání na svém mysli, začněte s projektem sady Visual Studio.
 
-    ![Vytvoření cloudového projektu](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+1. V aplikaci Visual Studio vyberte **Nový**  >  **projekt** a pak **ASP.NET Core webová aplikace**.
 
-2. Po kliknutí na **OK** pro tento typ projektu se vám nabídne druhá sada možností, které se vztahují na tento projekt. Vyberte možnost **Webová aplikace (model-zobrazení-kontroler)**.
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Vytvoření cloudového projektu" border="true":::
 
-    ![Vytvoření projektu MVC](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+1. Dejte projektu název, jako je například "FirstSearchApp" a nastavte umístění. Vyberte **Vytvořit**.
 
-3. Potom v nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...**. Je potřeba nainstalovat jeden balíček. Vyberte kartu **Procházet** a do vyhledávacího pole zadejte "Azure kognitivní hledání". Nainstalujte **Microsoft. Azure. Search** , když se objeví v seznamu (verze 9.0.1 nebo novější). Abyste mohli instalaci dokončit, budete muset kliknout na několik dalších dialogových oken.
+1. Vyberte šablonu projektu **Webová aplikace (model-zobrazení-kontroler)** .
 
-    ![Přidání knihoven Azure pomocí NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Vytvoření projektu MVC" border="true":::
+
+1. Nainstalujte klientskou knihovnu. V části **nástroje**  >  **Správce balíčků NuGet**  >  **Spravovat balíčky NuGet pro řešení...**, vyberte **Procházet** a vyhledejte "azure.search.documents". Nainstalujte **Azure.Search.Documents** (verze 11 nebo novější) a přijměte licenční smlouvy a závislosti.
+
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Přidání knihoven Azure pomocí NuGet" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Inicializovat Azure Kognitivní hledání
 
-V této ukázce používáme veřejně dostupná data o hotelu. Tato data jsou libovolná kolekce 50 názvů a popisů fiktivního hotelu vytvořená výhradně pro účely poskytování ukázkových dat. Aby bylo možné získat přístup k těmto datům, je nutné zadat název a klíč pro něj.
+V této ukázce používáte veřejně dostupná data hotelu. Tato data jsou libovolná kolekce 50 názvů a popisů fiktivního hotelu vytvořená výhradně pro účely poskytování ukázkových dat. Pro přístup k těmto datům zadejte název a klíč rozhraní API.
 
-1. Otevřete appsettings.jsv souboru v novém projektu a nahraďte výchozí řádky následujícím názvem a klíčem. Zde uvedený klíč rozhraní API není příkladem klíče, je to _přesně_ klíč, který potřebujete pro přístup k datům hotelu. Váš appsettings.jsv souboru by teď měl vypadat takto.
+1. Otevřete **appsettings.js** a nahraďte výchozí řádky adresou URL vyhledávací služby (ve formátu `https://<service-name>.search.windows.net` ) a [klíčovým rozhraním API pro správce nebo dotazování](search-security-api-keys.md) služby vyhledávání. Vzhledem k tomu, že nepotřebujete vytvářet ani aktualizovat index, můžete pro tento kurz použít klíč dotazu.
 
-    ```cs
+    ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 
-2. Tento soubor ještě není hotový, vyberte vlastnosti pro tento soubor a změňte nastavení **Kopírovat do výstupního adresáře** na kopírovat, pokud je **novější**.
+1. V Průzkumník řešení vyberte soubor a v části Vlastnosti změňte nastavení **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
 
-    ![Kopírování nastavení aplikace do výstupu](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Kopírování nastavení aplikace do výstupu" border="true":::
 
 ## <a name="model-data-structures"></a>Modelování datových struktur
 
-Modely (třídy jazyka C#) se používají ke sdělování dat mezi klientem (zobrazení), serverem (řadičem) a také cloudem Azure pomocí architektury MVC (model, zobrazení, kontroler). Obvykle tyto modely odrážejí strukturu dat, ke kterým se přistupoval. Potřebujeme také model pro zpracování komunikace zobrazení/kontroleru.
+Modely (třídy jazyka C#) se používají ke sdělování dat mezi klientem (zobrazení), serverem (řadičem) a také cloudem Azure pomocí architektury MVC (model, zobrazení, kontroler). Obvykle tyto modely odrážejí strukturu dat, ke kterým se přistupoval.
 
-1. Otevřete složku **modely** vašeho projektu pomocí Průzkumník řešení a v části se zobrazí jeden výchozí model: **ErrorViewModel.cs**.
+V tomto kroku napíšete datové struktury indexu vyhledávání a také hledaný řetězec, který se používá v zobrazení nebo komunikaci s řadičem. V indexu hotelů má každý Hotel mnoho místností a každý Hotel má adresu s více částmi. Zcela celá reprezentace hotelu je hierarchická a vnořená struktura dat. Pro vytvoření jednotlivých komponent budete potřebovat tři třídy.
 
-2. Klikněte pravým tlačítkem na složku **modely** a vyberte **Přidat** a **Nová položka**. Pak v dialogovém okně, které se zobrazí, vyberte **ASP.NET Core** pak první **třídu**možností. Přejmenujte soubor. cs na Hotel.cs a klikněte na **Přidat**. Nahraďte veškerý obsah Hotel.cs následujícím kódem. Všimněte si, že **adresa** a **konverzační** členové třídy, tato pole jsou samotné třídy, takže pro ně budeme potřebovat modely.
+Sada tříd **hotelů**, **Address** a **Room** je známá jako [*komplexní typy*](search-howto-complex-data-types.md), což je důležitou funkcí služby Azure kognitivní hledání. Komplexní typy mohou představovat mnoho úrovní hluboko tříd a podtříd a povolit mnohem složitější datové struktury, které mají být reprezentovány, než použití *jednoduchých typů* (třída obsahující pouze primitivní členy).
 
-    ```cs
-    using System;
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
+1. V Průzkumník řešení klikněte pravým tlačítkem na **modely**  >  **Přidat**  >  **novou položku**.
+
+1. Vyberte **Třída** a pojmenujte ji Hotel.cs. Nahraďte veškerý obsah Hotel.cs následujícím kódem. Všimněte si, že **adresa** a členové **místnosti** třídy, tato pole jsou samotné třídy, takže budete potřebovat také modely pro ně.
+
+    ```csharp
+    using Azure.Search.Documents.Indexes;
+    using Azure.Search.Documents.Indexes.Models;
     using Microsoft.Spatial;
-    using Newtonsoft.Json;
+    using System;
+    using System.Text.Json.Serialization;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Hotel
         {
-            [System.ComponentModel.DataAnnotations.Key]
-            [IsFilterable]
+            [SimpleField(IsFilterable = true, IsKey = true)]
             public string HotelId { get; set; }
 
-            [IsSearchable, IsSortable]
+            [SearchableField(IsSortable = true)]
             public string HotelName { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.EnLucene)]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
             public string Description { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.FrLucene)]
-            [JsonProperty("Description_fr")]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+            [JsonPropertyName("Description_fr")]
             public string DescriptionFr { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string Category { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string[] Tags { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public bool? ParkingIncluded { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public DateTimeOffset? LastRenovationDate { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public double? Rating { get; set; }
 
             public Address Address { get; set; }
 
-            [IsFilterable, IsSortable]
+            [SimpleField(IsFilterable = true, IsSortable = true)]
             public GeographyPoint Location { get; set; }
 
             public Room[] Rooms { get; set; }
@@ -154,80 +181,76 @@ Modely (třídy jazyka C#) se používají ke sdělování dat mezi klientem (zo
     }
     ```
 
-3. Použijte stejný postup vytvoření modelu pro třídu **adres** , s výjimkou názvu souboru Address.cs. Nahraďte obsah následujícím.
+1. Opakujte stejný postup vytvoření modelu pro třídu **adres** a pojmenujte soubor Address.cs. Nahraďte obsah následujícím.
 
-    ```cs
-    using Microsoft.Azure.Search;
+    ```csharp
+    using Azure.Search.Documents.Indexes;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Address
         {
-            [IsSearchable]
+            [SearchableField]
             public string StreetAddress { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string City { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string StateProvince { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string PostalCode { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string Country { get; set; }
         }
     }
     ```
 
-4. A znovu použijte stejný postup k vytvoření třídy **Room** a pojmenujte soubor Room.cs. Znovu nahraďte obsah následujícím.
+1. A znovu použijte stejný postup k vytvoření třídy **Room** a pojmenujte soubor Room.cs.
 
-    ```cs
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
-    using Newtonsoft.Json;
+    ```csharp
+    using Azure.Search.Documents.Indexes;
+    using Azure.Search.Documents.Indexes.Models;
+    using System.Text.Json.Serialization;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Room
         {
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnMicrosoft)]
             public string Description { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
-            [JsonProperty("Description_fr")]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrMicrosoft)]
+            [JsonPropertyName("Description_fr")]
             public string DescriptionFr { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string Type { get; set; }
 
-            [IsFilterable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public double? BaseRate { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string BedOptions { get; set; }
 
-            [IsFilterable, IsFacetable]
-
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public int SleepsCount { get; set; }
 
-            [IsFilterable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public bool? SmokingAllowed { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string[] Tags { get; set; }
         }
     }
     ```
 
-5. Sada tříd **hotelů**, **adres**a **místností** je v Azure známá jako [_komplexní typy_](search-howto-complex-data-types.md), což je důležitou funkcí služby Azure kognitivní hledání. Komplexní typy mohou představovat mnoho úrovní hluboko tříd a podtříd a povolit mnohem složitější datové struktury, které mají být reprezentovány, než použití _jednoduchých typů_ (třída obsahující pouze primitivní členy). Potřebujeme ještě jeden další model, takže provedete to tak, že znovu vytvoříte novou třídu modelu, ale tentokrát zavoláte třídu SearchData.cs a nahradíte výchozí kód následujícím kódem.
+1. Poslední model, který vytvoříte v tomto kurzu, je třída s názvem **SearchData** , která představuje vstup uživatele (**prohledávanýtext**) a výstup hledání (**resultList**). Typ výstupu je kritický, **searchResults &lt; Hotel &gt;**, protože tento typ přesně odpovídá výsledkům hledání a Vy musíte tento odkaz předat do zobrazení. Nahraďte výchozí šablonu následujícím kódem.
 
-    ```cs
-    using Microsoft.Azure.Search.Models;
+    ```csharp
+    using Azure.Search.Documents.Models;
 
     namespace FirstAzureSearchApp.Models
     {
@@ -237,48 +260,46 @@ Modely (třídy jazyka C#) se používají ke sdělování dat mezi klientem (zo
             public string searchText { get; set; }
 
             // The list of results.
-            public DocumentSearchResult<Hotel> resultList;
+            public SearchResults<Hotel> resultList;
         }
     }
     ```
 
-    Tato třída obsahuje vstup uživatele (**prohledávanýtext**) a výstup hledání (**resultList**). Typ výstupu je kritický, **DocumentSearchResult &lt; Hotel &gt; **, protože tento typ přesně odpovídá výsledkům hledání a musíme tento odkaz předat do zobrazení.
-
-
-
 ## <a name="create-a-web-page"></a>Vytvoření webové stránky
 
-Projekt, který jste vytvořili, bude ve výchozím nastavení vytvářet množství zobrazení klienta. Přesná zobrazení závisí na verzi základního rozhraní .NET, kterou používáte (v této ukázce používáme 2,1). Jsou všechny ve složce **zobrazení** projektu. Budete muset upravit pouze soubor index. cshtml (v **zobrazeních/domovské** složce).
+Šablony projektů obsahují řadu zobrazení klienta umístěných ve složce **views** . Přesná zobrazení závisí na verzi základního rozhraní .NET, kterou používáte (3,1 se v této ukázce používá). Pro účely tohoto kurzu upravíte **index. cshtml** , aby zahrnoval prvky vyhledávací stránky.
 
 Odstraňte obsah souboru index. cshtml v celém rozsahu a znovu sestavte soubor v následujících krocích.
 
-1. V zobrazení používáme dvě malé obrázky. Můžete použít vlastní nebo zkopírovat image z projektu GitHub: azure-logo.png a search.png. Tyto dva obrázky by měly být umístěny ve složce **wwwroot/images** .
+1. V tomto kurzu se v zobrazení používá dva malé obrázky: logo Azure a ikona hledání (azure-logo.png a search.png). Zkopírujte napříč obrázky z projektu GitHub do složky **wwwroot/images** v projektu.
 
-2. První řádek indexu. cshtml by měl odkazovat na model, který budeme používat ke sdělování dat mezi klientem (zobrazení) a serverem (kontroler), což je **SearchData** model, který jsme vytvořili. Přidejte tento řádek do souboru index. cshtml.
+1. První řádek indexu. cshtml by měl odkazovat na model používaný ke sdělování dat mezi klientem (zobrazení) a serverem (kontroler), který je dříve vytvořeným modelem **SearchData** . Přidejte tento řádek do souboru index. cshtml.
 
-    ```cs
+    ```csharp
     @model FirstAzureSearchApp.Models.SearchData
     ```
 
-3. Je standardní postup, jak zadat název zobrazení, takže další řádky by měly být:
+1. Je standardní postup, jak zadat název zobrazení, takže další řádky by měly být:
 
-    ```cs
+    ```csharp
     @{
         ViewData["Title"] = "Home Page";
     }
     ```
 
-4. Za nadpisem zadejte odkaz na šablonu stylů HTML, kterou vytvoříme za chvíli.
+1. Za nadpisem zadejte odkaz na šablonu stylů HTML, kterou vytvoříte za chvíli.
 
-    ```cs
+    ```csharp
     <head>
         <link rel="stylesheet" href="~/css/hotels.css" />
     </head>
     ```
 
-5. Nyní k mase zobrazení. Klíčovým aspektem je pamatovat si, že zobrazení musí zpracovávat dvě situace. Za prvé musí při prvním spuštění aplikace zpracovat zobrazení a uživatel ještě nezadal žádný hledaný text. Za druhé musí zpracovávat zobrazení výsledků, a to i v textovém poli hledání pro opakované použití uživatelem. Pro zpracování těchto dvou situací musíme ověřit, zda je model zadaný pro zobrazení null nebo ne. Model s hodnotou null označuje, že jsme v prvním ze dvou případů (počáteční spuštění aplikace). Přidejte následující do souboru index. cshtml a přečtěte si komentáře.
+1. Tělo zobrazení zpracovává dva případy použití. Nejdřív musí před zadáním libovolného vyhledávaného textu zadat prázdnou stránku při prvním použití. Za druhé musí kromě textového pole Hledat pro opakované dotazy zpracovávat výsledky.
 
-    ```cs
+   Chcete-li zpracovat oba případy, je nutné ověřit, zda je model poskytnutý zobrazení prázdný. Model s hodnotou null označuje první případ použití (počáteční spuštění aplikace). Přidejte následující do souboru index. cshtml a přečtěte si komentáře.
+
+    ```csharp
     <body>
     <h1 class="sampleTitle">
         <img src="~/images/azure-logo.png" width="80" />
@@ -296,21 +317,23 @@ Odstraňte obsah souboru index. cshtml v celém rozsahu a znovu sestavte soubor 
         {
             // Show the result count.
             <p class="sampleText">
-                @Html.DisplayFor(m => m.resultList.Results.Count) Results
+                @Model.resultList.Count Results
             </p>
 
-            @for (var i = 0; i < Model.resultList.Results.Count; i++)
+            @for (var i = 0; i < Model.resultList.Count; i++)
             {
                 // Display the hotel name and description.
-                @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box2" })
+                @Html.TextAreaFor(m => m.resultList[i].Document.HotelName, new { @class = "box1" })
+                @Html.TextArea($"desc{i}", Model.resultList[i].Document.Description, new { @class = "box2" })
             }
         }
     }
     </body>
     ```
 
-6. Nakonec přidáme šablonu stylů. V aplikaci Visual Studio v nabídce **soubor** vyberte možnost **nový/soubor** a potom na položku **Šablona stylů** (se zvýrazněnou možností **Obecné** ). Výchozí kód nahraďte následujícím kódem. Do tohoto souboru nebudeme mít žádné další podrobnosti. Tyto styly jsou standardní HTML.
+1. Přidejte šablonu stylů. **V aplikaci Visual Studio v souboru** >  **Nový**  >  **soubor** vyberte možnost **Šablona stylů** (se zvýrazněnou možností **Obecné** ).
+
+   Výchozí kód nahraďte následujícím kódem. Do tohoto souboru nebudeme mít žádné další podrobnosti. Tyto styly jsou standardní HTML.
 
     ```html
     textarea.box1 {
@@ -387,34 +410,38 @@ Odstraňte obsah souboru index. cshtml v celém rozsahu a znovu sestavte soubor 
     }
     ```
 
-7. Uložte soubor šablony stylů jako hotely. CSS do složky wwwroot/CSS společně s výchozím souborem Web. CSS.
+1. Uložte soubor šablony stylů jako hotely. CSS do složky **wwwroot/CSS** společně s výchozím souborem Web. CSS.
 
-Tím se dokončí naše zobrazení. Máme dobrý pokrok. Modely a zobrazení jsou dokončeny, pouze kontroler je ponechán k propojení všeho.
+Tím se dokončí naše zobrazení. V tomto okamžiku jsou oba modely i zobrazení dokončené. Pouze kontroler je ponechán k propojení všeho.
 
 ## <a name="define-methods"></a>Definovat metody
 
-Musíme upravit obsah jednoho kontroleru (**domovského kontroleru**), který je ve výchozím nastavení vytvořený.
+V tomto kroku změňte obsah **domovského kontroleru**.
 
 1. Otevřete soubor HomeController.cs a nahraďte příkazy **using** následujícím příkazem.
 
-    ```cs
+    ```csharp
+    using Azure;
+    using Azure.Search.Documents;
+    using Azure.Search.Documents.Indexes;
+    using FirstAzureSearchApp.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using System;
     using System.Diagnostics;
+    using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using FirstAzureSearchApp.Models;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
     ```
 
 ### <a name="add-index-methods"></a>Přidat metody indexu
 
-Potřebujeme dvě metody **indexu** , jednu bez parametrů (pro případ, kdy je aplikace poprvé otevřená), a jeden z nich jako parametr (Pokud uživatel zadal hledaný text). První z těchto metod je vytvořena ve výchozím nastavení. 
+V aplikaci MVC je metoda **index ()** metodou výchozí akce pro libovolný kontroler. Otevře se stránka s indexem HTML. Výchozí metoda, která nepřijímá žádné parametry, se používá v tomto kurzu pro případ spuštění aplikace: vykreslení prázdné vyhledávací stránky.
+
+V této části rozšiřujeme metodu, která podporuje druhý případ použití: vykreslování stránky, když uživatel zadal hledaný text. Pro podporu tohoto případu je metoda indexu rozšířena tak, aby jako parametr převzala model.
 
 1. Po výchozí metodě **index ()** přidejte následující metodu.
 
-    ```cs
+    ```csharp
         [HttpPost]
         public async Task<ActionResult> Index(SearchData model)
         {
@@ -438,17 +465,17 @@ Potřebujeme dvě metody **indexu** , jednu bez parametrů (pro případ, kdy je
         }
     ```
 
-    Všimněte si **asynchronní** deklarace metody a volání **await** pro **RunQueryAsync**. Tato klíčová slova se postará o asynchronní volání a vyhnout se přitom blokování vláken na serveru.
+    Všimněte si **asynchronní** deklarace metody a volání **await** pro **RunQueryAsync**. Tato klíčová slova se postará o provádění asynchronních volání, čímž se vyhnete blokování vláken na serveru.
 
-    Blok **catch** používá model chyb, který se ve výchozím nastavení vytvořil pro nás.
+    Blok **catch** používá model chyb, který byl vytvořen ve výchozím nastavení.
 
 ### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>Poznamenejte si zpracování chyb a další výchozí zobrazení a metody.
 
-V závislosti na verzi .NET Core, kterou používáte, se ve výchozím nastavení vytvoří trochu odlišná sada výchozích zobrazení. Pro .NET Core 2,1 jsou výchozí zobrazení index, o, kontakt, ochrana osobních údajů a chyba. Pro .NET Core 2,2 jsou například výchozí zobrazení index, soukromí a chyba. V obou případech můžete při spuštění aplikace zobrazit tyto výchozí stránky a zjistit, jak jsou zpracovávány v řadiči.
+V závislosti na verzi .NET Core, kterou používáte, se ve výchozím nastavení vytvoří trochu odlišná sada výchozích zobrazení. Pro .NET Core 3,1 jsou výchozí zobrazení index, soukromí a chyba. Tyto výchozí stránky můžete zobrazit při spuštění aplikace a zkontrolujte, jak jsou zpracovávány v řadiči.
 
-V tomto kurzu budeme testovat zobrazení chyb později.
+V tomto kurzu budete testovat zobrazení chyb později.
 
-V ukázce GitHub jsme odstranili nepoužívaná zobrazení a jejich přidružené akce.
+V ukázce GitHubu se odstraní nepoužívaná zobrazení a jejich přidružené akce.
 
 ### <a name="add-the-runqueryasync-method"></a>Přidat metodu RunQueryAsync
 
@@ -456,83 +483,82 @@ Volání služby Azure Kognitivní hledání je zapouzdřeno v naší metodě **
 
 1. Nejdřív přidejte některé statické proměnné, které nastaví službu Azure, a zavolejte k jejich zahájení.
 
-    ```cs
-        private static SearchServiceClient _serviceClient;
-        private static ISearchIndexClient _indexClient;
+    ```csharp
+        private static SearchClient _searchClient;
+        private static SearchIndexClient _indexClient;
         private static IConfigurationBuilder _builder;
         private static IConfigurationRoot _configuration;
 
         private void InitSearch()
         {
-            // Create a configuration using the appsettings file.
+            // Create a configuration using appsettings.json
             _builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
             _configuration = _builder.Build();
 
-            // Pull the values from the appsettings.json file.
-            string searchServiceName = _configuration["SearchServiceName"];
+            // Read the values from appsettings.json
+            string searchServiceUri = _configuration["SearchServiceUri"];
             string queryApiKey = _configuration["SearchServiceQueryApiKey"];
 
             // Create a service and index client.
-            _serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(queryApiKey));
-            _indexClient = _serviceClient.Indexes.GetClient("hotels");
+            _indexClient = new SearchIndexClient(new Uri(searchServiceUri), new AzureKeyCredential(queryApiKey));
+            _searchClient = _indexClient.GetSearchClient("hotels");
         }
     ```
 
 2. Nyní přidejte samotnou metodu **RunQueryAsync** .
 
-    ```cs
-        private async Task<ActionResult> RunQueryAsync(SearchData model)
-        {
-            InitSearch();
+    ```csharp
+    private async Task<ActionResult> RunQueryAsync(SearchData model)
+    {
+        InitSearch();
 
-            var parameters = new SearchParameters
-            {
-                // Enter Hotel property names into this list so only these values will be returned.
-                // If Select is empty, all values will be returned, which can be inefficient.
-                Select = new[] { "HotelName", "Description" }
-            };
+        var options = new SearchOptions() { };
 
-            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-            model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
+        // Enter Hotel property names into this list so only these values will be returned.
+        // If Select is empty, all values will be returned, which can be inefficient.
+        options.Select.Add("HotelName");
+        options.Select.Add("Description");
 
-            // Display the results.
-            return View("Index", model);
-        }
+        // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+        var searchResult = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+        model.resultList = searchResult.Value.GetResults().ToList();
+
+        // Display the results.
+        return View("Index", model);
+    }
     ```
 
-    V této metodě Nejdřív zajistěte zahájení naší konfigurace Azure a pak nastavíme některé parametry hledání. Názvy polí v parametru **Select** odpovídají přesně názvům vlastností v třídě **hotelu** . Je možné ponechat parametr **Select** a v takovém případě jsou vráceny všechny vlastnosti. Nastavení žádného parametru **Select** je neefektivní, pokud se zajímá pouze podmnožina dat. Když zadáte vlastnosti, které vás zajímají, vrátí se jenom tyto vlastnosti.
+    V této metodě Nejdřív zajistěte zahájení naší konfigurace Azure a pak nastavte nějaké možnosti hledání. Možnost **Select** určuje, která pole se mají vracet ve výsledcích, a tak odpovídá názvům vlastností ve třídě **hotelu** . Pokud vynecháte **možnost Select**, vrátí se všechna neskrytá pole, což může být neefektivní, pokud zajímáte pouze podmnožinu všech možných polí.
 
-    Asynchronní volání vyhledávání (**model. resultList = await _indexClient.Documents. SearchAsync &lt; Hotel &gt; (model. prohledávanýtext, Parameters);**) je to, co se týká tohoto kurzu a aplikace. Třída **DocumentSearchResult** je zajímavá a dobrý nápad (Pokud je aplikace spuštěná), je nastavit zarážku a použít ladicí program k prohlédnutí obsahu **model. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
-
-Nyní pro Moment pravdy.
+    Asynchronní volání metody Search formuluje požadavek (modelované jako **prohledávanýtext**) a odpověď (modelované jako **SearchResult**). Pokud ladíte tento kód, třída **SearchResult** je vhodným kandidátem pro nastavení bodu přerušení, pokud potřebujete prošetřit obsah **modelu. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
 
 ### <a name="test-the-app"></a>Otestování aplikace
 
-Teď zkontrolujeme, jestli je aplikace správně spuštěná.
+Teď zkontrolujeme, jestli aplikace funguje správně.
 
-1. Vyberte **ladit/spustit bez ladění** nebo stiskněte klávesu F5. Pokud máte správně kódované věci, zobrazí se počáteční zobrazení indexu.
+1. Vyberte **ladit**  >  **Spustit bez ladění** nebo stiskněte klávesu **F5**. Pokud aplikace funguje podle očekávání, měli byste získat počáteční zobrazení indexu.
 
-     ![Otevírání aplikace](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Otevírání aplikace" border="true":::
 
-2. Zadejte text, například "plážový" (nebo libovolný text, který je na mysli), a klikněte na ikonu hledání. Měli byste získat nějaké výsledky.
+1. Zadejte řetězec dotazu, například "plážový" (nebo libovolný text, který je na mysli), a kliknutím na ikonu hledání odešlete žádost.
 
-     ![Hledání "pláž"](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Hledání * pláž *" border="true":::
 
-3. Zkuste zadat "pět hvězdiček". Všimněte si, že nezískáte žádné výsledky. Propracovanější hledání má za následek "pět hvězdiček" jako synonymum "luxus" a vrátí tyto výsledky. Použití synonym je k dispozici v Azure Kognitivní hledání, ale nebudeme je pokrýt v prvním výukovém programu.
- 
-4. Zkuste zadat text "Hot" jako text hledání. Nevrací _položky_ se slovem "Hotel". Hledání je prohledáno pouze celá slova, i když je vráceno několik výsledků.
+1. Zkuste zadat "pět hvězdiček". Všimněte si, že tento dotaz nevrací žádné výsledky. Propracovanější hledání má za následek "pět hvězdiček" jako synonymum "luxus" a vrátí tyto výsledky. Podpora [synonym](search-synonyms.md) je dostupná v Azure kognitivní hledání, ale není zahrnutá v této sérii kurzů.
 
-5. Zkuste použít jiná slova: "fond", "slunečno", "View" a libovolná. Uvidíte, že Azure Kognitivní hledání pracuje na nejjednodušším, ale stále přesvědčit úroveň.
+1. Zkuste zadat text "Hot" jako text hledání. Nevrací _položky_ se slovem "Hotel". Hledání je prohledáno pouze celá slova, i když je vráceno několik výsledků.
+
+1. Zkuste použít jiná slova: "fond", "slunečno", "View" a libovolná. Uvidíte, že Azure Kognitivní hledání pracuje na nejjednodušším, ale stále přesvědčit úroveň.
 
 ## <a name="test-edge-conditions-and-errors"></a>Podmínky a chyby hraničního testu
 
 Je důležité ověřit, že naše funkce zpracování chyb fungují tak, jak by měly, a to i v případě, že všechno funguje dokonale. 
 
-1. V metodě **index** po volání **Try {** zavolejte řádek **throw New Exception ()**. Tato výjimka vynutí chybu při hledání textu.
+1. V metodě **index** po volání **Try {** zavolejte řádek **throw New Exception ()**. Tato výjimka vynutí při hledání textu chybu.
 
 2. Spusťte aplikaci, jako hledaný text zadejte "bar" a klikněte na ikonu hledání. Výjimka by měla být výsledkem zobrazení chyby.
 
-     ![Vynutit chybu](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Vynutit chybu" border="true":::
 
     > [!Important]
     > Je považováno za bezpečnostní riziko, které vrátí čísla interních chyb na chybové stránce. Pokud je vaše aplikace určena pro obecné použití, proveďte některé šetření na zabezpečené a osvědčené postupy, které se vrátí, když dojde k chybě.
@@ -545,15 +571,13 @@ Vezměte v úvahu následující poznatky z tohoto projektu:
 
 * Volání služby Azure Kognitivní hledání je stručné a je snadné interpretovat výsledky.
 * Asynchronní volání přidávají k řadiči malé množství složitosti, ale osvědčeným postupem je, že máte v úmyslu vyvíjet aplikace kvality.
-* Tato aplikace provedla jasné hledání textu definované podle toho, co je nastaveno v **searchParameters**. Tuto jednu třídu však lze naplnit mnoha členy, kteří přidávají sofistikovanější k hledání. K tomu, aby tato aplikace byla výrazně výkonnější, není potřeba žádná další práce.
+* Tato aplikace provedla jasné hledání textu definované podle toho, co je nastaveno v **příznacích searchOptions jsou**. Tuto jednu třídu však lze naplnit mnoha členy, kteří přidávají sofistikovanější k hledání. K tomu, aby tato aplikace byla výrazně výkonnější, není potřeba žádná další práce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Abychom zajistili nejlepší uživatelské prostředí pomocí Azure Kognitivní hledání, musíme přidat další funkce, zejména stránkování (buď pomocí čísel stránek, nebo nekonečné posouvání), a automatické dokončování a návrhy. Měli byste taky zvážit složitější vyhledávací parametry (například geografická prohledávání v pohostincích v rámci zadaného poloměru daného bodu a řazení výsledků hledání).
+Chcete-li zlepšit činnost koncového uživatele, přidejte další funkce, zejména stránkování (buď pomocí čísel stránek, nebo nekonečné posouvání), a funkci automatického dokončování a návrhů. Můžete také zvážit propracovanější možnosti hledání (například geografická prohledávání v pohostincích v rámci zadaného poloměru daného bodu a řazení výsledků hledání).
 
-Tyto další kroky jsou řešeny v řadě kurzů. Pojďme začít používat stránkování.
+Tyto další kroky jsou řešeny ve zbývajících kurzech. Pojďme začít používat stránkování.
 
 > [!div class="nextstepaction"]
 > [Kurz C#: stránkování výsledků hledání – Azure Kognitivní hledání](tutorial-csharp-paging.md)
-
-

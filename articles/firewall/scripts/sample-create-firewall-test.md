@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4158bc07373a2d0aa6fb6ceaf2dce62b50bb6bd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079059"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658362"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Vytvoření testovacího prostředí brány Azure Firewall
 
@@ -72,12 +72,11 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
-|[New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)| Vytvoří novou službu Azure Firewall.|
-|[Get-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/get-azfirewall)|Získá objekt služby Azure Firewall.|
-|[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|Vytvoří nové pravidlo aplikace Azure Firewall.|
-|[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Potvrdí změny objektu služby Azure Firewall.|
+|[New-AzFirewall](/powershell/module/az.network/new-azfirewall)| Vytvoří novou službu Azure Firewall.|
+|[Get-AzFirewall](/powershell/module/az.network/get-azfirewall)|Získá objekt služby Azure Firewall.|
+|[New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule)|Vytvoří nové pravidlo aplikace Azure Firewall.|
+|[Set-AzFirewall](/powershell/module/az.network/set-azfirewall)|Potvrdí změny objektu služby Azure Firewall.|
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
-

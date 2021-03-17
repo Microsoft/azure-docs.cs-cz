@@ -1,25 +1,22 @@
 ---
 title: Rozsáhlá podrobněa – Pokročilá analýza – Azure HDInsight
 description: Přečtěte si, jak Pokročilá analýza používá algoritmy ke zpracování velkých objemů dat ve službě Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079356"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946669"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>Co je Pokročilá analýza pro HDInsight?
 
-HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. Pokročilá analýza využívá vysoce škálovatelné architektury, statistické modely a modely strojového učení a inteligentní řídicí panely, které poskytují smysluplné přehledy. Strojové učení nebo *prediktivní analýza*využívá algoritmy, které identifikují a zjišťují relace ve vašich datech, aby předpovědi a zajistila vaše rozhodnutí.
+HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. Pokročilá analýza využívá vysoce škálovatelné architektury, statistické modely a modely strojového učení a inteligentní řídicí panely, které poskytují smysluplné přehledy. Strojové učení nebo *prediktivní analýza* využívá algoritmy, které identifikují a zjišťují relace ve vašich datech, aby předpovědi a zajistila vaše rozhodnutí.
 
 ## <a name="advanced-analytics-process"></a>Proces pokročilé analýzy
 
@@ -44,7 +41,7 @@ Společně s výběrem nejlépe přidaných algoritmů je potřeba zvážit, jes
 
 | Kategorie algoritmu| Použití | Typ učení | Algoritmy |
 | --- | --- | --- | -- |
-| Classification | Klasifikovat lidi nebo věci do skupin | Pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
+| Klasifikace | Klasifikovat lidi nebo věci do skupin | Pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
 | Clustering | Dělení sady příkladů do homogenních skupin | Bez dohledu | K-znamená clustering |
 | Detekce vzoru | Identifikace častých přidružení v datech | Bez dohledu | Association rules |
 | Regrese | Předpověď číselných výsledků | Pod dohledem | Lineární regrese, neuronové sítě |
@@ -67,7 +64,7 @@ Existují tři škálovatelné knihovny strojového učení, které přinášej�
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib obsahuje původní rozhraní API postavené na Spark RDD.
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML je novější balíček, který poskytuje rozhraní API na vyšší úrovni sestavené nad datovými snímky Spark pro vytváření kanálů ml.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) – knihovna Microsoft Machine Learning library for Apache Spark (MMLSpark) je navržená tak, aby se zvýšila produktivita vědeckých dat ve Sparku, zvýšila se rychlost experimentu a využila se špičkové techniky strojového učení, včetně hloubkového učení, u velmi rozsáhlých datových sad. Knihovna MMLSpark zjednodušuje běžné úlohy modelování pro vytváření modelů v PySpark.
+* [**MMLSpark**](https://github.com/Azure/mmlspark)  – knihovna Microsoft Machine Learning library for Apache Spark (MMLSpark) je navržená tak, aby se zvýšila produktivita vědeckých dat ve Sparku, zvýšila se rychlost experimentu a využila se špičkové techniky strojového učení, včetně hloubkového učení, u velmi rozsáhlých datových sad. Knihovna MMLSpark zjednodušuje běžné úlohy modelování pro vytváření modelů v PySpark.
 
 ### <a name="r-and-ml-services"></a>Služby R a ML
 
@@ -91,7 +88,7 @@ Tento scénář pokročilých analýz obsahuje tři klíčové úlohy:
 
 1. Vytvořte cluster Azure HDInsight Hadoop s distribucí Apache Spark 2.1.0.
 2. Spusťte vlastní skript pro instalaci Microsoft Cognitive Toolkit na všech uzlech Azure HDInsight Spark clusteru.
-3. Nahrajte předem připravený Jupyter Poznámkový blok do vašeho clusteru HDInsight Spark, abyste mohli použít školicí model Microsoft Cognitive Toolkit hloubkového učení pro soubory v účtu Azure Blob Storage pomocí rozhraní Spark Python API (PySpark).
+3. Nahrajte předem sestavený Jupyter Notebook do clusteru HDInsight Spark, abyste mohli použít školicí model Microsoft Cognitive Toolkit s hloubkovým učením na soubory v účtu Azure Blob Storage pomocí rozhraní Spark Python API (PySpark).
 
 V tomto příkladu se používá sada imagí CIFAR-10 zkompilovaná a distribuovaná Alex Krizhevsky, Vinoed Nair a Geoffrey Hinton. Datová sada CIFAR-10 obsahuje 60 000 32 × 32 barev obrázků, které patří 10 vzájemně se vylučující třídy:
 

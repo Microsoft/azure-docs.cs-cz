@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB rozhraní API pro tabulky & prostředků sady .NET SDK
-description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi.
+description: Přečtěte si všechno o Azure Cosmos DB rozhraní API pro tabulky pro .NET, včetně dat o verzích, data odchodu a změn provedených mezi jednotlivými verzemi.
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -8,14 +8,16 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ea5f3fca18e6a5781bf46112134ae4efc7159106
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459996"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101200"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB rozhraní .NET API: stažení a poznámky k verzi
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)

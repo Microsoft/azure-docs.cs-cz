@@ -12,27 +12,27 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495715"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678655"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 
-V tomto kurzu se používá [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) k sestavení prediktivního modelu strojového učení. Model je založený na datech uložených v Azure synapse. Scénářem tohoto kurzu je předpovědět, jestli si zákazník může koupit kolo, nebo ne, aby to Adventure Works, prodejna kol mohl vytvořit cílovou marketingovou kampaň.
+V tomto kurzu se používá [Azure Machine Learning Designer](../../machine-learning/concept-designer.md) k sestavení prediktivního modelu strojového učení. Model je založený na datech uložených v Azure synapse. Scénářem tohoto kurzu je předpovědět, jestli si zákazník může koupit kolo, nebo ne, aby to Adventure Works, prodejna kol mohl vytvořit cílovou marketingovou kampaň.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 
-* fond SQL předem načtený pomocí ukázkových dat AdventureWorksDW. Pokud chcete zřídit tento fond SQL, přečtěte si téma [Vytvoření fondu SQL](create-data-warehouse-portal.md) a výběr načtení ukázkových dat. Pokud již máte datový sklad, ale nemáte ukázková data, můžete [ukázková data načíst ručně](load-data-from-azure-blob-storage-using-polybase.md).
-* pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit nový, postupujte podle [tohoto kurzu](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) .
+* fond SQL předem načtený pomocí ukázkových dat AdventureWorksDW. Pokud chcete zřídit tento fond SQL, přečtěte si téma [Vytvoření fondu SQL](create-data-warehouse-portal.md) a výběr načtení ukázkových dat. Pokud již máte datový sklad, ale nemáte ukázková data, můžete [ukázková data načíst ručně](./load-data-from-azure-blob-storage-using-copy.md).
+* pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit nový, postupujte podle [tohoto kurzu](../../machine-learning/how-to-manage-workspace.md) .
 
 ## <a name="get-the-data"></a>Získání dat
 
-Použitá data jsou v zobrazení dbo. vTargetMail v AdventureWorksDW. Pokud chcete v tomto kurzu použít úložiště dat, nejdřív se data exportují do Azure Data Lake Storage účtu, protože Azure synapse v současné době nepodporuje datové sady. Azure Data Factory lze použít k exportu dat z datového skladu do Azure Data Lake Storage pomocí [aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-overview). Pro import použijte následující dotaz:
+Použitá data jsou v zobrazení dbo. vTargetMail v AdventureWorksDW. Pokud chcete v tomto kurzu použít úložiště dat, nejdřív se data exportují do Azure Data Lake Storage účtu, protože Azure synapse v současné době nepodporuje datové sady. Azure Data Factory lze použít k exportu dat z datového skladu do Azure Data Lake Storage pomocí [aktivity kopírování](../../data-factory/copy-activity-overview.md). Pro import použijte následující dotaz:
 
 ```sql
 SELECT [CustomerKey]
@@ -54,9 +54,9 @@ SELECT [CustomerKey]
 FROM [dbo].[vTargetMail]
 ```
 
-Jakmile jsou data v Azure Data Lake Storage k dispozici, úložiště dat v Azure Machine Learning se použijí pro [připojení ke službám úložiště Azure](https://docs.microsoft.com/azure/machine-learning/how-to-access-data). Pomocí následujících kroků vytvořte úložiště dat a odpovídající datovou sadu:
+Jakmile jsou data v Azure Data Lake Storage k dispozici, úložiště dat v Azure Machine Learning se použijí pro [připojení ke službám úložiště Azure](../../machine-learning/how-to-access-data.md). Pomocí následujících kroků vytvořte úložiště dat a odpovídající datovou sadu:
 
-1. Spusťte Azure Machine Learning Studio buď z Azure Portal, nebo se přihlaste v [Azure Machine Learning Studiu](https://ml.azure.com/).
+1. Spusťte Azure Machine Learning Studio buď z Azure Portal nebo se přihlaste v [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 1. V levém podokně v části **Správa** klikněte na **úložiště dat** a pak klikněte na **nové úložiště dat**.
 
@@ -68,7 +68,7 @@ Jakmile jsou data v Azure Data Lake Storage k dispozici, úložiště dat v Azur
 
 1. Zadejte název datové sady a vyberte typ, který bude **tabelární**. Potom kliknutím na tlačítko **Další** přesunete vpřed.
 
-1. V **části vybrat nebo vytvořit úložiště dat**vyberte možnost **dříve vytvořené úložiště dat**. Vyberte úložiště dat, které bylo dříve vytvořeno. Klikněte na tlačítko Další a zadejte cestu a nastavení souboru. Nezapomeňte zadat záhlaví sloupce, pokud soubory obsahují.
+1. V **části vybrat nebo vytvořit úložiště dat** vyberte možnost **dříve vytvořené úložiště dat**. Vyberte úložiště dat, které bylo dříve vytvořeno. Klikněte na tlačítko Další a zadejte cestu a nastavení souboru. Nezapomeňte zadat záhlaví sloupce, pokud soubory obsahují.
 
 1. Nakonec kliknutím na **vytvořit** Vytvořte datovou sadu.
 
@@ -126,15 +126,15 @@ Data jsou rozdělená 80-20:80%, aby bylo možné vytvořit model strojového u�
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Snímek obrazovky zobrazující sloupec popisku, BikeBuyer, vybraný.":::
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Snímek obrazovky s modulem výukového modelu připojený ke dvěma třídám s posíleným rozhodovacím stromem a rozdělenými datovými moduly":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Snímek obrazovky s modulem výukového modelu připojeným k Two-Class zvýšili a rozdělili moduly pro rozhodovací strom a rozdělení dat":::
 
-## <a name="score-the-model"></a>Ohodnocení modelu
+## <a name="score-the-model"></a>Určení skóre modelu
 
 Nyní testujte, jak model provádí na testovacích datech. Budou porovnány dva různé algoritmy, abyste viděli, která z nich je lepší. Postupujte následovně:
 
 1. Přetáhněte na plátno modul **bodového modelu** a připojte ho ke **výukovým modelům** a **rozděleným datovým** modulům.
 
-1. Přetáhněte **Bayes průměrnou Perceptron** na plátno experimentu. Porovnáte se tomu, jak tento algoritmus provádí v porovnání s posíleným rozhodovacím stromem se dvěma třídami.
+1. Přetáhněte **Bayes průměrnou Perceptron** na plátno experimentu. Porovnáte se s tím, jak tento algoritmus provádí v porovnání s Two-Class zesíleným rozhodovacím stromu.
 
 1. Zkopírujte a vložte do plátna model **výuky** a model **skóre** .
 
@@ -155,10 +155,10 @@ Zobrazí se další dva sloupce, které jsou přidány do datové sady testů.
 * Scored Probabilities (Vyhodnocené pravděpodobnosti): Pravděpodobnost, že si zákazník koupí kolo.
 * Scored Labels (Popisky vyhodnocení): Klasifikace prováděná modelem – kupující (1) nebo nekupující (0) kolo. Tato prahová hodnota pravděpodobnosti pro popisky je nastavena na 50 % a je možné ji upravit.
 
-Porovnejte sloupec BikeBuyer (aktuální) se štítky s skóre (předpovědi), abyste viděli, jak dobře byl model proveden. Dále můžete pomocí tohoto modelu vytvořit předpovědi pro nové zákazníky. [Tento model můžete publikovat jako webovou službu](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) nebo výsledky zapsat zpátky do Azure synapse.
+Porovnejte sloupec BikeBuyer (aktuální) se štítky s skóre (předpovědi), abyste viděli, jak dobře byl model proveden. Dále můžete pomocí tohoto modelu vytvořit předpovědi pro nové zákazníky. [Tento model můžete publikovat jako webovou službu](../../machine-learning/tutorial-designer-automobile-price-deploy.md) nebo výsledky zapsat zpátky do Azure synapse.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Machine Learning najdete [v tématu Úvod do Machine Learning v Azure](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+Další informace o Azure Machine Learning najdete [v tématu Úvod do Machine Learning v Azure](../../machine-learning/overview-what-is-azure-ml.md).
 
-Seznamte se s předdefinovaným bodování v datovém skladu [tady](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).
+Seznamte se s předdefinovaným bodování v datovém skladu [tady](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).

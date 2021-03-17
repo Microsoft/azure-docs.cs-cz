@@ -17,24 +17,24 @@ ms.date: 12/17/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed71e53a8cedc2907ac06dd75f11f9c762a78772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12073a75cd248c9226c7ce5ecc21b64617823b32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357201"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279631"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect Sync: Povolit odpadkový koš služby AD
 Doporučuje se povolit funkci Koš služby Active Directory pro místní aktivní adresáře, které jsou synchronizované s Azure AD. 
 
-Pokud omylem odstraníte objekt místního uživatele služby AD a obnovíte ho pomocí této funkce, Azure AD obnoví odpovídající objekt uživatele Azure AD.  Informace o funkci Koš služby AD najdete v článku [Přehled scénářů pro obnovení odstraněných objektů služby Active Directory](https://technet.microsoft.com/library/dd379542.aspx).
+Pokud omylem odstraníte objekt místního uživatele služby AD a obnovíte ho pomocí této funkce, Azure AD obnoví odpovídající objekt uživatele Azure AD.  Informace o funkci Koš služby AD najdete v článku [Přehled scénářů pro obnovení odstraněných objektů služby Active Directory](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379542(v=ws.10)).
 
 ## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Výhody aktivace odpadkového koše služby AD
 Tato funkce pomáhá při obnovování objektů uživatelů Azure AD pomocí následujícího postupu:
 
 * Pokud jste omylem odstranili místní objekt uživatele služby AD, v dalším synchronizačním cyklu se odstraní odpovídající objekt uživatele Azure AD. Ve výchozím nastavení služba Azure AD udržuje odstraněný objekt uživatele Azure AD ve stavu tichého odstranění po dobu 30 dnů.
 
-* Pokud máte zapnutou funkci koš místní služby Active Directory, můžete obnovit odstraněný objekt místního uživatele služby AD beze změny jeho zdrojové hodnoty kotvy. Když se obnovený objekt místního uživatele služby AD synchronizuje do Azure AD, Azure AD obnoví příslušný objekt uživatele Azure AD, který se místně odstranil. Informace o atributech zdrojového ukotvení najdete v článku [Azure AD Connect: koncepty návrhu](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Pokud máte zapnutou funkci koš místní služby Active Directory, můžete obnovit odstraněný objekt místního uživatele služby AD beze změny jeho zdrojové hodnoty kotvy. Když se obnovený objekt místního uživatele služby AD synchronizuje do Azure AD, Azure AD obnoví příslušný objekt uživatele Azure AD, který se místně odstranil. Informace o atributech zdrojového ukotvení najdete v článku [Azure AD Connect: koncepty návrhu](./plan-connect-design-concepts.md#sourceanchor).
 
 * Pokud nemáte zapnutou funkci Koš služby Active Directory, může být potřeba vytvořit objekt uživatele AD, který nahradí odstraněný objekt. Pokud je služba Azure AD Connect Synchronization nakonfigurovaná tak, aby pro atribut zdrojového ukotvení používala systémový atribut AD (například ObjectGuid), nově vytvořený objekt uživatele služby AD nebude mít stejnou hodnotu zdrojového ukotvení jako odstraněný objekt uživatele služby AD. Když se nově vytvořený objekt uživatele služby AD synchronizuje do Azure AD, Azure AD vytvoří nový objekt uživatele Azure AD, místo aby obnovil místně odstraněný objekt uživatele Azure AD.
 

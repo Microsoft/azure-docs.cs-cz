@@ -3,12 +3,12 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537897"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041463"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
@@ -53,7 +53,7 @@ V tomto článku se předpokládá, že máte `aci-helloworld:v1` Image kontejne
 
 ## <a name="create-a-docker-enabled-vm"></a>Vytvoření virtuálního počítače s podporou Docker
 
-Vytvořte virtuální počítač s Ubuntu s podporou Docker. Na virtuálním počítači je také potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) . Pokud už máte virtuální počítač Azure, přeskočte tento krok a vytvořte virtuální počítač.
+Vytvořte virtuální počítač s Ubuntu s podporou Docker. Na virtuálním počítači je také potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) . Pokud už máte virtuální počítač Azure, přeskočte tento krok a vytvořte virtuální počítač.
 
 Nasaďte výchozí Ubuntu virtuální počítač Azure pomocí [AZ VM Create][az-vm-create]. Následující příklad vytvoří virtuální počítač s názvem *myDockerVM* v existující skupině prostředků s názvem *myResourceGroup*:
 
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 Po instalaci spusťte následující příkaz, který ověří, jestli je na virtuálním počítači správně spuštěný Docker:
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 Výstup:
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Instalace Azure CLI
 
-Podle postupu v části [instalace Azure CLI pomocí apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) nainstalujte rozhraní příkazového řádku Azure do svého virtuálního počítače s Ubuntu. V tomto článku se ujistěte, že instalujete verzi 2.0.55 nebo novější.
+Podle postupu v části [instalace Azure CLI pomocí apt](/cli/azure/install-azure-cli-apt) nainstalujte rozhraní příkazového řádku Azure do svého virtuálního počítače s Ubuntu. V tomto článku se ujistěte, že instalujete verzi 2.0.55 nebo novější.
 
 Ukončete relaci SSH.
 
@@ -107,13 +107,13 @@ Ukončete relaci SSH.
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
+Pomocí příkazu [AZ identity Create](/cli/azure/identity#az_identity_create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity a ID instančního objektu do proměnných.
+Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [az identity show] [az_identity_show] uložte ID prostředku identity a ID instančního objektu do proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -230,6 +230,8 @@ Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` p�
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> Identity spravované služby přiřazené systémem se dají použít k interakci s záznamů ACR a App Service můžou používat identity spravované služby přiřazené systémem. Nemůžete je ale kombinovat, protože App Service nemůže použít MSI ke komunikaci s ACR. Jediným způsobem je povolit správcům ACR a používat uživatelské jméno a heslo správce.
 
 ## <a name="next-steps"></a>Další kroky
 

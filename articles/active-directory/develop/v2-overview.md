@@ -1,5 +1,6 @@
 ---
 title: Přehled platformy Microsoft Identity – Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o komponentách platformy Microsoft identity a o tom, jak vám můžou pomoci při sestavování podpory IAM (Identity and Access Management) pro vaše aplikace.
 services: active-directory
 author: rwike77
@@ -11,15 +12,15 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: identityplatformtop40, contperf-fy21q2
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119551"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426837"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Přehled platformy Microsoft identity
+# <a name="what-is-the-microsoft-identity-platform"></a>Co je Microsoft Identity Platform?
 
 Platforma Microsoft Identity vám pomůže sestavovat aplikace, které můžou uživatelé a zákazníci přihlašovat k používání svých identit Microsoftu nebo účtů sociálních sítí, a poskytovat autorizovaný přístup k vašim vlastním rozhraním API nebo rozhraním API Microsoftu, jako je Microsoft Graph.
 
@@ -38,6 +39,8 @@ Pro vývojáře nabízí platforma Microsoft Identity Platform integraci modern�
 
 S platformou Microsoft Identity můžete napsat kód jenom jednou a oslovit každého uživatele. Můžete vytvořit aplikaci jednou a nechat ji pracovat na celé řadě platforem nebo vytvořit aplikaci, která funguje jako klient a také jako aplikace prostředků (API).
 
+Video s přehledem platformy a ukázku možností ověřování najdete v tématu [co je platforma pro identity Microsoftu pro vývojáře?](https://youtu.be/uDU1QTSw7Ps).
+
 ## <a name="getting-started"></a>Začínáme
 
 Výběr [scénáře aplikace](authentication-flows-app-scenarios.md) , kterou chcete sestavit. Každá z těchto cest scénáře začíná přehledem a odkazy na rychlý Start, které vám pomůžou začít pracovat:
@@ -49,7 +52,7 @@ Výběr [scénáře aplikace](authentication-flows-app-scenarios.md) , kterou ch
 - [Webové rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md)
 - [Desktopová aplikace](scenario-desktop-overview.md)
 - [Aplikace démona](scenario-daemon-overview.md)
-- [Mobilní aplikace](scenario-mobile-overview.md)
+- [Mobile app (Mobilní aplikace)](scenario-mobile-overview.md) 
 
 Při práci s platformou Microsoft identity k integraci ověřování a autorizace ve vašich aplikacích můžete použít odkaz na tento obrázek, který popisuje nejběžnější scénáře aplikací a jejich součásti identity. Vyberte obrázek pro zobrazení v plné velikosti.
 
@@ -73,12 +76,11 @@ Přečtěte si, jak se základní ověřování a koncepce Azure AD vztahují na
 
 [Azure AD B2B](../external-identities/what-is-b2b.md) – pozvání externích uživatelů do tenanta služby Azure AD jako uživatele typu Host a přiřazení oprávnění k autorizaci, když používají jejich existující pověření k ověřování.
 
-> [!TIP]
-> Hledáte dokumentaci k *platformě Azure Active Directory Developer Platform (verze 1.0)* ? Další informace najdete v tématu [přehled Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md).
+[Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md) – zobrazené tady pro vývojáře s existujícími aplikacemi, které používají koncový bod starší verze 1.0. **Nepoužívejte v** 1.0 pro nové projekty.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte účet Azure, ke kterému už máte Azure Active Directory přístup, ale většina vývojářů platforem Microsoft Identity Platform potřebuje svůj vlastní tenant Azure AD pro použití při vývoji aplikací, "vývojářského tenanta".
+Pokud máte účet Azure, ke kterému už máte Azure Active Directory přístup, ale většina vývojářů platformy Microsoft Identity Platform potřebuje pro použití při vývoji aplikací, které jsou pro vývoj aplikací, jenom vlastního tenanta Azure AD.
 
 Zjistěte, jak vytvořit vlastního tenanta pro použití při sestavování aplikací:
 

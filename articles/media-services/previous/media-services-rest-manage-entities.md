@@ -1,7 +1,7 @@
 ---
 title: Správa entit Media Services pomocí REST | Microsoft Docs
 description: Tento článek ukazuje, jak spravovat Media Services entit pomocí REST API.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 0e79469aa0e405a0096d483ae290d10415fe74f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2821c4c2b13edaf5dfb34664c4b9f78ab56d98a7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000045"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015552"
 ---
-# <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST  
+# <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-manage-entities.md)
@@ -128,7 +130,7 @@ Host: media.windows.net
 ```
 
 > [!NOTE]
-> Operace $expand není podporována v Media Services a také nepodporované metody LINQ popsané v tématu požadavky LINQ (WCF Data Services).
+> Operace $expand není podporována v Media Services a také nepodporované metody LINQ popsané v tématu požadavky LINQ (Datové služby WCF).
 > 
 > 
 

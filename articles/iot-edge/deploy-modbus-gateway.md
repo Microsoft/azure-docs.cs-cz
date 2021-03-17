@@ -8,14 +8,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511140"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487730"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes bránu IoT Edge zařízení
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Pokud chcete připojit zařízení IoT, která používají protokoly TCP nebo RTU, do služby Azure IoT Hub, můžete jako bránu použít zařízení IoT Edge. Zařízení brány čte data ze zařízení Modbus a předává je do cloudu s použitím podporovaného protokolu.
 
@@ -35,7 +37,7 @@ V tomto článku se předpokládá, že používáte protokol Modbus TCP. Dalš�
 
 Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. K modulu můžete přistupovat z Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)nebo s identifikátorem URI image `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
-Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro své prostředí, na GitHubu je open source projekt [Azure IoT Edgeho modulu Modbus](https://github.com/Azure/iot-edge-modbus) . Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Chcete-li vytvořit image kontejneru, přečtěte si téma [vývoj modulů C# v aplikaci Visual Studio](how-to-visual-studio-develop-csharp-module.md) nebo [vývoj modulů v Visual Studio Code](how-to-vs-code-develop-module.md). Tyto články obsahují pokyny k vytváření nových modulů a publikování imagí kontejneru do registru.
+Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro své prostředí, na GitHubu je open source projekt [Azure IoT Edgeho modulu Modbus](https://github.com/Azure/iot-edge-modbus) . Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Chcete-li vytvořit image kontejneru, přečtěte si téma [vývoj modulů C# v aplikaci Visual Studio](./how-to-visual-studio-develop-module.md) nebo [vývoj modulů v Visual Studio Code](how-to-vs-code-develop-module.md). Tyto články obsahují pokyny k vytváření nových modulů a publikování imagí kontejneru do registru.
 
 ## <a name="try-the-solution"></a>Vyzkoušejte řešení
 

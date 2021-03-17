@@ -5,12 +5,13 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e8b5e5944d58e9bf3291b3870027257b2c87ad24
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257365"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89012666"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Zabezpečená komunikace založená na technologii WCF pro službu
 Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Tento článek pojednává o tom, jak zvýšit zabezpečení při použití vzdálené komunikace služby.

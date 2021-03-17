@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d5aedf24034c9ba5ee865dd0d2289169ea5f859
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528543"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Kurz: Azure Active Directory integrace s Rollbar
 
@@ -27,10 +27,10 @@ Integrace Rollbar s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Rollbar (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Rollbar potřebujete následující položky:
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Rollbar, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Rollbar](#configure-rollbar-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Rollbar](#configure-rollbar-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření Rollbar Test User](#create-rollbar-test-user)** – pro Britta Simon v Rollbar, který je propojený s reprezentací uživatele Azure AD.
@@ -93,13 +93,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Rollbar a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL: `https://saml.rollbar.com`
 
@@ -107,14 +107,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně Rollbar a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://rollbar.com/<accountname>/saml/login/azure/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Rollbar](mailto:support@rollbar.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a adresy URL Sign-On. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Rollbar](mailto:support@rollbar.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -128,21 +128,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-rollbar-single-sign-on"></a>Konfigurace jednotného přihlašování Rollbar
+### <a name="configure-rollbar-single-sign-on"></a>Nakonfigurovat Rollbar jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Rollbar společnosti jako správce.
 
 1. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na **Nastavení názvu účtu**.
 
-    ![Konfigurace](./media/rollbar-tutorial/general.png)
+    ![Snímek obrazovky zobrazuje nastavení názvu účtu vybrané z nastavení profilu.](./media/rollbar-tutorial/general.png)
 
 1. V části zabezpečení klikněte na **zprostředkovatel identity** .
 
-    ![Konfigurace](./media/rollbar-tutorial/configure1.png)
+    ![Snímek obrazovky ukazuje poskytovatele identity vybraný v části zabezpečení.](./media/rollbar-tutorial/configure1.png)
 
 1. V části **zprostředkovatel identity SAML** proveďte následující kroky:
 
-    ![Konfigurace](./media/rollbar-tutorial/configure2.png)
+    ![Snímek obrazovky ukazuje poskytovatele identity SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/rollbar-tutorial/configure2.png)
 
     a. V rozevíracím seznamu **zprostředkovatel identity SAML** vyberte **Azure** .
 
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
 1. Po kliknutí na tlačítko Uložit bude obrazovka vypadat takto:
 
-    ![Konfigurace](./media/rollbar-tutorial/configure3.png)
+    ![Snímek obrazovky zobrazuje výsledky na stránce zprostředkovatele identity SAML.](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
     > Aby bylo možné provést následující krok, je třeba nejprve přidat sami sebe jako uživatele do aplikace Rollbar v Azure.
@@ -187,7 +187,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -195,7 +195,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Rollbar**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Rollbar**.
 
@@ -233,11 +233,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k Rollbar, musí se zřídit v R
 
 1. Klikněte na **pozvat členy týmu**.
 
-    ![Pozvat lidi](./media/rollbar-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí vybraná možnost pozvat členy týmu.](./media/rollbar-tutorial/user2.png)
 
 1. Do textového pole zadejte jméno uživatele jako **brittasimon \@ contoso.com** a klikněte na **Přidat nebo pozvat**.
 
-    ![Pozvat lidi](./media/rollbar-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí členové přidat nebo pozvat s poskytnutou adresou.](./media/rollbar-tutorial/user3.png)
 
 1. Uživatel obdrží pozvánku a po přijetí ji vytvoří v systému.
 
@@ -245,13 +245,12 @@ Aby se uživatelé Azure AD mohli přihlašovat k Rollbar, musí se zřídit v R
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Rollbar, měli byste se automaticky přihlásit k Rollbar, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Rollbar, měli byste se automaticky přihlásit k Rollbar, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

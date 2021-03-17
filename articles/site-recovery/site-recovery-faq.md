@@ -4,26 +4,26 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263373"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820192"
 ---
-# <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
+# <a name="general-questions-about-azure-site-recovery"></a>Obecné dotazy ke službě Azure Site Recovery
 
 Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery. V případě konkrétních scénářů si Projděte tyto články
 
-- [Dotazy týkající se zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
-- [Dotazy týkající se zotavení po havárii virtuálních počítačů VMware do Azure](vmware-azure-common-questions.md)
-- [Dotazy týkající se zotavení po havárii virtuálního počítače Hyper-V do Azure](hyper-v-azure-common-questions.md)
+- [Dotazy k zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
+- [Dotazy k zotavení po havárii virtuálního počítače VMware do Azure](vmware-azure-common-questions.md)
+- [Dotazy k zotavení po havárii virtuálního počítače Hyper-V do Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Obecné
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
 
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Další informace](site-recovery-overview.md).
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Přečtěte si další informace](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -53,7 +53,7 @@ No. Azure má fakturační vztah přímo s poskytovatelem služeb. Za generován
 Ne, data se replikují do úložiště Azure v rámci vašeho předplatného. Když provedete testovací převzetí služeb při selhání (rutina pro zotavení po havárii) nebo skutečné převzetí, Site Recovery ve vašem předplatném automaticky vytvoří virtuální počítače.
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>Zajišťujete při replikaci do Azure izolaci na úrovni klienta?
-Yes.
+Ano.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Jaké platformy aktuálně podporujete?
 Podporujeme nasazení pro Azure Pack, Cloud Platform System a System Center (2012 a vyšší). [Přečtěte si další informace](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) o sadě Azure Pack a Site Recovery integraci.
@@ -71,7 +71,7 @@ Přečtěte si informace o [cenách Site Recovery](https://azure.microsoft.com/p
 
 Pomocí [cenové kalkulačky](https://aka.ms/asr_pricing_calculator) můžete odhadnout náklady při používání Site Recovery.
 
-Pro detailní odhad nákladů spusťte nástroj Plánovač nasazení pro [VMware](https://aka.ms/siterecovery_deployment_planner) nebo [Hyper-V](https://aka.ms/asr-deployment-planner)a použijte [sestavu odhad nákladů](https://aka.ms/asr_DP_costreport).
+Pro detailní odhad nákladů spusťte nástroj Plánovač nasazení pro [VMware](./site-recovery-deployment-planner.md) nebo [Hyper-V](https://aka.ms/asr-deployment-planner)a použijte [sestavu odhad nákladů](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>Spravované disky se teď používají k replikaci virtuálních počítačů VMware a fyzických serverů. Účtují se vám další poplatky za účet úložiště mezipaměti se službou Managed disks?
@@ -80,7 +80,7 @@ Ne, za mezipaměť se neúčtují žádné další poplatky. Při replikaci do �
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jsem uživatel Azure Site Recovery po dobu delší než měsíc. Je pro každou chráněnou instanci stále k dispozici prvních 31 dní zdarma?
 
-Yes. Každá chráněná instance nevzniká žádné Azure Site Recovery poplatky za prvních 31 dní. Pokud jste například v posledních 6 měsících chránili 10 instancí a připojíte k Azure Site Recovery jedenáctou instanci, pro jedenáctou instanci se za prvních 31 dní neúčtují žádné poplatky. Za prvních 10 instancí se nadále účtují Azure Site Recovery poplatky, protože jsou chráněné po dobu více než 31 dní.
+Ano. Každá chráněná instance nevzniká žádné Azure Site Recovery poplatky za prvních 31 dní. Pokud jste například v posledních 6 měsících chránili 10 instancí a připojíte k Azure Site Recovery jedenáctou instanci, pro jedenáctou instanci se za prvních 31 dní neúčtují žádné poplatky. Za prvních 10 instancí se nadále účtují Azure Site Recovery poplatky, protože jsou chráněné po dobu více než 31 dní.
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Během prvních 31 dnů se mi účtují nějaké další poplatky za Azure?
 
@@ -102,7 +102,7 @@ Replikační data se vyměňují mezi lokálními hostiteli Hyper-V, hypervisory
 Site Recovery je ISO 27001:2013, 27018, HIPAA, DPA Certified a je v procesu SOC2 a FedRAMP JAB Assessments.
 
 ### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>Z důvodu dodržování předpisů musí i naše místní metadata zůstat ve stejné geografické oblasti. Může nám Site Recovery pomáhat?
-Yes. Když vytvoříte trezor Site Recovery v oblasti, zajišťujeme, aby všechna metadata, která potřebujeme k povolení a orchestraci replikace a převzetí služeb při selhání, zůstala v rámci geografické hranice této oblasti.
+Ano. Když vytvoříte trezor Site Recovery v oblasti, zajišťujeme, aby všechna metadata, která potřebujeme k povolení a orchestraci replikace a převzetí služeb při selhání, zůstala v rámci geografické hranice této oblasti.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
 V případě virtuálních počítačů a fyzických serverů se podporuje replikace mezi místními lokalitami – přenos v provozu. Pro virtuální počítače a fyzické servery, které se replikují do Azure, se podporují jak šifrování, tak i [šifrování v klidovém režimu (v Azure)](../storage/common/storage-service-encryption.md) .
@@ -124,7 +124,7 @@ Můžete přepnout na spravovanou identitu trezoru služby Recovery Services tak
   - [Přispěvatel dat v objektech blob služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Účty úložiště založené na Správce prostředků (typ Premium):
   - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)
-  - [Vlastník dat objektu BLOB služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+  - [Vlastník dat v objektech blob služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - Účty klasického úložiště:
   - [Přispěvatel klasických účtů úložiště](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
   - [Role služby operátora klíče klasického účtu úložiště](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
@@ -141,7 +141,7 @@ Můžete přepnout na spravovanou identitu trezoru služby Recovery Services tak
 Pomocí Site Recovery můžete chránit většinu úloh spuštěných na podporovaném virtuálním počítači nebo fyzickém serveru. Site Recovery poskytuje podporu pro replikaci zohledňující aplikace, aby bylo možné aplikace obnovit do inteligentního stavu. Integruje se s aplikacemi Microsoftu, jako jsou SharePoint, Exchange, Dynamics, SQL Server a Active Directory, a úzce spolupracuje s předními dodavateli, včetně Oracle, SAP, IBM a Red Hat. [Další informace](site-recovery-workload.md) o ochraně úloh.
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Mohu pomocí Site Recovery spravovat zotavení po havárii pro pobočky?
-Yes. Když použijete Site Recovery k orchestraci replikace a převzetí služeb při selhání ve firemních pobočkách, získáte jednotnou orchestraci a zobrazení všech úloh vaší pobočky v centrálním umístění. Z centrály můžete snadno provádět převzetí služeb při selhání a spravovat zotavení po havárii na všech pobočkách, aniž byste na nich museli být přítomni.
+Ano. Když použijete Site Recovery k orchestraci replikace a převzetí služeb při selhání ve firemních pobočkách, získáte jednotnou orchestraci a zobrazení všech úloh vaší pobočky v centrálním umístění. Z centrály můžete snadno provádět převzetí služeb při selhání a spravovat zotavení po havárii na všech pobočkách, aniž byste na nich museli být přítomni.
 
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Podporuje se zotavení po havárii pro virtuální počítače Azure?
@@ -188,7 +188,7 @@ Ano, [ExpressRoute se dá použít](concepts-expressroute-with-site-recovery.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Pokud repliku do Azure, jaký druh účtu úložiště nebo spravovaný disk potřebuji?
 
-Potřebujete úložiště LRS nebo GRS. Doporučujeme účet úložiště GRS, aby byla zajištěna odolnost dat v případě oblastního výpadku nebo pokud není možné obnovit primární oblast. Účet musí být ve stejné oblasti jako trezor Služeb zotavení. Služba Premium Storage je podporovaná pro virtuální počítač VMware, virtuální počítač Hyper-V a replikaci fyzického serveru při nasazení Site Recovery v Azure Portal. Spravované disky podporují jenom LRS.
+Azure Site Recovery nepodporuje používání účtů úložiště jako cílového úložiště. Doporučuje se místo toho jako cílové úložiště pro vaše počítače používat spravované disky. Spravované disky podporují jenom LRS typ pro odolnost dat.
 
 ### <a name="how-often-can-i-replicate-data"></a>Jak často je možné replikovat data?
 * **Hyper-V:** Virtuální počítače Hyper-V se dají replikovat každých 30 sekund (s výjimkou prémiového úložiště), 5 minut nebo 15 minut.
@@ -208,13 +208,13 @@ Dynamické disky se podporují při replikaci virtuálních počítačů Hyper-V
 
 
 ### <a name="can-i-throttle-bandwidth-allotted-for-replication-traffic"></a>Můžu omezit šířku pásma vyhrazenou pro provoz replikace?
-Yes. Další informace o omezování šířky pásma najdete v těchto článcích:
+Ano. Další informace o omezování šířky pásma najdete v těchto článcích:
 
 * [Plánování kapacity pro replikaci virtuálních počítačů VMware a fyzických serverů](site-recovery-plan-capacity-vmware.md)
 * [Plánování kapacity pro replikaci virtuálních počítačů Hyper-V do Azure](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Můžu povolit replikaci s konzistencí aplikací na serverech se systémem Linux? 
-Yes. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. Níže jsou uvedené kroky, jak je povolit.
+Ano. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. Níže jsou uvedené kroky, jak je povolit.
 
 1. Přihlaste se jako kořenový adresář do počítače.
 2. Změňte adresář na Azure Site Recovery umístění instalace agenta mobility. Výchozí hodnota je "/usr/local/ASR".<br>
@@ -257,8 +257,6 @@ Zásady replikace definují nastavení pro historii uchovávání bodů obnoven�
 - 24 hodin pro historii uchovávání bodů obnovení.
 - 4 hodiny pro četnost snímků konzistentních vzhledem k aplikacím.
 
-[Přečtěte si další informace o nastavení replikace](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
-
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní vzhledem k selháním?
 
 Bod obnovení konzistentní s chybou obsahuje data na disku, jako kdyby jste ze serveru během snímku vyžádali napájecí kabel. Bod obnovení konzistentní vzhledem k chybě neobsahuje cokoli, co bylo v paměti při pořízení snímku.
@@ -274,6 +272,9 @@ Site Recovery vytvoří bod obnovení konzistentní vzhledem k selháním každ�
 Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím. Body obnovení konzistentní vzhledem k aplikacím zachycují stejná data jako snímky konzistentní s chybou a zároveň zachytí data v paměti a všechny probíhající transakce.
 
 Vzhledem k tomu, že se jedná o další obsah, jsou nejdůležitější snímky konzistentní vzhledem k aplikacím a trvat nejdéle. Pro databázové operační systémy a aplikace, jako je například SQL Server, doporučujeme body obnovení konzistentní vzhledem k aplikacím.
+
+>[!Note]
+>Při vytváření bodů obnovení konzistentních vzhledem k aplikacím dojde v počítači s Windows k chybě, pokud má více než 64 svazků.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Jaký je dopad bodů obnovení konzistentních vzhledem k aplikacím na výkon aplikace?
 
@@ -306,7 +307,7 @@ Ne, Site Recovery bude uchovávat všechny předchozí body obnovení. V závisl
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Jak se po replikaci na virtuálním počítači povolí replikace, jak změním zásady replikace?
 
-Přejít na **Site Recovery trezor**  >  **Site Recovery**  >  **Zásady replikace**infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
+Přejít na **Site Recovery trezor**  >  **Site Recovery**  >  **Zásady replikace** infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Má všechny body obnovení úplnou kopii virtuálního počítače nebo rozdílu?
 
@@ -320,7 +321,7 @@ Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recove
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?
@@ -344,10 +345,18 @@ Ano, můžete použít obnovení do alternativního umístění pro navrácení 
 * [Pro virtuální počítače VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Pro virtuální počítače s technologií Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>Jaký je rozdíl mezi dokončením migrace, potvrzením a zakázáním replikace?
+
+Po převzetí služeb při selhání počítače ze zdrojového umístění do cílového umístění jsou k dispozici tři možnosti, ze kterých si můžete vybrat. Všechny tři různé účely –
+
+1.  **Dokončení migrace** znamená, že se už nebudete moct zpátky do zdrojového umístění. Migrujete se do cílové oblasti a teď jste hotovi. Kliknutím na Dokončit aktivační události migrace potvrďte a pak interně zakažte replikaci. 
+2.  **Potvrzení** znamená, že se nejedná o konec procesu replikace. Položka replikace spolu se všemi konfiguracemi zůstane v platnosti a později můžete znovu zapnout **ochranu** a umožnit tak replikaci vašich počítačů zpátky do zdrojové oblasti. 
+3.  **Vypnutím replikace** zakážete replikaci a odeberete všechny související konfigurace. Nebude to mít vliv na už existující počítač v cílové oblasti.
+
 ## <a name="automation"></a>Automation
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Můžu Site Recovery scénáře automatizovat pomocí sady SDK?
-Yes. Postupy workflow Site Recovery je možné automatizovat pomocí rozhraní REST API, PowerShellu a sady Azure SDK. Aktuálně podporované scénáře nasazení Site Recovery pomocí prostředí PowerShell:
+Ano. Postupy workflow Site Recovery je možné automatizovat pomocí rozhraní REST API, PowerShellu a sady Azure SDK. Aktuálně podporované scénáře nasazení Site Recovery pomocí prostředí PowerShell:
 
 * [Replikace virtuálních počítačů Hyper-V v cloudech VMMs do Azure PowerShell Správce prostředků](hyper-v-vmm-powershell-resource-manager.md)
 * [Replikace virtuálních počítačů Hyper-V bez nástroje VMM do Azure PowerShell Správce prostředků](hyper-v-azure-powershell-resource-manager.md)

@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146032"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934867"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Relační operátory OData v Azure kognitivní hledání- `eq` , `ne` ,,, `gt` `lt` `ge` a`le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Relační operátory OData v Azure kognitivní hledání- `eq` , `ne` ,,, `gt` `lt` `ge` a `le`
 
 Nejzákladnější operace ve [výrazu filtru OData](query-odata-filter-orderby-syntax.md) v Azure kognitivní hledání slouží k porovnání pole s danou hodnotou. Dva typy porovnání jsou možné – porovnání rovnosti a porovnání rozsahu. K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
@@ -47,9 +47,9 @@ Operátory rozsahu v kombinaci s [logickými operátory](search-query-odata-logi
 > [!NOTE]
 > Pokud dáváte přednost, můžete vložit konstantní hodnotu na levou stranu operátoru a název pole na pravé straně. Pro operátory rozsahu je význam porovnání obrácený. Například pokud je konstantní hodnota na levé straně, `gt` bude testována, zda je konstantní hodnota větší než pole. Operátory porovnání můžete použít také k porovnání výsledku funkce, jako `geo.distance` je například, s hodnotou. Pro logické funkce, jako `search.ismatch` je například, porovnání výsledku s `true` nebo `false` je volitelné.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá operátory porovnání.
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá operátory porovnání.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -81,13 +81,13 @@ Datové typy na obou stranách relačního operátoru musí být kompatibilní. 
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Pro porovnání se vztahují [zvláštní pravidla pro `NaN` ](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | Konstanta je převedena na `Edm.Double` , což vede ke ztrátě přesnosti pro hodnoty velké velikosti. |
-| `Edm.Double` | `Edm.Int32` | Není k dispozici |
+| `Edm.Double` | `Edm.Int32` | neuvedeno |
 | `Edm.Int64` | `Edm.Double` | Porovnání s `NaN` , `-INF` , nebo `INF` nejsou povolena. |
-| `Edm.Int64` | `Edm.Int64` | Není k dispozici |
+| `Edm.Int64` | `Edm.Int64` | neuvedeno |
 | `Edm.Int64` | `Edm.Int32` | Konstanta je převedena na `Edm.Int64` Před porovnáním |
 | `Edm.Int32` | `Edm.Double` | Porovnání s `NaN` , `-INF` , nebo `INF` nejsou povolena. |
-| `Edm.Int32` | `Edm.Int64` | Není k dispozici |
-| `Edm.Int32` | `Edm.Int32` | Není k dispozici |
+| `Edm.Int32` | `Edm.Int64` | neuvedeno |
+| `Edm.Int32` | `Edm.Int32` | neuvedeno |
 
 Pro porovnávání, které nejsou povoleny, jako je například porovnání pole typu `Edm.Int64` do `NaN` , REST API Azure kognitivní hledání vrátí chybu HTTP 400: Bad Request.
 
@@ -96,11 +96,11 @@ Pro porovnávání, které nejsou povoleny, jako je například porovnání pole
 
 <a name="special-case-nan"></a>
 
-### <a name="special-cases-for-null-and-nan"></a>Zvláštní případy pro `null` a`NaN`
+### <a name="special-cases-for-null-and-nan"></a>Zvláštní případy pro `null` a `NaN`
 
 Při použití relačních operátorů je důležité si uvědomit, že všechna pole, která nejsou v kolekci v Azure Kognitivní hledání, můžou být potenciálně `null` . Následující tabulka uvádí všechny možné výsledky pro výraz porovnání, kde může být jedna strana `null` :
 
-| Operátor | Výsledek, pokud je pouze pole nebo proměnná`null` | Výsledek, pokud je pouze konstanta`null` | Výsledek, pokud pole nebo proměnná i konstanta jsou`null` |
+| Operátor | Výsledek, pokud je pouze pole nebo proměnná `null` | Výsledek, pokud je pouze konstanta `null` | Výsledek, pokud pole nebo proměnná i konstanta jsou `null` |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400: Chybná chyba žádosti | HTTP 400: Chybná chyba žádosti |
 | `lt` | `false` | HTTP 400: Chybná chyba žádosti | HTTP 400: Chybná chyba žádosti |
@@ -113,7 +113,7 @@ Souhrnně se `null` rovná pouze sobě a není menší nebo rovno jiné hodnotě
 
 Pokud má váš index pole typu `Edm.Double` a nahráváte `NaN` do těchto polí hodnoty, budete se muset při psaní filtrů brát v úvahu. Azure Kognitivní hledání implementuje standard IEEE 754 pro zpracování `NaN` hodnot a porovnání s těmito hodnotami produkuje Nezřejmé výsledky, jak je znázorněno v následující tabulce.
 
-| Operátor | Výsledek, pokud je alespoň jeden operand`NaN` |
+| Operátor | Výsledek, pokud je alespoň jeden operand `NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -169,4 +169,4 @@ Rooms/any(room: room/Type eq 'Deluxe Room')
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

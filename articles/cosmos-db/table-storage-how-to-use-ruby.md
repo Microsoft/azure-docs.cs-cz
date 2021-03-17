@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171924"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101115"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí Ruby
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -58,7 +59,7 @@ Můžete se buď připojit k účtu služby Azure Storage nebo účtu Azure Cosm
 
 ### <a name="add-an-azure-storage-connection"></a>Přidání připojení ke službě Azure Storage
 
-Modul Azure Storage načte informace potřebné pro připojení k účtu služby Azure Storage z proměnných prostředí **AZURE_STORAGE_ACCOUNT** a **AZURE_STORAGE_ACCESS_KEY**. Pokud tyto proměnné prostředí nejsou nastavené, je potřeba zadat informace o účtu ještě před použitím objektu **Azure::Storage::Table::TableService** pomocí následujícího kódu:
+Modul Azure Storage načte informace potřebné pro připojení k účtu služby Azure Storage z proměnných prostředí **AZURE_STORAGE_ACCOUNT** a **AZURE_STORAGE_ACCESS_KEY** . Pokud tyto proměnné prostředí nejsou nastavené, je potřeba zadat informace o účtu ještě před použitím objektu **Azure::Storage::Table::TableService** pomocí následujícího kódu:
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
@@ -69,13 +70,13 @@ Získání těchto hodnot z klasického účtu úložiště nebo účtu úloži�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Přejděte do účtu služby Storage, který chcete použít.
-3. V okně Nastavení na pravé straně klikněte na **Přístupové klíče**.
+3. V okně Nastavení na pravé straně klikněte na **Přístupové klíče** .
 4. V okně Přístupové klíče, které se zobrazí, uvidíte přístupový klíč 1 a přístupový klíč 2. Můžete použít libovolný z nich.
 5. Kliknutím na ikonu kopírování zkopírujte klíč do schránky.
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
 
-Pokud se chcete připojit ke službě Azure Cosmos DB, zkopírujte z webu Azure Portal primární připojovací řetězec a s jeho použitím vytvořte objekt **Client**. Objekt **Client** můžete předat při vytváření objektu **TableService**:
+Pokud se chcete připojit ke službě Azure Cosmos DB, zkopírujte z webu Azure Portal primární připojovací řetězec a s jeho použitím vytvořte objekt **Client** . Objekt **Client** můžete předat při vytváření objektu **TableService** :
 
 ```ruby
 common_client = Azure::Storage::Common::Client.create(storage_account_name:'myaccount', storage_access_key:'mykey', storage_table_host:'mycosmosdb_endpoint')
@@ -84,7 +85,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
 
-Objekt **Azure::Storage::Table::TableService** umožňuje pracovat s tabulkami a entitami. Pokud chcete vytvořit tabulku, použijte metodu **create_table()**. Následující příklad vytvoří tabulku nebo vypíše chybu, pokud tabulka již existuje.
+Objekt **Azure::Storage::Table::TableService** umožňuje pracovat s tabulkami a entitami. Pokud chcete vytvořit tabulku, použijte metodu **create_table()** . Následující příklad vytvoří tabulku nebo vypíše chybu, pokud tabulka již existuje.
 
 ```ruby
 azure_table_service = Azure::Storage::Table::TableService.new
@@ -97,7 +98,7 @@ end
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Pokud chcete přidat entitu, nejprve vytvořte objekt hash definující vlastnosti entity. Nezapomeňte, že pro každou entitu musíte zadat **PartitionKey** a **RowKey**. Jedná se o jedinečné identifikátory entit a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti. Azure Storage používá **PartitionKey** k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou **PartitionKey** se ukládají na stejném uzlu. **RowKey** je jedinečné ID entity v rámci oddílu, do kterého patří.
+Pokud chcete přidat entitu, nejprve vytvořte objekt hash definující vlastnosti entity. Nezapomeňte, že pro každou entitu musíte zadat **PartitionKey** a **RowKey** . Jedná se o jedinečné identifikátory entit a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti. Azure Storage používá **PartitionKey** k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou **PartitionKey** se ukládají na stejném uzlu. **RowKey** je jedinečné ID entity v rámci oddílu, do kterého patří.
 
 ```ruby
 entity = { "content" => "test entity",
@@ -114,7 +115,7 @@ Existující entitu můžete aktualizovat několika metodami:
 * **insert_or_merge_entity():** Aktualizuje existující entitu tím, že ji nahradí. Pokud žádná entita neexistuje, vloží se nová entita:
 * **insert_or_replace_entity():** Aktualizuje existující entitu tím, že s ní sloučí nové hodnoty vlastností. Pokud žádná entita neexistuje, vloží se nová entita.
 
-Následující příklad ukazuje aktualizaci entity pomocí metody **update_entity()**:
+Následující příklad ukazuje aktualizaci entity pomocí metody **update_entity()** :
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -122,11 +123,11 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-V případě metod **update_entity()** a **merge_entity()** platí, že pokud aktualizovaná entita neexistuje, operace aktualizace selže. Proto pokud chcete entitu uložit bez ohledu na to, jestli již existuje, měli byste místo toho použít metodu **insert_or_replace_entity()** nebo **insert_or_merge_entity()**.
+V případě metod **update_entity()** a **merge_entity()** platí, že pokud aktualizovaná entita neexistuje, operace aktualizace selže. Proto pokud chcete entitu uložit bez ohledu na to, jestli již existuje, měli byste místo toho použít metodu **insert_or_replace_entity()** nebo **insert_or_merge_entity()** .
 
 ## <a name="work-with-groups-of-entities"></a>Práce se skupinami entit
 
-Někdy má smysl odeslat více operací společně v dávce, aby se zajistilo jejich atomické zpracování serverem. Uděláte to tak, že nejprve vytvoříte objekt **Batch** a pak použijete metodu **execute_batch()** pro objekt **TableService**. Následující příklad ukazuje odeslání dvou entit s RowKey 2 a 3 v dávce. Poznámka: Tento přístup funguje pouze pro entity se stejnou hodnotou PartitionKey.
+Někdy má smysl odeslat více operací společně v dávce, aby se zajistilo jejich atomické zpracování serverem. Uděláte to tak, že nejprve vytvoříte objekt **Batch** a pak použijete metodu **execute_batch()** pro objekt **TableService** . Následující příklad ukazuje odeslání dvou entit s RowKey 2 a 3 v dávce. Poznámka: Tento přístup funguje pouze pro entity se stejnou hodnotou PartitionKey.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -140,7 +141,7 @@ results = azure_table_service.execute_batch(batch)
 
 ## <a name="query-for-an-entity"></a>Dotaz na entitu
 
-Pokud chcete zadat dotaz na entitu v tabulce, použijte metodu **get_entity()** a předejte do ní název tabulky, **PartitionKey** a **RowKey**.
+Pokud chcete zadat dotaz na entitu v tabulce, použijte metodu **get_entity()** a předejte do ní název tabulky, **PartitionKey** a **RowKey** .
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
@@ -149,7 +150,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 
 ## <a name="query-a-set-of-entities"></a>Dotaz na sadu entit
 
-Pokud chcete zadat dotaz na sadu entit v tabulce, vytvořte objekt hash dotazu a použijte metodu **query_entities()**. Následující příklad ukazuje získání všech entit se stejnou hodnotou **PartitionKey**:
+Pokud chcete zadat dotaz na sadu entit v tabulce, vytvořte objekt hash dotazu a použijte metodu **query_entities()** . Následující příklad ukazuje získání všech entit se stejnou hodnotou **PartitionKey** :
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -172,7 +173,7 @@ result, token = azure_table_service.query_entities("testtable", query)
 
 ## <a name="delete-an-entity"></a>Odstranění entity
 
-Pokud chcete odstranit entitu, použijte metodu **delete_entity()**. Předejte do ní název tabulky, která entitu obsahuje, a PartitionKey a RowKey entity.
+Pokud chcete odstranit entitu, použijte metodu **delete_entity()** . Předejte do ní název tabulky, která entitu obsahuje, a PartitionKey a RowKey entity.
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")

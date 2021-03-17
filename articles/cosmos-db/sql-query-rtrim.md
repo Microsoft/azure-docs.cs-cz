@@ -3,18 +3,21 @@ title: RTRIM v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci SQL System funkce RTRIM v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b740d14315f6d9ba2f1788c56d6b1fcd8945c83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0765269fb085c8d4fd8485790772a91c9f2e6373
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302079"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341531"
 ---
 # <a name="rtrim-azure-cosmos-db"></a>RTRIM (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí řetězcový výraz po odebrání koncových prázdných hodnot.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

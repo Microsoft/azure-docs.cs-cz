@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371732"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831546"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -27,12 +27,11 @@ Tato část popisuje selhání operace zálohování virtuálního počítače A
   * Aby se zajistilo, že nedochází k žádným problémům s rozšířením snímků, [odinstalujte rozšíření pro vynucené načtení a pak zkuste zálohování zopakovat](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md).
 * Ověřte, že virtuální počítač má připojení k Internetu.
   * Ujistěte se, že není spuštěná jiná služba zálohování.
-* `Services.msc`Ověřte, že je **spuštěná**služba **agenta hosta systému Windows Azure** . Pokud chybí služba **Windows Azure Host agent** , nainstalujte ji z [zálohování virtuálních počítačů Azure do trezoru Recovery Services](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-* **Protokol událostí** může zobrazovat selhání zálohování, které se nachází v jiných zálohovacích produktech, například zálohování Windows serveru, a není způsobené zálohováním Azure. K určení, zda se jedná o problém s Azure Backup, použijte následující postup:
-  * Pokud dojde k chybě při **zálohování** položky ve zdroji nebo zprávě události, ověřte, jestli se zálohy zálohování virtuálních počítačů Azure IaaS úspěšně a jestli se vytvořil bod obnovení s požadovaným typem snímku.
+* `Services.msc`Ověřte, že je **spuštěná** služba **agenta hosta systému Windows Azure** . Pokud chybí služba **Windows Azure Host agent** , nainstalujte ji z [zálohování virtuálních počítačů Azure do trezoru Recovery Services](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
+* **Protokol událostí** může zobrazit selhání zálohování, které se nachází v jiných zálohovacích produktech, například zálohování serveru Windows Server, a není důvodem Azure Backup. K určení, zda se jedná o problém s Azure Backup, použijte následující postup:
+  * Pokud dojde k chybě v **zálohování** položky ve zdroji nebo zprávě události, ověřte, jestli se zálohy zálohování virtuálních počítačů Azure IaaS úspěšně a jestli se vytvořil bod obnovení s požadovaným typem snímku.
   * Pokud Azure Backup funguje, bude problém nejspíš s jiným řešením zálohování.
-  * Tady je příklad chyby prohlížeče událostí 517, kdy služba Azure Backup fungovala správně, ale "Zálohování Windows Serveru" se nezdařila:<br>
-    ![Zálohování Windows Serveru selhává](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * Tady je příklad chyby Prohlížeč událostí 517, ve které Azure Backup pracovala správně, ale "Zálohování Windows Serveru" selhala: ![ selhání zálohování Windows serveru](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Pokud se Azure Backup nedaří, vyhledejte odpovídající kód chyby v části běžné chyby zálohování virtuálních počítačů v tomto článku.
 
 ## <a name="common-issues"></a>Běžné problémy
@@ -43,8 +42,8 @@ Níže jsou uvedené běžné problémy se selháním zálohování virtuálníc
 
 Kód chyby: VMRestorePointInternalError
 
-Pokud v době zálohování se v **protokolu Prohlížeč událostí aplikace** zobrazí **název aplikace s chybou: IaaSBcdrExtension.exe** pak se potvrdí, že antivirová ochrana nakonfigurovaná ve virtuálním počítači omezuje spuštění rozšíření zálohování.
-Pokud chcete tento problém vyřešit, vylučte v konfiguraci antivirové ochrany níže uvedené adresáře a zkuste operaci zálohování zopakovat.
+Pokud v době zálohování **Prohlížeč událostí protokoly aplikací** zobrazí **název aplikace s chybou: IaaSBcdrExtension.exe** pak se potvrdí, že antivirová ochrana nakonfigurovaná ve virtuálním počítači omezuje spuštění rozšíření zálohování.
+Pokud chcete tento problém vyřešit, vylučte v konfiguraci antivirové ochrany adresáře a zkuste operaci zálohování zopakovat.
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -56,7 +55,7 @@ Chybová zpráva: při kopírování zálohovaných dat z trezoru vypršel časo
 
 K tomu může dojít v důsledku přechodných chyb úložiště nebo nedostatečného účtu úložiště pro službu Backup pro přenos dat do trezoru v časovém limitu. Nakonfigurujte zálohování virtuálních počítačů pomocí těchto [osvědčených postupů](backup-azure-vms-introduction.md#best-practices) a zkuste operaci zálohování zopakovat.
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – virtuální počítač není ve stavu, který umožňuje zálohování.
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Virtuální počítač není ve stavu, který umožňuje zálohování
 
 Kód chyby: UserErrorVmNotInDesirableState <br/>
 Chybová zpráva: virtuální počítač není ve stavu, který umožňuje zálohování.<br/>
@@ -64,16 +63,26 @@ Chybová zpráva: virtuální počítač není ve stavu, který umožňuje zálo
 Operace zálohování se nezdařila, protože virtuální počítač je v neúspěšném stavu. Aby bylo možné úspěšně provést zálohování, virtuální počítač musí být ve stavu Spuštěno, Zastaveno nebo Zastaveno (přidělení zrušeno).
 
 * Pokud je virtuální počítač v přechodném stavu mezi **spuštěním** a **vypnutím**, počkejte na změnu stavu. Potom aktivujte úlohu zálohování.
-* Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra systému Linux s vylepšeným zabezpečením, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalovaná přípona zálohování.
+* Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra Security-Enhanced Linux, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalované rozšíření zálohování.
 
 ### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nepovedlo se zablokovat jeden nebo více přípojných bodů virtuálního počítače, aby se mohl vytvořit snímek konzistentní se systémem souborů.
 
 Kód chyby: UserErrorFsFreezeFailed <br/>
 Chybová zpráva: Nepodařilo se zablokovat jeden nebo více přípojných bodů virtuálního počítače, aby bylo možné vytvořit snímek konzistentní se systémem souborů.
 
-* Odpojte zařízení, u kterých se stav systému souborů nečistí, pomocí příkazu **umount** .
+* Pomocí příkazu **umount** odpojte zařízení, pro které se stav systému souborů nečistí.
 * Spusťte kontrolu konzistence systému souborů na těchto zařízeních pomocí příkazu **fsck** .
 * Připojte zařízení znovu a zkuste operaci zálohování zopakovat.</ol>
+
+Pokud zařízení nemůžete odpojit, můžete aktualizovat konfiguraci zálohování virtuálních počítačů tak, aby ignorovala některé přípojné body. Pokud například přípojný bod '/mnt/Resource ' nelze zrušit a způsobit selhání zálohování virtuálních počítačů, můžete aktualizovat konfigurační soubory zálohování virtuálního počítače pomocí ```MountsToSkip``` vlastnosti následujícím způsobem.
+
+```bash
+cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
+fsfreeze: True
+MountsToSkip = /mnt/resource
+SafeFreezeWaitInSeconds=600
+```
+
 
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC – instalace/operace rozšíření se nezdařila z důvodu chyby modelu COM+
 
@@ -93,28 +102,81 @@ Operace zálohování se nezdařila z důvodu problému se **systémovou aplikac
 * Pokud službu nemůžete restartovat, přeinstalujte **DTC (Distributed Transaction Coordinator)** službu pomocí následujících kroků:
   * Zastavte službu DTC (Distributed Transaction Coordinator).
   * Otevřete příkazový řádek (cmd).
-  * Spustit příkaz "MSDTC-Uninstall"
-  * Spusťte příkaz "MSDTC-install"
+  * Spusťte příkaz `msdtc -uninstall`.
+  * Spusťte příkaz `msdtc -install`.
   * Spusťte službu DTC (Distributed Transaction Coordinator).
 * Spusťte **systémovou aplikaci modelu COM+** služby systému Windows. Po spuštění **aplikace systému com+** spusťte úlohu zálohování z Azure Portal.</ol>
 
-### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState-snímková operace se nezdařila, protože zapisovače VSS byly ve špatném stavu.
+### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState – Operace vytvoření snímku selhala kvůli zapisovačům VSS ve špatném stavu
 
 Kód chyby: ExtensionFailedVssWriterInBadState <br/>
 Chybová zpráva: operace snímku se nezdařila, protože zapisovače VSS byly ve špatném stavu.
 
-Restartujte zapisovače služby VSS, které jsou ve špatném stavu. Z příkazového řádku se zvýšenými oprávněními spusťte příkaz ```vssadmin list writers``` . Výstup obsahuje všechny zapisovače VSS a jejich stav. U každého zapisovače VSS se stavem, který není **[1] stabilní**, restartujte zapisovač VSS spuštěním následujících příkazů z příkazového řádku se zvýšenými oprávněními:
+K této chybě dochází, protože zapisovače VSS byly ve špatném stavu. Rozšíření Azure Backup komunikují se zapisovači VSS, aby bylo možné pořizovat snímky disků. Pokud chcete tento problém vyřešit, postupujte následovně:
 
-* ```net stop serviceName```
-* ```net start serviceName```
+Krok 1: Restartujte zapisovače VSS, které jsou ve špatném stavu.
 
-Další postup, který může pomáhat, je spustit následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce).
+* Z příkazového řádku se zvýšenými oprávněními spusťte příkaz ```vssadmin list writers``` .
+* Výstup obsahuje informace o všech zapisovačích VSS a jejich stavu. Restartujte služby všech zapisovačů VSS, které nejsou ve stavu **[1] Stable** (Stabilní).
+* Službu můžete restartovat spuštěním následujících příkazů na příkazovém řádku se zvýšenými oprávněními: .
+
+ ```net stop serviceName``` <br>
+ ```net start serviceName```
+
+> [!NOTE]
+> Restartování některých služeb může mít dopad na produkční prostředí. Zajistěte, aby byl proces schválení následován a služba se restartovala v naplánovaném výpadku.
+
+Krok 2: Pokud restartování zapisovačů VSS nevyřešilo problém, spusťte následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce), aby se zabránilo vytváření vláken pro snímky objektů BLOB.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-Přidáním tohoto klíče registru dojde k tomu, že vlákna nebudou vytvořena pro snímky objektů BLOB a zabráníte vypršení časového limitu.
+Krok 3: Pokud kroky 1 a 2 nevyřešily problém, může být selhání způsobeno vypršením časového limitu zapisovače VSS z důvodu omezeného IOPS.<br>
+
+Chcete-li ověřit, přejděte do části ***systémové a prohlížeč událostí protokoly aplikací** _ a zkontrolujte následující chybovou zprávu:<br>
+Vypršel časový limit poskytovatele stínové kopie _The při ukládání zápisů do svazku, ve kterém se stín kopíruje. To je pravděpodobně způsobeno nadměrnými činnostmi na svazku aplikace nebo systémovou službou. Zkuste to znovu později, až bude snížena aktivita na svazku. *<br>
+
+Řešení:
+
+* Vyhledejte možnosti pro distribuci zatížení mezi disky virtuálních počítačů. Tím se sníží zatížení na jednom disku. [Omezení IOPS můžete kontrolovat tím, že povolíte diagnostické metriky na úrovni úložiště](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm).
+* Změňte zásadu zálohování tak, aby prováděla zálohování v době mimo špičku, kdy je zatížení virtuálního počítače na nejnižší úrovni.
+* Upgradujte disky Azure tak, aby podporovaly vyšší IOPs. [Další informace](../virtual-machines/disks-types.md)
+
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState – Operace vytvoření snímku selhala kvůli špatnému stavu služby Stínová kopie svazku (VSS)
+
+Kód chyby: ExtensionFailedVssServiceInBadState <br/>
+Chybová zpráva: operace snímku se nepovedla kvůli službě Stínová kopie svazku (VSS) ve špatném stavu.
+
+K této chybě dochází, protože služba VSS je ve špatném stavu. Rozšíření Azure Backup komunikují se službou VSS, aby bylo možné pořizovat snímky disků. Pokud chcete tento problém vyřešit, postupujte následovně:
+
+Restartujte službu Stínová kopie svazku (VSS).
+
+* Přejděte do nástroje Services.msc a restartujte službu Stínová kopie svazku.<br>
+(nebo)<br>
+* Na příkazovém řádku se zvýšenými oprávněními spusťte následující příkazy:
+
+ ```net stop VSS``` <br>
+ ```net start VSS```
+
+Pokud problém přetrvává, během plánovaného výpadku virtuální počítač restartujte.
+
+### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable – vytvoření virtuálního počítače se nezdařilo, protože vybraná velikost virtuálního počítače není k dispozici.
+
+Kód chyby: chybová zpráva UserErrorSkuNotAvailable: Vytvoření virtuálního počítače se nezdařilo, protože vybraná velikost virtuálního počítače není k dispozici.
+
+K této chybě dochází, protože velikost virtuálního počítače vybraná během operace obnovení je Nepodporovaná velikost. <br>
+
+Chcete-li tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](./backup-azure-arm-restore-vms.md#restore-disks) . Pomocí těchto disků vytvořte virtuální počítač ze seznamu [dostupných podporovaných velikostí virtuálních počítačů](./backup-support-matrix-iaas.md#vm-compute-support) pomocí [rutin PowerShellu](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+
+### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported – vytvoření virtuálního počítače se nezdařilo, protože není k dispozici požadavek na nákup na trhu.
+
+Kód chyby: chybová zpráva UserErrorMarketPlaceVMNotSupported: Vytvoření virtuálního počítače se nezdařilo z důvodu nepřítomnosti žádosti o nákup na trhu v místě.
+
+Azure Backup podporuje zálohování a obnovení virtuálních počítačů, které jsou k dispozici v Azure Marketplace. K této chybě dochází, když se pokoušíte obnovit virtuální počítač (s konkrétním nastavením pro plán/Vydavatel), který už není dostupný v Azure Marketplace. další [informace najdete tady](/legal/marketplace/participation-policy#offering-suspension-and-removal).
+
+* Pokud chcete tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](./backup-azure-arm-restore-vms.md#restore-disks) a pak použijte rutiny [PowerShellu](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) nebo [Azure CLI](./tutorial-restore-disk.md) k vytvoření virtuálního počítače s nejnovějšími informacemi z webu Marketplace, které odpovídají danému virtuálnímu počítači.
+* Pokud Vydavatel nemá žádné informace z Marketplace, můžete k načtení dat použít datové disky a můžete je připojit k existujícímu virtuálnímu počítači.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – při analýze konfigurace záložního rozšíření došlo k chybě.
 
@@ -144,7 +206,7 @@ Pokud se v adresáři **MachineKeys** nacházejí oprávnění, která se liší
 2. Odstraňte všechny certifikáty, které jsou **vydané pro** , model nasazení Classic nebo **generátor certifikátů Windows Azure CRP**:
 
    * [Otevřete certifikáty v konzole místního počítače](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
-   * V části **osobní**  >  **certifikáty**odstraňte všechny certifikáty, které jsou **vydané pro** , model nasazení Classic nebo **generátor certifikátů Windows Azure CRP**.
+   * V části **osobní**  >  **certifikáty** odstraňte všechny certifikáty, které jsou **vydané pro** , model nasazení Classic nebo **generátor certifikátů Windows Azure CRP**.
 3. Spustí úlohu zálohování virtuálního počítače.
 
 ### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – stav rozšíření nepodporuje operaci zálohování.
@@ -155,24 +217,24 @@ Chybová zpráva: stav rozšíření není pro operaci zálohování podporován
 Operace zálohování se nezdařila z důvodu nekonzistentního stavu záložního rozšíření. Pokud chcete tento problém vyřešit, postupujte následovně:
 
 * Ujistěte se, že je agent hosta nainstalovaný a funkční.
-* Z Azure Portal přejít na **Virtual Machine**  >  **všechna nastavení**  >  **rozšíření** pro virtuální počítače
-* Vyberte rozšíření zálohování VmSnapshot nebo VmSnapshotLinux a klikněte na **Odinstalovat**.
+* Z Azure Portal přejít na   >  **všechna nastavení**  >  **rozšíření** pro virtuální počítače
+* Vyberte záložní rozšíření VmSnapshot nebo VmSnapshotLinux a vyberte **odinstalovat**.
 * Po odstranění rozšíření zálohování zkuste operaci zálohování znovu.
 * Další operace zálohování nainstaluje nové rozšíření v požadovaném stavu.
 
 ### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError-snímková operace se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky.
 
-Kód chyby: ExtensionFailedSnapshotLimitReachedError <br/>
+Kód chyby: ExtensionFailedSnapshotLimitReachedError  <br/>
 Chybová zpráva: operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky.
 
-Operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky. Proveďte níže uvedené kroky pro řešení potíží a potom operaci opakujte.
+Operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky. Proveďte následující kroky pro řešení potíží a potom operaci opakujte.
 
-* Odstraňte objekty blob disku – snímky, které nejsou povinné. Buďte opatrní, abyste neodstranili objekt BLOB disku, měli byste odstranit jenom objekty blob snímků.
-* Pokud je v účtech úložiště disků virtuálního počítače povolené obnovitelné odstranění, nakonfigurujte zachování obnovitelného odstranění tak, aby existující snímky byly menší než maximální povolený počet v libovolném časovém okamžiku.
+* Odstraňte objekty blob disku – snímky, které nejsou povinné. Buďte opatrní, abyste neodstranili objekty blob disku. Odstranit se dají jenom objekty blob snímku.
+* Pokud je v účtech úložiště disků virtuálního počítače povolené obnovitelné odstranění, nakonfigurujte uchovávání obnovitelného odstranění, aby byly existující snímky menší, než je povolené maximum v jakémkoli okamžiku.
 * Pokud je v zálohovaném virtuálním počítači povolená možnost Azure Site Recovery, proveďte následující kroky:
 
   * Ujistěte se, že hodnota **isanysnapshotfailed** je v/etc/Azure/vmbackup.conf nastavena na hodnotu false.
-  * Naplánujte Azure Site Recovery v jinou dobu, aby nedošlo ke konfliktu operace zálohování.
+  * Naplánujte Azure Site Recovery v jinou dobu, takže nekoliduje s operací zálohování.
 
 ### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-snímková operace selhala kvůli nedostatečným prostředkům virtuálního počítače.
 
@@ -183,7 +245,7 @@ Operace zálohování virtuálního počítače selhala kvůli zpoždění při 
 
 **Krok 1**: vytvoření snímku pomocí hostitele
 
-Na příkazovém řádku se zvýšenými oprávněními (správce) spusťte následující příkaz:
+Z příkazového řádku se zvýšenými oprávněními (admin) spusťte následující příkaz:
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
@@ -192,9 +254,9 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta. Zopakujte operaci zálohování.
 
-**Krok 2**: zkuste změnit plán zálohování na čas menšího zatížení virtuálního počítače (méně než procesor/IOps atd.).
+**Krok 2**: zkuste změnit plán zálohování na čas menšího zatížení virtuálního počítače (například méně procesoru nebo IOPS).
 
-**Krok 3**: zkuste [zvětšit velikost virtuálního počítače](https://azure.microsoft.com/blog/resize-virtual-machines/) a zkuste operaci zopakovat.
+**Krok 3**: zkuste [zvětšit velikost virtuálního počítače](../virtual-machines/windows/resize-vm.md) a zkuste operaci zopakovat.
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound – nepovedlo se provést operaci, protože virtuální počítač už neexistuje/400094, BCMV2VMNotFound – virtuální počítač neexistuje nebo se nenašel virtuální počítač Azure.
 
@@ -203,7 +265,7 @@ Virtuální počítač Azure se nenašel.
 
 K této chybě dojde, když se odstraní primární virtuální počítač, ale zásady zálohování pořád hledají virtuální počítač, který se má zálohovat. Chcete-li tuto chybu opravit, proveďte následující kroky:
 
-* Znovu vytvořit virtuální počítač se stejným názvem a stejným názvem skupiny prostředků, **název cloudové služby**<br>– nebo –
+* Znovu vytvořit virtuální počítač se stejným názvem a stejným názvem skupiny prostředků, **název cloudové služby**<br>nebo
 * Zastavte ochranu virtuálního počítače s nebo bez odstranění zálohovaných dat. Další informace najdete v tématu [zastavení ochrany virtuálních počítačů](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>
 
 ### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError – snímek virtuálního počítače nejde zkopírovat kvůli nedostatku volného místa v účtu úložiště.
@@ -229,7 +291,7 @@ Vypněte BitLocker pro všechny jednotky na virtuálním počítači a zkontrolu
 Kód chyby: VmNotInDesirableState <br/> Chybová zpráva: virtuální počítač není ve stavu, který umožňuje zálohování.
 
 * Pokud je virtuální počítač v přechodném stavu mezi **spuštěním** a **vypnutím**, počkejte na změnu stavu. Potom aktivujte úlohu zálohování.
-* Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra systému Linux s vylepšeným zabezpečením, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalovaná přípona zálohování.
+* Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra Security-Enhanced Linux, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalované rozšíření zálohování.
 
 * Agent virtuálního počítače se na virtuálním počítači nenachází: <br>Nainstalujte libovolný požadavek a agenta virtuálního počítače. Pak restartujte operaci. | Přečtěte si další informace o [instalaci agenta virtuálního počítače a o tom, jak ověřit instalaci agenta virtuálního počítače](#vm-agent).
 
@@ -238,17 +300,17 @@ Kód chyby: VmNotInDesirableState <br/> Chybová zpráva: virtuální počítač
 Kód chyby: ExtensionSnapshotFailedNoSecureNetwork <br/> Chybová zpráva: operace snímku se nezdařila, protože došlo k chybě při vytváření zabezpečeného kanálu komunikace v síti.
 
 * Otevřete Editor registru spuštěním **regedit.exe** v režimu se zvýšenými oprávněními.
-* Identifikujte všechny verze .NET Framework přítomné ve vašem systému. Nacházejí se v hierarchii Key registru **HKEY_LOCAL_MACHINE \software\microsoft**.
+* Identifikujte všechny verze .NET Framework přítomné ve vašem systému. Nacházejí se v hierarchii **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** klíčů registru.
 * Pro každý .NET Framework přítomný v klíči registru přidejte následující klíč: <br> **Do schusestrongcrypto "= DWORD: 00000001**. </ol>
 
 ### <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure – operace snímku se nezdařila, protože došlo k chybě při instalaci Distribuovatelné součásti Visual C++ pro Visual Studio 2012
 
 Kód chyby: ExtensionVCRedistInstallationFailure <br/> Chybová zpráva: operace snímku se nezdařila, protože došlo k chybě při instalaci Distribuovatelné součásti Visual C++ pro Visual Studio 2012.
 
-* Přejděte na `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64 a nainstalujte ji.<br/>Ujistěte se, že hodnota klíče registru, která umožňuje instalaci služby, je nastavená na správnou hodnotu. To znamená, že nastavte **počáteční** hodnotu v **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte instalační službu spuštěním příkazu **msiexec/unregister** následovaným příkazem **msiexec/Register** z příkazového řádku se zvýšenými oprávněními.
-* Zkontrolujte protokol událostí a ověřte, jestli máte všímáte problémy související s přístupem. Příklad: *produkt: Microsoft Visual C++ 2013 x64 minimální modul runtime-12.0.21005--Error 1401. nelze vytvořit klíč: Software\Classes.  Chyba systému 5.  Ověřte, zda máte dostatečný přístup k tomuto klíči, nebo se obraťte na pracovníky podpory.* <br><br> Zajistěte, aby měl účet správce nebo uživatele dostatečná oprávnění k aktualizaci klíče registru **HKEY_LOCAL_MACHINE \software\classes**. Poskytněte dostatečná oprávnění a restartujte agenta hosta systému Windows Azure.<br><br> <li> Pokud máte antivirové produkty, ujistěte se, že mají správná pravidla vyloučení, která umožňují instalaci.
+* Přejděte na `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64 a nainstalujte ji.<br/>Ujistěte se, že hodnota klíče registru, která umožňuje instalaci služby, je nastavená na správnou hodnotu. To znamená, že nastaví **počáteční** hodnotu v **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte instalační službu spuštěním příkazu **msiexec/unregister** následovaným příkazem **msiexec/Register** z příkazového řádku se zvýšenými oprávněními.
+* Zkontrolujte protokol událostí a ověřte, jestli jste všímátei problémy související s přístupem. Příklad: *produkt: Microsoft Visual C++ 2013 x64 minimální modul runtime-12.0.21005--Error 1401. nelze vytvořit klíč: Software\Classes.  Chyba systému 5.  Ověřte, zda máte dostatečný přístup k tomuto klíči, nebo se obraťte na pracovníky podpory.* <br><br> Zajistěte, aby měl účet správce nebo uživatele dostatečná oprávnění k aktualizaci klíče registru **HKEY_LOCAL_MACHINE\SOFTWARE\Classes**. Poskytněte dostatečná oprávnění a restartujte agenta hosta systému Windows Azure.<br><br> <li> Pokud máte antivirové produkty, ujistěte se, že mají správná pravidla vyloučení, která umožňují instalaci.
 
-### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – na virtuálním počítači je nakonfigurovaná neplatná zásada, která znemožňuje operaci snímku.
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – Na virtuálním počítači jsou nakonfigurované neplatné zásady, které brání operaci vytvoření snímku
 
 Kód chyby: UserErrorRequestDisallowedByPolicy <BR> Chybová zpráva: na virtuálním počítači je nakonfigurovaná neplatná zásada, která znemožňuje operaci snímku.
 
@@ -259,15 +321,32 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Zrušení není pro tento typ úlohy podporováno: <br>Počkejte, až se úloha dokončí. |Žádné |
-| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**– nebo –**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
+| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**ani**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
 | Zálohování nemůže úlohu zrušit, protože neprobíhá: <br>Zrušení je podporováno pouze pro probíhající úlohy. Zkuste zrušit probíhající úlohu. |K této chybě dochází z důvodu přechodného stavu. Počkejte minutu a zkuste operaci zrušit. |
 | Zálohování se nepodařilo zrušit úlohu: <br>Počkejte, až se úloha dokončí. |Žádné |
 
 ## <a name="restore"></a>Obnovení
 
+### <a name="disks-appear-offline-after-file-restore"></a>Po obnovení souboru se disky zobrazí v režimu offline.
+
+Po obnovení si všimněte, že jsou disky v režimu offline:
+
+* Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Přečtěte si další informace](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).  
+* Ujistěte se, že neprovádíte obnovení do stejného zdroje. další [informace](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)najdete v části.
+
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – obnovení se nepovedlo, protože se nenašel snímek virtuálního počítače.
+
+Kód chyby: UserErrorInstantRpNotFound <br>
+Chybová zpráva: operace obnovení se nezdařila, protože nebyl nalezen snímek virtuálního počítače. Snímek se mohl odstranit, zkontrolujte prosím.<br>
+
+K této chybě dochází při pokusu o obnovení z bodu obnovení, který nebyl přenesen do trezoru a byl odstraněn ve fázi snímku. 
+<br>
+Pokud chcete tento problém vyřešit, zkuste obnovit virtuální počítač z jiného bodu obnovení.<br>
+
+#### <a name="common-errors"></a>Běžné chyby 
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
-| Obnovení selhalo s interní chybou cloudu. |<ol><li>Cloudová služba, na kterou se pokoušíte obnovit, je nakonfigurovaná pomocí nastavení DNS. Můžete kontrolovat: <br>**$Deployment = Get-AzureDeployment-ServiceName "ServiceName" – slot "Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Pokud je nakonfigurovaná **adresa** , nakonfigurují se nastavení DNS.<br> <li>Cloudová služba, na kterou se pokoušíte obnovit, má nakonfigurovanou **vyhrazenou IP adresu**a stávající virtuální počítače v cloudové službě jsou ve stavu Zastaveno. Pomocí následujících rutin PowerShellu můžete ověřit, jestli cloudová služba rezervovala IP adresu: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName" – slot "provozní" $DEP. ReservedIPName**. <br><li>Pokoušíte se obnovit virtuální počítač pomocí následujících speciálních síťových konfigurací do stejné cloudové služby: <ul><li>Virtuální počítače s konfigurací nástroje pro vyrovnávání zatížení, interní a externí.<li>Virtuální počítače s několika rezervovanými IP adresami. <li>Virtuální počítače s několika síťovými kartami. </ul><li>V uživatelském rozhraní vyberte novou cloudovou službu nebo si přečtěte [důležité informace o obnovení](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) virtuálních počítačů se speciální konfigurací sítě.</ol> |
+| Obnovení selhalo s interní chybou cloudu. |<ol><li>Cloudová služba, na kterou se pokoušíte obnovit, je nakonfigurovaná pomocí nastavení DNS. Můžete kontrolovat: <br>**$Deployment = Get-AzureDeployment-ServiceName "ServiceName" – slot "provozní" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Pokud je nakonfigurovaná **adresa** , nakonfigurují se nastavení DNS.<br> <li>Cloudová služba, na kterou se pokoušíte obnovit, má nakonfigurovanou **vyhrazenou IP adresu** a stávající virtuální počítače v cloudové službě jsou ve stavu Zastaveno. Můžete ověřit, že cloudová služba rezervovala IP adresu pomocí následujících rutin PowerShellu: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName" – slot "produkční" $DEP. ReservedIPName**. <br><li>Pokoušíte se obnovit virtuální počítač pomocí následujících speciálních síťových konfigurací do stejné cloudové služby: <ul><li>Virtuální počítače s konfigurací nástroje pro vyrovnávání zatížení, interní a externí.<li>Virtuální počítače s několika rezervovanými IP adresami. <li>Virtuální počítače s několika síťovými kartami. </ul><li>V uživatelském rozhraní vyberte novou cloudovou službu nebo si přečtěte [důležité informace o obnovení](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) virtuálních počítačů se speciální konfigurací sítě.</ol> |
 | Vybraný název DNS je již obsazen: <br>Zadejte jiný název DNS a zkuste to znovu. |Tento název DNS odkazuje na název cloudové služby, obvykle končící na **. cloudapp.NET**. Tento název musí být jedinečný. Pokud se zobrazí tato chyba, musíte během obnovování zvolit jiný název virtuálního počítače. <br><br> Tato chyba se zobrazí pouze uživatelům Azure Portal. Operace obnovení prostřednictvím prostředí PowerShell bude úspěšná, protože obnoví jenom disky a virtuální počítač nevytvoří. Tato chyba se projeví, když po operaci obnovení disku bude virtuální počítač explicitně vytvořen. |
 | Zadaná konfigurace virtuální sítě není správná: <br>Zadejte jinou konfiguraci virtuální sítě a zkuste to znovu. |Žádné |
 | Zadaná cloudová služba používá rezervovanou IP adresu, která se neshoduje s konfigurací obnoveného virtuálního počítače: <br>Zadejte jinou cloudovou službu, která nepoužívá rezervovanou IP adresu. Nebo vyberte jiný bod obnovení, ze kterého chcete obnovit. |Žádné |
@@ -289,23 +368,23 @@ Pokud zálohování trvá déle než 12 hodin nebo obnovení trvá déle než 6 
 
 Agent virtuálního počítače je obvykle přítomen na virtuálních počítačích vytvořených z Galerie Azure. Virtuální počítače, které jsou migrovány z místních datových center, ale nebudou mít nainstalovaného agenta virtuálního počítače. Pro tyto virtuální počítače musí být agent virtuálního počítače nainstalovaný explicitně.
 
-#### <a name="windows-vms"></a>Virtuální počítače s Windows
+#### <a name="windows-vms---set-up-the-agent"></a>Virtuální počítače s Windows – nastavení agenta
 
 * Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace potřebujete oprávnění správce.
 * Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) tak, aby označovala, že agent je nainstalovaný. Tento krok není nutný pro Azure Resource Manager virtuálních počítačů.
 
-#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+#### <a name="linux-vms---set-up-the-agent"></a>Virtuální počítače se systémem Linux – nastavení agenta
 
 * Nainstalujte nejnovější verzi agenta z distribučního úložiště. Podrobnosti o názvu balíčku najdete v části [úložiště agenta pro Linux](https://github.com/Azure/WALinuxAgent).
 * Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) a ověřte, jestli je agent nainstalovaný. Tento krok není nutný pro Správce prostředků virtuálních počítačů.
 
 ### <a name="update-the-vm-agent"></a>Aktualizace agenta virtuálního počítače
 
-#### <a name="windows-vms"></a>Virtuální počítače s Windows
+#### <a name="windows-vms---update-the-agent"></a>Virtuální počítače s Windows – aktualizace agenta
 
 * Pokud chcete aktualizovat agenta virtuálního počítače, přeinstalujte [binární soubory agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Než agenta aktualizujete, ujistěte se, že během aktualizace agenta virtuálního počítače nedochází k žádným operacím zálohování.
 
-#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+#### <a name="linux-vms---update-the-agent"></a>Virtuální počítače se systémem Linux – aktualizace agenta
 
 * Chcete-li aktualizovat agenta virtuálního počítače se systémem Linux, postupujte podle pokynů v článku [aktualizace agenta virtuálního počítače se systémem Linux](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json).
 
@@ -321,7 +400,7 @@ Ověření verze agenta virtuálního počítače ve virtuálních počítačíc
 1. Přihlaste se k virtuálnímu počítači Azure a přejděte do složky **C:\WindowsAzure\Packages**. Měli byste najít soubor **WaAppAgent.exe** .
 2. Klikněte na soubor pravým tlačítkem a přejděte na **vlastnosti**. Pak vyberte kartu **Podrobnosti** . Pole **verze produktu** by mělo být 2.6.1198.718 nebo vyšší.
 
-## <a name="troubleshoot-vm-snapshot-issues"></a>Řešení potíží s snímkem virtuálních počítačů
+## <a name="troubleshoot-vm-snapshot-issues"></a>Řešení potíží se snímky virtuálních počítačů
 
 Zálohování virtuálního počítače se spoléhá na vystavování příkazů snímků pro základní úložiště. Při spuštění úlohy snímku není nutné mít přístup k úložišti ani prodlevám. může dojít k selhání úlohy zálohování. Následující podmínky mohou způsobit selhání úlohy snímku:
 

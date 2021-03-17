@@ -3,14 +3,14 @@ title: Nasadit na vyhrazeném hostiteli
 description: Použití vyhrazeného hostitele k dosažení skutečné izolace na úrovni hostitele pro vaše Azure Container Instances úlohy
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259640"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034267"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
 
@@ -18,7 +18,10 @@ ms.locfileid: "86259640"
 
 Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh z pohledu fyzického serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
+
+> [!NOTE]
+> Kvůli některým aktuálním omezením není zaručeno schválení všech žádostí o zvýšení limitu.
 
 * Výchozí omezení pro všechna předplatná, která používají vyhrazené SKU, je 0. Pokud chcete tuto sku použít pro nasazení produkčního kontejneru, vytvořte [support Request Azure][azure-support] pro zvýšení limitu.
 
@@ -31,8 +34,8 @@ Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh
 Počínaje rozhraním API verze 2019-12-01 je `sku` v části vlastnosti skupiny kontejnerů v šabloně nasazení požadovaná vlastnost, která se vyžaduje pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](./container-instances-multi-container-group.md). 
 
 `sku`Vlastnost může mít jednu z následujících hodnot:
-* `Standard`– standardní volba nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
-* `Dedicated`– používá se pro izolaci na úrovni pracovního vytížení s vyhrazenými fyzickými hostiteli pro skupinu kontejnerů.
+* `Standard` – standardní volba nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
+* `Dedicated` – používá se pro izolaci na úrovni pracovního vytížení s vyhrazenými fyzickými hostiteli pro skupinu kontejnerů.
 
 ## <a name="modify-your-json-deployment-template"></a>Úprava šablony nasazení JSON
 

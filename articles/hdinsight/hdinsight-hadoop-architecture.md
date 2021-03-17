@@ -1,19 +1,16 @@
 ---
 title: Architektura Apache Hadoop – Azure HDInsight
 description: Popisuje Apache Hadoop ukládání a zpracování v clusterech Azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162204"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945901"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -53,12 +50,12 @@ Pokud chcete obnovit soubor z účtu úložiště, přečtěte si:
 
 ### <a name="azure-storage"></a>Azure Storage
 
-* [Obnovitelné odstranění objektů blob služby Azure Storage](../storage/blobs/storage-blob-soft-delete.md)
-* [Obnovit objekt BLOB](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Obnovitelné odstranění objektů blob služby Azure Storage](../storage/blobs/soft-delete-blob-overview.md)
+* [Obnovit objekt BLOB](/rest/api/storageservices/undelete-blob)
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[Obnovit – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[Obnovit – AzDataLakeStoreDeletedItem](/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen2
 

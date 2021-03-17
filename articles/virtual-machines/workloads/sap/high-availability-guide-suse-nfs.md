@@ -8,18 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/26/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 993baa521530ffa6a702f8324a1691850687c366
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085159"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668686"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -52,6 +52,10 @@ ms.locfileid: "87085159"
 
 Tento článek popisuje, jak nasadit virtuální počítače, nakonfigurovat virtuální počítače, nainstalovat architekturu clusteru a nainstalovat vysoce dostupný server NFS, který se dá použít k ukládání sdílených dat vysoce dostupného systému SAP.
 Tato příručka popisuje, jak nastavit vysoce dostupný server NFS, který se používá dvěma systémy SAP, NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu předpokládají, že jste použili [šablonu souborového serveru SAP][template-file-server] s předponou prostředků **výr**.
+
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízené* a *hlavní* pravidla, které Microsoft už nepoužívá. Po odebrání podmínek ze softwaru je odebereme z tohoto článku.
 
 Nejprve si přečtěte následující poznámky a dokumenty SAP
 
@@ -120,7 +124,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    4. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/** &lt; ID &gt; odběru**/ResourceGroups/název** &lt; &gt; skupiny prostředků**** &lt; &gt; ** /Providers/Microsoft.Network/virtualNetworks/název** &lt; virtuální sítě &gt; **/subnets/název podsítě
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/**&lt; ID &gt; odběru**/ResourceGroups/název **&lt; &gt; skupiny prostředků****&lt; &gt;** /Providers/Microsoft.Network/virtualNetworks/název **&lt; virtuální sítě &gt;**/subnets/název podsítě
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -158,7 +162,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. Port 61000 pro NW1
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
             1. Zadejte název nového testu stavu (například **NW1-HP**).
-            1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
+            1. Vybrat TCP as Protocol, port 610 **00**, zachovat interval 5 a špatný práh 2
             1. Klikněte na OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
@@ -192,7 +196,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. Port 61000 pro NW1
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
             1. Zadejte název nového testu stavu (například **NW1-HP**).
-            1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
+            1. Vybrat TCP as Protocol, port 610 **00**, zachovat interval 5 a špatný práh 2
             1. Klikněte na OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
@@ -212,11 +216,14 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. 2049 UDP pro NW2
             * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW2
 
+> [!IMPORTANT]
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
+
 > [!Note]
 > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -479,7 +486,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    > - Pro SLES 15/15 SP1 musí být verze aspoň Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
    >
    > Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
-   > V případě existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128), není nutné okamžitě přepínat na agenta prostředků Azure-9,1.
+   > U existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení azure Load-Balancer](https://www.suse.com/support/kb/doc/?id=7024128), neexistuje žádný požadavek na přepnutí přímo do agenta prostředků Azure-No.
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 

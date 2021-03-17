@@ -3,7 +3,7 @@ title: Začněte s doručováním obsahu na vyžádání pomocí REST | Microsof
 description: Tento kurz vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí Azure Media Services pomocí REST API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
@@ -12,19 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 8c15883f4e2a515e8c6015a39951a8729cf77274
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543992"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008871"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento rychlý Start vás provede jednotlivými kroky implementace aplikace pro doručování obsahu videa na vyžádání (VoD) s využitím rozhraní REST API pro Azure Media Services (AMS).
 
@@ -351,7 +353,7 @@ Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do konte
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](/rest/api/storageservices/blob-service-rest-api).
 
 ### <a name="update-the-assetfile"></a>Aktualizace AssetFile
-Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Příklad:
+Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Například:
 
 ```console
 MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
@@ -487,7 +489,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 ### <a name="create-a-job"></a>Vytvoření úlohy
 Každá úloha může mít jeden nebo více úloh v závislosti na typu zpracování, které chcete provést. Prostřednictvím REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů: úkoly lze definovat prostřednictvím vlastnosti navigace úkoly v entitách úlohy nebo prostřednictvím dávkového zpracování OData. Sada Media Services SDK používá dávkové zpracování. Nicméně pro čitelnost příkladů kódu v tomto článku jsou úkoly definovány jako vložené. Informace o dávkovém zpracování najdete v tématu [dávkové zpracování protokolu OData (Open Data Protocol)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. V následující části dokumentace najdete seznam všech [přednastavení úloh](/azure/media-services/previous/media-services-mes-presets-overview) podporovaných procesorem Media Encoder Standard.  
+Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. V následující části dokumentace najdete seznam všech [přednastavení úloh](./media-services-mes-presets-overview.md) podporovaných procesorem Media Encoder Standard.  
 
 **Požadavek HTTP**
 
@@ -871,7 +873,7 @@ Jakmile budete mít AccessPolicy a lokátor, můžete soubory stahovat pomocí r
 
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](/rest/api/storageservices/blob-service-rest-api).
 
-V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Příklad:    
+V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Například:    
 
 * `https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z`
 

@@ -1,6 +1,6 @@
 ---
-title: List tahák pro Azure synapse Analytics (dřív SQL DW)
-description: Najděte odkazy a osvědčené postupy pro rychlé vytvoření řešení Azure synapse Analytics (dříve SQL DW).
+title: Tahák list pro vyhrazený fond SQL (dříve SQL DW)
+description: Najděte odkazy a osvědčené postupy pro rychlé vytvoření vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136095"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120219"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>List tahák pro Azure synapse Analytics (dřív SQL DW)
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Tahák list pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
-Tento tahák list poskytuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure synapse.
+Tento tahák list poskytuje užitečné tipy a osvědčené postupy pro vytváření vyhrazených řešení fondu SQL (dřív SQL DW).
 
-Následující obrázek znázorňuje proces návrhu datového skladu:
+Následující obrázek znázorňuje proces návrhu datového skladu s vyhrazeným fondem SQL (dříve SQL DW):
 
 ![Nákres](./media/cheat-sheet/picture-flow.png)
 
@@ -37,7 +37,7 @@ Znalost typů operací předem vám pomůže optimalizovat návrh tabulek.
 
 ## <a name="data-migration"></a>Migrace dat
 
-Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo Azure Blob Storage. Dále pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview) načtěte data do pracovních tabulek. Použijte následující konfiguraci:
+Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo Azure Blob Storage. Dále pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) načtěte data do pracovních tabulek. Použijte následující konfiguraci:
 
 | Návrh | Doporučení |
 |:--- |:--- |
@@ -46,7 +46,7 @@ Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connect
 | Dělení | Žádné |
 | Třída prostředku | largerc nebo xlargerc |
 
-Další informace o [migraci dat](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [načítání dat](design-elt-data-loading.md) a [procesu extrakce, načítání a transformace (ELT)](design-elt-data-loading.md).
+Další informace o [migraci dat](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), [načítání dat](design-elt-data-loading.md) a [procesu extrakce, načítání a transformace (ELT)](design-elt-data-loading.md).
 
 ## <a name="distributed-or-replicated-tables"></a>Distribuované nebo replikované tabulky
 
@@ -64,8 +64,8 @@ Použijte následující strategie v závislosti na vlastnostech tabulek:
 * Ujistěte se, že společné klíče hash mají stejný formát dat.
 * Nedistribuovat ve formátu varchar.
 * U tabulek dimenzí se společným klíčem hash jako tabulka faktů s častými operacemi spojení je možné provádět distribuci hodnot hash.
-* Pomocí *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* můžete analyzovat případné zkreslení dat.
-* Pomocí *[Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* můžete analyzovat pohyby dat na dotazech, sledovat čas vysílání a přebírat operace. To je užitečné při kontrole distribuční strategie.
+* Pomocí *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* můžete analyzovat případné zkreslení dat.
+* *[Sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* můžete použít k analýze pohybů dat na dotazech, sledování času a náhodnému provedení operací. To je užitečné při kontrole distribuční strategie.
 
 Další informace o [replikovaných tabulkách](design-guidance-for-replicated-tables.md) a [distribuovaných tabulkách](sql-data-warehouse-tables-distribute.md).
 
@@ -121,13 +121,13 @@ Skupiny prostředků se používají jako způsob přidělování paměti pro do
 
 Pokud si všimnete, že dotazy trvají příliš dlouho, zkontrolujte, jestli vaši uživatelé nepoužívají velké třídy prostředků. Velké třídy prostředků využívají velké množství slotů souběžnosti. Můžou způsobit hromadění dalších dotazů ve frontě.
 
-Nakonec, při použití Gen2 [fondu SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse), každá třída prostředků získá 2,5 krát více paměti než Gen1.
+Nakonec při použití Gen2 [vyhrazeného fondu SQL (dříve SQL DW)](sql-data-warehouse-overview-what-is.md)každá třída prostředků získá 2,5 krát více paměti než Gen1.
 
 Další informace o práci s [třídami prostředků a souběžností](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Snížení nákladů
 
-Klíčovou funkcí služby Azure synapse je schopnost [Spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Můžete pozastavit fond SQL, pokud ho nepoužíváte, a zastavit tak účtování výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování můžete použít [Azure Portal](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), jazyk [T-SQL](quickstart-scale-compute-tsql.md) nebo rozhraní [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Klíčovou funkcí služby Azure synapse je schopnost [Spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Vyhrazený fond SQL (dřív SQL DW) můžete pozastavit, když ho nepoužíváte, což zastaví fakturaci výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování použijte [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md)nebo [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Automatické škálování teď můžete provádět kdykoli díky Azure Functions:
 
@@ -137,8 +137,8 @@ Automatické škálování teď můžete provádět kdykoli díky Azure Function
 
 Služby SQL Database a Azure Analysis Services doporučujeme zvážit v hvězdicovité architektuře. Toto řešení může zajistit izolaci úloh mezi různými skupinami uživatelů a zároveň využívat pokročilé funkce zabezpečení ve službách SQL Database a Azure Analysis Services. Tímto způsobem můžete uživatelům poskytnout neomezenou souběžnost.
 
-Přečtěte si další informace o [typických architekturách, které využijí Azure synapse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Přečtěte si víc o [typických architekturách, které využívají vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse).
 
-Nasazení proveďte v jednom z fondů SQL kliknutím na své paprsky v databázích SQL:
+Nasaďte v jednom kliknutím své paprsky v databázích SQL z vyhrazeného fondu SQL (dřív SQL DW):
 
 [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

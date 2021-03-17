@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6f5e05e9bfea6b14e46bbde8d17fba2d2a3b7b07
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429496"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650438"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu VuePress ve službě Azure static Web Apps Preview
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > - Nastavení statického Web Apps Azure
 > - Nasazení aplikace VuePress do Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/).
 - Účet GitHub. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://github.com/join).
@@ -71,7 +71,7 @@ Vytvoření aplikace v VuePress z rozhraní příkazového řádku (CLI):
    ...
    ```
 
-1. Vytvořte soubor _. gitignore_ pro vyloučení složky _ \_ modulů uzlů_ .
+1. Vytvořte soubor _. gitignore_ pro vyloučení složky _\_ modulů uzlů_ .
 
     ```bash
     echo 'node_modules' > .gitignore
@@ -100,7 +100,7 @@ K připojení ke statickým Web Appsm Azure budete potřebovat úložiště na G
 1. Vložení místního úložiště do GitHubu
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Nasazení webové aplikace
@@ -117,15 +117,15 @@ Následující kroky ukazují, jak vytvořit novou statickou Web Apps aplikaci a
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
 
-1. U **předplatného**přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
+1. U **předplatného** přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
 
-1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **vuepress-static-App** a vyberte **OK**.
+1. V _skupiny prostředků_ vyberte **Nový**. Do _název nové skupiny prostředků_ zadejte **vuepress-static-App** a vyberte **OK**.
 
 1. Dále do pole **název** zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
-1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
+1. V _oblasti oblast_ vyberte dostupnou oblast, která je blízko vás.
 
-1. V případě _SKU_vyberte možnost **Free**.
+1. V případě _SKU_ vyberte možnost **Free**.
 
    :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Podrobnosti vyplněné":::
 
@@ -135,7 +135,7 @@ Následující kroky ukazují, jak vytvořit novou statickou Web Apps aplikaci a
 
 1. Jako _úložiště_ vyberte **vuepress-static-App** .
 
-1. Pro _větev_ vyberte **hlavní**uzel.
+1. Pro _větev_ vyberte **Main (hlavní**).
 
    :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
 
@@ -143,7 +143,7 @@ Následující kroky ukazují, jak vytvořit novou statickou Web Apps aplikaci a
 
 Dále přidáte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace. Následující nastavení nakonfigurují soubor pracovního postupu akce GitHubu.
 
-1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
+1. Klikněte na tlačítko **Další: Sestavení >** a upravte konfiguraci sestavení.
 
 1. Nastavte _umístění aplikace_ na **/** .
 

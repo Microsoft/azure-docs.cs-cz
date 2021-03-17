@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881073"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Postupy: řešení potíží s MSAL pro iOS a macOS s protokolem TLS/SSL
@@ -41,7 +41,7 @@ Certifikáty využívající hodnoty hash SHA-1 mají známé chyby zabezpečen�
 
 ## <a name="captive-portals"></a>Nedobrovolný portál
 
-Samoobslužný portál prezentuje uživateli webovou stránku při prvním přístupu k síti Wi-Fi, ale ještě jí nebyl udělen přístup k této síti. Zachycuje svůj internetový provoz, dokud uživatel nesplní požadavky portálu. Chyby sítě, protože se uživatel nemůže připojit k síťovým prostředkům, dokud se uživatel nepřipojí přes portál.
+Bezdiskový portál prezentuje uživateli webovou stránku při prvním přístupu k síti Wi-Fi a ještě mu nebyl udělen přístup k této síti. Zachycuje svůj internetový provoz, dokud uživatel nesplní požadavky portálu. Chyby sítě, protože se uživatel nemůže připojit k síťovým prostředkům, dokud se uživatel nepřipojí přes portál.
 
 ## <a name="next-steps"></a>Další kroky
 

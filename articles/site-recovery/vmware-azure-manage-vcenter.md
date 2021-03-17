@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84692515"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Správa vCenter Server VMware
@@ -38,7 +38,7 @@ Když nastavíte zotavení po havárii pro místní virtuální počítače VMwa
 
 ### <a name="account-permissions"></a>Oprávnění účtu
 
-|**Úkol** | **Účet** | **Oprávnění** | **Podrobnosti**|
+|**Úloha** | **Účet** | **Oprávnění** | **Podrobnosti**|
 |--- | --- | --- | ---|
 |**Zjišťování/migrace virtuálních počítačů (bez navrácení služeb po obnovení)** | Alespoň účet uživatele jen pro čtení. | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.|
 |**Replikace/převzetí služeb při selhání** | Alespoň účet uživatele jen pro čtení. | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte k podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit k podřízenému** objektu.<br/><br/> Užitečné pro účely migrace, ale ne pro úplnou replikaci, převzetí služeb při selhání a navrácení služeb po obnovení|

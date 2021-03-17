@@ -6,28 +6,28 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb28f415b7d08b4c4430ed90a7ccbfe3a333416d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689041"
 ---
 # <a name="configure-mfa-server-settings"></a>Konfigurovat nastavení serveru MFA
 
 Tento článek vám pomůže se správou nastavení serveru Azure MFA v Azure Portal.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudovou Multi-Factor Authentication služby Azure AD. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 K dispozici jsou následující nastavení serveru MFA:
 
-| Funkce | Description |
+| Funkce | Popis |
 | ------- | ----------- |
 | Nastavení serveru | Stáhněte si MFA Server a vygenerujte aktivační přihlašovací údaje pro inicializaci vašeho prostředí. |
 | [Jednorázové přihlášení](#one-time-bypass) | Povolí uživateli ověřování bez provádění služby Multi-Factor Authentication po dobu omezeného času. |
@@ -41,11 +41,11 @@ Funkce jednorázového přihlášení umožňuje uživateli jednorázové ověř
 Chcete-li vytvořit jednorázové přihlášení, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-1. Vyhledejte a vyberte **Azure Active Directory**a pak přejděte na **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
-1. Vyberte možnost **Přidat**.
+1. Vyhledejte a vyberte **Azure Active Directory** a pak přejděte na **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
+1. Vyberte **Přidat**.
 1. V případě potřeby vyberte replikační skupinu pro vynechání.
-1. Zadejte uživatelské jméno jako `username\@domain.com` . Zadejte počet sekund, po které má být vynechání trvat, a důvod pro vynechání.
-1. Vyberte možnost **Přidat**. Časový limit se projeví okamžitě. Uživatel se musí přihlásit předtím, než vyprší doba přihlášení k jednorázovému přihlášení.
+1. Zadejte uživatelské jméno jako `username@domain.com` . Zadejte počet sekund, po které má být vynechání trvat, a důvod pro vynechání.
+1. Vyberte **Přidat**. Časový limit se projeví okamžitě. Uživatel se musí přihlásit předtím, než vyprší doba přihlášení k jednorázovému přihlášení.
 
 Můžete také zobrazit sestavu jednorázového přihlášení z tohoto okna.
 
@@ -60,11 +60,11 @@ Ukládání do mezipaměti se primárně používá v případě, že místní s
 
 Pokud chcete nastavit ukládání do mezipaměti, proveďte následující kroky:
 
-1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **pravidel ukládání do mezipaměti**MFA.
-1. Vyberte možnost **Přidat**.
+1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >    >  **pravidel ukládání do mezipaměti** MFA.
+1. Vyberte **Přidat**.
 1. Z rozevíracího seznamu vyberte **typ mezipaměti** . Zadejte maximální počet **sekund mezipaměti**.
 1. V případě potřeby vyberte typ ověřování a zadejte aplikaci.
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 ## <a name="next-steps"></a>Další kroky
 

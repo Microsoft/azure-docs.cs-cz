@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221013"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695550"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Load Balancer
 
@@ -35,11 +35,11 @@ Tento článek popisuje některé běžné chyby při nasazení Azure Load Balan
 |CannotUseInactiveHealthProbe| Nemůžete mít sondu, kterou nepoužívá žádné pravidlo nakonfigurované pro stav Virtual Machine Scale set. Ujistěte se, že se aktivně používá test, který je nastavený. |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Nemůžete mít více než jeden nástroj pro vyrovnávání zatížení stejného typu (interní, veřejný). Můžete mít maximálně jednu interní a jednu veřejnou Load Balancer. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Základní Load Balancer není podporována pro skupinu virtuálních počítačů s více umístěními nebo pro sadu škálování virtuálních počítačů zóny dostupnosti. Místo toho použijte Standard Load Balancer. |
-|MarketplacePurchaseEligibilityFailed | Přepněte se na správný účet pro správu a umožněte nákup z důvodu předplatného, které je předplatným EA. Další informace najdete [tady](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase). |
-|ResourceDeploymentFailure| Pokud je váš nástroj pro vyrovnávání zatížení ve stavu selhání, postupujte podle těchto kroků a vraťte se do stavu selhání:<ol><li>Přejít na https://resources.azure.com a přihlaste se pomocí přihlašovacích údajů Azure Portal.</li><li>Vyberte **čtení i zápis**.</li><li>Na levé straně rozbalte **odběry**a potom rozbalte předplatné s Load Balancer, aby se aktualizace aktualizovala.</li><li>Rozbalte **ResourceGroups**a pak rozbalte skupinu prostředků s Load Balancer, která se má aktualizovat.</li><li>Vyberte **Microsoft. Network**  >  **LoadBalancers**a pak vyberte Load Balancer, který se má aktualizovat **LoadBalancer_1**.</li><li>Na stránce zobrazení **LoadBalancer_1**vyberte **získat**  >  **Úpravy**.</li><li>Aktualizace hodnoty **ProvisioningState** **z neúspěšného** **dokončení.**</li><li>Vyberte **PUT**.</li></ol>|
+|MarketplacePurchaseEligibilityFailed | Přepněte se na správný účet pro správu a umožněte nákup z důvodu předplatného, které je předplatným EA. Další informace najdete [tady](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase). |
+|ResourceDeploymentFailure| Pokud je váš nástroj pro vyrovnávání zatížení ve stavu selhání, postupujte podle těchto kroků a vraťte se do stavu selhání:<ol><li>Přejít na https://resources.azure.com a přihlaste se pomocí přihlašovacích údajů Azure Portal.</li><li>Vyberte **čtení i zápis**.</li><li>Na levé straně rozbalte **odběry** a potom rozbalte předplatné s Load Balancer, aby se aktualizace aktualizovala.</li><li>Rozbalte **ResourceGroups** a pak rozbalte skupinu prostředků s Load Balancer, která se má aktualizovat.</li><li>Vyberte **Microsoft. Network**  >  **LoadBalancers** a pak vyberte Load Balancer, který se má aktualizovat **LoadBalancer_1**.</li><li>Na stránce zobrazení **LoadBalancer_1** vyberte **získat**  >  **Úpravy**.</li><li>Aktualizace hodnoty **ProvisioningState** **z neúspěšného** **dokončení.**</li><li>Vyberte **PUT**.</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>Další kroky
 
 * Prohlédněte si [tabulku porovnání Azure Load Balancer SKU](./skus.md) .
-* Další informace o [omezeních Azure Load Balancer](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)
+* Další informace o [omezeních Azure Load Balancer](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)

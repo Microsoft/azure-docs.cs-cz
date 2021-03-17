@@ -1,24 +1,24 @@
 ---
 title: 1-versus-all Multiclass
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul 1-versus-all Multiclass v Azure Machine Learning k vytvoření modelu klasifikace s více třídami ze sady binárních modelů klasifikace.
+description: Naučte se používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning k vytvoření kompletu binárních modelů klasifikace.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 29934758ab729e0fb888c10b7f834da3d0bf7fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456076"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591865"
 ---
 # <a name="one-vs-all-multiclass"></a>1-versus-all Multiclass
 
-Tento článek popisuje, jak používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning (Preview). Cílem je vytvořit klasifikační model, který může odhadnout více tříd pomocí přístupu typu *1:1* .
+Tento článek popisuje, jak používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning. Cílem je vytvořit klasifikační model, který může odhadnout více tříd pomocí přístupu typu *1:1* .
 
 Tento modul je vhodný pro vytváření modelů, které předpovídá tři nebo více možných výsledků, pokud výsledek závisí na kontinuálním nebo kategorií proměnných prediktivních proměnných. Tato metoda také umožňuje použít binární metody klasifikace pro problémy, které vyžadují více výstupních tříd.
 
@@ -26,11 +26,13 @@ Tento modul je vhodný pro vytváření modelů, které předpovídá tři nebo 
 
 Některé algoritmy klasifikace umožňují použití více než dvou tříd podle návrhu. Jiné omezují možné výsledky na jednu ze dvou hodnot (binární neboli model se dvěma třídami). Ale dokonce i algoritmy binární klasifikace lze přizpůsobit pro úlohy klasifikace více tříd prostřednictvím celé řady strategií. 
 
-Tento modul implementuje metodu 1:1, ve které je vytvořen binární model pro každou z více tříd Output. Modul posuzuje každý z těchto binárních modelů pro jednotlivé třídy proti svému doplňku (všechny ostatní třídy v modelu), jako by se jednalo o binární problém klasifikace. Modul pak provede předpověď spuštěním těchto binárních klasifikátorů a výběrem předpovědi s nejvyšším skóre spolehlivosti.  
+Tento modul implementuje metodu 1:1, ve které je vytvořen binární model pro každou z více tříd Output. Modul posuzuje každý z těchto binárních modelů pro jednotlivé třídy proti svému doplňku (všechny ostatní třídy v modelu), jako by se jednalo o binární problém klasifikace. Kromě výpočetní efektivity (je potřeba použít jenom `n_classes` klasifikátory) je jednou z výhod tohoto přístupu jeho výklad. Vzhledem k tomu, že každá třída je zastoupena pouze jedním a jedním klasifikátorem, je možné získat znalosti o třídě kontrolou jejího odpovídajícího třídění. Toto je nejčastěji používaná strategie pro klasifikaci více tříd a je to reálná výchozí volba. Modul pak provede předpověď spuštěním těchto binárních klasifikátorů a výběrem předpovědi s nejvyšším skóre spolehlivosti. 
 
 V podstatě modul vytvoří komplet jednotlivých modelů a potom sloučí výsledky pro vytvoření jednoho modelu, který předpovídá všechny třídy. Každý binární klasifikátor lze použít jako základ pro model s jedním i všemi.  
 
 Řekněme například, že nakonfigurujete vícevrstvý model [strojového modelu podpory](two-class-support-vector-machine.md) a poskytnete ho jako vstup do modulu 1-versus-All Multiclass. Modul vytvoří pro všechny členy třídy Output modely vektorového stroje podpory. Pak by se pak použila Metoda 1:1 pro kombinování výsledků pro všechny třídy.  
+
+Modul používá OneVsRestClassifier z skriptu sklearn a další podrobnosti si můžete přečíst [tady](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html).
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Postup konfigurace klasifikátoru 1-versus-all Multiclass  
 
@@ -40,7 +42,7 @@ Binární model připojíte k modulu 1-versus-all Multiclass. Potom provedete sa
 
 Při kombinaci modelů 1-versus-all Multiclass vytvoří více binárních klasifikačních modelů, optimalizuje algoritmus pro každou třídu a poté sloučí modely. Modul provádí tyto úlohy i v případě, že datová sada školení může mít více hodnot třídy.
 
-1. Přidejte modul 1-versus-all Multiclass do kanálu v návrháři. Tento modul můžete najít v části **Machine Learning-Initialize**v kategorii **klasifikace** .
+1. Přidejte modul 1-versus-all Multiclass do kanálu v návrháři. Tento modul můžete najít v části **Machine Learning-Initialize** v kategorii **klasifikace** .
 
    Klasifikátor 1-versus-all Multiclass nemá vlastní konfigurovatelné parametry. Jakékoli vlastní nastavení musí být provedeno v binárním klasifikačním modelu, který je zadán jako vstup.
 

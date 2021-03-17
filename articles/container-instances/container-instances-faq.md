@@ -1,15 +1,16 @@
 ---
 title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Instances
-author: dkkapur
+author: macolso
+ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421276"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573128"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -39,12 +40,12 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 #### <a name="windows-server-2016-base-images"></a>Základní image Windows serveru 2016
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` nebo novější
-* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` nebo novější
+* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`  `10.0.14393.3506` nebo novější
 
 > [!NOTE]
-> Image Windows na základě pololetního kanálu verze 1709 nebo 1803 se nepodporují.
+> Bitové kopie systému Windows založené na Semi-Annualovém kanálu verze 1709 nebo 1803 nejsou podporovány.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 a základní image klienta (Preview)
+#### <a name="windows-server-2019-and-client-base-images"></a>Windows Server 2019 a základní image klienta
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` nebo novější
 * [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` nebo novější
@@ -52,7 +53,14 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Jakou vrstvu imagí .NET nebo .NET Core mám použít v kontejneru? 
 
-Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
+Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například  *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
+
+> [!NOTE]
+> ACI nemůže vyžádat obrázky z registrů, které nejsou kompatibilní s rozhraním OCI.
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Jaké typy registrů kontejnerů jsou kompatibilní s ACI?
+
+ACI podporuje přebírání imagí z ACR a dalších registrů kontejnerů třetích stran, jako je Dockerhubu. ACI podporuje stažení imagí z ACR a jiné Registry kontejneru kompatibilní s rozhraním OCI třetích stran, jako je Dockerhubu, s koncovým bodem, který je veřejně vystavený pro Internet.
 
 ## <a name="availability-and-quotas"></a>Dostupnost a kvóty
 
@@ -60,7 +68,7 @@ Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste
 
 Tato skutečnosti závisí na vašich úlohách. Začněte s malým a testovacím výkonem, abyste viděli, jak vaše kontejnery dělají. [Monitorujte využití prostředků procesoru a paměti](container-instances-monitor.md)a pak přidejte jádra nebo paměť na základě typu procesů, které nasadíte do kontejneru.
 
-Nezapomeňte také zkontrolovat [dostupnost prostředků](container-instances-region-availability.md#availability---general) pro oblast, do které nasazujete, v horních mezích jader procesoru a paměti dostupných na jednu skupinu kontejnerů. 
+Nezapomeňte také zkontrolovat [dostupnost prostředků](container-instances-region-availability.md) pro oblast, do které nasazujete, v horních mezích jader procesoru a paměti dostupných na jednu skupinu kontejnerů. 
 
 > [!NOTE]
 > Základní infrastruktura služby používá malý objem prostředků skupiny kontejnerů. Vaše kontejnery budou mít přístup k většině prostředků přiřazených ke skupině, ale ne ke všem. Z tohoto důvodu Naplánujte malou vyrovnávací paměť prostředků při žádosti o prostředky pro kontejnery ve skupině.
@@ -79,7 +87,7 @@ Zatím ne. V současné době jsou to maxima pro skupinu kontejnerů. Kontaktujt
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Kdy bude ACI v konkrétní oblasti?
 
-[Tady](container-instances-region-availability.md#availability---general)se zveřejňuje aktuální dostupnost oblasti. Pokud máte požadavek na konkrétní oblast, obraťte se na podporu Azure.
+[Tady](container-instances-region-availability.md)se zveřejňuje aktuální dostupnost oblasti. Pokud máte požadavek na konkrétní oblast, obraťte se na podporu Azure.
 
 ## <a name="features-and-scenarios"></a>Funkce a scénáře
 

@@ -2,16 +2,17 @@
 title: Použití Cloud-init k nastavení názvu hostitele pro virtuální počítač Linux
 description: Použití Cloud-init k přizpůsobení virtuálního počítače se systémem Linux během vytváření pomocí Azure CLI
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 85d2772596224a3c4252d950ca6ca8d6af02991b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5c3195fd338d17e2dae3ff2aadfb90790519715b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373653"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559388"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Použití Cloud-init k nastavení názvu hostitele pro virtuální počítač Linux v Azure
 V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat konkrétní název hostitele na virtuálním počítači (VM) nebo Virtual Machine Scale Sets (VMSS) v době zřizování v Azure. Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure. Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .

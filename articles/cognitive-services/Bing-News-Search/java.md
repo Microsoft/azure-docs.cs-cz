@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-java
-ms.openlocfilehash: a1347364066f4b36256782dd8891390a47bae020
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f49de67504c3d3fea39d4c12ab4b06790693ad68
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326762"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351959"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí jazyka Java a Vyhledávání zpráv Bingu REST API
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání zpráv. Tato jednoduchá aplikace Java pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď JSON.
 
@@ -28,7 +33,7 @@ Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Development Kit (JDK) 7 nebo 8](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 7 nebo 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Knihovna gson](https://github.com/google/gson)
 
 

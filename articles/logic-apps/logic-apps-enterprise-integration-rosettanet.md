@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072585"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565101"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Zprávy Exchange RosettaNet pro integraci B2B Enterprise v Azure Logic Apps
 
@@ -51,7 +51,7 @@ Tady je několik konceptů a pojmů, které jsou jedinečné pro specifikaci Ros
 
   V případě PIP s jednou akcí je jedinou odpovědí zpráva potvrzujícího signálu. V případě, že se jedná o akci PIP s dvojitou odezvou, iniciátor obdrží zprávu odpovědi a kromě toku zpráv s jednou akcí odpoví spolu s potvrzením.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -79,7 +79,7 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    ![Přidat podrobnosti PIP RosettaNet](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název** | Yes | Název PIP |
    | **Kód PIP** | Yes | Kód pro tři číslice v PIP. Další informace najdete v tématu [RosettaNet Pips](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
@@ -110,7 +110,7 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    ![Přidat podrobnosti smlouvy](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název** | Yes | Název smlouvy |
    | **Typ smlouvy** | Yes | Vyberte **RosettaNet**. |
@@ -129,7 +129,7 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    1. Chcete-li povolit podepisování nebo šifrování pro příchozí zprávy, vyberte v části **zprávy**možnost **zpráva by měla být podepsána** nebo **zpráva by měla být zašifrována** .
 
-      | Vlastnost | Povinné | Popis |
+      | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
       | **Zpráva by měla být podepsaná.** | No | Podepsat příchozí zprávy s vybraným certifikátem. |
       | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který se má použít pro podepisování |
@@ -145,7 +145,7 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    1. Chcete-li povolit podepisování nebo šifrování odchozích zpráv, v části **zprávy**vyberte možnost **povolit podepisování zpráv** nebo **Povolit šifrování zpráv** v uvedeném pořadí. Pod každým výběrem vyberte příslušný algoritmus a [certifikát](./logic-apps-enterprise-integration-certificates.md), který jste dříve přidali do svého účtu pro integraci, abyste se mohli použít k podepisování nebo šifrování.
 
-      | Vlastnost | Povinné | Popis |
+      | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
       | **Povolit podepisování zpráv** | No | Podepisujte odchozí zprávy s vybraným podpisovým algoritmem a certifikátem. |
       | **Podpisový algoritmus** | Ano, pokud je povoleno podepisování | Podpisový algoritmus, který se má použít, na základě vybraného certifikátu |
@@ -157,7 +157,7 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    1. V části **koncové body**určete požadované adresy URL, které se mají použít pro posílání zpráv akce a potvrzení.
 
-      | Vlastnost | Povinné | Popis |
+      | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
       | **Adresa URL akce** |  Yes | Adresa URL, která se má použít pro posílání zpráv akce Adresa URL je povinné pole pro synchronní i asynchronní zprávy. |
       | **Potvrzovací adresa URL** | Yes | Adresa URL, která se má použít pro odesílání potvrzovacích zpráv. Adresa URL je povinné pole pro asynchronní zprávy. |
@@ -197,9 +197,9 @@ Chcete-li zrychlit vývoj a doporučit způsoby integrace, můžete použít ša
 
 1. Zadejte informace o vlastnostech akce:
 
-   ![Zadání podrobností o akci](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Snímek obrazovky, který ukazuje, kde poskytnete informace pro vlastnosti akce](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Zpráva** | Yes | Zpráva RosettaNet k dekódování  |
    | **Hlavičky** | Yes | Hlavičky protokolu HTTP, které poskytují hodnoty pro verzi, což je verze RNIF, a typ odpovědi, který označuje typ komunikace mezi partnery a může být synchronní nebo asynchronní |
@@ -228,7 +228,7 @@ Chcete-li zrychlit vývoj a doporučit způsoby integrace, můžete použít ša
 
    ![Zadání podrobností o akci](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Zpráva** | Yes | Zpráva RosettaNet ke kódování  |
    | **Partner hostitele** | Yes | Název hostitelského partnera |

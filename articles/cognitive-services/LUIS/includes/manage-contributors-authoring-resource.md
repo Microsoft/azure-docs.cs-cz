@@ -2,20 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 1684c76e1f00e6b2debca9166ec614cccde8dc02
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 147a7868d99e8ba479ea490b5467fed3386fc161
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375693"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102967"
 ---
 Pokud je potřeba, aby vaše aplikace vytvořily jiní uživatelé, musíte do prostředku pro vytváření Azure Portal přidat přidružené e-mailové adresy.
 

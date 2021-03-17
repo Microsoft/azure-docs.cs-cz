@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257669"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581537"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analýza a vizualizace událostí pomocí protokolů Azure Monitor
  Protokoly Azure Monitor shromažďuje a analyzuje telemetrii z aplikací a služeb hostovaných v cloudu a poskytuje analytické nástroje, které vám pomůžou maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v protokolech Azure Monitor a získat přehledy a řešit potíže s tím, co se děje ve vašem clusteru. Řeší se tyto běžné otázky:
@@ -34,7 +34,7 @@ Po přijetí dat pomocí protokolů Azure Monitor má Azure několik *řešení 
 
 Na webu [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics.
 
-Vyberte **ServiceFabric \<nameOfOMSWorkspace\> **prostředku.
+Vyberte **ServiceFabric \<nameOfOMSWorkspace\>** prostředku.
 
 V nástroji `Summary` se zobrazí dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
 
@@ -42,7 +42,7 @@ V nástroji `Summary` se zobrazí dlaždice ve formě grafu pro každé povolen�
 
 Následující obrázek ukazuje domovskou stránku Service Fabric Analytics řešení. Tato domovská stránka nabízí snímek toho, co se děje ve vašem clusteru.
 
-![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Snímek obrazovky, který zobrazuje domovskou stránku řešení Service Fabric Analytics.](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  Pokud jste při vytváření clusteru povolili diagnostiku, můžete zobrazit události pro 
 
@@ -103,7 +103,7 @@ Dotazovací jazyk Kusto je výkonný. Další užitečný dotaz, který můžete
 ## <a name="next-steps"></a>Další kroky
 
 * Aby bylo možné povolit monitorování infrastruktury, například čítače výkonu, převzetí služeb při [přidávání agenta Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent shromáždí čítače výkonu a přidá je do existujícího pracovního prostoru.
-* U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí brány Log Analytics](../azure-monitor/platform/gateway.md).
-* Nakonfigurujte [automatizované upozorňování](../azure-monitor/platform/alerts-overview.md) na pomoc při detekci a diagnostice.
-* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor.
+* U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí brány Log Analytics](../azure-monitor/agents/gateway.md).
+* Nakonfigurujte  [automatizované upozorňování](../azure-monitor/alerts/alerts-overview.md) na pomoc při detekci a diagnostice.
+* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/logs/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor.
 * Podrobnější přehled Azure Monitor protokolů a co nabízí, najdete v článku [co je Azure monitor protokolů?](../azure-monitor/overview.md).

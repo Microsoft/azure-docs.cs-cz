@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 59f68909e2f3704fea5c38e3f1535f5996b284ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097343"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555150"
 ---
 # <a name="add-tags-to-digital-twins"></a>Přidání značek do digitálních vláken 
 
@@ -32,23 +32,7 @@ Značky značek jsou modelovány jako mapy [DTDL](https://github.com/Azure/opend
 
 Zde je výňatek z neznámého modelu, který implementuje značku značky jako vlastnost:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>Přidat značky značky do digitálních vláken
 
@@ -56,11 +40,7 @@ Jakmile `tags` je vlastnost součástí modelu digitálního vlákna, můžete n
 
 Tady je příklad, který naplní značku `tags` pro tři vlákna:
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>Dotaz se značkami značek
 
@@ -68,15 +48,11 @@ Po přidání značek do digitálních vláken lze značky použít k filtrován
 
 Tady je dotaz, který získá všechny vlákna označené jako "Red": 
 
-```sql
-select * from digitaltwins where is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Můžete také kombinovat značky pro složitější dotazy. Tady je dotaz pro získání všech vláken, která jsou kulatá a ne červená: 
 
-```sql
-select * from digitaltwins where not is_defined(tags.red) and is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>Značky hodnot 
 
@@ -88,23 +64,7 @@ Značky hodnot jsou modelovány jako mapy [DTDL](https://github.com/Azure/opendi
 
 Zde je výňatek z neznámého modelu, který implementuje značku hodnoty jako vlastnost:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>Přidání značek hodnot do digitálních vláken
 
@@ -112,11 +72,7 @@ Stejně jako u značek značek můžete nastavit značku hodnoty v poli digitál
 
 Tady je příklad, který naplní hodnotu `tags` pro tři vlákna:
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 Všimněte si, že `red` a `purple` jsou používány jako značky značek v tomto příkladu.
 
@@ -124,22 +80,18 @@ Všimněte si, že `red` a `purple` jsou používány jako značky značek v tom
 
 Stejně jako u značek značek můžete použít značky hodnot k filtrování vláken v dotazech. Značky hodnot a značky značek lze také použít společně.
 
-Z výše uvedeného příkladu `red` se používá jako značka značky. Tady je dotaz, který získá všechny vlákna označené jako "Red": 
+Z výše uvedeného příkladu `red` se používá jako značka značky. Mějte na paměti, že se jedná o dotaz, který získá všechny vlákna označené jako "Red": 
 
-```sql
-select * from digitaltwins where is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Tady je dotaz pro získání všech entit, které jsou malé (značka hodnoty), a ne červeně: 
 
-```sql
-select * from digitaltwins where not is_defined(tags.red) and tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o navrhování a správě digitálních dvojitých modelů:
-* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
+* [*Postupy: Správa modelů DTDL*](how-to-manage-model.md)
 
 Přečtěte si další informace o dotazování na dvojitou graf:
 * [*Postupy: dotazování na nevlákenný graf*](how-to-query-graph.md)

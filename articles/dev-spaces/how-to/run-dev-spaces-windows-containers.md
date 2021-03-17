@@ -5,14 +5,16 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Naučte se spouštět Azure Dev Spaces v existujícím clusteru s kontejnery Windows.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontejnery Windows
-ms.openlocfilehash: 131f69d42795b857a53fc21b760a7275a6826bb8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 682af37b79083fb360a17f87624f69239c03549d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212474"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198179"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interakce s kontejnery Windows pomocí Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces můžete povolit pro nové i existující obory názvů Kubernetes. Azure Dev Spaces spustí služby a instrumentují služby, které běží na kontejnerech Linux. Tyto služby mohou také interagovat s aplikacemi, které běží na kontejnerech Windows ve stejném oboru názvů. V tomto článku se dozvíte, jak používat vývojové prostory ke spouštění služeb v oboru názvů s existujícími kontejnery Windows. V tuto chvíli nemůžete ladit nebo připojovat kontejnery Windows pomocí Azure Dev Spaces.
 
@@ -116,8 +118,8 @@ Slouží `helm list` k vypsání nasazení pro službu systému Windows:
 
 ```cmd
 $ helm list --namespace dev
-NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+NAME             REVISION   UPDATED                    STATUS    CHART            APP VERSION    NAMESPACE
+windows-service    1        Wed Jul 24 15:45:59 2019   DEPLOYED  mywebapi-0.1.0   1.0            dev
 ```
 
 V tomto příkladu je název vašeho nasazení *služba Windows-Service*. Aktualizujte službu Windows pomocí nové konfigurace pomocí `helm upgrade` :
@@ -177,6 +179,6 @@ Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 [helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[using-taints]: ../../aks/use-multiple-node-pools.md#setting-nodepool-taints
 [windows-container-cli]: ../../aks/windows-container-cli.md

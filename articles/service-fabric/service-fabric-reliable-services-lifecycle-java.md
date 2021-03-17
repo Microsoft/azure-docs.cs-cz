@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: b22c78a0259e4430ac6bfae1c0a9379c4a832cd4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324603"
 ---
 # <a name="reliable-services-lifecycle"></a>Životní cyklus Reliable Services
@@ -44,7 +44,7 @@ Nakonec je třeba vzít v úvahu chybové nebo chybné podmínky.
 
 1. Služba je vytvořena.
 2. K těmto událostem dochází paralelně:
-    - `StatelessService.createServiceInstanceListeners()`je vyvolána a všechny vrácené naslouchací procesy jsou otevřeny. `CommunicationListener.openAsync()`je volána u každého naslouchacího procesu.
+    - `StatelessService.createServiceInstanceListeners()` je vyvolána a všechny vrácené naslouchací procesy jsou otevřeny. `CommunicationListener.openAsync()` je volána u každého naslouchacího procesu.
     - `runAsync`Je volána metoda služby ( `StatelessService.runAsync()` ).
 3. Je-li k dispozici, `onOpenAsync` je volána metoda služby. Konkrétně `StatelessService.onOpenAsync()` je volána metoda. Toto je Neběžné přepsání, ale je k dispozici.
 
@@ -57,7 +57,7 @@ Je důležité si uvědomit, že neexistuje žádné řazení mezi voláním pro
 Při vypínání bezstavové služby se sleduje stejný vzor, ale v opačném případě:
 
 1. K těmto událostem dochází paralelně:
-    - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()`je volána u každého naslouchacího procesu.
+    - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()` je volána u každého naslouchacího procesu.
     - Token zrušení, který byl předán do, byl `runAsync()` zrušen. `isCancelled`Když se vrátí vlastnost tokenu zrušení `true` a když se zavolá, `throwIfCancellationRequested` vyvolá metoda tokenu `CancellationException` .
 2. Když se `closeAsync()` dokončí u každého naslouchacího procesu a `runAsync()` také dokončí, `StatelessService.onCloseAsync()` je volána metoda služby, pokud je k dispozici. Znovu se nejedná o společné přepsání, ale dá se použít k bezpečnému zavření prostředků, zastavení zpracování na pozadí, dokončení ukládání externího stavu nebo zavření stávajících připojení.
 3. Po `StatelessService.onCloseAsync()` dokončení dojde k destrukturování objektu služby.
@@ -66,10 +66,10 @@ Při vypínání bezstavové služby se sleduje stejný vzor, ale v opačném p�
 Stavové služby mají model podobný bezstavovým službám s několika změnami.  Tady je pořadí událostí pro spuštění stavové služby:
 
 1. Služba je vytvořena.
-2. `StatefulServiceBase.onOpenAsync()`je volána. Toto volání není ve službě obvykle přepsáno.
+2. `StatefulServiceBase.onOpenAsync()` je volána. Toto volání není ve službě obvykle přepsáno.
 3. K těmto událostem dochází paralelně:
-    - `StatefulServiceBase.createServiceReplicaListeners()`je vyvolána. 
-      - Pokud je služba primární službou, otevřou se všechny vrácené naslouchací procesy. `CommunicationListener.openAsync()`je volána u každého naslouchacího procesu.
+    - `StatefulServiceBase.createServiceReplicaListeners()` je vyvolána. 
+      - Pokud je služba primární službou, otevřou se všechny vrácené naslouchací procesy. `CommunicationListener.openAsync()` je volána u každého naslouchacího procesu.
       - Pokud je služba Sekundární službou, jsou otevřené jenom naslouchací procesy označené jako `listenOnSecondary = true` . Naslouchací procesy, které jsou otevřeny na sekundárních počítačích, jsou méně běžné.
     - Pokud je služba aktuálně primární, `StatefulServiceBase.runAsync()` je volána metoda služby.
 4. Po dokončení volání a volání všech volání naslouchacího procesu repliky se zavolá `openAsync()` `runAsync()` `StatefulServiceBase.onChangeRoleAsync()` . Toto volání není ve službě obvykle přepsáno.
@@ -80,7 +80,7 @@ Podobně jako bezstavové služby ve stavové službě neexistuje žádná koord
 Stejně jako bezstavové služby jsou události životního cyklu během vypnutí stejné jako při spuštění, ale stornovány. Při vypnutí stavové služby dojde k následujícím událostem:
 
 1. K těmto událostem dochází paralelně:
-    - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()`je volána u každého naslouchacího procesu.
+    - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()` je volána u každého naslouchacího procesu.
     - Token zrušení, který byl předán do, byl `runAsync()` zrušen. Volání metody tokenu zrušení `isCancelled()` vrátí `true` a při volání metody tokenu `throwIfCancellationRequested()` vyvolá výjimku `OperationCanceledException` .
 2. Po `closeAsync()` dokončení každého naslouchacího procesu a `runAsync()` také dokončí službu, `StatefulServiceBase.onChangeRoleAsync()` se zavolá. Toto volání není ve službě obvykle přepsáno.
 
@@ -97,7 +97,7 @@ Když je spuštěná stavová služba, otevřou se naslouchací procesy komunika
 Service Fabric potřebuje primární repliku, která je degradována tak, aby zastavila zpracování zpráv a zastavila práci na pozadí. Tento krok je podobný jako při vypnutí služby. Jednou z nich je, že služba není destrukturovaná ani uzavřená, protože zůstává jako sekundární. Dojde k následující chybě:
 
 1. K těmto událostem dochází paralelně:
-    - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()`je volána u každého naslouchacího procesu.
+    - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()` je volána u každého naslouchacího procesu.
     - Token zrušení, který byl předán do, byl `runAsync()` zrušen. Kontroluje návrat metody tokenu zrušení `isCancelled()` `true` . Při volání metoda tokenu `throwIfCancellationRequested()` vyvolá výjimku `OperationCanceledException` .
 2. Po `closeAsync()` dokončení každého naslouchacího procesu a `runAsync()` také dokončí službu, `StatefulServiceBase.onChangeRoleAsync()` se zavolá. Toto volání není ve službě obvykle přepsáno.
 
@@ -105,7 +105,7 @@ Service Fabric potřebuje primární repliku, která je degradována tak, aby za
 Podobně Service Fabric potřebuje sekundární repliku, která je povýšená na zahájení naslouchání zprávám na lince, a spuštění všech úloh na pozadí, které je potřeba dokončit. Tento postup je podobný jako při vytvoření služby. Rozdílem je, že replika sama o sobě již existuje. Dojde k následující chybě:
 
 1. K těmto událostem dochází paralelně:
-    - `StatefulServiceBase.createServiceReplicaListeners()`je vyvolána a jsou otevřeny všechny vracené naslouchací procesy. `CommunicationListener.openAsync()`je volána u každého naslouchacího procesu.
+    - `StatefulServiceBase.createServiceReplicaListeners()` je vyvolána a jsou otevřeny všechny vracené naslouchací procesy. `CommunicationListener.openAsync()` je volána u každého naslouchacího procesu.
     - `StatefulServiceBase.runAsync()`Volá se metoda služby.
 2. Po dokončení volání a volání všech volání naslouchacího procesu repliky se zavolá `openAsync()` `runAsync()` `StatefulServiceBase.onChangeRoleAsync()` . Toto volání není ve službě obvykle přepsáno.
 
@@ -126,7 +126,7 @@ Důležitou součástí testování a ověřování Reliable Services je zpracov
 * Pokud se služba ukončí od `runAsync()` vyvolání neočekávané výjimky, jedná se o chybu. Objekt služby je vypnutý a nahlásila se chyba stavu.
 * I když při návratu z těchto metod nedochází k žádnému časovému limitu, okamžitě ztratíte možnost napsat. Proto nemůžete dokončit žádnou skutečnou práci. Po přijetí žádosti o zrušení doporučujeme co nejrychleji vracet co nejrychleji. Pokud vaše služba nereaguje na tato volání rozhraní API v rozumné době, Service Fabric může nuceně ukončit vaši službu. Obvykle k tomu dochází pouze během upgradu aplikace nebo při odstraňování služby. Ve výchozím nastavení je tento časový limit 15 minut.
 * Chyby ve `onCloseAsync()` výsledku cesty, `onAbort()` který je volán. Toto volání je poslední pravděpodobností, aby služba vyčistila a uvolnila všechny prostředky, které požadoval. Tato operace se obecně volá, když se v uzlu zjistí trvalá chyba, nebo když Service Fabric nemůže spolehlivě spravovat životní cyklus instance služby z důvodu interního selhání.
-* `OnChangeRoleAsync()`se volá, když replika stavové služby mění roli (například primární nebo sekundární). Primárním replikám je dán stav zápisu (můžou vytvářet a zapisovat do spolehlivých kolekcí). Sekundárním replikám je předaný stav čtení (dá se číst jenom z existujících spolehlivých kolekcí). Většina práce ve stavové službě se provádí v primární replice. Sekundární repliky můžou provádět ověřování jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.
+* `OnChangeRoleAsync()` se volá, když replika stavové služby mění roli (například primární nebo sekundární). Primárním replikám je dán stav zápisu (můžou vytvářet a zapisovat do spolehlivých kolekcí). Sekundárním replikám je předaný stav čtení (dá se číst jenom z existujících spolehlivých kolekcí). Většina práce ve stavové službě se provádí v primární replice. Sekundární repliky můžou provádět ověřování jen pro čtení, generování sestav, dolování dat nebo jiné úlohy jen pro čtení.
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Reliable Services](service-fabric-reliable-services-introduction.md)

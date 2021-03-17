@@ -1,9 +1,9 @@
 ---
 title: Vytváření filtrů pomocí sady Azure Media Services V3 .NET SDK
-description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
+description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services V3 .NET SDK vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,22 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/11/2020
-ms.author: juliako
-ms.openlocfilehash: 0d8a60d6c4b3fb66b46742fbd99e3a73a63fff45
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136078"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455208"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK
 
-Při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services vám umožní definovat filtry účtu a filtry assetů pro váš obsah. 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services vám umožní definovat filtry účtu a filtry assetů pro váš obsah.
 
 Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
 
-V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr pro prostředek video na vyžádání a vytvořit [filtry účtu](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) a [filtry assetů](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
+V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr pro prostředek video na vyžádání a vytvořit [filtry účtu](/dotnet/api/microsoft.azure.management.media.models.accountfilter) a [filtry assetů](/dotnet/api/microsoft.azure.management.media.models.assetfilter). 
 
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -40,7 +43,7 @@ V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr
 
 ## <a name="define-a-filter"></a>Definovat filtr  
 
-V rozhraní .NET nakonfigurujete výběry sledování pomocí tříd [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) a [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
+V rozhraní .NET nakonfigurujete výběry sledování pomocí tříd [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) a [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition) . 
 
 Následující kód definuje filtr, který obsahuje všechny zvukové stopy, které jsou ES-3, a všechny videosoubory, které mají přenosovou rychlost v rozsahu 0-1000000.
 

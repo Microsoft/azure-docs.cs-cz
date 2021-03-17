@@ -1,22 +1,21 @@
 ---
-title: Přehled Azure Key Vault – Azure Key Vault | Microsoft Docs
+title: Přehled Azure Key Vault – Azure Key Vault
 description: Azure Key Vault je zabezpečené úložiště tajných kódů, které poskytuje správu tajných klíčů, klíčů a certifikátů, a to všechno, co jsou zajištěné moduly hardwarového zabezpečení.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190554"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790119"
 ---
 # <a name="about-azure-key-vault"></a>Informace o službě Azure Key Vault
 
@@ -24,8 +23,9 @@ Azure Key Vault pomáhá vyřešit následující problémy:
 
 - **Správa tajných klíčů** – Azure Key Vault je možné využít k zabezpečenému ukládání tokenů, hesel, certifikátů, klíčů rozhraní API a dalších tajných klíčů a důsledné kontrole přístupu k nim.
 - **Správa klíčů** – Azure Key Vault se dá použít taky jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
-- **Správa certifikátů** – Azure Key Vault je taky služba, která umožňuje snadno zřídit, spravovat a nasazovat veřejné a soukromé certifikáty TLS/SSL (Transport Layer Security/SSL (Secure Sockets Layer)) pro použití s Azure a vašimi interními připojenými prostředky. 
-- **Ukládání tajných klíčů zajištěných moduly hardwarového zabezpečení** – tajné klíče a klíče je možné chránit buď pomocí softwaru, nebo ověřeného HSM úrovně 2 FIPS 140-2.
+- **Správa certifikátů** – Azure Key Vault je taky služba, která umožňuje snadno zřídit, spravovat a nasazovat veřejné a soukromé certifikáty TLS/SSL (Transport Layer Security/SSL (Secure Sockets Layer)) pro použití s Azure a vašimi interními připojenými prostředky.
+
+Azure Key Vault má dvě úrovně služeb: Standard, který šifruje pomocí softwarového klíče a úrovně Premium, která zahrnuje klíče chráněné modulem hardwarového zabezpečení (HSM). Porovnání mezi úrovněmi Standard a Premium najdete na [stránce s cenami Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="why-use-azure-key-vault"></a>Proč používat Azure Key Vault?
 
@@ -37,13 +37,11 @@ Vaše aplikace můžou zabezpečeně přistupovat k informacím, které potřebu
 
 ### <a name="securely-store-secrets-and-keys"></a>Bezpečné ukládání tajných klíčů a klíčů
 
-Tajné kódy a klíče jsou chráněné systémem Azure pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM). Použité moduly HMS jsou ověřené podle standardu FIPS (Federal Information Processing Standards) 140-2 Level 2.
-
 Pro přístup k trezoru klíčů se vyžaduje řádné ověření a autorizace volajícího (uživatel nebo aplikace). Ověření určí identitu volajícího a autorizace následně určí, které operace má volající povoleno provádět.
 
-Ověření se provádí prostřednictvím Azure Active Directory. Autorizace se může provádět prostřednictvím řízení přístupu na základě role (RBAC) nebo zásad přístupu trezoru klíčů. RBAC se používá při správě trezorů a zásady přístupu trezoru klíčů se používají při pokusu o přístup k datům uloženým v trezoru.
+Ověření se provádí prostřednictvím Azure Active Directory. Autorizaci je možné provádět prostřednictvím řízení přístupu na základě role Azure (RBAC) nebo zásad Key Vault přístupu. Pokud se při pokusu o přístup k datům uloženým v trezoru používá Správa trezorů a zásad přístupu trezoru klíčů, používá se Azure RBAC.
 
-Trezory klíčů Azure můžou být chráněné softwarovým nebo hardwarovým modulem HSM. Pro situace, kdy potřebujete lepší kontrolu, můžete v modulech hardwarového zabezpečení (HSM) importovat nebo generovat klíče, které nikdy neopustí hranice HSM. Microsoft používá moduly hardwarového zabezpečení podpůrný software nCipher. Pomocí nástrojů podpůrný software nCipher můžete přesunout klíč ze svého modulu HARDWAROVÉho zabezpečení do Azure Key Vault.
+Trezory klíčů Azure můžou být chráněné softwarem nebo, s Azure Key Vault Premium, hardwaremi chráněnými moduly hardwarového zabezpečení (HSM). Klíče chráněné softwarem, tajné klíče a certifikáty jsou chráněny Azure pomocí standardních algoritmů a délek klíčů.  V situacích, kdy potřebujete přidané záruky, můžete importovat nebo generovat klíče v HSM, které nikdy nezanechají hranici HSM. Azure Key Vault používá podpůrný software nCipher HSM, které jsou ověřené ve standardu FIPS (Federal Information Processing Standards) 140-2 úrovně 2. Pomocí nástrojů podpůrný software nCipher můžete přesunout klíč ze svého modulu HARDWAROVÉho zabezpečení do Azure Key Vault.
 
 Služba Azure Key Vault je navržená tak, aby Microsoft vaše data neviděl ani je nemohl extrahovat.
 

@@ -1,16 +1,16 @@
 ---
 title: Azure Functions Event Grid místní ladění
-description: Naučte se místně ladit služby Azure Functions aktivované událostmi Event Grid.
+description: Naučte se místně ladit Azure Functions aktivované událostí Event Grid
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242742"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833057"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Funkce Azure Function Event Grid aktivovat místní ladění
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 Při nastavení nástroje by okno příkazového řádku mělo vypadat podobně jako na následujícím snímku obrazovky:
 
-![Spustit ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Snímek obrazovky, který zobrazí příkazový řádek po spuštění nástroje "ngrok".](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 Zkopírujte adresu URL **protokolu HTTPS** vygenerovanou při spuštění *ngrok* . Tato hodnota se používá při konfiguraci koncového bodu události Event gridu.
 

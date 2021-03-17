@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232521"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015337"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pro pole mikrofonu v sadě Speech Devices SDK
 
@@ -30,7 +30,7 @@ Pro použití s Microsoft audio stackem se doporučuje následující geometrií
 | MICS & geometrie | Kruhové pole | Kruhové pole | Lineární pole | Lineární pole |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \#Mics | 7 | 4 | 4 | 2 |
+| \# Mics | 7 | 4 | 4 | 2 |
 | Geometrie | 6 vnější, 1 střed, poloměr = 42,5 mm, rovnoměrně rozmístěný | 3 vnější, 1 střed, poloměr = 42,5 mm, rovnoměrně rozmístěný | Délka = 120 mm, mezery = 40 mm | Mezery = 40 mm |
 
 Kanály mikrofonu by se měly seřadit podle číslování zobrazeného pro každé pole, které se zvýší z 0. Aby bylo možné provést zrušení ozvěny, bude zvukový zásobník Microsoftu vyžadovat další referenční datový proud zvukového přehrávání.
@@ -62,7 +62,7 @@ Výkon pole mikrofonu, když se integruje do zařízení, se liší od specifika
 
 | Parametr          | Doporučeno                                        |
 | ------------------ | -------------------------------------------------- |
-| SNR                | \>63 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
+| SNR                | \> 63 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
 | Citlivost výstupu | -26 dBFS/PA @ 1 kHz (doporučeno)                  |
 | Porovnání amplitudy | ± 2 dB, 200-8000 Hz                                |
 | THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5.5. obj.             |
@@ -81,7 +81,7 @@ Pro zařízení rozpoznávání řeči, která obsahují reproduktory, je třeba
 | Otázky linearity | Žádné nelineární zpracování po odkazech na mluvčí, jinak se vyžaduje hardwarový Stream reference zpětné smyčky. |
 | Smyčka mluvčího | Poskytuje se prostřednictvím WASAPI, privátních rozhraní API, vlastního modulu plug-in ALSA (Linux) nebo poskytovaných prostřednictvím kanálu firmwaru. |
 | THD% | 3 Octave pásma minimální než 5.70 dBA, dBA přehrávání @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| Navýšení vazby na mikrofony | \>– 10 dB TCLw pomocí ITU-T G. 122 – metoda normalizovaná na úroveň MIC<br />TCLw = TCLwmeasured \+ (měřená citlivost výstupu cíle na úrovni)<br />TCLw = TCLwmeasured \+ (měřená úroveň-(-26)) |
+| Navýšení vazby na mikrofony | \> – 10 dB TCLw pomocí ITU-T G. 122 – metoda normalizovaná na úroveň MIC<br />TCLw = TCLwmeasured \+ (měřená citlivost výstupu cíle na úrovni)<br />TCLw = TCLwmeasured \+ (měřená úroveň-(-26)) |
 
 ## <a name="integration-design-architecture"></a>Architektura návrhu integrace
 
@@ -97,7 +97,7 @@ Při integraci mikrotelefonů do zařízení jsou nutné následující pokyny p
 | Vzorkování – hodiny      | Zvuk zařízení musí být bez kolísání a poklesu s nízkým posunem. |
 | Možnost záznamu   | Zařízení musí být schopné nahrávat nezpracované proudy jednotlivých kanálů současně. |
 | USB                 | Všechna zařízení se zvukovým vstupem USB musí nastavit popisovače podle [specifikace USB audio Devices Rev3](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) . |
-| Geometrie mikrofonu | Ovladače musí správně implementovat [popisovače geometrie pro pole mikrofonu](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) . |
+| Geometrie mikrofonu | Ovladače musí správně implementovat [popisovače geometrie pro pole mikrofonu](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) . |
 | Zjistitelnost     | Zařízení nesmí mít žádný z nezjištěného nebo neovladatelného hardwaru, firmwaru nebo softwaru od jiných výrobců, než je nelineární zpracování zvuku, do/ze zařízení. |
 | Formát zachycení      | Formáty zachycení musí používat minimální vzorkovací frekvenci o 16 kHz a doporučenou 16bitovou hloubku. |
 

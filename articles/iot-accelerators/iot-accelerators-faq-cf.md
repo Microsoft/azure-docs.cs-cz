@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792373"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198978"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení propojené továrny
 
@@ -68,7 +68,7 @@ Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihl�
 1. Uživatelské jméno, které se má použít, je: `docker` .
 1. Heslo, které se má použít, závisí na verzi, kterou jste použili k nasazení:
     * Pro řešení nasazená pomocí skriptu build.ps1 do 1. června 2017 je heslo: `Passw0rd` .
-    * V případě řešení nasazených pomocí skriptu build.ps1 po 1. června 2017 můžete v souboru najít heslo `<name of your deployment>.config.user` . Heslo je uloženo v nastavení **VmAdminPassword** . Heslo se vygeneruje náhodně v době nasazení, pokud ho neurčíte pomocí `build.ps1` parametru skriptu.`-VmAdminPassword`
+    * V případě řešení nasazených pomocí skriptu build.ps1 po 1. června 2017 můžete v souboru najít heslo `<name of your deployment>.config.user` . Heslo je uloženo v nastavení **VmAdminPassword** . Heslo se vygeneruje náhodně v době nasazení, pokud ho neurčíte pomocí `build.ps1` parametru skriptu. `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Návody zastavit a spustit všechny procesy Docker v simulaci virtuálního počítače?
 
@@ -76,7 +76,7 @@ Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihl�
 1. Chcete-li zjistit, které kontejnery jsou aktivní, spusťte příkaz: `docker ps` .
 1. Chcete-li zastavit všechny kontejnery simulace, spusťte příkaz: `./stopsimulation` .
 1. Chcete-li spustit všechny kontejnery simulace:
-    * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** v `<name of your deployment>.config.user` souboru. Příklad:
+    * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** v `<name of your deployment>.config.user` souboru. Například:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -125,7 +125,7 @@ Případně se přihlaste k virtuálnímu počítači přes SSH a zkontrolujte s
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak se dá ověřit, jestli simulace odesílá data do cloudu?
 
-Pomocí příkazu monitorovat rozšíření Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer) nebo [Azure IoT CLI – události](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odesílaná do IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro Centrum IoT v nasazení. Přečtěte si téma [návody zjištění připojovacího řetězce centra IoT, kterou používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Pomocí příkazu monitorovat rozšíření Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer) nebo [Azure IoT CLI – události](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odesílaná do IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro Centrum IoT v nasazení. Přečtěte si téma [návody zjištění připojovacího řetězce centra IoT, kterou používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Zkontrolujte data odesílaná v jednom ze zařízení vydavatele:
 
@@ -186,7 +186,7 @@ Odeslání dat telemetrie ze zařízení, která nejsou OPC UA, do propojené to
     ]
     ```
 
-1. Formát `<timestamp>` je:`2017-12-08T19:24:51.886753Z`
+1. Formát `<timestamp>` je: `2017-12-08T19:24:51.886753Z`
 
 1. Restartujte App Service propojené továrny.
 
@@ -194,6 +194,5 @@ Odeslání dat telemetrie ze zařízení, která nejsou OPC UA, do propojené to
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
-* [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)
+* [Zabezpečení IoT od počátku](../iot-fundamentals/iot-security-ground-up.md)

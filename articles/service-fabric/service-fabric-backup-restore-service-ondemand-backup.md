@@ -5,27 +5,32 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247893"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928033"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Zálohování na vyžádání v Azure Service Fabric
 
 Můžete zálohovat data spolehlivých stavových služeb a Reliable Actors řešit scénáře týkající se havárie nebo ztráty dat.
 
-Azure Service Fabric obsahuje funkce pro [pravidelné zálohování dat](service-fabric-backuprestoreservice-quickstart-azurecluster.md) a zálohování dat podle potřeby. Zálohování na vyžádání je užitečné, protože chrání před _data loss_ / _poškozením dat_ ztráty dat z důvodu plánovaných změn v základní službě nebo jejím prostředí.
+Azure Service Fabric obsahuje funkce pro [pravidelné zálohování dat](service-fabric-backuprestoreservice-quickstart-azurecluster.md) a zálohování dat podle potřeby. Zálohování na vyžádání je užitečné, protože chrání před  / _poškozením dat_ ztráty dat z důvodu plánovaných změn v základní službě nebo jejím prostředí.
 
 Funkce zálohování na vyžádání jsou užitečné pro zaznamenání stavu služeb před ruční aktivací operace služby nebo služby Service Environment. Například pokud provedete změnu v binárních souborech služby při upgradu nebo downgrade služby. V takovém případě může zálohování na vyžádání pomáhat chránit data před poškozením chyb kódu aplikace.
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http [v Preview] pro provedení konfiguračních volání.
+- Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http (Preview) pro provedení konfiguračních volání.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Pokud je verze PowerShellGet menší než 1.6.0, bude nutné aktualizovat, aby se přidala podpora pro příznak *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
 
@@ -149,7 +154,7 @@ Požadavky na zálohování na vyžádání můžou být v následujících stav
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **Úspěch**, **selhání**nebo **časový limit**: Požadovaná záloha na vyžádání může být dokončena v některém z následujících stavů:
+- **Úspěch**, **selhání** nebo **časový limit**: Požadovaná záloha na vyžádání může být dokončena v některém z následujících stavů:
   - **Úspěch**: stav zálohování _po úspěchu_ indikuje, že se stav oddílu úspěšně zálohoval. Odpověď poskytuje _BackupEpoch_ a _BackupLSN_ pro oddíl spolu s časem ve standardu UTC.
     ```
     BackupState             : Success

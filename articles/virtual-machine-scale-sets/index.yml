@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 6fd995fbedafaf91ef98389e556286be218227a8
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-  ms.translationtype: HT
+  ms.openlocfilehash: 36cb4644dae82802f93e7f6c654005b58d877c20
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87088967"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101672708"
 landingContent:
 - title: Informace o škálovacích sadách virtuálních počítačů
   linkLists:
@@ -39,6 +39,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Režimy orchestrace
+      url: virtual-machine-scale-sets-orchestration-modes.md
     - text: Zásady horizontálního snižování kapacity
       url: virtual-machine-scale-sets-scale-in-policy.md
     - text: Ukončení oznamování

@@ -3,12 +3,13 @@ title: Azure Service Bus přenosů, zámků a vyrovnání zpráv
 description: Tento článek poskytuje přehled Azure Service Bus přenosů zpráv, zámků a operací vyrovnání.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 22be139fccdeecee846c204a8035804fb897ae5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd71edd12e478bcd5f14815c105c14482cf7e2bd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89020027"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Přenosy zpráv, zámky a vyrovnání
 

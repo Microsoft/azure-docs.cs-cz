@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: b8b19b5bbb327c55b4f4103a133e77e73f0ae4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088253"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045832"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP
 
@@ -80,8 +80,11 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver](./sap-high-availability-architecture-scenarios.md)
 * [Přidat port sondy v konfiguraci clusteru ASCS](sap-high-availability-installation-wsfc-file-share.md)
 * [Instalace instance SCS (A) do clusteru s podporou převzetí služeb při selhání](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Vytvoření svazku SMB pro službu Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [Vytvoření svazku SMB pro službu Azure NetApp Files](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> Upozornění: Mějte na paměti, že instalace systému SAP se systémem SWPM ve sdílené složce SMB, která je hostovaná na [Azure NetApp Files][anf-azure-doc] svazku SMB, může selhat s chybou instalace pro nedostatečná oprávnění, jako je warningPerm není definovaná. Aby se zabránilo této chybě, uživatel, pod kterým je spuštěn kontext SWPM, potřebuje při instalaci systému SAP zvýšené oprávnění "správce domény".  
 
 ## <a name="overview"></a>Přehled
 
@@ -101,7 +104,7 @@ Požadavky pro sdílenou složku SMB:
 
 Sdílenou složku SAP Central Services v této referenční architektuře nabízí Azure NetApp Files:
 
-![Architektura SAP ASCS/SCS HA se sdílenou složkou SMB](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
+![Architektura SAP ASCS/SCS HA s podrobnostmi sdílené složky SMB](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
 
 ## <a name="create-and-mount-smb-volume-for-azure-netapp-files"></a>Vytvoření a připojení svazku SMB pro Azure NetApp Files
 
@@ -112,10 +115,10 @@ Proveďte následující kroky, jako přípravu na použití Azure NetApp Files.
 3. Nastavte fond kapacit podle pokynů v části [nastavení fondu kapacity](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md) .
 4. Azure NetApp Files prostředky se musí nacházet v delegované podsíti. Podle pokynů v části [delegování podsítě Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) vytvořit delegovanou podsíť.  
 
-> [!IMPORTANT]
-> Před vytvořením svazku SMB musíte vytvořit připojení ke službě Active Directory. Projděte si [požadavky na připojení ke službě Active Directory](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
+   > [!IMPORTANT]
+   > Před vytvořením svazku SMB musíte vytvořit připojení ke službě Active Directory. Projděte si [požadavky na připojení ke službě Active Directory](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections).  
 
-5. Vytvořte připojení ke službě Active Directory, jak je popsáno v tématu [vytvoření připojení ke službě Active Directory](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) .  
+5. Vytvořte připojení ke službě Active Directory, jak je popsáno v tématu [vytvoření připojení ke službě Active Directory](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection) .  
 6. Vytvořte svazek SMB Azure NetApp Files SMB podle pokynů v části [Přidání svazku SMB](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) .  
 7. Připojte svazek SMB na virtuálním počítači s Windows.
 
@@ -124,15 +127,11 @@ Proveďte následující kroky, jako přípravu na použití Azure NetApp Files.
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>Příprava infrastruktury pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows 
 
-1. [Nastavte požadované IP adresy DNS.](./sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
-2. [Nastavte statické IP adresy pro virtuální počítače SAP](./sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30).
-3. [Nastavte STATICKOU IP adresu pro interní nástroj pro vyrovnávání zatížení Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e).
-4. [Nastavte výchozí pravidla vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c).
-5. [Změňte výchozí pravidla vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
-6. [Přidejte virtuální počítače s Windows do domény](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
-7. [Přidání položek registru na obou uzlech clusteru instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
-8. [Nastavení clusteru s podporou převzetí služeb při selhání Windows serveru pro instanci SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
-9. Pokud používáte Windows Server 2016, doporučujeme nakonfigurovat [sdílené složky Azure v cloudu](/windows-server/failover-clustering/deploy-cloud-witness).
+1. [Nastavte pravidla vyrovnávání zatížení ASCS/SCS pro interní nástroj pro vyrovnávání zatížení Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
+2. [Přidejte virtuální počítače s Windows do domény](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
+3. [Přidání položek registru na obou uzlech clusteru instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
+4. [Nastavení clusteru s podporou převzetí služeb při selhání Windows serveru pro instanci SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
+5. Pokud používáte Windows Server 2016, doporučujeme nakonfigurovat [sdílené složky Azure v cloudu](/windows-server/failover-clustering/deploy-cloud-witness).
 
 
 ## <a name="install-sap-ascs-instance-on-both-nodes"></a>Instalace instance SAP ASCS na obou uzlech
@@ -147,22 +146,22 @@ Od SAP budete potřebovat následující software:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Instalace instance ASCS/SCS na prvním uzlu clusteru ASCS/SCS
 
-1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > vysoce dostupného systému > ASCS/SCS instance > prvním uzlu clusteru.  
+1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > High-Availability System > ASCS/SCS instance > prvním uzlu clusteru.  
 
 2. Jako konfiguraci sdílené složky clusteru v SWPM vyberte **cluster Shared File** .  
-3. Po zobrazení výzvy ke kroku o **parametrech systémového clusteru SAP**zadejte název hostitele pro sdílenou složku SMB Azure NetApp Files, kterou jste už vytvořili jako **název hostitele pro sdílení souborů**.  V tomto příkladu je název hostitele sdílené složky SMB **anfsmb-9562**. 
+3. Po zobrazení výzvy ke kroku o **parametrech systémového clusteru SAP** zadejte název hostitele pro sdílenou složku SMB Azure NetApp Files, kterou jste už vytvořili jako **název hostitele pro sdílení souborů**.  V tomto příkladu je název hostitele sdílené složky SMB **anfsmb-9562**. 
 
-> [!IMPORTANT]
-> Pokud výsledky kontroly požadovaných součástí SWPM ukazují, že se nesplní podmínka funkce průběžné dostupnosti, můžete ji vyřešit podle pokynů v části [opožděná chybová zpráva při pokusu o přístup ke sdílené složce, která už v systému Windows neexistuje](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  
+   > [!IMPORTANT]
+   > Pokud výsledky kontroly požadovaných součástí SWPM ukazují, že se nesplní podmínka funkce průběžné dostupnosti, můžete ji vyřešit podle pokynů v části [opožděná chybová zpráva při pokusu o přístup ke sdílené složce, která už v systému Windows neexistuje](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  
 
-> [!TIP]
-> Pokud výsledky kontroly požadovaných součástí SWPM ukazují, že se podmínka změny velikosti nevyhověla, můžete velikost SWAPu upravit tak, že přejdete do složky počítač>vlastnosti systému>nastavení výkonu> Pokročilá> virtuální paměť> změnit.  
+   > [!TIP]
+   > Pokud výsledky kontroly požadovaných součástí SWPM ukazují, že se podmínka změny velikosti nevyhověla, můžete velikost SWAPu upravit tak, že přejdete do složky počítač>vlastnosti systému>nastavení výkonu> Pokročilá> virtuální paměť> změnit.  
 
 4. Nakonfigurujte prostředek clusteru SAP, `SAP-SID-IP` port testu pomocí prostředí PowerShell. Tuto konfiguraci spusťte na jednom z uzlů clusteru SAP ASCS/SCS, jak je popsáno v tématu [Konfigurace portu testu paměti](./sap-high-availability-installation-wsfc-shared-disk.md#10822f4f-32e7-4871-b63a-9b86c76ce761).
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Instalace instance ASCS/SCS na druhý uzel clusteru ASCS/SCS
 
-1. Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Spusťte nástroj pro instalaci SAP SWPM a pak přejděte na **produkt**  >  **DBMS** > instalaci > aplikační server ABAP (nebo Java) > vysoké dostupnosti > ASCS/SCS instance > další uzel clusteru.  
+1. Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > High-Availability System > ASCS/SCS instance > další uzel clusteru.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Instalace instance systému DBMS a aplikačních serverů SAP
 

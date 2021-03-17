@@ -2,34 +2,34 @@
 title: Začínáme s PowerShellem
 description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomocí lze spravovat prostředky služby Batch
 ms.topic: how-to
-ms.date: 01/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: 2c80da92c7acad5180c763d259357f5369f225f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/21/2021
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 2b51a2a7852df82625fb342bbbbc4a3a1cbf72a3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092775"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685506"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
-Pomocí rutin PowerShellu pro službu Azure Batch můžete provádět a převádět na skripty řadu úloh, které se provádějí pomocí rozhraní API služby Batch, webu Azure Portal a rozhraní příkazového řádku (CLI) Azure. Tento článek obsahuje rychlý úvod do rutin, s jejichž pomocí můžete spravovat účty Batch a pracovat s prostředky služby Batch, jako jsou fondy, úlohy a úkoly.
+Pomocí rutin Azure Batch PowerShellu můžete provádět a skriptovat mnoho běžných úloh Batch. Tento článek obsahuje rychlý úvod do rutin, s jejichž pomocí můžete spravovat účty Batch a pracovat s prostředky služby Batch, jako jsou fondy, úlohy a úkoly.
 
 Úplný seznam rutin prostředí Batch a podrobný popis syntaxe rutin najdete v článku [Rutiny služby Azure Batch – reference](/powershell/module/az.batch).
 
-Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure PowerShellu doporučujeme pravidelně aktualizovat, abyste mohli využívat výhody, které vám přinášejí aktualizace a vylepšení služby.
+Moduly Azure PowerShellu doporučujeme pravidelně aktualizovat, abyste mohli využívat výhody, které vám přinášejí aktualizace a vylepšení služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalujte a nakonfigurujte modul Azure PowerShellu](/powershell/azure/). Pokud chcete nainstalovat konkrétní modul Azure Batch, například předběžnou verzi modulu, přejděte do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
+- [Nainstalujte a nakonfigurujte modul Azure PowerShellu](/powershell/azure/). Pokud chcete nainstalovat konkrétní modul Azure Batch, například předběžnou verzi modulu, přejděte do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.Batch/).
 
-* Spusťte rutinu **Connect-AzAccount** pro připojení k vašemu předplatnému (rutiny Azure Batch dodávané v modulu Azure Resource Manager):
+- Spusťte rutinu **Connect-AzAccount** pro připojení k vašemu předplatnému (rutiny Azure Batch dodávané v modulu Azure Resource Manager):
 
   ```powershell
   Connect-AzAccount
   ```
 
-* **Zaregistrujte se u poskytovatele oboru názvů služby Batch**. Tuto operaci stačí provést jen **jednou pro každé předplatné**.
+- **Zaregistrujte se u poskytovatele oboru názvů služby Batch**. Tuto operaci stačí provést jen **jednou pro každé předplatné**.
   
   ```powershell
   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -39,13 +39,13 @@ Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure 
 
 ### <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
-**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Příklad:
+**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Například:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Potom ve skupině prostředků vytvořte účet Batch. Zadejte název účtu v <*account_name*> a umístění a název vaší skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Příklad:
+Potom ve skupině prostředků vytvořte účet Batch. Zadejte název účtu v <*account_name*> a umístění a název vaší skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Například:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Odstranění účtu Batch
 
-**Remove-AzBatchAccount** odstraní účet Batch. Příklad:
+**Remove-AzBatchAccount** odstraní účet Batch. Například:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -108,15 +108,15 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ## <a name="create-and-modify-batch-resources"></a>Vytváření a úpravy prostředků služby Batch
 
-Pomocí rutin, jako je **New-AzBatchPool**, **New-AzBatchJob**a **New-AzBatchTask** , můžete vytvářet prostředky v rámci účtu Batch. Pomocí rutin **Get-** a **Set-** lze aktualizovat vlastnosti existujících prostředků a pomocí rutin **Remove-** lze prostředky v účtu Batch odebírat.
+Pomocí rutin, jako je **New-AzBatchPool**, **New-AzBatchJob** a **New-AzBatchTask** , můžete vytvářet prostředky v rámci účtu Batch. Pomocí rutin **Get-** a **Set-** lze aktualizovat vlastnosti existujících prostředků a pomocí rutin **Remove-** lze prostředky v účtu Batch odebírat.
 
 Při použití řady těchto rutin musíte kromě předání objektu BatchContext navíc taky vytvořit nebo předat objekty, které obsahují podrobné nastavení prostředků, jak ukazuje následující příklad. Další příklady najdete v podrobné nápovědě k jednotlivým rutinám.
 
 ### <a name="create-a-batch-pool"></a>Vytvoření fondu služby Batch
 
-Při vytváření nebo aktualizaci fondu služby Batch vyberete buď konfiguraci Cloud Services, nebo konfiguraci virtuálního počítače pro operační systém na výpočetních uzlech (viz [uzly a fondy](nodes-and-pools.md#configurations)). Pokud zadáte konfiguraci cloudových služeb, vaše výpočetní uzly obdrží image některé z [vydaných verzí hostovaného operačního systému Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Pokud zadáte konfiguraci virtuálního počítače, můžete zadat některou z imagí podporovaných virtuálních počítačů s Linuxem nebo Windows uvedených na webu [Azure Virtual Machines Marketplace][vm_marketplace] nebo vlastní image, kterou jste si připravili.
+Při vytváření nebo aktualizaci fondu Batch zadáte [konfiguraci](nodes-and-pools.md#configurations). Fondy by měly být obecně nakonfigurované s konfigurací virtuálního počítače, což vám umožní určit jednu z podporovaných imagí pro Linux nebo Windows VM, které jsou uvedené na [webu Azure Virtual Machines Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1), nebo zadat vlastní image, kterou jste připravili. Fondy konfigurací Cloud Services poskytují jenom výpočetní uzly Windows a nepodporují všechny funkce dávky.
 
-Když spustíte rutinu **New-AzBatchPool**, předejte nastavení operačního systému v objektu PSCloudServiceConfiguration nebo PSVirtualMachineConfiguration. Například následující fragment kódu vytvoří fond služby Batch s velikostí Standard_A1 výpočetních uzlů v konfiguraci virtuálního počítače s imagí s Ubuntu serverem 18,04-LTS. Parametr **VirtualMachineConfiguration** tady určuje proměnnou *$configuration* jako objekt PSVirtualMachineConfiguration. Parametr **BatchContext** určuje jako objekt BatchAccountContext dříve definovanou proměnnou *$context*.
+Když spustíte rutinu **New-AzBatchPool**, předejte nastavení operačního systému v objektu PSVirtualMachineConfiguration nebo PSCloudServiceConfiguration. Například následující fragment kódu vytvoří fond služby Batch s velikostí Standard_A1 výpočetních uzlů v konfiguraci virtuálního počítače s imagí s Ubuntu serverem 18,04-LTS. Parametr **VirtualMachineConfiguration** tady určuje proměnnou *$configuration* jako objekt PSVirtualMachineConfiguration. Parametr **BatchContext** určuje jako objekt BatchAccountContext dříve definovanou proměnnou *$context*.
 
 ```powershell
 $imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
@@ -130,7 +130,7 @@ Cílový počet výpočetních uzlů v novém fondu je vypočítán vzorcem auto
 
 ## <a name="query-for-pools-jobs-tasks-and-other-details"></a>Dotazy na fondy, úlohy, úkoly a další podrobnosti
 
-Pomocí rutin, jako **Get-AzBatchPool**, **Get-AzBatchJob**a **Get-AzBatchTask** , můžete zadávat dotazy na entity vytvořené v účtu Batch.
+Pomocí rutin, jako **Get-AzBatchPool**, **Get-AzBatchJob** a **Get-AzBatchTask** , můžete zadávat dotazy na entity vytvořené v účtu Batch.
 
 ### <a name="query-for-data"></a>Dotazy na data
 
@@ -164,7 +164,7 @@ Parametr **ID** podporuje pouze vyhledávání s úplným ID; Nejedná se o zás
 
 ### <a name="use-the-maxcount-parameter"></a>Použití parametru MaxCount
 
-Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Příklad:
+Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Například:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context
@@ -190,7 +190,10 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 ## <a name="application-package-management"></a>Správa balíčků aplikací
 
-Balíčky aplikací umožňují zjednodušené nasazování aplikací ve výpočetních uzlech ve vašich fondech. Rutinami PowerShellu ve službě Batch můžete odesílat a spravovat balíčky aplikací v účtu Batch a nasazovat verze balíčků do výpočetních uzlů.
+[Balíčky aplikací](batch-application-packages.md) poskytují zjednodušený způsob nasazení aplikací do výpočetních uzlů ve fondech. Rutinami PowerShellu ve službě Batch můžete odesílat a spravovat balíčky aplikací v účtu Batch a nasazovat verze balíčků do výpočetních uzlů.
+
+> [!IMPORTANT]
+> Chcete-li používat balíčky aplikací, je třeba propojit účet Azure Storage s vaším účtem Batch.
 
 **Vytvoření** aplikace:
 
@@ -247,17 +250,13 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Teď vytvořte konfiguraci a fond. V tomto příkladu se používá parametr **CloudServiceConfiguration** s `PSCloudServiceConfiguration` objektem typu inicializovaným v `$configuration` , který nastavuje hodnotu **OSFamily** `6` pro Windows Server 2019 a možnost **OSVersion** na `*` . Zadejte objekt odkazu balíčku jako argument `ApplicationPackageReferences` Možnosti:
+Teď vytvořte fond a zadejte referenční objekt balíčku jako argument možnosti `ApplicationPackageReferences`:
 
 ```powershell
-$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
-New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
+New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
 Další informace o balíčcích aplikací najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch](batch-application-packages.md).
-
-> [!IMPORTANT]
-> Chcete-li používat balíčky aplikací, je třeba propojit účet Azure Storage s vaším účtem Batch.
 
 ### <a name="update-a-pools-application-packages"></a>Aktualizace balíčků aplikací fondu
 
@@ -272,7 +271,7 @@ $appPackageReference.Version = "2.0"
 
 ```
 
-Potom získejte fond ze služby Batch, smažte všechny stávající balíčky, přidejte odkaz na nový balíček a aktualizujte ve službě Batch nastavení nového balíčku:
+Potom Získejte fond ze služby Batch, zrušte všechny existující balíčky, přidejte odkaz na nový balíček a aktualizujte službu Batch pomocí nového nastavení fondu:
 
 ```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
@@ -291,11 +290,9 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 ```
 
 > [!TIP]
-> Do výpočetních uzlů ve fondu můžete nasadit několik balíčků aplikací. Pokud chcete balíček aplikace *přidat*, místo abyste jím nahrazovali aktuálně nasazené balíčky, vynechte řádek `$pool.ApplicationPackageReferences.Clear()`, (viz výše).
+> Do výpočetních uzlů ve fondu můžete nasadit několik balíčků aplikací. Pokud chcete balíček aplikace přidat, místo abyste jím nahrazovali aktuálně nasazené balíčky, vynechte řádek `$pool.ApplicationPackageReferences.Clear()`, (viz výše).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobný popis syntaxe rutin najdete v článku [Rutiny služby Azure Batch – reference](/powershell/module/az.batch).
-* Další informace o aplikacích a balíčcích aplikací ve službě Batch najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch](batch-application-packages.md).
-
-[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
+- Podrobné informace o syntaxi a příkladech rutin najdete v [referenčních informacích k rutině Azure Batch](/powershell/module/az.batch) .
+- Naučte se, jak [nasadit aplikace do výpočetních uzlů pomocí balíčků aplikací Batch](batch-application-packages.md).

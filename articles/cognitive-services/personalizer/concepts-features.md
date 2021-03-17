@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132768"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380538"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -37,12 +37,12 @@ Přizpůsobené aplikace nepředepisuje, neomezuje ani neopravují funkce, kter�
 
 ## <a name="supported-feature-types"></a>Podporované typy funkcí
 
-Přizpůsobení podporuje funkce typu String, numeric a Boolean.
+Přizpůsobení podporuje funkce typu String, numeric a Boolean. Je velmi pravděpodobné, že vaše aplikace bude většinou používat řetězcové funkce s několika výjimkami.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak volba typu funkce ovlivní Machine Learning v přizpůsobování
 
-* **Řetězce**: u typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
-* **Číselná**hodnota: je třeba použít číselné hodnoty, pokud má číslo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
+* **Řetězce**: u typů řetězců se každá kombinace klíče a hodnoty považuje za funkci One-Hot (například Žánr: "ScienceFiction" a Žánr: "dokumentace" vytvoří dvě nové vstupní funkce pro model strojového učení.
+* **Číslo**: v případě, že se jedná o velikost, je třeba použít číselné hodnoty, které by měly proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založeny na numerických jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce. Například DayOfMonth by byl řetězec s "1", "2"... "31". Pokud máte mnoho kategorií, může být kvalita funkcí obvykle vylepšena pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
 * **Logické** hodnoty odeslané s hodnotou false fungují jako v případě, že jste byly odeslány vůbec.
 
 Funkce, které nejsou k dispozici, by měly být z požadavku vynechány. Vyhněte se posílání funkcí s hodnotou null, protože se při výuce modelu zpracuje jako stávající a s hodnotou null.
@@ -80,12 +80,14 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
         { 
             "user": {
                 "profileType":"AnonymousUser",
-                "latlong": [47.6, -122.1]
+                "latlong": ["47.6,-122.1"]
             }
         },
         {
-            "state": {
-                "timeOfDay": "noon",
+            "environment": {
+                "dayOfMonth": "28",
+                "monthOfYear": "8",
+                "timeOfDay": "13:00",
                 "weather": "sunny"
             }
         },
@@ -93,6 +95,13 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
             "device": {
                 "mobile":true,
                 "Windows":true
+            }
+        },
+        {
+            "userActivity" : {
+                "itemsInCart": 3,
+                "cartValue": 250,
+                "appliedCoupon": true
             }
         }
     ]
@@ -113,6 +122,8 @@ Dobrá sada funkcí pomáhá přizpůsobovat, jak předpovědět akci, která bu
 
 Zvažte odeslání funkcí rozhraní API pro řazení přizpůsobeného rozhraní, které se řídí těmito doporučeními:
 
+* Pro funkce, které nejsou velikostí, použijte kategorií a typy řetězců. 
+
 * K dispozici je dostatek funkcí pro přizpůsobení. Přesnější cílení obsahu vyžaduje, aby bylo potřeba víc funkcí.
 
 * Existuje dostatek funkcí různých *hustot*. Funkce je *zhuštěná* , pokud je v několika intervalech seskupeno mnoho položek. Například tisíce videí mohou být klasifikovány jako "Long" (více než 5 minut dlouhé) a "krátká" (méně než 5 minut). Toto je *velmi zhuštěná* funkce. Na druhé straně stejné tisíce položek mohou mít atribut nazvaný "title", který téměř nikdy nebude mít stejnou hodnotu z jedné položky do druhé. Toto je velmi nezhuštěná nebo *zhuštěná* funkce.  
@@ -131,7 +142,7 @@ Je možné vylepšit sady funkcí jejich úpravou, aby byly větší a více neb
 
 Například časové razítko dolů na druhou je velmi zhuštěná funkce. Je možné, že je možné provést více hustě (v platnosti) tím, že rozklasifikujete časy do "ráno", "poledne", "odpoledne" atd.
 
-Informace o poloze také obvykle těží z vytváření širších klasifikací. Například souřadnice zeměpisné délky, jako je například lat: 47,67402 ° N, Long: 122,12154 ° W, je příliš přesné a vynutí, aby se model dozvěděl o zeměpisné šířce a délce jako odlišné rozměry. Při pokusu o přizpůsobení na základě informací o poloze pomáhá seskupovat informace o poloze ve větších sektorech. Snadným způsobem, jak to provést, je zvolit vhodnou přesnost zaokrouhlení pro číselné hodnoty v tabulce LAT a kombinovat zeměpisnou šířku a délku do "oblastí" tím, že je provedete do jednoho řetězce. Dobrým způsobem, jak vyjádřit 47,67402 ° N, Long: 122,12154 ° W v oblastech, přibližně pár kilometrů na šířku by bylo "umístění": "34.3, 12,1".
+Informace o poloze také obvykle těží z vytváření širších klasifikací. Například Latitude-Longitude souřadnici, jako je například lat: 47,67402 ° N, Long: 122,12154 ° W, je příliš přesný a vynutí, aby se model dozvěděl o zeměpisné šířce a délce jako odlišné rozměry. Při pokusu o přizpůsobení na základě informací o poloze pomáhá seskupovat informace o poloze ve větších sektorech. Snadným způsobem, jak to provést, je zvolit vhodnou přesnost zaokrouhlení pro Lat-Long čísla a seskupit zeměpisnou šířku a délku do "oblastí" tím, že je provedete do jednoho řetězce. Dobrým způsobem, jak vyjádřit 47,67402 ° N, Long: 122,12154 ° W v oblastech, přibližně pár kilometrů na šířku by bylo "umístění": "34.3, 12,1".
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozbalení sad funkcí s použitím extrapolace informací
@@ -152,10 +163,10 @@ Příklad:
 
 Můžete použít několik dalších [Cognitive Services Azure](https://www.microsoft.com/cognitive-services), například
 
-* [Entity Linking](../entitylinking/home.md)
+* [Entity Linking](../text-analytics/index.yml)
 * [Analýza textu](../text-analytics/overview.md)
-* [Emoce](../emotion/home.md)
-* [Počítačové zpracování obrazu](../computer-vision/home.md)
+* [Emoce](../face/overview.md)
+* [Počítačové zpracování obrazu](../computer-vision/overview.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Akce reprezentují seznam možností.
 
@@ -322,4 +333,4 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
 
 ## <a name="next-steps"></a>Další kroky
 
-[Zpětnovazební učení](concepts-reinforcement-learning.md) 
+[Zpětnovazební učení](concepts-reinforcement-learning.md)

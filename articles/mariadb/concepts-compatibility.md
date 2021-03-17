@@ -1,17 +1,17 @@
 ---
 title: Kompatibilita ovladačů a nástrojů – Azure Database for MariaDB
 description: Tento článek popisuje ovladače a nástroje pro správu MariaDB, které jsou kompatibilní s Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1d544004d4361d11b40d8016f38f8bdd01bf5c5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107202"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659865"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Ovladače a nástroje pro správu MariaDB kompatibilní s Azure Database for MariaDB
 
@@ -44,7 +44,7 @@ Připojení SSL | X | X | X
 Automatické dokončování dotazů SQL | X | X |
 Import a export dat | X | X | X
 Exportovat do více formátů | X | X | X
-Zálohování a obnovení |  | × |
+Zálohování a obnovení |  | X |
 Zobrazit parametry serveru | X | X | X
 Zobrazit klientská připojení | X | X | X
 

@@ -1,28 +1,25 @@
 ---
-title: Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)
+title: Referenční dokumentace jazyka SQL pro zrychlení dotazů
 titleSuffix: Azure Storage
 description: Naučte se používat syntaxi SQL pro zrychlení dotazů.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193410"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908774"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)
+# <a name="query-acceleration-sql-language-reference"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů
 
 Zrychlení dotazů podporuje jazyk podobný standardu ANSI SQL pro vyjádření dotazů přes obsah objektu BLOB.  Dialekt SQL pro zrychlení dotazů je podmnožinou ANSI SQL s omezeným počtem podporovaných datových typů, operátorů atd., ale také rozšiřuje na ANSI SQL pro podporu dotazů v hierarchicky strukturovaných datových formátech, jako je JSON. 
-
-> [!NOTE]
-> Funkce zrychlení dotazů je ve verzi Public Preview a je dostupná v oblastech Kanada – střed a Francie – střed. Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) . Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adls/qa-preview-signup). 
 
 ## <a name="select-syntax"></a>VYBRAT syntaxi
 
@@ -58,7 +55,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="data-types"></a>Typy dat
 
-|Typ dat|Description|
+|Typ dat|Popis|
 |---------|-------------------------------------------|
 |INT      |64 – celé číslo se znaménkem.                     |
 |Plovák    |64-bit ("dvojitá přesnost") plovoucí desetinná čárka.|
@@ -66,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |ČASOVÉ razítko|Bod v čase.                           |
 |DATOVÉHO  |True nebo false                             |
 
-Při čtení hodnot z dat ve formátu CSV jsou všechny hodnoty čteny jako řetězce.  Řetězcové hodnoty lze převést na jiné typy pomocí výrazů přetypování.  Hodnoty mohou být implicitně přetypování na jiné typy v závislosti na kontextu. Další informace naleznete v tématu [Priorita datového typu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Při čtení hodnot z dat ve formátu CSV jsou všechny hodnoty čteny jako řetězce.  Řetězcové hodnoty lze převést na jiné typy pomocí výrazů přetypování.  Hodnoty mohou být implicitně přetypování na jiné typy v závislosti na kontextu. Další informace naleznete v tématu [Priorita datového typu (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 ## <a name="expressions"></a>Výrazy
 
@@ -80,15 +77,36 @@ V datech ve formátu CSV může být pole také odkazována podle pořadového �
 
 Podporovány jsou následující standardní operátory SQL:
 
-``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
+|Operátor|Popis|
+|--|--|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |Porovná rovnost dvou výrazů (relační operátor).|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Testuje, zda jeden výraz není roven jinému výrazu (operátor porovnání).|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Porovná dva výrazy pro nerovnost (operátor porovnání).|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |Porovná dva výrazy pro menší než (operátor porovnání).|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Porovná dva výrazy menší než nebo rovno (operátor porovnání).|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |Porovná dva výrazy pro větší než (operátor porovnání). |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Porovná dva výrazy o větší nebo rovno (operátor porovnání).|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |Přidá dvě čísla. Tento operátor sčítání může také do data přidat číslo (ve dnech).|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |Odečte dvě čísla (operátor aritmetického odčítání). |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |Vydělí jedno číslo jiným (operátor aritmetického dělení).|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |Vynásobí dva výrazy (aritmetický operátor násobení).|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |Vrátí zbytek jednoho čísla vydělený jinou.|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Provede bitovou logickou a operaci mezi dvěma celočíselnými hodnotami.|
+|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Provede bitovou logickou hodnotu nebo operaci mezi dvěma zadanými celočíselnými hodnotami, které jsou přeloženy na binární výrazy v příkazech jazyka Transact-SQL.|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |Negace logického vstupu.|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |Převede výraz jednoho datového typu na jiný.|
+|[JEDNOTLIVÝCH](/sql/t-sql/language-elements/between-transact-sql)    |Určuje rozsah, který se má testovat.|
+|[PRO](/sql/t-sql/language-elements/in-transact-sql)    |Určuje, zda zadaná hodnota odpovídá jakékoli hodnotě v poddotazu nebo seznamu.|
+|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |Vrací hodnotu null, pokud jsou dva zadané výrazy stejné.|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |Vyhodnotí argumenty v pořadí a vrátí aktuální hodnotu prvního výrazu, který zpočátku není vyhodnocen jako NULL.|
 
-Pokud jsou datové typy nalevo a napravo od operátoru jiné, bude proveden automatický převod podle pravidel, která jsou zde uvedena: [Priorita datového typu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Pokud jsou datové typy nalevo a napravo od operátoru jiné, bude proveden automatický převod podle pravidel, která jsou zde uvedena: [Priorita datového typu (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 Jazyk SQL pro zrychlení dotazů podporuje pouze velmi malou podmnožinu datových typů popsaných v tomto článku.  Další informace najdete v části [typy dat](#data-types) tohoto článku.
 
 ### <a name="casts"></a>Přetypování
 
-Jazyk SQL pro zrychlení dotazů podporuje operátor přetypování podle pravidel zde: [Převod datového typu (databázový stroj)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+Jazyk SQL pro zrychlení dotazů podporuje operátor přetypování podle pravidel zde: [Převod datového typu (databázový stroj)](/sql/t-sql/data-types/data-type-conversion-database-engine).  
 
 Jazyk SQL pro zrychlení dotazů podporuje pouze malou podmnožinu datových typů popsaných v tomto článku.  Další informace najdete v části [typy dat](#data-types) tohoto článku.
 
@@ -96,7 +114,16 @@ Jazyk SQL pro zrychlení dotazů podporuje pouze malou podmnožinu datových typ
 
 Jazyk SQL pro zrychlení dotazů podporuje následující standardní řetězcové funkce jazyka SQL:
 
-``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
+|Funkce|Description|
+|--|--|
+|CHAR_LENGTH    | Vrátí délku ve znacích řetězcového výrazu, pokud je řetězcový výraz znakový datový typ. v opačném případě vrátí délku v bajtech řetězcového výrazu (nejmenší celé číslo, které je menší než počet bitů dělený hodnotou 8). (Tato funkce je stejná jako funkce CHARACTER_LENGTH.)|
+|CHARACTER_LENGTH    |Vrátí délku ve znacích řetězcového výrazu, pokud je řetězcový výraz znakový datový typ. v opačném případě vrátí délku v bajtech řetězcového výrazu (nejmenší celé číslo, které je menší než počet bitů dělený hodnotou 8). (Tato funkce je stejná jako funkce CHAR_LENGTH|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |Vrátí výraz znaků po převedení velkých znakových dat na malá písmena.|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |Vrátí znakový výraz s malými znakovými daty převedenými na velká písmena.|
+|[PODŘETĚZEC](/sql/t-sql/functions/substring-transact-sql)    |Vrátí část znakového, binárního, textového nebo obrázkového výrazu v SQL Server.|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Odstraní znak znaku mezery (32) nebo jiné zadané znaky od začátku a konce řetězce.|
+|NULA    |Description|
+|KONCOVÉ    |Description|
 
 Tady je několik příkladů:
 
@@ -108,16 +135,6 @@ Tady je několik příkladů:
 |UPPER|``SELECT UPPER('AbCdEfG') from BlobStorage``|``ABCDEFG``|
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
-
-Funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) vám pomůže vyhledat vzor. Zde je několik příkladů použití funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) k hledání datového řetězce ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
-
-|Dotaz|Příklad|
-|--|--|
-|``SELECT _1, _2, _3 from BlobStorage where _2 LIKE 'a%'``|``abc,abd,cd\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a[bcd]c``|``abc,abd,cd\n``|
-|``SELECT _1 from BlobStorage where _2 LIKE '[^xyz]%'``|``abc\ntest\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a_``|``abc,abd,cd\n``|
-|``SELECT _2,_3 from BlobStorage where _3 LIKE '[g-h]_![[a-j]' Escape '!'``|``xc%d^e,gh[i\n``|
 
 ### <a name="date-functions"></a>Datové funkce
 
@@ -133,14 +150,12 @@ Jazyk SQL pro zrychlení dotazů podporuje pro funkci rok, měsíc, den, hodinu,
 
 Příklady:
 
-```sql
-DATE_ADD(datepart, quantity, timestamp)
-DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+' ' DATE_ADD SQL (DatePart, množství, časové razítko) DATE_ADD (Minute, 1, CAST (' 2017-01-02T03:04:05.006 Z ' jako časové RAZÍTKo)
 ```
 
-#### <a name="date_diff-function"></a>DATE_DIFF funkce
+#### DATE_DIFF function
 
-Jazyk SQL pro zrychlení dotazů podporuje pro funkci rok, měsíc, den, hodinu, minutu a sekundu ``DATE_DIFF`` .
+The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -169,18 +184,18 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Tato tabulka popisuje řetězce, které lze použít k určení výstupního formátu ``TO_STRING`` funkce.
 
-|Řetězec formátu    |Výstup                               |
+|Formátovací řetězec    |Výstup                               |
 |-----------------|-------------------------------------|
-|RR               |Rok ve formátu 2 číslice – 1999 jako "99"|
+|yy               |Rok ve formátu 2 číslice – 1999 jako "99"|
 |y                |Rok ve formátu 4 číslice               |
-|rrrr             |Rok ve formátu 4 číslice               |
+|yyyy             |Rok ve formátu 4 číslice               |
 |M                |Měsíc roku – 1                    |
 |MM               |Nula čalouněný měsíc – 01               |
 |MMM              |Abbr. měsíc roku – LED            |
 |MMMM             |Celý měsíc – květen                      |
 |d                |Den v měsíci (1-31)                  |
 |dd               |Nula čalouněného dne v měsíci (01-31)     |
-|a                |AM nebo PM                             |
+|pro                |AM nebo PM                             |
 |h                |Hodina dne (1-12)                   |
 |hh               |Nula čalouněných hodin od dne (01-12)     |
 |H                |Hodina dne (0-23)                   |
@@ -192,7 +207,7 @@ Tato tabulka popisuje řetězce, které lze použít k určení výstupního for
 |S                |Zlomek sekund (0,1 – 0.9)        |
 |SS               |Zlomek sekund (0,01 – 0,99)      |
 |POVĚŘENÍ              |Zlomek sekund (0,001 – 0.999)    |
-|×                |Posun v hodinách                      |
+|X                |Posun v hodinách                      |
 |XX nebo XXXX       |Posun v hodinách a minutách (+ 0430)  |
 |XXX nebo XXXXX     |Posun v hodinách a minutách (-07:00) |
 |x                |Posun v hodinách (7)                  |
@@ -220,12 +235,12 @@ Příkaz SELECT může obsahovat jeden nebo více výrazů projekce nebo jeden a
 
 |Výraz|Popis|
 |--|--|
-|[COUNT ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, které odpovídají výrazu predikátu.|
-|[COUNT (výraz)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, pro které výraz má hodnotu null.|
-|[AVERAGE (výraz)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |Vrátí průměr hodnot výrazu, které nejsou null.|
-|[MIN (výraz)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |Vrátí minimální hodnotu výrazu, která není null.|
-|[Max (výraz](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |Vrátí maximální hodnotu výrazu, který není null.|
-|[SUM (výraz)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |Vrátí součet všech hodnot, které nejsou null, výrazu.|
+|[COUNT ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Vrátí počet záznamů, které odpovídají výrazu predikátu.|
+|[COUNT (výraz)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Vrátí počet záznamů, pro které výraz má hodnotu null.|
+|[AVERAGE (výraz)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |Vrátí průměr hodnot výrazu, které nejsou null.|
+|[MIN (výraz)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |Vrátí minimální hodnotu výrazu, která není null.|
+|[MAX (výraz](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |Vrátí maximální hodnotu výrazu, který není null.|
+|[SUM (výraz)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |Vrátí součet všech hodnot, které nejsou null, výrazu.|
 
 ### <a name="missing"></a>NENAŠEL
 
@@ -235,7 +250,7 @@ Příkaz SELECT může obsahovat jeden nebo více výrazů projekce nebo jeden a
 
 ## <a name="table-descriptors"></a>Deskriptory tabulky
 
-V případě dat CSV je název tabulky vždycky `BlobStorage` .  Příklad:
+V případě dat CSV je název tabulky vždycky `BlobStorage` .  Například:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -287,7 +302,7 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 Dotaz získá všechna pole, ale vybere pouze zeměpisnou šířku.
 
-Pokud jste chtěli přístup pouze k `dimensions` hodnotě objektu JSON, můžete použít odkaz na tento objekt v dotazu. Příklad:
+Pokud jste chtěli přístup pouze k `dimensions` hodnotě objektu JSON, můžete použít odkaz na tento objekt v dotazu. Například:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
@@ -323,6 +338,5 @@ Ve většině případů bude velikost každé dávky mírně vyšší než čí
 
 ## <a name="see-also"></a>Viz také
 
-- [Akcelerace dotazů Azure Data Lake Storage (Preview)](data-lake-storage-query-acceleration.md)
-- [Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)](data-lake-storage-query-acceleration-how-to.md)
-
+- [Akcelerace dotazů Azure Data Lake Storage](data-lake-storage-query-acceleration.md)
+- [Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů](data-lake-storage-query-acceleration-how-to.md)

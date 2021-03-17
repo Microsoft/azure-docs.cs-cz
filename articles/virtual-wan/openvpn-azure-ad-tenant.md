@@ -3,17 +3,17 @@ title: 'Tenant Azure AD pro uživatelská připojení VPN: ověřování Azure A
 description: K připojení k virtuální síti pomocí ověřování Azure AD můžete použít Azure Virtual WAN User VPN (Point-to-site).
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: e88437dc03772348ebbe0d179afc7fd4ddd24bd9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507552"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91367848"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Příprava Azure Active Directory tenanta pro připojení VPN OpenVPN protokolu uživatelů
 
@@ -46,7 +46,7 @@ Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azu
 
 2. Potom pro vaši organizaci udělte souhlas správce, což umožňuje aplikacím Azure VPN přihlašovat se a číst profily uživatelů. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
-    Veřejný
+    Public
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -76,7 +76,7 @@ Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azu
 
 4. Po zobrazení výzvy vyberte **přijmout** .
 
-    ![Přijmout](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Snímek obrazovky s dialogovým oknem s požadovaným oprávněním pro zprávu přijmout pro vaši organizaci a další informace](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. V rámci Azure AD by se teď v **podnikových aplikacích**měla zobrazit uvedená služba **Azure VPN** .
 

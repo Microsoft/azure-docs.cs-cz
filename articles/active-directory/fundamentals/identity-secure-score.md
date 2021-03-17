@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523100"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90705482"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Jaké je bezpečné skóre identity v Azure Active Directory?
 
@@ -102,18 +102,18 @@ Dostáváte body za konfiguraci doporučených funkcí zabezpečení nebo za pro
 
 Pokud chcete zobrazit historii skóre, přejděte do [služby Microsoft 365 Security Center](https://security.microsoft.com/) a Prohlédněte si celkové skóre Microsoftu. Kliknutím na Zobrazit historii můžete zkontrolovat změny v celkovém bezpečném skóre. Zvolením konkrétního data zobrazíte, která opatření byla v ten den zavedena a kolik bodů jste za ně získali.
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Jak bezpečnostní skóre identity souvisí s bezpečnostním skóre Office 365?
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>Jak se v rámci zabezpečeného skóre identity vztahuje k Microsoft 365 zabezpečenému skóre?
 
-[Microsoft Secure skore](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) obsahuje pět kategorií různých ovládacích prvků a skóre:
+[Microsoft Secure skore](/office365/securitycompliance/microsoft-secure-score) obsahuje pět kategorií různých ovládacích prvků a skóre:
 
 - Identita
 - Data
 - Zařízení
 - Infrastruktura
-- Aplikace
+- Apps
 
 Počet bezpečných identit identity představuje část identity Microsoft Secure skóre. Tento překryv znamená, že vaše doporučení pro bezpečné skóre identity a hodnocení identity v Microsoftu jsou stejná.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si další informace o službě Microsoft Secure skore.](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[Přečtěte si další informace o službě Microsoft Secure skore.](/office365/securitycompliance/microsoft-secure-score)

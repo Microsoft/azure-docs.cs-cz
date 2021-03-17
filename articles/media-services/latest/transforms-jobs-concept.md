@@ -1,24 +1,11 @@
 ---
-title: Transformace a úlohy v Media Services
-titleSuffix: Azure Media Services
-description: Naučte se, jak vytvořit transformace, které popisují pravidla pro zpracování videí v Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: article
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543057"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Povinná pole. Další informace najdete na aka.ms/skyeye/meta.
+title: transformes a Jobs v Media Services: Azure Media Services Description: Naučte se vytvořit transformace, které popisují pravidla pro zpracování videí v Azure Media Services.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 08/19/2019 MS. Author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
 
 Toto téma obsahuje podrobné informace o [transformacích](/rest/api/media/transforms) a [úlohách](/rest/api/media/jobs) a vysvětluje vztah mezi těmito entitami.
@@ -58,11 +45,11 @@ Pomocí **transformací** můžete nakonfigurovat běžné úlohy pro kódován�
 
 ### <a name="viewing-schema"></a>Zobrazení schématu
 
-V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v referenční dokumentaci k sadě sdk pro [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)nebo v jiné Media Services V3.
+V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v referenční dokumentaci k sadě sdk pro [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset)nebo v jiné Media Services V3.
 
 ### <a name="creating-transforms"></a>Vytváření transformací
 
-Transformace můžete vytvořit pomocí REST, CLI nebo kterékoli z publikovaných sad SDK. Rozhraní API Media Services V3 je založené na Azure Resource Manager, takže můžete také použít šablony Správce prostředků k vytváření a nasazování transformací v účtu Media Services. K uzamčení přístupu k transformacím se dá použít řízení přístupu na základě role.
+Transformace můžete vytvořit pomocí REST, CLI nebo kterékoli z publikovaných sad SDK. Rozhraní API Media Services V3 je založené na Azure Resource Manager, takže můžete také použít šablony Správce prostředků k vytváření a nasazování transformací v účtu Media Services. Řízení přístupu na základě role Azure se dá použít k uzamknutí přístupu k transformům.
 
 ### <a name="updating-transforms"></a>Aktualizace transformací
 

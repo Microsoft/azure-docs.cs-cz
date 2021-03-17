@@ -9,105 +9,79 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 86ba8527a6da3e995fc3cf63937b11f1915c82a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cfb8ee9972d19ce07e2d681533d30c4794ddca28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556024"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Kurz: Azure Active Directory integrace s Cisco deštníkem
 
-V tomto kurzu se dozvíte, jak integrovat Cisco deštník s Azure Active Directory (Azure AD).
-Integrace Cisco zastřešující s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Cisco deštník s Azure Active Directory (Azure AD). Když integrujete Cisco deštník s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Cisco zastřešující.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k Cisco zastřešující (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k Cisco zastřešující.
+* Umožněte uživatelům, aby se automaticky přihlásili k Cisco deštníku pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s Cisco zastřešující budete potřebovat následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné Cisco deštník jednotného přihlašování s povolenými možnostmi
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Cisco deštník jednotného přihlašování (SSO) s podporou jednotného přihlašování.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Cisco deštník podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+* Cisco deštník podporuje **SP a IDP** iniciované jednotné přihlašování.
 
-## <a name="adding-cisco-umbrella-from-the-gallery"></a>Přidání Cisco zastřešující z Galerie
+## <a name="add-cisco-umbrella-from-the-gallery"></a>Přidat Cisco zastřešující z Galerie
 
 Pokud chcete nakonfigurovat integraci Cisco deštníku do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Cisco zastřešující z galerie.
 
-**Pokud chcete přidat Cisco zastřešující z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Cisco deštník** .
+1. Vyberte **Cisco zastřešující** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-cisco-umbrella"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Cisco deštník
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Cisco zastřešující pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Cisco zastřešující.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Cisco zastřešující, proveďte následující kroky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte Cisco deštník SSO](#configure-cisco-umbrella-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte uživatele Cisco zastřešující test](#create-cisco-umbrella-test-user)** , abyste měli protějšek B. Simon v Cisco zastřešující, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Cisco deštník**, vyberte **Cisco deštník** z panelu výsledků a potom kliknutím na **Přidat** přidejte aplikaci.
+1. V Azure Portal na stránce integrace aplikace **Cisco zastřešující** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Cisco deštník v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí [název aplikace] na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v [název aplikace].
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí [název aplikace], musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Cisco deštník](#configure-cisco-umbrella-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte uživatele Cisco deštník Test User](#create-cisco-umbrella-test-user)** – abyste měli protějšek Britta Simon v Cisco zastřešující, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název aplikace], proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Cisco zastřešující** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-    ![Informace o jednotném přihlašování Cisco zastřešující domény a adresy URL](common/both-preintegrated-signon.png)
-
-    a. Pokud chcete nakonfigurovat aplikaci v režimu **SP** intiated, proveďte následující kroky:
+    a. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** , proveďte následující kroky:
 
     b. Klikněte na **nastavit další adresy URL**.
 
     c. Do textového pole **přihlašovací adresa URL** zadejte adresu URL: `https://login.umbrella.com/sso`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a stáhněte **XML metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a stáhněte **XML metadat** z daných možností podle vašeho požadavku a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -115,92 +89,59 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Odhlašovací adresa URL
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-cisco-umbrella-single-sign-on"></a>Konfigurace jednotného přihlašování Cisco deštník
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Cisco zastřešující.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Cisco deštník**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-cisco-umbrella-sso"></a>Konfigurace Cisco zastřešující jednotného přihlašování
 
 1. V jiném okně prohlížeče se přihlaste k webu Cisco zastřešující společnosti jako správce.
 
 2. V levé části nabídky klikněte na **správce** , přejděte na **ověřování** a potom klikněte na **SAML**.
 
-    ![Správce](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
+    ![Správce](./media/cisco-umbrella-tutorial/admin.png)
 
 3. Vyberte **jiný** a klikněte na **Další**.
 
-    ![Druhá](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_other.png)
+    ![Druhá](./media/cisco-umbrella-tutorial/other.png)
 
-4. Na stránce **metadata Cisco zastřešující**klikněte na **Další**.
+4. Na stránce **metadata Cisco zastřešující** klikněte na **Další**.
 
-    ![Metadata](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_metadata.png)
+    ![Metadata](./media/cisco-umbrella-tutorial/metadata.png)
 
 5. V případě, že jste předem nakonfigurovali SAML, vyberte na kartě **metadata pro nahrávání** možnost **kliknutím sem je můžete změnit** a postupovat podle následujících kroků.
 
-    ![Další](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
+    ![Další](./media/cisco-umbrella-tutorial/next.png)
 
-6. V **Možnosti a: nahrání souboru XML**nahrajte soubor **XML s federačními metadaty** , který jste stáhli z Azure Portal a po nahrání metadat, že se automaticky naplní následující hodnoty, a pak klikněte na **Další**.
+6. V **Možnosti a: nahrání souboru XML** nahrajte soubor **XML s federačními metadaty** , který jste stáhli z Azure Portal a po nahrání metadat, že se automaticky naplní následující hodnoty, a pak klikněte na **Další**.
 
-    ![Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
+    ![Choosefile](./media/cisco-umbrella-tutorial/choose-file.png)
 
 7. V části **ověřit konfiguraci SAML** klikněte na **otestovat konfiguraci SAML**.
 
-    ![Test](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_test.png)
+    ![Test](./media/cisco-umbrella-tutorial/test.png)
 
 8. Klikněte na **Uložit**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Cisco zastřešující.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Cisco deštník**.
-
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
-
-2. V seznamu aplikace zadejte a vyberte **Cisco deštník**.
-
-    ![Odkaz Cisco zastřešující v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ### <a name="create-cisco-umbrella-test-user"></a>Vytvořit uživatele Cisco zastřešující test
 
@@ -213,18 +154,18 @@ V případě Cisco zastřešující je zřizování ručním úkolem.
 
 2. V levé části nabídky klikněte na **správce** a přejděte na **účty**.
 
-    ![Účet](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
+    ![Účet](./media/cisco-umbrella-tutorial/account.png)
 
 3. Na stránce **účty** klikněte na **Přidat** v pravém horním rohu stránky a proveďte následující kroky.
 
-    ![Uživatel](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
+    ![Uživatel](./media/cisco-umbrella-tutorial/create-user.png)
 
     a. Do pole **jméno** zadejte jméno, jako je **Britta**.
 
     b. Do pole **příjmení** zadejte příjmení, jako je **Simon**.
 
-    c. Z **role zvolte delegovaného správce**vyberte svou roli.
-  
+    c. Z **role zvolte delegovaného správce** vyberte svou roli.
+
     d. Do pole **e-mailová adresa** zadejte EmailAddress uživatele, jako je **brittasimon \@ contoso.com**.
 
     e. Do pole **heslo** zadejte své heslo.
@@ -233,16 +174,22 @@ V případě Cisco zastřešující je zřizování ručním úkolem.
 
     například Klikněte na **vytvořit**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když kliknete na dlaždici Cisco deštník na přístupovém panelu, měli byste se automaticky přihlásit k Cisco zastřešující, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další materiály
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení Cisco deštník, kde můžete spustit tok přihlášení.  
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Přejít na adresu URL pro přihlášení Cisco zastřešující přímo a zahájit tok přihlášení.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k Cisco zastřešující, pro který jste nastavili jednotné přihlašování. 
+
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Cisco zastřešující v části Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k Cisco zastřešující, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování Cisco zastřešující můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

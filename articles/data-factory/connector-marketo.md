@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Marketo pomocí Azure Data Factory (Preview)
 description: Přečtěte si, jak kopírovat data z Marketa do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aae25536f0ac1d5d3b43b5173d3e5789cd66a774
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385638"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat z Marketo pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +45,7 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Marketo se podporují následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Marketo** . | Yes |
 | endpoint | Koncový bod serveru Marketo. (tj. 123-ABC-321.mktorest.com)  | Yes |
@@ -85,7 +80,7 @@ Pro propojenou službu Marketo se podporují následující vlastnosti:
 
 Pokud chcete kopírovat data ze služby Marketo, nastavte vlastnost Type datové sady na **MarketoObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **MarketoObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -115,10 +110,10 @@ Pokud chcete kopírovat data ze služby Marketo, nastavte vlastnost Type datové
 
 Pokud chcete kopírovat data ze služby Marketo, nastavte typ zdroje v aktivitě kopírování na **MarketoSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MarketoSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Activitiy_Types"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Activitiy_Types"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

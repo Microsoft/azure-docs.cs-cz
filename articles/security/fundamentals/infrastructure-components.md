@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727199"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Komponenty a hranice informačních systémů Azure
@@ -97,7 +97,7 @@ Zaměstnanci (nebo dodavatelé) Microsoftu se považují za interní uživatele.
 | Technici nasazení Azure | Interní | Přístup k zákaznickým datům | Nasazení a upgrade součástí platformy, softwaru a plánovaných změn konfigurace v podpoře Azure. | Přístup k prostředí za běhu s omezeným trvalým přístupem k systémům, kteří nejsou zákazníky. |
 | Podpora výpadků zákazníků Azure (tenant) | Interní | Přístup k zákaznickým datům | Ladění a diagnostika výpadků platforem a chyb pro jednotlivé výpočetní klienty a účty Azure. Analyzovat chyby. Důležité opravy pro platformu nebo zákazníka a technická vylepšení pro celou podporu. | Přístup k prostředí za běhu s omezeným trvalým přístupem k systémům, kteří nejsou zákazníky. |
 | Technici na webu Azure Live (technici pro sledování) a incident | Interní | Přístup k zákaznickým datům | Diagnostikujte a zmírnit stav platforem pomocí diagnostických nástrojů. Opravy disků pro ovladače svazků, opravné položky vyplývající z výpadků a napomáhají při nečinnosti při obnovení. | Přístup k prostředí za běhu s omezeným trvalým přístupem k systémům, kteří nejsou zákazníky. |
-|Zákazníci Azure | Externí | Není k dispozici | Není k dispozici | Není k dispozici |
+|Zákazníci Azure | Externí | N/A | N/A | N/A |
 
 Azure používá k ověřování uživatelů a zákazníků organizace jedinečné identifikátory (nebo procesy, které jednají jménem uživatelů organizace). To platí pro všechny prostředky a zařízení, které jsou součástí prostředí Azure.
 

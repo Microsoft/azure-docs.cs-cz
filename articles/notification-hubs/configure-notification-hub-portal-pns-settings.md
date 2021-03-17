@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761021"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887259"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rychlý Start: nastavení nabízených oznámení v centru oznámení
 
@@ -33,7 +33,7 @@ Nastavení služby Apple Push Notification Service (APNS):
 
 1. V Azure Portal na stránce **centra oznámení** vyberte **Apple (APNs)** z nabídky vlevo.
 
-1. V **režimu ověřování**vyberte buď **certifikát** , nebo **token**.
+1. V **režimu ověřování** vyberte buď **certifikát** , nebo **token**.
 
    a. Pokud vyberete možnost **certifikát**:
    * Vyberte ikonu souboru a potom vyberte soubor *. p12* , který chcete nahrát.
@@ -44,7 +44,7 @@ Nastavení služby Apple Push Notification Service (APNS):
 
    b. Pokud vyberete **token**:
 
-   * Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu**a **tokenu**.
+   * Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu** a **tokenu**.
    * Vyberte režim **Izolovaný prostor**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
      ![Snímek obrazovky s konfigurací tokenu APNS v Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
@@ -67,14 +67,11 @@ Po dokončení těchto kroků výstraha indikuje, že centrum oznámení bylo ú
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>Předpoklady
+Pro projekt Google Firebase Cloud Messaging (FCM) budete potřebovat **klíč rozhraní API** .
 
-Než začnete, musíte mít následující:
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-* Verze [Azure CLI](/cli/azure/install-azure-cli) 2.0.67 nebo novější.
-
-* Rozšíření Azure CLI [pro Notification Hubs](/cli/azure/ext/notification-hub/notification-hub).
-* **Klíč rozhraní API** pro projekt Google Firebase Cloud MESSAGING (FCM).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Nastavení nabízených oznámení pro Google FCM
 
@@ -111,6 +108,8 @@ Reference k rozhraní příkazového řádku Azure CLI pro jiné platformy získ
 
 Další informace o odesílání oznámení do aplikace pro Android najdete v tématu [Posílání nabízených oznámení na zařízení s Androidem pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
+---
+
 ## <a name="windows-push-notification-service"></a>Služba nabízených oznámení Windows
 
 Nastavení služby nabízených oznámení Windows (WNS):
@@ -130,7 +129,7 @@ Nastavení služby Microsoft Push Notification Service (MPNS) pro Windows Phone:
 1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows Phone (MPNS)** .
 1. Povolit buď neověřené, nebo ověřené nabízené oznámení:
 
-   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené**oznámení  >  **Save**.
+   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené** oznámení  >  **Save**.
 
       ![Snímek obrazovky, který ukazuje, jak povolit neověřená nabízená oznámení](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 

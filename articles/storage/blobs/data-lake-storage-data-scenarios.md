@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed2458b09d200542ce8789d90250027a07a970d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735467"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
 
@@ -27,7 +27,7 @@ Existují čtyři klíčové fáze zpracování velkých objemů dat:
 
 Tento článek popisuje možnosti a nástroje pro jednotlivé fáze zpracování.
 
-Úplný seznam služeb Azure, které můžete používat se službou Azure Data Lake Storage Gen2, najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-storage-integrate-with-azure-services.md) .
+Úplný seznam služeb Azure, které můžete používat se službou Azure Data Lake Storage Gen2, najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](./data-lake-storage-supported-azure-services.md) .
 
 ## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>Ingestování dat do Data Lake Storage Gen2
 
@@ -54,8 +54,8 @@ Tady je seznam nástrojů, které můžete použít k ingestování datových pr
 
 |Nástroj | Pokyny |
 |---|--|
-|Azure Stream Analytics|[Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Odchozí přenos dat do Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
-|Azure HDInsight – zaplavení | [Zápis do Apache Hadoop HDFS z Apache Storm ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
+|Azure Stream Analytics|[Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Odchozí přenos dat do Azure Data Lake Gen2](../../stream-analytics/stream-analytics-define-outputs.md)|
+|Azure HDInsight – zaplavení | [Zápis do Apache Hadoop HDFS z Apache Storm ve službě HDInsight](../../hdinsight/storm/apache-storm-write-data-lake-store.md) |
 
 ### <a name="relational-data"></a>Relační data
 
@@ -65,7 +65,7 @@ Tady je seznam nástrojů, které můžete použít k ingestování relačních 
 
 |Nástroj | Pokyny |
 |---|--|
-|Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](../../data-factory/copy-activity-overview.md) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Data protokolu webového serveru (nahrávání pomocí vlastních aplikací)
 
@@ -75,7 +75,7 @@ Tady je seznam nástrojů, které můžete použít k ingestování dat protokol
 
 |Nástroj | Pokyny |
 |---|--|
-|Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](../../data-factory/copy-activity-overview.md)  |
 |Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
@@ -89,15 +89,15 @@ Tady je seznam nástrojů, které můžete použít k ingestování dat přidru�
 
 |Nástroj | Pokyny |
 |---|--|
-|Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Nástroj AzCopy | [Přenos dat pomocí AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure Data Factory | [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
+|Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2](./data-lake-storage-use-distcp.md) |
+|Nástroj AzCopy | [Přenos dat pomocí AzCopy](../common/storage-use-azcopy-v10.md) |
+|Azure Data Factory | [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Data uložená v místních nebo IaaS clusterech Hadoop
 
 Velké objemy dat může být uloženo v existujících clusterech Hadoop místně na počítačích se systémem HDFS. Clustery Hadoop můžou být v místním nasazení nebo se můžou nacházet v rámci clusteru IaaS v Azure. Můžou nastat požadavky na kopírování takových dat do Azure Data Lake Storage Gen2 pro jednorázový přístup nebo pro opakovaný pokus. Existují různé možnosti, které můžete použít k dosažení tohoto. Níže je uveden seznam alternativ a Spojených kompromisů.
 
-| Přístup | Podrobnosti | Výhody | Důležité informace |
+| Přístup | Podrobnosti | Výhody | Požadavky |
 | --- | --- | --- | --- |
 | Použití Azure Data Factory (ADF) ke kopírování dat přímo z clusterů Hadoop do Azure Data Lake Storage Gen2 |[ADF podporuje HDFS jako zdroj dat.](../../data-factory/connector-hdfs.md) |ADF poskytuje okamžitou podporu pro HDFS a první třídu a komplexní správu a monitorování. |Vyžaduje, aby byla Správa datá brána nasazená místně nebo v clusteru IaaS. |
 | Pomocí Distcp zkopírujte data z Hadoop do Azure Storage. Pak zkopírujte data z Azure Storage pro Data Lake Storage Gen2 pomocí vhodného mechanismu. |Data z Azure Storage můžete zkopírovat do Data Lake Storage Gen2 pomocí: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[Nástroj AzCopy](../common/storage-use-azcopy-v10.md)</li><li>[Apache DistCp běžící na clusterech HDInsight](data-lake-storage-use-distcp.md)</li></ul> |Můžete použít Open Source nástroje. |Proces s více kroky, který zahrnuje několik technologií |
@@ -118,12 +118,12 @@ Tady je seznam nástrojů, pomocí kterých můžete spouštět úlohy analýzy 
 
 |Nástroj | Pokyny |
 |---|--|
-|Azure HDInsight | [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure HDInsight | [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+|Azure Databricks | [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)<br><br>[Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks](./data-lake-storage-use-databricks-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Vizualizace dat
 
-Pomocí konektoru Power BI můžete vytvářet vizuální reprezentace dat uložených v Data Lake Storage Gen2. Další informace najdete [v tématu Analýza dat v Azure Data Lake Storage Gen2 pomocí Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage).
+Pomocí konektoru Power BI můžete vytvářet vizuální reprezentace dat uložených v Data Lake Storage Gen2. Další informace najdete [v tématu Analýza dat v Azure Data Lake Storage Gen2 pomocí Power BI](/power-query/connectors/datalakestorage).
 
 ## <a name="download-the-data"></a>Stažení dat
 
@@ -139,7 +139,7 @@ Tady je seznam nástrojů, pomocí kterých můžete stahovat data z Data Lake S
 
 |Nástroj | Pokyny |
 |---|--|
-|Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Azure Storage Explorer|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage](data-lake-storage-explorer.md)|
-|Nástroj AzCopy|[Přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md)|
+|Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](../../data-factory/copy-activity-overview.md) |
+|Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2](./data-lake-storage-use-distcp.md) |
+|Průzkumník služby Azure Storage|[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md)|
+|Nástroj AzCopy|[Přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-v10.md#transfer-data)|

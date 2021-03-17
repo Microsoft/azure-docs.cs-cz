@@ -4,12 +4,12 @@ description: Naučte se volat obchodní procesy z aplikace App Service. Posílá
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212837"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014658"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: odesílání e-mailů a vyvolání dalších obchodních procesů z App Service
 
@@ -84,7 +84,8 @@ Nasaďte aplikaci s použitím jazykové architektury podle vašeho výběru na 
 1. V dolní části návrháře klikněte na **Nový krok**, do vyhledávacího pole Akce zadejte **Gmail** a vyhledejte a vyberte **Odeslat e-mail (v2)**.
     
     > [!TIP]
-    > Můžete hledat další typy integrace, například SendGrid, MailChimp, Office 365 a SalesForce. Další informace najdete v [dokumentaci Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
+    > Můžete hledat další typy integrace, například SendGrid, MailChimp, Microsoft 365 a SalesForce. Další informace najdete v [dokumentaci Logic Apps](../logic-apps/index.yml).
+
 1. V dialogovém okně **Gmail** vyberte **Přihlásit** se a přihlaste se k účtu Gmail, ze kterého chcete e-mail odeslat.
 
     ![Snímek obrazovky, který zobrazuje dialogové okno Gmail, pomocí kterého se přihlašujete k účtu Gmail, ze kterého chcete odesílat e-maily.](./media/tutorial-send-email/gmail-sign-in.png)
@@ -104,7 +105,7 @@ Nasaďte aplikaci s použitím jazykové architektury podle vašeho výběru na 
 
 1. Klikněte do textového pole **Předmět** a stejným způsobem vyberte možnost **úloha**. Když se kurzor stále nachází v poli **subject (předmět** ), zadejte *vytvořit*. 
 
-1. Klikněte na **text**a stejným způsobem vyberte možnost **nesplnit**. Přesune kurzor nalevo od **termínu splnění** a typ, *na který je tato pracovní položka splatná*.
+1. Klikněte na **text** a stejným způsobem vyberte možnost **nesplnit**. Přesune kurzor nalevo od **termínu splnění** a typ, *na který je tato pracovní položka splatná*.
 
     > [!TIP]
     > Chcete-li upravit obsah HTML přímo v těle e-mailu, vyberte v horní části okna návrháře Logic Apps **zobrazení kódu** . Stačí zajistit, abyste zachovali kód dynamického obsahu (například `@{triggerBody()?['due']}` ).
@@ -115,7 +116,7 @@ Nasaďte aplikaci s použitím jazykové architektury podle vašeho výběru na 
 
     ![Snímek obrazovky, který ukazuje možnost + znaménko a přidat paralelní větev zvýrazněnou.](./media/tutorial-send-email/add-http-response.png)
 
-1. Do vyhledávacího pole vyhledejte **odpověď**a pak vyberte akci **reakce** .
+1. Do vyhledávacího pole vyhledejte **odpověď** a pak vyberte akci **reakce** .
 
     ![Snímek obrazovky, který zobrazuje zvýrazněný panel hledání a akci odpovědi](./media/tutorial-send-email/choose-response-action.png)
 
@@ -152,7 +153,7 @@ Příklad zobrazíte kliknutím na kartu preferovaný jazyk/rozhraní.
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Například:
+V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Například:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +178,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Například:
+V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Například:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,7 +200,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Tento kód je zapsán z důvodu jednoduchosti ukázky. V praxi nevytvářejte instanci `HttpClient` objektu pro každý požadavek. Pokud [chcete implementovat odolné požadavky HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests), postupujte podle pokynů v části použití IHttpClientFactory.
+> Tento kód je zapsán z důvodu jednoduchosti ukázky. V praxi nevytvářejte instanci `HttpClient` objektu pro každý požadavek. Pokud [chcete implementovat odolné požadavky HTTP](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests), postupujte podle pokynů v části použití IHttpClientFactory.
 
 Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md), můžete ji použít k odeslání e-mailového potvrzení v [akci vytvořit](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)po `Todo` Přidání položky.
 
@@ -295,7 +296,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: spuštění webové 
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-V Ruby můžete odeslat příspěvek HTTP snadno pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Například:
+V Ruby můžete odeslat příspěvek HTTP snadno pomocí JSONClient. Například:
 
 ```ruby
 clnt = JSONClient.new

@@ -2,26 +2,26 @@
 title: 'Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI – Nástroj pro rozpoznávání formulářů'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu použijete tvůrce AI k vytvoření a školení aplikace pro zpracování formuláře.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
-ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 11/23/2020
+ms.author: lajanuar
+ms.openlocfilehash: 30c44ac60783132344cc018135d2c248f91f46bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003355"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467115"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
-Nástroj pro [sestavovatele AI](https://docs.microsoft.com/ai-builder/overview) je funkce Power Platform, která umožňuje automatizovat procesy a předpovídat výsledky pro zlepšení výkonu firmy. Pomocí zpracování formuláře pro sestavovatele AI můžete vytvořit modely AI, které identifikují a extrahují páry klíč-hodnota a tabulková data z dokumentů formuláře.
+Nástroj pro [sestavovatele AI](/ai-builder/overview) je funkce Power Platform, která umožňuje automatizovat procesy a předpovídat výsledky pro zlepšení výkonu firmy. Pomocí zpracování formuláře pro sestavovatele AI můžete vytvořit modely AI, které identifikují a extrahují páry klíč-hodnota a tabulková data z dokumentů formuláře.
 
 > [!NOTE]
-> Tento projekt je také k dispozici jako [modul Microsoft Learn](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/).
+> Tento projekt je také k dispozici jako [modul Microsoft Learn](/learn/modules/get-started-with-form-processing/).
 
 V tomto kurzu se naučíte:
 
@@ -33,14 +33,14 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 * Sada alespoň pěti forem stejného typu, která se má použít pro data školení a testování. Tipy a možnosti pro vložení sady školicích dat najdete v tématu [Vytvoření školicích dat](./build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2128080).
-* Power apps nebo Power automatizuje License – viz [Průvodce licencováním](https://go.microsoft.com/fwlink/?linkid=2085130). Licence musí zahrnovat [Common data Service](https://powerplatform.microsoft.com/en-us/common-data-service/).
+* Power apps nebo Power automatizuje License – viz [Průvodce licencováním](https://go.microsoft.com/fwlink/?linkid=2085130). Licence musí zahrnovat [Common data Service](https://powerplatform.microsoft.com/common-data-service/).
 * [Doplněk nebo zkušební verze](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)tvůrce AI.
 
 
 ## <a name="create-a-form-processing-project"></a>Vytvořit projekt zpracování formuláře
 
 1. Přejít na [Power Apps](https://make.powerapps.com/) nebo [Power Automatizujte](https://flow.microsoft.com/signin)a přihlaste se pomocí účtu organizace.
-1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  **Build**.
+1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  .
 1. Vyberte kartu pro **zpracování formuláře** .
 1. Zadejte název pro svůj model.
 1. Vyberte **Vytvořit**.
@@ -69,7 +69,7 @@ Na stránce **Přidat dokumenty** musíte poskytnout ukázkové dokumenty, kter�
 > Po nahrání dokumentů můžete některé z nich odebrat nebo nahrát další.
 
 > [!div class="mx-imgBorder"]
-> ![Přidat stránku dokumentů](./media/tutorial-ai-builder/add-documents-page.png)
+> ![Snímek obrazovky, který zvýrazní tlačítko Přidat dokumenty](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>Analýza dokumentů
 
@@ -93,7 +93,7 @@ Na stránce Výběr polí vyberte pole, která vás zajímají:
     - **Hodnota pole**: hodnota zjištěného pole.
 
 > [!div class="mx-imgBorder"]
-> ![Přidat stránku dokumentů](./media/tutorial-ai-builder/select-fields-page.png)
+> ![Stránka označování](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>Nezjištěná pole popisku
 
@@ -104,7 +104,7 @@ Pokud pole, které chcete označit popiskem, nebylo automaticky zjištěno model
 1. Vyberte **Další**, abyste zkontrolovali vybraná pole formuláře. Pokud vše vypadá dobře, vyberte **Trénovat** k trénování modelu.
 
     > [!div class="mx-imgBorder"]
-    > ![Přidat stránku dokumentů](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![Stránka školení](./media/tutorial-ai-builder/summary-train-page.png)
 1. Po dokončení trénování vyberte **Přejít na stránku s podrobnostmi** na obrazovce **Trénování dokončeno**.
 ## <a name="quick-test-your-model"></a>Rychlé otestování modelu
 
@@ -120,20 +120,20 @@ Pokud pro určitá pole vyzkoušíte špatné výsledky nebo nízkou spolehlivos
 
 - Přeučení pomocí formulářů s různými hodnotami v každém poli.
 - Přeučení s využitím větší sady školicích dokumentů. Další dokumenty, které označíte, se seznámí s tím, jak lépe rozpoznávat pole.
-- Soubory PDF můžete optimalizovat tak, že vyberete jenom určité stránky, se kterými se naučíte. Pokud **Print**  >  chcete vybrat určité stránky v dokumentu, použijte možnost Tisk**Tisk do PDF** .
+- Soubory PDF můžete optimalizovat tak, že vyberete jenom určité stránky, se kterými se naučíte. Pokud   >  chcete vybrat určité stránky v dokumentu, použijte možnost Tisk **Tisk do PDF** .
 
 ## <a name="publish-your-model"></a>Publikování modelu
 
-Pokud máte s modelem spokojeni, vyberte **publikovat** a publikujte ho. Po dokončení publikování se model povýší na **Publikovaný** a je připravený k použití.
+Pokud máte s modelem spokojeni, vyberte **publikovat**  a publikujte ho. Po dokončení publikování se model povýší na **Publikovaný** a je připravený k použití.
 
 > [!div class="mx-imgBorder"]
-> ![Přidat stránku dokumentů](./media/tutorial-ai-builder/model-page.png)
+> ![Stránka publikovat model](./media/tutorial-ai-builder/model-page.png)
 
-Po publikování modelu zpracování formuláře ho můžete použít v [aplikaci plátna Power Apps](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) nebo v [Power](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)automatu.
+Po publikování modelu zpracování formuláře ho můžete použít v [aplikaci plátna Power Apps](/ai-builder/form-processor-component-in-powerapps) nebo v [Power](/ai-builder/form-processing-model-in-flow)automatu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Použijte dokumentaci Tvůrce AI pro použití modelu zpracování formulářů.
 
-* [Použití komponenty Form-Processor v Power Apps](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [Použití modelu zpracování formulářů v Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [Použití komponenty Form-Processor v Power Apps](/ai-builder/form-processor-component-in-powerapps)
+* [Použití modelu zpracování formulářů v Power Automate](/ai-builder/form-processing-model-in-flow)

@@ -4,11 +4,11 @@ description: Přehled podpory OpenAPI v Azure Functions
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385819"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000197"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2,0 v Azure Functions (Preview)
 Podpora metadat OpenAPI 2,0 (dříve Swagger) v Azure Functions je funkce verze Preview, kterou můžete použít k zápisu definice OpenAPI 2,0 do aplikace Function App. Tento soubor pak můžete hostovat pomocí aplikace Function App.
@@ -24,7 +24,7 @@ Podpora metadat OpenAPI 2,0 (dříve Swagger) v Azure Functions je funkce verze 
 >Doporučujeme začít s [kurzem Začínáme](./functions-openapi-definition.md) a pak se vrátit do tohoto dokumentu a získat další informace o konkrétních funkcích.
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>Povolit podporu definice OpenAPI
-Všechna nastavení OpenAPI můžete nakonfigurovat na stránce **definice rozhraní API** ve **funkcích platformy**aplikace Function App.
+Všechna nastavení OpenAPI můžete nakonfigurovat na stránce **definice rozhraní API** ve **funkcích platformy** aplikace Function App.
 
 > [!NOTE]
 > Funkce definice rozhraní API funkce se v současnosti nepodporuje pro modul runtime beta verze.
@@ -38,7 +38,7 @@ Podrobné pokyny najdete v [úvodním kurzu](./functions-openapi-definition.md).
 
 ### <a name="available-templates"></a><a name="templates"></a>Dostupné šablony
 
-|Název| Popis |
+|Název| Description |
 |:-----|:-----|
 |Vygenerovaná definice|Definice OpenAPI s maximálním množstvím informací, které lze odvodit z existujících metadat funkce.|
 

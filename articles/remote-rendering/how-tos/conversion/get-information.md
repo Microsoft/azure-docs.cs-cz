@@ -1,20 +1,40 @@
 ---
-title: Získání informací o převedeném modelu
-description: Popis všech parametrů převodu modelu
+title: Získání informací o převodech
+description: Získání informací o převodech
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509293"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576621"
 ---
-# <a name="get-information-about-a-converted-model"></a>Získání informací o převedeném modelu
+# <a name="get-information-about-conversions"></a>Získání informací o převodech
 
-Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Proto služba převodu umístí soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku `buggy.arrAsset` . Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
+## <a name="information-about-a-conversion-the-result-file"></a>Informace o převodu: soubor výsledků
+
+Když převodní služba převede určitý Asset, zapíše souhrn všech problémů do "souboru výsledků". Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.result.json` .
+
+Výsledný soubor obsahuje seznam chyb a upozornění, ke kterým došlo během převodu a poskytuje souhrn výsledků, což je jedna z těchto `succeeded` `failed` nebo `succeeded with warnings` .
+Výsledný soubor je strukturovaný jako pole JSON objektů, z nichž každý má řetězcovou vlastnost, která je jedna z `warning` ,,, `error` `internal warning` `internal error` a `result` . K dispozici je jenom jedna chyba ( `error` nebo `internal error` ) a bude vždycky jedna `result` .
+
+## <a name="example-result-file"></a>Ukázkový soubor *výsledků*
+
+Následující příklad popisuje převod, který úspěšně vygeneroval arrAsset. Vzhledem k tomu, že došlo k chybějící textuře, výsledná arrAsset možná nebude zamýšlená.
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>Informace o převedeném modelu: informační soubor
+
+Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Pro podporu tohoto pracovního postupu umístí služba převodu soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku `buggy.arrAsset` . Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
 
 ## <a name="example-info-file"></a>Příklad souboru s *informacemi*
 
@@ -44,6 +64,10 @@ Zde je příklad *informačního* souboru vytvořeného převodem souboru s náz
         "numNodes": 206,
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
+    },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
     },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
@@ -95,6 +119,13 @@ V této části jsou zaznamenány informace o formátu zdrojového souboru.
 * `sourceAssetFormatVersion`: Verze formátu zdrojového souboru.
 * `sourceAssetGenerator`: Název nástroje, který vygeneroval zdrojový soubor, pokud je k dispozici.
 
+### <a name="the-materialoverrides-section"></a>Část *materialOverrides*
+
+V této části jsou uvedeny informace o [přepsání materiálu](override-materials.md) při zadání souboru přepsání materiálu do služby převodu.
+Obsahuje tyto informace:
+* `numOverrides`: Počet položek přepsání načtených ze souboru přepisu materiálu.
+* `numOverriddenMaterials`: Počet přepsaných materiálů.
+
 ### <a name="the-inputstatistics-section"></a>Část *inputStatistics*
 
 V této části najdete informace o zdrojové scéně. Mezi hodnotami v této části a odpovídajícími hodnotami v nástroji, který vytvořil zdrojový model, budou často zjištěny rozdíly. Tyto rozdíly se očekávají, protože model se během exportu a převodu změnil.
@@ -124,6 +155,11 @@ V této části jsou zaznamenány informace vypočítané z převedeného prost�
 * `numMeshPartsInstanced`: Počet sítí, které se znovu používají v arrAsset.
 * `recenteringOffset`: Když `recenterToOrigin` je povolená možnost v [ConversionSettings](configure-model-conversion.md) , je tato hodnota překlad, který by převedl převedený model zpátky do původní pozice.
 * `boundingBox`: Hranice modelu.
+
+## <a name="deprecated-features"></a>Zastaralé funkce:
+
+Převodní služba zapisuje soubory `stdout.txt` a `stderr.txt` do výstupního kontejneru a ta byla jediným zdrojem upozornění a chyb.
+Tyto soubory jsou nyní zastaralé. Místo toho prosím použijte [soubory výsledků](#information-about-a-conversion-the-result-file) pro tento účel.
 
 ## <a name="next-steps"></a>Další kroky
 

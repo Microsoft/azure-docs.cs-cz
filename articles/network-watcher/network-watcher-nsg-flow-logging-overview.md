@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084360"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521675"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
 ## <a name="introduction"></a>Úvod
 
-Protokoly toku pro [skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) je funkce služby Azure Network Watcher, která umožňuje protokolovat informace o provozu protokolu IP prostřednictvím NSG. Data toku se odesílají do Azure Storage účtů, kde k nim máte přístup, a také je exportovat do libovolného nástroje pro vizualizaci, SIEM nebo ID podle vašeho výběru.
+Protokoly toku pro [skupinu zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) je funkce služby Azure Network Watcher, která umožňuje protokolovat informace o provozu protokolu IP prostřednictvím NSG. Data toku se odesílají do Azure Storage účtů, kde k nim máte přístup, a také je exportovat do libovolného nástroje pro vizualizaci, SIEM nebo ID podle vašeho výběru.
 
 ![Přehled protokolů toků](./media/network-watcher-nsg-flow-logging-overview/homepage.jpg)
 
@@ -48,18 +48,18 @@ Protokoly toku jsou zdrojem pravdy pro všechny síťové aktivity ve vašem clo
 **Vlastnosti klíče**
 
 - Protokoly toku pracují ve [vrstvě 4](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) a zaznamenávají všechny toky IP, které přecházejí z NSG.
-- Protokoly se shromažďují prostřednictvím platformy Azure a jakýmkoli způsobem neovlivňují prostředky zákazníků ani výkon sítě.
+- Protokoly se shromažďují v **intervalu od 1 do minut** v rámci platformy Azure a jakýmkoli způsobem neovlivňují prostředky zákazníků ani výkon sítě.
 - Protokoly se zapisují ve formátu JSON a zobrazují odchozí a příchozí toky podle NSG pravidla.
 - Každý záznam protokolu obsahuje síťové rozhraní (NIC), na které se tok vztahuje, informace o 5-tice, rozhodnutí o provozu & (jenom verze 2) informace o propustnosti. Úplné podrobnosti najdete v níže uvedeném _formátu protokolu_ .
 - Protokoly toku mají funkci uchovávání, která umožňuje automaticky odstranit protokoly až do roku po jejich vytvoření. 
 
 > [!NOTE]
-> Uchovávání informací je k dispozici pouze v případě, že používáte [účty úložiště pro obecné účely v2 (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
+> Uchovávání informací je k dispozici pouze v případě, že používáte [účty úložiště pro obecné účely v2 (GPv2)](../storage/common/storage-account-overview.md#types-of-storage-accounts). 
 
 **Základní koncepty**
 
 - Softwarově definované sítě jsou seřazené kolem virtuálních sítí (virtuální sítě) a podsítí. Zabezpečení těchto virtuální sítě a podsítí se dá spravovat pomocí NSG.
-- Skupina zabezpečení sítě (NSG) obsahuje seznam _pravidel zabezpečení_ , která povolují nebo zakazují síťový provoz v prostředcích, ke kterým je připojen. Skupin zabezpečení sítě je možné přidružit k podsítím, jednotlivým virtuálním počítačům nebo jednotlivým síťovým rozhraním (NIC) připojeným k virtuálním počítačům (Správce prostředků). Další informace najdete v tématu [Přehled skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
+- Skupina zabezpečení sítě (NSG) obsahuje seznam _pravidel zabezpečení_ , která povolují nebo zakazují síťový provoz v prostředcích, ke kterým je připojen. Skupin zabezpečení sítě je možné přidružit k podsítím, jednotlivým virtuálním počítačům nebo jednotlivým síťovým rozhraním (NIC) připojeným k virtuálním počítačům (Správce prostředků). Další informace najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - Všechny toky provozu ve vaší síti se vyhodnocují pomocí pravidel v příslušných NSG.
 - Výsledkem těchto hodnocení je NSG Flow log. Protokoly toků se shromažďují prostřednictvím platformy Azure a nevyžadují žádnou změnu prostředků zákazníka.
 - Poznámka: pravidla jsou dvou typů – ukončení & neukončujících, z nichž každá má jiné chování protokolování.
@@ -294,7 +294,7 @@ Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více 
 ```
 **Vysvětlení řazené kolekce členů protokolu**
 
-![Přehled protokolů toků](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![tok zaznamenává řazenou kolekci členů](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
 **Ukázka výpočtu šířky pásma**
 
@@ -305,15 +305,15 @@ Toky řazené kolekce členů z konverzace TCP mezi 185.170.185.105:35370 a 10.2
 Pro pokračování ve stavech _C_ a koncových _E_ toků jsou počty bajtů a paketů agregované od času předchozího záznamu řazené kolekce členů toku. Po odkazování na předchozí příklad konverzace je celkový počet přenesených paketů 1021 + 52 + 8005 + 47 = 9125. Celkový počet přenesených bajtů je 588096 + 29952 + 4610880 + 27072 = 5256000.
 
 
-## <a name="enabling-nsg-flow-logs"></a>Povolení protokolů toku NSG
+## <a name="enabling-nsg-flow-logs"></a>Povolení protokolů toků NSG
 
 K povolení protokolů toku použijte odpovídající odkaz níže.
 
-- [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
-- [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
-- [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
-- [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
-- [Azure Resource Manager](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager)
+- [Azure Portal](./network-watcher-nsg-flow-logging-portal.md)
+- [PowerShell](./network-watcher-nsg-flow-logging-powershell.md)
+- [Rozhraní příkazového řádku](./network-watcher-nsg-flow-logging-cli.md)
+- [REST](./network-watcher-nsg-flow-logging-rest.md)
+- [Azure Resource Manager](./network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 ## <a name="updating-parameters"></a>Aktualizují se parametry
 
@@ -329,8 +329,8 @@ K aktualizaci parametrů prostřednictvím nástrojů příkazového řádku pou
 
 *Čtení a export protokolů toků*
 
-- [Stáhnout &amp; protokoly toku zobrazení z portálu](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
-- [Čtení protokolů toku pomocí funkcí PowerShellu](https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs)
+- [Stáhnout &amp; protokoly toku zobrazení z portálu](./network-watcher-nsg-flow-logging-portal.md#download-flow-log)
+- [Čtení protokolů toku pomocí funkcí PowerShellu](./network-watcher-read-nsg-flow-logs.md)
 - [Exportovat protokoly toku NSG do Splunk](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
 
 Zatímco Flow zaznamenává cílový skupin zabezpečení sítě, nezobrazí se stejně jako ostatní protokoly. Protokoly toku se ukládají jenom v rámci účtu úložiště a používají cestu k protokolování, která je znázorněná v následujícím příkladu:
@@ -341,11 +341,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 *Vizualizace protokolů toku*
 
-- [Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) je nativní služba Azure, která zpracovává protokoly toků, extrahuje přehledy a vizualizuje protokoly toků. 
-- [Návodu Vizualizace protokolů toku NSG pomocí Power BI](https://docs.microsoft.com/azure/network-watcher/network-watcher-visualize-nsg-flow-logs-power-bi)
-- [Návodu Vizualizace protokolů toku NSG pomocí elastického zásobníku](https://docs.microsoft.com/azure/network-watcher/network-watcher-visualize-nsg-flow-logs-open-source-tools)
-- [Návodu Správa a analýza protokolů toku NSG pomocí Grafana](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-grafana)
-- [Návodu Správa a analýza protokolů toku NSG pomocí Graylogu](https://docs.microsoft.com/azure/network-watcher/network-watcher-analyze-nsg-flow-logs-graylog)
+- [Azure Traffic Analytics](./traffic-analytics.md) je nativní služba Azure, která zpracovává protokoly toků, extrahuje přehledy a vizualizuje protokoly toků. 
+- [Návodu Vizualizace protokolů toku NSG pomocí Power BI](./network-watcher-visualize-nsg-flow-logs-power-bi.md)
+- [Návodu Vizualizace protokolů toku NSG pomocí elastického zásobníku](./network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [Návodu Správa a analýza protokolů toku NSG pomocí Grafana](./network-watcher-nsg-grafana.md)
+- [Návodu Správa a analýza protokolů toku NSG pomocí Graylogu](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG Flow – požadavky na protokolování
@@ -353,21 +353,34 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Požadavky na účet úložiště**: 
 
 - Umístění: použitý účet úložiště musí být ve stejné oblasti jako NSG.
+- Úroveň výkonu: v současné době jsou podporovány pouze účty úložiště úrovně Standard.
 - Samoobslužná správa střídání klíčů: Pokud změníte nebo otočíte přístupové klíče k vašemu účtu úložiště, protokoly toku NSG přestanou fungovat. Chcete-li tento problém vyřešit, je nutné zakázat a znovu povolit protokoly toku NSG.
 
-**Náklady na protokolování toků**: protokolování toku NSG se účtuje podle objemu vyprodukovaných protokolů. Velký objem přenosů může mít za následek objem protokolu velkého toku a související náklady. Ceny protokolu NSG Flow nezahrnují základní náklady na úložiště. Použití funkce zásady uchovávání informací s protokolováním toku NSG znamená, že se za delší dobu účtují samostatné náklady na úložiště. Pokud nepotřebujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na 0. Další informace najdete v tématu [Network Watcher ceny](https://azure.microsoft.com/pricing/details/network-watcher/) a [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/) pro další podrobnosti.
+**Náklady na protokolování toků**: protokolování toku NSG se účtuje podle objemu vyprodukovaných protokolů. Velký objem přenosů může mít za následek objem protokolu velkého toku a související náklady. Ceny protokolu NSG Flow nezahrnují základní náklady na úložiště. Použití funkce zásady uchovávání informací s protokolováním toku NSG znamená, že se za delší dobu účtují samostatné náklady na úložiště. Pokud chcete zachovat data trvale a nechcete použít žádné zásady uchovávání informací, nastavte dobu uchovávání (dny) na 0. Další informace najdete v tématu [Network Watcher ceny](https://azure.microsoft.com/pricing/details/network-watcher/) a [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/) pro další podrobnosti.
 
-**Problémy s uživatelem definovanými příchozími pravidly TCP**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview) jsou implementované jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vzhledem k aktuálním omezením platforem však uživatelsky definovaná pravidla, která mají vliv na příchozí toky TCP, jsou implementována bezstavovým způsobem. Z tohoto důvodu toky ovlivněné uživatelem definovanými vstupními pravidly se stanou neukončujícími. Pro tyto toky se navíc nezaznamenávají počty bajtů a paketů. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných čísel. Příznak výslovného souhlasu, který tyto problémy řeší, je naplánován k dispozici do prosince 2020 nejnovějšího. V předběžně se zákazníci, kteří čelí vážným problémům z důvodu tohoto chování, můžou požádat o zaznamenání prostřednictvím podpory, vyvolejte prosím žádost o podporu v části Network Watcher > protokoly toku NSG.  
+**Problémy s uživatelem definovanými příchozími pravidly TCP**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md) jsou implementované jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vzhledem k aktuálním omezením platforem však uživatelsky definovaná pravidla, která mají vliv na příchozí toky TCP, jsou implementována bezstavovým způsobem. Z tohoto důvodu toky ovlivněné uživatelem definovanými vstupními pravidly se stanou neukončujícími. Pro tyto toky se navíc nezaznamenávají počty bajtů a paketů. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných čísel. Příznak výslovného souhlasu, který tyto problémy řeší, je naplánován k dispozici v březnu 2021 nejnovější verzi. V předběžně se zákazníci, kteří čelí vážným problémům z důvodu tohoto chování, můžou požádat o zaznamenání prostřednictvím podpory, vyvolejte prosím žádost o podporu v části Network Watcher > protokoly toku NSG.  
 
-**Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných**IP adres: virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k síťovému rozhraní jako veřejná IP adresa na úrovni instance nebo které jsou součástí základního fondu back-end služby Vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
+**Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných** IP adres: virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k síťovému rozhraní jako veřejná IP adresa na úrovni instance nebo které jsou součástí základního fondu back-end služby Vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
+
+**Problém s Application Gateway NSG v2 Subnet**: protokolování toku v podsíti Application Gateway v2 NSG se momentálně [nepodporuje](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) . Tento problém nemá vliv na Application Gateway v1.
+
+**Nekompatibilní služby**: kvůli současným omezením platforem není v protokolech toku NSG podporována malá sada služeb Azure. Aktuální seznam nekompatibilních služeb je
+- [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
 **Povolit pro kritické virtuální sítě/podsítě**: protokoly toků by měly být povolené na všech kritických virtuální sítě/podsítích ve vašem předplatném jako osvědčený postup pro audit a zabezpečení. 
 
-**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toků NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/security-overview.md#how-traffic-is-evaluated) ve skupinách zabezpečení sítě.
+**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toku NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťovém rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/network-security-group-how-it-works.md) ve skupinách zabezpečení sítě. 
+
+Několik běžných scénářů:
+1. **Více síťových adaptérů na** virtuálním počítači: Pokud jsou k virtuálnímu počítači připojené víc síťových adaptérů, musí se protokolování toku povolit na všech těchto počítačích.
+1. **NSG na obou síťových rozhraních a na úrovni podsítě**: v případě, že je NSG nakonfigurovaná na síťové kartě a také na úrovni podsítě, musí se protokolování toku povolit jak v skupin zabezpečení sítě. 
 
 **Zřizování úložiště**: úložiště by mělo být zřízené ve službě Intune s očekávaným objemem protokolu toku.
+
+**Pojmenování**: název NSG musí být až 80 znaků a názvy pravidel NSG až 65 znaků. Pokud názvy překročí limit znaků, může při protokolování dojít ke zkrácení.
 
 ## <a name="troubleshooting-common-issues"></a>Řešení běžných potíží
 
@@ -375,13 +388,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 - Poskytovatel prostředků **Microsoft. Insights** není zaregistrovaný.
 
-Pokud dojde k chybě _AuthorizationFailed_ nebo _GatewayAuthenticationFailed_, pravděpodobně jste ve svém předplatném nepovolili poskytovatele prostředků Microsoft Insights. Pokud chcete poskytovatele Microsoft Insights povolit, [postupujte podle pokynů](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider) .
+Pokud dojde k chybě _AuthorizationFailed_ nebo _GatewayAuthenticationFailed_, pravděpodobně jste ve svém předplatném nepovolili poskytovatele prostředků Microsoft Insights. Pokud chcete poskytovatele Microsoft Insights povolit, [postupujte podle pokynů](./network-watcher-nsg-flow-logging-portal.md#register-insights-provider) .
 
 **Po povolení protokolů toku NSG se v účtu úložiště nezobrazují žádná data**
 
 - **Čas nastavení**
 
-Zobrazení protokolů toku NSG v účtu úložiště může trvat až 5 minut (v případě správné konfigurace). Zobrazí se soubor PT1H.json, který můžete otevřít podle [těchto pokynů](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log).
+Zobrazení protokolů toku NSG v účtu úložiště může trvat až 5 minut (v případě správné konfigurace). Zobrazí se soubor PT1H.json, který můžete otevřít podle [těchto pokynů](./network-watcher-nsg-flow-logging-portal.md#download-flow-log).
 
 - **Žádný provoz ve skupinách zabezpečení sítě**
 
@@ -391,11 +404,11 @@ Protokoly se někdy nezobrazí, protože vaše virtuální počítače nejsou ak
 
 Protokoly toku NSG v současné době nepodporují automatizaci prostřednictvím šablon ARM. Další informace najdete v [oznámení o funkci](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Co dělají protokoly toku NSG?**
 
-Síťové prostředky Azure je možné kombinovat a spravovat prostřednictvím [skupin zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview). Protokoly toku NSG umožňují protokolovat informace o toku 5-řazené kolekce členů o všech přenosech prostřednictvím služby skupin zabezpečení sítě. Protokoly nezpracovaných toků se zapisují na účet Azure Storage, ze kterého se dají dál zpracovávat, analyzovat, dotazovat nebo exportovat podle potřeby.
+Síťové prostředky Azure je možné kombinovat a spravovat prostřednictvím [skupin zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md). Protokoly toku NSG umožňují protokolovat informace o toku 5-řazené kolekce členů o všech přenosech prostřednictvím služby skupin zabezpečení sítě. Protokoly nezpracovaných toků se zapisují na účet Azure Storage, ze kterého se dají dál zpracovávat, analyzovat, dotazovat nebo exportovat podle potřeby.
 
 **Ovlivňují používání protokolů Flow latenci sítě nebo výkon?**
 
@@ -407,7 +420,7 @@ Pokud chcete použít účet úložiště za bránou firewall, musíte poskytnou
 
 - Přejděte do účtu úložiště zadáním názvu účtu úložiště do globálního vyhledávání na portálu nebo na [stránce účty úložiště](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) .
 - V části **Nastavení** vyberte **brány firewall a virtuální sítě** .
-- V nástroji **Povolení přístupu z**vyberte **vybrané sítě**. Pak v části **výjimky**zaškrtněte políčko vedle položky * * * * umožňuje důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště * * * *
+- V nástroji **Povolení přístupu z** vyberte  **vybrané sítě**. Pak v části  **výjimky** zaškrtněte políčko vedle položky * * * * umožňuje důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště * * * *
 - Pokud je tato možnost již vybraná, není potřeba provádět žádné změny.
 - Na [stránce Přehled protokolů toků NSG](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) vyhledejte cílovou NSG a povolte protokoly toku NSG s vybraným účtem úložiště.
 
@@ -415,15 +428,14 @@ Po několika minutách můžete zkontrolovat protokoly úložiště, ve kterých
 
 **Návody používat protokoly toku NSG s účtem úložiště za koncovým bodem služby?**
 
-Protokoly toku NSG jsou kompatibilní s koncovými body služby bez nutnosti jakékoli další konfigurace. Přečtěte si [kurz povolení koncových bodů služby](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) ve vaší virtuální síti.
+Protokoly toku NSG jsou kompatibilní s koncovými body služby bez nutnosti jakékoli další konfigurace. Přečtěte si [kurz povolení koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint) ve vaší virtuální síti.
 
 **Jaký je rozdíl mezi protokoly toku verze 1 & 2?**
 
-Protokoly Flow verze 2 zavádí koncept _stavu toku_ , & ukládá informace o odeslaných bajtech a paketech. [Další informace](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
+Protokoly Flow verze 2 zavádí koncept _stavu toku_ , & ukládá informace o odeslaných bajtech a paketech. [Další informace](#log-format)
 
 ## <a name="pricing"></a>Ceny
 
 Protokoly toku NSG se účtují za GB shromážděných protokolů a mají bezplatnou úroveň 5 GB/měsíc na jedno předplatné. Aktuální ceny ve vaší oblasti najdete na [stránce s cenami Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher/).
 
 Ukládání protokolů se účtuje samostatně, další informace najdete v tématu [Azure Storage cenové stránky objektů blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/) pro příslušné ceny.
- 

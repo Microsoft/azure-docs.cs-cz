@@ -1,23 +1,18 @@
 ---
 title: Přesun dat ze služby Salesforce pomocí Data Factory
 description: Přečtěte si informace o tom, jak přesouvat data z Salesforce pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281129"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387049"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -51,7 +46,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z Sa
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -66,11 +61,11 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Salesforce.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **Salesforce**. |Yes |
 | environmentUrl | Zadejte adresu URL instance Salesforce. <br><br> -Výchozí hodnota je https: \/ /Login.Salesforce.com. <br> – Chcete-li kopírovat data z izolovaného prostoru, zadejte " https://test.salesforce.com ". <br> – Chcete-li kopírovat data z vlastní domény, zadejte například "https://[doména]. my. Salesforce. com". |No |
-| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Yes |
+| username |Zadejte uživatelské jméno pro uživatelský účet. |Yes |
 | heslo |Zadejte heslo pro uživatelský účet. |Yes |
 | Element |Zadejte token zabezpečení pro uživatelský účet. Pokyny, jak resetovat nebo získat token zabezpečení, najdete v tématu [získání tokenu zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Obecné informace o tokenech zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
 
@@ -79,14 +74,14 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačního** typu má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky v Salesforce. |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
 > [!IMPORTANT]
 > Část "__c" názvu rozhraní API je nutná pro libovolný vlastní objekt.
 
-![Data Factory – připojení Salesforce – název rozhraní API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Snímek obrazovky zobrazuje podrobnosti definice vlastního objektu, kde můžete zobrazit názvy vlastních objektů A P I.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . K dispozici jsou vlastnosti, jako je název, popis, vstupní a výstupní tabulka a různé zásady, a to pro všechny typy aktivit.
@@ -97,18 +92,18 @@ Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrn
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz na [SOQL (Salesforce Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Například: `select * from MyTable__c`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz na [SOQL (Salesforce Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Příklad: `select * from MyTable__c`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 > [!IMPORTANT]
 > Část "__c" názvu rozhraní API je nutná pro libovolný vlastní objekt.
 
-![Data Factory – připojení Salesforce – název rozhraní API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Snímek obrazovky zobrazuje vlastní pole & vztahy, kde vidíte názvy vlastních objektů A P I.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## <a name="query-tips"></a>Tipy pro dotazy
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Načítání dat pomocí klauzule WHERE ve sloupci DateTime
 Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Příklad:
 
-* **Ukázka SOQL**:`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **Ukázka SOQL**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **Ukázka SQL**:
     * **Zadání dotazu pomocí Průvodce kopírováním:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Použití úprav JSON k zadání dotazu (řídicí znak je řádně):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
@@ -197,7 +192,7 @@ Nastavením možnosti **externí** na **hodnotu true** dojde k informování slu
 > [!IMPORTANT]
 > Část "__c" názvu rozhraní API je nutná pro libovolný vlastní objekt.
 
-![Data Factory – připojení Salesforce – název rozhraní API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Snímek obrazovky se zobrazí v podrobnostech o definici vlastního objektu, kde můžete zobrazit popisek jednotného přidaných dat, popisek plural, název objektu a název P.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 **Výstupní datová sada Azure Blob**
 
@@ -225,7 +220,7 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 
 **Kanál s aktivitou kopírování**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource**a typ **jímky** je nastavený na **BlobSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource** a typ **jímky** je nastavený na **BlobSink**.
 
 Seznam vlastností, které jsou podporovány rozhraním RelationalSource, naleznete v tématu [vlastnosti typu RelationalSource](#copy-activity-properties) .
 
@@ -278,7 +273,7 @@ Seznam vlastností, které jsou podporovány rozhraním RelationalSource, nalezn
 > [!IMPORTANT]
 > Část "__c" názvu rozhraní API je nutná pro libovolný vlastní objekt.
 
-![Data Factory – připojení Salesforce – název rozhraní API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Snímek obrazovky zobrazuje vlastní pole & relace s názvy A P s názvem.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 
 ### <a name="type-mapping-for-salesforce"></a>Mapování typů pro Salesforce
@@ -287,15 +282,15 @@ Seznam vlastností, které jsou podporovány rozhraním RelationalSource, nalezn
 | --- | --- |
 | Automatické číslo |Řetězec |
 | Zaškrtávací políčko |Logická hodnota |
-| Měna |Desetinné číslo |
-| Datum |DateTime |
-| Datum/čas |DateTime |
+| Měna |Decimal |
+| Date (Datum) |DateTime |
+| Datum/Čas |DateTime |
 | E-mail |Řetězec |
-| ID |Řetězec |
+| Id |Řetězec |
 | Relace vyhledávání |Řetězec |
 | Vícenásobný výběr rozevíracího seznamu |Řetězec |
-| Číslo |Desetinné číslo |
-| Procento |Desetinné číslo |
+| Číslo |Decimal |
+| Procento |Decimal |
 | Rozložení |Řetězec |
 | Picklist |Řetězec |
 | Text |Řetězec |

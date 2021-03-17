@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/05/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7903dc7f614d16380626f27579363b1529665cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55e22ebec5853d6b4f10b53be8e24f4dbebe4e1f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988114"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659773"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generování a export certifikátů pro připojení Point-to-site pomocí nástroje MakeCert
 
@@ -26,7 +26,7 @@ I když k vytvoření certifikátů doporučujeme použít [kroky Windows PowerS
 
 Následující kroky ukazují, jak vytvořit certifikát podepsaný svým držitelem pomocí nástroje MakeCert. Tyto kroky nejsou specifické pro model nasazení. Jsou platné pro Správce prostředků i pro klasický systém.
 
-1. Stáhněte a nainstalujte [Makecert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
+1. Stáhněte a nainstalujte [Makecert](/windows/win32/seccrypto/makecert).
 2. Po instalaci můžete obvykle najít nástroj makecert.exe v rámci této cesty: C:\Program Files (x86) \Windows Kits\10\bin \<arch> '. I když je možné, že byl nainstalován do jiného umístění. Otevřete příkazový řádek jako správce a přejděte do umístění nástroje MakeCert. Můžete použít následující příklad a upravit pro správné umístění:
 
    ```cmd

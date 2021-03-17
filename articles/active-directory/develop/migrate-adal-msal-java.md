@@ -14,22 +14,22 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120877"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583989"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Příručka k migraci ADAL do MSAL pro Java
 
 Tento článek popisuje změny, které je třeba provést při migraci aplikace, která používá knihovnu Azure Active Directory Authentication Library (ADAL) k použití knihovny Microsoft Authentication Library (MSAL).
 
-K ověřování entit Azure AD a žádosti o tokeny od Azure AD se používají knihovny Microsoft Authentication Library pro Java (MSAL4J) a Azure AD Authentication Library pro Java (ADAL4J). Předtím, než se teď většina vývojářů pracovala s Azure AD pro vývojáře (verze 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že žádá o tokeny pomocí služby Azure AD Authentication Library (ADAL).
+K ověřování entit Azure AD a žádosti o tokeny od Azure AD se používají knihovna Microsoft Authentication Library pro Java (MSAL4J) i knihovna ověřování Azure AD (ADAL4J). Předtím, než se teď většina vývojářů pracovala s Azure AD pro vývojáře (verze 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že žádá o tokeny pomocí služby Azure AD Authentication Library (ADAL).
 
 MSAL nabízí následující výhody:
 
-- Protože používá novější koncový bod platformy Microsoft identity, můžete ověřit širší sadu identit Microsoftu, jako jsou identity Azure AD, účty Microsoft a sociální a místní účty prostřednictvím Azure AD Business to Consumer (B2C).
+- Protože používá novější platformu Microsoft identity, můžete ověřit širší sadu identit Microsoftu, jako jsou identity Azure AD, účty Microsoft a sociální a místní účty prostřednictvím Azure AD Business to Consumer (B2C).
 - Vaši uživatelé získají nejlepší možnosti jednotného přihlašování.
 - Vaše aplikace může povolit postupný souhlas a podpora podmíněného přístupu je jednodušší.
 
@@ -37,13 +37,13 @@ MSAL for Java je knihovna pro ověřování, kterou doporučujeme používat s p
 
 ## <a name="differences"></a>Rozdíly
 
-Pokud jste pracovali s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL4J), můžete si přečíst informace [o tom, co se liší od koncového bodu Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Pokud jste pracovali s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL4J), možná si budete chtít přečíst, [co se liší od platformy Microsoft Identity?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
 ADAL4J získává tokeny pro prostředky, zatímco MSAL pro jazyk Java získává tokeny pro obory. Počet MSAL pro třídy jazyka Java vyžaduje parametr scopes. Tento parametr je seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Ukázkové obory najdete v tématu věnovaném [oborům Microsoft Graph](/graph/permissions-reference) .
 
-Do prostředku můžete přidat `/.default` příponu oboru, která vám umožní migrovat vaše aplikace z koncového bodu v 1.0 (ADAL) na koncový bod Microsoft Identity Platform (MSAL). Například pro hodnotu prostředku `https://graph.microsoft.com` je ekvivalentní hodnota oboru `https://graph.microsoft.com/.default` .  Pokud prostředek není ve formátu adresy URL, ale ID prostředku ve formuláři `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , můžete i nadále používat hodnotu oboru jako `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+Do prostředku můžete přidat `/.default` příponu oboru, která vám umožní migrovat aplikace z knihovny ADAL do MSAL. Například pro hodnotu prostředku `https://graph.microsoft.com` je ekvivalentní hodnota oboru `https://graph.microsoft.com/.default` .  Pokud prostředek není ve formátu adresy URL, ale ID prostředku ve formuláři `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , můžete i nadále používat hodnotu oboru jako `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 Další podrobnosti o různých typech oborů najdete v článcích věnovaném [oprávněním a souhlasům na platformě identity Microsoftu](./v2-permissions-and-consent.md) a v [oborech pro webové rozhraní API Přijímám v 1.0 tokeny](./msal-v1-app-scopes.md) .
 
@@ -80,7 +80,7 @@ MSAL for Java přidá [mezipaměť tokenů](msal-acquire-cache-tokens.md) pro zj
 
 Pokud v v 1.0 používáte `https://login.microsoftonline.com/common` autoritu, můžou se uživatelé přihlašovat pomocí libovolného účtu Azure Active Directory (AAD) (pro libovolnou organizaci).
 
-Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, uživatelé se mohou přihlašovat pomocí libovolné organizace AAD nebo dokonce i osobní účet společnosti Microsoft (MSA). Pokud chcete omezit přihlášení na libovolný účet AAD, v MSAL pro Java musíte použít `https://login.microsoftonline.com/organizations` autoritu (což je stejné chování jako u ADAL4J). Chcete-li zadat autoritu, nastavte `authority` parametr v metodě [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) při vytváření `PublicClientApplication` třídy.
+Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, uživatelé se mohou přihlašovat pomocí libovolné organizace AAD nebo dokonce i osobní účet společnosti Microsoft (MSA). Pokud chcete omezit přihlášení na libovolný účet AAD, v MSAL pro Java použijte `https://login.microsoftonline.com/organizations` autoritu (což je stejné chování jako u s ADAL4J). Chcete-li zadat autoritu, nastavte `authority` parametr v metodě [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) při vytváření `PublicClientApplication` třídy.
 
 ## <a name="v10-and-v20-tokens"></a>tokeny v 1.0 a v 2.0
 
@@ -101,7 +101,7 @@ MSAL for Java obsahuje rozhraní API, které umožňuje migrovat obnovovací tok
 Následující fragment kódu ukazuje určitý kód migrace v důvěrné klientské aplikaci:
 
 ```java
-String rt = GetCachedRefreshTokenForSIgnedInUser(); // Get refresh token from where you have them stored
+String rt = GetCachedRefreshTokenForSignedInUser(); // Get refresh token from where you have them stored
 Set<String> scopes = Collections.singleton("SCOPE_FOR_REFRESH_TOKEN");
 
 RefreshTokenParameters parameters = RefreshTokenParameters.builder(scopes, rt).build();

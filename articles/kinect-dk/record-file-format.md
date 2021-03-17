@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, senzor, SDK, Hloubka, RGB, záznam, přehrávání, Matroska, MKV
-ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4fa14b0841cb76b2ba191310ecbca312d29f805
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501776"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654587"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Použití sady Azure Kinect snímače SDK k záznamu formátu souboru
 
@@ -22,7 +22,7 @@ Podrobnosti nízké úrovně formátu kontejneru. MKV najdete na [webu Matroska]
 
 | Název stopy | Formát kodeku                          |
 |------------|---------------------------------------|
-| BAREVNÝCH      | Závislé na režimu (MJPEG, NV12 úrovně nebo YUY2) |
+| BAREVNÝCH      | Mode-Dependent (MJPEG, NV12 úrovně nebo YUY2) |
 | ÚROVNÍ      | b16g (16 bitů ve stupních šedi, Big Endian)   |
 | IR         | b16g (16 bitů ve stupních šedi, Big Endian)   |
 | IMU        | Vlastní struktura viz [imu Sample Structure](record-file-format.md#imu-sample-structure) níže. |

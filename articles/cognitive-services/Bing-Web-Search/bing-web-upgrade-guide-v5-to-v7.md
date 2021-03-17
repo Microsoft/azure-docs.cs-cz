@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7ee8d05a542c6906d4ebe70f7e2a461752c6e3f3
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609448"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349516"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade z rozhraní API Bingu pro vyhledávání na webu V5 na v7
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní API Bingu pro vyhledávání na webu. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
 
@@ -75,14 +80,14 @@ Blokované|InvalidRequest. Block
 
 ### <a name="headers"></a>Hlavičky
 
-- Byla přidána volitelná Hlavička požadavku [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) . Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
+- Byla přidána volitelná Hlavička požadavku [pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) . Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Parametry dotazů
 
-- Byl přidán parametr dotazu [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) . Pomocí tohoto parametru můžete zadat počet odpovědí, které má odpověď zahrnovat. Odpovědi se volí na základě hodnocení. Například pokud nastavíte tento parametr na tři (3), odpověď obsahuje horní tři seřazené odpovědi.  
+- Byl přidán parametr dotazu [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) . Pomocí tohoto parametru můžete zadat počet odpovědí, které má odpověď zahrnovat. Odpovědi se volí na základě hodnocení. Například pokud nastavíte tento parametr na tři (3), odpověď obsahuje horní tři seřazené odpovědi.  
 
-- Byl přidán parametr [povýšení](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) dotazu. Použijte tento parametr společně s `answerCount` pro explicitní zahrnutí jednoho nebo více typů odpovědí bez ohledu na jejich hodnocení. Například pro zvýšení úrovně videa a obrázků do odpovědi byste měli nastavit zvýšení úrovně na *videa, obrázky*. Seznam odpovědí, které chcete zvýšit, se nepočítá s `answerCount` limitem. Například pokud `answerCount` má hodnotu 2 a `promote` je nastavená na *videa, obrázky*, odpověď může obsahovat webové stránky, novinky, videa a obrázky.
+- Byl přidán parametr [povýšení](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) dotazu. Použijte tento parametr společně s `answerCount` pro explicitní zahrnutí jednoho nebo více typů odpovědí bez ohledu na jejich hodnocení. Například pro zvýšení úrovně videa a obrázků do odpovědi byste měli nastavit zvýšení úrovně na *videa, obrázky*. Seznam odpovědí, které chcete zvýšit, se nepočítá s `answerCount` limitem. Například pokud `answerCount` má hodnotu 2 a `promote` je nastavená na *videa, obrázky*, odpověď může obsahovat webové stránky, novinky, videa a obrázky.
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Pole bylo přidáno `someResultsRemoved` do objektu [webanswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) . Pole obsahuje logickou hodnotu, která označuje, zda odpověď vyloučila některé výsledky z webové odpovědi.  
+- Pole bylo přidáno `someResultsRemoved` do objektu [webanswer](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) . Pole obsahuje logickou hodnotu, která označuje, zda odpověď vyloučila některé výsledky z webové odpovědi.

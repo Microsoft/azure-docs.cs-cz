@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156603"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697925"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -33,7 +33,7 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresá
     | **Všichni členové (kromě hostů)** | Tuto možnost vyberte, pokud chcete, aby všichni členové členských uživatelů v adresáři mohli požádat o tento balíček přístupu. Tato možnost neobsahuje žádné uživatele typu Host, které jste mohli pozvat do svého adresáře. |
     | **Všichni uživatelé (včetně hostů)** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat všichni členové a uživatelé typu Host v adresáři. |
 
-    Uživatelé typu Host odkazují na externí uživatele, kteří byli pozváni do vašeho adresáře pomocí [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). Další informace o rozdílech mezi členskými uživateli a uživateli typu Host najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Uživatelé typu Host odkazují na externí uživatele, kteří byli pozváni do vašeho adresáře pomocí [Azure AD B2B](../articles/active-directory/external-identities/what-is-b2b.md). Další informace o rozdílech mezi členskými uživateli a uživateli typu Host najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
 1. Pokud jste vybrali **konkrétní uživatele a skupiny**, klikněte na **Přidat uživatele a skupiny**.
 
@@ -47,10 +47,10 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresá
 
 ## <a name="for-users-not-in-your-directory"></a>Pro uživatele, kteří nejsou ve vašem adresáři
 
- **Uživatelé, kteří nejsou v adresáři** , odkazují na uživatele, kteří jsou v jiném adresáři nebo adresáři služby Azure AD. Tito uživatelé možná nebyli přizváni do vašeho adresáře. Je potřeba nakonfigurovat adresáře Azure AD tak, aby umožňovaly pozvánky v **omezeních spolupráce**. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../articles/active-directory/b2b/delegate-invitations.md).
+ **Uživatelé, kteří nejsou v adresáři** , odkazují na uživatele, kteří jsou v jiném adresáři nebo adresáři služby Azure AD. Tito uživatelé možná nebyli přizváni do vašeho adresáře. Je potřeba nakonfigurovat adresáře Azure AD tak, aby umožňovaly pozvánky v **omezeních spolupráce**. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../articles/active-directory/external-identities/delegate-invitations.md).
 
 > [!NOTE]
-> Uživatelský účet hosta se vytvoří pro uživatele, který ještě není ve vašem adresáři, jehož žádost je schválená nebo automaticky schválená. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků. Další informace o objektu uživatele hosta najdete v tématu [vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../articles/active-directory/b2b/user-properties.md).
+> Uživatelský účet hosta se vytvoří pro uživatele, který ještě není ve vašem adresáři, jehož žádost je schválená nebo automaticky schválená. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků. Další informace o objektu uživatele hosta najdete v tématu [vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../articles/active-directory/external-identities/user-properties.md).
 
 Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve vašem adresáři, vyžadovat tento balíček přístupu:
 
@@ -81,7 +81,7 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
 1. Po výběru všech připojených organizací klikněte na **Vybrat**.
 
     > [!NOTE]
-    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
+    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/external-identities/allow-deny-list.md).
 
 1. Přeskočte dolů k části [schválení](#approval) .
 
@@ -145,7 +145,7 @@ Pomocí následujících kroků přidejte schvalovatele po výběru počtu fáz�
 
 1. Pokud jste vybrali **možnost zvolit konkrétní schvalovatele**, klikněte na **Přidat schvalovatele** a vyberte jednoho nebo více uživatelů nebo skupin v adresáři, které mají být schvalovatelé.
 
-1. V poli v části **rozhodnutí se musí**zadat počet dní, po které má schvalovatel zkontrolovat požadavek na tento přístupový balíček.
+1. V poli v části **rozhodnutí se musí** zadat počet dní, po které má schvalovatel zkontrolovat požadavek na tento přístupový balíček.
 
     Pokud žádost není v rámci tohoto časového období schválena, bude automaticky odepřena. Uživatel bude muset odeslat další žádost o přístup k balíčku.
 
@@ -192,6 +192,8 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
 
     ![Přístup k balíčku – zásady – přidání alternativních schvalovatelů](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
+    Pokud jako schvalovatele vyberete pro prvního schvalovatele možnost manažer, budete mít další možnost **jako alternativního schvalovatele**, která je dostupná pro výběr v poli alternativní schvalovatel. Vyberete-li tuto možnost, je nutné přidat záložního schvalovatele, kterému bude žádost předána, v případě, že systém nemůže najít správce druhé úrovně.
+
 1. V poli **předávat k alternativním schvalovatelům po počtu dní** uveďte počet dní, po které schvalovatelé schválí nebo zamítnou požadavek. Pokud žádný schvalovatel neschválil nebo zamítl požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další žádost o přístup k balíčku. 
 
     Žádosti mohou být předávány alternativním schvalovatelům denně po uplynutí doby trvání žádosti a rozhodnutí hlavních schvalovatelů se musí po dobu nejméně 4 dnů vysílat. Pokud je časový limit požadavku menší nebo roven 3, není dostatek času na přeposlání žádosti na alternativní schvalovatele. V tomto příkladu je doba trvání žádosti 14 dní. To znamená, že doba trvání žádosti dosáhne poloviny životnosti 7 dní. Proto se žádost nedá přeposláním starší než 8 dní. Žádosti se taky nedají přeslat za poslední den trvání žádosti. Takže v tomto příkladu může být nejnovější žádost předána dne 13.
@@ -204,6 +206,36 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
 
     Pokud jste vybrali **možnost žádné (pouze oprávnění správce)** a nastavíte možnost povolit na hodnotu **ne**, správci nebudou moci přiřadit tento balíček přístupu přímo.
 
-    ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![Snímek obrazovky, který ukazuje možnost povolit nové žádosti a přiřazení.](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klikněte na **Next** (Další).
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>Přidání informací o žadateli (Preview) do balíčku pro přístup
+
+1. Přejděte na kartu **informace o žadateli** a klikněte na podřízenou kartu **otázky** .
+ 
+1. Zadejte, co chcete požádat o žadatele, označovaný také jako řetězec zobrazení, pro otázku v poli pro **otázky** .
+
+    ![Přístup k balíčku – nastavení zásad – Povolit informace o žadateli](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. Pokud chcete přidat vlastní možnosti lokalizace, klikněte na **Přidat lokalizaci**.
+    1. V podokně **Přidat lokalizace pro otázku** vyberte **kód jazyka** pro jazyk, ve kterém chcete otázku lokalizovat.
+    1. V jazyce, který jste nakonfigurovali, zadejte otázku do **lokalizovaného textového** pole.
+    1. Po přidání všech potřebných lokalizací klikněte na **Uložit**.
+
+    ![Přístup k balíčku – zásady – konfigurace lokalizovaného textu](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. Vyberte **Formát odpovědi** , ve kterém chcete, aby žadatelé odpověděli. Formáty odpovědí zahrnují: *krátký text*, *Vícenásobný výběr* a *dlouhý text*.
+ 
+    ![Přístup k balíčku – zásady – výběr zobrazení a úprava formátu odpovědi s více volbami](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. Pokud vyberete více možností, klikněte na tlačítko **Zobrazit a upravit** a nakonfigurujte možnosti odpovědi.
+    1. Po výběru možnosti zobrazit a upravit podokno **otázek Zobrazit/upravit** se otevře.
+    1. Zadejte možnosti odpovědi, které chcete žadateli poskytnout při zodpovězení otázky v polích **hodnoty odpovědi** .
+    1. Zadejte tolik odpovědí, kolik potřebujete, a pak klikněte na **Uložit**.
+    
+    ![Přístup k balíčku – zásady – zadejte možnosti vícenásobné volby.](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. Pokud požadujete, aby žadateli odpověděli na tuto otázku při žádosti o přístup k balíčku přístupu, zaškrtněte políčko v části **požadováno**.
+
+1. Kliknutí na Další

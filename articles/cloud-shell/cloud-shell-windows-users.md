@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cc1934cc97ecf821de8644dda45d867b3ca3e85
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67204143"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508942"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell ve službě Azure Cloud Shell pro uživatele Windows
 
@@ -69,4 +69,4 @@ V části `$HOME/.config/PowerShell` můžete vytvořit své soubory profilu –
 
 ## <a name="whats-new-in-powershell-core-6"></a>Co je nového v PowerShellu Core 6
 
-Další informace o tom, co je v prostředí PowerShell Core 6 novinkou, najdete v blogovém příspěvku [PowerShellu](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) a [Začínáme s jádrem prostředí PowerShell](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) .
+Další informace o tom, co je v prostředí PowerShell Core 6 novinkou, najdete v blogovém příspěvku [PowerShellu](/powershell/scripting/whats-new/what-s-new-in-powershell-70) a [Začínáme s jádrem prostředí PowerShell](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) .

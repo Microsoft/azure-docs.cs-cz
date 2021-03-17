@@ -1,22 +1,23 @@
 ---
 title: Kroky optimalizace po migraci s rozhraním API Azure Cosmos DB pro MongoDB
 description: Tento dokument poskytuje techniky optimalizace po migraci z MongoDB k rozhraní APi pro Azure Cosmos DB pro Mongo DB.
-author: LuisBosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/14/2021
+ms.author: chrande
+ms.openlocfilehash: ce0facaba43e9cc8e37b19fbd3dfc840067d278f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263088"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560391"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Kroky optimalizace po migraci při použití rozhraní API Azure Cosmos DB pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Po migraci dat uložených v databázi MongoDB Azure Cosmos DB k rozhraní API pro MongoDB se můžete připojit k Azure Cosmos DB a spravovat data. Tento průvodce popisuje kroky, které byste měli zvážit po dokončení migrace. Postup migrace najdete v [kurzu migrace MongoDB Azure Cosmos DB do rozhraní API pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md) .
+Po migraci dat uložených v databázi MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB se můžete připojit ke službě Azure Cosmos DB a spravovat tato data. Tento průvodce uvádí kroky, které byste po migraci měli zvážit. Postup migrace najdete v [kurzu migrace MongoDB Azure Cosmos DB do rozhraní API pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md) .
 
 V tomto průvodci se naučíte:
 
@@ -35,7 +36,7 @@ V tomto průvodci se naučíte:
 2. Z [Azure Portal](https://www.portal.azure.com/)v levém podokně otevřete nabídku **všechny prostředky** a vyhledejte účet Azure Cosmos DB, na který jste migrovali svá data.
 3. Otevřete okno **připojovací řetězec** . Pravé podokno obsahuje všechny informace, které potřebujete pro úspěšné připojení ke svému účtu.
 4. Použijte informace o připojení v konfiguraci vaší aplikace (nebo na jiných relevantních místech), aby odrážely Azure Cosmos DB rozhraní API pro připojení MongoDB ve vaší aplikaci.
-:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Připojovací řetězec":::
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Snímek obrazovky se zobrazí nastavení připojovacího řetězce.":::
 
 Další podrobnosti najdete na stránce [připojení aplikace MongoDB k Azure Cosmos DB](connect-mongodb-account.md) .
 
@@ -53,12 +54,12 @@ Pokud chcete globálně distribuovat data, přečtěte si prosím [globálně di
 
 ## <a name="set-consistency-level"></a>Nastavit úroveň konzistence
 
-Azure Cosmos DB nabízí 5 jasně definovaných [úrovní konzistence](consistency-levels.md). Pokud si chcete přečíst o mapování mezi MongoDB a Azure Cosmos DB úrovní konzistence, načtěte si [úrovně konzistence a rozhraní API pro Azure Cosmos DB](consistency-levels-across-apis.md). Výchozí úroveň konzistence je úroveň konzistence relace. Změna úrovně konzistence je volitelná a můžete ji optimalizovat pro vaši aplikaci. Postup změny úrovně konzistence pomocí Azure Portal:
+Azure Cosmos DB nabízí 5 jasně definovaných [úrovní konzistence](consistency-levels.md). Pokud si chcete přečíst o mapování mezi MongoDB a Azure Cosmos DB úrovní konzistence, načtěte si [úrovně konzistence a rozhraní API pro Azure Cosmos DB](./consistency-levels.md). Výchozí úroveň konzistence je úroveň konzistence relace. Změna úrovně konzistence je volitelná a můžete ji optimalizovat pro vaši aplikaci. Postup změny úrovně konzistence pomocí Azure Portal:
 
 1. V části Nastavení otevřete okno **výchozí konzistence** .
 2. Vyberte [úroveň konzistence](consistency-levels.md) .
 
-Většina uživatelů opouští úroveň konzistence ve výchozím nastavení konzistence relace. Existují však [kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md).
+Většina uživatelů opouští úroveň konzistence ve výchozím nastavení konzistence relace. Existují však [kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](./consistency-levels.md).
 
 ## <a name="next-steps"></a>Další kroky
 

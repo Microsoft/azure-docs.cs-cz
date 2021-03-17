@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu DoD Impact Level 5 – přehled
 description: Přehled ukázky pro DoD Impact Level 5 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly DoD Impact Level 5.
-ms.date: 06/30/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 0889da5f0eb9d177589d8ebc6a9a17b61fec624b
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5b2d018cf6c986c38cbe5a1a8ea18bf4a290a4df
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85804365"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035066"
 ---
 # <a name="overview-of-the-dod-impact-level-5-blueprint-sample"></a>Přehled ukázky podrobného plánu DoD Impact Level 5
 

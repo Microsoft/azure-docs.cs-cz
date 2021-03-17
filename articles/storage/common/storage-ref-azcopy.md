@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 19d5a5214ae4d2d6c0a18b68863211aa1f6573c6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878982"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -28,7 +28,7 @@ Chcete-li nahlásit problémy nebo získat další informace o nástroji, přeč
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+- [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
@@ -38,11 +38,11 @@ Chcete-li nahlásit problémy nebo získat další informace o nástroji, přeč
 
 **--help** Nápovědu pro AzCopy
       
-**--výstupní** formát (String) výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je `text`. (výchozí `text` )
+**--výstupní**  formát (String) výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je `text`. (výchozí `text` )
 
 **--Trusted – přípony Microsoft** (String) určují další přípony domén, kde se můžou odesílat Azure Active Directory přihlašovacích tokenů.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 - [azcopy bench](storage-ref-azcopy-bench.md)

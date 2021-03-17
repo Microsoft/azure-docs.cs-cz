@@ -8,19 +8,19 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 430af1dfcbd9c7faabfca2f3f5b80b3b3106a889
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654595"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675792"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
@@ -71,7 +71,7 @@ SAP pomocného mechanismu zapisuje data postupně do zařízení diskového úlo
 Doporučuje se nakonfigurovat automatické rozšíření databáze, jak je popsáno v článku [Konfigurace automatického rozšíření prostoru v databázi v SAP adaptivního serveru Enterprise a v](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) [poznámkách k podpoře SAP #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Ukázkový pomocného mechanismu pro SAP na virtuálním počítači Azure, konfiguraci disků a systémů souborů 
-Níže uvedené šablony znázorňují ukázkové konfigurace pro Linux i Windows. Před potvrzením konfigurace virtuálního počítače a disku zajistěte, aby byly kvóty šířky pásma sítě a úložiště pro jednotlivé virtuální počítače dostačující pro splnění podnikového požadavku. Pamatujte také, že různé typy virtuálních počítačů Azure mají různý maximální počet disků, které se dají připojit k virtuálnímu počítači. Například virtuální počítač E4s_v3 má omezení propustnosti vstupně-výstupních operací úložiště 48 MB/s. Pokud propustnost úložiště vyžadovaná aktivitou zálohování databáze vyžaduje více než 48 MB/s, větší typ virtuálního počítače s větší propustností šířky pásma úložiště je nenevyhnutelný. Při konfiguraci služby Azure Storage je také nutné mít na paměti, že se v [Azure Premium Storage](../../windows/premium-storage-performance.md) mění propustnost a IOPS za GB kapacity. Další informace najdete v tomto tématu v článku [Jaké typy disků jsou k dispozici v Azure?](../../disks-types.md). Kvóty pro konkrétní typy virtuálních počítačů Azure jsou popsány v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) a články s nimi propojené. 
+Níže uvedené šablony znázorňují ukázkové konfigurace pro Linux i Windows. Před potvrzením konfigurace virtuálního počítače a disku zajistěte, aby byly kvóty šířky pásma sítě a úložiště pro jednotlivé virtuální počítače dostačující pro splnění podnikového požadavku. Pamatujte také, že různé typy virtuálních počítačů Azure mají různý maximální počet disků, které se dají připojit k virtuálnímu počítači. Například virtuální počítač E4s_v3 má omezení propustnosti vstupně-výstupních operací úložiště 48 MB/s. Pokud propustnost úložiště vyžadovaná aktivitou zálohování databáze vyžaduje více než 48 MB/s, větší typ virtuálního počítače s větší propustností šířky pásma úložiště je nenevyhnutelný. Při konfiguraci služby Azure Storage je také nutné mít na paměti, že se v [Azure Premium Storage](../../premium-storage-performance.md) mění propustnost a IOPS za GB kapacity. Další informace najdete v tomto tématu v článku [Jaké typy disků jsou k dispozici v Azure?](../../disks-types.md). Kvóty pro konkrétní typy virtuálních počítačů Azure jsou popsány v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) a články s nimi propojené. 
 
 > [!NOTE]
 >  Pokud se systém DBMS přesouvá z místního prostředí do Azure, doporučuje se provést monitorování virtuálního počítače a vyhodnotit procesor, paměť, IOPS a propustnost úložiště. Porovnejte hodnoty ve špičce zjištěné s omezeními kvóty virtuálních počítačů popsanými v článcích uvedených výše.
@@ -179,7 +179,7 @@ Doporučení použít kompresi před nahráním do Azure je z několika důvodů
 * Doba trvání spuštění komprese je kratší, předpokládá se, že jedna může používat silnější hardware s více procesory nebo vyšší propustnost vstupně-výstupních operací nebo méně v/v místní latenci.
 * Menší velikosti databází můžou vést k menšímu množství nákladů na přidělení disku.
 
-Data-a při práci v CLOUDu, která je hostovaná v Azure, Virtual Machines v místním prostředí. Další podrobnosti o tom, jak zjistit, jestli se komprese už používá v existující databázi pomocného mechanismu služby SAP, najdete v [poznámce SAP Support note 1750510](https://launchpad.support.sap.com/#/notes/1750510). Další podrobnosti o kontrole komprese databáze služby SAP pomocného bodu [SAP – poznámka #2121797](https://launchpad.support.sap.com/#/notes/2121797)
+Data a LOB-Compression fungují na virtuálním počítači hostovaném v Azure Virtual Machines jako v místním prostředí. Další podrobnosti o tom, jak zjistit, jestli se komprese už používá v existující databázi pomocného mechanismu služby SAP, najdete v [poznámce SAP Support note 1750510](https://launchpad.support.sap.com/#/notes/1750510). Další podrobnosti o kontrole komprese databáze služby SAP pomocného bodu [SAP – poznámka #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Vysoká dostupnost služby SAP pomocného mechanismu pro Azure 
 Průvodce uživateli HADR podrobně popisuje nastavení a konfiguraci řešení "Always-On" pro SAP, které má 2 uzel.  Kromě toho se podporuje i třetí uzel pro zotavení po havárii. SAP pomocného mechanismu podporuje mnoho konfigurací s vysokou dostupností, včetně sdílených disků a nativního clusteringu operačního systému (plovoucí IP adresy). Jediná podporovaná konfigurace v Azure používá správce selhání bez plovoucí IP adresy.  Metoda s plovoucí IP adresou nebude v Azure fungovat.  Jádro SAP je aplikace s podporou HA a ví o primárních a sekundárních serverech SAP pomocného programu. Mezi službou SAP pomocného mechanismu a Azure neexistují žádná uzavřená integrace, ale interní nástroj pro vyrovnávání zatížení Azure se nepoužívá. Proto by měla být standardní dokumentace k SAP pomocnému programu uvedena od začátku pomocí [Průvodce SAP POmocného uživatele hadr](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) . 
@@ -188,7 +188,7 @@ Průvodce uživateli HADR podrobně popisuje nastavení a konfiguraci řešení 
 > Jediná podporovaná konfigurace v Azure používá správce selhání bez plovoucí IP adresy.  Metoda s plovoucí IP adresou nebude v Azure fungovat. 
 
 ### <a name="third-node-for-disaster-recovery"></a>Třetí uzel pro zotavení po havárii
-Kromě používání protokolu SAP pro místní vysokou dostupnost je možné, že budete chtít konfiguraci nakonfigurovat na asynchronně replikovaný uzel v jiné oblasti Azure. Dokumentaci k tomuto scénáři najdete [tady](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).
+Kromě použití Always-On SAP pomocného programu pro místní vysokou dostupnost můžete chtít konfiguraci nakonfigurovat na asynchronně replikovaný uzel v jiné oblasti Azure. Dokumentaci k tomuto scénáři najdete [tady](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).
 
 ## <a name="sap-ase-database-encryption--ssl"></a>Šifrování databáze protokolu SAP pomocného mechanismu & SSL 
 Správce SAP software Provisioning (SWPM) poskytuje možnost šifrovat databázi během instalace.  Pokud chcete použít šifrování, doporučuje se použít úplné šifrování databáze SAP.  Podívejte se na podrobné informace v tématu:
@@ -239,7 +239,7 @@ a odkazy vygenerované v transakční DBACockpit vypadají podobně jako:
 
 V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. Informace o tom, jak ICM Určuje plně kvalifikovaný název hostitele v závislosti na parametrech profilu a v případě potřeby explicitně nastavuje parametr ICM/host_name_full, najdete v článku o [podpoře SAP – poznámka #773830](https://launchpad.support.sap.com/#/notes/773830) .
 
-Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a `domainlabel` . Formát veřejného názvu DNS virtuálního počítače vypadá takto:
+Pokud jste virtuální počítač nasadili ve scénáři Cloud-Only bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a `domainlabel` . Formát veřejného názvu DNS virtuálního počítače vypadá takto:
 
 > `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 

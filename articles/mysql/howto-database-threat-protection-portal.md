@@ -1,17 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MySQL
 description: Přečtěte si, jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro detekci neobvykléch databázových aktivit, které indikují potenciální ohrožení zabezpečení databáze.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ef39d04b980d4f9c7f5baf11bc047acf6239f803
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b30bd36dca6f866b8f3e6e8a0b133a6dd61b239b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118541"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012659"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL
 
@@ -32,9 +32,9 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
    - Povolit rozšířenou ochranu před internetovými útoky na serveru.
-   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - V části **Upřesnit nastavení ochrany před internetovými útoky** zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
   
-   ![Nastavení detekce hrozeb](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Nastavení detekce hrozeb":::
 
 ## <a name="explore-anomalous-database-activities"></a>Prozkoumejte aktivity databáze neobvyklé
 
@@ -42,15 +42,15 @@ Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení.
  
 1. Kliknutím na odkaz **Zobrazit nedávné výstrahy** v e-mailu spustíte Azure Portal a zobrazí se stránka Azure Security Center výstrahy, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
     
-    ![Sestava aktivity neobvyklé](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Sestava aktivity neobvyklé":::
 
     Zobrazit aktivní hrozby:
 
-    ![Aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Aktivní hrozby":::
 
 2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro šetření této hrozby a opravaí budoucích hrozeb.
     
-    ![Konkrétní výstraha](./media/howto-database-threat-protection-portal/specific-alert.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Konkrétní výstraha":::
 
 ## <a name="explore-threat-detection-alerts"></a>Prozkoumat výstrahy detekce hrozeb
 
@@ -58,10 +58,10 @@ SQL Database detekce hrozeb integruje své výstrahy s [Azure Security Center](h
 
 Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Center výstrahy a získáte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
-   ![Výstraha detekce hrozeb](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Výstraha detekce hrozeb":::
    
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete na stránce s [cenami Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) .  
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
+* Další informace o cenách najdete na stránce s [cenami Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) .

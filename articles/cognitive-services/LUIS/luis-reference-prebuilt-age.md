@@ -3,20 +3,18 @@ title: Předem vytvořená entita stáří – LUIS
 titleSuffix: Azure Cognitive Services
 description: V tomto článku najdete informace o předem připravené entitě v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e1a6b1b6fb99a2786de06e89960e8480a5e1338
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270799"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532920"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Předem připravená entita pro aplikaci pro LUIS
 Předem vytvořená věková entita zachycuje věkovou hodnotu číselně i ve dnech, týdnech, měsících a rocích. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující stáří. Věková entita je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md).
@@ -30,7 +28,7 @@ Stáří je spravované z úložiště pro [rozpoznávání textu](https://githu
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -43,7 +41,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

@@ -1,30 +1,30 @@
 ---
-title: Vytvoření hostitele bastionu pomocí Azure PowerShellu | Microsoft Docs
+title: Vytvoření hostitele bastionu pomocí Azure PowerShell | Microsoft Docs
 description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744251"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077721"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Vytvoření hostitele Azure bastionu pomocí Azure PowerShell
 
 V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí prostředí PowerShell. Jakmile ve své virtuální síti zřídíte službu Azure bastionu, bezproblémové prostředí RDP/SSH je dostupné všem virtuálním počítačům ve stejné virtuální síti. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač.
 
-Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](bastion-create-host-portal.md).
+Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](./tutorial-create-host-portal.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Požadavky
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 
@@ -53,5 +53,4 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azu
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace najdete v tématu [bastionu – Nejčastější dotazy](bastion-faq.md) .
-
 * Pokud chcete používat skupiny zabezpečení sítě s podsítí Azure bastionu, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).

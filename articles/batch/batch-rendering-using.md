@@ -3,16 +3,19 @@ title: Použití možností vykreslování
 description: Jak používat možnosti vykreslování Azure Batch. Zkuste použít aplikaci Batch Explorer, a to buď přímo, nebo vyvolanou z modulu plug-in klientské aplikace.
 author: mscurrell
 ms.author: markscu
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079241"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496622"
 ---
 # <a name="using-azure-batch-rendering"></a>Použití vykreslování Azure Batch
+
+> [!IMPORTANT]
+> Vykreslování imagí virtuálních počítačů a licencování s platbami za použití se už [nepoužívá a vyřadí se od 29. února 2024](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Chcete-li použít dávku pro vykreslování, je [třeba použít vlastní image virtuálního počítače a licencování standardní aplikace.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 K dispozici je několik způsobů, jak Azure Batch vykreslování použít:
 
@@ -51,15 +54,6 @@ Je také možné vytvářet vlastní šablony, od začátku nebo úpravou dodan�
 ### <a name="file-system-and-data-movement"></a>Pohyb systému souborů a přesun dat
 
 Oddíl data v Batch Explorer umožňuje kopírování souborů mezi místními systémy souborů a účty Azure Storage.
-
-## <a name="client-application-plug-ins"></a>Moduly plug-in klientské aplikace
-
-Moduly plug-in jsou k dispozici pro některé klientské aplikace.  Moduly plug-in umožňují vytvořit fondy a úlohy přímo z aplikace nebo vyvolat Batch Explorer.
-
-* [Blend – 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Blends 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
-* [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-* [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
 ## <a name="next-steps"></a>Další kroky
 

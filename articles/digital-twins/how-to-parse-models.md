@@ -2,17 +2,18 @@
 title: Parsování a ověření modelů
 titleSuffix: Azure Digital Twins
 description: Naučte se používat knihovnu analyzátorů k analýze DTDL modelů.
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e63acd0277e100ee34bdfc59d33dd9d4db2b7934
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 155566a125485fda326f9f5e02d4aead0ffe30e3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987535"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560751"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analýza a ověření modelů pomocí knihovny analyzátoru DTDL
 
@@ -20,11 +21,11 @@ ms.locfileid: "87987535"
 
 Abychom to mohli udělat, je k dispozici knihovna pro analýzu DTDL na straně klienta .NET na webu NuGet: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-Knihovnu analyzátoru můžete použít přímo v kódu C# nebo pomocí ukázkového projektu Language-nezávislá Code, který je založen na knihovně analyzátoru: [**DTDL validátor**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+Knihovnu analyzátoru můžete použít přímo v kódu C# nebo pomocí ukázkového projektu Language-nezávislá Code, který je založen na knihovně analyzátoru: [**DTDL validátor**](/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>Použití ukázky validátoru DTDL
 
-[**Validátor DTDL**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) je ukázkový projekt, který umožňuje ověřit modelové dokumenty, aby bylo zajištěno, že DTDL je platný. Je postavená na knihovně analyzátoru .NET a je to Language-nezávislá. Můžete ji získat pomocí tlačítka *Stáhnout ZIP* na ukázkovém odkazu.
+[**Validátor DTDL**](/samples/azure-samples/dtdl-validator/dtdl-validator) je ukázkový projekt, který umožňuje ověřit modelové dokumenty, aby bylo zajištěno, že DTDL je platný. Je postavená na knihovně analyzátoru .NET a je to Language-nezávislá. Můžete ji získat pomocí tlačítka *Stáhnout ZIP* na ukázkovém odkazu.
 
 Zdrojový kód ukazuje příklady použití knihovny analyzátoru. Můžete použít ukázku validátoru jako nástroj příkazového řádku k ověření stromu adresářových souborů DTDL. Poskytuje také interaktivní režim.
 
@@ -77,102 +78,13 @@ Knihovnu analyzátoru můžete použít přímo pro věci, jako je ověřování
 
 Pro podporu níže uvedeného příkladu kódu analyzátoru zvažte několik modelů definovaných v instanci digitálních vláken Azure:
 
-> [!TIP] 
-> `dtmi:com:contoso:coffeeMaker`Model používá syntaxi *modelu schopností* , což znamená, že byl nainstalován ve službě připojením zařízení PnP, které tento model zveřejňuje.
-
-```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/coffeeMaker-coffeeMakerInterface-coffeeBar.json":::
 
 Následující kód ukazuje příklad použití knihovny analyzátoru pro reflektování těchto definic v jazyce C#:
 
-```csharp
-async void ParseDemo(DigitalTwinsClient client)
-{
-    try
-    {
-        AsyncPageable<ModelData> mdata = client.GetModelsAsync(null, true);
-        List<string> models = new List<string>();
-        await foreach (ModelData md in mdata)
-            models.Add(md.Model);
-        ModelParser parser = new ModelParser();
-        IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM = await parser.ParseAsync(models);
-
-        List<DTInterfaceInfo> interfaces = new List<DTInterfaceInfo>();
-        IEnumerable<DTInterfaceInfo> ifenum = 
-            from entity in dtdlOM.Values
-            where entity.EntityKind == DTEntityKind.Interface
-            select entity as DTInterfaceInfo;
-        interfaces.AddRange(ifenum);
-        foreach (DTInterfaceInfo dtif in interfaces)
-        {
-            PrintInterfaceContent(dtif, dtdlOM);
-        }
-
-    } catch (RequestFailedException rex)
-    {
-
-    }
-}
-
-void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM, int indent=0)
-{
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < indent; i++) sb.Append("  ");
-    Console.WriteLine($"{sb}Interface: {dtif.Id} | {dtif.DisplayName}");
-    SortedDictionary<string, DTContentInfo> contents = dtif.Contents;
-    foreach (DTContentInfo item in contents.Values)
-    {
-        switch (item.EntityKind)
-        {
-            case DTEntityKind.Property:
-                DTPropertyInfo pi = item as DTPropertyInfo;
-                Console.WriteLine($"{sb}--Property: {pi.Name} with schema {pi.Schema}");
-                break;
-            case DTEntityKind.Relationship:
-                DTRelationshipInfo ri = item as DTRelationshipInfo;
-                Console.WriteLine($"{sb}--Relationship: {ri.Name} with target {ri.Target}");
-                break;
-            case DTEntityKind.Telemetry:
-                DTTelemetryInfo ti = item as DTTelemetryInfo;
-                Console.WriteLine($"{sb}--Telemetry: {ti.Name} with schema {ti.Schema}");
-                break;
-            case DTEntityKind.Component:
-                DTComponentInfo ci = item as DTComponentInfo;
-                Console.WriteLine($"{sb}--Component: {ci.Id} | {ci.Name}");
-                dtdlOM.TryGetValue(ci.Id, out DTEntityInfo value);
-                DTInterfaceInfo component = value as DTInterfaceInfo;
-                PrintInterfaceContent(component, dtdlOM, indent + 1);
-                break;
-            default:
-                break;
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/parseModels.cs":::
 
 ## <a name="next-steps"></a>Další kroky
 
 Až dokončíte psaní modelů, přečtěte si téma jak je nahrát (a provést jiné operace správy) pomocí rozhraní DigitalTwinsModels API:
-* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
+* [*Postupy: Správa modelů DTDL*](how-to-manage-model.md)

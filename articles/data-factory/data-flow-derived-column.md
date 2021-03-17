@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606507"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531968"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
 
@@ -20,25 +20,49 @@ ms.locfileid: "81606507"
 
 Pomocí transformace odvozeného sloupce můžete vygenerovat nové sloupce v toku dat nebo upravit existující pole.
 
-## <a name="derived-column-settings"></a>Nastavení odvozeného sloupce
+## <a name="create-and-update-columns"></a>Vytvoření a aktualizace sloupců
 
-Pokud chcete přepsat existující sloupec, vyberte ho přes rozevírací seznam sloupec. V opačném případě použijte pole výběru sloupce jako textové pole a zadejte název nového sloupce. Chcete-li vytvořit výraz odvozeného sloupce, klikněte na pole zadejte výraz pro otevření [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md).
+Při vytváření odvozeného sloupce můžete buď vygenerovat nový sloupec, nebo aktualizovat existující sloupec. Do textového pole **sloupce** zadejte ve sloupci, který vytváříte. Pokud chcete přepsat existující sloupec ve schématu, můžete použít rozevírací seznam sloupec. Chcete-li vytvořit výraz odvozeného sloupce, klikněte na textové pole **výrazu ENTER** . Můžete buď začít psát svůj výraz, nebo otevřít Tvůrce výrazů a vytvořit logiku.
 
-![Nastavení odvozeného sloupce](media/data-flow/dc1.png "Nastavení odvozeného sloupce")
+![Nastavení odvozeného sloupce](media/data-flow/create-derive-column.png "Nastavení odvozeného sloupce")
 
-Chcete-li přidat další odvozené sloupce, najeďte myší na existující odvozený sloupec a klikněte na ikonu se symbolem plus. Vyberte možnost **Přidat sloupec** nebo **Přidat vzor sloupce**. Vzorce sloupce mohou být užitečné, pokud jsou názvy sloupců z vašich zdrojů proměnné. Další informace najdete v tématu [vzory sloupců](concepts-data-flow-column-pattern.md).
+Chcete-li přidat další odvozené sloupce, klikněte na tlačítko **Přidat** nad seznamem sloupců nebo ikonu se symbolem plus vedle existujícího odvozeného sloupce. Vyberte možnost **Přidat sloupec** nebo **Přidat vzor sloupce**.
 
-![Nový odvozený výběr sloupce](media/data-flow/columnpattern.png "Nový odvozený výběr sloupce")
+![Nový odvozený výběr sloupce](media/data-flow/add-derived-column.png "Nový odvozený výběr sloupce")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Schémata sestavení v podokně výstupní schéma
+### <a name="column-patterns"></a>Vzory sloupců
 
-Sloupce, které upravujete a přidáváte do schématu, jsou uvedeny v podokně výstupní schéma. Tady můžete interaktivně vytvářet jednoduché a komplexní datové struktury. Chcete-li přidat další pole, vyberte možnost **Přidat sloupec**. Chcete-li vytvořit hierarchie, vyberte možnost **Přidat dílčí sloupec**.
+V případech, kdy vaše schéma není explicitně definováno nebo pokud chcete aktualizovat sadu sloupců hromadně, budete chtít vytvořit sloupec vzorců. Vzory sloupců umožňují odpovídat sloupcům pomocí pravidel založených na metadatech sloupců a vytvořit odvozené sloupce pro každý odpovídající sloupec. Další informace najdete v tématu [sestavování vzorů sloupců](concepts-data-flow-column-pattern.md#column-patterns-in-derived-column-and-aggregate) v odvozené transformaci sloupce.
 
-![Přidat Podsloupec](media/data-flow/addsubcolumn.png "Přidat Podsloupec")
+![Vzory sloupců](media/data-flow/column-pattern-derive.png "Vzory sloupců")
+
+## <a name="building-schemas-using-the-expression-builder"></a>Sestavování schémat pomocí Tvůrce výrazů
+
+Pokud používáte [Tvůrce výrazů](concepts-data-flow-expression-builder.md)pro tok dat mapování, můžete vytvořit, upravit a spravovat odvozené sloupce v části **odvozené sloupce** . Zobrazí se všechny sloupce, které jsou v transformaci vytvořeny nebo změněny. Interaktivním výběrem sloupce nebo vzoru, který upravujete, kliknutím na název sloupce. Pokud chcete přidat další sloupec, vyberte **vytvořit novou** a zvolte, jestli chcete přidat jeden sloupec nebo vzor.
+
+![Vytvořit nový sloupec](media/data-flow/derive-add-column.png "Vytvořit nový sloupec")
+
+Při práci se složitými sloupci můžete vytvořit podsloupce. Provedete to tak, že kliknete na ikonu plus vedle libovolného sloupce a vyberete **Přidat sloupec**. Další informace o zpracování složitých typů v toku dat naleznete v tématu [zpracování JSON při mapování toku dat](format-json.md#mapping-data-flow-properties).
+
+![Přidat Podsloupec](media/data-flow/derive-add-subcolumn.png "Přidat Podsloupec")
 
 Další informace o zpracování složitých typů v toku dat naleznete v tématu [zpracování JSON při mapování toku dat](format-json.md#mapping-data-flow-properties).
 
-![Přidat složitý sloupec](media/data-flow/complexcolumn.png "Přidání sloupců")
+![Přidat složitý sloupec](media/data-flow/derive-complex-column.png "Přidání sloupců")
+
+### <a name="locals"></a>Místní hodnoty
+
+Pokud sdílíte logiku napříč více sloupci nebo chcete rozdělit logiku, můžete v odvozené transformaci sloupce vytvořit místní. Místní je sada logiky, která nenačte podřízenou část následující transformaci. Národní prostředí lze v Tvůrci výrazů vytvořit tak, že kliknete na **prvky výrazu** a vyberete **lokální**hodnoty. Vytvořte nový výběrem možnosti **vytvořit nový**.
+
+![Vytvořit místní](media/data-flow/create-local.png "Vytvořit místní")
+
+Místní proměnné mohou odkazovat na libovolný element výrazu odvozený sloupec, včetně funkcí, vstupních schémat, parametrů a dalších lokálních hodnot. Při odkazování na jiné místní hodnoty se pořadí řídí tím, že se na něj odkazuje jako na odkaz "výše".
+
+![Vytvořit místní 2](media/data-flow/create-local-2.png "Vytvořit místní 2")
+
+Chcete-li odkazovat na místní v odvozeném sloupci, buď klikněte na místní v zobrazení **prvků výrazu** nebo na něj odkázat dvojtečku před jeho názvem. Například místní s názvem local1 by odkazovalo na `:local1` . Pokud chcete upravit místní definici, najeďte na ni ukazatel myši v zobrazení prvků výrazu a klikněte na ikonu tužky.
+
+![Používání místních hodnot](media/data-flow/using-locals.png "Používání místních hodnot")
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
@@ -63,7 +87,7 @@ Níže uvedený příklad je odvozený sloupec s názvem `CleanData` , který p�
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
-![Odvodit příklad](media/data-flow/derive-script1.png "Odvodit příklad")
+![Odvodit příklad](media/data-flow/derive-script.png "Odvodit příklad")
 
 Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 

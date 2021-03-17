@@ -1,33 +1,37 @@
 ---
-title: 'Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python) | Mapy Microsoft Azure'
-description: V tomto kurzu se dozvíte, jak spojit data senzorů s daty předpovědi počasí z Microsoft Azure služby mapy počasí pomocí Azure Notebooks (Python).
+title: 'Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python) s mapami Microsoft Azure'
+description: V tomto kurzu se naučíte spojit data senzorů s daty předpovědi počasí z Microsoft Azure Maps služby počasí pomocí Azure Notebooks (Python).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/29/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851641"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678159"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
-Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že vítr není konzistentní vzhledem k povaze, je potřeba, aby operátoři napájení větru sestavili modely strojového učení (ML) pro předpověď kapacity výkonu větru. Tato předpověď je nutná k tomu, aby splňovala požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovými daty pro čtení počasí. Data předpovědi počasí jsou požadována voláním Azure Maps služby počasí.
+> [!IMPORTANT]
+> Služba Azure Maps počasí jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V tomto kurzu provedete následující:
+Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že vítr není konzistentní vzhledem k povaze, je potřeba, aby operátoři napájení větru sestavili modely strojového učení (ML) pro předpověď kapacity výkonu větru. Tato předpověď je nutná k tomu, aby splňovala požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovými daty pro čtení počasí. Data předpovědi počasí se vyžadují voláním Azure Maps služby počasí (Preview).
+
+V tomto kurzu:
 
 > [!div class="checklist"]
-> * Pracujte s datovými soubory v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
+> * Pracujte s datovými soubory v [Azure Notebooks](https://notebooks.azure.com) v cloudu.
 > * Načíst ukázková data ze souboru
 > * V Pythonu volejte Azure Maps rozhraní REST API.
 > * Vykreslení dat umístění na mapě.
-> * Obohacení ukázkových dat o data počasí v Azure Maps [denní předpovědi](https://aka.ms/AzureMapsWeatherDailyForecast) .
+> * Obohacení ukázkových dat o data počasí v Azure Maps [denní předpovědi](/rest/api/maps/weather/getdailyforecastpreview) .
 > * Vykreslí data prognózy v grafech.
 
 
@@ -41,10 +45,10 @@ K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 
 Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
-Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook).
+Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](./tutorial-ev-routing.md#create-an-azure-notebooks-project).
 
 > [!Note]
-> Soubor poznámkového bloku Jupyter pro tento projekt se dá stáhnout z [úložiště poznámkových bloků Jupyter mapy počasí](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
+> Soubor poznámkového bloku Jupyter pro tento projekt se dá stáhnout z [úložiště map počasí Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Načíst požadované moduly a architektury
 
@@ -68,7 +72,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Požadovat data denní předpovědi
 
-V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](https://aka.ms/AzureMapsWeatherDailyForecast) počasí služby Azure Maps počasí. Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
+V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](/rest/api/maps/weather/getdailyforecastpreview) Azure Mapsch povětrnostních služeb (Preview). Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
 
 
 ```python
@@ -82,7 +86,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps weather service to get daily forecast data for 15 days from current date
+# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -107,7 +111,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-Skript níže vykreslí umístění turbín na mapě voláním Azure Maps [získat image mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage).
+Skript níže vykreslí umístění turbín na mapě voláním Azure Maps [získat image mapy](/rest/api/maps/render/getmapimage).
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -182,18 +186,24 @@ Níže uvedené grafy vizualizují data předpovědi. Změnu rychlosti větru na
 
 ![Rychlost větru – sestrojení ](./media/weather-service-tutorial/speed-date-plot.png) ![ směru větru](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>Další kroky
-
 V tomto kurzu jste se naučili, jak volat Azure Maps rozhraní REST API, abyste získali data předpovědi počasí. Zjistili jste také, jak vizualizovat data v grafech.
 
-Další informace o tom, jak volat Azure Maps rozhraní REST API v Azure Notebooks, najdete v tématu [Směrování EV pomocí Azure Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
+Další informace o tom, jak volat Azure Maps rozhraní REST API v Azure Notebooks, najdete v tématu [Směrování EV pomocí Azure Notebooks](./tutorial-ev-routing.md).
 
 Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, přečtěte si téma:
 
-* [Denní prognóza](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [Vykreslení – získat obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Denní prognóza](/rest/api/maps/weather/getdailyforecastpreview)
+* [Vykreslení – získat obrázek mapy](/rest/api/maps/render/getmapimage)
 
-Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model).
+Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](./consumption-model.md).
 
-Další informace o Azure Notebooks najdete v tématu [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o Azure Notebooks najdete v tématu.
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://notebooks.azure.com)

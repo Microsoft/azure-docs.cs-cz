@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652844"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095351"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
 
@@ -57,7 +57,7 @@ Služba Azure Storage je dostupná jako [disky Azure](../../../managed-disks-ove
 <tr><td>Soubory Azure
 </td>
 <td>
-Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.
+Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.
 </td>
 <td><ul>
 <li>Nazvednutí a posunutí aplikace do cloudu, když aplikace používá nativní rozhraní API systému souborů ke sdílení dat mezi IT a dalšími aplikacemi běžícími v Azure.</li>
@@ -67,7 +67,7 @@ Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="http
 </tr>
 <tr><td>Objekty blob Azure
 </td>
-<td>Poskytuje klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> , které umožňuje ukládání nestrukturovaných dat a jejich použití v obrovských škálováních objektů blob bloku. Také podporuje <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> pro řešení pro analýzy velkých objemů dat v podniku.
+<td>Poskytuje klientské knihovny a rozhraní <a href="/rest/api/storageservices/blob-service-rest-api">REST</a> , které umožňuje ukládání nestrukturovaných dat a jejich použití v obrovských škálováních objektů blob bloku. Také podporuje <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> pro řešení pro analýzy velkých objemů dat v podniku.
 </td>
 <td><ul>
 <li>Podpora streamování a scénářů s náhodným přístupem v aplikaci.</li>
@@ -77,7 +77,7 @@ Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="http
 </tr>
 <tr><td>Disky Azure
 </td>
-<td>Poskytuje klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> , které umožňuje trvalé uložení dat a získání jejich pøístupu z připojeného virtuálního pevného disku.
+<td>Poskytuje klientské knihovny a rozhraní <a href="/rest/api/compute/disks">REST</a> , které umožňuje trvalé uložení dat a získání jejich pøístupu z připojeného virtuálního pevného disku.
 </td>
 <td><ul>
 <li>Aplikace přenesené a posunutí, které používají rozhraní API nativního systému souborů ke čtení a zápisu dat na trvalé disky.</li>
@@ -127,4 +127,4 @@ BLOB Storage poskytuje největší objem úložiště v Azure. Kromě velikosti 
 ### <a name="more-migration-resources"></a>Další zdroje migrace
 
 - [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

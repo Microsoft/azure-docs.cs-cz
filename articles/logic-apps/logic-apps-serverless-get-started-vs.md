@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090242"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749143"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Sestavte svou první aplikaci bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
 
@@ -32,7 +32,7 @@ Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potře
     > Když nainstalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali úlohu **vývoj pro Azure** .
 
   * [Microsoft Azure SDK pro .NET (verze 2.9.1 nebo novější)](https://azure.microsoft.com/downloads/). 
-  Další informace o sadě [Azure SDK pro .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  Další informace o sadě [Azure SDK pro .NET](/dotnet/azure/intro).
 
   * [Azure PowerShell.](https://github.com/Azure/azure-powershell#installation)
 
@@ -126,7 +126,7 @@ Pokud chcete aplikaci logiky upravit po nasazení, otevřete aplikaci logiky pom
    > [!TIP]
    > Pokud tento příkaz v aplikaci Visual Studio 2019 nemáte, ověřte, že máte nejnovější aktualizace pro Visual Studio.
 
-1. Po zobrazení pole **Vlastnosti aplikace logiky** v části **předplatné**vyberte předplatné Azure, pokud ještě není vybrané. V části **Skupina prostředků**vyberte skupinu prostředků a umístění, kam jste nasadili řešení, a pak vyberte **OK**.
+1. Po zobrazení pole **Vlastnosti aplikace logiky** v části **předplatné** vyberte předplatné Azure, pokud ještě není vybrané. V části **Skupina prostředků** vyberte skupinu prostředků a umístění, kam jste nasadili řešení, a pak vyberte **OK**.
 
    ![Vlastnosti aplikace logiky](./media/logic-apps-serverless-get-started-vs/logic-app-properties.png)
 
@@ -148,9 +148,9 @@ Pro aplikace logiky, které jsou už nasazené v Azure, můžete i nadále uprav
 
 1. V nabídce **zobrazení** v aplikaci Visual Studio otevřete **Průzkumníka cloudu**.
 
-1. V části **všechna předplatná**vyberte předplatné Azure přidružené k Logic Apps, které chcete spravovat, a pak vyberte **použít**.
+1. V části **všechna předplatná** vyberte předplatné Azure přidružené k Logic Apps, které chcete spravovat, a pak vyberte **použít**.
 
-1. V části **Logic Apps**vyberte svou aplikaci logiky. V místní nabídce této aplikace vyberte **otevřít pomocí programu Logic App Editor**.
+1. V části **Logic Apps** vyberte svou aplikaci logiky. V místní nabídce této aplikace vyberte **otevřít pomocí programu Logic App Editor**.
 
    > [!TIP]
    > Pokud tento příkaz v aplikaci Visual Studio 2019 nemáte, ověřte, že máte nejnovější aktualizace pro Visual Studio.

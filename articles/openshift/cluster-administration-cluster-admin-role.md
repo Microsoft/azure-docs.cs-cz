@@ -4,17 +4,23 @@ description: Přiřazení a používání role Správce clusteru Azure Red Hat O
 services: container-service
 author: mjudeikis
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: ae9a421a165d6c8bda688819c5233ae5bb1a8562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4fc57ebe39a2169ea91423b295f4bc436746b29
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139092"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636234"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Role správce zákazníka pro Azure Red Hat OpenShift
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 Jste správcem clusteru Azure Red Hat OpenShift clusteru. Váš účet má zvýšená oprávnění a přístup ke všem uživatelsky vytvořeným projektům.
 
@@ -37,7 +43,7 @@ Pomocí příznaku můžete nakonfigurovat roli Customer-admin-clustering jenom 
 
 ## <a name="confirm-membership-in-the-customer-administrator-role"></a>Potvrdit členství v roli správce zákazníka
 
-Pokud chcete potvrdit členství ve skupině pro správu zákazníka, zkuste použít příkazy CLI OpenShift `oc get nodes` nebo `oc projects` . `oc get nodes`Zobrazí seznam uzlů, pokud máte roli Customer-admin-cluster, a chybu oprávnění, pokud máte pouze roli Customer-admin-Project. `oc projects`zobrazí všechny projekty v clusteru na rozdíl od pouze projektů, ve kterých pracujete.
+Pokud chcete potvrdit členství ve skupině pro správu zákazníka, zkuste použít příkazy CLI OpenShift `oc get nodes` nebo `oc projects` . `oc get nodes` Zobrazí seznam uzlů, pokud máte roli Customer-admin-cluster, a chybu oprávnění, pokud máte pouze roli Customer-admin-Project. `oc projects` zobrazí všechny projekty v clusteru na rozdíl od pouze projektů, ve kterých pracujete.
 
 Chcete-li dále prozkoumat role a oprávnění v clusteru, můžete použít [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) příkaz.
 

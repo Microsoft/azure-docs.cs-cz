@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279410"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health novými funkcemi a funkcemi. V tomto článku jsou uvedené verze a funkce, které byly vydány.  
@@ -30,7 +30,7 @@ Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health nov�
 > Při vydání nové verze se automaticky aktualizují agenti stavu připojení. Ujistěte se prosím, že nastavení automatického upgradu je povolené z Azure Portal.
 >
 
-Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD Connect. Přečtěte si další informace o [Azure AD Connect historii verzí](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) pro zpětnou vazbu k funkcím, Hlasujte na [telefonním kanálu uživatele Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
+Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD Connect. Přečtěte si další informace o [Azure AD Connect historii verzí](./reference-connect-version-history.md) pro zpětnou vazbu k funkcím, Hlasujte na [telefonním kanálu uživatele Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
 ## <a name="april-2020"></a>Duben 2020
 **Aktualizace agenta**
@@ -93,7 +93,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
 
 * Agent Azure AD Connect Health pro AD FS (verze 3.1.24.0)  
    1. Dodržování předpisů a vynucování protokolu TLS (Transport Layer Security) verze 1,2
-   2. Podpora testu – ADFSRequestToken pro lokalizovaný operační systém
+   2. Podpora Test-ADFSRequestToken lokalizovaného operačního systému
    3. Problém s vyřešeným uzamknutím agenta diagnostiky
    4. Opravy chyb registrace agenta stavu
 
@@ -225,7 +225,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
 ## <a name="november-2015"></a>Listopad 2015
 **Nové funkce:**
 
-* Podpora [řízení přístupu na základě role v Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* Podpora [řízení přístupu na základě role v Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac)
 
 **Nové funkce ve verzi Preview:**
 
@@ -260,4 +260,4 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
 * Jednodušší nasazení agenta pomocí přihlašovacích údajů globálního správce Azure AD.  
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [monitorování místní infrastruktury identit a synchronizačních služeb v cloudu](whatis-hybrid-identity-health.md).
+Přečtěte si další informace o [monitorování místní infrastruktury identit a synchronizačních služeb v cloudu](./whatis-azure-ad-connect.md).

@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015966"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359196"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 
-Přidejte k aplikaci Microsoft Authenticator své účty, jako je Google, Facebook nebo GitHub, do aplikace pro ověřování dvou faktorů. Microsoft Authenticator aplikace funguje se všemi aplikacemi, které používají dvojúrovňové ověřování, a s libovolným účtem, který podporuje standardy pro jednorázové heslo (TOTP) založené na čase.
+Pokud máte účty jiných účtů než Microsoft, například pro Google, Facebook nebo GitHub, můžete je přidat do aplikace Microsoft Authenticator pro účely dvou faktorů ověřování. Microsoft Authenticator aplikace funguje se všemi aplikacemi, které používají dvojúrovňové ověřování, a s libovolným účtem, který podporuje standardy pro jednorázové heslo (TOTP) založené na čase.
 
 >[!Important]
 >Než budete moct přidat svůj účet, musíte si stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle kroků v článku [Stažení a instalace aplikace](user-help-auth-app-download-install.md) .
@@ -36,7 +36,7 @@ Obecně platí, že u všech osobních účtů je třeba:
     >[!Note]
     >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-Tento proces poskytujeme pro vaše účty Facebook, Google, GitHub a Amazon, ale tento postup je stejný pro všechny ostatní aplikace, jako je Instagramu, Netflix nebo Adobe.
+Tento proces poskytujeme pro účty Facebook, Google, GitHub a Amazon, ale proces je stejný i pro jiné aplikace, jako je Instagramu a Adobe.
 
 ## <a name="add-your-google-account"></a>Přidat účet Google
 
@@ -44,7 +44,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a **Get Started**pak ověřte svoji identitu.
+1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a pak ověřte svoji identitu.
 
 2. Postupujte podle pokynů na stránce, abyste zapnuli dvoustupňové ověřování pro váš osobní účet Google.
 
@@ -130,7 +130,7 @@ Přidejte svůj účet GitHubu tím, že zapnete dvojúrovňové ověřování a
 
 1. Na stránce **dvojúrovňové ověřování** v počítači vyberte možnost **nastavit pomocí aplikace**.
 
-2. Uložte si kódy obnovení, abyste se mohli vrátit ke svému účtu, pokud ztratíte přístup, a pak vyberte **Další**. 
+2. Uložte si kódy obnovení, abyste se mohli vrátit ke svému účtu, pokud ztratíte přístup, a pak vyberte **Další**.
 
     Své kódy můžete uložit tak, že je stáhnete do svého zařízení, vytisknete je pomocí tisku nebo je zkopírujete do nástroje Správce hesel.
 
@@ -186,12 +186,12 @@ Přidejte svůj účet Amazon tím, že zapnete dvojúrovňové ověřování a 
 
 10. Na stránce **Přidat způsob ověření zálohy** zadejte na svém počítači čtyřmístný ověřovací kód, který vám poskytla metoda ověření zálohování pro váš účet Amazon, a pak vyberte **ověřit kód a pokračovat**.
 
-11. Na stránce **skoro dokončeno** rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte dvoustupňové ověřování**.
+11. Na stránce **skoro dokončeno** rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte Two-Step ověřování**.
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** se zobrazenými aktualizovanými podrobnostmi o dvou faktorech ověřování.
 
     >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
+    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v tématu věnovaném [ověřování Two-Step](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí Two-Stepho ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
 
 ## <a name="next-steps"></a>Další kroky
 

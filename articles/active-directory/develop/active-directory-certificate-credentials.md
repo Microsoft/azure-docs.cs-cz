@@ -9,45 +9,45 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163658"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582022"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v toku [udělení přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md) OAuth 2,0 a toku spouštěného [za běhu (OBO](v2-oauth2-on-behalf-of-flow.md) ).
+Platforma Microsoft Identity umožňuje aplikaci používat vlastní přihlašovací údaje pro ověřování kdekoli, kde se dá použít tajný klíč klienta, například v toku  [udělení přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md) OAuth 2,0 a toku spouštěného za [běhu](v2-oauth2-on-behalf-of-flow.md) (OBO).
 
-Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřování, je kontrolní výraz [JSON web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (Jwt) podepsaný certifikátem, který vlastní aplikace.
+Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřování, je kontrolní výraz [JSON web token](./security-tokens.md#json-web-tokens-and-claims) (Jwt) podepsaný certifikátem, který vlastní aplikace.
 
 ## <a name="assertion-format"></a>Formát kontrolního výrazu
 
-Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven JWT v jazyce podle vašeho výběru. Tato informace je převedená tokenem ve své [hlavičce](#header), [deklaracích identity](#claims-payload)a [podpisu](#signature).
+Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven JWT v jazyce podle vašeho výběru – [MSAL to podporuje pomocí nástroje `.WithCertificate()` ](msal-net-client-assertions.md). Tato informace je převedená tokenem ve své [hlavičce](#header), [deklaracích identity](#claims-payload)a [podpisu](#signature).
 
-### <a name="header"></a>Záhlaví
+### <a name="header"></a>Hlavička
 
 | Parametr |  Přeznačit |
 | --- | --- |
 | `alg` | By měl být **RS256** |
 | `typ` | Měla by být **JWT** |
-| `x5t` | Hodnota hash certifikátu X. 509 (označovaná také jako *kryptografický otisk*SHA-1 certifikátu) kódovaná jako řetězcová hodnota base64. Například kvůli hodnotě hash certifikátu X. 509 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` `x5t` by deklarace identity byla `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
+| `x5t` | Šestnáctková reprezentace certifikátu X. 509 (označovaná také jako *kryptografický otisk* SHA-1 certifikátu) kódovaná jako hodnota řetězce Base64url. Například s ohledem na hodnotu hash certifikátu X. 509 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex) bude `x5t` deklarace identity `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url). |
 
 ### <a name="claims-payload"></a>Deklarace identity (datová část)
 
-| Parametr |  Poznámky |
-| --- | --- |
-| `aud` | Cílová skupina: by měla být`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
-| `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy platnost tokenu vyprší. Doporučujeme používat krátký čas vypršení platnosti – 10 minut až jednu hodinu.|
-| `iss` | Vystavitel: mělo by se jednat o client_id (*ID aplikace (klienta)* služby klienta). |
-| `jti` | GUID: ID JWT |
-| `nbf` | Ne před: datum, před kterým se token nedá použít. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do okamžiku vytvoření kontrolního výrazu. |
-| `sub` | Předmět: jako pro `iss` by měl být client_id (*ID aplikace (klienta)* služby klienta). |
+Typ deklarace identity | Hodnota | Popis
+---------- | ---------- | ----------
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Deklarace "AUD" (cílová skupina) identifikuje příjemce, pro které je požadavek JWT určen (tady Azure AD) [, viz dokument RFC 7519, část 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  V takovém případě je tento příjemce přihlašovacím serverem (login.microsoftonline.com).
+exp | 1601519414 | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování. Viz [dokument RFC 7519, část 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  To umožňuje, aby byl kontrolní výraz použit až do té doby, takže by měl být krátký – 5-10 minut po `nbf` maximálně.  Služba Azure AD v současné době neumísťuje omezení `exp` . 
+ISS | ClientID | Deklarace "ISS" (Issuer) identifikuje objekt zabezpečení, který vystavil token JWT, v tomto případě klientská aplikace.  Použijte ID aplikace GUID.
+jti | (identifikátor GUID) | Deklarace identity JTI (ID JWT) poskytuje jedinečný identifikátor pro token JWT. Hodnota identifikátoru musí být přiřazena způsobem, který zajišťuje nezanedbatelnou pravděpodobnost, že stejná hodnota bude omylem přiřazena k jinému datovému objektu. Pokud aplikace používá více vystavitelů, musí být kolizi znemožněna mezi hodnotami vytvořenými různými vystaviteli. Hodnota "JTI" je řetězec, který rozlišuje velká a malá písmena. [RFC 7519, část 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování. [RFC 7519, oddíl 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Použití aktuálního času je vhodné. 
+jednotk | ClientID | Deklarace "sub" (Subject) identifikuje předmět tokenu JWT, v tomto případě i ve vaší aplikaci. Použijte stejnou hodnotu jako `iss` . 
 
 ### <a name="signature"></a>Podpis
 
@@ -94,19 +94,19 @@ Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci n
 ### <a name="uploading-the-certificate-file"></a>Nahrává se soubor certifikátu.
 
 V registraci aplikace Azure pro klientskou aplikaci:
-1. Vyberte **certifikáty & tajných**kódů.
+1. Vyberte **certifikáty & tajných** kódů.
 2. Klikněte na **nahrát certifikát** a vyberte soubor certifikátu, který se má nahrát.
 3. Klikněte na **Přidat**.
   Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
 
 ### <a name="updating-the-application-manifest"></a>Aktualizace manifestu aplikace
 
-Po uložení certifikátu je potřeba vypočítat:
+Po získání certifikátu vypočítají tyto hodnoty:
 
-- `$base64Thumbprint`-Hodnota hash certifikátu zakódovaná pomocí Base64
-- `$base64Value`-Hodnota kódovaná pro nezpracované údaje certifikátu v kódování Base64
+- `$base64Thumbprint` -Hodnota hash certifikátu zakódovaná pomocí Base64
+- `$base64Value` -Hodnota kódovaná pro nezpracované údaje certifikátu v kódování Base64
 
-Také je nutné zadat identifikátor GUID k identifikaci klíče v manifestu aplikace ( `$keyId` ).
+Zadejte identifikátor GUID pro identifikaci klíče v manifestu aplikace ( `$keyId` ).
 
 V registraci aplikace Azure pro klientskou aplikaci:
 1. Vyberte **manifest** pro otevření manifestu aplikace.
@@ -126,7 +126,18 @@ V registraci aplikace Azure pro klientskou aplikaci:
 3. Uložte úpravy manifestu aplikace a pak nahrajte manifest na platformu Microsoft identity.
 
    `keyCredentials`Vlastnost má více hodnot, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
+   
+## <a name="using-a-client-assertion"></a>Použití kontrolního výrazu klienta
+
+Kontrolní výrazy klienta se dají použít všude, kde se použije tajný klíč klienta.  Například v [toku autorizačního kódu](v2-oauth2-auth-code-flow.md)můžete předat a `client_secret` prokázat, že požadavek přichází z vaší aplikace. Tento parametr můžete nahradit `client_assertion` parametry a `client_assertion_type` . 
+
+| Parametr | Hodnota | Popis|
+|-----------|-------|------------|
+|`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Toto je pevná hodnota, která označuje, že používáte přihlašovací údaje certifikátu. |
+|`client_assertion`| JWT |Toto je token JWT vytvořený výše. |
 
 ## <a name="next-steps"></a>Další kroky
+
+[Knihovna MSAL.NET zpracovává tento scénář](msal-net-client-assertions.md) v jednom řádku kódu.
 
 [Aplikace konzoly .NET Core daemon s použitím ukázky kódu Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) na GitHubu ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) pomocí `New-SelfSignedCertificate` rutiny prostředí PowerShell. Pomocí [skriptů pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) v ukázkovém úložišti můžete také vytvářet certifikáty, vypočítat kryptografický otisk a tak dále.

@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu Základy CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Základy CAF.
-ms.date: 04/15/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
-ms.translationtype: HT
+ms.openlocfilehash: 43c962ca472d2933e2f1add01b22b5fc969163fe
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852340"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471734"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 
@@ -18,24 +18,27 @@ Ukázkový podrobný plán Základy architektury přechodu na cloud pro Azure od
 
 Ukázkový podrobný plán Základy CAF nasadí do Azure doporučené prostředky infrastruktury, které organizace můžou využít k zavedení základních kontrol nutných ke správě jejich cloudových aktiv. Tato ukázka nasadí a vynutí prostředky, zásady a šablony, které organizacím umožní, aby s Azure mohli bez obav začít.
 
-:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="Základy CAF: Obrázek popisuje, co se nainstaluje v rámci pokynů CAF pro vytvoření základu pro zahájení práce v Azure." border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="Základy CAF: Obrázek popisuje, co se nainstaluje v rámci pokynů CAF pro vytvoření základů pro zahájení práce s Azure." border="false":::
+   Popisuje architekturu Azure, která se zajistí nasazením podrobného plánu Základy CAF.  Dá se použít pro předplatné se skupinami prostředků, jehož součástí je účet úložiště pro ukládání protokolů a analytiky protokolů nakonfigurované pro uložení v účtu úložiště. Ukazuje také službu Azure Key Vault nakonfigurovanou se standardním nastavením služby Azure Security Center. Všechny tyto základní infrastruktury jsou dostupné pomocí Azure Active Directory a vynucují se prostřednictvím Azure Policy.     
+:::image-end:::
 
 Tato implementace je tvořená několika službami Azure, které se využívají k zajištění zabezpečeného a plně monitorovaného základu na podnikové úrovni. Toto prostředí tvoří:
 
 - Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
 - Nasazení služby [Log Analytics](../../../../azure-monitor/overview.md), aby se zajistilo, že se všechny akce a služby připojují k centrálnímu umístění, a to od okamžiku, kdy vaše zabezpečené nasazení spustíte v [účtech úložiště](../../../../storage/common/storage-introduction.md) pro protokolování diagnostiky
-- Nasazení služby [Azure Security Center](../../../../security-center/security-center-intro.md) (standardní verze) zajišťující ochranu před hrozbami pro vaše migrované úlohy
-- Podrobný plán také definuje a nasazuje [zásady Azure](../../../policy/overview.md): 
-  - Pro označování (CostCenter) použité pro skupiny prostředků
-  - Pro připojení prostředků do skupiny prostředků se značkou CostCenter
-  - Pro povolení oblasti Azure pro prostředky a skupiny prostředků
-  - Pro povolení skladových položek účtu úložiště (volí se během nasazování)
-  - Pro povolení skladových položek virtuálních počítačů Azure (volí se během nasazování)
-  - Vyžadování nasazení Network Watcheru 
-  - Pro vyžadování šifrování zabezpečeného přenosu pro účet Azure Storage
-  - Pro zamítnutí typů prostředků (volí se během nasazování)  
-- Iniciativy
-  - Povolení monitorování ve službě Azure Security Center (víc než 100 definic zásad)
+- Nasazení služby [Azure Security Center](../../../../security-center/security-center-introduction.md) (standardní verze) zajišťující ochranu před hrozbami pro vaše migrované úlohy
+- Podrobný plán také definuje a nasazuje definice [Azure Policy](../../../policy/overview.md):
+  - Definice zásad:
+    - Pro označování (CostCenter) použité pro skupiny prostředků
+    - Pro připojení prostředků do skupiny prostředků se značkou CostCenter
+    - Pro povolení oblasti Azure pro prostředky a skupiny prostředků
+    - Pro povolení skladových položek účtu úložiště (volí se během nasazování)
+    - Pro povolení skladových položek virtuálních počítačů Azure (volí se během nasazování)
+    - Vyžadování nasazení Network Watcheru 
+    - Pro vyžadování šifrování zabezpečeného přenosu pro účet Azure Storage
+    - Pro zamítnutí typů prostředků (volí se během nasazování)  
+  - Iniciativy zásad:
+    - Povolení monitorování ve službě Azure Security Center (víc než 100 definic zásad)
 
 Všechny tyto prvky dodržují prověřené postupy publikované v článku zaměřeném na [Centrum architektury Azure – referenční architektury](/azure/architecture/reference-architectures/).
 

@@ -1,16 +1,15 @@
 ---
 title: Správa stavu Reliable Actors
 description: Popisuje, jak je stav Reliable Actors spravovaný, trvalý a replikovaný pro zajištění vysoké dostupnosti.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75348920"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575597"
 ---
 # <a name="reliable-actors-state-management"></a>Správa stavu Reliable Actors
 Reliable Actors jsou objekty s jedním vláknem, které mohou zapouzdřit logiku i stav. Vzhledem k tomu, že objekty actor běží na Reliable Services, mohou spolehlivě udržovat stav pomocí stejných mechanismů trvalosti a replikace. Díky tomu objekty actor neztratí stav po selhání, po opětovné aktivaci po uvolnění paměti nebo při jejich přesunu mezi uzly v clusteru kvůli vyrovnávání nebo upgradu prostředků.
@@ -114,7 +113,7 @@ To je důležité pro výkon a využití prostředků vaší aplikace. Pokaždé
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Správně spravovat životní cyklus objektu actor
 Měli byste mít jasné zásady týkající se správy velikosti stavu v jednotlivých oddílech služby objektu actor. Vaše služba objektu actor by měla mít pevný počet objektů actor a znovu je použít co nejvíce. Pokud průběžně vytváříte nové objekty actor, musíte je po dokončení práce s jejich prací odstranit. Rozhraní actor Framework uchovává některá metadata o každém objektu actor, který existuje. Odstraněním všech stavů objektu actor se neodstraňují metadata tohoto objektu actor. Chcete-li odebrat všechny informace, které jsou uloženy v systému, je nutné objekt actor odstranit (viz téma [odstranění objektů actor a jejich stav](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)). Jako další kontrolu byste měli zadat dotaz na službu objektu actor (Další informace naleznete v tématu [vytváření výčtu objektů](service-fabric-reliable-actors-enumerate.md)Actors), abyste měli jistotu, že počet objektů actor je v očekávaném rozsahu.
  
-Pokud se někdy zobrazuje, že velikost souboru databáze objektu actor je větší než očekávaná velikost, ujistěte se, že jste provedli předchozí pokyny. Pokud tyto pokyny dodržujete a stále dochází k problémům s velikostí souborů databáze, měli byste [otevřít lístek podpory](service-fabric-support.md) s produktovým týmem, abyste mohli získat nápovědu.
+Pokud se někdy zobrazuje, že velikost souboru databáze objektu actor je větší než očekávaná velikost, ujistěte se, že jste provedli předchozí pokyny. Pokud tyto pokyny dodržujete a stále dochází k problémům s velikostí souborů databáze, měli byste [otevřít lístek podpory](service-fabric-support.md) s produktovým týmem, abyste mohli získat pomoc.
 
 ## <a name="next-steps"></a>Další kroky
 

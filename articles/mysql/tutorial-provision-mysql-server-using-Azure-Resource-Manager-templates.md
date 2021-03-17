@@ -7,19 +7,19 @@ ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
-ms.custom: mvc
-ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: fd5fa4e09dd3f73aa7a8f044ded04d504bd2f3dd
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74771084"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705468"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: zřízení Azure Database for MySQL serveru pomocí šablony Azure Resource Manager
 
-[Azure Database for MySQL REST API](https://docs.microsoft.com/rest/api/mysql/) umožňuje technikům DevOps automatizovat a integrovat zřizování, konfiguraci a operace spravovaných serverů a databází MySQL v Azure.  Rozhraní API umožňuje vytvořit, vyčíslit, spravovat a odstranit servery a databáze MySQL ve službě Azure Database for MySQL.
+[Azure Database for MySQL REST API](/rest/api/mysql/) umožňuje technikům DevOps automatizovat a integrovat zřizování, konfiguraci a operace spravovaných serverů a databází MySQL v Azure.  Rozhraní API umožňuje vytvořit, vyčíslit, spravovat a odstranit servery a databáze MySQL ve službě Azure Database for MySQL.
 
-Azure Resource Manager využít základní REST API k deklarování a programování prostředků Azure potřebných pro nasazení ve velkém měřítku, a to v souladu s infrastrukturou jako koncept kódu. Šablona parameterizes název prostředku Azure, SKU, síť, konfiguraci brány firewall a nastavení, což umožňuje, aby se vytvořila jednorázově a použila se víckrát.  Šablony Azure Resource Manager lze snadno vytvořit pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) nebo [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). Umožňují vytváření balíčků, standardizace a nasazení aplikací, které lze integrovat do kanálu CI/CD DevOps.  Pokud například chcete rychle nasadit webovou aplikaci s Azure Database for MySQL back-end, můžete provést kompletní nasazení pomocí této [šablony pro rychlý Start](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) z Galerie GitHub.
+Azure Resource Manager využívá základní REST API k deklarování a programovému naprogramování prostředků Azure potřebných pro nasazení ve velkém měřítku, které se zarovnává s infrastrukturou jako koncept kódu. Šablona parameterizes název prostředku Azure, SKU, síť, konfiguraci brány firewall a nastavení, což umožňuje, aby se vytvořila jednorázově a použila se víckrát.  Šablony Azure Resource Manager lze snadno vytvořit pomocí [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) nebo [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI). Umožňují vytváření balíčků, standardizace a nasazení aplikací, které lze integrovat do kanálu CI/CD DevOps.  Pokud například chcete rychle nasadit webovou aplikaci s Azure Database for MySQL back-end, můžete provést kompletní nasazení pomocí této [šablony pro rychlý Start](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) z Galerie GitHub.
 
 V tomto kurzu se naučíte, jak používat šablonu Azure Resource Manager a další nástroje:
 
@@ -29,6 +29,8 @@ V tomto kurzu se naučíte, jak používat šablonu Azure Resource Manager a dal
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
+
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -76,27 +78,27 @@ Chcete-li získat odkaz na šablonu JSON pro server Azure Database for MySQL, vy
 }
 ```
 V této žádosti jsou hodnoty, které je třeba přizpůsobit, následující:
-+   `name`-Zadejte název serveru MySQL (bez názvu domény).
-+   `location`– Zadejte platnou oblast datového centra Azure pro server MySQL. Například westus2.
-+   `properties/version`-Zadejte verzi serveru MySQL, která se má nasadit. Například 5,6 nebo 5,7.
-+   `properties/administratorLogin`-Zadejte přihlašovací jméno správce MySQL pro server. Přihlašovací jméno správce nemůže být azure_superuser, admin, administrator, root, guest ani public.
-+   `properties/administratorLoginPassword`– Zadejte heslo pro uživatele správce MySQL uvedeného výše.
-+   `properties/sslEnforcement`– Pokud chcete povolit nebo zakázat sslEnforcement, zadejte enabled/disabled.
-+   `storageProfile/storageMB`-Zadejte maximální velikost zřízené úložiště, která je požadována pro server v megabajtech. Například 5120.
-+   `storageProfile/backupRetentionDays`-Zadejte požadovanou dobu uchovávání záloh ve dnech. Například 7. 
-+   `storageProfile/geoRedundantBackup`-Zadejte enabled/disabled v závislosti na požadavcích geografického zotavení po havárii.
-+   `sku/tier`– Zadejte úroveň Basic, GeneralPurpose nebo MemoryOptimized pro nasazení.
-+   `sku/capacity`-Zadejte kapacitu vCore. Možné hodnoty zahrnují 2, 4, 8, 16, 32 nebo 64.
-+   `sku/family`-Zadejte Gen5 pro výběr generování hardwaru pro nasazení serveru.
-+   `sku/name`-Zadat TierPrefix_family_capacity. Například B_Gen5_1 GP_Gen5_16 MO_Gen5_32. V dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md) najdete informace o platných hodnotách pro jednotlivé oblasti a na úrovni.
-+   `resources/properties/virtualNetworkSubnetId`– Zadejte identifikátor Azure podsítě ve virtuální síti, kam se má umístit server Azure MySQL. 
-+   `tags(optional)`-Zadat volitelné značky jsou páry klíč-hodnota, které byste použili k kategorizaci prostředků pro fakturaci atd.
++   `name` -Zadejte název serveru MySQL (bez názvu domény).
++   `location` – Zadejte platnou oblast datového centra Azure pro server MySQL. Například westus2.
++   `properties/version` -Zadejte verzi serveru MySQL, která se má nasadit. Například 5,6 nebo 5,7.
++   `properties/administratorLogin` -Zadejte přihlašovací jméno správce MySQL pro server. Přihlašovací jméno správce nemůže být azure_superuser, admin, administrator, root, guest ani public.
++   `properties/administratorLoginPassword` – Zadejte heslo pro uživatele správce MySQL uvedeného výše.
++   `properties/sslEnforcement` – Pokud chcete povolit nebo zakázat sslEnforcement, zadejte enabled/disabled.
++   `storageProfile/storageMB` -Zadejte maximální velikost zřízené úložiště, která je požadována pro server v megabajtech. Například 5120.
++   `storageProfile/backupRetentionDays` -Zadejte požadovanou dobu uchovávání záloh ve dnech. Například 7. 
++   `storageProfile/geoRedundantBackup` -Zadejte enabled/disabled v závislosti na požadavcích geografického zotavení po havárii.
++   `sku/tier` – Zadejte úroveň Basic, GeneralPurpose nebo MemoryOptimized pro nasazení.
++   `sku/capacity` -Zadejte kapacitu vCore. Možné hodnoty zahrnují 2, 4, 8, 16, 32 nebo 64.
++   `sku/family` -Zadejte Gen5 pro výběr generování hardwaru pro nasazení serveru.
++   `sku/name` -Zadat TierPrefix_family_capacity. Například B_Gen5_1 GP_Gen5_16 MO_Gen5_32. V dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md) najdete informace o platných hodnotách pro jednotlivé oblasti a na úrovni.
++   `resources/properties/virtualNetworkSubnetId` – Zadejte identifikátor Azure podsítě ve virtuální síti, kam se má umístit server Azure MySQL. 
++   `tags(optional)` -Zadat volitelné značky jsou páry klíč-hodnota, které byste použili k kategorizaci prostředků pro fakturaci atd.
 
 Pokud chcete vytvořit šablonu Azure Resource Manager pro automatizaci nasazení Azure Database for MySQL pro vaši organizaci, doporučujeme nejdřív začít od šablony vzorové [Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) v galerii GitHub pro rychlý Start v Azure a sestavovat ji nad ní. 
 
 Pokud Azure Resource Manager šablony a chcete si je vyzkoušet, můžete začít pomocí následujících kroků:
 +   Naklonujte nebo Stáhněte vzorovou [šablonu Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) z Galerie Azure pro rychlý Start.  
-+   Úpravou souboru azuredeploy. Parameters. JSON aktualizujte hodnoty parametrů na základě vaší předvolby a uložte soubor. 
++   Upravte azuredeploy.parameters.jsna pro aktualizaci hodnot parametrů podle vaší předvolby a uložte soubor. 
 +   Pomocí Azure CLI vytvořte server Azure MySQL pomocí následujících příkazů.
 
 Ke spuštění bloků kódu v tomto kurzu můžete použít Azure Cloud Shell v prohlížeči nebo si nainstalujte Azure CLI ve vašem počítači.
@@ -106,7 +108,7 @@ Ke spuštění bloků kódu v tomto kurzu můžete použít Azure Cloud Shell v 
 ```azurecli-interactive
 az login
 az group create -n ExampleResourceGroup  -l "West US2"
-az group deployment create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
+az deployment group create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
 ```
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení
@@ -199,13 +201,47 @@ Při načtení dat se řádek příslušným způsobem aktualizuje.
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní prostředky ve skupině prostředků.
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
+
+2. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
+
+3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+
+4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MySQL s koncovým bodem služby virtuální sítě pomocí šablony Azure Resource Manager
-> * Vytvoření databáze pomocí [Nástroje pro příkazový řádek MySQL](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Vytvoření databáze pomocí nástroje pro příkazový řádek mysql
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
-> 
+
+> [!div class="nextstepaction"]
 > [Postup připojení aplikací k Azure Database for MySQL](./howto-connection-string.md)

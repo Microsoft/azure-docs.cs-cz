@@ -1,20 +1,23 @@
 ---
-title: Použití spravované identity přiřazené systémem pro přístup k Azure Cosmos DB datům
+title: Použití spravované identity přiřazené systémem pro přístup k datům služby Azure Cosmos DB
 description: Přečtěte si, jak nakonfigurovat spravovanou identitu přiřazenou systémem Azure Active Directory (Azure AD) pro přístup k klíčům z Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243713"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927413"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V tomto článku nastavíte robustní řešení nezávislá pro *střídání klíčů* pro přístup k Azure Cosmos DB klíčům pomocí [spravovaných identit](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md). Příklad v tomto článku používá Azure Functions, ale můžete použít libovolnou službu, která podporuje spravované identity. 
 
@@ -28,7 +31,7 @@ V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazen
 
 1. V [Azure Portal](https://portal.azure.com/)otevřete podokno **funkce Azure** a přejdete do aplikace Function App. 
 
-1. Otevřete kartu **Identita funkcí platformy**  >  **Identity** : 
+1. Otevřete kartu **Identita funkcí platformy**  >   : 
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
@@ -46,7 +49,7 @@ V tomto kroku přiřadíte roli spravované identitě přiřazené k systému ap
 |[Role čtečky účtu Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
 
 > [!IMPORTANT]
-> Podpora řízení přístupu založeného na rolích v Azure Cosmos DB platí jenom pro řízení operací roviny. Operace roviny dat jsou zabezpečeny prostřednictvím hlavních klíčů nebo tokenů prostředků. Další informace najdete v článku [zabezpečený přístup k datům](secure-access-to-data.md) .
+> Podpora řízení přístupu založeného na rolích v Azure Cosmos DB platí jenom pro řízení operací roviny. Operace roviny dat jsou zabezpečeny prostřednictvím primárních klíčů nebo tokenů prostředků. Další informace najdete v článku [zabezpečený přístup k datům](secure-access-to-data.md) .
 
 > [!TIP] 
 > Přiřadíte-li role, přiřaďte pouze potřebný přístup. Pokud vaše služba vyžaduje jenom čtení dat, přiřaďte k spravované identitě roli **Čtenář účtu Cosmos DB** . Další informace o významu minimálního přístupu k oprávnění najdete v článku o [nižší expozici privilegovaných účtů](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) .
@@ -90,10 +93,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Teď máme aplikaci Function App, která má spravovanou identitu přiřazenou systémem pomocí role **Přispěvatel účtu DocumentDB** v oprávněních Azure Cosmos DB. Následující kód aplikace Function App získá Azure Cosmos DB klíčů, vytvoří objekt CosmosClient, získá teplotu Aquarium a pak ho uložte do Azure Cosmos DB.
 
-V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) .
+V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) .
 
 > [!IMPORTANT] 
-> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys). Tím se naplní jenom klíče jen pro čtení.
+> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys). Tím se naplní jenom klíče jen pro čtení.
 
 Rozhraní API seznam klíčů vrátí `DatabaseAccountListKeysResult` objekt. Tento typ není definován v knihovnách jazyka C#. Následující kód ukazuje implementaci této třídy:  
 
@@ -127,7 +130,7 @@ namespace Monitor
 }
 ```
 
-Pomocí knihovny [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) získáte spravovaný token identity přiřazený systémem. Další informace o tom, jak získat token a zjistit další informace o `Microsoft.Azure.Service.AppAuthentication` knihovně, najdete v článku o [ověřování služby pro službu](../key-vault/general/service-to-service-authentication.md) .
+Pomocí knihovny [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) získáte spravovaný token identity přiřazený systémem. Další informace o tom, jak získat token a zjistit další informace o `Microsoft.Azure.Service.AppAuthentication` knihovně, najdete v článku o [ověřování služby pro službu](/dotnet/api/overview/azure/service-to-service-authentication) .
 
 
 ```csharp
@@ -211,7 +214,7 @@ namespace Monitor
 }
 ```
 
-Teď jste připraveni [nasadit aplikaci Function App](../azure-functions/functions-create-first-function-vs-code.md).
+Teď jste připraveni [nasadit aplikaci Function App](../azure-functions/create-first-function-vs-code-csharp.md).
 
 ## <a name="next-steps"></a>Další kroky
 

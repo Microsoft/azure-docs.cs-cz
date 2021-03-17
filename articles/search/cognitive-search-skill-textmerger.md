@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982012"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88924635"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
 
@@ -35,7 +35,7 @@ U parametrů se rozlišují malá a velká písmena.
 | `insertPostTag`   | Řetězec, který má být zahrnut po každém vložení. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""` .  |
 
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 Dokument JSON, který poskytuje použitelný vstup pro tuto dovednost, může být:
 
 ```json
@@ -75,7 +75,7 @@ Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, ž
 
 Běžným scénářem použití sloučení textu je sloučení textové reprezentace obrázků (text z dovednosti OCR nebo titulku obrázku) do pole obsah dokumentu. 
 
-Následující příklad dovednosti používá dovednost optického rozpoznávání znaků k extrakci textu z obrázků vložených v dokumentu. V dalším kroku vytvoří *merged_text* pole, které bude obsahovat původní i OCRed text z každého obrázku. Další informace o dovednostech OCR najdete [tady](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
+Následující příklad dovednosti používá dovednost optického rozpoznávání znaků k extrakci textu z obrázků vložených v dokumentu. V dalším kroku vytvoří *merged_text* pole, které bude obsahovat původní i OCRed text z každého obrázku. Další informace o dovednostech OCR najdete [tady](./cognitive-search-skill-ocr.md).
 
 ```json
 {
@@ -148,4 +148,4 @@ Výše uvedený příklad předpokládá, že existuje pole Normalized-images. C
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Vytvoření indexeru (REST)](/rest/api/searchservice/create-indexer)

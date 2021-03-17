@@ -7,17 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/18/2018
+ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 35e8efa269ab72477b06e86824d368d0a3dced03
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388591"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197326"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Nastavení přímého přihlášení pomocí Azure Active Directory B2C
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Při nastavování přihlášení aplikace pomocí Azure Active Directory (AD) B2C můžete předem vyplnit přihlašovací jméno nebo přímé přihlášení ke konkrétnímu poskytovateli sociálních identit, jako je Facebook, LinkedIn nebo účet Microsoft.
 
@@ -29,7 +33,9 @@ Během cesty uživatele přihlašování se může aplikace předávající stra
 
 Uživatel může změnit hodnotu v textovém poli přihlášení.
 
-Pokud používáte vlastní zásadu, přepište `SelfAsserted-LocalAccountSignin-Email` technický profil. V `<InputClaims>` části nastavte vlastnost DefaultValue deklarace identity signInName na `{OIDC:LoginHint}` . `{OIDC:LoginHint}`Proměnná obsahuje hodnotu `login_hint` parametru. Azure AD B2C přečte hodnotu deklarace identity signInName a předem naplní textové pole signInName.
+::: zone pivot="b2c-custom-policy"
+
+Pokud chcete podporovat parametr pomocného parametru, přepište `SelfAsserted-LocalAccountSignin-Email` technický profil. V `<InputClaims>` části nastavte vlastnost DefaultValue deklarace identity signInName na `{OIDC:LoginHint}` . `{OIDC:LoginHint}`Proměnná obsahuje hodnotu `login_hint` parametru. Azure AD B2C přečte hodnotu deklarace identity signInName a předem naplní textové pole signInName.
 
 ```xml
 <ClaimsProvider>
@@ -45,13 +51,35 @@ Pokud používáte vlastní zásadu, přepište `SelfAsserted-LocalAccountSignin
 </ClaimsProvider>
 ```
 
+::: zone-end
+
 ## <a name="redirect-sign-in-to-a-social-provider"></a>Přesměrování přihlášení k poskytovateli sociálních sítí
 
 Pokud jste nakonfigurovali cestu pro přihlášení k vaší aplikaci, aby zahrnovala účty sociálních sítí, jako je Facebook, LinkedIn nebo Google, můžete zadat `domain_hint` parametr. Tento parametr dotazu poskytuje nápovědu pro Azure AD B2C o poskytovateli sociální identity, který by se měl použít pro přihlášení. Například pokud aplikace určuje `domain_hint=facebook.com` , přihlašování se přímo na přihlašovací stránku Facebooku.
 
 ![Přihlašovací stránka pro registraci se zvýrazněným parametrem domain_hint dotazu v adrese URL](./media/direct-signin/domain-hint.png)
 
-Pokud používáte vlastní zásadu, můžete nakonfigurovat název domény pomocí `<Domain>domain name</Domain>` XML elementu Any `<ClaimsProvider>` .
+::: zone pivot="b2c-user-flow"
+
+Parametr řetězce dotazu s doporučením domény může být nastavený na jednu z následujících domén:
+
+- amazon.com
+- facebook.com
+- github.com
+- google.com
+- linkedin.com
+- microsoft.com
+- qq.com
+- twitter.com
+- wechat.com
+- weibo.com 
+- [Obecné OpenID Connect](identity-provider-generic-openid-connect.md)najdete v tématu s [nápovědou k doméně](identity-provider-generic-openid-connect.md#response-mode).
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Aby bylo možné podporovat parametr pomocného parametru domény, můžete nakonfigurovat název domény pomocí `<Domain>domain name</Domain>` elementu XML Any `<ClaimsProvider>` .
 
 ```xml
 <ClaimsProvider>
@@ -62,4 +90,5 @@ Pokud používáte vlastní zásadu, můžete nakonfigurovat název domény pomo
     ...
 ```
 
+::: zone-end
 

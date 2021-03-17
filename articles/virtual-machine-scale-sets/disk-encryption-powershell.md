@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 70995575e745b74561745363a1290564c9ce3002
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 59b015232fcfe2fd98e1b9f28c2eb4fa86606049
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029624"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519567"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače s Azure PowerShell
 
@@ -51,7 +51,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-Nejprve pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
+Nejprve pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

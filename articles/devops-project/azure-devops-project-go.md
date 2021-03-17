@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d6181686eaeb90d4fcdae0231430623b84e2c1c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233121"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548508"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro přechod pomocí Azure DevOps Starter
 
@@ -30,9 +30,9 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím p
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -62,13 +62,13 @@ DevOps Starter vytvoří úložiště Git v Azure Repos nebo GitHubu. Pokud chce
 
 1. V DevOps Starter vlevo vyberte odkaz pro svou hlavní větev. Odkaz otevře zobrazení nově vytvořeného úložiště Git.
 
-1. Pokud chcete zobrazit adresu URL pro klonování úložiště, vyberte **klonovat** v pravém horním rohu. Úložiště Git můžete klonovat v rámci svého oblíbeného integrovaného vývojového prostředí (IDE). V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
+1. Pokud chcete zobrazit adresu URL pro klonování úložiště, vyberte **klonovat** v pravém horním rohu. Úložiště Git můžete klonovat v rámci svého oblíbeného integrovaného vývojového prostředí (IDE). V několika dalších krocích můžete pomocí webového prohlížeče vytvořit a potvrdit změny kódu přímo do hlavní větve.
 
 1. Vlevo otevřete soubor *views/index.html* a pak vyberte **Upravit**.
 
 1. Proveďte změnu souboru. Například upravte nějaký text v rámci jedné z značek DIV.
 
-1. Vyberte **Potvrdit**a potom změny uložte.
+1. Vyberte **Potvrdit** a potom změny uložte.
 
 1. V prohlížeči přejdete na řídicí panel DevOps Projects. Mělo by probíhat sestavení. Změny, které jste provedli, jsou automaticky vytvořeny a nasazeny prostřednictvím kanálu CI/CD.
 
@@ -88,7 +88,7 @@ DevOps Starter automaticky nakonfiguruje úplný kanál CI/CD v Azure Repos. Pro
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -96,7 +96,7 @@ DevOps Starter automaticky nakonfiguruje úplný kanál CI/CD v Azure Repos. Pro
 
 1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
@@ -123,4 +123,4 @@ Pokud už je nepotřebujete, můžete odstranit instanci Azure App Service a sou
 Další informace o změnách kanálů sestavení a vydání, které vyhovují potřebám vašeho týmu, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process)

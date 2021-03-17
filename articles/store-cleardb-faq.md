@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196076"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599797"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím MySql v ClearDB s Azure App Service
 Tato Nejčastější dotazy vám kladou odpovědi na nejčastější dotazy týkající se používání a nákupu databází MySQL ClearDB pro Azure Web Apps.
@@ -33,7 +33,7 @@ Nejnovější informace o této službě najdete v tématu [ClearDB](https://w2.
 Pro hostování MySQL v Azure máte několik dalších možností:
 * [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [Cluster MySQL běžící na virtuálním počítači Azure](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Jedna instance MySQL spuštěná na virtuálním počítači Azure](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Jedna instance MySQL spuštěná na virtuálním počítači Azure](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Potřebuji pro šablonu Web App + MySQL v Azure Marketplace platební kartu?
@@ -41,14 +41,14 @@ To závisí na typu předplatného, které používáte. Tady jsou některé bě
 
 * [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/): vyžaduje platební kartu a při nákupu placené databáze MySQL se vám bude účtovat vaše kreditní karta.
 * [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/): zahrnuje kredity pro použití s Microsoft Azure službami, ale neumožňuje nákup prostředků třetích stran. Pokud chcete koupit služby třetích stran nebo placená databáze MySQL, musíte použít předplatné s povolenými kreditními kartami. Pro Web Apps můžete vytvořit bezplatnou ClearDB databázi MySQL.
-* [Předplatné MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) a **průběžné testování MSDN pro vývoj za**použití: podobně jako bezplatné zkušební období vyžaduje předplatné MSDN, abyste si koupili placené řešení MySQL z ClearDB.
-* [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): zákazníci se smlouvou EA se účtují za každé čtvrtletí smlouvy EA pro všechny své Azure Marketplace (nákup třetích stran) na samostatné konsolidované faktuře. Účtují se za peněžní závazek pro všechny nákupy na webu Marketplace. Upozorňujeme, že v tuto chvíli není Azure Storu k dispozici pro zákazníky, kteří se zaregistrovali v Ázerbájdžánu, Chorvatsku, Norsku a Portoriko. 
+* [Předplatné MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) a **průběžné testování MSDN pro vývoj za** použití: podobně jako bezplatné zkušební období vyžaduje předplatné MSDN, abyste si koupili placené řešení MySQL z ClearDB.
+* [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): zákazníci se smlouvou EA se účtují za každé čtvrtletí smlouvy EA pro všechny své Azure Marketplace (nákup třetích stran) na samostatné konsolidované faktuře. Účtují se za všechny nákupy na webu Marketplace za rámec předplacení Azure (dříve označované jako peněžní závazek). Upozorňujeme, že v tuto chvíli není Azure Storu k dispozici pro zákazníky, kteří se zaregistrovali v Ázerbájdžánu, Chorvatsku, Norsku a Portoriko. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Proč se mi u webové aplikace + MySQL z Azure Marketplace účtují $3,50?
 Výchozí možnost databáze je Titan, což je $3,50. Neúčtujeme vám náklady během vytváření databáze a můžete si omylem koupit databázi, kterou jste nechtěli zavádět. Snažíme se najít způsob, jak vylepšit prostředí, ale až potom musíte zaškrtnout všechny vybrané cenové úrovně pro webovou aplikaci a databázi před tím, než kliknete na **vytvořit** a spustit nasazení prostředků.
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>Spouštím MySQL na mém vlastním virtuálním počítači Azure. Můžu připojit svou webovou aplikaci Azure k databázi?
-Ano. Webovou aplikaci můžete připojit k databázi, pokud váš virtuální počítač Azure má vzdálený přístup k vaší webové aplikaci. Další informace najdete v tématu [Instalace MySQL na virtuálním počítači](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Yes. Webovou aplikaci můžete připojit k databázi, pokud váš virtuální počítač Azure má vzdálený přístup k vaší webové aplikaci. Další informace najdete v tématu [Instalace MySQL na virtuálním počítači](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Ve kterých zemích nebo oblastech jsou podporované clustery ClearDB Premium MySQL?
 Clustery ClearDB Premium MySQL jsou dostupné ve všech oblastech Azure po celém světě s výjimkou Indie, Austrálie, Brazílie – jih a Číny.
@@ -75,7 +75,7 @@ Pokud jste databázi ClearDB vytvořili v klasickém prostředí, nebudete moci 
 Kontaktujte [podporu ClearDB](https://www.cleardb.com/developers/help/support) pro všechny problémy související s databází. Připravte se na poskytování informací o předplatném Azure.
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>Můžu vytvořit další uživatele pro moje řešení clusteru databáze MySQL ClearDB?
-Ne. Nemůžete vytvořit další uživatele, ale v clusteru databáze ClearDB můžete vytvořit další databáze.  
+No. Nemůžete vytvořit další uživatele, ale v clusteru databáze ClearDB můžete vytvořit další databáze.  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>Můžou se databáze řady Basic/pro na portálu ClearDB upgradovat na místě, podobně jako plány Planetary.
 Ano, základní databáze řady lze upgradovat místně (Basic 60 až Basic 500). Řadu sady pro je možné upgradovat místně (pro 125 až pro 1000) s výjimkou pro 60 pro. Momentálně nepodporujeme upgrade databáze pro 60. 
@@ -94,10 +94,10 @@ Existující databáze ClearDB používají platební kartu přidruženou ke st�
 * Aktualizujte aplikaci tak, aby používala novou databázi.
 * Odstraňte starou databázi ClearDB.
 
-Když vytvoříte novou webovou aplikaci s MySQL (ClearDB) nebo vytvoříte databázi MySQL (ClearDB), předplatné, které zvolíte, určuje, jak budete platit za službu. V rámci předplatného EA nebudeme zablokovat nákup služeb třetích stran, jako je ClearDB v Azure Portal. Předplatná EA se účtují mimo peněžní závazek a účtují se čtvrtletně a v nedoplatkech. Zákazník EA by musel nastavit způsob platby, jako je platební karta, která bude platit pro jakékoli služby tržiště třetích stran.
+Když vytvoříte novou webovou aplikaci s MySQL (ClearDB) nebo vytvoříte databázi MySQL (ClearDB), předplatné, které zvolíte, určuje, jak budete platit za službu. V rámci předplatného EA nebudeme zablokovat nákup služeb třetích stran, jako je ClearDB v Azure Portal. Předplatná EA se účtují mimo předplatné Azure a účtují se čtvrtletně a v nedoplatkech. Zákazník EA by musel nastavit způsob platby, jako je platební karta, která bude platit pro jakékoli služby tržiště třetích stran.
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Kde můžu zobrazit poplatky za prostředky ClearDB v předplatném EA?
-Pro zákazníky s přímým přístupem EA se Azure Marketplace poplatky na Enterprise Portal zobrazit. Všimněte si, že všechny nákupy a spotřebu na webu Marketplace se účtují mimo peněžní závazek a účtují se čtvrtletně a v nedoplatkech. Zákazníci se smlouvou EA musí platit přímo poskytovatelům služeb třetích stran, a to tak, že umožňují způsob platby, jako je platební karta s jejich účtem EA.
+Pro zákazníky s přímým přístupem EA se Azure Marketplace poplatky na Enterprise Portal zobrazit. Všimněte si, že všechny nákupy a spotřebu na webu Marketplace se účtují mimo předplacenou platbu Azure a účtují se čtvrtletně a v nedoplatkech. Zákazníci se smlouvou EA musí platit přímo poskytovatelům služeb třetích stran, a to tak, že umožňují způsob platby, jako je platební karta s jejich účtem EA.
 
 Nepřímí zákazníci se smlouvou EA můžou najít své Azure Marketplace předplatná na stránce **spravovat předplatná** Enterprise Portal, ale ceny jsou skryté. Pokud zákazníci chtějí získat informace o poplatcích za marketplace, měli by se obrátit na svého poskytovatele LSP.
 
@@ -108,4 +108,3 @@ Kontaktujte [zákaznickou podporu](https://aka.ms/AzureEntSupport) s ohledem na 
 
 ## <a name="more-information"></a>Další informace
 [Nejčastější dotazy k Azure Marketplace](https://azure.microsoft.com/marketplace/faq/)
-

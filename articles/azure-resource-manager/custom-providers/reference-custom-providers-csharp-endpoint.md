@@ -2,15 +2,16 @@
 title: Referenční informace o vlastním poskytovateli C# RESTful koncový bod
 description: Poskytuje základní reference pro vlastní poskytovatele Azure pro koncové body C# RESTful. Koncový bod je k dispozici prostřednictvím aplikace služby Azure Functions.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
-ms.date: 06/20/2019
-ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/14/2021
+ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651173"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200256"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Referenční informace o vlastním poskytovateli C# RESTful koncový bod
 
@@ -23,7 +24,7 @@ Následující kód funguje s aplikací Azure Function. Informace o tom, jak nas
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;

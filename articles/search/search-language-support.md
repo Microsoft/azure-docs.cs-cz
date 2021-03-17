@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 8809dcf58a0baad60ba567980f1e0193138aad19
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496430"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423075"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Vytvoření indexu pro více jazyků v Azure Kognitivní hledání
 
@@ -67,4 +67,4 @@ Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případ�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste vývojářem rozhraní .NET, Všimněte si, že můžete nakonfigurovat jazykové analyzátory pomocí [sady Azure kognitivní hledání .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) a vlastnosti [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 
+Pokud jste vývojářem rozhraní .NET, Všimněte si, že můžete nakonfigurovat jazykové analyzátory pomocí [sady Azure kognitivní hledání .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) a vlastnosti [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) .

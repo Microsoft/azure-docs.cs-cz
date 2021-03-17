@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z a do aplikace Microsoft Access
 description: Naučte se, jak kopírovat data z a do aplikace Microsoft Access pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
-ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a17876385e3a48543c8185a0f48a3e4016afa1a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513371"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374384"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Kopírování dat z a do aplikace Microsoft Access pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,10 +48,10 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Microsoft Access jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **MicrosoftAccess** . | Yes |
-| připojovací řetězec | Připojovací řetězec ODBC s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration Runtimem počítači (v odpovídajícím způsobem je potřeba zadat část přihlašovacích údajů v propojené službě).<br> Můžete také vložit heslo do Azure Key Vault a získat  `password`   konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md)   .| Yes |
+| připojovací řetězec | Připojovací řetězec ODBC s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration Runtimem počítači (v odpovídajícím způsobem je potřeba zadat část přihlašovacích údajů v propojené službě).<br> Můžete také vložit heslo do Azure Key Vault a získat `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .| Yes |
 | authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat Microsoft Access.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Yes |
 | userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | No |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
@@ -92,7 +88,7 @@ Pro propojenou službu Microsoft Access jsou podporovány následující vlastno
 
 Chcete-li kopírovat data z aplikace Microsoft Access, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **MicrosoftAccessTable** . | Yes |
 | tableName | Název tabulky v Microsoft Accessu | Ne pro zdroj (Pokud je zadáno "dotaz" ve zdroji aktivity);<br/>Ano pro jímku |
@@ -123,10 +119,10 @@ Chcete-li kopírovat data z aplikace Microsoft Access, jsou podporovány násled
 
 Chcete-li kopírovat data z aplikace Microsoft Access, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MicrosoftAccessSource** . | Yes |
-| query | Pomocí vlastního dotazu můžete číst data. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pomocí vlastního dotazu můžete číst data. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 
@@ -164,7 +160,7 @@ Chcete-li kopírovat data z aplikace Microsoft Access, jsou v části **zdroje**
 
 Chcete-li kopírovat data do aplikace Microsoft Access, v části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **MicrosoftAccessSink** . | Yes |
 | writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br/>Povolené hodnoty jsou: TimeSpan. Příklad: "00:30:00" (30 minut). |No |

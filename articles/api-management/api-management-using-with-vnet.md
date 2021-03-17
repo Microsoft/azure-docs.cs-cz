@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/22/2020
+ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489618"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260244"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -53,7 +52,8 @@ K provedení kroků popsaných v tomto článku musíte mít:
 3. Vyberte **virtuální síť**.
 4. Nakonfigurujte instanci API Management, která se má nasadit v rámci virtuální sítě.
 
-    ![Nabídka virtuální síť API Management][api-management-using-vnet-menu]
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="V Azure Portal vyberte virtuální síť.":::
+    
 5. Vyberte požadovaný typ přístupu:
 
     * **Off**: Toto je výchozí nastavení. API Management není nasazený ve virtuální síti.
@@ -66,31 +66,32 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
         ![Soukromý partnerský vztah][api-management-vnet-private]
 
-6. Pokud jste vybrali možnost **externí** nebo **interní**, zobrazí se seznam všech oblastí, ve kterých se služba API Management zřídí. Zvolte **umístění**a pak vyberte svou **virtuální síť** a **podsíť**. Seznam Virtual Network se naSprávce prostředků plní v rámci předplatného Azure, které jsou dostupné v předplatných Azure, které jsou nastavené v oblasti, kterou konfigurujete.
+6. Pokud jste vybrali možnost **externí** nebo **interní**, zobrazí se seznam všech oblastí, ve kterých se služba API Management zřídí. Zvolte **umístění** a pak vyberte svou **virtuální síť** a **podsíť**. Seznam Virtual Network se naSprávce prostředků plní v rámci předplatného Azure, které jsou dostupné v předplatných Azure, které jsou nastavené v oblasti, kterou konfigurujete.
 
     > [!IMPORTANT]
     > Při nasazování instance Azure API Management do virtuální sítě Správce prostředků musí být služba ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
 
     Pak vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
 
-    ![Vybrat síť VPN][api-management-setup-vpn-select]
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-select.png" alt-text="Nastavení virtuální sítě na portálu.":::
 
-7. V horním navigačním panelu vyberte **Uložit**a pak vyberte **použít konfiguraci sítě**.
+7. V horním navigačním panelu vyberte **Uložit** a pak vyberte **použít konfiguraci sítě**.
 
 > [!NOTE]
 > Adresa VIP instance API Management se změní pokaždé, když je virtuální síť povolená nebo zakázaná.
-> Adresa VIP se také změní, když API Management přesunete z **externích** do **interního**nebo naopak.
+> Adresa VIP se také změní, když API Management přesunete z **externích** do **interního** nebo naopak.
 >
 
 > [!IMPORTANT]
 > Pokud API Management odeberete z virtuální sítě nebo změníte nasazení v nástroji, dříve použitá síť VNET může zůstat uzamčena po dobu až šesti hodin. Během této doby nebude možné virtuální síť odstranit ani do ní nasadit nový prostředek. Toto chování platí pro klienty, kteří používají rozhraní API verze 2018-01-01 a starší. Klienti používající rozhraní API verze 2019-01-01 a novější, virtuální síť se uvolní hned po odstranění přidružené API Management služby.
 
-## <a name="enable-vnet-connection-using-powershell-cmdlets"></a><a name="enable-vnet-powershell"> </a>Povolení připojení VNet pomocí rutin PowerShellu
-Připojení k virtuální síti můžete taky povolit pomocí rutin PowerShellu.
+## <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"> </a>Nasazení API Management do externí virtuální sítě
 
-* **Vytvoření služby API Management v rámci virtuální**sítě: pomocí rutiny [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) vytvořte službu Azure API Management v rámci virtuální sítě.
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
 
-* **Nasazení existující služby API Management v rámci virtuální**sítě: pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující službu Azure API Management do Virtual Network.
+* **Vytvoření služby API Management v rámci virtuální** sítě: pomocí rutiny [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) vytvořte službu Azure API Management v rámci virtuální sítě.
+
+* **Nasazení existující služby API Management v rámci virtuální** sítě: pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující službu Azure API Management do Virtual Network.
 
 ## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"> </a>Připojení k webové službě hostované ve virtuální síti
 Po připojení služby API Management k virtuální síti se přístup k back-endu službám v rámci této sítě neliší od přístupu k veřejným službám. Stačí zadat místní IP adresu nebo název hostitele (Pokud je server DNS nakonfigurovaný pro virtuální síť) webové služby na pole **Adresa URL webové služby** při vytváření nového rozhraní API nebo úpravou existujícího rozhraní API.
@@ -107,15 +108,16 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
 * **Porty vyžadované pro API Management**: příchozí a odchozí provoz do podsítě, ve které API Management nasazená, se dají řídit pomocí [skupiny zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů není dostupný, API Management nemusí správně fungovat a může být nepřístupný. Pokud se některý z těchto portů zablokuje, je při použití API Management s virtuální sítí další běžný problém s konfigurací.
 
-<a name="required-ports"> </a> Když je instance služby API Management hostovaná ve virtuální síti, použijí se porty v následující tabulce.
+<a name="required-ports"></a> Když je instance služby API Management hostovaná ve virtuální síti, použijí se porty v následující tabulce.
 
-| Zdrojový nebo cílový port (y) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj/cíl   | Účel ( \* )                                                 | Typ Virtual Network |
+| Zdrojový nebo cílový port (y) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/network-security-groups-overview.md#service-tags) <br> Zdroj/cíl   | Účel ( \* )                                                 | Typ Virtual Network |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Příchozí            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikace klienta s API Management                      | Externí             |
 | */3443                     | Příchozí            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Koncový bod správy pro Azure Portal a PowerShell         | Externí & interní  |
 | */443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | **Závislost na Azure Storage**                             | Externí & interní  |
-| */443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/Azureactivedirectory selhala | [Azure Active Directory](api-management-howto-aad.md) (Pokud je k dispozici)                   | Externí & interní  |
+| */443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/Azureactivedirectory selhala | [Azure Active Directory](api-management-howto-aad.md) a závislost Azure klíčů v trezoru                  | Externí & interní  |
 | */1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK/SQL                 | **Přístup k koncovým bodům SQL Azure**                           | Externí & interní  |
+| */443                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Přístup k trezoru klíčů Azure**                           | Externí & interní  |
 | */5671, 5672, 443          | Odchozí           | TCP                | VIRTUAL_NETWORK/EventHub            | Závislost pro [protokolování do zásad centra událostí](api-management-howto-log-event-hubs.md) a agenta monitorování | Externí & interní  |
 | */445                      | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | Závislost na sdílené složce Azure pro [Git](api-management-configuration-repository-git.md)                      | Externí & interní  |
 | */443, 12000                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Rozšíření stavu a monitorování         | Externí & interní  |
@@ -145,7 +147,10 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
 + **Značky regionální služby**: NSG pravidla umožňující odchozí připojení k úložištím, SQL a klíčovým službám Event Hubs můžou používat regionální verze těchto značek odpovídající oblasti, která obsahuje instanci API Management (například Storage. WestUS pro instanci API Management v západní USA oblasti). V nasazeních ve více oblastech by NSG v každé oblasti měl umožňovat provoz do značek služeb pro tuto oblast a primární oblast.
 
-+ **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší v rámci hostitele `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` a`ies.global.microsoft.com`
+    > [!IMPORTANT]
+    > Pokud chcete povolit publikování [portálu pro vývojáře](api-management-howto-developer-portal.md) pro instanci API Management ve virtuální síti, ujistěte se, že jste taky povolili odchozí připojení k úložišti objektů blob v západní USA oblasti. Například v pravidle NSG použijte značku služby **Storage. WestUS** . Připojení k úložišti objektů BLOB v oblasti Západní USA se v současnosti vyžaduje k publikování portálu pro vývojáře pro všechny instance API Management.
+
++ **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší v rámci hostitele `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` a `ies.global.microsoft.com`
 
 + **Portál pro vývojáře CAPTCHA**: odchozí připojení k síti pro CAPTCHA portálu pro vývojáře, které se řeší v rámci hostitelů `client.hip.live.com` a `partner.hip.live.com` .
 
@@ -153,7 +158,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
 + **Azure Load Balancer**: povolení příchozího požadavku ze značky služby není `AZURE_LOAD_BALANCER` požadavkem na `Developer` skladovou položku, protože pro ni nasazujeme jenom jednu jednotku Compute. Příchozí z [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) se ale bude velmi důležitý při škálování na větší skladovou položku `Premium` , jako v případě selhání sondy stavu od Load Balancer, selže nasazení.
 
-+ **Application Insights**: Pokud je v API Management povolené monitorování [Azure Application Insights](api-management-howto-app-insights.md) , musíme z Virtual Network povolit odchozí připojení ke [koncovému bodu telemetrie](/azure/azure-monitor/app/ip-addresses#outgoing-ports) . 
++ **Application Insights**: Pokud je v API Management povolené monitorování [Azure Application Insights](api-management-howto-app-insights.md) , musíme z Virtual Network povolit odchozí připojení ke [koncovému bodu telemetrie](../azure-monitor/app/ip-addresses.md#outgoing-ports) . 
 
 + **Vynucení tunelového přenosu do místní brány firewall pomocí expresního nebo síťového virtuálního zařízení**: běžným zákaznickým nastavením je definování vlastní výchozí trasy (0.0.0.0/0), která vynucuje veškerý provoz z API Management delegované podsítě pro přenos prostřednictvím místní brány firewall nebo síťového virtuálního zařízení. Tento tok přenosů invariably přerušení připojení k Azure API Management, protože odchozí přenosy jsou buď blokované místně, nebo překlad adres (NAT) na nerozpoznatelnou sadu adres, které už nefungují s různými koncovými body Azure. Řešení vyžaduje, abyste provedete několik věcí:
 
@@ -176,11 +181,20 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
   > [!IMPORTANT]
   > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, než nasadíte API Management do podsítě.
 
+* **Ověření stavu připojení k síti**: po nasazení API Management do podsítě použijte portál ke kontrole připojení instance ke závislostem, jako je například Azure Storage. Na portálu v nabídce vlevo v části **nasazení a infrastruktura** vyberte **stav připojení k síti**.
+
+   :::image type="content" source="media/api-management-using-with-vnet/verify-network-connectivity-status.png" alt-text="Ověření stavu připojení k síti na portálu":::
+
+    * Vyberte možnost **požadováno** , pokud chcete zkontrolovat připojení k požadovaným službám Azure pro API Management. Selhání indikuje, že instance nemůže provádět základní operace pro správu rozhraní API.
+    * Pokud chcete zkontrolovat připojení k volitelným službám, vyberte **volitelné** . Jakákoli chyba znamená, že konkrétní funkce nebudou fungovat (například SMTP). Selhání může vést ke snížení schopnosti použít a monitorovat instanci API Management a poskytnout potvrzenou smlouvu SLA.
+
+Pokud chcete řešit problémy s připojením, zkontrolujte [běžné problémy s konfigurací sítě](#network-configuration-issues) a opravte požadovaná nastavení sítě.
+
 * **Přírůstkové aktualizace**: při provádění změn v síti se podívejte na [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus), abyste ověřili, že služba API Management neztratila přístup k žádnému z kritických prostředků, na kterých závisí. Stav připojení by se měl aktualizovat každých 15 minut.
 
 * **Navigační odkazy prostředků**: při nasazení do podsítě virtuálních sítí ve stylu Správce prostředků API Management rezervuje podsíť tím, že vytvoří navigační odkaz na prostředek. Pokud podsíť již obsahuje prostředek od jiného poskytovatele, nasazení se **nezdaří**. Obdobně platí, že když přesunete API Management službu do jiné podsítě nebo ji odstraníte, odebereme tento odkaz na tento prostředek.
 
-## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> Požadavek na velikost podsítě
+## <a name="subnet-size-requirement"></a><a name="subnet-size"></a> Požadavek na velikost podsítě
 Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
 
 Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance služby API Management v podsíti používá dvě IP adresy na jednotku SKU úrovně Premium nebo jednu IP adresu pro SKU pro vývojáře. Každá instance si vyhrazuje další IP adresu pro externí nástroj pro vyrovnávání zatížení. Při nasazování do interní virtuální sítě musí být pro interní nástroj pro vyrovnávání zatížení k další IP adresu.
@@ -189,7 +203,7 @@ Vzhledem k výpočtu výše minimální velikosti podsítě, ve které API Manag
 
 Každá další jednotka API Management škálování vyžaduje dvě další IP adresy.
 
-## <a name="routing"></a><a name="routing"> </a> Směrování
+## <a name="routing"></a><a name="routing"></a> Směrování
 + Veřejná IP adresa (VIP) s vyrovnáváním zatížení bude vyhrazena pro poskytování přístupu ke všem koncovým bodům služby.
 + IP adresa z rozsahu IP adres podsítě (DIP) se použije pro přístup k prostředkům v rámci virtuální sítě a veřejná IP adresa (VIP) se použije pro přístup k prostředkům mimo virtuální síť.
 + Veřejnou IP adresu vyrovnávání zatížení najdete v okně Přehled/základní informace v Azure Portal.
@@ -201,9 +215,9 @@ Každá další jednotka API Management škálování vyžaduje dvě další IP 
 * Pro API Management nasazení ve více oblastech, která jsou nakonfigurovaná v režimu interní virtuální sítě, se uživatelům zodpovídá za správu vyrovnávání zatížení napříč různými oblastmi, a to při vlastním směrování.
 * Připojení z prostředku v globálně partnerské virtuální síti v jiné oblasti do API Management služby v interním režimu nebude fungovat v důsledku omezení platformy. Další informace najdete v tématu [prostředky v jedné virtuální síti nemůžou komunikovat s interním nástrojem pro vyrovnávání zatížení Azure v partnerské virtuální síti](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) .
 
-## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> IP adresy řídicí roviny
+## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"></a> IP adresy řídicí roviny
 
-IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být na seznamu povolená i IP adresa specifická pro **oblast** .
+IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být povolena společně s IP adresou specifickou pro **oblast** .
 
 | **Prostředí Azure**|   **Oblast**|  **IP adresa**|
 |-----------------|-------------------------|---------------|
@@ -223,6 +237,7 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Kanada – východ| 52.139.80.117|
 | Veřejný partnerský vztah Azure| Spojené arabské emiráty sever| 20.46.144.85|
 | Veřejný partnerský vztah Azure| Brazílie – jih| 191.233.24.179|
+| Veřejný partnerský vztah Azure| Brazílie – jihovýchod| 191.232.18.181|
 | Veřejný partnerský vztah Azure| Southeast Asia| 40.90.185.46|
 | Veřejný partnerský vztah Azure| Jižní Afrika – sever| 102.133.130.197|
 | Veřejný partnerský vztah Azure| Střední Kanada| 52.139.20.34|
@@ -232,7 +247,7 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejný partnerský vztah Azure| Austrálie – střed| 20.37.52.67|
 | Veřejný partnerský vztah Azure| Indie – jih| 20.44.33.246|
-| Veřejný partnerský vztah Azure| Střední USA| 13.86.102.66|
+| Veřejný partnerský vztah Azure| USA – střed| 13.86.102.66|
 | Veřejný partnerský vztah Azure| Austrálie – východ| 20.40.125.155|
 | Veřejný partnerský vztah Azure| Západní USA 2| 51.143.127.203|
 | Veřejný partnerský vztah Azure| Východní USA 2 EUAP| 52.253.229.253|
@@ -271,7 +286,7 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 * [Připojení Virtual Network z různých modelů nasazení](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Jak používat inspektora rozhraní API k trasování volání v Azure API Management](api-management-howto-api-inspector.md)
 * [Virtual Network nejčastějších dotazech](../virtual-network/virtual-networks-faq.md)
-* [Značky služeb](../virtual-network/security-overview.md#service-tags)
+* [Značky služeb](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -284,6 +299,6 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

@@ -4,17 +4,16 @@ description: Tento článek vás provede stažením skriptů pro konfiguraci za�
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2019
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: e17d17484ea9caf735fd717b1e58b85e798df87b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983202"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879490"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Stáhnout skripty pro konfiguraci zařízení VPN pro připojení S2S VPN
 
@@ -35,7 +34,7 @@ Připojení VPN mezi různými místy se skládá z brány Azure VPN Gateway, m�
 3. Vytvoření a konfigurace připojení Azure VPN mezi bránou Azure VPN a bránou místní sítě
 4. Nakonfigurujte místní zařízení VPN reprezentované bránou místní sítě, aby se navázalo skutečné tunelové propojení VPN S2S s bránou Azure VPN.
 
-Kroky 1 až 3 můžete provést pomocí webu Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShellu](vpn-gateway-create-site-to-site-rm-powershell.md)nebo rozhraní příkazového [řádku](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Poslední krok zahrnuje konfiguraci místních zařízení VPN mimo Azure. Tato funkce umožňuje stáhnout konfigurační skript pro vaše zařízení VPN s odpovídajícími hodnotami vaší brány Azure VPN Gateway, virtuální sítě a místních předpon adres sítě a vlastností připojení VPN, a to i v případě, že jsou už vyplněné. Skript můžete použít jako výchozí bod, nebo můžete skript použít přímo na místní zařízení VPN prostřednictvím konzoly Konfigurace.
+Kroky 1 až 3 můžete provést pomocí webu Azure [Portal](./tutorial-site-to-site-portal.md), [PowerShellu](vpn-gateway-create-site-to-site-rm-powershell.md)nebo rozhraní příkazového [řádku](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Poslední krok zahrnuje konfiguraci místních zařízení VPN mimo Azure. Tato funkce umožňuje stáhnout konfigurační skript pro vaše zařízení VPN s odpovídajícími hodnotami vaší brány Azure VPN Gateway, virtuální sítě a místních předpon adres sítě a vlastností připojení VPN, a to i v případě, že jsou už vyplněné. Skript můžete použít jako výchozí bod, nebo můžete skript použít přímo na místní zařízení VPN prostřednictvím konzoly Konfigurace.
 
 > [!IMPORTANT]
 > * Syntaxe pro každý konfigurační skript zařízení VPN je odlišná a silně závislá na modelech a verzích firmwaru. Věnujte zvláštní pozornost vašemu modelu zařízení a informacím o verzi na dostupných šablonách.
@@ -50,7 +49,7 @@ Kroky 1 až 3 můžete provést pomocí webu Azure [Portal](vpn-gateway-howto-si
 
 Vytvořte bránu Azure VPN Gateway, bránu místní sítě a prostředek připojení s připojením obou. Následující stránka vás provede kroky:
 
-* [Vytvoření připojení typu Site-to-Site na webu Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Vytvoření připojení typu Site-to-Site na webu Azure Portal](./tutorial-site-to-site-portal.md)
 
 Po vytvoření prostředku připojení postupujte podle pokynů níže a Stáhněte si konfigurační skripty pro zařízení VPN:
 
@@ -100,4 +99,4 @@ Po stažení a ověření konfiguračního skriptu je dalším krokem použití 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v konfiguraci [připojení Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Pokračujte v konfiguraci [připojení Site-to-site](./tutorial-site-to-site-portal.md).

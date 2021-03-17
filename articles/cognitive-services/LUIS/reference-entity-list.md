@@ -1,14 +1,16 @@
 ---
 title: Seznam typů entit – LUIS
 description: Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. LUIS nezjistí další hodnoty pro entity seznamu. Pomocí funkce doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588883"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608268"
 ---
 # <a name="list-entity"></a>Entita seznamu
 
@@ -83,7 +85,6 @@ V předchozím utterance je slovo v `paris` rámci entity seznamu namapováno na
 
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-
 Toto je kód JSON, pokud `verbose=false` je nastaven v řetězci dotazu:
 
 ```json
@@ -128,7 +129,6 @@ Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
 |Seznam entit|`Cities`|`paris`|
-
 
 ## <a name="next-steps"></a>Další kroky
 

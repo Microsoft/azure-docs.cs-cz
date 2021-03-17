@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68985951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020666"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpečné instalace a provozování Azure Data Box
 ![Ikona varování ](./media/data-box-safety/warning_icon.png)
@@ -120,7 +120,7 @@ Toto vybavení bylo testováno a bylo zjištěno, že vyhovuje omezením pro tř
 
 Toto zařízení je v souladu s částí 15 pravidel FCC a s výjimkou standardu RSS pro odvětví Kanady. Operace podléhá následujícím dvěma podmínkám: (1) Toto zařízení nemusí způsobovat škodlivou interferenci a (2) Toto zařízení musí přijmout jakékoli rušivé rušení, včetně rušení, které by mohlo způsobit nepožadovanou činnost zařízení.
 
-![Kanada](./media/data-box-safety/canada.png)
+![Snímek obrazovky se zobrazí oznámení požadované pro Kanadu.](./media/data-box-safety/canada.png)
 
 CAN ICES-3 (A)/NMB-3 (A)
 
@@ -154,7 +154,7 @@ Telefonní číslo: + 353 1 295 3826
 
 **Japonsko**
 
-![Japonsko](./media/data-box-safety/japan.png)
+![Snímek obrazovky s informacemi, které se vyžadují pro Japonsko](./media/data-box-safety/japan.png)
 
 <!--**South Korea**
 

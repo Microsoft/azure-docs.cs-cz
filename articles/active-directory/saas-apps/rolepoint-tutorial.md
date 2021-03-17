@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 235010cbcdde326cf17643cec81f3b6fcb1eea59
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010261"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Kurz: Azure Active Directory integrace s RolePoint
 
@@ -27,7 +27,7 @@ Tato integrace poskytuje tyto výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k RolePoint (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -54,7 +54,7 @@ K nastavení integrace RolePoint do služby Azure AD je nutné přidat RolePoint
 
 2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**:
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace** :
 
@@ -92,7 +92,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RolePoin
 
     ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
+3. Na stránce **nastavit jeden Sign-On s SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
 
     ![Ikona úprav](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RolePoin
     > [!NOTE]
     > Tyto hodnoty jsou zástupné symboly. Musíte použít vlastní přihlašovací adresu URL a identifikátor. Doporučujeme, abyste v identifikátoru použili jedinečnou řetězcovou hodnotu. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory RolePoint](mailto:info@rolepoint.com) . Můžete se také podívat na vzory zobrazené v dialogovém okně **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **metadat federace XML**podle vašich požadavků a uložte soubor do počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **metadat federace XML** podle vašich požadavků a uložte soubor do počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -134,7 +134,7 @@ Pokud chcete nastavit jednotné přihlašování na straně RolePoint, musíte p
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**:
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé** a pak vyberte **Všichni uživatelé**:
 
     ![Vyberte Všichni uživatelé.](common/users.png)
 
@@ -148,9 +148,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Například BrittaSimon@contoso.com .)
 
-    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
+    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
     1. Vyberte **Vytvořit**.
 
@@ -158,9 +158,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k RolePoint.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **RolePoint**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **RolePoint**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte možnost **RolePoint**.
 
@@ -170,7 +170,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
@@ -182,18 +182,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-a-rolepoint-test-user"></a>Vytvořit testovacího uživatele v RolePoint
 
-Dále musíte vytvořit uživatele s názvem Britta Simon v RolePoint. Pracujte s [týmem podpory RolePoint](mailto:info@rolepoint.com) a přidejte uživatele do RolePoint. Aby bylo možné použít jednotné přihlašování, je nutné vytvořit a aktivovat uživatele.
+Dále musíte vytvořit uživatele s názvem Britta Simon v RolePoint. Pracujte s [týmem podpory RolePoint](mailto:info@rolepoint.com) a přidejte uživatele do RolePoint. Aby bylo možné použít jednotné přihlašování, je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici RolePoint, měli byste se automaticky přihlásit k instanci RolePoint, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici RolePoint, měli byste se automaticky přihlásit k instanci RolePoint, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

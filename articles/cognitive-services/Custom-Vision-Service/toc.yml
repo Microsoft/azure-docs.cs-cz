@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Co je Custom Vision?
-      href: home.md
+      href: overview.md
     - name: Co je nového
       href: whats-new.md
 - name: Rychlé starty
@@ -13,7 +13,7 @@
       items:
         - name: Použití webového portálu
           href: getting-started-build-a-classifier.md
-        - name: Použití sady Custom Vision SDK
+        - name: Použití sady Custom Vision SDK nebo REST API
           href: quickstarts/image-classification.md
     - name: Sestavení detektoru objektů
       items:
@@ -31,7 +31,7 @@
   items:
     - name: Testování modelu
       href: test-your-model.md
-    - name: Vylepšení klasifikátoru
+    - name: Vylepšení modelu
       href: getting-started-improving-your-classifier.md
     - name: Výběr domény
       href: select-domain.md
@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: Použití nástroje Smart Labeler
       href: suggested-tags.md
+    - name: Řízení přístupu na základě role v Azure
+      href: role-based-access-control.md
     - name: Export modelů
       items:
         - name: Export modelu do mobilní verze
@@ -47,7 +49,11 @@
           href: custom-vision-onnx-windows-ml.md
         - name: Spuštění modelu TensorFlow v Pythonu
           href: export-model-python.md
-    - name: Export nebo odstranění dat účtu
+    - name: Integrace oznámení úložiště
+      href: storage-integration.md
+    - name: Kopírování a přesun projektů
+      href: copy-move-projects.md
+    - name: Zobrazení nebo odstranění dat účtu
       href: ./export-delete-data.md
     - name: Aktualizace aplikace na rozhraní API 3.0
       href: ./update-application-to-3.0-sdk.md
@@ -60,29 +66,27 @@
     - name: Sady SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/customvision
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/customvision
         - name: Node.js – trénování
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customvision-training/
         - name: Node.js –předpověď
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customvision-prediction/
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
+          href: /python/api/overview/azure/cognitiveservices/customvision
         - name: Go – trénování
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
         - name: Go – předpověď
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: ukázky
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
+      href: /samples/browse/?products=azure&term=vision
     - name: Omezení a kvóty
       href: limits-and-quotas.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionální dostupnost
@@ -90,6 +94,6 @@
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování
-      href: custom-vision-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: Poznámky k verzi
       href: release-notes.md

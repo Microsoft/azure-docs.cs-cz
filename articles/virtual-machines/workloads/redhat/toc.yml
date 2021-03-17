@@ -2,11 +2,21 @@
   href: overview.md
 - name: Image Red Hat Enterprise Linuxu
   items:
-    - name: Přehled imagí Red Hat Enterprise Linuxu
+    - name: Přehled imagí RHEL
       href: redhat-images.md
-    - name: Seznam imagí Red Hat Enterprise Linuxu
+    - name: Seznam imagí RHEL
       href: redhat-imagelist.md
+- name: Rychlá zprovoznění Javy v Red Hatu
+  items:
+    - name: JBoss EAP + RHEL ve virtuálním počítači / VMSS
+      href: jboss-eap-on-rhel.md
+    - name: WildFly + CentOS ve virtuálním počítači / VMSS
+      href: wildfly-on-centos.md
 - name: Infrastruktura aktualizací Red Hatu v Azure
   href: redhat-rhui.md
 - name: Nabídka imagí Red Hat Enterprise Linuxu
   href: byos.md
+- name: Rozšířená podpora životního cyklu pro Red Hat Enterprise Linux
+  href: redhat-extended-lifecycle-support.md
+- name: Místní upgrade imagí Red Hatu Enterprise v Azure
+  href: redhat-in-place-upgrade.md

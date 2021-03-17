@@ -2,7 +2,7 @@
 title: Odstranit Azure Active Directory Domain Services | Microsoft Docs
 description: Přečtěte si, jak zakázat nebo odstranit Azure Active Directory Domain Services spravované domény pomocí Azure Portal
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: bece22fa0b9d41f29f8829d47a26f4ae2075feac
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: a5126abd6643eba7f63b2bf4ca984bb9892b2d7a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040108"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619806"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Odstranění Azure Active Directory Domain Services spravované domény pomocí Azure Portal
 
@@ -50,5 +50,5 @@ Zvažte [sdílení zpětné vazby][feedback] k funkcím, které byste chtěli vi
 Pokud chcete začít se službou Azure služba AD DS znovu, přečtěte si téma [Vytvoření a konfigurace Azure Active Directory Domain Services spravované domény][create-instance].
 
 <!-- INTERNAL LINKS -->
-[feedback]: contact-us.md
+[feedback]: https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593%3fcategory_id%3d160593
 [create-instance]: tutorial-create-instance.md

@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78189007"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95990871"
 ---
 ## <a name="sample-templates"></a>Ukázkové šablony
 Ukázkové šablony pro přizpůsobení uživatelského rozhraní můžete najít tady:
@@ -27,12 +27,12 @@ Postup použití ukázky:
 
 1. Naklonujte úložiště na místním počítači. Vyberte složku šablony `/ocean_blue` nebo `/slate_gray` .
 1. Nahrajte všechny soubory ve složce šablony a `/assets` složce do úložiště objektů blob, jak je popsáno v předchozích částech.
-1. Potom otevřete každý `\*.html` soubor v kořenovém adresáři `/ocean_blue` nebo `/slate_gray` nahraďte všechny výskyty relativních adres URL adresami URL souborů CSS, obrázků a písem, které jste nahráli v kroku 2. Příklad:
+1. Potom otevřete každý `\*.html` soubor v kořenovém adresáři `/ocean_blue` nebo `/slate_gray` nahraďte všechny výskyty relativních adres URL adresami URL souborů CSS, obrázků a písem, které jste nahráli v kroku 2. Například:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
 
-    Akce
+    Záměr
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```

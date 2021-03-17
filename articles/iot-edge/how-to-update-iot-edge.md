@@ -5,18 +5,20 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/22/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d4840dcbe67a0bd94c74b43164c24e0c45e9daf
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85299003"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200640"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Jelikož služba IoT Edge uvolní nové verze, budete chtít aktualizovat IoT Edge zařízení o nejnovější funkce a vylepšení zabezpečení. Tento článek poskytuje informace o tom, jak aktualizovat zařízení IoT Edge, když je dostupná nová verze.
 
@@ -30,17 +32,14 @@ Démon zabezpečení IoT Edge je nativní součást, kterou je potřeba aktualiz
 
 Pomocí příkazu ověřte verzi démona zabezpečení spuštěnou na vašem zařízení `iotedge version` .
 
-### <a name="linux-devices"></a>Zařízení se systémem Linux
+>[!IMPORTANT]
+>Pokud aktualizujete zařízení z verze 1,0 nebo 1,1 na verzi 1,2, existují rozdíly v procesech instalace a konfigurace, které vyžadují další kroky. Další informace najdete v postupu dále v tomto článku: [zvláštní případ: aktualizace z 1,0 nebo 1,1 na 1,2](#special-case-update-from-10-or-11-to-12).
+
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Na zařízeních se systémem Linux x64 pomocí apt-get nebo odpovídajícího správce balíčků aktualizujte démona zabezpečení na nejnovější verzi.
 
 Získat nejnovější konfiguraci úložiště od Microsoftu:
-
-* **Ubuntu Server 16,04**:
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18,04**:
 
@@ -48,7 +47,7 @@ Získat nejnovější konfiguraci úložiště od Microsoftu:
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Raspbian Stretch**:
+* **Malina Pi OS Stretch**:
 
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -72,6 +71,9 @@ Aktualizujte apt.
    ```bash
    sudo apt-get update
    ```
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Zkontrolujte, které verze IoT Edge jsou k dispozici.
 
@@ -97,27 +99,44 @@ Pokud verze, kterou chcete nainstalovat, není k dispozici prostřednictvím apt
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
+<!-- end 1.1 -->
+:::moniker-end
 
-### <a name="windows-devices"></a>Zařízení s Windows
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
 
-Na zařízeních s Windows aktualizujte démona zabezpečení pomocí skriptu PowerShellu. Skript automaticky vyžádá nejnovější verzi démona zabezpečení.
+Zkontrolujte, které verze IoT Edge jsou k dispozici.
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
-```
+   ```bash
+   apt list -a aziot-edge
+   ```
 
-Spuštění příkazu Update-IoTEdge odebere a aktualizuje démona zabezpečení ze zařízení spolu se dvěma bitovými kopiemi kontejnerů modulu runtime. Soubor config. yaml se uchovává v zařízení a také data z modulu kontejneru Moby (Pokud používáte kontejnery Windows). Udržování informací o konfiguraci znamená, že v průběhu procesu aktualizace nemusíte znovu zadávat informace o připojovacím řetězci nebo službě Device Provisioning pro vaše zařízení.
+Pokud chcete aktualizovat na nejnovější verzi IoT Edge, použijte následující příkaz, který taky aktualizuje službu identity na nejnovější verzi:
 
-Pokud chcete aktualizovat na konkrétní verzi démona zabezpečení, vyhledejte verzi, kterou chcete cílit z [IoT Edge verzí](https://github.com/Azure/azure-iotedge/releases). V této verzi Stáhněte soubor **Microsoft-Azure-IoTEdge.cab** . Pak použijte parametr, `-OfflineInstallationPath` který odkazuje na umístění místního souboru. Příklad:
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+<!-- end 1.2 -->
+:::moniker-end
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
-```
+# <a name="windows"></a>[Windows](#tab/windows)
 
->[!NOTE]
->`-OfflineInstallationPath`Parametr vyhledá soubor s názvem **Microsoft-Azure-IoTEdge.cab** v zadaném adresáři. Počínaje IoT Edge verzí 1.0.9-RC4 jsou k dispozici dva soubory. cab, jeden pro zařízení AMD64 a jeden pro ARM32. Stáhněte si správný soubor pro vaše zařízení a pak přejmenujte soubor, abyste odebrali příponu architektury.
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
-Další informace o možnostech aktualizace získáte pomocí příkazu, `Get-Help Update-IoTEdge -full` nebo se podívejte na [všechny parametry instalace](how-to-install-iot-edge-windows.md#all-installation-parameters).
+Při IoT Edge pro Linux ve Windows se IoT Edge spouští na virtuálním počítači Linux hostovaném na zařízení s Windows. Tento virtuální počítač je předem nainstalovaný pomocí IoT Edge a je spravovaný pomocí Microsoft Update, aby se komponenty zachovaly v aktuálním stavu. Pokud máte povolené automatické aktualizace, budou se nové aktualizace stahovat a instalovat, jenom když budou k dispozici.
+
+U IoT Edge pro Windows se IoT Edge spouští přímo na zařízení s Windows. Pokyny k aktualizaci pomocí skriptů PowerShellu najdete v tématu [instalace a správa Azure IoT Edge pro Windows](how-to-install-iot-edge-windows-on-windows.md).
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+V současné době není na zařízeních s Windows podporována IoT Edge verze 1,2.
+
+:::moniker-end
+
+---
 
 ## <a name="update-the-runtime-containers"></a>Aktualizace kontejnerů modulu runtime
 
@@ -160,7 +179,7 @@ Použijete-li v nasazení konkrétní značky (například mcr.microsoft.com/azu
 
    ![Konfigurace nastavení modulu runtime](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. V **nastavení modulu runtime**aktualizujte hodnotu **Image** pro **centrum Edge** s požadovanou verzí. Nevybírejte možnost **Uložit** pouze zatím.
+1. V **nastavení modulu runtime** aktualizujte hodnotu **Image** pro **centrum Edge** s požadovanou verzí. Ještě nevybírejte možnost **Uložit** .
 
    ![Aktualizovat verzi obrázku centra hran](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
@@ -172,36 +191,79 @@ Použijete-li v nasazení konkrétní značky (například mcr.microsoft.com/azu
 
 1. Vyberte **zkontrolovat + vytvořit**, zkontrolujte nasazení a vyberte **vytvořit**.
 
-## <a name="update-offline-or-to-a-specific-version"></a>Aktualizace v režimu offline nebo na konkrétní verzi
+## <a name="special-case-update-from-10-or-11-to-12"></a>Zvláštní případ: aktualizace z 1,0 nebo 1,1 na 1,2
 
-Pokud chcete zařízení aktualizovat offline nebo aktualizovat na konkrétní verzi IoT Edge místo nejnovější verze, můžete k tomu využít `-OfflineInstallationPath` parametr.
+Počínaje verzí 1,2 služba IoT Edge používá nový název balíčku a obsahuje několik rozdílů v procesu instalace a konfigurace. Pokud máte zařízení IoT Edge se systémem, verze 1,0 nebo 1,1, pomocí těchto pokynů se dozvíte, jak aktualizovat na 1,2.
 
-K aktualizaci IoT Edge zařízení se používají dvě komponenty:
+>[!NOTE]
+>V současné době není k dispozici podpora IoT Edge verze 1,2 spuštěná na zařízeních s Windows.
 
-* Skript prostředí PowerShell, který obsahuje pokyny k instalaci
-* Microsoft Azure IoT Edge soubor CAB obsahující rozhraní Moby (IoT Edge Security Daemon), modul kontejnerů Moby a CLI
+Mezi hlavní rozdíly mezi 1,2 a staršími verzemi patří:
 
-1. Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi najdete v tématu [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
+* Název balíčku se změnil z **iotedge** na **aziot-Edge**.
+* Balíček **libiothsm-STD** se už nepoužívá. Pokud jste použili standardní balíček, který je součástí verze IoT Edge, pak můžete vaše konfigurace přenést do nové verze. Pokud jste používali jinou implementaci libiothsm-STD, bude nutné překonfigurovat všechny uživatelské certifikáty, jako je certifikát identity zařízení, certifikační autorita zařízení a sada Trust.
+* V rámci verze 1,2 byla představena nová služba identity **aziot-identity-Service** . Tato služba zpracovává zřizování a správu identit pro IoT Edge a další součásti zařízení, které potřebují komunikovat s IoT Hub, jako je třeba aktualizace zařízení Azure IoT Hub. <!--TODO: add link to ADU when available -->
+* Výchozí konfigurační soubor má nový název a umístění. Ve `/etc/iotedge/config.yaml` výchozím nastavení se teď ve výchozím nastavení očekávají informace o konfiguraci zařízení `/etc/aziot/congig.toml` . `iotedge config import`Příkaz lze použít k usnadnění migrace informací o konfiguraci o staré umístění a syntaxi na nové.
+* Všechny moduly, které používají rozhraní API úlohy IoT Edge k šifrování nebo dešifrování trvalých dat, nelze po aktualizaci dešifrovat. IoT Edge dynamicky vygeneruje hlavní klíč identity a šifrovací klíč pro interní použití. Tento klíč se přenese do nové služby. IoT Edge v 1.2 vygeneruje nový.
 
-2. Vyhledejte verzi, kterou chcete nainstalovat, a Stáhněte si následující soubory z části **assets (prostředky** ) poznámky k verzi do zařízení IoT:
+Před automatizací všech procesů aktualizace ověřte, že funguje na testovacích počítačích.
 
-   * IoTEdgeSecurityDaemon.ps1
-   * Microsoft-Azure-IoTEdge-amd64.cab z verzí 1.0.9 nebo novější, nebo Microsoft-Azure-IoTEdge.cab z verzí 1.0.8 a starších.
+Až budete připraveni, aktualizujte IoT Edge na svých zařízeních pomocí následujících kroků:
 
-   Microsoft-Azure-IotEdge-arm32.cab je k dispozici také pro účely testování, od 1.0.9. IoT Edge se v současné době nepodporují na zařízeních s Windows ARM32.
+1. Získat nejnovější konfiguraci úložiště od Microsoftu:
 
-   Je důležité použít skript prostředí PowerShell ze stejné verze, jako je soubor. cab, který používáte, protože funkce se mění tak, aby podporovaly funkce v jednotlivých vydaných verzích.
+   * **Ubuntu Server 18,04**:
 
-3. Pokud má soubor. cab, který jste stáhli, příponu architektury, přejmenujte soubor na pouze **Microsoft-Azure-IoTEdge.cab**.
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
 
-4. Chcete-li aktualizovat s offline [komponentami, poznamenejte si místní](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Update-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Třeba
+   * **Malina Pi OS Stretch**:
 
-   ```powershell
-   . <path>\IoTEdgeSecurityDaemon.ps1
-   Update-IoTEdge -OfflineInstallationPath <path>
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+2. Zkopírujte vygenerovaný seznam.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
    ```
 
-## <a name="update-to-a-release-candidate-version"></a>Aktualizace na verzi Release Candidate
+3. Nainstalujte veřejný klíč Microsoft GPG.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+
+4. Aktualizujte apt.
+
+   ```bash
+   sudo apt-get update
+   ```
+
+5. Odinstalujte předchozí verzi IoT Edge a zanechte své konfigurační soubory na místě.
+
+   ```bash
+   sudo apt-get remove iotedge
+   ```
+
+6. Nainstalujte nejnovější verzi IoT Edge společně se službou identity IoT.
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+
+7. Naimportujte starý soubor config. yaml do nového formátu a použijte informace o konfiguraci.
+
+   ```bash
+   sudo iotedge config import
+   ```
+
+Teď, když je služba IoT Edge běžící na vašich zařízeních aktualizovaná, postupujte podle kroků v tomto článku a [aktualizujte také kontejnery modulu runtime](#update-the-runtime-containers).
+
+## <a name="special-case-update-to-a-release-candidate-version"></a>Zvláštní případ: aktualizace na verzi Release Candidate
 
 Azure IoT Edge pravidelně uvolňuje nové verze služby IoT Edge. Před každou stabilní verzí je k dispozici nejméně jedna verze Release Candidate (RC). Verze RC zahrnují všechny plánované funkce pro tuto verzi, ale stále procházejí testováním a ověřováním. Pokud chcete otestovat novou funkci v brzkém případě, můžete nainstalovat verzi RC a poskytnout zpětnou vazbu prostřednictvím GitHubu.
 
@@ -213,10 +275,7 @@ Ve verzi Preview jsou Release Candidate verze nezahrnuté jako nejnovější ver
 
 V částech v tomto článku se dozvíte, jak aktualizovat zařízení IoT Edge na určitou verzi modulů pro démona zabezpečení nebo modul runtime.
 
-Pokud instalujete IoT Edge do nového počítače, pomocí následujících odkazů se dozvíte, jak nainstalovat konkrétní verzi v závislosti na operačním systému zařízení:
-
-* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
-* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
+Pokud instalujete IoT Edge, nemusíte upgradovat existující instalaci, použijte postup v části [instalace offline nebo konkrétní verze](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,6 @@
 ---
-title: Sestavení procesu víceklientské architektury s použitím koncového bodu Microsoft Identity Platform
+title: 'Kurz: sestavení démona s více klienty, který přistupuje k Microsoft Graph obchodním datům | Azure'
+titleSuffix: Microsoft identity platform
 description: V tomto kurzu se dozvíte, jak volat webové rozhraní API ASP.NET chráněné Azure Active Directory z aplikace Windows Desktop (WPF). Klient WPF ověří uživatele, požádá o přístupový token a zavolá webové rozhraní API.
 services: active-directory
 author: jmprieur
@@ -11,16 +12,18 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641108"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653758"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Kurz: sestavení procesu víceklientské architektury s využitím koncového bodu Microsoft Identity Platform
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
-V tomto kurzu se naučíte používat Microsoft Identity Platform pro přístup k datům obchodních zákazníků Microsoftu v dlouhodobém, neinteraktivním procesu. Vzorový démon používá [pověření klienta OAuth2](v2-oauth2-client-creds-grant-flow.md) k získání přístupového tokenu. Démon pak pomocí tokenu volá [Microsoft Graph](https://graph.microsoft.io) a přistupuje k datům organizace.
+V tomto kurzu stáhnete a spustíte webovou aplikaci démona ASP.NET, která demonstruje použití přihlašovacích údajů klienta OAuth 2,0, aby získala přístupový token pro volání rozhraní API Microsoft Graph.
+
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Integrace aplikace démona s platformou Microsoft identity
@@ -30,28 +33,23 @@ V tomto kurzu se naučíte používat Microsoft Identity Platform pro přístup 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Aplikace je sestavená jako aplikace ASP.NET MVC. K přihlašování uživatelů používá middleware OWIN OpenID Connect.
-
-Komponentou "démon" v této ukázce je kontroler rozhraní API, `SyncController.cs` . Když se kontroler zavolá, vyžádá si seznam uživatelů v tenantovi Azure Active Directory zákazníka (Azure AD) z Microsoft Graph. `SyncController.cs`je aktivován voláním AJAX ve webové aplikaci. K získání přístupového tokenu pro Microsoft Graph používá [Microsoft Authentication Library (MSAL) pro .NET](msal-overview.md) .
-
->[!NOTE]
-> Pokud začínáte s platformou Microsoft identity, doporučujeme začít s rychlým startem [procesu .NET Core](quickstart-v2-netcore-daemon.md).
-
-## <a name="scenario"></a>Scénář
-
-Vzhledem k tomu, že aplikace je víceklientské aplikace pro obchodní zákazníky Microsoftu, musí zákazníkům poskytnout způsob, jak se zaregistrovat nebo připojit k podnikovým datům. Během toku připojení správce společnosti nejprve udělí *oprávnění aplikace* přímo aplikaci, aby mohl přistupovat k firemním datům neinteraktivním způsobem bez přihlášeného uživatele. Většina logiky v této ukázce ukazuje, jak dosáhnout tohoto toku připojení pomocí koncového bodu [souhlasu správce](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) platformy identity.
-
-![Topologie](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
-
-Další informace o konceptech použitých v této ukázce najdete v dokumentaci k [protokolu přihlašovacích údajů klienta pro koncový bod platformy identity](v2-oauth2-client-creds-grant-flow.md).
-
 ## <a name="prerequisites"></a>Požadavky
-
-Pokud chcete ukázku spustit v tomto rychlém startu, budete potřebovat:
 
 - [Visual Studio 2017 nebo 2019](https://visualstudio.microsoft.com/downloads/).
 - Tenanta Azure AD. Další informace najdete v tématu [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md).
-- Jeden nebo více uživatelských účtů v tenantovi Azure AD. Tato ukázka nebude fungovat s účet Microsoft (dříve účet Windows Live). Pokud jste se k [Azure Portal](https://portal.azure.com) přihlásili pomocí účet Microsoft a nikdy jste ve svém adresáři nevytvořili uživatelský účet, musíte to udělat hned teď.
+- Jeden nebo více uživatelských účtů v tenantovi Azure AD. Tato ukázka nebude fungovat s účet Microsoft. Pokud jste se k [Azure Portal](https://portal.azure.com) přihlásili pomocí účet Microsoft a nikdy jste ve svém adresáři nevytvořili uživatelský účet, udělejte to teď.
+
+## <a name="scenario"></a>Scenario
+
+Aplikace je sestavená jako aplikace ASP.NET MVC. K přihlašování uživatelů používá middleware OWIN OpenID Connect.
+
+Komponentou "démon" v této ukázce je kontroler rozhraní API, `SyncController.cs` . Když se kontroler zavolá, vyžádá si seznam uživatelů v tenantovi Azure Active Directory zákazníka (Azure AD) z Microsoft Graph. `SyncController.cs` je aktivován voláním AJAX ve webové aplikaci. K získání přístupového tokenu pro Microsoft Graph používá [Microsoft Authentication Library (MSAL) pro .NET](msal-overview.md) .
+
+Vzhledem k tomu, že aplikace je víceklientské aplikace pro obchodní zákazníky Microsoftu, musí zákazníkům poskytnout způsob, jak se zaregistrovat nebo připojit k datům společnosti. Během toku připojení globální správce nejprve udělí *oprávnění aplikace* přímo do aplikace, aby mohl přistupovat k firemním datům neinteraktivním způsobem bez přihlášeného uživatele. Většina logiky v této ukázce ukazuje, jak dosáhnout tohoto toku připojení pomocí koncového bodu [souhlasu správce](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) platformy identity.
+
+![Diagram zobrazuje aplikaci v UserSync se třemi místními položkami připojujícími se k Azure. ověřování pomocí spouštěcích teček znovu získává token, který umožňuje interaktivní připojení k Azure a D, AccountController získání souhlasu správce pro připojení k Azure a D a SyncController čtení uživatele pro připojení k Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
+
+Další informace o konceptech použitých v této ukázce najdete v dokumentaci k [protokolu přihlašovacích údajů klienta pro platformu identity](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="clone-or-download-this-repository"></a>Klonovat nebo stáhnout toto úložiště
 
@@ -63,11 +61,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Nebo [si ukázku Stáhněte v souboru ZIP](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 
 Tato ukázka má jeden projekt. Pokud chcete aplikaci zaregistrovat u svého tenanta Azure AD, můžete:
 
-- Postupujte podle kroků v části [registrace ukázky u svého tenanta Azure Active Directory](#register-your-application) a [nakonfigurujete ukázku, aby používala vašeho tenanta Azure AD](#choose-the-azure-ad-tenant).
+- Postupujte podle kroků v části [registrace ukázky u svého tenanta Azure Active Directory](#register-the-client-app-dotnet-web-daemon-v2) a [nakonfigurujete ukázku, aby používala vašeho tenanta Azure AD](#choose-the-azure-ad-tenant).
 - Použijte skripty prostředí PowerShell, které:
   - *Automaticky* vytvořte aplikace Azure AD a související objekty (hesla, oprávnění, závislosti) za vás.
   - Upravte konfigurační soubory projektů sady Visual Studio.
@@ -95,40 +93,34 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 
 ### <a name="choose-the-azure-ad-tenant"></a>Výběr tenanta Azure AD
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. Pokud je váš účet ve více než jednom tenantovi služby Azure AD, vyberte svůj profil v nabídce v horní části stránky a pak vyberte **Přepnout adresář**.
-1. Změňte relaci portálu na požadovaného tenanta Azure AD.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>Registrace klientské aplikace (dotnet-web-démon-v2)
 
-1. Přejít na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) na platformě Microsoft identity pro vývojáře.
-1. Vyberte **Nová registrace**.
-1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
-   - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například příkaz **dotnet-web-démon-v2**.
-   - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
-   - V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátory URI pro přesměrování:
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `dotnet-web-daemon-v2` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
+1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** v poli se seznamem a zadejte `https://localhost:44316/` a `https://localhost:44316/Account/GrantPermissions` jako identifikátory URI přesměrování.
 
-     Pokud existuje více než dva identifikátory URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
+    Pokud existuje více než dva identifikátory URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
-1. V seznamu stránek pro aplikaci vyberte **Ověřování**. Potom:
-   - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44316/Account/EndSession** .
-   - V části **Upřesnit nastavení**  >  **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
+1. V části **Spravovat** vyberte **ověřování**.
+1. Nastavte **adresu URL pro odhlášení front-Channel** na `https://localhost:44316/Account/EndSession` .
+1. V části **implicitní udělení a hybridní toky** vyberte **přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
 1. Vyberte **Uložit**.
-1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. Potom:
-
-   1. Zadejte popis klíče (například **tajný klíč aplikace**),
-   1. Vyberte dobu trvání klíče buď **v 1 roce**, **2 roky**, nebo **nikdy nevyprší**.
-   1. Vyberte tlačítko **Přidat** .
-   1. Když se zobrazí hodnota klíče, zkopírujte ji a uložte ji v bezpečném umístění. Tento klíč budete potřebovat později ke konfiguraci projektu v aplikaci Visual Studio. Nebude se znovu zobrazovat ani získat jiným způsobem.
-1. V seznamu stránek aplikace vyberte **oprávnění rozhraní API**. Potom:
-   1. Vyberte tlačítko **Přidat oprávnění**.
-   1. Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
-   1. V části **běžně používaná rozhraní Microsoft API** vyberte **Microsoft Graph**.
-   1. V části **oprávnění aplikace** se ujistěte, že jsou vybrána správná oprávnění: **User. Read. All**.
-   1. Klikněte na tlačítko **Přidat oprávnění** .
+1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. 
+1. Zadejte popis klíče (například **tajný klíč aplikace**).
+1. Vyberte dobu trvání klíče buď **v 1 roce**, **2 roky**, nebo **nikdy nevyprší**.
+1. Vyberte **Přidat**. Poznamenejte si hodnotu klíče v bezpečném umístění. Tento klíč budete potřebovat později ke konfiguraci projektu v aplikaci Visual Studio.
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
+1. V části **běžně používaná rozhraní Microsoft API** vyberte **Microsoft Graph**.
+1. V části **oprávnění aplikace** se ujistěte, že jsou vybrána správná oprávnění: **User. Read. All**.
+1. Vyberte **Přidat oprávnění**.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Konfigurace ukázky pro použití vašeho tenanta Azure AD
 
@@ -140,7 +132,7 @@ Otevřete řešení v aplikaci Visual Studio a nakonfigurujte projekty.
 
 Pokud jste použili instalační skripty, budou pro vás provedeny následující změny.
 
-1. Otevřete soubor **UserSync\Web.config** .
+1. Otevřete soubor **UserSync\Web.Config** .
 1. Vyhledejte klíč aplikace **IDA: ClientID**. Nahraďte existující hodnotu ID aplikace aplikace **dotnet-web-démon-v2** zkopírovanou z Azure Portal.
 1. Vyhledejte klíč aplikace v aplikaci **IDA: ClientSecret**. Existující hodnotu nahraďte klíčem, který jste uložili během vytváření aplikace **dotnet-web-démon-v2** v Azure Portal.
 
@@ -190,15 +182,15 @@ Příslušný kód pro tuto ukázku je v následujících souborech:
    1. Odebrat **. App_Start** z názvu oboru názvů.
    1. Nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace.
    Nezapomeňte vzít v úvahu definici celé třídy. Definice se změní z **spuštění veřejné třídy** na **veřejnou částečnou třídu.**
-1. V **Startup.auth.cs**vyřešte chybějící odkazy přidáním příkazů, které jsou **navrženy pomocí technologie** IntelliSense sady Visual Studio.
-1. Klikněte pravým tlačítkem na projekt, vyberte **Přidat**a pak vyberte **Třída**.
+1. V **Startup.auth.cs** vyřešte chybějící odkazy přidáním příkazů, které jsou **navrženy pomocí technologie** IntelliSense sady Visual Studio.
+1. Klikněte pravým tlačítkem na projekt, vyberte **Přidat** a pak vyberte **Třída**.
 1. Do vyhledávacího pole zadejte **Owin**. **Spouštěcí třída Owin** se zobrazuje jako výběr. Vyberte ji a pojmenujte třídu **Startup.cs**.
-1. V **Startup.cs**nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace. Znovu si všimněte, že se změní definice z **spuštění veřejné třídy** na **veřejnou částečnou třídu**.
+1. V **Startup.cs** nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace. Znovu si všimněte, že se změní definice z **spuštění veřejné třídy** na **veřejnou částečnou třídu**.
 1. Ve složce **modely** přidejte novou třídu s názvem **MsGraphUser.cs**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **AccountController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **UserController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler webového rozhraní API 2 – prázdná instance s** názvem **SyncController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
-1. Pro uživatelské rozhraní ve složce **Views\Account** přidejte tři **prázdné (bez modelu) zobrazení** instancí s názvem **GrantPermissions**, **index**a **UserMismatch**. Přidejte a jeden pojmenovaný **index** do složky **Views\User** . Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
+1. Pro uživatelské rozhraní ve složce **Views\Account** přidejte tři **prázdné (bez modelu) zobrazení** instancí s názvem **GrantPermissions**, **index** a **UserMismatch**. Přidejte a jeden pojmenovaný **index** do složky **Views\User** . Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Aktualizujte **Shared \_ layout. cshtml** a **Home\Index.cshtml** , aby správně propojuje různá zobrazení.
 
 ## <a name="deploy-the-sample-to-azure"></a>Nasazení ukázky do Azure
@@ -211,10 +203,10 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Vytvoření a publikování dotnet-web-démon-v2 na webu Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. V levém horním rohu vyberte **Vytvořit prostředek**.
-1. Vyberte **Webová**  >  **Webová aplikace**a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
-1. Vyberte informace pro **předplatné**, **skupinu prostředků**a **plán a umístění služby App Service**. **Operační** systém je **Windows**a **publikování** je **kód**.
+1. Vyberte **Webová**  >  **Webová aplikace** a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
+1. Vyberte informace pro **předplatné**, **skupinu prostředků** a **plán a umístění služby App Service**. **Operační** systém je **Windows** a **publikování** je **kód**.
 1. Vyberte **vytvořit** a počkejte, než se služba App Service vytvoří.
 1. Až se vám zobrazí oznámení o **úspěšném nasazení** , vyberte **Přejít k prostředku** a přejít na nově vytvořenou službu App Service.
 1. Po vytvoření webu ho Najděte na **řídicím panelu** a vyberte ho a otevřete tak obrazovku s **přehledem** služby App Service.
@@ -232,22 +224,22 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Aktualizace registrace aplikace tenanta Azure AD pro dotnet-web-démon-v2
 
-1. Vraťte se na portál [Azure Portal](https://portal.azure.com).
+1. Vraťte se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
 1. Vyberte aplikaci **dotnet-web-démon-v2** .
-1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení front-Channel** adresou vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession` .
 1. V nabídce **značky** aktualizujte adresu **URL domovské stránky** na adresu vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Konfiguraci uložte.
-1. V seznamu hodnot v **Authentication**  >  nabídce**identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
+1. V seznamu hodnot v   >  nabídce **identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .  Pokud chcete aplikaci odebrat, postupujte podle pokynů v části [odebrání aplikace vytvořené vámi nebo vaší organizací](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
 
 ## <a name="get-help"></a>Získání pomoci
 
-K získání podpory od komunity použijte [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) .
-Nejdřív si položte otázky na Stack Overflow a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz dotazoval.
-Ujistěte se, že vaše dotazy nebo komentáře jsou označené "ADAL", "msal" a "dotnet".
+K získání podpory od komunity použijte [Microsoft Q&a](/answers/products/) .
+Položte své dotazy na [Microsoft Q&](/answers/products/) a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz předá dotaz.
+Ujistěte se, že vaše dotazy nebo komentáře jsou označené jako "Azure-AD-ADAL-vyřazení", "Azure-AD-msal a" dotnet-Standard ".
 
 Pokud v ukázce zjistíte chybu, vyřešte prosím problém na [problémech na GitHubu](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues).
 
@@ -256,17 +248,8 @@ Pokud v MSAL.NET zjistíte chybu, vyřešte problém na [MSAL.NET GitHubu](https
 Pokud chcete zadat doporučení, navštivte [stránku hlas uživatele](https://feedback.azure.com/forums/169401-azure-active-directory).
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o různých [tocích ověřování a scénářích aplikací](authentication-flows-app-scenarios.md) , které podporuje platforma Microsoft Identity Platform.
 
-Další informace najdete v následující Koncepční dokumentaci:
+Další informace o vytváření aplikací démona, které k přístupu k chráněným webovým rozhraním API používají platformu Microsoft identity:
 
-- [Tenantů v Azure Active Directory](single-and-multi-tenant-apps.md)
-- [Prostředí vyjádření souhlasu s aplikací Azure AD](application-consent-experience.md)
-- [Přihlášení libovolného Azure Active Directory uživatele pomocí vzoru víceklientské aplikace](howto-convert-app-to-be-multi-tenant.md)
-- [Vysvětlení souhlasu uživatele a správce](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Instanční objekty aplikací a služeb v Azure Active Directory](app-objects-and-service-principals.md)
-- [Rychlý Start: registrace aplikace s platformou Microsoft identity](quickstart-register-app.md)
-- [Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md)
-- [Získání tokenu pro aplikaci pomocí toků přihlašovacích údajů klienta](msal-client-applications.md)
-
-Pro jednodušší aplikaci démona víceklientské konzole si přečtěte článek [rychlý Start procesu .NET Core](quickstart-v2-netcore-daemon.md).
+> [!div class="nextstepaction"]
+> [Scénář: aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)

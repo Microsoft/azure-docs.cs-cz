@@ -1,19 +1,16 @@
 ---
 title: Analýza webových protokolů pomocí knihoven Pythonu ve Sparku – Azure
 description: Tento Poznámkový blok ukazuje, jak analyzovat data protokolu pomocí vlastní knihovny pomocí Sparku v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940299"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovny Pythonu s Apache Spark clusteru v HDInsight
 
@@ -31,9 +28,9 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/jupyter` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. Vytvořte nový poznámkový blok. Vyberte **Nový**a potom **PySpark**.
+1. Vytvořte nový poznámkový blok. Vyberte **Nový** a potom **PySpark**.
 
-    ![Vytvoření nového poznámkového bloku Apache Jupyter](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+    ![Vytvořit nový Jupyter Notebook Apache](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvořit nový Jupyter Notebook")
 
 1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Vyberte název poznámkového bloku v horní části a zadejte popisný název.
 
@@ -78,7 +75,7 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser`poskytuje funkci `parse_log_line` , která vrátí, `None` zda je řádek protokolu řádkem záhlaví a vrátí instanci `LogLine` třídy, pokud dojde k řádku protokolu. Použijte `LogLine` třídu k extrakci pouze řádků protokolu z RDD:
+1. `iislogparser` poskytuje funkci `parse_log_line` , která vrátí, `None` zda je řádek protokolu řádkem záhlaví a vrátí instanci `LogLine` třídy, pokud dojde k řádku protokolu. Použijte `LogLine` třídu k extrakci pouze řádků protokolu z RDD:
 
     ```pyspark
     def parse_line(l):
@@ -203,5 +200,5 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 Projděte si následující články:
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

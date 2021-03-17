@@ -1,26 +1,26 @@
 ---
 title: Kurz – načtení dat z Azure Data Lake Storage
-description: Pomocí příkazu COPY načtěte data z Azure Data Lake Storage SQL pro synapse.
+description: Pomocí příkazu COPY načtěte data z Azure Data Lake Storage vyhrazených fondů SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 06/07/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533933"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677100"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Načtení dat z Azure Data Lake Storage SQL pro synapse
+# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Načtení dat z Azure Data Lake Storage do vyhrazených fondů SQL ve službě Azure synapse Analytics
 
-Tato příručka popisuje, jak pomocí [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) načíst data z Azure Data Lake Storage. Rychlé příklady použití příkazu Kopírovat napříč všemi metodami ověřování najdete v následující dokumentaci: [bezpečné načtení dat pomocí synapse SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Tato příručka popisuje, jak pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) načíst data z Azure Data Lake Storage. Rychlé příklady použití příkazu Kopírovat napříč všemi metodami ověřování najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Pokud chcete poskytnout zpětnou vazbu nebo ohlásit problémy v příkazu COPY, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com .
@@ -34,16 +34,16 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
-* Fond SQL. Přečtěte si téma [Vytvoření fondu SQL a data dotazů](create-data-warehouse-portal.md).
+* Vyhrazený fond SQL. Viz [vytvoření vyhrazeného fondu SQL a dat dotazů](create-data-warehouse-portal.md).
 * Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů, které se mají načíst: klíč účtu úložiště, klíč sdíleného přístupového podpisu (SAS), uživatel aplikace Azure Directory nebo uživatel AAD, který má příslušnou roli Azure pro účet úložiště.
 
 ## <a name="create-the-target-table"></a>Vytvoření cílové tabulky
 
-Připojte se ke svému fondu SQL a vytvořte cílovou tabulku, do které budete načítat. V tomto příkladu vytváříme tabulku dimenzí produktu.
+Připojte se k vyhrazenému fondu SQL a vytvořte cílovou tabulku, do které budete načítat. V tomto příkladu vytváříme tabulku dimenzí produktu.
 
 ```sql
 -- A: Create the target table
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>Vytvoření příkazu COPY
 
-Připojte se ke svému fondu SQL a spusťte příkaz COPY. Úplný seznam příkladů najdete v následující dokumentaci: [bezpečné načtení dat pomocí synapse SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Připojte se ke svému vyhrazenému fondu SQL a spusťte příkaz COPY. Úplný seznam příkladů najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](./quickstart-bulk-load-copy-tsql-examples.md).
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -84,7 +84,7 @@ FROM 'https://storageaccount.blob.core.windows.net/container/directory/'
 WITH 
 (
    --CREDENTIAL: Specifies the authentication method and credential access your storage account
-   CREDENTIAL (IDENTITY = '', SECRET = '')
+   CREDENTIAL = (IDENTITY = '', SECRET = ''),
    --FILE_TYPE: Specifies the file type in your storage account location
    FILE_TYPE = 'CSV',
    --FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text (CSV) file
@@ -133,6 +133,6 @@ Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí 
 > [Naučte se vyvíjet tabulky pro datové sklady](sql-data-warehouse-tables-overview.md)
 
 Další příklady a odkazy pro načítání naleznete v následující dokumentaci:
-- [Dokumentace k příkazu COPY reference](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [ZKOPÍROVAT příklady pro každou metodu ověřování](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [Rychlé spuštění kopírování pro jednu tabulku](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [Dokumentace k příkazu COPY reference](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
+- [ZKOPÍROVAT příklady pro každou metodu ověřování](./quickstart-bulk-load-copy-tsql-examples.md)
+- [Rychlé spuštění kopírování pro jednu tabulku](./quickstart-bulk-load-copy-tsql.md)

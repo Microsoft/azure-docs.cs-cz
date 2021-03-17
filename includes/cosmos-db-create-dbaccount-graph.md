@@ -8,23 +8,26 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a6cfafd41d1632d99b7ca03bce2316ec679d7579
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 736ab630b035ae1a668332eb5ab5aa9530ef0e88
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77061780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972413"
 ---
 1. V novém okně prohlížeče se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 
 2. V nabídce vlevo vyberte **vytvořit prostředek**.
    
-   ![Vytvoření prostředku v Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-0.png)
+   ![Vytvoření prostředku na portálu Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-0.png)
    
 3. Na stránce **Nový** vyberte **databáze**  >  **Azure Cosmos DB**.
    
-   ![Podokno databází portálu Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
+   ![Podokno Databáze na webu Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
    
+   > [!TIP]
+   > Pokud v seznamu nevidíte Azure Cosmos DB, stačí ho zadat do vyhledávacího pole v horní části stránky a stisknout klávesu _ENTER_ . 
+
 3. Na stránce **vytvořit Azure Cosmos DB účet** zadejte nastavení pro nový účet Azure Cosmos DB. 
  
     Nastavení|Hodnota|Popis
@@ -34,6 +37,7 @@ ms.locfileid: "77061780"
     Account Name|Zadejte jedinečný název.|Zadejte jedinečný název, který identifikuje váš účet služby Azure Cosmos DB. Identifikátor URI vašeho účtu se *Gremlin.Azure.com* připojí k jedinečnému názvu účtu.<br><br>Název účtu může obsahovat jenom malá písmena, číslice a spojovníky (-) a musí mít délku 3 až 31 znaků.
     Rozhraní API|Gremlin (graf)|Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pět rozhraní API: Core (SQL) pro databáze dokumentů, Gremlin pro databáze grafů, MongoDB pro databáze dokumentů, tabulku Azure a Cassandra. Pro každé rozhraní API musíte vytvořit samostatný účet. <br><br>Vyberte **Gremlin (Graph)**, protože v tomto rychlém startu vytváříte tabulku, která funguje s rozhraním API Gremlin. <br><br>[Přečtěte si další informace o rozhraní Gremlin API](../articles/cosmos-db/graph-introduction.md).|
     Umístění|Vyberte oblast nejbližší vašim uživatelům.|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je vašim uživatelům nejbližší, abyste jim zajistili nejrychlejší přístup k datům.
+    Režim kapacity|Zřízená propustnost nebo bez serveru|Vyberte **zřízenou propustnost** a vytvořte účet v režimu [zřízené propustnosti](../articles/cosmos-db/set-throughput.md) . Pokud chcete vytvořit účet v režimu bez [serveru](../articles/cosmos-db/serverless.md) , vyberte možnost bez **serveru** .
 
     Vyberte **zkontrolovat + vytvořit**. Můžete přeskočit část **síť** a **značky** . 
 

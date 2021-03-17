@@ -3,13 +3,13 @@ title: Integrace API Management s Service Fabric v Azure
 description: Naučte se rychle začít s Azure API Management a směrovat provoz do back-endové služby v Service Fabric.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 681a1c5241743a0164d83d73753efa0b6c446109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260247"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735586"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrace API Management s Service Fabric v Azure
 
@@ -25,14 +25,14 @@ V tomto článku se dozvíte, jak nastavit [API Management Azure](../api-managem
 > [!IMPORTANT]
 > Tato funkce je dostupná na úrovních úrovně **Premium** a **Developer** API Management v důsledku podpory požadované virtuální sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
 * Vytvořte zabezpečený [cluster se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
-* Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+* Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a** vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Síťová topologie
 
@@ -243,9 +243,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$temp
 
 ```azurecli
 ResourceGroupName="sfclustertutorialgroup"
-az group deployment create --name ApiMgmtNetworkDeployment --resource-group $ResourceGroupName --template-file network-apim.json --parameters @network-apim.parameters.json
+az deployment group create --name ApiMgmtNetworkDeployment --resource-group $ResourceGroupName --template-file network-apim.json --parameters @network-apim.parameters.json
 
-az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json
+az deployment group create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json
 ```
 
 ## <a name="test-it"></a>Testování
@@ -277,7 +277,7 @@ Přímo na webu [Azure Portal](https://portal.azure.com) teď můžete do své b
 
 Cluster se kromě vlastního prostředku clusteru skládá z dalších prostředků Azure. Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí [rutiny Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
+Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí [rutiny Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"
@@ -293,6 +293,8 @@ az group delete --name $ResourceGroupName
 
 Přečtěte si další informace o použití [API Management](../api-management/import-and-publish.md).
 
+[Azure Portal](../api-management/how-to-configure-service-fabric-backend.md) můžete použít také k vytvoření a správě Service Fabric back-endy pro API Management.
+
 [azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
@@ -303,7 +305,6 @@ Přečtěte si další informace o použití [API Management](../api-management/
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-viceprezidenti-Fabric-Scripts-and-Templates/BLOB/Master/Templates/Service-Integration/network-apim.parameters.jsonn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

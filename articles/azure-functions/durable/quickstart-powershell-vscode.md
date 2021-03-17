@@ -1,16 +1,16 @@
 ---
 title: Vytvoření první trvalé funkce v Azure Functions pomocí prostředí PowerShell
-description: Vytvořte a publikujte funkci trvalosti Azure pomocí Visual Studio Code.
+description: Vytvořte a publikujte funkci trvalosti Azure v PowerShellu pomocí Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88273400"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91317255"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Vytvoření první trvalé funkce v PowerShellu
 
@@ -20,7 +20,7 @@ V tomto článku se naučíte, jak používat rozšíření Visual Studio Code A
 
 ![Spuštění trvalé funkce v Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -40,7 +40,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
 1. V Visual Studio Code stisknutím klávesy F1 (nebo Ctrl/Cmd + Shift + P) otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create New Project...` .
 
-    ![Funkce Create](media/quickstart-js-vscode/functions-create-project.png)
+    ![Vytvoření funkce](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Zvolte prázdné umístění složky pro váš projekt a zvolte **možnost vybrat**.
 
@@ -149,7 +149,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
     | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
     | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
-    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
+    | Výběr umístění | *oblast* | Vyberte oblast, kterou chcete zavřít. |
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

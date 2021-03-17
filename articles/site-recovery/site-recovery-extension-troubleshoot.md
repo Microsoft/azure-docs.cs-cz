@@ -6,13 +6,13 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184614"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009700"
 ---
-# <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů Azure
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálního počítače Azure
 
 Tento článek popisuje kroky pro řešení potíží, které vám pomůžou vyřešit chyby Azure Site Recovery související s agentem a rozšířením virtuálního počítače.
 
@@ -84,12 +84,12 @@ Většina selhání souvisejících s agentem nebo rozšířeními pro virtuáln
    > [!NOTE]
    > *Důrazně doporučujeme* , abyste agenta aktualizovali pouze prostřednictvím distribučního úložiště. Nedoporučujeme stahovat kód agenta přímo z GitHubu a aktualizovat ho. Pokud není k dispozici nejnovější agent pro distribuci, obraťte se na podporu distribuce, kde najdete pokyny k jeho instalaci. Chcete-li zjistit nejnovějšího agenta, v úložišti GitHubu, navštivte stránku [agenta Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) .
 
-1. Spuštěním následujícího příkazu zajistěte, aby byl na virtuálním počítači spuštěný agent Azure:`ps -e`
+1. Spuštěním následujícího příkazu zajistěte, aby byl na virtuálním počítači spuštěný agent Azure: `ps -e`
 
    Pokud proces není spuštěný, restartujte ho pomocí následujících příkazů:
 
-   - Pro Ubuntu:`service walinuxagent start`
-   - Pro ostatní distribuce:`service waagent start`
+   - Pro Ubuntu: `service walinuxagent start`
+   - Pro ostatní distribuce: `service waagent start`
 
 1. [Nakonfigurujte agenta automatického restartování](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 1. Povolte ochranu virtuálního počítače.

@@ -1,17 +1,15 @@
 ---
 title: Ladění aplikace v zatmění
 description: Vylepšete spolehlivost a výkon svých služeb tím, že je vyvyvíjíte a ladíte v zatmění na místním vývojovém clusteru.
-author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-java
-ms.author: suhuruli
-ms.openlocfilehash: 32472c6caafe62d629ee3a5ffb8c758624228efd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d321e0c10b66a15e6cb309cefe711602fa12957c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87316609"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534104"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Ladění aplikace Service Fabric Java pomocí zatmění
 > [!div class="op_single_selector"]

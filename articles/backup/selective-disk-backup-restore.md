@@ -3,20 +3,17 @@ title: Selektivní zálohování a obnovení disku pro virtuální počítače A
 description: V tomto článku se dozvíte o selektivním zálohování a obnovení disku pomocí řešení zálohování virtuálních počítačů Azure.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.custom: references_regions
-ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566229"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501821"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
 Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s použitím řešení zálohování virtuálních počítačů. Teď můžete pomocí funkce zálohování a obnovení selektivních disků zálohovat podmnožinu datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje pouze disky, které jsou součástí operace zálohování. Tím umožníte, aby se v průběhu operace obnovení obnovila podmnožina disků z daného bodu obnovení. To platí pro obnovení ze snímků i z trezoru.
-
->[!NOTE]
->Selektivní zálohování disku a obnovení pro virtuální počítače Azure je ve verzi Public Preview ve všech oblastech.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -38,7 +35,7 @@ Ujistěte se, že používáte AZ CLI verze 2.0.80 nebo vyšší. Verzi rozhran�
 az --version
 ```
 
-Přihlaste se k ID předplatného, kde existuje trezor služby Recovery Services a virtuální počítač:
+Přihlaste se k ID předplatného, kde existuje Recovery Services trezor a virtuální počítač:
 
 ```azurecli
 az account set -s {subscriptionID}
@@ -49,7 +46,7 @@ az account set -s {subscriptionID}
 
 ### <a name="configure-backup-with-azure-cli"></a>Konfigurace zálohování pomocí Azure CLI
 
-Během operace konfigurace ochrany je třeba zadat nastavení seznamu disků s **inclusion**  /  parametrem**vyloučení** zahrnutí a zadat tak čísla logických jednotek disků, které mají být zahrnuty nebo vyloučeny v záloze.
+Během operace konfigurace ochrany je třeba zadat nastavení seznamu disků s   /  parametrem **vyloučení** zahrnutí a zadat tak čísla logických jednotek disků, které mají být zahrnuty nebo vyloučeny v záloze.
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -62,37 +59,37 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 Pokud virtuální počítač není ve stejné skupině prostředků jako trezor **, pak skupina** prostředků odkazuje na skupinu prostředků, ve které se vytvořil trezor. Místo názvu virtuálního počítače zadejte ID virtuálního počítače, jak je uvedeno níže.
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Úprava ochrany pro už zálohované virtuální počítače pomocí Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
+az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-azure-cli"></a>Zálohovat jenom disk s operačním systémem během konfigurace zálohování pomocí Azure CLI
 
 ```azurecli
-az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} -- exclude-all-data-disks
+az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --exclude-all-data-disks
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-azure-cli"></a>Zálohovat jenom disk s operačním systémem během změny ochrany pomocí Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --exclude-all-data-disks
+az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --exclude-all-data-disks
 ```
 
 ### <a name="restore-disks-with-azure-cli"></a>Obnovení disků pomocí Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-to-staging-storage-account --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Obnovení jenom disku s operačním systémem pomocí Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-to-staging-storage-account --restore-only-osdisk
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-only-osdisk
 ```
 
 ### <a name="get-protected-item-to-get-disk-exclusion-details-with-azure-cli"></a>Získat chráněnou položku pro získání podrobností o vyloučení disku pomocí Azure CLI
@@ -181,7 +178,7 @@ Každý bod obnovení má informace o zahrnutých a vyloučených discích:
 ### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>Odebrat nastavení vyloučení disku a získat chráněnou položku pomocí Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --disk-list-setting resetexclusionsettings
+az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting resetexclusionsettings
 
 az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
 ```
@@ -190,12 +187,27 @@ Když tyto příkazy spustíte, uvidíte `"diskExclusionProperties": null` .
 
 ## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ujistěte se, že používáte Azure PS verze 3.7.0 nebo novější.
+Ujistěte se, že používáte Azure PowerShell verze 3.7.0 nebo novější.
+
+Během operace konfigurace ochrany je třeba zadat nastavení seznamu disků s parametrem include/Exclude a poskytnout tak čísla logických jednotek (LUN), která mají být zahrnuta do zálohování nebo vyloučena z těchto disků.
 
 ### <a name="enable-backup-with-powershell"></a>Povolení zálohování pomocí PowerShellu
 
+Například:
+
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
+$disks = ("0","1")
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rg-p-recovery_vaults" -Name "rsv-p-servers"
+Get-AzRecoveryServicesBackupProtectionPolicy
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "P-Servers"
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList $disks -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList $disks -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>Zálohovat jenom disk s operačním systémem během konfigurace zálohování pomocí PowerShellu
@@ -207,7 +219,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ### <a name="get-backup-item-object-to-be-passed-in-modify-protection-with-powershell"></a>Získání objektu zálohované položky, která se má předat v rámci úpravy ochrana pomocí PowerShellu
 
 ```azurepowershell
-$item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $Vault.ID -FriendlyName "V2VM"
+$item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $targetVault.ID -FriendlyName "V2VM"
 ```
 
 Výše uvedený získaný objekt **$Item** musíte předat parametru **– Item** v následujících rutinách.
@@ -215,7 +227,11 @@ Výše uvedený získaný objekt **$Item** musíte předat parametru **– Item*
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>Úprava ochrany pro už zálohované virtuální počítače pomocí PowerShellu
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Item $item -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>Zálohovat jenom disk s operačním systémem během změny ochrany pomocí PowerShellu
@@ -227,13 +243,16 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ### <a name="reset-disk-exclusion-setting-with-powershell"></a>Resetovat nastavení vyloučení disku pomocí PowerShellu
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
 
 ### <a name="restore-selective-disks-with-powershell"></a>Obnovení selektivních disků pomocí PowerShellu
 
 ```azurepowershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [Strings]
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $targetVault.ID
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [$disks]
 ```
 
 ### <a name="restore-only-os-disk-with-powershell"></a>Obnovení jenom disku s operačním systémem pomocí PowerShellu
@@ -243,6 +262,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Pomocí Azure Portal můžete zobrazit zahrnuté a vyloučené disky z podokna Podrobnosti zálohy virtuálního počítače a podokna podrobností úlohy zálohování.  Když při obnovení vyberete bod obnovení, ze kterého se má obnovit, můžete v tomto bodu obnovení zobrazit zálohované disky.
 
@@ -269,6 +290,10 @@ Pokud povolíte zálohování pomocí Azure Portal, můžete zvolit jenom možno
 
 ![Konfigurace zálohování jenom pro disk s operačním systémem](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
 
+## <a name="using-azure-rest-api"></a>Používání Azure REST API
+
+Zálohování virtuálního počítače Azure můžete nakonfigurovat na několik vybraných disků, nebo můžete upravit stávající ochranu virtuálního počítače tak, aby zahrnovala nebo vyloučila několik disků, jak je popsáno [zde](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup).
+
 ## <a name="selective-disk-restore"></a>Obnovení selektivního disku
 
 Možnost obnovení selektivního disku je přidaná funkce, která se zobrazí po povolení funkce zálohování selektivních disků. Pomocí této funkce můžete obnovit selektivní disky ze všech disků zálohovaných v bodu obnovení. Je efektivnější a pomáhá ušetřit čas ve scénářích, kdy víte, které disky je potřeba obnovit.
@@ -277,7 +302,7 @@ Možnost obnovení selektivního disku je přidaná funkce, která se zobrazí p
 - Funkce obnovení selektivního disku je podporovaná jenom pro body obnovení, které se vytvořily po povolení možnosti vyloučení disku.
 - Zálohy **s nastavením vyloučení** disku podporují jenom možnost **obnovení disku** . Existující možnosti obnovení **virtuálního počítače** nebo **nahrazení** nejsou v tomto případě podporované.
 
-![Možnost obnovení virtuálního počítače a nahradit existující nejsou během operace obnovení k dispozici.](./media/selective-disk-backup-restore/options-not-available.png)
+![Možnost obnovit virtuální počítač a nahradit existující nejsou během operace obnovení k dispozici.](./media/selective-disk-backup-restore/options-not-available.png)
 
 ## <a name="limitations"></a>Omezení
 
@@ -285,13 +310,34 @@ Funkce zálohování selektivních disků se u klasických virtuálních počít
 
 Možnosti obnovení pro **Vytvoření nového virtuálního počítače** a **nahradit existující** nejsou podporované pro virtuální počítač, u kterého je povolená funkce zálohování na selektivních discích.
 
+V současné době zálohování virtuálních počítačů Azure nepodporuje virtuální počítače s extrémně disky nebo sdílenými disky, které jsou k nim připojené. V takových případech nelze použít zálohování na selektivním disku, která tento disk vyloučí a zálohuje virtuální počítač.
+
 ## <a name="billing"></a>Fakturace
 
 Zálohování virtuálního počítače Azure se řídí stávajícím cenovým modelem, který je podrobně [vysvětlen.](https://azure.microsoft.com/pricing/details/backup/)
 
-**Náklady na chráněnou instanci (pi)** se vypočítávají pro disk s operačním systémem jenom v případě, že se rozhodnete zálohovat jenom pomocí možnosti **disku s operačním systémem** .  Pokud nakonfigurujete zálohování a vyberete alespoň jeden datový disk, budou náklady na PI vypočítány pro všechny disky připojené k virtuálnímu počítači. **Náklady na úložiště zálohování** se vypočítávají jenom na zahrnutých discích, takže se budete moct uložit na náklady na úložiště. **Náklady na snímek** se vždycky vypočítávají pro všechny disky ve virtuálním počítači (zahrnuté i vyloučené disky).  
+**Náklady na chráněnou instanci (pi)** se vypočítávají pro disk s operačním systémem jenom v případě, že se rozhodnete zálohovat jenom pomocí možnosti **disku s operačním systémem** .  Pokud nakonfigurujete zálohování a vyberete alespoň jeden datový disk, budou náklady na PI vypočítány pro všechny disky připojené k virtuálnímu počítači. **Náklady na úložiště zálohování** se vypočítávají jenom na zahrnutých discích, takže se budete moct uložit na náklady na úložiště. **Náklady na snímek** se vždycky vypočítávají pro všechny disky ve virtuálním počítači (zahrnuté i vyloučené disky).
+
+Pokud jste zvolili funkci obnovení mezi oblastmi (CRR), pak se [ceny crr](https://azure.microsoft.com/pricing/details/backup/) vztahují na náklady na úložiště zálohování po vyloučení disku.
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Jak se náklady na chráněnou instanci (PI) vypočítávají jenom pro zálohování na disk s operačním systémem Windows a Linux?
+
+Náklady na PI se počítají na základě skutečné (použité) velikosti virtuálního počítače.
+
+- Pro Windows: použitý výpočet místa je založený na jednotce, na které je uložený operační systém (obvykle C:).
+- Pro Linux: použitý výpočet místa je založený na zařízení, na kterém je připojený kořenový systém souborů (/).
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>Mám nakonfigurovanou jenom zálohu disku s operačním systémem, proč se u všech disků děje snímek?
+
+Funkce zálohování na základě selektivního disku vám umožní ušetřit náklady na úložiště záloh tím, že posílí zahrnuté disky, které jsou součástí zálohy. Snímek se ale povede pro všechny disky, které jsou připojené k virtuálnímu počítači. Takže náklady na snímek se vždycky vypočítávají pro všechny disky ve virtuálním počítači (zahrnuté i vyloučené disky). Další informace najdete v tématu [fakturace](#billing).
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>Nejde nakonfigurovat zálohování pro virtuální počítač Azure tím, že se mají vyloučit disky nebo sdílené disky připojené k VIRTUÁLNÍmu počítači.
+
+Funkce zálohování na základě selektivního disku je funkce poskytovaná nad řešením zálohování virtuálních počítačů Azure. V současné době zálohování virtuálních počítačů Azure nepodporuje virtuální počítače, které jsou k nim připojené pomocí Ultra disk nebo sdíleného disku.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Matice podpory pro zálohování virtuálních počítačů Azure](backup-support-matrix-iaas.md)
-- [Nejčastější dotazy – zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)
+- [Nejčastější dotazy – zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.yml)

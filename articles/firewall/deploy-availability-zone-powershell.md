@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: e051f57d27c0eea585c63dca5e124e0846752be5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ecc4754a064e26e61365ed6ca167606bef9d81
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602478"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656101"
 ---
 # <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Nasazení služby Azure Firewall se Zónami dostupnosti pomocí Azure PowerShellu
 
@@ -60,4 +60,4 @@ New-AzFirewall `
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+- [Kurz: Monitorování protokolů brány Azure Firewall](./firewall-diagnostics.md)

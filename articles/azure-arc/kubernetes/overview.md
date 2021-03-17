@@ -1,51 +1,71 @@
 ---
-title: Přehled Kubernetes s podporou ARC Azure
+title: Přehled povolených Kubernetesů Azure ARC
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 03/03/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
-description: Tento článek poskytuje přehled Kubernetes s podporou ARC Azure.
+description: Tento článek poskytuje přehled služby Azure ARC s povoleným Kubernetes.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050051"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121588"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes ve verzi Preview s podporou ARC Azure?
+# <a name="what-is-azure-arc-enabled-kubernetes"></a>Co je Kubernetes s podporou Azure Arc?
 
-Clustery Kubernetes můžete připojit a nakonfigurovat uvnitř nebo vně Azure pomocí Azure Kubernetes ve verzi Preview s podporou ARC. Když je cluster Kubernetes připojený ke službě Azure ARC, zobrazí se v Azure Portal. Bude mít ID Azure Resource Manager a spravovanou identitu. Clustery jsou připojené ke standardním předplatným Azure, jsou umístěné ve skupině prostředků a můžou přijímat značky stejně jako všechny ostatní prostředky Azure. 
+S podporou Kubernetes ARC Azure můžete připojit a nakonfigurovat clustery Kubernetes v rámci nebo mimo Azure. Když připojíte cluster Kubernetes ke službě Azure ARC, bude:
+* Zobrazí se v Azure Portal s ID Azure Resource Manager a spravovanou identitou. 
+* Jsou umístěni do předplatného Azure a skupiny prostředků.
+* Přijímají značky stejně jako všechny ostatní prostředky Azure. 
 
-Aby mohl správce clusteru připojit ke službě Azure cluster Kubernetes, musí nasazovat agenty. Tito agenti se spouštějí v oboru názvů Kubernetes s názvem `azure-arc` a jsou standardními nasazeními Kubernetes. Agenti jsou odpovědní za připojení k Azure, shromažďování protokolů a metrik Azure ARC a sledování žádostí o konfiguraci. 
+Aby mohl správce clusteru připojit ke službě Azure cluster Kubernetes, musí nasazovat agenty. Tito agenti:
+* Spusťte v `azure-arc` oboru názvů Kubernetes jako standardní nasazení Kubernetes.
+* Umožňuje pracovat s připojením k Azure.
+* Shromážděte protokoly a metriky Azure ARC.
+* Sledujte požadavky na konfiguraci. 
 
-Kubernetes s podporou ARC Azure podporuje standardní protokol SSL pro zabezpečení přenášených dat. Data jsou také uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
- 
-> [!NOTE]
-> Kubernetes s povoleným obloukem Azure je ve verzi Preview. Nedoporučujeme ho pro produkční úlohy.
+Kubernetes s povoleným ARC Azure podporuje standardní protokol SSL pro zabezpečení přenášených dat. Data jsou také uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
+
+## <a name="supported-kubernetes-distributions"></a>Podporované distribuce Kubernetes
+
+Kubernetes s podporou Azure ARC funguje se všemi certifikovanými clustery Kubernetes CNCF (Cloud Native Computing Foundation). Tým Azure ARC spolupracoval s [klíčovými partnery pro ověřování shody](./validation-program.md) svých Kubernetes distribucí s povoleným Kubernetes ARC Azure.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře 
 
-Kubernetes s podporou ARC Azure podporuje tyto scénáře: 
+Kubernetes s podporou Azure ARC podporuje následující scénáře: 
 
 * Připojte Kubernetes běžící mimo Azure pro inventarizaci, seskupení a označování.
 
-* Nasazení aplikací a použití konfigurace pomocí správy konfigurace založené na GitOps 
+* Nasaďte aplikace a použijte konfiguraci pomocí správy konfigurace založené na GitOps. 
 
-* Pomocí Azure Monitor pro kontejnery můžete zobrazit a monitorovat clustery. 
+* Zobrazení a monitorování clusterů pomocí Azure Monitor pro kontejnery. 
 
 * Použijte zásady pomocí Azure Policy pro Kubernetes. 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>Podporované oblasti 
 
-Kubernetes s povoleným ARC Azure je aktuálně podporované v těchto oblastech: 
+Kubernetes se zapnutým Azure ARC v tuto chvíli podporuje tyto oblasti: 
 
-* East US 
-* West Europe 
+* East US
+* West Europe
+* USA – středozápad
+* Středojižní USA
+* Southeast Asia
+* Spojené království – jih
+* Západní USA 2
+* Austrálie – východ
+* USA – východ 2
+* Severní Evropa
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojení clusteru](./connect-cluster.md)
+Naučte se připojit cluster ke službě Azure ARC.
+> [!div class="nextstepaction"]
+> [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)

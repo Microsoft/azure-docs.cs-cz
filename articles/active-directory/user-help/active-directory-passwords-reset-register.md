@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266096"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88799022"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrace informací o metodě ověřování pro resetování vlastního hesla
 
@@ -26,7 +26,7 @@ Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít he
 Správce musí tuto funkci zapnout, aby bylo možné zaregistrovat vaše informace a resetovat vlastní heslo. Pokud nevidíte možnost **zapomenuté heslo** , znamená to, že správce tuto funkci pro vaši organizaci nezapnul. Pokud se domníváte, že to není správné, obraťte se na helpdesk, kde najdete pomoc.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí použít k registraci samoobslužného resetování hesla. To znamená, že budete moct resetovat svoje vlastní pracovní nebo školní heslo (například alain@contoso.com ), aniž byste museli pomáhat správce. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Tento článek je určený pro uživatele, kteří se pokoušejí použít k registraci samoobslužného resetování hesla. To znamená, že budete moct resetovat svoje vlastní pracovní nebo školní heslo (například alain@contoso.com ), aniž byste museli pomáhat správce. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](../authentication/howto-sspr-deployment.md).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>Nastavení metody ověřování pro resetování hesla
 

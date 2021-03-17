@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct: portál'
 description: Tato stránka vám pomůže nakonfigurovat ExpressRoute Direct pomocí portálu.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 12/14/2020
+ms.author: duau
+ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903591"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097070"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Vytvoření ExpressRoute s přímým přístupem pomocí Azure Portal
 
@@ -21,16 +21,30 @@ ExpressRoute Direct umožňuje přímo se připojit k globální síti Microsoft
 
 ## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
-Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostředků **Microsoft. Network** . Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, udělejte to prosím pomocí Azure PowerShell:
+1.  Přihlaste se k Azure a vyberte předplatné, které chcete zaregistrovat.
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+Po zaregistrování ověřte, zda je poskytovatel prostředků **Microsoft. Network** zaregistrován ve vašem předplatném. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
 
 1. Přístup k nastavením předplatného, jak je popsáno v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
-1. V rámci vašeho předplatného pro **poskytovatele prostředků**ověřte, že poskytovatel **Microsoft. Network** zobrazuje **registrovaný** stav. Pokud poskytovatel prostředků Microsoft. Network není uveden v seznamu registrovaných zprostředkovatelů, přidejte ho.
+1. V rámci vašeho předplatného pro **poskytovatele prostředků** ověřte, že poskytovatel **Microsoft. Network** zobrazuje **registrovaný** stav. Pokud poskytovatel prostředků Microsoft. Network není uveden v seznamu registrovaných zprostředkovatelů, přidejte ho.
 
-## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. vytvoření ExpressRoute Direct
+## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>Vytvořit ExpressRoute Direct
 
 1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 
-1. Na **nové** stránce v poli ***Hledat na Marketplace*** zadejte **ExpressRoute Direct**a potom vyberte **ENTER** , abyste se dostali do výsledků hledání.
+1. Na **nové** stránce v poli Hledat v **_Marketplace_*_ zadejte _* ExpressRoute Direct** a pak vyberte **ENTER** , abyste se dostali do výsledků hledání.
 
 1. Z výsledků vyberte **ExpressRoute Direct**.
 
@@ -47,7 +61,7 @@ Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostř
 
 1. Dále vyplňte pole na stránce **Konfigurace** .
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Konfigurační stránka":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit ExpressRoute s přímým přístupem s vybranou kartou konfigurace":::
 
     * **Umístění partnerského vztahu**: umístění partnerského vztahu, ke kterému se připojíte přímo k ExpressRoute prostředku. Další informace o umístěních partnerských vztahů najdete v [ExpressRoute umístěních](expressroute-locations-providers.md).
    * **Šířka pásma**: šířka pásma párování portů, kterou chcete rezervovat. ExpressRoute Direct podporuje možnosti šířky pásma 10 GB a 100 GB. Pokud požadovaná šířka pásma není v zadaném umístění partnerského vztahu k dispozici, [otevřete žádost o podporu v Azure Portal](https://aka.ms/azsupt).
@@ -61,11 +75,15 @@ Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostř
 
 1. Zadejte všechny značky prostředku a pak vyberte **zkontrolovat + vytvořit** a ověřte nastavení prostředků ExpressRoute Direct.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Zkontrolovat a vytvořit":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit ExpressRoute se zvolenou kartou revize + vytvořit.":::
 
 1. Vyberte **Vytvořit**. Zobrazí se zpráva s informacemi o tom, že probíhá nasazení. Stav se zobrazí na této stránce při vytváření prostředků. 
 
-## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. Změna stavu Správce odkazů
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Vygenerovat písmeno autorizace (LOA)
+
+V tuto chvíli není na portálu k dispozici generování dopisu o autorizaci. K získání písmene autorizace použijte **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** .
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Změnit stav Správce odkazů
 
 Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajistí, že každé připojení mezi jednotlivými směrovači je u primárních a sekundárních zařízení správně opraveno.
 
@@ -73,7 +91,7 @@ Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajist
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Odkaz 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
-1. Přepněte nastavení **Stav Správce** na **povoleno**a pak vyberte **Uložit**.
+1. Přepněte nastavení **Stav Správce** na **povoleno** a pak vyberte **Uložit**.
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Stav Správce":::
 
@@ -83,7 +101,7 @@ Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajist
 
 1. Opakujte stejný postup pro **link2**.
 
-## <a name="3-create-a-circuit"></a><a name="circuit"></a>3. vytvoření okruhu
+## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 
 Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. Toto číslo lze zvýšit prostřednictvím podpory. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je součet šířky pásma všech okruhů v prostředku ExpressRoute Direct. Využitá šířka pásma je fyzické využití základních fyzických rozhraní.
 
@@ -95,17 +113,17 @@ Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, 
 
 Následující kroky vám pomůžou vytvořit okruh ExpressRoute z pracovního postupu ExpressRoute Direct. Pokud byste místo toho mohli vytvořit okruh pomocí pracovního postupu pravidelného okruhu, i když nebudete mít k dispozici žádné výhody použití pracovních postupů pravidelného okruhu pro tuto konfiguraci. Přečtěte si téma [Vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md).
 
-1. V části **Nastavení** ExpressRoute Direct vyberte **okruhy**a pak vyberte **+ Přidat**. 
+1. V části **Nastavení** ExpressRoute Direct vyberte **okruhy** a pak vyberte **+ Přidat**. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Přidat" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Snímek obrazovky zobrazuje ExpressRoute nastavení s vybranými okruhy a přidat zvýrazněné." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. Nakonfigurujte nastavení na stránce **Konfigurace** .
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Konfigurační stránka":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Konfigurační stránka – ExpressRoute Direct":::
 
 1. Zadejte všechny značky prostředků, vyberte **zkontrolovat + vytvořit** , aby bylo možné hodnoty před vytvořením prostředku ověřit.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Zkontrolovat a vytvořit":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Kontrola a vytvoření – ExpressRoute Direct":::
 
 1. Vyberte **Vytvořit**. Zobrazí se zpráva s informacemi o tom, že probíhá nasazení. Stav se zobrazí na této stránce při vytváření prostředků. 
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318976"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521675"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent Application Insights (dřív pojmenovaný Monitorování stavu v2): podrobné pokyny
 
@@ -29,7 +29,7 @@ Abyste mohli začít, budete potřebovat klíč instrumentace. Další informace
 K provedení změn v počítači vyžaduje prostředí PowerShell oprávnění na úrovni správce.
 ### <a name="execution-policy"></a>Zásady spouštění
 - Popis: ve výchozím nastavení jsou spuštěné skripty PowerShellu zakázané. Doporučujeme povolit skripty RemoteSigned jenom pro aktuální obor.
-- Referenční informace: [o zásadách spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) a [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6).
+- Referenční informace: [o zásadách spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) a [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy).
 - Příkaz: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - Volitelný parametr:
     - `-Force`. Obchází výzvu k potvrzení.
@@ -71,14 +71,14 @@ Tyto pokyny byly napsány a testovány v počítači se systémem Windows 10 a v
 Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie prostředí PowerShell.
 
 > [!NOTE] 
-> Galerie prostředí PowerShell podporuje Windows 10, Windows Server 2016 a PowerShell 6.
+> Galerie prostředí PowerShell podporuje Windows 10, Windows Server 2016 a PowerShell 6 +.
 > Informace o dřívějších verzích najdete v tématu [instalace PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
 
 1. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
 2. Nainstalujte zprostředkovatele balíčku NuGet.
     - Popis: tohoto poskytovatele budete potřebovat k interakci s úložištěmi založenými na NuGet, jako je Galerie prostředí PowerShell.
-    - Referenční informace: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Referenční informace: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider).
     - Příkaz: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
@@ -98,7 +98,7 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
 
 3. Nakonfigurujte Galerie prostředí PowerShell jako důvěryhodné úložiště.
     - Popis: ve výchozím nastavení je Galerie prostředí PowerShell nedůvěryhodné úložiště.
-    - Reference: [set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Reference: [set-PSRepository](/powershell/module/powershellget/set-psrepository).
     - Příkaz: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - Volitelný parametr:
         - `-Proxy`. Určuje proxy server pro požadavek.
@@ -144,7 +144,7 @@ Pomocí těchto kroků se stáhne modul AZ. ApplicationMonitor z Galerie prostř
 1. Ujistěte se, že jsou splněné všechny požadavky pro Galerie prostředí PowerShell.
 2. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
 3. Nainstalujte modul AZ. ApplicationMonitor.
-    - Referenční informace: [install-Module](/powershell/module/powershellget/install-module?view=powershell-6)
+    - Referenční informace: [install-Module](/powershell/module/powershellget/install-module)
     - Příkaz: `Install-Module -Name Az.ApplicationMonitor` .
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
@@ -160,17 +160,17 @@ Pokud z nějakého důvodu nemůžete připojit modul PowerShellu, můžete ruč
 
 1. Přejděte na https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 2. V tabulce **Historie verzí** vyberte nejnovější verzi souboru.
-3. V části **Možnosti instalace**vyberte **Ruční stažení**.
+3. V části **Možnosti instalace** vyberte **Ruční stažení**.
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>Možnost 1: instalace do adresáře modulů PowerShellu
 Nainstalujte ručně stažený modul PowerShellu do adresáře PowerShellu, aby byl zjistitelný pomocí relací PowerShellu.
 Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 
-#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Rozbalí nupkg jako soubor ZIP pomocí expand-Archive (v 1.0.1.0).
+#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Extrahování nupkg jako souboru ZIP pomocí Expand-Archive (v 1.0.1.0)
 
 - Popis: základní verze souboru Microsoft. PowerShell. Archive (v 1.0.1.0) nemůže dekomprimovat soubory nupkg. Přejmenujte soubor s příponou. zip.
-- Referenční informace: [expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Referenční informace: [expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive).
 - Systému
 
     ```console
@@ -181,10 +181,10 @@ Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/s
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Rozbalení nupkg pomocí expand-Archive (v 1.1.0.0)
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Rozbalení nupkg pomocí Expand-Archive (v 1.1.0.0)
 
-- Popis: k rozbalení souborů nupkg bez změny rozšíření použijte aktuální verzi nástroje expand-Archive.
-- Referenční informace: [expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) a [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Popis: pomocí aktuální verze Expand-Archive dekomprimovat soubory nupkg beze změny rozšíření.
+- Referenční informace: [expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive) a [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Systému
 
     ```console
@@ -197,7 +197,7 @@ Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/s
 Nainstalujte ručně stažený modul PowerShellu do adresáře PowerShellu, aby byl zjistitelný pomocí relací PowerShellu.
 Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Pokud instalujete modul do libovolného jiného adresáře, importujte modul ručně pomocí [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
+Pokud instalujete modul do libovolného jiného adresáře, importujte modul ručně pomocí [Import-Module](/powershell/module/microsoft.powershell.core/import-module).
 
 > [!IMPORTANT] 
 > Knihovny DLL se budou instalovat prostřednictvím relativních cest.
@@ -231,9 +231,9 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+- [Prozkoumejte metriky](../essentials/metrics-charts.md) pro monitorování výkonu a využití.
 - [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
-- K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
+- K pokročilejším dotazům [použijte Analytics](../logs/log-query-overview.md) .
 - [Vytváření řídicích panelů](./overview-dashboard.md).
 
  Přidání další telemetrie:

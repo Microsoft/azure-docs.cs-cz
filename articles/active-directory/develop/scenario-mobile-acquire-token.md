@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141274"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582549"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Získání tokenu pro mobilní aplikaci, která volá webová rozhraní API
 
@@ -26,9 +26,9 @@ Předtím, než aplikace může volat chráněná webová rozhraní API, potřeb
 
 ## <a name="define-a-scope"></a>Definování oboru
 
-Když vyžádáte token, budete muset definovat obor. Obor určuje, k jakým datům může aplikace přistupovat.
+Když vyžádáte token, definujte obor. Obor určuje, k jakým datům může aplikace přistupovat.
 
-Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem `.default` . Tato definice instruuje platformu Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory, které jsou nastavené na portálu.
+Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem `.default` . Tato definice obsahuje informace o platformě Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory nastavené na portálu.
 
 ### <a name="android"></a>Android
 ```Java
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Povinné parametry v MSAL.NET
 
-`AcquireTokenInteractive`má pouze jeden povinný parametr: `scopes` . `scopes`Parametr vytvoří výčet řetězců, které definují obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, můžete najít požadované obory v referenčních informacích k rozhraní API každého Microsoft Graph API. V odkazu přejdete do části Permissions (oprávnění).
+`AcquireTokenInteractive` má pouze jeden povinný parametr: `scopes` . `scopes`Parametr vytvoří výčet řetězců, které definují obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, můžete najít požadované obory v referenčních informacích k rozhraní API každého Microsoft Graph API. V odkazu přejdete do části Permissions (oprávnění).
 
 Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), použijte obor "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](/graph/permissions-reference).
 
@@ -225,25 +225,25 @@ Následující části vysvětlují volitelné parametry v MSAL.NET.
 
 Třída definuje následující konstanty:
 
-- `SelectAccount`vynutí službu tokenu zabezpečení (STS) k zobrazení dialogového okna pro výběr účtu. Dialogové okno obsahuje účty, pro které má uživatel relaci. Tuto možnost můžete použít, pokud chcete, aby uživatel mohl zvolit mezi různými identitami. Tato možnost Drives MSAL se pošle `prompt=select_account` poskytovateli identity.
+- `SelectAccount` vynutí službu tokenu zabezpečení (STS) k zobrazení dialogového okna pro výběr účtu. Dialogové okno obsahuje účty, pro které má uživatel relaci. Tuto možnost můžete použít, pokud chcete, aby uživatel mohl zvolit mezi různými identitami. Tato možnost Drives MSAL se pošle `prompt=select_account` poskytovateli identity.
 
     `SelectAccount`Konstanta je výchozí a efektivně nabízí nejlepší možné prostředí na základě dostupných informací. Dostupné informace můžou zahrnovat účet, přítomnost relace pro uživatele a tak dále. Tuto výchozí hodnotu neměňte, pokud to nemáte dobrý důvod.
-- `Consent`umožňuje uživateli vyzvat k vyjádření souhlasu i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity.
+- `Consent` umožňuje uživateli vyzvat k vyjádření souhlasu i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity.
 
     Můžete chtít použít `Consent` konstantu v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se při každém použití aplikace zobrazilo dialogové okno souhlasu.
-- `ForceLogin`umožňuje službě zobrazit uživateli výzvu k zadání přihlašovacích údajů i v případě, že není nutná výzva.
+- `ForceLogin` umožňuje službě zobrazit uživateli výzvu k zadání přihlašovacích údajů i v případě, že není nutná výzva.
 
     Tato možnost může být užitečná v případě, že získání tokenu se nezdařilo a chcete uživateli umožnit, aby se znovu přihlásili. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Tuto možnost můžete chtít použít v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel přihlásil pokaždé, když přistupují k určitým částem aplikace.
-- `Never`je určen pouze pro .NET 4,5 a prostředí Windows Runtime (WinRT). Tato konstanta nevyzve uživatele, ale pokusí se použít soubor cookie, který je uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu [použití webových prohlížečů s MSAL.NET](./msal-net-web-browsers.md).
+- `Never` je určen pouze pro .NET 4,5 a prostředí Windows Runtime (WinRT). Tato konstanta nevyzve uživatele, ale pokusí se použít soubor cookie, který je uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu [použití webových prohlížečů s MSAL.NET](./msal-net-web-browsers.md).
 
-    Pokud tato možnost není úspěšná, `AcquireTokenInteractive` vyvolá výjimku, která vás upozorní, že je potřeba interakce uživatelského rozhraní. Pak je nutné použít jiný `Prompt` parametr.
-- `NoPrompt`neodešle výzvu poskytovateli identity.
+    Pokud tato možnost není úspěšná, `AcquireTokenInteractive` vyvolá výjimku, která vás upozorní, že je potřeba interakce uživatelského rozhraní. Pak použijte jiný `Prompt` parametr.
+- `NoPrompt` neodešle výzvu poskytovateli identity.
 
     Tato možnost je užitečná jenom pro zásady úprav profilu v Azure Active Directory B2C. Další informace najdete v tématu [B2C – konkrétní](https://aka.ms/msal-net-b2c-specificities).
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Použijte `WithExtraScopeToConsent` Modifikátor v rozšířeném scénáři, kde chcete, aby uživatel poskytoval svůj souhlas s několika prostředky. Tento modifikátor můžete použít, když nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo Microsoft Identity Platform 2,0. Další informace najdete v tématu o tom, že [Uživatel souhlasí s několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+Použijte `WithExtraScopeToConsent` Modifikátor v rozšířeném scénáři, kde chcete, aby uživatel poskytoval svůj souhlas s několika prostředky. Tento modifikátor můžete použít, když nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo platformou Microsoft identity. Další informace najdete v tématu o tom, že [Uživatel souhlasí s několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 Zde je příklad kódu:
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Další nepovinné parametry
 
-Další informace o dalších volitelných parametrech pro `AcquireTokenInteractive` najdete v [referenční dokumentaci pro AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Další informace o dalších volitelných parametrech pro `AcquireTokenInteractive` najdete v [referenční dokumentaci pro AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods).
 
 ### <a name="acquire-tokens-via-the-protocol"></a>Získat tokeny prostřednictvím protokolu
 
@@ -294,5 +294,4 @@ client_id=<CLIENT_ID>
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Volání webového rozhraní API](scenario-mobile-call-api.md)
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](scenario-mobile-call-api.md).

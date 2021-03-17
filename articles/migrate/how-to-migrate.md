@@ -1,20 +1,23 @@
 ---
 title: Přidání nástrojů pro migraci do Azure Migrate
 description: Naučte se přidávat nástroje pro migraci do Azure Migrate.
-ms.topic: article
-ms.date: 04/26/2020
-ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
+ms.date: 11/23/2020
+ms.openlocfilehash: 97051e97ec9868f6941b579241e16e62fdd2162b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109803"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751780"
 ---
 # <a name="add-migration-tools"></a>Přidání nástrojů pro migraci
 
 Tento článek popisuje, jak přidat nástroje pro migraci do [Azure Migrate](./migrate-services-overview.md).
 
-- Pokud chcete přidat nástroj pro migraci, který ještě nevytvořil projekt Azure Migrate, postupujte podle pokynů v tomto [článku](how-to-add-tool-first-time.md).
+- Pokud chcete přidat nástroj pro migraci, který ještě nevytvořil projekt Azure Migrate, postupujte podle pokynů v tomto [článku](create-manage-projects.md).
 - Pokud jste přidali nástroj ISV pro migraci, [postupujte podle kroků](prepare-isv-movere.md)a připravte se na práci s nástrojem.
 
 ## <a name="select-a-migration-scenario"></a>Výběr scénáře migrace
@@ -23,46 +26,69 @@ Tento článek popisuje, jak přidat nástroje pro migraci do [Azure Migrate](./
 2. Vyberte scénář migrace, který chcete použít:
 
     - K migraci počítačů a úloh do Azure vyberte možnost **zhodnotit a migrovat servery**.
-    - Chcete-li migrovat místní databáze SQL Server, vyberte možnost **vyhodnotit a migrovat databáze**.
-    - Pokud chcete migrovat místní webové aplikace, vyberte možnost **vyhodnotit a migrovat webové aplikace**.
-    - Pokud chcete migrovat velké objemy místních dat do Azure v režimu offline, vyberte **objednat data box**.
+    - Chcete-li migrovat místní databáze, vyberte možnost **zhodnotit a migrovat databáze**.
+    - Pokud chcete migrovat místní webové aplikace, vyberte **Prozkoumat další**  >  **Web Apps**.
+    - Pokud chcete migrovat data do Azure pomocí datového pole, vyberte **Prozkoumat další**  >  **data box**.
 
-    ![Scénář posouzení](./media/how-to-migrate/assess-scenario.png)
+    ![Možnosti výběru scénáře migrace](./media/how-to-migrate/migrate-scenario.png)
+
 
 ## <a name="select-a-server-migration-tool"></a>Výběr nástroje pro migraci serveru
 
-1. Klikněte na možnost **zhodnotit a migrovat servery**.
-2. Pokud jste v **Azure Migrate-servery**ještě nepřidali nástroje pro migraci, vyberte v části **Nástroje pro migraci**možnost **kliknutím sem přidejte Nástroj pro migraci**. Pokud jste již přidali nástroje pro migraci, vyberte v **nabídce přidat další nástroje pro migraci**možnost **změnit**.
+1. Přidat nástroj:
 
-    > [!NOTE]
-    > Pokud potřebujete přejít na jiný projekt, klikněte v **Azure Migrate-servery**vedle **Zobrazit podrobnosti o jiném projektu migrace**kliknutím **na tlačítko sem**.
+    - Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **zhodnotit a migrovat servery** na portálu, nástroj pro migraci Azure Migrate serveru se automaticky přidá do projektu. Pokud chcete přidat další nástroje pro migraci, vyberte na **serverech** vedle **Možnosti nástroje pro migraci** možnost **Přidat další nástroje**.
+    
+         ![Tlačítko pro přidání dalších nástrojů pro migraci](./media/how-to-migrate/add-migration-tools.png)
 
-3. V **Azure Migrate**vyberte nástroj pro migraci, který chcete použít.
-    - Pokud používáte migraci Azure Migrate serveru, můžete nastavit a spustit migrace přímo v projektu Azure Migrate.
-    - Pokud používáte nástroj pro vyhodnocení třetí strany, přejděte na odkaz poskytnutý pro nezávislého výrobce softwaru a spusťte migraci podle pokynů, které poskytují.
+    - Pokud jste vytvořili projekt s použitím jiné možnosti a ještě nemáte žádné nástroje pro migraci, v nástroji **servery** pro  >  **migraci** vyberte **možnost klikněte sem**.
+
+    ![Tlačítko pro přidání nástrojů pro první migraci](./media/how-to-migrate/no-migration-tool.png)
+
+2. V **Azure Migrate**  >  **Přidat nástroje** vyberte nástroje, které chcete přidat. Pak vyberte **Přidat nástroj**.
+
+    ![Vybrat nástroje pro posouzení ze seznamu](./media/how-to-migrate/select-migration-tool.png)
+
 
 ## <a name="select-a-database-migration-tool"></a>Výběr nástroje pro migraci databáze
 
-1. Klikněte na **vyhodnotit a migrovat databáze** .
-2. V nabídce **databáze**klikněte na možnost **Přidat nástroje**.
-3. V okně Přidat nástroj > **Vyberte nástroj pro migraci**, vyberte nástroj, který chcete použít k migraci databáze.
+Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **vyhodnocení a migrace databáze** na portálu, nástroj pro migraci databáze je automaticky přidán do projektu. 
+
+1. Pokud nástroj pro migraci databáze není v projektu, vyberte v části **databáze**  >  **nástroje** pro vyhodnocení **klikněte na možnost klikněte sem**.
+    
+    ![Přidat nástroje pro migraci databáze](./media/how-to-migrate/no-database-migration-tool.png)
+
+
+2. V **Azure Migrate**  >  **Přidat nástroje** vyberte nástroj pro migraci databáze. Pak vyberte **Přidat nástroj**.
+
+    ![Výběr nástroje pro migraci databáze ze seznamu](./media/how-to-migrate/select-database-migration-tool.png)
+
+    
 
 ## <a name="select-a-web-app-migration-tool"></a>Výběr nástroje pro migraci webové aplikace
 
-1. Klikněte na **zhodnotit a migrovat webové aplikace**.
-2. Použijte odkaz na nástroj pro migraci Azure App Service. Nástroj pro migraci použijte k těmto akcím:
+Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **Prozkoumat další**  >  **webapps** na portálu, nástroj pro migraci webové aplikace se automaticky přidá do projektu. 
 
-    - **Vyhodnoťte aplikace online**: pomocí Pomocník s migrací Azure App Service můžete vyhodnocovat a migrovat aplikace pomocí veřejné adresy URL online.
-    - **.NET/php**: pro interní aplikace .NET a PHP můžete stáhnout a spustit Pomocník s migrací.
+1. Pokud nástroj pro migraci webové aplikace v projektu není, vyberte v **Web apps**  >  **nástrojích pro vyhodnocení** Web Apps možnost **klikněte sem**.
+
+    ![Přidat nástroje pro migraci webové aplikace](./media/how-to-migrate/no-web-app-migration-tool.png)
+ 
+
+2. V **Azure Migrate**  >  **Přidat nástroje** vyberte nástroj pro migraci webové aplikace. Pak vyberte **Přidat nástroj**.
+
+    ![Vybrat nástroje pro posouzení WebApp ze seznamu](./media/how-to-migrate/select-web-app-migration-tool.png)
+
 
 ## <a name="order-an-azure-data-box"></a>Objednat Azure Data Box
 
-Pokud chcete migrovat velké objemy dat do Azure, můžete objednat Azure DAta box pro offline přenos dat.
+Pokud chcete migrovat velké objemy dat do Azure, můžete objednat Azure Data Box pro offline přenos dat.
 
-1. Klikněte na příkaz **objednat data box**.
-2. V **Azure Data box vyberte své**předplatné. 
-3. Přenos bude importován do Azure. Zadejte zdroj dat a cíl oblasti Azure pro data.
+1. V **přehledu** vyberte **Prozkoumat další**.
+2. V možnosti **Prozkoumat další** vyberte **data box**.
+3. V části **Začínáme s data box** vyberte předplatné a skupinu prostředků, které chcete použít při objednávání data box.
+4. **Typ přenosu** je import do Azure. Zadejte zemi, ve které se data nacházejí, a oblast Azure, do které chcete data přenést. 
+5. Kliknutím na **použít** uložte nastavení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte migraci pomocí Azure Migrate migrace serveru pro virtuální počítače [Hyper-V](tutorial-migrate-hyper-v.md) nebo [VMware](tutorial-migrate-vmware.md) .
+Vyzkoušejte migraci pomocí nástroje pro migraci Azure Migrate serveru pro virtuální počítače [s technologií Hyper-V](tutorial-migrate-hyper-v.md) nebo [VMware](tutorial-migrate-vmware.md) .

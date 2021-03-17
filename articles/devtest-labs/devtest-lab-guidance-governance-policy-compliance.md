@@ -4,12 +4,12 @@ description: Tento článek poskytuje pokyny k řízení zásad společnosti a d
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480928"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592343"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – zásady společnosti a dodržování předpisů
 Tento článek poskytuje pokyny k řízení zásad společnosti a dodržování předpisů pro Azure DevTest Labs infrastrukturu. 

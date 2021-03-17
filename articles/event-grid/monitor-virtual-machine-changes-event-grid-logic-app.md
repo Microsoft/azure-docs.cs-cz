@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461268"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329521"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálních počítačů s využitím služeb Azure Event Grid a Logic Apps
 
@@ -190,7 +190,7 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
 1. Pokud ještě nemáte připojení k poskytovateli e-mailu, přihlaste se ke svému e-mailovému účtu, až budete požádáni o ověření.
 
-1. Přejmenujte akci odeslat e-mail na tento název:`Send email when virtual machine updated`
+1. Přejmenujte akci odeslat e-mail na tento název: `Send email when virtual machine updated`
 
 1. Zadejte informace o e-mailu, jak je uvedeno v následující tabulce:
 
@@ -201,9 +201,9 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    | -------- | -------- | ----- | ----------- |
-   | **Schopn** | Ano | <*\@doména příjemce*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Záměr** | Ano | <*\@doména příjemce*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    | **Předmět** | Ano | `Resource updated:` **Předmět** | Zadejte obsah předmětu e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **Předmět** události. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). |
-   | **Text** | Ano | `Resource:` **Téma** <p>`Event type:`**Typ události**<p>`Event ID:` **ID**<p>`Time:`**Čas události** | Zadejte obsah e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **události,** **Typ události**, **ID**a **dobu události** , aby váš e-mail zahrnoval prostředek, který vyvolal událost, typ události, časové razítko události a ID události pro aktualizaci. V tomto kurzu je prostředkem skupina prostředků Azure vybraná v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
+   | **Text** | Ano | `Resource:` **Téma** <p>`Event type:` **Event Type**<p>`Event ID:` **ID**<p>`Time:`**Čas události** | Zadejte obsah e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **události,** **Typ události**, **ID**a **dobu události** , aby váš e-mail zahrnoval prostředek, který vyvolal událost, typ události, časové razítko události a ID události pro aktualizaci. V tomto kurzu je prostředkem skupina prostředků Azure vybraná v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
    ||||
 
    > [!NOTE]
@@ -243,7 +243,7 @@ Blahopřejeme k vytvoření a spuštění aplikace logiky, která monitoruje ud�
 
 Event Gridy a aplikace logiky umožňují monitorovat i jiné konfigurační změny, například:
 
-* Virtuální počítač získá oprávnění k řízení přístupu na základě role (RBAC).
+* Virtuální počítač získá práva na řízení přístupu na základě role Azure (Azure RBAC).
 * Změny provedené ve skupině zabezpečení sítě (NSG) v síťovém rozhraní (NIC).
 * Přidání nebo odebrání disků virtuálního počítače.
 * Přiřazení veřejné IP adresy síťovému rozhraní virtuálního počítače.

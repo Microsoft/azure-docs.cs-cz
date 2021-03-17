@@ -4,19 +4,19 @@ description: Pomocí ukázkového skriptu Azure CLI můžete monitorovat a šká
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: bd2f8005300aeb77a88be2609246f2d760154e36
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231994"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493623"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Pomocí Azure CLI můžete monitorovat a škálovat izolovanou databázi v Azure SQL Database
 
@@ -57,7 +57,7 @@ az group delete --name $resource
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Skript | Description |
+| Skript | Popis |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Příkazy serveru. |
 | [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Zobrazí informace o využití velikosti databáze. |

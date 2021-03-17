@@ -1,22 +1,24 @@
 ---
-title: 'Rychlý Start: vytvoření detekce objektů pomocí Custom Vision klientské knihovny'
-description: 'Rychlý Start: vytvoření projektu, přidání značek, nahrání obrázků, výuka projektu a rozpoznávání objektů pomocí klientské knihovny Custom Vision.'
+title: 'Rychlý Start: Detekce objektů pomocí Custom Vision klientské knihovny'
+titleSuffix: Azure Cognitive Services
+description: 'Rychlý Start: vytvoření projektu pro detekci objektů, přidání značek, nahrání obrázků, výukový projekt a rozpoznávání objektů pomocí klientské knihovny Custom Vision.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/17/2020
-ms.custom: devx-track-python, devx-track-javascript
+ms.date: 02/25/2021
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: vlastní vize
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: c6b40fe7abe0b7ad4b6993b55206eabc5b4681d0
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 5eb910ed4f7c15a4755dd8f494771a56c4c64230
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511280"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184205"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady Custom Vision SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí klientské knihovny Custom Vision
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial-od.md)]

@@ -3,15 +3,16 @@ title: Použití datových proudů Akka pro Apache Kafka – Azure Event Hubs | 
 description: Tento článek poskytuje informace o tom, jak připojit Akka datové proudy k centru událostí Azure.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ab927189329493696c70b61ffc7f11cad22a66
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320203"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369569"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Použití Akka Streams se službou Event Hubs pro Apache Kafka
-V tomto kurzu se dozvíte, jak propojit Akka datové proudy s centrem událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)
+
+V tomto kurzu se dozvíte, jak propojit Akka streamy prostřednictvím podpory Event Hubs Apache Kafka bez změny klientů protokolu nebo spuštění vlastních clusterů. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -23,13 +24,13 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 * Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.8+](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 * [Stažení](https://maven.apache.org/download.cgi) a [instalace](https://maven.apache.org/install.html) binárního archivu Maven
@@ -76,6 +77,10 @@ akka.kafka.producer {
 }
 ```
 
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ### <a name="run-producer-from-the-command-line"></a>Spustit producenta z příkazového řádku
 
 Pokud chcete spustit producenta z příkazového řádku, vygenerujte JAR a pak ho spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním nezbytných Kafka JAR do cesty k cestě):
@@ -115,6 +120,10 @@ akka.kafka.consumer {
     }
 }
 ```
+
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-consumer-from-the-command-line"></a>Spustit příjemce z příkazového řádku
 

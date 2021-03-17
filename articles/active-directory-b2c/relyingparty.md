@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5374ce59d3a599e243684c168a8d84a6434059ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521259"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492009"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Element **RelyingParty** Určuje cestu uživatele k vykonání aktuální žádosti o Azure Active Directory B2C (Azure AD B2C). Určuje také seznam deklarací, které aplikace předávající strany (RP) potřebuje jako součást vydaného tokenu. Aplikace RP, jako je například webová, mobilní nebo desktopová aplikace, zavolá soubor zásad RP. Soubor zásad RP spustí konkrétní úlohu, jako je například přihlašování, resetování hesla nebo úprava profilu. Víc aplikací může používat stejné zásady RP a jedna aplikace může používat víc zásad. Všechny aplikace pro RP získají stejný token s deklaracemi a uživatel projde stejnou cestou uživatele.
+Element **RelyingParty** určuje cestu uživatele, která se má vynutit pro aktuální požadavek na Azure Active Directory B2C (Azure AD B2C). Určuje také seznam deklarací identity, které aplikace přijímající strany vyžaduje v rámci vystaveného tokenu. Aplikace RP, jako je například webová, mobilní nebo desktopová aplikace, zavolá soubor zásad RP. Soubor zásad RP spustí konkrétní úlohu, jako je například přihlašování, resetování hesla nebo úprava profilu. Víc aplikací může používat stejné zásady RP a jedna aplikace může používat víc zásad. Všechny aplikace pro RP získají stejný token s deklaracemi a uživatel projde stejnou cestou uživatele.
 
 Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_1A_signup_signin* :
 
@@ -77,12 +77,39 @@ Volitelný element **RelyingParty** obsahuje následující prvky:
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cesta uživatele pro aplikaci RP. |
+| Koncové body | 0:1 | Seznam koncových bodů. Další informace najdete v tématu [koncový bod UserInfo](userinfo-endpoint.md). |
 | UserJourneyBehaviors | 0:1 | Rozsah chování při jízdě uživatelů. |
 | TechnicalProfile | 1:1 | Technický profil podporovaný aplikací RP. Technický profil poskytuje kontrakt pro aplikaci RP, aby kontaktoval Azure AD B2C. |
 
+## <a name="endpoints"></a>Koncové body
+
+Element **Endpoints** obsahuje následující element:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| Koncový bod | 1:1 | Odkaz na koncový bod.|
+
+Element **Endpoint** obsahuje následující atributy:
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| Id | Ano | Jedinečný identifikátor koncového bodu.|
+| UserJourneyReferenceId | Ano | Identifikátor cesty uživatele v zásadě. Další informace najdete v tématu [cesty uživatelů](userjourneys.md) .  | 
+
+Následující příklad ukazuje předávající stranu s [koncovým bodem UserInfo](userinfo-endpoint.md):
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <Endpoints>
+    <Endpoint Id="UserInfo" UserJourneyReferenceId="UserInfoJourney" />
+  </Endpoints>
+  ...
+```
+
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney`Prvek určuje odkaz na identifikátor cesty uživatele, který je obvykle definován v zásadách základní nebo rozšíření. Následující příklady znázorňují cestu k registraci nebo přihlašování uživatele určenou v elementu **RelyingParty** :
+`DefaultUserJourney`Element určuje odkaz na identifikátor cesty uživatele, která je definována v zásadách základní nebo rozšíření. Následující příklady znázorňují cestu k registraci nebo přihlašování uživatele určenou v elementu **RelyingParty** :
 
 Zásada *B2C_1A_signup_signin* :
 
@@ -104,7 +131,7 @@ Element **DefaultUserJourney** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Yes | Identifikátor cesty uživatele v zásadě. Další informace najdete v tématu [cesty uživatelů](userjourneys.md) . |
+| ReferenceId | Ano | Identifikátor cesty uživatele v zásadě. Další informace najdete v tématu [cesty uživatelů](userjourneys.md) . |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -117,17 +144,18 @@ Element **UserJourneyBehaviors** obsahuje následující prvky:
 | SessionExpiryInSeconds | 0:1 | Doba života souboru cookie relace Azure AD B2C's zadaná jako celé číslo uložené v prohlížeči uživatele po úspěšném ověření. |
 | JourneyInsights | 0:1 | Klíč instrumentace Azure Application Insights, který se má použít. |
 | ContentDefinitionParameters | 0:1 | Seznam párů klíč-hodnota, které se mají připojit k identifikátoru URI načtení definice obsahu. |
-|ScriptExecution| 0:1| Podporované režimy spuštění [JavaScriptu](javascript-samples.md) . Možné hodnoty: `Allow` nebo `Disallow` (výchozí).
+|ScriptExecution| 0:1| Podporované režimy spuštění [JavaScriptu](javascript-and-page-layout.md) . Možné hodnoty: `Allow` nebo `Disallow` (výchozí).
+| JourneyFraming | 0:1| Umožňuje načtení uživatelského rozhraní této zásady do prvku IFRAME. |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
-Element **SingleSignon** obsahuje následující atribut:
+Element **SingleSignon** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Rozsah | Yes | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
-| KeepAliveInDays | Yes | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
-|EnforceIdTokenHintOnLogout| No|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí), nebo `true` . Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
+| Obor | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
+| KeepAliveInDays | Ne | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+|EnforceIdTokenHintOnLogout| Ne|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí), nebo `true` . Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
@@ -136,12 +164,12 @@ Element **JourneyInsights** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Yes | Hodnota musí být `ApplicationInsights` . |
-| InstrumentationKey | Yes | Řetězec, který obsahuje klíč instrumentace pro element Application Insights. |
-| DeveloperMode | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. podrobné protokoly aktivit jsou navržené jenom na podporu vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Pokud se v produkčním prostředí používá, vývojář předpokládá zodpovědnost za PII (soukromě identifikovatelné informace) shromážděné v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
-| ClientEnabled | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle Application Insights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. |
-| ServerEnabled | Yes | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle existující USERJOURNEYRECORDER JSON jako vlastní událost pro Application Insights. |
-| TelemetryVersion | Yes | Hodnota musí být `1.0.0` . |
+| TelemetryEngine | Ano | Hodnota musí být `ApplicationInsights` . |
+| InstrumentationKey | Ano | Řetězec, který obsahuje klíč instrumentace pro element Application Insights. |
+| DeveloperMode | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. Podrobné protokoly aktivit jsou navržené jenom k podpoře vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Při použití v produkčním prostředí předpokládá vývojář zodpovědnost za osobní údaje shromažďované v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
+| ClientEnabled | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle Application Insights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. |
+| ServerEnabled | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle existující USERJOURNEYRECORDER JSON jako vlastní událost pro Application Insights. |
+| TelemetryVersion | Ano | Hodnota musí být `1.0.0` . |
 
 Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md) .
 
@@ -163,9 +191,18 @@ Element **ContentDefinitionParameter** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Název | Yes | Název páru klíč-hodnota. |
+| Název | Ano | Název páru klíč-hodnota. |
 
-Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) .
+Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) .
+
+### <a name="journeyframing"></a>JourneyFraming
+
+Element **JourneyFraming** obsahuje následující atributy:
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| Povoleno | Ano | Povolí načtení této zásady v rámci prvku IFRAME. Možné hodnoty: `false` (výchozí), nebo `true` . |
+| zdroje | Ano | Obsahuje domény, které budou načítat hosta elementu IFRAME. Další informace najdete v tématu [načítání Azure B2C v prvku IFRAME](embedded-login.md). |
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
@@ -173,7 +210,7 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Yes | Hodnota musí být `PolicyProfile` . |
+| Id | Ano | Hodnota musí být `PolicyProfile` . |
 
 **TechnicalProfile** obsahuje následující prvky:
 
@@ -190,15 +227,22 @@ Element **Protocol** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Název | Yes | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2` . `OpenIdConnect`Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2`Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
+| Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2` . `OpenIdConnect`Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2`Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
 
 ### <a name="metadata"></a>Metadata
 
-Pokud je protokol `SAML` , element metadata obsahuje následující prvky.
+Pokud je protokol `SAML` , element metadata obsahuje následující prvky. Další informace najdete v tématu [Možnosti registrace aplikace SAML v Azure AD B2C](saml-service-provider-options.md).
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| XmlSignatureAlgorithm | No | Metoda, kterou Azure AD B2C používá k podepsání odpovědi SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Pokud chcete nakonfigurovat kontrolní výraz SAML, přečtěte si [metadata Technical profil vystavitele SAML](saml-issuer-technical-profile.md#metadata). |
+| IdpInitiatedProfileEnabled | Ne | Označuje, zda je podporován tok iniciované IDP. Možné hodnoty: `true` nebo `false` (výchozí). | 
+| XmlSignatureAlgorithm | Ne | Metoda, kterou Azure AD B2C používá k podepsání odpovědi SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Pokud chcete nakonfigurovat kontrolní výraz SAML, přečtěte si [metadata Technical profil vystavitele SAML](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Ne | Určuje metodu, kterou Azure AD B2C používá k šifrování dat pomocí algoritmu standard AES (Advanced Encryption Standard) (AES). Metadata řídí hodnotu `<EncryptedData>` prvku v odpovědi SAML. Možné hodnoty: `Aes256` (výchozí), `Aes192` , `Sha512` nebo ` Aes128` . |
+| KeyEncryptionMethod| Ne | Určuje metodu, kterou Azure AD B2C používá k zašifrování kopie klíče, který se použil k zašifrování dat. Metadata řídí hodnotu  `<EncryptedKey>` prvku v odpovědi SAML. Možné hodnoty: ` Rsa15` (výchozí) – algoritmus 1,5 PKCS (Public Key Cryptography Standard) standardu RSA ( ` RsaOaep` výplně OAEP) – optimální šifrování asymetrického šifrování (). |
+| UseDetachedKeys | Ne |  Možné hodnoty: `true` , nebo `false` (výchozí). Pokud je hodnota nastavena na `true` , Azure AD B2C změní formát šifrovaných kontrolních výrazů. Použití odpojených klíčů přidá šifrovaný kontrolní výraz jako podřízený objekt EncrytedAssertion, a to na rozdíl od EncryptedData. |
+| WantsSignedResponses| Ne | Určuje, zda Azure AD B2C podepíše `Response` oddíl odpovědi SAML. Možné hodnoty: `true` (výchozí) nebo `false` .  |
+| RemoveMillisecondsFromDateTime| Ne | Určuje, zda budou milisekundy odebrány z hodnot DateTime v rámci odpovědi SAML (patří mezi ně IssueInstant, NotBefore, NotOnOrAfter a AuthnInstant). Možné hodnoty: `false` (výchozí) nebo `true` .  |
+
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -212,13 +256,14 @@ Element **OutputClaim** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Odkaz na objekt **ClaimType** již definovaný v oddílu **ClaimsSchema** v souboru zásad. |
-| Hodnot | No | Výchozí hodnota, která se dá použít, pokud je hodnota deklarace prázdná. |
-| PartnerClaimType | No | Odešle deklaraci identity v jiném názvu, jak je nakonfigurováno v definici ClaimType. |
+| ClaimTypeReferenceId | Ano | Odkaz na objekt **ClaimType** již definovaný v oddílu **ClaimsSchema** v souboru zásad. |
+| Hodnot | Ne | Výchozí hodnota, která se dá použít, pokud je hodnota deklarace prázdná. |
+| PartnerClaimType | Ne | Odešle deklaraci identity v jiném názvu, jak je nakonfigurováno v definici ClaimType. |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Pomocí elementu **SubjectNameingInfo** řídíte hodnotu předmětu tokenu:
+
 - **Token JWT** – `sub` deklarace identity Jedná se o objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k provádění bezpečných ověřovacích kontrol, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. Další informace najdete v tématu [Konfigurace tokenu, relace a jednotného přihlašování](session-behavior.md).
 - **Token SAML** – `<Subject><NameID>` element, který identifikuje prvek předmětu. Formát NameId lze upravit.
 
@@ -226,8 +271,8 @@ Element **SubjectNamingInfo** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ClaimType | Yes | Odkaz na **PartnerClaimTypeu**výstupní deklarace identity. Deklarace výstupů musí být definované v **OutputClaims** kolekci zásad předávající strany. |
-| Formát | No | Používá se pro předávající strany SAML k nastavení **formátu NameId** vráceného v kontrolním výrazu SAML. |
+| ClaimType | Ano | Odkaz na **PartnerClaimTypeu** výstupní deklarace identity. Deklarace výstupů musí být definované v **OutputClaims** kolekci zásad předávající strany. |
+| Formát | Ne | Používá se pro předávající strany SAML k nastavení **formátu NameId** vráceného v kontrolním výrazu SAML. |
 
 Následující příklad ukazuje, jak definovat předávající stranu OpenID Connect. Informace o názvu subjektu jsou nakonfigurovány jako `objectId` :
 

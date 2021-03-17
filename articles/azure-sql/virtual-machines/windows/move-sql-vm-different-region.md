@@ -7,19 +7,20 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: migration
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851806"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360148"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Přesunutí virtuálního počítače s SQL Server do jiné oblasti v rámci Azure pomocí Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +65,7 @@ Připravte zdrojový virtuální počítač SQL Server i cílovou oblast pro př
     - Azure Site Recovery automaticky zjistí a vytvoří virtuální síť, když povolíte replikaci pro zdrojový virtuální počítač. Můžete také předem vytvořit síť a přiřadit ji k virtuálnímu počítači v toku uživatele pro povolení replikace. V cílové oblasti musíte ručně vytvořit všechny další prostředky.
 - Pokud chcete vytvořit nejčastěji používané síťové prostředky, které jsou relevantní pro vás na základě konfigurace zdrojového virtuálního počítače, přečtěte si následující dokumentaci: 
     - [Skupiny zabezpečení sítě](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Load Balancer](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
+    - [Nástroj pro vyrovnávání zatížení](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [Veřejná IP adresa](../../../virtual-network/virtual-network-public-ip-address.md)
     - Další síťové součásti najdete v [dokumentaci k síti](../../../virtual-network/virtual-networks-overview.md).
 - Ruční vytvoření neprodukční sítě v cílové oblasti, pokud chcete otestovat konfiguraci před provedením finálního přesunu do cílové oblasti. Tento krok doporučujeme, protože zajišťuje minimální interferenci s produkční sítí. 
@@ -73,11 +74,11 @@ Připravte zdrojový virtuální počítač SQL Server i cílovou oblast pro př
 
 Následující kroky ukazují, jak použít Azure Site Recovery ke kopírování dat do cílové oblasti. Vytvořte Trezor Recovery Services v jiné oblasti, než je zdrojová oblast. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. V levém horním rohu navigačního podokna vyberte **vytvořit prostředek** . 
 1. Vyberte **& nástroje pro správu** a pak vyberte **Backup and Site Recovery**. 
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) vytvořte novou skupinu prostředků v cílové oblasti nebo vyberte existující skupinu prostředků v cílové oblasti. 
-1. V části **Podrobnosti o instanci**zadejte název vašeho trezoru a potom z rozevíracího seznamu vyberte svou cílovou **oblast** . 
+1. V části **Podrobnosti o instanci** zadejte název vašeho trezoru a potom z rozevíracího seznamu vyberte svou cílovou **oblast** . 
 1. Vyberte **zkontrolovat + vytvořit** a vytvořte svůj Recovery Services trezor. 
 1. V levém horním rohu navigačního podokna a do vyhledávacího pole vyberte **všechny služby** `recovery services` . 
 1. Volitelně Vyberte hvězdičku vedle **Recovery Services trezory** a přidejte je do rychlého navigačního panelu. 
@@ -88,7 +89,7 @@ Následující kroky ukazují, jak použít Azure Site Recovery ke kopírování
 
 1. Vyberte **zdroj** a pak jako zdroj vyberte **Azure** . Vyberte odpovídající hodnoty pro ostatní rozevírací pole, jako je například umístění vašich zdrojových virtuálních počítačů. V poli **zdrojová skupina prostředků** se budou zobrazovat jenom skupiny prostředků nacházející se v oblasti **zdrojové umístění** . 
 1. Vyberte **virtuální počítače** a pak vyberte virtuální počítače, které chcete migrovat. Výběrem **OK** uložte výběr virtuálního počítače. 
-1. Vyberte **Nastavení**a potom z rozevíracího seznamu zvolte **cílové umístění** . Mělo by se jednat o skupinu prostředků, kterou jste připravili dříve. 
+1. Vyberte **Nastavení** a potom z rozevíracího seznamu zvolte **cílové umístění** . Mělo by se jednat o skupinu prostředků, kterou jste připravili dříve. 
 1. Po přizpůsobení replikace vyberte **vytvořit cílové prostředky** a vytvořte prostředky v novém umístění. 
 1. Po vytvoření prostředku vyberte **Povolit replikaci** , aby se spustila replikace SQL Server virtuálního počítače ze zdroje do cílové oblasti.
 1. Stav replikace můžete zjistit tak, že přejdete do trezoru pro obnovení, vyberete **replikované položky** a zobrazíte **stav** svého virtuálního počítače s SQL Server. Stav **chráněno** znamená, že se replikace dokončila. 
@@ -109,7 +110,7 @@ Následující kroky ukazují, jak použít Azure Site Recovery k otestování p
    >[!IMPORTANT]
    > Pro tento test převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure. Nepoužívejte produkční síť, která byla nastavena, když jste povolili replikaci a chcete přesunout virtuální počítače do složky nakonec. 
 
-1. Pokud chcete sledovat průběh, přejděte do svého trezoru, v části **monitorování**vyberte **Site Recovery úlohy** a pak vyberte probíhající úlohu **testovací převzetí služeb při selhání** .
+1. Pokud chcete sledovat průběh, přejděte do svého trezoru, v části **monitorování** vyberte **Site Recovery úlohy** a pak vyberte probíhající úlohu **testovací převzetí služeb při selhání** .
 
    ![Sledovat průběh testu převzetí služeb při selhání](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
@@ -125,13 +126,13 @@ Následující kroky ukazují, jak přesunout SQL Server virtuální počítač 
 
    ![Iniciovat převzetí služeb při selhání](./media/move-sql-vm-different-region/initiate-failover.png)
 
-1. V **bodu obnovení**vyberte nejnovější bod obnovení **konzistentní vzhledem k aplikacím** . 
+1. V **bodu obnovení** vyberte nejnovější bod obnovení **konzistentní vzhledem k aplikacím** . 
 1. Zaškrtněte políčko vedle **vypnout počítač před tím, než začne převzetí služeb při selhání**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout zdrojový virtuální počítač. Převzetí služeb při selhání bude pokračovat i v případě selhání vypnutí. 
 1. Vyberte **OK** a spusťte převzetí služeb při selhání.
 1. Proces převzetí služeb při selhání můžete monitorovat ze stejné stránky **Site Recovery úlohy** , kterou jste zobrazili při monitorování testu převzetí služeb při selhání v předchozí části. 
 1. Po dokončení úlohy ověřte, že se virtuální počítač SQL Server v cílové oblasti zobrazuje podle očekávání. 
 1. Přejděte zpátky do trezoru, vyberte **replikované položky**, vyberte SQL Server virtuální počítač a vyberte **Potvrdit** pro dokončení procesu přesunutí do cílové oblasti. Počkejte, než se dokončí úloha potvrzení změn. 
-1. Zaregistrujte svůj SQL Server virtuální počítač pomocí poskytovatele prostředků virtuálního počítače SQL, aby bylo možné povolit správu **virtuálních počítačů SQL** v Azure Portal a funkcích přidružených k poskytovateli prostředků. Další informace najdete v tématu [registrace SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). 
+1. Zaregistrujte svůj SQL Server virtuální počítač pomocí rozšíření agenta SQL IaaS, aby bylo možné povolit správu **virtuálních počítačů SQL** v Azure Portal a funkcích přidružených k tomuto rozšíření. Další informace najdete v tématu věnovaném [registraci virtuálního počítače s SQL Server pomocí rozšíření agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md). 
 
   > [!WARNING]
   > Konzistence SQL Server dat je zaručena pouze u snímků konzistentních vzhledem k aplikacím. **Nejnovější zpracovaný** snímek nejde použít pro SQL Server převzetí služeb při selhání, protože snímek pro zotavení po havárii nemůže zaručit SQL Server konzistenci dat. 
@@ -139,7 +140,7 @@ Následující kroky ukazují, jak přesunout SQL Server virtuální počítač 
 ## <a name="clean-up-source-resources"></a>Vyčištění zdrojových prostředků
 Abyste se vyhnuli poplatkům za účtování, odeberte SQL Server virtuální počítač z trezoru a odstraňte všechny nepotřebné přidružené prostředky. 
 
-1. Přejděte zpátky do trezoru **Site Recovery** , vyberte **replikované položky**a vyberte SQL Server virtuální počítač. 
+1. Přejděte zpátky do trezoru **Site Recovery** , vyberte **replikované položky** a vyberte SQL Server virtuální počítač. 
 1. Vyberte **Zakázat replikaci**. Vyberte důvod pro zakázání ochrany a pak výběrem **OK** zakažte replikaci. 
 
    >[!IMPORTANT]
@@ -156,5 +157,3 @@ Další informace najdete v následujících článcích:
 * [Nejčastější dotazy k SQL Server na VIRTUÁLNÍm počítači s Windows](frequently-asked-questions-faq.md)
 * [SQL Server doprovodné materiály k cenám pro virtuální počítače s Windows](pricing-guidance.md)
 * [Zpráva k vydání verze Windows VM SQL Server](doc-changes-updates-release-notes.md)
-
-

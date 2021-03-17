@@ -8,15 +8,16 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 22530e79a2bcf34a88ea857bda56b6f424894461
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 3c78ad6605e927015d35df12cadf0347dd0337cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421990"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349040"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globálně distribuovat čtení pomocí rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 V tomto článku se dozvíte, jak globálně distribuovat operace čtení s nastavením [předvoleb čtení MongoDB](https://docs.mongodb.com/manual/core/read-preference/) pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 
@@ -171,6 +172,6 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte všechny prostředky
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
+* [Importování dat MongoDB do databáze Azure Cosmos](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)
 * [Nastavení globálně distribuované databáze s rozhraním API Azure Cosmos DB pro MongoDB](tutorial-global-distribution-mongodb.md)
 * [Vývoj místně pomocí emulátoru Azure Cosmos DB](local-emulator.md)

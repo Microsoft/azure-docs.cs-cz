@@ -4,12 +4,12 @@ description: Připojte se k síti služby Azure blockchain pomocí MetaMask a na
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920586"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90530433"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Rychlý Start: použití MetaMask k připojení a nasazení inteligentního kontraktu
 
@@ -17,7 +17,7 @@ V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Nainstalovat [rozšíření prohlížeče MetaMask](https://metamask.io)
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure 
 
 Pro připojení k síti blockchain potřebujete adresu koncového bodu služby Azure blockchain. Adresa koncového bodu a přístupové klávesy jsou v Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain.
 1. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
@@ -41,7 +41,7 @@ Pro připojení k síti blockchain potřebujete adresu koncového bodu služby A
 ## <a name="connect-metamask"></a>Připojit MetaMask
 
 1. Otevřete rozšíření prohlížeče MetaMask a přihlaste se.
-1. V rozevíracím seznamu síť vyberte **vlastní RPC**.
+1. V rozevíracím seznamu síť vyberte  **vlastní RPC**.
 
     ![Vlastní RPC](./media/connect-metamask/custom-rpc.png)
 
@@ -87,9 +87,9 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
     ```
 
     **Jednoduchá smlouva** deklaruje stavovou proměnnou s názvem **Zůstatek**. Jsou definovány dvě funkce. Funkce **Add** přidá číslo k **vyvážení**. Funkce **Get** vrátí hodnotu **zůstatku**.
-1. Chcete-li zkompilovat kontrakt, nejprve vyberte podokno kompilátor nehustoty a pak vyberte možnost **zkompilovat jednoduchý. Sol**.
+1. Chcete-li zkompilovat kontrakt, nejprve vyberte podokno kompilátor nehustoty a pak vyberte možnost  **zkompilovat jednoduchý. Sol**.
 
-    ![Sestavení](./media/connect-metamask/compile.png)
+    ![Snímek obrazovky znázorňuje kompilovaný kontrakt.](./media/connect-metamask/compile.png)
 
 1. Vyberte podokno **nasazení & spuštění** a pak nastavte **prostředí** na **vložené Web3** pro připojení prostřednictvím MetaMask k vašemu členovi blockchain.
 
@@ -97,7 +97,7 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 
 1. Vyberte **jednoduchý** kontrakt a pak **nasazení**.
 
-    ![Nasadit](./media/connect-metamask/deploy.png)
+    ![Snímek obrazovky znázorňuje nasazení a spuštění transakcí s vybraným kontraktem a vybraným nasazením.](./media/connect-metamask/deploy.png)
 
 
 1. Oznámení MetaMask upozorní na nedostatečné prostředky k provedení transakce.

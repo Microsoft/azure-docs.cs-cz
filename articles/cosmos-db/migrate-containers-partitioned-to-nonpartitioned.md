@@ -3,17 +3,20 @@ title: Migrace kontejnerů Azure Cosmos, které nejsou rozdělené na oddíly, d
 description: Naučte se migrovat všechny existující nerozdělitelné kontejnery do dělených kontejnerů.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263479"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334082"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB podporuje vytváření kontejnerů bez klíče oddílu. V současné době můžete vytvářet nerozdělené kontejnery pomocí Azure CLI a Azure Cosmos DB SDK (.NET, Java, NodeJs), jejichž verze je menší nebo rovna 2. x. Pomocí Azure Portal nelze vytvořit kontejnery bez oddílů. Nicméně tyto nerozdělitelné kontejnery nejsou elastické a mají pevnou kapacitu úložiště 20 GB a omezení propustnosti 10 000 RU/s.
 
@@ -131,6 +134,6 @@ Pokud jsou nové položky vloženy s různými hodnotami pro klíč oddílu, dot
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 * [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
-* [Práce s účtem Azure Cosmos](account-overview.md)
+* [Práce s účtem Azure Cosmos](./account-databases-containers-items.md)
 
 [1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

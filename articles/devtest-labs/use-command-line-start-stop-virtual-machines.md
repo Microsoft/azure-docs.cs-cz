@@ -3,12 +3,12 @@ title: Spuštění a zastavení virtuálních počítačů pomocí nástrojů p�
 description: Naučte se používat nástroje příkazového řádku ke spouštění a zastavování virtuálních počítačů v Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476412"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499539"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Spuštění a zastavení Azure DevTest Labs virtuálních počítačů pomocí nástrojů příkazového řádku
 V tomto článku se dozvíte, jak pomocí Azure PowerShell nebo Azure CLI spouštět a zastavovat virtuální počítače v testovacím prostředí v Azure DevTest Labs. K automatizaci těchto operací můžete vytvořit skripty PowerShellu nebo rozhraní příkazového řádku. 
@@ -29,7 +29,7 @@ V některých scénářích ale můžete chtít automatizovat spouštění a zas
 > [!NOTE]
 > Následující skript používá Azure PowerShell AZ Module. 
 
-Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) je pro tento skript primárním fokusem. Parametr **ResourceID** je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. Parametr **Action** je, kde jsou nastaveny možnosti **Spustit** nebo **zastavit** v závislosti na tom, co je potřeba.
+Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) je pro tento skript primárním fokusem. Parametr **ResourceID** je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. Parametr **Action** je, kde jsou nastaveny možnosti **Spustit** nebo **zastavit** v závislosti na tom, co je potřeba.
 
 ```powershell
 # The id of the subscription
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-Rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) je dalším způsobem, jak automatizovat spouštění a zastavování virtuálních počítačů DevTest Labs. Rozhraní příkazového řádku Azure CLI je možné [instalovat](/cli/azure/install-azure-cli?view=azure-cli-latest) v různých operačních systémech. Následující skript vám poskytne příkazy pro spouštění a zastavování virtuálních počítačů v testovacím prostředí. 
+Rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) je dalším způsobem, jak automatizovat spouštění a zastavování virtuálních počítačů DevTest Labs. Rozhraní příkazového řádku Azure CLI je možné [instalovat](/cli/azure/install-azure-cli) v různých operačních systémech. Následující skript vám poskytne příkazy pro spouštění a zastavování virtuálních počítačů v testovacím prostředí. 
 
 ```azurecli
 # Sign in to Azure

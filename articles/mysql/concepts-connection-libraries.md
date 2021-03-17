@@ -1,17 +1,17 @@
 ---
 title: Knihovny připojení – Azure Database for MySQL
 description: V tomto článku jsou uvedeny všechny knihovny nebo ovladače, které mohou klientské programy použít při připojování k Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/3/2020
-ms.openlocfilehash: 9d4d862389a607b18ee5f2440069fa2eb6cf7bc4
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ac6e5ff2ce775b8ca273ce31a9a35a0e8e37bc07
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553032"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542622"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Knihovny připojení pro Azure Database for MySQL
 V tomto článku jsou uvedeny všechny knihovny nebo ovladače, které mohou klientské programy použít při připojování k Azure Database for MySQL.

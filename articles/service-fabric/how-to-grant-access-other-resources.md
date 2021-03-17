@@ -3,14 +3,14 @@ title: Udělení přístupu aplikace k jiným prostředkům Azure
 description: V tomto článku se dozvíte, jak udělit přístup k aplikaci Service Fabric s povolenými identitami do dalších prostředků Azure, které podporují ověřování založené na Azure Active Directory.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c7560294fbf6d122396b6a5a8ffd3ee93bc89048
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258952"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507451"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure
 
 Aby mohla aplikace používat spravovanou identitu pro přístup k jiným prostředkům, musí se jim udělit oprávnění k přístupu k chráněným prostředkům Azure. Udělení oprávnění je obvykle akce správy na řídicí rovině služby Azure vlastnící chráněný prostředek, který je směrován prostřednictvím Azure Resource Manager, což vynutilo jakoukoli platnou kontrolu přístupu založenou na rolích.
 

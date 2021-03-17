@@ -1,23 +1,24 @@
 ---
 title: Příručka Začínáme s Node.js
 description: Naučte se vytvořit jednoduchou webovou aplikaci Node.js a nasadit ji v cloudové službě Azure Cloud Service.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 08/17/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079205"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741617"
 ---
-# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>Sestavení a nasazení Node.js aplikace do cloudové služby Azure (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 V tomto návodu se dozvíte, jak vytvořit jednoduchou aplikaci Node.js, běžící v cloudové službě Azure Cloud Service. Cloud Services jsou stavebními bloky škálovatelných cloudových aplikací v systému Azure. Umožňují oddělení, nezávislou správu a škálování front-endových a back-endových komponent vaší aplikace.  Cloud Services poskytují výkonný vyhrazený virtuální počítač, který spolehlivě hostuje jednotlivé role.
 
@@ -36,8 +37,8 @@ Jedná se o jednoduchou aplikaci "hello world":
 > [!NOTE]
 > Tento kurz používá prostředí Azure PowerShell, které vyžaduje systém Windows.
 
-* Nainstalujte a nakonfigurujte [Azure PowerShell].
-* Stáhněte a nainstalujte sadu [Azure SDK pro .NET 2.7]. V nastavení instalace vyberte:
+* Instalace a konfigurace [Azure PowerShell].
+* Stáhněte si a nainstalujte [Azure SDK for .NET 2,7]. V nastavení instalace vyberte:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -180,7 +181,7 @@ Další informace najdete ve [Středisku pro vývojáře Node.js].
 [Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [Použití jednoduché webové aplikace]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
-[Azure SDK pro .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [připojení PowerShellu]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Přehled vytváření hostované služby pro Azure]: https://azure.microsoft.com/documentation/services/cloud-services/

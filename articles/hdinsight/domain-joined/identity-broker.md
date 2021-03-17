@@ -1,53 +1,65 @@
 ---
-title: Použití zprostředkovatele ID (Preview) pro správu přihlašovacích údajů – Azure HDInsight
-description: Přečtěte si o službě HDInsight ID Broker, která zjednodušuje ověřování pro clustery Apache Hadoop připojené k doméně.
+title: Azure HDInsight ID Broker (HIB)
+description: Přečtěte si o službě Azure HDInsight ID Broker, která zjednodušuje ověřování pro clustery Apache Hadoop připojené k doméně.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 11/03/2020
+ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086598"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946827"
 ---
-# <a name="use-id-broker-preview-for-credential-management"></a>Použití zprostředkovatele ID (Preview) pro správu přihlašovacích údajů
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
-Tento článek popisuje, jak nastavit a použít funkci zprostředkovatele ID ve službě Azure HDInsight. Pomocí této funkce se můžete přihlásit k Apache Ambari prostřednictvím Azure Multi-Factor Authentication a získat požadované lístky protokolu Kerberos bez nutnosti použití hodnot hash hesla v Azure Active Directory Domain Services (Azure služba AD DS).
+Tento článek popisuje, jak nastavit a používat funkci služby Azure HDInsight ID Broker. Tuto funkci můžete použít k získání moderního ověřování OAuth pro Apache Ambari a při vynucení vícefaktorového ověřování, aniž byste museli používat starší hodnoty hash hesel v Azure Active Directory Domain Services (Azure služba AD DS).
 
 ## <a name="overview"></a>Přehled
 
-Zprostředkovatel ID zjednodušuje nastavení komplexního ověřování v následujících scénářích:
+Zprostředkovatel ID HDInsight zjednodušuje nastavení komplexního ověřování v následujících scénářích:
 
-* Vaše organizace spoléhá na federaci ověřování uživatelů pro přístup k prostředkům cloudu. Předtím, aby bylo možné použít clustery HDInsight Balíček zabezpečení podniku (ESP), bylo nutné povolit synchronizaci hodnot hash hesel z místního prostředí a Azure Active Directory. Tento požadavek může být u některých organizací obtížné nebo nežádoucí.
+* Vaše organizace spoléhá na federaci ověřování uživatelů pro přístup k prostředkům cloudu. Předtím, abyste mohli používat clustery HDInsight Balíček zabezpečení podniku, museli byste povolit synchronizaci hodnot hash hesel z místního prostředí do Azure Active Directory (Azure AD). Tento požadavek může být u některých organizací obtížné nebo nežádoucí.
+* Vaše organizace chce vymáhat vícefaktorové ověřování pro webový přístup nebo pro přístup na základě protokolu HTTP k Apache Ambari a dalším prostředkům clusteru.
 
-* Vytváříte řešení, která používají technologie, které využívají různé mechanismy ověřování. Například Apache Hadoop a Apache Ranger spoléhají na protokol Kerberos, zatímco Azure Data Lake Storage spoléhá na OAuth.
+HDInsight ID Broker poskytuje infrastrukturu ověřování, která umožňuje přechod protokolu z OAuth (moderní) na Kerberos (starší verze), aniž by se musely synchronizovat hodnoty hash hesel do Azure služba AD DS. Tato infrastruktura se skládá z komponent spuštěných na virtuálním počítači s Windows serverem, který má povolený uzel služby HDInsight ID, společně s uzly brány clusteru.
 
-Zprostředkovatel ID poskytuje jednotnou infrastrukturu ověřování a odebírá požadavek na synchronizaci hodnot hash hesel do Azure služba AD DS. Zprostředkovatel ID se skládá z komponent spuštěných na virtuálním počítači s Windows serverem (u uzlu služby ID) společně s uzly brány clusteru. 
+Pomocí následující tabulky můžete určit nejlepší možnost ověřování podle potřeb vaší organizace.
 
-Následující diagram znázorňuje tok ověřování pro všechny uživatele, včetně federovaných uživatelů po povolení zprostředkovatele ID:
+|Možnosti ověřování |Konfigurace HDInsight | Faktory, které je třeba zvážit |
+|---|---|---|
+| Plně OAuth | Zprostředkovatel ID Balíček zabezpečení podniku + HDInsight | Nejbezpečnější možnost. (Podpora vícefaktorového ověřování je podporovaná.) Předání synchronizace hodnot hash *není vyžadováno.* Neexistuje přístup přes SSH/kinit/keytab pro místní účty, který nemá hodnotu hash hesla v Azure služba AD DS. Pouze cloudové účty mohou i nadále SSH/kinit/keytab. Webový přístup k Ambari prostřednictvím protokolu OAuth. Pro podporu OAuth vyžaduje aktualizace starších aplikací (například JDBC/ODBC).|
+| OAuth + základní ověřování | Zprostředkovatel ID Balíček zabezpečení podniku + HDInsight | Webový přístup k Ambari prostřednictvím protokolu OAuth. Starší verze aplikací nadále používají základní ověřování. Pro základní přístup k ověřování musí být zakázáno vícefaktorového ověřování. Předání synchronizace hodnot hash *není vyžadováno.* Neexistuje přístup přes SSH/kinit/keytab pro místní účty, který nemá hodnotu hash hesla v Azure služba AD DS. Účty jenom pro Cloud můžou i nadále SSH/kinit. |
+| Plně základní ověřování | Balíček zabezpečení podniku | Nejčastěji se podobá místním nastavením. Synchronizace hodnoty hash hesla na Azure služba AD DS je povinná. Místní účty můžou používat SSH/kinit nebo keytab. Pokud je Azure Data Lake Storage Gen2 zálohování úložiště, musí být zakázané vícefaktorové ověřování. |
 
-![Tok ověřování s zprostředkovatelem ID](./media/identity-broker/identity-broker-architecture.png)
+Následující diagram znázorňuje moderní tok ověřování založený na protokolu OAuth pro všechny uživatele, včetně federovaných uživatelů po povolení služby HDInsight ID Broker:
 
-Zprostředkovatel ID umožňuje přihlásit se k clusterům ESP pomocí Multi-Factor Authentication bez zadání hesla. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se ke svému clusteru HDInsight přihlásit pomocí jednotného přihlašování (SSO).
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagram znázorňující tok ověřování pomocí služby HDInsight ID Broker.":::
+
+V tomto diagramu musí klient (tj. prohlížeč nebo aplikace) nejdřív získat token OAuth. Pak prezentuje token bráně v požadavku HTTP. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se k vašemu clusteru HDInsight přihlásit pomocí jednotného přihlašování.
+
+Stále se může jednat o mnoho starších verzí aplikací, které podporují jenom základní ověřování (tj. uživatelské jméno a heslo). V těchto scénářích můžete k připojení ke branám clusteru používat i základní ověřování HTTP. V takovém případě je nutné zajistit připojení k síti z uzlů brány do koncového bodu Active Directory Federation Services (AD FS) (AD FS), aby se zajistila přímá čára pozorování z uzlů brány.
+
+Následující diagram znázorňuje základní tok ověřování pro federované uživatele. Nejdřív se brána pokusí dokončit ověřování pomocí [ROPC toku](../../active-directory/develop/v2-oauth-ropc.md). V případě, že se do služby Azure AD nesynchronizují žádné hodnoty hash hesel, vrátí se ke zjištění AD FSho koncového bodu a dokončí ověřování tím, že se přistoupí ke koncovému bodu AD FS.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram znázorňující architekturu se základním ověřováním":::
+
 
 ## <a name="enable-hdinsight-id-broker"></a>Povolit HDInsight ID Broker
 
-Pokud chcete vytvořit cluster ESP s povoleným zprostředkovatelem ID, proveďte následující kroky:
+Vytvoření clusteru Balíček zabezpečení podniku s povoleným zprostředkovatelem HDInsight ID:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Postupujte podle základních kroků vytváření pro cluster ESP. Další informace najdete v tématu [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Postupujte podle základních kroků pro vytvoření clusteru Balíček zabezpečení podniku. Další informace najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
 
-Funkce zprostředkovatel ID přidá do clusteru jeden další virtuální počítač. Tento virtuální počítač je uzlem služby Service Broker a zahrnuje součásti serveru pro podporu ověřování. Uzel zprostředkovatele ID je připojený k doméně Azure služba AD DS.
+Funkce služby HDInsight ID Broker přidá do clusteru jeden virtuální počítač navíc. Tento virtuální počítač je uzlem zprostředkovatele služby HDInsight ID a zahrnuje součásti serveru pro podporu ověřování. Uzel služby HDInsight ID je připojený k doméně Azure služba AD DS.
 
-![Možnost povolení zprostředkovatele ID](./media/identity-broker/identity-broker-enable.png)
+![Diagram, který ukazuje možnost povolit zprostředkovatele ID HDInsight.](./media/identity-broker/identity-broker-enable.png)
 
-### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
-Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy do výpočetního profilu šablony, cluster se vytvoří s povoleným uzlem ID zprostředkovatele:
+### <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
+
+Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy do výpočetního profilu šablony, cluster se vytvoří s povoleným uzlem zprostředkovatel ID HDInsight:
 
 ```json
 .
@@ -68,7 +80,7 @@ Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy 
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -86,25 +98,61 @@ Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy 
 .
 ```
 
+Pokud chcete zobrazit úplnou ukázku šablony ARM, podívejte se prosím na šablonu publikovanou [tady](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
+
+
 ## <a name="tool-integration"></a>Integrace nástrojů
 
-[Modul plug-in HDInsight IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) se aktualizuje tak, aby podporoval OAuth. Tento modul plug-in můžete použít pro připojení ke clusteru a odeslání úloh.
-
-Pomocí [nástrojů pro podregistr Spark &](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) lze také využít vs Code k využití poznámkových bloků a odesílání úloh.
+Nástroje HDInsight jsou aktualizované tak, aby nativně podporovaly OAuth. Tyto nástroje použijte pro moderní přístup založený na protokolu OAuth k clusterům. [Modul plug-in HDInsight IntelliJ](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib) se dá použít pro aplikace založené na jazyce Java, jako je třeba Scala. [Nástroje Spark a podregistr pro Visual Studio Code](../hdinsight-for-vscode.md) lze použít pro úlohy PySpark a podregistr. Nástroje podporují dávkové i interaktivní úlohy.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Přístup SSH bez hodnoty hash hesla v Azure služba AD DS
 
-Jakmile je zprostředkovatel ID povolený, budete pořád potřebovat hodnotu hash hesla uloženou v Azure služba AD DS pro scénáře SSH s doménovým účtem. Pro SSH na virtuální počítač připojený k doméně nebo pro spuštění příkazu musíte `kinit` zadat heslo. 
+|Možnosti SSH |Faktory, které je třeba zvážit |
+|---|---|
+| Místní účet VM (například sshuser) | Tento účet jste zadali v době vytváření clusteru. Pro tento účet není k dispozici žádné ověřování pomocí protokolu Kerberos. |
+| Pouze cloudový účet (například alice@contoso.onmicrosoft.com ) | Hodnota hash hesla je dostupná ve službě Azure služba AD DS. Ověřování protokolem Kerberos je možné prostřednictvím protokolu SSH Kerberos. |
+| Místní účet (například alice@contoso.com ) | Ověřování protokolem Kerberos protokolu SSH je možné pouze v případě, že je v Azure služba AD DS k dispozici hodnota hash hesla. V opačném případě nemůže tento uživatel do clusteru protokol SSH. |
 
-Ověřování SSH vyžaduje, aby byla hodnota hash k dispozici v Azure služba AD DS. Pokud chcete použít SSH jenom pro scénáře správy, můžete vytvořit jenom jeden účet jenom pro Cloud a použít ho ke clusteru SSH. Jiní uživatelé stále můžou používat Ambari nebo nástroje HDInsight (například modul plug-in IntelliJ), aniž by byl k dispozici hodnota hash hesla v Azure služba AD DS.
+Pokud chcete SSH na virtuální počítač připojený k doméně nebo spustit `kinit` příkaz, musíte zadat heslo. Ověřování protokolem SSH protokolu Kerberos vyžaduje, aby byla hodnota hash k dispozici v Azure služba AD DS. Pokud chcete použít SSH jenom pro scénáře správy, můžete vytvořit jenom jeden účet jenom pro Cloud a použít ho ke clusteru SSH. Jiní místní uživatelé můžou dál používat Ambari nebo nástroje HDInsight nebo základní ověřování HTTP, aniž by byl k dispozici hodnota hash hesla v Azure služba AD DS.
 
-## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Klienti, kteří používají OAuth pro připojení k bráně HDInsight s nastavením služby ID Broker
+Pokud vaše organizace nesynchronizuje hodnoty hash hesel do Azure služba AD DS, doporučujeme v Azure AD vytvořit jednoho pouze cloudového uživatele. Pak ji přiřaďte jako správce clusteru při vytváření clusteru a použijte ji pro účely správy. Můžete ji použít k získání kořenového přístupu k virtuálním počítačům přes SSH.
 
-V instalačním programu služby ID se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Pomocí kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) můžete získat token s následujícími informacemi:
+Pokud chcete řešit problémy s ověřováním, přečtěte si [tuto příručku](./domain-joined-authentication-issues.md).
 
-*   Identifikátor URI prostředku OAuth:`https://hib.azurehdinsight.net` 
-* AppId: 7865c1d2-F040-46cc-875f-831a1ef6a28a
-*   Oprávnění: (název: cluster. v/v, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>Klienti, kteří používají OAuth pro připojení k bráně HDInsight pomocí služby HDInsight ID Broker
+
+V instalačním programu HDInsight ID Broker se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Použijte postup v [tomto dokumentu](../../storage/common/storage-auth-aad-app.md) k získání tokenu s následujícími informacemi:
+
+*    Identifikátor URI prostředku OAuth: `https://hib.azurehdinsight.net` 
+*   AppId: 7865c1d2-F040-46cc-875f-831a1ef6a28a
+*    Oprávnění: (název: cluster. v/v, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+
+Po získání tokenu OAuth ho použijte v autorizační hlavičce požadavku HTTP do brány clusteru (například https:// <clustername> -int.azurehdinsight.NET). Vzorový příkaz složené na rozhraní Apache Livy API může vypadat jako v tomto příkladu:
+    
+```bash
+curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
+``` 
+
+Pro použití Beeline a Livy můžete také použít kódy ukázek, které [tady](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) najdete, a nastavit tak klienta tak, aby používal OAuth a připojil se ke clusteru.
+
+## <a name="faq"></a>Nejčastější dotazy
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Jakou aplikaci vytvoří HDInsight v AAD?
+Pro každý cluster bude aplikace třetí strany registrována v AAD s identifikátorem URI clusteru jako identifierUri (jako `https://clustername.azurehdinsight.net` ).
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>Proč se uživatelé před použitím clusterů s podporou HIB zobrazí výzva k zadání souhlasu?
+V AAD se vyžaduje souhlas pro všechny aplikace třetích stran předtím, než může ověřit uživatele nebo získat přístup k datům.
+
+### <a name="can-the-consent-be-approved-programatically"></a>Je možné souhlas schválit programově?
+Rozhraní API pro Microsoft Graph umožňuje automatizovat souhlas. v dokumentaci k [rozhraní API](/graph/api/resources/oauth2permissiongrant) můžete sekvenci automatizace souhlasu:
+
+* Registrace aplikace a udělení oprávnění Application. getpro přístup k aplikaci Microsoft Graph
+* Po vytvoření clusteru se dotaz na aplikaci clusteru vyhledá na základě identifikátoru URI identifikátoru.
+* Registrace souhlasu aplikace
+
+Když se cluster odstraní, HDInsight aplikaci odstraní a není nutné nic Vyčistě.
+
+ 
+
 
 ## <a name="next-steps"></a>Další kroky
 

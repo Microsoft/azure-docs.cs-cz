@@ -13,22 +13,24 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad4f5dcd137a9be6dfc764385802792026c0297d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319146"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093022"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Pokyny pro komunikaci z cloudu na zařízení
 
 IoT Hub poskytuje pro aplikace zařízení tři možnosti, jak vystavit funkce pro back-endové aplikace:
 
-* [Přímé metody](iot-hub-devguide-direct-methods.md) pro komunikaci, které vyžadují okamžité potvrzení výsledku. Přímé metody se často používají pro interaktivní řízení zařízení, jako je například zapnutí ventilátoru.
+* [Přímé metody](iot-hub-devguide-direct-methods.md) komunikace, které vyžadují okamžité potvrzení výsledku. Přímé metody se často používají pro interaktivní řízení zařízení, jako je například zapnutí ventilátoru.
 
 * [Požadované vlastnosti](iot-hub-devguide-device-twins.md) pro dlouhotrvající příkazy určené k umístění zařízení do určitého požadovaného stavu. Nastavte například interval odesílání telemetrie na 30 minut.
 
 * [Zprávy z cloudu na zařízení](iot-hub-devguide-messages-c2d.md) pro jednosměrná oznámení do aplikace zařízení.
+
+Informace o tom, jak [Azure IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) používá tyto možnosti k řízení zařízení technologie Plug and Play IoT, najdete v tématu [Příručka pro vývojáře služby IoT technologie Plug and Play](../iot-pnp/concepts-developer-guide-service.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -36,10 +38,10 @@ Toto je podrobné porovnání různých možností komunikace typu cloud-zaříz
 
 | Kategorie | Přímé metody | Požadované vlastnosti vlákna | Zprávy z cloudu na zařízení |
 | ---------- | -------------- | ------------------------- | ------------------------ |
-| Scénář | Příkazy, které vyžadují okamžité potvrzení, jako je například zapnutí ventilátoru. | Dlouho běžící příkazy určené k umístění zařízení do určitého požadovaného stavu. Nastavte například interval odesílání telemetrie na 30 minut. | Jednosměrná oznámení do aplikace zařízení. |
+| Scenario | Příkazy, které vyžadují okamžité potvrzení, jako je například zapnutí ventilátoru. | Dlouho běžící příkazy určené k umístění zařízení do určitého požadovaného stavu. Nastavte například interval odesílání telemetrie na 30 minut. | Jednosměrná oznámení do aplikace zařízení. |
 | Tok dat | Dvoucestné. Aplikace zařízení může přímo reagovat na metodu. Back-end řešení obdrží výsledek v kontextu požadavku. | Jednosměrnou metodou. Aplikace zařízení obdrží oznámení se změnou vlastnosti. | Jednosměrnou metodou. Aplikace zařízení obdrží zprávu.
 | Stálost | Odpojená zařízení se nekontaktují. Back-end řešení oznamuje, že zařízení není připojené. | Hodnoty vlastností jsou zachovány v zařízení s dvojitou hodnotou. Zařízení se přečte při příštím opětovném připojení. Hodnoty vlastností lze získat pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md). | Zprávy mohou být uchovávány IoT Hub až 48 hodin. |
-| Targets | Jedno zařízení používající **deviceId**nebo více zařízení, které používá [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení používající **deviceId**nebo více zařízení, které používá [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení podle **deviceId**. |
+| Targets | Jedno zařízení používající **deviceId** nebo více zařízení, které používá [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení používající **deviceId** nebo více zařízení, které používá [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení podle **deviceId**. |
 | Velikost | Maximální velikost datové části přímé metody je 128 KB. | Maximální velikost požadovaných vlastností je 32 KB. | Až 64 zpráv KB. |
 | Frekvence | Vysoká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). |
 | Protokol | K dispozici pomocí MQTT nebo AMQP. | K dispozici pomocí MQTT nebo AMQP. | K dispozici na všech protokolech. Zařízení se musí dotazovat při použití protokolu HTTPS. |

@@ -3,21 +3,21 @@ title: Nastavení klíčů spravovaných zákazníkem k šifrování dat v klido
 description: Vytvářejte a spravujte vlastní šifrovací klíče k zabezpečení dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386159"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629670"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps
 
 Azure Logic Apps spoléhá na Azure Storage ukládání a automatické [šifrování dat v klidovém umístění](../storage/common/storage-service-encryption.md). Toto šifrování chrání vaše data a pomáhá splnit závazky zabezpečení vaší organizace a dodržování předpisů. Ve výchozím nastavení používá Azure Storage k šifrování vašich dat klíče spravované Microsoftem. Další informace o tom, jak funguje šifrování Azure Storage, najdete v tématu [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md) neaktivní a neaktivní data v případě [šifrování dat v Azure](../security/fundamentals/encryption-atrest.md).
 
-Když vytvoříte [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí [Azure Key Vault](../key-vault/general/overview.md). Tato funkce se také označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem.
+Když vytvoříte [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí [Azure Key Vault](../key-vault/general/overview.md). Tato funkce se označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem. Díky této funkci Azure Storage pro váš klíč automaticky šifrování [pomocí  klíčů spravovaných platformou](../security/fundamentals/double-encryption.md) . Další informace najdete v tématu [dvojité šifrování dat pomocí šifrování infrastruktury](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).
 
 V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, který se použije při vytváření ISE pomocí REST API Logic Apps. Obecné kroky k vytvoření ISE prostřednictvím Logic Apps REST API najdete v tématu [vytvoření prostředí ISE (Integration Service Environment) pomocí REST API Logic Apps](../logic-apps/create-integration-service-environment-rest-api.md).
 
@@ -27,19 +27,23 @@ V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, k
 
 * Klíč spravovaný zákazníkem můžete zadat *jenom při vytváření ISE*, ne následně. Po vytvoření ISE nemůžete tento klíč deaktivovat. V současné době není k dispozici žádná podpora pro otočení klíče spravovaného zákazníkem pro ISE.
 
-* Pro podporu klíčů spravovaných zákazníkem vyžaduje vaše ISE vyžadovat, aby byla povolená [spravovaná identita přiřazená systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) . Tato identita umožňuje ISE ověřovat přístup k prostředkům v jiných klientech Azure Active Directory (Azure AD), takže se nemusíte přihlašovat pomocí svých přihlašovacích údajů.
+* Pro podporu klíčů spravovaných zákazníkem vaše ISE vyžaduje, abyste povolili [spravovanou identitu přiřazenou systémem nebo uživatelem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Tato identita umožňuje vašemu ISE ověřovat přístup k zabezpečeným prostředkům, například k virtuálním počítačům a jiným systémům nebo službám, které jsou v systému nebo připojeny k virtuální síti Azure. Tímto způsobem se nemusíte přihlašovat pomocí svých přihlašovacích údajů.
 
-* V současné době můžete vytvořit ISE, který podporuje klíče spravované zákazníkem a má povolenou identitu přiřazenou systémem. je třeba volat REST API Logic Apps pomocí požadavku PUT protokolu HTTPS.
+* V současné době můžete vytvořit ISE, který podporuje klíče spravované zákazníkem a má povolený typ spravované identity, takže je potřeba volat Logic Apps REST API pomocí požadavku PUT protokolu HTTPS.
 
-* Do *30 minut* poté, co odešlete požadavek https PUT, který vytvoří vaše ISE, musíte [dát trezoru klíčů přístup k identitě PŘIŘAZENÉ systému vaší ISE](#identity-access-to-key-vault). V opačném případě ISE vytvoření selže a vyvolá chybu oprávnění.
+* Musíte [dát službě trezoru klíčů přístup ke spravované identitě ISE](#identity-access-to-key-vault), ale časování závisí na tom, kterou spravovanou identitu používáte.
 
-## <a name="prerequisites"></a>Předpoklady
+  * **Spravovaná identita přiřazená systémem**: do *30 minut poté, co* odešlete požadavek https PUT, který vytvoří vaše ISE, musíte [předat přístup trezoru klíčů k spravované identitě vašeho ISE](#identity-access-to-key-vault). V opačném případě se vytváření ISE nepovede a zobrazí se chyba oprávnění.
+
+  * **Spravovaná identita přiřazená uživatelem**: před odesláním požadavku HTTP PUT, který vytváří ISE, [Poskytněte trezoru klíčů přístup k spravované identitě vašeho ISE](#identity-access-to-key-vault).
+
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné [požadavky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky pro povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 
 * Trezor klíčů Azure s povolenými vlastnostmi **obnovitelného odstranění** a **nevyprázdnění**
 
-  Další informace o tom, jak tyto vlastnosti povolit, najdete v tématu [Azure Key Vault obnovitelné odstranění – přehled](../key-vault/general/soft-delete-overview.md) a [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Pokud s Azure Key Vault začínáte, přečtěte si, [jak vytvořit Trezor klíčů](../key-vault/secrets/quick-create-portal.md#create-a-vault) pomocí Azure Portal nebo pomocí příkazu Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
+  Další informace o tom, jak tyto vlastnosti povolit, najdete v tématu [Azure Key Vault obnovitelné odstranění – přehled](../key-vault/general/soft-delete-overview.md) a [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Pokud s [Azure Key Vault](../key-vault/general/overview.md)začínáte, přečtěte si, jak vytvořit Trezor klíčů pomocí [Azure Portal](../key-vault/general/quick-create-portal.md), [Azure CLI](../key-vault/general/quick-create-cli.md)nebo [Azure PowerShell](../key-vault/general/quick-create-powershell.md).
 
 * V trezoru klíčů se vytvoří klíč, který je vytvořený pomocí těchto hodnot vlastností:
 
@@ -47,16 +51,16 @@ V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, k
   |----------|-------|
   | **Typ klíče** | RSA |
   | **Velikost klíče RSA** | 2 048 |
-  | **Povoleno** | Ano |
+  | **Povoleno** | Yes |
   |||
 
   ![Vytvoření šifrovacího klíče spravovaného zákazníkem](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Další informace najdete v tématu [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) nebo příkazu Azure PowerShell, [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
+  Další informace najdete v tématu [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md) nebo příkazu Azure PowerShell, [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * Nástroj, který můžete použít k vytvoření ISE, voláním Logic Apps REST API s požadavkem PUT protokolu HTTPS. Můžete například použít [post](https://www.getpostman.com/downloads/)nebo můžete vytvořit aplikaci logiky, která provede tuto úlohu.
 
-<a name="enable-support-key-system-identity"></a>
+<a name="enable-support-key-managed-identity"></a>
 
 ## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Vytvoření ISE s využitím trezoru klíčů a podpory spravovaných identit
 
@@ -65,7 +69,7 @@ Pokud chcete vytvořit ISE voláním REST API Logic Apps, udělejte tuto žádos
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Verze Logic Apps REST API 2019-05-01 vyžaduje, abyste si pro konektory ISE napravili vlastní požadavek HTTP PUT.
+> Verze Logic Apps REST API 2019-05-01 vyžaduje, abyste si pro konektory ISE napravili vlastní žádost o vložení HTTPS.
 
 Nasazení obvykle trvá do dvou hodin, než se dokončí. V některých případech může nasazení trvat až čtyři hodiny. Pokud chcete zjistit stav nasazení, v [Azure Portal](https://portal.azure.com)na panelu nástrojů Azure vyberte ikonu oznámení, která otevře podokno oznámení.
 
@@ -88,7 +92,7 @@ V hlavičce požadavku zahrňte tyto vlastnosti:
 
 V textu žádosti povolte podporu těchto dalších položek poskytnutím jejich informací v definici ISE:
 
-* Spravovaná identita přiřazená systémem, kterou vaše ISE používá pro přístup k vašemu trezoru klíčů
+* Spravovaná identita, kterou ISE používá pro přístup k trezoru klíčů
 * Váš Trezor klíčů a klíč spravovaný zákazníkem, který chcete použít
 
 #### <a name="request-body-syntax"></a>Syntaxe textu žádosti
@@ -97,7 +101,7 @@ Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají pou
 
 ```json
 {
-   "id": "/subscriptions/{Azure-subscription-ID/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
    "name": "{ISE-name}",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "{Azure-region}",
@@ -106,7 +110,14 @@ Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají pou
       "capacity": 1
    },
    "identity": {
-      "type": "SystemAssigned"
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -153,7 +164,13 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
    "identity": {
-      "type": "SystemAssigned"
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
    },
    "sku": {
       "name": "Premium",
@@ -197,7 +214,11 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
 
 ## <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
 
-Do *30 minut* od odeslání žádosti HTTP PUT k vytvoření vašeho ISEu musíte do svého trezoru klíčů přidat zásadu přístupu pro identitu přiřazenou systémem vaší ISE. V opačném případě vytvoření pro ISE selže a zobrazí se chyba oprávnění. 
+I když se časování liší v závislosti na spravované identitě, kterou používáte, musíte [dát službě trezoru klíčů přístup ke spravované identitě vašeho ISEu](#identity-access-to-key-vault).
+
+* **Spravovaná identita přiřazená systémem**: do *30 minut od* odeslání požadavku https PUT, který vytváří vaše ISE, musíte do svého trezoru klíčů přidat zásadu přístupu pro spravovanou identitu přiřazenou systémem vaší ISE. V opačném případě vytvoření pro ISE selže a zobrazí se chyba oprávnění.
+
+* **Spravovaná identita přiřazená uživatelem**: před odesláním požadavku HTTP PUT, který vytváří vaše ISE, přidejte do svého trezoru klíčů zásady přístupu pro spravovanou identitu přiřazenou uživatelem vaší ISE.
 
 Pro tuto úlohu můžete použít buď příkaz Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) , nebo můžete postupovat podle těchto kroků v Azure Portal:
 
@@ -219,13 +240,13 @@ Pro tuto úlohu můžete použít buď příkaz Azure PowerShell [set-AzKeyVault
 
       ![Vyberte možnost Správa klíčů > klíčová oprávnění.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. V případě **Vyberte objekt zabezpečení**vyberte možnost **není vybráno**. Po otevření podokna **zabezpečení** vyhledejte v poli hledání a vyberte své ISE. Až budete hotovi, zvolte **Vybrat**  >  **Přidat**.
+   1. V případě **Vyberte objekt zabezpečení** vyberte možnost **není vybráno**. Po otevření podokna **zabezpečení** vyhledejte v poli hledání a vyberte své ISE. Až budete hotovi, zvolte **Vybrat**  >  **Přidat**.
 
       ![Vyberte ISE, které chcete použít jako objekt zabezpečení.](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
    1. Až skončíte s podoknem **zásady přístupu** , vyberte **Uložit**.
 
-Další informace najdete v tématu [zajištění Key Vaultho ověřování pomocí spravované identity](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
+Další informace najdete v tématu [ověření Key Vault](../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

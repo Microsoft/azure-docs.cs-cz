@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 02/01/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035294"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741554"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav správy hesel v Azure AD
 
@@ -27,7 +27,7 @@ Po nasazení mnoho organizací chce zjistit, jak nebo jestli se ve skutečnosti 
 Následující dotazy mohou být zodpovězené sestavami, které existují v [Azure Portal](https://portal.azure.com/):
 
 > [!NOTE]
-> Musíte být [globálním správcem](../users-groups-roles/directory-assign-admin-roles.md)a musíte se vyjádřit, že se tato data budou shromažďovat jménem vaší organizace. Chcete-li se vyjádřit výslovný souhlas, musíte navštívit kartu pro **vytváření sestav** nebo protokoly auditu aspoň jednou. Do té doby nebudou pro vaši organizaci shromažďována data.
+> Musíte být [globálním správcem](../roles/permissions-reference.md)a musíte se vyjádřit, že se tato data budou shromažďovat jménem vaší organizace. Chcete-li se vyjádřit výslovný souhlas, musíte navštívit kartu pro **vytváření sestav** nebo protokoly auditu aspoň jednou. Do té doby nebudou pro vaši organizaci shromažďována data.
 >
 
 * Kolik lidí zaregistrovalo pro resetování hesla?
@@ -53,7 +53,7 @@ V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit akt
 
 ### <a name="combined-registration"></a>Kombinovaná registrace
 
-Pokud jste povolili [kombinovanou registraci](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined), budou se v části **Security**  >  **metody ověřování**zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
+Pokud jste povolili [kombinovanou registraci](./concept-registration-mfa-sspr-combined.md), budou se v části **Security**  >  **metody ověřování** zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupců sestavy v Azure Portal
 
@@ -72,7 +72,7 @@ Následující tabulka popisuje různé hodnoty, které můžete nastavit pro ka
 | --- | --- |
 | Zaregistrovaná data |**Alternativní e-mail**: uživatel použil k ověření alternativní e-mail nebo ověřovací e-mail.<p><p>**Telefon do kanceláře**: uživatel pro ověření použil telefon do kanceláře.<p>**Mobilní telefon**: uživatel používal mobilní telefon nebo telefon pro ověření k ověření.<p>**Bezpečnostní otázky**: uživatel použil bezpečnostní otázky k ověření.<p>**Libovolná kombinace předchozích metod, například alternativní e-mailová + mobilní telefon**: nastane, když je zadána zásada dvou bran, a ukazuje, které dvě metody uživatel použil k ověřování své žádosti o resetování hesla. |
 
-## <a name="self-service-password-management-activity-types"></a>Typy aktivit samoobslužné správy hesel
+## <a name="self-service-password-management-activity-types"></a>Self-Service typy aktivit správy hesel
 
 V kategorii událostí auditu **Samoobslužná správa hesel** se zobrazí následující typy aktivit:
 
@@ -179,9 +179,9 @@ Následující seznam vysvětluje tuto aktivitu podrobněji:
 * [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
+* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](./tutorial-enable-sspr-writeback.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](./troubleshoot-sspr.md)
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Příklad protokolů auditu aktivity SSPR v Azure AD"

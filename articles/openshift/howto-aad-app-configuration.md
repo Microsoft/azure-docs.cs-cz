@@ -3,17 +3,23 @@ title: Integrace Azure Active Directory pro Azure Red Hat OpenShift
 description: Naučte se, jak vytvořit skupinu zabezpečení Azure AD a uživatele pro testování aplikací v clusteru Microsoft Azure Red Hat OpenShift.
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0bf28d61d4c9ad95a485fb4b60e370c16ace16c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382921"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633321"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace Azure Active Directory pro Azure Red Hat OpenShift
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 Pokud jste ještě nevytvořili tenanta Azure Active Directory (Azure AD), postupujte podle pokynů v tématu [Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift](howto-create-tenant.md) , než budete pokračovat v těchto pokynech.
 
@@ -23,14 +29,14 @@ Microsoft Azure Red Hat OpenShift potřebuje oprávnění k provádění úloh j
 
 V [Azure Portal](https://portal.azure.com)zajistěte, aby se váš tenant zobrazoval pod vaším uživatelským jménem v pravém horním rohu portálu:
 
-![Snímek obrazovky portálu se stejným klientem v pravém horním rohu ](./media/howto-create-tenant/tenant-callout.png) Pokud se zobrazí špatný tenant, klikněte v pravém horním rohu na své uživatelské jméno, potom klikněte na **Přepnout adresář**a vyberte správného tenanta ze seznamu **všechny adresáře** .
+![Snímek obrazovky portálu se stejným klientem v pravém horním rohu ](./media/howto-create-tenant/tenant-callout.png) Pokud se zobrazí špatný tenant, klikněte v pravém horním rohu na své uživatelské jméno, potom klikněte na **Přepnout adresář** a vyberte správného tenanta ze seznamu **všechny adresáře** .
 
 Pokud se chcete přihlásit ke clusteru Azure Red Hat OpenShift, vytvořte nového Azure Active Directory uživatele "Owner".
 
 1. Otevřete okno [Uživatelé – všichni uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) .
 2. Kliknutím na **+ Nový uživatel** otevřete podokno **uživatel** .
 3. Zadejte **jméno** pro tohoto uživatele.
-4. Vytvořte **uživatelské jméno** na základě názvu vytvořeného tenanta s `.onmicrosoft.com` připojením na konci. Například, `yourUserName@yourTenantName.onmicrosoft.com`. Zapište si toto uživatelské jméno. Budete ho potřebovat k přihlášení ke clusteru.
+4. Vytvořte **uživatelské jméno** na základě názvu vytvořeného tenanta s  `.onmicrosoft.com` připojením na konci. Například, `yourUserName@yourTenantName.onmicrosoft.com`. Zapište si toto uživatelské jméno. Budete ho potřebovat k přihlášení ke clusteru.
 5. Kliknutím na **role adresáře** otevřete podokno role adresáře a vyberte **vlastník** a pak klikněte na **OK** v dolní části podokna.
 6. V podokně **uživatel** klikněte na možnost **Zobrazit heslo** a poznamenejte si dočasné heslo. Po prvním přihlášení se zobrazí výzva k jejímu resetování.
 7. V dolní části podokna klikněte na **vytvořit** a vytvořte uživatele.
@@ -77,7 +83,7 @@ Pokud vaše organizace ještě nemá k dispozici registraci aplikace Azure Activ
 
 Vygenerujte tajný klíč klienta pro ověření vaší aplikace k Azure Active Directory.
 
-1. V části **Spravovat** na stránce registrace aplikací klikněte na **certifikáty & tajných**kódů.
+1. V části **Spravovat** na stránce registrace aplikací klikněte na **certifikáty & tajných** kódů.
 2. V podokně **certifikáty & tajných klíčů** klikněte na **+ nový tajný klíč klienta**.  Zobrazí se podokno **Přidat tajný klíč klienta** .
 3. Zadejte **Popis**.
 4. Nastavte **konec platnosti** na dobu, kterou dáváte přednost, například **2 roky**.
@@ -86,9 +92,9 @@ Vygenerujte tajný klíč klienta pro ověření vaší aplikace k Azure Active 
 
 ![Snímek obrazovky s podoknem certifikátů a tajných klíčů](./media/howto-create-tenant/create-key.png)
 
-Další informace o objektech aplikací Azure najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Další informace o objektech aplikací Azure najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Podrobnosti o vytvoření nové aplikace Azure AD najdete v tématu [Registrace aplikace s koncovým bodem Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+Podrobnosti o vytvoření nové aplikace Azure AD najdete v tématu [Registrace aplikace s koncovým bodem Azure Active Directory v 1.0](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="add-api-permissions"></a>Přidání oprávnění rozhraní API
 
@@ -103,19 +109,19 @@ Podrobnosti o vytvoření nové aplikace Azure AD najdete v tématu [Registrace 
 5. Rozbalte položku **adresář** v následujícím seznamu a povolte **adresář. ReadAll**.
 6. Kliknutím na tlačítko **Přidat oprávnění** přijměte změny.
 7. Panel oprávnění rozhraní API by teď měl zobrazovat *User. Read* a *Directory. ReadAll*. Všimněte si prosím upozornění ve sloupci **požadováno souhlasu správce** vedle *Directory. ReadAll*.
-8. Pokud jste *správcem předplatného Azure*, klikněte níže na **udělit souhlas správce pro *název předplatného* ** . Pokud nejste *správcem předplatného Azure*, požádejte o souhlas správce.
+8. Pokud jste *správcem předplatného Azure*, klikněte níže na **udělit souhlas správce pro *název předplatného*** . Pokud nejste *správcem předplatného Azure*, požádejte o souhlas správce.
 
 ![Snímek obrazovky s panelem oprávnění rozhraní API Přidaná oprávnění User. Read a Directory. ReadAll, pro Directory. ReadAll se vyžaduje souhlas správce.](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > Synchronizace skupiny správců clusteru bude fungovat až po udělení souhlasu. V sloupci *požadováno souhlasu správce* se zobrazí zelený kroužek se značkami zaškrtnutí a zpráva "uděleno pro *název předplatného*".
 
-Podrobnosti o správě správců a dalších rolí najdete v tématu [Přidání nebo změna správců předplatného Azure](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+Podrobnosti o správě správců a dalších rolí najdete v tématu [Přidání nebo změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje informací
 
-* [Aplikace a instanční objekty služby v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [Rychlý start: Registrace aplikace pomocí koncového bodu Azure Active Directory verze 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Aplikace a instanční objekty služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)
+* [Rychlý start: Registrace aplikace pomocí koncového bodu Azure Active Directory verze 1.0](../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="next-steps"></a>Další kroky
 

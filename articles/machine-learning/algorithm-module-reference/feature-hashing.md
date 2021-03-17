@@ -1,7 +1,7 @@
 ---
 title: Reference k modulům hash funkcí
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul hashování funkcí v Azure Machine Learning k zpracování textových dat.
+description: Naučte se používat modul hashování funkcí v Návrháři Azure Machine Learning k zpracování textových dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456246"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420780"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
-Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning.
 
 K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
-Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true).
 
 ## <a name="what-is-feature-hashing"></a>Co je funkce hashing funkcí?
 
@@ -90,7 +90,7 @@ Funkce hashing funkcí umožňuje reprezentovat textové dokumenty s proměnlivo
     
     Výchozí bitová velikost je 10. V případě mnoha problémů je tato hodnota dostačující. Je možné, že budete potřebovat více místa, abyste se vyhnuli kolizím, v závislosti na velikosti slovníku n gramů v školicím textu.
     
-1. U **n-gramů**zadejte číslo definující maximální délku N-gramů, které se mají přidat do školicího slovníku. N-gram je sekvence *n* slov, která je považována za jedinečnou jednotku.
+1. U **n-gramů** zadejte číslo definující maximální délku N-gramů, které se mají přidat do školicího slovníku. N-gram je sekvence *n* slov, která je považována za jedinečnou jednotku.
 
     Pokud například zadáte 3, unigrams, bigrams a trigrams, vytvoří se.
 
@@ -131,4 +131,4 @@ Optimální sada metod předběžného zpracování, která se má použít v ja
 
 ## <a name="next-steps"></a>Další kroky
             
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning

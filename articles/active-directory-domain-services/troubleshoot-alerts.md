@@ -2,7 +2,7 @@
 title: Běžné výstrahy a řešení v Azure AD Domain Services | Microsoft Docs
 description: Naučte se řešit běžné výstrahy vygenerované jako součást stavu pro Azure Active Directory Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: justinha
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222968"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092886"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -73,7 +73,7 @@ Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou domé
 
 1. [Odstraňte spravovanou doménu](delete-aadds.md) z adresáře.
 1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro Azure služba AD DS, která má nesprávně nastavený rozsah veřejných IP adres.
-1. V části **Nastavení**vyberte *adresní prostor*.
+1. V části **Nastavení** vyberte *adresní prostor*.
 1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Ujistěte se, že je nový rozsah IP adres v rozsahu privátních IP adres. Až budete připraveni, změny **uložte** .
 1. V levém navigačním panelu vyberte **podsítě** .
 1. Vyberte podsíť, kterou chcete upravit, nebo vytvořte další podsíť.
@@ -106,7 +106,7 @@ Azure služba AD DS vyžaduje aktivní předplatné a nedá se přesunout do jin
 
 Azure služba AD DS vyžaduje aktivní předplatné. Pokud předplatné Azure, ke kterému je spravovaná doména přidružená, není aktivní, musíte ho obnovit, aby se předplatné znovu aktivovalo.
 
-1. [Prodlužte si platnost předplatného Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Prodlužte si platnost předplatného Azure](../cost-management-billing/manage/subscription-disabled.md).
 2. Po obnovení odběru vám oznámení služby Azure služba AD DS umožní znovu povolit spravovanou doménu.
 
 Pokud je spravovaná doména znovu povolena, stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
@@ -162,7 +162,7 @@ Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte
 
 Některé automaticky generované objekty služby se používají ke správě a vytváření prostředků pro spravovanou doménu. Pokud dojde ke změně oprávnění pro přístup k některému z těchto instančních objektů, doména nemůže správně spravovat prostředky. Následující kroky ukazují, jak pochopit a pak udělit přístupová oprávnění k instančnímu objektu:
 
-1. Přečtěte si o [řízení přístupu na základě role a o tom, jak udělit přístup k aplikacím v Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+1. Přečtěte si o [řízení přístupu na základě role v Azure a o tom, jak udělit přístup k aplikacím v Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Zkontrolujte přístup, který instanční objekt s ID *abba844e-bc0e-44b0-947a-dc74e5d09022* má, a udělte přístup, který byl zamítnut v dřívější datum.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: ve spravované doméně není dostatečná IP adresa.
@@ -179,7 +179,7 @@ Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou domé
 
 1. [Odstraňte spravovanou doménu](delete-aadds.md) z adresáře.
 1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro spravovanou doménu, která má malý rozsah IP adres.
-1. V části **Nastavení**vyberte *adresní prostor*.
+1. V části **Nastavení** vyberte *adresní prostor*.
 1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Zajistěte, aby byl nový rozsah IP adres dostatečně velký pro rozsah podsítí spravované domény. Až budete připraveni, změny **uložte** .
 1. V levém navigačním panelu vyberte **podsítě** .
 1. Vyberte podsíť, kterou chcete upravit, nebo vytvořte další podsíť.
@@ -221,7 +221,7 @@ K tomu, aby se zabránilo změně nebo odstranění, se můžou použít zámky 
 Pokud chcete vyhledat zámky prostředků na součástech Azure služba AD DS a odebrat je, proveďte následující kroky:
 
 1. U každé síťové součásti spravované domény, jako je třeba virtuální síť, síťové rozhraní nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se používá zámek prostředku.
-1. Vyberte prostředek, na kterém je zámek použit, a pak v části **zámky**vyberte a odeberte zámky.
+1. Vyberte prostředek, na kterém je zámek použit, a pak v části **zámky** vyberte a odeberte zámky.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: prostředky jsou nepoužitelné.
 
@@ -236,7 +236,7 @@ Zásady se používají u prostředků Azure a skupin prostředků, které urču
 Pokud chcete vyhledat použité zásady v součástech Azure služba AD DS a aktualizovat je, proveďte následující kroky:
 
 1. U každé síťové součásti spravované domény, jako je například virtuální síť, síťová karta nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se uplatní omezující zásada.
-1. Vyberte prostředek, u kterého se zásada používá, a pak v části **zásady**vyberte a upravte zásadu tak, aby byla méně omezující.
+1. Vyberte prostředek, u kterého se zásada používá, a pak v části **zásady** vyberte a upravte zásadu tak, aby byla méně omezující.
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: synchronizace se ještě nedokončila.
 
@@ -276,7 +276,7 @@ Následující běžné důvody způsobují zastavení synchronizace ve spravova
 
 Azure služba AD DS vyžaduje aktivní předplatné. Pokud předplatné Azure, ke kterému je spravovaná doména přidružená, není aktivní, musíte ho obnovit, aby se předplatné znovu aktivovalo.
 
-1. [Prodlužte si platnost předplatného Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Prodlužte si platnost předplatného Azure](../cost-management-billing/manage/subscription-disabled.md).
 2. Po obnovení odběru vám oznámení služby Azure služba AD DS umožní znovu povolit spravovanou doménu.
 
 Pokud je spravovaná doména znovu povolena, stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.

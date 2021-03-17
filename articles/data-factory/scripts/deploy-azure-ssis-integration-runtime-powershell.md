@@ -1,21 +1,18 @@
 ---
 title: Nasazení prostředí Azure SSIS Integration runtime pomocí PowerShellu
 description: Tento skript PowerShellu vytvoří prostředí Azure-SSIS Integration runtime, které může spouštět balíčky SSIS v cloudu.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: sawinark
 author: swinarko
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: c6d9a9299fa25013a440ee6ac45f5eae407225b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 158e2db5261ce35713e1564cd24f0dd1d563ab78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74929807"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370202"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShellový skript – nasazení prostředí Azure-SSIS Integration runtime
 
@@ -48,16 +45,16 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Vytvoření datové továrny |
 | [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Vytvoří prostředí Azure-SSIS Integration runtime, které může spouštět balíčky SSIS v cloudu. |
 | [Spustit – AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Spustí prostředí Azure-SSIS Integration runtime. |
 | [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Načte informace o prostředí Azure-SSIS Integration runtime. |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [ukázkách Azure Data Factory PowerShellu](../samples-powershell.md).

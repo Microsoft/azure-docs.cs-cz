@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: f1a331db9109304425fa046a23b0966eca7f22b2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c49fc5748e2234aa870dad79fd0d5842d120e117
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980119"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188206"
 ---
-- [Rychlý Start: rozpoznávání řeči z mikrofonu](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
-- [Rychlý Start: rozpoznávání řeči ze souboru](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
+- [Rychlý Start: rozpoznávání řeči z mikrofonu](../../get-started-speech-to-text.md)
+- [Rychlý Start: rozpoznávání řeči ze souboru](../../get-started-speech-to-text.md)
 - [Rychlý Start: Vytvoření vlastního hlasového asistenta](~/articles/cognitive-services/speech-service/quickstarts/voice-assistants.md)

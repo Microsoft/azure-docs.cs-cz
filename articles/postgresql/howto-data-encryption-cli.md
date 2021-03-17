@@ -1,18 +1,18 @@
 ---
 title: Šifrování dat – Azure CLI – pro Azure Database for PostgreSQL – jeden server
 description: Naučte se, jak nastavit a spravovat šifrování dat pro váš Azure Database for PostgreSQL samostatný server pomocí Azure CLI.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797810"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240609"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure CLI
 
@@ -49,7 +49,7 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
 * Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
   * Žádné datum vypršení platnosti
   * Nezakázáno
-  * Provádění operací **Get**, **Wrap** a **Unwrap**
+  * Provádění operací **Get** , **Wrap** a **Unwrap**
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
@@ -67,7 +67,7 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. Nastavte **klíčová oprávnění** (**získání**, **zabalení**, **rozbalení**) pro **objekt zabezpečení**, což je název serveru PostgreSQL Single server.
+2. Nastavte **klíčová oprávnění** ( **získání** , **zabalení** , **rozbalení** ) pro **objekt zabezpečení** , což je název serveru PostgreSQL Single server.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -81,7 +81,7 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
     az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
     ```
 
-    Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+    Adresa URL klíče:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Použití šifrování dat pro obnovení nebo servery repliky
 
@@ -125,7 +125,7 @@ az postgres server key create –name  <server name> -g <resource_group> --kid <
 az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
 ```
 
-Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Adresa URL klíče: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Vypíše použitý klíč.
 

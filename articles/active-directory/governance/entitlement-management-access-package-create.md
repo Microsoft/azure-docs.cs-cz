@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: e3df08272b352ee789c9879b1118105c435cffbd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798779"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011081"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -89,7 +89,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
 Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do balíčku pro přístup. Uživatelé, kteří požadují a obdrží balíček pro přístup, obdrží všechny role prostředků v balíčku pro přístup.
 
-1. Klikněte na typ prostředku, který chcete přidat (**skupiny a týmy**, **aplikace**nebo **weby SharePointu**).
+1. Klikněte na typ prostředku, který chcete přidat (**skupiny a týmy**, **aplikace** nebo **weby SharePointu**).
 
 1. V zobrazeném podokně vyberte jeden nebo více prostředků ze seznamu.
 
@@ -99,13 +99,16 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     Pokud vytváříte balíček přístupu v existujícím katalogu, můžete vybrat libovolný prostředek, který je již v katalogu, aniž by mu byl vlastník.
 
-    Pokud jste globální správce, správce uživatele nebo vlastníka katalogu, máte další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Pokud chcete pouze vybrat prostředky, které jsou aktuálně ve vybraném katalogu, zaškrtněte políčko **pouze** v horní části podokna vybrat.
+    Pokud jste globální správce, správce uživatele nebo vlastníka katalogu, máte další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Chcete-li zobrazit všechny prostředky, které lze přidat do katalogu, zaškrtněte políčko **Zobrazit vše** v horní části podokna výběru. Pokud chcete vybrat pouze prostředky, které jsou aktuálně ve vybraném katalogu, ponechejte zaškrtávací políčko **všechny** nezaškrtnuté (výchozí stav).
 
 1. Jakmile vyberete prostředky, v seznamu **role** vyberte roli, kterou chcete přiřadit uživatelům pro daný prostředek.
 
     ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Klikněte na **Next** (Další).
+
+>[!NOTE]
+>Do katalogu a přístupového balíčku můžete přidat dynamické skupiny. Při správě prostředku dynamické skupiny v přístupovém balíčku ale budete moct vybrat jenom roli vlastníka.
 
 ## <a name="requests"></a>Žádosti
 
@@ -125,7 +128,7 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
 1. Kontrola nastavení balíčku přístupu
 
-    ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/entitlement-management-access-package-create/review-create.png)
+    ![Přístup k balíčku – povolení nastavení zásad](./media/entitlement-management-access-package-create/review-create.png)
 
 1. Kliknutím na **vytvořit** vytvořte balíček pro přístup.
 
@@ -135,14 +138,15 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
 Balíček pro přístup můžete také vytvořit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API na
 
-1. [Seznamte se s accessPackageResources v katalogu](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) a [vytvořte accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) pro všechny prostředky, které ještě nejsou v katalogu.
-1. [Vypíše accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
-1. [Vytvořte accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
-1. [Vytvořte accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
-1. [Vytvořte accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) pro každou roli prostředku potřebnou v balíčku pro přístup.
+1. [Seznamte se s accessPackageResources v katalogu](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) a [vytvořte accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) pro všechny prostředky, které ještě nejsou v katalogu.
+1. [Vypíše accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
+1. [Vytvořte accessPackage](/graph/tutorial-access-package-api?view=graph-rest-beta).
+1. [Vytvořte accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
+1. [Vytvořte accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) pro každou roli prostředku potřebnou v balíčku pro přístup.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Sdílet odkaz pro vyžádání balíčku pro přístup](entitlement-management-access-package-settings.md)
 - [Změna rolí prostředků pro balíček pro přístup](entitlement-management-access-package-resources.md)
 - [Přímé přiřazení uživatele k balíčku pro přístup](entitlement-management-access-package-assignments.md)
+- [Vytvoření kontroly přístupu pro balíček přístupu](entitlement-management-access-reviews-create.md)

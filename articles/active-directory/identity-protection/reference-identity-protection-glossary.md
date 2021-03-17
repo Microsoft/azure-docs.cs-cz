@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232348"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88949170"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Glosář Azure Active Directory Identity Protection
 
@@ -32,7 +32,7 @@ Modul zabezpečení Azure Active Directory, který poskytuje konsolidovanou pohl
 ### <a name="conditional-access"></a>Podmíněný přístup
 Zásada pro zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají v Azure Active Directory a před udělením přístupu k prostředku se vyhodnocují ve službě Azure AD.  Příklady pravidel zahrnují omezení přístupu na základě umístění uživatele, stavu zařízení nebo metody ověřování uživatelů.
 
-### <a name="credentials"></a>Přihlašovací údaje
+### <a name="credentials"></a>Credentials
 Informace, které zahrnují identifikaci a ověření identifikace, která se používá k získání přístupu k místním a síťovým prostředkům. Příklady přihlašovacích údajů jsou uživatelská jména a hesla, čipové karty a certifikáty.
 
 ### <a name="event"></a>Událost
@@ -56,7 +56,7 @@ Rozpoznání rizika aktivované při zjištění dvou přihlášení stejného u
 ### <a name="investigation"></a>Šetření
 Proces kontroly aktivit, protokolů a dalších relevantních informací souvisejících s detekcí rizik pro rozhodování o tom, jestli je potřeba vyřešit a jak by se jednalo o ohrožení identity, a pochopit, jak se používala ohrožená identita.
 
-### <a name="leaked-credentials"></a>Nevrácená pověření
+### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
 K detekci rizik aktivovanému v případě, že se aktuální přihlašovací údaje uživatele (uživatelské jméno a heslo) zveřejňují veřejně v tmavém webu našimi výzkumníky.
 
 ### <a name="mitigation"></a>Omezení rizik
@@ -89,13 +89,13 @@ Detekce anomálií a vyhodnocení rizika události, jako je například pokus o 
 ### <a name="remediated-risk-detection"></a>Opraveno (zjišťování rizik)
 Stav detekce rizik nastavený automaticky pomocí Identity Protection, což znamená, že detekce rizik byla opravena pomocí standardní nápravné akce pro tento typ zjišťování rizik. Například při resetování hesla uživatele se automaticky opraví mnoho detekcí rizika, které ukazují, že předchozí heslo bylo ohroženo.
 
-### <a name="remediation"></a>Odstranění rizika
+### <a name="remediation"></a>Náprava
 Akce zabezpečující identitu nebo zařízení, které byly dříve podezřelé nebo známé jako ohrožené. Nápravná akce obnoví identitu nebo zařízení do bezpečného stavu a vyřeší předchozí zjištění rizik související s identitou nebo zařízením.
 
 ### <a name="resolved-risk-detection"></a>Vyřešené (zjišťování rizik)
 Stav detekce rizik nastavený ručně uživatelem ochrany identity, který indikuje, že uživatel přijal příslušnou akci nápravy mimo ochranu identity a že by mělo být považováno za uzavřeno.
 
-### <a name="risk-detection-status"></a>Stav detekce rizik
+### <a name="risk-detection-status"></a>Stav detekce rizika
 Vlastnost detekce rizika, která označuje, jestli je událost aktivní, a pokud je uzavřená, důvod uzavření.
 
 ### <a name="risk-detection-type"></a>Typ detekce rizika
@@ -160,4 +160,4 @@ Konfigurace nebo podmínka v Azure Active Directory, což umožňuje, aby byl ad
 
 ## <a name="see-also"></a>Viz také
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

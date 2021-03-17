@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 2170440b7b47861b75801b8dbd334686b4cabc8b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872408"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985610"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -59,6 +59,7 @@ Agent MARS potřebuje přístup k těmto adresám URL:
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
 - *. Windows.net
+- `www.msftconnecttest.com`
 
 A na tyto IP adresy:
 
@@ -67,25 +68,39 @@ A na tyto IP adresy:
 
 Přístup ke všem adresám URL a IP adresám uvedeným výše používá protokol HTTPS na portu 443.
 
+Při zálohování souborů a složek z virtuálních počítačů Azure pomocí agenta MARS musí být virtuální síť Azure taky nakonfigurovaná tak, aby povolovala přístup. Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup musíte také umožňovat připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](../virtual-network/network-security-groups-overview.md#service-tags) pro Azure AD (*azureactivedirectory selhala*) a Azure Storage (*úložiště*). Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
+
+1. Ve **všech službách** klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
+2. V části **Nastavení** vyberte **odchozí pravidla zabezpečení** .
+3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
+4. Vyberte **Přidat** a uložte nově vytvořené odchozí pravidlo zabezpečení.
+
+Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD. Další informace o značkách služby najdete v [tomto článku](../virtual-network/service-tags-overview.md).
+
 ### <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
 
 Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.
 
 S veřejným partnerským vztahem: Zajistěte přístup k následujícím doménám nebo adresám:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* Adresy URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP adresy
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 S partnerským vztahem Microsoftu vyberte následující služby nebo oblasti a příslušné hodnoty komunity:
 
+- Azure Backup (podle umístění vašeho trezoru Recovery Services)
 - Azure Active Directory (12076:5060)
-- Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
 - Azure Storage (podle umístění vašeho trezoru Recovery Services)
 
-Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).
+Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md#bgp).
 
 >[!NOTE]
 >Veřejné partnerské vztahy se pro nové okruhy zastaraly.
@@ -121,14 +136,14 @@ Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější
 
 **Operační systém** | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**
 --- | --- | --- | ---
-Windows 10 (Enterprise, pro, Home) | Ano | Ne |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8 (Enterprise, pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a Správa imagí nasazení (DISM.exe)
-Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows 10 (Enterprise, pro, Home) | Yes | No |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8.1 (Enterprise, pro)| Yes |No | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8 (Enterprise, pro) | Yes | No | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows Server 2016 (Standard, Datacenter, Essentials) | Yes | Yes | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Yes | Yes | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, základ) | Yes | Yes |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a Správa imagí nasazení (DISM.exe)
+Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Yes | No | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Yes | Yes | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
@@ -142,9 +157,9 @@ U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační
 
 | **Operační systém**                                       | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | Ne                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
-| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) |
-| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | Ne                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
+| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Yes               | No                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Yes               | Yes                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) |
+| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Yes               | No                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
@@ -159,6 +174,17 @@ Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 nebo novější| 54 400 GB
 Windows 7| 1 700 GB
+
+### <a name="minimum-retention-limits"></a>Minimální limity uchovávání
+
+Níže jsou uvedeny minimální doby uchovávání, které lze nastavit pro různé body obnovení:
+
+|Bod obnovení |Doba trvání  |
+|---------|---------|
+|Denní bod obnovení    |   7 dní      |
+|Týdenní bod obnovení     |    4 týdny     |
+|Měsíční bod obnovení    |   3 měsíce      |
+|Roční bod obnovení  |      1 rok   |
 
 ### <a name="other-limitations"></a>Další omezení
 
@@ -180,7 +206,7 @@ Zhuštěný datový proud| Nepodporováno Přeskočeno.
 OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporováno
 Složky s povoleným Replikace DFS | Nepodporováno
 
-\*Zajistěte, aby měl agent MARS přístup k požadovaným certifikátům pro přístup k šifrovaným souborům. Nedostupné soubory se přeskočí.
+\* Zajistěte, aby měl agent MARS přístup k požadovaným certifikátům pro přístup k šifrovaným souborům. Nedostupné soubory se přeskočí.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 

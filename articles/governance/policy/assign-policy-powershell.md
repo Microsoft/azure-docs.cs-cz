@@ -4,10 +4,10 @@ description: V tomto rychlém startu použijete Azure PowerShell k vytvoření p
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88548408"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure PowerShell
@@ -17,7 +17,7 @@ Prvním krokem k porozumění dodržování předpisů v Azure je zjištění st
 Modul Azure PowerShell se používá ke správě prostředků Azure z příkazového řádku nebo ve skriptech.
 V této příručce se dozvíte, jak pomocí funkce AZ Module vytvořit přiřazení zásady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

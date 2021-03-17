@@ -1,27 +1,27 @@
 ---
 title: Monitorování operací Azure IoT Hub (zastaralé) | Microsoft Docs
 description: Jak používat Azure IoT Hub Operations monitoring k monitorování stavu operací ve službě IoT Hub v reálném čase.
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
-ms.custom: amqp
-ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: robinsh
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732232"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408120"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Monitorování operací IoT Hub (zastaralé)
 
 IoT Hub monitorování provozu vám umožní monitorovat stav operací ve službě IoT Hub v reálném čase. IoT Hub sleduje události napříč několika kategoriemi operací. Můžete se rozhodnout, že budete odesílat události z jedné nebo více kategorií do koncového bodu služby IoT Hub ke zpracování. Můžete monitorovat data pro chyby nebo nastavit složitější zpracování na základě vzorců dat.
 
 >[!NOTE]
->**Monitorování operací IoT Hub je zastaralé a bylo odebráno z IoT Hub 10. března 2019**. Informace o monitorování provozu a stavu IoT Hub najdete v tématu [monitorování stavu Azure IoT Hub a rychlé diagnostikování problémů](iot-hub-monitor-resource-health.md). Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>**Monitorování operací IoT Hub je zastaralé a bylo odebráno z IoT Hub 10. března 2019**. Informace o monitorování provozu a stavu IoT Hub najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md). Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 IoT Hub monitoruje šest kategorií událostí:
 
@@ -97,7 +97,7 @@ Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází ve službě
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Příkazy z cloudu na zařízení
+### <a name="cloud-to-device-commands"></a>Příkazy cloud-zařízení
 
 Kategorie příkazy Cloud-zařízení sleduje chyby, ke kterým dochází ve službě IoT Hub a které souvisejí s kanálem zpráv z cloudu na zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází při posílání zpráv z cloudu na zařízení (jako je například neoprávněný odesílatel), přijímání zpráv z cloudu na zařízení (například překročení počtu doručení) a příjem zpětné vazby ze zpráv typu cloud-zařízení (například vypršení zpětné vazby). Tato kategorie nezachycuje chyby ze zařízení, které nesprávně zpracovává zprávu typu cloud-zařízení, pokud byla zpráva typu cloud-zařízení úspěšně doručena.
 
@@ -191,17 +191,17 @@ Kategorie směrování zpráv sleduje chyby, ke kterým došlo během hodnocení
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Připojit ke koncovému bodu monitorování
 
-Koncový bod monitorování ve službě IoT Hub je koncový bod kompatibilní s centrem událostí. Ke čtení zpráv monitorování z tohoto koncového bodu můžete použít libovolný mechanismus, který spolupracuje s Event Hubs. Následující ukázka vytvoří základní čtecí modul, který není vhodný pro nasazení s vysokou propustností. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+Koncový bod monitorování ve službě IoT Hub je koncový bod kompatibilní s centrem událostí. Ke čtení zpráv monitorování z tohoto koncového bodu můžete použít libovolný mechanismus, který spolupracuje s Event Hubs. Následující ukázka vytvoří základní čtecí modul, který není vhodný pro nasazení s vysokou propustností. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 Pokud se chcete připojit ke koncovému bodu monitorování, potřebujete připojovací řetězec a název koncového bodu. Následující kroky ukazují, jak najít potřebné hodnoty na portálu:
 
 1. Na portálu přejděte do okna prostředků IoT Hub.
 
-2. Vyberte **monitorování operací**a poznamenejte si název, který je kompatibilní s centrem **událostí** a hodnoty **koncového bodu kompatibilního centra událostí** :
+2. Vyberte **monitorování operací** a poznamenejte si název, který je kompatibilní s centrem **událostí** a hodnoty **koncového bodu kompatibilního centra událostí** :
 
     ![Hodnoty koncového bodu kompatibilního s centrem událostí](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Zvolte **zásady sdíleného přístupu**a pak zvolte **Služba**. Poznamenejte si hodnotu **primárního klíče** :
+3. Zvolte **zásady sdíleného přístupu** a pak zvolte **Služba**. Poznamenejte si hodnotu **primárního klíče** :
 
     ![Primární klíč zásad sdíleného přístupu služby](./media/iot-hub-operations-monitoring/service-key.png)
 
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
+Další informace o monitorování IoT Hub pomocí Azure Monitor najdete v těchto tématech:
 
-* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
+* [Monitorování IoT Hubu](monitor-iot-hub.md)
 
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Migrace z monitorování IoT Hubch operací do Azure Monitor](iot-hub-migrate-to-diagnostics-settings.md)
